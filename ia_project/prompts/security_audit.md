@@ -1,4 +1,9 @@
 # Audit Sécurité
 
-Analyse ce code pour détecter toute faille de sécurité potentielle (injection, XSS, CSRF, etc.).
-Propose des corrections et explique les risques identifiés. 
+*(Version : 2024-06-27)*
+
+## Exemple d’utilisation
+
+> Utiliser ce prompt pour auditer la sécurité d’un module ou d’un projet IA.
+> Exemple :
+> - "Fais un audit sécurité du module memory." 

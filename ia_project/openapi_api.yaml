@@ -19,10 +19,12 @@ components:
 paths:
   /api/api:
     post:
-      summary: API principale (mode: fast/safe)
+      summary: 'API principale (mode: fast/safe)'
       security:
-        - ApiKeyAuth: []
-        - OAuth2: [read, write]
+      - ApiKeyAuth: []
+      - OAuth2:
+        - read
+        - write
       requestBody:
         required: true
         content:

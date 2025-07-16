@@ -1,13 +1,5 @@
 # Audit Design/Ergonomie
 
-*(Version : 2024-06-27)*
-
-## Exemple d’utilisation
-
-> Utiliser ce prompt pour auditer l’ergonomie ou le design d’un module ou d’une interface IA.
-> Exemple :
-> - "Fais un audit design du module tts."
-
 Analyse l’interface, l’expérience utilisateur et le design du projet.
 - Identifie les points faibles d’ergonomie
 - Propose des améliorations visuelles et fonctionnelles
