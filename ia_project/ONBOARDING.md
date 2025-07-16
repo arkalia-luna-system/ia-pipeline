@@ -28,3 +28,23 @@
 
     Utiliser openapi.yaml avec Swagger UI
 
+## FAQ Onboarding
+
+- **Problème d’installation de dépendances ?**
+  - Vérifie ta version de Python (3.10+ recommandé)
+  - Utilise un environnement virtuel (venv)
+  - Mets à jour pip : `pip install --upgrade pip`
+
+- **Tests qui échouent ?**
+  - Lance `pytest` pour voir les erreurs détaillées
+  - Vérifie que tous les fichiers nécessaires sont présents
+
+- **API ne démarre pas ?**
+  - Vérifie que les dépendances sont bien installées
+  - Lance `python src/main.py` et regarde les logs
+
+- **Swagger ne s’affiche pas ?**
+  - Vérifie que `openapi.yaml` est bien généré et valide (utilise un validateur YAML)
+
+---
+

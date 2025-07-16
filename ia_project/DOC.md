@@ -1,7 +1,7 @@
 # Documentation technique
 
 ## Description
-bebe qui pleure
+Test YAML final
 
 ## Modules
 - api
@@ -22,21 +22,26 @@ bebe qui pleure
 - requirements.txt
 
 ## Endpoints/API
+
 ### api
 - Endpoint : /api/api
 - Méthode : POST
-- Payload : {'data': ...}
-- Réponse : {'result': ...}
+- Payload : {"data": "test", "user_id": 1, "mode": "fast"}
+- Réponse : {"result": "ok", "details": {"info": "détail"}}
+
 ### tts
 - Endpoint : /api/tts
 - Méthode : POST
-- Payload : {'data': ...}
-- Réponse : {'result': ...}
+- Payload : {"text": "Bonjour", "lang": "fr"}
+- Réponse : {"audio": "base64..."}
+
 ### memory
 - Endpoint : /api/memory
 - Méthode : POST
-- Payload : {'data': ...}
-- Réponse : {'result': ...}
+- Payload : {"key": "foo", "value": "bar"}
+- Réponse : {"status": "ok"}
+
+---
 
 ## Dépendances (Mermaid)
 ```mermaid

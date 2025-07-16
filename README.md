@@ -1,8 +1,17 @@
-<<<<<<< HEAD
-# ia-pipeline
-Générateur IA souverain, modulaire, testé, automatisé, documenté
-=======
 # Athalia Pipeline IA – Générateur Souverain
+
+*Dernière mise à jour : 2024-06-27*
+
+## Sommaire
+- [Architecture](#architecture)
+- [Utilisation rapide](#utilisation-rapide)
+- [Fonctionnalités principales](#fonctionnalités-principales)
+- [Tests](#tests)
+- [Sécurité](#sécurité)
+- [Nettoyage](#nettoyage)
+- [Export](#export)
+- [Pour aller plus loin](#pour-aller-plus-loin)
+- [Intégration intelligente dans des projets existants](#intégration-intelligente-dans-des-projets-existants)
 
 ## Architecture
 - **athalia_core/** : modules (génération, nettoyage, CI, dashboard, onboarding, sécurité)
@@ -53,4 +62,7 @@ Générateur IA souverain, modulaire, testé, automatisé, documenté
 - Ajouter vos propres prompts, modules, plugins dans `athalia_core/`
 - Étendre le menu CLI selon vos besoins
 - Contribuer, forker, industrialiser !
->>>>>>> 16d74de (Import complet du pipeline IA, code, tests, doc, automation)
+
+## Intégration intelligente dans des projets existants
+
+*(README harmonisé, conflits de merge supprimés, sommaire et date ajoutés)*

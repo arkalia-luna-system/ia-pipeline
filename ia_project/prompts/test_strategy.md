@@ -1,8 +1,9 @@
 # Stratégie de tests
 
-Propose une stratégie de tests complète pour ce projet.
-- Types de tests à écrire (unitaires, intégration, end-to-end…)
-- Outils/frameworks recommandés
-- Cas limites à couvrir
+*(Version : 2024-06-27)*
 
-Donne un plan d’action clair et priorisé. 
+## Exemple d’utilisation
+
+> Utiliser ce prompt pour générer ou auditer la stratégie de tests d’un module IA.
+> Exemple :
+> - "Génère une stratégie de tests pour le module api." 

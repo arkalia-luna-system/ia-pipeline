@@ -1,6 +1,6 @@
-Projet généré le 2025-07-16 18:47:25.089024
+Projet généré le 2025-07-16 19:43:52.615774
 
-Description : bebe qui pleure
+Description : Test YAML final
 
 ---
 # Audit IA
@@ -19,4 +19,4 @@ Erreurs :
 
 
 ## Performance génération :
-Temps de génération : 0.06 secondes
+Temps de génération : 0.04 secondes

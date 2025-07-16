@@ -21,8 +21,10 @@ paths:
     post:
       summary: Stockage clé/valeur
       security:
-        - ApiKeyAuth: []
-        - OAuth2: [read, write]
+      - ApiKeyAuth: []
+      - OAuth2:
+        - read
+        - write
       requestBody:
         required: true
         content:
@@ -53,5 +55,9 @@ paths:
                 example:
                   value:
                     status: ok
+        '401':
+          description: Unauthorized
+        '400':
+          description: Bad Request
         '404':
           description: Not Found

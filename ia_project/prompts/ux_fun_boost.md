@@ -1,8 +1,9 @@
 # Booster UX/Fun
 
-Propose des idées pour rendre ce jeu plus fun, immersif et agréable à jouer.
-- Suggère des mécaniques originales
-- Améliore l’ergonomie et l’accessibilité
-- Ajoute des éléments de surprise ou de narration
+*(Version : 2024-06-27)*
 
-Analyse le code ou la description fournie et donne des recommandations concrètes. 
+## Exemple d’utilisation
+
+> Utiliser ce prompt pour proposer des idées d’amélioration UX/fun pour un module IA.
+> Exemple :
+> - "Propose des idées UX/fun pour le module api." 
