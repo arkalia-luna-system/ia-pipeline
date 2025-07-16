@@ -1,0 +1,10 @@
+sequenceDiagram
+    participant User
+    participant API
+    API->>api: Appel /api/api
+    api-->>API: Réponse
+    API->>tts: Appel /api/tts
+    tts-->>API: Réponse
+    API->>memory: Appel /api/memory
+    memory-->>API: Réponse
+    API-->>User: Résultat global
