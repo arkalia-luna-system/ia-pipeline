@@ -1,4 +1,0 @@
-# Prompt refactorisation intelligente
-prompt: |
-  Analyse le code fourni et propose une refactorisation pour le rendre plus lisible, performant et maintenable.
-  Justifie chaque modification suggérée. 
