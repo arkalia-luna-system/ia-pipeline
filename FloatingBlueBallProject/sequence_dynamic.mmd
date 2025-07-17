@@ -1,8 +1,0 @@
-sequenceDiagram
-    participant User
-    participant API
-    API->>DetectionModule: Appel /api/DetectionModule
-    DetectionModule-->>API: Réponse
-    API->>MovementModule: Appel /api/MovementModule
-    MovementModule-->>API: Réponse
-    API-->>User: Résultat global
