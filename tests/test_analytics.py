@@ -9,7 +9,8 @@ from athalia_core.analytics import (
     generate_heatmap_data, 
     generate_technical_debt_analysis, 
     generate_analytics_html,
-    save_analytics
+    save_analytics,
+    analyze_project
 )
 
 def test_generate_heatmap_data():
@@ -104,3 +105,19 @@ def test_analytics_with_real_projects():
         print(f"✅ Analytics testés sur {len(real_projects[:2])} projets réels")
     else:
         pytest.skip("Pas assez de projets réels pour tester") 
+
+def test_analyze_project():
+    with tempfile.TemporaryDirectory() as temp_dir:
+        os.mkdir(os.path.join(temp_dir, 'src'))
+        with open(os.path.join(temp_dir, 'src', 'main.py'), 'w') as f:
+            f.write('print("Hello")')
+        with open(os.path.join(temp_dir, 'README.md'), 'w') as f:
+            f.write('# Doc')
+        with open(os.path.join(temp_dir, 'test_utils.py'), 'w') as f:
+            f.write('def test_x(): pass')
+        report = analyze_project(temp_dir)
+        assert report['total_files'] == 3
+        assert report['python_files'] == 2
+        assert report['test_files'] == 1
+        assert report['md_files'] == 1
+        assert report['dirs'] == 1 

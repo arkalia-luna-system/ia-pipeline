@@ -247,3 +247,26 @@ def save_analytics(projects_info: List[Dict[str, Any]], output_file: str = 'anal
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(html_content)
     return output_file 
+
+import os
+
+def analyze_project(project_path: str) -> dict:
+    """Analyse un projet et retourne des métriques clés."""
+    report = {
+        'total_files': 0,
+        'python_files': 0,
+        'test_files': 0,
+        'md_files': 0,
+        'dirs': 0
+    }
+    for root, dirs, files in os.walk(project_path):
+        report['dirs'] += len(dirs)
+        for f in files:
+            report['total_files'] += 1
+            if f.endswith('.py'):
+                report['python_files'] += 1
+            if 'test' in f.lower():
+                report['test_files'] += 1
+            if f.endswith('.md'):
+                report['md_files'] += 1
+    return report 
