@@ -6,6 +6,8 @@ import os
 import logging
 from athalia_core.audit import audit_project_intelligent
 
+# TODO: Préparer l'internationalisation (i18n) des messages, prompts et interface dashboard.
+
 def enrich_genesis_md(outdir, blueprint, perf_log=None, test_log=None):
     genesis_path = os.path.join(outdir, 'GENESIS.md')
     with open(genesis_path, 'a') as f:
