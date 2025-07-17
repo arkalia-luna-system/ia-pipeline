@@ -384,9 +384,11 @@ recommendations:
         
         for model in self.fallback_chain:
             if model == AIModel.MOCK:
+                modules_list = '\n- '.join(modules)
                 return f"""# Documentation pour {project_name}
 
-## Vue d'ensemble
+## Documentation technique du projet {project_name}
+
 Ce projet de type {project_type} comprend les modules suivants : {', '.join(modules)}.
 
 ## Installation
@@ -398,7 +400,7 @@ pip install -r requirements.txt
 Documentation générée automatiquement pour {project_name}.
 
 ## Modules
-- {chr(10).join(f'- {module}' for module in modules)}
+- {modules_list}
 
 ## Développement
 Pour contribuer au projet, consultez les guides de développement.

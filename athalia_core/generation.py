@@ -227,12 +227,12 @@ def generate_blueprint_mock(idea):
 
 def save_blueprint(blueprint, outdir):
     os.makedirs(outdir, exist_ok=True)
-    with open(os.path.join(outdir, 'blueprint.yaml'), 'w') as f:
+    with open(os.path.join(outdir, 'blueprint.yaml'), 'w', encoding='utf-8') as f:
         yaml.dump(blueprint, f)
     # Historique
     HISTORY_DIR = 'blueprints_history'
     os.makedirs(HISTORY_DIR, exist_ok=True)
-    with open(os.path.join(HISTORY_DIR, f"blueprint_{blueprint['project_name']}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.yaml"), 'w') as f:
+    with open(os.path.join(HISTORY_DIR, f"blueprint_{blueprint['project_name']}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.yaml"), 'w', encoding='utf-8') as f:
         yaml.dump(blueprint, f)
     logging.info(f"Blueprint sauvegardé dans {outdir}")
 
@@ -592,6 +592,10 @@ def generate_module_code(module: str, blueprint: dict) -> str:
         if project_type == 'artistic':
             from .templates.artistic_templates import get_artistic_templates
             templates = get_artistic_templates()
+        elif module == 'api':
+            # Utiliser le template API enrichi
+            from .templates.api_templates import get_api_templates
+            templates = get_api_templates()
         else:
             from .templates.base_templates import get_base_templates
             templates = get_base_templates()
