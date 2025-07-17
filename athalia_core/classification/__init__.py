@@ -1,3 +1,5 @@
+# Fichier d'initialisation du sous-package classification d'athalia_core
+
 """
 Module de classification intelligente des projets.
 Analyse le contexte et détermine le type de projet approprié.

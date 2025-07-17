@@ -3,6 +3,21 @@ Templates de base pour génération de code fonctionnel.
 """
 
 from typing import Dict, Any
+from jinja2 import Template
+
+EXEMPLE_TEMPLATE_JINJA2 = Template('''
+# Projet : {{ project_name }}
+
+## Description
+{{ description }}
+
+## Modules
+{% for module in modules %}
+- {{ module }}
+{% endfor %}
+''')
+# Utilisation :
+# EXEMPLE_TEMPLATE_JINJA2.render(project_name="Demo", description="Exemple.", modules=["mod1", "mod2"])
 
 def get_base_templates() -> Dict[str, str]:
     """Retourne les templates de base pour tous les projets."""
