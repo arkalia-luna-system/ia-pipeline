@@ -9,6 +9,7 @@ __email__ = "contact@arkalia-luna.com"
 __description__ = "Pipeline d'industrialisation IA pour génération automatique de projets"
 __url__ = "https://github.com/arkalia-luna-system/ia-pipeline"
 
+# Fichier d'initialisation du package principal athalia_core
 # Imports principaux
 from .ai_robust import RobustAI
 

@@ -8,6 +8,8 @@ from pathlib import Path
 from .generation import generate_project
 from .audit import audit_project_intelligent
 
+# TODO: Préparer l'internationalisation (i18n) des messages CLI et prompts utilisateur.
+
 @click.group()
 @click.option('--verbose', '-v', is_flag=True, help='Mode verbeux')
 def cli(verbose):
