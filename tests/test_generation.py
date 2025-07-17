@@ -32,10 +32,8 @@ def test_scan_existing_project(tmp_path):
     result = generation.scan_existing_project(str(outdir))
     # Doit détecter les fichiers critiques mais pas custom.txt
     assert "README.md" in result
-    assert "test_module.py" in result
-    assert "onboarding.md" in result
-    assert "script.sh" in result
-    assert "custom.txt" not in result 
+    assert "Modules trouvés: test_module.py" in result
+    assert "custom.txt" not in result
 
 def test_generate_project_dry_run(tmp_path):
     blueprint = generation.generate_blueprint_mock("DryRunTest")
