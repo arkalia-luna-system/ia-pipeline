@@ -1,6 +1,8 @@
-def get_user_profile(name: str = 'default') -> dict:
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+def get_user_profile(name: str='default') -> dict:
     """Retourne le profil utilisateur (préférences, options par défaut)."""
-    profiles = {
+    profiles={
         'default': {
             'lang': 'fr',
             'ai_model': 'mistral',
@@ -16,4 +18,4 @@ def get_user_profile(name: str = 'default') -> dict:
             'dashboard': True
         }
     }
-    return profiles.get(name, profiles['default']) 
+    return profiles.get(name, profiles['default'])

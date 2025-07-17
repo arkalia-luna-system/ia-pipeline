@@ -1,0 +1,10 @@
+sequenceDiagram
+    participant User
+    participant API
+    API->>emotion_detection: Appel /api/emotion_detection
+    emotion_detection-->>API: Réponse
+    API->>motion_control: Appel /api/motion_control
+    motion_control-->>API: Réponse
+    API->>connectivity: Appel /api/connectivity
+    connectivity-->>API: Réponse
+    API -->> User: Résultat global

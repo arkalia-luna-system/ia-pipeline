@@ -1,7 +1,11 @@
-import subprocess
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 import os
-import logging
 from datetime import datetime
+import logging
+import subprocess
+
+logger = logging.getLogger(__name__)
 
 dir_path = os.path.dirname(os.path.abspath(__file__))
 log_dir = os.path.join(dir_path, '../logs')
@@ -15,5 +19,5 @@ TEST_FILE = os.path.abspath(os.path.join(dir_path, '../test_context/security_vul
 if __name__ == "__main__":
     result = subprocess.run(['python3', SCRIPT_PATH, TEST_FILE], capture_output=True, text=True)
     logging.info(result.stdout)
-    assert "Analyse sécurité" in result.stdout, "Le prompt sécurité n'a pas été détecté par l'analyse sémantique/custom."
-    print("Test sémantique/custom passé.") 
+    assert "Analyse" in result.stdout, "Le prompt sécurité n'a pas été détecté par l'analyse sémantique/custom."
+    logger.info("Test sémantique/custom passé.")

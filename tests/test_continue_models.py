@@ -1,6 +1,10 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 import os
-import logging
+
 from datetime import datetime
+import logging
+
 
 # Configuration du log
 log_dir = os.path.join(os.path.dirname(__file__), '../logs')
@@ -12,8 +16,8 @@ logging.basicConfig(filename=log_file, level=logging.INFO, format='%(asctime)s %
 def test_models_presence():
     config_path = os.path.expanduser('~/.continue/config.yaml')
     assert os.path.exists(config_path), f"Fichier de config introuvable : {config_path}"
-    with open(config_path, 'r') as f:
-        content = f.read()
+    with open(config_path, 'r') as file_handle:
+        content = file_handle.read()
     assert 'claude-3-sonnet-20240229' in content, "Claude 3.5 Sonnet absent de la config."
     assert 'mistral' in content, "Mistral absent de la config."
     logging.info("Présence des modèles vérifiée dans config.yaml.")
@@ -21,9 +25,7 @@ def test_models_presence():
 if __name__ == "__main__":
     try:
         test_models_presence()
-        print("Tests passés avec succès.")
         logging.info("Tests passés avec succès.")
     except AssertionError as e:
-        print(f"Erreur : {e}")
         logging.error(f"Erreur : {e}")
-        exit(1) 
+        exit(1)

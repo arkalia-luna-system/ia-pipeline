@@ -1,7 +1,11 @@
-import subprocess
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 import os
-import logging
+
 from datetime import datetime
+import logging
+import subprocess
+
 
 # Configuration du log
 dir_path = os.path.dirname(os.path.abspath(__file__))
@@ -29,9 +33,7 @@ if __name__ == "__main__":
     try:
         for user_input, expected in MENU_INPUTS:
             run_menu_test(user_input, expected)
-        print("Tous les tests du menu interactif ath-dev-boost sont passés.")
         logging.info("Tous les tests du menu interactif ath-dev-boost sont passés.")
     except AssertionError as e:
-        print(f"Erreur : {e}")
         logging.error(f"Erreur : {e}")
-        exit(1) 
+        exit(1)

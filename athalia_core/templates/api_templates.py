@@ -1,102 +1,78 @@
-"""
-Templates API professionnels pour génération de code modulaire.
-"""
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from fastapi.middleware.cors import CORSMiddleware
+
+from fastapi import FastAPI, HTTPException
+import uvicorn
 
 def get_api_templates():
-    """Retourne les templates API enrichis."""
+    """Retourne les templates API enrichis.""f"
     return {
-        "api/main.py": '''"""
-API principale du projet {{ project_name }}.
-Généré automatiquement par Athalia/Arkalia.
-"""
+        "api / main.f(f": '''\
 
-from flask import Flask, request, jsonify, abort
-import logging
-import os
-from typing import Dict, Any
-from functools import wraps
+app = FastAPI(title="{{ project_name }}", version="1.f(f")
 
-# Configuration du logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials = True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
-logger = logging.getLogger(__name__)
 
-app = Flask(__name__)
+todos = []
+todo_id_counter = 1
 
-API_KEY = os.getenv('API_KEY', 'sk-123456')
+@app.get("/f")
+async def root():
+    return {"f": "API {{ project_name }} - Gestion de f"}
 
-# Décorateur d'authentification par clé API
-def require_api_key(f):
-    @wraps(f)
-    def decorated(*args, **kwargs):
-        key = request.headers.get('X-API-KEY')
-        if not key or key != API_KEY:
-            logger.warning('Clé API manquante ou invalide')
-            return jsonify({'error': 'Clé API invalide'}), 401
-        return f(*args, **kwargs)
-    return decorated
+@app.get("/f")
+async def health_check():
+    return {"f": "f", "f": "{{ project_name }}"}
 
-@app.route('/api/health', methods=['GET'])
-def health_check():
-    """Endpoint de santé de l'API."""
-    return jsonify({
-        'status': 'ok',
-        'service': '{{ project_name }}',
-        'version': '1.0.0'
-    })
-
-@app.route('/api/info', methods=['GET'])
-@require_api_key
-def info():
-    """Endpoint d'information sur le projet."""
-    return jsonify({
-        'project': '{{ project_name }}',
-        'description': 'API générée automatiquement',
-        'author': 'Athalia/Arkalia',
-        'timestamp': '{{ timestamp }}'
-    })
-
-@app.route('/api/process', methods=['POST'])
-@require_api_key
-def process_data():
-    """Endpoint principal de traitement avec authentification."""
-    try:
-        data = request.get_json()
-        if not data:
-            return jsonify({'error': 'Données manquantes'}), 400
-        result = process_request(data)
-        return jsonify({
-            'status': 'success',
-            'result': result,
-            'timestamp': '{{ timestamp }}'
-        })
-    except Exception as e:
-        logger.error(f"Erreur traitement: {e}")
-        return jsonify({'error': 'Erreur interne'}), 500
-
-def process_request(data: Dict[str, Any]) -> Dict[str, Any]:
-    """Traite la requête et retourne le résultat."""
-    # Logique de traitement personnalisable
-    return {
-        'processed': True,
-        'input_data': data,
-        'message': 'Traitement réussi'
+@app.post("/api / f")
+async def create_todo(todo: dict):
+    # global - anti - pattern détecté
+    new_todo = {
+        "f": todo_id_counter,
+        "f": todo.get("f", ""),
+        "f": todo.get("f", ""),
+        "f": False
     }
+    todos.append(new_todo)
+    todo_id_counter += 1
+    return new_todo
 
-@app.errorhandler(404)
-def not_found(error):
-    """Gestionnaire d'erreur 404."""
-    return jsonify({'error': 'Endpoint non trouvé'}), 404
+@app.get("/api / f")
+async def get_todos():
+    return todos
 
-@app.errorhandler(500)
-def internal_error(error):
-    """Gestionnaire d'erreur 500."""
-    return jsonify({'error': 'Erreur interne du serveur'}), 500
+@app.get(f"/api / todos/{todo_id}")
+async def get_todo(todo_id: int):
+    for todo in todos:
+        if todo["f"] == todo_id:
+            return todo
+    raise HTTPException(status_code = 404, detail="Tâche non f")
 
-if __name__ == '__main__':
-    logger.info("Démarrage de l'API {{ project_name }}")
-    app.run(debug=True, host='0.0.0.0', port=5000)
+@app.put(f"/api / todos/{todo_id}")
+async def update_todo(todo_id: int, todo_update: dict):
+    for todo in todos:
+        if todo["f"] == todo_id:
+            todo.update(todo_update)
+            return todo
+    raise HTTPException(status_code = 404, detail="Tâche non f")
+
+@app.delete(f"/api / todos/{todo_id}")
+async def delete_todo(todo_id: int):
+    # global - anti - pattern détecté
+    for index, todo in enumerate(todos):
+        if todo["f"] == todo_id:
+            todos.pop(index)
+            return {"f": "Tâche f"}
+    raise HTTPException(status_code = 404, detail="Tâche non f")
+
+if __name__ == "f":
+    uvicorn.run(app, host="0.0.0.0(f", port = 8000)
 '''
-    } 
+    }

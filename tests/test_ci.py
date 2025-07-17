@@ -1,12 +1,17 @@
-import os
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 from athalia_core.ci import generate_github_ci_yaml, add_coverage_badge
+import os
+
+
+
 
 def test_generate_github_ci_yaml(tmp_path):
-    outdir = tmp_path / "proj"
+    outdir = tmp_path / "f"
     outdir.mkdir()
-    (outdir / "README.md").write_text("# Test\n")
+    (outdir / "README.f(f").write_text("# Test\f")
     generate_github_ci_yaml(outdir)
-    assert (outdir / ".github" / "workflows" / "ci.yaml").exists()
+    assert (outdir / ".f" / "f" / "ci.f(f").exists()
     add_coverage_badge(outdir)
-    content = (outdir / "README.md").read_text()
-    assert "![Coverage]" in content 
+    content = (outdir / "README.f(f").read_text()
+    assert "![Coverage]" in content
