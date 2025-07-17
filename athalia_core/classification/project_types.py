@@ -1,16 +1,18 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from typing import Dict, List, Any
+from enum import Enum
+
 """
 Types de projets et leurs configurations spécialisées.
 """
 
-from enum import Enum
-from typing import Dict, List, Any
-
 class ProjectType(Enum):
     """Types de projets supportés."""
-    ARTISTIC = "artistic"      # Projets artistiques (fleure qui danse, etc.)
+    ARTISTIC = "artistic"      # Projets artistiques (fleur qui danse, etc.)
     API = "api"               # APIs et services
     GAME = "game"             # Jeux et applications interactives
-    DATA = "data"             # Projets data/ML
+    DATA = "data"             # Projets data / ML
     WEB = "web"               # Applications web
     MOBILE = "mobile"         # Applications mobiles
     IOT = "iot"               # Internet des objets
@@ -18,79 +20,79 @@ class ProjectType(Enum):
 
 def get_project_config(project_type: ProjectType) -> Dict[str, Any]:
     """Retourne la configuration spécialisée pour un type de projet."""
-    
+
     configs = {
         ProjectType.ARTISTIC: {
-            "modules": ["animation", "audio", "visualization", "interaction"],
-            "dependencies": ["pygame", "opencv-python", "numpy", "matplotlib"],
+            "modules": ["core", "animation", "visual", "audio"],
+            "dependencies": ["numpy", "opencv-python", "matplotlib", "pygame"],
             "structure": ["src/", "assets/", "animations/", "audio/", "tests/"],
-            "prompts": ["artistic_animation.md", "visual_effects.md", "audio_sync.md"],
-            "code_templates": ["artistic"],
-            "description": "Projet artistique interactif"
+            "prompts": ["artistic_animation.yaml", "visual_effects.yaml", "audio_sync.yaml"],
+            "booster_ia": ["artistic"],
+            "description": "Projet artistique avec animations"
         },
-        
+
         ProjectType.API: {
-            "modules": ["api", "database", "auth", "docs"],
-            "dependencies": ["fastapi", "sqlalchemy", "pydantic", "uvicorn"],
-            "structure": ["src/", "api/", "models/", "database/", "tests/"],
-            "prompts": ["api_design.md", "security_audit.md", "performance.md"],
-            "code_templates": ["api"],
-            "description": "API REST avec authentification"
+            "modules": ["core", "api", "auth", "database"],
+            "dependencies": ["fastapi", "sqlalchemy", "pydantic", "python-jose"],
+            "structure": ["src/", "api/", "models/", "database/", "tests/", "docs/"],
+            "prompts": ["api_design.yaml", "security_audit.yaml", "performance.yaml"],
+            "booster_ia": ["api"],
+            "description": "API REST avec authentification et sécurité"
         },
-        
+
         ProjectType.GAME: {
-            "modules": ["game_engine", "physics", "ui", "audio"],
-            "dependencies": ["pygame", "pymunk", "tkinter", "pygame-mixer"],
+            "modules": ["core", "game", "ui", "physics"],
+            "dependencies": ["pygame", "numpy", "pymunk", "pygame-gui"],
             "structure": ["src/", "game/", "assets/", "levels/", "tests/"],
-            "prompts": ["game_mechanics.md", "level_design.md", "ux_fun_boost.md"],
-            "code_templates": ["game"],
+            "prompts": ["game_mechanics.yaml", "level_design.yaml", "ux_fun_boost.yaml"],
+            "booster_ia": ["game"],
             "description": "Jeu interactif avec physique"
         },
-        
+
         ProjectType.DATA: {
-            "modules": ["data_processing", "ml", "visualization", "api"],
-            "dependencies": ["pandas", "scikit-learn", "matplotlib", "fastapi"],
+            "modules": ["core", "data", "ml", "viz"],
+            "dependencies": ["pandas", "scikit-learn", "matplotlib", "seaborn"],
             "structure": ["src/", "data/", "models/", "notebooks/", "tests/"],
-            "prompts": ["ml_pipeline.md", "data_analysis.md", "model_evaluation.md"],
-            "code_templates": ["data"],
+            "prompts": ["ml_pipeline.yaml", "data_analysis.yaml", "model_evaluation.yaml"],
+            "booster_ia": ["data"],
             "description": "Projet de data science et ML"
         },
-        
+
         ProjectType.WEB: {
-            "modules": ["frontend", "backend", "database", "auth"],
-            "dependencies": ["flask", "jinja2", "sqlalchemy", "flask-login"],
+            "modules": ["core", "web", "ui", "database"],
+            "dependencies": ["flask", "jinja2", "sqlalchemy", "flask-cors"],
             "structure": ["src/", "templates/", "static/", "database/", "tests/"],
-            "prompts": ["web_design.md", "responsive_ui.md", "seo_optimization.md"],
-            "code_templates": ["web"],
-            "description": "Application web complète"
+            "prompts": ["web_design.yaml", "responsive_ui.yaml", "seo_optimization.yaml"],
+            "booster_ia": ["web"],
+            "description": "Application web responsive"
         },
-        
+
         ProjectType.MOBILE: {
-            "modules": ["ui", "api", "storage", "notifications"],
+            "modules": ["core", "ui", "api", "storage"],
             "dependencies": ["kivy", "requests", "sqlite3", "plyer"],
             "structure": ["src/", "ui/", "api/", "storage/", "tests/"],
-            "prompts": ["mobile_ui.md", "offline_sync.md", "performance.md"],
-            "code_templates": ["mobile"],
+            "prompts": ["mobile_ui.yaml", "offline_sync.yaml", "performance.yaml"],
+            "booster_ia": ["mobile"],
             "description": "Application mobile cross-platform"
         },
-        
+
         ProjectType.IOT: {
-            "modules": ["sensors", "communication", "data_logging", "api"],
-            "dependencies": ["pyserial", "requests", "sqlite3", "fastapi"],
+            "modules": ["core", "sensors", "communication", "data"],
+            "dependencies": ["pyserial", "paho-mqtt", "numpy", "matplotlib"],
             "structure": ["src/", "sensors/", "communication/", "data/", "tests/"],
-            "prompts": ["iot_architecture.md", "sensor_integration.md", "data_analysis.md"],
-            "code_templates": ["iot"],
+            "prompts": ["iot_architecture.yaml", "sensor_integration.yaml", "data_analysis.yaml"],
+            "booster_ia": ["iot"],
             "description": "Projet IoT avec capteurs"
         },
-        
+
         ProjectType.GENERIC: {
-            "modules": ["api", "tts", "memory"],
-            "dependencies": ["flask", "tts", "memorylib"],
+            "modules": ["core", "utils", "tests"],
+            "dependencies": ["requests", "pytest", "logging"],
             "structure": ["src/", "tests/", "api/", "prompts/"],
-            "prompts": ["dev_debug.yaml", "ux_fun_boost.md"],
-            "code_templates": ["generic"],
+            "prompts": ["dev_debug.yaml", "ux_fun_boost.yaml"],
+            "booster_ia": ["generic"],
             "description": "Projet générique"
         }
     }
-    
-    return configs.get(project_type, configs[ProjectType.GENERIC]) 
+
+    return configs.get(project_type, configs[ProjectType.GENERIC])

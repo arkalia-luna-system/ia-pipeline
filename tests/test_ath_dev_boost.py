@@ -1,7 +1,11 @@
-import subprocess
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 import os
-import logging
 from datetime import datetime
+import logging
+import subprocess
+
+logger = logging.getLogger(__name__)
 
 # Configuration du log
 dir_path = os.path.dirname(os.path.abspath(__file__))
@@ -29,9 +33,9 @@ if __name__ == "__main__":
     try:
         for args, expected in TESTS:
             run_test(args, expected)
-        print("Tous les tests ath-dev-boost sont passés.")
+        logger.info("Tous les tests ath-dev-boost sont passés.")
         logging.info("Tous les tests ath-dev-boost sont passés.")
     except AssertionError as e:
-        print(f"Erreur : {e}")
+        logger.info(f"Erreur : {e}")
         logging.error(f"Erreur : {e}")
-        exit(1) 
+        exit(1)

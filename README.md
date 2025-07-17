@@ -1,4 +1,4 @@
-# 🌟 Athalia/Arkalia - Pipeline dIndustrialisation IA
+# 🌟 Athalia/Arkalia - Pipeline d’Industrialisation IA
 
 [![Python 3.1ttps://img.shields.io/badge/python-3.1+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -186,63 +186,68 @@ all_data =[object Object]roject in projects:
 analytics.generate_html_report(all_data, "./comparison_report.html")
 ```
 
-## 🏗️ Architecture
+## 🧹 Nettoyage automatique
+
+Athalia supprime automatiquement :
+- Fichiers parasites macOS (`._*`)
+- Caches Python (`__pycache__`, `.pyc`)
+- Logs vides et bases corrompues
+- Rapports volumineux inutiles
+
+**Commandes de nettoyage** :
+```bash
+find . -name '._*' -delete
+find . -name '__pycache__' -type d -exec rm -rf {} +
+find . -name '*.pyc' -delete
+find . -name '*.log' -size 0 -delete
+find . -name '*.db' -size -1k -delete
+find . -name '*.json' -size +10M -delete
+```
+
+## 🏗️ Structure finale du projet
 
 ```
 athalia-dev-setup/
-├── athalia_core/           # Cœur du système
-│   ├── __init__.py        # Point dentrée principal
-│   ├── ai_robust.py       # IA robuste avec fallback
-│   ├── generation.py      # Génération de projets
-│   ├── audit.py          # Audit intelligent
-│   ├── analytics.py      # Analytics et métriques
-│   └── plugins.py        # Système de plugins
-├── agents/                # Agents IA spécialisés
-├── prompts/              # Templates de prompts
-├── templates/            # Templates de projets
-├── tests/               # Tests unitaires et intégration
-├── docs/                # Documentation
-├── setup/               # Scripts de configuration
-└── tasks/               # Tâches automatisées
+├── athalia_core/      # Modules critiques (audit, génération, correction, CI/CD, etc.)
+├── modules/           # Modules avancés (auto-correction, profils, dashboard, orchestrateur)
+├── tests/             # Tests unitaires et d’intégration
+├── docs/              # Documentation complète
+├── templates/         # Templates de projets
+├── prompts/           # Prompts IA
+├── agents/            # Agents IA spécialisés
+├── ...                # Scripts principaux, configs, logs, etc.
 ```
 
-## 🤝 Contribution
+## 🛠️ Bonnes pratiques de maintenance
+- Lancer le nettoyage automatique régulièrement
+- Supprimer les fichiers parasites après chaque phase
+- Garder la structure modulaire (pas de code spaghetti)
+- Exécuter tous les tests après chaque modification
+- Mettre à jour la documentation à chaque évolution
 
-1. **Fork** le repository
-2. Créez une **branche** pour votre fonctionnalité3 **Développez** et **testez**
-4. Soumettez une **Pull Request**
+## 🚀 Commandes principales
 
-### Standards de code
-- PEP 8 pour le style Python
-- Docstrings pour toutes les fonctions
-- Type hints pour les signatures
-- Tests unitaires pour toutes les fonctionnalités
+### Créer un projet IA performant
+```bash
+python -m athalia_core.cli generate "Mon idée" --output ./mon-projet
+```
 
-## 📊 État du projet
+### Corriger/améliorer un projet existant
+```bash
+python athalia_unified.py /chemin/projet --action correction --dry-run
+```
 
-- ✅ **Tests** :52assés, 2 skip (10 de succès)
-- ✅ **Packaging** : PyPI prêt
-- ✅ **Documentation** : Complète
-- ✅ **IA robuste** : Fallback intelligent
-- ✅ **Plugins** : Système modulaire
-- ✅ **Audit** : Multi-dimensionnel
-- ✅ **Analytics** : Métriques avancées
+### Auditer un projet
+```bash
+python -m athalia_core.cli audit /chemin/projet
+```
 
-## 🚀 Roadmap
-
-### Phase 7 - Finalisation (✅ Terminée)
-- [x] Documentation complète
-- x] Packaging PyPI
-- [x] Tests sur projets réels
-- [x] Optimisations finales
-
-### Phase 8 - Évolutions futures
-- ration de nouveaux modèles IA
-- ] Prompts avancés et personnalisables
-- [ ] Analytics IA en temps réel
--  ] Interface web
--ération de plugins IA
--  Intégration CI/CD avancée
+### Dashboard, profils, scan
+```bash
+python athalia_unified.py /chemin/projet --action dashboard --utilisateur moi
+python athalia_unified.py /chemin/projet --action profil --utilisateur moi
+python athalia_unified.py /chemin/repertoire --scan
+```
 
 ## 📄 Licence
 

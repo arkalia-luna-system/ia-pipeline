@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard Analytics - </title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .metric { background: #f5f5f5; padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .summary { background: #e8f5e8; padding: 20px; border-radius: 5px; }
+        .chart { text-align: center; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <h1>📊 Dashboard Analytics - </h1>
+    <p>Généré le 2025-07-17 07:18:03</p>
+    
+    <div class="summary">
+        <h2>📈 Résumé</h2>
+        <p><strong>Complexité moyenne :</strong> 16.31</p>
+        <p><strong>Fichiers analysés :</strong> 90</p>
+        <p><strong>Lignes de code :</strong> 15150</p>
+        <p><strong>Fonctions :</strong> 499</p>
+        <p><strong>Classes :</strong> 33</p>
+    </div>
+    
+    <div class="metric">
+        <h3>🎯 Métriques de qualité</h3>
+        <p>Docstrings : 716</p>
+        <p>Commentaires : 788</p>
+        <p>Lignes vides : 2367</p>
+        <p>Ratio commentaires : 5.2%</p>
+    </div>
+    
+    <div class="metric">
+        <h3>⚡ Performance</h3>
+        <p>Dépendances : 22</p>
+        <p>Fichiers Python : 140</p>
+    </div>
+    
+    <div class="metric">
+        <h3>📋 Données brutes</h3>
+        <pre>{
+  "complexity": {
+    "files": {
+      "athalia.py": 19,
+      "setup.py": 3,
+      "athalia_new.py": 13,
+      "athalia_unified.py": 25,
+      "test_unified.py": 14,
+      "test_final.py": 16,
+      "demo_athalia.py": 12,
+      "athalia_quick_start.py": 43,
+      "plugins/__init__.py": 1,
+      "plugins/hello_plugin.py": 1,
+      "plugins/export_docker_plugin.py": 4,
+      "tests/test_ath_context_prompt_semantic.py": 2,
+      "tests/test_ath_dev_boost.py": 4,
+      "tests/test_ath_dev_boost_menu.py": 4,
+      "tests/test_audit_intelligent.py": 3,
+      "tests/test_ci.py": 1,
+      "tests/test_ready_check.py": 2,
+      "tests/test_plugins.py": 1,
+      "tests/test_cleanup.py": 1,
+      "tests/test_continue_models.py": 3,
+      "tests/test_analytics.py": 6,
+      "tests/test_dashboard.py": 1,
+      "tests/test_i18n.py": 1,
+      "tests/test_generation.py": 2,
+      "tests/test_ai_robust.py": 4,
+      "tests/test_onboarding.py": 1,
+      "tests/test_security.py": 1,
+      "tests/test_plugins_validator.py": 2,
+      "tests/test_ai_robust_integration.py": 6,
+      "tests/test_project_importer.py": 2,
+      "tests/test_auto_fixer.py": 1,
+      "tests/test_profiles.py": 1,
+      "tests/test_athalia_orchestrator.py": 5,
+      "tests/test_auto_correction_avancee.py": 2,
+      "tests/test_profils_utilisateur_avances.py": 2,
+      "tests/test_dashboard_unifie.py": 2,
+      "tests/test_dashboard_unifie_simple.py": 2,
+      "tests/integration/test_end_to_end.py": 4,
+      "tests/integration/test_cli_robustesse.py": 1,
+      "tests/integration/test_yaml_validity.py": 6,
+      "modules/auto_correction_avancee.py": 86,
+      "modules/profils_utilisateur_avances.py": 35,
+      "modules/dashboard_unifie.py": 28,
+      "modules/dashboard_unifie_simple.py": 22,
+      "modules/orchestrateur_principal.py": 21,
+      "VioletTwistAI/main.py": 1,
+      "VioletTwistAI/tests/test_booster_ia_VioletTwistAI.py": 5,
+      "VioletTwistAI/violette_game/main.py": 2,
+      "VioletTwistAI/ai_player/main.py": 2,
+      "VioletTwistAI/agents/ath_context_prompt.py": 28,
+      "agents/ath_context_prompt.py": 28,
+      "athalia_core/__init__.py": 1,
+      "athalia_core/ci.py": 5,
+      "athalia_core/cleanup.py": 21,
+      "athalia_core/dashboard.py": 7,
+      "athalia_core/generation.py": 118,
+      "athalia_core/main.py": 45,
+      "athalia_core/analytics.py": 17,
+      "athalia_core/onboarding.py": 1,
+      "athalia_core/audit.py": 91,
+      "athalia_core/security.py": 8,
+      "athalia_core/plugins_manager.py": 9,
+      "athalia_core/plugins_validator.py": 12,
+      "athalia_core/ai_robust.py": 33,
+      "athalia_core/cli.py": 15,
+      "athalia_core/ready_check.py": 5,
+      "athalia_core/project_importer.py": 39,
+      "athalia_core/auto_fixer.py": 12,
+      "athalia_core/profiles.py": 1,
+      "athalia_core/intelligent_auditor.py": 122,
+      "athalia_core/auto_cleaner.py": 68,
+      "athalia_core/auto_documenter.py": 78,
+      "athalia_core/auto_tester.py": 42,
+      "athalia_core/auto_cicd.py": 37,
+      "athalia_core/athalia_orchestrator.py": 62,
+      "athalia_core/code_linter.py": 22,
+      "athalia_core/security_auditor.py": 23,
+      "athalia_core/advanced_analytics.py": 31,
+      "athalia_core/auto_documenter_fixed.py": 30,
+      "athalia_core/classification/__init__.py": 1,
+      "athalia_core/classification/project_types.py": 1,
+      "athalia_core/classification/project_classifier.py": 20,
+      "athalia_core/templates/__init__.py": 1,
+      "athalia_core/templates/artistic_templates.py": 1,
+      "athalia_core/templates/base_templates.py": 1,
+      "athalia_core/templates/api_templates.py": 1,
+      "athalia_core/i18n/fr.py": 1,
+      "athalia_core/i18n/en.py": 1,
+      "athalia_core/i18n/__init__.py": 2,
+      "athalia_core/plugins/__init__.py": 1
+    },
+    "total": 1468,
+    "average": 16.31111111111111
+  },
+  "coverage": {
+    "lines": 15150,
+    "functions": 499,
+    "classes": 33,
+    "files": 90,
+    "test_files": 33
+  },
+  "performance": {
+    "file_sizes": {
+      "athalia.py": 7298,
+      "._athalia.py": 4096,
+      "setup.py": 2865,
+      "athalia_new.py": 4987,
+      "._athalia_new.py": 4096,
+      "athalia_unified.py": 10945,
+      "test_unified.py": 6176,
+      "._athalia_unified.py": 4096,
+      "._test_unified.py": 4096,
+      "test_final.py": 7108,
+      "._test_final.py": 4096,
+      "demo_athalia.py": 5624,
+      "._demo_athalia.py": 4096,
+      "athalia_quick_start.py": 8987,
+      "._athalia_quick_start.py": 4096,
+      "plugins/__init__.py": 46,
+      "plugins/hello_plugin.py": 82,
+      "plugins/._export_docker_plugin.py": 4096,
+      "plugins/export_docker_plugin.py": 1763,
+      "tests/test_ath_context_prompt_semantic.py": 943,
+      "tests/test_ath_dev_boost.py": 1297,
+      "tests/test_ath_dev_boost_menu.py": 1421,
+      "tests/test_audit_intelligent.py": 7181,
+      "tests/test_ci.py": 446,
+      "tests/test_ready_check.py": 663,
+      "tests/test_plugins.py": 1652,
+      "tests/test_cleanup.py": 589,
+      "tests/._test_ready_check.py": 4096,
+      "tests/test_continue_models.py": 1195,
+      "tests/test_analytics.py": 3980,
+      "tests/test_dashboard.py": 737,
+      "tests/test_i18n.py": 415,
+      "tests/test_generation.py": 4014,
+      "tests/test_ai_robust.py": 5233,
+      "tests/test_onboarding.py": 536,
+      "tests/._test_i18n.py": 4096,
+      "tests/test_security.py": 502,
+      "tests/test_plugins_validator.py": 1012,
+      "tests/test_ai_robust_integration.py": 7270,
+      "tests/._test_plugins_validator.py": 4096,
+      "tests/test_project_importer.py": 1481,
+      "tests/._test_project_importer.py": 4096,
+      "tests/test_auto_fixer.py": 676,
+      "tests/._test_auto_fixer.py": 4096,
+      "tests/test_profiles.py": 471,
+      "tests/._test_profiles.py": 4096,
+      "tests/._test_analytics.py": 4096,
+      "tests/test_athalia_orchestrator.py": 5886,
+      "tests/._test_athalia_orchestrator.py": 4096,
+      "tests/test_auto_correction_avancee.py": 2164,
+      "tests/._test_auto_correction_avancee.py": 4096,
+      "tests/test_profils_utilisateur_avances.py": 2687,
+      "tests/._test_profils_utilisateur_avances.py": 4096,
+      "tests/test_dashboard_unifie.py": 2743,
+      "tests/._test_dashboard_unifie.py": 4096,
+      "tests/test_dashboard_unifie_simple.py": 2809,
+      "tests/._test_dashboard_unifie_simple.py": 4096,
+      "tests/integration/test_end_to_end.py": 1751,
+      "tests/integration/test_cli_robustesse.py": 421,
+      "tests/integration/test_yaml_validity.py": 641,
+      "modules/auto_correction_avancee.py": 23399,
+      "modules/._auto_correction_avancee.py": 4096,
+      "modules/profils_utilisateur_avances.py": 16424,
+      "modules/._profils_utilisateur_avances.py": 4096,
+      "modules/dashboard_unifie.py": 19930,
+      "modules/._dashboard_unifie.py": 4096,
+      "modules/dashboard_unifie_simple.py": 15863,
+      "modules/._dashboard_unifie_simple.py": 4096,
+      "modules/orchestrateur_principal.py": 15304,
+      "modules/._orchestrateur_principal.py": 4096,
+      "VioletTwistAI/main.py": 85,
+      "VioletTwistAI/tests/test_booster_ia_VioletTwistAI.py": 1672,
+      "VioletTwistAI/violette_game/main.py": 763,
+      "VioletTwistAI/ai_player/main.py": 719,
+      "VioletTwistAI/agents/ath_context_prompt.py": 7148,
+      "agents/ath_context_prompt.py": 7148,
+      "athalia_core/__init__.py": 508,
+      "athalia_core/ci.py": 1584,
+      "athalia_core/cleanup.py": 2495,
+      "athalia_core/dashboard.py": 6323,
+      "athalia_core/._generation.py": 4096,
+      "athalia_core/generation.py": 48384,
+      "athalia_core/main.py": 9285,
+      "athalia_core/analytics.py": 10265,
+      "athalia_core/onboarding.py": 2739,
+      "athalia_core/audit.py": 21028,
+      "athalia_core/security.py": 1652,
+      "athalia_core/plugins_manager.py": 1250,
+      "athalia_core/plugins_validator.py": 1691,
+      "athalia_core/ai_robust.py": 12787,
+      "athalia_core/._plugins_validator.py": 4096,
+      "athalia_core/cli.py": 6322,
+      "athalia_core/ready_check.py": 618,
+      "athalia_core/._ready_check.py": 4096,
+      "athalia_core/project_importer.py": 11517,
+      "athalia_core/._project_importer.py": 4096,
+      "athalia_core/auto_fixer.py": 1724,
+      "athalia_core/._auto_fixer.py": 4096,
+      "athalia_core/profiles.py": 571,
+      "athalia_core/._profiles.py": 4096,
+      "athalia_core/._analytics.py": 4096,
+      "athalia_core/intelligent_auditor.py": 28629,
+      "athalia_core/._intelligent_auditor.py": 4096,
+      "athalia_core/auto_cleaner.py": 15927,
+      "athalia_core/._auto_cleaner.py": 4096,
+      "athalia_core/auto_documenter.py": 24234,
+      "athalia_core/._auto_documenter.py": 4096,
+      "athalia_core/auto_tester.py": 21420,
+      "athalia_core/._auto_tester.py": 4096,
+      "athalia_core/auto_cicd.py": 19668,
+      "athalia_core/._auto_cicd.py": 4096,
+      "athalia_core/athalia_orchestrator.py": 21802,
+      "athalia_core/._athalia_orchestrator.py": 4096,
+      "athalia_core/code_linter.py": 5772,
+      "athalia_core/._code_linter.py": 4096,
+      "athalia_core/security_auditor.py": 5243,
+      "athalia_core/._security_auditor.py": 4096,
+      "athalia_core/advanced_analytics.py": 10350,
+      "athalia_core/._advanced_analytics.py": 4096,
+      "athalia_core/auto_documenter_fixed.py": 12716,
+      "athalia_core/._auto_documenter_fixed.py": 4096,
+      "athalia_core/classification/__init__.py": 375,
+      "athalia_core/classification/project_types.py": 4506,
+      "athalia_core/classification/._project_classifier.py": 4096,
+      "athalia_core/classification/project_classifier.py": 4625,
+      "athalia_core/classification/._project_types.py": 4096,
+      "athalia_core/templates/__init__.py": 155,
+      "athalia_core/templates/artistic_templates.py": 8819,
+      "athalia_core/templates/base_templates.py": 9944,
+      "athalia_core/templates/._base_templates.py": 4096,
+      "athalia_core/templates/.___init__.py": 4096,
+      "athalia_core/templates/api_templates.py": 1965,
+      "athalia_core/templates/._api_templates.py": 4096,
+      "athalia_core/i18n/fr.py": 264,
+      "athalia_core/i18n/._fr.py": 4096,
+      "athalia_core/i18n/en.py": 251,
+      "athalia_core/i18n/._en.py": 4096,
+      "athalia_core/i18n/__init__.py": 255,
+      "athalia_core/i18n/.___init__.py": 4096,
+      "athalia_core/plugins/__init__.py": 66
+    },
+    "dependencies": 22
+  },
+  "quality": {
+    "docstrings": 716,
+    "comments": 788,
+    "empty_lines": 2367,
+    "total_lines": 15136
+  },
+  "evolution": {
+    "last_modified": 1752729434.93,
+    "file_count": 140
+  }
+}</pre>
+    </div>
+</body>
+</html>

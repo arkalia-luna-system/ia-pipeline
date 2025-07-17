@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard IA</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .status-ok { color: green; }
+        .status-error { color: red; }
+        .logs-section { background: #f5f5f5; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .chart-container { width: 50%; margin: 20px 0; }
+        .audit-score { font-weight: bold; }
+        .audit-bad { color: red; }
+        .audit-good { color: green; }
+    </style>
+</head>
+<body>
+    <h1>Dashboard Audit/Qualité Projets IA</h1>
+    
+    <div class="logs-section">
+        <h2>Logs récents</h2>
+        <div id="logs-content">
+            <p>Chargement des logs en cours...</p>
+        </div>
+    </div>
+    
+    <table>
+        <tr><th>Projet</th><th>Date</th><th>Tests</th><th>Perfs</th><th>Score Audit</th><th>Problèmes</th><th>Suggestions</th><th>Docs</th></tr><tr>
+                <td>p1</td>
+                <td>2024-01-01</td>
+                <td class="status-ok">OK</td>
+                <td class="status-ok">OK</td>
+                <td><span class="audit-score audit-bad">0.0/100</span></td>
+                <td>Aucun</td>
+                <td>Aucune</td>
+                <td><a href='p1/DOC.md'>DOC</a> | <a href='p1/GENESIS.md'>GENESIS</a></td>
+            </tr></table>
+    
+    <div class="chart-container">
+        <canvas id="projectsChart"></canvas>
+    </div>
+    
+    <h2>Architecture multi-projets/agents</h2>
+    <pre><code class="language-mermaid">graph TD
+    IA[IA] --> p1
+</code></pre>
+    
+    <script>
+        // Mise à jour automatique des logs
+        setInterval(function() {
+            fetch('/api/logs')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('logs-content').innerHTML = data;
+                })
+                .catch(error => {
+                    console.log('Erreur chargement logs:', error);
+                });
+        }, 5000);
+        
+        // Graphique des projets
+        const ctx = document.getElementById('projectsChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['p1'],
+                datasets: [{
+                    label: 'Score Audit',
+                    data: [0],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
