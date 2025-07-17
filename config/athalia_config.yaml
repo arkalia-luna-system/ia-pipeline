@@ -1,0 +1,111 @@
+# Configuration centralisée Athalia
+# Fichier de configuration pour tous les modules et scripts
+
+# Configuration générale
+general:
+  lang: fr
+  verbose: true
+  auto_fix: true
+  dry_run: false
+  log_level: INFO
+  log_file: athalia.log
+
+# Modules à activer/désactiver
+modules:
+  audit: true
+  clean: true
+  document: true
+  test: true
+  cicd: true
+  correction: true
+  profiles: true
+  dashboard: true
+  security: true
+  analytics: true
+  linting: true
+
+# Plugins à charger automatiquement
+plugins:
+  auto_discovery: true
+  enabled:
+    - export_docker_plugin
+    # Ajouter d'autres plugins ici
+  disabled: []
+
+# Templates disponibles
+templates:
+  auto_discovery: true
+  default: api
+  available:
+    - api
+    - web
+    - desktop
+    - data
+    - cli
+    - library
+
+# Base de données
+database:
+  path: ./athalia_data.db
+  backup: true
+  backup_retention: 7
+
+# IA et génération
+ai:
+  models:
+    - ollama_mistral
+    - ollama_llama
+    - mock
+  timeout: 30
+  max_retries: 3
+  fallback_enabled: true
+
+# Tests
+testing:
+  auto_run: true
+  coverage: true
+  parallel: false
+  timeout: 300
+
+# CI/CD
+cicd:
+  github_actions: true
+  docker: true
+  deployment: false
+
+# Nettoyage
+cleanup:
+  auto_clean: true
+  patterns:
+    - "._*"
+    - "__pycache__"
+    - "*.pyc"
+    - ".pytest_cache"
+    - ".mypy_cache"
+    - ".coverage"
+    - "*.log"
+
+# Dashboard
+dashboard:
+  auto_generate: true
+  port: 8080
+  host: localhost
+  auto_open: false
+
+# Profils utilisateur
+profiles:
+  auto_create: true
+  default_user: default
+  history_retention: 30
+
+# Sécurité
+security:
+  audit_enabled: true
+  secrets_detection: true
+  vulnerability_scan: true
+
+# Analytics
+analytics:
+  enabled: true
+  metrics_retention: 90
+  auto_export: false 

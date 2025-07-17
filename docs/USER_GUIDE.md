@@ -219,4 +219,43 @@ python -c "import psutil; print(psutil.Process().memory_info().rss / 1024 / 1024
 
 ---
 
+## 🧹 Nettoyage automatique
+
+Athalia supprime automatiquement :
+- Fichiers parasites macOS (`._*`)
+- Caches Python (`__pycache__`, `.pyc`)
+- Logs vides et bases corrompues
+- Rapports volumineux inutiles
+
+**Commandes de nettoyage** :
+```bash
+find . -name '._*' -delete
+find . -name '__pycache__' -type d -exec rm -rf {} +
+find . -name '*.pyc' -delete
+find . -name '*.log' -size 0 -delete
+find . -name '*.db' -size -1k -delete
+find . -name '*.json' -size +10M -delete
+```
+
+## 🏗️ Structure finale du projet
+
+```
+athalia-dev-setup/
+├── athalia_core/      # Modules critiques
+├── modules/           # Modules avancés
+├── tests/             # Tests
+├── docs/              # Documentation
+├── templates/         # Templates
+├── prompts/           # Prompts
+├── agents/            # Agents IA
+...                    # Scripts, configs, logs
+```
+
+## 🛠️ Bonnes pratiques de maintenance
+- Lancer le nettoyage automatique régulièrement
+- Supprimer les fichiers parasites après chaque phase
+- Garder la structure modulaire
+- Exécuter tous les tests après chaque modification
+- Mettre à jour la documentation à chaque évolution
+
 *Guide utilisateur Athalia/Arkalia AI - Version 1.0* 🚀 

@@ -1,8 +1,14 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+import os
+import importlib.util
+import logging
+
+logger = logging.getLogger(__name__)
+
 """
 Gestionnaire de plugins dynamiques.
 """
-import os
-import importlib.util
 
 PLUGINS_DIR = os.path.join(os.path.dirname(__file__), '..', 'plugins')
 
@@ -36,4 +42,4 @@ def run_all_plugins():
                 results[name] = 'Pas de fonction run()'
         except Exception as e:
             results[name] = f"Erreur: {e}"
-    return results 
+    return results

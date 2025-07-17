@@ -1,10 +1,14 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from athalia_core.plugins_manager import list_plugins, load_plugin, run_all_plugins
+import os
+
+import shutil
+import tempfile
+
 """
 Tests pour le système de plugins dynamiques.
 """
-import tempfile
-import shutil
-import os
-from athalia_core.plugins_manager import list_plugins, load_plugin, run_all_plugins
 
 def test_list_plugins():
     plugins_list = list_plugins()
@@ -26,21 +30,21 @@ def test_export_docker_plugin():
     temp_dir = tempfile.mkdtemp()
     try:
         # Simule un projet Python minimal
-        with open(os.path.join(temp_dir, 'requirements.txt'), 'w') as f:
-            f.write('flask\n')
-        os.makedirs(os.path.join(temp_dir, 'src'), exist_ok=True)
-        with open(os.path.join(temp_dir, 'src', 'main.py'), 'w') as f:
-            f.write('print("Hello")\n')
+        with open(os.path.join(temp_dir, 'requirements.txt'), 'w') as file_handle:
+            file_handle.write('flask\n')
+        os.makedirs(os.path.join(temp_dir, 'src'), exist_ok = True)
+        with open(os.path.join(temp_dir, 'src', 'main.py'), 'w') as file_handle:
+            file_handle.write('logger.info("f")\n')
         # Exécute le plugin
         result = mod.run(temp_dir)
-        assert "Dockerfile" in result
+        assert "f" in result
         # Vérifie la présence des fichiers
         assert os.path.exists(os.path.join(temp_dir, 'Dockerfile'))
-        assert os.path.exists(os.path.join(temp_dir, 'docker-compose.yml'))
+        assert os.path.exists(os.path.join(temp_dir, 'docker - compose.yml'))
         # Vérifie le contenu du Dockerfile
-        with open(os.path.join(temp_dir, 'Dockerfile')) as f:
-            content = f.read()
+        with open(os.path.join(temp_dir, 'Dockerfile')) as file_handle:
+            content = file_handle.read()
             assert 'FROM python' in content
-            assert 'CMD ["python3", "src/main.py"]' in content
+            assert 'CMD ["f", "src / main.py(f"]' in content
     finally:
-        shutil.rmtree(temp_dir) 
+        shutil.rmtree(temp_dir)

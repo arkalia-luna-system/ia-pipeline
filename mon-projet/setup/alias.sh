@@ -1,0 +1,5 @@
+alias ath-dev-boost="echo ath-dev-boost"
+alias athalia-run="echo athalia-run"
+alias athalia-clean="echo athalia-clean"
+alias athalia-doc="echo athalia-doc"
+alias athalia-test="echo athalia-test" 
