@@ -1,68 +1,75 @@
-# Athalia Pipeline IA – Générateur Souverain
+# Athalia Pipeline IA
 
-*Dernière mise à jour : 2024-06-27*
+Pipeline d'industrialisation IA pour génération automatique de projets, tests, docs, CI/CD.
 
-## Sommaire
-- [Architecture](#architecture)
-- [Utilisation rapide](#utilisation-rapide)
-- [Fonctionnalités principales](#fonctionnalités-principales)
-- [Tests](#tests)
-- [Sécurité](#sécurité)
-- [Nettoyage](#nettoyage)
-- [Export](#export)
-- [Pour aller plus loin](#pour-aller-plus-loin)
-- [Intégration intelligente dans des projets existants](#intégration-intelligente-dans-des-projets-existants)
+## 🚀 Installation rapide
 
-## Architecture
-- **athalia_core/** : modules (génération, nettoyage, CI, dashboard, onboarding, sécurité)
-- **tests/** : tests unitaires et d’intégration pour chaque module
-- **Taskfile.yaml** : automatisation (build, test, lint, clean, export, audit)
-- **.gitignore** : repo toujours propre
+```bash
+git clone https://github.com/arkalia-luna-system/ia-pipeline.git
+cd ia-pipeline
+pip install -r ia_project/requirements.txt
+python3 -m athalia_core.main
+```
 
-## Utilisation rapide
-1. **Lancer le menu CLI** :
-   ```bash
-   python3 -m athalia_core.main
-   ```
-2. **Automatiser** (nécessite Task) :
-   ```bash
-   task build   # Générer un projet IA
-   task test    # Lancer tous les tests
-   task clean   # Nettoyer tous les artefacts
-   task audit   # Audit sécurité sur tous les projets
-   ```
+## 📋 Fonctionnalités
 
-## Fonctionnalités principales
-- Génération automatique de projets IA modulaires, prompts, scripts, tests, docs, CI, dashboard, tickets, guides, export
-- Nettoyage automatique des tests/caches/artefacts
-- Audit sécurité (scan de secrets, patterns à risque)
-- Orchestration CLI interactive (génération, nettoyage, CI, dashboard, onboarding, audit…)
-- Tests unitaires et d’intégration pour chaque brique
-- Logs détaillés pour chaque action critique
-- Export pipeline complet (tar.gz)
+- ✅ **Génération IA** : Projets complets avec structure, tests, docs
+- ✅ **Tests unitaires** : Validation automatique sur projets legacy
+- ✅ **CI/CD** : GitHub Actions, badges, coverage
+- ✅ **Documentation** : README, ONBOARDING, DOC technique
+- ✅ **Mode dégradé** : Fonctionne sans API (mode mock)
+- ✅ **Nettoyage** : Suppression automatique des fichiers cachés
+- ✅ **Rollback** : Sauvegarde et restauration automatiques
 
-## Tests
-- Tous les modules sont testés (pytest)
-- Lancer :
-  ```bash
-  pytest tests/
-  ```
+## 🔧 Utilisation
 
-## Sécurité
-- Audit automatique des patterns à risque (clé API, mot de passe, shell, etc.)
-- Résultats dans `security_audit.log` de chaque projet
+1. **Générer un projet** : Option 1 du CLI
+2. **Nettoyer** : Option 2 du CLI  
+3. **CI/CD** : Option 3 du CLI
+4. **Dashboard** : Option 4 du CLI
+5. **Mode dry-run** : Option 8 du CLI
 
-## Nettoyage
-- Tous les fichiers inutiles/caches sont ignorés ou supprimés automatiquement
+## ⚠️ Problèmes d'API
 
-## Export
-- `task export` pour packager tout le pipeline
+Si vous rencontrez l'erreur **"credit balance is too low"** :
 
-## Pour aller plus loin
-- Ajouter vos propres prompts, modules, plugins dans `athalia_core/`
-- Étendre le menu CLI selon vos besoins
-- Contribuer, forker, industrialiser !
+- **Solution immédiate** : Le pipeline passe automatiquement en mode mock
+- **Solution permanente** : Rechargez vos crédits sur [Anthropic Console](https://console.anthropic.com/)
+- **Plus d'infos** : Consultez [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
 
-## Intégration intelligente dans des projets existants
+## 📚 Documentation
 
-*(README harmonisé, conflits de merge supprimés, sommaire et date ajoutés)*
+- [INSTALL.md](INSTALL.md) - Guide d'installation détaillé
+- [TROUBLESHOOTING.md](TROUBLESHOOTING.md) - Dépannage et solutions
+- [ia_project/ONBOARDING.md](ia_project/ONBOARDING.md) - Guide d'onboarding projet
+
+## 🏗️ Architecture
+
+```
+athalia_core/
+├── main.py          # CLI principal
+├── generation.py    # Génération de projets
+├── cleanup.py       # Nettoyage et maintenance
+├── ci.py           # CI/CD et badges
+├── dashboard.py    # Dashboard et visualisation
+├── onboarding.py   # Guides d'onboarding
+└── security.py     # Audit sécurité
+```
+
+## 🧪 Tests
+
+```bash
+cd ia_project
+pytest tests/
+```
+
+## 📊 Dashboard
+
+Généré automatiquement avec :
+- Vue d'ensemble des projets
+- Diagrammes Mermaid
+- Métriques de qualité
+
+---
+
+*Pipeline Athalia - Industrialisation IA pro-ready* 🚀
