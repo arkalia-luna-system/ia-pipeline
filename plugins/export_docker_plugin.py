@@ -15,7 +15,7 @@ def export_docker(project_path: str, output_path: str = "Dockerfile"):
             f.write("COPY requirements.txt .\n")
             f.write("RUN pip install --no-cache-dir -r requirements.txt\n")
         f.write("COPY . .\n")
-        f.write("CMD [\"python\", \"-m\", \"athalia_core.main\"]\n")
+        f.write("CMD [\"python3\", \"src/main.py\"]\n")
     print(f"Dockerfile généré dans {output_path}")
 
 # Optionnel : analyse rapide des dépendances
@@ -29,4 +29,25 @@ def analyze_dependencies(project_path: str):
             for line in f:
                 print("-", line.strip())
     else:
-        print("Aucune requirements.txt trouvée.") 
+        print("Aucune requirements.txt trouvée.")
+
+def run(project_path):
+    """Fonction d'entrée standard pour le plugin, attendue par les tests."""
+    output_path = os.path.join(project_path, "Dockerfile")
+    export_docker(project_path, output_path)
+    
+    # Générer aussi docker-compose.yml
+    compose_path = os.path.join(project_path, "docker-compose.yml")
+    with open(compose_path, "w") as f:
+        f.write(f"""version: '3
+services:
+  app:
+    build: .
+    ports:
+      - "5000:50    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+""")
+    
+    return f"Dockerfile et docker-compose.yml générés pour {project_path}" 
