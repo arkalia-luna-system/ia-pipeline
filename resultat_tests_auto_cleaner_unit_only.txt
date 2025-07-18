@@ -1,0 +1,214 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.10.14, pytest-8.4.1, pluggy-1.6.0
+benchmark: 5.1.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+rootdir: /Volumes/T7/athalia-dev-setup
+plugins: anyio-4.9.0, cov-6.2.1, asyncio-1.0.0, benchmark-5.1.0, timeout-2.4.0, xdist-3.7.0, mock-3.14.1, langsmith-0.4.7
+asyncio: mode=strict, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 14 items
+
+tests/test_auto_cleaner_unit.py .FFFF.FF.F..FF                           [100%]
+
+=================================== FAILURES ===================================
+___________________ TestAutoCleaner.test_clean_backup_files ____________________
+
+self = <test_auto_cleaner_unit.TestAutoCleaner testMethod=test_clean_backup_files>
+
+    def test_clean_backup_files(self):
+        # Créer un fichier de backup
+        backup_file = Path(self.temp_dir) / "test.bak"
+        backup_file.write_text("backup")
+    
+        self.cleaner._clean_backup_files(Path(self.temp_dir))
+        # En mode dry_run par défaut, le fichier ne devrait pas être supprimé
+>       self.assertTrue(backup_file.exists())
+E       AssertionError: False is not true
+
+tests/test_auto_cleaner_unit.py:62: AssertionError
+____________________ TestAutoCleaner.test_clean_cache_files ____________________
+
+self = <test_auto_cleaner_unit.TestAutoCleaner testMethod=test_clean_cache_files>
+
+    def test_clean_cache_files(self):
+        # Créer des fichiers de cache
+        pycache_dir = Path(self.temp_dir) / "__pycache__"
+        pycache_dir.mkdir()
+        (pycache_dir / "test.pyc").write_text("cache")
+    
+        self.cleaner._clean_cache_files(Path(self.temp_dir))
+        # En mode dry_run par défaut, les fichiers ne devraient pas être supprimés
+>       self.assertTrue(pycache_dir.exists())
+E       AssertionError: False is not true
+
+tests/test_auto_cleaner_unit.py:53: AssertionError
+__________________ TestAutoCleaner.test_clean_duplicate_files __________________
+
+self = <test_auto_cleaner_unit.TestAutoCleaner testMethod=test_clean_duplicate_files>
+
+    def test_clean_duplicate_files(self):
+        # Créer des fichiers identiques
+        file1 = Path(self.temp_dir) / "test1.py"
+        file2 = Path(self.temp_dir) / "test2.py"
+        content = "print('Hello')"
+        file1.write_text(content)
+        file2.write_text(content)
+    
+        self.cleaner._clean_duplicate_files(Path(self.temp_dir))
+        # En mode dry_run par défaut, les fichiers ne devraient pas être supprimés
+        self.assertTrue(file1.exists())
+>       self.assertTrue(file2.exists())
+E       AssertionError: False is not true
+
+tests/test_auto_cleaner_unit.py:84: AssertionError
+_________________ TestAutoCleaner.test_clean_empty_directories _________________
+
+self = <test_auto_cleaner_unit.TestAutoCleaner testMethod=test_clean_empty_directories>
+
+    def test_clean_empty_directories(self):
+        # Créer un répertoire vide
+        empty_dir = Path(self.temp_dir) / "empty_dir"
+        empty_dir.mkdir()
+    
+        self.cleaner._clean_empty_directories(Path(self.temp_dir))
+        # En mode dry_run par défaut, le répertoire ne devrait pas être supprimé
+>       self.assertTrue(empty_dir.exists())
+E       AssertionError: False is not true
+
+tests/test_auto_cleaner_unit.py:93: AssertionError
+___________________ TestAutoCleaner.test_clean_system_files ____________________
+
+self = <test_auto_cleaner_unit.TestAutoCleaner testMethod=test_clean_system_files>
+
+    def test_clean_system_files(self):
+        # Créer un fichier système
+        ds_store = Path(self.temp_dir) / ".DS_Store"
+        ds_store.write_text("system file")
+    
+        self.cleaner._clean_system_files(Path(self.temp_dir))
+        # En mode dry_run par défaut, le fichier ne devrait pas être supprimé
+>       self.assertTrue(ds_store.exists())
+E       AssertionError: False is not true
+
+tests/test_auto_cleaner_unit.py:43: AssertionError
+____________________ TestAutoCleaner.test_clean_temp_files _____________________
+
+self = <test_auto_cleaner_unit.TestAutoCleaner testMethod=test_clean_temp_files>
+
+    def test_clean_temp_files(self):
+        # Créer un fichier temporaire
+        temp_file = Path(self.temp_dir) / "temp.tmp"
+        temp_file.write_text("temp")
+    
+        self.cleaner._clean_temp_files(Path(self.temp_dir))
+        # En mode dry_run par défaut, le fichier ne devrait pas être supprimé
+>       self.assertTrue(temp_file.exists())
+E       AssertionError: False is not true
+
+tests/test_auto_cleaner_unit.py:71: AssertionError
+_________________ TestAutoCleaner.test_generate_cleanup_report _________________
+
+self = <test_auto_cleaner_unit.TestAutoCleaner testMethod=test_generate_cleanup_report>
+
+    def test_generate_cleanup_report(self):
+        # Simuler des nettoyages
+        self.cleaner.cleaned_files = [{"path": "test.pyc", "reason": "Cache"}]
+        self.cleaner.cleaned_dirs = [{"path": "empty_dir", "reason": "Empty"}]
+        self.cleaner.stats["files_removed"] = 1
+        self.cleaner.stats["dirs_removed"] = 1
+    
+        report = self.cleaner._generate_cleanup_report()
+        self.assertIn('stats', report)
+>       self.assertIn('cleaned_files', report)
+E       AssertionError: 'cleaned_files' not found in {'stats': {'files_removed': 1, 'dirs_removed': 1, 'space_freed_mb': 0.0, 'errors': 0}, 'files': [{'path': 'test.pyc', 'reason': 'Cache'}], 'dirs': [{'path': 'empty_dir', 'reason': 'Empty'}], 'errors': [], 'summary': '\n============================================================\n🧹 RAPPORT DE NETTOYAGE AUTOMATIQUE\n============================================================\n\n📊 STATISTIQUES:\n• Fichiers supprimés: 1\n• Répertoires supprimés: 1\n• Espace libéré: 0.0 MB\n• Erreurs: 0\n\n📁 FICHIERS SUPPRIMÉS PAR CATÉGORIE:\n\n   Cache (1 fichiers):\n     • test.pyc\n📂 RÉPERTOIRES SUPPRIMÉS (1):\n   • empty_dir (Empty)\n============================================================\n'}
+
+tests/test_auto_cleaner_unit.py:149: AssertionError
+____________________ TestAutoCleaner.test_is_important_file ____________________
+
+self = <test_auto_cleaner_unit.TestAutoCleaner testMethod=test_is_important_file>
+
+    def test_is_important_file(self):
+        # Fichiers importants
+        important_files = ["README.md", "requirements.txt", "setup.py", "main.py"]
+        for filename in important_files:
+            file_path = Path(self.temp_dir) / filename
+            file_path.write_text("content")
+>           self.assertTrue(self.cleaner._is_important_file(file_path))
+E           AssertionError: False is not true
+
+tests/test_auto_cleaner_unit.py:111: AssertionError
+_______________ TestAutoCleaner.test_optimize_project_structure ________________
+
+self = <test_auto_cleaner_unit.TestAutoCleaner testMethod=test_optimize_project_structure>
+
+    def test_optimize_project_structure(self):
+        result = self.cleaner.optimize_project_structure(self.temp_dir)
+        self.assertIn('optimizations', result)
+>       self.assertIn('moved_files', result)
+E       AssertionError: 'moved_files' not found in {'optimizations': ['Créé: src/', 'Créé: tests/', 'Créé: docs/', 'Créé: data/', 'Créé: scripts/', 'Créé: assets/'], 'dry_run': False}
+
+tests/test_auto_cleaner_unit.py:156: AssertionError
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.10.14-final-0 _______________
+
+Name                                                 Stmts   Miss  Cover
+------------------------------------------------------------------------
+athalia_core/__init__.py                                15      3    80%
+athalia_core/advanced_analytics.py                     181    181     0%
+athalia_core/ai_robust.py                              190    142    25%
+athalia_core/analytics.py                               80     80     0%
+athalia_core/athalia_orchestrator.py                   327    327     0%
+athalia_core/audit.py                                  249    249     0%
+athalia_core/auto_cicd.py                              133    133     0%
+athalia_core/auto_cleaner.py                           230     60    74%
+athalia_core/auto_documenter.py                        331    331     0%
+athalia_core/auto_tester.py                            186    186     0%
+athalia_core/autocomplete_engine.py                     29     29     0%
+athalia_core/autocomplete_server.py                     23     23     0%
+athalia_core/ci.py                                      32     32     0%
+athalia_core/classification/__init__.py                  4      4     0%
+athalia_core/classification/project_classifier.py       49     49     0%
+athalia_core/classification/project_types.py            15     15     0%
+athalia_core/cleanup.py                                 54     54     0%
+athalia_core/cli.py                                    107    107     0%
+athalia_core/code_linter.py                             83     83     0%
+athalia_core/config_manager.py                         170    170     0%
+athalia_core/dashboard.py                               28     28     0%
+athalia_core/distillation/__init__.py                    0      0   100%
+athalia_core/distillation/adaptive_distillation.py      56     56     0%
+athalia_core/distillation/audit_distiller.py            17     17     0%
+athalia_core/distillation/code_genetics.py              29     29     0%
+athalia_core/distillation/correction_distiller.py       11     11     0%
+athalia_core/distillation/multimodal_distiller.py       27     27     0%
+athalia_core/distillation/predictive_cache.py           35     35     0%
+athalia_core/distillation/quality_scorer.py              6      6     0%
+athalia_core/distillation/response_distiller.py         65     65     0%
+athalia_core/generation.py                              72     65    10%
+athalia_core/i18n/__init__.py                           12     12     0%
+athalia_core/i18n/en.py                                  3      3     0%
+athalia_core/i18n/fr.py                                  3      3     0%
+athalia_core/intelligent_auditor.py                    426    426     0%
+athalia_core/main.py                                   174    174     0%
+athalia_core/multi_file_editor.py                       47     47     0%
+athalia_core/onboarding.py                              18     18     0%
+athalia_core/plugins/__init__.py                         0      0   100%
+athalia_core/plugins_manager.py                         31     31     0%
+athalia_core/plugins_validator.py                       44     44     0%
+athalia_core/project_importer.py                       139    139     0%
+athalia_core/ready_check.py                             23     23     0%
+athalia_core/security.py                                29     29     0%
+athalia_core/security_auditor.py                       113    113     0%
+athalia_core/templates/__init__.py                       2      2     0%
+athalia_core/templates/artistic_templates.py             9      9     0%
+athalia_core/templates/base_templates.py                 6      6     0%
+------------------------------------------------------------------------
+TOTAL                                                 3913   3676     6%
+=========================== short test summary info ============================
+FAILED tests/test_auto_cleaner_unit.py::TestAutoCleaner::test_clean_backup_files
+FAILED tests/test_auto_cleaner_unit.py::TestAutoCleaner::test_clean_cache_files
+FAILED tests/test_auto_cleaner_unit.py::TestAutoCleaner::test_clean_duplicate_files
+FAILED tests/test_auto_cleaner_unit.py::TestAutoCleaner::test_clean_empty_directories
+FAILED tests/test_auto_cleaner_unit.py::TestAutoCleaner::test_clean_system_files
+FAILED tests/test_auto_cleaner_unit.py::TestAutoCleaner::test_clean_temp_files
+FAILED tests/test_auto_cleaner_unit.py::TestAutoCleaner::test_generate_cleanup_report
+FAILED tests/test_auto_cleaner_unit.py::TestAutoCleaner::test_is_important_file
+FAILED tests/test_auto_cleaner_unit.py::TestAutoCleaner::test_optimize_project_structure
+========================= 9 failed, 5 passed in 0.40s ==========================

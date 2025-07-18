@@ -209,6 +209,22 @@ class AdvancedAnalytics:
 
     def _generate_dashboard(self) -> str:
         """Génère un dashboard HTML"""
+        metrics = self.metrics
+        complexity = metrics.get('complexity', {})
+        coverage = metrics.get('coverage', {})
+        quality = metrics.get('quality', {})
+        performance = metrics.get('performance', {})
+        average = complexity.get('average', 0.0)
+        total_files = complexity.get('total_files', 0)
+        total_lines = coverage.get('total_lines', 0)
+        docstrings = coverage.get('docstrings', 0)
+        files = coverage.get('files', 0)
+        comments = quality.get('comments', 0)
+        empty_lines = quality.get('empty_lines', 0)
+        total_quality_lines = quality.get('total_lines', 1)
+        perf_dependencies = performance.get('dependencies', 0)
+        perf_file_sizes = performance.get('file_sizes', {})
+
         dashboard_html = f"""
 <!DOCTYPE html>
 <html>
@@ -227,26 +243,26 @@ class AdvancedAnalytics:
 
     <div class="summary">
         <h2>📈 Résumé</h2>
-        <p><strong>Complexité moyenne :</strong> {self.metrics['complexity']['average']:.2f}</p>
-        <p><strong>Fichiers analysés :</strong> {self.metrics['complexity']['total_files']}</p>
-        <p><strong>Lignes de code :</strong> {self.metrics['coverage']['total_lines']}</p>
-        <p><strong>Fonctions :</strong> {self.metrics['coverage']['docstrings']}</p>
-        <p><strong>Classes :</strong> {self.metrics['coverage']['docstrings']}</p>
-        <p><strong>Fichiers de test :</strong> {self.metrics['coverage']['files'] - self.metrics['complexity']['total_files']}</p>
+        <p><strong>Complexité moyenne :</strong> {average:.2f}</p>
+        <p><strong>Fichiers analysés :</strong> {total_files}</p>
+        <p><strong>Lignes de code :</strong> {total_lines}</p>
+        <p><strong>Fonctions :</strong> {docstrings}</p>
+        <p><strong>Classes :</strong> {docstrings}</p>
+        <p><strong>Fichiers de test :</strong> {files - total_files}</p>
     </div>
 
     <div class="metric">
         <h3>🎯 Métriques de qualité</h3>
-        <p>Docstrings : {self.metrics['quality']['docstrings']}</p>
-        <p>Commentaires : {self.metrics['quality']['comments']}</p>
-        <p>Lignes vides : {self.metrics['quality']['empty_lines']}</p>
-        <p>Ratio commentaires : {self.metrics['quality']['comments'] / max(1, self.metrics['quality']['total_lines']) * 100:.1f}%</p>
+        <p>Docstrings : {docstrings}</p>
+        <p>Commentaires : {comments}</p>
+        <p>Lignes vides : {empty_lines}</p>
+        <p>Ratio commentaires : {comments / max(1, total_quality_lines) * 100:.1f}%</p>
     </div>
 
     <div class="metric">
         <h3>⚡ Performance</h3>
-        <p>Dépendances : {self.metrics['performance']['dependencies']}</p>
-        <p>Fichiers Python : {len(self.metrics['performance']['file_sizes'])}</p>
+        <p>Dépendances : {perf_dependencies}</p>
+        <p>Fichiers Python : {len(perf_file_sizes)}</p>
     </div>
 
     <div class="metric">
@@ -265,25 +281,40 @@ class AdvancedAnalytics:
 
     def _generate_summary(self) -> str:
         """Génère un résumé des métriques"""
+        metrics = self.metrics
+        complexity = metrics.get('complexity', {})
+        coverage = metrics.get('coverage', {})
+        quality = metrics.get('quality', {})
+        performance = metrics.get('performance', {})
+        average = complexity.get('average', 0.0)
+        total_files = complexity.get('total_files', 0)
+        total_lines = coverage.get('total_lines', 0)
+        docstrings = coverage.get('docstrings', 0)
+        files = coverage.get('files', 0)
+        comments = quality.get('comments', 0)
+        total_quality_lines = quality.get('total_lines', 1)
+        perf_dependencies = performance.get('dependencies', 0)
+        perf_file_sizes = performance.get('file_sizes', {})
+
         summary = f"""
 📊 ANALYTICS AVANCÉE-{self.project_path.name}
 
 🎯 MÉTRIQUES PRINCIPALES:
-• Complexité moyenne: {self.metrics['complexity']['average']:.2f}
-• Fichiers analysés: {self.metrics['complexity']['total_files']}
-• Lignes de code: {self.metrics['coverage']['total_lines']}
-• Fonctions: {self.metrics['coverage']['docstrings']}
-• Classes: {self.metrics['coverage']['docstrings']}
-• Fichiers de test: {self.metrics['coverage']['files'] - self.metrics['complexity']['total_files']}
+• Complexité moyenne: {average:.2f}
+• Fichiers analysés: {total_files}
+• Lignes de code: {total_lines}
+• Fonctions: {docstrings}
+• Classes: {docstrings}
+• Fichiers de test: {files - total_files}
 
 📈 QUALITÉ:
-• Docstrings: {self.metrics['quality']['docstrings']}
-• Commentaires: {self.metrics['quality']['comments']}
-• Ratio commentaires: {self.metrics['quality']['comments'] / max(1, self.metrics['quality']['total_lines']) * 100:.1f}%
+• Docstrings: {docstrings}
+• Commentaires: {comments}
+• Ratio commentaires: {comments / max(1, total_quality_lines) * 100:.1f}%
 
 ⚡ PERFORMANCE:
-• Dépendances: {self.metrics['performance']['dependencies']}
-• Fichiers Python: {len(self.metrics['performance']['file_sizes'])}
+• Dépendances: {perf_dependencies}
+• Fichiers Python: {len(perf_file_sizes)}
 
 📊 FICHIERS GÉNÉRÉS:
 • Dashboard HTML: analytics_dashboard.html
