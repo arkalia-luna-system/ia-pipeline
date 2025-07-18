@@ -1,0 +1,165 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.10.14, pytest-8.4.1, pluggy-1.6.0
+benchmark: 5.1.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+rootdir: /Volumes/T7/athalia-dev-setup
+plugins: anyio-4.9.0, cov-6.2.1, asyncio-1.0.0, benchmark-5.1.0, timeout-2.4.0, xdist-3.7.0, mock-3.14.1, langsmith-0.4.7
+asyncio: mode=strict, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 296 items
+
+tests/integration/test_cli_robustesse.py s                               [  0%]
+tests/integration/test_end_to_end.py s                                   [  0%]
+tests/integration/test_yaml_validity.py s                                [  1%]
+tests/test_adaptive_distillation.py sssss                                [  2%]
+tests/test_agent_network.py s                                            [  3%]
+tests/test_ai_robust.py sssssssssssss                                    [  7%]
+tests/test_ai_robust_integration.py ssssssss                             [ 10%]
+tests/test_analytics.py ssssss                                           [ 12%]
+tests/test_api_distillation.py s                                         [ 12%]
+tests/test_athalia_orchestrator.py sssssssssssssss                       [ 17%]
+tests/test_athalia_simple.py sss                                         [ 18%]
+tests/test_audit_intelligent.py sssssssss                                [ 21%]
+tests/test_auto_correction_avancee.py sss                                [ 22%]
+tests/test_autocomplete_server.py sss                                    [ 23%]
+tests/test_benchmark_critical.py ...s                                    [ 25%]
+tests/test_ci.py s                                                       [ 25%]
+tests/test_cleanup.py s                                                  [ 25%]
+tests/test_code_genetics.py sssss                                        [ 27%]
+tests/test_continue_models.py s                                          [ 27%]
+tests/test_correction.py sss                                             [ 28%]
+tests/test_dashboard_unifie.py sssss                                     [ 30%]
+tests/test_dashboard_unifie_simple.py sssss                              [ 32%]
+tests/test_distillation.py ssssssssss                                    [ 35%]
+tests/test_final.py sss                                                  [ 36%]
+tests/test_final_athalia.py ssss                                         [ 37%]
+tests/test_generation.py sssssss                                         [ 40%]
+tests/test_i18n.py ss                                                    [ 40%]
+tests/test_integration_1.py sss                                          [ 41%]
+tests/test_integration_autogen.py s                                      [ 42%]
+tests/test_integration_distillation.py sssss                             [ 43%]
+tests/test_integration_multimodal.py s                                   [ 44%]
+tests/test_multi_file_editor.py ss                                       [ 44%]
+tests/test_multimodal_distiller.py ss                                    [ 45%]
+tests/test_onboarding.py s                                               [ 45%]
+tests/test_performance_1.py sss                                          [ 46%]
+tests/test_plugin_complet.py sssss                                       [ 48%]
+tests/test_plugins.py ssss                                               [ 50%]
+tests/test_plugins_validator.py ss                                       [ 50%]
+tests/test_predictive_cache.py ssssss                                    [ 52%]
+tests/test_profils_utilisateur_avances.py sssss                          [ 54%]
+tests/test_project_importer.py s                                         [ 54%]
+tests/test_ready_check.py ss                                             [ 55%]
+tests/test_security.py s                                                 [ 55%]
+tests/test_unified.py ss                                                 [ 56%]
+tests/test_unit_1.py ss                                                  [ 57%]
+tests/test_unit_10.py sss                                                [ 58%]
+tests/test_unit_11.py sss                                                [ 59%]
+tests/test_unit_12.py ss                                                 [ 59%]
+tests/test_unit_13.py ss                                                 [ 60%]
+tests/test_unit_14.py sss                                                [ 61%]
+tests/test_unit_15.py sss                                                [ 62%]
+tests/test_unit_16.py sssssssssssssssssss                                [ 68%]
+tests/test_unit_17.py ss                                                 [ 69%]
+tests/test_unit_18.py ssss                                               [ 70%]
+tests/test_unit_19.py ss                                                 [ 71%]
+tests/test_unit_2.py s                                                   [ 71%]
+tests/test_unit_20.py s                                                  [ 72%]
+tests/test_unit_21.py ss                                                 [ 72%]
+tests/test_unit_22.py ssssssssssss                                       [ 77%]
+tests/test_unit_23.py ss                                                 [ 77%]
+tests/test_unit_26.py ssssssssss                                         [ 81%]
+tests/test_unit_27.py sssssssss                                          [ 84%]
+tests/test_unit_28.py ssssssssssss                                       [ 88%]
+tests/test_unit_3.py sssss                                               [ 89%]
+tests/test_unit_30.py sss                                                [ 90%]
+tests/test_unit_31.py sss                                                [ 91%]
+tests/test_unit_32.py ss                                                 [ 92%]
+tests/test_unit_33.py s                                                  [ 92%]
+tests/test_unit_34.py s                                                  [ 93%]
+tests/test_unit_35.py s                                                  [ 93%]
+tests/test_unit_36.py s                                                  [ 93%]
+tests/test_unit_4.py ss                                                  [ 94%]
+tests/test_unit_5.py ssssssssssss                                        [ 98%]
+tests/test_unit_6.py s                                                   [ 98%]
+tests/test_unit_7.py sss
+ERROR: Coverage failure: total of 16 is less than fail-under=80
+                                                                         [100%]
+
+=============================== warnings summary ===============================
+../arkalia-luna-venv/lib/python3.10/site-packages/pygame/pkgdata.py:25
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+    from pkg_resources import resource_stream, resource_exists
+
+tests/test_complet_athalia.py:27
+  /Volumes/T7/athalia-dev-setup/tests/test_complet_athalia.py:27: PytestCollectionWarning: cannot collect test class 'TestCompletAthalia' because it has a __init__ constructor (from: tests/test_complet_athalia.py)
+    class TestCompletAthalia:
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.10.14-final-0 _______________
+
+Name                                                 Stmts   Miss  Cover
+------------------------------------------------------------------------
+athalia_core/__init__.py                                15      0   100%
+athalia_core/advanced_analytics.py                     152    125    18%
+athalia_core/ai_robust.py                              190    142    25%
+athalia_core/analytics.py                               80     68    15%
+athalia_core/athalia_orchestrator.py                   327    262    20%
+athalia_core/audit.py                                  249    223    10%
+athalia_core/auto_cicd.py                              133     96    28%
+athalia_core/auto_cleaner.py                           230    195    15%
+athalia_core/auto_documenter.py                        331    294    11%
+athalia_core/auto_tester.py                            186    149    20%
+athalia_core/autocomplete_engine.py                     29     18    38%
+athalia_core/autocomplete_server.py                     23      9    61%
+athalia_core/ci.py                                      32     27    16%
+athalia_core/classification/__init__.py                  4      4     0%
+athalia_core/classification/project_classifier.py       49     49     0%
+athalia_core/classification/project_types.py            15     15     0%
+athalia_core/cleanup.py                                 54     47    13%
+athalia_core/cli.py                                    107    107     0%
+athalia_core/code_linter.py                             83     65    22%
+athalia_core/config_manager.py                         170    170     0%
+athalia_core/dashboard.py                               28     22    21%
+athalia_core/distillation/__init__.py                    0      0   100%
+athalia_core/distillation/adaptive_distillation.py      56     45    20%
+athalia_core/distillation/audit_distiller.py            17     13    24%
+athalia_core/distillation/code_genetics.py              29     22    24%
+athalia_core/distillation/correction_distiller.py       11      7    36%
+athalia_core/distillation/multimodal_distiller.py       27     22    19%
+athalia_core/distillation/predictive_cache.py           35     25    29%
+athalia_core/distillation/quality_scorer.py              6      2    67%
+athalia_core/distillation/response_distiller.py         65     53    18%
+athalia_core/generation.py                              72     65    10%
+athalia_core/i18n/__init__.py                           12      9    25%
+athalia_core/i18n/en.py                                  3      1    67%
+athalia_core/i18n/fr.py                                  3      1    67%
+athalia_core/intelligent_auditor.py                    426    373    12%
+athalia_core/main.py                                   174    171     2%
+athalia_core/multi_file_editor.py                       47     36    23%
+athalia_core/onboarding.py                              18     12    33%
+athalia_core/plugins/__init__.py                         0      0   100%
+athalia_core/plugins_manager.py                         31     22    29%
+athalia_core/plugins_validator.py                       44     37    16%
+athalia_core/project_importer.py                       139    115    17%
+athalia_core/ready_check.py                             23     13    43%
+athalia_core/security.py                                29     24    17%
+athalia_core/security_auditor.py                       113     94    17%
+athalia_core/templates/__init__.py                       2      2     0%
+athalia_core/templates/artistic_templates.py             9      9     0%
+athalia_core/templates/base_templates.py                 6      6     0%
+------------------------------------------------------------------------
+TOTAL                                                 3884   3266    16%
+FAIL Required test coverage of 80% not reached. Total coverage: 15.91%
+
+------------------------------------------------------------------------------------------------------------------------- benchmark 'critical_functions': 3 tests --------------------------------------------------------------------------------------------------------------------------
+Name (time in ns)                                                                                        Min                    Max                  Mean                StdDev                Median                   IQR             Outliers  OPS (Kops/s)            Rounds  Iterations
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+test_critical_function_benchmark[athalia_core.athalia_orchestrator-AthaliaOrchestrator-False]       208.3335 (1.0)      30,795.6666 (1.0)        249.4009 (1.0)         81.8758 (1.0)        244.0474 (1.0)          5.9524 (1.0)      841;25392    4,009.6084 (1.0)      193537          21
+test_critical_function_benchmark[athalia_core.auto_tester-AutoTester-False]                         833.9994 (4.00)     44,000.0003 (1.43)     1,067.6519 (4.28)       344.7880 (4.21)     1,042.0044 (4.27)        41.9968 (7.06)     916;24984      936.6348 (0.23)     196696           1
+test_critical_function_benchmark[athalia_core.advanced_analytics-AdvancedAnalytics-True]          7,167.0074 (34.40)    85,207.9975 (2.77)     9,013.4692 (36.14)    1,970.2027 (24.06)    8,374.9910 (34.32)    1,748.9947 (293.83)     783;225      110.9451 (0.03)      16076           1
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Legend:
+  Outliers: 1 Standard Deviation from Mean; 1.5 IQR (InterQuartile Range) from 1st Quartile and 3rd Quartile.
+  OPS: Operations Per Second, computed as 1 / Mean
+================== 3 passed, 293 skipped, 2 warnings in 4.97s ==================
