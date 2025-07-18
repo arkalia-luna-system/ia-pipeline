@@ -1,0 +1,6 @@
+{
+  "tests/bin/._test_ath_test.py": true,
+  "tests/test_aliases_execution.py::test_alias_execution[ath-clean]": true,
+  "tests/bin/.!74692!test_ath_test.py": true,
+  "tests/bin/._.!74692!test_ath_test.py": true
+}

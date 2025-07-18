@@ -1,0 +1,313 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.10.14, pytest-8.4.1, pluggy-1.6.0
+benchmark: 5.1.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+rootdir: /Volumes/T7/athalia-dev-setup
+plugins: anyio-4.9.0, cov-6.2.1, asyncio-1.0.0, benchmark-5.1.0, timeout-2.4.0, xdist-3.7.0, mock-3.14.1, langsmith-0.4.7
+asyncio: mode=strict, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 8 items
+
+tests/test_auto_documenter_unit.py ..FF.F..                              [100%]
+
+=================================== FAILURES ===================================
+______________ TestAutoDocumenter.test_generate_api_documentation ______________
+
+self = <test_auto_documenter_unit.TestAutoDocumenter testMethod=test_generate_api_documentation>
+
+    def test_generate_api_documentation(self):
+>       api_docs = self.documenter._generate_api_documentation()
+
+tests/test_auto_documenter_unit.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <athalia_core.auto_documenter.AutoDocumenter object at 0x1071886a0>
+
+        def _generate_api_documentation(self) -> str:
+            """Génère la documentation API du projet"""
+            t = self.translations
+            api_docs = f"""# {t.get('api_documentation', 'API Documentation')} - {self.project_info['name']}
+    
+    ## Vue d'ensemble
+    
+    Cette documentation décrit l'API de {self.project_info['name']}.
+    
+    ## Modules
+    
+    """
+    
+            for module in self.project_info["modules"]:
+                api_docs += f"### {module['name']}\n\n"
+                if module["docstring"]:
+                    api_docs += f"{module['docstring']}\n\n"
+    
+                # Classes du module
+                if module["classes"]:
+                    api_docs += "#### Classes\n\n"
+                    for class_info in module["classes"]:
+                        api_docs += f"##### {class_info['name']}\n\n"
+                        if class_info["docstring"]:
+                            api_docs += f"{class_info['docstring']}\n\n"
+    
+                        if class_info["methods"]:
+                            api_docs += "**Méthodes :**\n\n"
+                            for method in class_info["methods"]:
+                                api_docs += f"- `{method}()`\n"
+                            api_docs += "\n"
+    
+                # Fonctions du module
+>               if module["functions"]:
+E               KeyError: 'functions'
+
+athalia_core/auto_documenter.py:453: KeyError
+___________________ TestAutoDocumenter.test_generate_readme ____________________
+
+self = <test_auto_documenter_unit.TestAutoDocumenter testMethod=test_generate_readme>
+
+    def test_generate_readme(self):
+>       readme = self.documenter._generate_readme()
+
+tests/test_auto_documenter_unit.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <athalia_core.auto_documenter.AutoDocumenter object at 0x106f0c610>
+
+        def _generate_readme(self) -> str:
+            """Génère le README du projet"""
+            t = self.translations
+            current_date = datetime.now().strftime("%Y-%m-%d")
+    
+            readme = """# {project_name}
+    
+    {description}
+    
+    ## {table_of_contents}
+    
+    - [{installation}](#installation)
+    - [{usage}](#utilisation)
+    - [API](#api)
+    - [{tests}](#tests)
+    - [{contribution}](#contribution)
+    - [{license}](#licence)
+    
+    ## 🚀 {installation}
+    
+    ### {prerequisites}
+    """
+            readme = readme.format(
+                project_name=self.project_info['name'],
+                description=self.project_info['description'],
+                table_of_contents=t.get('table_of_contents', '📋 Table des matières'),
+                installation=t.get('installation', 'Installation'),
+                usage=t.get('usage', 'Utilisation'),
+                tests=t.get('tests', 'Tests'),
+                contribution=t.get('contribution', 'Contribution'),
+                license=t.get('license', 'Licence'),
+                prerequisites=t.get('prerequisites', 'Prérequis')
+            )
+    
+            # Dépendances
+            if self.project_info["dependencies"].get("python"):
+                readme += "**Python :**\n"
+                for dep in self.project_info["dependencies"]["python"][:5]:
+                    readme += f"- {dep}\n"
+                readme += "\n"
+            if self.project_info["dependencies"].get("nodejs"):
+                readme += "**Node.js :**\n"
+                for dep in self.project_info["dependencies"]["nodejs"][:5]:
+                    readme += f"- {dep}\n"
+                readme += "\n"
+    
+            readme += """### {installation_step}
+    
+    ```bash
+    # Cloner le repository
+    git clone <repository - url>
+    cd {project_name}
+    
+    # Installer les dépendances
+    pip install -r requirements.txt
+    ```
+    
+    ## 💻 {usage}
+    """.format(
+                installation_step=t.get('installation_step', 'Installation'),
+                project_name=self.project_info['name'],
+                usage=t.get('usage', 'Utilisation')
+            )
+    
+            # Points d'entrée
+            if self.project_info["entry_points"]:
+                readme += "### Lancement\n\n"
+                for entry_point in self.project_info["entry_points"]:
+                    readme += f"```bash\npython {entry_point}\n```\n\n"
+    
+            readme += """### Exemple d'utilisation
+    
+    ```python
+    # Utilisation basique
+    main()
+    ```
+    
+    ## 🔧 API
+    """
+    
+            # Classes principales
+            if self.project_info["classes"]:
+                readme += "### Classes principales\n\n"
+                for class_info in self.project_info["classes"][:3]:
+                    readme += f"#### {class_info['name']}\n\n"
+                    if class_info["docstring"]:
+                        readme += f"{class_info['docstring']}\n\n"
+                    readme += f"**Méthodes :** {', '.join(class_info['methods'][:5])}\n\n"
+    
+            # Fonctions principales
+>           if self.project_info["functions"]:
+E           KeyError: 'functions'
+
+athalia_core/auto_documenter.py:378: KeyError
+_________________ TestAutoDocumenter.test_generate_usage_guide _________________
+
+self = <test_auto_documenter_unit.TestAutoDocumenter testMethod=test_generate_usage_guide>
+
+    def test_generate_usage_guide(self):
+>       usage_guide = self.documenter._generate_usage_guide()
+
+tests/test_auto_documenter_unit.py:59: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <athalia_core.auto_documenter.AutoDocumenter object at 0x1072e7b50>
+
+        def _generate_usage_guide(self) -> str:
+            """Génère le guide d'utilisation du projet"""
+            t = self.translations
+            current_date = datetime.now().strftime("%Y-%m-%d")
+    
+            usage_guide = """# {usage_guide} - {project_name}
+    
+    ## Vue d'ensemble
+    
+    Ce guide explique comment utiliser {project_name}.
+    
+    ## Configuration
+    
+    ```yaml
+    name: {project_name}
+    version: {version}
+    description: {description}
+    ```
+    
+    ### Lancement rapide
+    
+    ```bash
+    # Mode développement
+    python main.py
+    
+    # Mode production
+    python main.py --production
+    ```
+    
+    ### Configuration
+    
+    Le projet utilise un fichier de configuration YAML :
+    
+    ```yaml
+    # config.yml
+    app:
+      name: {project_name}
+      debug: true
+      port: 8000
+    
+    database:
+      url: sqlite:///app.db
+      echo: false
+    ```
+    
+    ## Fonctionnalités principales
+    
+    """.format(
+                usage_guide=t.get('usage_guide', 'Guide d\'utilisation'),
+                project_name=self.project_info['name'],
+                version=self.project_info['version'],
+                description=self.project_info['description']
+            )
+    
+            # Décrire les classes principales
+            if self.project_info["classes"]:
+                usage_guide += "### Classes principales\n\n"
+                for class_info in self.project_info["classes"][:3]:
+                    usage_guide += f"#### {class_info['name']}\n\n"
+                    if class_info["docstring"]:
+                        usage_guide += f"{class_info['docstring']}\n\n"
+                    usage_guide += "**Exemple d'utilisation :**\n\n"
+                    usage_guide += "```python\n"
+                    usage_guide += f"from {self.project_info['name']} import {class_info['name']}\n\n"
+                    usage_guide += "# Créer une instance\n"
+                    usage_guide += f"instance = {class_info['name']}()\n"
+                    if class_info["methods"]:
+                        usage_guide += f"# Utiliser une méthode\nresult = instance.{class_info['methods'][0]}()\n"
+                    usage_guide += "```\n\n"
+    
+            # Décrire les fonctions principales
+>           if self.project_info["functions"]:
+E           KeyError: 'functions'
+
+athalia_core/auto_documenter.py:593: KeyError
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.10.14-final-0 _______________
+
+Name                                                 Stmts   Miss  Cover
+------------------------------------------------------------------------
+athalia_core/__init__.py                                15      3    80%
+athalia_core/advanced_analytics.py                     181    181     0%
+athalia_core/ai_robust.py                              190    142    25%
+athalia_core/analytics.py                               80     80     0%
+athalia_core/athalia_orchestrator.py                   327    327     0%
+athalia_core/audit.py                                  249     34    86%
+athalia_core/auto_cicd.py                              133    133     0%
+athalia_core/auto_cleaner.py                           230    230     0%
+athalia_core/auto_documenter.py                        331     81    76%
+athalia_core/auto_tester.py                            186    186     0%
+athalia_core/autocomplete_engine.py                     29     29     0%
+athalia_core/autocomplete_server.py                     23     23     0%
+athalia_core/ci.py                                      32     27    16%
+athalia_core/classification/__init__.py                  4      4     0%
+athalia_core/classification/project_classifier.py       49     49     0%
+athalia_core/classification/project_types.py            15     15     0%
+athalia_core/cleanup.py                                 54     47    13%
+athalia_core/cli.py                                    107     67    37%
+athalia_core/code_linter.py                             83     83     0%
+athalia_core/config_manager.py                         170    170     0%
+athalia_core/dashboard.py                               28     27     4%
+athalia_core/distillation/__init__.py                    0      0   100%
+athalia_core/distillation/adaptive_distillation.py      56     56     0%
+athalia_core/distillation/audit_distiller.py            17     17     0%
+athalia_core/distillation/code_genetics.py              29     29     0%
+athalia_core/distillation/correction_distiller.py       11     11     0%
+athalia_core/distillation/multimodal_distiller.py       27     27     0%
+athalia_core/distillation/predictive_cache.py           35     35     0%
+athalia_core/distillation/quality_scorer.py              6      6     0%
+athalia_core/distillation/response_distiller.py         65     65     0%
+athalia_core/generation.py                              72     65    10%
+athalia_core/i18n/__init__.py                           12      9    25%
+athalia_core/i18n/en.py                                  3      1    67%
+athalia_core/i18n/fr.py                                  3      1    67%
+athalia_core/intelligent_auditor.py                    426    426     0%
+athalia_core/main.py                                   174    171     2%
+athalia_core/multi_file_editor.py                       47     47     0%
+athalia_core/onboarding.py                              18     18     0%
+athalia_core/plugins/__init__.py                         0      0   100%
+athalia_core/plugins_manager.py                         31     31     0%
+athalia_core/plugins_validator.py                       44     44     0%
+athalia_core/project_importer.py                       139    139     0%
+athalia_core/ready_check.py                             23     23     0%
+athalia_core/security.py                                29     29     0%
+athalia_core/security_auditor.py                       113    113     0%
+athalia_core/templates/__init__.py                       2      2     0%
+athalia_core/templates/artistic_templates.py             9      9     0%
+athalia_core/templates/base_templates.py                 6      6     0%
+------------------------------------------------------------------------
+TOTAL                                                 3913   3318    15%
+=========================== short test summary info ============================
+FAILED tests/test_auto_documenter_unit.py::TestAutoDocumenter::test_generate_api_documentation
+FAILED tests/test_auto_documenter_unit.py::TestAutoDocumenter::test_generate_readme
+FAILED tests/test_auto_documenter_unit.py::TestAutoDocumenter::test_generate_usage_guide
+========================= 3 failed, 5 passed in 0.71s ==========================

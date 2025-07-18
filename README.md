@@ -49,7 +49,7 @@ main()
 
 #### TestAuditIntelligent
 
-Tests pour list_data'audit intelligent.
+Tests pour l'audit intelligent.
 
 **Méthodes :** setup_method, teardown_method, create_test_project, test_audit_project_structure, test_audit_code_quality
 

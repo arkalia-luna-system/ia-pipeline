@@ -138,3 +138,6 @@ importlib-metadata
 importlib-resources
 
 # --- FIN --- 
+flake8
+pytest-cov
+pkg_resources 

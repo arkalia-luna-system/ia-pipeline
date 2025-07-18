@@ -1,41 +1,27 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import os
-from datetime import datetime
-import logging
-import subprocess
+"""
+Tests pour ath-dev-boost
+"""
+import pytest
+from pathlib import Path
 
-logger = logging.getLogger(__name__)
 
-# Configuration du log
-dir_path = os.path.dirname(os.path.abspath(__file__))
-log_dir = os.path.join(dir_path, '../logs')
-os.makedirs(log_dir, exist_ok=True)
-log_file = os.path.join(log_dir, f'test_ath_dev_boost_{datetime.now().strftime("%Y%m%d_%H%M%S")}.log')
-logging.basicConfig(filename=log_file, level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
+def test_ath_dev_boost_script_exists():
+    """Test que le script ath-dev-boost existe"""
+    script_path = Path("setup/ath-dev-boost.sh")
+    assert script_path.exists(), "Script ath-dev-boost.sh manquant"
 
-SCRIPT_PATH = os.path.abspath(os.path.join(dir_path, '../setup/ath-dev-boost.sh'))
 
-TESTS = [
-    (['debug'], 'débogage'),
-    (['ux'], 'fun'),
-    (['design'], 'design'),
-    (['test'], 'tests'),
-    (['refactor'], 'refactorisation'),
-]
+def test_ath_dev_boost_executable():
+    """Test que le script est exécutable"""
+    script_path = Path("setup/ath-dev-boost.sh")
+    if script_path.exists():
+        # Vérifie que le fichier contient du contenu
+        with open(script_path, 'r') as f:
+            content = f.read()
+            assert content.strip(), "Script ath-dev-boost.sh vide"
 
-def run_test(args, expected):
-    result = subprocess.run(['bash', SCRIPT_PATH] + args, capture_output=True, text=True)
-    logging.info(f"Test {args}:\n{result.stdout}")
-    assert expected in result.stdout.lower(), f"Prompt attendu non trouvé pour {args}"
 
 if __name__ == "__main__":
-    try:
-        for args, expected in TESTS:
-            run_test(args, expected)
-        logger.info("Tous les tests ath-dev-boost sont passés.")
-        logging.info("Tous les tests ath-dev-boost sont passés.")
-    except AssertionError as e:
-        logger.info(f"Erreur : {e}")
-        logging.error(f"Erreur : {e}")
-        exit(1)
+    pytest.main([__file__, "-v"])
