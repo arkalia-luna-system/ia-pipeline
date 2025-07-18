@@ -19,24 +19,62 @@
 </head>
 <body>
     <h1>Dashboard Audit / Qualité Projets IA</h1>
-    <div class="logs-section">
-        <h2>Logs récents</h2>
-        <div id="logs-content">
-            <p>Chargement des logs en cours...</p>
+    <div style="margin-top: 30px;">
+        <button onclick="showSection('audit')">Audit / Qualité</button>
+        <button onclick="showSection('benchmarks')">Benchmarks</button>
+    </div>
+    <div id="audit-section">
+        <!-- Section Audit/Qualité existante -->
+        <div class="logs-section">
+            <h2>Logs récents</h2>
+            <div id="logs-content">
+                <p>Chargement des logs en cours...</p>
+            </div>
         </div>
-    </div>
-    <table>
-        <tr><th>Projet</th><th>Date</th><th>Tests</th><th>Perfs</th><th>Score Audit</th><th>Problèmes</th><th>Suggestions</th><th>Docs</th></tr><tr>
+        <table>
+            <tr><th>Projet</th><th>Date</th><th>Tests</th><th>Perfs</th><th>Score Audit</th><th>Problèmes</th><th>Suggestions</th><th>Docs</th></tr><tr>
 <td>p1</td><td>2024 - 01-01</td><td class="status-ok">OK</td><td class="status-ok">OK</td><td><span class="audit-score audit-bad">0.0/100</span></td><td>Aucun</td><td>Aucune</td><td><a href="p1/DOC.md">DOC</a> | <a href="p1/GENESIS.md">GENESIS</a></td></tr>
-</table>
-    <div class="chart-container">
-        <canvas id="projectsChart"></canvas>
-    </div>
-    <h2>Architecture multi-projets/agents</h2>
-    <pre><code class="language-mermaid">graph TD
+        </table>
+        <div class="chart-container">
+            <canvas id="projectsChart"></canvas>
+        </div>
+        <h2>Architecture multi-projets/agents</h2>
+        <pre><code class="language-mermaid">graph TD
     IA[IA] --> p1
 </code></pre>
+    </div>
+    <div id="benchmarks-section" style="display:none; margin-top:30px;">
+        <h2>Benchmarks IA (Qwen, Mistral, Mock...)</h2>
+        <div style="background:#f8f9fa;padding:15px;border-radius:10px;margin-bottom:15px;box-shadow:0 2px 8px #0001;">
+            <label for="modelFilter"><b>Filtrer par modèle :</b></label>
+            <select id="modelFilter" onchange="filterBenchmarks()" style="margin-left:10px;padding:4px 8px;border-radius:5px;">
+                <option value="">Tous</option>
+            </select>
+        </div>
+        <div style="overflow-x:auto; margin-bottom:20px;">
+            <table id="benchmarksTable" style="background:white;border-radius:8px;box-shadow:0 1px 4px #0001;">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div class="chart-container" style="background:white;border-radius:10px;box-shadow:0 1px 4px #0001;padding:20px;margin-bottom:20px;">
+            <canvas id="benchmarksChart"></canvas>
+        </div>
+        <div class="chart-container" style="background:white;border-radius:10px;box-shadow:0 1px 4px #0001;padding:20px;margin-bottom:20px;">
+            <canvas id="scoreChart"></canvas>
+        </div>
+        <div class="chart-container" style="background:white;border-radius:10px;box-shadow:0 1px 4px #0001;padding:20px;margin-bottom:20px;">
+            <canvas id="memChart"></canvas>
+        </div>
+        <div id="benchmarks-analysis" style="background:#e9f7ef;border-left:5px solid #2ecc40;padding:15px 20px;border-radius:8px;margin-bottom:20px;font-size:1.05em;display:none;"></div>
+        <p style="font-size:0.9em;color:#666;">Source : <code>benchmark_results.csv</code> – Analyse comparative automatique.</p>
+    </div>
     <script>
+        function showSection(section) {
+            document.getElementById('audit-section').style.display = (section === 'audit') ? '' : 'none';
+            document.getElementById('benchmarks-section').style.display = (section === 'benchmarks') ? '' : 'none';
+        }
+        // Section logs (inchangée)
         setInterval(function() {
             fetch("/api/logs")
                 .then(response => response.text())
@@ -47,8 +85,122 @@
                     console.log("Erreur chargement logs:", error);
                 });
         }, 5000);
-        const ctx = document.getElementById("projectsChart").getContext("2d");
-        // ... code du graphique à compléter ...
+        // Chart.js existant (à compléter si besoin)
+        // BENCHMARKS
+        async function loadBenchmarks() {
+            const response = await fetch('/benchmark_results.csv');
+            const csv = await response.text();
+            const lines = csv.split('\n').filter(l=>l.trim().length>0);
+            const headers = lines[0].split(',');
+            const data = lines.slice(1).map(l => {
+                const obj = {};
+                l.split(',').forEach((v,i)=>obj[headers[i]]=v);
+                return obj;
+            });
+            window.benchmarksData = data;
+            // Remplir le tableau
+            const thead = document.querySelector('#benchmarksTable thead');
+            const tbody = document.querySelector('#benchmarksTable tbody');
+            thead.innerHTML = '<tr>' + headers.map(h=>`<th>${h}</th>`).join('') + '</tr>';
+            tbody.innerHTML = data.map(row => '<tr>' + headers.map(h=>`<td>${row[h]}</td>`).join('') + '</tr>').join('');
+            // Remplir le filtre modèle
+            const models = [...new Set(data.map(r=>r.model))].filter(Boolean);
+            const select = document.getElementById('modelFilter');
+            select.innerHTML = '<option value="">Tous</option>' + models.map(m=>`<option value="${m}">${m}</option>`).join('');
+            drawBenchmarksCharts(data);
+        }
+        function filterBenchmarks() {
+            const model = document.getElementById('modelFilter').value;
+            const data = window.benchmarksData || [];
+            const filtered = model ? data.filter(r=>r.model===model) : data;
+            // Mettre à jour le tableau
+            const headers = Object.keys(filtered[0]||{});
+            const thead = document.querySelector('#benchmarksTable thead');
+            const tbody = document.querySelector('#benchmarksTable tbody');
+            thead.innerHTML = '<tr>' + headers.map(h=>`<th>${h}</th>`).join('') + '</tr>';
+            tbody.innerHTML = filtered.map(row => '<tr>' + headers.map(h=>`<td>${row[h]}</td>`).join('') + '</tr>').join('');
+            drawBenchmarksCharts(filtered);
+        }
+        function drawBenchmarksCharts(data) {
+            // Temps de réponse moyen par prompt
+            const prompts = [...new Set(data.map(r=>r.prompt))];
+            const models = [...new Set(data.map(r=>r.model))];
+            // Chart 1 : Temps de réponse par prompt
+            const ctx1 = document.getElementById('benchmarksChart').getContext('2d');
+            if(window.benchmarksChartObj) window.benchmarksChartObj.destroy();
+            window.benchmarksChartObj = new Chart(ctx1, {
+                type: 'bar',
+                data: {
+                    labels: prompts,
+                    datasets: models.map(m=>({
+                        label: m,
+                        data: prompts.map(p=>{
+                            const rows = data.filter(r=>r.model===m && r.prompt===p);
+                            return rows.length ? rows.reduce((a,b)=>a+parseFloat(b.duration_s||0),0)/rows.length : 0;
+                        }),
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)'
+                    }))
+                },
+                options: {responsive:true, plugins:{title:{display:true,text:'Temps de réponse moyen (s) par prompt'}}}
+            });
+            // Chart 2 : Score qualité par modèle
+            const ctx2 = document.getElementById('scoreChart').getContext('2d');
+            if(window.scoreChartObj) window.scoreChartObj.destroy();
+            window.scoreChartObj = new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: models,
+                    datasets: [{
+                        label: 'Score qualité moyen',
+                        data: models.map(m=>{
+                            const rows = data.filter(r=>r.model===m);
+                            return rows.length ? rows.reduce((a,b)=>a+parseFloat(b.quality||0),0)/rows.length : 0;
+                        }),
+                        backgroundColor: 'rgba(75, 192, 192, 0.5)'
+                    }]
+                },
+                options: {responsive:true, plugins:{title:{display:true,text:'Score qualité moyen par modèle'}}}
+            });
+            // Chart 3 : Mémoire consommée par modèle
+            const ctx3 = document.getElementById('memChart').getContext('2d');
+            if(window.memChartObj) window.memChartObj.destroy();
+            window.memChartObj = new Chart(ctx3, {
+                type: 'bar',
+                data: {
+                    labels: models,
+                    datasets: [{
+                        label: 'Mémoire pic (KB)',
+                        data: models.map(m=>{
+                            const rows = data.filter(r=>r.model===m);
+                            return rows.length ? rows.reduce((a,b)=>a+parseFloat(b.mem_peak_kb||0),0)/rows.length : 0;
+                        }),
+                        backgroundColor: 'rgba(255, 159, 64, 0.5)'
+                    }]
+                },
+                options: {responsive:true, plugins:{title:{display:true,text:'Mémoire pic moyenne par modèle (KB)'}}}
+            });
+            // Analyse automatique
+            let bestModel = null, bestScore = -Infinity;
+            const allModels = models;
+            allModels.forEach(m => {
+                const rows = data.filter(r=>r.model===m);
+                const avgScore = rows.length ? rows.reduce((a,b)=>a+parseFloat(b.quality||0),0)/rows.length : 0;
+                if(avgScore > bestScore) { bestScore = avgScore; bestModel = m; }
+            });
+            let analysis = '';
+            if(allModels.length) {
+                analysis = `<b>Modèle le plus performant :</b> <span style='color:#2ecc40;font-weight:bold;'>${bestModel}</span> (score qualité moyen : <b>${bestScore.toFixed(2)}</b>)<br>`;
+                analysis += `<b>Nombre de prompts testés :</b> ${[...new Set(data.map(r=>r.prompt))].length}<br>`;
+                analysis += `<b>Nombre total de runs :</b> ${data.length}`;
+            }
+            const analysisDiv = document.getElementById('benchmarks-analysis');
+            if(analysis) { analysisDiv.innerHTML = analysis; analysisDiv.style.display = ''; } else { analysisDiv.style.display = 'none'; }
+        }
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('audit');
+            loadBenchmarks();
+        });
     </script>
 </body>
 </html>
