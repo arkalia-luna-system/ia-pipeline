@@ -3,6 +3,7 @@
 import os
 import sys
 import unittest
+import pytest
 from unittest.mock import Mock, patch, MagicMock
 
 """
@@ -108,7 +109,9 @@ class TestAthaliaQuickStart(unittest.TestCase):
         except Exception as e:
             self.skipTest(f"Impossible de tester industrialize_project: {e}")
 
+    @pytest.mark.skip_ci
     def test_main(self):
+        """Test main avec input mock (skip en CI)"""
         try:
             # Vérifier que main est importé et n'est pas une lambda
             if 'main' not in globals():

@@ -2,10 +2,16 @@
 # -*- coding: utf-8 -*-
 import os
 from athalia_core.ai_robust import RobustAI, AIModel, PromptContext
-import psutil
 import time
 import pytest
 import tempfile
+
+# Import conditionnel de psutil
+try:
+    import psutil
+    PSUTIL_AVAILABLE = True
+except ImportError:
+    PSUTIL_AVAILABLE = False
 
 """
 Tests d'intégration pour l'IA robuste.
@@ -202,6 +208,7 @@ def test_ai_robust_performance():
     assert isinstance(review, dict)
     assert end_time - start_time < 30  # Moins de 30 secondes
 
+@pytest.mark.skipif(not PSUTIL_AVAILABLE, reason="psutil non disponible")
 def test_ai_robust_memory_usage():
     """Test de l'utilisation mémoire de l'IA robuste."""
     process = psutil.Process()

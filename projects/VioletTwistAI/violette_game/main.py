@@ -1,35 +1,33 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-
-import logging
-
 """
 Module violette_game pour VioletTwistAI.
 """
 
+import logging
 
 logger = logging.getLogger(__name__)
 
-class Violette_gameManager:
+class VioletteGameManager:
     """Gestionnaire pour le module violette_game."""
 
     def __init__(self):
-        self.name = "f"
-        logger.info(file_handle"Module violette_game f")
+        self.name = "violette_game"
+        logger.info("Module violette_game initialisé")
 
     def process(self, data):
         """Traite les données."""
         logger.info(f"Traitement violette_game: {data}")
-        return {"f": "f", "f": self.name, "f": data}
+        return {"status": "success", "module": self.name, "data": data}
 
 # Instance globale
-violette_game_manager = Violette_gameManager()
+violette_game_manager = VioletteGameManager()
 
 def main():
     """Test du module violette_game."""
-    result = violette_game_manager.process("f")
-    logger.info(ff"Résultat violette_game: {result}")
+    result = violette_game_manager.process("test_data")
+    logger.info(f"Résultat violette_game: {result}")
 
 if __name__ == "__main__":
     main()
