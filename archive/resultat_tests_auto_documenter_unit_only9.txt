@@ -1,0 +1,66 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.10.14, pytest-8.4.1, pluggy-1.6.0
+benchmark: 5.1.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+rootdir: /Volumes/T7/athalia-dev-setup
+plugins: anyio-4.9.0, cov-6.2.1, asyncio-1.0.0, benchmark-5.1.0, timeout-2.4.0, xdist-3.7.0, mock-3.14.1, langsmith-0.4.7
+asyncio: mode=strict, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 8 items
+
+tests/test_auto_documenter_unit.py ........                              [100%]
+
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.10.14-final-0 _______________
+
+Name                                                 Stmts   Miss  Cover
+------------------------------------------------------------------------
+athalia_core/__init__.py                                15      3    80%
+athalia_core/advanced_analytics.py                     181    181     0%
+athalia_core/ai_robust.py                              190    142    25%
+athalia_core/analytics.py                               80     80     0%
+athalia_core/athalia_orchestrator.py                   327    327     0%
+athalia_core/audit.py                                  249    249     0%
+athalia_core/auto_cicd.py                              133    133     0%
+athalia_core/auto_cleaner.py                           230    230     0%
+athalia_core/auto_documenter.py                        331     81    76%
+athalia_core/auto_tester.py                            186    186     0%
+athalia_core/autocomplete_engine.py                     29     29     0%
+athalia_core/autocomplete_server.py                     23     23     0%
+athalia_core/ci.py                                      32     32     0%
+athalia_core/classification/__init__.py                  4      4     0%
+athalia_core/classification/project_classifier.py       49     49     0%
+athalia_core/classification/project_types.py            15     15     0%
+athalia_core/cleanup.py                                 54     54     0%
+athalia_core/cli.py                                    107    107     0%
+athalia_core/code_linter.py                             83     83     0%
+athalia_core/config_manager.py                         170    170     0%
+athalia_core/dashboard.py                               28     28     0%
+athalia_core/distillation/__init__.py                    0      0   100%
+athalia_core/distillation/adaptive_distillation.py      56     56     0%
+athalia_core/distillation/audit_distiller.py            17     17     0%
+athalia_core/distillation/code_genetics.py              29     29     0%
+athalia_core/distillation/correction_distiller.py       11     11     0%
+athalia_core/distillation/multimodal_distiller.py       27     27     0%
+athalia_core/distillation/predictive_cache.py           35     35     0%
+athalia_core/distillation/quality_scorer.py              6      6     0%
+athalia_core/distillation/response_distiller.py         65     65     0%
+athalia_core/generation.py                              72     65    10%
+athalia_core/i18n/__init__.py                           12      9    25%
+athalia_core/i18n/en.py                                  3      1    67%
+athalia_core/i18n/fr.py                                  3      1    67%
+athalia_core/intelligent_auditor.py                    426    426     0%
+athalia_core/main.py                                   174    174     0%
+athalia_core/multi_file_editor.py                       47     47     0%
+athalia_core/onboarding.py                              18     18     0%
+athalia_core/plugins/__init__.py                         0      0   100%
+athalia_core/plugins_manager.py                         31     31     0%
+athalia_core/plugins_validator.py                       44     44     0%
+athalia_core/project_importer.py                       139    139     0%
+athalia_core/ready_check.py                             23     23     0%
+athalia_core/security.py                                29     29     0%
+athalia_core/security_auditor.py                       113    113     0%
+athalia_core/templates/__init__.py                       2      2     0%
+athalia_core/templates/artistic_templates.py             9      9     0%
+athalia_core/templates/base_templates.py                 6      6     0%
+------------------------------------------------------------------------
+TOTAL                                                 3913   3589     8%
+============================== 8 passed in 0.86s ===============================

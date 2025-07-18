@@ -1,23 +1,25 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import os
-from datetime import datetime
-import logging
+"""
+Test d'intégration sémantique pour ath_context_prompt
+"""
 import subprocess
+import pytest
+from pathlib import Path
 
-logger = logging.getLogger(__name__)
 
-dir_path = os.path.dirname(os.path.abspath(__file__))
-log_dir = os.path.join(dir_path, '../logs')
-os.makedirs(log_dir, exist_ok=True)
-log_file = os.path.join(log_dir, f'test_ath_context_prompt_semantic_{datetime.now().strftime("%Y%m%d_%H%M%S")}.log')
-logging.basicConfig(filename=log_file, level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
+def test_ath_context_prompt_semantic():
+    """Teste que le prompt sécurité est détecté par l'analyse sémantique/custom."""
+    script_path = Path(__file__).parent.parent / "agents" / "ath_context_prompt.py"
+    test_file = Path(__file__).parent.parent / "test_context" / "security_vuln.py"
+    if not script_path.exists() or not test_file.exists():
+        pytest.skip("Fichiers de test contextuel ou script manquants")
+    result = subprocess.run([
+        "python3", str(script_path), str(test_file)
+    ], capture_output=True, text=True)
+    assert "Analyse" in result.stdout, (
+        "Le prompt sécurité n'a pas été détecté par l'analyse sémantique/custom.")
 
-SCRIPT_PATH = os.path.abspath(os.path.join(dir_path, '../agents/ath_context_prompt.py'))
-TEST_FILE = os.path.abspath(os.path.join(dir_path, '../test_context/security_vuln.py'))
 
 if __name__ == "__main__":
-    result = subprocess.run(['python3', SCRIPT_PATH, TEST_FILE], capture_output=True, text=True)
-    logging.info(result.stdout)
-    assert "Analyse" in result.stdout, "Le prompt sécurité n'a pas été détecté par l'analyse sémantique/custom."
-    logger.info("Test sémantique/custom passé.")
+    pytest.main([__file__, "-v"])

@@ -49,3 +49,6 @@ crewai
 pillow
 # Pour la multimodalité, à installer manuellement si besoin :
 # llava 
+flake8
+pytest-cov
+pkg_resources 

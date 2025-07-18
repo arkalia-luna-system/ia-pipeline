@@ -1,19 +1,29 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+English translations for Athalia
+"""
+
 translations = {
-    "f": "Welcome to Athalia / Arkalia!",
-    "f": "Project generated successfully.",
-    "f": "An error occurred.",
-    "f": "Authentication required.",
-    "f": "Invalid API key."
+    "welcome": "Welcome to Athalia / Arkalia!",
+    "project_generated": "Project generated successfully.",
+    "error_occurred": "An error occurred.",
+    "auth_required": "Authentication required.",
+    "invalid_api_key": "Invalid API key."
 }
 
+
 def get_translation(lang='en'):
+    """Returns English translations"""
     return {
-        'error': 'Error unknown',
+        'error': 'Unknown error',
         'ok': 'Operation successful',
         'success': 'Success',
         'hello': 'Hello',
         'bye': 'Goodbye',
-        # ... other translations ...
+        'welcome': 'Welcome',
+        'project_generated': 'Project generated successfully',
+        'error_occurred': 'An error occurred',
+        'auth_required': 'Authentication required',
+        'invalid_api_key': 'Invalid API key'
     }

@@ -1,0 +1,45 @@
+api_spec:
+  endpoint1:
+    description: Create a new task
+    params:
+      task_description: string
+      user_id: int
+    response:
+      creation_date: datetime
+      description: string
+      status: boolean
+      task_id: int
+booster_ia: true
+dependencies:
+- Flask
+- Flask-RESTful
+- Flask-SQLAlchemy
+- pytest
+description: REST API for managing a todo-list in Python, featuring CRUD operations
+  and documentation.
+docker: false
+modules:
+- api
+- database
+- utils
+project_name: TodoListAPI
+project_type: generic
+prompts:
+- api_prompt.yaml
+- database_prompt.md
+structure:
+- api/
+- __init__.py
+- api.py
+- endpoints/ todo.py
+- tests/ test_todo.py
+- docs/ index.md
+- todo.md
+- README.md
+- database/
+- __init__.py
+- models.py
+- sqlalchemy_setup.py
+- utils/
+- __init__.py
+- helper_functions.py

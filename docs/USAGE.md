@@ -57,7 +57,7 @@ result = instance.industrialize_project()
 
 #### TestAuditIntelligent
 
-Tests pour list_data'audit intelligent.
+Tests pour l'audit intelligent.
 
 **Exemple d'utilisation :**
 
