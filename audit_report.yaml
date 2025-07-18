@@ -34,29 +34,29 @@ issues:
   \ test_auto_documenter_unit.py, ._test_auto_documenter_unit.py, test_athalia_orchestrator_unit.py,\
   \ ._test_athalia_orchestrator_unit.py, test_analytics_unit.py, ._test_analytics_unit.py,\
   \ test_ai_robust_unit.py, ._test_ai_robust_unit.py, test_auto_cicd_unit.py, ._test_auto_cicd_unit.py,\
-  \ test_end_to_end.py, test_cli_robustesse.py, test_yaml_validity.py, test_ath_test.py,\
-  \ test_ath_lint.py, test_ath_build.py, test_ath_audit.py, test_ath_coverage.py,\
-  \ main.py, test_booster_ia_VioletTwistAI.py, main.py, main.py, ath_context_prompt.py,\
-  \ auto_correction_avancee.py, ._dashboard_unifie_simple.py, profils_utilisateur_avances.py,\
-  \ dashboard_unifie_simple.py, main.py, main.py, main.py, test_booster_ia_mon-projet.py,\
-  \ main.py, ath_context_prompt.py, agent_qwen.py, ._agent_qwen.py, ath_context_prompt.py,\
-  \ agent_audit.py, ._agent_audit.py, agent_network.py, ._agent_network.py, cleanup_workspace.py,\
-  \ benchmark_distillation.py, ._benchmark_distillation.py, api_distillation.py, ._api_distillation.py,\
-  \ test_prompts_complet.py, ._test_prompts_complet.py, test_prompts_rapide.py, ._test_prompts_rapide.py,\
-  \ ci.py, cleanup.py, ._ai_robust.py, main.py, analytics.py, onboarding.py, audit.py,\
-  \ ._cli.py, security.py, plugins_manager.py, plugins_validator.py, ai_robust.py,\
-  \ ._athalia_orchestrator.py, cli.py, ready_check.py, dashboard.py, project_importer.py,\
-  \ ._dashboard.py, ._advanced_analytics.py, intelligent_auditor.py, auto_cleaner.py,\
-  \ generation.py, auto_documenter.py, auto_tester.py, auto_cicd.py, athalia_orchestrator.py,\
-  \ multi_file_editor.py, code_linter.py, security_auditor.py, autocomplete_server.py,\
-  \ advanced_analytics.py, autocomplete_engine.py, config_manager.py, module_discovery.py,\
-  \ project_types.py, project_classifier.py, artistic_templates.py, base_templates.py,\
-  \ api_templates.py, response_distiller.py, ._response_distiller.py, audit_distiller.py,\
-  \ ._audit_distiller.py, correction_distiller.py, ._correction_distiller.py, quality_scorer.py,\
-  \ ._quality_scorer.py, .___init__.py, adaptive_distillation.py, ._adaptive_distillation.py,\
-  \ code_genetics.py, ._code_genetics.py, predictive_cache.py, ._predictive_cache.py,\
-  \ multimodal_distiller.py, ._multimodal_distiller.py, fr.py, en.py, ath-test.py,\
-  \ ath-lint.py, ath-build.py, ath-audit.py, ath-coverage.py"
+  \ test_aliases_unified.py, ._test_aliases_unified.py, test_end_to_end.py, test_cli_robustesse.py,\
+  \ test_yaml_validity.py, test_ath_test.py, test_ath_lint.py, test_ath_build.py,\
+  \ test_ath_audit.py, test_ath_coverage.py, main.py, test_booster_ia_VioletTwistAI.py,\
+  \ main.py, main.py, ath_context_prompt.py, auto_correction_avancee.py, ._dashboard_unifie_simple.py,\
+  \ profils_utilisateur_avances.py, dashboard_unifie_simple.py, main.py, main.py,\
+  \ main.py, test_booster_ia_mon-projet.py, main.py, ath_context_prompt.py, agent_qwen.py,\
+  \ ._agent_qwen.py, ath_context_prompt.py, agent_audit.py, ._agent_audit.py, agent_network.py,\
+  \ ._agent_network.py, cleanup_workspace.py, benchmark_distillation.py, ._benchmark_distillation.py,\
+  \ api_distillation.py, ._api_distillation.py, test_prompts_complet.py, ._test_prompts_complet.py,\
+  \ test_prompts_rapide.py, ._test_prompts_rapide.py, ci.py, cleanup.py, ._ai_robust.py,\
+  \ main.py, analytics.py, onboarding.py, audit.py, ._cli.py, security.py, plugins_manager.py,\
+  \ plugins_validator.py, ai_robust.py, ._athalia_orchestrator.py, cli.py, ready_check.py,\
+  \ dashboard.py, project_importer.py, ._dashboard.py, ._advanced_analytics.py, intelligent_auditor.py,\
+  \ auto_cleaner.py, generation.py, auto_documenter.py, auto_tester.py, auto_cicd.py,\
+  \ athalia_orchestrator.py, multi_file_editor.py, code_linter.py, security_auditor.py,\
+  \ autocomplete_server.py, advanced_analytics.py, autocomplete_engine.py, config_manager.py,\
+  \ module_discovery.py, project_types.py, project_classifier.py, artistic_templates.py,\
+  \ base_templates.py, api_templates.py, response_distiller.py, ._response_distiller.py,\
+  \ audit_distiller.py, ._audit_distiller.py, correction_distiller.py, ._correction_distiller.py,\
+  \ quality_scorer.py, ._quality_scorer.py, .___init__.py, adaptive_distillation.py,\
+  \ ._adaptive_distillation.py, code_genetics.py, ._code_genetics.py, predictive_cache.py,\
+  \ ._predictive_cache.py, multimodal_distiller.py, ._multimodal_distiller.py, fr.py,\
+  \ en.py, ath-test.py, ath-lint.py, ath-build.py, ath-audit.py, ath-coverage.py"
 - 'benchmark_qwen_mistral.py: append('
 - '._benchmark_qwen_mistral.py: Erreur d''analyse - ''utf-8'' codec can''t decode
   byte 0xb0 in position 37: invalid start byte'
@@ -165,6 +165,9 @@ issues:
 - '._test_ai_robust_unit.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte
   0xb0 in position 37: invalid start byte'
 - '._test_auto_cicd_unit.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte
+  0xb0 in position 37: invalid start byte'
+- "test_aliases_unified.py: Appel shell potentiellement risqu\xE9"
+- '._test_aliases_unified.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte
   0xb0 in position 37: invalid start byte'
 - "test_end_to_end.py: Appel shell potentiellement risqu\xE9"
 - "test_cli_robustesse.py: Appel shell potentiellement risqu\xE9"
@@ -348,54 +351,55 @@ issues:
   test_unit_34.py, test_auto_tester_unit.py, test_unit_35.py, test_unit_36.py, test_integration_1.f,
   test_integration_1.py, test_performance_1.py, test_performance_1.f, test_aliases_execution.py,
   test_auto_documenter_unit.py, test_athalia_orchestrator_unit.py, test_analytics_unit.py,
-  test_ai_robust_unit.py, test_auto_cicd_unit.py, test_end_to_end.py, test_cli_robustesse.py,
-  test_yaml_validity.py, test_cli_robustesse.cpython-310-pytest-8.4.1.pyc, test_end_to_end.cpython-310-pytest-8.4.1.pyc,
-  test_yaml_validity.cpython-310-pytest-8.4.1.pyc, test_adaptive_distillation.cpython-310-pytest-8.4.1.pyc,
-  test_advanced_analytics_unit.cpython-310-pytest-8.4.1.pyc, test_agent_audit.cpython-310-pytest-8.4.1.pyc,
-  test_agent_network.cpython-310-pytest-8.4.1.pyc, test_ai_robust_integration.cpython-310-pytest-8.4.1.pyc,
-  test_ai_robust.cpython-310-pytest-8.4.1.pyc, test_aliases.cpython-310-pytest-8.4.1.pyc,
-  test_analytics.cpython-310-pytest-8.4.1.pyc, test_api_distillation.cpython-310-pytest-8.4.1.pyc,
-  test_ath_context_prompt_semantic.cpython-310-pytest-8.4.1.pyc, test_ath_dev_boost.cpython-310-pytest-8.4.1.pyc,
-  test_ath_dev_boost_menu.cpython-310-pytest-8.4.1.pyc, test_athalia_orchestrator.cpython-310-pytest-8.4.1.pyc,
-  test_athalia_simple.cpython-310-pytest-8.4.1.pyc, test_audit_intelligent.cpython-310-pytest-8.4.1.pyc,
-  test_auto_correction_avancee.cpython-310-pytest-8.4.1.pyc, test_auto_cleaner_unit.cpython-310-pytest-8.4.1.pyc,
-  test_autocomplete_server.cpython-310-pytest-8.4.1.pyc, test_benchmark_critical.cpython-310-pytest-8.4.1.pyc,
-  test_ci_manual.cpython-310-pytest-8.4.1.pyc, test_ci.cpython-310-pytest-8.4.1.pyc,
-  test_cleanup.cpython-310-pytest-8.4.1.pyc, test_code_genetics.cpython-310-pytest-8.4.1.pyc,
-  test_complet_athalia.cpython-310-pytest-8.4.1.pyc, test_continue_models.cpython-310-pytest-8.4.1.pyc,
-  test_correction.cpython-310-pytest-8.4.1.pyc, test_dashboard.cpython-310-pytest-8.4.1.pyc,
-  test_dashboard_unifie_simple.cpython-310-pytest-8.4.1.pyc, test_dashboard_unifie.cpython-310-pytest-8.4.1.pyc,
-  test_distillation.cpython-310-pytest-8.4.1.pyc, test_final.cpython-310-pytest-8.4.1.pyc,
-  test_final_athalia.cpython-310-pytest-8.4.1.pyc, test_generation.cpython-310-pytest-8.4.1.pyc,
-  test_i18n.cpython-310-pytest-8.4.1.pyc, test_integration_1.cpython-310-pytest-8.4.1.pyc,
-  test_integration_autogen.cpython-310-pytest-8.4.1.pyc, test_integration_distillation.cpython-310-pytest-8.4.1.pyc,
-  test_integration_multimodal.cpython-310-pytest-8.4.1.pyc, test_multi_file_editor.cpython-310-pytest-8.4.1.pyc,
-  test_multimodal_distiller.cpython-310-pytest-8.4.1.pyc, test_onboarding.cpython-310-pytest-8.4.1.pyc,
-  test_performance_1.cpython-310-pytest-8.4.1.pyc, test_plugin_complet.cpython-310-pytest-8.4.1.pyc,
-  test_plugins.cpython-310-pytest-8.4.1.pyc, test_plugins_validator.cpython-310-pytest-8.4.1.pyc,
-  test_predictive_cache.cpython-310-pytest-8.4.1.pyc, test_profils_utilisateur_avances.cpython-310-pytest-8.4.1.pyc,
-  test_project_importer.cpython-310-pytest-8.4.1.pyc, test_ready_check.cpython-310-pytest-8.4.1.pyc,
-  test_security.cpython-310-pytest-8.4.1.pyc, test_unified.cpython-310-pytest-8.4.1.pyc,
-  test_unit_1.cpython-310-pytest-8.4.1.pyc, test_unit_10.cpython-310-pytest-8.4.1.pyc,
-  test_unit_11.cpython-310-pytest-8.4.1.pyc, test_unit_12.cpython-310-pytest-8.4.1.pyc,
-  test_unit_13.cpython-310-pytest-8.4.1.pyc, test_unit_14.cpython-310-pytest-8.4.1.pyc,
-  test_unit_15.cpython-310-pytest-8.4.1.pyc, test_unit_16.cpython-310-pytest-8.4.1.pyc,
-  test_unit_17.cpython-310-pytest-8.4.1.pyc, test_unit_18.cpython-310-pytest-8.4.1.pyc,
-  test_unit_19.cpython-310-pytest-8.4.1.pyc, test_unit_2.cpython-310-pytest-8.4.1.pyc,
-  test_unit_20.cpython-310-pytest-8.4.1.pyc, test_unit_21.cpython-310-pytest-8.4.1.pyc,
-  test_unit_22.cpython-310-pytest-8.4.1.pyc, test_unit_23.cpython-310-pytest-8.4.1.pyc,
-  test_unit_26.cpython-310-pytest-8.4.1.pyc, test_unit_27.cpython-310-pytest-8.4.1.pyc,
-  test_unit_28.cpython-310-pytest-8.4.1.pyc, test_unit_3.cpython-310-pytest-8.4.1.pyc,
-  test_unit_30.cpython-310-pytest-8.4.1.pyc, test_unit_31.cpython-310-pytest-8.4.1.pyc,
-  test_unit_32.cpython-310-pytest-8.4.1.pyc, test_unit_33.cpython-310-pytest-8.4.1.pyc,
-  test_unit_34.cpython-310-pytest-8.4.1.pyc, test_unit_35.cpython-310-pytest-8.4.1.pyc,
-  test_unit_36.cpython-310-pytest-8.4.1.pyc, test_unit_4.cpython-310-pytest-8.4.1.pyc,
-  test_unit_5.cpython-310-pytest-8.4.1.pyc, test_unit_6.cpython-310-pytest-8.4.1.pyc,
-  test_unit_7.cpython-310-pytest-8.4.1.pyc, test_unit_9.cpython-310-pytest-8.4.1.pyc,
-  test_auto_tester_unit.cpython-310-pytest-8.4.1.pyc, test_aliases_execution.cpython-310-pytest-8.4.1.pyc,
-  test_auto_documenter_unit.cpython-310-pytest-8.4.1.pyc, test_athalia_orchestrator_unit.cpython-310-pytest-8.4.1.pyc,
-  test_analytics_unit.cpython-310-pytest-8.4.1.pyc, test_ai_robust_unit.cpython-310-pytest-8.4.1.pyc,
-  test_auto_cicd_unit.cpython-310-pytest-8.4.1.pyc, test_ath_test.py, test_ath_lint.py,
+  test_ai_robust_unit.py, test_auto_cicd_unit.py, test_aliases_unified.py, test_end_to_end.py,
+  test_cli_robustesse.py, test_yaml_validity.py, test_cli_robustesse.cpython-310-pytest-8.4.1.pyc,
+  test_end_to_end.cpython-310-pytest-8.4.1.pyc, test_yaml_validity.cpython-310-pytest-8.4.1.pyc,
+  test_adaptive_distillation.cpython-310-pytest-8.4.1.pyc, test_advanced_analytics_unit.cpython-310-pytest-8.4.1.pyc,
+  test_agent_audit.cpython-310-pytest-8.4.1.pyc, test_agent_network.cpython-310-pytest-8.4.1.pyc,
+  test_ai_robust_integration.cpython-310-pytest-8.4.1.pyc, test_ai_robust.cpython-310-pytest-8.4.1.pyc,
+  test_aliases.cpython-310-pytest-8.4.1.pyc, test_analytics.cpython-310-pytest-8.4.1.pyc,
+  test_api_distillation.cpython-310-pytest-8.4.1.pyc, test_ath_context_prompt_semantic.cpython-310-pytest-8.4.1.pyc,
+  test_ath_dev_boost.cpython-310-pytest-8.4.1.pyc, test_ath_dev_boost_menu.cpython-310-pytest-8.4.1.pyc,
+  test_athalia_orchestrator.cpython-310-pytest-8.4.1.pyc, test_athalia_simple.cpython-310-pytest-8.4.1.pyc,
+  test_audit_intelligent.cpython-310-pytest-8.4.1.pyc, test_auto_correction_avancee.cpython-310-pytest-8.4.1.pyc,
+  test_auto_cleaner_unit.cpython-310-pytest-8.4.1.pyc, test_autocomplete_server.cpython-310-pytest-8.4.1.pyc,
+  test_benchmark_critical.cpython-310-pytest-8.4.1.pyc, test_ci_manual.cpython-310-pytest-8.4.1.pyc,
+  test_ci.cpython-310-pytest-8.4.1.pyc, test_cleanup.cpython-310-pytest-8.4.1.pyc,
+  test_code_genetics.cpython-310-pytest-8.4.1.pyc, test_complet_athalia.cpython-310-pytest-8.4.1.pyc,
+  test_continue_models.cpython-310-pytest-8.4.1.pyc, test_correction.cpython-310-pytest-8.4.1.pyc,
+  test_dashboard.cpython-310-pytest-8.4.1.pyc, test_dashboard_unifie_simple.cpython-310-pytest-8.4.1.pyc,
+  test_dashboard_unifie.cpython-310-pytest-8.4.1.pyc, test_distillation.cpython-310-pytest-8.4.1.pyc,
+  test_final.cpython-310-pytest-8.4.1.pyc, test_final_athalia.cpython-310-pytest-8.4.1.pyc,
+  test_generation.cpython-310-pytest-8.4.1.pyc, test_i18n.cpython-310-pytest-8.4.1.pyc,
+  test_integration_1.cpython-310-pytest-8.4.1.pyc, test_integration_autogen.cpython-310-pytest-8.4.1.pyc,
+  test_integration_distillation.cpython-310-pytest-8.4.1.pyc, test_integration_multimodal.cpython-310-pytest-8.4.1.pyc,
+  test_multi_file_editor.cpython-310-pytest-8.4.1.pyc, test_multimodal_distiller.cpython-310-pytest-8.4.1.pyc,
+  test_onboarding.cpython-310-pytest-8.4.1.pyc, test_performance_1.cpython-310-pytest-8.4.1.pyc,
+  test_plugin_complet.cpython-310-pytest-8.4.1.pyc, test_plugins.cpython-310-pytest-8.4.1.pyc,
+  test_plugins_validator.cpython-310-pytest-8.4.1.pyc, test_predictive_cache.cpython-310-pytest-8.4.1.pyc,
+  test_profils_utilisateur_avances.cpython-310-pytest-8.4.1.pyc, test_project_importer.cpython-310-pytest-8.4.1.pyc,
+  test_ready_check.cpython-310-pytest-8.4.1.pyc, test_security.cpython-310-pytest-8.4.1.pyc,
+  test_unified.cpython-310-pytest-8.4.1.pyc, test_unit_1.cpython-310-pytest-8.4.1.pyc,
+  test_unit_10.cpython-310-pytest-8.4.1.pyc, test_unit_11.cpython-310-pytest-8.4.1.pyc,
+  test_unit_12.cpython-310-pytest-8.4.1.pyc, test_unit_13.cpython-310-pytest-8.4.1.pyc,
+  test_unit_14.cpython-310-pytest-8.4.1.pyc, test_unit_15.cpython-310-pytest-8.4.1.pyc,
+  test_unit_16.cpython-310-pytest-8.4.1.pyc, test_unit_17.cpython-310-pytest-8.4.1.pyc,
+  test_unit_18.cpython-310-pytest-8.4.1.pyc, test_unit_19.cpython-310-pytest-8.4.1.pyc,
+  test_unit_2.cpython-310-pytest-8.4.1.pyc, test_unit_20.cpython-310-pytest-8.4.1.pyc,
+  test_unit_21.cpython-310-pytest-8.4.1.pyc, test_unit_22.cpython-310-pytest-8.4.1.pyc,
+  test_unit_23.cpython-310-pytest-8.4.1.pyc, test_unit_26.cpython-310-pytest-8.4.1.pyc,
+  test_unit_27.cpython-310-pytest-8.4.1.pyc, test_unit_28.cpython-310-pytest-8.4.1.pyc,
+  test_unit_3.cpython-310-pytest-8.4.1.pyc, test_unit_30.cpython-310-pytest-8.4.1.pyc,
+  test_unit_31.cpython-310-pytest-8.4.1.pyc, test_unit_32.cpython-310-pytest-8.4.1.pyc,
+  test_unit_33.cpython-310-pytest-8.4.1.pyc, test_unit_34.cpython-310-pytest-8.4.1.pyc,
+  test_unit_35.cpython-310-pytest-8.4.1.pyc, test_unit_36.cpython-310-pytest-8.4.1.pyc,
+  test_unit_4.cpython-310-pytest-8.4.1.pyc, test_unit_5.cpython-310-pytest-8.4.1.pyc,
+  test_unit_6.cpython-310-pytest-8.4.1.pyc, test_unit_7.cpython-310-pytest-8.4.1.pyc,
+  test_unit_9.cpython-310-pytest-8.4.1.pyc, test_auto_tester_unit.cpython-310-pytest-8.4.1.pyc,
+  test_aliases_execution.cpython-310-pytest-8.4.1.pyc, test_auto_documenter_unit.cpython-310-pytest-8.4.1.pyc,
+  test_athalia_orchestrator_unit.cpython-310-pytest-8.4.1.pyc, test_analytics_unit.cpython-310-pytest-8.4.1.pyc,
+  test_ai_robust_unit.cpython-310-pytest-8.4.1.pyc, test_auto_cicd_unit.cpython-310-pytest-8.4.1.pyc,
+  test_aliases_unified.cpython-310-pytest-8.4.1.pyc, test_ath_test.py, test_ath_lint.py,
   test_ath_build.py, test_ath_audit.py, test_ath_coverage.py, test_ath_audit.cpython-310-pytest-8.4.1.pyc,
   test_ath_build.cpython-310-pytest-8.4.1.pyc, test_ath_coverage.cpython-310-pytest-8.4.1.pyc,
   test_ath_lint.cpython-310-pytest-8.4.1.pyc, test_ath_test.cpython-310-pytest-8.4.1.pyc,
@@ -459,6 +463,8 @@ issues:
   \ decode byte 0xb0 in position 37: invalid start byte"
 - "._test_auto_cicd_unit.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't\
   \ decode byte 0xb0 in position 37: invalid start byte"
+- "._test_aliases_unified.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't\
+  \ decode byte 0xb0 in position 37: invalid start byte"
 - "._dashboard_unifie_simple.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't\
   \ decode byte 0xb0 in position 37: invalid start byte"
 - "._agent_qwen.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't decode byte\
@@ -518,9 +524,9 @@ metrics:
   security_score: 0
   structure_score: 60
   test_score: 100
-  total_classes: 119
-  total_functions: 918
-  total_lines: 18114
+  total_classes: 120
+  total_functions: 942
+  total_lines: 18393
 score: 32.0
 suggestions:
 - "Cr\xE9er les dossiers: src, api"
