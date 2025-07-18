@@ -1,0 +1,533 @@
+global_score: 32.0
+issues:
+- 'Dossiers manquants: src, api'
+- 'Fichiers manquants: main.py'
+- "Modules trouv\xE9s: athalia_unified.py, benchmark_qwen_mistral.py, ._benchmark_qwen_mistral.py,\
+  \ athalia_unified_enhanced.py, hello_plugin.py, export_docker_plugin.py, test_ath_context_prompt_semantic.py,\
+  \ test_ath_dev_boost.py, test_athalia_simple.py, test_ath_dev_boost_menu.py, test_audit_intelligent.py,\
+  \ test_ci.py, test_ready_check.py, test_plugins.py, test_cleanup.py, test_final.py,\
+  \ test_continue_models.py, test_analytics.py, test_plugin_complet.py, test_i18n.py,\
+  \ test_generation.py, test_ai_robust.py, test_onboarding.py, test_unified.py, test_security.py,\
+  \ test_plugins_validator.py, test_ai_robust_integration.py, test_aliases.py, test_project_importer.py,\
+  \ test_ci_manual.py, test_complet_athalia.py, test_correction.py, test_final_athalia.py,\
+  \ correction_chai\u0302nes.py, correction_finale.py, test_athalia_orchestrator.py,\
+  \ fix_all_athalia_core.py, test_auto_correction_avancee.py, ._test_unit_5.py, test_profils_utilisateur_avances.py,\
+  \ test_multi_file_editor.py, test_dashboard_unifie.py, test_distillation.py, test_dashboard_unifie_simple.py,\
+  \ test_autocomplete_server.py, test_unit_1.py, ._test_distillation.py, test_unit_2.py,\
+  \ ._test_athalia_orchestrator.py, test_unit_3.py, ._test_ai_robust.py, test_unit_4.py,\
+  \ test_adaptive_distillation.py, test_unit_5.py, test_code_genetics.py, test_unit_6.py,\
+  \ ._test_code_genetics.py, test_unit_7.py, ._test_adaptive_distillation.py, test_predictive_cache.py,\
+  \ test_unit_9.py, ._test_predictive_cache.py, test_unit_10.py, test_multimodal_distiller.py,\
+  \ test_unit_11.py, ._test_multimodal_distiller.py, test_unit_12.py, test_agent_audit.py,\
+  \ test_unit_13.py, ._test_agent_audit.py, test_unit_14.py, test_agent_network.py,\
+  \ test_unit_15.py, ._test_agent_network.py, test_unit_16.py, test_api_distillation.py,\
+  \ test_unit_17.py, ._test_api_distillation.py, test_unit_18.py, test_integration_multimodal.py,\
+  \ test_unit_19.py, test_integration_autogen.py, test_unit_20.py, ._test_integration_autogen.py,\
+  \ test_unit_21.py, test_benchmark_critical.py, test_unit_22.py, ._test_benchmark_critical.py,\
+  \ test_unit_23.py, test_integration_distillation.py, ._test_integration_distillation.py,\
+  \ ._test_integration_multimodal.py, test_unit_26.py, test_dashboard.py, test_unit_27.py,\
+  \ ._test_dashboard.py, test_unit_28.py, test_advanced_analytics_unit.py, ._test_advanced_analytics_unit.py,\
+  \ test_unit_30.py, ._test_aliases.py, test_unit_31.py, test_unit_32.py, test_auto_cleaner_unit.py,\
+  \ test_unit_33.py, ._test_auto_cleaner_unit.py, test_unit_34.py, test_auto_tester_unit.py,\
+  \ test_unit_35.py, ._test_auto_tester_unit.py, test_unit_36.py, test_integration_1.py,\
+  \ test_performance_1.py, test_aliases_execution.py, ._test_aliases_execution.py,\
+  \ test_auto_documenter_unit.py, ._test_auto_documenter_unit.py, test_athalia_orchestrator_unit.py,\
+  \ ._test_athalia_orchestrator_unit.py, test_analytics_unit.py, ._test_analytics_unit.py,\
+  \ test_ai_robust_unit.py, ._test_ai_robust_unit.py, test_auto_cicd_unit.py, ._test_auto_cicd_unit.py,\
+  \ test_end_to_end.py, test_cli_robustesse.py, test_yaml_validity.py, test_ath_test.py,\
+  \ test_ath_lint.py, test_ath_build.py, test_ath_audit.py, test_ath_coverage.py,\
+  \ main.py, test_booster_ia_VioletTwistAI.py, main.py, main.py, ath_context_prompt.py,\
+  \ auto_correction_avancee.py, ._dashboard_unifie_simple.py, profils_utilisateur_avances.py,\
+  \ dashboard_unifie_simple.py, main.py, main.py, main.py, test_booster_ia_mon-projet.py,\
+  \ main.py, ath_context_prompt.py, agent_qwen.py, ._agent_qwen.py, ath_context_prompt.py,\
+  \ agent_audit.py, ._agent_audit.py, agent_network.py, ._agent_network.py, cleanup_workspace.py,\
+  \ benchmark_distillation.py, ._benchmark_distillation.py, api_distillation.py, ._api_distillation.py,\
+  \ test_prompts_complet.py, ._test_prompts_complet.py, test_prompts_rapide.py, ._test_prompts_rapide.py,\
+  \ ci.py, cleanup.py, ._ai_robust.py, main.py, analytics.py, onboarding.py, audit.py,\
+  \ ._cli.py, security.py, plugins_manager.py, plugins_validator.py, ai_robust.py,\
+  \ ._athalia_orchestrator.py, cli.py, ready_check.py, dashboard.py, project_importer.py,\
+  \ ._dashboard.py, ._advanced_analytics.py, intelligent_auditor.py, auto_cleaner.py,\
+  \ generation.py, auto_documenter.py, auto_tester.py, auto_cicd.py, athalia_orchestrator.py,\
+  \ multi_file_editor.py, code_linter.py, security_auditor.py, autocomplete_server.py,\
+  \ advanced_analytics.py, autocomplete_engine.py, config_manager.py, module_discovery.py,\
+  \ project_types.py, project_classifier.py, artistic_templates.py, base_templates.py,\
+  \ api_templates.py, response_distiller.py, ._response_distiller.py, audit_distiller.py,\
+  \ ._audit_distiller.py, correction_distiller.py, ._correction_distiller.py, quality_scorer.py,\
+  \ ._quality_scorer.py, .___init__.py, adaptive_distillation.py, ._adaptive_distillation.py,\
+  \ code_genetics.py, ._code_genetics.py, predictive_cache.py, ._predictive_cache.py,\
+  \ multimodal_distiller.py, ._multimodal_distiller.py, fr.py, en.py, ath-test.py,\
+  \ ath-lint.py, ath-build.py, ath-audit.py, ath-coverage.py"
+- 'benchmark_qwen_mistral.py: append('
+- '._benchmark_qwen_mistral.py: Erreur d''analyse - ''utf-8'' codec can''t decode
+  byte 0xb0 in position 37: invalid start byte'
+- 'athalia_unified_enhanced.py: Erreur d''analyse - invalid syntax (<unknown>, line
+  110)'
+- '__init__.py: Code trop court (4 lignes)'
+- "__init__.py: Aucune fonction d\xE9finie"
+- 'hello_plugin.py: Code trop court (8 lignes)'
+- "test_ath_context_prompt_semantic.py: Aucune fonction d\xE9finie"
+- "test_ath_context_prompt_semantic.py: Appel shell potentiellement risqu\xE9"
+- "test_ath_dev_boost.py: Appel shell potentiellement risqu\xE9"
+- 'test_athalia_simple.py: append('
+- "test_ath_dev_boost_menu.py: Appel shell potentiellement risqu\xE9"
+- "test_audit_intelligent.py: Appel shell potentiellement risqu\xE9"
+- 'test_audit_intelligent.py: Mot de passe en dur'
+- 'test_audit_intelligent.py: append('
+- 'test_plugins.py: Utilise logger.info() au lieu de logging'
+- "test_final.py: Appel shell potentiellement risqu\xE9"
+- 'test_analytics.py: append('
+- "test_plugin_complet.py: Appel shell potentiellement risqu\xE9"
+- 'test_plugin_complet.py: append('
+- 'test_ai_robust.py: Utilise logger.info() au lieu de logging'
+- "test_unified.py: Appel shell potentiellement risqu\xE9"
+- "test_security.py: Appel shell potentiellement risqu\xE9"
+- 'test_security.py: Mot de passe en dur'
+- 'test_aliases.py: Contient TODO / FIXME'
+- 'test_project_importer.py: Utilise logger.info() au lieu de logging'
+- "test_ci_manual.py: Aucune fonction d\xE9finie"
+- "test_complet_athalia.py: Appel shell potentiellement risqu\xE9"
+- 'test_complet_athalia.py: append('
+- "test_final_athalia.py: Appel shell potentiellement risqu\xE9"
+- 'test_final_athalia.py: append('
+- "correction_chai\u0302nes.py: append("
+- 'fix_all_athalia_core.py: Erreur d''analyse - invalid syntax (<unknown>, line 83)'
+- '._test_unit_5.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte 0xb0 in
+  position 37: invalid start byte'
+- '._test_distillation.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte
+  0xb0 in position 37: invalid start byte'
+- '._test_athalia_orchestrator.py: Erreur d''analyse - ''utf-8'' codec can''t decode
+  byte 0xb0 in position 37: invalid start byte'
+- '._test_ai_robust.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte 0xb0
+  in position 37: invalid start byte'
+- '._test_code_genetics.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte
+  0xb0 in position 37: invalid start byte'
+- '._test_adaptive_distillation.py: Erreur d''analyse - ''utf-8'' codec can''t decode
+  byte 0xb0 in position 37: invalid start byte'
+- '._test_predictive_cache.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte
+  0xb0 in position 37: invalid start byte'
+- '._test_multimodal_distiller.py: Erreur d''analyse - ''utf-8'' codec can''t decode
+  byte 0xb0 in position 37: invalid start byte'
+- 'test_agent_audit.py: Code trop court (6 lignes)'
+- "test_agent_audit.py: Aucune fonction d\xE9finie"
+- 'test_unit_13.py: Contient TODO / FIXME'
+- '._test_agent_audit.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte 0xb0
+  in position 37: invalid start byte'
+- 'test_unit_14.py: Contient TODO / FIXME'
+- 'test_unit_15.py: Contient TODO / FIXME'
+- '._test_agent_network.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte
+  0xb0 in position 37: invalid start byte'
+- 'test_unit_16.py: Contient TODO / FIXME'
+- 'test_api_distillation.py: Code trop court (8 lignes)'
+- 'test_unit_17.py: Contient TODO / FIXME'
+- '._test_api_distillation.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte
+  0xb0 in position 37: invalid start byte'
+- 'test_unit_18.py: Contient TODO / FIXME'
+- 'test_unit_19.py: Contient TODO / FIXME'
+- '._test_integration_autogen.py: Erreur d''analyse - ''utf-8'' codec can''t decode
+  byte 0xb0 in position 37: invalid start byte'
+- 'test_unit_21.py: Contient TODO / FIXME'
+- "test_benchmark_critical.py: Appel shell potentiellement risqu\xE9"
+- 'test_unit_22.py: Contient TODO / FIXME'
+- '._test_benchmark_critical.py: Erreur d''analyse - ''utf-8'' codec can''t decode
+  byte 0xb0 in position 37: invalid start byte'
+- 'test_unit_23.py: Contient TODO / FIXME'
+- '._test_integration_distillation.py: Erreur d''analyse - ''utf-8'' codec can''t
+  decode byte 0xb0 in position 37: invalid start byte'
+- '._test_integration_multimodal.py: Erreur d''analyse - ''utf-8'' codec can''t decode
+  byte 0xb0 in position 37: invalid start byte'
+- 'test_unit_26.py: Contient TODO / FIXME'
+- 'test_unit_27.py: Contient TODO / FIXME'
+- '._test_dashboard.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte 0xb0
+  in position 37: invalid start byte'
+- 'test_unit_28.py: Contient TODO / FIXME'
+- '._test_advanced_analytics_unit.py: Erreur d''analyse - ''utf-8'' codec can''t decode
+  byte 0xb0 in position 37: invalid start byte'
+- 'test_unit_30.py: Contient TODO / FIXME'
+- '._test_aliases.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte 0xb0
+  in position 37: invalid start byte'
+- 'test_unit_31.py: Contient TODO / FIXME'
+- 'test_unit_32.py: Contient TODO / FIXME'
+- '._test_auto_cleaner_unit.py: Erreur d''analyse - ''utf-8'' codec can''t decode
+  byte 0xb0 in position 37: invalid start byte'
+- '._test_auto_tester_unit.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte
+  0xb0 in position 37: invalid start byte'
+- 'test_integration_1.py: Contient TODO / FIXME'
+- 'test_performance_1.py: Contient TODO / FIXME'
+- "test_aliases_execution.py: Appel shell potentiellement risqu\xE9"
+- '._test_aliases_execution.py: Erreur d''analyse - ''utf-8'' codec can''t decode
+  byte 0xb0 in position 37: invalid start byte'
+- '._test_auto_documenter_unit.py: Erreur d''analyse - ''utf-8'' codec can''t decode
+  byte 0xb0 in position 37: invalid start byte'
+- '._test_athalia_orchestrator_unit.py: Erreur d''analyse - ''utf-8'' codec can''t
+  decode byte 0xb0 in position 37: invalid start byte'
+- '._test_analytics_unit.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte
+  0xb0 in position 37: invalid start byte'
+- '._test_ai_robust_unit.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte
+  0xb0 in position 37: invalid start byte'
+- '._test_auto_cicd_unit.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte
+  0xb0 in position 37: invalid start byte'
+- "test_end_to_end.py: Appel shell potentiellement risqu\xE9"
+- "test_cli_robustesse.py: Appel shell potentiellement risqu\xE9"
+- 'test_ath_test.py: Code trop court (8 lignes)'
+- "test_ath_test.py: Appel shell potentiellement risqu\xE9"
+- 'test_ath_lint.py: Code trop court (8 lignes)'
+- "test_ath_lint.py: Appel shell potentiellement risqu\xE9"
+- 'test_ath_build.py: Code trop court (8 lignes)'
+- "test_ath_build.py: Appel shell potentiellement risqu\xE9"
+- 'test_ath_audit.py: Code trop court (8 lignes)'
+- "test_ath_audit.py: Appel shell potentiellement risqu\xE9"
+- 'test_ath_coverage.py: Code trop court (8 lignes)'
+- "test_ath_coverage.py: Appel shell potentiellement risqu\xE9"
+- 'main.py: Code trop court (6 lignes)'
+- "main.py: Aucune fonction d\xE9finie"
+- "test_booster_ia_VioletTwistAI.py: Appel shell potentiellement risqu\xE9"
+- 'main.py: Erreur d''analyse - invalid syntax (<unknown>, line 19)'
+- 'main.py: Erreur d''analyse - invalid syntax (<unknown>, line 19)'
+- "ath_context_prompt.py: Appel shell potentiellement risqu\xE9"
+- 'ath_context_prompt.py: append('
+- "auto_correction_avancee.py: Appel shell potentiellement risqu\xE9"
+- 'auto_correction_avancee.py: append('
+- '._dashboard_unifie_simple.py: Erreur d''analyse - ''utf-8'' codec can''t decode
+  byte 0xb0 in position 37: invalid start byte'
+- 'dashboard_unifie_simple.py: append('
+- 'main.py: Code trop court (4 lignes)'
+- "main.py: Aucune fonction d\xE9finie"
+- 'main.py: Erreur d''analyse - invalid syntax (<unknown>, line 27)'
+- 'main.py: Erreur d''analyse - invalid syntax (<unknown>, line 27)'
+- "test_booster_ia_mon-projet.py: Appel shell potentiellement risqu\xE9"
+- 'main.py: Erreur d''analyse - invalid syntax (<unknown>, line 27)'
+- 'ath_context_prompt.py: Code trop court (4 lignes)'
+- "ath_context_prompt.py: Aucune fonction d\xE9finie"
+- '._agent_qwen.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte 0xb0 in
+  position 37: invalid start byte'
+- 'ath_context_prompt.py: Erreur d''analyse - unexpected indent (<unknown>, line 7)'
+- '._agent_audit.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte 0xb0 in
+  position 37: invalid start byte'
+- '._agent_network.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte 0xb0
+  in position 37: invalid start byte'
+- '._benchmark_distillation.py: Erreur d''analyse - ''utf-8'' codec can''t decode
+  byte 0xb0 in position 37: invalid start byte'
+- '._api_distillation.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte 0xb0
+  in position 37: invalid start byte'
+- 'test_prompts_complet.py: append('
+- '._test_prompts_complet.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte
+  0xb0 in position 37: invalid start byte'
+- 'test_prompts_rapide.py: append('
+- '._test_prompts_rapide.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte
+  0xb0 in position 37: invalid start byte'
+- 'cleanup.py: append('
+- '._ai_robust.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte 0xb0 in
+  position 37: invalid start byte'
+- 'main.py: append('
+- 'analytics.py: append('
+- 'audit.py: Contient TODO / FIXME'
+- "audit.py: Appel shell potentiellement risqu\xE9"
+- 'audit.py: Saisie de mot de passe en clair'
+- 'audit.py: Mot de passe en dur'
+- 'audit.py: append('
+- '._cli.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte 0xb0 in position
+  37: invalid start byte'
+- 'security.py: Mot de passe en dur'
+- 'security.py: append('
+- 'plugins_manager.py: append('
+- 'plugins_validator.py: append('
+- "ai_robust.py: Appel shell potentiellement risqu\xE9"
+- 'ai_robust.py: append('
+- '._athalia_orchestrator.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte
+  0xb0 in position 37: invalid start byte'
+- 'cli.py: Contient TODO / FIXME'
+- 'ready_check.py: append('
+- 'project_importer.py: append('
+- '._dashboard.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte 0xb0 in
+  position 37: invalid start byte'
+- '._advanced_analytics.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte
+  0xb0 in position 37: invalid start byte'
+- "intelligent_auditor.py: Appel shell potentiellement risqu\xE9"
+- 'intelligent_auditor.py: Mot de passe en dur'
+- 'intelligent_auditor.py: append('
+- 'auto_cleaner.py: append('
+- 'auto_documenter.py: append('
+- 'auto_tester.py: Contient TODO / FIXME'
+- "auto_tester.py: Appel shell potentiellement risqu\xE9"
+- 'auto_tester.py: append('
+- 'auto_cicd.py: append('
+- 'athalia_orchestrator.py: append('
+- 'multi_file_editor.py: append('
+- "code_linter.py: Appel shell potentiellement risqu\xE9"
+- 'code_linter.py: append('
+- "security_auditor.py: Appel shell potentiellement risqu\xE9"
+- 'security_auditor.py: Mot de passe en dur'
+- 'security_auditor.py: append('
+- 'module_discovery.py: Erreur d''analyse - unterminated string literal (detected
+  at line 16) (<unknown>, line 16)'
+- "__init__.py: Aucune fonction d\xE9finie"
+- "__init__.py: Aucune fonction d\xE9finie"
+- 'artistic_templates.py: append('
+- 'api_templates.py: Erreur d''analyse - unterminated triple-quoted string literal
+  (detected at line 78) (<unknown>, line 9)'
+- 'response_distiller.py: append('
+- '._response_distiller.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte
+  0xb0 in position 37: invalid start byte'
+- '._audit_distiller.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte 0xb0
+  in position 37: invalid start byte'
+- '._correction_distiller.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte
+  0xb0 in position 37: invalid start byte'
+- '._quality_scorer.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte 0xb0
+  in position 37: invalid start byte'
+- '__init__.py: Code trop court (4 lignes)'
+- "__init__.py: Aucune fonction d\xE9finie"
+- '.___init__.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte 0xb0 in position
+  37: invalid start byte'
+- 'adaptive_distillation.py: append('
+- '._adaptive_distillation.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte
+  0xb0 in position 37: invalid start byte'
+- 'code_genetics.py: append('
+- '._code_genetics.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte 0xb0
+  in position 37: invalid start byte'
+- '._predictive_cache.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte 0xb0
+  in position 37: invalid start byte'
+- "multimodal_distiller.py: Appel shell potentiellement risqu\xE9"
+- 'multimodal_distiller.py: append('
+- '._multimodal_distiller.py: Erreur d''analyse - ''utf-8'' codec can''t decode byte
+  0xb0 in position 37: invalid start byte'
+- '__init__.py: Code trop court (4 lignes)'
+- "__init__.py: Aucune fonction d\xE9finie"
+- "ath-test.py: Appel shell potentiellement risqu\xE9"
+- "ath-lint.py: Appel shell potentiellement risqu\xE9"
+- "ath-build.py: Appel shell potentiellement risqu\xE9"
+- "ath-audit.py: Appel shell potentiellement risqu\xE9"
+- "ath-coverage.py: Appel shell potentiellement risqu\xE9"
+- 'ath-coverage.py: append('
+- 'Fichiers de test: test_dashboard_simple.html, test_prompts_results.json, test_complet.log,
+  test_ready_check.meta.json, test_plugins_validator.data.json, test_plugins_validator.meta.json,
+  test_ready_check.data.json, test_security.data.json, test_security.meta.json, test_distillation.data.json,
+  test_ai_robust.meta.json, test_cleanup.meta.json, test_multi_file_editor.meta.json,
+  test_athalia_orchestrator.meta.json, test_ai_robust.data.json, test_cleanup.data.json,
+  test_multi_file_editor.data.json, test_athalia_orchestrator.data.json, test_autocomplete_server.data.json,
+  test_autocomplete_server.meta.json, test_unit_14.data.json, test_unit_14.meta.json,
+  test_distillation.meta.json, test_adaptive_distillation.data.json, test_adaptive_distillation.meta.json,
+  test_code_genetics.data.json, test_predictive_cache.data.json, test_code_genetics.meta.json,
+  test_predictive_cache.meta.json, test_multimodal_distiller.data.json, test_multimodal_distiller.meta.json,
+  test_agent_audit.data.json, test_agent_audit.meta.json, test_agent_network.data.json,
+  test_agent_network.meta.json, test_api_distillation.data.json, test_api_distillation.meta.json,
+  test_prompts_complet.meta.json, test_plugin_complet.data.json, test_plugin_complet.meta.json,
+  test_correction.data.json, test_prompts_complet.data.json, test_correction.meta.json,
+  test_prompts_rapide.meta.json, test_prompts_rapide.data.json, test_integration_1.data.json,
+  test_integration_1.meta.json, test_final.data.json, test_final.meta.json, test_unit_22.data.json,
+  test_unit_22.meta.json, test_unit_20.data.json, test_unit_20.meta.json, test_final_athalia.data.json,
+  test_final_athalia.meta.json, test_complet_athalia.data.json, test_complet_athalia.meta.json,
+  test_unit_23.data.json, test_unit_23.meta.json, test_unit_31.data.json, test_project_importer.data.json,
+  test_unit_31.meta.json, test_unified.data.json, test_project_importer.meta.json,
+  test_auto_tester_unit.meta.json, test_unit_21.data.json, test_unit_21.meta.json,
+  test_integration_distillation.data.json, test_integration_distillation.meta.json,
+  test_integration_multimodal.data.json, test_integration_multimodal.meta.json, test_integration_autogen.data.json,
+  test_integration_autogen.meta.json, test_benchmark_critical.data.json, test_benchmark_critical.meta.json,
+  test_advanced_analytics_unit.data.json, test_advanced_analytics_unit.meta.json,
+  test_dashboard.data.json, test_booster_ia_mon-projet.data.json, test_dashboard.meta.json,
+  test_booster_ia_mon-projet.meta.json, test_aliases.data.json, test_auto_cleaner_unit.data.json,
+  test_aliases.meta.json, test_auto_cleaner_unit.meta.json, test_auto_tester_unit.data.json,
+  test_unified.meta.json, test_ath_context_prompt_semantic.py, test_ath_dev_boost.py,
+  test_athalia_simple.py, test_ath_dev_boost_menu.py, test_audit_intelligent.py, test_ci.py,
+  test_ready_check.py, test_plugins.py, test_cleanup.py, test_final.py, test_continue_models.py,
+  test_analytics.py, test_plugin_complet.py, test_i18n.py, test_generation.py, test_ai_robust.py,
+  test_onboarding.py, test_unified.py, test_security.py, test_plugins_validator.py,
+  test_ai_robust_integration.py, test_aliases.py, test_project_importer.py, test_ci_manual.py,
+  test_complet_athalia.py, test_correction.py, test_final_athalia.py, test_athalia_orchestrator.py,
+  test_auto_correction_avancee.py, test_profils_utilisateur_avances.py, test_multi_file_editor.py,
+  test_dashboard_unifie.py, test_distillation.py, test_dashboard_unifie_simple.py,
+  test_autocomplete_server.py, test_unit_1.py, test_unit_2.py, test_unit_3.py, test_unit_4.py,
+  test_adaptive_distillation.py, test_unit_5.py, test_code_genetics.py, test_unit_6.py,
+  test_unit_7.py, test_predictive_cache.py, test_unit_9.py, test_unit_10.py, test_multimodal_distiller.py,
+  test_unit_11.py, test_unit_12.py, test_agent_audit.py, test_unit_13.py, test_unit_14.py,
+  test_agent_network.py, test_unit_15.py, test_unit_16.py, test_api_distillation.py,
+  test_unit_17.py, test_unit_18.py, test_integration_multimodal.py, test_unit_19.py,
+  test_integration_autogen.py, test_unit_20.py, test_unit_21.py, test_benchmark_critical.py,
+  test_unit_22.py, test_unit_23.py, test_integration_distillation.py, test_unit_26.py,
+  test_dashboard.py, test_unit_27.py, test_unit_28.py, test_advanced_analytics_unit.py,
+  test_unit_30.py, test_unit_31.py, test_unit_32.py, test_auto_cleaner_unit.py, test_unit_33.py,
+  test_unit_34.py, test_auto_tester_unit.py, test_unit_35.py, test_unit_36.py, test_integration_1.f,
+  test_integration_1.py, test_performance_1.py, test_performance_1.f, test_aliases_execution.py,
+  test_auto_documenter_unit.py, test_athalia_orchestrator_unit.py, test_analytics_unit.py,
+  test_ai_robust_unit.py, test_auto_cicd_unit.py, test_end_to_end.py, test_cli_robustesse.py,
+  test_yaml_validity.py, test_cli_robustesse.cpython-310-pytest-8.4.1.pyc, test_end_to_end.cpython-310-pytest-8.4.1.pyc,
+  test_yaml_validity.cpython-310-pytest-8.4.1.pyc, test_adaptive_distillation.cpython-310-pytest-8.4.1.pyc,
+  test_advanced_analytics_unit.cpython-310-pytest-8.4.1.pyc, test_agent_audit.cpython-310-pytest-8.4.1.pyc,
+  test_agent_network.cpython-310-pytest-8.4.1.pyc, test_ai_robust_integration.cpython-310-pytest-8.4.1.pyc,
+  test_ai_robust.cpython-310-pytest-8.4.1.pyc, test_aliases.cpython-310-pytest-8.4.1.pyc,
+  test_analytics.cpython-310-pytest-8.4.1.pyc, test_api_distillation.cpython-310-pytest-8.4.1.pyc,
+  test_ath_context_prompt_semantic.cpython-310-pytest-8.4.1.pyc, test_ath_dev_boost.cpython-310-pytest-8.4.1.pyc,
+  test_ath_dev_boost_menu.cpython-310-pytest-8.4.1.pyc, test_athalia_orchestrator.cpython-310-pytest-8.4.1.pyc,
+  test_athalia_simple.cpython-310-pytest-8.4.1.pyc, test_audit_intelligent.cpython-310-pytest-8.4.1.pyc,
+  test_auto_correction_avancee.cpython-310-pytest-8.4.1.pyc, test_auto_cleaner_unit.cpython-310-pytest-8.4.1.pyc,
+  test_autocomplete_server.cpython-310-pytest-8.4.1.pyc, test_benchmark_critical.cpython-310-pytest-8.4.1.pyc,
+  test_ci_manual.cpython-310-pytest-8.4.1.pyc, test_ci.cpython-310-pytest-8.4.1.pyc,
+  test_cleanup.cpython-310-pytest-8.4.1.pyc, test_code_genetics.cpython-310-pytest-8.4.1.pyc,
+  test_complet_athalia.cpython-310-pytest-8.4.1.pyc, test_continue_models.cpython-310-pytest-8.4.1.pyc,
+  test_correction.cpython-310-pytest-8.4.1.pyc, test_dashboard.cpython-310-pytest-8.4.1.pyc,
+  test_dashboard_unifie_simple.cpython-310-pytest-8.4.1.pyc, test_dashboard_unifie.cpython-310-pytest-8.4.1.pyc,
+  test_distillation.cpython-310-pytest-8.4.1.pyc, test_final.cpython-310-pytest-8.4.1.pyc,
+  test_final_athalia.cpython-310-pytest-8.4.1.pyc, test_generation.cpython-310-pytest-8.4.1.pyc,
+  test_i18n.cpython-310-pytest-8.4.1.pyc, test_integration_1.cpython-310-pytest-8.4.1.pyc,
+  test_integration_autogen.cpython-310-pytest-8.4.1.pyc, test_integration_distillation.cpython-310-pytest-8.4.1.pyc,
+  test_integration_multimodal.cpython-310-pytest-8.4.1.pyc, test_multi_file_editor.cpython-310-pytest-8.4.1.pyc,
+  test_multimodal_distiller.cpython-310-pytest-8.4.1.pyc, test_onboarding.cpython-310-pytest-8.4.1.pyc,
+  test_performance_1.cpython-310-pytest-8.4.1.pyc, test_plugin_complet.cpython-310-pytest-8.4.1.pyc,
+  test_plugins.cpython-310-pytest-8.4.1.pyc, test_plugins_validator.cpython-310-pytest-8.4.1.pyc,
+  test_predictive_cache.cpython-310-pytest-8.4.1.pyc, test_profils_utilisateur_avances.cpython-310-pytest-8.4.1.pyc,
+  test_project_importer.cpython-310-pytest-8.4.1.pyc, test_ready_check.cpython-310-pytest-8.4.1.pyc,
+  test_security.cpython-310-pytest-8.4.1.pyc, test_unified.cpython-310-pytest-8.4.1.pyc,
+  test_unit_1.cpython-310-pytest-8.4.1.pyc, test_unit_10.cpython-310-pytest-8.4.1.pyc,
+  test_unit_11.cpython-310-pytest-8.4.1.pyc, test_unit_12.cpython-310-pytest-8.4.1.pyc,
+  test_unit_13.cpython-310-pytest-8.4.1.pyc, test_unit_14.cpython-310-pytest-8.4.1.pyc,
+  test_unit_15.cpython-310-pytest-8.4.1.pyc, test_unit_16.cpython-310-pytest-8.4.1.pyc,
+  test_unit_17.cpython-310-pytest-8.4.1.pyc, test_unit_18.cpython-310-pytest-8.4.1.pyc,
+  test_unit_19.cpython-310-pytest-8.4.1.pyc, test_unit_2.cpython-310-pytest-8.4.1.pyc,
+  test_unit_20.cpython-310-pytest-8.4.1.pyc, test_unit_21.cpython-310-pytest-8.4.1.pyc,
+  test_unit_22.cpython-310-pytest-8.4.1.pyc, test_unit_23.cpython-310-pytest-8.4.1.pyc,
+  test_unit_26.cpython-310-pytest-8.4.1.pyc, test_unit_27.cpython-310-pytest-8.4.1.pyc,
+  test_unit_28.cpython-310-pytest-8.4.1.pyc, test_unit_3.cpython-310-pytest-8.4.1.pyc,
+  test_unit_30.cpython-310-pytest-8.4.1.pyc, test_unit_31.cpython-310-pytest-8.4.1.pyc,
+  test_unit_32.cpython-310-pytest-8.4.1.pyc, test_unit_33.cpython-310-pytest-8.4.1.pyc,
+  test_unit_34.cpython-310-pytest-8.4.1.pyc, test_unit_35.cpython-310-pytest-8.4.1.pyc,
+  test_unit_36.cpython-310-pytest-8.4.1.pyc, test_unit_4.cpython-310-pytest-8.4.1.pyc,
+  test_unit_5.cpython-310-pytest-8.4.1.pyc, test_unit_6.cpython-310-pytest-8.4.1.pyc,
+  test_unit_7.cpython-310-pytest-8.4.1.pyc, test_unit_9.cpython-310-pytest-8.4.1.pyc,
+  test_auto_tester_unit.cpython-310-pytest-8.4.1.pyc, test_aliases_execution.cpython-310-pytest-8.4.1.pyc,
+  test_auto_documenter_unit.cpython-310-pytest-8.4.1.pyc, test_athalia_orchestrator_unit.cpython-310-pytest-8.4.1.pyc,
+  test_analytics_unit.cpython-310-pytest-8.4.1.pyc, test_ai_robust_unit.cpython-310-pytest-8.4.1.pyc,
+  test_auto_cicd_unit.cpython-310-pytest-8.4.1.pyc, test_ath_test.py, test_ath_lint.py,
+  test_ath_build.py, test_ath_audit.py, test_ath_coverage.py, test_ath_audit.cpython-310-pytest-8.4.1.pyc,
+  test_ath_build.cpython-310-pytest-8.4.1.pyc, test_ath_coverage.cpython-310-pytest-8.4.1.pyc,
+  test_ath_lint.cpython-310-pytest-8.4.1.pyc, test_ath_test.cpython-310-pytest-8.4.1.pyc,
+  test_booster_ia_VioletTwistAI.py, test_booster_ia_VioletTwistAI.cpython-310-pytest-8.4.1.pyc,
+  test_strategy.md, test_booster_ia_mon-projet.py, test_booster_ia_mon-projet.cpython-310-pytest-8.4.1.pyc,
+  test_strategy.md, test_strategy.md, test_prompts_complet.py, test_prompts_rapide.py,
+  test_prompts_complet.cpython-310-pytest-8.4.1.pyc, test_prompts_rapide.cpython-310-pytest-8.4.1.pyc'
+- 'Documentation manquante: API.md'
+- 69 fichiers sans docstrings
+- "._benchmark_qwen_mistral.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't\
+  \ decode byte 0xb0 in position 37: invalid start byte"
+- "._test_unit_5.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't decode\
+  \ byte 0xb0 in position 37: invalid start byte"
+- "._test_distillation.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't decode\
+  \ byte 0xb0 in position 37: invalid start byte"
+- "._test_athalia_orchestrator.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec\
+  \ can't decode byte 0xb0 in position 37: invalid start byte"
+- "._test_ai_robust.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't decode\
+  \ byte 0xb0 in position 37: invalid start byte"
+- "._test_code_genetics.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't\
+  \ decode byte 0xb0 in position 37: invalid start byte"
+- "._test_adaptive_distillation.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec\
+  \ can't decode byte 0xb0 in position 37: invalid start byte"
+- "._test_predictive_cache.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't\
+  \ decode byte 0xb0 in position 37: invalid start byte"
+- "._test_multimodal_distiller.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec\
+  \ can't decode byte 0xb0 in position 37: invalid start byte"
+- "._test_agent_audit.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't decode\
+  \ byte 0xb0 in position 37: invalid start byte"
+- "._test_agent_network.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't\
+  \ decode byte 0xb0 in position 37: invalid start byte"
+- "._test_api_distillation.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't\
+  \ decode byte 0xb0 in position 37: invalid start byte"
+- "._test_integration_autogen.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec\
+  \ can't decode byte 0xb0 in position 37: invalid start byte"
+- "._test_benchmark_critical.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't\
+  \ decode byte 0xb0 in position 37: invalid start byte"
+- "._test_integration_distillation.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec\
+  \ can't decode byte 0xb0 in position 37: invalid start byte"
+- "._test_integration_multimodal.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec\
+  \ can't decode byte 0xb0 in position 37: invalid start byte"
+- "._test_dashboard.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't decode\
+  \ byte 0xb0 in position 37: invalid start byte"
+- "._test_advanced_analytics_unit.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec\
+  \ can't decode byte 0xb0 in position 37: invalid start byte"
+- "._test_aliases.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't decode\
+  \ byte 0xb0 in position 37: invalid start byte"
+- "._test_auto_cleaner_unit.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't\
+  \ decode byte 0xb0 in position 37: invalid start byte"
+- "._test_auto_tester_unit.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't\
+  \ decode byte 0xb0 in position 37: invalid start byte"
+- "._test_aliases_execution.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't\
+  \ decode byte 0xb0 in position 37: invalid start byte"
+- "._test_auto_documenter_unit.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec\
+  \ can't decode byte 0xb0 in position 37: invalid start byte"
+- "._test_athalia_orchestrator_unit.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8'\
+  \ codec can't decode byte 0xb0 in position 37: invalid start byte"
+- "._test_analytics_unit.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't\
+  \ decode byte 0xb0 in position 37: invalid start byte"
+- "._test_ai_robust_unit.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't\
+  \ decode byte 0xb0 in position 37: invalid start byte"
+- "._test_auto_cicd_unit.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't\
+  \ decode byte 0xb0 in position 37: invalid start byte"
+- "._dashboard_unifie_simple.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't\
+  \ decode byte 0xb0 in position 37: invalid start byte"
+- "._agent_qwen.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't decode byte\
+  \ 0xb0 in position 37: invalid start byte"
+- "._agent_audit.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't decode\
+  \ byte 0xb0 in position 37: invalid start byte"
+- "._agent_network.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't decode\
+  \ byte 0xb0 in position 37: invalid start byte"
+- "._benchmark_distillation.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't\
+  \ decode byte 0xb0 in position 37: invalid start byte"
+- "._api_distillation.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't decode\
+  \ byte 0xb0 in position 37: invalid start byte"
+- "._test_prompts_complet.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't\
+  \ decode byte 0xb0 in position 37: invalid start byte"
+- "._test_prompts_rapide.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't\
+  \ decode byte 0xb0 in position 37: invalid start byte"
+- "._ai_robust.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't decode byte\
+  \ 0xb0 in position 37: invalid start byte"
+- "audit.py: Utilisation d'eval() - vuln\xE9rabilit\xE9"
+- "audit.py: Utilisation d'exec() - vuln\xE9rabilit\xE9"
+- 'audit.py: Saisie de mot de passe en clair'
+- "._cli.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't decode byte 0xb0\
+  \ in position 37: invalid start byte"
+- "._athalia_orchestrator.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't\
+  \ decode byte 0xb0 in position 37: invalid start byte"
+- "._dashboard.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't decode byte\
+  \ 0xb0 in position 37: invalid start byte"
+- "._advanced_analytics.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't\
+  \ decode byte 0xb0 in position 37: invalid start byte"
+- "intelligent_auditor.py: Utilisation d'eval() - vuln\xE9rabilit\xE9"
+- "intelligent_auditor.py: Utilisation d'exec() - vuln\xE9rabilit\xE9"
+- "._response_distiller.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't\
+  \ decode byte 0xb0 in position 37: invalid start byte"
+- "._audit_distiller.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't decode\
+  \ byte 0xb0 in position 37: invalid start byte"
+- "._correction_distiller.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't\
+  \ decode byte 0xb0 in position 37: invalid start byte"
+- "._quality_scorer.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't decode\
+  \ byte 0xb0 in position 37: invalid start byte"
+- ".___init__.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't decode byte\
+  \ 0xb0 in position 37: invalid start byte"
+- "._adaptive_distillation.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't\
+  \ decode byte 0xb0 in position 37: invalid start byte"
+- "._code_genetics.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't decode\
+  \ byte 0xb0 in position 37: invalid start byte"
+- "._predictive_cache.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't decode\
+  \ byte 0xb0 in position 37: invalid start byte"
+- "._multimodal_distiller.py: Erreur d'analyse s\xE9curit\xE9 - 'utf-8' codec can't\
+  \ decode byte 0xb0 in position 37: invalid start byte"
+- Mot de passe en dur
+- "Cl\xE9 API"
+- append(
+metrics:
+  code_score: 0
+  doc_score: 0
+  performance_score: 100
+  security_score: 0
+  structure_score: 60
+  test_score: 100
+  total_classes: 119
+  total_functions: 918
+  total_lines: 18114
+score: 32.0
+suggestions:
+- "Cr\xE9er les dossiers: src, api"
+- "Cr\xE9er les fichiers: main.py"
+- Remplacer logger.info() par logging dans test_plugins.py
+- Remplacer logger.info() par logging dans test_ai_robust.py
+- Remplacer logger.info() par logging dans test_project_importer.py
+- "Cr\xE9er la documentation: API.md"
+- Ajouter des docstrings aux fonctions et classes
+summary: "R\xE9sum\xE9 mock\xE9 pour compatibilit\xE9 tests."

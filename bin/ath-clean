@@ -1,0 +1,3 @@
+#!/bin/bash
+# Nettoyage complet du projet Athalia/Arkalia
+find . \( -name "__pycache__" -o -name ".DS_Store" -o -name "*.log" \) -print0 | xargs -0 rm -rf 
