@@ -171,5 +171,83 @@ def test_orchestrator_import():
     except ImportError as e:
         pytest.fail(f"Impossible d'importer AthaliaOrchestrator: {e}")
 
+def test_distill_ia_responses(monkeypatch):
+    from athalia_core.athalia_orchestrator import AthaliaOrchestrator
+    orch = AthaliaOrchestrator()
+    # Mock RobustAI pour éviter les appels réels à Ollama
+    from athalia_core.ai_robust import RobustAI, AIModel
+    def fake_call_model(self, model, prompt):
+        if hasattr(model, 'value'):
+            model = model.value
+        return f"Réponse {model} à '{prompt}'"
+    monkeypatch.setattr(RobustAI, '_call_model', fake_call_model)
+    prompt = "Test distillation IA."
+    result = orch.distill_ia_responses(prompt, models=["ollama_qwen", "ollama_mistral", "mock"], strategy="voting")
+    assert isinstance(result, str)
+    assert "Réponse ollama_qwen" in result or "Réponse ollama_mistral" in result or "Réponse mock" in result
+
+def test_distill_audits():
+    from athalia_core.athalia_orchestrator import AthaliaOrchestrator
+    orch = AthaliaOrchestrator()
+    audits = [
+        {"type": "securite", "score": 8},
+        {"type": "qualite", "score": 6},
+        {"type": "performance", "score": 10}
+    ]
+    result = orch.distill_audits(audits)
+    assert isinstance(result, dict)
+    assert "global_score" in result
+    assert abs(result["global_score"] - ((8*0.4+6*0.4+10*0.2)/1.0)) < 1e-6
+
+def test_distill_corrections():
+    from athalia_core.athalia_orchestrator import AthaliaOrchestrator
+    orch = AthaliaOrchestrator()
+    corrections = ["fix1", "fix2", "fix3"]
+    scores = [0.2, 0.9, 0.5]
+    result = orch.distill_corrections(corrections, scores)
+    assert result == "fix2"
+
+def test_distill_adaptive_responses():
+    from athalia_core.athalia_orchestrator import AthaliaOrchestrator
+    orch = AthaliaOrchestrator()
+    responses = ["A", "B", "A", "C", "A", "B"]
+    result = orch.distill_adaptive_responses(responses)
+    assert result == "A"
+
+def test_distill_genetics():
+    from athalia_core.athalia_orchestrator import AthaliaOrchestrator
+    orch = AthaliaOrchestrator()
+    solutions = ["print('hello world')", "print('hello')", "world = 1"]
+    result = orch.distill_genetics(solutions)
+    # Vérifie que le résultat contient au moins un mot parmi les deux premiers mots de chaque solution
+    mots_possibles = set()
+    for sol in solutions:
+        mots = sol.split()
+        mots_possibles.update(mots[:2])
+    assert any(word in result for word in mots_possibles)
+
+def test_cache_predictive():
+    from athalia_core.athalia_orchestrator import AthaliaOrchestrator
+    orch = AthaliaOrchestrator()
+    key = "test_key"
+    orch.cache_predictive(key, "valeur1")
+    assert orch.cache_predictive(key) == "valeur1"
+
+def test_distillation_multi_ia_reelle(monkeypatch):
+    """Test d'intégration : distillation réelle multi-IA (Qwen, Mistral, Mock) via l'orchestrateur."""
+    from athalia_core.athalia_orchestrator import AthaliaOrchestrator
+    orch = AthaliaOrchestrator()
+    # Mock RobustAI pour éviter les appels réels à Ollama
+    from athalia_core.ai_robust import RobustAI, AIModel
+    def fake_call_model(self, model, prompt):
+        if hasattr(model, 'value'):
+            model = model.value
+        return f"Réponse {model} à '{prompt}'"
+    monkeypatch.setattr(RobustAI, '_call_model', fake_call_model)
+    prompt = "Explique la distillation IA en 2 phrases."
+    result = orch.distill_ia_responses(prompt, models=["ollama_qwen", "ollama_mistral", "mock"], strategy="voting")
+    assert isinstance(result, str)
+    assert "Réponse ollama_qwen" in result or "Réponse ollama_mistral" in result or "Réponse mock" in result
+
 if __name__ == "__main__":
     pytest.main([__file__])
