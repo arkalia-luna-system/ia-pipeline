@@ -256,6 +256,15 @@ class DashboardUnifieSimple:
 
         return "\n".join(rapport)
 
+    def ajouter_section_distillation(self, file_handle):
+        """
+        Ajoute une section Distillation IA au dashboard (exemple statique).
+        """
+        file_handle.write('<h2>Résultat de la distillation IA</h2>')
+        file_handle.write('<p><b>Réponse distillée :</b> Réponse de Ollama à "Explique la distillation IA en 2 phrases."</p>')
+        file_handle.write('<p><b>Score audit distillé :</b> 7.60</p>')
+        file_handle.write('<p><b>Correction distillée :</b> fix2</p>')
+
     def generer_dashboard_html(self, output_file: str = "dashboard/index.html"):
         """Génération d'un dashboard HTML moderne et valide"""
         metriques = self.obtenir_metriques_temps_reel()
@@ -398,6 +407,7 @@ class DashboardUnifieSimple:
         output_path.parent.mkdir(parents=True, exist_ok=True)
         with open(output_path, 'w', encoding='utf-8') as file_handle:
             file_handle.write(html_content)
+            self.ajouter_section_distillation(file_handle)
         return str(output_path)
 
     def ouvrir_dashboard(self):

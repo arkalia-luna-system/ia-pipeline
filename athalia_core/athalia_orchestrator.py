@@ -17,6 +17,14 @@ from .security_auditor import SecurityAuditor
 from datetime import datetime
 import argparse
 import logging
+from athalia_core.distillation.response_distiller import ResponseDistiller
+from typing import Optional, Any, List
+from athalia_core.distillation.audit_distiller import AuditDistiller
+from athalia_core.distillation.correction_distiller import CorrectionDistiller
+from athalia_core.distillation.adaptive_distillation import AdaptiveDistiller
+from athalia_core.distillation.code_genetics import CodeGenetics
+from athalia_core.distillation.predictive_cache import PredictiveCache
+from athalia_core.ai_robust import RobustAI, AIModel, PromptContext
 
 logger = logging.getLogger(__name__)
 
@@ -37,6 +45,7 @@ from .project_importer import ProjectImporter
 from .security_auditor import SecurityAuditor
 
 class AthaliaOrchestrator:
+    _predictive_cache = None
     """Orchestrateur principal Athalia"""
 
     def __init__(self):
@@ -374,6 +383,63 @@ class AthaliaOrchestrator:
                 content = badge + content
                 readme_file.write_text(content, encoding="utf-8")
 
+    def distill_ia_responses(self, prompt: str, models: Optional[List[str]] = None, strategy: str = 'voting') -> str:
+        """
+        Interroge Qwen, Mistral, Mock (via RobustAI), distille les réponses et retourne la meilleure.
+        """
+        ai = RobustAI()
+        # Détection dynamique des modèles disponibles
+        fallback_models = ai.fallback_chain
+        if models:
+            # Filtrer la chaîne de fallback selon la liste demandée
+            fallback_models = [m for m in fallback_models if m.value in models or m.name in models]
+        responses = []
+        for model in fallback_models:
+            try:
+                # Utilise le prompt blueprint pour l'exemple, peut être adapté
+                res = ai._call_model(model, prompt)
+                if res:
+                    responses.append(res)
+            except Exception as e:
+                responses.append(f"Erreur {model.value}: {e}")
+        if not responses:
+            return "[Aucune réponse IA disponible]"
+        from athalia_core.distillation.response_distiller import distill_responses
+        return distill_responses(responses, strategy=strategy)
+
+    def distill_audits(self, audits: list) -> dict:
+        """
+        Fusionne plusieurs audits en un score global distillé.
+        """
+        distiller = AuditDistiller(weights={"securite": 0.4, "qualite": 0.4, "performance": 0.2})
+        return distiller.distill(audits)
+
+    def distill_corrections(self, corrections: list, scores: list = None) -> str:
+        """
+        Sélectionne la meilleure correction parmi plusieurs suggestions IA.
+        """
+        distiller = CorrectionDistiller(strategy='score')
+        return distiller.distill(corrections, scores=scores)
+
+    def distill_adaptive_responses(self, responses: list) -> str:
+        """
+        Fusionne plusieurs réponses IA de façon adaptative.
+        """
+        distiller = AdaptiveDistiller()
+        return distiller.distill_responses(responses)
+
+    def distill_genetics(self, solutions: list) -> str:
+        genetics = CodeGenetics()
+        return genetics.crossover(solutions)
+
+    def cache_predictive(self, key: str, value: str = None) -> str:
+        if AthaliaOrchestrator._predictive_cache is None:
+            AthaliaOrchestrator._predictive_cache = PredictiveCache()
+        cache = AthaliaOrchestrator._predictive_cache
+        if value is not None:
+            cache.set(key, value)
+        return cache.get(key)
+
 def main():
     """Point d'entrée du programme"""
     parser = argparse.ArgumentParser(description="Athalia - Industrialisation IA f")
@@ -413,6 +479,29 @@ def main():
 
         results = orchestrator.industrialize_project(args.project_path, config)
         logger.info(results["final_report"])
+
+    orch = AthaliaOrchestrator()
+    prompt = "Explique la distillation IA en 2 phrases."
+    print("Réponse distillée :", orch.distill_ia_responses(prompt))
+    audits = [
+        {"type": "securite", "score": 8},
+        {"type": "qualite", "score": 6},
+        {"type": "performance", "score": 10}
+    ]
+    print("Audit distillé :", orch.distill_audits(audits))
+    corrections = ["fix1", "fix2", "fix3"]
+    scores = [0.2, 0.9, 0.5]
+    print("Correction distillée :", orch.distill_corrections(corrections, scores))
+    # Exemple d'appel distillation adaptative
+    responses = ["A", "B", "A", "C", "A", "B"]
+    print("Réponse distillée adaptative :", orch.distill_adaptive_responses(responses))
+    # Exemple d'appel code genetics
+    solutions = ["print('hello world')", "print('hello')", "world = 1"]
+    print("Solution genetics :", orch.distill_genetics(solutions))
+    # Exemple d'appel predictive cache
+    key = "test_key"
+    orch.cache_predictive(key, "valeur1")
+    print("Cache predictive :", orch.cache_predictive(key))
 
 if __name__ == "__main__":
     main()
