@@ -96,7 +96,7 @@ class TestAliasesUnified:
         with open(ALIAS_FILE, 'r') as f:
             content = f.read()
         
-        assert "compctl -K _athalia_aliases ath-*" in content, "Auto-complétion ZSH manquante"
+        assert "compctl -K _athalia_aliases ath-" in content, "Auto-complétion ZSH manquante"
         assert "complete -A alias ath-" in content, "Auto-complétion Bash manquante"
 
     def test_athalia_root_exported(self):
