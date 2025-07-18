@@ -1,0 +1,828 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.10.14, pytest-8.4.1, pluggy-1.6.0
+benchmark: 5.1.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+rootdir: /Volumes/T7/athalia-dev-setup
+plugins: anyio-4.9.0, cov-6.2.1, asyncio-1.0.0, benchmark-5.1.0, timeout-2.4.0, xdist-3.7.0, mock-3.14.1, langsmith-0.4.7
+asyncio: mode=strict, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 304 items
+
+tests/integration/test_cli_robustesse.py .                               [  0%]
+tests/integration/test_end_to_end.py s                                   [  0%]
+tests/integration/test_yaml_validity.py .                                [  0%]
+tests/test_adaptive_distillation.py .....                                [  2%]
+tests/test_advanced_analytics_unit.py ...FFF.                            [  4%]
+tests/test_agent_network.py .                                            [  5%]
+tests/test_ai_robust.py .............                                    [  9%]
+tests/test_ai_robust_integration.py ........                             [ 12%]
+tests/test_analytics.py ....s.                                           [ 14%]
+tests/test_api_distillation.py .                                         [ 14%]
+tests/test_athalia_orchestrator.py ...............                       [ 19%]
+tests/test_athalia_simple.py ...                                         [ 20%]
+tests/test_audit_intelligent.py ........s                                [ 23%]
+tests/test_auto_correction_avancee.py ...                                [ 24%]
+tests/test_autocomplete_server.py ...                                    [ 25%]
+tests/test_benchmark_critical.py ...F                                    [ 26%]
+tests/test_ci.py .                                                       [ 26%]
+tests/test_cleanup.py .                                                  [ 27%]
+tests/test_code_genetics.py .....                                        [ 28%]
+tests/test_continue_models.py .                                          [ 29%]
+tests/test_correction.py ...                                             [ 30%]
+tests/test_dashboard.py .                                                [ 30%]
+tests/test_dashboard_unifie.py sssss                                     [ 32%]
+tests/test_dashboard_unifie_simple.py .....                              [ 33%]
+tests/test_distillation.py ..........                                    [ 37%]
+tests/test_final.py ...                                                  [ 38%]
+tests/test_final_athalia.py ....                                         [ 39%]
+tests/test_generation.py .......                                         [ 41%]
+tests/test_i18n.py ..                                                    [ 42%]
+tests/test_integration_1.py ...                                          [ 43%]
+tests/test_integration_autogen.py .                                      [ 43%]
+tests/test_integration_distillation.py .....                             [ 45%]
+tests/test_integration_multimodal.py .                                   [ 45%]
+tests/test_multi_file_editor.py ..                                       [ 46%]
+tests/test_multimodal_distiller.py ..                                    [ 47%]
+tests/test_onboarding.py .                                               [ 47%]
+tests/test_performance_1.py ...                                          [ 48%]
+tests/test_plugin_complet.py .....                                       [ 50%]
+tests/test_plugins.py ....                                               [ 51%]
+tests/test_plugins_validator.py ..                                       [ 51%]
+tests/test_predictive_cache.py ......                                    [ 53%]
+tests/test_profils_utilisateur_avances.py .....                          [ 55%]
+tests/test_project_importer.py .                                         [ 55%]
+tests/test_ready_check.py ..                                             [ 56%]
+tests/test_security.py .                                                 [ 56%]
+tests/test_unified.py ..                                                 [ 57%]
+tests/test_unit_1.py ss                                                  [ 58%]
+tests/test_unit_10.py sss                                                [ 59%]
+tests/test_unit_11.py sss                                                [ 60%]
+tests/test_unit_12.py ss                                                 [ 60%]
+tests/test_unit_13.py ss                                                 [ 61%]
+tests/test_unit_14.py .ss                                                [ 62%]
+tests/test_unit_15.py sss                                                [ 63%]
+tests/test_unit_16.py sssssssssssssssssss                                [ 69%]
+tests/test_unit_17.py .s                                                 [ 70%]
+tests/test_unit_18.py .sss                                               [ 71%]
+tests/test_unit_19.py .s                                                 [ 72%]
+tests/test_unit_2.py s                                                   [ 72%]
+tests/test_unit_20.py .                                                  [ 73%]
+tests/test_unit_21.py .s                                                 [ 73%]
+tests/test_unit_22.py .sssssssssss                                       [ 77%]
+tests/test_unit_23.py .s                                                 [ 78%]
+tests/test_unit_26.py .sssssssss                                         [ 81%]
+tests/test_unit_27.py .ssssssss                                          [ 84%]
+tests/test_unit_28.py .sssssssssss                                       [ 88%]
+tests/test_unit_3.py sssss                                               [ 90%]
+tests/test_unit_30.py .ss                                                [ 91%]
+tests/test_unit_31.py .ss                                                [ 92%]
+tests/test_unit_32.py .s                                                 [ 92%]
+tests/test_unit_33.py .                                                  [ 93%]
+tests/test_unit_34.py .                                                  [ 93%]
+tests/test_unit_35.py .                                                  [ 93%]
+tests/test_unit_36.py .                                                  [ 94%]
+tests/test_unit_4.py ss                                                  [ 94%]
+tests/test_unit_5.py sssss.ssssss                                        [ 98%]
+tests/test_unit_6.py s                                                   [ 99%]
+tests/test_unit_7.py sss
+ERROR: Coverage failure: total of 65 is less than fail-under=80
+                                                                         [100%]
+
+=================================== FAILURES ===================================
+________________ TestAdvancedAnalytics.test_generate_dashboard _________________
+
+self = <test_advanced_analytics_unit.TestAdvancedAnalytics testMethod=test_generate_dashboard>
+
+    def test_generate_dashboard(self):
+>       dashboard_path = self.analytics._generate_dashboard()
+
+tests/test_advanced_analytics_unit.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <athalia_core.advanced_analytics.AdvancedAnalytics object at 0x11f1bffd0>
+
+        def _generate_dashboard(self) -> str:
+            """Génère un dashboard HTML"""
+            dashboard_html = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Dashboard Analytics - {self.project_path.name}</title>
+        <style>
+            body {{ font-family: Arial, sans-serif; margin: 20px; }}
+            .metric {{ background: #f5f5f5; padding: 15px; margin: 10px 0; border-radius: 5px; }}
+            .summary {{ background: #e8f5e8; padding: 20px; border-radius: 5px; }}
+            .chart {{ text-align: center; margin: 20px 0; }}
+        </style>
+    </head>
+    <body>
+        <h1>📊 Dashboard Analytics-{self.project_path.name}</h1>
+        <p>Généré le {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
+    
+        <div class="summary">
+            <h2>📈 Résumé</h2>
+>           <p><strong>Complexité moyenne :</strong> {self.metrics['complexity']['average']:.2f}</p>
+            <p><strong>Fichiers analysés :</strong> {self.metrics['complexity']['total_files']}</p>
+            <p><strong>Lignes de code :</strong> {self.metrics['coverage']['total_lines']}</p>
+            <p><strong>Fonctions :</strong> {self.metrics['coverage']['docstrings']}</p>
+            <p><strong>Classes :</strong> {self.metrics['coverage']['docstrings']}</p>
+            <p><strong>Fichiers de test :</strong> {self.metrics['coverage']['files'] - self.metrics['complexity']['total_files']}</p>
+        </div>
+    
+        <div class="metric">
+            <h3>🎯 Métriques de qualité</h3>
+            <p>Docstrings : {self.metrics['quality']['docstrings']}</p>
+            <p>Commentaires : {self.metrics['quality']['comments']}</p>
+            <p>Lignes vides : {self.metrics['quality']['empty_lines']}</p>
+            <p>Ratio commentaires : {self.metrics['quality']['comments'] / max(1, self.metrics['quality']['total_lines']) * 100:.1f}%</p>
+        </div>
+    
+        <div class="metric">
+            <h3>⚡ Performance</h3>
+            <p>Dépendances : {self.metrics['performance']['dependencies']}</p>
+            <p>Fichiers Python : {len(self.metrics['performance']['file_sizes'])}</p>
+        </div>
+    
+        <div class="metric">
+            <h3>📋 Données brutes</h3>
+            <pre>{json.dumps(self.metrics, indent=2)}</pre>
+        </div>
+    </body>
+    </html>
+    """
+E   KeyError: 'average'
+
+athalia_core/advanced_analytics.py:230: KeyError
+_________________ TestAdvancedAnalytics.test_generate_summary __________________
+
+self = <test_advanced_analytics_unit.TestAdvancedAnalytics testMethod=test_generate_summary>
+
+    def test_generate_summary(self):
+>       summary = self.analytics._generate_summary()
+
+tests/test_advanced_analytics_unit.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <athalia_core.advanced_analytics.AdvancedAnalytics object at 0x11f3408e0>
+
+        def _generate_summary(self) -> str:
+            """Génère un résumé des métriques"""
+            summary = f"""
+    📊 ANALYTICS AVANCÉE-{self.project_path.name}
+    
+    🎯 MÉTRIQUES PRINCIPALES:
+>   • Complexité moyenne: {self.metrics['complexity']['average']:.2f}
+    • Fichiers analysés: {self.metrics['complexity']['total_files']}
+    • Lignes de code: {self.metrics['coverage']['total_lines']}
+    • Fonctions: {self.metrics['coverage']['docstrings']}
+    • Classes: {self.metrics['coverage']['docstrings']}
+    • Fichiers de test: {self.metrics['coverage']['files'] - self.metrics['complexity']['total_files']}
+    
+    📈 QUALITÉ:
+    • Docstrings: {self.metrics['quality']['docstrings']}
+    • Commentaires: {self.metrics['quality']['comments']}
+    • Ratio commentaires: {self.metrics['quality']['comments'] / max(1, self.metrics['quality']['total_lines']) * 100:.1f}%
+    
+    ⚡ PERFORMANCE:
+    • Dépendances: {self.metrics['performance']['dependencies']}
+    • Fichiers Python: {len(self.metrics['performance']['file_sizes'])}
+    
+    📊 FICHIERS GÉNÉRÉS:
+    • Dashboard HTML: analytics_dashboard.html
+    """
+E   KeyError: 'average'
+
+athalia_core/advanced_analytics.py:272: KeyError
+___________________ TestAdvancedAnalytics.test_print_report ____________________
+
+self = <test_advanced_analytics_unit.TestAdvancedAnalytics testMethod=test_print_report>
+
+    def test_print_report(self):
+        # Doit s'exécuter sans lever d'exception
+        try:
+>           self.analytics.print_report()
+
+tests/test_advanced_analytics_unit.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+athalia_core/advanced_analytics.py:295: in print_report
+    logger.info(self._generate_summary())
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <athalia_core.advanced_analytics.AdvancedAnalytics object at 0x1043b5930>
+
+        def _generate_summary(self) -> str:
+            """Génère un résumé des métriques"""
+            summary = f"""
+    📊 ANALYTICS AVANCÉE-{self.project_path.name}
+    
+    🎯 MÉTRIQUES PRINCIPALES:
+>   • Complexité moyenne: {self.metrics['complexity']['average']:.2f}
+    • Fichiers analysés: {self.metrics['complexity']['total_files']}
+    • Lignes de code: {self.metrics['coverage']['total_lines']}
+    • Fonctions: {self.metrics['coverage']['docstrings']}
+    • Classes: {self.metrics['coverage']['docstrings']}
+    • Fichiers de test: {self.metrics['coverage']['files'] - self.metrics['complexity']['total_files']}
+    
+    📈 QUALITÉ:
+    • Docstrings: {self.metrics['quality']['docstrings']}
+    • Commentaires: {self.metrics['quality']['comments']}
+    • Ratio commentaires: {self.metrics['quality']['comments'] / max(1, self.metrics['quality']['total_lines']) * 100:.1f}%
+    
+    ⚡ PERFORMANCE:
+    • Dépendances: {self.metrics['performance']['dependencies']}
+    • Fichiers Python: {len(self.metrics['performance']['file_sizes'])}
+    
+    📊 FICHIERS GÉNÉRÉS:
+    • Dashboard HTML: analytics_dashboard.html
+    """
+E   KeyError: 'average'
+
+athalia_core/advanced_analytics.py:272: KeyError
+
+During handling of the above exception, another exception occurred:
+
+self = <test_advanced_analytics_unit.TestAdvancedAnalytics testMethod=test_print_report>
+
+    def test_print_report(self):
+        # Doit s'exécuter sans lever d'exception
+        try:
+            self.analytics.print_report()
+        except Exception as e:
+>           self.fail(f"print_report a levé une exception: {e}")
+E           AssertionError: print_report a levé une exception: 'average'
+
+tests/test_advanced_analytics_unit.py:46: AssertionError
+________________________ test_global_coverage_threshold ________________________
+
+    def test_global_coverage_threshold():
+        """Ce test échoue si la couverture descend sous 80%."""
+        # Empêcher la récursion infinie en détectant l'environnement
+        if os.environ.get("ATHALIA_COVERAGE_SUBPROCESS") == "1":
+            pytest.skip("Test de couverture lancé en sous-processus, skip pour éviter la récursion.")
+        import subprocess
+        env = os.environ.copy()
+        env["ATHALIA_COVERAGE_SUBPROCESS"] = "1"
+        result = subprocess.run([
+            sys.executable, "-m", "pytest", "--cov=athalia_core", "--cov-report=term", "--cov-fail-under=80", "-q"
+        ], capture_output=True, text=True, env=env)
+        print(result.stdout)
+>       assert result.returncode == 0, "La couverture de code est insuffisante (<80%) !"
+E       AssertionError: La couverture de code est insuffisante (<80%) !
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/Volumes/T7/arkalia-luna-venv/bin/python', '-m', 'pytest', '--cov=athalia_core', '--cov-report...ia-dev-setup/athalia_core/templates/api_templates.py\' (couldnt-parse)\n  coverage._warn(msg, slug="couldnt-parse")\n').returncode
+
+tests/test_benchmark_critical.py:43: AssertionError
+----------------------------- Captured stdout call -----------------------------
+.........s.........FFF...........................s...................... [ 23%]
+......s.........s............sssss...................................... [ 46%]
+.......................................ssssssssssss.ssssssssssssssssssss [ 69%]
+ssss.s.sss.ss..s.sssssssssss.s.sssssssss.ssssssss.ssssssssssssssss.ss.ss [ 92%]
+.s....sssssss.ssssssssss
+ERROR: Coverage failure: total of 65 is less than fail-under=80
+                                                                         [100%]
+=================================== FAILURES ===================================
+________________ TestAdvancedAnalytics.test_generate_dashboard _________________
+
+self = <test_advanced_analytics_unit.TestAdvancedAnalytics testMethod=test_generate_dashboard>
+
+    def test_generate_dashboard(self):
+>       dashboard_path = self.analytics._generate_dashboard()
+
+tests/test_advanced_analytics_unit.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <athalia_core.advanced_analytics.AdvancedAnalytics object at 0x119ed78b0>
+
+        def _generate_dashboard(self) -> str:
+            """Génère un dashboard HTML"""
+            dashboard_html = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Dashboard Analytics - {self.project_path.name}</title>
+        <style>
+            body {{ font-family: Arial, sans-serif; margin: 20px; }}
+            .metric {{ background: #f5f5f5; padding: 15px; margin: 10px 0; border-radius: 5px; }}
+            .summary {{ background: #e8f5e8; padding: 20px; border-radius: 5px; }}
+            .chart {{ text-align: center; margin: 20px 0; }}
+        </style>
+    </head>
+    <body>
+        <h1>📊 Dashboard Analytics-{self.project_path.name}</h1>
+        <p>Généré le {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
+    
+        <div class="summary">
+            <h2>📈 Résumé</h2>
+>           <p><strong>Complexité moyenne :</strong> {self.metrics['complexity']['average']:.2f}</p>
+            <p><strong>Fichiers analysés :</strong> {self.metrics['complexity']['total_files']}</p>
+            <p><strong>Lignes de code :</strong> {self.metrics['coverage']['total_lines']}</p>
+            <p><strong>Fonctions :</strong> {self.metrics['coverage']['docstrings']}</p>
+            <p><strong>Classes :</strong> {self.metrics['coverage']['docstrings']}</p>
+            <p><strong>Fichiers de test :</strong> {self.metrics['coverage']['files'] - self.metrics['complexity']['total_files']}</p>
+        </div>
+    
+        <div class="metric">
+            <h3>🎯 Métriques de qualité</h3>
+            <p>Docstrings : {self.metrics['quality']['docstrings']}</p>
+            <p>Commentaires : {self.metrics['quality']['comments']}</p>
+            <p>Lignes vides : {self.metrics['quality']['empty_lines']}</p>
+            <p>Ratio commentaires : {self.metrics['quality']['comments'] / max(1, self.metrics['quality']['total_lines']) * 100:.1f}%</p>
+        </div>
+    
+        <div class="metric">
+            <h3>⚡ Performance</h3>
+            <p>Dépendances : {self.metrics['performance']['dependencies']}</p>
+            <p>Fichiers Python : {len(self.metrics['performance']['file_sizes'])}</p>
+        </div>
+    
+        <div class="metric">
+            <h3>📋 Données brutes</h3>
+            <pre>{json.dumps(self.metrics, indent=2)}</pre>
+        </div>
+    </body>
+    </html>
+    """
+E   KeyError: 'average'
+
+athalia_core/advanced_analytics.py:230: KeyError
+_________________ TestAdvancedAnalytics.test_generate_summary __________________
+
+self = <test_advanced_analytics_unit.TestAdvancedAnalytics testMethod=test_generate_summary>
+
+    def test_generate_summary(self):
+>       summary = self.analytics._generate_summary()
+
+tests/test_advanced_analytics_unit.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <athalia_core.advanced_analytics.AdvancedAnalytics object at 0x11a838850>
+
+        def _generate_summary(self) -> str:
+            """Génère un résumé des métriques"""
+            summary = f"""
+    📊 ANALYTICS AVANCÉE-{self.project_path.name}
+    
+    🎯 MÉTRIQUES PRINCIPALES:
+>   • Complexité moyenne: {self.metrics['complexity']['average']:.2f}
+    • Fichiers analysés: {self.metrics['complexity']['total_files']}
+    • Lignes de code: {self.metrics['coverage']['total_lines']}
+    • Fonctions: {self.metrics['coverage']['docstrings']}
+    • Classes: {self.metrics['coverage']['docstrings']}
+    • Fichiers de test: {self.metrics['coverage']['files'] - self.metrics['complexity']['total_files']}
+    
+    📈 QUALITÉ:
+    • Docstrings: {self.metrics['quality']['docstrings']}
+    • Commentaires: {self.metrics['quality']['comments']}
+    • Ratio commentaires: {self.metrics['quality']['comments'] / max(1, self.metrics['quality']['total_lines']) * 100:.1f}%
+    
+    ⚡ PERFORMANCE:
+    • Dépendances: {self.metrics['performance']['dependencies']}
+    • Fichiers Python: {len(self.metrics['performance']['file_sizes'])}
+    
+    📊 FICHIERS GÉNÉRÉS:
+    • Dashboard HTML: analytics_dashboard.html
+    """
+E   KeyError: 'average'
+
+athalia_core/advanced_analytics.py:272: KeyError
+___________________ TestAdvancedAnalytics.test_print_report ____________________
+
+self = <test_advanced_analytics_unit.TestAdvancedAnalytics testMethod=test_print_report>
+
+    def test_print_report(self):
+        # Doit s'exécuter sans lever d'exception
+        try:
+>           self.analytics.print_report()
+
+tests/test_advanced_analytics_unit.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+athalia_core/advanced_analytics.py:295: in print_report
+    logger.info(self._generate_summary())
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <athalia_core.advanced_analytics.AdvancedAnalytics object at 0x109ebdb70>
+
+        def _generate_summary(self) -> str:
+            """Génère un résumé des métriques"""
+            summary = f"""
+    📊 ANALYTICS AVANCÉE-{self.project_path.name}
+    
+    🎯 MÉTRIQUES PRINCIPALES:
+>   • Complexité moyenne: {self.metrics['complexity']['average']:.2f}
+    • Fichiers analysés: {self.metrics['complexity']['total_files']}
+    • Lignes de code: {self.metrics['coverage']['total_lines']}
+    • Fonctions: {self.metrics['coverage']['docstrings']}
+    • Classes: {self.metrics['coverage']['docstrings']}
+    • Fichiers de test: {self.metrics['coverage']['files'] - self.metrics['complexity']['total_files']}
+    
+    📈 QUALITÉ:
+    • Docstrings: {self.metrics['quality']['docstrings']}
+    • Commentaires: {self.metrics['quality']['comments']}
+    • Ratio commentaires: {self.metrics['quality']['comments'] / max(1, self.metrics['quality']['total_lines']) * 100:.1f}%
+    
+    ⚡ PERFORMANCE:
+    • Dépendances: {self.metrics['performance']['dependencies']}
+    • Fichiers Python: {len(self.metrics['performance']['file_sizes'])}
+    
+    📊 FICHIERS GÉNÉRÉS:
+    • Dashboard HTML: analytics_dashboard.html
+    """
+E   KeyError: 'average'
+
+athalia_core/advanced_analytics.py:272: KeyError
+
+During handling of the above exception, another exception occurred:
+
+self = <test_advanced_analytics_unit.TestAdvancedAnalytics testMethod=test_print_report>
+
+    def test_print_report(self):
+        # Doit s'exécuter sans lever d'exception
+        try:
+            self.analytics.print_report()
+        except Exception as e:
+>           self.fail(f"print_report a levé une exception: {e}")
+E           AssertionError: print_report a levé une exception: 'average'
+
+tests/test_advanced_analytics_unit.py:46: AssertionError
+=============================== warnings summary ===============================
+../arkalia-luna-venv/lib/python3.10/site-packages/pygame/pkgdata.py:25
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+    from pkg_resources import resource_stream, resource_exists
+
+tests/test_complet_athalia.py:27
+  /Volumes/T7/athalia-dev-setup/tests/test_complet_athalia.py:27: PytestCollectionWarning: cannot collect test class 'TestCompletAthalia' because it has a __init__ constructor (from: tests/test_complet_athalia.py)
+    class TestCompletAthalia:
+
+tests/test_athalia_simple.py::test_creation_projet
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_athalia_simple.py::test_creation_projet returned <class 'tuple'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_athalia_simple.py::test_correction_projet
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_athalia_simple.py::test_correction_projet returned <class 'list'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_athalia_simple.py::test_audit_projet
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_athalia_simple.py::test_audit_projet returned <class 'dict'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_correction.py::test_audit
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_correction.py::test_audit returned <class 'dict'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_correction.py::test_correction
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_correction.py::test_correction returned <class 'dict'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_correction.py::test_generation_improvement
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_correction.py::test_generation_improvement returned <class 'dict'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_final.py::test_module_availability
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_final.py::test_module_availability returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_final_athalia.py::test_compilation_fichiers
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_final_athalia.py::test_compilation_fichiers returned <class 'list'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_final_athalia.py::test_execution_principale
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_final_athalia.py::test_execution_principale returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_final_athalia.py::test_imports_modules
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_final_athalia.py::test_imports_modules returned <class 'list'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_final_athalia.py::test_structure_projet
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_final_athalia.py::test_structure_projet returned <class 'list'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_plugin_complet.py::test_vscode_installation
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_plugin_complet.py::test_vscode_installation returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_plugin_complet.py::test_plugin_compilation
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_plugin_complet.py::test_plugin_compilation returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_plugin_complet.py::test_package_json
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_plugin_complet.py::test_package_json returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_plugin_complet.py::test_ai_server
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_plugin_complet.py::test_ai_server returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_plugin_complet.py::test_apple_double_files
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_plugin_complet.py::test_apple_double_files returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_unified.py::test_unified_version
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_unified.py::test_unified_version returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_unified.py::test_modules_availability
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_unified.py::test_modules_availability returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.10.14-final-0 _______________
+
+Name                                                 Stmts   Miss  Cover
+------------------------------------------------------------------------
+athalia_core/__init__.py                                15      0   100%
+athalia_core/advanced_analytics.py                     152     19    88%
+athalia_core/ai_robust.py                              190     49    74%
+athalia_core/analytics.py                               80     12    85%
+athalia_core/athalia_orchestrator.py                   327    103    69%
+athalia_core/audit.py                                  249     10    96%
+athalia_core/auto_cicd.py                              133     20    85%
+athalia_core/auto_cleaner.py                           230    195    15%
+athalia_core/auto_documenter.py                        331    118    64%
+athalia_core/auto_tester.py                            186     80    57%
+athalia_core/autocomplete_engine.py                     29      4    86%
+athalia_core/autocomplete_server.py                     23      1    96%
+athalia_core/ci.py                                      32      5    84%
+athalia_core/classification/__init__.py                  4      0   100%
+athalia_core/classification/project_classifier.py       49     27    45%
+athalia_core/classification/project_types.py            15      2    87%
+athalia_core/cleanup.py                                 54     17    69%
+athalia_core/cli.py                                    107    107     0%
+athalia_core/code_linter.py                             83     13    84%
+athalia_core/config_manager.py                         170    170     0%
+athalia_core/dashboard.py                               28     22    21%
+athalia_core/distillation/__init__.py                    0      0   100%
+athalia_core/distillation/adaptive_distillation.py      56      4    93%
+athalia_core/distillation/audit_distiller.py            17      0   100%
+athalia_core/distillation/code_genetics.py              29      0   100%
+athalia_core/distillation/correction_distiller.py       11      1    91%
+athalia_core/distillation/multimodal_distiller.py       27      3    89%
+athalia_core/distillation/predictive_cache.py           35      0   100%
+athalia_core/distillation/quality_scorer.py              6      0   100%
+athalia_core/distillation/response_distiller.py         65      6    91%
+athalia_core/generation.py                              72      1    99%
+athalia_core/i18n/__init__.py                           12      2    83%
+athalia_core/i18n/en.py                                  3      0   100%
+athalia_core/i18n/fr.py                                  3      0   100%
+athalia_core/intelligent_auditor.py                    426    107    75%
+athalia_core/main.py                                   174    171     2%
+athalia_core/multi_file_editor.py                       47      7    85%
+athalia_core/onboarding.py                              18      0   100%
+athalia_core/plugins/__init__.py                         0      0   100%
+athalia_core/plugins_manager.py                         31      2    94%
+athalia_core/plugins_validator.py                       44     10    77%
+athalia_core/project_importer.py                       139     32    77%
+athalia_core/ready_check.py                             23      1    96%
+athalia_core/security.py                                29      2    93%
+athalia_core/security_auditor.py                       113     20    82%
+athalia_core/templates/__init__.py                       2      2     0%
+athalia_core/templates/artistic_templates.py             9      9     0%
+athalia_core/templates/base_templates.py                 6      6     0%
+------------------------------------------------------------------------
+TOTAL                                                 3884   1360    65%
+FAIL Required test coverage of 80% not reached. Total coverage: 64.98%
+
+------------------------------------------------------------------------------------------------------------------------ benchmark 'critical_functions': 3 tests ------------------------------------------------------------------------------------------------------------------------
+Name (time in ns)                                                                                        Min                    Max                  Mean                StdDev                Median                 IQR            Outliers  OPS (Kops/s)            Rounds  Iterations
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+test_critical_function_benchmark[athalia_core.athalia_orchestrator-AthaliaOrchestrator-False]       227.0499 (1.0)       2,552.1003 (1.0)        246.9031 (1.0)         28.0902 (1.0)        243.7504 (1.0)        6.2500 (1.0)     5181;7317    4,050.1717 (1.0)      196696          20
+test_critical_function_benchmark[athalia_core.auto_tester-AutoTester-False]                         957.9962 (4.22)     26,166.9920 (10.25)    1,095.4317 (4.44)       225.7670 (8.04)     1,082.9972 (4.44)      41.9968 (6.72)    3452;6971      912.8821 (0.23)     130447           1
+test_critical_function_benchmark[athalia_core.advanced_analytics-AdvancedAnalytics-True]          7,875.0018 (34.68)    56,584.0019 (22.17)    8,719.0214 (35.31)    1,556.0310 (55.39)    8,375.0056 (34.36)    250.0019 (40.00)    997;1905      114.6918 (0.03)      13946           1
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Legend:
+  Outliers: 1 Standard Deviation from Mean; 1.5 IQR (InterQuartile Range) from 1st Quartile and 3rd Quartile.
+  OPS: Operations Per Second, computed as 1 / Mean
+=========================== short test summary info ============================
+FAILED tests/test_advanced_analytics_unit.py::TestAdvancedAnalytics::test_generate_dashboard
+FAILED tests/test_advanced_analytics_unit.py::TestAdvancedAnalytics::test_generate_summary
+FAILED tests/test_advanced_analytics_unit.py::TestAdvancedAnalytics::test_print_report
+3 failed, 190 passed, 119 skipped, 20 warnings in 192.83s (0:03:12)
+
+=============================== warnings summary ===============================
+../arkalia-luna-venv/lib/python3.10/site-packages/pygame/pkgdata.py:25
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+    from pkg_resources import resource_stream, resource_exists
+
+tests/test_complet_athalia.py:27
+  /Volumes/T7/athalia-dev-setup/tests/test_complet_athalia.py:27: PytestCollectionWarning: cannot collect test class 'TestCompletAthalia' because it has a __init__ constructor (from: tests/test_complet_athalia.py)
+    class TestCompletAthalia:
+
+tests/test_athalia_simple.py::test_creation_projet
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_athalia_simple.py::test_creation_projet returned <class 'tuple'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_athalia_simple.py::test_correction_projet
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_athalia_simple.py::test_correction_projet returned <class 'list'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_athalia_simple.py::test_audit_projet
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_athalia_simple.py::test_audit_projet returned <class 'dict'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_correction.py::test_audit
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_correction.py::test_audit returned <class 'dict'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_correction.py::test_correction
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_correction.py::test_correction returned <class 'dict'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_correction.py::test_generation_improvement
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_correction.py::test_generation_improvement returned <class 'dict'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_final.py::test_module_availability
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_final.py::test_module_availability returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_final_athalia.py::test_compilation_fichiers
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_final_athalia.py::test_compilation_fichiers returned <class 'list'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_final_athalia.py::test_execution_principale
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_final_athalia.py::test_execution_principale returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_final_athalia.py::test_imports_modules
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_final_athalia.py::test_imports_modules returned <class 'list'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_final_athalia.py::test_structure_projet
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_final_athalia.py::test_structure_projet returned <class 'list'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_plugin_complet.py::test_vscode_installation
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_plugin_complet.py::test_vscode_installation returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_plugin_complet.py::test_plugin_compilation
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_plugin_complet.py::test_plugin_compilation returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_plugin_complet.py::test_package_json
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_plugin_complet.py::test_package_json returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_plugin_complet.py::test_ai_server
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_plugin_complet.py::test_ai_server returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_plugin_complet.py::test_apple_double_files
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_plugin_complet.py::test_apple_double_files returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_unified.py::test_unified_version
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_unified.py::test_unified_version returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_unified.py::test_modules_availability
+  /Volumes/T7/arkalia-luna-venv/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_unified.py::test_modules_availability returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.10.14-final-0 _______________
+
+Name                                                 Stmts   Miss  Cover
+------------------------------------------------------------------------
+athalia_core/__init__.py                                15      0   100%
+athalia_core/advanced_analytics.py                     152     19    88%
+athalia_core/ai_robust.py                              190     49    74%
+athalia_core/analytics.py                               80     12    85%
+athalia_core/athalia_orchestrator.py                   327    103    69%
+athalia_core/audit.py                                  249     10    96%
+athalia_core/auto_cicd.py                              133     20    85%
+athalia_core/auto_cleaner.py                           230    195    15%
+athalia_core/auto_documenter.py                        331    118    64%
+athalia_core/auto_tester.py                            186     80    57%
+athalia_core/autocomplete_engine.py                     29      4    86%
+athalia_core/autocomplete_server.py                     23      1    96%
+athalia_core/ci.py                                      32      5    84%
+athalia_core/classification/__init__.py                  4      0   100%
+athalia_core/classification/project_classifier.py       49     27    45%
+athalia_core/classification/project_types.py            15      2    87%
+athalia_core/cleanup.py                                 54     17    69%
+athalia_core/cli.py                                    107    107     0%
+athalia_core/code_linter.py                             83     13    84%
+athalia_core/config_manager.py                         170    170     0%
+athalia_core/dashboard.py                               28     22    21%
+athalia_core/distillation/__init__.py                    0      0   100%
+athalia_core/distillation/adaptive_distillation.py      56      4    93%
+athalia_core/distillation/audit_distiller.py            17      0   100%
+athalia_core/distillation/code_genetics.py              29      0   100%
+athalia_core/distillation/correction_distiller.py       11      1    91%
+athalia_core/distillation/multimodal_distiller.py       27      3    89%
+athalia_core/distillation/predictive_cache.py           35      0   100%
+athalia_core/distillation/quality_scorer.py              6      0   100%
+athalia_core/distillation/response_distiller.py         65      6    91%
+athalia_core/generation.py                              72      1    99%
+athalia_core/i18n/__init__.py                           12      2    83%
+athalia_core/i18n/en.py                                  3      0   100%
+athalia_core/i18n/fr.py                                  3      0   100%
+athalia_core/intelligent_auditor.py                    426    107    75%
+athalia_core/main.py                                   174    171     2%
+athalia_core/multi_file_editor.py                       47      7    85%
+athalia_core/onboarding.py                              18      0   100%
+athalia_core/plugins/__init__.py                         0      0   100%
+athalia_core/plugins_manager.py                         31      2    94%
+athalia_core/plugins_validator.py                       44     10    77%
+athalia_core/project_importer.py                       139     32    77%
+athalia_core/ready_check.py                             23      1    96%
+athalia_core/security.py                                29      2    93%
+athalia_core/security_auditor.py                       113     20    82%
+athalia_core/templates/__init__.py                       2      2     0%
+athalia_core/templates/artistic_templates.py             9      9     0%
+athalia_core/templates/base_templates.py                 6      6     0%
+------------------------------------------------------------------------
+TOTAL                                                 3884   1360    65%
+FAIL Required test coverage of 80% not reached. Total coverage: 64.98%
+
+----------------------------------------------------------------------------------------------------------------------- benchmark 'critical_functions': 3 tests -----------------------------------------------------------------------------------------------------------------------
+Name (time in ns)                                                                                        Min                    Max                  Mean              StdDev                Median                 IQR            Outliers  OPS (Kops/s)            Rounds  Iterations
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+test_critical_function_benchmark[athalia_core.athalia_orchestrator-AthaliaOrchestrator-False]       226.1901 (1.0)       2,206.3808 (1.0)        241.9328 (1.0)       24.4245 (1.0)        238.0957 (1.0)        5.9524 (1.0)     5945;8581    4,133.3790 (1.0)      195123          21
+test_critical_function_benchmark[athalia_core.auto_tester-AutoTester-False]                         957.9962 (4.24)     43,125.0082 (19.55)    1,076.4050 (4.45)     261.3814 (10.70)    1,042.0044 (4.38)      41.0218 (6.89)     762;4634      929.0183 (0.22)     114286           1
+test_critical_function_benchmark[athalia_core.advanced_analytics-AdvancedAnalytics-True]          7,707.9894 (34.08)    31,458.0102 (14.26)    8,286.6915 (34.25)    839.0449 (34.35)    8,040.9955 (33.77)    208.0051 (34.94)   1766;2301      120.6754 (0.03)      16439           1
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Legend:
+  Outliers: 1 Standard Deviation from Mean; 1.5 IQR (InterQuartile Range) from 1st Quartile and 3rd Quartile.
+  OPS: Operations Per Second, computed as 1 / Mean
+=========================== short test summary info ============================
+FAILED tests/test_advanced_analytics_unit.py::TestAdvancedAnalytics::test_generate_dashboard
+FAILED tests/test_advanced_analytics_unit.py::TestAdvancedAnalytics::test_generate_summary
+FAILED tests/test_advanced_analytics_unit.py::TestAdvancedAnalytics::test_print_report
+FAILED tests/test_benchmark_critical.py::test_global_coverage_threshold - Ass...
+===== 4 failed, 182 passed, 118 skipped, 20 warnings in 363.39s (0:06:03) ======

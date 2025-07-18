@@ -39,6 +39,7 @@ docker run -p 8501:8501 athalia
 - Multimodalité (LLaVA)
 - Dashboard web
 - API REST, CLI, plugins
+- Dashboard interactif avec onglet **Benchmarks** (visualisation, comparaison, filtres, graphiques dynamiques)
 
 ## Guides et documentation
 - [BENCHMARK.md](./BENCHMARK.md)
@@ -50,6 +51,10 @@ docker run -p 8501:8501 athalia
 
 ## Contribution
 Voir [docs/DEVELOPER_GUIDE.md](./docs/DEVELOPER_GUIDE.md)
+
+## Comment utiliser l’onglet Benchmarks ?
+
+Consultez le guide utilisateur ([docs/USER_GUIDE.md](docs/USER_GUIDE.md)) pour découvrir comment exploiter l’onglet Benchmarks du dashboard, filtrer les résultats, lire les graphiques et personnaliser l’analyse.
 
 ---
 Projet sous licence MIT. Contact : [à compléter] 

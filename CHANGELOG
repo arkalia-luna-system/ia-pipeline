@@ -1,0 +1,5 @@
+## [v1.0.0] - 2024-07-18
+- Ajout de l’onglet Benchmarks interactif dans le dashboard (visualisation, filtres, graphiques dynamiques)
+- Analyse automatique du meilleur modèle IA, prompts testés, runs
+- Modernisation du style du dashboard (cartes, responsive, couleurs)
+- Documentation enrichie (README, dashboard.md, USER_GUIDE.md) 
