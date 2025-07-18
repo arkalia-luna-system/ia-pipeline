@@ -38,3 +38,6 @@ secrets.*
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Dossier d'archive (fichiers temporaires et obsolètes)
+archive/
