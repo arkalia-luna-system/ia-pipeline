@@ -1,21 +1,21 @@
 # Athalia/Arkalia
 
-[![Tests](https://img.shields.io/badge/tests-passing-brightgreen)](./resultats_tests.txt)
+[![Tests](https://img.shields.io/badge/tests-passing-brightgreen)](./resultats_tests.txt) [![Release](https://img.shields.io/github/v/release/arkalia-luna-system/ia-pipeline?label=latest%20release)](../../releases)
 
-Orchestrateur IA modulaire, open source, avec fallback multi-IA, distillation, dashboard, API REST, CLI, et intégration VS Code.
+> Orchestrateur IA modulaire, open source, avec fallback multi-IA, distillation, dashboard interactif, API REST, CLI, plugins, et intégration VS Code. **Ultra-modulaire, documenté, prêt pour l’industrialisation et la contribution.**
 
 ## Présentation
-Athalia/Arkalia est un pipeline IA ultra-modulaire permettant d’orchestrer plusieurs modèles (Qwen, Mistral, LLaVA, Mock), avec fallback, distillation, et modules avancés (multimodalité, code genetics, predictive caching).
+Athalia/Arkalia est un pipeline IA ultra-modulaire permettant d’orchestrer plusieurs modèles (Qwen, Mistral, LLaVA, Mock), avec fallback, distillation, et modules avancés (multimodalité, génétique du code, mise en cache prédictive).
 
 ## Installation
 ```bash
 pip install -r requirements.txt
 ```
 
-## Usage rapide
+## Utilisation rapide
 - Lancer le pipeline : `python athalia_core/main.py`
 - Lancer les tests : `pytest`
-- Lancer le dashboard : `python athalia_core/dashboard.py`
+- Tableau de bord : `python athalia_core/dashboard.py`
 
 ## Exemple d'usage réel
 ```python
@@ -31,30 +31,18 @@ print(result)
 docker build -t athalia .
 docker run -p 8501:8501 athalia
 ```
-- Cloud : voir [docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md)
 
-## Modules clés
-- Fallback multi-IA
-- Distillation adaptative
-- Multimodalité (LLaVA)
-- Dashboard web
-- API REST, CLI, plugins
-- Dashboard interactif avec onglet **Benchmarks** (visualisation, comparaison, filtres, graphiques dynamiques)
-
-## Guides et documentation
-- [BENCHMARK.md](./BENCHMARK.md)
-- [ROADMAP.md](./ROADMAP.md)
-- [CHANGELOG.md](./CHANGELOG.md)
-- [DASHBOARD.md](./DASHBOARD.md)
-- [docs/USER_GUIDE.md](./docs/USER_GUIDE.md)
-- [docs/API_REFERENCE.md](./docs/API_REFERENCE.md)
-
-## Contribution
-Voir [docs/DEVELOPER_GUIDE.md](./docs/DEVELOPER_GUIDE.md)
+## Fonctionnalités principales
+- Orchestration multi-IA (Qwen, Mistral, LLaVA, Mock, fallback)
+- Distillation adaptative, code genetics, predictive caching
+- Dashboard interactif avec onglet Benchmarks (visualisation, analyse, filtres)
+- API REST, CLI, plugins, intégration VS Code
+- Documentation exhaustive, tests automatisés, guides utilisateur/développeur
 
 ## Comment utiliser l’onglet Benchmarks ?
-
 Consultez le guide utilisateur ([docs/USER_GUIDE.md](docs/USER_GUIDE.md)) pour découvrir comment exploiter l’onglet Benchmarks du dashboard, filtrer les résultats, lire les graphiques et personnaliser l’analyse.
 
 ---
-Projet sous licence MIT. Contact : [à compléter] 
+
+## Contribution
+Voir [docs/DEVELOPER_GUIDE.md](./docs/DEVELOPER_GUIDE.md) 
