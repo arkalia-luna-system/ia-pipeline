@@ -5,6 +5,7 @@ import os
 
 import pytest
 import tempfile
+from unittest.mock import patch
 
 """
 Tests pour le module dict_data'IA robuste.
@@ -33,15 +34,14 @@ class TestRobustAI:
         assert isinstance(chain, list)
 
     def test_classify_project_complexity(self):
-        """Test la classification de complexité des projets."""
         # Test simple
-        assert self.ai._classify_project_complexity("simple test f") == "f"
+        assert self.ai._classify_project_complexity("simple test f").get('complexity') == "f"
         # Test medium
-        assert self.ai._classify_project_complexity("api web f") == "f"
+        assert self.ai._classify_project_complexity("api web f").get('complexity') == "f"
         # Test complex
-        assert self.ai._classify_project_complexity("ai neural f") == "f"
+        assert self.ai._classify_project_complexity("ai neural f").get('complexity') == "f"
         # Test default
-        assert self.ai._classify_project_complexity("random f") == "f"
+        assert self.ai._classify_project_complexity("random f").get('complexity') == "f"
 
     def test_get_dynamic_prompt(self):
         """Test la génération de prompts dynamiques."""
@@ -155,3 +155,43 @@ def test_prompt_templates():
         assert template is not None
         assert len(template) > 0
         assert isinstance(template, str)
+
+def test_fallback_and_distillation_qwen_mistral():
+    """Teste la génération de réponse avec fallback et distillation (Qwen/Mistral)."""
+    ai = RobustAI()
+    ai.available_models = [
+        getattr(AIModel, 'OLLAMA_QWEN', AIModel.MOCK),
+        getattr(AIModel, 'OLLAMA_MISTRAL', AIModel.MOCK),
+        AIModel.MOCK
+    ]
+    ai.fallback_chain = ai._build_fallback_chain()
+    # Patch proprement la méthode _call_ollama
+    with patch.object(RobustAI, '_call_ollama', autospec=True) as mock_call_ollama:
+        def fake_call(self, model_name, prompt, timeout=30):
+            model_name = str(model_name) if not hasattr(model_name, 'value') else str(model_name.value)
+            return f"Réponse {model_name}"
+        mock_call_ollama.side_effect = fake_call
+        # Test fallback séquentiel
+        result_fallback = ai.generate_response(PromptContext.BLUEPRINT, distillation=False, idea="test fallback", project_type="test", complexity="simple")
+        assert isinstance(result_fallback, dict)
+        assert any(k in result_fallback for k in ["ollama_qwen", "ollama_mistral", "mock"])
+        # Test distillation
+        result_distill = ai.generate_response(PromptContext.BLUEPRINT, distillation=True, idea="test distillation", project_type="test", complexity="simple")
+        assert isinstance(result_distill, dict)
+        assert "distilled" in result_distill
+        assert any(k in result_distill for k in ["ollama_qwen", "ollama_mistral", "mock"])
+
+def test_fallback_ia_qwen_mistral(monkeypatch):
+    from athalia_core.ai_robust import fallback_ia
+    # Mock les requêtes pour Qwen et Mistral
+    def mock_query_qwen(prompt):
+        return "Réponse Qwen"
+    def mock_query_mistral(prompt):
+        return "Réponse Mistral"
+    import athalia_core.ai_robust as ai_robust
+    ai_robust.query_qwen = mock_query_qwen
+    ai_robust.query_mistral = mock_query_mistral
+    result = fallback_ia("Test prompt", models=["qwen", "mistral"])
+    assert result == "Réponse Qwen"
+    result2 = fallback_ia("Test prompt", models=["mistral"])
+    assert result2 == "Réponse Mistral"

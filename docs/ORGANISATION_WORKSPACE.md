@@ -1,4 +1,8 @@
-# Organisation du Workspace Athalia
+# 🗂️ Organisation du Workspace Athalia/Arkalia
+
+*Dernière mise à jour : 17/07/2025*
+
+Ce document décrit la structure officielle et à jour du workspace Athalia/Arkalia.
 
 ## Vue d'ensemble
 
@@ -121,3 +125,9 @@ Si vous avez des fichiers qui ne respectent pas cette organisation, le script de
 Pour toute question sur l'organisation, consultez :
 - `docs/USER_GUIDE.md` - Guide utilisateur complet
 - `TROUBLESHOOTING.md` - Solutions aux problèmes courants 
+
+## 🧹 Nettoyage final 17/07/2025
+- Suppression des fichiers obsolètes (athalia_report_20250717_071804.json, athalia_quick_start.py, AppleDouble, logs vides, templates inutiles)
+- Script de nettoyage automatique corrigé et relancé
+- Structure des dossiers validée (voir ci-dessus)
+- Tous les tests passent (125/125) 

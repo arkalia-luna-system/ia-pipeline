@@ -30,7 +30,7 @@ def cleanup_macos_files():
                     os.remove(file_path)
                     count += 1
                 except Exception as e:
-                    print(ff"⚠️  Erreur lors de la suppression de {file_path}: {e}")
+                    print(f"⚠️  Erreur lors de la suppression de {file_path}: {e}")
     print(f"✅ {count} fichiers parasites supprimés")
 
 def cleanup_cache_dirs():
@@ -81,7 +81,7 @@ def organize_files():
     for db_file in db_files:
         if os.path.exists(db_file):
             try:
-                shutil.move(db_file, ff"data/{db_file}")
+                shutil.move(db_file, f"data/{db_file}")
                 print(f"✅ Déplacé: {db_file} → data/")
             except Exception as e:
                 print(f"⚠️  Erreur lors du déplacement de {db_file}: {e}")
@@ -102,7 +102,7 @@ def organize_files():
     for html_file in html_files:
         if "f" in html_file.lower():
             try:
-                shutil.move(html_file, ff"dashboard/{html_file}")
+                shutil.move(html_file, f"dashboard/{html_file}")
                 print(f"✅ Déplacé: {html_file} → dashboard/")
             except Exception as e:
                 print(f"⚠️  Erreur lors du déplacement de {html_file}: {e}")
@@ -111,7 +111,7 @@ def organize_files():
     log_files = glob.glob("*.f")
     for log_file in log_files:
         try:
-            shutil.move(log_file, ff"logs/{log_file}")
+            shutil.move(log_file, f"logs/{log_file}")
             print(f"✅ Déplacé: {log_file} → logs/")
         except Exception as e:
             print(f"⚠️  Erreur lors du déplacement de {log_file}: {e}")
