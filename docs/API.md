@@ -99,6 +99,8 @@ Plugin exemple : Hello Plugin
 
 ### export_docker_plugin
 
+Plugin d'export Docker pour projet Python.
+
 #### Fonctions
 
 ##### export_docker
@@ -120,7 +122,7 @@ Affiche les dépendances du projet.
 
 ##### run
 
-Fonction d'entrée standard pour le plugin, attendue par les tests.
+Fonction d'entrée standard pour le plugin.
 
 **Paramètres :**
 
@@ -130,58 +132,61 @@ Fonction d'entrée standard pour le plugin, attendue par les tests.
 
 ### test_ath_context_prompt_semantic
 
+Test d'intégration sémantique pour ath_context_prompt
+
+#### Fonctions
+
+##### test_ath_context_prompt_semantic
+
+Teste que le prompt sécurité est détecté par l'analyse sémantique/custom.
+
 ---
 
 ### test_ath_dev_boost
 
+Tests pour ath-dev-boost
+
 #### Fonctions
 
-##### run_test
+##### test_ath_dev_boost_script_exists
 
-**Paramètres :**
+Test que le script ath-dev-boost existe
 
-- `args`
-- `expected`
+##### test_ath_dev_boost_executable
+
+Test que le script est exécutable
 
 ---
 
 ### test_athalia_simple
 
+Tests simples pour Athalia
+
 #### Fonctions
 
-##### projet_path
+##### test_athalia_core_import
 
-##### test_creation_projet
+Test d'import du module core
 
-Test de création d'un projet simple
+##### test_essential_files_exist
 
-##### test_correction_projet
+Test que les fichiers essentiels existent
 
-Test de correction d'un projet existant
+##### test_project_structure
 
-**Paramètres :**
-
-- `projet_path`
-
-##### test_audit_projet
-
-Test d'audit d'un projet
-
-**Paramètres :**
-
-- `projet_path`
-
-##### main
-
-Fonction principale de test
+Test de la structure du projet
 
 ---
 
 ### test_ath_dev_boost_menu
 
+Test du menu interactif ath-dev-boost
+
 #### Fonctions
 
-##### run_menu_test
+##### test_ath_dev_boost_menu
+
+Teste le menu interactif ath-dev-boost pour chaque choix.
 
 **Paramètres :**
 
@@ -192,11 +197,13 @@ Fonction principale de test
 
 ### test_audit_intelligent
 
+Tests pour le système d'audit intelligent Athalia
+
 #### Classes
 
 ##### TestAuditIntelligent
 
-Tests pour list_data'audit intelligent.
+Tests pour l'audit intelligent.
 
 **Méthodes :**
 
@@ -216,11 +223,11 @@ Tests pour list_data'audit intelligent.
 
 ##### test_audit_integration
 
-Test dict_data'intégration de list_data'audit avec un vrai projet.
+Test d'intégration de l'audit avec un vrai projet.
 
 ##### setup_method
 
-Prépare un projet de test pour list_data'audit.
+Prépare un projet de test pour l'audit.
 
 ##### teardown_method
 
@@ -232,61 +239,73 @@ Crée un projet de test avec des problèmes connus.
 
 ##### test_audit_project_structure
 
-Test list_data'analyse de structure.
-
 ##### test_audit_code_quality
-
-Test list_data'analyse de qualité du code.
 
 ##### test_audit_security
 
-Test list_data'analyse de sécurité.
-
 ##### test_audit_performance
-
-Test list_data'analyse de performance.
 
 ##### test_audit_complete
 
-Test list_data'audit complet.
-
 ##### test_generate_audit_report
-
-Test la génération de rapport.
 
 ##### test_audit_project_not_found
 
-Test list_data'audit dict_data'un projet inexistant.
-
 ##### test_audit_empty_project
-
-Test list_data'audit dict_data'un projet vide.
 
 ---
 
 ### test_ci
 
+Tests pour la configuration CI/CD
+
 #### Fonctions
 
-##### test_generate_github_ci_yaml
+##### test_ci_module_import
 
-**Paramètres :**
+Test que le module CI peut être importé
 
-- `tmp_path`
+##### test_ci_config_exists
+
+Test que la configuration CI existe
+
+##### test_ci_environment
+
+Test que l'environnement CI est détecté
+
+##### test_ci_dependencies
+
+Test que toutes les dépendances CI sont installées
+
+##### test_ci_timeout_config
+
+Test que pytest-timeout est configuré
+
+##### test_ci_generation_mock
+
+Test de génération de configuration CI (mock)
 
 ---
 
 ### test_ready_check
 
+Tests pour ready_check.py
+
 #### Fonctions
 
 ##### test_check_ready_ok
 
+Test que le projet est prêt
+
 ##### test_check_ready_missing
+
+Test avec un projet manquant
 
 ---
 
 ### test_plugins
+
+Tests pour le système de plugins dynamiques Athalia
 
 #### Fonctions
 
@@ -302,78 +321,81 @@ Test list_data'audit dict_data'un projet vide.
 
 ### test_cleanup
 
+Tests pour le module cleanup
+
 #### Fonctions
 
 ##### test_clean_old_tests_and_caches
+
+Test de nettoyage des anciens tests et caches
 
 **Paramètres :**
 
 - `tmp_path`
 
+##### test_cleanup_module_import
+
+Test d'import du module cleanup
+
 ---
 
 ### test_final
 
-Test final d'Athalia Unified
-Validation de toutes les fonctionnalités disponibles
+Tests finaux pour athalia_unified.py
 
 #### Fonctions
 
 ##### test_module_availability
 
-Test de la disponibilité des modules
+Test que le module principal est disponible
 
-##### test_basic_functionality
+##### test_help_command
 
-Test des fonctionnalités de base
+Test de la commande d'aide
+
+##### test_dashboard_command
+
+Test de la commande dashboard
+
+##### test_fix_command
+
+Test de la commande fix
 
 ##### test_advanced_modules
 
 Test des modules avancés
 
-##### generate_summary
-
-Génère un résumé final
-
-##### main
-
-Fonction principale
-
 ---
 
 ### test_continue_models
+
+Test de présence des modèles dans la config Continue
 
 #### Fonctions
 
 ##### test_models_presence
 
+Vérifie la présence des modèles Claude et Mistral dans la config Continue.
+
 ---
 
 ### test_analytics
 
+Tests pour le module analytics
+
 #### Fonctions
 
-##### test_generate_heatmap_data
+##### test_analytics_module_import
 
-Test la génération des données de heatmap.
+Test d'import du module analytics
 
-##### test_generate_technical_debt_analysis
+##### test_analytics_functions
 
-Test l'analyse de la dette technique.
+Test des fonctions analytics
 
-##### test_generate_analytics_html
+##### test_analytics_config
 
-Test la génération du HTML d'analytics.
-
-##### test_save_analytics
-
-Test la sauvegarde des analytics.
-
-##### test_analytics_with_real_projects
-
-Test les analytics avec de vrais projets existants.
-
-##### test_analyze_project
+Test de la configuration analytics
 
 ---
 
@@ -419,11 +441,25 @@ Génère un rapport de test complet
 
 ### test_i18n
 
+Tests pour le module i18n
+
 #### Fonctions
 
-##### test_get_translation_fr
+##### test_i18n_module_import
 
-##### test_get_translation_en
+Test d'import du module i18n
+
+##### test_french_translations
+
+Test des traductions françaises
+
+##### test_english_translations
+
+Test des traductions anglaises
+
+##### test_translation_consistency
+
+Test de la cohérence des traductions
 
 ---
 
@@ -1374,6 +1410,9 @@ Test de génération du dashboard HTML
 
 ### test_unit_1
 
+Tests unitaires pour setup
+Généré automatiquement par Athalia
+
 #### Classes
 
 ##### TestSetup
@@ -1382,32 +1421,118 @@ Tests unitaires pour setup
 
 **Méthodes :**
 
-- `setUp()`
-- `tearDown()`
-- `test_read_readme()`
-- `test_read_requirements()`
+- `test_read_readme_exists()`
+- `test_read_readme_content()`
+- `test_requirements_exists()`
+- `test_requirements_content()`
+- `test_setup_files_structure()`
+- `test_setup_imports()`
 
 #### Fonctions
 
-##### setUp
+##### test_read_readme_exists
 
-Configuration avant chaque test
+Test que le fichier README.md existe
 
-##### tearDown
+##### test_read_readme_content
 
-Nettoyage après chaque test
+Test que le README.md contient du contenu
 
-##### test_read_readme
+##### test_requirements_exists
 
-Test de la fonction read_readme
+Test que le fichier requirements.txt existe
 
-##### test_read_requirements
+##### test_requirements_content
 
-Test de la fonction read_requirements
+Test que requirements.txt contient des dépendances
+
+##### test_setup_files_structure
+
+Test de la structure des fichiers de setup
+
+##### test_setup_imports
+
+Test des imports de setup (skip en CI)
+
+---
+
+### test_imports_all
+
+Test d'importation exhaustive de tous les modules
+Vérifie que tous les modules peuvent être importés sans erreur
+
+#### Classes
+
+##### TestImportsAll
+
+Tests d'importation exhaustive
+
+**Méthodes :**
+
+- `test_core_modules_import()`
+- `test_distillation_modules_import()`
+- `test_classification_modules_import()`
+- `test_i18n_modules_import()`
+- `test_plugins_modules_import()`
+- `test_modules_import()`
+- `test_agents_import()`
+- `test_templates_import()`
+- `test_all_python_files_importable()`
+- `test_no_circular_imports()`
+- `test_third_party_imports()`
+
+#### Fonctions
+
+##### test_core_modules_import
+
+Test d'import des modules core
+
+##### test_distillation_modules_import
+
+Test d'import des modules de distillation
+
+##### test_classification_modules_import
+
+Test d'import des modules de classification
+
+##### test_i18n_modules_import
+
+Test d'import des modules i18n
+
+##### test_plugins_modules_import
+
+Test d'import des modules plugins
+
+##### test_modules_import
+
+Test d'import des modules externes
+
+##### test_agents_import
+
+Test que tous les modules agents peuvent être importés
+
+##### test_templates_import
+
+Test que tous les modules templates peuvent être importés
+
+##### test_all_python_files_importable
+
+Test que tous les fichiers Python peuvent être importés
+
+##### test_no_circular_imports
+
+Test qu'il n'y a pas d'imports circulaires
+
+##### test_third_party_imports
+
+Test des imports de bibliothèques tierces
 
 ---
 
 ### test_unit_2
+
+Tests unitaires pour athalia_new
+Généré automatiquement par Athalia
 
 #### Classes
 
@@ -1417,27 +1542,45 @@ Tests unitaires pour athalia_new
 
 **Méthodes :**
 
-- `setUp()`
-- `tearDown()`
-- `test_main()`
+- `test_project_structure_exists()`
+- `test_core_modules_exist()`
+- `test_config_files_exist()`
+- `test_documentation_exists()`
+- `test_athalia_new_imports()`
+- `test_project_initialization_files()`
 
 #### Fonctions
 
-##### setUp
+##### test_project_structure_exists
 
-Configuration avant chaque test
+Test que la structure du projet existe
 
-##### tearDown
+##### test_core_modules_exist
 
-Nettoyage après chaque test
+Test que les modules core existent
 
-##### test_main
+##### test_config_files_exist
 
-Test de la fonction main
+Test que les fichiers de configuration existent
+
+##### test_documentation_exists
+
+Test que la documentation existe
+
+##### test_athalia_new_imports
+
+Test des imports athalia_new (skip en CI)
+
+##### test_project_initialization_files
+
+Test des fichiers d'initialisation du projet
 
 ---
 
 ### test_unit_3
+
+Tests unitaires pour athalia_unified
+Généré automatiquement par Athalia
 
 #### Classes
 
@@ -1447,33 +1590,67 @@ Tests unitaires pour athalia_unified
 
 **Méthodes :**
 
-- `setUp()`
-- `tearDown()`
-- `test_AthaliaOrchestrator_creation()`
-- `test_AthaliaOrchestrator_industrialize_project()`
-- `test_AthaliaOrchestrator_audit_project()`
-- `test_AthaliaOrchestrator_scan_projects()`
-- `test_main()`
+- `test_athalia_unified_file_exists()`
+- `test_athalia_unified_content()`
+- `test_athalia_unified_enhanced_exists()`
+- `test_orchestrator_structure()`
+- `test_project_management_functions()`
+- `test_audit_functions()`
+- `test_athalia_unified_imports()`
+- `test_unified_interface_consistency()`
 
 #### Fonctions
 
-##### setUp
+##### test_athalia_unified_file_exists
 
-##### tearDown
+Test que le fichier athalia_unified.py existe
 
-##### test_AthaliaOrchestrator_creation
+##### test_athalia_unified_content
 
-##### test_AthaliaOrchestrator_industrialize_project
+Test que athalia_unified.py contient du contenu
 
-##### test_AthaliaOrchestrator_audit_project
+##### test_athalia_unified_enhanced_exists
 
-##### test_AthaliaOrchestrator_scan_projects
+Test que le fichier athalia_unified_enhanced.py existe
 
-##### test_main
+##### test_orchestrator_structure
+
+Test de la structure de l'orchestrator
+
+##### test_project_management_functions
+
+Test des fonctions de gestion de projet
+
+##### test_audit_functions
+
+Test des fonctions d'audit
+
+##### test_athalia_unified_imports
+
+Test des imports athalia_unified (skip en CI)
+
+##### test_unified_interface_consistency
+
+Test de la cohérence de l'interface unifiée
+
+---
+
+### test_lint_flake8
+
+Tests pour le linting flake8
+
+#### Fonctions
+
+##### test_flake8_clean
+
+Test que le code passe flake8 sans erreurs
 
 ---
 
 ### test_unit_4
+
+Tests unitaires pour demo_athalia
+Généré automatiquement par Athalia
 
 #### Classes
 
@@ -1483,20 +1660,48 @@ Tests unitaires pour demo_athalia
 
 **Méthodes :**
 
-- `setUp()`
-- `tearDown()`
-- `test_demo_project()`
-- `test_main()`
+- `test_demo_structure_exists()`
+- `test_project_examples_exist()`
+- `test_module_examples_exist()`
+- `test_plugin_examples_exist()`
+- `test_demo_documentation_exists()`
+- `test_demo_configuration_exists()`
+- `test_demo_imports()`
+- `test_demo_functionality_structure()`
 
 #### Fonctions
 
-##### setUp
+##### test_demo_structure_exists
 
-##### tearDown
+Test que la structure de démonstration existe
 
-##### test_demo_project
+##### test_project_examples_exist
 
-##### test_main
+Test que les exemples de projets existent
+
+##### test_module_examples_exist
+
+Test que les exemples de modules existent
+
+##### test_plugin_examples_exist
+
+Test que les exemples de plugins existent
+
+##### test_demo_documentation_exists
+
+Test que la documentation de démonstration existe
+
+##### test_demo_configuration_exists
+
+Test que la configuration de démonstration existe
+
+##### test_demo_imports
+
+Test des imports de démonstration (skip en CI)
+
+##### test_demo_functionality_structure
+
+Test de la structure fonctionnelle de démonstration
 
 ---
 
@@ -1536,6 +1741,9 @@ Tests unitaires pour demo_athalia
 
 ### test_unit_5
 
+Tests unitaires pour athalia_quick_start
+Généré automatiquement par Athalia
+
 #### Classes
 
 ##### TestAthaliaQuickStart
@@ -1544,52 +1752,53 @@ Tests unitaires pour athalia_quick_start
 
 **Méthodes :**
 
-- `setUp()`
-- `tearDown()`
-- `test_print_header()`
-- `test_show_menu()`
-- `test_create_new_project()`
-- `test_correct_existing_project()`
-- `test_audit_existing_project()`
-- `test_show_dashboard()`
-- `test_manage_user_profile()`
-- `test_scan_projects()`
-- `test_check_ai_status()`
-- `test_show_inventory()`
-- `test_industrialize_project()`
-- `test_main()`
+- `test_quick_start_structure_exists()`
+- `test_quick_start_scripts_exist()`
+- `test_quick_start_prompts_exist()`
+- `test_quick_start_cli_exists()`
+- `test_quick_start_configuration_exists()`
+- `test_quick_start_documentation_exists()`
+- `test_quick_start_imports()`
+- `test_quick_start_functionality_structure()`
+- `test_quick_start_menu_structure()`
 
 #### Fonctions
 
-##### setUp
+##### test_quick_start_structure_exists
 
-##### tearDown
+Test que la structure de quick start existe
 
-##### test_print_header
+##### test_quick_start_scripts_exist
 
-##### test_show_menu
+Test que les scripts de quick start existent
 
-##### test_create_new_project
+##### test_quick_start_prompts_exist
 
-##### test_correct_existing_project
+Test que les prompts de quick start existent
 
-##### test_audit_existing_project
+##### test_quick_start_cli_exists
 
-##### test_show_dashboard
+Test que l'interface CLI de quick start existe
 
-##### test_manage_user_profile
+##### test_quick_start_configuration_exists
 
-##### test_scan_projects
+Test que la configuration de quick start existe
 
-##### test_check_ai_status
+##### test_quick_start_documentation_exists
 
-##### test_show_inventory
+Test que la documentation de quick start existe
 
-##### test_industrialize_project
+##### test_quick_start_imports
 
-##### test_main
+Test des imports de quick start (skip en CI)
 
-##### fake_input
+##### test_quick_start_functionality_structure
+
+Test de la structure fonctionnelle de quick start
+
+##### test_quick_start_menu_structure
+
+Test de la structure du menu de quick start
 
 ---
 
@@ -1675,6 +1884,73 @@ Tests unitaires pour export_docker_plugin
 ##### test_analyze_dependencies
 
 ##### test_run
+
+---
+
+### test_no_polluting_files
+
+Tests pour détecter les fichiers polluants
+
+#### Classes
+
+##### TestNoPollutingFiles
+
+Tests pour détecter les fichiers polluants
+
+**Méthodes :**
+
+- `test_no_macos_hidden_files()`
+- `test_no_python_cache_files()`
+- `test_no_temp_files()`
+- `test_no_corrupted_files()`
+- `test_no_editor_files()`
+- `test_no_archive_files()`
+- `test_no_secret_files()`
+- `test_no_large_files()`
+- `test_no_duplicate_files()`
+- `test_no_empty_directories()`
+
+#### Fonctions
+
+##### test_no_macos_hidden_files
+
+Test qu'il n'y a pas de fichiers cachés macOS
+
+##### test_no_python_cache_files
+
+Test qu'il n'y a pas de fichiers cache Python
+
+##### test_no_temp_files
+
+Test qu'il n'y a pas de fichiers temporaires
+
+##### test_no_corrupted_files
+
+Test qu'il n'y a pas de fichiers corrompus
+
+##### test_no_editor_files
+
+Test qu'il n'y a pas de fichiers d'éditeur
+
+##### test_no_archive_files
+
+Test qu'il n'y a pas de fichiers d'archive
+
+##### test_no_secret_files
+
+Test qu'il n'y a pas de fichiers de secrets
+
+##### test_no_large_files
+
+Test qu'il n'y a pas de fichiers trop volumineux
+
+##### test_no_duplicate_files
+
+Test qu'il n'y a pas de fichiers dupliqués
+
+##### test_no_empty_directories
+
+Test qu'il n'y a pas de répertoires vides
 
 ---
 
@@ -1819,6 +2095,74 @@ Tests unitaires pour main
 
 ---
 
+### test_coverage_threshold
+
+Test de seuil de couverture de code
+Vérifie que la couverture de code est suffisante
+
+#### Classes
+
+##### TestCoverageThreshold
+
+Tests de seuil de couverture
+
+**Méthodes :**
+
+- `test_coverage_file_exists()`
+- `test_minimum_coverage_threshold()`
+- `test_core_modules_coverage()`
+- `test_test_files_exist()`
+- `test_test_coverage_structure()`
+- `test_no_untested_critical_modules()`
+- `test_coverage_report_readable()`
+- `test_coverage_configuration()`
+- `test_test_execution_coverage()`
+- `test_coverage_quality_metrics()`
+
+#### Fonctions
+
+##### test_coverage_file_exists
+
+Vérifie que le fichier de couverture existe
+
+##### test_minimum_coverage_threshold
+
+Vérifie le seuil minimum de couverture
+
+##### test_core_modules_coverage
+
+Vérifie la couverture des modules core
+
+##### test_test_files_exist
+
+Vérifie que les fichiers de test existent
+
+##### test_test_coverage_structure
+
+Vérifie la structure de couverture des tests
+
+##### test_no_untested_critical_modules
+
+Vérifie qu'il n'y a pas de modules critiques non testés
+
+##### test_coverage_report_readable
+
+Vérifie que le rapport de couverture est lisible
+
+##### test_coverage_configuration
+
+Vérifie la configuration de couverture
+
+##### test_test_execution_coverage
+
+Vérifie que les tests s'exécutent avec couverture
+
+##### test_coverage_quality_metrics
+
+Vérifie les métriques de qualité de la couverture
+
+---
+
 ### test_unit_12
 
 #### Classes
@@ -1921,7 +2265,7 @@ Test de la fonction safe_input
 
 ##### test_main
 
-Test de la fonction main (ne doit jamais bloquer)
+Test de la fonction main (skip en CI car input interactif)
 
 ##### fake_input
 
@@ -1984,6 +2328,47 @@ Test de la fonction generate_onboard_cli
 ##### test_generate_onboarding_html_advanced
 
 Test de la fonction generate_onboarding_html_advanced
+
+---
+
+### test_hardcoded_paths
+
+Tests pour détecter les chemins hardcodés
+
+#### Classes
+
+##### TestHardcodedPaths
+
+Tests pour détecter les chemins hardcodés
+
+**Méthodes :**
+
+- `test_no_absolute_paths_in_source()`
+- `test_no_absolute_paths()`
+- `test_no_desktop_paths()`
+- `_is_acceptable_path()`
+
+#### Fonctions
+
+##### test_no_absolute_paths_in_source
+
+Test qu'il n'y a pas de chemins absolus dans le code source (sauf tests)
+
+##### test_no_absolute_paths
+
+Test qu'il n'y a pas de chemins absolus hardcodés
+
+##### test_no_desktop_paths
+
+Test qu'il n'y a pas de chemins Desktop hardcodés
+
+##### _is_acceptable_path
+
+Vérifie si un chemin absolu est acceptable
+
+**Paramètres :**
+
+- `path`
 
 ---
 
@@ -2287,6 +2672,64 @@ Test de la fonction f
 
 ---
 
+### test_encoding_utf8
+
+Test de vérification de l'encodage UTF-8
+Vérifie que tous les fichiers sont correctement encodés en UTF-8
+
+#### Classes
+
+##### TestEncodingUTF8
+
+Tests de vérification de l'encodage UTF-8
+
+**Méthodes :**
+
+- `test_python_files_utf8()`
+- `test_markdown_files_utf8()`
+- `test_yaml_files_utf8()`
+- `test_txt_files_utf8()`
+- `test_requirements_utf8()`
+- `test_config_utf8()`
+- `test_no_bom_marker()`
+- `test_consistent_line_endings()`
+
+#### Fonctions
+
+##### test_python_files_utf8
+
+Vérifie que tous les fichiers Python sont en UTF-8
+
+##### test_markdown_files_utf8
+
+Vérifie que tous les fichiers Markdown sont en UTF-8
+
+##### test_yaml_files_utf8
+
+Vérifie que tous les fichiers YAML sont en UTF-8
+
+##### test_txt_files_utf8
+
+Vérifie que tous les fichiers TXT sont en UTF-8
+
+##### test_requirements_utf8
+
+Vérifie que requirements.txt est en UTF-8
+
+##### test_config_utf8
+
+Vérifie que les fichiers de config sont en UTF-8
+
+##### test_no_bom_marker
+
+Vérifie qu'il n'y a pas de marqueur BOM UTF-8
+
+##### test_consistent_line_endings
+
+Vérifie la cohérence des fins de ligne
+
+---
+
 ### test_unit_21
 
 #### Classes
@@ -2508,6 +2951,79 @@ Test de la fonction f
 
 ---
 
+### test_requirements_consistency
+
+Test de cohérence des dépendances
+Vérifie que les fichiers de dépendances sont cohérents
+
+#### Classes
+
+##### TestRequirementsConsistency
+
+Tests de cohérence des dépendances
+
+**Méthodes :**
+
+- `test_requirements_txt_exists()`
+- `test_requirements_txt_readable()`
+- `test_requirements_format()`
+- `test_essential_dependencies()`
+- `test_no_duplicate_dependencies()`
+- `test_pyproject_toml_exists()`
+- `test_pyproject_toml_readable()`
+- `test_requirements_vs_pyproject_consistency()`
+- `test_no_conflicting_versions()`
+- `test_no_obsolete_dependencies()`
+- `test_requirements_installable()`
+
+#### Fonctions
+
+##### test_requirements_txt_exists
+
+Vérifie que requirements.txt existe
+
+##### test_requirements_txt_readable
+
+Vérifie que requirements.txt est lisible
+
+##### test_requirements_format
+
+Vérifie le format de requirements.txt
+
+##### test_essential_dependencies
+
+Vérifie que les dépendances essentielles sont présentes
+
+##### test_no_duplicate_dependencies
+
+Test qu'il n'y a pas de dépendances dupliquées
+
+##### test_pyproject_toml_exists
+
+Vérifie que pyproject.toml existe
+
+##### test_pyproject_toml_readable
+
+Vérifie que pyproject.toml est lisible
+
+##### test_requirements_vs_pyproject_consistency
+
+Vérifie la cohérence entre requirements.txt et pyproject.toml
+
+##### test_no_conflicting_versions
+
+Vérifie qu'il n'y a pas de versions conflictuelles
+
+##### test_no_obsolete_dependencies
+
+Vérifie qu'il n'y a pas de dépendances obsolètes
+
+##### test_requirements_installable
+
+Vérifie que requirements.txt est installable
+
+---
+
 ### test_unit_26
 
 #### Classes
@@ -2666,6 +3182,59 @@ Test de la méthode f
 ##### test_SecurityAuditor_print_report
 
 Test de la méthode f
+
+---
+
+### test_security_patterns
+
+Test de détection des patterns de sécurité dangereux
+Vérifie qu'il n'y a pas de code dangereux dans le projet
+
+#### Classes
+
+##### TestSecurityPatterns
+
+Tests de détection des patterns de sécurité
+
+**Méthodes :**
+
+- `test_no_hardcoded_passwords()`
+- `test_no_sql_injection_patterns()`
+- `test_no_eval_usage()`
+- `test_no_shell_injection()`
+- `test_no_debug_code()`
+- `test_no_hardcoded_urls()`
+- `test_no_weak_crypto()`
+
+#### Fonctions
+
+##### test_no_hardcoded_passwords
+
+Test qu'il n'y a pas de mots de passe hardcodés
+
+##### test_no_sql_injection_patterns
+
+Test qu'il n'y a pas de patterns d'injection SQL
+
+##### test_no_eval_usage
+
+Test qu'il n'y a pas d'utilisation de fonctions dangereuses
+
+##### test_no_shell_injection
+
+Test qu'il n'y a pas d'injection shell
+
+##### test_no_debug_code
+
+Test qu'il n'y a pas de code de debug
+
+##### test_no_hardcoded_urls
+
+Vérifie qu'il n'y a pas d'URLs hardcodées
+
+##### test_no_weak_crypto
+
+Vérifie qu'il n'y a pas de crypto faible
 
 ---
 
@@ -2877,6 +3446,64 @@ Test de la fonction f
 ##### test_get_project_name
 
 Test de la fonction f
+
+---
+
+### test_ci_ultra_fast
+
+Tests CI ultra-rapides - Vérifications essentielles uniquement
+Exécution: < 10 secondes
+
+#### Classes
+
+##### TestCIUltraFast
+
+Tests CI ultra-rapides pour validation essentielle
+
+**Méthodes :**
+
+- `test_python_version()`
+- `test_essential_imports()`
+- `test_config_files_exist()`
+- `test_syntax_check_core()`
+- `test_no_critical_errors()`
+- `test_requirements_parseable()`
+- `test_git_clean()`
+- `test_essential_structure()`
+
+#### Fonctions
+
+##### test_python_version
+
+Vérifie la version Python
+
+##### test_essential_imports
+
+Vérifie les imports essentiels
+
+##### test_config_files_exist
+
+Vérifie l'existence des fichiers de config essentiels
+
+##### test_syntax_check_core
+
+Vérifie la syntaxe des modules core
+
+##### test_no_critical_errors
+
+Vérifie qu'il n'y a pas d'erreurs critiques
+
+##### test_requirements_parseable
+
+Vérifie que requirements.txt est parseable
+
+##### test_git_clean
+
+Test que le projet est propre (pas de fichiers temporaires)
+
+##### test_essential_structure
+
+Vérifie la structure essentielle du projet
 
 ---
 
@@ -3156,8 +3783,8 @@ Tests de performance Athalia
 
 ##### test_alias_execution
 
-Teste l’exécution de chaque alias non interactif dans un sous-shell interactif.
-Vérifie que l’exit code est 0 (pas d’erreur fatale).
+Teste l'exécution de chaque alias non interactif dans un sous-shell interactif.
+Vérifie que l'exit code est 0 (pas d'erreur fatale).
 
 **Paramètres :**
 
@@ -3383,11 +4010,282 @@ Vérifie que l’exit code est 0 (pas d’erreur fatale).
 
 ---
 
+### test_aliases_unified
+
+#### Classes
+
+##### TestAliasesUnified
+
+Tests complets pour le système d'alias unifié Athalia
+
+**Méthodes :**
+
+- `test_alias_file_exists()`
+- `test_alias_file_readable()`
+- `test_all_aliases_defined()`
+- `test_git_aliases_present()`
+- `test_athalia_core_aliases_present()`
+- `test_athalia_functions_present()`
+- `test_workflow_aliases_present()`
+- `test_functions_present()`
+- `test_autocompletion_configured()`
+- `test_athalia_root_exported()`
+- `test_placeholder_aliases_defined()`
+- `test_plugin_aliases_configured()`
+- `test_test_aliases_specific()`
+- `test_docker_aliases_present()`
+- `test_benchmark_aliases_present()`
+- `test_documentation_aliases_present()`
+- `test_security_aliases_present()`
+- `test_development_aliases_present()`
+- `test_configuration_aliases_present()`
+- `test_modules_aliases_present()`
+- `test_syntax_validity()`
+- `test_help_function_content()`
+- `test_status_function_content()`
+- `test_initialization_message()`
+
+#### Fonctions
+
+##### test_alias_file_exists
+
+Vérifie que le fichier d'alias unifié existe
+
+##### test_alias_file_readable
+
+Vérifie que le fichier d'alias est lisible
+
+##### test_all_aliases_defined
+
+Vérifie que tous les alias sont correctement définis
+
+##### test_git_aliases_present
+
+Vérifie la présence des alias Git essentiels
+
+##### test_athalia_core_aliases_present
+
+Vérifie la présence des alias Athalia essentiels
+
+##### test_athalia_functions_present
+
+Vérifie la présence des fonctions Athalia essentielles
+
+##### test_workflow_aliases_present
+
+Vérifie la présence des alias de workflow
+
+##### test_functions_present
+
+Vérifie la présence des fonctions d'aide
+
+##### test_autocompletion_configured
+
+Vérifie que l'auto-complétion est configurée
+
+##### test_athalia_root_exported
+
+Vérifie que ATHALIA_ROOT est exporté
+
+##### test_placeholder_aliases_defined
+
+Vérifie que les alias à implémenter sont définis
+
+##### test_plugin_aliases_configured
+
+Vérifie la configuration des alias de plugins
+
+##### test_test_aliases_specific
+
+Vérifie les alias de tests spécifiques
+
+##### test_docker_aliases_present
+
+Vérifie les alias Docker
+
+##### test_benchmark_aliases_present
+
+Vérifie les alias de benchmark
+
+##### test_documentation_aliases_present
+
+Vérifie les alias de documentation
+
+##### test_security_aliases_present
+
+Vérifie les alias de sécurité
+
+##### test_development_aliases_present
+
+Vérifie les alias de développement
+
+##### test_configuration_aliases_present
+
+Vérifie les alias de configuration
+
+##### test_modules_aliases_present
+
+Vérifie les alias de modules avancés
+
+##### test_syntax_validity
+
+Vérifie la validité syntaxique du fichier bash
+
+##### test_help_function_content
+
+Vérifie le contenu de la fonction d'aide
+
+##### test_status_function_content
+
+Vérifie le contenu de la fonction de statut
+
+##### test_initialization_message
+
+Vérifie le message d'initialisation
+
+---
+
+### test_ci_robust
+
+Tests CI robustes - Vérifications essentielles pour la CI
+Exécution: < 5 secondes
+
+#### Classes
+
+##### TestCIRobust
+
+Tests CI robustes pour validation essentielle
+
+**Méthodes :**
+
+- `test_imports_core_modules()`
+- `test_syntax_check()`
+- `test_requirements_installable()`
+- `test_config_files_exist()`
+- `test_test_discovery()`
+- `test_core_functionality()`
+- `test_no_hardcoded_paths()`
+- `test_encoding_consistency()`
+
+#### Fonctions
+
+##### test_imports_core_modules
+
+Vérifie les imports des modules core
+
+##### test_syntax_check
+
+Vérifie la syntaxe des fichiers Python essentiels
+
+##### test_requirements_installable
+
+Vérifie que requirements.txt est installable
+
+##### test_config_files_exist
+
+Vérifie l'existence des fichiers de configuration
+
+##### test_test_discovery
+
+Vérifie que les tests peuvent être découverts
+
+##### test_core_functionality
+
+Test de fonctionnalités core essentielles
+
+##### test_no_hardcoded_paths
+
+Vérifie qu'il n'y a pas de chemins hardcodés problématiques
+
+##### test_encoding_consistency
+
+Test que tous les fichiers Python sont encodés en UTF-8
+
+---
+
+### test_ci_final
+
+Test CI Final - Vérifications complètes pour la CI
+Exécution: < 30 secondes
+
+#### Classes
+
+##### TestCIFinal
+
+Tests CI finaux pour validation complète
+
+**Méthodes :**
+
+- `test_environment_setup()`
+- `test_core_imports()`
+- `test_configuration_files()`
+- `test_syntax_validation()`
+- `test_no_corrupted_files()`
+- `test_requirements_quality()`
+- `test_project_structure()`
+- `test_test_discovery()`
+- `test_core_functionality()`
+- `test_performance_ci()`
+- `test_no_hardcoded_paths()`
+
+#### Fonctions
+
+##### test_environment_setup
+
+Vérifie l'environnement CI
+
+##### test_core_imports
+
+Vérifie tous les imports core
+
+##### test_configuration_files
+
+Vérifie tous les fichiers de configuration
+
+##### test_syntax_validation
+
+Vérifie la syntaxe de tous les fichiers Python
+
+##### test_no_corrupted_files
+
+Vérifie qu'il n'y a pas de fichiers corrompus
+
+##### test_requirements_quality
+
+Vérifie la qualité du fichier requirements.txt
+
+##### test_project_structure
+
+Vérifie la structure du projet
+
+##### test_test_discovery
+
+Vérifie que les tests peuvent être découverts
+
+##### test_core_functionality
+
+Test de fonctionnalités core essentielles
+
+##### test_performance_ci
+
+Test de performance pour la CI
+
+##### test_no_hardcoded_paths
+
+Vérifie qu'il n'y a pas de chemins hardcodés problématiques
+
+---
+
 ### test_end_to_end
+
+Test d'intégration end-to-end pour la génération de projet Athalia
 
 #### Fonctions
 
 ##### test_generation_end_to_end
+
+Génère un projet artistique complet et vérifie tous les artefacts essentiels.
+Rend le test plus robuste pour la CI : skip si dépendances manquantes.
 
 **Paramètres :**
 
@@ -3397,17 +4295,25 @@ Vérifie que l’exit code est 0 (pas d’erreur fatale).
 
 ### test_cli_robustesse
 
+Test d'intégration CLI robuste pour Athalia
+
 #### Fonctions
 
 ##### test_cli_robustesse
+
+Test simple de la CLI sans interaction complexe
 
 ---
 
 ### test_yaml_validity
 
+Test de validité YAML pour tous les fichiers openapi.yaml du repo
+
 #### Fonctions
 
 ##### test_all_openapi_yaml_valid
+
+Vérifie que tous les fichiers openapi*.yaml sont valides.
 
 ---
 
@@ -3416,6 +4322,8 @@ Vérifie que l’exit code est 0 (pas d’erreur fatale).
 #### Fonctions
 
 ##### test_ath_test_runs
+
+Test désactivé car il cause une récursivité infinie
 
 ---
 
@@ -3447,7 +4355,11 @@ Vérifie que l’exit code est 0 (pas d’erreur fatale).
 
 #### Fonctions
 
+##### cleanup_coverage_files
+
 ##### test_ath_coverage_runs
+
+Test désactivé car il cause une récursivité infinie
 
 ---
 
@@ -3468,6 +4380,72 @@ Auto - docstring ajoutée
 ##### test_ath_context_prompt
 
 ##### test_alias_sh
+
+---
+
+### main
+
+Module violette_game pour VioletTwistAI.
+
+#### Classes
+
+##### VioletteGameManager
+
+Gestionnaire pour le module violette_game.
+
+**Méthodes :**
+
+- `__init__()`
+- `process()`
+
+#### Fonctions
+
+##### main
+
+Test du module violette_game.
+
+##### __init__
+
+##### process
+
+Traite les données.
+
+**Paramètres :**
+
+- `data`
+
+---
+
+### main
+
+Module ai_player pour VioletTwistAI.
+
+#### Classes
+
+##### AIPlayerManager
+
+Gestionnaire pour le module ai_player.
+
+**Méthodes :**
+
+- `__init__()`
+- `process()`
+
+#### Fonctions
+
+##### main
+
+Test du module ai_player.
+
+##### __init__
+
+##### process
+
+Traite les données.
+
+**Paramètres :**
+
+- `data`
 
 ---
 
@@ -3977,6 +4955,72 @@ Ouverture du dashboard dans le f
 
 ---
 
+### main
+
+Module motion_control pour EmotionSensingRoboticEyes.
+
+#### Classes
+
+##### MotionControlManager
+
+Gestionnaire pour le module motion_control.
+
+**Méthodes :**
+
+- `__init__()`
+- `process()`
+
+#### Fonctions
+
+##### main
+
+Test du module motion_control.
+
+##### __init__
+
+##### process
+
+Traite les données.
+
+**Paramètres :**
+
+- `data`
+
+---
+
+### main
+
+Module connectivity pour EmotionSensingRoboticEyes.
+
+#### Classes
+
+##### ConnectivityManager
+
+Gestionnaire pour le module connectivity.
+
+**Méthodes :**
+
+- `__init__()`
+- `process()`
+
+#### Fonctions
+
+##### main
+
+Test du module connectivity.
+
+##### __init__
+
+##### process
+
+Traite les données.
+
+**Paramètres :**
+
+- `data`
+
+---
+
 ### test_booster_ia_mon-projet
 
 #### Fonctions
@@ -3988,6 +5032,39 @@ Ouverture du dashboard dans le f
 ##### test_ath_context_prompt
 
 ##### test_alias_sh
+
+---
+
+### main
+
+Module emotion_detection pour EmotionSensingRoboticEyes.
+
+#### Classes
+
+##### EmotionDetectionManager
+
+Gestionnaire pour le module emotion_detection.
+
+**Méthodes :**
+
+- `__init__()`
+- `process()`
+
+#### Fonctions
+
+##### main
+
+Test du module emotion_detection.
+
+##### __init__
+
+##### process
+
+Traite les données.
+
+**Paramètres :**
+
+- `data`
 
 ---
 
@@ -4014,6 +5091,41 @@ Agent AutoGen pour Qwen 7B (prototype)
 **Paramètres :**
 
 - `prompt`
+
+---
+
+### ath_context_prompt
+
+#### Fonctions
+
+##### score_prompt
+
+**Paramètres :**
+
+- `prompt`
+- `filename`
+- `content`
+
+##### detect_prompts_scoring
+
+**Paramètres :**
+
+- `filepath`
+
+##### detect_prompt_semantic
+
+**Paramètres :**
+
+- `filepath`
+
+##### show_prompts
+
+**Paramètres :**
+
+- `scored`
+- `semantic_prompt`
+
+##### main
 
 ---
 
@@ -4188,6 +5300,34 @@ Test rapide d'un prompt.
 ##### main
 
 Test rapide des prompts essentiels.
+
+---
+
+### identify_problematic_tests
+
+Script pour identifier les tests problématiques qui pourraient faire échouer la CI
+
+#### Fonctions
+
+##### find_problematic_tests
+
+Identifie les tests problématiques
+
+##### suggest_fixes
+
+Suggère des corrections pour les problèmes identifiés
+
+**Paramètres :**
+
+- `problems`
+
+##### generate_ci_safe_test_list
+
+Génère une liste de tests sûrs pour la CI
+
+##### main
+
+Fonction principale
 
 ---
 
@@ -6846,9 +7986,13 @@ Appelle LLaVA via Ollama pour une analyse multimodale (texte + image).
 
 ### fr
 
+Traductions françaises pour Athalia
+
 #### Fonctions
 
 ##### get_translation
+
+Retourne les traductions françaises
 
 **Paramètres :**
 
@@ -6858,9 +8002,13 @@ Appelle LLaVA via Ollama pour une analyse multimodale (texte + image).
 
 ### en
 
+English translations for Athalia
+
 #### Fonctions
 
 ##### get_translation
+
+Returns English translations
 
 **Paramètres :**
 
