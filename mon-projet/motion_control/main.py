@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
 """
 Module motion_control pour EmotionSensingRoboticEyes.
 """
@@ -8,23 +9,25 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-class Motion_controlManager:
+class MotionControlManager:
     """Gestionnaire pour le module motion_control."""
+
     def __init__(self):
-        self.name = "f"
-        logger.info(f"Module motion_control f")
+        self.name = "motion_control"
+        logger.info("Module motion_control initialisé")
+
     def process(self, data):
         """Traite les données."""
         logger.info(f"Traitement motion_control: {data}")
-        return {"f": "f", "f": self.name, "f": data}
+        return {"status": "success", "module": self.name, "data": data}
 
 # Instance globale
-motion_control_manager = Motion_controlManager()
+motion_control_manager = MotionControlManager()
 
 def main():
     """Test du module motion_control."""
-    result = motion_control_manager.process("f")
-    logger.info(ff"Résultat motion_control: {result}")
+    result = motion_control_manager.process("test_data")
+    logger.info(f"Résultat motion_control: {result}")
 
 if __name__ == "__main__":
     main()
