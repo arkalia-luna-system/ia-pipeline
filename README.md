@@ -1,107 +1,239 @@
-# athalia-dev-setup
+# 🤖 ATHALIA - Pipeline IA Intelligent
 
-#
+**Athalia** est un outil d'industrialisation intelligente pour projets de développement, avec un module spécialisé pour la robotique et les projets Reachy.
 
-## 📋 Table des matières
+## 🚀 **FONCTIONNALITÉS PRINCIPALES**
 
-- [Installation](#installation)
-- [Utilisation](#utilisation)
-- [API](#api)
-- [Tests](#tests)
-- [Contribution](#contribution)
-- [Licence](#licence)
+### **🧠 IA Intelligente**
+- **Multi-modèles** : Qwen, Mistral, Mock avec distillation
+- **Audit intelligent** : Analyse automatique de code
+- **Correction automatique** : Suggestions d'amélioration
+- **Documentation générée** : README, API, guides
 
-## 🚀 Installation
+### **🤖 Module Robotique**
+- **Audit Reachy** : Validation complète des projets robotiques
+- **Validation ROS2** : Workspace, packages, launch files
+- **Gestion Docker** : Containerisation robotique
+- **Analyse Rust** : Optimisation des projets Rust
+- **CI/CD Robotique** : Pipelines automatisés
 
-### Prérequis
-**Python :**
-- requests>=2.28.0
-- pyyaml>=6.0
-- jinja2>=3.1.0
-- click>=8.1.0
-- rich>=12.0.0
+### **🔧 Industrialisation Complète**
+- **Linting avancé** : Qualité de code
+- **Sécurité** : Audit de vulnérabilités
+- **Analytics** : Métriques de performance
+- **Tests automatisés** : Couverture complète
+- **CI/CD** : GitHub Actions, Docker
 
-### Installation
+## 📦 **INSTALLATION RAPIDE**
 
+### **Installation de base**
 ```bash
-# Cloner le repository
-git clone <repository - url>
-cd athalia-dev-setup
+# Cloner le projet
+git clone https://github.com/arkalia-luna-system/ia-pipeline.git
+cd ia-pipeline
 
-# Installer les dépendances
-pip install -r requirements.txt
+# Installation des dépendances
+pip install -r config/requirements.txt
+
+# Vérification
+python3 athalia_unified.py --help
 ```
 
-## 💻 Utilisation
-### Exemple d'utilisation
-
-```python
-# Utilisation basique
-main()
-```
-
-## 🔧 API
-### Classes principales
-
-#### AthaliaOrchestrator
-
-**Méthodes :** industrialize_project, audit_project, scan_projects
-
-#### TestAuditIntelligent
-
-Tests pour l'audit intelligent.
-
-**Méthodes :** setup_method, teardown_method, create_test_project, test_audit_project_structure, test_audit_code_quality
-
-#### TestRobustAI
-
-Tests pour list_data'IA robuste.
-
-**Méthodes :** setup_method, test_detect_available_models, test_build_fallback_chain, test_classify_project_complexity, test_get_dynamic_prompt
-
-### Fonctions principales
-
-#### main
-
-Fonction principale du CLI unifié
-
-#### industrialize_project
-
-**Paramètres :** project_path, config
-
-#### audit_project
-
-**Paramètres :** project_path
-
-#### scan_projects
-
-**Paramètres :** project_path
-
-#### call_qwen
-
-**Paramètres :** prompt
-
-## 🧪 Tests
-
+### **Installation avec modules robotiques**
 ```bash
-# Lancer les tests
-python -m pytest
+# Dépendances robotiques
+pip install -r config/requirements_robotics.txt
 
-# Avec couverture
-python -m pytest --cov=athalia-dev-setup
+# Vérification robotique
+python3 athalia_robotics_integration.py . audit
 ```
 
-## 🤝 Contribution
+## 🎯 **UTILISATION RAPIDE**
 
+### **Audit complet d'un projet**
+```bash
+# Audit intelligent complet
+python3 athalia_unified.py /path/to/project
+
+# Avec module robotique
+python3 athalia_unified.py /path/to/project --robotics
+```
+
+### **Module robotique spécifique**
+```bash
+# Audit Reachy complet
+python3 athalia_robotics_integration.py . audit
+
+# Validation ROS2
+python3 athalia_robotics_integration.py . ros2
+
+# Gestion Docker
+python3 athalia_robotics_integration.py . docker
+
+# Analyse Rust
+python3 athalia_robotics_integration.py . rust
+
+# CI/CD robotique
+python3 athalia_robotics_integration.py . ci
+```
+
+### **Alias utiles**
+```bash
+# Source les alias
+source setup/alias.sh
+source setup/alias-robotics.sh
+
+# Utilisation
+ath-unified /path/to/project
+ath-robotics . audit
+ath-reachy-audit
+```
+
+## 🤖 **CONTRIBUTION AU PROJET REACHY**
+
+### **Setup pour Reachy**
+```bash
+# Suivre le guide complet
+# docs/REACHY_SETUP_GUIDE.md
+
+# Installation rapide
+git clone https://github.com/pollen-robotics/reachy_2023.git
+cd reachy_2023
+
+# Audit avec Athalia
+python3 /path/to/athalia/athalia_robotics_integration.py . audit
+```
+
+### **Workflow de contribution**
+1. **Fork** le dépôt Reachy
+2. **Audit** avec Athalia pour identifier les améliorations
+3. **Implémenter** les corrections suggérées
+4. **Valider** avec Athalia
+5. **Proposer** une Pull Request
+
+## 📚 **DOCUMENTATION**
+
+### **Guides principaux**
+- [Guide d'utilisation](docs/USER_GUIDE.md)
+- [Guide des tests](docs/TESTS_GUIDE.md)
+- [Guide des plugins](docs/PLUGINS_GUIDE.md)
+- [Guide robotique](docs/ROBOTICS_GUIDE.md)
+
+### **Guides spécialisés**
+- [Guide d'installation Reachy](docs/REACHY_SETUP_GUIDE.md)
+- [Guide d'utilisation rapide robotique](ROBOTICS_QUICK_START.md)
+- [Résumé intégration robotique](ROBOTICS_INTEGRATION_SUMMARY.md)
+
+## 🧪 **TESTS**
+
+### **Tests complets**
+```bash
+# Tous les tests
+python3 -m pytest tests/ -v
+
+# Tests robotiques
+python3 -m pytest tests/ -k "robotics" -v
+
+# Tests orchestrateur
+python3 -m pytest tests/test_athalia_orchestrator.py -v
+```
+
+### **Tests de validation**
+```bash
+# Validation express
+./validation_express.sh
+
+# Tests CI
+python3 -m pytest tests/test_ci_ultra_fast.py -v
+```
+
+## 🔧 **CONFIGURATION**
+
+### **Fichiers de configuration**
+- `config/athalia_config.yaml` : Configuration principale
+- `config/requirements.txt` : Dépendances de base
+- `config/requirements_robotics.txt` : Dépendances robotiques
+- `pytest.ini` : Configuration des tests
+
+### **Variables d'environnement**
+```bash
+export ATHALIA_DEBUG=true
+export ATHALIA_DRY_RUN=true
+export ATHALIA_ROBOTICS=true
+```
+
+## 🏗️ **ARCHITECTURE**
+
+### **Modules principaux**
+```
+athalia_core/
+├── athalia_orchestrator.py    # Orchestrateur principal
+├── audit.py                   # Audit intelligent
+├── ai_robust.py              # IA multi-modèles
+├── analytics.py              # Analytics avancées
+├── robotics/                 # Module robotique
+│   ├── reachy_auditor.py     # Audit Reachy
+│   ├── ros2_validator.py     # Validation ROS2
+│   ├── docker_robotics.py    # Gestion Docker
+│   ├── rust_analyzer.py      # Analyse Rust
+│   └── robotics_ci.py        # CI/CD robotique
+└── ...
+```
+
+### **Scripts d'intégration**
+- `athalia_unified.py` : Interface principale
+- `athalia_robotics_integration.py` : Interface robotique
+- `demo_robotics.py` : Démonstration interactive
+
+## 🚀 **ROADMAP**
+
+### **Version actuelle (v1.0)**
+- ✅ Module robotique complet
+- ✅ Intégration Reachy
+- ✅ Tests automatisés
+- ✅ Documentation complète
+
+### **Prochaines versions**
+- 🔄 Support d'autres robots (UR5, Franka, etc.)
+- 🔄 Interface web avancée
+- 🔄 Intégration cloud
+- 🔄 API REST
+
+## 🤝 **CONTRIBUTION**
+
+### **Comment contribuer**
 1. Fork le projet
-2. Créer une branche feature (`git checkout -b feature / AmazingFeature`)
-3. Commit les changements (`git commit -m 'Add some AmazingFeature'`)
-4. Push vers la branche (`git push origin feature / AmazingFeature`)
-5. Ouvrir une Pull Request
+2. Créer une branche feature
+3. Implémenter les changements
+4. Ajouter les tests
+5. Proposer une Pull Request
 
-## 📄 Licence
+### **Standards de code**
+- **Python** : PEP 8, type hints
+- **Tests** : pytest, couverture > 80%
+- **Documentation** : Markdown, docstrings
+- **Commits** : Conventional Commits
 
-Voir fichier LICENSE
+## 📄 **LICENCE**
+
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
+## 🙏 **REMERCIEMENTS**
+
+- **Pollen Robotics** pour le projet Reachy
+- **ROS2** pour le framework robotique
+- **Communauté open source** pour les contributions
 
 ---
-*Généré automatiquement par Athalia* - 2025-07-18
+
+## 🎉 **COMMENCER MAINTENANT**
+
+```bash
+# Installation rapide
+git clone https://github.com/arkalia-luna-system/ia-pipeline.git
+cd ia-pipeline
+pip install -r config/requirements_robotics.txt
+python3 athalia_robotics_integration.py . audit
+```
+
+**Prêt à contribuer au projet Reachy avec Athalia !** 🤖✨
