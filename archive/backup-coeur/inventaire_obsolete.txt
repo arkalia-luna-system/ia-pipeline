@@ -1,0 +1,10 @@
+-rwx------  1 athalia  staff  335400 17 juil. 07:18 data/athalia_report_20250717_071804.json
+
+logs/:
+total 0
+
+templates/:
+total 768
+drwx------  1 athalia  staff  131072 16 juil. 18:56 api
+drwx------  1 athalia  staff  131072 16 juil. 18:56 memory
+drwx------  1 athalia  staff  131072 16 juil. 18:56 tts
