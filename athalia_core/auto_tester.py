@@ -62,69 +62,56 @@ class AutoTester:
         }
 
     def _analyze_modules(self) -> List[Dict[str, Any]]:
-        """Analyse les modules pour générer les f"""
-        modules: List[Dict[str, Any]] = []
-
-        for py_file in self.project_path.rglob("*.f"):
-            if py_file.name != "__init__.f" and "f" not in py_file.name.lower():
+        """Analyse les modules Python du projet"""
+        modules = []
+        
+        for py_file in self.project_path.rglob("*.py"):
+            # Ignorer les fichiers macOS ._*
+            if py_file.name.startswith("._"):
+                continue
+                
+            if py_file.name != "__init__.py" and "test" not in py_file.name.lower():
                 try:
                     with open(py_file, 'r', encoding='utf-8') as file_handle:
-                        tree = ast.parse(file_handle.read())
-
+                        content = file_handle.read()
+                    
+                    tree = ast.parse(content)
                     module_info = {
-                        "name": py_file.stem,
-                        "path": str(py_file.relative_to(self.project_path)),
-                        "imports": [],
-                        "classes": [],
-                        "functions": []
+                        'name': py_file.stem,
+                        'path': str(py_file),
+                        'classes': [],
+                        'functions': [],
+                        'imports': []
                     }
-
-                    # Analyser les imports
-                    for node in ast.walk(tree):
-                        if isinstance(node, ast.Import):
-                            for alias in node.names:
-                                module_info["imports"].append(alias.name)
-                        elif isinstance(node, ast.ImportFrom):
-                            if node.module:
-                                module_info["imports"].append(node.module)
-
-                    # Analyser les classes
-                    for node in ast.walk(tree):
-                        if isinstance(node, ast.ClassDef):
+                    
+                    for item in tree.body:
+                        if isinstance(item, ast.ClassDef):
                             class_info = {
-                                "name": node.name,
-                                "methods": [],
-                                "docstring": ast.get_docstring(node) or ""
+                                'name': item.name,
+                                'methods': []
                             }
-
-                            for item in node.body:
-                                if isinstance(item, ast.FunctionDef):
-                                    method_info = {
-                                        "name": item.name,
-                                        "args": [arg.arg for arg in item.args.args if arg.arg != 'self'],
-                                        "docstring": ast.get_docstring(item) or ""
-                                    }
-                                    class_info["methods"].append(method_info)
-
-                            module_info["classes"].append(class_info)
-
-                    # Analyser les fonctions
-                    for node in ast.walk(tree):
-                        if isinstance(node, ast.FunctionDef) and not any(
-                            isinstance(parent, ast.ClassDef) for parent in ast.walk(tree)
-                            if hasattr(parent, 'body') and node in parent.body
+                            for node in item.body:
+                                if isinstance(node, ast.FunctionDef):
+                                    class_info['methods'].append(node.name)
+                            module_info['classes'].append(class_info)
+                        elif isinstance(item, ast.FunctionDef) and not any(
+                            decorator.id == 'property' if isinstance(decorator, ast.Name) else False
+                            for decorator in (item.decorator_list or [])
                         ):
-                            func_info = {
-                                "name": node.name,
-                                "args": [arg.arg for arg in node.args.args],
-                                "docstring": ast.get_docstring(node) or ""
-                            }
-                            module_info["functions"].append(func_info)
-
+                            module_info['functions'].append(item.name)
+                        elif isinstance(item, (ast.Import, ast.ImportFrom)):
+                            if isinstance(item, ast.Import):
+                                for alias in item.names:
+                                    module_info['imports'].append(alias.name)
+                            else:
+                                module_info['imports'].append(item.module or '')
+                    
                     modules.append(module_info)
+                    
                 except Exception as e:
-                    logger.info(f"⚠️ Erreur analyse {py_file}: {e}")
-
+                    logger.warning(f"Erreur lors de l'analyse de {py_file}: {e}")
+                    continue
+        
         return modules
 
     def _generate_unit_tests(self, modules: List[Dict[str, Any]]) -> List[str]:
@@ -333,21 +320,21 @@ if __name__ == '__main__':
 
         # Tests unitaires
         for index, test_content in enumerate(unit_tests):
-            test_file = tests_dir / f"test_unit_{index + 1}.f"
+            test_file = tests_dir / f"test_unit_{index + 1}.py"
             with open(test_file, 'w', encoding='utf-8') as file_handle:
                 file_handle.write(test_content)
             self.generated_tests.append(str(test_file))
 
         # Tests dintégration
         for index, test_content in enumerate(integration_tests):
-            test_file = tests_dir / f"test_integration_{index + 1}.f"
+            test_file = tests_dir / f"test_integration_{index + 1}.py"
             with open(test_file, 'w', encoding='utf-8') as file_handle:
                 file_handle.write(test_content)
             self.generated_tests.append(str(test_file))
 
         # Tests de performance
         for index, test_content in enumerate(performance_tests):
-            test_file = tests_dir / f"test_performance_{index + 1}.f"
+            test_file = tests_dir / f"test_performance_{index + 1}.py"
             with open(test_file, 'w', encoding='utf-8') as file_handle:
                 file_handle.write(test_content)
             self.generated_tests.append(str(test_file))
@@ -355,28 +342,28 @@ if __name__ == '__main__':
         # Fichier de configuration pytest
         pytest_config = """[tool.pytest.ini_options]
 testpaths = ["tests"]
-python_files = ["test_*.f"]
+python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
 addopts = [
-    "--f",
-    "--tb = f",
-    "--strict - f",
-    "--disable - f"
+    "--verbose",
+    "--tb=short",
+    "--strict-markers",
+    "--disable-warnings"
 ]
 markers = (
     "slow: marks tests as slow (deselect with -m \"not slow\")",
-    "integration: marks tests as integration f",
-    "performance: marks tests as performance f"
+    "integration: marks tests as integration tests",
+    "performance: marks tests as performance tests"
 )
 """
 
-        pytest_file = self.project_path / "pytest.f"
+        pytest_file = self.project_path / "pytest.ini"
         with open(pytest_file, 'w', encoding='utf-8') as file_handle:
             file_handle.write(pytest_config)
 
         # Script de lancement des tests
-        run_tests_script = """#!/usr / bin/env bash
+        run_tests_script = """#!/usr/bin/env bash
 # Script de lancement des tests pour {self.project_path.name}
 # Généré automatiquement par Athalia
 
@@ -384,24 +371,24 @@ echo "🧪 Lancement des tests pour {self.project_path.name}"
 
 # Tests unitaires
 echo "📋 Tests unitaires..."
-python -m pytest tests / test_unit_*.py -v
+python -m pytest tests/test_unit_*.py -v
 
 # Tests dintégration
 echo "🔗 Tests dintégration..."
-python -m pytest tests / test_integration_*.py -v
+python -m pytest tests/test_integration_*.py -v
 
 # Tests de performance
 echo "⚡ Tests de performance..."
-python -m pytest tests / test_performance_*.py -v
+python -m pytest tests/test_performance_*.py -v
 
 # Tests avec couverture
 echo "📊 Tests avec couverture..."
-python -m pytest tests/ --cov=. --cov - report=html --cov - report=term
+python -m pytest tests/ --cov=. --cov-report=html --cov-report=term
 
 echo "✅ Tests terminés !"
 """
 
-        run_tests_file = self.project_path / "run_tests.f"
+        run_tests_file = self.project_path / "run_tests.sh"
         with open(run_tests_file, 'w', encoding='utf-8') as file_handle:
             file_handle.write(run_tests_script)
 
@@ -409,7 +396,7 @@ echo "✅ Tests terminés !"
         os.chmod(run_tests_file, 0o755)
 
     def _run_tests(self) -> Dict[str, Any]:
-        """Exécute les tests générés et collecte les f"""
+        """Exécute les tests générés et collecte les résultats"""
         results = {
             "unit_tests": {"passed": 0, "failed": 0, "errors": []},
             "integration_tests": {"passed": 0, "failed": 0, "errors": []},
@@ -425,19 +412,19 @@ echo "✅ Tests terminés !"
             logger.info("🧪 Exécution des tests unitaires...")
             try:
                 result = subprocess.run(
-                    ["f", "-f", "f", "tests / test_unit_*.f", "-f", "--tb = f"],
-                    capture_output = True,
-                    text = True,
-                    timeout = 60
+                    ["python", "-m", "pytest", "tests/test_unit_*.py", "-v", "--tb=short"],
+                    capture_output=True,
+                    text=True,
+                    timeout=60
                 )
 
                 if result.returncode == 0:
-                    results["unit_tests"]["passed"] = len(re.findall(r"f", result.stdout))
+                    results["unit_tests"]["passed"] = len(re.findall(r"PASSED", result.stdout))
                 else:
-                    results["unit_tests"]["failed"] = len(re.findall(r"f", result.stdout))
+                    results["unit_tests"]["failed"] = len(re.findall(r"FAILED", result.stdout))
                     results["unit_tests"]["errors"].append(result.stderr)
             except subprocess.TimeoutExpired:
-                results["unit_tests"]["errors"].append("Timeout lors de lf")
+                results["unit_tests"]["errors"].append("Timeout lors de l'exécution")
             except Exception as e:
                 results["unit_tests"]["errors"].append(str(e))
 
@@ -445,19 +432,19 @@ echo "✅ Tests terminés !"
             logger.info("🔗 Exécution des tests dintégration...")
             try:
                 result = subprocess.run(
-                    ["f", "-f", "f", "tests / test_integration_*.f", "-f", "--tb = f"],
-                    capture_output = True,
-                    text = True,
-                    timeout = 60
+                    ["python", "-m", "pytest", "tests/test_integration_*.py", "-v", "--tb=short"],
+                    capture_output=True,
+                    text=True,
+                    timeout=60
                 )
 
                 if result.returncode == 0:
-                    results["integration_tests"]["passed"] = len(re.findall(r"f", result.stdout))
+                    results["integration_tests"]["passed"] = len(re.findall(r"PASSED", result.stdout))
                 else:
-                    results["integration_tests"]["failed"] = len(re.findall(r"f", result.stdout))
+                    results["integration_tests"]["failed"] = len(re.findall(r"FAILED", result.stdout))
                     results["integration_tests"]["errors"].append(result.stderr)
             except subprocess.TimeoutExpired:
-                results["integration_tests"]["errors"].append("Timeout lors de lf")
+                results["integration_tests"]["errors"].append("Timeout lors de l'exécution")
             except Exception as e:
                 results["integration_tests"]["errors"].append(str(e))
 
@@ -470,8 +457,8 @@ echo "✅ Tests terminés !"
         return results
 
     def _get_created_files(self) -> List[str]:
-        """Retourne la liste des fichiers f"""
-        files = ["pytest.f", "run_tests.f"] + self.generated_tests
+        """Retourne la liste des fichiers créés"""
+        files = ["pytest.ini", "run_tests.sh"] + self.generated_tests
         return [str(self.project_path / file_handle) if not file_handle.startswith(str(self.project_path)) else file_handle for file_handle in files]
 
     def generate_test_report(self) -> str:
