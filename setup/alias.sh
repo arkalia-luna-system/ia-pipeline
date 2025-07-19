@@ -24,8 +24,8 @@ alias ath-build='$(git rev-parse --show-toplevel)/bin/ath-build.py'
 # (À implémenter) Génération rapide de projet/module (script manquant)
 # alias ath-new='bash setup/ath-new.sh'
 
-# Lance le prompt contextuel IA (agents/ath_context_prompt.py)
-alias ath-smart='python3 $(git rev-parse --show-toplevel)/agents/ath_context_prompt.py'
+# Lance le prompt contextuel IA (athalia_core/agents/context_prompt.py)
+alias ath-smart='python3 $(git rev-parse --show-toplevel)/athalia_core/agents/context_prompt.py'
 
 # Ouvre le dashboard interactif dans le navigateur
 alias ath-dashboard='open $(git rev-parse --show-toplevel)/dashboard/dashboard.html'
@@ -83,14 +83,14 @@ alias ath-jupyter='jupyter notebook'
 
 # === Alias avancés / modules / plugins / outils ===
 
-# Modules avancés
-alias ath-auto-correct='python3 $(git rev-parse --show-toplevel)/modules/auto_correction_avancee.py'
-alias ath-dashboard-unified='python3 $(git rev-parse --show-toplevel)/modules/dashboard_unifie_simple.py'
-alias ath-profile-advanced='python3 $(git rev-parse --show-toplevel)/modules/profils_utilisateur_avances.py'
+# Modules avancés (maintenant dans athalia_core/advanced_modules/)
+alias ath-auto-correct='python3 $(git rev-parse --show-toplevel)/athalia_core/advanced_modules/auto_correction_advanced.py'
+alias ath-dashboard-unified='python3 $(git rev-parse --show-toplevel)/athalia_core/advanced_modules/dashboard_unified.py'
+alias ath-profile-advanced='python3 $(git rev-parse --show-toplevel)/athalia_core/advanced_modules/user_profiles_advanced.py'
 
-# Plugins
-alias ath-plugin-docker='python3 $(git rev-parse --show-toplevel)/plugins/export_docker_plugin.py'
-alias ath-plugin-hello='python3 $(git rev-parse --show-toplevel)/plugins/hello_plugin.py'
+# Plugins (maintenant dans athalia_core/external_plugins/)
+alias ath-plugin-docker='python3 $(git rev-parse --show-toplevel)/athalia_core/external_plugins/docker_export_plugin.py'
+alias ath-plugin-hello='python3 $(git rev-parse --show-toplevel)/athalia_core/external_plugins/hello_world_plugin.py'
 
 # Tests et benchmarks
 alias ath-test-ci='python3 $(git rev-parse --show-toplevel)/test_ci_manual.py'
@@ -108,7 +108,7 @@ alias ath-prompts='open $(git rev-parse --show-toplevel)/prompts/'
 alias ath-config='open $(git rev-parse --show-toplevel)/config/athalia_config.yaml'
 
 # Lister les plugins
-alias ath-plugins-list='ls $(git rev-parse --show-toplevel)/plugins/'
+alias ath-plugins-list='ls $(git rev-parse --show-toplevel)/athalia_core/external_plugins/'
 
 # Lancer un notebook Jupyter
 alias ath-notebook='jupyter notebook'
@@ -139,10 +139,10 @@ fi
 # === Auto-complétion intelligente pour les plugins ath-plugin-* ===
 if [ -n "$ZSH_VERSION" ]; then
   compctl -K _athalia_plugins ath-plugin-*
-  _athalia_plugins() { reply=($(ls $(git rev-parse --show-toplevel)/plugins/ | grep -E '^.*_plugin\\.py$' | sed 's/\\.py$//;s/_plugin$//;s/^/ath-plugin-/')); }
+  _athalia_plugins() { reply=($(ls $(git rev-parse --show-toplevel)/athalia_core/external_plugins/ | grep -E '^.*_plugin\\.py$' | sed 's/\\.py$//;s/_plugin$//;s/^/ath-plugin-/')); }
 fi
 if [ -n "$BASH_VERSION" ]; then
-  complete -W "$(ls $(git rev-parse --show-toplevel)/plugins/ | grep -E '^.*_plugin\\.py$' | sed 's/\\.py$//;s/_plugin$//;s/^/ath-plugin-/')" ath-plugin-
+  complete -W "$(ls $(git rev-parse --show-toplevel)/athalia_core/external_plugins/ | grep -E '^.*_plugin\\.py$' | sed 's/\\.py$//;s/_plugin$//;s/^/ath-plugin-/')" ath-plugin-
 fi
 
 # === Alias magique : aide dynamique sur tous les alias ===
@@ -152,10 +152,10 @@ function ath-help() {
     desc=$(grep "| \`${a}\`" "$(git rev-parse --show-toplevel)/docs/ALIAS.md" | head -1 | cut -d'|' -f3 | sed 's/^ *//')
     printf "  %-22s : %s\n" "$a" "$desc"
   done
-  echo "\nTapez 'ath-<tab>' pour l’auto-complétion.\nConsultez docs/ALIAS.md pour plus de détails."
+  echo "\nTapez 'ath-<tab>' pour l'auto-complétion.\nConsultez docs/ALIAS.md pour plus de détails."
 }
 
-# === Alias dynamique selon l’utilisateur courant ===
+# === Alias dynamique selon l'utilisateur courant ===
 function ath-user-context() {
   case "$USER" in
     admin*) echo "Bienvenue, administrateur ! Alias spéciaux activés." ;;
