@@ -34,6 +34,30 @@ from .security_auditor import SecurityAuditor
 from .intelligent_analyzer import IntelligentAnalyzer
 
 # Imports robotiques (optionnels)
+from .ci import generate_github_ci_yaml
+from .plugins_validator import validate_plugin
+from .architecture_analyzer import ArchitectureAnalyzer
+from .multi_file_editor import MultiFileEditor
+from .ast_analyzer import ASTAnalyzer
+from .autocomplete_server import AutocompleteRequest
+from .autocomplete_engine import BaseAutocompleteEngine
+from .analytics import analyze_project, generate_heatmap_data, generate_technical_debt_analysis, generate_analytics_html
+from .cleanup import clean_old_tests_and_caches, clean_macos_files
+from .cli import cli, generate
+from .main import main
+from .security import security_audit_project
+from .onboarding import generate_onboarding_md, generate_onboard_cli, generate_onboarding_html_advanced
+from .plugins_manager import run_all_plugins
+from .ready_check import open_patch, check_ready
+from .dashboard import main
+from .audit import Audit
+from .config_manager import ConfigManager
+from .correction_optimizer import CorrectionOptimizer
+# from .generation import FlowerAnimation  # Classe non disponible
+from .intelligent_memory import IntelligentMemory
+from .logger_advanced import AthaliaLogger
+from .pattern_detector import PatternDetector
+from .performance_analyzer import PerformanceAnalyzer
 try:
     from .robotics.reachy_auditor import ReachyAuditor
     from .robotics.ros2_validator import ROS2Validator
