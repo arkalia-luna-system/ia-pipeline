@@ -155,10 +155,24 @@ alias ath-test-ci='python3 "$ATHALIA_ROOT/test_ci_manual.py"'
 alias ath-test-final='python3 "$ATHALIA_ROOT/test_final_athalia.py"'
 alias ath-test-dashboard='python3 "$ATHALIA_ROOT/test_dashboard_unifie.py"'
 
+# === ALIAS SYSTÈME INTELLIGENT ===
+# Système de coordination et d'apprentissage intelligent
+
+alias ath-coordinator='python3 "$ATHALIA_ROOT/setup/athalia-coordinator.py"'
+alias ath-coordinator-analyze='python3 "$ATHALIA_ROOT/setup/athalia-coordinator.py" --action analyze'
+alias ath-coordinator-insights='python3 "$ATHALIA_ROOT/setup/athalia-coordinator.py" --action insights'
+alias ath-coordinator-update-docs='python3 "$ATHALIA_ROOT/setup/athalia-coordinator.py" --action update-docs'
+
+# Système intelligent unifié
+alias ath-intelligent='source "$ATHALIA_ROOT/setup/athalia-intelligent-system.sh"'
+alias ath-help-intelligent='ath-help-intelligent'
+alias ath-diagnostic='ath-diagnostic'
+alias ath-update-intelligent='ath-update-intelligent'
+
 # === ALIAS À IMPLÉMENTER ===
 # Placeholders pour les fonctionnalités futures
 
-alias ath-generate='echo "🚧 Fonctionnalité à implémenter : ath-generate"'
+alias ath-generate='bash "$ATHALIA_ROOT/setup/ath-generate.sh"'
 alias ath-correct='echo "🚧 Fonctionnalité à implémenter : ath-correct"'
 alias ath-profile='echo "🚧 Fonctionnalité à implémenter : ath-profile"'
 alias ath-scan='echo "🚧 Fonctionnalité à implémenter : ath-scan"'
@@ -249,9 +263,29 @@ function ath-user-context() {
     esac
 }
 
-# === INITIALISATION ===
-# Message de bienvenue et vérifications
+# === SUPER CERVEAU ET ORCHESTRATEUR ===
+# Système de super cerveau et orchestration intelligente
 
+alias ath-super-brain='python3 "$ATHALIA_ROOT/setup/athalia-super-brain.py"'
+alias ath-brain-analyze='python3 "$ATHALIA_ROOT/setup/athalia-super-brain.py" --action analyze'
+alias ath-brain-optimize='python3 "$ATHALIA_ROOT/setup/athalia-super-brain.py" --action optimize'
+alias ath-brain-coordinate='python3 "$ATHALIA_ROOT/setup/athalia-super-brain.py" --action coordinate'
+alias ath-brain-report='python3 "$ATHALIA_ROOT/setup/athalia-super-brain.py" --action report --output data/super_brain_report.json'
+
+alias ath-orchestrator='python3 "$ATHALIA_ROOT/setup/athalia-intelligent-orchestrator.py"'
+alias ath-orchestrate-plan='python3 "$ATHALIA_ROOT/setup/athalia-intelligent-orchestrator.py" --action plan'
+alias ath-orchestrate-complete='python3 "$ATHALIA_ROOT/setup/athalia-intelligent-orchestrator.py" --action orchestrate --pipeline complete'
+alias ath-orchestrate-audit='python3 "$ATHALIA_ROOT/setup/athalia-intelligent-orchestrator.py" --action orchestrate --pipeline audit'
+alias ath-orchestrate-test='python3 "$ATHALIA_ROOT/setup/athalia-intelligent-orchestrator.py" --action orchestrate --pipeline test'
+alias ath-orchestrate-insights='python3 "$ATHALIA_ROOT/setup/athalia-intelligent-orchestrator.py" --action insights'
+
+# === INITIALISATION ===
+# Définir le chemin racine
+export ATHALIA_ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
+
+# Message de bienvenue et vérifications
 echo "🚀 Alias Athalia/Arkalia unifiés chargés !"
 echo "💡 Tapez 'ath-help' pour voir toutes les commandes"
-echo "🔍 Tapez 'ath-status' pour l'état du projet" 
+echo "🔍 Tapez 'ath-status' pour l'état du projet"
+echo "🧠 Tapez 'ath-brain-analyze' pour analyser l'architecture"
+echo "🎯 Tapez 'ath-orchestrate-plan' pour voir les plans d'orchestration" 
