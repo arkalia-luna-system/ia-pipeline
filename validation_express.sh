@@ -31,9 +31,11 @@ timeout 5s python -c "
 import sys
 sys.path.insert(0, '.')
 try:
-    from athalia_core.main import *
-    from athalia_core.ai_robust import *
+    import athalia_core.audit
+    import athalia_core.cleanup
+    import athalia_core.analytics
     print('OK')
+    sys.exit(0)
 except Exception as e:
     print(f'ERREUR: {e}')
     sys.exit(1)
