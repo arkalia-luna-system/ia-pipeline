@@ -3,12 +3,12 @@
 ## 📊 **RÉSUMÉ EXÉCUTIF**
 
 ### **🎯 STATISTIQUES GLOBALES**
-- **Total de fichiers de test** : 127 fichiers (+3 fichiers)
-- **Total de fonctions de test** : 570 fonctions (+11 fonctions)
+- **Total de fichiers de test** : 114 fichiers
+- **Total de fonctions de test** : 583 fonctions
 - **Lignes de code de test** : ~9,600 lignes (estimé)
-- **Tests collectés par pytest** : 602 tests (+11 tests)
-- **Erreurs de collection** : 0 erreur (-1 erreur)
-- **Tests cassés** : 0 fichier (-1 fichier)
+- **Tests collectés par pytest** : 752 tests
+- **Erreurs de collection** : 0 erreur
+- **Tests cassés** : 0 fichier
 - **Tests optimisés** : 21 tests (nouveaux tests de performance)
 
 ---
@@ -231,5 +231,4 @@ from athalia_core.advanced_modules.user_profiles_advanced import GestionnairePro
 
 2. **Standardiser les noms** :
    - `test_[module]_[fonction].py`
-   - `test_[module]_integration.py`
    - `
