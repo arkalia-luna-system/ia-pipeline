@@ -33,6 +33,12 @@ alias ath-dashboard='open $(git rev-parse --show-toplevel)/dashboard/dashboard.h
 # Dashboard web (script Python)
 alias ath-dashboard-py='python3 $(git rev-parse --show-toplevel)/athalia_core/dashboard.py'
 
+# Dashboard de validation temps réel
+alias ath-dashboard-validation='python3 $(git rev-parse --show-toplevel)/validation_dashboard_simple.py & sleep 2 && open http://localhost:5001/dashboard_validation.html'
+
+# Test CI local (utilise les tests existants)
+alias ath-ci-test='python3 -m pytest tests/test_ci_ultra_fast.py -v && python3 -m pytest tests/test_ci_robust.py -v'
+
 # CLI principal
 alias ath-cli-main='python3 -m athalia_core.cli'
 
