@@ -37,10 +37,10 @@ source /chemin/vers/athalia-dev-setup/setup/alias.sh
 | `ath-correct` | Auto-correction avancée d’un projet (script à implémenter) |
 | `ath-profile` | Gestion des profils utilisateur (script à implémenter) |
 | `ath-scan` | Scan de sécurité ou de projets (script à implémenter) |
-| `ath-test-prompts` | Lance les tests prompts (script à implémenter) |
-| `ath-benchmark` | Lance le benchmark de distillation (script à implémenter) |
-| `ath-export` | Exporte le pipeline complet (script à implémenter) |
-| `ath-mkdocs` | Lance le serveur de documentation locale (script à implémenter) |
+| `ath-test-prompts` | Lance les tests prompts (setup/ath-test-prompts.sh) |
+| `ath-benchmark` | Lance le benchmark de distillation (setup/ath-benchmark.sh) |
+| `ath-export` | Exporte le pipeline complet (setup/ath-export.sh) |
+| `ath-mkdocs` | Lance le serveur de documentation locale (setup/ath-mkdocs.sh) |
 
 > **Note** : L’alias `ath-new` est désactivé car le script `setup/ath-new.sh` est manquant. Pour ajouter un générateur de projet, créez ce script ou retirez l’alias.
 

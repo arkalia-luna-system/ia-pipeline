@@ -43,7 +43,7 @@ class TestCIFinal:
             "config/requirements.txt",
             "config/athalia_config.yaml",
             "config/pyproject.toml",
-            "pytest-ci.ini",
+            "config/pytest-ci.ini",
             ".github/workflows/ci.yaml",
             "README.md",
             "docs/README.md"
