@@ -1,8 +1,0 @@
-Validation Express Athalia/Arkalia
-Date: sam. 19 juil. 2025 03:50:43 CEST
-Temps total: 1s
-Tests réussis: 3/4
-Score: 75%
-
-Verdict: BON
-MOYEN
