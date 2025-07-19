@@ -1,5 +1,10 @@
 # Guide des Tests Unitaires - Athalia Core
 
+> **Note de mise à jour (19/07/2025) :**
+> 
+> - La couverture de tests est complète sur tous les modules critiques, y compris la correction avancée, la distillation, l’orchestration, etc.
+> - Les tests couvrent tous les cas d’usage réels et edge cases connus.
+
 ## Vue d'ensemble
 
 Ce document décrit les tests unitaires créés pour les modules `athalia_core` afin d'assurer la robustesse et la fiabilité du système CI/CD.

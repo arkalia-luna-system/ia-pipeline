@@ -143,14 +143,14 @@ MODULES INTÉGRÉS:
             # Mode industrialisation complète
             logger.info("🚀 Lancement de l'industrialisation complète...")
 
-            # Import des modules historiques
+            # Import de l'orchestrateur principal
             try:
-                from modules.orchestrateur_principal import AthaliaOrchestrator
+                from athalia_core.athalia_orchestrator import AthaliaOrchestrator
             except ImportError:
                 logger.info("⚠️ Module athalia_orchestrator non disponible, utilisation de la version simplifiée")
                 # Version simplifiée pour les tests
                 class AthaliaOrchestrator:
-                    def industrialize_project(self, project_path, config):
+                    def industrialize_project(self, project_path, config=None):
                         return {"status": "Industrialisation simulée - Modules non disponibles"}
                     def audit_project(self, project_path):
                         return {"score": 75, "issues": 15}
