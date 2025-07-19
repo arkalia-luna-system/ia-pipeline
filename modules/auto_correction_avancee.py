@@ -61,6 +61,10 @@ class AutoCorrectionAvancee:
         fichiers_traites = 0
 
         for fichier in self.project_path.rglob("*.py"):
+            # Ignorer les fichiers macOS ._*
+            if fichier.name.startswith("._"):
+                continue
+                
             if "__pycache__" in str(fichier) or ".git" in str(fichier):
                 continue
 
@@ -181,6 +185,10 @@ class AutoCorrectionAvancee:
         optimisations = []
 
         for fichier in self.project_path.rglob("*.py"):
+            # Ignorer les fichiers macOS ._*
+            if fichier.name.startswith("._"):
+                continue
+                
             if "__pycache__" in str(fichier) or ".git" in str(fichier):
                 continue
 
@@ -306,6 +314,10 @@ class AutoCorrectionAvancee:
         refactorings = []
 
         for fichier in self.project_path.rglob("*.py"):
+            # Ignorer les fichiers macOS ._*
+            if fichier.name.startswith("._"):
+                continue
+                
             if "__pycache__" in str(fichier) or ".git" in str(fichier):
                 continue
 
@@ -428,6 +440,10 @@ class AutoCorrectionAvancee:
         corrections = []
 
         for fichier in self.project_path.rglob("*.py"):
+            # Ignorer les fichiers macOS ._*
+            if fichier.name.startswith("._"):
+                continue
+                
             if "__pycache__" in str(fichier) or ".git" in str(fichier):
                 continue
 
@@ -469,6 +485,10 @@ class AutoCorrectionAvancee:
         ameliorations = []
 
         for fichier in self.project_path.rglob("*.py"):
+            # Ignorer les fichiers macOS ._*
+            if fichier.name.startswith("._"):
+                continue
+                
             if "__pycache__" in str(fichier) or ".git" in str(fichier):
                 continue
 
