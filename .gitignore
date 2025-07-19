@@ -1,0 +1,143 @@
+# Fichiers temporaires et de cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Cache Python
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Cache mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Fichiers macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Fichiers Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.tmp
+*.temp
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Fichiers Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# Fichiers de validation temporaires
+validation_express_*.txt
+rapport_validation_objective_*.md
+ci_test_report_*.md
+historique_validation.json
+dashboard_validation.html
+
+# Fichiers de logs
+*.log
+logs/
+log/
+
+# Fichiers de données temporaires
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# Environnements virtuels
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Fichiers de configuration locaux
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Fichiers de base de données temporaires
+*.db
+*.sqlite
+*.sqlite3
+
+# Fichiers de profilage
+profile.out
+*.prof
+
+# Fichiers de benchmark
+benchmark_results.csv
+benchmark_results.md
+
+# Fichiers de test temporaires
+test_*.py
+*_test.py
+test_validation_*.py 
