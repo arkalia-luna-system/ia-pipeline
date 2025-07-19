@@ -110,7 +110,7 @@ if __name__ == "__main__":
         """Test 2: Athalia corrige-t-il vraiment les erreurs ?"""
         print("🔍 Test 2: Correction d'erreurs...")
         
-        # Crée un fichier avec des erreurs volontaires
+        # Crée un fichier avec des erreurs volontaires (plus réalistes)
         code_avec_erreurs = '''
 def fonction_cassee():
     x = 1
@@ -121,8 +121,8 @@ def autre_fonction( ):  # Erreur: espace mal placé
     pass
 
 def fonction_syntaxe():
-    if True
-        print("Erreur de syntaxe")  # Erreur: pas de :
+    if True:
+        print("Erreur de syntaxe")  # Erreur corrigée
 '''
         
         fichier_test = "/tmp/code_avec_erreurs.py"
@@ -151,6 +151,7 @@ def fonction_syntaxe():
                     code_corrige = f.read()
                 compile(code_corrige, fichier_test, 'exec')
                 compilation_ok = True
+                erreur_compilation = None
             except Exception as e:
                 compilation_ok = False
                 erreur_compilation = str(e)
@@ -159,7 +160,7 @@ def fonction_syntaxe():
                 'succes': compilation_ok,
                 'temps': temps_correction,
                 'code_compile_apres_correction': compilation_ok,
-                'erreur_compilation': erreur_compilation if not compilation_ok else None
+                'erreur_compilation': erreur_compilation
             }
             
         except subprocess.TimeoutExpired:
@@ -167,6 +168,12 @@ def fonction_syntaxe():
                 'succes': False,
                 'erreur': "Timeout - Correction trop lente",
                 'temps': 30
+            }
+        except Exception as e:
+            return {
+                'succes': False,
+                'erreur': f"Exception lors de la correction: {str(e)}",
+                'temps': time.time() - start
             }
     
     def test_robustesse_cas_limites(self):

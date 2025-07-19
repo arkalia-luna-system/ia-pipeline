@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 from athalia_core.ci import generate_github_ci_yaml, add_coverage_badge
 from athalia_core.cleanup import clean_old_tests_and_caches
-from athalia_core.dashboard import enrich_genesis_md, generate_dashboard_html, generate_multi_project_mermaid
+from athalia_core.dashboard import generate_dashboard_html, generate_multi_project_mermaid
+from athalia_core.advanced_analytics import enrich_genesis_md
 # from athalia_core.generation import generate_project, generate_blueprint_ia, generate_blueprint_mock, save_blueprint, scan_existing_project
 from athalia_core.onboarding import generate_onboard_cli, generate_onboarding_html_advanced
 from athalia_core.security import security_audit_project
