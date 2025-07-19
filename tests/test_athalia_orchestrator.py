@@ -41,6 +41,44 @@ if __name__ == "__main__":
 
         (self.test_project / "README.md").write_text("# Test Project\n\nA simple test project.")
 
+        # Créer un projet robotique de test
+        self.robotics_project = Path(self.temp_dir) / "robotics_project"
+        self.robotics_project.mkdir()
+        
+        # Structure ROS2
+        (self.robotics_project / "src").mkdir()
+        (self.robotics_project / "src" / "my_robot_package").mkdir()
+        (self.robotics_project / "src" / "my_robot_package" / "package.xml").write_text("""<?xml version="1.0"?>
+<package format="2">
+  <name>my_robot_package</name>
+  <version>0.0.1</version>
+  <description>Test robot package</description>
+  <maintainer email="test@example.com">Test User</maintainer>
+  <license>MIT</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+</package>""")
+        
+        # Docker
+        (self.robotics_project / "docker-compose.yml").write_text("""
+version: '3.8'
+services:
+  robot:
+    image: ros:humble
+    volumes:
+      - ./src:/workspace/src
+""")
+        
+        # Rust
+        (self.robotics_project / "Cargo.toml").write_text("""
+[package]
+name = "robot_control"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1.0", features = ["full"] }
+""")
+
     def teardown_method(self):
         """Cleanup après chaque test"""
         shutil.rmtree(self.temp_dir, ignore_errors=True)
@@ -111,6 +149,93 @@ if __name__ == "__main__":
         for step in expected_steps:
             assert step in results
 
+    def test_industrialize_project_with_robotics(self):
+        """Test l'industrialisation avec module robotique"""
+        config = {
+            "audit": True,
+            "clean": False,
+            "document": False,
+            "test": False,
+            "deploy": False,
+            "robotics": True,  # Activer le module robotique
+            "dry_run": True
+        }
+
+        results = self.orchestrator.industrialize_project(str(self.robotics_project), config)
+
+        assert results is not None
+        assert "audit" in results
+        assert "robotics" in results  # Vérifier que le module robotique est présent
+        
+        # Vérifier la structure du résultat robotique
+        robotics_result = results["robotics"]
+        assert "passed" in robotics_result
+        assert "result" in robotics_result
+        assert "score" in robotics_result
+        assert "reachy_audit" in robotics_result["result"]
+        assert "ros2_validation" in robotics_result["result"]
+        assert "docker_setup" in robotics_result["result"]
+        assert "rust_analysis" in robotics_result["result"]
+        assert "ci_pipeline" in robotics_result["result"]
+
+    def test_robotics_module_only(self):
+        """Test l'industrialisation avec seulement le module robotique"""
+        config = {
+            "audit": False,
+            "clean": False,
+            "document": False,
+            "test": False,
+            "deploy": False,
+            "robotics": True,  # Seulement le module robotique
+            "dry_run": True
+        }
+
+        results = self.orchestrator.industrialize_project(str(self.robotics_project), config)
+
+        assert results is not None
+        assert "robotics" in results
+        
+        # Vérifier que le module robotique fonctionne correctement
+        robotics_result = results["robotics"]
+        assert "passed" in robotics_result
+        assert "result" in robotics_result
+        assert "score" in robotics_result
+        assert "reachy_audit" in robotics_result["result"]
+        assert "ros2_validation" in robotics_result["result"]
+        assert "docker_setup" in robotics_result["result"]
+        assert "rust_analysis" in robotics_result["result"]
+        assert "ci_pipeline" in robotics_result["result"]
+        
+        # Vérifier que les autres modules ne sont pas exécutés (ils ont des valeurs par défaut)
+        assert results["audit"]["passed"] is True  # Valeur par défaut en dry_run
+        assert results["clean"]["passed"] is True  # Valeur par défaut en dry_run
+
+    def test_robotics_module_on_non_robotics_project(self):
+        """Test le module robotique sur un projet non-robotique"""
+        config = {
+            "audit": False,
+            "clean": False,
+            "document": False,
+            "test": False,
+            "deploy": False,
+            "robotics": True,
+            "dry_run": True
+        }
+
+        results = self.orchestrator.industrialize_project(str(self.test_project), config)
+
+        assert results is not None
+        assert "robotics" in results
+        
+        # Le module robotique devrait fonctionner même sur un projet non-robotique
+        robotics_result = results["robotics"]
+        assert "passed" in robotics_result
+        assert "result" in robotics_result
+        assert "score" in robotics_result
+        assert "reachy_audit" in robotics_result["result"]
+        # Le score devrait être plus bas pour un projet non-robotique
+        assert robotics_result["score"] < 100
+
     def test_scan_projects(self):
         """Test le scan de projets"""
         # Créer quelques projets de test
@@ -162,6 +287,39 @@ if __name__ == "__main__":
         assert "status" in results["audit"]
         # L'audit devrait fonctionner même sur un projet vide
         assert results["audit"]["status"]["success"] is True
+
+    def test_robotics_module_import(self):
+        """Test que les modules robotiques peuvent être importés"""
+        try:
+            from athalia_core.robotics.reachy_auditor import ReachyAuditor
+            from athalia_core.robotics.ros2_validator import ROS2Validator
+            from athalia_core.robotics.docker_robotics import DockerRoboticsManager
+            from athalia_core.robotics.rust_analyzer import RustAnalyzer
+            from athalia_core.robotics.robotics_ci import RoboticsCI
+            assert True  # Si on arrive ici, l'import a réussi
+        except ImportError as e:
+            pytest.fail(f"Impossible d'importer les modules robotiques: {e}")
+
+    def test_robotics_audit_method(self):
+        """Test la méthode _run_robotics_audit de l'orchestrateur"""
+        # Vérifier que la méthode existe
+        assert hasattr(self.orchestrator, '_run_robotics_audit')
+        
+        # Configurer le projet pour l'orchestrateur
+        self.orchestrator.project_path = Path(self.robotics_project)
+        
+        # Tester la méthode directement
+        result = self.orchestrator._run_robotics_audit()
+        
+        assert result is not None
+        assert "passed" in result
+        assert "result" in result
+        assert "score" in result
+        assert "reachy_audit" in result["result"]
+        assert "ros2_validation" in result["result"]
+        assert "docker_setup" in result["result"]
+        assert "rust_analysis" in result["result"]
+        assert "ci_pipeline" in result["result"]
 
 def test_orchestrator_import():
     """Test que l'orchestrateur peut être importé"""
