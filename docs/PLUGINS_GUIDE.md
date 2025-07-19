@@ -1,5 +1,10 @@
 # Guide des Plugins - Athalia/Arkalia
 
+> **Note de mise à jour (19/07/2025) :**
+> 
+> - Le système de plugins est déjà en place, testé, documenté, et utilisé en production.
+> - Les exemples et guides sont à jour avec l’état réel du code.
+
 ## 🎯 Vue d'ensemble
 
 Le système de plugins d'Athalia/Arkalia permet d'étendre les fonctionnalités du pipeline dindustrialisation IA de manière modulaire et flexible.
