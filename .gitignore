@@ -140,4 +140,4 @@ benchmark_results.md
 # Fichiers de test temporaires
 test_*.py
 *_test.py
-test_validation_*.py 
+test_validation_*.py .mypy_cache/
