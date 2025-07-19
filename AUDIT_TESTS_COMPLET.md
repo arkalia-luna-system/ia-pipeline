@@ -3,12 +3,13 @@
 ## 📊 **RÉSUMÉ EXÉCUTIF**
 
 ### **🎯 STATISTIQUES GLOBALES**
-- **Total de fichiers de test** : 124 fichiers (+3 fichiers)
-- **Total de fonctions de test** : 559 fonctions (+11 fonctions)
-- **Lignes de code de test** : ~9,400 lignes (estimé)
-- **Tests collectés par pytest** : 591 tests (+11 tests)
-- **Erreurs de collection** : 1 erreur (-0 erreurs)
-- **Tests cassés** : 1 fichier avec erreur d'import (-0 fichiers)
+- **Total de fichiers de test** : 127 fichiers (+3 fichiers)
+- **Total de fonctions de test** : 570 fonctions (+11 fonctions)
+- **Lignes de code de test** : ~9,600 lignes (estimé)
+- **Tests collectés par pytest** : 602 tests (+11 tests)
+- **Erreurs de collection** : 0 erreur (-1 erreur)
+- **Tests cassés** : 0 fichier (-1 fichier)
+- **Tests optimisés** : 21 tests (nouveaux tests de performance)
 
 ---
 
@@ -58,7 +59,20 @@
   - Messages d'assertion informatifs
   - Gestion d'erreurs appropriée
 
-### **6. AMÉLIORATIONS APPORTÉES**
+### **6. OPTIMISATION DES PERFORMANCES (Phase 5)**
+- **Configuration pytest** créée : `pytest.ini` avec marqueurs de performance
+- **Tests optimisés** créés :
+  - `test_performance_optimized.py` (tests avec cache et parallélisation)
+  - `test_aliases_execution_optimized.py` (tests d'alias optimisés)
+- **Script d'optimisation** créé : `tests/optimize_performance.py`
+- **Marqueurs de performance** définis :
+  - `@pytest.mark.fast` : Tests rapides (< 1s)
+  - `@pytest.mark.medium` : Tests moyens (1-5s)
+  - `@pytest.mark.slow` : Tests lents (> 5s)
+  - `@pytest.mark.performance` : Tests de performance
+  - `@pytest.mark.parallel` : Tests parallélisables
+
+### **7. AMÉLIORATIONS APPORTÉES**
 - **Imports sécurisés** avec gestion d'erreurs
 - **Tests de fallback** pour modules non disponibles
 - **Structure cohérente** des tests corrigés
@@ -218,90 +232,4 @@ from athalia_core.advanced_modules.user_profiles_advanced import GestionnairePro
 2. **Standardiser les noms** :
    - `test_[module]_[fonction].py`
    - `test_[module]_integration.py`
-   - `test_[module]_performance.py`
-
----
-
-## 📊 **OBJECTIFS DE RÉDUCTION**
-
-### **AVANT OPTIMISATION**
-- **Fichiers de test** : 120
-- **Fonctions de test** : 568
-- **Lignes de code** : 10,304
-- **Tests cassés** : 11
-- **Tests inutiles** : 36
-
-### **APRÈS PHASE 3 (TERMINÉE)**
-- **Fichiers de test** : 121 (+10%)
-- **Fonctions de test** : 548 (-3%)
-- **Lignes de code** : ~9,200 (-6%)
-- **Tests cassés** : 1 (-91%)
-- **Tests inutiles** : 0 (-100%)
-- **Doublons éliminés** : 15 tests (-100%)
-- **Gros tests divisés** : 3 fichiers → 6 fichiers (+100%)
-
-### **OBJECTIF FINAL**
-- **Fichiers de test** : 80 (-33%)
-- **Fonctions de test** : 400 (-30%)
-- **Lignes de code** : 7,000 (-32%)
-- **Tests cassés** : 0 (-100%)
-- **Tests inutiles** : 0 (-100%)
-
----
-
-## 🚀 **PROCHAINES ÉTAPES**
-
-### **IMMÉDIAT (Jour 1)**
-1. **Corriger le dernier test cassé** (autogen)
-2. **Fusionner les doublons** (8+3 tests)
-3. **Consolider les tests CI** (4→1 fichier)
-
-### **COURT TERME (Jours 2-3)**
-1. **Diviser les gros tests** (>200 lignes)
-2. **Standardiser les conventions**
-3. **Améliorer la couverture**
-
-### **MOYEN TERME (Jours 4-7)**
-1. **Restructurer** l'organisation
-2. **Optimiser les performances**
-3. **Documenter** les tests
-
----
-
-## 📝 **RECOMMANDATIONS**
-
-### **1. PRIORITÉ HAUTE**
-- **Corriger le dernier test cassé** (autogen)
-- **Fusionner les doublons** (gain immédiat)
-- **Consolider les tests CI** (simplification)
-
-### **2. PRIORITÉ MOYENNE**
-- **Diviser les gros tests** pour la maintenabilité
-- **Standardiser les conventions** pour la cohérence
-- **Améliorer la couverture** des cas d'erreur
-
-### **3. PRIORITÉ BASSE**
-- **Optimiser les performances** des tests
-- **Ajouter des tests** de régression
-- **Documenter** les tests complexes
-
----
-
-## 🎉 **RÉSULTATS DE LA PHASE 1**
-
-### **SUCCÈS MAJEURS**
-- **91% des tests cassés corrigés** (10→1)
-- **100% des tests inutiles supprimés** (36→0)
-- **Collecte de tests améliorée** (576→584)
-- **Fiabilité augmentée** (95%→99%)
-
-### **GAINS IMMÉDIATS**
-- **Temps de collecte réduit** (moins d'erreurs)
-- **Fiabilité améliorée** (moins de faux positifs)
-- **Maintenance simplifiée** (moins de tests à maintenir)
-- **Confiance accrue** (tests qui fonctionnent)
-
----
-
-**Dernière mise à jour :** 19/07/2025 15:07
-**Prochaine action :** Fusion des doublons et consolidation des tests CI 
+   - `
