@@ -33,6 +33,7 @@
 - [FUSION_ORCHESTRATEURS_COMPLETE.md](refactoring/FUSION_ORCHESTRATEURS_COMPLETE.md) - Fusion des orchestrateurs
 
 ## 📋 **Statut et État**
+- [AUDIT_COMPLET_SYNTHESE.md](status/AUDIT_COMPLET_SYNTHESE.md) - **AUDIT COMPLET** des dossiers avec 149 pépites découvertes
 - [SYNTHESE_FINALE_INDUSTRIALISATION.md](status/SYNTHESE_FINALE_INDUSTRIALISATION.md) - **SYNTHÈSE FINALE** de l'industrialisation réussie
 - [RESPONSABILITES_CROISEES.md](status/RESPONSABILITES_CROISEES.md) - **Documentation** des responsabilités croisées et guide d'utilisation
 - [ETAT_REEL_SYSTEME.md](status/ETAT_REEL_SYSTEME.md) - **ÉTAT RÉEL** du système basé sur l'analyse complète
