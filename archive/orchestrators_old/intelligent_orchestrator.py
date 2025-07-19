@@ -442,6 +442,26 @@ class IntelligentOrchestrator:
     
     def _save_orchestration_results(self, results: Dict[str, Any]):
         """Sauvegarder les résultats d'orchestration"""
+        # Convertir les objets IntelligentInsight en dictionnaires
+        converted_results = {}
+        for key, value in results.items():
+            if key == 'insights_generated' and isinstance(value, list):
+                converted_results[key] = [
+                    {
+                        'insight_type': insight.insight_type,
+                        'title': insight.title,
+                        'description': insight.description,
+                        'confidence': insight.confidence,
+                        'priority': insight.priority,
+                        'suggested_action': insight.suggested_action,
+                        'estimated_impact': insight.estimated_impact,
+                        'code_location': insight.code_location
+                    } if hasattr(insight, 'insight_type') else insight
+                    for insight in value
+                ]
+            else:
+                converted_results[key] = value
+        
         # Sauvegarder les métriques
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
@@ -452,9 +472,9 @@ class IntelligentOrchestrator:
                 VALUES (?, ?, ?, ?)
             """, (
                 "tasks_executed",
-                len(results.get('tasks_executed', [])),
+                len(converted_results.get('tasks_executed', [])),
                 datetime.now().isoformat(),
-                json.dumps(results)
+                json.dumps(converted_results)
             ))
             
             cursor.execute("""
@@ -463,9 +483,9 @@ class IntelligentOrchestrator:
                 VALUES (?, ?, ?, ?)
             """, (
                 "insights_generated",
-                len(results.get('insights_generated', [])),
+                len(converted_results.get('insights_generated', [])),
                 datetime.now().isoformat(),
-                json.dumps(results)
+                json.dumps(converted_results)
             ))
             
             conn.commit()
