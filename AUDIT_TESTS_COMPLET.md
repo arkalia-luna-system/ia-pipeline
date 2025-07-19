@@ -3,10 +3,10 @@
 ## 📊 **RÉSUMÉ EXÉCUTIF**
 
 ### **🎯 STATISTIQUES GLOBALES**
-- **Total de fichiers de test** : 112 fichiers (-8 fichiers)
-- **Total de fonctions de test** : 566 fonctions (-2 fonctions)
-- **Lignes de code de test** : ~9,800 lignes (estimé)
-- **Tests collectés par pytest** : 584 tests (+8 tests)
+- **Total de fichiers de test** : 110 fichiers (-10 fichiers)
+- **Total de fonctions de test** : 552 fonctions (-16 fonctions)
+- **Lignes de code de test** : ~9,500 lignes (estimé)
+- **Tests collectés par pytest** : 580 tests (+4 tests)
 - **Erreurs de collection** : 1 erreur (-10 erreurs)
 - **Tests cassés** : 1 fichier avec erreur d'import (-4 fichiers)
 
@@ -28,11 +28,17 @@
 - **1 test commenté** supprimé (`test_agent_audit.py`)
 - **3 tests cassés** supprimés et recréés
 
-### **3. AMÉLIORATIONS APPORTÉES**
+### **3. DOUBLONS FUSIONNÉS (Phase 2)**
+- **4 tests CI consolidés** → `test_ci_consolidated.py` (4 fichiers → 1)
+- **8 fonctions `test_function`** fusionnées dans `test_correction_optimizer_optimized.py`
+- **3 fonctions `test_empty`** fusionnées dans `test_distillation_optimized.py`
+
+### **4. AMÉLIORATIONS APPORTÉES**
 - **Imports sécurisés** avec gestion d'erreurs
 - **Tests de fallback** pour modules non disponibles
 - **Structure cohérente** des tests corrigés
 - **Documentation** des tests améliorée
+- **Tests CI optimisés** avec gestion des dépendances problématiques
 
 ---
 
@@ -200,12 +206,13 @@ from athalia_core.advanced_modules.user_profiles_advanced import GestionnairePro
 - **Tests cassés** : 11
 - **Tests inutiles** : 36
 
-### **APRÈS PHASE 1 (TERMINÉE)**
-- **Fichiers de test** : 112 (-7%)
-- **Fonctions de test** : 566 (-0.4%)
-- **Lignes de code** : ~9,800 (-5%)
+### **APRÈS PHASE 2 (TERMINÉE)**
+- **Fichiers de test** : 110 (-8%)
+- **Fonctions de test** : 552 (-3%)
+- **Lignes de code** : ~9,500 (-8%)
 - **Tests cassés** : 1 (-91%)
 - **Tests inutiles** : 0 (-100%)
+- **Doublons éliminés** : 15 tests (-100%)
 
 ### **OBJECTIF FINAL**
 - **Fichiers de test** : 80 (-33%)
