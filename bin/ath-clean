@@ -1,3 +1,132 @@
 #!/bin/bash
-# Nettoyage complet du projet Athalia/Arkalia
-find . \( -name "__pycache__" -o -name ".DS_Store" -o -name "*.log" \) -print0 | xargs -0 rm -rf 
+# 🌟 Nettoyage Complet du Projet Athalia/Arkalia
+# Version améliorée - Nettoie tous les fichiers mal rangés et caches
+
+echo "🧹 Début du nettoyage complet Athalia/Arkalia..."
+
+# Variables
+PROJECT_ROOT=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
+CLEANED_FILES=0
+CLEANED_DIRS=0
+
+# Fonction pour compter les fichiers supprimés
+count_cleaned() {
+    local count=$1
+    if [ $count -gt 0 ]; then
+        echo "   ✅ $count éléments nettoyés"
+        CLEANED_FILES=$((CLEANED_FILES + count))
+    fi
+}
+
+echo "📁 Nettoyage des caches Python..."
+# Cache Python
+PYCACHE_COUNT=$(find . -name "__pycache__" -type d 2>/dev/null | wc -l)
+find . -name "__pycache__" -type d -exec rm -rf {} + 2>/dev/null
+count_cleaned $PYCACHE_COUNT
+
+PYC_COUNT=$(find . -name "*.pyc" -type f 2>/dev/null | wc -l)
+find . -name "*.pyc" -type f -delete 2>/dev/null
+count_cleaned $PYC_COUNT
+
+echo "🗑️ Nettoyage des fichiers temporaires..."
+# Fichiers temporaires
+TEMP_COUNT=$(find . -name "*.tmp" -o -name "*.temp" -o -name "*~" -o -name ".#*" 2>/dev/null | wc -l)
+find . -name "*.tmp" -o -name "*.temp" -o -name "*~" -o -name ".#*" -delete 2>/dev/null
+count_cleaned $TEMP_COUNT
+
+echo "🍎 Nettoyage des fichiers macOS..."
+# Fichiers cachés macOS (sauf dans .git)
+MACOS_COUNT=$(find . -name "._*" -not -path "./.git/*" 2>/dev/null | wc -l)
+find . -name "._*" -not -path "./.git/*" -delete 2>/dev/null
+count_cleaned $MACOS_COUNT
+
+DS_STORE_COUNT=$(find . -name ".DS_Store" 2>/dev/null | wc -l)
+find . -name ".DS_Store" -delete 2>/dev/null
+count_cleaned $DS_STORE_COUNT
+
+echo "📝 Nettoyage des logs..."
+# Logs
+LOG_COUNT=$(find . -name "*.log" -not -path "./.git/*" 2>/dev/null | wc -l)
+find . -name "*.log" -not -path "./.git/*" -delete 2>/dev/null
+count_cleaned $LOG_COUNT
+
+echo "🧪 Nettoyage des caches de tests..."
+# Caches de tests
+PYTEST_CACHE_COUNT=$(find . -name ".pytest_cache" -type d 2>/dev/null | wc -l)
+find . -name ".pytest_cache" -type d -exec rm -rf {} + 2>/dev/null
+count_cleaned $PYTEST_CACHE_COUNT
+
+BENCHMARK_CACHE_COUNT=$(find . -name ".benchmarks" -type d 2>/dev/null | wc -l)
+find . -name ".benchmarks" -type d -exec rm -rf {} + 2>/dev/null
+count_cleaned $BENCHMARK_CACHE_COUNT
+
+MYPY_CACHE_COUNT=$(find . -name ".mypy_cache" -type d 2>/dev/null | wc -l)
+find . -name ".mypy_cache" -type d -exec rm -rf {} + 2>/dev/null
+count_cleaned $MYPY_CACHE_COUNT
+
+echo "📊 Nettoyage des rapports temporaires..."
+# Rapports temporaires à la racine (sauf ceux dans data/)
+ROOT_REPORTS_COUNT=$(find . -maxdepth 1 -name "*.json" -o -name "*.yaml" -o -name "*.csv" -o -name "*.md" | grep -v "README\|CHANGELOG\|ROADMAP\|LICENSE\|DASHBOARD\|BENCHMARK" | wc -l)
+find . -maxdepth 1 \( -name "*.json" -o -name "*.yaml" -o -name "*.csv" \) | grep -v "README\|CHANGELOG\|ROADMAP\|LICENSE\|DASHBOARD\|BENCHMARK" | xargs -I {} rm -f {} 2>/dev/null
+count_cleaned $ROOT_REPORTS_COUNT
+
+echo "🔧 Nettoyage des fichiers .f (fichiers temporaires)..."
+# Fichiers .f (fichiers temporaires)
+F_COUNT=$(find . -name "*.f" -not -path "./.git/*" 2>/dev/null | wc -l)
+find . -name "*.f" -not -path "./.git/*" -delete 2>/dev/null
+count_cleaned $F_COUNT
+
+echo "📦 Nettoyage des caches de build..."
+# Caches de build
+BUILD_CACHE_COUNT=$(find . -name "build" -type d -o -name "dist" -type d -o -name "*.egg-info" -type d 2>/dev/null | wc -l)
+find . -name "build" -type d -o -name "dist" -type d -o -name "*.egg-info" -type d -exec rm -rf {} + 2>/dev/null
+count_cleaned $BUILD_CACHE_COUNT
+
+echo "🎨 Nettoyage des fichiers de couverture..."
+# Fichiers de couverture (sauf htmlcov/index.html)
+COVERAGE_COUNT=$(find . -name "*.coverage" -o -name "coverage.xml" -o -name "htmlcov" -type d 2>/dev/null | wc -l)
+find . -name "*.coverage" -o -name "coverage.xml" -delete 2>/dev/null
+find . -name "htmlcov" -type d -exec rm -rf {} + 2>/dev/null
+count_cleaned $COVERAGE_COUNT
+
+echo "📋 Nettoyage des fichiers de profilage..."
+# Fichiers de profilage
+PROFILE_COUNT=$(find . -name "profile.out" -o -name "*.prof" 2>/dev/null | wc -l)
+find . -name "profile.out" -o -name "*.prof" -delete 2>/dev/null
+count_cleaned $PROFILE_COUNT
+
+echo "🔍 Nettoyage des fichiers de recherche..."
+# Fichiers de recherche
+SEARCH_COUNT=$(find . -name ".vscode" -type d -o -name ".idea" -type d 2>/dev/null | wc -l)
+find . -name ".vscode" -type d -o -name ".idea" -type d -exec rm -rf {} + 2>/dev/null
+count_cleaned $SEARCH_COUNT
+
+echo "📁 Nettoyage des dossiers temporaires..."
+# Dossiers temporaires
+TEMP_DIRS_COUNT=$(find . -name "temp" -type d -o -name "tmp" -type d -o -name "cache" -type d 2>/dev/null | wc -l)
+find . -name "temp" -type d -o -name "tmp" -type d -o -name "cache" -type d -exec rm -rf {} + 2>/dev/null
+count_cleaned $TEMP_DIRS_COUNT
+
+echo "🧹 Nettoyage des fichiers corrompus..."
+# Fichiers corrompus ou vides
+CORRUPT_COUNT=$(find . -name "*.f\(f\)" -o -name "*.corrupt" -o -name "*.broken" 2>/dev/null | wc -l)
+find . -name "*.f\(f\)" -o -name "*.corrupt" -o -name "*.broken" -delete 2>/dev/null
+count_cleaned $CORRUPT_COUNT
+
+# Nettoyage des fichiers vides (optionnel - décommenter si nécessaire)
+# echo "📄 Nettoyage des fichiers vides..."
+# EMPTY_COUNT=$(find . -type f -empty -not -path "./.git/*" 2>/dev/null | wc -l)
+# find . -type f -empty -not -path "./.git/*" -delete 2>/dev/null
+# count_cleaned $EMPTY_COUNT
+
+echo ""
+echo "🎯 Résumé du nettoyage :"
+echo "   📊 Total d'éléments nettoyés : $CLEANED_FILES"
+echo "   📁 Dossiers nettoyés : $CLEANED_DIRS"
+echo ""
+echo "✅ Nettoyage terminé ! Le projet Athalia/Arkalia est maintenant propre."
+echo ""
+echo "💡 Conseils :"
+echo "   - Exécutez 'ath-clean' régulièrement pour maintenir la propreté"
+echo "   - Utilisez 'git status' pour vérifier l'état du repository"
+echo "   - Les fichiers dans data/ sont préservés (rapports, benchmarks, etc.)" 
