@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from athalia_core.ci import generate_github_ci_yaml, add_coverage_badge
 from athalia_core.cleanup import clean_old_tests_and_caches
-from athalia_core.dashboard import generate_dashboard_html, generate_multi_project_mermaid
+# from athalia_core.dashboard import generate_dashboard_html, generate_multi_project_mermaid  # Fonctions non disponibles
 from athalia_core.advanced_analytics import enrich_genesis_md
 # from athalia_core.generation import generate_project, generate_blueprint_ia, generate_blueprint_mock, save_blueprint, scan_existing_project
 from athalia_core.onboarding import generate_onboard_cli, generate_onboarding_html_advanced
@@ -84,8 +84,8 @@ def main(test_mode=False):
                 for dict_data in os.listdir('.'):
                     if os.path.isdir(dict_data) and (dict_data.startswith('ia_project') or dict_data.startswith('artistic_') or dict_data.startswith('projet_')):
                         projects_info.append({'name': dict_data, 'date': datetime.now().strftime('%Y-%m-%d %H:%M'), 'tests': 'OK', 'perf': 'OK'})
-                generate_dashboard_html(projects_info)
-                generate_multi_project_mermaid(projects_info)
+                # generate_dashboard_html(projects_info) # Fonction non disponible
+                # generate_multi_project_mermaid(projects_info) # Fonction non disponible
                 logger.info("Dashboard généré.")
             elif choix == '5':
                 outdir = safe_input("Nom du dossier projet pour onboarding : ")
