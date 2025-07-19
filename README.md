@@ -128,7 +128,7 @@ python3 /path/to/athalia/athalia_robotics_integration.py . audit
 
 ### **Tests complets**
 ```bash
-# Tous les tests
+# Tous les tests (752 tests collectés)
 python3 -m pytest tests/ -v
 
 # Tests robotiques
@@ -146,6 +146,13 @@ python3 -m pytest tests/test_athalia_orchestrator.py -v
 # Tests CI
 python3 -m pytest tests/test_ci_ultra_fast.py -v
 ```
+
+### **Statistiques des tests**
+- **Fichiers de test** : 114 fichiers
+- **Fonctions de test** : 583 fonctions
+- **Tests collectés** : 752 tests
+- **Fiabilité** : 100% (0 erreur de collection)
+- **Tests optimisés** : 21 tests de performance
 
 ## 🔧 **CONFIGURATION**
 
