@@ -1,0 +1,10 @@
+{
+  "steps": {
+    "cleanup": {
+      "passed": true
+    }
+  },
+  "project_path": ".",
+  "date": "2024-01-01",
+  "config": {}
+}
