@@ -14,6 +14,11 @@ from .code_linter import CodeLinter
 from .intelligent_auditor import IntelligentAuditor
 from .project_importer import ProjectImporter
 from .security_auditor import SecurityAuditor
+from .robotics.reachy_auditor import ReachyAuditor
+from .robotics.ros2_validator import ROS2Validator
+from .robotics.docker_robotics import DockerRoboticsManager
+from .robotics.rust_analyzer import RustAnalyzer
+from .robotics.robotics_ci import RoboticsCI
 from datetime import datetime
 import argparse
 import logging
@@ -57,7 +62,8 @@ class AthaliaOrchestrator:
             "security": True,
             "analytics": True,
             "docs": True,
-            "cicd": False
+            "cicd": False,
+            "robotics": False  # Nouveau module robotique
         }
 
     def industrialize_project(self, project_path: str, config: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
@@ -131,6 +137,12 @@ class AthaliaOrchestrator:
         cicd_result = self._run_cicd()
         results["steps"]["cicd"] = cicd_result
 
+        # Étape 6: Audit robotique (si activé)
+        if self.config.get("robotics", False):
+            logger.info("\n🤖 ÉTAPE 6: Audit robotique")
+            robotics_result = self._run_robotics_audit()
+            results["steps"]["robotics"] = robotics_result
+
         # Génération du rapport final
         final_report = self._generate_final_report(results)
         results["final_report"] = final_report
@@ -143,7 +155,7 @@ class AthaliaOrchestrator:
         logger.info("=" * 60)
 
         # Ajouter les étapes principales à la racine pour compatibilité tests
-        for step in ["audit", "document", "lint", "security", "analytics", "cleanup", "docs", "tests", "cicd", "clean", "test", "deploy"]:
+        for step in ["audit", "document", "lint", "security", "analytics", "cleanup", "docs", "tests", "cicd", "clean", "test", "deploy", "robotics"]:
             if step in results["steps"]:
                 if isinstance(results["steps"][step], dict):
                     if not isinstance(results["steps"][step].get('status'), dict):
@@ -171,6 +183,72 @@ class AthaliaOrchestrator:
         if "document" in results and "files" not in results["document"]:
             results["document"]["files"] = ["README.md", "API.md"]
         return results
+
+    def _run_robotics_audit(self) -> Dict[str, Any]:
+        """Exécute l'audit robotique spécialisé"""
+        try:
+            logger.info("🔍 Audit robotique en cours...")
+            
+            # Audit Reachy complet
+            reachy_auditor = ReachyAuditor(str(self.project_path))
+            reachy_result = reachy_auditor.audit_complete()
+            
+            # Validation ROS2
+            ros2_validator = ROS2Validator(str(self.project_path))
+            ros2_result = ros2_validator.validate_workspace()
+            
+            # Gestion Docker
+            docker_manager = DockerRoboticsManager(str(self.project_path))
+            docker_result = docker_manager.validate_docker_setup()
+            
+            # Analyse Rust
+            rust_analyzer = RustAnalyzer(str(self.project_path))
+            rust_result = rust_analyzer.analyze_rust_projects()
+            
+            # CI/CD robotique
+            ci_manager = RoboticsCI(str(self.project_path))
+            from athalia_core.robotics.robotics_ci import CIConfig
+            ci_config = CIConfig(ros2_enabled=True, docker_enabled=True, rust_enabled=True, test_enabled=True, deploy_enabled=False, platforms=["ubuntu"])
+            ci_result = ci_manager.run_ci_pipeline(ci_config)
+            
+            # Générer rapports
+            reachy_report = reachy_auditor.generate_report(reachy_result)
+            ros2_report = ros2_validator.generate_validation_report(ros2_result)
+            docker_report = docker_manager.generate_docker_report(docker_result)
+            rust_report = rust_analyzer.generate_rust_report(rust_result)
+            ci_report = ci_manager.generate_ci_report(ci_result)
+            
+            # Score global robotique
+            robotics_score = (reachy_result.score + rust_result.optimization_score) / 2
+            
+            logger.info(f"🤖 Résultats audit robotique:")
+            logger.info(f"   • Score Reachy: {reachy_result.score:.1f}/100")
+            logger.info(f"   • ROS2 valide: {ros2_result.workspace_valid}")
+            logger.info(f"   • Docker prêt: {docker_result.ready_to_run}")
+            logger.info(f"   • Score Rust: {rust_result.optimization_score:.1f}/100")
+            logger.info(f"   • CI/CD: {'✅' if ci_result.success else '❌'}")
+            
+            return {
+                "passed": robotics_score >= 70,
+                "result": {
+                    "reachy_audit": reachy_result,
+                    "ros2_validation": ros2_result,
+                    "docker_setup": docker_result,
+                    "rust_analysis": rust_result,
+                    "ci_pipeline": ci_result
+                },
+                "score": robotics_score,
+                "reports": {
+                    "reachy": reachy_report,
+                    "ros2": ros2_report,
+                    "docker": docker_report,
+                    "rust": rust_report,
+                    "ci": ci_report
+                }
+            }
+        except Exception as e:
+            logger.error(f"❌ Erreur audit robotique: {e}")
+            return {"passed": False, "result": str(e), "score": 0}
 
     def _run_audit(self) -> Dict[str, Any]:
         """Exécute l'audit intelligent"""
@@ -298,12 +376,46 @@ class AthaliaOrchestrator:
         report += f"\n{'='*80}\n"
         return report
 
+    def _convert_dataclasses_to_dict(self, obj):
+        """Convertit les dataclasses en dictionnaires pour la sérialisation JSON"""
+        from datetime import datetime, date
+        from pathlib import Path
+        
+        if hasattr(obj, '__dict__'):
+            if hasattr(obj, '__dataclass_fields__'):  # C'est une dataclass
+                return {k: self._convert_dataclasses_to_dict(v) for k, v in obj.__dict__.items()}
+            elif isinstance(obj, dict):
+                return {k: self._convert_dataclasses_to_dict(v) for k, v in obj.items()}
+            elif isinstance(obj, list):
+                return [self._convert_dataclasses_to_dict(item) for item in obj]
+            elif isinstance(obj, (str, int, float, bool, type(None))):
+                return obj
+            elif isinstance(obj, (datetime, date)):
+                return obj.isoformat()
+            elif isinstance(obj, Path):
+                return str(obj)
+            else:
+                return str(obj)
+        elif isinstance(obj, dict):
+            return {k: self._convert_dataclasses_to_dict(v) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [self._convert_dataclasses_to_dict(item) for item in obj]
+        elif isinstance(obj, (datetime, date)):
+            return obj.isoformat()
+        elif isinstance(obj, Path):
+            return str(obj)
+        else:
+            return obj
+
     def _save_report(self, results: Dict[str, Any]):
         """Sauvegarde le fichier de rapport"""
         report_file = self.project_path / f"athalia_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
 
+        # Convertir les dataclasses en dictionnaires
+        serializable_results = self._convert_dataclasses_to_dict(results)
+
         with open(report_file, 'w', encoding='utf-8') as file_handle:
-            json.dump(results, file_handle, indent = 2, ensure_ascii = False)
+            json.dump(serializable_results, file_handle, indent = 2, ensure_ascii = False)
 
         logger.info(f"\n📄 Rapport sauvegardé: {report_file}")
 
