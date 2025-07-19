@@ -1,0 +1,397 @@
+{
+  "timestamp": "2025-07-19 19:40:08",
+  "benchmark_version": "1.0",
+  "summary": {
+    "total_benchmarks": 9,
+    "overall_status": "completed"
+  },
+  "detailed_results": {
+    "initialization": {
+      "time": 0.00017881393432617188,
+      "memory_mb": 22.21875,
+      "status": "success"
+    },
+    "single_requests": {
+      "total_requests": 10,
+      "successful_requests": 10,
+      "success_rate": 100.0,
+      "response_times": [
+        0.45457983016967773,
+        0.4541940689086914,
+        0.454744815826416,
+        0.4547109603881836,
+        0.4545888900756836,
+        0.4541330337524414,
+        0.4545857906341553,
+        0.4537479877471924,
+        0.45463109016418457,
+        0.4537999629974365
+      ],
+      "average_response_time": 0.45437164306640626,
+      "min_response_time": 0.4537479877471924,
+      "max_response_time": 0.454744815826416,
+      "std_deviation": 0.0003745123212093124
+    },
+    "multilingual_support": {
+      "languages_tested": 8,
+      "language_results": {
+        "fr-FR": {
+          "session_creation_time": 0.20095109939575195,
+          "processing_time": 0.45463013648986816,
+          "detected_language": "fr-FR",
+          "confidence": 0.95
+        },
+        "en-US": {
+          "session_creation_time": 0.20116710662841797,
+          "processing_time": 0.45374083518981934,
+          "detected_language": "en-US",
+          "confidence": 0.95
+        },
+        "es-ES": {
+          "session_creation_time": 0.20126008987426758,
+          "processing_time": 0.45373964309692383,
+          "detected_language": "es-ES",
+          "confidence": 0.95
+        },
+        "de-DE": {
+          "session_creation_time": 0.20126581192016602,
+          "processing_time": 0.4544999599456787,
+          "detected_language": "de-DE",
+          "confidence": 0.95
+        },
+        "it-IT": {
+          "session_creation_time": 0.20125102996826172,
+          "processing_time": 0.4537620544433594,
+          "detected_language": "it-IT",
+          "confidence": 0.95
+        },
+        "pt-BR": {
+          "session_creation_time": 0.20120596885681152,
+          "processing_time": 0.4547281265258789,
+          "detected_language": "pt-BR",
+          "confidence": 0.95
+        },
+        "ja-JP": {
+          "session_creation_time": 0.20118403434753418,
+          "processing_time": 0.45388221740722656,
+          "detected_language": "ja-JP",
+          "confidence": 0.95
+        },
+        "zh-CN": {
+          "session_creation_time": 0.20117807388305664,
+          "processing_time": 0.453855037689209,
+          "detected_language": "zh-CN",
+          "confidence": 0.95
+        }
+      },
+      "average_session_creation": 0.20118290185928345,
+      "average_processing_time": 0.4541047513484955,
+      "average_confidence": 0.95
+    },
+    "conversation_flows": {
+      "flows_tested": 3,
+      "successful_flows": 3,
+      "flow_results": [
+        {
+          "flow_id": 1,
+          "steps": 4,
+          "success": true,
+          "total_time": 1.818105936050415,
+          "average_step_time": 0.45452648401260376,
+          "step_times": [
+            0.45416879653930664,
+            0.4547421932220459,
+            0.4546627998352051,
+            0.4545321464538574
+          ]
+        },
+        {
+          "flow_id": 2,
+          "steps": 3,
+          "success": true,
+          "total_time": 1.3639578819274902,
+          "average_step_time": 0.4546526273091634,
+          "step_times": [
+            0.45489001274108887,
+            0.45460987091064453,
+            0.45445799827575684
+          ]
+        },
+        {
+          "flow_id": 3,
+          "steps": 3,
+          "success": true,
+          "total_time": 1.3856966495513916,
+          "average_step_time": 0.4618988831837972,
+          "step_times": [
+            0.4539759159088135,
+            0.4770779609680176,
+            0.45464277267456055
+          ]
+        }
+      ],
+      "average_flow_time": 1.5225868225097656,
+      "average_step_time": 0.45702599816852146
+    },
+    "concurrent_requests": {
+      "total_requests": 20,
+      "successful_requests": 20,
+      "success_rate": 100.0,
+      "total_time": 0.45660400390625,
+      "throughput": 43.801630798021655,
+      "average_response_time": 0.45497602224349976,
+      "results": [
+        {
+          "request_id": 0,
+          "session_id": "session_1752946737_concurrent_user_0",
+          "success": true,
+          "response_time": 0.4546971321105957,
+          "output_length": 79
+        },
+        {
+          "request_id": 1,
+          "session_id": "session_1752946737_concurrent_user_1",
+          "success": true,
+          "response_time": 0.45467185974121094,
+          "output_length": 79
+        },
+        {
+          "request_id": 2,
+          "session_id": "session_1752946737_concurrent_user_2",
+          "success": true,
+          "response_time": 0.454740047454834,
+          "output_length": 79
+        },
+        {
+          "request_id": 3,
+          "session_id": "session_1752946737_concurrent_user_3",
+          "success": true,
+          "response_time": 0.45477294921875,
+          "output_length": 79
+        },
+        {
+          "request_id": 4,
+          "session_id": "session_1752946737_concurrent_user_4",
+          "success": true,
+          "response_time": 0.45480799674987793,
+          "output_length": 79
+        },
+        {
+          "request_id": 5,
+          "session_id": "session_1752946737_concurrent_user_0",
+          "success": true,
+          "response_time": 0.4548349380493164,
+          "output_length": 79
+        },
+        {
+          "request_id": 6,
+          "session_id": "session_1752946737_concurrent_user_1",
+          "success": true,
+          "response_time": 0.4548771381378174,
+          "output_length": 79
+        },
+        {
+          "request_id": 7,
+          "session_id": "session_1752946737_concurrent_user_2",
+          "success": true,
+          "response_time": 0.45490193367004395,
+          "output_length": 79
+        },
+        {
+          "request_id": 8,
+          "session_id": "session_1752946737_concurrent_user_3",
+          "success": true,
+          "response_time": 0.45496201515197754,
+          "output_length": 79
+        },
+        {
+          "request_id": 9,
+          "session_id": "session_1752946737_concurrent_user_4",
+          "success": true,
+          "response_time": 0.4549679756164551,
+          "output_length": 79
+        },
+        {
+          "request_id": 10,
+          "session_id": "session_1752946737_concurrent_user_0",
+          "success": true,
+          "response_time": 0.4550139904022217,
+          "output_length": 79
+        },
+        {
+          "request_id": 11,
+          "session_id": "session_1752946737_concurrent_user_1",
+          "success": true,
+          "response_time": 0.4550189971923828,
+          "output_length": 79
+        },
+        {
+          "request_id": 12,
+          "session_id": "session_1752946737_concurrent_user_2",
+          "success": true,
+          "response_time": 0.45502686500549316,
+          "output_length": 79
+        },
+        {
+          "request_id": 13,
+          "session_id": "session_1752946737_concurrent_user_3",
+          "success": true,
+          "response_time": 0.4550662040710449,
+          "output_length": 79
+        },
+        {
+          "request_id": 14,
+          "session_id": "session_1752946737_concurrent_user_4",
+          "success": true,
+          "response_time": 0.4550762176513672,
+          "output_length": 79
+        },
+        {
+          "request_id": 15,
+          "session_id": "session_1752946737_concurrent_user_0",
+          "success": true,
+          "response_time": 0.45513010025024414,
+          "output_length": 79
+        },
+        {
+          "request_id": 16,
+          "session_id": "session_1752946737_concurrent_user_1",
+          "success": true,
+          "response_time": 0.4551551342010498,
+          "output_length": 79
+        },
+        {
+          "request_id": 17,
+          "session_id": "session_1752946737_concurrent_user_2",
+          "success": true,
+          "response_time": 0.4552021026611328,
+          "output_length": 79
+        },
+        {
+          "request_id": 18,
+          "session_id": "session_1752946737_concurrent_user_3",
+          "success": true,
+          "response_time": 0.4552578926086426,
+          "output_length": 79
+        },
+        {
+          "request_id": 19,
+          "session_id": "session_1752946737_concurrent_user_4",
+          "success": true,
+          "response_time": 0.4553389549255371,
+          "output_length": 79
+        }
+      ]
+    },
+    "memory_usage": {
+      "initial_memory_mb": 22.34375,
+      "final_memory_mb": 22.34375,
+      "memory_increase_mb": 0.0,
+      "memory_samples": [
+        22.34375,
+        22.34375,
+        22.34375,
+        22.34375,
+        22.34375,
+        22.34375,
+        22.34375,
+        22.34375,
+        22.34375,
+        22.34375
+      ],
+      "peak_memory_mb": 22.34375,
+      "average_memory_mb": 22.34375
+    },
+    "stress_test": {
+      "total_requests": 100,
+      "successful_requests": 100,
+      "success_rate": 100.0,
+      "total_time": 45.9185791015625,
+      "throughput": 2.1777677349035662,
+      "sessions_used": 20
+    },
+    "error_handling": {
+      "tests_performed": 5,
+      "errors_properly_handled": 2,
+      "error_handling_rate": 40.0,
+      "average_error_response_time": 0.27266440391540525,
+      "error_results": [
+        {
+          "test": "session_invalide",
+          "success": false,
+          "response_time": 1.2874603271484375e-05,
+          "error": "Session invalide: session_inexistante"
+        },
+        {
+          "test": "audio_vide",
+          "success": true,
+          "response_time": 0.45508694648742676,
+          "error": null
+        },
+        {
+          "test": "audio_trop_grand",
+          "success": true,
+          "response_time": 0.45453500747680664,
+          "error": null
+        },
+        {
+          "test": "session_none",
+          "success": false,
+          "response_time": 5.0067901611328125e-06,
+          "error": "Session invalide: None"
+        },
+        {
+          "test": "audio_none",
+          "success": true,
+          "response_time": 0.45368218421936035,
+          "error": null
+        }
+      ]
+    },
+    "recovery": {
+      "recovery_attempts": 5,
+      "successful_recoveries": 5,
+      "recovery_rate": 100.0,
+      "average_recovery_time": 0.45392732620239257,
+      "recovery_results": [
+        {
+          "attempt": 1,
+          "success": true,
+          "response_time": 0.45380711555480957
+        },
+        {
+          "attempt": 2,
+          "success": true,
+          "response_time": 0.4539966583251953
+        },
+        {
+          "attempt": 3,
+          "success": true,
+          "response_time": 0.4545450210571289
+        },
+        {
+          "attempt": 4,
+          "success": true,
+          "response_time": 0.4533228874206543
+        },
+        {
+          "attempt": 5,
+          "success": true,
+          "response_time": 0.4539649486541748
+        }
+      ]
+    }
+  },
+  "performance_summary": {
+    "initialization_time": 0.00017881393432617188,
+    "average_response_time": 0.45437164306640626,
+    "concurrent_throughput": 43.801630798021655,
+    "memory_usage_mb": 22.34375,
+    "stress_test_success_rate": 100.0,
+    "error_handling_rate": 40.0,
+    "recovery_rate": 100.0
+  },
+  "recommendations": [
+    "Améliorer la gestion d'erreurs - ajouter plus de validation"
+  ]
+}

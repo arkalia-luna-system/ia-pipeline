@@ -1,285 +1,370 @@
-# 🤖 ATHALIA - Pipeline IA Intelligent
+# 🚀 Athalia/Arkalia - Système de Développement IA Intelligent
 
-**Athalia** est un outil d'industrialisation intelligente pour projets de développement, avec un module spécialisé pour la robotique et les projets Reachy.
+## 🌟 Vue d'ensemble
 
-## 🚀 **FONCTIONNALITÉS PRINCIPALES**
+**Athalia/Arkalia** est un système de développement IA complet qui génère, analyse et optimise automatiquement vos projets avec une intelligence artificielle robuste multi-modèles.
 
-### **🧠 IA Intelligente**
-- **Multi-modèles** : Qwen, Mistral, Mock avec distillation
-- **Audit intelligent** : Analyse automatique de code
-- **Correction automatique** : Suggestions d'amélioration
-- **Documentation générée** : README, API, guides
+## ✨ Fonctionnalités Principales
 
-### **🤖 Module Robotique**
-- **Audit Reachy** : Validation complète des projets robotiques
-- **Validation ROS2** : Workspace, packages, launch files
-- **Gestion Docker** : Containerisation robotique
-- **Analyse Rust** : Optimisation des projets Rust
-- **CI/CD Robotique** : Pipelines automatisés
+### 🤖 **Génération Intelligente de Projets**
+- **4 modèles IA** : Qwen, Mistral, Llava + Mock (fallback)
+- **Templates spécialisés** : blueprint, code_review, documentation, testing, security
+- **Génération complète** : structure, dépendances, tests, documentation
 
-### **🔧 Industrialisation Complète**
-- **Linting avancé** : Qualité de code
-- **Sécurité** : Audit de vulnérabilités
-- **Analytics** : Métriques de performance
-- **Tests automatisés** : Couverture complète
-- **CI/CD** : GitHub Actions, Docker
+### 🔍 **Analyse et Audit Automatique**
+- **Analyse de 255+ fichiers Python** automatiquement
+- **Score de qualité** en temps réel
+- **Détection de patterns** et doublons
+- **Audit de sécurité** intégré
+- **Analyse d'architecture** complète
 
-## 📦 **INSTALLATION RAPIDE**
+### 🏭 **Industrialisation Automatique**
+- **Linting intelligent** du code
+- **Nettoyage automatique** (4425+ éléments)
+- **Documentation générée** automatiquement
+- **Tests automatisés**
+- **CI/CD intégré**
 
-### **Installation de base**
+### 🛠️ **Outils de Développement**
+- **Boosters IA** : debug, UX, audit, tests, refactor
+- **Alias intelligents** : ath-clean, ath-test, ath-lint, etc.
+- **Dashboard interactif**
+- **CLI unifiée**
+
+## 🚀 Installation Rapide
+
+### Prérequis
+```bash
+# Python 3.9+
+python3 --version
+
+# Git
+git --version
+```
+
+### Installation
 ```bash
 # Cloner le projet
-git clone https://github.com/arkalia-luna-system/ia-pipeline.git
-cd ia-pipeline
+git clone <repository-url>
+cd athalia-dev-setup
 
-# Installation des dépendances
-pip install -r config/requirements.txt
+# Installer les dépendances
+pip install -r requirements.txt
 
-# Vérification
-python3 athalia_unified.py --help
-```
-
-### **Installation avec modules robotiques**
-```bash
-# Dépendances robotiques
-pip install -r config/requirements_robotics.txt
-
-# Vérification robotique
-python3 athalia_robotics_integration.py . audit
-```
-
-## 🎯 **UTILISATION RAPIDE**
-
-### **Audit complet d'un projet**
-```bash
-# Audit intelligent complet
-python3 athalia_unified.py /path/to/project
-
-# Avec module robotique
-python3 athalia_unified.py /path/to/project --robotics
-```
-
-### **Module robotique spécifique**
-```bash
-# Audit Reachy complet
-python3 athalia_robotics_integration.py . audit
-
-# Validation ROS2
-python3 athalia_robotics_integration.py . ros2
-
-# Gestion Docker
-python3 athalia_robotics_integration.py . docker
-
-# Analyse Rust
-python3 athalia_robotics_integration.py . rust
-
-# CI/CD robotique
-python3 athalia_robotics_integration.py . ci
-```
-
-### **Alias utiles**
-```bash
-# Source les alias
+# Sourcer les alias
 source setup/alias.sh
-source setup/alias-robotics.sh
-
-# Utilisation
-ath-unified /path/to/project
-ath-robotics . audit
-ath-reachy-audit
 ```
 
-## 🤖 **CONTRIBUTION AU PROJET REACHY**
+## 🎮 Utilisation
 
-### **Setup pour Reachy**
+### Génération de Projets
 ```bash
-# Suivre le guide complet
-# docs/REACHY_SETUP_GUIDE.md
+# Générer un projet simple
+python3 -m athalia_core.cli generate "calculatrice simple"
 
-# Installation rapide
-git clone https://github.com/pollen-robotics/reachy_2023.git
-cd reachy_2023
+# Générer avec industrialisation
+./setup/ath-generate.sh "API REST pour gestion de tâches" -i
 
-# Audit avec Athalia
-python3 /path/to/athalia/athalia_robotics_integration.py . audit
+# Mode simulation
+./setup/ath-generate.sh "dashboard web interactif" -d
 ```
 
-### **Workflow de contribution**
-1. **Fork** le dépôt Reachy
-2. **Audit** avec Athalia pour identifier les améliorations
-3. **Implémenter** les corrections suggérées
-4. **Valider** avec Athalia
-5. **Proposer** une Pull Request
-
-## 📚 **DOCUMENTATION**
-
-### **Guides principaux**
-- [Guide d'utilisation](docs/USER_GUIDE.md)
-- [Guide des tests](docs/TESTS_GUIDE.md)
-- [Guide des plugins](docs/PLUGINS_GUIDE.md)
-- [Guide robotique](docs/ROBOTICS_GUIDE.md)
-
-### **Guides spécialisés**
-- [Guide d'installation Reachy](docs/REACHY_SETUP_GUIDE.md)
-- [Guide d'utilisation rapide robotique](ROBOTICS_QUICK_START.md)
-- [Résumé intégration robotique](ROBOTICS_INTEGRATION_SUMMARY.md)
-
-## 🧪 **TESTS**
-
-### **Tests complets**
+### Test de l'IA
 ```bash
-# Tous les tests (608 tests collectés)
-python3 -m pytest tests/ -v
+# Vérifier le statut de l'IA
+python3 -m athalia_core.cli ai-status
 
-# Tests robotiques
-python3 -m pytest tests/ -k "robotics" -v
-
-# Tests orchestrateur
-python3 -m pytest tests/test_athalia_orchestrator.py -v
+# Tester l'IA avec une idée
+python3 -m athalia_core.cli test-ai "créer un bot Discord"
 ```
 
-### **Tests de validation**
+### Analyse de Projets
 ```bash
-# Validation express
-./validation_express.sh
+# Analyse complète d'un projet
+python3 -m athalia_core.unified_orchestrator . --audit --analytics
 
-# Tests CI
-python3 -m pytest tests/test_ci_ultra_fast.py -v
+# Audit de sécurité
+python3 athalia_core/security_auditor.py
+
+# Analytics avancées
+python3 athalia_core/advanced_analytics.py
 ```
 
-### **Statistiques des tests**
-- **Fichiers de test** : 114 fichiers
-- **Fonctions de test** : 583 fonctions
-- **Tests collectés** : 608 tests
-- **Fiabilité** : 100% (0 erreur de collection)
-- **Tests optimisés** : 21 tests de performance
-- **Temps d'exécution** : ~2.3s (optimisé)
-
----
-
-## ✅ **PROGRÈS DE L'OPTIMISATION**
-
-### **PHASE 1 : PRÉPARATION SÉCURISÉE (TERMINÉE)**
-- ✅ **Sauvegarde complète** : Branch `backup-avant-optimisation-coeur`
-- ✅ **Structure d'archive** : `archive/obsolete/`, `archive/deprecated/`, `archive/duplicates/`
-- ✅ **Vérifications** : 608 tests collectés, CLI fonctionnel
-- ✅ **Audit détaillé** : Doublons identifiés et documentés
-
-### **PHASE 2 : CONSOLIDATION DES DOUBLONS (TERMINÉE)**
-- ✅ **Agents unifiés** : `network_agent.py` + `qwen_agent.py` → `unified_agent.py`
-- ✅ **Audit consolidé** : `audit.py` → `intelligent_auditor.py` (avec compatibilité)
-- ✅ **Tests mis à jour** : `test_agent_network.py` → `test_agent_unified.py`
-- ✅ **Archivage sécurisé** : Fichiers doublons dans `archive/duplicates/`
-
----
-
-## ⚠️ **AUDIT DU CŒUR ATHALIA - RÉALITÉ**
-
-### **📊 MÉTRIQUES RÉELLES DU CŒUR**
-- **68 fichiers Python** (pas 31 comme documenté)
-- **12,736 lignes de code** (pas 26,149)
-- **547 fonctions** définies
-- **80 classes** définies
-- **195 occurrences de `pass`** (placeholders)
-
-### **🔍 PROBLÈMES RESTANTS À RÉSOUDRE**
-- **Placeholders** : 195 occurrences de `pass`
-- **Modules non implémentés** : Plusieurs fichiers avec structure vide
-- **Plugins** : Système de base sans plugins réels
-- **Robotics** : Modules spécialisés mais non testés
-
-### **🎯 PLAN DE CORRECTION**
-1. **Implémenter les placeholders** (195 occurrences)
-2. **Consolider les modules redondants**
-3. **Standardiser les interfaces**
-
-## 🔧 **CONFIGURATION**
-
-### **Fichiers de configuration**
-- `config/athalia_config.yaml` : Configuration principale
-- `config/requirements.txt` : Dépendances de base
-- `config/requirements_robotics.txt` : Dépendances robotiques
-- `pytest.ini` : Configuration des tests
-
-### **Variables d'environnement**
+### Outils de Maintenance
 ```bash
-export ATHALIA_DEBUG=true
-export ATHALIA_DRY_RUN=true
-export ATHALIA_ROBOTICS=true
+# Nettoyage automatique
+./bin/ath-clean
+
+# Boosters IA
+./setup/ath-dev-boost.sh
+
+# Tests
+./bin/ath-test.py
+
+# Linting
+./bin/ath-lint.py
 ```
 
-## 🏗️ **ARCHITECTURE**
+## 📊 Métriques Réelles
 
-### **Modules principaux**
+### Performance du Système
+- **Fichiers analysés** : 255+ fichiers Python
+- **Score de qualité** : 70.3/100
+- **Éléments nettoyés** : 4425+
+- **Modèles IA** : 4 (Qwen, Mistral, Llava, Mock)
+- **Templates** : 5 spécialisés
+
+### Capacités de Génération
+- **Types de projets** : API REST, Web, Bot, CLI, Dashboard
+- **Langues supportées** : Python, JavaScript, TypeScript
+- **Frameworks** : FastAPI, Flask, React, Vue.js
+- **Tests** : pytest, unittest, jest
+
+## 🏗️ Architecture
+
+### Structure du Projet
 ```
-athalia_core/
-├── athalia_orchestrator.py    # Orchestrateur principal
-├── audit.py                   # Audit intelligent
-├── ai_robust.py              # IA multi-modèles
-├── analytics.py              # Analytics avancées
-├── robotics/                 # Module robotique
-│   ├── reachy_auditor.py     # Audit Reachy
-│   ├── ros2_validator.py     # Validation ROS2
-│   ├── docker_robotics.py    # Gestion Docker
-│   ├── rust_analyzer.py      # Analyse Rust
-│   └── robotics_ci.py        # CI/CD robotique
-└── ...
+athalia-dev-setup/
+├── athalia_core/           # Modules principaux
+│   ├── cli.py             # Interface en ligne de commande
+│   ├── unified_orchestrator.py  # Orchestrateur principal
+│   ├── ai_robust.py       # IA multi-modèles
+│   ├── security_auditor.py # Audit de sécurité
+│   ├── advanced_analytics.py # Analytics avancées
+│   └── ...
+├── setup/                  # Scripts de configuration
+│   ├── ath-generate.sh    # Générateur de projets
+│   ├── ath-dev-boost.sh   # Boosters IA
+│   └── alias.sh           # Alias intelligents
+├── bin/                    # Outils binaires
+│   ├── ath-clean          # Nettoyage automatique
+│   ├── ath-test.py        # Tests automatisés
+│   └── ath-lint.py        # Linting intelligent
+└── data/                   # Données et rapports
 ```
 
-### **Scripts d'intégration**
-- `athalia_unified.py` : Interface principale
-- `athalia_robotics_integration.py` : Interface robotique
-- `demo_robotics.py` : Démonstration interactive
+### Composants Principaux
 
-## 🚀 **ROADMAP**
+#### 🤖 **IA Robuste Multi-Modèles**
+- **Fallback automatique** entre modèles
+- **Templates spécialisés** par type de tâche
+- **Gestion d'erreurs** intelligente
 
-### **Version actuelle (v1.0)**
-- ✅ Module robotique complet
-- ✅ Intégration Reachy
-- ✅ Tests automatisés
-- ✅ Documentation complète
+#### 🔍 **Analyseur Intelligent**
+- **AST Analysis** pour comprendre le code
+- **Pattern Detection** pour identifier les doublons
+- **Architecture Analysis** pour la structure
+- **Performance Analysis** pour l'optimisation
 
-### **Prochaines versions**
-- 🔄 Support d'autres robots (UR5, Franka, etc.)
-- 🔄 Interface web avancée
-- 🔄 Intégration cloud
-- 🔄 API REST
+#### 🏭 **Orchestrateur Unifié**
+- **Industrialisation** automatique
+- **Pipeline complet** : audit → lint → security → analytics
+- **Rapports détaillés** en JSON
 
-## 🤝 **CONTRIBUTION**
+## 🎯 Cas d'Usage
 
-### **Comment contribuer**
-1. Fork le projet
-2. Créer une branche feature
-3. Implémenter les changements
-4. Ajouter les tests
-5. Proposer une Pull Request
+### 1. **Développeur Individuel**
+```bash
+# Générer un nouveau projet
+python3 -m athalia_core.cli generate "API REST pour blog"
 
-### **Standards de code**
-- **Python** : PEP 8, type hints
-- **Tests** : pytest, couverture > 80%
-- **Documentation** : Markdown, docstrings
-- **Commits** : Conventional Commits
+# Analyser un projet existant
+python3 -m athalia_core.unified_orchestrator mon-projet --audit
 
-## 📄 **LICENCE**
+# Nettoyer et optimiser
+./bin/ath-clean
+```
+
+### 2. **Équipe de Développement**
+```bash
+# Audit de sécurité d'équipe
+python3 athalia_core/security_auditor.py
+
+# Analytics de performance
+python3 athalia_core/advanced_analytics.py
+
+# Boosters IA pour améliorer le code
+./setup/ath-dev-boost.sh
+```
+
+### 3. **Lead Technique**
+```bash
+# Analyse complète de l'architecture
+python3 athalia_core/architecture_analyzer.py
+
+# Rapport de qualité global
+python3 -m athalia_core.unified_orchestrator . --analytics
+
+# Industrialisation automatique
+python3 athalia_core/auto_cicd.py
+```
+
+## 🔧 Configuration
+
+### Variables d'Environnement
+```bash
+# Configuration IA
+ATHALIA_AI_MODELS="qwen,mistral,llava"
+ATHALIA_FALLBACK_MODEL="mock"
+
+# Configuration des analyses
+ATHALIA_MAX_FILES=50
+ATHALIA_SCORE_THRESHOLD=70
+
+# Configuration des rapports
+ATHALIA_REPORT_FORMAT="json"
+ATHALIA_REPORT_PATH="./data/"
+```
+
+### Fichier de Configuration
+```yaml
+# config/athalia_config.yaml
+ai:
+  models:
+    - qwen
+    - mistral
+    - llava
+    - mock
+  fallback: mock
+  timeout: 30
+
+analysis:
+  max_files: 50
+  score_threshold: 70
+  patterns: true
+  architecture: true
+  performance: true
+
+reports:
+  format: json
+  path: ./data/
+  auto_clean: true
+```
+
+## 🧪 Tests et Qualité
+
+### Tests Automatiques
+```bash
+# Tests complets
+./bin/ath-test.py
+
+# Tests spécifiques
+python3 -m pytest tests/test_ai_robust.py
+python3 -m pytest tests/test_unified_orchestrator.py
+
+# Couverture de code
+./bin/ath-coverage.py
+```
+
+### Qualité du Code
+```bash
+# Linting automatique
+./bin/ath-lint.py
+
+# Audit de sécurité
+python3 athalia_core/security_auditor.py
+
+# Analyse de performance
+python3 athalia_core/performance_analyzer.py
+```
+
+## 📈 Monitoring et Métriques
+
+### Métriques Collectées
+- **Score de qualité** par projet
+- **Temps de génération** par type
+- **Taux de succès** des modèles IA
+- **Performance** des analyses
+- **Utilisation** des outils
+
+### Dashboard
+```bash
+# Ouvrir le dashboard
+ath-dashboard
+
+# Dashboard Python
+ath-dashboard-py
+
+# Dashboard de validation
+ath-dashboard-validation
+```
+
+## 🚀 Déploiement
+
+### Docker
+```bash
+# Build de l'image
+docker build -t athalia-dev .
+
+# Lancer le conteneur
+docker run -it athalia-dev
+```
+
+### Production
+```bash
+# Configuration production
+export ATHALIA_ENV=production
+export ATHALIA_AI_MODELS="qwen,mistral"
+
+# Lancement
+python3 -m athalia_core.cli generate "projet-production"
+```
+
+## 🤝 Contribution
+
+### Guide de Contribution
+1. **Fork** le projet
+2. **Créer** une branche feature
+3. **Développer** avec tests
+4. **Analyser** avec athalia
+5. **Soumettre** une pull request
+
+### Standards de Code
+- **PEP 8** pour Python
+- **Tests** obligatoires
+- **Documentation** complète
+- **Audit** automatique
+
+## 📚 Documentation
+
+### Liens Utiles
+- [📖 Guide API](docs/API.md)
+- [🚀 Guide Déploiement](docs/DEPLOYMENT.md)
+- [🧪 Guide Tests](docs/TESTING.md)
+- [🔧 Guide Configuration](docs/CONFIGURATION.md)
+
+### Exemples
+- [🎯 Exemple Génération](examples/generation/)
+- [🔍 Exemple Analyse](examples/analysis/)
+- [🏭 Exemple Industrialisation](examples/industrialization/)
+
+## 📄 Licence
 
 Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
 
-## 🙏 **REMERCIEMENTS**
+## 🙏 Remerciements
 
-- **Pollen Robotics** pour le projet Reachy
-- **ROS2** pour le framework robotique
-- **Communauté open source** pour les contributions
+- **Ollama** pour les modèles locaux
+- **Hugging Face** pour les transformers
+- **Python Community** pour les outils
 
 ---
 
-## 🎉 **COMMENCER MAINTENANT**
+## 🎯 Prochaines Étapes
 
-```bash
-# Installation rapide
-git clone https://github.com/arkalia-luna-system/ia-pipeline.git
-cd ia-pipeline
-pip install -r config/requirements_robotics.txt
-python3 athalia_robotics_integration.py . audit
-```
+### Roadmap
+- [ ] **Interface web** complète
+- [ ] **Support de 10+ langages**
+- [ ] **Intégration CI/CD** avancée
+- [ ] **Apprentissage automatique**
+- [ ] **Collaboration en temps réel**
 
-**Prêt à contribuer au projet Reachy avec Athalia !** 🤖✨
+### Optimisations Futures
+- [ ] **Modèles IA** plus performants
+- [ ] **Analyses** plus rapides
+- [ ] **Interface** plus intuitive
+- [ ] **Intégrations** étendues
+
+---
+
+**🎉 Athalia/Arkalia - Développement IA Intelligent et Automatisé !**
