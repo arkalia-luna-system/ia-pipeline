@@ -807,3 +807,455 @@
 2025-07-20 13:16:51,621tring_data - __main__tring_data - INFOtring_data-================================================================================tring_data
 2025-07-20 13:16:51,621tring_data - __main__tring_data - INFOtring_data-✅ ORCHESTRATION UNIFIÉE TERMINÉE !tring_data
 2025-07-20 13:16:51,621tring_data - __main__tring_data - INFOtring_data-================================================================================tring_data
+2025-07-20 13:20:30,171tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-🔍 Pattern Detector initialisé dans /Volumes/T7/athalia-dev-setuptring_data
+2025-07-20 13:20:30,176tring_data - athalia_core.architecture_analyzertring_data - INFOtring_data-🏗️ Architecture Analyzer initialisé dans /Volumes/T7/athalia-dev-setuptring_data
+2025-07-20 13:20:30,178tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-⚡ Performance Analyzer initialisé dans /Volumes/T7/athalia-dev-setuptring_data
+2025-07-20 13:20:30,178tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🧠 Intelligent Analyzer initialisé dans /Volumes/T7/athalia-dev-setuptring_data
+2025-07-20 13:20:30,178tring_data - __main__tring_data - INFOtring_data-🎯 Unified Orchestrator initialisé dans /Volumes/T7/athalia-dev-setuptring_data
+2025-07-20 13:20:30,178tring_data - __main__tring_data - INFOtring_data-🎯 Orchestration unifiée du projet: tring_data
+2025-07-20 13:20:30,178tring_data - __main__tring_data - INFOtring_data-================================================================================tring_data
+2025-07-20 13:20:30,179tring_data - __main__tring_data - INFOtring_data-🏭 PHASE 1: Industrialisationtring_data
+2025-07-20 13:20:30,179tring_data - __main__tring_data - INFOtring_data-🔍 Étape 1: Audit intelligenttring_data
+2025-07-20 13:20:30,179tring_data - athalia_core.intelligent_auditortring_data - INFOtring_data-🔍 Audit intelligent en cours pour : tring_data
+2025-07-20 13:20:41,838tring_data - __main__tring_data - INFOtring_data-🧹 Étape 2: Linting avancétring_data
+2025-07-20 13:20:41,838tring_data - athalia_core.code_lintertring_data - INFOtring_data-📏 Analyse de qualité pour : tring_data
+2025-07-20 13:20:48,228tring_data - __main__tring_data - INFOtring_data-🔒 Étape 3: Audit sécuritétring_data
+2025-07-20 13:20:48,229tring_data - athalia_core.security_auditortring_data - INFOtring_data-🔒 Audit de sécurité pour : tring_data
+2025-07-20 13:20:54,342tring_data - __main__tring_data - INFOtring_data-📊 Étape 4: Analytics avancéetring_data
+2025-07-20 13:20:54,342tring_data - athalia_core.advanced_analyticstring_data - INFOtring_data-📊 Analytics avancée pour : tring_data
+2025-07-20 13:20:56,101tring_data - __main__tring_data - INFOtring_data-🧹 Étape 5: Nettoyage automatiquetring_data
+2025-07-20 13:20:56,101tring_data - athalia_core.auto_cleanertring_data - INFOtring_data-🧹 Nettoyage automatique en cours pour : tring_data
+2025-07-20 13:21:03,093tring_data - __main__tring_data - ERRORtring_data-Erreur lors du nettoyage: [Errno 2] No such file or directory: 'blueprints_history/blueprint_ia_project_20250717_035236.yaml'tring_data
+2025-07-20 13:21:03,094tring_data - __main__tring_data - INFOtring_data-📚 Étape 6: Documentation automatiquetring_data
+2025-07-20 13:21:03,104tring_data - athalia_core.auto_documentertring_data - INFOtring_data-📚 Génération de documentation pour : tring_data
+2025-07-20 13:21:03,144tring_data - athalia_core.auto_documentertring_data - WARNINGtring_data-Could not analyze module tests/._correction_chaînes.py: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start bytetring_data
+2025-07-20 13:21:03,611tring_data - __main__tring_data - INFOtring_data-🧪 Étape 7: Tests automatiquestring_data
+2025-07-20 13:21:03,611tring_data - athalia_core.auto_testertring_data - INFOtring_data-🧪 Génération de tests pour : tring_data
+2025-07-20 13:21:04,067tring_data - athalia_core.auto_testertring_data - INFOtring_data-🧪 Exécution des tests unitaires...tring_data
+2025-07-20 13:21:04,226tring_data - athalia_core.auto_testertring_data - INFOtring_data-🔗 Exécution des tests dintégration...tring_data
+2025-07-20 13:21:04,333tring_data - __main__tring_data - INFOtring_data-🧠 PHASE 2: Analyse intelligentetring_data
+2025-07-20 13:21:04,333tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🧠 Analyse complète du projet: tring_data
+2025-07-20 13:21:04,334tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-📊 Étape 1/4: Analyse AST de base...tring_data
+2025-07-20 13:21:04,467tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_1.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,472tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_2.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,472tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_3.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,472tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_4.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,512tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_6.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,556tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_7.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,559tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_8.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,567tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_9.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,597tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_12.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,618tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_13.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,642tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_14.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,653tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_15.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,658tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_17.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,676tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_18.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,688tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_19.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,715tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_20.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,724tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_21.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,735tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_22.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,759tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_23.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,768tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_24.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,782tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_25.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,798tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_26.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,821tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_27.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,824tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_28.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,839tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_29.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,839tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_30.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,855tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_31.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,858tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_32.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,861tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_33.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,864tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_34.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,876tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_35.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,898tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_36.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,907tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_37.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,908tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_38.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,908tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_39.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,908tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_40.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,908tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_41.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,908tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_42.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,908tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_43.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,909tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_44.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,909tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_45.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,909tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_46.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,909tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_47.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,909tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_48.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,909tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_49.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,909tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_50.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,909tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_51.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,909tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_52.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,910tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_53.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,910tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_54.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,910tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_55.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,910tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_56.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,910tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_57.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,910tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_58.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,911tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_59.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,911tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_60.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,911tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_61.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,911tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_62.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,911tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_63.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,912tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_64.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,912tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_65.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,912tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_66.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,912tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_67.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,912tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_68.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,912tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_69.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,912tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_70.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,913tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_71.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,913tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_72.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,913tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_73.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,913tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_74.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,913tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_75.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,914tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_76.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,914tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_77.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,914tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_78.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,914tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_79.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,914tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_80.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,914tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_81.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,914tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_82.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,914tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_83.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,914tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_84.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,914tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_85.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,914tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_86.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,914tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_87.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,915tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_88.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,915tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_89.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,915tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_90.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,915tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_91.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,915tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_92.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,915tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_93.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,915tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_94.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,915tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_95.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,915tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_96.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,915tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_97.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,915tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_98.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,915tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_99.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,915tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_100.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,915tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_101.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,915tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_102.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,915tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_103.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,915tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_104.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,915tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_105.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,915tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_106.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,915tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_107.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,915tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_108.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,915tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_109.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,915tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_110.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,915tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_111.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,916tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_112.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,916tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_113.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,916tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_114.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:04,916tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_115.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:05,996tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🔍 Étape 2/4: Analyse des patterns et doublons...tring_data
+2025-07-20 13:21:05,996tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-🔍 Analyse des patterns du projet: tring_data
+2025-07-20 13:21:06,128tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-📁 341 fichiers Python trouvéstring_data
+2025-07-20 13:21:06,128tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-📁 Limitation à 50 fichiers pour les performancestring_data
+2025-07-20 13:21:06,129tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_1.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:06,132tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_2.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:06,132tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_3.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:06,132tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_4.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:06,155tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_6.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:06,189tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_7.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:06,192tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_8.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:06,199tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_9.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:06,222tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_12.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:06,235tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_13.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:06,254tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_14.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:06,260tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_15.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:08,485tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🏗️ Étape 3/4: Analyse d'architecture...tring_data
+2025-07-20 13:21:08,485tring_data - athalia_core.architecture_analyzertring_data - INFOtring_data-🏗️ Analyse de l'architecture complète...tring_data
+2025-07-20 13:21:09,365tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_1.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,368tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_2.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,368tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_3.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,369tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_4.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,394tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_6.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,428tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_7.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,431tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_8.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,437tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_9.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,460tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_12.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,473tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_13.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,490tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_14.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,497tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_15.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,501tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_17.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,513tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_18.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,524tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_19.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,545tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_20.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,555tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_21.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,567tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_22.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,592tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_23.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,601tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_24.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,612tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_25.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,623tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_26.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,640tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_27.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,643tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_28.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,654tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_29.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,655tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_30.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,673tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_31.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,677tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_32.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,682tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_33.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,685tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_34.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,699tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_35.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,721tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_36.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,730tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_37.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,730tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_38.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,730tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_39.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,730tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_40.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,730tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_41.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,730tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_42.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,730tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_43.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,731tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_44.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,731tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_45.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,731tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_46.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,732tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_47.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,732tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_48.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,732tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_49.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,732tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_50.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,732tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_51.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,732tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_52.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,732tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_53.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,732tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_54.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,732tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_55.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,732tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_56.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,732tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_57.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,733tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_58.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,733tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_59.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,733tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_60.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,733tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_61.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,733tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_62.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,733tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_63.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,733tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_64.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,733tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_65.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,734tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_66.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,734tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_67.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,734tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_68.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,734tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_69.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,734tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_70.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,734tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_71.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,734tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_72.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,734tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_73.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,734tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_74.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,734tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_75.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,735tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_76.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,735tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_77.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,735tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_78.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,735tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_79.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,735tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_80.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,735tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_81.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,735tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_82.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,736tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_83.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,736tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_84.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,736tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_85.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,736tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_86.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,736tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_87.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,736tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_88.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,736tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_89.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,737tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_90.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,737tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_91.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,737tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_92.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,737tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_93.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,737tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_94.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,737tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_95.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,737tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_96.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,738tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_97.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,738tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_98.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,738tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_99.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,738tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_100.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,738tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_101.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,738tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_102.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,738tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_103.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,738tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_104.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,738tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_105.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,738tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_106.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,738tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_107.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,738tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_108.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,739tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_109.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,739tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_110.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,739tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_111.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,739tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_112.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,739tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_113.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,739tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_114.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,739tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_115.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:09,950tring_data - athalia_core.architecture_analyzertring_data - INFOtring_data-📊 171 modules analyséstring_data
+2025-07-20 13:21:09,968tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-⚡ Étape 4/4: Analyse de performance...tring_data
+2025-07-20 13:21:09,968tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-⚡ Analyse des performances du projet: tring_data
+2025-07-20 13:21:10,103tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-📁 341 fichiers Python analyséstring_data
+2025-07-20 13:21:10,103tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-📁 Limitation à 50 fichiers pour les performancestring_data
+2025-07-20 13:21:10,103tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_1.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:10,106tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_2.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:10,106tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_3.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:10,106tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_4.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:10,132tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_6.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:10,165tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_7.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:10,168tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_8.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:10,177tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_9.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:10,202tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_12.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:10,220tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_13.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:10,241tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_14.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:10,248tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de tests/test_unit_15.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:21:10,265tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-💾 Analyse sauvegardée dans /Volumes/T7/athalia-dev-setup/data/comprehensive_analysis__20250720_132110.jsontring_data
+2025-07-20 13:21:10,265tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-✅ Analyse complète terminée - Score global: 70.2/100tring_data
+2025-07-20 13:21:10,266tring_data - __main__tring_data - INFOtring_data-🔮 PHASE 3: Prédictions et optimisationstring_data
+2025-07-20 13:21:10,404tring_data - __main__tring_data - INFOtring_data-📚 PHASE 4: Apprentissage et insightstring_data
+2025-07-20 13:21:10,406tring_data - __main__tring_data - ERRORtring_data-Erreur lors de la sauvegarde: Object of type generator is not JSON serializabletring_data
+2025-07-20 13:21:10,406tring_data - __main__tring_data - INFOtring_data-================================================================================tring_data
+2025-07-20 13:21:10,406tring_data - __main__tring_data - INFOtring_data-✅ ORCHESTRATION UNIFIÉE TERMINÉE !tring_data
+2025-07-20 13:21:10,406tring_data - __main__tring_data - INFOtring_data-================================================================================tring_data
+2025-07-20 13:22:01,519tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-🔍 Pattern Detector initialisé dans /Volumes/T7/athalia-dev-setuptring_data
+2025-07-20 13:22:01,524tring_data - athalia_core.architecture_analyzertring_data - INFOtring_data-🏗️ Architecture Analyzer initialisé dans /Volumes/T7/athalia-dev-setuptring_data
+2025-07-20 13:22:01,524tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-⚡ Performance Analyzer initialisé dans /Volumes/T7/athalia-dev-setuptring_data
+2025-07-20 13:22:01,524tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🧠 Intelligent Analyzer initialisé dans /Volumes/T7/athalia-dev-setuptring_data
+2025-07-20 13:22:01,525tring_data - __main__tring_data - INFOtring_data-🎯 Unified Orchestrator initialisé dans /Volumes/T7/athalia-dev-setuptring_data
+2025-07-20 13:22:01,525tring_data - __main__tring_data - INFOtring_data-🎯 Orchestration unifiée du projet: demo-calculatricetring_data
+2025-07-20 13:22:01,525tring_data - __main__tring_data - INFOtring_data-================================================================================tring_data
+2025-07-20 13:22:01,525tring_data - __main__tring_data - INFOtring_data-🏭 PHASE 1: Industrialisationtring_data
+2025-07-20 13:22:01,525tring_data - __main__tring_data - INFOtring_data-🔍 Étape 1: Audit intelligenttring_data
+2025-07-20 13:22:01,525tring_data - athalia_core.intelligent_auditortring_data - INFOtring_data-🔍 Audit intelligent en cours pour : demo-calculatricetring_data
+2025-07-20 13:22:01,549tring_data - __main__tring_data - INFOtring_data-🧹 Étape 2: Linting avancétring_data
+2025-07-20 13:22:01,549tring_data - athalia_core.code_lintertring_data - INFOtring_data-📏 Analyse de qualité pour : demo-calculatricetring_data
+2025-07-20 13:22:02,572tring_data - __main__tring_data - INFOtring_data-🔒 Étape 3: Audit sécuritétring_data
+2025-07-20 13:22:02,573tring_data - athalia_core.security_auditortring_data - INFOtring_data-🔒 Audit de sécurité pour : demo-calculatricetring_data
+2025-07-20 13:22:05,738tring_data - __main__tring_data - INFOtring_data-📊 Étape 4: Analytics avancéetring_data
+2025-07-20 13:22:05,739tring_data - athalia_core.advanced_analyticstring_data - INFOtring_data-📊 Analytics avancée pour : demo-calculatricetring_data
+2025-07-20 13:22:05,750tring_data - __main__tring_data - INFOtring_data-🧹 Étape 5: Nettoyage automatiquetring_data
+2025-07-20 13:22:05,750tring_data - athalia_core.auto_cleanertring_data - INFOtring_data-🧹 Nettoyage automatique en cours pour : demo-calculatricetring_data
+2025-07-20 13:22:05,802tring_data - __main__tring_data - INFOtring_data-📚 Étape 6: Documentation automatiquetring_data
+2025-07-20 13:22:05,806tring_data - athalia_core.auto_documentertring_data - INFOtring_data-📚 Génération de documentation pour : demo-calculatricetring_data
+2025-07-20 13:22:05,827tring_data - __main__tring_data - INFOtring_data-🧪 Étape 7: Tests automatiquestring_data
+2025-07-20 13:22:05,827tring_data - athalia_core.auto_testertring_data - INFOtring_data-🧪 Génération de tests pour : demo-calculatricetring_data
+2025-07-20 13:22:05,837tring_data - athalia_core.auto_testertring_data - INFOtring_data-🧪 Exécution des tests unitaires...tring_data
+2025-07-20 13:22:05,980tring_data - athalia_core.auto_testertring_data - INFOtring_data-🔗 Exécution des tests dintégration...tring_data
+2025-07-20 13:22:06,089tring_data - __main__tring_data - INFOtring_data-🧠 PHASE 2: Analyse intelligentetring_data
+2025-07-20 13:22:06,089tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🧠 Analyse complète du projet: demo-calculatricetring_data
+2025-07-20 13:22:06,089tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-📊 Étape 1/4: Analyse AST de base...tring_data
+2025-07-20 13:22:06,092tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de demo-calculatrice/tests/test_unit_2.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:06,095tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🔍 Étape 2/4: Analyse des patterns et doublons...tring_data
+2025-07-20 13:22:06,095tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-🔍 Analyse des patterns du projet: demo-calculatricetring_data
+2025-07-20 13:22:06,098tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-📁 6 fichiers Python trouvéstring_data
+2025-07-20 13:22:06,098tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de demo-calculatrice/tests/test_unit_2.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:06,114tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🏗️ Étape 3/4: Analyse d'architecture...tring_data
+2025-07-20 13:22:06,114tring_data - athalia_core.architecture_analyzertring_data - INFOtring_data-🏗️ Analyse de l'architecture complète...tring_data
+2025-07-20 13:22:06,765tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_1.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:06,768tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_2.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:06,768tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_3.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:06,768tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_4.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:06,793tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_6.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:06,825tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_7.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:06,829tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_8.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:06,836tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_9.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:06,868tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_12.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:06,881tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_13.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:06,898tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_14.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:06,905tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_15.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:06,910tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_17.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:06,929tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_18.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:06,938tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_19.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:06,961tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_20.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:06,968tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_21.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:06,979tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_22.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,002tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_23.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,012tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_24.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,021tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_25.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,034tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_26.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,051tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_27.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,054tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_28.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,066tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_29.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,066tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_30.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,084tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_31.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,088tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_32.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,093tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_33.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,096tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_34.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,108tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_35.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,125tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_36.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,131tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_37.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,132tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_38.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,132tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_39.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,133tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_40.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,133tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_41.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,133tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_42.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,134tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_43.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,134tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_44.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,134tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_45.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,135tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_46.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,135tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_47.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,135tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_48.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,135tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_49.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,136tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_50.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,136tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_51.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,136tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_52.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,137tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_53.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,137tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_54.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,137tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_55.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,138tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_56.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,138tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_57.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,138tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_58.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,139tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_59.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,139tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_60.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,140tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_61.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,140tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_62.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,140tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_63.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,141tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_64.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,141tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_65.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,141tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_66.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,142tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_67.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,142tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_68.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,142tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_69.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,142tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_70.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,143tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_71.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,143tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_72.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,143tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_73.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,144tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_74.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,144tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_75.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,144tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_76.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,145tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_77.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,145tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_78.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,145tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_79.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,145tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_80.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,146tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_81.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,146tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_82.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,146tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_83.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,147tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_84.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,147tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_85.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,147tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_86.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,148tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_87.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,148tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_88.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,148tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_89.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,149tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_90.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,149tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_91.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,149tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_92.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,150tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_93.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,150tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_94.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,150tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_95.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,150tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_96.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,151tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_97.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,151tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_98.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,151tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_99.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,151tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_100.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,152tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_101.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,152tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_102.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,152tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_103.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,153tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_104.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,153tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_105.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,153tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_106.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,154tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_107.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,154tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_108.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,154tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_109.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,154tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_110.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,155tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_111.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,155tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_112.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,155tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_113.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,156tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_114.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,156tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de /Volumes/T7/athalia-dev-setup/tests/test_unit_115.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,366tring_data - athalia_core.architecture_analyzertring_data - INFOtring_data-📊 171 modules analyséstring_data
+2025-07-20 13:22:07,380tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-⚡ Étape 4/4: Analyse de performance...tring_data
+2025-07-20 13:22:07,380tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-⚡ Analyse des performances du projet: demo-calculatricetring_data
+2025-07-20 13:22:07,381tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-📁 6 fichiers Python analyséstring_data
+2025-07-20 13:22:07,382tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de demo-calculatrice/tests/test_unit_2.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:22:07,394tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-💾 Analyse sauvegardée dans /Volumes/T7/athalia-dev-setup/data/comprehensive_analysis_demo-calculatrice_20250720_132207.jsontring_data
+2025-07-20 13:22:07,394tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-✅ Analyse complète terminée - Score global: 93.2/100tring_data
+2025-07-20 13:22:07,394tring_data - __main__tring_data - INFOtring_data-🔮 PHASE 3: Prédictions et optimisationstring_data
+2025-07-20 13:22:07,395tring_data - __main__tring_data - INFOtring_data-📚 PHASE 4: Apprentissage et insightstring_data
+2025-07-20 13:22:07,396tring_data - __main__tring_data - ERRORtring_data-Erreur lors de la sauvegarde: Object of type generator is not JSON serializabletring_data
+2025-07-20 13:22:07,396tring_data - __main__tring_data - INFOtring_data-================================================================================tring_data
+2025-07-20 13:22:07,396tring_data - __main__tring_data - INFOtring_data-✅ ORCHESTRATION UNIFIÉE TERMINÉE !tring_data
+2025-07-20 13:22:07,396tring_data - __main__tring_data - INFOtring_data-================================================================================tring_data
