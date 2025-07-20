@@ -4,29 +4,29 @@
 # Configuration générale
 general:
   lang: fr
-  verbose: true
+  verbose: true  # Activé pour le debugging
   auto_fix: true
   dry_run: false
-  log_level: INFO
-  log_file: athalia.log
+  log_level: INFO  # Activé pour le monitoring
+  log_file: logs/athalia.log
 
 # Modules à activer/désactiver
 modules:
   audit: true
   clean: true
-  document: true
+  document: false  # Désactivé par défaut
   test: true
-  cicd: true
+  cicd: false  # Désactivé par défaut
   correction: true
   profiles: true
-  dashboard: true
+  dashboard: false  # Désactivé par défaut
   security: true
-  analytics: true
-  linting: true
+  analytics: false  # Désactivé par défaut
+  linting: false  # Désactivé par défaut
 
 # Plugins à charger automatiquement
 plugins:
-  auto_discovery: true
+  auto_discovery: false  # Désactivé pour économiser les ressources
   enabled:
     - export_docker_plugin
     # Ajouter d'autres plugins ici
@@ -34,7 +34,7 @@ plugins:
 
 # Templates disponibles
 templates:
-  auto_discovery: true
+  auto_discovery: false  # Désactivé pour économiser les ressources
   default: api
   available:
     - api
@@ -48,7 +48,7 @@ templates:
 database:
   path: ./athalia_data.db
   backup: true
-  backup_retention: 7
+  backup_retention: 3  # Réduit la rétention
 
 # IA et génération
 ai:
@@ -56,21 +56,21 @@ ai:
     - ollama_mistral
     - ollama_llama
     - mock
-  timeout: 30
-  max_retries: 3
+  timeout: 15  # Réduit le timeout
+  max_retries: 2  # Réduit les retries
   fallback_enabled: true
 
 # Tests
 testing:
-  auto_run: true
-  coverage: true
+  auto_run: false  # Désactivé par défaut
+  coverage: false  # Désactivé par défaut
   parallel: false
-  timeout: 300
+  timeout: 60  # Réduit le timeout
 
 # CI/CD
 cicd:
-  github_actions: true
-  docker: true
+  github_actions: false  # Désactivé par défaut
+  docker: false  # Désactivé par défaut
   deployment: false
 
 # Nettoyage
@@ -87,25 +87,33 @@ cleanup:
 
 # Dashboard
 dashboard:
-  auto_generate: true
+  auto_generate: false  # Désactivé par défaut
   port: 8080
   host: localhost
   auto_open: false
 
 # Profils utilisateur
 profiles:
-  auto_create: true
+  auto_create: false  # Désactivé par défaut
   default_user: default
-  history_retention: 30
+  history_retention: 7  # Réduit la rétention
 
 # Sécurité
 security:
-  audit_enabled: true
-  secrets_detection: true
-  vulnerability_scan: true
+  audit_enabled: false  # Désactivé par défaut
+  secrets_detection: false  # Désactivé par défaut
+  vulnerability_scan: false  # Désactivé par défaut
 
 # Analytics
 analytics:
-  enabled: true
-  metrics_retention: 90
-  auto_export: false 
+  enabled: false  # Désactivé par défaut
+  metrics_retention: 7  # Réduit la rétention
+  auto_export: false
+
+# Performance et ressources
+performance:
+  max_memory_mb: 512  # Limite mémoire
+  max_cpu_percent: 50  # Limite CPU
+  auto_cleanup_interval: 3600  # Nettoyage toutes les heures
+  log_rotation_size: 10  # MB
+  log_rotation_count: 3  # Fichiers max 

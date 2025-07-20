@@ -1,0 +1,18 @@
+=== RAPPORT D'ARCHIVAGE dim. 20 juil. 2025 15:03:32 CEST ===
+
+📦 DOSSIERS ARCHIVÉS :
+- test_arch/ (512K) - Tests d'architecture
+- test_patterns/ (512K) - Tests de patterns
+- test_perf/ (384K) - Tests de performance
+- test-demo/ (256K) - Démo de test
+- test-improved-f/ (256K) - Tests améliorés
+- demo-reachy-robot/ (896K) - Démo robot Reachy
+- demos/ (640K) - Démonstrations
+- src/demo_package/ (512K) - Package de démo
+- generated_project/ (256K) - Projet généré
+- mon-projet/ (4.8M) - Projet personnel
+- projects/ (4.0M) - Projets générés
+
+💾 ESPACE ARCHIVÉ : 21M
+📅 DATE : dim. 20 juil. 2025 15:03:32 CEST
+🎯 RAISON : Dossiers de test/démo et projets générés non essentiels

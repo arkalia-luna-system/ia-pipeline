@@ -132,53 +132,81 @@ class AutoTester:
         return unit_tests
 
     def _generate_module_unit_tests(self, module: Dict[str, Any]) -> str:
-        """Génère les tests unitaires pour un f"""
+        """Génère les tests unitaires pour un module"""
         test_content = """#!/usr/bin/env python3
-"""
+import unittest
+import sys
+import os
+
+# Ajouter le chemin du projet
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+
+class Test{module_name}(unittest.TestCase):
+    \"\"\"Tests unitaires pour {module_name}\"\"\"
+
+    def setUp(self):
+        \"\"\"Configuration avant chaque test\"\"\"
+        pass
+
+    def tearDown(self):
+        \"\"\"Nettoyage après chaque test\"\"\"
+        pass
+""".format(module_name=module["name"].title())
 
         # Tests pour les classes
         for class_info in module["classes"]:
             test_content += """
-    def test_{class_info['name']}_creation(self):
-        \"\"\"Test de création de {class_info['name']}\"\"\"
+    def test_{class_name}_creation(self):
+        \"\"\"Test de création de {class_name}\"\"\"
         try:
-            instance = {class_info['name']}()
+            # Import dynamique pour éviter les erreurs
+            module = __import__('{module_name}', fromlist=['{class_name}'])
+            class_obj = getattr(module, '{class_name}')
+            instance = class_obj()
             self.assertIsNotNone(instance)
         except Exception as e:
-            self.skipTest(f"Impossible de créer {class_info['name']}: {{e}}")
-"""
+            self.skipTest(f"Impossible de créer {class_name}: {{e}}")
+""".format(class_name=class_info['name'], module_name=module["name"])
 
             # Tests pour les méthodes
             for method_name in class_info["methods"]:
                 if method_name not in ["__init__", "__str__", "__repr__"]:
-                    test_content += f"""
-    def test_{class_info['name']}_{method_name}(self):
+                    test_content += """
+    def test_{class_name}_{method_name}(self):
         \"\"\"Test de la méthode {method_name}\"\"\"
         try:
-            instance = {class_info['name']}()
+            # Import dynamique pour éviter les erreurs
+            module = __import__('{module_name}', fromlist=['{class_name}'])
+            class_obj = getattr(module, '{class_name}')
+            instance = class_obj()
+            method = getattr(instance, '{method_name}')
             # TODO: Ajouter des paramètres de test appropriés
-            result = instance.{method_name}()
+            result = method()
             # TODO: Ajouter des assertions appropriées
             self.assertIsNotNone(result)
         except Exception as e:
             self.skipTest(f"Impossible de tester {method_name}: {{e}}")
-"""
+""".format(class_name=class_info['name'], method_name=method_name, module_name=module["name"])
 
         # Tests pour les fonctions
-        for func_info in module["functions"]:
+        for func_name in module["functions"]:
             test_content += """
-    def test_{func_info['name']}(self):
-        \"\"\"Test de la fonction {func_info['name']}\"\"\"
+    def test_{func_name}(self):
+        \"\"\"Test de la fonction {func_name}\"\"\"
         try:
+            # Import dynamique pour éviter les erreurs
+            module = __import__('{module_name}', fromlist=['{func_name}'])
+            func = getattr(module, '{func_name}')
             # TODO: Ajouter des paramètres de test appropriés
-            result = {func_info['name']}()
+            result = func()
             # TODO: Ajouter des assertions appropriées
             self.assertIsNotNone(result)
         except Exception as e:
-            self.skipTest(f"Impossible de tester {func_info['name']}: {{e}}")
-"""
+            self.skipTest(f"Impossible de tester {func_name}: {{e}}")
+""".format(func_name=func_name, module_name=module["name"])
 
         test_content += """
+
 if __name__ == '__main__':
     unittest.main()
 """
@@ -186,20 +214,22 @@ if __name__ == '__main__':
         return test_content
 
     def _generate_integration_tests(self, modules: List[Dict[str, Any]]) -> List[str]:
-        """Génère les tests df"""
+        """Génère les tests d'intégration"""
         integration_tests = []
 
-        # Test dintégration principal
+        # Test d'intégration principal
         integration_content = """#!/usr/bin/env python3
-"""
+import unittest
+import sys
+import os
+import tempfile
+import shutil
 
-        # Ajouter le chemin du projet
-        sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-
-        integration_content += """
+# Ajouter le chemin du projet
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 class TestIntegration(unittest.TestCase):
-    \"\"\"Tests dintégration\"\"\"
+    \"\"\"Tests d'intégration\"\"\"
 
     def setUp(self):
         \"\"\"Configuration avant chaque test\"\"\"
@@ -207,10 +237,10 @@ class TestIntegration(unittest.TestCase):
 
     def tearDown(self):
         \"\"\"Nettoyage après chaque test\"\"\"
-        shutil.rmtree(self.temp_dir, ignore_errors = True)
+        shutil.rmtree(self.temp_dir, ignore_errors=True)
 
     def test_project_import(self):
-        \"\"\"Test dimport du projet\"\"\"
+        \"\"\"Test d'import du projet\"\"\"
         try:
             # Tester l'import des modules principaux
             for module in {[m['name'] for m in modules]}:
@@ -231,12 +261,12 @@ class TestIntegration(unittest.TestCase):
             self.skipTest(f"Fonctionnalité de base non disponible: {{e}}")
 
     def test_error_handling(self):
-        \"\"\"Test de gestion derreurs\"\"\"
+        \"\"\"Test de gestion d'erreurs\"\"\"
         try:
-            # TODO: Ajouter des tests de gestion derreurs
+            # TODO: Ajouter des tests de gestion d'erreurs
             self.assertTrue(True)
         except Exception as e:
-            self.skipTest(f"Gestion derreurs non testable: {{e}}")
+            self.skipTest(f"Gestion d'erreurs non testable: {{e}}")
 
 if __name__ == '__main__':
     unittest.main()
@@ -247,17 +277,18 @@ if __name__ == '__main__':
         return integration_tests
 
     def _generate_performance_tests(self, modules: List[Dict[str, Any]]) -> List[str]:
-        """Génère les tests de f"""
+        """Génère les tests de performance"""
         performance_tests = []
 
         # Test de performance principal
         performance_content = """#!/usr/bin/env python3
-"""
+import unittest
+import sys
+import os
+import time
 
-        # Ajouter le chemin du projet
-        sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-
-        performance_content += """
+# Ajouter le chemin du projet
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 class TestPerformance(unittest.TestCase):
     \"\"\"Tests de performance\"\"\"
@@ -278,38 +309,40 @@ class TestPerformance(unittest.TestCase):
                     pass
             end_time = time.time()
             import_time = end_time - start_time
-            self.assertLess(import_time, 5.0, f"Import trop lent: {{import_time:.2f}}f")
+            self.assertLess(import_time, 5.0, f"Import trop lent: {{import_time:.2f}}s")
         except Exception as e:
-            self.skipTest(f"Test dimport impossible: {{e}}")
+            self.skipTest(f"Test d'import impossible: {{e}}")
 
     def test_memory_usage(self):
-        \"\"\"Test dusage mémoire\"\"\"
-
-        process = psutil.Process(os.getpid())
-        initial_memory = process.memory_info().rss / 1024 / 1024  # MB
-
+        \"\"\"Test d'usage mémoire\"\"\"
         try:
+            import psutil
+            process = psutil.Process(os.getpid())
+            initial_memory = process.memory_info().rss / 1024 / 1024  # MB
+
             # TODO: Ajouter des opérations qui utilisent de la mémoire
             pass
+
+            final_memory = process.memory_info().rss / 1024 / 1024  # MB
+            memory_increase = final_memory - initial_memory
+
+            self.assertLess(memory_increase, 100, f"Usage mémoire excessif: {{memory_increase:.1f}}MB")
+        except ImportError:
+            self.skipTest("psutil non disponible")
         except Exception as e:
             self.skipTest(f"Test mémoire impossible: {{e}}")
 
-        final_memory = process.memory_info().rss / 1024 / 1024  # MB
-        memory_increase = final_memory - initial_memory
-
-        self.assertLess(memory_increase, 100, f"Usage mémoire excessif: {{memory_increase:.1f}}MB")
-
     def test_execution_time(self):
-        \"\"\"Test de temps dexécution\"\"\"
+        \"\"\"Test de temps d'exécution\"\"\"
         start_time = time.time()
         try:
             # TODO: Ajouter des opérations à mesurer
             time.sleep(0.1)  # Simulation
             end_time = time.time()
             execution_time = end_time - start_time
-            self.assertLess(execution_time, 1.0, f"Exécution trop lente: {{execution_time:.2f}}string_data")
+            self.assertLess(execution_time, 1.0, f"Exécution trop lente: {{execution_time:.2f}}s")
         except Exception as e:
-            self.skipTest(f"Test dexécution impossible: {{e}}")
+            self.skipTest(f"Test d'exécution impossible: {{e}}")
 
 if __name__ == '__main__':
     unittest.main()

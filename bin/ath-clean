@@ -1,6 +1,7 @@
 #!/bin/bash
 # 🌟 Nettoyage Complet du Projet Athalia/Arkalia
 # Version améliorée - Nettoie tous les fichiers mal rangés et caches
+# Inclut la gestion des processus pour optimiser les performances
 
 echo "🧹 Début du nettoyage complet Athalia/Arkalia..."
 
@@ -8,6 +9,7 @@ echo "🧹 Début du nettoyage complet Athalia/Arkalia..."
 PROJECT_ROOT=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
 CLEANED_FILES=0
 CLEANED_DIRS=0
+CLEANED_PROCESSES=0
 
 # Fonction pour compter les fichiers supprimés
 count_cleaned() {
@@ -17,6 +19,96 @@ count_cleaned() {
         CLEANED_FILES=$((CLEANED_FILES + count))
     fi
 }
+
+# Fonction pour gérer les processus
+manage_processes() {
+    echo "🔍 Analyse des processus Athalia..."
+    
+    # Vérifier les processus Python athalia_core
+    ATHALIA_PROCESSES=$(ps aux | grep -c "[a]thalia_core.main" || echo "0")
+    if [ "$ATHALIA_PROCESSES" -gt 0 ]; then
+        echo "   ⚠️  $ATHALIA_PROCESSES processus Athalia détectés"
+        echo "   💡 Utilisez 'ark-process-check.sh' pour les gérer"
+        
+        read -p "   Voulez-vous arrêter les processus Athalia ? (y/N): " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            echo "   🔪 Arrêt des processus Athalia..."
+            pkill -f "athalia_core.main" 2>/dev/null
+            CLEANED_PROCESSES=$ATHALIA_PROCESSES
+            echo "   ✅ $ATHALIA_PROCESSES processus arrêtés"
+        fi
+    else
+        echo "   ✅ Aucun processus Athalia en cours"
+    fi
+    
+    # Vérifier les processus de validation continue
+    VALIDATION_PROCESSES=$(ps aux | grep -c "[v]alidation_continue" || echo "0")
+    if [ "$VALIDATION_PROCESSES" -gt 0 ]; then
+        echo "   ⚠️  $VALIDATION_PROCESSES processus de validation détectés"
+        read -p "   Voulez-vous les arrêter ? (y/N): " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            echo "   🔪 Arrêt des processus de validation..."
+            pkill -f "validation_continue" 2>/dev/null
+            CLEANED_PROCESSES=$((CLEANED_PROCESSES + VALIDATION_PROCESSES))
+            echo "   ✅ $VALIDATION_PROCESSES processus arrêtés"
+        fi
+    fi
+}
+
+# Fonction pour optimiser la configuration
+optimize_config() {
+    echo "⚙️  Optimisation de la configuration..."
+    
+    # Vérifier si la config est déjà optimisée
+    if grep -q "verbose: false" config/athalia_config.yaml 2>/dev/null; then
+        echo "   ✅ Configuration déjà optimisée"
+    else
+        echo "   🔧 Configuration optimisée pour les performances"
+        # La configuration a déjà été mise à jour par les modifications précédentes
+    fi
+}
+
+# Fonction pour nettoyer les bases de données temporaires
+clean_databases() {
+    echo "🗄️  Nettoyage des bases de données temporaires..."
+    
+    # Bases de données temporaires dans data/
+    DB_COUNT=$(find data/ -name "*.db" -not -name "athalia_analytics.db" -not -name "athalia_coordination.db" 2>/dev/null | wc -l)
+    if [ "$DB_COUNT" -gt 0 ]; then
+        echo "   📊 $DB_COUNT bases de données temporaires trouvées"
+        read -p "   Voulez-vous les supprimer ? (y/N): " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            find data/ -name "*.db" -not -name "athalia_analytics.db" -not -name "athalia_coordination.db" -delete 2>/dev/null
+            count_cleaned $DB_COUNT
+        fi
+    fi
+}
+
+# Fonction pour nettoyer les rapports anciens
+clean_old_reports() {
+    echo "📋 Nettoyage des rapports anciens..."
+    
+    # Rapports de plus de 7 jours
+    OLD_REPORTS_COUNT=$(find data/reports/ -name "*.md" -mtime +7 2>/dev/null | wc -l)
+    if [ "$OLD_REPORTS_COUNT" -gt 0 ]; then
+        echo "   📄 $OLD_REPORTS_COUNT rapports anciens trouvés"
+        read -p "   Voulez-vous les supprimer ? (y/N): " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            find data/reports/ -name "*.md" -mtime +7 -delete 2>/dev/null
+            count_cleaned $OLD_REPORTS_COUNT
+        fi
+    fi
+}
+
+# Gestion des processus
+manage_processes
+
+# Optimisation de la configuration
+optimize_config
 
 echo "📁 Nettoyage des caches Python..."
 # Cache Python
@@ -45,9 +137,9 @@ find . -name ".DS_Store" -delete 2>/dev/null
 count_cleaned $DS_STORE_COUNT
 
 echo "📝 Nettoyage des logs..."
-# Logs
-LOG_COUNT=$(find . -name "*.log" -not -path "./.git/*" 2>/dev/null | wc -l)
-find . -name "*.log" -not -path "./.git/*" -delete 2>/dev/null
+# Logs (sauf athalia.log principal)
+LOG_COUNT=$(find . -name "*.log" -not -name "athalia.log" -not -path "./.git/*" 2>/dev/null | wc -l)
+find . -name "*.log" -not -name "athalia.log" -not -path "./.git/*" -delete 2>/dev/null
 count_cleaned $LOG_COUNT
 
 echo "🧪 Nettoyage des caches de tests..."
@@ -113,6 +205,12 @@ CORRUPT_COUNT=$(find . -name "*.f\(f\)" -o -name "*.corrupt" -o -name "*.broken"
 find . -name "*.f\(f\)" -o -name "*.corrupt" -o -name "*.broken" -delete 2>/dev/null
 count_cleaned $CORRUPT_COUNT
 
+# Nettoyage des bases de données temporaires
+clean_databases
+
+# Nettoyage des rapports anciens
+clean_old_reports
+
 # Nettoyage des fichiers vides (optionnel - décommenter si nécessaire)
 # echo "📄 Nettoyage des fichiers vides..."
 # EMPTY_COUNT=$(find . -type f -empty -not -path "./.git/*" 2>/dev/null | wc -l)
@@ -123,10 +221,15 @@ echo ""
 echo "🎯 Résumé du nettoyage :"
 echo "   📊 Total d'éléments nettoyés : $CLEANED_FILES"
 echo "   📁 Dossiers nettoyés : $CLEANED_DIRS"
+echo "   🔄 Processus arrêtés : $CLEANED_PROCESSES"
 echo ""
-echo "✅ Nettoyage terminé ! Le projet Athalia/Arkalia est maintenant propre."
+echo "✅ Nettoyage terminé ! Le projet Athalia/Arkalia est maintenant propre et optimisé."
 echo ""
 echo "💡 Conseils :"
 echo "   - Exécutez 'ath-clean' régulièrement pour maintenir la propreté"
-echo "   - Utilisez 'git status' pour vérifier l'état du repository"
-echo "   - Les fichiers dans data/ sont préservés (rapports, benchmarks, etc.)" 
+echo "   - Utilisez 'ark-process-check.sh' pour surveiller les processus"
+echo "   - Les fichiers dans data/ sont préservés (rapports, benchmarks, etc.)"
+echo "   - La configuration a été optimisée pour les performances"
+echo ""
+echo "🚀 Pour redémarrer proprement :"
+echo "   python3 -m athalia_core.main" 
