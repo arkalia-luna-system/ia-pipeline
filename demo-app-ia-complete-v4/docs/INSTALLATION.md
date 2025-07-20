@@ -1,8 +1,8 @@
-# Guide d'installation - demo-calculatrice
+# Guide d'installation - demo-app-ia-complete-v4
 
 ## Vue d'ensemble
 
-Ce guide explique comment installer et configurer demo-calculatrice.
+Ce guide explique comment installer et configurer demo-app-ia-complete-v4.
 
 ## Prérequis
 
@@ -22,7 +22,7 @@ Le projet utilise un fichier de configuration YAML :
 ```yaml
 # config.yml
 app:
-  name: demo-calculatrice
+  name: demo-app-ia-complete-v4
   debug: true
   port: 8000
 

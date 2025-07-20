@@ -43,16 +43,18 @@ class RobustAI:
         # Analyse intelligente de l'idée
         idea_lower = idea.lower()
         
-        # Détection du type de projet
+        # Détection du type de projet (priorité aux mots clés spécifiques)
         project_type = 'generic'
-        if any(word in idea_lower for word in ['api', 'rest', 'fastapi', 'endpoint']):
+        if any(word in idea_lower for word in ['fastapi', 'swagger', 'openapi']):
             project_type = 'api'
-        elif any(word in idea_lower for word in ['web', 'flask', 'django', 'interface']):
-            project_type = 'web'
+        elif any(word in idea_lower for word in ['api', 'rest', 'endpoint']):
+            project_type = 'api'
         elif any(word in idea_lower for word in ['robot', 'reachy', 'ros', 'opencv']):
             project_type = 'robotics'
         elif any(word in idea_lower for word in ['calculatrice', 'calculator', 'desktop', 'tkinter']):
             project_type = 'desktop'
+        elif any(word in idea_lower for word in ['web', 'flask', 'django', 'interface', 'react', 'vue', 'angular']):
+            project_type = 'web'
         elif any(word in idea_lower for word in ['ia', 'ai', 'machine learning', 'ml']):
             project_type = 'ai_application'
         
@@ -62,7 +64,7 @@ class RobustAI:
         # Dépendances selon le type
         dependencies = ['numpy', 'pandas']
         if project_type == 'api':
-            dependencies.extend(['fastapi', 'uvicorn', 'pydantic', 'sqlalchemy', 'python-jose[cryptography]', 'passlib[bcrypt]'])
+            dependencies.extend(['fastapi', 'uvicorn', 'pydantic', 'sqlalchemy', 'python-jose[cryptography]', 'passlib[bcrypt]', 'httpx'])
         elif project_type == 'web':
             dependencies.extend(['flask', 'requests', 'jinja2', 'flask-cors'])
         elif project_type == 'robotics':
