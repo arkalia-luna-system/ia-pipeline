@@ -40,18 +40,100 @@ class RobustAI:
 
     def generate_blueprint(self, idea: str, **kwargs) -> dict:
         """Génère un blueprint de projet à partir d'une idée."""
-        project_type = 'generic' if 'test projet' in idea.lower() else 'ai_application'
+        # Analyse intelligente de l'idée
+        idea_lower = idea.lower()
+        
+        # Détection du type de projet
+        project_type = 'generic'
+        if any(word in idea_lower for word in ['api', 'rest', 'fastapi', 'endpoint']):
+            project_type = 'api'
+        elif any(word in idea_lower for word in ['web', 'flask', 'django', 'interface']):
+            project_type = 'web'
+        elif any(word in idea_lower for word in ['robot', 'reachy', 'ros', 'opencv']):
+            project_type = 'robotics'
+        elif any(word in idea_lower for word in ['calculatrice', 'calculator', 'desktop', 'tkinter']):
+            project_type = 'desktop'
+        elif any(word in idea_lower for word in ['ia', 'ai', 'machine learning', 'ml']):
+            project_type = 'ai_application'
+        
+        # Extraction du nom de projet
+        project_name = self._extract_project_name(idea)
+        
+        # Dépendances selon le type
+        dependencies = ['numpy', 'pandas']
+        if project_type == 'api':
+            dependencies.extend(['fastapi', 'uvicorn', 'pydantic', 'sqlalchemy', 'python-jose[cryptography]', 'passlib[bcrypt]'])
+        elif project_type == 'web':
+            dependencies.extend(['flask', 'requests', 'jinja2', 'flask-cors'])
+        elif project_type == 'robotics':
+            dependencies.extend(['opencv-python', 'numpy', 'matplotlib', 'rospy'])
+        elif project_type == 'desktop':
+            dependencies.extend(['tkinter', 'matplotlib'])
+        elif project_type == 'ai_application':
+            dependencies.extend(['scikit-learn', 'tensorflow', 'torch'])
+        
+        # Détection des fonctionnalités
+        has_docker = any(word in idea_lower for word in ['docker', 'container'])
+        has_cicd = any(word in idea_lower for word in ['ci', 'cd', 'github actions', 'pipeline'])
+        has_tests = any(word in idea_lower for word in ['test', 'unittest', 'pytest'])
+        has_docs = any(word in idea_lower for word in ['doc', 'swagger', 'openapi'])
+        
+        # Structure du projet
+        structure = ['src/', 'tests/', 'docs/', 'requirements.txt', 'README.md']
+        if has_docker:
+            structure.extend(['Dockerfile', 'docker-compose.yml'])
+        if has_cicd:
+            structure.extend(['.github/workflows/'])
+        
+        # Modules selon le type
+        modules = ['core', 'api', 'ui', 'tests', 'docs']
+        if project_type == 'api':
+            modules.extend(['auth', 'database', 'models'])
+        elif project_type == 'web':
+            modules.extend(['templates', 'static', 'routes'])
+        elif project_type == 'robotics':
+            modules.extend(['vision', 'control', 'navigation'])
+        
         return {
-            'project_name': 'projet_ia_exemple',
-            'description': 'Projet IA généré automatiquement',
+            'project_name': project_name,
+            'description': idea,
             'project_type': project_type,
-            'modules': ['core', 'api', 'ui', 'tests'],
-            'structure': ['src/', 'tests/', 'docs/', 'requirements.txt'],
-            'dependencies': ['numpy', 'pandas', 'scikit-learn'],
+            'modules': modules,
+            'structure': structure,
+            'dependencies': dependencies,
             'prompts': ['prompts/main.yaml'],
             'booster_ia': True,
-            'docker': False
+            'docker': has_docker,
+            'ci_cd': has_cicd,
+            'tests': has_tests,
+            'documentation': has_docs
         }
+    
+    def _extract_project_name(self, idea: str) -> str:
+        """Extrait un nom de projet de l'idée"""
+        import re
+        
+        # Cherche des mots clés spécifiques
+        patterns = [
+            r'calculatrice\s+(\w+)',
+            r'application\s+(\w+)',
+            r'robot\s+(\w+)',
+            r'api\s+(\w+)',
+            r'(\w+)\s+avec'
+        ]
+        
+        for pattern in patterns:
+            match = re.search(pattern, idea, re.IGNORECASE)
+            if match:
+                return match.group(1).lower()
+        
+        # Fallback: premier mot significatif
+        words = idea.split()
+        for word in words:
+            if len(word) > 3 and word.isalpha():
+                return word.lower()
+        
+        return "projet_ia"
 
     def review_code(self, code: str, filename: str, project_type: str, current_score: int) -> dict:
         """Fait une revue de code et retourne un rapport mocké."""

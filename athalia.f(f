@@ -1602,3 +1602,50 @@
 2025-07-20 13:25:08,319tring_data - __main__tring_data - INFOtring_data-================================================================================tring_data
 2025-07-20 13:25:08,319tring_data - __main__tring_data - INFOtring_data-✅ ORCHESTRATION UNIFIÉE TERMINÉE !tring_data
 2025-07-20 13:25:08,319tring_data - __main__tring_data - INFOtring_data-================================================================================tring_data
+2025-07-20 13:36:38,710tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-🔍 Pattern Detector initialisé dans /Volumes/T7/athalia-dev-setuptring_data
+2025-07-20 13:36:38,715tring_data - athalia_core.architecture_analyzertring_data - INFOtring_data-🏗️ Architecture Analyzer initialisé dans /Volumes/T7/athalia-dev-setuptring_data
+2025-07-20 13:36:38,717tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-⚡ Performance Analyzer initialisé dans /Volumes/T7/athalia-dev-setuptring_data
+2025-07-20 13:36:38,717tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🧠 Intelligent Analyzer initialisé dans /Volumes/T7/athalia-dev-setuptring_data
+2025-07-20 13:36:38,717tring_data - __main__tring_data - INFOtring_data-🎯 Unified Orchestrator initialisé dans /Volumes/T7/athalia-dev-setuptring_data
+2025-07-20 13:36:38,717tring_data - __main__tring_data - INFOtring_data-🎯 Orchestration unifiée du projet: demo-app-ia-complete-v3tring_data
+2025-07-20 13:36:38,717tring_data - __main__tring_data - INFOtring_data-================================================================================tring_data
+2025-07-20 13:36:38,717tring_data - __main__tring_data - INFOtring_data-🏭 PHASE 1: Industrialisationtring_data
+2025-07-20 13:36:38,717tring_data - __main__tring_data - INFOtring_data-🔍 Étape 1: Audit intelligenttring_data
+2025-07-20 13:36:38,717tring_data - athalia_core.intelligent_auditortring_data - INFOtring_data-🔍 Audit intelligent en cours pour : demo-app-ia-complete-v3tring_data
+2025-07-20 13:36:38,805tring_data - __main__tring_data - INFOtring_data-🧹 Étape 2: Linting avancétring_data
+2025-07-20 13:36:38,805tring_data - athalia_core.code_lintertring_data - INFOtring_data-📏 Analyse de qualité pour : demo-app-ia-complete-v3tring_data
+2025-07-20 13:36:40,141tring_data - __main__tring_data - INFOtring_data-🔒 Étape 3: Audit sécuritétring_data
+2025-07-20 13:36:40,141tring_data - athalia_core.security_auditortring_data - INFOtring_data-🔒 Audit de sécurité pour : demo-app-ia-complete-v3tring_data
+2025-07-20 13:36:44,250tring_data - __main__tring_data - INFOtring_data-📊 Étape 4: Analytics avancéetring_data
+2025-07-20 13:36:44,250tring_data - athalia_core.advanced_analyticstring_data - INFOtring_data-📊 Analytics avancée pour : demo-app-ia-complete-v3tring_data
+2025-07-20 13:36:44,263tring_data - __main__tring_data - INFOtring_data-🧹 Étape 5: Nettoyage automatiquetring_data
+2025-07-20 13:36:44,263tring_data - athalia_core.auto_cleanertring_data - INFOtring_data-🧹 Nettoyage automatique en cours pour : demo-app-ia-complete-v3tring_data
+2025-07-20 13:36:44,329tring_data - __main__tring_data - INFOtring_data-📚 Étape 6: Documentation automatiquetring_data
+2025-07-20 13:36:44,335tring_data - athalia_core.auto_documentertring_data - INFOtring_data-📚 Génération de documentation pour : demo-app-ia-complete-v3tring_data
+2025-07-20 13:36:44,351tring_data - __main__tring_data - INFOtring_data-🧪 Étape 7: Tests automatiquestring_data
+2025-07-20 13:36:44,351tring_data - athalia_core.auto_testertring_data - INFOtring_data-🧪 Génération de tests pour : demo-app-ia-complete-v3tring_data
+2025-07-20 13:36:44,360tring_data - athalia_core.auto_testertring_data - INFOtring_data-🧪 Exécution des tests unitaires...tring_data
+2025-07-20 13:36:44,512tring_data - athalia_core.auto_testertring_data - INFOtring_data-🔗 Exécution des tests dintégration...tring_data
+2025-07-20 13:36:44,640tring_data - __main__tring_data - INFOtring_data-🧠 PHASE 2: Analyse intelligentetring_data
+2025-07-20 13:36:44,640tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🧠 Analyse complète du projet: demo-app-ia-complete-v3tring_data
+2025-07-20 13:36:44,640tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-📊 Étape 1/4: Analyse AST de base...tring_data
+2025-07-20 13:36:44,645tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de demo-app-ia-complete-v3/tests/test_unit_2.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:36:44,649tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🔍 Étape 2/4: Analyse des patterns et doublons...tring_data
+2025-07-20 13:36:44,649tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-🔍 Analyse des patterns du projet: demo-app-ia-complete-v3tring_data
+2025-07-20 13:36:44,651tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-📁 7 fichiers Python trouvéstring_data
+2025-07-20 13:36:44,654tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de demo-app-ia-complete-v3/tests/test_unit_2.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:36:44,682tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🏗️ Étape 3/4: Analyse d'architecture...tring_data
+2025-07-20 13:36:44,682tring_data - athalia_core.architecture_analyzertring_data - INFOtring_data-🏗️ Analyse de l'architecture complète...tring_data
+2025-07-20 13:36:46,391tring_data - athalia_core.architecture_analyzertring_data - INFOtring_data-📊 167 modules analyséstring_data
+2025-07-20 13:36:46,409tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-⚡ Étape 4/4: Analyse de performance...tring_data
+2025-07-20 13:36:46,409tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-⚡ Analyse des performances du projet: demo-app-ia-complete-v3tring_data
+2025-07-20 13:36:46,418tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-📁 7 fichiers Python analyséstring_data
+2025-07-20 13:36:46,422tring_data - athalia_core.ast_analyzertring_data - ERRORtring_data-Erreur lors de l'analyse AST de demo-app-ia-complete-v3/tests/test_unit_2.py: unexpected indent (<unknown>, line 3)tring_data
+2025-07-20 13:36:46,446tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-💾 Analyse sauvegardée dans /Volumes/T7/athalia-dev-setup/data/comprehensive_analysis_demo-app-ia-complete-v3_20250720_133646.jsontring_data
+2025-07-20 13:36:46,446tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-✅ Analyse complète terminée - Score global: 88.5/100tring_data
+2025-07-20 13:36:46,446tring_data - __main__tring_data - INFOtring_data-🔮 PHASE 3: Prédictions et optimisationstring_data
+2025-07-20 13:36:46,456tring_data - __main__tring_data - INFOtring_data-📚 PHASE 4: Apprentissage et insightstring_data
+2025-07-20 13:36:46,458tring_data - __main__tring_data - ERRORtring_data-Erreur lors de la sauvegarde: Object of type generator is not JSON serializabletring_data
+2025-07-20 13:36:46,458tring_data - __main__tring_data - INFOtring_data-================================================================================tring_data
+2025-07-20 13:36:46,458tring_data - __main__tring_data - INFOtring_data-✅ ORCHESTRATION UNIFIÉE TERMINÉE !tring_data
+2025-07-20 13:36:46,458tring_data - __main__tring_data - INFOtring_data-================================================================================tring_data
