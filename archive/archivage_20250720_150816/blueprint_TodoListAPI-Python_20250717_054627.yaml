@@ -1,0 +1,40 @@
+api_spec:
+  endpoint1:
+    description: Get a specific todo item
+    params:
+      id: string
+    response:
+      result: todo item object
+booster_ia: true
+dependencies:
+- Flask
+- Flask-RESTful
+- Flask-SQLAlchemy
+- pytest
+description: Simple REST API in Python for managing todo lists, implementing CRUD
+  operations with proper documentation, tests and CI.
+docker: false
+modules:
+- api
+- models
+- services
+- tests
+project_name: TodoListAPI-Python
+project_type: generic
+prompts:
+- api.yaml
+- documentation.md
+structure:
+- api/
+- __init__.py
+- api_spec.yaml
+- endpoint1.py
+- '..._models/'
+- __init__.py
+- todo.py_services/
+- __init__.py
+- todo_service.py_tests/
+- __init__.py
+- test_api.py
+- test_models.py
+- '...'

@@ -1,15 +1,15 @@
-# Guide d'utilisation - 
+# Guide d'utilisation - athalia-dev-setup
 
 ## Vue d'ensemble
 
-Ce guide explique comment utiliser .
+Ce guide explique comment utiliser athalia-dev-setup.
 
 ## Configuration
 
 ```yaml
-name: 
+name: athalia-dev-setup
 version: 1.0.0
-description: #
+description: # athalia-dev-setup
 ```
 
 ### Lancement rapide
@@ -29,7 +29,7 @@ Le projet utilise un fichier de configuration YAML :
 ```yaml
 # config.yml
 app:
-  name: 
+  name: athalia-dev-setup
   debug: true
   port: 8000
 
@@ -42,126 +42,103 @@ database:
 
 ### Classes principales
 
-#### TestCIConfiguration
-
-Tests pour la configuration CI/CD
-
-Cette classe teste les aspects suivants :
-- Import du module CI
-- Existence de la configuration
-- Environnement CI
-- Dépendances CI
-- Configuration des timeouts
+#### ValidationContinue
 
 **Exemple d'utilisation :**
 
 ```python
-from  import TestCIConfiguration
+from athalia-dev-setup import ValidationContinue
 
 # Créer une instance
-instance = TestCIConfiguration()
-# Utiliser une méthode
-result = instance.setUp()
-```
-
-#### TestPerformanceOptimizer
-
-Optimiseur de performances des tests
-
-**Exemple d'utilisation :**
-
-```python
-from  import TestPerformanceOptimizer
-
-# Créer une instance
-instance = TestPerformanceOptimizer()
+instance = ValidationContinue()
 # Utiliser une méthode
 result = instance.__init__()
 ```
 
-#### TestAdaptiveDistiller
+#### ValidationDashboardHandler
 
 **Exemple d'utilisation :**
 
 ```python
-from  import TestAdaptiveDistiller
+from athalia-dev-setup import ValidationDashboardHandler
 
 # Créer une instance
-instance = TestAdaptiveDistiller()
+instance = ValidationDashboardHandler()
 # Utiliser une méthode
-result = instance.setUp()
+result = instance.do_GET()
+```
+
+#### ValidationObjective
+
+**Exemple d'utilisation :**
+
+```python
+from athalia-dev-setup import ValidationObjective
+
+# Créer une instance
+instance = ValidationObjective()
+# Utiliser une méthode
+result = instance.__init__()
 ```
 
 ### Fonctions utilitaires
 
-#### test2
+#### __init__
 
 **Exemple d'utilisation :**
 
 ```python
-from  import test2
+from athalia-dev-setup import __init__
 
-result = test2()
+result = __init__(intervalle_minutes)
 ```
 
-#### test_ci_environment_variables
+#### test_rapide
 
-Test des variables d'environnement CI
-
-Scénario : Vérification des variables d'environnement CI
-Données : Variables d'environnement système
-Résultat attendu : Les variables CI doivent être définies ou absentes
+Test rapide pour validation continue (5-10 secondes)
 
 **Exemple d'utilisation :**
 
 ```python
-from  import test_ci_environment_variables
+from athalia-dev-setup import test_rapide
 
-result = test_ci_environment_variables()
+result = test_rapide()
 ```
 
-#### setUp
+#### test_demarrage
 
-Initialisation avant chaque test
+Test: Athalia démarre-t-il ?
 
 **Exemple d'utilisation :**
 
 ```python
-from  import setUp
+from athalia-dev-setup import test_demarrage
 
-result = setUp()
+result = test_demarrage()
 ```
 
-#### test_ci_module_import
+#### test_imports
 
-Test que le module CI peut être importé
-
-Scénario : Import du module athalia_core.ci
-Données : Module CIConfig
-Résultat attendu : Le module doit être importable
+Test: Les imports fonctionnent-ils ?
 
 **Exemple d'utilisation :**
 
 ```python
-from  import test_ci_module_import
+from athalia-dev-setup import test_imports
 
-result = test_ci_module_import()
+result = test_imports()
 ```
 
-#### test_ci_config_exists
+#### test_generation_mini
 
-Test que la configuration CI existe
-
-Scénario : Vérification de l'existence du fichier de config
-Données : Chemin vers config/athalia_config.yaml
-Résultat attendu : Le fichier de configuration doit exister
+Test: Génération d'un mini-projet
 
 **Exemple d'utilisation :**
 
 ```python
-from  import test_ci_config_exists
+from athalia-dev-setup import test_generation_mini
 
-result = test_ci_config_exists()
+result = test_generation_mini()
 ```
 
 

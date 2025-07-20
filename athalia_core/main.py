@@ -12,12 +12,31 @@ import sys
 from datetime import datetime
 import logging
 import shutil
+import signal
+import time
+
+# Import du système de logging avancé
+try:
+    from athalia_core.logger_advanced import athalia_logger, log_main
+except ImportError:
+    # Fallback vers le logging standard si le module avancé n'est pas disponible
+    athalia_logger = None
+    log_main = lambda msg, level='INFO', **kwargs: logging.getLogger(__name__).info(msg)
 
 """
 Point d'entrée CLI du pipeline Athalia.
 """
 
 logger = logging.getLogger(__name__)
+
+# Variable globale pour contrôler la boucle principale
+running = True
+
+def signal_handler(signum, frame):
+    """Gestionnaire de signal pour arrêt propre"""
+    global running
+    logger.info("\n🛑 Signal d'arrêt reçu. Arrêt propre en cours...")
+    running = False
 
 def menu():
     logger.info("\n===Athalia Pipeline CLI===")
@@ -34,6 +53,7 @@ def menu():
     logger.info("11. Logs détaillés d'intégration")
     logger.info("12. 🔍 Audit intelligent (nouveau)")
     logger.info("13. Quitter")
+    logger.info("14. Mode surveillance (nouveau)")
     try:
         return input("Choix : ").strip()
     except (EOFError, KeyboardInterrupt):
@@ -48,9 +68,33 @@ def safe_input(prompt: str) -> str:
         logger.info("\nOpération annulée.")
         return ""
 
+def surveillance_mode():
+    """Mode surveillance avec arrêt automatique"""
+    logger.info("🔍 Mode surveillance activé (Ctrl+C pour arrêter)")
+    try:
+        while running:
+            logger.info("⏰ Surveillance en cours... (Ctrl+C pour arrêter)")
+            time.sleep(30)  # Vérification toutes les 30 secondes
+    except KeyboardInterrupt:
+        logger.info("\n🛑 Surveillance arrêtée.")
+
 def main(test_mode=False):
-    logging.basicConfig(level=logging.INFO)
-    while True:
+    global running
+    
+    # Configuration du gestionnaire de signal
+    signal.signal(signal.SIGINT, signal_handler)
+    signal.signal(signal.SIGTERM, signal_handler)
+    
+    # Configuration du logging avancé ou standard
+    if athalia_logger:
+        log_main("🚀 Athalia Pipeline démarré avec logging avancé", "INFO")
+        log_main("💡 Conseil: Utilisez Ctrl+C pour un arrêt propre", "INFO")
+    else:
+        logging.basicConfig(level=logging.INFO)
+        logger.info("🚀 Athalia Pipeline démarré")
+        logger.info("💡 Conseil: Utilisez Ctrl+C pour un arrêt propre")
+    
+    while running:
         try:
             choix = menu()
             if choix == '1':
@@ -193,20 +237,24 @@ def main(test_mode=False):
                     logger.info(f"Erreur audit intelligent: {e}")
             elif choix == '13':
                 logger.info("Au revoir !")
+                running = False
                 break
+            elif choix == '14':
+                surveillance_mode()
             else:
                 logger.info("Choix invalide.")
             if test_mode:
                 break  # On sort après un tour en mode test
+        except KeyboardInterrupt:
+            logger.info("\n🛑 Arrêt demandé par l'utilisateur...")
+            running = False
+            break
         except Exception as e:
-            logger.info(f"Erreur: {e}")
-            logging.error(f"Erreur dans le menu principal: {e}")
+            logger.error(f"Erreur inattendue: {e}")
             if test_mode:
                 break
-            continue
+    
+    logger.info("👋 Athalia Pipeline arrêté proprement.")
 
 if __name__ == "__main__":
-    if '--help' in sys.argv:
-        print("Athalia CLI - Options disponibles :\n1. Générer un projet IA\n2. Nettoyer un projet\n3. Générer la CI\n4. Générer le dashboard\n5. Générer guides d'onboarding\n6. Audit sécurité\n7. Scan de l'existant\n8. Génération dry-run\n9. Voir rapport d'intégration\n10. Rollback automatique\n11. Logs détaillés\n12. Audit intelligent\n13. Quitter")
-        sys.exit(0)
     main()

@@ -1,1 +1,2 @@
-[DRY-RUN] Dry run effectué avec succès.
+[DRY-RUN] Projet qui serait généré:
+"robot reachy mini wireless yeux qui bouge si f"
