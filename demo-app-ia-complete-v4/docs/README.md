@@ -1,4 +1,4 @@
-# Index de documentation - demo-app-ia-complete-v3
+# Index de documentation - demo-app-ia-complete-v4
 
 ## 📚 Guides disponibles
 

@@ -1,4 +1,4 @@
-# demo-app-ia-complete-v3
+# demo-app-ia-complete-v4
 
 # web
 
@@ -26,7 +26,7 @@
 ```bash
 # Cloner le repository
 git clone <repository - url>
-cd demo-app-ia-complete-v3
+cd demo-app-ia-complete-v4
 
 # Installer les dépendances
 pip install -r requirements.txt
@@ -36,7 +36,7 @@ pip install -r requirements.txt
 ### Lancement
 
 ```bash
-python demo-app-ia-complete-v3/main.py
+python demo-app-ia-complete-v4/main.py
 ```
 
 ### Exemple d'utilisation
@@ -88,7 +88,7 @@ Test de l'endpoint racine
 python -m pytest
 
 # Avec couverture
-python -m pytest --cov=demo-app-ia-complete-v3
+python -m pytest --cov=demo-app-ia-complete-v4
 ```
 
 ## 🤝 Contribution
