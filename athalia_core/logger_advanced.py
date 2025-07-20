@@ -333,13 +333,30 @@ class AthaliaLogger:
     
     def _cleanup_worker(self):
         """Thread de nettoyage automatique des logs"""
-        while True:
+        while hasattr(self, '_cleanup_active') and self._cleanup_active:
             try:
                 time.sleep(3600)  # Vérifier toutes les heures
-                self._cleanup_old_logs()
-                self._compress_old_logs()
+                if hasattr(self, '_cleanup_active') and self._cleanup_active:
+                    self._cleanup_old_logs()
+                    self._compress_old_logs()
             except Exception as e:
                 self.log_error(e, "cleanup_worker")
+                time.sleep(300)  # Attendre 5 minutes en cas d'erreur
+    
+    def start_cleanup_worker(self):
+        """Démarre le thread de nettoyage"""
+        if not hasattr(self, '_cleanup_active') or not self._cleanup_active:
+            self._cleanup_active = True
+            import threading
+            self._cleanup_thread = threading.Thread(target=self._cleanup_worker, daemon=True)
+            self._cleanup_thread.start()
+            self.log_main("🧹 Thread de nettoyage démarré")
+    
+    def stop_cleanup_worker(self):
+        """Arrête le thread de nettoyage"""
+        if hasattr(self, '_cleanup_active'):
+            self._cleanup_active = False
+            self.log_main("🛑 Thread de nettoyage arrêté")
     
     def _cleanup_old_logs(self):
         """Nettoie les anciens logs"""

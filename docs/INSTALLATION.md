@@ -1,8 +1,8 @@
-# Guide d'installation - 
+# Guide d'installation - athalia-dev-setup
 
 ## Vue d'ensemble
 
-Ce guide explique comment installer et configurer .
+Ce guide explique comment installer et configurer athalia-dev-setup.
 
 ## Prérequis
 
@@ -22,7 +22,7 @@ Le projet utilise un fichier de configuration YAML :
 ```yaml
 # config.yml
 app:
-  name: 
+  name: athalia-dev-setup
   debug: true
   port: 8000
 

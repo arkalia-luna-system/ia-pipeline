@@ -1,0 +1,24 @@
+=== RAPPORT D'ARCHIVAGE dim. 20 juil. 2025 15:08:43 CEST ===
+
+📦 DOSSIERS ET FICHIERS ARCHIVÉS :
+- .benchmarks/ (128K) - Benchmarks
+- .f/ (384K) - Dossier .f
+- athalia_core/.f/ (384K) - Dossier .f du cœur
+- blueprints_history/ (1.1M) - Historique des blueprints
+- prompts/ (1.0M) - Prompts
+- scripts/debug/ (256K) - Scripts de debug
+- src/ (128K) - Source
+- security_audit.f(f (128K) - Audit de sécurité
+- athalia.f(f (384K) - Fichier athalia
+- athalia_core/security_audit.f(f (128K) - Audit de sécurité du cœur
+- analytics_dashboard.html (256K) - Dashboards analytics
+- data/benchmarks/benchmark_results.csv (128K) - Résultats benchmarks
+- config/pytest-ci.ini (128K) - Configuration pytest CI
+- config/paths.yaml (128K) - Configuration chemins
+- config/Taskfile.yaml (128K) - Configuration Taskfile
+- audit_report.yaml (0B) - Rapport d'audit
+- ._* (768K) - Fichiers macOS cachés
+
+💾 ESPACE ARCHIVÉ : 7.1M
+📅 DATE : dim. 20 juil. 2025 15:08:44 CEST
+🎯 RAISON : Dossiers de configuration, prompts, benchmarks et fichiers temporaires
