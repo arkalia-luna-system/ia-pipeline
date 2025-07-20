@@ -54,6 +54,10 @@ class AutoCleaner:
 
         return self._generate_cleanup_report()
 
+    def run(self) -> Dict[str, Any]:
+        """Méthode run() pour l'orchestrateur - exécute le nettoyage"""
+        return self.clean_project(dry_run=False)
+
     def _clean_system_files(self, project_path: Path):
         """Nettoyage des fichiers système"""
         system_patterns = [

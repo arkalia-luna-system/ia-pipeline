@@ -21,10 +21,16 @@ Analyse automatique complète des projets avec recommandations
 class IntelligentAuditor:
     """Auditeur intelligent pour analyse automatique des projets"""
 
-    def __init__(self):
-        self.project_path = None
+    def __init__(self, project_path: str = None):
+        self.project_path = Path(project_path) if project_path else None
         self.audit_results = {}
         self.recommendations = []
+
+    def run(self) -> Dict[str, Any]:
+        """Méthode run() pour l'orchestrateur - exécute l'audit"""
+        if not self.project_path:
+            raise ValueError("project_path doit être défini")
+        return self.audit_project(str(self.project_path))
 
     def audit_project(self, project_path: str) -> Dict[str, Any]:
         """Audit complet d'un projet"""
