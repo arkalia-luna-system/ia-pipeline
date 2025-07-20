@@ -46,7 +46,7 @@ def generate(idea, output, dry_run):
             click.echo("❌ Impossible de générer le blueprint")
             return
 
-        click.echo(f"✅ Blueprint généré: {blueprint.get('project_name', 'Projet')}")
+        click.echo(f"✅ Blueprint généré: {blueprint.get('project_type', 'Projet')}")
 
         # 2. Générer le projet complet
 

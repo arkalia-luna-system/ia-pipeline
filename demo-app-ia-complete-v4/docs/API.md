@@ -1,8 +1,8 @@
-# API Documentation - demo-app-ia-complete-v3
+# API Documentation - demo-app-ia-complete-v4
 
 ## Vue d'ensemble
 
-Cette documentation décrit l'API de demo-app-ia-complete-v3.
+Cette documentation décrit l'API de demo-app-ia-complete-v4.
 
 ## Modules
 

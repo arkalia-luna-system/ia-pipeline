@@ -1,15 +1,15 @@
-# Guide d'utilisation - demo-app-ia-complete
+# Guide d'utilisation - demo-app-ia-complete-v4
 
 ## Vue d'ensemble
 
-Ce guide explique comment utiliser demo-app-ia-complete.
+Ce guide explique comment utiliser demo-app-ia-complete-v4.
 
 ## Configuration
 
 ```yaml
-name: demo-app-ia-complete
+name: demo-app-ia-complete-v4
 version: 1.0.0
-description: # projet_ia_exemple
+description: # web
 ```
 
 ### Lancement rapide
@@ -29,7 +29,7 @@ Le projet utilise un fichier de configuration YAML :
 ```yaml
 # config.yml
 app:
-  name: demo-app-ia-complete
+  name: demo-app-ia-complete-v4
   debug: true
   port: 8000
 
@@ -42,29 +42,92 @@ database:
 
 ### Classes principales
 
-#### FlowerAnimation
+#### Item
 
 **Exemple d'utilisation :**
 
 ```python
-from demo-app-ia-complete import FlowerAnimation
+from demo-app-ia-complete-v4 import Item
 
 # Créer une instance
-instance = FlowerAnimation()
+instance = Item()
+```
+
+#### TestWeb
+
+Tests pour web
+
+**Exemple d'utilisation :**
+
+```python
+from demo-app-ia-complete-v4 import TestWeb
+
+# Créer une instance
+instance = TestWeb()
 # Utiliser une méthode
-result = instance.__init__()
+result = instance.setUp()
 ```
 
 ### Fonctions utilitaires
 
-#### __init__
+#### main
+
+Point d'entrée principal
 
 **Exemple d'utilisation :**
 
 ```python
-from demo-app-ia-complete import __init__
+from demo-app-ia-complete-v4 import main
 
-result = __init__()
+result = main()
+```
+
+#### run
+
+Exécute l'application
+
+**Exemple d'utilisation :**
+
+```python
+from demo-app-ia-complete-v4 import run
+
+result = run()
+```
+
+#### setUp
+
+Configuration avant chaque test
+
+**Exemple d'utilisation :**
+
+```python
+from demo-app-ia-complete-v4 import setUp
+
+result = setUp()
+```
+
+#### tearDown
+
+Nettoyage après chaque test
+
+**Exemple d'utilisation :**
+
+```python
+from demo-app-ia-complete-v4 import tearDown
+
+result = tearDown()
+```
+
+#### test_root_endpoint
+
+Test de l'endpoint racine
+
+**Exemple d'utilisation :**
+
+```python
+from demo-app-ia-complete-v4 import test_root_endpoint
+
+result = test_root_endpoint()
 ```
 
 

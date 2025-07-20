@@ -1,0 +1,45 @@
+[DRY-RUN] Projet qui serait généré:
+{
+  "project_name": "web",
+  "description": "Application web IA compl\u00e8te avec API REST FastAPI, authentification JWT, base de donn\u00e9es PostgreSQL, tests unitaires et d'int\u00e9gration, documentation Swagger, d\u00e9ploiement Docker, CI/CD GitHub Actions, monitoring Prometheus, et interface web React",
+  "project_type": "api",
+  "modules": [
+    "core",
+    "api",
+    "ui",
+    "tests",
+    "docs",
+    "auth",
+    "database",
+    "models"
+  ],
+  "structure": [
+    "src/",
+    "tests/",
+    "docs/",
+    "requirements.txt",
+    "README.md",
+    "Dockerfile",
+    "docker-compose.yml",
+    ".github/workflows/"
+  ],
+  "dependencies": [
+    "numpy",
+    "pandas",
+    "fastapi",
+    "uvicorn",
+    "pydantic",
+    "sqlalchemy",
+    "python-jose[cryptography]",
+    "passlib[bcrypt]",
+    "httpx"
+  ],
+  "prompts": [
+    "prompts/main.yaml"
+  ],
+  "booster_ia": true,
+  "docker": true,
+  "ci_cd": true,
+  "tests": true,
+  "documentation": true
+}
