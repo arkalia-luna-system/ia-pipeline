@@ -24,8 +24,8 @@ class AutoDocumenter:
     project_info: Dict[str, Any]
     api_docs: Dict[str, Any]
 
-    def __init__(self, lang: str = 'fr'):
-        self.project_path: Path = Path('.')
+    def __init__(self, project_path: str = None, lang: str = 'fr'):
+        self.project_path: Path = Path(project_path) if project_path else Path('.')
         self.project_info = {}
         self.api_docs = {}
         self.readme_content = ""
@@ -38,6 +38,12 @@ class AutoDocumenter:
             return getattr(mod, "translations", {})
         except Exception:
             return {}
+
+    def run(self) -> Dict[str, Any]:
+        """Méthode run() pour l'orchestrateur - exécute la documentation"""
+        if not self.project_path:
+            raise ValueError("project_path doit être défini")
+        return self.document_project(str(self.project_path))
 
     def document_project(self, project_path: str) -> Dict[str, Any]:
         """Documentation complète d'un projet"""
@@ -735,8 +741,8 @@ def main():
         logger.info(f"❌ Le chemin {args.project_path} n'existe pas")
         return
 
-    documenter = AutoDocumenter(args.lang)
-    result = documenter.document_project(args.project_path)
+    documenter = AutoDocumenter(args.project_path, args.lang)
+    result = documenter.run()
 
     logger.info("✅ Documentation générée avec succès !")
     logger.info("\n📄 Fichiers créés :")

@@ -28,10 +28,16 @@ Génération automatique de tests unitaires et d'intégration
 class AutoTester:
     """Générateur de tests pour Athalia"""
 
-    def __init__(self):
-        self.project_path: Path = Path('.')
+    def __init__(self, project_path: str = None):
+        self.project_path: Path = Path(project_path) if project_path else Path('.')
         self.test_results = {}
         self.generated_tests = []
+
+    def run(self) -> Dict[str, Any]:
+        """Méthode run() pour l'orchestrateur - exécute les tests"""
+        if not self.project_path:
+            raise ValueError("project_path doit être défini")
+        return self.generate_tests(str(self.project_path))
 
     def generate_tests(self, project_path: str) -> Dict[str, Any]:
         """Génération complète de tests pour un projet"""
@@ -143,19 +149,19 @@ class AutoTester:
 """
 
             # Tests pour les méthodes
-            for method_info in class_info["methods"]:
-                if method_info["name"] not in ["__init__", "__str__", "__repr__"]:
-                    test_content += """
-    def test_{class_info['name']}_{method_info['name']}(self):
-        \"\"\"Test de la méthode {method_info['name']}\"\"\"
+            for method_name in class_info["methods"]:
+                if method_name not in ["__init__", "__str__", "__repr__"]:
+                    test_content += f"""
+    def test_{class_info['name']}_{method_name}(self):
+        \"\"\"Test de la méthode {method_name}\"\"\"
         try:
             instance = {class_info['name']}()
             # TODO: Ajouter des paramètres de test appropriés
-            result = instance.{method_info['name']}()
+            result = instance.{method_name}()
             # TODO: Ajouter des assertions appropriées
             self.assertIsNotNone(result)
         except Exception as e:
-            self.skipTest(f"Impossible de tester {method_info['name']}: {{e}}")
+            self.skipTest(f"Impossible de tester {method_name}: {{e}}")
 """
 
         # Tests pour les fonctions
