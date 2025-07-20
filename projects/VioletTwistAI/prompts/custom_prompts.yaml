@@ -1,9 +1,0 @@
-- name: Analyse sécurité
-  file: prompts/security_audit.md
-  patterns:
-    - 'security'
-    - 'vuln'
-    - 'injection'
-    - 'xss'
-    - 'csrf'
-  weight: 2 
