@@ -5395,45 +5395,6 @@ Générer un rapport d'orchestration
 
 ---
 
-### benchmark_qwen_mistral
-
-Script de benchmark Qwen/Mistral/Mock pour Athalia/Arkalia
-
-Usage :
-    python benchmark_qwen_mistral.py
-
-- Compare Qwen, Mistral, Mock sur 10 prompts types
-- Mesure temps de réponse, score qualité (heuristique), mémoire
-- Résultats exportés en CSV et Markdown
-
-#### Fonctions
-
-##### call_qwen
-
-**Paramètres :**
-
-- `prompt`
-
-##### call_mistral
-
-**Paramètres :**
-
-- `prompt`
-
-##### call_mock
-
-**Paramètres :**
-
-- `prompt`
-
-##### quality_score
-
-**Paramètres :**
-
-- `output`
-
----
-
 ### advanced_analytics
 
 #### Classes
