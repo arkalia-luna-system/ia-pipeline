@@ -12,30 +12,30 @@
 </head>
 <body>
     <h1>📊 Dashboard Analytics-athalia-dev-setup</h1>
-    <p>Généré le 2025-07-26 16:55:35</p>
+    <p>Généré le 2025-07-26 21:39:33</p>
 
     <div class="summary">
         <h2>📈 Résumé</h2>
         <p><strong>Complexité moyenne :</strong> 23.98</p>
-        <p><strong>Fichiers analysés :</strong> 4990</p>
-        <p><strong>Lignes de code :</strong> 1989865</p>
-        <p><strong>Fonctions :</strong> 148787</p>
-        <p><strong>Classes :</strong> 148787</p>
+        <p><strong>Fichiers analysés :</strong> 4993</p>
+        <p><strong>Lignes de code :</strong> 1990399</p>
+        <p><strong>Fonctions :</strong> 148828</p>
+        <p><strong>Classes :</strong> 148828</p>
         <p><strong>Fichiers de test :</strong> 1405</p>
     </div>
 
     <div class="metric">
         <h3>🎯 Métriques de qualité</h3>
-        <p>Docstrings : 148787</p>
-        <p>Commentaires : 113075</p>
-        <p>Lignes vides : 308606</p>
+        <p>Docstrings : 148828</p>
+        <p>Commentaires : 113107</p>
+        <p>Lignes vides : 308681</p>
         <p>Ratio commentaires : 5.7%</p>
     </div>
 
     <div class="metric">
         <h3>⚡ Performance</h3>
-        <p>Dépendances : 71</p>
-        <p>Fichiers Python : 4991</p>
+        <p>Dépendances : 34</p>
+        <p>Fichiers Python : 5001</p>
     </div>
 
     <div class="metric">
@@ -43,12 +43,14 @@
         <pre>{
   "complexity": {
     "complexity": {
+      "athalia_unified.py": 17,
       "tests/audit.py": 65,
       "tests/test_cleanup.py": 5,
       "tests/test_i18n.py": 6,
       "tests/test_logging_system.py": 7,
       "tests/test_config_manager.py": 14,
       "tests/optimize_performance.py": 30,
+      "tests/test_ci_ultra_fast.py": 11,
       "tests/test_all_orchestrators.py": 15,
       "tests/audit_complet_dossiers.py": 99,
       "tests/test_audit_basic.py": 15,
@@ -59,9 +61,9 @@
       "tests/test_generation.py": 11,
       "tests/test_audit_intelligent.py": 14,
       "tests/test_templates_documentation.py": 33,
+      "tests/test_ci_robust.py": 33,
       "tests/test_corrections_validation.py": 8,
       "tests/test_intelligent_simple.py": 23,
-      "tests/test_auto_cleaner.py": 16,
       "tests/test_booster_ia_VioletTwistAI.py": 22,
       "tests/test_intelligent_system_simple.py": 9,
       "tests/test_intelligent_system.py": 12,
@@ -78,19 +80,18 @@
       "tests/test_auto_correction_avancee.py": 6,
       "tests/test_auto_documenter_unit.py": 2,
       "tests/test_auto_tester_unit.py": 2,
-      "tests/test_autocomplete_server.py": 1,
-      "tests/test_benchmark_critical.py": 3,
+      "tests/test_autocomplete_server.py": 5,
+      "tests/test_benchmark_critical.py": 6,
       "tests/test_code_genetics.py": 3,
       "tests/test_orchestrator_robotics.py": 7,
       "tests/test_continue_models.py": 4,
       "tests/test_correction.py": 10,
-      "tests/test_coverage_threshold.py": 19,
+      "tests/test_coverage_threshold.py": 23,
       "tests/test_encoding_utf8.py": 37,
       "tests/test_hardcoded_paths.py": 32,
       "tests/test_complet_athalia_imports.py": 29,
       "tests/test_imports_all.py": 33,
       "tests/test_ai_robust_standardized.py": 15,
-      "tests/test_integration_autogen.py": 4,
       "tests/test_integration_orchestrator.py": 21,
       "tests/test_performance_optimized.py": 10,
       "tests/test_lint_flake8.py": 2,
@@ -104,12 +105,12 @@
       "tests/test_project_importer.py": 2,
       "tests/test_ready_check.py": 11,
       "tests/test_security_patterns.py": 62,
-      "tests/test_requirements_consistency.py": 44,
+      "tests/test_requirements_consistency.py": 50,
       "tests/correction_chai\u0302nes.py": 13,
-      "tests/bin/test_ath_audit.py": 1,
+      "tests/bin/test_ath_audit.py": 5,
       "tests/bin/test_ath_build.py": 3,
       "tests/bin/test_ath_coverage.py": 5,
-      "tests/bin/test_ath_lint.py": 1,
+      "tests/bin/test_ath_lint.py": 5,
       "tests/bin/test_ath_test.py": 1,
       "tests/integration/test_cli_robustesse.py": 7,
       "tests/integration/test_end_to_end.py": 9,
@@ -177,6 +178,7 @@
       "archive/archivage_20250720_151828/optimize_performance.py": 30,
       "archive/archivage_20250720_152055/correction_chai\u0302nes.py": 13,
       "tools/analysis/audit_complet_dossiers.py": 99,
+      "tools/analysis/verification_integration_simple.py": 13,
       "tools/cleanup/cleanup_documentation.py": 13,
       "tools/cleanup/cleanup_old_data.py": 21,
       "tools/maintenance/split_api_docs.py": 20,
@@ -4998,6 +5000,7 @@
       "athalia_core/agents/__init__.py": 1,
       "athalia_core/agents/audit_agent.py": 2,
       "athalia_core/agents/context_prompt.py": 31,
+      "athalia_core/agents/ath_context_prompt.py": 2,
       "athalia_core/agents/unified_agent.py": 5,
       "athalia_core/classification/__init__.py": 1,
       "athalia_core/classification/project_classifier.py": 20,
@@ -5034,37 +5037,41 @@
       "scripts/validation_objective.py": 41,
       "scripts/monitor_processes.py": 20
     },
-    "average": 23.97995991983968,
-    "total_files": 4990
+    "average": 23.981774484277988,
+    "total_files": 4993
   },
   "coverage": {
-    "total_lines": 1989865,
-    "docstrings": 148787,
-    "comments": 113075,
-    "empty_lines": 308606,
-    "files": 6395
+    "total_lines": 1990399,
+    "docstrings": 148828,
+    "comments": 113107,
+    "empty_lines": 308681,
+    "files": 6398
   },
   "performance": {
     "file_sizes": {
+      "athalia_unified.py": 7935,
       "tests/audit.py": 16342,
       "tests/test_cleanup.py": 1497,
       "tests/test_i18n.py": 1542,
       "tests/test_logging_system.py": 7531,
       "tests/test_config_manager.py": 7590,
       "tests/optimize_performance.py": 10065,
+      "tests/test_ci_ultra_fast.py": 4362,
       "tests/test_all_orchestrators.py": 5966,
       "tests/audit_complet_dossiers.py": 23954,
       "tests/test_audit_basic.py": 6203,
       "tests/test_phase2_integration.py": 11849,
       "tests/test_final_validation.py": 7025,
       "tests/test_ci_basic.py": 8886,
+      "tests/._test_autocomplete_server.py": 4096,
       "tests/test_workspace_organization.py": 6922,
       "tests/test_generation.py": 5908,
       "tests/test_audit_intelligent.py": 7422,
       "tests/test_templates_documentation.py": 13988,
+      "tests/test_ci_robust.py": 9929,
       "tests/test_corrections_validation.py": 4347,
       "tests/test_intelligent_simple.py": 6635,
-      "tests/test_auto_cleaner.py": 7781,
+      "tests/._test_benchmark_critical.py": 4096,
       "tests/test_booster_ia_VioletTwistAI.py": 5676,
       "tests/test_intelligent_system_simple.py": 2423,
       "tests/test_intelligent_system.py": 7950,
@@ -5078,22 +5085,21 @@
       "tests/test_complet_athalia_syntax.py": 5411,
       "tests/test_athalia_simple.py": 1257,
       "tests/test_auto_cicd_unit.py": 5711,
-      "tests/test_auto_correction_avancee.py": 2516,
+      "tests/test_auto_correction_avancee.py": 2505,
       "tests/test_auto_documenter_unit.py": 3122,
       "tests/test_auto_tester_unit.py": 4040,
-      "tests/test_autocomplete_server.py": 1345,
-      "tests/test_benchmark_critical.py": 1930,
+      "tests/test_autocomplete_server.py": 1987,
+      "tests/test_benchmark_critical.py": 2258,
       "tests/test_code_genetics.py": 1599,
       "tests/test_orchestrator_robotics.py": 6214,
       "tests/test_continue_models.py": 757,
       "tests/test_correction.py": 4032,
-      "tests/test_coverage_threshold.py": 6273,
+      "tests/test_coverage_threshold.py": 7716,
       "tests/test_encoding_utf8.py": 6213,
       "tests/test_hardcoded_paths.py": 4831,
       "tests/test_complet_athalia_imports.py": 6641,
       "tests/test_imports_all.py": 7162,
       "tests/test_ai_robust_standardized.py": 9636,
-      "tests/test_integration_autogen.py": 1477,
       "tests/test_integration_orchestrator.py": 11582,
       "tests/test_performance_optimized.py": 9095,
       "tests/test_lint_flake8.py": 555,
@@ -5107,12 +5113,14 @@
       "tests/test_project_importer.py": 1615,
       "tests/test_ready_check.py": 1389,
       "tests/test_security_patterns.py": 9847,
-      "tests/test_requirements_consistency.py": 9176,
+      "tests/test_requirements_consistency.py": 9819,
       "tests/correction_chai\u0302nes.py": 4426,
-      "tests/bin/test_ath_audit.py": 362,
+      "tests/bin/test_ath_audit.py": 863,
       "tests/bin/test_ath_build.py": 1358,
+      "tests/bin/._test_ath_audit.py": 4096,
+      "tests/bin/._test_ath_lint.py": 4096,
       "tests/bin/test_ath_coverage.py": 1329,
-      "tests/bin/test_ath_lint.py": 340,
+      "tests/bin/test_ath_lint.py": 845,
       "tests/bin/test_ath_test.py": 512,
       "tests/integration/test_cli_robustesse.py": 965,
       "tests/integration/test_end_to_end.py": 2689,
@@ -5181,6 +5189,8 @@
       "archive/archivage_20250720_151828/optimize_performance.py": 9917,
       "archive/archivage_20250720_152055/correction_chai\u0302nes.py": 4560,
       "tools/analysis/audit_complet_dossiers.py": 23954,
+      "tools/analysis/verification_integration_simple.py": 2791,
+      "tools/analysis/._verification_integration_simple.py": 4096,
       "tools/cleanup/cleanup_documentation.py": 9725,
       "tools/cleanup/cleanup_old_data.py": 9528,
       "tools/maintenance/split_api_docs.py": 5646,
@@ -10002,7 +10012,9 @@
       "athalia_core/agents/__init__.py": 562,
       "athalia_core/agents/audit_agent.py": 265,
       "athalia_core/agents/context_prompt.py": 7685,
+      "athalia_core/agents/ath_context_prompt.py": 96,
       "athalia_core/agents/unified_agent.py": 2208,
+      "athalia_core/agents/._ath_context_prompt.py": 4096,
       "athalia_core/classification/__init__.py": 442,
       "athalia_core/classification/project_classifier.py": 4559,
       "athalia_core/classification/project_types.py": 4422,
@@ -10018,7 +10030,8 @@
       "athalia_core/robotics/__init__.py": 867,
       "athalia_core/robotics/docker_robotics.py": 12706,
       "athalia_core/robotics/reachy_auditor.py": 10353,
-      "athalia_core/robotics/robotics_ci.py": 16102,
+      "athalia_core/robotics/._robotics_ci.py": 4096,
+      "athalia_core/robotics/robotics_ci.py": 16106,
       "athalia_core/robotics/ros2_validator.py": 9517,
       "athalia_core/robotics/rust_analyzer.py": 12762,
       "athalia_core/templates/__init__.py": 214,
@@ -10038,17 +10051,17 @@
       "scripts/validation_objective.py": 21352,
       "scripts/monitor_processes.py": 5735
     },
-    "dependencies": 71
+    "dependencies": 34
   },
   "quality": {
-    "total_lines": 1989865,
-    "docstrings": 52634,
-    "comments": 113075,
-    "empty_lines": 308606
+    "total_lines": 1990399,
+    "docstrings": 52656,
+    "comments": 113107,
+    "empty_lines": 308681
   },
   "evolution": {
-    "last_modified": 1753541375.69,
-    "total_files": 4991
+    "last_modified": 1753558579.3,
+    "total_files": 5001
   }
 }</pre>
     </div>
