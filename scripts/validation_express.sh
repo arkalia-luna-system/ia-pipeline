@@ -22,7 +22,7 @@ increment_test() {
 
 # Test 1: Démarrage (5s max)
 echo "📝 Test 1: Démarrage..."
-timeout 5s python athalia_unified.py --help > /dev/null 2>&1
+timeout 5s python scripts/athalia_unified.py --help > /dev/null 2>&1
 increment_test $? "Démarrage OK"
 
 # Test 2: Imports (5s max)
@@ -49,7 +49,7 @@ mkdir -p "$PROJECT_TEST"
 echo 'def test():
     return "express test"' > "$PROJECT_TEST/main.py"
 
-timeout 15s python athalia_unified.py "$PROJECT_TEST" --action complete > /dev/null 2>&1
+timeout 15s python scripts/athalia_unified.py "$PROJECT_TEST" --action complete > /dev/null 2>&1
 if [ $? -eq 0 ]; then
     # Vérifie qu'il y a des fichiers Python
     PY_FILES=$(find "$PROJECT_TEST" -name "*.py" | wc -l)
@@ -72,7 +72,7 @@ echo 'def test():
     x = 1
     return x + y  # y nexiste pas' > "$TEST_FILE"
 
-timeout 5s python athalia_unified.py "$(dirname "$TEST_FILE")" --action fix --auto-fix > /dev/null 2>&1
+timeout 5s python scripts/athalia_unified.py "$(dirname "$TEST_FILE")" --action fix --auto-fix > /dev/null 2>&1
 if [ $? -eq 0 ]; then
     # Vérifie si le fichier a été modifié
     if [ -s "$TEST_FILE" ]; then

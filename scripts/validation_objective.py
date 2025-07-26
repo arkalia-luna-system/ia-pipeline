@@ -46,7 +46,7 @@ if __name__ == "__main__":
     hello()
 """)
         
-        cmd = f"python athalia_unified.py {projet_test} --action complete --auto-fix"
+        cmd = f"python scripts/athalia_unified.py {projet_test} --action complete --auto-fix"
         
         try:
             result = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=60)
@@ -132,7 +132,7 @@ def fonction_syntaxe():
         start = time.time()
         
         # Utilise Athalia pour corriger
-        cmd = f"python athalia_unified.py {os.path.dirname(fichier_test)} --action fix --auto-fix"
+        cmd = f"python scripts/athalia_unified.py {os.path.dirname(fichier_test)} --action fix --auto-fix"
         
         try:
             result = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=30)
@@ -183,7 +183,7 @@ def fonction_syntaxe():
         tests_robustesse = []
         
         # Test avec fichier inexistant
-        cmd = "python athalia_unified.py --audit /fichier/inexistant/qui/n/existe/pas"
+        cmd = "python scripts/athalia_unified.py --audit /fichier/inexistant/qui/n/existe/pas"
         result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
         tests_robustesse.append({
             'test': 'fichier_inexistant',
@@ -196,7 +196,7 @@ def fonction_syntaxe():
         with open(fichier_vide, 'w') as f:
             f.write("")
         
-        cmd = f"python athalia_unified.py --audit {fichier_vide}"
+        cmd = f"python scripts/athalia_unified.py --audit {fichier_vide}"
         result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
         tests_robustesse.append({
             'test': 'fichier_vide',
@@ -209,7 +209,7 @@ def fonction_syntaxe():
         with open(fichier_syntaxe_invalide, 'w') as f:
             f.write("def func(:\n    invalid syntax here\n    )")
         
-        cmd = f"python athalia_unified.py --audit {fichier_syntaxe_invalide}"
+        cmd = f"python scripts/athalia_unified.py --audit {fichier_syntaxe_invalide}"
         result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
         tests_robustesse.append({
             'test': 'syntaxe_invalide',
@@ -245,7 +245,7 @@ if __name__ == "__main__":
     benchmark()
 """)
         
-        cmd = f"python athalia_unified.py {projet_benchmark} --action complete"
+        cmd = f"python scripts/athalia_unified.py {projet_benchmark} --action complete"
         result = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=60)
         temps_athalia = time.time() - start
         
@@ -286,7 +286,7 @@ if __name__ == "__main__":
     qualite_test()
 """)
         
-        cmd = f"python athalia_unified.py {projet_qualite} --action complete"
+        cmd = f"python scripts/athalia_unified.py {projet_qualite} --action complete"
         
         result = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=60)
         
