@@ -89,8 +89,9 @@ bcrypt>=4.3.0
 cryptography>=45.0.0
 
 # --- POUR LES BENCHMARKS ET EXEMPLES ---
-cProfile
-pstats
+# cProfile et pstats sont des modules intégrés à Python, pas des packages pip
+# import cProfile
+# import pstats
 
 # --- DÉPENDANCES OPTIONNELLES (à activer selon besoins) ---
 # huggingface-hub
@@ -138,6 +139,5 @@ importlib-metadata
 importlib-resources
 
 # --- FIN --- 
-flake8
-pytest-cov
-pkg_resources 
+# flake8 et pytest-cov sont déjà listés plus haut
+# pkg_resources est intégré à setuptools 

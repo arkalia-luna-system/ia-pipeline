@@ -1,133 +1,80 @@
-# 🗂️ Organisation du Workspace Athalia/Arkalia
+# 📁 Organisation du Workspace Athalia
 
-*Dernière mise à jour : 17/07/2025*
+## 🎯 Structure Professionnelle
 
-Ce document décrit la structure officielle et à jour du workspace Athalia/Arkalia.
+### **Racine du Projet** (`/`)
+Fichiers essentiels uniquement :
+- `README.md` - Documentation principale
+- `LICENSE` - Licence du projet
+- `CHANGELOG.md` - Historique des changements
+- `requirements.txt` - Dépendances Python
+- `pytest.ini` - Configuration des tests
+- `activate_venv.sh` - Activation de l'environnement virtuel
+- `athalia_unified.py` - Point d'entrée principal
+- `athalia.f(f` - Configuration du système
+- `.gitignore`, `.coverage`, `.pytestignore` - Fichiers de configuration
 
-## Vue d'ensemble
+### **Dossiers Organisés**
 
-Le workspace Athalia a été réorganisé pour une meilleure structure modulaire et une maintenance facilitée.
+#### 📂 `scripts/`
+Scripts de démonstration et validation :
+- `demo_orchestrator_integration.py` - Démonstration de l'orchestrateur
+- `validation_continue.py` - Validation continue du système
+- `validation_dashboard_simple.py` - Validation du dashboard
+- `validation_objective.py` - Validation des objectifs
+- `test_logging_activation.py` - Tests de logging
 
-## Structure des dossiers
+#### 🛠️ `tools/`
+Outils utilitaires :
+- `tools/analysis/` - Outils d'analyse
+  - `audit_complet_dossiers.py` - Audit des dossiers
+- `tools/cleanup/` - Outils de nettoyage
+  - `cleanup_documentation.py` - Nettoyage de la documentation
+  - `cleanup_old_data.py` - Nettoyage des anciennes données
 
-### 📁 Dossiers principaux
-- **`athalia_core/`** - Modules principaux du système
-- **`modules/`** - Modules additionnels et extensions
-- **`plugins/`** - Plugins et extensions tierces
-- **`templates/`** - Templates pour la génération de projets
-- **`prompts/`** - Prompts IA et configurations
-- **`agents/`** - Agents IA spécialisés
+#### 🔧 `bin/`
+Scripts système et exécutables :
+- `ark-process-check.sh` - Vérification des processus
+- Autres scripts système
 
-### 📁 Dossiers de données et configuration
-- **`data/`** - Bases de données et fichiers de données
-  - `profils_utilisateur.db` - Profils utilisateurs
-  - `athalia_analytics.db` - Données d'analytics
-  - `athalia_report_*.json` - Rapports générés
-- **`config/`** - Fichiers de configuration
-  - `athalia_config.yaml` - Configuration principale
-  - `pytest.ini` - Configuration des tests
-  - `pyproject.toml` - Configuration du projet
-  - `requirements.txt` - Dépendances Python
-  - `docker-compose.yml` - Configuration Docker
-  - `paths.yaml` - Configuration des chemins
-  - `Taskfile.yaml` - Configuration des tâches
+#### 📊 `data/`
+Données et rapports :
+- `data/reports/` - Rapports de validation
+  - `rapport_validation_objective_*.md` - Rapports de validation
 
-### 📁 Dossiers de projets et tests
-- **`projects/`** - Projets générés par Athalia
-- **`tests/`** - Tests automatisés
-- **`setup/`** - Scripts de configuration et maintenance
-  - `cleanup_workspace.py` - Nettoyage automatique
-  - `run_tests.sh` - Exécution des tests
+#### 📈 `dashboard/`
+Dashboards et visualisations :
+- `analytics_dashboard.html` - Dashboard d'analytics
+- `analytics_dashboard_optimized.html` - Dashboard optimisé
+- `dashboard_interactif_avance.html` - Dashboard interactif
 
-### 📁 Dossiers de documentation et interface
-- **`docs/`** - Documentation complète
-- **`dashboard/`** - Fichiers HTML du dashboard
-- **`logs/`** - Fichiers de logs
+#### 📚 `docs/`
+Documentation complète :
+- `audit_complet_dossiers.md` - Audit des dossiers
+- `dashboard.md` - Documentation du dashboard
+- Autres fichiers de documentation
 
-### 📁 Dossiers de build et cache
-- **`blueprints_history/`** - Historique des blueprints
-- **`.github/`** - Configuration GitHub Actions
+## 🎯 Avantages de cette Organisation
 
-## Scripts principaux
+1. **Clarté** : La racine ne contient que les fichiers essentiels
+2. **Modularité** : Chaque type de fichier a son emplacement dédié
+3. **Maintenabilité** : Structure logique et prévisible
+4. **Professionnalisme** : Organisation standard de l'industrie
+5. **Évolutivité** : Facile d'ajouter de nouveaux éléments
 
-### 🚀 Scripts d'exécution
-- **`athalia_unified.py`** - Script principal unifié
-- **`athalia_unified_enhanced.py`** - Version améliorée
-- **`athalia_quick_start.py`** - Démarrage rapide interactif
+## 🔄 Migration Effectuée
 
-### 📄 Fichiers de documentation
-- **`README.md`** - Documentation principale
-- **`INVENTAIRE_COMPLET.md`** - Inventaire des fonctionnalités
-- **`RAPPORT_FINAL.md`** - Rapport final du projet
-- **`FINAL_SUMMARY.md`** - Résumé final
-- **`GENESIS.md`** - Historique de développement
-- **`CLEANUP_REPORT.md`** - Rapport de nettoyage
-- **`TROUBLESHOOTING.md`** - Guide de dépannage
-- **`INSTALL.md`** - Guide d'installation
+✅ Scripts de démonstration → `scripts/`
+✅ Outils de nettoyage → `tools/cleanup/`
+✅ Scripts système → `bin/`
+✅ Rapports de validation → `data/reports/`
+✅ Dashboards → `dashboard/`
+✅ Documentation → `docs/`
 
-## Maintenance automatique
+## 📋 Maintenance
 
-### 🧹 Script de nettoyage
-Le script `setup/cleanup_workspace.py` maintient automatiquement l'organisation :
-
-```bash
-python setup/cleanup_workspace.py
-```
-
-**Fonctionnalités :**
-- Suppression des fichiers parasites macOS (._*)
-- Nettoyage des dossiers de cache
-- Organisation automatique des fichiers
-- Suppression des fichiers vides
-
-### 📋 Configuration des chemins
-Le fichier `config/paths.yaml` centralise tous les chemins du projet pour une maintenance facilitée.
-
-## Bonnes pratiques
-
-### ✅ Organisation des nouveaux fichiers
-1. **Scripts Python** → À la racine (scripts principaux) ou dans `setup/` (utilitaires)
-2. **Fichiers de configuration** → `config/`
-3. **Données et bases** → `data/`
-4. **Logs** → `logs/`
-5. **Documentation** → `docs/`
-6. **Tests** → `tests/`
-7. **Projets générés** → `projects/`
-
-### 🚫 Éviter
-- Fichiers parasites macOS
-- Fichiers de cache dans la racine
-- Fichiers vides
-- Organisation incohérente
-
-## Commandes utiles
-
-```bash
-# Nettoyage automatique
-python setup/cleanup_workspace.py
-
-# Exécution des tests
-bash setup/run_tests.sh
-
-# Démarrage rapide
-python athalia_quick_start.py
-
-# Script principal
-python athalia_unified_enhanced.py
-```
-
-## Migration
-
-Si vous avez des fichiers qui ne respectent pas cette organisation, le script de nettoyage les déplacera automatiquement vers les bons dossiers.
-
-## Support
-
-Pour toute question sur l'organisation, consultez :
-- `docs/USER_GUIDE.md` - Guide utilisateur complet
-- `TROUBLESHOOTING.md` - Solutions aux problèmes courants 
-
-## 🧹 Nettoyage final 17/07/2025
-- Suppression des fichiers obsolètes (athalia_report_20250717_071804.json, athalia_quick_start.py, AppleDouble, logs vides, templates inutiles)
-- Script de nettoyage automatique corrigé et relancé
-- Structure des dossiers validée (voir ci-dessus)
-- Tous les tests passent (125/125) 
+Pour maintenir cette organisation :
+1. Placer les nouveaux scripts dans le dossier approprié
+2. Utiliser les dossiers existants plutôt que de créer de nouveaux
+3. Documenter les nouveaux éléments
+4. Nettoyer régulièrement les fichiers temporaires 

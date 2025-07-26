@@ -108,7 +108,7 @@ security:
 analytics:
   enabled: false  # Désactivé par défaut
   metrics_retention: 7  # Réduit la rétention
-  auto_export: false
+  auto_export: false 
 
 # Performance et ressources
 performance:

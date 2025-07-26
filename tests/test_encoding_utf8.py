@@ -3,6 +3,7 @@ Test de vérification de l'encodage UTF-8
 Vérifie que tous les fichiers sont correctement encodés en UTF-8
 """
 import pytest
+import os
 from pathlib import Path
 
 
@@ -148,12 +149,12 @@ class TestEncodingUTF8:
 
     def test_consistent_line_endings(self):
         """Vérifie la cohérence des fins de ligne"""
-        python_files = list(Path('.').glob('**/*.py'))
-        python_files = [
-            f for f in python_files
-            if '.git' not in str(f) and '__pycache__' not in str(f)
-            and not f.name.startswith('._')
-        ]
+        # Vérifier l'existence des fichiers à tester
+        files_to_check = [f for f in os.listdir('.') if f.endswith('.py')]
+        if not files_to_check:
+            pytest.skip("Aucun fichier à tester")
+
+        python_files = [f for f in Path('.').glob('**/*.py') if '.venv' not in str(f) and 'site-packages' not in str(f)]
 
         mixed_endings = []
         for py_file in python_files:

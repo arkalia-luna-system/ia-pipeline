@@ -1,323 +1,201 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from typing import Dict, Any, Optional
-import logging
-from datetime import datetime
-
-logger = logging.getLogger(__name__)
+"""
+Templates de base pour Athalia
+"""
+from typing import Dict, Any
 
 def get_base_templates() -> Dict[str, str]:
-    """Retourne les templates de base pour tous les projets."""
-
+    """Retourne les templates de base disponibles"""
     return {
-        "api/main.py": '''"""
-API principale du projet.
+        "api/main.py": '''#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+{{ project_name }} - API {{ api_framework | title }}
+Auteur: {{ author }}
+Version: {{ version }}
 """
 
 import logging
-import json
 from flask import Flask, request, jsonify
 from typing import Dict, Any
 
-# Configuration du logging
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
-@app.route('/api/health', methods=['GET'])
+@app.route('/health', methods=['GET'])
 def health_check():
-    """Endpoint de santé de l'API."""
-    return jsonify({
-        'status': 'ok',
-        'service': '{{ project_name }}',
-        'version': '1.0.0'
-    })
+    """Point de terminaison de santé"""
+    return jsonify({"status": "healthy", "service": "{{ project_name }}"})
 
-@app.route('/api/process', methods=['POST'])
-def process_data():
-    """Endpoint principal de traitement."""
-    try:
-        data = request.get_json()
-        if not data:
-            return jsonify({'error': 'Données manquantes'}), 400
+@app.route('/api/data', methods=['GET'])
+def get_data():
+    """Récupérer des données"""
+    return jsonify({"data": []})
 
-        # Traitement des données
-        result = process_request(data)
-
-        return jsonify({
-            'status': 'success',
-            'result': result,
-            'timestamp': '{{ timestamp }}'
-        })
-
-    except Exception as e:
-        logger.error(f"Erreur traitement: {e}")
-        return jsonify({'error': 'Erreur interne'}), 500
-
-def process_request(data: Dict[str, Any]) -> Dict[str, Any]:
-    """Traite la requête et retourne le résultat."""
-    # Logique de traitement personnalisable
-    return {
-        'processed': True,
-        'input_data': data,
-        'message': 'Traitement réussi'
-    }
-
-@app.errorhandler(404)
-def not_found(error):
-    """Gestionnaire d'erreur 404."""
-    return jsonify({'error': 'Endpoint non trouvé'}), 404
-
-@app.errorhandler(500)
-def internal_error(error):
-    """Gestionnaire d'erreur 500."""
-    return jsonify({'error': 'Erreur interne du serveur'}), 500
+@app.route('/api/data', methods=['POST'])
+def create_data():
+    """Créer des données"""
+    data = request.get_json()
+    return jsonify({"message": "Données créées", "data": data}), 201
 
 if __name__ == '__main__':
-    logger.info("Démarrage de l'API {{ project_name }}")
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port={{ port | default(8000) }})
 ''',
 
-        "tts/tts.py": '''"""
-Module de synthèse vocale.
+        "memory/memory.py": '''#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
-
-import logging
-from typing import Dict, Any, Optional
-
-logger = logging.getLogger(__name__)
-
-class TTSManager:
-    """Gestionnaire de synthèse vocale."""
-
-    def __init__(self):
-        self.available_voices = ['fr', 'en', 'es']
-        self.default_voice = 'fr'
-        self.volume = 0.8
-
-    def synthesize_speech(self, text: str, voice: Optional[str] = None) -> Dict[str, Any]:
-        """
-        Synthétise du texte en parole.
-
-        Args:
-            text: Texte à synthétiser
-            voice: Voix à utiliser (optionnel)
-
-        Returns:
-            Dict avec les informations de synthèse
-        """
-        try:
-            if not text:
-                raise ValueError("Texte manquant")
-
-            voice = voice or self.default_voice
-            if voice not in self.available_voices:
-                voice = self.default_voice
-
-            # Simulation de synthèse vocale
-            audio_data = self._generate_audio(text, voice)
-
-            return {
-                'status': 'success',
-                'text': text,
-                'voice': voice,
-                'audio_length': len(audio_data),
-                'volume': self.volume
-            }
-
-        except Exception as e:
-            logger.error(f"Erreur synthèse vocale: {e}")
-            return {
-                'status': 'error',
-                'error': str(e)
-            }
-
-    def _generate_audio(self, text: str, voice: str) -> bytes:
-        """Génère les données audio (simulation)."""
-        # Simulation - en production, utiliser une vraie TTS
-        return f"audio_{voice}_{len(text)}".encode()
-
-    def set_volume(self, volume: float):
-        """Ajuste le volume (0.0 à 1.0)."""
-        self.volume = max(0.0, min(1.0, volume))
-        logger.info(f"Volume ajusté à {self.volume}")
-
-    def get_available_voices(self) -> list:
-        """Retourne la liste des voix disponibles."""
-        return self.available_voices.copy()
-
-# Instance globale
-tts_manager = TTSManager()
-
-def main():
-    """Test du module TTS."""
-    test_text = "Bonjour, ceci est un test de synthèse vocale."
-    result = tts_manager.synthesize_speech(test_text, 'fr')
-    logger.info(f"Résultat TTS: {result}")
-
-if __name__ == "__main__":
-    main()
-''',
-
-        "memory/memory.py": '''"""
-Module de gestion mémoire et stockage.
+Gestionnaire de mémoire pour le projet.
 """
 
 import logging
 import json
-from datetime import datetime
 from typing import Dict, Any, Optional
+from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
 class MemoryManager:
-    """Gestionnaire de mémoire et stockage."""
-
-    def __init__(self, storage_file: str = "memory.json"):
-        self.storage_file = storage_file
-        self.memory = {}
-        self.load_memory()
-
-    def set(self, key: str, value: Any, ttl: Optional[int] = None) -> Dict[str, Any]:
-        """
-        Stocke une valeur avec une clé.
-
-        Args:
-            key: Clé de stockage
-            value: Valeur à stocker
-            ttl: Time to live en secondes (optionnel)
-
-        Returns:
-            Dict avec le statut de l'opération
-        """
+    """Gestionnaire de mémoire simple"""
+    
+    def __init__(self, config: Optional[Dict[str, Any]] = None):
+        self.config = config or {}
+        self.max_size = self.config.get('max_size', 1000)
+        self.data = {}
+        
+        logger.info("Memory Manager initialisé")
+    
+    def set(self, key: str, value: Any) -> bool:
+        """Stocke une valeur"""
         try:
-            timestamp = datetime.now().isoformat()
-            self.memory[key] = {
-                'value': value,
-                'timestamp': timestamp,
-                'ttl': ttl
-            }
-
-            self.save_memory()
-            logger.info(f"Valeur stockée: {key}")
-
-            return {
-                'status': 'success',
-                'key': key,
-                'timestamp': timestamp
-            }
-
-        except Exception as e:
-            logger.error(f"Erreur stockage: {e}")
-            return {
-                'status': 'error',
-                'error': str(e)
-            }
-
-    def get(self, key: str) -> Dict[str, Any]:
-        """
-        Récupère une valeur par sa clé.
-
-        Args:
-            key: Clé de récupération
-
-        Returns:
-            Dict avec la valeur ou une erreur
-        """
-        try:
-            if key not in self.memory:
-                return {
-                    'status': 'error',
-                    'error': 'Clé non trouvée'
-                }
-
-            item = self.memory[key]
+            if len(self.data) >= self.max_size:
+                # Supprimer l'entrée la plus ancienne
+                oldest_key = next(iter(self.data))
+                del self.data[oldest_key]
             
-            # Vérifier le TTL
-            if item.get('ttl'):
-                # Logique de vérification TTL simplifiée
-                pass
-
-            return {
-                'status': 'success',
-                'key': key,
-                'value': item['value'],
-                'timestamp': item['timestamp']
-            }
-
+            self.data[key] = value
+            logger.debug(f"Valeur stockée pour la clé: {key}")
+            return True
+            
         except Exception as e:
-            logger.error(f"Erreur récupération: {e}")
-            return {
-                'status': 'error',
-                'error': str(e)
-            }
-
-    def delete(self, key: str) -> Dict[str, Any]:
-        """
-        Supprime une valeur par sa clé.
-
-        Args:
-            key: Clé à supprimer
-
-        Returns:
-            Dict avec le statut de l'opération
-        """
-        try:
-            if key in self.memory:
-                del self.memory[key]
-                self.save_memory()
-                logger.info(f"Valeur supprimée: {key}")
-                return {
-                    'status': 'success',
-                    'key': key
-                }
-            else:
-                return {
-                    'status': 'error',
-                    'error': 'Clé non trouvée'
-                }
-
-        except Exception as e:
-            logger.error(f"Erreur suppression: {e}")
-            return {
-                'status': 'error',
-                'error': str(e)
-            }
-
-    def load_memory(self):
-        """Charge la mémoire depuis le fichier."""
-        try:
-            with open(self.storage_file, 'r') as f:
-                self.memory = json.load(f)
-        except FileNotFoundError:
-            self.memory = {}
-        except Exception as e:
-            logger.error(f"Erreur chargement mémoire: {e}")
-            self.memory = {}
-
-    def save_memory(self):
-        """Sauvegarde la mémoire dans le fichier."""
-        try:
-            with open(self.storage_file, 'w') as f:
-                json.dump(self.memory, f, indent=2)
-        except Exception as e:
-            logger.error(f"Erreur sauvegarde mémoire: {e}")
+            logger.error(f"Erreur lors du stockage de {key}: {e}")
+            return False
+    
+    def get(self, key: str, default: Any = None) -> Any:
+        """Récupère une valeur"""
+        return self.data.get(key, default)
+    
+    def delete(self, key: str) -> bool:
+        """Supprime une valeur"""
+        if key in self.data:
+            del self.data[key]
+            return True
+        return False
+    
+    def clear(self) -> bool:
+        """Vide toute la mémoire"""
+        self.data.clear()
+        logger.info("Mémoire vidée")
+        return True
+    
+    def size(self) -> int:
+        """Retourne la taille de la mémoire"""
+        return len(self.data)
 
 # Instance globale
-memory_manager = MemoryManager()
-
-def main():
-    """Test du module mémoire."""
-    # Test de stockage
-    result = memory_manager.set('test_key', 'test_value')
-    logger.info(f"Stockage: {result}")
-    
-    # Test de récupération
-    result = memory_manager.get('test_key')
-    logger.info(f"Récupération: {result}")
+memory = MemoryManager()
 
 if __name__ == "__main__":
-    main()
+    # Test du gestionnaire de mémoire
+    memory.set("test_key", {"message": "Hello World"})
+    value = memory.get("test_key")
+    print(f"Valeur récupérée: {value}")
+    print(f"Taille de la mémoire: {memory.size()}")
+''',
+
+        "tts/tts.py": '''#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Système Text-to-Speech pour le projet.
+"""
+
+import logging
+import os
+from typing import Optional, Dict, Any
+from pathlib import Path
+
+logger = logging.getLogger(__name__)
+
+class TTSManager:
+    """Système de synthèse vocale simple"""
+    
+    def __init__(self, config: Optional[Dict[str, Any]] = None):
+        self.config = config or {}
+        self.language = self.config.get('language', 'fr')
+        self.output_dir = Path(self.config.get('output_dir', 'audio_output'))
+        self.output_dir.mkdir(exist_ok=True)
+        
+        logger.info("TTS Manager initialisé")
+    
+    def text_to_speech(self, text: str, filename: Optional[str] = None) -> Optional[str]:
+        """Convertit du texte en audio (simulation)"""
+        try:
+            if not filename:
+                filename = f"speech_{hash(text) % 10000}.txt"
+            
+            output_path = self.output_dir / filename
+            
+            # Simulation TTS
+            with open(output_path, 'w') as f:
+                f.write(f"# Simulation TTS pour: {text}")
+            
+            logger.info(f"Audio généré: {output_path}")
+            return str(output_path)
+            
+        except Exception as e:
+            logger.error(f"Erreur lors de la génération audio: {e}")
+            return None
+    
+    def get_available_languages(self) -> list:
+        """Retourne les langues disponibles"""
+        return ['fr', 'en', 'es', 'de', 'it', 'pt']
+    
+    def set_language(self, language: str) -> bool:
+        """Change la langue de synthèse"""
+        available_languages = self.get_available_languages()
+        if language in available_languages:
+            self.language = language
+            logger.info(f"Langue changée vers: {language}")
+            return True
+        else:
+            logger.warning(f"Langue non supportée: {language}")
+            return False
+    
+    def get_status(self) -> Dict[str, Any]:
+        """Retourne le statut du système TTS"""
+        return {
+            "engine": "simulation",
+            "language": self.language,
+            "output_dir": str(self.output_dir),
+            "available_languages": self.get_available_languages(),
+            "output_files_count": len(list(self.output_dir.glob("*.txt")))
+        }
+
+# Instance globale
+tts = TTSManager()
+
+if __name__ == "__main__":
+    # Test du système TTS
+    test_text = "Bonjour, ceci est un test de synthèse vocale."
+    result = tts.text_to_speech(test_text, "test_speech.txt")
+    
+    if result:
+        print(f"✅ Audio généré: {result}")
+    else:
+        print("❌ Erreur lors de la génération audio")
+    
+    print(f"Statut: {tts.get_status()}")
 '''
     }

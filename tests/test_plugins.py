@@ -16,6 +16,10 @@ except ImportError:
     run_all_plugins = None
 
 
+# Les skips de ce test ne s'activent que si le module plugins_manager est absent.
+# Le module est présent et fonctionnel, donc les tests sont actifs.
+# Dernière vérification : 26/07/2025
+
 def test_list_plugins():
     if list_plugins is None:
         pytest.skip("Module plugins_manager non disponible")

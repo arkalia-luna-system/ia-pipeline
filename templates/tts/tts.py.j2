@@ -1,0 +1,148 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+{{ project_name }} - Système Text-to-Speech
+"""
+
+import logging
+import os
+from typing import Optional, Dict, Any
+from pathlib import Path
+{% if tts_engine == "gtts" %}
+from gtts import gTTS
+{% elif tts_engine == "pyttsx3" %}
+import pyttsx3
+{% endif %}
+
+logger = logging.getLogger(__name__)
+
+class {{ project_name | title }}TTS:
+    """Système de synthèse vocale pour {{ project_name }}"""
+    
+    def __init__(self, config: Optional[Dict[str, Any]] = None):
+        self.config = config or {}
+        self.language = self.config.get('language', '{{ language | default("fr") }}')
+        self.output_dir = Path(self.config.get('output_dir', 'audio_output'))
+        self.output_dir.mkdir(exist_ok=True)
+        
+        {% if tts_engine == "pyttsx3" %}
+        # Initialisation pyttsx3
+        self.engine = pyttsx3.init()
+        self.engine.setProperty('rate', self.config.get('rate', 150))
+        self.engine.setProperty('volume', self.config.get('volume', 0.9))
+        
+        # Configuration de la voix
+        voices = self.engine.getProperty('voices')
+        if voices:
+            # Sélectionner une voix dans la langue configurée
+            for voice in voices:
+                if self.language in voice.languages[0].lower():
+                    self.engine.setProperty('voice', voice.id)
+                    break
+        {% endif %}
+        
+        logger.info("{{ project_name }} TTS initialisé")
+    
+    def text_to_speech(self, text: str, filename: Optional[str] = None) -> Optional[str]:
+        """Convertit du texte en audio"""
+        try:
+            if not filename:
+                filename = f"speech_{hash(text) % 10000}.mp3"
+            
+            output_path = self.output_dir / filename
+            
+            {% if tts_engine == "gtts" %}
+            # Utilisation de gTTS
+            tts = gTTS(text=text, lang=self.language, slow=False)
+            tts.save(str(output_path))
+            {% elif tts_engine == "pyttsx3" %}
+            # Utilisation de pyttsx3
+            self.engine.save_to_file(text, str(output_path))
+            self.engine.runAndWait()
+            {% else %}
+            # Fallback: simulation
+            logger.warning("Moteur TTS non configuré, simulation activée")
+            with open(output_path, 'w') as f:
+                f.write(f"# Simulation TTS pour: {text}")
+            {% endif %}
+            
+            logger.info(f"Audio généré: {output_path}")
+            return str(output_path)
+            
+        except Exception as e:
+            logger.error(f"Erreur lors de la génération audio: {e}")
+            return None
+    
+    def batch_text_to_speech(self, texts: list, prefix: str = "batch") -> list:
+        """Convertit une liste de textes en audio"""
+        results = []
+        
+        for i, text in enumerate(texts):
+            filename = f"{prefix}_{i+1}.mp3"
+            result = self.text_to_speech(text, filename)
+            results.append({
+                "text": text,
+                "filename": filename,
+                "success": result is not None,
+                "path": result
+            })
+        
+        return results
+    
+    def get_available_languages(self) -> list:
+        """Retourne les langues disponibles"""
+        {% if tts_engine == "gtts" %}
+        # gTTS supporte de nombreuses langues
+        return ['fr', 'en', 'es', 'de', 'it', 'pt', 'ru', 'ja', 'ko', 'zh']
+        {% elif tts_engine == "pyttsx3" %}
+        # pyttsx3 dépend des voix système
+        voices = self.engine.getProperty('voices')
+        languages = set()
+        for voice in voices:
+            if hasattr(voice, 'languages') and voice.languages:
+                lang = voice.languages[0].split('_')[0]
+                languages.add(lang)
+        return list(languages)
+        {% else %}
+        return ['fr', 'en']  # Langues par défaut
+        {% endif %}
+    
+    def set_language(self, language: str) -> bool:
+        """Change la langue de synthèse"""
+        try:
+            available_languages = self.get_available_languages()
+            if language in available_languages:
+                self.language = language
+                logger.info(f"Langue changée vers: {language}")
+                return True
+            else:
+                logger.warning(f"Langue non supportée: {language}")
+                return False
+        except Exception as e:
+            logger.error(f"Erreur lors du changement de langue: {e}")
+            return False
+    
+    def get_status(self) -> Dict[str, Any]:
+        """Retourne le statut du système TTS"""
+        return {
+            "engine": "{{ tts_engine }}",
+            "language": self.language,
+            "output_dir": str(self.output_dir),
+            "available_languages": self.get_available_languages(),
+            "output_files_count": len(list(self.output_dir.glob("*.mp3")))
+        }
+
+# Instance globale
+tts = {{ project_name | title }}TTS()
+
+if __name__ == "__main__":
+    # Test du système TTS
+    test_text = "Bonjour, ceci est un test de synthèse vocale."
+    result = tts.text_to_speech(test_text, "test_speech.mp3")
+    
+    if result:
+        print(f"✅ Audio généré: {result}")
+    else:
+        print("❌ Erreur lors de la génération audio")
+    
+    print(f"Statut: {tts.get_status()}") 

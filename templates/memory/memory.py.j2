@@ -1,0 +1,175 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+{{ project_name }} - Gestionnaire de Mémoire
+"""
+
+import logging
+import json
+from typing import Dict, Any, Optional
+from pathlib import Path
+{% if memory_type == "redis" %}
+import redis
+{% elif memory_type == "sqlite" %}
+import sqlite3
+{% endif %}
+
+logger = logging.getLogger(__name__)
+
+class {{ project_name | title }}Memory:
+    """Gestionnaire de mémoire pour {{ project_name }}"""
+    
+    def __init__(self, config: Optional[Dict[str, Any]] = None):
+        self.config = config or {}
+        self.max_size = self.config.get('max_size', {{ max_size | default(1000) }})
+        self.data = {}
+        
+        {% if memory_type == "redis" %}
+        # Configuration Redis
+        self.redis_client = redis.Redis(
+            host=self.config.get('redis_host', 'localhost'),
+            port=self.config.get('redis_port', 6379),
+            db=self.config.get('redis_db', 0)
+        )
+        {% elif memory_type == "sqlite" %}
+        # Configuration SQLite
+        self.db_path = self.config.get('db_path', '{{ project_name }}_memory.db')
+        self._init_database()
+        {% endif %}
+        
+        logger.info("{{ project_name }} Memory initialisé")
+    
+    {% if memory_type == "sqlite" %}
+    def _init_database(self):
+        """Initialise la base de données SQLite"""
+        with sqlite3.connect(self.db_path) as conn:
+            conn.execute('''
+                CREATE TABLE IF NOT EXISTS memory (
+                    key TEXT PRIMARY KEY,
+                    value TEXT,
+                    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+                )
+            ''')
+    {% endif %}
+    
+    def set(self, key: str, value: Any) -> bool:
+        """Stocke une valeur"""
+        try:
+            {% if memory_type == "redis" %}
+            serialized_value = json.dumps(value)
+            self.redis_client.set(key, serialized_value)
+            {% elif memory_type == "sqlite" %}
+            serialized_value = json.dumps(value)
+            with sqlite3.connect(self.db_path) as conn:
+                conn.execute(
+                    'INSERT OR REPLACE INTO memory (key, value) VALUES (?, ?)',
+                    (key, serialized_value)
+                )
+            {% else %}
+            # Stockage en mémoire
+            if len(self.data) >= self.max_size:
+                # Supprimer l'entrée la plus ancienne
+                oldest_key = next(iter(self.data))
+                del self.data[oldest_key]
+            
+            self.data[key] = value
+            {% endif %}
+            
+            logger.debug(f"Valeur stockée pour la clé: {key}")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Erreur lors du stockage de {key}: {e}")
+            return False
+    
+    def get(self, key: str, default: Any = None) -> Any:
+        """Récupère une valeur"""
+        try:
+            {% if memory_type == "redis" %}
+            value = self.redis_client.get(key)
+            if value is None:
+                return default
+            return json.loads(value)
+            {% elif memory_type == "sqlite" %}
+            with sqlite3.connect(self.db_path) as conn:
+                cursor = conn.execute(
+                    'SELECT value FROM memory WHERE key = ?',
+                    (key,)
+                )
+                result = cursor.fetchone()
+                if result is None:
+                    return default
+                return json.loads(result[0])
+            {% else %}
+            return self.data.get(key, default)
+            {% endif %}
+            
+        except Exception as e:
+            logger.error(f"Erreur lors de la récupération de {key}: {e}")
+            return default
+    
+    def delete(self, key: str) -> bool:
+        """Supprime une valeur"""
+        try:
+            {% if memory_type == "redis" %}
+            return bool(self.redis_client.delete(key))
+            {% elif memory_type == "sqlite" %}
+            with sqlite3.connect(self.db_path) as conn:
+                cursor = conn.execute('DELETE FROM memory WHERE key = ?', (key,))
+                return cursor.rowcount > 0
+            {% else %}
+            if key in self.data:
+                del self.data[key]
+                return True
+            return False
+            {% endif %}
+            
+        except Exception as e:
+            logger.error(f"Erreur lors de la suppression de {key}: {e}")
+            return False
+    
+    def clear(self) -> bool:
+        """Vide toute la mémoire"""
+        try:
+            {% if memory_type == "redis" %}
+            self.redis_client.flushdb()
+            {% elif memory_type == "sqlite" %}
+            with sqlite3.connect(self.db_path) as conn:
+                conn.execute('DELETE FROM memory')
+            {% else %}
+            self.data.clear()
+            {% endif %}
+            
+            logger.info("Mémoire vidée")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Erreur lors du vidage de la mémoire: {e}")
+            return False
+    
+    def size(self) -> int:
+        """Retourne la taille de la mémoire"""
+        try:
+            {% if memory_type == "redis" %}
+            return self.redis_client.dbsize()
+            {% elif memory_type == "sqlite" %}
+            with sqlite3.connect(self.db_path) as conn:
+                cursor = conn.execute('SELECT COUNT(*) FROM memory')
+                return cursor.fetchone()[0]
+            {% else %}
+            return len(self.data)
+            {% endif %}
+            
+        except Exception as e:
+            logger.error(f"Erreur lors du calcul de la taille: {e}")
+            return 0
+
+# Instance globale
+memory = {{ project_name | title }}Memory()
+
+if __name__ == "__main__":
+    # Test du gestionnaire de mémoire
+    memory.set("test_key", {"message": "Hello World"})
+    value = memory.get("test_key")
+    print(f"Valeur récupérée: {value}")
+    print(f"Taille de la mémoire: {memory.size()}") 
