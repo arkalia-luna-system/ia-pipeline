@@ -6,6 +6,48 @@ Cette documentation décrit l'API de athalia-dev-setup.
 
 ## Modules
 
+### athalia_unified
+
+Athalia Unified - Pipeline d'industrialisation IA complet
+Interface unifiée pour tous les modules Athalia
+
+#### Classes
+
+##### AthaliaOrchestrator
+
+**Méthodes :**
+
+- `industrialize_project()`
+- `audit_project()`
+- `scan_projects()`
+
+#### Fonctions
+
+##### main
+
+Fonction principale du CLI unifié
+
+##### industrialize_project
+
+**Paramètres :**
+
+- `project_path`
+- `config`
+
+##### audit_project
+
+**Paramètres :**
+
+- `project_path`
+
+##### scan_projects
+
+**Paramètres :**
+
+- `project_path`
+
+---
+
 ### audit
 
 Module d'audit intelligent pour analyser la qualité des projets générés.
