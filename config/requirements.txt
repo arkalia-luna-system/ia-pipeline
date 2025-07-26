@@ -41,14 +41,9 @@ tox>=3.25.0
 pyautogen
 fastapi
 pydantic
-requests
-pytest
 uvicorn
 langchain
 crewai
 pillow
 # Pour la multimodalité, à installer manuellement si besoin :
 # llava 
-flake8
-pytest-cov
-pkg_resources 
