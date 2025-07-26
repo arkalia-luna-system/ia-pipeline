@@ -88,12 +88,12 @@ jobs:
 
       - name: Run validation express
         run: |
-          chmod +x validation_express.sh
-          ./validation_express.sh
+          chmod +x scripts/validation_express.sh
+          ./scripts/validation_express.sh
 
       - name: Run validation objective
         run: |
-          python validation_objective.py
+          python scripts/validation_objective.py
 
       - name: Upload validation reports
         uses: actions/upload-artifact@v4
