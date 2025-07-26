@@ -18,7 +18,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Any, Optional, Set, Tuple
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass
 import argparse
 
 # Imports des modules Athalia
@@ -49,7 +49,12 @@ from .security import security_audit_project
 from .onboarding import generate_onboarding_md, generate_onboard_cli, generate_onboarding_html_advanced
 from .plugins_manager import run_all_plugins
 from .ready_check import open_patch, check_ready
-from .dashboard import main
+# Import dashboard optionnel
+try:
+    from .dashboard import main as dashboard_main
+    DASHBOARD_AVAILABLE = True
+except ImportError:
+    DASHBOARD_AVAILABLE = False
 from .audit import Audit
 from .config_manager import ConfigManager
 from .correction_optimizer import CorrectionOptimizer
@@ -58,6 +63,13 @@ from .intelligent_memory import IntelligentMemory
 from .logger_advanced import AthaliaLogger
 from .pattern_detector import PatternDetector
 from .performance_analyzer import PerformanceAnalyzer
+
+# Imports des templates (optionnels)
+try:
+    from .templates.base_templates import get_base_templates
+    TEMPLATES_AVAILABLE = True
+except ImportError:
+    TEMPLATES_AVAILABLE = False
 try:
     from .robotics.reachy_auditor import ReachyAuditor
     from .robotics.ros2_validator import ROS2Validator
@@ -86,6 +98,21 @@ try:
     AI_ROBUST_AVAILABLE = True
 except ImportError:
     AI_ROBUST_AVAILABLE = False
+
+# Imports Phase 2 - Nouvelles fonctionnalités
+try:
+    from .cli_standard import CLIStandard, standardize_cli_script
+    from .error_codes import ErrorCode, ErrorMessages, ErrorHandler as ErrorCodeHandler
+    from .error_handling import (
+        AthaliaError, ConfigurationError, FileSystemError, 
+        NetworkError, ValidationError, ProcessingError, SystemError,
+        ErrorHandler, error_handler, validate_input, safe_file_operation
+    )
+    from .backup_system import BackupSystem, get_backup_system
+    PHASE2_AVAILABLE = True
+except ImportError:
+    PHASE2_AVAILABLE = False
+from .backup_system import get_backup_system
 
 logger = logging.getLogger(__name__)
 
@@ -149,6 +176,8 @@ class UnifiedOrchestrator:
             "docs": True,
             "cicd": False,
             "robotics": False,
+            "plugins": True,
+            "templates": True,
             "intelligence": True,
             "predictions": True,
             "optimizations": True,
@@ -266,7 +295,8 @@ class UnifiedOrchestrator:
         
         # PHASE 1: INDUSTRIALISATION
         if any([self.config["audit"], self.config["lint"], self.config["security"], 
-                self.config["analytics"], self.config["docs"], self.config["cicd"]]):
+                self.config["analytics"], self.config["docs"], self.config["cicd"],
+                self.config["plugins"], self.config["templates"]]):
             logger.info("🏭 PHASE 1: Industrialisation")
             industrialization_results = self._run_industrialization(project_path)
             results["industrialization_steps"] = industrialization_results
@@ -360,6 +390,18 @@ class UnifiedOrchestrator:
             logger.info("🤖 Étape 9: Audit robotique")
             robotics_result = self._run_robotics_audit(project_path)
             steps["robotics"] = robotics_result
+        
+        # Étape 10: Exécution des plugins (si activé)
+        if self.config["plugins"]:
+            logger.info("🔌 Étape 10: Exécution des plugins")
+            plugins_result = self._run_plugins(project_path)
+            steps["plugins"] = plugins_result
+        
+        # Étape 11: Génération de templates (si activé)
+        if self.config["templates"] and TEMPLATES_AVAILABLE:
+            logger.info("📋 Étape 11: Génération de templates")
+            templates_result = self._run_templates(project_path)
+            steps["templates"] = templates_result
         
         return steps
     
@@ -590,6 +632,77 @@ class UnifiedOrchestrator:
         
         return insights
     
+    def _run_plugins(self, project_path: Path) -> Dict[str, Any]:
+        """Exécuter les plugins disponibles"""
+        try:
+            logger.info("🔌 Exécution des plugins...")
+            results = run_all_plugins()
+            
+            return {
+                "status": "completed",
+                "result": results,
+                "passed": True,
+                "plugins_executed": len(results) if results else 0
+            }
+        except Exception as e:
+            logger.error(f"Erreur lors de l'exécution des plugins: {e}")
+            return {
+                "status": "failed",
+                "error": str(e),
+                "passed": False
+            }
+    
+    def _run_templates(self, project_path: Path) -> Dict[str, Any]:
+        """Générer des templates pour le projet"""
+        try:
+            logger.info("📋 Génération de templates...")
+            templates = get_base_templates()
+            
+            # Créer un dossier templates dans le projet si nécessaire
+            templates_dir = project_path / "generated_templates"
+            templates_dir.mkdir(exist_ok=True)
+            
+            # Générer des exemples de templates
+            generated_files = []
+            for template_name, template_content in templates.items():
+                if template_name == "api/main.py":
+                    # Exemple de génération d'API
+                    api_file = templates_dir / "api_example.py"
+                    api_file.parent.mkdir(exist_ok=True)
+                    
+                    # Rendre le template avec des variables d'exemple
+                    from jinja2 import Template
+                    template = Template(template_content)
+                    rendered_content = template.render(
+                        project_name=project_path.name,
+                        author="Athalia System",
+                        version="1.0.0",
+                        api_framework="flask",
+                        endpoints=["users", "products"],
+                        port=8000
+                    )
+                    
+                    with open(api_file, 'w', encoding='utf-8') as f:
+                        f.write(rendered_content)
+                    generated_files.append(str(api_file))
+            
+            return {
+                "status": "completed",
+                "result": {
+                    "templates_available": len(templates),
+                    "generated_files": generated_files,
+                    "templates_dir": str(templates_dir)
+                },
+                "passed": True
+            }
+        except Exception as e:
+            logger.error(f"Erreur lors de la génération de templates: {e}")
+            return {
+                "status": "failed",
+                "error": str(e),
+                "passed": False
+            }
+    
     def _learn_from_results(self, results: Dict[str, Any]) -> Dict[str, Any]:
         """Apprendre des résultats d'orchestration"""
         learning_data = {
@@ -709,50 +822,190 @@ class UnifiedOrchestrator:
             logger.error(f"Erreur lors de la récupération des insights: {e}")
             return {}
 
+    # === NOUVELLES MÉTHODES PHASE 2 ===
+    
+    def run_phase2_backup(self, backup_type: str = "daily") -> Dict[str, Any]:
+        """Exécute une sauvegarde avec le système de la Phase 2"""
+        if not PHASE2_AVAILABLE:
+            logger.warning("Phase 2 non disponible - sauvegarde ignorée")
+            return {"status": "skipped", "reason": "Phase 2 not available"}
+        
+        try:
+            backup_system = get_backup_system()
+            metadata = backup_system.create_backup(backup_type)
+            
+            logger.info(f"✅ Sauvegarde {backup_type} créée: {metadata.backup_id}")
+            return {
+                "status": "success",
+                "backup_id": metadata.backup_id,
+                "files_count": metadata.files_count,
+                "size_bytes": metadata.size_bytes,
+                "backup_type": backup_type
+            }
+        except Exception as e:
+            logger.error(f"❌ Erreur lors de la sauvegarde: {e}")
+            return {"status": "error", "error": str(e)}
+    
+    def run_phase2_error_handling(self, operation: callable, *args, **kwargs) -> Dict[str, Any]:
+        """Exécute une opération avec gestion d'erreurs de la Phase 2"""
+        if not PHASE2_AVAILABLE:
+            logger.warning("Phase 2 non disponible - gestion d'erreurs standard")
+            try:
+                result = operation(*args, **kwargs)
+                return {"status": "success", "result": result}
+            except Exception as e:
+                return {"status": "error", "error": str(e)}
+        
+        try:
+            error_handler = ErrorHandler(enable_recovery=True, enable_logging=True)
+            result = error_handler.safe_execute(operation, *args, **kwargs)
+            return {"status": "success", "result": result}
+        except AthaliaError as e:
+            logger.error(f"❌ Erreur Athalia: {e.code} - {e.message}")
+            return {"status": "error", "code": e.code, "message": e.message}
+        except Exception as e:
+            logger.error(f"❌ Erreur inattendue: {e}")
+            return {"status": "error", "error": str(e)}
+    
+    def validate_phase2_inputs(self, data: Dict[str, Any], required_fields: List[str]) -> Dict[str, Any]:
+        """Valide les entrées avec le système de la Phase 2"""
+        if not PHASE2_AVAILABLE:
+            logger.warning("Phase 2 non disponible - validation basique")
+            missing_fields = [field for field in required_fields if field not in data]
+            if missing_fields:
+                return {"status": "error", "missing_fields": missing_fields}
+            return {"status": "success"}
+        
+        try:
+            validate_input(data, required_fields)
+            return {"status": "success"}
+        except ValidationError as e:
+            logger.error(f"❌ Erreur de validation: {e.message}")
+            return {"status": "error", "validation_error": e.message}
+    
+    def get_phase2_backup_stats(self) -> Dict[str, Any]:
+        """Récupère les statistiques de sauvegarde de la Phase 2"""
+        if not PHASE2_AVAILABLE:
+            return {"status": "error", "reason": "Phase 2 not available"}
+        
+        try:
+            backup_system = get_backup_system()
+            stats = backup_system.get_backup_stats()
+            return {"status": "success", "stats": stats}
+        except Exception as e:
+            logger.error(f"❌ Erreur lors de la récupération des stats: {e}")
+            return {"status": "error", "error": str(e)}
+    
+    def orchestrate_with_phase2_features(self, project_path: str, 
+                                       config: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+        """Orchestration complète avec les fonctionnalités de la Phase 2"""
+        logger.info("🚀 Orchestration avec fonctionnalités Phase 2")
+        
+        # Validation des entrées
+        validation_result = self.validate_phase2_inputs(
+            {"project_path": project_path, "config": config or {}},
+            ["project_path"]
+        )
+        if validation_result["status"] != "success":
+            return validation_result
+        
+        # Orchestration standard
+        results = self.orchestrate_project_complete(project_path, config)
+        
+        # Sauvegarde automatique à la fin
+        backup_result = self.run_phase2_backup("daily")
+        results["phase2_backup"] = backup_result
+        
+        # Statistiques de sauvegarde
+        backup_stats = self.get_phase2_backup_stats()
+        results["phase2_backup_stats"] = backup_stats
+        
+        logger.info("✅ Orchestration avec Phase 2 terminée")
+        return results
+
+def orchestrator_auto_backup():
+    """Effectue une sauvegarde automatique à la fin de l'orchestration"""
+    backup_system = get_backup_system()
+    try:
+        metadata = backup_system.create_backup("daily")
+        logger.info("Sauvegarde automatique effectuée avec succès.")
+        return {
+            "status": "success",
+            "backup_id": metadata.backup_id,
+            "files_count": metadata.files_count,
+            "size_bytes": metadata.size_bytes
+        }
+    except Exception as e:
+        logger.error(f"Erreur lors de la sauvegarde automatique: {e}")
+        return {
+            "status": "error",
+            "error": str(e)
+        }
+
+def cli_entry():
+    """Entrée CLI standardisée pour l'orchestrateur unifié"""
+    @standardize_cli_script("ath-orchestrator", "Orchestrateur unifié Athalia")
+    @error_handler(enable_recovery=True, enable_logging=True)
+    def main_action(ctx):
+        cli_std = ctx.obj['cli_std']
+        cli_std.print_info("Démarrage de l'orchestrateur unifié Athalia")
+        try:
+            # Récupérer le chemin du projet depuis l'utilisateur
+            project_path = cli_std.get_input("Chemin du projet à orchestrer:", default=str(Path.cwd()))
+            orchestrator = UnifiedOrchestrator(project_path)
+            results = orchestrator.orchestrate_project_complete(project_path)
+            cli_std.print_success("Orchestration terminée avec succès", {"project": project_path})
+            orchestrator_auto_backup()
+        except Exception as e:
+            cli_std.print_error(f"Erreur lors de l'orchestration: {e}")
+    main_action()
+
 def main():
-    """Point d'entrée principal"""
-    parser = argparse.ArgumentParser(description="Orchestrateur unifié Athalia")
-    parser.add_argument("project_path", help="Chemin du projet à orchestrer")
-    parser.add_argument("--config", help="Fichier de configuration JSON")
-    parser.add_argument("--audit", action="store_true", help="Activer l'audit")
-    parser.add_argument("--lint", action="store_true", help="Activer le linting")
-    parser.add_argument("--security", action="store_true", help="Activer l'audit de sécurité")
-    parser.add_argument("--analytics", action="store_true", help="Activer l'analytics")
-    parser.add_argument("--docs", action="store_true", help="Activer la documentation")
-    parser.add_argument("--cicd", action="store_true", help="Activer le CI/CD")
-    parser.add_argument("--robotics", action="store_true", help="Activer l'audit robotique")
-    parser.add_argument("--intelligence", action="store_true", help="Activer l'analyse intelligente")
-    parser.add_argument("--predictions", action="store_true", help="Activer les prédictions")
-    parser.add_argument("--optimizations", action="store_true", help="Activer les optimisations")
-    parser.add_argument("--learning", action="store_true", help="Activer l'apprentissage")
-    
-    args = parser.parse_args()
-    
-    # Configuration
-    config = {}
-    if args.config:
-        with open(args.config, 'r') as f:
-            config = json.load(f)
-    
-    # Override avec les arguments
-    if args.audit: config["audit"] = True
-    if args.lint: config["lint"] = True
-    if args.security: config["security"] = True
-    if args.analytics: config["analytics"] = True
-    if args.docs: config["docs"] = True
-    if args.cicd: config["cicd"] = True
-    if args.robotics: config["robotics"] = True
-    if args.intelligence: config["intelligence"] = True
-    if args.predictions: config["predictions"] = True
-    if args.optimizations: config["optimizations"] = True
-    if args.learning: config["learning"] = True
-    
-    # Exécuter l'orchestration
-    orchestrator = UnifiedOrchestrator()
-    results = orchestrator.orchestrate_project_complete(args.project_path, config)
-    
-    # Afficher le rapport
-    print(results["final_report"])
+    """Point d'entrée principal (CLI ou script)"""
+    if len(sys.argv) > 1 and sys.argv[1] == "cli":
+        cli_entry()
+    else:
+        # Mode classique (argparse)
+        parser = argparse.ArgumentParser(description="Orchestrateur unifié Athalia")
+        parser.add_argument("project_path", help="Chemin du projet à orchestrer")
+        parser.add_argument("--config", help="Fichier de configuration JSON")
+        parser.add_argument("--audit", action="store_true", help="Activer l'audit")
+        parser.add_argument("--lint", action="store_true", help="Activer le linting")
+        parser.add_argument("--security", action="store_true", help="Activer l'audit de sécurité")
+        parser.add_argument("--analytics", action="store_true", help="Activer l'analytics")
+        parser.add_argument("--docs", action="store_true", help="Activer la documentation")
+        parser.add_argument("--cicd", action="store_true", help="Activer le CI/CD")
+        parser.add_argument("--robotics", action="store_true", help="Activer l'audit robotique")
+        parser.add_argument("--intelligence", action="store_true", help="Activer l'analyse intelligente")
+        parser.add_argument("--predictions", action="store_true", help="Activer les prédictions")
+        parser.add_argument("--optimizations", action="store_true", help="Activer les optimisations")
+        parser.add_argument("--learning", action="store_true", help="Activer l'apprentissage")
+        
+        args = parser.parse_args()
+        
+        # Configuration
+        config = {}
+        if args.config:
+            with open(args.config, 'r') as f:
+                config = json.load(f)
+        
+        # Override avec les arguments
+        if args.audit: config["audit"] = True
+        if args.lint: config["lint"] = True
+        if args.security: config["security"] = True
+        if args.analytics: config["analytics"] = True
+        if args.docs: config["docs"] = True
+        if args.cicd: config["cicd"] = True
+        if args.robotics: config["robotics"] = True
+        if args.intelligence: config["intelligence"] = True
+        if args.predictions: config["predictions"] = True
+        if args.optimizations: config["optimizations"] = True
+        if args.learning: config["learning"] = True
+        
+        # Exécuter l'orchestration
+        orchestrator = UnifiedOrchestrator(args.project_path)
+        results = orchestrator.orchestrate_project_complete(args.project_path, config)
+        orchestrator_auto_backup()
 
 if __name__ == "__main__":
     main() 

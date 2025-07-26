@@ -42,103 +42,103 @@ database:
 
 ### Classes principales
 
-#### ValidationContinue
+#### AthaliaOrchestrator
 
 **Exemple d'utilisation :**
 
 ```python
-from athalia-dev-setup import ValidationContinue
+from athalia-dev-setup import AthaliaOrchestrator
 
 # Créer une instance
-instance = ValidationContinue()
+instance = AthaliaOrchestrator()
+# Utiliser une méthode
+result = instance.industrialize_project()
+```
+
+#### ProjectAuditor
+
+Auditeur intelligent de projets générés.
+
+**Exemple d'utilisation :**
+
+```python
+from athalia-dev-setup import ProjectAuditor
+
+# Créer une instance
+instance = ProjectAuditor()
 # Utiliser une méthode
 result = instance.__init__()
 ```
 
-#### ValidationDashboardHandler
+#### TestLoggingSystem
+
+Tests pour le système de logging d'Athalia
 
 **Exemple d'utilisation :**
 
 ```python
-from athalia-dev-setup import ValidationDashboardHandler
+from athalia-dev-setup import TestLoggingSystem
 
 # Créer une instance
-instance = ValidationDashboardHandler()
+instance = TestLoggingSystem()
 # Utiliser une méthode
-result = instance.do_GET()
-```
-
-#### ValidationObjective
-
-**Exemple d'utilisation :**
-
-```python
-from athalia-dev-setup import ValidationObjective
-
-# Créer une instance
-instance = ValidationObjective()
-# Utiliser une méthode
-result = instance.__init__()
+result = instance.setup_method()
 ```
 
 ### Fonctions utilitaires
 
-#### __init__
+#### main
+
+Fonction principale du CLI unifié
 
 **Exemple d'utilisation :**
 
 ```python
-from athalia-dev-setup import __init__
+from athalia-dev-setup import main
 
-result = __init__(intervalle_minutes)
+result = main()
 ```
 
-#### test_rapide
-
-Test rapide pour validation continue (5-10 secondes)
+#### industrialize_project
 
 **Exemple d'utilisation :**
 
 ```python
-from athalia-dev-setup import test_rapide
+from athalia-dev-setup import industrialize_project
 
-result = test_rapide()
+result = industrialize_project(project_path, config)
 ```
 
-#### test_demarrage
-
-Test: Athalia démarre-t-il ?
+#### audit_project
 
 **Exemple d'utilisation :**
 
 ```python
-from athalia-dev-setup import test_demarrage
+from athalia-dev-setup import audit_project
 
-result = test_demarrage()
+result = audit_project(project_path)
 ```
 
-#### test_imports
-
-Test: Les imports fonctionnent-ils ?
+#### scan_projects
 
 **Exemple d'utilisation :**
 
 ```python
-from athalia-dev-setup import test_imports
+from athalia-dev-setup import scan_projects
 
-result = test_imports()
+result = scan_projects(project_path)
 ```
 
-#### test_generation_mini
+#### audit_project_intelligent
 
-Test: Génération d'un mini-projet
+Fonction principale pour l'audit intelligent.
 
 **Exemple d'utilisation :**
 
 ```python
-from athalia-dev-setup import test_generation_mini
+from athalia-dev-setup import audit_project_intelligent
 
-result = test_generation_mini()
+result = audit_project_intelligent(project_path)
 ```
 
 
@@ -185,4 +185,4 @@ except Exception as e:
 - Contact : support@example.com
 
 ---
-*Généré automatiquement par Athalia* - 2025-07-20
+*Généré automatiquement par Athalia* - 2025-07-26
