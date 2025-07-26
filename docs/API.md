@@ -438,6 +438,82 @@ Returns:
 
 ---
 
+### test_ci_ultra_fast
+
+🧪 Tests CI Ultra-Fast - Athalia/Arkalia
+========================================
+
+Tests ultra-rapides pour la validation CI/CD
+Tests essentiels qui doivent passer en moins de 5 secondes
+
+#### Classes
+
+##### TestCIUltraFast
+
+Tests CI ultra-rapides pour validation de base
+
+**Méthodes :**
+
+- `test_python_version()`
+- `test_essential_imports()`
+- `test_project_structure()`
+- `test_config_files()`
+- `test_test_files_exist()`
+- `test_requirements_readable()`
+- `test_ci_workflow_exists()`
+- `test_environment_variables()`
+- `test_basic_functionality()`
+- `test_file_permissions()`
+- `test_encoding_utf8()`
+
+#### Fonctions
+
+##### test_python_version
+
+Vérifie la version de Python
+
+##### test_essential_imports
+
+Vérifie les imports essentiels
+
+##### test_project_structure
+
+Vérifie la structure de base du projet
+
+##### test_config_files
+
+Vérifie les fichiers de configuration essentiels
+
+##### test_test_files_exist
+
+Vérifie qu'il y a des fichiers de test
+
+##### test_requirements_readable
+
+Vérifie que requirements-minimal.txt est lisible
+
+##### test_ci_workflow_exists
+
+Vérifie que le workflow CI existe
+
+##### test_environment_variables
+
+Vérifie les variables d'environnement essentielles
+
+##### test_basic_functionality
+
+Test de fonctionnalité de base
+
+##### test_file_permissions
+
+Vérifie les permissions de fichiers
+
+##### test_encoding_utf8
+
+Vérifie l'encodage UTF-8
+
+---
+
 ### test_all_orchestrators
 
 🎯 TEST COMPLET DES 3 NIVEAUX D'ORCHESTRATION
@@ -1290,6 +1366,102 @@ Test que la documentation utilise l'encodage UTF-8
 ##### test_full_template_workflow
 
 Test du workflow complet de génération de template
+
+---
+
+### test_ci_robust
+
+🧪 Tests CI Robustes - Athalia/Arkalia
+=====================================
+
+Tests robustes pour la validation CI/CD complète
+Tests plus approfondis pour validation de qualité
+
+#### Classes
+
+##### TestCIRobust
+
+Tests CI robustes pour validation complète
+
+**Méthodes :**
+
+- `test_python_environment()`
+- `test_project_structure_complete()`
+- `test_config_files_complete()`
+- `test_test_suite_structure()`
+- `test_requirements_validation()`
+- `test_ci_workflow_validation()`
+- `test_file_permissions_complete()`
+- `test_encoding_validation()`
+- `test_json_yaml_parsing()`
+- `test_subprocess_functionality()`
+- `test_time_functionality()`
+- `test_pathlib_functionality()`
+- `test_environment_robustness()`
+- `test_error_handling()`
+- `test_assertion_functionality()`
+
+#### Fonctions
+
+##### test_python_environment
+
+Vérifie l'environnement Python complet
+
+##### test_project_structure_complete
+
+Vérifie la structure complète du projet
+
+##### test_config_files_complete
+
+Vérifie tous les fichiers de configuration
+
+##### test_test_suite_structure
+
+Vérifie la structure de la suite de tests
+
+##### test_requirements_validation
+
+Valide les fichiers requirements
+
+##### test_ci_workflow_validation
+
+Valide le workflow CI
+
+##### test_file_permissions_complete
+
+Vérifie les permissions complètes
+
+##### test_encoding_validation
+
+Valide l'encodage UTF-8 complet
+
+##### test_json_yaml_parsing
+
+Teste le parsing JSON et YAML
+
+##### test_subprocess_functionality
+
+Teste la fonctionnalité subprocess
+
+##### test_time_functionality
+
+Teste la fonctionnalité time
+
+##### test_pathlib_functionality
+
+Teste la fonctionnalité pathlib
+
+##### test_environment_robustness
+
+Teste la robustesse de l'environnement
+
+##### test_error_handling
+
+Teste la gestion d'erreurs
+
+##### test_assertion_functionality
+
+Teste la fonctionnalité d'assertion
 
 ---
 
