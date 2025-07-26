@@ -3,8 +3,9 @@
 """
 Tests pour le module cleanup
 """
-import pytest
 from pathlib import Path
+
+import pytest
 
 
 def test_clean_old_tests_and_caches(tmp_path):

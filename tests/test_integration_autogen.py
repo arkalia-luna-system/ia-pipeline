@@ -1,13 +1,17 @@
-import unittest
-import sys
 import os
+import sys
+import unittest
 
 # Ajouter le chemin du projet
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 # Import conditionnel
 try:
-    from athalia_core.agents.agent_network import AuditAgent, CorrectionAgent, SynthesisAgent
+    from athalia_core.agents.agent_network import (
+        AuditAgent,
+        CorrectionAgent,
+        SynthesisAgent,
+    )
 except ImportError:
     AuditAgent = None
     CorrectionAgent = None

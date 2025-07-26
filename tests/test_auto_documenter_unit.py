@@ -1,6 +1,8 @@
-import unittest
 import os
+import unittest
+
 from athalia_core.auto_documenter import AutoDocumenter
+
 
 class TestAutoDocumenter(unittest.TestCase):
     def setUp(self):

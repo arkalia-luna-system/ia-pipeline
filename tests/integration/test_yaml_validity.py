@@ -4,8 +4,9 @@
 Test de validité YAML pour tous les fichiers openapi.yaml du repo
 """
 import os
-import yaml
+
 import pytest
+import yaml
 
 
 def test_all_openapi_yaml_valid():

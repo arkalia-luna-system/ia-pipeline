@@ -1,5 +1,6 @@
-import subprocess
 import os
+import subprocess
+
 
 def test_ath_audit_runs():
     script = os.path.join(os.path.dirname(__file__), '../../bin/ath-audit.py')
