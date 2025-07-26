@@ -109,14 +109,11 @@ class TestImportsAll:
             except ImportError as e:
                 pytest.skip(f"Import échoué pour {module}: {e}")
 
-    @pytest.mark.skip(reason="Test désactivé - fichiers corrompus")
     def test_agents_import(self):
         """Test que tous les modules agents peuvent être importés"""
         agent_modules = [
-            'agents.ath_context_prompt',
-            'agents.agent_audit',
-            'agents.agent_network',
-            'agents.agent_qwen'
+            'athalia_core.agents.context_prompt',
+            'athalia_core.agents.unified_agent'
         ]
         
         for module in agent_modules:
@@ -125,13 +122,11 @@ class TestImportsAll:
             except Exception as e:
                 pytest.skip(f"Import échoué pour {module}: {e}")
 
-    @pytest.mark.skip(reason="Test désactivé - module manquant")
     def test_templates_import(self):
         """Test que tous les modules templates peuvent être importés"""
         template_modules = [
             'athalia_core.templates.base_templates',
-            'athalia_core.templates.artistic_templates',
-            'athalia_core.templates.api_templates'
+            'athalia_core.templates.artistic_templates'
         ]
         
         for module in template_modules:

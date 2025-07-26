@@ -96,7 +96,6 @@ def test_another():
         assert generate_heatmap_data is not None
         assert generate_technical_debt_analysis is not None
     
-    @pytest.mark.skipif(not ANALYTICS_AVAILABLE, reason="Module analytics non disponible")
     def test_analyze_project(self):
         """Test d'analyse de projet"""
         try:
@@ -104,43 +103,58 @@ def test_another():
             assert isinstance(result, dict)
             
             # Vérifier la structure de base
-            assert 'files' in result or 'structure' in result or 'metrics' in result
+            assert 'total_files' in result or 'python_files' in result or 'test_files' in result
         except Exception as e:
-            pytest.skip(f"analyze_project non fonctionnel: {e}")
+            # Test échoue si la fonction ne fonctionne pas
+            assert False, f"analyze_project non fonctionnel: {e}"
     
-    @pytest.mark.skipif(not ANALYTICS_AVAILABLE, reason="Module analytics non disponible")
     def test_generate_heatmap_data(self):
         """Test de génération de données pour heatmap"""
         try:
-            heatmap_data = generate_heatmap_data(str(self.project_dir))
+            # D'abord analyser le projet
+            project_data = analyze_project(str(self.project_dir))
+            # Ajouter la clé 'name' requise
+            project_data['name'] = 'test_project'
+            # Puis générer les données heatmap
+            heatmap_data = generate_heatmap_data([project_data])
             assert isinstance(heatmap_data, dict) or isinstance(heatmap_data, list)
         except Exception as e:
-            pytest.skip(f"generate_heatmap_data non fonctionnel: {e}")
+            # Test échoue si la fonction ne fonctionne pas
+            assert False, f"generate_heatmap_data non fonctionnel: {e}"
     
-    @pytest.mark.skipif(not ANALYTICS_AVAILABLE, reason="Module analytics non disponible")
     def test_generate_technical_debt_analysis(self):
         """Test d'analyse de dette technique"""
         try:
-            debt_analysis = generate_technical_debt_analysis(str(self.project_dir))
+            # D'abord analyser le projet
+            project_data = analyze_project(str(self.project_dir))
+            # Ajouter la clé 'name' requise
+            project_data['name'] = 'test_project'
+            # Puis générer l'analyse de dette technique
+            debt_analysis = generate_technical_debt_analysis([project_data])
             assert isinstance(debt_analysis, dict)
             
             # Vérifier la structure de base
-            assert 'score' in debt_analysis or 'issues' in debt_analysis or 'summary' in debt_analysis
+            assert 'average_score' in debt_analysis or 'common_issues' in debt_analysis or 'score_distribution' in debt_analysis
         except Exception as e:
-            pytest.skip(f"generate_technical_debt_analysis non fonctionnel: {e}")
+            # Test échoue si la fonction ne fonctionne pas
+            assert False, f"generate_technical_debt_analysis non fonctionnel: {e}"
     
-    @pytest.mark.skipif(not ANALYTICS_AVAILABLE, reason="Module analytics non disponible")
     def test_generate_analytics_html(self):
         """Test de génération de rapport HTML"""
         try:
-            html_report = generate_analytics_html(str(self.project_dir))
+            # D'abord analyser le projet
+            project_data = analyze_project(str(self.project_dir))
+            # Ajouter la clé 'name' requise
+            project_data['name'] = 'test_project'
+            # Puis générer le HTML
+            html_report = generate_analytics_html([project_data])
             assert isinstance(html_report, str)
             assert len(html_report) > 0
             assert '<html' in html_report.lower() or '<!DOCTYPE' in html_report
         except Exception as e:
-            pytest.skip(f"generate_analytics_html non fonctionnel: {e}")
+            # Test échoue si la fonction ne fonctionne pas
+            assert False, f"generate_analytics_html non fonctionnel: {e}"
     
-    @pytest.mark.skipif(not ANALYTICS_AVAILABLE, reason="Module analytics non disponible")
     def test_analytics_with_empty_project(self):
         """Test d'analyse avec un projet vide"""
         empty_dir = Path(self.temp_dir) / "empty_project"
@@ -150,9 +164,9 @@ def test_another():
             result = analyze_project(str(empty_dir))
             assert isinstance(result, dict)
         except Exception as e:
-            pytest.skip(f"analyze_project avec projet vide non fonctionnel: {e}")
+            # Test échoue si la fonction ne fonctionne pas
+            assert False, f"analyze_project avec projet vide non fonctionnel: {e}"
     
-    @pytest.mark.skipif(not ANALYTICS_AVAILABLE, reason="Module analytics non disponible")
     def test_analytics_with_nonexistent_project(self):
         """Test d'analyse avec un projet inexistant"""
         nonexistent_dir = "/tmp/nonexistent_project_12345"
@@ -189,12 +203,15 @@ def test_analytics_integration():
             analysis = analyze_project(str(project_dir))
             assert isinstance(analysis, dict)
             
+            # Ajouter la clé 'name' requise
+            analysis['name'] = 'test_project'
             # Générer un rapport HTML
-            html = generate_analytics_html(str(project_dir))
+            html = generate_analytics_html([analysis])
             assert isinstance(html, str)
             assert len(html) > 0
         except Exception as e:
-            pytest.skip(f"Test d'intégration non fonctionnel: {e}")
+            # Test échoue si l'intégration ne fonctionne pas
+            assert False, f"Test d'intégration non fonctionnel: {e}"
 
 
 if __name__ == "__main__":
