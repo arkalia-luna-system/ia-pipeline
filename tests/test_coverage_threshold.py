@@ -2,8 +2,9 @@
 Test de seuil de couverture de code
 Vérifie que la couverture de code est suffisante
 """
-import pytest
 from pathlib import Path
+
+import pytest
 
 
 class TestCoverageThreshold:

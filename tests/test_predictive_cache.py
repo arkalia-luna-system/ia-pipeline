@@ -1,6 +1,8 @@
-import unittest
 import time
+import unittest
+
 from athalia_core.distillation.predictive_cache import PredictiveCache
+
 
 class TestPredictiveCache(unittest.TestCase):
     def test_set_get(self):

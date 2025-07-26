@@ -1,7 +1,8 @@
-import subprocess
 import os
 import signal
+import subprocess
 import time
+
 
 def test_ath_build_runs():
     """Test que ath-build.py peut être exécuté sans se bloquer"""

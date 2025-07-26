@@ -1,10 +1,11 @@
-import pytest
-from fastapi.testclient import TestClient
-from athalia_core.autocomplete_server import app
-from athalia_core.autocomplete_engine import OllamaAutocompleteEngine
-import requests
 from unittest.mock import patch
 
+import pytest
+import requests
+from fastapi.testclient import TestClient
+
+from athalia_core.autocomplete_engine import OllamaAutocompleteEngine
+from athalia_core.autocomplete_server import app
 
 client = TestClient(app)
 

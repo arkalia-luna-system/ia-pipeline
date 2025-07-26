@@ -1,7 +1,8 @@
-import pytest
 import importlib
 import os
 import sys
+
+import pytest
 
 # Liste des modules/fonctions critiques à tester (corrigée)
 CRITICAL_FUNCTIONS = [

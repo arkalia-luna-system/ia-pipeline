@@ -1,8 +1,10 @@
-import unittest
-import tempfile
 import os
+import tempfile
+import unittest
 from pathlib import Path
+
 from athalia_core.auto_cicd import AutoCICD, generate_github_ci_yaml
+
 
 class TestAutoCICD(unittest.TestCase):
     def setUp(self):

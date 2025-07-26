@@ -1,0 +1,702 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.10.14, pytest-8.4.1, pluggy-1.6.0 -- /opt/homebrew/opt/pyenv/versions/3.10.14/bin/python
+cachedir: .pytest_cache
+benchmark: 5.1.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+rootdir: /Volumes/T7/athalia-dev-setup
+configfile: pytest.ini
+plugins: anyio-4.9.0, timeout-2.4.0, cov-4.1.0, benchmark-5.1.0, asyncio-1.0.0
+asyncio: mode=strict, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 432 items
+
+archive/tests_skipped_20250726/test_correction_optimizer_optimized.py::TestCorrectionOptimizerOptimized::test_basic_corrections PASSED [  0%]
+archive/tests_skipped_20250726/test_correction_optimizer_optimized.py::TestCorrectionOptimizerOptimized::test_complex_correction PASSED [  0%]
+archive/tests_skipped_20250726/test_correction_optimizer_optimized.py::TestCorrectionOptimizerOptimized::test_contextual_corrections PASSED [  0%]
+archive/tests_skipped_20250726/test_correction_optimizer_optimized.py::TestCorrectionOptimizerOptimized::test_convenience_functions PASSED [  0%]
+archive/tests_skipped_20250726/test_correction_optimizer_optimized.py::TestCorrectionOptimizerOptimized::test_correction_stats PASSED [  1%]
+archive/tests_skipped_20250726/test_correction_optimizer_optimized.py::TestCorrectionOptimizerOptimized::test_error_handling PASSED [  1%]
+archive/tests_skipped_20250726/test_correction_optimizer_optimized.py::TestCorrectionOptimizerOptimized::test_learning_from_corrections PASSED [  1%]
+archive/tests_skipped_20250726/test_correction_optimizer_optimized.py::TestCorrectionOptimizerOptimized::test_performance_logging PASSED [  1%]
+archive/tests_skipped_20250726/test_correction_optimizer_optimized.py::TestCorrectionOptimizerIntegration::test_with_real_files PASSED [  2%]
+scripts/test_logging_activation.py::test_basic_logging PASSED            [  2%]
+scripts/test_logging_activation.py::test_advanced_logging PASSED         [  2%]
+scripts/test_logging_activation.py::test_log_file_creation PASSED        [  2%]
+tests/bin/test_ath_audit.py::test_ath_audit_runs PASSED                  [  3%]
+tests/bin/test_ath_build.py::test_ath_build_runs PASSED                  [  3%]
+tests/bin/test_ath_coverage.py::test_ath_coverage_runs SKIPPED (Test...) [  3%]
+tests/bin/test_ath_lint.py::test_ath_lint_runs PASSED                    [  3%]
+tests/bin/test_ath_test.py::test_ath_test_runs SKIPPED (Test désacti...) [  3%]
+tests/integration/test_cli_robustesse.py::test_cli_robustesse SKIPPED    [  4%]
+tests/integration/test_end_to_end.py::test_generation_end_to_end SKIPPED [  4%]
+tests/integration/test_yaml_validity.py::test_all_openapi_yaml_valid PASSED [  4%]
+tests/test_adaptive_distillation.py::TestAdaptiveDistiller::test_empty PASSED [  4%]
+tests/test_adaptive_distillation.py::TestAdaptiveDistiller::test_feedback_success_failure PASSED [  5%]
+tests/test_adaptive_distillation.py::TestAdaptiveDistiller::test_majority_voting PASSED [  5%]
+tests/test_adaptive_distillation.py::TestAdaptiveDistiller::test_save_and_load_history PASSED [  5%]
+tests/test_adaptive_distillation.py::TestAdaptiveDistiller::test_update_preferences PASSED [  5%]
+tests/test_advanced_analytics_unit.py::TestAdvancedAnalytics::test_analyze_coverage PASSED [  6%]
+tests/test_advanced_analytics_unit.py::TestAdvancedAnalytics::test_analyze_performance PASSED [  6%]
+tests/test_advanced_analytics_unit.py::TestAdvancedAnalytics::test_constructor PASSED [  6%]
+tests/test_advanced_analytics_unit.py::TestAdvancedAnalytics::test_generate_dashboard PASSED [  6%]
+tests/test_advanced_analytics_unit.py::TestAdvancedAnalytics::test_generate_summary PASSED [  6%]
+tests/test_advanced_analytics_unit.py::TestAdvancedAnalytics::test_print_report PASSED [  7%]
+tests/test_advanced_analytics_unit.py::TestAdvancedAnalytics::test_run PASSED [  7%]
+tests/test_agent_network.py::TestAgentUnified::test_agent_imports PASSED [  7%]
+tests/test_agent_network.py::TestAgentUnified::test_agent_unified_basic PASSED [  7%]
+tests/test_ai_robust_standardized.py::TestAIRobust::test_build_fallback_chain PASSED [  8%]
+tests/test_ai_robust_standardized.py::TestAIRobust::test_call_ollama_timeout PASSED [  8%]
+tests/test_ai_robust_standardized.py::TestAIRobust::test_classify_project_complexity PASSED [  8%]
+tests/test_ai_robust_standardized.py::TestAIRobust::test_detect_available_models PASSED [  8%]
+tests/test_ai_robust_standardized.py::TestAIRobust::test_fallback_chain_behavior PASSED [  9%]
+tests/test_ai_robust_standardized.py::TestAIRobust::test_generate_blueprint_with_mock PASSED [  9%]
+tests/test_ai_robust_standardized.py::TestAIRobust::test_generate_documentation_with_mock PASSED [  9%]
+tests/test_ai_robust_standardized.py::TestAIRobust::test_get_dynamic_prompt PASSED [  9%]
+tests/test_ai_robust_standardized.py::TestAIRobust::test_review_code_with_mock PASSED [  9%]
+tests/test_ai_robust_standardized.py::test_robust_ai_integration PASSED  [ 10%]
+tests/test_ai_robust_standardized.py::test_prompt_templates PASSED       [ 10%]
+tests/test_all_orchestrators.py::test_level_1_analyzer PASSED            [ 10%]
+tests/test_all_orchestrators.py::test_level_2_orchestrator PASSED        [ 10%]
+tests/test_all_orchestrators.py::test_level_3_coordinator PASSED         [ 11%]
+tests/test_all_orchestrators.py::test_integration PASSED                 [ 11%]
+tests/test_analytics.py::TestAnalyticsModule::test_analytics_module_import PASSED [ 11%]
+tests/test_analytics.py::TestAnalyticsModule::test_analyze_project SKIPPED [ 11%]
+tests/test_analytics.py::TestAnalyticsModule::test_generate_heatmap_data SKIPPED [ 12%]
+tests/test_analytics.py::TestAnalyticsModule::test_generate_technical_debt_analysis SKIPPED [ 12%]
+tests/test_analytics.py::TestAnalyticsModule::test_generate_analytics_html SKIPPED [ 12%]
+tests/test_analytics.py::TestAnalyticsModule::test_analytics_with_empty_project PASSED [ 12%]
+tests/test_analytics.py::TestAnalyticsModule::test_analytics_with_nonexistent_project PASSED [ 12%]
+tests/test_analytics.py::test_analytics_integration SKIPPED (Test d'...) [ 13%]
+tests/test_athalia_simple.py::test_athalia_core_import PASSED            [ 13%]
+tests/test_athalia_simple.py::test_essential_files_exist PASSED          [ 13%]
+tests/test_athalia_simple.py::test_project_structure PASSED              [ 13%]
+tests/test_audit_basic.py::TestAuditBasic::test_audit_project_basic SKIPPED [ 14%]
+tests/test_audit_basic.py::TestAuditBasic::test_audit_nonexistent_project SKIPPED [ 14%]
+tests/test_audit_basic.py::TestAuditBasic::test_audit_empty_project SKIPPED [ 14%]
+tests/test_audit_basic.py::TestAuditBasic::test_project_structure_validation PASSED [ 14%]
+tests/test_audit_basic.py::TestAuditBasic::test_file_content_validation PASSED [ 15%]
+tests/test_audit_basic.py::TestAuditBasic::test_audit_with_options SKIPPED [ 15%]
+tests/test_audit_basic.py::test_audit_integration PASSED                 [ 15%]
+tests/test_audit_intelligent.py::TestAuditIntelligent::test_audit_project_structure PASSED [ 15%]
+tests/test_audit_intelligent.py::TestAuditIntelligent::test_audit_code_quality PASSED [ 15%]
+tests/test_audit_intelligent.py::TestAuditIntelligent::test_audit_security PASSED [ 16%]
+tests/test_audit_intelligent.py::TestAuditIntelligent::test_audit_performance PASSED [ 16%]
+tests/test_audit_intelligent.py::TestAuditIntelligent::test_audit_complete PASSED [ 16%]
+tests/test_audit_intelligent.py::TestAuditIntelligent::test_generate_audit_report PASSED [ 16%]
+tests/test_audit_intelligent.py::TestAuditIntelligent::test_audit_project_not_found PASSED [ 17%]
+tests/test_audit_intelligent.py::TestAuditIntelligent::test_audit_empty_project PASSED [ 17%]
+tests/test_audit_intelligent.py::test_audit_integration PASSED           [ 17%]
+tests/test_auto_cicd_unit.py::TestAutoCICD::test_constructor PASSED      [ 17%]
+tests/test_auto_cicd_unit.py::TestAutoCICD::test_detect_languages PASSED [ 18%]
+tests/test_auto_cicd_unit.py::TestAutoCICD::test_detect_project_type_nodejs PASSED [ 18%]
+tests/test_auto_cicd_unit.py::TestAutoCICD::test_detect_project_type_python PASSED [ 18%]
+tests/test_auto_cicd_unit.py::TestAutoCICD::test_extract_dependencies_python PASSED [ 18%]
+tests/test_auto_cicd_unit.py::TestAutoCICD::test_find_entry_points PASSED [ 18%]
+tests/test_auto_cicd_unit.py::TestAutoCICD::test_generate_deployment_config PASSED [ 19%]
+tests/test_auto_cicd_unit.py::TestAutoCICD::test_generate_docker_config PASSED [ 19%]
+tests/test_auto_cicd_unit.py::TestAutoCICD::test_generate_github_actions PASSED [ 19%]
+tests/test_auto_cicd_unit.py::TestAutoCICD::test_get_created_files PASSED [ 19%]
+tests/test_auto_cicd_unit.py::TestAutoCICD::test_has_documentation PASSED [ 20%]
+tests/test_auto_cicd_unit.py::TestAutoCICD::test_has_tests PASSED        [ 20%]
+tests/test_auto_cicd_unit.py::TestAutoCICD::test_setup_cicd PASSED       [ 20%]
+tests/test_auto_cicd_unit.py::test_generate_github_ci_yaml PASSED        [ 20%]
+tests/test_auto_cleaner.py::TestAutoCleaner::test_auto_cleaner_initialization PASSED [ 21%]
+tests/test_auto_cleaner.py::TestAutoCleaner::test_auto_cleaner_scan_files SKIPPED [ 21%]
+tests/test_auto_cleaner.py::TestAutoCleaner::test_auto_cleaner_clean_files SKIPPED [ 21%]
+tests/test_auto_cleaner.py::TestAutoCleaner::test_auto_cleaner_dry_run SKIPPED [ 21%]
+tests/test_auto_cleaner.py::TestAutoCleaner::test_auto_cleaner_process_management SKIPPED [ 21%]
+tests/test_auto_cleaner.py::TestAutoCleaner::test_auto_cleaner_report SKIPPED [ 22%]
+tests/test_auto_cleaner.py::TestAutoCleaner::test_auto_cleaner_full_cleanup SKIPPED [ 22%]
+tests/test_auto_cleaner.py::test_auto_cleaner_integration PASSED         [ 22%]
+tests/test_auto_correction_avancee.py::TestAutoCorrectionAdvanced::test_advanced_modules_structure PASSED [ 22%]
+tests/test_auto_correction_avancee.py::TestAutoCorrectionAdvanced::test_import_auto_correction SKIPPED [ 23%]
+tests/test_auto_correction_avancee.py::TestAutoCorrectionAdvanced::test_import_dashboard_unified PASSED [ 23%]
+tests/test_auto_correction_avancee.py::TestAutoCorrectionAdvanced::test_import_user_profiles SKIPPED [ 23%]
+tests/test_auto_documenter_unit.py::TestAutoDocumenter::test_constructor PASSED [ 23%]
+tests/test_auto_documenter_unit.py::TestAutoDocumenter::test_document_project PASSED [ 24%]
+tests/test_auto_documenter_unit.py::TestAutoDocumenter::test_generate_api_documentation PASSED [ 24%]
+tests/test_auto_documenter_unit.py::TestAutoDocumenter::test_generate_readme PASSED [ 24%]
+tests/test_auto_documenter_unit.py::TestAutoDocumenter::test_generate_setup_guide PASSED [ 24%]
+tests/test_auto_documenter_unit.py::TestAutoDocumenter::test_generate_usage_guide PASSED [ 25%]
+tests/test_auto_documenter_unit.py::TestAutoDocumenter::test_get_created_files PASSED [ 25%]
+tests/test_auto_documenter_unit.py::TestAutoDocumenter::test_load_translations PASSED [ 25%]
+tests/test_auto_tester_unit.py::TestAutoTester::test_analyze_modules PASSED [ 25%]
+tests/test_auto_tester_unit.py::TestAutoTester::test_constructor PASSED  [ 25%]
+tests/test_auto_tester_unit.py::TestAutoTester::test_generate_integration_tests PASSED [ 26%]
+tests/test_auto_tester_unit.py::TestAutoTester::test_generate_performance_tests PASSED [ 26%]
+tests/test_auto_tester_unit.py::TestAutoTester::test_generate_test_report PASSED [ 26%]
+tests/test_auto_tester_unit.py::TestAutoTester::test_generate_tests PASSED [ 26%]
+tests/test_auto_tester_unit.py::TestAutoTester::test_generate_unit_tests PASSED [ 27%]
+tests/test_autocomplete_server.py::test_autocomplete_nominal PASSED      [ 27%]
+tests/test_autocomplete_server.py::test_autocomplete_empty_prompt PASSED [ 27%]
+tests/test_autocomplete_server.py::test_ollama_autocomplete_engine PASSED [ 27%]
+tests/test_benchmark_critical.py::test_critical_function_benchmark[athalia_core.advanced_analytics-AdvancedAnalytics-True] PASSED [ 28%]
+tests/test_benchmark_critical.py::test_critical_function_benchmark[athalia_core.unified_orchestrator-UnifiedOrchestrator-False] PASSED [ 28%]
+tests/test_benchmark_critical.py::test_critical_function_benchmark[athalia_core.auto_tester-AutoTester-False] PASSED [ 28%]
+tests/test_benchmark_critical.py::test_global_coverage_threshold SKIPPED [ 28%]
+tests/test_booster_ia_VioletTwistAI.py::test_prompts_presence PASSED     [ 28%]
+tests/test_booster_ia_VioletTwistAI.py::test_ath_dev_boost SKIPPED (...) [ 29%]
+tests/test_booster_ia_VioletTwistAI.py::test_ath_context_prompt SKIPPED  [ 29%]
+tests/test_booster_ia_VioletTwistAI.py::test_alias_sh PASSED             [ 29%]
+tests/test_ci_basic.py::TestCIBasic::test_generate_github_ci_yaml PASSED [ 29%]
+tests/test_ci_basic.py::TestCIBasic::test_add_coverage_badge PASSED      [ 30%]
+tests/test_ci_basic.py::TestCIBasic::test_project_structure_for_ci PASSED [ 30%]
+tests/test_ci_basic.py::TestCIBasic::test_ci_with_nonexistent_project PASSED [ 30%]
+tests/test_ci_basic.py::TestCIBasic::test_ci_with_empty_project PASSED   [ 30%]
+tests/test_ci_basic.py::TestCIBasic::test_github_workflow_structure PASSED [ 31%]
+tests/test_ci_basic.py::test_ci_integration PASSED                       [ 31%]
+tests/test_cleanup.py::test_clean_old_tests_and_caches PASSED            [ 31%]
+tests/test_cleanup.py::test_cleanup_module_import PASSED                 [ 31%]
+tests/test_code_genetics.py::TestCodeGenetics::test_crossover PASSED     [ 31%]
+tests/test_code_genetics.py::TestCodeGenetics::test_empty PASSED         [ 32%]
+tests/test_code_genetics.py::TestCodeGenetics::test_evolve PASSED        [ 32%]
+tests/test_code_genetics.py::TestCodeGenetics::test_mutate PASSED        [ 32%]
+tests/test_code_genetics.py::TestCodeGenetics::test_select PASSED        [ 32%]
+tests/test_complet_athalia_imports.py::test_imports_basic PASSED         [ 33%]
+tests/test_complet_athalia_imports.py::test_imports_specific PASSED      [ 33%]
+tests/test_complet_athalia_imports.py::test_imports_athalia_core PASSED  [ 33%]
+tests/test_complet_athalia_syntax.py::test_syntax_python_basic PASSED    [ 33%]
+tests/test_complet_athalia_syntax.py::test_syntax_python_specific_files PASSED [ 34%]
+tests/test_config_manager.py::TestConfigManager::test_config_manager_initialization SKIPPED [ 34%]
+tests/test_config_manager.py::TestConfigManager::test_load_config_from_file SKIPPED [ 34%]
+tests/test_config_manager.py::TestConfigManager::test_save_config_to_file SKIPPED [ 34%]
+tests/test_config_manager.py::TestConfigManager::test_config_manager_get_set SKIPPED [ 34%]
+tests/test_config_manager.py::TestConfigManager::test_config_manager_validation SKIPPED [ 35%]
+tests/test_config_manager.py::TestConfigManager::test_config_manager_merge SKIPPED [ 35%]
+tests/test_config_manager.py::TestConfigManager::test_config_manager_environment_variables SKIPPED [ 35%]
+tests/test_config_manager.py::test_config_integration SKIPPED (Modul...) [ 35%]
+tests/test_continue_models.py::test_models_presence PASSED               [ 36%]
+tests/test_correction.py::test_audit PASSED                              [ 36%]
+tests/test_correction.py::test_correction PASSED                         [ 36%]
+tests/test_correction.py::test_generation_improvement PASSED             [ 36%]
+tests/test_corrections_validation.py::test_pytestignore_exists PASSED    [ 37%]
+tests/test_corrections_validation.py::test_plugins_manager_exists PASSED [ 37%]
+tests/test_corrections_validation.py::test_plugins_manager_functions PASSED [ 37%]
+tests/test_corrections_validation.py::test_templates_exist PASSED        [ 37%]
+tests/test_corrections_validation.py::test_base_templates_function PASSED [ 37%]
+tests/test_corrections_validation.py::test_template_rendering PASSED     [ 38%]
+tests/test_corrections_validation.py::test_documentation_exists PASSED   [ 38%]
+tests/test_corrections_validation.py::test_audit_intelligent_import PASSED [ 38%]
+tests/test_corrections_validation.py::test_audit_intelligent_instantiation PASSED [ 38%]
+tests/test_coverage_threshold.py::TestCoverageThreshold::test_coverage_file_exists PASSED [ 39%]
+tests/test_coverage_threshold.py::TestCoverageThreshold::test_minimum_coverage_threshold PASSED [ 39%]
+tests/test_coverage_threshold.py::TestCoverageThreshold::test_core_modules_coverage PASSED [ 39%]
+tests/test_coverage_threshold.py::TestCoverageThreshold::test_test_files_exist PASSED [ 39%]
+tests/test_coverage_threshold.py::TestCoverageThreshold::test_test_coverage_structure PASSED [ 40%]
+tests/test_coverage_threshold.py::TestCoverageThreshold::test_no_untested_critical_modules PASSED [ 40%]
+tests/test_coverage_threshold.py::TestCoverageThreshold::test_coverage_report_readable PASSED [ 40%]
+tests/test_coverage_threshold.py::TestCoverageThreshold::test_coverage_configuration SKIPPED [ 40%]
+tests/test_coverage_threshold.py::TestCoverageThreshold::test_test_execution_coverage PASSED [ 40%]
+tests/test_coverage_threshold.py::TestCoverageThreshold::test_coverage_quality_metrics PASSED [ 41%]
+tests/test_data_cleanup.py::TestDataCleanup::test_data_cleaner_initialization SKIPPED [ 41%]
+tests/test_data_cleanup.py::TestDataCleanup::test_find_analysis_files SKIPPED [ 41%]
+tests/test_data_cleanup.py::TestDataCleanup::test_get_file_hash SKIPPED  [ 41%]
+tests/test_data_cleanup.py::TestDataCleanup::test_categorize_files SKIPPED [ 42%]
+tests/test_data_cleanup.py::TestDataCleanup::test_is_file_important SKIPPED [ 42%]
+tests/test_data_cleanup.py::TestDataCleanup::test_archive_important_files SKIPPED [ 42%]
+tests/test_data_cleanup.py::TestDataCleanup::test_remove_duplicates SKIPPED [ 42%]
+tests/test_data_cleanup.py::TestDataCleanup::test_remove_old_files SKIPPED [ 43%]
+tests/test_data_cleanup.py::TestDataCleanup::test_generate_report SKIPPED [ 43%]
+tests/test_data_cleanup.py::TestDataCleanup::test_cleanup_dry_run SKIPPED [ 43%]
+tests/test_data_cleanup.py::TestDataCleanup::test_cleanup_full SKIPPED   [ 43%]
+tests/test_data_cleanup.py::test_data_cleaner_integration SKIPPED (M...) [ 43%]
+tests/test_distillation_optimized.py::TestResponseDistillerOptimized::test_consensus PASSED [ 44%]
+tests/test_distillation_optimized.py::TestResponseDistillerOptimized::test_consensus_divergents PASSED [ 44%]
+tests/test_distillation_optimized.py::TestResponseDistillerOptimized::test_empty_responses PASSED [ 44%]
+tests/test_distillation_optimized.py::TestResponseDistillerOptimized::test_majority_voting PASSED [ 44%]
+tests/test_distillation_optimized.py::TestResponseDistillerOptimized::test_stacking PASSED [ 45%]
+tests/test_distillation_optimized.py::TestAuditDistillerOptimized::test_empty_audits PASSED [ 45%]
+tests/test_distillation_optimized.py::TestAuditDistillerOptimized::test_weighted_average PASSED [ 45%]
+tests/test_distillation_optimized.py::TestCorrectionDistillerOptimized::test_best_score PASSED [ 45%]
+tests/test_distillation_optimized.py::TestCorrectionDistillerOptimized::test_empty_corrections PASSED [ 46%]
+tests/test_distillation_optimized.py::TestQualityScorerOptimized::test_score_default PASSED [ 46%]
+tests/test_distillation_optimized.py::TestQualityScorerOptimized::test_score_various_inputs PASSED [ 46%]
+tests/test_encoding_utf8.py::TestEncodingUTF8::test_python_files_utf8 PASSED [ 46%]
+tests/test_encoding_utf8.py::TestEncodingUTF8::test_markdown_files_utf8 PASSED [ 46%]
+tests/test_encoding_utf8.py::TestEncodingUTF8::test_yaml_files_utf8 PASSED [ 47%]
+tests/test_encoding_utf8.py::TestEncodingUTF8::test_txt_files_utf8 PASSED [ 47%]
+tests/test_encoding_utf8.py::TestEncodingUTF8::test_requirements_utf8 PASSED [ 47%]
+tests/test_encoding_utf8.py::TestEncodingUTF8::test_config_utf8 PASSED   [ 47%]
+tests/test_encoding_utf8.py::TestEncodingUTF8::test_no_bom_marker PASSED [ 48%]
+tests/test_encoding_utf8.py::TestEncodingUTF8::test_consistent_line_endings PASSED [ 48%]
+tests/test_final_validation.py::test_ast_analyzer PASSED                 [ 48%]
+tests/test_final_validation.py::test_pattern_detector PASSED             [ 48%]
+tests/test_final_validation.py::test_architecture_analyzer PASSED        [ 49%]
+tests/test_final_validation.py::test_performance_analyzer PASSED         [ 49%]
+tests/test_final_validation.py::test_intelligent_analyzer PASSED         [ 49%]
+tests/test_generation.py::TestGenerationModule::test_generation_module_import PASSED [ 49%]
+tests/test_generation.py::TestGenerationModule::test_project_generator_initialization SKIPPED [ 50%]
+tests/test_generation.py::TestGenerationModule::test_generate_blueprint_mock PASSED [ 50%]
+tests/test_generation.py::TestGenerationModule::test_save_blueprint SKIPPED [ 50%]
+tests/test_generation.py::TestGenerationModule::test_scan_existing_project SKIPPED [ 50%]
+tests/test_generation.py::TestGenerationModule::test_generate_project_structure SKIPPED [ 50%]
+tests/test_generation.py::TestGenerationModule::test_generate_blueprint_ia SKIPPED [ 51%]
+tests/test_generation.py::test_generation_integration PASSED             [ 51%]
+tests/test_hardcoded_paths.py::TestHardcodedPaths::test_no_absolute_paths_in_source SKIPPED [ 51%]
+tests/test_hardcoded_paths.py::TestHardcodedPaths::test_no_absolute_paths SKIPPED [ 51%]
+tests/test_hardcoded_paths.py::TestHardcodedPaths::test_no_desktop_paths SKIPPED [ 52%]
+tests/test_i18n.py::test_i18n_module_import SKIPPED (Module i18n non...) [ 52%]
+tests/test_i18n.py::test_french_translations SKIPPED (Module fr non ...) [ 52%]
+tests/test_i18n.py::test_english_translations SKIPPED (Module en non...) [ 52%]
+tests/test_i18n.py::test_translation_consistency SKIPPED (Modules de...) [ 53%]
+tests/test_imports_all.py::TestImportsAll::test_core_modules_import SKIPPED [ 53%]
+tests/test_imports_all.py::TestImportsAll::test_distillation_modules_import PASSED [ 53%]
+tests/test_imports_all.py::TestImportsAll::test_classification_modules_import PASSED [ 53%]
+tests/test_imports_all.py::TestImportsAll::test_i18n_modules_import SKIPPED [ 53%]
+tests/test_imports_all.py::TestImportsAll::test_plugins_modules_import SKIPPED [ 54%]
+tests/test_imports_all.py::TestImportsAll::test_modules_import SKIPPED   [ 54%]
+tests/test_imports_all.py::TestImportsAll::test_agents_import SKIPPED    [ 54%]
+tests/test_imports_all.py::TestImportsAll::test_templates_import SKIPPED [ 54%]
+tests/test_imports_all.py::TestImportsAll::test_all_python_files_importable SKIPPED [ 55%]
+tests/test_imports_all.py::TestImportsAll::test_no_circular_imports PASSED [ 55%]
+tests/test_imports_all.py::TestImportsAll::test_third_party_imports SKIPPED [ 55%]
+tests/test_integration_autogen.py::TestIntegrationAutoGen::test_autogen_orchestration SKIPPED [ 55%]
+tests/test_integration_orchestrator.py::TestOrchestratorIntegration::test_integrated_modules_imports PASSED [ 56%]
+tests/test_integration_orchestrator.py::TestOrchestratorIntegration::test_integration_score SKIPPED [ 56%]
+tests/test_integration_orchestrator.py::TestOrchestratorIntegration::test_module_functionality PASSED [ 56%]
+tests/test_integration_orchestrator.py::TestOrchestratorIntegration::test_orchestrator_configuration PASSED [ 56%]
+tests/test_integration_orchestrator.py::TestOrchestratorIntegration::test_orchestrator_imports PASSED [ 56%]
+tests/test_integration_orchestrator.py::TestOrchestratorIntegration::test_orchestrator_initialization PASSED [ 57%]
+tests/test_integration_orchestrator.py::TestOrchestratorIntegration::test_orchestrator_orchestration PASSED [ 57%]
+tests/test_integration_orchestrator.py::TestIntegrationCompleteness::test_all_modules_available PASSED [ 57%]
+tests/test_integration_orchestrator.py::TestIntegrationCompleteness::test_integration_consistency PASSED [ 57%]
+tests/test_intelligent_modules.py::TestASTAnalyzer::test_analyze_file PASSED [ 58%]
+tests/test_intelligent_modules.py::TestASTAnalyzer::test_complexity_calculation PASSED [ 58%]
+tests/test_intelligent_modules.py::TestASTAnalyzer::test_extract_classes PASSED [ 58%]
+tests/test_intelligent_modules.py::TestASTAnalyzer::test_extract_functions PASSED [ 58%]
+tests/test_intelligent_modules.py::TestPatternDetector::test_analyze_project_patterns PASSED [ 59%]
+tests/test_intelligent_modules.py::TestPatternDetector::test_antipattern_detection PASSED [ 59%]
+tests/test_intelligent_modules.py::TestPatternDetector::test_duplicate_detection PASSED [ 59%]
+tests/test_intelligent_modules.py::TestArchitectureAnalyzer::test_analyze_entire_architecture PASSED [ 59%]
+tests/test_intelligent_modules.py::TestArchitectureAnalyzer::test_dependency_analysis PASSED [ 59%]
+tests/test_intelligent_modules.py::TestArchitectureAnalyzer::test_get_optimization_plan PASSED [ 60%]
+tests/test_intelligent_modules.py::TestArchitectureAnalyzer::test_module_analysis PASSED [ 60%]
+tests/test_intelligent_modules.py::TestPerformanceAnalyzer::test_analyze_project_performance PASSED [ 60%]
+tests/test_intelligent_modules.py::TestPerformanceAnalyzer::test_get_performance_insights PASSED [ 60%]
+tests/test_intelligent_modules.py::TestPerformanceAnalyzer::test_performance_issues_detection PASSED [ 61%]
+tests/test_intelligent_modules.py::TestPerformanceAnalyzer::test_performance_metrics PASSED [ 61%]
+tests/test_intelligent_modules.py::TestIntelligentAnalyzer::test_analyze_project_comprehensive PASSED [ 61%]
+tests/test_intelligent_modules.py::TestIntelligentAnalyzer::test_get_learning_insights PASSED [ 61%]
+tests/test_intelligent_modules.py::TestIntelligentAnalyzer::test_optimization_plan_creation PASSED [ 62%]
+tests/test_intelligent_modules.py::TestIntelligentAnalyzer::test_overall_score_calculation PASSED [ 62%]
+tests/test_intelligent_modules.py::TestIntelligentAnalyzer::test_recommendations_generation PASSED [ 62%]
+tests/test_intelligent_simple.py::test_ast_analyzer PASSED               [ 62%]
+tests/test_intelligent_simple.py::test_pattern_detector PASSED           [ 62%]
+tests/test_intelligent_simple.py::test_architecture_analyzer PASSED      [ 63%]
+tests/test_intelligent_simple.py::test_performance_analyzer PASSED       [ 63%]
+tests/test_intelligent_system.py::test_intelligent_analyzer PASSED       [ 63%]
+tests/test_intelligent_system.py::test_intelligent_memory PASSED         [ 63%]
+tests/test_intelligent_system.py::test_intelligent_orchestrator PASSED   [ 64%]
+tests/test_intelligent_system.py::test_integration PASSED                [ 64%]
+tests/test_intelligent_system_simple.py::test_simple_analysis PASSED     [ 64%]
+tests/test_lint_flake8.py::test_flake8_clean SKIPPED (Test désactivé...) [ 64%]
+tests/test_logging_system.py::TestLoggingSystem::test_basic_logging_creation PASSED [ 65%]
+tests/test_logging_system.py::TestLoggingSystem::test_advanced_logging_import PASSED [ 65%]
+tests/test_logging_system.py::TestLoggingSystem::test_advanced_logging_functionality PASSED [ 65%]
+tests/test_logging_system.py::TestLoggingSystem::test_log_file_rotation PASSED [ 65%]
+tests/test_logging_system.py::TestLoggingSystem::test_log_levels PASSED  [ 65%]
+tests/test_logging_system.py::TestLoggingSystem::test_log_format PASSED  [ 66%]
+tests/test_logging_system.py::TestLoggingSystem::test_log_directory_creation PASSED [ 66%]
+tests/test_logging_system.py::test_logging_configuration PASSED          [ 66%]
+tests/test_multi_file_editor.py::test_apply_corrections_and_rollback PASSED [ 66%]
+tests/test_multi_file_editor.py::test_apply_corrections_error PASSED     [ 67%]
+tests/test_no_polluting_files.py::TestNoPollutingFiles::test_no_macos_hidden_files SKIPPED [ 67%]
+tests/test_no_polluting_files.py::TestNoPollutingFiles::test_no_python_cache_files SKIPPED [ 67%]
+tests/test_no_polluting_files.py::TestNoPollutingFiles::test_no_temp_files SKIPPED [ 67%]
+tests/test_no_polluting_files.py::TestNoPollutingFiles::test_no_corrupted_files SKIPPED [ 68%]
+tests/test_no_polluting_files.py::TestNoPollutingFiles::test_no_editor_files PASSED [ 68%]
+tests/test_no_polluting_files.py::TestNoPollutingFiles::test_no_archive_files PASSED [ 68%]
+tests/test_no_polluting_files.py::TestNoPollutingFiles::test_no_secret_files SKIPPED [ 68%]
+tests/test_no_polluting_files.py::TestNoPollutingFiles::test_no_large_files PASSED [ 68%]
+tests/test_no_polluting_files.py::TestNoPollutingFiles::test_no_duplicate_files SKIPPED [ 69%]
+tests/test_no_polluting_files.py::TestNoPollutingFiles::test_no_empty_directories SKIPPED [ 69%]
+tests/test_orchestrator_robotics.py::TestOrchestratorRobotics::test_industrialize_project_with_robotics SKIPPED [ 69%]
+tests/test_orchestrator_robotics.py::TestOrchestratorRobotics::test_robotics_module_only SKIPPED [ 69%]
+tests/test_orchestrator_robotics.py::TestOrchestratorRobotics::test_robotics_module_on_non_robotics_project SKIPPED [ 70%]
+tests/test_orchestrator_robotics.py::TestOrchestratorRobotics::test_robotics_module_import SKIPPED [ 70%]
+tests/test_orchestrator_robotics.py::TestOrchestratorRobotics::test_robotics_audit_method SKIPPED [ 70%]
+tests/test_orchestrator_robotics.py::test_robotics_module_availability SKIPPED [ 70%]
+tests/test_performance_optimized.py::TestPerformanceOptimized::test_analytics_basic_operations SKIPPED [ 71%]
+tests/test_performance_optimized.py::TestPerformanceOptimized::test_analytics_instantiation SKIPPED [ 71%]
+tests/test_performance_optimized.py::TestPerformanceOptimized::test_analytics_with_cache SKIPPED [ 71%]
+tests/test_performance_optimized.py::TestPerformanceOptimized::test_audit_basic_operations SKIPPED [ 71%]
+tests/test_performance_optimized.py::TestPerformanceOptimized::test_audit_instantiation SKIPPED [ 71%]
+tests/test_performance_optimized.py::TestPerformanceOptimized::test_cleanup_basic_operations SKIPPED [ 72%]
+tests/test_performance_optimized.py::TestPerformanceOptimized::test_cleanup_instantiation SKIPPED [ 72%]
+tests/test_performance_optimized.py::TestPerformanceOptimized::test_memory_usage SKIPPED [ 72%]
+tests/test_performance_optimized.py::TestPerformanceOptimized::test_parallel_operations SKIPPED [ 72%]
+tests/test_performance_optimized.py::test_import_performance PASSED      [ 73%]
+tests/test_performance_optimized.py::test_module_instantiation_performance SKIPPED [ 73%]
+tests/test_phase2_integration.py::TestPhase2Integration::test_orchestrator_phase2_imports PASSED [ 73%]
+tests/test_phase2_integration.py::TestPhase2Integration::test_phase2_backup_integration PASSED [ 73%]
+tests/test_phase2_integration.py::TestPhase2Integration::test_phase2_error_handling_integration PASSED [ 74%]
+tests/test_phase2_integration.py::TestPhase2Integration::test_phase2_validation_integration PASSED [ 74%]
+tests/test_phase2_integration.py::TestPhase2Integration::test_phase2_backup_stats_integration PASSED [ 74%]
+tests/test_phase2_integration.py::TestPhase2Integration::test_orchestrate_with_phase2_features PASSED [ 74%]
+tests/test_phase2_integration.py::TestPhase2Integration::test_cli_standard_integration PASSED [ 75%]
+tests/test_phase2_integration.py::TestPhase2Integration::test_error_codes_integration PASSED [ 75%]
+tests/test_phase2_integration.py::TestPhase2Integration::test_error_handling_integration PASSED [ 75%]
+tests/test_phase2_integration.py::TestPhase2Integration::test_backup_system_integration PASSED [ 75%]
+tests/test_phase2_integration.py::TestPhase2Integration::test_phase2_fallback_when_not_available PASSED [ 75%]
+tests/test_phase2_integration.py::TestPhase2Documentation::test_templates_documentation_exists PASSED [ 76%]
+tests/test_phase2_integration.py::TestPhase2Documentation::test_prompts_documentation_exists PASSED [ 76%]
+tests/test_phase2_integration.py::TestPhase2Documentation::test_phase2_implementation_documentation_exists SKIPPED [ 76%]
+tests/test_phase2_integration.py::TestPhase2CLIScripts::test_backup_script_exists PASSED [ 76%]
+tests/test_phase2_integration.py::TestPhase2CLIScripts::test_backup_script_content PASSED [ 77%]
+tests/test_plugin_complet.py::test_vscode_installation PASSED            [ 77%]
+tests/test_plugin_complet.py::test_plugin_compilation PASSED             [ 77%]
+tests/test_plugin_complet.py::test_package_json PASSED                   [ 77%]
+tests/test_plugin_complet.py::test_ai_server PASSED                      [ 78%]
+tests/test_plugin_complet.py::test_apple_double_files PASSED             [ 78%]
+tests/test_plugins.py::test_list_plugins PASSED                          [ 78%]
+tests/test_plugins.py::test_load_plugin PASSED                           [ 78%]
+tests/test_plugins.py::test_run_all_plugins PASSED                       [ 78%]
+tests/test_plugins.py::test_export_docker_plugin PASSED                  [ 79%]
+tests/test_plugins_validator.py::test_validate_plugin_ok PASSED          [ 79%]
+tests/test_plugins_validator.py::test_validate_plugin_fail PASSED        [ 79%]
+tests/test_predictive_cache.py::TestPredictiveCache::test_invalidate PASSED [ 79%]
+tests/test_predictive_cache.py::TestPredictiveCache::test_pre_generate PASSED [ 80%]
+tests/test_predictive_cache.py::TestPredictiveCache::test_predict_key PASSED [ 80%]
+tests/test_predictive_cache.py::TestPredictiveCache::test_set_get PASSED [ 80%]
+tests/test_predictive_cache.py::TestPredictiveCache::test_stats PASSED   [ 80%]
+tests/test_predictive_cache.py::TestPredictiveCache::test_ttl PASSED     [ 81%]
+tests/test_profils_utilisateur_avances.py::TestUserProfilesAdvanced::test_functionality PASSED [ 81%]
+tests/test_profils_utilisateur_avances.py::TestUserProfilesAdvanced::test_import PASSED [ 81%]
+tests/test_profils_utilisateur_avances.py::TestUserProfilesAdvanced::test_structure PASSED [ 81%]
+tests/test_project_importer.py::test_project_import_concept PASSED       [ 81%]
+tests/test_ready_check.py::test_check_ready_ok SKIPPED (Module Ready...) [ 82%]
+tests/test_ready_check.py::test_check_ready_missing SKIPPED (Module ...) [ 82%]
+tests/test_requirements_consistency.py::TestRequirementsConsistency::test_requirements_txt_exists PASSED [ 82%]
+tests/test_requirements_consistency.py::TestRequirementsConsistency::test_requirements_txt_readable PASSED [ 82%]
+tests/test_requirements_consistency.py::TestRequirementsConsistency::test_requirements_format PASSED [ 83%]
+tests/test_requirements_consistency.py::TestRequirementsConsistency::test_essential_dependencies PASSED [ 83%]
+tests/test_requirements_consistency.py::TestRequirementsConsistency::test_no_duplicate_dependencies SKIPPED [ 83%]
+tests/test_requirements_consistency.py::TestRequirementsConsistency::test_pyproject_toml_exists PASSED [ 83%]
+tests/test_requirements_consistency.py::TestRequirementsConsistency::test_pyproject_toml_readable PASSED [ 84%]
+tests/test_requirements_consistency.py::TestRequirementsConsistency::test_requirements_vs_pyproject_consistency PASSED [ 84%]
+tests/test_requirements_consistency.py::TestRequirementsConsistency::test_no_conflicting_versions PASSED [ 84%]
+tests/test_requirements_consistency.py::TestRequirementsConsistency::test_no_obsolete_dependencies PASSED [ 84%]
+tests/test_requirements_consistency.py::TestRequirementsConsistency::test_requirements_installable PASSED [ 84%]
+tests/test_security_patterns.py::TestSecurityPatterns::test_no_hardcoded_passwords SKIPPED [ 85%]
+tests/test_security_patterns.py::TestSecurityPatterns::test_no_sql_injection_patterns SKIPPED [ 85%]
+tests/test_security_patterns.py::TestSecurityPatterns::test_no_eval_usage SKIPPED [ 85%]
+tests/test_security_patterns.py::TestSecurityPatterns::test_no_shell_injection PASSED [ 85%]
+tests/test_security_patterns.py::TestSecurityPatterns::test_no_debug_code SKIPPED [ 86%]
+tests/test_security_patterns.py::TestSecurityPatterns::test_no_hardcoded_urls SKIPPED [ 86%]
+tests/test_security_patterns.py::TestSecurityPatterns::test_no_weak_crypto SKIPPED [ 86%]
+tests/test_templates_documentation.py::TestTemplatesDocumentation::test_templates_directory_exists PASSED [ 86%]
+tests/test_templates_documentation.py::TestTemplatesDocumentation::test_docs_directory_exists PASSED [ 87%]
+tests/test_templates_documentation.py::TestTemplatesDocumentation::test_readme_exists PASSED [ 87%]
+tests/test_templates_documentation.py::TestTemplatesDocumentation::test_readme_content PASSED [ 87%]
+tests/test_templates_documentation.py::TestTemplatesDocumentation::test_base_templates_function PASSED [ 87%]
+tests/test_templates_documentation.py::TestTemplatesDocumentation::test_api_template_exists PASSED [ 87%]
+tests/test_templates_documentation.py::TestTemplatesDocumentation::test_memory_template_exists PASSED [ 88%]
+tests/test_templates_documentation.py::TestTemplatesDocumentation::test_tts_template_exists PASSED [ 88%]
+tests/test_templates_documentation.py::TestTemplatesDocumentation::test_template_rendering PASSED [ 88%]
+tests/test_templates_documentation.py::TestTemplatesDocumentation::test_template_files_exist PASSED [ 88%]
+tests/test_templates_documentation.py::TestTemplatesDocumentation::test_template_files_content PASSED [ 89%]
+tests/test_templates_documentation.py::TestTemplatesDocumentation::test_documentation_coverage PASSED [ 89%]
+tests/test_templates_documentation.py::TestTemplatesDocumentation::test_variables_documentation PASSED [ 89%]
+tests/test_templates_documentation.py::TestTemplatesDocumentation::test_examples_documentation PASSED [ 89%]
+tests/test_templates_documentation.py::TestTemplatesDocumentation::test_troubleshooting_documentation PASSED [ 90%]
+tests/test_templates_documentation.py::TestTemplatesDocumentation::test_template_structure PASSED [ 90%]
+tests/test_templates_documentation.py::TestTemplatesDocumentation::test_template_variables_validation PASSED [ 90%]
+tests/test_templates_documentation.py::TestTemplatesDocumentation::test_documentation_format PASSED [ 90%]
+tests/test_templates_documentation.py::TestTemplatesDocumentation::test_documentation_links PASSED [ 90%]
+tests/test_templates_documentation.py::TestTemplatesDocumentation::test_template_file_permissions PASSED [ 91%]
+tests/test_templates_documentation.py::TestTemplatesDocumentation::test_documentation_encoding PASSED [ 91%]
+tests/test_templates_documentation.py::TestTemplatesIntegration::test_full_template_workflow PASSED [ 91%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_orchestrator_initialization PASSED [ 91%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_database_initialization PASSED [ 92%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_orchestrate_project_complete_basic PASSED [ 92%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_orchestrate_project_complete_with_industrialization PASSED [ 92%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_run_audit PASSED [ 92%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_run_linting PASSED [ 93%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_run_security_audit PASSED [ 93%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_run_analytics PASSED [ 93%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_run_cleanup PASSED [ 93%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_run_documentation PASSED [ 93%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_run_testing PASSED [ 94%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_run_cicd PASSED [ 94%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_run_robotics_audit PASSED [ 94%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_generate_predictions PASSED [ 94%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_generate_optimizations PASSED [ 95%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_learn_from_results PASSED [ 95%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_generate_unified_report PASSED [ 95%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_save_unified_results PASSED [ 95%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_get_orchestration_insights PASSED [ 96%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_phase2_backup PASSED [ 96%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_phase2_error_handling PASSED [ 96%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_validate_phase2_inputs PASSED [ 96%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_get_phase2_backup_stats PASSED [ 96%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_orchestrate_with_phase2_features PASSED [ 97%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_error_handling_in_industrialization PASSED [ 97%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_cli_entry_point PASSED [ 97%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_main_entry_point PASSED [ 97%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_main_with_args PASSED [ 98%]
+tests/test_unified_orchestrator_complete.py::TestUnifiedOrchestratorComplete::test_orchestrator_auto_backup PASSED [ 98%]
+tests/test_workspace_organization.py::TestWorkspaceOrganization::test_scan_workspace PASSED [ 98%]
+tests/test_workspace_organization.py::TestWorkspaceOrganization::test_pattern_matching PASSED [ 98%]
+tests/test_workspace_organization.py::TestWorkspaceOrganization::test_organize_files_dry_run PASSED [ 99%]
+tests/test_workspace_organization.py::TestWorkspaceOrganization::test_organize_files_actual PASSED [ 99%]
+tests/test_workspace_organization.py::TestWorkspaceOrganization::test_cleanup_temp_files PASSED [ 99%]
+tests/test_workspace_organization.py::TestWorkspaceOrganization::test_validate_organization PASSED [ 99%]
+tests/test_workspace_organization.py::TestWorkspaceOrganization::test_generate_organization_report PASSED [100%]
+
+=============================== warnings summary ===============================
+tests/test_complet_athalia_imports.py:19
+  /Volumes/T7/athalia-dev-setup/tests/test_complet_athalia_imports.py:19: PytestCollectionWarning: cannot collect test class 'TestImportsPython' because it has a __init__ constructor (from: tests/test_complet_athalia_imports.py)
+    class TestImportsPython:
+
+tests/test_complet_athalia_syntax.py:19
+  /Volumes/T7/athalia-dev-setup/tests/test_complet_athalia_syntax.py:19: PytestCollectionWarning: cannot collect test class 'TestSyntaxPython' because it has a __init__ constructor (from: tests/test_complet_athalia_syntax.py)
+    class TestSyntaxPython:
+
+tests/test_performance_optimized.py:74
+  /Volumes/T7/athalia-dev-setup/tests/test_performance_optimized.py:74: PytestUnknownMarkWarning: Unknown pytest.mark.fast - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.fast
+
+tests/test_performance_optimized.py:86
+  /Volumes/T7/athalia-dev-setup/tests/test_performance_optimized.py:86: PytestUnknownMarkWarning: Unknown pytest.mark.fast - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.fast
+
+tests/test_performance_optimized.py:98
+  /Volumes/T7/athalia-dev-setup/tests/test_performance_optimized.py:98: PytestUnknownMarkWarning: Unknown pytest.mark.fast - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.fast
+
+tests/test_performance_optimized.py:110
+  /Volumes/T7/athalia-dev-setup/tests/test_performance_optimized.py:110: PytestUnknownMarkWarning: Unknown pytest.mark.fast - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.fast
+
+tests/test_performance_optimized.py:122
+  /Volumes/T7/athalia-dev-setup/tests/test_performance_optimized.py:122: PytestUnknownMarkWarning: Unknown pytest.mark.fast - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.fast
+
+tests/test_performance_optimized.py:134
+  /Volumes/T7/athalia-dev-setup/tests/test_performance_optimized.py:134: PytestUnknownMarkWarning: Unknown pytest.mark.fast - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.fast
+
+tests/test_performance_optimized.py:146
+  /Volumes/T7/athalia-dev-setup/tests/test_performance_optimized.py:146: PytestUnknownMarkWarning: Unknown pytest.mark.medium - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.medium
+
+tests/test_performance_optimized.py:168
+  /Volumes/T7/athalia-dev-setup/tests/test_performance_optimized.py:168: PytestUnknownMarkWarning: Unknown pytest.mark.medium - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.medium
+
+tests/test_performance_optimized.py:202
+  /Volumes/T7/athalia-dev-setup/tests/test_performance_optimized.py:202: PytestUnknownMarkWarning: Unknown pytest.mark.slow - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.slow
+
+tests/test_performance_optimized.py:235
+  /Volumes/T7/athalia-dev-setup/tests/test_performance_optimized.py:235: PytestUnknownMarkWarning: Unknown pytest.mark.fast - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.fast
+
+tests/test_performance_optimized.py:252
+  /Volumes/T7/athalia-dev-setup/tests/test_performance_optimized.py:252: PytestUnknownMarkWarning: Unknown pytest.mark.fast - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.fast
+
+archive/tests_skipped_20250726/test_correction_optimizer_optimized.py::TestCorrectionOptimizerOptimized::test_basic_corrections
+  /Volumes/T7/athalia-dev-setup/archive/tests_skipped_20250726/test_correction_optimizer_optimized.py:53: UserWarning: Correction non appliquée pour spacing_issues, voir logs.
+    warnings.warn(f"Correction non appliquée pour {test_case['name']}, voir logs.")
+
+archive/tests_skipped_20250726/test_correction_optimizer_optimized.py::TestCorrectionOptimizerOptimized::test_complex_correction
+  /Volumes/T7/athalia-dev-setup/archive/tests_skipped_20250726/test_correction_optimizer_optimized.py:76: UserWarning: Correction complexe non appliquée, voir logs.
+    warnings.warn("Correction complexe non appliquée, voir logs.")
+
+archive/tests_skipped_20250726/test_correction_optimizer_optimized.py::TestCorrectionOptimizerOptimized::test_contextual_corrections
+  /Volumes/T7/athalia-dev-setup/archive/tests_skipped_20250726/test_correction_optimizer_optimized.py:98: UserWarning: Correction contextuelle non appliquée pour undefined_variable, voir logs.
+    warnings.warn(f"Correction contextuelle non appliquée pour {test_case['name']}, voir logs.")
+
+archive/tests_skipped_20250726/test_correction_optimizer_optimized.py::TestCorrectionOptimizerOptimized::test_contextual_corrections
+  /Volumes/T7/athalia-dev-setup/archive/tests_skipped_20250726/test_correction_optimizer_optimized.py:98: UserWarning: Correction contextuelle non appliquée pour valid_code, voir logs.
+    warnings.warn(f"Correction contextuelle non appliquée pour {test_case['name']}, voir logs.")
+
+archive/tests_skipped_20250726/test_correction_optimizer_optimized.py::TestCorrectionOptimizerOptimized::test_convenience_functions
+  /Volumes/T7/athalia-dev-setup/archive/tests_skipped_20250726/test_correction_optimizer_optimized.py:138: UserWarning: Fonction de convenance non appliquée, voir logs.
+    warnings.warn("Fonction de convenance non appliquée, voir logs.")
+
+archive/tests_skipped_20250726/test_correction_optimizer_optimized.py::TestCorrectionOptimizerIntegration::test_with_real_files
+  /Volumes/T7/athalia-dev-setup/archive/tests_skipped_20250726/test_correction_optimizer_optimized.py:172: UserWarning: Correction avec vrais fichiers non appliquée, voir logs.
+    warnings.warn("Correction avec vrais fichiers non appliquée, voir logs.")
+
+tests/test_advanced_analytics_unit.py: 3 warnings
+tests/test_all_orchestrators.py: 1 warning
+tests/test_auto_documenter_unit.py: 1 warning
+tests/test_complet_athalia_imports.py: 2 warnings
+tests/test_complet_athalia_syntax.py: 2 warnings
+tests/test_intelligent_system_simple.py: 2 warnings
+  <unknown>:54: DeprecationWarning: invalid escape sequence '\;'
+
+tests/test_advanced_analytics_unit.py: 3 warnings
+tests/test_all_orchestrators.py: 1 warning
+tests/test_auto_documenter_unit.py: 1 warning
+tests/test_complet_athalia_imports.py: 2 warnings
+tests/test_complet_athalia_syntax.py: 2 warnings
+tests/test_intelligent_system_simple.py: 2 warnings
+  <unknown>:184: DeprecationWarning: invalid escape sequence '\;'
+
+tests/test_all_orchestrators.py::test_level_1_analyzer
+  /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_all_orchestrators.py::test_level_1_analyzer returned <class 'tuple'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_all_orchestrators.py::test_level_2_orchestrator
+  /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_all_orchestrators.py::test_level_2_orchestrator returned <class 'tuple'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_all_orchestrators.py::test_level_3_coordinator
+  /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_all_orchestrators.py::test_level_3_coordinator returned <class 'tuple'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_all_orchestrators.py::test_integration
+  /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_all_orchestrators.py::test_integration returned <class 'tuple'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_complet_athalia_imports.py::test_imports_basic
+  /Volumes/T7/athalia-dev-setup/tests/../athalia_core/robotics/robotics_ci.py:54: DeprecationWarning: invalid escape sequence '\;'
+    workflow = """name: Robotics CI/CD
+
+tests/test_complet_athalia_imports.py::test_imports_basic
+  /Volumes/T7/athalia-dev-setup/tests/../athalia_core/robotics/robotics_ci.py:184: DeprecationWarning: invalid escape sequence '\;'
+    compose = """version: '3.8'
+
+tests/test_correction.py::test_generation_improvement
+  /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_correction.py::test_generation_improvement returned <class 'dict'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_final_validation.py::test_ast_analyzer
+  /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_final_validation.py::test_ast_analyzer returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_final_validation.py::test_pattern_detector
+  /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_final_validation.py::test_pattern_detector returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_final_validation.py::test_architecture_analyzer
+  /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_final_validation.py::test_architecture_analyzer returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_final_validation.py::test_performance_analyzer
+  /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_final_validation.py::test_performance_analyzer returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_final_validation.py::test_intelligent_analyzer
+  /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_final_validation.py::test_intelligent_analyzer returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_intelligent_simple.py::test_ast_analyzer
+  /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_intelligent_simple.py::test_ast_analyzer returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_intelligent_simple.py::test_pattern_detector
+  /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_intelligent_simple.py::test_pattern_detector returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_intelligent_simple.py::test_architecture_analyzer
+  /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_intelligent_simple.py::test_architecture_analyzer returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_intelligent_simple.py::test_performance_analyzer
+  /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_intelligent_simple.py::test_performance_analyzer returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_intelligent_system.py::test_intelligent_analyzer
+  /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_intelligent_system.py::test_intelligent_analyzer returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_intelligent_system.py::test_intelligent_memory
+  /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_intelligent_system.py::test_intelligent_memory returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_intelligent_system.py::test_intelligent_orchestrator
+  /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_intelligent_system.py::test_intelligent_orchestrator returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_intelligent_system.py::test_integration
+  /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_intelligent_system.py::test_integration returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_intelligent_system_simple.py::test_simple_analysis
+  /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_intelligent_system_simple.py::test_simple_analysis returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_plugin_complet.py::test_vscode_installation
+  /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_plugin_complet.py::test_vscode_installation returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_plugin_complet.py::test_plugin_compilation
+  /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_plugin_complet.py::test_plugin_compilation returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_plugin_complet.py::test_package_json
+  /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_plugin_complet.py::test_package_json returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_plugin_complet.py::test_ai_server
+  /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_plugin_complet.py::test_ai_server returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+tests/test_plugin_complet.py::test_apple_double_files
+  /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/site-packages/_pytest/python.py:161: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_plugin_complet.py::test_apple_double_files returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+
+-------------------------------------------------------------------------------------------------------------------------------------- benchmark 'critical_functions': 3 tests --------------------------------------------------------------------------------------------------------------------------------------
+Name (time in ns)                                                                                            Min                        Max                      Mean                    StdDev                    Median                       IQR              Outliers           OPS            Rounds  Iterations
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+test_critical_function_benchmark[athalia_core.auto_tester-AutoTester-False]                             891.6017 (1.0)         126,108.3875 (1.29)         1,073.3514 (1.0)            701.5535 (1.0)            966.7827 (1.0)             33.3879 (1.0)      9806;11336  931,661.3617 (1.0)      193533           5
+test_critical_function_benchmark[athalia_core.advanced_analytics-AdvancedAnalytics-True]              7,833.0049 (8.79)         97,707.9617 (1.0)          9,325.2651 (8.69)         4,635.1450 (6.61)         8,207.9787 (8.49)           458.0943 (13.72)      890;3494  107,235.5573 (0.12)      19984           1
+test_critical_function_benchmark[athalia_core.unified_orchestrator-UnifiedOrchestrator-False]     3,995,125.0656 (>1000.0)  10,342,666.0644 (105.85)   5,633,941.6808 (>1000.0)  1,834,737.4744 (>1000.0)  4,885,000.0603 (>1000.0)  1,610,583.2183 (>1000.0)         2;2      177.4956 (0.00)         15           1
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Legend:
+  Outliers: 1 Standard Deviation from Mean; 1.5 IQR (InterQuartile Range) from 1st Quartile and 3rd Quartile.
+  OPS: Operations Per Second, computed as 1 / Mean
+========== 331 passed, 101 skipped, 67 warnings in 411.34s (0:06:51) ===========

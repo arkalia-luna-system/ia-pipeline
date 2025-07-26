@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from athalia_core.plugins_validator import validate_plugin
 import os
-
 import tempfile
+
+from athalia_core.plugins_validator import validate_plugin
 
 
 def test_validate_plugin_ok():

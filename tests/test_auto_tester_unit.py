@@ -1,8 +1,10 @@
-import unittest
-import tempfile
 import os
+import tempfile
+import unittest
 from pathlib import Path
+
 from athalia_core.auto_tester import AutoTester
+
 
 class TestAutoTester(unittest.TestCase):
     def setUp(self):

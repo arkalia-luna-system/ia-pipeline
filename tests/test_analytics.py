@@ -5,19 +5,22 @@ Tests unitaires pour le module analytics.py d'Athalia
 Module critique pour les analyses et métriques de projets
 """
 
+import json
 import os
 import tempfile
-import pytest
-import json
 from pathlib import Path
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
+
+import pytest
 
 # Test d'import du module analytics
 ANALYTICS_AVAILABLE = False
 try:
     from athalia_core.analytics import (
-        analyze_project, generate_heatmap_data, 
-        generate_technical_debt_analysis, generate_analytics_html
+        analyze_project,
+        generate_analytics_html,
+        generate_heatmap_data,
+        generate_technical_debt_analysis,
     )
     ANALYTICS_AVAILABLE = True
 except ImportError:

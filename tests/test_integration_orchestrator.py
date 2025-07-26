@@ -5,12 +5,12 @@
 Tests pour valider l'intégration des modules dans l'orchestrateur unifié.
 """
 
-import unittest
-import tempfile
-import shutil
-from pathlib import Path
-import sys
 import os
+import shutil
+import sys
+import tempfile
+import unittest
+from pathlib import Path
 
 # Ajouter le répertoire parent au path
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -162,9 +162,9 @@ if __name__ == "__main__":
         try:
             # Tester quelques modules clés
             from athalia_core.config_manager import ConfigManager
-            from athalia_core.logger_advanced import AthaliaLogger
             from athalia_core.intelligent_memory import IntelligentMemory
-            
+            from athalia_core.logger_advanced import AthaliaLogger
+
             # Test ConfigManager
             config_manager = ConfigManager()
             self.assertIsNotNone(config_manager)
@@ -186,7 +186,7 @@ if __name__ == "__main__":
         """Test d'orchestration avec modules intégrés"""
         try:
             from athalia_core.unified_orchestrator import UnifiedOrchestrator
-            
+
             # Configuration minimale pour les tests
             config = {
                 "audit": True,
@@ -269,7 +269,7 @@ class TestIntegrationCompleteness(unittest.TestCase):
         """Test de la cohérence de l'intégration"""
         try:
             from athalia_core.unified_orchestrator import UnifiedOrchestrator
-            
+
             # Vérifier que l'orchestrateur peut être importé sans erreur
             self.assertTrue(True, "Import de l'orchestrateur réussi")
             

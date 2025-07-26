@@ -4,9 +4,11 @@
 Tests pour le linting flake8
 """
 
-import pytest
 import subprocess
 import sys
+
+import pytest
+
 
 @pytest.mark.skip(reason="Test désactivé - fichiers corrompus avec bytes null")
 def test_flake8_clean():

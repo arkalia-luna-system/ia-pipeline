@@ -3,11 +3,12 @@
 """
 Test d'intégration end-to-end pour la génération de projet Athalia
 """
-import pytest
 import subprocess
 import sys
-import yaml
 from pathlib import Path
+
+import pytest
+import yaml
 
 
 def test_generation_end_to_end(tmp_path):

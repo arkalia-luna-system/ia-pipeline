@@ -4,13 +4,15 @@ Test complet du plugin VS Code Athalia
 Vérifie tous les composants nécessaires au fonctionnement
 """
 
-import os
-import sys
 import json
+import os
 import subprocess
-import requests
+import sys
 import time
 from pathlib import Path
+
+import requests
+
 
 def print_status(message, status="ℹ️"):
     print(f"{status} {message}")

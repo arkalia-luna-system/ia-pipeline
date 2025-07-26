@@ -1,7 +1,8 @@
-import subprocess
-import os
 import glob
+import os
+import subprocess
 import time
+
 import pytest
 
 
