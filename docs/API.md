@@ -891,8 +891,6 @@ Test le contenu du script de sauvegarde
 
 ##### failing_operation
 
-##### test_operation
-
 ---
 
 ### test_final_validation
@@ -23669,6 +23667,6430 @@ Returns the line of text containing loc within a string, counting newlines as li
 **Paramètres :**
 
 - `_`
+
+---
+
+### _pswindows
+
+Windows platform implementation.
+
+#### Classes
+
+##### Priority
+
+##### IOPriority
+
+##### WindowsService
+
+Represents an installed Windows service.
+
+**Méthodes :**
+
+- `__init__()`
+- `__str__()`
+- `__repr__()`
+- `__eq__()`
+- `__ne__()`
+- `_query_config()`
+- `_query_status()`
+- `_wrap_exceptions()`
+- `name()`
+- `display_name()`
+- `binpath()`
+- `username()`
+- `start_type()`
+- `pid()`
+- `status()`
+- `description()`
+- `as_dict()`
+
+##### Process
+
+Wrapper class around underlying C implementation.
+
+**Méthodes :**
+
+- `__init__()`
+- `oneshot_enter()`
+- `oneshot_exit()`
+- `_proc_info()`
+- `name()`
+- `exe()`
+- `cmdline()`
+- `environ()`
+- `ppid()`
+- `_get_raw_meminfo()`
+- `memory_info()`
+- `memory_full_info()`
+- `memory_maps()`
+- `kill()`
+- `send_signal()`
+- `wait()`
+- `username()`
+- `create_time()`
+- `num_threads()`
+- `threads()`
+- `cpu_times()`
+- `suspend()`
+- `resume()`
+- `cwd()`
+- `open_files()`
+- `net_connections()`
+- `nice_get()`
+- `nice_set()`
+- `ionice_get()`
+- `ionice_set()`
+- `io_counters()`
+- `status()`
+- `cpu_affinity_get()`
+- `cpu_affinity_set()`
+- `num_handles()`
+- `num_ctx_switches()`
+
+#### Fonctions
+
+##### convert_dos_path
+
+Convert paths using native DOS format like:
+    "\Device\HarddiskVolume1\Windows\systemew\file.txt"
+into:
+    "C:\Windows\systemew\file.txt".
+
+**Paramètres :**
+
+- `s`
+
+##### getpagesize
+
+##### virtual_memory
+
+System virtual memory as a namedtuple.
+
+##### swap_memory
+
+Swap system memory as a (total, used, free, sin, sout) tuple.
+
+##### disk_usage
+
+Return disk usage associated with path.
+
+**Paramètres :**
+
+- `path`
+
+##### disk_partitions
+
+Return disk partitions.
+
+**Paramètres :**
+
+- `all`
+
+##### cpu_times
+
+Return system CPU times as a named tuple.
+
+##### per_cpu_times
+
+Return system per-CPU times as a list of named tuples.
+
+##### cpu_count_logical
+
+Return the number of logical CPUs in the system.
+
+##### cpu_count_cores
+
+Return the number of CPU cores in the system.
+
+##### cpu_stats
+
+Return CPU statistics.
+
+##### cpu_freq
+
+Return CPU frequency.
+On Windows per-cpu frequency is not supported.
+
+##### getloadavg
+
+Return the number of processes in the system run queue averaged
+over the last 1, 5, and 15 minutes respectively as a tuple.
+
+##### net_connections
+
+Return socket connections.  If pid == -1 return system-wide
+connections (as opposed to connections opened by one process only).
+
+**Paramètres :**
+
+- `kind`
+- `_pid`
+
+##### net_if_stats
+
+Get NIC stats (isup, duplex, speed, mtu).
+
+##### net_io_counters
+
+Return network I/O statistics for every network interface
+installed on the system as a dict of raw tuples.
+
+##### net_if_addrs
+
+Return the addresses associated to each NIC.
+
+##### sensors_battery
+
+Return battery information.
+
+##### boot_time
+
+The system boot time expressed in seconds since the epoch.
+
+##### users
+
+Return currently connected users as a list of namedtuples.
+
+##### win_service_iter
+
+Yields a list of WindowsService instances.
+
+##### win_service_get
+
+Open a Windows service and return it as a WindowsService instance.
+
+**Paramètres :**
+
+- `name`
+
+##### is_permission_err
+
+Return True if this is a permission error.
+
+**Paramètres :**
+
+- `exc`
+
+##### convert_oserror
+
+Convert OSError into NoSuchProcess or AccessDenied.
+
+**Paramètres :**
+
+- `exc`
+- `pid`
+- `name`
+
+##### wrap_exceptions
+
+Decorator which converts OSError into NoSuchProcess or AccessDenied.
+
+**Paramètres :**
+
+- `fun`
+
+##### retry_error_partial_copy
+
+Workaround for https://github.com/giampaolo/psutil/issues/875.
+See: https://stackoverflow.com/questions/4457745#4457745.
+
+**Paramètres :**
+
+- `fun`
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `display_name`
+
+##### __str__
+
+##### __repr__
+
+##### __eq__
+
+**Paramètres :**
+
+- `other`
+
+##### __ne__
+
+**Paramètres :**
+
+- `other`
+
+##### _query_config
+
+##### _query_status
+
+##### _wrap_exceptions
+
+Ctx manager which translates bare OSError and WindowsError
+exceptions into NoSuchProcess and AccessDenied.
+
+##### name
+
+The service name. This string is how a service is referenced
+and can be passed to win_service_get() to get a new
+WindowsService instance.
+
+##### display_name
+
+The service display name. The value is cached when this class
+is instantiated.
+
+##### binpath
+
+The fully qualified path to the service binary/exe file as
+a string, including command line arguments.
+
+##### username
+
+The name of the user that owns this service.
+
+##### start_type
+
+A string which can either be "automatic", "manual" or
+"disabled".
+
+##### pid
+
+The process PID, if any, else None. This can be passed
+to Process class to control the service's process.
+
+##### status
+
+Service status as a string.
+
+##### description
+
+Service long description.
+
+##### as_dict
+
+Utility method retrieving all the information above as a
+dictionary.
+
+##### wrapper
+
+##### wrapper
+
+##### __init__
+
+**Paramètres :**
+
+- `pid`
+
+##### oneshot_enter
+
+##### oneshot_exit
+
+##### _proc_info
+
+Return multiple information about this process as a
+raw tuple.
+
+##### name
+
+Return process name, which on Windows is always the final
+part of the executable.
+
+##### exe
+
+##### cmdline
+
+##### environ
+
+##### ppid
+
+##### _get_raw_meminfo
+
+##### memory_info
+
+##### memory_full_info
+
+##### memory_maps
+
+##### kill
+
+##### send_signal
+
+**Paramètres :**
+
+- `sig`
+
+##### wait
+
+**Paramètres :**
+
+- `timeout`
+
+##### username
+
+##### create_time
+
+**Paramètres :**
+
+- `fast_only`
+
+##### num_threads
+
+##### threads
+
+##### cpu_times
+
+##### suspend
+
+##### resume
+
+##### cwd
+
+##### open_files
+
+##### net_connections
+
+**Paramètres :**
+
+- `kind`
+
+##### nice_get
+
+##### nice_set
+
+**Paramètres :**
+
+- `value`
+
+##### ionice_get
+
+##### ionice_set
+
+**Paramètres :**
+
+- `ioclass`
+- `value`
+
+##### io_counters
+
+##### status
+
+##### cpu_affinity_get
+
+##### cpu_affinity_set
+
+**Paramètres :**
+
+- `value`
+
+##### num_handles
+
+##### num_ctx_switches
+
+##### from_bitmask
+
+**Paramètres :**
+
+- `x`
+
+##### to_bitmask
+
+**Paramètres :**
+
+- `ls`
+
+---
+
+### _common
+
+Common objects shared by __init__.py and _ps*.py modules.
+
+Note: this module is imported by setup.py, so it should not import
+psutil or third-party modules.
+
+#### Classes
+
+##### NicDuplex
+
+##### BatteryTime
+
+##### Error
+
+Base exception class. All other psutil exceptions inherit
+from this one.
+
+**Méthodes :**
+
+- `_infodict()`
+- `__str__()`
+- `__repr__()`
+
+##### NoSuchProcess
+
+Exception raised when a process with a certain PID doesn't
+or no longer exists.
+
+**Méthodes :**
+
+- `__init__()`
+- `__reduce__()`
+
+##### ZombieProcess
+
+Exception raised when querying a zombie process. This is
+raised on macOS, BSD and Solaris only, and not always: depending
+on the query the OS may be able to succeed anyway.
+On Linux all zombie processes are querable (hence this is never
+raised). Windows doesn't have zombie processes.
+
+**Méthodes :**
+
+- `__init__()`
+- `__reduce__()`
+
+##### AccessDenied
+
+Exception raised when permission to perform an action is denied.
+
+**Méthodes :**
+
+- `__init__()`
+- `__reduce__()`
+
+##### TimeoutExpired
+
+Raised on Process.wait(timeout) if timeout expires and process
+is still alive.
+
+**Méthodes :**
+
+- `__init__()`
+- `__reduce__()`
+
+##### _WrapNumbers
+
+Watches numbers so that they don't overflow and wrap
+(reset to zero).
+
+**Méthodes :**
+
+- `__init__()`
+- `_add_dict()`
+- `_remove_dead_reminders()`
+- `run()`
+- `cache_clear()`
+- `cache_info()`
+
+#### Fonctions
+
+##### usage_percent
+
+Calculate percentage usage of 'used' against 'total'.
+
+**Paramètres :**
+
+- `used`
+- `total`
+- `round_`
+
+##### memoize
+
+A simple memoize decorator for functions supporting (hashable)
+positional arguments.
+It also provides a cache_clear() function for clearing the cache:
+
+>>> @memoize
+... def foo()
+...     return 1
+    ...
+>>> foo()
+1
+>>> foo.cache_clear()
+>>>
+
+It supports:
+ - functions
+ - classes (acts as a @singleton)
+ - staticmethods
+ - classmethods
+
+It does NOT support:
+ - methods
+
+**Paramètres :**
+
+- `fun`
+
+##### memoize_when_activated
+
+A memoize decorator which is disabled by default. It can be
+activated and deactivated on request.
+For efficiency reasons it can be used only against class methods
+accepting no arguments.
+
+>>> class Foo:
+...     @memoize
+...     def foo()
+...         print(1)
+...
+>>> f = Foo()
+>>> # deactivated (default)
+>>> foo()
+1
+>>> foo()
+1
+>>>
+>>> # activated
+>>> foo.cache_activate(self)
+>>> foo()
+1
+>>> foo()
+>>> foo()
+>>>
+
+**Paramètres :**
+
+- `fun`
+
+##### isfile_strict
+
+Same as os.path.isfile() but does not swallow EACCES / EPERM
+exceptions, see:
+http://mail.python.org/pipermail/python-dev/2012-June/120787.html.
+
+**Paramètres :**
+
+- `path`
+
+##### path_exists_strict
+
+Same as os.path.exists() but does not swallow EACCES / EPERM
+exceptions. See:
+http://mail.python.org/pipermail/python-dev/2012-June/120787.html.
+
+**Paramètres :**
+
+- `path`
+
+##### supports_ipv6
+
+Return True if IPv6 is supported on this platform.
+
+##### parse_environ_block
+
+Parse a C environ block of environment variables into a dictionary.
+
+**Paramètres :**
+
+- `data`
+
+##### sockfam_to_enum
+
+Convert a numeric socket family value to an IntEnum member.
+If it's not a known member, return the numeric value itself.
+
+**Paramètres :**
+
+- `num`
+
+##### socktype_to_enum
+
+Convert a numeric socket type value to an IntEnum member.
+If it's not a known member, return the numeric value itself.
+
+**Paramètres :**
+
+- `num`
+
+##### conn_to_ntuple
+
+Convert a raw connection tuple to a proper ntuple.
+
+**Paramètres :**
+
+- `fd`
+- `fam`
+- `type_`
+- `laddr`
+- `raddr`
+- `status`
+- `status_map`
+- `pid`
+
+##### broadcast_addr
+
+Given the address ntuple returned by ``net_if_addrs()``
+calculates the broadcast address.
+
+**Paramètres :**
+
+- `addr`
+
+##### deprecated_method
+
+A decorator which can be used to mark a method as deprecated
+'replcement' is the method name which will be called instead.
+
+**Paramètres :**
+
+- `replacement`
+
+##### wrap_numbers
+
+Given an `input_dict` and a function `name`, adjust the numbers
+which "wrap" (restart from zero) across different calls by adding
+"old value" to "new value" and return an updated dict.
+
+**Paramètres :**
+
+- `input_dict`
+- `name`
+
+##### open_binary
+
+**Paramètres :**
+
+- `fname`
+
+##### open_text
+
+Open a file in text mode by using the proper FS encoding and
+en/decoding error handlers.
+
+**Paramètres :**
+
+- `fname`
+
+##### cat
+
+Read entire file content and return it as a string. File is
+opened in text mode. If specified, `fallback` is the value
+returned in case of error, either if the file does not exist or
+it can't be read().
+
+**Paramètres :**
+
+- `fname`
+- `fallback`
+- `_open`
+
+##### bcat
+
+Same as above but opens file in binary mode.
+
+**Paramètres :**
+
+- `fname`
+- `fallback`
+
+##### bytes2human
+
+Used by various scripts. See: https://code.activestate.com/recipes/578019-bytes-to-human-human-to-bytes-converter/?in=user-4178764.
+
+>>> bytes2human(10000)
+'9.8K'
+>>> bytes2human(100001221)
+'95.4M'
+
+**Paramètres :**
+
+- `n`
+- `format`
+
+##### get_procfs_path
+
+Return updated psutil.PROCFS_PATH constant.
+
+##### decode
+
+**Paramètres :**
+
+- `s`
+
+##### term_supports_colors
+
+**Paramètres :**
+
+- `file`
+
+##### hilite
+
+Return an highlighted version of 'string'.
+
+**Paramètres :**
+
+- `s`
+- `color`
+- `bold`
+
+##### print_color
+
+Print a colorized version of string.
+
+**Paramètres :**
+
+- `s`
+- `color`
+- `bold`
+- `file`
+
+##### debug
+
+If PSUTIL_DEBUG env var is set, print a debug message to stderr.
+
+**Paramètres :**
+
+- `msg`
+
+##### _infodict
+
+**Paramètres :**
+
+- `attrs`
+
+##### __str__
+
+##### __repr__
+
+##### __init__
+
+**Paramètres :**
+
+- `pid`
+- `name`
+- `msg`
+
+##### __reduce__
+
+##### __init__
+
+**Paramètres :**
+
+- `pid`
+- `name`
+- `ppid`
+- `msg`
+
+##### __reduce__
+
+##### __init__
+
+**Paramètres :**
+
+- `pid`
+- `name`
+- `msg`
+
+##### __reduce__
+
+##### __init__
+
+**Paramètres :**
+
+- `seconds`
+- `pid`
+- `name`
+
+##### __reduce__
+
+##### wrapper
+
+##### cache_clear
+
+Clear cache.
+
+##### wrapper
+
+##### cache_activate
+
+Activate cache. Expects a Process instance. Cache will be
+stored as a "_cache" instance attribute.
+
+**Paramètres :**
+
+- `proc`
+
+##### cache_deactivate
+
+Deactivate and clear cache.
+
+**Paramètres :**
+
+- `proc`
+
+##### outer
+
+**Paramètres :**
+
+- `fun`
+
+##### __init__
+
+##### _add_dict
+
+**Paramètres :**
+
+- `input_dict`
+- `name`
+
+##### _remove_dead_reminders
+
+In case the number of keys changed between calls (e.g. a
+disk disappears) this removes the entry from self.reminders.
+
+**Paramètres :**
+
+- `input_dict`
+- `name`
+
+##### run
+
+Cache dict and sum numbers which overflow and wrap.
+Return an updated copy of `input_dict`.
+
+**Paramètres :**
+
+- `input_dict`
+- `name`
+
+##### cache_clear
+
+Clear the internal cache, optionally only for function 'name'.
+
+**Paramètres :**
+
+- `name`
+
+##### cache_info
+
+Return internal cache dicts as a tuple of 3 elements.
+
+##### inner
+
+---
+
+### _psosx
+
+macOS platform implementation.
+
+#### Classes
+
+##### Process
+
+Wrapper class around underlying C implementation.
+
+**Méthodes :**
+
+- `__init__()`
+- `_get_kinfo_proc()`
+- `_get_pidtaskinfo()`
+- `oneshot_enter()`
+- `oneshot_exit()`
+- `name()`
+- `exe()`
+- `cmdline()`
+- `environ()`
+- `ppid()`
+- `cwd()`
+- `uids()`
+- `gids()`
+- `terminal()`
+- `memory_info()`
+- `memory_full_info()`
+- `cpu_times()`
+- `create_time()`
+- `num_ctx_switches()`
+- `num_threads()`
+- `open_files()`
+- `net_connections()`
+- `num_fds()`
+- `wait()`
+- `nice_get()`
+- `nice_set()`
+- `status()`
+- `threads()`
+
+#### Fonctions
+
+##### virtual_memory
+
+System virtual memory as a namedtuple.
+
+##### swap_memory
+
+Swap system memory as a (total, used, free, sin, sout) tuple.
+
+##### cpu_times
+
+Return system CPU times as a namedtuple.
+
+##### per_cpu_times
+
+Return system CPU times as a named tuple.
+
+##### cpu_count_logical
+
+Return the number of logical CPUs in the system.
+
+##### cpu_count_cores
+
+Return the number of CPU cores in the system.
+
+##### cpu_stats
+
+##### cpu_freq
+
+Return CPU frequency.
+On macOS per-cpu frequency is not supported.
+Also, the returned frequency never changes, see:
+https://arstechnica.com/civis/viewtopic.php?f=19&t=465002.
+
+##### disk_partitions
+
+Return mounted disk partitions as a list of namedtuples.
+
+**Paramètres :**
+
+- `all`
+
+##### sensors_battery
+
+Return battery information.
+
+##### net_connections
+
+System-wide network connections.
+
+**Paramètres :**
+
+- `kind`
+
+##### net_if_stats
+
+Get NIC stats (isup, duplex, speed, mtu).
+
+##### boot_time
+
+The system boot time expressed in seconds since the epoch.
+
+##### users
+
+Return currently connected users as a list of namedtuples.
+
+##### pids
+
+##### is_zombie
+
+**Paramètres :**
+
+- `pid`
+
+##### wrap_exceptions
+
+Decorator which translates bare OSError exceptions into
+NoSuchProcess and AccessDenied.
+
+**Paramètres :**
+
+- `fun`
+
+##### wrapper
+
+##### __init__
+
+**Paramètres :**
+
+- `pid`
+
+##### _get_kinfo_proc
+
+##### _get_pidtaskinfo
+
+##### oneshot_enter
+
+##### oneshot_exit
+
+##### name
+
+##### exe
+
+##### cmdline
+
+##### environ
+
+##### ppid
+
+##### cwd
+
+##### uids
+
+##### gids
+
+##### terminal
+
+##### memory_info
+
+##### memory_full_info
+
+##### cpu_times
+
+##### create_time
+
+##### num_ctx_switches
+
+##### num_threads
+
+##### open_files
+
+##### net_connections
+
+**Paramètres :**
+
+- `kind`
+
+##### num_fds
+
+##### wait
+
+**Paramètres :**
+
+- `timeout`
+
+##### nice_get
+
+##### nice_set
+
+**Paramètres :**
+
+- `value`
+
+##### status
+
+##### threads
+
+---
+
+### _psbsd
+
+FreeBSD, OpenBSD and NetBSD platforms implementation.
+
+#### Classes
+
+##### Process
+
+Wrapper class around underlying C implementation.
+
+**Méthodes :**
+
+- `__init__()`
+- `_assert_alive()`
+- `oneshot()`
+- `oneshot_enter()`
+- `oneshot_exit()`
+- `name()`
+- `exe()`
+- `cmdline()`
+- `environ()`
+- `terminal()`
+- `ppid()`
+- `uids()`
+- `gids()`
+- `cpu_times()`
+- `memory_info()`
+- `create_time()`
+- `num_threads()`
+- `num_ctx_switches()`
+- `threads()`
+- `net_connections()`
+- `wait()`
+- `nice_get()`
+- `nice_set()`
+- `status()`
+- `io_counters()`
+- `cwd()`
+- `_not_implemented()`
+
+#### Fonctions
+
+##### virtual_memory
+
+##### swap_memory
+
+System swap memory as (total, used, free, sin, sout) namedtuple.
+
+##### cpu_times
+
+Return system per-CPU times as a namedtuple.
+
+##### cpu_count_logical
+
+Return the number of logical CPUs in the system.
+
+##### cpu_stats
+
+Return various CPU stats as a named tuple.
+
+##### disk_partitions
+
+Return mounted disk partitions as a list of namedtuples.
+'all' argument is ignored, see:
+https://github.com/giampaolo/psutil/issues/906.
+
+**Paramètres :**
+
+- `all`
+
+##### net_if_stats
+
+Get NIC stats (isup, duplex, speed, mtu).
+
+##### net_connections
+
+System-wide network connections.
+
+**Paramètres :**
+
+- `kind`
+
+##### boot_time
+
+The system boot time expressed in seconds since the epoch.
+
+##### users
+
+Return currently connected users as a list of namedtuples.
+
+##### _pid_0_exists
+
+##### pids
+
+Returns a list of PIDs currently running on the system.
+
+##### is_zombie
+
+**Paramètres :**
+
+- `pid`
+
+##### wrap_exceptions
+
+Decorator which translates bare OSError exceptions into
+NoSuchProcess and AccessDenied.
+
+**Paramètres :**
+
+- `fun`
+
+##### wrap_exceptions_procfs
+
+Same as above, for routines relying on reading /proc fs.
+
+**Paramètres :**
+
+- `inst`
+
+##### per_cpu_times
+
+Return system CPU times as a namedtuple.
+
+##### per_cpu_times
+
+Return system CPU times as a namedtuple.
+
+##### cpu_count_cores
+
+##### cpu_count_cores
+
+Return the number of CPU cores in the system.
+
+##### cpu_freq
+
+Return frequency metrics for CPUs. As of Dec 2018 only
+CPU 0 appears to be supported by FreeBSD and all other cores
+match the frequency of CPU 0.
+
+##### sensors_battery
+
+Return battery info.
+
+##### sensors_temperatures
+
+Return CPU cores temperatures if available, else an empty dict.
+
+##### pid_exists
+
+**Paramètres :**
+
+- `pid`
+
+##### wrapper
+
+##### __init__
+
+**Paramètres :**
+
+- `pid`
+
+##### _assert_alive
+
+Raise NSP if the process disappeared on us.
+
+##### oneshot
+
+Retrieves multiple process info in one shot as a raw tuple.
+
+##### oneshot_enter
+
+##### oneshot_exit
+
+##### name
+
+##### exe
+
+##### cmdline
+
+##### environ
+
+##### terminal
+
+##### ppid
+
+##### uids
+
+##### gids
+
+##### cpu_times
+
+##### memory_info
+
+##### create_time
+
+##### num_threads
+
+##### num_ctx_switches
+
+##### threads
+
+##### net_connections
+
+**Paramètres :**
+
+- `kind`
+
+##### wait
+
+**Paramètres :**
+
+- `timeout`
+
+##### nice_get
+
+##### nice_set
+
+**Paramètres :**
+
+- `value`
+
+##### status
+
+##### io_counters
+
+##### cwd
+
+Return process current working directory.
+
+##### _not_implemented
+
+##### cpu_freq
+
+##### pid_exists
+
+**Paramètres :**
+
+- `pid`
+
+##### cpu_num
+
+##### open_files
+
+Return files opened by process as a list of namedtuples.
+
+##### num_fds
+
+Return the number of file descriptors opened by this process.
+
+##### cpu_affinity_get
+
+##### cpu_affinity_set
+
+**Paramètres :**
+
+- `cpus`
+
+##### memory_maps
+
+##### rlimit
+
+**Paramètres :**
+
+- `resource`
+- `limits`
+
+---
+
+### _psaix
+
+AIX platform implementation.
+
+#### Classes
+
+##### Process
+
+Wrapper class around underlying C implementation.
+
+**Méthodes :**
+
+- `__init__()`
+- `oneshot_enter()`
+- `oneshot_exit()`
+- `_proc_basic_info()`
+- `_proc_cred()`
+- `name()`
+- `exe()`
+- `cmdline()`
+- `environ()`
+- `create_time()`
+- `num_threads()`
+- `net_connections()`
+- `nice_get()`
+- `nice_set()`
+- `ppid()`
+- `uids()`
+- `gids()`
+- `cpu_times()`
+- `terminal()`
+- `cwd()`
+- `memory_info()`
+- `status()`
+- `open_files()`
+- `num_fds()`
+- `num_ctx_switches()`
+- `wait()`
+
+#### Fonctions
+
+##### virtual_memory
+
+##### swap_memory
+
+Swap system memory as a (total, used, free, sin, sout) tuple.
+
+##### cpu_times
+
+Return system-wide CPU times as a named tuple.
+
+##### per_cpu_times
+
+Return system per-CPU times as a list of named tuples.
+
+##### cpu_count_logical
+
+Return the number of logical CPUs in the system.
+
+##### cpu_count_cores
+
+##### cpu_stats
+
+Return various CPU stats as a named tuple.
+
+##### disk_partitions
+
+Return system disk partitions.
+
+**Paramètres :**
+
+- `all`
+
+##### net_connections
+
+Return socket connections.  If pid == -1 return system-wide
+connections (as opposed to connections opened by one process only).
+
+**Paramètres :**
+
+- `kind`
+- `_pid`
+
+##### net_if_stats
+
+Get NIC stats (isup, duplex, speed, mtu).
+
+##### boot_time
+
+The system boot time expressed in seconds since the epoch.
+
+##### users
+
+Return currently connected users as a list of namedtuples.
+
+##### pids
+
+Returns a list of PIDs currently running on the system.
+
+##### pid_exists
+
+Check for the existence of a unix pid.
+
+**Paramètres :**
+
+- `pid`
+
+##### wrap_exceptions
+
+Call callable into a try/except clause and translate ENOENT,
+EACCES and EPERM in NoSuchProcess or AccessDenied exceptions.
+
+**Paramètres :**
+
+- `fun`
+
+##### wrapper
+
+##### __init__
+
+**Paramètres :**
+
+- `pid`
+
+##### oneshot_enter
+
+##### oneshot_exit
+
+##### _proc_basic_info
+
+##### _proc_cred
+
+##### name
+
+##### exe
+
+##### cmdline
+
+##### environ
+
+##### create_time
+
+##### num_threads
+
+##### net_connections
+
+**Paramètres :**
+
+- `kind`
+
+##### nice_get
+
+##### nice_set
+
+**Paramètres :**
+
+- `value`
+
+##### ppid
+
+##### uids
+
+##### gids
+
+##### cpu_times
+
+##### terminal
+
+##### cwd
+
+##### memory_info
+
+##### status
+
+##### open_files
+
+##### num_fds
+
+##### num_ctx_switches
+
+##### wait
+
+**Paramètres :**
+
+- `timeout`
+
+##### threads
+
+##### io_counters
+
+---
+
+### _pslinux
+
+Linux platform implementation.
+
+#### Classes
+
+##### IOPriority
+
+##### _Ipv6UnsupportedError
+
+##### NetConnections
+
+A wrapper on top of /proc/net/* files, retrieving per-process
+and system-wide open connections (TCP, UDP, UNIX) similarly to
+"netstat -an".
+
+Note: in case of UNIX sockets we're only able to determine the
+local endpoint/path, not the one it's connected to.
+According to [1] it would be possible but not easily.
+
+[1] http://serverfault.com/a/417946
+
+**Méthodes :**
+
+- `__init__()`
+- `get_proc_inodes()`
+- `get_all_inodes()`
+- `decode_address()`
+- `process_inet()`
+- `process_unix()`
+- `retrieve()`
+
+##### RootFsDeviceFinder
+
+disk_partitions() may return partitions with device == "/dev/root"
+or "rootfs". This container class uses different strategies to try to
+obtain the real device path. Resources:
+https://bootlin.com/blog/find-root-device/
+https://www.systutorials.com/how-to-find-the-disk-where-root-is-on-in-bash-on-linux/.
+
+**Méthodes :**
+
+- `__init__()`
+- `ask_proc_partitions()`
+- `ask_sys_dev_block()`
+- `ask_sys_class_block()`
+- `find()`
+
+##### Process
+
+Linux process implementation.
+
+**Méthodes :**
+
+- `__init__()`
+- `_is_zombie()`
+- `_raise_if_zombie()`
+- `_raise_if_not_alive()`
+- `_parse_stat_file()`
+- `_read_status_file()`
+- `_read_smaps_file()`
+- `oneshot_enter()`
+- `oneshot_exit()`
+- `name()`
+- `exe()`
+- `cmdline()`
+- `environ()`
+- `terminal()`
+- `cpu_times()`
+- `cpu_num()`
+- `wait()`
+- `create_time()`
+- `memory_info()`
+- `cwd()`
+- `num_ctx_switches()`
+- `num_threads()`
+- `threads()`
+- `nice_get()`
+- `nice_set()`
+- `status()`
+- `open_files()`
+- `net_connections()`
+- `num_fds()`
+- `ppid()`
+- `uids()`
+- `gids()`
+
+#### Fonctions
+
+##### readlink
+
+Wrapper around os.readlink().
+
+**Paramètres :**
+
+- `path`
+
+##### file_flags_to_mode
+
+Convert file's open() flags into a readable string.
+Used by Process.open_files().
+
+**Paramètres :**
+
+- `flags`
+
+##### is_storage_device
+
+Return True if the given name refers to a root device (e.g.
+"sda", "nvme0n1") as opposed to a logical partition (e.g.  "sda1",
+"nvme0n1p1"). If name is a virtual device (e.g. "loop1", "ram")
+return True.
+
+**Paramètres :**
+
+- `name`
+
+##### set_scputimes_ntuple
+
+Set a namedtuple of variable fields depending on the CPU times
+available on this Linux kernel version which may be:
+(user, nice, system, idle, iowait, irq, softirq, [steal, [guest,
+ [guest_nice]]])
+Used by cpu_times() function.
+
+**Paramètres :**
+
+- `procfs_path`
+
+##### calculate_avail_vmem
+
+Fallback for kernels < 3.14 where /proc/meminfo does not provide
+"MemAvailable", see:
+https://blog.famzah.net/2014/09/24/.
+
+This code reimplements the algorithm outlined here:
+https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/
+    commit/?id=34e431b0ae398fc54ea69ff85ec700722c9da773
+
+We use this function also when "MemAvailable" returns 0 (possibly a
+kernel bug, see: https://github.com/giampaolo/psutil/issues/1915).
+In that case this routine matches "free" CLI tool result ("available"
+column).
+
+XXX: on recent kernels this calculation may differ by ~1.5% compared
+to "MemAvailable:", as it's calculated slightly differently.
+It is still way more realistic than doing (free + cached) though.
+See:
+* https://gitlab.com/procps-ng/procps/issues/42
+* https://github.com/famzah/linux-memavailable-procfs/issues/2
+
+**Paramètres :**
+
+- `mems`
+
+##### virtual_memory
+
+Report virtual memory stats.
+This implementation mimics procps-ng-3.3.12, aka "free" CLI tool:
+https://gitlab.com/procps-ng/procps/blob/
+    24fd2605c51fccc375ab0287cec33aa767f06718/proc/sysinfo.c#L778-791
+The returned values are supposed to match both "free" and "vmstat -s"
+CLI tools.
+
+##### swap_memory
+
+Return swap memory metrics.
+
+##### cpu_times
+
+Return a named tuple representing the following system-wide
+CPU times:
+(user, nice, system, idle, iowait, irq, softirq [steal, [guest,
+ [guest_nice]]])
+Last 3 fields may not be available on all Linux kernel versions.
+
+##### per_cpu_times
+
+Return a list of namedtuple representing the CPU times
+for every CPU available on the system.
+
+##### cpu_count_logical
+
+Return the number of logical CPUs in the system.
+
+##### cpu_count_cores
+
+Return the number of CPU cores in the system.
+
+##### cpu_stats
+
+Return various CPU stats as a named tuple.
+
+##### _cpu_get_cpuinfo_freq
+
+Return current CPU frequency from cpuinfo if available.
+
+##### net_connections
+
+Return system-wide open connections.
+
+**Paramètres :**
+
+- `kind`
+
+##### net_io_counters
+
+Return network I/O statistics for every network interface
+installed on the system as a dict of raw tuples.
+
+##### net_if_stats
+
+Get NIC stats (isup, duplex, speed, mtu).
+
+##### disk_io_counters
+
+Return disk I/O statistics for every disk installed on the
+system as a dict of raw tuples.
+
+**Paramètres :**
+
+- `perdisk`
+
+##### disk_partitions
+
+Return mounted disk partitions as a list of namedtuples.
+
+**Paramètres :**
+
+- `all`
+
+##### sensors_temperatures
+
+Return hardware (CPU and others) temperatures as a dict
+including hardware name, label, current, max and critical
+temperatures.
+
+Implementation notes:
+- /sys/class/hwmon looks like the most recent interface to
+  retrieve this info, and this implementation relies on it
+  only (old distros will probably use something else)
+- lm-sensors on Ubuntu 16.04 relies on /sys/class/hwmon
+- /sys/class/thermal/thermal_zone* is another one but it's more
+  difficult to parse
+
+##### sensors_fans
+
+Return hardware fans info (for CPU and other peripherals) as a
+dict including hardware label and current speed.
+
+Implementation notes:
+- /sys/class/hwmon looks like the most recent interface to
+  retrieve this info, and this implementation relies on it
+  only (old distros will probably use something else)
+- lm-sensors on Ubuntu 16.04 relies on /sys/class/hwmon
+
+##### sensors_battery
+
+Return battery information.
+Implementation note: it appears /sys/class/power_supply/BAT0/
+directory structure may vary and provide files with the same
+meaning but under different names, see:
+https://github.com/giampaolo/psutil/issues/966.
+
+##### users
+
+Return currently connected users as a list of namedtuples.
+
+##### boot_time
+
+Return the system boot time expressed in seconds since the epoch.
+
+##### pids
+
+Returns a list of PIDs currently running on the system.
+
+##### pid_exists
+
+Check for the existence of a unix PID. Linux TIDs are not
+supported (always return False).
+
+**Paramètres :**
+
+- `pid`
+
+##### ppid_map
+
+Obtain a {pid: ppid, ...} dict for all running processes in
+one shot. Used to speed up Process.children().
+
+##### wrap_exceptions
+
+Decorator which translates bare OSError and OSError exceptions
+into NoSuchProcess and AccessDenied.
+
+**Paramètres :**
+
+- `fun`
+
+##### cpu_freq
+
+Return frequency metrics for all CPUs.
+Contrarily to other OSes, Linux updates these values in
+real-time.
+
+##### cpu_freq
+
+Alternate implementation using /proc/cpuinfo.
+min and max frequencies are not available and are set to None.
+
+##### __init__
+
+##### get_proc_inodes
+
+**Paramètres :**
+
+- `pid`
+
+##### get_all_inodes
+
+##### decode_address
+
+Accept an "ip:port" address as displayed in /proc/net/*
+and convert it into a human readable form, like:
+
+"0500000A:0016" -> ("10.0.0.5", 22)
+"0000000000000000FFFF00000100007F:9E49" -> ("::ffff:127.0.0.1", 40521)
+
+The IP address portion is a little or big endian four-byte
+hexadecimal number; that is, the least significant byte is listed
+first, so we need to reverse the order of the bytes to convert it
+to an IP address.
+The port is represented as a two-byte hexadecimal number.
+
+Reference:
+http://linuxdevcenter.com/pub/a/linux/2000/11/16/LinuxAdmin.html
+
+**Paramètres :**
+
+- `addr`
+- `family`
+
+##### process_inet
+
+Parse /proc/net/tcp* and /proc/net/udp* files.
+
+**Paramètres :**
+
+- `file`
+- `family`
+- `type_`
+- `inodes`
+- `filter_pid`
+
+##### process_unix
+
+Parse /proc/net/unix files.
+
+**Paramètres :**
+
+- `file`
+- `family`
+- `inodes`
+- `filter_pid`
+
+##### retrieve
+
+**Paramètres :**
+
+- `kind`
+- `pid`
+
+##### read_procfs
+
+##### read_sysfs
+
+##### __init__
+
+##### ask_proc_partitions
+
+##### ask_sys_dev_block
+
+##### ask_sys_class_block
+
+##### find
+
+##### multi_bcat
+
+Attempt to read the content of multiple files which may
+not exist. If none of them exist return None.
+
+##### wrapper
+
+##### __init__
+
+**Paramètres :**
+
+- `pid`
+
+##### _is_zombie
+
+##### _raise_if_zombie
+
+##### _raise_if_not_alive
+
+Raise NSP if the process disappeared on us.
+
+##### _parse_stat_file
+
+Parse /proc/{pid}/stat file and return a dict with various
+process info.
+Using "man proc" as a reference: where "man proc" refers to
+position N always subtract 3 (e.g ppid position 4 in
+'man proc' == position 1 in here).
+The return value is cached in case oneshot() ctx manager is
+in use.
+
+##### _read_status_file
+
+Read /proc/{pid}/stat file and return its content.
+The return value is cached in case oneshot() ctx manager is
+in use.
+
+##### _read_smaps_file
+
+##### oneshot_enter
+
+##### oneshot_exit
+
+##### name
+
+##### exe
+
+##### cmdline
+
+##### environ
+
+##### terminal
+
+##### cpu_times
+
+##### cpu_num
+
+What CPU the process is on.
+
+##### wait
+
+**Paramètres :**
+
+- `timeout`
+
+##### create_time
+
+##### memory_info
+
+##### cwd
+
+##### num_ctx_switches
+
+**Paramètres :**
+
+- `_ctxsw_re`
+
+##### num_threads
+
+**Paramètres :**
+
+- `_num_threads_re`
+
+##### threads
+
+##### nice_get
+
+##### nice_set
+
+**Paramètres :**
+
+- `value`
+
+##### status
+
+##### open_files
+
+##### net_connections
+
+**Paramètres :**
+
+- `kind`
+
+##### num_fds
+
+##### ppid
+
+##### uids
+
+**Paramètres :**
+
+- `_uids_re`
+
+##### gids
+
+**Paramètres :**
+
+- `_gids_re`
+
+##### io_counters
+
+##### _parse_smaps_rollup
+
+##### _parse_smaps
+
+**Paramètres :**
+
+- `_private_re`
+- `_pss_re`
+- `_swap_re`
+
+##### memory_full_info
+
+##### memory_maps
+
+Return process's mapped memory regions as a list of named
+tuples. Fields are explained in 'man proc'; here is an updated
+(Apr 2012) version: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/filesystems/proc.txt?id=b76437579d1344b612cf1851ae610c636cec7db0.
+
+/proc/{PID}/smaps does not exist on kernels < 2.6.14 or if
+CONFIG_MMU kernel configuration option is not enabled.
+
+##### cpu_affinity_get
+
+##### _get_eligible_cpus
+
+**Paramètres :**
+
+- `_re`
+
+##### cpu_affinity_set
+
+**Paramètres :**
+
+- `cpus`
+
+##### ionice_get
+
+##### ionice_set
+
+**Paramètres :**
+
+- `ioclass`
+- `value`
+
+##### rlimit
+
+**Paramètres :**
+
+- `resource_`
+- `limits`
+
+##### get_blocks
+
+**Paramètres :**
+
+- `lines`
+- `current_block`
+
+---
+
+### _psposix
+
+Routines common to all posix systems.
+
+#### Fonctions
+
+##### pid_exists
+
+Check whether pid exists in the current process table.
+
+**Paramètres :**
+
+- `pid`
+
+##### negsig_to_enum
+
+Convert a negative signal value to an enum.
+
+**Paramètres :**
+
+- `num`
+
+##### wait_pid
+
+Wait for a process PID to terminate.
+
+If the process terminated normally by calling exit(3) or _exit(2),
+or by returning from main(), the return value is the positive integer
+passed to *exit().
+
+If it was terminated by a signal it returns the negated value of the
+signal which caused the termination (e.g. -SIGTERM).
+
+If PID is not a children of os.getpid() (current process) just
+wait until the process disappears and return None.
+
+If PID does not exist at all return None immediately.
+
+If *timeout* != None and process is still alive raise TimeoutExpired.
+timeout=0 is also possible (either return immediately or raise).
+
+**Paramètres :**
+
+- `pid`
+- `timeout`
+- `proc_name`
+- `_waitpid`
+- `_timer`
+- `_min`
+- `_sleep`
+- `_pid_exists`
+
+##### disk_usage
+
+Return disk usage associated with path.
+Note: UNIX usually reserves 5% disk space which is not accessible
+by user. In this function "total" and "used" values reflect the
+total and used disk space whereas "free" and "percent" represent
+the "free" and "used percent" user disk space.
+
+**Paramètres :**
+
+- `path`
+
+##### get_terminal_map
+
+Get a map of device-id -> path as a dict.
+Used by Process.terminal().
+
+##### sleep
+
+**Paramètres :**
+
+- `interval`
+
+---
+
+### _pssunos
+
+Sun OS Solaris platform implementation.
+
+#### Classes
+
+##### Process
+
+Wrapper class around underlying C implementation.
+
+**Méthodes :**
+
+- `__init__()`
+- `_assert_alive()`
+- `oneshot_enter()`
+- `oneshot_exit()`
+- `_proc_name_and_args()`
+- `_proc_basic_info()`
+- `_proc_cred()`
+- `name()`
+- `exe()`
+- `cmdline()`
+- `environ()`
+- `create_time()`
+- `num_threads()`
+- `nice_get()`
+- `nice_set()`
+- `ppid()`
+- `uids()`
+- `gids()`
+- `cpu_times()`
+- `cpu_num()`
+- `terminal()`
+- `cwd()`
+- `memory_info()`
+- `status()`
+- `threads()`
+- `open_files()`
+- `_get_unix_sockets()`
+- `net_connections()`
+- `memory_maps()`
+- `num_fds()`
+- `num_ctx_switches()`
+- `wait()`
+
+#### Fonctions
+
+##### virtual_memory
+
+Report virtual memory metrics.
+
+##### swap_memory
+
+Report swap memory metrics.
+
+##### cpu_times
+
+Return system-wide CPU times as a named tuple.
+
+##### per_cpu_times
+
+Return system per-CPU times as a list of named tuples.
+
+##### cpu_count_logical
+
+Return the number of logical CPUs in the system.
+
+##### cpu_count_cores
+
+Return the number of CPU cores in the system.
+
+##### cpu_stats
+
+Return various CPU stats as a named tuple.
+
+##### disk_partitions
+
+Return system disk partitions.
+
+**Paramètres :**
+
+- `all`
+
+##### net_connections
+
+Return socket connections.  If pid == -1 return system-wide
+connections (as opposed to connections opened by one process only).
+Only INET sockets are returned (UNIX are not).
+
+**Paramètres :**
+
+- `kind`
+- `_pid`
+
+##### net_if_stats
+
+Get NIC stats (isup, duplex, speed, mtu).
+
+##### boot_time
+
+The system boot time expressed in seconds since the epoch.
+
+##### users
+
+Return currently connected users as a list of namedtuples.
+
+##### pids
+
+Returns a list of PIDs currently running on the system.
+
+##### pid_exists
+
+Check for the existence of a unix pid.
+
+**Paramètres :**
+
+- `pid`
+
+##### wrap_exceptions
+
+Call callable into a try/except clause and translate ENOENT,
+EACCES and EPERM in NoSuchProcess or AccessDenied exceptions.
+
+**Paramètres :**
+
+- `fun`
+
+##### wrapper
+
+##### __init__
+
+**Paramètres :**
+
+- `pid`
+
+##### _assert_alive
+
+Raise NSP if the process disappeared on us.
+
+##### oneshot_enter
+
+##### oneshot_exit
+
+##### _proc_name_and_args
+
+##### _proc_basic_info
+
+##### _proc_cred
+
+##### name
+
+##### exe
+
+##### cmdline
+
+##### environ
+
+##### create_time
+
+##### num_threads
+
+##### nice_get
+
+##### nice_set
+
+**Paramètres :**
+
+- `value`
+
+##### ppid
+
+##### uids
+
+##### gids
+
+##### cpu_times
+
+##### cpu_num
+
+##### terminal
+
+##### cwd
+
+##### memory_info
+
+##### status
+
+##### threads
+
+##### open_files
+
+##### _get_unix_sockets
+
+Get UNIX sockets used by process by parsing 'pfiles' output.
+
+**Paramètres :**
+
+- `pid`
+
+##### net_connections
+
+**Paramètres :**
+
+- `kind`
+
+##### memory_maps
+
+##### num_fds
+
+##### num_ctx_switches
+
+##### wait
+
+**Paramètres :**
+
+- `timeout`
+
+##### toaddr
+
+**Paramètres :**
+
+- `start`
+- `end`
+
+---
+
+### test_contracts
+
+Contracts tests. These tests mainly check API sanity in terms of
+returned types and APIs availability.
+Some of these are duplicates of tests test_system.py and test_process.py.
+
+#### Classes
+
+##### TestAvailConstantsAPIs
+
+**Méthodes :**
+
+- `test_PROCFS_PATH()`
+- `test_win_priority()`
+- `test_linux_ioprio_linux()`
+- `test_linux_ioprio_windows()`
+- `test_rlimit()`
+
+##### TestAvailSystemAPIs
+
+**Méthodes :**
+
+- `test_win_service_iter()`
+- `test_win_service_get()`
+- `test_cpu_freq()`
+- `test_sensors_temperatures()`
+- `test_sensors_fans()`
+- `test_battery()`
+
+##### TestAvailProcessAPIs
+
+**Méthodes :**
+
+- `test_environ()`
+- `test_uids()`
+- `test_gids()`
+- `test_terminal()`
+- `test_ionice()`
+- `test_rlimit()`
+- `test_io_counters()`
+- `test_num_fds()`
+- `test_num_handles()`
+- `test_cpu_affinity()`
+- `test_cpu_num()`
+- `test_memory_maps()`
+
+##### TestSystemAPITypes
+
+Check the return types of system related APIs.
+https://github.com/giampaolo/psutil/issues/1039.
+
+**Méthodes :**
+
+- `setUpClass()`
+- `assert_ntuple_of_nums()`
+- `test_cpu_times()`
+- `test_cpu_percent()`
+- `test_cpu_times_percent()`
+- `test_cpu_count()`
+- `test_cpu_freq()`
+- `test_disk_io_counters()`
+- `test_disk_partitions()`
+- `test_net_connections()`
+- `test_net_if_addrs()`
+- `test_net_if_stats()`
+- `test_net_io_counters()`
+- `test_sensors_fans()`
+- `test_sensors_temperatures()`
+- `test_boot_time()`
+- `test_users()`
+
+##### TestProcessWaitType
+
+**Méthodes :**
+
+- `test_negative_signal()`
+
+#### Fonctions
+
+##### test_PROCFS_PATH
+
+##### test_win_priority
+
+##### test_linux_ioprio_linux
+
+##### test_linux_ioprio_windows
+
+##### test_rlimit
+
+##### test_win_service_iter
+
+##### test_win_service_get
+
+##### test_cpu_freq
+
+##### test_sensors_temperatures
+
+##### test_sensors_fans
+
+##### test_battery
+
+##### test_environ
+
+##### test_uids
+
+##### test_gids
+
+##### test_terminal
+
+##### test_ionice
+
+##### test_rlimit
+
+##### test_io_counters
+
+##### test_num_fds
+
+##### test_num_handles
+
+##### test_cpu_affinity
+
+##### test_cpu_num
+
+##### test_memory_maps
+
+##### setUpClass
+
+**Paramètres :**
+
+- `cls`
+
+##### assert_ntuple_of_nums
+
+**Paramètres :**
+
+- `nt`
+- `type_`
+- `gezero`
+
+##### test_cpu_times
+
+##### test_cpu_percent
+
+##### test_cpu_times_percent
+
+##### test_cpu_count
+
+##### test_cpu_freq
+
+##### test_disk_io_counters
+
+##### test_disk_partitions
+
+##### test_net_connections
+
+##### test_net_if_addrs
+
+##### test_net_if_stats
+
+##### test_net_io_counters
+
+##### test_sensors_fans
+
+##### test_sensors_temperatures
+
+##### test_boot_time
+
+##### test_users
+
+##### test_negative_signal
+
+---
+
+### test_connections
+
+Tests for psutil.net_connections() and Process.net_connections() APIs.
+
+#### Classes
+
+##### ConnectionTestCase
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `compare_procsys_connections()`
+
+##### TestBasicOperations
+
+**Méthodes :**
+
+- `test_system()`
+- `test_process()`
+- `test_invalid_kind()`
+
+##### TestUnconnectedSockets
+
+Tests sockets which are open but not connected to anything.
+
+**Méthodes :**
+
+- `get_conn_from_sock()`
+- `check_socket()`
+- `test_tcp_v4()`
+- `test_tcp_v6()`
+- `test_udp_v4()`
+- `test_udp_v6()`
+- `test_unix_tcp()`
+- `test_unix_udp()`
+
+##### TestConnectedSocket
+
+Test socket pairs which are actually connected to
+each other.
+
+**Méthodes :**
+
+- `test_tcp()`
+- `test_unix()`
+
+##### TestFilters
+
+**Méthodes :**
+
+- `test_filters()`
+- `test_combos()`
+- `test_count()`
+
+##### TestSystemWideConnections
+
+Tests for net_connections().
+
+**Méthodes :**
+
+- `test_it()`
+- `test_multi_sockets_procs()`
+
+##### TestMisc
+
+**Méthodes :**
+
+- `test_net_connection_constants()`
+
+#### Fonctions
+
+##### this_proc_net_connections
+
+**Paramètres :**
+
+- `kind`
+
+##### setUp
+
+##### tearDown
+
+##### compare_procsys_connections
+
+Given a process PID and its list of connections compare
+those against system-wide connections retrieved via
+psutil.net_connections.
+
+**Paramètres :**
+
+- `pid`
+- `proc_cons`
+- `kind`
+
+##### test_system
+
+##### test_process
+
+##### test_invalid_kind
+
+##### get_conn_from_sock
+
+**Paramètres :**
+
+- `sock`
+
+##### check_socket
+
+Given a socket, makes sure it matches the one obtained
+via psutil. It assumes this process created one connection
+only (the one supposed to be checked).
+
+**Paramètres :**
+
+- `sock`
+
+##### test_tcp_v4
+
+##### test_tcp_v6
+
+##### test_udp_v4
+
+##### test_udp_v6
+
+##### test_unix_tcp
+
+##### test_unix_udp
+
+##### test_tcp
+
+##### test_unix
+
+##### test_filters
+
+##### test_combos
+
+##### test_count
+
+##### test_it
+
+##### test_multi_sockets_procs
+
+##### test_net_connection_constants
+
+##### check
+
+**Paramètres :**
+
+- `kind`
+- `families`
+- `types`
+
+##### check_conn
+
+**Paramètres :**
+
+- `proc`
+- `conn`
+- `family`
+- `type`
+- `laddr`
+- `raddr`
+- `status`
+- `kinds`
+
+##### check
+
+**Paramètres :**
+
+- `cons`
+- `families`
+- `types_`
+
+---
+
+### test_unicode
+
+Notes about unicode handling in psutil
+======================================.
+
+Starting from version 5.3.0 psutil adds unicode support, see:
+https://github.com/giampaolo/psutil/issues/1040
+The notes below apply to *any* API returning a string such as
+process exe(), cwd() or username():
+
+* all strings are encoded by using the OS filesystem encoding
+  (sys.getfilesystemencoding()) which varies depending on the platform
+  (e.g. "UTF-8" on macOS, "mbcs" on Win)
+* no API call is supposed to crash with UnicodeDecodeError
+* instead, in case of badly encoded data returned by the OS, the
+  following error handlers are used to replace the corrupted characters in
+  the string:
+    * sys.getfilesystemencodeerrors() or "surrogatescape" on POSIX and
+      "replace" on Windows.
+
+For a detailed explanation of how psutil handles unicode see #1040.
+
+Tests
+=====
+
+List of APIs returning or dealing with a string:
+('not tested' means they are not tested to deal with non-ASCII strings):
+
+* Process.cmdline()
+* Process.cwd()
+* Process.environ()
+* Process.exe()
+* Process.memory_maps()
+* Process.name()
+* Process.net_connections('unix')
+* Process.open_files()
+* Process.username()             (not tested)
+
+* disk_io_counters()             (not tested)
+* disk_partitions()              (not tested)
+* disk_usage(str)
+* net_connections('unix')
+* net_if_addrs()                 (not tested)
+* net_if_stats()                 (not tested)
+* net_io_counters()              (not tested)
+* sensors_fans()                 (not tested)
+* sensors_temperatures()         (not tested)
+* users()                        (not tested)
+
+* WindowsService.binpath()       (not tested)
+* WindowsService.description()   (not tested)
+* WindowsService.display_name()  (not tested)
+* WindowsService.name()          (not tested)
+* WindowsService.status()        (not tested)
+* WindowsService.username()      (not tested)
+
+In here we create a unicode path with a funky non-ASCII name and (where
+possible) make psutil return it back (e.g. on name(), exe(), open_files(),
+etc.) and make sure that:
+
+* psutil never crashes with UnicodeDecodeError
+* the returned path matches
+
+#### Classes
+
+##### BaseUnicodeTest
+
+**Méthodes :**
+
+- `setUpClass()`
+- `setUp()`
+
+##### TestFSAPIs
+
+Test FS APIs with a funky, valid, UTF8 path name.
+
+**Méthodes :**
+
+- `expect_exact_path_match()`
+- `test_proc_exe()`
+- `test_proc_name()`
+- `test_proc_cmdline()`
+- `test_proc_cwd()`
+- `test_proc_open_files()`
+- `test_proc_net_connections()`
+- `test_net_connections()`
+- `test_disk_usage()`
+- `test_memory_maps()`
+
+##### TestFSAPIsWithInvalidPath
+
+Test FS APIs with a funky, invalid path name.
+
+**Méthodes :**
+
+- `expect_exact_path_match()`
+
+##### TestNonFSAPIS
+
+Unicode tests for non fs-related APIs.
+
+**Méthodes :**
+
+- `test_proc_environ()`
+
+#### Fonctions
+
+##### try_unicode
+
+Return True if both the fs and the subprocess module can
+deal with a unicode file name.
+
+**Paramètres :**
+
+- `suffix`
+
+##### setUpClass
+
+**Paramètres :**
+
+- `cls`
+
+##### setUp
+
+##### expect_exact_path_match
+
+##### test_proc_exe
+
+##### test_proc_name
+
+##### test_proc_cmdline
+
+##### test_proc_cwd
+
+##### test_proc_open_files
+
+##### test_proc_net_connections
+
+##### test_net_connections
+
+##### test_disk_usage
+
+##### test_memory_maps
+
+##### expect_exact_path_match
+
+##### test_proc_environ
+
+##### find_sock
+
+**Paramètres :**
+
+- `cons`
+
+##### normpath
+
+**Paramètres :**
+
+- `p`
+
+---
+
+### test_misc
+
+Miscellaneous tests.
+
+#### Classes
+
+##### TestSpecialMethods
+
+**Méthodes :**
+
+- `test_check_pid_range()`
+- `test_process__repr__()`
+- `test_process__str__()`
+- `test_error__repr__()`
+- `test_error__str__()`
+- `test_no_such_process__repr__()`
+- `test_no_such_process__str__()`
+- `test_zombie_process__repr__()`
+- `test_zombie_process__str__()`
+- `test_access_denied__repr__()`
+- `test_access_denied__str__()`
+- `test_timeout_expired__repr__()`
+- `test_timeout_expired__str__()`
+- `test_process__eq__()`
+- `test_process__hash__()`
+
+##### TestMisc
+
+**Méthodes :**
+
+- `test__all__()`
+- `test_version()`
+- `test_process_as_dict_no_new_names()`
+- `test_serialization()`
+- `test_ad_on_process_creation()`
+- `test_sanity_version_check()`
+
+##### TestMemoizeDecorator
+
+**Méthodes :**
+
+- `setUp()`
+- `run_against()`
+- `test_function()`
+- `test_class()`
+- `test_class_singleton()`
+- `test_staticmethod()`
+- `test_classmethod()`
+- `test_original()`
+
+##### TestCommonModule
+
+**Méthodes :**
+
+- `test_memoize_when_activated()`
+- `test_parse_environ_block()`
+- `test_supports_ipv6()`
+- `test_isfile_strict()`
+- `test_debug()`
+- `test_cat_bcat()`
+
+##### TestWrapNumbers
+
+**Méthodes :**
+
+- `setUp()`
+- `test_first_call()`
+- `test_input_hasnt_changed()`
+- `test_increase_but_no_wrap()`
+- `test_wrap()`
+- `test_changing_keys()`
+- `test_changing_keys_w_wrap()`
+- `test_real_data()`
+- `test_cache_first_call()`
+- `test_cache_call_twice()`
+- `test_cache_wrap()`
+- `test_cache_changing_keys()`
+- `test_cache_clear()`
+- `test_cache_clear_public_apis()`
+
+##### Foo
+
+My docstring.
+
+**Méthodes :**
+
+- `__init__()`
+- `bar()`
+
+##### Bar
+
+**Méthodes :**
+
+- `__init__()`
+
+##### Foo
+
+**Méthodes :**
+
+- `bar()`
+
+##### Foo
+
+**Méthodes :**
+
+- `bar()`
+
+##### Foo
+
+**Méthodes :**
+
+- `foo()`
+
+#### Fonctions
+
+##### test_check_pid_range
+
+##### test_process__repr__
+
+**Paramètres :**
+
+- `func`
+
+##### test_process__str__
+
+##### test_error__repr__
+
+##### test_error__str__
+
+##### test_no_such_process__repr__
+
+##### test_no_such_process__str__
+
+##### test_zombie_process__repr__
+
+##### test_zombie_process__str__
+
+##### test_access_denied__repr__
+
+##### test_access_denied__str__
+
+##### test_timeout_expired__repr__
+
+##### test_timeout_expired__str__
+
+##### test_process__eq__
+
+##### test_process__hash__
+
+##### test__all__
+
+##### test_version
+
+##### test_process_as_dict_no_new_names
+
+##### test_serialization
+
+##### test_ad_on_process_creation
+
+##### test_sanity_version_check
+
+##### setUp
+
+##### run_against
+
+**Paramètres :**
+
+- `obj`
+- `expected_retval`
+
+##### test_function
+
+##### test_class
+
+##### test_class_singleton
+
+##### test_staticmethod
+
+##### test_classmethod
+
+##### test_original
+
+##### test_memoize_when_activated
+
+##### test_parse_environ_block
+
+##### test_supports_ipv6
+
+##### test_isfile_strict
+
+##### test_debug
+
+##### test_cat_bcat
+
+##### setUp
+
+##### test_first_call
+
+##### test_input_hasnt_changed
+
+##### test_increase_but_no_wrap
+
+##### test_wrap
+
+##### test_changing_keys
+
+##### test_changing_keys_w_wrap
+
+##### test_real_data
+
+##### test_cache_first_call
+
+##### test_cache_call_twice
+
+##### test_cache_wrap
+
+##### test_cache_changing_keys
+
+##### test_cache_clear
+
+##### test_cache_clear_public_apis
+
+##### check
+
+**Paramètres :**
+
+- `ret`
+
+##### foo
+
+My docstring.
+
+##### foo
+
+Foo docstring.
+
+##### k
+
+**Paramètres :**
+
+- `s`
+
+##### check_cache_info
+
+##### __init__
+
+##### bar
+
+##### __init__
+
+##### bar
+
+My docstring.
+
+##### bar
+
+My docstring.
+
+**Paramètres :**
+
+- `cls`
+
+##### foo
+
+---
+
+### test_posix
+
+POSIX specific tests.
+
+#### Classes
+
+##### TestProcess
+
+Compare psutil results against 'ps' command line utility (mainly).
+
+**Méthodes :**
+
+- `setUpClass()`
+- `tearDownClass()`
+- `test_ppid()`
+- `test_uid()`
+- `test_gid()`
+- `test_username()`
+- `test_username_no_resolution()`
+- `test_rss_memory()`
+- `test_vsz_memory()`
+- `test_name()`
+- `test_name_long()`
+- `test_name_long_cmdline_ad_exc()`
+- `test_name_long_cmdline_nsp_exc()`
+- `test_create_time()`
+- `test_exe()`
+- `test_cmdline()`
+- `test_nice()`
+
+##### TestSystemAPIs
+
+Test some system APIs.
+
+**Méthodes :**
+
+- `test_pids()`
+- `test_nic_names()`
+- `test_users()`
+- `test_users_started()`
+- `test_pid_exists_let_raise()`
+- `test_os_waitpid_let_raise()`
+- `test_os_waitpid_eintr()`
+- `test_os_waitpid_bad_ret_status()`
+- `test_disk_usage()`
+
+##### TestMisc
+
+**Méthodes :**
+
+- `test_getpagesize()`
+
+#### Fonctions
+
+##### ps
+
+Wrapper for calling the ps command with a little bit of cross-platform
+support for a narrow range of features.
+
+**Paramètres :**
+
+- `fmt`
+- `pid`
+
+##### ps_name
+
+**Paramètres :**
+
+- `pid`
+
+##### ps_args
+
+**Paramètres :**
+
+- `pid`
+
+##### ps_rss
+
+**Paramètres :**
+
+- `pid`
+
+##### ps_vsz
+
+**Paramètres :**
+
+- `pid`
+
+##### df
+
+**Paramètres :**
+
+- `device`
+
+##### setUpClass
+
+**Paramètres :**
+
+- `cls`
+
+##### tearDownClass
+
+**Paramètres :**
+
+- `cls`
+
+##### test_ppid
+
+##### test_uid
+
+##### test_gid
+
+##### test_username
+
+##### test_username_no_resolution
+
+##### test_rss_memory
+
+##### test_vsz_memory
+
+##### test_name
+
+##### test_name_long
+
+##### test_name_long_cmdline_ad_exc
+
+##### test_name_long_cmdline_nsp_exc
+
+##### test_create_time
+
+##### test_exe
+
+##### test_cmdline
+
+##### test_nice
+
+##### test_pids
+
+##### test_nic_names
+
+##### test_users
+
+##### test_users_started
+
+##### test_pid_exists_let_raise
+
+##### test_os_waitpid_let_raise
+
+##### test_os_waitpid_eintr
+
+##### test_os_waitpid_bad_ret_status
+
+##### test_disk_usage
+
+##### test_getpagesize
+
+---
+
+### test_linux
+
+Linux specific tests.
+
+#### Classes
+
+##### TestSystemVirtualMemoryAgainstFree
+
+**Méthodes :**
+
+- `test_total()`
+- `test_used()`
+- `test_free()`
+- `test_shared()`
+- `test_available()`
+
+##### TestSystemVirtualMemoryAgainstVmstat
+
+**Méthodes :**
+
+- `test_total()`
+- `test_used()`
+- `test_free()`
+- `test_buffers()`
+- `test_active()`
+- `test_inactive()`
+
+##### TestSystemVirtualMemoryMocks
+
+**Méthodes :**
+
+- `test_warnings_on_misses()`
+- `test_avail_old_percent()`
+- `test_avail_old_comes_from_kernel()`
+- `test_avail_old_missing_fields()`
+- `test_avail_old_missing_zoneinfo()`
+- `test_virtual_memory_mocked()`
+
+##### TestSystemSwapMemory
+
+**Méthodes :**
+
+- `meminfo_has_swap_info()`
+- `test_total()`
+- `test_used()`
+- `test_free()`
+- `test_missing_sin_sout()`
+- `test_no_vmstat_mocked()`
+- `test_meminfo_against_sysinfo()`
+- `test_emulate_meminfo_has_no_metrics()`
+
+##### TestSystemCPUTimes
+
+**Méthodes :**
+
+- `test_fields()`
+
+##### TestSystemCPUCountLogical
+
+**Méthodes :**
+
+- `test_against_sysdev_cpu_online()`
+- `test_against_sysdev_cpu_num()`
+- `test_against_nproc()`
+- `test_against_lscpu()`
+- `test_emulate_fallbacks()`
+
+##### TestSystemCPUCountCores
+
+**Méthodes :**
+
+- `test_against_lscpu()`
+- `test_method_2()`
+- `test_emulate_none()`
+
+##### TestSystemCPUFrequency
+
+**Méthodes :**
+
+- `test_emulate_use_second_file()`
+- `test_emulate_use_cpuinfo()`
+- `test_emulate_data()`
+- `test_emulate_multi_cpu()`
+- `test_emulate_no_scaling_cur_freq_file()`
+
+##### TestSystemCPUStats
+
+**Méthodes :**
+
+- `test_interrupts()`
+
+##### TestLoadAvg
+
+**Méthodes :**
+
+- `test_getloadavg()`
+
+##### TestSystemNetIfAddrs
+
+**Méthodes :**
+
+- `test_ips()`
+
+##### TestSystemNetIfStats
+
+**Méthodes :**
+
+- `test_against_ifconfig()`
+- `test_mtu()`
+- `test_flags()`
+
+##### TestSystemNetIOCounters
+
+**Méthodes :**
+
+- `test_against_ifconfig()`
+
+##### TestSystemNetConnections
+
+**Méthodes :**
+
+- `test_emulate_ipv6_unsupported()`
+- `test_emulate_unix()`
+
+##### TestSystemDiskPartitions
+
+**Méthodes :**
+
+- `test_against_df()`
+- `test_zfs_fs()`
+- `test_emulate_realpath_fail()`
+
+##### TestSystemDiskIoCounters
+
+**Méthodes :**
+
+- `test_emulate_kernel_2_4()`
+- `test_emulate_kernel_2_6_full()`
+- `test_emulate_kernel_2_6_limited()`
+- `test_emulate_include_partitions()`
+- `test_emulate_exclude_partitions()`
+- `test_emulate_use_sysfs()`
+- `test_emulate_not_impl()`
+
+##### TestRootFsDeviceFinder
+
+**Méthodes :**
+
+- `setUp()`
+- `test_call_methods()`
+- `test_comparisons()`
+- `test_against_findmnt()`
+- `test_disk_partitions_mocked()`
+
+##### TestMisc
+
+**Méthodes :**
+
+- `test_boot_time()`
+- `test_no_procfs_on_import()`
+- `test_cpu_steal_decrease()`
+- `test_boot_time_mocked()`
+- `test_users()`
+- `test_procfs_path()`
+- `test_issue_687()`
+- `test_pid_exists_no_proc_status()`
+
+##### TestSensorsBattery
+
+**Méthodes :**
+
+- `test_percent()`
+- `test_emulate_power_plugged()`
+- `test_emulate_power_plugged_2()`
+- `test_emulate_power_not_plugged()`
+- `test_emulate_power_not_plugged_2()`
+- `test_emulate_power_undetermined()`
+- `test_emulate_energy_full_0()`
+- `test_emulate_energy_full_not_avail()`
+- `test_emulate_no_power()`
+
+##### TestSensorsBatteryEmulated
+
+**Méthodes :**
+
+- `test_it()`
+
+##### TestSensorsTemperatures
+
+**Méthodes :**
+
+- `test_emulate_class_hwmon()`
+- `test_emulate_class_thermal()`
+
+##### TestSensorsFans
+
+**Méthodes :**
+
+- `test_emulate_data()`
+
+##### TestProcess
+
+**Méthodes :**
+
+- `test_parse_smaps_vs_memory_maps()`
+- `test_parse_smaps_mocked()`
+- `test_open_files_mode()`
+- `test_open_files_file_gone()`
+- `test_open_files_fd_gone()`
+- `test_open_files_enametoolong()`
+- `test_terminal_mocked()`
+- `test_cmdline_mocked()`
+- `test_cmdline_spaces_mocked()`
+- `test_cmdline_mixed_separators()`
+- `test_readlink_path_deleted_mocked()`
+- `test_threads_mocked()`
+- `test_exe_mocked()`
+- `test_issue_1014()`
+- `test_issue_2418()`
+- `test_rlimit_zombie()`
+- `test_stat_file_parsing()`
+- `test_status_file_parsing()`
+- `test_net_connections_enametoolong()`
+
+##### TestProcessAgainstStatus
+
+/proc/pid/stat and /proc/pid/status have many values in common.
+Whenever possible, psutil uses /proc/pid/stat (it's faster).
+For all those cases we check that the value found in
+/proc/pid/stat (by psutil) matches the one found in
+/proc/pid/status.
+
+**Méthodes :**
+
+- `setUpClass()`
+- `read_status_file()`
+- `test_name()`
+- `test_status()`
+- `test_ppid()`
+- `test_num_threads()`
+- `test_uids()`
+- `test_gids()`
+- `test_num_ctx_switches()`
+- `test_cpu_affinity()`
+- `test_cpu_affinity_eligible_cpus()`
+
+##### TestUtils
+
+**Méthodes :**
+
+- `test_readlink()`
+
+#### Fonctions
+
+##### get_ipv4_address
+
+**Paramètres :**
+
+- `ifname`
+
+##### get_ipv4_netmask
+
+**Paramètres :**
+
+- `ifname`
+
+##### get_ipv4_broadcast
+
+**Paramètres :**
+
+- `ifname`
+
+##### get_ipv6_addresses
+
+**Paramètres :**
+
+- `ifname`
+
+##### get_mac_address
+
+**Paramètres :**
+
+- `ifname`
+
+##### free_swap
+
+Parse 'free' cmd and return swap memory's s total, used and free
+values.
+
+##### free_physmem
+
+Parse 'free' cmd and return physical memory's total, used
+and free values.
+
+##### vmstat
+
+**Paramètres :**
+
+- `stat`
+
+##### get_free_version_info
+
+##### mock_open_content
+
+Mock open() builtin and forces it to return a certain content
+for a given path. `pairs` is a {"path": "content", ...} dict.
+
+**Paramètres :**
+
+- `pairs`
+
+##### mock_open_exception
+
+Mock open() builtin and raises `exc` if the path being opened
+matches `for_path`.
+
+**Paramètres :**
+
+- `for_path`
+- `exc`
+
+##### open_mock
+
+**Paramètres :**
+
+- `name`
+
+##### open_mock
+
+**Paramètres :**
+
+- `name`
+
+##### test_total
+
+##### test_used
+
+##### test_free
+
+##### test_shared
+
+##### test_available
+
+##### test_total
+
+##### test_used
+
+##### test_free
+
+##### test_buffers
+
+##### test_active
+
+##### test_inactive
+
+##### test_warnings_on_misses
+
+##### test_avail_old_percent
+
+##### test_avail_old_comes_from_kernel
+
+##### test_avail_old_missing_fields
+
+##### test_avail_old_missing_zoneinfo
+
+##### test_virtual_memory_mocked
+
+##### meminfo_has_swap_info
+
+Return True if /proc/meminfo provides swap metrics.
+
+##### test_total
+
+##### test_used
+
+##### test_free
+
+##### test_missing_sin_sout
+
+##### test_no_vmstat_mocked
+
+##### test_meminfo_against_sysinfo
+
+##### test_emulate_meminfo_has_no_metrics
+
+##### test_fields
+
+##### test_against_sysdev_cpu_online
+
+##### test_against_sysdev_cpu_num
+
+##### test_against_nproc
+
+##### test_against_lscpu
+
+##### test_emulate_fallbacks
+
+##### test_against_lscpu
+
+##### test_method_2
+
+##### test_emulate_none
+
+##### test_emulate_use_second_file
+
+##### test_emulate_use_cpuinfo
+
+##### test_emulate_data
+
+##### test_emulate_multi_cpu
+
+##### test_emulate_no_scaling_cur_freq_file
+
+##### test_interrupts
+
+##### test_getloadavg
+
+##### test_ips
+
+##### test_against_ifconfig
+
+##### test_mtu
+
+##### test_flags
+
+##### test_against_ifconfig
+
+##### test_emulate_ipv6_unsupported
+
+**Paramètres :**
+
+- `supports_ipv6`
+- `inet_ntop`
+
+##### test_emulate_unix
+
+##### test_against_df
+
+##### test_zfs_fs
+
+##### test_emulate_realpath_fail
+
+##### test_emulate_kernel_2_4
+
+##### test_emulate_kernel_2_6_full
+
+##### test_emulate_kernel_2_6_limited
+
+##### test_emulate_include_partitions
+
+##### test_emulate_exclude_partitions
+
+##### test_emulate_use_sysfs
+
+##### test_emulate_not_impl
+
+##### setUp
+
+##### test_call_methods
+
+##### test_comparisons
+
+##### test_against_findmnt
+
+##### test_disk_partitions_mocked
+
+##### test_boot_time
+
+##### test_no_procfs_on_import
+
+##### test_cpu_steal_decrease
+
+##### test_boot_time_mocked
+
+##### test_users
+
+##### test_procfs_path
+
+##### test_issue_687
+
+##### test_pid_exists_no_proc_status
+
+##### test_percent
+
+##### test_emulate_power_plugged
+
+##### test_emulate_power_plugged_2
+
+##### test_emulate_power_not_plugged
+
+##### test_emulate_power_not_plugged_2
+
+##### test_emulate_power_undetermined
+
+##### test_emulate_energy_full_0
+
+##### test_emulate_energy_full_not_avail
+
+##### test_emulate_no_power
+
+##### test_it
+
+##### test_emulate_class_hwmon
+
+##### test_emulate_class_thermal
+
+##### test_emulate_data
+
+##### test_parse_smaps_vs_memory_maps
+
+##### test_parse_smaps_mocked
+
+##### test_open_files_mode
+
+##### test_open_files_file_gone
+
+##### test_open_files_fd_gone
+
+##### test_open_files_enametoolong
+
+##### test_terminal_mocked
+
+##### test_cmdline_mocked
+
+##### test_cmdline_spaces_mocked
+
+##### test_cmdline_mixed_separators
+
+##### test_readlink_path_deleted_mocked
+
+##### test_threads_mocked
+
+##### test_exe_mocked
+
+##### test_issue_1014
+
+##### test_issue_2418
+
+##### test_rlimit_zombie
+
+##### test_stat_file_parsing
+
+##### test_status_file_parsing
+
+##### test_net_connections_enametoolong
+
+##### setUpClass
+
+**Paramètres :**
+
+- `cls`
+
+##### read_status_file
+
+**Paramètres :**
+
+- `linestart`
+
+##### test_name
+
+##### test_status
+
+##### test_ppid
+
+##### test_num_threads
+
+##### test_uids
+
+##### test_gids
+
+##### test_num_ctx_switches
+
+##### test_cpu_affinity
+
+##### test_cpu_affinity_eligible_cpus
+
+##### test_readlink
+
+##### path_exists_mock
+
+**Paramètres :**
+
+- `path`
+
+##### path_exists_mock
+
+**Paramètres :**
+
+- `path`
+
+##### open_mock
+
+**Paramètres :**
+
+- `name`
+
+##### open_mock
+
+**Paramètres :**
+
+- `name`
+
+##### open_mock
+
+**Paramètres :**
+
+- `name`
+
+##### ifconfig
+
+**Paramètres :**
+
+- `nic`
+
+##### df
+
+**Paramètres :**
+
+- `path`
+
+##### is_storage_device
+
+**Paramètres :**
+
+- `name`
+
+##### exists
+
+**Paramètres :**
+
+- `path`
+
+##### exists
+
+**Paramètres :**
+
+- `path`
+
+##### open_mock
+
+**Paramètres :**
+
+- `name`
+
+##### open_mock
+
+**Paramètres :**
+
+- `name`
+
+##### open_mock
+
+**Paramètres :**
+
+- `name`
+
+##### open_mock
+
+**Paramètres :**
+
+- `name`
+
+##### open_mock
+
+**Paramètres :**
+
+- `name`
+
+##### open_mock
+
+**Paramètres :**
+
+- `name`
+
+##### open_mock
+
+**Paramètres :**
+
+- `name`
+
+##### open_mock
+
+**Paramètres :**
+
+- `name`
+
+##### glob_mock
+
+**Paramètres :**
+
+- `path`
+
+##### open_mock
+
+**Paramètres :**
+
+- `name`
+
+##### get_test_file
+
+**Paramètres :**
+
+- `fname`
+
+##### open_mock_1
+
+**Paramètres :**
+
+- `name`
+
+##### open_mock_2
+
+**Paramètres :**
+
+- `name`
+
+##### open_mock
+
+**Paramètres :**
+
+- `name`
+
+---
+
+### test_sunos
+
+Sun OS specific tests.
+
+#### Classes
+
+##### SunOSSpecificTestCase
+
+**Méthodes :**
+
+- `test_swap_memory()`
+- `test_cpu_count()`
+
+#### Fonctions
+
+##### test_swap_memory
+
+##### test_cpu_count
+
+---
+
+### test_aix
+
+AIX specific tests.
+
+#### Classes
+
+##### AIXSpecificTestCase
+
+**Méthodes :**
+
+- `test_virtual_memory()`
+- `test_swap_memory()`
+- `test_cpu_stats()`
+- `test_cpu_count_logical()`
+- `test_net_if_addrs_names()`
+
+#### Fonctions
+
+##### test_virtual_memory
+
+##### test_swap_memory
+
+##### test_cpu_stats
+
+##### test_cpu_count_logical
+
+##### test_net_if_addrs_names
+
+---
+
+### test_process_all
+
+Iterate over all process PIDs and for each one of them invoke and
+test all psutil.Process() methods.
+
+#### Classes
+
+##### TestFetchAllProcesses
+
+Test which iterates over all running processes and performs
+some sanity checks against Process API's returned values.
+Uses a process pool to get info about all processes.
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `iter_proc_info()`
+- `test_all()`
+- `cmdline()`
+- `exe()`
+- `pid()`
+- `ppid()`
+- `name()`
+- `create_time()`
+- `uids()`
+- `gids()`
+- `username()`
+- `status()`
+- `io_counters()`
+- `ionice()`
+- `num_threads()`
+- `threads()`
+- `cpu_times()`
+- `cpu_percent()`
+- `cpu_num()`
+- `memory_info()`
+- `memory_full_info()`
+- `open_files()`
+- `num_fds()`
+- `net_connections()`
+- `cwd()`
+- `memory_percent()`
+- `is_running()`
+- `cpu_affinity()`
+- `terminal()`
+- `memory_maps()`
+- `num_handles()`
+- `nice()`
+- `num_ctx_switches()`
+- `rlimit()`
+- `environ()`
+
+##### TestPidsRange
+
+Given pid_exists() return value for a range of PIDs which may or
+may not exist, make sure that psutil.Process() and psutil.pids()
+agree with pid_exists(). This guarantees that the 3 APIs are all
+consistent with each other. See:
+https://github.com/giampaolo/psutil/issues/2359
+
+XXX - Note about Windows: it turns out there are some "hidden" PIDs
+which are not returned by psutil.pids() and are also not revealed
+by taskmgr.exe and ProcessHacker, still they can be instantiated by
+psutil.Process() and queried. One of such PIDs is "conhost.exe".
+Running as_dict() for it reveals that some Process() APIs
+erroneously raise NoSuchProcess, so we know we have problem there.
+Let's ignore this for now, since it's quite a corner case (who even
+imagined hidden PIDs existed on Windows?).
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `test_it()`
+
+#### Fonctions
+
+##### proc_info
+
+**Paramètres :**
+
+- `pid`
+
+##### check_exception
+
+**Paramètres :**
+
+- `exc`
+- `proc`
+- `name`
+- `ppid`
+
+##### do_wait
+
+##### setUp
+
+##### tearDown
+
+##### iter_proc_info
+
+##### test_all
+
+##### cmdline
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### exe
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### pid
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### ppid
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### name
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### create_time
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### uids
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### gids
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### username
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### status
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### io_counters
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### ionice
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### num_threads
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### threads
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### cpu_times
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### cpu_percent
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### cpu_num
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### memory_info
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### memory_full_info
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### open_files
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### num_fds
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### net_connections
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### cwd
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### memory_percent
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### is_running
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### cpu_affinity
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### terminal
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### memory_maps
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### num_handles
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### nice
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### num_ctx_switches
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### rlimit
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### environ
+
+**Paramètres :**
+
+- `ret`
+- `info`
+
+##### setUp
+
+##### tearDown
+
+##### test_it
+
+##### is_linux_tid
+
+**Paramètres :**
+
+- `pid`
+
+##### check
+
+**Paramètres :**
+
+- `pid`
+
+---
+
+### test_process
+
+Tests for psutil.Process class.
+
+#### Classes
+
+##### TestProcess
+
+Tests for psutil.Process class.
+
+**Méthodes :**
+
+- `spawn_psproc()`
+- `test_pid()`
+- `test_kill()`
+- `test_terminate()`
+- `test_send_signal()`
+- `test_send_signal_mocked()`
+- `test_wait_exited()`
+- `test_wait_stopped()`
+- `test_wait_non_children()`
+- `test_wait_timeout()`
+- `test_wait_timeout_nonblocking()`
+- `test_cpu_percent()`
+- `test_cpu_percent_numcpus_none()`
+- `test_cpu_times()`
+- `test_cpu_times_2()`
+- `test_cpu_num()`
+- `test_create_time()`
+- `test_terminal()`
+- `test_io_counters()`
+- `test_ionice_linux()`
+- `test_ionice_win()`
+- `test_rlimit_get()`
+- `test_rlimit_set()`
+- `test_rlimit()`
+- `test_rlimit_infinity()`
+- `test_rlimit_infinity_value()`
+- `test_num_threads()`
+- `test_num_handles()`
+- `test_threads()`
+- `test_threads_2()`
+- `test_memory_info()`
+- `test_memory_full_info()`
+- `test_memory_maps()`
+- `test_memory_maps_lists_lib()`
+- `test_memory_percent()`
+- `test_is_running()`
+- `test_exe()`
+- `test_cmdline()`
+- `test_long_cmdline()`
+- `test_name()`
+- `test_long_name()`
+- `test_uids()`
+- `test_gids()`
+- `test_nice()`
+- `test_status()`
+- `test_username()`
+- `test_cwd()`
+- `test_cwd_2()`
+- `test_cpu_affinity()`
+- `test_cpu_affinity_errs()`
+- `test_cpu_affinity_all_combinations()`
+- `test_open_files()`
+- `test_open_files_2()`
+- `test_num_fds()`
+- `test_num_ctx_switches()`
+- `test_ppid()`
+- `test_parent()`
+- `test_parent_multi()`
+- `test_parents()`
+- `test_children()`
+- `test_children_recursive()`
+- `test_children_duplicates()`
+- `test_parents_and_children()`
+- `test_suspend_resume()`
+- `test_invalid_pid()`
+- `test_as_dict()`
+- `test_oneshot()`
+- `test_oneshot_twice()`
+- `test_oneshot_cache()`
+- `test_halfway_terminated_process()`
+- `test_zombie_process()`
+- `test_zombie_process_is_running_w_exc()`
+- `test_zombie_process_status_w_exc()`
+- `test_reused_pid()`
+- `test_pid_0()`
+- `test_environ()`
+- `test_weird_environ()`
+
+##### TestPopen
+
+Tests for psutil.Popen class.
+
+**Méthodes :**
+
+- `tearDownClass()`
+- `test_misc()`
+- `test_ctx_manager()`
+- `test_kill_terminate()`
+- `test__getattribute__()`
+
+#### Fonctions
+
+##### spawn_psproc
+
+##### test_pid
+
+##### test_kill
+
+##### test_terminate
+
+##### test_send_signal
+
+##### test_send_signal_mocked
+
+##### test_wait_exited
+
+##### test_wait_stopped
+
+##### test_wait_non_children
+
+##### test_wait_timeout
+
+##### test_wait_timeout_nonblocking
+
+##### test_cpu_percent
+
+##### test_cpu_percent_numcpus_none
+
+##### test_cpu_times
+
+##### test_cpu_times_2
+
+##### test_cpu_num
+
+##### test_create_time
+
+##### test_terminal
+
+##### test_io_counters
+
+##### test_ionice_linux
+
+##### test_ionice_win
+
+##### test_rlimit_get
+
+##### test_rlimit_set
+
+##### test_rlimit
+
+##### test_rlimit_infinity
+
+##### test_rlimit_infinity_value
+
+##### test_num_threads
+
+##### test_num_handles
+
+##### test_threads
+
+##### test_threads_2
+
+##### test_memory_info
+
+##### test_memory_full_info
+
+##### test_memory_maps
+
+##### test_memory_maps_lists_lib
+
+##### test_memory_percent
+
+##### test_is_running
+
+##### test_exe
+
+##### test_cmdline
+
+##### test_long_cmdline
+
+##### test_name
+
+##### test_long_name
+
+##### test_uids
+
+##### test_gids
+
+##### test_nice
+
+##### test_status
+
+##### test_username
+
+##### test_cwd
+
+##### test_cwd_2
+
+##### test_cpu_affinity
+
+##### test_cpu_affinity_errs
+
+##### test_cpu_affinity_all_combinations
+
+##### test_open_files
+
+##### test_open_files_2
+
+##### test_num_fds
+
+##### test_num_ctx_switches
+
+##### test_ppid
+
+##### test_parent
+
+##### test_parent_multi
+
+##### test_parents
+
+##### test_children
+
+##### test_children_recursive
+
+##### test_children_duplicates
+
+##### test_parents_and_children
+
+##### test_suspend_resume
+
+##### test_invalid_pid
+
+##### test_as_dict
+
+##### test_oneshot
+
+##### test_oneshot_twice
+
+##### test_oneshot_cache
+
+##### test_halfway_terminated_process
+
+##### test_zombie_process
+
+##### test_zombie_process_is_running_w_exc
+
+##### test_zombie_process_status_w_exc
+
+##### test_reused_pid
+
+##### test_pid_0
+
+##### test_environ
+
+##### test_weird_environ
+
+##### tearDownClass
+
+**Paramètres :**
+
+- `cls`
+
+##### test_misc
+
+##### test_ctx_manager
+
+##### test_kill_terminate
+
+##### test__getattribute__
+
+##### waste_cpu
+
+##### cleanup
+
+**Paramètres :**
+
+- `init`
+
+##### cleanup
+
+**Paramètres :**
+
+- `init`
+
+##### assert_raises_nsp
+
+**Paramètres :**
+
+- `fun`
+- `fun_name`
+
+##### clean_dict
+
+**Paramètres :**
+
+- `d`
+
+##### normpath
+
+**Paramètres :**
+
+- `p`
+
+---
+
+### test_bsd
+
+Tests specific to all BSD platforms.
+
+#### Classes
+
+##### BSDTestCase
+
+Generic tests common to all BSD variants.
+
+**Méthodes :**
+
+- `setUpClass()`
+- `tearDownClass()`
+- `test_process_create_time()`
+- `test_disks()`
+- `test_cpu_count_logical()`
+- `test_virtual_memory_total()`
+- `test_net_if_stats()`
+
+##### FreeBSDPsutilTestCase
+
+**Méthodes :**
+
+- `setUpClass()`
+- `tearDownClass()`
+- `test_memory_maps()`
+- `test_exe()`
+- `test_cmdline()`
+- `test_uids_gids()`
+- `test_ctx_switches()`
+- `test_cpu_times()`
+
+##### FreeBSDSystemTestCase
+
+**Méthodes :**
+
+- `parse_swapinfo()`
+- `test_cpu_frequency_against_sysctl()`
+- `test_vmem_active()`
+- `test_vmem_inactive()`
+- `test_vmem_wired()`
+- `test_vmem_cached()`
+- `test_vmem_free()`
+- `test_vmem_buffers()`
+- `test_muse_vmem_total()`
+- `test_muse_vmem_active()`
+- `test_muse_vmem_inactive()`
+- `test_muse_vmem_wired()`
+- `test_muse_vmem_cached()`
+- `test_muse_vmem_free()`
+- `test_muse_vmem_buffers()`
+- `test_cpu_stats_ctx_switches()`
+- `test_cpu_stats_interrupts()`
+- `test_cpu_stats_soft_interrupts()`
+- `test_cpu_stats_syscalls()`
+- `test_swapmem_free()`
+- `test_swapmem_used()`
+- `test_swapmem_total()`
+- `test_boot_time()`
+- `test_sensors_battery()`
+- `test_sensors_battery_against_sysctl()`
+- `test_sensors_battery_no_battery()`
+- `test_sensors_temperatures_against_sysctl()`
+
+##### OpenBSDTestCase
+
+**Méthodes :**
+
+- `test_boot_time()`
+
+##### NetBSDTestCase
+
+**Méthodes :**
+
+- `parse_meminfo()`
+- `test_vmem_total()`
+- `test_vmem_free()`
+- `test_vmem_buffers()`
+- `test_vmem_shared()`
+- `test_vmem_cached()`
+- `test_swapmem_total()`
+- `test_swapmem_free()`
+- `test_swapmem_used()`
+- `test_cpu_stats_interrupts()`
+- `test_cpu_stats_ctx_switches()`
+
+#### Fonctions
+
+##### sysctl
+
+Expects a sysctl command with an argument and parse the result
+returning only the value of interest.
+
+**Paramètres :**
+
+- `cmdline`
+
+##### muse
+
+Thin wrapper around 'muse' cmdline utility.
+
+**Paramètres :**
+
+- `field`
+
+##### setUpClass
+
+**Paramètres :**
+
+- `cls`
+
+##### tearDownClass
+
+**Paramètres :**
+
+- `cls`
+
+##### test_process_create_time
+
+##### test_disks
+
+##### test_cpu_count_logical
+
+##### test_virtual_memory_total
+
+##### test_net_if_stats
+
+##### setUpClass
+
+**Paramètres :**
+
+- `cls`
+
+##### tearDownClass
+
+**Paramètres :**
+
+- `cls`
+
+##### test_memory_maps
+
+##### test_exe
+
+##### test_cmdline
+
+##### test_uids_gids
+
+##### test_ctx_switches
+
+##### test_cpu_times
+
+##### parse_swapinfo
+
+##### test_cpu_frequency_against_sysctl
+
+##### test_vmem_active
+
+##### test_vmem_inactive
+
+##### test_vmem_wired
+
+##### test_vmem_cached
+
+##### test_vmem_free
+
+##### test_vmem_buffers
+
+##### test_muse_vmem_total
+
+##### test_muse_vmem_active
+
+##### test_muse_vmem_inactive
+
+##### test_muse_vmem_wired
+
+##### test_muse_vmem_cached
+
+##### test_muse_vmem_free
+
+##### test_muse_vmem_buffers
+
+##### test_cpu_stats_ctx_switches
+
+##### test_cpu_stats_interrupts
+
+##### test_cpu_stats_soft_interrupts
+
+##### test_cpu_stats_syscalls
+
+##### test_swapmem_free
+
+##### test_swapmem_used
+
+##### test_swapmem_total
+
+##### test_boot_time
+
+##### test_sensors_battery
+
+##### test_sensors_battery_against_sysctl
+
+##### test_sensors_battery_no_battery
+
+##### test_sensors_temperatures_against_sysctl
+
+##### test_boot_time
+
+##### parse_meminfo
+
+**Paramètres :**
+
+- `look_for`
+
+##### test_vmem_total
+
+##### test_vmem_free
+
+##### test_vmem_buffers
+
+##### test_vmem_shared
+
+##### test_vmem_cached
+
+##### test_swapmem_total
+
+##### test_swapmem_free
+
+##### test_swapmem_used
+
+##### test_cpu_stats_interrupts
+
+##### test_cpu_stats_ctx_switches
+
+##### df
+
+**Paramètres :**
+
+- `path`
+
+##### secs2hours
+
+**Paramètres :**
+
+- `secs`
+
+---
+
+### test_system
+
+Tests for system APIS.
+
+#### Classes
+
+##### TestProcessIter
+
+**Méthodes :**
+
+- `test_pid_presence()`
+- `test_no_duplicates()`
+- `test_emulate_nsp()`
+- `test_emulate_access_denied()`
+- `test_attrs()`
+- `test_cache_clear()`
+
+##### TestProcessAPIs
+
+**Méthodes :**
+
+- `test_wait_procs()`
+- `test_wait_procs_no_timeout()`
+- `test_pid_exists()`
+- `test_pid_exists_2()`
+
+##### TestMiscAPIs
+
+**Méthodes :**
+
+- `test_boot_time()`
+- `test_users()`
+- `test_os_constants()`
+
+##### TestMemoryAPIs
+
+**Méthodes :**
+
+- `test_virtual_memory()`
+- `test_swap_memory()`
+
+##### TestCpuAPIs
+
+**Méthodes :**
+
+- `test_cpu_count_logical()`
+- `test_cpu_count_cores()`
+- `test_cpu_count_none()`
+- `test_cpu_times()`
+- `test_cpu_times_time_increases()`
+- `test_per_cpu_times()`
+- `test_per_cpu_times_2()`
+- `test_cpu_times_comparison()`
+- `_test_cpu_percent()`
+- `test_cpu_percent()`
+- `test_per_cpu_percent()`
+- `test_cpu_times_percent()`
+- `test_per_cpu_times_percent()`
+- `test_per_cpu_times_percent_negative()`
+- `test_cpu_stats()`
+- `test_cpu_freq()`
+- `test_getloadavg()`
+
+##### TestDiskAPIs
+
+**Méthodes :**
+
+- `test_disk_usage()`
+- `test_disk_usage_unicode()`
+- `test_disk_usage_bytes()`
+- `test_disk_partitions()`
+- `test_disk_io_counters()`
+- `test_disk_io_counters_no_disks()`
+
+##### TestNetAPIs
+
+**Méthodes :**
+
+- `test_net_io_counters()`
+- `test_net_io_counters_no_nics()`
+- `test_net_if_addrs()`
+- `test_net_if_addrs_mac_null_bytes()`
+- `test_net_if_stats()`
+- `test_net_if_stats_enodev()`
+
+##### TestSensorsAPIs
+
+**Méthodes :**
+
+- `test_sensors_temperatures()`
+- `test_sensors_temperatures_fahreneit()`
+- `test_sensors_battery()`
+- `test_sensors_fans()`
+
+#### Fonctions
+
+##### test_pid_presence
+
+##### test_no_duplicates
+
+##### test_emulate_nsp
+
+##### test_emulate_access_denied
+
+##### test_attrs
+
+##### test_cache_clear
+
+##### test_wait_procs
+
+##### test_wait_procs_no_timeout
+
+##### test_pid_exists
+
+##### test_pid_exists_2
+
+##### test_boot_time
+
+##### test_users
+
+##### test_os_constants
+
+##### test_virtual_memory
+
+##### test_swap_memory
+
+##### test_cpu_count_logical
+
+##### test_cpu_count_cores
+
+##### test_cpu_count_none
+
+##### test_cpu_times
+
+##### test_cpu_times_time_increases
+
+##### test_per_cpu_times
+
+##### test_per_cpu_times_2
+
+##### test_cpu_times_comparison
+
+##### _test_cpu_percent
+
+**Paramètres :**
+
+- `percent`
+- `last_ret`
+- `new_ret`
+
+##### test_cpu_percent
+
+##### test_per_cpu_percent
+
+##### test_cpu_times_percent
+
+##### test_per_cpu_times_percent
+
+##### test_per_cpu_times_percent_negative
+
+##### test_cpu_stats
+
+##### test_cpu_freq
+
+##### test_getloadavg
+
+##### test_disk_usage
+
+##### test_disk_usage_unicode
+
+##### test_disk_usage_bytes
+
+##### test_disk_partitions
+
+##### test_disk_io_counters
+
+##### test_disk_io_counters_no_disks
+
+##### test_net_io_counters
+
+##### test_net_io_counters_no_nics
+
+##### test_net_if_addrs
+
+##### test_net_if_addrs_mac_null_bytes
+
+##### test_net_if_stats
+
+##### test_net_if_stats_enodev
+
+##### test_sensors_temperatures
+
+##### test_sensors_temperatures_fahreneit
+
+##### test_sensors_battery
+
+##### test_sensors_fans
+
+##### callback
+
+**Paramètres :**
+
+- `p`
+
+##### test_1
+
+**Paramètres :**
+
+- `procs`
+- `callback`
+
+##### test_2
+
+**Paramètres :**
+
+- `procs`
+- `callback`
+
+##### check_ls
+
+**Paramètres :**
+
+- `ls`
+
+##### check_ntuple
+
+**Paramètres :**
+
+- `nt`
+
+##### find_mount_point
+
+**Paramètres :**
+
+- `path`
+
+##### check_ntuple
+
+**Paramètres :**
+
+- `nt`
+
+##### check_ntuple
+
+**Paramètres :**
+
+- `nt`
+
+---
+
+### test_osx
+
+macOS specific tests.
+
+#### Classes
+
+##### TestProcess
+
+**Méthodes :**
+
+- `setUpClass()`
+- `tearDownClass()`
+- `test_process_create_time()`
+
+##### TestSystemAPIs
+
+**Méthodes :**
+
+- `test_disks()`
+- `test_cpu_count_logical()`
+- `test_cpu_count_cores()`
+- `test_cpu_freq()`
+- `test_vmem_total()`
+- `test_vmem_free()`
+- `test_vmem_active()`
+- `test_vmem_inactive()`
+- `test_vmem_wired()`
+- `test_swapmem_sin()`
+- `test_swapmem_sout()`
+- `test_net_if_stats()`
+- `test_sensors_battery()`
+
+#### Fonctions
+
+##### sysctl
+
+Expects a sysctl command with an argument and parse the result
+returning only the value of interest.
+
+**Paramètres :**
+
+- `cmdline`
+
+##### vm_stat
+
+Wrapper around 'vm_stat' cmdline utility.
+
+**Paramètres :**
+
+- `field`
+
+##### setUpClass
+
+**Paramètres :**
+
+- `cls`
+
+##### tearDownClass
+
+**Paramètres :**
+
+- `cls`
+
+##### test_process_create_time
+
+##### test_disks
+
+##### test_cpu_count_logical
+
+##### test_cpu_count_cores
+
+##### test_cpu_freq
+
+##### test_vmem_total
+
+##### test_vmem_free
+
+##### test_vmem_active
+
+##### test_vmem_inactive
+
+##### test_vmem_wired
+
+##### test_swapmem_sin
+
+##### test_swapmem_sout
+
+##### test_net_if_stats
+
+##### test_sensors_battery
+
+##### df
+
+**Paramètres :**
+
+- `path`
+
+---
+
+### test_memleaks
+
+Tests for detecting function memory leaks (typically the ones
+implemented in C). It does so by calling a function many times and
+checking whether process memory usage keeps increasing between
+calls or over time.
+Note that this may produce false positives (especially on Windows
+for some reason).
+PyPy appears to be completely unstable for this framework, probably
+because of how its JIT handles memory, so tests are skipped.
+
+#### Classes
+
+##### TestProcessObjectLeaks
+
+Test leaks of Process class methods.
+
+**Méthodes :**
+
+- `test_coverage()`
+- `test_name()`
+- `test_cmdline()`
+- `test_exe()`
+- `test_ppid()`
+- `test_uids()`
+- `test_gids()`
+- `test_status()`
+- `test_nice()`
+- `test_nice_set()`
+- `test_ionice()`
+- `test_ionice_set()`
+- `test_io_counters()`
+- `test_username()`
+- `test_create_time()`
+- `test_num_threads()`
+- `test_num_handles()`
+- `test_num_fds()`
+- `test_num_ctx_switches()`
+- `test_threads()`
+- `test_cpu_times()`
+- `test_cpu_num()`
+- `test_memory_info()`
+- `test_memory_full_info()`
+- `test_terminal()`
+- `test_resume()`
+- `test_cwd()`
+- `test_cpu_affinity()`
+- `test_cpu_affinity_set()`
+- `test_open_files()`
+- `test_memory_maps()`
+- `test_rlimit()`
+- `test_rlimit_set()`
+- `test_net_connections()`
+- `test_environ()`
+- `test_proc_info()`
+
+##### TestTerminatedProcessLeaks
+
+Repeat the tests above looking for leaks occurring when dealing
+with terminated processes raising NoSuchProcess exception.
+The C functions are still invoked but will follow different code
+paths. We'll check those code paths.
+
+**Méthodes :**
+
+- `setUpClass()`
+- `tearDownClass()`
+- `call()`
+
+##### TestProcessDualImplementation
+
+**Méthodes :**
+
+- `test_cmdline_peb_true()`
+- `test_cmdline_peb_false()`
+
+##### TestModuleFunctionsLeaks
+
+Test leaks of psutil module functions.
+
+**Méthodes :**
+
+- `test_coverage()`
+- `test_cpu_count()`
+- `test_cpu_count_cores()`
+- `test_cpu_times()`
+- `test_per_cpu_times()`
+- `test_cpu_stats()`
+- `test_cpu_freq()`
+- `test_getloadavg()`
+- `test_virtual_memory()`
+- `test_swap_memory()`
+- `test_pid_exists()`
+- `test_disk_usage()`
+- `test_disk_partitions()`
+- `test_disk_io_counters()`
+- `test_pids()`
+- `test_net_io_counters()`
+- `test_net_connections()`
+- `test_net_if_addrs()`
+- `test_net_if_stats()`
+- `test_sensors_battery()`
+- `test_sensors_temperatures()`
+- `test_sensors_fans()`
+- `test_boot_time()`
+- `test_users()`
+- `test_set_debug()`
+
+#### Fonctions
+
+##### fewtimes_if_linux
+
+Decorator for those Linux functions which are implemented in pure
+Python, and which we want to run faster.
+
+##### decorator
+
+**Paramètres :**
+
+- `fun`
+
+##### test_coverage
+
+##### test_name
+
+##### test_cmdline
+
+##### test_exe
+
+##### test_ppid
+
+##### test_uids
+
+##### test_gids
+
+##### test_status
+
+##### test_nice
+
+##### test_nice_set
+
+##### test_ionice
+
+##### test_ionice_set
+
+##### test_io_counters
+
+##### test_username
+
+##### test_create_time
+
+##### test_num_threads
+
+##### test_num_handles
+
+##### test_num_fds
+
+##### test_num_ctx_switches
+
+##### test_threads
+
+##### test_cpu_times
+
+##### test_cpu_num
+
+##### test_memory_info
+
+##### test_memory_full_info
+
+##### test_terminal
+
+##### test_resume
+
+##### test_cwd
+
+##### test_cpu_affinity
+
+##### test_cpu_affinity_set
+
+##### test_open_files
+
+##### test_memory_maps
+
+##### test_rlimit
+
+##### test_rlimit_set
+
+##### test_net_connections
+
+##### test_environ
+
+##### test_proc_info
+
+##### setUpClass
+
+**Paramètres :**
+
+- `cls`
+
+##### tearDownClass
+
+**Paramètres :**
+
+- `cls`
+
+##### call
+
+**Paramètres :**
+
+- `fun`
+
+##### test_cmdline_peb_true
+
+##### test_cmdline_peb_false
+
+##### test_coverage
+
+##### test_cpu_count
+
+##### test_cpu_count_cores
+
+##### test_cpu_times
+
+##### test_per_cpu_times
+
+##### test_cpu_stats
+
+##### test_cpu_freq
+
+##### test_getloadavg
+
+##### test_virtual_memory
+
+##### test_swap_memory
+
+##### test_pid_exists
+
+##### test_disk_usage
+
+##### test_disk_partitions
+
+##### test_disk_io_counters
+
+##### test_pids
+
+##### test_net_io_counters
+
+##### test_net_connections
+
+##### test_net_if_addrs
+
+##### test_net_if_stats
+
+##### test_sensors_battery
+
+##### test_sensors_temperatures
+
+##### test_sensors_fans
+
+##### test_boot_time
+
+##### test_users
+
+##### test_set_debug
+
+##### wrapper
+
+##### test_kill
+
+##### test_terminate
+
+##### test_suspend
+
+##### test_resume
+
+##### test_wait
+
+##### test_proc_info
+
+##### test_win_service_iter
+
+##### test_win_service_get
+
+##### test_win_service_get_config
+
+##### test_win_service_get_status
+
+##### test_win_service_get_description
+
+##### call
+
+---
+
+### test_windows
+
+Windows specific tests.
+
+#### Classes
+
+##### WindowsTestCase
+
+##### TestCpuAPIs
+
+**Méthodes :**
+
+- `test_cpu_count_vs_NUMBER_OF_PROCESSORS()`
+- `test_cpu_count_vs_GetSystemInfo()`
+- `test_cpu_count_logical_vs_wmi()`
+- `test_cpu_count_cores_vs_wmi()`
+- `test_cpu_count_vs_cpu_times()`
+- `test_cpu_freq()`
+
+##### TestSystemAPIs
+
+**Méthodes :**
+
+- `test_nic_names()`
+- `test_total_phymem()`
+- `test_free_phymem()`
+- `test_total_swapmem()`
+- `test_percent_swapmem()`
+- `test_pids()`
+- `test_disks()`
+- `test_disk_usage()`
+- `test_disk_partitions()`
+- `test_net_if_stats()`
+- `test_boot_time()`
+- `test_boot_time_fluctuation()`
+
+##### TestSensorsBattery
+
+**Méthodes :**
+
+- `test_has_battery()`
+- `test_percent()`
+- `test_power_plugged()`
+- `test_emulate_no_battery()`
+- `test_emulate_power_connected()`
+- `test_emulate_power_charging()`
+- `test_emulate_secs_left_unknown()`
+
+##### TestProcess
+
+**Méthodes :**
+
+- `setUpClass()`
+- `tearDownClass()`
+- `test_issue_24()`
+- `test_special_pid()`
+- `test_send_signal()`
+- `test_num_handles_increment()`
+- `test_ctrl_signals()`
+- `test_username()`
+- `test_cmdline()`
+- `test_nice()`
+- `test_memory_info()`
+- `test_wait()`
+- `test_cpu_affinity()`
+- `test_io_counters()`
+- `test_num_handles()`
+- `test_error_partial_copy()`
+- `test_exe()`
+
+##### TestProcessWMI
+
+Compare Process API results with WMI.
+
+**Méthodes :**
+
+- `setUpClass()`
+- `tearDownClass()`
+- `test_name()`
+- `test_exe()`
+- `test_cmdline()`
+- `test_username()`
+- `test_memory_rss()`
+- `test_memory_vms()`
+- `test_create_time()`
+
+##### TestDualProcessImplementation
+
+Certain APIs on Windows have 2 internal implementations, one
+based on documented Windows APIs, another one based
+NtQuerySystemInformation() which gets called as fallback in
+case the first fails because of limited permission error.
+Here we test that the two methods return the exact same value,
+see:
+https://github.com/giampaolo/psutil/issues/304.
+
+**Méthodes :**
+
+- `setUpClass()`
+- `tearDownClass()`
+- `test_memory_info()`
+- `test_create_time()`
+- `test_cpu_times()`
+- `test_io_counters()`
+- `test_num_handles()`
+- `test_cmdline()`
+
+##### RemoteProcessTestCase
+
+Certain functions require calling ReadProcessMemory.
+This trivially works when called on the current process.
+Check that this works on other processes, especially when they
+have a different bitness.
+
+**Méthodes :**
+
+- `find_other_interpreter()`
+- `setUp()`
+- `tearDown()`
+- `test_cmdline_32()`
+- `test_cmdline_64()`
+- `test_cwd_32()`
+- `test_cwd_64()`
+- `test_environ_32()`
+- `test_environ_64()`
+
+##### TestServices
+
+**Méthodes :**
+
+- `test_win_service_iter()`
+- `test_win_service_get()`
+
+#### Fonctions
+
+##### powershell
+
+Currently not used, but available just in case. Usage:
+
+>>> powershell(
+    "Get-CIMInstance Win32_PageFileUsage | Select AllocatedBaseSize")
+
+**Paramètres :**
+
+- `cmd`
+
+##### wmic
+
+Currently not used, but available just in case. Usage:
+
+>>> wmic("Win32_OperatingSystem", "FreePhysicalMemory")
+2134124534
+
+**Paramètres :**
+
+- `path`
+- `what`
+- `converter`
+
+##### test_cpu_count_vs_NUMBER_OF_PROCESSORS
+
+##### test_cpu_count_vs_GetSystemInfo
+
+##### test_cpu_count_logical_vs_wmi
+
+##### test_cpu_count_cores_vs_wmi
+
+##### test_cpu_count_vs_cpu_times
+
+##### test_cpu_freq
+
+##### test_nic_names
+
+##### test_total_phymem
+
+##### test_free_phymem
+
+##### test_total_swapmem
+
+##### test_percent_swapmem
+
+##### test_pids
+
+##### test_disks
+
+##### test_disk_usage
+
+##### test_disk_partitions
+
+##### test_net_if_stats
+
+##### test_boot_time
+
+##### test_boot_time_fluctuation
+
+##### test_has_battery
+
+##### test_percent
+
+##### test_power_plugged
+
+##### test_emulate_no_battery
+
+##### test_emulate_power_connected
+
+##### test_emulate_power_charging
+
+##### test_emulate_secs_left_unknown
+
+##### setUpClass
+
+**Paramètres :**
+
+- `cls`
+
+##### tearDownClass
+
+**Paramètres :**
+
+- `cls`
+
+##### test_issue_24
+
+##### test_special_pid
+
+##### test_send_signal
+
+##### test_num_handles_increment
+
+##### test_ctrl_signals
+
+##### test_username
+
+##### test_cmdline
+
+##### test_nice
+
+##### test_memory_info
+
+##### test_wait
+
+##### test_cpu_affinity
+
+##### test_io_counters
+
+##### test_num_handles
+
+##### test_error_partial_copy
+
+##### test_exe
+
+##### setUpClass
+
+**Paramètres :**
+
+- `cls`
+
+##### tearDownClass
+
+**Paramètres :**
+
+- `cls`
+
+##### test_name
+
+##### test_exe
+
+##### test_cmdline
+
+##### test_username
+
+##### test_memory_rss
+
+##### test_memory_vms
+
+##### test_create_time
+
+##### setUpClass
+
+**Paramètres :**
+
+- `cls`
+
+##### tearDownClass
+
+**Paramètres :**
+
+- `cls`
+
+##### test_memory_info
+
+##### test_create_time
+
+##### test_cpu_times
+
+##### test_io_counters
+
+##### test_num_handles
+
+##### test_cmdline
+
+##### find_other_interpreter
+
+##### setUp
+
+##### tearDown
+
+##### test_cmdline_32
+
+##### test_cmdline_64
+
+##### test_cwd_32
+
+##### test_cwd_64
+
+##### test_environ_32
+
+##### test_environ_64
+
+##### test_win_service_iter
+
+##### test_win_service_get
+
+##### from_bitmask
+
+**Paramètres :**
+
+- `x`
+
+---
+
+### test_scripts
+
+Test various scripts.
+
+#### Classes
+
+##### TestExampleScripts
+
+**Méthodes :**
+
+- `assert_stdout()`
+- `assert_syntax()`
+- `test_coverage()`
+- `test_executable()`
+- `test_disk_usage()`
+- `test_free()`
+- `test_meminfo()`
+- `test_procinfo()`
+- `test_who()`
+- `test_ps()`
+- `test_pstree()`
+- `test_netstat()`
+- `test_ifconfig()`
+- `test_pmap()`
+- `test_procsmem()`
+- `test_killall()`
+- `test_nettop()`
+- `test_top()`
+- `test_iotop()`
+- `test_pidof()`
+- `test_winservices()`
+- `test_cpu_distribution()`
+- `test_temperatures()`
+- `test_fans()`
+- `test_battery()`
+- `test_sensors()`
+
+##### TestInternalScripts
+
+**Méthodes :**
+
+- `ls()`
+- `test_syntax_all()`
+- `test_import_all()`
+
+##### TestSetupScript
+
+**Méthodes :**
+
+- `test_invocation()`
+- `test_python2()`
+
+#### Fonctions
+
+##### assert_stdout
+
+**Paramètres :**
+
+- `exe`
+
+##### assert_syntax
+
+**Paramètres :**
+
+- `exe`
+
+##### test_coverage
+
+##### test_executable
+
+##### test_disk_usage
+
+##### test_free
+
+##### test_meminfo
+
+##### test_procinfo
+
+##### test_who
+
+##### test_ps
+
+##### test_pstree
+
+##### test_netstat
+
+##### test_ifconfig
+
+##### test_pmap
+
+##### test_procsmem
+
+##### test_killall
+
+##### test_nettop
+
+##### test_top
+
+##### test_iotop
+
+##### test_pidof
+
+##### test_winservices
+
+##### test_cpu_distribution
+
+##### test_temperatures
+
+##### test_fans
+
+##### test_battery
+
+##### test_sensors
+
+##### ls
+
+##### test_syntax_all
+
+##### test_import_all
+
+##### test_invocation
+
+##### test_python2
+
+---
+
+### __main__
+
+Run unit tests. This is invoked by:
+$ python -m psutil.tests.
+
+---
+
+### test_testutils
+
+Tests for testing utils (psutil.tests namespace).
+
+#### Classes
+
+##### TestRetryDecorator
+
+**Méthodes :**
+
+- `test_retry_success()`
+- `test_retry_failure()`
+- `test_exception_arg()`
+- `test_no_interval_arg()`
+- `test_retries_arg()`
+- `test_retries_and_timeout_args()`
+
+##### TestSyncTestUtils
+
+**Méthodes :**
+
+- `test_wait_for_pid()`
+- `test_wait_for_file()`
+- `test_wait_for_file_empty()`
+- `test_wait_for_file_no_file()`
+- `test_wait_for_file_no_delete()`
+- `test_call_until()`
+
+##### TestFSTestUtils
+
+**Méthodes :**
+
+- `test_open_text()`
+- `test_open_binary()`
+- `test_safe_mkdir()`
+- `test_safe_rmpath()`
+- `test_chdir()`
+
+##### TestProcessUtils
+
+**Méthodes :**
+
+- `test_reap_children()`
+- `test_spawn_children_pair()`
+- `test_spawn_zombie()`
+- `test_terminate()`
+
+##### TestNetUtils
+
+**Méthodes :**
+
+- `bind_socket()`
+- `test_bind_unix_socket()`
+- `test_tcp_socketpair()`
+- `test_unix_socketpair()`
+- `test_create_sockets()`
+
+##### TestMemLeakClass
+
+**Méthodes :**
+
+- `test_times()`
+- `test_param_err()`
+- `test_leak_mem()`
+- `test_unclosed_files()`
+- `test_tolerance()`
+- `test_execute_w_exc()`
+
+##### TestFakePytest
+
+**Méthodes :**
+
+- `run_test_class()`
+- `test_raises()`
+- `test_mark()`
+- `test_skipif()`
+- `test_skip()`
+- `test_main()`
+- `test_warns()`
+
+##### TestTestingUtils
+
+**Méthodes :**
+
+- `test_process_namespace()`
+- `test_system_namespace()`
+
+##### TestOtherUtils
+
+**Méthodes :**
+
+- `test_is_namedtuple()`
+
+##### Foo
+
+**Méthodes :**
+
+- `bar()`
+
+##### TestCase
+
+**Méthodes :**
+
+- `foo()`
+
+##### TestCase
+
+**Méthodes :**
+
+- `foo()`
+
+##### TestCase
+
+**Méthodes :**
+
+- `foo()`
+
+#### Fonctions
+
+##### test_retry_success
+
+**Paramètres :**
+
+- `sleep`
+
+##### test_retry_failure
+
+**Paramètres :**
+
+- `sleep`
+
+##### test_exception_arg
+
+**Paramètres :**
+
+- `sleep`
+
+##### test_no_interval_arg
+
+**Paramètres :**
+
+- `sleep`
+
+##### test_retries_arg
+
+**Paramètres :**
+
+- `sleep`
+
+##### test_retries_and_timeout_args
+
+**Paramètres :**
+
+- `sleep`
+
+##### test_wait_for_pid
+
+##### test_wait_for_file
+
+##### test_wait_for_file_empty
+
+##### test_wait_for_file_no_file
+
+##### test_wait_for_file_no_delete
+
+##### test_call_until
+
+##### test_open_text
+
+##### test_open_binary
+
+##### test_safe_mkdir
+
+##### test_safe_rmpath
+
+##### test_chdir
+
+##### test_reap_children
+
+##### test_spawn_children_pair
+
+##### test_spawn_zombie
+
+##### test_terminate
+
+##### bind_socket
+
+##### test_bind_unix_socket
+
+##### test_tcp_socketpair
+
+##### test_unix_socketpair
+
+##### test_create_sockets
+
+##### test_times
+
+##### test_param_err
+
+##### test_leak_mem
+
+##### test_unclosed_files
+
+##### test_tolerance
+
+##### test_execute_w_exc
+
+##### run_test_class
+
+**Paramètres :**
+
+- `klass`
+
+##### test_raises
+
+##### test_mark
+
+##### test_skipif
+
+##### test_skip
+
+##### test_main
+
+##### test_warns
+
+##### test_process_namespace
+
+##### test_system_namespace
+
+##### test_is_namedtuple
+
+##### foo
+
+##### foo
+
+##### foo
+
+##### foo
+
+##### foo
+
+##### fun
+
+##### fun
+
+**Paramètres :**
+
+- `ls`
+
+##### fun
+
+##### fun
+
+##### fun_1
+
+##### fun_2
+
+##### foo
+
+##### bar
+
+##### foo
+
+##### foo
+
+##### foo
 
 ---
 
@@ -836614,9 +843036,43 @@ Gestionnaire de configuration f
 - `get_enabled_plugins()`
 - `get_available_templates()`
 - `get_cleanup_patterns()`
+- `set()`
+- `validate_config()`
+- `merge_configs()`
+- `resolve_environment_variables()`
 - `to_dict()`
 
 #### Fonctions
+
+##### load_config
+
+Charge une configuration depuis un fichier YAML
+
+Args:
+    config_path: Chemin vers le fichier de configuration
+    
+Returns:
+    Dict contenant la configuration chargée
+
+**Paramètres :**
+
+- `config_path`
+
+##### save_config
+
+Sauvegarde une configuration vers un fichier YAML
+
+Args:
+    config: Configuration à sauvegarder
+    config_path: Chemin vers le fichier de destination
+    
+Returns:
+    True si la sauvegarde a réussi, False sinon
+
+**Paramètres :**
+
+- `config`
+- `config_path`
 
 ##### __init__
 
@@ -836651,7 +843107,7 @@ Configure le logging selon la f
 
 ##### get
 
-Récupère une valeur de f
+Récupère une valeur de configuration
 
 **Paramètres :**
 
@@ -836677,6 +843133,40 @@ Récupère la liste des templates f
 ##### get_cleanup_patterns
 
 Récupère les patterns de f
+
+##### set
+
+Définit une valeur de configuration
+
+**Paramètres :**
+
+- `key`
+- `value`
+
+##### validate_config
+
+Valide une configuration
+
+**Paramètres :**
+
+- `config`
+
+##### merge_configs
+
+Fusionne deux configurations
+
+**Paramètres :**
+
+- `base_config`
+- `override_config`
+
+##### resolve_environment_variables
+
+Résout les variables d'environnement dans une configuration
+
+**Paramètres :**
+
+- `config`
 
 ##### to_dict
 
@@ -839804,6 +846294,60 @@ Génère un rapport objectif et détaillé
 
 - `resultats`
 - `temps_total`
+
+---
+
+### monitor_processes
+
+🔍 Moniteur de processus Athalia
+Surveille et gère les processus athalia_core.main pour éviter les doublons
+
+#### Classes
+
+##### AthaliaProcessMonitor
+
+Moniteur de processus pour Athalia
+
+**Méthodes :**
+
+- `__init__()`
+- `find_athalia_processes()`
+- `kill_duplicate_processes()`
+- `monitor_processes()`
+- `get_process_stats()`
+
+#### Fonctions
+
+##### main
+
+Fonction principale
+
+##### __init__
+
+##### find_athalia_processes
+
+Trouve tous les processus athalia_core.main
+
+##### kill_duplicate_processes
+
+Tue les processus en double, garde le plus ancien ou le plus récent
+
+**Paramètres :**
+
+- `keep_oldest`
+
+##### monitor_processes
+
+Surveille les processus en continu
+
+**Paramètres :**
+
+- `interval`
+- `max_duration`
+
+##### get_process_stats
+
+Retourne les statistiques des processus
 
 ---
 
