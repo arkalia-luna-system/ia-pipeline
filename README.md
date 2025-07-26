@@ -43,6 +43,10 @@ main()
 ## 🔧 API
 ### Classes principales
 
+#### AthaliaOrchestrator
+
+**Méthodes :** industrialize_project, audit_project, scan_projects
+
 #### ProjectAuditor
 
 Auditeur intelligent de projets générés.
@@ -55,35 +59,29 @@ Tests pour le système de logging d'Athalia
 
 **Méthodes :** setup_method, teardown_method, test_basic_logging_creation, test_advanced_logging_import, test_advanced_logging_functionality
 
-#### TestConfigManager
-
-Tests pour le gestionnaire de configuration d'Athalia
-
-**Méthodes :** setup_method, teardown_method, test_config_manager_initialization, test_load_config_from_file, test_save_config_to_file
-
 ### Fonctions principales
+
+#### main
+
+Fonction principale du CLI unifié
+
+#### industrialize_project
+
+**Paramètres :** project_path, config
+
+#### audit_project
+
+**Paramètres :** project_path
+
+#### scan_projects
+
+**Paramètres :** project_path
 
 #### audit_project_intelligent
 
 Fonction principale pour l'audit intelligent.
 
 **Paramètres :** project_path
-
-#### generate_audit_report
-
-**Paramètres :** project_path
-
-#### __init__
-
-**Paramètres :** project_path
-
-#### audit_project
-
-Audit complet du projet.
-
-#### _analyze_structure
-
-Analyse la structure du projet.
 
 ## 🧪 Tests
 
