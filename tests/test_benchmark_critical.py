@@ -6,7 +6,7 @@ import sys
 # Liste des modules/fonctions critiques à tester (corrigée)
 CRITICAL_FUNCTIONS = [
     ("athalia_core.advanced_analytics", "AdvancedAnalytics", True),  # True = nécessite un argument
-    ("athalia_core.athalia_orchestrator", "AthaliaOrchestrator", False),
+    ("athalia_core.unified_orchestrator", "UnifiedOrchestrator", False),
     ("athalia_core.auto_tester", "AutoTester", False),
 ]
 

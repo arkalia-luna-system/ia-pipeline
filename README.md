@@ -43,39 +43,45 @@ main()
 ## 🔧 API
 ### Classes principales
 
-#### ValidationContinue
+#### AthaliaOrchestrator
 
-**Méthodes :** __init__, test_rapide, test_demarrage, test_imports, test_generation_mini
+**Méthodes :** industrialize_project, audit_project, scan_projects
 
-#### ValidationDashboardHandler
+#### ProjectAuditor
 
-**Méthodes :** do_GET, do_POST, send_validation_result, send_history, end_headers
+Auditeur intelligent de projets générés.
 
-#### ValidationObjective
+**Méthodes :** __init__, audit_project, _analyze_structure, _analyze_code_quality, _analyze_python_file
 
-**Méthodes :** __init__, test_generation_et_compilation, test_correction_reelle, test_robustesse_cas_limites, test_performance_benchmark
+#### TestLoggingSystem
+
+Tests pour le système de logging d'Athalia
+
+**Méthodes :** setup_method, teardown_method, test_basic_logging_creation, test_advanced_logging_import, test_advanced_logging_functionality
 
 ### Fonctions principales
 
-#### __init__
+#### main
 
-**Paramètres :** intervalle_minutes
+Fonction principale du CLI unifié
 
-#### test_rapide
+#### industrialize_project
 
-Test rapide pour validation continue (5-10 secondes)
+**Paramètres :** project_path, config
 
-#### test_demarrage
+#### audit_project
 
-Test: Athalia démarre-t-il ?
+**Paramètres :** project_path
 
-#### test_imports
+#### scan_projects
 
-Test: Les imports fonctionnent-ils ?
+**Paramètres :** project_path
 
-#### test_generation_mini
+#### audit_project_intelligent
 
-Test: Génération d'un mini-projet
+Fonction principale pour l'audit intelligent.
+
+**Paramètres :** project_path
 
 ## 🧪 Tests
 
@@ -100,4 +106,4 @@ python -m pytest --cov=athalia-dev-setup
 Voir fichier LICENSE
 
 ---
-*Généré automatiquement par Athalia* - 2025-07-20
+*Généré automatiquement par Athalia* - 2025-07-26
