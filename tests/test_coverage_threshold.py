@@ -72,11 +72,11 @@ class TestCoverageThreshold:
         """Vérifie la structure de couverture des tests"""
         # Vérifie que les tests couvrent les modules principaux
         test_patterns = [
-            'test_ci_',
-            'test_imports_',
-            'test_security_',
-            'test_encoding_',
-            'test_requirements_'
+            'test_ci_basic',  # Correspond à test_ci_basic.py
+            'test_imports_all',  # Correspond à test_imports_all.py
+            'test_security_patterns',  # Correspond à test_security_patterns.py
+            'test_encoding_utf8',  # Correspond à test_encoding_utf8.py
+            'test_requirements_consistency'  # Correspond à test_requirements_consistency.py
         ]
 
         test_files = list(Path('tests').glob('test_*.py'))
@@ -149,11 +149,11 @@ class TestCoverageThreshold:
         """Vérifie les métriques de qualité de la couverture"""
         # Vérifie que les tests couvrent différents aspects
         test_categories = {
-            'ci': ['test_ci_'],
-            'security': ['test_security_'],
-            'imports': ['test_imports_'],
-            'encoding': ['test_encoding_'],
-            'requirements': ['test_requirements_']
+            'ci': ['test_ci_basic'],  # Correspond à test_ci_basic.py
+            'security': ['test_security_patterns'],  # Correspond à test_security_patterns.py
+            'imports': ['test_imports_all'],  # Correspond à test_imports_all.py
+            'encoding': ['test_encoding_utf8'],  # Correspond à test_encoding_utf8.py
+            'requirements': ['test_requirements_consistency']  # Correspond à test_requirements_consistency.py
         }
 
         test_files = list(Path('tests').glob('test_*.py'))
