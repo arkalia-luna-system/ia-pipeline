@@ -128,6 +128,5 @@ jobs:
         with:
           name: validation-artifacts
           path: |
-            validation_express_*.txt
-            rapport_validation_objective_*.md
-            logs/
+            logs/validation_express_*.txt
+            logs/rapport_validation_objective_*.md
