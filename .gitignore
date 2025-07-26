@@ -146,3 +146,4 @@ test_validation_*.py .mypy_cache/
 data/comprehensive_analysis_*.json
 data/analysis_*.json
 data/report_*.json
+data/archive/*/archived_comprehensive_analysis_*.json
