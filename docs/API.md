@@ -396,97 +396,6 @@ Returns:
 
 ---
 
-### test_data_cleanup
-
-Tests unitaires pour le système de nettoyage des données
-
-#### Classes
-
-##### TestDataCleanup
-
-Tests pour le système de nettoyage des données
-
-**Méthodes :**
-
-- `setup_method()`
-- `teardown_method()`
-- `create_test_files()`
-- `test_data_cleaner_initialization()`
-- `test_find_analysis_files()`
-- `test_get_file_hash()`
-- `test_categorize_files()`
-- `test_is_file_important()`
-- `test_archive_important_files()`
-- `test_remove_duplicates()`
-- `test_remove_old_files()`
-- `test_generate_report()`
-- `test_cleanup_dry_run()`
-- `test_cleanup_full()`
-
-#### Fonctions
-
-##### test_data_cleaner_integration
-
-Test d'intégration du DataCleaner
-
-##### setup_method
-
-Configuration avant chaque test
-
-##### teardown_method
-
-Nettoyage après chaque test
-
-##### create_test_files
-
-Créer des fichiers de test pour les tests
-
-##### test_data_cleaner_initialization
-
-Test d'initialisation du DataCleaner
-
-##### test_find_analysis_files
-
-Test de recherche des fichiers d'analyse
-
-##### test_get_file_hash
-
-Test de calcul de hash des fichiers
-
-##### test_categorize_files
-
-Test de catégorisation des fichiers
-
-##### test_is_file_important
-
-Test de détection des fichiers importants
-
-##### test_archive_important_files
-
-Test d'archivage des fichiers importants
-
-##### test_remove_duplicates
-
-Test de suppression des doublons
-
-##### test_remove_old_files
-
-Test de suppression des anciens fichiers
-
-##### test_generate_report
-
-Test de génération de rapport
-
-##### test_cleanup_dry_run
-
-Test de nettoyage en mode simulation
-
-##### test_cleanup_full
-
-Test de nettoyage complet
-
----
-
 ### test_all_orchestrators
 
 🎯 TEST COMPLET DES 3 NIVEAUX D'ORCHESTRATION
@@ -716,7 +625,7 @@ Tests de base pour le module audit
 - `setup_method()`
 - `teardown_method()`
 - `create_test_files()`
-- `test_audit_project_basic()`
+- `test_audit_project_intelligent_basic()`
 - `test_audit_nonexistent_project()`
 - `test_audit_empty_project()`
 - `test_project_structure_validation()`
@@ -741,7 +650,7 @@ Nettoyage après chaque test
 
 Crée des fichiers de test pour l'audit
 
-##### test_audit_project_basic
+##### test_audit_project_intelligent_basic
 
 Test d'audit de base d'un projet
 
@@ -1057,6 +966,73 @@ Test la validation de l'organisation
 ##### test_generate_organization_report
 
 Test la génération du rapport
+
+---
+
+### test_generation
+
+Tests unitaires pour le module generation.py d'Athalia
+Module critique pour la génération de projets et blueprints
+
+#### Classes
+
+##### TestGenerationModule
+
+Tests pour le module de génération d'Athalia
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_generation_module_import()`
+- `test_project_generator_initialization()`
+- `test_generate_blueprint_mock()`
+- `test_save_blueprint()`
+- `test_scan_existing_project()`
+- `test_generate_project_structure()`
+- `test_generate_blueprint_ia()`
+
+#### Fonctions
+
+##### test_generation_integration
+
+Test d'intégration du module generation
+
+##### setup_method
+
+Configuration avant chaque test
+
+##### teardown_method
+
+Nettoyage après chaque test
+
+##### test_generation_module_import
+
+Test d'import du module generation
+
+##### test_project_generator_initialization
+
+Test d'initialisation du ProjectGenerator
+
+##### test_generate_blueprint_mock
+
+Test de génération d'un blueprint mock
+
+##### test_save_blueprint
+
+Test de sauvegarde d'un blueprint
+
+##### test_scan_existing_project
+
+Test de scan d'un projet existant
+
+##### test_generate_project_structure
+
+Test de génération de structure de projet
+
+##### test_generate_blueprint_ia
+
+Test de génération de blueprint avec IA
 
 ---
 
@@ -2720,73 +2696,6 @@ Vérifie qu'il n'y a pas de marqueur BOM UTF-8
 ##### test_consistent_line_endings
 
 Vérifie la cohérence des fins de ligne
-
----
-
-### test_generation
-
-Tests unitaires pour le module generation.py d'Athalia
-Module critique pour la génération de projets et blueprints
-
-#### Classes
-
-##### TestGenerationModule
-
-Tests pour le module de génération d'Athalia
-
-**Méthodes :**
-
-- `setup_method()`
-- `teardown_method()`
-- `test_generation_module_import()`
-- `test_project_generator_initialization()`
-- `test_generate_blueprint_mock()`
-- `test_save_blueprint()`
-- `test_scan_existing_project()`
-- `test_generate_project_structure()`
-- `test_generate_blueprint_ia()`
-
-#### Fonctions
-
-##### test_generation_integration
-
-Test d'intégration du module generation
-
-##### setup_method
-
-Configuration avant chaque test
-
-##### teardown_method
-
-Nettoyage après chaque test
-
-##### test_generation_module_import
-
-Test d'import du module generation
-
-##### test_project_generator_initialization
-
-Test d'initialisation du ProjectGenerator
-
-##### test_generate_blueprint_mock
-
-Test de génération d'un blueprint mock
-
-##### test_save_blueprint
-
-Test de sauvegarde d'un blueprint
-
-##### test_scan_existing_project
-
-Test de scan d'un projet existant
-
-##### test_generate_project_structure
-
-Test de génération de structure de projet
-
-##### test_generate_blueprint_ia
-
-Test de génération de blueprint avec IA
 
 ---
 
