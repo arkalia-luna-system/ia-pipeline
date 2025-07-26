@@ -1,6 +1,54 @@
 {
   "backups": [
     {
+      "backup_id": "20250726_214536",
+      "timestamp": "2025-07-26T21:45:36.595076",
+      "backup_type": "daily",
+      "size_bytes": 0,
+      "files_count": 0,
+      "checksum": "01e9e9036ac1c6ef638b55d0d96109ee",
+      "compression": "gzip",
+      "encryption": false,
+      "source_paths": [],
+      "backup_path": "backups/daily/20250726_214536"
+    },
+    {
+      "backup_id": "20250726_214523",
+      "timestamp": "2025-07-26T21:45:23.510507",
+      "backup_type": "daily",
+      "size_bytes": 0,
+      "files_count": 0,
+      "checksum": "71231164ed35dc700a278da49bf10e21",
+      "compression": "gzip",
+      "encryption": false,
+      "source_paths": [],
+      "backup_path": "backups/daily/20250726_214523"
+    },
+    {
+      "backup_id": "20250726_181706",
+      "timestamp": "2025-07-26T18:17:06.511432",
+      "backup_type": "daily",
+      "size_bytes": 0,
+      "files_count": 0,
+      "checksum": "c0203b5e62a623e4a654b4c79c153cc8",
+      "compression": "gzip",
+      "encryption": false,
+      "source_paths": [],
+      "backup_path": "backups/daily/20250726_181706"
+    },
+    {
+      "backup_id": "20250726_181654",
+      "timestamp": "2025-07-26T18:16:54.003053",
+      "backup_type": "daily",
+      "size_bytes": 0,
+      "files_count": 0,
+      "checksum": "dda07a52b51f73ef9335309811165b47",
+      "compression": "gzip",
+      "encryption": false,
+      "source_paths": [],
+      "backup_path": "backups/daily/20250726_181654"
+    },
+    {
       "backup_id": "20250726_180904",
       "timestamp": "2025-07-26T18:09:04.731363",
       "backup_type": "daily",

@@ -3155,33 +3155,6 @@ Résultat attendu : Utilisation du fallback MOCK
 
 ---
 
-### test_integration_autogen
-
-#### Classes
-
-##### TestIntegrationAutoGen
-
-**Méthodes :**
-
-- `setUp()`
-- `test_autogen_orchestration()`
-
-#### Fonctions
-
-##### setUp
-
-Initialisation avant chaque test
-
-##### test_autogen_orchestration
-
-Test d'orchestration avec AutoGen
-
-Scénario : Test de l'orchestration des agents
-Données : Agents d'audit, correction et synthèse
-Résultat attendu : Synthèse contenant les résultats des agents
-
----
-
 ### test_integration_orchestrator
 
 🧪 TESTS D'INTÉGRATION ORCHESTRATEUR
@@ -7205,6 +7178,20 @@ Chercher des pépites dans le dossier
 ##### generer_rapport
 
 Générer un rapport complet
+
+---
+
+### verification_integration_simple
+
+🔍 VÉRIFICATION SIMPLE D'INTÉGRATION ORCHESTRATEUR
+==================================================
+Script simple pour vérifier l'intégration actuelle de l'orchestrateur unifié.
+
+#### Fonctions
+
+##### main
+
+Fonction principale
 
 ---
 
@@ -844825,6 +844812,10 @@ Import d'un profil depuis un fichier JSON
 - `semantic_prompt`
 
 ##### main
+
+---
+
+### ath_context_prompt
 
 ---
 
