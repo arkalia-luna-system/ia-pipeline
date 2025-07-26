@@ -115,7 +115,8 @@ else
 fi
 
 # Sauvegarde du rapport
-REPORT_FILE="validation_express_$(date +%Y%m%d_%H%M%S).txt"
+mkdir -p logs
+REPORT_FILE="logs/validation_express_$(date +%Y%m%d_%H%M%S).txt"
 {
     echo "Validation Express Athalia/Arkalia"
     echo "Date: $(date)"
