@@ -382,7 +382,8 @@ if __name__ == "__main__":
         
         # Sauvegarde du rapport
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        rapport_file = f"rapport_validation_objective_{timestamp}.md"
+        os.makedirs("logs", exist_ok=True)
+        rapport_file = f"logs/rapport_validation_objective_{timestamp}.md"
         
         with open(rapport_file, 'w', encoding='utf-8') as f:
             f.write(rapport)
