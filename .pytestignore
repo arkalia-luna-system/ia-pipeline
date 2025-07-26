@@ -1,0 +1,55 @@
+# Exclure les archives des tests
+archive/
+test_arch/
+test_patterns/
+test_perf/
+test-improved-f/
+
+# Exclure les dossiers de backup
+backups/
+blueprints_history/
+
+# Exclure les dossiers temporaires
+logs/
+data/archive/
+*.log
+*.tmp
+
+# Exclure les fichiers de configuration
+config/
+*.ini
+*.toml
+*.yaml
+*.yml
+
+# Exclure les dossiers de build
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Exclure les dossiers de documentation
+docs/archive/
+docs/audit_dossiers/
+
+# Exclure les scripts standalone
+scripts_non_utilises_*/
+duplicates/
+inutile/
+obsolete/ 
