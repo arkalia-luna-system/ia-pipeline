@@ -1,6 +1,8 @@
-import subprocess
 import os
+import subprocess
+
 import pytest
+
 
 @pytest.mark.skip(reason="Test désactivé - cause une récursivité infinie avec pytest")
 def test_ath_test_runs():

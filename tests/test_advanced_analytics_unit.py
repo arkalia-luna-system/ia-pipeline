@@ -1,6 +1,8 @@
-import unittest
 import os
+import unittest
+
 from athalia_core.advanced_analytics import AdvancedAnalytics
+
 
 class TestAdvancedAnalytics(unittest.TestCase):
     def setUp(self):

@@ -4,6 +4,7 @@
 Test de présence des modèles dans la config Continue
 """
 import os
+
 import pytest
 
 

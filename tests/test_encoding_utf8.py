@@ -2,9 +2,10 @@
 Test de vérification de l'encodage UTF-8
 Vérifie que tous les fichiers sont correctement encodés en UTF-8
 """
-import pytest
 import os
 from pathlib import Path
+
+import pytest
 
 
 class TestEncodingUTF8:

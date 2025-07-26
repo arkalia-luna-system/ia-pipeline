@@ -3,10 +3,11 @@
 """
 Test d'intégration CLI robuste pour Athalia
 """
-import sys
 import subprocess
-import pytest
+import sys
 from pathlib import Path
+
+import pytest
 
 
 def test_cli_robustesse():

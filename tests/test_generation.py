@@ -5,19 +5,22 @@ Tests unitaires pour le module generation.py d'Athalia
 Module critique pour la génération de projets et blueprints
 """
 
+import json
 import os
 import tempfile
-import pytest
-import json
 from pathlib import Path
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
+
+import pytest
 
 # Test d'import du module generation
 GENERATION_AVAILABLE = False
 try:
     from athalia_core.generation import (
-        generate_project, generate_blueprint_mock,
-        save_blueprint, scan_existing_project
+        generate_blueprint_mock,
+        generate_project,
+        save_blueprint,
+        scan_existing_project,
     )
     GENERATION_AVAILABLE = True
 except ImportError:
@@ -152,7 +155,7 @@ def test_generation_integration():
     """Test d'intégration du module generation"""
     # Test que le module peut être importé
     try:
-        from athalia_core.generation import generate_project, generate_blueprint_mock
+        from athalia_core.generation import generate_blueprint_mock, generate_project
         assert generate_project is not None
         assert generate_blueprint_mock is not None
     except ImportError:

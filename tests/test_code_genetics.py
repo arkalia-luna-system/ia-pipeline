@@ -1,5 +1,7 @@
 import unittest
+
 from athalia_core.distillation.code_genetics import CodeGenetics
+
 
 class TestCodeGenetics(unittest.TestCase):
     def setUp(self):

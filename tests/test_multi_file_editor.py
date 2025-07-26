@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import os
-import tempfile
 import shutil
+import tempfile
+
 import pytest
+
 from athalia_core.multi_file_editor import MultiFileEditor
+
 
 def test_apply_corrections_and_rollback():
     # Préparer des fichiers temporaires

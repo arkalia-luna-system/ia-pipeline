@@ -3,12 +3,13 @@
 """
 Tests pour le système d'audit intelligent Athalia
 """
+import logging
 import os
 import shutil
 import tempfile
-import pytest
-import logging
 from pathlib import Path
+
+import pytest
 
 # Configuration du logging pour les tests
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')

@@ -5,11 +5,11 @@ Tests pour les profils utilisateur avancés
 Corrigé après réorganisation des modules
 """
 
-import unittest
-import tempfile
 import os
-import sys
 import shutil
+import sys
+import tempfile
+import unittest
 from pathlib import Path
 
 # Ajouter le chemin du projet
@@ -22,7 +22,9 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 # from athalia_core.profils_utilisateur_avances import GestionnaireProfilsAvances
 
 import unittest
+
 import pytest
+
 
 class TestUserProfilesAdvanced(unittest.TestCase):
     """Tests pour les profils utilisateur avancés (corrigé)"""
