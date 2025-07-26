@@ -6,48 +6,6 @@ Cette documentation décrit l'API de athalia-dev-setup.
 
 ## Modules
 
-### athalia_unified
-
-Athalia Unified - Pipeline d'industrialisation IA complet
-Interface unifiée pour tous les modules Athalia
-
-#### Classes
-
-##### AthaliaOrchestrator
-
-**Méthodes :**
-
-- `industrialize_project()`
-- `audit_project()`
-- `scan_projects()`
-
-#### Fonctions
-
-##### main
-
-Fonction principale du CLI unifié
-
-##### industrialize_project
-
-**Paramètres :**
-
-- `project_path`
-- `config`
-
-##### audit_project
-
-**Paramètres :**
-
-- `project_path`
-
-##### scan_projects
-
-**Paramètres :**
-
-- `project_path`
-
----
-
 ### audit
 
 Module d'audit intelligent pour analyser la qualité des projets générés.
@@ -389,7 +347,7 @@ Identifie les tests lents
 
 Args:
     threshold: Seuil en secondes pour considérer un test comme lent
-    
+
 Returns:
     Liste des tests lents
 
@@ -403,7 +361,7 @@ Identifie les tests rapides
 
 Args:
     threshold: Seuil en secondes pour considérer un test comme rapide
-    
+
 Returns:
     Liste des tests rapides
 
@@ -2517,6 +2475,37 @@ Ce test échoue si la couverture descend sous 80%.
 
 ---
 
+### test_code_genetics
+
+#### Classes
+
+##### TestCodeGenetics
+
+**Méthodes :**
+
+- `setUp()`
+- `test_crossover()`
+- `test_mutate()`
+- `test_select()`
+- `test_evolve()`
+- `test_empty()`
+
+#### Fonctions
+
+##### setUp
+
+##### test_crossover
+
+##### test_mutate
+
+##### test_select
+
+##### test_evolve
+
+##### test_empty
+
+---
+
 ### test_orchestrator_robotics
 
 Tests spécialisés pour les fonctionnalités robotiques de l'orchestrateur
@@ -2571,37 +2560,6 @@ Test l'import du module robotique
 ##### test_robotics_audit_method
 
 Test de la méthode d'audit robotique
-
----
-
-### test_code_genetics
-
-#### Classes
-
-##### TestCodeGenetics
-
-**Méthodes :**
-
-- `setUp()`
-- `test_crossover()`
-- `test_mutate()`
-- `test_select()`
-- `test_evolve()`
-- `test_empty()`
-
-#### Fonctions
-
-##### setUp
-
-##### test_crossover
-
-##### test_mutate
-
-##### test_select
-
-##### test_evolve
-
-##### test_empty
 
 ---
 
@@ -2945,6 +2903,79 @@ Retourne les résultats des tests d'imports
 
 ---
 
+### test_imports_all
+
+Test d'importation exhaustive de tous les modules
+Vérifie que tous les modules peuvent être importés sans erreur
+
+#### Classes
+
+##### TestImportsAll
+
+Tests d'importation exhaustive
+
+**Méthodes :**
+
+- `test_core_modules_import()`
+- `test_distillation_modules_import()`
+- `test_classification_modules_import()`
+- `test_i18n_modules_import()`
+- `test_plugins_modules_import()`
+- `test_modules_import()`
+- `test_agents_import()`
+- `test_templates_import()`
+- `test_all_python_files_importable()`
+- `test_no_circular_imports()`
+- `test_third_party_imports()`
+
+#### Fonctions
+
+##### test_core_modules_import
+
+Test d'import des modules core
+
+##### test_distillation_modules_import
+
+Test d'import des modules de distillation
+
+##### test_classification_modules_import
+
+Test d'import des modules de classification
+
+##### test_i18n_modules_import
+
+Test d'import des modules i18n
+
+##### test_plugins_modules_import
+
+Test d'import des modules plugins
+
+##### test_modules_import
+
+Test d'import des modules externes
+
+##### test_agents_import
+
+Test que tous les modules agents peuvent être importés
+
+##### test_templates_import
+
+Test que tous les modules templates peuvent être importés
+
+##### test_all_python_files_importable
+
+Test que tous les fichiers Python peuvent être importés
+
+##### test_no_circular_imports
+
+Test qu'il n'y a pas d'imports circulaires
+
+##### test_third_party_imports
+
+Test des imports de bibliothèques tierces
+
+---
+
 ### test_ai_robust_standardized
 
 Tests pour le module AI robuste
@@ -3075,79 +3106,6 @@ Résultat attendu : Utilisation du fallback MOCK
 
 ---
 
-### test_imports_all
-
-Test d'importation exhaustive de tous les modules
-Vérifie que tous les modules peuvent être importés sans erreur
-
-#### Classes
-
-##### TestImportsAll
-
-Tests d'importation exhaustive
-
-**Méthodes :**
-
-- `test_core_modules_import()`
-- `test_distillation_modules_import()`
-- `test_classification_modules_import()`
-- `test_i18n_modules_import()`
-- `test_plugins_modules_import()`
-- `test_modules_import()`
-- `test_agents_import()`
-- `test_templates_import()`
-- `test_all_python_files_importable()`
-- `test_no_circular_imports()`
-- `test_third_party_imports()`
-
-#### Fonctions
-
-##### test_core_modules_import
-
-Test d'import des modules core
-
-##### test_distillation_modules_import
-
-Test d'import des modules de distillation
-
-##### test_classification_modules_import
-
-Test d'import des modules de classification
-
-##### test_i18n_modules_import
-
-Test d'import des modules i18n
-
-##### test_plugins_modules_import
-
-Test d'import des modules plugins
-
-##### test_modules_import
-
-Test d'import des modules externes
-
-##### test_agents_import
-
-Test que tous les modules agents peuvent être importés
-
-##### test_templates_import
-
-Test que tous les modules templates peuvent être importés
-
-##### test_all_python_files_importable
-
-Test que tous les fichiers Python peuvent être importés
-
-##### test_no_circular_imports
-
-Test qu'il n'y a pas d'imports circulaires
-
-##### test_third_party_imports
-
-Test des imports de bibliothèques tierces
-
----
-
 ### test_integration_autogen
 
 #### Classes
@@ -3172,6 +3130,96 @@ Test d'orchestration avec AutoGen
 Scénario : Test de l'orchestration des agents
 Données : Agents d'audit, correction et synthèse
 Résultat attendu : Synthèse contenant les résultats des agents
+
+---
+
+### test_integration_orchestrator
+
+🧪 TESTS D'INTÉGRATION ORCHESTRATEUR
+====================================
+Tests pour valider l'intégration des modules dans l'orchestrateur unifié.
+
+#### Classes
+
+##### TestOrchestratorIntegration
+
+Tests d'intégration de l'orchestrateur
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `create_test_project()`
+- `test_orchestrator_imports()`
+- `test_integrated_modules_imports()`
+- `test_orchestrator_initialization()`
+- `test_orchestrator_configuration()`
+- `test_integration_score()`
+- `test_module_functionality()`
+- `test_orchestrator_orchestration()`
+
+##### TestIntegrationCompleteness
+
+Tests de complétude de l'intégration
+
+**Méthodes :**
+
+- `test_all_modules_available()`
+- `test_integration_consistency()`
+
+#### Fonctions
+
+##### main
+
+Fonction principale
+
+##### setUp
+
+Configuration des tests
+
+##### tearDown
+
+Nettoyage après les tests
+
+##### create_test_project
+
+Créer un projet de test
+
+##### test_orchestrator_imports
+
+Test des imports de l'orchestrateur
+
+##### test_integrated_modules_imports
+
+Test des imports des modules intégrés
+
+##### test_orchestrator_initialization
+
+Test de l'initialisation de l'orchestrateur avec modules intégrés
+
+##### test_orchestrator_configuration
+
+Test de la configuration de l'orchestrateur
+
+##### test_integration_score
+
+Test du score d'intégration
+
+##### test_module_functionality
+
+Test de la fonctionnalité des modules intégrés
+
+##### test_orchestrator_orchestration
+
+Test d'orchestration avec modules intégrés
+
+##### test_all_modules_available
+
+Test que tous les modules intégrés sont disponibles
+
+##### test_integration_consistency
+
+Test de la cohérence de l'intégration
 
 ---
 
@@ -3328,96 +3376,6 @@ Résultat attendu : Utilisation mémoire stable
 ##### run_audit
 
 ##### run_cleanup
-
----
-
-### test_integration_orchestrator
-
-🧪 TESTS D'INTÉGRATION ORCHESTRATEUR
-====================================
-Tests pour valider l'intégration des modules dans l'orchestrateur unifié.
-
-#### Classes
-
-##### TestOrchestratorIntegration
-
-Tests d'intégration de l'orchestrateur
-
-**Méthodes :**
-
-- `setUp()`
-- `tearDown()`
-- `create_test_project()`
-- `test_orchestrator_imports()`
-- `test_integrated_modules_imports()`
-- `test_orchestrator_initialization()`
-- `test_orchestrator_configuration()`
-- `test_integration_score()`
-- `test_module_functionality()`
-- `test_orchestrator_orchestration()`
-
-##### TestIntegrationCompleteness
-
-Tests de complétude de l'intégration
-
-**Méthodes :**
-
-- `test_all_modules_available()`
-- `test_integration_consistency()`
-
-#### Fonctions
-
-##### main
-
-Fonction principale
-
-##### setUp
-
-Configuration des tests
-
-##### tearDown
-
-Nettoyage après les tests
-
-##### create_test_project
-
-Créer un projet de test
-
-##### test_orchestrator_imports
-
-Test des imports de l'orchestrateur
-
-##### test_integrated_modules_imports
-
-Test des imports des modules intégrés
-
-##### test_orchestrator_initialization
-
-Test de l'initialisation de l'orchestrateur avec modules intégrés
-
-##### test_orchestrator_configuration
-
-Test de la configuration de l'orchestrateur
-
-##### test_integration_score
-
-Test du score d'intégration
-
-##### test_module_functionality
-
-Test de la fonctionnalité des modules intégrés
-
-##### test_orchestrator_orchestration
-
-Test d'orchestration avec modules intégrés
-
-##### test_all_modules_available
-
-Test que tous les modules intégrés sont disponibles
-
-##### test_integration_consistency
-
-Test de la cohérence de l'intégration
 
 ---
 
@@ -3686,6 +3644,59 @@ Test avec un projet manquant
 
 ---
 
+### test_security_patterns
+
+Test de détection des patterns de sécurité dangereux
+Vérifie qu'il n'y a pas de code dangereux dans le projet
+
+#### Classes
+
+##### TestSecurityPatterns
+
+Tests de détection des patterns de sécurité
+
+**Méthodes :**
+
+- `test_no_hardcoded_passwords()`
+- `test_no_sql_injection_patterns()`
+- `test_no_eval_usage()`
+- `test_no_shell_injection()`
+- `test_no_debug_code()`
+- `test_no_hardcoded_urls()`
+- `test_no_weak_crypto()`
+
+#### Fonctions
+
+##### test_no_hardcoded_passwords
+
+Test qu'il n'y a pas de mots de passe hardcodés
+
+##### test_no_sql_injection_patterns
+
+Test qu'il n'y a pas de patterns d'injection SQL
+
+##### test_no_eval_usage
+
+Test qu'il n'y a pas d'utilisation de fonctions dangereuses
+
+##### test_no_shell_injection
+
+Test qu'il n'y a pas d'injection shell
+
+##### test_no_debug_code
+
+Test qu'il n'y a pas de code de debug
+
+##### test_no_hardcoded_urls
+
+Vérifie qu'il n'y a pas d'URLs hardcodées
+
+##### test_no_weak_crypto
+
+Vérifie qu'il n'y a pas de crypto faible
+
+---
+
 ### test_requirements_consistency
 
 Test de cohérence des dépendances
@@ -3756,59 +3767,6 @@ Vérifie qu'il n'y a pas de dépendances obsolètes
 ##### test_requirements_installable
 
 Vérifie que requirements.txt est installable
-
----
-
-### test_security_patterns
-
-Test de détection des patterns de sécurité dangereux
-Vérifie qu'il n'y a pas de code dangereux dans le projet
-
-#### Classes
-
-##### TestSecurityPatterns
-
-Tests de détection des patterns de sécurité
-
-**Méthodes :**
-
-- `test_no_hardcoded_passwords()`
-- `test_no_sql_injection_patterns()`
-- `test_no_eval_usage()`
-- `test_no_shell_injection()`
-- `test_no_debug_code()`
-- `test_no_hardcoded_urls()`
-- `test_no_weak_crypto()`
-
-#### Fonctions
-
-##### test_no_hardcoded_passwords
-
-Test qu'il n'y a pas de mots de passe hardcodés
-
-##### test_no_sql_injection_patterns
-
-Test qu'il n'y a pas de patterns d'injection SQL
-
-##### test_no_eval_usage
-
-Test qu'il n'y a pas d'utilisation de fonctions dangereuses
-
-##### test_no_shell_injection
-
-Test qu'il n'y a pas d'injection shell
-
-##### test_no_debug_code
-
-Test qu'il n'y a pas de code de debug
-
-##### test_no_hardcoded_urls
-
-Vérifie qu'il n'y a pas d'URLs hardcodées
-
-##### test_no_weak_crypto
-
-Vérifie qu'il n'y a pas de crypto faible
 
 ---
 
@@ -7371,6 +7329,91 @@ Exécute le nettoyage complet
 
 ---
 
+### split_api_docs
+
+Script pour diviser le fichier API.md volumineux en sections logiques
+
+#### Fonctions
+
+##### split_api_documentation
+
+Divise le fichier API.md en sections logiques
+
+##### split_content_into_sections
+
+Divise le contenu en sections logiques
+
+**Paramètres :**
+
+- `content`
+
+##### create_api_files
+
+Crée les fichiers de documentation API
+
+**Paramètres :**
+
+- `sections`
+- `api_dir`
+
+##### create_api_index
+
+Crée l'index de la documentation API
+
+**Paramètres :**
+
+- `sections`
+- `api_dir`
+
+---
+
+### split_api_docs_v2
+
+Script amélioré pour diviser le fichier API.md volumineux en sections logiques
+
+#### Fonctions
+
+##### split_api_documentation
+
+Divise le fichier API.md en sections logiques
+
+##### split_file_by_modules
+
+Divise le fichier par modules détectés
+
+**Paramètres :**
+
+- `api_file`
+- `api_dir`
+
+##### extract_module_name
+
+Extrait le nom du module depuis une ligne
+
+**Paramètres :**
+
+- `line`
+
+##### create_api_files
+
+Crée les fichiers de documentation API
+
+**Paramètres :**
+
+- `sections`
+- `api_dir`
+
+##### create_api_index
+
+Crée l'index de la documentation API
+
+**Paramètres :**
+
+- `sections`
+- `api_dir`
+
+---
+
 ### workspace_organizer
 
 🛠️ Organisateur de Workspace Athalia
@@ -7451,91 +7494,6 @@ Nettoie les fichiers temporaires
 ##### validate_organization
 
 Valide l'organisation actuelle
-
----
-
-### split_api_docs_v2
-
-Script amélioré pour diviser le fichier API.md volumineux en sections logiques
-
-#### Fonctions
-
-##### split_api_documentation
-
-Divise le fichier API.md en sections logiques
-
-##### split_file_by_modules
-
-Divise le fichier par modules détectés
-
-**Paramètres :**
-
-- `api_file`
-- `api_dir`
-
-##### extract_module_name
-
-Extrait le nom du module depuis une ligne
-
-**Paramètres :**
-
-- `line`
-
-##### create_api_files
-
-Crée les fichiers de documentation API
-
-**Paramètres :**
-
-- `sections`
-- `api_dir`
-
-##### create_api_index
-
-Crée l'index de la documentation API
-
-**Paramètres :**
-
-- `sections`
-- `api_dir`
-
----
-
-### split_api_docs
-
-Script pour diviser le fichier API.md volumineux en sections logiques
-
-#### Fonctions
-
-##### split_api_documentation
-
-Divise le fichier API.md en sections logiques
-
-##### split_content_into_sections
-
-Divise le contenu en sections logiques
-
-**Paramètres :**
-
-- `content`
-
-##### create_api_files
-
-Crée les fichiers de documentation API
-
-**Paramètres :**
-
-- `sections`
-- `api_dir`
-
-##### create_api_index
-
-Crée l'index de la documentation API
-
-**Paramètres :**
-
-- `sections`
-- `api_dir`
 
 ---
 
@@ -834275,101 +834233,89 @@ Sauvegarde les documents générés
 
 ---
 
-### error_codes
+### plugins_manager
 
-Codes d'erreur centralisés pour Athalia
-Standardise tous les codes d'erreur avec des messages cohérents
+Gestionnaire de plugins dynamiques pour Athalia
 
 #### Classes
 
-##### ErrorCategory
+##### HelloPlugin
 
-Catégories d'erreurs
-
-##### ErrorCode
-
-Codes d'erreur standardisés
-
-##### WarningCode
-
-Codes d'avertissement standardisés
-
-##### InfoCode
-
-Codes d'information standardisés
-
-##### ErrorMessages
-
-Messages d'erreur standardisés
+Plugin de test simple
 
 **Méthodes :**
 
-- `get_message()`
-- `get_category()`
+- `run()`
 
-##### ErrorHandler
+##### ExportDockerPlugin
 
-Gestionnaire d'erreurs centralisé
+Plugin d'export Docker
 
 **Méthodes :**
 
-- `format_error()`
-- `is_recoverable()`
-- `get_suggestion()`
+- `run()`
+
+##### CodeAnalyzerPlugin
+
+Plugin d'analyse de code
+
+**Méthodes :**
+
+- `run()`
+
+##### DocumentationPlugin
+
+Plugin de génération de documentation
+
+**Méthodes :**
+
+- `run()`
 
 #### Fonctions
 
-##### get_error_info
+##### list_plugins
 
-Récupère toutes les informations pour un code d'erreur
+Liste tous les plugins disponibles
 
-**Paramètres :**
+##### load_plugin
 
-- `code`
-
-##### get_message
-
-Récupère le message pour un code d'erreur
+Charge un plugin par son nom
 
 **Paramètres :**
 
-- `cls`
-- `code`
+- `plugin_name`
 
-##### get_category
+##### run_all_plugins
 
-Récupère la catégorie pour un code d'erreur
+Exécute tous les plugins disponibles
 
-**Paramètres :**
+##### run
 
-- `cls`
-- `code`
+Exécute le plugin
 
-##### format_error
+##### run
 
-Formate une erreur avec le code et le message
+Génère les fichiers Docker pour un projet
 
 **Paramètres :**
 
-- `code`
-- `message`
-- `details`
+- `project_path`
 
-##### is_recoverable
+##### run
 
-Détermine si une erreur est récupérable
+Analyse le code d'un projet
 
 **Paramètres :**
 
-- `code`
+- `project_path`
 
-##### get_suggestion
+##### run
 
-Récupère une suggestion pour résoudre l'erreur
+Génère la documentation d'un projet
 
 **Paramètres :**
 
-- `code`
+- `project_path`
 
 ---
 
@@ -834570,285 +834516,6 @@ Teste l'IA robuste avec une idée de projet.
 **Paramètres :**
 
 - `idea`
-
----
-
-### error_handling
-
-Module de gestion d'erreurs pour Athalia
-Améliore la robustesse du système avec gestion d'erreurs complète
-
-#### Classes
-
-##### AthaliaError
-
-Classe de base pour toutes les erreurs Athalia
-
-**Méthodes :**
-
-- `__init__()`
-- `to_dict()`
-
-##### ConfigurationError
-
-Erreur de configuration
-
-**Méthodes :**
-
-- `__init__()`
-
-##### FileSystemError
-
-Erreur de système de fichiers
-
-**Méthodes :**
-
-- `__init__()`
-
-##### NetworkError
-
-Erreur réseau
-
-**Méthodes :**
-
-- `__init__()`
-
-##### ValidationError
-
-Erreur de validation
-
-**Méthodes :**
-
-- `__init__()`
-
-##### ProcessingError
-
-Erreur de traitement
-
-**Méthodes :**
-
-- `__init__()`
-
-##### SystemError
-
-Erreur système
-
-**Méthodes :**
-
-- `__init__()`
-
-##### ErrorRecovery
-
-Gestionnaire de récupération d'erreurs
-
-**Méthodes :**
-
-- `__init__()`
-- `retry_operation()`
-- `reset()`
-
-##### ErrorLogger
-
-Gestionnaire de logging des erreurs
-
-**Méthodes :**
-
-- `__init__()`
-- `setup_logging()`
-- `log_error()`
-- `get_error_summary()`
-
-##### ErrorHandler
-
-Gestionnaire principal d'erreurs
-
-**Méthodes :**
-
-- `__init__()`
-- `handle_error()`
-- `safe_execute()`
-
-#### Fonctions
-
-##### error_handler
-
-Décorateur pour gérer les erreurs automatiquement
-
-**Paramètres :**
-
-- `enable_recovery`
-- `enable_logging`
-
-##### validate_input
-
-Valide les données d'entrée
-
-**Paramètres :**
-
-- `data`
-- `required_fields`
-- `data_type`
-
-##### safe_file_operation
-
-Exécute une opération sur fichier de manière sécurisée
-
-**Paramètres :**
-
-- `operation`
-- `file_path`
-
-##### handle_network_errors
-
-Décorateur pour gérer les erreurs réseau
-
-**Paramètres :**
-
-- `func`
-
-##### get_global_error_handler
-
-Récupère l'instance globale du gestionnaire d'erreurs
-
-##### set_global_error_handler
-
-Définit l'instance globale du gestionnaire d'erreurs
-
-**Paramètres :**
-
-- `handler`
-
-##### __init__
-
-**Paramètres :**
-
-- `message`
-- `code`
-- `details`
-
-##### to_dict
-
-Convertit l'erreur en dictionnaire
-
-##### __init__
-
-**Paramètres :**
-
-- `message`
-- `details`
-
-##### __init__
-
-**Paramètres :**
-
-- `message`
-- `details`
-
-##### __init__
-
-**Paramètres :**
-
-- `message`
-- `details`
-
-##### __init__
-
-**Paramètres :**
-
-- `message`
-- `details`
-
-##### __init__
-
-**Paramètres :**
-
-- `message`
-- `details`
-
-##### __init__
-
-**Paramètres :**
-
-- `message`
-- `details`
-
-##### __init__
-
-**Paramètres :**
-
-- `max_retries`
-- `retry_delay`
-
-##### retry_operation
-
-Répète une opération en cas d'échec
-
-**Paramètres :**
-
-- `operation`
-
-##### reset
-
-Réinitialise le compteur de tentatives
-
-##### __init__
-
-**Paramètres :**
-
-- `log_file`
-
-##### setup_logging
-
-Configure le logging des erreurs
-
-##### log_error
-
-Enregistre une erreur avec contexte
-
-**Paramètres :**
-
-- `error`
-- `context`
-
-##### get_error_summary
-
-Récupère un résumé des erreurs récentes
-
-##### __init__
-
-**Paramètres :**
-
-- `enable_recovery`
-- `enable_logging`
-
-##### handle_error
-
-Gère une erreur de manière centralisée
-
-**Paramètres :**
-
-- `error`
-- `context`
-
-##### safe_execute
-
-Exécute une opération de manière sécurisée
-
-**Paramètres :**
-
-- `operation`
-
-##### decorator
-
-**Paramètres :**
-
-- `func`
-
-##### wrapper
-
-##### test_operation
-
-##### wrapper
 
 ---
 
@@ -835305,6 +834972,285 @@ Calculer la complexité globale d'un arbre AST
 
 ---
 
+### unified_orchestrator
+
+🎯 ORCHESTRATEUR UNIFIÉ ATHALIA
+================================
+Orchestrateur unifié qui combine :
+- Industrialisation complète (athalia_orchestrator)
+- Intelligence et apprentissage (intelligent_orchestrator)
+- Coordination de tous les modules Athalia
+- Gestion des tâches et prédictions
+- Optimisation automatique du code
+
+#### Classes
+
+##### OrchestrationTask
+
+Tâche d'orchestration unifiée
+
+##### IntelligentInsight
+
+Insight intelligent unifié
+
+##### IndustrializationStep
+
+Étape d'industrialisation
+
+##### UnifiedOrchestrator
+
+Orchestrateur unifié Athalia
+Combine industrialisation complète et intelligence avancée
+
+**Méthodes :**
+
+- `__init__()`
+- `_init_database()`
+- `orchestrate_project_complete()`
+- `_run_industrialization()`
+- `_run_audit()`
+- `_run_linting()`
+- `_run_security_audit()`
+- `_run_analytics()`
+- `_run_cleanup()`
+- `_run_documentation()`
+- `_run_testing()`
+- `_run_cicd()`
+- `_run_robotics_audit()`
+- `_generate_predictions()`
+- `_generate_optimizations()`
+- `_run_plugins()`
+- `_run_templates()`
+- `_learn_from_results()`
+- `_generate_unified_report()`
+- `_save_unified_results()`
+- `get_orchestration_insights()`
+- `run_phase2_backup()`
+- `run_phase2_error_handling()`
+- `validate_phase2_inputs()`
+- `get_phase2_backup_stats()`
+- `orchestrate_with_phase2_features()`
+
+#### Fonctions
+
+##### orchestrator_auto_backup
+
+Effectue une sauvegarde automatique à la fin de l'orchestration
+
+##### cli_entry
+
+Entrée CLI standardisée pour l'orchestrateur unifié
+
+##### main
+
+Point d'entrée principal (CLI ou script)
+
+##### __init__
+
+**Paramètres :**
+
+- `root_path`
+
+##### _init_database
+
+Initialiser la base de données unifiée
+
+##### orchestrate_project_complete
+
+Orchestration complète d'un projet
+Combine industrialisation et intelligence
+
+**Paramètres :**
+
+- `project_path`
+- `config`
+
+##### _run_industrialization
+
+Exécuter l'industrialisation complète
+
+**Paramètres :**
+
+- `project_path`
+
+##### _run_audit
+
+Exécuter l'audit intelligent
+
+**Paramètres :**
+
+- `project_path`
+
+##### _run_linting
+
+Exécuter le linting
+
+**Paramètres :**
+
+- `project_path`
+
+##### _run_security_audit
+
+Exécuter l'audit de sécurité
+
+**Paramètres :**
+
+- `project_path`
+
+##### _run_analytics
+
+Exécuter l'analytics
+
+**Paramètres :**
+
+- `project_path`
+
+##### _run_cleanup
+
+Exécuter le nettoyage
+
+**Paramètres :**
+
+- `project_path`
+
+##### _run_documentation
+
+Exécuter la documentation
+
+**Paramètres :**
+
+- `project_path`
+
+##### _run_testing
+
+Exécuter les tests
+
+**Paramètres :**
+
+- `project_path`
+
+##### _run_cicd
+
+Exécuter le CI/CD
+
+**Paramètres :**
+
+- `project_path`
+
+##### _run_robotics_audit
+
+Exécuter l'audit robotique
+
+**Paramètres :**
+
+- `project_path`
+
+##### _generate_predictions
+
+Générer des prédictions intelligentes
+
+**Paramètres :**
+
+- `project_path`
+
+##### _generate_optimizations
+
+Générer des optimisations intelligentes
+
+**Paramètres :**
+
+- `project_path`
+
+##### _run_plugins
+
+Exécuter les plugins disponibles
+
+**Paramètres :**
+
+- `project_path`
+
+##### _run_templates
+
+Générer des templates pour le projet
+
+**Paramètres :**
+
+- `project_path`
+
+##### _learn_from_results
+
+Apprendre des résultats d'orchestration
+
+**Paramètres :**
+
+- `results`
+
+##### _generate_unified_report
+
+Générer un rapport unifié
+
+**Paramètres :**
+
+- `results`
+
+##### _save_unified_results
+
+Sauvegarder les résultats unifiés
+
+**Paramètres :**
+
+- `results`
+
+##### get_orchestration_insights
+
+Obtenir des insights d'orchestration
+
+##### run_phase2_backup
+
+Exécute une sauvegarde avec le système de la Phase 2
+
+**Paramètres :**
+
+- `backup_type`
+
+##### run_phase2_error_handling
+
+Exécute une opération avec gestion d'erreurs de la Phase 2
+
+**Paramètres :**
+
+- `operation`
+
+##### validate_phase2_inputs
+
+Valide les entrées avec le système de la Phase 2
+
+**Paramètres :**
+
+- `data`
+- `required_fields`
+
+##### get_phase2_backup_stats
+
+Récupère les statistiques de sauvegarde de la Phase 2
+
+##### orchestrate_with_phase2_features
+
+Orchestration complète avec les fonctionnalités de la Phase 2
+
+**Paramètres :**
+
+- `project_path`
+- `config`
+
+##### main_action
+
+**Paramètres :**
+
+- `ctx`
+
+---
+
 ### intelligent_auditor
 
 #### Classes
@@ -835530,144 +835476,6 @@ Génération des recommandations
 ##### generate_report
 
 Génère un rapport d'audit
-
----
-
-### backup_system
-
-Système de sauvegarde automatique pour Athalia
-Protège les données critiques avec sauvegardes incrémentales et complètes
-
-#### Classes
-
-##### BackupMetadata
-
-Métadonnées de sauvegarde
-
-##### BackupSystem
-
-Système de sauvegarde automatique
-
-**Méthodes :**
-
-- `__init__()`
-- `create_backup_id()`
-- `calculate_checksum()`
-- `should_exclude()`
-- `get_files_to_backup()`
-- `compress_file()`
-- `create_backup()`
-- `update_backup_index()`
-- `list_backups()`
-- `get_backup_by_id()`
-- `restore_backup()`
-- `cleanup_old_backups()`
-- `update_backup_index_from_files()`
-- `get_backup_stats()`
-
-#### Fonctions
-
-##### get_backup_system
-
-Récupère l'instance globale du système de sauvegarde
-
-##### set_backup_system
-
-Définit l'instance globale du système de sauvegarde
-
-**Paramètres :**
-
-- `backup_system`
-
-##### __init__
-
-**Paramètres :**
-
-- `backup_root`
-- `retention_days`
-
-##### create_backup_id
-
-Crée un ID unique pour la sauvegarde
-
-##### calculate_checksum
-
-Calcule le checksum MD5 d'un fichier
-
-**Paramètres :**
-
-- `file_path`
-
-##### should_exclude
-
-Détermine si un fichier doit être exclu de la sauvegarde
-
-**Paramètres :**
-
-- `file_path`
-
-##### get_files_to_backup
-
-Récupère la liste des fichiers à sauvegarder
-
-##### compress_file
-
-Compresse un fichier avec gzip
-
-**Paramètres :**
-
-- `source_path`
-- `dest_path`
-
-##### create_backup
-
-Crée une sauvegarde complète
-
-**Paramètres :**
-
-- `backup_type`
-
-##### update_backup_index
-
-Met à jour l'index des sauvegardes
-
-**Paramètres :**
-
-- `metadata`
-
-##### list_backups
-
-Liste toutes les sauvegardes disponibles
-
-##### get_backup_by_id
-
-Récupère une sauvegarde par son ID
-
-**Paramètres :**
-
-- `backup_id`
-
-##### restore_backup
-
-Restaure une sauvegarde
-
-**Paramètres :**
-
-- `backup_id`
-- `restore_path`
-- `verify_checksum`
-
-##### cleanup_old_backups
-
-Nettoie les anciennes sauvegardes selon la politique de rétention
-
-##### update_backup_index_from_files
-
-Met à jour l'index en se basant sur les fichiers existants
-
-##### get_backup_stats
-
-Récupère les statistiques des sauvegardes
 
 ---
 
@@ -836086,6 +835894,242 @@ Génère la configuration de déploiement
 
 ---
 
+### backup_system
+
+Système de sauvegarde automatique pour Athalia
+Protège les données critiques avec sauvegardes incrémentales et complètes
+
+#### Classes
+
+##### BackupMetadata
+
+Métadonnées de sauvegarde
+
+##### BackupSystem
+
+Système de sauvegarde automatique
+
+**Méthodes :**
+
+- `__init__()`
+- `create_backup_id()`
+- `calculate_checksum()`
+- `should_exclude()`
+- `get_files_to_backup()`
+- `compress_file()`
+- `create_backup()`
+- `update_backup_index()`
+- `list_backups()`
+- `get_backup_by_id()`
+- `restore_backup()`
+- `cleanup_old_backups()`
+- `update_backup_index_from_files()`
+- `get_backup_stats()`
+
+#### Fonctions
+
+##### get_backup_system
+
+Récupère l'instance globale du système de sauvegarde
+
+##### set_backup_system
+
+Définit l'instance globale du système de sauvegarde
+
+**Paramètres :**
+
+- `backup_system`
+
+##### __init__
+
+**Paramètres :**
+
+- `backup_root`
+- `retention_days`
+
+##### create_backup_id
+
+Crée un ID unique pour la sauvegarde
+
+##### calculate_checksum
+
+Calcule le checksum MD5 d'un fichier
+
+**Paramètres :**
+
+- `file_path`
+
+##### should_exclude
+
+Détermine si un fichier doit être exclu de la sauvegarde
+
+**Paramètres :**
+
+- `file_path`
+
+##### get_files_to_backup
+
+Récupère la liste des fichiers à sauvegarder
+
+##### compress_file
+
+Compresse un fichier avec gzip
+
+**Paramètres :**
+
+- `source_path`
+- `dest_path`
+
+##### create_backup
+
+Crée une sauvegarde complète
+
+**Paramètres :**
+
+- `backup_type`
+
+##### update_backup_index
+
+Met à jour l'index des sauvegardes
+
+**Paramètres :**
+
+- `metadata`
+
+##### list_backups
+
+Liste toutes les sauvegardes disponibles
+
+##### get_backup_by_id
+
+Récupère une sauvegarde par son ID
+
+**Paramètres :**
+
+- `backup_id`
+
+##### restore_backup
+
+Restaure une sauvegarde
+
+**Paramètres :**
+
+- `backup_id`
+- `restore_path`
+- `verify_checksum`
+
+##### cleanup_old_backups
+
+Nettoie les anciennes sauvegardes selon la politique de rétention
+
+##### update_backup_index_from_files
+
+Met à jour l'index en se basant sur les fichiers existants
+
+##### get_backup_stats
+
+Récupère les statistiques des sauvegardes
+
+---
+
+### error_codes
+
+Codes d'erreur centralisés pour Athalia
+Standardise tous les codes d'erreur avec des messages cohérents
+
+#### Classes
+
+##### ErrorCategory
+
+Catégories d'erreurs
+
+##### ErrorCode
+
+Codes d'erreur standardisés
+
+##### WarningCode
+
+Codes d'avertissement standardisés
+
+##### InfoCode
+
+Codes d'information standardisés
+
+##### ErrorMessages
+
+Messages d'erreur standardisés
+
+**Méthodes :**
+
+- `get_message()`
+- `get_category()`
+
+##### ErrorHandler
+
+Gestionnaire d'erreurs centralisé
+
+**Méthodes :**
+
+- `format_error()`
+- `is_recoverable()`
+- `get_suggestion()`
+
+#### Fonctions
+
+##### get_error_info
+
+Récupère toutes les informations pour un code d'erreur
+
+**Paramètres :**
+
+- `code`
+
+##### get_message
+
+Récupère le message pour un code d'erreur
+
+**Paramètres :**
+
+- `cls`
+- `code`
+
+##### get_category
+
+Récupère la catégorie pour un code d'erreur
+
+**Paramètres :**
+
+- `cls`
+- `code`
+
+##### format_error
+
+Formate une erreur avec le code et le message
+
+**Paramètres :**
+
+- `code`
+- `message`
+- `details`
+
+##### is_recoverable
+
+Détermine si une erreur est récupérable
+
+**Paramètres :**
+
+- `code`
+
+##### get_suggestion
+
+Récupère une suggestion pour résoudre l'erreur
+
+**Paramètres :**
+
+- `code`
+
+---
+
 ### autocomplete_engine
 
 #### Classes
@@ -836140,6 +836184,285 @@ Retourne une liste de suggestions d'autocomplétion pour un prompt donné.
 
 - `prompt`
 - `max_suggestions`
+
+---
+
+### error_handling
+
+Module de gestion d'erreurs pour Athalia
+Améliore la robustesse du système avec gestion d'erreurs complète
+
+#### Classes
+
+##### AthaliaError
+
+Classe de base pour toutes les erreurs Athalia
+
+**Méthodes :**
+
+- `__init__()`
+- `to_dict()`
+
+##### ConfigurationError
+
+Erreur de configuration
+
+**Méthodes :**
+
+- `__init__()`
+
+##### FileSystemError
+
+Erreur de système de fichiers
+
+**Méthodes :**
+
+- `__init__()`
+
+##### NetworkError
+
+Erreur réseau
+
+**Méthodes :**
+
+- `__init__()`
+
+##### ValidationError
+
+Erreur de validation
+
+**Méthodes :**
+
+- `__init__()`
+
+##### ProcessingError
+
+Erreur de traitement
+
+**Méthodes :**
+
+- `__init__()`
+
+##### SystemError
+
+Erreur système
+
+**Méthodes :**
+
+- `__init__()`
+
+##### ErrorRecovery
+
+Gestionnaire de récupération d'erreurs
+
+**Méthodes :**
+
+- `__init__()`
+- `retry_operation()`
+- `reset()`
+
+##### ErrorLogger
+
+Gestionnaire de logging des erreurs
+
+**Méthodes :**
+
+- `__init__()`
+- `setup_logging()`
+- `log_error()`
+- `get_error_summary()`
+
+##### ErrorHandler
+
+Gestionnaire principal d'erreurs
+
+**Méthodes :**
+
+- `__init__()`
+- `handle_error()`
+- `safe_execute()`
+
+#### Fonctions
+
+##### error_handler
+
+Décorateur pour gérer les erreurs automatiquement
+
+**Paramètres :**
+
+- `enable_recovery`
+- `enable_logging`
+
+##### validate_input
+
+Valide les données d'entrée
+
+**Paramètres :**
+
+- `data`
+- `required_fields`
+- `data_type`
+
+##### safe_file_operation
+
+Exécute une opération sur fichier de manière sécurisée
+
+**Paramètres :**
+
+- `operation`
+- `file_path`
+
+##### handle_network_errors
+
+Décorateur pour gérer les erreurs réseau
+
+**Paramètres :**
+
+- `func`
+
+##### get_global_error_handler
+
+Récupère l'instance globale du gestionnaire d'erreurs
+
+##### set_global_error_handler
+
+Définit l'instance globale du gestionnaire d'erreurs
+
+**Paramètres :**
+
+- `handler`
+
+##### __init__
+
+**Paramètres :**
+
+- `message`
+- `code`
+- `details`
+
+##### to_dict
+
+Convertit l'erreur en dictionnaire
+
+##### __init__
+
+**Paramètres :**
+
+- `message`
+- `details`
+
+##### __init__
+
+**Paramètres :**
+
+- `message`
+- `details`
+
+##### __init__
+
+**Paramètres :**
+
+- `message`
+- `details`
+
+##### __init__
+
+**Paramètres :**
+
+- `message`
+- `details`
+
+##### __init__
+
+**Paramètres :**
+
+- `message`
+- `details`
+
+##### __init__
+
+**Paramètres :**
+
+- `message`
+- `details`
+
+##### __init__
+
+**Paramètres :**
+
+- `max_retries`
+- `retry_delay`
+
+##### retry_operation
+
+Répète une opération en cas d'échec
+
+**Paramètres :**
+
+- `operation`
+
+##### reset
+
+Réinitialise le compteur de tentatives
+
+##### __init__
+
+**Paramètres :**
+
+- `log_file`
+
+##### setup_logging
+
+Configure le logging des erreurs
+
+##### log_error
+
+Enregistre une erreur avec contexte
+
+**Paramètres :**
+
+- `error`
+- `context`
+
+##### get_error_summary
+
+Récupère un résumé des erreurs récentes
+
+##### __init__
+
+**Paramètres :**
+
+- `enable_recovery`
+- `enable_logging`
+
+##### handle_error
+
+Gère une erreur de manière centralisée
+
+**Paramètres :**
+
+- `error`
+- `context`
+
+##### safe_execute
+
+Exécute une opération de manière sécurisée
+
+**Paramètres :**
+
+- `operation`
+
+##### decorator
+
+**Paramètres :**
+
+- `func`
+
+##### wrapper
+
+##### test_operation
+
+##### wrapper
 
 ---
 
@@ -837224,92 +837547,6 @@ Obtenir des insights de performance
 
 ---
 
-### plugins_manager
-
-Gestionnaire de plugins dynamiques pour Athalia
-
-#### Classes
-
-##### HelloPlugin
-
-Plugin de test simple
-
-**Méthodes :**
-
-- `run()`
-
-##### ExportDockerPlugin
-
-Plugin d'export Docker
-
-**Méthodes :**
-
-- `run()`
-
-##### CodeAnalyzerPlugin
-
-Plugin d'analyse de code
-
-**Méthodes :**
-
-- `run()`
-
-##### DocumentationPlugin
-
-Plugin de génération de documentation
-
-**Méthodes :**
-
-- `run()`
-
-#### Fonctions
-
-##### list_plugins
-
-Liste tous les plugins disponibles
-
-##### load_plugin
-
-Charge un plugin par son nom
-
-**Paramètres :**
-
-- `plugin_name`
-
-##### run_all_plugins
-
-Exécute tous les plugins disponibles
-
-##### run
-
-Exécute le plugin
-
-##### run
-
-Génère les fichiers Docker pour un projet
-
-**Paramètres :**
-
-- `project_path`
-
-##### run
-
-Analyse le code d'un projet
-
-**Paramètres :**
-
-- `project_path`
-
-##### run
-
-Génère la documentation d'un projet
-
-**Paramètres :**
-
-- `project_path`
-
----
-
 ### plugins_validator
 
 #### Fonctions
@@ -837525,285 +837762,6 @@ Calcul du score de sécurité
 ##### print_report
 
 Affichage du rapport de sécurité
-
----
-
-### unified_orchestrator
-
-🎯 ORCHESTRATEUR UNIFIÉ ATHALIA
-================================
-Orchestrateur unifié qui combine :
-- Industrialisation complète (athalia_orchestrator)
-- Intelligence et apprentissage (intelligent_orchestrator)
-- Coordination de tous les modules Athalia
-- Gestion des tâches et prédictions
-- Optimisation automatique du code
-
-#### Classes
-
-##### OrchestrationTask
-
-Tâche d'orchestration unifiée
-
-##### IntelligentInsight
-
-Insight intelligent unifié
-
-##### IndustrializationStep
-
-Étape d'industrialisation
-
-##### UnifiedOrchestrator
-
-Orchestrateur unifié Athalia
-Combine industrialisation complète et intelligence avancée
-
-**Méthodes :**
-
-- `__init__()`
-- `_init_database()`
-- `orchestrate_project_complete()`
-- `_run_industrialization()`
-- `_run_audit()`
-- `_run_linting()`
-- `_run_security_audit()`
-- `_run_analytics()`
-- `_run_cleanup()`
-- `_run_documentation()`
-- `_run_testing()`
-- `_run_cicd()`
-- `_run_robotics_audit()`
-- `_generate_predictions()`
-- `_generate_optimizations()`
-- `_run_plugins()`
-- `_run_templates()`
-- `_learn_from_results()`
-- `_generate_unified_report()`
-- `_save_unified_results()`
-- `get_orchestration_insights()`
-- `run_phase2_backup()`
-- `run_phase2_error_handling()`
-- `validate_phase2_inputs()`
-- `get_phase2_backup_stats()`
-- `orchestrate_with_phase2_features()`
-
-#### Fonctions
-
-##### orchestrator_auto_backup
-
-Effectue une sauvegarde automatique à la fin de l'orchestration
-
-##### cli_entry
-
-Entrée CLI standardisée pour l'orchestrateur unifié
-
-##### main
-
-Point d'entrée principal (CLI ou script)
-
-##### __init__
-
-**Paramètres :**
-
-- `root_path`
-
-##### _init_database
-
-Initialiser la base de données unifiée
-
-##### orchestrate_project_complete
-
-Orchestration complète d'un projet
-Combine industrialisation et intelligence
-
-**Paramètres :**
-
-- `project_path`
-- `config`
-
-##### _run_industrialization
-
-Exécuter l'industrialisation complète
-
-**Paramètres :**
-
-- `project_path`
-
-##### _run_audit
-
-Exécuter l'audit intelligent
-
-**Paramètres :**
-
-- `project_path`
-
-##### _run_linting
-
-Exécuter le linting
-
-**Paramètres :**
-
-- `project_path`
-
-##### _run_security_audit
-
-Exécuter l'audit de sécurité
-
-**Paramètres :**
-
-- `project_path`
-
-##### _run_analytics
-
-Exécuter l'analytics
-
-**Paramètres :**
-
-- `project_path`
-
-##### _run_cleanup
-
-Exécuter le nettoyage
-
-**Paramètres :**
-
-- `project_path`
-
-##### _run_documentation
-
-Exécuter la documentation
-
-**Paramètres :**
-
-- `project_path`
-
-##### _run_testing
-
-Exécuter les tests
-
-**Paramètres :**
-
-- `project_path`
-
-##### _run_cicd
-
-Exécuter le CI/CD
-
-**Paramètres :**
-
-- `project_path`
-
-##### _run_robotics_audit
-
-Exécuter l'audit robotique
-
-**Paramètres :**
-
-- `project_path`
-
-##### _generate_predictions
-
-Générer des prédictions intelligentes
-
-**Paramètres :**
-
-- `project_path`
-
-##### _generate_optimizations
-
-Générer des optimisations intelligentes
-
-**Paramètres :**
-
-- `project_path`
-
-##### _run_plugins
-
-Exécuter les plugins disponibles
-
-**Paramètres :**
-
-- `project_path`
-
-##### _run_templates
-
-Générer des templates pour le projet
-
-**Paramètres :**
-
-- `project_path`
-
-##### _learn_from_results
-
-Apprendre des résultats d'orchestration
-
-**Paramètres :**
-
-- `results`
-
-##### _generate_unified_report
-
-Générer un rapport unifié
-
-**Paramètres :**
-
-- `results`
-
-##### _save_unified_results
-
-Sauvegarder les résultats unifiés
-
-**Paramètres :**
-
-- `results`
-
-##### get_orchestration_insights
-
-Obtenir des insights d'orchestration
-
-##### run_phase2_backup
-
-Exécute une sauvegarde avec le système de la Phase 2
-
-**Paramètres :**
-
-- `backup_type`
-
-##### run_phase2_error_handling
-
-Exécute une opération avec gestion d'erreurs de la Phase 2
-
-**Paramètres :**
-
-- `operation`
-
-##### validate_phase2_inputs
-
-Valide les entrées avec le système de la Phase 2
-
-**Paramètres :**
-
-- `data`
-- `required_fields`
-
-##### get_phase2_backup_stats
-
-Récupère les statistiques de sauvegarde de la Phase 2
-
-##### orchestrate_with_phase2_features
-
-Orchestration complète avec les fonctionnalités de la Phase 2
-
-**Paramètres :**
-
-- `project_path`
-- `config`
-
-##### main_action
-
-**Paramètres :**
-
-- `ctx`
 
 ---
 
@@ -839723,6 +839681,30 @@ Boucle de surveillance avec arrêt propre
 
 ---
 
+### test_logging_activation
+
+Script de test pour activer le système de logging Athalia
+
+#### Fonctions
+
+##### test_basic_logging
+
+Test du logging de base
+
+##### test_advanced_logging
+
+Test du logging avancé
+
+##### test_log_file_creation
+
+Test de création du fichier de log
+
+##### main
+
+Fonction principale
+
+---
+
 ### validation_dashboard_simple
 
 Dashboard de Validation Simple - Athalia/Arkalia
@@ -839822,30 +839804,6 @@ Génère un rapport objectif et détaillé
 
 - `resultats`
 - `temps_total`
-
----
-
-### test_logging_activation
-
-Script de test pour activer le système de logging Athalia
-
-#### Fonctions
-
-##### test_basic_logging
-
-Test du logging de base
-
-##### test_advanced_logging
-
-Test du logging avancé
-
-##### test_log_file_creation
-
-Test de création du fichier de log
-
-##### main
-
-Fonction principale
 
 ---
 

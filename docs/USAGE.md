@@ -42,19 +42,6 @@ database:
 
 ### Classes principales
 
-#### AthaliaOrchestrator
-
-**Exemple d'utilisation :**
-
-```python
-from athalia-dev-setup import AthaliaOrchestrator
-
-# Créer une instance
-instance = AthaliaOrchestrator()
-# Utiliser une méthode
-result = instance.industrialize_project()
-```
-
 #### ProjectAuditor
 
 Auditeur intelligent de projets générés.
@@ -85,49 +72,22 @@ instance = TestLoggingSystem()
 result = instance.setup_method()
 ```
 
+#### TestConfigManager
+
+Tests pour le gestionnaire de configuration d'Athalia
+
+**Exemple d'utilisation :**
+
+```python
+from athalia-dev-setup import TestConfigManager
+
+# Créer une instance
+instance = TestConfigManager()
+# Utiliser une méthode
+result = instance.setup_method()
+```
+
 ### Fonctions utilitaires
-
-#### main
-
-Fonction principale du CLI unifié
-
-**Exemple d'utilisation :**
-
-```python
-from athalia-dev-setup import main
-
-result = main()
-```
-
-#### industrialize_project
-
-**Exemple d'utilisation :**
-
-```python
-from athalia-dev-setup import industrialize_project
-
-result = industrialize_project(project_path, config)
-```
-
-#### audit_project
-
-**Exemple d'utilisation :**
-
-```python
-from athalia-dev-setup import audit_project
-
-result = audit_project(project_path)
-```
-
-#### scan_projects
-
-**Exemple d'utilisation :**
-
-```python
-from athalia-dev-setup import scan_projects
-
-result = scan_projects(project_path)
-```
 
 #### audit_project_intelligent
 
@@ -139,6 +99,50 @@ Fonction principale pour l'audit intelligent.
 from athalia-dev-setup import audit_project_intelligent
 
 result = audit_project_intelligent(project_path)
+```
+
+#### generate_audit_report
+
+**Exemple d'utilisation :**
+
+```python
+from athalia-dev-setup import generate_audit_report
+
+result = generate_audit_report(project_path)
+```
+
+#### __init__
+
+**Exemple d'utilisation :**
+
+```python
+from athalia-dev-setup import __init__
+
+result = __init__(project_path)
+```
+
+#### audit_project
+
+Audit complet du projet.
+
+**Exemple d'utilisation :**
+
+```python
+from athalia-dev-setup import audit_project
+
+result = audit_project()
+```
+
+#### _analyze_structure
+
+Analyse la structure du projet.
+
+**Exemple d'utilisation :**
+
+```python
+from athalia-dev-setup import _analyze_structure
+
+result = _analyze_structure()
 ```
 
 
