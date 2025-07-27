@@ -1,5 +1,6 @@
 [flake8]
 max-line-length = 100
+jobs = 1
 exclude = 
     .git,
     __pycache__,
@@ -12,7 +13,9 @@ exclude =
     backups,
     logs,
     data/reports,
-    docs/archive
+    docs/archive,
+    .venv/**,
+    archive/**
 
 # Ignorer certaines règles pour les fichiers de test et validation
 per-file-ignores =
