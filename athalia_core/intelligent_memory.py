@@ -346,7 +346,8 @@ class IntelligentMemory:
             validated_predictions = cursor.fetchone()[0]
 
             cursor.execute(
-                "SELECT COUNT(*) FROM predictions WHERE validated = 1 AND validation_result = 'correct'")
+                "SELECT COUNT(*) FROM predictions WHERE validated = 1 AND "
+                "validation_result = 'correct'")
             correct_predictions = cursor.fetchone()[0]
 
             # Corrections suggérées
@@ -360,8 +361,10 @@ class IntelligentMemory:
 
             # Calculer les taux de succès
             error_rate = total_errors / total_events if total_events > 0 else 0
-            prediction_accuracy = (correct_predictions / validated_predictions
-                                   if validated_predictions > 0 else 0)
+            prediction_accuracy = (
+                correct_predictions / validated_predictions
+                if validated_predictions > 0 else 0
+            )
             correction_success_rate = (successful_corrections / applied_corrections
                                        if applied_corrections > 0 else 0)
 
@@ -613,9 +616,11 @@ class IntelligentMemory:
                     prediction_type="duplicate",
                     confidence=0.7,
                     description=f"Pattern similaire détecté {pattern['occurrences']} fois",
-                    suggested_action="Considérer l'extraction en fonction/module commun",
+                    suggested_action=("Considérer l'extraction en fonction/"
+                                      "module commun"),
                     estimated_impact="Moyen",
-                    code_pattern=pattern_hash)
+                    code_pattern=pattern_hash
+                )
                 predictions.append(prediction)
 
         return predictions
@@ -672,7 +677,8 @@ def main():
     # Simuler l'apprentissage d'une correction
     correction_id = memory.learn_from_correction(
         original_code="def very_long_function():\n    # 100 lignes...",
-        corrected_code="def short_function1():\n    # 30 lignes...\n\ndef short_function2():\n    # 30 lignes...",
+        corrected_code=("def short_function1():\n    # 30 lignes...\n\n"
+                        "def short_function2():\n    # 30 lignes..."),
         reason="Division en fonctions plus petites",
         location="test_file.py:10",
         success=True)
