@@ -13,6 +13,7 @@ Module de linting de code pour Athalia
 Analyse de qualité et style de code
 """
 
+
 class CodeLinter:
     """Linter de code pour Athalia"""
 

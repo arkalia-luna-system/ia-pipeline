@@ -14,7 +14,9 @@ from .ai_robust import RobustAI, AIModel
 from .generation import generate_blueprint_mock, generate_project
 from .audit import audit_project_intelligent
 
-# TODO: Préparer l'internationalisation (i18n) des messages CLI et prompts utilisateur.
+# TODO: Préparer l'internationalisation (i18n) des messages CLI et prompts
+# utilisateur.
+
 
 @click.group()
 @click.option('--verbose', '-v', is_flag=True, help='Mode verbeux')
@@ -25,9 +27,13 @@ def cli(verbose):
     else:
         logging.basicConfig(level=logging.WARNING)
 
+
 @cli.command()
 @click.argument('idea')
-@click.option('--output', '-o', default='./generated_project', help='Dossier de sortie')
+@click.option('--output',
+              '-o',
+              default='./generated_project',
+              help='Dossier de sortie')
 @click.option('--dry-run', is_flag=True, help='Mode simulation')
 def generate(idea, output, dry_run):
     """Génère un projet complet à partir d'une idée."""
@@ -46,7 +52,8 @@ def generate(idea, output, dry_run):
             click.echo("❌ Impossible de générer le blueprint")
             return
 
-        click.echo(f"✅ Blueprint généré: {blueprint.get('project_type', 'Projet')}")
+        click.echo(
+            f"✅ Blueprint généré: {blueprint.get('project_type', 'Projet')}")
 
         # 2. Générer le projet complet
 
@@ -63,6 +70,7 @@ def generate(idea, output, dry_run):
     except Exception as e:
         click.echo(f"❌ Erreur: {e}")
         click.echo(f"🔍 Détails: {traceback.format_exc()}")
+
 
 @cli.command()
 @click.argument('project_path')
@@ -88,6 +96,7 @@ def audit(project_path):
     except Exception as e:
         click.echo(f"❌ Erreur: {e}")
 
+
 @cli.command()
 def ai_status():
     """Affiche le statut de l'IA robuste."""
@@ -103,7 +112,8 @@ def ai_status():
             click.echo(f"  {status} {model.value}")
 
         # Chaîne de fallback
-        click.echo(f"\n🔄 Chaîne de fallback ({len(ai.fallback_chain)} modèles):")
+        click.echo(
+            f"\n🔄 Chaîne de fallback ({len(ai.fallback_chain)} modèles):")
         for index, model in enumerate(ai.fallback_chain, 1):
             click.echo(f"  {index}. {model.value}")
 
@@ -118,6 +128,7 @@ def ai_status():
         click.echo("❌ Module ai_robust non disponible")
     except Exception as e:
         click.echo(f"❌ Erreur: {e}")
+
 
 @cli.command()
 @click.argument('idea')
@@ -136,7 +147,8 @@ def test_ai(idea):
         click.echo(f"  • Nom: {blueprint.get('project_name', 'N/A')}")
         click.echo(f"  • Type: {blueprint.get('project_type', 'N/A')}")
         click.echo(f"  • Modules: {len(blueprint.get('modules', []))}")
-        click.echo(f"  • Dépendances: {len(blueprint.get('dependencies', []))}")
+        click.echo(
+            f"  • Dépendances: {len(blueprint.get('dependencies', []))}")
 
         # Test de revue de code
         click.echo("\n🔍 Test de revue de code...")
@@ -173,6 +185,7 @@ def hello_world():
         click.echo("❌ Module ai_robust non disponible")
     except Exception as e:
         click.echo(f"❌ Erreur: {e}")
+
 
 if __name__ == '__main__':
     cli()
