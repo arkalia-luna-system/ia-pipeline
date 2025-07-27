@@ -147,28 +147,42 @@ class TestEncodingUTF8:
                 "\n".join(str(f) for f in bom_files))
 
     def test_consistent_line_endings(self):
-        """Vérifie la cohérence des fins de ligne"""
-        python_files = list(Path('.').glob('**/*.py'))
-        python_files = [
-            f for f in python_files
-            if '.git' not in str(f) and '__pycache__' not in str(f)
-            and not f.name.startswith('._')
-        ]
-
-        mixed_endings = []
-        for py_file in python_files:
-            try:
-                with open(py_file, 'rb') as f:
-                    content = f.read()
-                    if b'\r\n' in content and b'\n' in content:
-                        mixed_endings.append(py_file)
-            except Exception:
-                continue
-
-        if mixed_endings:
+        """Test que tous les fichiers ont des fins de ligne cohérentes"""
+        import os
+        
+        # Exclure les dossiers qui peuvent contenir des fichiers avec des fins de ligne mixtes
+        exclude_dirs = {'.git', '__pycache__', '.venv', 'venv', 'node_modules', 'build', 'dist'}
+        
+        files_with_mixed_endings = []
+        
+        for root, dirs, files in os.walk('.'):
+            # Exclure les dossiers non désirés
+            dirs[:] = [d for d in dirs if d not in exclude_dirs]
+            
+            for file in files:
+                if file.endswith(('.py', '.md', '.txt', '.yaml', '.yml', '.json')):
+                    file_path = os.path.join(root, file)
+                    try:
+                        with open(file_path, 'rb') as f:
+                            content = f.read()
+                            
+                        # Vérifier les fins de ligne
+                        has_crlf = b'\r\n' in content
+                        has_lf = b'\n' in content
+                        has_cr = b'\r' in content and b'\r\n' not in content
+                        
+                        # Détecter les fins de ligne mixtes
+                        if (has_crlf and has_lf and not has_cr) or (has_cr and has_lf):
+                            files_with_mixed_endings.append(file_path)
+                            
+                    except Exception:
+                        continue
+        
+        if files_with_mixed_endings:
             pytest.fail(
                 f"Fichiers avec fins de ligne mixtes trouvés:\n" +
-                "\n".join(str(f) for f in mixed_endings))
+                "\n".join(files_with_mixed_endings)
+            )
 
 
 if __name__ == "__main__":
