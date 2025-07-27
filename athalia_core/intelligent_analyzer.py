@@ -300,7 +300,7 @@ class IntelligentAnalyzer:
                 plan["priority_tasks"].append({
                     "task": "fix_critical_performance_issues",
                     "description": (f"Corriger {len(critical_perf_issues)} "
-                                  f"problèmes de performance critiques"),
+                                    f"problèmes de performance critiques"),
                     "effort": "high",
                     "impact": "high"
                 })

@@ -360,10 +360,10 @@ class IntelligentMemory:
 
             # Calculer les taux de succès
             error_rate = total_errors / total_events if total_events > 0 else 0
-            prediction_accuracy = (correct_predictions / validated_predictions 
-                                 if validated_predictions > 0 else 0)
-            correction_success_rate = (successful_corrections / applied_corrections 
-                                     if applied_corrections > 0 else 0)
+            prediction_accuracy = (correct_predictions / validated_predictions
+                                   if validated_predictions > 0 else 0)
+            correction_success_rate = (successful_corrections / applied_corrections
+                                       if applied_corrections > 0 else 0)
 
             return {
                 "total_events": total_events,

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Module de distillation de réponses IA pour Athalia/Arkalia
-Permet de fusionner plusieurs réponses IA en une solution optimale 
+Permet de fusionner plusieurs réponses IA en une solution optimale
 (voting, stacking, bagging, consensus scoring...)
 """
 from typing import List, Dict, Any, Optional
@@ -85,7 +85,7 @@ class ResponseDistiller:
                 divergents.append(r)
         if consensus and len(consensus) > 2:
             return (f"Consensus: {consensus} | Divergents: "
-                   f"{' || '.join(divergents) if divergents else 'Aucun'}")
+                    f"{' || '.join(divergents) if divergents else 'Aucun'}")
         return self.majority_voting(responses)
 
     def creative_fusion(self, responses: List[str]) -> str:
