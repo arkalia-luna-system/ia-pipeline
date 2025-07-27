@@ -35,7 +35,8 @@ class MultiFileEditor:
         """
         Applique la fonction de correction à chaque fichier.
         :param files: Liste des chemins de fichiers à corriger
-        :param correction_fn: Fonction qui prend le contenu du fichier et retourne le contenu corrigé
+        :param correction_fn: Fonction qui prend le contenu du fichier et
+                             retourne le contenu corrigé
         :return: Dictionnaire de résultats (succès, erreurs, logs)
         """
         results: Dict[str, Any] = {"success": [], "errors": [], "logs": []}
