@@ -420,8 +420,8 @@ class AthaliaLogger:
         if output_file is None:
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
             output_file = str(
-                self.log_dir /
-                f"metrics_export_{timestamp}.json")
+                self.log_dir
+                / f"metrics_export_{timestamp}.json")
 
         export_data = {
             'export_timestamp': datetime.now().isoformat(),

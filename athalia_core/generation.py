@@ -85,8 +85,8 @@ def generate_project(blueprint: dict, outdir, *args, **kwargs):
 
     if kwargs.get('dry_run'):
         (outdir / 'dry_run_report.txt').write_text(
-            '[DRY-RUN] Projet qui serait généré:\n' +
-            json.dumps(blueprint, indent=2)
+            '[DRY-RUN] Projet qui serait généré:\n'
+            + json.dumps(blueprint, indent=2)
         )
         return {'outdir': str(outdir), 'files': ['dry_run_report.txt']}
 
@@ -176,7 +176,6 @@ def generate_readme(blueprint: dict) -> str:
     """Génère un README.md complet"""
     project_name = blueprint.get('project_name', 'projet_ia')
     description = blueprint.get('description', 'Projet généré par Athalia')
-    project_type = blueprint.get('project_type', 'web')
     dependencies = blueprint.get('dependencies', [])
 
     readme = f"""# {project_name}
@@ -1145,8 +1144,8 @@ def merge_or_suffix_file(
     else:
         if section_header is not None and isinstance(section_header, str):
             file.write_text(
-                file.read_text() +
-                f"\n{section_header}\n{content}")
+                file.read_text()
+                + f"\n{section_header}\n{content}")
             action = 'merged'
             return str(file), action
         elif file_type is not None and file_type == 'test':

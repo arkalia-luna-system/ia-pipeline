@@ -882839,6 +882839,31 @@ Génère un rapport d'audit
 
 ---
 
+### cleanup
+
+#### Fonctions
+
+##### clean_old_tests_and_caches
+
+Supprime les anciens fichiers de test non-suffixés et les caches Python dans le projet cible.
+Log chaque suppression pour audit. Retourne la liste des fichiers supprimés.
+
+**Paramètres :**
+
+- `outdir`
+
+##### clean_macos_files
+
+Supprime automatiquement les fichiers macOS parasites et temporaires dans tout le projet.
+Inclut les fichiers système macOS spécifiques comme .!44956!*.clean
+Retourne la liste des fichiers supprimés.
+
+**Paramètres :**
+
+- `directory`
+
+---
+
 ### logger_advanced
 
 Système de logging avancé pour Athalia/Arkalia
@@ -883957,31 +883982,6 @@ Affichage du rapport de sécurité
 
 ---
 
-### cleanup
-
-#### Fonctions
-
-##### clean_old_tests_and_caches
-
-Supprime les anciens fichiers de test non-suffixés et les caches Python dans le projet cible.
-Log chaque suppression pour audit. Retourne la liste des fichiers supprimés.
-
-**Paramètres :**
-
-- `outdir`
-
-##### clean_macos_files
-
-Supprime automatiquement les fichiers macOS parasites et temporaires dans tout le projet.
-Inclut les fichiers système macOS spécifiques comme .!44956!*.clean
-Retourne la liste des fichiers supprimés.
-
-**Paramètres :**
-
-- `directory`
-
----
-
 ### code_linter
 
 #### Classes
@@ -884042,6 +884042,33 @@ Calcul du score de qualité
 ##### print_report
 
 Affichage du rapport de linting
+
+---
+
+### onboarding
+
+#### Fonctions
+
+##### generate_onboarding_md
+
+**Paramètres :**
+
+- `blueprint`
+- `outdir`
+
+##### generate_onboard_cli
+
+**Paramètres :**
+
+- `blueprint`
+- `outdir`
+
+##### generate_onboarding_html_advanced
+
+**Paramètres :**
+
+- `blueprint`
+- `outdir`
 
 ---
 
@@ -884205,6 +884232,60 @@ Récupère les statistiques de correction
 
 ---
 
+### multi_file_editor
+
+Module d'édition/correction multi-fichiers pour Athalia/Arkalia.
+Permet d'appliquer des corrections/refactoring sur plusieurs fichiers en une seule commande, avec logs et rollback.
+
+#### Classes
+
+##### MultiFileEditor
+
+**Méthodes :**
+
+- `__init__()`
+- `backup_file()`
+- `apply_corrections()`
+- `rollback()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `backup_dir`
+
+##### backup_file
+
+**Paramètres :**
+
+- `file_path`
+
+##### apply_corrections
+
+Applique la fonction de correction à chaque fichier.
+:param files: Liste des chemins de fichiers à corriger
+:param correction_fn: Fonction qui prend le contenu du fichier et retourne le contenu corrigé
+:return: Dictionnaire de résultats (succès, erreurs, logs)
+
+**Paramètres :**
+
+- `files`
+- `correction_fn`
+
+##### rollback
+
+Restaure tous les fichiers depuis les backups.
+
+##### dummy_correction
+
+**Paramètres :**
+
+- `content`
+
+---
+
 ### performance_analyzer
 
 ⚡ ANALYSEUR DE PERFORMANCE
@@ -884353,87 +884434,6 @@ Profiler une fonction spécifique
 ##### get_performance_insights
 
 Obtenir des insights de performance
-
----
-
-### multi_file_editor
-
-Module d'édition/correction multi-fichiers pour Athalia/Arkalia.
-Permet d'appliquer des corrections/refactoring sur plusieurs fichiers en une seule commande, avec logs et rollback.
-
-#### Classes
-
-##### MultiFileEditor
-
-**Méthodes :**
-
-- `__init__()`
-- `backup_file()`
-- `apply_corrections()`
-- `rollback()`
-
-#### Fonctions
-
-##### __init__
-
-**Paramètres :**
-
-- `backup_dir`
-
-##### backup_file
-
-**Paramètres :**
-
-- `file_path`
-
-##### apply_corrections
-
-Applique la fonction de correction à chaque fichier.
-:param files: Liste des chemins de fichiers à corriger
-:param correction_fn: Fonction qui prend le contenu du fichier et retourne le contenu corrigé
-:return: Dictionnaire de résultats (succès, erreurs, logs)
-
-**Paramètres :**
-
-- `files`
-- `correction_fn`
-
-##### rollback
-
-Restaure tous les fichiers depuis les backups.
-
-##### dummy_correction
-
-**Paramètres :**
-
-- `content`
-
----
-
-### onboarding
-
-#### Fonctions
-
-##### generate_onboarding_md
-
-**Paramètres :**
-
-- `blueprint`
-- `outdir`
-
-##### generate_onboard_cli
-
-**Paramètres :**
-
-- `blueprint`
-- `outdir`
-
-##### generate_onboarding_html_advanced
-
-**Paramètres :**
-
-- `blueprint`
-- `outdir`
 
 ---
 

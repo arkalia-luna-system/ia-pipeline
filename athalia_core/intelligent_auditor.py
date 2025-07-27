@@ -286,9 +286,9 @@ class IntelligentAuditor:
                 pass
 
         coverage = (
-            documented_functions /
-            total_functions *
-            100) if total_functions > 0 else 0
+            documented_functions
+            / total_functions
+            * 100) if total_functions > 0 else 0
 
         return {
             "coverage": coverage,

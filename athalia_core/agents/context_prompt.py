@@ -132,9 +132,9 @@ def detect_prompt_semantic(filepath):
     prompt_list = '\n'.join([f"- {p['name']} ({p['file']})" for p in PROMPTS])
     system_prompt = (
         "Tu es un assistant expert en analyse de contexte de code. "
-        "Voici la liste des prompts disponibles :\n" +
-        prompt_list +
-        "\nLis le contenu suivant et indique le nom du prompt le plus pertinent pour améliorer ou analyser. "
+        "Voici la liste des prompts disponibles :\n"
+        + prompt_list
+        + "\nLis le contenu suivant et indique le nom du prompt le plus pertinent pour améliorer ou analyser. "
         "Réponds uniquement par le nom exact du prompt.")
     # Appel Ollama / Mistral
     try:
@@ -164,11 +164,11 @@ def show_prompts(scored, semantic_prompt=None):
             with open(semantic_prompt['file'], 'r', encoding='utf-8') as file_handle:
                 prompt_text = file_handle.read()
             logging.info(
-                "  --- Prompt principal ---\n" +
-                prompt_text +
-                "\n" +
-                "-" *
-                40)
+                "  --- Prompt principal ---\n"
+                + prompt_text
+                + "\n"
+                + "-"
+                * 40)
             try:
                 if pyperclip:
                     pyperclip.copy(prompt_text)
@@ -195,8 +195,8 @@ def show_prompts(scored, semantic_prompt=None):
             if os.path.exists(prompt['file']):
                 with open(prompt['file'], 'r', encoding='utf-8') as file_handle:
                     prompt_text = file_handle.read()
-                logging.info("  --- Prompt principal ---\n" +
-                             prompt_text + "\n" + "-" * 40)
+                logging.info("  --- Prompt principal ---\n"
+                             + prompt_text + "\n" + "-" * 40)
                 try:
                     if pyperclip:
                         pyperclip.copy(prompt_text)

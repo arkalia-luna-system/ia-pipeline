@@ -131,8 +131,8 @@ class CorrectionOptimizer:
 
             # Si c'est une ligne de code (pas vide, pas commentaire) et qu'elle
             # n'a pas d'indentation
-            if (line.strip() and not line.strip().startswith('#') and
-                    not line.startswith(' ')):
+            if (line.strip() and not line.strip().startswith('#')
+                    and not line.startswith(' ')):
                 # Si la ligne précédente se termine par ':', ajouter
                 # l'indentation
                 if i > 0 and lines[i - 1].strip().endswith(':'):
@@ -652,9 +652,9 @@ class CorrectionOptimizer:
         )
 
         success_rate = (
-            successful_corrections /
-            total_corrections *
-            100) if total_corrections > 0 else 0
+            successful_corrections
+            / total_corrections
+            * 100) if total_corrections > 0 else 0
 
         return {
             'total_corrections': total_corrections,
