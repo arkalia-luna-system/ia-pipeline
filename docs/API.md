@@ -5322,6 +5322,18 @@ Returns:
 
 ---
 
+### main
+
+---
+
+### module2
+
+#### Fonctions
+
+##### test2
+
+---
+
 ### demo_system_intelligent
 
 🎯 DÉMONSTRATION DU SYSTÈME INTELLIGENT ATHALIA
@@ -5349,18 +5361,6 @@ Démonstration de l'intégration
 ##### main
 
 Démonstration complète du système
-
----
-
-### main
-
----
-
-### module2
-
-#### Fonctions
-
-##### test2
 
 ---
 
@@ -6241,116 +6241,6 @@ Agent AutoGen pour Qwen 7B (prototype)
 
 ---
 
-### analyse_integration_orchestrateur
-
-🔍 ANALYSE D'INTÉGRATION ORCHESTRATEUR
-=====================================
-Script pour analyser l'intégration actuelle de l'orchestrateur unifié
-et identifier les modules manquants.
-
-#### Classes
-
-##### ModuleIntegration
-
-Informations sur l'intégration d'un module
-
-##### IntegrationAnalysis
-
-Analyse d'intégration complète
-
-##### OrchestratorIntegrationAnalyzer
-
-Analyseur d'intégration de l'orchestrateur
-
-**Méthodes :**
-
-- `__init__()`
-- `analyze_orchestrator_integration()`
-- `_get_all_athalia_modules()`
-- `_analyze_orchestrator_file()`
-- `_analyze_imports()`
-- `_analyze_usage()`
-- `_analyze_integration_status()`
-- `_create_empty_analysis()`
-- `_generate_integration_recommendations()`
-- `generate_integration_report()`
-
-#### Fonctions
-
-##### main
-
-Fonction principale
-
-##### __init__
-
-**Paramètres :**
-
-- `root_path`
-
-##### analyze_orchestrator_integration
-
-Analyser l'intégration de l'orchestrateur
-
-##### _get_all_athalia_modules
-
-Obtenir tous les modules athalia_core
-
-##### _analyze_orchestrator_file
-
-Analyser le fichier de l'orchestrateur
-
-##### _analyze_imports
-
-Analyser les imports de l'orchestrateur
-
-**Paramètres :**
-
-- `tree`
-- `content`
-
-##### _analyze_usage
-
-Analyser l'utilisation des modules
-
-**Paramètres :**
-
-- `tree`
-- `content`
-
-##### _analyze_integration_status
-
-Analyser le statut d'intégration
-
-**Paramètres :**
-
-- `all_modules`
-
-##### _create_empty_analysis
-
-Créer une analyse vide si l'orchestrateur n'existe pas
-
-**Paramètres :**
-
-- `all_modules`
-
-##### _generate_integration_recommendations
-
-Générer des recommandations d'intégration
-
-**Paramètres :**
-
-- `analysis`
-
-##### generate_integration_report
-
-Générer un rapport d'intégration
-
-**Paramètres :**
-
-- `analysis`
-
----
-
 ### analyze_intelligence_usage
 
 🔍 ANALYSE DE L'UTILISATION DE L'INTELLIGENCE ET DÉTECTION DE DOUBLONS
@@ -6437,100 +6327,6 @@ Analyser l'utilisation de l'intelligence
 ##### generate_report
 
 Générer un rapport complet
-
----
-
-### analyze_orchestrators_detailed
-
-🎯 ANALYSE DÉTAILLÉE DES ORCHESTRATEURS
-=======================================
-Analyse détaillée pour détecter les doublons fonctionnels entre orchestrateurs.
-
-#### Classes
-
-##### OrchestratorInfo
-
-Informations détaillées sur un orchestrateur
-
-##### OrchestratorAnalyzer
-
-Analyseur détaillé des orchestrateurs
-
-**Méthodes :**
-
-- `__init__()`
-- `analyze_orchestrators()`
-- `_analyze_orchestrator_file()`
-- `_extract_responsibilities()`
-- `_extract_dependencies()`
-- `detect_functional_duplicates()`
-- `_calculate_functional_similarity()`
-- `_generate_functional_recommendation()`
-- `generate_detailed_report()`
-
-#### Fonctions
-
-##### main
-
-Analyse détaillée des orchestrateurs
-
-##### __init__
-
-##### analyze_orchestrators
-
-Analyser tous les orchestrateurs
-
-##### _analyze_orchestrator_file
-
-Analyser un fichier orchestrateur
-
-**Paramètres :**
-
-- `file_path`
-
-##### _extract_responsibilities
-
-Extraire les responsabilités du code
-
-**Paramètres :**
-
-- `content`
-
-##### _extract_dependencies
-
-Extraire les dépendances
-
-**Paramètres :**
-
-- `content`
-
-##### detect_functional_duplicates
-
-Détecter les doublons fonctionnels
-
-##### _calculate_functional_similarity
-
-Calculer la similarité fonctionnelle
-
-**Paramètres :**
-
-- `orch1`
-- `orch2`
-
-##### _generate_functional_recommendation
-
-Générer une recommandation fonctionnelle
-
-**Paramètres :**
-
-- `orch1`
-- `orch2`
-- `common_resp`
-- `common_methods`
-
-##### generate_detailed_report
-
-Générer un rapport détaillé
 
 ---
 
@@ -6736,147 +6532,6 @@ Mettre à jour la documentation existante
 
 ---
 
-### athalia-intelligent-orchestrator
-
-🎯 ATHALIA INTELLIGENT ORCHESTRATOR
-===================================
-Orchestrateur intelligent qui :
-- Utilise les insights du super cerveau
-- Coordonne tous les modules de manière optimale
-- Apprend des patterns d'exécution
-- Optimise les performances en temps réel
-- Gère les dépendances intelligemment
-
-#### Classes
-
-##### TaskDefinition
-
-Définition d'une tâche
-
-##### ExecutionResult
-
-Résultat d'exécution d'une tâche
-
-##### OrchestrationPlan
-
-Plan d'orchestration
-
-##### AthaliaIntelligentOrchestrator
-
-Orchestrateur intelligent pour Athalia
-
-**Méthodes :**
-
-- `__init__()`
-- `_init_database()`
-- `_load_config()`
-- `load_super_brain_insights()`
-- `create_intelligent_orchestration_plan()`
-- `_create_complete_pipeline_tasks()`
-- `_create_audit_pipeline_tasks()`
-- `_create_test_pipeline_tasks()`
-- `_create_default_pipeline_tasks()`
-- `_optimize_execution_order()`
-- `_create_parallel_groups()`
-- `_execute_task()`
-- `_save_execution_results()`
-- `get_performance_insights()`
-
-#### Fonctions
-
-##### main
-
-Fonction principale
-
-##### __init__
-
-**Paramètres :**
-
-- `root_path`
-
-##### _init_database
-
-Initialiser la base de données d'orchestration
-
-##### _load_config
-
-Charger la configuration
-
-##### load_super_brain_insights
-
-Charger les insights du super cerveau
-
-##### create_intelligent_orchestration_plan
-
-Créer un plan d'orchestration intelligent
-
-**Paramètres :**
-
-- `target_action`
-
-##### _create_complete_pipeline_tasks
-
-Créer les tâches pour le pipeline complet
-
-##### _create_audit_pipeline_tasks
-
-Créer les tâches pour le pipeline d'audit
-
-##### _create_test_pipeline_tasks
-
-Créer les tâches pour le pipeline de tests
-
-##### _create_default_pipeline_tasks
-
-Créer les tâches par défaut
-
-##### _optimize_execution_order
-
-Optimiser l'ordre d'exécution basé sur les insights
-
-**Paramètres :**
-
-- `tasks`
-- `insights`
-
-##### _create_parallel_groups
-
-Créer des groupes de tâches parallèles
-
-**Paramètres :**
-
-- `tasks`
-- `execution_order`
-
-##### _execute_task
-
-Exécuter une tâche individuelle
-
-**Paramètres :**
-
-- `task`
-- `project_path`
-
-##### _save_execution_results
-
-Sauvegarder les résultats d'exécution
-
-**Paramètres :**
-
-- `results`
-
-##### get_performance_insights
-
-Obtenir des insights de performance
-
-##### dfs
-
-**Paramètres :**
-
-- `task_name`
-
----
-
 ### athalia-super-brain
 
 🧠 ATHALIA SUPER BRAIN
@@ -7051,6 +6706,383 @@ Générer un plan d'optimisation
 ##### generate_intelligent_coordination
 
 Générer un plan de coordination intelligente
+
+---
+
+### analyse_integration_orchestrateur
+
+🔍 ANALYSE D'INTÉGRATION ORCHESTRATEUR
+=====================================
+Script pour analyser l'intégration actuelle de l'orchestrateur unifié
+et identifier les modules manquants.
+
+#### Classes
+
+##### ModuleIntegration
+
+Informations sur l'intégration d'un module
+
+##### IntegrationAnalysis
+
+Analyse d'intégration complète
+
+##### OrchestratorIntegrationAnalyzer
+
+Analyseur d'intégration de l'orchestrateur
+
+**Méthodes :**
+
+- `__init__()`
+- `analyze_orchestrator_integration()`
+- `_get_all_athalia_modules()`
+- `_analyze_orchestrator_file()`
+- `_analyze_imports()`
+- `_analyze_usage()`
+- `_analyze_integration_status()`
+- `_create_empty_analysis()`
+- `_generate_integration_recommendations()`
+- `generate_integration_report()`
+
+#### Fonctions
+
+##### main
+
+Fonction principale
+
+##### __init__
+
+**Paramètres :**
+
+- `root_path`
+
+##### analyze_orchestrator_integration
+
+Analyser l'intégration de l'orchestrateur
+
+##### _get_all_athalia_modules
+
+Obtenir tous les modules athalia_core
+
+##### _analyze_orchestrator_file
+
+Analyser le fichier de l'orchestrateur
+
+##### _analyze_imports
+
+Analyser les imports de l'orchestrateur
+
+**Paramètres :**
+
+- `tree`
+- `content`
+
+##### _analyze_usage
+
+Analyser l'utilisation des modules
+
+**Paramètres :**
+
+- `tree`
+- `content`
+
+##### _analyze_integration_status
+
+Analyser le statut d'intégration
+
+**Paramètres :**
+
+- `all_modules`
+
+##### _create_empty_analysis
+
+Créer une analyse vide si l'orchestrateur n'existe pas
+
+**Paramètres :**
+
+- `all_modules`
+
+##### _generate_integration_recommendations
+
+Générer des recommandations d'intégration
+
+**Paramètres :**
+
+- `analysis`
+
+##### generate_integration_report
+
+Générer un rapport d'intégration
+
+**Paramètres :**
+
+- `analysis`
+
+---
+
+### analyze_orchestrators_detailed
+
+🎯 ANALYSE DÉTAILLÉE DES ORCHESTRATEURS
+=======================================
+Analyse détaillée pour détecter les doublons fonctionnels entre orchestrateurs.
+
+#### Classes
+
+##### OrchestratorInfo
+
+Informations détaillées sur un orchestrateur
+
+##### OrchestratorAnalyzer
+
+Analyseur détaillé des orchestrateurs
+
+**Méthodes :**
+
+- `__init__()`
+- `analyze_orchestrators()`
+- `_analyze_orchestrator_file()`
+- `_extract_responsibilities()`
+- `_extract_dependencies()`
+- `detect_functional_duplicates()`
+- `_calculate_functional_similarity()`
+- `_generate_functional_recommendation()`
+- `generate_detailed_report()`
+
+#### Fonctions
+
+##### main
+
+Analyse détaillée des orchestrateurs
+
+##### __init__
+
+##### analyze_orchestrators
+
+Analyser tous les orchestrateurs
+
+##### _analyze_orchestrator_file
+
+Analyser un fichier orchestrateur
+
+**Paramètres :**
+
+- `file_path`
+
+##### _extract_responsibilities
+
+Extraire les responsabilités du code
+
+**Paramètres :**
+
+- `content`
+
+##### _extract_dependencies
+
+Extraire les dépendances
+
+**Paramètres :**
+
+- `content`
+
+##### detect_functional_duplicates
+
+Détecter les doublons fonctionnels
+
+##### _calculate_functional_similarity
+
+Calculer la similarité fonctionnelle
+
+**Paramètres :**
+
+- `orch1`
+- `orch2`
+
+##### _generate_functional_recommendation
+
+Générer une recommandation fonctionnelle
+
+**Paramètres :**
+
+- `orch1`
+- `orch2`
+- `common_resp`
+- `common_methods`
+
+##### generate_detailed_report
+
+Générer un rapport détaillé
+
+---
+
+### en
+
+English translations for Athalia
+
+#### Fonctions
+
+##### get_translation
+
+Returns English translations
+
+**Paramètres :**
+
+- `lang`
+
+---
+
+### athalia-intelligent-orchestrator
+
+🎯 ATHALIA INTELLIGENT ORCHESTRATOR
+===================================
+Orchestrateur intelligent qui :
+- Utilise les insights du super cerveau
+- Coordonne tous les modules de manière optimale
+- Apprend des patterns d'exécution
+- Optimise les performances en temps réel
+- Gère les dépendances intelligemment
+
+#### Classes
+
+##### TaskDefinition
+
+Définition d'une tâche
+
+##### ExecutionResult
+
+Résultat d'exécution d'une tâche
+
+##### OrchestrationPlan
+
+Plan d'orchestration
+
+##### AthaliaIntelligentOrchestrator
+
+Orchestrateur intelligent pour Athalia
+
+**Méthodes :**
+
+- `__init__()`
+- `_init_database()`
+- `_load_config()`
+- `load_super_brain_insights()`
+- `create_intelligent_orchestration_plan()`
+- `_create_complete_pipeline_tasks()`
+- `_create_audit_pipeline_tasks()`
+- `_create_test_pipeline_tasks()`
+- `_create_default_pipeline_tasks()`
+- `_optimize_execution_order()`
+- `_create_parallel_groups()`
+- `_execute_task()`
+- `_save_execution_results()`
+- `get_performance_insights()`
+
+#### Fonctions
+
+##### main
+
+Fonction principale
+
+##### __init__
+
+**Paramètres :**
+
+- `root_path`
+
+##### _init_database
+
+Initialiser la base de données d'orchestration
+
+##### _load_config
+
+Charger la configuration
+
+##### load_super_brain_insights
+
+Charger les insights du super cerveau
+
+##### create_intelligent_orchestration_plan
+
+Créer un plan d'orchestration intelligent
+
+**Paramètres :**
+
+- `target_action`
+
+##### _create_complete_pipeline_tasks
+
+Créer les tâches pour le pipeline complet
+
+##### _create_audit_pipeline_tasks
+
+Créer les tâches pour le pipeline d'audit
+
+##### _create_test_pipeline_tasks
+
+Créer les tâches pour le pipeline de tests
+
+##### _create_default_pipeline_tasks
+
+Créer les tâches par défaut
+
+##### _optimize_execution_order
+
+Optimiser l'ordre d'exécution basé sur les insights
+
+**Paramètres :**
+
+- `tasks`
+- `insights`
+
+##### _create_parallel_groups
+
+Créer des groupes de tâches parallèles
+
+**Paramètres :**
+
+- `tasks`
+- `execution_order`
+
+##### _execute_task
+
+Exécuter une tâche individuelle
+
+**Paramètres :**
+
+- `task`
+- `project_path`
+
+##### _save_execution_results
+
+Sauvegarder les résultats d'exécution
+
+**Paramètres :**
+
+- `results`
+
+##### get_performance_insights
+
+Obtenir des insights de performance
+
+##### dfs
+
+**Paramètres :**
+
+- `task_name`
+
+---
+
+### fr
+
+Traductions françaises pour Athalia
+
+#### Fonctions
+
+##### get_translation
+
+Retourne les traductions françaises
+
+**Paramètres :**
+
+- `lang`
 
 ---
 
@@ -7371,48 +7403,6 @@ Fonction d'entrée standard pour le plugin.
 
 ---
 
-### en
-
-English translations for Athalia
-
-#### Fonctions
-
-##### get_translation
-
-Returns English translations
-
-**Paramètres :**
-
-- `lang`
-
----
-
-### fr
-
-Traductions françaises pour Athalia
-
-#### Fonctions
-
-##### get_translation
-
-Retourne les traductions françaises
-
-**Paramètres :**
-
-- `lang`
-
----
-
-### hello_world_plugin
-
-Plugin exemple : Hello Plugin
-
-#### Fonctions
-
-##### run
-
----
-
 ### identify_problematic_tests
 
 Script pour identifier les tests problématiques qui pourraient faire échouer la CI
@@ -7438,6 +7428,16 @@ Génère une liste de tests sûrs pour la CI
 ##### main
 
 Fonction principale
+
+---
+
+### hello_world_plugin
+
+Plugin exemple : Hello Plugin
+
+#### Fonctions
+
+##### run
 
 ---
 
@@ -7696,6 +7696,49 @@ Analyse simple des orchestrateurs
 
 ---
 
+### validation_dashboard_simple
+
+Dashboard de Validation Simple - Athalia/Arkalia
+Version simplifiée qui fonctionne directement
+
+#### Classes
+
+##### ValidationDashboardHandler
+
+**Méthodes :**
+
+- `do_GET()`
+- `do_POST()`
+- `send_validation_result()`
+- `send_history()`
+- `end_headers()`
+
+#### Fonctions
+
+##### run_dashboard
+
+Lance le dashboard de validation
+
+**Paramètres :**
+
+- `port`
+
+##### do_GET
+
+##### do_POST
+
+##### send_validation_result
+
+Envoie le résultat de validation en temps réel
+
+##### send_history
+
+Envoie l'historique des validations
+
+##### end_headers
+
+---
+
 ### validation_continue
 
 Validation Continue d'Athalia/Arkalia
@@ -7798,49 +7841,6 @@ Génère un rapport de tendance basé sur l'historique
 ##### boucle_surveillance
 
 Boucle de surveillance avec arrêt propre
-
----
-
-### validation_dashboard_simple
-
-Dashboard de Validation Simple - Athalia/Arkalia
-Version simplifiée qui fonctionne directement
-
-#### Classes
-
-##### ValidationDashboardHandler
-
-**Méthodes :**
-
-- `do_GET()`
-- `do_POST()`
-- `send_validation_result()`
-- `send_history()`
-- `end_headers()`
-
-#### Fonctions
-
-##### run_dashboard
-
-Lance le dashboard de validation
-
-**Paramètres :**
-
-- `port`
-
-##### do_GET
-
-##### do_POST
-
-##### send_validation_result
-
-Envoie le résultat de validation en temps réel
-
-##### send_history
-
-Envoie l'historique des validations
-
-##### end_headers
 
 ---
 
@@ -8541,6 +8541,1275 @@ Génère un index pour une section spécifique
 **Paramètres :**
 
 - `section`
+
+---
+
+### pycodestyle
+
+Check Python source code formatting, according to PEP 8.
+
+For usage and a list of options, try this:
+$ python pycodestyle.py -h
+
+This program and its regression test suite live here:
+https://github.com/pycqa/pycodestyle
+
+Groups of errors and warnings:
+E errors
+W warnings
+100 indentation
+200 whitespace
+300 blank lines
+400 imports
+500 line length
+600 deprecation
+700 statements
+900 syntax error
+
+#### Classes
+
+##### Checker
+
+Load a Python source file, tokenize it, check coding style.
+
+**Méthodes :**
+
+- `__init__()`
+- `report_invalid_syntax()`
+- `readline()`
+- `run_check()`
+- `init_checker_state()`
+- `check_physical()`
+- `build_tokens_line()`
+- `check_logical()`
+- `check_ast()`
+- `generate_tokens()`
+- `maybe_check_physical()`
+- `check_all()`
+
+##### BaseReport
+
+Collect the results of the checks.
+
+**Méthodes :**
+
+- `__init__()`
+- `start()`
+- `stop()`
+- `init_file()`
+- `increment_logical_line()`
+- `error()`
+- `get_file_results()`
+- `get_count()`
+- `get_statistics()`
+- `print_statistics()`
+- `print_benchmark()`
+
+##### FileReport
+
+Collect the results of the checks and print the filenames.
+
+##### StandardReport
+
+Collect and print the results of the checks.
+
+**Méthodes :**
+
+- `__init__()`
+- `init_file()`
+- `error()`
+- `get_file_results()`
+
+##### DiffReport
+
+Collect and print the results for the changed lines only.
+
+**Méthodes :**
+
+- `__init__()`
+- `error()`
+
+##### StyleGuide
+
+Initialize a PEP-8 instance with few options.
+
+**Méthodes :**
+
+- `__init__()`
+- `init_report()`
+- `check_files()`
+- `input_file()`
+- `input_dir()`
+- `excluded()`
+- `ignore_code()`
+- `get_checks()`
+
+#### Fonctions
+
+##### _get_parameters
+
+**Paramètres :**
+
+- `function`
+
+##### register_check
+
+Register a new check object.
+
+**Paramètres :**
+
+- `check`
+- `codes`
+
+##### tabs_or_spaces
+
+Never mix tabs and spaces.
+
+The most popular way of indenting Python is with spaces only.  The
+second-most popular way is with tabs only.  Code indented with a
+mixture of tabs and spaces should be converted to using spaces
+exclusively.  When invoking the Python command line interpreter with
+the -t option, it issues warnings about code that illegally mixes
+tabs and spaces.  When using -tt these warnings become errors.
+These options are highly recommended!
+
+Okay: if a == 0:\n    a = 1\n    b = 1
+
+**Paramètres :**
+
+- `physical_line`
+- `indent_char`
+
+##### tabs_obsolete
+
+On new projects, spaces-only are strongly recommended over tabs.
+
+Okay: if True:\n    return
+W191: if True:\n\treturn
+
+**Paramètres :**
+
+- `physical_line`
+
+##### trailing_whitespace
+
+Trailing whitespace is superfluous.
+
+The warning returned varies on whether the line itself is blank,
+for easier filtering for those who want to indent their blank lines.
+
+Okay: spam(1)\n#
+W291: spam(1) \n#
+W293: class Foo(object):\n    \n    bang = 12
+
+**Paramètres :**
+
+- `physical_line`
+
+##### trailing_blank_lines
+
+Trailing blank lines are superfluous.
+
+Okay: spam(1)
+W391: spam(1)\n
+
+However the last line should end with a new line (warning W292).
+
+**Paramètres :**
+
+- `physical_line`
+- `lines`
+- `line_number`
+- `total_lines`
+
+##### maximum_line_length
+
+Limit all lines to a maximum of 79 characters.
+
+There are still many devices around that are limited to 80 character
+lines; plus, limiting windows to 80 characters makes it possible to
+have several windows side-by-side.  The default wrapping on such
+devices looks ugly.  Therefore, please limit all lines to a maximum
+of 79 characters. For flowing long blocks of text (docstrings or
+comments), limiting the length to 72 characters is recommended.
+
+Reports error E501.
+
+**Paramètres :**
+
+- `physical_line`
+- `max_line_length`
+- `multiline`
+- `line_number`
+- `noqa`
+
+##### _is_one_liner
+
+**Paramètres :**
+
+- `logical_line`
+- `indent_level`
+- `lines`
+- `line_number`
+
+##### blank_lines
+
+Separate top-level function and class definitions with two blank
+lines.
+
+Method definitions inside a class are separated by a single blank
+line.
+
+Extra blank lines may be used (sparingly) to separate groups of
+related functions.  Blank lines may be omitted between a bunch of
+related one-liners (e.g. a set of dummy implementations).
+
+Use blank lines in functions, sparingly, to indicate logical
+sections.
+
+Okay: def a():\n    pass\n\n\ndef b():\n    pass
+Okay: def a():\n    pass\n\n\nasync def b():\n    pass
+Okay: def a():\n    pass\n\n\n# Foo\n# Bar\n\ndef b():\n    pass
+Okay: default = 1\nfoo = 1
+Okay: classify = 1\nfoo = 1
+
+E301: class Foo:\n    b = 0\n    def bar():\n        pass
+E302: def a():\n    pass\n\ndef b(n):\n    pass
+E302: def a():\n    pass\n\nasync def b(n):\n    pass
+E303: def a():\n    pass\n\n\n\ndef b(n):\n    pass
+E303: def a():\n\n\n\n    pass
+E304: @decorator\n\ndef a():\n    pass
+E305: def a():\n    pass\na()
+E306: def a():\n    def b():\n        pass\n    def c():\n        pass
+
+**Paramètres :**
+
+- `logical_line`
+- `blank_lines`
+- `indent_level`
+- `line_number`
+- `blank_before`
+- `previous_logical`
+- `previous_unindented_logical_line`
+- `previous_indent_level`
+- `lines`
+
+##### extraneous_whitespace
+
+Avoid extraneous whitespace.
+
+Avoid extraneous whitespace in these situations:
+- Immediately inside parentheses, brackets or braces.
+- Immediately before a comma, semicolon, or colon.
+
+Okay: spam(ham[1], {eggs: 2})
+E201: spam( ham[1], {eggs: 2})
+E201: spam(ham[ 1], {eggs: 2})
+E201: spam(ham[1], { eggs: 2})
+E202: spam(ham[1], {eggs: 2} )
+E202: spam(ham[1 ], {eggs: 2})
+E202: spam(ham[1], {eggs: 2 })
+
+E203: if x == 4: print x, y; x, y = y , x
+E203: if x == 4: print x, y ; x, y = y, x
+E203: if x == 4 : print x, y; x, y = y, x
+
+Okay: @decorator
+E204: @ decorator
+
+**Paramètres :**
+
+- `logical_line`
+
+##### whitespace_around_keywords
+
+Avoid extraneous whitespace around keywords.
+
+Okay: True and False
+E271: True and  False
+E272: True  and False
+E273: True and\tFalse
+E274: True\tand False
+
+**Paramètres :**
+
+- `logical_line`
+
+##### missing_whitespace_after_keyword
+
+Keywords should be followed by whitespace.
+
+Okay: from foo import (bar, baz)
+E275: from foo import(bar, baz)
+E275: from importable.module import(bar, baz)
+E275: if(foo): bar
+
+**Paramètres :**
+
+- `logical_line`
+- `tokens`
+
+##### indentation
+
+Use indent_size (PEP8 says 4) spaces per indentation level.
+
+For really old code that you don't want to mess up, you can continue
+to use 8-space tabs.
+
+Okay: a = 1
+Okay: if a == 0:\n    a = 1
+E111:   a = 1
+E114:   # a = 1
+
+Okay: for item in items:\n    pass
+E112: for item in items:\npass
+E115: for item in items:\n# Hi\n    pass
+
+Okay: a = 1\nb = 2
+E113: a = 1\n    b = 2
+E116: a = 1\n    # b = 2
+
+**Paramètres :**
+
+- `logical_line`
+- `previous_logical`
+- `indent_char`
+- `indent_level`
+- `previous_indent_level`
+- `indent_size`
+
+##### continued_indentation
+
+Continuation lines indentation.
+
+Continuation lines should align wrapped elements either vertically
+using Python's implicit line joining inside parentheses, brackets
+and braces, or using a hanging indent.
+
+When using a hanging indent these considerations should be applied:
+- there should be no arguments on the first line, and
+- further indentation should be used to clearly distinguish itself
+  as a continuation line.
+
+Okay: a = (\n)
+E123: a = (\n    )
+
+Okay: a = (\n    42)
+E121: a = (\n   42)
+E122: a = (\n42)
+E123: a = (\n    42\n    )
+E124: a = (24,\n     42\n)
+E125: if (\n    b):\n    pass
+E126: a = (\n        42)
+E127: a = (24,\n      42)
+E128: a = (24,\n    42)
+E129: if (a or\n    b):\n    pass
+E131: a = (\n    42\n 24)
+
+**Paramètres :**
+
+- `logical_line`
+- `tokens`
+- `indent_level`
+- `hang_closing`
+- `indent_char`
+- `indent_size`
+- `noqa`
+- `verbose`
+
+##### whitespace_before_parameters
+
+Avoid extraneous whitespace.
+
+Avoid extraneous whitespace in the following situations:
+- before the open parenthesis that starts the argument list of a
+  function call.
+- before the open parenthesis that starts an indexing or slicing.
+
+Okay: spam(1)
+E211: spam (1)
+
+Okay: dict['key'] = list[index]
+E211: dict ['key'] = list[index]
+E211: dict['key'] = list [index]
+
+**Paramètres :**
+
+- `logical_line`
+- `tokens`
+
+##### whitespace_around_operator
+
+Avoid extraneous whitespace around an operator.
+
+Okay: a = 12 + 3
+E221: a = 4  + 5
+E222: a = 4 +  5
+E223: a = 4\t+ 5
+E224: a = 4 +\t5
+
+**Paramètres :**
+
+- `logical_line`
+
+##### missing_whitespace
+
+Surround operators with the correct amount of whitespace.
+
+- Always surround these binary operators with a single space on
+  either side: assignment (=), augmented assignment (+=, -= etc.),
+  comparisons (==, <, >, !=, <=, >=, in, not in, is, is not),
+  Booleans (and, or, not).
+
+- Each comma, semicolon or colon should be followed by whitespace.
+
+- If operators with different priorities are used, consider adding
+  whitespace around the operators with the lowest priorities.
+
+Okay: i = i + 1
+Okay: submitted += 1
+Okay: x = x * 2 - 1
+Okay: hypot2 = x * x + y * y
+Okay: c = (a + b) * (a - b)
+Okay: foo(bar, key='word', *args, **kwargs)
+Okay: alpha[:-i]
+Okay: [a, b]
+Okay: (3,)
+Okay: a[3,] = 1
+Okay: a[1:4]
+Okay: a[:4]
+Okay: a[1:]
+Okay: a[1:4:2]
+
+E225: i=i+1
+E225: submitted +=1
+E225: x = x /2 - 1
+E225: z = x **y
+E225: z = 1and 1
+E226: c = (a+b) * (a-b)
+E226: hypot2 = x*x + y*y
+E227: c = a|b
+E228: msg = fmt%(errno, errmsg)
+E231: ['a','b']
+E231: foo(bar,baz)
+E231: [{'a':'b'}]
+
+**Paramètres :**
+
+- `logical_line`
+- `tokens`
+
+##### whitespace_around_comma
+
+Avoid extraneous whitespace after a comma or a colon.
+
+Note: these checks are disabled by default
+
+Okay: a = (1, 2)
+E241: a = (1,  2)
+E242: a = (1,\t2)
+
+**Paramètres :**
+
+- `logical_line`
+
+##### whitespace_around_named_parameter_equals
+
+Don't use spaces around the '=' sign in function arguments.
+
+Don't use spaces around the '=' sign when used to indicate a
+keyword argument or a default parameter value, except when
+using a type annotation.
+
+Okay: def complex(real, imag=0.0):
+Okay: return magic(r=real, i=imag)
+Okay: boolean(a == b)
+Okay: boolean(a != b)
+Okay: boolean(a <= b)
+Okay: boolean(a >= b)
+Okay: def foo(arg: int = 42):
+Okay: async def foo(arg: int = 42):
+
+E251: def complex(real, imag = 0.0):
+E251: return magic(r = real, i = imag)
+E252: def complex(real, image: float=0.0):
+
+**Paramètres :**
+
+- `logical_line`
+- `tokens`
+
+##### whitespace_before_comment
+
+Separate inline comments by at least two spaces.
+
+An inline comment is a comment on the same line as a statement.
+Inline comments should be separated by at least two spaces from the
+statement. They should start with a # and a single space.
+
+Each line of a block comment starts with a # and one or multiple
+spaces as there can be indented text inside the comment.
+
+Okay: x = x + 1  # Increment x
+Okay: x = x + 1    # Increment x
+Okay: # Block comments:
+Okay: #  - Block comment list
+Okay: #  - Block comment list
+E261: x = x + 1 # Increment x
+E262: x = x + 1  #Increment x
+E262: x = x + 1  #  Increment x
+E262: x = x + 1  #  Increment x
+E265: #Block comment
+E266: ### Block comment
+
+**Paramètres :**
+
+- `logical_line`
+- `tokens`
+
+##### imports_on_separate_lines
+
+Place imports on separate lines.
+
+Okay: import os\nimport sys
+E401: import sys, os
+
+Okay: from subprocess import Popen, PIPE
+Okay: from myclas import MyClass
+Okay: from foo.bar.yourclass import YourClass
+Okay: import myclass
+Okay: import foo.bar.yourclass
+
+**Paramètres :**
+
+- `logical_line`
+
+##### module_imports_on_top_of_file
+
+Place imports at the top of the file.
+
+Always put imports at the top of the file, just after any module
+comments and docstrings, and before module globals and constants.
+
+Okay: import os
+Okay: # this is a comment\nimport os
+Okay: '''this is a module docstring'''\nimport os
+Okay: r'''this is a module docstring'''\nimport os
+E402: a=1\nimport os
+E402: 'One string'\n"Two string"\nimport os
+E402: a=1\nfrom sys import x
+
+Okay: if x:\n    import os
+
+**Paramètres :**
+
+- `logical_line`
+- `indent_level`
+- `checker_state`
+- `noqa`
+
+##### compound_statements
+
+Compound statements (on the same line) are generally
+discouraged.
+
+While sometimes it's okay to put an if/for/while with a small body
+on the same line, never do this for multi-clause statements.
+Also avoid folding such long lines!
+
+Always use a def statement instead of an assignment statement that
+binds a lambda expression directly to a name.
+
+Okay: if foo == 'blah':\n    do_blah_thing()
+Okay: do_one()
+Okay: do_two()
+Okay: do_three()
+
+E701: if foo == 'blah': do_blah_thing()
+E701: for x in lst: total += x
+E701: while t < 10: t = delay()
+E701: if foo == 'blah': do_blah_thing()
+E701: else: do_non_blah_thing()
+E701: try: something()
+E701: finally: cleanup()
+E701: if foo == 'blah': one(); two(); three()
+E702: do_one(); do_two(); do_three()
+E703: do_four();  # useless semicolon
+E704: def f(x): return 2*x
+E731: f = lambda x: 2*x
+
+**Paramètres :**
+
+- `logical_line`
+
+##### explicit_line_join
+
+Avoid explicit line join between brackets.
+
+The preferred way of wrapping long lines is by using Python's
+implied line continuation inside parentheses, brackets and braces.
+Long lines can be broken over multiple lines by wrapping expressions
+in parentheses.  These should be used in preference to using a
+backslash for line continuation.
+
+E502: aaa = [123, \\n       123]
+E502: aaa = ("bbb " \\n       "ccc")
+
+Okay: aaa = [123,\n       123]
+Okay: aaa = ("bbb "\n       "ccc")
+Okay: aaa = "bbb " \\n    "ccc"
+Okay: aaa = 123  # \\
+
+**Paramètres :**
+
+- `logical_line`
+- `tokens`
+
+##### _is_binary_operator
+
+**Paramètres :**
+
+- `token_type`
+- `text`
+
+##### _break_around_binary_operators
+
+Private function to reduce duplication.
+
+This factors out the shared details between
+:func:`break_before_binary_operator` and
+:func:`break_after_binary_operator`.
+
+**Paramètres :**
+
+- `tokens`
+
+##### break_before_binary_operator
+
+Avoid breaks before binary operators.
+
+The preferred place to break around a binary operator is after the
+operator, not before it.
+
+W503: (width == 0\n + height == 0)
+W503: (width == 0\n and height == 0)
+W503: var = (1\n       & ~2)
+W503: var = (1\n       / -2)
+W503: var = (1\n       + -1\n       + -2)
+
+Okay: foo(\n    -x)
+Okay: foo(x\n    [])
+Okay: x = '''\n''' + ''
+Okay: foo(x,\n    -y)
+Okay: foo(x,  # comment\n    -y)
+
+**Paramètres :**
+
+- `logical_line`
+- `tokens`
+
+##### break_after_binary_operator
+
+Avoid breaks after binary operators.
+
+The preferred place to break around a binary operator is before the
+operator, not after it.
+
+W504: (width == 0 +\n height == 0)
+W504: (width == 0 and\n height == 0)
+W504: var = (1 &\n       ~2)
+
+Okay: foo(\n    -x)
+Okay: foo(x\n    [])
+Okay: x = '''\n''' + ''
+Okay: x = '' + '''\n'''
+Okay: foo(x,\n    -y)
+Okay: foo(x,  # comment\n    -y)
+
+The following should be W504 but unary_context is tricky with these
+Okay: var = (1 /\n       -2)
+Okay: var = (1 +\n       -1 +\n       -2)
+
+**Paramètres :**
+
+- `logical_line`
+- `tokens`
+
+##### comparison_to_singleton
+
+Comparison to singletons should use "is" or "is not".
+
+Comparisons to singletons like None should always be done
+with "is" or "is not", never the equality operators.
+
+Okay: if arg is not None:
+E711: if arg != None:
+E711: if None == arg:
+E712: if arg == True:
+E712: if False == arg:
+
+Also, beware of writing if x when you really mean if x is not None
+-- e.g. when testing whether a variable or argument that defaults to
+None was set to some other value.  The other value might have a type
+(such as a container) that could be false in a boolean context!
+
+**Paramètres :**
+
+- `logical_line`
+- `noqa`
+
+##### comparison_negative
+
+Negative comparison should be done using "not in" and "is not".
+
+Okay: if x not in y:\n    pass
+Okay: assert (X in Y or X is Z)
+Okay: if not (X in Y):\n    pass
+Okay: zz = x is not y
+E713: Z = not X in Y
+E713: if not X.B in Y:\n    pass
+E714: if not X is Y:\n    pass
+E714: Z = not X.B is Y
+
+**Paramètres :**
+
+- `logical_line`
+
+##### comparison_type
+
+Object type comparisons should `is` / `is not` / `isinstance()`.
+
+Do not compare types directly.
+
+Okay: if isinstance(obj, int):
+Okay: if type(obj) is int:
+E721: if type(obj) == type(1):
+
+**Paramètres :**
+
+- `logical_line`
+- `noqa`
+
+##### bare_except
+
+When catching exceptions, mention specific exceptions when
+possible.
+
+Okay: except Exception:
+Okay: except BaseException:
+E722: except:
+
+**Paramètres :**
+
+- `logical_line`
+- `noqa`
+
+##### ambiguous_identifier
+
+Never use the characters 'l', 'O', or 'I' as variable names.
+
+In some fonts, these characters are indistinguishable from the
+numerals one and zero. When tempted to use 'l', use 'L' instead.
+
+Okay: L = 0
+Okay: o = 123
+Okay: i = 42
+E741: l = 0
+E741: O = 123
+E741: I = 42
+
+Variables can be bound in several other contexts, including class
+and function definitions, lambda functions, 'global' and 'nonlocal'
+statements, exception handlers, and 'with' and 'for' statements.
+In addition, we have a special handling for function parameters.
+
+Okay: except AttributeError as o:
+Okay: with lock as L:
+Okay: foo(l=12)
+Okay: foo(l=I)
+Okay: for a in foo(l=12):
+Okay: lambda arg: arg * l
+Okay: lambda a=l[I:5]: None
+Okay: lambda x=a.I: None
+Okay: if l >= 12:
+E741: except AttributeError as O:
+E741: with lock as l:
+E741: global I
+E741: nonlocal l
+E741: def foo(l):
+E741: def foo(l=12):
+E741: l = foo(l=12)
+E741: for l in range(10):
+E741: [l for l in lines if l]
+E741: lambda l: None
+E741: lambda a=x[1:5], l: None
+E741: lambda **l:
+E741: def f(**l):
+E742: class I(object):
+E743: def l(x):
+
+**Paramètres :**
+
+- `logical_line`
+- `tokens`
+
+##### python_3000_invalid_escape_sequence
+
+Invalid escape sequences are deprecated in Python 3.6.
+
+Okay: regex = r'\.png$'
+W605: regex = '\.png$'
+
+**Paramètres :**
+
+- `logical_line`
+- `tokens`
+- `noqa`
+
+##### maximum_doc_length
+
+Limit all doc lines to a maximum of 72 characters.
+
+For flowing long blocks of text (docstrings or comments), limiting
+the length to 72 characters is recommended.
+
+Reports warning W505
+
+**Paramètres :**
+
+- `logical_line`
+- `max_doc_length`
+- `noqa`
+- `tokens`
+
+##### readlines
+
+Read the source code.
+
+**Paramètres :**
+
+- `filename`
+
+##### stdin_get_value
+
+Read the value from stdin.
+
+##### expand_indent
+
+Return the amount of indentation.
+
+Tabs are expanded to the next multiple of 8.
+
+**Paramètres :**
+
+- `line`
+
+##### mute_string
+
+Replace contents with 'xxx' to prevent syntax matching.
+
+**Paramètres :**
+
+- `text`
+
+##### parse_udiff
+
+Return a dictionary of matching lines.
+
+**Paramètres :**
+
+- `diff`
+- `patterns`
+- `parent`
+
+##### normalize_paths
+
+Parse a comma-separated list of paths.
+
+Return a list of absolute paths.
+
+**Paramètres :**
+
+- `value`
+- `parent`
+
+##### filename_match
+
+Check if patterns contains a pattern that matches filename.
+
+If patterns is unspecified, this always returns True.
+
+**Paramètres :**
+
+- `filename`
+- `patterns`
+- `default`
+
+##### update_counts
+
+Adds one to the counts of each appearance of characters in s,
+for characters in counts
+
+**Paramètres :**
+
+- `s`
+- `counts`
+
+##### _is_eol_token
+
+**Paramètres :**
+
+- `token`
+
+##### get_parser
+
+Create the parser for the program.
+
+**Paramètres :**
+
+- `prog`
+- `version`
+
+##### read_config
+
+Read and parse configurations.
+
+If a config file is specified on the command line with the
+"--config" option, then only it is used for configuration.
+
+Otherwise, the user configuration (~/.config/pycodestyle) and any
+local configurations in the current directory or above will be
+merged together (in that order) using the read method of
+ConfigParser.
+
+**Paramètres :**
+
+- `options`
+- `args`
+- `arglist`
+- `parser`
+
+##### process_options
+
+Process options passed either via arglist or command line args.
+
+Passing in the ``config_file`` parameter allows other tools, such as
+flake8 to specify their own options to be processed in pycodestyle.
+
+**Paramètres :**
+
+- `arglist`
+- `parse_argv`
+- `config_file`
+- `parser`
+- `verbose`
+
+##### _parse_multi_options
+
+Split and strip and discard empties.
+
+Turns the following:
+
+A,
+B,
+
+into ["A", "B"]
+
+**Paramètres :**
+
+- `options`
+- `split_token`
+
+##### _main
+
+Parse options and run checks on Python source.
+
+##### _add_check
+
+**Paramètres :**
+
+- `check`
+- `kind`
+- `codes`
+- `args`
+
+##### is_string_literal
+
+**Paramètres :**
+
+- `line`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `lines`
+- `options`
+- `report`
+
+##### report_invalid_syntax
+
+Check if the syntax is valid.
+
+##### readline
+
+Get the next line from the input buffer.
+
+##### run_check
+
+Run a check plugin.
+
+**Paramètres :**
+
+- `check`
+- `argument_names`
+
+##### init_checker_state
+
+Prepare custom state for the specific checker plugin.
+
+**Paramètres :**
+
+- `name`
+- `argument_names`
+
+##### check_physical
+
+Run all physical checks on a raw input line.
+
+**Paramètres :**
+
+- `line`
+
+##### build_tokens_line
+
+Build a logical line from tokens.
+
+##### check_logical
+
+Build a line from tokens and run all logical checks on it.
+
+##### check_ast
+
+Build the file's AST and run all AST checks.
+
+##### generate_tokens
+
+Tokenize file, run physical line checks and yield tokens.
+
+##### maybe_check_physical
+
+If appropriate for token, check current physical line(s).
+
+**Paramètres :**
+
+- `token`
+- `prev_physical`
+
+##### check_all
+
+Run all checks on the input file.
+
+**Paramètres :**
+
+- `expected`
+- `line_offset`
+
+##### __init__
+
+**Paramètres :**
+
+- `options`
+
+##### start
+
+Start the timer.
+
+##### stop
+
+Stop the timer.
+
+##### init_file
+
+Signal a new file.
+
+**Paramètres :**
+
+- `filename`
+- `lines`
+- `expected`
+- `line_offset`
+
+##### increment_logical_line
+
+Signal a new logical line.
+
+##### error
+
+Report an error, according to options.
+
+**Paramètres :**
+
+- `line_number`
+- `offset`
+- `text`
+- `check`
+
+##### get_file_results
+
+Return the count of errors and warnings for this file.
+
+##### get_count
+
+Return the total count of errors and warnings.
+
+**Paramètres :**
+
+- `prefix`
+
+##### get_statistics
+
+Get statistics for message codes that start with the prefix.
+
+prefix='' matches all errors and warnings
+prefix='E' matches all errors
+prefix='W' matches all warnings
+prefix='E4' matches all errors that have to do with imports
+
+**Paramètres :**
+
+- `prefix`
+
+##### print_statistics
+
+Print overall statistics (number of errors and warnings).
+
+**Paramètres :**
+
+- `prefix`
+
+##### print_benchmark
+
+Print benchmark numbers.
+
+##### __init__
+
+**Paramètres :**
+
+- `options`
+
+##### init_file
+
+Signal a new file.
+
+**Paramètres :**
+
+- `filename`
+- `lines`
+- `expected`
+- `line_offset`
+
+##### error
+
+Report an error, according to options.
+
+**Paramètres :**
+
+- `line_number`
+- `offset`
+- `text`
+- `check`
+
+##### get_file_results
+
+Print results and return the overall count for this file.
+
+##### __init__
+
+**Paramètres :**
+
+- `options`
+
+##### error
+
+**Paramètres :**
+
+- `line_number`
+- `offset`
+- `text`
+- `check`
+
+##### __init__
+
+##### init_report
+
+Initialize the report instance.
+
+**Paramètres :**
+
+- `reporter`
+
+##### check_files
+
+Run all checks on the paths.
+
+**Paramètres :**
+
+- `paths`
+
+##### input_file
+
+Run all checks on a Python source file.
+
+**Paramètres :**
+
+- `filename`
+- `lines`
+- `expected`
+- `line_offset`
+
+##### input_dir
+
+Check all files in this directory and all subdirectories.
+
+**Paramètres :**
+
+- `dirname`
+
+##### excluded
+
+Check if the file should be excluded.
+
+Check if 'options.exclude' contains a pattern matching filename.
+
+**Paramètres :**
+
+- `filename`
+- `parent`
+
+##### ignore_code
+
+Check if the error code should be ignored.
+
+If 'options.select' contains a prefix of the error code,
+return False.  Else, if 'options.ignore' contains a prefix of
+the error code, return True.
+
+**Paramètres :**
+
+- `code`
+
+##### get_checks
+
+Get all the checks for this category.
+
+Find all globally visible functions where the first argument
+name starts with argument_name and which contain selected tests.
+
+**Paramètres :**
+
+- `argument_name`
 
 ---
 
@@ -10865,1275 +12134,6 @@ Corresponds to is_unionable() in unionobject.c in CPython.
 ##### __init_subclass__
 
 ##### wrapper
-
----
-
-### pycodestyle
-
-Check Python source code formatting, according to PEP 8.
-
-For usage and a list of options, try this:
-$ python pycodestyle.py -h
-
-This program and its regression test suite live here:
-https://github.com/pycqa/pycodestyle
-
-Groups of errors and warnings:
-E errors
-W warnings
-100 indentation
-200 whitespace
-300 blank lines
-400 imports
-500 line length
-600 deprecation
-700 statements
-900 syntax error
-
-#### Classes
-
-##### Checker
-
-Load a Python source file, tokenize it, check coding style.
-
-**Méthodes :**
-
-- `__init__()`
-- `report_invalid_syntax()`
-- `readline()`
-- `run_check()`
-- `init_checker_state()`
-- `check_physical()`
-- `build_tokens_line()`
-- `check_logical()`
-- `check_ast()`
-- `generate_tokens()`
-- `maybe_check_physical()`
-- `check_all()`
-
-##### BaseReport
-
-Collect the results of the checks.
-
-**Méthodes :**
-
-- `__init__()`
-- `start()`
-- `stop()`
-- `init_file()`
-- `increment_logical_line()`
-- `error()`
-- `get_file_results()`
-- `get_count()`
-- `get_statistics()`
-- `print_statistics()`
-- `print_benchmark()`
-
-##### FileReport
-
-Collect the results of the checks and print the filenames.
-
-##### StandardReport
-
-Collect and print the results of the checks.
-
-**Méthodes :**
-
-- `__init__()`
-- `init_file()`
-- `error()`
-- `get_file_results()`
-
-##### DiffReport
-
-Collect and print the results for the changed lines only.
-
-**Méthodes :**
-
-- `__init__()`
-- `error()`
-
-##### StyleGuide
-
-Initialize a PEP-8 instance with few options.
-
-**Méthodes :**
-
-- `__init__()`
-- `init_report()`
-- `check_files()`
-- `input_file()`
-- `input_dir()`
-- `excluded()`
-- `ignore_code()`
-- `get_checks()`
-
-#### Fonctions
-
-##### _get_parameters
-
-**Paramètres :**
-
-- `function`
-
-##### register_check
-
-Register a new check object.
-
-**Paramètres :**
-
-- `check`
-- `codes`
-
-##### tabs_or_spaces
-
-Never mix tabs and spaces.
-
-The most popular way of indenting Python is with spaces only.  The
-second-most popular way is with tabs only.  Code indented with a
-mixture of tabs and spaces should be converted to using spaces
-exclusively.  When invoking the Python command line interpreter with
-the -t option, it issues warnings about code that illegally mixes
-tabs and spaces.  When using -tt these warnings become errors.
-These options are highly recommended!
-
-Okay: if a == 0:\n    a = 1\n    b = 1
-
-**Paramètres :**
-
-- `physical_line`
-- `indent_char`
-
-##### tabs_obsolete
-
-On new projects, spaces-only are strongly recommended over tabs.
-
-Okay: if True:\n    return
-W191: if True:\n\treturn
-
-**Paramètres :**
-
-- `physical_line`
-
-##### trailing_whitespace
-
-Trailing whitespace is superfluous.
-
-The warning returned varies on whether the line itself is blank,
-for easier filtering for those who want to indent their blank lines.
-
-Okay: spam(1)\n#
-W291: spam(1) \n#
-W293: class Foo(object):\n    \n    bang = 12
-
-**Paramètres :**
-
-- `physical_line`
-
-##### trailing_blank_lines
-
-Trailing blank lines are superfluous.
-
-Okay: spam(1)
-W391: spam(1)\n
-
-However the last line should end with a new line (warning W292).
-
-**Paramètres :**
-
-- `physical_line`
-- `lines`
-- `line_number`
-- `total_lines`
-
-##### maximum_line_length
-
-Limit all lines to a maximum of 79 characters.
-
-There are still many devices around that are limited to 80 character
-lines; plus, limiting windows to 80 characters makes it possible to
-have several windows side-by-side.  The default wrapping on such
-devices looks ugly.  Therefore, please limit all lines to a maximum
-of 79 characters. For flowing long blocks of text (docstrings or
-comments), limiting the length to 72 characters is recommended.
-
-Reports error E501.
-
-**Paramètres :**
-
-- `physical_line`
-- `max_line_length`
-- `multiline`
-- `line_number`
-- `noqa`
-
-##### _is_one_liner
-
-**Paramètres :**
-
-- `logical_line`
-- `indent_level`
-- `lines`
-- `line_number`
-
-##### blank_lines
-
-Separate top-level function and class definitions with two blank
-lines.
-
-Method definitions inside a class are separated by a single blank
-line.
-
-Extra blank lines may be used (sparingly) to separate groups of
-related functions.  Blank lines may be omitted between a bunch of
-related one-liners (e.g. a set of dummy implementations).
-
-Use blank lines in functions, sparingly, to indicate logical
-sections.
-
-Okay: def a():\n    pass\n\n\ndef b():\n    pass
-Okay: def a():\n    pass\n\n\nasync def b():\n    pass
-Okay: def a():\n    pass\n\n\n# Foo\n# Bar\n\ndef b():\n    pass
-Okay: default = 1\nfoo = 1
-Okay: classify = 1\nfoo = 1
-
-E301: class Foo:\n    b = 0\n    def bar():\n        pass
-E302: def a():\n    pass\n\ndef b(n):\n    pass
-E302: def a():\n    pass\n\nasync def b(n):\n    pass
-E303: def a():\n    pass\n\n\n\ndef b(n):\n    pass
-E303: def a():\n\n\n\n    pass
-E304: @decorator\n\ndef a():\n    pass
-E305: def a():\n    pass\na()
-E306: def a():\n    def b():\n        pass\n    def c():\n        pass
-
-**Paramètres :**
-
-- `logical_line`
-- `blank_lines`
-- `indent_level`
-- `line_number`
-- `blank_before`
-- `previous_logical`
-- `previous_unindented_logical_line`
-- `previous_indent_level`
-- `lines`
-
-##### extraneous_whitespace
-
-Avoid extraneous whitespace.
-
-Avoid extraneous whitespace in these situations:
-- Immediately inside parentheses, brackets or braces.
-- Immediately before a comma, semicolon, or colon.
-
-Okay: spam(ham[1], {eggs: 2})
-E201: spam( ham[1], {eggs: 2})
-E201: spam(ham[ 1], {eggs: 2})
-E201: spam(ham[1], { eggs: 2})
-E202: spam(ham[1], {eggs: 2} )
-E202: spam(ham[1 ], {eggs: 2})
-E202: spam(ham[1], {eggs: 2 })
-
-E203: if x == 4: print x, y; x, y = y , x
-E203: if x == 4: print x, y ; x, y = y, x
-E203: if x == 4 : print x, y; x, y = y, x
-
-Okay: @decorator
-E204: @ decorator
-
-**Paramètres :**
-
-- `logical_line`
-
-##### whitespace_around_keywords
-
-Avoid extraneous whitespace around keywords.
-
-Okay: True and False
-E271: True and  False
-E272: True  and False
-E273: True and\tFalse
-E274: True\tand False
-
-**Paramètres :**
-
-- `logical_line`
-
-##### missing_whitespace_after_keyword
-
-Keywords should be followed by whitespace.
-
-Okay: from foo import (bar, baz)
-E275: from foo import(bar, baz)
-E275: from importable.module import(bar, baz)
-E275: if(foo): bar
-
-**Paramètres :**
-
-- `logical_line`
-- `tokens`
-
-##### indentation
-
-Use indent_size (PEP8 says 4) spaces per indentation level.
-
-For really old code that you don't want to mess up, you can continue
-to use 8-space tabs.
-
-Okay: a = 1
-Okay: if a == 0:\n    a = 1
-E111:   a = 1
-E114:   # a = 1
-
-Okay: for item in items:\n    pass
-E112: for item in items:\npass
-E115: for item in items:\n# Hi\n    pass
-
-Okay: a = 1\nb = 2
-E113: a = 1\n    b = 2
-E116: a = 1\n    # b = 2
-
-**Paramètres :**
-
-- `logical_line`
-- `previous_logical`
-- `indent_char`
-- `indent_level`
-- `previous_indent_level`
-- `indent_size`
-
-##### continued_indentation
-
-Continuation lines indentation.
-
-Continuation lines should align wrapped elements either vertically
-using Python's implicit line joining inside parentheses, brackets
-and braces, or using a hanging indent.
-
-When using a hanging indent these considerations should be applied:
-- there should be no arguments on the first line, and
-- further indentation should be used to clearly distinguish itself
-  as a continuation line.
-
-Okay: a = (\n)
-E123: a = (\n    )
-
-Okay: a = (\n    42)
-E121: a = (\n   42)
-E122: a = (\n42)
-E123: a = (\n    42\n    )
-E124: a = (24,\n     42\n)
-E125: if (\n    b):\n    pass
-E126: a = (\n        42)
-E127: a = (24,\n      42)
-E128: a = (24,\n    42)
-E129: if (a or\n    b):\n    pass
-E131: a = (\n    42\n 24)
-
-**Paramètres :**
-
-- `logical_line`
-- `tokens`
-- `indent_level`
-- `hang_closing`
-- `indent_char`
-- `indent_size`
-- `noqa`
-- `verbose`
-
-##### whitespace_before_parameters
-
-Avoid extraneous whitespace.
-
-Avoid extraneous whitespace in the following situations:
-- before the open parenthesis that starts the argument list of a
-  function call.
-- before the open parenthesis that starts an indexing or slicing.
-
-Okay: spam(1)
-E211: spam (1)
-
-Okay: dict['key'] = list[index]
-E211: dict ['key'] = list[index]
-E211: dict['key'] = list [index]
-
-**Paramètres :**
-
-- `logical_line`
-- `tokens`
-
-##### whitespace_around_operator
-
-Avoid extraneous whitespace around an operator.
-
-Okay: a = 12 + 3
-E221: a = 4  + 5
-E222: a = 4 +  5
-E223: a = 4\t+ 5
-E224: a = 4 +\t5
-
-**Paramètres :**
-
-- `logical_line`
-
-##### missing_whitespace
-
-Surround operators with the correct amount of whitespace.
-
-- Always surround these binary operators with a single space on
-  either side: assignment (=), augmented assignment (+=, -= etc.),
-  comparisons (==, <, >, !=, <=, >=, in, not in, is, is not),
-  Booleans (and, or, not).
-
-- Each comma, semicolon or colon should be followed by whitespace.
-
-- If operators with different priorities are used, consider adding
-  whitespace around the operators with the lowest priorities.
-
-Okay: i = i + 1
-Okay: submitted += 1
-Okay: x = x * 2 - 1
-Okay: hypot2 = x * x + y * y
-Okay: c = (a + b) * (a - b)
-Okay: foo(bar, key='word', *args, **kwargs)
-Okay: alpha[:-i]
-Okay: [a, b]
-Okay: (3,)
-Okay: a[3,] = 1
-Okay: a[1:4]
-Okay: a[:4]
-Okay: a[1:]
-Okay: a[1:4:2]
-
-E225: i=i+1
-E225: submitted +=1
-E225: x = x /2 - 1
-E225: z = x **y
-E225: z = 1and 1
-E226: c = (a+b) * (a-b)
-E226: hypot2 = x*x + y*y
-E227: c = a|b
-E228: msg = fmt%(errno, errmsg)
-E231: ['a','b']
-E231: foo(bar,baz)
-E231: [{'a':'b'}]
-
-**Paramètres :**
-
-- `logical_line`
-- `tokens`
-
-##### whitespace_around_comma
-
-Avoid extraneous whitespace after a comma or a colon.
-
-Note: these checks are disabled by default
-
-Okay: a = (1, 2)
-E241: a = (1,  2)
-E242: a = (1,\t2)
-
-**Paramètres :**
-
-- `logical_line`
-
-##### whitespace_around_named_parameter_equals
-
-Don't use spaces around the '=' sign in function arguments.
-
-Don't use spaces around the '=' sign when used to indicate a
-keyword argument or a default parameter value, except when
-using a type annotation.
-
-Okay: def complex(real, imag=0.0):
-Okay: return magic(r=real, i=imag)
-Okay: boolean(a == b)
-Okay: boolean(a != b)
-Okay: boolean(a <= b)
-Okay: boolean(a >= b)
-Okay: def foo(arg: int = 42):
-Okay: async def foo(arg: int = 42):
-
-E251: def complex(real, imag = 0.0):
-E251: return magic(r = real, i = imag)
-E252: def complex(real, image: float=0.0):
-
-**Paramètres :**
-
-- `logical_line`
-- `tokens`
-
-##### whitespace_before_comment
-
-Separate inline comments by at least two spaces.
-
-An inline comment is a comment on the same line as a statement.
-Inline comments should be separated by at least two spaces from the
-statement. They should start with a # and a single space.
-
-Each line of a block comment starts with a # and one or multiple
-spaces as there can be indented text inside the comment.
-
-Okay: x = x + 1  # Increment x
-Okay: x = x + 1    # Increment x
-Okay: # Block comments:
-Okay: #  - Block comment list
-Okay: #  - Block comment list
-E261: x = x + 1 # Increment x
-E262: x = x + 1  #Increment x
-E262: x = x + 1  #  Increment x
-E262: x = x + 1  #  Increment x
-E265: #Block comment
-E266: ### Block comment
-
-**Paramètres :**
-
-- `logical_line`
-- `tokens`
-
-##### imports_on_separate_lines
-
-Place imports on separate lines.
-
-Okay: import os\nimport sys
-E401: import sys, os
-
-Okay: from subprocess import Popen, PIPE
-Okay: from myclas import MyClass
-Okay: from foo.bar.yourclass import YourClass
-Okay: import myclass
-Okay: import foo.bar.yourclass
-
-**Paramètres :**
-
-- `logical_line`
-
-##### module_imports_on_top_of_file
-
-Place imports at the top of the file.
-
-Always put imports at the top of the file, just after any module
-comments and docstrings, and before module globals and constants.
-
-Okay: import os
-Okay: # this is a comment\nimport os
-Okay: '''this is a module docstring'''\nimport os
-Okay: r'''this is a module docstring'''\nimport os
-E402: a=1\nimport os
-E402: 'One string'\n"Two string"\nimport os
-E402: a=1\nfrom sys import x
-
-Okay: if x:\n    import os
-
-**Paramètres :**
-
-- `logical_line`
-- `indent_level`
-- `checker_state`
-- `noqa`
-
-##### compound_statements
-
-Compound statements (on the same line) are generally
-discouraged.
-
-While sometimes it's okay to put an if/for/while with a small body
-on the same line, never do this for multi-clause statements.
-Also avoid folding such long lines!
-
-Always use a def statement instead of an assignment statement that
-binds a lambda expression directly to a name.
-
-Okay: if foo == 'blah':\n    do_blah_thing()
-Okay: do_one()
-Okay: do_two()
-Okay: do_three()
-
-E701: if foo == 'blah': do_blah_thing()
-E701: for x in lst: total += x
-E701: while t < 10: t = delay()
-E701: if foo == 'blah': do_blah_thing()
-E701: else: do_non_blah_thing()
-E701: try: something()
-E701: finally: cleanup()
-E701: if foo == 'blah': one(); two(); three()
-E702: do_one(); do_two(); do_three()
-E703: do_four();  # useless semicolon
-E704: def f(x): return 2*x
-E731: f = lambda x: 2*x
-
-**Paramètres :**
-
-- `logical_line`
-
-##### explicit_line_join
-
-Avoid explicit line join between brackets.
-
-The preferred way of wrapping long lines is by using Python's
-implied line continuation inside parentheses, brackets and braces.
-Long lines can be broken over multiple lines by wrapping expressions
-in parentheses.  These should be used in preference to using a
-backslash for line continuation.
-
-E502: aaa = [123, \\n       123]
-E502: aaa = ("bbb " \\n       "ccc")
-
-Okay: aaa = [123,\n       123]
-Okay: aaa = ("bbb "\n       "ccc")
-Okay: aaa = "bbb " \\n    "ccc"
-Okay: aaa = 123  # \\
-
-**Paramètres :**
-
-- `logical_line`
-- `tokens`
-
-##### _is_binary_operator
-
-**Paramètres :**
-
-- `token_type`
-- `text`
-
-##### _break_around_binary_operators
-
-Private function to reduce duplication.
-
-This factors out the shared details between
-:func:`break_before_binary_operator` and
-:func:`break_after_binary_operator`.
-
-**Paramètres :**
-
-- `tokens`
-
-##### break_before_binary_operator
-
-Avoid breaks before binary operators.
-
-The preferred place to break around a binary operator is after the
-operator, not before it.
-
-W503: (width == 0\n + height == 0)
-W503: (width == 0\n and height == 0)
-W503: var = (1\n       & ~2)
-W503: var = (1\n       / -2)
-W503: var = (1\n       + -1\n       + -2)
-
-Okay: foo(\n    -x)
-Okay: foo(x\n    [])
-Okay: x = '''\n''' + ''
-Okay: foo(x,\n    -y)
-Okay: foo(x,  # comment\n    -y)
-
-**Paramètres :**
-
-- `logical_line`
-- `tokens`
-
-##### break_after_binary_operator
-
-Avoid breaks after binary operators.
-
-The preferred place to break around a binary operator is before the
-operator, not after it.
-
-W504: (width == 0 +\n height == 0)
-W504: (width == 0 and\n height == 0)
-W504: var = (1 &\n       ~2)
-
-Okay: foo(\n    -x)
-Okay: foo(x\n    [])
-Okay: x = '''\n''' + ''
-Okay: x = '' + '''\n'''
-Okay: foo(x,\n    -y)
-Okay: foo(x,  # comment\n    -y)
-
-The following should be W504 but unary_context is tricky with these
-Okay: var = (1 /\n       -2)
-Okay: var = (1 +\n       -1 +\n       -2)
-
-**Paramètres :**
-
-- `logical_line`
-- `tokens`
-
-##### comparison_to_singleton
-
-Comparison to singletons should use "is" or "is not".
-
-Comparisons to singletons like None should always be done
-with "is" or "is not", never the equality operators.
-
-Okay: if arg is not None:
-E711: if arg != None:
-E711: if None == arg:
-E712: if arg == True:
-E712: if False == arg:
-
-Also, beware of writing if x when you really mean if x is not None
--- e.g. when testing whether a variable or argument that defaults to
-None was set to some other value.  The other value might have a type
-(such as a container) that could be false in a boolean context!
-
-**Paramètres :**
-
-- `logical_line`
-- `noqa`
-
-##### comparison_negative
-
-Negative comparison should be done using "not in" and "is not".
-
-Okay: if x not in y:\n    pass
-Okay: assert (X in Y or X is Z)
-Okay: if not (X in Y):\n    pass
-Okay: zz = x is not y
-E713: Z = not X in Y
-E713: if not X.B in Y:\n    pass
-E714: if not X is Y:\n    pass
-E714: Z = not X.B is Y
-
-**Paramètres :**
-
-- `logical_line`
-
-##### comparison_type
-
-Object type comparisons should `is` / `is not` / `isinstance()`.
-
-Do not compare types directly.
-
-Okay: if isinstance(obj, int):
-Okay: if type(obj) is int:
-E721: if type(obj) == type(1):
-
-**Paramètres :**
-
-- `logical_line`
-- `noqa`
-
-##### bare_except
-
-When catching exceptions, mention specific exceptions when
-possible.
-
-Okay: except Exception:
-Okay: except BaseException:
-E722: except:
-
-**Paramètres :**
-
-- `logical_line`
-- `noqa`
-
-##### ambiguous_identifier
-
-Never use the characters 'l', 'O', or 'I' as variable names.
-
-In some fonts, these characters are indistinguishable from the
-numerals one and zero. When tempted to use 'l', use 'L' instead.
-
-Okay: L = 0
-Okay: o = 123
-Okay: i = 42
-E741: l = 0
-E741: O = 123
-E741: I = 42
-
-Variables can be bound in several other contexts, including class
-and function definitions, lambda functions, 'global' and 'nonlocal'
-statements, exception handlers, and 'with' and 'for' statements.
-In addition, we have a special handling for function parameters.
-
-Okay: except AttributeError as o:
-Okay: with lock as L:
-Okay: foo(l=12)
-Okay: foo(l=I)
-Okay: for a in foo(l=12):
-Okay: lambda arg: arg * l
-Okay: lambda a=l[I:5]: None
-Okay: lambda x=a.I: None
-Okay: if l >= 12:
-E741: except AttributeError as O:
-E741: with lock as l:
-E741: global I
-E741: nonlocal l
-E741: def foo(l):
-E741: def foo(l=12):
-E741: l = foo(l=12)
-E741: for l in range(10):
-E741: [l for l in lines if l]
-E741: lambda l: None
-E741: lambda a=x[1:5], l: None
-E741: lambda **l:
-E741: def f(**l):
-E742: class I(object):
-E743: def l(x):
-
-**Paramètres :**
-
-- `logical_line`
-- `tokens`
-
-##### python_3000_invalid_escape_sequence
-
-Invalid escape sequences are deprecated in Python 3.6.
-
-Okay: regex = r'\.png$'
-W605: regex = '\.png$'
-
-**Paramètres :**
-
-- `logical_line`
-- `tokens`
-- `noqa`
-
-##### maximum_doc_length
-
-Limit all doc lines to a maximum of 72 characters.
-
-For flowing long blocks of text (docstrings or comments), limiting
-the length to 72 characters is recommended.
-
-Reports warning W505
-
-**Paramètres :**
-
-- `logical_line`
-- `max_doc_length`
-- `noqa`
-- `tokens`
-
-##### readlines
-
-Read the source code.
-
-**Paramètres :**
-
-- `filename`
-
-##### stdin_get_value
-
-Read the value from stdin.
-
-##### expand_indent
-
-Return the amount of indentation.
-
-Tabs are expanded to the next multiple of 8.
-
-**Paramètres :**
-
-- `line`
-
-##### mute_string
-
-Replace contents with 'xxx' to prevent syntax matching.
-
-**Paramètres :**
-
-- `text`
-
-##### parse_udiff
-
-Return a dictionary of matching lines.
-
-**Paramètres :**
-
-- `diff`
-- `patterns`
-- `parent`
-
-##### normalize_paths
-
-Parse a comma-separated list of paths.
-
-Return a list of absolute paths.
-
-**Paramètres :**
-
-- `value`
-- `parent`
-
-##### filename_match
-
-Check if patterns contains a pattern that matches filename.
-
-If patterns is unspecified, this always returns True.
-
-**Paramètres :**
-
-- `filename`
-- `patterns`
-- `default`
-
-##### update_counts
-
-Adds one to the counts of each appearance of characters in s,
-for characters in counts
-
-**Paramètres :**
-
-- `s`
-- `counts`
-
-##### _is_eol_token
-
-**Paramètres :**
-
-- `token`
-
-##### get_parser
-
-Create the parser for the program.
-
-**Paramètres :**
-
-- `prog`
-- `version`
-
-##### read_config
-
-Read and parse configurations.
-
-If a config file is specified on the command line with the
-"--config" option, then only it is used for configuration.
-
-Otherwise, the user configuration (~/.config/pycodestyle) and any
-local configurations in the current directory or above will be
-merged together (in that order) using the read method of
-ConfigParser.
-
-**Paramètres :**
-
-- `options`
-- `args`
-- `arglist`
-- `parser`
-
-##### process_options
-
-Process options passed either via arglist or command line args.
-
-Passing in the ``config_file`` parameter allows other tools, such as
-flake8 to specify their own options to be processed in pycodestyle.
-
-**Paramètres :**
-
-- `arglist`
-- `parse_argv`
-- `config_file`
-- `parser`
-- `verbose`
-
-##### _parse_multi_options
-
-Split and strip and discard empties.
-
-Turns the following:
-
-A,
-B,
-
-into ["A", "B"]
-
-**Paramètres :**
-
-- `options`
-- `split_token`
-
-##### _main
-
-Parse options and run checks on Python source.
-
-##### _add_check
-
-**Paramètres :**
-
-- `check`
-- `kind`
-- `codes`
-- `args`
-
-##### is_string_literal
-
-**Paramètres :**
-
-- `line`
-
-##### __init__
-
-**Paramètres :**
-
-- `filename`
-- `lines`
-- `options`
-- `report`
-
-##### report_invalid_syntax
-
-Check if the syntax is valid.
-
-##### readline
-
-Get the next line from the input buffer.
-
-##### run_check
-
-Run a check plugin.
-
-**Paramètres :**
-
-- `check`
-- `argument_names`
-
-##### init_checker_state
-
-Prepare custom state for the specific checker plugin.
-
-**Paramètres :**
-
-- `name`
-- `argument_names`
-
-##### check_physical
-
-Run all physical checks on a raw input line.
-
-**Paramètres :**
-
-- `line`
-
-##### build_tokens_line
-
-Build a logical line from tokens.
-
-##### check_logical
-
-Build a line from tokens and run all logical checks on it.
-
-##### check_ast
-
-Build the file's AST and run all AST checks.
-
-##### generate_tokens
-
-Tokenize file, run physical line checks and yield tokens.
-
-##### maybe_check_physical
-
-If appropriate for token, check current physical line(s).
-
-**Paramètres :**
-
-- `token`
-- `prev_physical`
-
-##### check_all
-
-Run all checks on the input file.
-
-**Paramètres :**
-
-- `expected`
-- `line_offset`
-
-##### __init__
-
-**Paramètres :**
-
-- `options`
-
-##### start
-
-Start the timer.
-
-##### stop
-
-Stop the timer.
-
-##### init_file
-
-Signal a new file.
-
-**Paramètres :**
-
-- `filename`
-- `lines`
-- `expected`
-- `line_offset`
-
-##### increment_logical_line
-
-Signal a new logical line.
-
-##### error
-
-Report an error, according to options.
-
-**Paramètres :**
-
-- `line_number`
-- `offset`
-- `text`
-- `check`
-
-##### get_file_results
-
-Return the count of errors and warnings for this file.
-
-##### get_count
-
-Return the total count of errors and warnings.
-
-**Paramètres :**
-
-- `prefix`
-
-##### get_statistics
-
-Get statistics for message codes that start with the prefix.
-
-prefix='' matches all errors and warnings
-prefix='E' matches all errors
-prefix='W' matches all warnings
-prefix='E4' matches all errors that have to do with imports
-
-**Paramètres :**
-
-- `prefix`
-
-##### print_statistics
-
-Print overall statistics (number of errors and warnings).
-
-**Paramètres :**
-
-- `prefix`
-
-##### print_benchmark
-
-Print benchmark numbers.
-
-##### __init__
-
-**Paramètres :**
-
-- `options`
-
-##### init_file
-
-Signal a new file.
-
-**Paramètres :**
-
-- `filename`
-- `lines`
-- `expected`
-- `line_offset`
-
-##### error
-
-Report an error, according to options.
-
-**Paramètres :**
-
-- `line_number`
-- `offset`
-- `text`
-- `check`
-
-##### get_file_results
-
-Print results and return the overall count for this file.
-
-##### __init__
-
-**Paramètres :**
-
-- `options`
-
-##### error
-
-**Paramètres :**
-
-- `line_number`
-- `offset`
-- `text`
-- `check`
-
-##### __init__
-
-##### init_report
-
-Initialize the report instance.
-
-**Paramètres :**
-
-- `reporter`
-
-##### check_files
-
-Run all checks on the paths.
-
-**Paramètres :**
-
-- `paths`
-
-##### input_file
-
-Run all checks on a Python source file.
-
-**Paramètres :**
-
-- `filename`
-- `lines`
-- `expected`
-- `line_offset`
-
-##### input_dir
-
-Check all files in this directory and all subdirectories.
-
-**Paramètres :**
-
-- `dirname`
-
-##### excluded
-
-Check if the file should be excluded.
-
-Check if 'options.exclude' contains a pattern matching filename.
-
-**Paramètres :**
-
-- `filename`
-- `parent`
-
-##### ignore_code
-
-Check if the error code should be ignored.
-
-If 'options.select' contains a prefix of the error code,
-return False.  Else, if 'options.ignore' contains a prefix of
-the error code, return True.
-
-**Paramètres :**
-
-- `code`
-
-##### get_checks
-
-Get all the checks for this category.
-
-Find all globally visible functions where the first argument
-name starts with argument_name and which contain selected tests.
-
-**Paramètres :**
-
-- `argument_name`
 
 ---
 
@@ -35629,43 +35629,6 @@ false.
 
 ---
 
-### errors
-
-setuptools.errors
-
-Provides exceptions used by setuptools modules.
-
-#### Classes
-
-##### RemovedCommandError
-
-Error used for commands that have been removed in setuptools.
-
-Since ``setuptools`` is built on ``distutils``, simply removing a command
-from ``setuptools`` will make the behavior fall back to ``distutils``; this
-error is raised if a command exists in ``distutils`` but has been actively
-removed in ``setuptools``.
-
-##### PackageDiscoveryError
-
-Impossible to perform automatic discovery of packages and/or modules.
-
-The current project layout or given discovery options can lead to problems when
-scanning the project directory.
-
-Setuptools might also refuse to complete auto-discovery if an error prone condition
-is detected (e.g. when a project is organised as a flat-layout but contains
-multiple directories that can be taken as top-level packages inside a single
-distribution [*]_). In these situations the users are encouraged to be explicit
-about which packages to include or to make the discovery parameters more specific.
-
-.. [*] Since multi-package distributions are uncommon it is very likely that the
-   developers did not intend for all the directories to be packaged, and are just
-   leaving auxiliary code in the repository top-level, such as maintenance-related
-   scripts.
-
----
-
 ### extension
 
 #### Classes
@@ -35795,6 +35758,78 @@ pre-converted sources but to prefer the .pyx sources.
 
 ---
 
+### errors
+
+setuptools.errors
+
+Provides exceptions used by setuptools modules.
+
+#### Classes
+
+##### RemovedCommandError
+
+Error used for commands that have been removed in setuptools.
+
+Since ``setuptools`` is built on ``distutils``, simply removing a command
+from ``setuptools`` will make the behavior fall back to ``distutils``; this
+error is raised if a command exists in ``distutils`` but has been actively
+removed in ``setuptools``.
+
+##### PackageDiscoveryError
+
+Impossible to perform automatic discovery of packages and/or modules.
+
+The current project layout or given discovery options can lead to problems when
+scanning the project directory.
+
+Setuptools might also refuse to complete auto-discovery if an error prone condition
+is detected (e.g. when a project is organised as a flat-layout but contains
+multiple directories that can be taken as top-level packages inside a single
+distribution [*]_). In these situations the users are encouraged to be explicit
+about which packages to include or to make the discovery parameters more specific.
+
+.. [*] Since multi-package distributions are uncommon it is very likely that the
+   developers did not intend for all the directories to be packaged, and are just
+   leaving auxiliary code in the repository top-level, such as maintenance-related
+   scripts.
+
+---
+
+### installer
+
+#### Fonctions
+
+##### _fixup_find_links
+
+Ensure find-links option end-up being a list of strings.
+
+**Paramètres :**
+
+- `find_links`
+
+##### fetch_build_egg
+
+Fetch an egg needed for building.
+
+Use pip/wheel to fetch/build a wheel.
+
+**Paramètres :**
+
+- `dist`
+- `req`
+
+##### strip_marker
+
+Return a new requirement without the environment marker to avoid
+calling pip with something like `babel; extra == "i18n"`, which
+would always be ignored.
+
+**Paramètres :**
+
+- `req`
+
+---
+
 ### glob
 
 Filename globbing utility. Mostly a copy of `glob` from Python 3.5.
@@ -35893,41 +35928,6 @@ Escape all special characters.
 **Paramètres :**
 
 - `pathname`
-
----
-
-### installer
-
-#### Fonctions
-
-##### _fixup_find_links
-
-Ensure find-links option end-up being a list of strings.
-
-**Paramètres :**
-
-- `find_links`
-
-##### fetch_build_egg
-
-Fetch an egg needed for building.
-
-Use pip/wheel to fetch/build a wheel.
-
-**Paramètres :**
-
-- `dist`
-- `req`
-
-##### strip_marker
-
-Return a new requirement without the environment marker to avoid
-calling pip with something like `babel; extra == "i18n"`, which
-would always be ignored.
-
-**Paramètres :**
-
-- `req`
 
 ---
 
@@ -36044,6 +36044,68 @@ Prepare the parameters for patch_func to patch indicated function.
 
 - `mod_name`
 - `func_name`
+
+---
+
+### namespaces
+
+#### Classes
+
+##### Installer
+
+**Méthodes :**
+
+- `install_namespaces()`
+- `uninstall_namespaces()`
+- `_get_target()`
+- `_get_root()`
+- `_gen_nspkg_line()`
+- `_get_all_ns_packages()`
+- `_pkg_names()`
+
+##### DevelopInstaller
+
+**Méthodes :**
+
+- `_get_root()`
+- `_get_target()`
+
+#### Fonctions
+
+##### install_namespaces
+
+##### uninstall_namespaces
+
+##### _get_target
+
+##### _get_root
+
+##### _gen_nspkg_line
+
+**Paramètres :**
+
+- `pkg`
+
+##### _get_all_ns_packages
+
+Return sorted list of all package namespaces
+
+##### _pkg_names
+
+Given a namespace package, yield the components of that
+package.
+
+>>> names = Installer._pkg_names('a.b.c')
+>>> set(names) == set(['a', 'a.b', 'a.b.c'])
+True
+
+**Paramètres :**
+
+- `pkg`
+
+##### _get_root
+
+##### _get_target
 
 ---
 
@@ -37016,68 +37078,6 @@ str
 - `name`
 - `spec_path_lists`
 - `exists`
-
----
-
-### namespaces
-
-#### Classes
-
-##### Installer
-
-**Méthodes :**
-
-- `install_namespaces()`
-- `uninstall_namespaces()`
-- `_get_target()`
-- `_get_root()`
-- `_gen_nspkg_line()`
-- `_get_all_ns_packages()`
-- `_pkg_names()`
-
-##### DevelopInstaller
-
-**Méthodes :**
-
-- `_get_root()`
-- `_get_target()`
-
-#### Fonctions
-
-##### install_namespaces
-
-##### uninstall_namespaces
-
-##### _get_target
-
-##### _get_root
-
-##### _gen_nspkg_line
-
-**Paramètres :**
-
-- `pkg`
-
-##### _get_all_ns_packages
-
-Return sorted list of all package namespaces
-
-##### _pkg_names
-
-Given a namespace package, yield the components of that
-package.
-
->>> names = Installer._pkg_names('a.b.c')
->>> set(names) == set(['a', 'a.b', 'a.b.c'])
-True
-
-**Paramètres :**
-
-- `pkg`
-
-##### _get_root
-
-##### _get_target
 
 ---
 
@@ -123502,6 +123502,64 @@ Always raises a NotImplementedError when called.
 
 ---
 
+### fastevent
+
+A compatibility shim for pygame.fastevent based on pygame.event.
+This module was deprecated in pygame 2.2, and is scheduled for removal in a
+future pygame version. If you are using pygame.fastevent, please migrate to
+using regular pygame.event module
+
+#### Fonctions
+
+##### _ft_init_check
+
+Raises error if module is not init
+
+##### _quit_hook
+
+Hook that gets run to quit module
+
+##### init
+
+init() -> None
+initialize pygame.fastevent
+
+##### get_init
+
+get_init() -> bool
+returns True if the fastevent module is currently initialized
+
+##### pump
+
+pump() -> None
+internally process pygame event handlers
+
+##### wait
+
+wait() -> Event
+wait for an event
+
+##### poll
+
+poll() -> Event
+get an available event
+
+##### get
+
+get() -> list of Events
+get all events from the queue
+
+##### post
+
+post(Event) -> None
+place an event on the queue
+
+**Paramètres :**
+
+- `event`
+
+---
+
 ### _camera_opencv
 
 pygame.camera backend that uses OpenCV.
@@ -123589,64 +123647,6 @@ api_preference - cv2.CAP_DSHOW cv2.CAP_V4L2 cv2.CAP_MSMF and others
 - `size`
 - `mode`
 - `api_preference`
-
----
-
-### fastevent
-
-A compatibility shim for pygame.fastevent based on pygame.event.
-This module was deprecated in pygame 2.2, and is scheduled for removal in a
-future pygame version. If you are using pygame.fastevent, please migrate to
-using regular pygame.event module
-
-#### Fonctions
-
-##### _ft_init_check
-
-Raises error if module is not init
-
-##### _quit_hook
-
-Hook that gets run to quit module
-
-##### init
-
-init() -> None
-initialize pygame.fastevent
-
-##### get_init
-
-get_init() -> bool
-returns True if the fastevent module is currently initialized
-
-##### pump
-
-pump() -> None
-internally process pygame event handlers
-
-##### wait
-
-wait() -> Event
-wait for an event
-
-##### poll
-
-poll() -> Event
-get an available event
-
-##### get
-
-get() -> list of Events
-get all events from the queue
-
-##### post
-
-post(Event) -> None
-place an event on the queue
-
-**Paramètres :**
-
-- `event`
 
 ---
 
@@ -150268,36 +150268,6 @@ Tests for detecting redefinition of builtins.
 
 ---
 
-### test_code_segment
-
-#### Classes
-
-##### TestCodeSegments
-
-Tests for segments of a module
-
-**Méthodes :**
-
-- `test_function_segment()`
-- `test_class_segment()`
-- `test_scope_class()`
-- `test_scope_function()`
-- `test_scope_async_function()`
-
-#### Fonctions
-
-##### test_function_segment
-
-##### test_class_segment
-
-##### test_scope_class
-
-##### test_scope_function
-
-##### test_scope_async_function
-
----
-
 ### test_dict
 
 Tests for dict duplicate keys Pyflakes behavior.
@@ -150389,6 +150359,36 @@ The literal dict {1: 1, 1.0: 1} actually becomes {1.0: 1}.
 ##### test_no_duplicate_key_errors_tuples
 
 ##### test_no_duplicate_key_errors_instance_attributes
+
+---
+
+### test_code_segment
+
+#### Classes
+
+##### TestCodeSegments
+
+Tests for segments of a module
+
+**Méthodes :**
+
+- `test_function_segment()`
+- `test_class_segment()`
+- `test_scope_class()`
+- `test_scope_function()`
+- `test_scope_async_function()`
+
+#### Fonctions
+
+##### test_function_segment
+
+##### test_class_segment
+
+##### test_scope_class
+
+##### test_scope_function
+
+##### test_scope_async_function
 
 ---
 
@@ -151057,6 +151057,43 @@ undefined name warning.
 
 ---
 
+### test_match
+
+#### Classes
+
+##### TestMatch
+
+**Méthodes :**
+
+- `test_match_bindings()`
+- `test_match_pattern_matched_class()`
+- `test_match_placeholder()`
+- `test_match_singleton()`
+- `test_match_or_pattern()`
+- `test_match_star()`
+- `test_match_double_star()`
+- `test_defined_in_different_branches()`
+
+#### Fonctions
+
+##### test_match_bindings
+
+##### test_match_pattern_matched_class
+
+##### test_match_placeholder
+
+##### test_match_singleton
+
+##### test_match_or_pattern
+
+##### test_match_star
+
+##### test_match_double_star
+
+##### test_defined_in_different_branches
+
+---
+
 ### test_is_literal
 
 #### Classes
@@ -151160,43 +151197,6 @@ undefined name warning.
 ##### test_is_tuple_constant_containing_constants
 
 ##### test_is_tuple_containing_variables_ok
-
----
-
-### test_match
-
-#### Classes
-
-##### TestMatch
-
-**Méthodes :**
-
-- `test_match_bindings()`
-- `test_match_pattern_matched_class()`
-- `test_match_placeholder()`
-- `test_match_singleton()`
-- `test_match_or_pattern()`
-- `test_match_star()`
-- `test_match_double_star()`
-- `test_defined_in_different_branches()`
-
-#### Fonctions
-
-##### test_match_bindings
-
-##### test_match_pattern_matched_class
-
-##### test_match_placeholder
-
-##### test_match_singleton
-
-##### test_match_or_pattern
-
-##### test_match_star
-
-##### test_match_double_star
-
-##### test_defined_in_different_branches
 
 ---
 
@@ -175103,58 +175103,6 @@ Dummy implementation of getaddrinfo for use in mocks
 
 ---
 
-### http1connection_test
-
-#### Classes
-
-##### HTTP1ConnectionTest
-
-**Méthodes :**
-
-- `setUp()`
-- `asyncSetUp()`
-- `test_http10_no_content_length()`
-
-##### Delegate
-
-**Méthodes :**
-
-- `headers_received()`
-- `data_received()`
-- `finish()`
-
-#### Fonctions
-
-##### setUp
-
-##### asyncSetUp
-
-##### test_http10_no_content_length
-
-##### accept_callback
-
-**Paramètres :**
-
-- `conn`
-- `addr`
-
-##### headers_received
-
-**Paramètres :**
-
-- `start_line`
-- `headers`
-
-##### data_received
-
-**Paramètres :**
-
-- `data`
-
-##### finish
-
----
-
 ### options_test
 
 #### Classes
@@ -175267,6 +175215,58 @@ Dummy implementation of getaddrinfo for use in mocks
 ##### test_dash_underscore_introspection
 
 ##### callback
+
+---
+
+### http1connection_test
+
+#### Classes
+
+##### HTTP1ConnectionTest
+
+**Méthodes :**
+
+- `setUp()`
+- `asyncSetUp()`
+- `test_http10_no_content_length()`
+
+##### Delegate
+
+**Méthodes :**
+
+- `headers_received()`
+- `data_received()`
+- `finish()`
+
+#### Fonctions
+
+##### setUp
+
+##### asyncSetUp
+
+##### test_http10_no_content_length
+
+##### accept_callback
+
+**Paramètres :**
+
+- `conn`
+- `addr`
+
+##### headers_received
+
+**Paramètres :**
+
+- `start_line`
+- `headers`
+
+##### data_received
+
+**Paramètres :**
+
+- `data`
+
+##### finish
 
 ---
 
@@ -204242,48 +204242,6 @@ and we look for instances of any of the latter.
 
 ---
 
-### rusty
-
-An error-handling model influenced by that used by the Rust programming language
-
-See https://doc.rust-lang.org/book/ch09-00-error-handling.html.
-
-#### Classes
-
-##### Ok
-
-**Méthodes :**
-
-- `__init__()`
-- `ok()`
-
-##### Err
-
-**Méthodes :**
-
-- `__init__()`
-- `err()`
-
-#### Fonctions
-
-##### __init__
-
-**Paramètres :**
-
-- `value`
-
-##### ok
-
-##### __init__
-
-**Paramètres :**
-
-- `e`
-
-##### err
-
----
-
 ### concurrency
 
 Formatting many files at once via multiprocessing. Contains entrypoint and utilities.
@@ -204327,6 +204285,48 @@ Reformat multiple files using a ProcessPoolExecutor.
 - `mode`
 - `report`
 - `workers`
+
+---
+
+### rusty
+
+An error-handling model influenced by that used by the Rust programming language
+
+See https://doc.rust-lang.org/book/ch09-00-error-handling.html.
+
+#### Classes
+
+##### Ok
+
+**Méthodes :**
+
+- `__init__()`
+- `ok()`
+
+##### Err
+
+**Méthodes :**
+
+- `__init__()`
+- `err()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `value`
+
+##### ok
+
+##### __init__
+
+**Paramètres :**
+
+- `e`
+
+##### err
 
 ---
 
@@ -204957,6 +204957,10 @@ lines (two on module-level).
 
 ---
 
+### _width_table
+
+---
+
 ### mode
 
 Data structures configuring Black behavior.
@@ -205013,10 +205017,6 @@ except those in UNSTABLE_FEATURES are enabled. Any features in
 - `feature`
 
 ##### get_cache_key
-
----
-
-### _width_table
 
 ---
 
@@ -208032,13 +208032,7 @@ Get the stored complete schema for black's settings.
 
 ---
 
-### _compute_docstrings
-
-Custom documentation additions for compute functions.
-
----
-
-### _generated_version
+### benchmark
 
 ---
 
@@ -208198,7 +208192,13 @@ Table or RecordBatch
 
 ---
 
-### benchmark
+### _compute_docstrings
+
+Custom documentation additions for compute functions.
+
+---
+
+### _generated_version
 
 ---
 
@@ -210186,6 +210186,10 @@ record_batch: pyarrow.RecordBatch
 
 ---
 
+### substrait
+
+---
+
 ### orc
 
 #### Classes
@@ -210844,10 +210848,6 @@ Make a datetime64 Series timezone-aware for the given tz
 **Paramètres :**
 
 - `arr`
-
----
-
-### substrait
 
 ---
 
@@ -213455,61 +213455,6 @@ backoff : float, default 1
 
 ---
 
-### pandas_examples
-
-#### Fonctions
-
-##### dataframe_with_arrays
-
-Dataframe with numpy arrays columns of every possible primitive type.
-
-Returns
--------
-df: pandas.DataFrame
-schema: pyarrow.Schema
-    Arrow schema definition that is in line with the constructed df.
-
-**Paramètres :**
-
-- `include_index`
-
-##### dataframe_with_lists
-
-Dataframe with list columns of every possible primitive type.
-
-Returns
--------
-df: pandas.DataFrame
-schema: pyarrow.Schema
-    Arrow schema definition that is in line with the constructed df.
-parquet_compatible: bool
-    Exclude types not supported by parquet
-
-**Paramètres :**
-
-- `include_index`
-- `parquet_compatible`
-
----
-
-### pandas_threaded_import
-
-#### Fonctions
-
-##### thread_func
-
-**Paramètres :**
-
-- `i`
-
-##### main
-
----
-
-### read_record_batch
-
----
-
 ### strategies
 
 #### Fonctions
@@ -213617,6 +213562,61 @@ parquet_compatible: bool
 **Paramètres :**
 
 - `item_strategy`
+
+---
+
+### pandas_examples
+
+#### Fonctions
+
+##### dataframe_with_arrays
+
+Dataframe with numpy arrays columns of every possible primitive type.
+
+Returns
+-------
+df: pandas.DataFrame
+schema: pyarrow.Schema
+    Arrow schema definition that is in line with the constructed df.
+
+**Paramètres :**
+
+- `include_index`
+
+##### dataframe_with_lists
+
+Dataframe with list columns of every possible primitive type.
+
+Returns
+-------
+df: pandas.DataFrame
+schema: pyarrow.Schema
+    Arrow schema definition that is in line with the constructed df.
+parquet_compatible: bool
+    Exclude types not supported by parquet
+
+**Paramètres :**
+
+- `include_index`
+- `parquet_compatible`
+
+---
+
+### pandas_threaded_import
+
+#### Fonctions
+
+##### thread_func
+
+**Paramètres :**
+
+- `i`
+
+##### main
+
+---
+
+### read_record_batch
 
 ---
 
@@ -232965,6 +232965,71 @@ Initializes a new factory.
 
 ---
 
+### proto_json
+
+Contains the Nextgen Pythonic Protobuf JSON APIs.
+
+#### Fonctions
+
+##### serialize
+
+Converts protobuf message to a dictionary.
+
+When the dictionary is encoded to JSON, it conforms to proto3 JSON spec.
+
+Args:
+  message: The protocol buffers message instance to serialize.
+  always_print_fields_with_no_presence: If True, fields without
+    presence (implicit presence scalars, repeated fields, and map fields) will
+    always be serialized. Any field that supports presence is not affected by
+    this option (including singular message fields and oneof fields).
+  preserving_proto_field_name: If True, use the original proto field names as
+    defined in the .proto file. If False, convert the field names to
+    lowerCamelCase.
+  use_integers_for_enums: If true, print integers instead of enum names.
+  descriptor_pool: A Descriptor Pool for resolving types. If None use the
+    default.
+  float_precision: If set, use this to specify float field valid digits.
+
+Returns:
+  A dict representation of the protocol buffer message.
+
+**Paramètres :**
+
+- `message`
+- `always_print_fields_with_no_presence`
+- `preserving_proto_field_name`
+- `use_integers_for_enums`
+- `descriptor_pool`
+- `float_precision`
+
+##### parse
+
+Parses a JSON dictionary representation into a message.
+
+Args:
+  message_class: The message meta class.
+  js_dict: Dict representation of a JSON message.
+  ignore_unknown_fields: If True, do not raise errors for unknown fields.
+  descriptor_pool: A Descriptor Pool for resolving types. If None use the
+    default.
+  max_recursion_depth: max recursion depth of JSON message to be deserialized.
+    JSON messages over this depth will fail to be deserialized. Default value
+    is 100.
+
+Returns:
+  A new message passed from json_dict.
+
+**Paramètres :**
+
+- `message_class`
+- `js_dict`
+- `ignore_unknown_fields`
+- `descriptor_pool`
+- `max_recursion_depth`
+
+---
+
 ### proto
 
 Contains the Nextgen Pythonic protobuf APIs.
@@ -233151,71 +233216,6 @@ Populate FileDescriptorProto for MessageFactory's DescriptorPool.
 - `proto_file_name`
 - `full_name`
 - `field_items`
-
----
-
-### proto_json
-
-Contains the Nextgen Pythonic Protobuf JSON APIs.
-
-#### Fonctions
-
-##### serialize
-
-Converts protobuf message to a dictionary.
-
-When the dictionary is encoded to JSON, it conforms to proto3 JSON spec.
-
-Args:
-  message: The protocol buffers message instance to serialize.
-  always_print_fields_with_no_presence: If True, fields without
-    presence (implicit presence scalars, repeated fields, and map fields) will
-    always be serialized. Any field that supports presence is not affected by
-    this option (including singular message fields and oneof fields).
-  preserving_proto_field_name: If True, use the original proto field names as
-    defined in the .proto file. If False, convert the field names to
-    lowerCamelCase.
-  use_integers_for_enums: If true, print integers instead of enum names.
-  descriptor_pool: A Descriptor Pool for resolving types. If None use the
-    default.
-  float_precision: If set, use this to specify float field valid digits.
-
-Returns:
-  A dict representation of the protocol buffer message.
-
-**Paramètres :**
-
-- `message`
-- `always_print_fields_with_no_presence`
-- `preserving_proto_field_name`
-- `use_integers_for_enums`
-- `descriptor_pool`
-- `float_precision`
-
-##### parse
-
-Parses a JSON dictionary representation into a message.
-
-Args:
-  message_class: The message meta class.
-  js_dict: Dict representation of a JSON message.
-  ignore_unknown_fields: If True, do not raise errors for unknown fields.
-  descriptor_pool: A Descriptor Pool for resolving types. If None use the
-    default.
-  max_recursion_depth: max recursion depth of JSON message to be deserialized.
-    JSON messages over this depth will fail to be deserialized. Default value
-    is 100.
-
-Returns:
-  A new message passed from json_dict.
-
-**Paramètres :**
-
-- `message_class`
-- `js_dict`
-- `ignore_unknown_fields`
-- `descriptor_pool`
-- `max_recursion_depth`
 
 ---
 
@@ -245441,121 +245441,6 @@ Install application-specific BUFR image handler.
 
 ---
 
-### PSDraw
-
-#### Classes
-
-##### PSDraw
-
-Sets up printing to the given file. If ``fp`` is omitted,
-``sys.stdout.buffer`` is assumed.
-
-**Méthodes :**
-
-- `__init__()`
-- `begin_document()`
-- `end_document()`
-- `setfont()`
-- `line()`
-- `rectangle()`
-- `text()`
-- `image()`
-
-#### Fonctions
-
-##### __init__
-
-**Paramètres :**
-
-- `fp`
-
-##### begin_document
-
-Set up printing of a document. (Write PostScript DSC header.)
-
-**Paramètres :**
-
-- `id`
-
-##### end_document
-
-Ends printing. (Write PostScript DSC footer.)
-
-##### setfont
-
-Selects which font to use.
-
-:param font: A PostScript font name
-:param size: Size in points.
-
-**Paramètres :**
-
-- `font`
-- `size`
-
-##### line
-
-Draws a line between the two points. Coordinates are given in
-PostScript point coordinates (72 points per inch, (0, 0) is the lower
-left corner of the page).
-
-**Paramètres :**
-
-- `xy0`
-- `xy1`
-
-##### rectangle
-
-Draws a rectangle.
-
-:param box: A tuple of four integers, specifying left, bottom, width and
-   height.
-
-**Paramètres :**
-
-- `box`
-
-##### text
-
-Draws text at the given position. You must use
-:py:meth:`~PIL.PSDraw.PSDraw.setfont` before calling this method.
-
-**Paramètres :**
-
-- `xy`
-- `text`
-
-##### image
-
-Draw a PIL image, centered in the given box.
-
-**Paramètres :**
-
-- `box`
-- `im`
-- `dpi`
-
----
-
-### PcdImagePlugin
-
-#### Classes
-
-##### PcdImageFile
-
-**Méthodes :**
-
-- `_open()`
-- `load_end()`
-
-#### Fonctions
-
-##### _open
-
-##### load_end
-
----
-
 ### ImageFilter
 
 #### Classes
@@ -245934,6 +245819,121 @@ a new LUT with altered values.
 **Paramètres :**
 
 - `image`
+
+---
+
+### PSDraw
+
+#### Classes
+
+##### PSDraw
+
+Sets up printing to the given file. If ``fp`` is omitted,
+``sys.stdout.buffer`` is assumed.
+
+**Méthodes :**
+
+- `__init__()`
+- `begin_document()`
+- `end_document()`
+- `setfont()`
+- `line()`
+- `rectangle()`
+- `text()`
+- `image()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `fp`
+
+##### begin_document
+
+Set up printing of a document. (Write PostScript DSC header.)
+
+**Paramètres :**
+
+- `id`
+
+##### end_document
+
+Ends printing. (Write PostScript DSC footer.)
+
+##### setfont
+
+Selects which font to use.
+
+:param font: A PostScript font name
+:param size: Size in points.
+
+**Paramètres :**
+
+- `font`
+- `size`
+
+##### line
+
+Draws a line between the two points. Coordinates are given in
+PostScript point coordinates (72 points per inch, (0, 0) is the lower
+left corner of the page).
+
+**Paramètres :**
+
+- `xy0`
+- `xy1`
+
+##### rectangle
+
+Draws a rectangle.
+
+:param box: A tuple of four integers, specifying left, bottom, width and
+   height.
+
+**Paramètres :**
+
+- `box`
+
+##### text
+
+Draws text at the given position. You must use
+:py:meth:`~PIL.PSDraw.PSDraw.setfont` before calling this method.
+
+**Paramètres :**
+
+- `xy`
+- `text`
+
+##### image
+
+Draw a PIL image, centered in the given box.
+
+**Paramètres :**
+
+- `box`
+- `im`
+- `dpi`
+
+---
+
+### PcdImagePlugin
+
+#### Classes
+
+##### PcdImageFile
+
+**Méthodes :**
+
+- `_open()`
+- `load_end()`
+
+#### Fonctions
+
+##### _open
+
+##### load_end
 
 ---
 
@@ -248643,38 +248643,6 @@ accordingly, and remove the orientation data.
 
 ---
 
-### PdfImagePlugin
-
-#### Fonctions
-
-##### _save_all
-
-**Paramètres :**
-
-- `im`
-- `fp`
-- `filename`
-
-##### _write_image
-
-**Paramètres :**
-
-- `im`
-- `filename`
-- `existing_pdf`
-- `image_refs`
-
-##### _save
-
-**Paramètres :**
-
-- `im`
-- `fp`
-- `filename`
-- `save_all`
-
----
-
 ### ImageShow
 
 #### Classes
@@ -248974,6 +248942,38 @@ Display given file.
 **Paramètres :**
 
 - `image`
+
+---
+
+### PdfImagePlugin
+
+#### Fonctions
+
+##### _save_all
+
+**Paramètres :**
+
+- `im`
+- `fp`
+- `filename`
+
+##### _write_image
+
+**Paramètres :**
+
+- `im`
+- `filename`
+- `existing_pdf`
+- `image_refs`
+
+##### _save
+
+**Paramètres :**
+
+- `im`
+- `fp`
+- `filename`
+- `save_all`
 
 ---
 
@@ -249371,49 +249371,6 @@ Install application-specific WMF image handler.
 
 ---
 
-### _util
-
-#### Classes
-
-##### DeferredError
-
-**Méthodes :**
-
-- `__init__()`
-- `__getattr__()`
-- `new()`
-
-#### Fonctions
-
-##### is_path
-
-**Paramètres :**
-
-- `f`
-
-##### __init__
-
-**Paramètres :**
-
-- `ex`
-
-##### __getattr__
-
-**Paramètres :**
-
-- `elt`
-
-##### new
-
-Creates an object that raises the wrapped exception ``ex`` when used,
-and casts it to :py:obj:`~typing.Any` type.
-
-**Paramètres :**
-
-- `ex`
-
----
-
 ### GdImageFile
 
 .. note::
@@ -249457,6 +249414,49 @@ Load texture from a GD image file.
 - `mode`
 
 ##### _open
+
+---
+
+### _util
+
+#### Classes
+
+##### DeferredError
+
+**Méthodes :**
+
+- `__init__()`
+- `__getattr__()`
+- `new()`
+
+#### Fonctions
+
+##### is_path
+
+**Paramètres :**
+
+- `f`
+
+##### __init__
+
+**Paramètres :**
+
+- `ex`
+
+##### __getattr__
+
+**Paramètres :**
+
+- `elt`
+
+##### new
+
+Creates an object that raises the wrapped exception ``ex`` when used,
+and casts it to :py:obj:`~typing.Any` type.
+
+**Paramètres :**
+
+- `ex`
 
 ---
 
@@ -250936,62 +250936,6 @@ https://creativecommons.org/publicdomain/zero/1.0/
 
 ---
 
-### ImageSequence
-
-#### Classes
-
-##### Iterator
-
-This class implements an iterator object that can be used to loop
-over an image sequence.
-
-You can use the ``[]`` operator to access elements by index. This operator
-will raise an :py:exc:`IndexError` if you try to access a nonexistent
-frame.
-
-:param im: An image object.
-
-**Méthodes :**
-
-- `__init__()`
-- `__getitem__()`
-- `__iter__()`
-- `__next__()`
-
-#### Fonctions
-
-##### all_frames
-
-Applies a given function to all frames in an image or a list of images.
-The frames are returned as a list of separate images.
-
-:param im: An image, or a list of images.
-:param func: The function to apply to all of the image frames.
-:returns: A list of images.
-
-**Paramètres :**
-
-- `im`
-- `func`
-
-##### __init__
-
-**Paramètres :**
-
-- `im`
-
-##### __getitem__
-
-**Paramètres :**
-
-- `ix`
-
-##### __iter__
-
-##### __next__
-
----
-
 ### _binary
 
 Binary input/output support routines.
@@ -251119,6 +251063,62 @@ Converts a 4-bytes (32 bits) string to a signed integer, big endian.
 **Paramètres :**
 
 - `i`
+
+---
+
+### ImageSequence
+
+#### Classes
+
+##### Iterator
+
+This class implements an iterator object that can be used to loop
+over an image sequence.
+
+You can use the ``[]`` operator to access elements by index. This operator
+will raise an :py:exc:`IndexError` if you try to access a nonexistent
+frame.
+
+:param im: An image object.
+
+**Méthodes :**
+
+- `__init__()`
+- `__getitem__()`
+- `__iter__()`
+- `__next__()`
+
+#### Fonctions
+
+##### all_frames
+
+Applies a given function to all frames in an image or a list of images.
+The frames are returned as a list of separate images.
+
+:param im: An image, or a list of images.
+:param func: The function to apply to all of the image frames.
+:returns: A list of images.
+
+**Paramètres :**
+
+- `im`
+- `func`
+
+##### __init__
+
+**Paramètres :**
+
+- `im`
+
+##### __getitem__
+
+**Paramètres :**
+
+- `ix`
+
+##### __iter__
+
+##### __next__
 
 ---
 
@@ -254473,974 +254473,6 @@ Note: All data is stored in little-Endian (Intel) byte order.
 
 ---
 
-### _elffile
-
-ELF file parser.
-
-This provides a class ``ELFFile`` that parses an ELF executable in a similar
-interface to ``ZipFile``. Only the read interface is implemented.
-
-Based on: https://gist.github.com/lyssdod/f51579ae8d93c8657a5564aefc2ffbca
-ELF header: https://refspecs.linuxfoundation.org/elf/gabi4+/ch4.eheader.html
-
-#### Classes
-
-##### ELFInvalid
-
-##### EIClass
-
-##### EIData
-
-##### EMachine
-
-##### ELFFile
-
-Representation of an ELF executable.
-
-**Méthodes :**
-
-- `__init__()`
-- `_read()`
-- `interpreter()`
-
-#### Fonctions
-
-##### __init__
-
-**Paramètres :**
-
-- `f`
-
-##### _read
-
-**Paramètres :**
-
-- `fmt`
-
-##### interpreter
-
-The path recorded in the ``PT_INTERP`` section header.
-
----
-
-### _manylinux
-
-#### Classes
-
-##### _GLibCVersion
-
-#### Fonctions
-
-##### _parse_elf
-
-**Paramètres :**
-
-- `path`
-
-##### _is_linux_armhf
-
-**Paramètres :**
-
-- `executable`
-
-##### _is_linux_i686
-
-**Paramètres :**
-
-- `executable`
-
-##### _have_compatible_abi
-
-**Paramètres :**
-
-- `executable`
-- `archs`
-
-##### _glibc_version_string_confstr
-
-Primary implementation of glibc_version_string using os.confstr.
-
-##### _glibc_version_string_ctypes
-
-Fallback implementation of glibc_version_string using ctypes.
-
-##### _glibc_version_string
-
-Returns glibc version string, or None if not using glibc.
-
-##### _parse_glibc_version
-
-Parse glibc version.
-
-We use a regexp instead of str.split because we want to discard any
-random junk that might come after the minor version -- this might happen
-in patched/forked versions of glibc (e.g. Linaro's version of glibc
-uses version strings like "2.20-2014.11"). See gh-3588.
-
-**Paramètres :**
-
-- `version_str`
-
-##### _get_glibc_version
-
-##### _is_compatible
-
-**Paramètres :**
-
-- `arch`
-- `version`
-
-##### platform_tags
-
-Generate manylinux tags compatible to the current platform.
-
-:param archs: Sequence of compatible architectures.
-    The first one shall be the closest to the actual architecture and be the part of
-    platform tag after the ``linux_`` prefix, e.g. ``x86_64``.
-    The ``linux_`` prefix is assumed as a prerequisite for the current platform to
-    be manylinux-compatible.
-
-:returns: An iterator of compatible manylinux tags.
-
-**Paramètres :**
-
-- `archs`
-
----
-
-### _musllinux
-
-PEP 656 support.
-
-This module implements logic to detect if the currently running Python is
-linked against musl, and what musl version is used.
-
-#### Classes
-
-##### _MuslVersion
-
-#### Fonctions
-
-##### _parse_musl_version
-
-**Paramètres :**
-
-- `output`
-
-##### _get_musl_version
-
-Detect currently-running musl runtime version.
-
-This is done by checking the specified executable's dynamic linking
-information, and invoking the loader to parse its output for a version
-string. If the loader is musl, the output would be something like::
-
-    musl libc (x86_64)
-    Version 1.2.2
-    Dynamic Program Loader
-
-**Paramètres :**
-
-- `executable`
-
-##### platform_tags
-
-Generate musllinux tags compatible to the current platform.
-
-:param archs: Sequence of compatible architectures.
-    The first one shall be the closest to the actual architecture and be the part of
-    platform tag after the ``linux_`` prefix, e.g. ``x86_64``.
-    The ``linux_`` prefix is assumed as a prerequisite for the current platform to
-    be musllinux-compatible.
-
-:returns: An iterator of compatible musllinux tags.
-
-**Paramètres :**
-
-- `archs`
-
----
-
-### _parser
-
-Handwritten parser of dependency specifiers.
-
-The docstring for each __parse_* function contains EBNF-inspired grammar representing
-the implementation.
-
-#### Classes
-
-##### Node
-
-**Méthodes :**
-
-- `__init__()`
-- `__str__()`
-- `__repr__()`
-- `serialize()`
-
-##### Variable
-
-**Méthodes :**
-
-- `serialize()`
-
-##### Value
-
-**Méthodes :**
-
-- `serialize()`
-
-##### Op
-
-**Méthodes :**
-
-- `serialize()`
-
-##### ParsedRequirement
-
-#### Fonctions
-
-##### parse_requirement
-
-**Paramètres :**
-
-- `source`
-
-##### _parse_requirement
-
-requirement = WS? IDENTIFIER WS? extras WS? requirement_details
-
-**Paramètres :**
-
-- `tokenizer`
-
-##### _parse_requirement_details
-
-requirement_details = AT URL (WS requirement_marker?)?
-                    | specifier WS? (requirement_marker)?
-
-**Paramètres :**
-
-- `tokenizer`
-
-##### _parse_requirement_marker
-
-requirement_marker = SEMICOLON marker WS?
-
-**Paramètres :**
-
-- `tokenizer`
-
-##### _parse_extras
-
-extras = (LEFT_BRACKET wsp* extras_list? wsp* RIGHT_BRACKET)?
-
-**Paramètres :**
-
-- `tokenizer`
-
-##### _parse_extras_list
-
-extras_list = identifier (wsp* ',' wsp* identifier)*
-
-**Paramètres :**
-
-- `tokenizer`
-
-##### _parse_specifier
-
-specifier = LEFT_PARENTHESIS WS? version_many WS? RIGHT_PARENTHESIS
-          | WS? version_many WS?
-
-**Paramètres :**
-
-- `tokenizer`
-
-##### _parse_version_many
-
-version_many = (SPECIFIER (WS? COMMA WS? SPECIFIER)*)?
-
-**Paramètres :**
-
-- `tokenizer`
-
-##### parse_marker
-
-**Paramètres :**
-
-- `source`
-
-##### _parse_full_marker
-
-**Paramètres :**
-
-- `tokenizer`
-
-##### _parse_marker
-
-marker = marker_atom (BOOLOP marker_atom)+
-
-**Paramètres :**
-
-- `tokenizer`
-
-##### _parse_marker_atom
-
-marker_atom = WS? LEFT_PARENTHESIS WS? marker WS? RIGHT_PARENTHESIS WS?
-            | WS? marker_item WS?
-
-**Paramètres :**
-
-- `tokenizer`
-
-##### _parse_marker_item
-
-marker_item = WS? marker_var WS? marker_op WS? marker_var WS?
-
-**Paramètres :**
-
-- `tokenizer`
-
-##### _parse_marker_var
-
-marker_var = VARIABLE | QUOTED_STRING
-
-**Paramètres :**
-
-- `tokenizer`
-
-##### process_env_var
-
-**Paramètres :**
-
-- `env_var`
-
-##### process_python_str
-
-**Paramètres :**
-
-- `python_str`
-
-##### _parse_marker_op
-
-marker_op = IN | NOT IN | OP
-
-**Paramètres :**
-
-- `tokenizer`
-
-##### __init__
-
-**Paramètres :**
-
-- `value`
-
-##### __str__
-
-##### __repr__
-
-##### serialize
-
-##### serialize
-
-##### serialize
-
-##### serialize
-
----
-
-### _structures
-
-#### Classes
-
-##### InfinityType
-
-**Méthodes :**
-
-- `__repr__()`
-- `__hash__()`
-- `__lt__()`
-- `__le__()`
-- `__eq__()`
-- `__gt__()`
-- `__ge__()`
-- `__neg__()`
-
-##### NegativeInfinityType
-
-**Méthodes :**
-
-- `__repr__()`
-- `__hash__()`
-- `__lt__()`
-- `__le__()`
-- `__eq__()`
-- `__gt__()`
-- `__ge__()`
-- `__neg__()`
-
-#### Fonctions
-
-##### __repr__
-
-##### __hash__
-
-##### __lt__
-
-**Paramètres :**
-
-- `other`
-
-##### __le__
-
-**Paramètres :**
-
-- `other`
-
-##### __eq__
-
-**Paramètres :**
-
-- `other`
-
-##### __gt__
-
-**Paramètres :**
-
-- `other`
-
-##### __ge__
-
-**Paramètres :**
-
-- `other`
-
-##### __neg__
-
-##### __repr__
-
-##### __hash__
-
-##### __lt__
-
-**Paramètres :**
-
-- `other`
-
-##### __le__
-
-**Paramètres :**
-
-- `other`
-
-##### __eq__
-
-**Paramètres :**
-
-- `other`
-
-##### __gt__
-
-**Paramètres :**
-
-- `other`
-
-##### __ge__
-
-**Paramètres :**
-
-- `other`
-
-##### __neg__
-
----
-
-### _tokenizer
-
-#### Classes
-
-##### Token
-
-##### ParserSyntaxError
-
-The provided source text could not be parsed correctly.
-
-**Méthodes :**
-
-- `__init__()`
-- `__str__()`
-
-##### Tokenizer
-
-Context-sensitive token parsing.
-
-Provides methods to examine the input stream to check whether the next token
-matches.
-
-**Méthodes :**
-
-- `__init__()`
-- `consume()`
-- `check()`
-- `expect()`
-- `read()`
-- `raise_syntax_error()`
-- `enclosing_tokens()`
-
-#### Fonctions
-
-##### __init__
-
-**Paramètres :**
-
-- `message`
-
-##### __str__
-
-##### __init__
-
-**Paramètres :**
-
-- `source`
-
-##### consume
-
-Move beyond provided token name, if at current position.
-
-**Paramètres :**
-
-- `name`
-
-##### check
-
-Check whether the next token has the provided name.
-
-By default, if the check succeeds, the token *must* be read before
-another check. If `peek` is set to `True`, the token is not loaded and
-would need to be checked again.
-
-**Paramètres :**
-
-- `name`
-
-##### expect
-
-Expect a certain token name next, failing with a syntax error otherwise.
-
-The token is *not* read.
-
-**Paramètres :**
-
-- `name`
-
-##### read
-
-Consume the next token and return it.
-
-##### raise_syntax_error
-
-Raise ParserSyntaxError at the given position.
-
-**Paramètres :**
-
-- `message`
-
-##### enclosing_tokens
-
-**Paramètres :**
-
-- `open_token`
-- `close_token`
-
----
-
-### markers
-
-#### Classes
-
-##### InvalidMarker
-
-An invalid marker was found, users should refer to PEP 508.
-
-##### UndefinedComparison
-
-An invalid operation was attempted on a value that doesn't support it.
-
-##### UndefinedEnvironmentName
-
-A name was attempted to be used that does not exist inside of the
-environment.
-
-##### Environment
-
-##### Marker
-
-**Méthodes :**
-
-- `__init__()`
-- `__str__()`
-- `__repr__()`
-- `__hash__()`
-- `__eq__()`
-- `evaluate()`
-
-#### Fonctions
-
-##### _normalize_extra_values
-
-Normalize extra values.
-
-**Paramètres :**
-
-- `results`
-
-##### _format_marker
-
-**Paramètres :**
-
-- `marker`
-- `first`
-
-##### _eval_op
-
-**Paramètres :**
-
-- `lhs`
-- `op`
-- `rhs`
-
-##### _normalize
-
-**Paramètres :**
-
-- `lhs`
-- `rhs`
-- `key`
-
-##### _evaluate_markers
-
-**Paramètres :**
-
-- `markers`
-- `environment`
-
-##### format_full_version
-
-**Paramètres :**
-
-- `info`
-
-##### default_environment
-
-##### _repair_python_full_version
-
-Work around platform.python_version() returning something that is not PEP 440
-compliant for non-tagged Python builds.
-
-**Paramètres :**
-
-- `env`
-
-##### __init__
-
-**Paramètres :**
-
-- `marker`
-
-##### __str__
-
-##### __repr__
-
-##### __hash__
-
-##### __eq__
-
-**Paramètres :**
-
-- `other`
-
-##### evaluate
-
-Evaluate a marker.
-
-Return the boolean from evaluating the given marker against the
-environment. environment is an optional argument to override all or
-part of the determined environment. The *context* parameter specifies what
-context the markers are being evaluated for, which influences what markers
-are considered valid. Acceptable values are "metadata" (for core metadata;
-default), "lock_file", and "requirement" (i.e. all other situations).
-
-The environment is determined from the current Python process.
-
-**Paramètres :**
-
-- `environment`
-- `context`
-
----
-
-### metadata
-
-#### Classes
-
-##### InvalidMetadata
-
-A metadata field contains invalid data.
-
-**Méthodes :**
-
-- `__init__()`
-
-##### RawMetadata
-
-A dictionary of raw core metadata.
-
-Each field in core metadata maps to a key of this dictionary (when data is
-provided). The key is lower-case and underscores are used instead of dashes
-compared to the equivalent core metadata field. Any core metadata field that
-can be specified multiple times or can hold multiple values in a single
-field have a key with a plural name. See :class:`Metadata` whose attributes
-match the keys of this dictionary.
-
-Core metadata fields that can be specified multiple times are stored as a
-list or dict depending on which is appropriate for the field. Any fields
-which hold multiple values in a single field are stored as a list.
-
-##### _Validator
-
-Validate a metadata field.
-
-All _process_*() methods correspond to a core metadata field. The method is
-called with the field's raw value. If the raw value is valid it is returned
-in its "enriched" form (e.g. ``version.Version`` for the ``Version`` field).
-If the raw value is invalid, :exc:`InvalidMetadata` is raised (with a cause
-as appropriate).
-
-**Méthodes :**
-
-- `__init__()`
-- `__set_name__()`
-- `__get__()`
-- `_invalid_metadata()`
-- `_process_metadata_version()`
-- `_process_name()`
-- `_process_version()`
-- `_process_summary()`
-- `_process_description_content_type()`
-- `_process_dynamic()`
-- `_process_provides_extra()`
-- `_process_requires_python()`
-- `_process_requires_dist()`
-- `_process_license_expression()`
-- `_process_license_files()`
-
-##### Metadata
-
-Representation of distribution metadata.
-
-Compared to :class:`RawMetadata`, this class provides objects representing
-metadata fields instead of only using built-in types. Any invalid metadata
-will cause :exc:`InvalidMetadata` to be raised (with a
-:py:attr:`~BaseException.__cause__` attribute as appropriate).
-
-**Méthodes :**
-
-- `from_raw()`
-- `from_email()`
-
-##### ExceptionGroup
-
-A minimal implementation of :external:exc:`ExceptionGroup` from Python 3.11.
-
-If :external:exc:`ExceptionGroup` is already defined by Python itself,
-that version is used instead.
-
-**Méthodes :**
-
-- `__init__()`
-- `__repr__()`
-
-#### Fonctions
-
-##### _parse_keywords
-
-Split a string of comma-separated keywords into a list of keywords.
-
-**Paramètres :**
-
-- `data`
-
-##### _parse_project_urls
-
-Parse a list of label/URL string pairings separated by a comma.
-
-**Paramètres :**
-
-- `data`
-
-##### _get_payload
-
-Get the body of the message.
-
-**Paramètres :**
-
-- `msg`
-- `source`
-
-##### parse_email
-
-Parse a distribution's metadata stored as email headers (e.g. from ``METADATA``).
-
-This function returns a two-item tuple of dicts. The first dict is of
-recognized fields from the core metadata specification. Fields that can be
-parsed and translated into Python's built-in types are converted
-appropriately. All other fields are left as-is. Fields that are allowed to
-appear multiple times are stored as lists.
-
-The second dict contains all other fields from the metadata. This includes
-any unrecognized fields. It also includes any fields which are expected to
-be parsed into a built-in type but were not formatted appropriately. Finally,
-any fields that are expected to appear only once but are repeated are
-included in this dict.
-
-**Paramètres :**
-
-- `data`
-
-##### __init__
-
-**Paramètres :**
-
-- `field`
-- `message`
-
-##### __init__
-
-##### __set_name__
-
-**Paramètres :**
-
-- `_owner`
-- `name`
-
-##### __get__
-
-**Paramètres :**
-
-- `instance`
-- `_owner`
-
-##### _invalid_metadata
-
-**Paramètres :**
-
-- `msg`
-- `cause`
-
-##### _process_metadata_version
-
-**Paramètres :**
-
-- `value`
-
-##### _process_name
-
-**Paramètres :**
-
-- `value`
-
-##### _process_version
-
-**Paramètres :**
-
-- `value`
-
-##### _process_summary
-
-Check the field contains no newlines.
-
-**Paramètres :**
-
-- `value`
-
-##### _process_description_content_type
-
-**Paramètres :**
-
-- `value`
-
-##### _process_dynamic
-
-**Paramètres :**
-
-- `value`
-
-##### _process_provides_extra
-
-**Paramètres :**
-
-- `value`
-
-##### _process_requires_python
-
-**Paramètres :**
-
-- `value`
-
-##### _process_requires_dist
-
-**Paramètres :**
-
-- `value`
-
-##### _process_license_expression
-
-**Paramètres :**
-
-- `value`
-
-##### _process_license_files
-
-**Paramètres :**
-
-- `value`
-
-##### from_raw
-
-Create an instance from :class:`RawMetadata`.
-
-If *validate* is true, all metadata will be validated. All exceptions
-related to validation will be gathered and raised as an :class:`ExceptionGroup`.
-
-**Paramètres :**
-
-- `cls`
-- `data`
-
-##### from_email
-
-Parse metadata from email headers.
-
-If *validate* is true, the metadata will be validated. All exceptions
-related to validation will be gathered and raised as an :class:`ExceptionGroup`.
-
-**Paramètres :**
-
-- `cls`
-- `data`
-
-##### __init__
-
-**Paramètres :**
-
-- `message`
-- `exceptions`
-
-##### __repr__
-
----
-
 ### requirements
 
 #### Classes
@@ -255491,6 +254523,56 @@ string.
 **Paramètres :**
 
 - `other`
+
+---
+
+### _elffile
+
+ELF file parser.
+
+This provides a class ``ELFFile`` that parses an ELF executable in a similar
+interface to ``ZipFile``. Only the read interface is implemented.
+
+Based on: https://gist.github.com/lyssdod/f51579ae8d93c8657a5564aefc2ffbca
+ELF header: https://refspecs.linuxfoundation.org/elf/gabi4+/ch4.eheader.html
+
+#### Classes
+
+##### ELFInvalid
+
+##### EIClass
+
+##### EIData
+
+##### EMachine
+
+##### ELFFile
+
+Representation of an ELF executable.
+
+**Méthodes :**
+
+- `__init__()`
+- `_read()`
+- `interpreter()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `f`
+
+##### _read
+
+**Paramètres :**
+
+- `fmt`
+
+##### interpreter
+
+The path recorded in the ``PT_INTERP`` section header.
 
 ---
 
@@ -256135,6 +255217,538 @@ versions in the set.
 
 ---
 
+### _manylinux
+
+#### Classes
+
+##### _GLibCVersion
+
+#### Fonctions
+
+##### _parse_elf
+
+**Paramètres :**
+
+- `path`
+
+##### _is_linux_armhf
+
+**Paramètres :**
+
+- `executable`
+
+##### _is_linux_i686
+
+**Paramètres :**
+
+- `executable`
+
+##### _have_compatible_abi
+
+**Paramètres :**
+
+- `executable`
+- `archs`
+
+##### _glibc_version_string_confstr
+
+Primary implementation of glibc_version_string using os.confstr.
+
+##### _glibc_version_string_ctypes
+
+Fallback implementation of glibc_version_string using ctypes.
+
+##### _glibc_version_string
+
+Returns glibc version string, or None if not using glibc.
+
+##### _parse_glibc_version
+
+Parse glibc version.
+
+We use a regexp instead of str.split because we want to discard any
+random junk that might come after the minor version -- this might happen
+in patched/forked versions of glibc (e.g. Linaro's version of glibc
+uses version strings like "2.20-2014.11"). See gh-3588.
+
+**Paramètres :**
+
+- `version_str`
+
+##### _get_glibc_version
+
+##### _is_compatible
+
+**Paramètres :**
+
+- `arch`
+- `version`
+
+##### platform_tags
+
+Generate manylinux tags compatible to the current platform.
+
+:param archs: Sequence of compatible architectures.
+    The first one shall be the closest to the actual architecture and be the part of
+    platform tag after the ``linux_`` prefix, e.g. ``x86_64``.
+    The ``linux_`` prefix is assumed as a prerequisite for the current platform to
+    be manylinux-compatible.
+
+:returns: An iterator of compatible manylinux tags.
+
+**Paramètres :**
+
+- `archs`
+
+---
+
+### _musllinux
+
+PEP 656 support.
+
+This module implements logic to detect if the currently running Python is
+linked against musl, and what musl version is used.
+
+#### Classes
+
+##### _MuslVersion
+
+#### Fonctions
+
+##### _parse_musl_version
+
+**Paramètres :**
+
+- `output`
+
+##### _get_musl_version
+
+Detect currently-running musl runtime version.
+
+This is done by checking the specified executable's dynamic linking
+information, and invoking the loader to parse its output for a version
+string. If the loader is musl, the output would be something like::
+
+    musl libc (x86_64)
+    Version 1.2.2
+    Dynamic Program Loader
+
+**Paramètres :**
+
+- `executable`
+
+##### platform_tags
+
+Generate musllinux tags compatible to the current platform.
+
+:param archs: Sequence of compatible architectures.
+    The first one shall be the closest to the actual architecture and be the part of
+    platform tag after the ``linux_`` prefix, e.g. ``x86_64``.
+    The ``linux_`` prefix is assumed as a prerequisite for the current platform to
+    be musllinux-compatible.
+
+:returns: An iterator of compatible musllinux tags.
+
+**Paramètres :**
+
+- `archs`
+
+---
+
+### _parser
+
+Handwritten parser of dependency specifiers.
+
+The docstring for each __parse_* function contains EBNF-inspired grammar representing
+the implementation.
+
+#### Classes
+
+##### Node
+
+**Méthodes :**
+
+- `__init__()`
+- `__str__()`
+- `__repr__()`
+- `serialize()`
+
+##### Variable
+
+**Méthodes :**
+
+- `serialize()`
+
+##### Value
+
+**Méthodes :**
+
+- `serialize()`
+
+##### Op
+
+**Méthodes :**
+
+- `serialize()`
+
+##### ParsedRequirement
+
+#### Fonctions
+
+##### parse_requirement
+
+**Paramètres :**
+
+- `source`
+
+##### _parse_requirement
+
+requirement = WS? IDENTIFIER WS? extras WS? requirement_details
+
+**Paramètres :**
+
+- `tokenizer`
+
+##### _parse_requirement_details
+
+requirement_details = AT URL (WS requirement_marker?)?
+                    | specifier WS? (requirement_marker)?
+
+**Paramètres :**
+
+- `tokenizer`
+
+##### _parse_requirement_marker
+
+requirement_marker = SEMICOLON marker WS?
+
+**Paramètres :**
+
+- `tokenizer`
+
+##### _parse_extras
+
+extras = (LEFT_BRACKET wsp* extras_list? wsp* RIGHT_BRACKET)?
+
+**Paramètres :**
+
+- `tokenizer`
+
+##### _parse_extras_list
+
+extras_list = identifier (wsp* ',' wsp* identifier)*
+
+**Paramètres :**
+
+- `tokenizer`
+
+##### _parse_specifier
+
+specifier = LEFT_PARENTHESIS WS? version_many WS? RIGHT_PARENTHESIS
+          | WS? version_many WS?
+
+**Paramètres :**
+
+- `tokenizer`
+
+##### _parse_version_many
+
+version_many = (SPECIFIER (WS? COMMA WS? SPECIFIER)*)?
+
+**Paramètres :**
+
+- `tokenizer`
+
+##### parse_marker
+
+**Paramètres :**
+
+- `source`
+
+##### _parse_full_marker
+
+**Paramètres :**
+
+- `tokenizer`
+
+##### _parse_marker
+
+marker = marker_atom (BOOLOP marker_atom)+
+
+**Paramètres :**
+
+- `tokenizer`
+
+##### _parse_marker_atom
+
+marker_atom = WS? LEFT_PARENTHESIS WS? marker WS? RIGHT_PARENTHESIS WS?
+            | WS? marker_item WS?
+
+**Paramètres :**
+
+- `tokenizer`
+
+##### _parse_marker_item
+
+marker_item = WS? marker_var WS? marker_op WS? marker_var WS?
+
+**Paramètres :**
+
+- `tokenizer`
+
+##### _parse_marker_var
+
+marker_var = VARIABLE | QUOTED_STRING
+
+**Paramètres :**
+
+- `tokenizer`
+
+##### process_env_var
+
+**Paramètres :**
+
+- `env_var`
+
+##### process_python_str
+
+**Paramètres :**
+
+- `python_str`
+
+##### _parse_marker_op
+
+marker_op = IN | NOT IN | OP
+
+**Paramètres :**
+
+- `tokenizer`
+
+##### __init__
+
+**Paramètres :**
+
+- `value`
+
+##### __str__
+
+##### __repr__
+
+##### serialize
+
+##### serialize
+
+##### serialize
+
+##### serialize
+
+---
+
+### _structures
+
+#### Classes
+
+##### InfinityType
+
+**Méthodes :**
+
+- `__repr__()`
+- `__hash__()`
+- `__lt__()`
+- `__le__()`
+- `__eq__()`
+- `__gt__()`
+- `__ge__()`
+- `__neg__()`
+
+##### NegativeInfinityType
+
+**Méthodes :**
+
+- `__repr__()`
+- `__hash__()`
+- `__lt__()`
+- `__le__()`
+- `__eq__()`
+- `__gt__()`
+- `__ge__()`
+- `__neg__()`
+
+#### Fonctions
+
+##### __repr__
+
+##### __hash__
+
+##### __lt__
+
+**Paramètres :**
+
+- `other`
+
+##### __le__
+
+**Paramètres :**
+
+- `other`
+
+##### __eq__
+
+**Paramètres :**
+
+- `other`
+
+##### __gt__
+
+**Paramètres :**
+
+- `other`
+
+##### __ge__
+
+**Paramètres :**
+
+- `other`
+
+##### __neg__
+
+##### __repr__
+
+##### __hash__
+
+##### __lt__
+
+**Paramètres :**
+
+- `other`
+
+##### __le__
+
+**Paramètres :**
+
+- `other`
+
+##### __eq__
+
+**Paramètres :**
+
+- `other`
+
+##### __gt__
+
+**Paramètres :**
+
+- `other`
+
+##### __ge__
+
+**Paramètres :**
+
+- `other`
+
+##### __neg__
+
+---
+
+### _tokenizer
+
+#### Classes
+
+##### Token
+
+##### ParserSyntaxError
+
+The provided source text could not be parsed correctly.
+
+**Méthodes :**
+
+- `__init__()`
+- `__str__()`
+
+##### Tokenizer
+
+Context-sensitive token parsing.
+
+Provides methods to examine the input stream to check whether the next token
+matches.
+
+**Méthodes :**
+
+- `__init__()`
+- `consume()`
+- `check()`
+- `expect()`
+- `read()`
+- `raise_syntax_error()`
+- `enclosing_tokens()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `message`
+
+##### __str__
+
+##### __init__
+
+**Paramètres :**
+
+- `source`
+
+##### consume
+
+Move beyond provided token name, if at current position.
+
+**Paramètres :**
+
+- `name`
+
+##### check
+
+Check whether the next token has the provided name.
+
+By default, if the check succeeds, the token *must* be read before
+another check. If `peek` is set to `True`, the token is not loaded and
+would need to be checked again.
+
+**Paramètres :**
+
+- `name`
+
+##### expect
+
+Expect a certain token name next, failing with a syntax error otherwise.
+
+The token is *not* read.
+
+**Paramètres :**
+
+- `name`
+
+##### read
+
+Consume the next token and return it.
+
+##### raise_syntax_error
+
+Raise ParserSyntaxError at the given position.
+
+**Paramètres :**
+
+- `message`
+
+##### enclosing_tokens
+
+**Paramètres :**
+
+- `open_token`
+- `close_token`
+
+---
+
 ### tags
 
 #### Classes
@@ -256400,6 +256014,392 @@ interpreter, from most to least important.
 ##### __hash__
 
 ##### __str__
+
+##### __repr__
+
+---
+
+### markers
+
+#### Classes
+
+##### InvalidMarker
+
+An invalid marker was found, users should refer to PEP 508.
+
+##### UndefinedComparison
+
+An invalid operation was attempted on a value that doesn't support it.
+
+##### UndefinedEnvironmentName
+
+A name was attempted to be used that does not exist inside of the
+environment.
+
+##### Environment
+
+##### Marker
+
+**Méthodes :**
+
+- `__init__()`
+- `__str__()`
+- `__repr__()`
+- `__hash__()`
+- `__eq__()`
+- `evaluate()`
+
+#### Fonctions
+
+##### _normalize_extra_values
+
+Normalize extra values.
+
+**Paramètres :**
+
+- `results`
+
+##### _format_marker
+
+**Paramètres :**
+
+- `marker`
+- `first`
+
+##### _eval_op
+
+**Paramètres :**
+
+- `lhs`
+- `op`
+- `rhs`
+
+##### _normalize
+
+**Paramètres :**
+
+- `lhs`
+- `rhs`
+- `key`
+
+##### _evaluate_markers
+
+**Paramètres :**
+
+- `markers`
+- `environment`
+
+##### format_full_version
+
+**Paramètres :**
+
+- `info`
+
+##### default_environment
+
+##### _repair_python_full_version
+
+Work around platform.python_version() returning something that is not PEP 440
+compliant for non-tagged Python builds.
+
+**Paramètres :**
+
+- `env`
+
+##### __init__
+
+**Paramètres :**
+
+- `marker`
+
+##### __str__
+
+##### __repr__
+
+##### __hash__
+
+##### __eq__
+
+**Paramètres :**
+
+- `other`
+
+##### evaluate
+
+Evaluate a marker.
+
+Return the boolean from evaluating the given marker against the
+environment. environment is an optional argument to override all or
+part of the determined environment. The *context* parameter specifies what
+context the markers are being evaluated for, which influences what markers
+are considered valid. Acceptable values are "metadata" (for core metadata;
+default), "lock_file", and "requirement" (i.e. all other situations).
+
+The environment is determined from the current Python process.
+
+**Paramètres :**
+
+- `environment`
+- `context`
+
+---
+
+### metadata
+
+#### Classes
+
+##### InvalidMetadata
+
+A metadata field contains invalid data.
+
+**Méthodes :**
+
+- `__init__()`
+
+##### RawMetadata
+
+A dictionary of raw core metadata.
+
+Each field in core metadata maps to a key of this dictionary (when data is
+provided). The key is lower-case and underscores are used instead of dashes
+compared to the equivalent core metadata field. Any core metadata field that
+can be specified multiple times or can hold multiple values in a single
+field have a key with a plural name. See :class:`Metadata` whose attributes
+match the keys of this dictionary.
+
+Core metadata fields that can be specified multiple times are stored as a
+list or dict depending on which is appropriate for the field. Any fields
+which hold multiple values in a single field are stored as a list.
+
+##### _Validator
+
+Validate a metadata field.
+
+All _process_*() methods correspond to a core metadata field. The method is
+called with the field's raw value. If the raw value is valid it is returned
+in its "enriched" form (e.g. ``version.Version`` for the ``Version`` field).
+If the raw value is invalid, :exc:`InvalidMetadata` is raised (with a cause
+as appropriate).
+
+**Méthodes :**
+
+- `__init__()`
+- `__set_name__()`
+- `__get__()`
+- `_invalid_metadata()`
+- `_process_metadata_version()`
+- `_process_name()`
+- `_process_version()`
+- `_process_summary()`
+- `_process_description_content_type()`
+- `_process_dynamic()`
+- `_process_provides_extra()`
+- `_process_requires_python()`
+- `_process_requires_dist()`
+- `_process_license_expression()`
+- `_process_license_files()`
+
+##### Metadata
+
+Representation of distribution metadata.
+
+Compared to :class:`RawMetadata`, this class provides objects representing
+metadata fields instead of only using built-in types. Any invalid metadata
+will cause :exc:`InvalidMetadata` to be raised (with a
+:py:attr:`~BaseException.__cause__` attribute as appropriate).
+
+**Méthodes :**
+
+- `from_raw()`
+- `from_email()`
+
+##### ExceptionGroup
+
+A minimal implementation of :external:exc:`ExceptionGroup` from Python 3.11.
+
+If :external:exc:`ExceptionGroup` is already defined by Python itself,
+that version is used instead.
+
+**Méthodes :**
+
+- `__init__()`
+- `__repr__()`
+
+#### Fonctions
+
+##### _parse_keywords
+
+Split a string of comma-separated keywords into a list of keywords.
+
+**Paramètres :**
+
+- `data`
+
+##### _parse_project_urls
+
+Parse a list of label/URL string pairings separated by a comma.
+
+**Paramètres :**
+
+- `data`
+
+##### _get_payload
+
+Get the body of the message.
+
+**Paramètres :**
+
+- `msg`
+- `source`
+
+##### parse_email
+
+Parse a distribution's metadata stored as email headers (e.g. from ``METADATA``).
+
+This function returns a two-item tuple of dicts. The first dict is of
+recognized fields from the core metadata specification. Fields that can be
+parsed and translated into Python's built-in types are converted
+appropriately. All other fields are left as-is. Fields that are allowed to
+appear multiple times are stored as lists.
+
+The second dict contains all other fields from the metadata. This includes
+any unrecognized fields. It also includes any fields which are expected to
+be parsed into a built-in type but were not formatted appropriately. Finally,
+any fields that are expected to appear only once but are repeated are
+included in this dict.
+
+**Paramètres :**
+
+- `data`
+
+##### __init__
+
+**Paramètres :**
+
+- `field`
+- `message`
+
+##### __init__
+
+##### __set_name__
+
+**Paramètres :**
+
+- `_owner`
+- `name`
+
+##### __get__
+
+**Paramètres :**
+
+- `instance`
+- `_owner`
+
+##### _invalid_metadata
+
+**Paramètres :**
+
+- `msg`
+- `cause`
+
+##### _process_metadata_version
+
+**Paramètres :**
+
+- `value`
+
+##### _process_name
+
+**Paramètres :**
+
+- `value`
+
+##### _process_version
+
+**Paramètres :**
+
+- `value`
+
+##### _process_summary
+
+Check the field contains no newlines.
+
+**Paramètres :**
+
+- `value`
+
+##### _process_description_content_type
+
+**Paramètres :**
+
+- `value`
+
+##### _process_dynamic
+
+**Paramètres :**
+
+- `value`
+
+##### _process_provides_extra
+
+**Paramètres :**
+
+- `value`
+
+##### _process_requires_python
+
+**Paramètres :**
+
+- `value`
+
+##### _process_requires_dist
+
+**Paramètres :**
+
+- `value`
+
+##### _process_license_expression
+
+**Paramètres :**
+
+- `value`
+
+##### _process_license_files
+
+**Paramètres :**
+
+- `value`
+
+##### from_raw
+
+Create an instance from :class:`RawMetadata`.
+
+If *validate* is true, all metadata will be validated. All exceptions
+related to validation will be gathered and raised as an :class:`ExceptionGroup`.
+
+**Paramètres :**
+
+- `cls`
+- `data`
+
+##### from_email
+
+Parse metadata from email headers.
+
+If *validate* is true, the metadata will be validated. All exceptions
+related to validation will be gathered and raised as an :class:`ExceptionGroup`.
+
+**Paramètres :**
+
+- `cls`
+- `data`
+
+##### __init__
+
+**Paramètres :**
+
+- `message`
+- `exceptions`
 
 ##### __repr__
 
@@ -257253,55 +257253,6 @@ assumes an object exporting the buffer protocol will never do this.
 
 ---
 
-### dtypes
-
-This module is home to specific dtypes related functionality and their classes.
-For more general information about dtypes, also see `numpy.dtype` and
-:ref:`arrays.dtypes`.
-
-Similar to the builtin ``types`` module, this submodule defines types (classes)
-that are not widely used directly.
-
-.. versionadded:: NumPy 1.25
-
-    The dtypes module is new in NumPy 1.25.  Previously DType classes were
-    only accessible indirectly.
-
-
-DType classes
--------------
-
-The following are the classes of the corresponding NumPy dtype instances and
-NumPy scalar types.  The classes can be used in ``isinstance`` checks and can
-also be instantiated or used directly.  Direct use of these classes is not
-typical, since their scalar counterparts (e.g. ``np.float64``) or strings
-like ``"float64"`` can be used.
-
-#### Fonctions
-
-##### _add_dtype_helper
-
-**Paramètres :**
-
-- `DType`
-- `alias`
-
----
-
-### _distributor_init
-
-Distributor init file
-
-Distributors: you can add custom code here to support particular distributions
-of numpy.
-
-For example, this is a good place to put any BLAS/LAPACK initialization code.
-
-The numpy standard source distribution will not put code in this file, so you
-can safely replace this file with your own version.
-
----
-
 ### __config__
 
 #### Classes
@@ -257357,6 +257308,264 @@ Notes
 **Paramètres :**
 
 - `mode`
+
+---
+
+### dtypes
+
+This module is home to specific dtypes related functionality and their classes.
+For more general information about dtypes, also see `numpy.dtype` and
+:ref:`arrays.dtypes`.
+
+Similar to the builtin ``types`` module, this submodule defines types (classes)
+that are not widely used directly.
+
+.. versionadded:: NumPy 1.25
+
+    The dtypes module is new in NumPy 1.25.  Previously DType classes were
+    only accessible indirectly.
+
+
+DType classes
+-------------
+
+The following are the classes of the corresponding NumPy dtype instances and
+NumPy scalar types.  The classes can be used in ``isinstance`` checks and can
+also be instantiated or used directly.  Direct use of these classes is not
+typical, since their scalar counterparts (e.g. ``np.float64``) or strings
+like ``"float64"`` can be used.
+
+#### Fonctions
+
+##### _add_dtype_helper
+
+**Paramètres :**
+
+- `DType`
+- `alias`
+
+---
+
+### _distributor_init
+
+Distributor init file
+
+Distributors: you can add custom code here to support particular distributions
+of numpy.
+
+For example, this is a good place to put any BLAS/LAPACK initialization code.
+
+The numpy standard source distribution will not put code in this file, so you
+can safely replace this file with your own version.
+
+---
+
+### exceptions
+
+Exceptions and Warnings (:mod:`numpy.exceptions`)
+=================================================
+
+General exceptions used by NumPy.  Note that some exceptions may be module
+specific, such as linear algebra errors.
+
+.. versionadded:: NumPy 1.25
+
+    The exceptions module is new in NumPy 1.25.  Older exceptions remain
+    available through the main NumPy namespace for compatibility.
+
+.. currentmodule:: numpy.exceptions
+
+Warnings
+--------
+.. autosummary::
+   :toctree: generated/
+
+   ComplexWarning             Given when converting complex to real.
+   VisibleDeprecationWarning  Same as a DeprecationWarning, but more visible.
+   RankWarning                Issued when the design matrix is rank deficient.
+
+Exceptions
+----------
+.. autosummary::
+   :toctree: generated/
+
+    AxisError          Given when an axis was invalid.
+    DTypePromotionError   Given when no common dtype could be found.
+    TooHardError       Error specific to `numpy.shares_memory`.
+
+#### Classes
+
+##### ComplexWarning
+
+The warning raised when casting a complex dtype to a real dtype.
+
+As implemented, casting a complex number to a real discards its imaginary
+part, but this behavior may not be what the user actually wants.
+
+##### ModuleDeprecationWarning
+
+Module deprecation warning.
+
+.. warning::
+
+    This warning should not be used, since nose testing is not relevant
+    anymore.
+
+The nose tester turns ordinary Deprecation warnings into test failures.
+That makes it hard to deprecate whole modules, because they get
+imported by default. So this is a special Deprecation warning that the
+nose tester will let pass without making tests fail.
+
+##### VisibleDeprecationWarning
+
+Visible deprecation warning.
+
+By default, python will not show deprecation warnings, so this class
+can be used when a very visible warning is helpful, for example because
+the usage is most likely a user bug.
+
+##### RankWarning
+
+Matrix rank warning.
+
+Issued by polynomial functions when the design matrix is rank deficient.
+
+##### TooHardError
+
+max_work was exceeded.
+
+This is raised whenever the maximum number of candidate solutions
+to consider specified by the ``max_work`` parameter is exceeded.
+Assigning a finite number to max_work may have caused the operation
+to fail.
+
+##### AxisError
+
+Axis supplied was invalid.
+
+This is raised whenever an ``axis`` parameter is specified that is larger
+than the number of array dimensions.
+For compatibility with code written against older numpy versions, which
+raised a mixture of :exc:`ValueError` and :exc:`IndexError` for this
+situation, this exception subclasses both to ensure that
+``except ValueError`` and ``except IndexError`` statements continue
+to catch ``AxisError``.
+
+Parameters
+----------
+axis : int or str
+    The out of bounds axis or a custom exception message.
+    If an axis is provided, then `ndim` should be specified as well.
+ndim : int, optional
+    The number of array dimensions.
+msg_prefix : str, optional
+    A prefix for the exception message.
+
+Attributes
+----------
+axis : int, optional
+    The out of bounds axis or ``None`` if a custom exception
+    message was provided. This should be the axis as passed by
+    the user, before any normalization to resolve negative indices.
+
+    .. versionadded:: 1.22
+ndim : int, optional
+    The number of array dimensions or ``None`` if a custom exception
+    message was provided.
+
+    .. versionadded:: 1.22
+
+
+Examples
+--------
+>>> import numpy as np
+>>> array_1d = np.arange(10)
+>>> np.cumsum(array_1d, axis=1)
+Traceback (most recent call last):
+  ...
+numpy.exceptions.AxisError: axis 1 is out of bounds for array of dimension 1
+
+Negative axes are preserved:
+
+>>> np.cumsum(array_1d, axis=-2)
+Traceback (most recent call last):
+  ...
+numpy.exceptions.AxisError: axis -2 is out of bounds for array of dimension 1
+
+The class constructor generally takes the axis and arrays'
+dimensionality as arguments:
+
+>>> print(np.exceptions.AxisError(2, 1, msg_prefix='error'))
+error: axis 2 is out of bounds for array of dimension 1
+
+Alternatively, a custom exception message can be passed:
+
+>>> print(np.exceptions.AxisError('Custom error message'))
+Custom error message
+
+**Méthodes :**
+
+- `__init__()`
+- `__str__()`
+
+##### DTypePromotionError
+
+Multiple DTypes could not be converted to a common one.
+
+This exception derives from ``TypeError`` and is raised whenever dtypes
+cannot be converted to a single common one.  This can be because they
+are of a different category/class or incompatible instances of the same
+one (see Examples).
+
+Notes
+-----
+Many functions will use promotion to find the correct result and
+implementation.  For these functions the error will typically be chained
+with a more specific error indicating that no implementation was found
+for the input dtypes.
+
+Typically promotion should be considered "invalid" between the dtypes of
+two arrays when `arr1 == arr2` can safely return all ``False`` because the
+dtypes are fundamentally different.
+
+Examples
+--------
+Datetimes and complex numbers are incompatible classes and cannot be
+promoted:
+
+>>> import numpy as np
+>>> np.result_type(np.dtype("M8[s]"), np.complex128)  # doctest: +IGNORE_EXCEPTION_DETAIL
+Traceback (most recent call last):
+ ...
+DTypePromotionError: The DType <class 'numpy.dtype[datetime64]'> could not
+be promoted by <class 'numpy.dtype[complex128]'>. This means that no common
+DType exists for the given inputs. For example they cannot be stored in a
+single array unless the dtype is `object`. The full list of DTypes is:
+(<class 'numpy.dtype[datetime64]'>, <class 'numpy.dtype[complex128]'>)
+
+For example for structured dtypes, the structure can mismatch and the
+same ``DTypePromotionError`` is given when two structured dtypes with
+a mismatch in their number of fields is given:
+
+>>> dtype1 = np.dtype([("field1", np.float64), ("field2", np.int64)])
+>>> dtype2 = np.dtype([("field1", np.float64)])
+>>> np.promote_types(dtype1, dtype2)  # doctest: +IGNORE_EXCEPTION_DETAIL
+Traceback (most recent call last):
+ ...
+DTypePromotionError: field names `('field1', 'field2')` and `('field1',)`
+mismatch.
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `axis`
+- `ndim`
+- `msg_prefix`
+
+##### __str__
 
 ---
 
@@ -258078,215 +258287,6 @@ matrix([[0, 1, 2, 0, 1, 2, 0, 1, 2],
 - `a`
 - `m`
 - `n`
-
----
-
-### exceptions
-
-Exceptions and Warnings (:mod:`numpy.exceptions`)
-=================================================
-
-General exceptions used by NumPy.  Note that some exceptions may be module
-specific, such as linear algebra errors.
-
-.. versionadded:: NumPy 1.25
-
-    The exceptions module is new in NumPy 1.25.  Older exceptions remain
-    available through the main NumPy namespace for compatibility.
-
-.. currentmodule:: numpy.exceptions
-
-Warnings
---------
-.. autosummary::
-   :toctree: generated/
-
-   ComplexWarning             Given when converting complex to real.
-   VisibleDeprecationWarning  Same as a DeprecationWarning, but more visible.
-   RankWarning                Issued when the design matrix is rank deficient.
-
-Exceptions
-----------
-.. autosummary::
-   :toctree: generated/
-
-    AxisError          Given when an axis was invalid.
-    DTypePromotionError   Given when no common dtype could be found.
-    TooHardError       Error specific to `numpy.shares_memory`.
-
-#### Classes
-
-##### ComplexWarning
-
-The warning raised when casting a complex dtype to a real dtype.
-
-As implemented, casting a complex number to a real discards its imaginary
-part, but this behavior may not be what the user actually wants.
-
-##### ModuleDeprecationWarning
-
-Module deprecation warning.
-
-.. warning::
-
-    This warning should not be used, since nose testing is not relevant
-    anymore.
-
-The nose tester turns ordinary Deprecation warnings into test failures.
-That makes it hard to deprecate whole modules, because they get
-imported by default. So this is a special Deprecation warning that the
-nose tester will let pass without making tests fail.
-
-##### VisibleDeprecationWarning
-
-Visible deprecation warning.
-
-By default, python will not show deprecation warnings, so this class
-can be used when a very visible warning is helpful, for example because
-the usage is most likely a user bug.
-
-##### RankWarning
-
-Matrix rank warning.
-
-Issued by polynomial functions when the design matrix is rank deficient.
-
-##### TooHardError
-
-max_work was exceeded.
-
-This is raised whenever the maximum number of candidate solutions
-to consider specified by the ``max_work`` parameter is exceeded.
-Assigning a finite number to max_work may have caused the operation
-to fail.
-
-##### AxisError
-
-Axis supplied was invalid.
-
-This is raised whenever an ``axis`` parameter is specified that is larger
-than the number of array dimensions.
-For compatibility with code written against older numpy versions, which
-raised a mixture of :exc:`ValueError` and :exc:`IndexError` for this
-situation, this exception subclasses both to ensure that
-``except ValueError`` and ``except IndexError`` statements continue
-to catch ``AxisError``.
-
-Parameters
-----------
-axis : int or str
-    The out of bounds axis or a custom exception message.
-    If an axis is provided, then `ndim` should be specified as well.
-ndim : int, optional
-    The number of array dimensions.
-msg_prefix : str, optional
-    A prefix for the exception message.
-
-Attributes
-----------
-axis : int, optional
-    The out of bounds axis or ``None`` if a custom exception
-    message was provided. This should be the axis as passed by
-    the user, before any normalization to resolve negative indices.
-
-    .. versionadded:: 1.22
-ndim : int, optional
-    The number of array dimensions or ``None`` if a custom exception
-    message was provided.
-
-    .. versionadded:: 1.22
-
-
-Examples
---------
->>> import numpy as np
->>> array_1d = np.arange(10)
->>> np.cumsum(array_1d, axis=1)
-Traceback (most recent call last):
-  ...
-numpy.exceptions.AxisError: axis 1 is out of bounds for array of dimension 1
-
-Negative axes are preserved:
-
->>> np.cumsum(array_1d, axis=-2)
-Traceback (most recent call last):
-  ...
-numpy.exceptions.AxisError: axis -2 is out of bounds for array of dimension 1
-
-The class constructor generally takes the axis and arrays'
-dimensionality as arguments:
-
->>> print(np.exceptions.AxisError(2, 1, msg_prefix='error'))
-error: axis 2 is out of bounds for array of dimension 1
-
-Alternatively, a custom exception message can be passed:
-
->>> print(np.exceptions.AxisError('Custom error message'))
-Custom error message
-
-**Méthodes :**
-
-- `__init__()`
-- `__str__()`
-
-##### DTypePromotionError
-
-Multiple DTypes could not be converted to a common one.
-
-This exception derives from ``TypeError`` and is raised whenever dtypes
-cannot be converted to a single common one.  This can be because they
-are of a different category/class or incompatible instances of the same
-one (see Examples).
-
-Notes
------
-Many functions will use promotion to find the correct result and
-implementation.  For these functions the error will typically be chained
-with a more specific error indicating that no implementation was found
-for the input dtypes.
-
-Typically promotion should be considered "invalid" between the dtypes of
-two arrays when `arr1 == arr2` can safely return all ``False`` because the
-dtypes are fundamentally different.
-
-Examples
---------
-Datetimes and complex numbers are incompatible classes and cannot be
-promoted:
-
->>> import numpy as np
->>> np.result_type(np.dtype("M8[s]"), np.complex128)  # doctest: +IGNORE_EXCEPTION_DETAIL
-Traceback (most recent call last):
- ...
-DTypePromotionError: The DType <class 'numpy.dtype[datetime64]'> could not
-be promoted by <class 'numpy.dtype[complex128]'>. This means that no common
-DType exists for the given inputs. For example they cannot be stored in a
-single array unless the dtype is `object`. The full list of DTypes is:
-(<class 'numpy.dtype[datetime64]'>, <class 'numpy.dtype[complex128]'>)
-
-For example for structured dtypes, the structure can mismatch and the
-same ``DTypePromotionError`` is given when two structured dtypes with
-a mismatch in their number of fields is given:
-
->>> dtype1 = np.dtype([("field1", np.float64), ("field2", np.int64)])
->>> dtype2 = np.dtype([("field1", np.float64)])
->>> np.promote_types(dtype1, dtype2)  # doctest: +IGNORE_EXCEPTION_DETAIL
-Traceback (most recent call last):
- ...
-DTypePromotionError: field names `('field1', 'field2')` and `('field1',)`
-mismatch.
-
-#### Fonctions
-
-##### __init__
-
-**Paramètres :**
-
-- `axis`
-- `ndim`
-- `msg_prefix`
-
-##### __str__
 
 ---
 
@@ -265125,6 +265125,20 @@ Regression test for gh-10712.
 
 ---
 
+### utilities
+
+#### Fonctions
+
+##### _get_compiler_status
+
+##### has_c_compiler
+
+##### has_f77_compiler
+
+##### has_f90_compiler
+
+---
+
 ### test_misc_util
 
 #### Classes
@@ -265379,20 +265393,6 @@ Context manager to emulate os.name != 'posix'
 ##### test_simple_cflags
 
 ##### test_simple_lflags
-
----
-
-### utilities
-
-#### Fonctions
-
-##### _get_compiler_status
-
-##### has_c_compiler
-
-##### has_f77_compiler
-
-##### has_f90_compiler
 
 ---
 
@@ -268231,6 +268231,18 @@ mod : module
 
 ---
 
+### arrayprint
+
+#### Fonctions
+
+##### __getattr__
+
+**Paramètres :**
+
+- `attr_name`
+
+---
+
 ### _utils
 
 #### Fonctions
@@ -268241,18 +268253,6 @@ mod : module
 
 - `attr`
 - `submodule`
-
----
-
-### arrayprint
-
-#### Fonctions
-
-##### __getattr__
-
-**Paramètres :**
-
-- `attr_name`
 
 ---
 
@@ -287645,6 +287645,27 @@ Percentage execution time saved 32%
 
 ---
 
+### _add_newdocs
+
+This is only meant to add docs to objects defined in C-extension modules.
+The purpose is to allow easier editing of the docstrings without
+requiring a re-compile.
+
+NOTE: Many of the methods of ndarray have corresponding functions.
+      If you update these docstrings, please keep also the ones in
+      _core/fromnumeric.py, matrixlib/defmatrix.py up-to-date.
+
+#### Fonctions
+
+##### refer_to_array_attribute
+
+**Paramètres :**
+
+- `attr`
+- `method`
+
+---
+
 ### _dtype
 
 A place for code to be called from the implementation of np.dtype
@@ -287805,27 +287826,6 @@ Duplicates the C `is_dtype_struct_simple_unaligned_layout` function.
 **Paramètres :**
 
 - `dtype`
-
----
-
-### _add_newdocs
-
-This is only meant to add docs to objects defined in C-extension modules.
-The purpose is to allow easier editing of the docstrings without
-requiring a re-compile.
-
-NOTE: Many of the methods of ndarray have corresponding functions.
-      If you update these docstrings, please keep also the ones in
-      _core/fromnumeric.py, matrixlib/defmatrix.py up-to-date.
-
-#### Fonctions
-
-##### refer_to_array_attribute
-
-**Paramètres :**
-
-- `attr`
-- `method`
 
 ---
 
@@ -291132,6 +291132,102 @@ title        - description of used floating point numbers
 
 ---
 
+### overrides
+
+Implementation of __array_function__ overrides from NEP-18.
+
+#### Fonctions
+
+##### get_array_function_like_doc
+
+**Paramètres :**
+
+- `public_api`
+- `docstring_template`
+
+##### finalize_array_function_like
+
+**Paramètres :**
+
+- `public_api`
+
+##### verify_matching_signatures
+
+Verify that a dispatcher function has the right signature.
+
+**Paramètres :**
+
+- `implementation`
+- `dispatcher`
+
+##### array_function_dispatch
+
+Decorator for adding dispatch with the __array_function__ protocol.
+
+See NEP-18 for example usage.
+
+Parameters
+----------
+dispatcher : callable or None
+    Function that when called like ``dispatcher(*args, **kwargs)`` with
+    arguments from the NumPy function call returns an iterable of
+    array-like arguments to check for ``__array_function__``.
+
+    If `None`, the first argument is used as the single `like=` argument
+    and not passed on.  A function implementing `like=` must call its
+    dispatcher with `like` as the first non-keyword argument.
+module : str, optional
+    __module__ attribute to set on new function, e.g., ``module='numpy'``.
+    By default, module is copied from the decorated function.
+verify : bool, optional
+    If True, verify the that the signature of the dispatcher and decorated
+    function signatures match exactly: all required and optional arguments
+    should appear in order with the same names, but the default values for
+    all optional arguments should be ``None``. Only disable verification
+    if the dispatcher's signature needs to deviate for some particular
+    reason, e.g., because the function has a signature like
+    ``func(*args, **kwargs)``.
+docs_from_dispatcher : bool, optional
+    If True, copy docs from the dispatcher function onto the dispatched
+    function, rather than from the implementation. This is useful for
+    functions defined in C, which otherwise don't have docstrings.
+
+Returns
+-------
+Function suitable for decorating the implementation of a NumPy function.
+
+**Paramètres :**
+
+- `dispatcher`
+- `module`
+- `verify`
+- `docs_from_dispatcher`
+
+##### array_function_from_dispatcher
+
+Like array_function_dispatcher, but with function arguments flipped.
+
+**Paramètres :**
+
+- `implementation`
+- `module`
+- `verify`
+- `docs_from_dispatcher`
+
+##### decorator
+
+**Paramètres :**
+
+- `implementation`
+
+##### decorator
+
+**Paramètres :**
+
+- `dispatcher`
+
+---
+
 ### memmap
 
 #### Classes
@@ -291380,102 +291476,6 @@ memmap
 **Paramètres :**
 
 - `index`
-
----
-
-### overrides
-
-Implementation of __array_function__ overrides from NEP-18.
-
-#### Fonctions
-
-##### get_array_function_like_doc
-
-**Paramètres :**
-
-- `public_api`
-- `docstring_template`
-
-##### finalize_array_function_like
-
-**Paramètres :**
-
-- `public_api`
-
-##### verify_matching_signatures
-
-Verify that a dispatcher function has the right signature.
-
-**Paramètres :**
-
-- `implementation`
-- `dispatcher`
-
-##### array_function_dispatch
-
-Decorator for adding dispatch with the __array_function__ protocol.
-
-See NEP-18 for example usage.
-
-Parameters
-----------
-dispatcher : callable or None
-    Function that when called like ``dispatcher(*args, **kwargs)`` with
-    arguments from the NumPy function call returns an iterable of
-    array-like arguments to check for ``__array_function__``.
-
-    If `None`, the first argument is used as the single `like=` argument
-    and not passed on.  A function implementing `like=` must call its
-    dispatcher with `like` as the first non-keyword argument.
-module : str, optional
-    __module__ attribute to set on new function, e.g., ``module='numpy'``.
-    By default, module is copied from the decorated function.
-verify : bool, optional
-    If True, verify the that the signature of the dispatcher and decorated
-    function signatures match exactly: all required and optional arguments
-    should appear in order with the same names, but the default values for
-    all optional arguments should be ``None``. Only disable verification
-    if the dispatcher's signature needs to deviate for some particular
-    reason, e.g., because the function has a signature like
-    ``func(*args, **kwargs)``.
-docs_from_dispatcher : bool, optional
-    If True, copy docs from the dispatcher function onto the dispatched
-    function, rather than from the implementation. This is useful for
-    functions defined in C, which otherwise don't have docstrings.
-
-Returns
--------
-Function suitable for decorating the implementation of a NumPy function.
-
-**Paramètres :**
-
-- `dispatcher`
-- `module`
-- `verify`
-- `docs_from_dispatcher`
-
-##### array_function_from_dispatcher
-
-Like array_function_dispatcher, but with function arguments flipped.
-
-**Paramètres :**
-
-- `implementation`
-- `module`
-- `verify`
-- `docs_from_dispatcher`
-
-##### decorator
-
-**Paramètres :**
-
-- `implementation`
-
-##### decorator
-
-**Paramètres :**
-
-- `dispatcher`
 
 ---
 
@@ -298626,6 +298626,14 @@ A ``key`` function for `sorted`.
 
 ---
 
+### cversions
+
+Simple script to compute the api hash of the current API.
+
+The API has is defined by numpy_api_order and ufunc_api_order.
+
+---
+
 ### _type_aliases
 
 Due to compatibility, numpy has a very large number of different naming
@@ -298643,24 +298651,6 @@ and sometimes other mappings too.
 .. data:: sctypes
     A dictionary keyed by a "type group" string, providing a list of types
     under that group.
-
----
-
-### cversions
-
-Simple script to compute the api hash of the current API.
-
-The API has is defined by numpy_api_order and ufunc_api_order.
-
----
-
-### printoptions
-
-Stores and defines the low-level format_options context variable.
-
-This is defined in its own file outside of the arrayprint module
-so we can import it from C while initializing the multiarray
-C module during import without introducing circular dependencies.
 
 ---
 
@@ -300025,6 +300015,16 @@ array(['112 3', '1231', '2311'], dtype='<U5')
 - `a`
 - `table`
 - `deletechars`
+
+---
+
+### printoptions
+
+Stores and defines the low-level format_options context variable.
+
+This is defined in its own file outside of the arrayprint module
+so we can import it from C while initializing the multiarray
+C module during import without introducing circular dependencies.
 
 ---
 
@@ -323461,6 +323461,26 @@ when it started failing previously.
 
 ---
 
+### test_scripts
+
+Test scripts
+
+Test that we can run executable scripts that have been installed with numpy.
+
+#### Fonctions
+
+##### find_f2py_commands
+
+##### test_f2py
+
+**Paramètres :**
+
+- `f2py_cmd`
+
+##### test_pep338
+
+---
+
 ### test_public_api
 
 #### Fonctions
@@ -323603,26 +323623,6 @@ any function-like object that is accessible from more that one place.
 **Paramètres :**
 
 - `member_set`
-
----
-
-### test_scripts
-
-Test scripts
-
-Test that we can run executable scripts that have been installed with numpy.
-
-#### Fonctions
-
-##### find_f2py_commands
-
-##### test_f2py
-
-**Paramètres :**
-
-- `f2py_cmd`
-
-##### test_pep338
 
 ---
 
@@ -324545,6 +324545,20 @@ This indirection is needed because sys.stderr might not always be available (see
 - `flag`
 
 ##### get_needs
+
+---
+
+### _isocbind
+
+ISO_C_BINDING maps for f2py2e.
+Only required declarations/macros/functions will be used.
+
+Copyright 1999 -- 2011 Pearu Peterson all rights reserved.
+Copyright 2011 -- present NumPy Developers.
+Permission to use, modify, and distribute this software is given under the
+terms of the NumPy License.
+
+NO WARRANTY IS EXPRESSED OR IMPLIED.  USE AT YOUR OWN RISK.
 
 ---
 
@@ -325501,6 +325515,10 @@ See https://github.com/numpy/numpy/pull/19388 for more information.
 - `s`
 - `a`
 - `b`
+
+---
+
+### __main__
 
 ---
 
@@ -327466,24 +327484,6 @@ tuple of (dict, list)
 **Paramètres :**
 
 - `var`
-
----
-
-### _isocbind
-
-ISO_C_BINDING maps for f2py2e.
-Only required declarations/macros/functions will be used.
-
-Copyright 1999 -- 2011 Pearu Peterson all rights reserved.
-Copyright 2011 -- present NumPy Developers.
-Permission to use, modify, and distribute this software is given under the
-terms of the NumPy License.
-
-NO WARRANTY IS EXPRESSED OR IMPLIED.  USE AT YOUR OWN RISK.
-
----
-
-### __main__
 
 ---
 
@@ -333372,6 +333372,1151 @@ whereas `dtype_or_func` in the constructor does.
 
 ---
 
+### recfunctions
+
+Collection of utilities to manipulate structured arrays.
+
+Most of these functions were initially implemented by John Hunter for
+matplotlib.  They have been rewritten and extended for convenience.
+
+#### Fonctions
+
+##### _recursive_fill_fields_dispatcher
+
+**Paramètres :**
+
+- `input`
+- `output`
+
+##### recursive_fill_fields
+
+Fills fields from output with fields from input,
+with support for nested structures.
+
+Parameters
+----------
+input : ndarray
+    Input array.
+output : ndarray
+    Output array.
+
+Notes
+-----
+* `output` should be at least the same size as `input`
+
+Examples
+--------
+>>> import numpy as np
+>>> from numpy.lib import recfunctions as rfn
+>>> a = np.array([(1, 10.), (2, 20.)], dtype=[('A', np.int64), ('B', np.float64)])
+>>> b = np.zeros((3,), dtype=a.dtype)
+>>> rfn.recursive_fill_fields(a, b)
+array([(1, 10.), (2, 20.), (0,  0.)], dtype=[('A', '<i8'), ('B', '<f8')])
+
+**Paramètres :**
+
+- `input`
+- `output`
+
+##### _get_fieldspec
+
+Produce a list of name/dtype pairs corresponding to the dtype fields
+
+Similar to dtype.descr, but the second item of each tuple is a dtype, not a
+string. As a result, this handles subarray dtypes
+
+Can be passed to the dtype constructor to reconstruct the dtype, noting that
+this (deliberately) discards field offsets.
+
+Examples
+--------
+>>> import numpy as np
+>>> dt = np.dtype([(('a', 'A'), np.int64), ('b', np.double, 3)])
+>>> dt.descr
+[(('a', 'A'), '<i8'), ('b', '<f8', (3,))]
+>>> _get_fieldspec(dt)
+[(('a', 'A'), dtype('int64')), ('b', dtype(('<f8', (3,))))]
+
+**Paramètres :**
+
+- `dtype`
+
+##### get_names
+
+Returns the field names of the input datatype as a tuple. Input datatype
+must have fields otherwise error is raised.
+
+Parameters
+----------
+adtype : dtype
+    Input datatype
+
+Examples
+--------
+>>> import numpy as np
+>>> from numpy.lib import recfunctions as rfn
+>>> rfn.get_names(np.empty((1,), dtype=[('A', int)]).dtype)
+('A',)
+>>> rfn.get_names(np.empty((1,), dtype=[('A',int), ('B', float)]).dtype)
+('A', 'B')
+>>> adtype = np.dtype([('a', int), ('b', [('ba', int), ('bb', int)])])
+>>> rfn.get_names(adtype)
+('a', ('b', ('ba', 'bb')))
+
+**Paramètres :**
+
+- `adtype`
+
+##### get_names_flat
+
+Returns the field names of the input datatype as a tuple. Input datatype
+must have fields otherwise error is raised.
+Nested structure are flattened beforehand.
+
+Parameters
+----------
+adtype : dtype
+    Input datatype
+
+Examples
+--------
+>>> import numpy as np
+>>> from numpy.lib import recfunctions as rfn
+>>> rfn.get_names_flat(np.empty((1,), dtype=[('A', int)]).dtype) is None
+False
+>>> rfn.get_names_flat(np.empty((1,), dtype=[('A',int), ('B', str)]).dtype)
+('A', 'B')
+>>> adtype = np.dtype([('a', int), ('b', [('ba', int), ('bb', int)])])
+>>> rfn.get_names_flat(adtype)
+('a', 'b', 'ba', 'bb')
+
+**Paramètres :**
+
+- `adtype`
+
+##### flatten_descr
+
+Flatten a structured data-type description.
+
+Examples
+--------
+>>> import numpy as np
+>>> from numpy.lib import recfunctions as rfn
+>>> ndtype = np.dtype([('a', '<i4'), ('b', [('ba', '<f8'), ('bb', '<i4')])])
+>>> rfn.flatten_descr(ndtype)
+(('a', dtype('int32')), ('ba', dtype('float64')), ('bb', dtype('int32')))
+
+**Paramètres :**
+
+- `ndtype`
+
+##### _zip_dtype
+
+**Paramètres :**
+
+- `seqarrays`
+- `flatten`
+
+##### _zip_descr
+
+Combine the dtype description of a series of arrays.
+
+Parameters
+----------
+seqarrays : sequence of arrays
+    Sequence of arrays
+flatten : {boolean}, optional
+    Whether to collapse nested descriptions.
+
+**Paramètres :**
+
+- `seqarrays`
+- `flatten`
+
+##### get_fieldstructure
+
+Returns a dictionary with fields indexing lists of their parent fields.
+
+This function is used to simplify access to fields nested in other fields.
+
+Parameters
+----------
+adtype : np.dtype
+    Input datatype
+lastname : optional
+    Last processed field name (used internally during recursion).
+parents : dictionary
+    Dictionary of parent fields (used internally during recursion).
+
+Examples
+--------
+>>> import numpy as np
+>>> from numpy.lib import recfunctions as rfn
+>>> ndtype =  np.dtype([('A', int),
+...                     ('B', [('BA', int),
+...                            ('BB', [('BBA', int), ('BBB', int)])])])
+>>> rfn.get_fieldstructure(ndtype)
+... # XXX: possible regression, order of BBA and BBB is swapped
+{'A': [], 'B': [], 'BA': ['B'], 'BB': ['B'], 'BBA': ['B', 'BB'], 'BBB': ['B', 'BB']}
+
+**Paramètres :**
+
+- `adtype`
+- `lastname`
+- `parents`
+
+##### _izip_fields_flat
+
+Returns an iterator of concatenated fields from a sequence of arrays,
+collapsing any nested structure.
+
+**Paramètres :**
+
+- `iterable`
+
+##### _izip_fields
+
+Returns an iterator of concatenated fields from a sequence of arrays.
+
+**Paramètres :**
+
+- `iterable`
+
+##### _izip_records
+
+Returns an iterator of concatenated items from a sequence of arrays.
+
+Parameters
+----------
+seqarrays : sequence of arrays
+    Sequence of arrays.
+fill_value : {None, integer}
+    Value used to pad shorter iterables.
+flatten : {True, False},
+    Whether to
+
+**Paramètres :**
+
+- `seqarrays`
+- `fill_value`
+- `flatten`
+
+##### _fix_output
+
+Private function: return a recarray, a ndarray, a MaskedArray
+or a MaskedRecords depending on the input parameters
+
+**Paramètres :**
+
+- `output`
+- `usemask`
+- `asrecarray`
+
+##### _fix_defaults
+
+Update the fill_value and masked data of `output`
+from the default given in a dictionary defaults.
+
+**Paramètres :**
+
+- `output`
+- `defaults`
+
+##### _merge_arrays_dispatcher
+
+**Paramètres :**
+
+- `seqarrays`
+- `fill_value`
+- `flatten`
+- `usemask`
+- `asrecarray`
+
+##### merge_arrays
+
+Merge arrays field by field.
+
+Parameters
+----------
+seqarrays : sequence of ndarrays
+    Sequence of arrays
+fill_value : {float}, optional
+    Filling value used to pad missing data on the shorter arrays.
+flatten : {False, True}, optional
+    Whether to collapse nested fields.
+usemask : {False, True}, optional
+    Whether to return a masked array or not.
+asrecarray : {False, True}, optional
+    Whether to return a recarray (MaskedRecords) or not.
+
+Examples
+--------
+>>> import numpy as np
+>>> from numpy.lib import recfunctions as rfn
+>>> rfn.merge_arrays((np.array([1, 2]), np.array([10., 20., 30.])))
+array([( 1, 10.), ( 2, 20.), (-1, 30.)],
+      dtype=[('f0', '<i8'), ('f1', '<f8')])
+
+>>> rfn.merge_arrays((np.array([1, 2], dtype=np.int64),
+...         np.array([10., 20., 30.])), usemask=False)
+ array([(1, 10.0), (2, 20.0), (-1, 30.0)],
+         dtype=[('f0', '<i8'), ('f1', '<f8')])
+>>> rfn.merge_arrays((np.array([1, 2]).view([('a', np.int64)]),
+...               np.array([10., 20., 30.])),
+...              usemask=False, asrecarray=True)
+rec.array([( 1, 10.), ( 2, 20.), (-1, 30.)],
+          dtype=[('a', '<i8'), ('f1', '<f8')])
+
+Notes
+-----
+* Without a mask, the missing value will be filled with something,
+  depending on what its corresponding type:
+
+  * ``-1``      for integers
+  * ``-1.0``    for floating point numbers
+  * ``'-'``     for characters
+  * ``'-1'``    for strings
+  * ``True``    for boolean values
+* XXX: I just obtained these values empirically
+
+**Paramètres :**
+
+- `seqarrays`
+- `fill_value`
+- `flatten`
+- `usemask`
+- `asrecarray`
+
+##### _drop_fields_dispatcher
+
+**Paramètres :**
+
+- `base`
+- `drop_names`
+- `usemask`
+- `asrecarray`
+
+##### drop_fields
+
+Return a new array with fields in `drop_names` dropped.
+
+Nested fields are supported.
+
+Parameters
+----------
+base : array
+    Input array
+drop_names : string or sequence
+    String or sequence of strings corresponding to the names of the
+    fields to drop.
+usemask : {False, True}, optional
+    Whether to return a masked array or not.
+asrecarray : string or sequence, optional
+    Whether to return a recarray or a mrecarray (`asrecarray=True`) or
+    a plain ndarray or masked array with flexible dtype. The default
+    is False.
+
+Examples
+--------
+>>> import numpy as np
+>>> from numpy.lib import recfunctions as rfn
+>>> a = np.array([(1, (2, 3.0)), (4, (5, 6.0))],
+...   dtype=[('a', np.int64), ('b', [('ba', np.double), ('bb', np.int64)])])
+>>> rfn.drop_fields(a, 'a')
+array([((2., 3),), ((5., 6),)],
+      dtype=[('b', [('ba', '<f8'), ('bb', '<i8')])])
+>>> rfn.drop_fields(a, 'ba')
+array([(1, (3,)), (4, (6,))], dtype=[('a', '<i8'), ('b', [('bb', '<i8')])])
+>>> rfn.drop_fields(a, ['ba', 'bb'])
+array([(1,), (4,)], dtype=[('a', '<i8')])
+
+**Paramètres :**
+
+- `base`
+- `drop_names`
+- `usemask`
+- `asrecarray`
+
+##### _keep_fields
+
+Return a new array keeping only the fields in `keep_names`,
+and preserving the order of those fields.
+
+Parameters
+----------
+base : array
+    Input array
+keep_names : string or sequence
+    String or sequence of strings corresponding to the names of the
+    fields to keep. Order of the names will be preserved.
+usemask : {False, True}, optional
+    Whether to return a masked array or not.
+asrecarray : string or sequence, optional
+    Whether to return a recarray or a mrecarray (`asrecarray=True`) or
+    a plain ndarray or masked array with flexible dtype. The default
+    is False.
+
+**Paramètres :**
+
+- `base`
+- `keep_names`
+- `usemask`
+- `asrecarray`
+
+##### _rec_drop_fields_dispatcher
+
+**Paramètres :**
+
+- `base`
+- `drop_names`
+
+##### rec_drop_fields
+
+Returns a new numpy.recarray with fields in `drop_names` dropped.
+
+**Paramètres :**
+
+- `base`
+- `drop_names`
+
+##### _rename_fields_dispatcher
+
+**Paramètres :**
+
+- `base`
+- `namemapper`
+
+##### rename_fields
+
+Rename the fields from a flexible-datatype ndarray or recarray.
+
+Nested fields are supported.
+
+Parameters
+----------
+base : ndarray
+    Input array whose fields must be modified.
+namemapper : dictionary
+    Dictionary mapping old field names to their new version.
+
+Examples
+--------
+>>> import numpy as np
+>>> from numpy.lib import recfunctions as rfn
+>>> a = np.array([(1, (2, [3.0, 30.])), (4, (5, [6.0, 60.]))],
+...   dtype=[('a', int),('b', [('ba', float), ('bb', (float, 2))])])
+>>> rfn.rename_fields(a, {'a':'A', 'bb':'BB'})
+array([(1, (2., [ 3., 30.])), (4, (5., [ 6., 60.]))],
+      dtype=[('A', '<i8'), ('b', [('ba', '<f8'), ('BB', '<f8', (2,))])])
+
+**Paramètres :**
+
+- `base`
+- `namemapper`
+
+##### _append_fields_dispatcher
+
+**Paramètres :**
+
+- `base`
+- `names`
+- `data`
+- `dtypes`
+- `fill_value`
+- `usemask`
+- `asrecarray`
+
+##### append_fields
+
+Add new fields to an existing array.
+
+The names of the fields are given with the `names` arguments,
+the corresponding values with the `data` arguments.
+If a single field is appended, `names`, `data` and `dtypes` do not have
+to be lists but just values.
+
+Parameters
+----------
+base : array
+    Input array to extend.
+names : string, sequence
+    String or sequence of strings corresponding to the names
+    of the new fields.
+data : array or sequence of arrays
+    Array or sequence of arrays storing the fields to add to the base.
+dtypes : sequence of datatypes, optional
+    Datatype or sequence of datatypes.
+    If None, the datatypes are estimated from the `data`.
+fill_value : {float}, optional
+    Filling value used to pad missing data on the shorter arrays.
+usemask : {False, True}, optional
+    Whether to return a masked array or not.
+asrecarray : {False, True}, optional
+    Whether to return a recarray (MaskedRecords) or not.
+
+**Paramètres :**
+
+- `base`
+- `names`
+- `data`
+- `dtypes`
+- `fill_value`
+- `usemask`
+- `asrecarray`
+
+##### _rec_append_fields_dispatcher
+
+**Paramètres :**
+
+- `base`
+- `names`
+- `data`
+- `dtypes`
+
+##### rec_append_fields
+
+Add new fields to an existing array.
+
+The names of the fields are given with the `names` arguments,
+the corresponding values with the `data` arguments.
+If a single field is appended, `names`, `data` and `dtypes` do not have
+to be lists but just values.
+
+Parameters
+----------
+base : array
+    Input array to extend.
+names : string, sequence
+    String or sequence of strings corresponding to the names
+    of the new fields.
+data : array or sequence of arrays
+    Array or sequence of arrays storing the fields to add to the base.
+dtypes : sequence of datatypes, optional
+    Datatype or sequence of datatypes.
+    If None, the datatypes are estimated from the `data`.
+
+See Also
+--------
+append_fields
+
+Returns
+-------
+appended_array : np.recarray
+
+**Paramètres :**
+
+- `base`
+- `names`
+- `data`
+- `dtypes`
+
+##### _repack_fields_dispatcher
+
+**Paramètres :**
+
+- `a`
+- `align`
+- `recurse`
+
+##### repack_fields
+
+Re-pack the fields of a structured array or dtype in memory.
+
+The memory layout of structured datatypes allows fields at arbitrary
+byte offsets. This means the fields can be separated by padding bytes,
+their offsets can be non-monotonically increasing, and they can overlap.
+
+This method removes any overlaps and reorders the fields in memory so they
+have increasing byte offsets, and adds or removes padding bytes depending
+on the `align` option, which behaves like the `align` option to
+`numpy.dtype`.
+
+If `align=False`, this method produces a "packed" memory layout in which
+each field starts at the byte the previous field ended, and any padding
+bytes are removed.
+
+If `align=True`, this methods produces an "aligned" memory layout in which
+each field's offset is a multiple of its alignment, and the total itemsize
+is a multiple of the largest alignment, by adding padding bytes as needed.
+
+Parameters
+----------
+a : ndarray or dtype
+   array or dtype for which to repack the fields.
+align : boolean
+   If true, use an "aligned" memory layout, otherwise use a "packed" layout.
+recurse : boolean
+   If True, also repack nested structures.
+
+Returns
+-------
+repacked : ndarray or dtype
+   Copy of `a` with fields repacked, or `a` itself if no repacking was
+   needed.
+
+Examples
+--------
+>>> import numpy as np
+
+>>> from numpy.lib import recfunctions as rfn
+>>> def print_offsets(d):
+...     print("offsets:", [d.fields[name][1] for name in d.names])
+...     print("itemsize:", d.itemsize)
+...
+>>> dt = np.dtype('u1, <i8, <f8', align=True)
+>>> dt
+dtype({'names': ['f0', 'f1', 'f2'], 'formats': ['u1', '<i8', '<f8'], 'offsets': [0, 8, 16], 'itemsize': 24}, align=True)
+>>> print_offsets(dt)
+offsets: [0, 8, 16]
+itemsize: 24
+>>> packed_dt = rfn.repack_fields(dt)
+>>> packed_dt
+dtype([('f0', 'u1'), ('f1', '<i8'), ('f2', '<f8')])
+>>> print_offsets(packed_dt)
+offsets: [0, 1, 9]
+itemsize: 17
+
+**Paramètres :**
+
+- `a`
+- `align`
+- `recurse`
+
+##### _get_fields_and_offsets
+
+Returns a flat list of (dtype, count, offset) tuples of all the
+scalar fields in the dtype "dt", including nested fields, in left
+to right order.
+
+**Paramètres :**
+
+- `dt`
+- `offset`
+
+##### _common_stride
+
+Returns the stride between the fields, or None if the stride is not
+constant. The values in "counts" designate the lengths of
+subarrays. Subarrays are treated as many contiguous fields, with
+always positive stride.
+
+**Paramètres :**
+
+- `offsets`
+- `counts`
+- `itemsize`
+
+##### _structured_to_unstructured_dispatcher
+
+**Paramètres :**
+
+- `arr`
+- `dtype`
+- `copy`
+- `casting`
+
+##### structured_to_unstructured
+
+Converts an n-D structured array into an (n+1)-D unstructured array.
+
+The new array will have a new last dimension equal in size to the
+number of field-elements of the input array. If not supplied, the output
+datatype is determined from the numpy type promotion rules applied to all
+the field datatypes.
+
+Nested fields, as well as each element of any subarray fields, all count
+as a single field-elements.
+
+Parameters
+----------
+arr : ndarray
+   Structured array or dtype to convert. Cannot contain object datatype.
+dtype : dtype, optional
+   The dtype of the output unstructured array.
+copy : bool, optional
+    If true, always return a copy. If false, a view is returned if
+    possible, such as when the `dtype` and strides of the fields are
+    suitable and the array subtype is one of `numpy.ndarray`,
+    `numpy.recarray` or `numpy.memmap`.
+
+    .. versionchanged:: 1.25.0
+        A view can now be returned if the fields are separated by a
+        uniform stride.
+
+casting : {'no', 'equiv', 'safe', 'same_kind', 'unsafe'}, optional
+    See casting argument of `numpy.ndarray.astype`. Controls what kind of
+    data casting may occur.
+
+Returns
+-------
+unstructured : ndarray
+   Unstructured array with one more dimension.
+
+Examples
+--------
+>>> import numpy as np
+
+>>> from numpy.lib import recfunctions as rfn
+>>> a = np.zeros(4, dtype=[('a', 'i4'), ('b', 'f4,u2'), ('c', 'f4', 2)])
+>>> a
+array([(0, (0., 0), [0., 0.]), (0, (0., 0), [0., 0.]),
+       (0, (0., 0), [0., 0.]), (0, (0., 0), [0., 0.])],
+      dtype=[('a', '<i4'), ('b', [('f0', '<f4'), ('f1', '<u2')]), ('c', '<f4', (2,))])
+>>> rfn.structured_to_unstructured(a)
+array([[0., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 0.]])
+
+>>> b = np.array([(1, 2, 5), (4, 5, 7), (7, 8 ,11), (10, 11, 12)],
+...              dtype=[('x', 'i4'), ('y', 'f4'), ('z', 'f8')])
+>>> np.mean(rfn.structured_to_unstructured(b[['x', 'z']]), axis=-1)
+array([ 3. ,  5.5,  9. , 11. ])
+
+**Paramètres :**
+
+- `arr`
+- `dtype`
+- `copy`
+- `casting`
+
+##### _unstructured_to_structured_dispatcher
+
+**Paramètres :**
+
+- `arr`
+- `dtype`
+- `names`
+- `align`
+- `copy`
+- `casting`
+
+##### unstructured_to_structured
+
+Converts an n-D unstructured array into an (n-1)-D structured array.
+
+The last dimension of the input array is converted into a structure, with
+number of field-elements equal to the size of the last dimension of the
+input array. By default all output fields have the input array's dtype, but
+an output structured dtype with an equal number of fields-elements can be
+supplied instead.
+
+Nested fields, as well as each element of any subarray fields, all count
+towards the number of field-elements.
+
+Parameters
+----------
+arr : ndarray
+   Unstructured array or dtype to convert.
+dtype : dtype, optional
+   The structured dtype of the output array
+names : list of strings, optional
+   If dtype is not supplied, this specifies the field names for the output
+   dtype, in order. The field dtypes will be the same as the input array.
+align : boolean, optional
+   Whether to create an aligned memory layout.
+copy : bool, optional
+    See copy argument to `numpy.ndarray.astype`. If true, always return a
+    copy. If false, and `dtype` requirements are satisfied, a view is
+    returned.
+casting : {'no', 'equiv', 'safe', 'same_kind', 'unsafe'}, optional
+    See casting argument of `numpy.ndarray.astype`. Controls what kind of
+    data casting may occur.
+
+Returns
+-------
+structured : ndarray
+   Structured array with fewer dimensions.
+
+Examples
+--------
+>>> import numpy as np
+
+>>> from numpy.lib import recfunctions as rfn
+>>> dt = np.dtype([('a', 'i4'), ('b', 'f4,u2'), ('c', 'f4', 2)])
+>>> a = np.arange(20).reshape((4,5))
+>>> a
+array([[ 0,  1,  2,  3,  4],
+       [ 5,  6,  7,  8,  9],
+       [10, 11, 12, 13, 14],
+       [15, 16, 17, 18, 19]])
+>>> rfn.unstructured_to_structured(a, dt)
+array([( 0, ( 1.,  2), [ 3.,  4.]), ( 5, ( 6.,  7), [ 8.,  9.]),
+       (10, (11., 12), [13., 14.]), (15, (16., 17), [18., 19.])],
+      dtype=[('a', '<i4'), ('b', [('f0', '<f4'), ('f1', '<u2')]), ('c', '<f4', (2,))])
+
+**Paramètres :**
+
+- `arr`
+- `dtype`
+- `names`
+- `align`
+- `copy`
+- `casting`
+
+##### _apply_along_fields_dispatcher
+
+**Paramètres :**
+
+- `func`
+- `arr`
+
+##### apply_along_fields
+
+Apply function 'func' as a reduction across fields of a structured array.
+
+This is similar to `numpy.apply_along_axis`, but treats the fields of a
+structured array as an extra axis. The fields are all first cast to a
+common type following the type-promotion rules from `numpy.result_type`
+applied to the field's dtypes.
+
+Parameters
+----------
+func : function
+   Function to apply on the "field" dimension. This function must
+   support an `axis` argument, like `numpy.mean`, `numpy.sum`, etc.
+arr : ndarray
+   Structured array for which to apply func.
+
+Returns
+-------
+out : ndarray
+   Result of the reduction operation
+
+Examples
+--------
+>>> import numpy as np
+
+>>> from numpy.lib import recfunctions as rfn
+>>> b = np.array([(1, 2, 5), (4, 5, 7), (7, 8 ,11), (10, 11, 12)],
+...              dtype=[('x', 'i4'), ('y', 'f4'), ('z', 'f8')])
+>>> rfn.apply_along_fields(np.mean, b)
+array([ 2.66666667,  5.33333333,  8.66666667, 11.        ])
+>>> rfn.apply_along_fields(np.mean, b[['x', 'z']])
+array([ 3. ,  5.5,  9. , 11. ])
+
+**Paramètres :**
+
+- `func`
+- `arr`
+
+##### _assign_fields_by_name_dispatcher
+
+**Paramètres :**
+
+- `dst`
+- `src`
+- `zero_unassigned`
+
+##### assign_fields_by_name
+
+Assigns values from one structured array to another by field name.
+
+Normally in numpy >= 1.14, assignment of one structured array to another
+copies fields "by position", meaning that the first field from the src is
+copied to the first field of the dst, and so on, regardless of field name.
+
+This function instead copies "by field name", such that fields in the dst
+are assigned from the identically named field in the src. This applies
+recursively for nested structures. This is how structure assignment worked
+in numpy >= 1.6 to <= 1.13.
+
+Parameters
+----------
+dst : ndarray
+src : ndarray
+    The source and destination arrays during assignment.
+zero_unassigned : bool, optional
+    If True, fields in the dst for which there was no matching
+    field in the src are filled with the value 0 (zero). This
+    was the behavior of numpy <= 1.13. If False, those fields
+    are not modified.
+
+**Paramètres :**
+
+- `dst`
+- `src`
+- `zero_unassigned`
+
+##### _require_fields_dispatcher
+
+**Paramètres :**
+
+- `array`
+- `required_dtype`
+
+##### require_fields
+
+Casts a structured array to a new dtype using assignment by field-name.
+
+This function assigns from the old to the new array by name, so the
+value of a field in the output array is the value of the field with the
+same name in the source array. This has the effect of creating a new
+ndarray containing only the fields "required" by the required_dtype.
+
+If a field name in the required_dtype does not exist in the
+input array, that field is created and set to 0 in the output array.
+
+Parameters
+----------
+a : ndarray
+   array to cast
+required_dtype : dtype
+   datatype for output array
+
+Returns
+-------
+out : ndarray
+    array with the new dtype, with field values copied from the fields in
+    the input array with the same name
+
+Examples
+--------
+>>> import numpy as np
+
+>>> from numpy.lib import recfunctions as rfn
+>>> a = np.ones(4, dtype=[('a', 'i4'), ('b', 'f8'), ('c', 'u1')])
+>>> rfn.require_fields(a, [('b', 'f4'), ('c', 'u1')])
+array([(1., 1), (1., 1), (1., 1), (1., 1)],
+  dtype=[('b', '<f4'), ('c', 'u1')])
+>>> rfn.require_fields(a, [('b', 'f4'), ('newf', 'u1')])
+array([(1., 0), (1., 0), (1., 0), (1., 0)],
+  dtype=[('b', '<f4'), ('newf', 'u1')])
+
+**Paramètres :**
+
+- `array`
+- `required_dtype`
+
+##### _stack_arrays_dispatcher
+
+**Paramètres :**
+
+- `arrays`
+- `defaults`
+- `usemask`
+- `asrecarray`
+- `autoconvert`
+
+##### stack_arrays
+
+Superposes arrays fields by fields
+
+Parameters
+----------
+arrays : array or sequence
+    Sequence of input arrays.
+defaults : dictionary, optional
+    Dictionary mapping field names to the corresponding default values.
+usemask : {True, False}, optional
+    Whether to return a MaskedArray (or MaskedRecords is
+    `asrecarray==True`) or a ndarray.
+asrecarray : {False, True}, optional
+    Whether to return a recarray (or MaskedRecords if `usemask==True`)
+    or just a flexible-type ndarray.
+autoconvert : {False, True}, optional
+    Whether automatically cast the type of the field to the maximum.
+
+Examples
+--------
+>>> import numpy as np
+>>> from numpy.lib import recfunctions as rfn
+>>> x = np.array([1, 2,])
+>>> rfn.stack_arrays(x) is x
+True
+>>> z = np.array([('A', 1), ('B', 2)], dtype=[('A', '|S3'), ('B', float)])
+>>> zz = np.array([('a', 10., 100.), ('b', 20., 200.), ('c', 30., 300.)],
+...   dtype=[('A', '|S3'), ('B', np.double), ('C', np.double)])
+>>> test = rfn.stack_arrays((z,zz))
+>>> test
+masked_array(data=[(b'A', 1.0, --), (b'B', 2.0, --), (b'a', 10.0, 100.0),
+                   (b'b', 20.0, 200.0), (b'c', 30.0, 300.0)],
+             mask=[(False, False,  True), (False, False,  True),
+                   (False, False, False), (False, False, False),
+                   (False, False, False)],
+       fill_value=(b'N/A', 1e+20, 1e+20),
+            dtype=[('A', 'S3'), ('B', '<f8'), ('C', '<f8')])
+
+**Paramètres :**
+
+- `arrays`
+- `defaults`
+- `usemask`
+- `asrecarray`
+- `autoconvert`
+
+##### _find_duplicates_dispatcher
+
+**Paramètres :**
+
+- `a`
+- `key`
+- `ignoremask`
+- `return_index`
+
+##### find_duplicates
+
+Find the duplicates in a structured array along a given key
+
+Parameters
+----------
+a : array-like
+    Input array
+key : {string, None}, optional
+    Name of the fields along which to check the duplicates.
+    If None, the search is performed by records
+ignoremask : {True, False}, optional
+    Whether masked data should be discarded or considered as duplicates.
+return_index : {False, True}, optional
+    Whether to return the indices of the duplicated values.
+
+Examples
+--------
+>>> import numpy as np
+>>> from numpy.lib import recfunctions as rfn
+>>> ndtype = [('a', int)]
+>>> a = np.ma.array([1, 1, 1, 2, 2, 3, 3],
+...         mask=[0, 0, 1, 0, 0, 0, 1]).view(ndtype)
+>>> rfn.find_duplicates(a, ignoremask=True, return_index=True)
+(masked_array(data=[(1,), (1,), (2,), (2,)],
+             mask=[(False,), (False,), (False,), (False,)],
+       fill_value=(999999,),
+            dtype=[('a', '<i8')]), array([0, 1, 3, 4]))
+
+**Paramètres :**
+
+- `a`
+- `key`
+- `ignoremask`
+- `return_index`
+
+##### _join_by_dispatcher
+
+**Paramètres :**
+
+- `key`
+- `r1`
+- `r2`
+- `jointype`
+- `r1postfix`
+- `r2postfix`
+- `defaults`
+- `usemask`
+- `asrecarray`
+
+##### join_by
+
+Join arrays `r1` and `r2` on key `key`.
+
+The key should be either a string or a sequence of string corresponding
+to the fields used to join the array.  An exception is raised if the
+`key` field cannot be found in the two input arrays.  Neither `r1` nor
+`r2` should have any duplicates along `key`: the presence of duplicates
+will make the output quite unreliable. Note that duplicates are not
+looked for by the algorithm.
+
+Parameters
+----------
+key : {string, sequence}
+    A string or a sequence of strings corresponding to the fields used
+    for comparison.
+r1, r2 : arrays
+    Structured arrays.
+jointype : {'inner', 'outer', 'leftouter'}, optional
+    If 'inner', returns the elements common to both r1 and r2.
+    If 'outer', returns the common elements as well as the elements of
+    r1 not in r2 and the elements of not in r2.
+    If 'leftouter', returns the common elements and the elements of r1
+    not in r2.
+r1postfix : string, optional
+    String appended to the names of the fields of r1 that are present
+    in r2 but absent of the key.
+r2postfix : string, optional
+    String appended to the names of the fields of r2 that are present
+    in r1 but absent of the key.
+defaults : {dictionary}, optional
+    Dictionary mapping field names to the corresponding default values.
+usemask : {True, False}, optional
+    Whether to return a MaskedArray (or MaskedRecords is
+    `asrecarray==True`) or a ndarray.
+asrecarray : {False, True}, optional
+    Whether to return a recarray (or MaskedRecords if `usemask==True`)
+    or just a flexible-type ndarray.
+
+Notes
+-----
+* The output is sorted along the key.
+* A temporary array is formed by dropping the fields not in the key for
+  the two arrays and concatenating the result. This array is then
+  sorted, and the common entries selected. The output is constructed by
+  filling the fields with the selected entries. Matching is not
+  preserved if there are some duplicates...
+
+**Paramètres :**
+
+- `key`
+- `r1`
+- `r2`
+- `jointype`
+- `r1postfix`
+- `r2postfix`
+- `defaults`
+- `usemask`
+- `asrecarray`
+
+##### _rec_join_dispatcher
+
+**Paramètres :**
+
+- `key`
+- `r1`
+- `r2`
+- `jointype`
+- `r1postfix`
+- `r2postfix`
+- `defaults`
+
+##### rec_join
+
+Join arrays `r1` and `r2` on keys.
+Alternative to join_by, that always returns a np.recarray.
+
+See Also
+--------
+join_by : equivalent function
+
+**Paramètres :**
+
+- `key`
+- `r1`
+- `r2`
+- `jointype`
+- `r1postfix`
+- `r2postfix`
+- `defaults`
+
+##### _drop_descr
+
+**Paramètres :**
+
+- `ndtype`
+- `drop_names`
+
+##### _recursive_rename_fields
+
+**Paramètres :**
+
+- `ndtype`
+- `namemapper`
+
+##### count_elem
+
+**Paramètres :**
+
+- `dt`
+
+---
+
 ### mixins
 
 Mixin classes for custom array types that don't inherit from ndarray.
@@ -334697,1151 +335842,6 @@ polyder : equivalent function
 **Paramètres :**
 
 - `q`
-
----
-
-### recfunctions
-
-Collection of utilities to manipulate structured arrays.
-
-Most of these functions were initially implemented by John Hunter for
-matplotlib.  They have been rewritten and extended for convenience.
-
-#### Fonctions
-
-##### _recursive_fill_fields_dispatcher
-
-**Paramètres :**
-
-- `input`
-- `output`
-
-##### recursive_fill_fields
-
-Fills fields from output with fields from input,
-with support for nested structures.
-
-Parameters
-----------
-input : ndarray
-    Input array.
-output : ndarray
-    Output array.
-
-Notes
------
-* `output` should be at least the same size as `input`
-
-Examples
---------
->>> import numpy as np
->>> from numpy.lib import recfunctions as rfn
->>> a = np.array([(1, 10.), (2, 20.)], dtype=[('A', np.int64), ('B', np.float64)])
->>> b = np.zeros((3,), dtype=a.dtype)
->>> rfn.recursive_fill_fields(a, b)
-array([(1, 10.), (2, 20.), (0,  0.)], dtype=[('A', '<i8'), ('B', '<f8')])
-
-**Paramètres :**
-
-- `input`
-- `output`
-
-##### _get_fieldspec
-
-Produce a list of name/dtype pairs corresponding to the dtype fields
-
-Similar to dtype.descr, but the second item of each tuple is a dtype, not a
-string. As a result, this handles subarray dtypes
-
-Can be passed to the dtype constructor to reconstruct the dtype, noting that
-this (deliberately) discards field offsets.
-
-Examples
---------
->>> import numpy as np
->>> dt = np.dtype([(('a', 'A'), np.int64), ('b', np.double, 3)])
->>> dt.descr
-[(('a', 'A'), '<i8'), ('b', '<f8', (3,))]
->>> _get_fieldspec(dt)
-[(('a', 'A'), dtype('int64')), ('b', dtype(('<f8', (3,))))]
-
-**Paramètres :**
-
-- `dtype`
-
-##### get_names
-
-Returns the field names of the input datatype as a tuple. Input datatype
-must have fields otherwise error is raised.
-
-Parameters
-----------
-adtype : dtype
-    Input datatype
-
-Examples
---------
->>> import numpy as np
->>> from numpy.lib import recfunctions as rfn
->>> rfn.get_names(np.empty((1,), dtype=[('A', int)]).dtype)
-('A',)
->>> rfn.get_names(np.empty((1,), dtype=[('A',int), ('B', float)]).dtype)
-('A', 'B')
->>> adtype = np.dtype([('a', int), ('b', [('ba', int), ('bb', int)])])
->>> rfn.get_names(adtype)
-('a', ('b', ('ba', 'bb')))
-
-**Paramètres :**
-
-- `adtype`
-
-##### get_names_flat
-
-Returns the field names of the input datatype as a tuple. Input datatype
-must have fields otherwise error is raised.
-Nested structure are flattened beforehand.
-
-Parameters
-----------
-adtype : dtype
-    Input datatype
-
-Examples
---------
->>> import numpy as np
->>> from numpy.lib import recfunctions as rfn
->>> rfn.get_names_flat(np.empty((1,), dtype=[('A', int)]).dtype) is None
-False
->>> rfn.get_names_flat(np.empty((1,), dtype=[('A',int), ('B', str)]).dtype)
-('A', 'B')
->>> adtype = np.dtype([('a', int), ('b', [('ba', int), ('bb', int)])])
->>> rfn.get_names_flat(adtype)
-('a', 'b', 'ba', 'bb')
-
-**Paramètres :**
-
-- `adtype`
-
-##### flatten_descr
-
-Flatten a structured data-type description.
-
-Examples
---------
->>> import numpy as np
->>> from numpy.lib import recfunctions as rfn
->>> ndtype = np.dtype([('a', '<i4'), ('b', [('ba', '<f8'), ('bb', '<i4')])])
->>> rfn.flatten_descr(ndtype)
-(('a', dtype('int32')), ('ba', dtype('float64')), ('bb', dtype('int32')))
-
-**Paramètres :**
-
-- `ndtype`
-
-##### _zip_dtype
-
-**Paramètres :**
-
-- `seqarrays`
-- `flatten`
-
-##### _zip_descr
-
-Combine the dtype description of a series of arrays.
-
-Parameters
-----------
-seqarrays : sequence of arrays
-    Sequence of arrays
-flatten : {boolean}, optional
-    Whether to collapse nested descriptions.
-
-**Paramètres :**
-
-- `seqarrays`
-- `flatten`
-
-##### get_fieldstructure
-
-Returns a dictionary with fields indexing lists of their parent fields.
-
-This function is used to simplify access to fields nested in other fields.
-
-Parameters
-----------
-adtype : np.dtype
-    Input datatype
-lastname : optional
-    Last processed field name (used internally during recursion).
-parents : dictionary
-    Dictionary of parent fields (used internally during recursion).
-
-Examples
---------
->>> import numpy as np
->>> from numpy.lib import recfunctions as rfn
->>> ndtype =  np.dtype([('A', int),
-...                     ('B', [('BA', int),
-...                            ('BB', [('BBA', int), ('BBB', int)])])])
->>> rfn.get_fieldstructure(ndtype)
-... # XXX: possible regression, order of BBA and BBB is swapped
-{'A': [], 'B': [], 'BA': ['B'], 'BB': ['B'], 'BBA': ['B', 'BB'], 'BBB': ['B', 'BB']}
-
-**Paramètres :**
-
-- `adtype`
-- `lastname`
-- `parents`
-
-##### _izip_fields_flat
-
-Returns an iterator of concatenated fields from a sequence of arrays,
-collapsing any nested structure.
-
-**Paramètres :**
-
-- `iterable`
-
-##### _izip_fields
-
-Returns an iterator of concatenated fields from a sequence of arrays.
-
-**Paramètres :**
-
-- `iterable`
-
-##### _izip_records
-
-Returns an iterator of concatenated items from a sequence of arrays.
-
-Parameters
-----------
-seqarrays : sequence of arrays
-    Sequence of arrays.
-fill_value : {None, integer}
-    Value used to pad shorter iterables.
-flatten : {True, False},
-    Whether to
-
-**Paramètres :**
-
-- `seqarrays`
-- `fill_value`
-- `flatten`
-
-##### _fix_output
-
-Private function: return a recarray, a ndarray, a MaskedArray
-or a MaskedRecords depending on the input parameters
-
-**Paramètres :**
-
-- `output`
-- `usemask`
-- `asrecarray`
-
-##### _fix_defaults
-
-Update the fill_value and masked data of `output`
-from the default given in a dictionary defaults.
-
-**Paramètres :**
-
-- `output`
-- `defaults`
-
-##### _merge_arrays_dispatcher
-
-**Paramètres :**
-
-- `seqarrays`
-- `fill_value`
-- `flatten`
-- `usemask`
-- `asrecarray`
-
-##### merge_arrays
-
-Merge arrays field by field.
-
-Parameters
-----------
-seqarrays : sequence of ndarrays
-    Sequence of arrays
-fill_value : {float}, optional
-    Filling value used to pad missing data on the shorter arrays.
-flatten : {False, True}, optional
-    Whether to collapse nested fields.
-usemask : {False, True}, optional
-    Whether to return a masked array or not.
-asrecarray : {False, True}, optional
-    Whether to return a recarray (MaskedRecords) or not.
-
-Examples
---------
->>> import numpy as np
->>> from numpy.lib import recfunctions as rfn
->>> rfn.merge_arrays((np.array([1, 2]), np.array([10., 20., 30.])))
-array([( 1, 10.), ( 2, 20.), (-1, 30.)],
-      dtype=[('f0', '<i8'), ('f1', '<f8')])
-
->>> rfn.merge_arrays((np.array([1, 2], dtype=np.int64),
-...         np.array([10., 20., 30.])), usemask=False)
- array([(1, 10.0), (2, 20.0), (-1, 30.0)],
-         dtype=[('f0', '<i8'), ('f1', '<f8')])
->>> rfn.merge_arrays((np.array([1, 2]).view([('a', np.int64)]),
-...               np.array([10., 20., 30.])),
-...              usemask=False, asrecarray=True)
-rec.array([( 1, 10.), ( 2, 20.), (-1, 30.)],
-          dtype=[('a', '<i8'), ('f1', '<f8')])
-
-Notes
------
-* Without a mask, the missing value will be filled with something,
-  depending on what its corresponding type:
-
-  * ``-1``      for integers
-  * ``-1.0``    for floating point numbers
-  * ``'-'``     for characters
-  * ``'-1'``    for strings
-  * ``True``    for boolean values
-* XXX: I just obtained these values empirically
-
-**Paramètres :**
-
-- `seqarrays`
-- `fill_value`
-- `flatten`
-- `usemask`
-- `asrecarray`
-
-##### _drop_fields_dispatcher
-
-**Paramètres :**
-
-- `base`
-- `drop_names`
-- `usemask`
-- `asrecarray`
-
-##### drop_fields
-
-Return a new array with fields in `drop_names` dropped.
-
-Nested fields are supported.
-
-Parameters
-----------
-base : array
-    Input array
-drop_names : string or sequence
-    String or sequence of strings corresponding to the names of the
-    fields to drop.
-usemask : {False, True}, optional
-    Whether to return a masked array or not.
-asrecarray : string or sequence, optional
-    Whether to return a recarray or a mrecarray (`asrecarray=True`) or
-    a plain ndarray or masked array with flexible dtype. The default
-    is False.
-
-Examples
---------
->>> import numpy as np
->>> from numpy.lib import recfunctions as rfn
->>> a = np.array([(1, (2, 3.0)), (4, (5, 6.0))],
-...   dtype=[('a', np.int64), ('b', [('ba', np.double), ('bb', np.int64)])])
->>> rfn.drop_fields(a, 'a')
-array([((2., 3),), ((5., 6),)],
-      dtype=[('b', [('ba', '<f8'), ('bb', '<i8')])])
->>> rfn.drop_fields(a, 'ba')
-array([(1, (3,)), (4, (6,))], dtype=[('a', '<i8'), ('b', [('bb', '<i8')])])
->>> rfn.drop_fields(a, ['ba', 'bb'])
-array([(1,), (4,)], dtype=[('a', '<i8')])
-
-**Paramètres :**
-
-- `base`
-- `drop_names`
-- `usemask`
-- `asrecarray`
-
-##### _keep_fields
-
-Return a new array keeping only the fields in `keep_names`,
-and preserving the order of those fields.
-
-Parameters
-----------
-base : array
-    Input array
-keep_names : string or sequence
-    String or sequence of strings corresponding to the names of the
-    fields to keep. Order of the names will be preserved.
-usemask : {False, True}, optional
-    Whether to return a masked array or not.
-asrecarray : string or sequence, optional
-    Whether to return a recarray or a mrecarray (`asrecarray=True`) or
-    a plain ndarray or masked array with flexible dtype. The default
-    is False.
-
-**Paramètres :**
-
-- `base`
-- `keep_names`
-- `usemask`
-- `asrecarray`
-
-##### _rec_drop_fields_dispatcher
-
-**Paramètres :**
-
-- `base`
-- `drop_names`
-
-##### rec_drop_fields
-
-Returns a new numpy.recarray with fields in `drop_names` dropped.
-
-**Paramètres :**
-
-- `base`
-- `drop_names`
-
-##### _rename_fields_dispatcher
-
-**Paramètres :**
-
-- `base`
-- `namemapper`
-
-##### rename_fields
-
-Rename the fields from a flexible-datatype ndarray or recarray.
-
-Nested fields are supported.
-
-Parameters
-----------
-base : ndarray
-    Input array whose fields must be modified.
-namemapper : dictionary
-    Dictionary mapping old field names to their new version.
-
-Examples
---------
->>> import numpy as np
->>> from numpy.lib import recfunctions as rfn
->>> a = np.array([(1, (2, [3.0, 30.])), (4, (5, [6.0, 60.]))],
-...   dtype=[('a', int),('b', [('ba', float), ('bb', (float, 2))])])
->>> rfn.rename_fields(a, {'a':'A', 'bb':'BB'})
-array([(1, (2., [ 3., 30.])), (4, (5., [ 6., 60.]))],
-      dtype=[('A', '<i8'), ('b', [('ba', '<f8'), ('BB', '<f8', (2,))])])
-
-**Paramètres :**
-
-- `base`
-- `namemapper`
-
-##### _append_fields_dispatcher
-
-**Paramètres :**
-
-- `base`
-- `names`
-- `data`
-- `dtypes`
-- `fill_value`
-- `usemask`
-- `asrecarray`
-
-##### append_fields
-
-Add new fields to an existing array.
-
-The names of the fields are given with the `names` arguments,
-the corresponding values with the `data` arguments.
-If a single field is appended, `names`, `data` and `dtypes` do not have
-to be lists but just values.
-
-Parameters
-----------
-base : array
-    Input array to extend.
-names : string, sequence
-    String or sequence of strings corresponding to the names
-    of the new fields.
-data : array or sequence of arrays
-    Array or sequence of arrays storing the fields to add to the base.
-dtypes : sequence of datatypes, optional
-    Datatype or sequence of datatypes.
-    If None, the datatypes are estimated from the `data`.
-fill_value : {float}, optional
-    Filling value used to pad missing data on the shorter arrays.
-usemask : {False, True}, optional
-    Whether to return a masked array or not.
-asrecarray : {False, True}, optional
-    Whether to return a recarray (MaskedRecords) or not.
-
-**Paramètres :**
-
-- `base`
-- `names`
-- `data`
-- `dtypes`
-- `fill_value`
-- `usemask`
-- `asrecarray`
-
-##### _rec_append_fields_dispatcher
-
-**Paramètres :**
-
-- `base`
-- `names`
-- `data`
-- `dtypes`
-
-##### rec_append_fields
-
-Add new fields to an existing array.
-
-The names of the fields are given with the `names` arguments,
-the corresponding values with the `data` arguments.
-If a single field is appended, `names`, `data` and `dtypes` do not have
-to be lists but just values.
-
-Parameters
-----------
-base : array
-    Input array to extend.
-names : string, sequence
-    String or sequence of strings corresponding to the names
-    of the new fields.
-data : array or sequence of arrays
-    Array or sequence of arrays storing the fields to add to the base.
-dtypes : sequence of datatypes, optional
-    Datatype or sequence of datatypes.
-    If None, the datatypes are estimated from the `data`.
-
-See Also
---------
-append_fields
-
-Returns
--------
-appended_array : np.recarray
-
-**Paramètres :**
-
-- `base`
-- `names`
-- `data`
-- `dtypes`
-
-##### _repack_fields_dispatcher
-
-**Paramètres :**
-
-- `a`
-- `align`
-- `recurse`
-
-##### repack_fields
-
-Re-pack the fields of a structured array or dtype in memory.
-
-The memory layout of structured datatypes allows fields at arbitrary
-byte offsets. This means the fields can be separated by padding bytes,
-their offsets can be non-monotonically increasing, and they can overlap.
-
-This method removes any overlaps and reorders the fields in memory so they
-have increasing byte offsets, and adds or removes padding bytes depending
-on the `align` option, which behaves like the `align` option to
-`numpy.dtype`.
-
-If `align=False`, this method produces a "packed" memory layout in which
-each field starts at the byte the previous field ended, and any padding
-bytes are removed.
-
-If `align=True`, this methods produces an "aligned" memory layout in which
-each field's offset is a multiple of its alignment, and the total itemsize
-is a multiple of the largest alignment, by adding padding bytes as needed.
-
-Parameters
-----------
-a : ndarray or dtype
-   array or dtype for which to repack the fields.
-align : boolean
-   If true, use an "aligned" memory layout, otherwise use a "packed" layout.
-recurse : boolean
-   If True, also repack nested structures.
-
-Returns
--------
-repacked : ndarray or dtype
-   Copy of `a` with fields repacked, or `a` itself if no repacking was
-   needed.
-
-Examples
---------
->>> import numpy as np
-
->>> from numpy.lib import recfunctions as rfn
->>> def print_offsets(d):
-...     print("offsets:", [d.fields[name][1] for name in d.names])
-...     print("itemsize:", d.itemsize)
-...
->>> dt = np.dtype('u1, <i8, <f8', align=True)
->>> dt
-dtype({'names': ['f0', 'f1', 'f2'], 'formats': ['u1', '<i8', '<f8'], 'offsets': [0, 8, 16], 'itemsize': 24}, align=True)
->>> print_offsets(dt)
-offsets: [0, 8, 16]
-itemsize: 24
->>> packed_dt = rfn.repack_fields(dt)
->>> packed_dt
-dtype([('f0', 'u1'), ('f1', '<i8'), ('f2', '<f8')])
->>> print_offsets(packed_dt)
-offsets: [0, 1, 9]
-itemsize: 17
-
-**Paramètres :**
-
-- `a`
-- `align`
-- `recurse`
-
-##### _get_fields_and_offsets
-
-Returns a flat list of (dtype, count, offset) tuples of all the
-scalar fields in the dtype "dt", including nested fields, in left
-to right order.
-
-**Paramètres :**
-
-- `dt`
-- `offset`
-
-##### _common_stride
-
-Returns the stride between the fields, or None if the stride is not
-constant. The values in "counts" designate the lengths of
-subarrays. Subarrays are treated as many contiguous fields, with
-always positive stride.
-
-**Paramètres :**
-
-- `offsets`
-- `counts`
-- `itemsize`
-
-##### _structured_to_unstructured_dispatcher
-
-**Paramètres :**
-
-- `arr`
-- `dtype`
-- `copy`
-- `casting`
-
-##### structured_to_unstructured
-
-Converts an n-D structured array into an (n+1)-D unstructured array.
-
-The new array will have a new last dimension equal in size to the
-number of field-elements of the input array. If not supplied, the output
-datatype is determined from the numpy type promotion rules applied to all
-the field datatypes.
-
-Nested fields, as well as each element of any subarray fields, all count
-as a single field-elements.
-
-Parameters
-----------
-arr : ndarray
-   Structured array or dtype to convert. Cannot contain object datatype.
-dtype : dtype, optional
-   The dtype of the output unstructured array.
-copy : bool, optional
-    If true, always return a copy. If false, a view is returned if
-    possible, such as when the `dtype` and strides of the fields are
-    suitable and the array subtype is one of `numpy.ndarray`,
-    `numpy.recarray` or `numpy.memmap`.
-
-    .. versionchanged:: 1.25.0
-        A view can now be returned if the fields are separated by a
-        uniform stride.
-
-casting : {'no', 'equiv', 'safe', 'same_kind', 'unsafe'}, optional
-    See casting argument of `numpy.ndarray.astype`. Controls what kind of
-    data casting may occur.
-
-Returns
--------
-unstructured : ndarray
-   Unstructured array with one more dimension.
-
-Examples
---------
->>> import numpy as np
-
->>> from numpy.lib import recfunctions as rfn
->>> a = np.zeros(4, dtype=[('a', 'i4'), ('b', 'f4,u2'), ('c', 'f4', 2)])
->>> a
-array([(0, (0., 0), [0., 0.]), (0, (0., 0), [0., 0.]),
-       (0, (0., 0), [0., 0.]), (0, (0., 0), [0., 0.])],
-      dtype=[('a', '<i4'), ('b', [('f0', '<f4'), ('f1', '<u2')]), ('c', '<f4', (2,))])
->>> rfn.structured_to_unstructured(a)
-array([[0., 0., 0., 0., 0.],
-       [0., 0., 0., 0., 0.],
-       [0., 0., 0., 0., 0.],
-       [0., 0., 0., 0., 0.]])
-
->>> b = np.array([(1, 2, 5), (4, 5, 7), (7, 8 ,11), (10, 11, 12)],
-...              dtype=[('x', 'i4'), ('y', 'f4'), ('z', 'f8')])
->>> np.mean(rfn.structured_to_unstructured(b[['x', 'z']]), axis=-1)
-array([ 3. ,  5.5,  9. , 11. ])
-
-**Paramètres :**
-
-- `arr`
-- `dtype`
-- `copy`
-- `casting`
-
-##### _unstructured_to_structured_dispatcher
-
-**Paramètres :**
-
-- `arr`
-- `dtype`
-- `names`
-- `align`
-- `copy`
-- `casting`
-
-##### unstructured_to_structured
-
-Converts an n-D unstructured array into an (n-1)-D structured array.
-
-The last dimension of the input array is converted into a structure, with
-number of field-elements equal to the size of the last dimension of the
-input array. By default all output fields have the input array's dtype, but
-an output structured dtype with an equal number of fields-elements can be
-supplied instead.
-
-Nested fields, as well as each element of any subarray fields, all count
-towards the number of field-elements.
-
-Parameters
-----------
-arr : ndarray
-   Unstructured array or dtype to convert.
-dtype : dtype, optional
-   The structured dtype of the output array
-names : list of strings, optional
-   If dtype is not supplied, this specifies the field names for the output
-   dtype, in order. The field dtypes will be the same as the input array.
-align : boolean, optional
-   Whether to create an aligned memory layout.
-copy : bool, optional
-    See copy argument to `numpy.ndarray.astype`. If true, always return a
-    copy. If false, and `dtype` requirements are satisfied, a view is
-    returned.
-casting : {'no', 'equiv', 'safe', 'same_kind', 'unsafe'}, optional
-    See casting argument of `numpy.ndarray.astype`. Controls what kind of
-    data casting may occur.
-
-Returns
--------
-structured : ndarray
-   Structured array with fewer dimensions.
-
-Examples
---------
->>> import numpy as np
-
->>> from numpy.lib import recfunctions as rfn
->>> dt = np.dtype([('a', 'i4'), ('b', 'f4,u2'), ('c', 'f4', 2)])
->>> a = np.arange(20).reshape((4,5))
->>> a
-array([[ 0,  1,  2,  3,  4],
-       [ 5,  6,  7,  8,  9],
-       [10, 11, 12, 13, 14],
-       [15, 16, 17, 18, 19]])
->>> rfn.unstructured_to_structured(a, dt)
-array([( 0, ( 1.,  2), [ 3.,  4.]), ( 5, ( 6.,  7), [ 8.,  9.]),
-       (10, (11., 12), [13., 14.]), (15, (16., 17), [18., 19.])],
-      dtype=[('a', '<i4'), ('b', [('f0', '<f4'), ('f1', '<u2')]), ('c', '<f4', (2,))])
-
-**Paramètres :**
-
-- `arr`
-- `dtype`
-- `names`
-- `align`
-- `copy`
-- `casting`
-
-##### _apply_along_fields_dispatcher
-
-**Paramètres :**
-
-- `func`
-- `arr`
-
-##### apply_along_fields
-
-Apply function 'func' as a reduction across fields of a structured array.
-
-This is similar to `numpy.apply_along_axis`, but treats the fields of a
-structured array as an extra axis. The fields are all first cast to a
-common type following the type-promotion rules from `numpy.result_type`
-applied to the field's dtypes.
-
-Parameters
-----------
-func : function
-   Function to apply on the "field" dimension. This function must
-   support an `axis` argument, like `numpy.mean`, `numpy.sum`, etc.
-arr : ndarray
-   Structured array for which to apply func.
-
-Returns
--------
-out : ndarray
-   Result of the reduction operation
-
-Examples
---------
->>> import numpy as np
-
->>> from numpy.lib import recfunctions as rfn
->>> b = np.array([(1, 2, 5), (4, 5, 7), (7, 8 ,11), (10, 11, 12)],
-...              dtype=[('x', 'i4'), ('y', 'f4'), ('z', 'f8')])
->>> rfn.apply_along_fields(np.mean, b)
-array([ 2.66666667,  5.33333333,  8.66666667, 11.        ])
->>> rfn.apply_along_fields(np.mean, b[['x', 'z']])
-array([ 3. ,  5.5,  9. , 11. ])
-
-**Paramètres :**
-
-- `func`
-- `arr`
-
-##### _assign_fields_by_name_dispatcher
-
-**Paramètres :**
-
-- `dst`
-- `src`
-- `zero_unassigned`
-
-##### assign_fields_by_name
-
-Assigns values from one structured array to another by field name.
-
-Normally in numpy >= 1.14, assignment of one structured array to another
-copies fields "by position", meaning that the first field from the src is
-copied to the first field of the dst, and so on, regardless of field name.
-
-This function instead copies "by field name", such that fields in the dst
-are assigned from the identically named field in the src. This applies
-recursively for nested structures. This is how structure assignment worked
-in numpy >= 1.6 to <= 1.13.
-
-Parameters
-----------
-dst : ndarray
-src : ndarray
-    The source and destination arrays during assignment.
-zero_unassigned : bool, optional
-    If True, fields in the dst for which there was no matching
-    field in the src are filled with the value 0 (zero). This
-    was the behavior of numpy <= 1.13. If False, those fields
-    are not modified.
-
-**Paramètres :**
-
-- `dst`
-- `src`
-- `zero_unassigned`
-
-##### _require_fields_dispatcher
-
-**Paramètres :**
-
-- `array`
-- `required_dtype`
-
-##### require_fields
-
-Casts a structured array to a new dtype using assignment by field-name.
-
-This function assigns from the old to the new array by name, so the
-value of a field in the output array is the value of the field with the
-same name in the source array. This has the effect of creating a new
-ndarray containing only the fields "required" by the required_dtype.
-
-If a field name in the required_dtype does not exist in the
-input array, that field is created and set to 0 in the output array.
-
-Parameters
-----------
-a : ndarray
-   array to cast
-required_dtype : dtype
-   datatype for output array
-
-Returns
--------
-out : ndarray
-    array with the new dtype, with field values copied from the fields in
-    the input array with the same name
-
-Examples
---------
->>> import numpy as np
-
->>> from numpy.lib import recfunctions as rfn
->>> a = np.ones(4, dtype=[('a', 'i4'), ('b', 'f8'), ('c', 'u1')])
->>> rfn.require_fields(a, [('b', 'f4'), ('c', 'u1')])
-array([(1., 1), (1., 1), (1., 1), (1., 1)],
-  dtype=[('b', '<f4'), ('c', 'u1')])
->>> rfn.require_fields(a, [('b', 'f4'), ('newf', 'u1')])
-array([(1., 0), (1., 0), (1., 0), (1., 0)],
-  dtype=[('b', '<f4'), ('newf', 'u1')])
-
-**Paramètres :**
-
-- `array`
-- `required_dtype`
-
-##### _stack_arrays_dispatcher
-
-**Paramètres :**
-
-- `arrays`
-- `defaults`
-- `usemask`
-- `asrecarray`
-- `autoconvert`
-
-##### stack_arrays
-
-Superposes arrays fields by fields
-
-Parameters
-----------
-arrays : array or sequence
-    Sequence of input arrays.
-defaults : dictionary, optional
-    Dictionary mapping field names to the corresponding default values.
-usemask : {True, False}, optional
-    Whether to return a MaskedArray (or MaskedRecords is
-    `asrecarray==True`) or a ndarray.
-asrecarray : {False, True}, optional
-    Whether to return a recarray (or MaskedRecords if `usemask==True`)
-    or just a flexible-type ndarray.
-autoconvert : {False, True}, optional
-    Whether automatically cast the type of the field to the maximum.
-
-Examples
---------
->>> import numpy as np
->>> from numpy.lib import recfunctions as rfn
->>> x = np.array([1, 2,])
->>> rfn.stack_arrays(x) is x
-True
->>> z = np.array([('A', 1), ('B', 2)], dtype=[('A', '|S3'), ('B', float)])
->>> zz = np.array([('a', 10., 100.), ('b', 20., 200.), ('c', 30., 300.)],
-...   dtype=[('A', '|S3'), ('B', np.double), ('C', np.double)])
->>> test = rfn.stack_arrays((z,zz))
->>> test
-masked_array(data=[(b'A', 1.0, --), (b'B', 2.0, --), (b'a', 10.0, 100.0),
-                   (b'b', 20.0, 200.0), (b'c', 30.0, 300.0)],
-             mask=[(False, False,  True), (False, False,  True),
-                   (False, False, False), (False, False, False),
-                   (False, False, False)],
-       fill_value=(b'N/A', 1e+20, 1e+20),
-            dtype=[('A', 'S3'), ('B', '<f8'), ('C', '<f8')])
-
-**Paramètres :**
-
-- `arrays`
-- `defaults`
-- `usemask`
-- `asrecarray`
-- `autoconvert`
-
-##### _find_duplicates_dispatcher
-
-**Paramètres :**
-
-- `a`
-- `key`
-- `ignoremask`
-- `return_index`
-
-##### find_duplicates
-
-Find the duplicates in a structured array along a given key
-
-Parameters
-----------
-a : array-like
-    Input array
-key : {string, None}, optional
-    Name of the fields along which to check the duplicates.
-    If None, the search is performed by records
-ignoremask : {True, False}, optional
-    Whether masked data should be discarded or considered as duplicates.
-return_index : {False, True}, optional
-    Whether to return the indices of the duplicated values.
-
-Examples
---------
->>> import numpy as np
->>> from numpy.lib import recfunctions as rfn
->>> ndtype = [('a', int)]
->>> a = np.ma.array([1, 1, 1, 2, 2, 3, 3],
-...         mask=[0, 0, 1, 0, 0, 0, 1]).view(ndtype)
->>> rfn.find_duplicates(a, ignoremask=True, return_index=True)
-(masked_array(data=[(1,), (1,), (2,), (2,)],
-             mask=[(False,), (False,), (False,), (False,)],
-       fill_value=(999999,),
-            dtype=[('a', '<i8')]), array([0, 1, 3, 4]))
-
-**Paramètres :**
-
-- `a`
-- `key`
-- `ignoremask`
-- `return_index`
-
-##### _join_by_dispatcher
-
-**Paramètres :**
-
-- `key`
-- `r1`
-- `r2`
-- `jointype`
-- `r1postfix`
-- `r2postfix`
-- `defaults`
-- `usemask`
-- `asrecarray`
-
-##### join_by
-
-Join arrays `r1` and `r2` on key `key`.
-
-The key should be either a string or a sequence of string corresponding
-to the fields used to join the array.  An exception is raised if the
-`key` field cannot be found in the two input arrays.  Neither `r1` nor
-`r2` should have any duplicates along `key`: the presence of duplicates
-will make the output quite unreliable. Note that duplicates are not
-looked for by the algorithm.
-
-Parameters
-----------
-key : {string, sequence}
-    A string or a sequence of strings corresponding to the fields used
-    for comparison.
-r1, r2 : arrays
-    Structured arrays.
-jointype : {'inner', 'outer', 'leftouter'}, optional
-    If 'inner', returns the elements common to both r1 and r2.
-    If 'outer', returns the common elements as well as the elements of
-    r1 not in r2 and the elements of not in r2.
-    If 'leftouter', returns the common elements and the elements of r1
-    not in r2.
-r1postfix : string, optional
-    String appended to the names of the fields of r1 that are present
-    in r2 but absent of the key.
-r2postfix : string, optional
-    String appended to the names of the fields of r2 that are present
-    in r1 but absent of the key.
-defaults : {dictionary}, optional
-    Dictionary mapping field names to the corresponding default values.
-usemask : {True, False}, optional
-    Whether to return a MaskedArray (or MaskedRecords is
-    `asrecarray==True`) or a ndarray.
-asrecarray : {False, True}, optional
-    Whether to return a recarray (or MaskedRecords if `usemask==True`)
-    or just a flexible-type ndarray.
-
-Notes
------
-* The output is sorted along the key.
-* A temporary array is formed by dropping the fields not in the key for
-  the two arrays and concatenating the result. This array is then
-  sorted, and the common entries selected. The output is constructed by
-  filling the fields with the selected entries. Matching is not
-  preserved if there are some duplicates...
-
-**Paramètres :**
-
-- `key`
-- `r1`
-- `r2`
-- `jointype`
-- `r1postfix`
-- `r2postfix`
-- `defaults`
-- `usemask`
-- `asrecarray`
-
-##### _rec_join_dispatcher
-
-**Paramètres :**
-
-- `key`
-- `r1`
-- `r2`
-- `jointype`
-- `r1postfix`
-- `r2postfix`
-- `defaults`
-
-##### rec_join
-
-Join arrays `r1` and `r2` on keys.
-Alternative to join_by, that always returns a np.recarray.
-
-See Also
---------
-join_by : equivalent function
-
-**Paramètres :**
-
-- `key`
-- `r1`
-- `r2`
-- `jointype`
-- `r1postfix`
-- `r2postfix`
-- `defaults`
-
-##### _drop_descr
-
-**Paramètres :**
-
-- `ndtype`
-- `drop_names`
-
-##### _recursive_rename_fields
-
-**Paramètres :**
-
-- `ndtype`
-- `namemapper`
-
-##### count_elem
-
-**Paramètres :**
-
-- `dt`
 
 ---
 
@@ -338362,6 +338362,10 @@ Examples
 
 ---
 
+### user_array
+
+---
+
 ### _scimath_impl
 
 Wrapper functions to more user-friendly calling of certain math functions
@@ -338971,7 +338975,73 @@ array([0.+0.7854j])
 
 ---
 
-### user_array
+### introspect
+
+Introspection helper functions.
+
+#### Fonctions
+
+##### opt_func_info
+
+Returns a dictionary containing the currently supported CPU dispatched
+features for all optimized functions.
+
+Parameters
+----------
+func_name : str (optional)
+    Regular expression to filter by function name.
+
+signature : str (optional)
+    Regular expression to filter by data type.
+
+Returns
+-------
+dict
+    A dictionary where keys are optimized function names and values are
+    nested dictionaries indicating supported targets based on data types.
+
+Examples
+--------
+Retrieve dispatch information for functions named 'add' or 'sub' and
+data types 'float64' or 'float32':
+
+>>> import numpy as np
+>>> dict = np.lib.introspect.opt_func_info(
+...     func_name="add|abs", signature="float64|complex64"
+... )
+>>> import json
+>>> print(json.dumps(dict, indent=2))
+    {
+      "absolute": {
+        "dd": {
+          "current": "SSE41",
+          "available": "SSE41 baseline(SSE SSE2 SSE3)"
+        },
+        "Ff": {
+          "current": "FMA3__AVX2",
+          "available": "AVX512F FMA3__AVX2 baseline(SSE SSE2 SSE3)"
+        },
+        "Dd": {
+          "current": "FMA3__AVX2",
+          "available": "AVX512F FMA3__AVX2 baseline(SSE SSE2 SSE3)"
+        }
+      },
+      "add": {
+        "ddd": {
+          "current": "FMA3__AVX2",
+          "available": "FMA3__AVX2 baseline(SSE SSE2 SSE3)"
+        },
+        "FFF": {
+          "current": "FMA3__AVX2",
+          "available": "FMA3__AVX2 baseline(SSE SSE2 SSE3)"
+        }
+      }
+    }
+
+**Paramètres :**
+
+- `func_name`
+- `signature`
 
 ---
 
@@ -339750,2592 +339820,7 @@ For an example, see `Arrayterator`.
 
 ---
 
-### introspect
-
-Introspection helper functions.
-
-#### Fonctions
-
-##### opt_func_info
-
-Returns a dictionary containing the currently supported CPU dispatched
-features for all optimized functions.
-
-Parameters
-----------
-func_name : str (optional)
-    Regular expression to filter by function name.
-
-signature : str (optional)
-    Regular expression to filter by data type.
-
-Returns
--------
-dict
-    A dictionary where keys are optimized function names and values are
-    nested dictionaries indicating supported targets based on data types.
-
-Examples
---------
-Retrieve dispatch information for functions named 'add' or 'sub' and
-data types 'float64' or 'float32':
-
->>> import numpy as np
->>> dict = np.lib.introspect.opt_func_info(
-...     func_name="add|abs", signature="float64|complex64"
-... )
->>> import json
->>> print(json.dumps(dict, indent=2))
-    {
-      "absolute": {
-        "dd": {
-          "current": "SSE41",
-          "available": "SSE41 baseline(SSE SSE2 SSE3)"
-        },
-        "Ff": {
-          "current": "FMA3__AVX2",
-          "available": "AVX512F FMA3__AVX2 baseline(SSE SSE2 SSE3)"
-        },
-        "Dd": {
-          "current": "FMA3__AVX2",
-          "available": "AVX512F FMA3__AVX2 baseline(SSE SSE2 SSE3)"
-        }
-      },
-      "add": {
-        "ddd": {
-          "current": "FMA3__AVX2",
-          "available": "FMA3__AVX2 baseline(SSE SSE2 SSE3)"
-        },
-        "FFF": {
-          "current": "FMA3__AVX2",
-          "available": "FMA3__AVX2 baseline(SSE SSE2 SSE3)"
-        }
-      }
-    }
-
-**Paramètres :**
-
-- `func_name`
-- `signature`
-
----
-
 ### npyio
-
----
-
-### _shape_base_impl
-
-#### Fonctions
-
-##### _make_along_axis_idx
-
-**Paramètres :**
-
-- `arr_shape`
-- `indices`
-- `axis`
-
-##### _take_along_axis_dispatcher
-
-**Paramètres :**
-
-- `arr`
-- `indices`
-- `axis`
-
-##### take_along_axis
-
-Take values from the input array by matching 1d index and data slices.
-
-This iterates over matching 1d slices oriented along the specified axis in
-the index and data arrays, and uses the former to look up values in the
-latter. These slices can be different lengths.
-
-Functions returning an index along an axis, like `argsort` and
-`argpartition`, produce suitable indices for this function.
-
-Parameters
-----------
-arr : ndarray (Ni..., M, Nk...)
-    Source array
-indices : ndarray (Ni..., J, Nk...)
-    Indices to take along each 1d slice of `arr`. This must match the
-    dimension of arr, but dimensions Ni and Nj only need to broadcast
-    against `arr`.
-axis : int
-    The axis to take 1d slices along. If axis is None, the input array is
-    treated as if it had first been flattened to 1d, for consistency with
-    `sort` and `argsort`.
-
-Returns
--------
-out: ndarray (Ni..., J, Nk...)
-    The indexed result.
-
-Notes
------
-This is equivalent to (but faster than) the following use of `ndindex` and
-`s_`, which sets each of ``ii`` and ``kk`` to a tuple of indices::
-
-    Ni, M, Nk = a.shape[:axis], a.shape[axis], a.shape[axis+1:]
-    J = indices.shape[axis]  # Need not equal M
-    out = np.empty(Ni + (J,) + Nk)
-
-    for ii in ndindex(Ni):
-        for kk in ndindex(Nk):
-            a_1d       = a      [ii + s_[:,] + kk]
-            indices_1d = indices[ii + s_[:,] + kk]
-            out_1d     = out    [ii + s_[:,] + kk]
-            for j in range(J):
-                out_1d[j] = a_1d[indices_1d[j]]
-
-Equivalently, eliminating the inner loop, the last two lines would be::
-
-            out_1d[:] = a_1d[indices_1d]
-
-See Also
---------
-take : Take along an axis, using the same indices for every 1d slice
-put_along_axis :
-    Put values into the destination array by matching 1d index and data slices
-
-Examples
---------
->>> import numpy as np
-
-For this sample array
-
->>> a = np.array([[10, 30, 20], [60, 40, 50]])
-
-We can sort either by using sort directly, or argsort and this function
-
->>> np.sort(a, axis=1)
-array([[10, 20, 30],
-       [40, 50, 60]])
->>> ai = np.argsort(a, axis=1)
->>> ai
-array([[0, 2, 1],
-       [1, 2, 0]])
->>> np.take_along_axis(a, ai, axis=1)
-array([[10, 20, 30],
-       [40, 50, 60]])
-
-The same works for max and min, if you maintain the trivial dimension
-with ``keepdims``:
-
->>> np.max(a, axis=1, keepdims=True)
-array([[30],
-       [60]])
->>> ai = np.argmax(a, axis=1, keepdims=True)
->>> ai
-array([[1],
-       [0]])
->>> np.take_along_axis(a, ai, axis=1)
-array([[30],
-       [60]])
-
-If we want to get the max and min at the same time, we can stack the
-indices first
-
->>> ai_min = np.argmin(a, axis=1, keepdims=True)
->>> ai_max = np.argmax(a, axis=1, keepdims=True)
->>> ai = np.concatenate([ai_min, ai_max], axis=1)
->>> ai
-array([[0, 1],
-       [1, 0]])
->>> np.take_along_axis(a, ai, axis=1)
-array([[10, 30],
-       [40, 60]])
-
-**Paramètres :**
-
-- `arr`
-- `indices`
-- `axis`
-
-##### _put_along_axis_dispatcher
-
-**Paramètres :**
-
-- `arr`
-- `indices`
-- `values`
-- `axis`
-
-##### put_along_axis
-
-Put values into the destination array by matching 1d index and data slices.
-
-This iterates over matching 1d slices oriented along the specified axis in
-the index and data arrays, and uses the former to place values into the
-latter. These slices can be different lengths.
-
-Functions returning an index along an axis, like `argsort` and
-`argpartition`, produce suitable indices for this function.
-
-Parameters
-----------
-arr : ndarray (Ni..., M, Nk...)
-    Destination array.
-indices : ndarray (Ni..., J, Nk...)
-    Indices to change along each 1d slice of `arr`. This must match the
-    dimension of arr, but dimensions in Ni and Nj may be 1 to broadcast
-    against `arr`.
-values : array_like (Ni..., J, Nk...)
-    values to insert at those indices. Its shape and dimension are
-    broadcast to match that of `indices`.
-axis : int
-    The axis to take 1d slices along. If axis is None, the destination
-    array is treated as if a flattened 1d view had been created of it.
-
-Notes
------
-This is equivalent to (but faster than) the following use of `ndindex` and
-`s_`, which sets each of ``ii`` and ``kk`` to a tuple of indices::
-
-    Ni, M, Nk = a.shape[:axis], a.shape[axis], a.shape[axis+1:]
-    J = indices.shape[axis]  # Need not equal M
-
-    for ii in ndindex(Ni):
-        for kk in ndindex(Nk):
-            a_1d       = a      [ii + s_[:,] + kk]
-            indices_1d = indices[ii + s_[:,] + kk]
-            values_1d  = values [ii + s_[:,] + kk]
-            for j in range(J):
-                a_1d[indices_1d[j]] = values_1d[j]
-
-Equivalently, eliminating the inner loop, the last two lines would be::
-
-            a_1d[indices_1d] = values_1d
-
-See Also
---------
-take_along_axis :
-    Take values from the input array by matching 1d index and data slices
-
-Examples
---------
->>> import numpy as np
-
-For this sample array
-
->>> a = np.array([[10, 30, 20], [60, 40, 50]])
-
-We can replace the maximum values with:
-
->>> ai = np.argmax(a, axis=1, keepdims=True)
->>> ai
-array([[1],
-       [0]])
->>> np.put_along_axis(a, ai, 99, axis=1)
->>> a
-array([[10, 99, 20],
-       [99, 40, 50]])
-
-**Paramètres :**
-
-- `arr`
-- `indices`
-- `values`
-- `axis`
-
-##### _apply_along_axis_dispatcher
-
-**Paramètres :**
-
-- `func1d`
-- `axis`
-- `arr`
-
-##### apply_along_axis
-
-Apply a function to 1-D slices along the given axis.
-
-Execute `func1d(a, *args, **kwargs)` where `func1d` operates on 1-D arrays
-and `a` is a 1-D slice of `arr` along `axis`.
-
-This is equivalent to (but faster than) the following use of `ndindex` and
-`s_`, which sets each of ``ii``, ``jj``, and ``kk`` to a tuple of indices::
-
-    Ni, Nk = a.shape[:axis], a.shape[axis+1:]
-    for ii in ndindex(Ni):
-        for kk in ndindex(Nk):
-            f = func1d(arr[ii + s_[:,] + kk])
-            Nj = f.shape
-            for jj in ndindex(Nj):
-                out[ii + jj + kk] = f[jj]
-
-Equivalently, eliminating the inner loop, this can be expressed as::
-
-    Ni, Nk = a.shape[:axis], a.shape[axis+1:]
-    for ii in ndindex(Ni):
-        for kk in ndindex(Nk):
-            out[ii + s_[...,] + kk] = func1d(arr[ii + s_[:,] + kk])
-
-Parameters
-----------
-func1d : function (M,) -> (Nj...)
-    This function should accept 1-D arrays. It is applied to 1-D
-    slices of `arr` along the specified axis.
-axis : integer
-    Axis along which `arr` is sliced.
-arr : ndarray (Ni..., M, Nk...)
-    Input array.
-args : any
-    Additional arguments to `func1d`.
-kwargs : any
-    Additional named arguments to `func1d`.
-
-Returns
--------
-out : ndarray  (Ni..., Nj..., Nk...)
-    The output array. The shape of `out` is identical to the shape of
-    `arr`, except along the `axis` dimension. This axis is removed, and
-    replaced with new dimensions equal to the shape of the return value
-    of `func1d`. So if `func1d` returns a scalar `out` will have one
-    fewer dimensions than `arr`.
-
-See Also
---------
-apply_over_axes : Apply a function repeatedly over multiple axes.
-
-Examples
---------
->>> import numpy as np
->>> def my_func(a):
-...     """Average first and last element of a 1-D array"""
-...     return (a[0] + a[-1]) * 0.5
->>> b = np.array([[1,2,3], [4,5,6], [7,8,9]])
->>> np.apply_along_axis(my_func, 0, b)
-array([4., 5., 6.])
->>> np.apply_along_axis(my_func, 1, b)
-array([2.,  5.,  8.])
-
-For a function that returns a 1D array, the number of dimensions in
-`outarr` is the same as `arr`.
-
->>> b = np.array([[8,1,7], [4,3,9], [5,2,6]])
->>> np.apply_along_axis(sorted, 1, b)
-array([[1, 7, 8],
-       [3, 4, 9],
-       [2, 5, 6]])
-
-For a function that returns a higher dimensional array, those dimensions
-are inserted in place of the `axis` dimension.
-
->>> b = np.array([[1,2,3], [4,5,6], [7,8,9]])
->>> np.apply_along_axis(np.diag, -1, b)
-array([[[1, 0, 0],
-        [0, 2, 0],
-        [0, 0, 3]],
-       [[4, 0, 0],
-        [0, 5, 0],
-        [0, 0, 6]],
-       [[7, 0, 0],
-        [0, 8, 0],
-        [0, 0, 9]]])
-
-**Paramètres :**
-
-- `func1d`
-- `axis`
-- `arr`
-
-##### _apply_over_axes_dispatcher
-
-**Paramètres :**
-
-- `func`
-- `a`
-- `axes`
-
-##### apply_over_axes
-
-Apply a function repeatedly over multiple axes.
-
-`func` is called as `res = func(a, axis)`, where `axis` is the first
-element of `axes`.  The result `res` of the function call must have
-either the same dimensions as `a` or one less dimension.  If `res`
-has one less dimension than `a`, a dimension is inserted before
-`axis`.  The call to `func` is then repeated for each axis in `axes`,
-with `res` as the first argument.
-
-Parameters
-----------
-func : function
-    This function must take two arguments, `func(a, axis)`.
-a : array_like
-    Input array.
-axes : array_like
-    Axes over which `func` is applied; the elements must be integers.
-
-Returns
--------
-apply_over_axis : ndarray
-    The output array.  The number of dimensions is the same as `a`,
-    but the shape can be different.  This depends on whether `func`
-    changes the shape of its output with respect to its input.
-
-See Also
---------
-apply_along_axis :
-    Apply a function to 1-D slices of an array along the given axis.
-
-Notes
------
-This function is equivalent to tuple axis arguments to reorderable ufuncs
-with keepdims=True. Tuple axis arguments to ufuncs have been available since
-version 1.7.0.
-
-Examples
---------
->>> import numpy as np
->>> a = np.arange(24).reshape(2,3,4)
->>> a
-array([[[ 0,  1,  2,  3],
-        [ 4,  5,  6,  7],
-        [ 8,  9, 10, 11]],
-       [[12, 13, 14, 15],
-        [16, 17, 18, 19],
-        [20, 21, 22, 23]]])
-
-Sum over axes 0 and 2. The result has same number of dimensions
-as the original array:
-
->>> np.apply_over_axes(np.sum, a, [0,2])
-array([[[ 60],
-        [ 92],
-        [124]]])
-
-Tuple axis arguments to ufuncs are equivalent:
-
->>> np.sum(a, axis=(0,2), keepdims=True)
-array([[[ 60],
-        [ 92],
-        [124]]])
-
-**Paramètres :**
-
-- `func`
-- `a`
-- `axes`
-
-##### _expand_dims_dispatcher
-
-**Paramètres :**
-
-- `a`
-- `axis`
-
-##### expand_dims
-
-Expand the shape of an array.
-
-Insert a new axis that will appear at the `axis` position in the expanded
-array shape.
-
-Parameters
-----------
-a : array_like
-    Input array.
-axis : int or tuple of ints
-    Position in the expanded axes where the new axis (or axes) is placed.
-
-    .. deprecated:: 1.13.0
-        Passing an axis where ``axis > a.ndim`` will be treated as
-        ``axis == a.ndim``, and passing ``axis < -a.ndim - 1`` will
-        be treated as ``axis == 0``. This behavior is deprecated.
-
-Returns
--------
-result : ndarray
-    View of `a` with the number of dimensions increased.
-
-See Also
---------
-squeeze : The inverse operation, removing singleton dimensions
-reshape : Insert, remove, and combine dimensions, and resize existing ones
-atleast_1d, atleast_2d, atleast_3d
-
-Examples
---------
->>> import numpy as np
->>> x = np.array([1, 2])
->>> x.shape
-(2,)
-
-The following is equivalent to ``x[np.newaxis, :]`` or ``x[np.newaxis]``:
-
->>> y = np.expand_dims(x, axis=0)
->>> y
-array([[1, 2]])
->>> y.shape
-(1, 2)
-
-The following is equivalent to ``x[:, np.newaxis]``:
-
->>> y = np.expand_dims(x, axis=1)
->>> y
-array([[1],
-       [2]])
->>> y.shape
-(2, 1)
-
-``axis`` may also be a tuple:
-
->>> y = np.expand_dims(x, axis=(0, 1))
->>> y
-array([[[1, 2]]])
-
->>> y = np.expand_dims(x, axis=(2, 0))
->>> y
-array([[[1],
-        [2]]])
-
-Note that some examples may use ``None`` instead of ``np.newaxis``.  These
-are the same objects:
-
->>> np.newaxis is None
-True
-
-**Paramètres :**
-
-- `a`
-- `axis`
-
-##### row_stack
-
-**Paramètres :**
-
-- `tup`
-
-##### _column_stack_dispatcher
-
-**Paramètres :**
-
-- `tup`
-
-##### column_stack
-
-Stack 1-D arrays as columns into a 2-D array.
-
-Take a sequence of 1-D arrays and stack them as columns
-to make a single 2-D array. 2-D arrays are stacked as-is,
-just like with `hstack`.  1-D arrays are turned into 2-D columns
-first.
-
-Parameters
-----------
-tup : sequence of 1-D or 2-D arrays.
-    Arrays to stack. All of them must have the same first dimension.
-
-Returns
--------
-stacked : 2-D array
-    The array formed by stacking the given arrays.
-
-See Also
---------
-stack, hstack, vstack, concatenate
-
-Examples
---------
->>> import numpy as np
->>> a = np.array((1,2,3))
->>> b = np.array((2,3,4))
->>> np.column_stack((a,b))
-array([[1, 2],
-       [2, 3],
-       [3, 4]])
-
-**Paramètres :**
-
-- `tup`
-
-##### _dstack_dispatcher
-
-**Paramètres :**
-
-- `tup`
-
-##### dstack
-
-Stack arrays in sequence depth wise (along third axis).
-
-This is equivalent to concatenation along the third axis after 2-D arrays
-of shape `(M,N)` have been reshaped to `(M,N,1)` and 1-D arrays of shape
-`(N,)` have been reshaped to `(1,N,1)`. Rebuilds arrays divided by
-`dsplit`.
-
-This function makes most sense for arrays with up to 3 dimensions. For
-instance, for pixel-data with a height (first axis), width (second axis),
-and r/g/b channels (third axis). The functions `concatenate`, `stack` and
-`block` provide more general stacking and concatenation operations.
-
-Parameters
-----------
-tup : sequence of arrays
-    The arrays must have the same shape along all but the third axis.
-    1-D or 2-D arrays must have the same shape.
-
-Returns
--------
-stacked : ndarray
-    The array formed by stacking the given arrays, will be at least 3-D.
-
-See Also
---------
-concatenate : Join a sequence of arrays along an existing axis.
-stack : Join a sequence of arrays along a new axis.
-block : Assemble an nd-array from nested lists of blocks.
-vstack : Stack arrays in sequence vertically (row wise).
-hstack : Stack arrays in sequence horizontally (column wise).
-column_stack : Stack 1-D arrays as columns into a 2-D array.
-dsplit : Split array along third axis.
-
-Examples
---------
->>> import numpy as np
->>> a = np.array((1,2,3))
->>> b = np.array((2,3,4))
->>> np.dstack((a,b))
-array([[[1, 2],
-        [2, 3],
-        [3, 4]]])
-
->>> a = np.array([[1],[2],[3]])
->>> b = np.array([[2],[3],[4]])
->>> np.dstack((a,b))
-array([[[1, 2]],
-       [[2, 3]],
-       [[3, 4]]])
-
-**Paramètres :**
-
-- `tup`
-
-##### _replace_zero_by_x_arrays
-
-**Paramètres :**
-
-- `sub_arys`
-
-##### _array_split_dispatcher
-
-**Paramètres :**
-
-- `ary`
-- `indices_or_sections`
-- `axis`
-
-##### array_split
-
-Split an array into multiple sub-arrays.
-
-Please refer to the ``split`` documentation.  The only difference
-between these functions is that ``array_split`` allows
-`indices_or_sections` to be an integer that does *not* equally
-divide the axis. For an array of length l that should be split
-into n sections, it returns l % n sub-arrays of size l//n + 1
-and the rest of size l//n.
-
-See Also
---------
-split : Split array into multiple sub-arrays of equal size.
-
-Examples
---------
->>> import numpy as np
->>> x = np.arange(8.0)
->>> np.array_split(x, 3)
-[array([0.,  1.,  2.]), array([3.,  4.,  5.]), array([6.,  7.])]
-
->>> x = np.arange(9)
->>> np.array_split(x, 4)
-[array([0, 1, 2]), array([3, 4]), array([5, 6]), array([7, 8])]
-
-**Paramètres :**
-
-- `ary`
-- `indices_or_sections`
-- `axis`
-
-##### _split_dispatcher
-
-**Paramètres :**
-
-- `ary`
-- `indices_or_sections`
-- `axis`
-
-##### split
-
-Split an array into multiple sub-arrays as views into `ary`.
-
-Parameters
-----------
-ary : ndarray
-    Array to be divided into sub-arrays.
-indices_or_sections : int or 1-D array
-    If `indices_or_sections` is an integer, N, the array will be divided
-    into N equal arrays along `axis`.  If such a split is not possible,
-    an error is raised.
-
-    If `indices_or_sections` is a 1-D array of sorted integers, the entries
-    indicate where along `axis` the array is split.  For example,
-    ``[2, 3]`` would, for ``axis=0``, result in
-
-    - ary[:2]
-    - ary[2:3]
-    - ary[3:]
-
-    If an index exceeds the dimension of the array along `axis`,
-    an empty sub-array is returned correspondingly.
-axis : int, optional
-    The axis along which to split, default is 0.
-
-Returns
--------
-sub-arrays : list of ndarrays
-    A list of sub-arrays as views into `ary`.
-
-Raises
-------
-ValueError
-    If `indices_or_sections` is given as an integer, but
-    a split does not result in equal division.
-
-See Also
---------
-array_split : Split an array into multiple sub-arrays of equal or
-              near-equal size.  Does not raise an exception if
-              an equal division cannot be made.
-hsplit : Split array into multiple sub-arrays horizontally (column-wise).
-vsplit : Split array into multiple sub-arrays vertically (row wise).
-dsplit : Split array into multiple sub-arrays along the 3rd axis (depth).
-concatenate : Join a sequence of arrays along an existing axis.
-stack : Join a sequence of arrays along a new axis.
-hstack : Stack arrays in sequence horizontally (column wise).
-vstack : Stack arrays in sequence vertically (row wise).
-dstack : Stack arrays in sequence depth wise (along third dimension).
-
-Examples
---------
->>> import numpy as np
->>> x = np.arange(9.0)
->>> np.split(x, 3)
-[array([0.,  1.,  2.]), array([3.,  4.,  5.]), array([6.,  7.,  8.])]
-
->>> x = np.arange(8.0)
->>> np.split(x, [3, 5, 6, 10])
-[array([0.,  1.,  2.]),
- array([3.,  4.]),
- array([5.]),
- array([6.,  7.]),
- array([], dtype=float64)]
-
-**Paramètres :**
-
-- `ary`
-- `indices_or_sections`
-- `axis`
-
-##### _hvdsplit_dispatcher
-
-**Paramètres :**
-
-- `ary`
-- `indices_or_sections`
-
-##### hsplit
-
-Split an array into multiple sub-arrays horizontally (column-wise).
-
-Please refer to the `split` documentation.  `hsplit` is equivalent
-to `split` with ``axis=1``, the array is always split along the second
-axis except for 1-D arrays, where it is split at ``axis=0``.
-
-See Also
---------
-split : Split an array into multiple sub-arrays of equal size.
-
-Examples
---------
->>> import numpy as np
->>> x = np.arange(16.0).reshape(4, 4)
->>> x
-array([[ 0.,   1.,   2.,   3.],
-       [ 4.,   5.,   6.,   7.],
-       [ 8.,   9.,  10.,  11.],
-       [12.,  13.,  14.,  15.]])
->>> np.hsplit(x, 2)
-[array([[  0.,   1.],
-       [  4.,   5.],
-       [  8.,   9.],
-       [12.,  13.]]),
- array([[  2.,   3.],
-       [  6.,   7.],
-       [10.,  11.],
-       [14.,  15.]])]
->>> np.hsplit(x, np.array([3, 6]))
-[array([[ 0.,   1.,   2.],
-       [ 4.,   5.,   6.],
-       [ 8.,   9.,  10.],
-       [12.,  13.,  14.]]),
- array([[ 3.],
-       [ 7.],
-       [11.],
-       [15.]]),
- array([], shape=(4, 0), dtype=float64)]
-
-With a higher dimensional array the split is still along the second axis.
-
->>> x = np.arange(8.0).reshape(2, 2, 2)
->>> x
-array([[[0.,  1.],
-        [2.,  3.]],
-       [[4.,  5.],
-        [6.,  7.]]])
->>> np.hsplit(x, 2)
-[array([[[0.,  1.]],
-       [[4.,  5.]]]),
- array([[[2.,  3.]],
-       [[6.,  7.]]])]
-
-With a 1-D array, the split is along axis 0.
-
->>> x = np.array([0, 1, 2, 3, 4, 5])
->>> np.hsplit(x, 2)
-[array([0, 1, 2]), array([3, 4, 5])]
-
-**Paramètres :**
-
-- `ary`
-- `indices_or_sections`
-
-##### vsplit
-
-Split an array into multiple sub-arrays vertically (row-wise).
-
-Please refer to the ``split`` documentation.  ``vsplit`` is equivalent
-to ``split`` with `axis=0` (default), the array is always split along the
-first axis regardless of the array dimension.
-
-See Also
---------
-split : Split an array into multiple sub-arrays of equal size.
-
-Examples
---------
->>> import numpy as np
->>> x = np.arange(16.0).reshape(4, 4)
->>> x
-array([[ 0.,   1.,   2.,   3.],
-       [ 4.,   5.,   6.,   7.],
-       [ 8.,   9.,  10.,  11.],
-       [12.,  13.,  14.,  15.]])
->>> np.vsplit(x, 2)
-[array([[0., 1., 2., 3.],
-        [4., 5., 6., 7.]]),
- array([[ 8.,  9., 10., 11.],
-        [12., 13., 14., 15.]])]
->>> np.vsplit(x, np.array([3, 6]))
-[array([[ 0.,  1.,  2.,  3.],
-        [ 4.,  5.,  6.,  7.],
-        [ 8.,  9., 10., 11.]]),
- array([[12., 13., 14., 15.]]),
- array([], shape=(0, 4), dtype=float64)]
-
-With a higher dimensional array the split is still along the first axis.
-
->>> x = np.arange(8.0).reshape(2, 2, 2)
->>> x
-array([[[0.,  1.],
-        [2.,  3.]],
-       [[4.,  5.],
-        [6.,  7.]]])
->>> np.vsplit(x, 2)
-[array([[[0., 1.],
-         [2., 3.]]]),
- array([[[4., 5.],
-         [6., 7.]]])]
-
-**Paramètres :**
-
-- `ary`
-- `indices_or_sections`
-
-##### dsplit
-
-Split array into multiple sub-arrays along the 3rd axis (depth).
-
-Please refer to the `split` documentation.  `dsplit` is equivalent
-to `split` with ``axis=2``, the array is always split along the third
-axis provided the array dimension is greater than or equal to 3.
-
-See Also
---------
-split : Split an array into multiple sub-arrays of equal size.
-
-Examples
---------
->>> import numpy as np
->>> x = np.arange(16.0).reshape(2, 2, 4)
->>> x
-array([[[ 0.,   1.,   2.,   3.],
-        [ 4.,   5.,   6.,   7.]],
-       [[ 8.,   9.,  10.,  11.],
-        [12.,  13.,  14.,  15.]]])
->>> np.dsplit(x, 2)
-[array([[[ 0.,  1.],
-        [ 4.,  5.]],
-       [[ 8.,  9.],
-        [12., 13.]]]), array([[[ 2.,  3.],
-        [ 6.,  7.]],
-       [[10., 11.],
-        [14., 15.]]])]
->>> np.dsplit(x, np.array([3, 6]))
-[array([[[ 0.,   1.,   2.],
-        [ 4.,   5.,   6.]],
-       [[ 8.,   9.,  10.],
-        [12.,  13.,  14.]]]),
- array([[[ 3.],
-        [ 7.]],
-       [[11.],
-        [15.]]]),
-array([], shape=(2, 2, 0), dtype=float64)]
-
-**Paramètres :**
-
-- `ary`
-- `indices_or_sections`
-
-##### get_array_wrap
-
-Find the wrapper for the array with the highest priority.
-
-In case of ties, leftmost wins. If no wrapper is found, return None.
-
-.. deprecated:: 2.0
-
-##### _kron_dispatcher
-
-**Paramètres :**
-
-- `a`
-- `b`
-
-##### kron
-
-Kronecker product of two arrays.
-
-Computes the Kronecker product, a composite array made of blocks of the
-second array scaled by the first.
-
-Parameters
-----------
-a, b : array_like
-
-Returns
--------
-out : ndarray
-
-See Also
---------
-outer : The outer product
-
-Notes
------
-The function assumes that the number of dimensions of `a` and `b`
-are the same, if necessary prepending the smallest with ones.
-If ``a.shape = (r0,r1,..,rN)`` and ``b.shape = (s0,s1,...,sN)``,
-the Kronecker product has shape ``(r0*s0, r1*s1, ..., rN*SN)``.
-The elements are products of elements from `a` and `b`, organized
-explicitly by::
-
-    kron(a,b)[k0,k1,...,kN] = a[i0,i1,...,iN] * b[j0,j1,...,jN]
-
-where::
-
-    kt = it * st + jt,  t = 0,...,N
-
-In the common 2-D case (N=1), the block structure can be visualized::
-
-    [[ a[0,0]*b,   a[0,1]*b,  ... , a[0,-1]*b  ],
-     [  ...                              ...   ],
-     [ a[-1,0]*b,  a[-1,1]*b, ... , a[-1,-1]*b ]]
-
-
-Examples
---------
->>> import numpy as np
->>> np.kron([1,10,100], [5,6,7])
-array([  5,   6,   7, ..., 500, 600, 700])
->>> np.kron([5,6,7], [1,10,100])
-array([  5,  50, 500, ...,   7,  70, 700])
-
->>> np.kron(np.eye(2), np.ones((2,2)))
-array([[1.,  1.,  0.,  0.],
-       [1.,  1.,  0.,  0.],
-       [0.,  0.,  1.,  1.],
-       [0.,  0.,  1.,  1.]])
-
->>> a = np.arange(100).reshape((2,5,2,5))
->>> b = np.arange(24).reshape((2,3,4))
->>> c = np.kron(a,b)
->>> c.shape
-(2, 10, 6, 20)
->>> I = (1,3,0,2)
->>> J = (0,2,1)
->>> J1 = (0,) + J             # extend to ndim=4
->>> S1 = (1,) + b.shape
->>> K = tuple(np.array(I) * np.array(S1) + np.array(J1))
->>> c[K] == a[I]*b[J]
-True
-
-**Paramètres :**
-
-- `a`
-- `b`
-
-##### _tile_dispatcher
-
-**Paramètres :**
-
-- `A`
-- `reps`
-
-##### tile
-
-Construct an array by repeating A the number of times given by reps.
-
-If `reps` has length ``d``, the result will have dimension of
-``max(d, A.ndim)``.
-
-If ``A.ndim < d``, `A` is promoted to be d-dimensional by prepending new
-axes. So a shape (3,) array is promoted to (1, 3) for 2-D replication,
-or shape (1, 1, 3) for 3-D replication. If this is not the desired
-behavior, promote `A` to d-dimensions manually before calling this
-function.
-
-If ``A.ndim > d``, `reps` is promoted to `A`.ndim by prepending 1's to it.
-Thus for an `A` of shape (2, 3, 4, 5), a `reps` of (2, 2) is treated as
-(1, 1, 2, 2).
-
-Note : Although tile may be used for broadcasting, it is strongly
-recommended to use numpy's broadcasting operations and functions.
-
-Parameters
-----------
-A : array_like
-    The input array.
-reps : array_like
-    The number of repetitions of `A` along each axis.
-
-Returns
--------
-c : ndarray
-    The tiled output array.
-
-See Also
---------
-repeat : Repeat elements of an array.
-broadcast_to : Broadcast an array to a new shape
-
-Examples
---------
->>> import numpy as np
->>> a = np.array([0, 1, 2])
->>> np.tile(a, 2)
-array([0, 1, 2, 0, 1, 2])
->>> np.tile(a, (2, 2))
-array([[0, 1, 2, 0, 1, 2],
-       [0, 1, 2, 0, 1, 2]])
->>> np.tile(a, (2, 1, 2))
-array([[[0, 1, 2, 0, 1, 2]],
-       [[0, 1, 2, 0, 1, 2]]])
-
->>> b = np.array([[1, 2], [3, 4]])
->>> np.tile(b, 2)
-array([[1, 2, 1, 2],
-       [3, 4, 3, 4]])
->>> np.tile(b, (2, 1))
-array([[1, 2],
-       [3, 4],
-       [1, 2],
-       [3, 4]])
-
->>> c = np.array([1,2,3,4])
->>> np.tile(c,(4,1))
-array([[1, 2, 3, 4],
-       [1, 2, 3, 4],
-       [1, 2, 3, 4],
-       [1, 2, 3, 4]])
-
-**Paramètres :**
-
-- `A`
-- `reps`
-
----
-
-### stride_tricks
-
----
-
-### _histograms_impl
-
-Histogram-related functions
-
-#### Fonctions
-
-##### _ptp
-
-Peak-to-peak value of x.
-
-This implementation avoids the problem of signed integer arrays having a
-peak-to-peak value that cannot be represented with the array's data type.
-This function returns an unsigned value for signed integer arrays.
-
-**Paramètres :**
-
-- `x`
-
-##### _hist_bin_sqrt
-
-Square root histogram bin estimator.
-
-Bin width is inversely proportional to the data size. Used by many
-programs for its simplicity.
-
-Parameters
-----------
-x : array_like
-    Input data that is to be histogrammed, trimmed to range. May not
-    be empty.
-
-Returns
--------
-h : An estimate of the optimal bin width for the given data.
-
-**Paramètres :**
-
-- `x`
-- `range`
-
-##### _hist_bin_sturges
-
-Sturges histogram bin estimator.
-
-A very simplistic estimator based on the assumption of normality of
-the data. This estimator has poor performance for non-normal data,
-which becomes especially obvious for large data sets. The estimate
-depends only on size of the data.
-
-Parameters
-----------
-x : array_like
-    Input data that is to be histogrammed, trimmed to range. May not
-    be empty.
-
-Returns
--------
-h : An estimate of the optimal bin width for the given data.
-
-**Paramètres :**
-
-- `x`
-- `range`
-
-##### _hist_bin_rice
-
-Rice histogram bin estimator.
-
-Another simple estimator with no normality assumption. It has better
-performance for large data than Sturges, but tends to overestimate
-the number of bins. The number of bins is proportional to the cube
-root of data size (asymptotically optimal). The estimate depends
-only on size of the data.
-
-Parameters
-----------
-x : array_like
-    Input data that is to be histogrammed, trimmed to range. May not
-    be empty.
-
-Returns
--------
-h : An estimate of the optimal bin width for the given data.
-
-**Paramètres :**
-
-- `x`
-- `range`
-
-##### _hist_bin_scott
-
-Scott histogram bin estimator.
-
-The binwidth is proportional to the standard deviation of the data
-and inversely proportional to the cube root of data size
-(asymptotically optimal).
-
-Parameters
-----------
-x : array_like
-    Input data that is to be histogrammed, trimmed to range. May not
-    be empty.
-
-Returns
--------
-h : An estimate of the optimal bin width for the given data.
-
-**Paramètres :**
-
-- `x`
-- `range`
-
-##### _hist_bin_stone
-
-Histogram bin estimator based on minimizing the estimated integrated squared error (ISE).
-
-The number of bins is chosen by minimizing the estimated ISE against the unknown true distribution.
-The ISE is estimated using cross-validation and can be regarded as a generalization of Scott's rule.
-https://en.wikipedia.org/wiki/Histogram#Scott.27s_normal_reference_rule
-
-This paper by Stone appears to be the origination of this rule.
-https://digitalassets.lib.berkeley.edu/sdtr/ucb/text/34.pdf
-
-Parameters
-----------
-x : array_like
-    Input data that is to be histogrammed, trimmed to range. May not
-    be empty.
-range : (float, float)
-    The lower and upper range of the bins.
-
-Returns
--------
-h : An estimate of the optimal bin width for the given data.
-
-**Paramètres :**
-
-- `x`
-- `range`
-
-##### _hist_bin_doane
-
-Doane's histogram bin estimator.
-
-Improved version of Sturges' formula which works better for
-non-normal data. See
-stats.stackexchange.com/questions/55134/doanes-formula-for-histogram-binning
-
-Parameters
-----------
-x : array_like
-    Input data that is to be histogrammed, trimmed to range. May not
-    be empty.
-
-Returns
--------
-h : An estimate of the optimal bin width for the given data.
-
-**Paramètres :**
-
-- `x`
-- `range`
-
-##### _hist_bin_fd
-
-The Freedman-Diaconis histogram bin estimator.
-
-The Freedman-Diaconis rule uses interquartile range (IQR) to
-estimate binwidth. It is considered a variation of the Scott rule
-with more robustness as the IQR is less affected by outliers than
-the standard deviation. However, the IQR depends on fewer points
-than the standard deviation, so it is less accurate, especially for
-long tailed distributions.
-
-If the IQR is 0, this function returns 0 for the bin width.
-Binwidth is inversely proportional to the cube root of data size
-(asymptotically optimal).
-
-Parameters
-----------
-x : array_like
-    Input data that is to be histogrammed, trimmed to range. May not
-    be empty.
-
-Returns
--------
-h : An estimate of the optimal bin width for the given data.
-
-**Paramètres :**
-
-- `x`
-- `range`
-
-##### _hist_bin_auto
-
-Histogram bin estimator that uses the minimum width of the
-Freedman-Diaconis and Sturges estimators if the FD bin width is non-zero.
-If the bin width from the FD estimator is 0, the Sturges estimator is used.
-
-The FD estimator is usually the most robust method, but its width
-estimate tends to be too large for small `x` and bad for data with limited
-variance. The Sturges estimator is quite good for small (<1000) datasets
-and is the default in the R language. This method gives good off-the-shelf
-behaviour.
-
-If there is limited variance the IQR can be 0, which results in the
-FD bin width being 0 too. This is not a valid bin width, so
-``np.histogram_bin_edges`` chooses 1 bin instead, which may not be optimal.
-If the IQR is 0, it's unlikely any variance-based estimators will be of
-use, so we revert to the Sturges estimator, which only uses the size of the
-dataset in its calculation.
-
-Parameters
-----------
-x : array_like
-    Input data that is to be histogrammed, trimmed to range. May not
-    be empty.
-
-Returns
--------
-h : An estimate of the optimal bin width for the given data.
-
-See Also
---------
-_hist_bin_fd, _hist_bin_sturges
-
-**Paramètres :**
-
-- `x`
-- `range`
-
-##### _ravel_and_check_weights
-
-Check a and weights have matching shapes, and ravel both 
-
-**Paramètres :**
-
-- `a`
-- `weights`
-
-##### _get_outer_edges
-
-Determine the outer bin edges to use, from either the data or the range
-argument
-
-**Paramètres :**
-
-- `a`
-- `range`
-
-##### _unsigned_subtract
-
-Subtract two values where a >= b, and produce an unsigned result
-
-This is needed when finding the difference between the upper and lower
-bound of an int16 histogram
-
-**Paramètres :**
-
-- `a`
-- `b`
-
-##### _get_bin_edges
-
-Computes the bins used internally by `histogram`.
-
-Parameters
-==========
-a : ndarray
-    Ravelled data array
-bins, range
-    Forwarded arguments from `histogram`.
-weights : ndarray, optional
-    Ravelled weights array, or None
-
-Returns
-=======
-bin_edges : ndarray
-    Array of bin edges
-uniform_bins : (Number, Number, int):
-    The upper bound, lowerbound, and number of bins, used in the optimized
-    implementation of `histogram` that works on uniform bins.
-
-**Paramètres :**
-
-- `a`
-- `bins`
-- `range`
-- `weights`
-
-##### _search_sorted_inclusive
-
-Like `searchsorted`, but where the last item in `v` is placed on the right.
-
-In the context of a histogram, this makes the last bin edge inclusive
-
-**Paramètres :**
-
-- `a`
-- `v`
-
-##### _histogram_bin_edges_dispatcher
-
-**Paramètres :**
-
-- `a`
-- `bins`
-- `range`
-- `weights`
-
-##### histogram_bin_edges
-
-Function to calculate only the edges of the bins used by the `histogram`
-function.
-
-Parameters
-----------
-a : array_like
-    Input data. The histogram is computed over the flattened array.
-bins : int or sequence of scalars or str, optional
-    If `bins` is an int, it defines the number of equal-width
-    bins in the given range (10, by default). If `bins` is a
-    sequence, it defines the bin edges, including the rightmost
-    edge, allowing for non-uniform bin widths.
-
-    If `bins` is a string from the list below, `histogram_bin_edges` will
-    use the method chosen to calculate the optimal bin width and
-    consequently the number of bins (see the Notes section for more detail
-    on the estimators) from the data that falls within the requested range.
-    While the bin width will be optimal for the actual data
-    in the range, the number of bins will be computed to fill the
-    entire range, including the empty portions. For visualisation,
-    using the 'auto' option is suggested. Weighted data is not
-    supported for automated bin size selection.
-
-    'auto'
-        Minimum bin width between the 'sturges' and 'fd' estimators.
-        Provides good all-around performance.
-
-    'fd' (Freedman Diaconis Estimator)
-        Robust (resilient to outliers) estimator that takes into
-        account data variability and data size.
-
-    'doane'
-        An improved version of Sturges' estimator that works better
-        with non-normal datasets.
-
-    'scott'
-        Less robust estimator that takes into account data variability
-        and data size.
-
-    'stone'
-        Estimator based on leave-one-out cross-validation estimate of
-        the integrated squared error. Can be regarded as a generalization
-        of Scott's rule.
-
-    'rice'
-        Estimator does not take variability into account, only data
-        size. Commonly overestimates number of bins required.
-
-    'sturges'
-        R's default method, only accounts for data size. Only
-        optimal for gaussian data and underestimates number of bins
-        for large non-gaussian datasets.
-
-    'sqrt'
-        Square root (of data size) estimator, used by Excel and
-        other programs for its speed and simplicity.
-
-range : (float, float), optional
-    The lower and upper range of the bins.  If not provided, range
-    is simply ``(a.min(), a.max())``.  Values outside the range are
-    ignored. The first element of the range must be less than or
-    equal to the second. `range` affects the automatic bin
-    computation as well. While bin width is computed to be optimal
-    based on the actual data within `range`, the bin count will fill
-    the entire range including portions containing no data.
-
-weights : array_like, optional
-    An array of weights, of the same shape as `a`.  Each value in
-    `a` only contributes its associated weight towards the bin count
-    (instead of 1). This is currently not used by any of the bin estimators,
-    but may be in the future.
-
-Returns
--------
-bin_edges : array of dtype float
-    The edges to pass into `histogram`
-
-See Also
---------
-histogram
-
-Notes
------
-The methods to estimate the optimal number of bins are well founded
-in literature, and are inspired by the choices R provides for
-histogram visualisation. Note that having the number of bins
-proportional to :math:`n^{1/3}` is asymptotically optimal, which is
-why it appears in most estimators. These are simply plug-in methods
-that give good starting points for number of bins. In the equations
-below, :math:`h` is the binwidth and :math:`n_h` is the number of
-bins. All estimators that compute bin counts are recast to bin width
-using the `ptp` of the data. The final bin count is obtained from
-``np.round(np.ceil(range / h))``. The final bin width is often less
-than what is returned by the estimators below.
-
-'auto' (minimum bin width of the 'sturges' and 'fd' estimators)
-    A compromise to get a good value. For small datasets the Sturges
-    value will usually be chosen, while larger datasets will usually
-    default to FD.  Avoids the overly conservative behaviour of FD
-    and Sturges for small and large datasets respectively.
-    Switchover point is usually :math:`a.size \approx 1000`.
-
-'fd' (Freedman Diaconis Estimator)
-    .. math:: h = 2 \frac{IQR}{n^{1/3}}
-
-    The binwidth is proportional to the interquartile range (IQR)
-    and inversely proportional to cube root of a.size. Can be too
-    conservative for small datasets, but is quite good for large
-    datasets. The IQR is very robust to outliers.
-
-'scott'
-    .. math:: h = \sigma \sqrt[3]{\frac{24 \sqrt{\pi}}{n}}
-
-    The binwidth is proportional to the standard deviation of the
-    data and inversely proportional to cube root of ``x.size``. Can
-    be too conservative for small datasets, but is quite good for
-    large datasets. The standard deviation is not very robust to
-    outliers. Values are very similar to the Freedman-Diaconis
-    estimator in the absence of outliers.
-
-'rice'
-    .. math:: n_h = 2n^{1/3}
-
-    The number of bins is only proportional to cube root of
-    ``a.size``. It tends to overestimate the number of bins and it
-    does not take into account data variability.
-
-'sturges'
-    .. math:: n_h = \log _{2}(n) + 1
-
-    The number of bins is the base 2 log of ``a.size``.  This
-    estimator assumes normality of data and is too conservative for
-    larger, non-normal datasets. This is the default method in R's
-    ``hist`` method.
-
-'doane'
-    .. math:: n_h = 1 + \log_{2}(n) +
-                    \log_{2}\left(1 + \frac{|g_1|}{\sigma_{g_1}}\right)
-
-        g_1 = mean\left[\left(\frac{x - \mu}{\sigma}\right)^3\right]
-
-        \sigma_{g_1} = \sqrt{\frac{6(n - 2)}{(n + 1)(n + 3)}}
-
-    An improved version of Sturges' formula that produces better
-    estimates for non-normal datasets. This estimator attempts to
-    account for the skew of the data.
-
-'sqrt'
-    .. math:: n_h = \sqrt n
-
-    The simplest and fastest estimator. Only takes into account the
-    data size.
-
-Additionally, if the data is of integer dtype, then the binwidth will never
-be less than 1.
-
-Examples
---------
->>> import numpy as np
->>> arr = np.array([0, 0, 0, 1, 2, 3, 3, 4, 5])
->>> np.histogram_bin_edges(arr, bins='auto', range=(0, 1))
-array([0.  , 0.25, 0.5 , 0.75, 1.  ])
->>> np.histogram_bin_edges(arr, bins=2)
-array([0. , 2.5, 5. ])
-
-For consistency with histogram, an array of pre-computed bins is
-passed through unmodified:
-
->>> np.histogram_bin_edges(arr, [1, 2])
-array([1, 2])
-
-This function allows one set of bins to be computed, and reused across
-multiple histograms:
-
->>> shared_bins = np.histogram_bin_edges(arr, bins='auto')
->>> shared_bins
-array([0., 1., 2., 3., 4., 5.])
-
->>> group_id = np.array([0, 1, 1, 0, 1, 1, 0, 1, 1])
->>> hist_0, _ = np.histogram(arr[group_id == 0], bins=shared_bins)
->>> hist_1, _ = np.histogram(arr[group_id == 1], bins=shared_bins)
-
->>> hist_0; hist_1
-array([1, 1, 0, 1, 0])
-array([2, 0, 1, 1, 2])
-
-Which gives more easily comparable results than using separate bins for
-each histogram:
-
->>> hist_0, bins_0 = np.histogram(arr[group_id == 0], bins='auto')
->>> hist_1, bins_1 = np.histogram(arr[group_id == 1], bins='auto')
->>> hist_0; hist_1
-array([1, 1, 1])
-array([2, 1, 1, 2])
->>> bins_0; bins_1
-array([0., 1., 2., 3.])
-array([0.  , 1.25, 2.5 , 3.75, 5.  ])
-
-**Paramètres :**
-
-- `a`
-- `bins`
-- `range`
-- `weights`
-
-##### _histogram_dispatcher
-
-**Paramètres :**
-
-- `a`
-- `bins`
-- `range`
-- `density`
-- `weights`
-
-##### histogram
-
-Compute the histogram of a dataset.
-
-Parameters
-----------
-a : array_like
-    Input data. The histogram is computed over the flattened array.
-bins : int or sequence of scalars or str, optional
-    If `bins` is an int, it defines the number of equal-width
-    bins in the given range (10, by default). If `bins` is a
-    sequence, it defines a monotonically increasing array of bin edges,
-    including the rightmost edge, allowing for non-uniform bin widths.
-
-    If `bins` is a string, it defines the method used to calculate the
-    optimal bin width, as defined by `histogram_bin_edges`.
-
-range : (float, float), optional
-    The lower and upper range of the bins.  If not provided, range
-    is simply ``(a.min(), a.max())``.  Values outside the range are
-    ignored. The first element of the range must be less than or
-    equal to the second. `range` affects the automatic bin
-    computation as well. While bin width is computed to be optimal
-    based on the actual data within `range`, the bin count will fill
-    the entire range including portions containing no data.
-weights : array_like, optional
-    An array of weights, of the same shape as `a`.  Each value in
-    `a` only contributes its associated weight towards the bin count
-    (instead of 1). If `density` is True, the weights are
-    normalized, so that the integral of the density over the range
-    remains 1.
-    Please note that the ``dtype`` of `weights` will also become the
-    ``dtype`` of the returned accumulator (`hist`), so it must be
-    large enough to hold accumulated values as well.
-density : bool, optional
-    If ``False``, the result will contain the number of samples in
-    each bin. If ``True``, the result is the value of the
-    probability *density* function at the bin, normalized such that
-    the *integral* over the range is 1. Note that the sum of the
-    histogram values will not be equal to 1 unless bins of unity
-    width are chosen; it is not a probability *mass* function.
-
-Returns
--------
-hist : array
-    The values of the histogram. See `density` and `weights` for a
-    description of the possible semantics.  If `weights` are given,
-    ``hist.dtype`` will be taken from `weights`.
-bin_edges : array of dtype float
-    Return the bin edges ``(length(hist)+1)``.
-
-
-See Also
---------
-histogramdd, bincount, searchsorted, digitize, histogram_bin_edges
-
-Notes
------
-All but the last (righthand-most) bin is half-open.  In other words,
-if `bins` is::
-
-  [1, 2, 3, 4]
-
-then the first bin is ``[1, 2)`` (including 1, but excluding 2) and
-the second ``[2, 3)``.  The last bin, however, is ``[3, 4]``, which
-*includes* 4.
-
-
-Examples
---------
->>> import numpy as np
->>> np.histogram([1, 2, 1], bins=[0, 1, 2, 3])
-(array([0, 2, 1]), array([0, 1, 2, 3]))
->>> np.histogram(np.arange(4), bins=np.arange(5), density=True)
-(array([0.25, 0.25, 0.25, 0.25]), array([0, 1, 2, 3, 4]))
->>> np.histogram([[1, 2, 1], [1, 0, 1]], bins=[0,1,2,3])
-(array([1, 4, 1]), array([0, 1, 2, 3]))
-
->>> a = np.arange(5)
->>> hist, bin_edges = np.histogram(a, density=True)
->>> hist
-array([0.5, 0. , 0.5, 0. , 0. , 0.5, 0. , 0.5, 0. , 0.5])
->>> hist.sum()
-2.4999999999999996
->>> np.sum(hist * np.diff(bin_edges))
-1.0
-
-Automated Bin Selection Methods example, using 2 peak random data
-with 2000 points.
-
-.. plot::
-    :include-source:
-
-    import matplotlib.pyplot as plt
-    import numpy as np
-
-    rng = np.random.RandomState(10)  # deterministic random data
-    a = np.hstack((rng.normal(size=1000),
-                   rng.normal(loc=5, scale=2, size=1000)))
-    plt.hist(a, bins='auto')  # arguments are passed to np.histogram
-    plt.title("Histogram with 'auto' bins")
-    plt.show()
-
-**Paramètres :**
-
-- `a`
-- `bins`
-- `range`
-- `density`
-- `weights`
-
-##### _histogramdd_dispatcher
-
-**Paramètres :**
-
-- `sample`
-- `bins`
-- `range`
-- `density`
-- `weights`
-
-##### histogramdd
-
-Compute the multidimensional histogram of some data.
-
-Parameters
-----------
-sample : (N, D) array, or (N, D) array_like
-    The data to be histogrammed.
-
-    Note the unusual interpretation of sample when an array_like:
-
-    * When an array, each row is a coordinate in a D-dimensional space -
-      such as ``histogramdd(np.array([p1, p2, p3]))``.
-    * When an array_like, each element is the list of values for single
-      coordinate - such as ``histogramdd((X, Y, Z))``.
-
-    The first form should be preferred.
-
-bins : sequence or int, optional
-    The bin specification:
-
-    * A sequence of arrays describing the monotonically increasing bin
-      edges along each dimension.
-    * The number of bins for each dimension (nx, ny, ... =bins)
-    * The number of bins for all dimensions (nx=ny=...=bins).
-
-range : sequence, optional
-    A sequence of length D, each an optional (lower, upper) tuple giving
-    the outer bin edges to be used if the edges are not given explicitly in
-    `bins`.
-    An entry of None in the sequence results in the minimum and maximum
-    values being used for the corresponding dimension.
-    The default, None, is equivalent to passing a tuple of D None values.
-density : bool, optional
-    If False, the default, returns the number of samples in each bin.
-    If True, returns the probability *density* function at the bin,
-    ``bin_count / sample_count / bin_volume``.
-weights : (N,) array_like, optional
-    An array of values `w_i` weighing each sample `(x_i, y_i, z_i, ...)`.
-    Weights are normalized to 1 if density is True. If density is False,
-    the values of the returned histogram are equal to the sum of the
-    weights belonging to the samples falling into each bin.
-
-Returns
--------
-H : ndarray
-    The multidimensional histogram of sample x. See density and weights
-    for the different possible semantics.
-edges : tuple of ndarrays
-    A tuple of D arrays describing the bin edges for each dimension.
-
-See Also
---------
-histogram: 1-D histogram
-histogram2d: 2-D histogram
-
-Examples
---------
->>> import numpy as np
->>> rng = np.random.default_rng()
->>> r = rng.normal(size=(100,3))
->>> H, edges = np.histogramdd(r, bins = (5, 8, 4))
->>> H.shape, edges[0].size, edges[1].size, edges[2].size
-((5, 8, 4), 6, 9, 5)
-
-**Paramètres :**
-
-- `sample`
-- `bins`
-- `range`
-- `density`
-- `weights`
-
-##### jhat
-
-**Paramètres :**
-
-- `nbins`
-
----
-
-### _arraypad_impl
-
-The arraypad module contains a group of functions to pad values onto the edges
-of an n-dimensional array.
-
-#### Fonctions
-
-##### _round_if_needed
-
-Rounds arr inplace if destination dtype is integer.
-
-Parameters
-----------
-arr : ndarray
-    Input array.
-dtype : dtype
-    The dtype of the destination array.
-
-**Paramètres :**
-
-- `arr`
-- `dtype`
-
-##### _slice_at_axis
-
-Construct tuple of slices to slice an array in the given dimension.
-
-Parameters
-----------
-sl : slice
-    The slice for the given dimension.
-axis : int
-    The axis to which `sl` is applied. All other dimensions are left
-    "unsliced".
-
-Returns
--------
-sl : tuple of slices
-    A tuple with slices matching `shape` in length.
-
-Examples
---------
->>> np._slice_at_axis(slice(None, 3, -1), 1)
-(slice(None, None, None), slice(None, 3, -1), (...,))
-
-**Paramètres :**
-
-- `sl`
-- `axis`
-
-##### _view_roi
-
-Get a view of the current region of interest during iterative padding.
-
-When padding multiple dimensions iteratively corner values are
-unnecessarily overwritten multiple times. This function reduces the
-working area for the first dimensions so that corners are excluded.
-
-Parameters
-----------
-array : ndarray
-    The array with the region of interest.
-original_area_slice : tuple of slices
-    Denotes the area with original values of the unpadded array.
-axis : int
-    The currently padded dimension assuming that `axis` is padded before
-    `axis` + 1.
-
-Returns
--------
-roi : ndarray
-    The region of interest of the original `array`.
-
-**Paramètres :**
-
-- `array`
-- `original_area_slice`
-- `axis`
-
-##### _pad_simple
-
-Pad array on all sides with either a single value or undefined values.
-
-Parameters
-----------
-array : ndarray
-    Array to grow.
-pad_width : sequence of tuple[int, int]
-    Pad width on both sides for each dimension in `arr`.
-fill_value : scalar, optional
-    If provided the padded area is filled with this value, otherwise
-    the pad area left undefined.
-
-Returns
--------
-padded : ndarray
-    The padded array with the same dtype as`array`. Its order will default
-    to C-style if `array` is not F-contiguous.
-original_area_slice : tuple
-    A tuple of slices pointing to the area of the original array.
-
-**Paramètres :**
-
-- `array`
-- `pad_width`
-- `fill_value`
-
-##### _set_pad_area
-
-Set empty-padded area in given dimension.
-
-Parameters
-----------
-padded : ndarray
-    Array with the pad area which is modified inplace.
-axis : int
-    Dimension with the pad area to set.
-width_pair : (int, int)
-    Pair of widths that mark the pad area on both sides in the given
-    dimension.
-value_pair : tuple of scalars or ndarrays
-    Values inserted into the pad area on each side. It must match or be
-    broadcastable to the shape of `arr`.
-
-**Paramètres :**
-
-- `padded`
-- `axis`
-- `width_pair`
-- `value_pair`
-
-##### _get_edges
-
-Retrieve edge values from empty-padded array in given dimension.
-
-Parameters
-----------
-padded : ndarray
-    Empty-padded array.
-axis : int
-    Dimension in which the edges are considered.
-width_pair : (int, int)
-    Pair of widths that mark the pad area on both sides in the given
-    dimension.
-
-Returns
--------
-left_edge, right_edge : ndarray
-    Edge values of the valid area in `padded` in the given dimension. Its
-    shape will always match `padded` except for the dimension given by
-    `axis` which will have a length of 1.
-
-**Paramètres :**
-
-- `padded`
-- `axis`
-- `width_pair`
-
-##### _get_linear_ramps
-
-Construct linear ramps for empty-padded array in given dimension.
-
-Parameters
-----------
-padded : ndarray
-    Empty-padded array.
-axis : int
-    Dimension in which the ramps are constructed.
-width_pair : (int, int)
-    Pair of widths that mark the pad area on both sides in the given
-    dimension.
-end_value_pair : (scalar, scalar)
-    End values for the linear ramps which form the edge of the fully padded
-    array. These values are included in the linear ramps.
-
-Returns
--------
-left_ramp, right_ramp : ndarray
-    Linear ramps to set on both sides of `padded`.
-
-**Paramètres :**
-
-- `padded`
-- `axis`
-- `width_pair`
-- `end_value_pair`
-
-##### _get_stats
-
-Calculate statistic for the empty-padded array in given dimension.
-
-Parameters
-----------
-padded : ndarray
-    Empty-padded array.
-axis : int
-    Dimension in which the statistic is calculated.
-width_pair : (int, int)
-    Pair of widths that mark the pad area on both sides in the given
-    dimension.
-length_pair : 2-element sequence of None or int
-    Gives the number of values in valid area from each side that is
-    taken into account when calculating the statistic. If None the entire
-    valid area in `padded` is considered.
-stat_func : function
-    Function to compute statistic. The expected signature is
-    ``stat_func(x: ndarray, axis: int, keepdims: bool) -> ndarray``.
-
-Returns
--------
-left_stat, right_stat : ndarray
-    Calculated statistic for both sides of `padded`.
-
-**Paramètres :**
-
-- `padded`
-- `axis`
-- `width_pair`
-- `length_pair`
-- `stat_func`
-
-##### _set_reflect_both
-
-Pad `axis` of `arr` with reflection.
-
-Parameters
-----------
-padded : ndarray
-    Input array of arbitrary shape.
-axis : int
-    Axis along which to pad `arr`.
-width_pair : (int, int)
-    Pair of widths that mark the pad area on both sides in the given
-    dimension.
-method : str
-    Controls method of reflection; options are 'even' or 'odd'.
-original_period : int
-    Original length of data on `axis` of `arr`.
-include_edge : bool
-    If true, edge value is included in reflection, otherwise the edge
-    value forms the symmetric axis to the reflection.
-
-Returns
--------
-pad_amt : tuple of ints, length 2
-    New index positions of padding to do along the `axis`. If these are
-    both 0, padding is done in this dimension.
-
-**Paramètres :**
-
-- `padded`
-- `axis`
-- `width_pair`
-- `method`
-- `original_period`
-- `include_edge`
-
-##### _set_wrap_both
-
-Pad `axis` of `arr` with wrapped values.
-
-Parameters
-----------
-padded : ndarray
-    Input array of arbitrary shape.
-axis : int
-    Axis along which to pad `arr`.
-width_pair : (int, int)
-    Pair of widths that mark the pad area on both sides in the given
-    dimension.
-original_period : int
-    Original length of data on `axis` of `arr`.
-
-Returns
--------
-pad_amt : tuple of ints, length 2
-    New index positions of padding to do along the `axis`. If these are
-    both 0, padding is done in this dimension.
-
-**Paramètres :**
-
-- `padded`
-- `axis`
-- `width_pair`
-- `original_period`
-
-##### _as_pairs
-
-Broadcast `x` to an array with the shape (`ndim`, 2).
-
-A helper function for `pad` that prepares and validates arguments like
-`pad_width` for iteration in pairs.
-
-Parameters
-----------
-x : {None, scalar, array-like}
-    The object to broadcast to the shape (`ndim`, 2).
-ndim : int
-    Number of pairs the broadcasted `x` will have.
-as_index : bool, optional
-    If `x` is not None, try to round each element of `x` to an integer
-    (dtype `np.intp`) and ensure every element is positive.
-
-Returns
--------
-pairs : nested iterables, shape (`ndim`, 2)
-    The broadcasted version of `x`.
-
-Raises
-------
-ValueError
-    If `as_index` is True and `x` contains negative elements.
-    Or if `x` is not broadcastable to the shape (`ndim`, 2).
-
-**Paramètres :**
-
-- `x`
-- `ndim`
-- `as_index`
-
-##### _pad_dispatcher
-
-**Paramètres :**
-
-- `array`
-- `pad_width`
-- `mode`
-
-##### pad
-
-Pad an array.
-
-Parameters
-----------
-array : array_like of rank N
-    The array to pad.
-pad_width : {sequence, array_like, int}
-    Number of values padded to the edges of each axis.
-    ``((before_1, after_1), ... (before_N, after_N))`` unique pad widths
-    for each axis.
-    ``(before, after)`` or ``((before, after),)`` yields same before
-    and after pad for each axis.
-    ``(pad,)`` or ``int`` is a shortcut for before = after = pad width
-    for all axes.
-mode : str or function, optional
-    One of the following string values or a user supplied function.
-
-    'constant' (default)
-        Pads with a constant value.
-    'edge'
-        Pads with the edge values of array.
-    'linear_ramp'
-        Pads with the linear ramp between end_value and the
-        array edge value.
-    'maximum'
-        Pads with the maximum value of all or part of the
-        vector along each axis.
-    'mean'
-        Pads with the mean value of all or part of the
-        vector along each axis.
-    'median'
-        Pads with the median value of all or part of the
-        vector along each axis.
-    'minimum'
-        Pads with the minimum value of all or part of the
-        vector along each axis.
-    'reflect'
-        Pads with the reflection of the vector mirrored on
-        the first and last values of the vector along each
-        axis.
-    'symmetric'
-        Pads with the reflection of the vector mirrored
-        along the edge of the array.
-    'wrap'
-        Pads with the wrap of the vector along the axis.
-        The first values are used to pad the end and the
-        end values are used to pad the beginning.
-    'empty'
-        Pads with undefined values.
-
-    <function>
-        Padding function, see Notes.
-stat_length : sequence or int, optional
-    Used in 'maximum', 'mean', 'median', and 'minimum'.  Number of
-    values at edge of each axis used to calculate the statistic value.
-
-    ``((before_1, after_1), ... (before_N, after_N))`` unique statistic
-    lengths for each axis.
-
-    ``(before, after)`` or ``((before, after),)`` yields same before
-    and after statistic lengths for each axis.
-
-    ``(stat_length,)`` or ``int`` is a shortcut for
-    ``before = after = statistic`` length for all axes.
-
-    Default is ``None``, to use the entire axis.
-constant_values : sequence or scalar, optional
-    Used in 'constant'.  The values to set the padded values for each
-    axis.
-
-    ``((before_1, after_1), ... (before_N, after_N))`` unique pad constants
-    for each axis.
-
-    ``(before, after)`` or ``((before, after),)`` yields same before
-    and after constants for each axis.
-
-    ``(constant,)`` or ``constant`` is a shortcut for
-    ``before = after = constant`` for all axes.
-
-    Default is 0.
-end_values : sequence or scalar, optional
-    Used in 'linear_ramp'.  The values used for the ending value of the
-    linear_ramp and that will form the edge of the padded array.
-
-    ``((before_1, after_1), ... (before_N, after_N))`` unique end values
-    for each axis.
-
-    ``(before, after)`` or ``((before, after),)`` yields same before
-    and after end values for each axis.
-
-    ``(constant,)`` or ``constant`` is a shortcut for
-    ``before = after = constant`` for all axes.
-
-    Default is 0.
-reflect_type : {'even', 'odd'}, optional
-    Used in 'reflect', and 'symmetric'.  The 'even' style is the
-    default with an unaltered reflection around the edge value.  For
-    the 'odd' style, the extended part of the array is created by
-    subtracting the reflected values from two times the edge value.
-
-Returns
--------
-pad : ndarray
-    Padded array of rank equal to `array` with shape increased
-    according to `pad_width`.
-
-Notes
------
-For an array with rank greater than 1, some of the padding of later
-axes is calculated from padding of previous axes.  This is easiest to
-think about with a rank 2 array where the corners of the padded array
-are calculated by using padded values from the first axis.
-
-The padding function, if used, should modify a rank 1 array in-place. It
-has the following signature::
-
-    padding_func(vector, iaxis_pad_width, iaxis, kwargs)
-
-where
-
-vector : ndarray
-    A rank 1 array already padded with zeros.  Padded values are
-    vector[:iaxis_pad_width[0]] and vector[-iaxis_pad_width[1]:].
-iaxis_pad_width : tuple
-    A 2-tuple of ints, iaxis_pad_width[0] represents the number of
-    values padded at the beginning of vector where
-    iaxis_pad_width[1] represents the number of values padded at
-    the end of vector.
-iaxis : int
-    The axis currently being calculated.
-kwargs : dict
-    Any keyword arguments the function requires.
-
-Examples
---------
->>> import numpy as np
->>> a = [1, 2, 3, 4, 5]
->>> np.pad(a, (2, 3), 'constant', constant_values=(4, 6))
-array([4, 4, 1, ..., 6, 6, 6])
-
->>> np.pad(a, (2, 3), 'edge')
-array([1, 1, 1, ..., 5, 5, 5])
-
->>> np.pad(a, (2, 3), 'linear_ramp', end_values=(5, -4))
-array([ 5,  3,  1,  2,  3,  4,  5,  2, -1, -4])
-
->>> np.pad(a, (2,), 'maximum')
-array([5, 5, 1, 2, 3, 4, 5, 5, 5])
-
->>> np.pad(a, (2,), 'mean')
-array([3, 3, 1, 2, 3, 4, 5, 3, 3])
-
->>> np.pad(a, (2,), 'median')
-array([3, 3, 1, 2, 3, 4, 5, 3, 3])
-
->>> a = [[1, 2], [3, 4]]
->>> np.pad(a, ((3, 2), (2, 3)), 'minimum')
-array([[1, 1, 1, 2, 1, 1, 1],
-       [1, 1, 1, 2, 1, 1, 1],
-       [1, 1, 1, 2, 1, 1, 1],
-       [1, 1, 1, 2, 1, 1, 1],
-       [3, 3, 3, 4, 3, 3, 3],
-       [1, 1, 1, 2, 1, 1, 1],
-       [1, 1, 1, 2, 1, 1, 1]])
-
->>> a = [1, 2, 3, 4, 5]
->>> np.pad(a, (2, 3), 'reflect')
-array([3, 2, 1, 2, 3, 4, 5, 4, 3, 2])
-
->>> np.pad(a, (2, 3), 'reflect', reflect_type='odd')
-array([-1,  0,  1,  2,  3,  4,  5,  6,  7,  8])
-
->>> np.pad(a, (2, 3), 'symmetric')
-array([2, 1, 1, 2, 3, 4, 5, 5, 4, 3])
-
->>> np.pad(a, (2, 3), 'symmetric', reflect_type='odd')
-array([0, 1, 1, 2, 3, 4, 5, 5, 6, 7])
-
->>> np.pad(a, (2, 3), 'wrap')
-array([4, 5, 1, 2, 3, 4, 5, 1, 2, 3])
-
->>> def pad_with(vector, pad_width, iaxis, kwargs):
-...     pad_value = kwargs.get('padder', 10)
-...     vector[:pad_width[0]] = pad_value
-...     vector[-pad_width[1]:] = pad_value
->>> a = np.arange(6)
->>> a = a.reshape((2, 3))
->>> np.pad(a, 2, pad_with)
-array([[10, 10, 10, 10, 10, 10, 10],
-       [10, 10, 10, 10, 10, 10, 10],
-       [10, 10,  0,  1,  2, 10, 10],
-       [10, 10,  3,  4,  5, 10, 10],
-       [10, 10, 10, 10, 10, 10, 10],
-       [10, 10, 10, 10, 10, 10, 10]])
->>> np.pad(a, 2, pad_with, padder=100)
-array([[100, 100, 100, 100, 100, 100, 100],
-       [100, 100, 100, 100, 100, 100, 100],
-       [100, 100,   0,   1,   2, 100, 100],
-       [100, 100,   3,   4,   5, 100, 100],
-       [100, 100, 100, 100, 100, 100, 100],
-       [100, 100, 100, 100, 100, 100, 100]])
-
-**Paramètres :**
-
-- `array`
-- `pad_width`
-- `mode`
-
----
-
-### _ufunclike_impl
-
-Module of functions that are like ufuncs in acting on arrays and optionally
-storing results in an output array.
-
-#### Fonctions
-
-##### _dispatcher
-
-**Paramètres :**
-
-- `x`
-- `out`
-
-##### fix
-
-Round to nearest integer towards zero.
-
-Round an array of floats element-wise to nearest integer towards zero.
-The rounded values have the same data-type as the input.
-
-Parameters
-----------
-x : array_like
-    An array to be rounded
-out : ndarray, optional
-    A location into which the result is stored. If provided, it must have
-    a shape that the input broadcasts to. If not provided or None, a
-    freshly-allocated array is returned.
-
-Returns
--------
-out : ndarray of floats
-    An array with the same dimensions and data-type as the input.
-    If second argument is not supplied then a new array is returned
-    with the rounded values.
-
-    If a second argument is supplied the result is stored there.
-    The return value ``out`` is then a reference to that array.
-
-See Also
---------
-rint, trunc, floor, ceil
-around : Round to given number of decimals
-
-Examples
---------
->>> import numpy as np
->>> np.fix(3.14)
-3.0
->>> np.fix(3)
-3
->>> np.fix([2.1, 2.9, -2.1, -2.9])
-array([ 2.,  2., -2., -2.])
-
-**Paramètres :**
-
-- `x`
-- `out`
-
-##### isposinf
-
-Test element-wise for positive infinity, return result as bool array.
-
-Parameters
-----------
-x : array_like
-    The input array.
-out : array_like, optional
-    A location into which the result is stored. If provided, it must have a
-    shape that the input broadcasts to. If not provided or None, a
-    freshly-allocated boolean array is returned.
-
-Returns
--------
-out : ndarray
-    A boolean array with the same dimensions as the input.
-    If second argument is not supplied then a boolean array is returned
-    with values True where the corresponding element of the input is
-    positive infinity and values False where the element of the input is
-    not positive infinity.
-
-    If a second argument is supplied the result is stored there. If the
-    type of that array is a numeric type the result is represented as zeros
-    and ones, if the type is boolean then as False and True.
-    The return value `out` is then a reference to that array.
-
-See Also
---------
-isinf, isneginf, isfinite, isnan
-
-Notes
------
-NumPy uses the IEEE Standard for Binary Floating-Point for Arithmetic
-(IEEE 754).
-
-Errors result if the second argument is also supplied when x is a scalar
-input, if first and second arguments have different shapes, or if the
-first argument has complex values
-
-Examples
---------
->>> import numpy as np
->>> np.isposinf(np.inf)
-True
->>> np.isposinf(-np.inf)
-False
->>> np.isposinf([-np.inf, 0., np.inf])
-array([False, False,  True])
-
->>> x = np.array([-np.inf, 0., np.inf])
->>> y = np.array([2, 2, 2])
->>> np.isposinf(x, y)
-array([0, 0, 1])
->>> y
-array([0, 0, 1])
-
-**Paramètres :**
-
-- `x`
-- `out`
-
-##### isneginf
-
-Test element-wise for negative infinity, return result as bool array.
-
-Parameters
-----------
-x : array_like
-    The input array.
-out : array_like, optional
-    A location into which the result is stored. If provided, it must have a
-    shape that the input broadcasts to. If not provided or None, a
-    freshly-allocated boolean array is returned.
-
-Returns
--------
-out : ndarray
-    A boolean array with the same dimensions as the input.
-    If second argument is not supplied then a numpy boolean array is
-    returned with values True where the corresponding element of the
-    input is negative infinity and values False where the element of
-    the input is not negative infinity.
-
-    If a second argument is supplied the result is stored there. If the
-    type of that array is a numeric type the result is represented as
-    zeros and ones, if the type is boolean then as False and True. The
-    return value `out` is then a reference to that array.
-
-See Also
---------
-isinf, isposinf, isnan, isfinite
-
-Notes
------
-NumPy uses the IEEE Standard for Binary Floating-Point for Arithmetic
-(IEEE 754).
-
-Errors result if the second argument is also supplied when x is a scalar
-input, if first and second arguments have different shapes, or if the
-first argument has complex values.
-
-Examples
---------
->>> import numpy as np
->>> np.isneginf(-np.inf)
-True
->>> np.isneginf(np.inf)
-False
->>> np.isneginf([-np.inf, 0., np.inf])
-array([ True, False, False])
-
->>> x = np.array([-np.inf, 0., np.inf])
->>> y = np.array([2, 2, 2])
->>> np.isneginf(x, y)
-array([1, 0, 0])
->>> y
-array([1, 0, 0])
-
-**Paramètres :**
-
-- `x`
-- `out`
 
 ---
 
@@ -343850,6 +341335,3109 @@ D.values() returns a set-like object providing a view on the values
 
 - `x`
 - `conv`
+
+---
+
+### _shape_base_impl
+
+#### Fonctions
+
+##### _make_along_axis_idx
+
+**Paramètres :**
+
+- `arr_shape`
+- `indices`
+- `axis`
+
+##### _take_along_axis_dispatcher
+
+**Paramètres :**
+
+- `arr`
+- `indices`
+- `axis`
+
+##### take_along_axis
+
+Take values from the input array by matching 1d index and data slices.
+
+This iterates over matching 1d slices oriented along the specified axis in
+the index and data arrays, and uses the former to look up values in the
+latter. These slices can be different lengths.
+
+Functions returning an index along an axis, like `argsort` and
+`argpartition`, produce suitable indices for this function.
+
+Parameters
+----------
+arr : ndarray (Ni..., M, Nk...)
+    Source array
+indices : ndarray (Ni..., J, Nk...)
+    Indices to take along each 1d slice of `arr`. This must match the
+    dimension of arr, but dimensions Ni and Nj only need to broadcast
+    against `arr`.
+axis : int
+    The axis to take 1d slices along. If axis is None, the input array is
+    treated as if it had first been flattened to 1d, for consistency with
+    `sort` and `argsort`.
+
+Returns
+-------
+out: ndarray (Ni..., J, Nk...)
+    The indexed result.
+
+Notes
+-----
+This is equivalent to (but faster than) the following use of `ndindex` and
+`s_`, which sets each of ``ii`` and ``kk`` to a tuple of indices::
+
+    Ni, M, Nk = a.shape[:axis], a.shape[axis], a.shape[axis+1:]
+    J = indices.shape[axis]  # Need not equal M
+    out = np.empty(Ni + (J,) + Nk)
+
+    for ii in ndindex(Ni):
+        for kk in ndindex(Nk):
+            a_1d       = a      [ii + s_[:,] + kk]
+            indices_1d = indices[ii + s_[:,] + kk]
+            out_1d     = out    [ii + s_[:,] + kk]
+            for j in range(J):
+                out_1d[j] = a_1d[indices_1d[j]]
+
+Equivalently, eliminating the inner loop, the last two lines would be::
+
+            out_1d[:] = a_1d[indices_1d]
+
+See Also
+--------
+take : Take along an axis, using the same indices for every 1d slice
+put_along_axis :
+    Put values into the destination array by matching 1d index and data slices
+
+Examples
+--------
+>>> import numpy as np
+
+For this sample array
+
+>>> a = np.array([[10, 30, 20], [60, 40, 50]])
+
+We can sort either by using sort directly, or argsort and this function
+
+>>> np.sort(a, axis=1)
+array([[10, 20, 30],
+       [40, 50, 60]])
+>>> ai = np.argsort(a, axis=1)
+>>> ai
+array([[0, 2, 1],
+       [1, 2, 0]])
+>>> np.take_along_axis(a, ai, axis=1)
+array([[10, 20, 30],
+       [40, 50, 60]])
+
+The same works for max and min, if you maintain the trivial dimension
+with ``keepdims``:
+
+>>> np.max(a, axis=1, keepdims=True)
+array([[30],
+       [60]])
+>>> ai = np.argmax(a, axis=1, keepdims=True)
+>>> ai
+array([[1],
+       [0]])
+>>> np.take_along_axis(a, ai, axis=1)
+array([[30],
+       [60]])
+
+If we want to get the max and min at the same time, we can stack the
+indices first
+
+>>> ai_min = np.argmin(a, axis=1, keepdims=True)
+>>> ai_max = np.argmax(a, axis=1, keepdims=True)
+>>> ai = np.concatenate([ai_min, ai_max], axis=1)
+>>> ai
+array([[0, 1],
+       [1, 0]])
+>>> np.take_along_axis(a, ai, axis=1)
+array([[10, 30],
+       [40, 60]])
+
+**Paramètres :**
+
+- `arr`
+- `indices`
+- `axis`
+
+##### _put_along_axis_dispatcher
+
+**Paramètres :**
+
+- `arr`
+- `indices`
+- `values`
+- `axis`
+
+##### put_along_axis
+
+Put values into the destination array by matching 1d index and data slices.
+
+This iterates over matching 1d slices oriented along the specified axis in
+the index and data arrays, and uses the former to place values into the
+latter. These slices can be different lengths.
+
+Functions returning an index along an axis, like `argsort` and
+`argpartition`, produce suitable indices for this function.
+
+Parameters
+----------
+arr : ndarray (Ni..., M, Nk...)
+    Destination array.
+indices : ndarray (Ni..., J, Nk...)
+    Indices to change along each 1d slice of `arr`. This must match the
+    dimension of arr, but dimensions in Ni and Nj may be 1 to broadcast
+    against `arr`.
+values : array_like (Ni..., J, Nk...)
+    values to insert at those indices. Its shape and dimension are
+    broadcast to match that of `indices`.
+axis : int
+    The axis to take 1d slices along. If axis is None, the destination
+    array is treated as if a flattened 1d view had been created of it.
+
+Notes
+-----
+This is equivalent to (but faster than) the following use of `ndindex` and
+`s_`, which sets each of ``ii`` and ``kk`` to a tuple of indices::
+
+    Ni, M, Nk = a.shape[:axis], a.shape[axis], a.shape[axis+1:]
+    J = indices.shape[axis]  # Need not equal M
+
+    for ii in ndindex(Ni):
+        for kk in ndindex(Nk):
+            a_1d       = a      [ii + s_[:,] + kk]
+            indices_1d = indices[ii + s_[:,] + kk]
+            values_1d  = values [ii + s_[:,] + kk]
+            for j in range(J):
+                a_1d[indices_1d[j]] = values_1d[j]
+
+Equivalently, eliminating the inner loop, the last two lines would be::
+
+            a_1d[indices_1d] = values_1d
+
+See Also
+--------
+take_along_axis :
+    Take values from the input array by matching 1d index and data slices
+
+Examples
+--------
+>>> import numpy as np
+
+For this sample array
+
+>>> a = np.array([[10, 30, 20], [60, 40, 50]])
+
+We can replace the maximum values with:
+
+>>> ai = np.argmax(a, axis=1, keepdims=True)
+>>> ai
+array([[1],
+       [0]])
+>>> np.put_along_axis(a, ai, 99, axis=1)
+>>> a
+array([[10, 99, 20],
+       [99, 40, 50]])
+
+**Paramètres :**
+
+- `arr`
+- `indices`
+- `values`
+- `axis`
+
+##### _apply_along_axis_dispatcher
+
+**Paramètres :**
+
+- `func1d`
+- `axis`
+- `arr`
+
+##### apply_along_axis
+
+Apply a function to 1-D slices along the given axis.
+
+Execute `func1d(a, *args, **kwargs)` where `func1d` operates on 1-D arrays
+and `a` is a 1-D slice of `arr` along `axis`.
+
+This is equivalent to (but faster than) the following use of `ndindex` and
+`s_`, which sets each of ``ii``, ``jj``, and ``kk`` to a tuple of indices::
+
+    Ni, Nk = a.shape[:axis], a.shape[axis+1:]
+    for ii in ndindex(Ni):
+        for kk in ndindex(Nk):
+            f = func1d(arr[ii + s_[:,] + kk])
+            Nj = f.shape
+            for jj in ndindex(Nj):
+                out[ii + jj + kk] = f[jj]
+
+Equivalently, eliminating the inner loop, this can be expressed as::
+
+    Ni, Nk = a.shape[:axis], a.shape[axis+1:]
+    for ii in ndindex(Ni):
+        for kk in ndindex(Nk):
+            out[ii + s_[...,] + kk] = func1d(arr[ii + s_[:,] + kk])
+
+Parameters
+----------
+func1d : function (M,) -> (Nj...)
+    This function should accept 1-D arrays. It is applied to 1-D
+    slices of `arr` along the specified axis.
+axis : integer
+    Axis along which `arr` is sliced.
+arr : ndarray (Ni..., M, Nk...)
+    Input array.
+args : any
+    Additional arguments to `func1d`.
+kwargs : any
+    Additional named arguments to `func1d`.
+
+Returns
+-------
+out : ndarray  (Ni..., Nj..., Nk...)
+    The output array. The shape of `out` is identical to the shape of
+    `arr`, except along the `axis` dimension. This axis is removed, and
+    replaced with new dimensions equal to the shape of the return value
+    of `func1d`. So if `func1d` returns a scalar `out` will have one
+    fewer dimensions than `arr`.
+
+See Also
+--------
+apply_over_axes : Apply a function repeatedly over multiple axes.
+
+Examples
+--------
+>>> import numpy as np
+>>> def my_func(a):
+...     """Average first and last element of a 1-D array"""
+...     return (a[0] + a[-1]) * 0.5
+>>> b = np.array([[1,2,3], [4,5,6], [7,8,9]])
+>>> np.apply_along_axis(my_func, 0, b)
+array([4., 5., 6.])
+>>> np.apply_along_axis(my_func, 1, b)
+array([2.,  5.,  8.])
+
+For a function that returns a 1D array, the number of dimensions in
+`outarr` is the same as `arr`.
+
+>>> b = np.array([[8,1,7], [4,3,9], [5,2,6]])
+>>> np.apply_along_axis(sorted, 1, b)
+array([[1, 7, 8],
+       [3, 4, 9],
+       [2, 5, 6]])
+
+For a function that returns a higher dimensional array, those dimensions
+are inserted in place of the `axis` dimension.
+
+>>> b = np.array([[1,2,3], [4,5,6], [7,8,9]])
+>>> np.apply_along_axis(np.diag, -1, b)
+array([[[1, 0, 0],
+        [0, 2, 0],
+        [0, 0, 3]],
+       [[4, 0, 0],
+        [0, 5, 0],
+        [0, 0, 6]],
+       [[7, 0, 0],
+        [0, 8, 0],
+        [0, 0, 9]]])
+
+**Paramètres :**
+
+- `func1d`
+- `axis`
+- `arr`
+
+##### _apply_over_axes_dispatcher
+
+**Paramètres :**
+
+- `func`
+- `a`
+- `axes`
+
+##### apply_over_axes
+
+Apply a function repeatedly over multiple axes.
+
+`func` is called as `res = func(a, axis)`, where `axis` is the first
+element of `axes`.  The result `res` of the function call must have
+either the same dimensions as `a` or one less dimension.  If `res`
+has one less dimension than `a`, a dimension is inserted before
+`axis`.  The call to `func` is then repeated for each axis in `axes`,
+with `res` as the first argument.
+
+Parameters
+----------
+func : function
+    This function must take two arguments, `func(a, axis)`.
+a : array_like
+    Input array.
+axes : array_like
+    Axes over which `func` is applied; the elements must be integers.
+
+Returns
+-------
+apply_over_axis : ndarray
+    The output array.  The number of dimensions is the same as `a`,
+    but the shape can be different.  This depends on whether `func`
+    changes the shape of its output with respect to its input.
+
+See Also
+--------
+apply_along_axis :
+    Apply a function to 1-D slices of an array along the given axis.
+
+Notes
+-----
+This function is equivalent to tuple axis arguments to reorderable ufuncs
+with keepdims=True. Tuple axis arguments to ufuncs have been available since
+version 1.7.0.
+
+Examples
+--------
+>>> import numpy as np
+>>> a = np.arange(24).reshape(2,3,4)
+>>> a
+array([[[ 0,  1,  2,  3],
+        [ 4,  5,  6,  7],
+        [ 8,  9, 10, 11]],
+       [[12, 13, 14, 15],
+        [16, 17, 18, 19],
+        [20, 21, 22, 23]]])
+
+Sum over axes 0 and 2. The result has same number of dimensions
+as the original array:
+
+>>> np.apply_over_axes(np.sum, a, [0,2])
+array([[[ 60],
+        [ 92],
+        [124]]])
+
+Tuple axis arguments to ufuncs are equivalent:
+
+>>> np.sum(a, axis=(0,2), keepdims=True)
+array([[[ 60],
+        [ 92],
+        [124]]])
+
+**Paramètres :**
+
+- `func`
+- `a`
+- `axes`
+
+##### _expand_dims_dispatcher
+
+**Paramètres :**
+
+- `a`
+- `axis`
+
+##### expand_dims
+
+Expand the shape of an array.
+
+Insert a new axis that will appear at the `axis` position in the expanded
+array shape.
+
+Parameters
+----------
+a : array_like
+    Input array.
+axis : int or tuple of ints
+    Position in the expanded axes where the new axis (or axes) is placed.
+
+    .. deprecated:: 1.13.0
+        Passing an axis where ``axis > a.ndim`` will be treated as
+        ``axis == a.ndim``, and passing ``axis < -a.ndim - 1`` will
+        be treated as ``axis == 0``. This behavior is deprecated.
+
+Returns
+-------
+result : ndarray
+    View of `a` with the number of dimensions increased.
+
+See Also
+--------
+squeeze : The inverse operation, removing singleton dimensions
+reshape : Insert, remove, and combine dimensions, and resize existing ones
+atleast_1d, atleast_2d, atleast_3d
+
+Examples
+--------
+>>> import numpy as np
+>>> x = np.array([1, 2])
+>>> x.shape
+(2,)
+
+The following is equivalent to ``x[np.newaxis, :]`` or ``x[np.newaxis]``:
+
+>>> y = np.expand_dims(x, axis=0)
+>>> y
+array([[1, 2]])
+>>> y.shape
+(1, 2)
+
+The following is equivalent to ``x[:, np.newaxis]``:
+
+>>> y = np.expand_dims(x, axis=1)
+>>> y
+array([[1],
+       [2]])
+>>> y.shape
+(2, 1)
+
+``axis`` may also be a tuple:
+
+>>> y = np.expand_dims(x, axis=(0, 1))
+>>> y
+array([[[1, 2]]])
+
+>>> y = np.expand_dims(x, axis=(2, 0))
+>>> y
+array([[[1],
+        [2]]])
+
+Note that some examples may use ``None`` instead of ``np.newaxis``.  These
+are the same objects:
+
+>>> np.newaxis is None
+True
+
+**Paramètres :**
+
+- `a`
+- `axis`
+
+##### row_stack
+
+**Paramètres :**
+
+- `tup`
+
+##### _column_stack_dispatcher
+
+**Paramètres :**
+
+- `tup`
+
+##### column_stack
+
+Stack 1-D arrays as columns into a 2-D array.
+
+Take a sequence of 1-D arrays and stack them as columns
+to make a single 2-D array. 2-D arrays are stacked as-is,
+just like with `hstack`.  1-D arrays are turned into 2-D columns
+first.
+
+Parameters
+----------
+tup : sequence of 1-D or 2-D arrays.
+    Arrays to stack. All of them must have the same first dimension.
+
+Returns
+-------
+stacked : 2-D array
+    The array formed by stacking the given arrays.
+
+See Also
+--------
+stack, hstack, vstack, concatenate
+
+Examples
+--------
+>>> import numpy as np
+>>> a = np.array((1,2,3))
+>>> b = np.array((2,3,4))
+>>> np.column_stack((a,b))
+array([[1, 2],
+       [2, 3],
+       [3, 4]])
+
+**Paramètres :**
+
+- `tup`
+
+##### _dstack_dispatcher
+
+**Paramètres :**
+
+- `tup`
+
+##### dstack
+
+Stack arrays in sequence depth wise (along third axis).
+
+This is equivalent to concatenation along the third axis after 2-D arrays
+of shape `(M,N)` have been reshaped to `(M,N,1)` and 1-D arrays of shape
+`(N,)` have been reshaped to `(1,N,1)`. Rebuilds arrays divided by
+`dsplit`.
+
+This function makes most sense for arrays with up to 3 dimensions. For
+instance, for pixel-data with a height (first axis), width (second axis),
+and r/g/b channels (third axis). The functions `concatenate`, `stack` and
+`block` provide more general stacking and concatenation operations.
+
+Parameters
+----------
+tup : sequence of arrays
+    The arrays must have the same shape along all but the third axis.
+    1-D or 2-D arrays must have the same shape.
+
+Returns
+-------
+stacked : ndarray
+    The array formed by stacking the given arrays, will be at least 3-D.
+
+See Also
+--------
+concatenate : Join a sequence of arrays along an existing axis.
+stack : Join a sequence of arrays along a new axis.
+block : Assemble an nd-array from nested lists of blocks.
+vstack : Stack arrays in sequence vertically (row wise).
+hstack : Stack arrays in sequence horizontally (column wise).
+column_stack : Stack 1-D arrays as columns into a 2-D array.
+dsplit : Split array along third axis.
+
+Examples
+--------
+>>> import numpy as np
+>>> a = np.array((1,2,3))
+>>> b = np.array((2,3,4))
+>>> np.dstack((a,b))
+array([[[1, 2],
+        [2, 3],
+        [3, 4]]])
+
+>>> a = np.array([[1],[2],[3]])
+>>> b = np.array([[2],[3],[4]])
+>>> np.dstack((a,b))
+array([[[1, 2]],
+       [[2, 3]],
+       [[3, 4]]])
+
+**Paramètres :**
+
+- `tup`
+
+##### _replace_zero_by_x_arrays
+
+**Paramètres :**
+
+- `sub_arys`
+
+##### _array_split_dispatcher
+
+**Paramètres :**
+
+- `ary`
+- `indices_or_sections`
+- `axis`
+
+##### array_split
+
+Split an array into multiple sub-arrays.
+
+Please refer to the ``split`` documentation.  The only difference
+between these functions is that ``array_split`` allows
+`indices_or_sections` to be an integer that does *not* equally
+divide the axis. For an array of length l that should be split
+into n sections, it returns l % n sub-arrays of size l//n + 1
+and the rest of size l//n.
+
+See Also
+--------
+split : Split array into multiple sub-arrays of equal size.
+
+Examples
+--------
+>>> import numpy as np
+>>> x = np.arange(8.0)
+>>> np.array_split(x, 3)
+[array([0.,  1.,  2.]), array([3.,  4.,  5.]), array([6.,  7.])]
+
+>>> x = np.arange(9)
+>>> np.array_split(x, 4)
+[array([0, 1, 2]), array([3, 4]), array([5, 6]), array([7, 8])]
+
+**Paramètres :**
+
+- `ary`
+- `indices_or_sections`
+- `axis`
+
+##### _split_dispatcher
+
+**Paramètres :**
+
+- `ary`
+- `indices_or_sections`
+- `axis`
+
+##### split
+
+Split an array into multiple sub-arrays as views into `ary`.
+
+Parameters
+----------
+ary : ndarray
+    Array to be divided into sub-arrays.
+indices_or_sections : int or 1-D array
+    If `indices_or_sections` is an integer, N, the array will be divided
+    into N equal arrays along `axis`.  If such a split is not possible,
+    an error is raised.
+
+    If `indices_or_sections` is a 1-D array of sorted integers, the entries
+    indicate where along `axis` the array is split.  For example,
+    ``[2, 3]`` would, for ``axis=0``, result in
+
+    - ary[:2]
+    - ary[2:3]
+    - ary[3:]
+
+    If an index exceeds the dimension of the array along `axis`,
+    an empty sub-array is returned correspondingly.
+axis : int, optional
+    The axis along which to split, default is 0.
+
+Returns
+-------
+sub-arrays : list of ndarrays
+    A list of sub-arrays as views into `ary`.
+
+Raises
+------
+ValueError
+    If `indices_or_sections` is given as an integer, but
+    a split does not result in equal division.
+
+See Also
+--------
+array_split : Split an array into multiple sub-arrays of equal or
+              near-equal size.  Does not raise an exception if
+              an equal division cannot be made.
+hsplit : Split array into multiple sub-arrays horizontally (column-wise).
+vsplit : Split array into multiple sub-arrays vertically (row wise).
+dsplit : Split array into multiple sub-arrays along the 3rd axis (depth).
+concatenate : Join a sequence of arrays along an existing axis.
+stack : Join a sequence of arrays along a new axis.
+hstack : Stack arrays in sequence horizontally (column wise).
+vstack : Stack arrays in sequence vertically (row wise).
+dstack : Stack arrays in sequence depth wise (along third dimension).
+
+Examples
+--------
+>>> import numpy as np
+>>> x = np.arange(9.0)
+>>> np.split(x, 3)
+[array([0.,  1.,  2.]), array([3.,  4.,  5.]), array([6.,  7.,  8.])]
+
+>>> x = np.arange(8.0)
+>>> np.split(x, [3, 5, 6, 10])
+[array([0.,  1.,  2.]),
+ array([3.,  4.]),
+ array([5.]),
+ array([6.,  7.]),
+ array([], dtype=float64)]
+
+**Paramètres :**
+
+- `ary`
+- `indices_or_sections`
+- `axis`
+
+##### _hvdsplit_dispatcher
+
+**Paramètres :**
+
+- `ary`
+- `indices_or_sections`
+
+##### hsplit
+
+Split an array into multiple sub-arrays horizontally (column-wise).
+
+Please refer to the `split` documentation.  `hsplit` is equivalent
+to `split` with ``axis=1``, the array is always split along the second
+axis except for 1-D arrays, where it is split at ``axis=0``.
+
+See Also
+--------
+split : Split an array into multiple sub-arrays of equal size.
+
+Examples
+--------
+>>> import numpy as np
+>>> x = np.arange(16.0).reshape(4, 4)
+>>> x
+array([[ 0.,   1.,   2.,   3.],
+       [ 4.,   5.,   6.,   7.],
+       [ 8.,   9.,  10.,  11.],
+       [12.,  13.,  14.,  15.]])
+>>> np.hsplit(x, 2)
+[array([[  0.,   1.],
+       [  4.,   5.],
+       [  8.,   9.],
+       [12.,  13.]]),
+ array([[  2.,   3.],
+       [  6.,   7.],
+       [10.,  11.],
+       [14.,  15.]])]
+>>> np.hsplit(x, np.array([3, 6]))
+[array([[ 0.,   1.,   2.],
+       [ 4.,   5.,   6.],
+       [ 8.,   9.,  10.],
+       [12.,  13.,  14.]]),
+ array([[ 3.],
+       [ 7.],
+       [11.],
+       [15.]]),
+ array([], shape=(4, 0), dtype=float64)]
+
+With a higher dimensional array the split is still along the second axis.
+
+>>> x = np.arange(8.0).reshape(2, 2, 2)
+>>> x
+array([[[0.,  1.],
+        [2.,  3.]],
+       [[4.,  5.],
+        [6.,  7.]]])
+>>> np.hsplit(x, 2)
+[array([[[0.,  1.]],
+       [[4.,  5.]]]),
+ array([[[2.,  3.]],
+       [[6.,  7.]]])]
+
+With a 1-D array, the split is along axis 0.
+
+>>> x = np.array([0, 1, 2, 3, 4, 5])
+>>> np.hsplit(x, 2)
+[array([0, 1, 2]), array([3, 4, 5])]
+
+**Paramètres :**
+
+- `ary`
+- `indices_or_sections`
+
+##### vsplit
+
+Split an array into multiple sub-arrays vertically (row-wise).
+
+Please refer to the ``split`` documentation.  ``vsplit`` is equivalent
+to ``split`` with `axis=0` (default), the array is always split along the
+first axis regardless of the array dimension.
+
+See Also
+--------
+split : Split an array into multiple sub-arrays of equal size.
+
+Examples
+--------
+>>> import numpy as np
+>>> x = np.arange(16.0).reshape(4, 4)
+>>> x
+array([[ 0.,   1.,   2.,   3.],
+       [ 4.,   5.,   6.,   7.],
+       [ 8.,   9.,  10.,  11.],
+       [12.,  13.,  14.,  15.]])
+>>> np.vsplit(x, 2)
+[array([[0., 1., 2., 3.],
+        [4., 5., 6., 7.]]),
+ array([[ 8.,  9., 10., 11.],
+        [12., 13., 14., 15.]])]
+>>> np.vsplit(x, np.array([3, 6]))
+[array([[ 0.,  1.,  2.,  3.],
+        [ 4.,  5.,  6.,  7.],
+        [ 8.,  9., 10., 11.]]),
+ array([[12., 13., 14., 15.]]),
+ array([], shape=(0, 4), dtype=float64)]
+
+With a higher dimensional array the split is still along the first axis.
+
+>>> x = np.arange(8.0).reshape(2, 2, 2)
+>>> x
+array([[[0.,  1.],
+        [2.,  3.]],
+       [[4.,  5.],
+        [6.,  7.]]])
+>>> np.vsplit(x, 2)
+[array([[[0., 1.],
+         [2., 3.]]]),
+ array([[[4., 5.],
+         [6., 7.]]])]
+
+**Paramètres :**
+
+- `ary`
+- `indices_or_sections`
+
+##### dsplit
+
+Split array into multiple sub-arrays along the 3rd axis (depth).
+
+Please refer to the `split` documentation.  `dsplit` is equivalent
+to `split` with ``axis=2``, the array is always split along the third
+axis provided the array dimension is greater than or equal to 3.
+
+See Also
+--------
+split : Split an array into multiple sub-arrays of equal size.
+
+Examples
+--------
+>>> import numpy as np
+>>> x = np.arange(16.0).reshape(2, 2, 4)
+>>> x
+array([[[ 0.,   1.,   2.,   3.],
+        [ 4.,   5.,   6.,   7.]],
+       [[ 8.,   9.,  10.,  11.],
+        [12.,  13.,  14.,  15.]]])
+>>> np.dsplit(x, 2)
+[array([[[ 0.,  1.],
+        [ 4.,  5.]],
+       [[ 8.,  9.],
+        [12., 13.]]]), array([[[ 2.,  3.],
+        [ 6.,  7.]],
+       [[10., 11.],
+        [14., 15.]]])]
+>>> np.dsplit(x, np.array([3, 6]))
+[array([[[ 0.,   1.,   2.],
+        [ 4.,   5.,   6.]],
+       [[ 8.,   9.,  10.],
+        [12.,  13.,  14.]]]),
+ array([[[ 3.],
+        [ 7.]],
+       [[11.],
+        [15.]]]),
+array([], shape=(2, 2, 0), dtype=float64)]
+
+**Paramètres :**
+
+- `ary`
+- `indices_or_sections`
+
+##### get_array_wrap
+
+Find the wrapper for the array with the highest priority.
+
+In case of ties, leftmost wins. If no wrapper is found, return None.
+
+.. deprecated:: 2.0
+
+##### _kron_dispatcher
+
+**Paramètres :**
+
+- `a`
+- `b`
+
+##### kron
+
+Kronecker product of two arrays.
+
+Computes the Kronecker product, a composite array made of blocks of the
+second array scaled by the first.
+
+Parameters
+----------
+a, b : array_like
+
+Returns
+-------
+out : ndarray
+
+See Also
+--------
+outer : The outer product
+
+Notes
+-----
+The function assumes that the number of dimensions of `a` and `b`
+are the same, if necessary prepending the smallest with ones.
+If ``a.shape = (r0,r1,..,rN)`` and ``b.shape = (s0,s1,...,sN)``,
+the Kronecker product has shape ``(r0*s0, r1*s1, ..., rN*SN)``.
+The elements are products of elements from `a` and `b`, organized
+explicitly by::
+
+    kron(a,b)[k0,k1,...,kN] = a[i0,i1,...,iN] * b[j0,j1,...,jN]
+
+where::
+
+    kt = it * st + jt,  t = 0,...,N
+
+In the common 2-D case (N=1), the block structure can be visualized::
+
+    [[ a[0,0]*b,   a[0,1]*b,  ... , a[0,-1]*b  ],
+     [  ...                              ...   ],
+     [ a[-1,0]*b,  a[-1,1]*b, ... , a[-1,-1]*b ]]
+
+
+Examples
+--------
+>>> import numpy as np
+>>> np.kron([1,10,100], [5,6,7])
+array([  5,   6,   7, ..., 500, 600, 700])
+>>> np.kron([5,6,7], [1,10,100])
+array([  5,  50, 500, ...,   7,  70, 700])
+
+>>> np.kron(np.eye(2), np.ones((2,2)))
+array([[1.,  1.,  0.,  0.],
+       [1.,  1.,  0.,  0.],
+       [0.,  0.,  1.,  1.],
+       [0.,  0.,  1.,  1.]])
+
+>>> a = np.arange(100).reshape((2,5,2,5))
+>>> b = np.arange(24).reshape((2,3,4))
+>>> c = np.kron(a,b)
+>>> c.shape
+(2, 10, 6, 20)
+>>> I = (1,3,0,2)
+>>> J = (0,2,1)
+>>> J1 = (0,) + J             # extend to ndim=4
+>>> S1 = (1,) + b.shape
+>>> K = tuple(np.array(I) * np.array(S1) + np.array(J1))
+>>> c[K] == a[I]*b[J]
+True
+
+**Paramètres :**
+
+- `a`
+- `b`
+
+##### _tile_dispatcher
+
+**Paramètres :**
+
+- `A`
+- `reps`
+
+##### tile
+
+Construct an array by repeating A the number of times given by reps.
+
+If `reps` has length ``d``, the result will have dimension of
+``max(d, A.ndim)``.
+
+If ``A.ndim < d``, `A` is promoted to be d-dimensional by prepending new
+axes. So a shape (3,) array is promoted to (1, 3) for 2-D replication,
+or shape (1, 1, 3) for 3-D replication. If this is not the desired
+behavior, promote `A` to d-dimensions manually before calling this
+function.
+
+If ``A.ndim > d``, `reps` is promoted to `A`.ndim by prepending 1's to it.
+Thus for an `A` of shape (2, 3, 4, 5), a `reps` of (2, 2) is treated as
+(1, 1, 2, 2).
+
+Note : Although tile may be used for broadcasting, it is strongly
+recommended to use numpy's broadcasting operations and functions.
+
+Parameters
+----------
+A : array_like
+    The input array.
+reps : array_like
+    The number of repetitions of `A` along each axis.
+
+Returns
+-------
+c : ndarray
+    The tiled output array.
+
+See Also
+--------
+repeat : Repeat elements of an array.
+broadcast_to : Broadcast an array to a new shape
+
+Examples
+--------
+>>> import numpy as np
+>>> a = np.array([0, 1, 2])
+>>> np.tile(a, 2)
+array([0, 1, 2, 0, 1, 2])
+>>> np.tile(a, (2, 2))
+array([[0, 1, 2, 0, 1, 2],
+       [0, 1, 2, 0, 1, 2]])
+>>> np.tile(a, (2, 1, 2))
+array([[[0, 1, 2, 0, 1, 2]],
+       [[0, 1, 2, 0, 1, 2]]])
+
+>>> b = np.array([[1, 2], [3, 4]])
+>>> np.tile(b, 2)
+array([[1, 2, 1, 2],
+       [3, 4, 3, 4]])
+>>> np.tile(b, (2, 1))
+array([[1, 2],
+       [3, 4],
+       [1, 2],
+       [3, 4]])
+
+>>> c = np.array([1,2,3,4])
+>>> np.tile(c,(4,1))
+array([[1, 2, 3, 4],
+       [1, 2, 3, 4],
+       [1, 2, 3, 4],
+       [1, 2, 3, 4]])
+
+**Paramètres :**
+
+- `A`
+- `reps`
+
+---
+
+### _datasource
+
+A file interface for handling local and remote data files.
+
+The goal of datasource is to abstract some of the file system operations
+when dealing with data files so the researcher doesn't have to know all the
+low-level details.  Through datasource, a researcher can obtain and use a
+file with one function call, regardless of location of the file.
+
+DataSource is meant to augment standard python libraries, not replace them.
+It should work seamlessly with standard file IO operations and the os
+module.
+
+DataSource files can originate locally or remotely:
+
+- local files : '/home/guido/src/local/data.txt'
+- URLs (http, ftp, ...) : 'http://www.scipy.org/not/real/data.txt'
+
+DataSource files can also be compressed or uncompressed.  Currently only
+gzip, bz2 and xz are supported.
+
+Example::
+
+    >>> # Create a DataSource, use os.curdir (default) for local storage.
+    >>> from numpy import DataSource
+    >>> ds = DataSource()
+    >>>
+    >>> # Open a remote file.
+    >>> # DataSource downloads the file, stores it locally in:
+    >>> #     './www.google.com/index.html'
+    >>> # opens the file and returns a file object.
+    >>> fp = ds.open('http://www.google.com/') # doctest: +SKIP
+    >>>
+    >>> # Use the file as you normally would
+    >>> fp.read() # doctest: +SKIP
+    >>> fp.close() # doctest: +SKIP
+
+#### Classes
+
+##### _FileOpeners
+
+Container for different methods to open (un-)compressed files.
+
+`_FileOpeners` contains a dictionary that holds one method for each
+supported file format. Attribute lookup is implemented in such a way
+that an instance of `_FileOpeners` itself can be indexed with the keys
+of that dictionary. Currently uncompressed files as well as files
+compressed with ``gzip``, ``bz2`` or ``xz`` compression are supported.
+
+Notes
+-----
+`_file_openers`, an instance of `_FileOpeners`, is made available for
+use in the `_datasource` module.
+
+Examples
+--------
+>>> import gzip
+>>> np.lib._datasource._file_openers.keys()
+[None, '.bz2', '.gz', '.xz', '.lzma']
+>>> np.lib._datasource._file_openers['.gz'] is gzip.open
+True
+
+**Méthodes :**
+
+- `__init__()`
+- `_load()`
+- `keys()`
+- `__getitem__()`
+
+##### DataSource
+
+DataSource(destpath='.')
+
+A generic data source file (file, http, ftp, ...).
+
+DataSources can be local files or remote files/URLs.  The files may
+also be compressed or uncompressed. DataSource hides some of the
+low-level details of downloading the file, allowing you to simply pass
+in a valid file path (or URL) and obtain a file object.
+
+Parameters
+----------
+destpath : str or None, optional
+    Path to the directory where the source file gets downloaded to for
+    use.  If `destpath` is None, a temporary directory will be created.
+    The default path is the current directory.
+
+Notes
+-----
+URLs require a scheme string (``http://``) to be used, without it they
+will fail::
+
+    >>> repos = np.lib.npyio.DataSource()
+    >>> repos.exists('www.google.com/index.html')
+    False
+    >>> repos.exists('http://www.google.com/index.html')
+    True
+
+Temporary directories are deleted when the DataSource is deleted.
+
+Examples
+--------
+::
+
+    >>> ds = np.lib.npyio.DataSource('/home/guido')
+    >>> urlname = 'http://www.google.com/'
+    >>> gfile = ds.open('http://www.google.com/')
+    >>> ds.abspath(urlname)
+    '/home/guido/www.google.com/index.html'
+
+    >>> ds = np.lib.npyio.DataSource(None)  # use with temporary file
+    >>> ds.open('/home/guido/foobar.txt')
+    <open file '/home/guido.foobar.txt', mode 'r' at 0x91d4430>
+    >>> ds.abspath('/home/guido/foobar.txt')
+    '/tmp/.../home/guido/foobar.txt'
+
+**Méthodes :**
+
+- `__init__()`
+- `__del__()`
+- `_iszip()`
+- `_iswritemode()`
+- `_splitzipext()`
+- `_possible_names()`
+- `_isurl()`
+- `_cache()`
+- `_findfile()`
+- `abspath()`
+- `_sanitize_relative_path()`
+- `exists()`
+- `open()`
+
+##### Repository
+
+Repository(baseurl, destpath='.')
+
+A data repository where multiple DataSource's share a base
+URL/directory.
+
+`Repository` extends `DataSource` by prepending a base URL (or
+directory) to all the files it handles. Use `Repository` when you will
+be working with multiple files from one base URL.  Initialize
+`Repository` with the base URL, then refer to each file by its filename
+only.
+
+Parameters
+----------
+baseurl : str
+    Path to the local directory or remote location that contains the
+    data files.
+destpath : str or None, optional
+    Path to the directory where the source file gets downloaded to for
+    use.  If `destpath` is None, a temporary directory will be created.
+    The default path is the current directory.
+
+Examples
+--------
+To analyze all files in the repository, do something like this
+(note: this is not self-contained code)::
+
+    >>> repos = np.lib._datasource.Repository('/home/user/data/dir/')
+    >>> for filename in filelist:
+    ...     fp = repos.open(filename)
+    ...     fp.analyze()
+    ...     fp.close()
+
+Similarly you could use a URL for a repository::
+
+    >>> repos = np.lib._datasource.Repository('http://www.xyz.edu/data')
+
+**Méthodes :**
+
+- `__init__()`
+- `__del__()`
+- `_fullpath()`
+- `_findfile()`
+- `abspath()`
+- `exists()`
+- `open()`
+- `listdir()`
+
+#### Fonctions
+
+##### _check_mode
+
+Check mode and that encoding and newline are compatible.
+
+Parameters
+----------
+mode : str
+    File open mode.
+encoding : str
+    File encoding.
+newline : str
+    Newline for text files.
+
+**Paramètres :**
+
+- `mode`
+- `encoding`
+- `newline`
+
+##### open
+
+Open `path` with `mode` and return the file object.
+
+If ``path`` is an URL, it will be downloaded, stored in the
+`DataSource` `destpath` directory and opened from there.
+
+Parameters
+----------
+path : str or pathlib.Path
+    Local file path or URL to open.
+mode : str, optional
+    Mode to open `path`. Mode 'r' for reading, 'w' for writing, 'a' to
+    append. Available modes depend on the type of object specified by
+    path.  Default is 'r'.
+destpath : str, optional
+    Path to the directory where the source file gets downloaded to for
+    use.  If `destpath` is None, a temporary directory will be created.
+    The default path is the current directory.
+encoding : {None, str}, optional
+    Open text file with given encoding. The default encoding will be
+    what `open` uses.
+newline : {None, str}, optional
+    Newline to use when reading text file.
+
+Returns
+-------
+out : file object
+    The opened file.
+
+Notes
+-----
+This is a convenience function that instantiates a `DataSource` and
+returns the file object from ``DataSource.open(path)``.
+
+**Paramètres :**
+
+- `path`
+- `mode`
+- `destpath`
+- `encoding`
+- `newline`
+
+##### __init__
+
+##### _load
+
+##### keys
+
+Return the keys of currently supported file openers.
+
+Parameters
+----------
+None
+
+Returns
+-------
+keys : list
+    The keys are None for uncompressed files and the file extension
+    strings (i.e. ``'.gz'``, ``'.xz'``) for supported compression
+    methods.
+
+##### __getitem__
+
+**Paramètres :**
+
+- `key`
+
+##### __init__
+
+Create a DataSource with a local path at destpath.
+
+**Paramètres :**
+
+- `destpath`
+
+##### __del__
+
+##### _iszip
+
+Test if the filename is a zip file by looking at the file extension.
+
+        
+
+**Paramètres :**
+
+- `filename`
+
+##### _iswritemode
+
+Test if the given mode will open a file for writing.
+
+**Paramètres :**
+
+- `mode`
+
+##### _splitzipext
+
+Split zip extension from filename and return filename.
+
+Returns
+-------
+base, zip_ext : {tuple}
+
+**Paramètres :**
+
+- `filename`
+
+##### _possible_names
+
+Return a tuple containing compressed filename variations.
+
+**Paramètres :**
+
+- `filename`
+
+##### _isurl
+
+Test if path is a net location.  Tests the scheme and netloc.
+
+**Paramètres :**
+
+- `path`
+
+##### _cache
+
+Cache the file specified by path.
+
+Creates a copy of the file in the datasource cache.
+
+**Paramètres :**
+
+- `path`
+
+##### _findfile
+
+Searches for ``path`` and returns full path if found.
+
+If path is an URL, _findfile will cache a local copy and return the
+path to the cached file.  If path is a local file, _findfile will
+return a path to that local file.
+
+The search will include possible compressed versions of the file
+and return the first occurrence found.
+
+**Paramètres :**
+
+- `path`
+
+##### abspath
+
+Return absolute path of file in the DataSource directory.
+
+If `path` is an URL, then `abspath` will return either the location
+the file exists locally or the location it would exist when opened
+using the `open` method.
+
+Parameters
+----------
+path : str or pathlib.Path
+    Can be a local file or a remote URL.
+
+Returns
+-------
+out : str
+    Complete path, including the `DataSource` destination directory.
+
+Notes
+-----
+The functionality is based on `os.path.abspath`.
+
+**Paramètres :**
+
+- `path`
+
+##### _sanitize_relative_path
+
+Return a sanitised relative path for which
+os.path.abspath(os.path.join(base, path)).startswith(base)
+
+**Paramètres :**
+
+- `path`
+
+##### exists
+
+Test if path exists.
+
+Test if `path` exists as (and in this order):
+
+- a local file.
+- a remote URL that has been downloaded and stored locally in the
+  `DataSource` directory.
+- a remote URL that has not been downloaded, but is valid and
+  accessible.
+
+Parameters
+----------
+path : str or pathlib.Path
+    Can be a local file or a remote URL.
+
+Returns
+-------
+out : bool
+    True if `path` exists.
+
+Notes
+-----
+When `path` is an URL, `exists` will return True if it's either
+stored locally in the `DataSource` directory, or is a valid remote
+URL.  `DataSource` does not discriminate between the two, the file
+is accessible if it exists in either location.
+
+**Paramètres :**
+
+- `path`
+
+##### open
+
+Open and return file-like object.
+
+If `path` is an URL, it will be downloaded, stored in the
+`DataSource` directory and opened from there.
+
+Parameters
+----------
+path : str or pathlib.Path
+    Local file path or URL to open.
+mode : {'r', 'w', 'a'}, optional
+    Mode to open `path`.  Mode 'r' for reading, 'w' for writing,
+    'a' to append. Available modes depend on the type of object
+    specified by `path`. Default is 'r'.
+encoding : {None, str}, optional
+    Open text file with given encoding. The default encoding will be
+    what `open` uses.
+newline : {None, str}, optional
+    Newline to use when reading text file.
+
+Returns
+-------
+out : file object
+    File object.
+
+**Paramètres :**
+
+- `path`
+- `mode`
+- `encoding`
+- `newline`
+
+##### __init__
+
+Create a Repository with a shared url or directory of baseurl.
+
+**Paramètres :**
+
+- `baseurl`
+- `destpath`
+
+##### __del__
+
+##### _fullpath
+
+Return complete path for path.  Prepends baseurl if necessary.
+
+**Paramètres :**
+
+- `path`
+
+##### _findfile
+
+Extend DataSource method to prepend baseurl to ``path``.
+
+**Paramètres :**
+
+- `path`
+
+##### abspath
+
+Return absolute path of file in the Repository directory.
+
+If `path` is an URL, then `abspath` will return either the location
+the file exists locally or the location it would exist when opened
+using the `open` method.
+
+Parameters
+----------
+path : str or pathlib.Path
+    Can be a local file or a remote URL. This may, but does not
+    have to, include the `baseurl` with which the `Repository` was
+    initialized.
+
+Returns
+-------
+out : str
+    Complete path, including the `DataSource` destination directory.
+
+**Paramètres :**
+
+- `path`
+
+##### exists
+
+Test if path exists prepending Repository base URL to path.
+
+Test if `path` exists as (and in this order):
+
+- a local file.
+- a remote URL that has been downloaded and stored locally in the
+  `DataSource` directory.
+- a remote URL that has not been downloaded, but is valid and
+  accessible.
+
+Parameters
+----------
+path : str or pathlib.Path
+    Can be a local file or a remote URL. This may, but does not
+    have to, include the `baseurl` with which the `Repository` was
+    initialized.
+
+Returns
+-------
+out : bool
+    True if `path` exists.
+
+Notes
+-----
+When `path` is an URL, `exists` will return True if it's either
+stored locally in the `DataSource` directory, or is a valid remote
+URL.  `DataSource` does not discriminate between the two, the file
+is accessible if it exists in either location.
+
+**Paramètres :**
+
+- `path`
+
+##### open
+
+Open and return file-like object prepending Repository base URL.
+
+If `path` is an URL, it will be downloaded, stored in the
+DataSource directory and opened from there.
+
+Parameters
+----------
+path : str or pathlib.Path
+    Local file path or URL to open. This may, but does not have to,
+    include the `baseurl` with which the `Repository` was
+    initialized.
+mode : {'r', 'w', 'a'}, optional
+    Mode to open `path`.  Mode 'r' for reading, 'w' for writing,
+    'a' to append. Available modes depend on the type of object
+    specified by `path`. Default is 'r'.
+encoding : {None, str}, optional
+    Open text file with given encoding. The default encoding will be
+    what `open` uses.
+newline : {None, str}, optional
+    Newline to use when reading text file.
+
+Returns
+-------
+out : file object
+    File object.
+
+**Paramètres :**
+
+- `path`
+- `mode`
+- `encoding`
+- `newline`
+
+##### listdir
+
+List files in the source Repository.
+
+Returns
+-------
+files : list of str or pathlib.Path
+    List of file names (not containing a directory part).
+
+Notes
+-----
+Does not currently work for remote repositories.
+
+---
+
+### stride_tricks
+
+---
+
+### _histograms_impl
+
+Histogram-related functions
+
+#### Fonctions
+
+##### _ptp
+
+Peak-to-peak value of x.
+
+This implementation avoids the problem of signed integer arrays having a
+peak-to-peak value that cannot be represented with the array's data type.
+This function returns an unsigned value for signed integer arrays.
+
+**Paramètres :**
+
+- `x`
+
+##### _hist_bin_sqrt
+
+Square root histogram bin estimator.
+
+Bin width is inversely proportional to the data size. Used by many
+programs for its simplicity.
+
+Parameters
+----------
+x : array_like
+    Input data that is to be histogrammed, trimmed to range. May not
+    be empty.
+
+Returns
+-------
+h : An estimate of the optimal bin width for the given data.
+
+**Paramètres :**
+
+- `x`
+- `range`
+
+##### _hist_bin_sturges
+
+Sturges histogram bin estimator.
+
+A very simplistic estimator based on the assumption of normality of
+the data. This estimator has poor performance for non-normal data,
+which becomes especially obvious for large data sets. The estimate
+depends only on size of the data.
+
+Parameters
+----------
+x : array_like
+    Input data that is to be histogrammed, trimmed to range. May not
+    be empty.
+
+Returns
+-------
+h : An estimate of the optimal bin width for the given data.
+
+**Paramètres :**
+
+- `x`
+- `range`
+
+##### _hist_bin_rice
+
+Rice histogram bin estimator.
+
+Another simple estimator with no normality assumption. It has better
+performance for large data than Sturges, but tends to overestimate
+the number of bins. The number of bins is proportional to the cube
+root of data size (asymptotically optimal). The estimate depends
+only on size of the data.
+
+Parameters
+----------
+x : array_like
+    Input data that is to be histogrammed, trimmed to range. May not
+    be empty.
+
+Returns
+-------
+h : An estimate of the optimal bin width for the given data.
+
+**Paramètres :**
+
+- `x`
+- `range`
+
+##### _hist_bin_scott
+
+Scott histogram bin estimator.
+
+The binwidth is proportional to the standard deviation of the data
+and inversely proportional to the cube root of data size
+(asymptotically optimal).
+
+Parameters
+----------
+x : array_like
+    Input data that is to be histogrammed, trimmed to range. May not
+    be empty.
+
+Returns
+-------
+h : An estimate of the optimal bin width for the given data.
+
+**Paramètres :**
+
+- `x`
+- `range`
+
+##### _hist_bin_stone
+
+Histogram bin estimator based on minimizing the estimated integrated squared error (ISE).
+
+The number of bins is chosen by minimizing the estimated ISE against the unknown true distribution.
+The ISE is estimated using cross-validation and can be regarded as a generalization of Scott's rule.
+https://en.wikipedia.org/wiki/Histogram#Scott.27s_normal_reference_rule
+
+This paper by Stone appears to be the origination of this rule.
+https://digitalassets.lib.berkeley.edu/sdtr/ucb/text/34.pdf
+
+Parameters
+----------
+x : array_like
+    Input data that is to be histogrammed, trimmed to range. May not
+    be empty.
+range : (float, float)
+    The lower and upper range of the bins.
+
+Returns
+-------
+h : An estimate of the optimal bin width for the given data.
+
+**Paramètres :**
+
+- `x`
+- `range`
+
+##### _hist_bin_doane
+
+Doane's histogram bin estimator.
+
+Improved version of Sturges' formula which works better for
+non-normal data. See
+stats.stackexchange.com/questions/55134/doanes-formula-for-histogram-binning
+
+Parameters
+----------
+x : array_like
+    Input data that is to be histogrammed, trimmed to range. May not
+    be empty.
+
+Returns
+-------
+h : An estimate of the optimal bin width for the given data.
+
+**Paramètres :**
+
+- `x`
+- `range`
+
+##### _hist_bin_fd
+
+The Freedman-Diaconis histogram bin estimator.
+
+The Freedman-Diaconis rule uses interquartile range (IQR) to
+estimate binwidth. It is considered a variation of the Scott rule
+with more robustness as the IQR is less affected by outliers than
+the standard deviation. However, the IQR depends on fewer points
+than the standard deviation, so it is less accurate, especially for
+long tailed distributions.
+
+If the IQR is 0, this function returns 0 for the bin width.
+Binwidth is inversely proportional to the cube root of data size
+(asymptotically optimal).
+
+Parameters
+----------
+x : array_like
+    Input data that is to be histogrammed, trimmed to range. May not
+    be empty.
+
+Returns
+-------
+h : An estimate of the optimal bin width for the given data.
+
+**Paramètres :**
+
+- `x`
+- `range`
+
+##### _hist_bin_auto
+
+Histogram bin estimator that uses the minimum width of the
+Freedman-Diaconis and Sturges estimators if the FD bin width is non-zero.
+If the bin width from the FD estimator is 0, the Sturges estimator is used.
+
+The FD estimator is usually the most robust method, but its width
+estimate tends to be too large for small `x` and bad for data with limited
+variance. The Sturges estimator is quite good for small (<1000) datasets
+and is the default in the R language. This method gives good off-the-shelf
+behaviour.
+
+If there is limited variance the IQR can be 0, which results in the
+FD bin width being 0 too. This is not a valid bin width, so
+``np.histogram_bin_edges`` chooses 1 bin instead, which may not be optimal.
+If the IQR is 0, it's unlikely any variance-based estimators will be of
+use, so we revert to the Sturges estimator, which only uses the size of the
+dataset in its calculation.
+
+Parameters
+----------
+x : array_like
+    Input data that is to be histogrammed, trimmed to range. May not
+    be empty.
+
+Returns
+-------
+h : An estimate of the optimal bin width for the given data.
+
+See Also
+--------
+_hist_bin_fd, _hist_bin_sturges
+
+**Paramètres :**
+
+- `x`
+- `range`
+
+##### _ravel_and_check_weights
+
+Check a and weights have matching shapes, and ravel both 
+
+**Paramètres :**
+
+- `a`
+- `weights`
+
+##### _get_outer_edges
+
+Determine the outer bin edges to use, from either the data or the range
+argument
+
+**Paramètres :**
+
+- `a`
+- `range`
+
+##### _unsigned_subtract
+
+Subtract two values where a >= b, and produce an unsigned result
+
+This is needed when finding the difference between the upper and lower
+bound of an int16 histogram
+
+**Paramètres :**
+
+- `a`
+- `b`
+
+##### _get_bin_edges
+
+Computes the bins used internally by `histogram`.
+
+Parameters
+==========
+a : ndarray
+    Ravelled data array
+bins, range
+    Forwarded arguments from `histogram`.
+weights : ndarray, optional
+    Ravelled weights array, or None
+
+Returns
+=======
+bin_edges : ndarray
+    Array of bin edges
+uniform_bins : (Number, Number, int):
+    The upper bound, lowerbound, and number of bins, used in the optimized
+    implementation of `histogram` that works on uniform bins.
+
+**Paramètres :**
+
+- `a`
+- `bins`
+- `range`
+- `weights`
+
+##### _search_sorted_inclusive
+
+Like `searchsorted`, but where the last item in `v` is placed on the right.
+
+In the context of a histogram, this makes the last bin edge inclusive
+
+**Paramètres :**
+
+- `a`
+- `v`
+
+##### _histogram_bin_edges_dispatcher
+
+**Paramètres :**
+
+- `a`
+- `bins`
+- `range`
+- `weights`
+
+##### histogram_bin_edges
+
+Function to calculate only the edges of the bins used by the `histogram`
+function.
+
+Parameters
+----------
+a : array_like
+    Input data. The histogram is computed over the flattened array.
+bins : int or sequence of scalars or str, optional
+    If `bins` is an int, it defines the number of equal-width
+    bins in the given range (10, by default). If `bins` is a
+    sequence, it defines the bin edges, including the rightmost
+    edge, allowing for non-uniform bin widths.
+
+    If `bins` is a string from the list below, `histogram_bin_edges` will
+    use the method chosen to calculate the optimal bin width and
+    consequently the number of bins (see the Notes section for more detail
+    on the estimators) from the data that falls within the requested range.
+    While the bin width will be optimal for the actual data
+    in the range, the number of bins will be computed to fill the
+    entire range, including the empty portions. For visualisation,
+    using the 'auto' option is suggested. Weighted data is not
+    supported for automated bin size selection.
+
+    'auto'
+        Minimum bin width between the 'sturges' and 'fd' estimators.
+        Provides good all-around performance.
+
+    'fd' (Freedman Diaconis Estimator)
+        Robust (resilient to outliers) estimator that takes into
+        account data variability and data size.
+
+    'doane'
+        An improved version of Sturges' estimator that works better
+        with non-normal datasets.
+
+    'scott'
+        Less robust estimator that takes into account data variability
+        and data size.
+
+    'stone'
+        Estimator based on leave-one-out cross-validation estimate of
+        the integrated squared error. Can be regarded as a generalization
+        of Scott's rule.
+
+    'rice'
+        Estimator does not take variability into account, only data
+        size. Commonly overestimates number of bins required.
+
+    'sturges'
+        R's default method, only accounts for data size. Only
+        optimal for gaussian data and underestimates number of bins
+        for large non-gaussian datasets.
+
+    'sqrt'
+        Square root (of data size) estimator, used by Excel and
+        other programs for its speed and simplicity.
+
+range : (float, float), optional
+    The lower and upper range of the bins.  If not provided, range
+    is simply ``(a.min(), a.max())``.  Values outside the range are
+    ignored. The first element of the range must be less than or
+    equal to the second. `range` affects the automatic bin
+    computation as well. While bin width is computed to be optimal
+    based on the actual data within `range`, the bin count will fill
+    the entire range including portions containing no data.
+
+weights : array_like, optional
+    An array of weights, of the same shape as `a`.  Each value in
+    `a` only contributes its associated weight towards the bin count
+    (instead of 1). This is currently not used by any of the bin estimators,
+    but may be in the future.
+
+Returns
+-------
+bin_edges : array of dtype float
+    The edges to pass into `histogram`
+
+See Also
+--------
+histogram
+
+Notes
+-----
+The methods to estimate the optimal number of bins are well founded
+in literature, and are inspired by the choices R provides for
+histogram visualisation. Note that having the number of bins
+proportional to :math:`n^{1/3}` is asymptotically optimal, which is
+why it appears in most estimators. These are simply plug-in methods
+that give good starting points for number of bins. In the equations
+below, :math:`h` is the binwidth and :math:`n_h` is the number of
+bins. All estimators that compute bin counts are recast to bin width
+using the `ptp` of the data. The final bin count is obtained from
+``np.round(np.ceil(range / h))``. The final bin width is often less
+than what is returned by the estimators below.
+
+'auto' (minimum bin width of the 'sturges' and 'fd' estimators)
+    A compromise to get a good value. For small datasets the Sturges
+    value will usually be chosen, while larger datasets will usually
+    default to FD.  Avoids the overly conservative behaviour of FD
+    and Sturges for small and large datasets respectively.
+    Switchover point is usually :math:`a.size \approx 1000`.
+
+'fd' (Freedman Diaconis Estimator)
+    .. math:: h = 2 \frac{IQR}{n^{1/3}}
+
+    The binwidth is proportional to the interquartile range (IQR)
+    and inversely proportional to cube root of a.size. Can be too
+    conservative for small datasets, but is quite good for large
+    datasets. The IQR is very robust to outliers.
+
+'scott'
+    .. math:: h = \sigma \sqrt[3]{\frac{24 \sqrt{\pi}}{n}}
+
+    The binwidth is proportional to the standard deviation of the
+    data and inversely proportional to cube root of ``x.size``. Can
+    be too conservative for small datasets, but is quite good for
+    large datasets. The standard deviation is not very robust to
+    outliers. Values are very similar to the Freedman-Diaconis
+    estimator in the absence of outliers.
+
+'rice'
+    .. math:: n_h = 2n^{1/3}
+
+    The number of bins is only proportional to cube root of
+    ``a.size``. It tends to overestimate the number of bins and it
+    does not take into account data variability.
+
+'sturges'
+    .. math:: n_h = \log _{2}(n) + 1
+
+    The number of bins is the base 2 log of ``a.size``.  This
+    estimator assumes normality of data and is too conservative for
+    larger, non-normal datasets. This is the default method in R's
+    ``hist`` method.
+
+'doane'
+    .. math:: n_h = 1 + \log_{2}(n) +
+                    \log_{2}\left(1 + \frac{|g_1|}{\sigma_{g_1}}\right)
+
+        g_1 = mean\left[\left(\frac{x - \mu}{\sigma}\right)^3\right]
+
+        \sigma_{g_1} = \sqrt{\frac{6(n - 2)}{(n + 1)(n + 3)}}
+
+    An improved version of Sturges' formula that produces better
+    estimates for non-normal datasets. This estimator attempts to
+    account for the skew of the data.
+
+'sqrt'
+    .. math:: n_h = \sqrt n
+
+    The simplest and fastest estimator. Only takes into account the
+    data size.
+
+Additionally, if the data is of integer dtype, then the binwidth will never
+be less than 1.
+
+Examples
+--------
+>>> import numpy as np
+>>> arr = np.array([0, 0, 0, 1, 2, 3, 3, 4, 5])
+>>> np.histogram_bin_edges(arr, bins='auto', range=(0, 1))
+array([0.  , 0.25, 0.5 , 0.75, 1.  ])
+>>> np.histogram_bin_edges(arr, bins=2)
+array([0. , 2.5, 5. ])
+
+For consistency with histogram, an array of pre-computed bins is
+passed through unmodified:
+
+>>> np.histogram_bin_edges(arr, [1, 2])
+array([1, 2])
+
+This function allows one set of bins to be computed, and reused across
+multiple histograms:
+
+>>> shared_bins = np.histogram_bin_edges(arr, bins='auto')
+>>> shared_bins
+array([0., 1., 2., 3., 4., 5.])
+
+>>> group_id = np.array([0, 1, 1, 0, 1, 1, 0, 1, 1])
+>>> hist_0, _ = np.histogram(arr[group_id == 0], bins=shared_bins)
+>>> hist_1, _ = np.histogram(arr[group_id == 1], bins=shared_bins)
+
+>>> hist_0; hist_1
+array([1, 1, 0, 1, 0])
+array([2, 0, 1, 1, 2])
+
+Which gives more easily comparable results than using separate bins for
+each histogram:
+
+>>> hist_0, bins_0 = np.histogram(arr[group_id == 0], bins='auto')
+>>> hist_1, bins_1 = np.histogram(arr[group_id == 1], bins='auto')
+>>> hist_0; hist_1
+array([1, 1, 1])
+array([2, 1, 1, 2])
+>>> bins_0; bins_1
+array([0., 1., 2., 3.])
+array([0.  , 1.25, 2.5 , 3.75, 5.  ])
+
+**Paramètres :**
+
+- `a`
+- `bins`
+- `range`
+- `weights`
+
+##### _histogram_dispatcher
+
+**Paramètres :**
+
+- `a`
+- `bins`
+- `range`
+- `density`
+- `weights`
+
+##### histogram
+
+Compute the histogram of a dataset.
+
+Parameters
+----------
+a : array_like
+    Input data. The histogram is computed over the flattened array.
+bins : int or sequence of scalars or str, optional
+    If `bins` is an int, it defines the number of equal-width
+    bins in the given range (10, by default). If `bins` is a
+    sequence, it defines a monotonically increasing array of bin edges,
+    including the rightmost edge, allowing for non-uniform bin widths.
+
+    If `bins` is a string, it defines the method used to calculate the
+    optimal bin width, as defined by `histogram_bin_edges`.
+
+range : (float, float), optional
+    The lower and upper range of the bins.  If not provided, range
+    is simply ``(a.min(), a.max())``.  Values outside the range are
+    ignored. The first element of the range must be less than or
+    equal to the second. `range` affects the automatic bin
+    computation as well. While bin width is computed to be optimal
+    based on the actual data within `range`, the bin count will fill
+    the entire range including portions containing no data.
+weights : array_like, optional
+    An array of weights, of the same shape as `a`.  Each value in
+    `a` only contributes its associated weight towards the bin count
+    (instead of 1). If `density` is True, the weights are
+    normalized, so that the integral of the density over the range
+    remains 1.
+    Please note that the ``dtype`` of `weights` will also become the
+    ``dtype`` of the returned accumulator (`hist`), so it must be
+    large enough to hold accumulated values as well.
+density : bool, optional
+    If ``False``, the result will contain the number of samples in
+    each bin. If ``True``, the result is the value of the
+    probability *density* function at the bin, normalized such that
+    the *integral* over the range is 1. Note that the sum of the
+    histogram values will not be equal to 1 unless bins of unity
+    width are chosen; it is not a probability *mass* function.
+
+Returns
+-------
+hist : array
+    The values of the histogram. See `density` and `weights` for a
+    description of the possible semantics.  If `weights` are given,
+    ``hist.dtype`` will be taken from `weights`.
+bin_edges : array of dtype float
+    Return the bin edges ``(length(hist)+1)``.
+
+
+See Also
+--------
+histogramdd, bincount, searchsorted, digitize, histogram_bin_edges
+
+Notes
+-----
+All but the last (righthand-most) bin is half-open.  In other words,
+if `bins` is::
+
+  [1, 2, 3, 4]
+
+then the first bin is ``[1, 2)`` (including 1, but excluding 2) and
+the second ``[2, 3)``.  The last bin, however, is ``[3, 4]``, which
+*includes* 4.
+
+
+Examples
+--------
+>>> import numpy as np
+>>> np.histogram([1, 2, 1], bins=[0, 1, 2, 3])
+(array([0, 2, 1]), array([0, 1, 2, 3]))
+>>> np.histogram(np.arange(4), bins=np.arange(5), density=True)
+(array([0.25, 0.25, 0.25, 0.25]), array([0, 1, 2, 3, 4]))
+>>> np.histogram([[1, 2, 1], [1, 0, 1]], bins=[0,1,2,3])
+(array([1, 4, 1]), array([0, 1, 2, 3]))
+
+>>> a = np.arange(5)
+>>> hist, bin_edges = np.histogram(a, density=True)
+>>> hist
+array([0.5, 0. , 0.5, 0. , 0. , 0.5, 0. , 0.5, 0. , 0.5])
+>>> hist.sum()
+2.4999999999999996
+>>> np.sum(hist * np.diff(bin_edges))
+1.0
+
+Automated Bin Selection Methods example, using 2 peak random data
+with 2000 points.
+
+.. plot::
+    :include-source:
+
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    rng = np.random.RandomState(10)  # deterministic random data
+    a = np.hstack((rng.normal(size=1000),
+                   rng.normal(loc=5, scale=2, size=1000)))
+    plt.hist(a, bins='auto')  # arguments are passed to np.histogram
+    plt.title("Histogram with 'auto' bins")
+    plt.show()
+
+**Paramètres :**
+
+- `a`
+- `bins`
+- `range`
+- `density`
+- `weights`
+
+##### _histogramdd_dispatcher
+
+**Paramètres :**
+
+- `sample`
+- `bins`
+- `range`
+- `density`
+- `weights`
+
+##### histogramdd
+
+Compute the multidimensional histogram of some data.
+
+Parameters
+----------
+sample : (N, D) array, or (N, D) array_like
+    The data to be histogrammed.
+
+    Note the unusual interpretation of sample when an array_like:
+
+    * When an array, each row is a coordinate in a D-dimensional space -
+      such as ``histogramdd(np.array([p1, p2, p3]))``.
+    * When an array_like, each element is the list of values for single
+      coordinate - such as ``histogramdd((X, Y, Z))``.
+
+    The first form should be preferred.
+
+bins : sequence or int, optional
+    The bin specification:
+
+    * A sequence of arrays describing the monotonically increasing bin
+      edges along each dimension.
+    * The number of bins for each dimension (nx, ny, ... =bins)
+    * The number of bins for all dimensions (nx=ny=...=bins).
+
+range : sequence, optional
+    A sequence of length D, each an optional (lower, upper) tuple giving
+    the outer bin edges to be used if the edges are not given explicitly in
+    `bins`.
+    An entry of None in the sequence results in the minimum and maximum
+    values being used for the corresponding dimension.
+    The default, None, is equivalent to passing a tuple of D None values.
+density : bool, optional
+    If False, the default, returns the number of samples in each bin.
+    If True, returns the probability *density* function at the bin,
+    ``bin_count / sample_count / bin_volume``.
+weights : (N,) array_like, optional
+    An array of values `w_i` weighing each sample `(x_i, y_i, z_i, ...)`.
+    Weights are normalized to 1 if density is True. If density is False,
+    the values of the returned histogram are equal to the sum of the
+    weights belonging to the samples falling into each bin.
+
+Returns
+-------
+H : ndarray
+    The multidimensional histogram of sample x. See density and weights
+    for the different possible semantics.
+edges : tuple of ndarrays
+    A tuple of D arrays describing the bin edges for each dimension.
+
+See Also
+--------
+histogram: 1-D histogram
+histogram2d: 2-D histogram
+
+Examples
+--------
+>>> import numpy as np
+>>> rng = np.random.default_rng()
+>>> r = rng.normal(size=(100,3))
+>>> H, edges = np.histogramdd(r, bins = (5, 8, 4))
+>>> H.shape, edges[0].size, edges[1].size, edges[2].size
+((5, 8, 4), 6, 9, 5)
+
+**Paramètres :**
+
+- `sample`
+- `bins`
+- `range`
+- `density`
+- `weights`
+
+##### jhat
+
+**Paramètres :**
+
+- `nbins`
+
+---
+
+### _arraypad_impl
+
+The arraypad module contains a group of functions to pad values onto the edges
+of an n-dimensional array.
+
+#### Fonctions
+
+##### _round_if_needed
+
+Rounds arr inplace if destination dtype is integer.
+
+Parameters
+----------
+arr : ndarray
+    Input array.
+dtype : dtype
+    The dtype of the destination array.
+
+**Paramètres :**
+
+- `arr`
+- `dtype`
+
+##### _slice_at_axis
+
+Construct tuple of slices to slice an array in the given dimension.
+
+Parameters
+----------
+sl : slice
+    The slice for the given dimension.
+axis : int
+    The axis to which `sl` is applied. All other dimensions are left
+    "unsliced".
+
+Returns
+-------
+sl : tuple of slices
+    A tuple with slices matching `shape` in length.
+
+Examples
+--------
+>>> np._slice_at_axis(slice(None, 3, -1), 1)
+(slice(None, None, None), slice(None, 3, -1), (...,))
+
+**Paramètres :**
+
+- `sl`
+- `axis`
+
+##### _view_roi
+
+Get a view of the current region of interest during iterative padding.
+
+When padding multiple dimensions iteratively corner values are
+unnecessarily overwritten multiple times. This function reduces the
+working area for the first dimensions so that corners are excluded.
+
+Parameters
+----------
+array : ndarray
+    The array with the region of interest.
+original_area_slice : tuple of slices
+    Denotes the area with original values of the unpadded array.
+axis : int
+    The currently padded dimension assuming that `axis` is padded before
+    `axis` + 1.
+
+Returns
+-------
+roi : ndarray
+    The region of interest of the original `array`.
+
+**Paramètres :**
+
+- `array`
+- `original_area_slice`
+- `axis`
+
+##### _pad_simple
+
+Pad array on all sides with either a single value or undefined values.
+
+Parameters
+----------
+array : ndarray
+    Array to grow.
+pad_width : sequence of tuple[int, int]
+    Pad width on both sides for each dimension in `arr`.
+fill_value : scalar, optional
+    If provided the padded area is filled with this value, otherwise
+    the pad area left undefined.
+
+Returns
+-------
+padded : ndarray
+    The padded array with the same dtype as`array`. Its order will default
+    to C-style if `array` is not F-contiguous.
+original_area_slice : tuple
+    A tuple of slices pointing to the area of the original array.
+
+**Paramètres :**
+
+- `array`
+- `pad_width`
+- `fill_value`
+
+##### _set_pad_area
+
+Set empty-padded area in given dimension.
+
+Parameters
+----------
+padded : ndarray
+    Array with the pad area which is modified inplace.
+axis : int
+    Dimension with the pad area to set.
+width_pair : (int, int)
+    Pair of widths that mark the pad area on both sides in the given
+    dimension.
+value_pair : tuple of scalars or ndarrays
+    Values inserted into the pad area on each side. It must match or be
+    broadcastable to the shape of `arr`.
+
+**Paramètres :**
+
+- `padded`
+- `axis`
+- `width_pair`
+- `value_pair`
+
+##### _get_edges
+
+Retrieve edge values from empty-padded array in given dimension.
+
+Parameters
+----------
+padded : ndarray
+    Empty-padded array.
+axis : int
+    Dimension in which the edges are considered.
+width_pair : (int, int)
+    Pair of widths that mark the pad area on both sides in the given
+    dimension.
+
+Returns
+-------
+left_edge, right_edge : ndarray
+    Edge values of the valid area in `padded` in the given dimension. Its
+    shape will always match `padded` except for the dimension given by
+    `axis` which will have a length of 1.
+
+**Paramètres :**
+
+- `padded`
+- `axis`
+- `width_pair`
+
+##### _get_linear_ramps
+
+Construct linear ramps for empty-padded array in given dimension.
+
+Parameters
+----------
+padded : ndarray
+    Empty-padded array.
+axis : int
+    Dimension in which the ramps are constructed.
+width_pair : (int, int)
+    Pair of widths that mark the pad area on both sides in the given
+    dimension.
+end_value_pair : (scalar, scalar)
+    End values for the linear ramps which form the edge of the fully padded
+    array. These values are included in the linear ramps.
+
+Returns
+-------
+left_ramp, right_ramp : ndarray
+    Linear ramps to set on both sides of `padded`.
+
+**Paramètres :**
+
+- `padded`
+- `axis`
+- `width_pair`
+- `end_value_pair`
+
+##### _get_stats
+
+Calculate statistic for the empty-padded array in given dimension.
+
+Parameters
+----------
+padded : ndarray
+    Empty-padded array.
+axis : int
+    Dimension in which the statistic is calculated.
+width_pair : (int, int)
+    Pair of widths that mark the pad area on both sides in the given
+    dimension.
+length_pair : 2-element sequence of None or int
+    Gives the number of values in valid area from each side that is
+    taken into account when calculating the statistic. If None the entire
+    valid area in `padded` is considered.
+stat_func : function
+    Function to compute statistic. The expected signature is
+    ``stat_func(x: ndarray, axis: int, keepdims: bool) -> ndarray``.
+
+Returns
+-------
+left_stat, right_stat : ndarray
+    Calculated statistic for both sides of `padded`.
+
+**Paramètres :**
+
+- `padded`
+- `axis`
+- `width_pair`
+- `length_pair`
+- `stat_func`
+
+##### _set_reflect_both
+
+Pad `axis` of `arr` with reflection.
+
+Parameters
+----------
+padded : ndarray
+    Input array of arbitrary shape.
+axis : int
+    Axis along which to pad `arr`.
+width_pair : (int, int)
+    Pair of widths that mark the pad area on both sides in the given
+    dimension.
+method : str
+    Controls method of reflection; options are 'even' or 'odd'.
+original_period : int
+    Original length of data on `axis` of `arr`.
+include_edge : bool
+    If true, edge value is included in reflection, otherwise the edge
+    value forms the symmetric axis to the reflection.
+
+Returns
+-------
+pad_amt : tuple of ints, length 2
+    New index positions of padding to do along the `axis`. If these are
+    both 0, padding is done in this dimension.
+
+**Paramètres :**
+
+- `padded`
+- `axis`
+- `width_pair`
+- `method`
+- `original_period`
+- `include_edge`
+
+##### _set_wrap_both
+
+Pad `axis` of `arr` with wrapped values.
+
+Parameters
+----------
+padded : ndarray
+    Input array of arbitrary shape.
+axis : int
+    Axis along which to pad `arr`.
+width_pair : (int, int)
+    Pair of widths that mark the pad area on both sides in the given
+    dimension.
+original_period : int
+    Original length of data on `axis` of `arr`.
+
+Returns
+-------
+pad_amt : tuple of ints, length 2
+    New index positions of padding to do along the `axis`. If these are
+    both 0, padding is done in this dimension.
+
+**Paramètres :**
+
+- `padded`
+- `axis`
+- `width_pair`
+- `original_period`
+
+##### _as_pairs
+
+Broadcast `x` to an array with the shape (`ndim`, 2).
+
+A helper function for `pad` that prepares and validates arguments like
+`pad_width` for iteration in pairs.
+
+Parameters
+----------
+x : {None, scalar, array-like}
+    The object to broadcast to the shape (`ndim`, 2).
+ndim : int
+    Number of pairs the broadcasted `x` will have.
+as_index : bool, optional
+    If `x` is not None, try to round each element of `x` to an integer
+    (dtype `np.intp`) and ensure every element is positive.
+
+Returns
+-------
+pairs : nested iterables, shape (`ndim`, 2)
+    The broadcasted version of `x`.
+
+Raises
+------
+ValueError
+    If `as_index` is True and `x` contains negative elements.
+    Or if `x` is not broadcastable to the shape (`ndim`, 2).
+
+**Paramètres :**
+
+- `x`
+- `ndim`
+- `as_index`
+
+##### _pad_dispatcher
+
+**Paramètres :**
+
+- `array`
+- `pad_width`
+- `mode`
+
+##### pad
+
+Pad an array.
+
+Parameters
+----------
+array : array_like of rank N
+    The array to pad.
+pad_width : {sequence, array_like, int}
+    Number of values padded to the edges of each axis.
+    ``((before_1, after_1), ... (before_N, after_N))`` unique pad widths
+    for each axis.
+    ``(before, after)`` or ``((before, after),)`` yields same before
+    and after pad for each axis.
+    ``(pad,)`` or ``int`` is a shortcut for before = after = pad width
+    for all axes.
+mode : str or function, optional
+    One of the following string values or a user supplied function.
+
+    'constant' (default)
+        Pads with a constant value.
+    'edge'
+        Pads with the edge values of array.
+    'linear_ramp'
+        Pads with the linear ramp between end_value and the
+        array edge value.
+    'maximum'
+        Pads with the maximum value of all or part of the
+        vector along each axis.
+    'mean'
+        Pads with the mean value of all or part of the
+        vector along each axis.
+    'median'
+        Pads with the median value of all or part of the
+        vector along each axis.
+    'minimum'
+        Pads with the minimum value of all or part of the
+        vector along each axis.
+    'reflect'
+        Pads with the reflection of the vector mirrored on
+        the first and last values of the vector along each
+        axis.
+    'symmetric'
+        Pads with the reflection of the vector mirrored
+        along the edge of the array.
+    'wrap'
+        Pads with the wrap of the vector along the axis.
+        The first values are used to pad the end and the
+        end values are used to pad the beginning.
+    'empty'
+        Pads with undefined values.
+
+    <function>
+        Padding function, see Notes.
+stat_length : sequence or int, optional
+    Used in 'maximum', 'mean', 'median', and 'minimum'.  Number of
+    values at edge of each axis used to calculate the statistic value.
+
+    ``((before_1, after_1), ... (before_N, after_N))`` unique statistic
+    lengths for each axis.
+
+    ``(before, after)`` or ``((before, after),)`` yields same before
+    and after statistic lengths for each axis.
+
+    ``(stat_length,)`` or ``int`` is a shortcut for
+    ``before = after = statistic`` length for all axes.
+
+    Default is ``None``, to use the entire axis.
+constant_values : sequence or scalar, optional
+    Used in 'constant'.  The values to set the padded values for each
+    axis.
+
+    ``((before_1, after_1), ... (before_N, after_N))`` unique pad constants
+    for each axis.
+
+    ``(before, after)`` or ``((before, after),)`` yields same before
+    and after constants for each axis.
+
+    ``(constant,)`` or ``constant`` is a shortcut for
+    ``before = after = constant`` for all axes.
+
+    Default is 0.
+end_values : sequence or scalar, optional
+    Used in 'linear_ramp'.  The values used for the ending value of the
+    linear_ramp and that will form the edge of the padded array.
+
+    ``((before_1, after_1), ... (before_N, after_N))`` unique end values
+    for each axis.
+
+    ``(before, after)`` or ``((before, after),)`` yields same before
+    and after end values for each axis.
+
+    ``(constant,)`` or ``constant`` is a shortcut for
+    ``before = after = constant`` for all axes.
+
+    Default is 0.
+reflect_type : {'even', 'odd'}, optional
+    Used in 'reflect', and 'symmetric'.  The 'even' style is the
+    default with an unaltered reflection around the edge value.  For
+    the 'odd' style, the extended part of the array is created by
+    subtracting the reflected values from two times the edge value.
+
+Returns
+-------
+pad : ndarray
+    Padded array of rank equal to `array` with shape increased
+    according to `pad_width`.
+
+Notes
+-----
+For an array with rank greater than 1, some of the padding of later
+axes is calculated from padding of previous axes.  This is easiest to
+think about with a rank 2 array where the corners of the padded array
+are calculated by using padded values from the first axis.
+
+The padding function, if used, should modify a rank 1 array in-place. It
+has the following signature::
+
+    padding_func(vector, iaxis_pad_width, iaxis, kwargs)
+
+where
+
+vector : ndarray
+    A rank 1 array already padded with zeros.  Padded values are
+    vector[:iaxis_pad_width[0]] and vector[-iaxis_pad_width[1]:].
+iaxis_pad_width : tuple
+    A 2-tuple of ints, iaxis_pad_width[0] represents the number of
+    values padded at the beginning of vector where
+    iaxis_pad_width[1] represents the number of values padded at
+    the end of vector.
+iaxis : int
+    The axis currently being calculated.
+kwargs : dict
+    Any keyword arguments the function requires.
+
+Examples
+--------
+>>> import numpy as np
+>>> a = [1, 2, 3, 4, 5]
+>>> np.pad(a, (2, 3), 'constant', constant_values=(4, 6))
+array([4, 4, 1, ..., 6, 6, 6])
+
+>>> np.pad(a, (2, 3), 'edge')
+array([1, 1, 1, ..., 5, 5, 5])
+
+>>> np.pad(a, (2, 3), 'linear_ramp', end_values=(5, -4))
+array([ 5,  3,  1,  2,  3,  4,  5,  2, -1, -4])
+
+>>> np.pad(a, (2,), 'maximum')
+array([5, 5, 1, 2, 3, 4, 5, 5, 5])
+
+>>> np.pad(a, (2,), 'mean')
+array([3, 3, 1, 2, 3, 4, 5, 3, 3])
+
+>>> np.pad(a, (2,), 'median')
+array([3, 3, 1, 2, 3, 4, 5, 3, 3])
+
+>>> a = [[1, 2], [3, 4]]
+>>> np.pad(a, ((3, 2), (2, 3)), 'minimum')
+array([[1, 1, 1, 2, 1, 1, 1],
+       [1, 1, 1, 2, 1, 1, 1],
+       [1, 1, 1, 2, 1, 1, 1],
+       [1, 1, 1, 2, 1, 1, 1],
+       [3, 3, 3, 4, 3, 3, 3],
+       [1, 1, 1, 2, 1, 1, 1],
+       [1, 1, 1, 2, 1, 1, 1]])
+
+>>> a = [1, 2, 3, 4, 5]
+>>> np.pad(a, (2, 3), 'reflect')
+array([3, 2, 1, 2, 3, 4, 5, 4, 3, 2])
+
+>>> np.pad(a, (2, 3), 'reflect', reflect_type='odd')
+array([-1,  0,  1,  2,  3,  4,  5,  6,  7,  8])
+
+>>> np.pad(a, (2, 3), 'symmetric')
+array([2, 1, 1, 2, 3, 4, 5, 5, 4, 3])
+
+>>> np.pad(a, (2, 3), 'symmetric', reflect_type='odd')
+array([0, 1, 1, 2, 3, 4, 5, 5, 6, 7])
+
+>>> np.pad(a, (2, 3), 'wrap')
+array([4, 5, 1, 2, 3, 4, 5, 1, 2, 3])
+
+>>> def pad_with(vector, pad_width, iaxis, kwargs):
+...     pad_value = kwargs.get('padder', 10)
+...     vector[:pad_width[0]] = pad_value
+...     vector[-pad_width[1]:] = pad_value
+>>> a = np.arange(6)
+>>> a = a.reshape((2, 3))
+>>> np.pad(a, 2, pad_with)
+array([[10, 10, 10, 10, 10, 10, 10],
+       [10, 10, 10, 10, 10, 10, 10],
+       [10, 10,  0,  1,  2, 10, 10],
+       [10, 10,  3,  4,  5, 10, 10],
+       [10, 10, 10, 10, 10, 10, 10],
+       [10, 10, 10, 10, 10, 10, 10]])
+>>> np.pad(a, 2, pad_with, padder=100)
+array([[100, 100, 100, 100, 100, 100, 100],
+       [100, 100, 100, 100, 100, 100, 100],
+       [100, 100,   0,   1,   2, 100, 100],
+       [100, 100,   3,   4,   5, 100, 100],
+       [100, 100, 100, 100, 100, 100, 100],
+       [100, 100, 100, 100, 100, 100, 100]])
+
+**Paramètres :**
+
+- `array`
+- `pad_width`
+- `mode`
+
+---
+
+### _ufunclike_impl
+
+Module of functions that are like ufuncs in acting on arrays and optionally
+storing results in an output array.
+
+#### Fonctions
+
+##### _dispatcher
+
+**Paramètres :**
+
+- `x`
+- `out`
+
+##### fix
+
+Round to nearest integer towards zero.
+
+Round an array of floats element-wise to nearest integer towards zero.
+The rounded values have the same data-type as the input.
+
+Parameters
+----------
+x : array_like
+    An array to be rounded
+out : ndarray, optional
+    A location into which the result is stored. If provided, it must have
+    a shape that the input broadcasts to. If not provided or None, a
+    freshly-allocated array is returned.
+
+Returns
+-------
+out : ndarray of floats
+    An array with the same dimensions and data-type as the input.
+    If second argument is not supplied then a new array is returned
+    with the rounded values.
+
+    If a second argument is supplied the result is stored there.
+    The return value ``out`` is then a reference to that array.
+
+See Also
+--------
+rint, trunc, floor, ceil
+around : Round to given number of decimals
+
+Examples
+--------
+>>> import numpy as np
+>>> np.fix(3.14)
+3.0
+>>> np.fix(3)
+3
+>>> np.fix([2.1, 2.9, -2.1, -2.9])
+array([ 2.,  2., -2., -2.])
+
+**Paramètres :**
+
+- `x`
+- `out`
+
+##### isposinf
+
+Test element-wise for positive infinity, return result as bool array.
+
+Parameters
+----------
+x : array_like
+    The input array.
+out : array_like, optional
+    A location into which the result is stored. If provided, it must have a
+    shape that the input broadcasts to. If not provided or None, a
+    freshly-allocated boolean array is returned.
+
+Returns
+-------
+out : ndarray
+    A boolean array with the same dimensions as the input.
+    If second argument is not supplied then a boolean array is returned
+    with values True where the corresponding element of the input is
+    positive infinity and values False where the element of the input is
+    not positive infinity.
+
+    If a second argument is supplied the result is stored there. If the
+    type of that array is a numeric type the result is represented as zeros
+    and ones, if the type is boolean then as False and True.
+    The return value `out` is then a reference to that array.
+
+See Also
+--------
+isinf, isneginf, isfinite, isnan
+
+Notes
+-----
+NumPy uses the IEEE Standard for Binary Floating-Point for Arithmetic
+(IEEE 754).
+
+Errors result if the second argument is also supplied when x is a scalar
+input, if first and second arguments have different shapes, or if the
+first argument has complex values
+
+Examples
+--------
+>>> import numpy as np
+>>> np.isposinf(np.inf)
+True
+>>> np.isposinf(-np.inf)
+False
+>>> np.isposinf([-np.inf, 0., np.inf])
+array([False, False,  True])
+
+>>> x = np.array([-np.inf, 0., np.inf])
+>>> y = np.array([2, 2, 2])
+>>> np.isposinf(x, y)
+array([0, 0, 1])
+>>> y
+array([0, 0, 1])
+
+**Paramètres :**
+
+- `x`
+- `out`
+
+##### isneginf
+
+Test element-wise for negative infinity, return result as bool array.
+
+Parameters
+----------
+x : array_like
+    The input array.
+out : array_like, optional
+    A location into which the result is stored. If provided, it must have a
+    shape that the input broadcasts to. If not provided or None, a
+    freshly-allocated boolean array is returned.
+
+Returns
+-------
+out : ndarray
+    A boolean array with the same dimensions as the input.
+    If second argument is not supplied then a numpy boolean array is
+    returned with values True where the corresponding element of the
+    input is negative infinity and values False where the element of
+    the input is not negative infinity.
+
+    If a second argument is supplied the result is stored there. If the
+    type of that array is a numeric type the result is represented as
+    zeros and ones, if the type is boolean then as False and True. The
+    return value `out` is then a reference to that array.
+
+See Also
+--------
+isinf, isposinf, isnan, isfinite
+
+Notes
+-----
+NumPy uses the IEEE Standard for Binary Floating-Point for Arithmetic
+(IEEE 754).
+
+Errors result if the second argument is also supplied when x is a scalar
+input, if first and second arguments have different shapes, or if the
+first argument has complex values.
+
+Examples
+--------
+>>> import numpy as np
+>>> np.isneginf(-np.inf)
+True
+>>> np.isneginf(np.inf)
+False
+>>> np.isneginf([-np.inf, 0., np.inf])
+array([ True, False, False])
+
+>>> x = np.array([-np.inf, 0., np.inf])
+>>> y = np.array([2, 2, 2])
+>>> np.isneginf(x, y)
+array([1, 0, 0])
+>>> y
+array([1, 0, 0])
+
+**Paramètres :**
+
+- `x`
+- `out`
 
 ---
 
@@ -351627,594 +352215,6 @@ array([0.,  0.5]) # may vary
 
 ---
 
-### _datasource
-
-A file interface for handling local and remote data files.
-
-The goal of datasource is to abstract some of the file system operations
-when dealing with data files so the researcher doesn't have to know all the
-low-level details.  Through datasource, a researcher can obtain and use a
-file with one function call, regardless of location of the file.
-
-DataSource is meant to augment standard python libraries, not replace them.
-It should work seamlessly with standard file IO operations and the os
-module.
-
-DataSource files can originate locally or remotely:
-
-- local files : '/home/guido/src/local/data.txt'
-- URLs (http, ftp, ...) : 'http://www.scipy.org/not/real/data.txt'
-
-DataSource files can also be compressed or uncompressed.  Currently only
-gzip, bz2 and xz are supported.
-
-Example::
-
-    >>> # Create a DataSource, use os.curdir (default) for local storage.
-    >>> from numpy import DataSource
-    >>> ds = DataSource()
-    >>>
-    >>> # Open a remote file.
-    >>> # DataSource downloads the file, stores it locally in:
-    >>> #     './www.google.com/index.html'
-    >>> # opens the file and returns a file object.
-    >>> fp = ds.open('http://www.google.com/') # doctest: +SKIP
-    >>>
-    >>> # Use the file as you normally would
-    >>> fp.read() # doctest: +SKIP
-    >>> fp.close() # doctest: +SKIP
-
-#### Classes
-
-##### _FileOpeners
-
-Container for different methods to open (un-)compressed files.
-
-`_FileOpeners` contains a dictionary that holds one method for each
-supported file format. Attribute lookup is implemented in such a way
-that an instance of `_FileOpeners` itself can be indexed with the keys
-of that dictionary. Currently uncompressed files as well as files
-compressed with ``gzip``, ``bz2`` or ``xz`` compression are supported.
-
-Notes
------
-`_file_openers`, an instance of `_FileOpeners`, is made available for
-use in the `_datasource` module.
-
-Examples
---------
->>> import gzip
->>> np.lib._datasource._file_openers.keys()
-[None, '.bz2', '.gz', '.xz', '.lzma']
->>> np.lib._datasource._file_openers['.gz'] is gzip.open
-True
-
-**Méthodes :**
-
-- `__init__()`
-- `_load()`
-- `keys()`
-- `__getitem__()`
-
-##### DataSource
-
-DataSource(destpath='.')
-
-A generic data source file (file, http, ftp, ...).
-
-DataSources can be local files or remote files/URLs.  The files may
-also be compressed or uncompressed. DataSource hides some of the
-low-level details of downloading the file, allowing you to simply pass
-in a valid file path (or URL) and obtain a file object.
-
-Parameters
-----------
-destpath : str or None, optional
-    Path to the directory where the source file gets downloaded to for
-    use.  If `destpath` is None, a temporary directory will be created.
-    The default path is the current directory.
-
-Notes
------
-URLs require a scheme string (``http://``) to be used, without it they
-will fail::
-
-    >>> repos = np.lib.npyio.DataSource()
-    >>> repos.exists('www.google.com/index.html')
-    False
-    >>> repos.exists('http://www.google.com/index.html')
-    True
-
-Temporary directories are deleted when the DataSource is deleted.
-
-Examples
---------
-::
-
-    >>> ds = np.lib.npyio.DataSource('/home/guido')
-    >>> urlname = 'http://www.google.com/'
-    >>> gfile = ds.open('http://www.google.com/')
-    >>> ds.abspath(urlname)
-    '/home/guido/www.google.com/index.html'
-
-    >>> ds = np.lib.npyio.DataSource(None)  # use with temporary file
-    >>> ds.open('/home/guido/foobar.txt')
-    <open file '/home/guido.foobar.txt', mode 'r' at 0x91d4430>
-    >>> ds.abspath('/home/guido/foobar.txt')
-    '/tmp/.../home/guido/foobar.txt'
-
-**Méthodes :**
-
-- `__init__()`
-- `__del__()`
-- `_iszip()`
-- `_iswritemode()`
-- `_splitzipext()`
-- `_possible_names()`
-- `_isurl()`
-- `_cache()`
-- `_findfile()`
-- `abspath()`
-- `_sanitize_relative_path()`
-- `exists()`
-- `open()`
-
-##### Repository
-
-Repository(baseurl, destpath='.')
-
-A data repository where multiple DataSource's share a base
-URL/directory.
-
-`Repository` extends `DataSource` by prepending a base URL (or
-directory) to all the files it handles. Use `Repository` when you will
-be working with multiple files from one base URL.  Initialize
-`Repository` with the base URL, then refer to each file by its filename
-only.
-
-Parameters
-----------
-baseurl : str
-    Path to the local directory or remote location that contains the
-    data files.
-destpath : str or None, optional
-    Path to the directory where the source file gets downloaded to for
-    use.  If `destpath` is None, a temporary directory will be created.
-    The default path is the current directory.
-
-Examples
---------
-To analyze all files in the repository, do something like this
-(note: this is not self-contained code)::
-
-    >>> repos = np.lib._datasource.Repository('/home/user/data/dir/')
-    >>> for filename in filelist:
-    ...     fp = repos.open(filename)
-    ...     fp.analyze()
-    ...     fp.close()
-
-Similarly you could use a URL for a repository::
-
-    >>> repos = np.lib._datasource.Repository('http://www.xyz.edu/data')
-
-**Méthodes :**
-
-- `__init__()`
-- `__del__()`
-- `_fullpath()`
-- `_findfile()`
-- `abspath()`
-- `exists()`
-- `open()`
-- `listdir()`
-
-#### Fonctions
-
-##### _check_mode
-
-Check mode and that encoding and newline are compatible.
-
-Parameters
-----------
-mode : str
-    File open mode.
-encoding : str
-    File encoding.
-newline : str
-    Newline for text files.
-
-**Paramètres :**
-
-- `mode`
-- `encoding`
-- `newline`
-
-##### open
-
-Open `path` with `mode` and return the file object.
-
-If ``path`` is an URL, it will be downloaded, stored in the
-`DataSource` `destpath` directory and opened from there.
-
-Parameters
-----------
-path : str or pathlib.Path
-    Local file path or URL to open.
-mode : str, optional
-    Mode to open `path`. Mode 'r' for reading, 'w' for writing, 'a' to
-    append. Available modes depend on the type of object specified by
-    path.  Default is 'r'.
-destpath : str, optional
-    Path to the directory where the source file gets downloaded to for
-    use.  If `destpath` is None, a temporary directory will be created.
-    The default path is the current directory.
-encoding : {None, str}, optional
-    Open text file with given encoding. The default encoding will be
-    what `open` uses.
-newline : {None, str}, optional
-    Newline to use when reading text file.
-
-Returns
--------
-out : file object
-    The opened file.
-
-Notes
------
-This is a convenience function that instantiates a `DataSource` and
-returns the file object from ``DataSource.open(path)``.
-
-**Paramètres :**
-
-- `path`
-- `mode`
-- `destpath`
-- `encoding`
-- `newline`
-
-##### __init__
-
-##### _load
-
-##### keys
-
-Return the keys of currently supported file openers.
-
-Parameters
-----------
-None
-
-Returns
--------
-keys : list
-    The keys are None for uncompressed files and the file extension
-    strings (i.e. ``'.gz'``, ``'.xz'``) for supported compression
-    methods.
-
-##### __getitem__
-
-**Paramètres :**
-
-- `key`
-
-##### __init__
-
-Create a DataSource with a local path at destpath.
-
-**Paramètres :**
-
-- `destpath`
-
-##### __del__
-
-##### _iszip
-
-Test if the filename is a zip file by looking at the file extension.
-
-        
-
-**Paramètres :**
-
-- `filename`
-
-##### _iswritemode
-
-Test if the given mode will open a file for writing.
-
-**Paramètres :**
-
-- `mode`
-
-##### _splitzipext
-
-Split zip extension from filename and return filename.
-
-Returns
--------
-base, zip_ext : {tuple}
-
-**Paramètres :**
-
-- `filename`
-
-##### _possible_names
-
-Return a tuple containing compressed filename variations.
-
-**Paramètres :**
-
-- `filename`
-
-##### _isurl
-
-Test if path is a net location.  Tests the scheme and netloc.
-
-**Paramètres :**
-
-- `path`
-
-##### _cache
-
-Cache the file specified by path.
-
-Creates a copy of the file in the datasource cache.
-
-**Paramètres :**
-
-- `path`
-
-##### _findfile
-
-Searches for ``path`` and returns full path if found.
-
-If path is an URL, _findfile will cache a local copy and return the
-path to the cached file.  If path is a local file, _findfile will
-return a path to that local file.
-
-The search will include possible compressed versions of the file
-and return the first occurrence found.
-
-**Paramètres :**
-
-- `path`
-
-##### abspath
-
-Return absolute path of file in the DataSource directory.
-
-If `path` is an URL, then `abspath` will return either the location
-the file exists locally or the location it would exist when opened
-using the `open` method.
-
-Parameters
-----------
-path : str or pathlib.Path
-    Can be a local file or a remote URL.
-
-Returns
--------
-out : str
-    Complete path, including the `DataSource` destination directory.
-
-Notes
------
-The functionality is based on `os.path.abspath`.
-
-**Paramètres :**
-
-- `path`
-
-##### _sanitize_relative_path
-
-Return a sanitised relative path for which
-os.path.abspath(os.path.join(base, path)).startswith(base)
-
-**Paramètres :**
-
-- `path`
-
-##### exists
-
-Test if path exists.
-
-Test if `path` exists as (and in this order):
-
-- a local file.
-- a remote URL that has been downloaded and stored locally in the
-  `DataSource` directory.
-- a remote URL that has not been downloaded, but is valid and
-  accessible.
-
-Parameters
-----------
-path : str or pathlib.Path
-    Can be a local file or a remote URL.
-
-Returns
--------
-out : bool
-    True if `path` exists.
-
-Notes
------
-When `path` is an URL, `exists` will return True if it's either
-stored locally in the `DataSource` directory, or is a valid remote
-URL.  `DataSource` does not discriminate between the two, the file
-is accessible if it exists in either location.
-
-**Paramètres :**
-
-- `path`
-
-##### open
-
-Open and return file-like object.
-
-If `path` is an URL, it will be downloaded, stored in the
-`DataSource` directory and opened from there.
-
-Parameters
-----------
-path : str or pathlib.Path
-    Local file path or URL to open.
-mode : {'r', 'w', 'a'}, optional
-    Mode to open `path`.  Mode 'r' for reading, 'w' for writing,
-    'a' to append. Available modes depend on the type of object
-    specified by `path`. Default is 'r'.
-encoding : {None, str}, optional
-    Open text file with given encoding. The default encoding will be
-    what `open` uses.
-newline : {None, str}, optional
-    Newline to use when reading text file.
-
-Returns
--------
-out : file object
-    File object.
-
-**Paramètres :**
-
-- `path`
-- `mode`
-- `encoding`
-- `newline`
-
-##### __init__
-
-Create a Repository with a shared url or directory of baseurl.
-
-**Paramètres :**
-
-- `baseurl`
-- `destpath`
-
-##### __del__
-
-##### _fullpath
-
-Return complete path for path.  Prepends baseurl if necessary.
-
-**Paramètres :**
-
-- `path`
-
-##### _findfile
-
-Extend DataSource method to prepend baseurl to ``path``.
-
-**Paramètres :**
-
-- `path`
-
-##### abspath
-
-Return absolute path of file in the Repository directory.
-
-If `path` is an URL, then `abspath` will return either the location
-the file exists locally or the location it would exist when opened
-using the `open` method.
-
-Parameters
-----------
-path : str or pathlib.Path
-    Can be a local file or a remote URL. This may, but does not
-    have to, include the `baseurl` with which the `Repository` was
-    initialized.
-
-Returns
--------
-out : str
-    Complete path, including the `DataSource` destination directory.
-
-**Paramètres :**
-
-- `path`
-
-##### exists
-
-Test if path exists prepending Repository base URL to path.
-
-Test if `path` exists as (and in this order):
-
-- a local file.
-- a remote URL that has been downloaded and stored locally in the
-  `DataSource` directory.
-- a remote URL that has not been downloaded, but is valid and
-  accessible.
-
-Parameters
-----------
-path : str or pathlib.Path
-    Can be a local file or a remote URL. This may, but does not
-    have to, include the `baseurl` with which the `Repository` was
-    initialized.
-
-Returns
--------
-out : bool
-    True if `path` exists.
-
-Notes
------
-When `path` is an URL, `exists` will return True if it's either
-stored locally in the `DataSource` directory, or is a valid remote
-URL.  `DataSource` does not discriminate between the two, the file
-is accessible if it exists in either location.
-
-**Paramètres :**
-
-- `path`
-
-##### open
-
-Open and return file-like object prepending Repository base URL.
-
-If `path` is an URL, it will be downloaded, stored in the
-DataSource directory and opened from there.
-
-Parameters
-----------
-path : str or pathlib.Path
-    Local file path or URL to open. This may, but does not have to,
-    include the `baseurl` with which the `Repository` was
-    initialized.
-mode : {'r', 'w', 'a'}, optional
-    Mode to open `path`.  Mode 'r' for reading, 'w' for writing,
-    'a' to append. Available modes depend on the type of object
-    specified by `path`. Default is 'r'.
-encoding : {None, str}, optional
-    Open text file with given encoding. The default encoding will be
-    what `open` uses.
-newline : {None, str}, optional
-    Newline to use when reading text file.
-
-Returns
--------
-out : file object
-    File object.
-
-**Paramètres :**
-
-- `path`
-- `mode`
-- `encoding`
-- `newline`
-
-##### listdir
-
-List files in the source Repository.
-
-Returns
--------
-files : list of str or pathlib.Path
-    List of file names (not containing a directory part).
-
-Notes
------
-Does not currently work for remote repositories.
-
----
-
 ### _utils_impl
 
 #### Classes
@@ -354931,6 +354931,120 @@ conversion is correct. Regression test related to gh-19598.
 
 ---
 
+### test_mixins
+
+#### Classes
+
+##### ArrayLike
+
+**Méthodes :**
+
+- `__init__()`
+- `__array_ufunc__()`
+- `__repr__()`
+
+##### TestNDArrayOperatorsMixin
+
+**Méthodes :**
+
+- `test_array_like_add()`
+- `test_inplace()`
+- `test_opt_out()`
+- `test_subclass()`
+- `test_object()`
+- `test_unary_methods()`
+- `test_forward_binary_methods()`
+- `test_reflected_binary_methods()`
+- `test_matmul()`
+- `test_ufunc_at()`
+- `test_ufunc_two_outputs()`
+
+##### OptOut
+
+Object that opts out of __array_ufunc__.
+
+**Méthodes :**
+
+- `__add__()`
+- `__radd__()`
+
+##### SubArrayLike
+
+Should take precedence over ArrayLike.
+
+#### Fonctions
+
+##### wrap_array_like
+
+**Paramètres :**
+
+- `result`
+
+##### _assert_equal_type_and_value
+
+**Paramètres :**
+
+- `result`
+- `expected`
+- `err_msg`
+
+##### __init__
+
+**Paramètres :**
+
+- `value`
+
+##### __array_ufunc__
+
+**Paramètres :**
+
+- `ufunc`
+- `method`
+
+##### __repr__
+
+##### test_array_like_add
+
+##### test_inplace
+
+##### test_opt_out
+
+##### test_subclass
+
+##### test_object
+
+##### test_unary_methods
+
+##### test_forward_binary_methods
+
+##### test_reflected_binary_methods
+
+##### test_matmul
+
+##### test_ufunc_at
+
+##### test_ufunc_two_outputs
+
+##### check
+
+**Paramètres :**
+
+- `result`
+
+##### __add__
+
+**Paramètres :**
+
+- `other`
+
+##### __radd__
+
+**Paramètres :**
+
+- `other`
+
+---
+
 ### test_arraysetops
 
 Test functions for 1D array set operations.
@@ -357380,117 +357494,444 @@ the pad width is larger than the original array.
 
 ---
 
-### test_mixins
+### test_loadtxt
+
+Tests specific to `np.loadtxt` added during the move of loadtxt to be backed
+by C code.
+These tests complement those found in `test_io.py`.
 
 #### Classes
 
-##### ArrayLike
+##### TestCReaderUnitTests
 
 **Méthodes :**
 
-- `__init__()`
-- `__array_ufunc__()`
-- `__repr__()`
+- `test_not_an_filelike()`
+- `test_filelike_read_fails()`
+- `test_filelike_bad_read()`
+- `test_not_an_iter()`
+- `test_bad_type()`
+- `test_bad_encoding()`
+- `test_manual_universal_newlines()`
 
-##### TestNDArrayOperatorsMixin
-
-**Méthodes :**
-
-- `test_array_like_add()`
-- `test_inplace()`
-- `test_opt_out()`
-- `test_subclass()`
-- `test_object()`
-- `test_unary_methods()`
-- `test_forward_binary_methods()`
-- `test_reflected_binary_methods()`
-- `test_matmul()`
-- `test_ufunc_at()`
-- `test_ufunc_two_outputs()`
-
-##### OptOut
-
-Object that opts out of __array_ufunc__.
+##### BadSequence
 
 **Méthodes :**
 
-- `__add__()`
-- `__radd__()`
+- `__len__()`
+- `__getitem__()`
 
-##### SubArrayLike
+##### BadFileLike
 
-Should take precedence over ArrayLike.
+**Méthodes :**
+
+- `read()`
+
+##### BadFileLike
+
+**Méthodes :**
+
+- `read()`
 
 #### Fonctions
 
-##### wrap_array_like
+##### test_scientific_notation
+
+Test that both 'e' and 'E' are parsed correctly.
+
+##### test_comment_multiple_chars
 
 **Paramètres :**
 
-- `result`
+- `comment`
 
-##### _assert_equal_type_and_value
+##### mixed_types_structured
 
-**Paramètres :**
+Fixture providing heterogeneous input data with a structured dtype, along
+with the associated structured array.
 
-- `result`
-- `expected`
-- `err_msg`
-
-##### __init__
+##### test_structured_dtype_and_skiprows_no_empty_lines
 
 **Paramètres :**
 
+- `skiprows`
+- `mixed_types_structured`
+
+##### test_unpack_structured
+
+**Paramètres :**
+
+- `mixed_types_structured`
+
+##### test_structured_dtype_with_shape
+
+##### test_structured_dtype_with_multi_shape
+
+##### test_nested_structured_subarray
+
+##### test_structured_dtype_offsets
+
+##### test_exception_negative_row_limits
+
+skiprows and max_rows should raise for negative parameters.
+
+**Paramètres :**
+
+- `param`
+
+##### test_exception_noninteger_row_limits
+
+**Paramètres :**
+
+- `param`
+
+##### test_ndmin_single_row_or_col
+
+**Paramètres :**
+
+- `data`
+- `shape`
+
+##### test_bad_ndmin
+
+**Paramètres :**
+
+- `badval`
+
+##### test_blank_lines_spaces_delimit
+
+**Paramètres :**
+
+- `ws`
+
+##### test_blank_lines_normal_delimiter
+
+##### test_maxrows_no_blank_lines
+
+**Paramètres :**
+
+- `dtype`
+
+##### test_exception_message_bad_values
+
+**Paramètres :**
+
+- `dtype`
+
+##### test_converters_negative_indices
+
+##### test_converters_negative_indices_with_usecols
+
+##### test_ragged_error
+
+##### test_ragged_usecols
+
+##### test_empty_usecols
+
+##### test_large_unicode_characters
+
+**Paramètres :**
+
+- `c1`
+- `c2`
+
+##### test_unicode_with_converter
+
+##### test_converter_with_structured_dtype
+
+##### test_converter_with_unicode_dtype
+
+With the 'bytes' encoding, tokens are encoded prior to being
+passed to the converter. This means that the output of the converter may
+be bytes instead of unicode as expected by `read_rows`.
+
+This test checks that outputs from the above scenario are properly decoded
+prior to parsing by `read_rows`.
+
+##### test_read_huge_row
+
+##### test_huge_float
+
+**Paramètres :**
+
+- `dtype`
+
+##### test_string_no_length_given
+
+The given dtype is just 'S' or 'U' with no length. In these cases, the
+length of the resulting dtype is determined by the longest string found
+in the file.
+
+**Paramètres :**
+
+- `given_dtype`
+- `expected_dtype`
+
+##### test_float_conversion
+
+Some tests that the conversion to float64 works as accurately as the
+Python built-in `float` function. In a naive version of the float parser,
+these strings resulted in values that were off by an ULP or two.
+
+##### test_bool
+
+##### test_integer_signs
+
+**Paramètres :**
+
+- `dtype`
+
+##### test_implicit_cast_float_to_int_fails
+
+**Paramètres :**
+
+- `dtype`
+
+##### test_complex_parsing
+
+**Paramètres :**
+
+- `dtype`
+- `with_parens`
+
+##### test_read_from_generator
+
+##### test_read_from_generator_multitype
+
+##### test_read_from_bad_generator
+
+##### test_object_cleanup_on_read_error
+
+##### test_character_not_bytes_compatible
+
+Test exception when a character cannot be encoded as 'S'.
+
+##### test_invalid_converter
+
+**Paramètres :**
+
+- `conv`
+
+##### test_converters_dict_raises_non_integer_key
+
+##### test_converters_dict_raises_non_col_key
+
+**Paramètres :**
+
+- `bad_col_ind`
+
+##### test_converters_dict_raises_val_not_callable
+
+##### test_quoted_field
+
+**Paramètres :**
+
+- `q`
+
+##### test_quoted_field_with_whitepace_delimiter
+
+**Paramètres :**
+
+- `q`
+
+##### test_quote_support_default
+
+Support for quoted fields is disabled by default.
+
+##### test_quotechar_multichar_error
+
+##### test_comment_multichar_error_with_quote
+
+##### test_structured_dtype_with_quotes
+
+##### test_quoted_field_is_not_empty
+
+##### test_quoted_field_is_not_empty_nonstrict
+
+##### test_consecutive_quotechar_escaped
+
+##### test_warn_on_no_data
+
+Check that a UserWarning is emitted when no data is read from input.
+
+**Paramètres :**
+
+- `data`
+- `ndmin`
+- `usecols`
+
+##### test_warn_on_skipped_data
+
+**Paramètres :**
+
+- `skiprows`
+
+##### test_byteswapping_and_unaligned
+
+**Paramètres :**
+
+- `dtype`
 - `value`
+- `swap`
 
-##### __array_ufunc__
-
-**Paramètres :**
-
-- `ufunc`
-- `method`
-
-##### __repr__
-
-##### test_array_like_add
-
-##### test_inplace
-
-##### test_opt_out
-
-##### test_subclass
-
-##### test_object
-
-##### test_unary_methods
-
-##### test_forward_binary_methods
-
-##### test_reflected_binary_methods
-
-##### test_matmul
-
-##### test_ufunc_at
-
-##### test_ufunc_two_outputs
-
-##### check
+##### test_unicode_whitespace_stripping
 
 **Paramètres :**
 
-- `result`
+- `dtype`
 
-##### __add__
-
-**Paramètres :**
-
-- `other`
-
-##### __radd__
+##### test_unicode_whitespace_stripping_complex
 
 **Paramètres :**
 
-- `other`
+- `dtype`
+
+##### test_bad_complex
+
+**Paramètres :**
+
+- `dtype`
+- `field`
+
+##### test_nul_character_error
+
+**Paramètres :**
+
+- `dtype`
+
+##### test_no_thousands_support
+
+**Paramètres :**
+
+- `dtype`
+
+##### test_bad_newline_in_iterator
+
+**Paramètres :**
+
+- `data`
+
+##### test_good_newline_in_iterator
+
+**Paramètres :**
+
+- `data`
+
+##### test_universal_newlines_quoted
+
+**Paramètres :**
+
+- `newline`
+
+##### test_null_character
+
+##### test_iterator_fails_getting_next_line
+
+##### test_delimiter_comment_collision_raises
+
+##### test_delimiter_quotechar_collision_raises
+
+##### test_comment_quotechar_collision_raises
+
+##### test_delimiter_and_multiple_comments_collision_raises
+
+##### test_collision_with_default_delimiter_raises
+
+**Paramètres :**
+
+- `ws`
+
+##### test_control_character_newline_raises
+
+**Paramètres :**
+
+- `nl`
+
+##### test_parametric_unit_discovery
+
+Check that the correct unit (e.g. month, day, second) is discovered from
+the data when a user specifies a unitless datetime.
+
+**Paramètres :**
+
+- `generic_data`
+- `long_datum`
+- `unitless_dtype`
+- `expected_dtype`
+- `nrows`
+
+##### test_str_dtype_unit_discovery_with_converter
+
+##### test_control_character_empty
+
+##### test_control_characters_as_bytes
+
+Byte control characters (comments, delimiter) are supported.
+
+##### test_field_growing_cases
+
+##### test_maxrows_exceeding_chunksize
+
+**Paramètres :**
+
+- `nmax`
+
+##### test_skiprow_exceeding_maxrows_exceeding_chunksize
+
+**Paramètres :**
+
+- `tmpdir`
+- `nskip`
+
+##### gen
+
+##### gen
+
+##### gen
+
+##### conv
+
+**Paramètres :**
+
+- `x`
+
+##### test_not_an_filelike
+
+##### test_filelike_read_fails
+
+##### test_filelike_bad_read
+
+##### test_not_an_iter
+
+##### test_bad_type
+
+##### test_bad_encoding
+
+##### test_manual_universal_newlines
+
+**Paramètres :**
+
+- `newline`
+
+##### __len__
+
+##### __getitem__
+
+**Paramètres :**
+
+- `item`
+
+##### read
+
+**Paramètres :**
+
+- `size`
+
+##### read
+
+**Paramètres :**
+
+- `size`
 
 ---
 
@@ -358621,447 +359062,6 @@ Validate that all nan functions are actually tested.
 
 ---
 
-### test_loadtxt
-
-Tests specific to `np.loadtxt` added during the move of loadtxt to be backed
-by C code.
-These tests complement those found in `test_io.py`.
-
-#### Classes
-
-##### TestCReaderUnitTests
-
-**Méthodes :**
-
-- `test_not_an_filelike()`
-- `test_filelike_read_fails()`
-- `test_filelike_bad_read()`
-- `test_not_an_iter()`
-- `test_bad_type()`
-- `test_bad_encoding()`
-- `test_manual_universal_newlines()`
-
-##### BadSequence
-
-**Méthodes :**
-
-- `__len__()`
-- `__getitem__()`
-
-##### BadFileLike
-
-**Méthodes :**
-
-- `read()`
-
-##### BadFileLike
-
-**Méthodes :**
-
-- `read()`
-
-#### Fonctions
-
-##### test_scientific_notation
-
-Test that both 'e' and 'E' are parsed correctly.
-
-##### test_comment_multiple_chars
-
-**Paramètres :**
-
-- `comment`
-
-##### mixed_types_structured
-
-Fixture providing heterogeneous input data with a structured dtype, along
-with the associated structured array.
-
-##### test_structured_dtype_and_skiprows_no_empty_lines
-
-**Paramètres :**
-
-- `skiprows`
-- `mixed_types_structured`
-
-##### test_unpack_structured
-
-**Paramètres :**
-
-- `mixed_types_structured`
-
-##### test_structured_dtype_with_shape
-
-##### test_structured_dtype_with_multi_shape
-
-##### test_nested_structured_subarray
-
-##### test_structured_dtype_offsets
-
-##### test_exception_negative_row_limits
-
-skiprows and max_rows should raise for negative parameters.
-
-**Paramètres :**
-
-- `param`
-
-##### test_exception_noninteger_row_limits
-
-**Paramètres :**
-
-- `param`
-
-##### test_ndmin_single_row_or_col
-
-**Paramètres :**
-
-- `data`
-- `shape`
-
-##### test_bad_ndmin
-
-**Paramètres :**
-
-- `badval`
-
-##### test_blank_lines_spaces_delimit
-
-**Paramètres :**
-
-- `ws`
-
-##### test_blank_lines_normal_delimiter
-
-##### test_maxrows_no_blank_lines
-
-**Paramètres :**
-
-- `dtype`
-
-##### test_exception_message_bad_values
-
-**Paramètres :**
-
-- `dtype`
-
-##### test_converters_negative_indices
-
-##### test_converters_negative_indices_with_usecols
-
-##### test_ragged_error
-
-##### test_ragged_usecols
-
-##### test_empty_usecols
-
-##### test_large_unicode_characters
-
-**Paramètres :**
-
-- `c1`
-- `c2`
-
-##### test_unicode_with_converter
-
-##### test_converter_with_structured_dtype
-
-##### test_converter_with_unicode_dtype
-
-With the 'bytes' encoding, tokens are encoded prior to being
-passed to the converter. This means that the output of the converter may
-be bytes instead of unicode as expected by `read_rows`.
-
-This test checks that outputs from the above scenario are properly decoded
-prior to parsing by `read_rows`.
-
-##### test_read_huge_row
-
-##### test_huge_float
-
-**Paramètres :**
-
-- `dtype`
-
-##### test_string_no_length_given
-
-The given dtype is just 'S' or 'U' with no length. In these cases, the
-length of the resulting dtype is determined by the longest string found
-in the file.
-
-**Paramètres :**
-
-- `given_dtype`
-- `expected_dtype`
-
-##### test_float_conversion
-
-Some tests that the conversion to float64 works as accurately as the
-Python built-in `float` function. In a naive version of the float parser,
-these strings resulted in values that were off by an ULP or two.
-
-##### test_bool
-
-##### test_integer_signs
-
-**Paramètres :**
-
-- `dtype`
-
-##### test_implicit_cast_float_to_int_fails
-
-**Paramètres :**
-
-- `dtype`
-
-##### test_complex_parsing
-
-**Paramètres :**
-
-- `dtype`
-- `with_parens`
-
-##### test_read_from_generator
-
-##### test_read_from_generator_multitype
-
-##### test_read_from_bad_generator
-
-##### test_object_cleanup_on_read_error
-
-##### test_character_not_bytes_compatible
-
-Test exception when a character cannot be encoded as 'S'.
-
-##### test_invalid_converter
-
-**Paramètres :**
-
-- `conv`
-
-##### test_converters_dict_raises_non_integer_key
-
-##### test_converters_dict_raises_non_col_key
-
-**Paramètres :**
-
-- `bad_col_ind`
-
-##### test_converters_dict_raises_val_not_callable
-
-##### test_quoted_field
-
-**Paramètres :**
-
-- `q`
-
-##### test_quoted_field_with_whitepace_delimiter
-
-**Paramètres :**
-
-- `q`
-
-##### test_quote_support_default
-
-Support for quoted fields is disabled by default.
-
-##### test_quotechar_multichar_error
-
-##### test_comment_multichar_error_with_quote
-
-##### test_structured_dtype_with_quotes
-
-##### test_quoted_field_is_not_empty
-
-##### test_quoted_field_is_not_empty_nonstrict
-
-##### test_consecutive_quotechar_escaped
-
-##### test_warn_on_no_data
-
-Check that a UserWarning is emitted when no data is read from input.
-
-**Paramètres :**
-
-- `data`
-- `ndmin`
-- `usecols`
-
-##### test_warn_on_skipped_data
-
-**Paramètres :**
-
-- `skiprows`
-
-##### test_byteswapping_and_unaligned
-
-**Paramètres :**
-
-- `dtype`
-- `value`
-- `swap`
-
-##### test_unicode_whitespace_stripping
-
-**Paramètres :**
-
-- `dtype`
-
-##### test_unicode_whitespace_stripping_complex
-
-**Paramètres :**
-
-- `dtype`
-
-##### test_bad_complex
-
-**Paramètres :**
-
-- `dtype`
-- `field`
-
-##### test_nul_character_error
-
-**Paramètres :**
-
-- `dtype`
-
-##### test_no_thousands_support
-
-**Paramètres :**
-
-- `dtype`
-
-##### test_bad_newline_in_iterator
-
-**Paramètres :**
-
-- `data`
-
-##### test_good_newline_in_iterator
-
-**Paramètres :**
-
-- `data`
-
-##### test_universal_newlines_quoted
-
-**Paramètres :**
-
-- `newline`
-
-##### test_null_character
-
-##### test_iterator_fails_getting_next_line
-
-##### test_delimiter_comment_collision_raises
-
-##### test_delimiter_quotechar_collision_raises
-
-##### test_comment_quotechar_collision_raises
-
-##### test_delimiter_and_multiple_comments_collision_raises
-
-##### test_collision_with_default_delimiter_raises
-
-**Paramètres :**
-
-- `ws`
-
-##### test_control_character_newline_raises
-
-**Paramètres :**
-
-- `nl`
-
-##### test_parametric_unit_discovery
-
-Check that the correct unit (e.g. month, day, second) is discovered from
-the data when a user specifies a unitless datetime.
-
-**Paramètres :**
-
-- `generic_data`
-- `long_datum`
-- `unitless_dtype`
-- `expected_dtype`
-- `nrows`
-
-##### test_str_dtype_unit_discovery_with_converter
-
-##### test_control_character_empty
-
-##### test_control_characters_as_bytes
-
-Byte control characters (comments, delimiter) are supported.
-
-##### test_field_growing_cases
-
-##### test_maxrows_exceeding_chunksize
-
-**Paramètres :**
-
-- `nmax`
-
-##### test_skiprow_exceeding_maxrows_exceeding_chunksize
-
-**Paramètres :**
-
-- `tmpdir`
-- `nskip`
-
-##### gen
-
-##### gen
-
-##### gen
-
-##### conv
-
-**Paramètres :**
-
-- `x`
-
-##### test_not_an_filelike
-
-##### test_filelike_read_fails
-
-##### test_filelike_bad_read
-
-##### test_not_an_iter
-
-##### test_bad_type
-
-##### test_bad_encoding
-
-##### test_manual_universal_newlines
-
-**Paramètres :**
-
-- `newline`
-
-##### __len__
-
-##### __getitem__
-
-**Paramètres :**
-
-- `item`
-
-##### read
-
-**Paramètres :**
-
-- `size`
-
-##### read
-
-**Paramètres :**
-
-- `size`
-
----
-
 ### test_format
 
 Test the .npy file format.
@@ -360088,18 +360088,6 @@ array([  0.,  10.,  20.,  30.,  40.,  50.])
 - `n`
 - `d`
 - `device`
-
----
-
-### helper
-
-#### Fonctions
-
-##### __getattr__
-
-**Paramètres :**
-
-- `attr_name`
 
 ---
 
@@ -361725,6 +361713,18 @@ array([[0., 0., 0., 0., 0.],
 - `axes`
 - `norm`
 - `out`
+
+---
+
+### helper
+
+#### Fonctions
+
+##### __getattr__
+
+**Paramètres :**
+
+- `attr_name`
 
 ---
 
@@ -364551,108 +364551,6 @@ Test spawning new generators and bit_generators directly.
 
 ---
 
-### test_seed_sequence
-
-#### Fonctions
-
-##### test_reference_data
-
-Check that SeedSequence generates data the same as the C++ reference.
-
-https://gist.github.com/imneme/540829265469e673d045
-
-##### test_zero_padding
-
-Ensure that the implicit zero-padding does not cause problems.
-    
-
----
-
-### test_generator_mt19937_regressions
-
-#### Classes
-
-##### TestRegression
-
-**Méthodes :**
-
-- `setup_method()`
-- `test_vonmises_range()`
-- `test_hypergeometric_range()`
-- `test_logseries_convergence()`
-- `test_shuffle_mixed_dimension()`
-- `test_call_within_randomstate()`
-- `test_multivariate_normal_size_types()`
-- `test_beta_small_parameters()`
-- `test_beta_very_small_parameters()`
-- `test_beta_ridiculously_small_parameters()`
-- `test_beta_expected_zero_frequency()`
-- `test_choice_sum_of_probs_tolerance()`
-- `test_shuffle_of_array_of_different_length_strings()`
-- `test_shuffle_of_array_of_objects()`
-- `test_permutation_subclass()`
-- `test_gamma_0()`
-- `test_geometric_tiny_prob()`
-- `test_zipf_large_parameter()`
-- `test_zipf_a_near_1()`
-
-##### N
-
-##### M
-
-**Méthodes :**
-
-- `__array__()`
-
-#### Fonctions
-
-##### setup_method
-
-##### test_vonmises_range
-
-##### test_hypergeometric_range
-
-##### test_logseries_convergence
-
-##### test_shuffle_mixed_dimension
-
-##### test_call_within_randomstate
-
-##### test_multivariate_normal_size_types
-
-##### test_beta_small_parameters
-
-##### test_beta_very_small_parameters
-
-##### test_beta_ridiculously_small_parameters
-
-##### test_beta_expected_zero_frequency
-
-##### test_choice_sum_of_probs_tolerance
-
-##### test_shuffle_of_array_of_different_length_strings
-
-##### test_shuffle_of_array_of_objects
-
-##### test_permutation_subclass
-
-##### test_gamma_0
-
-##### test_geometric_tiny_prob
-
-##### test_zipf_large_parameter
-
-##### test_zipf_a_near_1
-
-##### __array__
-
-**Paramètres :**
-
-- `dtype`
-- `copy`
-
----
-
 ### test_random
 
 #### Classes
@@ -365182,6 +365080,108 @@ Ensure that the implicit zero-padding does not cause problems.
 ##### __float__
 
 ##### __int__
+
+---
+
+### test_seed_sequence
+
+#### Fonctions
+
+##### test_reference_data
+
+Check that SeedSequence generates data the same as the C++ reference.
+
+https://gist.github.com/imneme/540829265469e673d045
+
+##### test_zero_padding
+
+Ensure that the implicit zero-padding does not cause problems.
+    
+
+---
+
+### test_generator_mt19937_regressions
+
+#### Classes
+
+##### TestRegression
+
+**Méthodes :**
+
+- `setup_method()`
+- `test_vonmises_range()`
+- `test_hypergeometric_range()`
+- `test_logseries_convergence()`
+- `test_shuffle_mixed_dimension()`
+- `test_call_within_randomstate()`
+- `test_multivariate_normal_size_types()`
+- `test_beta_small_parameters()`
+- `test_beta_very_small_parameters()`
+- `test_beta_ridiculously_small_parameters()`
+- `test_beta_expected_zero_frequency()`
+- `test_choice_sum_of_probs_tolerance()`
+- `test_shuffle_of_array_of_different_length_strings()`
+- `test_shuffle_of_array_of_objects()`
+- `test_permutation_subclass()`
+- `test_gamma_0()`
+- `test_geometric_tiny_prob()`
+- `test_zipf_large_parameter()`
+- `test_zipf_a_near_1()`
+
+##### N
+
+##### M
+
+**Méthodes :**
+
+- `__array__()`
+
+#### Fonctions
+
+##### setup_method
+
+##### test_vonmises_range
+
+##### test_hypergeometric_range
+
+##### test_logseries_convergence
+
+##### test_shuffle_mixed_dimension
+
+##### test_call_within_randomstate
+
+##### test_multivariate_normal_size_types
+
+##### test_beta_small_parameters
+
+##### test_beta_very_small_parameters
+
+##### test_beta_ridiculously_small_parameters
+
+##### test_beta_expected_zero_frequency
+
+##### test_choice_sum_of_probs_tolerance
+
+##### test_shuffle_of_array_of_different_length_strings
+
+##### test_shuffle_of_array_of_objects
+
+##### test_permutation_subclass
+
+##### test_gamma_0
+
+##### test_geometric_tiny_prob
+
+##### test_zipf_large_parameter
+
+##### test_zipf_a_near_1
+
+##### __array__
+
+**Paramètres :**
+
+- `dtype`
+- `copy`
 
 ---
 
@@ -369829,6 +369829,1455 @@ TypeError : if x is a float or non-numeric
 
 ---
 
+### polynomial
+
+=================================================
+Power Series (:mod:`numpy.polynomial.polynomial`)
+=================================================
+
+This module provides a number of objects (mostly functions) useful for
+dealing with polynomials, including a `Polynomial` class that
+encapsulates the usual arithmetic operations.  (General information
+on how this module represents and works with polynomial objects is in
+the docstring for its "parent" sub-package, `numpy.polynomial`).
+
+Classes
+-------
+.. autosummary::
+   :toctree: generated/
+
+   Polynomial
+
+Constants
+---------
+.. autosummary::
+   :toctree: generated/
+
+   polydomain
+   polyzero
+   polyone
+   polyx
+
+Arithmetic
+----------
+.. autosummary::
+   :toctree: generated/
+
+   polyadd
+   polysub
+   polymulx
+   polymul
+   polydiv
+   polypow
+   polyval
+   polyval2d
+   polyval3d
+   polygrid2d
+   polygrid3d
+
+Calculus
+--------
+.. autosummary::
+   :toctree: generated/
+
+   polyder
+   polyint
+
+Misc Functions
+--------------
+.. autosummary::
+   :toctree: generated/
+
+   polyfromroots
+   polyroots
+   polyvalfromroots
+   polyvander
+   polyvander2d
+   polyvander3d
+   polycompanion
+   polyfit
+   polytrim
+   polyline
+
+See Also
+--------
+`numpy.polynomial`
+
+#### Classes
+
+##### Polynomial
+
+A power series class.
+
+The Polynomial class provides the standard Python numerical methods
+'+', '-', '*', '//', '%', 'divmod', '**', and '()' as well as the
+attributes and methods listed below.
+
+Parameters
+----------
+coef : array_like
+    Polynomial coefficients in order of increasing degree, i.e.,
+    ``(1, 2, 3)`` give ``1 + 2*x + 3*x**2``.
+domain : (2,) array_like, optional
+    Domain to use. The interval ``[domain[0], domain[1]]`` is mapped
+    to the interval ``[window[0], window[1]]`` by shifting and scaling.
+    The default value is [-1., 1.].
+window : (2,) array_like, optional
+    Window, see `domain` for its use. The default value is [-1., 1.].
+symbol : str, optional
+    Symbol used to represent the independent variable in string
+    representations of the polynomial expression, e.g. for printing.
+    The symbol must be a valid Python identifier. Default value is 'x'.
+
+    .. versionadded:: 1.24
+
+**Méthodes :**
+
+- `_str_term_unicode()`
+- `_str_term_ascii()`
+- `_repr_latex_term()`
+
+#### Fonctions
+
+##### polyline
+
+Returns an array representing a linear polynomial.
+
+Parameters
+----------
+off, scl : scalars
+    The "y-intercept" and "slope" of the line, respectively.
+
+Returns
+-------
+y : ndarray
+    This module's representation of the linear polynomial ``off +
+    scl*x``.
+
+See Also
+--------
+numpy.polynomial.chebyshev.chebline
+numpy.polynomial.legendre.legline
+numpy.polynomial.laguerre.lagline
+numpy.polynomial.hermite.hermline
+numpy.polynomial.hermite_e.hermeline
+
+Examples
+--------
+>>> from numpy.polynomial import polynomial as P
+>>> P.polyline(1, -1)
+array([ 1, -1])
+>>> P.polyval(1, P.polyline(1, -1))  # should be 0
+0.0
+
+**Paramètres :**
+
+- `off`
+- `scl`
+
+##### polyfromroots
+
+Generate a monic polynomial with given roots.
+
+Return the coefficients of the polynomial
+
+.. math:: p(x) = (x - r_0) * (x - r_1) * ... * (x - r_n),
+
+where the :math:`r_n` are the roots specified in `roots`.  If a zero has
+multiplicity n, then it must appear in `roots` n times. For instance,
+if 2 is a root of multiplicity three and 3 is a root of multiplicity 2,
+then `roots` looks something like [2, 2, 2, 3, 3]. The roots can appear
+in any order.
+
+If the returned coefficients are `c`, then
+
+.. math:: p(x) = c_0 + c_1 * x + ... +  x^n
+
+The coefficient of the last term is 1 for monic polynomials in this
+form.
+
+Parameters
+----------
+roots : array_like
+    Sequence containing the roots.
+
+Returns
+-------
+out : ndarray
+    1-D array of the polynomial's coefficients If all the roots are
+    real, then `out` is also real, otherwise it is complex.  (see
+    Examples below).
+
+See Also
+--------
+numpy.polynomial.chebyshev.chebfromroots
+numpy.polynomial.legendre.legfromroots
+numpy.polynomial.laguerre.lagfromroots
+numpy.polynomial.hermite.hermfromroots
+numpy.polynomial.hermite_e.hermefromroots
+
+Notes
+-----
+The coefficients are determined by multiplying together linear factors
+of the form ``(x - r_i)``, i.e.
+
+.. math:: p(x) = (x - r_0) (x - r_1) ... (x - r_n)
+
+where ``n == len(roots) - 1``; note that this implies that ``1`` is always
+returned for :math:`a_n`.
+
+Examples
+--------
+>>> from numpy.polynomial import polynomial as P
+>>> P.polyfromroots((-1,0,1))  # x(x - 1)(x + 1) = x^3 - x
+array([ 0., -1.,  0.,  1.])
+>>> j = complex(0,1)
+>>> P.polyfromroots((-j,j))  # complex returned, though values are real
+array([1.+0.j,  0.+0.j,  1.+0.j])
+
+**Paramètres :**
+
+- `roots`
+
+##### polyadd
+
+Add one polynomial to another.
+
+Returns the sum of two polynomials `c1` + `c2`.  The arguments are
+sequences of coefficients from lowest order term to highest, i.e.,
+[1,2,3] represents the polynomial ``1 + 2*x + 3*x**2``.
+
+Parameters
+----------
+c1, c2 : array_like
+    1-D arrays of polynomial coefficients ordered from low to high.
+
+Returns
+-------
+out : ndarray
+    The coefficient array representing their sum.
+
+See Also
+--------
+polysub, polymulx, polymul, polydiv, polypow
+
+Examples
+--------
+>>> from numpy.polynomial import polynomial as P
+>>> c1 = (1, 2, 3)
+>>> c2 = (3, 2, 1)
+>>> sum = P.polyadd(c1,c2); sum
+array([4.,  4.,  4.])
+>>> P.polyval(2, sum)  # 4 + 4(2) + 4(2**2)
+28.0
+
+**Paramètres :**
+
+- `c1`
+- `c2`
+
+##### polysub
+
+Subtract one polynomial from another.
+
+Returns the difference of two polynomials `c1` - `c2`.  The arguments
+are sequences of coefficients from lowest order term to highest, i.e.,
+[1,2,3] represents the polynomial ``1 + 2*x + 3*x**2``.
+
+Parameters
+----------
+c1, c2 : array_like
+    1-D arrays of polynomial coefficients ordered from low to
+    high.
+
+Returns
+-------
+out : ndarray
+    Of coefficients representing their difference.
+
+See Also
+--------
+polyadd, polymulx, polymul, polydiv, polypow
+
+Examples
+--------
+>>> from numpy.polynomial import polynomial as P
+>>> c1 = (1, 2, 3)
+>>> c2 = (3, 2, 1)
+>>> P.polysub(c1,c2)
+array([-2.,  0.,  2.])
+>>> P.polysub(c2, c1)  # -P.polysub(c1,c2)
+array([ 2.,  0., -2.])
+
+**Paramètres :**
+
+- `c1`
+- `c2`
+
+##### polymulx
+
+Multiply a polynomial by x.
+
+Multiply the polynomial `c` by x, where x is the independent
+variable.
+
+
+Parameters
+----------
+c : array_like
+    1-D array of polynomial coefficients ordered from low to
+    high.
+
+Returns
+-------
+out : ndarray
+    Array representing the result of the multiplication.
+
+See Also
+--------
+polyadd, polysub, polymul, polydiv, polypow
+
+Examples
+--------
+>>> from numpy.polynomial import polynomial as P
+>>> c = (1, 2, 3)
+>>> P.polymulx(c)
+array([0., 1., 2., 3.])
+
+**Paramètres :**
+
+- `c`
+
+##### polymul
+
+Multiply one polynomial by another.
+
+Returns the product of two polynomials `c1` * `c2`.  The arguments are
+sequences of coefficients, from lowest order term to highest, e.g.,
+[1,2,3] represents the polynomial ``1 + 2*x + 3*x**2.``
+
+Parameters
+----------
+c1, c2 : array_like
+    1-D arrays of coefficients representing a polynomial, relative to the
+    "standard" basis, and ordered from lowest order term to highest.
+
+Returns
+-------
+out : ndarray
+    Of the coefficients of their product.
+
+See Also
+--------
+polyadd, polysub, polymulx, polydiv, polypow
+
+Examples
+--------
+>>> from numpy.polynomial import polynomial as P
+>>> c1 = (1, 2, 3)
+>>> c2 = (3, 2, 1)
+>>> P.polymul(c1, c2)
+array([  3.,   8.,  14.,   8.,   3.])
+
+**Paramètres :**
+
+- `c1`
+- `c2`
+
+##### polydiv
+
+Divide one polynomial by another.
+
+Returns the quotient-with-remainder of two polynomials `c1` / `c2`.
+The arguments are sequences of coefficients, from lowest order term
+to highest, e.g., [1,2,3] represents ``1 + 2*x + 3*x**2``.
+
+Parameters
+----------
+c1, c2 : array_like
+    1-D arrays of polynomial coefficients ordered from low to high.
+
+Returns
+-------
+[quo, rem] : ndarrays
+    Of coefficient series representing the quotient and remainder.
+
+See Also
+--------
+polyadd, polysub, polymulx, polymul, polypow
+
+Examples
+--------
+>>> from numpy.polynomial import polynomial as P
+>>> c1 = (1, 2, 3)
+>>> c2 = (3, 2, 1)
+>>> P.polydiv(c1, c2)
+(array([3.]), array([-8., -4.]))
+>>> P.polydiv(c2, c1)
+(array([ 0.33333333]), array([ 2.66666667,  1.33333333]))  # may vary
+
+**Paramètres :**
+
+- `c1`
+- `c2`
+
+##### polypow
+
+Raise a polynomial to a power.
+
+Returns the polynomial `c` raised to the power `pow`. The argument
+`c` is a sequence of coefficients ordered from low to high. i.e.,
+[1,2,3] is the series  ``1 + 2*x + 3*x**2.``
+
+Parameters
+----------
+c : array_like
+    1-D array of array of series coefficients ordered from low to
+    high degree.
+pow : integer
+    Power to which the series will be raised
+maxpower : integer, optional
+    Maximum power allowed. This is mainly to limit growth of the series
+    to unmanageable size. Default is 16
+
+Returns
+-------
+coef : ndarray
+    Power series of power.
+
+See Also
+--------
+polyadd, polysub, polymulx, polymul, polydiv
+
+Examples
+--------
+>>> from numpy.polynomial import polynomial as P
+>>> P.polypow([1, 2, 3], 2)
+array([ 1., 4., 10., 12., 9.])
+
+**Paramètres :**
+
+- `c`
+- `pow`
+- `maxpower`
+
+##### polyder
+
+Differentiate a polynomial.
+
+Returns the polynomial coefficients `c` differentiated `m` times along
+`axis`.  At each iteration the result is multiplied by `scl` (the
+scaling factor is for use in a linear change of variable).  The
+argument `c` is an array of coefficients from low to high degree along
+each axis, e.g., [1,2,3] represents the polynomial ``1 + 2*x + 3*x**2``
+while [[1,2],[1,2]] represents ``1 + 1*x + 2*y + 2*x*y`` if axis=0 is
+``x`` and axis=1 is ``y``.
+
+Parameters
+----------
+c : array_like
+    Array of polynomial coefficients. If c is multidimensional the
+    different axis correspond to different variables with the degree
+    in each axis given by the corresponding index.
+m : int, optional
+    Number of derivatives taken, must be non-negative. (Default: 1)
+scl : scalar, optional
+    Each differentiation is multiplied by `scl`.  The end result is
+    multiplication by ``scl**m``.  This is for use in a linear change
+    of variable. (Default: 1)
+axis : int, optional
+    Axis over which the derivative is taken. (Default: 0).
+
+Returns
+-------
+der : ndarray
+    Polynomial coefficients of the derivative.
+
+See Also
+--------
+polyint
+
+Examples
+--------
+>>> from numpy.polynomial import polynomial as P
+>>> c = (1, 2, 3, 4)
+>>> P.polyder(c)  # (d/dx)(c)
+array([  2.,   6.,  12.])
+>>> P.polyder(c, 3)  # (d**3/dx**3)(c)
+array([24.])
+>>> P.polyder(c, scl=-1)  # (d/d(-x))(c)
+array([ -2.,  -6., -12.])
+>>> P.polyder(c, 2, -1)  # (d**2/d(-x)**2)(c)
+array([  6.,  24.])
+
+**Paramètres :**
+
+- `c`
+- `m`
+- `scl`
+- `axis`
+
+##### polyint
+
+Integrate a polynomial.
+
+Returns the polynomial coefficients `c` integrated `m` times from
+`lbnd` along `axis`.  At each iteration the resulting series is
+**multiplied** by `scl` and an integration constant, `k`, is added.
+The scaling factor is for use in a linear change of variable.  ("Buyer
+beware": note that, depending on what one is doing, one may want `scl`
+to be the reciprocal of what one might expect; for more information,
+see the Notes section below.) The argument `c` is an array of
+coefficients, from low to high degree along each axis, e.g., [1,2,3]
+represents the polynomial ``1 + 2*x + 3*x**2`` while [[1,2],[1,2]]
+represents ``1 + 1*x + 2*y + 2*x*y`` if axis=0 is ``x`` and axis=1 is
+``y``.
+
+Parameters
+----------
+c : array_like
+    1-D array of polynomial coefficients, ordered from low to high.
+m : int, optional
+    Order of integration, must be positive. (Default: 1)
+k : {[], list, scalar}, optional
+    Integration constant(s).  The value of the first integral at zero
+    is the first value in the list, the value of the second integral
+    at zero is the second value, etc.  If ``k == []`` (the default),
+    all constants are set to zero.  If ``m == 1``, a single scalar can
+    be given instead of a list.
+lbnd : scalar, optional
+    The lower bound of the integral. (Default: 0)
+scl : scalar, optional
+    Following each integration the result is *multiplied* by `scl`
+    before the integration constant is added. (Default: 1)
+axis : int, optional
+    Axis over which the integral is taken. (Default: 0).
+
+Returns
+-------
+S : ndarray
+    Coefficient array of the integral.
+
+Raises
+------
+ValueError
+    If ``m < 1``, ``len(k) > m``, ``np.ndim(lbnd) != 0``, or
+    ``np.ndim(scl) != 0``.
+
+See Also
+--------
+polyder
+
+Notes
+-----
+Note that the result of each integration is *multiplied* by `scl`.  Why
+is this important to note?  Say one is making a linear change of
+variable :math:`u = ax + b` in an integral relative to `x`. Then
+:math:`dx = du/a`, so one will need to set `scl` equal to
+:math:`1/a` - perhaps not what one would have first thought.
+
+Examples
+--------
+>>> from numpy.polynomial import polynomial as P
+>>> c = (1, 2, 3)
+>>> P.polyint(c)  # should return array([0, 1, 1, 1])
+array([0.,  1.,  1.,  1.])
+>>> P.polyint(c, 3)  # should return array([0, 0, 0, 1/6, 1/12, 1/20])
+ array([ 0.        ,  0.        ,  0.        ,  0.16666667,  0.08333333, # may vary
+         0.05      ])
+>>> P.polyint(c, k=3)  # should return array([3, 1, 1, 1])
+array([3.,  1.,  1.,  1.])
+>>> P.polyint(c,lbnd=-2)  # should return array([6, 1, 1, 1])
+array([6.,  1.,  1.,  1.])
+>>> P.polyint(c,scl=-2)  # should return array([0, -2, -2, -2])
+array([ 0., -2., -2., -2.])
+
+**Paramètres :**
+
+- `c`
+- `m`
+- `k`
+- `lbnd`
+- `scl`
+- `axis`
+
+##### polyval
+
+Evaluate a polynomial at points x.
+
+If `c` is of length ``n + 1``, this function returns the value
+
+.. math:: p(x) = c_0 + c_1 * x + ... + c_n * x^n
+
+The parameter `x` is converted to an array only if it is a tuple or a
+list, otherwise it is treated as a scalar. In either case, either `x`
+or its elements must support multiplication and addition both with
+themselves and with the elements of `c`.
+
+If `c` is a 1-D array, then ``p(x)`` will have the same shape as `x`.  If
+`c` is multidimensional, then the shape of the result depends on the
+value of `tensor`. If `tensor` is true the shape will be c.shape[1:] +
+x.shape. If `tensor` is false the shape will be c.shape[1:]. Note that
+scalars have shape (,).
+
+Trailing zeros in the coefficients will be used in the evaluation, so
+they should be avoided if efficiency is a concern.
+
+Parameters
+----------
+x : array_like, compatible object
+    If `x` is a list or tuple, it is converted to an ndarray, otherwise
+    it is left unchanged and treated as a scalar. In either case, `x`
+    or its elements must support addition and multiplication with
+    with themselves and with the elements of `c`.
+c : array_like
+    Array of coefficients ordered so that the coefficients for terms of
+    degree n are contained in c[n]. If `c` is multidimensional the
+    remaining indices enumerate multiple polynomials. In the two
+    dimensional case the coefficients may be thought of as stored in
+    the columns of `c`.
+tensor : boolean, optional
+    If True, the shape of the coefficient array is extended with ones
+    on the right, one for each dimension of `x`. Scalars have dimension 0
+    for this action. The result is that every column of coefficients in
+    `c` is evaluated for every element of `x`. If False, `x` is broadcast
+    over the columns of `c` for the evaluation.  This keyword is useful
+    when `c` is multidimensional. The default value is True.
+
+Returns
+-------
+values : ndarray, compatible object
+    The shape of the returned array is described above.
+
+See Also
+--------
+polyval2d, polygrid2d, polyval3d, polygrid3d
+
+Notes
+-----
+The evaluation uses Horner's method.
+
+Examples
+--------
+>>> import numpy as np
+>>> from numpy.polynomial.polynomial import polyval
+>>> polyval(1, [1,2,3])
+6.0
+>>> a = np.arange(4).reshape(2,2)
+>>> a
+array([[0, 1],
+       [2, 3]])
+>>> polyval(a, [1, 2, 3])
+array([[ 1.,   6.],
+       [17.,  34.]])
+>>> coef = np.arange(4).reshape(2, 2)  # multidimensional coefficients
+>>> coef
+array([[0, 1],
+       [2, 3]])
+>>> polyval([1, 2], coef, tensor=True)
+array([[2.,  4.],
+       [4.,  7.]])
+>>> polyval([1, 2], coef, tensor=False)
+array([2.,  7.])
+
+**Paramètres :**
+
+- `x`
+- `c`
+- `tensor`
+
+##### polyvalfromroots
+
+Evaluate a polynomial specified by its roots at points x.
+
+If `r` is of length ``N``, this function returns the value
+
+.. math:: p(x) = \prod_{n=1}^{N} (x - r_n)
+
+The parameter `x` is converted to an array only if it is a tuple or a
+list, otherwise it is treated as a scalar. In either case, either `x`
+or its elements must support multiplication and addition both with
+themselves and with the elements of `r`.
+
+If `r` is a 1-D array, then ``p(x)`` will have the same shape as `x`.  If `r`
+is multidimensional, then the shape of the result depends on the value of
+`tensor`. If `tensor` is ``True`` the shape will be r.shape[1:] + x.shape;
+that is, each polynomial is evaluated at every value of `x`. If `tensor` is
+``False``, the shape will be r.shape[1:]; that is, each polynomial is
+evaluated only for the corresponding broadcast value of `x`. Note that
+scalars have shape (,).
+
+Parameters
+----------
+x : array_like, compatible object
+    If `x` is a list or tuple, it is converted to an ndarray, otherwise
+    it is left unchanged and treated as a scalar. In either case, `x`
+    or its elements must support addition and multiplication with
+    with themselves and with the elements of `r`.
+r : array_like
+    Array of roots. If `r` is multidimensional the first index is the
+    root index, while the remaining indices enumerate multiple
+    polynomials. For instance, in the two dimensional case the roots
+    of each polynomial may be thought of as stored in the columns of `r`.
+tensor : boolean, optional
+    If True, the shape of the roots array is extended with ones on the
+    right, one for each dimension of `x`. Scalars have dimension 0 for this
+    action. The result is that every column of coefficients in `r` is
+    evaluated for every element of `x`. If False, `x` is broadcast over the
+    columns of `r` for the evaluation.  This keyword is useful when `r` is
+    multidimensional. The default value is True.
+
+Returns
+-------
+values : ndarray, compatible object
+    The shape of the returned array is described above.
+
+See Also
+--------
+polyroots, polyfromroots, polyval
+
+Examples
+--------
+>>> from numpy.polynomial.polynomial import polyvalfromroots
+>>> polyvalfromroots(1, [1, 2, 3])
+0.0
+>>> a = np.arange(4).reshape(2, 2)
+>>> a
+array([[0, 1],
+       [2, 3]])
+>>> polyvalfromroots(a, [-1, 0, 1])
+array([[-0.,   0.],
+       [ 6.,  24.]])
+>>> r = np.arange(-2, 2).reshape(2,2)  # multidimensional coefficients
+>>> r # each column of r defines one polynomial
+array([[-2, -1],
+       [ 0,  1]])
+>>> b = [-2, 1]
+>>> polyvalfromroots(b, r, tensor=True)
+array([[-0.,  3.],
+       [ 3., 0.]])
+>>> polyvalfromroots(b, r, tensor=False)
+array([-0.,  0.])
+
+**Paramètres :**
+
+- `x`
+- `r`
+- `tensor`
+
+##### polyval2d
+
+Evaluate a 2-D polynomial at points (x, y).
+
+This function returns the value
+
+.. math:: p(x,y) = \sum_{i,j} c_{i,j} * x^i * y^j
+
+The parameters `x` and `y` are converted to arrays only if they are
+tuples or a lists, otherwise they are treated as a scalars and they
+must have the same shape after conversion. In either case, either `x`
+and `y` or their elements must support multiplication and addition both
+with themselves and with the elements of `c`.
+
+If `c` has fewer than two dimensions, ones are implicitly appended to
+its shape to make it 2-D. The shape of the result will be c.shape[2:] +
+x.shape.
+
+Parameters
+----------
+x, y : array_like, compatible objects
+    The two dimensional series is evaluated at the points ``(x, y)``,
+    where `x` and `y` must have the same shape. If `x` or `y` is a list
+    or tuple, it is first converted to an ndarray, otherwise it is left
+    unchanged and, if it isn't an ndarray, it is treated as a scalar.
+c : array_like
+    Array of coefficients ordered so that the coefficient of the term
+    of multi-degree i,j is contained in ``c[i,j]``. If `c` has
+    dimension greater than two the remaining indices enumerate multiple
+    sets of coefficients.
+
+Returns
+-------
+values : ndarray, compatible object
+    The values of the two dimensional polynomial at points formed with
+    pairs of corresponding values from `x` and `y`.
+
+See Also
+--------
+polyval, polygrid2d, polyval3d, polygrid3d
+
+Examples
+--------
+>>> from numpy.polynomial import polynomial as P
+>>> c = ((1, 2, 3), (4, 5, 6))
+>>> P.polyval2d(1, 1, c)
+21.0
+
+**Paramètres :**
+
+- `x`
+- `y`
+- `c`
+
+##### polygrid2d
+
+Evaluate a 2-D polynomial on the Cartesian product of x and y.
+
+This function returns the values:
+
+.. math:: p(a,b) = \sum_{i,j} c_{i,j} * a^i * b^j
+
+where the points ``(a, b)`` consist of all pairs formed by taking
+`a` from `x` and `b` from `y`. The resulting points form a grid with
+`x` in the first dimension and `y` in the second.
+
+The parameters `x` and `y` are converted to arrays only if they are
+tuples or a lists, otherwise they are treated as a scalars. In either
+case, either `x` and `y` or their elements must support multiplication
+and addition both with themselves and with the elements of `c`.
+
+If `c` has fewer than two dimensions, ones are implicitly appended to
+its shape to make it 2-D. The shape of the result will be c.shape[2:] +
+x.shape + y.shape.
+
+Parameters
+----------
+x, y : array_like, compatible objects
+    The two dimensional series is evaluated at the points in the
+    Cartesian product of `x` and `y`.  If `x` or `y` is a list or
+    tuple, it is first converted to an ndarray, otherwise it is left
+    unchanged and, if it isn't an ndarray, it is treated as a scalar.
+c : array_like
+    Array of coefficients ordered so that the coefficients for terms of
+    degree i,j are contained in ``c[i,j]``. If `c` has dimension
+    greater than two the remaining indices enumerate multiple sets of
+    coefficients.
+
+Returns
+-------
+values : ndarray, compatible object
+    The values of the two dimensional polynomial at points in the Cartesian
+    product of `x` and `y`.
+
+See Also
+--------
+polyval, polyval2d, polyval3d, polygrid3d
+
+Examples
+--------
+>>> from numpy.polynomial import polynomial as P
+>>> c = ((1, 2, 3), (4, 5, 6))
+>>> P.polygrid2d([0, 1], [0, 1], c)
+array([[ 1.,  6.],
+       [ 5., 21.]])
+
+**Paramètres :**
+
+- `x`
+- `y`
+- `c`
+
+##### polyval3d
+
+Evaluate a 3-D polynomial at points (x, y, z).
+
+This function returns the values:
+
+.. math:: p(x,y,z) = \sum_{i,j,k} c_{i,j,k} * x^i * y^j * z^k
+
+The parameters `x`, `y`, and `z` are converted to arrays only if
+they are tuples or a lists, otherwise they are treated as a scalars and
+they must have the same shape after conversion. In either case, either
+`x`, `y`, and `z` or their elements must support multiplication and
+addition both with themselves and with the elements of `c`.
+
+If `c` has fewer than 3 dimensions, ones are implicitly appended to its
+shape to make it 3-D. The shape of the result will be c.shape[3:] +
+x.shape.
+
+Parameters
+----------
+x, y, z : array_like, compatible object
+    The three dimensional series is evaluated at the points
+    ``(x, y, z)``, where `x`, `y`, and `z` must have the same shape.  If
+    any of `x`, `y`, or `z` is a list or tuple, it is first converted
+    to an ndarray, otherwise it is left unchanged and if it isn't an
+    ndarray it is  treated as a scalar.
+c : array_like
+    Array of coefficients ordered so that the coefficient of the term of
+    multi-degree i,j,k is contained in ``c[i,j,k]``. If `c` has dimension
+    greater than 3 the remaining indices enumerate multiple sets of
+    coefficients.
+
+Returns
+-------
+values : ndarray, compatible object
+    The values of the multidimensional polynomial on points formed with
+    triples of corresponding values from `x`, `y`, and `z`.
+
+See Also
+--------
+polyval, polyval2d, polygrid2d, polygrid3d
+
+Examples
+--------
+>>> from numpy.polynomial import polynomial as P
+>>> c = ((1, 2, 3), (4, 5, 6), (7, 8, 9))
+>>> P.polyval3d(1, 1, 1, c)
+45.0
+
+**Paramètres :**
+
+- `x`
+- `y`
+- `z`
+- `c`
+
+##### polygrid3d
+
+Evaluate a 3-D polynomial on the Cartesian product of x, y and z.
+
+This function returns the values:
+
+.. math:: p(a,b,c) = \sum_{i,j,k} c_{i,j,k} * a^i * b^j * c^k
+
+where the points ``(a, b, c)`` consist of all triples formed by taking
+`a` from `x`, `b` from `y`, and `c` from `z`. The resulting points form
+a grid with `x` in the first dimension, `y` in the second, and `z` in
+the third.
+
+The parameters `x`, `y`, and `z` are converted to arrays only if they
+are tuples or a lists, otherwise they are treated as a scalars. In
+either case, either `x`, `y`, and `z` or their elements must support
+multiplication and addition both with themselves and with the elements
+of `c`.
+
+If `c` has fewer than three dimensions, ones are implicitly appended to
+its shape to make it 3-D. The shape of the result will be c.shape[3:] +
+x.shape + y.shape + z.shape.
+
+Parameters
+----------
+x, y, z : array_like, compatible objects
+    The three dimensional series is evaluated at the points in the
+    Cartesian product of `x`, `y`, and `z`.  If `x`, `y`, or `z` is a
+    list or tuple, it is first converted to an ndarray, otherwise it is
+    left unchanged and, if it isn't an ndarray, it is treated as a
+    scalar.
+c : array_like
+    Array of coefficients ordered so that the coefficients for terms of
+    degree i,j are contained in ``c[i,j]``. If `c` has dimension
+    greater than two the remaining indices enumerate multiple sets of
+    coefficients.
+
+Returns
+-------
+values : ndarray, compatible object
+    The values of the two dimensional polynomial at points in the Cartesian
+    product of `x` and `y`.
+
+See Also
+--------
+polyval, polyval2d, polygrid2d, polyval3d
+
+Examples
+--------
+>>> from numpy.polynomial import polynomial as P
+>>> c = ((1, 2, 3), (4, 5, 6), (7, 8, 9))
+>>> P.polygrid3d([0, 1], [0, 1], [0, 1], c)
+array([[ 1., 13.],
+       [ 6., 51.]])
+
+**Paramètres :**
+
+- `x`
+- `y`
+- `z`
+- `c`
+
+##### polyvander
+
+Vandermonde matrix of given degree.
+
+Returns the Vandermonde matrix of degree `deg` and sample points
+`x`. The Vandermonde matrix is defined by
+
+.. math:: V[..., i] = x^i,
+
+where ``0 <= i <= deg``. The leading indices of `V` index the elements of
+`x` and the last index is the power of `x`.
+
+If `c` is a 1-D array of coefficients of length ``n + 1`` and `V` is the
+matrix ``V = polyvander(x, n)``, then ``np.dot(V, c)`` and
+``polyval(x, c)`` are the same up to roundoff. This equivalence is
+useful both for least squares fitting and for the evaluation of a large
+number of polynomials of the same degree and sample points.
+
+Parameters
+----------
+x : array_like
+    Array of points. The dtype is converted to float64 or complex128
+    depending on whether any of the elements are complex. If `x` is
+    scalar it is converted to a 1-D array.
+deg : int
+    Degree of the resulting matrix.
+
+Returns
+-------
+vander : ndarray.
+    The Vandermonde matrix. The shape of the returned matrix is
+    ``x.shape + (deg + 1,)``, where the last index is the power of `x`.
+    The dtype will be the same as the converted `x`.
+
+See Also
+--------
+polyvander2d, polyvander3d
+
+Examples
+--------
+The Vandermonde matrix of degree ``deg = 5`` and sample points
+``x = [-1, 2, 3]`` contains the element-wise powers of `x`
+from 0 to 5 as its columns.
+
+>>> from numpy.polynomial import polynomial as P
+>>> x, deg = [-1, 2, 3], 5
+>>> P.polyvander(x=x, deg=deg)
+array([[  1.,  -1.,   1.,  -1.,   1.,  -1.],
+       [  1.,   2.,   4.,   8.,  16.,  32.],
+       [  1.,   3.,   9.,  27.,  81., 243.]])
+
+**Paramètres :**
+
+- `x`
+- `deg`
+
+##### polyvander2d
+
+Pseudo-Vandermonde matrix of given degrees.
+
+Returns the pseudo-Vandermonde matrix of degrees `deg` and sample
+points ``(x, y)``. The pseudo-Vandermonde matrix is defined by
+
+.. math:: V[..., (deg[1] + 1)*i + j] = x^i * y^j,
+
+where ``0 <= i <= deg[0]`` and ``0 <= j <= deg[1]``. The leading indices of
+`V` index the points ``(x, y)`` and the last index encodes the powers of
+`x` and `y`.
+
+If ``V = polyvander2d(x, y, [xdeg, ydeg])``, then the columns of `V`
+correspond to the elements of a 2-D coefficient array `c` of shape
+(xdeg + 1, ydeg + 1) in the order
+
+.. math:: c_{00}, c_{01}, c_{02} ... , c_{10}, c_{11}, c_{12} ...
+
+and ``np.dot(V, c.flat)`` and ``polyval2d(x, y, c)`` will be the same
+up to roundoff. This equivalence is useful both for least squares
+fitting and for the evaluation of a large number of 2-D polynomials
+of the same degrees and sample points.
+
+Parameters
+----------
+x, y : array_like
+    Arrays of point coordinates, all of the same shape. The dtypes
+    will be converted to either float64 or complex128 depending on
+    whether any of the elements are complex. Scalars are converted to
+    1-D arrays.
+deg : list of ints
+    List of maximum degrees of the form [x_deg, y_deg].
+
+Returns
+-------
+vander2d : ndarray
+    The shape of the returned matrix is ``x.shape + (order,)``, where
+    :math:`order = (deg[0]+1)*(deg([1]+1)`.  The dtype will be the same
+    as the converted `x` and `y`.
+
+See Also
+--------
+polyvander, polyvander3d, polyval2d, polyval3d
+
+Examples
+--------
+>>> import numpy as np
+
+The 2-D pseudo-Vandermonde matrix of degree ``[1, 2]`` and sample
+points ``x = [-1, 2]`` and ``y = [1, 3]`` is as follows:
+
+>>> from numpy.polynomial import polynomial as P
+>>> x = np.array([-1, 2])
+>>> y = np.array([1, 3])
+>>> m, n = 1, 2
+>>> deg = np.array([m, n])
+>>> V = P.polyvander2d(x=x, y=y, deg=deg)
+>>> V
+array([[ 1.,  1.,  1., -1., -1., -1.],
+       [ 1.,  3.,  9.,  2.,  6., 18.]])
+
+We can verify the columns for any ``0 <= i <= m`` and ``0 <= j <= n``:
+
+>>> i, j = 0, 1
+>>> V[:, (deg[1]+1)*i + j] == x**i * y**j
+array([ True,  True])
+
+The (1D) Vandermonde matrix of sample points ``x`` and degree ``m`` is a
+special case of the (2D) pseudo-Vandermonde matrix with ``y`` points all
+zero and degree ``[m, 0]``.
+
+>>> P.polyvander2d(x=x, y=0*x, deg=(m, 0)) == P.polyvander(x=x, deg=m)
+array([[ True,  True],
+       [ True,  True]])
+
+**Paramètres :**
+
+- `x`
+- `y`
+- `deg`
+
+##### polyvander3d
+
+Pseudo-Vandermonde matrix of given degrees.
+
+Returns the pseudo-Vandermonde matrix of degrees `deg` and sample
+points ``(x, y, z)``. If `l`, `m`, `n` are the given degrees in `x`, `y`, `z`,
+then The pseudo-Vandermonde matrix is defined by
+
+.. math:: V[..., (m+1)(n+1)i + (n+1)j + k] = x^i * y^j * z^k,
+
+where ``0 <= i <= l``, ``0 <= j <= m``, and ``0 <= j <= n``.  The leading
+indices of `V` index the points ``(x, y, z)`` and the last index encodes
+the powers of `x`, `y`, and `z`.
+
+If ``V = polyvander3d(x, y, z, [xdeg, ydeg, zdeg])``, then the columns
+of `V` correspond to the elements of a 3-D coefficient array `c` of
+shape (xdeg + 1, ydeg + 1, zdeg + 1) in the order
+
+.. math:: c_{000}, c_{001}, c_{002},... , c_{010}, c_{011}, c_{012},...
+
+and  ``np.dot(V, c.flat)`` and ``polyval3d(x, y, z, c)`` will be the
+same up to roundoff. This equivalence is useful both for least squares
+fitting and for the evaluation of a large number of 3-D polynomials
+of the same degrees and sample points.
+
+Parameters
+----------
+x, y, z : array_like
+    Arrays of point coordinates, all of the same shape. The dtypes will
+    be converted to either float64 or complex128 depending on whether
+    any of the elements are complex. Scalars are converted to 1-D
+    arrays.
+deg : list of ints
+    List of maximum degrees of the form [x_deg, y_deg, z_deg].
+
+Returns
+-------
+vander3d : ndarray
+    The shape of the returned matrix is ``x.shape + (order,)``, where
+    :math:`order = (deg[0]+1)*(deg([1]+1)*(deg[2]+1)`.  The dtype will
+    be the same as the converted `x`, `y`, and `z`.
+
+See Also
+--------
+polyvander, polyvander3d, polyval2d, polyval3d
+
+Examples
+--------
+>>> import numpy as np
+>>> from numpy.polynomial import polynomial as P
+>>> x = np.asarray([-1, 2, 1])
+>>> y = np.asarray([1, -2, -3])
+>>> z = np.asarray([2, 2, 5])
+>>> l, m, n = [2, 2, 1]
+>>> deg = [l, m, n]
+>>> V = P.polyvander3d(x=x, y=y, z=z, deg=deg)
+>>> V
+array([[  1.,   2.,   1.,   2.,   1.,   2.,  -1.,  -2.,  -1.,
+         -2.,  -1.,  -2.,   1.,   2.,   1.,   2.,   1.,   2.],
+       [  1.,   2.,  -2.,  -4.,   4.,   8.,   2.,   4.,  -4.,
+         -8.,   8.,  16.,   4.,   8.,  -8., -16.,  16.,  32.],
+       [  1.,   5.,  -3., -15.,   9.,  45.,   1.,   5.,  -3.,
+        -15.,   9.,  45.,   1.,   5.,  -3., -15.,   9.,  45.]])
+
+We can verify the columns for any ``0 <= i <= l``, ``0 <= j <= m``,
+and ``0 <= k <= n``
+
+>>> i, j, k = 2, 1, 0
+>>> V[:, (m+1)*(n+1)*i + (n+1)*j + k] == x**i * y**j * z**k
+array([ True,  True,  True])
+
+**Paramètres :**
+
+- `x`
+- `y`
+- `z`
+- `deg`
+
+##### polyfit
+
+Least-squares fit of a polynomial to data.
+
+Return the coefficients of a polynomial of degree `deg` that is the
+least squares fit to the data values `y` given at points `x`. If `y` is
+1-D the returned coefficients will also be 1-D. If `y` is 2-D multiple
+fits are done, one for each column of `y`, and the resulting
+coefficients are stored in the corresponding columns of a 2-D return.
+The fitted polynomial(s) are in the form
+
+.. math::  p(x) = c_0 + c_1 * x + ... + c_n * x^n,
+
+where `n` is `deg`.
+
+Parameters
+----------
+x : array_like, shape (`M`,)
+    x-coordinates of the `M` sample (data) points ``(x[i], y[i])``.
+y : array_like, shape (`M`,) or (`M`, `K`)
+    y-coordinates of the sample points.  Several sets of sample points
+    sharing the same x-coordinates can be (independently) fit with one
+    call to `polyfit` by passing in for `y` a 2-D array that contains
+    one data set per column.
+deg : int or 1-D array_like
+    Degree(s) of the fitting polynomials. If `deg` is a single integer
+    all terms up to and including the `deg`'th term are included in the
+    fit. For NumPy versions >= 1.11.0 a list of integers specifying the
+    degrees of the terms to include may be used instead.
+rcond : float, optional
+    Relative condition number of the fit.  Singular values smaller
+    than `rcond`, relative to the largest singular value, will be
+    ignored.  The default value is ``len(x)*eps``, where `eps` is the
+    relative precision of the platform's float type, about 2e-16 in
+    most cases.
+full : bool, optional
+    Switch determining the nature of the return value.  When ``False``
+    (the default) just the coefficients are returned; when ``True``,
+    diagnostic information from the singular value decomposition (used
+    to solve the fit's matrix equation) is also returned.
+w : array_like, shape (`M`,), optional
+    Weights. If not None, the weight ``w[i]`` applies to the unsquared
+    residual ``y[i] - y_hat[i]`` at ``x[i]``. Ideally the weights are
+    chosen so that the errors of the products ``w[i]*y[i]`` all have the
+    same variance.  When using inverse-variance weighting, use
+    ``w[i] = 1/sigma(y[i])``.  The default value is None.
+
+Returns
+-------
+coef : ndarray, shape (`deg` + 1,) or (`deg` + 1, `K`)
+    Polynomial coefficients ordered from low to high.  If `y` was 2-D,
+    the coefficients in column `k` of `coef` represent the polynomial
+    fit to the data in `y`'s `k`-th column.
+
+[residuals, rank, singular_values, rcond] : list
+    These values are only returned if ``full == True``
+
+    - residuals -- sum of squared residuals of the least squares fit
+    - rank -- the numerical rank of the scaled Vandermonde matrix
+    - singular_values -- singular values of the scaled Vandermonde matrix
+    - rcond -- value of `rcond`.
+
+    For more details, see `numpy.linalg.lstsq`.
+
+Raises
+------
+RankWarning
+    Raised if the matrix in the least-squares fit is rank deficient.
+    The warning is only raised if ``full == False``.  The warnings can
+    be turned off by:
+
+    >>> import warnings
+    >>> warnings.simplefilter('ignore', np.exceptions.RankWarning)
+
+See Also
+--------
+numpy.polynomial.chebyshev.chebfit
+numpy.polynomial.legendre.legfit
+numpy.polynomial.laguerre.lagfit
+numpy.polynomial.hermite.hermfit
+numpy.polynomial.hermite_e.hermefit
+polyval : Evaluates a polynomial.
+polyvander : Vandermonde matrix for powers.
+numpy.linalg.lstsq : Computes a least-squares fit from the matrix.
+scipy.interpolate.UnivariateSpline : Computes spline fits.
+
+Notes
+-----
+The solution is the coefficients of the polynomial `p` that minimizes
+the sum of the weighted squared errors
+
+.. math:: E = \sum_j w_j^2 * |y_j - p(x_j)|^2,
+
+where the :math:`w_j` are the weights. This problem is solved by
+setting up the (typically) over-determined matrix equation:
+
+.. math:: V(x) * c = w * y,
+
+where `V` is the weighted pseudo Vandermonde matrix of `x`, `c` are the
+coefficients to be solved for, `w` are the weights, and `y` are the
+observed values.  This equation is then solved using the singular value
+decomposition of `V`.
+
+If some of the singular values of `V` are so small that they are
+neglected (and `full` == ``False``), a `~exceptions.RankWarning` will be
+raised.  This means that the coefficient values may be poorly determined.
+Fitting to a lower order polynomial will usually get rid of the warning
+(but may not be what you want, of course; if you have independent
+reason(s) for choosing the degree which isn't working, you may have to:
+a) reconsider those reasons, and/or b) reconsider the quality of your
+data).  The `rcond` parameter can also be set to a value smaller than
+its default, but the resulting fit may be spurious and have large
+contributions from roundoff error.
+
+Polynomial fits using double precision tend to "fail" at about
+(polynomial) degree 20. Fits using Chebyshev or Legendre series are
+generally better conditioned, but much can still depend on the
+distribution of the sample points and the smoothness of the data.  If
+the quality of the fit is inadequate, splines may be a good
+alternative.
+
+Examples
+--------
+>>> import numpy as np
+>>> from numpy.polynomial import polynomial as P
+>>> x = np.linspace(-1,1,51)  # x "data": [-1, -0.96, ..., 0.96, 1]
+>>> rng = np.random.default_rng()
+>>> err = rng.normal(size=len(x))
+>>> y = x**3 - x + err  # x^3 - x + Gaussian noise
+>>> c, stats = P.polyfit(x,y,3,full=True)
+>>> c # c[0], c[1] approx. -1, c[2] should be approx. 0, c[3] approx. 1
+array([ 0.23111996, -1.02785049, -0.2241444 ,  1.08405657]) # may vary
+>>> stats # note the large SSR, explaining the rather poor results
+[array([48.312088]),                                        # may vary
+ 4,
+ array([1.38446749, 1.32119158, 0.50443316, 0.28853036]),
+ 1.1324274851176597e-14]
+
+Same thing without the added noise
+
+>>> y = x**3 - x
+>>> c, stats = P.polyfit(x,y,3,full=True)
+>>> c # c[0], c[1] ~= -1, c[2] should be "very close to 0", c[3] ~= 1
+array([-6.73496154e-17, -1.00000000e+00,  0.00000000e+00,  1.00000000e+00])
+>>> stats # note the minuscule SSR
+[array([8.79579319e-31]),
+ np.int32(4),
+ array([1.38446749, 1.32119158, 0.50443316, 0.28853036]),
+ 1.1324274851176597e-14]
+
+**Paramètres :**
+
+- `x`
+- `y`
+- `deg`
+- `rcond`
+- `full`
+- `w`
+
+##### polycompanion
+
+Return the companion matrix of c.
+
+The companion matrix for power series cannot be made symmetric by
+scaling the basis, so this function differs from those for the
+orthogonal polynomials.
+
+Parameters
+----------
+c : array_like
+    1-D array of polynomial coefficients ordered from low to high
+    degree.
+
+Returns
+-------
+mat : ndarray
+    Companion matrix of dimensions (deg, deg).
+
+Examples
+--------
+>>> from numpy.polynomial import polynomial as P
+>>> c = (1, 2, 3)
+>>> P.polycompanion(c)
+array([[ 0.        , -0.33333333],
+       [ 1.        , -0.66666667]])
+
+**Paramètres :**
+
+- `c`
+
+##### polyroots
+
+Compute the roots of a polynomial.
+
+Return the roots (a.k.a. "zeros") of the polynomial
+
+.. math:: p(x) = \sum_i c[i] * x^i.
+
+Parameters
+----------
+c : 1-D array_like
+    1-D array of polynomial coefficients.
+
+Returns
+-------
+out : ndarray
+    Array of the roots of the polynomial. If all the roots are real,
+    then `out` is also real, otherwise it is complex.
+
+See Also
+--------
+numpy.polynomial.chebyshev.chebroots
+numpy.polynomial.legendre.legroots
+numpy.polynomial.laguerre.lagroots
+numpy.polynomial.hermite.hermroots
+numpy.polynomial.hermite_e.hermeroots
+
+Notes
+-----
+The root estimates are obtained as the eigenvalues of the companion
+matrix, Roots far from the origin of the complex plane may have large
+errors due to the numerical instability of the power series for such
+values. Roots with multiplicity greater than 1 will also show larger
+errors as the value of the series near such points is relatively
+insensitive to errors in the roots. Isolated roots near the origin can
+be improved by a few iterations of Newton's method.
+
+Examples
+--------
+>>> import numpy.polynomial.polynomial as poly
+>>> poly.polyroots(poly.polyfromroots((-1,0,1)))
+array([-1.,  0.,  1.])
+>>> poly.polyroots(poly.polyfromroots((-1,0,1))).dtype
+dtype('float64')
+>>> j = complex(0,1)
+>>> poly.polyroots(poly.polyfromroots((-j,0,j)))
+array([  0.00000000e+00+0.j,   0.00000000e+00+1.j,   2.77555756e-17-1.j])  # may vary
+
+**Paramètres :**
+
+- `c`
+
+##### _str_term_unicode
+
+**Paramètres :**
+
+- `cls`
+- `i`
+- `arg_str`
+
+##### _str_term_ascii
+
+**Paramètres :**
+
+- `i`
+- `arg_str`
+
+##### _repr_latex_term
+
+**Paramètres :**
+
+- `i`
+- `arg_str`
+- `needs_parens`
+
+---
+
 ### hermite_e
 
 ===================================================================
@@ -372957,1455 +374406,6 @@ See `numpy.polynomial.chebinterpolate` for more details.
 - `deg`
 - `domain`
 - `args`
-
----
-
-### polynomial
-
-=================================================
-Power Series (:mod:`numpy.polynomial.polynomial`)
-=================================================
-
-This module provides a number of objects (mostly functions) useful for
-dealing with polynomials, including a `Polynomial` class that
-encapsulates the usual arithmetic operations.  (General information
-on how this module represents and works with polynomial objects is in
-the docstring for its "parent" sub-package, `numpy.polynomial`).
-
-Classes
--------
-.. autosummary::
-   :toctree: generated/
-
-   Polynomial
-
-Constants
----------
-.. autosummary::
-   :toctree: generated/
-
-   polydomain
-   polyzero
-   polyone
-   polyx
-
-Arithmetic
-----------
-.. autosummary::
-   :toctree: generated/
-
-   polyadd
-   polysub
-   polymulx
-   polymul
-   polydiv
-   polypow
-   polyval
-   polyval2d
-   polyval3d
-   polygrid2d
-   polygrid3d
-
-Calculus
---------
-.. autosummary::
-   :toctree: generated/
-
-   polyder
-   polyint
-
-Misc Functions
---------------
-.. autosummary::
-   :toctree: generated/
-
-   polyfromroots
-   polyroots
-   polyvalfromroots
-   polyvander
-   polyvander2d
-   polyvander3d
-   polycompanion
-   polyfit
-   polytrim
-   polyline
-
-See Also
---------
-`numpy.polynomial`
-
-#### Classes
-
-##### Polynomial
-
-A power series class.
-
-The Polynomial class provides the standard Python numerical methods
-'+', '-', '*', '//', '%', 'divmod', '**', and '()' as well as the
-attributes and methods listed below.
-
-Parameters
-----------
-coef : array_like
-    Polynomial coefficients in order of increasing degree, i.e.,
-    ``(1, 2, 3)`` give ``1 + 2*x + 3*x**2``.
-domain : (2,) array_like, optional
-    Domain to use. The interval ``[domain[0], domain[1]]`` is mapped
-    to the interval ``[window[0], window[1]]`` by shifting and scaling.
-    The default value is [-1., 1.].
-window : (2,) array_like, optional
-    Window, see `domain` for its use. The default value is [-1., 1.].
-symbol : str, optional
-    Symbol used to represent the independent variable in string
-    representations of the polynomial expression, e.g. for printing.
-    The symbol must be a valid Python identifier. Default value is 'x'.
-
-    .. versionadded:: 1.24
-
-**Méthodes :**
-
-- `_str_term_unicode()`
-- `_str_term_ascii()`
-- `_repr_latex_term()`
-
-#### Fonctions
-
-##### polyline
-
-Returns an array representing a linear polynomial.
-
-Parameters
-----------
-off, scl : scalars
-    The "y-intercept" and "slope" of the line, respectively.
-
-Returns
--------
-y : ndarray
-    This module's representation of the linear polynomial ``off +
-    scl*x``.
-
-See Also
---------
-numpy.polynomial.chebyshev.chebline
-numpy.polynomial.legendre.legline
-numpy.polynomial.laguerre.lagline
-numpy.polynomial.hermite.hermline
-numpy.polynomial.hermite_e.hermeline
-
-Examples
---------
->>> from numpy.polynomial import polynomial as P
->>> P.polyline(1, -1)
-array([ 1, -1])
->>> P.polyval(1, P.polyline(1, -1))  # should be 0
-0.0
-
-**Paramètres :**
-
-- `off`
-- `scl`
-
-##### polyfromroots
-
-Generate a monic polynomial with given roots.
-
-Return the coefficients of the polynomial
-
-.. math:: p(x) = (x - r_0) * (x - r_1) * ... * (x - r_n),
-
-where the :math:`r_n` are the roots specified in `roots`.  If a zero has
-multiplicity n, then it must appear in `roots` n times. For instance,
-if 2 is a root of multiplicity three and 3 is a root of multiplicity 2,
-then `roots` looks something like [2, 2, 2, 3, 3]. The roots can appear
-in any order.
-
-If the returned coefficients are `c`, then
-
-.. math:: p(x) = c_0 + c_1 * x + ... +  x^n
-
-The coefficient of the last term is 1 for monic polynomials in this
-form.
-
-Parameters
-----------
-roots : array_like
-    Sequence containing the roots.
-
-Returns
--------
-out : ndarray
-    1-D array of the polynomial's coefficients If all the roots are
-    real, then `out` is also real, otherwise it is complex.  (see
-    Examples below).
-
-See Also
---------
-numpy.polynomial.chebyshev.chebfromroots
-numpy.polynomial.legendre.legfromroots
-numpy.polynomial.laguerre.lagfromroots
-numpy.polynomial.hermite.hermfromroots
-numpy.polynomial.hermite_e.hermefromroots
-
-Notes
------
-The coefficients are determined by multiplying together linear factors
-of the form ``(x - r_i)``, i.e.
-
-.. math:: p(x) = (x - r_0) (x - r_1) ... (x - r_n)
-
-where ``n == len(roots) - 1``; note that this implies that ``1`` is always
-returned for :math:`a_n`.
-
-Examples
---------
->>> from numpy.polynomial import polynomial as P
->>> P.polyfromroots((-1,0,1))  # x(x - 1)(x + 1) = x^3 - x
-array([ 0., -1.,  0.,  1.])
->>> j = complex(0,1)
->>> P.polyfromroots((-j,j))  # complex returned, though values are real
-array([1.+0.j,  0.+0.j,  1.+0.j])
-
-**Paramètres :**
-
-- `roots`
-
-##### polyadd
-
-Add one polynomial to another.
-
-Returns the sum of two polynomials `c1` + `c2`.  The arguments are
-sequences of coefficients from lowest order term to highest, i.e.,
-[1,2,3] represents the polynomial ``1 + 2*x + 3*x**2``.
-
-Parameters
-----------
-c1, c2 : array_like
-    1-D arrays of polynomial coefficients ordered from low to high.
-
-Returns
--------
-out : ndarray
-    The coefficient array representing their sum.
-
-See Also
---------
-polysub, polymulx, polymul, polydiv, polypow
-
-Examples
---------
->>> from numpy.polynomial import polynomial as P
->>> c1 = (1, 2, 3)
->>> c2 = (3, 2, 1)
->>> sum = P.polyadd(c1,c2); sum
-array([4.,  4.,  4.])
->>> P.polyval(2, sum)  # 4 + 4(2) + 4(2**2)
-28.0
-
-**Paramètres :**
-
-- `c1`
-- `c2`
-
-##### polysub
-
-Subtract one polynomial from another.
-
-Returns the difference of two polynomials `c1` - `c2`.  The arguments
-are sequences of coefficients from lowest order term to highest, i.e.,
-[1,2,3] represents the polynomial ``1 + 2*x + 3*x**2``.
-
-Parameters
-----------
-c1, c2 : array_like
-    1-D arrays of polynomial coefficients ordered from low to
-    high.
-
-Returns
--------
-out : ndarray
-    Of coefficients representing their difference.
-
-See Also
---------
-polyadd, polymulx, polymul, polydiv, polypow
-
-Examples
---------
->>> from numpy.polynomial import polynomial as P
->>> c1 = (1, 2, 3)
->>> c2 = (3, 2, 1)
->>> P.polysub(c1,c2)
-array([-2.,  0.,  2.])
->>> P.polysub(c2, c1)  # -P.polysub(c1,c2)
-array([ 2.,  0., -2.])
-
-**Paramètres :**
-
-- `c1`
-- `c2`
-
-##### polymulx
-
-Multiply a polynomial by x.
-
-Multiply the polynomial `c` by x, where x is the independent
-variable.
-
-
-Parameters
-----------
-c : array_like
-    1-D array of polynomial coefficients ordered from low to
-    high.
-
-Returns
--------
-out : ndarray
-    Array representing the result of the multiplication.
-
-See Also
---------
-polyadd, polysub, polymul, polydiv, polypow
-
-Examples
---------
->>> from numpy.polynomial import polynomial as P
->>> c = (1, 2, 3)
->>> P.polymulx(c)
-array([0., 1., 2., 3.])
-
-**Paramètres :**
-
-- `c`
-
-##### polymul
-
-Multiply one polynomial by another.
-
-Returns the product of two polynomials `c1` * `c2`.  The arguments are
-sequences of coefficients, from lowest order term to highest, e.g.,
-[1,2,3] represents the polynomial ``1 + 2*x + 3*x**2.``
-
-Parameters
-----------
-c1, c2 : array_like
-    1-D arrays of coefficients representing a polynomial, relative to the
-    "standard" basis, and ordered from lowest order term to highest.
-
-Returns
--------
-out : ndarray
-    Of the coefficients of their product.
-
-See Also
---------
-polyadd, polysub, polymulx, polydiv, polypow
-
-Examples
---------
->>> from numpy.polynomial import polynomial as P
->>> c1 = (1, 2, 3)
->>> c2 = (3, 2, 1)
->>> P.polymul(c1, c2)
-array([  3.,   8.,  14.,   8.,   3.])
-
-**Paramètres :**
-
-- `c1`
-- `c2`
-
-##### polydiv
-
-Divide one polynomial by another.
-
-Returns the quotient-with-remainder of two polynomials `c1` / `c2`.
-The arguments are sequences of coefficients, from lowest order term
-to highest, e.g., [1,2,3] represents ``1 + 2*x + 3*x**2``.
-
-Parameters
-----------
-c1, c2 : array_like
-    1-D arrays of polynomial coefficients ordered from low to high.
-
-Returns
--------
-[quo, rem] : ndarrays
-    Of coefficient series representing the quotient and remainder.
-
-See Also
---------
-polyadd, polysub, polymulx, polymul, polypow
-
-Examples
---------
->>> from numpy.polynomial import polynomial as P
->>> c1 = (1, 2, 3)
->>> c2 = (3, 2, 1)
->>> P.polydiv(c1, c2)
-(array([3.]), array([-8., -4.]))
->>> P.polydiv(c2, c1)
-(array([ 0.33333333]), array([ 2.66666667,  1.33333333]))  # may vary
-
-**Paramètres :**
-
-- `c1`
-- `c2`
-
-##### polypow
-
-Raise a polynomial to a power.
-
-Returns the polynomial `c` raised to the power `pow`. The argument
-`c` is a sequence of coefficients ordered from low to high. i.e.,
-[1,2,3] is the series  ``1 + 2*x + 3*x**2.``
-
-Parameters
-----------
-c : array_like
-    1-D array of array of series coefficients ordered from low to
-    high degree.
-pow : integer
-    Power to which the series will be raised
-maxpower : integer, optional
-    Maximum power allowed. This is mainly to limit growth of the series
-    to unmanageable size. Default is 16
-
-Returns
--------
-coef : ndarray
-    Power series of power.
-
-See Also
---------
-polyadd, polysub, polymulx, polymul, polydiv
-
-Examples
---------
->>> from numpy.polynomial import polynomial as P
->>> P.polypow([1, 2, 3], 2)
-array([ 1., 4., 10., 12., 9.])
-
-**Paramètres :**
-
-- `c`
-- `pow`
-- `maxpower`
-
-##### polyder
-
-Differentiate a polynomial.
-
-Returns the polynomial coefficients `c` differentiated `m` times along
-`axis`.  At each iteration the result is multiplied by `scl` (the
-scaling factor is for use in a linear change of variable).  The
-argument `c` is an array of coefficients from low to high degree along
-each axis, e.g., [1,2,3] represents the polynomial ``1 + 2*x + 3*x**2``
-while [[1,2],[1,2]] represents ``1 + 1*x + 2*y + 2*x*y`` if axis=0 is
-``x`` and axis=1 is ``y``.
-
-Parameters
-----------
-c : array_like
-    Array of polynomial coefficients. If c is multidimensional the
-    different axis correspond to different variables with the degree
-    in each axis given by the corresponding index.
-m : int, optional
-    Number of derivatives taken, must be non-negative. (Default: 1)
-scl : scalar, optional
-    Each differentiation is multiplied by `scl`.  The end result is
-    multiplication by ``scl**m``.  This is for use in a linear change
-    of variable. (Default: 1)
-axis : int, optional
-    Axis over which the derivative is taken. (Default: 0).
-
-Returns
--------
-der : ndarray
-    Polynomial coefficients of the derivative.
-
-See Also
---------
-polyint
-
-Examples
---------
->>> from numpy.polynomial import polynomial as P
->>> c = (1, 2, 3, 4)
->>> P.polyder(c)  # (d/dx)(c)
-array([  2.,   6.,  12.])
->>> P.polyder(c, 3)  # (d**3/dx**3)(c)
-array([24.])
->>> P.polyder(c, scl=-1)  # (d/d(-x))(c)
-array([ -2.,  -6., -12.])
->>> P.polyder(c, 2, -1)  # (d**2/d(-x)**2)(c)
-array([  6.,  24.])
-
-**Paramètres :**
-
-- `c`
-- `m`
-- `scl`
-- `axis`
-
-##### polyint
-
-Integrate a polynomial.
-
-Returns the polynomial coefficients `c` integrated `m` times from
-`lbnd` along `axis`.  At each iteration the resulting series is
-**multiplied** by `scl` and an integration constant, `k`, is added.
-The scaling factor is for use in a linear change of variable.  ("Buyer
-beware": note that, depending on what one is doing, one may want `scl`
-to be the reciprocal of what one might expect; for more information,
-see the Notes section below.) The argument `c` is an array of
-coefficients, from low to high degree along each axis, e.g., [1,2,3]
-represents the polynomial ``1 + 2*x + 3*x**2`` while [[1,2],[1,2]]
-represents ``1 + 1*x + 2*y + 2*x*y`` if axis=0 is ``x`` and axis=1 is
-``y``.
-
-Parameters
-----------
-c : array_like
-    1-D array of polynomial coefficients, ordered from low to high.
-m : int, optional
-    Order of integration, must be positive. (Default: 1)
-k : {[], list, scalar}, optional
-    Integration constant(s).  The value of the first integral at zero
-    is the first value in the list, the value of the second integral
-    at zero is the second value, etc.  If ``k == []`` (the default),
-    all constants are set to zero.  If ``m == 1``, a single scalar can
-    be given instead of a list.
-lbnd : scalar, optional
-    The lower bound of the integral. (Default: 0)
-scl : scalar, optional
-    Following each integration the result is *multiplied* by `scl`
-    before the integration constant is added. (Default: 1)
-axis : int, optional
-    Axis over which the integral is taken. (Default: 0).
-
-Returns
--------
-S : ndarray
-    Coefficient array of the integral.
-
-Raises
-------
-ValueError
-    If ``m < 1``, ``len(k) > m``, ``np.ndim(lbnd) != 0``, or
-    ``np.ndim(scl) != 0``.
-
-See Also
---------
-polyder
-
-Notes
------
-Note that the result of each integration is *multiplied* by `scl`.  Why
-is this important to note?  Say one is making a linear change of
-variable :math:`u = ax + b` in an integral relative to `x`. Then
-:math:`dx = du/a`, so one will need to set `scl` equal to
-:math:`1/a` - perhaps not what one would have first thought.
-
-Examples
---------
->>> from numpy.polynomial import polynomial as P
->>> c = (1, 2, 3)
->>> P.polyint(c)  # should return array([0, 1, 1, 1])
-array([0.,  1.,  1.,  1.])
->>> P.polyint(c, 3)  # should return array([0, 0, 0, 1/6, 1/12, 1/20])
- array([ 0.        ,  0.        ,  0.        ,  0.16666667,  0.08333333, # may vary
-         0.05      ])
->>> P.polyint(c, k=3)  # should return array([3, 1, 1, 1])
-array([3.,  1.,  1.,  1.])
->>> P.polyint(c,lbnd=-2)  # should return array([6, 1, 1, 1])
-array([6.,  1.,  1.,  1.])
->>> P.polyint(c,scl=-2)  # should return array([0, -2, -2, -2])
-array([ 0., -2., -2., -2.])
-
-**Paramètres :**
-
-- `c`
-- `m`
-- `k`
-- `lbnd`
-- `scl`
-- `axis`
-
-##### polyval
-
-Evaluate a polynomial at points x.
-
-If `c` is of length ``n + 1``, this function returns the value
-
-.. math:: p(x) = c_0 + c_1 * x + ... + c_n * x^n
-
-The parameter `x` is converted to an array only if it is a tuple or a
-list, otherwise it is treated as a scalar. In either case, either `x`
-or its elements must support multiplication and addition both with
-themselves and with the elements of `c`.
-
-If `c` is a 1-D array, then ``p(x)`` will have the same shape as `x`.  If
-`c` is multidimensional, then the shape of the result depends on the
-value of `tensor`. If `tensor` is true the shape will be c.shape[1:] +
-x.shape. If `tensor` is false the shape will be c.shape[1:]. Note that
-scalars have shape (,).
-
-Trailing zeros in the coefficients will be used in the evaluation, so
-they should be avoided if efficiency is a concern.
-
-Parameters
-----------
-x : array_like, compatible object
-    If `x` is a list or tuple, it is converted to an ndarray, otherwise
-    it is left unchanged and treated as a scalar. In either case, `x`
-    or its elements must support addition and multiplication with
-    with themselves and with the elements of `c`.
-c : array_like
-    Array of coefficients ordered so that the coefficients for terms of
-    degree n are contained in c[n]. If `c` is multidimensional the
-    remaining indices enumerate multiple polynomials. In the two
-    dimensional case the coefficients may be thought of as stored in
-    the columns of `c`.
-tensor : boolean, optional
-    If True, the shape of the coefficient array is extended with ones
-    on the right, one for each dimension of `x`. Scalars have dimension 0
-    for this action. The result is that every column of coefficients in
-    `c` is evaluated for every element of `x`. If False, `x` is broadcast
-    over the columns of `c` for the evaluation.  This keyword is useful
-    when `c` is multidimensional. The default value is True.
-
-Returns
--------
-values : ndarray, compatible object
-    The shape of the returned array is described above.
-
-See Also
---------
-polyval2d, polygrid2d, polyval3d, polygrid3d
-
-Notes
------
-The evaluation uses Horner's method.
-
-Examples
---------
->>> import numpy as np
->>> from numpy.polynomial.polynomial import polyval
->>> polyval(1, [1,2,3])
-6.0
->>> a = np.arange(4).reshape(2,2)
->>> a
-array([[0, 1],
-       [2, 3]])
->>> polyval(a, [1, 2, 3])
-array([[ 1.,   6.],
-       [17.,  34.]])
->>> coef = np.arange(4).reshape(2, 2)  # multidimensional coefficients
->>> coef
-array([[0, 1],
-       [2, 3]])
->>> polyval([1, 2], coef, tensor=True)
-array([[2.,  4.],
-       [4.,  7.]])
->>> polyval([1, 2], coef, tensor=False)
-array([2.,  7.])
-
-**Paramètres :**
-
-- `x`
-- `c`
-- `tensor`
-
-##### polyvalfromroots
-
-Evaluate a polynomial specified by its roots at points x.
-
-If `r` is of length ``N``, this function returns the value
-
-.. math:: p(x) = \prod_{n=1}^{N} (x - r_n)
-
-The parameter `x` is converted to an array only if it is a tuple or a
-list, otherwise it is treated as a scalar. In either case, either `x`
-or its elements must support multiplication and addition both with
-themselves and with the elements of `r`.
-
-If `r` is a 1-D array, then ``p(x)`` will have the same shape as `x`.  If `r`
-is multidimensional, then the shape of the result depends on the value of
-`tensor`. If `tensor` is ``True`` the shape will be r.shape[1:] + x.shape;
-that is, each polynomial is evaluated at every value of `x`. If `tensor` is
-``False``, the shape will be r.shape[1:]; that is, each polynomial is
-evaluated only for the corresponding broadcast value of `x`. Note that
-scalars have shape (,).
-
-Parameters
-----------
-x : array_like, compatible object
-    If `x` is a list or tuple, it is converted to an ndarray, otherwise
-    it is left unchanged and treated as a scalar. In either case, `x`
-    or its elements must support addition and multiplication with
-    with themselves and with the elements of `r`.
-r : array_like
-    Array of roots. If `r` is multidimensional the first index is the
-    root index, while the remaining indices enumerate multiple
-    polynomials. For instance, in the two dimensional case the roots
-    of each polynomial may be thought of as stored in the columns of `r`.
-tensor : boolean, optional
-    If True, the shape of the roots array is extended with ones on the
-    right, one for each dimension of `x`. Scalars have dimension 0 for this
-    action. The result is that every column of coefficients in `r` is
-    evaluated for every element of `x`. If False, `x` is broadcast over the
-    columns of `r` for the evaluation.  This keyword is useful when `r` is
-    multidimensional. The default value is True.
-
-Returns
--------
-values : ndarray, compatible object
-    The shape of the returned array is described above.
-
-See Also
---------
-polyroots, polyfromroots, polyval
-
-Examples
---------
->>> from numpy.polynomial.polynomial import polyvalfromroots
->>> polyvalfromroots(1, [1, 2, 3])
-0.0
->>> a = np.arange(4).reshape(2, 2)
->>> a
-array([[0, 1],
-       [2, 3]])
->>> polyvalfromroots(a, [-1, 0, 1])
-array([[-0.,   0.],
-       [ 6.,  24.]])
->>> r = np.arange(-2, 2).reshape(2,2)  # multidimensional coefficients
->>> r # each column of r defines one polynomial
-array([[-2, -1],
-       [ 0,  1]])
->>> b = [-2, 1]
->>> polyvalfromroots(b, r, tensor=True)
-array([[-0.,  3.],
-       [ 3., 0.]])
->>> polyvalfromroots(b, r, tensor=False)
-array([-0.,  0.])
-
-**Paramètres :**
-
-- `x`
-- `r`
-- `tensor`
-
-##### polyval2d
-
-Evaluate a 2-D polynomial at points (x, y).
-
-This function returns the value
-
-.. math:: p(x,y) = \sum_{i,j} c_{i,j} * x^i * y^j
-
-The parameters `x` and `y` are converted to arrays only if they are
-tuples or a lists, otherwise they are treated as a scalars and they
-must have the same shape after conversion. In either case, either `x`
-and `y` or their elements must support multiplication and addition both
-with themselves and with the elements of `c`.
-
-If `c` has fewer than two dimensions, ones are implicitly appended to
-its shape to make it 2-D. The shape of the result will be c.shape[2:] +
-x.shape.
-
-Parameters
-----------
-x, y : array_like, compatible objects
-    The two dimensional series is evaluated at the points ``(x, y)``,
-    where `x` and `y` must have the same shape. If `x` or `y` is a list
-    or tuple, it is first converted to an ndarray, otherwise it is left
-    unchanged and, if it isn't an ndarray, it is treated as a scalar.
-c : array_like
-    Array of coefficients ordered so that the coefficient of the term
-    of multi-degree i,j is contained in ``c[i,j]``. If `c` has
-    dimension greater than two the remaining indices enumerate multiple
-    sets of coefficients.
-
-Returns
--------
-values : ndarray, compatible object
-    The values of the two dimensional polynomial at points formed with
-    pairs of corresponding values from `x` and `y`.
-
-See Also
---------
-polyval, polygrid2d, polyval3d, polygrid3d
-
-Examples
---------
->>> from numpy.polynomial import polynomial as P
->>> c = ((1, 2, 3), (4, 5, 6))
->>> P.polyval2d(1, 1, c)
-21.0
-
-**Paramètres :**
-
-- `x`
-- `y`
-- `c`
-
-##### polygrid2d
-
-Evaluate a 2-D polynomial on the Cartesian product of x and y.
-
-This function returns the values:
-
-.. math:: p(a,b) = \sum_{i,j} c_{i,j} * a^i * b^j
-
-where the points ``(a, b)`` consist of all pairs formed by taking
-`a` from `x` and `b` from `y`. The resulting points form a grid with
-`x` in the first dimension and `y` in the second.
-
-The parameters `x` and `y` are converted to arrays only if they are
-tuples or a lists, otherwise they are treated as a scalars. In either
-case, either `x` and `y` or their elements must support multiplication
-and addition both with themselves and with the elements of `c`.
-
-If `c` has fewer than two dimensions, ones are implicitly appended to
-its shape to make it 2-D. The shape of the result will be c.shape[2:] +
-x.shape + y.shape.
-
-Parameters
-----------
-x, y : array_like, compatible objects
-    The two dimensional series is evaluated at the points in the
-    Cartesian product of `x` and `y`.  If `x` or `y` is a list or
-    tuple, it is first converted to an ndarray, otherwise it is left
-    unchanged and, if it isn't an ndarray, it is treated as a scalar.
-c : array_like
-    Array of coefficients ordered so that the coefficients for terms of
-    degree i,j are contained in ``c[i,j]``. If `c` has dimension
-    greater than two the remaining indices enumerate multiple sets of
-    coefficients.
-
-Returns
--------
-values : ndarray, compatible object
-    The values of the two dimensional polynomial at points in the Cartesian
-    product of `x` and `y`.
-
-See Also
---------
-polyval, polyval2d, polyval3d, polygrid3d
-
-Examples
---------
->>> from numpy.polynomial import polynomial as P
->>> c = ((1, 2, 3), (4, 5, 6))
->>> P.polygrid2d([0, 1], [0, 1], c)
-array([[ 1.,  6.],
-       [ 5., 21.]])
-
-**Paramètres :**
-
-- `x`
-- `y`
-- `c`
-
-##### polyval3d
-
-Evaluate a 3-D polynomial at points (x, y, z).
-
-This function returns the values:
-
-.. math:: p(x,y,z) = \sum_{i,j,k} c_{i,j,k} * x^i * y^j * z^k
-
-The parameters `x`, `y`, and `z` are converted to arrays only if
-they are tuples or a lists, otherwise they are treated as a scalars and
-they must have the same shape after conversion. In either case, either
-`x`, `y`, and `z` or their elements must support multiplication and
-addition both with themselves and with the elements of `c`.
-
-If `c` has fewer than 3 dimensions, ones are implicitly appended to its
-shape to make it 3-D. The shape of the result will be c.shape[3:] +
-x.shape.
-
-Parameters
-----------
-x, y, z : array_like, compatible object
-    The three dimensional series is evaluated at the points
-    ``(x, y, z)``, where `x`, `y`, and `z` must have the same shape.  If
-    any of `x`, `y`, or `z` is a list or tuple, it is first converted
-    to an ndarray, otherwise it is left unchanged and if it isn't an
-    ndarray it is  treated as a scalar.
-c : array_like
-    Array of coefficients ordered so that the coefficient of the term of
-    multi-degree i,j,k is contained in ``c[i,j,k]``. If `c` has dimension
-    greater than 3 the remaining indices enumerate multiple sets of
-    coefficients.
-
-Returns
--------
-values : ndarray, compatible object
-    The values of the multidimensional polynomial on points formed with
-    triples of corresponding values from `x`, `y`, and `z`.
-
-See Also
---------
-polyval, polyval2d, polygrid2d, polygrid3d
-
-Examples
---------
->>> from numpy.polynomial import polynomial as P
->>> c = ((1, 2, 3), (4, 5, 6), (7, 8, 9))
->>> P.polyval3d(1, 1, 1, c)
-45.0
-
-**Paramètres :**
-
-- `x`
-- `y`
-- `z`
-- `c`
-
-##### polygrid3d
-
-Evaluate a 3-D polynomial on the Cartesian product of x, y and z.
-
-This function returns the values:
-
-.. math:: p(a,b,c) = \sum_{i,j,k} c_{i,j,k} * a^i * b^j * c^k
-
-where the points ``(a, b, c)`` consist of all triples formed by taking
-`a` from `x`, `b` from `y`, and `c` from `z`. The resulting points form
-a grid with `x` in the first dimension, `y` in the second, and `z` in
-the third.
-
-The parameters `x`, `y`, and `z` are converted to arrays only if they
-are tuples or a lists, otherwise they are treated as a scalars. In
-either case, either `x`, `y`, and `z` or their elements must support
-multiplication and addition both with themselves and with the elements
-of `c`.
-
-If `c` has fewer than three dimensions, ones are implicitly appended to
-its shape to make it 3-D. The shape of the result will be c.shape[3:] +
-x.shape + y.shape + z.shape.
-
-Parameters
-----------
-x, y, z : array_like, compatible objects
-    The three dimensional series is evaluated at the points in the
-    Cartesian product of `x`, `y`, and `z`.  If `x`, `y`, or `z` is a
-    list or tuple, it is first converted to an ndarray, otherwise it is
-    left unchanged and, if it isn't an ndarray, it is treated as a
-    scalar.
-c : array_like
-    Array of coefficients ordered so that the coefficients for terms of
-    degree i,j are contained in ``c[i,j]``. If `c` has dimension
-    greater than two the remaining indices enumerate multiple sets of
-    coefficients.
-
-Returns
--------
-values : ndarray, compatible object
-    The values of the two dimensional polynomial at points in the Cartesian
-    product of `x` and `y`.
-
-See Also
---------
-polyval, polyval2d, polygrid2d, polyval3d
-
-Examples
---------
->>> from numpy.polynomial import polynomial as P
->>> c = ((1, 2, 3), (4, 5, 6), (7, 8, 9))
->>> P.polygrid3d([0, 1], [0, 1], [0, 1], c)
-array([[ 1., 13.],
-       [ 6., 51.]])
-
-**Paramètres :**
-
-- `x`
-- `y`
-- `z`
-- `c`
-
-##### polyvander
-
-Vandermonde matrix of given degree.
-
-Returns the Vandermonde matrix of degree `deg` and sample points
-`x`. The Vandermonde matrix is defined by
-
-.. math:: V[..., i] = x^i,
-
-where ``0 <= i <= deg``. The leading indices of `V` index the elements of
-`x` and the last index is the power of `x`.
-
-If `c` is a 1-D array of coefficients of length ``n + 1`` and `V` is the
-matrix ``V = polyvander(x, n)``, then ``np.dot(V, c)`` and
-``polyval(x, c)`` are the same up to roundoff. This equivalence is
-useful both for least squares fitting and for the evaluation of a large
-number of polynomials of the same degree and sample points.
-
-Parameters
-----------
-x : array_like
-    Array of points. The dtype is converted to float64 or complex128
-    depending on whether any of the elements are complex. If `x` is
-    scalar it is converted to a 1-D array.
-deg : int
-    Degree of the resulting matrix.
-
-Returns
--------
-vander : ndarray.
-    The Vandermonde matrix. The shape of the returned matrix is
-    ``x.shape + (deg + 1,)``, where the last index is the power of `x`.
-    The dtype will be the same as the converted `x`.
-
-See Also
---------
-polyvander2d, polyvander3d
-
-Examples
---------
-The Vandermonde matrix of degree ``deg = 5`` and sample points
-``x = [-1, 2, 3]`` contains the element-wise powers of `x`
-from 0 to 5 as its columns.
-
->>> from numpy.polynomial import polynomial as P
->>> x, deg = [-1, 2, 3], 5
->>> P.polyvander(x=x, deg=deg)
-array([[  1.,  -1.,   1.,  -1.,   1.,  -1.],
-       [  1.,   2.,   4.,   8.,  16.,  32.],
-       [  1.,   3.,   9.,  27.,  81., 243.]])
-
-**Paramètres :**
-
-- `x`
-- `deg`
-
-##### polyvander2d
-
-Pseudo-Vandermonde matrix of given degrees.
-
-Returns the pseudo-Vandermonde matrix of degrees `deg` and sample
-points ``(x, y)``. The pseudo-Vandermonde matrix is defined by
-
-.. math:: V[..., (deg[1] + 1)*i + j] = x^i * y^j,
-
-where ``0 <= i <= deg[0]`` and ``0 <= j <= deg[1]``. The leading indices of
-`V` index the points ``(x, y)`` and the last index encodes the powers of
-`x` and `y`.
-
-If ``V = polyvander2d(x, y, [xdeg, ydeg])``, then the columns of `V`
-correspond to the elements of a 2-D coefficient array `c` of shape
-(xdeg + 1, ydeg + 1) in the order
-
-.. math:: c_{00}, c_{01}, c_{02} ... , c_{10}, c_{11}, c_{12} ...
-
-and ``np.dot(V, c.flat)`` and ``polyval2d(x, y, c)`` will be the same
-up to roundoff. This equivalence is useful both for least squares
-fitting and for the evaluation of a large number of 2-D polynomials
-of the same degrees and sample points.
-
-Parameters
-----------
-x, y : array_like
-    Arrays of point coordinates, all of the same shape. The dtypes
-    will be converted to either float64 or complex128 depending on
-    whether any of the elements are complex. Scalars are converted to
-    1-D arrays.
-deg : list of ints
-    List of maximum degrees of the form [x_deg, y_deg].
-
-Returns
--------
-vander2d : ndarray
-    The shape of the returned matrix is ``x.shape + (order,)``, where
-    :math:`order = (deg[0]+1)*(deg([1]+1)`.  The dtype will be the same
-    as the converted `x` and `y`.
-
-See Also
---------
-polyvander, polyvander3d, polyval2d, polyval3d
-
-Examples
---------
->>> import numpy as np
-
-The 2-D pseudo-Vandermonde matrix of degree ``[1, 2]`` and sample
-points ``x = [-1, 2]`` and ``y = [1, 3]`` is as follows:
-
->>> from numpy.polynomial import polynomial as P
->>> x = np.array([-1, 2])
->>> y = np.array([1, 3])
->>> m, n = 1, 2
->>> deg = np.array([m, n])
->>> V = P.polyvander2d(x=x, y=y, deg=deg)
->>> V
-array([[ 1.,  1.,  1., -1., -1., -1.],
-       [ 1.,  3.,  9.,  2.,  6., 18.]])
-
-We can verify the columns for any ``0 <= i <= m`` and ``0 <= j <= n``:
-
->>> i, j = 0, 1
->>> V[:, (deg[1]+1)*i + j] == x**i * y**j
-array([ True,  True])
-
-The (1D) Vandermonde matrix of sample points ``x`` and degree ``m`` is a
-special case of the (2D) pseudo-Vandermonde matrix with ``y`` points all
-zero and degree ``[m, 0]``.
-
->>> P.polyvander2d(x=x, y=0*x, deg=(m, 0)) == P.polyvander(x=x, deg=m)
-array([[ True,  True],
-       [ True,  True]])
-
-**Paramètres :**
-
-- `x`
-- `y`
-- `deg`
-
-##### polyvander3d
-
-Pseudo-Vandermonde matrix of given degrees.
-
-Returns the pseudo-Vandermonde matrix of degrees `deg` and sample
-points ``(x, y, z)``. If `l`, `m`, `n` are the given degrees in `x`, `y`, `z`,
-then The pseudo-Vandermonde matrix is defined by
-
-.. math:: V[..., (m+1)(n+1)i + (n+1)j + k] = x^i * y^j * z^k,
-
-where ``0 <= i <= l``, ``0 <= j <= m``, and ``0 <= j <= n``.  The leading
-indices of `V` index the points ``(x, y, z)`` and the last index encodes
-the powers of `x`, `y`, and `z`.
-
-If ``V = polyvander3d(x, y, z, [xdeg, ydeg, zdeg])``, then the columns
-of `V` correspond to the elements of a 3-D coefficient array `c` of
-shape (xdeg + 1, ydeg + 1, zdeg + 1) in the order
-
-.. math:: c_{000}, c_{001}, c_{002},... , c_{010}, c_{011}, c_{012},...
-
-and  ``np.dot(V, c.flat)`` and ``polyval3d(x, y, z, c)`` will be the
-same up to roundoff. This equivalence is useful both for least squares
-fitting and for the evaluation of a large number of 3-D polynomials
-of the same degrees and sample points.
-
-Parameters
-----------
-x, y, z : array_like
-    Arrays of point coordinates, all of the same shape. The dtypes will
-    be converted to either float64 or complex128 depending on whether
-    any of the elements are complex. Scalars are converted to 1-D
-    arrays.
-deg : list of ints
-    List of maximum degrees of the form [x_deg, y_deg, z_deg].
-
-Returns
--------
-vander3d : ndarray
-    The shape of the returned matrix is ``x.shape + (order,)``, where
-    :math:`order = (deg[0]+1)*(deg([1]+1)*(deg[2]+1)`.  The dtype will
-    be the same as the converted `x`, `y`, and `z`.
-
-See Also
---------
-polyvander, polyvander3d, polyval2d, polyval3d
-
-Examples
---------
->>> import numpy as np
->>> from numpy.polynomial import polynomial as P
->>> x = np.asarray([-1, 2, 1])
->>> y = np.asarray([1, -2, -3])
->>> z = np.asarray([2, 2, 5])
->>> l, m, n = [2, 2, 1]
->>> deg = [l, m, n]
->>> V = P.polyvander3d(x=x, y=y, z=z, deg=deg)
->>> V
-array([[  1.,   2.,   1.,   2.,   1.,   2.,  -1.,  -2.,  -1.,
-         -2.,  -1.,  -2.,   1.,   2.,   1.,   2.,   1.,   2.],
-       [  1.,   2.,  -2.,  -4.,   4.,   8.,   2.,   4.,  -4.,
-         -8.,   8.,  16.,   4.,   8.,  -8., -16.,  16.,  32.],
-       [  1.,   5.,  -3., -15.,   9.,  45.,   1.,   5.,  -3.,
-        -15.,   9.,  45.,   1.,   5.,  -3., -15.,   9.,  45.]])
-
-We can verify the columns for any ``0 <= i <= l``, ``0 <= j <= m``,
-and ``0 <= k <= n``
-
->>> i, j, k = 2, 1, 0
->>> V[:, (m+1)*(n+1)*i + (n+1)*j + k] == x**i * y**j * z**k
-array([ True,  True,  True])
-
-**Paramètres :**
-
-- `x`
-- `y`
-- `z`
-- `deg`
-
-##### polyfit
-
-Least-squares fit of a polynomial to data.
-
-Return the coefficients of a polynomial of degree `deg` that is the
-least squares fit to the data values `y` given at points `x`. If `y` is
-1-D the returned coefficients will also be 1-D. If `y` is 2-D multiple
-fits are done, one for each column of `y`, and the resulting
-coefficients are stored in the corresponding columns of a 2-D return.
-The fitted polynomial(s) are in the form
-
-.. math::  p(x) = c_0 + c_1 * x + ... + c_n * x^n,
-
-where `n` is `deg`.
-
-Parameters
-----------
-x : array_like, shape (`M`,)
-    x-coordinates of the `M` sample (data) points ``(x[i], y[i])``.
-y : array_like, shape (`M`,) or (`M`, `K`)
-    y-coordinates of the sample points.  Several sets of sample points
-    sharing the same x-coordinates can be (independently) fit with one
-    call to `polyfit` by passing in for `y` a 2-D array that contains
-    one data set per column.
-deg : int or 1-D array_like
-    Degree(s) of the fitting polynomials. If `deg` is a single integer
-    all terms up to and including the `deg`'th term are included in the
-    fit. For NumPy versions >= 1.11.0 a list of integers specifying the
-    degrees of the terms to include may be used instead.
-rcond : float, optional
-    Relative condition number of the fit.  Singular values smaller
-    than `rcond`, relative to the largest singular value, will be
-    ignored.  The default value is ``len(x)*eps``, where `eps` is the
-    relative precision of the platform's float type, about 2e-16 in
-    most cases.
-full : bool, optional
-    Switch determining the nature of the return value.  When ``False``
-    (the default) just the coefficients are returned; when ``True``,
-    diagnostic information from the singular value decomposition (used
-    to solve the fit's matrix equation) is also returned.
-w : array_like, shape (`M`,), optional
-    Weights. If not None, the weight ``w[i]`` applies to the unsquared
-    residual ``y[i] - y_hat[i]`` at ``x[i]``. Ideally the weights are
-    chosen so that the errors of the products ``w[i]*y[i]`` all have the
-    same variance.  When using inverse-variance weighting, use
-    ``w[i] = 1/sigma(y[i])``.  The default value is None.
-
-Returns
--------
-coef : ndarray, shape (`deg` + 1,) or (`deg` + 1, `K`)
-    Polynomial coefficients ordered from low to high.  If `y` was 2-D,
-    the coefficients in column `k` of `coef` represent the polynomial
-    fit to the data in `y`'s `k`-th column.
-
-[residuals, rank, singular_values, rcond] : list
-    These values are only returned if ``full == True``
-
-    - residuals -- sum of squared residuals of the least squares fit
-    - rank -- the numerical rank of the scaled Vandermonde matrix
-    - singular_values -- singular values of the scaled Vandermonde matrix
-    - rcond -- value of `rcond`.
-
-    For more details, see `numpy.linalg.lstsq`.
-
-Raises
-------
-RankWarning
-    Raised if the matrix in the least-squares fit is rank deficient.
-    The warning is only raised if ``full == False``.  The warnings can
-    be turned off by:
-
-    >>> import warnings
-    >>> warnings.simplefilter('ignore', np.exceptions.RankWarning)
-
-See Also
---------
-numpy.polynomial.chebyshev.chebfit
-numpy.polynomial.legendre.legfit
-numpy.polynomial.laguerre.lagfit
-numpy.polynomial.hermite.hermfit
-numpy.polynomial.hermite_e.hermefit
-polyval : Evaluates a polynomial.
-polyvander : Vandermonde matrix for powers.
-numpy.linalg.lstsq : Computes a least-squares fit from the matrix.
-scipy.interpolate.UnivariateSpline : Computes spline fits.
-
-Notes
------
-The solution is the coefficients of the polynomial `p` that minimizes
-the sum of the weighted squared errors
-
-.. math:: E = \sum_j w_j^2 * |y_j - p(x_j)|^2,
-
-where the :math:`w_j` are the weights. This problem is solved by
-setting up the (typically) over-determined matrix equation:
-
-.. math:: V(x) * c = w * y,
-
-where `V` is the weighted pseudo Vandermonde matrix of `x`, `c` are the
-coefficients to be solved for, `w` are the weights, and `y` are the
-observed values.  This equation is then solved using the singular value
-decomposition of `V`.
-
-If some of the singular values of `V` are so small that they are
-neglected (and `full` == ``False``), a `~exceptions.RankWarning` will be
-raised.  This means that the coefficient values may be poorly determined.
-Fitting to a lower order polynomial will usually get rid of the warning
-(but may not be what you want, of course; if you have independent
-reason(s) for choosing the degree which isn't working, you may have to:
-a) reconsider those reasons, and/or b) reconsider the quality of your
-data).  The `rcond` parameter can also be set to a value smaller than
-its default, but the resulting fit may be spurious and have large
-contributions from roundoff error.
-
-Polynomial fits using double precision tend to "fail" at about
-(polynomial) degree 20. Fits using Chebyshev or Legendre series are
-generally better conditioned, but much can still depend on the
-distribution of the sample points and the smoothness of the data.  If
-the quality of the fit is inadequate, splines may be a good
-alternative.
-
-Examples
---------
->>> import numpy as np
->>> from numpy.polynomial import polynomial as P
->>> x = np.linspace(-1,1,51)  # x "data": [-1, -0.96, ..., 0.96, 1]
->>> rng = np.random.default_rng()
->>> err = rng.normal(size=len(x))
->>> y = x**3 - x + err  # x^3 - x + Gaussian noise
->>> c, stats = P.polyfit(x,y,3,full=True)
->>> c # c[0], c[1] approx. -1, c[2] should be approx. 0, c[3] approx. 1
-array([ 0.23111996, -1.02785049, -0.2241444 ,  1.08405657]) # may vary
->>> stats # note the large SSR, explaining the rather poor results
-[array([48.312088]),                                        # may vary
- 4,
- array([1.38446749, 1.32119158, 0.50443316, 0.28853036]),
- 1.1324274851176597e-14]
-
-Same thing without the added noise
-
->>> y = x**3 - x
->>> c, stats = P.polyfit(x,y,3,full=True)
->>> c # c[0], c[1] ~= -1, c[2] should be "very close to 0", c[3] ~= 1
-array([-6.73496154e-17, -1.00000000e+00,  0.00000000e+00,  1.00000000e+00])
->>> stats # note the minuscule SSR
-[array([8.79579319e-31]),
- np.int32(4),
- array([1.38446749, 1.32119158, 0.50443316, 0.28853036]),
- 1.1324274851176597e-14]
-
-**Paramètres :**
-
-- `x`
-- `y`
-- `deg`
-- `rcond`
-- `full`
-- `w`
-
-##### polycompanion
-
-Return the companion matrix of c.
-
-The companion matrix for power series cannot be made symmetric by
-scaling the basis, so this function differs from those for the
-orthogonal polynomials.
-
-Parameters
-----------
-c : array_like
-    1-D array of polynomial coefficients ordered from low to high
-    degree.
-
-Returns
--------
-mat : ndarray
-    Companion matrix of dimensions (deg, deg).
-
-Examples
---------
->>> from numpy.polynomial import polynomial as P
->>> c = (1, 2, 3)
->>> P.polycompanion(c)
-array([[ 0.        , -0.33333333],
-       [ 1.        , -0.66666667]])
-
-**Paramètres :**
-
-- `c`
-
-##### polyroots
-
-Compute the roots of a polynomial.
-
-Return the roots (a.k.a. "zeros") of the polynomial
-
-.. math:: p(x) = \sum_i c[i] * x^i.
-
-Parameters
-----------
-c : 1-D array_like
-    1-D array of polynomial coefficients.
-
-Returns
--------
-out : ndarray
-    Array of the roots of the polynomial. If all the roots are real,
-    then `out` is also real, otherwise it is complex.
-
-See Also
---------
-numpy.polynomial.chebyshev.chebroots
-numpy.polynomial.legendre.legroots
-numpy.polynomial.laguerre.lagroots
-numpy.polynomial.hermite.hermroots
-numpy.polynomial.hermite_e.hermeroots
-
-Notes
------
-The root estimates are obtained as the eigenvalues of the companion
-matrix, Roots far from the origin of the complex plane may have large
-errors due to the numerical instability of the power series for such
-values. Roots with multiplicity greater than 1 will also show larger
-errors as the value of the series near such points is relatively
-insensitive to errors in the roots. Isolated roots near the origin can
-be improved by a few iterations of Newton's method.
-
-Examples
---------
->>> import numpy.polynomial.polynomial as poly
->>> poly.polyroots(poly.polyfromroots((-1,0,1)))
-array([-1.,  0.,  1.])
->>> poly.polyroots(poly.polyfromroots((-1,0,1))).dtype
-dtype('float64')
->>> j = complex(0,1)
->>> poly.polyroots(poly.polyfromroots((-j,0,j)))
-array([  0.00000000e+00+0.j,   0.00000000e+00+1.j,   2.77555756e-17-1.j])  # may vary
-
-**Paramètres :**
-
-- `c`
-
-##### _str_term_unicode
-
-**Paramètres :**
-
-- `cls`
-- `i`
-- `arg_str`
-
-##### _str_term_ascii
-
-**Paramètres :**
-
-- `i`
-- `arg_str`
-
-##### _repr_latex_term
-
-**Paramètres :**
-
-- `i`
-- `arg_str`
-- `needs_parens`
 
 ---
 
@@ -378062,6 +378062,186 @@ Tests for laguerre module.
 
 ---
 
+### test_hermite
+
+Tests for hermite module.
+
+#### Classes
+
+##### TestConstants
+
+**Méthodes :**
+
+- `test_hermdomain()`
+- `test_hermzero()`
+- `test_hermone()`
+- `test_hermx()`
+
+##### TestArithmetic
+
+**Méthodes :**
+
+- `test_hermadd()`
+- `test_hermsub()`
+- `test_hermmulx()`
+- `test_hermmul()`
+- `test_hermdiv()`
+- `test_hermpow()`
+
+##### TestEvaluation
+
+**Méthodes :**
+
+- `test_hermval()`
+- `test_hermval2d()`
+- `test_hermval3d()`
+- `test_hermgrid2d()`
+- `test_hermgrid3d()`
+
+##### TestIntegral
+
+**Méthodes :**
+
+- `test_hermint()`
+- `test_hermint_axis()`
+
+##### TestDerivative
+
+**Méthodes :**
+
+- `test_hermder()`
+- `test_hermder_axis()`
+
+##### TestVander
+
+**Méthodes :**
+
+- `test_hermvander()`
+- `test_hermvander2d()`
+- `test_hermvander3d()`
+
+##### TestFitting
+
+**Méthodes :**
+
+- `test_hermfit()`
+
+##### TestCompanion
+
+**Méthodes :**
+
+- `test_raises()`
+- `test_dimensions()`
+- `test_linear_root()`
+
+##### TestGauss
+
+**Méthodes :**
+
+- `test_100()`
+
+##### TestMisc
+
+**Méthodes :**
+
+- `test_hermfromroots()`
+- `test_hermroots()`
+- `test_hermtrim()`
+- `test_hermline()`
+- `test_herm2poly()`
+- `test_poly2herm()`
+- `test_weight()`
+
+#### Fonctions
+
+##### trim
+
+**Paramètres :**
+
+- `x`
+
+##### test_hermdomain
+
+##### test_hermzero
+
+##### test_hermone
+
+##### test_hermx
+
+##### test_hermadd
+
+##### test_hermsub
+
+##### test_hermmulx
+
+##### test_hermmul
+
+##### test_hermdiv
+
+##### test_hermpow
+
+##### test_hermval
+
+##### test_hermval2d
+
+##### test_hermval3d
+
+##### test_hermgrid2d
+
+##### test_hermgrid3d
+
+##### test_hermint
+
+##### test_hermint_axis
+
+##### test_hermder
+
+##### test_hermder_axis
+
+##### test_hermvander
+
+##### test_hermvander2d
+
+##### test_hermvander3d
+
+##### test_hermfit
+
+##### test_raises
+
+##### test_dimensions
+
+##### test_linear_root
+
+##### test_100
+
+##### test_hermfromroots
+
+##### test_hermroots
+
+##### test_hermtrim
+
+##### test_hermline
+
+##### test_herm2poly
+
+##### test_poly2herm
+
+##### test_weight
+
+##### f
+
+**Paramètres :**
+
+- `x`
+
+##### f2
+
+**Paramètres :**
+
+- `x`
+
+---
+
 ### test_legendre
 
 Tests for legendre module.
@@ -378530,186 +378710,6 @@ Test coef fallback for object arrays of non-numeric coefficients.
 ##### test_switch_to_exp
 
 ##### test_non_finite
-
----
-
-### test_hermite
-
-Tests for hermite module.
-
-#### Classes
-
-##### TestConstants
-
-**Méthodes :**
-
-- `test_hermdomain()`
-- `test_hermzero()`
-- `test_hermone()`
-- `test_hermx()`
-
-##### TestArithmetic
-
-**Méthodes :**
-
-- `test_hermadd()`
-- `test_hermsub()`
-- `test_hermmulx()`
-- `test_hermmul()`
-- `test_hermdiv()`
-- `test_hermpow()`
-
-##### TestEvaluation
-
-**Méthodes :**
-
-- `test_hermval()`
-- `test_hermval2d()`
-- `test_hermval3d()`
-- `test_hermgrid2d()`
-- `test_hermgrid3d()`
-
-##### TestIntegral
-
-**Méthodes :**
-
-- `test_hermint()`
-- `test_hermint_axis()`
-
-##### TestDerivative
-
-**Méthodes :**
-
-- `test_hermder()`
-- `test_hermder_axis()`
-
-##### TestVander
-
-**Méthodes :**
-
-- `test_hermvander()`
-- `test_hermvander2d()`
-- `test_hermvander3d()`
-
-##### TestFitting
-
-**Méthodes :**
-
-- `test_hermfit()`
-
-##### TestCompanion
-
-**Méthodes :**
-
-- `test_raises()`
-- `test_dimensions()`
-- `test_linear_root()`
-
-##### TestGauss
-
-**Méthodes :**
-
-- `test_100()`
-
-##### TestMisc
-
-**Méthodes :**
-
-- `test_hermfromroots()`
-- `test_hermroots()`
-- `test_hermtrim()`
-- `test_hermline()`
-- `test_herm2poly()`
-- `test_poly2herm()`
-- `test_weight()`
-
-#### Fonctions
-
-##### trim
-
-**Paramètres :**
-
-- `x`
-
-##### test_hermdomain
-
-##### test_hermzero
-
-##### test_hermone
-
-##### test_hermx
-
-##### test_hermadd
-
-##### test_hermsub
-
-##### test_hermmulx
-
-##### test_hermmul
-
-##### test_hermdiv
-
-##### test_hermpow
-
-##### test_hermval
-
-##### test_hermval2d
-
-##### test_hermval3d
-
-##### test_hermgrid2d
-
-##### test_hermgrid3d
-
-##### test_hermint
-
-##### test_hermint_axis
-
-##### test_hermder
-
-##### test_hermder_axis
-
-##### test_hermvander
-
-##### test_hermvander2d
-
-##### test_hermvander3d
-
-##### test_hermfit
-
-##### test_raises
-
-##### test_dimensions
-
-##### test_linear_root
-
-##### test_100
-
-##### test_hermfromroots
-
-##### test_hermroots
-
-##### test_hermtrim
-
-##### test_hermline
-
-##### test_herm2poly
-
-##### test_poly2herm
-
-##### test_weight
-
-##### f
-
-**Paramètres :**
-
-- `x`
-
-##### f2
-
-**Paramètres :**
-
-- `x`
 
 ---
 
@@ -598881,68 +598881,6 @@ tests.frame.test_cumulative
 
 ---
 
-### test_iteration
-
-#### Classes
-
-##### TestIteration
-
-**Méthodes :**
-
-- `test_keys()`
-- `test_iter_datetimes()`
-- `test_iter_strings()`
-- `test_iteritems_datetimes()`
-- `test_iteritems_strings()`
-- `test_items_datetimes()`
-- `test_items_strings()`
-
-#### Fonctions
-
-##### test_keys
-
-**Paramètres :**
-
-- `datetime_series`
-
-##### test_iter_datetimes
-
-**Paramètres :**
-
-- `datetime_series`
-
-##### test_iter_strings
-
-**Paramètres :**
-
-- `string_series`
-
-##### test_iteritems_datetimes
-
-**Paramètres :**
-
-- `datetime_series`
-
-##### test_iteritems_strings
-
-**Paramètres :**
-
-- `string_series`
-
-##### test_items_datetimes
-
-**Paramètres :**
-
-- `datetime_series`
-
-##### test_items_strings
-
-**Paramètres :**
-
-- `string_series`
-
----
-
 ### test_ufunc
 
 #### Classes
@@ -599150,6 +599088,68 @@ A pair of random, length-100 integer-dtype arrays, that are mostly 0.
 - `other`
 
 ##### __repr__
+
+---
+
+### test_iteration
+
+#### Classes
+
+##### TestIteration
+
+**Méthodes :**
+
+- `test_keys()`
+- `test_iter_datetimes()`
+- `test_iter_strings()`
+- `test_iteritems_datetimes()`
+- `test_iteritems_strings()`
+- `test_items_datetimes()`
+- `test_items_strings()`
+
+#### Fonctions
+
+##### test_keys
+
+**Paramètres :**
+
+- `datetime_series`
+
+##### test_iter_datetimes
+
+**Paramètres :**
+
+- `datetime_series`
+
+##### test_iter_strings
+
+**Paramètres :**
+
+- `string_series`
+
+##### test_iteritems_datetimes
+
+**Paramètres :**
+
+- `datetime_series`
+
+##### test_iteritems_strings
+
+**Paramètres :**
+
+- `string_series`
+
+##### test_items_datetimes
+
+**Paramètres :**
+
+- `datetime_series`
+
+##### test_items_strings
+
+**Paramètres :**
+
+- `string_series`
 
 ---
 
@@ -605756,6 +605756,20 @@ test get/set & misc
 
 ---
 
+### test_take
+
+#### Fonctions
+
+##### test_take_validate_axis
+
+##### test_take
+
+##### test_take_categorical
+
+##### test_take_slice_raises
+
+---
+
 ### test_datetime
 
 Also test support for datetime64[ns] in Series / DataFrame
@@ -605815,20 +605829,6 @@ Also test support for datetime64[ns] in Series / DataFrame
 **Paramètres :**
 
 - `slobj`
-
----
-
-### test_take
-
-#### Fonctions
-
-##### test_take_validate_axis
-
-##### test_take
-
-##### test_take_categorical
-
-##### test_take_slice_raises
 
 ---
 
@@ -611531,6 +611531,60 @@ right dataframe (multi-indexed) for multi-index join tests
 
 ---
 
+### test_numba
+
+#### Fonctions
+
+##### apply_axis
+
+**Paramètres :**
+
+- `request`
+
+##### test_numba_vs_python_noop
+
+**Paramètres :**
+
+- `float_frame`
+- `apply_axis`
+
+##### test_numba_vs_python_string_index
+
+##### test_numba_vs_python_indexing
+
+##### test_numba_vs_python_reductions
+
+**Paramètres :**
+
+- `reduction`
+- `apply_axis`
+
+##### test_numba_numeric_colnames
+
+**Paramètres :**
+
+- `colnames`
+
+##### test_numba_parallel_unsupported
+
+**Paramètres :**
+
+- `float_frame`
+
+##### test_numba_nonunique_unsupported
+
+**Paramètres :**
+
+- `apply_axis`
+
+##### test_numba_unsupported_dtypes
+
+**Paramètres :**
+
+- `apply_axis`
+
+---
+
 ### test_frame_apply
 
 #### Fonctions
@@ -612192,60 +612246,6 @@ Columns are ['A', 'B', 'C'], with values (per column): [1, 2, 3]
 ##### test_agg_namedtuple
 
 ##### test_reconstruct_func
-
----
-
-### test_numba
-
-#### Fonctions
-
-##### apply_axis
-
-**Paramètres :**
-
-- `request`
-
-##### test_numba_vs_python_noop
-
-**Paramètres :**
-
-- `float_frame`
-- `apply_axis`
-
-##### test_numba_vs_python_string_index
-
-##### test_numba_vs_python_indexing
-
-##### test_numba_vs_python_reductions
-
-**Paramètres :**
-
-- `reduction`
-- `apply_axis`
-
-##### test_numba_numeric_colnames
-
-**Paramètres :**
-
-- `colnames`
-
-##### test_numba_parallel_unsupported
-
-**Paramètres :**
-
-- `float_frame`
-
-##### test_numba_nonunique_unsupported
-
-**Paramètres :**
-
-- `apply_axis`
-
-##### test_numba_unsupported_dtypes
-
-**Paramètres :**
-
-- `apply_axis`
 
 ---
 
@@ -617381,141 +617381,6 @@ Length 2 array with [NA, Valid]
 
 ---
 
-### test_datetime
-
-This file contains a minimal set of tests for compliance with the extension
-array interface test suite, and should contain no other tests.
-The test suite for the full functionality of the array is located in
-`pandas/tests/arrays/`.
-
-The tests in this file are inherited from the BaseExtensionTests, and only
-minimal tweaks should be applied to get the tests passing (by overwriting a
-parent method).
-
-Additional tests should either be added to one of the BaseExtensionTests
-classes (if they are relevant for the extension interface for all dtypes), or
-be added to the array-specific tests in `pandas/tests/arrays/`.
-
-#### Classes
-
-##### TestDatetimeArray
-
-**Méthodes :**
-
-- `_get_expected_exception()`
-- `_supports_accumulation()`
-- `_supports_reduction()`
-- `test_reduce_series_boolean()`
-- `test_series_constructor()`
-- `test_map()`
-- `check_reduce()`
-
-##### Test2DCompat
-
-#### Fonctions
-
-##### dtype
-
-**Paramètres :**
-
-- `request`
-
-##### data
-
-**Paramètres :**
-
-- `dtype`
-
-##### data_missing
-
-**Paramètres :**
-
-- `dtype`
-
-##### data_for_sorting
-
-**Paramètres :**
-
-- `dtype`
-
-##### data_missing_for_sorting
-
-**Paramètres :**
-
-- `dtype`
-
-##### data_for_grouping
-
-Expected to be like [B, B, NA, NA, A, A, B, C]
-
-Where A < B < C and NA is missing
-
-**Paramètres :**
-
-- `dtype`
-
-##### na_cmp
-
-##### cmp
-
-**Paramètres :**
-
-- `a`
-- `b`
-
-##### _get_expected_exception
-
-**Paramètres :**
-
-- `op_name`
-- `obj`
-- `other`
-
-##### _supports_accumulation
-
-**Paramètres :**
-
-- `ser`
-- `op_name`
-
-##### _supports_reduction
-
-**Paramètres :**
-
-- `obj`
-- `op_name`
-
-##### test_reduce_series_boolean
-
-**Paramètres :**
-
-- `data`
-- `all_boolean_reductions`
-- `skipna`
-
-##### test_series_constructor
-
-**Paramètres :**
-
-- `data`
-
-##### test_map
-
-**Paramètres :**
-
-- `data`
-- `na_action`
-
-##### check_reduce
-
-**Paramètres :**
-
-- `ser`
-- `op_name`
-- `skipna`
-
----
-
 ### test_numpy
 
 This file contains a minimal set of tests for compliance with the extension
@@ -617932,6 +617797,141 @@ marker to either an individual test or a test class.
 - `engine`
 - `data`
 - `request`
+
+---
+
+### test_datetime
+
+This file contains a minimal set of tests for compliance with the extension
+array interface test suite, and should contain no other tests.
+The test suite for the full functionality of the array is located in
+`pandas/tests/arrays/`.
+
+The tests in this file are inherited from the BaseExtensionTests, and only
+minimal tweaks should be applied to get the tests passing (by overwriting a
+parent method).
+
+Additional tests should either be added to one of the BaseExtensionTests
+classes (if they are relevant for the extension interface for all dtypes), or
+be added to the array-specific tests in `pandas/tests/arrays/`.
+
+#### Classes
+
+##### TestDatetimeArray
+
+**Méthodes :**
+
+- `_get_expected_exception()`
+- `_supports_accumulation()`
+- `_supports_reduction()`
+- `test_reduce_series_boolean()`
+- `test_series_constructor()`
+- `test_map()`
+- `check_reduce()`
+
+##### Test2DCompat
+
+#### Fonctions
+
+##### dtype
+
+**Paramètres :**
+
+- `request`
+
+##### data
+
+**Paramètres :**
+
+- `dtype`
+
+##### data_missing
+
+**Paramètres :**
+
+- `dtype`
+
+##### data_for_sorting
+
+**Paramètres :**
+
+- `dtype`
+
+##### data_missing_for_sorting
+
+**Paramètres :**
+
+- `dtype`
+
+##### data_for_grouping
+
+Expected to be like [B, B, NA, NA, A, A, B, C]
+
+Where A < B < C and NA is missing
+
+**Paramètres :**
+
+- `dtype`
+
+##### na_cmp
+
+##### cmp
+
+**Paramètres :**
+
+- `a`
+- `b`
+
+##### _get_expected_exception
+
+**Paramètres :**
+
+- `op_name`
+- `obj`
+- `other`
+
+##### _supports_accumulation
+
+**Paramètres :**
+
+- `ser`
+- `op_name`
+
+##### _supports_reduction
+
+**Paramètres :**
+
+- `obj`
+- `op_name`
+
+##### test_reduce_series_boolean
+
+**Paramètres :**
+
+- `data`
+- `all_boolean_reductions`
+- `skipna`
+
+##### test_series_constructor
+
+**Paramètres :**
+
+- `data`
+
+##### test_map
+
+**Paramètres :**
+
+- `data`
+- `na_action`
+
+##### check_reduce
+
+**Paramètres :**
+
+- `ser`
+- `op_name`
+- `skipna`
 
 ---
 
@@ -623351,6 +623351,133 @@ period_range and timedelta_range indexes
 
 ---
 
+### test_base
+
+#### Fonctions
+
+##### create_index
+
+**Paramètres :**
+
+- `_index_factory`
+
+##### test_asfreq
+
+**Paramètres :**
+
+- `series_and_frame`
+- `freq`
+- `create_index`
+
+##### test_asfreq_fill_value
+
+**Paramètres :**
+
+- `series`
+- `create_index`
+
+##### test_resample_interpolate
+
+**Paramètres :**
+
+- `frame`
+
+##### test_raises_on_non_datetimelike_index
+
+##### test_resample_empty_series
+
+**Paramètres :**
+
+- `freq`
+- `empty_series_dti`
+- `resample_method`
+
+##### test_resample_empty_sum_string
+
+**Paramètres :**
+
+- `string_dtype_no_object`
+- `min_count`
+
+##### test_resample_nat_index_series
+
+**Paramètres :**
+
+- `freq`
+- `series`
+- `resample_method`
+
+##### test_resample_count_empty_series
+
+**Paramètres :**
+
+- `freq`
+- `empty_series_dti`
+- `resample_method`
+
+##### test_resample_empty_dataframe
+
+**Paramètres :**
+
+- `empty_frame_dti`
+- `freq`
+- `resample_method`
+
+##### test_resample_count_empty_dataframe
+
+**Paramètres :**
+
+- `freq`
+- `empty_frame_dti`
+
+##### test_resample_size_empty_dataframe
+
+**Paramètres :**
+
+- `freq`
+- `empty_frame_dti`
+
+##### test_resample_empty_dtypes
+
+**Paramètres :**
+
+- `index`
+- `dtype`
+- `resample_method`
+
+##### test_apply_to_empty_series
+
+**Paramètres :**
+
+- `empty_series_dti`
+- `freq`
+
+##### test_resampler_is_iterable
+
+**Paramètres :**
+
+- `series`
+
+##### test_resample_quantile
+
+**Paramètres :**
+
+- `series`
+
+##### test_first_last_skipna
+
+**Paramètres :**
+
+- `any_real_nullable_dtype`
+- `skipna`
+- `how`
+
+##### _create_index
+
+return the _index_factory created using the args, kwargs
+
+---
+
 ### test_period_index
 
 #### Classes
@@ -624440,133 +624567,6 @@ Series with date range index and random data for test purposes.
 **Paramètres :**
 
 - `x`
-
----
-
-### test_base
-
-#### Fonctions
-
-##### create_index
-
-**Paramètres :**
-
-- `_index_factory`
-
-##### test_asfreq
-
-**Paramètres :**
-
-- `series_and_frame`
-- `freq`
-- `create_index`
-
-##### test_asfreq_fill_value
-
-**Paramètres :**
-
-- `series`
-- `create_index`
-
-##### test_resample_interpolate
-
-**Paramètres :**
-
-- `frame`
-
-##### test_raises_on_non_datetimelike_index
-
-##### test_resample_empty_series
-
-**Paramètres :**
-
-- `freq`
-- `empty_series_dti`
-- `resample_method`
-
-##### test_resample_empty_sum_string
-
-**Paramètres :**
-
-- `string_dtype_no_object`
-- `min_count`
-
-##### test_resample_nat_index_series
-
-**Paramètres :**
-
-- `freq`
-- `series`
-- `resample_method`
-
-##### test_resample_count_empty_series
-
-**Paramètres :**
-
-- `freq`
-- `empty_series_dti`
-- `resample_method`
-
-##### test_resample_empty_dataframe
-
-**Paramètres :**
-
-- `empty_frame_dti`
-- `freq`
-- `resample_method`
-
-##### test_resample_count_empty_dataframe
-
-**Paramètres :**
-
-- `freq`
-- `empty_frame_dti`
-
-##### test_resample_size_empty_dataframe
-
-**Paramètres :**
-
-- `freq`
-- `empty_frame_dti`
-
-##### test_resample_empty_dtypes
-
-**Paramètres :**
-
-- `index`
-- `dtype`
-- `resample_method`
-
-##### test_apply_to_empty_series
-
-**Paramètres :**
-
-- `empty_series_dti`
-- `freq`
-
-##### test_resampler_is_iterable
-
-**Paramètres :**
-
-- `series`
-
-##### test_resample_quantile
-
-**Paramètres :**
-
-- `series`
-
-##### test_first_last_skipna
-
-**Paramètres :**
-
-- `any_real_nullable_dtype`
-- `skipna`
-- `how`
-
-##### _create_index
-
-return the _index_factory created using the args, kwargs
 
 ---
 
@@ -625774,6 +625774,149 @@ kwargs : dict
 
 ---
 
+### test_hashing
+
+#### Fonctions
+
+##### series
+
+**Paramètres :**
+
+- `request`
+
+##### index
+
+**Paramètres :**
+
+- `request`
+
+##### test_consistency
+
+##### test_hash_array
+
+**Paramètres :**
+
+- `series`
+
+##### test_hash_array_mixed
+
+**Paramètres :**
+
+- `dtype`
+
+##### test_hash_array_errors
+
+**Paramètres :**
+
+- `val`
+
+##### test_hash_array_index_exception
+
+##### test_hash_tuples
+
+##### test_hash_tuples_err
+
+**Paramètres :**
+
+- `val`
+
+##### test_multiindex_unique
+
+##### test_multiindex_objects
+
+##### test_hash_pandas_object
+
+**Paramètres :**
+
+- `obj`
+- `index`
+
+##### test_hash_pandas_object_diff_index_non_empty
+
+**Paramètres :**
+
+- `obj`
+
+##### test_hash_pandas_index
+
+**Paramètres :**
+
+- `obj`
+- `index`
+
+##### test_hash_pandas_series
+
+**Paramètres :**
+
+- `series`
+- `index`
+
+##### test_hash_pandas_series_diff_index
+
+**Paramètres :**
+
+- `series`
+
+##### test_hash_pandas_empty_object
+
+**Paramètres :**
+
+- `obj`
+- `index`
+
+##### test_categorical_consistency
+
+**Paramètres :**
+
+- `s1`
+- `categorize`
+
+##### test_categorical_with_nan_consistency
+
+##### test_pandas_errors
+
+##### test_hash_keys
+
+##### test_df_hash_keys
+
+##### test_df_encoding
+
+##### test_invalid_key
+
+##### test_already_encoded
+
+**Paramètres :**
+
+- `index`
+
+##### test_alternate_encoding
+
+**Paramètres :**
+
+- `index`
+
+##### test_same_len_hash_collisions
+
+**Paramètres :**
+
+- `l_exp`
+- `l_add`
+
+##### test_hash_collisions
+
+##### test_hash_with_tuple
+
+**Paramètres :**
+
+- `data`
+- `result_data`
+
+##### test_hashable_tuple_args
+
+##### test_hash_object_none_key
+
+---
+
 ### test_shares_memory
 
 #### Fonctions
@@ -626021,146 +626164,11 @@ This is the extended summary. The deprecate directive goes before this.
 
 ---
 
-### test_hashing
+### test_numba
 
 #### Fonctions
 
-##### series
-
-**Paramètres :**
-
-- `request`
-
-##### index
-
-**Paramètres :**
-
-- `request`
-
-##### test_consistency
-
-##### test_hash_array
-
-**Paramètres :**
-
-- `series`
-
-##### test_hash_array_mixed
-
-**Paramètres :**
-
-- `dtype`
-
-##### test_hash_array_errors
-
-**Paramètres :**
-
-- `val`
-
-##### test_hash_array_index_exception
-
-##### test_hash_tuples
-
-##### test_hash_tuples_err
-
-**Paramètres :**
-
-- `val`
-
-##### test_multiindex_unique
-
-##### test_multiindex_objects
-
-##### test_hash_pandas_object
-
-**Paramètres :**
-
-- `obj`
-- `index`
-
-##### test_hash_pandas_object_diff_index_non_empty
-
-**Paramètres :**
-
-- `obj`
-
-##### test_hash_pandas_index
-
-**Paramètres :**
-
-- `obj`
-- `index`
-
-##### test_hash_pandas_series
-
-**Paramètres :**
-
-- `series`
-- `index`
-
-##### test_hash_pandas_series_diff_index
-
-**Paramètres :**
-
-- `series`
-
-##### test_hash_pandas_empty_object
-
-**Paramètres :**
-
-- `obj`
-- `index`
-
-##### test_categorical_consistency
-
-**Paramètres :**
-
-- `s1`
-- `categorize`
-
-##### test_categorical_with_nan_consistency
-
-##### test_pandas_errors
-
-##### test_hash_keys
-
-##### test_df_hash_keys
-
-##### test_df_encoding
-
-##### test_invalid_key
-
-##### test_already_encoded
-
-**Paramètres :**
-
-- `index`
-
-##### test_alternate_encoding
-
-**Paramètres :**
-
-- `index`
-
-##### test_same_len_hash_collisions
-
-**Paramètres :**
-
-- `l_exp`
-- `l_add`
-
-##### test_hash_collisions
-
-##### test_hash_with_tuple
-
-**Paramètres :**
-
-- `data`
-- `result_data`
-
-##### test_hashable_tuple_args
-
-##### test_hash_object_none_key
+##### test_numba_not_installed_option_context
 
 ---
 
@@ -626290,14 +626298,6 @@ in tm.assert_produces_warning.
 **Paramètres :**
 
 - `false_or_none`
-
----
-
-### test_numba
-
-#### Fonctions
-
-##### test_numba_not_installed_option_context
 
 ---
 
@@ -633612,97 +633612,6 @@ tested. *fmt* is derived from *expected_formatting*
 
 ---
 
-### test_to_excel
-
-Tests formatting as writer-agnostic ExcelCells
-
-ExcelFormatter is tested implicitly in pandas/tests/io/excel
-
-#### Fonctions
-
-##### test_css_to_excel
-
-**Paramètres :**
-
-- `css`
-- `expected`
-
-##### test_css_to_excel_multiple
-
-##### test_css_to_excel_inherited
-
-**Paramètres :**
-
-- `css`
-- `inherited`
-- `expected`
-
-##### test_css_to_excel_good_colors
-
-**Paramètres :**
-
-- `input_color`
-- `output_color`
-
-##### test_css_to_excel_bad_colors
-
-**Paramètres :**
-
-- `input_color`
-
-##### tests_css_named_colors_valid
-
-##### test_css_named_colors_from_mpl_present
-
-##### test_css_excel_cell_precedence
-
-It applies favors latter declarations over former declarations
-
-**Paramètres :**
-
-- `styles`
-- `expected`
-
-##### test_css_excel_cell_cache
-
-It caches unique cell styles
-
-**Paramètres :**
-
-- `styles`
-- `cache_hits`
-- `cache_misses`
-
----
-
-### test_to_markdown
-
-#### Fonctions
-
-##### test_simple
-
-##### test_empty_frame
-
-##### test_other_tablefmt
-
-##### test_other_headers
-
-##### test_series
-
-##### test_no_buf
-
-##### test_index
-
-**Paramètres :**
-
-- `index`
-
-##### test_showindex_disallowed_in_kwargs
-
-##### test_markdown_pos_args_deprecatation
-
----
-
 ### test_format
 
 Tests for the file pandas.io.formats.format, *not* tests for general formatting
@@ -634248,6 +634157,97 @@ https://pandas.pydata.org/docs/dev/user_guide/options.html#frequently-used-optio
 - `ix`
 
 ##### dtype
+
+---
+
+### test_to_excel
+
+Tests formatting as writer-agnostic ExcelCells
+
+ExcelFormatter is tested implicitly in pandas/tests/io/excel
+
+#### Fonctions
+
+##### test_css_to_excel
+
+**Paramètres :**
+
+- `css`
+- `expected`
+
+##### test_css_to_excel_multiple
+
+##### test_css_to_excel_inherited
+
+**Paramètres :**
+
+- `css`
+- `inherited`
+- `expected`
+
+##### test_css_to_excel_good_colors
+
+**Paramètres :**
+
+- `input_color`
+- `output_color`
+
+##### test_css_to_excel_bad_colors
+
+**Paramètres :**
+
+- `input_color`
+
+##### tests_css_named_colors_valid
+
+##### test_css_named_colors_from_mpl_present
+
+##### test_css_excel_cell_precedence
+
+It applies favors latter declarations over former declarations
+
+**Paramètres :**
+
+- `styles`
+- `expected`
+
+##### test_css_excel_cell_cache
+
+It caches unique cell styles
+
+**Paramètres :**
+
+- `styles`
+- `cache_hits`
+- `cache_misses`
+
+---
+
+### test_to_markdown
+
+#### Fonctions
+
+##### test_simple
+
+##### test_empty_frame
+
+##### test_other_tablefmt
+
+##### test_other_headers
+
+##### test_series
+
+##### test_no_buf
+
+##### test_index
+
+**Paramètres :**
+
+- `index`
+
+##### test_showindex_disallowed_in_kwargs
+
+##### test_markdown_pos_args_deprecatation
 
 ---
 
@@ -635205,69 +635205,6 @@ GH 23854 and GH 13068 with binary handles
 
 ---
 
-### test_non_unique
-
-#### Fonctions
-
-##### df
-
-##### styler
-
-**Paramètres :**
-
-- `df`
-
-##### test_format_non_unique
-
-**Paramètres :**
-
-- `df`
-
-##### test_apply_map_non_unique_raises
-
-**Paramètres :**
-
-- `df`
-- `func`
-
-##### test_table_styles_dict_non_unique_index
-
-**Paramètres :**
-
-- `styler`
-
-##### test_table_styles_dict_non_unique_columns
-
-**Paramètres :**
-
-- `styler`
-
-##### test_tooltips_non_unique_raises
-
-**Paramètres :**
-
-- `styler`
-
-##### test_set_td_classes_non_unique_raises
-
-**Paramètres :**
-
-- `styler`
-
-##### test_hide_columns_non_unique
-
-**Paramètres :**
-
-- `styler`
-
-##### test_latex_non_unique
-
-**Paramètres :**
-
-- `styler`
-
----
-
 ### test_style
 
 #### Classes
@@ -635842,6 +635779,69 @@ GH 23854 and GH 13068 with binary handles
 
 - `a`
 - `b`
+- `styler`
+
+---
+
+### test_non_unique
+
+#### Fonctions
+
+##### df
+
+##### styler
+
+**Paramètres :**
+
+- `df`
+
+##### test_format_non_unique
+
+**Paramètres :**
+
+- `df`
+
+##### test_apply_map_non_unique_raises
+
+**Paramètres :**
+
+- `df`
+- `func`
+
+##### test_table_styles_dict_non_unique_index
+
+**Paramètres :**
+
+- `styler`
+
+##### test_table_styles_dict_non_unique_columns
+
+**Paramètres :**
+
+- `styler`
+
+##### test_tooltips_non_unique_raises
+
+**Paramètres :**
+
+- `styler`
+
+##### test_set_td_classes_non_unique_raises
+
+**Paramètres :**
+
+- `styler`
+
+##### test_hide_columns_non_unique
+
+**Paramètres :**
+
+- `styler`
+
+##### test_latex_non_unique
+
+**Paramètres :**
+
 - `styler`
 
 ---
@@ -639705,6 +639705,209 @@ GH 23254.
 
 ---
 
+### test_network
+
+Tests parsers ability to read and parse non-local files
+and hence require a network connection to be read.
+
+#### Classes
+
+##### TestS3
+
+**Méthodes :**
+
+- `test_parse_public_s3_bucket()`
+- `test_parse_private_s3_bucket()`
+- `test_parse_public_s3n_bucket()`
+- `test_parse_public_s3a_bucket()`
+- `test_parse_public_s3_bucket_nrows()`
+- `test_parse_public_s3_bucket_chunked()`
+- `test_parse_public_s3_bucket_chunked_python()`
+- `test_parse_public_s3_bucket_python()`
+- `test_infer_s3_compression()`
+- `test_parse_public_s3_bucket_nrows_python()`
+- `test_read_s3_fails()`
+- `test_read_s3_fails_private()`
+- `test_write_s3_csv_fails()`
+- `test_write_s3_parquet_fails()`
+- `test_read_csv_handles_boto_s3_object()`
+- `test_read_csv_chunked_download()`
+- `test_read_s3_with_hash_in_key()`
+- `test_read_feather_s3_file_path()`
+
+#### Fonctions
+
+##### test_compressed_urls
+
+**Paramètres :**
+
+- `httpserver`
+- `datapath`
+- `salaries_table`
+- `mode`
+- `engine`
+- `compression_only`
+- `compression_to_extension`
+
+##### test_url_encoding_csv
+
+read_csv should honor the requested encoding for URLs.
+
+GH 10424
+
+**Paramètres :**
+
+- `httpserver`
+- `datapath`
+
+##### tips_df
+
+DataFrame with the tips dataset.
+
+**Paramètres :**
+
+- `datapath`
+
+##### test_parse_public_s3_bucket
+
+**Paramètres :**
+
+- `s3_public_bucket_with_data`
+- `tips_df`
+- `s3so`
+
+##### test_parse_private_s3_bucket
+
+**Paramètres :**
+
+- `s3_private_bucket_with_data`
+- `tips_df`
+- `s3so`
+
+##### test_parse_public_s3n_bucket
+
+**Paramètres :**
+
+- `s3_public_bucket_with_data`
+- `tips_df`
+- `s3so`
+
+##### test_parse_public_s3a_bucket
+
+**Paramètres :**
+
+- `s3_public_bucket_with_data`
+- `tips_df`
+- `s3so`
+
+##### test_parse_public_s3_bucket_nrows
+
+**Paramètres :**
+
+- `s3_public_bucket_with_data`
+- `tips_df`
+- `s3so`
+
+##### test_parse_public_s3_bucket_chunked
+
+**Paramètres :**
+
+- `s3_public_bucket_with_data`
+- `tips_df`
+- `s3so`
+
+##### test_parse_public_s3_bucket_chunked_python
+
+**Paramètres :**
+
+- `s3_public_bucket_with_data`
+- `tips_df`
+- `s3so`
+
+##### test_parse_public_s3_bucket_python
+
+**Paramètres :**
+
+- `s3_public_bucket_with_data`
+- `tips_df`
+- `s3so`
+
+##### test_infer_s3_compression
+
+**Paramètres :**
+
+- `s3_public_bucket_with_data`
+- `tips_df`
+- `s3so`
+
+##### test_parse_public_s3_bucket_nrows_python
+
+**Paramètres :**
+
+- `s3_public_bucket_with_data`
+- `tips_df`
+- `s3so`
+
+##### test_read_s3_fails
+
+**Paramètres :**
+
+- `s3so`
+
+##### test_read_s3_fails_private
+
+**Paramètres :**
+
+- `s3_private_bucket`
+- `s3so`
+
+##### test_write_s3_csv_fails
+
+**Paramètres :**
+
+- `tips_df`
+- `s3so`
+
+##### test_write_s3_parquet_fails
+
+**Paramètres :**
+
+- `tips_df`
+- `s3so`
+
+##### test_read_csv_handles_boto_s3_object
+
+**Paramètres :**
+
+- `s3_public_bucket_with_data`
+- `tips_file`
+
+##### test_read_csv_chunked_download
+
+**Paramètres :**
+
+- `s3_public_bucket`
+- `caplog`
+- `s3so`
+
+##### test_read_s3_with_hash_in_key
+
+**Paramètres :**
+
+- `s3_public_bucket_with_data`
+- `tips_df`
+- `s3so`
+
+##### test_read_feather_s3_file_path
+
+**Paramètres :**
+
+- `s3_public_bucket_with_data`
+- `feather_file`
+- `s3so`
+
+---
+
 ### test_unsupported
 
 Tests that features that are currently unsupported in
@@ -640237,206 +640440,81 @@ is integral to the C engine in parsers.py
 
 ---
 
-### test_network
+### test_quoting
 
-Tests parsers ability to read and parse non-local files
-and hence require a network connection to be read.
-
-#### Classes
-
-##### TestS3
-
-**Méthodes :**
-
-- `test_parse_public_s3_bucket()`
-- `test_parse_private_s3_bucket()`
-- `test_parse_public_s3n_bucket()`
-- `test_parse_public_s3a_bucket()`
-- `test_parse_public_s3_bucket_nrows()`
-- `test_parse_public_s3_bucket_chunked()`
-- `test_parse_public_s3_bucket_chunked_python()`
-- `test_parse_public_s3_bucket_python()`
-- `test_infer_s3_compression()`
-- `test_parse_public_s3_bucket_nrows_python()`
-- `test_read_s3_fails()`
-- `test_read_s3_fails_private()`
-- `test_write_s3_csv_fails()`
-- `test_write_s3_parquet_fails()`
-- `test_read_csv_handles_boto_s3_object()`
-- `test_read_csv_chunked_download()`
-- `test_read_s3_with_hash_in_key()`
-- `test_read_feather_s3_file_path()`
+Tests that quoting specifications are properly handled
+during parsing for all of the parsers defined in parsers.py
 
 #### Fonctions
 
-##### test_compressed_urls
+##### test_bad_quote_char
 
 **Paramètres :**
 
-- `httpserver`
-- `datapath`
-- `salaries_table`
-- `mode`
-- `engine`
-- `compression_only`
-- `compression_to_extension`
+- `all_parsers`
+- `kwargs`
+- `msg`
 
-##### test_url_encoding_csv
-
-read_csv should honor the requested encoding for URLs.
-
-GH 10424
+##### test_bad_quoting
 
 **Paramètres :**
 
-- `httpserver`
-- `datapath`
+- `all_parsers`
+- `quoting`
+- `msg`
 
-##### tips_df
-
-DataFrame with the tips dataset.
-
-**Paramètres :**
-
-- `datapath`
-
-##### test_parse_public_s3_bucket
+##### test_quote_char_basic
 
 **Paramètres :**
 
-- `s3_public_bucket_with_data`
-- `tips_df`
-- `s3so`
+- `all_parsers`
 
-##### test_parse_private_s3_bucket
+##### test_quote_char_various
 
 **Paramètres :**
 
-- `s3_private_bucket_with_data`
-- `tips_df`
-- `s3so`
+- `all_parsers`
+- `quote_char`
 
-##### test_parse_public_s3n_bucket
-
-**Paramètres :**
-
-- `s3_public_bucket_with_data`
-- `tips_df`
-- `s3so`
-
-##### test_parse_public_s3a_bucket
+##### test_null_quote_char
 
 **Paramètres :**
 
-- `s3_public_bucket_with_data`
-- `tips_df`
-- `s3so`
+- `all_parsers`
+- `quoting`
+- `quote_char`
 
-##### test_parse_public_s3_bucket_nrows
-
-**Paramètres :**
-
-- `s3_public_bucket_with_data`
-- `tips_df`
-- `s3so`
-
-##### test_parse_public_s3_bucket_chunked
+##### test_quoting_various
 
 **Paramètres :**
 
-- `s3_public_bucket_with_data`
-- `tips_df`
-- `s3so`
+- `all_parsers`
+- `kwargs`
+- `exp_data`
 
-##### test_parse_public_s3_bucket_chunked_python
-
-**Paramètres :**
-
-- `s3_public_bucket_with_data`
-- `tips_df`
-- `s3so`
-
-##### test_parse_public_s3_bucket_python
+##### test_double_quote
 
 **Paramètres :**
 
-- `s3_public_bucket_with_data`
-- `tips_df`
-- `s3so`
+- `all_parsers`
+- `doublequote`
+- `exp_data`
+- `request`
 
-##### test_infer_s3_compression
-
-**Paramètres :**
-
-- `s3_public_bucket_with_data`
-- `tips_df`
-- `s3so`
-
-##### test_parse_public_s3_bucket_nrows_python
+##### test_quotechar_unicode
 
 **Paramètres :**
 
-- `s3_public_bucket_with_data`
-- `tips_df`
-- `s3so`
+- `all_parsers`
+- `quotechar`
 
-##### test_read_s3_fails
-
-**Paramètres :**
-
-- `s3so`
-
-##### test_read_s3_fails_private
+##### test_unbalanced_quoting
 
 **Paramètres :**
 
-- `s3_private_bucket`
-- `s3so`
-
-##### test_write_s3_csv_fails
-
-**Paramètres :**
-
-- `tips_df`
-- `s3so`
-
-##### test_write_s3_parquet_fails
-
-**Paramètres :**
-
-- `tips_df`
-- `s3so`
-
-##### test_read_csv_handles_boto_s3_object
-
-**Paramètres :**
-
-- `s3_public_bucket_with_data`
-- `tips_file`
-
-##### test_read_csv_chunked_download
-
-**Paramètres :**
-
-- `s3_public_bucket`
-- `caplog`
-- `s3so`
-
-##### test_read_s3_with_hash_in_key
-
-**Paramètres :**
-
-- `s3_public_bucket_with_data`
-- `tips_df`
-- `s3so`
-
-##### test_read_feather_s3_file_path
-
-**Paramètres :**
-
-- `s3_public_bucket_with_data`
-- `feather_file`
-- `s3so`
+- `all_parsers`
+- `balanced`
+- `request`
 
 ---
 
@@ -640654,84 +640732,6 @@ parsing for all of the parsers defined in parsers.py
 
 - `i`
 - `v`
-
----
-
-### test_quoting
-
-Tests that quoting specifications are properly handled
-during parsing for all of the parsers defined in parsers.py
-
-#### Fonctions
-
-##### test_bad_quote_char
-
-**Paramètres :**
-
-- `all_parsers`
-- `kwargs`
-- `msg`
-
-##### test_bad_quoting
-
-**Paramètres :**
-
-- `all_parsers`
-- `quoting`
-- `msg`
-
-##### test_quote_char_basic
-
-**Paramètres :**
-
-- `all_parsers`
-
-##### test_quote_char_various
-
-**Paramètres :**
-
-- `all_parsers`
-- `quote_char`
-
-##### test_null_quote_char
-
-**Paramètres :**
-
-- `all_parsers`
-- `quoting`
-- `quote_char`
-
-##### test_quoting_various
-
-**Paramètres :**
-
-- `all_parsers`
-- `kwargs`
-- `exp_data`
-
-##### test_double_quote
-
-**Paramètres :**
-
-- `all_parsers`
-- `doublequote`
-- `exp_data`
-- `request`
-
-##### test_quotechar_unicode
-
-**Paramètres :**
-
-- `all_parsers`
-- `quotechar`
-
-##### test_unbalanced_quoting
-
-**Paramètres :**
-
-- `all_parsers`
-- `balanced`
-- `request`
 
 ---
 
@@ -642234,39 +642234,6 @@ specific classification into the other test modules.
 
 ---
 
-### test_data_list
-
-Tests that work on both the Python and C engines but do not have a
-specific classification into the other test modules.
-
-#### Fonctions
-
-##### test_read_data_list
-
-**Paramètres :**
-
-- `all_parsers`
-
-##### test_reader_list
-
-**Paramètres :**
-
-- `all_parsers`
-
-##### test_reader_list_skiprows
-
-**Paramètres :**
-
-- `all_parsers`
-
-##### test_read_csv_parse_simple_list
-
-**Paramètres :**
-
-- `all_parsers`
-
----
-
 ### test_index
 
 Tests that work on both the Python and C engines but do not have a
@@ -642346,6 +642313,39 @@ specific classification into the other test modules.
 - `all_parsers`
 
 ##### test_empty_with_reversed_multi_index
+
+**Paramètres :**
+
+- `all_parsers`
+
+---
+
+### test_data_list
+
+Tests that work on both the Python and C engines but do not have a
+specific classification into the other test modules.
+
+#### Fonctions
+
+##### test_read_data_list
+
+**Paramètres :**
+
+- `all_parsers`
+
+##### test_reader_list
+
+**Paramètres :**
+
+- `all_parsers`
+
+##### test_reader_list_skiprows
+
+**Paramètres :**
+
+- `all_parsers`
+
+##### test_read_csv_parse_simple_list
 
 **Paramètres :**
 
@@ -644478,182 +644478,6 @@ Tests for ExtensionDtype Table Schema integration.
 
 ---
 
-### test_readlines
-
-#### Classes
-
-##### MyReader
-
-**Méthodes :**
-
-- `__init__()`
-- `read()`
-- `__iter__()`
-
-#### Fonctions
-
-##### lines_json_df
-
-##### engine
-
-**Paramètres :**
-
-- `request`
-
-##### test_read_jsonl
-
-##### test_read_jsonl_engine_pyarrow
-
-**Paramètres :**
-
-- `datapath`
-- `engine`
-
-##### test_read_datetime
-
-**Paramètres :**
-
-- `request`
-- `engine`
-
-##### test_read_jsonl_unicode_chars
-
-##### test_to_jsonl
-
-##### test_to_jsonl_count_new_lines
-
-##### test_readjson_chunks
-
-**Paramètres :**
-
-- `request`
-- `lines_json_df`
-- `chunksize`
-- `engine`
-
-##### test_readjson_chunksize_requires_lines
-
-**Paramètres :**
-
-- `lines_json_df`
-- `engine`
-
-##### test_readjson_chunks_series
-
-**Paramètres :**
-
-- `request`
-- `engine`
-
-##### test_readjson_each_chunk
-
-**Paramètres :**
-
-- `request`
-- `lines_json_df`
-- `engine`
-
-##### test_readjson_chunks_from_file
-
-**Paramètres :**
-
-- `request`
-- `engine`
-
-##### test_readjson_chunks_closes
-
-**Paramètres :**
-
-- `chunksize`
-
-##### test_readjson_invalid_chunksize
-
-**Paramètres :**
-
-- `lines_json_df`
-- `chunksize`
-- `engine`
-
-##### test_readjson_chunks_multiple_empty_lines
-
-**Paramètres :**
-
-- `chunksize`
-
-##### test_readjson_unicode
-
-**Paramètres :**
-
-- `request`
-- `monkeypatch`
-- `engine`
-
-##### test_readjson_nrows
-
-**Paramètres :**
-
-- `nrows`
-- `engine`
-
-##### test_readjson_nrows_chunks
-
-**Paramètres :**
-
-- `request`
-- `nrows`
-- `chunksize`
-- `engine`
-
-##### test_readjson_nrows_requires_lines
-
-**Paramètres :**
-
-- `engine`
-
-##### test_readjson_lines_chunks_fileurl
-
-**Paramètres :**
-
-- `request`
-- `datapath`
-- `engine`
-
-##### test_chunksize_is_incremental
-
-##### test_to_json_append_orient
-
-**Paramètres :**
-
-- `orient_`
-
-##### test_to_json_append_lines
-
-##### test_to_json_append_mode
-
-**Paramètres :**
-
-- `mode_`
-
-##### test_to_json_append_output_consistent_columns
-
-##### test_to_json_append_output_inconsistent_columns
-
-##### test_to_json_append_output_different_columns
-
-##### test_to_json_append_output_different_columns_reordered
-
-##### __init__
-
-**Paramètres :**
-
-- `contents`
-
-##### read
-
-##### __iter__
-
----
-
 ### test_ujson
 
 #### Classes
@@ -645200,6 +645024,182 @@ cleaned_dict : dict
 - `d`
 
 ##### e
+
+---
+
+### test_readlines
+
+#### Classes
+
+##### MyReader
+
+**Méthodes :**
+
+- `__init__()`
+- `read()`
+- `__iter__()`
+
+#### Fonctions
+
+##### lines_json_df
+
+##### engine
+
+**Paramètres :**
+
+- `request`
+
+##### test_read_jsonl
+
+##### test_read_jsonl_engine_pyarrow
+
+**Paramètres :**
+
+- `datapath`
+- `engine`
+
+##### test_read_datetime
+
+**Paramètres :**
+
+- `request`
+- `engine`
+
+##### test_read_jsonl_unicode_chars
+
+##### test_to_jsonl
+
+##### test_to_jsonl_count_new_lines
+
+##### test_readjson_chunks
+
+**Paramètres :**
+
+- `request`
+- `lines_json_df`
+- `chunksize`
+- `engine`
+
+##### test_readjson_chunksize_requires_lines
+
+**Paramètres :**
+
+- `lines_json_df`
+- `engine`
+
+##### test_readjson_chunks_series
+
+**Paramètres :**
+
+- `request`
+- `engine`
+
+##### test_readjson_each_chunk
+
+**Paramètres :**
+
+- `request`
+- `lines_json_df`
+- `engine`
+
+##### test_readjson_chunks_from_file
+
+**Paramètres :**
+
+- `request`
+- `engine`
+
+##### test_readjson_chunks_closes
+
+**Paramètres :**
+
+- `chunksize`
+
+##### test_readjson_invalid_chunksize
+
+**Paramètres :**
+
+- `lines_json_df`
+- `chunksize`
+- `engine`
+
+##### test_readjson_chunks_multiple_empty_lines
+
+**Paramètres :**
+
+- `chunksize`
+
+##### test_readjson_unicode
+
+**Paramètres :**
+
+- `request`
+- `monkeypatch`
+- `engine`
+
+##### test_readjson_nrows
+
+**Paramètres :**
+
+- `nrows`
+- `engine`
+
+##### test_readjson_nrows_chunks
+
+**Paramètres :**
+
+- `request`
+- `nrows`
+- `chunksize`
+- `engine`
+
+##### test_readjson_nrows_requires_lines
+
+**Paramètres :**
+
+- `engine`
+
+##### test_readjson_lines_chunks_fileurl
+
+**Paramètres :**
+
+- `request`
+- `datapath`
+- `engine`
+
+##### test_chunksize_is_incremental
+
+##### test_to_json_append_orient
+
+**Paramètres :**
+
+- `orient_`
+
+##### test_to_json_append_lines
+
+##### test_to_json_append_mode
+
+**Paramètres :**
+
+- `mode_`
+
+##### test_to_json_append_output_consistent_columns
+
+##### test_to_json_append_output_inconsistent_columns
+
+##### test_to_json_append_output_different_columns
+
+##### test_to_json_append_output_different_columns_reordered
+
+##### __init__
+
+**Paramètres :**
+
+- `contents`
+
+##### read
+
+##### __iter__
 
 ---
 
@@ -647287,198 +647287,6 @@ Fixture for setup path
 
 ---
 
-### test_round_trip
-
-#### Fonctions
-
-##### test_conv_read_write
-
-##### test_long_strings
-
-**Paramètres :**
-
-- `setup_path`
-
-##### test_api
-
-**Paramètres :**
-
-- `tmp_path`
-- `setup_path`
-
-##### test_api_append
-
-**Paramètres :**
-
-- `tmp_path`
-- `setup_path`
-
-##### test_api_2
-
-**Paramètres :**
-
-- `tmp_path`
-- `setup_path`
-
-##### test_api_invalid
-
-**Paramètres :**
-
-- `tmp_path`
-- `setup_path`
-
-##### test_get
-
-**Paramètres :**
-
-- `setup_path`
-
-##### test_put_integer
-
-**Paramètres :**
-
-- `setup_path`
-
-##### test_table_values_dtypes_roundtrip
-
-**Paramètres :**
-
-- `setup_path`
-- `using_infer_string`
-
-##### test_series
-
-**Paramètres :**
-
-- `setup_path`
-
-##### test_float_index
-
-**Paramètres :**
-
-- `setup_path`
-
-##### test_tuple_index
-
-**Paramètres :**
-
-- `setup_path`
-
-##### test_index_types
-
-**Paramètres :**
-
-- `setup_path`
-
-##### test_timeseries_preepoch
-
-**Paramètres :**
-
-- `setup_path`
-- `request`
-
-##### test_frame
-
-**Paramètres :**
-
-- `compression`
-- `setup_path`
-
-##### test_empty_series_frame
-
-**Paramètres :**
-
-- `setup_path`
-
-##### test_empty_series
-
-**Paramètres :**
-
-- `dtype`
-- `setup_path`
-
-##### test_can_serialize_dates
-
-**Paramètres :**
-
-- `setup_path`
-
-##### test_store_hierarchical
-
-**Paramètres :**
-
-- `setup_path`
-- `using_infer_string`
-- `multiindex_dataframe_random_data`
-
-##### test_store_mixed
-
-**Paramètres :**
-
-- `compression`
-- `setup_path`
-
-##### _check_roundtrip
-
-**Paramètres :**
-
-- `obj`
-- `comparator`
-- `path`
-- `compression`
-
-##### _check_roundtrip_table
-
-**Paramètres :**
-
-- `obj`
-- `comparator`
-- `path`
-- `compression`
-
-##### test_unicode_index
-
-**Paramètres :**
-
-- `setup_path`
-
-##### test_unicode_longer_encoded
-
-**Paramètres :**
-
-- `setup_path`
-
-##### test_store_datetime_mixed
-
-**Paramètres :**
-
-- `setup_path`
-
-##### test_round_trip_equals
-
-**Paramètres :**
-
-- `tmp_path`
-- `setup_path`
-
-##### test_infer_string_columns
-
-**Paramètres :**
-
-- `tmp_path`
-- `setup_path`
-
-##### _make_one
-
-##### roundtrip
-
-**Paramètres :**
-
-- `key`
-- `obj`
-
----
-
 ### test_store
 
 #### Fonctions
@@ -647790,6 +647598,198 @@ Fixture for setup path
 
 ---
 
+### test_round_trip
+
+#### Fonctions
+
+##### test_conv_read_write
+
+##### test_long_strings
+
+**Paramètres :**
+
+- `setup_path`
+
+##### test_api
+
+**Paramètres :**
+
+- `tmp_path`
+- `setup_path`
+
+##### test_api_append
+
+**Paramètres :**
+
+- `tmp_path`
+- `setup_path`
+
+##### test_api_2
+
+**Paramètres :**
+
+- `tmp_path`
+- `setup_path`
+
+##### test_api_invalid
+
+**Paramètres :**
+
+- `tmp_path`
+- `setup_path`
+
+##### test_get
+
+**Paramètres :**
+
+- `setup_path`
+
+##### test_put_integer
+
+**Paramètres :**
+
+- `setup_path`
+
+##### test_table_values_dtypes_roundtrip
+
+**Paramètres :**
+
+- `setup_path`
+- `using_infer_string`
+
+##### test_series
+
+**Paramètres :**
+
+- `setup_path`
+
+##### test_float_index
+
+**Paramètres :**
+
+- `setup_path`
+
+##### test_tuple_index
+
+**Paramètres :**
+
+- `setup_path`
+
+##### test_index_types
+
+**Paramètres :**
+
+- `setup_path`
+
+##### test_timeseries_preepoch
+
+**Paramètres :**
+
+- `setup_path`
+- `request`
+
+##### test_frame
+
+**Paramètres :**
+
+- `compression`
+- `setup_path`
+
+##### test_empty_series_frame
+
+**Paramètres :**
+
+- `setup_path`
+
+##### test_empty_series
+
+**Paramètres :**
+
+- `dtype`
+- `setup_path`
+
+##### test_can_serialize_dates
+
+**Paramètres :**
+
+- `setup_path`
+
+##### test_store_hierarchical
+
+**Paramètres :**
+
+- `setup_path`
+- `using_infer_string`
+- `multiindex_dataframe_random_data`
+
+##### test_store_mixed
+
+**Paramètres :**
+
+- `compression`
+- `setup_path`
+
+##### _check_roundtrip
+
+**Paramètres :**
+
+- `obj`
+- `comparator`
+- `path`
+- `compression`
+
+##### _check_roundtrip_table
+
+**Paramètres :**
+
+- `obj`
+- `comparator`
+- `path`
+- `compression`
+
+##### test_unicode_index
+
+**Paramètres :**
+
+- `setup_path`
+
+##### test_unicode_longer_encoded
+
+**Paramètres :**
+
+- `setup_path`
+
+##### test_store_datetime_mixed
+
+**Paramètres :**
+
+- `setup_path`
+
+##### test_round_trip_equals
+
+**Paramètres :**
+
+- `tmp_path`
+- `setup_path`
+
+##### test_infer_string_columns
+
+**Paramètres :**
+
+- `tmp_path`
+- `setup_path`
+
+##### _make_one
+
+##### roundtrip
+
+**Paramètres :**
+
+- `key`
+- `obj`
+
+---
+
 ### common
 
 #### Fonctions
@@ -647876,26 +647876,6 @@ Use PyTables to create a simple HDF5 file.
 
 ---
 
-### test_retain_attributes
-
-#### Fonctions
-
-##### test_retain_index_attributes
-
-**Paramètres :**
-
-- `setup_path`
-- `unit`
-
-##### test_retain_index_attributes2
-
-**Paramètres :**
-
-- `tmp_path`
-- `setup_path`
-
----
-
 ### test_complex
 
 #### Fonctions
@@ -647959,6 +647939,26 @@ Use PyTables to create a simple HDF5 file.
 
 **Paramètres :**
 
+- `setup_path`
+
+---
+
+### test_retain_attributes
+
+#### Fonctions
+
+##### test_retain_index_attributes
+
+**Paramètres :**
+
+- `setup_path`
+- `unit`
+
+##### test_retain_index_attributes2
+
+**Paramètres :**
+
+- `tmp_path`
 - `setup_path`
 
 ---
@@ -648282,47 +648282,6 @@ Use PyTables to create a simple HDF5 file.
 
 ---
 
-### test_calendar
-
-#### Classes
-
-##### TestCalendar
-
-**Méthodes :**
-
-- `__init__()`
-
-##### testCalendar
-
-##### NoHolidaysCalendar
-
-#### Fonctions
-
-##### test_calendar
-
-**Paramètres :**
-
-- `transform`
-
-##### test_calendar_caching
-
-##### test_calendar_observance_dates
-
-##### test_rule_from_name
-
-##### test_calendar_2031
-
-##### test_no_holidays_calendar
-
-##### __init__
-
-**Paramètres :**
-
-- `name`
-- `rules`
-
----
-
 ### test_holiday
 
 #### Classes
@@ -648372,6 +648331,47 @@ Use PyTables to create a simple HDF5 file.
 ##### test_half_open_interval_with_observance
 
 ##### test_holidays_with_timezone_specified_but_no_occurences
+
+---
+
+### test_calendar
+
+#### Classes
+
+##### TestCalendar
+
+**Méthodes :**
+
+- `__init__()`
+
+##### testCalendar
+
+##### NoHolidaysCalendar
+
+#### Fonctions
+
+##### test_calendar
+
+**Paramètres :**
+
+- `transform`
+
+##### test_calendar_caching
+
+##### test_calendar_observance_dates
+
+##### test_rule_from_name
+
+##### test_calendar_2031
+
+##### test_no_holidays_calendar
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `rules`
 
 ---
 
@@ -650585,6 +650585,120 @@ Fixture for all the datetime offsets available for a time series.
 
 ---
 
+### test_week
+
+Tests for the following offsets:
+- Week
+- WeekOfMonth
+- LastWeekOfMonth
+
+#### Classes
+
+##### TestWeek
+
+**Méthodes :**
+
+- `test_repr()`
+- `test_corner()`
+- `test_is_anchored()`
+- `test_offset()`
+- `test_is_on_offset()`
+- `test_is_on_offset_weekday_none()`
+- `test_week_add_invalid()`
+
+##### TestWeekOfMonth
+
+**Méthodes :**
+
+- `test_constructor()`
+- `test_repr()`
+- `test_offset()`
+- `test_is_on_offset()`
+- `test_is_on_offset_nanoseconds()`
+
+##### TestLastWeekOfMonth
+
+**Méthodes :**
+
+- `test_constructor()`
+- `test_offset()`
+- `test_is_on_offset()`
+- `test_last_week_of_month_on_offset()`
+- `test_repr()`
+
+#### Fonctions
+
+##### test_repr
+
+##### test_corner
+
+##### test_is_anchored
+
+##### test_offset
+
+**Paramètres :**
+
+- `case`
+
+##### test_is_on_offset
+
+**Paramètres :**
+
+- `weekday`
+
+##### test_is_on_offset_weekday_none
+
+**Paramètres :**
+
+- `n`
+- `date`
+
+##### test_week_add_invalid
+
+##### test_constructor
+
+##### test_repr
+
+##### test_offset
+
+##### test_is_on_offset
+
+**Paramètres :**
+
+- `case`
+
+##### test_is_on_offset_nanoseconds
+
+**Paramètres :**
+
+- `n`
+- `week`
+- `date`
+- `tz`
+
+##### test_constructor
+
+##### test_offset
+
+##### test_is_on_offset
+
+**Paramètres :**
+
+- `case`
+
+##### test_last_week_of_month_on_offset
+
+**Paramètres :**
+
+- `n`
+- `weekday`
+- `date`
+- `tz`
+
+##### test_repr
+
+---
+
 ### test_business_year
 
 Tests for the following offsets:
@@ -650719,120 +650833,6 @@ Tests for the following offsets:
 **Paramètres :**
 
 - `case`
-
----
-
-### test_week
-
-Tests for the following offsets:
-- Week
-- WeekOfMonth
-- LastWeekOfMonth
-
-#### Classes
-
-##### TestWeek
-
-**Méthodes :**
-
-- `test_repr()`
-- `test_corner()`
-- `test_is_anchored()`
-- `test_offset()`
-- `test_is_on_offset()`
-- `test_is_on_offset_weekday_none()`
-- `test_week_add_invalid()`
-
-##### TestWeekOfMonth
-
-**Méthodes :**
-
-- `test_constructor()`
-- `test_repr()`
-- `test_offset()`
-- `test_is_on_offset()`
-- `test_is_on_offset_nanoseconds()`
-
-##### TestLastWeekOfMonth
-
-**Méthodes :**
-
-- `test_constructor()`
-- `test_offset()`
-- `test_is_on_offset()`
-- `test_last_week_of_month_on_offset()`
-- `test_repr()`
-
-#### Fonctions
-
-##### test_repr
-
-##### test_corner
-
-##### test_is_anchored
-
-##### test_offset
-
-**Paramètres :**
-
-- `case`
-
-##### test_is_on_offset
-
-**Paramètres :**
-
-- `weekday`
-
-##### test_is_on_offset_weekday_none
-
-**Paramètres :**
-
-- `n`
-- `date`
-
-##### test_week_add_invalid
-
-##### test_constructor
-
-##### test_repr
-
-##### test_offset
-
-##### test_is_on_offset
-
-**Paramètres :**
-
-- `case`
-
-##### test_is_on_offset_nanoseconds
-
-**Paramètres :**
-
-- `n`
-- `week`
-- `date`
-- `tz`
-
-##### test_constructor
-
-##### test_offset
-
-##### test_is_on_offset
-
-**Paramètres :**
-
-- `case`
-
-##### test_last_week_of_month_on_offset
-
-**Paramètres :**
-
-- `n`
-- `weekday`
-- `date`
-- `tz`
-
-##### test_repr
 
 ---
 
@@ -656907,6 +656907,37 @@ new_frame : DataFrame
 
 ---
 
+### test_npfuncs
+
+Tests for np.foo applied to DataFrame, not necessarily ufuncs.
+
+#### Classes
+
+##### TestAsArray
+
+**Méthodes :**
+
+- `test_asarray_homogeneous()`
+- `test_np_sqrt()`
+- `test_sum_deprecated_axis_behavior()`
+- `test_np_ravel()`
+
+#### Fonctions
+
+##### test_asarray_homogeneous
+
+##### test_np_sqrt
+
+**Paramètres :**
+
+- `float_frame`
+
+##### test_sum_deprecated_axis_behavior
+
+##### test_np_ravel
+
+---
+
 ### test_validate
 
 #### Classes
@@ -657578,37 +657609,6 @@ Tests for error handling related to data types of method arguments.
 - `val`
 
 ##### __init__
-
----
-
-### test_npfuncs
-
-Tests for np.foo applied to DataFrame, not necessarily ufuncs.
-
-#### Classes
-
-##### TestAsArray
-
-**Méthodes :**
-
-- `test_asarray_homogeneous()`
-- `test_np_sqrt()`
-- `test_sum_deprecated_axis_behavior()`
-- `test_np_ravel()`
-
-#### Fonctions
-
-##### test_asarray_homogeneous
-
-##### test_np_sqrt
-
-**Paramètres :**
-
-- `float_frame`
-
-##### test_sum_deprecated_axis_behavior
-
-##### test_np_ravel
 
 ---
 
@@ -676120,104 +676120,6 @@ and proper parameter handling
 
 ---
 
-### test_nlargest_nsmallest
-
-#### Fonctions
-
-##### test_nlargest
-
-##### test_nlargest_mi_grouper
-
-##### test_nsmallest
-
-##### test_nlargest_and_smallest_noop
-
-**Paramètres :**
-
-- `data`
-- `groups`
-- `dtype`
-- `method`
-
----
-
-### test_groupby_shift_diff
-
-#### Fonctions
-
-##### test_group_shift_with_null_key
-
-##### test_group_shift_with_fill_value
-
-##### test_group_shift_lose_timezone
-
-##### test_group_diff_real_series
-
-**Paramètres :**
-
-- `any_real_numpy_dtype`
-
-##### test_group_diff_real_frame
-
-**Paramètres :**
-
-- `any_real_numpy_dtype`
-
-##### test_group_diff_datetimelike
-
-**Paramètres :**
-
-- `data`
-- `unit`
-
-##### test_group_diff_bool
-
-##### test_group_diff_object_raises
-
-**Paramètres :**
-
-- `object_dtype`
-
-##### test_empty_shift_with_fill
-
-##### test_multindex_empty_shift_with_fill
-
-##### test_shift_periods_freq
-
-##### test_shift_deprecate_freq_and_fill_value
-
-##### test_shift_disallow_suffix_if_periods_is_int
-
-##### test_group_shift_with_multiple_periods
-
-##### test_group_shift_with_multiple_periods_and_freq
-
-##### test_group_shift_with_multiple_periods_and_fill_value
-
-##### test_group_shift_with_multiple_periods_and_both_fill_and_freq_deprecated
-
----
-
-### test_is_monotonic
-
-#### Fonctions
-
-##### test_is_monotonic_increasing
-
-**Paramètres :**
-
-- `in_vals`
-- `out_vals`
-
-##### test_is_monotonic_decreasing
-
-**Paramètres :**
-
-- `in_vals`
-- `out_vals`
-
----
-
 ### test_rank
 
 #### Fonctions
@@ -676330,6 +676232,104 @@ and proper parameter handling
 
 ---
 
+### test_nlargest_nsmallest
+
+#### Fonctions
+
+##### test_nlargest
+
+##### test_nlargest_mi_grouper
+
+##### test_nsmallest
+
+##### test_nlargest_and_smallest_noop
+
+**Paramètres :**
+
+- `data`
+- `groups`
+- `dtype`
+- `method`
+
+---
+
+### test_groupby_shift_diff
+
+#### Fonctions
+
+##### test_group_shift_with_null_key
+
+##### test_group_shift_with_fill_value
+
+##### test_group_shift_lose_timezone
+
+##### test_group_diff_real_series
+
+**Paramètres :**
+
+- `any_real_numpy_dtype`
+
+##### test_group_diff_real_frame
+
+**Paramètres :**
+
+- `any_real_numpy_dtype`
+
+##### test_group_diff_datetimelike
+
+**Paramètres :**
+
+- `data`
+- `unit`
+
+##### test_group_diff_bool
+
+##### test_group_diff_object_raises
+
+**Paramètres :**
+
+- `object_dtype`
+
+##### test_empty_shift_with_fill
+
+##### test_multindex_empty_shift_with_fill
+
+##### test_shift_periods_freq
+
+##### test_shift_deprecate_freq_and_fill_value
+
+##### test_shift_disallow_suffix_if_periods_is_int
+
+##### test_group_shift_with_multiple_periods
+
+##### test_group_shift_with_multiple_periods_and_freq
+
+##### test_group_shift_with_multiple_periods_and_fill_value
+
+##### test_group_shift_with_multiple_periods_and_both_fill_and_freq_deprecated
+
+---
+
+### test_is_monotonic
+
+#### Fonctions
+
+##### test_is_monotonic_increasing
+
+**Paramètres :**
+
+- `in_vals`
+- `out_vals`
+
+##### test_is_monotonic_decreasing
+
+**Paramètres :**
+
+- `in_vals`
+- `out_vals`
+
+---
+
 ### test_cython
 
 test cython .agg behavior
@@ -676408,6 +676408,172 @@ test cython .agg behavior
 - `op_name`
 - `action`
 - `with_na`
+
+---
+
+### test_numba
+
+#### Fonctions
+
+##### test_correct_function_signature
+
+##### test_check_nopython_kwargs
+
+##### test_numba_vs_cython
+
+**Paramètres :**
+
+- `jit`
+- `pandas_obj`
+- `nogil`
+- `parallel`
+- `nopython`
+- `as_index`
+
+##### test_cache
+
+**Paramètres :**
+
+- `jit`
+- `pandas_obj`
+- `nogil`
+- `parallel`
+- `nopython`
+
+##### test_use_global_config
+
+##### test_multifunc_numba_vs_cython_frame
+
+**Paramètres :**
+
+- `agg_kwargs`
+
+##### test_multifunc_numba_udf_frame
+
+**Paramètres :**
+
+- `agg_kwargs`
+- `expected_func`
+
+##### test_multifunc_numba_vs_cython_series
+
+**Paramètres :**
+
+- `agg_kwargs`
+
+##### test_multifunc_numba_kwarg_propagation
+
+**Paramètres :**
+
+- `data`
+- `agg_kwargs`
+
+##### test_args_not_cached
+
+##### test_index_data_correctly_passed
+
+##### test_engine_kwargs_not_cached
+
+##### test_multiindex_one_key
+
+**Paramètres :**
+
+- `nogil`
+- `parallel`
+- `nopython`
+
+##### test_multiindex_multi_key_not_supported
+
+**Paramètres :**
+
+- `nogil`
+- `parallel`
+- `nopython`
+
+##### test_multilabel_numba_vs_cython
+
+**Paramètres :**
+
+- `numba_supported_reductions`
+
+##### test_multilabel_udf_numba_vs_cython
+
+##### incorrect_function
+
+**Paramètres :**
+
+- `x`
+
+##### incorrect_function
+
+**Paramètres :**
+
+- `values`
+- `index`
+
+##### func_numba
+
+**Paramètres :**
+
+- `values`
+- `index`
+
+##### func_1
+
+**Paramètres :**
+
+- `values`
+- `index`
+
+##### func_2
+
+**Paramètres :**
+
+- `values`
+- `index`
+
+##### func_1
+
+**Paramètres :**
+
+- `values`
+- `index`
+
+##### sum_last
+
+**Paramètres :**
+
+- `values`
+- `index`
+- `n`
+
+##### f
+
+**Paramètres :**
+
+- `values`
+- `index`
+
+##### func_kwargs
+
+**Paramètres :**
+
+- `values`
+- `index`
+
+##### numba_func
+
+**Paramètres :**
+
+- `values`
+- `index`
+
+##### numba_func
+
+**Paramètres :**
+
+- `values`
+- `index`
 
 ---
 
@@ -676892,172 +677058,6 @@ test .agg behavior / note that .apply is tested generally in test_groupby.py
 **Paramètres :**
 
 - `x`
-
----
-
-### test_numba
-
-#### Fonctions
-
-##### test_correct_function_signature
-
-##### test_check_nopython_kwargs
-
-##### test_numba_vs_cython
-
-**Paramètres :**
-
-- `jit`
-- `pandas_obj`
-- `nogil`
-- `parallel`
-- `nopython`
-- `as_index`
-
-##### test_cache
-
-**Paramètres :**
-
-- `jit`
-- `pandas_obj`
-- `nogil`
-- `parallel`
-- `nopython`
-
-##### test_use_global_config
-
-##### test_multifunc_numba_vs_cython_frame
-
-**Paramètres :**
-
-- `agg_kwargs`
-
-##### test_multifunc_numba_udf_frame
-
-**Paramètres :**
-
-- `agg_kwargs`
-- `expected_func`
-
-##### test_multifunc_numba_vs_cython_series
-
-**Paramètres :**
-
-- `agg_kwargs`
-
-##### test_multifunc_numba_kwarg_propagation
-
-**Paramètres :**
-
-- `data`
-- `agg_kwargs`
-
-##### test_args_not_cached
-
-##### test_index_data_correctly_passed
-
-##### test_engine_kwargs_not_cached
-
-##### test_multiindex_one_key
-
-**Paramètres :**
-
-- `nogil`
-- `parallel`
-- `nopython`
-
-##### test_multiindex_multi_key_not_supported
-
-**Paramètres :**
-
-- `nogil`
-- `parallel`
-- `nopython`
-
-##### test_multilabel_numba_vs_cython
-
-**Paramètres :**
-
-- `numba_supported_reductions`
-
-##### test_multilabel_udf_numba_vs_cython
-
-##### incorrect_function
-
-**Paramètres :**
-
-- `x`
-
-##### incorrect_function
-
-**Paramètres :**
-
-- `values`
-- `index`
-
-##### func_numba
-
-**Paramètres :**
-
-- `values`
-- `index`
-
-##### func_1
-
-**Paramètres :**
-
-- `values`
-- `index`
-
-##### func_2
-
-**Paramètres :**
-
-- `values`
-- `index`
-
-##### func_1
-
-**Paramètres :**
-
-- `values`
-- `index`
-
-##### sum_last
-
-**Paramètres :**
-
-- `values`
-- `index`
-- `n`
-
-##### f
-
-**Paramètres :**
-
-- `values`
-- `index`
-
-##### func_kwargs
-
-**Paramètres :**
-
-- `values`
-- `index`
-
-##### numba_func
-
-**Paramètres :**
-
-- `values`
-- `index`
-
-##### numba_func
-
-**Paramètres :**
-
-- `values`
-- `index`
 
 ---
 
@@ -681170,192 +681170,6 @@ Test cases for GroupBy.plot
 
 ---
 
-### test_converter
-
-#### Classes
-
-##### TestRegistration
-
-**Méthodes :**
-
-- `test_dont_register_by_default()`
-- `test_registering_no_warning()`
-- `test_pandas_plots_register()`
-- `test_matplotlib_formatters()`
-- `test_option_no_warning()`
-- `test_registry_resets()`
-
-##### TestDateTimeConverter
-
-**Méthodes :**
-
-- `dtc()`
-- `test_convert_accepts_unicode()`
-- `test_conversion()`
-- `test_conversion_float()`
-- `test_conversion_outofbounds_datetime()`
-- `test_time_formatter()`
-- `test_dateindex_conversion()`
-- `test_resolution()`
-- `test_convert_nested()`
-
-##### TestPeriodConverter
-
-**Méthodes :**
-
-- `pc()`
-- `axis()`
-- `test_convert_accepts_unicode()`
-- `test_conversion()`
-- `test_integer_passthrough()`
-- `test_convert_nested()`
-
-##### TestTimeDeltaConverter
-
-Test timedelta converter
-
-**Méthodes :**
-
-- `test_format_timedelta_ticks()`
-- `test_call_w_different_view_intervals()`
-
-##### Axis
-
-##### mock_axis
-
-**Méthodes :**
-
-- `get_view_interval()`
-
-#### Fonctions
-
-##### test_registry_mpl_resets
-
-##### test_timtetonum_accepts_unicode
-
-##### test_quarterly_finder
-
-**Paramètres :**
-
-- `year_span`
-
-##### test_dont_register_by_default
-
-##### test_registering_no_warning
-
-##### test_pandas_plots_register
-
-##### test_matplotlib_formatters
-
-##### test_option_no_warning
-
-##### test_registry_resets
-
-##### dtc
-
-##### test_convert_accepts_unicode
-
-**Paramètres :**
-
-- `dtc`
-
-##### test_conversion
-
-**Paramètres :**
-
-- `dtc`
-
-##### test_conversion_float
-
-**Paramètres :**
-
-- `dtc`
-
-##### test_conversion_outofbounds_datetime
-
-**Paramètres :**
-
-- `dtc`
-- `values`
-
-##### test_time_formatter
-
-**Paramètres :**
-
-- `time`
-- `format_expected`
-
-##### test_dateindex_conversion
-
-**Paramètres :**
-
-- `freq`
-- `dtc`
-
-##### test_resolution
-
-**Paramètres :**
-
-- `offset`
-- `dtc`
-
-##### test_convert_nested
-
-**Paramètres :**
-
-- `dtc`
-
-##### pc
-
-##### axis
-
-##### test_convert_accepts_unicode
-
-**Paramètres :**
-
-- `pc`
-- `axis`
-
-##### test_conversion
-
-**Paramètres :**
-
-- `pc`
-- `axis`
-
-##### test_integer_passthrough
-
-**Paramètres :**
-
-- `pc`
-- `axis`
-
-##### test_convert_nested
-
-**Paramètres :**
-
-- `pc`
-- `axis`
-
-##### test_format_timedelta_ticks
-
-**Paramètres :**
-
-- `x`
-- `decimal`
-- `format_expected`
-
-##### test_call_w_different_view_intervals
-
-**Paramètres :**
-
-- `view_interval`
-- `monkeypatch`
-
-##### get_view_interval
-
----
-
 ### test_series
 
 Test cases for Series.plot 
@@ -681808,6 +681622,192 @@ Test cases for Series.plot
 **Paramètres :**
 
 - `ts`
+
+---
+
+### test_converter
+
+#### Classes
+
+##### TestRegistration
+
+**Méthodes :**
+
+- `test_dont_register_by_default()`
+- `test_registering_no_warning()`
+- `test_pandas_plots_register()`
+- `test_matplotlib_formatters()`
+- `test_option_no_warning()`
+- `test_registry_resets()`
+
+##### TestDateTimeConverter
+
+**Méthodes :**
+
+- `dtc()`
+- `test_convert_accepts_unicode()`
+- `test_conversion()`
+- `test_conversion_float()`
+- `test_conversion_outofbounds_datetime()`
+- `test_time_formatter()`
+- `test_dateindex_conversion()`
+- `test_resolution()`
+- `test_convert_nested()`
+
+##### TestPeriodConverter
+
+**Méthodes :**
+
+- `pc()`
+- `axis()`
+- `test_convert_accepts_unicode()`
+- `test_conversion()`
+- `test_integer_passthrough()`
+- `test_convert_nested()`
+
+##### TestTimeDeltaConverter
+
+Test timedelta converter
+
+**Méthodes :**
+
+- `test_format_timedelta_ticks()`
+- `test_call_w_different_view_intervals()`
+
+##### Axis
+
+##### mock_axis
+
+**Méthodes :**
+
+- `get_view_interval()`
+
+#### Fonctions
+
+##### test_registry_mpl_resets
+
+##### test_timtetonum_accepts_unicode
+
+##### test_quarterly_finder
+
+**Paramètres :**
+
+- `year_span`
+
+##### test_dont_register_by_default
+
+##### test_registering_no_warning
+
+##### test_pandas_plots_register
+
+##### test_matplotlib_formatters
+
+##### test_option_no_warning
+
+##### test_registry_resets
+
+##### dtc
+
+##### test_convert_accepts_unicode
+
+**Paramètres :**
+
+- `dtc`
+
+##### test_conversion
+
+**Paramètres :**
+
+- `dtc`
+
+##### test_conversion_float
+
+**Paramètres :**
+
+- `dtc`
+
+##### test_conversion_outofbounds_datetime
+
+**Paramètres :**
+
+- `dtc`
+- `values`
+
+##### test_time_formatter
+
+**Paramètres :**
+
+- `time`
+- `format_expected`
+
+##### test_dateindex_conversion
+
+**Paramètres :**
+
+- `freq`
+- `dtc`
+
+##### test_resolution
+
+**Paramètres :**
+
+- `offset`
+- `dtc`
+
+##### test_convert_nested
+
+**Paramètres :**
+
+- `dtc`
+
+##### pc
+
+##### axis
+
+##### test_convert_accepts_unicode
+
+**Paramètres :**
+
+- `pc`
+- `axis`
+
+##### test_conversion
+
+**Paramètres :**
+
+- `pc`
+- `axis`
+
+##### test_integer_passthrough
+
+**Paramètres :**
+
+- `pc`
+- `axis`
+
+##### test_convert_nested
+
+**Paramètres :**
+
+- `pc`
+- `axis`
+
+##### test_format_timedelta_ticks
+
+**Paramètres :**
+
+- `x`
+- `decimal`
+- `format_expected`
+
+##### test_call_w_different_view_intervals
+
+**Paramètres :**
+
+- `view_interval`
+- `monkeypatch`
+
+##### get_view_interval
 
 ---
 
@@ -686022,6 +686022,56 @@ method keyword in rolling/expanding/ewm constructor
 
 ---
 
+### test_dtypes
+
+#### Fonctions
+
+##### get_dtype
+
+**Paramètres :**
+
+- `dtype`
+- `coerce_int`
+
+##### dtypes
+
+Dtypes for window tests
+
+**Paramètres :**
+
+- `request`
+
+##### test_series_dtypes
+
+**Paramètres :**
+
+- `method`
+- `data`
+- `expected_data`
+- `coerce_int`
+- `dtypes`
+- `min_periods`
+- `step`
+
+##### test_series_nullable_int
+
+**Paramètres :**
+
+- `any_signed_int_ea_dtype`
+- `step`
+
+##### test_dataframe_dtypes
+
+**Paramètres :**
+
+- `method`
+- `expected_data`
+- `dtypes`
+- `min_periods`
+- `step`
+
+---
+
 ### test_rolling_functions
 
 #### Fonctions
@@ -686355,56 +686405,6 @@ Replicate result expected in GH #6297
 - `min_periods`
 - `center`
 - `closed`
-- `step`
-
----
-
-### test_dtypes
-
-#### Fonctions
-
-##### get_dtype
-
-**Paramètres :**
-
-- `dtype`
-- `coerce_int`
-
-##### dtypes
-
-Dtypes for window tests
-
-**Paramètres :**
-
-- `request`
-
-##### test_series_dtypes
-
-**Paramètres :**
-
-- `method`
-- `data`
-- `expected_data`
-- `coerce_int`
-- `dtypes`
-- `min_periods`
-- `step`
-
-##### test_series_nullable_int
-
-**Paramètres :**
-
-- `any_signed_int_ea_dtype`
-- `step`
-
-##### test_dataframe_dtypes
-
-**Paramètres :**
-
-- `method`
-- `expected_data`
-- `dtypes`
-- `min_periods`
 - `step`
 
 ---
@@ -689846,6 +689846,72 @@ equivalence of DataFrame and Series ops.
 
 ---
 
+### test_astype
+
+#### Classes
+
+##### TestAstype
+
+**Méthodes :**
+
+- `test_astype_nan_to_int()`
+- `test_astype_category_to_extension_dtype()`
+- `test_astype_to_datetime64()`
+- `test_astype_str_int_categories_to_nullable_int()`
+- `test_astype_str_int_categories_to_nullable_float()`
+- `test_astype()`
+- `test_astype_category()`
+- `test_astype_object_datetime_categories()`
+- `test_astype_object_timestamp_categories()`
+- `test_astype_category_readonly_mask_values()`
+
+#### Fonctions
+
+##### test_astype_nan_to_int
+
+**Paramètres :**
+
+- `cls`
+- `values`
+
+##### test_astype_category_to_extension_dtype
+
+**Paramètres :**
+
+- `expected`
+
+##### test_astype_to_datetime64
+
+**Paramètres :**
+
+- `dtype`
+- `expected`
+
+##### test_astype_str_int_categories_to_nullable_int
+
+##### test_astype_str_int_categories_to_nullable_float
+
+##### test_astype
+
+**Paramètres :**
+
+- `ordered`
+
+##### test_astype_category
+
+**Paramètres :**
+
+- `dtype_ordered`
+- `cat_ordered`
+
+##### test_astype_object_datetime_categories
+
+##### test_astype_object_timestamp_categories
+
+##### test_astype_category_readonly_mask_values
+
+---
+
 ### test_analytics
 
 #### Classes
@@ -690137,72 +690203,6 @@ ValueError
 **Paramètres :**
 
 - `dtype`
-
----
-
-### test_astype
-
-#### Classes
-
-##### TestAstype
-
-**Méthodes :**
-
-- `test_astype_nan_to_int()`
-- `test_astype_category_to_extension_dtype()`
-- `test_astype_to_datetime64()`
-- `test_astype_str_int_categories_to_nullable_int()`
-- `test_astype_str_int_categories_to_nullable_float()`
-- `test_astype()`
-- `test_astype_category()`
-- `test_astype_object_datetime_categories()`
-- `test_astype_object_timestamp_categories()`
-- `test_astype_category_readonly_mask_values()`
-
-#### Fonctions
-
-##### test_astype_nan_to_int
-
-**Paramètres :**
-
-- `cls`
-- `values`
-
-##### test_astype_category_to_extension_dtype
-
-**Paramètres :**
-
-- `expected`
-
-##### test_astype_to_datetime64
-
-**Paramètres :**
-
-- `dtype`
-- `expected`
-
-##### test_astype_str_int_categories_to_nullable_int
-
-##### test_astype_str_int_categories_to_nullable_float
-
-##### test_astype
-
-**Paramètres :**
-
-- `ordered`
-
-##### test_astype_category
-
-**Paramètres :**
-
-- `dtype_ordered`
-- `cat_ordered`
-
-##### test_astype_object_datetime_categories
-
-##### test_astype_object_timestamp_categories
-
-##### test_astype_category_readonly_mask_values
 
 ---
 
@@ -691170,6 +691170,14 @@ Fixture returning BooleanDtype
 
 ---
 
+### test_repr
+
+#### Fonctions
+
+##### test_repr
+
+---
+
 ### test_reduction
 
 #### Fonctions
@@ -691246,14 +691254,6 @@ Fixture returning boolean array, with valid and missing values.
 - `box`
 
 ##### test_to_numpy_copy
-
----
-
-### test_repr
-
-#### Fonctions
-
-##### test_repr
 
 ---
 
@@ -691454,6 +691454,35 @@ Used to test dtype conversion with and without missing values.
 
 ---
 
+### test_repr
+
+#### Fonctions
+
+##### test_dtypes
+
+**Paramètres :**
+
+- `dtype`
+
+##### test_repr_dtype
+
+**Paramètres :**
+
+- `dtype`
+- `expected`
+
+##### test_repr_array
+
+##### test_repr_array_long
+
+##### test_frame_repr
+
+**Paramètres :**
+
+- `data_missing`
+
+---
+
 ### test_reduction
 
 #### Fonctions
@@ -691571,35 +691600,6 @@ Used to test dtype conversions.
 
 ---
 
-### test_repr
-
-#### Fonctions
-
-##### test_dtypes
-
-**Paramètres :**
-
-- `dtype`
-
-##### test_repr_dtype
-
-**Paramètres :**
-
-- `dtype`
-- `expected`
-
-##### test_repr_array
-
-##### test_repr_array_long
-
-##### test_frame_repr
-
-**Paramètres :**
-
-- `data_missing`
-
----
-
 ### test_concat
 
 #### Fonctions
@@ -691617,6 +691617,93 @@ Used to test dtype conversions.
 
 - `to_concat_dtypes`
 - `result_dtype`
+
+---
+
+### test_dtypes
+
+#### Fonctions
+
+##### test_dtypes
+
+**Paramètres :**
+
+- `dtype`
+
+##### test_preserve_dtypes
+
+**Paramètres :**
+
+- `op`
+
+##### test_astype_nansafe
+
+##### test_construct_index
+
+**Paramètres :**
+
+- `all_data`
+- `dropna`
+
+##### test_astype_index
+
+**Paramètres :**
+
+- `all_data`
+- `dropna`
+
+##### test_astype
+
+**Paramètres :**
+
+- `all_data`
+
+##### test_astype_copy
+
+##### test_astype_to_larger_numpy
+
+##### test_astype_specific_casting
+
+**Paramètres :**
+
+- `dtype`
+
+##### test_astype_floating
+
+##### test_astype_dt64
+
+##### test_construct_cast_invalid
+
+**Paramètres :**
+
+- `dtype`
+
+##### test_to_numpy_na_nan
+
+**Paramètres :**
+
+- `in_series`
+
+##### test_to_numpy_dtype
+
+**Paramètres :**
+
+- `dtype`
+- `in_series`
+
+##### test_to_numpy_na_raises
+
+**Paramètres :**
+
+- `dtype`
+
+##### test_astype_str
+
+**Paramètres :**
+
+- `using_infer_string`
+
+##### test_astype_boolean
 
 ---
 
@@ -691811,93 +691898,6 @@ Used to test dtype conversions.
 
 ---
 
-### test_dtypes
-
-#### Fonctions
-
-##### test_dtypes
-
-**Paramètres :**
-
-- `dtype`
-
-##### test_preserve_dtypes
-
-**Paramètres :**
-
-- `op`
-
-##### test_astype_nansafe
-
-##### test_construct_index
-
-**Paramètres :**
-
-- `all_data`
-- `dropna`
-
-##### test_astype_index
-
-**Paramètres :**
-
-- `all_data`
-- `dropna`
-
-##### test_astype
-
-**Paramètres :**
-
-- `all_data`
-
-##### test_astype_copy
-
-##### test_astype_to_larger_numpy
-
-##### test_astype_specific_casting
-
-**Paramètres :**
-
-- `dtype`
-
-##### test_astype_floating
-
-##### test_astype_dt64
-
-##### test_construct_cast_invalid
-
-**Paramètres :**
-
-- `dtype`
-
-##### test_to_numpy_na_nan
-
-**Paramètres :**
-
-- `in_series`
-
-##### test_to_numpy_dtype
-
-**Paramètres :**
-
-- `dtype`
-- `in_series`
-
-##### test_to_numpy_na_raises
-
-**Paramètres :**
-
-- `dtype`
-
-##### test_astype_str
-
-**Paramètres :**
-
-- `using_infer_string`
-
-##### test_astype_boolean
-
----
-
 ### conftest
 
 #### Fonctions
@@ -692004,6 +692004,35 @@ Used to test dtype conversion with and without missing values.
 
 ---
 
+### test_repr
+
+#### Fonctions
+
+##### test_dtypes
+
+**Paramètres :**
+
+- `dtype`
+
+##### test_repr_dtype
+
+**Paramètres :**
+
+- `dtype`
+- `expected`
+
+##### test_repr_array
+
+##### test_repr_array_long
+
+##### test_frame_repr
+
+**Paramètres :**
+
+- `data_missing`
+
+---
+
 ### test_construction
 
 #### Fonctions
@@ -692065,35 +692094,6 @@ Used to test dtype conversion with and without missing values.
 **Paramètres :**
 
 - `data`
-
----
-
-### test_repr
-
-#### Fonctions
-
-##### test_dtypes
-
-**Paramètres :**
-
-- `dtype`
-
-##### test_repr_dtype
-
-**Paramètres :**
-
-- `dtype`
-- `expected`
-
-##### test_repr_array
-
-##### test_repr_array_long
-
-##### test_frame_repr
-
-**Paramètres :**
-
-- `data_missing`
 
 ---
 
@@ -697160,6 +697160,80 @@ if value is an array, repeat it as needed
 
 ---
 
+### test_series
+
+#### Classes
+
+##### TestSeries
+
+**Méthodes :**
+
+- `test_set_axis_name_mi()`
+- `test_set_axis_name_raises()`
+- `test_get_bool_data_preserve_dtype()`
+- `test_nonzero_single_element()`
+- `test_nonzero_single_element_raise_1()`
+- `test_nonzero_single_element_raise_2()`
+- `test_nonzero_multiple_element_raise()`
+- `test_nonbool_single_element_raise()`
+- `test_metadata_propagation_indiv_resample()`
+- `test_metadata_propagation_indiv()`
+
+#### Fonctions
+
+##### test_set_axis_name_mi
+
+**Paramètres :**
+
+- `func`
+
+##### test_set_axis_name_raises
+
+##### test_get_bool_data_preserve_dtype
+
+##### test_nonzero_single_element
+
+##### test_nonzero_single_element_raise_1
+
+**Paramètres :**
+
+- `data`
+
+##### test_nonzero_single_element_raise_2
+
+**Paramètres :**
+
+- `data`
+
+##### test_nonzero_multiple_element_raise
+
+**Paramètres :**
+
+- `data`
+
+##### test_nonbool_single_element_raise
+
+**Paramètres :**
+
+- `data`
+
+##### test_metadata_propagation_indiv_resample
+
+##### test_metadata_propagation_indiv
+
+**Paramètres :**
+
+- `monkeypatch`
+
+##### finalize
+
+**Paramètres :**
+
+- `other`
+- `method`
+
+---
+
 ### test_duplicate_labels
 
 Tests dealing with the NDFrame.allows_duplicates.
@@ -697491,80 +697565,6 @@ DataFrame with level 'L1' and labels 'L2', 'L3', and 'L2'
 **Paramètres :**
 
 - `df`
-
----
-
-### test_series
-
-#### Classes
-
-##### TestSeries
-
-**Méthodes :**
-
-- `test_set_axis_name_mi()`
-- `test_set_axis_name_raises()`
-- `test_get_bool_data_preserve_dtype()`
-- `test_nonzero_single_element()`
-- `test_nonzero_single_element_raise_1()`
-- `test_nonzero_single_element_raise_2()`
-- `test_nonzero_multiple_element_raise()`
-- `test_nonbool_single_element_raise()`
-- `test_metadata_propagation_indiv_resample()`
-- `test_metadata_propagation_indiv()`
-
-#### Fonctions
-
-##### test_set_axis_name_mi
-
-**Paramètres :**
-
-- `func`
-
-##### test_set_axis_name_raises
-
-##### test_get_bool_data_preserve_dtype
-
-##### test_nonzero_single_element
-
-##### test_nonzero_single_element_raise_1
-
-**Paramètres :**
-
-- `data`
-
-##### test_nonzero_single_element_raise_2
-
-**Paramètres :**
-
-- `data`
-
-##### test_nonzero_multiple_element_raise
-
-**Paramètres :**
-
-- `data`
-
-##### test_nonbool_single_element_raise
-
-**Paramètres :**
-
-- `data`
-
-##### test_metadata_propagation_indiv_resample
-
-##### test_metadata_propagation_indiv
-
-**Paramètres :**
-
-- `monkeypatch`
-
-##### finalize
-
-**Paramètres :**
-
-- `other`
-- `method`
 
 ---
 
@@ -697964,6 +697964,38 @@ Tests for Timestamp parsing, aimed at pandas/_libs/tslibs/parsing.pyx
 ##### test_astype_overflowsafe_td64
 
 ##### test_astype_overflowsafe_disallow_rounding
+
+---
+
+### test_fields
+
+#### Fonctions
+
+##### dtindex
+
+##### test_get_date_name_field_readonly
+
+**Paramètres :**
+
+- `dtindex`
+
+##### test_get_date_field_readonly
+
+**Paramètres :**
+
+- `dtindex`
+
+##### test_get_start_end_field_readonly
+
+**Paramètres :**
+
+- `dtindex`
+
+##### test_get_timedelta_field_readonly
+
+**Paramètres :**
+
+- `dtindex`
 
 ---
 
@@ -698367,38 +698399,6 @@ Tests for helper functions in the cython tslibs.offsets
 **Paramètres :**
 
 - `freq_depr`
-
----
-
-### test_fields
-
-#### Fonctions
-
-##### dtindex
-
-##### test_get_date_name_field_readonly
-
-**Paramètres :**
-
-- `dtindex`
-
-##### test_get_date_field_readonly
-
-**Paramètres :**
-
-- `dtindex`
-
-##### test_get_start_end_field_readonly
-
-**Paramètres :**
-
-- `dtindex`
-
-##### test_get_timedelta_field_readonly
-
-**Paramètres :**
-
-- `dtindex`
 
 ---
 
@@ -700782,78 +700782,6 @@ pure get/set item & fancy indexing
 
 ---
 
-### test_na_indexing
-
-#### Fonctions
-
-##### test_series_mask_boolean
-
-**Paramètres :**
-
-- `values`
-- `dtype`
-- `mask`
-- `indexer_class`
-- `frame`
-
-##### test_na_treated_as_false
-
-**Paramètres :**
-
-- `frame_or_series`
-- `indexer_sli`
-
----
-
-### test_datetime
-
-#### Classes
-
-##### TestDatetimeIndex
-
-**Méthodes :**
-
-- `test_get_loc_naive_dti_aware_str_deprecated()`
-- `test_indexing_with_datetime_tz()`
-- `test_indexing_fast_xs()`
-- `test_consistency_with_tz_aware_scalar()`
-- `test_indexing_with_datetimeindex_tz()`
-- `test_nanosecond_getitem_setitem_with_tz()`
-- `test_getitem_str_slice_millisecond_resolution()`
-- `test_getitem_pyarrow_index()`
-
-#### Fonctions
-
-##### test_get_loc_naive_dti_aware_str_deprecated
-
-##### test_indexing_with_datetime_tz
-
-##### test_indexing_fast_xs
-
-##### test_consistency_with_tz_aware_scalar
-
-##### test_indexing_with_datetimeindex_tz
-
-**Paramètres :**
-
-- `indexer_sl`
-
-##### test_nanosecond_getitem_setitem_with_tz
-
-##### test_getitem_str_slice_millisecond_resolution
-
-**Paramètres :**
-
-- `frame_or_series`
-
-##### test_getitem_pyarrow_index
-
-**Paramètres :**
-
-- `frame_or_series`
-
----
-
 ### test_floats
 
 #### Classes
@@ -701003,6 +700931,78 @@ w.r.t. an integer index
 
 - `x`
 - `y`
+
+---
+
+### test_na_indexing
+
+#### Fonctions
+
+##### test_series_mask_boolean
+
+**Paramètres :**
+
+- `values`
+- `dtype`
+- `mask`
+- `indexer_class`
+- `frame`
+
+##### test_na_treated_as_false
+
+**Paramètres :**
+
+- `frame_or_series`
+- `indexer_sli`
+
+---
+
+### test_datetime
+
+#### Classes
+
+##### TestDatetimeIndex
+
+**Méthodes :**
+
+- `test_get_loc_naive_dti_aware_str_deprecated()`
+- `test_indexing_with_datetime_tz()`
+- `test_indexing_fast_xs()`
+- `test_consistency_with_tz_aware_scalar()`
+- `test_indexing_with_datetimeindex_tz()`
+- `test_nanosecond_getitem_setitem_with_tz()`
+- `test_getitem_str_slice_millisecond_resolution()`
+- `test_getitem_pyarrow_index()`
+
+#### Fonctions
+
+##### test_get_loc_naive_dti_aware_str_deprecated
+
+##### test_indexing_with_datetime_tz
+
+##### test_indexing_fast_xs
+
+##### test_consistency_with_tz_aware_scalar
+
+##### test_indexing_with_datetimeindex_tz
+
+**Paramètres :**
+
+- `indexer_sl`
+
+##### test_nanosecond_getitem_setitem_with_tz
+
+##### test_getitem_str_slice_millisecond_resolution
+
+**Paramètres :**
+
+- `frame_or_series`
+
+##### test_getitem_pyarrow_index
+
+**Paramètres :**
+
+- `frame_or_series`
 
 ---
 
@@ -701488,35 +701488,6 @@ Object we will pass to `Series.replace`
 
 ---
 
-### test_indexers
-
-#### Classes
-
-##### TestValidateIndices
-
-**Méthodes :**
-
-- `test_validate_indices_ok()`
-- `test_validate_indices_low()`
-- `test_validate_indices_high()`
-- `test_validate_indices_empty()`
-
-#### Fonctions
-
-##### test_length_of_indexer
-
-##### test_is_scalar_indexer
-
-##### test_validate_indices_ok
-
-##### test_validate_indices_low
-
-##### test_validate_indices_high
-
-##### test_validate_indices_empty
-
----
-
 ### test_scalar
 
 test scalar indexing, including at and iat 
@@ -701625,6 +701596,35 @@ is False, use the range
 ##### test_multiindex_at_set
 
 ##### test_multiindex_at_get_one_level
+
+---
+
+### test_indexers
+
+#### Classes
+
+##### TestValidateIndices
+
+**Méthodes :**
+
+- `test_validate_indices_ok()`
+- `test_validate_indices_low()`
+- `test_validate_indices_high()`
+- `test_validate_indices_empty()`
+
+#### Fonctions
+
+##### test_length_of_indexer
+
+##### test_is_scalar_indexer
+
+##### test_validate_indices_ok
+
+##### test_validate_indices_low
+
+##### test_validate_indices_high
+
+##### test_validate_indices_empty
 
 ---
 
@@ -708117,6 +708117,393 @@ generic datetimelike tests
 
 ---
 
+### test_setops
+
+The tests in this package are to ensure the proper resultant dtypes of
+set operations.
+
+#### Classes
+
+##### TestSetOps
+
+**Méthodes :**
+
+- `test_set_ops_error_cases()`
+- `test_intersection_base()`
+- `test_union_base()`
+- `test_difference_base()`
+- `test_symmetric_difference()`
+- `test_corner_union()`
+- `test_union_unequal()`
+- `test_corner_intersect()`
+- `test_intersect_unequal()`
+- `test_intersection_name_retention_with_nameless()`
+- `test_difference_preserves_type_empty()`
+- `test_difference_name_retention_equals()`
+- `test_intersection_difference_match_empty()`
+
+##### TestSetOpsUnsorted
+
+**Méthodes :**
+
+- `test_intersect_str_dates()`
+- `test_intersection()`
+- `test_intersection_name_preservation()`
+- `test_intersection_name_preservation2()`
+- `test_chained_union()`
+- `test_union()`
+- `test_union_from_iterables()`
+- `test_union_identity()`
+- `test_difference_name_preservation()`
+- `test_difference_empty_arg()`
+- `test_difference_should_not_compare()`
+- `test_difference_identity()`
+- `test_difference_sort()`
+- `test_difference_incomparable()`
+- `test_difference_incomparable_true()`
+- `test_symmetric_difference_mi()`
+- `test_symmetric_difference_missing()`
+- `test_symmetric_difference_non_index()`
+- `test_union_ea_dtypes()`
+- `test_union_string_array()`
+
+#### Fonctions
+
+##### equal_contents
+
+Checks if the set of unique elements of arr1 and arr2 are equivalent.
+
+**Paramètres :**
+
+- `arr1`
+- `arr2`
+
+##### any_dtype_for_small_pos_integer_indexes
+
+Dtypes that can be given to an Index with small positive integers.
+
+This means that for any dtype `x` in the params list, `Index([1, 2, 3], dtype=x)` is
+valid and gives the correct Index (sub-)class.
+
+**Paramètres :**
+
+- `request`
+
+##### test_union_same_types
+
+**Paramètres :**
+
+- `index`
+
+##### test_union_different_types
+
+**Paramètres :**
+
+- `index_flat`
+- `index_flat2`
+- `request`
+- `using_infer_string`
+
+##### test_compatible_inconsistent_pairs
+
+**Paramètres :**
+
+- `idx1`
+- `idx2`
+
+##### test_union_dtypes
+
+**Paramètres :**
+
+- `left`
+- `right`
+- `expected`
+- `names`
+
+##### test_intersection_duplicates
+
+**Paramètres :**
+
+- `values`
+
+##### test_setop_with_categorical
+
+**Paramètres :**
+
+- `index_flat`
+- `sort`
+- `method`
+- `using_infer_string`
+
+##### test_intersection_duplicates_all_indexes
+
+**Paramètres :**
+
+- `index`
+
+##### test_union_duplicate_index_subsets_of_each_other
+
+**Paramètres :**
+
+- `any_dtype_for_small_pos_integer_indexes`
+
+##### test_union_with_duplicate_index_and_non_monotonic
+
+**Paramètres :**
+
+- `any_dtype_for_small_pos_integer_indexes`
+
+##### test_union_duplicate_index_different_dtypes
+
+##### test_union_same_value_duplicated_in_both
+
+##### test_union_nan_in_both
+
+**Paramètres :**
+
+- `dup`
+
+##### test_union_rangeindex_sort_true
+
+##### test_union_with_duplicate_index_not_subset_and_non_monotonic
+
+**Paramètres :**
+
+- `any_dtype_for_small_pos_integer_indexes`
+
+##### test_union_int_categorical_with_nan
+
+##### test_set_ops_error_cases
+
+**Paramètres :**
+
+- `case`
+- `method`
+- `index`
+
+##### test_intersection_base
+
+**Paramètres :**
+
+- `index`
+
+##### test_union_base
+
+**Paramètres :**
+
+- `index`
+
+##### test_difference_base
+
+**Paramètres :**
+
+- `sort`
+- `index`
+
+##### test_symmetric_difference
+
+**Paramètres :**
+
+- `index`
+- `using_infer_string`
+- `request`
+
+##### test_corner_union
+
+**Paramètres :**
+
+- `index_flat`
+- `fname`
+- `sname`
+- `expected_name`
+
+##### test_union_unequal
+
+**Paramètres :**
+
+- `index_flat`
+- `fname`
+- `sname`
+- `expected_name`
+
+##### test_corner_intersect
+
+**Paramètres :**
+
+- `index_flat`
+- `fname`
+- `sname`
+- `expected_name`
+
+##### test_intersect_unequal
+
+**Paramètres :**
+
+- `index_flat`
+- `fname`
+- `sname`
+- `expected_name`
+
+##### test_intersection_name_retention_with_nameless
+
+**Paramètres :**
+
+- `index`
+
+##### test_difference_preserves_type_empty
+
+**Paramètres :**
+
+- `index`
+- `sort`
+
+##### test_difference_name_retention_equals
+
+**Paramètres :**
+
+- `index`
+- `names`
+
+##### test_intersection_difference_match_empty
+
+**Paramètres :**
+
+- `index`
+- `sort`
+
+##### test_intersect_str_dates
+
+##### test_intersection
+
+**Paramètres :**
+
+- `index`
+- `sort`
+
+##### test_intersection_name_preservation
+
+**Paramètres :**
+
+- `index2`
+- `keeps_name`
+- `sort`
+
+##### test_intersection_name_preservation2
+
+**Paramètres :**
+
+- `index`
+- `first_name`
+- `second_name`
+- `expected_name`
+- `sort`
+
+##### test_chained_union
+
+**Paramètres :**
+
+- `sort`
+
+##### test_union
+
+**Paramètres :**
+
+- `index`
+- `sort`
+
+##### test_union_from_iterables
+
+**Paramètres :**
+
+- `index`
+- `klass`
+- `sort`
+
+##### test_union_identity
+
+**Paramètres :**
+
+- `index`
+- `sort`
+
+##### test_difference_name_preservation
+
+**Paramètres :**
+
+- `index`
+- `second_name`
+- `expected`
+- `sort`
+
+##### test_difference_empty_arg
+
+**Paramètres :**
+
+- `index`
+- `sort`
+
+##### test_difference_should_not_compare
+
+##### test_difference_identity
+
+**Paramètres :**
+
+- `index`
+- `sort`
+
+##### test_difference_sort
+
+**Paramètres :**
+
+- `index`
+- `sort`
+
+##### test_difference_incomparable
+
+**Paramètres :**
+
+- `opname`
+
+##### test_difference_incomparable_true
+
+**Paramètres :**
+
+- `opname`
+
+##### test_symmetric_difference_mi
+
+**Paramètres :**
+
+- `sort`
+
+##### test_symmetric_difference_missing
+
+**Paramètres :**
+
+- `index2`
+- `expected`
+- `sort`
+
+##### test_symmetric_difference_non_index
+
+**Paramètres :**
+
+- `sort`
+
+##### test_union_ea_dtypes
+
+**Paramètres :**
+
+- `any_numeric_ea_and_arrow_dtype`
+
+##### test_union_string_array
+
+**Paramètres :**
+
+- `any_string_dtype`
+
+---
+
 ### test_subclass
 
 Tests involving custom Index subclasses
@@ -708768,628 +709155,6 @@ contain tests for the corresponding methods specific to those Index subclasses.
 **Paramètres :**
 
 - `simple_index`
-
----
-
-### test_setops
-
-The tests in this package are to ensure the proper resultant dtypes of
-set operations.
-
-#### Classes
-
-##### TestSetOps
-
-**Méthodes :**
-
-- `test_set_ops_error_cases()`
-- `test_intersection_base()`
-- `test_union_base()`
-- `test_difference_base()`
-- `test_symmetric_difference()`
-- `test_corner_union()`
-- `test_union_unequal()`
-- `test_corner_intersect()`
-- `test_intersect_unequal()`
-- `test_intersection_name_retention_with_nameless()`
-- `test_difference_preserves_type_empty()`
-- `test_difference_name_retention_equals()`
-- `test_intersection_difference_match_empty()`
-
-##### TestSetOpsUnsorted
-
-**Méthodes :**
-
-- `test_intersect_str_dates()`
-- `test_intersection()`
-- `test_intersection_name_preservation()`
-- `test_intersection_name_preservation2()`
-- `test_chained_union()`
-- `test_union()`
-- `test_union_from_iterables()`
-- `test_union_identity()`
-- `test_difference_name_preservation()`
-- `test_difference_empty_arg()`
-- `test_difference_should_not_compare()`
-- `test_difference_identity()`
-- `test_difference_sort()`
-- `test_difference_incomparable()`
-- `test_difference_incomparable_true()`
-- `test_symmetric_difference_mi()`
-- `test_symmetric_difference_missing()`
-- `test_symmetric_difference_non_index()`
-- `test_union_ea_dtypes()`
-- `test_union_string_array()`
-
-#### Fonctions
-
-##### equal_contents
-
-Checks if the set of unique elements of arr1 and arr2 are equivalent.
-
-**Paramètres :**
-
-- `arr1`
-- `arr2`
-
-##### any_dtype_for_small_pos_integer_indexes
-
-Dtypes that can be given to an Index with small positive integers.
-
-This means that for any dtype `x` in the params list, `Index([1, 2, 3], dtype=x)` is
-valid and gives the correct Index (sub-)class.
-
-**Paramètres :**
-
-- `request`
-
-##### test_union_same_types
-
-**Paramètres :**
-
-- `index`
-
-##### test_union_different_types
-
-**Paramètres :**
-
-- `index_flat`
-- `index_flat2`
-- `request`
-- `using_infer_string`
-
-##### test_compatible_inconsistent_pairs
-
-**Paramètres :**
-
-- `idx1`
-- `idx2`
-
-##### test_union_dtypes
-
-**Paramètres :**
-
-- `left`
-- `right`
-- `expected`
-- `names`
-
-##### test_intersection_duplicates
-
-**Paramètres :**
-
-- `values`
-
-##### test_setop_with_categorical
-
-**Paramètres :**
-
-- `index_flat`
-- `sort`
-- `method`
-- `using_infer_string`
-
-##### test_intersection_duplicates_all_indexes
-
-**Paramètres :**
-
-- `index`
-
-##### test_union_duplicate_index_subsets_of_each_other
-
-**Paramètres :**
-
-- `any_dtype_for_small_pos_integer_indexes`
-
-##### test_union_with_duplicate_index_and_non_monotonic
-
-**Paramètres :**
-
-- `any_dtype_for_small_pos_integer_indexes`
-
-##### test_union_duplicate_index_different_dtypes
-
-##### test_union_same_value_duplicated_in_both
-
-##### test_union_nan_in_both
-
-**Paramètres :**
-
-- `dup`
-
-##### test_union_rangeindex_sort_true
-
-##### test_union_with_duplicate_index_not_subset_and_non_monotonic
-
-**Paramètres :**
-
-- `any_dtype_for_small_pos_integer_indexes`
-
-##### test_union_int_categorical_with_nan
-
-##### test_set_ops_error_cases
-
-**Paramètres :**
-
-- `case`
-- `method`
-- `index`
-
-##### test_intersection_base
-
-**Paramètres :**
-
-- `index`
-
-##### test_union_base
-
-**Paramètres :**
-
-- `index`
-
-##### test_difference_base
-
-**Paramètres :**
-
-- `sort`
-- `index`
-
-##### test_symmetric_difference
-
-**Paramètres :**
-
-- `index`
-- `using_infer_string`
-- `request`
-
-##### test_corner_union
-
-**Paramètres :**
-
-- `index_flat`
-- `fname`
-- `sname`
-- `expected_name`
-
-##### test_union_unequal
-
-**Paramètres :**
-
-- `index_flat`
-- `fname`
-- `sname`
-- `expected_name`
-
-##### test_corner_intersect
-
-**Paramètres :**
-
-- `index_flat`
-- `fname`
-- `sname`
-- `expected_name`
-
-##### test_intersect_unequal
-
-**Paramètres :**
-
-- `index_flat`
-- `fname`
-- `sname`
-- `expected_name`
-
-##### test_intersection_name_retention_with_nameless
-
-**Paramètres :**
-
-- `index`
-
-##### test_difference_preserves_type_empty
-
-**Paramètres :**
-
-- `index`
-- `sort`
-
-##### test_difference_name_retention_equals
-
-**Paramètres :**
-
-- `index`
-- `names`
-
-##### test_intersection_difference_match_empty
-
-**Paramètres :**
-
-- `index`
-- `sort`
-
-##### test_intersect_str_dates
-
-##### test_intersection
-
-**Paramètres :**
-
-- `index`
-- `sort`
-
-##### test_intersection_name_preservation
-
-**Paramètres :**
-
-- `index2`
-- `keeps_name`
-- `sort`
-
-##### test_intersection_name_preservation2
-
-**Paramètres :**
-
-- `index`
-- `first_name`
-- `second_name`
-- `expected_name`
-- `sort`
-
-##### test_chained_union
-
-**Paramètres :**
-
-- `sort`
-
-##### test_union
-
-**Paramètres :**
-
-- `index`
-- `sort`
-
-##### test_union_from_iterables
-
-**Paramètres :**
-
-- `index`
-- `klass`
-- `sort`
-
-##### test_union_identity
-
-**Paramètres :**
-
-- `index`
-- `sort`
-
-##### test_difference_name_preservation
-
-**Paramètres :**
-
-- `index`
-- `second_name`
-- `expected`
-- `sort`
-
-##### test_difference_empty_arg
-
-**Paramètres :**
-
-- `index`
-- `sort`
-
-##### test_difference_should_not_compare
-
-##### test_difference_identity
-
-**Paramètres :**
-
-- `index`
-- `sort`
-
-##### test_difference_sort
-
-**Paramètres :**
-
-- `index`
-- `sort`
-
-##### test_difference_incomparable
-
-**Paramètres :**
-
-- `opname`
-
-##### test_difference_incomparable_true
-
-**Paramètres :**
-
-- `opname`
-
-##### test_symmetric_difference_mi
-
-**Paramètres :**
-
-- `sort`
-
-##### test_symmetric_difference_missing
-
-**Paramètres :**
-
-- `index2`
-- `expected`
-- `sort`
-
-##### test_symmetric_difference_non_index
-
-**Paramètres :**
-
-- `sort`
-
-##### test_union_ea_dtypes
-
-**Paramètres :**
-
-- `any_numeric_ea_and_arrow_dtype`
-
-##### test_union_string_array
-
-**Paramètres :**
-
-- `any_string_dtype`
-
----
-
-### test_index_new
-
-Tests for the Index constructor conducting inference.
-
-#### Classes
-
-##### TestIndexConstructorInference
-
-**Méthodes :**
-
-- `test_object_all_bools()`
-- `test_object_all_complex()`
-- `test_infer_nat()`
-- `test_construction_list_tuples_nan()`
-- `test_constructor_int_dtype_float()`
-- `test_constructor_dtypes_to_object()`
-- `test_constructor_categorical_to_object()`
-- `test_constructor_infer_periodindex()`
-- `test_from_list_of_periods()`
-- `test_constructor_infer_nat_dt_like()`
-- `test_constructor_mixed_nat_objs_infers_object()`
-- `test_constructor_datetime_and_datetime64()`
-- `test_constructor_datetimes_mixed_tzs()`
-
-##### TestDtypeEnforced
-
-**Méthodes :**
-
-- `test_constructor_object_dtype_with_ea_data()`
-- `test_constructor_range_values_mismatched_dtype()`
-- `test_constructor_categorical_values_mismatched_non_ea_dtype()`
-- `test_constructor_categorical_values_mismatched_dtype()`
-- `test_constructor_ea_values_mismatched_categorical_dtype()`
-- `test_constructor_period_values_mismatched_dtype()`
-- `test_constructor_timedelta64_values_mismatched_dtype()`
-- `test_constructor_interval_values_mismatched_dtype()`
-- `test_constructor_datetime64_values_mismatched_period_dtype()`
-- `test_constructor_int_dtype_nan_raises()`
-- `test_constructor_dtypes_to_int()`
-- `test_constructor_dtypes_to_float()`
-- `test_constructor_dtypes_to_categorical()`
-- `test_constructor_dtypes_to_datetime()`
-- `test_constructor_dtypes_to_timedelta()`
-- `test_pass_timedeltaindex_to_index()`
-- `test_pass_datetimeindex_to_index()`
-
-##### TestIndexConstructorUnwrapping
-
-**Méthodes :**
-
-- `test_constructor_from_series_dt64()`
-- `test_constructor_no_pandas_array()`
-- `test_constructor_ndarray_like()`
-
-##### TestIndexConstructionErrors
-
-**Méthodes :**
-
-- `test_constructor_overflow_int64()`
-
-##### ArrayLike
-
-**Méthodes :**
-
-- `__init__()`
-- `__array__()`
-
-#### Fonctions
-
-##### test_object_all_bools
-
-##### test_object_all_complex
-
-##### test_infer_nat
-
-**Paramètres :**
-
-- `val`
-
-##### test_construction_list_tuples_nan
-
-**Paramètres :**
-
-- `na_value`
-- `vtype`
-
-##### test_constructor_int_dtype_float
-
-**Paramètres :**
-
-- `dtype`
-
-##### test_constructor_dtypes_to_object
-
-**Paramètres :**
-
-- `cast_index`
-- `vals`
-
-##### test_constructor_categorical_to_object
-
-##### test_constructor_infer_periodindex
-
-##### test_from_list_of_periods
-
-##### test_constructor_infer_nat_dt_like
-
-**Paramètres :**
-
-- `pos`
-- `klass`
-- `dtype`
-- `ctor`
-- `nulls_fixture`
-- `request`
-
-##### test_constructor_mixed_nat_objs_infers_object
-
-**Paramètres :**
-
-- `swap_objs`
-
-##### test_constructor_datetime_and_datetime64
-
-**Paramètres :**
-
-- `swap_objs`
-
-##### test_constructor_datetimes_mixed_tzs
-
-##### test_constructor_object_dtype_with_ea_data
-
-**Paramètres :**
-
-- `any_numeric_ea_dtype`
-
-##### test_constructor_range_values_mismatched_dtype
-
-**Paramètres :**
-
-- `dtype`
-
-##### test_constructor_categorical_values_mismatched_non_ea_dtype
-
-**Paramètres :**
-
-- `dtype`
-
-##### test_constructor_categorical_values_mismatched_dtype
-
-##### test_constructor_ea_values_mismatched_categorical_dtype
-
-##### test_constructor_period_values_mismatched_dtype
-
-##### test_constructor_timedelta64_values_mismatched_dtype
-
-##### test_constructor_interval_values_mismatched_dtype
-
-##### test_constructor_datetime64_values_mismatched_period_dtype
-
-##### test_constructor_int_dtype_nan_raises
-
-**Paramètres :**
-
-- `dtype`
-
-##### test_constructor_dtypes_to_int
-
-**Paramètres :**
-
-- `vals`
-- `any_int_numpy_dtype`
-
-##### test_constructor_dtypes_to_float
-
-**Paramètres :**
-
-- `vals`
-- `float_numpy_dtype`
-
-##### test_constructor_dtypes_to_categorical
-
-**Paramètres :**
-
-- `vals`
-
-##### test_constructor_dtypes_to_datetime
-
-**Paramètres :**
-
-- `cast_index`
-- `vals`
-
-##### test_constructor_dtypes_to_timedelta
-
-**Paramètres :**
-
-- `cast_index`
-- `vals`
-
-##### test_pass_timedeltaindex_to_index
-
-##### test_pass_datetimeindex_to_index
-
-##### test_constructor_from_series_dt64
-
-**Paramètres :**
-
-- `klass`
-
-##### test_constructor_no_pandas_array
-
-##### test_constructor_ndarray_like
-
-**Paramètres :**
-
-- `array`
-
-##### test_constructor_overflow_int64
-
-##### __init__
-
-**Paramètres :**
-
-- `array`
-
-##### __array__
-
-**Paramètres :**
-
-- `dtype`
-- `copy`
 
 ---
 
@@ -710160,6 +709925,241 @@ Tests for the Index constructor conducting inference.
 
 ---
 
+### test_index_new
+
+Tests for the Index constructor conducting inference.
+
+#### Classes
+
+##### TestIndexConstructorInference
+
+**Méthodes :**
+
+- `test_object_all_bools()`
+- `test_object_all_complex()`
+- `test_infer_nat()`
+- `test_construction_list_tuples_nan()`
+- `test_constructor_int_dtype_float()`
+- `test_constructor_dtypes_to_object()`
+- `test_constructor_categorical_to_object()`
+- `test_constructor_infer_periodindex()`
+- `test_from_list_of_periods()`
+- `test_constructor_infer_nat_dt_like()`
+- `test_constructor_mixed_nat_objs_infers_object()`
+- `test_constructor_datetime_and_datetime64()`
+- `test_constructor_datetimes_mixed_tzs()`
+
+##### TestDtypeEnforced
+
+**Méthodes :**
+
+- `test_constructor_object_dtype_with_ea_data()`
+- `test_constructor_range_values_mismatched_dtype()`
+- `test_constructor_categorical_values_mismatched_non_ea_dtype()`
+- `test_constructor_categorical_values_mismatched_dtype()`
+- `test_constructor_ea_values_mismatched_categorical_dtype()`
+- `test_constructor_period_values_mismatched_dtype()`
+- `test_constructor_timedelta64_values_mismatched_dtype()`
+- `test_constructor_interval_values_mismatched_dtype()`
+- `test_constructor_datetime64_values_mismatched_period_dtype()`
+- `test_constructor_int_dtype_nan_raises()`
+- `test_constructor_dtypes_to_int()`
+- `test_constructor_dtypes_to_float()`
+- `test_constructor_dtypes_to_categorical()`
+- `test_constructor_dtypes_to_datetime()`
+- `test_constructor_dtypes_to_timedelta()`
+- `test_pass_timedeltaindex_to_index()`
+- `test_pass_datetimeindex_to_index()`
+
+##### TestIndexConstructorUnwrapping
+
+**Méthodes :**
+
+- `test_constructor_from_series_dt64()`
+- `test_constructor_no_pandas_array()`
+- `test_constructor_ndarray_like()`
+
+##### TestIndexConstructionErrors
+
+**Méthodes :**
+
+- `test_constructor_overflow_int64()`
+
+##### ArrayLike
+
+**Méthodes :**
+
+- `__init__()`
+- `__array__()`
+
+#### Fonctions
+
+##### test_object_all_bools
+
+##### test_object_all_complex
+
+##### test_infer_nat
+
+**Paramètres :**
+
+- `val`
+
+##### test_construction_list_tuples_nan
+
+**Paramètres :**
+
+- `na_value`
+- `vtype`
+
+##### test_constructor_int_dtype_float
+
+**Paramètres :**
+
+- `dtype`
+
+##### test_constructor_dtypes_to_object
+
+**Paramètres :**
+
+- `cast_index`
+- `vals`
+
+##### test_constructor_categorical_to_object
+
+##### test_constructor_infer_periodindex
+
+##### test_from_list_of_periods
+
+##### test_constructor_infer_nat_dt_like
+
+**Paramètres :**
+
+- `pos`
+- `klass`
+- `dtype`
+- `ctor`
+- `nulls_fixture`
+- `request`
+
+##### test_constructor_mixed_nat_objs_infers_object
+
+**Paramètres :**
+
+- `swap_objs`
+
+##### test_constructor_datetime_and_datetime64
+
+**Paramètres :**
+
+- `swap_objs`
+
+##### test_constructor_datetimes_mixed_tzs
+
+##### test_constructor_object_dtype_with_ea_data
+
+**Paramètres :**
+
+- `any_numeric_ea_dtype`
+
+##### test_constructor_range_values_mismatched_dtype
+
+**Paramètres :**
+
+- `dtype`
+
+##### test_constructor_categorical_values_mismatched_non_ea_dtype
+
+**Paramètres :**
+
+- `dtype`
+
+##### test_constructor_categorical_values_mismatched_dtype
+
+##### test_constructor_ea_values_mismatched_categorical_dtype
+
+##### test_constructor_period_values_mismatched_dtype
+
+##### test_constructor_timedelta64_values_mismatched_dtype
+
+##### test_constructor_interval_values_mismatched_dtype
+
+##### test_constructor_datetime64_values_mismatched_period_dtype
+
+##### test_constructor_int_dtype_nan_raises
+
+**Paramètres :**
+
+- `dtype`
+
+##### test_constructor_dtypes_to_int
+
+**Paramètres :**
+
+- `vals`
+- `any_int_numpy_dtype`
+
+##### test_constructor_dtypes_to_float
+
+**Paramètres :**
+
+- `vals`
+- `float_numpy_dtype`
+
+##### test_constructor_dtypes_to_categorical
+
+**Paramètres :**
+
+- `vals`
+
+##### test_constructor_dtypes_to_datetime
+
+**Paramètres :**
+
+- `cast_index`
+- `vals`
+
+##### test_constructor_dtypes_to_timedelta
+
+**Paramètres :**
+
+- `cast_index`
+- `vals`
+
+##### test_pass_timedeltaindex_to_index
+
+##### test_pass_datetimeindex_to_index
+
+##### test_constructor_from_series_dt64
+
+**Paramètres :**
+
+- `klass`
+
+##### test_constructor_no_pandas_array
+
+##### test_constructor_ndarray_like
+
+**Paramètres :**
+
+- `array`
+
+##### test_constructor_overflow_int64
+
+##### __init__
+
+**Paramètres :**
+
+- `array`
+
+##### __array__
+
+**Paramètres :**
+
+- `dtype`
+- `copy`
+
+---
+
 ### test_numpy_compat
 
 #### Fonctions
@@ -710796,6 +710796,50 @@ Tests for ndarray-like method on the base Index class
 
 ---
 
+### test_formats
+
+#### Classes
+
+##### TestIndexRendering
+
+**Méthodes :**
+
+- `test_repr_is_valid_construction_code()`
+- `test_string_index_repr()`
+- `test_string_index_repr_with_unicode_option()`
+- `test_repr_summary()`
+- `test_summary_bug()`
+- `test_index_repr_bool_nan()`
+- `test_format_different_scalar_lengths()`
+
+#### Fonctions
+
+##### test_repr_is_valid_construction_code
+
+##### test_string_index_repr
+
+**Paramètres :**
+
+- `index`
+- `expected`
+
+##### test_string_index_repr_with_unicode_option
+
+**Paramètres :**
+
+- `index`
+- `expected`
+
+##### test_repr_summary
+
+##### test_summary_bug
+
+##### test_index_repr_bool_nan
+
+##### test_format_different_scalar_lengths
+
+---
+
 ### test_indexing
 
 #### Classes
@@ -710860,50 +710904,6 @@ Tests for ndarray-like method on the base Index class
 - `monkeypatch`
 
 ##### test_get_loc_nan_object_dtype_nonmonotonic_nonunique
-
----
-
-### test_formats
-
-#### Classes
-
-##### TestIndexRendering
-
-**Méthodes :**
-
-- `test_repr_is_valid_construction_code()`
-- `test_string_index_repr()`
-- `test_string_index_repr_with_unicode_option()`
-- `test_repr_summary()`
-- `test_summary_bug()`
-- `test_index_repr_bool_nan()`
-- `test_format_different_scalar_lengths()`
-
-#### Fonctions
-
-##### test_repr_is_valid_construction_code
-
-##### test_string_index_repr
-
-**Paramètres :**
-
-- `index`
-- `expected`
-
-##### test_string_index_repr_with_unicode_option
-
-**Paramètres :**
-
-- `index`
-- `expected`
-
-##### test_repr_summary
-
-##### test_summary_bug
-
-##### test_index_repr_bool_nan
-
-##### test_format_different_scalar_lengths
 
 ---
 
@@ -711479,6 +711479,26 @@ differently; checks unnecessary since caught at the Interval level
 
 ---
 
+### test_equals
+
+#### Classes
+
+##### TestEquals
+
+**Méthodes :**
+
+- `test_equals()`
+
+#### Fonctions
+
+##### test_equals
+
+**Paramètres :**
+
+- `closed`
+
+---
+
 ### test_interval
 
 #### Classes
@@ -711743,23 +711763,165 @@ Interval specific tests for is_unique in addition to base class tests
 
 ---
 
-### test_equals
+### test_astype
 
 #### Classes
 
-##### TestEquals
+##### AstypeTests
+
+Tests common to IntervalIndex with any subtype
 
 **Méthodes :**
 
-- `test_equals()`
+- `test_astype_idempotent()`
+- `test_astype_object()`
+- `test_astype_category()`
+- `test_astype_cannot_cast()`
+- `test_astype_invalid_dtype()`
+
+##### TestIntSubtype
+
+Tests specific to IntervalIndex with integer-like subtype
+
+**Méthodes :**
+
+- `index()`
+- `test_subtype_conversion()`
+- `test_subtype_integer()`
+- `test_subtype_integer_errors()`
+
+##### TestFloatSubtype
+
+Tests specific to IntervalIndex with float subtype
+
+**Méthodes :**
+
+- `index()`
+- `test_subtype_integer()`
+- `test_subtype_integer_with_non_integer_borders()`
+- `test_subtype_integer_errors()`
+- `test_subtype_datetimelike()`
+- `test_astype_category()`
+
+##### TestDatetimelikeSubtype
+
+Tests specific to IntervalIndex with datetime-like subtype
+
+**Méthodes :**
+
+- `index()`
+- `test_subtype_integer()`
+- `test_subtype_float()`
+- `test_subtype_datetimelike()`
 
 #### Fonctions
 
-##### test_equals
+##### test_astype_idempotent
 
 **Paramètres :**
 
-- `closed`
+- `index`
+
+##### test_astype_object
+
+**Paramètres :**
+
+- `index`
+
+##### test_astype_category
+
+**Paramètres :**
+
+- `index`
+
+##### test_astype_cannot_cast
+
+**Paramètres :**
+
+- `index`
+- `dtype`
+
+##### test_astype_invalid_dtype
+
+**Paramètres :**
+
+- `index`
+
+##### index
+
+**Paramètres :**
+
+- `request`
+
+##### test_subtype_conversion
+
+**Paramètres :**
+
+- `index`
+- `subtype`
+
+##### test_subtype_integer
+
+**Paramètres :**
+
+- `subtype_start`
+- `subtype_end`
+
+##### test_subtype_integer_errors
+
+##### index
+
+**Paramètres :**
+
+- `request`
+
+##### test_subtype_integer
+
+**Paramètres :**
+
+- `subtype`
+
+##### test_subtype_integer_with_non_integer_borders
+
+**Paramètres :**
+
+- `subtype`
+
+##### test_subtype_integer_errors
+
+##### test_subtype_datetimelike
+
+**Paramètres :**
+
+- `index`
+- `subtype`
+
+##### test_astype_category
+
+**Paramètres :**
+
+- `index`
+
+##### index
+
+**Paramètres :**
+
+- `request`
+
+##### test_subtype_integer
+
+**Paramètres :**
+
+- `index`
+- `subtype`
+
+##### test_subtype_float
+
+**Paramètres :**
+
+- `index`
+
+##### test_subtype_datetimelike
 
 ---
 
@@ -712008,168 +712170,6 @@ Interval specific tests for is_unique in addition to base class tests
 ##### test_putmask_td64
 
 ##### test_contains_dunder
-
----
-
-### test_astype
-
-#### Classes
-
-##### AstypeTests
-
-Tests common to IntervalIndex with any subtype
-
-**Méthodes :**
-
-- `test_astype_idempotent()`
-- `test_astype_object()`
-- `test_astype_category()`
-- `test_astype_cannot_cast()`
-- `test_astype_invalid_dtype()`
-
-##### TestIntSubtype
-
-Tests specific to IntervalIndex with integer-like subtype
-
-**Méthodes :**
-
-- `index()`
-- `test_subtype_conversion()`
-- `test_subtype_integer()`
-- `test_subtype_integer_errors()`
-
-##### TestFloatSubtype
-
-Tests specific to IntervalIndex with float subtype
-
-**Méthodes :**
-
-- `index()`
-- `test_subtype_integer()`
-- `test_subtype_integer_with_non_integer_borders()`
-- `test_subtype_integer_errors()`
-- `test_subtype_datetimelike()`
-- `test_astype_category()`
-
-##### TestDatetimelikeSubtype
-
-Tests specific to IntervalIndex with datetime-like subtype
-
-**Méthodes :**
-
-- `index()`
-- `test_subtype_integer()`
-- `test_subtype_float()`
-- `test_subtype_datetimelike()`
-
-#### Fonctions
-
-##### test_astype_idempotent
-
-**Paramètres :**
-
-- `index`
-
-##### test_astype_object
-
-**Paramètres :**
-
-- `index`
-
-##### test_astype_category
-
-**Paramètres :**
-
-- `index`
-
-##### test_astype_cannot_cast
-
-**Paramètres :**
-
-- `index`
-- `dtype`
-
-##### test_astype_invalid_dtype
-
-**Paramètres :**
-
-- `index`
-
-##### index
-
-**Paramètres :**
-
-- `request`
-
-##### test_subtype_conversion
-
-**Paramètres :**
-
-- `index`
-- `subtype`
-
-##### test_subtype_integer
-
-**Paramètres :**
-
-- `subtype_start`
-- `subtype_end`
-
-##### test_subtype_integer_errors
-
-##### index
-
-**Paramètres :**
-
-- `request`
-
-##### test_subtype_integer
-
-**Paramètres :**
-
-- `subtype`
-
-##### test_subtype_integer_with_non_integer_borders
-
-**Paramètres :**
-
-- `subtype`
-
-##### test_subtype_integer_errors
-
-##### test_subtype_datetimelike
-
-**Paramètres :**
-
-- `index`
-- `subtype`
-
-##### test_astype_category
-
-**Paramètres :**
-
-- `index`
-
-##### index
-
-**Paramètres :**
-
-- `request`
-
-##### test_subtype_integer
-
-**Paramètres :**
-
-- `index`
-- `subtype`
-
-##### test_subtype_float
-
-**Paramètres :**
-
-- `index`
-
-##### test_subtype_datetimelike
 
 ---
 
@@ -713059,6 +713059,25 @@ shared endpoints are marked as overlapping
 
 ---
 
+### test_astype
+
+#### Fonctions
+
+##### test_astype
+
+**Paramètres :**
+
+- `idx`
+
+##### test_astype_category
+
+**Paramètres :**
+
+- `idx`
+- `ordered`
+
+---
+
 ### test_analytics
 
 #### Fonctions
@@ -713456,25 +713475,6 @@ shared endpoints are marked as overlapping
 **Paramètres :**
 
 - `monkeypatch`
-
----
-
-### test_astype
-
-#### Fonctions
-
-##### test_astype
-
-**Paramètres :**
-
-- `idx`
-
-##### test_astype_category
-
-**Paramètres :**
-
-- `idx`
-- `ordered`
 
 ---
 
@@ -713989,33 +713989,6 @@ shared endpoints are marked as overlapping
 
 ---
 
-### test_monotonic
-
-#### Fonctions
-
-##### test_is_monotonic_increasing_lexsorted
-
-**Paramètres :**
-
-- `lexsorted_two_level_string_multiindex`
-
-##### test_is_monotonic_increasing
-
-##### test_is_monotonic_decreasing
-
-##### test_is_strictly_monotonic_increasing
-
-##### test_is_strictly_monotonic_decreasing
-
-##### test_is_monotonic_with_nans
-
-**Paramètres :**
-
-- `values`
-- `attr`
-
----
-
 ### test_isin
 
 #### Fonctions
@@ -714043,6 +714016,33 @@ shared endpoints are marked as overlapping
 ##### test_isin_empty
 
 ##### test_isin_generator
+
+---
+
+### test_monotonic
+
+#### Fonctions
+
+##### test_is_monotonic_increasing_lexsorted
+
+**Paramètres :**
+
+- `lexsorted_two_level_string_multiindex`
+
+##### test_is_monotonic_increasing
+
+##### test_is_monotonic_decreasing
+
+##### test_is_strictly_monotonic_increasing
+
+##### test_is_strictly_monotonic_decreasing
+
+##### test_is_monotonic_with_nans
+
+**Paramètres :**
+
+- `values`
+- `attr`
 
 ---
 
@@ -714173,6 +714173,30 @@ shared endpoints are marked as overlapping
 
 ---
 
+### test_lexsort
+
+#### Classes
+
+##### TestIsLexsorted
+
+**Méthodes :**
+
+- `test_is_lexsorted()`
+
+##### TestLexsortDepth
+
+**Méthodes :**
+
+- `test_lexsort_depth()`
+
+#### Fonctions
+
+##### test_is_lexsorted
+
+##### test_lexsort_depth
+
+---
+
 ### test_partial_indexing
 
 #### Fonctions
@@ -714208,30 +714232,6 @@ shared endpoints are marked as overlapping
 **Paramètres :**
 
 - `df`
-
----
-
-### test_lexsort
-
-#### Classes
-
-##### TestIsLexsorted
-
-**Méthodes :**
-
-- `test_is_lexsorted()`
-
-##### TestLexsortDepth
-
-**Méthodes :**
-
-- `test_lexsort_depth()`
-
-#### Fonctions
-
-##### test_is_lexsorted
-
-##### test_lexsort_depth
 
 ---
 
@@ -714695,6 +714695,69 @@ Tests for PeriodIndex behaving like a vectorized Period scalar
 
 ---
 
+### test_formats
+
+#### Classes
+
+##### TestPeriodIndexRendering
+
+**Méthodes :**
+
+- `test_format_empty()`
+- `test_representation()`
+- `test_representation_to_series()`
+- `test_summary()`
+
+##### TestPeriodIndexFormat
+
+**Méthodes :**
+
+- `test_period_format_and_strftime_default()`
+- `test_period_custom()`
+- `test_period_tz()`
+- `test_period_non_ascii_fmt()`
+- `test_period_custom_locale_directive()`
+
+#### Fonctions
+
+##### get_local_am_pm
+
+Return the AM and PM strings returned by strftime in current locale.
+
+##### test_get_values_for_csv
+
+##### test_format_empty
+
+##### test_representation
+
+**Paramètres :**
+
+- `method`
+
+##### test_representation_to_series
+
+##### test_summary
+
+##### test_period_format_and_strftime_default
+
+##### test_period_custom
+
+##### test_period_tz
+
+##### test_period_non_ascii_fmt
+
+**Paramètres :**
+
+- `locale_str`
+
+##### test_period_custom_locale_directive
+
+**Paramètres :**
+
+- `locale_str`
+
+---
+
 ### test_indexing
 
 #### Classes
@@ -714869,69 +714932,6 @@ Tests for PeriodIndex behaving like a vectorized Period scalar
 
 ---
 
-### test_formats
-
-#### Classes
-
-##### TestPeriodIndexRendering
-
-**Méthodes :**
-
-- `test_format_empty()`
-- `test_representation()`
-- `test_representation_to_series()`
-- `test_summary()`
-
-##### TestPeriodIndexFormat
-
-**Méthodes :**
-
-- `test_period_format_and_strftime_default()`
-- `test_period_custom()`
-- `test_period_tz()`
-- `test_period_non_ascii_fmt()`
-- `test_period_custom_locale_directive()`
-
-#### Fonctions
-
-##### get_local_am_pm
-
-Return the AM and PM strings returned by strftime in current locale.
-
-##### test_get_values_for_csv
-
-##### test_format_empty
-
-##### test_representation
-
-**Paramètres :**
-
-- `method`
-
-##### test_representation_to_series
-
-##### test_summary
-
-##### test_period_format_and_strftime_default
-
-##### test_period_custom
-
-##### test_period_tz
-
-##### test_period_non_ascii_fmt
-
-**Paramètres :**
-
-- `locale_str`
-
-##### test_period_custom_locale_directive
-
-**Paramètres :**
-
-- `locale_str`
-
----
-
 ### test_setops
 
 #### Classes
@@ -714996,6 +714996,37 @@ Return the AM and PM strings returned by strftime in current locale.
 ##### test_intersection_equal_duplicates
 
 ##### test_union_duplicates
+
+---
+
+### test_tools
+
+#### Classes
+
+##### TestPeriodRepresentation
+
+Wish to match NumPy units
+
+**Méthodes :**
+
+- `test_freq()`
+
+##### TestPeriodIndexConversion
+
+**Méthodes :**
+
+- `test_tolist()`
+
+#### Fonctions
+
+##### test_freq
+
+**Paramètres :**
+
+- `freq`
+- `base_date`
+
+##### test_tolist
 
 ---
 
@@ -715065,37 +715096,6 @@ Return the AM and PM strings returned by strftime in current locale.
 ##### test_is_monotonic_increasing
 
 ##### test_is_monotonic_decreasing
-
----
-
-### test_tools
-
-#### Classes
-
-##### TestPeriodRepresentation
-
-Wish to match NumPy units
-
-**Méthodes :**
-
-- `test_freq()`
-
-##### TestPeriodIndexConversion
-
-**Méthodes :**
-
-- `test_tolist()`
-
-#### Fonctions
-
-##### test_freq
-
-**Paramètres :**
-
-- `freq`
-- `base_date`
-
-##### test_tolist
 
 ---
 
@@ -715560,6 +715560,38 @@ Wish to match NumPy units
 
 ---
 
+### test_astype
+
+#### Classes
+
+##### TestAstype
+
+**Méthodes :**
+
+- `test_astype()`
+- `test_astype_category()`
+- `test_categorical_date_roundtrip()`
+
+#### Fonctions
+
+##### test_astype
+
+##### test_astype_category
+
+**Paramètres :**
+
+- `name`
+- `dtype_ordered`
+- `index_ordered`
+
+##### test_categorical_date_roundtrip
+
+**Paramètres :**
+
+- `box`
+
+---
+
 ### test_indexing
 
 #### Classes
@@ -715675,38 +715707,6 @@ Wish to match NumPy units
 
 ---
 
-### test_astype
-
-#### Classes
-
-##### TestAstype
-
-**Méthodes :**
-
-- `test_astype()`
-- `test_astype_category()`
-- `test_categorical_date_roundtrip()`
-
-#### Fonctions
-
-##### test_astype
-
-##### test_astype_category
-
-**Paramètres :**
-
-- `name`
-- `dtype_ordered`
-- `index_ordered`
-
-##### test_categorical_date_roundtrip
-
-**Paramètres :**
-
-- `box`
-
----
-
 ### test_formats
 
 Tests for CategoricalIndex.__repr__ and related methods.
@@ -715737,6 +715737,28 @@ Tests for CategoricalIndex.__repr__ and related methods.
 **Paramètres :**
 
 - `na_value`
+
+---
+
+### test_fillna
+
+#### Classes
+
+##### TestFillNA
+
+**Méthodes :**
+
+- `test_fillna_categorical()`
+- `test_fillna_copies_with_no_nas()`
+- `test_fillna_validates_with_no_nas()`
+
+#### Fonctions
+
+##### test_fillna_categorical
+
+##### test_fillna_copies_with_no_nas
+
+##### test_fillna_validates_with_no_nas
 
 ---
 
@@ -715848,28 +715870,6 @@ Tests for CategoricalIndex.__repr__ and related methods.
 ##### test_method_delegation
 
 ##### test_remove_maintains_order
-
----
-
-### test_fillna
-
-#### Classes
-
-##### TestFillNA
-
-**Méthodes :**
-
-- `test_fillna_categorical()`
-- `test_fillna_copies_with_no_nas()`
-- `test_fillna_validates_with_no_nas()`
-
-#### Fonctions
-
-##### test_fillna_categorical
-
-##### test_fillna_copies_with_no_nas
-
-##### test_fillna_validates_with_no_nas
 
 ---
 
@@ -718034,6 +718034,104 @@ Tests for DatetimeIndex methods behaving like their Timestamp counterparts
 
 ---
 
+### test_formats
+
+#### Classes
+
+##### TestDatetimeIndexRendering
+
+**Méthodes :**
+
+- `test_dti_with_timezone_repr()`
+- `test_dti_repr_dates()`
+- `test_dti_repr_mixed()`
+- `test_dti_repr_short()`
+- `test_dti_repr_time_midnight()`
+- `test_dti_representation()`
+- `test_dti_representation_to_series()`
+- `test_dti_summary()`
+- `test_dti_business_repr_etc_smoke()`
+
+##### TestFormat
+
+**Méthodes :**
+
+- `test_format()`
+- `test_format_with_name_time_info()`
+- `test_format_datetime_with_time()`
+- `test_format_datetime()`
+- `test_format_date()`
+- `test_format_date_tz()`
+- `test_format_date_explicit_date_format()`
+
+#### Fonctions
+
+##### unit
+
+**Paramètres :**
+
+- `request`
+
+##### test_get_values_for_csv
+
+##### test_dti_with_timezone_repr
+
+**Paramètres :**
+
+- `tzstr`
+
+##### test_dti_repr_dates
+
+##### test_dti_repr_mixed
+
+##### test_dti_repr_short
+
+##### test_dti_repr_time_midnight
+
+**Paramètres :**
+
+- `dates`
+- `freq`
+- `expected_repr`
+- `unit`
+
+##### test_dti_representation
+
+**Paramètres :**
+
+- `unit`
+
+##### test_dti_representation_to_series
+
+**Paramètres :**
+
+- `unit`
+
+##### test_dti_summary
+
+##### test_dti_business_repr_etc_smoke
+
+**Paramètres :**
+
+- `tz`
+- `freq`
+
+##### test_format
+
+##### test_format_with_name_time_info
+
+##### test_format_datetime_with_time
+
+##### test_format_datetime
+
+##### test_format_date
+
+##### test_format_date_tz
+
+##### test_format_date_explicit_date_format
+
+---
+
 ### test_indexing
 
 #### Classes
@@ -718281,104 +718379,6 @@ Tests for DatetimeIndex methods behaving like their Timestamp counterparts
 
 ---
 
-### test_formats
-
-#### Classes
-
-##### TestDatetimeIndexRendering
-
-**Méthodes :**
-
-- `test_dti_with_timezone_repr()`
-- `test_dti_repr_dates()`
-- `test_dti_repr_mixed()`
-- `test_dti_repr_short()`
-- `test_dti_repr_time_midnight()`
-- `test_dti_representation()`
-- `test_dti_representation_to_series()`
-- `test_dti_summary()`
-- `test_dti_business_repr_etc_smoke()`
-
-##### TestFormat
-
-**Méthodes :**
-
-- `test_format()`
-- `test_format_with_name_time_info()`
-- `test_format_datetime_with_time()`
-- `test_format_datetime()`
-- `test_format_date()`
-- `test_format_date_tz()`
-- `test_format_date_explicit_date_format()`
-
-#### Fonctions
-
-##### unit
-
-**Paramètres :**
-
-- `request`
-
-##### test_get_values_for_csv
-
-##### test_dti_with_timezone_repr
-
-**Paramètres :**
-
-- `tzstr`
-
-##### test_dti_repr_dates
-
-##### test_dti_repr_mixed
-
-##### test_dti_repr_short
-
-##### test_dti_repr_time_midnight
-
-**Paramètres :**
-
-- `dates`
-- `freq`
-- `expected_repr`
-- `unit`
-
-##### test_dti_representation
-
-**Paramètres :**
-
-- `unit`
-
-##### test_dti_representation_to_series
-
-**Paramètres :**
-
-- `unit`
-
-##### test_dti_summary
-
-##### test_dti_business_repr_etc_smoke
-
-**Paramètres :**
-
-- `tz`
-- `freq`
-
-##### test_format
-
-##### test_format_with_name_time_info
-
-##### test_format_datetime_with_time
-
-##### test_format_datetime
-
-##### test_format_date
-
-##### test_format_date_tz
-
-##### test_format_date_explicit_date_format
-
----
-
 ### test_setops
 
 #### Classes
@@ -718604,6 +718604,22 @@ Tests for DatetimeIndex methods behaving like their Timestamp counterparts
 
 ---
 
+### test_npfuncs
+
+#### Classes
+
+##### TestSplit
+
+**Méthodes :**
+
+- `test_split_non_utc()`
+
+#### Fonctions
+
+##### test_split_non_utc
+
+---
+
 ### test_datetime
 
 #### Classes
@@ -718759,22 +718775,6 @@ test partial slicing on Series/Frame
 - `end`
 
 ##### test_slice_reduce_to_series
-
----
-
-### test_npfuncs
-
-#### Classes
-
-##### TestSplit
-
-**Méthodes :**
-
-- `test_split_non_utc()`
-
-#### Fonctions
-
-##### test_split_non_utc
 
 ---
 
@@ -719465,141 +719465,6 @@ test partial slicing on Series/Frame
 
 ---
 
-### test_tz_localize
-
-#### Classes
-
-##### TestTZLocalize
-
-**Méthodes :**
-
-- `test_tz_localize_invalidates_freq()`
-- `test_tz_localize_utc_copies()`
-- `test_dti_tz_localize_nonexistent_raise_coerce()`
-- `test_dti_tz_localize_ambiguous_infer()`
-- `test_dti_tz_localize_ambiguous_infer2()`
-- `test_dti_tz_localize_ambiguous_infer3()`
-- `test_dti_tz_localize_ambiguous_times()`
-- `test_dti_tz_localize_pass_dates_to_utc()`
-- `test_dti_tz_localize()`
-- `test_dti_tz_localize_utc_conversion()`
-- `test_dti_tz_localize_roundtrip()`
-- `test_dti_tz_localize_naive()`
-- `test_dti_tz_localize_tzlocal()`
-- `test_dti_tz_localize_ambiguous_nat()`
-- `test_dti_tz_localize_ambiguous_flags()`
-- `test_dti_tz_localize_ambiguous_flags2()`
-- `test_dti_tz_localize_bdate_range()`
-- `test_dti_tz_localize_nonexistent_shift()`
-- `test_dti_tz_localize_nonexistent_shift_invalid()`
-
-#### Fonctions
-
-##### test_tz_localize_invalidates_freq
-
-##### test_tz_localize_utc_copies
-
-**Paramètres :**
-
-- `utc_fixture`
-
-##### test_dti_tz_localize_nonexistent_raise_coerce
-
-##### test_dti_tz_localize_ambiguous_infer
-
-**Paramètres :**
-
-- `tz`
-
-##### test_dti_tz_localize_ambiguous_infer2
-
-**Paramètres :**
-
-- `tz`
-- `unit`
-
-##### test_dti_tz_localize_ambiguous_infer3
-
-**Paramètres :**
-
-- `tz`
-
-##### test_dti_tz_localize_ambiguous_times
-
-**Paramètres :**
-
-- `tz`
-
-##### test_dti_tz_localize_pass_dates_to_utc
-
-**Paramètres :**
-
-- `tzstr`
-
-##### test_dti_tz_localize
-
-**Paramètres :**
-
-- `prefix`
-
-##### test_dti_tz_localize_utc_conversion
-
-**Paramètres :**
-
-- `tz`
-
-##### test_dti_tz_localize_roundtrip
-
-**Paramètres :**
-
-- `tz_aware_fixture`
-
-##### test_dti_tz_localize_naive
-
-##### test_dti_tz_localize_tzlocal
-
-##### test_dti_tz_localize_ambiguous_nat
-
-**Paramètres :**
-
-- `tz`
-
-##### test_dti_tz_localize_ambiguous_flags
-
-**Paramètres :**
-
-- `tz`
-- `unit`
-
-##### test_dti_tz_localize_ambiguous_flags2
-
-**Paramètres :**
-
-- `tz`
-- `unit`
-
-##### test_dti_tz_localize_bdate_range
-
-##### test_dti_tz_localize_nonexistent_shift
-
-**Paramètres :**
-
-- `start_ts`
-- `tz`
-- `end_ts`
-- `shift`
-- `tz_type`
-- `unit`
-
-##### test_dti_tz_localize_nonexistent_shift_invalid
-
-**Paramètres :**
-
-- `offset`
-- `warsaw`
-
----
-
 ### test_astype
 
 #### Classes
@@ -719737,19 +719602,138 @@ test partial slicing on Series/Frame
 
 ---
 
-### test_to_series
+### test_tz_localize
 
 #### Classes
 
-##### TestToSeries
+##### TestTZLocalize
 
 **Méthodes :**
 
-- `test_to_series()`
+- `test_tz_localize_invalidates_freq()`
+- `test_tz_localize_utc_copies()`
+- `test_dti_tz_localize_nonexistent_raise_coerce()`
+- `test_dti_tz_localize_ambiguous_infer()`
+- `test_dti_tz_localize_ambiguous_infer2()`
+- `test_dti_tz_localize_ambiguous_infer3()`
+- `test_dti_tz_localize_ambiguous_times()`
+- `test_dti_tz_localize_pass_dates_to_utc()`
+- `test_dti_tz_localize()`
+- `test_dti_tz_localize_utc_conversion()`
+- `test_dti_tz_localize_roundtrip()`
+- `test_dti_tz_localize_naive()`
+- `test_dti_tz_localize_tzlocal()`
+- `test_dti_tz_localize_ambiguous_nat()`
+- `test_dti_tz_localize_ambiguous_flags()`
+- `test_dti_tz_localize_ambiguous_flags2()`
+- `test_dti_tz_localize_bdate_range()`
+- `test_dti_tz_localize_nonexistent_shift()`
+- `test_dti_tz_localize_nonexistent_shift_invalid()`
 
 #### Fonctions
 
-##### test_to_series
+##### test_tz_localize_invalidates_freq
+
+##### test_tz_localize_utc_copies
+
+**Paramètres :**
+
+- `utc_fixture`
+
+##### test_dti_tz_localize_nonexistent_raise_coerce
+
+##### test_dti_tz_localize_ambiguous_infer
+
+**Paramètres :**
+
+- `tz`
+
+##### test_dti_tz_localize_ambiguous_infer2
+
+**Paramètres :**
+
+- `tz`
+- `unit`
+
+##### test_dti_tz_localize_ambiguous_infer3
+
+**Paramètres :**
+
+- `tz`
+
+##### test_dti_tz_localize_ambiguous_times
+
+**Paramètres :**
+
+- `tz`
+
+##### test_dti_tz_localize_pass_dates_to_utc
+
+**Paramètres :**
+
+- `tzstr`
+
+##### test_dti_tz_localize
+
+**Paramètres :**
+
+- `prefix`
+
+##### test_dti_tz_localize_utc_conversion
+
+**Paramètres :**
+
+- `tz`
+
+##### test_dti_tz_localize_roundtrip
+
+**Paramètres :**
+
+- `tz_aware_fixture`
+
+##### test_dti_tz_localize_naive
+
+##### test_dti_tz_localize_tzlocal
+
+##### test_dti_tz_localize_ambiguous_nat
+
+**Paramètres :**
+
+- `tz`
+
+##### test_dti_tz_localize_ambiguous_flags
+
+**Paramètres :**
+
+- `tz`
+- `unit`
+
+##### test_dti_tz_localize_ambiguous_flags2
+
+**Paramètres :**
+
+- `tz`
+- `unit`
+
+##### test_dti_tz_localize_bdate_range
+
+##### test_dti_tz_localize_nonexistent_shift
+
+**Paramètres :**
+
+- `start_ts`
+- `tz`
+- `end_ts`
+- `shift`
+- `tz_type`
+- `unit`
+
+##### test_dti_tz_localize_nonexistent_shift_invalid
+
+**Paramètres :**
+
+- `offset`
+- `warsaw`
 
 ---
 
@@ -719770,6 +719754,22 @@ test partial slicing on Series/Frame
 **Paramètres :**
 
 - `tz`
+
+---
+
+### test_to_series
+
+#### Classes
+
+##### TestToSeries
+
+**Méthodes :**
+
+- `test_to_series()`
+
+#### Fonctions
+
+##### test_to_series
 
 ---
 
@@ -720158,6 +720158,28 @@ test partial slicing on Series/Frame
 
 ---
 
+### test_delete
+
+#### Classes
+
+##### TestTimedeltaIndexDelete
+
+**Méthodes :**
+
+- `test_delete()`
+- `test_delete_slice()`
+- `test_delete_doesnt_infer_freq()`
+
+#### Fonctions
+
+##### test_delete
+
+##### test_delete_slice
+
+##### test_delete_doesnt_infer_freq
+
+---
+
 ### test_scalar_compat
 
 Tests for TimedeltaIndex methods behaving like their Timedelta counterparts
@@ -720325,28 +720347,6 @@ Tests for TimedeltaIndex methods behaving like their Timedelta counterparts
 ##### test_contains_nonunique
 
 ##### test_contains
-
----
-
-### test_delete
-
-#### Classes
-
-##### TestTimedeltaIndexDelete
-
-**Méthodes :**
-
-- `test_delete()`
-- `test_delete_slice()`
-- `test_delete_doesnt_infer_freq()`
-
-#### Fonctions
-
-##### test_delete
-
-##### test_delete_slice
-
-##### test_delete_doesnt_infer_freq
 
 ---
 
@@ -740971,6 +740971,51 @@ Automatic retrieval of remote references is deprecated as of v4.18.0.
 
 ---
 
+### test_format
+
+Tests for the parts of jsonschema related to the :kw:`format` keyword.
+
+#### Classes
+
+##### TestFormatChecker
+
+**Méthodes :**
+
+- `test_it_can_validate_no_formats()`
+- `test_it_raises_a_key_error_for_unknown_formats()`
+- `test_it_can_register_cls_checkers()`
+- `test_it_can_register_checkers()`
+- `test_it_catches_registered_errors()`
+- `test_format_error_causes_become_validation_error_causes()`
+- `test_format_checkers_come_with_defaults()`
+- `test_repr()`
+
+#### Fonctions
+
+##### boom
+
+**Paramètres :**
+
+- `thing`
+
+##### test_it_can_validate_no_formats
+
+##### test_it_raises_a_key_error_for_unknown_formats
+
+##### test_it_can_register_cls_checkers
+
+##### test_it_can_register_checkers
+
+##### test_it_catches_registered_errors
+
+##### test_format_error_causes_become_validation_error_causes
+
+##### test_format_checkers_come_with_defaults
+
+##### test_repr
+
+---
+
 ### test_exceptions
 
 #### Classes
@@ -741287,105 +741332,6 @@ that returned truthy values.
 
 ---
 
-### test_format
-
-Tests for the parts of jsonschema related to the :kw:`format` keyword.
-
-#### Classes
-
-##### TestFormatChecker
-
-**Méthodes :**
-
-- `test_it_can_validate_no_formats()`
-- `test_it_raises_a_key_error_for_unknown_formats()`
-- `test_it_can_register_cls_checkers()`
-- `test_it_can_register_checkers()`
-- `test_it_catches_registered_errors()`
-- `test_format_error_causes_become_validation_error_causes()`
-- `test_format_checkers_come_with_defaults()`
-- `test_repr()`
-
-#### Fonctions
-
-##### boom
-
-**Paramètres :**
-
-- `thing`
-
-##### test_it_can_validate_no_formats
-
-##### test_it_raises_a_key_error_for_unknown_formats
-
-##### test_it_can_register_cls_checkers
-
-##### test_it_can_register_checkers
-
-##### test_it_catches_registered_errors
-
-##### test_format_error_causes_become_validation_error_causes
-
-##### test_format_checkers_come_with_defaults
-
-##### test_repr
-
----
-
-### test_jsonschema_test_suite
-
-Test runner for the JSON Schema official test suite
-
-Tests comprehensive correctness of each draft's validator.
-
-See https://github.com/json-schema-org/JSON-Schema-Test-Suite for details.
-
-#### Fonctions
-
-##### skip
-
-**Paramètres :**
-
-- `message`
-
-##### ecmascript_regex
-
-**Paramètres :**
-
-- `test`
-
-##### missing_format
-
-**Paramètres :**
-
-- `Validator`
-
-##### complex_email_validation
-
-**Paramètres :**
-
-- `test`
-
-##### leap_second
-
-**Paramètres :**
-
-- `test`
-
-##### skipper
-
-**Paramètres :**
-
-- `test`
-
-##### missing_format
-
-**Paramètres :**
-
-- `test`
-
----
-
 ### test_types
 
 Tests for the `TypeChecker`-based type interface.
@@ -741509,6 +741455,60 @@ ignoring the fact that the function itself can raise that.
 - `value`
 - `instance`
 - `schema`
+
+---
+
+### test_jsonschema_test_suite
+
+Test runner for the JSON Schema official test suite
+
+Tests comprehensive correctness of each draft's validator.
+
+See https://github.com/json-schema-org/JSON-Schema-Test-Suite for details.
+
+#### Fonctions
+
+##### skip
+
+**Paramètres :**
+
+- `message`
+
+##### ecmascript_regex
+
+**Paramètres :**
+
+- `test`
+
+##### missing_format
+
+**Paramètres :**
+
+- `Validator`
+
+##### complex_email_validation
+
+**Paramètres :**
+
+- `test`
+
+##### leap_second
+
+**Paramètres :**
+
+- `test`
+
+##### skipper
+
+**Paramètres :**
+
+- `test`
+
+##### missing_format
+
+**Paramètres :**
+
+- `test`
 
 ---
 
@@ -799415,6 +799415,41 @@ Examples
 
 ---
 
+### time_util
+
+#### Fonctions
+
+##### adjust_years
+
+Add or subtract years from a date.
+
+**Paramètres :**
+
+- `input_date`
+- `years`
+
+##### time_to_seconds
+
+**Paramètres :**
+
+- `t`
+
+##### time_to_seconds
+
+**Paramètres :**
+
+- `t`
+
+##### time_to_seconds
+
+Convert a time string value to a float representing "number of seconds".
+
+**Paramètres :**
+
+- `t`
+
+---
+
 ### temporary_directory
 
 #### Classes
@@ -799458,41 +799493,6 @@ dir : str or None
 - `exc_type`
 - `exc_value`
 - `exc_traceback`
-
----
-
-### time_util
-
-#### Fonctions
-
-##### adjust_years
-
-Add or subtract years from a date.
-
-**Paramètres :**
-
-- `input_date`
-- `years`
-
-##### time_to_seconds
-
-**Paramètres :**
-
-- `t`
-
-##### time_to_seconds
-
-**Paramètres :**
-
-- `t`
-
-##### time_to_seconds
-
-Convert a time string value to a float representing "number of seconds".
-
-**Paramètres :**
-
-- `t`
 
 ---
 
@@ -820926,6 +820926,12 @@ Generated protocol buffer code.
 
 ---
 
+### Arrow_pb2
+
+Generated protocol buffer code.
+
+---
+
 ### ArrowNamedDataSet_pb2
 
 Generated protocol buffer code.
@@ -820938,7 +820944,7 @@ Generated protocol buffer code.
 
 ---
 
-### Arrow_pb2
+### Audio_pb2
 
 Generated protocol buffer code.
 
@@ -820950,25 +820956,19 @@ Generated protocol buffer code.
 
 ---
 
-### Audio_pb2
-
-Generated protocol buffer code.
-
----
-
 ### AuthRedirect_pb2
 
 Generated protocol buffer code.
 
 ---
 
-### AutoRerun_pb2
+### BackMsg_pb2
 
 Generated protocol buffer code.
 
 ---
 
-### BackMsg_pb2
+### AutoRerun_pb2
 
 Generated protocol buffer code.
 
@@ -820986,6 +820986,12 @@ Generated protocol buffer code.
 
 ---
 
+### Button_pb2
+
+Generated protocol buffer code.
+
+---
+
 ### BokehChart_pb2
 
 Generated protocol buffer code.
@@ -820993,12 +820999,6 @@ Generated protocol buffer code.
 ---
 
 ### ButtonGroup_pb2
-
-Generated protocol buffer code.
-
----
-
-### Button_pb2
 
 Generated protocol buffer code.
 
@@ -821046,6 +821046,12 @@ Generated protocol buffer code.
 
 ---
 
+### Delta_pb2
+
+Generated protocol buffer code.
+
+---
+
 ### Components_pb2
 
 Generated protocol buffer code.
@@ -821070,7 +821076,7 @@ Generated protocol buffer code.
 
 ---
 
-### Delta_pb2
+### Element_pb2
 
 Generated protocol buffer code.
 
@@ -821082,19 +821088,13 @@ Generated protocol buffer code.
 
 ---
 
-### DownloadButton_pb2
-
-Generated protocol buffer code.
-
----
-
-### Element_pb2
-
-Generated protocol buffer code.
-
----
-
 ### Empty_pb2
+
+Generated protocol buffer code.
+
+---
+
+### DownloadButton_pb2
 
 Generated protocol buffer code.
 
@@ -821112,6 +821112,12 @@ Generated protocol buffer code.
 
 ---
 
+### GapSize_pb2
+
+Generated protocol buffer code.
+
+---
+
 ### FileUploader_pb2
 
 Generated protocol buffer code.
@@ -821124,25 +821130,19 @@ Generated protocol buffer code.
 
 ---
 
-### GapSize_pb2
-
-Generated protocol buffer code.
-
----
-
 ### GitInfo_pb2
 
 Generated protocol buffer code.
 
 ---
 
-### GraphVizChart_pb2
+### Heading_pb2
 
 Generated protocol buffer code.
 
 ---
 
-### Heading_pb2
+### GraphVizChart_pb2
 
 Generated protocol buffer code.
 
@@ -821184,13 +821184,13 @@ Generated protocol buffer code.
 
 ---
 
-### LinkButton_pb2
+### Logo_pb2
 
 Generated protocol buffer code.
 
 ---
 
-### Logo_pb2
+### LinkButton_pb2
 
 Generated protocol buffer code.
 
@@ -821203,6 +821203,12 @@ Generated protocol buffer code.
 ---
 
 ### Metric_pb2
+
+Generated protocol buffer code.
+
+---
+
+### PageInfo_pb2
 
 Generated protocol buffer code.
 
@@ -821250,13 +821256,13 @@ Generated protocol buffer code.
 
 ---
 
-### PageInfo_pb2
+### PageLink_pb2
 
 Generated protocol buffer code.
 
 ---
 
-### PageLink_pb2
+### Progress_pb2
 
 Generated protocol buffer code.
 
@@ -821292,19 +821298,25 @@ Generated protocol buffer code.
 
 ---
 
-### Progress_pb2
-
-Generated protocol buffer code.
-
----
-
 ### Radio_pb2
 
 Generated protocol buffer code.
 
 ---
 
+### Skeleton_pb2
+
+Generated protocol buffer code.
+
+---
+
 ### RootContainer_pb2
+
+Generated protocol buffer code.
+
+---
+
+### Slider_pb2
 
 Generated protocol buffer code.
 
@@ -821323,18 +821335,6 @@ Generated protocol buffer code.
 ---
 
 ### SessionStatus_pb2
-
-Generated protocol buffer code.
-
----
-
-### Skeleton_pb2
-
-Generated protocol buffer code.
-
----
-
-### Slider_pb2
 
 Generated protocol buffer code.
 
@@ -821370,13 +821370,13 @@ Generated protocol buffer code.
 
 ---
 
-### TimeInput_pb2
+### Toast_pb2
 
 Generated protocol buffer code.
 
 ---
 
-### Toast_pb2
+### TimeInput_pb2
 
 Generated protocol buffer code.
 
@@ -852234,6 +852234,311 @@ this class as the result of resolving a standard ForwardRef.
 
 ---
 
+### _generics
+
+#### Classes
+
+##### LimitedDict
+
+**Méthodes :**
+
+- `__init__()`
+- `__setitem__()`
+
+##### PydanticGenericMetadata
+
+##### DeepChainMap
+
+##### DeepChainMap
+
+Variant of ChainMap that allows direct updates to inner scopes.
+
+Taken from https://docs.python.org/3/library/collections.html#collections.ChainMap,
+with some light modifications for this use case.
+
+**Méthodes :**
+
+- `clear()`
+- `__setitem__()`
+- `__delitem__()`
+
+#### Fonctions
+
+##### create_generic_submodel
+
+Dynamically create a submodel of a provided (generic) BaseModel.
+
+This is used when producing concrete parametrizations of generic models. This function
+only *creates* the new subclass; the schema/validators/serialization must be updated to
+reflect a concrete parametrization elsewhere.
+
+Args:
+    model_name: The name of the newly created model.
+    origin: The base class for the new model to inherit from.
+    args: A tuple of generic metadata arguments.
+    params: A tuple of generic metadata parameters.
+
+Returns:
+    The created submodel.
+
+**Paramètres :**
+
+- `model_name`
+- `origin`
+- `args`
+- `params`
+
+##### _get_caller_frame_info
+
+Used inside a function to check whether it was called globally.
+
+Args:
+    depth: The depth to get the frame.
+
+Returns:
+    A tuple contains `module_name` and `called_globally`.
+
+Raises:
+    RuntimeError: If the function is not called inside a function.
+
+**Paramètres :**
+
+- `depth`
+
+##### iter_contained_typevars
+
+Recursively iterate through all subtypes and type args of `v` and yield any typevars that are found.
+
+This is inspired as an alternative to directly accessing the `__parameters__` attribute of a GenericAlias,
+since __parameters__ of (nested) generic BaseModel subclasses won't show up in that list.
+
+**Paramètres :**
+
+- `v`
+
+##### get_args
+
+**Paramètres :**
+
+- `v`
+
+##### get_origin
+
+**Paramètres :**
+
+- `v`
+
+##### get_standard_typevars_map
+
+Package a generic type's typevars and parametrization (if present) into a dictionary compatible with the
+`replace_types` function. Specifically, this works with standard typing generics and typing._GenericAlias.
+
+**Paramètres :**
+
+- `cls`
+
+##### get_model_typevars_map
+
+Package a generic BaseModel's typevars and concrete parametrization (if present) into a dictionary compatible
+with the `replace_types` function.
+
+Since BaseModel.__class_getitem__ does not produce a typing._GenericAlias, and the BaseModel generic info is
+stored in the __pydantic_generic_metadata__ attribute, we need special handling here.
+
+**Paramètres :**
+
+- `cls`
+
+##### replace_types
+
+Return type with all occurrences of `type_map` keys recursively replaced with their values.
+
+Args:
+    type_: The class or generic alias.
+    type_map: Mapping from `TypeVar` instance to concrete types.
+
+Returns:
+    A new type representing the basic structure of `type_` with all
+    `typevar_map` keys recursively replaced.
+
+Example:
+    ```python
+    from typing import List, Union
+
+    from pydantic._internal._generics import replace_types
+
+    replace_types(tuple[str, Union[List[str], float]], {str: int})
+    #> tuple[int, Union[List[int], float]]
+    ```
+
+**Paramètres :**
+
+- `type_`
+- `type_map`
+
+##### map_generic_model_arguments
+
+Return a mapping between the parameters of a generic model and the provided arguments during parameterization.
+
+Raises:
+    TypeError: If the number of arguments does not match the parameters (i.e. if providing too few or too many arguments).
+
+Example:
+    ```python {test="skip" lint="skip"}
+    class Model[T, U, V = int](BaseModel): ...
+
+    map_generic_model_arguments(Model, (str, bytes))
+    #> {T: str, U: bytes, V: int}
+
+    map_generic_model_arguments(Model, (str,))
+    #> TypeError: Too few arguments for <class '__main__.Model'>; actual 1, expected at least 2
+
+    map_generic_model_arguments(Model, (str, bytes, int, complex))
+    #> TypeError: Too many arguments for <class '__main__.Model'>; actual 4, expected 3
+    ```
+
+Note:
+    This function is analogous to the private `typing._check_generic_specialization` function.
+
+**Paramètres :**
+
+- `cls`
+- `args`
+
+##### generic_recursion_self_type
+
+This contextmanager should be placed around the recursive calls used to build a generic type,
+and accept as arguments the generic origin type and the type arguments being passed to it.
+
+If the same origin and arguments are observed twice, it implies that a self-reference placeholder
+can be used while building the core schema, and will produce a schema_ref that will be valid in the
+final parent schema.
+
+**Paramètres :**
+
+- `origin`
+- `args`
+
+##### recursively_defined_type_refs
+
+##### get_cached_generic_type_early
+
+The use of a two-stage cache lookup approach was necessary to have the highest performance possible for
+repeated calls to `__class_getitem__` on generic types (which may happen in tighter loops during runtime),
+while still ensuring that certain alternative parametrizations ultimately resolve to the same type.
+
+As a concrete example, this approach was necessary to make Model[List[T]][int] equal to Model[List[int]].
+The approach could be modified to not use two different cache keys at different points, but the
+_early_cache_key is optimized to be as quick to compute as possible (for repeated-access speed), and the
+_late_cache_key is optimized to be as "correct" as possible, so that two types that will ultimately be the
+same after resolving the type arguments will always produce cache hits.
+
+If we wanted to move to only using a single cache key per type, we would either need to always use the
+slower/more computationally intensive logic associated with _late_cache_key, or would need to accept
+that Model[List[T]][int] is a different type than Model[List[T]][int]. Because we rely on subclass relationships
+during validation, I think it is worthwhile to ensure that types that are functionally equivalent are actually
+equal.
+
+**Paramètres :**
+
+- `parent`
+- `typevar_values`
+
+##### get_cached_generic_type_late
+
+See the docstring of `get_cached_generic_type_early` for more information about the two-stage cache lookup.
+
+**Paramètres :**
+
+- `parent`
+- `typevar_values`
+- `origin`
+- `args`
+
+##### set_cached_generic_type
+
+See the docstring of `get_cached_generic_type_early` for more information about why items are cached with
+two different keys.
+
+**Paramètres :**
+
+- `parent`
+- `typevar_values`
+- `type_`
+- `origin`
+- `args`
+
+##### _union_orderings_key
+
+This is intended to help differentiate between Union types with the same arguments in different order.
+
+Thanks to caching internal to the `typing` module, it is not possible to distinguish between
+List[Union[int, float]] and List[Union[float, int]] (and similarly for other "parent" origins besides List)
+because `typing` considers Union[int, float] to be equal to Union[float, int].
+
+However, you _can_ distinguish between (top-level) Union[int, float] vs. Union[float, int].
+Because we parse items as the first Union type that is successful, we get slightly more consistent behavior
+if we make an effort to distinguish the ordering of items in a union. It would be best if we could _always_
+get the exact-correct order of items in the union, but that would require a change to the `typing` module itself.
+(See https://github.com/python/cpython/issues/86483 for reference.)
+
+**Paramètres :**
+
+- `typevar_values`
+
+##### _early_cache_key
+
+This is intended for minimal computational overhead during lookups of cached types.
+
+Note that this is overly simplistic, and it's possible that two different cls/typevar_values
+inputs would ultimately result in the same type being created in BaseModel.__class_getitem__.
+To handle this, we have a fallback _late_cache_key that is checked later if the _early_cache_key
+lookup fails, and should result in a cache hit _precisely_ when the inputs to __class_getitem__
+would result in the same type.
+
+**Paramètres :**
+
+- `cls`
+- `typevar_values`
+
+##### _late_cache_key
+
+This is intended for use later in the process of creating a new type, when we have more information
+about the exact args that will be passed. If it turns out that a different set of inputs to
+__class_getitem__ resulted in the same inputs to the generic type creation process, we can still
+return the cached type, and update the cache with the _early_cache_key as well.
+
+**Paramètres :**
+
+- `origin`
+- `args`
+- `typevar_values`
+
+##### __init__
+
+**Paramètres :**
+
+- `size_limit`
+
+##### __setitem__
+
+##### clear
+
+##### __setitem__
+
+**Paramètres :**
+
+- `key`
+- `value`
+
+##### __delitem__
+
+**Paramètres :**
+
+- `key`
+
+---
+
 ### _generate_schema
 
 Convert python types to pydantic-core schema.
@@ -853233,311 +853538,6 @@ by the referenced definition if possible, and applies deferred discriminators.
 
 - `_`
 - `handler`
-
----
-
-### _generics
-
-#### Classes
-
-##### LimitedDict
-
-**Méthodes :**
-
-- `__init__()`
-- `__setitem__()`
-
-##### PydanticGenericMetadata
-
-##### DeepChainMap
-
-##### DeepChainMap
-
-Variant of ChainMap that allows direct updates to inner scopes.
-
-Taken from https://docs.python.org/3/library/collections.html#collections.ChainMap,
-with some light modifications for this use case.
-
-**Méthodes :**
-
-- `clear()`
-- `__setitem__()`
-- `__delitem__()`
-
-#### Fonctions
-
-##### create_generic_submodel
-
-Dynamically create a submodel of a provided (generic) BaseModel.
-
-This is used when producing concrete parametrizations of generic models. This function
-only *creates* the new subclass; the schema/validators/serialization must be updated to
-reflect a concrete parametrization elsewhere.
-
-Args:
-    model_name: The name of the newly created model.
-    origin: The base class for the new model to inherit from.
-    args: A tuple of generic metadata arguments.
-    params: A tuple of generic metadata parameters.
-
-Returns:
-    The created submodel.
-
-**Paramètres :**
-
-- `model_name`
-- `origin`
-- `args`
-- `params`
-
-##### _get_caller_frame_info
-
-Used inside a function to check whether it was called globally.
-
-Args:
-    depth: The depth to get the frame.
-
-Returns:
-    A tuple contains `module_name` and `called_globally`.
-
-Raises:
-    RuntimeError: If the function is not called inside a function.
-
-**Paramètres :**
-
-- `depth`
-
-##### iter_contained_typevars
-
-Recursively iterate through all subtypes and type args of `v` and yield any typevars that are found.
-
-This is inspired as an alternative to directly accessing the `__parameters__` attribute of a GenericAlias,
-since __parameters__ of (nested) generic BaseModel subclasses won't show up in that list.
-
-**Paramètres :**
-
-- `v`
-
-##### get_args
-
-**Paramètres :**
-
-- `v`
-
-##### get_origin
-
-**Paramètres :**
-
-- `v`
-
-##### get_standard_typevars_map
-
-Package a generic type's typevars and parametrization (if present) into a dictionary compatible with the
-`replace_types` function. Specifically, this works with standard typing generics and typing._GenericAlias.
-
-**Paramètres :**
-
-- `cls`
-
-##### get_model_typevars_map
-
-Package a generic BaseModel's typevars and concrete parametrization (if present) into a dictionary compatible
-with the `replace_types` function.
-
-Since BaseModel.__class_getitem__ does not produce a typing._GenericAlias, and the BaseModel generic info is
-stored in the __pydantic_generic_metadata__ attribute, we need special handling here.
-
-**Paramètres :**
-
-- `cls`
-
-##### replace_types
-
-Return type with all occurrences of `type_map` keys recursively replaced with their values.
-
-Args:
-    type_: The class or generic alias.
-    type_map: Mapping from `TypeVar` instance to concrete types.
-
-Returns:
-    A new type representing the basic structure of `type_` with all
-    `typevar_map` keys recursively replaced.
-
-Example:
-    ```python
-    from typing import List, Union
-
-    from pydantic._internal._generics import replace_types
-
-    replace_types(tuple[str, Union[List[str], float]], {str: int})
-    #> tuple[int, Union[List[int], float]]
-    ```
-
-**Paramètres :**
-
-- `type_`
-- `type_map`
-
-##### map_generic_model_arguments
-
-Return a mapping between the parameters of a generic model and the provided arguments during parameterization.
-
-Raises:
-    TypeError: If the number of arguments does not match the parameters (i.e. if providing too few or too many arguments).
-
-Example:
-    ```python {test="skip" lint="skip"}
-    class Model[T, U, V = int](BaseModel): ...
-
-    map_generic_model_arguments(Model, (str, bytes))
-    #> {T: str, U: bytes, V: int}
-
-    map_generic_model_arguments(Model, (str,))
-    #> TypeError: Too few arguments for <class '__main__.Model'>; actual 1, expected at least 2
-
-    map_generic_model_arguments(Model, (str, bytes, int, complex))
-    #> TypeError: Too many arguments for <class '__main__.Model'>; actual 4, expected 3
-    ```
-
-Note:
-    This function is analogous to the private `typing._check_generic_specialization` function.
-
-**Paramètres :**
-
-- `cls`
-- `args`
-
-##### generic_recursion_self_type
-
-This contextmanager should be placed around the recursive calls used to build a generic type,
-and accept as arguments the generic origin type and the type arguments being passed to it.
-
-If the same origin and arguments are observed twice, it implies that a self-reference placeholder
-can be used while building the core schema, and will produce a schema_ref that will be valid in the
-final parent schema.
-
-**Paramètres :**
-
-- `origin`
-- `args`
-
-##### recursively_defined_type_refs
-
-##### get_cached_generic_type_early
-
-The use of a two-stage cache lookup approach was necessary to have the highest performance possible for
-repeated calls to `__class_getitem__` on generic types (which may happen in tighter loops during runtime),
-while still ensuring that certain alternative parametrizations ultimately resolve to the same type.
-
-As a concrete example, this approach was necessary to make Model[List[T]][int] equal to Model[List[int]].
-The approach could be modified to not use two different cache keys at different points, but the
-_early_cache_key is optimized to be as quick to compute as possible (for repeated-access speed), and the
-_late_cache_key is optimized to be as "correct" as possible, so that two types that will ultimately be the
-same after resolving the type arguments will always produce cache hits.
-
-If we wanted to move to only using a single cache key per type, we would either need to always use the
-slower/more computationally intensive logic associated with _late_cache_key, or would need to accept
-that Model[List[T]][int] is a different type than Model[List[T]][int]. Because we rely on subclass relationships
-during validation, I think it is worthwhile to ensure that types that are functionally equivalent are actually
-equal.
-
-**Paramètres :**
-
-- `parent`
-- `typevar_values`
-
-##### get_cached_generic_type_late
-
-See the docstring of `get_cached_generic_type_early` for more information about the two-stage cache lookup.
-
-**Paramètres :**
-
-- `parent`
-- `typevar_values`
-- `origin`
-- `args`
-
-##### set_cached_generic_type
-
-See the docstring of `get_cached_generic_type_early` for more information about why items are cached with
-two different keys.
-
-**Paramètres :**
-
-- `parent`
-- `typevar_values`
-- `type_`
-- `origin`
-- `args`
-
-##### _union_orderings_key
-
-This is intended to help differentiate between Union types with the same arguments in different order.
-
-Thanks to caching internal to the `typing` module, it is not possible to distinguish between
-List[Union[int, float]] and List[Union[float, int]] (and similarly for other "parent" origins besides List)
-because `typing` considers Union[int, float] to be equal to Union[float, int].
-
-However, you _can_ distinguish between (top-level) Union[int, float] vs. Union[float, int].
-Because we parse items as the first Union type that is successful, we get slightly more consistent behavior
-if we make an effort to distinguish the ordering of items in a union. It would be best if we could _always_
-get the exact-correct order of items in the union, but that would require a change to the `typing` module itself.
-(See https://github.com/python/cpython/issues/86483 for reference.)
-
-**Paramètres :**
-
-- `typevar_values`
-
-##### _early_cache_key
-
-This is intended for minimal computational overhead during lookups of cached types.
-
-Note that this is overly simplistic, and it's possible that two different cls/typevar_values
-inputs would ultimately result in the same type being created in BaseModel.__class_getitem__.
-To handle this, we have a fallback _late_cache_key that is checked later if the _early_cache_key
-lookup fails, and should result in a cache hit _precisely_ when the inputs to __class_getitem__
-would result in the same type.
-
-**Paramètres :**
-
-- `cls`
-- `typevar_values`
-
-##### _late_cache_key
-
-This is intended for use later in the process of creating a new type, when we have more information
-about the exact args that will be passed. If it turns out that a different set of inputs to
-__class_getitem__ resulted in the same inputs to the generic type creation process, we can still
-return the cached type, and update the cache with the _early_cache_key as well.
-
-**Paramètres :**
-
-- `origin`
-- `args`
-- `typevar_values`
-
-##### __init__
-
-**Paramètres :**
-
-- `size_limit`
-
-##### __setitem__
-
-##### clear
-
-##### __setitem__
-
-**Paramètres :**
-
-- `key`
-- `value`
-
-##### __delitem__
-
-**Paramètres :**
-
-- `key`
 
 ---
 
@@ -863182,6 +863182,21 @@ Return an unbound port for the given address family.
 
 ---
 
+### to_process
+
+#### Fonctions
+
+##### current_default_process_limiter
+
+Return the capacity limiter that is used by default to limit the number of worker
+processes.
+
+:return: a capacity limiter object
+
+##### process_worker
+
+---
+
 ### to_interpreter
 
 #### Classes
@@ -863221,21 +863236,6 @@ Defaults to the number of CPU cores.
 
 - `func`
 - `args`
-
----
-
-### to_process
-
-#### Fonctions
-
-##### current_default_process_limiter
-
-Return the capacity limiter that is used by default to limit the number of worker
-processes.
-
-:return: a capacity limiter object
-
-##### process_worker
 
 ---
 
