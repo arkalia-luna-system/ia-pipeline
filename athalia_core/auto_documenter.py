@@ -18,6 +18,7 @@ Module de documentation automatique pour Athalia
 Génération automatique de README, docs API et guides techniques
 """
 
+
 class AutoDocumenter:
     """Générateur de documentation automatique"""
 
@@ -25,7 +26,8 @@ class AutoDocumenter:
     api_docs: Dict[str, Any]
 
     def __init__(self, project_path: str = None, lang: str = 'fr'):
-        self.project_path: Path = Path(project_path) if project_path else Path('.')
+        self.project_path: Path = Path(
+            project_path) if project_path else Path('.')
         self.project_info = {}
         self.api_docs = {}
         self.readme_content = ""
@@ -49,7 +51,8 @@ class AutoDocumenter:
         """Documentation complète d'un projet"""
         self.project_path = Path(project_path)
 
-        logger.info(f"📚 {self.translations.get('doc_generation', 'Génération de documentation pour')} : {self.project_path.name}")
+        logger.info(
+            f"📚 {self.translations.get('doc_generation', 'Génération de documentation pour')} : {self.project_path.name}")
 
         # Analyse du projet
         self._analyze_project()
@@ -101,7 +104,8 @@ class AutoDocumenter:
                 with open(readme_files[0], 'r', encoding='utf-8') as f:
                     content = f.read()
                     # Extraire la première ligne non vide
-                    lines = [line.strip() for line in content.split('\n') if line.strip()]
+                    lines = [line.strip()
+                             for line in content.split('\n') if line.strip()]
                     if lines:
                         return lines[0]
             except Exception:
@@ -113,7 +117,8 @@ class AutoDocumenter:
             try:
                 with open(setup_file, 'r', encoding='utf-8') as f:
                     content = f.read()
-                    match = re.search(r'description\s*=\s*["\']([^"\']+)["\']', content)
+                    match = re.search(
+                        r'description\s*=\s*["\']([^"\']+)["\']', content)
                     if match:
                         return match.group(1)
             except Exception:
@@ -129,7 +134,8 @@ class AutoDocumenter:
             try:
                 with open(init_file, 'r', encoding='utf-8') as f:
                     content = f.read()
-                    match = re.search(r'__version__\s*=\s*["\']([^"\']+)["\']', content)
+                    match = re.search(
+                        r'__version__\s*=\s*["\']([^"\']+)["\']', content)
                     if match:
                         return match.group(1)
             except Exception:
@@ -141,7 +147,8 @@ class AutoDocumenter:
             try:
                 with open(setup_file, 'r', encoding='utf-8') as f:
                     content = f.read()
-                    match = re.search(r'version\s*=\s*["\']([^"\']+)["\']', content)
+                    match = re.search(
+                        r'version\s*=\s*["\']([^"\']+)["\']', content)
                     if match:
                         return match.group(1)
             except Exception:
@@ -157,7 +164,8 @@ class AutoDocumenter:
             try:
                 with open(setup_file, 'r', encoding='utf-8') as f:
                     content = f.read()
-                    match = re.search(r'author\s*=\s*["\']([^"\']+)["\']', content)
+                    match = re.search(
+                        r'author\s*=\s*["\']([^"\']+)["\']', content)
                     if match:
                         return match.group(1)
             except Exception:
@@ -182,7 +190,8 @@ class AutoDocumenter:
         if req_file.exists():
             try:
                 with open(req_file, 'r') as f:
-                    deps = [line.strip() for line in f if line.strip() and not line.startswith('#')]
+                    deps = [line.strip() for line in f if line.strip()
+                            and not line.startswith('#')]
                     dependencies['python'] = deps
             except Exception:
                 pass
@@ -218,9 +227,11 @@ class AutoDocumenter:
             try:
                 with open(setup_file, 'r', encoding='utf-8') as f:
                     content = f.read()
-                    matches = re.findall(r'entry_points.*?\[(.*?)\]', content, re.DOTALL)
+                    matches = re.findall(
+                        r'entry_points.*?\[(.*?)\]', content, re.DOTALL)
                     for match in matches:
-                        entry_points.extend([ep.strip() for ep in match.split(',') if ep.strip()])
+                        entry_points.extend(
+                            [ep.strip() for ep in match.split(',') if ep.strip()])
             except Exception:
                 pass
 
@@ -261,7 +272,8 @@ class AutoDocumenter:
                     logger.warning(f"Could not analyze module {py_file}: {e}")
         return modules
 
-    def _analyze_classes(self, modules: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    def _analyze_classes(
+            self, modules: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """Analyse les classes du projet"""
         classes = []
 
@@ -276,7 +288,8 @@ class AutoDocumenter:
 
         return classes
 
-    def _analyze_functions(self, modules: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    def _analyze_functions(
+            self, modules: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """Analyse les fonctions du projet"""
         functions = []
 
@@ -316,14 +329,27 @@ class AutoDocumenter:
         readme = readme.format(
             project_name=self.project_info['name'],
             description=self.project_info['description'],
-            table_of_contents=t.get('table_of_contents', '📋 Table des matières'),
-            installation=t.get('installation', 'Installation'),
-            usage=t.get('usage', 'Utilisation'),
-            tests=t.get('tests', 'Tests'),
-            contribution=t.get('contribution', 'Contribution'),
-            license=t.get('license', 'Licence'),
-            prerequisites=t.get('prerequisites', 'Prérequis')
-        )
+            table_of_contents=t.get(
+                'table_of_contents',
+                '📋 Table des matières'),
+            installation=t.get(
+                'installation',
+                'Installation'),
+            usage=t.get(
+                'usage',
+                'Utilisation'),
+            tests=t.get(
+                'tests',
+                'Tests'),
+            contribution=t.get(
+                'contribution',
+                'Contribution'),
+            license=t.get(
+                'license',
+                'Licence'),
+            prerequisites=t.get(
+                'prerequisites',
+                'Prérequis'))
 
         # Dépendances
         if self.project_info["dependencies"].get("python"):
@@ -420,7 +446,8 @@ python -m pytest --cov={project_name}
             license=t.get('license', 'Licence'),
             license_content=self.project_info['license']
         )
-        readme += "*Généré automatiquement par Athalia* - {}\n".format(current_date)
+        readme += "*Généré automatiquement par Athalia* - {}\n".format(
+            current_date)
         return readme
 
     def _generate_api_documentation(self) -> str:
@@ -522,7 +549,8 @@ python main.py
             setup_guide=t.get('setup_guide', 'Guide d\'installation'),
             project_name=self.project_info['name']
         )
-        setup_guide += "*Généré automatiquement par Athalia* - {}\n".format(current_date)
+        setup_guide += "*Généré automatiquement par Athalia* - {}\n".format(
+            current_date)
         return setup_guide
 
     def _generate_usage_guide(self) -> str:
@@ -606,7 +634,8 @@ database:
                 usage_guide += "```python\n"
                 usage_guide += f"from {self.project_info['name']} import {func_info['name']}\n\n"
                 if func_info["args"]:
-                    args_str = ", ".join((f"{arg}" for arg in func_info["args"]))
+                    args_str = ", ".join(
+                        (f"{arg}" for arg in func_info["args"]))
                     usage_guide += f"result = {func_info['name']}({args_str})\n"
                 else:
                     usage_guide += f"result = {func_info['name']}()\n"
@@ -657,16 +686,22 @@ except Exception as e:
 
 ---
 """
-        usage_guide += "*Généré automatiquement par Athalia* - {}\n".format(current_date)
+        usage_guide += "*Généré automatiquement par Athalia* - {}\n".format(
+            current_date)
         return usage_guide
 
-    def _save_documents(self, readme: str, api_docs: str, setup_guide: str, usage_guide: str):
+    def _save_documents(
+            self,
+            readme: str,
+            api_docs: str,
+            setup_guide: str,
+            usage_guide: str):
         """Sauvegarde les documents générés"""
         current_date = datetime.now().strftime('%Y-%m-%d')
         t = self.translations
 
         docs_dir = self.project_path / "docs"
-        docs_dir.mkdir(exist_ok = True)
+        docs_dir.mkdir(exist_ok=True)
 
         # README principal
         readme_file = self.project_path / "README.md"
@@ -692,9 +727,15 @@ except Exception as e:
         setup_guide_text = t.get('setup_guide', 'Guide d\'installation')
         usage_guide_text = t.get('usage_guide', 'Guide d\'utilisation')
         api_doc_text = t.get('api_documentation', 'Documentation API')
-        setup_desc = t.get('setup_guide_description', 'Comment installer et configurer le projet')
-        usage_desc = t.get('usage_guide_description', 'Comment utiliser les fonctionnalités')
-        api_desc = t.get('api_documentation_description', 'Référence complète de l\'API')
+        setup_desc = t.get(
+            'setup_guide_description',
+            'Comment installer et configurer le projet')
+        usage_desc = t.get(
+            'usage_guide_description',
+            'Comment utiliser les fonctionnalités')
+        api_desc = t.get(
+            'api_documentation_description',
+            'Référence complète de l\'API')
         doc_index = t.get('documentation_index', 'Index de documentation')
 
         index_content = f"""# {doc_index} - {self.project_info['name']}
@@ -728,12 +769,17 @@ except Exception as e:
         ]
         return [str(self.project_path / f) for f in files]
 
+
 def main():
     """Point d'entrée du script"""
 
-    parser = argparse.ArgumentParser(description="Génération automatique de documentation")
+    parser = argparse.ArgumentParser(
+        description="Génération automatique de documentation")
     parser.add_argument("project_path", help="Chemin du projet à documenter")
-    parser.add_argument("--lang", default="fr", help="Langue pour la génération de la documentation (fr, en, es, etc.)")
+    parser.add_argument(
+        "--lang",
+        default="fr",
+        help="Langue pour la génération de la documentation (fr, en, es, etc.)")
 
     args = parser.parse_args()
 
@@ -748,6 +794,7 @@ def main():
     logger.info("\n📄 Fichiers créés :")
     for file_path in result["created_files"]:
         logger.info(f"   • {file_path}")
+
 
 if __name__ == "__main__":
     main()
