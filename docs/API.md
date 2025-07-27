@@ -50,7 +50,7 @@ Fonction principale du CLI unifié
 
 ### cleanup_documentation
 
-Script de nettoyage et organisation de la documentation
+Script de nettoyage et d'organisation de la documentation
 
 #### Classes
 
@@ -881701,6 +881701,7 @@ Système de sauvegarde simple
 
 - `__init__()`
 - `create_backup()`
+- `get_backup_stats()`
 
 ##### OrchestrationTask
 
@@ -881746,6 +881747,8 @@ Combine industrialisation complète et intelligence avancée
 - `validate_phase2_inputs()`
 - `run_phase2_backup()`
 - `run_phase2_error_handling()`
+- `_run_templates()`
+- `orchestrate_with_phase2_features()`
 
 #### Fonctions
 
@@ -881757,6 +881760,22 @@ Obtenir le système de sauvegarde
 
 Standardiser le script CLI
 
+##### cli_entry
+
+Point d'entrée CLI
+
+##### error_handler
+
+Décorateur pour la gestion d'erreurs
+
+**Paramètres :**
+
+- `func`
+
+##### orchestrator_auto_backup
+
+Sauvegarde automatique de l'orchestrateur
+
 ##### main
 
 Point d'entrée principal
@@ -881766,6 +881785,10 @@ Point d'entrée principal
 ##### create_backup
 
 Créer une sauvegarde
+
+##### get_backup_stats
+
+Obtenir les statistiques de sauvegarde
 
 ##### __init__
 
@@ -881946,7 +881969,7 @@ Exécuter la sauvegarde Phase2
 
 **Paramètres :**
 
-- `project_path`
+- `backup_type`
 
 ##### run_phase2_error_handling
 
@@ -881955,6 +881978,24 @@ Gestion d'erreur Phase2
 **Paramètres :**
 
 - `operation`
+
+##### _run_templates
+
+Exécuter les templates
+
+**Paramètres :**
+
+- `project_path`
+
+##### orchestrate_with_phase2_features
+
+Orchestration avec fonctionnalités Phase 2
+
+**Paramètres :**
+
+- `project_path`
+
+##### wrapper
 
 ---
 
@@ -886237,13 +886278,13 @@ Retourne les templates de base pour tous les projets.
 
 ### ath-backup
 
-Script de sauvegarde automatique pour Athalia
+Script de sauvegarde pour Athalia
 
 #### Classes
 
 ##### BackupManager
 
-Gestionnaire de sauvegarde pour Athalia
+Gestionnaire de sauvegardes pour Athalia
 
 **Méthodes :**
 
@@ -886269,7 +886310,7 @@ Point d'entrée principal
 
 ##### create_backup
 
-Crée une sauvegarde du projet
+Crée une nouvelle sauvegarde
 
 **Paramètres :**
 
