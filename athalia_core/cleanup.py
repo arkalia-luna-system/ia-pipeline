@@ -34,8 +34,8 @@ def clean_old_tests_and_caches(outdir):
             # On ne supprime jamais test_booster_ia_proj.pyff
             if ((file_handle.endswith('.ff') or file_handle.endswith('.pyff')
                  or file_handle.startswith('test_') or file_handle.endswith('.pyc')
-                 or file_handle.endswith('.log') or file_handle.endswith('.bak')) and
-                not file_handle.startswith('test_booster_ia_proj')
+                 or file_handle.endswith('.log') or file_handle.endswith('.bak'))
+                    and not file_handle.startswith('test_booster_ia_proj')
                     and file_handle != 'test_booster_ia_proj.pyff'):
                 try:
                     os.remove(file_path)

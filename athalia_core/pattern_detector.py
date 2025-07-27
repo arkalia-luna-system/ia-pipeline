@@ -388,7 +388,9 @@ class PatternDetector:
                 if similar_count >= 2:
                     antipattern = AntiPattern(
                         pattern_name="potential_duplicate",
-                        description=f"Pattern potentiellement dupliqué ({similar_count} similaires)",
+                        description=(
+                            f"Pattern potentiellement dupliqué ({similar_count} similaires)"
+                        ),
                         locations=pattern.locations,
                         impact="medium",
                         suggestion="Considérer la fusion ou l'abstraction",
@@ -397,9 +399,12 @@ class PatternDetector:
 
         return antipatterns
 
-    def _save_analysis_results(self, patterns: List[CodePattern],
-                               duplicates: List[DuplicateAnalysis],
-                               antipatterns: List[AntiPattern]):
+    def _save_analysis_results(
+            self,
+            patterns: List[CodePattern],
+            duplicates: List[DuplicateAnalysis],
+            antipatterns: List[AntiPattern]
+    ):
         """Sauvegarder les résultats d'analyse"""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
@@ -408,7 +413,8 @@ class PatternDetector:
             for pattern in patterns:
                 cursor.execute("""
                     INSERT OR REPLACE INTO code_patterns
-                    (pattern_type, signature, locations, similarity_score, complexity, last_seen, correction_history)
+                    (pattern_type, signature, locations, similarity_score, 
+                     complexity, last_seen, correction_history)
                     VALUES (?, ?, ?, ?, ?, ?, ?)
                 """, (
                     pattern.pattern_type,
@@ -424,7 +430,8 @@ class PatternDetector:
             for duplicate in duplicates:
                 cursor.execute("""
                     INSERT INTO duplicates
-                    (duplicate_type, items, locations, severity, similarity_score, suggested_action, estimated_effort, detected_at)
+                    (duplicate_type, items, locations, severity, similarity_score, 
+                     suggested_action, estimated_effort, detected_at)
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                 """, (
                     duplicate.duplicate_type,
@@ -441,7 +448,8 @@ class PatternDetector:
             for antipattern in antipatterns:
                 cursor.execute("""
                     INSERT INTO antipatterns
-                    (pattern_name, description, locations, impact, suggestion, previous_corrections, detected_at)
+                    (pattern_name, description, locations, impact, suggestion, 
+                     previous_corrections, detected_at)
                     VALUES (?, ?, ?, ?, ?, ?, ?)
                 """, (
                     antipattern.pattern_name,
@@ -464,28 +472,34 @@ class PatternDetector:
 
         # Recommandations pour les doublons
         high_severity_duplicates = [
-            d for d in duplicates if d.severity in [
-                "high", "medium"]]
+            d for d in duplicates if d.severity in ["high", "medium"]
+        ]
         if high_severity_duplicates:
             recommendations.append(
-                f"🔧 {len(high_severity_duplicates)} doublons critiques détectés - priorité à la fusion")
+                f"🔧 {len(high_severity_duplicates)} doublons critiques détectés - "
+                f"priorité à la fusion"
+            )
 
         # Recommandations pour les anti-patterns
         high_impact_antipatterns = [
-            a for a in antipatterns if a.impact in [
-                "high", "critical"]]
+            a for a in antipatterns if a.impact in ["high", "critical"]
+        ]
         if high_impact_antipatterns:
             recommendations.append(
-                f"⚠️ {len(high_impact_antipatterns)} anti-patterns critiques - refactoring urgent")
+                f"⚠️ {len(high_impact_antipatterns)} anti-patterns critiques - "
+                f"refactoring urgent"
+            )
 
         # Recommandations générales
         if duplicates:
             recommendations.append(
-                "📊 Considérer la création d'un module utilitaire pour les patterns communs")
+                "📊 Considérer la création d'un module utilitaire pour les patterns communs"
+            )
 
         if antipatterns:
             recommendations.append(
-                "📚 Revoir les bonnes pratiques de complexité cyclomatique")
+                "📚 Revoir les bonnes pratiques de complexité cyclomatique"
+            )
 
         return recommendations
 
@@ -515,9 +529,12 @@ class PatternDetector:
             """)
             pattern_distribution = dict(cursor.fetchall())
 
-            return {"total_patterns": total_patterns,
-                    "unresolved_duplicates": unresolved_duplicates,
-                    "unresolved_antipatterns": unresolved_antipatterns,
-                    "pattern_distribution": pattern_distribution,
-                    "learning_score": max(0,
-                                          100 - (unresolved_duplicates + unresolved_antipatterns) * 10)}
+            return {
+                "total_patterns": total_patterns,
+                "unresolved_duplicates": unresolved_duplicates,
+                "unresolved_antipatterns": unresolved_antipatterns,
+                "pattern_distribution": pattern_distribution,
+                "learning_score": max(
+                    0, 100 - (unresolved_duplicates + unresolved_antipatterns) * 10
+                )
+            }
