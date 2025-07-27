@@ -43,7 +43,7 @@ class OllamaAutocompleteEngine(BaseAutocompleteEngine):
                 suggestions = [
                     f"{prompt}_ollama_{i+1}" for i in range(max_suggestions)]
             return suggestions
-        except Exception as e:
+        except Exception:
             # Fallback simple en cas d'erreur
             return [
                 f"{prompt}_ollama_error_{i+1}" for i in range(max_suggestions)]

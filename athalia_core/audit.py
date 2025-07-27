@@ -57,7 +57,7 @@ def audit_project_intelligent(project_path: str):
 def generate_audit_report(project_path: str):
     """Fonction de compatibilité pour generate_audit_report"""
     auditor = IntelligentAuditor()
-    result = auditor.audit_project(project_path)
+    auditor.audit_project(project_path)
     report = auditor.generate_report()
 
     # Ajouter le titre de compatibilité
