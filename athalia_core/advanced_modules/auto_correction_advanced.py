@@ -143,7 +143,7 @@ class AutoCorrectionAvancee:
                 ligne_precedente = lignes[ligne_erreur - 1]
                 if ligne_precedente.strip().endswith(':'):
                     return '    ' + ligne
-                elif (ligne_precedente.strip().startswith('def ') 
+                elif (ligne_precedente.strip().startswith('def ')
                       or ligne_precedente.strip().startswith('class ')):
                     return '    ' + ligne
 
