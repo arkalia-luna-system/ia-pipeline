@@ -886387,14 +886387,13 @@ Fonction principale du CLI unifié
 
 ### monitor_processes
 
-🔍 Moniteur de processus Athalia
-Surveille et gère les processus athalia_core.main pour éviter les doublons
+Moniteur de processus Athalia
 
 #### Classes
 
 ##### AthaliaProcessMonitor
 
-Moniteur de processus pour Athalia
+Moniteur pour les processus athalia_core.main
 
 **Méthodes :**
 
@@ -886418,7 +886417,7 @@ Trouve tous les processus athalia_core.main
 
 ##### kill_duplicate_processes
 
-Tue les processus en double, garde le plus ancien ou le plus récent
+Arrête les processus en double, garde le plus ancien par défaut
 
 **Paramètres :**
 
