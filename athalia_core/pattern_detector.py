@@ -11,11 +11,11 @@ import logging
 import sqlite3
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Any, Optional, Set, Tuple
-from dataclasses import dataclass, asdict
+from typing import Dict, List, Any
+from dataclasses import dataclass
 import difflib
 
-from .ast_analyzer import ASTAnalyzer, FileAnalysis, ASTNodeInfo
+from .ast_analyzer import ASTAnalyzer, FileAnalysis
 
 logger = logging.getLogger(__name__)
 
@@ -168,7 +168,7 @@ class PatternDetector:
         # Limiter le nombre de fichiers pour les tests
         if len(python_files) > 50:
             python_files = python_files[:50]
-            logger.info(f"📁 Limitation à 50 fichiers pour les performances")
+            logger.info("📁 Limitation à 50 fichiers pour les performances")
 
         # Analyser chaque fichier
         all_patterns = []
@@ -413,7 +413,7 @@ class PatternDetector:
             for pattern in patterns:
                 cursor.execute("""
                     INSERT OR REPLACE INTO code_patterns
-                    (pattern_type, signature, locations, similarity_score, 
+                    (pattern_type, signature, locations, similarity_score,
                      complexity, last_seen, correction_history)
                     VALUES (?, ?, ?, ?, ?, ?, ?)
                 """, (
@@ -430,8 +430,8 @@ class PatternDetector:
             for duplicate in duplicates:
                 cursor.execute("""
                     INSERT INTO duplicates
-                    (duplicate_type, items, locations, severity, similarity_score, 
-                     suggested_action, estimated_effort, detected_at)
+                    (duplicate_type, items, locations, severity,
+                     similarity_score, suggested_action, estimated_effort, detected_at)
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                 """, (
                     duplicate.duplicate_type,
@@ -448,8 +448,8 @@ class PatternDetector:
             for antipattern in antipatterns:
                 cursor.execute("""
                     INSERT INTO antipatterns
-                    (pattern_name, description, locations, impact, suggestion, 
-                     previous_corrections, detected_at)
+                    (pattern_name, description, locations, impact,
+                     suggestion, previous_corrections, detected_at)
                     VALUES (?, ?, ?, ?, ?, ?, ?)
                 """, (
                     antipattern.pattern_name,
@@ -476,7 +476,7 @@ class PatternDetector:
         ]
         if high_severity_duplicates:
             recommendations.append(
-                f"🔧 {len(high_severity_duplicates)} doublons critiques détectés - "
+                f"🔧 {len(high_severity_duplicates)} doublons critiques - "
                 f"priorité à la fusion"
             )
 
@@ -493,12 +493,12 @@ class PatternDetector:
         # Recommandations générales
         if duplicates:
             recommendations.append(
-                "📊 Considérer la création d'un module utilitaire pour les patterns communs"
+                "📊 Créer un module utilitaire pour les patterns communs"
             )
 
         if antipatterns:
             recommendations.append(
-                "📚 Revoir les bonnes pratiques de complexité cyclomatique"
+                "📚 Revoir les bonnes pratiques de complexité"
             )
 
         return recommendations

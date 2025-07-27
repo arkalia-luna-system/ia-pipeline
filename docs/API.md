@@ -3466,6 +3466,107 @@ Vérifie qu'il n'y a pas de crypto faible
 
 ---
 
+### test_ai_robust
+
+#### Classes
+
+##### TestRobustAI
+
+Tests pour list_data'IA robuste.
+
+**Méthodes :**
+
+- `setup_method()`
+- `test_detect_available_models()`
+- `test_build_fallback_chain()`
+- `test_classify_project_complexity()`
+- `test_get_dynamic_prompt()`
+- `test_generate_blueprint_with_mock()`
+- `test_review_code_with_mock()`
+- `test_generate_documentation_with_mock()`
+- `test_call_ollama_timeout()`
+- `test_fallback_chain_behavior()`
+
+#### Fonctions
+
+##### test_robust_ai_integration
+
+Test dict_data'intégration de list_data'IA robuste.
+
+##### test_prompt_templates
+
+Test que tous les templates de prompts sont chargés.
+
+##### test_fallback_and_distillation_qwen_mistral
+
+Teste la génération de réponse avec fallback et distillation (Qwen/Mistral).
+
+##### test_fallback_ia_qwen_mistral
+
+**Paramètres :**
+
+- `monkeypatch`
+
+##### setup_method
+
+Initialise list_data'IA robuste pour les tests.
+
+##### test_detect_available_models
+
+Test la détection des modèles disponibles.
+
+##### test_build_fallback_chain
+
+Test la construction de la chaîne de fallback.
+
+##### test_classify_project_complexity
+
+##### test_get_dynamic_prompt
+
+Test la génération de prompts dynamiques.
+
+##### test_generate_blueprint_with_mock
+
+Test la génération de blueprint avec fallback mock.
+
+##### test_review_code_with_mock
+
+Test la revue de code avec fallback mock.
+
+##### test_generate_documentation_with_mock
+
+Test la génération de documentation avec fallback mock.
+
+##### test_call_ollama_timeout
+
+Test la gestion du timeout dict_data'Ollama.
+
+##### test_fallback_chain_behavior
+
+Test le comportement de la chaîne de fallback.
+
+##### mock_query_qwen
+
+**Paramètres :**
+
+- `prompt`
+
+##### mock_query_mistral
+
+**Paramètres :**
+
+- `prompt`
+
+##### mock_call_fail
+
+**Paramètres :**
+
+- `model`
+- `prompt`
+- `timeout`
+
+---
+
 ### test_intelligent_modules
 
 🧪 TESTS POUR LES MODULES D'ANALYSE INTELLIGENTE
@@ -4087,6 +4188,30 @@ Vérifie les métriques de qualité de la couverture
 
 ---
 
+### test_multimodal_distiller
+
+#### Classes
+
+##### TestMultimodalDistiller
+
+**Méthodes :**
+
+- `test_distill()`
+- `test_empty()`
+
+#### Fonctions
+
+##### test_distill
+
+**Paramètres :**
+
+- `mock_model`
+- `mock_llava`
+
+##### test_empty
+
+---
+
 ### test_complet_athalia_syntax
 
 Tests spécialisés pour la syntaxe Python
@@ -4271,6 +4396,151 @@ Test d'un workflow complet d'auto-correction
 
 ---
 
+### test_audit_agent
+
+Tests pour le module audit_agent.py
+Tests unitaires et d'intégration pour AuditAgent
+
+#### Classes
+
+##### TestAuditAgent
+
+Tests pour la classe AuditAgent
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `test_audit_agent_initialization()`
+- `test_act_method_with_simple_prompt()`
+- `test_act_method_with_complex_prompt()`
+- `test_act_method_with_empty_prompt()`
+- `test_act_method_with_special_characters()`
+- `test_act_method_with_multiline_prompt()`
+- `test_act_method_error_handling()`
+- `test_agent_inheritance()`
+- `test_agent_consistency()`
+- `test_agent_attributes()`
+- `test_agent_performance()`
+
+##### TestAuditAgentIntegration
+
+Tests d'intégration pour AuditAgent
+
+**Méthodes :**
+
+- `setUp()`
+- `test_integration_with_real_audit_scenario()`
+- `test_integration_with_code_analysis()`
+
+#### Fonctions
+
+##### setUp
+
+Configuration initiale pour chaque test
+
+##### tearDown
+
+Nettoyage après chaque test
+
+##### test_audit_agent_initialization
+
+Test de l'initialisation de l'agent
+
+##### test_act_method_with_simple_prompt
+
+Test de la méthode act avec un prompt simple
+
+**Paramètres :**
+
+- `mock_query_qwen`
+
+##### test_act_method_with_complex_prompt
+
+Test de la méthode act avec un prompt complexe
+
+**Paramètres :**
+
+- `mock_query_qwen`
+
+##### test_act_method_with_empty_prompt
+
+Test de la méthode act avec un prompt vide
+
+**Paramètres :**
+
+- `mock_query_qwen`
+
+##### test_act_method_with_special_characters
+
+Test de la méthode act avec des caractères spéciaux
+
+**Paramètres :**
+
+- `mock_query_qwen`
+
+##### test_act_method_with_multiline_prompt
+
+Test de la méthode act avec un prompt multi-lignes
+
+**Paramètres :**
+
+- `mock_query_qwen`
+
+##### test_act_method_error_handling
+
+Test de la gestion d'erreur dans la méthode act
+
+**Paramètres :**
+
+- `mock_query_qwen`
+
+##### test_agent_inheritance
+
+Test de l'héritage de l'agent
+
+##### test_agent_consistency
+
+Test de la cohérence de l'agent sur plusieurs appels
+
+**Paramètres :**
+
+- `mock_query_qwen`
+
+##### test_agent_attributes
+
+Test des attributs de l'agent
+
+##### test_agent_performance
+
+Test de performance de l'agent
+
+**Paramètres :**
+
+- `mock_query_qwen`
+
+##### setUp
+
+Configuration initiale pour chaque test
+
+##### test_integration_with_real_audit_scenario
+
+Test d'intégration avec un scénario d'audit réel
+
+**Paramètres :**
+
+- `mock_query_qwen`
+
+##### test_integration_with_code_analysis
+
+Test d'intégration avec analyse de code
+
+**Paramètres :**
+
+- `mock_query_qwen`
+
+---
+
 ### test_hardcoded_paths
 
 Tests pour détecter les chemins hardcodés
@@ -4309,6 +4579,356 @@ Vérifie si un chemin absolu est acceptable
 **Paramètres :**
 
 - `path`
+
+---
+
+### test_auto_correction_advanced_complete
+
+Tests complets pour le module auto_correction_advanced.py
+Tests unitaires et d'intégration pour AutoCorrectionAvancee
+
+#### Classes
+
+##### TestAutoCorrectionAvancee
+
+Tests pour la classe AutoCorrectionAvancee
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `create_test_files()`
+- `test_initialization()`
+- `test_analyser_et_corriger_dry_run()`
+- `test_analyser_et_corriger_real_run()`
+- `test_corriger_syntaxe_avancee()`
+- `test_corriger_erreur_syntaxe()`
+- `test_corriger_indentation()`
+- `test_corriger_parentheses()`
+- `test_corriger_guillemets()`
+- `test_corriger_virgules()`
+- `test_optimiser_code()`
+- `test_optimiser_list_comprehensions()`
+- `test_optimiser_imports()`
+- `test_optimiser_boucles()`
+- `test_refactoring_automatique()`
+- `test_extraire_methodes()`
+- `test_renommer_variables()`
+- `test_simplifier_conditions()`
+- `test_corriger_anti_patterns()`
+- `test_ameliorer_lisibilite()`
+- `test_generer_rapport()`
+
+##### TestAutoCorrectionAvanceeIntegration
+
+Tests d'intégration pour AutoCorrectionAvancee
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `test_integration_complete_workflow()`
+- `test_integration_with_empty_project()`
+- `test_integration_with_large_project()`
+
+##### MockSyntaxError
+
+**Méthodes :**
+
+- `__init__()`
+
+#### Fonctions
+
+##### setUp
+
+Configuration initiale pour chaque test
+
+##### tearDown
+
+Nettoyage après chaque test
+
+##### create_test_files
+
+Création de fichiers de test avec différents types d'erreurs
+
+##### test_initialization
+
+Test de l'initialisation de la classe
+
+##### test_analyser_et_corriger_dry_run
+
+Test de l'analyse et correction en mode dry_run
+
+##### test_analyser_et_corriger_real_run
+
+Test de l'analyse et correction en mode réel
+
+##### test_corriger_syntaxe_avancee
+
+Test de la correction syntaxique avancée
+
+##### test_corriger_erreur_syntaxe
+
+Test de la correction d'erreur syntaxique
+
+##### test_corriger_indentation
+
+Test de la correction d'indentation
+
+##### test_corriger_parentheses
+
+Test de la correction de parenthèses
+
+##### test_corriger_guillemets
+
+Test de la correction de guillemets
+
+##### test_corriger_virgules
+
+Test de la correction de virgules
+
+##### test_optimiser_code
+
+Test de l'optimisation de code
+
+##### test_optimiser_list_comprehensions
+
+Test de l'optimisation des list comprehensions
+
+##### test_optimiser_imports
+
+Test de l'optimisation des imports
+
+##### test_optimiser_boucles
+
+Test de l'optimisation des boucles
+
+##### test_refactoring_automatique
+
+Test du refactoring automatique
+
+##### test_extraire_methodes
+
+Test de l'extraction de méthodes
+
+##### test_renommer_variables
+
+Test du renommage de variables
+
+##### test_simplifier_conditions
+
+Test de la simplification de conditions
+
+##### test_corriger_anti_patterns
+
+Test de la correction d'anti-patterns
+
+##### test_ameliorer_lisibilite
+
+Test de l'amélioration de la lisibilité
+
+##### test_generer_rapport
+
+Test de la génération de rapport
+
+##### setUp
+
+Configuration initiale pour chaque test
+
+##### tearDown
+
+Nettoyage après chaque test
+
+##### test_integration_complete_workflow
+
+Test d'intégration du workflow complet
+
+##### test_integration_with_empty_project
+
+Test d'intégration avec un projet vide
+
+##### test_integration_with_large_project
+
+Test d'intégration avec un projet de grande taille
+
+##### __init__
+
+---
+
+### test_user_profiles_advanced_complete
+
+Tests complets pour le module user_profiles_advanced.py
+Tests unitaires et d'intégration pour ProfilUtilisateur et GestionnaireProfils
+
+#### Classes
+
+##### TestProfilUtilisateur
+
+Tests pour la classe ProfilUtilisateur
+
+**Méthodes :**
+
+- `setUp()`
+- `test_initialization()`
+- `test_initialization_with_preferences()`
+- `test_to_dict()`
+- `test_from_dict()`
+- `test_from_dict_with_missing_fields()`
+
+##### TestGestionnaireProfils
+
+Tests pour la classe GestionnaireProfils
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `test_initialization()`
+- `test_init_database()`
+- `test_creer_profil()`
+- `test_creer_profil_with_preferences()`
+- `test_obtenir_profil()`
+- `test_obtenir_profil_inexistant()`
+- `test_mettre_a_jour_profil()`
+- `test_enregistrer_action()`
+- `test_enregistrer_consultation_projet()`
+- `test_obtenir_statistiques()`
+- `test_generer_rapport_profil()`
+- `test_lister_profils()`
+- `test_supprimer_profil()`
+- `test_supprimer_profil_inexistant()`
+- `test_exporter_profil()`
+- `test_importer_profil()`
+
+##### TestGestionnaireProfilsIntegration
+
+Tests d'intégration pour GestionnaireProfils
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `test_integration_complete_workflow()`
+- `test_integration_with_multiple_users()`
+- `test_integration_error_handling()`
+
+#### Fonctions
+
+##### setUp
+
+Configuration initiale pour chaque test
+
+##### test_initialization
+
+Test de l'initialisation du profil
+
+##### test_initialization_with_preferences
+
+Test de l'initialisation avec des préférences
+
+##### test_to_dict
+
+Test de la conversion en dictionnaire
+
+##### test_from_dict
+
+Test de la création depuis un dictionnaire
+
+##### test_from_dict_with_missing_fields
+
+Test de la création depuis un dictionnaire avec champs manquants
+
+##### setUp
+
+Configuration initiale pour chaque test
+
+##### tearDown
+
+Nettoyage après chaque test
+
+##### test_initialization
+
+Test de l'initialisation du gestionnaire
+
+##### test_init_database
+
+Test de l'initialisation de la base de données
+
+##### test_creer_profil
+
+Test de la création d'un profil
+
+##### test_creer_profil_with_preferences
+
+Test de la création d'un profil avec préférences
+
+##### test_obtenir_profil
+
+Test de l'obtention d'un profil
+
+##### test_obtenir_profil_inexistant
+
+Test de l'obtention d'un profil inexistant
+
+##### test_mettre_a_jour_profil
+
+Test de la mise à jour d'un profil
+
+##### test_enregistrer_action
+
+Test de l'enregistrement d'une action
+
+##### test_enregistrer_consultation_projet
+
+Test de l'enregistrement d'une consultation de projet
+
+##### test_obtenir_statistiques
+
+Test de l'obtention des statistiques
+
+##### test_generer_rapport_profil
+
+Test de la génération de rapport de profil
+
+##### test_lister_profils
+
+Test de la liste des profils
+
+##### test_supprimer_profil
+
+Test de la suppression d'un profil
+
+##### test_supprimer_profil_inexistant
+
+Test de la suppression d'un profil inexistant
+
+##### test_exporter_profil
+
+Test de l'export d'un profil
+
+##### test_importer_profil
+
+Test de l'import d'un profil
+
+##### setUp
+
+Configuration initiale pour chaque test
+
+##### tearDown
+
+Nettoyage après chaque test
+
+##### test_integration_complete_workflow
+
+Test d'intégration du workflow complet
+
+##### test_integration_with_multiple_users
+
+Test d'intégration avec plusieurs utilisateurs
+
+##### test_integration_error_handling
+
+Test d'intégration de la gestion d'erreurs
 
 ---
 
@@ -4839,115 +5459,6 @@ Fonction principale
 
 ---
 
-### test_ai_robust
-
-#### Classes
-
-##### TestRobustAI
-
-Tests pour list_data'IA robuste.
-
-**Méthodes :**
-
-- `setup_method()`
-- `test_detect_available_models()`
-- `test_build_fallback_chain()`
-- `test_classify_project_complexity()`
-- `test_get_dynamic_prompt()`
-- `test_generate_blueprint_with_mock()`
-- `test_review_code_with_mock()`
-- `test_generate_documentation_with_mock()`
-- `test_call_ollama_timeout()`
-- `test_fallback_chain_behavior()`
-
-#### Fonctions
-
-##### test_robust_ai_integration
-
-Test dict_data'intégration de list_data'IA robuste.
-
-##### test_prompt_templates
-
-Test que tous les templates de prompts sont chargés.
-
-##### test_fallback_and_distillation_qwen_mistral
-
-Teste la génération de réponse avec fallback et distillation (Qwen/Mistral).
-
-##### test_fallback_ia_qwen_mistral
-
-**Paramètres :**
-
-- `monkeypatch`
-
-##### setup_method
-
-Initialise list_data'IA robuste pour les tests.
-
-##### test_detect_available_models
-
-Test la détection des modèles disponibles.
-
-##### test_build_fallback_chain
-
-Test la construction de la chaîne de fallback.
-
-##### test_classify_project_complexity
-
-##### test_get_dynamic_prompt
-
-Test la génération de prompts dynamiques.
-
-##### test_generate_blueprint_with_mock
-
-Test la génération de blueprint avec fallback mock.
-
-##### test_review_code_with_mock
-
-Test la revue de code avec fallback mock.
-
-##### test_generate_documentation_with_mock
-
-Test la génération de documentation avec fallback mock.
-
-##### test_call_ollama_timeout
-
-Test la gestion du timeout dict_data'Ollama.
-
-##### test_fallback_chain_behavior
-
-Test le comportement de la chaîne de fallback.
-
-##### mock_query_qwen
-
-**Paramètres :**
-
-- `prompt`
-
-##### mock_query_mistral
-
-**Paramètres :**
-
-- `prompt`
-
-##### mock_call_fail
-
-**Paramètres :**
-
-- `model`
-- `prompt`
-- `timeout`
-
-##### fake_call
-
-**Paramètres :**
-
-- `model_name`
-- `prompt`
-- `timeout`
-
----
-
 ### test_performance_optimized
 
 Tests optimisés pour les performances
@@ -5284,29 +5795,6 @@ Test de la gestion d'erreurs.
 #### Fonctions
 
 ##### test_multimodal_distillation
-
----
-
-### test_multimodal_distiller
-
-#### Classes
-
-##### TestMultimodalDistiller
-
-**Méthodes :**
-
-- `test_distill()`
-- `test_empty()`
-
-#### Fonctions
-
-##### test_distill
-
-**Paramètres :**
-
-- `mock_llava`
-
-##### test_empty
 
 ---
 
@@ -12934,6 +13422,362 @@ parse the body and any `else` block of `if` and `for` statements
 
 ---
 
+### jsonref
+
+#### Classes
+
+##### JsonRefError
+
+**Méthodes :**
+
+- `__init__()`
+- `__repr__()`
+- `__str__()`
+
+##### JsonRef
+
+A lazy loading proxy to the dereferenced data pointed to by a JSON
+Reference object.
+
+**Méthodes :**
+
+- `replace_refs()`
+- `__init__()`
+- `_ref_kwargs()`
+- `full_uri()`
+- `callback()`
+- `resolve_pointer()`
+- `_error()`
+- `__repr__()`
+
+##### URIDict
+
+Dictionary which uses normalized URIs as keys.
+
+**Méthodes :**
+
+- `normalize()`
+- `__init__()`
+- `__getitem__()`
+- `__setitem__()`
+- `__delitem__()`
+- `__iter__()`
+- `__len__()`
+- `__repr__()`
+
+##### JSONRefEncoder
+
+**Méthodes :**
+
+- `default()`
+- `_iterencode()`
+- `_encode()`
+
+#### Fonctions
+
+##### jsonloader
+
+Provides a callable which takes a URI, and returns the loaded JSON referred
+to by that URI. Uses :mod:`requests` if available for HTTP URIs, and falls
+back to :mod:`urllib`.
+
+**Paramètres :**
+
+- `uri`
+
+##### _walk_refs
+
+**Paramètres :**
+
+- `obj`
+- `func`
+- `replace`
+- `_processed`
+
+##### replace_refs
+
+Returns a deep copy of `obj` with all contained JSON reference objects
+replaced with :class:`JsonRef` instances.
+
+:param obj: If this is a JSON reference object, a :class:`JsonRef`
+    instance will be created. If `obj` is not a JSON reference object,
+    a deep copy of it will be created with all contained JSON
+    reference objects replaced by :class:`JsonRef` instances
+:param base_uri: URI to resolve relative references against
+:param loader: Callable that takes a URI and returns the parsed JSON
+    (defaults to global ``jsonloader``, a :class:`JsonLoader` instance)
+:param jsonschema: Flag to turn on `JSON Schema mode
+    <http://json-schema.org/latest/json-schema-core.html#anchor25>`_.
+    'id' or '$id' keyword changes the `base_uri` for references contained
+    within the object
+:param load_on_repr: If set to ``False``, :func:`repr` call on a
+    :class:`JsonRef` object will not cause the reference to be loaded
+    if it hasn't already. (defaults to ``True``)
+:param merge_props: When ``True``, JSON reference objects that
+    have extra keys other than '$ref' in them will be merged into the
+    document resolved by the reference (if it is a dictionary.) NOTE: This
+    is not part of the JSON Reference spec, and may not behave the same as
+    other libraries.
+:param proxies: If `True`, references will be replaced with transparent
+    proxy objects. Otherwise, they will be replaced directly with the
+    referred data. (defaults to ``True``)
+:param lazy_load: When proxy objects are used, and this is `True`, the
+    references will not be resolved until that section of the JSON
+    document is accessed. (defaults to ``True``)
+
+**Paramètres :**
+
+- `obj`
+- `base_uri`
+- `loader`
+- `jsonschema`
+- `load_on_repr`
+- `merge_props`
+- `proxies`
+- `lazy_load`
+
+##### _replace_refs
+
+**Paramètres :**
+
+- `obj`
+
+##### load
+
+Drop in replacement for :func:`json.load`, where JSON references are
+proxied to their referent data.
+
+:param fp: File-like object containing JSON document
+:param **kwargs: This function takes any of the keyword arguments from
+    :func:`replace_refs`. Any other keyword arguments will be passed to
+    :func:`json.load`
+
+**Paramètres :**
+
+- `fp`
+- `base_uri`
+- `loader`
+- `jsonschema`
+- `load_on_repr`
+- `merge_props`
+- `proxies`
+- `lazy_load`
+
+##### loads
+
+Drop in replacement for :func:`json.loads`, where JSON references are
+proxied to their referent data.
+
+:param s: String containing JSON document
+:param **kwargs: This function takes any of the keyword arguments from
+    :func:`replace_refs`. Any other keyword arguments will be passed to
+    :func:`json.loads`
+
+**Paramètres :**
+
+- `s`
+- `base_uri`
+- `loader`
+- `jsonschema`
+- `load_on_repr`
+- `merge_props`
+- `proxies`
+- `lazy_load`
+
+##### load_uri
+
+Load JSON data from ``uri`` with JSON references proxied to their referent
+data.
+
+:param uri: URI to fetch the JSON from
+:param **kwargs: This function takes any of the keyword arguments from
+    :func:`replace_refs`
+
+**Paramètres :**
+
+- `uri`
+- `base_uri`
+- `loader`
+- `jsonschema`
+- `load_on_repr`
+- `merge_props`
+- `proxies`
+- `lazy_load`
+
+##### dump
+
+Serialize `obj`, which may contain :class:`JsonRef` objects, as a JSON
+formatted stream to file-like `fp`. `JsonRef` objects will be dumped as the
+original reference object they were created from.
+
+:param obj: Object to serialize
+:param fp: File-like to output JSON string
+:param kwargs: Keyword arguments are the same as to :func:`json.dump`
+
+**Paramètres :**
+
+- `obj`
+- `fp`
+
+##### dumps
+
+Serialize `obj`, which may contain :class:`JsonRef` objects, to a JSON
+formatted string. `JsonRef` objects will be dumped as the original
+reference object they were created from.
+
+:param obj: Object to serialize
+:param kwargs: Keyword arguments are the same as to :func:`json.dumps`
+
+**Paramètres :**
+
+- `obj`
+
+##### _ref_encoder_factory
+
+**Paramètres :**
+
+- `cls`
+
+##### __init__
+
+**Paramètres :**
+
+- `message`
+- `reference`
+- `uri`
+- `base_uri`
+- `path`
+- `cause`
+
+##### __repr__
+
+##### __str__
+
+##### replace_refs
+
+.. deprecated:: 0.4
+    Use :func:`replace_refs` instead.
+
+Returns a deep copy of `obj` with all contained JSON reference objects
+replaced with :class:`JsonRef` instances.
+
+:param obj: If this is a JSON reference object, a :class:`JsonRef`
+    instance will be created. If `obj` is not a JSON reference object,
+    a deep copy of it will be created with all contained JSON
+    reference objects replaced by :class:`JsonRef` instances
+:param base_uri: URI to resolve relative references against
+:param loader: Callable that takes a URI and returns the parsed JSON
+    (defaults to global ``jsonloader``)
+:param jsonschema: Flag to turn on `JSON Schema mode
+    <http://json-schema.org/latest/json-schema-core.html#anchor25>`_.
+    'id' keyword changes the `base_uri` for references contained within
+    the object
+:param load_on_repr: If set to ``False``, :func:`repr` call on a
+    :class:`JsonRef` object will not cause the reference to be loaded
+    if it hasn't already. (defaults to ``True``)
+
+**Paramètres :**
+
+- `cls`
+- `obj`
+- `base_uri`
+- `loader`
+- `jsonschema`
+- `load_on_repr`
+
+##### __init__
+
+**Paramètres :**
+
+- `refobj`
+- `base_uri`
+- `loader`
+- `jsonschema`
+- `load_on_repr`
+- `merge_props`
+- `_path`
+- `_store`
+
+##### _ref_kwargs
+
+##### full_uri
+
+##### callback
+
+##### resolve_pointer
+
+Resolve a json pointer ``pointer`` within the referenced ``document``.
+
+:argument document: the referent document
+:argument str pointer: a json pointer URI fragment to resolve within it
+
+**Paramètres :**
+
+- `document`
+- `pointer`
+
+##### _error
+
+**Paramètres :**
+
+- `message`
+- `cause`
+
+##### __repr__
+
+##### normalize
+
+**Paramètres :**
+
+- `uri`
+
+##### __init__
+
+##### __getitem__
+
+**Paramètres :**
+
+- `uri`
+
+##### __setitem__
+
+**Paramètres :**
+
+- `uri`
+- `value`
+
+##### __delitem__
+
+**Paramètres :**
+
+- `uri`
+
+##### __iter__
+
+##### __len__
+
+##### __repr__
+
+##### default
+
+**Paramètres :**
+
+- `o`
+
+##### _iterencode
+
+**Paramètres :**
+
+- `o`
+
+##### _encode
+
+**Paramètres :**
+
+- `o`
+
+---
+
 ### mypy_extensions
 
 Defines experimental extensions to the standard "typing" module that are
@@ -13732,6 +14576,162 @@ The new-style print function for Python 2.4 and 2.5.
 - `this_bases`
 
 ##### __len__
+
+---
+
+### proxytypes
+
+Based on the implementation here by Phillip J. Eby:
+https://pypi.python.org/pypi/ProxyTypes
+
+#### Classes
+
+##### ProxyMetaClass
+
+**Méthodes :**
+
+- `__new__()`
+- `__setattr__()`
+- `_no_proxy()`
+
+##### Proxy
+
+Proxy for any python object. Base class for other proxies.
+
+:attr:`__subject__` is the only non-proxied attribute, and contains the
+    proxied object
+
+**Méthodes :**
+
+- `__init__()`
+- `_should_proxy()`
+- `__getattribute__()`
+- `__setattr__()`
+- `__delattr__()`
+- `__call__()`
+- `add_proxy_meth()`
+
+##### CallbackProxy
+
+Proxy for a callback result. Callback is called on each use.
+
+**Méthodes :**
+
+- `__init__()`
+- `__subject__()`
+
+##### LazyProxy
+
+Proxy for a callback result, that is cached on first use.
+
+**Méthodes :**
+
+- `__subject__()`
+- `__subject__()`
+
+#### Fonctions
+
+##### notproxied
+
+Decorator to add methods to the __notproxied__ list
+
+**Paramètres :**
+
+- `func`
+
+##### __new__
+
+**Paramètres :**
+
+- `mcs`
+- `name`
+- `bases`
+- `dct`
+
+##### __setattr__
+
+**Paramètres :**
+
+- `cls`
+- `attr`
+- `value`
+
+##### _no_proxy
+
+Returns a wrapped version of `method`, such that proxying is turned off
+during the method call.
+
+**Paramètres :**
+
+- `method`
+
+##### __init__
+
+**Paramètres :**
+
+- `subject`
+
+##### _should_proxy
+
+Determines whether `attr` should be looked up on the proxied object, or
+the proxy itself.
+
+**Paramètres :**
+
+- `attr`
+
+##### __getattribute__
+
+**Paramètres :**
+
+- `attr`
+
+##### __setattr__
+
+**Paramètres :**
+
+- `attr`
+- `val`
+
+##### __delattr__
+
+**Paramètres :**
+
+- `attr`
+
+##### __call__
+
+##### add_proxy_meth
+
+Add a method `name` to the class, which returns the value of `func`,
+called with the proxied value inserted at `arg_pos`
+
+**Paramètres :**
+
+- `cls`
+- `name`
+- `func`
+- `arg_pos`
+
+##### __init__
+
+**Paramètres :**
+
+- `callback`
+
+##### __subject__
+
+##### __subject__
+
+##### __subject__
+
+**Paramètres :**
+
+- `value`
+
+##### wrapper
+
+##### proxied
 
 ---
 
@@ -14591,6 +15591,239 @@ Get folder with ctypes.
 ---
 
 ### override
+
+---
+
+### _functools
+
+#### Fonctions
+
+##### save_method_args
+
+Wrap a method such that when it is called, the args and kwargs are
+saved on the method.
+
+**Paramètres :**
+
+- `method`
+
+##### wrapper
+
+---
+
+### glob
+
+#### Classes
+
+##### Translator
+
+>>> Translator('xyz')
+Traceback (most recent call last):
+...
+AssertionError: Invalid separators
+
+>>> Translator('')
+Traceback (most recent call last):
+...
+AssertionError: Invalid separators
+
+**Méthodes :**
+
+- `__init__()`
+- `translate()`
+- `extend()`
+- `match_dirs()`
+- `translate_core()`
+- `replace()`
+- `restrict_rglob()`
+- `star_not_empty()`
+
+#### Fonctions
+
+##### separate
+
+Separate out character sets to avoid translating their contents.
+
+>>> [m.group(0) for m in separate('*.txt')]
+['*.txt']
+>>> [m.group(0) for m in separate('a[?]txt')]
+['a', '[?]', 'txt']
+
+**Paramètres :**
+
+- `pattern`
+
+##### __init__
+
+**Paramètres :**
+
+- `seps`
+
+##### translate
+
+Given a glob pattern, produce a regex that matches it.
+
+**Paramètres :**
+
+- `pattern`
+
+##### extend
+
+Extend regex for pattern-wide concerns.
+
+Apply '(?s:)' to create a non-matching group that
+matches newlines (valid on Unix).
+
+Append '\z' to imply fullmatch even when match is used.
+
+**Paramètres :**
+
+- `pattern`
+
+##### match_dirs
+
+Ensure that zipfile.Path directory names are matched.
+
+zipfile.Path directory names always end in a slash.
+
+**Paramètres :**
+
+- `pattern`
+
+##### translate_core
+
+Given a glob pattern, produce a regex that matches it.
+
+>>> t = Translator()
+>>> t.translate_core('*.txt').replace('\\\\', '')
+'[^/]*\\.txt'
+>>> t.translate_core('a?txt')
+'a[^/]txt'
+>>> t.translate_core('**/*').replace('\\\\', '')
+'.*/[^/][^/]*'
+
+**Paramètres :**
+
+- `pattern`
+
+##### replace
+
+Perform the replacements for a match from :func:`separate`.
+
+**Paramètres :**
+
+- `match`
+
+##### restrict_rglob
+
+Raise ValueError if ** appears in anything but a full path segment.
+
+>>> Translator().translate('**foo')
+Traceback (most recent call last):
+...
+ValueError: ** must appear alone in a path segment
+
+**Paramètres :**
+
+- `pattern`
+
+##### star_not_empty
+
+Ensure that * will not match an empty segment.
+
+**Paramètres :**
+
+- `pattern`
+
+##### handle_segment
+
+**Paramètres :**
+
+- `match`
+
+---
+
+### overlay
+
+Expose zipp.Path as .zipfile.Path.
+
+Includes everything else in ``zipfile`` to match future usage. Just
+use:
+
+>>> from zipp.compat.overlay import zipfile
+
+in place of ``import zipfile``.
+
+Relative imports are supported too.
+
+>>> from zipp.compat.overlay.zipfile import ZipInfo
+
+The ``zipfile`` object added to ``sys.modules`` needs to be
+hashable (#126).
+
+>>> _ = hash(sys.modules['zipp.compat.overlay.zipfile'])
+
+#### Classes
+
+##### HashableNamespace
+
+**Méthodes :**
+
+- `__hash__()`
+
+#### Fonctions
+
+##### __hash__
+
+---
+
+### py310
+
+#### Fonctions
+
+##### _text_encoding
+
+---
+
+### py313
+
+#### Fonctions
+
+##### identity
+
+**Paramètres :**
+
+- `x`
+
+##### apply
+
+**Paramètres :**
+
+- `transform`
+
+##### compose
+
+##### replace
+
+>>> replace(r'foo\z')
+'foo\\Z'
+
+**Paramètres :**
+
+- `pattern`
+
+##### wrap
+
+**Paramètres :**
+
+- `func`
+
+##### compose_two
+
+**Paramètres :**
+
+- `f1`
+- `f2`
 
 ---
 
@@ -187212,6 +188445,1695 @@ deserialization
 
 ---
 
+### context
+
+#### Classes
+
+##### Context
+
+**Méthodes :**
+
+- `__setitem__()`
+
+##### _RuntimeContext
+
+The RuntimeContext interface provides a wrapper for the different
+mechanisms that are used to propagate context in Python.
+Implementations can be made available via entry_points and
+selected through environment variables.
+
+**Méthodes :**
+
+- `attach()`
+- `get_current()`
+- `detach()`
+
+#### Fonctions
+
+##### __setitem__
+
+**Paramètres :**
+
+- `key`
+- `value`
+
+##### attach
+
+Sets the current `Context` object. Returns a
+token that can be used to reset to the previous `Context`.
+
+Args:
+    context: The Context to set.
+
+**Paramètres :**
+
+- `context`
+
+##### get_current
+
+Returns the current `Context` object.
+
+##### detach
+
+Resets Context to a previous value
+
+Args:
+    token: A reference to a previous Context.
+
+**Paramètres :**
+
+- `token`
+
+---
+
+### contextvars_context
+
+#### Classes
+
+##### ContextVarsRuntimeContext
+
+An implementation of the RuntimeContext interface which wraps ContextVar under
+the hood. This is the preferred implementation for usage with Python 3.5+
+
+**Méthodes :**
+
+- `__init__()`
+- `attach()`
+- `get_current()`
+- `detach()`
+
+#### Fonctions
+
+##### __init__
+
+##### attach
+
+Sets the current `Context` object. Returns a
+token that can be used to reset to the previous `Context`.
+
+Args:
+    context: The Context to set.
+
+**Paramètres :**
+
+- `context`
+
+##### get_current
+
+Returns the current `Context` object.
+
+##### detach
+
+Resets Context to a previous value
+
+Args:
+    token: A reference to a previous Context.
+
+**Paramètres :**
+
+- `token`
+
+---
+
+### instrument
+
+#### Classes
+
+##### _MetricsHistogramAdvisory
+
+##### CallbackOptions
+
+Options for the callback
+
+Args:
+    timeout_millis: Timeout for the callback's execution. If the callback does asynchronous
+        work (e.g. HTTP requests), it should respect this timeout.
+
+##### Instrument
+
+Abstract class that serves as base for all instruments.
+
+**Méthodes :**
+
+- `__init__()`
+- `_check_name_unit_description()`
+
+##### _ProxyInstrument
+
+**Méthodes :**
+
+- `__init__()`
+- `on_meter_set()`
+- `_create_real_instrument()`
+
+##### _ProxyAsynchronousInstrument
+
+**Méthodes :**
+
+- `__init__()`
+
+##### Synchronous
+
+Base class for all synchronous instruments
+
+##### Asynchronous
+
+Base class for all asynchronous instruments
+
+**Méthodes :**
+
+- `__init__()`
+
+##### Counter
+
+A Counter is a synchronous `Instrument` which supports non-negative increments.
+
+**Méthodes :**
+
+- `add()`
+
+##### NoOpCounter
+
+No-op implementation of `Counter`.
+
+**Méthodes :**
+
+- `__init__()`
+- `add()`
+
+##### _ProxyCounter
+
+**Méthodes :**
+
+- `add()`
+- `_create_real_instrument()`
+
+##### UpDownCounter
+
+An UpDownCounter is a synchronous `Instrument` which supports increments and decrements.
+
+**Méthodes :**
+
+- `add()`
+
+##### NoOpUpDownCounter
+
+No-op implementation of `UpDownCounter`.
+
+**Méthodes :**
+
+- `__init__()`
+- `add()`
+
+##### _ProxyUpDownCounter
+
+**Méthodes :**
+
+- `add()`
+- `_create_real_instrument()`
+
+##### ObservableCounter
+
+An ObservableCounter is an asynchronous `Instrument` which reports monotonically
+increasing value(s) when the instrument is being observed.
+
+##### NoOpObservableCounter
+
+No-op implementation of `ObservableCounter`.
+
+**Méthodes :**
+
+- `__init__()`
+
+##### _ProxyObservableCounter
+
+**Méthodes :**
+
+- `_create_real_instrument()`
+
+##### ObservableUpDownCounter
+
+An ObservableUpDownCounter is an asynchronous `Instrument` which reports additive value(s) (e.g.
+the process heap size - it makes sense to report the heap size from multiple processes and sum them
+up, so we get the total heap usage) when the instrument is being observed.
+
+##### NoOpObservableUpDownCounter
+
+No-op implementation of `ObservableUpDownCounter`.
+
+**Méthodes :**
+
+- `__init__()`
+
+##### _ProxyObservableUpDownCounter
+
+**Méthodes :**
+
+- `_create_real_instrument()`
+
+##### Histogram
+
+Histogram is a synchronous `Instrument` which can be used to report arbitrary values
+that are likely to be statistically meaningful. It is intended for statistics such as
+histograms, summaries, and percentile.
+
+**Méthodes :**
+
+- `__init__()`
+- `record()`
+
+##### NoOpHistogram
+
+No-op implementation of `Histogram`.
+
+**Méthodes :**
+
+- `__init__()`
+- `record()`
+
+##### _ProxyHistogram
+
+**Méthodes :**
+
+- `__init__()`
+- `record()`
+- `_create_real_instrument()`
+
+##### ObservableGauge
+
+Asynchronous Gauge is an asynchronous `Instrument` which reports non-additive value(s) (e.g.
+the room temperature - it makes no sense to report the temperature value from multiple rooms
+and sum them up) when the instrument is being observed.
+
+##### NoOpObservableGauge
+
+No-op implementation of `ObservableGauge`.
+
+**Méthodes :**
+
+- `__init__()`
+
+##### _ProxyObservableGauge
+
+**Méthodes :**
+
+- `_create_real_instrument()`
+
+##### Gauge
+
+A Gauge is a synchronous `Instrument` which can be used to record non-additive values as they occur.
+
+**Méthodes :**
+
+- `set()`
+
+##### NoOpGauge
+
+No-op implementation of ``Gauge``.
+
+**Méthodes :**
+
+- `__init__()`
+- `set()`
+
+##### _ProxyGauge
+
+**Méthodes :**
+
+- `set()`
+- `_create_real_instrument()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `unit`
+- `description`
+
+##### _check_name_unit_description
+
+Checks the following instrument name, unit and description for
+compliance with the spec.
+
+Returns a dict with keys "name", "unit" and "description", the
+corresponding values will be the checked strings or `None` if the value
+is invalid. If valid, the checked strings should be used instead of the
+original values.
+
+**Paramètres :**
+
+- `name`
+- `unit`
+- `description`
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `unit`
+- `description`
+
+##### on_meter_set
+
+Called when a real meter is set on the creating _ProxyMeter
+
+**Paramètres :**
+
+- `meter`
+
+##### _create_real_instrument
+
+Create an instance of the real instrument. Implement this.
+
+**Paramètres :**
+
+- `meter`
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `callbacks`
+- `unit`
+- `description`
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `callbacks`
+- `unit`
+- `description`
+
+##### add
+
+**Paramètres :**
+
+- `amount`
+- `attributes`
+- `context`
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `unit`
+- `description`
+
+##### add
+
+**Paramètres :**
+
+- `amount`
+- `attributes`
+- `context`
+
+##### add
+
+**Paramètres :**
+
+- `amount`
+- `attributes`
+- `context`
+
+##### _create_real_instrument
+
+**Paramètres :**
+
+- `meter`
+
+##### add
+
+**Paramètres :**
+
+- `amount`
+- `attributes`
+- `context`
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `unit`
+- `description`
+
+##### add
+
+**Paramètres :**
+
+- `amount`
+- `attributes`
+- `context`
+
+##### add
+
+**Paramètres :**
+
+- `amount`
+- `attributes`
+- `context`
+
+##### _create_real_instrument
+
+**Paramètres :**
+
+- `meter`
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `callbacks`
+- `unit`
+- `description`
+
+##### _create_real_instrument
+
+**Paramètres :**
+
+- `meter`
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `callbacks`
+- `unit`
+- `description`
+
+##### _create_real_instrument
+
+**Paramètres :**
+
+- `meter`
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `unit`
+- `description`
+- `explicit_bucket_boundaries_advisory`
+
+##### record
+
+**Paramètres :**
+
+- `amount`
+- `attributes`
+- `context`
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `unit`
+- `description`
+- `explicit_bucket_boundaries_advisory`
+
+##### record
+
+**Paramètres :**
+
+- `amount`
+- `attributes`
+- `context`
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `unit`
+- `description`
+- `explicit_bucket_boundaries_advisory`
+
+##### record
+
+**Paramètres :**
+
+- `amount`
+- `attributes`
+- `context`
+
+##### _create_real_instrument
+
+**Paramètres :**
+
+- `meter`
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `callbacks`
+- `unit`
+- `description`
+
+##### _create_real_instrument
+
+**Paramètres :**
+
+- `meter`
+
+##### set
+
+**Paramètres :**
+
+- `amount`
+- `attributes`
+- `context`
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `unit`
+- `description`
+
+##### set
+
+**Paramètres :**
+
+- `amount`
+- `attributes`
+- `context`
+
+##### set
+
+**Paramètres :**
+
+- `amount`
+- `attributes`
+- `context`
+
+##### _create_real_instrument
+
+**Paramètres :**
+
+- `meter`
+
+---
+
+### observation
+
+#### Classes
+
+##### Observation
+
+A measurement observed in an asynchronous instrument
+
+Return/yield instances of this class from asynchronous instrument callbacks.
+
+Args:
+    value: The float or int measured value
+    attributes: The measurement's attributes
+    context: The measurement's context
+
+**Méthodes :**
+
+- `__init__()`
+- `value()`
+- `attributes()`
+- `context()`
+- `__eq__()`
+- `__repr__()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `value`
+- `attributes`
+- `context`
+
+##### value
+
+##### attributes
+
+##### context
+
+##### __eq__
+
+**Paramètres :**
+
+- `other`
+
+##### __repr__
+
+---
+
+### composite
+
+#### Classes
+
+##### CompositePropagator
+
+CompositePropagator provides a mechanism for combining multiple
+propagators into a single one.
+
+Args:
+    propagators: the list of propagators to use
+
+**Méthodes :**
+
+- `__init__()`
+- `extract()`
+- `inject()`
+- `fields()`
+
+##### CompositeHTTPPropagator
+
+CompositeHTTPPropagator provides a mechanism for combining multiple
+propagators into a single one.
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `propagators`
+
+##### extract
+
+Run each of the configured propagators with the given context and carrier.
+Propagators are run in the order they are configured, if multiple
+propagators write the same context key, the propagator later in the list
+will override previous propagators.
+
+See `opentelemetry.propagators.textmap.TextMapPropagator.extract`
+
+**Paramètres :**
+
+- `carrier`
+- `context`
+- `getter`
+
+##### inject
+
+Run each of the configured propagators with the given context and carrier.
+Propagators are run in the order they are configured, if multiple
+propagators write the same carrier key, the propagator later in the list
+will override previous propagators.
+
+See `opentelemetry.propagators.textmap.TextMapPropagator.inject`
+
+**Paramètres :**
+
+- `carrier`
+- `context`
+- `setter`
+
+##### fields
+
+Returns a set with the fields set in `inject`.
+
+See
+`opentelemetry.propagators.textmap.TextMapPropagator.fields`
+
+---
+
+### textmap
+
+#### Classes
+
+##### Getter
+
+This class implements a Getter that enables extracting propagated
+fields from a carrier.
+
+**Méthodes :**
+
+- `get()`
+- `keys()`
+
+##### Setter
+
+This class implements a Setter that enables injecting propagated
+fields into a carrier.
+
+**Méthodes :**
+
+- `set()`
+
+##### DefaultGetter
+
+**Méthodes :**
+
+- `get()`
+- `keys()`
+
+##### DefaultSetter
+
+**Méthodes :**
+
+- `set()`
+
+##### TextMapPropagator
+
+This class provides an interface that enables extracting and injecting
+context into headers of HTTP requests. HTTP frameworks and clients
+can integrate with TextMapPropagator by providing the object containing the
+headers, and a getter and setter function for the extraction and
+injection of values, respectively.
+
+**Méthodes :**
+
+- `extract()`
+- `inject()`
+- `fields()`
+
+#### Fonctions
+
+##### get
+
+Function that can retrieve zero
+or more values from the carrier. In the case that
+the value does not exist, returns None.
+
+Args:
+    carrier: An object which contains values that are used to
+            construct a Context.
+    key: key of a field in carrier.
+Returns: first value of the propagation key or None if the key doesn't
+        exist.
+
+**Paramètres :**
+
+- `carrier`
+- `key`
+
+##### keys
+
+Function that can retrieve all the keys in a carrier object.
+
+Args:
+    carrier: An object which contains values that are
+        used to construct a Context.
+Returns:
+    list of keys from the carrier.
+
+**Paramètres :**
+
+- `carrier`
+
+##### set
+
+Function that can set a value into a carrier""
+
+Args:
+    carrier: An object which contains values that are used to
+            construct a Context.
+    key: key of a field in carrier.
+    value: value for a field in carrier.
+
+**Paramètres :**
+
+- `carrier`
+- `key`
+- `value`
+
+##### get
+
+Getter implementation to retrieve a value from a dictionary.
+
+Args:
+    carrier: dictionary in which to get value
+    key: the key used to get the value
+Returns:
+    A list with a single string with the value if it exists, else None.
+
+**Paramètres :**
+
+- `carrier`
+- `key`
+
+##### keys
+
+Keys implementation that returns all keys from a dictionary.
+
+**Paramètres :**
+
+- `carrier`
+
+##### set
+
+Setter implementation to set a value into a dictionary.
+
+Args:
+    carrier: dictionary in which to set value
+    key: the key used to set the value
+    value: the value to set
+
+**Paramètres :**
+
+- `carrier`
+- `key`
+- `value`
+
+##### extract
+
+Create a Context from values in the carrier.
+
+The extract function should retrieve values from the carrier
+object using getter, and use values to populate a
+Context value and return it.
+
+Args:
+    getter: a function that can retrieve zero
+        or more values from the carrier. In the case that
+        the value does not exist, return an empty list.
+    carrier: and object which contains values that are
+        used to construct a Context. This object
+        must be paired with an appropriate getter
+        which understands how to extract a value from it.
+    context: an optional Context to use. Defaults to root
+        context if not set.
+Returns:
+    A Context with configuration found in the carrier.
+
+**Paramètres :**
+
+- `carrier`
+- `context`
+- `getter`
+
+##### inject
+
+Inject values from a Context into a carrier.
+
+inject enables the propagation of values into HTTP clients or
+other objects which perform an HTTP request. Implementations
+should use the `Setter` 's set method to set values on the
+carrier.
+
+Args:
+    carrier: An object that a place to define HTTP headers.
+        Should be paired with setter, which should
+        know how to set header values on the carrier.
+    context: an optional Context to use. Defaults to current
+        context if not set.
+    setter: An optional `Setter` object that can set values
+        on the carrier.
+
+**Paramètres :**
+
+- `carrier`
+- `context`
+- `setter`
+
+##### fields
+
+Gets the fields set in the carrier by the `inject` method.
+
+If the carrier is reused, its fields that correspond with the ones
+present in this attribute should be deleted before calling `inject`.
+
+Returns:
+    A set with the fields set in `inject`.
+
+---
+
+### span
+
+#### Classes
+
+##### Span
+
+A span represents a single operation within a trace.
+
+**Méthodes :**
+
+- `end()`
+- `get_span_context()`
+- `set_attributes()`
+- `set_attribute()`
+- `add_event()`
+- `add_link()`
+- `update_name()`
+- `is_recording()`
+- `set_status()`
+- `record_exception()`
+- `__enter__()`
+- `__exit__()`
+
+##### TraceFlags
+
+A bitmask that represents options specific to the trace.
+
+The only supported option is the "sampled" flag (``0x01``). If set, this
+flag indicates that the trace may have been sampled upstream.
+
+See the `W3C Trace Context - Traceparent`_ spec for details.
+
+.. _W3C Trace Context - Traceparent:
+    https://www.w3.org/TR/trace-context/#trace-flags
+
+**Méthodes :**
+
+- `get_default()`
+- `sampled()`
+
+##### TraceState
+
+A list of key-value pairs representing vendor-specific trace info.
+
+Keys and values are strings of up to 256 printable US-ASCII characters.
+Implementations should conform to the `W3C Trace Context - Tracestate`_
+spec, which describes additional restrictions on valid field values.
+
+.. _W3C Trace Context - Tracestate:
+    https://www.w3.org/TR/trace-context/#tracestate-field
+
+**Méthodes :**
+
+- `__init__()`
+- `__contains__()`
+- `__getitem__()`
+- `__iter__()`
+- `__len__()`
+- `__repr__()`
+- `add()`
+- `update()`
+- `delete()`
+- `to_header()`
+- `from_header()`
+- `get_default()`
+- `keys()`
+- `items()`
+- `values()`
+
+##### SpanContext
+
+The state of a Span to propagate between processes.
+
+This class includes the immutable attributes of a :class:`.Span` that must
+be propagated to a span's children and across process boundaries.
+
+Args:
+    trace_id: The ID of the trace that this span belongs to.
+    span_id: This span's ID.
+    is_remote: True if propagated from a remote parent.
+    trace_flags: Trace options to propagate.
+    trace_state: Tracing-system-specific info to propagate.
+
+**Méthodes :**
+
+- `__new__()`
+- `__getnewargs__()`
+- `trace_id()`
+- `span_id()`
+- `is_remote()`
+- `trace_flags()`
+- `trace_state()`
+- `is_valid()`
+- `__setattr__()`
+- `__delattr__()`
+- `__repr__()`
+
+##### NonRecordingSpan
+
+The Span that is used when no Span implementation is available.
+
+All operations are no-op except context propagation.
+
+**Méthodes :**
+
+- `__init__()`
+- `get_span_context()`
+- `is_recording()`
+- `end()`
+- `set_attributes()`
+- `set_attribute()`
+- `add_event()`
+- `add_link()`
+- `update_name()`
+- `set_status()`
+- `record_exception()`
+- `__repr__()`
+
+#### Fonctions
+
+##### _is_valid_pair
+
+**Paramètres :**
+
+- `key`
+- `value`
+
+##### format_trace_id
+
+Convenience trace ID formatting method
+Args:
+    trace_id: Trace ID int
+
+Returns:
+    The trace ID (16 bytes) cast to a 32-character hexadecimal string
+
+**Paramètres :**
+
+- `trace_id`
+
+##### format_span_id
+
+Convenience span ID formatting method
+Args:
+    span_id: Span ID int
+
+Returns:
+    The span ID (8 bytes) cast to a 16-character hexadecimal string
+
+**Paramètres :**
+
+- `span_id`
+
+##### end
+
+Sets the current time as the span's end time.
+
+The span's end time is the wall time at which the operation finished.
+
+Only the first call to `end` should modify the span, and
+implementations are free to ignore or raise on further calls.
+
+**Paramètres :**
+
+- `end_time`
+
+##### get_span_context
+
+Gets the span's SpanContext.
+
+Get an immutable, serializable identifier for this span that can be
+used to create new child spans.
+
+Returns:
+    A :class:`opentelemetry.trace.SpanContext` with a copy of this span's immutable state.
+
+##### set_attributes
+
+Sets Attributes.
+
+Sets Attributes with the key and value passed as arguments dict.
+
+Note: The behavior of `None` value attributes is undefined, and hence
+strongly discouraged. It is also preferred to set attributes at span
+creation, instead of calling this method later since samplers can only
+consider information already present during span creation.
+
+**Paramètres :**
+
+- `attributes`
+
+##### set_attribute
+
+Sets an Attribute.
+
+Sets a single Attribute with the key and value passed as arguments.
+
+Note: The behavior of `None` value attributes is undefined, and hence
+strongly discouraged. It is also preferred to set attributes at span
+creation, instead of calling this method later since samplers can only
+consider information already present during span creation.
+
+**Paramètres :**
+
+- `key`
+- `value`
+
+##### add_event
+
+Adds an `Event`.
+
+Adds a single `Event` with the name and, optionally, a timestamp and
+attributes passed as arguments. Implementations should generate a
+timestamp if the `timestamp` argument is omitted.
+
+**Paramètres :**
+
+- `name`
+- `attributes`
+- `timestamp`
+
+##### add_link
+
+Adds a `Link`.
+
+Adds a single `Link` with the `SpanContext` of the span to link to and,
+optionally, attributes passed as arguments. Implementations may ignore
+calls with an invalid span context if both attributes and TraceState
+are empty.
+
+Note: It is preferred to add links at span creation, instead of calling
+this method later since samplers can only consider information already
+present during span creation.
+
+**Paramètres :**
+
+- `context`
+- `attributes`
+
+##### update_name
+
+Updates the `Span` name.
+
+This will override the name provided via :func:`opentelemetry.trace.Tracer.start_span`.
+
+Upon this update, any sampling behavior based on Span name will depend
+on the implementation.
+
+**Paramètres :**
+
+- `name`
+
+##### is_recording
+
+Returns whether this span will be recorded.
+
+Returns true if this Span is active and recording information like
+events with the add_event operation and attributes using set_attribute.
+
+##### set_status
+
+Sets the Status of the Span. If used, this will override the default
+Span status.
+
+**Paramètres :**
+
+- `status`
+- `description`
+
+##### record_exception
+
+Records an exception as a span event.
+
+**Paramètres :**
+
+- `exception`
+- `attributes`
+- `timestamp`
+- `escaped`
+
+##### __enter__
+
+Invoked when `Span` is used as a context manager.
+
+Returns the `Span` itself.
+
+##### __exit__
+
+Ends context manager and calls `end` on the `Span`.
+
+**Paramètres :**
+
+- `exc_type`
+- `exc_val`
+- `exc_tb`
+
+##### get_default
+
+**Paramètres :**
+
+- `cls`
+
+##### sampled
+
+##### __init__
+
+**Paramètres :**
+
+- `entries`
+
+##### __contains__
+
+**Paramètres :**
+
+- `item`
+
+##### __getitem__
+
+**Paramètres :**
+
+- `key`
+
+##### __iter__
+
+##### __len__
+
+##### __repr__
+
+##### add
+
+Adds a key-value pair to tracestate. The provided pair should
+adhere to w3c tracestate identifiers format.
+
+Args:
+    key: A valid tracestate key to add
+    value: A valid tracestate value to add
+
+Returns:
+    A new TraceState with the modifications applied.
+
+    If the provided key-value pair is invalid or results in tracestate
+    that violates tracecontext specification, they are discarded and
+    same tracestate will be returned.
+
+**Paramètres :**
+
+- `key`
+- `value`
+
+##### update
+
+Updates a key-value pair in tracestate. The provided pair should
+adhere to w3c tracestate identifiers format.
+
+Args:
+    key: A valid tracestate key to update
+    value: A valid tracestate value to update for key
+
+Returns:
+    A new TraceState with the modifications applied.
+
+    If the provided key-value pair is invalid or results in tracestate
+    that violates tracecontext specification, they are discarded and
+    same tracestate will be returned.
+
+**Paramètres :**
+
+- `key`
+- `value`
+
+##### delete
+
+Deletes a key-value from tracestate.
+
+Args:
+    key: A valid tracestate key to remove key-value pair from tracestate
+
+Returns:
+    A new TraceState with the modifications applied.
+
+    If the provided key-value pair is invalid or results in tracestate
+    that violates tracecontext specification, they are discarded and
+    same tracestate will be returned.
+
+**Paramètres :**
+
+- `key`
+
+##### to_header
+
+Creates a w3c tracestate header from a TraceState.
+
+Returns:
+    A string that adheres to the w3c tracestate
+    header format.
+
+##### from_header
+
+Parses one or more w3c tracestate header into a TraceState.
+
+Args:
+    header_list: one or more w3c tracestate headers.
+
+Returns:
+    A valid TraceState that contains values extracted from
+    the tracestate header.
+
+    If the format of one headers is illegal, all values will
+    be discarded and an empty tracestate will be returned.
+
+    If the number of keys is beyond the maximum, all values
+    will be discarded and an empty tracestate will be returned.
+
+**Paramètres :**
+
+- `cls`
+- `header_list`
+
+##### get_default
+
+**Paramètres :**
+
+- `cls`
+
+##### keys
+
+##### items
+
+##### values
+
+##### __new__
+
+**Paramètres :**
+
+- `cls`
+- `trace_id`
+- `span_id`
+- `is_remote`
+- `trace_flags`
+- `trace_state`
+
+##### __getnewargs__
+
+##### trace_id
+
+##### span_id
+
+##### is_remote
+
+##### trace_flags
+
+##### trace_state
+
+##### is_valid
+
+##### __setattr__
+
+##### __delattr__
+
+##### __repr__
+
+##### __init__
+
+**Paramètres :**
+
+- `context`
+
+##### get_span_context
+
+##### is_recording
+
+##### end
+
+**Paramètres :**
+
+- `end_time`
+
+##### set_attributes
+
+**Paramètres :**
+
+- `attributes`
+
+##### set_attribute
+
+**Paramètres :**
+
+- `key`
+- `value`
+
+##### add_event
+
+**Paramètres :**
+
+- `name`
+- `attributes`
+- `timestamp`
+
+##### add_link
+
+**Paramètres :**
+
+- `context`
+- `attributes`
+
+##### update_name
+
+**Paramètres :**
+
+- `name`
+
+##### set_status
+
+**Paramètres :**
+
+- `status`
+- `description`
+
+##### record_exception
+
+**Paramètres :**
+
+- `exception`
+- `attributes`
+- `timestamp`
+- `escaped`
+
+##### __repr__
+
+---
+
+### status
+
+#### Classes
+
+##### StatusCode
+
+Represents the canonical set of status codes of a finished Span.
+
+##### Status
+
+Represents the status of a finished Span.
+
+Args:
+    status_code: The canonical status code that describes the result
+        status of the operation.
+    description: An optional description of the status.
+
+**Méthodes :**
+
+- `__init__()`
+- `status_code()`
+- `description()`
+- `is_ok()`
+- `is_unset()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `status_code`
+- `description`
+
+##### status_code
+
+Represents the canonical status code of a finished Span.
+
+##### description
+
+Status description
+
+##### is_ok
+
+Returns false if this represents an error, true otherwise.
+
+##### is_unset
+
+Returns true if unset, false otherwise.
+
+---
+
+### tracecontext
+
+#### Classes
+
+##### TraceContextTextMapPropagator
+
+Extracts and injects using w3c TraceContext's headers.
+
+**Méthodes :**
+
+- `extract()`
+- `inject()`
+- `fields()`
+
+#### Fonctions
+
+##### extract
+
+Extracts SpanContext from the carrier.
+
+See `opentelemetry.propagators.textmap.TextMapPropagator.extract`
+
+**Paramètres :**
+
+- `carrier`
+- `context`
+- `getter`
+
+##### inject
+
+Injects SpanContext into the carrier.
+
+See `opentelemetry.propagators.textmap.TextMapPropagator.inject`
+
+**Paramètres :**
+
+- `carrier`
+- `context`
+- `setter`
+
+##### fields
+
+Returns a set with the fields set in `inject`.
+
+See
+`opentelemetry.propagators.textmap.TextMapPropagator.fields`
+
+---
+
+### _decorator
+
+#### Classes
+
+##### _AgnosticContextManager
+
+Context manager that can decorate both async and sync functions.
+
+This is an overridden version of the contextlib._GeneratorContextManager
+class that will decorate async functions with an async context manager
+to end the span AFTER the entire async function coroutine finishes.
+
+Else it will report near zero spans durations for async functions.
+
+We are overriding the contextlib._GeneratorContextManager class as
+reimplementing it is a lot of code to maintain and this class (even if it's
+marked as protected) doesn't seems like to be evolving a lot.
+
+For more information, see:
+https://github.com/open-telemetry/opentelemetry-python/pull/3633
+
+**Méthodes :**
+
+- `__enter__()`
+- `__call__()`
+
+#### Fonctions
+
+##### _agnosticcontextmanager
+
+**Paramètres :**
+
+- `func`
+
+##### __enter__
+
+Reimplementing __enter__ to avoid the type error.
+
+The original __enter__ method returns Any type, but we want to return R.
+
+##### __call__
+
+**Paramètres :**
+
+- `func`
+
+##### helper
+
+---
+
+### _importlib_metadata
+
+---
+
+### _once
+
+#### Classes
+
+##### Once
+
+Execute a function exactly once and block all callers until the function returns
+
+Same as golang's `sync.Once <https://pkg.go.dev/sync#Once>`_
+
+**Méthodes :**
+
+- `__init__()`
+- `do_once()`
+
+#### Fonctions
+
+##### __init__
+
+##### do_once
+
+Execute ``func`` if it hasn't been executed or return.
+
+Will block until ``func`` has been called by one thread.
+
+Returns:
+    Whether or not ``func`` was executed in this call
+
+**Paramètres :**
+
+- `func`
+
+---
+
+### _providers
+
+#### Fonctions
+
+##### _load_provider
+
+**Paramètres :**
+
+- `provider_environment_variable`
+- `provider`
+
+---
+
+### re
+
+#### Fonctions
+
+##### parse_headers
+
+**Paramètres :**
+
+- `s`
+
+##### parse_env_headers
+
+Parse ``s``, which is a ``str`` instance containing HTTP headers encoded
+for use in ENV variables per the W3C Baggage HTTP header format at
+https://www.w3.org/TR/baggage/#baggage-http-header-format, except that
+additional semi-colon delimited metadata is not supported.
+If ``liberal`` is True we try to parse ``s`` anyway to be more compatible
+with other languages SDKs that accept non URL-encoded headers by default.
+
+**Paramètres :**
+
+- `s`
+- `liberal`
+
+---
+
+### types
+
+---
+
 ### __main__
 
 pygments.__main__
@@ -230273,13 +233195,6 @@ Contains the Any helper APIs.
 - `any_msg`
 - `msg`
 
-##### unpack_as
-
-**Paramètres :**
-
-- `any_msg`
-- `message_type`
-
 ##### type_name
 
 **Paramètres :**
@@ -230464,8 +233379,6 @@ Attributes:
 - `type()`
 - `type()`
 - `label()`
-- `is_required()`
-- `is_repeated()`
 - `camelcase_name()`
 - `has_presence()`
 - `is_packed()`
@@ -230949,14 +233862,6 @@ Likewise for extension_scope.
 - `val`
 
 ##### label
-
-##### is_required
-
-Returns if the field is required.
-
-##### is_repeated
-
-Returns if the field is repeated.
 
 ##### camelcase_name
 
@@ -232446,7 +235351,7 @@ JSON format parser for protocol message.
 - `_ConvertAnyMessage()`
 - `_ConvertGenericMessage()`
 - `_ConvertValueMessage()`
-- `_ConvertListOrTupleValueMessage()`
+- `_ConvertListValueMessage()`
 - `_ConvertStructMessage()`
 - `_ConvertWrapperMessage()`
 - `_ConvertMapFieldValue()`
@@ -232842,7 +235747,7 @@ Convert a JSON representation into Value message.
 - `message`
 - `path`
 
-##### _ConvertListOrTupleValueMessage
+##### _ConvertListValueMessage
 
 Convert a JSON representation into ListValue message.
 
@@ -232968,7 +235873,6 @@ shown below.
 **Méthodes :**
 
 - `__deepcopy__()`
-- `__dir__()`
 - `__eq__()`
 - `__ne__()`
 - `__hash__()`
@@ -233014,10 +235918,6 @@ Constructs a nested message.
 **Paramètres :**
 
 - `memo`
-
-##### __dir__
-
-Provides the list of all accessible Message attributes.
 
 ##### __eq__
 
@@ -233392,6 +236292,9 @@ Factory for creating Proto2 messages from descriptors in a pool.
 **Méthodes :**
 
 - `__init__()`
+- `GetPrototype()`
+- `CreatePrototype()`
+- `GetMessages()`
 
 #### Fonctions
 
@@ -233418,22 +236321,6 @@ Gets all the messages from specified files.
 
 This will find and resolve dependencies, failing if the descriptor
 pool cannot satisfy them.
-
-This will not return the classes for nested types within those classes, for
-those, use GetMessageClass() on the nested types within their containing
-messages.
-
-For example, for the message:
-
-message NestedTypeMessage {
-  message NestedType {
-    string data = 1;
-  }
-  NestedType nested = 1;
-}
-
-NestedTypeMessage will be in the result, but not
-NestedTypeMessage.NestedType.
 
 Args:
   files: The file names to extract messages from.
@@ -233487,76 +236374,64 @@ Initializes a new factory.
 
 - `pool`
 
+##### GetPrototype
+
+Obtains a proto2 message class based on the passed in descriptor.
+
+Passing a descriptor with a fully qualified name matching a previous
+invocation will cause the same class to be returned.
+
+Args:
+  descriptor: The descriptor to build from.
+
+Returns:
+  A class describing the passed in descriptor.
+
+**Paramètres :**
+
+- `descriptor`
+
+##### CreatePrototype
+
+Builds a proto2 message class based on the passed in descriptor.
+
+Don't call this function directly, it always creates a new class. Call
+GetMessageClass() instead.
+
+Args:
+  descriptor: The descriptor to build from.
+
+Returns:
+  A class describing the passed in descriptor.
+
+**Paramètres :**
+
+- `descriptor`
+
+##### GetMessages
+
+Gets all the messages from a specified file.
+
+This will find and resolve dependencies, failing if the descriptor
+pool cannot satisfy them.
+
+Args:
+  files: The file names to extract messages from.
+
+Returns:
+  A dictionary mapping proto names to the message classes. This will include
+  any dependent messages as well as any messages defined in the same file as
+  a specified message.
+
+**Paramètres :**
+
+- `files`
+
 ##### _AddFile
 
 **Paramètres :**
 
 - `file_proto`
-
----
-
-### proto_json
-
-Contains the Nextgen Pythonic Protobuf JSON APIs.
-
-#### Fonctions
-
-##### serialize
-
-Converts protobuf message to a dictionary.
-
-When the dictionary is encoded to JSON, it conforms to proto3 JSON spec.
-
-Args:
-  message: The protocol buffers message instance to serialize.
-  always_print_fields_with_no_presence: If True, fields without
-    presence (implicit presence scalars, repeated fields, and map fields) will
-    always be serialized. Any field that supports presence is not affected by
-    this option (including singular message fields and oneof fields).
-  preserving_proto_field_name: If True, use the original proto field names as
-    defined in the .proto file. If False, convert the field names to
-    lowerCamelCase.
-  use_integers_for_enums: If true, print integers instead of enum names.
-  descriptor_pool: A Descriptor Pool for resolving types. If None use the
-    default.
-  float_precision: If set, use this to specify float field valid digits.
-
-Returns:
-  A dict representation of the protocol buffer message.
-
-**Paramètres :**
-
-- `message`
-- `always_print_fields_with_no_presence`
-- `preserving_proto_field_name`
-- `use_integers_for_enums`
-- `descriptor_pool`
-- `float_precision`
-
-##### parse
-
-Parses a JSON dictionary representation into a message.
-
-Args:
-  message_class: The message meta class.
-  js_dict: Dict representation of a JSON message.
-  ignore_unknown_fields: If True, do not raise errors for unknown fields.
-  descriptor_pool: A Descriptor Pool for resolving types. If None use the
-    default.
-  max_recursion_depth: max recursion depth of JSON message to be deserialized.
-    JSON messages over this depth will fail to be deserialized. Default value
-    is 100.
-
-Returns:
-  A new message passed from json_dict.
-
-**Paramètres :**
-
-- `message_class`
-- `js_dict`
-- `ignore_unknown_fields`
-- `descriptor_pool`
-- `max_recursion_depth`
 
 ---
 
@@ -233647,50 +236522,6 @@ Returns:
 - `message_class`
 - `input_bytes`
 
-##### byte_size
-
-Returns the serialized size of this message.
-
-Args:
-  message: A proto message.
-
-Returns:
-  int: The number of bytes required to serialize this message.
-
-**Paramètres :**
-
-- `message`
-
-##### clear_message
-
-Clears all data that was set in the message.
-
-Args:
-  message: The proto message to be cleared.
-
-**Paramètres :**
-
-- `message`
-
-##### clear_field
-
-Clears the contents of a given field.
-
-Inside a oneof group, clears the field set. If the name neither refers to a
-defined field or oneof group, :exc:`ValueError` is raised.
-
-Args:
-  message: The proto message.
-  field_name (str): The name of the field to be cleared.
-
-Raises:
-  ValueError: if the `field_name` is not a member of this message.
-
-**Paramètres :**
-
-- `message`
-- `field_name`
-
 ---
 
 ### proto_builder
@@ -233749,101 +236580,68 @@ Populate FileDescriptorProto for MessageFactory's DescriptorPool.
 
 ---
 
-### proto_text
+### proto_json
 
-Contains the Nextgen Pythonic Protobuf Text Format APIs.
+Contains the Nextgen Pythonic Protobuf JSON APIs.
 
 #### Fonctions
 
 ##### serialize
 
-Convert protobuf message to text format.
+Converts protobuf message to a dictionary.
 
-Double values can be formatted compactly with 15 digits of
-precision (which is the most that IEEE 754 "double" can guarantee)
-using double_format='.15g'. To ensure that converting to text and back to a
-proto will result in an identical value, double_format='.17g' should be used.
+When the dictionary is encoded to JSON, it conforms to proto3 JSON spec.
 
 Args:
-  message: The protocol buffers message.
-  as_utf8: Return unescaped Unicode for non-ASCII characters.
-  as_one_line: Don't introduce newlines between fields.
-  use_short_repeated_primitives: Use short repeated format for primitives.
-  pointy_brackets: If True, use angle brackets instead of curly braces for
-    nesting.
-  use_index_order: If True, fields of a proto message will be printed using
-    the order defined in source code instead of the field number, extensions
-    will be printed at the end of the message and their relative order is
-    determined by the extension number. By default, use the field number
-    order.
-  float_format (str): If set, use this to specify float field formatting (per
-    the "Format Specification Mini-Language"); otherwise, shortest float that
-    has same value in wire will be printed. Also affect double field if
-    double_format is not set but float_format is set.
-  double_format (str): If set, use this to specify double field formatting
-    (per the "Format Specification Mini-Language"); if it is not set but
-    float_format is set, use float_format. Otherwise, use ``str()``
-  use_field_number: If True, print field numbers instead of names.
-  descriptor_pool (DescriptorPool): Descriptor pool used to resolve Any types.
-  indent (int): The initial indent level, in terms of spaces, for pretty
-    print.
-  message_formatter (function(message, indent, as_one_line) -> unicode|None):
-    Custom formatter for selected sub-messages (usually based on message
-    type). Use to pretty print parts of the protobuf for easier diffing.
-  print_unknown_fields: If True, unknown fields will be printed.
-  force_colon: If set, a colon will be added after the field name even if the
-    field is a proto message.
+  message: The protocol buffers message instance to serialize.
+  always_print_fields_with_no_presence: If True, fields without
+    presence (implicit presence scalars, repeated fields, and map fields) will
+    always be serialized. Any field that supports presence is not affected by
+    this option (including singular message fields and oneof fields).
+  preserving_proto_field_name: If True, use the original proto field names as
+    defined in the .proto file. If False, convert the field names to
+    lowerCamelCase.
+  use_integers_for_enums: If true, print integers instead of enum names.
+  descriptor_pool: A Descriptor Pool for resolving types. If None use the
+    default.
+  float_precision: If set, use this to specify float field valid digits.
 
 Returns:
-  str: A string of the text formatted protocol buffer message.
+  A dict representation of the protocol buffer message.
 
 **Paramètres :**
 
 - `message`
-- `as_utf8`
-- `as_one_line`
-- `use_short_repeated_primitives`
-- `pointy_brackets`
-- `use_index_order`
-- `float_format`
-- `double_format`
-- `use_field_number`
+- `always_print_fields_with_no_presence`
+- `preserving_proto_field_name`
+- `use_integers_for_enums`
 - `descriptor_pool`
-- `indent`
-- `message_formatter`
-- `print_unknown_fields`
-- `force_colon`
+- `float_precision`
 
 ##### parse
 
-Parses a text representation of a protocol message into a message.
+Parses a JSON dictionary representation into a message.
 
 Args:
   message_class: The message meta class.
-  text (str): Message text representation.
-  message (Message): A protocol buffer message to merge into.
-  allow_unknown_extension: if True, skip over missing extensions and keep
-    parsing
-  allow_field_number: if True, both field number and field name are allowed.
-  descriptor_pool (DescriptorPool): Descriptor pool used to resolve Any types.
-  allow_unknown_field: if True, skip over unknown field and keep parsing.
-    Avoid to use this option if possible. It may hide some errors (e.g.
-    spelling error on field name)
+  js_dict: Dict representation of a JSON message.
+  ignore_unknown_fields: If True, do not raise errors for unknown fields.
+  descriptor_pool: A Descriptor Pool for resolving types. If None use the
+    default.
+  max_recursion_depth: max recursion depth of JSON message to be deserialized.
+    JSON messages over this depth will fail to be deserialized. Default value
+    is 100.
 
 Returns:
-  Message: A new message passed from text.
-
-Raises:
-  ParseError: On text parsing problems.
+  A new message passed from json_dict.
 
 **Paramètres :**
 
 - `message_class`
-- `text`
-- `allow_unknown_extension`
-- `allow_field_number`
+- `js_dict`
+- `ignore_unknown_fields`
 - `descriptor_pool`
-- `allow_unknown_field`
+- `max_recursion_depth`
 
 ---
 
@@ -233862,6 +236660,42 @@ output by the protocol compiler at compile-time.
 The upshot of all this is that the real implementation
 details for ALL pure-Python protocol buffers are *here in
 this file*.
+
+#### Fonctions
+
+##### ParseMessage
+
+Generate a new Message instance from this Descriptor and a byte string.
+
+DEPRECATED: ParseMessage is deprecated because it is using MakeClass().
+Please use MessageFactory.GetMessageClass() instead.
+
+Args:
+  descriptor: Protobuf Descriptor object
+  byte_str: Serialized protocol buffer byte string
+
+Returns:
+  Newly created protobuf Message object.
+
+**Paramètres :**
+
+- `descriptor`
+- `byte_str`
+
+##### MakeClass
+
+Construct a class object for a protobuf described by descriptor.
+
+DEPRECATED: use MessageFactory.GetMessageClass() instead.
+
+Args:
+  descriptor: A descriptor.Descriptor object describing the protobuf.
+Returns:
+  The Message class object described by the descriptor.
+
+**Paramètres :**
+
+- `descriptor`
 
 ---
 
@@ -233912,6 +236746,239 @@ Raises:
 - `gen_patch`
 - `gen_suffix`
 - `location`
+
+---
+
+### service
+
+DEPRECATED:  Declares the RPC service interfaces.
+
+This module declares the abstract interfaces underlying proto2 RPC
+services.  These are intended to be independent of any particular RPC
+implementation, so that proto2 services can be used on top of a variety
+of implementations.  Starting with version 2.3.0, RPC implementations should
+not try to build on these, but should instead provide code generator plugins
+which generate code specific to the particular RPC implementation.  This way
+the generated code can be more appropriate for the implementation in use
+and can avoid unnecessary layers of indirection.
+
+#### Classes
+
+##### RpcException
+
+Exception raised on failed blocking RPC method call.
+
+##### Service
+
+Abstract base interface for protocol-buffer-based RPC services.
+
+Services themselves are abstract classes (implemented either by servers or as
+stubs), but they subclass this base interface. The methods of this
+interface can be used to call the methods of the service without knowing
+its exact type at compile time (analogous to the Message interface).
+
+**Méthodes :**
+
+- `GetDescriptor()`
+- `CallMethod()`
+- `GetRequestClass()`
+- `GetResponseClass()`
+
+##### RpcController
+
+An RpcController mediates a single method call.
+
+The primary purpose of the controller is to provide a way to manipulate
+settings specific to the RPC implementation and to find out about RPC-level
+errors. The methods provided by the RpcController interface are intended
+to be a "least common denominator" set of features which we expect all
+implementations to support.  Specific implementations may provide more
+advanced features (e.g. deadline propagation).
+
+**Méthodes :**
+
+- `Reset()`
+- `Failed()`
+- `ErrorText()`
+- `StartCancel()`
+- `SetFailed()`
+- `IsCanceled()`
+- `NotifyOnCancel()`
+
+##### RpcChannel
+
+Abstract interface for an RPC channel.
+
+An RpcChannel represents a communication line to a service which can be used
+to call that service's methods.  The service may be running on another
+machine. Normally, you should not use an RpcChannel directly, but instead
+construct a stub {@link Service} wrapping it.  Example:
+
+Example:
+  RpcChannel channel = rpcImpl.Channel("remotehost.example.com:1234")
+  RpcController controller = rpcImpl.Controller()
+  MyService service = MyService_Stub(channel)
+  service.MyMethod(controller, request, callback)
+
+**Méthodes :**
+
+- `CallMethod()`
+
+#### Fonctions
+
+##### GetDescriptor
+
+Retrieves this service's descriptor.
+
+##### CallMethod
+
+Calls a method of the service specified by method_descriptor.
+
+If "done" is None then the call is blocking and the response
+message will be returned directly.  Otherwise the call is asynchronous
+and "done" will later be called with the response value.
+
+In the blocking case, RpcException will be raised on error.
+
+Preconditions:
+
+* method_descriptor.service == GetDescriptor
+* request is of the exact same classes as returned by
+  GetRequestClass(method).
+* After the call has started, the request must not be modified.
+* "rpc_controller" is of the correct type for the RPC implementation being
+  used by this Service.  For stubs, the "correct type" depends on the
+  RpcChannel which the stub is using.
+
+Postconditions:
+
+* "done" will be called when the method is complete.  This may be
+  before CallMethod() returns or it may be at some point in the future.
+* If the RPC failed, the response value passed to "done" will be None.
+  Further details about the failure can be found by querying the
+  RpcController.
+
+**Paramètres :**
+
+- `method_descriptor`
+- `rpc_controller`
+- `request`
+- `done`
+
+##### GetRequestClass
+
+Returns the class of the request message for the specified method.
+
+CallMethod() requires that the request is of a particular subclass of
+Message. GetRequestClass() gets the default instance of this required
+type.
+
+Example:
+  method = service.GetDescriptor().FindMethodByName("Foo")
+  request = stub.GetRequestClass(method)()
+  request.ParseFromString(input)
+  service.CallMethod(method, request, callback)
+
+**Paramètres :**
+
+- `method_descriptor`
+
+##### GetResponseClass
+
+Returns the class of the response message for the specified method.
+
+This method isn't really needed, as the RpcChannel's CallMethod constructs
+the response protocol message. It's provided anyway in case it is useful
+for the caller to know the response type in advance.
+
+**Paramètres :**
+
+- `method_descriptor`
+
+##### Reset
+
+Resets the RpcController to its initial state.
+
+After the RpcController has been reset, it may be reused in
+a new call. Must not be called while an RPC is in progress.
+
+##### Failed
+
+Returns true if the call failed.
+
+After a call has finished, returns true if the call failed.  The possible
+reasons for failure depend on the RPC implementation.  Failed() must not
+be called before a call has finished.  If Failed() returns true, the
+contents of the response message are undefined.
+
+##### ErrorText
+
+If Failed is true, returns a human-readable description of the error.
+
+##### StartCancel
+
+Initiate cancellation.
+
+Advises the RPC system that the caller desires that the RPC call be
+canceled.  The RPC system may cancel it immediately, may wait awhile and
+then cancel it, or may not even cancel the call at all.  If the call is
+canceled, the "done" callback will still be called and the RpcController
+will indicate that the call failed at that time.
+
+##### SetFailed
+
+Sets a failure reason.
+
+Causes Failed() to return true on the client side.  "reason" will be
+incorporated into the message returned by ErrorText().  If you find
+you need to return machine-readable information about failures, you
+should incorporate it into your response protocol buffer and should
+NOT call SetFailed().
+
+**Paramètres :**
+
+- `reason`
+
+##### IsCanceled
+
+Checks if the client cancelled the RPC.
+
+If true, indicates that the client canceled the RPC, so the server may
+as well give up on replying to it.  The server should still call the
+final "done" callback.
+
+##### NotifyOnCancel
+
+Sets a callback to invoke on cancel.
+
+Asks that the given callback be called when the RPC is canceled.  The
+callback will always be called exactly once.  If the RPC completes without
+being canceled, the callback will be called after completion.  If the RPC
+has already been canceled when NotifyOnCancel() is called, the callback
+will be called immediately.
+
+NotifyOnCancel() must be called no more than once per request.
+
+**Paramètres :**
+
+- `callback`
+
+##### CallMethod
+
+Calls the method identified by the descriptor.
+
+Call the given method of the remote service.  The signature of this
+procedure looks the same as Service.CallMethod(), but the requirements
+are less strict in one important way:  the request object doesn't have to
+be of any specific class as long as its descriptor is method.input_type.
+
+**Paramètres :**
+
+- `method_descriptor`
+- `rpc_controller`
+- `request`
+- `response_class`
+- `done`
 
 ---
 
@@ -234260,6 +237327,9 @@ A database of Python generated symbols.
 **Méthodes :**
 
 - `__init__()`
+- `GetPrototype()`
+- `CreatePrototype()`
+- `GetMessages()`
 - `RegisterMessage()`
 - `RegisterMessageDescriptor()`
 - `RegisterEnumDescriptor()`
@@ -234281,6 +237351,24 @@ Initializes a new SymbolDatabase.
 **Paramètres :**
 
 - `pool`
+
+##### GetPrototype
+
+**Paramètres :**
+
+- `descriptor`
+
+##### CreatePrototype
+
+**Paramètres :**
+
+- `descriptor`
+
+##### GetMessages
+
+**Paramètres :**
+
+- `files`
 
 ##### RegisterMessage
 
@@ -235467,7 +238555,6 @@ Args:
 **Paramètres :**
 
 - `tokenizer`
-- `immediate_message_type`
 
 ##### __init__
 
@@ -235948,6 +239035,356 @@ Generated protocol buffer code.
 
 ---
 
+### _parameterized
+
+Adds support for parameterized tests to Python's unittest TestCase class.
+
+A parameterized test is a method in a test case that is invoked with different
+argument tuples.
+
+A simple example:
+
+  class AdditionExample(_parameterized.TestCase):
+    @_parameterized.parameters(
+       (1, 2, 3),
+       (4, 5, 9),
+       (1, 1, 3))
+    def testAddition(self, op1, op2, result):
+      self.assertEqual(result, op1 + op2)
+
+
+Each invocation is a separate test case and properly isolated just
+like a normal test method, with its own setUp/tearDown cycle. In the
+example above, there are three separate testcases, one of which will
+fail due to an assertion error (1 + 1 != 3).
+
+Parameters for individual test cases can be tuples (with positional parameters)
+or dictionaries (with named parameters):
+
+  class AdditionExample(_parameterized.TestCase):
+    @_parameterized.parameters(
+       {'op1': 1, 'op2': 2, 'result': 3},
+       {'op1': 4, 'op2': 5, 'result': 9},
+    )
+    def testAddition(self, op1, op2, result):
+      self.assertEqual(result, op1 + op2)
+
+If a parameterized test fails, the error message will show the
+original test name (which is modified internally) and the arguments
+for the specific invocation, which are part of the string returned by
+the shortDescription() method on test cases.
+
+The id method of the test, used internally by the unittest framework,
+is also modified to show the arguments. To make sure that test names
+stay the same across several invocations, object representations like
+
+  >>> class Foo(object):
+  ...  pass
+  >>> repr(Foo())
+  '<__main__.Foo object at 0x23d8610>'
+
+are turned into '<__main__.Foo>'. For even more descriptive names,
+especially in test logs, you can use the named_parameters decorator. In
+this case, only tuples are supported, and the first parameters has to
+be a string (or an object that returns an apt name when converted via
+str()):
+
+  class NamedExample(_parameterized.TestCase):
+    @_parameterized.named_parameters(
+       ('Normal', 'aa', 'aaa', True),
+       ('EmptyPrefix', '', 'abc', True),
+       ('BothEmpty', '', '', True))
+    def testStartsWith(self, prefix, string, result):
+      self.assertEqual(result, strings.startswith(prefix))
+
+Named tests also have the benefit that they can be run individually
+from the command line:
+
+  $ testmodule.py NamedExample.testStartsWithNormal
+  .
+  --------------------------------------------------------------------
+  Ran 1 test in 0.000s
+
+  OK
+
+Parameterized Classes
+=====================
+If invocation arguments are shared across test methods in a single
+TestCase class, instead of decorating all test methods
+individually, the class itself can be decorated:
+
+  @_parameterized.parameters(
+    (1, 2, 3)
+    (4, 5, 9))
+  class ArithmeticTest(_parameterized.TestCase):
+    def testAdd(self, arg1, arg2, result):
+      self.assertEqual(arg1 + arg2, result)
+
+    def testSubtract(self, arg2, arg2, result):
+      self.assertEqual(result - arg1, arg2)
+
+Inputs from Iterables
+=====================
+If parameters should be shared across several test cases, or are dynamically
+created from other sources, a single non-tuple iterable can be passed into
+the decorator. This iterable will be used to obtain the test cases:
+
+  class AdditionExample(_parameterized.TestCase):
+    @_parameterized.parameters(
+      c.op1, c.op2, c.result for c in testcases
+    )
+    def testAddition(self, op1, op2, result):
+      self.assertEqual(result, op1 + op2)
+
+
+Single-Argument Test Methods
+============================
+If a test method takes only one argument, the single argument does not need to
+be wrapped into a tuple:
+
+  class NegativeNumberExample(_parameterized.TestCase):
+    @_parameterized.parameters(
+       -1, -3, -4, -5
+    )
+    def testIsNegative(self, arg):
+      self.assertTrue(IsNegative(arg))
+
+#### Classes
+
+##### _ParameterizedTestIter
+
+Callable and iterable class for producing new test cases.
+
+**Méthodes :**
+
+- `__init__()`
+- `__call__()`
+- `__iter__()`
+
+##### TestGeneratorMetaclass
+
+Metaclass for test cases with test generators.
+
+A test generator is an iterable in a testcase that produces callables. These
+callables must be single-argument methods. These methods are injected into
+the class namespace and the original iterable is removed. If the name of the
+iterable conforms to the test pattern, the injected methods will be picked
+up as tests by the unittest framework.
+
+In general, it is supposed to be used in conjunction with the
+parameters decorator.
+
+**Méthodes :**
+
+- `__new__()`
+
+##### TestCase
+
+Base class for test cases using the parameters decorator.
+
+**Méthodes :**
+
+- `_OriginalName()`
+- `__str__()`
+- `id()`
+
+#### Fonctions
+
+##### _CleanRepr
+
+**Paramètres :**
+
+- `obj`
+
+##### _StrClass
+
+**Paramètres :**
+
+- `cls`
+
+##### _NonStringIterable
+
+**Paramètres :**
+
+- `obj`
+
+##### _FormatParameterList
+
+**Paramètres :**
+
+- `testcase_params`
+
+##### _IsSingletonList
+
+True iff testcases contains only a single non-tuple element.
+
+**Paramètres :**
+
+- `testcases`
+
+##### _ModifyClass
+
+**Paramètres :**
+
+- `class_object`
+- `testcases`
+- `naming_type`
+
+##### _ParameterDecorator
+
+Implementation of the parameterization decorators.
+
+Args:
+  naming_type: The naming type.
+  testcases: Testcase parameters.
+
+Returns:
+  A function for modifying the decorated object.
+
+**Paramètres :**
+
+- `naming_type`
+- `testcases`
+
+##### parameters
+
+A decorator for creating parameterized tests.
+
+See the module docstring for a usage example.
+Args:
+  *testcases: Parameters for the decorated method, either a single
+              iterable, or a list of tuples/dicts/objects (for tests
+              with only one argument).
+
+Returns:
+   A test generator to be handled by TestGeneratorMetaclass.
+
+##### named_parameters
+
+A decorator for creating parameterized tests.
+
+See the module docstring for a usage example. The first element of
+each parameter tuple should be a string and will be appended to the
+name of the test method.
+
+Args:
+  *testcases: Parameters for the decorated method, either a single
+              iterable, or a list of tuples.
+
+Returns:
+   A test generator to be handled by TestGeneratorMetaclass.
+
+##### _UpdateClassDictForParamTestCase
+
+Adds individual test cases to a dictionary.
+
+Args:
+  dct: The target dictionary.
+  id_suffix: The dictionary for mapping names to test IDs.
+  name: The original name of the test case.
+  iterator: The iterator generating the individual test cases.
+
+**Paramètres :**
+
+- `dct`
+- `id_suffix`
+- `name`
+- `iterator`
+
+##### CoopTestCase
+
+Returns a new base class with a cooperative metaclass base.
+
+This enables the TestCase to be used in combination
+with other base classes that have custom metaclasses, such as
+mox.MoxTestBase.
+
+Only works with metaclasses that do not override type.__new__.
+
+Example:
+
+  import google3
+  import mox
+
+  from google.protobuf.internal import _parameterized
+
+  class ExampleTest(parameterized.CoopTestCase(mox.MoxTestBase)):
+    ...
+
+Args:
+  other_base_class: (class) A test case base class.
+
+Returns:
+  A new class object.
+
+**Paramètres :**
+
+- `other_base_class`
+
+##### __init__
+
+Returns concrete test functions for a test and a list of parameters.
+
+The naming_type is used to determine the name of the concrete
+functions as reported by the unittest framework. If naming_type is
+_FIRST_ARG, the testcases must be tuples, and the first element must
+have a string representation that is a valid Python identifier.
+
+Args:
+  test_method: The decorated test method.
+  testcases: (list of tuple/dict) A list of parameter
+             tuples/dicts for individual test invocations.
+  naming_type: The test naming type, either _NAMED or _ARGUMENT_REPR.
+
+**Paramètres :**
+
+- `test_method`
+- `testcases`
+- `naming_type`
+
+##### __call__
+
+##### __iter__
+
+##### _Apply
+
+**Paramètres :**
+
+- `obj`
+
+##### __new__
+
+**Paramètres :**
+
+- `mcs`
+- `class_name`
+- `bases`
+- `dct`
+
+##### _OriginalName
+
+##### __str__
+
+##### id
+
+Returns the descriptive ID of the test.
+
+This is used internally by the unittesting framework to get a name
+for the test to be used in reports.
+
+Returns:
+  The test id.
+
+##### MakeBoundParamTest
+
+**Paramètres :**
+
+- `testcase_params`
+
+##### BoundParamTest
+
+---
+
 ### api_implementation
 
 Determine which implementation of the protobuf API is used in this process.
@@ -236050,7 +239487,6 @@ Args:
 **Paramètres :**
 
 - `msg_des`
-- `prefix`
 
 ---
 
@@ -236143,7 +239579,6 @@ Simple, type-checked, dict-like container for holding repeated scalars.
 - `__len__()`
 - `__iter__()`
 - `__repr__()`
-- `setdefault()`
 - `MergeFrom()`
 - `InvalidateIterators()`
 - `clear()`
@@ -236167,7 +239602,6 @@ Simple, type-checked, dict-like container for with submessage values.
 - `__len__()`
 - `__iter__()`
 - `__repr__()`
-- `setdefault()`
 - `MergeFrom()`
 - `InvalidateIterators()`
 - `clear()`
@@ -236556,13 +239990,6 @@ Args:
 
 ##### __repr__
 
-##### setdefault
-
-**Paramètres :**
-
-- `key`
-- `value`
-
 ##### MergeFrom
 
 **Paramètres :**
@@ -236661,13 +240088,6 @@ that otherwise would appear to be pointless statements:
 ##### __iter__
 
 ##### __repr__
-
-##### setdefault
-
-**Paramètres :**
-
-- `key`
-- `value`
 
 ##### MergeFrom
 
@@ -236811,23 +240231,6 @@ we repeatedly read a tag, look up the corresponding decoder, and invoke it.
 
 #### Fonctions
 
-##### IsDefaultScalarValue
-
-Returns whether or not a scalar value is the default value of its type.
-
-Specifically, this should be used to determine presence of implicit-presence
-fields, where we disallow custom defaults.
-
-Args:
-  value: A scalar value to check.
-
-Returns:
-  True if the value is equivalent to a default value, False otherwise.
-
-**Paramètres :**
-
-- `value`
-
 ##### _VarintDecoder
 
 Return an encoder for a basic varint value (does not include tag).
@@ -236874,20 +240277,6 @@ Returns:
 
 - `buffer`
 - `pos`
-
-##### DecodeTag
-
-Decode a tag from the bytes.
-
-Args:
-  tag_bytes: the bytes of the tag
-
-Returns:
-  Tuple[int, int] of the tag field number and wire type.
-
-**Paramètres :**
-
-- `tag_bytes`
 
 ##### _SimpleDecoder
 
@@ -237035,6 +240424,26 @@ Returns a decoder for a map field.
 - `new_default`
 - `is_message_map`
 
+##### _SkipVarint
+
+Skip a varint value.  Returns the new position.
+
+**Paramètres :**
+
+- `buffer`
+- `pos`
+- `end`
+
+##### _SkipFixed64
+
+Skip a fixed64 value.  Returns the new position.
+
+**Paramètres :**
+
+- `buffer`
+- `pos`
+- `end`
+
 ##### _DecodeFixed64
 
 Decode a fixed64.
@@ -237044,14 +240453,25 @@ Decode a fixed64.
 - `buffer`
 - `pos`
 
-##### _DecodeFixed32
+##### _SkipLengthDelimited
 
-Decode a fixed32.
+Skip a length-delimited value.  Returns the new position.
 
 **Paramètres :**
 
 - `buffer`
 - `pos`
+- `end`
+
+##### _SkipGroup
+
+Skip sub-group.  Returns the new position.
+
+**Paramètres :**
+
+- `buffer`
+- `pos`
+- `end`
 
 ##### SetRecursionLimit
 
@@ -237078,10 +240498,51 @@ Decode a unknown field.  Returns the UnknownField and new position.
 
 - `buffer`
 - `pos`
-- `end_pos`
-- `field_number`
 - `wire_type`
 - `current_depth`
+
+##### _EndGroup
+
+Skipping an END_GROUP tag returns -1 to tell the parent loop to break.
+
+**Paramètres :**
+
+- `buffer`
+- `pos`
+- `end`
+
+##### _SkipFixed32
+
+Skip a fixed32 value.  Returns the new position.
+
+**Paramètres :**
+
+- `buffer`
+- `pos`
+- `end`
+
+##### _DecodeFixed32
+
+Decode a fixed32.
+
+**Paramètres :**
+
+- `buffer`
+- `pos`
+
+##### _RaiseInvalidWireType
+
+Skip function for unknown wire types.  Raises an exception.
+
+**Paramètres :**
+
+- `buffer`
+- `pos`
+- `end`
+
+##### _FieldSkipper
+
+Constructs the SkipField function.
 
 ##### DecodeVarint
 
@@ -237202,6 +240663,23 @@ Returns:
 - `message`
 - `field_dict`
 - `current_depth`
+
+##### SkipField
+
+Skips a field with the specified tag.
+
+|pos| should point to the byte immediately after the tag.
+
+Returns:
+    The new position (after the tag value), or -1 if the tag is an end-group
+    tag (in which case the calling loop should break).
+
+**Paramètres :**
+
+- `buffer`
+- `pos`
+- `end`
+- `tag_bytes`
 
 ##### DecodePackedField
 
@@ -239583,7 +243061,6 @@ A TestResult which forwards events to a parent object, except for Skips.
 - `addError()`
 - `addFailure()`
 - `addSkip()`
-- `addDuration()`
 
 ##### ReferenceLeakCheckerMixin
 
@@ -239622,13 +243099,6 @@ A mixin class for TestCase, which checks reference counts.
 
 - `test`
 - `reason`
-
-##### addDuration
-
-**Paramètres :**
-
-- `test`
-- `duration`
 
 ##### run
 
@@ -239947,7 +243417,6 @@ Class for Duration message type.
 - `_internal_assign()`
 - `_NormalizeDuration()`
 - `__add__()`
-- `__sub__()`
 - `__rsub__()`
 
 ##### Struct
@@ -240071,8 +243540,8 @@ Parse a RFC 3339 date string format to Timestamp.
 
 Args:
   value: A date string. Any fractional digits (or none) and any offset are
-    accepted as long as they fit into nano-seconds precision. Example of
-    accepted format: '1972-01-01T10:00:20.021-05:00'
+      accepted as long as they fit into nano-seconds precision.
+      Example of accepted format: '1972-01-01T10:00:20.021-05:00'
 
 Raises:
   ValueError: On parsing problems.
@@ -240201,8 +243670,8 @@ Converts a string to Duration.
 
 Args:
   value: A string to be converted. The string must end with 's'. Any
-    fractional digits (or none) are accepted as long as they fit into
-    precision. For example: "1s", "1.01s", "1.0000001s", "-3.100s
+      fractional digits (or none) are accepted as long as they fit into
+      precision. For example: "1s", "1.01s", "1.0000001s", "-3.100s
 
 Raises:
   ValueError: On parsing problems.
@@ -240292,17 +243761,11 @@ Set Duration by seconds and nanos.
 
 - `value`
 
-##### __sub__
-
-**Paramètres :**
-
-- `value`
-
 ##### __rsub__
 
 **Paramètres :**
 
-- `value`
+- `dt`
 
 ##### __getitem__
 
@@ -240674,6 +244137,4574 @@ myproto.foo_field = 23
 The above example will not work for nested types. If you wish to include them,
 use reflection.MakeClass() instead of manually instantiating the class in
 order to create the appropriate class structure.
+
+---
+
+### _agent
+
+#### Classes
+
+##### Agent
+
+**Méthodes :**
+
+- `metadata()`
+- `id()`
+
+#### Fonctions
+
+##### metadata
+
+Metadata of the agent.
+
+##### id
+
+ID of the agent.
+
+---
+
+### _agent_id
+
+#### Classes
+
+##### AgentId
+
+Agent ID uniquely identifies an agent instance within an agent runtime - including distributed runtime. It is the 'address' of the agent instance for receiving messages.
+
+See here for more information: :ref:`agentid_and_lifecycle`
+
+**Méthodes :**
+
+- `__init__()`
+- `__hash__()`
+- `__str__()`
+- `__repr__()`
+- `__eq__()`
+- `from_str()`
+- `type()`
+- `key()`
+
+#### Fonctions
+
+##### is_valid_agent_type
+
+**Paramètres :**
+
+- `value`
+
+##### __init__
+
+**Paramètres :**
+
+- `type`
+- `key`
+
+##### __hash__
+
+##### __str__
+
+##### __repr__
+
+##### __eq__
+
+**Paramètres :**
+
+- `value`
+
+##### from_str
+
+Convert a string of the format ``type/key`` into an AgentId
+
+**Paramètres :**
+
+- `cls`
+- `agent_id`
+
+##### type
+
+An identifier that associates an agent with a specific factory function.
+
+Strings may only be composed of alphanumeric letters (a-z) and (0-9), or underscores (_).
+
+##### key
+
+Agent instance identifier.
+
+Strings may only be composed of alphanumeric letters (a-z) and (0-9), or underscores (_).
+
+---
+
+### _agent_instantiation
+
+#### Classes
+
+##### AgentInstantiationContext
+
+A static class that provides context for agent instantiation.
+
+This static class can be used to access the current runtime and agent ID
+during agent instantiation -- inside the factory function or the agent's
+class constructor.
+
+Example:
+
+    Get the current runtime and agent ID inside the factory function and
+    the agent's constructor:
+
+    .. code-block:: python
+
+        import asyncio
+        from dataclasses import dataclass
+
+        from autogen_core import (
+            AgentId,
+            AgentInstantiationContext,
+            MessageContext,
+            RoutedAgent,
+            SingleThreadedAgentRuntime,
+            message_handler,
+        )
+
+
+        @dataclass
+        class TestMessage:
+            content: str
+
+
+        class TestAgent(RoutedAgent):
+            def __init__(self, description: str):
+                super().__init__(description)
+                # Get the current runtime -- we don't use it here, but it's available.
+                _ = AgentInstantiationContext.current_runtime()
+                # Get the current agent ID.
+                agent_id = AgentInstantiationContext.current_agent_id()
+                print(f"Current AgentID from constructor: {agent_id}")
+
+            @message_handler
+            async def handle_test_message(self, message: TestMessage, ctx: MessageContext) -> None:
+                print(f"Received message: {message.content}")
+
+
+        def test_agent_factory() -> TestAgent:
+            # Get the current runtime -- we don't use it here, but it's available.
+            _ = AgentInstantiationContext.current_runtime()
+            # Get the current agent ID.
+            agent_id = AgentInstantiationContext.current_agent_id()
+            print(f"Current AgentID from factory: {agent_id}")
+            return TestAgent(description="Test agent")
+
+
+        async def main() -> None:
+            # Create a SingleThreadedAgentRuntime instance.
+            runtime = SingleThreadedAgentRuntime()
+
+            # Start the runtime.
+            runtime.start()
+
+            # Register the agent type with a factory function.
+            await runtime.register_factory("test_agent", test_agent_factory)
+
+            # Send a message to the agent. The runtime will instantiate the agent and call the message handler.
+            await runtime.send_message(TestMessage(content="Hello, world!"), AgentId("test_agent", "default"))
+
+            # Stop the runtime.
+            await runtime.stop()
+
+
+        asyncio.run(main())
+
+**Méthodes :**
+
+- `__init__()`
+- `populate_context()`
+- `current_runtime()`
+- `current_agent_id()`
+- `is_in_factory_call()`
+
+#### Fonctions
+
+##### __init__
+
+##### populate_context
+
+:meta private:
+
+**Paramètres :**
+
+- `cls`
+- `ctx`
+
+##### current_runtime
+
+**Paramètres :**
+
+- `cls`
+
+##### current_agent_id
+
+**Paramètres :**
+
+- `cls`
+
+##### is_in_factory_call
+
+**Paramètres :**
+
+- `cls`
+
+---
+
+### _agent_metadata
+
+#### Classes
+
+##### AgentMetadata
+
+---
+
+### _agent_proxy
+
+#### Classes
+
+##### AgentProxy
+
+A helper class that allows you to use an :class:`~autogen_core.AgentId` in place of its associated :class:`~autogen_core.Agent`
+
+**Méthodes :**
+
+- `__init__()`
+- `id()`
+- `metadata()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `agent`
+- `runtime`
+
+##### id
+
+Target agent for this proxy
+
+##### metadata
+
+Metadata of the agent.
+
+---
+
+### _agent_runtime
+
+#### Classes
+
+##### AgentRuntime
+
+**Méthodes :**
+
+- `add_message_serializer()`
+
+#### Fonctions
+
+##### add_message_serializer
+
+Add a new message serialization serializer to the runtime
+
+Note: This will deduplicate serializers based on the type_name and data_content_type properties
+
+Args:
+    serializer (MessageSerializer[Any] | Sequence[MessageSerializer[Any]]): The serializer/s to add
+
+**Paramètres :**
+
+- `serializer`
+
+---
+
+### _agent_type
+
+#### Classes
+
+##### AgentType
+
+---
+
+### _base_agent
+
+#### Classes
+
+##### BaseAgent
+
+**Méthodes :**
+
+- `__init_subclass__()`
+- `_handles_types()`
+- `_unbound_subscriptions()`
+- `metadata()`
+- `__init__()`
+- `type()`
+- `id()`
+- `runtime()`
+
+#### Fonctions
+
+##### subscription_factory
+
+:meta private:
+
+**Paramètres :**
+
+- `subscription`
+
+##### handles
+
+**Paramètres :**
+
+- `type`
+- `serializer`
+
+##### decorator
+
+**Paramètres :**
+
+- `cls`
+
+##### decorator
+
+**Paramètres :**
+
+- `cls`
+
+##### __init_subclass__
+
+**Paramètres :**
+
+- `cls`
+
+##### _handles_types
+
+**Paramètres :**
+
+- `cls`
+
+##### _unbound_subscriptions
+
+**Paramètres :**
+
+- `cls`
+
+##### metadata
+
+##### __init__
+
+**Paramètres :**
+
+- `description`
+
+##### type
+
+##### id
+
+##### runtime
+
+---
+
+### _cache_store
+
+#### Classes
+
+##### CacheStore
+
+This protocol defines the basic interface for store/cache operations.
+
+Sub-classes should handle the lifecycle of underlying storage.
+
+**Méthodes :**
+
+- `get()`
+- `set()`
+
+##### InMemoryStoreConfig
+
+##### InMemoryStore
+
+**Méthodes :**
+
+- `__init__()`
+- `get()`
+- `set()`
+- `_to_config()`
+- `_from_config()`
+
+#### Fonctions
+
+##### get
+
+Retrieve an item from the store.
+
+Args:
+    key: The key identifying the item in the store.
+    default (optional): The default value to return if the key is not found.
+                        Defaults to None.
+
+Returns:
+    The value associated with the key if found, else the default value.
+
+**Paramètres :**
+
+- `key`
+- `default`
+
+##### set
+
+Set an item in the store.
+
+Args:
+    key: The key under which the item is to be stored.
+    value: The value to be stored in the store.
+
+**Paramètres :**
+
+- `key`
+- `value`
+
+##### __init__
+
+##### get
+
+**Paramètres :**
+
+- `key`
+- `default`
+
+##### set
+
+**Paramètres :**
+
+- `key`
+- `value`
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+---
+
+### _cancellation_token
+
+#### Classes
+
+##### CancellationToken
+
+A token used to cancel pending async calls
+
+**Méthodes :**
+
+- `__init__()`
+- `cancel()`
+- `is_cancelled()`
+- `add_callback()`
+- `link_future()`
+
+#### Fonctions
+
+##### __init__
+
+##### cancel
+
+Cancel pending async calls linked to this cancellation token.
+
+##### is_cancelled
+
+Check if the CancellationToken has been used
+
+##### add_callback
+
+Attach a callback that will be called when cancel is invoked
+
+**Paramètres :**
+
+- `callback`
+
+##### link_future
+
+Link a pending async call to a token to allow its cancellation
+
+**Paramètres :**
+
+- `future`
+
+##### _cancel
+
+---
+
+### _closure_agent
+
+#### Classes
+
+##### ClosureContext
+
+**Méthodes :**
+
+- `id()`
+
+##### ClosureAgent
+
+**Méthodes :**
+
+- `__init__()`
+- `metadata()`
+- `id()`
+- `runtime()`
+
+#### Fonctions
+
+##### get_handled_types_from_closure
+
+**Paramètres :**
+
+- `closure`
+
+##### id
+
+##### __init__
+
+**Paramètres :**
+
+- `description`
+- `closure`
+
+##### metadata
+
+##### id
+
+##### runtime
+
+##### factory
+
+---
+
+### _component_config
+
+#### Classes
+
+##### ComponentModel
+
+Model class for a component. Contains all information required to instantiate a component.
+
+##### ComponentFromConfig
+
+**Méthodes :**
+
+- `_from_config()`
+- `_from_config_past_version()`
+
+##### ComponentToConfig
+
+The two methods a class must implement to be a component.
+
+Args:
+    Protocol (ConfigT): Type which derives from :py:class:`pydantic.BaseModel`.
+
+**Méthodes :**
+
+- `_to_config()`
+- `dump_component()`
+
+##### ComponentLoader
+
+**Méthodes :**
+
+- `load_component()`
+- `load_component()`
+- `load_component()`
+
+##### ComponentSchemaType
+
+**Méthodes :**
+
+- `__init_subclass__()`
+
+##### ComponentBase
+
+##### Component
+
+To create a component class, inherit from this class for the concrete class and ComponentBase on the interface. Then implement two class variables:
+
+- :py:attr:`component_config_schema` - A Pydantic model class which represents the configuration of the component. This is also the type parameter of Component.
+- :py:attr:`component_type` - What is the logical type of the component.
+
+Example:
+
+.. code-block:: python
+
+    from __future__ import annotations
+
+    from pydantic import BaseModel
+    from autogen_core import Component
+
+
+    class Config(BaseModel):
+        value: str
+
+
+    class MyComponent(Component[Config]):
+        component_type = "custom"
+        component_config_schema = Config
+
+        def __init__(self, value: str):
+            self.value = value
+
+        def _to_config(self) -> Config:
+            return Config(value=self.value)
+
+        @classmethod
+        def _from_config(cls, config: Config) -> MyComponent:
+            return cls(value=config.value)
+
+**Méthodes :**
+
+- `__init_subclass__()`
+
+##### _ConcreteComponent
+
+#### Fonctions
+
+##### _type_to_provider_str
+
+**Paramètres :**
+
+- `t`
+
+##### is_component_instance
+
+**Paramètres :**
+
+- `cls`
+
+##### is_component_class
+
+**Paramètres :**
+
+- `cls`
+
+##### _from_config
+
+Create a new instance of the component from a configuration object.
+
+Args:
+    config (T): The configuration object.
+
+Returns:
+    Self: The new instance of the component.
+
+:meta public:
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+##### _from_config_past_version
+
+Create a new instance of the component from a previous version of the configuration object.
+
+This is only called when the version of the configuration object is less than the current version, since in this case the schema is not known.
+
+Args:
+    config (Dict[str, Any]): The configuration object.
+    version (int): The version of the configuration object.
+
+Returns:
+    Self: The new instance of the component.
+
+:meta public:
+
+**Paramètres :**
+
+- `cls`
+- `config`
+- `version`
+
+##### _to_config
+
+Dump the configuration that would be requite to create a new instance of a component matching the configuration of this instance.
+
+Returns:
+    T: The configuration of the component.
+
+:meta public:
+
+##### dump_component
+
+Dump the component to a model that can be loaded back in.
+
+Raises:
+    TypeError: If the component is a local class.
+
+Returns:
+    ComponentModel: The model representing the component.
+
+##### load_component
+
+**Paramètres :**
+
+- `cls`
+- `model`
+- `expected`
+
+##### load_component
+
+**Paramètres :**
+
+- `cls`
+- `model`
+- `expected`
+
+##### load_component
+
+Load a component from a model. Intended to be used with the return type of :py:meth:`autogen_core.ComponentConfig.dump_component`.
+
+Example:
+
+    .. code-block:: python
+
+        from autogen_core import ComponentModel
+        from autogen_core.models import ChatCompletionClient
+
+        component: ComponentModel = ...  # type: ignore
+
+        model_client = ChatCompletionClient.load_component(component)
+
+Args:
+    model (ComponentModel): The model to load the component from.
+
+Returns:
+    Self: The loaded component.
+
+Args:
+    model (ComponentModel): _description_
+    expected (Type[ExpectedType] | None, optional): Explicit type only if used directly on ComponentLoader. Defaults to None.
+
+Raises:
+    ValueError: If the provider string is invalid.
+    TypeError: Provider is not a subclass of ComponentConfigImpl, or the expected type does not match.
+
+Returns:
+    Self | ExpectedType: The loaded component.
+
+**Paramètres :**
+
+- `cls`
+- `model`
+- `expected`
+
+##### __init_subclass__
+
+**Paramètres :**
+
+- `cls`
+
+##### __init_subclass__
+
+**Paramètres :**
+
+- `cls`
+
+---
+
+### _constants
+
+---
+
+### _default_subscription
+
+#### Classes
+
+##### DefaultSubscription
+
+The default subscription is designed to be a sensible default for applications that only need global scope for agents.
+
+This topic by default uses the "default" topic type and attempts to detect the agent type to use based on the instantiation context.
+
+Args:
+    topic_type (str, optional): The topic type to subscribe to. Defaults to "default".
+    agent_type (str, optional): The agent type to use for the subscription. Defaults to None, in which case it will attempt to detect the agent type based on the instantiation context.
+
+**Méthodes :**
+
+- `__init__()`
+
+#### Fonctions
+
+##### default_subscription
+
+##### default_subscription
+
+**Paramètres :**
+
+- `cls`
+
+##### default_subscription
+
+**Paramètres :**
+
+- `cls`
+
+##### type_subscription
+
+**Paramètres :**
+
+- `topic_type`
+
+##### __init__
+
+**Paramètres :**
+
+- `topic_type`
+- `agent_type`
+
+---
+
+### _default_topic
+
+#### Classes
+
+##### DefaultTopicId
+
+DefaultTopicId provides a sensible default for the topic_id and source fields of a TopicId.
+
+If created in the context of a message handler, the source will be set to the agent_id of the message handler, otherwise it will be set to "default".
+
+Args:
+    type (str, optional): Topic type to publish message to. Defaults to "default".
+    source (str | None, optional): Topic source to publish message to. If None, the source will be set to the agent_id of the message handler if in the context of a message handler, otherwise it will be set to "default". Defaults to None.
+
+**Méthodes :**
+
+- `__init__()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `type`
+- `source`
+
+---
+
+### _function_utils
+
+#### Classes
+
+##### Parameters
+
+Parameters of a function as defined by the OpenAI API
+
+##### Function
+
+A function as defined by the OpenAI API
+
+##### ToolFunction
+
+A function under tool as defined by the OpenAI API.
+
+#### Fonctions
+
+##### get_typed_signature
+
+Get the signature of a function with type annotations.
+
+Args:
+    call: The function to get the signature for
+
+Returns:
+    The signature of the function with type annotations
+
+**Paramètres :**
+
+- `call`
+
+##### get_typed_return_annotation
+
+Get the return annotation of a function.
+
+Args:
+    call: The function to get the return annotation for
+
+Returns:
+    The return annotation of the function
+
+**Paramètres :**
+
+- `call`
+
+##### get_param_annotations
+
+Get the type annotations of the parameters of a function
+
+Args:
+    typed_signature: The signature of the function with type annotations
+
+Returns:
+    A dictionary of the type annotations of the parameters of the function
+
+**Paramètres :**
+
+- `typed_signature`
+
+##### type2description
+
+**Paramètres :**
+
+- `k`
+- `v`
+
+##### get_parameter_json_schema
+
+Get a JSON schema for a parameter as defined by the OpenAI API
+
+Args:
+    k: The name of the parameter
+    v: The type of the parameter
+    default_values: The default values of the parameters of the function
+
+Returns:
+    A Pydanitc model for the parameter
+
+**Paramètres :**
+
+- `k`
+- `v`
+- `default_values`
+
+##### get_required_params
+
+Get the required parameters of a function
+
+Args:
+    typed_signature: The signature of the function as returned by inspect.signature
+
+Returns:
+    A list of the required parameters of the function
+
+**Paramètres :**
+
+- `typed_signature`
+
+##### get_default_values
+
+Get default values of parameters of a function
+
+Args:
+    typed_signature: The signature of the function as returned by inspect.signature
+
+Returns:
+    A dictionary of the default values of the parameters of the function
+
+**Paramètres :**
+
+- `typed_signature`
+
+##### get_parameters
+
+Get the parameters of a function as defined by the OpenAI API
+
+Args:
+    required: The required parameters of the function
+    param_annotations: A dictionary of the type annotations of the parameters of the function
+    default_values: The default values of the parameters of the function
+
+Returns:
+    A Pydantic model for the parameters of the function
+
+**Paramètres :**
+
+- `required`
+- `param_annotations`
+- `default_values`
+
+##### get_missing_annotations
+
+Get the missing annotations of a function
+
+Ignores the parameters with default values as they are not required to be annotated, but logs a warning.
+Args:
+    typed_signature: The signature of the function with type annotations
+    required: The required parameters of the function
+
+Returns:
+    A set of the missing annotations of the function
+
+**Paramètres :**
+
+- `typed_signature`
+- `required`
+
+##### get_function_schema
+
+Get a JSON schema for a function as defined by the OpenAI API
+
+Args:
+    f: The function to get the JSON schema for
+    name: The name of the function
+    description: The description of the function
+
+Returns:
+    A JSON schema for the function
+
+Raises:
+    TypeError: If the function is not annotated
+
+Examples:
+
+    .. code-block:: python
+
+        def f(
+            a: Annotated[str, "Parameter a"],
+            b: int = 2,
+            c: Annotated[float, "Parameter c"] = 0.1,
+        ) -> None:
+            pass
+
+
+        get_function_schema(f, description="function f")
+
+        #   {'type': 'function',
+        #    'function': {'description': 'function f',
+        #        'name': 'f',
+        #        'parameters': {'type': 'object',
+        #           'properties': {'a': {'type': 'str', 'description': 'Parameter a'},
+        #               'b': {'type': 'int', 'description': 'b'},
+        #               'c': {'type': 'float', 'description': 'Parameter c'}},
+        #           'required': ['a']}}}
+
+**Paramètres :**
+
+- `f`
+
+##### normalize_annotated_type
+
+Normalize typing.Annotated types to the inner type.
+
+**Paramètres :**
+
+- `type_hint`
+
+##### args_base_model_from_signature
+
+**Paramètres :**
+
+- `name`
+- `sig`
+
+---
+
+### _image
+
+#### Classes
+
+##### Image
+
+Represents an image.
+
+
+Example:
+
+    Loading an image from a URL:
+
+    .. code-block:: python
+
+        from autogen_core import Image
+        from PIL import Image as PILImage
+        import aiohttp
+        import asyncio
+
+
+        async def from_url(url: str) -> Image:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(url) as response:
+                    content = await response.read()
+                    return Image.from_pil(PILImage.open(content))
+
+
+        image = asyncio.run(from_url("https://example.com/image"))
+
+**Méthodes :**
+
+- `__init__()`
+- `from_pil()`
+- `from_uri()`
+- `from_base64()`
+- `to_base64()`
+- `from_file()`
+- `_repr_html_()`
+- `data_uri()`
+- `to_openai_format()`
+- `__get_pydantic_core_schema__()`
+
+#### Fonctions
+
+##### _convert_base64_to_data_uri
+
+**Paramètres :**
+
+- `base64_image`
+
+##### __init__
+
+**Paramètres :**
+
+- `image`
+
+##### from_pil
+
+**Paramètres :**
+
+- `cls`
+- `pil_image`
+
+##### from_uri
+
+**Paramètres :**
+
+- `cls`
+- `uri`
+
+##### from_base64
+
+**Paramètres :**
+
+- `cls`
+- `base64_str`
+
+##### to_base64
+
+##### from_file
+
+**Paramètres :**
+
+- `cls`
+- `file_path`
+
+##### _repr_html_
+
+##### data_uri
+
+##### to_openai_format
+
+**Paramètres :**
+
+- `detail`
+
+##### __get_pydantic_core_schema__
+
+**Paramètres :**
+
+- `cls`
+- `source_type`
+- `handler`
+
+##### _get_mime_type_from_data_uri
+
+**Paramètres :**
+
+- `base64_image`
+
+##### validate
+
+**Paramètres :**
+
+- `value`
+- `validation_info`
+
+##### serialize
+
+**Paramètres :**
+
+- `value`
+
+---
+
+### _intervention
+
+#### Classes
+
+##### DropMessage
+
+Marker type for signalling that a message should be dropped by an intervention handler. The type itself should be returned from the handler.
+
+##### InterventionHandler
+
+An intervention handler is a class that can be used to modify, log or drop messages that are being processed by the :class:`autogen_core.base.AgentRuntime`.
+
+The handler is called when the message is submitted to the runtime.
+
+Currently the only runtime which supports this is the :class:`autogen_core.base.SingleThreadedAgentRuntime`.
+
+Note: Returning None from any of the intervention handler methods will result in a warning being issued and treated as "no change". If you intend to drop a message, you should return :class:`DropMessage` explicitly.
+
+Example:
+
+.. code-block:: python
+
+    from autogen_core import DefaultInterventionHandler, MessageContext, AgentId, SingleThreadedAgentRuntime
+    from dataclasses import dataclass
+    from typing import Any
+
+
+    @dataclass
+    class MyMessage:
+        content: str
+
+
+    class MyInterventionHandler(DefaultInterventionHandler):
+        async def on_send(self, message: Any, *, message_context: MessageContext, recipient: AgentId) -> MyMessage:
+            if isinstance(message, MyMessage):
+                message.content = message.content.upper()
+            return message
+
+
+    runtime = SingleThreadedAgentRuntime(intervention_handlers=[MyInterventionHandler()])
+
+##### DefaultInterventionHandler
+
+Simple class that provides a default implementation for all intervention
+handler methods, that simply returns the message unchanged. Allows for easy
+subclassing to override only the desired methods.
+
+---
+
+### _message_context
+
+#### Classes
+
+##### MessageContext
+
+---
+
+### _message_handler_context
+
+#### Classes
+
+##### MessageHandlerContext
+
+**Méthodes :**
+
+- `__init__()`
+- `populate_context()`
+- `agent_id()`
+
+#### Fonctions
+
+##### __init__
+
+##### populate_context
+
+:meta private:
+
+**Paramètres :**
+
+- `cls`
+- `ctx`
+
+##### agent_id
+
+**Paramètres :**
+
+- `cls`
+
+---
+
+### _queue
+
+#### Classes
+
+##### _LoopBoundMixin
+
+**Méthodes :**
+
+- `_get_loop()`
+
+##### QueueShutDown
+
+Raised when putting on to or getting from a shut-down Queue.
+
+##### Queue
+
+**Méthodes :**
+
+- `__init__()`
+- `_get()`
+- `_put()`
+- `_wakeup_next()`
+- `__repr__()`
+- `__str__()`
+- `_format()`
+- `qsize()`
+- `maxsize()`
+- `empty()`
+- `full()`
+- `put_nowait()`
+- `get_nowait()`
+- `task_done()`
+- `shutdown()`
+
+#### Fonctions
+
+##### _get_loop
+
+##### __init__
+
+**Paramètres :**
+
+- `maxsize`
+
+##### _get
+
+##### _put
+
+**Paramètres :**
+
+- `item`
+
+##### _wakeup_next
+
+**Paramètres :**
+
+- `waiters`
+
+##### __repr__
+
+##### __str__
+
+##### _format
+
+##### qsize
+
+Number of items in the queue.
+
+##### maxsize
+
+Number of items allowed in the queue.
+
+##### empty
+
+Return True if the queue is empty, False otherwise.
+
+##### full
+
+Return True if there are maxsize items in the queue.
+
+Note: if the Queue was initialized with maxsize=0 (the default),
+then full() is never True.
+
+##### put_nowait
+
+Put an item into the queue without blocking.
+
+If no free slot is immediately available, raise QueueFull.
+
+Raises QueueShutDown if the queue has been shut down.
+
+**Paramètres :**
+
+- `item`
+
+##### get_nowait
+
+Remove and return an item from the queue.
+
+Return an item if one is immediately available, else raise QueueEmpty.
+
+Raises QueueShutDown if the queue has been shut down and is empty, or
+if the queue has been shut down immediately.
+
+##### task_done
+
+Indicate that a formerly enqueued task is complete.
+
+Used by queue consumers. For each get() used to fetch a task,
+a subsequent call to task_done() tells the queue that the processing
+on the task is complete.
+
+If a join() is currently blocking, it will resume when all items have
+been processed (meaning that a task_done() call was received for every
+item that had been put() into the queue).
+
+shutdown(immediate=True) calls task_done() for each remaining item in
+the queue.
+
+Raises ValueError if called more times than there were items placed in
+the queue.
+
+##### shutdown
+
+Shut-down the queue, making queue gets and puts raise QueueShutDown.
+
+By default, gets will only raise once the queue is empty. Set
+'immediate' to True to make gets raise immediately instead.
+
+All blocked callers of put() and get() will be unblocked. If
+'immediate', a task is marked as done for each item remaining in
+the queue, which may unblock callers of join().
+
+**Paramètres :**
+
+- `immediate`
+
+---
+
+### _routed_agent
+
+#### Classes
+
+##### MessageHandler
+
+##### RoutedAgent
+
+A base class for agents that route messages to handlers based on the type of the message
+and optional matching functions.
+
+To create a routed agent, subclass this class and add message handlers as methods decorated with
+either :func:`event` or :func:`rpc` decorator.
+
+Example:
+
+.. code-block:: python
+
+    from dataclasses import dataclass
+    from autogen_core import MessageContext
+    from autogen_core import RoutedAgent, event, rpc
+
+
+    @dataclass
+    class Message:
+        pass
+
+
+    @dataclass
+    class MessageWithContent:
+        content: str
+
+
+    @dataclass
+    class Response:
+        pass
+
+
+    class MyAgent(RoutedAgent):
+        def __init__(self):
+            super().__init__("MyAgent")
+
+        @event
+        async def handle_event_message(self, message: Message, ctx: MessageContext) -> None:
+            assert ctx.topic_id is not None
+            await self.publish_message(MessageWithContent("event handled"), ctx.topic_id)
+
+        @rpc(match=lambda message, ctx: message.content == "special")  # type: ignore
+        async def handle_special_rpc_message(self, message: MessageWithContent, ctx: MessageContext) -> Response:
+            return Response()
+
+**Méthodes :**
+
+- `__init__()`
+- `_discover_handlers()`
+- `_handles_types()`
+
+#### Fonctions
+
+##### message_handler
+
+**Paramètres :**
+
+- `func`
+
+##### message_handler
+
+**Paramètres :**
+
+- `func`
+
+##### message_handler
+
+**Paramètres :**
+
+- `func`
+
+##### message_handler
+
+Decorator for generic message handlers.
+
+Add this decorator to methods in a :class:`RoutedAgent` class that are intended to handle both event and RPC messages.
+These methods must have a specific signature that needs to be followed for it to be valid:
+
+- The method must be an `async` method.
+- The method must be decorated with the `@message_handler` decorator.
+- The method must have exactly 3 arguments:
+    1. `self`
+    2. `message`: The message to be handled, this must be type-hinted with the message type that it is intended to handle.
+    3. `ctx`: A :class:`autogen_core.MessageContext` object.
+- The method must be type hinted with what message types it can return as a response, or it can return `None` if it does not return anything.
+
+Handlers can handle more than one message type by accepting a Union of the message types. It can also return more than one message type by returning a Union of the message types.
+
+Args:
+    func: The function to be decorated.
+    strict: If `True`, the handler will raise an exception if the message type or return type is not in the target types. If `False`, it will log a warning instead.
+    match: A function that takes the message and the context as arguments and returns a boolean. This is used for secondary routing after the message type. For handlers addressing the same message type, the match function is applied in alphabetical order of the handlers and the first matching handler will be called while the rest are skipped. If `None`, the first handler in alphabetical order matching the same message type will be called.
+
+**Paramètres :**
+
+- `func`
+
+##### event
+
+**Paramètres :**
+
+- `func`
+
+##### event
+
+**Paramètres :**
+
+- `func`
+
+##### event
+
+**Paramètres :**
+
+- `func`
+
+##### event
+
+Decorator for event message handlers.
+
+Add this decorator to methods in a :class:`RoutedAgent` class that are intended to handle event messages.
+These methods must have a specific signature that needs to be followed for it to be valid:
+
+- The method must be an `async` method.
+- The method must be decorated with the `@message_handler` decorator.
+- The method must have exactly 3 arguments:
+    1. `self`
+    2. `message`: The event message to be handled, this must be type-hinted with the message type that it is intended to handle.
+    3. `ctx`: A :class:`autogen_core.MessageContext` object.
+- The method must return `None`.
+
+Handlers can handle more than one message type by accepting a Union of the message types.
+
+Args:
+    func: The function to be decorated.
+    strict: If `True`, the handler will raise an exception if the message type is not in the target types. If `False`, it will log a warning instead.
+    match: A function that takes the message and the context as arguments and returns a boolean. This is used for secondary routing after the message type. For handlers addressing the same message type, the match function is applied in alphabetical order of the handlers and the first matching handler will be called while the rest are skipped. If `None`, the first handler in alphabetical order matching the same message type will be called.
+
+**Paramètres :**
+
+- `func`
+
+##### rpc
+
+**Paramètres :**
+
+- `func`
+
+##### rpc
+
+**Paramètres :**
+
+- `func`
+
+##### rpc
+
+**Paramètres :**
+
+- `func`
+
+##### rpc
+
+Decorator for RPC message handlers.
+
+Add this decorator to methods in a :class:`RoutedAgent` class that are intended to handle RPC messages.
+These methods must have a specific signature that needs to be followed for it to be valid:
+
+- The method must be an `async` method.
+- The method must be decorated with the `@message_handler` decorator.
+- The method must have exactly 3 arguments:
+    1. `self`
+    2. `message`: The message to be handled, this must be type-hinted with the message type that it is intended to handle.
+    3. `ctx`: A :class:`autogen_core.MessageContext` object.
+- The method must be type hinted with what message types it can return as a response, or it can return `None` if it does not return anything.
+
+Handlers can handle more than one message type by accepting a Union of the message types. It can also return more than one message type by returning a Union of the message types.
+
+Args:
+    func: The function to be decorated.
+    strict: If `True`, the handler will raise an exception if the message type or return type is not in the target types. If `False`, it will log a warning instead.
+    match: A function that takes the message and the context as arguments and returns a boolean. This is used for secondary routing after the message type. For handlers addressing the same message type, the match function is applied in alphabetical order of the handlers and the first matching handler will be called while the rest are skipped. If `None`, the first handler in alphabetical order matching the same message type will be called.
+
+**Paramètres :**
+
+- `func`
+
+##### decorator
+
+**Paramètres :**
+
+- `func`
+
+##### decorator
+
+**Paramètres :**
+
+- `func`
+
+##### decorator
+
+**Paramètres :**
+
+- `func`
+
+##### __init__
+
+**Paramètres :**
+
+- `description`
+
+##### _discover_handlers
+
+**Paramètres :**
+
+- `cls`
+
+##### _handles_types
+
+**Paramètres :**
+
+- `cls`
+
+---
+
+### _runtime_impl_helpers
+
+#### Classes
+
+##### SubscriptionManager
+
+**Méthodes :**
+
+- `__init__()`
+- `subscriptions()`
+- `_rebuild_subscriptions()`
+- `_build_for_new_topic()`
+
+#### Fonctions
+
+##### __init__
+
+##### subscriptions
+
+##### _rebuild_subscriptions
+
+**Paramètres :**
+
+- `topics`
+
+##### _build_for_new_topic
+
+**Paramètres :**
+
+- `topic`
+
+##### is_not_sub
+
+**Paramètres :**
+
+- `x`
+
+---
+
+### _serialization
+
+#### Classes
+
+##### MessageSerializer
+
+**Méthodes :**
+
+- `data_content_type()`
+- `type_name()`
+- `deserialize()`
+- `serialize()`
+
+##### IsDataclass
+
+##### DataclassJsonMessageSerializer
+
+**Méthodes :**
+
+- `__init__()`
+- `data_content_type()`
+- `type_name()`
+- `deserialize()`
+- `serialize()`
+
+##### PydanticJsonMessageSerializer
+
+**Méthodes :**
+
+- `__init__()`
+- `data_content_type()`
+- `type_name()`
+- `deserialize()`
+- `serialize()`
+
+##### ProtobufMessageSerializer
+
+**Méthodes :**
+
+- `__init__()`
+- `data_content_type()`
+- `type_name()`
+- `deserialize()`
+- `serialize()`
+
+##### UnknownPayload
+
+##### SerializationRegistry
+
+:meta private:
+
+**Méthodes :**
+
+- `__init__()`
+- `add_serializer()`
+- `deserialize()`
+- `serialize()`
+- `is_registered()`
+- `type_name()`
+
+#### Fonctions
+
+##### is_dataclass
+
+**Paramètres :**
+
+- `cls`
+
+##### has_nested_dataclass
+
+**Paramètres :**
+
+- `cls`
+
+##### contains_a_union
+
+**Paramètres :**
+
+- `cls`
+
+##### has_nested_base_model
+
+**Paramètres :**
+
+- `cls`
+
+##### has_nested_base_model_in_type
+
+Helper function to check if a type or its arguments is a BaseModel subclass.
+
+**Paramètres :**
+
+- `tp`
+
+##### _type_name
+
+**Paramètres :**
+
+- `cls`
+
+##### try_get_known_serializers_for_type
+
+:meta private:
+
+**Paramètres :**
+
+- `cls`
+
+##### data_content_type
+
+##### type_name
+
+##### deserialize
+
+**Paramètres :**
+
+- `payload`
+
+##### serialize
+
+**Paramètres :**
+
+- `message`
+
+##### __init__
+
+**Paramètres :**
+
+- `cls`
+
+##### data_content_type
+
+##### type_name
+
+##### deserialize
+
+**Paramètres :**
+
+- `payload`
+
+##### serialize
+
+**Paramètres :**
+
+- `message`
+
+##### __init__
+
+**Paramètres :**
+
+- `cls`
+
+##### data_content_type
+
+##### type_name
+
+##### deserialize
+
+**Paramètres :**
+
+- `payload`
+
+##### serialize
+
+**Paramètres :**
+
+- `message`
+
+##### __init__
+
+**Paramètres :**
+
+- `cls`
+
+##### data_content_type
+
+##### type_name
+
+##### deserialize
+
+**Paramètres :**
+
+- `payload`
+
+##### serialize
+
+**Paramètres :**
+
+- `message`
+
+##### __init__
+
+##### add_serializer
+
+**Paramètres :**
+
+- `serializer`
+
+##### deserialize
+
+**Paramètres :**
+
+- `payload`
+
+##### serialize
+
+**Paramètres :**
+
+- `message`
+
+##### is_registered
+
+**Paramètres :**
+
+- `type_name`
+- `data_content_type`
+
+##### type_name
+
+**Paramètres :**
+
+- `message`
+
+---
+
+### _single_threaded_agent_runtime
+
+#### Classes
+
+##### PublishMessageEnvelope
+
+A message envelope for publishing messages to all agents that can handle
+the message of the type T.
+
+##### SendMessageEnvelope
+
+A message envelope for sending a message to a specific agent that can handle
+the message of the type T.
+
+##### ResponseMessageEnvelope
+
+A message envelope for sending a response to a message.
+
+##### RunContext
+
+**Méthodes :**
+
+- `__init__()`
+
+##### SingleThreadedAgentRuntime
+
+A single-threaded agent runtime that processes all messages using a single asyncio queue.
+Messages are delivered in the order they are received, and the runtime processes
+each message in a separate asyncio task concurrently.
+
+.. note::
+
+    This runtime is suitable for development and standalone applications.
+    It is not suitable for high-throughput or high-concurrency scenarios.
+
+Args:
+    intervention_handlers (List[InterventionHandler], optional): A list of intervention
+        handlers that can intercept messages before they are sent or published. Defaults to None.
+    tracer_provider (TracerProvider, optional): The tracer provider to use for tracing. Defaults to None.
+        Additionally, you can set environment variable `AUTOGEN_DISABLE_RUNTIME_TRACING` to `true` to disable the agent runtime telemetry if you don't have access to the runtime constructor. For example, if you are using `ComponentConfig`.
+    ignore_unhandled_exceptions (bool, optional): Whether to ignore unhandled exceptions in that occur in agent event handlers. Any background exceptions will be raised on the next call to `process_next` or from an awaited `stop`, `stop_when_idle` or `stop_when`. Note, this does not apply to RPC handlers. Defaults to True.
+
+Examples:
+
+    A simple example of creating a runtime, registering an agent, sending a message and stopping the runtime:
+
+    .. code-block:: python
+
+        import asyncio
+        from dataclasses import dataclass
+
+        from autogen_core import AgentId, MessageContext, RoutedAgent, SingleThreadedAgentRuntime, message_handler
+
+
+        @dataclass
+        class MyMessage:
+            content: str
+
+
+        class MyAgent(RoutedAgent):
+            @message_handler
+            async def handle_my_message(self, message: MyMessage, ctx: MessageContext) -> None:
+                print(f"Received message: {message.content}")
+
+
+        async def main() -> None:
+            # Create a runtime and register the agent
+            runtime = SingleThreadedAgentRuntime()
+            await MyAgent.register(runtime, "my_agent", lambda: MyAgent("My agent"))
+
+            # Start the runtime, send a message and stop the runtime
+            runtime.start()
+            await runtime.send_message(MyMessage("Hello, world!"), recipient=AgentId("my_agent", "default"))
+            await runtime.stop()
+
+
+        asyncio.run(main())
+
+    An example of creating a runtime, registering an agent, publishing a message and stopping the runtime:
+
+    .. code-block:: python
+
+        import asyncio
+        from dataclasses import dataclass
+
+        from autogen_core import (
+            DefaultTopicId,
+            MessageContext,
+            RoutedAgent,
+            SingleThreadedAgentRuntime,
+            default_subscription,
+            message_handler,
+        )
+
+
+        @dataclass
+        class MyMessage:
+            content: str
+
+
+        # The agent is subscribed to the default topic.
+        @default_subscription
+        class MyAgent(RoutedAgent):
+            @message_handler
+            async def handle_my_message(self, message: MyMessage, ctx: MessageContext) -> None:
+                print(f"Received message: {message.content}")
+
+
+        async def main() -> None:
+            # Create a runtime and register the agent
+            runtime = SingleThreadedAgentRuntime()
+            await MyAgent.register(runtime, "my_agent", lambda: MyAgent("My agent"))
+
+            # Start the runtime.
+            runtime.start()
+            # Publish a message to the default topic that the agent is subscribed to.
+            await runtime.publish_message(MyMessage("Hello, world!"), DefaultTopicId())
+            # Wait for the message to be processed and then stop the runtime.
+            await runtime.stop_when_idle()
+
+
+        asyncio.run(main())
+
+**Méthodes :**
+
+- `__init__()`
+- `unprocessed_messages_count()`
+- `_known_agent_names()`
+- `start()`
+- `add_message_serializer()`
+- `_try_serialize()`
+
+#### Fonctions
+
+##### _warn_if_none
+
+Utility function to check if the intervention handler returned None and issue a warning.
+
+Args:
+    value: The return value to check
+    handler_name: Name of the intervention handler method for the warning message
+
+**Paramètres :**
+
+- `value`
+- `handler_name`
+
+##### __init__
+
+**Paramètres :**
+
+- `runtime`
+
+##### __init__
+
+##### unprocessed_messages_count
+
+##### _known_agent_names
+
+##### start
+
+Start the runtime message processing loop. This runs in a background task.
+
+Example:
+
+.. code-block:: python
+
+    import asyncio
+    from autogen_core import SingleThreadedAgentRuntime
+
+
+    async def main() -> None:
+        runtime = SingleThreadedAgentRuntime()
+        runtime.start()
+
+        # ... do other things ...
+
+        await runtime.stop()
+
+
+    asyncio.run(main())
+
+##### add_message_serializer
+
+**Paramètres :**
+
+- `serializer`
+
+##### _try_serialize
+
+**Paramètres :**
+
+- `message`
+
+##### agent_factory
+
+---
+
+### _subscription
+
+#### Classes
+
+##### Subscription
+
+Subscriptions define the topics that an agent is interested in.
+
+**Méthodes :**
+
+- `id()`
+- `__eq__()`
+- `is_match()`
+- `map_to_agent()`
+
+#### Fonctions
+
+##### id
+
+Get the ID of the subscription.
+
+Implementations should return a unique ID for the subscription. Usually this is a UUID.
+
+Returns:
+    str: ID of the subscription.
+
+##### __eq__
+
+Check if two subscriptions are equal.
+
+Args:
+    other (object): Other subscription to compare against.
+
+Returns:
+    bool: True if the subscriptions are equal, False otherwise.
+
+**Paramètres :**
+
+- `other`
+
+##### is_match
+
+Check if a given topic_id matches the subscription.
+
+Args:
+    topic_id (TopicId): TopicId to check.
+
+Returns:
+    bool: True if the topic_id matches the subscription, False otherwise.
+
+**Paramètres :**
+
+- `topic_id`
+
+##### map_to_agent
+
+Map a topic_id to an agent. Should only be called if `is_match` returns True for the given topic_id.
+
+Args:
+    topic_id (TopicId): TopicId to map.
+
+Returns:
+    AgentId: ID of the agent that should handle the topic_id.
+
+Raises:
+    CantHandleException: If the subscription cannot handle the topic_id.
+
+**Paramètres :**
+
+- `topic_id`
+
+---
+
+### _subscription_context
+
+#### Classes
+
+##### SubscriptionInstantiationContext
+
+**Méthodes :**
+
+- `__init__()`
+- `populate_context()`
+- `agent_type()`
+
+#### Fonctions
+
+##### __init__
+
+##### populate_context
+
+:meta private:
+
+**Paramètres :**
+
+- `cls`
+- `ctx`
+
+##### agent_type
+
+**Paramètres :**
+
+- `cls`
+
+---
+
+### _topic
+
+#### Classes
+
+##### TopicId
+
+TopicId defines the scope of a broadcast message. In essence, agent runtime implements a publish-subscribe model through its broadcast API: when publishing a message, the topic must be specified.
+
+See here for more information: :ref:`topic_and_subscription_topic`
+
+**Méthodes :**
+
+- `__post_init__()`
+- `__str__()`
+- `from_str()`
+
+#### Fonctions
+
+##### is_valid_topic_type
+
+**Paramètres :**
+
+- `value`
+
+##### __post_init__
+
+##### __str__
+
+##### from_str
+
+Convert a string of the format ``type/source`` into a TopicId
+
+**Paramètres :**
+
+- `cls`
+- `topic_id`
+
+---
+
+### _type_helpers
+
+#### Classes
+
+##### AnyType
+
+#### Fonctions
+
+##### is_union
+
+**Paramètres :**
+
+- `t`
+
+##### is_optional
+
+**Paramètres :**
+
+- `t`
+
+##### get_types
+
+**Paramètres :**
+
+- `t`
+
+---
+
+### _type_prefix_subscription
+
+#### Classes
+
+##### TypePrefixSubscription
+
+This subscription matches on topics based on a prefix of the type and maps to agents using the source of the topic as the agent key.
+
+This subscription causes each source to have its own agent instance.
+
+Example:
+
+    .. code-block:: python
+
+        from autogen_core import TypePrefixSubscription
+
+        subscription = TypePrefixSubscription(topic_type_prefix="t1", agent_type="a1")
+
+    In this case:
+
+    - A topic_id with type `t1` and source `s1` will be handled by an agent of type `a1` with key `s1`
+    - A topic_id with type `t1` and source `s2` will be handled by an agent of type `a1` with key `s2`.
+    - A topic_id with type `t1SUFFIX` and source `s2` will be handled by an agent of type `a1` with key `s2`.
+
+Args:
+    topic_type_prefix (str): Topic type prefix to match against
+    agent_type (str): Agent type to handle this subscription
+
+**Méthodes :**
+
+- `__init__()`
+- `id()`
+- `topic_type_prefix()`
+- `agent_type()`
+- `is_match()`
+- `map_to_agent()`
+- `__eq__()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `topic_type_prefix`
+- `agent_type`
+- `id`
+
+##### id
+
+##### topic_type_prefix
+
+##### agent_type
+
+##### is_match
+
+**Paramètres :**
+
+- `topic_id`
+
+##### map_to_agent
+
+**Paramètres :**
+
+- `topic_id`
+
+##### __eq__
+
+**Paramètres :**
+
+- `other`
+
+---
+
+### _type_subscription
+
+#### Classes
+
+##### TypeSubscription
+
+This subscription matches on topics based on the type and maps to agents using the source of the topic as the agent key.
+
+This subscription causes each source to have its own agent instance.
+
+Example:
+
+    .. code-block:: python
+
+        from autogen_core import TypeSubscription
+
+        subscription = TypeSubscription(topic_type="t1", agent_type="a1")
+
+    In this case:
+
+    - A topic_id with type `t1` and source `s1` will be handled by an agent of type `a1` with key `s1`
+    - A topic_id with type `t1` and source `s2` will be handled by an agent of type `a1` with key `s2`.
+
+Args:
+    topic_type (str): Topic type to match against
+    agent_type (str): Agent type to handle this subscription
+
+**Méthodes :**
+
+- `__init__()`
+- `id()`
+- `topic_type()`
+- `agent_type()`
+- `is_match()`
+- `map_to_agent()`
+- `__eq__()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `topic_type`
+- `agent_type`
+- `id`
+
+##### id
+
+##### topic_type
+
+##### agent_type
+
+##### is_match
+
+**Paramètres :**
+
+- `topic_id`
+
+##### map_to_agent
+
+**Paramètres :**
+
+- `topic_id`
+
+##### __eq__
+
+**Paramètres :**
+
+- `other`
+
+---
+
+### _types
+
+#### Classes
+
+##### FunctionCall
+
+---
+
+### exceptions
+
+#### Classes
+
+##### CantHandleException
+
+Raised when a handler can't handle the exception.
+
+##### UndeliverableException
+
+Raised when a message can't be delivered.
+
+##### MessageDroppedException
+
+Raised when a message is dropped.
+
+##### NotAccessibleError
+
+Tried to access a value that is not accessible. For example if it is remote cannot be accessed locally.
+
+---
+
+### logging
+
+#### Classes
+
+##### LLMCallEvent
+
+**Méthodes :**
+
+- `__init__()`
+- `prompt_tokens()`
+- `completion_tokens()`
+- `__str__()`
+
+##### LLMStreamStartEvent
+
+To be used by model clients to log the start of a stream.
+
+Args:
+    messages (List[Dict[str, Any]]): The messages used in the call. Must be json serializable.
+
+Example:
+
+    .. code-block:: python
+
+        import logging
+        from autogen_core import EVENT_LOGGER_NAME
+        from autogen_core.logging import LLMStreamStartEvent
+
+        messages = [{"role": "user", "content": "Hello, world!"}]
+        logger = logging.getLogger(EVENT_LOGGER_NAME)
+        logger.info(LLMStreamStartEvent(messages=messages))
+
+**Méthodes :**
+
+- `__init__()`
+- `__str__()`
+
+##### LLMStreamEndEvent
+
+**Méthodes :**
+
+- `__init__()`
+- `prompt_tokens()`
+- `completion_tokens()`
+- `__str__()`
+
+##### ToolCallEvent
+
+**Méthodes :**
+
+- `__init__()`
+- `__str__()`
+
+##### MessageKind
+
+##### DeliveryStage
+
+##### MessageEvent
+
+**Méthodes :**
+
+- `__init__()`
+- `__str__()`
+
+##### MessageDroppedEvent
+
+**Méthodes :**
+
+- `__init__()`
+- `__str__()`
+
+##### MessageHandlerExceptionEvent
+
+**Méthodes :**
+
+- `__init__()`
+- `__str__()`
+
+##### AgentConstructionExceptionEvent
+
+**Méthodes :**
+
+- `__init__()`
+- `__str__()`
+
+#### Fonctions
+
+##### __init__
+
+To be used by model clients to log the call to the LLM.
+
+Args:
+    messages (List[Dict[str, Any]]): The messages used in the call. Must be json serializable.
+    response (Dict[str, Any]): The response of the call. Must be json serializable.
+    prompt_tokens (int): Number of tokens used in the prompt.
+    completion_tokens (int): Number of tokens used in the completion.
+
+Example:
+
+    .. code-block:: python
+
+        import logging
+        from autogen_core import EVENT_LOGGER_NAME
+        from autogen_core.logging import LLMCallEvent
+
+        response = {"content": "Hello, world!"}
+        messages = [{"role": "user", "content": "Hello, world!"}]
+        logger = logging.getLogger(EVENT_LOGGER_NAME)
+        logger.info(LLMCallEvent(prompt_tokens=10, completion_tokens=20, response=response, messages=messages))
+
+##### prompt_tokens
+
+##### completion_tokens
+
+##### __str__
+
+##### __init__
+
+##### __str__
+
+##### __init__
+
+To be used by model clients to log the end of a stream.
+
+Args:
+    response (Dict[str, Any]): The response of the call. Must be json serializable.
+    prompt_tokens (int): Number of tokens used in the prompt.
+    completion_tokens (int): Number of tokens used in the completion.
+
+Example:
+
+    .. code-block:: python
+
+        import logging
+        from autogen_core import EVENT_LOGGER_NAME
+        from autogen_core.logging import LLMStreamEndEvent
+
+        response = {"content": "Hello, world!"}
+        logger = logging.getLogger(EVENT_LOGGER_NAME)
+        logger.info(LLMStreamEndEvent(prompt_tokens=10, completion_tokens=20, response=response))
+
+##### prompt_tokens
+
+##### completion_tokens
+
+##### __str__
+
+##### __init__
+
+Used by subclasses of :class:`~autogen_core.tools.BaseTool` to log executions of tools.
+
+Args:
+    tool_name (str): The name of the tool.
+    arguments (Dict[str, Any]): The arguments of the tool. Must be json serializable.
+    result (str): The result of the tool. Must be a string.
+
+Example:
+
+    .. code-block:: python
+
+        from autogen_core import EVENT_LOGGER_NAME
+        from autogen_core.logging import ToolCallEvent
+
+        logger = logging.getLogger(EVENT_LOGGER_NAME)
+        logger.info(ToolCallEvent(tool_name="Tool1", call_id="123", arguments={"arg1": "value1"}))
+
+##### __str__
+
+##### __init__
+
+##### __str__
+
+##### __init__
+
+##### __str__
+
+##### __init__
+
+##### __str__
+
+##### __init__
+
+##### __str__
+
+---
+
+### _constants
+
+---
+
+### _genai
+
+#### Classes
+
+##### GenAiOperationNameValues
+
+Enum for GenAI operation name values.
+
+#### Fonctions
+
+##### trace_tool_span
+
+Context manager to create a span for tool execution following the
+OpenTelemetry Semantic conventions for generative AI systems.
+
+See the GenAI semantic conventions documentation:
+`OpenTelemetry GenAI Semantic Conventions <https://opentelemetry.io/docs/specs/semconv/gen-ai/>`__
+
+.. warning::
+
+    The GenAI Semantic Conventions are still in incubation and
+    subject to changes in future releases.
+
+
+Args:
+    tool_name (str): The name of the tool being executed.
+    tracer (Optional[trace.Tracer]): The tracer to use for creating the span.
+    parent (Optional[Span]): The parent span to link this span to.
+    tool_description (Optional[str]): A description of the tool.
+    tool_call_id (Optional[str]): A unique identifier for the tool call.
+
+**Paramètres :**
+
+- `tool_name`
+
+##### trace_create_agent_span
+
+Context manager to create a span for agent creation following the
+OpenTelemetry Semantic conventions for generative AI systems.
+
+See the GenAI semantic conventions documentation:
+`OpenTelemetry GenAI Semantic Conventions <https://opentelemetry.io/docs/specs/semconv/gen-ai/>`__
+
+.. warning::
+
+    The GenAI Semantic Conventions are still in incubation and
+    subject to changes in future releases.
+
+Args:
+    agent_name (str): The name of the agent being created.
+    tracer (Optional[trace.Tracer]): The tracer to use for creating the span.
+    parent (Optional[Span]): The parent span to link this span to.
+    agent_id (Optional[str]): The unique identifier for the agent.
+    agent_description (Optional[str]): A description of the agent.
+
+**Paramètres :**
+
+- `agent_name`
+
+##### trace_invoke_agent_span
+
+Context manager to create a span for invoking an agent following the
+OpenTelemetry Semantic conventions for generative AI systems.
+
+See the GenAI semantic conventions documentation:
+`OpenTelemetry GenAI Semantic Conventions <https://opentelemetry.io/docs/specs/semconv/gen-ai/>`__
+
+.. warning::
+
+    The GenAI Semantic Conventions are still in incubation and
+    subject to changes in future releases.
+
+Args:
+    agent_name (str): The name of the agent being invoked.
+    tracer (Optional[trace.Tracer]): The tracer to use for creating the span.
+    parent (Optional[Span]): The parent span to link this span to.
+    agent_id (Optional[str]): The unique identifier for the agent.
+    agent_description (Optional[str]): A description of the agent.
+
+**Paramètres :**
+
+- `agent_name`
+
+---
+
+### _propagation
+
+#### Classes
+
+##### EnvelopeMetadata
+
+Metadata for an envelope.
+
+#### Fonctions
+
+##### _get_carrier_for_envelope_metadata
+
+**Paramètres :**
+
+- `envelope_metadata`
+
+##### get_telemetry_envelope_metadata
+
+Retrieves the telemetry envelope metadata.
+
+Returns:
+    EnvelopeMetadata: The envelope metadata containing the traceparent and tracestate.
+
+##### _get_carrier_for_remote_call_metadata
+
+**Paramètres :**
+
+- `remote_call_metadata`
+
+##### get_telemetry_grpc_metadata
+
+Retrieves the telemetry gRPC metadata.
+
+Args:
+    existingMetadata (Optional[Mapping[str, str]]): The existing metadata to include in the gRPC metadata.
+
+Returns:
+    Mapping[str, str]: The gRPC metadata containing the traceparent and tracestate.
+
+**Paramètres :**
+
+- `existingMetadata`
+
+##### get_telemetry_context
+
+Retrieves the telemetry context from the given metadata.
+
+Args:
+    metadata (Optional[EnvelopeMetadata]): The metadata containing the telemetry context.
+
+Returns:
+    Context: The telemetry context extracted from the metadata, or an empty context if the metadata is None.
+
+**Paramètres :**
+
+- `metadata`
+
+##### get_telemetry_links
+
+Retrieves the telemetry links from the given metadata.
+
+Args:
+    metadata (Optional[EnvelopeMetadata]): The metadata containing the telemetry links.
+
+Returns:
+    Optional[Sequence[Link]]: The telemetry links extracted from the metadata, or None if there are no links.
+
+**Paramètres :**
+
+- `metadata`
+
+---
+
+### _tracing
+
+#### Classes
+
+##### TraceHelper
+
+TraceHelper is a utility class to assist with tracing operations using OpenTelemetry.
+
+This class provides a context manager `trace_block` to create and manage spans for tracing operations,
+following semantic conventions and supporting nested spans through metadata contexts.
+
+**Méthodes :**
+
+- `__init__()`
+- `trace_block()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `tracer_provider`
+- `instrumentation_builder_config`
+
+##### trace_block
+
+Thin wrapper on top of start_as_current_span.
+1. It helps us follow semantic conventions
+2. It helps us get contexts from metadata so we can get nested spans
+
+Args:
+    operation (MessagingOperation): The messaging operation being performed.
+    destination (MessagingDestination): The messaging destination being used.
+    parent Optional[TelemetryMetadataContainer]: The parent telemetry metadta context
+    kind (SpanKind, optional): The kind of span. If not provided, it maps to PRODUCER or CONSUMER depending on the operation.
+    extraAttributes (ExtraAttributes, optional): Additional defined attributes for the span. Defaults to None.
+    attributes (Optional[types.Attributes], optional): Additional non-defined attributes for the span. Defaults to None.
+    start_time (Optional[int], optional): The start time of the span. Defaults to None.
+    record_exception (bool, optional): Whether to record exceptions. Defaults to True.
+    set_status_on_exception (bool, optional): Whether to set the status on exception. Defaults to True.
+    end_on_exit (bool, optional): Whether to end the span on exit. Defaults to True.
+
+Yields:
+    Iterator[Span]: The span object.
+
+**Paramètres :**
+
+- `operation`
+- `destination`
+- `parent`
+
+---
+
+### _tracing_config
+
+#### Classes
+
+##### TracingConfig
+
+A protocol that defines the configuration for instrumentation.
+
+This protocol specifies the required properties and methods that any
+instrumentation configuration class must implement. It includes a
+property to get the name of the module being instrumented and a method
+to build attributes for the instrumentation configuration.
+
+**Méthodes :**
+
+- `name()`
+- `build_attributes()`
+- `get_span_name()`
+- `get_span_kind()`
+
+##### ExtraMessageRuntimeAttributes
+
+##### MessageRuntimeTracingConfig
+
+A class that defines the configuration for message runtime instrumentation.
+
+This class implements the TracingConfig protocol and provides
+the name of the module being instrumented and the attributes for the
+instrumentation configuration.
+
+**Méthodes :**
+
+- `__init__()`
+- `name()`
+- `build_attributes()`
+- `get_span_name()`
+- `get_span_kind()`
+- `_get_destination_str()`
+- `_get_operation_type()`
+
+#### Fonctions
+
+##### name
+
+Returns:
+    The name of the module that is being instrumented.
+
+##### build_attributes
+
+Builds the attributes for the instrumentation configuration.
+
+Returns:
+    Dict[str, str]: The attributes for the instrumentation configuration.
+
+**Paramètres :**
+
+- `operation`
+- `destination`
+- `extraAttributes`
+
+##### get_span_name
+
+Returns the span name based on the given operation and destination.
+
+Parameters:
+    operation (MessagingOperation): The messaging operation.
+    destination (Optional[MessagingDestination]): The messaging destination.
+
+Returns:
+    str: The span name.
+
+**Paramètres :**
+
+- `operation`
+- `destination`
+
+##### get_span_kind
+
+Determines the span kind based on the given messaging operation.
+
+Parameters:
+    operation (MessagingOperation): The messaging operation.
+
+Returns:
+    SpanKind: The span kind based on the messaging operation.
+
+**Paramètres :**
+
+- `operation`
+
+##### __init__
+
+**Paramètres :**
+
+- `runtime_name`
+
+##### name
+
+##### build_attributes
+
+**Paramètres :**
+
+- `operation`
+- `destination`
+- `extraAttributes`
+
+##### get_span_name
+
+Returns the span name based on the given operation and destination.
+Semantic Conventions - https://opentelemetry.io/docs/specs/semconv/messaging/messaging-spans/#span-name
+
+Parameters:
+    operation (MessagingOperation): The messaging operation.
+    destination (Optional[MessagingDestination]): The messaging destination.
+
+Returns:
+    str: The span name.
+
+**Paramètres :**
+
+- `operation`
+- `destination`
+
+##### get_span_kind
+
+Determines the span kind based on the given messaging operation.
+Semantic Conventions - https://opentelemetry.io/docs/specs/semconv/messaging/messaging-spans/#span-kind
+
+Parameters:
+    operation (MessagingOperation): The messaging operation.
+
+Returns:
+    SpanKind: The span kind based on the messaging operation.
+
+**Paramètres :**
+
+- `operation`
+
+##### _get_destination_str
+
+**Paramètres :**
+
+- `destination`
+
+##### _get_operation_type
+
+**Paramètres :**
+
+- `operation`
+
+---
+
+### _base
+
+#### Classes
+
+##### CodeBlock
+
+A code block extracted fromm an agent message.
+
+##### CodeResult
+
+Result of a code execution.
+
+##### CodeExecutor
+
+Executes code blocks and returns the result.
+
+This is an abstract base class for code executors. It defines the interface
+for executing code blocks and returning the result. A concrete implementation
+of this class should be provided to execute code blocks in a specific
+environment. For example, :class:`~autogen_ext.code_executors.docker.DockerCommandLineCodeExecutor` executes
+code blocks in a command line environment in a Docker container.
+
+It is recommended for subclass to be used as a context manager to ensure
+that resources are cleaned up properly. To do this, implement the
+:meth:`~autogen_core.code_executor.CodeExecutor.start` and
+:meth:`~autogen_core.code_executor.CodeExecutor.stop` methods
+that will be called when entering and exiting the context manager.
+
+---
+
+### _func_with_reqs
+
+#### Classes
+
+##### Alias
+
+##### ImportFromModule
+
+**Méthodes :**
+
+- `__init__()`
+
+##### _StringLoader
+
+**Méthodes :**
+
+- `__init__()`
+- `get_source()`
+- `get_data()`
+- `get_filename()`
+
+##### FunctionWithRequirementsStr
+
+**Méthodes :**
+
+- `__init__()`
+- `__call__()`
+
+##### FunctionWithRequirements
+
+**Méthodes :**
+
+- `from_callable()`
+- `from_str()`
+- `__call__()`
+
+#### Fonctions
+
+##### _to_code
+
+**Paramètres :**
+
+- `func`
+
+##### _import_to_str
+
+**Paramètres :**
+
+- `im`
+
+##### with_requirements
+
+Decorate a function with package and import requirements for code execution environments.
+
+This decorator makes a function available for reference in dynamically executed code blocks
+by wrapping it in a `FunctionWithRequirements` object that tracks its dependencies. When the
+decorated function is passed to a code executor, it can be imported by name in the executed
+code, with all dependencies automatically handled.
+
+Args:
+    python_packages (Sequence[str], optional): Python packages required by the function.
+        Can include version specifications (e.g., ["pandas>=1.0.0"]). Defaults to [].
+    global_imports (Sequence[Import], optional): Import statements required by the function.
+        Can be strings ("numpy"), ImportFromModule objects, or Alias objects. Defaults to [].
+
+Returns:
+    Callable[[Callable[P, T]], FunctionWithRequirements[T, P]]: A decorator that wraps
+        the target function, preserving its functionality while registering its dependencies.
+
+Example:
+
+    .. code-block:: python
+
+        import tempfile
+        import asyncio
+        from autogen_core import CancellationToken
+        from autogen_core.code_executor import with_requirements, CodeBlock
+        from autogen_ext.code_executors.local import LocalCommandLineCodeExecutor
+        import pandas
+
+        @with_requirements(python_packages=["pandas"], global_imports=["pandas"])
+        def load_data() -> pandas.DataFrame:
+            """Load some sample data.
+
+            Returns:
+                pandas.DataFrame: A DataFrame with sample data
+            """
+            data = {
+                "name": ["John", "Anna", "Peter", "Linda"],
+                "location": ["New York", "Paris", "Berlin", "London"],
+                "age": [24, 13, 53, 33],
+            }
+            return pandas.DataFrame(data)
+
+        async def run_example():
+            # The decorated function can be used in executed code
+            with tempfile.TemporaryDirectory() as temp_dir:
+                executor = LocalCommandLineCodeExecutor(work_dir=temp_dir, functions=[load_data])
+                code = f"""from {executor.functions_module} import load_data
+
+                # Use the imported function
+                data = load_data()
+                print(data['name'][0])"""
+
+                result = await executor.execute_code_blocks(
+                    code_blocks=[CodeBlock(language="python", code=code)],
+                    cancellation_token=CancellationToken(),
+                )
+                print(result.output)  # Output: John
+
+        # Run the async example
+        asyncio.run(run_example())
+
+**Paramètres :**
+
+- `python_packages`
+- `global_imports`
+
+##### build_python_functions_file
+
+:meta private:
+
+**Paramètres :**
+
+- `funcs`
+
+##### to_stub
+
+Generate a stub for a function as a string
+
+Args:
+    func (Callable[..., Any]): The function to generate a stub for
+
+Returns:
+    str: The stub for the function
+
+**Paramètres :**
+
+- `func`
+
+##### to_code
+
+**Paramètres :**
+
+- `func`
+
+##### import_to_str
+
+**Paramètres :**
+
+- `im`
+
+##### __init__
+
+**Paramètres :**
+
+- `module`
+- `imports`
+
+##### __init__
+
+**Paramètres :**
+
+- `data`
+
+##### get_source
+
+**Paramètres :**
+
+- `fullname`
+
+##### get_data
+
+**Paramètres :**
+
+- `path`
+
+##### get_filename
+
+**Paramètres :**
+
+- `fullname`
+
+##### __init__
+
+**Paramètres :**
+
+- `func`
+- `python_packages`
+- `global_imports`
+
+##### __call__
+
+##### from_callable
+
+**Paramètres :**
+
+- `cls`
+- `func`
+- `python_packages`
+- `global_imports`
+
+##### from_str
+
+**Paramètres :**
+
+- `func`
+- `python_packages`
+- `global_imports`
+
+##### __call__
+
+##### wrapper
+
+**Paramètres :**
+
+- `func`
+
+##### to_str
+
+**Paramètres :**
+
+- `i`
+
+---
+
+### _base_memory
+
+#### Classes
+
+##### MemoryMimeType
+
+Supported MIME types for memory content.
+
+##### MemoryContent
+
+A memory content item.
+
+**Méthodes :**
+
+- `serialize_mime_type()`
+
+##### MemoryQueryResult
+
+Result of a memory :meth:`~autogen_core.memory.Memory.query` operation.
+
+##### UpdateContextResult
+
+Result of a memory :meth:`~autogen_core.memory.Memory.update_context` operation.
+
+##### Memory
+
+Protocol defining the interface for memory implementations.
+
+A memory is the storage for data that can be used to enrich or modify the model context.
+
+A memory implementation can use any storage mechanism, such as a list, a database, or a file system.
+It can also use any retrieval mechanism, such as vector search or text search.
+It is up to the implementation to decide how to store and retrieve data.
+
+It is also a memory implementation's responsibility to update the model context
+with relevant memory content based on the current model context and querying the memory store.
+
+See :class:`~autogen_core.memory.ListMemory` for an example implementation.
+
+#### Fonctions
+
+##### serialize_mime_type
+
+Serialize the MIME type to a string.
+
+**Paramètres :**
+
+- `mime_type`
+
+---
+
+### _list_memory
+
+#### Classes
+
+##### ListMemoryConfig
+
+Configuration for ListMemory component.
+
+##### ListMemory
+
+Simple chronological list-based memory implementation.
+
+This memory implementation stores contents in a list and retrieves them in
+chronological order. It has an `update_context` method that updates model contexts
+by appending all stored memories.
+
+The memory content can be directly accessed and modified through the content property,
+allowing external applications to manage memory contents directly.
+
+Example:
+
+    .. code-block:: python
+
+        import asyncio
+        from autogen_core.memory import ListMemory, MemoryContent
+        from autogen_core.model_context import BufferedChatCompletionContext
+
+
+        async def main() -> None:
+            # Initialize memory
+            memory = ListMemory(name="chat_history")
+
+            # Add memory content
+            content = MemoryContent(content="User prefers formal language", mime_type="text/plain")
+            await memory.add(content)
+
+            # Directly modify memory contents
+            memory.content = [MemoryContent(content="New preference", mime_type="text/plain")]
+
+            # Create a model context
+            model_context = BufferedChatCompletionContext(buffer_size=10)
+
+            # Update a model context with memory
+            await memory.update_context(model_context)
+
+            # See the updated model context
+            print(await model_context.get_messages())
+
+
+        asyncio.run(main())
+
+Args:
+    name: Optional identifier for this memory instance
+
+**Méthodes :**
+
+- `__init__()`
+- `name()`
+- `content()`
+- `content()`
+- `_from_config()`
+- `_to_config()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `memory_contents`
+
+##### name
+
+Get the memory instance identifier.
+
+Returns:
+    str: Memory instance name
+
+##### content
+
+Get the current memory contents.
+
+Returns:
+    List[MemoryContent]: List of stored memory contents
+
+##### content
+
+Set the memory contents.
+
+Args:
+    value: New list of memory contents to store
+
+**Paramètres :**
+
+- `value`
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+##### _to_config
+
+---
+
+### _buffered_chat_completion_context
+
+#### Classes
+
+##### BufferedChatCompletionContextConfig
+
+##### BufferedChatCompletionContext
+
+A buffered chat completion context that keeps a view of the last n messages,
+where n is the buffer size. The buffer size is set at initialization.
+
+Args:
+    buffer_size (int): The size of the buffer.
+    initial_messages (List[LLMMessage] | None): The initial messages.
+
+**Méthodes :**
+
+- `__init__()`
+- `_to_config()`
+- `_from_config()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `buffer_size`
+- `initial_messages`
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+---
+
+### _chat_completion_context
+
+#### Classes
+
+##### ChatCompletionContext
+
+An abstract base class for defining the interface of a chat completion context.
+A chat completion context lets agents store and retrieve LLM messages.
+It can be implemented with different recall strategies.
+
+Args:
+    initial_messages (List[LLMMessage] | None): The initial messages.
+
+Example:
+
+    To create a custom model context that filters out the thought field from AssistantMessage.
+    This is useful for reasoning models like DeepSeek R1, which produces
+    very long thought that is not needed for subsequent completions.
+
+    .. code-block:: python
+
+        from typing import List
+
+        from autogen_core.model_context import UnboundedChatCompletionContext
+        from autogen_core.models import AssistantMessage, LLMMessage
+
+
+        class ReasoningModelContext(UnboundedChatCompletionContext):
+            """A model context for reasoning models."""
+
+            async def get_messages(self) -> List[LLMMessage]:
+                messages = await super().get_messages()
+                # Filter out thought field from AssistantMessage.
+                messages_out: List[LLMMessage] = []
+                for message in messages:
+                    if isinstance(message, AssistantMessage):
+                        message.thought = None
+                    messages_out.append(message)
+                return messages_out
+
+**Méthodes :**
+
+- `__init__()`
+
+##### ChatCompletionContextState
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `initial_messages`
+
+---
+
+### _head_and_tail_chat_completion_context
+
+#### Classes
+
+##### HeadAndTailChatCompletionContextConfig
+
+##### HeadAndTailChatCompletionContext
+
+A chat completion context that keeps a view of the first n and last m messages,
+where n is the head size and m is the tail size. The head and tail sizes
+are set at initialization.
+
+Args:
+    head_size (int): The size of the head.
+    tail_size (int): The size of the tail.
+    initial_messages (List[LLMMessage] | None): The initial messages.
+
+**Méthodes :**
+
+- `__init__()`
+- `_to_config()`
+- `_from_config()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `head_size`
+- `tail_size`
+- `initial_messages`
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+---
+
+### _token_limited_chat_completion_context
+
+#### Classes
+
+##### TokenLimitedChatCompletionContextConfig
+
+##### TokenLimitedChatCompletionContext
+
+(Experimental) A token based chat completion context maintains a view of the context up to a token limit.
+
+.. note::
+
+    Added in v0.4.10. This is an experimental component and may change in the future.
+
+Args:
+    model_client (ChatCompletionClient): The model client to use for token counting.
+        The model client must implement the :meth:`~autogen_core.models.ChatCompletionClient.count_tokens`
+        and :meth:`~autogen_core.models.ChatCompletionClient.remaining_tokens` methods.
+    token_limit (int | None): The maximum number of tokens to keep in the context
+        using the :meth:`~autogen_core.models.ChatCompletionClient.count_tokens` method.
+        If None, the context will be limited by the model client using the
+        :meth:`~autogen_core.models.ChatCompletionClient.remaining_tokens` method.
+    tools (List[ToolSchema] | None): A list of tool schema to use in the context.
+    initial_messages (List[LLMMessage] | None): A list of initial messages to include in the context.
+
+**Méthodes :**
+
+- `__init__()`
+- `_to_config()`
+- `_from_config()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `model_client`
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+---
+
+### _unbounded_chat_completion_context
+
+#### Classes
+
+##### UnboundedChatCompletionContextConfig
+
+##### UnboundedChatCompletionContext
+
+An unbounded chat completion context that keeps a view of the all the messages.
+
+**Méthodes :**
+
+- `_to_config()`
+- `_from_config()`
+
+#### Fonctions
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+---
+
+### _model_client
+
+#### Classes
+
+##### ModelFamily
+
+A model family is a group of models that share similar characteristics from a capabilities perspective. This is different to discrete supported features such as vision, function calling, and JSON output.
+
+This namespace class holds constants for the model families that AutoGen understands. Other families definitely exist and can be represented by a string, however, AutoGen will treat them as unknown.
+
+**Méthodes :**
+
+- `__new__()`
+- `is_claude()`
+- `is_gemini()`
+- `is_openai()`
+- `is_llama()`
+- `is_mistral()`
+
+##### ModelCapabilities
+
+##### ModelInfo
+
+ModelInfo is a dictionary that contains information about a model's properties.
+It is expected to be used in the model_info property of a model client.
+
+We are expecting this to grow over time as we add more features.
+
+##### ChatCompletionClient
+
+**Méthodes :**
+
+- `create_stream()`
+- `actual_usage()`
+- `total_usage()`
+- `count_tokens()`
+- `remaining_tokens()`
+- `capabilities()`
+- `model_info()`
+
+#### Fonctions
+
+##### validate_model_info
+
+Validates the model info dictionary.
+
+Raises:
+    ValueError: If the model info dictionary is missing required fields.
+
+**Paramètres :**
+
+- `model_info`
+
+##### __new__
+
+**Paramètres :**
+
+- `cls`
+
+##### is_claude
+
+**Paramètres :**
+
+- `family`
+
+##### is_gemini
+
+**Paramètres :**
+
+- `family`
+
+##### is_openai
+
+**Paramètres :**
+
+- `family`
+
+##### is_llama
+
+**Paramètres :**
+
+- `family`
+
+##### is_mistral
+
+**Paramètres :**
+
+- `family`
+
+##### create_stream
+
+Creates a stream of string chunks from the model ending with a CreateResult.
+
+Args:
+    messages (Sequence[LLMMessage]): The messages to send to the model.
+    tools (Sequence[Tool | ToolSchema], optional): The tools to use with the model. Defaults to [].
+    tool_choice (Tool | Literal["auto", "required", "none"], optional): A single Tool object to force the model to use, "auto" to let the model choose any available tool, "required" to force tool usage, or "none" to disable tool usage. Defaults to "auto".
+    json_output (Optional[bool | type[BaseModel]], optional): Whether to use JSON mode, structured output, or neither.
+        Defaults to None. If set to a `Pydantic BaseModel <https://docs.pydantic.dev/latest/usage/models/#model>`_ type,
+        it will be used as the output type for structured output.
+        If set to a boolean, it will be used to determine whether to use JSON mode or not.
+        If set to `True`, make sure to instruct the model to produce JSON output in the instruction or prompt.
+    extra_create_args (Mapping[str, Any], optional): Extra arguments to pass to the underlying client. Defaults to {}.
+    cancellation_token (Optional[CancellationToken], optional): A token for cancellation. Defaults to None.
+
+Returns:
+    AsyncGenerator[Union[str, CreateResult], None]: A generator that yields string chunks and ends with a :py:class:`CreateResult`.
+
+**Paramètres :**
+
+- `messages`
+
+##### actual_usage
+
+##### total_usage
+
+##### count_tokens
+
+**Paramètres :**
+
+- `messages`
+
+##### remaining_tokens
+
+**Paramètres :**
+
+- `messages`
+
+##### capabilities
+
+##### model_info
+
+---
+
+### _types
+
+#### Classes
+
+##### SystemMessage
+
+System message contains instructions for the model coming from the developer.
+
+.. note::
+
+    Open AI is moving away from using 'system' role in favor of 'developer' role.
+    See `Model Spec <https://cdn.openai.com/spec/model-spec-2024-05-08.html#definitions>`_ for more details.
+    However, the 'system' role is still allowed in their API and will be automatically converted to 'developer' role
+    on the server side.
+    So, you can use `SystemMessage` for developer messages.
+
+##### UserMessage
+
+User message contains input from end users, or a catch-all for data provided to the model.
+
+##### AssistantMessage
+
+Assistant message are sampled from the language model.
+
+##### FunctionExecutionResult
+
+Function execution result contains the output of a function call.
+
+##### FunctionExecutionResultMessage
+
+Function execution result message contains the output of multiple function calls.
+
+##### RequestUsage
+
+##### TopLogprob
+
+##### ChatCompletionTokenLogprob
+
+##### CreateResult
+
+Create result contains the output of a model completion.
+
+---
+
+### _caller_loop
+
+---
+
+### _tool_agent
+
+#### Classes
+
+##### ToolException
+
+##### ToolNotFoundException
+
+##### InvalidToolArgumentsException
+
+##### ToolExecutionException
+
+##### ToolAgent
+
+A tool agent accepts direct messages of the type `FunctionCall`,
+executes the requested tool with the provided arguments, and returns the
+result as `FunctionExecutionResult` messages.
+
+Args:
+    description (str): The description of the agent.
+    tools (List[Tool]): The list of tools that the agent can execute.
+
+**Méthodes :**
+
+- `__init__()`
+- `tools()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `description`
+- `tools`
+
+##### tools
+
+---
+
+### _base
+
+#### Classes
+
+##### ParametersSchema
+
+##### ToolSchema
+
+##### ToolOverride
+
+Override configuration for a tool's name and/or description.
+
+##### Tool
+
+**Méthodes :**
+
+- `name()`
+- `description()`
+- `schema()`
+- `args_type()`
+- `return_type()`
+- `state_type()`
+- `return_value_as_string()`
+
+##### StreamTool
+
+**Méthodes :**
+
+- `run_json_stream()`
+
+##### BaseTool
+
+**Méthodes :**
+
+- `__init__()`
+- `schema()`
+- `name()`
+- `description()`
+- `args_type()`
+- `return_type()`
+- `state_type()`
+- `return_value_as_string()`
+
+##### BaseStreamTool
+
+**Méthodes :**
+
+- `run_stream()`
+
+##### BaseToolWithState
+
+**Méthodes :**
+
+- `__init__()`
+- `save_state()`
+- `load_state()`
+
+#### Fonctions
+
+##### name
+
+##### description
+
+##### schema
+
+##### args_type
+
+##### return_type
+
+##### state_type
+
+##### return_value_as_string
+
+**Paramètres :**
+
+- `value`
+
+##### run_json_stream
+
+**Paramètres :**
+
+- `args`
+- `cancellation_token`
+- `call_id`
+
+##### __init__
+
+**Paramètres :**
+
+- `args_type`
+- `return_type`
+- `name`
+- `description`
+- `strict`
+
+##### schema
+
+##### name
+
+##### description
+
+##### args_type
+
+##### return_type
+
+##### state_type
+
+##### return_value_as_string
+
+**Paramètres :**
+
+- `value`
+
+##### run_stream
+
+Run the tool with the provided arguments and return a stream of data and end with the final return value.
+
+**Paramètres :**
+
+- `args`
+- `cancellation_token`
+
+##### __init__
+
+**Paramètres :**
+
+- `args_type`
+- `return_type`
+- `state_type`
+- `name`
+- `description`
+
+##### save_state
+
+##### load_state
+
+**Paramètres :**
+
+- `state`
+
+---
+
+### _function_tool
+
+#### Classes
+
+##### FunctionToolConfig
+
+Configuration for a function tool.
+
+##### FunctionTool
+
+Create custom tools by wrapping standard Python functions.
+
+`FunctionTool` offers an interface for executing Python functions either asynchronously or synchronously.
+Each function must include type annotations for all parameters and its return type. These annotations
+enable `FunctionTool` to generate a schema necessary for input validation, serialization, and for informing
+the LLM about expected parameters. When the LLM prepares a function call, it leverages this schema to
+generate arguments that align with the function's specifications.
+
+.. note::
+
+    It is the user's responsibility to verify that the tool's output type matches the expected type.
+
+Args:
+    func (Callable[..., ReturnT | Awaitable[ReturnT]]): The function to wrap and expose as a tool.
+    description (str): A description to inform the model of the function's purpose, specifying what
+        it does and the context in which it should be called.
+    name (str, optional): An optional custom name for the tool. Defaults to
+        the function's original name if not provided.
+    strict (bool, optional): If set to True, the tool schema will only contain arguments that are explicitly
+        defined in the function signature, and no default values will be allowed. Defaults to False.
+        This is required to be set to True when used with models in structured output mode.
+
+Example:
+
+    .. code-block:: python
+
+        import random
+        from autogen_core import CancellationToken
+        from autogen_core.tools import FunctionTool
+        from typing_extensions import Annotated
+        import asyncio
+
+
+        async def get_stock_price(ticker: str, date: Annotated[str, "Date in YYYY/MM/DD"]) -> float:
+            # Simulates a stock price retrieval by returning a random float within a specified range.
+            return random.uniform(10, 200)
+
+
+        async def example():
+            # Initialize a FunctionTool instance for retrieving stock prices.
+            stock_price_tool = FunctionTool(get_stock_price, description="Fetch the stock price for a given ticker.")
+
+            # Execute the tool with cancellation support.
+            cancellation_token = CancellationToken()
+            result = await stock_price_tool.run_json({"ticker": "AAPL", "date": "2021/01/01"}, cancellation_token)
+
+            # Output the result as a formatted string.
+            print(stock_price_tool.return_value_as_string(result))
+
+
+        asyncio.run(example())
+
+**Méthodes :**
+
+- `__init__()`
+- `_to_config()`
+- `_from_config()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `func`
+- `description`
+- `name`
+- `global_imports`
+- `strict`
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+---
+
+### _static_workbench
+
+#### Classes
+
+##### StaticWorkbenchConfig
+
+##### StateicWorkbenchState
+
+##### StaticWorkbench
+
+A workbench that provides a static set of tools that do not change after
+each tool execution.
+
+Args:
+    tools (List[BaseTool[Any, Any]]): A list of tools to be included in the workbench.
+        The tools should be subclasses of :class:`~autogen_core.tools.BaseTool`.
+    tool_overrides (Optional[Dict[str, ToolOverride]]): Optional mapping of original tool
+        names to override configurations for name and/or description. This allows
+        customizing how tools appear to consumers while maintaining the underlying
+        tool functionality.
+
+**Méthodes :**
+
+- `__init__()`
+- `_to_config()`
+- `_from_config()`
+- `_format_errors()`
+
+##### StaticStreamWorkbench
+
+A workbench that provides a static set of tools that do not change after
+each tool execution, and supports streaming results.
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `tools`
+- `tool_overrides`
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+##### _format_errors
+
+Recursively format errors into a string.
+
+**Paramètres :**
+
+- `error`
+
+---
+
+### _workbench
+
+#### Classes
+
+##### TextResultContent
+
+Text result content of a tool execution.
+
+##### ImageResultContent
+
+Image result content of a tool execution.
+
+##### ToolResult
+
+A result of a tool execution by a workbench.
+
+**Méthodes :**
+
+- `to_text()`
+
+##### Workbench
+
+A workbench is a component that provides a set of tools that may share
+resources and state.
+
+A workbench is responsible for managing the lifecycle of the tools and
+providing a single interface to call them. The tools provided by the workbench
+may be dynamic and their availabilities may change after each tool execution.
+
+A workbench can be started by calling the :meth:`~autogen_core.tools.Workbench.start` method
+and stopped by calling the :meth:`~autogen_core.tools.Workbench.stop` method.
+It can also be used as an asynchronous context manager, which will automatically
+start and stop the workbench when entering and exiting the context.
+
+##### StreamWorkbench
+
+A workbench that supports streaming results from tool calls.
+
+**Méthodes :**
+
+- `call_tool_stream()`
+
+#### Fonctions
+
+##### to_text
+
+Convert the result to a text string.
+
+Args:
+    replace_image (str | None): The string to replace the image content with.
+        If None, the image content will be included in the text as base64 string.
+
+Returns:
+    str: The text representation of the result.
+
+**Paramètres :**
+
+- `replace_image`
+
+##### call_tool_stream
+
+Call a tool in the workbench and return a stream of results.
+
+Args:
+    name (str): The name of the tool to call.
+    arguments (Mapping[str, Any] | None): The arguments to pass to the tool
+        If None, the tool will be called with no arguments.
+    cancellation_token (CancellationToken | None): An optional cancellation token
+        to cancel the tool execution.
+    call_id (str | None): An optional identifier for the tool call, used for tracing.
+
+**Paramètres :**
+
+- `name`
+- `arguments`
+- `cancellation_token`
+- `call_id`
+
+---
+
+### _json_to_pydantic
+
+#### Classes
+
+##### SchemaConversionError
+
+Base class for schema conversion exceptions.
+
+##### ReferenceNotFoundError
+
+Raised when a $ref cannot be resolved.
+
+##### FormatNotSupportedError
+
+Raised when a format is not supported.
+
+##### UnsupportedKeywordError
+
+Raised when an unsupported JSON Schema keyword is encountered.
+
+##### _JSONSchemaToPydantic
+
+**Méthodes :**
+
+- `__init__()`
+- `_resolve_ref()`
+- `get_ref()`
+- `_process_definitions()`
+- `json_schema_to_pydantic()`
+- `_resolve_union_types()`
+- `_extract_field_type()`
+- `_json_schema_to_model()`
+
+#### Fonctions
+
+##### _make_field
+
+Construct a Pydantic Field with proper typing.
+
+**Paramètres :**
+
+- `default`
+
+##### schema_to_pydantic_model
+
+Convert a JSON Schema dictionary to a fully-typed Pydantic model.
+
+This function handles schema translation and validation logic to produce
+a Pydantic model.
+
+**Supported JSON Schema Features**
+
+- **Primitive types**: `string`, `integer`, `number`, `boolean`, `object`, `array`, `null`
+- **String formats**:
+    - `email`, `uri`, `uuid`, `uuid1`, `uuid3`, `uuid4`, `uuid5`
+    - `hostname`, `ipv4`, `ipv6`, `ipv4-network`, `ipv6-network`
+    - `date`, `time`, `date-time`, `duration`
+    - `byte`, `binary`, `password`, `path`
+- **String constraints**:
+    - `minLength`, `maxLength`, `pattern`
+- **Numeric constraints**:
+    - `minimum`, `maximum`, `exclusiveMinimum`, `exclusiveMaximum`
+- **Array constraints**:
+    - `minItems`, `maxItems`, `items`
+- **Object schema support**:
+    - `properties`, `required`, `title`, `description`, `default`
+- **Enums**:
+    - Converted to Python `Literal` type
+- **Union types**:
+    - `anyOf`, `oneOf` supported with optional `discriminator`
+- **Inheritance and composition**:
+    - `allOf` merges multiple schemas into one model
+- **$ref and $defs resolution**:
+    - Supports references to sibling definitions and self-referencing schemas
+
+.. code-block:: python
+
+    from autogen_core.utils import schema_to_pydantic_model
+
+    # Example 1: Simple user model
+    schema = {
+        "title": "User",
+        "type": "object",
+        "properties": {
+            "name": {"type": "string"},
+            "email": {"type": "string", "format": "email"},
+            "age": {"type": "integer", "minimum": 0},
+        },
+        "required": ["name", "email"],
+    }
+
+    UserModel = schema_to_pydantic_model(schema)
+    user = UserModel(name="Alice", email="alice@example.com", age=30)
+
+.. code-block:: python
+
+    from autogen_core.utils import schema_to_pydantic_model
+
+    # Example 2: Nested model
+    schema = {
+        "title": "BlogPost",
+        "type": "object",
+        "properties": {
+            "title": {"type": "string"},
+            "tags": {"type": "array", "items": {"type": "string"}},
+            "author": {
+                "type": "object",
+                "properties": {"name": {"type": "string"}, "email": {"type": "string", "format": "email"}},
+                "required": ["name"],
+            },
+        },
+        "required": ["title", "author"],
+    }
+
+    BlogPost = schema_to_pydantic_model(schema)
+
+
+.. code-block:: python
+
+    from autogen_core.utils import schema_to_pydantic_model
+
+    # Example 3: allOf merging with $refs
+    schema = {
+        "title": "EmployeeWithDepartment",
+        "allOf": [{"$ref": "#/$defs/Employee"}, {"$ref": "#/$defs/Department"}],
+        "$defs": {
+            "Employee": {
+                "type": "object",
+                "properties": {"id": {"type": "string"}, "name": {"type": "string"}},
+                "required": ["id", "name"],
+            },
+            "Department": {
+                "type": "object",
+                "properties": {"department": {"type": "string"}},
+                "required": ["department"],
+            },
+        },
+    }
+
+    Model = schema_to_pydantic_model(schema)
+
+.. code-block:: python
+
+    from autogen_core.utils import schema_to_pydantic_model
+
+    # Example 4: Self-referencing (recursive) model
+    schema = {
+        "title": "Category",
+        "type": "object",
+        "properties": {
+            "name": {"type": "string"},
+            "subcategories": {"type": "array", "items": {"$ref": "#/$defs/Category"}},
+        },
+        "required": ["name"],
+        "$defs": {
+            "Category": {
+                "type": "object",
+                "properties": {
+                    "name": {"type": "string"},
+                    "subcategories": {"type": "array", "items": {"$ref": "#/$defs/Category"}},
+                },
+                "required": ["name"],
+            }
+        },
+    }
+
+    Category = schema_to_pydantic_model(schema)
+
+.. code-block:: python
+
+    # Example 5: Serializing and deserializing with Pydantic
+
+    from uuid import uuid4
+    from pydantic import BaseModel, EmailStr, Field
+    from typing import Optional, List, Dict, Any
+    from autogen_core.utils import schema_to_pydantic_model
+
+
+    class Address(BaseModel):
+        street: str
+        city: str
+        zipcode: str
+
+
+    class User(BaseModel):
+        id: str
+        name: str
+        email: EmailStr
+        age: int = Field(..., ge=18)
+        address: Address
+
+
+    class Employee(BaseModel):
+        id: str
+        name: str
+        manager: Optional["Employee"] = None
+
+
+    class Department(BaseModel):
+        name: str
+        employees: List[Employee]
+
+
+    class ComplexModel(BaseModel):
+        user: User
+        extra_info: Optional[Dict[str, Any]] = None
+        sub_items: List[Employee]
+
+
+    # Convert ComplexModel to JSON schema
+    complex_schema = ComplexModel.model_json_schema()
+
+    # Rebuild a new Pydantic model from JSON schema
+    ReconstructedModel = schema_to_pydantic_model(complex_schema, "ComplexModel")
+
+    # Instantiate reconstructed model
+    reconstructed = ReconstructedModel(
+        user={
+            "id": str(uuid4()),
+            "name": "Alice",
+            "email": "alice@example.com",
+            "age": 30,
+            "address": {"street": "123 Main St", "city": "Wonderland", "zipcode": "12345"},
+        },
+        sub_items=[{"id": str(uuid4()), "name": "Bob", "manager": {"id": str(uuid4()), "name": "Eve"}}],
+    )
+
+    print(reconstructed.model_dump())
+
+
+Args:
+    schema (Dict[str, Any]): A valid JSON Schema dictionary.
+    model_name (str, optional): The name of the root model. Defaults to "GeneratedModel".
+
+Returns:
+    Type[BaseModel]: A dynamically generated Pydantic model class.
+
+Raises:
+    ReferenceNotFoundError: If a `$ref` key references a missing entry.
+    FormatNotSupportedError: If a `format` keyword is unknown or unsupported.
+    UnsupportedKeywordError: If the schema contains an unsupported `type`.
+
+See Also:
+    - :class:`pydantic.BaseModel`
+    - :func:`pydantic.create_model`
+    - https://json-schema.org/
+
+**Paramètres :**
+
+- `schema`
+- `model_name`
+
+##### __init__
+
+##### _resolve_ref
+
+**Paramètres :**
+
+- `ref`
+- `schema`
+
+##### get_ref
+
+**Paramètres :**
+
+- `ref_name`
+
+##### _process_definitions
+
+**Paramètres :**
+
+- `root_schema`
+
+##### json_schema_to_pydantic
+
+**Paramètres :**
+
+- `schema`
+- `model_name`
+- `root_schema`
+
+##### _resolve_union_types
+
+**Paramètres :**
+
+- `schemas`
+
+##### _extract_field_type
+
+**Paramètres :**
+
+- `key`
+- `value`
+- `model_name`
+- `root_schema`
+
+##### _json_schema_to_model
+
+**Paramètres :**
+
+- `schema`
+- `model_name`
+- `root_schema`
+
+---
+
+### _load_json
+
+#### Fonctions
+
+##### extract_json_from_str
+
+Extract JSON objects from a string. Supports backtick enclosed JSON objects
+
+**Paramètres :**
+
+- `content`
 
 ---
 
@@ -257363,6 +265394,772 @@ Release segment without any trailing zeros.
 ##### SPDXLicense
 
 ##### SPDXException
+
+---
+
+### _adapters
+
+#### Classes
+
+##### RawPolicy
+
+**Méthodes :**
+
+- `fold()`
+
+##### Message
+
+Specialized Message subclass to handle metadata naturally.
+
+Reads values that may have newlines in them and converts the
+payload to the Description.
+
+>>> msg_text = textwrap.dedent('''
+...     Name: Foo
+...     Version: 3.0
+...     License: blah
+...             de-blah
+...     <BLANKLINE>
+...     First line of description.
+...     Second line of description.
+...     <BLANKLINE>
+...     Fourth line!
+...     ''').lstrip().replace('<BLANKLINE>', '')
+>>> msg = Message(email.message_from_string(msg_text))
+>>> msg['Description']
+'First line of description.\nSecond line of description.\n\nFourth line!\n'
+
+Message should render even if values contain newlines.
+
+>>> print(msg)
+Name: Foo
+Version: 3.0
+License: blah
+        de-blah
+Description: First line of description.
+        Second line of description.
+<BLANKLINE>
+        Fourth line!
+<BLANKLINE>
+<BLANKLINE>
+
+**Méthodes :**
+
+- `__new__()`
+- `__init__()`
+- `__iter__()`
+- `__getitem__()`
+- `_repair_headers()`
+- `as_string()`
+- `json()`
+
+#### Fonctions
+
+##### fold
+
+**Paramètres :**
+
+- `name`
+- `value`
+
+##### __new__
+
+**Paramètres :**
+
+- `cls`
+- `orig`
+
+##### __init__
+
+##### __iter__
+
+##### __getitem__
+
+Override parent behavior to typical dict behavior.
+
+``email.message.Message`` will emit None values for missing
+keys. Typical mappings, including this ``Message``, will raise
+a key error for missing keys.
+
+Ref python/importlib_metadata#371.
+
+**Paramètres :**
+
+- `item`
+
+##### _repair_headers
+
+##### as_string
+
+##### json
+
+Convert PackageMetadata to a JSON-compatible format
+per PEP 0566.
+
+##### redent
+
+Correct for RFC822 indentation
+
+**Paramètres :**
+
+- `value`
+
+##### transform
+
+**Paramètres :**
+
+- `key`
+
+---
+
+### _collections
+
+#### Classes
+
+##### FreezableDefaultDict
+
+Often it is desirable to prevent the mutation of
+a default dict after its initial construction, such
+as to prevent mutation during iteration.
+
+>>> dd = FreezableDefaultDict(list)
+>>> dd[0].append('1')
+>>> dd.freeze()
+>>> dd[1]
+[]
+>>> len(dd)
+1
+
+**Méthodes :**
+
+- `__missing__()`
+- `freeze()`
+
+##### Pair
+
+**Méthodes :**
+
+- `parse()`
+
+#### Fonctions
+
+##### __missing__
+
+**Paramètres :**
+
+- `key`
+
+##### freeze
+
+##### parse
+
+**Paramètres :**
+
+- `cls`
+- `text`
+
+---
+
+### _compat
+
+#### Classes
+
+##### NullFinder
+
+A "Finder" (aka "MetaPathFinder") that never finds any modules,
+but may find distributions.
+
+**Méthodes :**
+
+- `find_spec()`
+
+#### Fonctions
+
+##### install
+
+Class decorator for installation on sys.meta_path.
+
+Adds the backport DistributionFinder to sys.meta_path and
+attempts to disable the finder functionality of the stdlib
+DistributionFinder.
+
+**Paramètres :**
+
+- `cls`
+
+##### disable_stdlib_finder
+
+Give the backport primacy for discovering path-based distributions
+by monkey-patching the stdlib O_O.
+
+See #91 for more background for rationale on this sketchy
+behavior.
+
+##### pypy_partial
+
+Adjust for variable stacklevel on partial under PyPy.
+
+Workaround for #327.
+
+**Paramètres :**
+
+- `val`
+
+##### matches
+
+**Paramètres :**
+
+- `finder`
+
+##### find_spec
+
+---
+
+### _functools
+
+#### Fonctions
+
+##### method_cache
+
+Wrap lru_cache to support storing the cache data in the object instances.
+
+Abstracts the common paradigm where the method explicitly saves an
+underscore-prefixed protected property on first call and returns that
+subsequently.
+
+>>> class MyClass:
+...     calls = 0
+...
+...     @method_cache
+...     def method(self, value):
+...         self.calls += 1
+...         return value
+
+>>> a = MyClass()
+>>> a.method(3)
+3
+>>> for x in range(75):
+...     res = a.method(x)
+>>> a.calls
+75
+
+Note that the apparent behavior will be exactly like that of lru_cache
+except that the cache is stored on each instance, so values in one
+instance will not flush values from another, and when an instance is
+deleted, so are the cached values for that instance.
+
+>>> b = MyClass()
+>>> for x in range(35):
+...     res = b.method(x)
+>>> b.calls
+35
+>>> a.method(0)
+0
+>>> a.calls
+75
+
+Note that if method had been decorated with ``functools.lru_cache()``,
+a.calls would have been 76 (due to the cached value of 0 having been
+flushed by the 'b' instance).
+
+Clear the cache with ``.cache_clear()``
+
+>>> a.method.cache_clear()
+
+Same for a method that hasn't yet been called.
+
+>>> c = MyClass()
+>>> c.method.cache_clear()
+
+Another cache wrapper may be supplied:
+
+>>> cache = functools.lru_cache(maxsize=2)
+>>> MyClass.method2 = method_cache(lambda self: 3, cache_wrapper=cache)
+>>> a = MyClass()
+>>> a.method2()
+3
+
+Caution - do not subsequently wrap the method with another decorator, such
+as ``@property``, which changes the semantics of the function.
+
+See also
+http://code.activestate.com/recipes/577452-a-memoize-decorator-for-instance-methods/
+for another implementation and additional justification.
+
+**Paramètres :**
+
+- `method`
+- `cache_wrapper`
+
+##### pass_none
+
+Wrap func so it's not called if its first param is None
+
+>>> print_text = pass_none(print)
+>>> print_text('text')
+text
+>>> print_text(None)
+
+**Paramètres :**
+
+- `func`
+
+##### wrapper
+
+##### wrapper
+
+**Paramètres :**
+
+- `param`
+
+---
+
+### _itertools
+
+#### Classes
+
+##### bucket
+
+Wrap *iterable* and return an object that buckets the iterable into
+child iterables based on a *key* function.
+
+    >>> iterable = ['a1', 'b1', 'c1', 'a2', 'b2', 'c2', 'b3']
+    >>> s = bucket(iterable, key=lambda x: x[0])  # Bucket by 1st character
+    >>> sorted(list(s))  # Get the keys
+    ['a', 'b', 'c']
+    >>> a_iterable = s['a']
+    >>> next(a_iterable)
+    'a1'
+    >>> next(a_iterable)
+    'a2'
+    >>> list(s['b'])
+    ['b1', 'b2', 'b3']
+
+The original iterable will be advanced and its items will be cached until
+they are used by the child iterables. This may require significant storage.
+
+By default, attempting to select a bucket to which no items belong  will
+exhaust the iterable and cache all values.
+If you specify a *validator* function, selected buckets will instead be
+checked against it.
+
+    >>> from itertools import count
+    >>> it = count(1, 2)  # Infinite sequence of odd numbers
+    >>> key = lambda x: x % 10  # Bucket by last digit
+    >>> validator = lambda x: x in {1, 3, 5, 7, 9}  # Odd digits only
+    >>> s = bucket(it, key=key, validator=validator)
+    >>> 2 in s
+    False
+    >>> list(s[2])
+    []
+
+**Méthodes :**
+
+- `__init__()`
+- `__contains__()`
+- `_get_values()`
+- `__iter__()`
+- `__getitem__()`
+
+#### Fonctions
+
+##### unique_everseen
+
+List unique elements, preserving order. Remember all elements ever seen.
+
+**Paramètres :**
+
+- `iterable`
+- `key`
+
+##### always_iterable
+
+If *obj* is iterable, return an iterator over its items::
+
+    >>> obj = (1, 2, 3)
+    >>> list(always_iterable(obj))
+    [1, 2, 3]
+
+If *obj* is not iterable, return a one-item iterable containing *obj*::
+
+    >>> obj = 1
+    >>> list(always_iterable(obj))
+    [1]
+
+If *obj* is ``None``, return an empty iterable:
+
+    >>> obj = None
+    >>> list(always_iterable(None))
+    []
+
+By default, binary and text strings are not considered iterable::
+
+    >>> obj = 'foo'
+    >>> list(always_iterable(obj))
+    ['foo']
+
+If *base_type* is set, objects for which ``isinstance(obj, base_type)``
+returns ``True`` won't be considered iterable.
+
+    >>> obj = {'a': 1}
+    >>> list(always_iterable(obj))  # Iterate over the dict's keys
+    ['a']
+    >>> list(always_iterable(obj, base_type=dict))  # Treat dicts as a unit
+    [{'a': 1}]
+
+Set *base_type* to ``None`` to avoid any special handling and treat objects
+Python considers iterable as iterable:
+
+    >>> obj = 'foo'
+    >>> list(always_iterable(obj, base_type=None))
+    ['f', 'o', 'o']
+
+**Paramètres :**
+
+- `obj`
+- `base_type`
+
+##### __init__
+
+**Paramètres :**
+
+- `iterable`
+- `key`
+- `validator`
+
+##### __contains__
+
+**Paramètres :**
+
+- `value`
+
+##### _get_values
+
+Helper to yield items from the parent iterator that match *value*.
+Items that don't match are stored in the local cache as they
+are encountered.
+
+**Paramètres :**
+
+- `value`
+
+##### __iter__
+
+##### __getitem__
+
+**Paramètres :**
+
+- `value`
+
+---
+
+### _meta
+
+#### Classes
+
+##### PackageMetadata
+
+**Méthodes :**
+
+- `__len__()`
+- `__contains__()`
+- `__getitem__()`
+- `__iter__()`
+- `get()`
+- `get()`
+- `get_all()`
+- `get_all()`
+- `json()`
+
+##### SimplePath
+
+A minimal subset of pathlib.Path required by Distribution.
+
+**Méthodes :**
+
+- `joinpath()`
+- `__truediv__()`
+- `parent()`
+- `read_text()`
+- `read_bytes()`
+- `exists()`
+
+#### Fonctions
+
+##### __len__
+
+##### __contains__
+
+**Paramètres :**
+
+- `item`
+
+##### __getitem__
+
+**Paramètres :**
+
+- `key`
+
+##### __iter__
+
+##### get
+
+**Paramètres :**
+
+- `name`
+- `failobj`
+
+##### get
+
+**Paramètres :**
+
+- `name`
+- `failobj`
+
+##### get_all
+
+**Paramètres :**
+
+- `name`
+- `failobj`
+
+##### get_all
+
+Return all values associated with a possibly multi-valued key.
+
+**Paramètres :**
+
+- `name`
+- `failobj`
+
+##### json
+
+A JSON-compatible form of the metadata.
+
+##### joinpath
+
+**Paramètres :**
+
+- `other`
+
+##### __truediv__
+
+**Paramètres :**
+
+- `other`
+
+##### parent
+
+##### read_text
+
+**Paramètres :**
+
+- `encoding`
+
+##### read_bytes
+
+##### exists
+
+---
+
+### _text
+
+#### Classes
+
+##### FoldedCase
+
+A case insensitive string class; behaves just like str
+except compares equal when the only variation is case.
+
+>>> s = FoldedCase('hello world')
+
+>>> s == 'Hello World'
+True
+
+>>> 'Hello World' == s
+True
+
+>>> s != 'Hello World'
+False
+
+>>> s.index('O')
+4
+
+>>> s.split('O')
+['hell', ' w', 'rld']
+
+>>> sorted(map(FoldedCase, ['GAMMA', 'alpha', 'Beta']))
+['alpha', 'Beta', 'GAMMA']
+
+Sequence membership is straightforward.
+
+>>> "Hello World" in [s]
+True
+>>> s in ["Hello World"]
+True
+
+You may test for set inclusion, but candidate and elements
+must both be folded.
+
+>>> FoldedCase("Hello World") in {s}
+True
+>>> s in {FoldedCase("Hello World")}
+True
+
+String inclusion works as long as the FoldedCase object
+is on the right.
+
+>>> "hello" in FoldedCase("Hello World")
+True
+
+But not if the FoldedCase object is on the left:
+
+>>> FoldedCase('hello') in 'Hello World'
+False
+
+In that case, use in_:
+
+>>> FoldedCase('hello').in_('Hello World')
+True
+
+>>> FoldedCase('hello') > FoldedCase('Hello')
+False
+
+**Méthodes :**
+
+- `__lt__()`
+- `__gt__()`
+- `__eq__()`
+- `__ne__()`
+- `__hash__()`
+- `__contains__()`
+- `in_()`
+- `lower()`
+- `index()`
+- `split()`
+
+#### Fonctions
+
+##### __lt__
+
+**Paramètres :**
+
+- `other`
+
+##### __gt__
+
+**Paramètres :**
+
+- `other`
+
+##### __eq__
+
+**Paramètres :**
+
+- `other`
+
+##### __ne__
+
+**Paramètres :**
+
+- `other`
+
+##### __hash__
+
+##### __contains__
+
+**Paramètres :**
+
+- `other`
+
+##### in_
+
+Does self appear in other?
+
+**Paramètres :**
+
+- `other`
+
+##### lower
+
+##### index
+
+**Paramètres :**
+
+- `sub`
+
+##### split
+
+**Paramètres :**
+
+- `splitter`
+- `maxsplit`
+
+---
+
+### _typing
+
+---
+
+### diagnose
+
+#### Fonctions
+
+##### inspect
+
+**Paramètres :**
+
+- `path`
+
+##### run
+
+---
+
+### py311
+
+#### Fonctions
+
+##### wrap
+
+Workaround for https://github.com/python/cpython/issues/84538
+to add backward compatibility for walk_up=True.
+An example affected package is dask-labextension, which uses
+jupyter-packaging to install JupyterLab javascript files outside
+of site-packages.
+
+**Paramètres :**
+
+- `path`
+
+##### relative_to
+
+**Paramètres :**
+
+- `root`
+
+---
+
+### py39
+
+Compatibility layer with Python 3.8/3.9
+
+#### Fonctions
+
+##### normalized_name
+
+Honor name normalization for distributions that don't provide ``_normalized_name``.
+
+**Paramètres :**
+
+- `dist`
+
+##### ep_matches
+
+Workaround for ``EntryPoint`` objects without the ``matches`` method.
+
+**Paramètres :**
+
+- `ep`
 
 ---
 
@@ -410921,6 +419718,4850 @@ By "pandas-like", we mean: pandas, Modin, cuDF.
 - `msg`
 
 ##### __str__
+
+---
+
+### messages
+
+This module defines various message types used for agent-to-agent communication.
+Each message type inherits either from the BaseChatMessage class or BaseAgentEvent
+class and includes specific fields relevant to the type of message being sent.
+
+#### Classes
+
+##### BaseMessage
+
+Abstract base class for all message types in AgentChat.
+
+.. warning::
+
+    If you want to create a new message type, do not inherit from this class.
+    Instead, inherit from :class:`BaseChatMessage` or :class:`BaseAgentEvent`
+    to clarify the purpose of the message type.
+
+**Méthodes :**
+
+- `to_text()`
+- `dump()`
+- `load()`
+
+##### BaseChatMessage
+
+Abstract base class for chat messages.
+
+.. note::
+
+    If you want to create a new message type that is used for agent-to-agent
+    communication, inherit from this class, or simply use
+    :class:`StructuredMessage` if your content type is a subclass of
+    Pydantic BaseModel.
+
+This class is used for messages that are sent between agents in a chat
+conversation. Agents are expected to process the content of the
+message using models and return a response as another :class:`BaseChatMessage`.
+
+**Méthodes :**
+
+- `to_model_text()`
+- `to_model_message()`
+
+##### BaseTextChatMessage
+
+Base class for all text-only :class:`BaseChatMessage` types.
+It has implementations for :meth:`to_text`, :meth:`to_model_text`,
+and :meth:`to_model_message` methods.
+
+Inherit from this class if your message content type is a string.
+
+**Méthodes :**
+
+- `to_text()`
+- `to_model_text()`
+- `to_model_message()`
+
+##### BaseAgentEvent
+
+Base class for agent events.
+
+.. note::
+
+    If you want to create a new message type for signaling observable events
+    to user and application, inherit from this class.
+
+Agent events are used to signal actions and thoughts produced by agents
+and teams to user and applications. They are not used for agent-to-agent
+communication and are not expected to be processed by other agents.
+
+You should override the :meth:`to_text` method if you want to provide
+a custom rendering of the content.
+
+##### StructuredMessage
+
+A :class:`BaseChatMessage` type with an unspecified content type.
+
+To create a new structured message type, specify the content type
+as a subclass of `Pydantic BaseModel <https://docs.pydantic.dev/latest/concepts/models/>`_.
+
+.. code-block:: python
+
+    from pydantic import BaseModel
+    from autogen_agentchat.messages import StructuredMessage
+
+
+    class MyMessageContent(BaseModel):
+        text: str
+        number: int
+
+
+    message = StructuredMessage[MyMessageContent](
+        content=MyMessageContent(text="Hello", number=42),
+        source="agent1",
+    )
+
+    print(message.to_text())  # {"text": "Hello", "number": 42}
+
+.. code-block:: python
+
+    from pydantic import BaseModel
+    from autogen_agentchat.messages import StructuredMessage
+
+
+    class MyMessageContent(BaseModel):
+        text: str
+        number: int
+
+
+    message = StructuredMessage[MyMessageContent](
+        content=MyMessageContent(text="Hello", number=42),
+        source="agent",
+        format_string="Hello, {text} {number}!",
+    )
+
+    print(message.to_text())  # Hello, agent 42!
+
+**Méthodes :**
+
+- `type()`
+- `to_text()`
+- `to_model_text()`
+- `to_model_message()`
+
+##### StructureMessageConfig
+
+The declarative configuration for the structured output.
+
+##### StructuredMessageFactory
+
+:meta private:
+
+A component that creates structured chat messages from Pydantic models or JSON schemas.
+
+This component helps you generate strongly-typed chat messages with content defined using a Pydantic model.
+It can be used in declarative workflows where message structure must be validated, formatted, and serialized.
+
+You can initialize the component directly using a `BaseModel` subclass, or dynamically from a configuration
+object (e.g., loaded from disk or a database).
+
+### Example 1: Create from a Pydantic Model
+
+.. code-block:: python
+
+    from pydantic import BaseModel
+    from autogen_agentchat.messages import StructuredMessageFactory
+
+
+    class TestContent(BaseModel):
+        field1: str
+        field2: int
+
+
+    format_string = "This is a string {field1} and this is an int {field2}"
+    sm_component = StructuredMessageFactory(input_model=TestContent, format_string=format_string)
+
+    message = sm_component.StructuredMessage(
+        source="test_agent", content=TestContent(field1="Hello", field2=42), format_string=format_string
+    )
+
+    print(message.to_model_text())  # Output: This is a string Hello and this is an int 42
+
+    config = sm_component.dump_component()
+
+    s_m_dyn = StructuredMessageFactory.load_component(config)
+    message = s_m_dyn.StructuredMessage(
+        source="test_agent",
+        content=s_m_dyn.ContentModel(field1="dyn agent", field2=43),
+        format_string=s_m_dyn.format_string,
+    )
+    print(type(message))  # StructuredMessage[GeneratedModel]
+    print(message.to_model_text())  # Output: This is a string dyn agent and this is an int 43
+
+Attributes:
+    component_config_schema (StructureMessageConfig): Defines the configuration structure for this component.
+    component_provider_override (str): Path used to reference this component in external tooling.
+    component_type (str): Identifier used for categorization (e.g., "structured_message").
+
+Raises:
+    ValueError: If neither `json_schema` nor `input_model` is provided.
+
+Args:
+    json_schema (Optional[str]): JSON schema to dynamically create a Pydantic model.
+    input_model (Optional[Type[BaseModel]]): A subclass of `BaseModel` that defines the expected message structure.
+    format_string (Optional[str]): Optional string to render content into a human-readable format.
+    content_model_name (Optional[str]): Optional name for the generated Pydantic model.
+
+**Méthodes :**
+
+- `__init__()`
+- `_to_config()`
+- `_from_config()`
+
+##### TextMessage
+
+A text message with string-only content.
+
+##### MultiModalMessage
+
+A multimodal message.
+
+**Méthodes :**
+
+- `to_model_text()`
+- `to_text()`
+- `to_model_message()`
+
+##### StopMessage
+
+A message requesting stop of a conversation.
+
+##### HandoffMessage
+
+A message requesting handoff of a conversation to another agent.
+
+##### ToolCallSummaryMessage
+
+A message signaling the summary of tool call results.
+
+##### ToolCallRequestEvent
+
+An event signaling a request to use tools.
+
+**Méthodes :**
+
+- `to_text()`
+
+##### CodeGenerationEvent
+
+An event signaling code generation event.
+
+**Méthodes :**
+
+- `to_text()`
+
+##### CodeExecutionEvent
+
+An event signaling code execution event.
+
+**Méthodes :**
+
+- `to_text()`
+
+##### ToolCallExecutionEvent
+
+An event signaling the execution of tool calls.
+
+**Méthodes :**
+
+- `to_text()`
+
+##### UserInputRequestedEvent
+
+An event signaling a that the user proxy has requested user input. Published prior to invoking the input callback.
+
+**Méthodes :**
+
+- `to_text()`
+
+##### MemoryQueryEvent
+
+An event signaling the results of memory queries.
+
+**Méthodes :**
+
+- `to_text()`
+
+##### ModelClientStreamingChunkEvent
+
+An event signaling a text output chunk from a model client in streaming mode.
+
+**Méthodes :**
+
+- `to_text()`
+
+##### ThoughtEvent
+
+An event signaling the thought process of a model.
+It is used to communicate the reasoning tokens generated by a reasoning model,
+or the extra text content generated by a function call.
+
+**Méthodes :**
+
+- `to_text()`
+
+##### SelectSpeakerEvent
+
+An event signaling the selection of speakers for a conversation.
+
+**Méthodes :**
+
+- `to_text()`
+
+##### SelectorEvent
+
+An event emitted from the `SelectorGroupChat`.
+
+**Méthodes :**
+
+- `to_text()`
+
+##### MessageFactory
+
+:meta private:
+
+A factory for creating messages from JSON-serializable dictionaries.
+
+This is useful for deserializing messages from JSON data.
+
+**Méthodes :**
+
+- `__init__()`
+- `is_registered()`
+- `register()`
+- `create()`
+
+#### Fonctions
+
+##### to_text
+
+Convert the message content to a string-only representation
+that can be rendered in the console and inspected by the user or conditions.
+This is not used for creating text-only content for models.
+For :class:`BaseChatMessage` types, use :meth:`to_model_text` instead.
+
+##### dump
+
+Convert the message to a JSON-serializable dictionary.
+
+The default implementation uses the Pydantic model's
+:meth:`model_dump` method to convert the message to a dictionary.
+Override this method if you want to customize the serialization
+process or add additional fields to the output.
+
+##### load
+
+Create a message from a dictionary of JSON-serializable data.
+
+The default implementation uses the Pydantic model's
+:meth:`model_validate` method to create the message from the data.
+Override this method if you want to customize the deserialization
+process or add additional fields to the input data.
+
+**Paramètres :**
+
+- `cls`
+- `data`
+
+##### to_model_text
+
+Convert the content of the message to text-only representation.
+This is used for creating text-only content for models.
+
+This is not used for rendering the message in console. For that, use
+:meth:`~BaseMessage.to_text`.
+
+The difference between this and :meth:`to_model_message` is that this
+is used to construct parts of the a message for the model client,
+while :meth:`to_model_message` is used to create a complete message
+for the model client.
+
+##### to_model_message
+
+Convert the message content to a :class:`~autogen_core.models.UserMessage`
+for use with model client, e.g., :class:`~autogen_core.models.ChatCompletionClient`.
+
+##### to_text
+
+##### to_model_text
+
+##### to_model_message
+
+##### type
+
+##### to_text
+
+##### to_model_text
+
+##### to_model_message
+
+##### __init__
+
+**Paramètres :**
+
+- `json_schema`
+- `input_model`
+- `format_string`
+- `content_model_name`
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+##### to_model_text
+
+Convert the content of the message to a string-only representation.
+If an image is present, it will be replaced with the image placeholder
+by default, otherwise it will be a base64 string when set to None.
+
+**Paramètres :**
+
+- `image_placeholder`
+
+##### to_text
+
+**Paramètres :**
+
+- `iterm`
+
+##### to_model_message
+
+##### to_text
+
+##### to_text
+
+##### to_text
+
+##### to_text
+
+##### to_text
+
+##### to_text
+
+##### to_text
+
+##### to_text
+
+##### to_text
+
+##### to_text
+
+##### __init__
+
+##### is_registered
+
+Check if a message type is registered with the factory.
+
+**Paramètres :**
+
+- `message_type`
+
+##### register
+
+Register a new message type with the factory.
+
+**Paramètres :**
+
+- `message_type`
+
+##### create
+
+Create a message from a dictionary of JSON-serializable data.
+
+**Paramètres :**
+
+- `data`
+
+---
+
+### _assistant_agent
+
+#### Classes
+
+##### AssistantAgentConfig
+
+The declarative configuration for the assistant agent.
+
+##### AssistantAgent
+
+An agent that provides assistance with tool use.
+The :meth:`on_messages` returns a :class:`~autogen_agentchat.base.Response`
+in which :attr:`~autogen_agentchat.base.Response.chat_message` is the final
+response message.
+
+The :meth:`on_messages_stream` creates an async generator that produces
+the inner messages as they are created, and the :class:`~autogen_agentchat.base.Response`
+object as the last item before closing the generator.
+
+The :meth:`BaseChatAgent.run` method returns a :class:`~autogen_agentchat.base.TaskResult`
+containing the messages produced by the agent. In the list of messages,
+:attr:`~autogen_agentchat.base.TaskResult.messages`,
+the last message is the final response message.
+
+The :meth:`BaseChatAgent.run_stream` method creates an async generator that produces
+the inner messages as they are created, and the :class:`~autogen_agentchat.base.TaskResult`
+object as the last item before closing the generator.
+
+.. attention::
+
+    The caller must only pass the new messages to the agent on each call
+    to the :meth:`on_messages`, :meth:`on_messages_stream`, :meth:`BaseChatAgent.run`,
+    or :meth:`BaseChatAgent.run_stream` methods.
+    The agent maintains its state between calls to these methods.
+    Do not pass the entire conversation history to the agent on each call.
+
+.. warning::
+    The assistant agent is not thread-safe or coroutine-safe.
+    It should not be shared between multiple tasks or coroutines, and it should
+    not call its methods concurrently.
+
+The following diagram shows how the assistant agent works:
+
+.. image:: ../../images/assistant-agent.svg
+
+**Structured output:**
+
+If the `output_content_type` is set, the agent will respond with a :class:`~autogen_agentchat.messages.StructuredMessage`
+instead of a :class:`~autogen_agentchat.messages.TextMessage` in the final response by default.
+
+.. note::
+
+    Currently, setting `output_content_type` prevents the agent from being
+    able to call `load_component` and `dum_component` methods for serializable
+    configuration. This will be fixed soon in the future.
+
+**Tool call behavior:**
+
+* If the model returns no tool call, then the response is immediately returned as a :class:`~autogen_agentchat.messages.TextMessage` or a :class:`~autogen_agentchat.messages.StructuredMessage` (when using structured output) in :attr:`~autogen_agentchat.base.Response.chat_message`. This ends the tool call iteration loop regardless of the `max_tool_iterations` setting.
+* When the model returns tool calls, they will be executed right away:
+    - When `reflect_on_tool_use` is False, the tool call results are returned as a :class:`~autogen_agentchat.messages.ToolCallSummaryMessage` in :attr:`~autogen_agentchat.base.Response.chat_message`. You can customise the summary with either a static format string (`tool_call_summary_format`) **or** a callable (`tool_call_summary_formatter`); the callable is evaluated once per tool call.
+    - When `reflect_on_tool_use` is True, the another model inference is made using the tool calls and results, and final response is returned as a :class:`~autogen_agentchat.messages.TextMessage` or a :class:`~autogen_agentchat.messages.StructuredMessage` (when using structured output) in :attr:`~autogen_agentchat.base.Response.chat_message`.
+    - `reflect_on_tool_use` is set to `True` by default when `output_content_type` is set.
+    - `reflect_on_tool_use` is set to `False` by default when `output_content_type` is not set.
+* If the model returns multiple tool calls, they will be executed concurrently. To disable parallel tool calls you need to configure the model client. For example, set `parallel_tool_calls=False` for :class:`~autogen_ext.models.openai.OpenAIChatCompletionClient` and :class:`~autogen_ext.models.openai.AzureOpenAIChatCompletionClient`.
+* The `max_tool_iterations` parameter controls how many sequential tool call iterations the agent can perform in a single run. When set to 1 (default), the agent executes tool calls once and returns the result. When set higher, the agent can make additional model calls to execute more tool calls if the model continues to request them, enabling multi-step tool-based workflows. The agent stops when either the model returns a text response (instead of tool calls) or the maximum number of iterations is reached.
+
+.. tip::
+
+    By default, the tool call results are returned as the response when tool
+    calls are made, so pay close attention to how the tools' return values
+    are formatted—especially if another agent expects a specific schema.
+
+    * Use **`tool_call_summary_format`** for a simple static template.
+    * Use **`tool_call_summary_formatter`** for full programmatic control
+      (e.g., "hide large success payloads, show full details on error").
+
+    *Note*: `tool_call_summary_formatter` is **not serializable** and will
+    be ignored when an agent is loaded from, or exported to, YAML/JSON
+    configuration files.
+
+
+**Hand off behavior:**
+
+* If a handoff is triggered, a :class:`~autogen_agentchat.messages.HandoffMessage` will be returned in :attr:`~autogen_agentchat.base.Response.chat_message`.
+* If there are tool calls, they will also be executed right away before returning the handoff.
+* The tool calls and results are passed to the target agent through :attr:`~autogen_agentchat.messages.HandoffMessage.context`.
+
+
+.. note::
+    If multiple handoffs are detected, only the first handoff is executed.
+    To avoid this, disable parallel tool calls in the model client configuration.
+
+
+**Limit context size sent to the model:**
+
+You can limit the number of messages sent to the model by setting
+the `model_context` parameter to a :class:`~autogen_core.model_context.BufferedChatCompletionContext`.
+This will limit the number of recent messages sent to the model and can be useful
+when the model has a limit on the number of tokens it can process.
+Another option is to use a :class:`~autogen_core.model_context.TokenLimitedChatCompletionContext`
+which will limit the number of tokens sent to the model.
+You can also create your own model context by subclassing
+:class:`~autogen_core.model_context.ChatCompletionContext`.
+
+**Streaming mode:**
+
+The assistant agent can be used in streaming mode by setting `model_client_stream=True`.
+In this mode, the :meth:`on_messages_stream` and :meth:`BaseChatAgent.run_stream` methods will also yield
+:class:`~autogen_agentchat.messages.ModelClientStreamingChunkEvent`
+messages as the model client produces chunks of response.
+The chunk messages will not be included in the final response's inner messages.
+
+Args:
+    name (str): The name of the agent.
+    model_client (ChatCompletionClient): The model client to use for inference.
+    tools (List[BaseTool[Any, Any]  | Callable[..., Any] | Callable[..., Awaitable[Any]]] | None, optional): The tools to register with the agent.
+    workbench (Workbench | Sequence[Workbench] | None, optional): The workbench or list of workbenches to use for the agent.
+        Tools cannot be used when workbench is set and vice versa.
+    handoffs (List[HandoffBase | str] | None, optional): The handoff configurations for the agent,
+        allowing it to transfer to other agents by responding with a :class:`HandoffMessage`.
+        The transfer is only executed when the team is in :class:`~autogen_agentchat.teams.Swarm`.
+        If a handoff is a string, it should represent the target agent's name.
+    model_context (ChatCompletionContext | None, optional): The model context for storing and retrieving :class:`~autogen_core.models.LLMMessage`. It can be preloaded with initial messages. The initial messages will be cleared when the agent is reset.
+    description (str, optional): The description of the agent.
+    system_message (str, optional): The system message for the model. If provided, it will be prepended to the messages in the model context when making an inference. Set to `None` to disable.
+    model_client_stream (bool, optional): If `True`, the model client will be used in streaming mode.
+        :meth:`on_messages_stream` and :meth:`BaseChatAgent.run_stream` methods will also yield :class:`~autogen_agentchat.messages.ModelClientStreamingChunkEvent`
+        messages as the model client produces chunks of response. Defaults to `False`.
+    reflect_on_tool_use (bool, optional): If `True`, the agent will make another model inference using the tool call and result
+        to generate a response. If `False`, the tool call result will be returned as the response. By default, if `output_content_type` is set, this will be `True`;
+        if `output_content_type` is not set, this will be `False`.
+    output_content_type (type[BaseModel] | None, optional): The output content type for :class:`~autogen_agentchat.messages.StructuredMessage` response as a Pydantic model.
+        This will be used with the model client to generate structured output.
+        If this is set, the agent will respond with a :class:`~autogen_agentchat.messages.StructuredMessage` instead of a :class:`~autogen_agentchat.messages.TextMessage`
+        in the final response, unless `reflect_on_tool_use` is `False` and a tool call is made.
+    output_content_type_format (str | None, optional): (Experimental) The format string used for the content of a :class:`~autogen_agentchat.messages.StructuredMessage` response.
+    max_tool_iterations (int, optional): The maximum number of tool iterations to perform until the model stops making tool calls. Defaults to `1`, which means the agent will
+        only execute the tool calls made by the model once, and return the result as a :class:`~autogen_agentchat.messages.ToolCallSummaryMessage`,
+        or a :class:`~autogen_agentchat.messages.TextMessage` or a :class:`~autogen_agentchat.messages.StructuredMessage` (when using structured output)
+        in :attr:`~autogen_agentchat.base.Response.chat_message` as the final response.
+        As soon as the model stops making tool calls, the agent will stop executing tool calls and return the result as the final response.
+        The value must be greater than or equal to 1.
+    tool_call_summary_format (str, optional): Static format string applied to each tool call result when composing the :class:`~autogen_agentchat.messages.ToolCallSummaryMessage`.
+        Defaults to ``"{result}"``. Ignored if `tool_call_summary_formatter` is provided. When `reflect_on_tool_use` is ``False``, the summaries for all tool
+        calls are concatenated with a newline ('\n') and returned as the response.  Placeholders available in the template:
+        `{tool_name}`, `{arguments}`, `{result}`, `{is_error}`.
+    tool_call_summary_formatter (Callable[[FunctionCall, FunctionExecutionResult], str] | None, optional):
+        Callable that receives the ``FunctionCall`` and its ``FunctionExecutionResult`` and returns the summary string.
+        Overrides `tool_call_summary_format` when supplied and allows conditional logic — for example, emitting static string like
+        ``"Tool FooBar executed successfully."`` on success and a full payload (including all passed arguments etc.) only on failure.
+
+        **Limitation**: The callable is *not serializable*; values provided via YAML/JSON configs are ignored.
+
+.. note::
+
+    `tool_call_summary_formatter` is intended for in-code use only. It cannot currently be saved or restored via
+    configuration files.
+
+    memory (Sequence[Memory] | None, optional): The memory store to use for the agent. Defaults to `None`.
+    metadata (Dict[str, str] | None, optional): Optional metadata for tracking.
+
+Raises:
+    ValueError: If tool names are not unique.
+    ValueError: If handoff names are not unique.
+    ValueError: If handoff names are not unique from tool names.
+    ValueError: If maximum number of tool iterations is less than 1.
+
+Examples:
+
+    **Example 1: basic agent**
+
+    The following example demonstrates how to create an assistant agent with
+    a model client and generate a response to a simple task.
+
+    .. code-block:: python
+
+        import asyncio
+        from autogen_ext.models.openai import OpenAIChatCompletionClient
+        from autogen_agentchat.agents import AssistantAgent
+
+
+        async def main() -> None:
+            model_client = OpenAIChatCompletionClient(
+                model="gpt-4o",
+                # api_key = "your_openai_api_key"
+            )
+            agent = AssistantAgent(name="assistant", model_client=model_client)
+
+            result = await agent.run(task="Name two cities in North America.")
+            print(result)
+
+
+        asyncio.run(main())
+
+    **Example 2: model client token streaming**
+
+    This example demonstrates how to create an assistant agent with
+    a model client and generate a token stream by setting `model_client_stream=True`.
+
+    .. code-block:: python
+
+        import asyncio
+        from autogen_ext.models.openai import OpenAIChatCompletionClient
+        from autogen_agentchat.agents import AssistantAgent
+
+
+        async def main() -> None:
+            model_client = OpenAIChatCompletionClient(
+                model="gpt-4o",
+                # api_key = "your_openai_api_key"
+            )
+            agent = AssistantAgent(
+                name="assistant",
+                model_client=model_client,
+                model_client_stream=True,
+            )
+
+            stream = agent.run_stream(task="Name two cities in North America.")
+            async for message in stream:
+                print(message)
+
+
+        asyncio.run(main())
+
+    .. code-block:: text
+
+        source='user' models_usage=None metadata={} content='Name two cities in North America.' type='TextMessage'
+        source='assistant' models_usage=None metadata={} content='Two' type='ModelClientStreamingChunkEvent'
+        source='assistant' models_usage=None metadata={} content=' cities' type='ModelClientStreamingChunkEvent'
+        source='assistant' models_usage=None metadata={} content=' in' type='ModelClientStreamingChunkEvent'
+        source='assistant' models_usage=None metadata={} content=' North' type='ModelClientStreamingChunkEvent'
+        source='assistant' models_usage=None metadata={} content=' America' type='ModelClientStreamingChunkEvent'
+        source='assistant' models_usage=None metadata={} content=' are' type='ModelClientStreamingChunkEvent'
+        source='assistant' models_usage=None metadata={} content=' New' type='ModelClientStreamingChunkEvent'
+        source='assistant' models_usage=None metadata={} content=' York' type='ModelClientStreamingChunkEvent'
+        source='assistant' models_usage=None metadata={} content=' City' type='ModelClientStreamingChunkEvent'
+        source='assistant' models_usage=None metadata={} content=' and' type='ModelClientStreamingChunkEvent'
+        source='assistant' models_usage=None metadata={} content=' Toronto' type='ModelClientStreamingChunkEvent'
+        source='assistant' models_usage=None metadata={} content='.' type='ModelClientStreamingChunkEvent'
+        source='assistant' models_usage=None metadata={} content=' TERMIN' type='ModelClientStreamingChunkEvent'
+        source='assistant' models_usage=None metadata={} content='ATE' type='ModelClientStreamingChunkEvent'
+        source='assistant' models_usage=RequestUsage(prompt_tokens=0, completion_tokens=0) metadata={} content='Two cities in North America are New York City and Toronto. TERMINATE' type='TextMessage'
+        messages=[TextMessage(source='user', models_usage=None, metadata={}, content='Name two cities in North America.', type='TextMessage'), TextMessage(source='assistant', models_usage=RequestUsage(prompt_tokens=0, completion_tokens=0), metadata={}, content='Two cities in North America are New York City and Toronto. TERMINATE', type='TextMessage')] stop_reason=None
+
+
+    **Example 3: agent with tools**
+
+    The following example demonstrates how to create an assistant agent with
+    a model client and a tool, generate a stream of messages for a task, and
+    print the messages to the console using :class:`~autogen_agentchat.ui.Console`.
+
+    The tool is a simple function that returns the current time.
+    Under the hood, the function is wrapped in a :class:`~autogen_core.tools.FunctionTool`
+    and used with the agent's model client. The doc string of the function
+    is used as the tool description, the function name is used as the tool name,
+    and the function signature including the type hints is used as the tool arguments.
+
+    .. code-block:: python
+
+        import asyncio
+        from autogen_ext.models.openai import OpenAIChatCompletionClient
+        from autogen_agentchat.agents import AssistantAgent
+        from autogen_agentchat.ui import Console
+
+
+        async def get_current_time() -> str:
+            return "The current time is 12:00 PM."
+
+
+        async def main() -> None:
+            model_client = OpenAIChatCompletionClient(
+                model="gpt-4o",
+                # api_key = "your_openai_api_key"
+            )
+            agent = AssistantAgent(name="assistant", model_client=model_client, tools=[get_current_time])
+            await Console(agent.run_stream(task="What is the current time?"))
+
+
+        asyncio.run(main())
+
+    **Example 4: agent with max_tool_iterations**
+
+    The following example demonstrates how to use the `max_tool_iterations` parameter
+    to control how many times the agent can execute tool calls in a single run.
+    This is useful when you want the agent to perform multiple sequential tool
+    operations to reach a goal.
+
+    .. code-block:: python
+
+        import asyncio
+        from autogen_ext.models.openai import OpenAIChatCompletionClient
+        from autogen_agentchat.agents import AssistantAgent
+        from autogen_agentchat.ui import Console
+
+
+        # Global counter state
+        counter = 0
+
+
+        def increment_counter() -> str:
+            """Increment the counter by 1 and return the current value."""
+            global counter
+            counter += 1
+            return f"Counter incremented to: {counter}"
+
+
+        def get_counter() -> str:
+            """Get the current counter value."""
+            global counter
+            return f"Current counter value: {counter}"
+
+
+        async def main() -> None:
+            model_client = OpenAIChatCompletionClient(
+                model="gpt-4o",
+                # api_key = "your_openai_api_key"
+            )
+
+            # Create agent with max_tool_iterations=5 to allow multiple tool calls
+            agent = AssistantAgent(
+                name="assistant",
+                model_client=model_client,
+                tools=[increment_counter, get_counter],
+                max_tool_iterations=5,  # Allow up to 5 tool call iterations
+                reflect_on_tool_use=True,  # Get a final summary after tool calls
+            )
+
+            await Console(agent.run_stream(task="Increment the counter 3 times and then tell me the final value."))
+
+
+        asyncio.run(main())
+
+    **Example 5: agent with Model-Context Protocol (MCP) workbench**
+
+    The following example demonstrates how to create an assistant agent with
+    a model client and an :class:`~autogen_ext.tools.mcp.McpWorkbench` for
+    interacting with a Model-Context Protocol (MCP) server.
+
+    .. code-block:: python
+
+        import asyncio
+        from autogen_agentchat.agents import AssistantAgent
+        from autogen_agentchat.ui import Console
+        from autogen_ext.models.openai import OpenAIChatCompletionClient
+        from autogen_ext.tools.mcp import StdioServerParams, McpWorkbench
+
+
+        async def main() -> None:
+            params = StdioServerParams(
+                command="uvx",
+                args=["mcp-server-fetch"],
+                read_timeout_seconds=60,
+            )
+
+            # You can also use `start()` and `stop()` to manage the session.
+            async with McpWorkbench(server_params=params) as workbench:
+                model_client = OpenAIChatCompletionClient(model="gpt-4.1-nano")
+                assistant = AssistantAgent(
+                    name="Assistant",
+                    model_client=model_client,
+                    workbench=workbench,
+                    reflect_on_tool_use=True,
+                )
+                await Console(
+                    assistant.run_stream(task="Go to https://github.com/microsoft/autogen and tell me what you see.")
+                )
+
+
+        asyncio.run(main())
+
+    **Example 6: agent with structured output and tool**
+
+    The following example demonstrates how to create an assistant agent with
+    a model client configured to use structured output and a tool.
+    Note that you need to use :class:`~autogen_core.tools.FunctionTool` to create the tool
+    and the `strict=True` is required for structured output mode.
+    Because the model is configured to use structured output, the output
+    reflection response will be a JSON formatted string.
+
+    .. code-block:: python
+
+        import asyncio
+        from typing import Literal
+
+        from autogen_agentchat.agents import AssistantAgent
+        from autogen_agentchat.ui import Console
+        from autogen_core.tools import FunctionTool
+        from autogen_ext.models.openai import OpenAIChatCompletionClient
+        from pydantic import BaseModel
+
+
+        # Define the structured output format.
+        class AgentResponse(BaseModel):
+            thoughts: str
+            response: Literal["happy", "sad", "neutral"]
+
+
+        # Define the function to be called as a tool.
+        def sentiment_analysis(text: str) -> str:
+            """Given a text, return the sentiment."""
+            return "happy" if "happy" in text else "sad" if "sad" in text else "neutral"
+
+
+        # Create a FunctionTool instance with `strict=True`,
+        # which is required for structured output mode.
+        tool = FunctionTool(sentiment_analysis, description="Sentiment Analysis", strict=True)
+
+        # Create an OpenAIChatCompletionClient instance that supports structured output.
+        model_client = OpenAIChatCompletionClient(
+            model="gpt-4o-mini",
+        )
+
+        # Create an AssistantAgent instance that uses the tool and model client.
+        agent = AssistantAgent(
+            name="assistant",
+            model_client=model_client,
+            tools=[tool],
+            system_message="Use the tool to analyze sentiment.",
+            output_content_type=AgentResponse,
+        )
+
+
+        async def main() -> None:
+            stream = agent.run_stream(task="I am happy today!")
+            await Console(stream)
+
+
+        asyncio.run(main())
+
+    .. code-block:: text
+
+        ---------- assistant ----------
+        [FunctionCall(id='call_tIZjAVyKEDuijbBwLY6RHV2p', arguments='{"text":"I am happy today!"}', name='sentiment_analysis')]
+        ---------- assistant ----------
+        [FunctionExecutionResult(content='happy', call_id='call_tIZjAVyKEDuijbBwLY6RHV2p', is_error=False)]
+        ---------- assistant ----------
+        {"thoughts":"The user expresses a clear positive emotion by stating they are happy today, suggesting an upbeat mood.","response":"happy"}
+
+    **Example 7: agent with bounded model context**
+
+    The following example shows how to use a
+    :class:`~autogen_core.model_context.BufferedChatCompletionContext`
+    that only keeps the last 2 messages (1 user + 1 assistant).
+    Bounded model context is useful when the model has a limit on the
+    number of tokens it can process.
+
+    .. code-block:: python
+
+        import asyncio
+
+        from autogen_agentchat.agents import AssistantAgent
+        from autogen_core.model_context import BufferedChatCompletionContext
+        from autogen_ext.models.openai import OpenAIChatCompletionClient
+
+
+        async def main() -> None:
+            # Create a model client.
+            model_client = OpenAIChatCompletionClient(
+                model="gpt-4o-mini",
+                # api_key = "your_openai_api_key"
+            )
+
+            # Create a model context that only keeps the last 2 messages (1 user + 1 assistant).
+            model_context = BufferedChatCompletionContext(buffer_size=2)
+
+            # Create an AssistantAgent instance with the model client and context.
+            agent = AssistantAgent(
+                name="assistant",
+                model_client=model_client,
+                model_context=model_context,
+                system_message="You are a helpful assistant.",
+            )
+
+            result = await agent.run(task="Name two cities in North America.")
+            print(result.messages[-1].content)  # type: ignore
+
+            result = await agent.run(task="My favorite color is blue.")
+            print(result.messages[-1].content)  # type: ignore
+
+            result = await agent.run(task="Did I ask you any question?")
+            print(result.messages[-1].content)  # type: ignore
+
+
+        asyncio.run(main())
+
+    .. code-block:: text
+
+        Two cities in North America are New York City and Toronto.
+        That's great! Blue is often associated with calmness and serenity. Do you have a specific shade of blue that you like, or any particular reason why it's your favorite?
+        No, you didn't ask a question. I apologize for any misunderstanding. If you have something specific you'd like to discuss or ask, feel free to let me know!
+
+    **Example 8: agent with memory**
+
+    The following example shows how to use a list-based memory with the assistant agent.
+    The memory is preloaded with some initial content.
+    Under the hood, the memory is used to update the model context
+    before making an inference, using the :meth:`~autogen_core.memory.Memory.update_context` method.
+
+    .. code-block:: python
+
+        import asyncio
+
+        from autogen_agentchat.agents import AssistantAgent
+        from autogen_core.memory import ListMemory, MemoryContent
+        from autogen_ext.models.openai import OpenAIChatCompletionClient
+
+
+        async def main() -> None:
+            # Create a model client.
+            model_client = OpenAIChatCompletionClient(
+                model="gpt-4o-mini",
+                # api_key = "your_openai_api_key"
+            )
+
+            # Create a list-based memory with some initial content.
+            memory = ListMemory()
+            await memory.add(MemoryContent(content="User likes pizza.", mime_type="text/plain"))
+            await memory.add(MemoryContent(content="User dislikes cheese.", mime_type="text/plain"))
+
+            # Create an AssistantAgent instance with the model client and memory.
+            agent = AssistantAgent(
+                name="assistant",
+                model_client=model_client,
+                memory=[memory],
+                system_message="You are a helpful assistant.",
+            )
+
+            result = await agent.run(task="What is a good dinner idea?")
+            print(result.messages[-1].content)  # type: ignore
+
+
+        asyncio.run(main())
+
+    .. code-block:: text
+
+        How about making a delicious pizza without cheese? You can create a flavorful veggie pizza with a variety of toppings. Here's a quick idea:
+
+        **Veggie Tomato Sauce Pizza**
+        - Start with a pizza crust (store-bought or homemade).
+        - Spread a layer of marinara or tomato sauce evenly over the crust.
+        - Top with your favorite vegetables like bell peppers, mushrooms, onions, olives, and spinach.
+        - Add some protein if you'd like, such as grilled chicken or pepperoni (ensure it's cheese-free).
+        - Sprinkle with herbs like oregano and basil, and maybe a drizzle of olive oil.
+        - Bake according to the crust instructions until the edges are golden and the veggies are cooked.
+
+        Serve it with a side salad or some garlic bread to complete the meal! Enjoy your dinner!
+
+    **Example 9: agent with `o1-mini`**
+
+    The following example shows how to use `o1-mini` model with the assistant agent.
+
+    .. code-block:: python
+
+        import asyncio
+        from autogen_ext.models.openai import OpenAIChatCompletionClient
+        from autogen_agentchat.agents import AssistantAgent
+
+
+        async def main() -> None:
+            model_client = OpenAIChatCompletionClient(
+                model="o1-mini",
+                # api_key = "your_openai_api_key"
+            )
+            # The system message is not supported by the o1 series model.
+            agent = AssistantAgent(name="assistant", model_client=model_client, system_message=None)
+
+            result = await agent.run(task="What is the capital of France?")
+            print(result.messages[-1].content)  # type: ignore
+
+
+        asyncio.run(main())
+
+    .. note::
+
+        The `o1-preview` and `o1-mini` models do not support system message and function calling.
+        So the `system_message` should be set to `None` and the `tools` and `handoffs` should not be set.
+        See `o1 beta limitations <https://platform.openai.com/docs/guides/reasoning#beta-limitations>`_ for more details.
+
+
+    **Example 10: agent using reasoning model with custom model context.**
+
+    The following example shows how to use a reasoning model (DeepSeek R1) with the assistant agent.
+    The model context is used to filter out the thought field from the assistant message.
+
+    .. code-block:: python
+
+        import asyncio
+        from typing import List
+
+        from autogen_agentchat.agents import AssistantAgent
+        from autogen_core.model_context import UnboundedChatCompletionContext
+        from autogen_core.models import AssistantMessage, LLMMessage, ModelFamily
+        from autogen_ext.models.ollama import OllamaChatCompletionClient
+
+
+        class ReasoningModelContext(UnboundedChatCompletionContext):
+            """A model context for reasoning models."""
+
+            async def get_messages(self) -> List[LLMMessage]:
+                messages = await super().get_messages()
+                # Filter out thought field from AssistantMessage.
+                messages_out: List[LLMMessage] = []
+                for message in messages:
+                    if isinstance(message, AssistantMessage):
+                        message.thought = None
+                    messages_out.append(message)
+                return messages_out
+
+
+        # Create an instance of the model client for DeepSeek R1 hosted locally on Ollama.
+        model_client = OllamaChatCompletionClient(
+            model="deepseek-r1:8b",
+            model_info={
+                "vision": False,
+                "function_calling": False,
+                "json_output": False,
+                "family": ModelFamily.R1,
+                "structured_output": True,
+            },
+        )
+
+        agent = AssistantAgent(
+            "reasoning_agent",
+            model_client=model_client,
+            model_context=ReasoningModelContext(),  # Use the custom model context.
+        )
+
+
+        async def run_reasoning_agent() -> None:
+            result = await agent.run(task="What is the capital of France?")
+            print(result)
+
+
+        asyncio.run(run_reasoning_agent())
+
+For detailed examples and usage, see the Examples section below.
+
+**Méthodes :**
+
+- `__init__()`
+- `produced_message_types()`
+- `model_context()`
+- `_check_and_handle_handoff()`
+- `_summarize_tool_use()`
+- `_get_compatible_context()`
+- `_to_config()`
+- `_from_config()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `model_client`
+
+##### produced_message_types
+
+Get the types of messages this agent can produce.
+
+Returns:
+    Sequence of message types this agent can generate
+
+##### model_context
+
+Get the model context used by this agent.
+
+Returns:
+    The chat completion context for this agent
+
+##### _check_and_handle_handoff
+
+Check for and handle any handoff requests in the model result.
+
+Args:
+    model_result: Result from model inference
+    executed_calls_and_results: List of executed tool calls and their results
+    inner_messages: List of messages generated during processing
+    handoffs: Dictionary of available handoff configurations
+    agent_name: Name of the agent
+
+Returns:
+    Optional response containing handoff message if handoff detected
+
+**Paramètres :**
+
+- `model_result`
+- `executed_calls_and_results`
+- `inner_messages`
+- `handoffs`
+- `agent_name`
+
+##### _summarize_tool_use
+
+If reflect_on_tool_use=False, create a summary message of all tool calls.
+
+**Paramètres :**
+
+- `executed_calls_and_results`
+- `inner_messages`
+- `handoffs`
+- `tool_call_summary_format`
+- `tool_call_summary_formatter`
+- `agent_name`
+
+##### _get_compatible_context
+
+Ensure that the messages are compatible with the underlying client, by removing images if needed.
+
+**Paramètres :**
+
+- `model_client`
+- `messages`
+
+##### _to_config
+
+Convert the assistant agent to a declarative config.
+
+##### _from_config
+
+Create an assistant agent from a declarative config.
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+##### default_tool_call_summary_formatter
+
+**Paramètres :**
+
+- `call`
+- `result`
+
+---
+
+### _base_chat_agent
+
+#### Classes
+
+##### BaseChatAgent
+
+Base class for a chat agent.
+
+This abstract class provides a base implementation for a :class:`ChatAgent`.
+To create a new chat agent, subclass this class and implement the
+:meth:`on_messages`, :meth:`on_reset`, and :attr:`produced_message_types`.
+If streaming is required, also implement the :meth:`on_messages_stream` method.
+
+An agent is considered stateful and maintains its state between calls to
+the :meth:`on_messages` or :meth:`on_messages_stream` methods.
+The agent should store its state in the
+agent instance. The agent should also implement the :meth:`on_reset` method
+to reset the agent to its initialization state.
+
+.. note::
+
+    The caller should only pass the new messages to the agent on each call
+    to the :meth:`on_messages` or :meth:`on_messages_stream` method.
+    Do not pass the entire conversation history to the agent on each call.
+    This design principle must be followed when creating a new agent.
+
+**Méthodes :**
+
+- `__init__()`
+- `name()`
+- `description()`
+- `produced_message_types()`
+
+#### Fonctions
+
+##### __init__
+
+Initialize the agent with a name and description.
+
+**Paramètres :**
+
+- `name`
+- `description`
+
+##### name
+
+The name of the agent. This is used by team to uniquely identify
+the agent. It should be unique within the team.
+
+##### description
+
+The description of the agent. This is used by team to
+make decisions about which agents to use. The description should
+describe the agent's capabilities and how to interact with it.
+
+##### produced_message_types
+
+The types of messages that the agent produces in the
+:attr:`Response.chat_message` field. They must be :class:`BaseChatMessage` types.
+
+---
+
+### _code_executor_agent
+
+#### Classes
+
+##### CodeExecutorAgentConfig
+
+Configuration for CodeExecutorAgent
+
+##### RetryDecision
+
+##### CodeExecutorAgent
+
+(Experimental) An agent that generates and executes code snippets based on user instructions.
+
+.. note::
+
+    This agent is experimental and may change in future releases.
+
+It is typically used within a team with another agent that generates code snippets
+to be executed or alone with `model_client` provided so that it can generate code
+based on user query, execute it and reflect on the code result.
+
+When used with `model_client`, it will generate code snippets using the model
+and execute them using the provided `code_executor`. The model will also reflect on the
+code execution results. The agent will yield the final reflection result from the model
+as the final response.
+
+When used without `model_client`, it will only execute code blocks found in
+:class:`~autogen_agentchat.messages.TextMessage` messages and returns the output
+of the code execution.
+
+.. note::
+
+    Using :class:`~autogen_agentchat.agents.AssistantAgent` with
+    :class:`~autogen_ext.tools.code_execution.PythonCodeExecutionTool`
+    is an alternative to this agent. However, the model for that agent will
+    have to generate properly escaped code string as a parameter to the tool.
+
+Args:
+    name (str): The name of the agent.
+    code_executor (CodeExecutor): The code executor responsible for executing code received in messages
+        (:py:class:`~autogen_ext.code_executors.docker.DockerCommandLineCodeExecutor` recommended. See example below)
+    model_client (ChatCompletionClient, optional): The model client to use for inference and generating code.
+        If not provided, the agent will only execute code blocks found in input messages.
+        Currently, the model must support structured output mode, which is required for
+        the automatic retry mechanism to work.
+    model_client_stream (bool, optional): If `True`, the model client will be used in streaming mode.
+        :meth:`on_messages_stream` and :meth:`BaseChatAgent.run_stream` methods will
+        also yield :class:`~autogen_agentchat.messages.ModelClientStreamingChunkEvent`
+        messages as the model client produces chunks of response. Defaults to `False`.
+    description (str, optional): The description of the agent. If not provided,
+        :class:`~autogen_agentchat.agents.CodeExecutorAgent.DEFAULT_AGENT_DESCRIPTION` will be used.
+    system_message (str, optional): The system message for the model. If provided, it will be prepended to the messages in the model context when making an inference. Set to `None` to disable.
+        Defaults to :class:`~autogen_agentchat.agents.CodeExecutorAgent.DEFAULT_SYSTEM_MESSAGE`. This is only used if `model_client` is provided.
+    sources (Sequence[str], optional): Check only messages from the specified agents for the code to execute.
+        This is useful when the agent is part of a group chat and you want to limit the code execution to messages from specific agents.
+        If not provided, all messages will be checked for code blocks.
+        This is only used if `model_client` is not provided.
+    max_retries_on_error (int, optional): The maximum number of retries on error. If the code execution fails, the agent will retry up to this number of times.
+        If the code execution fails after this number of retries, the agent will yield a reflection result.
+    supported_languages (List[str], optional): List of programming languages that will be parsed and executed from agent response;
+        others will be ignored. Defaults to DEFAULT_SUPPORTED_LANGUAGES.
+
+
+.. note::
+
+    It is recommended that the `CodeExecutorAgent` agent uses a Docker container to execute code. This ensures that model-generated code is executed in an isolated environment. To use Docker, your environment must have Docker installed and running.
+    Follow the installation instructions for `Docker <https://docs.docker.com/get-docker/>`_.
+
+.. note::
+
+    The code executor only processes code that is properly formatted in markdown code blocks using triple backticks.
+    For example:
+
+    .. code-block:: text
+
+        ```python
+        print("Hello World")
+        ```
+
+        # or
+
+        ```sh
+        echo "Hello World"
+        ```
+
+In this example, we show how to set up a `CodeExecutorAgent` agent that uses the
+:py:class:`~autogen_ext.code_executors.docker.DockerCommandLineCodeExecutor`
+to execute code snippets in a Docker container. The `work_dir` parameter indicates where all executed files are first saved locally before being executed in the Docker container.
+
+    .. code-block:: python
+
+        import asyncio
+        from autogen_agentchat.agents import CodeExecutorAgent
+        from autogen_agentchat.messages import TextMessage
+        from autogen_ext.code_executors.docker import DockerCommandLineCodeExecutor
+        from autogen_core import CancellationToken
+
+
+        async def run_code_executor_agent() -> None:
+            # Create a code executor agent that uses a Docker container to execute code.
+            code_executor = DockerCommandLineCodeExecutor(work_dir="coding")
+            await code_executor.start()
+            code_executor_agent = CodeExecutorAgent("code_executor", code_executor=code_executor)
+
+            # Run the agent with a given code snippet.
+            task = TextMessage(
+                content='''Here is some code
+        ```python
+        print('Hello world')
+        ```
+        ''',
+                source="user",
+            )
+            response = await code_executor_agent.on_messages([task], CancellationToken())
+            print(response.chat_message)
+
+            # Stop the code executor.
+            await code_executor.stop()
+
+
+        asyncio.run(run_code_executor_agent())
+
+In this example, we show how to set up a `CodeExecutorAgent` agent that uses the
+:py:class:`~docker.types.DeviceRequest` to expose a GPU to the container for cuda-accelerated code execution.
+
+    .. code-block:: python
+
+        import asyncio
+        from autogen_agentchat.agents import CodeExecutorAgent
+        from autogen_agentchat.messages import TextMessage
+        from autogen_ext.code_executors.docker import DockerCommandLineCodeExecutor
+        from autogen_core import CancellationToken
+        from docker.types import DeviceRequest
+
+
+        async def run_code_executor_agent() -> None:
+            # Create a code executor agent that uses a Docker container to execute code.
+            code_executor = DockerCommandLineCodeExecutor(
+                work_dir="coding", device_requests=[DeviceRequest(count=-1, capabilities=[["gpu"]])]
+            )
+            await code_executor.start()
+            code_executor_agent = CodeExecutorAgent("code_executor", code_executor=code_executor)
+
+            # Display the GPU information
+            task = TextMessage(
+                content='''Here is some code
+        ```bash
+        nvidia-smi
+        ```
+        ''',
+                source="user",
+            )
+            response = await code_executor_agent.on_messages([task], CancellationToken())
+            print(response.chat_message)
+
+            # Stop the code executor.
+            await code_executor.stop()
+
+
+        asyncio.run(run_code_executor_agent())
+
+In the following example, we show how to setup `CodeExecutorAgent` without `model_client` parameter for executing code blocks generated by other agents in a group chat using :py:class:`~autogen_ext.code_executors.docker.DockerCommandLineCodeExecutor`
+
+    .. code-block:: python
+
+        import asyncio
+
+        from autogen_ext.code_executors.docker import DockerCommandLineCodeExecutor
+        from autogen_ext.models.openai import OpenAIChatCompletionClient
+
+        from autogen_agentchat.agents import AssistantAgent, CodeExecutorAgent
+        from autogen_agentchat.conditions import MaxMessageTermination
+        from autogen_agentchat.teams import RoundRobinGroupChat
+        from autogen_agentchat.ui import Console
+
+        termination_condition = MaxMessageTermination(3)
+
+
+        async def main() -> None:
+            model_client = OpenAIChatCompletionClient(model="gpt-4o")
+
+            # define the Docker CLI Code Executor
+            code_executor = DockerCommandLineCodeExecutor(work_dir="coding")
+
+            # start the execution container
+            await code_executor.start()
+
+            code_executor_agent = CodeExecutorAgent("code_executor_agent", code_executor=code_executor)
+            coder_agent = AssistantAgent("coder_agent", model_client=model_client)
+
+            groupchat = RoundRobinGroupChat(
+                participants=[coder_agent, code_executor_agent], termination_condition=termination_condition
+            )
+
+            task = "Write python code to print Hello World!"
+            await Console(groupchat.run_stream(task=task))
+
+            # stop the execution container
+            await code_executor.stop()
+
+
+        asyncio.run(main())
+
+    .. code-block:: text
+
+        ---------- user ----------
+        Write python code to print Hello World!
+        ---------- coder_agent ----------
+        Certainly! Here's a simple Python code to print "Hello World!":
+
+        ```python
+        print("Hello World!")
+        ```
+
+        You can run this code in any Python environment to display the message.
+        ---------- code_executor_agent ----------
+        Hello World!
+
+In the following example, we show how to setup `CodeExecutorAgent` with `model_client` that can generate its own code without the help of any other agent and executing it in :py:class:`~autogen_ext.code_executors.docker.DockerCommandLineCodeExecutor`
+
+    .. code-block:: python
+
+        import asyncio
+
+        from autogen_ext.code_executors.docker import DockerCommandLineCodeExecutor
+        from autogen_ext.models.openai import OpenAIChatCompletionClient
+
+        from autogen_agentchat.agents import CodeExecutorAgent
+        from autogen_agentchat.conditions import TextMessageTermination
+        from autogen_agentchat.ui import Console
+
+        termination_condition = TextMessageTermination("code_executor_agent")
+
+
+        async def main() -> None:
+            model_client = OpenAIChatCompletionClient(model="gpt-4o")
+
+            # define the Docker CLI Code Executor
+            code_executor = DockerCommandLineCodeExecutor(work_dir="coding")
+
+            # start the execution container
+            await code_executor.start()
+
+            code_executor_agent = CodeExecutorAgent(
+                "code_executor_agent", code_executor=code_executor, model_client=model_client
+            )
+
+            task = "Write python code to print Hello World!"
+            await Console(code_executor_agent.run_stream(task=task))
+
+            # stop the execution container
+            await code_executor.stop()
+
+
+        asyncio.run(main())
+
+    .. code-block:: text
+
+        ---------- user ----------
+        Write python code to print Hello World!
+        ---------- code_executor_agent ----------
+        Certainly! Here is a simple Python code to print "Hello World!" to the console:
+
+        ```python
+        print("Hello World!")
+        ```
+
+        Let's execute it to confirm the output.
+        ---------- code_executor_agent ----------
+        Hello World!
+
+        ---------- code_executor_agent ----------
+        The code has been executed successfully, and it printed "Hello World!" as expected. If you have any more requests or questions, feel free to ask!
+
+**Méthodes :**
+
+- `__init__()`
+- `produced_message_types()`
+- `model_context()`
+- `_extract_markdown_code_blocks()`
+- `_to_config()`
+- `_from_config()`
+- `_get_compatible_context()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `code_executor`
+
+##### produced_message_types
+
+The types of messages that the code executor agent produces.
+
+##### model_context
+
+The model context in use by the agent.
+
+##### _extract_markdown_code_blocks
+
+**Paramètres :**
+
+- `markdown_text`
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+##### _get_compatible_context
+
+Ensure that the messages are compatible with the underlying client, by removing images if needed.
+
+**Paramètres :**
+
+- `model_client`
+- `messages`
+
+---
+
+### _message_filter_agent
+
+#### Classes
+
+##### PerSourceFilter
+
+##### MessageFilterConfig
+
+##### MessageFilterAgentConfig
+
+##### MessageFilterAgent
+
+A wrapper agent that filters incoming messages before passing them to the inner agent.
+
+.. warning::
+
+    This is an experimental feature, and the API will change in the future releases.
+
+This is useful in scenarios like multi-agent workflows where an agent should only
+process a subset of the full message history—for example, only the last message
+from each upstream agent, or only the first message from a specific source.
+
+Filtering is configured using :class:`MessageFilterConfig`, which supports:
+- Filtering by message source (e.g., only messages from "user" or another agent)
+- Selecting the first N or last N messages from each source
+- If position is `None`, all messages from that source are included
+
+This agent is compatible with both direct message passing and team-based execution
+such as :class:`~autogen_agentchat.teams.GraphFlow`.
+
+Example:
+    >>> agent_a = MessageFilterAgent(
+    ...     name="A",
+    ...     wrapped_agent=some_other_agent,
+    ...     filter=MessageFilterConfig(
+    ...         per_source=[
+    ...             PerSourceFilter(source="user", position="first", count=1),
+    ...             PerSourceFilter(source="B", position="last", count=2),
+    ...         ]
+    ...     ),
+    ... )
+
+Example use case with Graph:
+    Suppose you have a looping multi-agent graph: A → B → A → B → C.
+
+    You want:
+    - A to only see the user message and the last message from B
+    - B to see the user message, last message from A, and its own prior responses (for reflection)
+    - C to see the user message and the last message from B
+
+    Wrap the agents like so:
+
+    >>> agent_a = MessageFilterAgent(
+    ...     name="A",
+    ...     wrapped_agent=agent_a_inner,
+    ...     filter=MessageFilterConfig(
+    ...         per_source=[
+    ...             PerSourceFilter(source="user", position="first", count=1),
+    ...             PerSourceFilter(source="B", position="last", count=1),
+    ...         ]
+    ...     ),
+    ... )
+
+    >>> agent_b = MessageFilterAgent(
+    ...     name="B",
+    ...     wrapped_agent=agent_b_inner,
+    ...     filter=MessageFilterConfig(
+    ...         per_source=[
+    ...             PerSourceFilter(source="user", position="first", count=1),
+    ...             PerSourceFilter(source="A", position="last", count=1),
+    ...             PerSourceFilter(source="B", position="last", count=10),
+    ...         ]
+    ...     ),
+    ... )
+
+    >>> agent_c = MessageFilterAgent(
+    ...     name="C",
+    ...     wrapped_agent=agent_c_inner,
+    ...     filter=MessageFilterConfig(
+    ...         per_source=[
+    ...             PerSourceFilter(source="user", position="first", count=1),
+    ...             PerSourceFilter(source="B", position="last", count=1),
+    ...         ]
+    ...     ),
+    ... )
+
+    Then define the graph:
+
+    >>> graph = DiGraph(
+    ...     nodes={
+    ...         "A": DiGraphNode(name="A", edges=[DiGraphEdge(target="B")]),
+    ...         "B": DiGraphNode(
+    ...             name="B",
+    ...             edges=[
+    ...                 DiGraphEdge(target="C", condition="exit"),
+    ...                 DiGraphEdge(target="A", condition="loop"),
+    ...             ],
+    ...         ),
+    ...         "C": DiGraphNode(name="C", edges=[]),
+    ...     },
+    ...     default_start_node="A",
+    ... )
+
+    This will ensure each agent sees only what is needed for its decision or action logic.
+
+**Méthodes :**
+
+- `__init__()`
+- `produced_message_types()`
+- `_apply_filter()`
+- `_to_config()`
+- `_from_config()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `wrapped_agent`
+- `filter`
+
+##### produced_message_types
+
+##### _apply_filter
+
+**Paramètres :**
+
+- `messages`
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+---
+
+### _society_of_mind_agent
+
+#### Classes
+
+##### SocietyOfMindAgentConfig
+
+The declarative configuration for a SocietyOfMindAgent.
+
+##### SocietyOfMindAgent
+
+An agent that uses an inner team of agents to generate responses.
+
+Each time the agent's :meth:`on_messages` or :meth:`on_messages_stream`
+method is called, it runs the inner team of agents and then uses the
+model client to generate a response based on the inner team's messages.
+Once the response is generated, the agent resets the inner team by
+calling :meth:`Team.reset`.
+
+Limit context size sent to the model:
+
+You can limit the number of messages sent to the model by setting
+the `model_context` parameter to a :class:`~autogen_core.model_context.BufferedChatCompletionContext`.
+This will limit the number of recent messages sent to the model and can be useful
+when the model has a limit on the number of tokens it can process.
+You can also create your own model context by subclassing
+:class:`~autogen_core.model_context.ChatCompletionContext`.
+
+
+Args:
+    name (str): The name of the agent.
+    team (Team): The team of agents to use.
+    model_client (ChatCompletionClient): The model client to use for preparing responses.
+    description (str, optional): The description of the agent.
+    instruction (str, optional): The instruction to use when generating a response using the inner team's messages.
+        Defaults to :attr:`DEFAULT_INSTRUCTION`. It assumes the role of 'system'.
+    response_prompt (str, optional): The response prompt to use when generating a response using the inner team's messages.
+        Defaults to :attr:`DEFAULT_RESPONSE_PROMPT`. It assumes the role of 'system'.
+    model_context (ChatCompletionContext | None, optional): The model context for storing and retrieving :class:`~autogen_core.models.LLMMessage`. It can be preloaded with initial messages. The initial messages will be cleared when the agent is reset.
+
+
+
+Example:
+
+.. code-block:: python
+
+    import asyncio
+    from autogen_agentchat.ui import Console
+    from autogen_agentchat.agents import AssistantAgent, SocietyOfMindAgent
+    from autogen_ext.models.openai import OpenAIChatCompletionClient
+    from autogen_agentchat.teams import RoundRobinGroupChat
+    from autogen_agentchat.conditions import TextMentionTermination
+
+
+    async def main() -> None:
+        model_client = OpenAIChatCompletionClient(model="gpt-4o")
+
+        agent1 = AssistantAgent("assistant1", model_client=model_client, system_message="You are a writer, write well.")
+        agent2 = AssistantAgent(
+            "assistant2",
+            model_client=model_client,
+            system_message="You are an editor, provide critical feedback. Respond with 'APPROVE' if the text addresses all feedbacks.",
+        )
+        inner_termination = TextMentionTermination("APPROVE")
+        inner_team = RoundRobinGroupChat([agent1, agent2], termination_condition=inner_termination)
+
+        society_of_mind_agent = SocietyOfMindAgent("society_of_mind", team=inner_team, model_client=model_client)
+
+        agent3 = AssistantAgent(
+            "assistant3", model_client=model_client, system_message="Translate the text to Spanish."
+        )
+        team = RoundRobinGroupChat([society_of_mind_agent, agent3], max_turns=2)
+
+        stream = team.run_stream(task="Write a short story with a surprising ending.")
+        await Console(stream)
+
+
+    asyncio.run(main())
+
+**Méthodes :**
+
+- `__init__()`
+- `produced_message_types()`
+- `model_context()`
+- `_to_config()`
+- `_from_config()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `team`
+- `model_client`
+
+##### produced_message_types
+
+##### model_context
+
+The model context in use by the agent.
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+---
+
+### _user_proxy_agent
+
+#### Classes
+
+##### UserProxyAgentConfig
+
+Declarative configuration for the UserProxyAgent.
+
+##### UserProxyAgent
+
+An agent that can represent a human user through an input function.
+
+This agent can be used to represent a human user in a chat system by providing a custom input function.
+
+.. note::
+
+    Using :class:`UserProxyAgent` puts a running team in a temporary blocked
+    state until the user responds. So it is important to time out the user input
+    function and cancel using the :class:`~autogen_core.CancellationToken` if the user does not respond.
+    The input function should also handle exceptions and return a default response if needed.
+
+    For typical use cases that involve
+    slow human responses, it is recommended to use termination conditions
+    such as :class:`~autogen_agentchat.conditions.HandoffTermination` or :class:`~autogen_agentchat.conditions.SourceMatchTermination`
+    to stop the running team and return the control to the application.
+    You can run the team again with the user input. This way, the state of the team
+    can be saved and restored when the user responds.
+
+    See `Human-in-the-loop <https://microsoft.github.io/autogen/stable/user-guide/agentchat-user-guide/tutorial/human-in-the-loop.html>`_ for more information.
+
+Args:
+    name (str): The name of the agent.
+    description (str, optional): A description of the agent.
+    input_func (Optional[Callable[[str], str]], Callable[[str, Optional[CancellationToken]], Awaitable[str]]): A function that takes a prompt and returns a user input string.
+
+For examples of integrating with web and UI frameworks, see the following:
+
+* `FastAPI <https://github.com/microsoft/autogen/tree/main/python/samples/agentchat_fastapi>`_
+* `ChainLit <https://github.com/microsoft/autogen/tree/main/python/samples/agentchat_chainlit>`_
+
+Example:
+    Simple usage case::
+
+        import asyncio
+        from autogen_core import CancellationToken
+        from autogen_agentchat.agents import UserProxyAgent
+        from autogen_agentchat.messages import TextMessage
+
+
+        async def simple_user_agent():
+            agent = UserProxyAgent("user_proxy")
+            response = await asyncio.create_task(
+                agent.on_messages(
+                    [TextMessage(content="What is your name? ", source="user")],
+                    cancellation_token=CancellationToken(),
+                )
+            )
+            assert isinstance(response.chat_message, TextMessage)
+            print(f"Your name is {response.chat_message.content}")
+
+Example:
+    Cancellable usage case::
+
+        import asyncio
+        from typing import Any
+        from autogen_core import CancellationToken
+        from autogen_agentchat.agents import UserProxyAgent
+        from autogen_agentchat.messages import TextMessage
+
+
+        token = CancellationToken()
+        agent = UserProxyAgent("user_proxy")
+
+
+        async def timeout(delay: float):
+            await asyncio.sleep(delay)
+
+
+        def cancellation_callback(task: asyncio.Task[Any]):
+            token.cancel()
+
+
+        async def cancellable_user_agent():
+            try:
+                timeout_task = asyncio.create_task(timeout(3))
+                timeout_task.add_done_callback(cancellation_callback)
+                agent_task = asyncio.create_task(
+                    agent.on_messages(
+                        [TextMessage(content="What is your name? ", source="user")],
+                        cancellation_token=token,
+                    )
+                )
+                response = await agent_task
+                assert isinstance(response.chat_message, TextMessage)
+                print(f"Your name is {response.chat_message.content}")
+            except Exception as e:
+                print(f"Exception: {e}")
+            except BaseException as e:
+                print(f"BaseException: {e}")
+
+**Méthodes :**
+
+- `__init__()`
+- `produced_message_types()`
+- `_get_latest_handoff()`
+- `_to_config()`
+- `_from_config()`
+
+##### InputRequestContext
+
+**Méthodes :**
+
+- `__init__()`
+- `populate_context()`
+- `request_id()`
+
+#### Fonctions
+
+##### __init__
+
+Initialize the UserProxyAgent.
+
+**Paramètres :**
+
+- `name`
+
+##### produced_message_types
+
+Message types this agent can produce.
+
+##### _get_latest_handoff
+
+Find the HandoffMessage in the message sequence that addresses this agent.
+
+**Paramètres :**
+
+- `messages`
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+##### __init__
+
+##### populate_context
+
+:meta private:
+
+**Paramètres :**
+
+- `cls`
+- `ctx`
+
+##### request_id
+
+**Paramètres :**
+
+- `cls`
+
+---
+
+### _chat_agent
+
+#### Classes
+
+##### Response
+
+A response from calling :meth:`ChatAgent.on_messages`.
+
+##### ChatAgent
+
+Protocol for a chat agent.
+
+**Méthodes :**
+
+- `name()`
+- `description()`
+- `produced_message_types()`
+- `on_messages_stream()`
+
+#### Fonctions
+
+##### name
+
+The name of the agent. This is used by team to uniquely identify
+the agent. It should be unique within the team.
+
+##### description
+
+The description of the agent. This is used by team to
+make decisions about which agents to use. The description should
+describe the agent's capabilities and how to interact with it.
+
+##### produced_message_types
+
+The types of messages that the agent produces in the
+:attr:`Response.chat_message` field. They must be :class:`BaseChatMessage` types.
+
+##### on_messages_stream
+
+Handles incoming messages and returns a stream of inner messages and
+and the final item is the response.
+
+**Paramètres :**
+
+- `messages`
+- `cancellation_token`
+
+---
+
+### _handoff
+
+#### Classes
+
+##### Handoff
+
+Handoff configuration.
+
+**Méthodes :**
+
+- `set_defaults()`
+- `handoff_tool()`
+
+#### Fonctions
+
+##### set_defaults
+
+**Paramètres :**
+
+- `cls`
+- `values`
+
+##### handoff_tool
+
+Create a handoff tool from this handoff configuration.
+
+##### _handoff_tool
+
+---
+
+### _task
+
+#### Classes
+
+##### TaskResult
+
+Result of running a task.
+
+##### TaskRunner
+
+A task runner.
+
+**Méthodes :**
+
+- `run_stream()`
+
+#### Fonctions
+
+##### run_stream
+
+Run the task and produces a stream of messages and the final result
+:class:`TaskResult` as the last item in the stream.
+
+The task can be a string, a single message, or a sequence of messages.
+
+The runner is stateful and a subsequent call to this method will continue
+from where the previous call left off. If the task is not specified,
+the runner will continue with the current task.
+
+Args:
+    task: The task to run. Can be a string, a single message, or a sequence of messages.
+    cancellation_token: The cancellation token to kill the task immediately.
+    output_task_messages: Whether to include task messages in the output stream. Defaults to True for backward compatibility.
+
+---
+
+### _team
+
+#### Classes
+
+##### Team
+
+---
+
+### _termination
+
+#### Classes
+
+##### TerminatedException
+
+##### TerminationCondition
+
+A stateful condition that determines when a conversation should be terminated.
+
+A termination condition is a callable that takes a sequence of BaseChatMessage objects
+since the last time the condition was called, and returns a StopMessage if the
+conversation should be terminated, or None otherwise.
+Once a termination condition has been reached, it must be reset before it can be used again.
+
+Termination conditions can be combined using the AND and OR operators.
+
+Example:
+
+    .. code-block:: python
+
+        import asyncio
+        from autogen_agentchat.conditions import MaxMessageTermination, TextMentionTermination
+
+
+        async def main() -> None:
+            # Terminate the conversation after 10 turns or if the text "TERMINATE" is mentioned.
+            cond1 = MaxMessageTermination(10) | TextMentionTermination("TERMINATE")
+
+            # Terminate the conversation after 10 turns and if the text "TERMINATE" is mentioned.
+            cond2 = MaxMessageTermination(10) & TextMentionTermination("TERMINATE")
+
+            # ...
+
+            # Reset the termination condition.
+            await cond1.reset()
+            await cond2.reset()
+
+
+        asyncio.run(main())
+
+**Méthodes :**
+
+- `terminated()`
+- `__and__()`
+- `__or__()`
+
+##### AndTerminationConditionConfig
+
+##### AndTerminationCondition
+
+**Méthodes :**
+
+- `__init__()`
+- `terminated()`
+- `_to_config()`
+- `_from_config()`
+
+##### OrTerminationConditionConfig
+
+##### OrTerminationCondition
+
+**Méthodes :**
+
+- `__init__()`
+- `terminated()`
+- `_to_config()`
+- `_from_config()`
+
+#### Fonctions
+
+##### terminated
+
+Check if the termination condition has been reached
+
+##### __and__
+
+Combine two termination conditions with an AND operation.
+
+**Paramètres :**
+
+- `other`
+
+##### __or__
+
+Combine two termination conditions with an OR operation.
+
+**Paramètres :**
+
+- `other`
+
+##### __init__
+
+##### terminated
+
+##### _to_config
+
+Convert the AND termination condition to a config.
+
+##### _from_config
+
+Create an AND termination condition from a config.
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+##### __init__
+
+##### terminated
+
+##### _to_config
+
+Convert the OR termination condition to a config.
+
+##### _from_config
+
+Create an OR termination condition from a config.
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+---
+
+### _terminations
+
+#### Classes
+
+##### StopMessageTerminationConfig
+
+##### StopMessageTermination
+
+Terminate the conversation if a StopMessage is received.
+
+**Méthodes :**
+
+- `__init__()`
+- `terminated()`
+- `_to_config()`
+- `_from_config()`
+
+##### MaxMessageTerminationConfig
+
+##### MaxMessageTermination
+
+Terminate the conversation after a maximum number of messages have been exchanged.
+
+Args:
+    max_messages: The maximum number of messages allowed in the conversation.
+    include_agent_event: If True, include :class:`~autogen_agentchat.messages.BaseAgentEvent` in the message count.
+        Otherwise, only include :class:`~autogen_agentchat.messages.BaseChatMessage`. Defaults to False.
+
+**Méthodes :**
+
+- `__init__()`
+- `terminated()`
+- `_to_config()`
+- `_from_config()`
+
+##### TextMentionTerminationConfig
+
+##### TextMentionTermination
+
+Terminate the conversation if a specific text is mentioned.
+
+
+Args:
+    text: The text to look for in the messages.
+    sources: Check only messages of the specified agents for the text to look for.
+
+**Méthodes :**
+
+- `__init__()`
+- `terminated()`
+- `_to_config()`
+- `_from_config()`
+
+##### FunctionalTermination
+
+Terminate the conversation if an functional expression is met.
+
+Args:
+    func (Callable[[Sequence[BaseAgentEvent | BaseChatMessage]], bool] | Callable[[Sequence[BaseAgentEvent | BaseChatMessage]], Awaitable[bool]]): A function that takes a sequence of messages
+        and returns True if the termination condition is met, False otherwise.
+        The function can be a callable or an async callable.
+
+Example:
+
+    .. code-block:: python
+
+        import asyncio
+        from typing import Sequence
+
+        from autogen_agentchat.conditions import FunctionalTermination
+        from autogen_agentchat.messages import BaseAgentEvent, BaseChatMessage, StopMessage
+
+
+        def expression(messages: Sequence[BaseAgentEvent | BaseChatMessage]) -> bool:
+            # Check if the last message is a stop message
+            return isinstance(messages[-1], StopMessage)
+
+
+        termination = FunctionalTermination(expression)
+
+
+        async def run() -> None:
+            messages = [
+                StopMessage(source="agent1", content="Stop"),
+            ]
+            result = await termination(messages)
+            print(result)
+
+
+        asyncio.run(run())
+
+    .. code-block:: text
+
+        StopMessage(source="FunctionalTermination", content="Functional termination condition met")
+
+**Méthodes :**
+
+- `__init__()`
+- `terminated()`
+
+##### TokenUsageTerminationConfig
+
+##### TokenUsageTermination
+
+Terminate the conversation if a token usage limit is reached.
+
+Args:
+    max_total_token: The maximum total number of tokens allowed in the conversation.
+    max_prompt_token: The maximum number of prompt tokens allowed in the conversation.
+    max_completion_token: The maximum number of completion tokens allowed in the conversation.
+
+Raises:
+    ValueError: If none of max_total_token, max_prompt_token, or max_completion_token is provided.
+
+**Méthodes :**
+
+- `__init__()`
+- `terminated()`
+- `_to_config()`
+- `_from_config()`
+
+##### HandoffTerminationConfig
+
+##### HandoffTermination
+
+Terminate the conversation if a :class:`~autogen_agentchat.messages.HandoffMessage`
+with the given target is received.
+
+Args:
+    target (str): The target of the handoff message.
+
+**Méthodes :**
+
+- `__init__()`
+- `terminated()`
+- `_to_config()`
+- `_from_config()`
+
+##### TimeoutTerminationConfig
+
+##### TimeoutTermination
+
+Terminate the conversation after a specified duration has passed.
+
+Args:
+    timeout_seconds: The maximum duration in seconds before terminating the conversation.
+
+**Méthodes :**
+
+- `__init__()`
+- `terminated()`
+- `_to_config()`
+- `_from_config()`
+
+##### ExternalTerminationConfig
+
+##### ExternalTermination
+
+A termination condition that is externally controlled
+by calling the :meth:`set` method.
+
+Example:
+
+.. code-block:: python
+
+    from autogen_agentchat.conditions import ExternalTermination
+
+    termination = ExternalTermination()
+
+    # Run the team in an asyncio task.
+    ...
+
+    # Set the termination condition externally
+    termination.set()
+
+**Méthodes :**
+
+- `__init__()`
+- `terminated()`
+- `set()`
+- `_to_config()`
+- `_from_config()`
+
+##### SourceMatchTerminationConfig
+
+##### SourceMatchTermination
+
+Terminate the conversation after a specific source responds.
+
+Args:
+    sources (List[str]): List of source names to terminate the conversation.
+
+Raises:
+    TerminatedException: If the termination condition has already been reached.
+
+**Méthodes :**
+
+- `__init__()`
+- `terminated()`
+- `_to_config()`
+- `_from_config()`
+
+##### TextMessageTerminationConfig
+
+Configuration for the TextMessageTermination termination condition.
+
+##### TextMessageTermination
+
+Terminate the conversation if a :class:`~autogen_agentchat.messages.TextMessage` is received.
+
+This termination condition checks for TextMessage instances in the message sequence. When a TextMessage is found,
+it terminates the conversation if either:
+- No source was specified (terminates on any TextMessage)
+- The message source matches the specified source
+
+Args:
+    source (str | None, optional): The source name to match against incoming messages. If None, matches any source.
+        Defaults to None.
+
+**Méthodes :**
+
+- `__init__()`
+- `terminated()`
+- `_to_config()`
+- `_from_config()`
+
+##### FunctionCallTerminationConfig
+
+Configuration for the :class:`FunctionCallTermination` termination condition.
+
+##### FunctionCallTermination
+
+Terminate the conversation if a :class:`~autogen_core.models.FunctionExecutionResult`
+with a specific name was received.
+
+Args:
+    function_name (str): The name of the function to look for in the messages.
+
+Raises:
+    TerminatedException: If the termination condition has already been reached.
+
+**Méthodes :**
+
+- `__init__()`
+- `terminated()`
+- `_to_config()`
+- `_from_config()`
+
+#### Fonctions
+
+##### __init__
+
+##### terminated
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+##### __init__
+
+**Paramètres :**
+
+- `max_messages`
+- `include_agent_event`
+
+##### terminated
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+##### __init__
+
+**Paramètres :**
+
+- `text`
+- `sources`
+
+##### terminated
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+##### __init__
+
+**Paramètres :**
+
+- `func`
+
+##### terminated
+
+##### __init__
+
+**Paramètres :**
+
+- `max_total_token`
+- `max_prompt_token`
+- `max_completion_token`
+
+##### terminated
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+##### __init__
+
+**Paramètres :**
+
+- `target`
+
+##### terminated
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+##### __init__
+
+**Paramètres :**
+
+- `timeout_seconds`
+
+##### terminated
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+##### __init__
+
+##### terminated
+
+##### set
+
+Set the termination condition to terminated.
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+##### __init__
+
+**Paramètres :**
+
+- `sources`
+
+##### terminated
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+##### __init__
+
+**Paramètres :**
+
+- `source`
+
+##### terminated
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+##### __init__
+
+**Paramètres :**
+
+- `function_name`
+
+##### terminated
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+---
+
+### _states
+
+#### Classes
+
+##### BaseState
+
+Base class for all saveable state
+
+##### AssistantAgentState
+
+State for an assistant agent.
+
+##### TeamState
+
+State for a team of agents.
+
+##### BaseGroupChatManagerState
+
+Base state for all group chat managers.
+
+##### ChatAgentContainerState
+
+State for a container of chat agents.
+
+##### RoundRobinManagerState
+
+State for :class:`~autogen_agentchat.teams.RoundRobinGroupChat` manager.
+
+##### SelectorManagerState
+
+State for :class:`~autogen_agentchat.teams.SelectorGroupChat` manager.
+
+##### SwarmManagerState
+
+State for :class:`~autogen_agentchat.teams.Swarm` manager.
+
+##### MagenticOneOrchestratorState
+
+State for :class:`~autogen_agentchat.teams.MagneticOneGroupChat` orchestrator.
+
+##### SocietyOfMindAgentState
+
+State for a Society of Mind agent.
+
+---
+
+### _base_group_chat
+
+#### Classes
+
+##### BaseGroupChat
+
+The base class for group chat teams.
+
+To implement a group chat team, first create a subclass of :class:`BaseGroupChatManager` and then
+create a subclass of :class:`BaseGroupChat` that uses the group chat manager.
+
+**Méthodes :**
+
+- `__init__()`
+- `_create_group_chat_manager_factory()`
+- `_create_participant_factory()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `participants`
+- `group_chat_manager_name`
+- `group_chat_manager_class`
+- `termination_condition`
+- `max_turns`
+- `runtime`
+- `custom_message_types`
+- `emit_team_events`
+
+##### _create_group_chat_manager_factory
+
+**Paramètres :**
+
+- `name`
+- `group_topic_type`
+- `output_topic_type`
+- `participant_topic_types`
+- `participant_names`
+- `participant_descriptions`
+- `output_message_queue`
+- `termination_condition`
+- `max_turns`
+- `message_factory`
+
+##### _create_participant_factory
+
+**Paramètres :**
+
+- `parent_topic_type`
+- `output_topic_type`
+- `agent`
+- `message_factory`
+
+##### _factory
+
+---
+
+### _base_group_chat_manager
+
+#### Classes
+
+##### BaseGroupChatManager
+
+Base class for a group chat manager that manages a group chat with multiple participants.
+
+It is the responsibility of the caller to ensure:
+- All participants must subscribe to the group chat topic and each of their own topics.
+- The group chat manager must subscribe to the group chat topic.
+- The agent types of the participants must be unique.
+- For each participant, the agent type must be the same as the topic type.
+
+Without the above conditions, the group chat will not function correctly.
+
+**Méthodes :**
+
+- `__init__()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `group_topic_type`
+- `output_topic_type`
+- `participant_topic_types`
+- `participant_names`
+- `participant_descriptions`
+- `output_message_queue`
+- `termination_condition`
+- `max_turns`
+- `message_factory`
+- `emit_team_events`
+
+---
+
+### _chat_agent_container
+
+#### Classes
+
+##### ChatAgentContainer
+
+A core agent class that delegates message handling to an
+:class:`autogen_agentchat.base.ChatAgent` so that it can be used in a
+group chat team.
+
+Args:
+    parent_topic_type (str): The topic type of the parent orchestrator.
+    output_topic_type (str): The topic type for the output.
+    agent (ChatAgent): The agent to delegate message handling to.
+    message_factory (MessageFactory): The message factory to use for
+        creating messages from JSON data.
+
+**Méthodes :**
+
+- `__init__()`
+- `_buffer_message()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `parent_topic_type`
+- `output_topic_type`
+- `agent`
+- `message_factory`
+
+##### _buffer_message
+
+**Paramètres :**
+
+- `message`
+
+---
+
+### _events
+
+#### Classes
+
+##### SerializableException
+
+A serializable exception.
+
+**Méthodes :**
+
+- `from_exception()`
+- `__str__()`
+
+##### GroupChatStart
+
+A request to start a group chat.
+
+##### GroupChatAgentResponse
+
+A response published to a group chat.
+
+##### GroupChatRequestPublish
+
+A request to publish a message to a group chat.
+
+##### GroupChatMessage
+
+A message from a group chat.
+
+##### GroupChatTermination
+
+A message indicating that a group chat has terminated.
+
+##### GroupChatReset
+
+A request to reset the agents in the group chat.
+
+##### GroupChatPause
+
+A request to pause the group chat.
+
+##### GroupChatResume
+
+A request to resume the group chat.
+
+##### GroupChatError
+
+A message indicating that an error occurred in the group chat.
+
+#### Fonctions
+
+##### from_exception
+
+Create a GroupChatError from an exception.
+
+**Paramètres :**
+
+- `cls`
+- `exc`
+
+##### __str__
+
+Return a string representation of the error, including the traceback if available.
+
+---
+
+### _round_robin_group_chat
+
+#### Classes
+
+##### RoundRobinGroupChatManager
+
+A group chat manager that selects the next speaker in a round-robin fashion.
+
+**Méthodes :**
+
+- `__init__()`
+
+##### RoundRobinGroupChatConfig
+
+The declarative configuration RoundRobinGroupChat.
+
+##### RoundRobinGroupChat
+
+A team that runs a group chat with participants taking turns in a round-robin fashion
+to publish a message to all.
+
+If a single participant is in the team, the participant will be the only speaker.
+
+Args:
+    participants (List[BaseChatAgent]): The participants in the group chat.
+    termination_condition (TerminationCondition, optional): The termination condition for the group chat. Defaults to None.
+        Without a termination condition, the group chat will run indefinitely.
+    max_turns (int, optional): The maximum number of turns in the group chat before stopping. Defaults to None, meaning no limit.
+    custom_message_types (List[type[BaseAgentEvent | BaseChatMessage]], optional): A list of custom message types that will be used in the group chat.
+        If you are using custom message types or your agents produces custom message types, you need to specify them here.
+        Make sure your custom message types are subclasses of :class:`~autogen_agentchat.messages.BaseAgentEvent` or :class:`~autogen_agentchat.messages.BaseChatMessage`.
+    emit_team_events (bool, optional): Whether to emit team events through :meth:`BaseGroupChat.run_stream`. Defaults to False.
+
+Raises:
+    ValueError: If no participants are provided or if participant names are not unique.
+
+Examples:
+
+A team with one participant with tools:
+
+    .. code-block:: python
+
+        import asyncio
+        from autogen_ext.models.openai import OpenAIChatCompletionClient
+        from autogen_agentchat.agents import AssistantAgent
+        from autogen_agentchat.teams import RoundRobinGroupChat
+        from autogen_agentchat.conditions import TextMentionTermination
+        from autogen_agentchat.ui import Console
+
+
+        async def main() -> None:
+            model_client = OpenAIChatCompletionClient(model="gpt-4o")
+
+            async def get_weather(location: str) -> str:
+                return f"The weather in {location} is sunny."
+
+            assistant = AssistantAgent(
+                "Assistant",
+                model_client=model_client,
+                tools=[get_weather],
+            )
+            termination = TextMentionTermination("TERMINATE")
+            team = RoundRobinGroupChat([assistant], termination_condition=termination)
+            await Console(team.run_stream(task="What's the weather in New York?"))
+
+
+        asyncio.run(main())
+
+A team with multiple participants:
+
+    .. code-block:: python
+
+        import asyncio
+        from autogen_ext.models.openai import OpenAIChatCompletionClient
+        from autogen_agentchat.agents import AssistantAgent
+        from autogen_agentchat.teams import RoundRobinGroupChat
+        from autogen_agentchat.conditions import TextMentionTermination
+        from autogen_agentchat.ui import Console
+
+
+        async def main() -> None:
+            model_client = OpenAIChatCompletionClient(model="gpt-4o")
+
+            agent1 = AssistantAgent("Assistant1", model_client=model_client)
+            agent2 = AssistantAgent("Assistant2", model_client=model_client)
+            termination = TextMentionTermination("TERMINATE")
+            team = RoundRobinGroupChat([agent1, agent2], termination_condition=termination)
+            await Console(team.run_stream(task="Tell me some jokes."))
+
+
+        asyncio.run(main())
+
+**Méthodes :**
+
+- `__init__()`
+- `_create_group_chat_manager_factory()`
+- `_to_config()`
+- `_from_config()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `group_topic_type`
+- `output_topic_type`
+- `participant_topic_types`
+- `participant_names`
+- `participant_descriptions`
+- `output_message_queue`
+- `termination_condition`
+- `max_turns`
+- `message_factory`
+- `emit_team_events`
+
+##### __init__
+
+**Paramètres :**
+
+- `participants`
+- `termination_condition`
+- `max_turns`
+- `runtime`
+- `custom_message_types`
+- `emit_team_events`
+
+##### _create_group_chat_manager_factory
+
+**Paramètres :**
+
+- `name`
+- `group_topic_type`
+- `output_topic_type`
+- `participant_topic_types`
+- `participant_names`
+- `participant_descriptions`
+- `output_message_queue`
+- `termination_condition`
+- `max_turns`
+- `message_factory`
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+##### _factory
+
+---
+
+### _selector_group_chat
+
+#### Classes
+
+##### SelectorGroupChatManager
+
+A group chat manager that selects the next speaker using a ChatCompletion
+model and a custom selector function.
+
+**Méthodes :**
+
+- `__init__()`
+- `construct_message_history()`
+- `_mentioned_agents()`
+
+##### SelectorGroupChatConfig
+
+The declarative configuration for SelectorGroupChat.
+
+##### SelectorGroupChat
+
+A group chat team that have participants takes turn to publish a message
+to all, using a ChatCompletion model to select the next speaker after each message.
+
+Args:
+    participants (List[ChatAgent]): The participants in the group chat,
+        must have unique names and at least two participants.
+    model_client (ChatCompletionClient): The ChatCompletion model client used
+        to select the next speaker.
+    termination_condition (TerminationCondition, optional): The termination condition for the group chat. Defaults to None.
+        Without a termination condition, the group chat will run indefinitely.
+    max_turns (int, optional): The maximum number of turns in the group chat before stopping. Defaults to None, meaning no limit.
+    selector_prompt (str, optional): The prompt template to use for selecting the next speaker.
+        Available fields: '{roles}', '{participants}', and '{history}'.
+        `{participants}` is the names of candidates for selection. The format is `["<name1>", "<name2>", ...]`.
+        `{roles}` is a newline-separated list of names and descriptions of the candidate agents. The format for each line is: `"<name> : <description>"`.
+        `{history}` is the conversation history formatted as a double newline separated of names and message content. The format for each message is: `"<name> : <message content>"`.
+    allow_repeated_speaker (bool, optional): Whether to include the previous speaker in the list of candidates to be selected for the next turn.
+        Defaults to False. The model may still select the previous speaker -- a warning will be logged if this happens.
+    max_selector_attempts (int, optional): The maximum number of attempts to select a speaker using the model. Defaults to 3.
+        If the model fails to select a speaker after the maximum number of attempts, the previous speaker will be used if available,
+        otherwise the first participant will be used.
+    selector_func (Callable[[Sequence[BaseAgentEvent | BaseChatMessage]], str | None], Callable[[Sequence[BaseAgentEvent | BaseChatMessage]], Awaitable[str | None]], optional): A custom selector
+        function that takes the conversation history and returns the name of the next speaker.
+        If provided, this function will be used to override the model to select the next speaker.
+        If the function returns None, the model will be used to select the next speaker.
+        NOTE: `selector_func` is not serializable and will be ignored during serialization and deserialization process.
+    candidate_func (Callable[[Sequence[BaseAgentEvent | BaseChatMessage]], List[str]], Callable[[Sequence[BaseAgentEvent | BaseChatMessage]], Awaitable[List[str]]], optional):
+        A custom function that takes the conversation history and returns a filtered list of candidates for the next speaker
+        selection using model. If the function returns an empty list or `None`, `SelectorGroupChat` will raise a `ValueError`.
+        This function is only used if `selector_func` is not set. The `allow_repeated_speaker` will be ignored if set.
+    custom_message_types (List[type[BaseAgentEvent | BaseChatMessage]], optional): A list of custom message types that will be used in the group chat.
+        If you are using custom message types or your agents produces custom message types, you need to specify them here.
+        Make sure your custom message types are subclasses of :class:`~autogen_agentchat.messages.BaseAgentEvent` or :class:`~autogen_agentchat.messages.BaseChatMessage`.
+    emit_team_events (bool, optional): Whether to emit team events through :meth:`BaseGroupChat.run_stream`. Defaults to False.
+    model_client_streaming (bool, optional): Whether to use streaming for the model client. (This is useful for reasoning models like QwQ). Defaults to False.
+    model_context (ChatCompletionContext | None, optional): The model context for storing and retrieving
+        :class:`~autogen_core.models.LLMMessage`. It can be preloaded with initial messages. Messages stored in model context will be used for speaker selection. The initial messages will be cleared when the team is reset.
+
+Raises:
+    ValueError: If the number of participants is less than two or if the selector prompt is invalid.
+
+Examples:
+
+A team with multiple participants:
+
+    .. code-block:: python
+
+        import asyncio
+        from autogen_ext.models.openai import OpenAIChatCompletionClient
+        from autogen_agentchat.agents import AssistantAgent
+        from autogen_agentchat.teams import SelectorGroupChat
+        from autogen_agentchat.conditions import TextMentionTermination
+        from autogen_agentchat.ui import Console
+
+
+        async def main() -> None:
+            model_client = OpenAIChatCompletionClient(model="gpt-4o")
+
+            async def lookup_hotel(location: str) -> str:
+                return f"Here are some hotels in {location}: hotel1, hotel2, hotel3."
+
+            async def lookup_flight(origin: str, destination: str) -> str:
+                return f"Here are some flights from {origin} to {destination}: flight1, flight2, flight3."
+
+            async def book_trip() -> str:
+                return "Your trip is booked!"
+
+            travel_advisor = AssistantAgent(
+                "Travel_Advisor",
+                model_client,
+                tools=[book_trip],
+                description="Helps with travel planning.",
+            )
+            hotel_agent = AssistantAgent(
+                "Hotel_Agent",
+                model_client,
+                tools=[lookup_hotel],
+                description="Helps with hotel booking.",
+            )
+            flight_agent = AssistantAgent(
+                "Flight_Agent",
+                model_client,
+                tools=[lookup_flight],
+                description="Helps with flight booking.",
+            )
+            termination = TextMentionTermination("TERMINATE")
+            team = SelectorGroupChat(
+                [travel_advisor, hotel_agent, flight_agent],
+                model_client=model_client,
+                termination_condition=termination,
+            )
+            await Console(team.run_stream(task="Book a 3-day trip to new york."))
+
+
+        asyncio.run(main())
+
+A team with a custom selector function:
+
+    .. code-block:: python
+
+        import asyncio
+        from typing import Sequence
+        from autogen_ext.models.openai import OpenAIChatCompletionClient
+        from autogen_agentchat.agents import AssistantAgent
+        from autogen_agentchat.teams import SelectorGroupChat
+        from autogen_agentchat.conditions import TextMentionTermination
+        from autogen_agentchat.ui import Console
+        from autogen_agentchat.messages import BaseAgentEvent, BaseChatMessage
+
+
+        async def main() -> None:
+            model_client = OpenAIChatCompletionClient(model="gpt-4o")
+
+            def check_calculation(x: int, y: int, answer: int) -> str:
+                if x + y == answer:
+                    return "Correct!"
+                else:
+                    return "Incorrect!"
+
+            agent1 = AssistantAgent(
+                "Agent1",
+                model_client,
+                description="For calculation",
+                system_message="Calculate the sum of two numbers",
+            )
+            agent2 = AssistantAgent(
+                "Agent2",
+                model_client,
+                tools=[check_calculation],
+                description="For checking calculation",
+                system_message="Check the answer and respond with 'Correct!' or 'Incorrect!'",
+            )
+
+            def selector_func(messages: Sequence[BaseAgentEvent | BaseChatMessage]) -> str | None:
+                if len(messages) == 1 or messages[-1].to_text() == "Incorrect!":
+                    return "Agent1"
+                if messages[-1].source == "Agent1":
+                    return "Agent2"
+                return None
+
+            termination = TextMentionTermination("Correct!")
+            team = SelectorGroupChat(
+                [agent1, agent2],
+                model_client=model_client,
+                selector_func=selector_func,
+                termination_condition=termination,
+            )
+
+            await Console(team.run_stream(task="What is 1 + 1?"))
+
+
+        asyncio.run(main())
+
+A team with custom model context:
+
+    .. code-block:: python
+
+        import asyncio
+
+        from autogen_core.model_context import BufferedChatCompletionContext
+        from autogen_ext.models.openai import OpenAIChatCompletionClient
+
+        from autogen_agentchat.agents import AssistantAgent
+        from autogen_agentchat.conditions import TextMentionTermination
+        from autogen_agentchat.teams import SelectorGroupChat
+        from autogen_agentchat.ui import Console
+
+
+        async def main() -> None:
+            model_client = OpenAIChatCompletionClient(model="gpt-4o")
+            model_context = BufferedChatCompletionContext(buffer_size=5)
+
+            async def lookup_hotel(location: str) -> str:
+                return f"Here are some hotels in {location}: hotel1, hotel2, hotel3."
+
+            async def lookup_flight(origin: str, destination: str) -> str:
+                return f"Here are some flights from {origin} to {destination}: flight1, flight2, flight3."
+
+            async def book_trip() -> str:
+                return "Your trip is booked!"
+
+            travel_advisor = AssistantAgent(
+                "Travel_Advisor",
+                model_client,
+                tools=[book_trip],
+                description="Helps with travel planning.",
+            )
+            hotel_agent = AssistantAgent(
+                "Hotel_Agent",
+                model_client,
+                tools=[lookup_hotel],
+                description="Helps with hotel booking.",
+            )
+            flight_agent = AssistantAgent(
+                "Flight_Agent",
+                model_client,
+                tools=[lookup_flight],
+                description="Helps with flight booking.",
+            )
+            termination = TextMentionTermination("TERMINATE")
+            team = SelectorGroupChat(
+                [travel_advisor, hotel_agent, flight_agent],
+                model_client=model_client,
+                termination_condition=termination,
+                model_context=model_context,
+            )
+            await Console(team.run_stream(task="Book a 3-day trip to new york."))
+
+
+        asyncio.run(main())
+
+**Méthodes :**
+
+- `__init__()`
+- `_create_group_chat_manager_factory()`
+- `_to_config()`
+- `_from_config()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `group_topic_type`
+- `output_topic_type`
+- `participant_topic_types`
+- `participant_names`
+- `participant_descriptions`
+- `output_message_queue`
+- `termination_condition`
+- `max_turns`
+- `message_factory`
+- `model_client`
+- `selector_prompt`
+- `allow_repeated_speaker`
+- `selector_func`
+- `max_selector_attempts`
+- `candidate_func`
+- `emit_team_events`
+- `model_context`
+- `model_client_streaming`
+
+##### construct_message_history
+
+**Paramètres :**
+
+- `message_history`
+
+##### _mentioned_agents
+
+Counts the number of times each agent is mentioned in the provided message content.
+Agent names will match under any of the following conditions (all case-sensitive):
+- Exact name match
+- If the agent name has underscores it will match with spaces instead (e.g. 'Story_writer' == 'Story writer')
+- If the agent name has underscores it will match with '\_' instead of '_' (e.g. 'Story_writer' == 'Story\_writer')
+
+Args:
+    message_content (Union[str, List]): The content of the message, either as a single string or a list of strings.
+    agents (List[Agent]): A list of Agent objects, each having a 'name' attribute to be searched in the message content.
+
+Returns:
+    Dict: a counter for mentioned agents.
+
+**Paramètres :**
+
+- `message_content`
+- `agent_names`
+
+##### __init__
+
+**Paramètres :**
+
+- `participants`
+- `model_client`
+
+##### _create_group_chat_manager_factory
+
+**Paramètres :**
+
+- `name`
+- `group_topic_type`
+- `output_topic_type`
+- `participant_topic_types`
+- `participant_names`
+- `participant_descriptions`
+- `output_message_queue`
+- `termination_condition`
+- `max_turns`
+- `message_factory`
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+---
+
+### _sequential_routed_agent
+
+#### Classes
+
+##### FIFOLock
+
+A lock that ensures coroutines acquire the lock in the order they request it.
+
+**Méthodes :**
+
+- `__init__()`
+- `release()`
+
+##### SequentialRoutedAgent
+
+A subclass of :class:`autogen_core.RoutedAgent` that ensures
+that messages of certain types are processed sequentially
+using a FIFO lock.
+
+This is useful for agents that need to maintain a strict order of
+processing messages, such as in a group chat scenario.
+
+
+
+Args:
+
+    description (str): The description of the agent.
+    sequential_message_types (Sequence[Type[Any]]): A sequence of message types that should be
+        processed sequentially. If a message of one of these types is received,
+        the agent will acquire a FIFO lock to ensure that it is processed
+        before any later messages that are also one of these types.
+
+**Méthodes :**
+
+- `__init__()`
+
+#### Fonctions
+
+##### __init__
+
+##### release
+
+##### __init__
+
+**Paramètres :**
+
+- `description`
+- `sequential_message_types`
+
+---
+
+### _swarm_group_chat
+
+#### Classes
+
+##### SwarmGroupChatManager
+
+A group chat manager that selects the next speaker based on handoff message only.
+
+**Méthodes :**
+
+- `__init__()`
+
+##### SwarmConfig
+
+The declarative configuration for Swarm.
+
+##### Swarm
+
+A group chat team that selects the next speaker based on handoff message only.
+
+The first participant in the list of participants is the initial speaker.
+The next speaker is selected based on the :class:`~autogen_agentchat.messages.HandoffMessage` message
+sent by the current speaker. If no handoff message is sent, the current speaker
+continues to be the speaker.
+
+Args:
+    participants (List[ChatAgent]): The agents participating in the group chat. The first agent in the list is the initial speaker.
+    termination_condition (TerminationCondition, optional): The termination condition for the group chat. Defaults to None.
+        Without a termination condition, the group chat will run indefinitely.
+    max_turns (int, optional): The maximum number of turns in the group chat before stopping. Defaults to None, meaning no limit.
+    custom_message_types (List[type[BaseAgentEvent | BaseChatMessage]], optional): A list of custom message types that will be used in the group chat.
+        If you are using custom message types or your agents produces custom message types, you need to specify them here.
+        Make sure your custom message types are subclasses of :class:`~autogen_agentchat.messages.BaseAgentEvent` or :class:`~autogen_agentchat.messages.BaseChatMessage`.
+    emit_team_events (bool, optional): Whether to emit team events through :meth:`BaseGroupChat.run_stream`. Defaults to False.
+
+Basic example:
+
+    .. code-block:: python
+
+        import asyncio
+        from autogen_ext.models.openai import OpenAIChatCompletionClient
+        from autogen_agentchat.agents import AssistantAgent
+        from autogen_agentchat.teams import Swarm
+        from autogen_agentchat.conditions import MaxMessageTermination
+
+
+        async def main() -> None:
+            model_client = OpenAIChatCompletionClient(model="gpt-4o")
+
+            agent1 = AssistantAgent(
+                "Alice",
+                model_client=model_client,
+                handoffs=["Bob"],
+                system_message="You are Alice and you only answer questions about yourself.",
+            )
+            agent2 = AssistantAgent(
+                "Bob", model_client=model_client, system_message="You are Bob and your birthday is on 1st January."
+            )
+
+            termination = MaxMessageTermination(3)
+            team = Swarm([agent1, agent2], termination_condition=termination)
+
+            stream = team.run_stream(task="What is bob's birthday?")
+            async for message in stream:
+                print(message)
+
+
+        asyncio.run(main())
+
+
+Using the :class:`~autogen_agentchat.conditions.HandoffTermination` for human-in-the-loop handoff:
+
+    .. code-block:: python
+
+        import asyncio
+        from autogen_ext.models.openai import OpenAIChatCompletionClient
+        from autogen_agentchat.agents import AssistantAgent
+        from autogen_agentchat.teams import Swarm
+        from autogen_agentchat.conditions import HandoffTermination, MaxMessageTermination
+        from autogen_agentchat.ui import Console
+        from autogen_agentchat.messages import HandoffMessage
+
+
+        async def main() -> None:
+            model_client = OpenAIChatCompletionClient(model="gpt-4o")
+
+            agent = AssistantAgent(
+                "Alice",
+                model_client=model_client,
+                handoffs=["user"],
+                system_message="You are Alice and you only answer questions about yourself, ask the user for help if needed.",
+            )
+            termination = HandoffTermination(target="user") | MaxMessageTermination(3)
+            team = Swarm([agent], termination_condition=termination)
+
+            # Start the conversation.
+            await Console(team.run_stream(task="What is bob's birthday?"))
+
+            # Resume with user feedback.
+            await Console(
+                team.run_stream(
+                    task=HandoffMessage(source="user", target="Alice", content="Bob's birthday is on 1st January.")
+                )
+            )
+
+
+        asyncio.run(main())
+
+**Méthodes :**
+
+- `__init__()`
+- `_create_group_chat_manager_factory()`
+- `_to_config()`
+- `_from_config()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `group_topic_type`
+- `output_topic_type`
+- `participant_topic_types`
+- `participant_names`
+- `participant_descriptions`
+- `output_message_queue`
+- `termination_condition`
+- `max_turns`
+- `message_factory`
+- `emit_team_events`
+
+##### __init__
+
+**Paramètres :**
+
+- `participants`
+- `termination_condition`
+- `max_turns`
+- `runtime`
+- `custom_message_types`
+- `emit_team_events`
+
+##### _create_group_chat_manager_factory
+
+**Paramètres :**
+
+- `name`
+- `group_topic_type`
+- `output_topic_type`
+- `participant_topic_types`
+- `participant_names`
+- `participant_descriptions`
+- `output_message_queue`
+- `termination_condition`
+- `max_turns`
+- `message_factory`
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+##### _factory
+
+---
+
+### _digraph_group_chat
+
+#### Classes
+
+##### DiGraphEdge
+
+Represents a directed edge in a :class:`DiGraph`, with an optional execution condition.
+
+.. warning::
+
+    This is an experimental feature, and the API will change in the future releases.
+
+.. warning::
+
+    If the condition is a callable, it will not be serialized in the model.
+
+**Méthodes :**
+
+- `_validate_condition()`
+- `check_condition()`
+
+##### DiGraphNode
+
+Represents a node (agent) in a :class:`DiGraph`, with its outgoing edges and activation type.
+
+.. warning::
+
+    This is an experimental feature, and the API will change in the future releases.
+
+##### DiGraph
+
+Defines a directed graph structure with nodes and edges.
+:class:`GraphFlow` uses this to determine execution order and conditions.
+
+.. warning::
+
+    This is an experimental feature, and the API will change in the future releases.
+
+**Méthodes :**
+
+- `get_parents()`
+- `get_start_nodes()`
+- `get_leaf_nodes()`
+- `has_cycles_with_exit()`
+- `get_has_cycles()`
+- `graph_validate()`
+- `_validate_activation_conditions()`
+- `_find_edge_source_by_target_and_group()`
+- `get_remaining_map()`
+
+##### GraphFlowManagerState
+
+Tracks active execution state for DAG-based execution.
+
+##### GraphFlowManager
+
+Manages execution of agents using a Directed Graph execution model.
+
+**Méthodes :**
+
+- `__init__()`
+- `_build_lookup_tables()`
+- `_save_triggered_activation_group()`
+- `_reset_triggered_activation_groups()`
+- `_reset_execution_state()`
+
+##### GraphFlowConfig
+
+The declarative configuration for GraphFlow.
+
+##### GraphFlow
+
+A team that runs a group chat following a Directed Graph execution pattern.
+
+.. warning::
+
+    This is an experimental feature, and the API will change in the future releases.
+
+This group chat executes agents based on a directed graph (:class:`DiGraph`) structure,
+allowing complex workflows such as sequential execution, parallel fan-out,
+conditional branching, join patterns, and loops with explicit exit conditions.
+
+The execution order is determined by the edges defined in the `DiGraph`. Each node
+in the graph corresponds to an agent, and edges define the flow of messages between agents.
+Nodes can be configured to activate when:
+
+    - **All** parent nodes have completed (activation="all") → default
+    - **Any** parent node completes (activation="any")
+
+Conditional branching is supported using edge conditions, where the next agent(s) are selected
+based on content in the chat history. Loops are permitted as long as there is a condition
+that eventually exits the loop.
+
+.. note::
+
+    Use the :class:`DiGraphBuilder` class to create a :class:`DiGraph` easily. It provides a fluent API
+    for adding nodes and edges, setting entry points, and validating the graph structure.
+    See the :class:`DiGraphBuilder` documentation for more details.
+    The :class:`GraphFlow` class is designed to be used with the :class:`DiGraphBuilder` for creating complex workflows.
+
+.. warning::
+
+    When using callable conditions in edges, they will not be serialized
+    when calling :meth:`dump_component`. This will be addressed in future releases.
+
+
+Args:
+    participants (List[ChatAgent]): The participants in the group chat.
+    termination_condition (TerminationCondition, optional): Termination condition for the chat.
+    max_turns (int, optional): Maximum number of turns before forcing termination.
+    graph (DiGraph): Directed execution graph defining node flow and conditions.
+
+Raises:
+    ValueError: If participant names are not unique, or if graph validation fails (e.g., cycles without exit).
+
+Examples:
+
+    **Sequential Flow: A → B → C**
+
+    .. code-block:: python
+
+        import asyncio
+
+        from autogen_agentchat.agents import AssistantAgent
+        from autogen_agentchat.conditions import MaxMessageTermination
+        from autogen_agentchat.teams import DiGraphBuilder, GraphFlow
+        from autogen_ext.models.openai import OpenAIChatCompletionClient
+
+
+        async def main():
+            # Initialize agents with OpenAI model clients.
+            model_client = OpenAIChatCompletionClient(model="gpt-4.1-nano")
+            agent_a = AssistantAgent("A", model_client=model_client, system_message="You are a helpful assistant.")
+            agent_b = AssistantAgent("B", model_client=model_client, system_message="Translate input to Chinese.")
+            agent_c = AssistantAgent("C", model_client=model_client, system_message="Translate input to English.")
+
+            # Create a directed graph with sequential flow A -> B -> C.
+            builder = DiGraphBuilder()
+            builder.add_node(agent_a).add_node(agent_b).add_node(agent_c)
+            builder.add_edge(agent_a, agent_b).add_edge(agent_b, agent_c)
+            graph = builder.build()
+
+            # Create a GraphFlow team with the directed graph.
+            team = GraphFlow(
+                participants=[agent_a, agent_b, agent_c],
+                graph=graph,
+                termination_condition=MaxMessageTermination(5),
+            )
+
+            # Run the team and print the events.
+            async for event in team.run_stream(task="Write a short story about a cat."):
+                print(event)
+
+
+        asyncio.run(main())
+
+    **Parallel Fan-out: A → (B, C)**
+
+    .. code-block:: python
+
+        import asyncio
+
+        from autogen_agentchat.agents import AssistantAgent
+        from autogen_agentchat.conditions import MaxMessageTermination
+        from autogen_agentchat.teams import DiGraphBuilder, GraphFlow
+        from autogen_ext.models.openai import OpenAIChatCompletionClient
+
+
+        async def main():
+            # Initialize agents with OpenAI model clients.
+            model_client = OpenAIChatCompletionClient(model="gpt-4.1-nano")
+            agent_a = AssistantAgent("A", model_client=model_client, system_message="You are a helpful assistant.")
+            agent_b = AssistantAgent("B", model_client=model_client, system_message="Translate input to Chinese.")
+            agent_c = AssistantAgent("C", model_client=model_client, system_message="Translate input to Japanese.")
+
+            # Create a directed graph with fan-out flow A -> (B, C).
+            builder = DiGraphBuilder()
+            builder.add_node(agent_a).add_node(agent_b).add_node(agent_c)
+            builder.add_edge(agent_a, agent_b).add_edge(agent_a, agent_c)
+            graph = builder.build()
+
+            # Create a GraphFlow team with the directed graph.
+            team = GraphFlow(
+                participants=[agent_a, agent_b, agent_c],
+                graph=graph,
+                termination_condition=MaxMessageTermination(5),
+            )
+
+            # Run the team and print the events.
+            async for event in team.run_stream(task="Write a short story about a cat."):
+                print(event)
+
+
+        asyncio.run(main())
+
+    **Conditional Branching: A → B (if 'yes') or C (otherwise)**
+
+    .. code-block:: python
+
+        import asyncio
+
+        from autogen_agentchat.agents import AssistantAgent
+        from autogen_agentchat.conditions import MaxMessageTermination
+        from autogen_agentchat.teams import DiGraphBuilder, GraphFlow
+        from autogen_ext.models.openai import OpenAIChatCompletionClient
+
+
+        async def main():
+            # Initialize agents with OpenAI model clients.
+            model_client = OpenAIChatCompletionClient(model="gpt-4.1-nano")
+            agent_a = AssistantAgent(
+                "A",
+                model_client=model_client,
+                system_message="Detect if the input is in Chinese. If it is, say 'yes', else say 'no', and nothing else.",
+            )
+            agent_b = AssistantAgent("B", model_client=model_client, system_message="Translate input to English.")
+            agent_c = AssistantAgent("C", model_client=model_client, system_message="Translate input to Chinese.")
+
+            # Create a directed graph with conditional branching flow A -> B ("yes"), A -> C (otherwise).
+            builder = DiGraphBuilder()
+            builder.add_node(agent_a).add_node(agent_b).add_node(agent_c)
+            # Create conditions as callables that check the message content.
+            builder.add_edge(agent_a, agent_b, condition=lambda msg: "yes" in msg.to_model_text())
+            builder.add_edge(agent_a, agent_c, condition=lambda msg: "yes" not in msg.to_model_text())
+            graph = builder.build()
+
+            # Create a GraphFlow team with the directed graph.
+            team = GraphFlow(
+                participants=[agent_a, agent_b, agent_c],
+                graph=graph,
+                termination_condition=MaxMessageTermination(5),
+            )
+
+            # Run the team and print the events.
+            async for event in team.run_stream(task="AutoGen is a framework for building AI agents."):
+                print(event)
+
+
+        asyncio.run(main())
+
+    **Loop with exit condition: A → B → C (if 'APPROVE') or A (otherwise)**
+
+    .. code-block:: python
+
+        import asyncio
+
+        from autogen_agentchat.agents import AssistantAgent
+        from autogen_agentchat.conditions import MaxMessageTermination
+        from autogen_agentchat.teams import DiGraphBuilder, GraphFlow
+        from autogen_ext.models.openai import OpenAIChatCompletionClient
+
+
+        async def main():
+            # Initialize agents with OpenAI model clients.
+            model_client = OpenAIChatCompletionClient(model="gpt-4.1")
+            agent_a = AssistantAgent(
+                "A",
+                model_client=model_client,
+                system_message="You are a helpful assistant.",
+            )
+            agent_b = AssistantAgent(
+                "B",
+                model_client=model_client,
+                system_message="Provide feedback on the input, if your feedback has been addressed, "
+                "say 'APPROVE', otherwise provide a reason for rejection.",
+            )
+            agent_c = AssistantAgent(
+                "C", model_client=model_client, system_message="Translate the final product to Korean."
+            )
+
+            # Create a loop graph with conditional exit: A -> B -> C ("APPROVE"), B -> A (otherwise).
+            builder = DiGraphBuilder()
+            builder.add_node(agent_a).add_node(agent_b).add_node(agent_c)
+            builder.add_edge(agent_a, agent_b)
+
+            # Create conditional edges using strings
+            builder.add_edge(agent_b, agent_c, condition=lambda msg: "APPROVE" in msg.to_model_text())
+            builder.add_edge(agent_b, agent_a, condition=lambda msg: "APPROVE" not in msg.to_model_text())
+
+            builder.set_entry_point(agent_a)
+            graph = builder.build()
+
+            # Create a GraphFlow team with the directed graph.
+            team = GraphFlow(
+                participants=[agent_a, agent_b, agent_c],
+                graph=graph,
+                termination_condition=MaxMessageTermination(20),  # Max 20 messages to avoid infinite loop.
+            )
+
+            # Run the team and print the events.
+            async for event in team.run_stream(task="Write a short poem about AI Agents."):
+                print(event)
+
+
+        asyncio.run(main())
+
+**Méthodes :**
+
+- `__init__()`
+- `_create_group_chat_manager_factory()`
+- `_to_config()`
+- `_from_config()`
+
+#### Fonctions
+
+##### _validate_condition
+
+##### check_condition
+
+Check if the edge condition is satisfied for the given message.
+
+Args:
+    message: The message to check the condition against.
+
+Returns:
+    True if condition is satisfied (None condition always returns True),
+    False otherwise.
+
+**Paramètres :**
+
+- `message`
+
+##### get_parents
+
+Compute a mapping of each node to its parent nodes.
+
+##### get_start_nodes
+
+Return the nodes that have no incoming edges (entry points).
+
+##### get_leaf_nodes
+
+Return nodes that have no outgoing edges (final output nodes).
+
+##### has_cycles_with_exit
+
+Check if the graph has any cycles and validate that each cycle has at least one conditional edge.
+
+Returns:
+    bool: True if there is at least one cycle and all cycles have an exit condition.
+        False if there are no cycles.
+
+Raises:
+    ValueError: If there is a cycle without any conditional edge.
+
+##### get_has_cycles
+
+Indicates if the graph has at least one cycle (with valid exit conditions).
+
+##### graph_validate
+
+Validate graph structure and execution rules.
+
+##### _validate_activation_conditions
+
+Validate that all edges pointing to the same target node have consistent activation_condition values.
+
+Raises:
+    ValueError: If edges pointing to the same target have different activation_condition values
+
+##### _find_edge_source_by_target_and_group
+
+Find the source node that has an edge pointing to the given target with the given activation_group and activation_condition.
+
+**Paramètres :**
+
+- `target`
+- `activation_group`
+- `activation_condition`
+
+##### get_remaining_map
+
+Get the remaining map that tracks how many edges point to each target node with each activation group.
+
+Returns:
+    Dictionary mapping target nodes to their activation groups and remaining counts
+
+##### __init__
+
+Initialize the graph-based execution manager.
+
+**Paramètres :**
+
+- `name`
+- `group_topic_type`
+- `output_topic_type`
+- `participant_topic_types`
+- `participant_names`
+- `participant_descriptions`
+- `output_message_queue`
+- `termination_condition`
+- `max_turns`
+- `message_factory`
+- `graph`
+
+##### _build_lookup_tables
+
+Build activation and enqueued_any lookup tables by collecting all edges and grouping by target node.
+
+Args:
+    graph: The directed graph
+
+**Paramètres :**
+
+- `graph`
+
+##### _save_triggered_activation_group
+
+Save which activation group was triggered for a target node.
+
+Args:
+    target: The target node that was triggered
+    activation_group: The activation group that caused the trigger
+
+**Paramètres :**
+
+- `target`
+- `activation_group`
+
+##### _reset_triggered_activation_groups
+
+Reset the bookkeeping for the specific activation groups that were triggered for a speaker.
+
+Args:
+    speaker: The speaker node to reset activation groups for
+
+**Paramètres :**
+
+- `speaker`
+
+##### _reset_execution_state
+
+Reset the graph execution state to the initial state.
+
+##### __init__
+
+**Paramètres :**
+
+- `participants`
+- `graph`
+- `termination_condition`
+- `max_turns`
+- `runtime`
+- `custom_message_types`
+
+##### _create_group_chat_manager_factory
+
+Creates the factory method for initializing the DiGraph-based chat manager.
+
+**Paramètres :**
+
+- `name`
+- `group_topic_type`
+- `output_topic_type`
+- `participant_topic_types`
+- `participant_names`
+- `participant_descriptions`
+- `output_message_queue`
+- `termination_condition`
+- `max_turns`
+- `message_factory`
+
+##### _to_config
+
+Converts the instance into a configuration object.
+
+##### _from_config
+
+Reconstructs an instance from a configuration object.
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+##### dfs
+
+**Paramètres :**
+
+- `node_name`
+
+##### _factory
+
+---
+
+### _graph_builder
+
+#### Classes
+
+##### DiGraphBuilder
+
+A fluent builder for constructing :class:`DiGraph` execution graphs used in :class:`GraphFlow`.
+
+.. warning::
+
+    This is an experimental feature, and the API will change in the future releases.
+
+This utility provides a convenient way to programmatically build a graph of agent interactions,
+including complex execution flows such as:
+
+- Sequential chains
+- Parallel fan-outs
+- Conditional branching
+- Cyclic loops with safe exits
+
+Each node in the graph represents an agent. Edges define execution paths between agents,
+and can optionally be conditioned on message content using callable functions.
+
+The builder is compatible with the `Graph` runner and supports both standard and filtered agents.
+
+Methods:
+    - add_node(agent, activation): Add an agent node to the graph.
+    - add_edge(source, target, condition): Connect two nodes optionally with a condition.
+    - add_conditional_edges(source, condition_to_target): Add multiple conditional edges from a source.
+    - set_entry_point(agent): Define the default start node (optional).
+    - build(): Generate a validated `DiGraph`.
+    - get_participants(): Return the list of added agents.
+
+Example — Sequential Flow A → B → C:
+    >>> builder = GraphBuilder()
+    >>> builder.add_node(agent_a).add_node(agent_b).add_node(agent_c)
+    >>> builder.add_edge(agent_a, agent_b).add_edge(agent_b, agent_c)
+    >>> team = Graph(
+    ...     participants=builder.get_participants(),
+    ...     graph=builder.build(),
+    ...     termination_condition=MaxMessageTermination(5),
+    ... )
+
+Example — Parallel Fan-out A → (B, C):
+    >>> builder = GraphBuilder()
+    >>> builder.add_node(agent_a).add_node(agent_b).add_node(agent_c)
+    >>> builder.add_edge(agent_a, agent_b).add_edge(agent_a, agent_c)
+
+Example — Conditional Branching A → B or A → C:
+    >>> builder = GraphBuilder()
+    >>> builder.add_node(agent_a).add_node(agent_b).add_node(agent_c)
+    >>> # Add conditional edges using keyword check
+    >>> builder.add_edge(agent_a, agent_b, condition="keyword1")
+    >>> builder.add_edge(agent_a, agent_c, condition="keyword2")
+
+
+Example — Using Custom String Conditions:
+    >>> builder = GraphBuilder()
+    >>> builder.add_node(agent_a).add_node(agent_b).add_node(agent_c)
+    >>> # Add condition strings to check in messages
+    >>> builder.add_edge(agent_a, agent_b, condition="big")
+    >>> builder.add_edge(agent_a, agent_c, condition="small")
+
+Example — Loop: A → B → A or B → C:
+    >>> builder = GraphBuilder()
+    >>> builder.add_node(agent_a).add_node(agent_b).add_node(agent_c)
+    >>> builder.add_edge(agent_a, agent_b)
+    >> # Add a loop back to agent A
+    >>> builder.add_edge(agent_b, agent_a, condition=lambda msg: "loop" in msg.to_model_text())
+    >>> # Add exit condition to break the loop
+    >>> builder.add_edge(agent_b, agent_c, condition=lambda msg: "loop" not in msg.to_model_text())
+
+Example — Loop with multiple paths to the same node: A → B → C → B:
+    >>> builder = GraphBuilder()
+    >>> builder.add_node(agent_a).add_node(agent_b).add_node(agent_c)
+    >>> builder.add_edge(agent_a, agent_b)
+    >>> builder.add_edge(agent_b, agent_c)
+    >>> builder.add_edge(agent_c, agent_b, activation_group="loop_back")
+
+Example — Loop with multiple paths to the same node with any activation condition: A → B → (C1, C2) → B → E(exit):
+    >>> builder = GraphBuilder()
+    >>> builder.add_node(agent_a).add_node(agent_b).add_node(agent_c1).add_node(agent_c2).add_node(agent_e)
+    >>> builder.add_edge(agent_a, agent_b)
+    >>> builder.add_edge(agent_b, agent_c1)
+    >>> builder.add_edge(agent_b, agent_c2)
+    >>> builder.add_edge(agent_b, agent_e, condition="exit")
+    >>> builder.add_edge(agent_c1, agent_b, activation_group="loop_back_group", activation_condition="any")
+    >>> builder.add_edge(agent_c2, agent_b, activation_group="loop_back_group", activation_condition="any")
+
+**Méthodes :**
+
+- `__init__()`
+- `_get_name()`
+- `add_node()`
+- `add_edge()`
+- `add_conditional_edges()`
+- `set_entry_point()`
+- `build()`
+- `get_participants()`
+
+#### Fonctions
+
+##### __init__
+
+##### _get_name
+
+**Paramètres :**
+
+- `obj`
+
+##### add_node
+
+Add a node to the graph and register its agent.
+
+**Paramètres :**
+
+- `agent`
+- `activation`
+
+##### add_edge
+
+Add a directed edge from source to target, optionally with a condition.
+
+Args:
+    source: Source node (agent name or agent object)
+    target: Target node (agent name or agent object)
+    condition: Optional condition for edge activation.
+        If string, activates when substring is found in message.
+        If callable, activates when function returns True for the message.
+
+Returns:
+    Self for method chaining
+
+Raises:
+    ValueError: If source or target node doesn't exist in the builder
+
+**Paramètres :**
+
+- `source`
+- `target`
+- `condition`
+- `activation_group`
+- `activation_condition`
+
+##### add_conditional_edges
+
+Add multiple conditional edges from a source node based on keyword checks.
+
+.. warning::
+
+    This method interface will be changed in the future to support callable conditions.
+    Please use `add_edge` if you need to specify custom conditions.
+
+Args:
+    source: Source node (agent name or agent object)
+    condition_to_target: Mapping from condition strings to target nodes
+        Each key is a keyword that will be checked in the message content
+        Each value is the target node to activate when condition is met
+
+        For each key (keyword), a lambda will be created that checks
+        if the keyword is in the message text.
+
+Returns:
+    Self for method chaining
+
+**Paramètres :**
+
+- `source`
+- `condition_to_target`
+
+##### set_entry_point
+
+Set the default start node of the graph.
+
+**Paramètres :**
+
+- `name`
+
+##### build
+
+Build and validate the DiGraph.
+
+##### get_participants
+
+Return the list of agents in the builder, in insertion order.
+
+---
+
+### _magentic_one_group_chat
+
+#### Classes
+
+##### MagenticOneGroupChatConfig
+
+The declarative configuration for a MagenticOneGroupChat.
+
+##### MagenticOneGroupChat
+
+A team that runs a group chat with participants managed by the MagenticOneOrchestrator.
+
+The orchestrator handles the conversation flow, ensuring that the task is completed
+efficiently by managing the participants' interactions.
+
+The orchestrator is based on the Magentic-One architecture, which is a generalist multi-agent system for solving complex tasks (see references below).
+
+Args:
+    participants (List[ChatAgent]): The participants in the group chat.
+    model_client (ChatCompletionClient): The model client used for generating responses.
+    termination_condition (TerminationCondition, optional): The termination condition for the group chat. Defaults to None.
+        Without a termination condition, the group chat will run based on the orchestrator logic or until the maximum number of turns is reached.
+    max_turns (int, optional): The maximum number of turns in the group chat before stopping. Defaults to 20.
+    max_stalls (int, optional): The maximum number of stalls allowed before re-planning. Defaults to 3.
+    final_answer_prompt (str, optional): The LLM prompt used to generate the final answer or response from the team's transcript. A default (sensible for GPT-4o class models) is provided.
+    custom_message_types (List[type[BaseAgentEvent | BaseChatMessage]], optional): A list of custom message types that will be used in the group chat.
+        If you are using custom message types or your agents produces custom message types, you need to specify them here.
+        Make sure your custom message types are subclasses of :class:`~autogen_agentchat.messages.BaseAgentEvent` or :class:`~autogen_agentchat.messages.BaseChatMessage`.
+    emit_team_events (bool, optional): Whether to emit team events through :meth:`BaseGroupChat.run_stream`. Defaults to False.
+
+Raises:
+    ValueError: In orchestration logic if progress ledger does not have required keys or if next speaker is not valid.
+
+Examples:
+
+MagenticOneGroupChat with one assistant agent:
+
+    .. code-block:: python
+
+        import asyncio
+        from autogen_ext.models.openai import OpenAIChatCompletionClient
+        from autogen_agentchat.agents import AssistantAgent
+        from autogen_agentchat.teams import MagenticOneGroupChat
+        from autogen_agentchat.ui import Console
+
+
+        async def main() -> None:
+            model_client = OpenAIChatCompletionClient(model="gpt-4o")
+
+            assistant = AssistantAgent(
+                "Assistant",
+                model_client=model_client,
+            )
+            team = MagenticOneGroupChat([assistant], model_client=model_client)
+            await Console(team.run_stream(task="Provide a different proof to Fermat last theorem"))
+
+
+        asyncio.run(main())
+
+References:
+
+    If you use the MagenticOneGroupChat in your work, please cite the following paper:
+
+    .. code-block:: bibtex
+
+        @article{fourney2024magentic,
+            title={Magentic-one: A generalist multi-agent system for solving complex tasks},
+            author={Fourney, Adam and Bansal, Gagan and Mozannar, Hussein and Tan, Cheng and Salinas, Eduardo and Niedtner, Friederike and Proebsting, Grace and Bassman, Griffin and Gerrits, Jack and Alber, Jacob and others},
+            journal={arXiv preprint arXiv:2411.04468},
+            year={2024}
+        }
+
+**Méthodes :**
+
+- `__init__()`
+- `_create_group_chat_manager_factory()`
+- `_to_config()`
+- `_from_config()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `participants`
+- `model_client`
+
+##### _create_group_chat_manager_factory
+
+**Paramètres :**
+
+- `name`
+- `group_topic_type`
+- `output_topic_type`
+- `participant_topic_types`
+- `participant_names`
+- `participant_descriptions`
+- `output_message_queue`
+- `termination_condition`
+- `max_turns`
+- `message_factory`
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+---
+
+### _magentic_one_orchestrator
+
+#### Classes
+
+##### MagenticOneOrchestrator
+
+The MagenticOneOrchestrator manages a group chat with ledger based orchestration.
+
+**Méthodes :**
+
+- `__init__()`
+- `_get_task_ledger_facts_prompt()`
+- `_get_task_ledger_plan_prompt()`
+- `_get_task_ledger_full_prompt()`
+- `_get_progress_ledger_prompt()`
+- `_get_task_ledger_facts_update_prompt()`
+- `_get_task_ledger_plan_update_prompt()`
+- `_get_final_answer_prompt()`
+- `_thread_to_context()`
+- `_get_compatible_context()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `group_topic_type`
+- `output_topic_type`
+- `participant_topic_types`
+- `participant_names`
+- `participant_descriptions`
+- `max_turns`
+- `message_factory`
+- `model_client`
+- `max_stalls`
+- `final_answer_prompt`
+- `output_message_queue`
+- `termination_condition`
+- `emit_team_events`
+
+##### _get_task_ledger_facts_prompt
+
+**Paramètres :**
+
+- `task`
+
+##### _get_task_ledger_plan_prompt
+
+**Paramètres :**
+
+- `team`
+
+##### _get_task_ledger_full_prompt
+
+**Paramètres :**
+
+- `task`
+- `team`
+- `facts`
+- `plan`
+
+##### _get_progress_ledger_prompt
+
+**Paramètres :**
+
+- `task`
+- `team`
+- `names`
+
+##### _get_task_ledger_facts_update_prompt
+
+**Paramètres :**
+
+- `task`
+- `facts`
+
+##### _get_task_ledger_plan_update_prompt
+
+**Paramètres :**
+
+- `team`
+
+##### _get_final_answer_prompt
+
+**Paramètres :**
+
+- `task`
+
+##### _thread_to_context
+
+Convert the message thread to a context for the model.
+
+##### _get_compatible_context
+
+Ensure that the messages are compatible with the underlying client, by removing images if needed.
+
+**Paramètres :**
+
+- `messages`
+
+---
+
+### _prompts
+
+#### Classes
+
+##### LedgerEntryBooleanAnswer
+
+##### LedgerEntryStringAnswer
+
+##### LedgerEntry
+
+---
+
+### _agent
+
+#### Classes
+
+##### AgentToolConfig
+
+Configuration for the AgentTool.
+
+##### AgentTool
+
+Tool that can be used to run a task using an agent.
+
+The tool returns the result of the task execution as a :class:`~autogen_agentchat.base.TaskResult` object.
+
+Args:
+    agent (BaseChatAgent): The agent to be used for running the task.
+    return_value_as_last_message (bool): Whether to use the last message content of the task result
+        as the return value of the tool in :meth:`~autogen_agentchat.tools.TaskRunnerTool.return_value_as_string`.
+        If set to True, the last message content will be returned as a string.
+        If set to False, the tool will return all messages in the task result as a string concatenated together,
+        with each message prefixed by its source (e.g., "writer: ...", "assistant: ...").
+
+Example:
+
+    .. code-block:: python
+
+        import asyncio
+
+        from autogen_agentchat.agents import AssistantAgent
+        from autogen_agentchat.tools import AgentTool
+        from autogen_agentchat.ui import Console
+        from autogen_ext.models.openai import OpenAIChatCompletionClient
+
+
+        async def main() -> None:
+            model_client = OpenAIChatCompletionClient(model="gpt-4")
+            writer = AssistantAgent(
+                name="writer",
+                description="A writer agent for generating text.",
+                model_client=model_client,
+                system_message="Write well.",
+            )
+            writer_tool = AgentTool(agent=writer)
+            assistant = AssistantAgent(
+                name="assistant",
+                model_client=model_client,
+                tools=[writer_tool],
+                system_message="You are a helpful assistant.",
+            )
+            await Console(assistant.run_stream(task="Write a poem about the sea."))
+
+
+        asyncio.run(main())
+
+**Méthodes :**
+
+- `__init__()`
+- `_to_config()`
+- `_from_config()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `agent`
+- `return_value_as_last_message`
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+---
+
+### _task_runner_tool
+
+#### Classes
+
+##### TaskRunnerToolArgs
+
+Input for the TaskRunnerTool.
+
+##### TaskRunnerTool
+
+An base class for tool that can be used to run a task using a team or an agent.
+
+**Méthodes :**
+
+- `__init__()`
+- `return_value_as_string()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `task_runner`
+- `name`
+- `description`
+- `return_value_as_last_message`
+
+##### return_value_as_string
+
+Convert the task result to a string.
+
+**Paramètres :**
+
+- `value`
+
+---
+
+### _team
+
+#### Classes
+
+##### TeamToolConfig
+
+Configuration for the TeamTool.
+
+##### TeamTool
+
+Tool that can be used to run a task.
+
+The tool returns the result of the task execution as a :class:`~autogen_agentchat.base.TaskResult` object.
+
+Args:
+    team (BaseGroupChat): The team to be used for running the task.
+    name (str): The name of the tool.
+    description (str): The description of the tool.
+    return_value_as_last_message (bool): Whether to use the last message content of the task result
+        as the return value of the tool in :meth:`~autogen_agentchat.tools.TaskRunnerTool.return_value_as_string`.
+        If set to True, the last message content will be returned as a string.
+        If set to False, the tool will return all messages in the task result as a string concatenated together,
+        with each message prefixed by its source (e.g., "writer: ...", "assistant: ...").
+
+Example:
+
+    .. code-block:: python
+
+        from autogen_agentchat.agents import AssistantAgent
+        from autogen_agentchat.conditions import SourceMatchTermination
+        from autogen_agentchat.teams import RoundRobinGroupChat
+        from autogen_agentchat.tools import TeamTool
+        from autogen_agentchat.ui import Console
+        from autogen_ext.models.ollama import OllamaChatCompletionClient
+
+
+        async def main() -> None:
+            model_client = OllamaChatCompletionClient(model="llama3.2")
+
+            writer = AssistantAgent(name="writer", model_client=model_client, system_message="You are a helpful assistant.")
+            reviewer = AssistantAgent(
+                name="reviewer", model_client=model_client, system_message="You are a critical reviewer."
+            )
+            summarizer = AssistantAgent(
+                name="summarizer",
+                model_client=model_client,
+                system_message="You combine the review and produce a revised response.",
+            )
+            team = RoundRobinGroupChat(
+                [writer, reviewer, summarizer], termination_condition=SourceMatchTermination(sources=["summarizer"])
+            )
+
+            # Create a TeamTool that uses the team to run tasks, returning the last message as the result.
+            tool = TeamTool(
+                team=team, name="writing_team", description="A tool for writing tasks.", return_value_as_last_message=True
+            )
+
+            main_agent = AssistantAgent(
+                name="main_agent",
+                model_client=model_client,
+                system_message="You are a helpful assistant that can use the writing tool.",
+                tools=[tool],
+            )
+            # For handling each events manually.
+            # async for message in main_agent.run_stream(
+            #     task="Write a short story about a robot learning to love.",
+            # ):
+            #     print(message)
+            # Use Console to display the messages in a more readable format.
+            await Console(
+                main_agent.run_stream(
+                    task="Write a short story about a robot learning to love.",
+                )
+            )
+
+
+        if __name__ == "__main__":
+            import asyncio
+
+            asyncio.run(main())
+
+**Méthodes :**
+
+- `__init__()`
+- `_to_config()`
+- `_from_config()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `team`
+- `name`
+- `description`
+- `return_value_as_last_message`
+
+##### _to_config
+
+##### _from_config
+
+**Paramètres :**
+
+- `cls`
+- `config`
+
+---
+
+### _console
+
+#### Classes
+
+##### UserInputManager
+
+**Méthodes :**
+
+- `__init__()`
+- `get_wrapped_callback()`
+- `notify_event_received()`
+
+#### Fonctions
+
+##### _is_running_in_iterm
+
+##### _is_output_a_tty
+
+##### aprint
+
+**Paramètres :**
+
+- `output`
+- `end`
+- `flush`
+
+##### __init__
+
+**Paramètres :**
+
+- `callback`
+
+##### get_wrapped_callback
+
+##### notify_event_received
+
+**Paramètres :**
+
+- `request_id`
+
+---
+
+### _utils
+
+#### Fonctions
+
+##### content_to_str
+
+Convert the content of an LLMMessage to a string.
+
+**Paramètres :**
+
+- `content`
+
+##### remove_images
+
+Remove images from a list of LLMMessages
+
+**Paramètres :**
+
+- `messages`
 
 ---
 
@@ -882313,7 +895954,7 @@ Sauvegarde automatique de l'orchestrateur
 
 Fonction principale de l'orchestrateur
 
-##### main
+##### main_orchestrator
 
 Point d'entrée principal pour compatibilité
 
@@ -884110,6 +897751,125 @@ Valide un plugin Python : héritage, méthode run / execute, docstring.
 
 ---
 
+### intelligent_analyzer
+
+🧠 ANALYSEUR INTELLIGENT ATHALIA - ORCHESTRATEUR PRINCIPAL
+==========================================================
+Orchestrateur principal qui coordonne tous les modules d'analyse :
+- AST Analyzer (analyse de base)
+- Pattern Detector (détection de patterns et doublons)
+- Architecture Analyzer (analyse d'architecture)
+- Performance Analyzer (analyse de performance)
+
+#### Classes
+
+##### ComprehensiveAnalysis
+
+Analyse complète du projet
+
+##### IntelligentAnalyzer
+
+Orchestrateur principal de l'analyse intelligente
+
+**Méthodes :**
+
+- `__init__()`
+- `analyze_project_comprehensive()`
+- `_perform_ast_analysis()`
+- `_calculate_overall_score()`
+- `_generate_comprehensive_recommendations()`
+- `_create_optimization_plan()`
+- `_save_comprehensive_analysis()`
+- `get_learning_insights()`
+- `generate_intelligent_coordination()`
+- `orchestrate_with_unified()`
+
+#### Fonctions
+
+##### main
+
+Fonction principale pour l'analyse en ligne de commande
+
+##### __init__
+
+**Paramètres :**
+
+- `root_path`
+
+##### analyze_project_comprehensive
+
+Analyser un projet de manière complète avec tous les modules
+
+**Paramètres :**
+
+- `project_path`
+
+##### _perform_ast_analysis
+
+Effectuer l'analyse AST de base
+
+**Paramètres :**
+
+- `project_path`
+
+##### _calculate_overall_score
+
+Calculer le score global basé sur toutes les analyses
+
+**Paramètres :**
+
+- `ast_analysis`
+- `pattern_analysis`
+- `architecture_analysis`
+- `performance_analysis`
+
+##### _generate_comprehensive_recommendations
+
+Générer des recommandations globales
+
+**Paramètres :**
+
+- `pattern_analysis`
+- `architecture_analysis`
+- `performance_analysis`
+
+##### _create_optimization_plan
+
+Créer un plan d'optimisation global
+
+**Paramètres :**
+
+- `pattern_analysis`
+- `architecture_analysis`
+- `performance_analysis`
+
+##### _save_comprehensive_analysis
+
+Sauvegarder l'analyse complète
+
+**Paramètres :**
+
+- `analysis`
+
+##### get_learning_insights
+
+Obtenir des insights d'apprentissage de tous les modules
+
+##### generate_intelligent_coordination
+
+Générer une coordination intelligente
+
+##### orchestrate_with_unified
+
+Utiliser l'orchestrateur unifié pour une orchestration complète
+
+**Paramètres :**
+
+- `project_path`
+- `config`
+
+---
+
 ### autocomplete_engine
 
 #### Classes
@@ -884316,125 +898076,6 @@ Suggère des améliorations spécifiques.
 
 ---
 
-### intelligent_analyzer
-
-🧠 ANALYSEUR INTELLIGENT ATHALIA - ORCHESTRATEUR PRINCIPAL
-==========================================================
-Orchestrateur principal qui coordonne tous les modules d'analyse :
-- AST Analyzer (analyse de base)
-- Pattern Detector (détection de patterns et doublons)
-- Architecture Analyzer (analyse d'architecture)
-- Performance Analyzer (analyse de performance)
-
-#### Classes
-
-##### ComprehensiveAnalysis
-
-Analyse complète du projet
-
-##### IntelligentAnalyzer
-
-Orchestrateur principal de l'analyse intelligente
-
-**Méthodes :**
-
-- `__init__()`
-- `analyze_project_comprehensive()`
-- `_perform_ast_analysis()`
-- `_calculate_overall_score()`
-- `_generate_comprehensive_recommendations()`
-- `_create_optimization_plan()`
-- `_save_comprehensive_analysis()`
-- `get_learning_insights()`
-- `generate_intelligent_coordination()`
-- `orchestrate_with_unified()`
-
-#### Fonctions
-
-##### main
-
-Fonction principale pour l'analyse en ligne de commande
-
-##### __init__
-
-**Paramètres :**
-
-- `root_path`
-
-##### analyze_project_comprehensive
-
-Analyser un projet de manière complète avec tous les modules
-
-**Paramètres :**
-
-- `project_path`
-
-##### _perform_ast_analysis
-
-Effectuer l'analyse AST de base
-
-**Paramètres :**
-
-- `project_path`
-
-##### _calculate_overall_score
-
-Calculer le score global basé sur toutes les analyses
-
-**Paramètres :**
-
-- `ast_analysis`
-- `pattern_analysis`
-- `architecture_analysis`
-- `performance_analysis`
-
-##### _generate_comprehensive_recommendations
-
-Générer des recommandations globales
-
-**Paramètres :**
-
-- `pattern_analysis`
-- `architecture_analysis`
-- `performance_analysis`
-
-##### _create_optimization_plan
-
-Créer un plan d'optimisation global
-
-**Paramètres :**
-
-- `pattern_analysis`
-- `architecture_analysis`
-- `performance_analysis`
-
-##### _save_comprehensive_analysis
-
-Sauvegarder l'analyse complète
-
-**Paramètres :**
-
-- `analysis`
-
-##### get_learning_insights
-
-Obtenir des insights d'apprentissage de tous les modules
-
-##### generate_intelligent_coordination
-
-Générer une coordination intelligente
-
-##### orchestrate_with_unified
-
-Utiliser l'orchestrateur unifié pour une orchestration complète
-
-**Paramètres :**
-
-- `project_path`
-- `config`
-
----
-
 ### security_auditor
 
 #### Classes
@@ -884603,6 +898244,61 @@ Calcul du score de qualité
 ##### print_report
 
 Affichage du rapport de linting
+
+---
+
+### multi_file_editor
+
+Module d'édition/correction multi-fichiers pour Athalia/Arkalia.
+Permet d'appliquer des corrections/refactoring sur plusieurs fichiers en une seule commande,
+avec logs et rollback.
+
+#### Classes
+
+##### MultiFileEditor
+
+**Méthodes :**
+
+- `__init__()`
+- `backup_file()`
+- `apply_corrections()`
+- `rollback()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `backup_dir`
+
+##### backup_file
+
+**Paramètres :**
+
+- `file_path`
+
+##### apply_corrections
+
+Applique la fonction de correction à chaque fichier.
+:param files: Liste des chemins de fichiers à corriger
+:param correction_fn: Fonction qui prend le contenu du fichier et retourne le contenu corrigé
+:return: Dictionnaire de résultats (succès, erreurs, logs)
+
+**Paramètres :**
+
+- `files`
+- `correction_fn`
+
+##### rollback
+
+Restaure tous les fichiers depuis les backups.
+
+##### dummy_correction
+
+**Paramètres :**
+
+- `content`
 
 ---
 
@@ -884914,61 +898610,6 @@ Profiler une fonction spécifique
 ##### get_performance_insights
 
 Obtenir des insights de performance
-
----
-
-### multi_file_editor
-
-Module d'édition/correction multi-fichiers pour Athalia/Arkalia.
-Permet d'appliquer des corrections/refactoring sur plusieurs fichiers en une seule commande, 
-avec logs et rollback.
-
-#### Classes
-
-##### MultiFileEditor
-
-**Méthodes :**
-
-- `__init__()`
-- `backup_file()`
-- `apply_corrections()`
-- `rollback()`
-
-#### Fonctions
-
-##### __init__
-
-**Paramètres :**
-
-- `backup_dir`
-
-##### backup_file
-
-**Paramètres :**
-
-- `file_path`
-
-##### apply_corrections
-
-Applique la fonction de correction à chaque fichier.
-:param files: Liste des chemins de fichiers à corriger
-:param correction_fn: Fonction qui prend le contenu du fichier et retourne le contenu corrigé
-:return: Dictionnaire de résultats (succès, erreurs, logs)
-
-**Paramètres :**
-
-- `files`
-- `correction_fn`
-
-##### rollback
-
-Restaure tous les fichiers depuis les backups.
-
-##### dummy_correction
-
-**Paramètres :**
-
-- `content`
 
 ---
 
@@ -885389,7 +899030,7 @@ Génération d'un dashboard HTML moderne et valide
 
 ##### ouvrir_dashboard
 
-Ouverture du dashboard dans le f
+Ouverture du dashboard dans le navigateur
 
 ---
 
@@ -885566,11 +899207,16 @@ Import d'un profil depuis un fichier JSON
 
 ##### AuditAgent
 
+Agent d'audit simplifié pour les tests
+
 **Méthodes :**
 
+- `__init__()`
 - `act()`
 
 #### Fonctions
+
+##### __init__
 
 ##### act
 
@@ -885900,7 +899546,7 @@ Fusionne plusieurs audits en un score global et des recommandations synthétique
 ### response_distiller
 
 Module de distillation de réponses IA pour Athalia/Arkalia
-Permet de fusionner plusieurs réponses IA en une solution optimale 
+Permet de fusionner plusieurs réponses IA en une solution optimale
 (voting, stacking, bagging, consensus scoring...)
 
 #### Classes
@@ -886126,7 +899772,8 @@ Distillation multimodale pour Athalia/Arkalia
 
 ##### distill
 
-Fusionne les réponses texte et image en utilisant LLaVA (Ollama) et d'autres modèles si besoin.
+Fusionne les réponses texte et image en utilisant LLaVA (Ollama) et 
+d'autres modèles si besoin.
 :param text_prompts: Liste de prompts texte
 :param image_paths: Liste de chemins d'images (un par prompt ou global)
 :param context: Contexte optionnel
