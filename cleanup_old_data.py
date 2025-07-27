@@ -239,7 +239,9 @@ def main():
     """Fonction principale"""
     import argparse
 
-    parser = argparse.ArgumentParser(description="Nettoyage intelligent des données d'analyse")
+    parser = argparse.ArgumentParser(
+        description="Nettoyage intelligent des données d'analyse"
+    )
     parser.add_argument("--dry-run", action="store_true", help="Mode simulation")
     parser.add_argument("--data-dir", default="data", help="Dossier de données")
 
