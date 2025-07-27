@@ -13,6 +13,7 @@ def open_patch(file, mode='r', *args, **kwargs):
         mode = 'w'
     return _real_open(file, mode, *args, **kwargs)
 
+
 builtins.open = open_patch
 
 

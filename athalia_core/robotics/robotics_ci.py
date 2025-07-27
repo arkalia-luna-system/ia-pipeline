@@ -460,4 +460,4 @@ services:
 
         except Exception as e:
             self.logger.error(f"❌ Erreur configuration CI: {e}")
-            return False 
+            return False

@@ -5,9 +5,11 @@ Fusionne et pondère plusieurs audits (sécurité, qualité, performance...)
 """
 from typing import List, Dict, Any, Optional
 
+
 class AuditDistiller:
     def __init__(self, weights: Optional[Dict[str, float]] = None):
-        # Pondération par type d'audit (ex: {'securite': 0.3, 'qualite': 0.4, ...})
+        # Pondération par type d'audit (ex: {'securite': 0.3, 'qualite': 0.4,
+        # ...})
         self.weights = weights or {}
 
     def distill(self, audits: List[Dict[str, Any]]) -> Dict[str, Any]:
@@ -31,4 +33,4 @@ class AuditDistiller:
         return {
             'global_score': global_score,
             'details': audits
-        } 
+        }

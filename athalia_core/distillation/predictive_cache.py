@@ -6,6 +6,7 @@ Caching prédictif pour Athalia/Arkalia
 from typing import Dict, Any, Callable, Optional
 import time
 
+
 class PredictiveCache:
     def __init__(self, ttl: int = 600):
         """
@@ -60,4 +61,4 @@ class PredictiveCache:
             'misses': self.misses,
             'hit_rate': hit_rate,
             'size': len(self.cache)
-        } 
+        }

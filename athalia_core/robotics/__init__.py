@@ -25,10 +25,10 @@ from .robotics_ci import RoboticsCI
 
 __all__ = [
     'ReachyAuditor',
-    'ROS2Validator', 
+    'ROS2Validator',
     'DockerRoboticsManager',
     'RustAnalyzer',
     'RoboticsCI'
 ]
 
-__version__ = "1.0.0" 
+__version__ = "1.0.0"

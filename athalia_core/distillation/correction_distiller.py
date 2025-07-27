@@ -5,11 +5,16 @@ Fusionne, score et sélectionne la meilleure correction parmi plusieurs suggesti
 """
 from typing import List, Dict, Any, Optional
 
+
 class CorrectionDistiller:
     def __init__(self, strategy: str = 'score'):
         self.strategy = strategy
 
-    def distill(self, corrections: List[str], scores: Optional[List[float]] = None, context: Optional[Dict[str, Any]] = None) -> str:
+    def distill(self,
+                corrections: List[str],
+                scores: Optional[List[float]] = None,
+                context: Optional[Dict[str,
+                                       Any]] = None) -> str:
         """
         Sélectionne ou fusionne la meilleure correction IA.
         :param corrections: Liste de corrections proposées (str)
@@ -24,4 +29,4 @@ class CorrectionDistiller:
             idx = scores.index(max(scores))
             return corrections[idx]
         # Placeholder pour d'autres stratégies (fusion, feedback, etc.)
-        return corrections[0]  # fallback 
+        return corrections[0]  # fallback

@@ -12,4 +12,4 @@ __author__ = "Athalia/Arkalia Team"
 __description__ = "Modules avancés pour fonctionnalités étendues"
 
 # Pas d'import automatique pour éviter les erreurs de dépendances
-# Les modules peuvent être importés individuellement selon les besoins 
+# Les modules peuvent être importés individuellement selon les besoins
