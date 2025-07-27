@@ -1,1 +1,0 @@
-def test2(): return "world"

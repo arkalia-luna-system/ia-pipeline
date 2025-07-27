@@ -31,13 +31,6 @@ class TestAutoCorrectionAdvanced(unittest.TestCase):
     def test_import_auto_correction(self):
         """Test d'import du module d'auto-correction"""
         try:
-<<<<<<< HEAD
-            from athalia_core.advanced_modules.auto_correction_advanced import AutoCorrectionAdvanced
-=======
-            from athalia_core.advanced_modules.auto_correction_advanced import (
-                AutoCorrectionAvancee,
-            )
->>>>>>> develop
             self.assertTrue(True, "Import réussi")
         except ImportError as e:
             assert False, f"Module auto-correction non disponible: {e}"
@@ -53,13 +46,6 @@ class TestAutoCorrectionAdvanced(unittest.TestCase):
     def test_import_user_profiles(self):
         """Test d'import des profils utilisateur"""
         try:
-<<<<<<< HEAD
-            from athalia_core.advanced_modules.user_profiles_advanced import GestionnaireProfilsAvances
-=======
-            from athalia_core.advanced_modules.user_profiles_advanced import (
-                GestionnaireProfils,
-            )
->>>>>>> develop
             self.assertTrue(True, "Import réussi")
         except ImportError as e:
             assert False, f"Module profils non disponible: {e}"

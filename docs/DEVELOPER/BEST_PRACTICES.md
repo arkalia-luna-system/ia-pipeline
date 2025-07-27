@@ -55,7 +55,7 @@ python3 athalia_core/auto_documenter.py --api --output docs/API/
 python3 athalia_core/templates/feedback_template.py --project /chemin/projet
 
 # Améliorer l'UX avec les profils utilisateur
-python3 athalia_unified.py /chemin/projet --action profil --utilisateur nom
+python3 athalia_unified.py /chemin/projet --action dashboard --utilisateur nom
 ```
 
 ## 🐳 Déploiement

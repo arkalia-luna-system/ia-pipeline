@@ -80,7 +80,7 @@ def generate_heatmap_data(project_path: str = ".") -> Dict[str, Any]:
     return {
         "heatmap_data": heatmap_data,
         "total_files": len(heatmap_data),
-        "max_complexity": max([d["complexity"] for d in heatmap_data]) if heatmap_data else 0
+        "max_complexity": max([d["complexity"] for d in heatmap_data], default=0)
     }
 
 def generate_technical_debt_analysis(project_path: str = ".") -> Dict[str, Any]:
@@ -114,8 +114,16 @@ def generate_technical_debt_analysis(project_path: str = ".") -> Dict[str, Any]:
         ] if debt_indicators else ["Projet en bon état"]
     }
 
-def generate_analytics_html(project_path: str = ".") -> str:
+def generate_analytics_html(projects_info: Dict[str, Any]) -> str:
     """Générer un rapport HTML d'analytics"""
+    # Si projects_info est une liste, prendre le premier projet
+    if isinstance(projects_info, list) and projects_info:
+        project_path = projects_info[0]
+    elif isinstance(projects_info, dict) and "path" in projects_info:
+        project_path = projects_info["path"]
+    else:
+        project_path = "."
+        
     analysis = analyze_project(project_path)
     heatmap = generate_heatmap_data(project_path)
     debt = generate_technical_debt_analysis(project_path)

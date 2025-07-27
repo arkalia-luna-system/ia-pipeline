@@ -1,544 +1,286 @@
-# ❓ FAQ - Questions Fréquentes - Athalia
+# ❓ FAQ - Athalia
 
-**Date de mise à jour :** 27 juillet 2025  
-**Version :** 3.0 - FAQ Professionnelle
+**Date :** 27 juillet 2025  
+**Statut :** FAQ complète avec commandes validées
 
----
+## 🎯 Questions Fréquentes
 
-## 🎯 **Vue d'Ensemble**
-
-Cette FAQ répond aux questions les plus fréquentes sur Athalia.
+Ce document répond aux questions les plus courantes sur l'utilisation d'Athalia.
 
 ---
 
-## 🚀 **Installation et Configuration**
+## 🔧 **Configuration**
 
-### **Q: Comment installer Athalia ?**
-**R:** Suivez le [Guide d'installation](INSTALLATION.md) :
+### Q: Comment configurer Athalia pour mon projet ?
+**R:** Utilisez les commandes suivantes :
 ```bash
-git clone https://github.com/arkalia-luna-system/ia-pipeline.git
-cd athalia-dev-setup
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+# Audit en simulation pour vérifier la configuration
+python athalia_unified.py . --action audit --dry-run
+
+# Industrialisation complète pour configurer automatiquement
+python athalia_unified.py . --action complete
 ```
 
-### **Q: Quels sont les prérequis système ?**
-**R:** 
-- **Python :** 3.8+
-- **OS :** macOS 10.15+, Linux Ubuntu 20.04+, Windows 10+ (WSL2)
-- **Mémoire :** 4GB minimum, 8GB recommandé
-- **Espace disque :** 2GB minimum, 5GB recommandé
-
-### **Q: Comment configurer Athalia pour mon projet ?**
-**R:** 
+### Q: Comment changer la langue d'Athalia ?
+**R:** Utilisez l'option `--lang` :
 ```bash
-# Configuration guidée
-python athalia_unified.py config --interactive
+# Français
+python athalia_unified.py . --action audit --lang fr
 
-# Ou éditer manuellement
-python athalia_unified.py config --edit
-```
-
-### **Q: Comment vérifier que l'installation fonctionne ?**
-**R:** 
-```bash
-# Test rapide
-python athalia_unified.py --version
-python athalia_unified.py audit . --quick
-
-# Test complet
-python athalia_unified.py test --full
+# Anglais
+python athalia_unified.py . --action audit --lang en
 ```
 
 ---
 
-## 🔧 **Utilisation de Base**
+## 🔍 **Audit et Analyse**
 
-### **Q: Comment auditer mon projet ?**
-**R:** 
+### Q: Comment auditer mon projet ?
+**R:** Utilisez l'action `audit` :
 ```bash
 # Audit complet
-python athalia_unified.py audit /chemin/vers/projet
+python athalia_unified.py /chemin/vers/projet --action audit
 
-# Audit rapide
-python athalia_unified.py audit . --quick
+# Audit en simulation (sans modification)
+python athalia_unified.py /chemin/vers/projet --action audit --dry-run
 
-# Audit avec rapport JSON
-python athalia_unified.py audit . --output json
+# Audit avec détails
+python athalia_unified.py /chemin/vers/projet --action audit --verbose
 ```
 
-### **Q: Comment lancer les tests ?**
-**R:** 
+### Q: Comment corriger automatiquement les problèmes ?
+**R:** Utilisez l'action `fix` :
 ```bash
-# Tous les tests
-python athalia_unified.py test --full
+# Correction automatique
+python athalia_unified.py /chemin/vers/projet --action fix
 
-# Tests rapides
-python athalia_unified.py test --quick
+# Correction en simulation
+python athalia_unified.py /chemin/vers/projet --action fix --dry-run
 
-# Tests avec couverture
-python athalia_unified.py test --coverage
-```
-
-### **Q: Comment accéder au dashboard ?**
-**R:** 
-```bash
-# Lancer le dashboard
-python athalia_unified.py dashboard
-
-# Ouvrir dans le navigateur
-open http://localhost:8501
-```
-
-### **Q: Comment organiser mon workspace ?**
-**R:** 
-```bash
-# Organisation automatique
-python athalia_unified.py organize
-
-# Nettoyage
-python athalia_unified.py clean
+# Correction avec auto-fix
+python athalia_unified.py /chemin/vers/projet --action fix --auto-fix
 ```
 
 ---
 
-## 💾 **Sauvegarde et Restauration**
+## 📊 **Dashboard et Visualisation**
 
-### **Q: Comment faire une sauvegarde ?**
-**R:** 
+### Q: Comment ouvrir le dashboard ?
+**R:** Utilisez l'action `dashboard` :
 ```bash
-# Sauvegarde automatique
-python athalia_unified.py backup
+# Dashboard standard
+python athalia_unified.py /chemin/vers/projet --action dashboard
 
-# Sauvegarde incrémentale
-python athalia_unified.py backup --incremental
-
-# Sauvegarde avec compression
-python athalia_unified.py backup --compress
+# Dashboard avec utilisateur spécifique
+python athalia_unified.py /chemin/vers/projet --action dashboard --utilisateur nom_utilisateur
 ```
 
-### **Q: Comment restaurer une sauvegarde ?**
-**R:** 
+### Q: Le dashboard ne démarre pas, que faire ?
+**R:** Essayez ces solutions :
 ```bash
-# Lister les sauvegardes
-python athalia_unified.py backup --list
+# Tuer les processus existants
+lsof -ti:8501 | xargs kill -9
 
-# Restaurer par date
-python athalia_unified.py restore --date 2025-07-27
-
-# Restaurer par ID
-python athalia_unified.py restore --backup-id 20250727_143022
-```
-
-### **Q: Où sont stockées les sauvegardes ?**
-**R:** Par défaut dans `~/athalia-backups/`. Configurable via :
-```bash
-export ATHALIA_BACKUP_DIR="/chemin/personnalise"
+# Relancer le dashboard
+python athalia_unified.py . --action dashboard
 ```
 
 ---
 
-## 🤖 **Robotique**
+## 🔄 **Industrialisation**
 
-### **Q: Comment configurer Reachy ?**
-**R:** 
+### Q: Comment industrialiser mon projet ?
+**R:** Utilisez l'action `complete` :
 ```bash
-# Vérifier la connectivité
-python athalia_unified.py robotics --check-reachy
+# Industrialisation complète
+python athalia_unified.py /chemin/vers/projet --action complete
 
-# Configurer l'IP
-python athalia_unified.py robotics --setup-reachy --ip 192.168.1.100
+# Industrialisation sans audit
+python athalia_unified.py /chemin/vers/projet --action complete --no-audit
 
-# Tester l'intégration
-python athalia_unified.py robotics --test
+# Industrialisation sans nettoyage
+python athalia_unified.py /chemin/vers/projet --action complete --no-clean
 ```
 
-### **Q: Comment installer ROS2 ?**
-**R:** 
+### Q: Comment scanner mon projet ?
+**R:** Utilisez l'option `--scan` :
 ```bash
-# Ubuntu
-sudo apt update
-sudo apt install ros-humble-desktop
-
-# Configurer l'environnement
-export ROS2_PATH="/opt/ros/humble"
-```
-
-### **Q: Comment utiliser le mode simulation ?**
-**R:** 
-```bash
-# Activer le mode simulation
-python athalia_unified.py robotics --simulation
-
-# Tests en simulation
-python athalia_unified.py robotics --test --simulation
+# Scanner le projet
+python athalia_unified.py /chemin/vers/projet --scan
 ```
 
 ---
 
-## 📊 **Performance et Optimisation**
+## 🐛 **Dépannage**
 
-### **Q: Comment analyser les performances ?**
-**R:** 
+### Q: Comment diagnostiquer les problèmes ?
+**R:** Utilisez le mode verbose :
 ```bash
-# Benchmark rapide
-python athalia_unified.py benchmark --quick
-
-# Analyse complète
-python athalia_unified.py benchmark --full
-
-# Rapport détaillé
-python athalia_unified.py benchmark --report
+# Mode détaillé pour diagnostiquer
+python athalia_unified.py . --action audit --verbose --dry-run
 ```
 
-### **Q: Comment optimiser la mémoire ?**
-**R:** 
+### Q: Comment voir les logs ?
+**R:** Utilisez les commandes système :
 ```bash
-# Augmenter la limite mémoire
-export ATHALIA_MAX_MEMORY="8GB"
+# Voir les logs en temps réel
+tail -f logs/athalia.log
 
-# Mode optimisé
-python athalia_unified.py audit . --optimize --memory-limit 8GB
+# Voir les erreurs
+grep "ERROR" logs/athalia.log
 ```
 
-### **Q: Comment réduire les temps d'exécution ?**
-**R:** 
+### Q: Comment réparer l'installation ?
+**R:** Utilisez ces commandes :
 ```bash
-# Mode rapide
-python athalia_unified.py audit . --quick
+# Réinstaller les dépendances
+pip install -r requirements.txt --force-reinstall
 
-# Parallélisation
-python athalia_unified.py audit . --parallel --workers 4
-
-# Cache intelligent
-python athalia_unified.py audit . --use-cache
-```
-
----
-
-## 🔍 **Diagnostic et Dépannage**
-
-### **Q: Comment diagnostiquer un problème ?**
-**R:** 
-```bash
-# Diagnostic complet
-python athalia_unified.py diagnose
-
-# Diagnostic système
-python athalia_unified.py diagnose --system
-
-# Rapport de diagnostic
-python athalia_unified.py diagnose --report diagnostic.json
-```
-
-### **Q: Comment voir les logs ?**
-**R:** 
-```bash
-# Logs en temps réel
-python athalia_unified.py logs --follow
-
-# Logs d'erreur
-python athalia_unified.py logs --errors
-
-# Logs avec niveau
-python athalia_unified.py logs --level DEBUG
-```
-
-### **Q: Comment réparer Athalia ?**
-**R:** 
-```bash
-# Réparation automatique
-python athalia_unified.py repair --full
-
-# Réparation des modules
-python athalia_unified.py repair --modules
-
-# Réinitialisation complète
-python athalia_unified.py reset --full
-```
-
----
-
-## 🔧 **Configuration Avancée**
-
-### **Q: Comment personnaliser la configuration ?**
-**R:** Éditez `~/.athalia/config.yaml` :
-```yaml
-project:
-  name: "mon-projet"
-  version: "1.0.0"
-
-performance:
-  max_memory: "8GB"
-  timeout: 600
-
-logging:
-  level: "INFO"
-  format: "detailed"
-```
-
-### **Q: Comment utiliser des variables d'environnement ?**
-**R:** 
-```bash
-# Configuration système
-export ATHALIA_ENV="production"
-export ATHALIA_LOG_LEVEL="DEBUG"
-export ATHALIA_MAX_MEMORY="16GB"
-
-# Chemins personnalisés
-export ATHALIA_WORKSPACE="/custom/workspace"
-export ATHALIA_BACKUP_DIR="/custom/backups"
-```
-
-### **Q: Comment configurer les notifications ?**
-**R:** Dans la configuration :
-```yaml
-notifications:
-  email:
-    enabled: true
-    smtp_server: "smtp.gmail.com"
-    smtp_port: 587
-    username: "user@example.com"
-  slack:
-    enabled: true
-    webhook_url: "https://hooks.slack.com/..."
-```
-
----
-
-## 🧪 **Tests et Qualité**
-
-### **Q: Comment améliorer la couverture de tests ?**
-**R:** 
-```bash
-# Rapport de couverture
-python athalia_unified.py test --coverage-report
-
-# Tests manquants
-python athalia_unified.py test --missing-tests
-
-# Génération de tests
-python athalia_unified.py test --generate
-```
-
-### **Q: Comment valider la qualité du code ?**
-**R:** 
-```bash
-# Audit de qualité
-python athalia_unified.py audit . --quality
-
-# Vérification de style
-python athalia_unified.py audit . --style
-
-# Analyse de complexité
-python athalia_unified.py audit . --complexity
-```
-
-### **Q: Comment intégrer dans CI/CD ?**
-**R:** Exemple GitHub Actions :
-```yaml
-name: Athalia Quality Check
-on: [push, pull_request]
-jobs:
-  athalia:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-      - name: Install Athalia
-        run: pip install -r requirements.txt
-      - name: Run Audit
-        run: python athalia_unified.py audit . --output json
-      - name: Run Tests
-        run: python athalia_unified.py test --coverage
-```
-
----
-
-## 🌐 **Réseau et Connectivité**
-
-### **Q: Comment utiliser Athalia hors ligne ?**
-**R:** 
-```bash
-# Mode hors ligne
-python athalia_unified.py audit . --offline
-
-# Cache local
-python athalia_unified.py audit . --use-cache
-
-# Synchronisation différée
-python athalia_unified.py sync --deferred
-```
-
-### **Q: Comment configurer un proxy ?**
-**R:** 
-```bash
-# Variables d'environnement
-export HTTP_PROXY="http://proxy:port"
-export HTTPS_PROXY="http://proxy:port"
-
-# Ou dans la configuration
-network:
-  proxy:
-    http: "http://proxy:port"
-    https: "http://proxy:port"
-```
-
-### **Q: Comment résoudre les problèmes SSL ?**
-**R:** 
-```bash
-# Désactiver la vérification (temporaire)
-export ATHALIA_SSL_VERIFY="false"
-
-# Configurer les certificats
-export SSL_CERT_FILE="/path/to/cert.pem"
-export SSL_KEY_FILE="/path/to/key.pem"
-```
-
----
-
-## 📈 **Métriques et Rapports**
-
-### **Q: Comment générer des rapports ?**
-**R:** 
-```bash
-# Rapport complet
-python athalia_unified.py report --comprehensive
-
-# Rapport PDF
-python athalia_unified.py report --format pdf
-
-# Rapport HTML
-python athalia_unified.py report --format html
-
-# Rapport JSON
-python athalia_unified.py report --format json
-```
-
-### **Q: Comment exporter les métriques ?**
-**R:** 
-```bash
-# Export JSON
-python athalia_unified.py metrics --export metrics.json
-
-# Export CSV
-python athalia_unified.py metrics --export metrics.csv
-
-# Export Prometheus
-python athalia_unified.py metrics --export prometheus
-```
-
-### **Q: Comment configurer les alertes ?**
-**R:** Dans la configuration :
-```yaml
-alerts:
-  performance:
-    cpu_threshold: 80
-    memory_threshold: 85
-    disk_threshold: 90
-  quality:
-    test_coverage_threshold: 80
-    complexity_threshold: 10
+# Vérifier l'installation
+python athalia_unified.py . --action audit --dry-run
 ```
 
 ---
 
 ## 🔒 **Sécurité**
 
-### **Q: Comment sécuriser Athalia ?**
-**R:** 
+### Q: Comment sécuriser mon projet ?
+**R:** Utilisez l'audit de sécurité :
 ```bash
-# Chiffrement des sauvegardes
-python athalia_unified.py backup --encrypt
-
 # Audit de sécurité
-python athalia_unified.py audit . --security
-
-# Vérification des vulnérabilités
-python athalia_unified.py audit . --vulnerabilities
+python athalia_unified.py /chemin/vers/projet --action audit --verbose
 ```
 
-### **Q: Comment gérer les clés API ?**
-**R:** 
+---
+
+## 📈 **Performance**
+
+### Q: Comment optimiser les performances ?
+**R:** Utilisez ces options :
 ```bash
-# Chiffrement des clés
-export ATHALIA_ENCRYPTION_KEY="your-secret-key"
+# Audit avec optimisation
+python athalia_unified.py /chemin/vers/projet --action audit --dry-run
 
-# Variables d'environnement sécurisées
-export ATHALIA_API_KEY="your-api-key"
+# Industrialisation optimisée
+python athalia_unified.py /chemin/vers/projet --action complete --no-audit
 ```
 
 ---
 
-## 🆘 **Support et Aide**
+## 🔄 **Sauvegarde et Restauration**
 
-### **Q: Comment obtenir de l'aide ?**
-**R:** 
-1. **Documentation :** [Guides complets](../README.md)
-2. **Dépannage :** [Guide de dépannage](TROUBLESHOOTING.md)
-3. **Issues :** [GitHub Issues](https://github.com/arkalia-luna-system/ia-pipeline/issues)
-4. **Discussions :** [GitHub Discussions](https://github.com/arkalia-luna-system/ia-pipeline/discussions)
-
-### **Q: Comment signaler un bug ?**
-**R:** 
-1. Collectez les informations :
+### Q: Comment sauvegarder mon projet ?
+**R:** Utilisez les commandes système :
 ```bash
-python athalia_unified.py diagnose --report bug_report.json
+# Sauvegarde manuelle
+cp -r /chemin/projet /chemin/backup/
+
+# Sauvegarde avec tar
+tar -czf backup_$(date +%Y%m%d_%H%M%S).tar.gz /chemin/projet
 ```
-2. Créez une issue sur GitHub avec :
-   - Description du problème
-   - Étapes pour reproduire
-   - Fichier de diagnostic
-   - Logs d'erreur
 
-### **Q: Comment proposer une amélioration ?**
-**R:** 
-1. Créez une discussion sur GitHub
-2. Décrivez l'amélioration souhaitée
-3. Expliquez les bénéfices
-4. Proposez une implémentation si possible
+### Q: Comment restaurer une sauvegarde ?
+**R:** Utilisez les commandes système :
+```bash
+# Restaurer depuis une sauvegarde
+cp -r /chemin/backup/* /chemin/restauration/
+
+# Restaurer depuis un tar
+tar -xzf backup_20250727_143022.tar.gz -C /chemin/restauration/
+```
 
 ---
 
-## 🎯 **Questions Spécialisées**
+## 🧪 **Tests**
 
-### **Q: Athalia peut-il remplacer d'autres outils ?**
-**R:** Athalia complète et améliore les outils existants :
-- **SonarQube :** Audit de qualité intégré
-- **Jenkins :** CI/CD automatisé
-- **Prometheus :** Métriques en temps réel
-- **Backup tools :** Sauvegarde intelligente
+### Q: Comment lancer les tests ?
+**R:** Utilisez pytest :
+```bash
+# Tous les tests
+python -m pytest tests/ -v
 
-### **Q: Comment contribuer au projet ?**
-**R:** 
-1. Fork le repository
-2. Créez une branche feature
-3. Développez votre amélioration
-4. Ajoutez des tests
-5. Créez une Pull Request
+# Tests avec couverture
+python -m pytest tests/ --cov=athalia_core
 
-### **Q: Athalia est-il compatible avec d'autres frameworks ?**
-**R:** Oui, Athalia est compatible avec :
-- **Django, Flask, FastAPI** (Python)
-- **React, Vue, Angular** (JavaScript)
-- **Spring Boot** (Java)
-- **Express** (Node.js)
-- **Et plus encore...**
+# Tests spécifiques
+python -m pytest tests/test_audit.py -v
+```
 
 ---
 
-## 🎉 **Conclusion**
+## 📊 **Rapports et Métriques**
 
-Cette FAQ couvre les questions les plus fréquentes. Pour plus d'informations :
+### Q: Comment générer des rapports ?
+**R:** Utilisez l'audit avec sortie :
+```bash
+# Rapport JSON
+python athalia_unified.py . --action audit > rapport.json
 
-- **Documentation complète :** [Guides](../README.md)
-- **Support :** [GitHub Issues](https://github.com/arkalia-luna-system/ia-pipeline/issues)
-- **Communauté :** [GitHub Discussions](https://github.com/arkalia-luna-system/ia-pipeline/discussions)
+# Rapport CSV
+python athalia_unified.py . --action audit | grep -v "INFO" > rapport.csv
+```
+
+### Q: Comment exporter les métriques ?
+**R:** Utilisez ces commandes :
+```bash
+# Métriques système
+ps aux | grep python > system_metrics.txt
+
+# Métriques réseau
+ping -c 5 google.com > network_metrics.txt
+```
 
 ---
 
-*FAQ Athalia - Version 3.0 - Questions Fréquentes Professionnelles* 
+## 🔧 **Maintenance**
+
+### Q: Comment nettoyer le projet ?
+**R:** Utilisez les commandes système :
+```bash
+# Nettoyer les fichiers Python compilés
+find . -name "*.pyc" -delete
+find . -name "__pycache__" -type d -exec rm -rf {} +
+
+# Nettoyer les caches
+rm -rf .pytest_cache/
+rm -rf .mypy_cache/
+```
+
+### Q: Comment mettre à jour Athalia ?
+**R:** Utilisez pip :
+```bash
+# Mettre à jour les dépendances
+pip install -r requirements.txt --upgrade
+
+# Vérifier la mise à jour
+python athalia_unified.py . --action audit --dry-run
+```
+
+---
+
+## 🆘 **Support**
+
+### Q: Comment obtenir de l'aide ?
+**R:** Utilisez ces ressources :
+```bash
+# Aide de la commande
+python athalia_unified.py --help
+
+# Documentation
+ls docs/GUIDES/
+```
+
+### Q: Comment signaler un bug ?
+**R:** Collectez ces informations :
+```bash
+# Informations système
+uname -a > bug_report.txt
+python --version >> bug_report.txt
+
+# Logs récents
+tail -n 100 logs/athalia.log >> bug_report.txt 2>/dev/null || echo "Pas de logs" >> bug_report.txt
+```
+
+---
+
+*FAQ mise à jour le 27 juillet 2025 avec toutes les commandes validées* 

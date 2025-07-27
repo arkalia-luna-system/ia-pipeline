@@ -29,25 +29,6 @@ langchain>=0.3.26
 crewai>=0.148.0
 pyautogen>=0.10.0
 
-<<<<<<< HEAD
-# Développement
-pre-commit>=2.20.0
-tox>=3.25.0 
-pyautogen
-fastapi
-pydantic
-requests
-pytest
-uvicorn
-langchain
-crewai
-pillow
-# Pour la multimodalité, à installer manuellement si besoin :
-# llava 
-flake8
-pytest-cov
-pkg_resources 
-=======
 # --- API & WEB ---
 flask>=3.1.0
 streamlit>=1.47.0
@@ -57,6 +38,7 @@ plotly>=6.2.0
 pytest>=8.0.0
 pytest-cov>=4.0.0
 pytest-mock>=3.8.0
+pytest-benchmark>=5.0.0
 
 # --- LINTING ---
 flake8>=7.0.0
@@ -74,5 +56,8 @@ cryptography>=45.0.0
 gitpython
 
 # --- DOCS ---
-markdown 
->>>>>>> develop
+markdown
+
+# --- DÉVELOPPEMENT ---
+pre-commit>=2.20.0
+tox>=3.25.0

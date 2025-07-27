@@ -1,16 +1,8 @@
 import pytest
-from fastapi.testclient import TestClient
-from athalia_core.autocomplete_server import app
-from athalia_core.autocomplete_engine import OllamaAutocompleteEngine
 import requests
 from unittest.mock import patch
 
-<<<<<<< HEAD
-=======
-import pytest
-import requests
-
-# Import conditionnel de FastAPI
+# Vérification de la disponibilité de FastAPI
 try:
     from fastapi.testclient import TestClient
     from athalia_core.autocomplete_server import app
@@ -19,8 +11,8 @@ try:
 except ImportError:
     FASTAPI_AVAILABLE = False
     client = None
->>>>>>> develop
 
+# Vérification de la disponibilité du module autocomplete
 try:
     from athalia_core.autocomplete_engine import OllamaAutocompleteEngine
     AUTOCOMPLETE_AVAILABLE = True
