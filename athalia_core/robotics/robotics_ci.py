@@ -130,11 +130,11 @@ jobs:
       
       - name: Build Rust projects
         run: |
-          find . -name "Cargo.toml" -execdir cargo build --release \;
+          find . -name "Cargo.toml" -execdir cargo build --release \\;
       
       - name: Run Rust tests
         run: |
-          find . -name "Cargo.toml" -execdir cargo test \;
+          find . -name "Cargo.toml" -execdir cargo test \\;
       
       - name: Upload Rust artifacts
         uses: actions/upload-artifact@v4
@@ -208,8 +208,8 @@ services:
     working_dir: /workspace
     command: >
       bash -c "
-        find . -name 'Cargo.toml' -execdir cargo build --release \; &&
-        find . -name 'Cargo.toml' -execdir cargo test \;
+        find . -name 'Cargo.toml' -execdir cargo build --release \\; &&
+        find . -name 'Cargo.toml' -execdir cargo test \\;
       "
 
   ci-validation:

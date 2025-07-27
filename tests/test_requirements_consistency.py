@@ -188,12 +188,24 @@ class TestRequirementsConsistency:
         requirements_file = Path('config/requirements.txt')
         try:
             with open(requirements_file, 'r', encoding='utf-8') as f:
-                content = f.read().lower()
+                lines = f.readlines()
 
             found_obsolete = []
-            for dep in obsolete_deps:
-                if dep.lower() in content:
-                    found_obsolete.append(dep)
+            for line_num, line in enumerate(lines, 1):
+                line_lower = line.strip().lower()
+                
+                # Ignorer les commentaires et lignes vides
+                if line_lower.startswith('#') or not line_lower:
+                    continue
+                
+                # Vérifier chaque dépendance obsolète
+                for dep in obsolete_deps:
+                    # Recherche plus précise : mot entier ou package
+                    if (f"{dep.lower()}>=" in line_lower or 
+                        f"{dep.lower()}==" in line_lower or
+                        f"{dep.lower()}<" in line_lower or
+                        line_lower.strip() == dep.lower()):
+                        found_obsolete.append(f"{dep} (ligne {line_num})")
 
             if found_obsolete:
                 pytest.fail(

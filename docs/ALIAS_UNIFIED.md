@@ -290,8 +290,8 @@ exec zsh  # ou exec bash
 
 ## 📚 Ressources
 
-- [Guide Git Workflow](docs/GIT_WORKFLOW.md)
-- [Guide des Tests](docs/TESTS_GUIDE.md)
+- [Guide Git Workflow](GUIDES/GIT_WORKFLOW.md)
+- [Guide des Tests](GUIDES/TESTS_GUIDE.md)
 - [Documentation API](docs/API_REFERENCE.md)
 - [Guide Utilisateur](docs/USER_GUIDE.md)
 

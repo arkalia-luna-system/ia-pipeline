@@ -38,4 +38,8 @@ python main.py
 ```
 
 ---
+<<<<<<< HEAD
 *Généré automatiquement par Athalia* - 2025-07-20
+=======
+*Généré automatiquement par Athalia* - 2025-07-27
+>>>>>>> develop

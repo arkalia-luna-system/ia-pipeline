@@ -141,3 +141,9 @@ benchmark_results.md
 test_*.py
 *_test.py
 test_validation_*.py .mypy_cache/
+
+# Fichiers d'analyse volumineux
+data/comprehensive_analysis_*.json
+data/analysis_*.json
+data/report_*.json
+data/archive/*/archived_comprehensive_analysis_*.json
