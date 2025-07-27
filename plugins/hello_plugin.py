@@ -2,6 +2,7 @@
 Plugin de démonstration Hello World
 """
 
+
 def run():
     """Fonction principale du plugin"""
     return {"message": "Hello from plugin!", "status": "success"}
