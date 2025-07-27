@@ -106,4 +106,4 @@ python -m pytest --cov=athalia-dev-setup
 Voir fichier LICENSE
 
 ---
-*Généré automatiquement par Athalia* - 2025-07-26
+*Généré automatiquement par Athalia* - 2025-07-27
