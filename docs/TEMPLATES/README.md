@@ -99,7 +99,7 @@ Tous les templates ont accès aux variables suivantes :
 
 ## 🎯 Exemples d'Utilisation
 
-### Exemple 1 : Génération d'API
+### Exemple 1 : Génération d'API Flask
 ```python
 context = {
     "project_name": "mon-api",
@@ -109,7 +109,7 @@ context = {
 }
 ```
 
-### Exemple 2 : Génération de CLI
+### Exemple 2 : Génération de Gestionnaire Mémoire
 ```python
 context = {
     "project_name": "mon-cli",
@@ -121,7 +121,7 @@ context = {
 
 ## 🚨 Dépannage
 
-### Problèmes courants
+### Problèmes Courants
 
 1. **Template non trouvé** : Vérifier que le fichier `.j2` existe dans le bon dossier
 2. **Variables manquantes** : S'assurer que toutes les variables requises sont fournies

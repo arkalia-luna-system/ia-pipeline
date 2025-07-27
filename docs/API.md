@@ -337,6 +337,22 @@ Test d'import du module cleanup
 
 ---
 
+### test_plugins
+
+Tests pour le système de plugins dynamiques Athalia
+
+#### Fonctions
+
+##### test_list_plugins
+
+##### test_load_plugin
+
+##### test_run_all_plugins
+
+##### test_export_docker_plugin
+
+---
+
 ### test_i18n
 
 Tests pour le module i18n
@@ -1728,22 +1744,6 @@ Test du traitement des données de benchmark
 
 ---
 
-### test_plugins
-
-Tests pour le système de plugins dynamiques Athalia
-
-#### Fonctions
-
-##### test_list_plugins
-
-##### test_load_plugin
-
-##### test_run_all_plugins
-
-##### test_export_docker_plugin
-
----
-
 ### test_corrections_validation
 
 Script de validation rapide des corrections effectuées
@@ -2494,6 +2494,64 @@ Test du message d'information
 
 ---
 
+### test_encoding_utf8
+
+Test de vérification de l'encodage UTF-8
+Vérifie que tous les fichiers sont correctement encodés en UTF-8
+
+#### Classes
+
+##### TestEncodingUTF8
+
+Tests de vérification de l'encodage UTF-8
+
+**Méthodes :**
+
+- `test_python_files_utf8()`
+- `test_markdown_files_utf8()`
+- `test_yaml_files_utf8()`
+- `test_txt_files_utf8()`
+- `test_requirements_utf8()`
+- `test_config_utf8()`
+- `test_no_bom_marker()`
+- `test_consistent_line_endings()`
+
+#### Fonctions
+
+##### test_python_files_utf8
+
+Vérifie que tous les fichiers Python sont en UTF-8
+
+##### test_markdown_files_utf8
+
+Vérifie que tous les fichiers Markdown sont en UTF-8
+
+##### test_yaml_files_utf8
+
+Vérifie que tous les fichiers YAML sont en UTF-8
+
+##### test_txt_files_utf8
+
+Vérifie que tous les fichiers TXT sont en UTF-8
+
+##### test_requirements_utf8
+
+Vérifie que requirements.txt est en UTF-8
+
+##### test_config_utf8
+
+Vérifie que les fichiers de config sont en UTF-8
+
+##### test_no_bom_marker
+
+Vérifie qu'il n'y a pas de marqueur BOM UTF-8
+
+##### test_consistent_line_endings
+
+Test que tous les fichiers ont des fins de ligne cohérentes
+
+---
+
 ### test_analytics_unit
 
 #### Classes
@@ -2757,6 +2815,73 @@ Test de la structure des modules avancés
 
 ---
 
+### test_no_polluting_files
+
+Tests pour détecter les fichiers polluants
+
+#### Classes
+
+##### TestNoPollutingFiles
+
+Tests pour détecter les fichiers polluants
+
+**Méthodes :**
+
+- `test_no_macos_hidden_files()`
+- `test_no_python_cache_files()`
+- `test_no_temp_files()`
+- `test_no_corrupted_files()`
+- `test_no_editor_files()`
+- `test_no_archive_files()`
+- `test_no_secret_files()`
+- `test_no_large_files()`
+- `test_no_duplicate_files()`
+- `test_no_empty_directories()`
+
+#### Fonctions
+
+##### test_no_macos_hidden_files
+
+Test qu'il n'y a pas de fichiers cachés macOS
+
+##### test_no_python_cache_files
+
+Test qu'il n'y a pas de fichiers cache Python
+
+##### test_no_temp_files
+
+Test qu'il n'y a pas de fichiers temporaires
+
+##### test_no_corrupted_files
+
+Test qu'il n'y a pas de fichiers corrompus
+
+##### test_no_editor_files
+
+Test qu'il n'y a pas de fichiers d'éditeur
+
+##### test_no_archive_files
+
+Test qu'il n'y a pas de fichiers d'archive dans le projet
+
+##### test_no_secret_files
+
+Test qu'il n'y a pas de fichiers de secrets
+
+##### test_no_large_files
+
+Test qu'il n'y a pas de fichiers trop volumineux
+
+##### test_no_duplicate_files
+
+Test qu'il n'y a pas de fichiers dupliqués
+
+##### test_no_empty_directories
+
+Test qu'il n'y a pas de répertoires vides
+
+---
+
 ### test_auto_documenter_unit
 
 #### Classes
@@ -2985,6 +3110,59 @@ Test du score par défaut
 ##### test_score_various_inputs
 
 Test du score avec diverses entrées
+
+---
+
+### test_security_patterns
+
+Test de détection des patterns de sécurité dangereux
+Vérifie qu'il n'y a pas de code dangereux dans le projet
+
+#### Classes
+
+##### TestSecurityPatterns
+
+Tests de détection des patterns de sécurité
+
+**Méthodes :**
+
+- `test_no_hardcoded_passwords()`
+- `test_no_sql_injection_patterns()`
+- `test_no_eval_usage()`
+- `test_no_shell_injection()`
+- `test_no_debug_code()`
+- `test_no_hardcoded_urls()`
+- `test_no_weak_crypto()`
+
+#### Fonctions
+
+##### test_no_hardcoded_passwords
+
+Test qu'il n'y a pas de mots de passe hardcodés
+
+##### test_no_sql_injection_patterns
+
+Test qu'il n'y a pas de patterns d'injection SQL
+
+##### test_no_eval_usage
+
+Test qu'il n'y a pas d'utilisation de fonctions dangereuses
+
+##### test_no_shell_injection
+
+Test qu'il n'y a pas d'injection shell
+
+##### test_no_debug_code
+
+Test qu'il n'y a pas de code de debug
+
+##### test_no_hardcoded_urls
+
+Vérifie qu'il n'y a pas d'URLs hardcodées
+
+##### test_no_weak_crypto
+
+Vérifie qu'il n'y a pas de crypto faible
 
 ---
 
@@ -3232,73 +3410,6 @@ Vérifie la présence des modèles Claude et Mistral dans la config Continue.
 
 ---
 
-### test_no_polluting_files
-
-Tests pour détecter les fichiers polluants
-
-#### Classes
-
-##### TestNoPollutingFiles
-
-Tests pour détecter les fichiers polluants
-
-**Méthodes :**
-
-- `test_no_macos_hidden_files()`
-- `test_no_python_cache_files()`
-- `test_no_temp_files()`
-- `test_no_corrupted_files()`
-- `test_no_editor_files()`
-- `test_no_archive_files()`
-- `test_no_secret_files()`
-- `test_no_large_files()`
-- `test_no_duplicate_files()`
-- `test_no_empty_directories()`
-
-#### Fonctions
-
-##### test_no_macos_hidden_files
-
-Test qu'il n'y a pas de fichiers cachés macOS
-
-##### test_no_python_cache_files
-
-Test qu'il n'y a pas de fichiers cache Python
-
-##### test_no_temp_files
-
-Test qu'il n'y a pas de fichiers temporaires
-
-##### test_no_corrupted_files
-
-Test qu'il n'y a pas de fichiers corrompus
-
-##### test_no_editor_files
-
-Test qu'il n'y a pas de fichiers d'éditeur
-
-##### test_no_archive_files
-
-Test qu'il n'y a pas de fichiers d'archive
-
-##### test_no_secret_files
-
-Test qu'il n'y a pas de fichiers de secrets
-
-##### test_no_large_files
-
-Test qu'il n'y a pas de fichiers trop volumineux
-
-##### test_no_duplicate_files
-
-Test qu'il n'y a pas de fichiers dupliqués
-
-##### test_no_empty_directories
-
-Test qu'il n'y a pas de répertoires vides
-
----
-
 ### test_correction
 
 Script de test pour la correction du projet EmotionSensingRoboticEyes
@@ -3391,59 +3502,6 @@ Vérifie les métriques de qualité de la couverture
 
 ---
 
-### test_security_patterns
-
-Test de détection des patterns de sécurité dangereux
-Vérifie qu'il n'y a pas de code dangereux dans le projet
-
-#### Classes
-
-##### TestSecurityPatterns
-
-Tests de détection des patterns de sécurité
-
-**Méthodes :**
-
-- `test_no_hardcoded_passwords()`
-- `test_no_sql_injection_patterns()`
-- `test_no_eval_usage()`
-- `test_no_shell_injection()`
-- `test_no_debug_code()`
-- `test_no_hardcoded_urls()`
-- `test_no_weak_crypto()`
-
-#### Fonctions
-
-##### test_no_hardcoded_passwords
-
-Test qu'il n'y a pas de mots de passe hardcodés
-
-##### test_no_sql_injection_patterns
-
-Test qu'il n'y a pas de patterns d'injection SQL
-
-##### test_no_eval_usage
-
-Test qu'il n'y a pas d'utilisation de fonctions dangereuses
-
-##### test_no_shell_injection
-
-Test qu'il n'y a pas d'injection shell
-
-##### test_no_debug_code
-
-Test qu'il n'y a pas de code de debug
-
-##### test_no_hardcoded_urls
-
-Vérifie qu'il n'y a pas d'URLs hardcodées
-
-##### test_no_weak_crypto
-
-Vérifie qu'il n'y a pas de crypto faible
-
----
-
 ### test_complet_athalia_syntax
 
 Tests spécialisés pour la syntaxe Python
@@ -3503,64 +3561,6 @@ Tente de corriger une erreur de syntaxe
 ##### get_results
 
 Retourne les résultats des tests de syntaxe
-
----
-
-### test_encoding_utf8
-
-Test de vérification de l'encodage UTF-8
-Vérifie que tous les fichiers sont correctement encodés en UTF-8
-
-#### Classes
-
-##### TestEncodingUTF8
-
-Tests de vérification de l'encodage UTF-8
-
-**Méthodes :**
-
-- `test_python_files_utf8()`
-- `test_markdown_files_utf8()`
-- `test_yaml_files_utf8()`
-- `test_txt_files_utf8()`
-- `test_requirements_utf8()`
-- `test_config_utf8()`
-- `test_no_bom_marker()`
-- `test_consistent_line_endings()`
-
-#### Fonctions
-
-##### test_python_files_utf8
-
-Vérifie que tous les fichiers Python sont en UTF-8
-
-##### test_markdown_files_utf8
-
-Vérifie que tous les fichiers Markdown sont en UTF-8
-
-##### test_yaml_files_utf8
-
-Vérifie que tous les fichiers YAML sont en UTF-8
-
-##### test_txt_files_utf8
-
-Vérifie que tous les fichiers TXT sont en UTF-8
-
-##### test_requirements_utf8
-
-Vérifie que requirements.txt est en UTF-8
-
-##### test_config_utf8
-
-Vérifie que les fichiers de config sont en UTF-8
-
-##### test_no_bom_marker
-
-Vérifie qu'il n'y a pas de marqueur BOM UTF-8
-
-##### test_consistent_line_endings
-
-Vérifie la cohérence des fins de ligne
 
 ---
 
@@ -881744,6 +881744,11 @@ Combine industrialisation complète et intelligence avancée
 - `_generate_unified_report()`
 - `_save_unified_results()`
 - `get_orchestration_insights()`
+- `_run_plugins()`
+- `phase2_backup()`
+- `get_phase2_backup_stats()`
+- `validate_phase2_inputs()`
+- `cli_entry()`
 
 #### Fonctions
 
@@ -881894,6 +881899,42 @@ Sauvegarder les résultats unifiés
 ##### get_orchestration_insights
 
 Obtenir des insights d'orchestration
+
+##### _run_plugins
+
+Exécuter les plugins disponibles
+
+**Paramètres :**
+
+- `project_path`
+
+##### phase2_backup
+
+Sauvegarde Phase2 du projet
+
+**Paramètres :**
+
+- `project_path`
+
+##### get_phase2_backup_stats
+
+Obtenir les statistiques des sauvegardes Phase2
+
+##### validate_phase2_inputs
+
+Valider les entrées Phase2
+
+**Paramètres :**
+
+- `inputs`
+
+##### cli_entry
+
+Point d'entrée CLI
+
+**Paramètres :**
+
+- `args`
 
 ---
 
@@ -882493,6 +882534,16 @@ Calculer la complexité globale d'un arbre AST
 **Paramètres :**
 
 - `tree`
+
+---
+
+### dashboard
+
+#### Fonctions
+
+##### show_benchmarks
+
+##### main
 
 ---
 
@@ -883539,16 +883590,6 @@ Extrait des patterns de correction
 ##### get_correction_stats
 
 Récupère les statistiques de correction
-
----
-
-### dashboard
-
-#### Fonctions
-
-##### show_benchmarks
-
-##### main
 
 ---
 
