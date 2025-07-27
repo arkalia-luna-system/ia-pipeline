@@ -1,10 +1,6 @@
 import subprocess
-<<<<<<< HEAD
 import os
-=======
 import pytest
-
->>>>>>> develop
 
 def test_ath_lint_runs():
     script = os.path.join(os.path.dirname(__file__), '../../bin/ath-lint.py')

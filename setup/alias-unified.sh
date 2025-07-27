@@ -91,7 +91,7 @@ alias ath-smart='python3 "$ATHALIA_ROOT/agents/ath_context_prompt.py"'
 
 # Audit et Sécurité
 alias ath-audit='python3 "$ATHALIA_ROOT/bin/ath-audit.py"'
-alias ath-audit-intelligent='python3 "$ATHALIA_ROOT/athalia_core/intelligent_auditor.py"'
+alias ath-audit-intelligent='python3 "$ATHALIA_ROOT/athalia_core/audit.py"'
 alias ath-security='python3 "$ATHALIA_ROOT/athalia_core/security_auditor.py"'
 
 # Documentation
