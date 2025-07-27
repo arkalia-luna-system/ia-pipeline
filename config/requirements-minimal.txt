@@ -15,13 +15,24 @@ pytest>=8.0.0
 pytest-cov>=4.0.0
 pytest-mock>=3.8.0
 pytest-benchmark>=4.0.0
+pytest-timeout>=2.1.0
+pytest-xdist>=3.0.0
+
+# Web & API
+flask>=3.1.0
+flask-cors>=4.0.0
+
+# Linting & Formatting
+flake8>=7.0.0
+black>=25.0.0
+ruff>=0.1.0
 
 # Utils
 psutil>=6.1.0
-gitpython
-
-# Linting
-flake8>=7.0.0
+gitpython>=3.1.0
 
 # Security
-cryptography>=45.0.0 
+cryptography>=45.0.0
+
+# Documentation
+markdown>=3.4.0 
