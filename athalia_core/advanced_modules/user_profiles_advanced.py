@@ -265,6 +265,7 @@ class GestionnaireProfils:
             """, (nom_profil,))
 
             projets_frequents = {row[0]: row[1] for row in cursor.fetchall()}
+            projets_consultes = list(projets_frequents.keys())
 
             # Temps total passé
             cursor.execute("""
@@ -279,7 +280,9 @@ class GestionnaireProfils:
             return {
                 "actions_frequentes": actions_frequentes,
                 "projets_frequents": projets_frequents,
+                "projets_consultes": projets_consultes,
                 "temps_total": temps_total,
+                "duree_totale": temps_total,
                 "total_actions": sum(actions_frequentes.values()),
                 "total_projets": len(projets_frequents),
                 "connexion": actions_frequentes.get('connexion', 0)
