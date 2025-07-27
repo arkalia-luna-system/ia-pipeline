@@ -60,6 +60,7 @@ class AutoCorrectionAvancee:
         """Correction syntaxique avancée avec analyse AST"""
         corrections = []
         fichiers_traites = 0
+        erreurs_corrigees = 0
 
         for fichier in self.project_path.rglob("*.py"):
             # Ignorer les fichiers macOS ._*
@@ -83,8 +84,10 @@ class AutoCorrectionAvancee:
                         with open(fichier, 'w', encoding='utf-8') as f:
                             f.write(correction['nouveau_contenu'])
                         corrections.append(correction)
+                        erreurs_corrigees += 1
                     elif correction:
                         corrections.append(correction)
+                        erreurs_corrigees += 1
 
                 fichiers_traites += 1
 
@@ -93,7 +96,8 @@ class AutoCorrectionAvancee:
 
         return {
             "corrections_appliquees": corrections,
-            "fichiers_traites": fichiers_traites
+            "fichiers_traites": fichiers_traites,
+            "erreurs_corrigees": erreurs_corrigees
         }
 
     def _corriger_erreur_syntaxe(
@@ -120,6 +124,7 @@ class AutoCorrectionAvancee:
                         "ligne": ligne_erreur + 1,
                         "ancien_contenu": lignes[ligne_erreur],
                         "nouveau_contenu": nouveau_contenu,
+                        "erreur_originale": lignes[ligne_erreur],
                         "description": f"Correction {type_correction} automatique"}
             except Exception:
                 continue
@@ -196,6 +201,8 @@ class AutoCorrectionAvancee:
     def _optimiser_code(self, dry_run: bool) -> Dict[str, Any]:
         """Optimisation automatique du code"""
         optimisations = []
+        fichiers_traites = 0
+        erreurs_corrigees = 0
 
         for fichier in self.project_path.rglob("*.py"):
             # Ignorer les fichiers macOS ._*
@@ -234,6 +241,9 @@ class AutoCorrectionAvancee:
                         f.write(nouveau_contenu)
 
                 optimisations.extend(optimisations_fichier)
+                if optimisations_fichier:
+                    erreurs_corrigees += len(optimisations_fichier)
+                fichiers_traites += 1
 
             except Exception as e:
                 logger.warning(
@@ -241,7 +251,8 @@ class AutoCorrectionAvancee:
 
         return {
             "corrections_appliquees": optimisations,
-            "erreurs_corrigees": len([o for o in optimisations if o])
+            "fichiers_traites": fichiers_traites,
+            "erreurs_corrigees": erreurs_corrigees
         }
 
     def _optimiser_list_comprehensions(
@@ -337,6 +348,8 @@ class AutoCorrectionAvancee:
     def _refactoring_automatique(self, dry_run: bool) -> Dict[str, Any]:
         """Refactoring automatique du code"""
         refactorings = []
+        fichiers_traites = 0
+        erreurs_corrigees = 0
 
         for fichier in self.project_path.rglob("*.py"):
             # Ignorer les fichiers macOS ._*
@@ -375,13 +388,17 @@ class AutoCorrectionAvancee:
                         f.write(nouveau_contenu)
 
                 refactorings.extend(refactorings_fichier)
+                if refactorings_fichier:
+                    erreurs_corrigees += len(refactorings_fichier)
+                fichiers_traites += 1
 
             except Exception as e:
                 logger.warning(f"Erreur lors du refactoring de {fichier}: {e}")
 
         return {
             "corrections_appliquees": refactorings,
-            "erreurs_corrigees": len([r for r in refactorings if r])
+            "fichiers_traites": fichiers_traites,
+            "erreurs_corrigees": erreurs_corrigees
         }
 
     def _extraire_methodes(self, contenu: str) -> Tuple[str, List[Dict]]:
@@ -467,6 +484,8 @@ class AutoCorrectionAvancee:
     def _corriger_anti_patterns(self, dry_run: bool) -> Dict[str, Any]:
         """Correction des anti-patterns"""
         corrections = []
+        fichiers_traites = 0
+        erreurs_corrigees = 0
 
         for fichier in self.project_path.rglob("*.py"):
             # Ignorer les fichiers macOS ._*
@@ -499,6 +518,9 @@ class AutoCorrectionAvancee:
                         })
 
                 corrections.extend(corrections_fichier)
+                if corrections_fichier:
+                    erreurs_corrigees += len(corrections_fichier)
+                fichiers_traites += 1
 
             except Exception as e:
                 logger.warning(
@@ -506,12 +528,15 @@ class AutoCorrectionAvancee:
 
         return {
             "corrections_appliquees": corrections,
-            "erreurs_corrigees": len([c for c in corrections if c])
+            "fichiers_traites": fichiers_traites,
+            "erreurs_corrigees": erreurs_corrigees
         }
 
     def _ameliorer_lisibilite(self, dry_run: bool) -> Dict[str, Any]:
         """Amélioration de la lisibilité"""
         ameliorations = []
+        fichiers_traites = 0
+        erreurs_corrigees = 0
 
         for fichier in self.project_path.rglob("*.py"):
             # Ignorer les fichiers macOS ._*
@@ -552,6 +577,9 @@ class AutoCorrectionAvancee:
                         })
 
                 ameliorations.extend(ameliorations_fichier)
+                if ameliorations_fichier:
+                    erreurs_corrigees += len(ameliorations_fichier)
+                fichiers_traites += 1
 
             except Exception as e:
                 logger.warning(
@@ -560,7 +588,8 @@ class AutoCorrectionAvancee:
 
         return {
             "corrections_appliquees": ameliorations,
-            "erreurs_corrigees": len([a for a in ameliorations if a])
+            "fichiers_traites": fichiers_traites,
+            "erreurs_corrigees": erreurs_corrigees
         }
 
     def generer_rapport(self, resultats: Dict[str, Any]) -> str:

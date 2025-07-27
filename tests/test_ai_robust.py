@@ -165,26 +165,22 @@ def test_fallback_and_distillation_qwen_mistral():
         AIModel.MOCK
     ]
     ai.fallback_chain = ai._build_fallback_chain()
-    # Patch proprement la méthode _call_ollama
-    with patch.object(RobustAI, '_call_ollama', autospec=True) as mock_call_ollama:
-        def fake_call(self, model_name, prompt, timeout=30):
-            model_name = str(model_name) if not hasattr(model_name, 'value') else str(model_name.value)
-            return f"Réponse {model_name}"
-        mock_call_ollama.side_effect = fake_call
-        # Test fallback séquentiel
-        result_fallback = ai.generate_response(PromptContext.BLUEPRINT, distillation=False, idea="test fallback", project_type="test", complexity="simple")
-        assert isinstance(result_fallback, dict)
-        assert 'model' in result_fallback
-        assert 'response' in result_fallback
-        assert 'success' in result_fallback
-        assert 'context' in result_fallback
-        # Test distillation (maintenant géré différemment)
-        result_distill = ai.generate_response(PromptContext.BLUEPRINT, distillation=True, idea="test distillation", project_type="test", complexity="simple")
-        assert isinstance(result_distill, dict)
-        assert 'model' in result_distill
-        assert 'response' in result_distill
-        assert 'success' in result_distill
-        assert 'context' in result_distill
+    
+    # Test fallback séquentiel
+    result_fallback = ai.generate_response(PromptContext.BLUEPRINT, distillation=False, idea="test fallback", project_type="test", complexity="simple")
+    assert isinstance(result_fallback, dict)
+    assert 'model' in result_fallback
+    assert 'response' in result_fallback
+    assert 'success' in result_fallback
+    assert 'context' in result_fallback
+    
+    # Test distillation (maintenant géré différemment)
+    result_distill = ai.generate_response(PromptContext.BLUEPRINT, distillation=True, idea="test distillation", project_type="test", complexity="simple")
+    assert isinstance(result_distill, dict)
+    assert 'model' in result_distill
+    assert 'response' in result_distill
+    assert 'success' in result_distill
+    assert 'context' in result_distill
 
 def test_fallback_ia_qwen_mistral(monkeypatch):
     from athalia_core.ai_robust import fallback_ia

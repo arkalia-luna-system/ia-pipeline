@@ -4,7 +4,8 @@ from athalia_core.distillation.multimodal_distiller import MultimodalDistiller
 
 class TestMultimodalDistiller(unittest.TestCase):
     @patch.object(MultimodalDistiller, 'call_llava', return_value="Analyse image OK")
-    def test_distill(self, mock_llava):
+    @patch('athalia_core.ai_robust.RobustAI._call_model', return_value="Réponse texte OK")
+    def test_distill(self, mock_model, mock_llava):
         distiller = MultimodalDistiller()
         text_prompts = ["Décris cette image"]
         image_paths = ["img1.png"]
