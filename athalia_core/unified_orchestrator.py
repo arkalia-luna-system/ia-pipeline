@@ -161,6 +161,23 @@ class UnifiedOrchestrator:
         self.tasks: List[OrchestrationTask] = []
         self.insights: List[IntelligentInsight] = []
         self.industrialization_steps: List[IndustrializationStep] = []
+        
+        # Configuration par défaut
+        self.config = {
+            "audit": True,
+            "lint": True,
+            "security": True,
+            "analytics": True,
+            "docs": True,
+            "cicd": True,
+            "robotics": True,
+            "intelligence": True,
+            "predictions": True,
+            "optimizations": True,
+            "learning": True,
+            "plugins": True,
+            "templates": True
+        }
 
         # Initialiser les composants
         self._init_database()
@@ -190,16 +207,16 @@ class UnifiedOrchestrator:
     def _init_components(self):
         """Initialiser les composants disponibles"""
         self.components = {
-            'analytics': AdvancedAnalytics() if 'AdvancedAnalytics' in globals() else None,
+            'analytics': AdvancedAnalytics(str(self.root_path)) if 'AdvancedAnalytics' in globals() else None,
             'cicd': AutoCICD() if 'AutoCICD' in globals() else None,
-            'cleaner': AutoCleaner() if 'AutoCleaner' in globals() else None,
-            'documenter': AutoDocumenter() if 'AutoDocumenter' in globals() else None,
-            'tester': AutoTester() if 'AutoTester' in globals() else None,
-            'linter': CodeLinter() if 'CodeLinter' in globals() else None,
-            'auditor': IntelligentAuditor() if 'IntelligentAuditor' in globals() else None,
+            'cleaner': AutoCleaner(str(self.root_path)) if 'AutoCleaner' in globals() else None,
+            'documenter': AutoDocumenter(str(self.root_path)) if 'AutoDocumenter' in globals() else None,
+            'tester': AutoTester(str(self.root_path)) if 'AutoTester' in globals() else None,
+            'linter': CodeLinter(str(self.root_path)) if 'CodeLinter' in globals() else None,
+            'auditor': IntelligentAuditor(str(self.root_path)) if 'IntelligentAuditor' in globals() else None,
             'importer': ProjectImporter() if 'ProjectImporter' in globals() else None,
             'security': SecurityAuditor(str(self.root_path)) if 'SecurityAuditor' in globals() else None,
-            'analyzer': IntelligentAnalyzer() if 'IntelligentAnalyzer' in globals() else None,
+            'analyzer': IntelligentAnalyzer(str(self.root_path)) if 'IntelligentAnalyzer' in globals() else None,
         }
 
     def orchestrate_project_complete(self, project_path: str,

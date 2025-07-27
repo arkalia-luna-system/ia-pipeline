@@ -2934,6 +2934,18 @@ Test qu'il n'y a pas de répertoires vides
 
 ---
 
+### test_security
+
+#### Fonctions
+
+##### test_security_audit_project
+
+**Paramètres :**
+
+- `tmp_path`
+
+---
+
 ### test_auto_tester_unit
 
 #### Classes
@@ -4773,18 +4785,6 @@ Test de la gestion d'erreurs.
 #### Fonctions
 
 ##### test_onboarding
-
-**Paramètres :**
-
-- `tmp_path`
-
----
-
-### test_security
-
-#### Fonctions
-
-##### test_security_audit_project
 
 **Paramètres :**
 
@@ -881126,7 +881126,7 @@ Générer un rapport HTML d'analytics
 
 **Paramètres :**
 
-- `projects_info`
+- `project_path`
 
 ---
 
@@ -881570,6 +881570,22 @@ Sauvegarde les documents générés
 - `usage_guide`
 
 ##### _get_created_files
+
+---
+
+### security
+
+Module sécurité, audit, scan de secrets, prompts sécurité.
+
+#### Fonctions
+
+##### security_audit_project
+
+Audit de sécurité d'un projet
+
+**Paramètres :**
+
+- `project_path`
 
 ---
 
@@ -883195,22 +883211,6 @@ Résout les variables d'environnement dans une configuration
 ##### to_dict
 
 Convertit la configuration en f
-
----
-
-### security
-
-Module sécurité, audit, scan de secrets, prompts sécurité.
-
-#### Fonctions
-
-##### security_audit_project
-
-Audit de sécurité d'un projet
-
-**Paramètres :**
-
-- `project_path`
 
 ---
 
