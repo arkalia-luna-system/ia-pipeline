@@ -883097,7 +883097,7 @@ Charge une configuration depuis un fichier YAML
 
 Args:
     config_path: Chemin vers le fichier de configuration
-    
+
 Returns:
     Dict contenant la configuration chargée
 
@@ -883112,7 +883112,7 @@ Sauvegarde une configuration vers un fichier YAML
 Args:
     config: Configuration à sauvegarder
     config_path: Chemin vers le fichier de destination
-    
+
 Returns:
     True si la sauvegarde a réussi, False sinon
 
@@ -884079,7 +884079,7 @@ Optimiseur de correction automatique avec techniques avancées
 
 ##### optimize_correction
 
-Fonction de convenance pour optimiser une correction
+Fonction utilitaire pour optimiser une correction
 
 **Paramètres :**
 
@@ -884088,7 +884088,7 @@ Fonction de convenance pour optimiser une correction
 
 ##### get_correction_stats
 
-Fonction de convenance pour récupérer les statistiques
+Fonction utilitaire pour obtenir les statistiques de correction
 
 ##### __init__
 
@@ -885084,7 +885084,8 @@ Import d'un profil depuis un fichier JSON
 
 ### unified_agent
 
-Agent unifié pour Athalia - Combine les fonctionnalités de network_agent et qwen_agent
+Agent unifié pour Athalia - Combine les fonctionnalités de 
+network_agent et qwen_agent
 
 #### Classes
 
@@ -885228,6 +885229,18 @@ Retourne la configuration spécialisée pour un type de projet.
 **Paramètres :**
 
 - `project_type`
+
+---
+
+### .!30204!__init__
+
+---
+
+### .!30205!project_classifier
+
+---
+
+### .!30206!project_types
 
 ---
 

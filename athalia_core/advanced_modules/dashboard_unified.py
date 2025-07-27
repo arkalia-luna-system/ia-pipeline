@@ -11,7 +11,7 @@ import logging
 import sqlite3
 import webbrowser
 
-#!/usr/bin/env python3
+# !/usr/bin/env python3
 """
 Module de dashboard unifié simplifié pour Athalia
 Rapports consolidés et métriques en temps réel (sans graphiques)
@@ -19,6 +19,7 @@ Rapports consolidés et métriques en temps réel (sans graphiques)
 
 
 logger = logging.getLogger(__name__)
+
 
 class DashboardUnifieSimple:
     """Dashboard unifié simplifié avec rapports fonctionnels"""
@@ -73,7 +74,10 @@ class DashboardUnifieSimple:
 
             conn.commit()
 
-    def enregistrer_metrique(self, type_metrique: str, valeur: float, projet: Optional[str] = None, details: Optional[Dict] = None):
+    def enregistrer_metrique(
+        self, type_metrique: str, valeur: float, projet: Optional[str] = None, 
+        details: Optional[Dict] = None
+    ):
         """Enregistrement une métrique"""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
@@ -89,8 +93,11 @@ class DashboardUnifieSimple:
             ))
             conn.commit()
 
-    def enregistrer_evenement(self, type_evenement: str, projet: Optional[str] = None, utilisateur: Optional[str] = None,
-                            duree: int = 0, statut: str = "succes", details: Optional[Dict] = None):
+    def enregistrer_evenement(
+        self, type_evenement: str, projet: Optional[str] = None, 
+        utilisateur: Optional[str] = None, duree: int = 0, statut: str = "succes", 
+        details: Optional[Dict] = None
+    ):
         """Enregistrement un événement"""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()

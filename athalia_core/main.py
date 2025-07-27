@@ -163,8 +163,16 @@ def main(test_mode=False):
                 # Pour démo, dashboard sur tous les projets ia_project*
                 projects_info = []
                 for dict_data in os.listdir('.'):
-                    if os.path.isdir(dict_data) and (dict_data.startswith('ia_project') or dict_data.startswith('artistic_') or dict_data.startswith('projet_')):
-                        projects_info.append({'name': dict_data, 'date': datetime.now().strftime('%Y-%m-%d %H:%M'), 'tests': 'OK', 'perf': 'OK'})
+                    if (os.path.isdir(dict_data) and 
+                        (dict_data.startswith('ia_project') or 
+                         dict_data.startswith('artistic_') or 
+                         dict_data.startswith('projet_'))):
+                        projects_info.append({
+                            'name': dict_data, 
+                            'date': datetime.now().strftime('%Y-%m-%d %H:%M'), 
+                            'tests': 'OK', 
+                            'perf': 'OK'
+                        })
                 # generate_dashboard_html(projects_info) # Fonction non disponible
                 # generate_multi_project_mermaid(projects_info) # Fonction non disponible
                 logger.info("Dashboard généré.")
@@ -226,7 +234,8 @@ def main(test_mode=False):
                 if not os.path.exists(backup_dir):
                     logger.info("Aucune sauvegarde trouvée.")
                 else:
-                    backups = [file_handle for file_handle in os.listdir(backup_dir) if file_handle.endswith('.bak')]
+                    backups = [file_handle for file_handle in os.listdir(backup_dir) 
+                             if file_handle.endswith('.bak')]
                     if not backups:
                         logger.info("Aucune sauvegarde .bak trouvée.")
                     else:

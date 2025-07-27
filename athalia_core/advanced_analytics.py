@@ -15,8 +15,10 @@ Module d'analytics avancée pour Athalia
 Génère des métriques et dashboards pour l'analyse de projets
 """
 
+
 class AdvancedAnalytics:
     metrics: dict
+
     def __init__(self, project_path: str):
         self.project_path = Path(project_path)
         self.metrics = {
@@ -59,7 +61,9 @@ class AdvancedAnalytics:
                     tree = ast.parse(f.read())
 
                 complexity = self._calculate_complexity(tree)
-                complexity_data["complexity"][str(py_file.relative_to(self.project_path))] = complexity
+                complexity_data["complexity"][
+                    str(py_file.relative_to(self.project_path))
+                ] = complexity
                 total_complexity += complexity
                 file_count += 1
             except Exception:
@@ -325,6 +329,7 @@ class AdvancedAnalytics:
         """Affiche le rapport d'analyse"""
         logger.info(self._generate_summary())
 
+
 def enrich_genesis_md(outdir, infos, perf_log=None, test_log=None):
     from pathlib import Path
     genesis = Path(outdir) / 'GENESIS.f(f'
@@ -333,6 +338,7 @@ def enrich_genesis_md(outdir, infos, perf_log=None, test_log=None):
         content += '\nAudit IA\n'
     genesis.write_text(content)
     return str(genesis)
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Analytics avancée")

@@ -29,6 +29,7 @@ __all__ = [
     "RobustAI",
 ]
 
+
 def generate_github_ci_yaml(outdir):
     from athalia_core.auto_cicd import generate_github_ci_yaml as real_func
     print('[DEBUG] Wrapper appelé')

@@ -80,21 +80,16 @@ def extract_project_name(idea: str) -> str:
 
 def generate_project(blueprint: dict, outdir, *args, **kwargs):
     """Génère un projet complet basé sur le blueprint"""
-    import os
-    from pathlib import Path
-    import yaml
-
     outdir = Path(outdir)
     outdir.mkdir(parents=True, exist_ok=True)
 
     if kwargs.get('dry_run'):
-        (outdir /
-         'dry_run_report.txt').write_text('[DRY-RUN] Projet qui serait généré:\n' +
-                                          json.dumps(blueprint, indent=2))
+        (outdir / 'dry_run_report.txt').write_text(
+            '[DRY-RUN] Projet qui serait généré:\n' +
+            json.dumps(blueprint, indent=2)
+        )
         return {'outdir': str(outdir), 'files': ['dry_run_report.txt']}
 
-    project_name = blueprint.get('project_name', 'projet_ia')
-    project_type = blueprint.get('project_type', 'web')
     dependencies = blueprint.get('dependencies', [])
 
     # Créer la structure du projet
@@ -127,6 +122,7 @@ def generate_project(blueprint: dict, outdir, *args, **kwargs):
     files_created.append('tests/test_main.py')
 
     # 5. Configuration
+    project_type = blueprint.get('project_type', 'web')
     if project_type == 'api':
         # OpenAPI spec
         openapi_content = generate_openapi_spec(blueprint)
@@ -558,7 +554,6 @@ if __name__ == "__main__":
 """
 
 import sys
-import os
 
 class {project_name.title().replace('_', '')}:
     def __init__(self):
@@ -1138,8 +1133,8 @@ def scan_existing_project(outdir):
 def merge_or_suffix_file(
         file_path: str,
         content: str,
-        file_type: str = None,
-        section_header: str = None):
+        file_type: Optional[str] = None,
+        section_header: Optional[str] = None):
     from pathlib import Path
     file = Path(file_path)
     action = None

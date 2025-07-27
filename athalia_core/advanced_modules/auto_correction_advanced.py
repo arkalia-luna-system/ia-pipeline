@@ -16,6 +16,7 @@ import subprocess
 
 logger = logging.getLogger(__name__)
 
+
 class AutoCorrectionAvancee:
     """Module d'auto-correction avancée avec correction intelligente"""
 
@@ -50,7 +51,9 @@ class AutoCorrectionAvancee:
         # 5. Amélioration de la lisibilité
         resultats.update(self._ameliorer_lisibilite(dry_run))
 
-        logger.info(f"✅ Auto-correction terminée: {len(resultats['corrections_appliquees'])} corrections appliquées")
+        logger.info(
+            f"✅ Auto-correction terminée: {len(resultats['corrections_appliquees'])} corrections appliquées"
+        )
         retour = resultats.copy()
         retour['resultats'] = resultats
         return retour

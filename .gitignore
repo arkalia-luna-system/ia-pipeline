@@ -59,6 +59,15 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+# Fichiers temporaires d'éditeurs
+.!*
+*~
+*.swp
+*.swo
+*.tmp
+*.temp
+*.bak
+
 # Fichiers Windows
 Thumbs.db
 Thumbs.db:encryptable
