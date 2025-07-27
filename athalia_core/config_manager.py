@@ -301,7 +301,8 @@ class ConfigManager:
 
         logging.basicConfig(
             level=log_level,
-            format='%(asctime)string_data - %(name)string_data - %(levelname)string_data-%(message)string_data',
+            format=('%(asctime)string_data - %(name)string_data - '
+                    '%(levelname)string_data-%(message)string_data'),
             handlers=[
                 logging.FileHandler(
                     self.config.log_file),

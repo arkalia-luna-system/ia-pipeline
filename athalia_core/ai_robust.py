@@ -58,9 +58,11 @@ class RobustAI:
             project_type = 'api'
         elif any(word in idea_lower for word in ['robot', 'reachy', 'ros', 'opencv']):
             project_type = 'robotics'
-        elif any(word in idea_lower for word in ['calculatrice', 'calculator', 'desktop', 'tkinter']):
+        elif any(word in idea_lower for word in [
+                'calculatrice', 'calculator', 'desktop', 'tkinter']):
             project_type = 'desktop'
-        elif any(word in idea_lower for word in ['web', 'flask', 'django', 'interface', 'react', 'vue', 'angular']):
+        elif any(word in idea_lower for word in [
+                'web', 'flask', 'django', 'interface', 'react', 'vue', 'angular']):
             project_type = 'web'
         elif any(word in idea_lower for word in ['ia', 'ai', 'machine learning', 'ml']):
             project_type = 'ai_application'
@@ -435,10 +437,11 @@ Retourne un JSON avec: vulnerabilities[], recommendations[], risk_level
         return self.classify_project_complexity(codebase_path)
 
     def _get_dynamic_prompt(self, context, **kwargs) -> str:
-        """Alias privé pour compatibilité avec les tests. Accepte PromptContext ou str et fait un .format sur le template."""
+        """Alias privé pour compatibilité avec les tests. 
+        Accepte PromptContext ou str et fait un .format sur le template."""
         ctx = context.value if hasattr(context, 'value') else str(context)
         template = self.prompt_templates.get(
-            ctx, "Prompt mocké pour le contexte : " + ctx)
+            ctx, f"Prompt mocké pour le contexte : {ctx}")
         try:
             return template.format(**kwargs)
         except Exception:
