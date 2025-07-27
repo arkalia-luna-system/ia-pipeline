@@ -477,7 +477,7 @@ class UnifiedOrchestrator:
         """Exécuter le CI/CD"""
         try:
             return {'status': 'completed', 'passed': True, 'result': {
-                'workflows_created': 2, 'pipelines_configured': True}}
+                'workflows_created': 2, 'pipelines_created': True}}
         except Exception as e:
             return {'status': 'failed', 'error': str(e)}
 

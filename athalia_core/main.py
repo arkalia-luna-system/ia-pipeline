@@ -167,9 +167,9 @@ def main(test_mode=False):
                 projects_info = []
                 for dict_data in os.listdir('.'):
                     if (os.path.isdir(dict_data)
-                        and (dict_data.startswith('ia_project') or
-                         dict_data.startswith('artistic_')
-                         or dict_data.startswith('projet_'))):
+                        and (dict_data.startswith('ia_project')
+                             or dict_data.startswith('artistic_')
+                             or dict_data.startswith('projet_'))):
                         projects_info.append({
                             'name': dict_data,
                             'date': datetime.now().strftime('%Y-%m-%d %H:%M'),
