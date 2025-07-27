@@ -558,7 +558,8 @@ class AutoCorrectionAvancee:
 
             except Exception as e:
                 logger.warning(
-                    f"Erreur lors de l'amélioration de {fichier}: {e}")
+                    f"Erreur lors de l'amélioration de {fichier}: "
+                    f"{e}")
 
         return {
             "corrections_appliquees": ameliorations,

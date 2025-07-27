@@ -259,7 +259,8 @@ class DashboardUnifieSimple:
             rapport.append("|--------|---------|----------|---------|")
             for projet in top_projets:
                 rapport.append(
-                    f"| {projet['projet']} | {projet['score_qualite']} | {projet['score_securite']} | {projet['score_moyen']} |")
+                    f"| {projet['projet']} | {projet['score_qualite']} | "
+                    f"{projet['score_securite']} | {projet['score_moyen']} |")
             rapport.append("")
 
         # Événements récents
@@ -271,7 +272,9 @@ class DashboardUnifieSimple:
             for event in evenements_recents[:10]:
                 statut_emoji = "✅" if event["statut"] == "succes" else "❌"
                 rapport.append(
-                    f"| {event['type']} | {event['projet'] or '-'} | {event['utilisateur'] or '-'} | {event['timestamp']} | {statut_emoji} |")
+                    f"| {event['type']} | {event['projet'] or '-'} | "
+                    f"{event['utilisateur'] or '-'} | {event['timestamp']} | "
+                    f"{statut_emoji} |")
             rapport.append("")
 
         return "\n".join(rapport)
@@ -282,7 +285,8 @@ class DashboardUnifieSimple:
         """
         file_handle.write('<h2>Résultat de la distillation IA</h2>')
         file_handle.write(
-            '<p><b>Réponse distillée :</b> Réponse de Ollama à "Explique la distillation IA en 2 phrases."</p>')
+            '<p><b>Réponse distillée :</b> Réponse de Ollama à '
+            '"Explique la distillation IA en 2 phrases."</p>')
         file_handle.write('<p><b>Score audit distillé :</b> 7.60</p>')
         file_handle.write('<p><b>Correction distillée :</b> fix2</p>')
 
