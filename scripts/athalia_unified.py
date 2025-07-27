@@ -148,7 +148,10 @@ MODULES INTÉGRÉS:
             try:
                 from athalia_core.athalia_orchestrator import AthaliaOrchestrator
             except ImportError:
-                logger.info("⚠️ Module athalia_orchestrator non disponible, utilisation de la version simplifiée")
+                logger.info(
+                    "⚠️ Module athalia_orchestrator non disponible, "
+                    "utilisation de la version simplifiée"
+                )
                 # Version simplifiée pour les tests
                 class AthaliaOrchestrator:
 

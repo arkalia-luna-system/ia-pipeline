@@ -269,14 +269,14 @@ ros2 launch reachy_bringup reachy_bringup.launch.py
                 with open(compose_file, 'w') as f:
                     f.write(self.create_reachy_compose_template())
                 self.logger.info("✅ docker-compose.yaml créé")
-            
+
             # Créer Dockerfile
             dockerfile = self.docker_path / "Dockerfile"
             if not dockerfile.exists():
                 with open(dockerfile, 'w') as f:
                     f.write(self.create_dockerfile_template())
                 self.logger.info("✅ Dockerfile créé")
-            
+
             # Créer script de démarrage
             start_script = self.docker_path / "start.sh"
             if not start_script.exists():
@@ -284,7 +284,7 @@ ros2 launch reachy_bringup reachy_bringup.launch.py
                     f.write(self.create_start_script_template())
                 os.chmod(start_script, 0o755)
                 self.logger.info("✅ start.sh créé")
-            
+
             # Créer .dockerignore
             dockerignore = self.project_path / ".dockerignore"
             if not dockerignore.exists():
@@ -301,13 +301,13 @@ htmlcov/
 .pytest_cache/
 """)
                 self.logger.info("✅ .dockerignore créé")
-            
+
             return True
-            
+
         except Exception as e:
             self.logger.error(f"Erreur setup Docker: {e}")
             return False
-    
+
     def run_docker_compose(self, service: Optional[str] = None) -> bool:
         """Lancer docker-compose"""
         try:
@@ -315,24 +315,24 @@ htmlcov/
             if not compose_file.exists():
                 self.logger.error("docker-compose.yaml non trouvé")
                 return False
-            
+
             cmd = ["docker-compose", "-f", str(compose_file), "up", "-d"]
             if service:
                 cmd.append(service)
-            
+
             result = subprocess.run(cmd, cwd=self.project_path, capture_output=True, text=True)
-            
+
             if result.returncode == 0:
                 self.logger.info("✅ Docker Compose lancé avec succès")
                 return True
             else:
                 self.logger.error(f"Erreur Docker Compose: {result.stderr}")
                 return False
-                
+
         except Exception as e:
             self.logger.error(f"Erreur lancement Docker: {e}")
             return False
-    
+
     def generate_docker_report(self, result: DockerValidationResult) -> str:
         """Générer rapport Docker"""
         report = f"""
@@ -345,7 +345,7 @@ htmlcov/
 
 ## 🔧 Services Détectés
 """
-        
+
         for service in result.services:
             report += f"""
 ### {service.name}
@@ -355,15 +355,15 @@ htmlcov/
 - **Ports**: {len(service.ports)}
 - **Network**: {service.network_mode or 'default'}
 """
-        
+
         if result.issues:
             report += "\n## 🚨 Problèmes Détectés\n"
             for issue in result.issues:
                 report += f"- {issue}\n"
-        
+
         if result.recommendations:
             report += "\n## 💡 Recommandations\n"
             for rec in result.recommendations:
                 report += f"- {rec}\n"
-        
+
         return report 
