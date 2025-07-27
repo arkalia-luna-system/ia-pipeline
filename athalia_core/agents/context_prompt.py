@@ -132,10 +132,10 @@ def detect_prompt_semantic(filepath):
     prompt_list = '\n'.join([f"- {p['name']} ({p['file']})" for p in PROMPTS])
     system_prompt = (
         "Tu es un assistant expert en analyse de contexte de code. "
-        "Voici la liste des prompts disponibles :\n" +
-        prompt_list +
-        "\nLis le contenu suivant et indique le nom du prompt le plus pertinent pour améliorer ou analyser. "
-        "Réponds uniquement par le nom exact du prompt.")
+        "Voici la liste des prompts disponibles :\n"
+        + prompt_list
+        + "\nLis le contenu suivant et indique le nom du prompt le plus pertinent "
+        "pour améliorer ou analyser. Réponds uniquement par le nom exact du prompt.")
     # Appel Ollama / Mistral
     try:
         ollama_cmd = [
@@ -159,7 +159,8 @@ def detect_prompt_semantic(filepath):
 def show_prompts(scored, semantic_prompt=None):
     if semantic_prompt:
         logging.info(
-            f"\nPrompt IA recommandé par analyse sémantique : {semantic_prompt['name']} -> {semantic_prompt['file']}")
+            f"\nPrompt IA recommandé par analyse sémantique : "
+            f"{semantic_prompt['name']} -> {semantic_prompt['file']}")
         if os.path.exists(semantic_prompt['file']):
             with open(semantic_prompt['file'], 'r', encoding='utf-8') as file_handle:
                 prompt_text = file_handle.read()
