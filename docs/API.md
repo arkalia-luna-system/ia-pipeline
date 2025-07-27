@@ -881688,13 +881688,7 @@ Orchestrateur unifié pour Athalia - Industrialisation IA complète
 
 ##### BackupSystem
 
-Système de sauvegarde simple
-
-**Méthodes :**
-
-- `__init__()`
-- `create_backup()`
-- `get_backup_stats()`
+Système de sauvegarde simplifié
 
 ##### OrchestrationTask
 
@@ -881772,16 +881766,6 @@ Sauvegarde automatique de l'orchestrateur
 ##### main
 
 Fonction principale
-
-##### __init__
-
-##### create_backup
-
-Créer une sauvegarde
-
-##### get_backup_stats
-
-Obtenir les statistiques de sauvegarde
 
 ##### __init__
 
@@ -885973,7 +885957,7 @@ Créer docker-compose pour CI
 
 ##### run_ci_pipeline
 
-Exécuter le pipeline CI/CD complet
+Exécuter le pipeline CI complet
 
 **Paramètres :**
 
@@ -886001,11 +885985,11 @@ Exécuter déploiement
 
 ##### _collect_artifacts
 
-Collecter les artifacts
+Collecter artifacts
 
 ##### generate_ci_report
 
-Générer rapport CI/CD
+Générer rapport CI
 
 **Paramètres :**
 
@@ -886013,7 +885997,7 @@ Générer rapport CI/CD
 
 ##### setup_ci_environment
 
-Configurer l'environnement CI/CD
+Configurer l'environnement CI
 
 ---
 
@@ -886391,34 +886375,12 @@ Interface unifiée pour tous les modules Athalia
 - `industrialize_project()`
 - `audit_project()`
 - `scan_projects()`
-- `industrialize_project()`
-- `audit_project()`
-- `scan_projects()`
 
 #### Fonctions
 
 ##### main
 
 Fonction principale du CLI unifié
-
-##### industrialize_project
-
-**Paramètres :**
-
-- `project_path`
-- `config`
-
-##### audit_project
-
-**Paramètres :**
-
-- `project_path`
-
-##### scan_projects
-
-**Paramètres :**
-
-- `project_path`
 
 ##### industrialize_project
 

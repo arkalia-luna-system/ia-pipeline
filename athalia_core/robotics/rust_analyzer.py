@@ -63,7 +63,9 @@ class RustAnalyzer:
         # Vérifier si Rust est installé
         if not self._check_rust_build_system():
             issues.append("Rust/Cargo n'est pas installé ou accessible")
-            recommendations.append("Installer Rust: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh")
+            recommendations.append(
+                "Installer Rust: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
+            )
 
         # Trouver tous les Cargo.toml
         cargo_files = list(self.project_path.rglob("Cargo.toml"))
