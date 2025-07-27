@@ -240,9 +240,9 @@ dashboard = robotics_manager.generate_robotics_dashboard("./mon-projet")
 ## 🔗 Navigation
 
 - [Documentation API principale](README.md)
-- [Core Modules](core_modules.md)
-- [Orchestrateur](orchestrator.md)
-- [Plugins et Templates](plugins.md)
+- [Core Modules](API/core_modules.md)
+- [Orchestrateur](API/orchestrator.md)
+- [Plugins et Templates](API/plugins.md)
 
 ---
 

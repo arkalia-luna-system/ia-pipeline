@@ -158,9 +158,9 @@ settings = config.load_config()
 ## 🔗 Navigation
 
 - [Documentation API principale](README.md)
-- [Orchestrateur](orchestrator.md)
-- [Plugins et Templates](plugins.md)
-- [Robotics](robotics.md)
+- [Orchestrateur](API/orchestrator.md)
+- [Plugins et Templates](API/plugins.md)
+- [Robotics](API/robotics.md)
 
 ---
 
