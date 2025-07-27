@@ -105,15 +105,23 @@ class TestNoPollutingFiles:
             )
     
     def test_no_archive_files(self):
-        """Test qu'il n'y a pas de fichiers d'archive"""
+        """Test qu'il n'y a pas de fichiers d'archive dans le projet"""
+        archive_extensions = {'.zip', '.tar.gz', '.tar.bz2', '.rar', '.7z', '.gz', '.bz2'}
+        
+        # Exclure les dossiers qui peuvent contenir des fichiers d'archive normaux
+        exclude_dirs = {'.git', '__pycache__', '.venv', 'venv', 'node_modules', 'build', 'dist'}
+        
         archive_files = []
+        
         for root, dirs, files in os.walk('.'):
-            if '.git' in root:
-                continue
+            # Exclure les dossiers non désirés
+            dirs[:] = [d for d in dirs if d not in exclude_dirs]
+            
             for file in files:
-                if (file.endswith('.zip') or file.endswith('.tar.gz') or 
-                    file.endswith('.rar') or file.endswith('.7z')):
-                    archive_files.append(os.path.join(root, file))
+                file_ext = Path(file).suffix.lower()
+                if file_ext in archive_extensions:
+                    file_path = os.path.join(root, file)
+                    archive_files.append(file_path)
         
         if archive_files:
             pytest.fail(
