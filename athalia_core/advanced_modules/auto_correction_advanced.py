@@ -52,7 +52,8 @@ class AutoCorrectionAvancee:
         resultats.update(self._ameliorer_lisibilite(dry_run))
 
         logger.info(
-            f"✅ Auto-correction terminée: {len(resultats['corrections_appliquees'])} corrections appliquées"
+            f"✅ Auto-correction terminée: "
+            f"{len(resultats['corrections_appliquees'])} corrections appliquées"
         )
         retour = resultats.copy()
         retour['resultats'] = resultats
@@ -142,7 +143,8 @@ class AutoCorrectionAvancee:
                 ligne_precedente = lignes[ligne_erreur - 1]
                 if ligne_precedente.strip().endswith(':'):
                     return '    ' + ligne
-                elif ligne_precedente.strip().startswith('def ') or ligne_precedente.strip().startswith('class '):
+                elif (ligne_precedente.strip().startswith('def ') 
+                      or ligne_precedente.strip().startswith('class ')):
                     return '    ' + ligne
 
         return None
@@ -569,8 +571,7 @@ class AutoCorrectionAvancee:
 Rapport d'Auto-Correction
 ========================
 """
-        rapport += "\n📊 RAPPORT D'AUTO-CORRECTION - {0}\n".format(
-            self.project_path)
+        rapport += f"\n📊 RAPPORT D'AUTO-CORRECTION - {self.project_path}\n"
         rapport += f"{'='*60}\n\n"
 
         # Utiliser le dictionnaire 'resultats' pour générer le rapport
