@@ -231,13 +231,15 @@ class IntelligentAnalyzer:
             ]
             if high_impact_antipatterns:
                 recommendations.append(
-                    f"⚠️ {len(high_impact_antipatterns)} anti-patterns critiques - refactoring urgent"
+                    f"⚠️ {len(high_impact_antipatterns)} anti-patterns critiques - "
+                    f"refactoring urgent"
                 )
 
         # Recommandations d'architecture
         if architecture_analysis.performance_issues:
             recommendations.append(
-                f"🏗️ {len(architecture_analysis.performance_issues)} problèmes d'architecture détectés"
+                f"🏗️ {len(architecture_analysis.performance_issues)} "
+                f"problèmes d'architecture détectés"
             )
 
         # Recommandations de performance
@@ -257,7 +259,8 @@ class IntelligentAnalyzer:
                 "📊 Considérer l'implémentation d'un système de métriques continues"
             )
             recommendations.append(
-                "🔄 Planifier des sessions de refactoring régulières")
+                "🔄 Planifier des sessions de refactoring régulières"
+            )
 
         return recommendations
 

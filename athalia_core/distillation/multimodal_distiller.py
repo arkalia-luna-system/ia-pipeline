@@ -12,10 +12,10 @@ class MultimodalDistiller:
     def distill(self,
                 text_prompts: List[str],
                 image_paths: List[str],
-                context: Optional[Dict[str,
-                                       Any]] = None) -> str:
+                context: Optional[Dict[str, Any]] = None) -> str:
         """
-        Fusionne les réponses texte et image en utilisant LLaVA (Ollama) et d'autres modèles si besoin.
+        Fusionne les réponses texte et image en utilisant LLaVA (Ollama) et
+        d'autres modèles si besoin.
         :param text_prompts: Liste de prompts texte
         :param image_paths: Liste de chemins d'images (un par prompt ou global)
         :param context: Contexte optionnel
