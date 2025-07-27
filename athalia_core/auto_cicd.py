@@ -15,6 +15,7 @@ logger = logging.getLogger(__name__)
 Module de gestion CI/CD pour Athalia
 """
 
+
 class AutoCICD:
     """Générateur de CI / CD"""
 
@@ -34,7 +35,10 @@ class AutoCICD:
         docker_config = self._generate_docker_config()
         deployment_config = self._generate_deployment_config()
         # Sauvegarde des configurations
-        self._save_cicd_configs(github_actions, docker_config, deployment_config)
+        self._save_cicd_configs(
+            github_actions,
+            docker_config,
+            deployment_config)
         return {
             "github_actions": github_actions,
             "docker_config": docker_config,
@@ -95,7 +99,8 @@ class AutoCICD:
         if req_file.exists():
             try:
                 with open(req_file, 'r') as file_handle:
-                    deps = [line.strip() for line in file_handle if line.strip() and not line.startswith('#')]
+                    deps = [line.strip() for line in file_handle if line.strip(
+                    ) and not line.startswith('#')]
                     dependencies['python'] = deps
             except Exception:
                 pass
@@ -162,7 +167,11 @@ class AutoCICD:
         configs["k8s-service.yaml"] = "# k8s service content"
         return configs
 
-    def _save_cicd_configs(self, github_actions, docker_config, deployment_config):
+    def _save_cicd_configs(
+            self,
+            github_actions,
+            docker_config,
+            deployment_config):
         from pathlib import Path
         ci_dir = Path(self.project_path) / '.f' / 'f'
         ci_dir.mkdir(parents=True, exist_ok=True)
@@ -173,6 +182,7 @@ class AutoCICD:
         ci_file = self.project_path / '.f' / 'f' / 'ci.f(f'
         return [str(ci_file)] if ci_file.exists() else []
 
+
 def generate_github_ci_yaml(outdir):
     from pathlib import Path
     outdir = Path(str(outdir))  # Force la conversion
@@ -181,7 +191,7 @@ def generate_github_ci_yaml(outdir):
     (ci_dir / 'ci.f(f').write_text('# CI/CD config')
     print(f'[DEBUG] Fichier généré : {ci_dir / "ci.f(f"}')
 
+
 __all__ = ['AutoCICD', 'generate_github_ci_yaml']
 globals()['generate_github_ci_yaml'] = generate_github_ci_yaml
-import builtins
 builtins.generate_github_ci_yaml = generate_github_ci_yaml

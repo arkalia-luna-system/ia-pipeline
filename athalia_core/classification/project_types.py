@@ -7,6 +7,7 @@ from enum import Enum
 Types de projets et leurs configurations spécialisées.
 """
 
+
 class ProjectType(Enum):
     """Types de projets supportés."""
     ARTISTIC = "artistic"      # Projets artistiques (fleur qui danse, etc.)
@@ -17,6 +18,7 @@ class ProjectType(Enum):
     MOBILE = "mobile"         # Applications mobiles
     IOT = "iot"               # Internet des objets
     GENERIC = "generic"       # Projet générique (fallback)
+
 
 def get_project_config(project_type: ProjectType) -> Dict[str, Any]:
     """Retourne la configuration spécialisée pour un type de projet."""

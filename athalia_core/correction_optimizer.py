@@ -20,6 +20,7 @@ import shutil
 
 from .logger_advanced import log_correction, log_performance, log_error
 
+
 @dataclass
 class CorrectionResult:
     """Résultat d'une correction"""
@@ -30,40 +31,41 @@ class CorrectionResult:
     duration: float
     error_message: Optional[str] = None
 
+
 class CorrectionOptimizer:
     """Optimiseur de correction automatique avec techniques avancées"""
-    
+
     def __init__(self):
         self.correction_history = defaultdict(list)
         self.success_patterns = defaultdict(int)
         self.failure_patterns = defaultdict(int)
         self.performance_stats = defaultdict(list)
-        
+
         # Techniques de correction disponibles (seront implémentées au besoin)
         self.correction_techniques = []
-    
+
     def optimize_correction(self, file_path: str, content: str) -> CorrectionResult:
         """Correction optimisée multi-passes avec apprentissage"""
         start_time = time.time()
-        
+
         try:
             # Correction multi-passes
             corrected_content = content
             corrections_applied = []
-            
+
             # Pass 1: Corrections syntaxiques basiques (toujours appliquées)
             corrected_content, basic_corrections = self._apply_basic_corrections(corrected_content)
             corrections_applied.extend(basic_corrections)
-            
+
             # Pass 2: Corrections AST-based (seulement si nécessaire)
             try:
                 ast.parse(corrected_content)
                 # Le code compile, pas besoin de corrections AST
                 pass
-            except SyntaxError as e:
+            except SyntaxError:
                 corrected_content, ast_corrections = self._apply_ast_corrections(corrected_content)
                 corrections_applied.extend(ast_corrections)
-            
+
             # Pass 3: Corrections contextuelles (seulement si nécessaire)
             try:
                 ast.parse(corrected_content)
@@ -72,10 +74,10 @@ class CorrectionOptimizer:
             except SyntaxError:
                 corrected_content, context_corrections = self._apply_contextual_corrections(corrected_content)
                 corrections_applied.extend(context_corrections)
-            
+
             # Pass 4: Validation finale
             success = self._validate_correction(corrected_content)
-            
+
             # Log de la correction
             log_correction(
                 file_path=file_path,
@@ -85,10 +87,10 @@ class CorrectionOptimizer:
                 new_content=corrected_content,
                 duration=time.time() - start_time
             )
-            
+
             # Apprentissage des patterns
             self._learn_from_correction(file_path, content, corrected_content, success)
-            
+
             return CorrectionResult(
                 success=success,
                 original_content=content,
@@ -96,29 +98,30 @@ class CorrectionOptimizer:
                 corrections_applied=corrections_applied,
                 duration=time.time() - start_time
             )
-            
-        except Exception as e:
-            log_error(e, f"correction_optimizer_{file_path}")
+
+        except Exception:
+            log_error(Exception("Correction failed"), f"correction_optimizer_{file_path}")
             return CorrectionResult(
                 success=False,
                 original_content=content,
                 corrected_content=content,
                 corrections_applied=[],
                 duration=time.time() - start_time,
-                error_message=str(e)
+                error_message="Correction failed"
             )
-    
+
     def _apply_basic_corrections(self, content: str) -> Tuple[str, List[Dict[str, Any]]]:
         """Applique les corrections basiques"""
         corrections = []
         lines = content.split('\n')
-        
+
         # Correction d'indentation basique d'abord
         for i, line in enumerate(lines):
             original_line = line
             
             # Si c'est une ligne de code (pas vide, pas commentaire) et qu'elle n'a pas d'indentation
-            if line.strip() and not line.strip().startswith('#') and not line.startswith(' '):
+            if (line.strip() and not line.strip().startswith('#') and 
+                not line.startswith(' ')):
                 # Si la ligne précédente se termine par ':', ajouter l'indentation
                 if i > 0 and lines[i-1].strip().endswith(':'):
                     line = '    ' + line
