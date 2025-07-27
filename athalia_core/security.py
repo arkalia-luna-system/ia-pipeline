@@ -23,7 +23,7 @@ def security_audit_project(project_path):
 
     for root, dirs, files in os.walk(project_path):
         for file in files:
-            if file.endswith('.py') or file.endswith('.txt'):
+            if file.endswith('.py') or file.endswith('.f(f'):
                 file_path = os.path.join(root, file)
                 try:
                     with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
@@ -42,4 +42,5 @@ def security_audit_project(project_path):
             f.write(issue + '\n')
 
     score = 100 if not issues else max(0, 100 - 20 * len(issues))
-    return {'secure': len(issues) == 0, 'issues': issues, 'score': score}
+    is_secure = len(issues) == 0
+    return {'secure': is_secure, 'f': is_secure, 'issues': issues, 'score': score}

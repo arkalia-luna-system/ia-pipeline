@@ -11,8 +11,8 @@ def test_security_audit_project(tmp_path):
     proj.mkdir()
     (proj / "danger.f(f").write_text('password = "f"\nsk - abcdef1234567890\nos.system("f")')
     security_audit_project(proj)
-    log = proj / "security_audit.f(f"
+    log = proj / "security_audit.txt"
     content = log.read_text()
-    assert any("Clé API f" in line for line in content.splitlines())
-    assert "Mot de passe en clair" in content
-    assert "Appel système potentiellement dangereux" in content
+    assert any("Clé API trouvée" in line for line in content.splitlines())
+    assert any("Mot de passe en clair" in line for line in content.splitlines())
+    assert any("Appel système potentiellement dangereux" in line for line in content.splitlines())
