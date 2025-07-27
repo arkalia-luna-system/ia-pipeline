@@ -15,9 +15,11 @@ class AdaptiveDistiller:
         Initialise le distillateur adaptatif.
         :param history_path: Chemin du fichier JSON pour l'historique (optionnel)
         """
-        self.preference_weights: Dict[str, float] = {}  # Pondération des réponses
+        self.preference_weights: Dict[str,
+                                      float] = {}  # Pondération des réponses
         self.success_history: List[str] = []     # Historique des succès
-        self.feedback: Dict[str, List[int]] = {}            # {réponse: [succès, échecs]}
+        # {réponse: [succès, échecs]}
+        self.feedback: Dict[str, List[int]] = {}
         self.history_path = history_path or "adaptive_distillation_history.json"
         self.load_history()
 
@@ -109,4 +111,5 @@ class AdaptiveDistiller:
                 self.success_history = data.get("success_history", [])
                 self.feedback = data.get("feedback", {})
             except Exception as e:
-                print(f"[AdaptiveDistiller] Erreur chargement historique : {e}") 
+                print(
+                    f"[AdaptiveDistiller] Erreur chargement historique : {e}")

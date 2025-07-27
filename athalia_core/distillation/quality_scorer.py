@@ -5,12 +5,15 @@ Module de scoring de qualité pour Athalia/Arkalia
 """
 from typing import Any, Dict, Optional
 
+
 class QualityScorer:
     def __init__(self, weights: Optional[Dict[str, float]] = None):
-        # Pondération des critères (ex: {'pertinence': 0.5, 'clarté': 0.3, 'impact': 0.2})
+        # Pondération des critères (ex: {'pertinence': 0.5, 'clarté': 0.3,
+        # 'impact': 0.2})
         self.weights = weights or {}
 
-    def score(self, solution: Any, context: Optional[Dict[str, Any]] = None) -> float:
+    def score(self, solution: Any,
+              context: Optional[Dict[str, Any]] = None) -> float:
         """
         Évalue la qualité d'une solution IA.
         :param solution: Solution à scorer (str, dict, ...)
@@ -18,4 +21,4 @@ class QualityScorer:
         :return: Score de qualité (float)
         """
         # Placeholder : score fixe, à remplacer par une vraie logique
-        return 1.0 
+        return 1.0

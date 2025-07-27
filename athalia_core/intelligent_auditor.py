@@ -48,7 +48,8 @@ class IntelligentAuditor:
             "score": 0
         }
 
-        logger.info(f"🔍 Audit intelligent en cours pour : {self.project_path.name}")
+        logger.info(
+            f"🔍 Audit intelligent en cours pour : {self.project_path.name}")
 
         # Analyses parallèles
         self._analyze_project_info()
@@ -160,7 +161,7 @@ class IntelligentAuditor:
             try:
                 with open(req_file, 'r') as file_handle:
                     deps = [
-                        line.strip() for line in file_handle 
+                        line.strip() for line in file_handle
                         if line.strip() and not line.startswith('#')
                     ]
                     dependencies['python'] = deps
@@ -252,9 +253,13 @@ class IntelligentAuditor:
                                 f"Ligne trop longue: {file_path.name}:{index}"
                             )
                         if line.strip() and not line.startswith('#'):
-                            if not line.startswith((' ', '\t')) and line.strip():
-                                if not any(keyword in line for keyword in ['class ', 'def ', 'import ', 'from ']):
-                                    style_issues.append(f"Indentation: {file_path.name}:{index}")
+                            if not line.startswith(
+                                    (' ', '\t')) and line.strip():
+                                if not any(
+                                    keyword in line for keyword in [
+                                        'class ', 'def ', 'import ', 'from ']):
+                                    style_issues.append(
+                                        f"Indentation: {file_path.name}:{index}")
             except Exception:
                 pass
 
@@ -280,7 +285,10 @@ class IntelligentAuditor:
             except Exception:
                 pass
 
-        coverage = (documented_functions / total_functions * 100) if total_functions > 0 else 0
+        coverage = (
+            documented_functions /
+            total_functions *
+            100) if total_functions > 0 else 0
 
         return {
             "coverage": coverage,
@@ -300,10 +308,12 @@ class IntelligentAuditor:
                     for node in ast.walk(tree):
                         if isinstance(node, ast.FunctionDef):
                             if not re.match(r'^[a-z_][a-z0-9_]*$', node.name):
-                                issues.append(f"Fonction: {node.name} dans {file_path.name}")
+                                issues.append(
+                                    f"Fonction: {node.name} dans {file_path.name}")
                         elif isinstance(node, ast.ClassDef):
                             if not re.match(r'^[A-Z][a-zA-Z0-9]*$', node.name):
-                                issues.append(f"Classe: {node.name} dans {file_path.name}")
+                                issues.append(
+                                    f"Classe: {node.name} dans {file_path.name}")
             except Exception:
                 pass
 
@@ -341,7 +351,8 @@ class IntelligentAuditor:
                     content = file_handle.read()
                     for pattern, description in dangerous_patterns:
                         if re.search(pattern, content):
-                            vulnerabilities.append(f"{description}: {file_path.name}")
+                            vulnerabilities.append(
+                                f"{description}: {file_path.name}")
             except Exception:
                 pass
 
@@ -364,7 +375,8 @@ class IntelligentAuditor:
                         content = file_handle.read()
                         for pattern in secret_patterns:
                             if re.search(pattern, content):
-                                secrets.append(f"Secret détecté: {file_path.name}")
+                                secrets.append(
+                                    f"Secret détecté: {file_path.name}")
                                 break
                 except Exception:
                     pass
@@ -408,7 +420,8 @@ class IntelligentAuditor:
                 size = file_path.stat().st_size
                 total_size += size
                 if size > 1024 * 1024:  # > 1MB
-                    large_files.append(f"{file_path.name}: {size / 1024 / 1024:.1f}MB")
+                    large_files.append(
+                        f"{file_path.name}: {size / 1024 / 1024:.1f}MB")
 
         return {
             "total_size_mb": total_size / 1024 / 1024,
@@ -506,7 +519,11 @@ class IntelligentAuditor:
         """Vérification des guides"""
         guides = []
 
-        for pattern in ["*guide*.py", "*tutorial*.py", "docs / guides/*", "docs / tutorials/*py"]:
+        for pattern in [
+            "*guide*.py",
+            "*tutorial*.py",
+            "docs / guides/*",
+                "docs / tutorials/*py"]:
             guides.extend(self.project_path.glob(pattern))
 
         return {
@@ -530,18 +547,18 @@ class IntelligentAuditor:
 
         # Exclure les fichiers de test des fichiers source
         source_files = [
-            file_handle for file_handle in source_files 
+            file_handle for file_handle in source_files
             if "test" not in file_handle.name.lower()
         ]
 
-        coverage_ratio = len(test_files) / len(source_files) if source_files else 0
+        coverage_ratio = len(test_files) / \
+            len(source_files) if source_files else 0
 
         return {
             "total_test_files": len(test_files),
             "total_source_files": len(source_files),
             "coverage_ratio": coverage_ratio,
-            "status": "✅" if coverage_ratio > 0.8 else "⚠️" if coverage_ratio < 0.3 else "✅"
-        }
+            "status": "✅" if coverage_ratio > 0.8 else "⚠️" if coverage_ratio < 0.3 else "✅"}
 
     def _find_test_files(self) -> List[str]:
         """Trouve les fichiers de tests"""
@@ -561,9 +578,11 @@ class IntelligentAuditor:
                 with open(file_path, 'r', encoding='utf-8') as file_handle:
                     content = file_handle.read()
                     if "assert" not in content and "self." not in content:
-                        quality_issues.append(f"Pas d'assertions: {file_path.name}")
+                        quality_issues.append(
+                            f"Pas d'assertions: {file_path.name}")
                     if "def test_" not in content:
-                        quality_issues.append(f"Pas de fonctions de test: {file_path.name}")
+                        quality_issues.append(
+                            f"Pas de fonctions de test: {file_path.name}")
             except Exception:
                 pass
 
@@ -583,12 +602,14 @@ class IntelligentAuditor:
 
     def _analyze_organization(self) -> Dict[str, Any]:
         """Analyse de l'organisation des dossiers"""
-        directories = [dict_data for dict_data in self.project_path.iterdir() if dict_data.is_dir()]
+        directories = [
+            dict_data for dict_data in self.project_path.iterdir() if dict_data.is_dir()]
 
         expected_dirs = ["src", "tests", "docs", "scripts", "data"]
         found_dirs = (dict_data.name for dict_data in directories)
 
-        organization_score = sum(1 for dict_data in expected_dirs if dict_data in found_dirs)
+        organization_score = sum(
+            1 for dict_data in expected_dirs if dict_data in found_dirs)
 
         return {
             "score": organization_score,

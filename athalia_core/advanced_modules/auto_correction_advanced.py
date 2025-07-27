@@ -67,7 +67,7 @@ class AutoCorrectionAvancee:
             # Ignorer les fichiers macOS ._*
             if fichier.name.startswith("._"):
                 continue
-                
+
             if "__pycache__" in str(fichier) or ".git" in str(fichier):
                 continue
 
@@ -79,7 +79,8 @@ class AutoCorrectionAvancee:
                 try:
                     ast.parse(contenu)
                 except SyntaxError as e:
-                    correction = self._corriger_erreur_syntaxe(fichier, contenu, e)
+                    correction = self._corriger_erreur_syntaxe(
+                        fichier, contenu, e)
                     if correction and not dry_run:
                         with open(fichier, 'w', encoding='utf-8') as f:
                             f.write(correction['nouveau_contenu'])
@@ -97,7 +98,8 @@ class AutoCorrectionAvancee:
             "fichiers_traites": fichiers_traites
         }
 
-    def _corriger_erreur_syntaxe(self, fichier: Path, contenu: str, erreur: SyntaxError) -> Dict[str, Any]:
+    def _corriger_erreur_syntaxe(
+            self, fichier: Path, contenu: str, erreur: SyntaxError) -> Dict[str, Any]:
         """Correction intelligente d'erreur de syntaxe"""
         lignes = contenu.split('\n')
         ligne_erreur = erreur.lineno - 1
@@ -120,14 +122,16 @@ class AutoCorrectionAvancee:
                         "ligne": ligne_erreur + 1,
                         "ancien_contenu": lignes[ligne_erreur],
                         "nouveau_contenu": nouveau_contenu,
-                        "description": f"Correction {type_correction} automatique"
-                    }
+                        "description": f"Correction {type_correction} automatique"}
             except Exception:
                 continue
 
         return None
 
-    def _corriger_indentation(self, lignes: List[str], ligne_erreur: int) -> str:
+    def _corriger_indentation(
+            self,
+            lignes: List[str],
+            ligne_erreur: int) -> str:
         """Correction automatique de l'indentation"""
         ligne = lignes[ligne_erreur]
 
@@ -143,7 +147,10 @@ class AutoCorrectionAvancee:
 
         return None
 
-    def _corriger_parentheses(self, lignes: List[str], ligne_erreur: int) -> str:
+    def _corriger_parentheses(
+            self,
+            lignes: List[str],
+            ligne_erreur: int) -> str:
         """Correction automatique des parenthèses"""
         ligne = lignes[ligne_erreur]
 
@@ -158,7 +165,10 @@ class AutoCorrectionAvancee:
 
         return None
 
-    def _corriger_guillemets(self, lignes: List[str], ligne_erreur: int) -> str:
+    def _corriger_guillemets(
+            self,
+            lignes: List[str],
+            ligne_erreur: int) -> str:
         """Correction automatique des guillemets"""
         ligne = lignes[ligne_erreur]
 
@@ -178,7 +188,8 @@ class AutoCorrectionAvancee:
         if re.search(r'[a-zA-Z0-9_]+$', ligne.strip()):
             if ligne_erreur + 1 < len(lignes):
                 ligne_suivante = lignes[ligne_erreur + 1]
-                if ligne_suivante.strip().startswith('[') or ligne_suivante.strip().startswith('{'):
+                if ligne_suivante.strip().startswith(
+                        '[') or ligne_suivante.strip().startswith('{'):
                     return ligne.rstrip() + ','
 
         return None
@@ -191,7 +202,7 @@ class AutoCorrectionAvancee:
             # Ignorer les fichiers macOS ._*
             if fichier.name.startswith("._"):
                 continue
-                
+
             if "__pycache__" in str(fichier) or ".git" in str(fichier):
                 continue
 
@@ -205,15 +216,18 @@ class AutoCorrectionAvancee:
                 optimisations_fichier = []
 
                 # 1. Remplacement de list comprehensions par générateurs
-                nouveau_contenu, optims = self._optimiser_list_comprehensions(nouveau_contenu)
+                nouveau_contenu, optims = self._optimiser_list_comprehensions(
+                    nouveau_contenu)
                 optimisations_fichier.extend(optims)
 
                 # 2. Optimisation des imports
-                nouveau_contenu, optims = self._optimiser_imports(nouveau_contenu)
+                nouveau_contenu, optims = self._optimiser_imports(
+                    nouveau_contenu)
                 optimisations_fichier.extend(optims)
 
                 # 3. Optimisation des boucles
-                nouveau_contenu, optims = self._optimiser_boucles(nouveau_contenu)
+                nouveau_contenu, optims = self._optimiser_boucles(
+                    nouveau_contenu)
                 optimisations_fichier.extend(optims)
 
                 if optimisations_fichier and not dry_run:
@@ -223,21 +237,23 @@ class AutoCorrectionAvancee:
                 optimisations.extend(optimisations_fichier)
 
             except Exception as e:
-                logger.warning(f"Erreur lors de l'optimisation de {fichier}: {e}")
+                logger.warning(
+                    f"Erreur lors de l'optimisation de {fichier}: {e}")
 
         return {
             "corrections_appliquees": optimisations,
             "erreurs_corrigees": len([o for o in optimisations if o])
         }
 
-    def _optimiser_list_comprehensions(self, contenu: str) -> Tuple[str, List[Dict]]:
+    def _optimiser_list_comprehensions(
+            self, contenu: str) -> Tuple[str, List[Dict]]:
         """Optimisation des list comprehensions"""
         optimisations = []
-        
+
         # Remplacer [x for x in y] par (x for x in y) quand possible
         pattern = r'\[([^\[\]]+for[^\[\]]+)\]'
         matches = re.finditer(pattern, contenu)
-        
+
         for match in matches:
             expression = match.group(1)
             if 'if' not in expression:  # Pas de condition
@@ -248,57 +264,64 @@ class AutoCorrectionAvancee:
                     "ancien": match.group(0),
                     "nouveau": nouveau
                 })
-        
+
         return contenu, optimisations
 
     def _optimiser_imports(self, contenu: str) -> Tuple[str, List[Dict]]:
         """Optimisation des imports"""
         optimisations = []
-        
+
         # Regrouper les imports
         lines = contenu.split('\n')
         import_lines = []
         other_lines = []
-        
+
         for line in lines:
             if line.strip().startswith(('import ', 'from ')):
                 import_lines.append(line)
             else:
                 other_lines.append(line)
-        
+
         if len(import_lines) > 1:
             # Regrouper par type
             stdlib_imports = []
             third_party_imports = []
             local_imports = []
-            
+
             for imp in import_lines:
-                if any(pkg in imp for pkg in ['os', 'sys', 'json', 're', 'pathlib']):
+                if any(
+                    pkg in imp for pkg in [
+                        'os',
+                        'sys',
+                        'json',
+                        're',
+                        'pathlib']):
                     stdlib_imports.append(imp)
                 elif any(pkg in imp for pkg in ['numpy', 'pandas', 'requests']):
                     third_party_imports.append(imp)
                 else:
                     local_imports.append(imp)
-            
+
             # Réorganiser
-            new_imports = stdlib_imports + [''] + third_party_imports + [''] + local_imports
+            new_imports = stdlib_imports + \
+                [''] + third_party_imports + [''] + local_imports
             optimisations.append({
                 "type": "optimisation",
                 "description": "Imports regroupés par catégorie"
             })
-            
+
             return '\n'.join(new_imports + other_lines), optimisations
-        
+
         return contenu, optimisations
 
     def _optimiser_boucles(self, contenu: str) -> Tuple[str, List[Dict]]:
         """Optimisation des boucles"""
         optimisations = []
-        
+
         # Remplacer for i in range(len(x)) par for i, item in enumerate(x)
         pattern = r'for\s+(\w+)\s+in\s+range\(len\(([^)]+)\)\):'
         matches = re.finditer(pattern, contenu)
-        
+
         for match in matches:
             index_var = match.group(1)
             list_var = match.group(2)
@@ -309,7 +332,7 @@ class AutoCorrectionAvancee:
                 "ancien": match.group(0),
                 "nouveau": nouveau
             })
-        
+
         return contenu, optimisations
 
     def _refactoring_automatique(self, dry_run: bool) -> Dict[str, Any]:
@@ -320,7 +343,7 @@ class AutoCorrectionAvancee:
             # Ignorer les fichiers macOS ._*
             if fichier.name.startswith("._"):
                 continue
-                
+
             if "__pycache__" in str(fichier) or ".git" in str(fichier):
                 continue
 
@@ -334,15 +357,18 @@ class AutoCorrectionAvancee:
                 refactorings_fichier = []
 
                 # 1. Extraction de méthodes
-                nouveau_contenu, refs = self._extraire_methodes(nouveau_contenu)
+                nouveau_contenu, refs = self._extraire_methodes(
+                    nouveau_contenu)
                 refactorings_fichier.extend(refs)
 
                 # 2. Renommage de variables
-                nouveau_contenu, refs = self._renommer_variables(nouveau_contenu)
+                nouveau_contenu, refs = self._renommer_variables(
+                    nouveau_contenu)
                 refactorings_fichier.extend(refs)
 
                 # 3. Simplification de conditions
-                nouveau_contenu, refs = self._simplifier_conditions(nouveau_contenu)
+                nouveau_contenu, refs = self._simplifier_conditions(
+                    nouveau_contenu)
                 refactorings_fichier.extend(refs)
 
                 if refactorings_fichier and not dry_run:
@@ -362,24 +388,25 @@ class AutoCorrectionAvancee:
     def _extraire_methodes(self, contenu: str) -> Tuple[str, List[Dict]]:
         """Extraction automatique de méthodes"""
         refactorings = []
-        
+
         # Détecter les blocs de code répétitifs
         lines = contenu.split('\n')
         i = 0
         while i < len(lines):
             line = lines[i].strip()
-            
+
             # Détecter les blocs de plus de 5 lignes
             if line.startswith('def ') or line.startswith('class '):
                 # Compter les lignes du bloc
                 j = i + 1
                 indent_level = len(lines[i]) - len(lines[i].lstrip())
-                
+
                 while j < len(lines):
-                    if lines[j].strip() and len(lines[j]) - len(lines[j].lstrip()) <= indent_level:
+                    if lines[j].strip() and len(lines[j]) - \
+                            len(lines[j].lstrip()) <= indent_level:
                         break
                     j += 1
-                
+
                 block_size = j - i
                 if block_size > 10:  # Bloc trop long
                     refactorings.append({
@@ -387,24 +414,24 @@ class AutoCorrectionAvancee:
                         "description": f"Méthode de {block_size} lignes détectée",
                         "ligne": i + 1
                     })
-                
+
                 i = j
             else:
                 i += 1
-        
+
         return contenu, refactorings
 
     def _renommer_variables(self, contenu: str) -> Tuple[str, List[Dict]]:
         """Renommage automatique de variables"""
         refactorings = []
-        
+
         # Détecter les variables avec des noms non descriptifs
         patterns = [
             (r'\b([a-z])\b', 'Variable à une lettre'),
             (r'\b(x|y|z)\b', 'Variable mathématique'),
             (r'\b(temp|tmp)\b', 'Variable temporaire')
         ]
-        
+
         for pattern, description in patterns:
             matches = re.finditer(pattern, contenu)
             for match in matches:
@@ -415,17 +442,17 @@ class AutoCorrectionAvancee:
                     "suggestion": f"renommer {var_name} en nom plus descriptif",
                     "description": description
                 })
-        
+
         return contenu, refactorings
 
     def _simplifier_conditions(self, contenu: str) -> Tuple[str, List[Dict]]:
         """Simplification automatique de conditions"""
         refactorings = []
-        
+
         # Simplifier if x == True par if x
         pattern = r'if\s+([^:]+)\s*==\s*True\s*:'
         matches = re.finditer(pattern, contenu)
-        
+
         for match in matches:
             condition = match.group(1).strip()
             nouveau = f"if {condition}:"
@@ -435,7 +462,7 @@ class AutoCorrectionAvancee:
                 "ancien": match.group(0),
                 "nouveau": nouveau
             })
-        
+
         return contenu, refactorings
 
     def _corriger_anti_patterns(self, dry_run: bool) -> Dict[str, Any]:
@@ -446,7 +473,7 @@ class AutoCorrectionAvancee:
             # Ignorer les fichiers macOS ._*
             if fichier.name.startswith("._"):
                 continue
-                
+
             if "__pycache__" in str(fichier) or ".git" in str(fichier):
                 continue
 
@@ -476,7 +503,8 @@ class AutoCorrectionAvancee:
                 corrections.extend(corrections_fichier)
 
             except Exception as e:
-                logger.warning(f"Erreur lors de la correction d'anti-patterns de {fichier}: {e}")
+                logger.warning(
+                    f"Erreur lors de la correction d'anti-patterns de {fichier}: {e}")
 
         return {
             "corrections_appliquees": corrections,
@@ -491,7 +519,7 @@ class AutoCorrectionAvancee:
             # Ignorer les fichiers macOS ._*
             if fichier.name.startswith("._"):
                 continue
-                
+
             if "__pycache__" in str(fichier) or ".git" in str(fichier):
                 continue
 
@@ -503,12 +531,13 @@ class AutoCorrectionAvancee:
 
                 # Améliorations de lisibilité
                 lines = contenu.split('\n')
-                
+
                 # 1. Ajouter des docstrings manquantes
                 for i, line in enumerate(lines):
                     if line.strip().startswith('def ') and i + 1 < len(lines):
                         next_line = lines[i + 1].strip()
-                        if not next_line.startswith('"""') and not next_line.startswith("'''"):
+                        if not next_line.startswith(
+                                '"""') and not next_line.startswith("'''"):
                             ameliorations_fichier.append({
                                 "type": "lisibilite",
                                 "ligne": i + 1,
@@ -527,7 +556,8 @@ class AutoCorrectionAvancee:
                 ameliorations.extend(ameliorations_fichier)
 
             except Exception as e:
-                logger.warning(f"Erreur lors de l'amélioration de {fichier}: {e}")
+                logger.warning(
+                    f"Erreur lors de l'amélioration de {fichier}: {e}")
 
         return {
             "corrections_appliquees": ameliorations,
@@ -540,7 +570,8 @@ class AutoCorrectionAvancee:
 Rapport d'Auto-Correction
 ========================
 """
-        rapport += "\n📊 RAPPORT D'AUTO-CORRECTION - {0}\n".format(self.project_path)
+        rapport += "\n📊 RAPPORT D'AUTO-CORRECTION - {0}\n".format(
+            self.project_path)
         rapport += f"{'='*60}\n\n"
 
         # Utiliser le dictionnaire 'resultats' pour générer le rapport
@@ -567,23 +598,29 @@ Rapport d'Auto-Correction
         rapport += f"- Fichiers traités: {fichiers_traites}\n"
         rapport += f"- Erreurs corrigées: {erreurs_corrigees}\n"
         rapport += f"- Corrections appliquées: {len(corrections_appliquees)}\n"
-        
+
         return rapport
+
 
 def main():
     """Fonction principale pour test"""
     import argparse
-    
-    parser = argparse.ArgumentParser(description="Auto-correction avancée pour Athalia")
+
+    parser = argparse.ArgumentParser(
+        description="Auto-correction avancée pour Athalia")
     parser.add_argument("project_path", help="Chemin du projet à corriger")
-    parser.add_argument("--dry-run", action="store_true", help="Mode simulation")
-    
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Mode simulation")
+
     args = parser.parse_args()
-    
+
     corrector = AutoCorrectionAvancee(args.project_path)
     resultats = corrector.analyser_et_corriger(dry_run=args.dry_run)
-    
+
     print(corrector.generer_rapport(resultats))
+
 
 if __name__ == "__main__":
     main()

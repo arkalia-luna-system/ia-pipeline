@@ -13,6 +13,7 @@ from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
+
 class ProfilUtilisateur:
     """Profil utilisateur avec préférences et historique"""
 
@@ -43,10 +44,12 @@ class ProfilUtilisateur:
         profil = cls(data["nom"], data.get("email", ""))
         profil.preferences = data.get("preferences", {})
         profil.date_creation = datetime.fromisoformat(data["date_creation"])
-        profil.derniere_connexion = datetime.fromisoformat(data["derniere_connexion"])
+        profil.derniere_connexion = datetime.fromisoformat(
+            data["derniere_connexion"])
         profil.projets_consultes = data.get("projets_consultes", [])
         profil.actions_frequentes = data.get("actions_frequentes", {})
         return profil
+
 
 class GestionnaireProfils:
     """Gestionnaire de profils utilisateur avancé"""
@@ -98,7 +101,11 @@ class GestionnaireProfils:
 
             conn.commit()
 
-    def creer_profil(self, nom: str, email: str = "", preferences: Dict = None) -> ProfilUtilisateur:
+    def creer_profil(
+            self,
+            nom: str,
+            email: str = "",
+            preferences: Dict = None) -> ProfilUtilisateur:
         """Création d'un nouveau profil"""
         logger.info(f"Création du profil utilisateur: {nom}")
 
@@ -154,7 +161,8 @@ class GestionnaireProfils:
                     ORDER BY date_consultation DESC LIMIT 20
                 """, (nom,))
 
-                profil.projets_consultes = [row[0] for row in cursor.fetchall()]
+                profil.projets_consultes = [row[0]
+                                            for row in cursor.fetchall()]
 
                 return profil
 
@@ -178,11 +186,16 @@ class GestionnaireProfils:
             ))
             conn.commit()
 
-    def enregistrer_action(self, nom_profil: str, action: str, details: Dict = None):
+    def enregistrer_action(
+            self,
+            nom_profil: str,
+            action: str,
+            details: Dict = None):
         """Enregistrement d'une action utilisateur"""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
-            cursor.execute("SELECT id FROM profils WHERE nom = ?", (nom_profil,))
+            cursor.execute(
+                "SELECT id FROM profils WHERE nom = ?", (nom_profil,))
             profil_id = cursor.fetchone()
 
             if profil_id:
@@ -197,11 +210,16 @@ class GestionnaireProfils:
                 ))
                 conn.commit()
 
-    def enregistrer_consultation_projet(self, nom_profil: str, chemin_projet: str, duree: int = 0):
+    def enregistrer_consultation_projet(
+            self,
+            nom_profil: str,
+            chemin_projet: str,
+            duree: int = 0):
         """Enregistrement de la consultation d'un projet"""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
-            cursor.execute("SELECT id FROM profils WHERE nom = ?", (nom_profil,))
+            cursor.execute(
+                "SELECT id FROM profils WHERE nom = ?", (nom_profil,))
             profil_id = cursor.fetchone()
 
             if profil_id:
@@ -290,21 +308,21 @@ class GestionnaireProfils:
 
 🔝 ACTIONS LES PLUS FRÉQUENTES:
 """
-        
+
         for action, count in list(stats['actions_frequentes'].items())[:5]:
             rapport += f"• {action}: {count} fois\n"
 
         rapport += f"""
 📁 PROJETS LES PLUS CONSULTÉS:
 """
-        
+
         for projet, count in list(stats['projets_frequents'].items())[:5]:
             rapport += f"• {projet}: {count} consultations\n"
 
         rapport += f"""
 ⚙️ PRÉFÉRENCES:
 """
-        
+
         for pref, valeur in profil.preferences.items():
             rapport += f"• {pref}: {valeur}\n"
 
@@ -314,7 +332,8 @@ class GestionnaireProfils:
         """Liste de tous les profils"""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
-            cursor.execute("SELECT nom FROM profils ORDER BY derniere_connexion DESC")
+            cursor.execute(
+                "SELECT nom FROM profils ORDER BY derniere_connexion DESC")
             return [row[0] for row in cursor.fetchall()]
 
     def supprimer_profil(self, nom: str) -> bool:
@@ -357,26 +376,35 @@ class GestionnaireProfils:
             logger.error(f"Erreur lors de l'import du profil: {e}")
             return False
 
+
 def main():
     """Fonction principale pour test"""
     import argparse
-    
-    parser = argparse.ArgumentParser(description="Gestionnaire de profils utilisateur")
-    parser.add_argument("action", choices=["creer", "obtenir", "lister", "rapport"], help="Action à effectuer")
+
+    parser = argparse.ArgumentParser(
+        description="Gestionnaire de profils utilisateur")
+    parser.add_argument(
+        "action",
+        choices=[
+            "creer",
+            "obtenir",
+            "lister",
+            "rapport"],
+        help="Action à effectuer")
     parser.add_argument("nom", nargs="?", help="Nom du profil")
     parser.add_argument("--email", help="Email du profil")
-    
+
     args = parser.parse_args()
-    
+
     gestionnaire = GestionnaireProfils()
-    
+
     if args.action == "creer":
         if not args.nom:
             print("❌ Nom du profil requis")
             return
         profil = gestionnaire.creer_profil(args.nom, args.email or "")
         print(f"✅ Profil '{profil.nom}' créé avec succès")
-        
+
     elif args.action == "obtenir":
         if not args.nom:
             print("❌ Nom du profil requis")
@@ -386,19 +414,20 @@ def main():
             print(f"✅ Profil trouvé: {profil.nom} ({profil.email})")
         else:
             print(f"❌ Profil '{args.nom}' non trouvé")
-            
+
     elif args.action == "lister":
         profils = gestionnaire.lister_profils()
         print("📋 Profils disponibles:")
         for profil in profils:
             print(f"• {profil}")
-            
+
     elif args.action == "rapport":
         if not args.nom:
             print("❌ Nom du profil requis")
             return
         rapport = gestionnaire.generer_rapport_profil(args.nom)
         print(rapport)
+
 
 if __name__ == "__main__":
     main()

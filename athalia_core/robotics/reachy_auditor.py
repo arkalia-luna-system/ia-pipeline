@@ -118,13 +118,15 @@ class ReachyAuditor:
         # Vérifier launch files
         launch_files = list(self.project_path.rglob("*.launch.py"))
         if not launch_files:
-            recommendations.append("Ajouter des fichiers launch.py pour le déploiement")
+            recommendations.append(
+                "Ajouter des fichiers launch.py pour le déploiement")
 
         # Vérifier URDF/XACRO
         urdf_files = list(self.project_path.rglob("*.urdf"))
         xacro_files = list(self.project_path.rglob("*.xacro"))
         if not urdf_files and not xacro_files:
-            recommendations.append("Ajouter des fichiers URDF/XACRO pour la description du robot")
+            recommendations.append(
+                "Ajouter des fichiers URDF/XACRO pour la description du robot")
 
         return len(issues) == 0, issues, recommendations
 
@@ -147,10 +149,12 @@ class ReachyAuditor:
                     # Vérifier variables d'environnement ROS
                     if 'environment' in service:
                         env_vars = service['environment']
-                        if any('ROS_DOMAIN_ID' in str(var) for var in env_vars):
+                        if any('ROS_DOMAIN_ID' in str(var)
+                               for var in env_vars):
                             self.logger.info("✅ ROS_DOMAIN_ID configuré")
                         else:
-                            recommendations.append("Ajouter ROS_DOMAIN_ID dans docker-compose")
+                            recommendations.append(
+                                "Ajouter ROS_DOMAIN_ID dans docker-compose")
 
                     # Vérifier volumes
                     if 'volumes' in service:
@@ -161,12 +165,14 @@ class ReachyAuditor:
             except Exception as e:
                 issues.append(f"Erreur parsing docker-compose.yaml: {e}")
         else:
-            recommendations.append("Ajouter docker-compose.yaml pour le déploiement")
+            recommendations.append(
+                "Ajouter docker-compose.yaml pour le déploiement")
 
         # Vérifier Dockerfile
         dockerfile = self.project_path / "docker" / "Dockerfile"
         if not dockerfile.exists():
-            recommendations.append("Ajouter Dockerfile pour la containerisation")
+            recommendations.append(
+                "Ajouter Dockerfile pour la containerisation")
 
         return len(issues) == 0, issues, recommendations
 
@@ -195,7 +201,8 @@ class ReachyAuditor:
                 except Exception as e:
                     issues.append(f"Erreur lecture {cargo_file}: {e}")
         else:
-            recommendations.append("Considérer l'ajout de composants Rust pour les performances")
+            recommendations.append(
+                "Considérer l'ajout de composants Rust pour les performances")
 
         return len(issues) == 0, issues, recommendations
 
@@ -217,12 +224,16 @@ class ReachyAuditor:
             recommendations.append("Ajouter .gitignore pour ROS2/Rust")
 
         # Vérifier structure typique Reachy
-        expected_dirs = ["reachy_controllers", "reachy_description", "reachy_gazebo"]
+        expected_dirs = [
+            "reachy_controllers",
+            "reachy_description",
+            "reachy_gazebo"]
         for dir_name in expected_dirs:
             if (self.project_path / dir_name).exists():
                 self.logger.info(f"✅ Module {dir_name} présent")
             else:
-                recommendations.append(f"Considérer l'ajout du module {dir_name}")
+                recommendations.append(
+                    f"Considérer l'ajout du module {dir_name}")
 
         # Vérifier tests
         test_files = list(self.project_path.rglob("test_*.py"))
@@ -270,7 +281,10 @@ class ReachyAuditor:
 
         return report
 
-    def save_report(self, result: ReachyAuditResult, output_path: Optional[str] = None) -> str:
+    def save_report(
+            self,
+            result: ReachyAuditResult,
+            output_path: Optional[str] = None) -> str:
         """Sauvegarder le rapport"""
         if output_path is None:
             output_path = f"reachy_audit_{datetime.now().strftime('%Y%m%d_%H%M%S')}.md"
@@ -281,4 +295,4 @@ class ReachyAuditor:
             f.write(report)
 
         self.logger.info(f"📄 Rapport sauvegardé: {output_path}")
-        return output_path 
+        return output_path

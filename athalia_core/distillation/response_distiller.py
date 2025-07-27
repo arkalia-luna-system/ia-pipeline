@@ -7,11 +7,15 @@ from typing import List, Dict, Any, Optional
 from collections import Counter
 import random
 
+
 class ResponseDistiller:
     def __init__(self, strategy: str = 'voting'):
         self.strategy = strategy
 
-    def distill(self, responses: List[str], context: Optional[Dict[str, Any]] = None) -> str:
+    def distill(self,
+                responses: List[str],
+                context: Optional[Dict[str,
+                                       Any]] = None) -> str:
         """
         Fusionne plusieurs réponses IA selon la stratégie choisie.
         :param responses: Liste de réponses IA (str)
@@ -37,7 +41,10 @@ class ResponseDistiller:
         counter = Counter(responses)
         return counter.most_common(1)[0][0]
 
-    def stacking(self, responses: List[str], context: Optional[Dict[str, Any]] = None) -> str:
+    def stacking(self,
+                 responses: List[str],
+                 context: Optional[Dict[str,
+                                        Any]] = None) -> str:
         """Concatène les parties communes, puis les parties uniques."""
         if not responses:
             return ''
@@ -52,7 +59,9 @@ class ResponseDistiller:
             return ''
         counter = Counter(responses)
         top_count = counter.most_common(1)[0][1]
-        top_responses = [resp for resp, count in counter.items() if count == top_count]
+        top_responses = [
+            resp for resp,
+            count in counter.items() if count == top_count]
         return random.choice(top_responses)
 
     def consensus_scoring(self, responses: List[str]) -> str:
@@ -60,8 +69,11 @@ class ResponseDistiller:
         if not responses:
             return ''
         from difflib import SequenceMatcher
+
         def lcs(a, b):
-            match = SequenceMatcher(None, a, b).find_longest_match(0, len(a), 0, len(b))
+            match = SequenceMatcher(
+                None, a, b).find_longest_match(
+                0, len(a), 0, len(b))
             return a[match.a: match.a + match.size]
         consensus = responses[0]
         for r in responses[1:]:
@@ -83,10 +95,17 @@ class ResponseDistiller:
         fragments = set()
         for r in responses:
             fragments.update(r.split())
-        fusion = ' '.join(random.sample(list(fragments), min(len(fragments), 10)))
+        fusion = ' '.join(
+            random.sample(
+                list(fragments), min(
+                    len(fragments), 10)))
         return f"[Fusion IA] {fusion}"
 
-def distill_responses(responses: list, strategy: str = 'voting', context: Optional[dict] = None) -> str:
+
+def distill_responses(
+        responses: list,
+        strategy: str = 'voting',
+        context: Optional[dict] = None) -> str:
     """Fonction utilitaire pour distiller une liste de réponses IA."""
     distiller = ResponseDistiller(strategy=strategy)
-    return distiller.distill(responses, context) 
+    return distiller.distill(responses, context)

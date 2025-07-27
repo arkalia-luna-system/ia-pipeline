@@ -9,8 +9,7 @@ def show_benchmarks():
     if not os.path.exists(csv_path):
         st.warning(
             "Aucun benchmark_results.csv trouvé. Lancez le script de benchmark "
-            "pour générer les résultats."
-        )
+            "pour générer les résultats.")
         return
 
     try:
@@ -67,4 +66,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main() 
+    main()

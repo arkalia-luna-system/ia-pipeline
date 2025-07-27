@@ -883972,7 +883972,9 @@ Log chaque suppression pour audit. Retourne la liste des fichiers supprimés.
 
 ##### clean_macos_files
 
-Supprime automatiquement les fichiers macOS parasites (.DS_Store, ._*) dans tout le projet. Retourne la liste des fichiers supprimés.
+Supprime automatiquement les fichiers macOS parasites et temporaires dans tout le projet.
+Inclut les fichiers système macOS spécifiques comme .!44956!*.clean
+Retourne la liste des fichiers supprimés.
 
 **Paramètres :**
 
@@ -885084,7 +885086,7 @@ Import d'un profil depuis un fichier JSON
 
 ### unified_agent
 
-Agent unifié pour Athalia - Combine les fonctionnalités de 
+Agent unifié pour Athalia - Combine les fonctionnalités de
 network_agent et qwen_agent
 
 #### Classes
@@ -885229,18 +885231,6 @@ Retourne la configuration spécialisée pour un type de projet.
 **Paramètres :**
 
 - `project_type`
-
----
-
-### .!30204!__init__
-
----
-
-### .!30205!project_classifier
-
----
-
-### .!30206!project_types
 
 ---
 

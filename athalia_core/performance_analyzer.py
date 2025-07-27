@@ -172,7 +172,8 @@ class PerformanceAnalyzer:
         overall_score = self._calculate_overall_score(all_metrics)
 
         # Générer les recommandations
-        recommendations = self._generate_performance_recommendations(all_issues)
+        recommendations = self._generate_performance_recommendations(
+            all_issues)
 
         # Identifier les opportunités d'optimisation
         optimization_opportunities = self._identify_optimization_opportunities(
@@ -230,7 +231,7 @@ class PerformanceAnalyzer:
             location=str(file_analysis.file_path),
             threshold=self.thresholds["imports"],
             status=self._get_metric_status(
-                len(file_analysis.imports), 
+                len(file_analysis.imports),
                 self.thresholds["imports"])
         )
         metrics.append(imports_metric)
@@ -284,7 +285,7 @@ class PerformanceAnalyzer:
                     issue_type="complex_function",
                     location=f"{file_analysis.file_path}:{func.line_number}",
                     description=f"Fonction {func.name} très complexe: "
-                           f"{func.complexity}",
+                    f"{func.complexity}",
                     impact="high",
                     suggestion="Diviser en sous-fonctions",
                     estimated_improvement=25.0)
@@ -309,7 +310,7 @@ class PerformanceAnalyzer:
                     issue_type="complex_class",
                     location=f"{file_analysis.file_path}:{cls.line_number}",
                     description=f"Classe {cls.name} très complexe: "
-                           f"{cls.complexity}",
+                    f"{cls.complexity}",
                     impact="high",
                     suggestion="Diviser en classes plus petites",
                     estimated_improvement=30.0)
@@ -454,7 +455,7 @@ class PerformanceAnalyzer:
             for metric in report.metrics:
                 cursor.execute("""
                     INSERT INTO performance_metrics
-                    (metric_type, value, unit, location, threshold, status, 
+                    (metric_type, value, unit, location, threshold, status,
                      measured_at)
                     VALUES (?, ?, ?, ?, ?, ?, ?)
                 """, (
@@ -471,7 +472,7 @@ class PerformanceAnalyzer:
             for issue in report.issues:
                 cursor.execute("""
                     INSERT INTO performance_issues
-                    (issue_type, location, description, impact, suggestion, 
+                    (issue_type, location, description, impact, suggestion,
                      estimated_improvement, detected_at)
                     VALUES (?, ?, ?, ?, ?, ?, ?)
                 """, (

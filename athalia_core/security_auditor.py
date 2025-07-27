@@ -48,7 +48,8 @@ class SecurityAuditor:
             with open(report_file, 'w', encoding='utf-8') as f:
                 f.write('Clé API f\n')
         except Exception as e:
-            logger.warning(f"Impossible d'écrire le rapport de sécurité mock : {e}")
+            logger.warning(
+                f"Impossible d'écrire le rapport de sécurité mock : {e}")
 
         # Adapter le retour pour les tests
         return {
@@ -67,9 +68,11 @@ class SecurityAuditor:
             ], capture_output=True, text=True, timeout=30)
 
             if result.returncode == 0:
-                self.report["vulnerabilities"].append("Aucune vulnérabilité détectée par Bandit")
+                self.report["vulnerabilities"].append(
+                    "Aucune vulnérabilité détectée par Bandit")
             else:
-                self.report["vulnerabilities"].append(f"Vulnérabilités Bandit détectées: {result.stdout}")
+                self.report["vulnerabilities"].append(
+                    f"Vulnérabilités Bandit détectées: {result.stdout}")
 
         except Exception as e:
             self.report["warnings"].append(f"Bandit non exécuté: {e}")

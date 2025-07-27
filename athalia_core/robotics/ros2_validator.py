@@ -62,7 +62,8 @@ class ROS2Validator:
 
         # Vérifier structure workspace
         if not self.src_path.exists():
-            issues.append("Dossier 'src' manquant - structure workspace ROS2 invalide")
+            issues.append(
+                "Dossier 'src' manquant - structure workspace ROS2 invalide")
             return ROS2ValidationResult(
                 workspace_valid=False,
                 packages=[],
@@ -92,13 +93,15 @@ class ROS2Validator:
         # Vérifier launch files
         launch_files = list(self.workspace_path.rglob("*.launch.py"))
         if not launch_files:
-            recommendations.append("Ajouter des fichiers launch.py pour le déploiement")
+            recommendations.append(
+                "Ajouter des fichiers launch.py pour le déploiement")
 
         # Vérifier URDF/XACRO
         urdf_files = list(self.workspace_path.rglob("*.urdf"))
         xacro_files = list(self.workspace_path.rglob("*.xacro"))
         if not urdf_files and not xacro_files:
-            recommendations.append("Ajouter des fichiers URDF/XACRO pour la description du robot")
+            recommendations.append(
+                "Ajouter des fichiers URDF/XACRO pour la description du robot")
 
         workspace_valid = len(issues) == 0
 
@@ -179,7 +182,7 @@ class ROS2Validator:
                 capture_output=True, text=True, timeout=10
             )
             return result.returncode == 0
-        except:
+        except BaseException:
             return False
 
     def validate_launch_files(self) -> List[Dict]:
@@ -281,4 +284,4 @@ class ROS2Validator:
             for rec in result.recommendations:
                 report += f"- {rec}\n"
 
-        return report 
+        return report

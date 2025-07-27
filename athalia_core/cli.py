@@ -60,7 +60,8 @@ def generate(idea, output, dry_run):
         # Créer le dossier de sortie s'il n'existe pas
         os.makedirs(output, exist_ok=True)
 
-        generate_project(blueprint, output, dry_run=dry_run)  # Variable non utilisée supprimée
+        # Variable non utilisée supprimée
+        generate_project(blueprint, output, dry_run=dry_run)
 
         if not dry_run:
             click.echo(f"✅ Projet généré dans: {output}")

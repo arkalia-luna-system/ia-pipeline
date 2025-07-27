@@ -72,7 +72,8 @@ class RustAnalyzer:
 
         if not cargo_files:
             issues.append("Aucun projet Rust trouvé (Cargo.toml manquant)")
-            recommendations.append("Créer un projet Rust avec: cargo new nom_projet")
+            recommendations.append(
+                "Créer un projet Rust avec: cargo new nom_projet")
             return RustAnalysisResult(
                 projects=[],
                 issues=issues,
@@ -104,7 +105,8 @@ class RustAnalyzer:
             optimization_score=optimization_score
         )
 
-    def _analyze_cargo_project(self, cargo_file: Path) -> Optional[RustProjectInfo]:
+    def _analyze_cargo_project(
+            self, cargo_file: Path) -> Optional[RustProjectInfo]:
         """Analyse un projet Cargo spécifique"""
         try:
             project_path = cargo_file.parent
@@ -119,12 +121,16 @@ class RustAnalyzer:
             dependencies = []
             for dep in cargo_data.get('dependencies', {}).keys():
                 dependencies.append(dep)
-            dev_dependencies = self._parse_dependencies(cargo_data.get('dev-dependencies', {}))
-            build_dependencies = self._parse_dependencies(cargo_data.get('build-dependencies', {}))
+            dev_dependencies = self._parse_dependencies(
+                cargo_data.get('dev-dependencies', {}))
+            build_dependencies = self._parse_dependencies(
+                cargo_data.get('build-dependencies', {}))
 
             # Vérifier les dépendances robotiques
-            has_robotics_deps = any(self._is_robotics_dependency(dep) for dep in dependencies)
-            has_ros2_deps = any('ros2' in dep.name.lower() for dep in dependencies)
+            has_robotics_deps = any(
+                self._is_robotics_dependency(dep) for dep in dependencies)
+            has_ros2_deps = any('ros2' in dep.name.lower()
+                                for dep in dependencies)
 
             # Analyser les targets de build
             build_targets = self._analyze_build_targets(project_path)
@@ -176,7 +182,8 @@ class RustAnalyzer:
             'gazebo', 'rviz', 'tf', 'geometry', 'control', 'sensor'
         ]
 
-        return any(keyword in dep.name.lower() for keyword in robotics_keywords)
+        return any(keyword in dep.name.lower()
+                   for keyword in robotics_keywords)
 
     def _analyze_build_targets(self, project_path: Path) -> List[str]:
         """Analyser les targets de build"""
@@ -205,10 +212,11 @@ class RustAnalyzer:
                 capture_output=True, text=True, timeout=5
             )
             return result.returncode == 0
-        except:
+        except BaseException:
             return False
 
-    def _calculate_optimization_score(self, projects: List[RustProjectInfo]) -> float:
+    def _calculate_optimization_score(
+            self, projects: List[RustProjectInfo]) -> float:
         """Calculer le score d'optimisation"""
         if not projects:
             return 0.0
@@ -250,8 +258,7 @@ class RustAnalyzer:
             if not project.has_robotics_deps:
                 recommendations.append(
                     f"Projet {project.name}: Ajouter des dépendances robotiques "
-                    f"(ex: ros2, dynamixel)"
-                )
+                    f"(ex: ros2, dynamixel)")
 
             # Recommandations pour ROS2
             if not project.has_ros2_deps:
@@ -367,4 +374,4 @@ mockall = "0.11"
 # Build scripts
 cc = "1.0"
 """
-        return template 
+        return template

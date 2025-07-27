@@ -75,7 +75,7 @@ class DashboardUnifieSimple:
             conn.commit()
 
     def enregistrer_metrique(
-        self, type_metrique: str, valeur: float, projet: Optional[str] = None, 
+        self, type_metrique: str, valeur: float, projet: Optional[str] = None,
         details: Optional[Dict] = None
     ):
         """Enregistrement une métrique"""
@@ -94,10 +94,13 @@ class DashboardUnifieSimple:
             conn.commit()
 
     def enregistrer_evenement(
-        self, type_evenement: str, projet: Optional[str] = None, 
-        utilisateur: Optional[str] = None, duree: int = 0, statut: str = "succes", 
-        details: Optional[Dict] = None
-    ):
+            self,
+            type_evenement: str,
+            projet: Optional[str] = None,
+            utilisateur: Optional[str] = None,
+            duree: int = 0,
+            statut: str = "succes",
+            details: Optional[Dict] = None):
         """Enregistrement un événement"""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
@@ -116,7 +119,7 @@ class DashboardUnifieSimple:
             conn.commit()
 
     def enregistrer_rapport(self, type_rapport: str, projet: str, contenu: str,
-                          score_qualite: int = 0, score_securite: int = 0):
+                            score_qualite: int = 0, score_securite: int = 0):
         """Enregistrement un rapport"""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
@@ -228,16 +231,21 @@ class DashboardUnifieSimple:
         rapport = []
         rapport.append("# 📊 Dashboard Unifié")
         rapport.append("")
-        rapport.append(f"*Généré le {datetime.now().strftime('%d/%m/%Y à %H:%M')}*")
+        rapport.append(
+            f"*Généré le {datetime.now().strftime('%d/%m/%Y à %H:%M')}*")
         rapport.append("")
 
         # Métriques temps réel
         rapport.append("## 🚀 Métriques en Temps Réel")
         rapport.append("")
-        rapport.append(f"- **Projets analysés (24h)**: {metriques['projets_analyses']}")
-        rapport.append(f"- **Actions effectuées (24h)**: {metriques['actions_effectuees']}")
-        rapport.append(f"- **Score qualité moyen**: {metriques['score_qualite_moyen']}/100")
-        rapport.append(f"- **Score sécurité moyen**: {metriques['score_securite_moyen']}/100")
+        rapport.append(
+            f"- **Projets analysés (24h)**: {metriques['projets_analyses']}")
+        rapport.append(
+            f"- **Actions effectuées (24h)**: {metriques['actions_effectuees']}")
+        rapport.append(
+            f"- **Score qualité moyen**: {metriques['score_qualite_moyen']}/100")
+        rapport.append(
+            f"- **Score sécurité moyen**: {metriques['score_securite_moyen']}/100")
         rapport.append("")
 
         # Top projets
@@ -247,7 +255,8 @@ class DashboardUnifieSimple:
             rapport.append("| Projet | Qualité | Sécurité | Moyenne |")
             rapport.append("|--------|---------|----------|---------|")
             for projet in top_projets:
-                rapport.append(f"| {projet['projet']} | {projet['score_qualite']} | {projet['score_securite']} | {projet['score_moyen']} |")
+                rapport.append(
+                    f"| {projet['projet']} | {projet['score_qualite']} | {projet['score_securite']} | {projet['score_moyen']} |")
             rapport.append("")
 
         # Événements récents
@@ -258,7 +267,8 @@ class DashboardUnifieSimple:
             rapport.append("|------|--------|-------------|------|--------|")
             for event in evenements_recents[:10]:
                 statut_emoji = "✅" if event["statut"] == "succes" else "❌"
-                rapport.append(f"| {event['type']} | {event['projet'] or '-'} | {event['utilisateur'] or '-'} | {event['timestamp']} | {statut_emoji} |")
+                rapport.append(
+                    f"| {event['type']} | {event['projet'] or '-'} | {event['utilisateur'] or '-'} | {event['timestamp']} | {statut_emoji} |")
             rapport.append("")
 
         return "\n".join(rapport)
@@ -268,11 +278,13 @@ class DashboardUnifieSimple:
         Ajoute une section Distillation IA au dashboard (exemple statique).
         """
         file_handle.write('<h2>Résultat de la distillation IA</h2>')
-        file_handle.write('<p><b>Réponse distillée :</b> Réponse de Ollama à "Explique la distillation IA en 2 phrases."</p>')
+        file_handle.write(
+            '<p><b>Réponse distillée :</b> Réponse de Ollama à "Explique la distillation IA en 2 phrases."</p>')
         file_handle.write('<p><b>Score audit distillé :</b> 7.60</p>')
         file_handle.write('<p><b>Correction distillée :</b> fix2</p>')
 
-    def generer_dashboard_html(self, output_file: str = "dashboard/index.html"):
+    def generer_dashboard_html(
+            self, output_file: str = "dashboard/index.html"):
         """Génération d'un dashboard HTML moderne et valide"""
         metriques = self.obtenir_metriques_temps_reel()
 
@@ -428,7 +440,8 @@ def main():
     """Fonction principale pour test du f"""
 
     if len(sys.argv) < 2:
-        logger.info("Usage: python dashboard_unifie_simple.py <action> [options]")
+        logger.info(
+            "Usage: python dashboard_unifie_simple.py <action> [options]")
         logger.info("Actions: metrics, report, html, f")
         sys.exit(1)
 
