@@ -209,6 +209,7 @@ jobs:
           path: |
             logs/validation_express_*.txt
             logs/rapport_validation_objective_*.md
+          if-no-files-found: warn
 
       # Génération du rapport de CI
       - name: Generate CI Summary
