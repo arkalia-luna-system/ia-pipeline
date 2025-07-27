@@ -30,7 +30,7 @@ jobs:
 
       - name: Lint (flake8)
         run: |
-          flake8 .
+          flake8 --config=config/.flake8 .
 
       - name: Check polluting files
         run: |
