@@ -422,9 +422,13 @@ if __name__ == "__main__":
     thread = validator.demarrer_surveillance()
     
     try:
-        # Garde le programme actif
-        while True:
-            time.sleep(60)
+        # Garde le programme actif avec timeout
+        timeout_seconds = 300  # 5 minutes max
+        start_time = time.time()
+        while time.time() - start_time < timeout_seconds:
+            time.sleep(10)  # Check toutes les 10 secondes
+        print(f"\n⏰ Timeout atteint ({timeout_seconds}s) - Arrêt automatique")
     except KeyboardInterrupt:
         print("\n🛑 Arrêt de la surveillance...")
+    finally:
         validator.arreter_surveillance() 

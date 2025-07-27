@@ -155,4 +155,8 @@ python -m pytest tests/test_unified_orchestrator_complete.py -v
 Voir fichier LICENSE
 
 ---
+<<<<<<< HEAD
 *Généré automatiquement par Athalia* - 2025-07-20
+=======
+*Généré automatiquement par Athalia* - 2025-07-27
+>>>>>>> develop

@@ -8,11 +8,51 @@ from dataclasses import dataclass
 import logging
 import yaml
 
-#!/usr/bin/env python3
 """
 Gestionnaire de configuration centralisé pour Athalia
 Lit le fichier YAML et les variables d'environnement
 """
+
+
+def load_config(config_path: str) -> Dict[str, Any]:
+    """
+    Charge une configuration depuis un fichier YAML
+    
+    Args:
+        config_path: Chemin vers le fichier de configuration
+        
+    Returns:
+        Dict contenant la configuration chargée
+    """
+    try:
+        with open(config_path, 'r', encoding='utf-8') as file:
+            return yaml.safe_load(file) or {}
+    except Exception as e:
+        logging.warning(f"Erreur lors du chargement de {config_path}: {e}")
+        return {}
+
+
+def save_config(config: Dict[str, Any], config_path: str) -> bool:
+    """
+    Sauvegarde une configuration vers un fichier YAML
+    
+    Args:
+        config: Configuration à sauvegarder
+        config_path: Chemin vers le fichier de destination
+        
+    Returns:
+        True si la sauvegarde a réussi, False sinon
+    """
+    try:
+        # Créer le répertoire parent si nécessaire
+        os.makedirs(os.path.dirname(config_path), exist_ok=True)
+        
+        with open(config_path, 'w', encoding='utf-8') as file:
+            yaml.dump(config, file, default_flow_style=False, allow_unicode=True)
+        return True
+    except Exception as e:
+        logging.error(f"Erreur lors de la sauvegarde de {config_path}: {e}")
+        return False
 
 
 @dataclass
@@ -230,8 +270,23 @@ class ConfigManager:
         )
 
     def get(self, key: str, default: Any=None) -> Any:
-        """Récupère une valeur de f"""
-        return getattr(self.config, key, default)
+        """Récupère une valeur de configuration"""
+        # Support pour les clés imbriquées (ex: 'test.key')
+        if '.' in key:
+            parts = key.split('.')
+            current = self.config
+            for part in parts:
+                if isinstance(current, dict):
+                    if part not in current:
+                        return default
+                    current = current[part]
+                else:
+                    if not hasattr(current, part):
+                        return default
+                    current = getattr(current, part)
+            return current
+        else:
+            return getattr(self.config, key, default)
 
     def is_module_enabled(self, module_name: str) -> bool:
         """Vérifie si un module est f"""
@@ -270,6 +325,75 @@ class ConfigManager:
         if not self.config.cleanup_patterns:
             return ["._*", "f", "*.f", ".f", ".f", ".f", "*.f"]
         return self.config.cleanup_patterns
+
+    def set(self, key: str, value: Any) -> None:
+        """Définit une valeur de configuration"""
+        # Support pour les clés imbriquées (ex: 'test.key')
+        if '.' in key:
+            parts = key.split('.')
+            current = self.config
+            for part in parts[:-1]:
+                if not hasattr(current, part):
+                    setattr(current, part, {})
+                current = getattr(current, part)
+            if isinstance(current, dict):
+                current[parts[-1]] = value
+            else:
+                setattr(current, parts[-1], value)
+        else:
+            setattr(self.config, key, value)
+
+    def validate_config(self, config: Dict[str, Any]) -> bool:
+        """Valide une configuration"""
+        try:
+            # Validation basique - vérifier que c'est un dict
+            if not isinstance(config, dict):
+                return False
+            
+            # Validation des clés requises
+            required_keys = ['general', 'modules']
+            for key in required_keys:
+                if key not in config:
+                    return False
+            
+            return True
+        except Exception:
+            return False
+
+    def merge_configs(self, base_config: Dict[str, Any], override_config: Dict[str, Any]) -> Dict[str, Any]:
+        """Fusionne deux configurations"""
+        merged = base_config.copy()
+        
+        for key, value in override_config.items():
+            if key in merged and isinstance(merged[key], dict) and isinstance(value, dict):
+                merged[key] = self.merge_configs(merged[key], value)
+            else:
+                merged[key] = value
+        
+        return merged
+
+    def resolve_environment_variables(self, config: Dict[str, Any]) -> Dict[str, Any]:
+        """Résout les variables d'environnement dans une configuration"""
+        resolved = {}
+        
+        for key, value in config.items():
+            if isinstance(value, str) and '${' in value and '}' in value:
+                # Chercher toutes les variables d'environnement dans la chaîne
+                result = value
+                import re
+                pattern = r'\$\{([^}]+)\}'
+                for match in re.finditer(pattern, value):
+                    env_var = match.group(1)
+                    env_value = os.getenv(env_var)
+                    if env_value is not None:
+                        result = result.replace(f"${{{env_var}}}", env_value)
+                resolved[key] = result
+            elif isinstance(value, dict):
+                resolved[key] = self.resolve_environment_variables(value)
+            else:
+                resolved[key] = value
+        
+        return resolved
 
     def to_dict(self) -> Dict[str, Any]:
         """Convertit la configuration en f"""
