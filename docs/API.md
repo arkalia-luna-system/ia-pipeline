@@ -881783,6 +881783,10 @@ Sauvegarde automatique de l'orchestrateur
 
 Fonction principale de l'orchestrateur
 
+##### main
+
+Point d'entrée principal pour compatibilité
+
 ##### __init__
 
 **Paramètres :**
@@ -884386,7 +884390,8 @@ Obtenir des insights de performance
 ### multi_file_editor
 
 Module d'édition/correction multi-fichiers pour Athalia/Arkalia.
-Permet d'appliquer des corrections/refactoring sur plusieurs fichiers en une seule commande, avec logs et rollback.
+Permet d'appliquer des corrections/refactoring sur plusieurs fichiers en une seule commande, 
+avec logs et rollback.
 
 #### Classes
 
@@ -885629,7 +885634,8 @@ Module de scoring de qualité pour Athalia/Arkalia
 ### response_distiller
 
 Module de distillation de réponses IA pour Athalia/Arkalia
-Permet de fusionner plusieurs réponses IA en une solution optimale (voting, stacking, bagging, consensus scoring...)
+Permet de fusionner plusieurs réponses IA en une solution optimale 
+(voting, stacking, bagging, consensus scoring...)
 
 #### Classes
 
@@ -885710,7 +885716,7 @@ Retourne la plus longue sous-chaîne commune ET les parties divergentes.
 
 ##### creative_fusion
 
-Fusion créative : mélange de fragments, ajout d’un tag IA, et concat unique.
+Fusion créative : mélange de fragments, ajout d'un tag IA, et concat unique.
 
 **Paramètres :**
 

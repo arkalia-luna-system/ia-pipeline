@@ -4,15 +4,11 @@ Module d'auto-correction avancée pour Athalia
 Correction intelligente de code, suggestions d'amélioration, refactoring automatique
 """
 
-import sys
 from pathlib import Path
 from typing import Dict, List, Tuple, Any
-import json
-import os
 import re
 import ast
 import logging
-import subprocess
 
 logger = logging.getLogger(__name__)
 
@@ -22,8 +18,8 @@ class AutoCorrectionAvancee:
 
     def __init__(self, project_path: str):
         self.project_path = Path(project_path)
-        self.corrections_appliquees = []
-        self.suggestions = []
+        self.corrections_appliquees: List[Dict[str, Any]] = []
+        self.suggestions: List[str] = []
 
     def analyser_et_corriger(self, dry_run: bool = False) -> Dict[str, Any]:
         """Analyse complète et correction automatique du code"""
@@ -51,9 +47,10 @@ class AutoCorrectionAvancee:
         # 5. Amélioration de la lisibilité
         resultats.update(self._ameliorer_lisibilite(dry_run))
 
+        corrections_count = len(resultats.get('corrections_appliquees', []) or [])
         logger.info(
             f"✅ Auto-correction terminée: "
-            f"{len(resultats['corrections_appliquees'])} corrections appliquées"
+            f"{corrections_count} corrections appliquées"
         )
         retour = resultats.copy()
         retour['resultats'] = resultats
@@ -103,7 +100,7 @@ class AutoCorrectionAvancee:
             self, fichier: Path, contenu: str, erreur: SyntaxError) -> Dict[str, Any]:
         """Correction intelligente d'erreur de syntaxe"""
         lignes = contenu.split('\n')
-        ligne_erreur = erreur.lineno - 1
+        ligne_erreur = (erreur.lineno or 1) - 1
 
         # Corrections communes
         corrections = {
@@ -127,7 +124,7 @@ class AutoCorrectionAvancee:
             except Exception:
                 continue
 
-        return None
+        return {}  # type: ignore
 
     def _corriger_indentation(
             self,
@@ -147,7 +144,7 @@ class AutoCorrectionAvancee:
                       or ligne_precedente.strip().startswith('class ')):
                     return '    ' + ligne
 
-        return None
+        return ""  # type: ignore
 
     def _corriger_parentheses(
             self,
@@ -165,7 +162,7 @@ class AutoCorrectionAvancee:
         elif fermantes > ouvrantes:
             return '(' * (fermantes - ouvrantes) + ligne
 
-        return None
+        return ""  # type: ignore
 
     def _corriger_guillemets(
             self,
@@ -180,7 +177,7 @@ class AutoCorrectionAvancee:
         elif ligne.count("'") % 2 == 1:
             return ligne + "'"
 
-        return None
+        return ""  # type: ignore
 
     def _corriger_virgules(self, lignes: List[str], ligne_erreur: int) -> str:
         """Correction automatique des virgules manquantes"""
@@ -194,7 +191,7 @@ class AutoCorrectionAvancee:
                         '[') or ligne_suivante.strip().startswith('{'):
                     return ligne.rstrip() + ','
 
-        return None
+        return ""  # type: ignore
 
     def _optimiser_code(self, dry_run: bool) -> Dict[str, Any]:
         """Optimisation automatique du code"""
@@ -581,21 +578,24 @@ Rapport d'Auto-Correction
         fichiers_traites = resultats.get('fichiers_traites', 0)
         erreurs_corrigees = resultats.get('erreurs_corrigees', 0)
 
-        rapport += f"🔧 CORRECTIONS APPLIQUÉES:\n"
+        rapport += "🔧 CORRECTIONS APPLIQUÉES:\n"
         if corrections_appliquees:
             for i, correction in enumerate(corrections_appliquees, 1):
-                rapport += f"{i}. {correction.get('type', 'N/A')} - {correction.get('description', 'N/A')}\n"
+                rapport += (
+                    f"{i}. {correction.get('type', 'N/A')} - "
+                    f"{correction.get('description', 'N/A')}\n"
+                )
         else:
             rapport += "Aucune correction appliquée\n"
 
-        rapport += f"\n💡 SUGGESTIONS:\n"
+        rapport += "\n💡 SUGGESTIONS:\n"
         if suggestions:
             for i, suggestion in enumerate(suggestions, 1):
                 rapport += f"{i}. {suggestion}\n"
         else:
             rapport += "Aucune suggestion\n"
 
-        rapport += f"\n📈 STATISTIQUES:\n"
+        rapport += "\n📈 STATISTIQUES:\n"
         rapport += f"- Fichiers traités: {fichiers_traites}\n"
         rapport += f"- Erreurs corrigées: {erreurs_corrigees}\n"
         rapport += f"- Corrections appliquées: {len(corrections_appliquees)}\n"

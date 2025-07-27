@@ -299,7 +299,8 @@ class IntelligentAnalyzer:
             if critical_perf_issues:
                 plan["priority_tasks"].append({
                     "task": "fix_critical_performance_issues",
-                    "description": f"Corriger {len(critical_perf_issues)} problèmes de performance critiques",
+                    "description": (f"Corriger {len(critical_perf_issues)} "
+                                  f"problèmes de performance critiques"),
                     "effort": "high",
                     "impact": "high"
                 })
@@ -336,9 +337,9 @@ class IntelligentAnalyzer:
     def _save_comprehensive_analysis(self, analysis: ComprehensiveAnalysis):
         """Sauvegarder l'analyse complète"""
         output_file = (
-            self.root_path /
-            "data" /
-            f"comprehensive_analysis_{analysis.project_name}_{analysis.analysis_date.strftime('%Y%m%d_%H%M%S')}.json")
+            self.root_path / "data" /
+            f"comprehensive_analysis_{analysis.project_name}_"
+            f"{analysis.analysis_date.strftime('%Y%m%d_%H%M%S')}.json")
 
         # Convertir en dictionnaire pour la sérialisation JSON
         analysis_dict = {
@@ -391,7 +392,8 @@ class IntelligentAnalyzer:
             },
             "recommendations": [
                 "Utiliser l'analyse complète pour les projets complexes",
-                "Activer l'orchestrateur unifié pour l'industrialisation complète"
+                ("Activer l'orchestrateur unifié pour "
+                 "l'industrialisation complète")
             ]
         }
 
