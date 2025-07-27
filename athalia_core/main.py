@@ -2,9 +2,11 @@
 # -*- coding: utf-8 -*-
 from athalia_core.ci import generate_github_ci_yaml, add_coverage_badge
 from athalia_core.cleanup import clean_old_tests_and_caches
-# from athalia_core.dashboard import generate_dashboard_html, generate_multi_project_mermaid  # Fonctions non disponibles
+# from athalia_core.dashboard import generate_dashboard_html, generate_multi_project_mermaid
 from athalia_core.advanced_analytics import enrich_genesis_md
-from athalia_core.generation import generate_project, generate_blueprint_mock, save_blueprint, scan_existing_project
+from athalia_core.generation import (
+    generate_project, generate_blueprint_mock, save_blueprint, scan_existing_project
+)
 from athalia_core.onboarding import generate_onboard_cli, generate_onboarding_html_advanced
 from athalia_core.security import security_audit_project
 import os
@@ -21,7 +23,10 @@ try:
 except ImportError:
     # Fallback vers le logging standard si le module avancé n'est pas disponible
     athalia_logger = None
-    log_main = lambda msg, level='INFO', **kwargs: logging.getLogger(__name__).info(msg)
+    
+    def log_main(msg, level='INFO', **kwargs):
+        logging.getLogger(__name__).info(msg)
+
 
 """
 Point d'entrée CLI du pipeline Athalia.
@@ -32,11 +37,13 @@ logger = logging.getLogger(__name__)
 # Variable globale pour contrôler la boucle principale
 running = True
 
+
 def signal_handler(signum, frame):
     """Gestionnaire de signal pour arrêt propre"""
     global running
     logger.info("\n🛑 Signal d'arrêt reçu. Arrêt propre en cours...")
     running = False
+
 
 def menu():
     logger.info("\n===Athalia Pipeline CLI===")
@@ -60,6 +67,7 @@ def menu():
         logger.info("\nSortie...")
         return "q"
 
+
 def safe_input(prompt: str) -> str:
     """Entrée sécurisée avec gestion d'erreurs."""
     try:
@@ -67,6 +75,7 @@ def safe_input(prompt: str) -> str:
     except (EOFError, KeyboardInterrupt):
         logger.info("\nOpération annulée.")
         return ""
+
 
 def surveillance_mode():
     """Mode surveillance avec arrêt automatique"""
@@ -78,14 +87,15 @@ def surveillance_mode():
     except KeyboardInterrupt:
         logger.info("\n🛑 Surveillance arrêtée.")
 
+
 def main(test_mode=False):
     global running
-    
+
     # Vérifier si une instance est déjà en cours
     import psutil
     current_pid = os.getpid()
     athalia_processes = []
-    
+
     for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
         try:
             if proc.info['cmdline'] and 'athalia_core.main' in ' '.join(proc.info['cmdline']):
@@ -93,9 +103,12 @@ def main(test_mode=False):
                     athalia_processes.append(proc.info['pid'])
         except (psutil.NoSuchProcess, psutil.AccessDenied):
             pass
-    
+
     if athalia_processes:
-        logger.warning(f"⚠️ {len(athalia_processes)} autre(s) instance(s) d'athalia_core.main détectée(s): {athalia_processes}")
+        logger.warning(
+            f"⚠️ {len(athalia_processes)} autre(s) instance(s) d'athalia_core.main "
+            f"détectée(s): {athalia_processes}"
+        )
         if not test_mode:
             logger.info("🔄 Arrêt des instances précédentes...")
             for pid in athalia_processes:

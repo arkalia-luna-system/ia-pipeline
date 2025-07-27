@@ -134,13 +134,19 @@ class ROS2Validator:
                 dependencies.append(dep.text)
 
             # Vérifier présence de fichiers importants
-            has_launch = ((package_dir / "launch").exists() or 
-                         list(package_dir.glob("*.launch.py")))
-            has_urdf = ((package_dir / "urdf").exists() or 
-                       list(package_dir.glob("*.urdf")) or 
-                       list(package_dir.glob("*.xacro")))
-            has_tests = ((package_dir / "test").exists() or 
-                        list(package_dir.glob("test_*.py")))
+            has_launch = (
+                (package_dir / "launch").exists()
+                or list(package_dir.glob("*.launch.py"))
+            )
+            has_urdf = (
+                (package_dir / "urdf").exists()
+                or list(package_dir.glob("*.urdf"))
+                or list(package_dir.glob("*.xacro"))
+            )
+            has_tests = (
+                (package_dir / "test").exists()
+                or list(package_dir.glob("test_*.py"))
+            )
 
             return ROS2PackageInfo(
                 name=name,

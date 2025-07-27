@@ -12,6 +12,7 @@ Gestionnaire de plugins dynamiques.
 
 PLUGINS_DIR = os.path.join(os.path.dirname(__file__), '..', 'plugins')
 
+
 def list_plugins():
     """Liste tous les plugins disponibles."""
     plugins = []
@@ -19,6 +20,7 @@ def list_plugins():
         if fname.endswith('.py') and fname != '__init__.py':
             plugins.append(fname[:-3])
     return plugins
+
 
 def load_plugin(name):
     """Charge dynamiquement un plugin par nom."""
@@ -29,6 +31,7 @@ def load_plugin(name):
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
+
 
 def run_all_plugins():
     """Exécute la fonction run() de tous les plugins et retourne les résultats."""

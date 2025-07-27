@@ -93,7 +93,7 @@ class AthaliaLogger:
         # Handler pour fichier avec rotation
         file_handler = logging.handlers.RotatingFileHandler(
             log_file,
-            maxBytes=10*1024*1024,  # 10MB
+            maxBytes=10 * 1024 * 1024,  # 10MB
             backupCount=5,
             encoding='utf-8'
         )
@@ -138,7 +138,9 @@ class AthaliaLogger:
         if len(self.metrics['validation']) > 1000:
             self.metrics['validation'].popleft()
 
-        logger.info(f"VALIDATION | {test_name} | {result.get('succes', False)} | {duration:.2f}s | {result}")
+        logger.info(
+            f"VALIDATION | {test_name} | {result.get('succes', False)} | {duration:.2f}s | {result}"
+        )
 
     def log_correction(self, file_path: str, correction_type: str, success: bool,
                       old_content: str, new_content: str, duration: float):
