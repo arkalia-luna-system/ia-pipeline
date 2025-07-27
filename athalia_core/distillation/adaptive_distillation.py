@@ -8,6 +8,7 @@ from typing import List, Dict, Any, Optional
 import json
 from pathlib import Path
 
+
 class AdaptiveDistiller:
     def __init__(self, history_path: Optional[str] = None):
         """
@@ -20,7 +21,9 @@ class AdaptiveDistiller:
         self.history_path = history_path or "adaptive_distillation_history.json"
         self.load_history()
 
-    def distill_responses(self, responses: List[str], context: Optional[Dict[str, Any]] = None) -> str:
+    def distill_responses(
+        self, responses: List[str], context: Optional[Dict[str, Any]] = None
+    ) -> str:
         """
         Fusionne les réponses IA en tenant compte des préférences et du feedback utilisateur.
         :param responses: Liste de réponses IA
@@ -30,7 +33,9 @@ class AdaptiveDistiller:
         weighted_responses = self.apply_learned_weights(responses)
         return self.ensemble_fusion(weighted_responses, context)
 
-    def update_preferences(self, chosen_response: str, responses: List[str], success: bool = True):
+    def update_preferences(
+        self, chosen_response: str, responses: List[str], success: bool = True
+    ):
         """
         Met à jour les préférences et le feedback selon la réponse choisie et le succès/échec.
         :param chosen_response: Réponse sélectionnée
@@ -65,7 +70,9 @@ class AdaptiveDistiller:
             return w + taux_succes
         return sorted(responses, key=score, reverse=True)
 
-    def ensemble_fusion(self, responses: List[str], context: Optional[Dict[str, Any]]) -> str:
+    def ensemble_fusion(
+        self, responses: List[str], context: Optional[Dict[str, Any]]
+    ) -> str:
         """
         Fusionne les réponses (majority voting par défaut).
         :param responses: Liste de réponses pondérées

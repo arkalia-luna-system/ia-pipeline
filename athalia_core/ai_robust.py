@@ -12,6 +12,7 @@ from enum import Enum
 from typing import Dict, List, Optional, Any
 import requests
 
+
 class AIModel(Enum):
     """Modèles IA disponibles."""
     OLLAMA_MISTRAL = "ollama_mistral"
@@ -21,6 +22,7 @@ class AIModel(Enum):
     OLLAMA_LLAVA = "ollama_llava"
     MOCK = "mock"
 
+
 class PromptContext(Enum):
     """Contextes de prompts."""
     BLUEPRINT = "blueprint"
@@ -28,6 +30,7 @@ class PromptContext(Enum):
     DOCUMENTATION = "documentation"
     TESTING = "testing"
     SECURITY = "security"
+
 
 class RobustAI:
     """Gestionnaire IA robuste avec fallback intelligent."""
@@ -42,10 +45,14 @@ class RobustAI:
         """Génère un blueprint de projet à partir d'une idée."""
         # Analyse intelligente de l'idée
         idea_lower = idea.lower()
-        
+
         # Détection du type de projet (priorité aux mots clés spécifiques)
         project_type = 'generic'
-        if any(word in idea_lower for word in ['fastapi', 'swagger', 'openapi']):
+        if any(
+            word in idea_lower for word in [
+                'fastapi',
+                'swagger',
+                'openapi']):
             project_type = 'api'
         elif any(word in idea_lower for word in ['api', 'rest', 'endpoint']):
             project_type = 'api'
@@ -57,36 +64,59 @@ class RobustAI:
             project_type = 'web'
         elif any(word in idea_lower for word in ['ia', 'ai', 'machine learning', 'ml']):
             project_type = 'ai_application'
-        
+
         # Extraction du nom de projet
         project_name = self._extract_project_name(idea)
-        
+
         # Dépendances selon le type
         dependencies = ['numpy', 'pandas']
         if project_type == 'api':
-            dependencies.extend(['fastapi', 'uvicorn', 'pydantic', 'sqlalchemy', 'python-jose[cryptography]', 'passlib[bcrypt]', 'httpx'])
+            dependencies.extend(['fastapi',
+                                 'uvicorn',
+                                 'pydantic',
+                                 'sqlalchemy',
+                                 'python-jose[cryptography]',
+                                 'passlib[bcrypt]',
+                                 'httpx'])
         elif project_type == 'web':
             dependencies.extend(['flask', 'requests', 'jinja2', 'flask-cors'])
         elif project_type == 'robotics':
-            dependencies.extend(['opencv-python', 'numpy', 'matplotlib', 'rospy'])
+            dependencies.extend(
+                ['opencv-python', 'numpy', 'matplotlib', 'rospy'])
         elif project_type == 'desktop':
             dependencies.extend(['tkinter', 'matplotlib'])
         elif project_type == 'ai_application':
             dependencies.extend(['scikit-learn', 'tensorflow', 'torch'])
-        
+
         # Détection des fonctionnalités
-        has_docker = any(word in idea_lower for word in ['docker', 'container'])
-        has_cicd = any(word in idea_lower for word in ['ci', 'cd', 'github actions', 'pipeline'])
-        has_tests = any(word in idea_lower for word in ['test', 'unittest', 'pytest'])
-        has_docs = any(word in idea_lower for word in ['doc', 'swagger', 'openapi'])
-        
+        has_docker = any(
+            word in idea_lower for word in [
+                'docker', 'container'])
+        has_cicd = any(
+            word in idea_lower for word in [
+                'ci',
+                'cd',
+                'github actions',
+                'pipeline'])
+        has_tests = any(
+            word in idea_lower for word in [
+                'test', 'unittest', 'pytest'])
+        has_docs = any(
+            word in idea_lower for word in [
+                'doc', 'swagger', 'openapi'])
+
         # Structure du projet
-        structure = ['src/', 'tests/', 'docs/', 'requirements.txt', 'README.md']
+        structure = [
+            'src/',
+            'tests/',
+            'docs/',
+            'requirements.txt',
+            'README.md']
         if has_docker:
             structure.extend(['Dockerfile', 'docker-compose.yml'])
         if has_cicd:
             structure.extend(['.github/workflows/'])
-        
+
         # Modules selon le type
         modules = ['core', 'api', 'ui', 'tests', 'docs']
         if project_type == 'api':
@@ -95,7 +125,7 @@ class RobustAI:
             modules.extend(['templates', 'static', 'routes'])
         elif project_type == 'robotics':
             modules.extend(['vision', 'control', 'navigation'])
-        
+
         return {
             'project_name': project_name,
             'description': idea,
@@ -110,11 +140,11 @@ class RobustAI:
             'tests': has_tests,
             'documentation': has_docs
         }
-    
+
     def _extract_project_name(self, idea: str) -> str:
         """Extrait un nom de projet de l'idée"""
         import re
-        
+
         # Cherche des mots clés spécifiques
         patterns = [
             r'calculatrice\s+(\w+)',
@@ -123,30 +153,42 @@ class RobustAI:
             r'api\s+(\w+)',
             r'(\w+)\s+avec'
         ]
-        
+
         for pattern in patterns:
             match = re.search(pattern, idea, re.IGNORECASE)
             if match:
                 return match.group(1).lower()
-        
+
         # Fallback: premier mot significatif
         words = idea.split()
         for word in words:
             if len(word) > 3 and word.isalpha():
                 return word.lower()
-        
+
         return "projet_ia"
 
-    def review_code(self, code: str, filename: str, project_type: str, current_score: int) -> dict:
+    def review_code(
+            self,
+            code: str,
+            filename: str,
+            project_type: str,
+            current_score: int) -> dict:
         """Fait une revue de code et retourne un rapport mocké."""
         return {
             'score': 85,
-            'issues': ["Améliorer la gestion d'erreurs", "Ajouter des docstrings"],
-            'suggestions': ["Utiliser des exceptions personnalisées", "Documenter les fonctions principales"],
-            'improvements': ["Code refactorisé"]
-        }
+            'issues': [
+                "Améliorer la gestion d'erreurs",
+                "Ajouter des docstrings"],
+            'suggestions': [
+                "Utiliser des exceptions personnalisées",
+                "Documenter les fonctions principales"],
+            'improvements': ["Code refactorisé"]}
 
-    def generate_documentation(self, project_name: str, project_type: str, modules: list) -> str:
+    def generate_documentation(
+            self,
+            project_name: str,
+            project_type: str,
+            modules: list) -> str:
         """Génère une documentation technique mockée."""
         return f"# Documentation de {project_name}\n\nType: {project_type}\nModules: {', '.join(modules)}\n..."
 
@@ -159,23 +201,29 @@ class RobustAI:
 
     def get_dynamic_prompt(self, context: str, **kwargs) -> str:
         """Retourne un prompt dynamique mocké selon le contexte."""
-        return self.prompt_templates.get(context, "Prompt mocké pour le contexte : " + context)
+        return self.prompt_templates.get(
+            context, "Prompt mocké pour le contexte : " + context)
 
     class _BlueprintProxy:
         def __init__(self, parent):
             self.parent = parent
+
         def info(self, *args, **kwargs):
             return self.parent.generate_blueprint(*args, **kwargs)
     # Ajout d'un proxy robuste pour supporter generate_bluelogger.info partout
+
     @property
     def generate_bluelogger(self):
         return self._BlueprintProxy(self)
     # Alias pour compatibilité
+
     def generate_blueprint_mock(self, *args, **kwargs):
         return self.generate_blueprint(*args, **kwargs)
+
     def save_blueprint(self, *args, **kwargs):
         from athalia_core import generation
         return generation.save_blueprint(*args, **kwargs)
+
     def scan_existing_project(self, *args, **kwargs):
         from athalia_core import generation
         return generation.scan_existing_project(*args, **kwargs)
@@ -184,7 +232,8 @@ class RobustAI:
         """Détecte les modèles IA disponibles."""
         available = []
         try:
-            result = subprocess.run(['ollama', 'list'], capture_output=True, text=True)
+            result = subprocess.run(
+                ['ollama', 'list'], capture_output=True, text=True)
             if result.returncode == 0:
                 output = result.stdout.lower()
                 if 'qwen' in output:
@@ -396,7 +445,11 @@ secure_code:
 """
         }
 
-    def generate_response(self, context: PromptContext, distillation: bool = False, **kwargs) -> dict:
+    def generate_response(
+            self,
+            context: PromptContext,
+            distillation: bool = False,
+            **kwargs) -> dict:
         """
         Gère la génération de réponse IA avec fallback ou distillation.
         Si distillation=True, interroge tous les modèles et agrège les réponses.
@@ -433,7 +486,8 @@ secure_code:
                         return {model.value: response}
                 except Exception as e:
                     results[model.value] = f"Erreur: {e}"
-            return results if results else {"error": "Aucun modèle IA disponible."}
+            return results if results else {
+                "error": "Aucun modèle IA disponible."}
 
     def _call_model(self, model: AIModel, prompt: str) -> Optional[str]:
         if model == AIModel.MOCK:
@@ -460,13 +514,15 @@ secure_code:
     def _get_dynamic_prompt(self, context, **kwargs) -> str:
         """Alias privé pour compatibilité avec les tests. Accepte PromptContext ou str et fait un .format sur le template."""
         ctx = context.value if hasattr(context, 'value') else str(context)
-        template = self.prompt_templates.get(ctx, "Prompt mocké pour le contexte : " + ctx)
+        template = self.prompt_templates.get(
+            ctx, "Prompt mocké pour le contexte : " + ctx)
         try:
             return template.format(**kwargs)
         except Exception:
             return template
 
-    def _call_ollama(self, model_name: str, prompt: str, timeout: int = 30) -> Optional[str]:
+    def _call_ollama(self, model_name: str, prompt: str,
+                     timeout: int = 30) -> Optional[str]:
         """Appelle Ollama avec un modèle spécifique et timeout paramétrable."""
         try:
             result = subprocess.run(
@@ -511,9 +567,11 @@ suggestions:
         else:
             return "Réponse mock générée pour ce contexte."
 
+
 def robust_ai() -> RobustAI:
     """Fonction factory pour créer une instance RobustAI."""
     return RobustAI()
+
 
 def fallback_ia(prompt: str, models: Optional[List[str]] = None) -> str:
     """
@@ -543,6 +601,7 @@ def fallback_ia(prompt: str, models: Optional[List[str]] = None) -> str:
             pass
     return "[Aucune réponse IA]"
 
+
 def query_qwen(prompt: str) -> str:
     """Appel local à Qwen 7B via Ollama."""
     try:
@@ -554,22 +613,26 @@ def query_qwen(prompt: str) -> str:
     except Exception as e:
         return f"[Qwen erreur: {e}]"
 
+
 def query_mistral(prompt: str) -> str:
     """Appel local à Mistral Small via Ollama."""
     try:
         response = requests.post(
             "http://localhost:11434/api/generate",
-            json={"model": "mistral:instruct", "prompt": prompt, "stream": False}
-        )
+            json={
+                "model": "mistral:instruct",
+                "prompt": prompt,
+                "stream": False})
         return response.json().get("response", "")
     except Exception as e:
         return f"[Mistral erreur: {e}]"
+
 
 if __name__ == "__main__":
     # Test du module
     ai = RobustAI()
     print(f"Modèles disponibles: {[m.value for m in ai.available_models]}")
-    
+
     # Test de génération
     response = ai.generate_response(
         PromptContext.BLUEPRINT,

@@ -15,7 +15,8 @@ Analyse, détection de type, audit qualité, génération de blueprint de correc
 """
 
 
-logger=logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
+
 
 class ProjectImporter:
     def __init__(self):
@@ -70,14 +71,14 @@ class ProjectImporter:
         }
 
         for root, dirs, files in os.walk(project_path):
-            rel_root=os.path.relpath(root, project_path)
+            rel_root = os.path.relpath(root, project_path)
 
             for dir_name in dirs:
                 if not dir_name.startswith('.'):
                     structure['directories'].append(os.path.join(rel_root, dir_name))
 
             for file_name in files:
-                file_path=os.path.join(rel_root, file_name)
+                file_path = os.path.join(rel_root, file_name)
                 structure['files'].append(file_path)
 
                 if file_name.endswith('.py'):
@@ -92,13 +93,13 @@ class ProjectImporter:
     def _detect_project_type(self, project_path: str, structure: Dict[str, Any]) -> str:
         """Détecte automatiquement le type de projet."""
         # Analyser les fichiers Python pour détecter les imports
-        imports=[]
+        imports = []
         for py_file in structure['python_files']:
-            full_path=os.path.join(project_path, py_file)
+            full_path = os.path.join(project_path, py_file)
             try:
                 with open(full_path, 'r', encoding='utf-8') as file_handle:
-                    content=file_handle.read()
-                    tree=ast.parse(content)
+                    content = file_handle.read()
+                    tree = ast.parse(content)
                     for node in ast.walk(tree):
                         if isinstance(node, ast.Import):
                             for alias in node.names:
@@ -110,7 +111,7 @@ class ProjectImporter:
                 continue
 
         # Analyser les noms de fichiers et dossiers
-        file_names=(file_handle.lower() for file_handle in structure['files'])
+        file_names = (file_handle.lower() for file_handle in structure['files'])
 
         # Calculer les scores par type
         scores={}

@@ -19,7 +19,10 @@ PROMPTS = [
     {
         'name': 'Stratégie de tests',
         'file': 'prompts/test_strategy.md',
-        'patterns': [r'(test_.*\.py|.*_test\.py|.*\.test\.py)$', r'assert', r'unittest', r'pytest', r'testcase'],
+        'patterns': [
+            r'(test_.*\.py|.*_test\.py|.*\.test\.py)$', r'assert', r'unittest', 
+            r'pytest', r'testcase'
+        ],
         'weight': 2
     },
     {
@@ -31,19 +34,28 @@ PROMPTS = [
     {
         'name': 'Audit Design / Ergonomie',
         'file': 'prompts/design_review.md',
-        'patterns': [r'\.md$', r'design', r'ui', r'ux', r'interface', r'layout', r'color', r'font', r'css', r'html'],
+        'patterns': [
+            r'\.md$', r'design', r'ui', r'ux', r'interface', r'layout', 
+            r'color', r'font', r'css', r'html'
+        ],
         'weight': 1
     },
     {
         'name': 'Booster UX / Fun',
         'file': 'prompts/ux_fun_boost.md',
-        'patterns': [r'fun', r'ux', r'jouabilité', r'gameplay', r'animation', r'feedback', r'scène', r'immersif', r'plaisir'],
+        'patterns': [
+            r'fun', r'ux', r'jouabilité', r'gameplay', r'animation', 
+            r'feedback', r'scène', r'immersif', r'plaisir'
+        ],
         'weight': 1
     },
     {
         'name': 'Débogage',
         'file': 'prompts/dev_debug.yaml',
-        'patterns': [r'error', r'raise', r'exception', r'traceback', r'bug', r'fail', r'crash', r'fixme', r'todo'],
+        'patterns': [
+            r'error', r'raise', r'exception', r'traceback', r'bug', 
+            r'fail', r'crash', r'fixme', r'todo'
+        ],
         'weight': 2
     },
 ]
@@ -126,7 +138,7 @@ def show_prompts(scored, semantic_prompt=None):
         if os.path.exists(semantic_prompt['file']):
             with open(semantic_prompt['file'], 'r', encoding='utf-8') as file_handle:
                 prompt_text = file_handle.read()
-            logging.info("  --- Prompt principal ---\n" + prompt_text + "\n" + "-"*40)
+            logging.info("  --- Prompt principal ---\n" + prompt_text + "\n" + "-" * 40)
             try:
                 if pyperclip:
                     pyperclip.copy(prompt_text)
@@ -150,7 +162,7 @@ def show_prompts(scored, semantic_prompt=None):
             if os.path.exists(prompt['file']):
                 with open(prompt['file'], 'r', encoding='utf-8') as file_handle:
                     prompt_text = file_handle.read()
-                logging.info("  --- Prompt principal ---\n" + prompt_text + "\n" + "-"*40)
+                logging.info("  --- Prompt principal ---\n" + prompt_text + "\n" + "-" * 40)
                 try:
                     if pyperclip:
                         pyperclip.copy(prompt_text)
