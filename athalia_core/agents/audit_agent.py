@@ -3,10 +3,10 @@ from athalia_core.ai_robust import query_qwen
 
 class AuditAgent:
     """Agent d'audit simplifié pour les tests"""
-    
+
     def __init__(self):
         self.name = "AuditAgent"
-    
+
     def act(self, prompt):
         return query_qwen(prompt)
 

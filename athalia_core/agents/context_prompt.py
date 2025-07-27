@@ -131,11 +131,11 @@ def detect_prompt_semantic(filepath):
         content = ''
     prompt_list = '\n'.join([f"- {p['name']} ({p['file']})" for p in PROMPTS])
     system_prompt = (
-    "Tu es un assistant expert en analyse de contexte de code. "
-    "Voici la liste des prompts disponibles :\n" +
-    prompt_list +
-    "\nLis le contenu suivant et indique le nom du prompt le plus pertinent pour améliorer ou analyser. "
-    "Réponds uniquement par le nom exact du prompt.")
+        "Tu es un assistant expert en analyse de contexte de code. "
+        "Voici la liste des prompts disponibles :\n" +
+        prompt_list +
+        "\nLis le contenu suivant et indique le nom du prompt le plus pertinent pour améliorer ou analyser. "
+        "Réponds uniquement par le nom exact du prompt.")
     # Appel Ollama / Mistral
     try:
         ollama_cmd = [

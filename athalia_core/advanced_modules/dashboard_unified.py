@@ -417,7 +417,7 @@ class DashboardUnifieSimple:
         </div>
         <div class="content-section">
             <h2>📊 Statistiques Détaillées</h2>
-            <p>Dashboard simplifié - Les graphiques seront disponibles dans la version complète avec matplotlib.</p>
+        logger.info("Usage: python dashboard_unifie_simple.py <action> [options]")
         </div>
         <div class="footer">
             <div class="update-time">
@@ -437,7 +437,7 @@ class DashboardUnifieSimple:
         return str(output_path)
 
     def ouvrir_dashboard(self):
-        """Ouverture du dashboard dans le f"""
+        """Ouverture du dashboard dans le navigateur"""
         html_file = self.generer_dashboard_html()
         webbrowser.open(f"file://{os.path.abspath(html_file)}")
         logger.info(f"Dashboard ouvert: {html_file}")
