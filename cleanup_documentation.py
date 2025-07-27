@@ -199,7 +199,9 @@ def main():
     """Fonction principale"""
     import argparse
 
-    parser = argparse.ArgumentParser(description="Nettoyage intelligent de la documentation")
+    parser = argparse.ArgumentParser(
+        description="Nettoyage intelligent de la documentation"
+    )
     parser.add_argument("--dry-run", action="store_true", help="Mode simulation")
     parser.add_argument("--docs-dir", default="docs", help="Dossier de documentation")
 

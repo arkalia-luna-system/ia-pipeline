@@ -9,10 +9,12 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 """
 Module d'audit de sécurité pour Athalia
 Détection automatique de vulnérabilités et bonnes pratiques
 """
+
 
 class SecurityAuditor:
     """Auditeur de sécurité pour Athalia"""
@@ -81,7 +83,9 @@ class SecurityAuditor:
             if result.returncode != 0:
                 vulns = json.loads(result.stdout)
                 for vuln in vulns:
-                    self.report["vulnerabilities"].append(f"Vulnérabilité: {vuln['package']} {vuln['installed_version']}")
+                    self.report["vulnerabilities"].append(
+                        f"Vulnérabilité: {vuln['package']} {vuln['installed_version']}"
+                    )
 
         except Exception as e:
             self.report["warnings"].append(f"Safety non exécuté: {e}")

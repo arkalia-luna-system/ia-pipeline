@@ -111,7 +111,7 @@ Exécute le nettoyage complet de la documentation
 
 ### cleanup_old_data
 
-Script de nettoyage intelligent des anciennes données d'analyse
+Script de nettoyage des anciennes données d'analyse
 
 #### Classes
 
@@ -881682,14 +881682,7 @@ Génère un rapport de tests
 
 ### unified_orchestrator
 
-🎯 ORCHESTRATEUR UNIFIÉ ATHALIA
-================================
-Orchestrateur unifié qui combine :
-- Industrialisation complète (athalia_orchestrator)
-- Intelligence et apprentissage (intelligent_orchestrator)
-- Coordination de tous les modules Athalia
-- Gestion des tâches et prédictions
-- Optimisation automatique du code
+Orchestrateur unifié pour Athalia - Industrialisation IA complète
 
 #### Classes
 
@@ -881717,13 +881710,13 @@ Insight intelligent unifié
 
 ##### UnifiedOrchestrator
 
-Orchestrateur unifié Athalia
-Combine industrialisation complète et intelligence avancée
+Orchestrateur unifié pour l'industrialisation IA
 
 **Méthodes :**
 
 - `__init__()`
 - `_init_database()`
+- `_init_components()`
 - `orchestrate_project_complete()`
 - `_run_industrialization()`
 - `_run_audit()`
@@ -881766,7 +881759,7 @@ Point d'entrée CLI
 
 ##### error_handler
 
-Décorateur pour la gestion d'erreurs
+Décorateur de gestion d'erreur
 
 **Paramètres :**
 
@@ -881778,7 +881771,7 @@ Sauvegarde automatique de l'orchestrateur
 
 ##### main
 
-Point d'entrée principal
+Fonction principale
 
 ##### __init__
 
@@ -881798,12 +881791,15 @@ Obtenir les statistiques de sauvegarde
 
 ##### _init_database
 
-Initialiser la base de données unifiée
+Initialiser la base de données
+
+##### _init_components
+
+Initialiser les composants disponibles
 
 ##### orchestrate_project_complete
 
-Orchestration complète d'un projet
-Combine industrialisation et intelligence
+Orchestrer l'industrialisation complète d'un projet
 
 **Paramètres :**
 
@@ -881812,7 +881808,7 @@ Combine industrialisation et intelligence
 
 ##### _run_industrialization
 
-Exécuter l'industrialisation complète
+Exécuter l'industrialisation
 
 **Paramètres :**
 
@@ -881820,7 +881816,7 @@ Exécuter l'industrialisation complète
 
 ##### _run_audit
 
-Exécuter l'audit intelligent
+Exécuter l'audit
 
 **Paramètres :**
 
@@ -881844,7 +881840,7 @@ Exécuter l'audit de sécurité
 
 ##### _run_analytics
 
-Exécuter l'analytics
+Exécuter l'analyse
 
 **Paramètres :**
 
@@ -881908,7 +881904,7 @@ Générer des optimisations intelligentes
 
 ##### _learn_from_results
 
-Apprendre des résultats d'orchestration
+Apprendre des résultats pour améliorer les futures exécutions
 
 **Paramètres :**
 
@@ -881932,11 +881928,11 @@ Sauvegarder les résultats unifiés
 
 ##### get_orchestration_insights
 
-Obtenir des insights d'orchestration
+Obtenir les insights d'orchestration
 
 ##### _run_plugins
 
-Exécuter les plugins disponibles
+Exécuter les plugins
 
 **Paramètres :**
 
@@ -881944,7 +881940,7 @@ Exécuter les plugins disponibles
 
 ##### phase2_backup
 
-Sauvegarde Phase2 du projet
+Sauvegarde Phase 2
 
 **Paramètres :**
 
@@ -881952,11 +881948,11 @@ Sauvegarde Phase2 du projet
 
 ##### get_phase2_backup_stats
 
-Obtenir les statistiques des sauvegardes Phase2
+Obtenir les statistiques de sauvegarde Phase 2
 
 ##### validate_phase2_inputs
 
-Valider les entrées Phase2 avec champs requis optionnels
+Valider les entrées Phase 2
 
 **Paramètres :**
 
@@ -881965,7 +881961,7 @@ Valider les entrées Phase2 avec champs requis optionnels
 
 ##### run_phase2_backup
 
-Exécuter la sauvegarde Phase2
+Exécuter la sauvegarde Phase 2
 
 **Paramètres :**
 
@@ -881973,7 +881969,7 @@ Exécuter la sauvegarde Phase2
 
 ##### run_phase2_error_handling
 
-Gestion d'erreur Phase2
+Gestion d'erreur Phase 2
 
 **Paramètres :**
 
@@ -881989,7 +881985,7 @@ Exécuter les templates
 
 ##### orchestrate_with_phase2_features
 
-Orchestration avec fonctionnalités Phase 2
+Orchestrer avec les fonctionnalités Phase 2
 
 **Paramètres :**
 
@@ -884493,9 +884489,13 @@ Suggère des améliorations spécifiques.
 
 ### security
 
+Module sécurité, audit, scan de secrets, prompts sécurité.
+
 #### Fonctions
 
 ##### security_audit_project
+
+Audit de sécurité d'un projet
 
 **Paramètres :**
 
@@ -886106,14 +886106,7 @@ Générer rapport de validation
 
 ### rust_analyzer
 
-Rust Analyzer - Analyse spécialisée Rust pour robotique
-=======================================================
-
-Analyse des projets Rust dans l'écosystème robotique :
-- Validation Cargo.toml
-- Dépendances ROS2 Rust
-- Optimisations de compilation
-- Intégration avec Reachy
+Analyseur de projets Rust pour Athalia Robotics
 
 #### Classes
 
@@ -886131,7 +886124,7 @@ Résultat d'analyse Rust
 
 ##### RustAnalyzer
 
-Analyseur spécialisé Rust pour robotique
+Analyseur de projets Rust pour la robotique
 
 **Méthodes :**
 
@@ -886143,7 +886136,7 @@ Analyseur spécialisé Rust pour robotique
 - `_analyze_build_targets()`
 - `_check_rust_build_system()`
 - `_calculate_optimization_score()`
-- `_check_robotics_integration()`
+- `_generate_recommendations()`
 - `validate_cargo_toml()`
 - `generate_rust_report()`
 - `create_rust_template()`
@@ -886158,11 +886151,11 @@ Analyseur spécialisé Rust pour robotique
 
 ##### analyze_rust_projects
 
-Analyser tous les projets Rust du projet
+Analyse tous les projets Rust dans le répertoire
 
 ##### _analyze_cargo_project
 
-Analyser un projet Cargo
+Analyse un projet Cargo spécifique
 
 **Paramètres :**
 
@@ -886204,9 +886197,9 @@ Calculer le score d'optimisation
 
 - `projects`
 
-##### _check_robotics_integration
+##### _generate_recommendations
 
-Vérifier l'intégration robotique
+Générer des recommandations basées sur l'analyse
 
 **Paramètres :**
 
@@ -886216,7 +886209,7 @@ Vérifier l'intégration robotique
 
 ##### validate_cargo_toml
 
-Valider un fichier Cargo.toml
+Valider et parser un fichier Cargo.toml
 
 **Paramètres :**
 
@@ -886224,7 +886217,7 @@ Valider un fichier Cargo.toml
 
 ##### generate_rust_report
 
-Générer rapport d'analyse Rust
+Générer un rapport d'analyse Rust
 
 **Paramètres :**
 
@@ -886232,7 +886225,7 @@ Générer rapport d'analyse Rust
 
 ##### create_rust_template
 
-Créer un template Cargo.toml pour robotique
+Créer un template de projet Rust robotique
 
 **Paramètres :**
 
@@ -886398,12 +886391,34 @@ Interface unifiée pour tous les modules Athalia
 - `industrialize_project()`
 - `audit_project()`
 - `scan_projects()`
+- `industrialize_project()`
+- `audit_project()`
+- `scan_projects()`
 
 #### Fonctions
 
 ##### main
 
 Fonction principale du CLI unifié
+
+##### industrialize_project
+
+**Paramètres :**
+
+- `project_path`
+- `config`
+
+##### audit_project
+
+**Paramètres :**
+
+- `project_path`
+
+##### scan_projects
+
+**Paramètres :**
+
+- `project_path`
 
 ##### industrialize_project
 

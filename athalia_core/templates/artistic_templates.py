@@ -9,6 +9,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 def get_artistic_templates() -> Dict[str, str]:
     """Retourne les templates de code pour projets artistiques."""
 
