@@ -3,18 +3,13 @@ import importlib
 import os
 import sys
 
-<<<<<<< HEAD
-=======
-import pytest
-
-# Import conditionnel de pytest-benchmark
+# Vérification de la disponibilité de pytest-benchmark
 try:
     import pytest_benchmark
     BENCHMARK_AVAILABLE = True
 except ImportError:
     BENCHMARK_AVAILABLE = False
 
->>>>>>> develop
 # Liste des modules/fonctions critiques à tester (corrigée)
 CRITICAL_FUNCTIONS = [
     ("athalia_core.advanced_analytics", "AdvancedAnalytics", True),  # True = nécessite un argument

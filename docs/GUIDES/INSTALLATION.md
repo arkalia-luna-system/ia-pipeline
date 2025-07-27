@@ -86,7 +86,7 @@ python -c "import athalia_core; print('✅ Import réussi')"
 python athalia_unified.py --help
 
 # Tester un audit rapide
-python athalia_unified.py audit . --quick
+python athalia_unified.py . --action audit --dry-run
 ```
 
 ---
@@ -158,15 +158,15 @@ source ~/.bashrc  # ou source ~/.zshrc
 
 ### ✅ **Tests Automatiques**
 ```bash
-# Lancer tous les tests
-python athalia_unified.py test --full
+# Lancer les tests avec pytest
+python -m pytest tests/ -v
 
-# Tests rapides seulement
-python athalia_unified.py test --quick
+# Tests avec couverture
+python -m pytest tests/ --cov=athalia_core
 
 # Tests spécifiques
-python athalia_unified.py test --module audit
-python athalia_unified.py test --module performance
+python -m pytest tests/test_audit.py -v
+python -m pytest tests/test_performance.py -v
 ```
 
 ### 🔍 **Validation Manuelle**
@@ -175,14 +175,14 @@ python athalia_unified.py test --module performance
 python -c "
 import athalia_core.audit
 import athalia_core.performance_analyzer
-import athalia_core.backup_system
+import athalia_core.analytics
 print('✅ Tous les modules importés avec succès')
 "
 
 # Tester les fonctionnalités CLI
-python athalia_unified.py --version
-python athalia_unified.py audit . --output json
-python athalia_unified.py benchmark --quick
+python athalia_unified.py --help
+python athalia_unified.py . --action audit
+python athalia_unified.py . --scan
 ```
 
 ---
@@ -201,14 +201,11 @@ pip install -r requirements-robotics.txt 2>/dev/null || echo "Fichier robotics n
 
 ### 🤖 **Configuration Reachy**
 ```bash
-# Vérifier la connectivité Reachy
-python athalia_unified.py robotics --check-reachy
+# Vérifier la connectivité Reachy manuellement
+ping 192.168.1.100
 
-# Configurer Reachy
-python athalia_unified.py robotics --setup-reachy --ip 192.168.1.100
-
-# Tester l'intégration
-python athalia_unified.py robotics --test
+# Ou utiliser un script de test
+python -c "import socket; print('Reachy accessible' if socket.socket().connect_ex(('192.168.1.100', 22)) == 0 else 'Reachy non accessible')"
 ```
 
 ---
@@ -218,13 +215,13 @@ python athalia_unified.py robotics --test
 ### 🚀 **Lancement du Dashboard**
 ```bash
 # Lancer le dashboard
-python athalia_unified.py dashboard
+python athalia_unified.py /chemin/projet --action dashboard
 
-# Lancer sur un port spécifique
-python athalia_unified.py dashboard --port 8502
+# Lancer avec utilisateur spécifique
+python athalia_unified.py /chemin/projet --action dashboard --utilisateur monnom
 
-# Lancer en mode développement
-python athalia_unified.py dashboard --dev
+# Lancer en mode verbeux
+python athalia_unified.py /chemin/projet --action dashboard --verbose
 ```
 
 ### 🌐 **Accès au Dashboard**
@@ -282,15 +279,21 @@ chmod +x bin/*.py
 
 #### **Port Already in Use**
 ```bash
-# Solution : Changer le port
-python athalia_unified.py dashboard --port 8502
+# Solution : Vérifier les processus
+lsof -i :8501
+kill -9 <PID>
+
+# Ou utiliser un autre port pour le dashboard
+# (Configuration dans le fichier de config)
 ```
 
 #### **Memory Error**
 ```bash
 # Solution : Augmenter la mémoire
 export ATHALIA_MAX_MEMORY="8GB"
-python athalia_unified.py audit . --memory-limit 8GB
+
+# Ou utiliser le mode dry-run pour économiser la mémoire
+python athalia_unified.py /chemin/projet --dry-run
 ```
 
 ### 📞 **Support et Aide**
@@ -316,7 +319,7 @@ python athalia_unified.py audit . --memory-limit 8GB
 ### 🚀 **Test Final**
 ```bash
 # Test complet d'installation
-python athalia_unified.py install --verify
+python athalia_unified.py . --action audit --dry-run
 
 # Résultat attendu : ✅ Installation validée avec succès
 ```

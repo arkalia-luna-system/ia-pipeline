@@ -4,13 +4,22 @@
 Tests pour le module analytics
 """
 import pytest
+import tempfile
 from pathlib import Path
 
+# Import conditionnel du module analytics
+try:
+    from athalia_core.analytics import (
+        analyze_project, 
+        generate_heatmap_data, 
+        generate_technical_debt_analysis,
+        generate_analytics_html
+    )
+    ANALYTICS_AVAILABLE = True
+except ImportError:
+    ANALYTICS_AVAILABLE = False
 
-<<<<<<< HEAD
-def test_analytics_module_import():
-    """Test d'import du module analytics"""
-=======
+
 class TestAnalyticsModule:
     """Tests pour le module analytics d'Athalia"""
     
@@ -162,29 +171,11 @@ def test_another():
 def test_analytics_integration():
     """Test d'intégration du module analytics"""
     # Test que le module peut être importé
->>>>>>> develop
     try:
         from athalia_core import analytics
         assert analytics is not None
     except ImportError:
         pytest.skip("Module analytics non disponible")
-<<<<<<< HEAD
-
-
-def test_analytics_functions():
-    """Test des fonctions analytics"""
-    try:
-        from athalia_core.analytics import analyze_project
-        assert callable(analyze_project)
-    except ImportError:
-        pytest.skip("Fonction analyze_project non disponible")
-
-
-def test_analytics_config():
-    """Test de la configuration analytics"""
-    config_file = Path("config/athalia_config.yaml")
-    assert config_file.exists(), "Fichier de config manquant"
-=======
     
     # Test de cycle complet
     with tempfile.TemporaryDirectory() as temp_dir:
@@ -206,7 +197,6 @@ def test_analytics_config():
         except Exception as e:
             # Test échoue si l'intégration ne fonctionne pas
             assert False, f"Test d'intégration non fonctionnel: {e}"
->>>>>>> develop
 
 
 if __name__ == "__main__":

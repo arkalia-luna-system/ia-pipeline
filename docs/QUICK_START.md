@@ -63,25 +63,25 @@ python athalia_unified.py --help
 ### 🔍 **Audit Rapide de Votre Projet**
 ```bash
 # Analyser un projet existant
-python athalia_unified.py audit /chemin/vers/votre/projet
+python athalia_unified.py /chemin/vers/votre/projet --action audit
 
 # Exemple
-python athalia_unified.py audit ./mon-projet
+python athalia_unified.py ./mon-projet --action audit
 ```
 
-### 🧪 **Lancer les Tests**
+### 🧪 **Industrialisation Complète**
 ```bash
-# Tests rapides
-python athalia_unified.py test --quick
+# Industrialisation complète
+python athalia_unified.py /chemin/vers/votre/projet
 
-# Tests complets
-python athalia_unified.py test --full
+# Mode simulation (dry-run)
+python athalia_unified.py /chemin/vers/votre/projet --dry-run
 ```
 
 ### 📊 **Voir le Dashboard**
 ```bash
 # Lancer le dashboard
-python athalia_unified.py dashboard
+python athalia_unified.py /chemin/vers/votre/projet --action dashboard
 
 # Ouvrir dans le navigateur
 open http://localhost:8501
@@ -91,53 +91,59 @@ open http://localhost:8501
 
 ## 🛠️ **Fonctionnalités Essentielles**
 
-### 📁 **Organisation Automatique**
+### 🔧 **Auto-Correction**
 ```bash
-# Organiser votre workspace
-python athalia_unified.py organize
+# Correction automatique
+python athalia_unified.py /chemin/vers/votre/projet --action fix
 
-# Nettoyer les fichiers temporaires
-python athalia_unified.py clean
+# Correction avec mode simulation
+python athalia_unified.py /chemin/vers/votre/projet --action fix --dry-run
 ```
 
-### 🔄 **Sauvegarde Intelligente**
+### 🔍 **Scan de Projets**
 ```bash
-# Sauvegarde automatique
-python athalia_unified.py backup
+# Scanner un répertoire
+python athalia_unified.py /chemin/repertoire --scan
 
-# Restaurer une sauvegarde
-python athalia_unified.py restore --date 2025-07-27
+# Scan avec mode verbeux
+python athalia_unified.py /chemin/repertoire --scan --verbose
 ```
 
-### 🤖 **Intégration Robotique** (Optionnel)
+### 👤 **Profils Utilisateur**
 ```bash
-# Vérifier la compatibilité robotique
-python athalia_unified.py robotics --check
+# Utiliser un profil spécifique
+python athalia_unified.py /chemin/projet --utilisateur monnom
 
-# Configurer Reachy
-python athalia_unified.py robotics --setup-reachy
+# Mode verbeux pour plus de détails
+python athalia_unified.py /chemin/projet --verbose
 ```
 
 ---
 
 ## 📈 **Métriques de Performance**
 
-### ⚡ **Tests de Performance**
+### ⚡ **Industrialisation avec Options**
 ```bash
-# Benchmark rapide
-python athalia_unified.py benchmark --quick
+# Industrialisation complète
+python athalia_unified.py /chemin/projet --action complete
 
-# Analyse complète
-python athalia_unified.py benchmark --full
+# Industrialisation sans audit
+python athalia_unified.py /chemin/projet --action complete --no-audit
+
+# Industrialisation sans nettoyage
+python athalia_unified.py /chemin/projet --action complete --no-clean
 ```
 
-### 📊 **Rapports de Qualité**
+### 📊 **Mode Simulation et Auto-Correction**
 ```bash
-# Rapport de qualité
-python athalia_unified.py report --quality
+# Mode simulation (dry-run)
+python athalia_unified.py /chemin/projet --dry-run
 
-# Rapport de sécurité
-python athalia_unified.py report --security
+# Auto-correction
+python athalia_unified.py /chemin/projet --auto-fix
+
+# Combiner les deux
+python athalia_unified.py /chemin/projet --dry-run --auto-fix
 ```
 
 ---
@@ -209,8 +215,11 @@ chmod +x athalia_unified.py
 
 #### **Port Already in Use**
 ```bash
-# Solution : Changer le port
-python athalia_unified.py dashboard --port 8502
+# Solution : Tuer le processus existant
+lsof -ti:8501 | xargs kill -9
+
+# Relancer le dashboard
+python athalia_unified.py /chemin/projet --action dashboard
 ```
 
 ### 📞 **Support**
