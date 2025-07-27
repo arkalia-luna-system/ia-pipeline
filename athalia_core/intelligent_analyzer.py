@@ -336,9 +336,9 @@ class IntelligentAnalyzer:
     def _save_comprehensive_analysis(self, analysis: ComprehensiveAnalysis):
         """Sauvegarder l'analyse complète"""
         output_file = (
-            self.root_path / "data"
-            / f"comprehensive_analysis_{analysis.project_name}_{analysis.analysis_date.strftime('%Y%m%d_%H%M%S')}.json"
-        )
+            self.root_path /
+            "data" /
+            f"comprehensive_analysis_{analysis.project_name}_{analysis.analysis_date.strftime('%Y%m%d_%H%M%S')}.json")
 
         # Convertir en dictionnaire pour la sérialisation JSON
         analysis_dict = {

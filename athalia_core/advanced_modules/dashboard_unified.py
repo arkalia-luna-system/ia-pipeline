@@ -105,7 +105,8 @@ class DashboardUnifieSimple:
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
             cursor.execute("""
-                INSERT INTO evenements (type, projet, utilisateur, timestamp, duree, statut, details)
+                INSERT INTO evenements
+                (type, projet, utilisateur, timestamp, duree, statut, details)
                 VALUES (?, ?, ?, ?, ?, ?, ?)
             """, (
                 type_evenement,
@@ -124,7 +125,8 @@ class DashboardUnifieSimple:
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
             cursor.execute("""
-                INSERT INTO rapports (type, projet, contenu, timestamp, score_qualite, score_securite)
+                INSERT INTO rapports
+                (type, projet, contenu, timestamp, score_qualite, score_securite)
                 VALUES (?, ?, ?, ?, ?, ?)
             """, (
                 type_rapport,
@@ -193,7 +195,8 @@ class DashboardUnifieSimple:
 
             # Top projets par score
             cursor.execute("""
-                SELECT projet, AVG(score_qualite) as score_qualite, AVG(score_securite) as score_securite
+                SELECT projet, AVG(score_qualite) as score_qualite,
+                       AVG(score_securite) as score_securite
                 FROM rapports
                 WHERE score_qualite > 0 OR score_securite > 0
                 GROUP BY projet
