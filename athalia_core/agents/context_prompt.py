@@ -223,8 +223,8 @@ def main():
             sys.exit(1)
         try:
             with open(filepath, 'r', encoding='utf-8', errors='ignore') as file_handle:
-                all_content += f"\n# Fichier : {os.path.basename(filepath)}\n" +
-                    file_handle.read()
+                all_content += (f"\n# Fichier : {os.path.basename(filepath)}\n" +
+                               file_handle.read())
         except Exception:
             continue
     # On crée un fichier temporaire pour l'analyse globale
