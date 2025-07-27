@@ -1,21 +1,11 @@
 #!/usr/bin/env python3
 import os
 from pathlib import Path
-from typing import Dict, List, Any, Optional
-import json
+from typing import Dict, List, Any
 import re
-import sys
 import argparse
-from datetime import datetime
 import ast
-import cProfile
-import importlib.util
-import pstats
-import shutil
 import subprocess
-import tempfile
-import time
-import unittest
 import logging
 
 logger = logging.getLogger(__name__)
@@ -332,7 +322,10 @@ class TestPerformance(unittest.TestCase):
             final_memory = process.memory_info().rss / 1024 / 1024  # MB
             memory_increase = final_memory - initial_memory
 
-            self.assertLess(memory_increase, 100, f"Usage mémoire excessif: {{memory_increase:.1f}}MB")
+            self.assertLess(
+                memory_increase, 100,
+                f"Usage mémoire excessif: {{memory_increase:.1f}}MB"
+            )
         except ImportError:
             self.skipTest("psutil non disponible")
         except Exception as e:

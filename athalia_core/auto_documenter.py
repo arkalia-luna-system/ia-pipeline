@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from pathlib import Path
-from typing import Dict, List, Any, Optional
+from typing import Dict, List, Any
 import json
 import os
 import re
@@ -8,7 +8,6 @@ import argparse
 from datetime import datetime
 import ast
 import importlib
-import inspect
 import logging
 
 logger = logging.getLogger(__name__)
@@ -52,7 +51,8 @@ class AutoDocumenter:
         self.project_path = Path(project_path)
 
         logger.info(
-            f"📚 {self.translations.get('doc_generation', 'Génération de documentation pour')} : {self.project_path.name}")
+            f"📚 {self.translations.get('doc_generation', 'Génération de documentation pour')} : "
+            f"{self.project_path.name}")
 
         # Analyse du projet
         self._analyze_project()
@@ -258,13 +258,19 @@ class AutoDocumenter:
                             module_info["classes"].append({
                                 "name": node.name,
                                 "docstring": ast.get_docstring(node) or "",
-                                "methods": [m.name for m in node.body if isinstance(m, ast.FunctionDef)]
+                                "methods": [
+                                    m.name for m in node.body
+                                    if isinstance(m, ast.FunctionDef)
+                                ]
                             })
                         elif isinstance(node, ast.FunctionDef):
                             module_info["functions"].append({
                                 "name": node.name,
                                 "docstring": ast.get_docstring(node) or "",
-                                "args": [arg.arg for arg in node.args.args if arg.arg != 'self']
+                                "args": [
+                                    arg.arg for arg in node.args.args
+                                    if arg.arg != 'self'
+                                ]
                             })
 
                     modules.append(module_info)
@@ -453,7 +459,11 @@ python -m pytest --cov={project_name}
     def _generate_api_documentation(self) -> str:
         """Génère la documentation API du projet"""
         t = self.translations
-        api_docs = f"""# {t.get('api_documentation', 'API Documentation')} - {self.project_info['name']}
+        api_title = (
+            f"# {t.get('api_documentation', 'API Documentation')} - "
+            f"{self.project_info['name']}"
+        )
+        api_docs = f"""{api_title}
 
 ## Vue d'ensemble
 
@@ -620,7 +630,10 @@ database:
                 usage_guide += "# Créer une instance\n"
                 usage_guide += f"instance = {class_info['name']}()\n"
                 if class_info["methods"]:
-                    usage_guide += f"# Utiliser une méthode\nresult = instance.{class_info['methods'][0]}()\n"
+                    usage_guide += (
+                        f"# Utiliser une méthode\n"
+                        f"result = instance.{class_info['methods'][0]}()\n"
+                    )
                 usage_guide += "```\n\n"
 
         # Décrire les fonctions principales
