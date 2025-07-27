@@ -481,7 +481,6 @@ class AutoCorrectionAvancee:
                 with open(fichier, 'r', encoding='utf-8') as f:
                     contenu = f.read()
 
-                nouveau_contenu = contenu
                 corrections_fichier = []
 
                 # Anti-patterns à corriger

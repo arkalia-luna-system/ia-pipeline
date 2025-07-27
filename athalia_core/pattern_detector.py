@@ -380,9 +380,9 @@ class PatternDetector:
                 # Chercher des patterns similaires
                 similar_count = 0
                 for other_pattern in patterns:
-                    if (other_pattern != pattern and
-                        other_pattern.pattern_type == pattern.pattern_type and
-                            self._calculate_similarity(pattern, other_pattern) > 0.6):
+                    if (other_pattern != pattern
+                        and other_pattern.pattern_type == pattern.pattern_type
+                            and self._calculate_similarity(pattern, other_pattern) > 0.6):
                         similar_count += 1
 
                 if similar_count >= 2:

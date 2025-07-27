@@ -166,10 +166,10 @@ def main(test_mode=False):
                 # Pour démo, dashboard sur tous les projets ia_project*
                 projects_info = []
                 for dict_data in os.listdir('.'):
-                    if (os.path.isdir(dict_data) and
-                        (dict_data.startswith('ia_project') or
-                         dict_data.startswith('artistic_') or
-                         dict_data.startswith('projet_'))):
+                    if (os.path.isdir(dict_data)
+                        and (dict_data.startswith('ia_project') or
+                         dict_data.startswith('artistic_')
+                         or dict_data.startswith('projet_'))):
                         projects_info.append({
                             'name': dict_data,
                             'date': datetime.now().strftime('%Y-%m-%d %H:%M'),

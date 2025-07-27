@@ -70,7 +70,8 @@ class AutoCleaner:
             "ehthumbs.db",  # Windows
             "Desktop.ini",  # Windows
             "._*",  # macOS metadata
-            ".!*",  # Fichiers temporaires macOS spécifiques (comme .!44956!*.clean)
+            ".!*",
+            # Fichiers temporaires macOS spécifiques (comme .!44956!*.clean)
             "*.clean",  # Fichiers de nettoyage temporaires
             "*.apdisk",  # Apple Partition Map
             ".fseventsd",  # File System Events
@@ -84,17 +85,17 @@ class AutoCleaner:
             for file_path in project_path.rglob(pattern):
                 self._safe_remove_file(
                     file_path, f"Fichier système: {pattern}")
-        
+
         # Nettoyage spécifique des dossiers macOS
         macos_dirs = [
             ".Spotlight-V100",
-            ".Trashes", 
+            ".Trashes",
             ".fseventsd",
             ".TemporaryItems",
             ".AppleDouble",
             ".LSOverride"
         ]
-        
+
         for dir_name in macos_dirs:
             for dir_path in project_path.rglob(dir_name):
                 if dir_path.is_dir():
