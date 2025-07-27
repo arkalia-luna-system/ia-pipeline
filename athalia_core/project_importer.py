@@ -19,14 +19,14 @@ logger=logging.getLogger(__name__)
 
 class ProjectImporter:
     def __init__(self):
-        self.project_types={
-            'game':['pygame,arcade', 'kivyame'],
-            'api':['flask', 'fastapi', 'djangoapi'],
-            'ai':['tensorflow', 'pytorch', 'sklearn', 'ai', 'ml'],
-            'web':['html', 'css', 'js', 'web', 'frontend'],
-            'data':['pandas', 'numpy, matplotlib', 'data'],
-            'mobile':['kivy', 'flutter', 'mobileapp'],
-            'iot': ['gpio,sensor,arduino', 'iot']
+        self.project_types = {
+            'game': ['pygame', 'arcade', 'kivyame'],
+            'api': ['flask', 'fastapi', 'djangoapi'],
+            'ai': ['tensorflow', 'pytorch', 'sklearn', 'ai', 'ml'],
+            'web': ['html', 'css', 'js', 'web', 'frontend'],
+            'data': ['pandas', 'numpy', 'matplotlib', 'data'],
+            'mobile': ['kivy', 'flutter', 'mobileapp'],
+            'iot': ['gpio', 'sensor', 'arduino', 'iot']
         }
 
     def import_project(self, project_path: str) -> Dict[str, Any]:
@@ -37,16 +37,16 @@ class ProjectImporter:
         logger.info(f"Import du projet: {project_path}")
 
         # 1. Scanner la structure
-        structure=self._scan_structure(project_path)
+        structure = self._scan_structure(project_path)
 
         # 2. Détecter le type de projet
-        project_type=self._detect_project_type(project_path, structure)
+        project_type = self._detect_project_type(project_path, structure)
 
         # 3. Analyser la qualité du code
-        quality_analysis=self._analyze_code_quality(project_path)
+        quality_analysis = self._analyze_code_quality(project_path)
 
         # 4. Générer le blueprint de correction
-        correction_blueprint=self._generate_correction_blueprint(
+        correction_blueprint = self._generate_correction_blueprint(
             project_path, structure, project_type, quality_analysis
         )
 
@@ -61,7 +61,7 @@ class ProjectImporter:
 
     def _scan_structure(self, project_path: str) -> Dict[str, Any]:
         """Analyse la structure du projet."""
-        structure={
+        structure: Dict[str, Any] = {
             'files': [],
             'directories': [],
             'python_files': [],
