@@ -175,7 +175,8 @@ class PerformanceAnalyzer:
         recommendations = self._generate_performance_recommendations(all_issues)
 
         # Identifier les opportunités d'optimisation
-        optimization_opportunities = self._identify_optimization_opportunities(all_issues)
+        optimization_opportunities = self._identify_optimization_opportunities(
+            all_issues)
 
         # Créer le rapport
         report = PerformanceReport(
@@ -258,8 +259,7 @@ class PerformanceAnalyzer:
         if file_analysis.complexity_score > 8:  # Seuil plus bas
             issue = PerformanceIssue(
                 issue_type="high_complexity",
-                location=str(
-                    file_analysis.file_path),
+                location=str(file_analysis.file_path),
                 description=f"Complexité élevée: {file_analysis.complexity_score:.1f}",
                 impact="medium" if file_analysis.complexity_score < 15 else "high",
                 suggestion="Refactoriser en modules plus petits",
@@ -549,8 +549,11 @@ class PerformanceAnalyzer:
                 "SELECT AVG(estimated_improvement) FROM performance_issues")
             avg_improvement = cursor.fetchone()[0] or 0
 
-            return {"average_complexity": avg_complexity,
-                    "unresolved_issues": unresolved_issues,
-                    "average_improvement_potential": avg_improvement,
-                    "performance_health": max(0,
-                                              100 - (avg_complexity * 2 + unresolved_issues * 5))}
+            return {
+                "average_complexity": avg_complexity,
+                "unresolved_issues": unresolved_issues,
+                "average_improvement_potential": avg_improvement,
+                "performance_health": max(
+                    0, 100 - (avg_complexity * 2 + unresolved_issues * 5)
+                )
+            }
