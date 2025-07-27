@@ -66,36 +66,45 @@ class DockerRoboticsManager:
                     compose_data = yaml.safe_load(f)
 
                 if 'services' in compose_data:
-                    for service_name, service_config in compose_data['services'].items():
-                        service = self._parse_service_config(service_name, service_config)
+                    for service_name, service_config in compose_data['services'].items(
+                    ):
+                        service = self._parse_service_config(
+                            service_name, service_config)
                         if service:
                             services.append(service)
 
                 # Vérifications spécifiques Reachy
-                reachy_service = next((s for s in services if 'reachy' in s.name.lower()), None)
+                reachy_service = next(
+                    (s for s in services if 'reachy' in s.name.lower()), None)
                 if reachy_service:
-                    self._validate_reachy_service(reachy_service, issues, recommendations)
+                    self._validate_reachy_service(
+                        reachy_service, issues, recommendations)
                 else:
-                    recommendations.append("Ajouter un service 'reachy_2023' pour la robotique")
+                    recommendations.append(
+                        "Ajouter un service 'reachy_2023' pour la robotique")
 
             except Exception as e:
                 issues.append(f"Erreur parsing docker-compose.yaml: {e}")
         else:
             issues.append("docker-compose.yaml manquant")
-            recommendations.append("Créer docker-compose.yaml pour le déploiement")
+            recommendations.append(
+                "Créer docker-compose.yaml pour le déploiement")
 
         # Vérifier Dockerfile
         dockerfile = self.docker_path / "Dockerfile"
         if not dockerfile.exists():
-            recommendations.append("Ajouter Dockerfile pour la containerisation")
+            recommendations.append(
+                "Ajouter Dockerfile pour la containerisation")
 
         # Vérifier .dockerignore
         dockerignore = self.project_path / ".dockerignore"
         if not dockerignore.exists():
-            recommendations.append("Ajouter .dockerignore pour optimiser les builds")
+            recommendations.append(
+                "Ajouter .dockerignore pour optimiser les builds")
 
         compose_valid = len(issues) == 0
-        ready_to_run = compose_valid and any('reachy' in s.name.lower() for s in services)
+        ready_to_run = compose_valid and any(
+            'reachy' in s.name.lower() for s in services)
 
         return DockerValidationResult(
             compose_valid=compose_valid,
@@ -105,7 +114,10 @@ class DockerRoboticsManager:
             ready_to_run=ready_to_run
         )
 
-    def _parse_service_config(self, name: str, config: Dict) -> Optional[DockerServiceConfig]:
+    def _parse_service_config(
+            self,
+            name: str,
+            config: Dict) -> Optional[DockerServiceConfig]:
         """Parser la configuration d'un service"""
         try:
             return DockerServiceConfig(
@@ -121,14 +133,19 @@ class DockerRoboticsManager:
             self.logger.error(f"Erreur parsing service {name}: {e}")
             return None
 
-    def _validate_reachy_service(self, service: DockerServiceConfig, issues: List[str], recommendations: List[str]):
+    def _validate_reachy_service(
+            self,
+            service: DockerServiceConfig,
+            issues: List[str],
+            recommendations: List[str]):
         """Valider spécifiquement le service Reachy"""
 
         # Vérifier image
         if not service.image:
             issues.append("Image Docker manquante pour le service Reachy")
         elif 'pollenrobotics/reachy' not in service.image:
-            recommendations.append("Utiliser l'image officielle pollenrobotics/reachy_2023")
+            recommendations.append(
+                "Utiliser l'image officielle pollenrobotics/reachy_2023")
 
         # Vérifier variables d'environnement ROS
         if isinstance(service.environment, list):
@@ -137,19 +154,22 @@ class DockerRoboticsManager:
             env_vars = [str(v) for v in service.environment.values()]
 
         if not any('ROS_DOMAIN_ID' in var for var in env_vars):
-            recommendations.append("Ajouter ROS_DOMAIN_ID dans les variables d'environnement")
+            recommendations.append(
+                "Ajouter ROS_DOMAIN_ID dans les variables d'environnement")
 
         if not any('DISPLAY' in var for var in env_vars):
             recommendations.append("Ajouter DISPLAY pour la visualisation")
 
         # Vérifier volumes
         if not service.volumes:
-            recommendations.append("Configurer les volumes pour la persistance des données")
+            recommendations.append(
+                "Configurer les volumes pour la persistance des données")
         else:
             # Vérifier volume source code
             source_volumes = [v for v in service.volumes if 'src' in v.lower()]
             if not source_volumes:
-                recommendations.append("Monter le code source dans le container")
+                recommendations.append(
+                    "Monter le code source dans le container")
 
         # Vérifier network mode
         if service.network_mode != 'host':
@@ -320,7 +340,11 @@ htmlcov/
             if service:
                 cmd.append(service)
 
-            result = subprocess.run(cmd, cwd=self.project_path, capture_output=True, text=True)
+            result = subprocess.run(
+                cmd,
+                cwd=self.project_path,
+                capture_output=True,
+                text=True)
 
             if result.returncode == 0:
                 self.logger.info("✅ Docker Compose lancé avec succès")
@@ -366,4 +390,4 @@ htmlcov/
             for rec in result.recommendations:
                 report += f"- {rec}\n"
 
-        return report 
+        return report

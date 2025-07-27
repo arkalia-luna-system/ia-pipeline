@@ -26,7 +26,7 @@ flake8 "$TARGET_DIR" --select=W293,E302,E305,E501,F841 --count || true
 
 # Correction avec la configuration
 echo "🛠️  Application des corrections..."
-autopep8 --in-place --aggressive --aggressive --max-line-length=79 "$TARGET_DIR"
+autopep8 --in-place --aggressive --aggressive --max-line-length=79 --recursive "$TARGET_DIR"
 
 # Vérifier l'état après correction
 echo "📊 État après correction:"

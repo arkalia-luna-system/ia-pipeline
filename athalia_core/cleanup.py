@@ -60,19 +60,85 @@ def clean_old_tests_and_caches(outdir):
 
 
 def clean_macos_files(directory: str):
-    """Supprime automatiquement les fichiers macOS parasites (.DS_Store, ._*) dans tout le projet. Retourne la liste des fichiers supprimés."""
+    """
+    Supprime automatiquement les fichiers macOS parasites et temporaires dans tout le projet.
+    Inclut les fichiers système macOS spécifiques comme .!44956!*.clean
+    Retourne la liste des fichiers supprimés.
+    """
     cleaned_files = []
+    
+    # Patterns de fichiers macOS à supprimer
+    macos_patterns = [
+        '._*',  # AppleDouble files
+        '.DS_Store',  # Desktop Services Store
+        'Thumbs.db',  # Windows thumbnail cache
+        '.!*',  # Fichiers temporaires macOS spécifiques (comme .!44956!*.clean)
+        '*.tmp',  # Fichiers temporaires
+        '*.bak',  # Fichiers de sauvegarde
+        '*.log',  # Fichiers de log
+        '*.clean',  # Fichiers de nettoyage temporaires
+        '*.apdisk',  # Apple Partition Map
+        '.Spotlight-V100',  # Spotlight index
+        '.Trashes',  # Corbeille
+        '.fseventsd',  # File System Events
+        '.TemporaryItems',  # Items temporaires
+        '._.DS_Store',  # AppleDouble DS_Store
+        '.AppleDouble',  # Dossier AppleDouble
+        '.LSOverride',  # Launch Services Override
+    ]
+    
+    # Dossiers macOS à supprimer
+    macos_dirs = [
+        '.Spotlight-V100',
+        '.Trashes', 
+        '.fseventsd',
+        '.TemporaryItems',
+        '.AppleDouble',
+        '.LSOverride'
+    ]
+    
     for root, dirs, files in os.walk(directory):
+        # Supprimer les dossiers macOS
+        for dir_name in list(dirs):  # Copie de la liste pour modification
+            if dir_name in macos_dirs:
+                dir_path = os.path.join(root, dir_name)
+                try:
+                    shutil.rmtree(dir_path, ignore_errors=True)
+                    cleaned_files.append(dir_path)
+                    logging.info(f"Suppression dossier macOS: {dir_path}")
+                except Exception as e:
+                    logging.warning(f"Impossible de supprimer le dossier {dir_path}: {e}")
+        
+        # Supprimer les fichiers macOS
         for file in files:
-            if file.startswith('._') or file == '.DS_Store' or file == 'Thumbs.db' or file.endswith(
-                    '.tmp') or file.endswith('.bak') or file.endswith('.log'):
+            should_delete = False
+            
+            # Vérifier les patterns
+            for pattern in macos_patterns:
+                if fnmatch.fnmatch(file, pattern):
+                    should_delete = True
+                    break
+            
+            # Vérifications spécifiques
+            if (file.startswith('._') or 
+                file == '.DS_Store' or 
+                file == 'Thumbs.db' or
+                file.startswith('.!') or  # Fichiers comme .!44956!*.clean
+                file.endswith('.tmp') or 
+                file.endswith('.bak') or 
+                file.endswith('.log') or
+                file.endswith('.clean') or
+                file.endswith('.apdisk')):
+                should_delete = True
+            
+            if should_delete:
                 file_path = os.path.join(root, file)
                 try:
                     os.remove(file_path)
                     cleaned_files.append(file_path)
+                    logging.info(f"Suppression fichier macOS: {file_path}")
                 except Exception as e:
-                    logging.warning(
-                        f"Impossible de supprimer {file_path}: {e}")
-    logging.info(
-        f"Nettoyage macOS terminé: {len(cleaned_files)} fichiers supprimés")
+                    logging.warning(f"Impossible de supprimer {file_path}: {e}")
+    
+    logging.info(f"Nettoyage macOS terminé: {len(cleaned_files)} éléments supprimés")
     return cleaned_files

@@ -6,6 +6,7 @@ Code Genetics pour Athalia/Arkalia
 from typing import List, Callable
 import random
 
+
 class CodeGenetics:
     def crossover(self, solutions: List[str]) -> str:
         """
@@ -36,7 +37,8 @@ class CodeGenetics:
                 words[i] = f"MUT_{random.randint(0,999)}"
         return ' '.join(words)
 
-    def select(self, solutions: List[str], scorer: Callable[[str], float], top_k: int = 2) -> List[str]:
+    def select(self, solutions: List[str], scorer: Callable[[
+               str], float], top_k: int = 2) -> List[str]:
         """
         Sélectionne les meilleures solutions selon un score.
         :param solutions: Liste de solutions
@@ -47,7 +49,12 @@ class CodeGenetics:
         scored = sorted(solutions, key=scorer, reverse=True)
         return scored[:top_k]
 
-    def evolve(self, solutions: List[str], scorer: Callable[[str], float], generations: int = 3, mutation_rate: float = 0.1) -> str:
+    def evolve(self,
+               solutions: List[str],
+               scorer: Callable[[str],
+                                float],
+               generations: int = 3,
+               mutation_rate: float = 0.1) -> str:
         """
         Fait évoluer les solutions sur plusieurs générations (croisement, mutation, sélection).
         :param solutions: Liste initiale
@@ -59,9 +66,15 @@ class CodeGenetics:
         population = solutions[:]
         for _ in range(generations):
             # Croisement
-            children = [self.crossover(random.sample(population, min(2, len(population)))) for _ in range(len(population))]
+            children = [
+                self.crossover(
+                    random.sample(
+                        population, min(
+                            2, len(population)))) for _ in range(
+                    len(population))]
             # Mutation
             mutated = [self.mutate(child, mutation_rate) for child in children]
             # Sélection
-            population = self.select(population + mutated, scorer, top_k=len(solutions))
-        return population[0] if population else "" 
+            population = self.select(
+                population + mutated, scorer, top_k=len(solutions))
+        return population[0] if population else ""

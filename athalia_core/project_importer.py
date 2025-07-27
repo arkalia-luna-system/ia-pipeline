@@ -75,7 +75,8 @@ class ProjectImporter:
 
             for dir_name in dirs:
                 if not dir_name.startswith('.'):
-                    structure['directories'].append(os.path.join(rel_root, dir_name))
+                    structure['directories'].append(
+                        os.path.join(rel_root, dir_name))
 
             for file_name in files:
                 file_path = os.path.join(rel_root, file_name)
@@ -90,7 +91,8 @@ class ProjectImporter:
 
         return structure
 
-    def _detect_project_type(self, project_path: str, structure: Dict[str, Any]) -> str:
+    def _detect_project_type(self, project_path: str,
+                             structure: Dict[str, Any]) -> str:
         """Détecte automatiquement le type de projet."""
         # Analyser les fichiers Python pour détecter les imports
         imports = []
@@ -111,18 +113,19 @@ class ProjectImporter:
                 continue
 
         # Analyser les noms de fichiers et dossiers
-        file_names = (file_handle.lower() for file_handle in structure['files'])
+        file_names = (file_handle.lower()
+                      for file_handle in structure['files'])
 
         # Calculer les scores par type
-        scores={}
+        scores = {}
         for project_type, keywords in self.project_types.items():
-            score=0
+            score = 0
             for keyword in keywords:
                 if keyword in file_names:
-                    score +=1
+                    score += 1
                 if keyword in imports:
-                    score +=2 # Plus de poids pour les imports
-            scores[project_type]=int(score)
+                    score += 2  # Plus de poids pour les imports
+            scores[project_type] = int(score)
 
         # Retourner le type avec le score le plus élevé
         if scores and any(v > 0 for v in scores.values()):
@@ -131,7 +134,7 @@ class ProjectImporter:
 
     def _analyze_code_quality(self, project_path: str) -> Dict[str, Any]:
         """Analyse la qualité du code."""
-        analysis={
+        analysis = {
             'has_tests': False,
             'has_docs': False,
             'has_requirements': False,
@@ -141,18 +144,22 @@ class ProjectImporter:
             'issues': []
         }
 
-        files=os.listdir(project_path)
+        files = os.listdir(project_path)
 
         # Vérifications de base
-        analysis['has_tests']=any(file_handle.lower().endswith('.py') for file_handle in files)
-        analysis['has_docs']=any(file_handle.endswith('.md') for file_handle in files)
-        analysis['has_requirements']='requirements.txt' in files
-        analysis['has_readme']='README.md' in files
+        analysis['has_tests'] = any(
+            file_handle.lower().endswith('.py') for file_handle in files)
+        analysis['has_docs'] = any(file_handle.endswith('.md')
+                                   for file_handle in files)
+        analysis['has_requirements'] = 'requirements.txt' in files
+        analysis['has_readme'] = 'README.md' in files
 
         # Compter les fichiers Python
         for root, dirs, files in os.walk(project_path):
-            analysis['python_files_count'] +=len([file_handle for file_handle in files if file_handle.endswith('.py')])
-            analysis['test_files_count'] +=len([file_handle for file_handle in files if 'test' in file_handle.lower()])
+            analysis['python_files_count'] += len(
+                [file_handle for file_handle in files if file_handle.endswith('.py')])
+            analysis['test_files_count'] += len(
+                [file_handle for file_handle in files if 'test' in file_handle.lower()])
 
         # Détecter les problèmes
         if not analysis['has_tests']:
@@ -166,12 +173,18 @@ class ProjectImporter:
 
         return analysis
 
-    def _generate_correction_blueprint(self, project_path: str, structure: Dict[str, Any],
-                                     project_type: str, quality_analysis: Dict[str, Any]) -> Dict[str, Any]:
+    def _generate_correction_blueprint(self,
+                                       project_path: str,
+                                       structure: Dict[str,
+                                                       Any],
+                                       project_type: str,
+                                       quality_analysis: Dict[str,
+                                                              Any]) -> Dict[str,
+                                                                            Any]:
         """Génère un blueprint de correction pour le projet."""
-        project_name=os.path.basename(project_path)
+        project_name = os.path.basename(project_path)
 
-        blueprint={
+        blueprint = {
             'project_name': project_name,
             'description': f"Version améliorée de {project_name}",
             'project_type': project_type,
@@ -182,8 +195,9 @@ class ProjectImporter:
             'booster_ia': True,
             'docker': False,
             'corrections_needed': quality_analysis['issues'],
-            'enhancements': self._suggest_enhancements(project_type, quality_analysis)
-        }
+            'enhancements': self._suggest_enhancements(
+                project_type,
+                quality_analysis)}
 
         return blueprint
 
@@ -211,7 +225,8 @@ class ProjectImporter:
             base_structure.append('tests/')
         # Correction du NameError : remplacer 'doc' par 'docname'
         docnames = ['readme', 'doc', 'documentation']
-        if not any(any(docname in file_handle.lower() for docname in docnames) for file_handle in structure['files']):
+        if not any(any(docname in file_handle.lower() for docname in docnames)
+                   for file_handle in structure['files']):
             base_structure.append('docs/')
 
         return base_structure
@@ -240,9 +255,14 @@ class ProjectImporter:
             'mobile': ('mobile_ui.md', 'performance.md'),
             'iot': ['iot_architecture.md', 'sensor_integration.md']
         }
-        return suggestions.get(project_type, ['dev_debug.yaml', 'ux_fun_boost.md'])
+        return suggestions.get(
+            project_type, [
+                'dev_debug.yaml', 'ux_fun_boost.md'])
 
-    def _suggest_enhancements(self, project_type: str, quality_analysis: Dict[str, Any]) -> List[str]:
+    def _suggest_enhancements(self,
+                              project_type: str,
+                              quality_analysis: Dict[str,
+                                                     Any]) -> List[str]:
         """Suggère des améliorations spécifiques."""
         enhancements = []
         if not quality_analysis['has_tests']:
@@ -272,7 +292,8 @@ project_importer = ProjectImporter()
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        logger.info("Usage: python -m athalia_core.project_importer <chemin_du_projet>")
+        logger.info(
+            "Usage: python -m athalia_core.project_importer <chemin_du_projet>")
         sys.exit(1)
     project_path = sys.argv[1]
     importer = ProjectImporter()

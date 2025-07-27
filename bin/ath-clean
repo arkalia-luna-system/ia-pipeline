@@ -132,9 +132,49 @@ MACOS_COUNT=$(find . -name "._*" -not -path "./.git/*" 2>/dev/null | wc -l)
 find . -name "._*" -not -path "./.git/*" -delete 2>/dev/null
 count_cleaned $MACOS_COUNT
 
+# Fichiers temporaires macOS spécifiques (comme .!44956!*.clean)
+MACOS_TEMP_COUNT=$(find . -name ".!*" -not -path "./.git/*" 2>/dev/null | wc -l)
+find . -name ".!*" -not -path "./.git/*" -delete 2>/dev/null
+count_cleaned $MACOS_TEMP_COUNT
+
+# Fichiers .clean (fichiers temporaires de nettoyage)
+CLEAN_FILES_COUNT=$(find . -name "*.clean" -not -path "./.git/*" 2>/dev/null | wc -l)
+find . -name "*.clean" -not -path "./.git/*" -delete 2>/dev/null
+count_cleaned $CLEAN_FILES_COUNT
+
+# Fichiers .DS_Store
 DS_STORE_COUNT=$(find . -name ".DS_Store" 2>/dev/null | wc -l)
 find . -name ".DS_Store" -delete 2>/dev/null
 count_cleaned $DS_STORE_COUNT
+
+# Fichiers .Spotlight-V100 et .Trashes
+SPOTLIGHT_COUNT=$(find . -name ".Spotlight-V100" -type d 2>/dev/null | wc -l)
+find . -name ".Spotlight-V100" -type d -exec rm -rf {} + 2>/dev/null
+count_cleaned $SPOTLIGHT_COUNT
+
+TRASHES_COUNT=$(find . -name ".Trashes" -type d 2>/dev/null | wc -l)
+find . -name ".Trashes" -type d -exec rm -rf {} + 2>/dev/null
+count_cleaned $TRASHES_COUNT
+
+# Fichiers .fseventsd
+FSEVENTS_COUNT=$(find . -name ".fseventsd" -type d 2>/dev/null | wc -l)
+find . -name ".fseventsd" -type d -exec rm -rf {} + 2>/dev/null
+count_cleaned $FSEVENTS_COUNT
+
+# Fichiers .TemporaryItems
+TEMP_ITEMS_COUNT=$(find . -name ".TemporaryItems" -type d 2>/dev/null | wc -l)
+find . -name ".TemporaryItems" -type d -exec rm -rf {} + 2>/dev/null
+count_cleaned $TEMP_ITEMS_COUNT
+
+# Fichiers .apdisk (Apple Partition Map)
+APDISK_COUNT=$(find . -name "*.apdisk" 2>/dev/null | wc -l)
+find . -name "*.apdisk" -delete 2>/dev/null
+count_cleaned $APDISK_COUNT
+
+# Fichiers ._* (AppleDouble)
+APPLEDOUBLE_COUNT=$(find . -name "._*" -not -path "./.git/*" 2>/dev/null | wc -l)
+find . -name "._*" -not -path "./.git/*" -delete 2>/dev/null
+count_cleaned $APPLEDOUBLE_COUNT
 
 echo "📝 Nettoyage des logs..."
 # Logs (sauf athalia.log principal)

@@ -313,7 +313,7 @@ def main():
     # Test de stockage
     result = memory_manager.set('test_key', 'test_value')
     logger.info(f"Stockage: {result}")
-    
+
     # Test de récupération
     result = memory_manager.get('test_key')
     logger.info(f"Récupération: {result}")

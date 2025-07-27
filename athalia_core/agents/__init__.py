@@ -13,4 +13,4 @@ __author__ = "Athalia/Arkalia Team"
 __description__ = "Agents IA spécialisés pour Athalia/Arkalia"
 
 # Pas d'import automatique pour éviter les erreurs de dépendances
-# Les agents peuvent être importés individuellement selon les besoins 
+# Les agents peuvent être importés individuellement selon les besoins

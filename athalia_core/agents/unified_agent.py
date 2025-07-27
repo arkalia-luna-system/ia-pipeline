@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Agent unifié pour Athalia - Combine les fonctionnalités de 
+Agent unifié pour Athalia - Combine les fonctionnalités de
 network_agent et qwen_agent
 """
 

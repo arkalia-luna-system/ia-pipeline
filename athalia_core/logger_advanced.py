@@ -39,7 +39,8 @@ class AthaliaLogger:
         self._setup_loggers()
 
         # Thread de nettoyage automatique
-        self.cleanup_thread = threading.Thread(target=self._cleanup_worker, daemon=True)
+        self.cleanup_thread = threading.Thread(
+            target=self._cleanup_worker, daemon=True)
         self.cleanup_thread.start()
 
     def _setup_loggers(self):
@@ -80,7 +81,11 @@ class AthaliaLogger:
             logging.ERROR
         )
 
-    def _create_logger(self, name: str, log_file: Path, level: int) -> logging.Logger:
+    def _create_logger(
+            self,
+            name: str,
+            log_file: Path,
+            level: int) -> logging.Logger:
         """Crée un logger avec rotation et compression"""
 
         logger = logging.getLogger(f'athalia.{name}')
@@ -121,7 +126,8 @@ class AthaliaLogger:
         extra_data = f" | {json.dumps(kwargs)}" if kwargs else ""
         getattr(logger, level.lower())(f"{message}{extra_data}")
 
-    def log_validation(self, test_name: str, result: Dict[str, Any], duration: float):
+    def log_validation(self, test_name: str,
+                       result: Dict[str, Any], duration: float):
         """Log des résultats de validation"""
         logger = self.loggers['validation']
 
@@ -142,8 +148,14 @@ class AthaliaLogger:
             f"VALIDATION | {test_name} | {result.get('succes', False)} | {duration:.2f}s | {result}"
         )
 
-    def log_correction(self, file_path: str, correction_type: str, success: bool,
-                      old_content: str, new_content: str, duration: float):
+    def log_correction(
+            self,
+            file_path: str,
+            correction_type: str,
+            success: bool,
+            old_content: str,
+            new_content: str,
+            duration: float):
         """Log des corrections automatiques"""
         logger = self.loggers['correction']
 
@@ -161,13 +173,20 @@ class AthaliaLogger:
         if len(self.metrics['correction']) > 1000:
             self.metrics['correction'].popleft()
 
-        logger.info(f"CORRECTION | {file_path} | {correction_type} | {success} | {duration:.2f}s")
+        logger.info(
+            f"CORRECTION | {file_path} | {correction_type} | {success} | {duration:.2f}s")
 
         if not success:
-            logger.warning(f"CORRECTION_FAILED | {file_path} | {correction_type}")
+            logger.warning(
+                f"CORRECTION_FAILED | {file_path} | {correction_type}")
 
-    def log_performance(self, operation: str, duration: float, memory_mb: Optional[float] = None,
-                       cpu_percent: Optional[float] = None, **kwargs):
+    def log_performance(
+            self,
+            operation: str,
+            duration: float,
+            memory_mb: Optional[float] = None,
+            cpu_percent: Optional[float] = None,
+            **kwargs):
         """Log des métriques de performance"""
         logger = self.loggers['performance']
 
@@ -187,7 +206,8 @@ class AthaliaLogger:
         if len(self.metrics['performance']) > 1000:
             self.metrics['performance'].popleft()
 
-        logger.info(f"PERFORMANCE | {operation} | {duration:.2f}s | {memory_mb}MB | {cpu_percent}%")
+        logger.info(
+            f"PERFORMANCE | {operation} | {duration:.2f}s | {memory_mb}MB | {cpu_percent}%")
 
     def log_error(self, error: Exception, context: str = "", **kwargs):
         """Log des erreurs"""
@@ -207,7 +227,8 @@ class AthaliaLogger:
         if len(self.metrics['errors']) > 100:
             self.metrics['errors'].popleft()
 
-        logger.error(f"ERROR | {context} | {type(error).__name__} | {str(error)} | {kwargs}")
+        logger.error(
+            f"ERROR | {context} | {type(error).__name__} | {str(error)} | {kwargs}")
 
     def get_validation_stats(self, hours: int = 24) -> Dict[str, Any]:
         """Récupère les statistiques de validation"""
@@ -268,7 +289,8 @@ class AthaliaLogger:
             'success_rate': success_rate,
             'avg_duration': avg_duration,
             'type_stats': type_stats,
-            'recent_corrections': recent_metrics[-10:]  # 10 dernières corrections
+            # 10 dernières corrections
+            'recent_corrections': recent_metrics[-10:]
         }
 
     def get_performance_stats(self, hours: int = 24) -> Dict[str, Any]:
@@ -346,7 +368,8 @@ class AthaliaLogger:
         """Démarre le thread de nettoyage"""
         if not hasattr(self, '_cleanup_active') or not self._cleanup_active:
             self._cleanup_active = True
-            self._cleanup_thread = threading.Thread(target=self._cleanup_worker, daemon=True)
+            self._cleanup_thread = threading.Thread(
+                target=self._cleanup_worker, daemon=True)
             self._cleanup_thread.start()
             self.log_main("🧹 Thread de nettoyage démarré")
 
@@ -391,11 +414,14 @@ class AthaliaLogger:
             except Exception as e:
                 self.log_error(e, f"compress_logs_{log_file.name}")
 
-    def export_metrics(self, output_file: Optional[str] = None) -> Dict[str, Any]:
+    def export_metrics(
+            self, output_file: Optional[str] = None) -> Dict[str, Any]:
         """Exporte toutes les métriques"""
         if output_file is None:
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            output_file = str(self.log_dir / f"metrics_export_{timestamp}.json")
+            output_file = str(
+                self.log_dir /
+                f"metrics_export_{timestamp}.json")
 
         export_data = {
             'export_timestamp': datetime.now().isoformat(),
@@ -429,18 +455,27 @@ def log_validation(test_name: str, result: Dict[str, Any], duration: float):
 
 
 def log_correction(file_path: str, correction_type: str, success: bool,
-                  old_content: str, new_content: str, duration: float):
+                   old_content: str, new_content: str, duration: float):
     """Log des corrections automatiques"""
     athalia_logger.log_correction(file_path, correction_type, success,
-                                 old_content, new_content, duration)
+                                  old_content, new_content, duration)
 
 
-def log_performance(operation: str, duration: float, memory_mb: Optional[float] = None,
-                   cpu_percent: Optional[float] = None, **kwargs):
+def log_performance(
+        operation: str,
+        duration: float,
+        memory_mb: Optional[float] = None,
+        cpu_percent: Optional[float] = None,
+        **kwargs):
     """Log des métriques de performance"""
-    athalia_logger.log_performance(operation, duration, memory_mb, cpu_percent, **kwargs)
+    athalia_logger.log_performance(
+        operation,
+        duration,
+        memory_mb,
+        cpu_percent,
+        **kwargs)
 
 
 def log_error(error: Exception, context: str = "", **kwargs):
     """Log des erreurs"""
-    athalia_logger.log_error(error, context, **kwargs) 
+    athalia_logger.log_error(error, context, **kwargs)

@@ -123,7 +123,8 @@ class AdvancedAnalytics:
                 # Compter les lignes de code, docstrings, commentaires et vides
                 for line in lines:
                     stripped = line.strip()
-                    if stripped.startswith('"""') or stripped.startswith("'''"):
+                    if stripped.startswith(
+                            '"""') or stripped.startswith("'''"):
                         coverage_data["docstrings"] += 1
                     elif stripped.startswith('#'):
                         coverage_data["comments"] += 1
@@ -146,7 +147,8 @@ class AdvancedAnalytics:
         for py_file in self.project_path.rglob("*.py"):
             try:
                 size = py_file.stat().st_size
-                performance_data["file_sizes"][str(py_file.relative_to(self.project_path))] = size
+                performance_data["file_sizes"][str(
+                    py_file.relative_to(self.project_path))] = size
             except Exception:
                 continue
 
@@ -155,7 +157,8 @@ class AdvancedAnalytics:
         if req_file.exists():
             try:
                 with open(req_file, 'r') as f:
-                    deps = [line.strip() for line in f if line.strip() and not line.startswith('#')]
+                    deps = [line.strip() for line in f if line.strip()
+                            and not line.startswith('#')]
                     performance_data["dependencies"] = len(deps)
             except Exception:
                 pass
@@ -180,7 +183,8 @@ class AdvancedAnalytics:
 
                 for line in lines:
                     stripped = line.strip()
-                    if stripped.startswith('"""') or stripped.startswith("'''"):
+                    if stripped.startswith(
+                            '"""') or stripped.startswith("'''"):
                         quality_data["docstrings"] += 1
                     elif stripped.startswith('#'):
                         quality_data["comments"] += 1
