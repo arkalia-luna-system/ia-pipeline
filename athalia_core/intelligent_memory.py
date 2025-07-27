@@ -61,30 +61,30 @@ class CorrectionSuggestion:
 
 class IntelligentMemory:
     """Système de mémoire intelligente pour Athalia"""
-    
+
     def __init__(self, root_path: str = None):
         self.root_path = Path(root_path or Path.cwd())
         self.db_path = self.root_path / "data" / "intelligent_memory.db"
         self.memory_file = self.root_path / "data" / "memory_insights.json"
-        
+
         # Créer les dossiers nécessaires
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
-        
+
         # Initialiser la base de données
         self._init_database()
-        
+
         # Cache pour les performances
         self._pattern_cache = {}
         self._prediction_cache = {}
         self._correction_cache = {}
-        
+
         logger.info(f"🧠 Intelligent Memory initialisé dans {self.root_path}")
-    
+
     def _init_database(self):
         """Initialiser la base de données de mémoire"""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
-            
+
             # Table des événements d'apprentissage
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS learning_events (
@@ -101,7 +101,7 @@ class IntelligentMemory:
                     pattern_hash TEXT
                 )
             """)
-            
+
             # Table des patterns appris
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS learned_patterns (
@@ -115,7 +115,7 @@ class IntelligentMemory:
                     correction_history TEXT
                 )
             """)
-            
+
             # Table des prédictions
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS predictions (
@@ -131,7 +131,7 @@ class IntelligentMemory:
                     validation_result TEXT
                 )
             """)
-            
+
             # Table des corrections suggérées
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS correction_suggestions (
@@ -147,7 +147,7 @@ class IntelligentMemory:
                     success BOOLEAN
                 )
             """)
-            
+
             # Table des métriques d'apprentissage
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS learning_metrics (
@@ -158,12 +158,14 @@ class IntelligentMemory:
                     context TEXT
                 )
             """)
-            
+
             conn.commit()
-    
-    def learn_from_error(self, error_description: str, code_snippet: str, 
-                        location: str, severity: str = "medium", 
-                        context: Dict[str, Any] = None) -> str:
+
+    def learn_from_error(
+        self, error_description: str, code_snippet: str,
+        location: str, severity: str = "medium",
+        context: Dict[str, Any] = None
+    ) -> str:
         """Apprendre d'une erreur"""
         event_id = self._record_learning_event(
             event_type="error",
@@ -174,20 +176,22 @@ class IntelligentMemory:
             success=False,
             context=context
         )
-        
+
         # Analyser le pattern de l'erreur
         pattern_hash = self._analyze_code_pattern(code_snippet)
         self._update_pattern_learning(pattern_hash, "error", success=False)
-        
+
         # Générer des prédictions basées sur cette erreur
         self._generate_predictions_from_error(error_description, code_snippet, pattern_hash)
-        
+
         logger.info(f"📚 Apprentissage d'une erreur: {error_description}")
         return event_id
-    
-    def learn_from_correction(self, original_code: str, corrected_code: str,
-                            reason: str, location: str, success: bool = True,
-                            context: Dict[str, Any] = None) -> str:
+
+    def learn_from_correction(
+        self, original_code: str, corrected_code: str,
+        reason: str, location: str, success: bool = True,
+        context: Dict[str, Any] = None
+    ) -> str:
         """Apprendre d'une correction"""
         event_id = self._record_learning_event(
             event_type="correction",
@@ -199,23 +203,25 @@ class IntelligentMemory:
             success=success,
             context=context
         )
-        
+
         # Analyser les patterns
         original_pattern = self._analyze_code_pattern(original_code)
         corrected_pattern = self._analyze_code_pattern(corrected_code)
-        
+
         # Mettre à jour l'apprentissage des patterns
         self._update_pattern_learning(original_pattern, "correction", success=False)
         self._update_pattern_learning(corrected_pattern, "correction", success=success)
-        
+
         # Sauvegarder la suggestion de correction
         self._save_correction_suggestion(original_code, corrected_code, reason, success)
-        
+
         logger.info(f"📚 Apprentissage d'une correction: {reason}")
         return event_id
-    
-    def learn_from_duplicate(self, duplicate_items: List[str], locations: List[str],
-                           similarity_score: float, context: Dict[str, Any] = None) -> str:
+
+    def learn_from_duplicate(
+        self, duplicate_items: List[str], locations: List[str],
+        similarity_score: float, context: Dict[str, Any] = None
+    ) -> str:
         """Apprendre d'un doublon détecté"""
         event_id = self._record_learning_event(
             event_type="duplicate",
@@ -226,52 +232,57 @@ class IntelligentMemory:
             success=False,
             context=context
         )
-        
+
         # Analyser le pattern du doublon
         for item in duplicate_items:
             pattern_hash = self._analyze_code_pattern(item)
             self._update_pattern_learning(pattern_hash, "duplicate", success=False)
-        
+
         logger.info(f"📚 Apprentissage d'un doublon: {len(duplicate_items)} items")
         return event_id
-    
+
     def predict_issues(self, code_snippet: str, context: Dict[str, Any] = None) -> List[Prediction]:
         """Prédire les problèmes potentiels"""
         predictions = []
-        
+
         # Analyser le pattern du code
         pattern_hash = self._analyze_code_pattern(code_snippet)
-        
+
         # Chercher des patterns similaires dans l'historique
         similar_patterns = self._find_similar_patterns(pattern_hash)
-        
+
         for pattern in similar_patterns:
             if pattern['success_rate'] < 0.7:  # Pattern problématique
                 prediction = Prediction(
                     prediction_type="error",
                     confidence=1.0 - pattern['success_rate'],
-                    description=f"Pattern similaire à un problème précédent (taux de succès: {pattern['success_rate']:.2f})",
+                    description=(
+                        f"Pattern similaire à un problème précédent "
+                        f"(taux de succès: {pattern['success_rate']:.2f})"
+                    ),
                     suggested_action="Vérifier la logique et considérer une refactorisation",
                     estimated_impact="Moyen",
                     code_pattern=pattern_hash
                 )
                 predictions.append(prediction)
-        
+
         # Vérifier les anti-patterns connus
         antipattern_predictions = self._check_antipatterns(code_snippet)
         predictions.extend(antipattern_predictions)
-        
+
         # Vérifier les doublons potentiels
         duplicate_predictions = self._check_potential_duplicates(code_snippet)
         predictions.extend(duplicate_predictions)
-        
+
         return predictions
-    
-    def suggest_corrections(self, problematic_code: str, 
-                          issue_description: str) -> List[CorrectionSuggestion]:
+
+    def suggest_corrections(
+        self, problematic_code: str,
+        issue_description: str
+    ) -> List[CorrectionSuggestion]:
         """Suggérer des corrections basées sur l'apprentissage"""
         suggestions = []
-        
+
         # Chercher des corrections similaires dans l'historique
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
@@ -282,15 +293,15 @@ class IntelligentMemory:
                 ORDER BY confidence DESC
                 LIMIT 5
             """)
-            
+
             rows = cursor.fetchall()
-            
+
             for row in rows:
                 original, suggested, reason, confidence, based_on = row
-                
+
                 # Calculer la similarité avec le code problématique
                 similarity = self._calculate_code_similarity(problematic_code, original)
-                
+
                 if similarity > 0.7:  # Seuil de similarité
                     suggestion = CorrectionSuggestion(
                         original_code=problematic_code,
@@ -300,7 +311,7 @@ class IntelligentMemory:
                         based_on_previous_corrections=json.loads(based_on) if based_on else []
                     )
                     suggestions.append(suggestion)
-        
+
         return suggestions
     
     def get_learning_insights(self) -> Dict[str, Any]:
