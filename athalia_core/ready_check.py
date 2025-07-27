@@ -17,7 +17,6 @@ builtins.open = open_patch
 
 
 def check_ready(project_path: str) -> dict:
-    import os
     required_files = ["README.f(f", "DOC.f(f", "requirements.f(f"]
     required_dirs = ["f"]
     report = {"f": True, "missing": []}

@@ -3497,6 +3497,96 @@ Vérifie la présence des modèles Claude et Mistral dans la config Continue.
 
 ---
 
+### test_integration_orchestrator
+
+🧪 TESTS D'INTÉGRATION ORCHESTRATEUR
+====================================
+Tests pour valider l'intégration des modules dans l'orchestrateur unifié.
+
+#### Classes
+
+##### TestOrchestratorIntegration
+
+Tests d'intégration de l'orchestrateur
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `create_test_project()`
+- `test_orchestrator_imports()`
+- `test_integrated_modules_imports()`
+- `test_orchestrator_initialization()`
+- `test_orchestrator_configuration()`
+- `test_integration_score()`
+- `test_module_functionality()`
+- `test_orchestrator_orchestration()`
+
+##### TestIntegrationCompleteness
+
+Tests de complétude de l'intégration
+
+**Méthodes :**
+
+- `test_all_modules_available()`
+- `test_integration_consistency()`
+
+#### Fonctions
+
+##### main
+
+Fonction principale
+
+##### setUp
+
+Configuration des tests
+
+##### tearDown
+
+Nettoyage après les tests
+
+##### create_test_project
+
+Créer un projet de test
+
+##### test_orchestrator_imports
+
+Test des imports de l'orchestrateur
+
+##### test_integrated_modules_imports
+
+Test des imports des modules intégrés
+
+##### test_orchestrator_initialization
+
+Test de l'initialisation de l'orchestrateur avec modules intégrés
+
+##### test_orchestrator_configuration
+
+Test de la configuration de l'orchestrateur
+
+##### test_integration_score
+
+Test du score d'intégration
+
+##### test_module_functionality
+
+Test de la fonctionnalité des modules intégrés
+
+##### test_orchestrator_orchestration
+
+Test d'orchestration avec modules intégrés
+
+##### test_all_modules_available
+
+Test que tous les modules intégrés sont disponibles
+
+##### test_integration_consistency
+
+Test de la cohérence de l'intégration
+
+---
+
 ### test_correction
 
 Script de test pour la correction du projet EmotionSensingRoboticEyes
@@ -3689,96 +3779,6 @@ Vérifie si un chemin absolu est acceptable
 **Paramètres :**
 
 - `path`
-
----
-
-### test_integration_orchestrator
-
-🧪 TESTS D'INTÉGRATION ORCHESTRATEUR
-====================================
-Tests pour valider l'intégration des modules dans l'orchestrateur unifié.
-
-#### Classes
-
-##### TestOrchestratorIntegration
-
-Tests d'intégration de l'orchestrateur
-
-**Méthodes :**
-
-- `setUp()`
-- `tearDown()`
-- `create_test_project()`
-- `test_orchestrator_imports()`
-- `test_integrated_modules_imports()`
-- `test_orchestrator_initialization()`
-- `test_orchestrator_configuration()`
-- `test_integration_score()`
-- `test_module_functionality()`
-- `test_orchestrator_orchestration()`
-
-##### TestIntegrationCompleteness
-
-Tests de complétude de l'intégration
-
-**Méthodes :**
-
-- `test_all_modules_available()`
-- `test_integration_consistency()`
-
-#### Fonctions
-
-##### main
-
-Fonction principale
-
-##### setUp
-
-Configuration des tests
-
-##### tearDown
-
-Nettoyage après les tests
-
-##### create_test_project
-
-Créer un projet de test
-
-##### test_orchestrator_imports
-
-Test des imports de l'orchestrateur
-
-##### test_integrated_modules_imports
-
-Test des imports des modules intégrés
-
-##### test_orchestrator_initialization
-
-Test de l'initialisation de l'orchestrateur avec modules intégrés
-
-##### test_orchestrator_configuration
-
-Test de la configuration de l'orchestrateur
-
-##### test_integration_score
-
-Test du score d'intégration
-
-##### test_module_functionality
-
-Test de la fonctionnalité des modules intégrés
-
-##### test_orchestrator_orchestration
-
-Test d'orchestration avec modules intégrés
-
-##### test_all_modules_available
-
-Test que tous les modules intégrés sont disponibles
-
-##### test_integration_consistency
-
-Test de la cohérence de l'intégration
 
 ---
 
@@ -883309,6 +883309,227 @@ Génère la configuration de déploiement
 
 ---
 
+### intelligent_memory
+
+🧠 MÉMOIRE INTELLIGENTE ATHALIA
+===============================
+Système de mémoire qui :
+- Apprend de chaque erreur et correction
+- Prédit les problèmes futurs
+- Suggère des corrections automatiques
+- Maintient un historique d'apprentissage
+- Améliore la qualité du code continuellement
+
+#### Classes
+
+##### LearningEvent
+
+Événement d'apprentissage
+
+##### Prediction
+
+Prédiction basée sur l'apprentissage
+
+##### CorrectionSuggestion
+
+Suggestion de correction
+
+##### IntelligentMemory
+
+Système de mémoire intelligente pour Athalia
+
+**Méthodes :**
+
+- `__init__()`
+- `_init_database()`
+- `learn_from_error()`
+- `learn_from_correction()`
+- `learn_from_duplicate()`
+- `predict_issues()`
+- `suggest_corrections()`
+- `get_learning_insights()`
+- `_record_learning_event()`
+- `_analyze_code_pattern()`
+- `_normalize_code()`
+- `_update_pattern_learning()`
+- `_generate_predictions_from_error()`
+- `_find_similar_patterns()`
+- `_check_antipatterns()`
+- `_check_potential_duplicates()`
+- `_calculate_code_similarity()`
+- `_save_correction_suggestion()`
+
+#### Fonctions
+
+##### main
+
+Test du système de mémoire intelligente
+
+##### __init__
+
+**Paramètres :**
+
+- `root_path`
+
+##### _init_database
+
+Initialiser la base de données de mémoire
+
+##### learn_from_error
+
+Apprendre d'une erreur
+
+**Paramètres :**
+
+- `error_description`
+- `code_snippet`
+- `location`
+- `severity`
+- `context`
+
+##### learn_from_correction
+
+Apprendre d'une correction
+
+**Paramètres :**
+
+- `original_code`
+- `corrected_code`
+- `reason`
+- `location`
+- `success`
+- `context`
+
+##### learn_from_duplicate
+
+Apprendre d'un doublon détecté
+
+**Paramètres :**
+
+- `duplicate_items`
+- `locations`
+- `similarity_score`
+- `context`
+
+##### predict_issues
+
+Prédire les problèmes potentiels
+
+**Paramètres :**
+
+- `code_snippet`
+- `context`
+
+##### suggest_corrections
+
+Suggérer des corrections basées sur l'apprentissage
+
+**Paramètres :**
+
+- `problematic_code`
+- `issue_description`
+
+##### get_learning_insights
+
+Obtenir des insights d'apprentissage
+
+##### _record_learning_event
+
+Enregistrer un événement d'apprentissage
+
+**Paramètres :**
+
+- `event_type`
+- `description`
+- `code_snippet`
+- `location`
+- `severity`
+- `success`
+- `resolution`
+- `context`
+
+##### _analyze_code_pattern
+
+Analyser et créer un hash du pattern de code
+
+**Paramètres :**
+
+- `code`
+
+##### _normalize_code
+
+Normaliser le code pour la comparaison
+
+**Paramètres :**
+
+- `code`
+
+##### _update_pattern_learning
+
+Mettre à jour l'apprentissage d'un pattern
+
+**Paramètres :**
+
+- `pattern_hash`
+- `pattern_type`
+- `success`
+
+##### _generate_predictions_from_error
+
+Générer des prédictions basées sur une erreur
+
+**Paramètres :**
+
+- `error_description`
+- `code_snippet`
+- `pattern_hash`
+
+##### _find_similar_patterns
+
+Trouver des patterns similaires
+
+**Paramètres :**
+
+- `pattern_hash`
+
+##### _check_antipatterns
+
+Vérifier les anti-patterns connus
+
+**Paramètres :**
+
+- `code_snippet`
+
+##### _check_potential_duplicates
+
+Vérifier les doublons potentiels
+
+**Paramètres :**
+
+- `code_snippet`
+
+##### _calculate_code_similarity
+
+Calculer la similarité entre deux codes
+
+**Paramètres :**
+
+- `code1`
+- `code2`
+
+##### _save_correction_suggestion
+
+Sauvegarder une suggestion de correction
+
+**Paramètres :**
+
+- `original_code`
+- `corrected_code`
+- `reason`
+- `success`
+
+---
+
 ### plugins_validator
 
 #### Fonctions
@@ -883526,6 +883747,125 @@ Suggère des améliorations spécifiques.
 **Paramètres :**
 
 - `request`
+
+---
+
+### intelligent_analyzer
+
+🧠 ANALYSEUR INTELLIGENT ATHALIA - ORCHESTRATEUR PRINCIPAL
+==========================================================
+Orchestrateur principal qui coordonne tous les modules d'analyse :
+- AST Analyzer (analyse de base)
+- Pattern Detector (détection de patterns et doublons)
+- Architecture Analyzer (analyse d'architecture)
+- Performance Analyzer (analyse de performance)
+
+#### Classes
+
+##### ComprehensiveAnalysis
+
+Analyse complète du projet
+
+##### IntelligentAnalyzer
+
+Orchestrateur principal de l'analyse intelligente
+
+**Méthodes :**
+
+- `__init__()`
+- `analyze_project_comprehensive()`
+- `_perform_ast_analysis()`
+- `_calculate_overall_score()`
+- `_generate_comprehensive_recommendations()`
+- `_create_optimization_plan()`
+- `_save_comprehensive_analysis()`
+- `get_learning_insights()`
+- `generate_intelligent_coordination()`
+- `orchestrate_with_unified()`
+
+#### Fonctions
+
+##### main
+
+Fonction principale pour l'analyse en ligne de commande
+
+##### __init__
+
+**Paramètres :**
+
+- `root_path`
+
+##### analyze_project_comprehensive
+
+Analyser un projet de manière complète avec tous les modules
+
+**Paramètres :**
+
+- `project_path`
+
+##### _perform_ast_analysis
+
+Effectuer l'analyse AST de base
+
+**Paramètres :**
+
+- `project_path`
+
+##### _calculate_overall_score
+
+Calculer le score global basé sur toutes les analyses
+
+**Paramètres :**
+
+- `ast_analysis`
+- `pattern_analysis`
+- `architecture_analysis`
+- `performance_analysis`
+
+##### _generate_comprehensive_recommendations
+
+Générer des recommandations globales
+
+**Paramètres :**
+
+- `pattern_analysis`
+- `architecture_analysis`
+- `performance_analysis`
+
+##### _create_optimization_plan
+
+Créer un plan d'optimisation global
+
+**Paramètres :**
+
+- `pattern_analysis`
+- `architecture_analysis`
+- `performance_analysis`
+
+##### _save_comprehensive_analysis
+
+Sauvegarder l'analyse complète
+
+**Paramètres :**
+
+- `analysis`
+
+##### get_learning_insights
+
+Obtenir des insights d'apprentissage de tous les modules
+
+##### generate_intelligent_coordination
+
+Générer une coordination intelligente
+
+##### orchestrate_with_unified
+
+Utiliser l'orchestrateur unifié pour une orchestration complète
+
+**Paramètres :**
+
+- `project_path`
+- `config`
 
 ---
 
@@ -883834,346 +884174,6 @@ Extrait des patterns de correction
 ##### get_correction_stats
 
 Récupère les statistiques de correction
-
----
-
-### intelligent_analyzer
-
-🧠 ANALYSEUR INTELLIGENT ATHALIA - ORCHESTRATEUR PRINCIPAL
-==========================================================
-Orchestrateur principal qui coordonne tous les modules d'analyse :
-- AST Analyzer (analyse de base)
-- Pattern Detector (détection de patterns et doublons)
-- Architecture Analyzer (analyse d'architecture)
-- Performance Analyzer (analyse de performance)
-
-#### Classes
-
-##### ComprehensiveAnalysis
-
-Analyse complète du projet
-
-##### IntelligentAnalyzer
-
-Orchestrateur principal de l'analyse intelligente
-
-**Méthodes :**
-
-- `__init__()`
-- `analyze_project_comprehensive()`
-- `_perform_ast_analysis()`
-- `_calculate_overall_score()`
-- `_generate_comprehensive_recommendations()`
-- `_create_optimization_plan()`
-- `_save_comprehensive_analysis()`
-- `get_learning_insights()`
-- `generate_intelligent_coordination()`
-- `orchestrate_with_unified()`
-
-#### Fonctions
-
-##### main
-
-Fonction principale pour l'analyse en ligne de commande
-
-##### __init__
-
-**Paramètres :**
-
-- `root_path`
-
-##### analyze_project_comprehensive
-
-Analyser un projet de manière complète avec tous les modules
-
-**Paramètres :**
-
-- `project_path`
-
-##### _perform_ast_analysis
-
-Effectuer l'analyse AST de base
-
-**Paramètres :**
-
-- `project_path`
-
-##### _calculate_overall_score
-
-Calculer le score global basé sur toutes les analyses
-
-**Paramètres :**
-
-- `ast_analysis`
-- `pattern_analysis`
-- `architecture_analysis`
-- `performance_analysis`
-
-##### _generate_comprehensive_recommendations
-
-Générer des recommandations globales
-
-**Paramètres :**
-
-- `pattern_analysis`
-- `architecture_analysis`
-- `performance_analysis`
-
-##### _create_optimization_plan
-
-Créer un plan d'optimisation global
-
-**Paramètres :**
-
-- `pattern_analysis`
-- `architecture_analysis`
-- `performance_analysis`
-
-##### _save_comprehensive_analysis
-
-Sauvegarder l'analyse complète
-
-**Paramètres :**
-
-- `analysis`
-
-##### get_learning_insights
-
-Obtenir des insights d'apprentissage de tous les modules
-
-##### generate_intelligent_coordination
-
-Générer une coordination intelligente
-
-##### orchestrate_with_unified
-
-Utiliser l'orchestrateur unifié pour une orchestration complète
-
-**Paramètres :**
-
-- `project_path`
-- `config`
-
----
-
-### intelligent_memory
-
-🧠 MÉMOIRE INTELLIGENTE ATHALIA
-===============================
-Système de mémoire qui :
-- Apprend de chaque erreur et correction
-- Prédit les problèmes futurs
-- Suggère des corrections automatiques
-- Maintient un historique d'apprentissage
-- Améliore la qualité du code continuellement
-
-#### Classes
-
-##### LearningEvent
-
-Événement d'apprentissage
-
-##### Prediction
-
-Prédiction basée sur l'apprentissage
-
-##### CorrectionSuggestion
-
-Suggestion de correction
-
-##### IntelligentMemory
-
-Système de mémoire intelligente pour Athalia
-
-**Méthodes :**
-
-- `__init__()`
-- `_init_database()`
-- `learn_from_error()`
-- `learn_from_correction()`
-- `learn_from_duplicate()`
-- `predict_issues()`
-- `suggest_corrections()`
-- `get_learning_insights()`
-- `_record_learning_event()`
-- `_analyze_code_pattern()`
-- `_normalize_code()`
-- `_update_pattern_learning()`
-- `_generate_predictions_from_error()`
-- `_find_similar_patterns()`
-- `_check_antipatterns()`
-- `_check_potential_duplicates()`
-- `_calculate_code_similarity()`
-- `_save_correction_suggestion()`
-
-#### Fonctions
-
-##### main
-
-Test du système de mémoire intelligente
-
-##### __init__
-
-**Paramètres :**
-
-- `root_path`
-
-##### _init_database
-
-Initialiser la base de données de mémoire
-
-##### learn_from_error
-
-Apprendre d'une erreur
-
-**Paramètres :**
-
-- `error_description`
-- `code_snippet`
-- `location`
-- `severity`
-- `context`
-
-##### learn_from_correction
-
-Apprendre d'une correction
-
-**Paramètres :**
-
-- `original_code`
-- `corrected_code`
-- `reason`
-- `location`
-- `success`
-- `context`
-
-##### learn_from_duplicate
-
-Apprendre d'un doublon détecté
-
-**Paramètres :**
-
-- `duplicate_items`
-- `locations`
-- `similarity_score`
-- `context`
-
-##### predict_issues
-
-Prédire les problèmes potentiels
-
-**Paramètres :**
-
-- `code_snippet`
-- `context`
-
-##### suggest_corrections
-
-Suggérer des corrections basées sur l'apprentissage
-
-**Paramètres :**
-
-- `problematic_code`
-- `issue_description`
-
-##### get_learning_insights
-
-Obtenir des insights d'apprentissage
-
-##### _record_learning_event
-
-Enregistrer un événement d'apprentissage
-
-**Paramètres :**
-
-- `event_type`
-- `description`
-- `code_snippet`
-- `location`
-- `severity`
-- `success`
-- `resolution`
-- `context`
-
-##### _analyze_code_pattern
-
-Analyser et créer un hash du pattern de code
-
-**Paramètres :**
-
-- `code`
-
-##### _normalize_code
-
-Normaliser le code pour la comparaison
-
-**Paramètres :**
-
-- `code`
-
-##### _update_pattern_learning
-
-Mettre à jour l'apprentissage d'un pattern
-
-**Paramètres :**
-
-- `pattern_hash`
-- `pattern_type`
-- `success`
-
-##### _generate_predictions_from_error
-
-Générer des prédictions basées sur une erreur
-
-**Paramètres :**
-
-- `error_description`
-- `code_snippet`
-- `pattern_hash`
-
-##### _find_similar_patterns
-
-Trouver des patterns similaires
-
-**Paramètres :**
-
-- `pattern_hash`
-
-##### _check_antipatterns
-
-Vérifier les anti-patterns connus
-
-**Paramètres :**
-
-- `code_snippet`
-
-##### _check_potential_duplicates
-
-Vérifier les doublons potentiels
-
-**Paramètres :**
-
-- `code_snippet`
-
-##### _calculate_code_similarity
-
-Calculer la similarité entre deux codes
-
-**Paramètres :**
-
-- `code1`
-- `code2`
-
-##### _save_correction_suggestion
-
-Sauvegarder une suggestion de correction
-
-**Paramètres :**
-
-- `original_code`
-- `corrected_code`
-- `reason`
-- `success`
 
 ---
 

@@ -188,7 +188,7 @@ class ProjectImporter:
 
     def _suggest_modules(self, project_type: str) -> List[str]:
         """Suggère des modules selon le type de projet."""
-        suggestions={
+        suggestions = {
             'game': ['game_engine', 'physics', 'ui', 'audio'],
             'api': ['database', 'auth', 'ocs'],
             'ai': ['ai_engine', 'data_processing', 'modelapi'],
@@ -201,7 +201,7 @@ class ProjectImporter:
 
     def _suggest_structure(self, structure: Dict[str, Any]) -> List[str]:
         """Gère une structure améliorée."""
-        base_structure=['src/', 'tests/', 'docs/', 'config/']
+        base_structure = ['src/', 'tests/', 'docs/', 'config/']
 
         # Ajouter des dossiers spécifiques selon les fichiers existants
         if structure['python_files']:
@@ -217,7 +217,7 @@ class ProjectImporter:
 
     def _suggest_dependencies(self, project_type: str) -> List[str]:
         """Suggère des dépendances selon le type de projet."""
-        suggestions={
+        suggestions = {
             'game': ['pygame', 'pymunk'],
             'api': ['fastapi, sqlalchemy', 'pydantic'],
             'ai': ['tensorflow', 'pandas', 'scikit-learn'],
@@ -230,7 +230,7 @@ class ProjectImporter:
 
     def _suggest_prompts(self, project_type: str) -> List[str]:
         """Suggère des prompts selon le type de projet."""
-        suggestions={
+        suggestions = {
             'game': ['game_mechanics.md', 'level_design.md'],
             'api': ['api_design.md', 'security_audit.md'],
             'ai': ['ml_pipeline.md', 'model_evaluation.md'],
@@ -243,7 +243,7 @@ class ProjectImporter:
 
     def _suggest_enhancements(self, project_type: str, quality_analysis: Dict[str, Any]) -> List[str]:
         """Suggère des améliorations spécifiques."""
-        enhancements=[]
+        enhancements = []
         if not quality_analysis['has_tests']:
             enhancements.append("Ajouter une suite de tests")
         if not quality_analysis['has_docs']:
@@ -253,25 +253,27 @@ class ProjectImporter:
         if not quality_analysis['has_readme']:
             enhancements.append("Créer un README.md")
         # Améliorations spécifiques au type
-        if project_type=='api':
+        if project_type == 'api':
             enhancements.append("Ajouter une authentification")
             enhancements.append("Implémenter une validation des")
-        elif project_type=='game':
+        elif project_type == 'game':
             enhancements.append("Ajouter un système de f")
             enhancements.append("Implémenter des effets f")
-        elif project_type=='ai':
+        elif project_type == 'ai':
             enhancements.append("Ajouter un système de f")
             enhancements.append("Implémenter un monitoring des f")
         return enhancements
 
-# Instance globale
-project_importer=ProjectImporter()
 
-if __name__=="__main__":
+# Instance globale
+project_importer = ProjectImporter()
+
+
+if __name__ == "__main__":
     if len(sys.argv) < 2:
         logger.info("Usage: python -m athalia_core.project_importer <chemin_du_projet>")
         sys.exit(1)
-    project_path=sys.argv[1]
-    importer=ProjectImporter()
-    report=importer.import_project(project_path)
+    project_path = sys.argv[1]
+    importer = ProjectImporter()
+    report = importer.import_project(project_path)
     pprint.pprint(report)

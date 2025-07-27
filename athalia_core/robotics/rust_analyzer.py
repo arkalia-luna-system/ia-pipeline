@@ -237,8 +237,10 @@ class RustAnalyzer:
 
         return min(100.0, score)
 
-    def _generate_recommendations(self, projects: List[RustProjectInfo],
-                                 issues: List[str], recommendations: List[str]):
+    def _generate_recommendations(
+        self, projects: List[RustProjectInfo],
+        issues: List[str], recommendations: List[str]
+    ):
         """Générer des recommandations basées sur l'analyse"""
         if not projects:
             return

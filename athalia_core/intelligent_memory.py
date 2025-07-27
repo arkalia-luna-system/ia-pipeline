@@ -367,18 +367,21 @@ class IntelligentMemory:
                 "learning_progress": "Système d'apprentissage actif"
             }
     
-    def _record_learning_event(self, event_type: str, description: str, 
-                             code_snippet: str, location: str, severity: str,
-                             success: bool = True, resolution: str = None,
-                             context: Dict[str, Any] = None) -> str:
+    def _record_learning_event(
+        self, event_type: str, description: str, 
+        code_snippet: str, location: str, severity: str,
+        success: bool = True, resolution: str = None,
+        context: Dict[str, Any] = None
+    ) -> str:
         """Enregistrer un événement d'apprentissage"""
         pattern_hash = self._analyze_code_pattern(code_snippet)
-        
+
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
             cursor.execute("""
                 INSERT INTO learning_events 
-                (event_type, description, code_snippet, location, timestamp, severity, resolution, success, context, pattern_hash)
+                (event_type, description, code_snippet, location, timestamp, 
+                 severity, resolution, success, context, pattern_hash)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 event_type,
@@ -392,25 +395,25 @@ class IntelligentMemory:
                 json.dumps(context) if context else None,
                 pattern_hash
             ))
-            
+
             event_id = cursor.lastrowid
             conn.commit()
-            
+
             return str(event_id)
-    
+
     def _analyze_code_pattern(self, code: str) -> str:
         """Analyser et créer un hash du pattern de code"""
         # Normaliser le code
         normalized = self._normalize_code(code)
-        
+
         # Créer un hash
         return hashlib.md5(normalized.encode()).hexdigest()
-    
+
     def _normalize_code(self, code: str) -> str:
         """Normaliser le code pour la comparaison"""
         # Supprimer les commentaires
         code = re.sub(r'#.*$', '', code, flags=re.MULTILINE)
-        
+
         # Supprimer les docstrings
         code = re.sub(r'""".*?"""', '', code, flags=re.DOTALL)
         code = re.sub(r"'''.*?'''", '', code, flags=re.DOTALL)
@@ -465,8 +468,10 @@ class IntelligentMemory:
 
             conn.commit()
 
-    def _generate_predictions_from_error(self, error_description: str, 
-                                       code_snippet: str, pattern_hash: str):
+    def _generate_predictions_from_error(
+        self, error_description: str, 
+        code_snippet: str, pattern_hash: str
+    ):
         """Générer des prédictions basées sur une erreur"""
         # Analyser le type d'erreur et générer des prédictions
         if "duplicate" in error_description.lower():
