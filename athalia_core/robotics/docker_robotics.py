@@ -231,7 +231,7 @@ RUN chmod +x /package/start.sh
 ENTRYPOINT ["/package/start.sh"]
 """
         return template
-    
+
     def create_start_script_template(self) -> str:
         """Créer un template de script de démarrage"""
         template = """#!/bin/bash
@@ -256,7 +256,7 @@ echo "🚀 Démarrage Reachy 2023..."
 ros2 launch reachy_bringup reachy_bringup.launch.py
 """
         return template
-    
+
     def setup_reachy_environment(self) -> bool:
         """Configurer l'environnement Docker pour Reachy"""
         try:

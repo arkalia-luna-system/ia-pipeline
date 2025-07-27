@@ -84,7 +84,8 @@ class SecurityAuditor:
                 vulns = json.loads(result.stdout)
                 for vuln in vulns:
                     self.report["vulnerabilities"].append(
-                        f"Vulnérabilité: {vuln['package']} {vuln['installed_version']}"
+                        f"Vulnérabilité: {vuln['package']} "
+                        f"{vuln['installed_version']}"
                     )
 
         except Exception as e:

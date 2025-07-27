@@ -434,7 +434,8 @@ class UnifiedOrchestrator:
         successful_steps = sum(1 for step in results['steps'].values()
                              if step.get('status') == 'completed')
         total_steps = len(results['steps'])
-        learning_data['success_rate'] = successful_steps / total_steps if total_steps > 0 else 0.0
+        learning_data['success_rate'] = (successful_steps / total_steps 
+                                       if total_steps > 0 else 0.0)
 
         return learning_data
 
@@ -469,7 +470,8 @@ class UnifiedOrchestrator:
     def _save_unified_results(self, results: Dict[str, Any]):
         """Sauvegarder les résultats unifiés"""
         try:
-            results_file = self.root_path / "data" / f"orchestration_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            results_file = self.root_path / "data" / f"orchestration_results_{timestamp}.json"
             with open(results_file, 'w') as f:
                 json.dump(results, f, indent=2, default=str)
 
@@ -486,7 +488,8 @@ class UnifiedOrchestrator:
             'failed_tasks': len([t for t in self.tasks if t.status == 'failed']),
             'total_insights': len(self.insights),
             'industrialization_steps': len(self.industrialization_steps),
-            'success_rate': len([t for t in self.tasks if t.status == 'completed']) / len(self.tasks) if self.tasks else 0.0
+            'success_rate': (len([t for t in self.tasks if t.status == 'completed']) / 
+                           len(self.tasks) if self.tasks else 0.0)
         }
 
     def _run_plugins(self, project_path: Path) -> Dict[str, Any]:
