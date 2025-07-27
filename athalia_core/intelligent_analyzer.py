@@ -141,14 +141,19 @@ class IntelligentAnalyzer:
             "summary": {
                 "total_functions": sum(f["functions_count"] for f in file_analyses),
                 "total_classes": sum(f["classes_count"] for f in file_analyses),
-                "average_complexity": sum(f["complexity_score"] for f in file_analyses) / len(file_analyses) if file_analyses else 0
+                "average_complexity": (
+                    sum(f["complexity_score"] for f in file_analyses) / len(file_analyses)
+                    if file_analyses else 0
+                )
             }
         }
-    
-    def _calculate_overall_score(self, ast_analysis: Dict[str, Any], 
-                               pattern_analysis: Dict[str, Any],
-                               architecture_analysis: Any,
-                               performance_analysis: Any) -> float:
+
+    def _calculate_overall_score(
+        self, ast_analysis: Dict[str, Any],
+        pattern_analysis: Dict[str, Any],
+        architecture_analysis: Any,
+        performance_analysis: Any
+    ) -> float:
         """Calculer le score global basé sur toutes les analyses"""
         scores = []
         weights = []
@@ -159,7 +164,7 @@ class IntelligentAnalyzer:
             ast_score = max(0, 100 - (avg_complexity * 3))
             scores.append(ast_score)
             weights.append(2.0)
-        
+
         # Score Patterns (qualité du code)
         pattern_score = 100
         if pattern_analysis["duplicates"]:
@@ -169,7 +174,7 @@ class IntelligentAnalyzer:
         pattern_score = max(0, pattern_score)
         scores.append(pattern_score)
         weights.append(2.5)
-        
+
         # Score Architecture (structure du projet)
         arch_score = 100
         if architecture_analysis.performance_issues:
@@ -177,55 +182,78 @@ class IntelligentAnalyzer:
         arch_score = max(0, arch_score)
         scores.append(arch_score)
         weights.append(2.0)
-        
+
         # Score Performance
         perf_score = performance_analysis.overall_score
         scores.append(perf_score)
         weights.append(3.5)
-        
+
         # Calculer la moyenne pondérée
         total_score = sum(score * weight for score, weight in zip(scores, weights))
         total_weight = sum(weights)
-        
+
         return total_score / total_weight if total_weight > 0 else 100.0
     
-    def _generate_comprehensive_recommendations(self, pattern_analysis: Dict[str, Any],
-                                              architecture_analysis: Any,
-                                              performance_analysis: Any) -> List[str]:
+    def _generate_comprehensive_recommendations(
+        self, pattern_analysis: Dict[str, Any],
+        architecture_analysis: Any,
+        performance_analysis: Any
+    ) -> List[str]:
         """Générer des recommandations globales"""
         recommendations = []
         
         # Recommandations des patterns
         if pattern_analysis["duplicates"]:
-            high_severity_duplicates = [d for d in pattern_analysis["duplicates"] if d.severity in ["high", "medium"]]
+            high_severity_duplicates = [
+                d for d in pattern_analysis["duplicates"] 
+                if d.severity in ["high", "medium"]
+            ]
             if high_severity_duplicates:
-                recommendations.append(f"🔧 {len(high_severity_duplicates)} doublons critiques - fusion prioritaire")
+                recommendations.append(
+                    f"🔧 {len(high_severity_duplicates)} doublons critiques - fusion prioritaire"
+                )
         
         if pattern_analysis["antipatterns"]:
-            high_impact_antipatterns = [a for a in pattern_analysis["antipatterns"] if a.impact in ["high", "critical"]]
+            high_impact_antipatterns = [
+                a for a in pattern_analysis["antipatterns"] 
+                if a.impact in ["high", "critical"]
+            ]
             if high_impact_antipatterns:
-                recommendations.append(f"⚠️ {len(high_impact_antipatterns)} anti-patterns critiques - refactoring urgent")
+                recommendations.append(
+                    f"⚠️ {len(high_impact_antipatterns)} anti-patterns critiques - refactoring urgent"
+                )
         
         # Recommandations d'architecture
         if architecture_analysis.performance_issues:
-            recommendations.append(f"🏗️ {len(architecture_analysis.performance_issues)} problèmes d'architecture détectés")
+            recommendations.append(
+                f"🏗️ {len(architecture_analysis.performance_issues)} problèmes d'architecture détectés"
+            )
         
         # Recommandations de performance
         if performance_analysis.issues:
-            high_impact_perf_issues = [i for i in performance_analysis.issues if i.impact in ["high", "critical"]]
+            high_impact_perf_issues = [
+                i for i in performance_analysis.issues 
+                if i.impact in ["high", "critical"]
+            ]
             if high_impact_perf_issues:
-                recommendations.append(f"⚡ {len(high_impact_perf_issues)} problèmes de performance critiques")
+                recommendations.append(
+                    f"⚡ {len(high_impact_perf_issues)} problèmes de performance critiques"
+                )
         
         # Recommandations générales
         if recommendations:
-            recommendations.append("📊 Considérer l'implémentation d'un système de métriques continues")
+            recommendations.append(
+                "📊 Considérer l'implémentation d'un système de métriques continues"
+            )
             recommendations.append("🔄 Planifier des sessions de refactoring régulières")
         
         return recommendations
     
-    def _create_optimization_plan(self, pattern_analysis: Dict[str, Any],
-                                architecture_analysis: Any,
-                                performance_analysis: Any) -> Dict[str, Any]:
+    def _create_optimization_plan(
+        self, pattern_analysis: Dict[str, Any],
+        architecture_analysis: Any,
+        performance_analysis: Any
+    ) -> Dict[str, Any]:
         """Créer un plan d'optimisation global"""
         plan = {
             "priority_tasks": [],
@@ -237,7 +265,10 @@ class IntelligentAnalyzer:
         
         # Tâches prioritaires (impact élevé)
         if pattern_analysis["duplicates"]:
-            high_severity_duplicates = [d for d in pattern_analysis["duplicates"] if d.severity == "high"]
+            high_severity_duplicates = [
+                d for d in pattern_analysis["duplicates"] 
+                if d.severity == "high"
+            ]
             if high_severity_duplicates:
                 plan["priority_tasks"].append({
                     "task": "merge_high_severity_duplicates",
@@ -248,7 +279,10 @@ class IntelligentAnalyzer:
                 plan["estimated_effort"] += len(high_severity_duplicates) * 2  # heures
         
         if performance_analysis.issues:
-            critical_perf_issues = [i for i in performance_analysis.issues if i.impact == "critical"]
+            critical_perf_issues = [
+                i for i in performance_analysis.issues 
+                if i.impact == "critical"
+            ]
             if critical_perf_issues:
                 plan["priority_tasks"].append({
                     "task": "fix_critical_performance_issues",
@@ -260,7 +294,10 @@ class IntelligentAnalyzer:
         
         # Tâches de priorité moyenne
         if pattern_analysis["antipatterns"]:
-            medium_impact_antipatterns = [a for a in pattern_analysis["antipatterns"] if a.impact == "medium"]
+            medium_impact_antipatterns = [
+                a for a in pattern_analysis["antipatterns"] 
+                if a.impact == "medium"
+            ]
             if medium_impact_antipatterns:
                 plan["medium_priority_tasks"].append({
                     "task": "refactor_medium_impact_antipatterns",
@@ -281,8 +318,11 @@ class IntelligentAnalyzer:
     
     def _save_comprehensive_analysis(self, analysis: ComprehensiveAnalysis):
         """Sauvegarder l'analyse complète"""
-        output_file = self.root_path / "data" / f"comprehensive_analysis_{analysis.project_name}_{analysis.analysis_date.strftime('%Y%m%d_%H%M%S')}.json"
-        
+        output_file = (
+            self.root_path / "data" / 
+            f"comprehensive_analysis_{analysis.project_name}_{analysis.analysis_date.strftime('%Y%m%d_%H%M%S')}.json"
+        )
+
         # Convertir en dictionnaire pour la sérialisation JSON
         analysis_dict = {
             "project_name": analysis.project_name,
@@ -305,11 +345,11 @@ class IntelligentAnalyzer:
                 "issues_count": len(analysis.performance_analysis.issues)
             }
         }
-        
+
         output_file.parent.mkdir(parents=True, exist_ok=True)
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(analysis_dict, f, indent=2, ensure_ascii=False)
-        
+
         logger.info(f"💾 Analyse sauvegardée dans {output_file}")
     
     def get_learning_insights(self) -> Dict[str, Any]:
@@ -338,16 +378,21 @@ class IntelligentAnalyzer:
             ]
         }
     
-    def orchestrate_with_unified(self, project_path: str = None, 
-                               config: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    def orchestrate_with_unified(
+        self, project_path: str = None,
+        config: Optional[Dict[str, Any]] = None
+    ) -> Dict[str, Any]:
         """Utiliser l'orchestrateur unifié pour une orchestration complète"""
         if not UNIFIED_ORCHESTRATOR_AVAILABLE:
-            logger.warning("Orchestrateur unifié non disponible, utilisation de l'analyse standard")
+            logger.warning(
+                "Orchestrateur unifié non disponible, utilisation de l'analyse standard"
+            )
             return self.analyze_project_comprehensive(project_path)
-        
+
         logger.info("🎯 Utilisation de l'orchestrateur unifié")
         unified_orchestrator = UnifiedOrchestrator(self.root_path)
         return unified_orchestrator.orchestrate_project_complete(project_path, config)
+
 
 def main():
     """Fonction principale pour l'analyse en ligne de commande"""

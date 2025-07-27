@@ -18,6 +18,7 @@ Module audit intelligent pour Athalia
 Analyse automatique complète des projets avec recommandations
 """
 
+
 class IntelligentAuditor:
     """Auditeur intelligent pour analyse automatique des projets"""
 
@@ -158,7 +159,10 @@ class IntelligentAuditor:
         if req_file.exists():
             try:
                 with open(req_file, 'r') as file_handle:
-                    deps = [line.strip() for line in file_handle if line.strip() and not line.startswith('#')]
+                    deps = [
+                        line.strip() for line in file_handle 
+                        if line.strip() and not line.startswith('#')
+                    ]
                     dependencies['python'] = deps
             except Exception:
                 pass
@@ -244,7 +248,9 @@ class IntelligentAuditor:
                     lines = file_handle.readlines()
                     for index, line in enumerate(lines, 1):
                         if len(line.rstrip()) > 120:
-                            style_issues.append(f"Ligne trop longue: {file_path.name}:{index}")
+                            style_issues.append(
+                                f"Ligne trop longue: {file_path.name}:{index}"
+                            )
                         if line.strip() and not line.startswith('#'):
                             if not line.startswith((' ', '\t')) and line.strip():
                                 if not any(keyword in line for keyword in ['class ', 'def ', 'import ', 'from ']):
@@ -523,7 +529,10 @@ class IntelligentAuditor:
         source_files = list(self.project_path.rglob("*.py"))
 
         # Exclure les fichiers de test des fichiers source
-        source_files = [file_handle for file_handle in source_files if "test" not in file_handle.name.lower()]
+        source_files = [
+            file_handle for file_handle in source_files 
+            if "test" not in file_handle.name.lower()
+        ]
 
         coverage_ratio = len(test_files) / len(source_files) if source_files else 0
 
@@ -729,6 +738,7 @@ class IntelligentAuditor:
 
         return report
 
+
 def main():
     """Point d'entrée"""
     if len(sys.argv) != 2:
@@ -753,6 +763,7 @@ def main():
         json.dump(results, file_handle, indent=2, ensure_ascii=False)
 
     logger.info(f"📄 Rapport sauvegardé: {report_file}")
+
 
 if __name__ == "__main__":
     main()

@@ -23,6 +23,7 @@ import difflib
 
 logger = logging.getLogger(__name__)
 
+
 @dataclass
 class LearningEvent:
     """Événement d'apprentissage"""
@@ -36,6 +37,7 @@ class LearningEvent:
     success: bool = True
     context: Dict[str, Any] = None
 
+
 @dataclass
 class Prediction:
     """Prédiction basée sur l'apprentissage"""
@@ -46,6 +48,7 @@ class Prediction:
     estimated_impact: str
     code_pattern: str
 
+
 @dataclass
 class CorrectionSuggestion:
     """Suggestion de correction"""
@@ -54,6 +57,7 @@ class CorrectionSuggestion:
     reason: str
     confidence: float
     based_on_previous_corrections: List[str]
+
 
 class IntelligentMemory:
     """Système de mémoire intelligente pour Athalia"""
@@ -399,30 +403,30 @@ class IntelligentMemory:
         # Supprimer les docstrings
         code = re.sub(r'""".*?"""', '', code, flags=re.DOTALL)
         code = re.sub(r"'''.*?'''", '', code, flags=re.DOTALL)
-        
+
         # Supprimer les espaces en début de ligne
         lines = [line.strip() for line in code.split('\n')]
-        
+
         # Supprimer les lignes vides
         lines = [line for line in lines if line]
-        
+
         return '\n'.join(lines)
-    
+
     def _update_pattern_learning(self, pattern_hash: str, pattern_type: str, success: bool):
         """Mettre à jour l'apprentissage d'un pattern"""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
-            
+
             # Vérifier si le pattern existe déjà
             cursor.execute("SELECT * FROM learned_patterns WHERE pattern_hash = ?", (pattern_hash,))
             existing = cursor.fetchone()
-            
+
             if existing:
                 # Mettre à jour le pattern existant
                 occurrences = existing[3] + 1
                 success_count = int(float(existing[5]) * existing[3]) + (1 if success else 0)
                 success_rate = success_count / occurrences
-                
+
                 cursor.execute("""
                     UPDATE learned_patterns 
                     SET occurrences = ?, last_seen = ?, success_rate = ?
@@ -447,9 +451,9 @@ class IntelligentMemory:
                     datetime.now().isoformat(),
                     1.0 if success else 0.0
                 ))
-            
+
             conn.commit()
-    
+
     def _generate_predictions_from_error(self, error_description: str, 
                                        code_snippet: str, pattern_hash: str):
         """Générer des prédictions basées sur une erreur"""
@@ -481,13 +485,14 @@ class IntelligentMemory:
                 "estimated_impact": "Moyen",
                 "code_pattern": pattern_hash
             }
-        
+
         # Sauvegarder la prédiction
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
             cursor.execute("""
                 INSERT INTO predictions 
-                (prediction_type, confidence, description, suggested_action, estimated_impact, code_pattern, created_at)
+                (prediction_type, confidence, description, suggested_action, 
+                 estimated_impact, code_pattern, created_at)
                 VALUES (?, ?, ?, ?, ?, ?, ?)
             """, (
                 prediction["prediction_type"],
@@ -527,16 +532,23 @@ class IntelligentMemory:
     def _check_antipatterns(self, code_snippet: str) -> List[Prediction]:
         """Vérifier les anti-patterns connus"""
         predictions = []
-        
+
         # Anti-patterns à vérifier
         antipatterns = [
-            (r'eval\s*\(', "Utilisation de eval() - Risque de sécurité", "Remplacer par une alternative sécurisée"),
-            (r'exec\s*\(', "Utilisation de exec() - Risque de sécurité", "Remplacer par une alternative sécurisée"),
-            (r'for\s+\w+\s+in\s+\w+:\s*\n\s*for\s+\w+\s+in\s+\w+:', "Boucles imbriquées - Complexité élevée", "Considérer l'utilisation de list comprehensions ou itertools"),
-            (r'if\s+\w+:\s*\n\s*if\s+\w+:\s*\n\s*if\s+\w+:', "Conditions imbriquées - Complexité élevée", "Refactoriser en utilisant des early returns ou des guard clauses"),
-            (r'password\s*=\s*["\'][^"\']+["\']', "Mot de passe en dur", "Utiliser des variables d'environnement ou un gestionnaire de secrets")
+            (r'eval\s*\(', "Utilisation de eval() - Risque de sécurité", 
+             "Remplacer par une alternative sécurisée"),
+            (r'exec\s*\(', "Utilisation de exec() - Risque de sécurité", 
+             "Remplacer par une alternative sécurisée"),
+            (r'for\s+\w+\s+in\s+\w+:\s*\n\s*for\s+\w+\s+in\s+\w+:', 
+             "Boucles imbriquées - Complexité élevée", 
+             "Considérer l'utilisation de list comprehensions ou itertools"),
+            (r'if\s+\w+:\s*\n\s*if\s+\w+:\s*\n\s*if\s+\w+:', 
+             "Conditions imbriquées - Complexité élevée", 
+             "Refactoriser en utilisant des early returns ou des guard clauses"),
+            (r'password\s*=\s*["\'][^"\']+["\']', "Mot de passe en dur", 
+             "Utiliser des variables d'environnement ou un gestionnaire de secrets")
         ]
-        
+
         for pattern, description, suggestion in antipatterns:
             if re.search(pattern, code_snippet):
                 prediction = Prediction(
@@ -548,17 +560,17 @@ class IntelligentMemory:
                     code_pattern=self._analyze_code_pattern(code_snippet)
                 )
                 predictions.append(prediction)
-        
+
         return predictions
-    
+
     def _check_potential_duplicates(self, code_snippet: str) -> List[Prediction]:
         """Vérifier les doublons potentiels"""
         predictions = []
-        
+
         # Chercher des patterns similaires dans l'historique
         pattern_hash = self._analyze_code_pattern(code_snippet)
         similar_patterns = self._find_similar_patterns(pattern_hash)
-        
+
         for pattern in similar_patterns:
             if pattern['occurrences'] > 2:  # Pattern répété
                 prediction = Prediction(
@@ -570,19 +582,19 @@ class IntelligentMemory:
                     code_pattern=pattern_hash
                 )
                 predictions.append(prediction)
-        
+
         return predictions
-    
+
     def _calculate_code_similarity(self, code1: str, code2: str) -> float:
         """Calculer la similarité entre deux codes"""
         # Normaliser les codes
         norm1 = self._normalize_code(code1)
         norm2 = self._normalize_code(code2)
-        
+
         # Utiliser difflib pour calculer la similarité
         similarity = difflib.SequenceMatcher(None, norm1, norm2).ratio()
         return similarity
-    
+
     def _save_correction_suggestion(self, original_code: str, corrected_code: str, 
                                   reason: str, success: bool):
         """Sauvegarder une suggestion de correction"""
@@ -590,7 +602,8 @@ class IntelligentMemory:
             cursor = conn.cursor()
             cursor.execute("""
                 INSERT INTO correction_suggestions 
-                (original_code, suggested_code, reason, confidence, based_on_corrections, created_at, applied, success)
+                (original_code, suggested_code, reason, confidence, 
+                 based_on_corrections, created_at, applied, success)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 original_code,
@@ -603,6 +616,7 @@ class IntelligentMemory:
                 success
             ))
             conn.commit()
+
 
 def main():
     """Test du système de mémoire intelligente"""
