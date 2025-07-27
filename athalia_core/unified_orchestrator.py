@@ -530,16 +530,21 @@ class UnifiedOrchestrator:
     def _learn_from_results(self, results: Dict[str, Any]) -> Dict[str, Any]:
         """Apprendre des résultats pour améliorer les futures exécutions"""
         learning_data = {
+            'timestamp': datetime.now().isoformat(),
             'execution_time': time.time(),
             'success_rate': 0.0,
             'improvements': [],
-            'lessons_learned': []
+            'lessons_learned': [],
+            'project_insights': [],
+            'performance_metrics': {},
+            'recommendations': []
         }
 
         # Calculer le taux de succès
-        successful_steps = sum(1 for step in results['steps'].values()
+        steps = results.get('steps', {})
+        successful_steps = sum(1 for step in steps.values()
                                if step.get('status') == 'completed')
-        total_steps = len(results['steps'])
+        total_steps = len(steps)
         learning_data['success_rate'] = (successful_steps / total_steps
                                          if total_steps > 0 else 0.0)
 
