@@ -6,6 +6,7 @@ from datetime import datetime
 
 logger = logging.getLogger(__name__)
 
+
 def get_base_templates() -> Dict[str, str]:
     """Retourne les templates de base pour tous les projets."""
 
@@ -232,8 +233,8 @@ class MemoryManager:
                     'error': 'Clé non trouvée'
                 }
 
-            item = self.memory[key]
-            
+                        item = self.memory[key]
+
             # Vérifier le TTL
             if item.get('ttl'):
                 # Logique de vérification TTL simplifiée
