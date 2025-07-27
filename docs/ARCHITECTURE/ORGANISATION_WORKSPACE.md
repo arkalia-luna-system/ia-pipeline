@@ -62,16 +62,16 @@ Le workspace Athalia a été réorganisé pour une meilleure structure modulaire
 - **`FINAL_SUMMARY.md`** - Résumé final
 - **`GENESIS.md`** - Historique de développement
 - **`CLEANUP_REPORT.md`** - Rapport de nettoyage
-- **`TROUBLESHOOTING.md`** - Guide de dépannage
+- **`FAQ.md`** - Guide de dépannage
 - **`INSTALL.md`** - Guide d'installation
 
 ## Maintenance automatique
 
 ### 🧹 Script de nettoyage
-Le script `setup/cleanup_workspace.py` maintient automatiquement l'organisation :
+Le script principal d'Athalia maintient automatiquement l'organisation :
 
 ```bash
-python setup/cleanup_workspace.py
+python athalia_unified.py . --action fix --auto-fix
 ```
 
 **Fonctionnalités :**
@@ -104,16 +104,16 @@ Le fichier `config/paths.yaml` centralise tous les chemins du projet pour une ma
 
 ```bash
 # Nettoyage automatique
-python setup/cleanup_workspace.py
+python athalia_unified.py . --action fix --auto-fix
 
 # Exécution des tests
-bash setup/run_tests.sh
+python -m pytest tests/ -v
 
-# Démarrage rapide
-python athalia_quick_start.py
+# Audit du projet
+python athalia_unified.py . --action audit --dry-run
 
 # Script principal
-python athalia_unified_enhanced.py
+python athalia_unified.py . --action complete
 ```
 
 ## Migration
@@ -124,7 +124,7 @@ Si vous avez des fichiers qui ne respectent pas cette organisation, le script de
 
 Pour toute question sur l'organisation, consultez :
 - `docs/USER_GUIDE.md` - Guide utilisateur complet
-- `TROUBLESHOOTING.md` - Solutions aux problèmes courants 
+- `FAQ.md` - Solutions aux problèmes courants 
 
 ## 🧹 Nettoyage final 17/07/2025
 - Suppression des fichiers obsolètes (athalia_report_20250717_071804.json, athalia_quick_start.py, AppleDouble, logs vides, templates inutiles)

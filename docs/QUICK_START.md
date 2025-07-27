@@ -224,7 +224,7 @@ python athalia_unified.py /chemin/projet --action dashboard
 
 ### 📞 **Support**
 - **Documentation complète :** [Guides](GUIDES/)
-- **Dépannage détaillé :** [Troubleshooting](GUIDES/TROUBLESHOOTING.md)
+- **Dépannage détaillé :** [FAQ](GUIDES/FAQ.md)
 - **FAQ :** [Questions fréquentes](GUIDES/FAQ.md)
 
 ---

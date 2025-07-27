@@ -98,8 +98,8 @@ python athalia_unified.py . --action audit --dry-run
 # Créer le dossier de configuration
 mkdir -p ~/.athalia
 
-# Copier la configuration par défaut
-cp config/athalia_config.yaml ~/.athalia/config.yaml
+# Copier la configuration par défaut (si elle existe)
+cp config/athalia_config.yaml ~/.athalia/config.yaml 2>/dev/null || echo "Configuration par défaut non trouvée"
 ```
 
 ### 🔧 **Fichier de Configuration Principal**
@@ -298,7 +298,7 @@ python athalia_unified.py /chemin/projet --dry-run
 
 ### 📞 **Support et Aide**
 - **Documentation :** [Guides complets](../README.md)
-- **Dépannage :** [Guide de dépannage](TROUBLESHOOTING.md)
+- **Dépannage :** [FAQ](FAQ.md)
 - **FAQ :** [Questions fréquentes](FAQ.md)
 - **Issues :** [GitHub Issues](https://github.com/arkalia-luna-system/ia-pipeline/issues)
 

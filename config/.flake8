@@ -28,6 +28,8 @@ per-file-ignores =
     setup/*:E501,W291,W292
     config/*:E501,W291,W292
     bin/*:E501,W291,W292
+    # Fichiers d'outils et d'analyse
+    tools/*:E501,W291,W292,W293,E722,F401,F541,E128,W504,E302,E305,E226
 
 # Règles à ignorer globalement
 ignore = 
