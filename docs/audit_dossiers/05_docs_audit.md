@@ -126,7 +126,7 @@
 1. **`FAQ.md`** - ✅ **ACTUEL**
    - Questions fréquentes
 
-2. **`TROUBLESHOOTING.md`** - ✅ **ACTUEL**
+2. **`FAQ.md`** - ✅ **ACTUEL**
    - Dépannage
 
 ### 📦 **Archive (1 dossier) :**
@@ -162,7 +162,7 @@
 - **Guides techniques** : MODULES, TESTS, PLUGINS, DEPLOYMENT, DEVELOPER
 - **Robotics et IA** : ROBOTICS, REACHY, PROMPTS, ORCHESTRATOR
 - **Rapports** : RAPPORT_FINAL, AUDIT, INVENTAIRE, ANALYSE
-- **Support** : FAQ, TROUBLESHOOTING
+- **Support** : FAQ
 
 ### 📈 **AMÉLIORATIONS RÉALISÉES :**
 1. **✅ Index central** : INDEX_PRINCIPAL.md créé
