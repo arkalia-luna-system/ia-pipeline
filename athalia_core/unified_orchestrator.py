@@ -654,7 +654,7 @@ class UnifiedOrchestrator:
         missing_fields = [
             field for field in required_fields if field not in inputs]
         is_valid = len(missing_fields) == 0
-        
+
         return {
             'status': 'success' if is_valid else 'error',
             'valid': is_valid,
@@ -761,7 +761,7 @@ def orchestrator_auto_backup():
     try:
         backup_system = get_backup_system()
         backup_result = backup_system.create_backup()
-        
+
         return {
             'status': 'success',
             'backup_id': backup_result.backup_id,
@@ -778,7 +778,7 @@ def orchestrator_main():
     if len(sys.argv) > 1 and sys.argv[1] == "cli":
         cli_entry()
         return
-    
+
     if len(sys.argv) > 1:
         # Mode avec arguments
         project_path = sys.argv[1]
@@ -800,7 +800,7 @@ def orchestrator_main():
             print(json.dumps(result, indent=2))
 
 
-def main():
+def main_orchestrator():
     """Point d'entrée principal pour compatibilité"""
     orchestrator_main()
 
