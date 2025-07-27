@@ -224,7 +224,8 @@ class GestionnaireProfils:
 
             if profil_id:
                 cursor.execute("""
-                    INSERT INTO projets_consultes (profil_id, chemin_projet, date_consultation, duree_consultation)
+                    INSERT INTO projets_consultes 
+                    (profil_id, chemin_projet, date_consultation, duree_consultation)
                     VALUES (?, ?, ?, ?)
                 """, (
                     profil_id[0],
