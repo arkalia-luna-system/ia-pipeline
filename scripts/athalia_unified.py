@@ -129,10 +129,10 @@ MODULES INTÉGRÉS:
         sys.exit(1)
 
     # Affichage du header
-    logger.info("🚀" + "="*60 + "🚀")
+    logger.info("🚀" + "=" * 60 + "🚀")
     logger.info("🌟 ATHALIA UNIFIED - Industrialisation IA complète")
     logger.info("🌟 Tous les modules intégrés dans un pipeline unifié")
-    logger.info("🚀" + "="*60 + "🚀")
+    logger.info("🚀" + "=" * 60 + "🚀")
 
     logger.info(f"📁 Projet: {args.project_path}")
     logger.info(f"👤 Utilisateur: {args.utilisateur}")
@@ -151,6 +151,7 @@ MODULES INTÉGRÉS:
                 logger.info("⚠️ Module athalia_orchestrator non disponible, utilisation de la version simplifiée")
                 # Version simplifiée pour les tests
                 class AthaliaOrchestrator:
+
                     def industrialize_project(self, project_path, config=None):
                         return {"status": "Industrialisation simulée - Modules non disponibles"}
 
@@ -225,6 +226,7 @@ MODULES INTÉGRÉS:
     except Exception as e:
         logger.error(f"❌ Erreur générale: {e}")
         sys.exit(1)
+
 
 if __name__ == "__main__":
     main()

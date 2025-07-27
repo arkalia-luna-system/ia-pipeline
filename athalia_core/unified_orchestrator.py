@@ -921,7 +921,7 @@ def orchestrator_auto_backup():
         
         return {
             "status": "success",
-            "backup_id": f"auto_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
+            "backup_id": backup_result.backup_id,
             "message": "Sauvegarde automatique effectuée"
         }
     except Exception as e:
@@ -929,6 +929,11 @@ def orchestrator_auto_backup():
 
 def main():
     """Point d'entrée principal"""
+    # Vérifier si on appelle le CLI
+    if len(sys.argv) > 1 and sys.argv[1] == "cli":
+        cli_entry()
+        return
+    
     parser = argparse.ArgumentParser(description="Orchestrateur unifié Athalia")
     parser.add_argument("project_path", help="Chemin du projet à orchestrer")
     parser.add_argument("--config", help="Fichier de configuration JSON")
