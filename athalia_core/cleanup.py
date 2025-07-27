@@ -32,8 +32,9 @@ def clean_old_tests_and_caches(outdir):
         for file_handle in files:
             file_path = os.path.join(dirpath, file_handle)
             # On ne supprime jamais test_booster_ia_proj.pyff
-            if (file_handle.endswith('.ff') or file_handle.endswith('.pyff') or file_handle.startswith('test_') or file_handle.endswith('.pyc') or file_handle.endswith(
-                    '.log') or file_handle.endswith('.bak')) and not file_handle.startswith('test_booster_ia_proj') and file_handle != 'test_booster_ia_proj.pyff':
+            if (file_handle.endswith('.ff') or file_handle.endswith('.pyff') 
+                or file_handle.startswith('test_') or file_handle.endswith('.pyc') 
+                or file_handle.endswith('.log') or file_handle.endswith('.bak')) and not file_handle.startswith('test_booster_ia_proj') and file_handle != 'test_booster_ia_proj.pyff':
                 try:
                     os.remove(file_path)
                     logging.info(
@@ -122,15 +123,15 @@ def clean_macos_files(directory: str):
                     break
 
             # Vérifications spécifiques
-            if (file.startswith('._') or
-                file == '.DS_Store'
+            if (file.startswith('._')
+                or file == '.DS_Store'
                 or file == 'Thumbs.db'
                 or file.startswith('.!')  # Fichiers comme .!44956!*.clean
                 or file.endswith('.tmp')
                 or file.endswith('.bak')
                 or file.endswith('.log')
                 or file.endswith('.clean')
-                    or file.endswith('.apdisk')):
+                or file.endswith('.apdisk')):
                 should_delete = True
 
             if should_delete:

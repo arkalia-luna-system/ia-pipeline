@@ -552,7 +552,8 @@ echo "✅ Tests terminés !"
             unit_errors=len(self.test_results.get('unit_tests', {}).get('errors', [])),
             integration_passed=self.test_results.get('integration_tests', {}).get('passed', 0),
             integration_failed=self.test_results.get('integration_tests', {}).get('failed', 0),
-            integration_errors=len(self.test_results.get('integration_tests', {}).get('errors', [])),
+            integration_errors=len(self.test_results.get(
+                'integration_tests', {}).get('errors', [])),
             perf_passed=self.test_results.get('performance_tests', {}).get('passed', 0),
             perf_failed=self.test_results.get('performance_tests', {}).get('failed', 0),
             perf_errors=len(self.test_results.get('performance_tests', {}).get('errors', [])),
