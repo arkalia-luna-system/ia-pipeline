@@ -22,9 +22,6 @@ logger = logging.getLogger(__name__)
 
 # Constantes pour les tests
 PHASE2_AVAILABLE = True
-ROBOTICS_AVAILABLE = True
-DISTILLATION_AVAILABLE = True
-AI_ROBUST_AVAILABLE = True
 
 # Imports des modules Athalia
 from .advanced_analytics import AdvancedAnalytics
@@ -160,38 +157,14 @@ class UnifiedOrchestrator:
 
     def __init__(self, root_path: str = None):
         self.root_path = Path(root_path) if root_path else Path.cwd()
-        self.db_path = self.root_path / "data" / "unified_orchestration.db"
         self.logger = logging.getLogger(__name__)
         self.tasks: List[OrchestrationTask] = []
         self.insights: List[IntelligentInsight] = []
         self.industrialization_steps: List[IndustrializationStep] = []
-        
-        # Configuration par défaut
-        self.config = {
-            'audit': True,
-            'lint': True,
-            'security': True,
-            'analytics': True,
-            'docs': True,
-            'cicd': True,
-            'robotics': True,
-            'plugins': True,
-            'templates': True,
-            'intelligence': True,
-            'predictions': True,
-            'optimizations': True,
-            'learning': True
-        }
 
         # Initialiser les composants
         self._init_database()
         self._init_components()
-        
-        # Initialiser l'analyseur intelligent
-        try:
-            self.intelligent_analyzer = IntelligentAnalyzer(str(self.root_path))
-        except:
-            self.intelligent_analyzer = None
 
     def _init_database(self):
         """Initialiser la base de données"""
@@ -200,63 +173,34 @@ class UnifiedOrchestrator:
             data_dir = self.root_path / "data"
             data_dir.mkdir(exist_ok=True)
 
-            # Base de données SQLite
-            import sqlite3
-            with sqlite3.connect(self.db_path) as conn:
-                cursor = conn.cursor()
-                
-                # Créer les tables
-                cursor.execute("""
-                    CREATE TABLE IF NOT EXISTS orchestration_tasks (
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        task_id TEXT UNIQUE,
-                        task_type TEXT,
-                        target_path TEXT,
-                        priority INTEGER,
-                        status TEXT,
-                        created_at TEXT,
-                        started_at TEXT,
-                        completed_at TEXT,
-                        result TEXT,
-                        error TEXT
-                    )
-                """)
-                
-                cursor.execute("""
-                    CREATE TABLE IF NOT EXISTS intelligent_insights (
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        insight_type TEXT,
-                        title TEXT,
-                        description TEXT,
-                        confidence REAL,
-                        priority TEXT,
-                        suggested_action TEXT,
-                        estimated_impact TEXT,
-                        code_location TEXT,
-                        created_at TEXT
-                    )
-                """)
-                
-                cursor.execute("""
-                    CREATE TABLE IF NOT EXISTS industrialization_steps (
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        name TEXT,
-                        status TEXT,
-                        result TEXT,
-                        duration REAL,
-                        error TEXT,
-                        created_at TEXT
-                    )
-                """)
-                
-                conn.commit()
+            # Fichier de base de données simple
+            self.db_file = data_dir / "orchestrator_db.json"
+            if not self.db_file.exists():
+                with open(self.db_file, 'w') as f:
+                    json.dump({
+                        'tasks': [],
+                        'insights': [],
+                        'industrialization_steps': [],
+                        'created_at': datetime.now().isoformat()
+                    }, f, indent=2)
 
         except Exception as e:
             self.logger.error(f"Erreur initialisation DB: {e}")
 
     def _init_components(self):
         """Initialiser les composants disponibles"""
-        self.components = {}
+        self.components = {
+            'analytics': AdvancedAnalytics() if 'AdvancedAnalytics' in globals() else None,
+            'cicd': AutoCICD() if 'AutoCICD' in globals() else None,
+            'cleaner': AutoCleaner() if 'AutoCleaner' in globals() else None,
+            'documenter': AutoDocumenter() if 'AutoDocumenter' in globals() else None,
+            'tester': AutoTester() if 'AutoTester' in globals() else None,
+            'linter': CodeLinter() if 'CodeLinter' in globals() else None,
+            'auditor': IntelligentAuditor() if 'IntelligentAuditor' in globals() else None,
+            'importer': ProjectImporter() if 'ProjectImporter' in globals() else None,
+            'security': SecurityAuditor(str(self.root_path)) if 'SecurityAuditor' in globals() else None,
+            'analyzer': IntelligentAnalyzer() if 'IntelligentAnalyzer' in globals() else None,
+        }
 
     def orchestrate_project_complete(self, project_path: str,
                                    config: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
@@ -265,11 +209,8 @@ class UnifiedOrchestrator:
         self.logger.info(f"🚀 Orchestration complète pour: {project_path.name}")
 
         results = {
-            'project_path': str(project_path),
             'project_name': project_path.name,
-            'orchestration_timestamp': datetime.now().isoformat(),
             'started_at': datetime.now().isoformat(),
-            'config': config or {},
             'steps': {},
             'insights': [],
             'predictions': [],
@@ -283,33 +224,27 @@ class UnifiedOrchestrator:
 
             # Phase 2: Audit et analyse
             results['steps']['audit'] = self._run_audit(project_path)
-            results['steps']['lint'] = self._run_linting(project_path)
+            results['steps']['linting'] = self._run_linting(project_path)
             results['steps']['security'] = self._run_security_audit(project_path)
             results['steps']['analytics'] = self._run_analytics(project_path)
 
             # Phase 3: Optimisation
             results['steps']['cleanup'] = self._run_cleanup(project_path)
-            results['steps']['docs'] = self._run_documentation(project_path)
-            results['steps']['tests'] = self._run_testing(project_path)
+            results['steps']['documentation'] = self._run_documentation(project_path)
+            results['steps']['testing'] = self._run_testing(project_path)
             results['steps']['cicd'] = self._run_cicd(project_path)
 
             # Phase 4: Robotique (si disponible)
             if ROBOTICS_AVAILABLE:
                 results['steps']['robotics'] = self._run_robotics_audit(project_path)
 
-            # Phase 4.5: Plugins et Templates
-            results['steps']['plugins'] = self._run_plugins(project_path)
-            results['steps']['templates'] = self._run_templates(project_path)
-
             # Phase 5: IA et prédictions
             results['predictions'] = self._generate_predictions(project_path)
             results['optimizations'] = self._generate_optimizations(project_path)
 
             # Phase 6: Apprentissage et rapport
-            results['learning_data'] = self._learn_from_results(results)
-            results['final_report'] = self._generate_unified_report(results)
-            results['intelligent_analysis'] = {'score': 85.0, 'insights': []}
-            results['industrialization_steps'] = results['steps']
+            results['learning'] = self._learn_from_results(results)
+            results['report'] = self._generate_unified_report(results)
 
             # Sauvegarder les résultats
             self._save_unified_results(results)
@@ -340,8 +275,6 @@ class UnifiedOrchestrator:
                 'optimizations_applied': 0
             }
 
-            # Les plugins et templates sont gérés séparément dans orchestrate_project_complete
-
             step.status = "completed"
             step.result = result
             step.duration = time.time() - start_time
@@ -356,99 +289,103 @@ class UnifiedOrchestrator:
     def _run_audit(self, project_path: Path) -> Dict[str, Any]:
         """Exécuter l'audit"""
         try:
-            return {
-                'status': 'completed',
-                'passed': True,
-                'result': {'score': 85, 'issues': 5}
-            }
+            if self.components['auditor']:
+                return self.components['auditor'].run()
+            else:
+                return {'status': 'skipped', 'reason': 'Auditor non disponible'}
         except Exception as e:
             return {'status': 'failed', 'error': str(e)}
 
     def _run_linting(self, project_path: Path) -> Dict[str, Any]:
         """Exécuter le linting"""
         try:
-            return {
-                'status': 'completed',
-                'passed': True,
-                'result': {'score': 90, 'issues': 2}
-            }
+            if self.components['linter']:
+                return self.components['linter'].run_linting(str(project_path))
+            else:
+                return {'status': 'skipped', 'reason': 'Linter non disponible'}
         except Exception as e:
             return {'status': 'failed', 'error': str(e)}
 
     def _run_security_audit(self, project_path: Path) -> Dict[str, Any]:
         """Exécuter l'audit de sécurité"""
         try:
-            return {
-                'status': 'completed',
-                'passed': True,
-                'result': {'score': 95, 'issues': 0}
-            }
+            if self.components['security']:
+                return self.components['security'].run()
+            else:
+                return {'status': 'skipped', 'reason': 'Security auditor non disponible'}
         except Exception as e:
             return {'status': 'failed', 'error': str(e)}
 
     def _run_analytics(self, project_path: Path) -> Dict[str, Any]:
         """Exécuter l'analyse"""
         try:
-            return {
-                'status': 'completed',
-                'passed': True,
-                'result': {'score': 88, 'metrics': {}}
-            }
+            if self.components['analytics']:
+                return self.components['analytics'].analyze_project(str(project_path))
+            else:
+                return {'status': 'skipped', 'reason': 'Analytics non disponible'}
         except Exception as e:
             return {'status': 'failed', 'error': str(e)}
 
     def _run_cleanup(self, project_path: Path) -> Dict[str, Any]:
         """Exécuter le nettoyage"""
         try:
-            return {
-                'status': 'completed',
-                'passed': True,
-                'result': {'files_removed': 0, 'space_freed': 0}
-            }
+            if self.components['cleaner']:
+                return self.components['cleaner'].clean_project(str(project_path))
+            else:
+                return {'status': 'skipped', 'reason': 'Cleaner non disponible'}
         except Exception as e:
             return {'status': 'failed', 'error': str(e)}
 
     def _run_documentation(self, project_path: Path) -> Dict[str, Any]:
         """Exécuter la documentation"""
         try:
-            return {
-                'status': 'completed',
-                'passed': True,
-                'result': {'docs_generated': 0, 'coverage': 0}
-            }
+            if self.components['documenter']:
+                return self.components['documenter'].generate_docs(str(project_path))
+            else:
+                return {'status': 'skipped', 'reason': 'Documenter non disponible'}
         except Exception as e:
             return {'status': 'failed', 'error': str(e)}
 
     def _run_testing(self, project_path: Path) -> Dict[str, Any]:
         """Exécuter les tests"""
         try:
-            return {
-                'status': 'completed',
-                'passed': True,
-                'result': {'total': 0, 'passed': 0, 'failed': 0}
-            }
+            if self.components['tester']:
+                return self.components['tester'].run_tests(str(project_path))
+            else:
+                return {'status': 'skipped', 'reason': 'Tester non disponible'}
         except Exception as e:
             return {'status': 'failed', 'error': str(e)}
 
     def _run_cicd(self, project_path: Path) -> Dict[str, Any]:
         """Exécuter le CI/CD"""
         try:
-            return {
-                'status': 'completed',
-                'passed': True,
-                'result': {'pipelines_created': 0, 'configs_generated': 0}
-            }
+            if self.components['cicd']:
+                return self.components['cicd'].setup_cicd(str(project_path))
+            else:
+                return {'status': 'skipped', 'reason': 'CICD non disponible'}
         except Exception as e:
             return {'status': 'failed', 'error': str(e)}
 
     def _run_robotics_audit(self, project_path: Path) -> Dict[str, Any]:
         """Exécuter l'audit robotique"""
         try:
+            if not ROBOTICS_AVAILABLE:
+                return {'status': 'skipped', 'reason': 'Modules robotiques non disponibles'}
+
+            # Audit Reachy
+            reachy_auditor = ReachyAuditor(str(project_path))
+            reachy_result = reachy_auditor.audit_reachy_project()
+
+            # Validation ROS2
+            ros2_validator = ROS2Validator(str(project_path))
+            ros2_result = ros2_validator.validate_ros2_project()
+
             return {
                 'status': 'completed',
-                'passed': True,
-                'result': {'reachy': {'score': 80, 'compatible': True}, 'robotics_score': 80}
+                'reachy_audit': reachy_result,
+                'ros2_validation': ros2_result
             }
+
         except Exception as e:
             return {'status': 'failed', 'error': str(e)}
 
@@ -459,12 +396,12 @@ class UnifiedOrchestrator:
         # Prédictions basées sur l'analyse du projet
         predictions.append(IntelligentInsight(
             insight_type='prediction',
-            title='Croissance du projet',
-            description='Le projet devrait croître de 25% dans les 3 prochains mois',
+            title='Analyse de complexité',
+            description='Le projet semble avoir une complexité modérée',
             confidence=0.85,
             priority='medium',
-            suggested_action='Préparer l\'infrastructure pour la croissance',
-            estimated_impact='Amélioration de 15% des performances'
+            suggested_action='Considérer la modularisation',
+            estimated_impact='Réduction de 20% de la complexité'
         ))
 
         return predictions
@@ -472,8 +409,6 @@ class UnifiedOrchestrator:
     def _generate_optimizations(self, project_path: Path) -> List[IntelligentInsight]:
         """Générer des optimisations intelligentes"""
         optimizations = []
-
-        # Optimisations basées sur l'analyse
         optimizations.append(IntelligentInsight(
             insight_type='optimization',
             title='Optimisation des imports',
@@ -489,30 +424,24 @@ class UnifiedOrchestrator:
     def _learn_from_results(self, results: Dict[str, Any]) -> Dict[str, Any]:
         """Apprendre des résultats pour améliorer les futures exécutions"""
         learning_data = {
-            'timestamp': datetime.now().isoformat(),
             'execution_time': time.time(),
             'success_rate': 0.0,
             'improvements': [],
-            'lessons_learned': [],
-            'project_insights': [],
-            'performance_metrics': {},
-            'recommendations': []
+            'lessons_learned': []
         }
 
         # Calculer le taux de succès
-        steps = results.get('steps', {})
-        successful_steps = sum(1 for step in steps.values()
+        successful_steps = sum(1 for step in results['steps'].values()
                              if step.get('status') == 'completed')
-        total_steps = len(steps)
+        total_steps = len(results['steps'])
         learning_data['success_rate'] = successful_steps / total_steps if total_steps > 0 else 0.0
 
         return learning_data
 
     def _generate_unified_report(self, results: Dict[str, Any]) -> str:
         """Générer un rapport unifié"""
-        project_name = results.get('project_name', 'Unknown Project')
         report = f"""
-# RAPPORT D'ORCHESTRATION UNIFIÉE - {project_name}
+# Rapport d'Orchestration Unifiée - {results['project_name']}
 
 ## Résumé
 - **Statut**: {results.get('status', 'unknown')}
@@ -524,10 +453,6 @@ class UnifiedOrchestrator:
         for step_name, step_result in results.get('steps', {}).items():
             status = step_result.get('status', 'unknown')
             report += f"- **{step_name}**: {status}\n"
-
-        report += "\n## INDUSTRIALISATION\n"
-        report += "- **Statut**: En cours\n"
-        report += "- **Étapes**: Configuration, Audit, Optimisation\n"
 
         if results.get('predictions'):
             report += "\n## Prédictions\n"
@@ -590,15 +515,9 @@ class UnifiedOrchestrator:
     def get_phase2_backup_stats(self) -> Dict[str, Any]:
         """Obtenir les statistiques de sauvegarde Phase 2"""
         try:
-            return {
-                'status': 'success',
-                'stats': {
-                    'total': 5,
-                    'total_backups': 5,
-                    'last_backup': '2025-07-27T16:00:00',
-                    'total_size': 1024000
-                }
-            }
+            backup_system = get_backup_system()
+            return backup_system.get_backup_stats()
+
         except Exception as e:
             return {'status': 'failed', 'error': str(e)}
 
@@ -609,13 +528,10 @@ class UnifiedOrchestrator:
             required_fields = ['project_path']
 
         missing_fields = [field for field in required_fields if field not in inputs]
-        is_valid = len(missing_fields) == 0
-        
-        return {
-            'status': 'success' if is_valid else 'error',
-            'valid': is_valid,
-            'missing_fields': missing_fields
-        }
+        if missing_fields:
+            return {'valid': False, 'missing_fields': missing_fields}
+
+        return {'valid': True}
 
     def run_phase2_backup(self, backup_type: str = "daily") -> Dict[str, Any]:
         """Exécuter la sauvegarde Phase 2"""
@@ -671,8 +587,6 @@ class UnifiedOrchestrator:
 
             return {
                 'status': 'success',
-                'phase2_backup': backup_result,
-                'phase2_backup_stats': {'total': 5},
                 'backup': backup_result,
                 'orchestration': orchestration_result
             }
@@ -719,16 +633,11 @@ def orchestrator_auto_backup():
 
 def main():
     """Fonction principale"""
-    if len(sys.argv) > 1 and sys.argv[1] == "cli":
+    if len(sys.argv) > 1:
         cli_entry()
     else:
-        # Mode interactif - éviter l'input dans les tests
-        try:
-            project_path = input("Chemin du projet: ")
-        except (EOFError, OSError):
-            # En mode test, utiliser un chemin par défaut
-            project_path = "test_project"
-        
+        # Mode interactif
+        project_path = input("Chemin du projet: ")
         orchestrator = UnifiedOrchestrator()
         result = orchestrator.orchestrate_project_complete(project_path)
         print(json.dumps(result, indent=2))

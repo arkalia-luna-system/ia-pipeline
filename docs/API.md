@@ -2600,6 +2600,18 @@ Test de la structure du projet
 
 ---
 
+### debug_correction
+
+Script de débogage pour le système de correction
+
+#### Fonctions
+
+##### test_correction
+
+Test simple de correction
+
+---
+
 ### test_auto_cicd_unit
 
 #### Classes
@@ -2990,6 +3002,69 @@ Test qu'il n'y a pas de répertoires vides
 ##### raise_for_status
 
 ##### json
+
+---
+
+### test_ci_ultra_fast
+
+Tests CI ultra-rapides pour Athalia
+Tests essentiels qui ne doivent jamais bloquer le CI
+
+#### Classes
+
+##### TestCIUltraFast
+
+Tests CI ultra-rapides et essentiels
+
+**Méthodes :**
+
+- `test_project_structure()`
+- `test_essential_files()`
+- `test_python_syntax_basic()`
+- `test_imports_basic()`
+- `test_config_validity()`
+- `test_requirements_format()`
+- `test_ci_workflow_exists()`
+- `test_no_critical_errors()`
+- `test_project_ready()`
+
+#### Fonctions
+
+##### test_project_structure
+
+Test que la structure de base du projet existe
+
+##### test_essential_files
+
+Test que les fichiers essentiels existent
+
+##### test_python_syntax_basic
+
+Test de syntaxe Python basique sur les fichiers principaux
+
+##### test_imports_basic
+
+Test d'imports basiques
+
+##### test_config_validity
+
+Test de validité basique de la configuration
+
+##### test_requirements_format
+
+Test de format basique des requirements
+
+##### test_ci_workflow_exists
+
+Test que le workflow CI existe
+
+##### test_no_critical_errors
+
+Test qu'il n'y a pas d'erreurs critiques
+
+##### test_project_ready
+
+Test que le projet est prêt pour le développement
 
 ---
 
@@ -4222,18 +4297,6 @@ Fonction principale
 
 ---
 
-### debug_correction
-
-Script de débogage pour le système de correction
-
-#### Fonctions
-
-##### test_correction
-
-Test simple de correction
-
----
-
 ### test_ai_robust
 
 #### Classes
@@ -4822,69 +4885,6 @@ Teste la gestion d'erreurs
 ##### test_assertion_functionality
 
 Teste la fonctionnalité d'assertion
-
----
-
-### test_ci_ultra_fast
-
-Tests CI ultra-rapides pour Athalia
-Tests essentiels qui ne doivent jamais bloquer le CI
-
-#### Classes
-
-##### TestCIUltraFast
-
-Tests CI ultra-rapides et essentiels
-
-**Méthodes :**
-
-- `test_project_structure()`
-- `test_essential_files()`
-- `test_python_syntax_basic()`
-- `test_imports_basic()`
-- `test_config_validity()`
-- `test_requirements_format()`
-- `test_ci_workflow_exists()`
-- `test_no_critical_errors()`
-- `test_project_ready()`
-
-#### Fonctions
-
-##### test_project_structure
-
-Test que la structure de base du projet existe
-
-##### test_essential_files
-
-Test que les fichiers essentiels existent
-
-##### test_python_syntax_basic
-
-Test de syntaxe Python basique sur les fichiers principaux
-
-##### test_imports_basic
-
-Test d'imports basiques
-
-##### test_config_validity
-
-Test de validité basique de la configuration
-
-##### test_requirements_format
-
-Test de format basique des requirements
-
-##### test_ci_workflow_exists
-
-Test que le workflow CI existe
-
-##### test_no_critical_errors
-
-Test qu'il n'y a pas d'erreurs critiques
-
-##### test_project_ready
-
-Test que le projet est prêt pour le développement
 
 ---
 
@@ -883198,6 +883198,22 @@ Convertit la configuration en f
 
 ---
 
+### security
+
+Module sécurité, audit, scan de secrets, prompts sécurité.
+
+#### Fonctions
+
+##### security_audit_project
+
+Audit de sécurité d'un projet
+
+**Paramètres :**
+
+- `project_path`
+
+---
+
 ### auto_cicd
 
 #### Classes
@@ -883293,6 +883309,20 @@ Génère la configuration de déploiement
 
 ---
 
+### plugins_validator
+
+#### Fonctions
+
+##### validate_plugin
+
+Valide un plugin Python : héritage, méthode run / execute, docstring.
+
+**Paramètres :**
+
+- `path`
+
+---
+
 ### autocomplete_engine
 
 #### Classes
@@ -883368,6 +883398,117 @@ Retourne une liste de suggestions d'autocomplétion pour un prompt donné.
 
 ---
 
+### project_importer
+
+#### Classes
+
+##### ProjectImporter
+
+**Méthodes :**
+
+- `__init__()`
+- `import_project()`
+- `_scan_structure()`
+- `_detect_project_type()`
+- `_analyze_code_quality()`
+- `_generate_correction_blueprint()`
+- `_suggest_modules()`
+- `_suggest_structure()`
+- `_suggest_dependencies()`
+- `_suggest_prompts()`
+- `_suggest_enhancements()`
+
+#### Fonctions
+
+##### __init__
+
+##### import_project
+
+Importe et analyse un projet existant.
+
+**Paramètres :**
+
+- `project_path`
+
+##### _scan_structure
+
+Analyse la structure du projet.
+
+**Paramètres :**
+
+- `project_path`
+
+##### _detect_project_type
+
+Détecte automatiquement le type de projet.
+
+**Paramètres :**
+
+- `project_path`
+- `structure`
+
+##### _analyze_code_quality
+
+Analyse la qualité du code.
+
+**Paramètres :**
+
+- `project_path`
+
+##### _generate_correction_blueprint
+
+Génère un blueprint de correction pour le projet.
+
+**Paramètres :**
+
+- `project_path`
+- `structure`
+- `project_type`
+- `quality_analysis`
+
+##### _suggest_modules
+
+Suggère des modules selon le type de projet.
+
+**Paramètres :**
+
+- `project_type`
+
+##### _suggest_structure
+
+Gère une structure améliorée.
+
+**Paramètres :**
+
+- `structure`
+
+##### _suggest_dependencies
+
+Suggère des dépendances selon le type de projet.
+
+**Paramètres :**
+
+- `project_type`
+
+##### _suggest_prompts
+
+Suggère des prompts selon le type de projet.
+
+**Paramètres :**
+
+- `project_type`
+
+##### _suggest_enhancements
+
+Suggère des améliorations spécifiques.
+
+**Paramètres :**
+
+- `project_type`
+- `quality_analysis`
+
+---
+
 ### autocomplete_server
 
 #### Classes
@@ -883385,6 +883526,68 @@ Retourne une liste de suggestions d'autocomplétion pour un prompt donné.
 **Paramètres :**
 
 - `request`
+
+---
+
+### security_auditor
+
+#### Classes
+
+##### SecurityAuditor
+
+Auditeur de sécurité pour Athalia
+
+**Méthodes :**
+
+- `__init__()`
+- `run()`
+- `_check_dependencies()`
+- `_check_code_vulnerabilities()`
+- `_check_secrets()`
+- `_check_permissions()`
+- `_check_encryption()`
+- `_calculate_score()`
+- `print_report()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `project_path`
+
+##### run
+
+Lance l'audit de sécurité
+
+##### _check_dependencies
+
+Vérification des dépendances
+
+##### _check_code_vulnerabilities
+
+Vérification des vulnérabilités dans le code
+
+##### _check_secrets
+
+Vérification des secrets
+
+##### _check_permissions
+
+Vérification des permissions des fichiers
+
+##### _check_encryption
+
+Vérification de l'utilisation du chiffrement
+
+##### _calculate_score
+
+Calcul du score de sécurité
+
+##### print_report
+
+Affichage du rapport de sécurité
 
 ---
 
@@ -884327,131 +884530,6 @@ Obtenir des insights de performance
 
 ---
 
-### plugins_validator
-
-#### Fonctions
-
-##### validate_plugin
-
-Valide un plugin Python : héritage, méthode run / execute, docstring.
-
-**Paramètres :**
-
-- `path`
-
----
-
-### project_importer
-
-#### Classes
-
-##### ProjectImporter
-
-**Méthodes :**
-
-- `__init__()`
-- `import_project()`
-- `_scan_structure()`
-- `_detect_project_type()`
-- `_analyze_code_quality()`
-- `_generate_correction_blueprint()`
-- `_suggest_modules()`
-- `_suggest_structure()`
-- `_suggest_dependencies()`
-- `_suggest_prompts()`
-- `_suggest_enhancements()`
-
-#### Fonctions
-
-##### __init__
-
-##### import_project
-
-Importe et analyse un projet existant.
-
-**Paramètres :**
-
-- `project_path`
-
-##### _scan_structure
-
-Analyse la structure du projet.
-
-**Paramètres :**
-
-- `project_path`
-
-##### _detect_project_type
-
-Détecte automatiquement le type de projet.
-
-**Paramètres :**
-
-- `project_path`
-- `structure`
-
-##### _analyze_code_quality
-
-Analyse la qualité du code.
-
-**Paramètres :**
-
-- `project_path`
-
-##### _generate_correction_blueprint
-
-Génère un blueprint de correction pour le projet.
-
-**Paramètres :**
-
-- `project_path`
-- `structure`
-- `project_type`
-- `quality_analysis`
-
-##### _suggest_modules
-
-Suggère des modules selon le type de projet.
-
-**Paramètres :**
-
-- `project_type`
-
-##### _suggest_structure
-
-Gère une structure améliorée.
-
-**Paramètres :**
-
-- `structure`
-
-##### _suggest_dependencies
-
-Suggère des dépendances selon le type de projet.
-
-**Paramètres :**
-
-- `project_type`
-
-##### _suggest_prompts
-
-Suggère des prompts selon le type de projet.
-
-**Paramètres :**
-
-- `project_type`
-
-##### _suggest_enhancements
-
-Suggère des améliorations spécifiques.
-
-**Paramètres :**
-
-- `project_type`
-- `quality_analysis`
-
----
-
 ### ready_check
 
 #### Fonctions
@@ -884468,84 +884546,6 @@ Suggère des améliorations spécifiques.
 **Paramètres :**
 
 - `project_path`
-
----
-
-### security
-
-Module sécurité, audit, scan de secrets, prompts sécurité.
-
-#### Fonctions
-
-##### security_audit_project
-
-Audit de sécurité d'un projet
-
-**Paramètres :**
-
-- `project_path`
-
----
-
-### security_auditor
-
-#### Classes
-
-##### SecurityAuditor
-
-Auditeur de sécurité pour Athalia
-
-**Méthodes :**
-
-- `__init__()`
-- `run()`
-- `_check_dependencies()`
-- `_check_code_vulnerabilities()`
-- `_check_secrets()`
-- `_check_permissions()`
-- `_check_encryption()`
-- `_calculate_score()`
-- `print_report()`
-
-#### Fonctions
-
-##### __init__
-
-**Paramètres :**
-
-- `project_path`
-
-##### run
-
-Lance l'audit de sécurité
-
-##### _check_dependencies
-
-Vérification des dépendances
-
-##### _check_code_vulnerabilities
-
-Vérification des vulnérabilités dans le code
-
-##### _check_secrets
-
-Vérification des secrets
-
-##### _check_permissions
-
-Vérification des permissions des fichiers
-
-##### _check_encryption
-
-Vérification de l'utilisation du chiffrement
-
-##### _calculate_score
-
-Calcul du score de sécurité
-
-##### print_report
-
-Affichage du rapport de sécurité
 
 ---
 

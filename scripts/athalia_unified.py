@@ -153,6 +153,7 @@ MODULES INTÉGRÉS:
                     "utilisation de la version simplifiée"
                 )
                 # Version simplifiée pour les tests
+
                 class AthaliaOrchestrator:
 
                     def industrialize_project(self, project_path, config=None):
