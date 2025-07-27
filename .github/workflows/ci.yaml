@@ -173,6 +173,14 @@ jobs:
           mkdir -p logs
           python scripts/validation_objective.py || echo "Validation objective failed but continuing..."
 
+      - name: Create validation placeholders for development
+        if: github.actor == 'athalia'
+        run: |
+          mkdir -p logs
+          echo "Validation express - Mode développement" > logs/validation_express_dev.txt
+          echo "# Rapport validation objective - Mode développement" > logs/rapport_validation_objective_dev.md
+          echo "Ce fichier est généré automatiquement en mode développement pour éviter les avertissements d'artefacts manquants." >> logs/rapport_validation_objective_dev.md
+
       - name: List generated files
         run: |
           echo "Files in workspace:"
