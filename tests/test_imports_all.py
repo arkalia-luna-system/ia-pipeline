@@ -201,7 +201,7 @@ class TestImportsAll:
             try:
                 __import__(module)
             except ImportError as e:
-                pytest.skip(f"Import bibliothèque tierce échoué {module}: {e}")
+                pytest.fail(f"Import bibliothèque tierce échoué {module}: {e}")
 
 
 if __name__ == "__main__":

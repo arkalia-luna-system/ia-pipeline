@@ -359,7 +359,7 @@ for context in contexts:
 ## 📚 **Documentation Associée**
 
 - **[REFERENCE.md](REFERENCE.md)** - Référence technique des prompts
-- **[BEST_PRACTICES.md](BEST_PRACTICES.md)** - Bonnes pratiques
+- **[BEST_PRACTICES.md](GUIDES/BEST_PRACTICES.md)** - Bonnes pratiques
 - **[EXAMPLES/](EXAMPLES/)** - Exemples par catégorie
 
 ---

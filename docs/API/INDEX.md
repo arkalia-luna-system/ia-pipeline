@@ -9,9 +9,9 @@ Cette documentation API a été divisée en sections logiques pour améliorer la
 
 ## 📁 Sections disponibles
 
-- [Orchestrateur unifié et pipeline](orchestrator.md)
-- [Système de plugins](plugins.md)
-- [Système de templates](templates.md)
+- [Orchestrateur unifié et pipeline](API/orchestrator.md)
+- [Système de plugins](API/plugins.md)
+- [Système de templates](API/templates.md)
 
 ## 🔗 Navigation
 

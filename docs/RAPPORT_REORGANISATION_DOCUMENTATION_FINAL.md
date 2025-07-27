@@ -159,7 +159,7 @@ docs/
 3. [Résultats d'audit](REPORTS/audit_results.md)
 
 ### **🤖 Pour robotics**
-1. [Guide robotics](ROBOTICS/README.md)
+1. [Guide robotics](README.md)
 2. [Configuration Reachy](ROBOTICS/reachy_setup.md)
 3. [Intégration ROS2](ROBOTICS/integration.md)
 

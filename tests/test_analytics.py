@@ -102,8 +102,11 @@ def test_another():
             result = analyze_project(str(self.project_dir))
             assert isinstance(result, dict)
             
-            # Vérifier la structure de base
-            assert 'total_files' in result or 'python_files' in result or 'test_files' in result
+            # Vérifier la nouvelle structure de base
+            assert 'project_name' in result
+            assert 'structure' in result
+            assert 'score' in result
+            assert 'metrics' in result
         except Exception as e:
             # Test échoue si la fonction ne fonctionne pas
             assert False, f"analyze_project non fonctionnel: {e}"
@@ -111,13 +114,11 @@ def test_another():
     def test_generate_heatmap_data(self):
         """Test de génération de données pour heatmap"""
         try:
-            # D'abord analyser le projet
-            project_data = analyze_project(str(self.project_dir))
-            # Ajouter la clé 'name' requise
-            project_data['name'] = 'test_project'
-            # Puis générer les données heatmap
-            heatmap_data = generate_heatmap_data([project_data])
-            assert isinstance(heatmap_data, dict) or isinstance(heatmap_data, list)
+            # Générer les données heatmap directement
+            heatmap_data = generate_heatmap_data(str(self.project_dir))
+            assert isinstance(heatmap_data, dict)
+            assert 'heatmap_data' in heatmap_data
+            assert 'total_files' in heatmap_data
         except Exception as e:
             # Test échoue si la fonction ne fonctionne pas
             assert False, f"generate_heatmap_data non fonctionnel: {e}"
@@ -125,16 +126,14 @@ def test_another():
     def test_generate_technical_debt_analysis(self):
         """Test d'analyse de dette technique"""
         try:
-            # D'abord analyser le projet
-            project_data = analyze_project(str(self.project_dir))
-            # Ajouter la clé 'name' requise
-            project_data['name'] = 'test_project'
-            # Puis générer l'analyse de dette technique
-            debt_analysis = generate_technical_debt_analysis([project_data])
+            # Générer l'analyse de dette technique directement
+            debt_analysis = generate_technical_debt_analysis(str(self.project_dir))
             assert isinstance(debt_analysis, dict)
             
-            # Vérifier la structure de base
-            assert 'average_score' in debt_analysis or 'common_issues' in debt_analysis or 'score_distribution' in debt_analysis
+            # Vérifier la nouvelle structure de base
+            assert 'technical_debt_score' in debt_analysis
+            assert 'debt_indicators' in debt_analysis
+            assert 'recommendations' in debt_analysis
         except Exception as e:
             # Test échoue si la fonction ne fonctionne pas
             assert False, f"generate_technical_debt_analysis non fonctionnel: {e}"
@@ -142,12 +141,8 @@ def test_another():
     def test_generate_analytics_html(self):
         """Test de génération de rapport HTML"""
         try:
-            # D'abord analyser le projet
-            project_data = analyze_project(str(self.project_dir))
-            # Ajouter la clé 'name' requise
-            project_data['name'] = 'test_project'
-            # Puis générer le HTML
-            html_report = generate_analytics_html([project_data])
+            # Générer le HTML directement
+            html_report = generate_analytics_html(str(self.project_dir))
             assert isinstance(html_report, str)
             assert len(html_report) > 0
             assert '<html' in html_report.lower() or '<!DOCTYPE' in html_report
@@ -202,11 +197,9 @@ def test_analytics_integration():
             # Analyser le projet
             analysis = analyze_project(str(project_dir))
             assert isinstance(analysis, dict)
-            
-            # Ajouter la clé 'name' requise
-            analysis['name'] = 'test_project'
-            # Générer un rapport HTML
-            html = generate_analytics_html([analysis])
+
+            # Générer un rapport HTML directement
+            html = generate_analytics_html(str(project_dir))
             assert isinstance(html, str)
             assert len(html) > 0
         except Exception as e:
