@@ -203,16 +203,51 @@ class UnifiedOrchestrator:
             data_dir = self.root_path / "data"
             data_dir.mkdir(exist_ok=True)
 
-            # Fichier de base de données simple
-            self.db_file = data_dir / "orchestrator_db.json"
-            if not self.db_file.exists():
-                with open(self.db_file, 'w') as f:
-                    json.dump({
-                        'tasks': [],
-                        'insights': [],
-                        'industrialization_steps': [],
-                        'created_at': datetime.now().isoformat()
-                    }, f, indent=2)
+            # Base de données SQLite
+            import sqlite3
+            with sqlite3.connect(self.db_path) as conn:
+                cursor = conn.cursor()
+                cursor.execute("""
+                    CREATE TABLE IF NOT EXISTS orchestration_tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        task_id TEXT UNIQUE,
+                        task_type TEXT,
+                        target_path TEXT,
+                        priority INTEGER,
+                        status TEXT,
+                        created_at TEXT,
+                        started_at TEXT,
+                        completed_at TEXT,
+                        result TEXT,
+                        error TEXT
+                    )
+                """)
+                cursor.execute("""
+                    CREATE TABLE IF NOT EXISTS intelligent_insights (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        insight_type TEXT,
+                        title TEXT,
+                        description TEXT,
+                        confidence REAL,
+                        priority TEXT,
+                        suggested_action TEXT,
+                        estimated_impact TEXT,
+                        code_location TEXT,
+                        created_at TEXT
+                    )
+                """)
+                cursor.execute("""
+                    CREATE TABLE IF NOT EXISTS industrialization_steps (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        name TEXT,
+                        status TEXT,
+                        result TEXT,
+                        duration REAL,
+                        error TEXT,
+                        created_at TEXT
+                    )
+                """)
+                conn.commit()
 
         except Exception as e:
             self.logger.error(f"Erreur initialisation DB: {e}")
