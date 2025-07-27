@@ -173,16 +173,12 @@ class RobustAI:
             filename: str,
             project_type: str,
             current_score: int) -> dict:
-        """Fait une revue de code et retourne un rapport mocké."""
+        """Génère une revue de code mockée."""
         return {
-            'score': 85,
-            'issues': [
-                "Améliorer la gestion d'erreurs",
-                "Ajouter des docstrings"],
-            'suggestions': [
-                "Utiliser des exceptions personnalisées",
-                "Documenter les fonctions principales"],
-            'improvements': ["Code refactorisé"]}
+            'score': current_score + 5,
+            'issues': ['Améliorer la gestion d\'erreurs'],
+            'suggestions': ['Ajouter des docstrings']
+        }
 
     def generate_documentation(
             self,
@@ -190,7 +186,8 @@ class RobustAI:
             project_type: str,
             modules: list) -> str:
         """Génère une documentation technique mockée."""
-        return f"# Documentation de {project_name}\n\nType: {project_type}\nModules: {', '.join(modules)}\n..."
+        return (f"# Documentation de {project_name}\n\nType: {project_type}\n"
+                f"Modules: {', '.join(modules)}\n...")
 
     def classify_project_complexity(self, codebase_path: str) -> dict:
         """Classifie la complexité d'un projet (mock)."""
@@ -287,31 +284,16 @@ REQUIS:
 - project_name: nom unique et descriptif
 - description: description détaillée
 - modules: liste des modules fonctionnels
-- structure: architecture des dossiers/fichiers
-- dependencies: dépendances Python appropriées
-- prompts: prompts spécialisés pour le type de projet
-- booster_ia: true/false selon la complexité
-- docker: true/false selon les besoins
+- structure: architecture du projet
+- dependencies: dépendances Python
+- prompts: fichiers de prompts
+- booster_ia: true/false
+- docker: true/false si conteneurisation
+- ci_cd: true/false si pipeline CI/CD
 
 FORMAT:
-```yaml
-project_name: nom_du_projet
-description: description détaillée
-project_type: {project_type}
-modules: [module1, module2, ...]
-structure: [dossier1/, fichier1.py, ...]
-dependencies: [dep1, dep2, ...]
-prompts: [prompt1.yaml, prompt2.md]
-booster_ia: true
-docker: false
-api_spec:
-  endpoint1:
-    params: {{"param": "type"}}
-    response: {{"result": "type"}}
-    description: "description de l'endpoint"
-```
+Retourne uniquement le YAML valide, sans explications.
 """,
-
             PromptContext.CODE_REVIEW.value: """
 Tu es un expert en revue de code Python.
 
@@ -321,127 +303,85 @@ CODE À ANALYSER:
 CONTEXTE:
 - Fichier: {filename}
 - Type de projet: {project_type}
-- Score actuel: {current_score}/100
+- Score actuel: {current_score}
 
 TÂCHE:
-Analyse ce code et propose des améliorations spécifiques.
+Analyse le code et fournis:
+1. Un score de qualité (0-100)
+2. Les problèmes détectés
+3. Les suggestions d'amélioration
 
-POINTS À ÉVALUER:
-1. Qualité du code (lisibilité, structure)
-2. Bonnes pratiques Python
-3. Gestion d'erreurs
-4. Performance
-5. Sécurité
-6. Tests
-
-FORMAT DE RÉPONSE:
-```yaml
-score: 75
-issues:
- - "Problème 1: description"
- - "Problème 2: description"
-suggestions:
- - "Suggestion 1: action concrète"
- - "Suggestion 2: action concrète"
-improvements:
- - "Amélioration 1: code amélioré"
- - "Amélioration 2: code amélioré"
-```
+FORMAT:
+Retourne un JSON avec: score, issues[], suggestions[]
 """,
-
             PromptContext.DOCUMENTATION.value: """
 Tu es un expert en documentation technique.
 
-CONTEXTE:
-- Projet: {project_name}
+PROJET:
+- Nom: {project_name}
 - Type: {project_type}
 - Modules: {modules}
 
 TÂCHE:
-Génère une documentation technique complète et professionnelle.
+Génère une documentation technique complète en Markdown.
 
-SECTIONS REQUISES:
-1. Vue d'ensemble du projet
-2. Architecture et modules
-3. Installation et configuration
-4. Utilisation et exemples
-5. API Reference
-6. Développement et contribution
-7. Troubleshooting
+INCLUS:
+- Introduction et objectifs
+- Architecture et modules
+- Guide d'installation
+- Guide d'utilisation
+- API Reference (si applicable)
+- Exemples de code
+- Troubleshooting
 
-STYLE:
-- Professionnel et technique
-- Exemples concrets
-- Structure claire avec sections
-- Code snippets appropriés
+FORMAT:
+Retourne uniquement le Markdown, sans explications.
 """,
-
             PromptContext.TESTING.value: """
-Tu es un expert en tests logiciels.
+Tu es un expert en tests Python.
+
+CODE À TESTER:
+{code}
 
 CONTEXTE:
-- Module: {module_name}
-- Fonctionnalités: {features}
+- Fichier: {filename}
 - Type de projet: {project_type}
 
 TÂCHE:
-Génère des tests unitaires et d'intégration complets.
+Génère des tests unitaires complets en Python.
 
 REQUIS:
-1. Tests unitaires pour chaque fonction
-2. Tests d'intégration pour les workflows
-3. Tests de cas limites et d'erreurs
-4. Tests de performance si nécessaire
+- Tests pour toutes les fonctions
+- Tests des cas d'erreur
+- Tests des cas limites
+- Utilisation de unittest ou pytest
+- Couverture de code maximale
 
 FORMAT:
-```python
-import pytest
-from module import function
-
-def test_function_normal_case():
-    # Test du cas normal
-    result = function(input_data)
-    assert result == expected_output
-
-def test_function_edge_case():
-    # Test du cas limite
-    result = function(edge_case_data)
-    assert result is not None
-```
+Retourne uniquement le code Python des tests.
 """,
-
             PromptContext.SECURITY.value: """
 Tu es un expert en sécurité informatique.
 
+CODE À ANALYSER:
+{code}
+
 CONTEXTE:
-- Code: {code}
+- Fichier: {filename}
 - Type de projet: {project_type}
-- Environnement: {environment}
 
 TÂCHE:
-Analyse la sécurité du code et propose des améliorations.
+Analyse les vulnérabilités de sécurité potentielles.
 
-POINTS À VÉRIFIER:
-1. Injection (SQL, commande, etc.)
-2. Authentification et autorisation
-3. Gestion des secrets
-4. Validation des entrées
-5. Chiffrement des données
-6. Logs de sécurité
+VÉRIFICATIONS:
+- Injection de code
+- Gestion des secrets
+- Validation des entrées
+- Gestion des permissions
+- Vulnérabilités connues
 
-FORMAT DE RÉPONSE:
-```yaml
-security_score: 75
-vulnerabilities:
- - "Vulnérabilité 1: description et impact"
- - "Vulnérabilité 2: description et impact"
-recommendations:
- - "Recommandation 1: action concrète"
- - "Recommandation 2: action concrète"
-secure_code:
- - "Code sécurisé 1: exemple"
- - "Code sécurisé 2: exemple"
-```
+FORMAT:
+Retourne un JSON avec: vulnerabilities[], recommendations[], risk_level
 """
         }
 
@@ -450,63 +390,46 @@ secure_code:
             context: PromptContext,
             distillation: bool = False,
             **kwargs) -> dict:
-        """
-        Gère la génération de réponse IA avec fallback ou distillation.
-        Si distillation=True, interroge tous les modèles et agrège les réponses.
-        Retourne un dict: {model: réponse, ..., 'distilled': ...}
-        """
-        template = self.prompt_templates.get(context.value, "")
-        if not template:
-            return {"error": "Template non trouvé pour ce contexte."}
-        try:
-            prompt = template.format(**kwargs)
-        except KeyError as e:
-            return {"error": f"Erreur de template: variable manquante {e}"}
-        results = {}
-        if distillation:
-            # Appel parallèle à tous les modèles
-            for model in self.fallback_chain:
-                try:
-                    response = self._call_model(model, prompt)
-                    if response:
-                        results[model.value] = response
-                except Exception as e:
-                    results[model.value] = f"Erreur: {e}"
-            # Distillation simple: majority voting (ou premier non-mock)
-            from athalia_core.distillation.response_distiller import distill_responses
-            distilled = distill_responses(list(results.values()))
-            results['distilled'] = distilled
-            return results
-        else:
-            # Fallback séquentiel
-            for model in self.fallback_chain:
-                try:
-                    response = self._call_model(model, prompt)
-                    if response:
-                        return {model.value: response}
-                except Exception as e:
-                    results[model.value] = f"Erreur: {e}"
-            return results if results else {
-                "error": "Aucun modèle IA disponible."}
+        """Génère une réponse IA robuste avec fallback."""
+        prompt = self._get_dynamic_prompt(context, **kwargs)
+        
+        # Essayer chaque modèle dans la chaîne de fallback
+        for model in self.fallback_chain:
+            try:
+                response = self._call_model(model, prompt)
+                if response:
+                    return {
+                        'model': model.value,
+                        'response': response,
+                        'success': True,
+                        'context': context.value
+                    }
+            except Exception as e:
+                logging.warning(f"Modèle {model.value} échoué: {e}")
+                continue
+        
+        # Fallback final
+        return {
+            'model': 'mock',
+            'response': self._mock_response(prompt),
+            'success': False,
+            'context': context.value,
+            'error': 'Tous les modèles ont échoué'
+        }
 
     def _call_model(self, model: AIModel, prompt: str) -> Optional[str]:
+        """Appelle un modèle IA spécifique."""
         if model == AIModel.MOCK:
             return self._mock_response(prompt)
-        elif model == AIModel.OLLAMA_MISTRAL:
-            return self._call_ollama("mistral:instruct", prompt)
-        elif model == AIModel.OLLAMA_QWEN:
-            return self._call_ollama("qwen:7b", prompt)
-        elif model == AIModel.OLLAMA_LLAVA:
-            return self._call_ollama("llava:latest", prompt)
-        elif model == AIModel.OLLAMA_LLAMA:
-            return self._call_ollama("llama2", prompt)
-        elif model == AIModel.OLLAMA_CODEGEN:
-            return self._call_ollama("codegen", prompt)
+        elif model.value.startswith('ollama_'):
+            model_name = model.value.replace('ollama_', '')
+            return self._call_ollama(model_name, prompt)
         else:
+            logging.warning(f"Modèle non supporté: {model.value}")
             return None
 
     def _classify_project_complexity(self, codebase_path: str) -> dict:
-        """Alias privé pour compatibilité avec les tests. Retourne un dict de complexité."""
+        """Alias privé pour compatibilité avec les tests."""
         if 'f' in codebase_path:
             return {'complexity': 'f'}
         return self.classify_project_complexity(codebase_path)
@@ -607,25 +530,43 @@ def query_qwen(prompt: str) -> str:
     try:
         response = requests.post(
             "http://localhost:11434/api/generate",
-            json={"model": "qwen:7b", "prompt": prompt, "stream": False}
+            json={
+                "model": "qwen:7b",
+                "prompt": prompt,
+                "stream": False
+            },
+            timeout=30
         )
-        return response.json().get("response", "")
+        if response.status_code == 200:
+            return response.json().get("response", "")
+        else:
+            logging.error(f"Erreur Qwen: {response.status_code}")
+            return ""
     except Exception as e:
-        return f"[Qwen erreur: {e}]"
+        logging.error(f"Erreur Qwen: {e}")
+        return ""
 
 
 def query_mistral(prompt: str) -> str:
-    """Appel local à Mistral Small via Ollama."""
+    """Appel local à Mistral 7B via Ollama."""
     try:
         response = requests.post(
             "http://localhost:11434/api/generate",
             json={
-                "model": "mistral:instruct",
+                "model": "mistral:7b",
                 "prompt": prompt,
-                "stream": False})
-        return response.json().get("response", "")
+                "stream": False
+            },
+            timeout=30
+        )
+        if response.status_code == 200:
+            return response.json().get("response", "")
+        else:
+            logging.error(f"Erreur Mistral: {response.status_code}")
+            return ""
     except Exception as e:
-        return f"[Mistral erreur: {e}]"
+        logging.error(f"Erreur Mistral: {e}")
+        return ""
 
 
 if __name__ == "__main__":

@@ -131,23 +131,23 @@ def detect_prompt_semantic(filepath):
         content = ''
     prompt_list = '\n'.join([f"- {p['name']} ({p['file']})" for p in PROMPTS])
     system_prompt = (
-        "Tu es un assistant expert en analyse de contexte de code. "
-        "Voici la liste des prompts disponibles :\n"
-        + prompt_list
-        + "\nLis le contenu suivant et indique le nom du prompt le plus pertinent pour améliorer ou analyser. "
-        "Réponds uniquement par le nom exact du prompt.")
+    "Tu es un assistant expert en analyse de contexte de code. "
+    "Voici la liste des prompts disponibles :\n" +
+    prompt_list +
+    "\nLis le contenu suivant et indique le nom du prompt le plus pertinent pour améliorer ou analyser. "
+    "Réponds uniquement par le nom exact du prompt.")
     # Appel Ollama / Mistral
     try:
-        ollama_cmd = [
+        ollama_cmd=[
             'ollama', 'run', 'mistral',
             f"[INST] {system_prompt} \n\nContenu :\n{content}\n[/INST]"
         ]
-        result = subprocess.run(
+        result=subprocess.run(
             ollama_cmd,
             capture_output=True,
             text=True,
             timeout=20)
-        answer = result.stdout.strip().split('\n')[-1].strip()
+        answer=result.stdout.strip().split('\n')[-1].strip()
         for p in PROMPTS:
             if p['name'].lower() in answer.lower():
                 return p
@@ -162,7 +162,7 @@ def show_prompts(scored, semantic_prompt=None):
             f"\nPrompt IA recommandé par analyse sémantique : {semantic_prompt['name']} -> {semantic_prompt['file']}")
         if os.path.exists(semantic_prompt['file']):
             with open(semantic_prompt['file'], 'r', encoding='utf-8') as file_handle:
-                prompt_text = file_handle.read()
+                prompt_text=file_handle.read()
             logging.info(
                 "  --- Prompt principal ---\n"
                 + prompt_text
@@ -194,7 +194,7 @@ def show_prompts(scored, semantic_prompt=None):
             # Affiche le prompt principal
             if os.path.exists(prompt['file']):
                 with open(prompt['file'], 'r', encoding='utf-8') as file_handle:
-                    prompt_text = file_handle.read()
+                    prompt_text=file_handle.read()
                 logging.info("  --- Prompt principal ---\n"
                              + prompt_text + "\n" + "-" * 40)
                 try:
@@ -215,28 +215,28 @@ def main():
         logging.info(
             "Usage : ath_context_prompt.py <fichier1> [<fichier2> ...]")
         sys.exit(1)
-    filepaths = sys.argv[1:]
-    all_content = ''
+    filepaths=sys.argv[1:]
+    all_content=''
     for filepath in filepaths:
         if not os.path.exists(filepath):
             logging.info(f"Fichier introuvable : {filepath}")
             sys.exit(1)
         try:
             with open(filepath, 'r', encoding='utf-8', errors='ignore') as file_handle:
-                all_content += f"\n# Fichier : {os.path.basename(filepath)}\n" + \
+                all_content += f"\n# Fichier : {os.path.basename(filepath)}\n" +
                     file_handle.read()
         except Exception:
             continue
     # On crée un fichier temporaire pour l'analyse globale
     with tempfile.NamedTemporaryFile('w+', delete=False, suffix='.tmp') as tmp:
         tmp.write(all_content)
-        tmp_path = tmp.name
+        tmp_path=tmp.name
     # Essai analyse sémantique d'abord
-    semantic_prompt = detect_prompt_semantic(tmp_path)
+    semantic_prompt=detect_prompt_semantic(tmp_path)
     if semantic_prompt:
         show_prompts([], semantic_prompt)
     else:
-        scored = detect_prompts_scoring(tmp_path)
+        scored=detect_prompts_scoring(tmp_path)
         show_prompts(scored)
     os.remove(tmp_path)
 

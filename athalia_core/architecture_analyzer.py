@@ -351,7 +351,10 @@ class ArchitectureAnalyzer:
                 issue = PerformanceIssue(
                     type="low_performance",
                     location=module.path,
-                    description=f"Module {module_name} a un score de performance faible: {module.performance_score:.1f}",
+                    description=(
+                        f"Module {module_name} a un score de performance faible: "
+                        f"{module.performance_score:.1f}"
+                    ),
                     impact="medium",
                     suggestion="Refactoriser pour réduire la complexité et la taille")
                 issues.append(issue)
@@ -472,15 +475,17 @@ class ArchitectureAnalyzer:
 
             # Modules problématiques
             cursor.execute(
-                "SELECT name, complexity, performance_score FROM modules WHERE complexity > 10 OR performance_score < 50")
+                "SELECT name, complexity, performance_score FROM modules "
+                "WHERE complexity > 10 OR performance_score < 50")
             problematic_modules = cursor.fetchall()
 
         return {"total_modules": total_modules,
                 "average_complexity": avg_complexity,
                 "average_performance": avg_performance,
                 "problematic_modules": problematic_modules,
-                "optimization_score": max(0,
-                                          100 - (avg_complexity * 2 + (100 - avg_performance) * 0.5))}
+                "optimization_score": max(
+                    0, 100 - (avg_complexity * 2 + (100 - avg_performance) * 0.5)
+                )}
 
     def generate_intelligent_coordination(self) -> Dict[str, Any]:
         """Générer des recommandations de coordination intelligente"""

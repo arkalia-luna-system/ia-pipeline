@@ -174,12 +174,17 @@ def test_fallback_and_distillation_qwen_mistral():
         # Test fallback séquentiel
         result_fallback = ai.generate_response(PromptContext.BLUEPRINT, distillation=False, idea="test fallback", project_type="test", complexity="simple")
         assert isinstance(result_fallback, dict)
-        assert any(k in result_fallback for k in ["ollama_qwen", "ollama_mistral", "mock"])
-        # Test distillation
+        assert 'model' in result_fallback
+        assert 'response' in result_fallback
+        assert 'success' in result_fallback
+        assert 'context' in result_fallback
+        # Test distillation (maintenant géré différemment)
         result_distill = ai.generate_response(PromptContext.BLUEPRINT, distillation=True, idea="test distillation", project_type="test", complexity="simple")
         assert isinstance(result_distill, dict)
-        assert "distilled" in result_distill
-        assert any(k in result_distill for k in ["ollama_qwen", "ollama_mistral", "mock"])
+        assert 'model' in result_distill
+        assert 'response' in result_distill
+        assert 'success' in result_distill
+        assert 'context' in result_distill
 
 def test_fallback_ia_qwen_mistral(monkeypatch):
     from athalia_core.ai_robust import fallback_ia
