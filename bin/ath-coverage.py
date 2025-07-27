@@ -4,6 +4,7 @@ import sys
 import argparse
 import os
 
+
 def main():
     parser = argparse.ArgumentParser(description="Vérifie la couverture de tests Athalia/Arkalia")
     parser.add_argument('--html', action='store_true', help='Générer un rapport HTML')
@@ -17,6 +18,7 @@ def main():
     env["ATHALIA_COVERAGE_RUNNING"] = "1"
     result = subprocess.run(cmd, check=False, env=env)
     sys.exit(result.returncode)
+
 
 if __name__ == "__main__":
     main() 

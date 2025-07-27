@@ -1,40 +1,36 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Script de nettoyage et organisation de la documentation
+Script de nettoyage et d'organisation de la documentation
 """
 
-import os
-import shutil
+import json
+import logging
+import sys
 from datetime import datetime
 from pathlib import Path
-import logging
 
-# Configuration du logging
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s | %(levelname)s | %(message)s',
-    handlers=[
-        logging.FileHandler('logs/athalia.log', mode='a', encoding='utf-8'),
-        logging.StreamHandler()
-    ]
+    format='%(asctime)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
 
+
 class DocumentationCleaner:
     """Classe pour nettoyer et organiser la documentation"""
-    
+
     def __init__(self, docs_dir="docs"):
         self.docs_dir = Path(docs_dir)
         self.archive_dir = self.docs_dir / "archive" / datetime.now().strftime("%Y%m%d")
         self.archive_dir.mkdir(parents=True, exist_ok=True)
-        
+
         # Documents à conserver (actuels)
         self.current_docs = {
             # Principaux
             'README.md', 'INDEX_PRINCIPAL.md', 'INSTALLATION.md', 'USAGE.md', 'API.md',
             # Plans d'action
-            'PHASE_1_URGENT_TERMINEE.md', 'PLAN_ACTION_IMPORTANT.md', 
+            'PHASE_1_URGENT_TERMINEE.md', 'PLAN_ACTION_IMPORTANT.md',
             'PLAN_ACTION_AMELIORATION.md', 'PLAN_ACTION_URGENT.md', 'CAHIER_CHARGES_COMPLET.md',
             # Guides techniques
             'MODULES.md', 'TESTS_GUIDE.md', 'PLUGINS_GUIDE.md', 'DEPLOYMENT.md',
@@ -49,7 +45,7 @@ class DocumentationCleaner:
             # Support
             'FAQ.md', 'TROUBLESHOOTING.md'
         }
-        
+
         # Documents obsolètes à archiver
         self.obsolete_docs = [
             'INDEX.md',  # Remplacé par INDEX_PRINCIPAL.md
@@ -91,140 +87,130 @@ class DocumentationCleaner:
             'RAPPORT_FINAL_OPTIMISATION.md',  # Historique
             'RAPPORT_FINAL_CORRECTIONS.md',  # Historique
         ]
-    
+
     def scan_documentation(self):
         """Scanne la documentation et catégorise les fichiers"""
         all_files = list(self.docs_dir.glob("*.md"))
-        
+
         categories = {
             'current': [],
             'obsolete': [],
             'unknown': []
         }
-        
+
         for file_path in all_files:
             file_name = file_path.name
-            
+
             # Ignorer les fichiers système macOS
             if file_name.startswith('._'):
                 continue
-                
+
             if file_name in self.current_docs:
                 categories['current'].append(file_path)
             elif file_name in self.obsolete_docs:
                 categories['obsolete'].append(file_path)
             else:
                 categories['unknown'].append(file_path)
-        
+
         return categories
-    
+
     def archive_obsolete_docs(self, obsolete_files):
         """Archive les documents obsolètes"""
         archived_count = 0
-        
+
         for file_path in obsolete_files:
             try:
-                # Créer le nom d'archive
-                archive_name = f"obsolete_{file_path.name}"
-                archive_path = self.archive_dir / archive_name
-                
-                # Déplacer vers l'archive
-                shutil.move(str(file_path), str(archive_path))
-                logger.info(f"📦 Archivé: {file_path.name} -> {archive_path}")
+                # Copier vers l'archive
+                archive_path = self.archive_dir / file_path.name
+                with open(file_path, 'r', encoding='utf-8') as src:
+                    with open(archive_path, 'w', encoding='utf-8') as dst:
+                        dst.write(src.read())
+
+                # Supprimer l'original
+                file_path.unlink()
                 archived_count += 1
-                
+                logger.info(f"📦 Archivé: {file_path.name}")
+
             except Exception as e:
-                logger.error(f"❌ Erreur archivage {file_path.name}: {e}")
-        
+                logger.error(f"❌ Erreur lors de l'archivage de {file_path.name}: {e}")
+
         return archived_count
-    
+
     def create_documentation_report(self, categories, archived_count):
         """Crée un rapport de nettoyage de la documentation"""
         report = {
             'timestamp': datetime.now().isoformat(),
             'summary': {
-                'total_files': sum(len(files) for files in categories.values()),
-                'current_files': len(categories['current']),
-                'obsolete_files': len(categories['obsolete']),
-                'unknown_files': len(categories['unknown']),
-                'archived': archived_count
+                'current_docs': len(categories['current']),
+                'obsolete_docs': len(categories['obsolete']),
+                'unknown_docs': len(categories['unknown']),
+                'archived_count': archived_count
             },
             'categories': {
-                'current': [f.name for f in categories['current']],
-                'obsolete': [f.name for f in categories['obsolete']],
-                'unknown': [f.name for f in categories['unknown']]
+                'current': [str(f) for f in categories['current']],
+                'obsolete': [str(f) for f in categories['obsolete']],
+                'unknown': [str(f) for f in categories['unknown']]
             }
         }
-        
+
         return report
-    
+
     def cleanup(self, dry_run=False):
         """Exécute le nettoyage complet de la documentation"""
-        logger.info("📚 DÉBUT DU NETTOYAGE DE LA DOCUMENTATION")
+        logger.info("🧹 DÉBUT DU NETTOYAGE DE LA DOCUMENTATION")
         logger.info(f"📁 Dossier de documentation: {self.docs_dir}")
-        logger.info(f"📦 Dossier d'archive: {self.archive_dir}")
-        
+
         if dry_run:
-            logger.info("🔍 MODE DRY-RUN - Aucun fichier ne sera déplacé")
-        
+            logger.info("🔍 MODE DRY-RUN - Aucun fichier ne sera modifié")
+
         # Scanner la documentation
         categories = self.scan_documentation()
-        
+
         # Afficher les statistiques
         logger.info(f"📊 Statistiques:")
         logger.info(f"  - Documents actuels: {len(categories['current'])}")
         logger.info(f"  - Documents obsolètes: {len(categories['obsolete'])}")
         logger.info(f"  - Documents inconnus: {len(categories['unknown'])}")
-        
-        # Afficher les documents inconnus
-        if categories['unknown']:
-            logger.info(f"📋 Documents inconnus (à examiner):")
-            for file_path in categories['unknown']:
-                logger.info(f"    - {file_path.name}")
-        
+
         # Actions de nettoyage
         archived_count = 0
-        
+
         if not dry_run:
             # Archiver les documents obsolètes
             archived_count = self.archive_obsolete_docs(categories['obsolete'])
-        
+
         # Générer le rapport
         report = self.create_documentation_report(categories, archived_count)
-        
+
         # Sauvegarder le rapport
-        report_file = self.docs_dir / f"documentation_cleanup_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
-        import json
+        report_file = self.docs_dir / f"cleanup_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
         with open(report_file, 'w', encoding='utf-8') as f:
             json.dump(report, f, indent=2, ensure_ascii=False)
-        
+
         # Afficher le résumé
-        logger.info("✅ NETTOYAGE DE LA DOCUMENTATION TERMINÉ")
+        logger.info("✅ NETTOYAGE TERMINÉ")
         logger.info(f"📦 Documents archivés: {archived_count}")
         logger.info(f"📄 Rapport sauvegardé: {report_file}")
-        
+
         return report
+
 
 def main():
     """Fonction principale"""
     import argparse
-    
-    parser = argparse.ArgumentParser(description="Nettoyage et organisation de la documentation")
+
+    parser = argparse.ArgumentParser(description="Nettoyage intelligent de la documentation")
     parser.add_argument("--dry-run", action="store_true", help="Mode simulation")
     parser.add_argument("--docs-dir", default="docs", help="Dossier de documentation")
-    
+
     args = parser.parse_args()
-    
+
     # Créer le nettoyeur
     cleaner = DocumentationCleaner(args.docs_dir)
-    
+
     # Exécuter le nettoyage
-    report = cleaner.cleanup(dry_run=args.dry_run)
-    
-    # Afficher l'espace libéré
-    if not args.dry_run:
-        logger.info("💾 Espace disque après nettoyage:")
-        os.system(f"du -sh {args.docs_dir}")
+    cleaner.cleanup(dry_run=args.dry_run)
+
 
 if __name__ == "__main__":
     main() 
