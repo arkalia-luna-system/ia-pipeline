@@ -88,14 +88,6 @@ jobs:
 
       - name: Run validation express
         run: |
-<<<<<<< HEAD
-          chmod +x validation_express.sh
-          ./validation_express.sh
-
-      - name: Run validation objective
-        run: |
-          python validation_objective.py
-=======
           chmod +x scripts/validation_express.sh
           cd $GITHUB_WORKSPACE
           mkdir -p logs
@@ -115,7 +107,6 @@ jobs:
           ls -la validation_express_*.txt rapport_validation_objective_*.md 2>/dev/null || echo "No validation files found"
           echo "Logs directory:"
           ls -la logs/ 2>/dev/null || echo "No logs directory found"
->>>>>>> develop
 
       - name: Upload validation artifacts
         uses: actions/upload-artifact@v4
