@@ -17,40 +17,40 @@
 ### 📊 **PLANS D'ACTION ET PHASES**
 | Document | Description | Statut |
 |----------|-------------|--------|
-| [PHASE_1_URGENT_TERMINEE.md](PHASE_1_URGENT_TERMINEE.md) | **Phase 1 terminée** | ✅ **TERMINÉE** |
-| [PLAN_ACTION_IMPORTANT.md](PLAN_ACTION_IMPORTANT.md) | Phase 2 - Actions importantes | 🎯 **EN ATTENTE** |
-| [PLAN_ACTION_AMELIORATION.md](PLAN_ACTION_AMELIORATION.md) | Phase 3 - Actions amélioration | 🎯 **EN ATTENTE** |
-| [CAHIER_CHARGES_COMPLET.md](CAHIER_CHARGES_COMPLET.md) | Spécifications complètes | ✅ Actuel |
+| [PHASE_1_URGENT_TERMINEE.md](REPORTS/PHASE_1_URGENT_TERMINEE.md) | **Phase 1 terminée** | ✅ **TERMINÉE** |
+| [PLAN_ACTION_IMPORTANT.md](REPORTS/PLAN_ACTION_IMPORTANT.md) | Phase 2 - Actions importantes | 🎯 **EN ATTENTE** |
+| [PLAN_ACTION_AMELIORATION.md](REPORTS/PLAN_ACTION_AMELIORATION.md) | Phase 3 - Actions amélioration | 🎯 **EN ATTENTE** |
+| [CAHIER_CHARGES_COMPLET.md](REPORTS/CAHIER_CHARGES_COMPLET.md) | Spécifications complètes | ✅ Actuel |
 
 ### 🔧 **GUIDES TECHNIQUES**
 | Document | Description | Statut |
 |----------|-------------|--------|
-| [MODULES.md](MODULES.md) | Guide des modules | ✅ Actuel |
-| [TESTS_GUIDE.md](TESTS_GUIDE.md) | Guide des tests | ✅ Actuel |
-| [PLUGINS_GUIDE.md](PLUGINS_GUIDE.md) | Guide des plugins | ✅ Actuel |
-| [DEPLOYMENT.md](DEPLOYMENT.md) | Guide de déploiement | ✅ Actuel |
-| [DEVELOPER_GUIDE.md](DEVELOPER_GUIDE.md) | Guide développeur | ✅ Actuel |
+| [MODULES.md](GUIDES/MODULES.md) | Guide des modules | ✅ Actuel |
+| [TESTS_GUIDE.md](GUIDES/TESTS_GUIDE.md) | Guide des tests | ✅ Actuel |
+| [PLUGINS_GUIDE.md](GUIDES/PLUGINS_GUIDE.md) | Guide des plugins | ✅ Actuel |
+| [DEPLOYMENT.md](GUIDES/DEPLOYMENT.md) | Guide de déploiement | ✅ Actuel |
+| [DEVELOPER_GUIDE.md](GUIDES/DEVELOPER_GUIDE.md) | Guide développeur | ✅ Actuel |
 
 ### 🤖 **ROBOTICS ET IA**
 | Document | Description | Statut |
 |----------|-------------|--------|
-| [ROBOTICS_GUIDE.md](ROBOTICS_GUIDE.md) | Guide robotics | ✅ Actuel |
-| [REACHY_SETUP_GUIDE.md](REACHY_SETUP_GUIDE.md) | Configuration Reachy | ✅ Actuel |
-| [RESUME_TEST_PROMPTS.md](RESUME_TEST_PROMPTS.md) | Guide IA et prompts | ✅ Actuel |
+| [ROBOTICS_GUIDE.md](robotics/ROBOTICS_GUIDE.md) | Guide robotics | ✅ Actuel |
+| [REACHY_SETUP_GUIDE.md](robotics/REACHY_SETUP_GUIDE.md) | Configuration Reachy | ✅ Actuel |
+| [RESUME_TEST_PROMPTS.md](REPORTS/RESUME_TEST_PROMPTS.md) | Guide IA et prompts | ✅ Actuel |
 
 ### 📈 **ANALYSES ET OPTIMISATION**
 | Document | Description | Statut |
 |----------|-------------|--------|
-| [ANALYSE_PLAN_OPTIMISATION_AVANCE.md](ANALYSE_PLAN_OPTIMISATION_AVANCE.md) | Plans d'optimisation | ✅ Actuel |
-| [OPTIMISATION_PERFORMANCES.md](OPTIMISATION_PERFORMANCES.md) | Optimisation performances | ✅ Actuel |
+| [ANALYSE_PLAN_OPTIMISATION_AVANCE.md](REPORTS/ANALYSE_PLAN_OPTIMISATION_AVANCE.md) | Plans d'optimisation | ✅ Actuel |
+| [OPTIMISATION_PERFORMANCES.md](REPORTS/OPTIMISATION_PERFORMANCES.md) | Optimisation performances | ✅ Actuel |
 | [ORGANISATION_WORKSPACE.md](ORGANISATION_WORKSPACE.md) | Organisation workspace | ✅ Actuel |
 
 ### 📊 **RAPPORTS ET AUDITS**
 | Document | Description | Statut |
 |----------|-------------|--------|
-| [RAPPORT_FINAL.md](RAPPORT_FINAL.md) | Rapport final complet | ✅ Actuel |
-| [AUDIT_COMPLET_PROJET.md](AUDIT_COMPLET_PROJET.md) | Audit complet projet | ✅ Actuel |
-| [INVENTAIRE_COMPLET.md](INVENTAIRE_COMPLET.md) | Inventaire système | ✅ Actuel |
+| [RAPPORT_FINAL.md](REPORTS/RAPPORT_FINAL.md) | Rapport final complet | ✅ Actuel |
+| [AUDIT_COMPLET_PROJET.md](REPORTS/AUDIT_COMPLET_PROJET.md) | Audit complet projet | ✅ Actuel |
+| [INVENTAIRE_COMPLET.md](REPORTS/INVENTAIRE_COMPLET.md) | Inventaire système | ✅ Actuel |
 
 ## 🗂️ **ORGANISATION PAR CATÉGORIES**
 
@@ -114,20 +114,20 @@ docs/
 4. [API.md](API.md) - Fonctionnalités avancées
 
 ### 🔧 **Pour développer**
-1. [DEVELOPER_GUIDE.md](DEVELOPER_GUIDE.md) - Développement
-2. [TESTS_GUIDE.md](TESTS_GUIDE.md) - Tests
-3. [PLUGINS_GUIDE.md](PLUGINS_GUIDE.md) - Plugins
-4. [MODULES.md](MODULES.md) - Modules
+1. [DEVELOPER_GUIDE.md](GUIDES/DEVELOPER_GUIDE.md) - Développement
+2. [TESTS_GUIDE.md](GUIDES/TESTS_GUIDE.md) - Tests
+3. [PLUGINS_GUIDE.md](GUIDES/PLUGINS_GUIDE.md) - Plugins
+4. [MODULES.md](GUIDES/MODULES.md) - Modules
 
 ### 📊 **Pour analyser**
-1. [PHASE_1_URGENT_TERMINEE.md](PHASE_1_URGENT_TERMINEE.md) - Phase 1 terminée
-2. [PLAN_ACTION_IMPORTANT.md](PLAN_ACTION_IMPORTANT.md) - Phase 2
-3. [RAPPORT_FINAL.md](RAPPORT_FINAL.md) - État système
+1. [PHASE_1_URGENT_TERMINEE.md](REPORTS/PHASE_1_URGENT_TERMINEE.md) - Phase 1 terminée
+2. [PLAN_ACTION_IMPORTANT.md](REPORTS/PLAN_ACTION_IMPORTANT.md) - Phase 2
+3. [RAPPORT_FINAL.md](REPORTS/RAPPORT_FINAL.md) - État système
 
 ### 🤖 **Pour robotics**
-1. [ROBOTICS_GUIDE.md](ROBOTICS_GUIDE.md) - Guide robotics
-2. [REACHY_SETUP_GUIDE.md](REACHY_SETUP_GUIDE.md) - Reachy
-3. [UNIFIED_ORCHESTRATOR.md](UNIFIED_ORCHESTRATOR.md) - Orchestrateur
+1. [ROBOTICS_GUIDE.md](robotics/ROBOTICS_GUIDE.md) - Guide robotics
+2. [REACHY_SETUP_GUIDE.md](robotics/REACHY_SETUP_GUIDE.md) - Reachy
+3. [UNIFIED_ORCHESTRATOR.md](REPORTS/UNIFIED_ORCHESTRATOR.md) - Orchestrateur
 
 ## 📈 **ÉTAT DE LA DOCUMENTATION**
 

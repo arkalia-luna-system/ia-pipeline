@@ -1,0 +1,185 @@
+2025-07-26 13:05:12,362tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-🔍 Pattern Detector initialisé dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmp_jm5wdjk/demo_projecttring_data
+2025-07-26 13:05:12,362tring_data - athalia_core.architecture_analyzertring_data - INFOtring_data-🏗️ Architecture Analyzer initialisé dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmp_jm5wdjk/demo_projecttring_data
+2025-07-26 13:05:12,363tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-⚡ Performance Analyzer initialisé dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmp_jm5wdjk/demo_projecttring_data
+2025-07-26 13:05:12,363tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🧠 Intelligent Analyzer initialisé dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmp_jm5wdjk/demo_projecttring_data
+2025-07-26 13:05:12,363tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🎯 Unified Orchestrator initialisé dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmp_jm5wdjk/demo_projecttring_data
+2025-07-26 13:05:12,363tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🎯 Orchestration unifiée du projet: demo_projecttring_data
+2025-07-26 13:05:12,363tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-================================================================================tring_data
+2025-07-26 13:05:12,363tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🧠 PHASE 2: Analyse intelligentetring_data
+2025-07-26 13:05:12,363tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🧠 Analyse complète du projet: demo_projecttring_data
+2025-07-26 13:05:12,363tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-📊 Étape 1/4: Analyse AST de base...tring_data
+2025-07-26 13:05:12,363tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🔍 Étape 2/4: Analyse des patterns et doublons...tring_data
+2025-07-26 13:05:12,363tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-🔍 Analyse des patterns du projet: demo_projecttring_data
+2025-07-26 13:05:12,363tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-📁 0 fichiers Python trouvéstring_data
+2025-07-26 13:05:12,364tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🏗️ Étape 3/4: Analyse d'architecture...tring_data
+2025-07-26 13:05:12,364tring_data - athalia_core.architecture_analyzertring_data - INFOtring_data-🏗️ Analyse de l'architecture complète...tring_data
+2025-07-26 13:05:12,364tring_data - athalia_core.architecture_analyzertring_data - INFOtring_data-📊 0 modules analyséstring_data
+2025-07-26 13:05:12,364tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-⚡ Étape 4/4: Analyse de performance...tring_data
+2025-07-26 13:05:12,364tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-⚡ Analyse des performances du projet: demo_projecttring_data
+2025-07-26 13:05:12,364tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-📁 0 fichiers Python analyséstring_data
+2025-07-26 13:05:12,364tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-💾 Analyse sauvegardée dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmp_jm5wdjk/demo_project/data/comprehensive_analysis_demo_project_20250726_130512.jsontring_data
+2025-07-26 13:05:12,364tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-✅ Analyse complète terminée - Score global: 100.0/100tring_data
+2025-07-26 13:05:12,364tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🔮 PHASE 3: Prédictions et optimisationstring_data
+2025-07-26 13:05:12,364tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-📚 PHASE 4: Apprentissage et insightstring_data
+2025-07-26 13:05:12,364tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-📄 Rapport sauvegardé: /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmp_jm5wdjk/demo_project/data/unified_report_20250726_130512.jsontring_data
+2025-07-26 13:05:12,364tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-================================================================================tring_data
+2025-07-26 13:05:12,364tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-✅ ORCHESTRATION UNIFIÉE TERMINÉE !tring_data
+2025-07-26 13:05:12,364tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-================================================================================tring_data
+2025-07-26 13:05:12,364tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🎯 Orchestration unifiée du projet: demo_projecttring_data
+2025-07-26 13:05:12,364tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-================================================================================tring_data
+2025-07-26 13:05:12,364tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🧠 PHASE 2: Analyse intelligentetring_data
+2025-07-26 13:05:12,364tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🧠 Analyse complète du projet: demo_projecttring_data
+2025-07-26 13:05:12,364tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-📊 Étape 1/4: Analyse AST de base...tring_data
+2025-07-26 13:05:12,365tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🔍 Étape 2/4: Analyse des patterns et doublons...tring_data
+2025-07-26 13:05:12,365tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-🔍 Analyse des patterns du projet: demo_projecttring_data
+2025-07-26 13:05:12,365tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-📁 0 fichiers Python trouvéstring_data
+2025-07-26 13:05:12,365tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🏗️ Étape 3/4: Analyse d'architecture...tring_data
+2025-07-26 13:05:12,365tring_data - athalia_core.architecture_analyzertring_data - INFOtring_data-🏗️ Analyse de l'architecture complète...tring_data
+2025-07-26 13:05:12,365tring_data - athalia_core.architecture_analyzertring_data - INFOtring_data-📊 0 modules analyséstring_data
+2025-07-26 13:05:12,365tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-⚡ Étape 4/4: Analyse de performance...tring_data
+2025-07-26 13:05:12,365tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-⚡ Analyse des performances du projet: demo_projecttring_data
+2025-07-26 13:05:12,365tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-📁 0 fichiers Python analyséstring_data
+2025-07-26 13:05:12,365tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-💾 Analyse sauvegardée dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmp_jm5wdjk/demo_project/data/comprehensive_analysis_demo_project_20250726_130512.jsontring_data
+2025-07-26 13:05:12,365tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-✅ Analyse complète terminée - Score global: 100.0/100tring_data
+2025-07-26 13:05:12,365tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🔮 PHASE 3: Prédictions et optimisationstring_data
+2025-07-26 13:05:12,365tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-📚 PHASE 4: Apprentissage et insightstring_data
+2025-07-26 13:05:12,365tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-📄 Rapport sauvegardé: /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmp_jm5wdjk/demo_project/data/unified_report_20250726_130512.jsontring_data
+2025-07-26 13:05:12,365tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-================================================================================tring_data
+2025-07-26 13:05:12,365tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-✅ ORCHESTRATION UNIFIÉE TERMINÉE !tring_data
+2025-07-26 13:05:12,365tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-================================================================================tring_data
+2025-07-26 13:05:12,365tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🎯 Orchestration unifiée du projet: demo_projecttring_data
+2025-07-26 13:05:12,365tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-================================================================================tring_data
+2025-07-26 13:05:12,365tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🧠 PHASE 2: Analyse intelligentetring_data
+2025-07-26 13:05:12,365tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🧠 Analyse complète du projet: demo_projecttring_data
+2025-07-26 13:05:12,365tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-📊 Étape 1/4: Analyse AST de base...tring_data
+2025-07-26 13:05:12,366tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🔍 Étape 2/4: Analyse des patterns et doublons...tring_data
+2025-07-26 13:05:12,366tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-🔍 Analyse des patterns du projet: demo_projecttring_data
+2025-07-26 13:05:12,366tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-📁 0 fichiers Python trouvéstring_data
+2025-07-26 13:05:12,366tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🏗️ Étape 3/4: Analyse d'architecture...tring_data
+2025-07-26 13:05:12,366tring_data - athalia_core.architecture_analyzertring_data - INFOtring_data-🏗️ Analyse de l'architecture complète...tring_data
+2025-07-26 13:05:12,366tring_data - athalia_core.architecture_analyzertring_data - INFOtring_data-📊 0 modules analyséstring_data
+2025-07-26 13:05:12,366tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-⚡ Étape 4/4: Analyse de performance...tring_data
+2025-07-26 13:05:12,366tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-⚡ Analyse des performances du projet: demo_projecttring_data
+2025-07-26 13:05:12,366tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-📁 0 fichiers Python analyséstring_data
+2025-07-26 13:05:12,366tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-💾 Analyse sauvegardée dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmp_jm5wdjk/demo_project/data/comprehensive_analysis_demo_project_20250726_130512.jsontring_data
+2025-07-26 13:05:12,366tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-✅ Analyse complète terminée - Score global: 100.0/100tring_data
+2025-07-26 13:05:12,366tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🔮 PHASE 3: Prédictions et optimisationstring_data
+2025-07-26 13:05:12,366tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-📚 PHASE 4: Apprentissage et insightstring_data
+2025-07-26 13:05:12,366tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-📄 Rapport sauvegardé: /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmp_jm5wdjk/demo_project/data/unified_report_20250726_130512.jsontring_data
+2025-07-26 13:05:12,366tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-================================================================================tring_data
+2025-07-26 13:05:12,366tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-✅ ORCHESTRATION UNIFIÉE TERMINÉE !tring_data
+2025-07-26 13:05:12,366tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-================================================================================tring_data
+2025-07-26 13:05:12,368tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-🔍 Pattern Detector initialisé dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmp6ceqf2di/demo_methodstring_data
+2025-07-26 13:05:12,369tring_data - athalia_core.architecture_analyzertring_data - INFOtring_data-🏗️ Architecture Analyzer initialisé dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmp6ceqf2di/demo_methodstring_data
+2025-07-26 13:05:12,370tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-⚡ Performance Analyzer initialisé dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmp6ceqf2di/demo_methodstring_data
+2025-07-26 13:05:12,370tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🧠 Intelligent Analyzer initialisé dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmp6ceqf2di/demo_methodstring_data
+2025-07-26 13:05:12,370tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🎯 Unified Orchestrator initialisé dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmp6ceqf2di/demo_methodstring_data
+2025-07-26 13:05:12,370tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🔌 Exécution des plugins...tring_data
+2025-07-26 13:05:12,370tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-📋 Génération de templates...tring_data
+2025-07-26 13:05:37,997tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-🔍 Pattern Detector initialisé dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmpz_a8jul3/demo_projecttring_data
+2025-07-26 13:05:37,998tring_data - athalia_core.architecture_analyzertring_data - INFOtring_data-🏗️ Architecture Analyzer initialisé dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmpz_a8jul3/demo_projecttring_data
+2025-07-26 13:05:37,999tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-⚡ Performance Analyzer initialisé dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmpz_a8jul3/demo_projecttring_data
+2025-07-26 13:05:37,999tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🧠 Intelligent Analyzer initialisé dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmpz_a8jul3/demo_projecttring_data
+2025-07-26 13:05:37,999tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🎯 Unified Orchestrator initialisé dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmpz_a8jul3/demo_projecttring_data
+2025-07-26 13:05:37,999tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🎯 Orchestration unifiée du projet: demo_projecttring_data
+2025-07-26 13:05:37,999tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-================================================================================tring_data
+2025-07-26 13:05:37,999tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🏭 PHASE 1: Industrialisationtring_data
+2025-07-26 13:05:37,999tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🧹 Étape 5: Nettoyage automatiquetring_data
+2025-07-26 13:05:37,999tring_data - athalia_core.auto_cleanertring_data - INFOtring_data-🧹 Nettoyage automatique en cours pour : demo_projecttring_data
+2025-07-26 13:05:38,002tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🧪 Étape 7: Tests automatiquestring_data
+2025-07-26 13:05:38,002tring_data - athalia_core.auto_testertring_data - INFOtring_data-🧪 Génération de tests pour : demo_projecttring_data
+2025-07-26 13:05:38,003tring_data - athalia_core.auto_testertring_data - INFOtring_data-🧪 Exécution des tests unitaires...tring_data
+2025-07-26 13:05:38,110tring_data - athalia_core.auto_testertring_data - INFOtring_data-🔗 Exécution des tests dintégration...tring_data
+2025-07-26 13:05:38,205tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🔌 Étape 10: Exécution des pluginstring_data
+2025-07-26 13:05:38,205tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🔌 Exécution des plugins...tring_data
+2025-07-26 13:05:38,205tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🧠 PHASE 2: Analyse intelligentetring_data
+2025-07-26 13:05:38,205tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🧠 Analyse complète du projet: demo_projecttring_data
+2025-07-26 13:05:38,205tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-📊 Étape 1/4: Analyse AST de base...tring_data
+2025-07-26 13:05:38,209tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🔍 Étape 2/4: Analyse des patterns et doublons...tring_data
+2025-07-26 13:05:38,209tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-🔍 Analyse des patterns du projet: demo_projecttring_data
+2025-07-26 13:05:38,209tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-📁 2 fichiers Python trouvéstring_data
+2025-07-26 13:05:38,216tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🏗️ Étape 3/4: Analyse d'architecture...tring_data
+2025-07-26 13:05:38,216tring_data - athalia_core.architecture_analyzertring_data - INFOtring_data-🏗️ Analyse de l'architecture complète...tring_data
+2025-07-26 13:05:38,219tring_data - athalia_core.architecture_analyzertring_data - INFOtring_data-📊 2 modules analyséstring_data
+2025-07-26 13:05:38,219tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-⚡ Étape 4/4: Analyse de performance...tring_data
+2025-07-26 13:05:38,219tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-⚡ Analyse des performances du projet: demo_projecttring_data
+2025-07-26 13:05:38,219tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-📁 2 fichiers Python analyséstring_data
+2025-07-26 13:05:38,223tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-💾 Analyse sauvegardée dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmpz_a8jul3/demo_project/data/comprehensive_analysis_demo_project_20250726_130538.jsontring_data
+2025-07-26 13:05:38,223tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-✅ Analyse complète terminée - Score global: 95.8/100tring_data
+2025-07-26 13:05:38,223tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🔮 PHASE 3: Prédictions et optimisationstring_data
+2025-07-26 13:05:38,223tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-📚 PHASE 4: Apprentissage et insightstring_data
+2025-07-26 13:05:38,224tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-📄 Rapport sauvegardé: /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmpz_a8jul3/demo_project/data/unified_report_20250726_130538.jsontring_data
+2025-07-26 13:05:38,224tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-================================================================================tring_data
+2025-07-26 13:05:38,224tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-✅ ORCHESTRATION UNIFIÉE TERMINÉE !tring_data
+2025-07-26 13:05:38,224tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-================================================================================tring_data
+2025-07-26 13:05:38,224tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🎯 Orchestration unifiée du projet: demo_projecttring_data
+2025-07-26 13:05:38,224tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-================================================================================tring_data
+2025-07-26 13:05:38,224tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🏭 PHASE 1: Industrialisationtring_data
+2025-07-26 13:05:38,224tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🧹 Étape 5: Nettoyage automatiquetring_data
+2025-07-26 13:05:38,224tring_data - athalia_core.auto_cleanertring_data - INFOtring_data-🧹 Nettoyage automatique en cours pour : demo_projecttring_data
+2025-07-26 13:05:38,227tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🧪 Étape 7: Tests automatiquestring_data
+2025-07-26 13:05:38,227tring_data - athalia_core.auto_testertring_data - INFOtring_data-🧪 Génération de tests pour : demo_projecttring_data
+2025-07-26 13:05:38,228tring_data - athalia_core.auto_testertring_data - INFOtring_data-🧪 Exécution des tests unitaires...tring_data
+2025-07-26 13:05:38,310tring_data - athalia_core.auto_testertring_data - INFOtring_data-🔗 Exécution des tests dintégration...tring_data
+2025-07-26 13:05:38,397tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-📋 Étape 11: Génération de templatestring_data
+2025-07-26 13:05:38,398tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-📋 Génération de templates...tring_data
+2025-07-26 13:05:38,412tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🧠 PHASE 2: Analyse intelligentetring_data
+2025-07-26 13:05:38,412tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🧠 Analyse complète du projet: demo_projecttring_data
+2025-07-26 13:05:38,412tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-📊 Étape 1/4: Analyse AST de base...tring_data
+2025-07-26 13:05:38,416tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🔍 Étape 2/4: Analyse des patterns et doublons...tring_data
+2025-07-26 13:05:38,416tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-🔍 Analyse des patterns du projet: demo_projecttring_data
+2025-07-26 13:05:38,416tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-📁 3 fichiers Python trouvéstring_data
+2025-07-26 13:05:38,424tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🏗️ Étape 3/4: Analyse d'architecture...tring_data
+2025-07-26 13:05:38,424tring_data - athalia_core.architecture_analyzertring_data - INFOtring_data-🏗️ Analyse de l'architecture complète...tring_data
+2025-07-26 13:05:38,428tring_data - athalia_core.architecture_analyzertring_data - INFOtring_data-📊 2 modules analyséstring_data
+2025-07-26 13:05:38,428tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-⚡ Étape 4/4: Analyse de performance...tring_data
+2025-07-26 13:05:38,428tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-⚡ Analyse des performances du projet: demo_projecttring_data
+2025-07-26 13:05:38,429tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-📁 3 fichiers Python analyséstring_data
+2025-07-26 13:05:38,433tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-💾 Analyse sauvegardée dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmpz_a8jul3/demo_project/data/comprehensive_analysis_demo_project_20250726_130538.jsontring_data
+2025-07-26 13:05:38,433tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-✅ Analyse complète terminée - Score global: 96.1/100tring_data
+2025-07-26 13:05:38,433tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🔮 PHASE 3: Prédictions et optimisationstring_data
+2025-07-26 13:05:38,433tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-📚 PHASE 4: Apprentissage et insightstring_data
+2025-07-26 13:05:38,434tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-📄 Rapport sauvegardé: /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmpz_a8jul3/demo_project/data/unified_report_20250726_130538.jsontring_data
+2025-07-26 13:05:38,434tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-================================================================================tring_data
+2025-07-26 13:05:38,434tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-✅ ORCHESTRATION UNIFIÉE TERMINÉE !tring_data
+2025-07-26 13:05:38,434tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-================================================================================tring_data
+2025-07-26 13:05:38,434tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🎯 Orchestration unifiée du projet: demo_projecttring_data
+2025-07-26 13:05:38,434tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-================================================================================tring_data
+2025-07-26 13:05:38,434tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🏭 PHASE 1: Industrialisationtring_data
+2025-07-26 13:05:38,434tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🧹 Étape 5: Nettoyage automatiquetring_data
+2025-07-26 13:05:38,434tring_data - athalia_core.auto_cleanertring_data - INFOtring_data-🧹 Nettoyage automatique en cours pour : demo_projecttring_data
+2025-07-26 13:05:38,438tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🧪 Étape 7: Tests automatiquestring_data
+2025-07-26 13:05:38,438tring_data - athalia_core.auto_testertring_data - INFOtring_data-🧪 Génération de tests pour : demo_projecttring_data
+2025-07-26 13:05:38,439tring_data - athalia_core.auto_testertring_data - INFOtring_data-🧪 Exécution des tests unitaires...tring_data
+2025-07-26 13:05:38,523tring_data - athalia_core.auto_testertring_data - INFOtring_data-🔗 Exécution des tests dintégration...tring_data
+2025-07-26 13:05:38,619tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🔌 Étape 10: Exécution des pluginstring_data
+2025-07-26 13:05:38,619tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🔌 Exécution des plugins...tring_data
+2025-07-26 13:05:38,619tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-📋 Étape 11: Génération de templatestring_data
+2025-07-26 13:05:38,619tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-📋 Génération de templates...tring_data
+2025-07-26 13:05:38,620tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🧠 PHASE 2: Analyse intelligentetring_data
+2025-07-26 13:05:38,620tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🧠 Analyse complète du projet: demo_projecttring_data
+2025-07-26 13:05:38,620tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-📊 Étape 1/4: Analyse AST de base...tring_data
+2025-07-26 13:05:38,625tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🔍 Étape 2/4: Analyse des patterns et doublons...tring_data
+2025-07-26 13:05:38,625tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-🔍 Analyse des patterns du projet: demo_projecttring_data
+2025-07-26 13:05:38,625tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-📁 4 fichiers Python trouvéstring_data
+2025-07-26 13:05:38,638tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🏗️ Étape 3/4: Analyse d'architecture...tring_data
+2025-07-26 13:05:38,638tring_data - athalia_core.architecture_analyzertring_data - INFOtring_data-🏗️ Analyse de l'architecture complète...tring_data
+2025-07-26 13:05:38,642tring_data - athalia_core.architecture_analyzertring_data - INFOtring_data-📊 3 modules analyséstring_data
+2025-07-26 13:05:38,643tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-⚡ Étape 4/4: Analyse de performance...tring_data
+2025-07-26 13:05:38,643tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-⚡ Analyse des performances du projet: demo_projecttring_data
+2025-07-26 13:05:38,643tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-📁 4 fichiers Python analyséstring_data
+2025-07-26 13:05:38,649tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-💾 Analyse sauvegardée dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmpz_a8jul3/demo_project/data/comprehensive_analysis_demo_project_20250726_130538.jsontring_data
+2025-07-26 13:05:38,649tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-✅ Analyse complète terminée - Score global: 93.6/100tring_data
+2025-07-26 13:05:38,649tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🔮 PHASE 3: Prédictions et optimisationstring_data
+2025-07-26 13:05:38,649tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-📚 PHASE 4: Apprentissage et insightstring_data
+2025-07-26 13:05:38,650tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-📄 Rapport sauvegardé: /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmpz_a8jul3/demo_project/data/unified_report_20250726_130538.jsontring_data
+2025-07-26 13:05:38,650tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-================================================================================tring_data
+2025-07-26 13:05:38,650tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-✅ ORCHESTRATION UNIFIÉE TERMINÉE !tring_data
+2025-07-26 13:05:38,650tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-================================================================================tring_data
+2025-07-26 13:05:38,653tring_data - athalia_core.pattern_detectortring_data - INFOtring_data-🔍 Pattern Detector initialisé dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmp7uvmrlno/demo_methodstring_data
+2025-07-26 13:05:38,653tring_data - athalia_core.architecture_analyzertring_data - INFOtring_data-🏗️ Architecture Analyzer initialisé dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmp7uvmrlno/demo_methodstring_data
+2025-07-26 13:05:38,654tring_data - athalia_core.performance_analyzertring_data - INFOtring_data-⚡ Performance Analyzer initialisé dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmp7uvmrlno/demo_methodstring_data
+2025-07-26 13:05:38,654tring_data - athalia_core.intelligent_analyzertring_data - INFOtring_data-🧠 Intelligent Analyzer initialisé dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmp7uvmrlno/demo_methodstring_data
+2025-07-26 13:05:38,654tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🎯 Unified Orchestrator initialisé dans /var/folders/7j/xgp8mds53ms6blyzf8g4173m0000gn/T/tmp7uvmrlno/demo_methodstring_data
+2025-07-26 13:05:38,654tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-🔌 Exécution des plugins...tring_data
+2025-07-26 13:05:38,654tring_data - athalia_core.unified_orchestratortring_data - INFOtring_data-📋 Génération de templates...tring_data

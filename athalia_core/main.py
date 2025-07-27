@@ -81,6 +81,30 @@ def surveillance_mode():
 def main(test_mode=False):
     global running
     
+    # Vérifier si une instance est déjà en cours
+    import psutil
+    current_pid = os.getpid()
+    athalia_processes = []
+    
+    for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
+        try:
+            if proc.info['cmdline'] and 'athalia_core.main' in ' '.join(proc.info['cmdline']):
+                if proc.info['pid'] != current_pid:
+                    athalia_processes.append(proc.info['pid'])
+        except (psutil.NoSuchProcess, psutil.AccessDenied):
+            pass
+    
+    if athalia_processes:
+        logger.warning(f"⚠️ {len(athalia_processes)} autre(s) instance(s) d'athalia_core.main détectée(s): {athalia_processes}")
+        if not test_mode:
+            logger.info("🔄 Arrêt des instances précédentes...")
+            for pid in athalia_processes:
+                try:
+                    psutil.Process(pid).terminate()
+                    time.sleep(1)
+                except psutil.NoSuchProcess:
+                    pass
+    
     # Configuration du gestionnaire de signal
     signal.signal(signal.SIGINT, signal_handler)
     signal.signal(signal.SIGTERM, signal_handler)

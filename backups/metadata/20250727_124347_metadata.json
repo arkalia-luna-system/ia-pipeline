@@ -1,0 +1,12 @@
+{
+  "backup_id": "20250727_124347",
+  "timestamp": "2025-07-27T12:43:47.706924",
+  "backup_type": "daily",
+  "size_bytes": 0,
+  "files_count": 0,
+  "checksum": "76f13fdd2945e735cf3b5468f98609e9",
+  "compression": "gzip",
+  "encryption": false,
+  "source_paths": [],
+  "backup_path": "backups/daily/20250727_124347"
+}

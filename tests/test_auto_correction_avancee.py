@@ -31,10 +31,16 @@ class TestAutoCorrectionAdvanced(unittest.TestCase):
     def test_import_auto_correction(self):
         """Test d'import du module d'auto-correction"""
         try:
+<<<<<<< HEAD
             from athalia_core.advanced_modules.auto_correction_advanced import AutoCorrectionAdvanced
+=======
+            from athalia_core.advanced_modules.auto_correction_advanced import (
+                AutoCorrectionAvancee,
+            )
+>>>>>>> develop
             self.assertTrue(True, "Import réussi")
         except ImportError as e:
-            self.skipTest(f"Module auto-correction non disponible: {e}")
+            assert False, f"Module auto-correction non disponible: {e}"
 
     def test_import_dashboard_unified(self):
         """Test d'import du dashboard unifié"""
@@ -47,10 +53,16 @@ class TestAutoCorrectionAdvanced(unittest.TestCase):
     def test_import_user_profiles(self):
         """Test d'import des profils utilisateur"""
         try:
+<<<<<<< HEAD
             from athalia_core.advanced_modules.user_profiles_advanced import GestionnaireProfilsAvances
+=======
+            from athalia_core.advanced_modules.user_profiles_advanced import (
+                GestionnaireProfils,
+            )
+>>>>>>> develop
             self.assertTrue(True, "Import réussi")
         except ImportError as e:
-            self.skipTest(f"Module profils non disponible: {e}")
+            assert False, f"Module profils non disponible: {e}"
 
     def test_advanced_modules_structure(self):
         """Test de la structure des modules avancés"""
@@ -61,7 +73,7 @@ class TestAutoCorrectionAdvanced(unittest.TestCase):
             
             self.assertTrue(True, "Structure des modules avancés correcte")
         except ImportError as e:
-            self.skipTest(f"Structure des modules avancés non disponible: {e}")
+            assert False, f"Structure des modules avancés non disponible: {e}"
 
 if __name__ == "__main__":
     unittest.main()
