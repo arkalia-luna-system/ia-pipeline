@@ -18,6 +18,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+
 def main():
     """Fonction principale du CLI unifié"""
     parser = argparse.ArgumentParser(
@@ -152,8 +153,10 @@ MODULES INTÉGRÉS:
                 class AthaliaOrchestrator:
                     def industrialize_project(self, project_path, config=None):
                         return {"status": "Industrialisation simulée - Modules non disponibles"}
+
                     def audit_project(self, project_path):
                         return {"score": 75, "issues": 15}
+
                     def scan_projects(self, project_path):
                         return [{"name": "test", "type": "python", "path": project_path}]
 

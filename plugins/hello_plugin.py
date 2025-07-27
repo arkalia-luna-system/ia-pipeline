@@ -6,6 +6,7 @@ def run():
     """Fonction principale du plugin"""
     return {"message": "Hello from plugin!", "status": "success"}
 
+
 def get_info():
     """Informations sur le plugin"""
     return {
