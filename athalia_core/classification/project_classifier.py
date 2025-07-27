@@ -10,6 +10,7 @@ Classifieur intelligent de projets.
 Analyse le contexte et détermine le type de projet approprié.
 """
 
+
 def classify_project(idea: str) -> ProjectType:
     """
     Analyse l'idée du projet et retourne le type approprié.
@@ -23,7 +24,16 @@ def classify_project(idea: str) -> ProjectType:
     idea_lower = idea.lower()
 
     # Ajout détection explicite pour todo-list
-    if any(kw in idea_lower for kw in ['todo', 'tâche', 'taches', 'task', 'liste de tâches', 'liste de taches', 'todo-list', 'todo list']):
+    if any(
+        kw in idea_lower for kw in [
+            'todo',
+            'tâche',
+            'taches',
+            'task',
+            'liste de tâches',
+            'liste de taches',
+            'todo-list',
+            'todo list']):
         return ProjectType.API
 
     # Mots-clés pour chaque type de projet
@@ -79,7 +89,9 @@ def classify_project(idea: str) -> ProjectType:
     if 'fleure qui danse' in idea_lower or 'fleur qui danse' in idea_lower:
         return ProjectType.ARTISTIC
 
-    if 'api' in idea_lower and any(kw in idea_lower for kw in ['service', 'backend']):
+    if 'api' in idea_lower and any(
+            kw in idea_lower for kw in [
+            'service', 'backend']):
         return ProjectType.API
 
     if any(word in idea_lower for word in ['jeu', 'game', 'play']):
@@ -94,6 +106,7 @@ def classify_project(idea: str) -> ProjectType:
 
     # Fallback vers générique
     return ProjectType.GENERIC
+
 
 def get_project_name(idea: str, project_type: ProjectType) -> str:
     """

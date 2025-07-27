@@ -25,11 +25,13 @@ Module de tests automatiques pour Athalia
 Génération automatique de tests unitaires et d'intégration
 """
 
+
 class AutoTester:
     """Générateur de tests pour Athalia"""
 
     def __init__(self, project_path: str = None):
-        self.project_path: Path = Path(project_path) if project_path else Path('.')
+        self.project_path: Path = Path(
+            project_path) if project_path else Path('.')
         self.test_results = {}
         self.generated_tests = []
 
@@ -70,17 +72,17 @@ class AutoTester:
     def _analyze_modules(self) -> List[Dict[str, Any]]:
         """Analyse les modules Python du projet"""
         modules = []
-        
+
         for py_file in self.project_path.rglob("*.py"):
             # Ignorer les fichiers macOS ._*
             if py_file.name.startswith("._"):
                 continue
-                
+
             if py_file.name != "__init__.py" and "test" not in py_file.name.lower():
                 try:
                     with open(py_file, 'r', encoding='utf-8') as file_handle:
                         content = file_handle.read()
-                    
+
                     tree = ast.parse(content)
                     module_info = {
                         'name': py_file.stem,
@@ -89,7 +91,7 @@ class AutoTester:
                         'functions': [],
                         'imports': []
                     }
-                    
+
                     for item in tree.body:
                         if isinstance(item, ast.ClassDef):
                             class_info = {
@@ -110,14 +112,16 @@ class AutoTester:
                                 for alias in item.names:
                                     module_info['imports'].append(alias.name)
                             else:
-                                module_info['imports'].append(item.module or '')
-                    
+                                module_info['imports'].append(
+                                    item.module or '')
+
                     modules.append(module_info)
-                    
+
                 except Exception as e:
-                    logger.warning(f"Erreur lors de l'analyse de {py_file}: {e}")
+                    logger.warning(
+                        f"Erreur lors de l'analyse de {py_file}: {e}")
                     continue
-        
+
         return modules
 
     def _generate_unit_tests(self, modules: List[Dict[str, Any]]) -> List[str]:
@@ -213,7 +217,8 @@ if __name__ == '__main__':
 
         return test_content
 
-    def _generate_integration_tests(self, modules: List[Dict[str, Any]]) -> List[str]:
+    def _generate_integration_tests(
+            self, modules: List[Dict[str, Any]]) -> List[str]:
         """Génère les tests d'intégration"""
         integration_tests = []
 
@@ -276,7 +281,8 @@ if __name__ == '__main__':
 
         return integration_tests
 
-    def _generate_performance_tests(self, modules: List[Dict[str, Any]]) -> List[str]:
+    def _generate_performance_tests(
+            self, modules: List[Dict[str, Any]]) -> List[str]:
         """Génère les tests de performance"""
         performance_tests = []
 
@@ -352,10 +358,14 @@ if __name__ == '__main__':
 
         return performance_tests
 
-    def _save_tests(self, unit_tests: List[str], integration_tests: List[str], performance_tests: List[str]):
+    def _save_tests(
+            self,
+            unit_tests: List[str],
+            integration_tests: List[str],
+            performance_tests: List[str]):
         """Sauvegarde les tests f"""
         tests_dir = self.project_path / "tests"
-        tests_dir.mkdir(exist_ok = True)
+        tests_dir.mkdir(exist_ok=True)
 
         # Tests unitaires
         for index, test_content in enumerate(unit_tests):
@@ -458,12 +468,15 @@ echo "✅ Tests terminés !"
                 )
 
                 if result.returncode == 0:
-                    results["unit_tests"]["passed"] = len(re.findall(r"PASSED", result.stdout))
+                    results["unit_tests"]["passed"] = len(
+                        re.findall(r"PASSED", result.stdout))
                 else:
-                    results["unit_tests"]["failed"] = len(re.findall(r"FAILED", result.stdout))
+                    results["unit_tests"]["failed"] = len(
+                        re.findall(r"FAILED", result.stdout))
                     results["unit_tests"]["errors"].append(result.stderr)
             except subprocess.TimeoutExpired:
-                results["unit_tests"]["errors"].append("Timeout lors de l'exécution")
+                results["unit_tests"]["errors"].append(
+                    "Timeout lors de l'exécution")
             except Exception as e:
                 results["unit_tests"]["errors"].append(str(e))
 
@@ -478,12 +491,16 @@ echo "✅ Tests terminés !"
                 )
 
                 if result.returncode == 0:
-                    results["integration_tests"]["passed"] = len(re.findall(r"PASSED", result.stdout))
+                    results["integration_tests"]["passed"] = len(
+                        re.findall(r"PASSED", result.stdout))
                 else:
-                    results["integration_tests"]["failed"] = len(re.findall(r"FAILED", result.stdout))
-                    results["integration_tests"]["errors"].append(result.stderr)
+                    results["integration_tests"]["failed"] = len(
+                        re.findall(r"FAILED", result.stdout))
+                    results["integration_tests"]["errors"].append(
+                        result.stderr)
             except subprocess.TimeoutExpired:
-                results["integration_tests"]["errors"].append("Timeout lors de l'exécution")
+                results["integration_tests"]["errors"].append(
+                    "Timeout lors de l'exécution")
             except Exception as e:
                 results["integration_tests"]["errors"].append(str(e))
 
@@ -498,7 +515,8 @@ echo "✅ Tests terminés !"
     def _get_created_files(self) -> List[str]:
         """Retourne la liste des fichiers créés"""
         files = ["pytest.ini", "run_tests.sh"] + self.generated_tests
-        return [str(self.project_path / file_handle) if not file_handle.startswith(str(self.project_path)) else file_handle for file_handle in files]
+        return [str(self.project_path / file_handle) if not file_handle.startswith(
+            str(self.project_path)) else file_handle for file_handle in files]
 
     def generate_test_report(self) -> str:
         """Génère un rapport de tests"""
@@ -527,7 +545,7 @@ echo "✅ Tests terminés !"
 📄 FICHIERS CRÉÉS ({num_files}):
 """
         report = report.format(
-            sep='='*60,
+            sep='=' * 60,
             project_name=self.project_path.name,
             unit_passed=self.test_results.get('unit_tests', {}).get('passed', 0),
             unit_failed=self.test_results.get('unit_tests', {}).get('failed', 0),
@@ -558,16 +576,20 @@ python -m pytest tests/ -v
 {sep2}
 """.format(
             project_path=self.project_path,
-            sep2='='*60
+            sep2='=' * 60
         )
         return report
+
 
 def main():
     """Point dentrée f"""
 
     parser = argparse.ArgumentParser(description="Génération automatique de f")
     parser.add_argument("project_path", help="Chemin du projet à f")
-    parser.add_argument("--run", action="store_true", help="Exécuter les tests après f")
+    parser.add_argument(
+        "--run",
+        action="store_true",
+        help="Exécuter les tests après f")
 
     args = parser.parse_args()
 
@@ -587,6 +609,7 @@ def main():
         logger.info("\n🧪 Exécution des tests...")
         tester.test_results = result['test_results']
         logger.info(tester.generate_test_report())
+
 
 if __name__ == "__main__":
     main()

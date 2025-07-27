@@ -882139,6 +882139,13 @@ Mode surveillance avec arrêt automatique
 
 - `test_mode`
 
+##### log_main
+
+**Paramètres :**
+
+- `msg`
+- `level`
+
 ---
 
 ### architecture_analyzer
@@ -883931,6 +883938,25 @@ Affichage du rapport de sécurité
 
 ---
 
+### ready_check
+
+#### Fonctions
+
+##### open_patch
+
+**Paramètres :**
+
+- `file`
+- `mode`
+
+##### check_ready
+
+**Paramètres :**
+
+- `project_path`
+
+---
+
 ### cleanup
 
 #### Fonctions
@@ -884177,6 +884203,157 @@ Récupère les statistiques de correction
 
 ---
 
+### performance_analyzer
+
+⚡ ANALYSEUR DE PERFORMANCE
+===========================
+Module spécialisé dans l'analyse des performances du code,
+détection des goulots d'étranglement et optimisation.
+
+#### Classes
+
+##### PerformanceMetric
+
+Métrique de performance
+
+##### PerformanceIssue
+
+Problème de performance détecté
+
+##### PerformanceReport
+
+Rapport de performance complet
+
+##### PerformanceAnalyzer
+
+Analyseur de performance pour détecter les goulots d'étranglement
+
+**Méthodes :**
+
+- `__init__()`
+- `_init_database()`
+- `analyze_project_performance()`
+- `_analyze_file_performance()`
+- `_detect_performance_issues()`
+- `_get_metric_status()`
+- `_calculate_overall_score()`
+- `_get_metric_weight()`
+- `_calculate_metric_score()`
+- `_generate_performance_recommendations()`
+- `_identify_optimization_opportunities()`
+- `_save_performance_report()`
+- `profile_function()`
+- `get_performance_insights()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `root_path`
+
+##### _init_database
+
+Initialiser la base de données de performance
+
+##### analyze_project_performance
+
+Analyser les performances d'un projet complet
+
+**Paramètres :**
+
+- `project_path`
+
+##### _analyze_file_performance
+
+Analyser les performances d'un fichier
+
+**Paramètres :**
+
+- `file_analysis`
+
+##### _detect_performance_issues
+
+Détecter les problèmes de performance dans un fichier
+
+**Paramètres :**
+
+- `file_analysis`
+
+##### _get_metric_status
+
+Déterminer le statut d'une métrique
+
+**Paramètres :**
+
+- `value`
+- `threshold`
+- `reverse`
+
+##### _calculate_overall_score
+
+Calculer le score de performance global
+
+**Paramètres :**
+
+- `metrics`
+
+##### _get_metric_weight
+
+Obtenir le poids d'une métrique
+
+**Paramètres :**
+
+- `metric_type`
+
+##### _calculate_metric_score
+
+Calculer le score d'une métrique
+
+**Paramètres :**
+
+- `metric`
+
+##### _generate_performance_recommendations
+
+Générer des recommandations de performance
+
+**Paramètres :**
+
+- `issues`
+
+##### _identify_optimization_opportunities
+
+Identifier les opportunités d'optimisation
+
+**Paramètres :**
+
+- `issues`
+
+##### _save_performance_report
+
+Sauvegarder le rapport de performance
+
+**Paramètres :**
+
+- `report`
+
+##### profile_function
+
+Profiler une fonction spécifique
+
+**Paramètres :**
+
+- `function_path`
+- `function_name`
+
+##### get_performance_insights
+
+Obtenir des insights de performance
+
+---
+
 ### multi_file_editor
 
 Module d'édition/correction multi-fichiers pour Athalia/Arkalia.
@@ -884376,176 +884553,6 @@ Générer des recommandations basées sur l'analyse
 ##### get_learning_insights
 
 Obtenir des insights d'apprentissage
-
----
-
-### performance_analyzer
-
-⚡ ANALYSEUR DE PERFORMANCE
-===========================
-Module spécialisé dans l'analyse des performances du code,
-détection des goulots d'étranglement et optimisation.
-
-#### Classes
-
-##### PerformanceMetric
-
-Métrique de performance
-
-##### PerformanceIssue
-
-Problème de performance détecté
-
-##### PerformanceReport
-
-Rapport de performance complet
-
-##### PerformanceAnalyzer
-
-Analyseur de performance pour détecter les goulots d'étranglement
-
-**Méthodes :**
-
-- `__init__()`
-- `_init_database()`
-- `analyze_project_performance()`
-- `_analyze_file_performance()`
-- `_detect_performance_issues()`
-- `_get_metric_status()`
-- `_calculate_overall_score()`
-- `_get_metric_weight()`
-- `_calculate_metric_score()`
-- `_generate_performance_recommendations()`
-- `_identify_optimization_opportunities()`
-- `_save_performance_report()`
-- `profile_function()`
-- `get_performance_insights()`
-
-#### Fonctions
-
-##### __init__
-
-**Paramètres :**
-
-- `root_path`
-
-##### _init_database
-
-Initialiser la base de données de performance
-
-##### analyze_project_performance
-
-Analyser les performances d'un projet complet
-
-**Paramètres :**
-
-- `project_path`
-
-##### _analyze_file_performance
-
-Analyser les performances d'un fichier
-
-**Paramètres :**
-
-- `file_analysis`
-
-##### _detect_performance_issues
-
-Détecter les problèmes de performance dans un fichier
-
-**Paramètres :**
-
-- `file_analysis`
-
-##### _get_metric_status
-
-Déterminer le statut d'une métrique
-
-**Paramètres :**
-
-- `value`
-- `threshold`
-- `reverse`
-
-##### _calculate_overall_score
-
-Calculer le score de performance global
-
-**Paramètres :**
-
-- `metrics`
-
-##### _get_metric_weight
-
-Obtenir le poids d'une métrique
-
-**Paramètres :**
-
-- `metric_type`
-
-##### _calculate_metric_score
-
-Calculer le score d'une métrique
-
-**Paramètres :**
-
-- `metric`
-
-##### _generate_performance_recommendations
-
-Générer des recommandations de performance
-
-**Paramètres :**
-
-- `issues`
-
-##### _identify_optimization_opportunities
-
-Identifier les opportunités d'optimisation
-
-**Paramètres :**
-
-- `issues`
-
-##### _save_performance_report
-
-Sauvegarder le rapport de performance
-
-**Paramètres :**
-
-- `report`
-
-##### profile_function
-
-Profiler une fonction spécifique
-
-**Paramètres :**
-
-- `function_path`
-- `function_name`
-
-##### get_performance_insights
-
-Obtenir des insights de performance
-
----
-
-### ready_check
-
-#### Fonctions
-
-##### open_patch
-
-**Paramètres :**
-
-- `file`
-- `mode`
-
-##### check_ready
-
-**Paramètres :**
-
-- `project_path`
 
 ---
 
