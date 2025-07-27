@@ -20,7 +20,7 @@ exclude =
 # Ignorer certaines règles pour les fichiers de test et validation
 per-file-ignores =
     # Fichiers de test et validation - règles plus souples
-    tests/*:E501,W291,W292,E722,F401,F541
+    tests/*:E501,W291,W292,W293,E722,F401,F541,E302,E305,E306,E128,E251,W504,E226,E303,E704,E129,E731,F841
     scripts/validation_objective.py:E501,W291,W292,E722,F401,F541
     scripts/*:E501,W291,W292,E722,F401,F541
     
