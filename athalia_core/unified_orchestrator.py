@@ -70,7 +70,7 @@ from .security import security_audit_project
 from .onboarding import generate_onboarding_md, generate_onboard_cli, generate_onboarding_html_advanced
 from .plugins_manager import run_all_plugins
 from .ready_check import open_patch, check_ready
-from .dashboard import main
+from .dashboard import main as dashboard_main
 from .audit import Audit
 from .config_manager import ConfigManager
 from .correction_optimizer import CorrectionOptimizer

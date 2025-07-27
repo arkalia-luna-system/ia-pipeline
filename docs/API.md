@@ -4827,77 +4827,64 @@ Teste la fonctionnalité d'assertion
 
 ### test_ci_ultra_fast
 
-🧪 Tests CI Ultra-Fast - Athalia/Arkalia
-========================================
-
-Tests ultra-rapides pour la validation CI/CD
-Tests essentiels qui doivent passer en moins de 5 secondes
+Tests CI ultra-rapides pour Athalia
+Tests essentiels qui ne doivent jamais bloquer le CI
 
 #### Classes
 
 ##### TestCIUltraFast
 
-Tests CI ultra-rapides pour validation de base
+Tests CI ultra-rapides et essentiels
 
 **Méthodes :**
 
-- `test_python_version()`
-- `test_essential_imports()`
 - `test_project_structure()`
-- `test_config_files()`
-- `test_test_files_exist()`
-- `test_requirements_readable()`
+- `test_essential_files()`
+- `test_python_syntax_basic()`
+- `test_imports_basic()`
+- `test_config_validity()`
+- `test_requirements_format()`
 - `test_ci_workflow_exists()`
-- `test_environment_variables()`
-- `test_basic_functionality()`
-- `test_file_permissions()`
-- `test_encoding_utf8()`
+- `test_no_critical_errors()`
+- `test_project_ready()`
 
 #### Fonctions
 
-##### test_python_version
-
-Vérifie la version de Python
-
-##### test_essential_imports
-
-Vérifie les imports essentiels
-
 ##### test_project_structure
 
-Vérifie la structure de base du projet
+Test que la structure de base du projet existe
 
-##### test_config_files
+##### test_essential_files
 
-Vérifie les fichiers de configuration essentiels
+Test que les fichiers essentiels existent
 
-##### test_test_files_exist
+##### test_python_syntax_basic
 
-Vérifie qu'il y a des fichiers de test
+Test de syntaxe Python basique sur les fichiers principaux
 
-##### test_requirements_readable
+##### test_imports_basic
 
-Vérifie que requirements-minimal.txt est lisible
+Test d'imports basiques
+
+##### test_config_validity
+
+Test de validité basique de la configuration
+
+##### test_requirements_format
+
+Test de format basique des requirements
 
 ##### test_ci_workflow_exists
 
-Vérifie que le workflow CI existe
+Test que le workflow CI existe
 
-##### test_environment_variables
+##### test_no_critical_errors
 
-Vérifie les variables d'environnement essentielles
+Test qu'il n'y a pas d'erreurs critiques
 
-##### test_basic_functionality
+##### test_project_ready
 
-Test de fonctionnalité de base
-
-##### test_file_permissions
-
-Vérifie les permissions de fichiers
-
-##### test_encoding_utf8
-
-Vérifie l'encodage UTF-8
+Test que le projet est prêt pour le développement
 
 ---
 
@@ -881706,6 +881693,15 @@ Orchestrateur unifié qui combine :
 
 #### Classes
 
+##### BackupSystem
+
+Système de sauvegarde simple
+
+**Méthodes :**
+
+- `__init__()`
+- `create_backup()`
+
 ##### OrchestrationTask
 
 Tâche d'orchestration unifiée
@@ -881748,13 +881744,28 @@ Combine industrialisation complète et intelligence avancée
 - `phase2_backup()`
 - `get_phase2_backup_stats()`
 - `validate_phase2_inputs()`
-- `cli_entry()`
+- `run_phase2_backup()`
+- `run_phase2_error_handling()`
 
 #### Fonctions
+
+##### get_backup_system
+
+Obtenir le système de sauvegarde
+
+##### standardize_cli_script
+
+Standardiser le script CLI
 
 ##### main
 
 Point d'entrée principal
+
+##### __init__
+
+##### create_backup
+
+Créer une sauvegarde
 
 ##### __init__
 
@@ -881922,19 +881933,28 @@ Obtenir les statistiques des sauvegardes Phase2
 
 ##### validate_phase2_inputs
 
-Valider les entrées Phase2
+Valider les entrées Phase2 avec champs requis optionnels
 
 **Paramètres :**
 
 - `inputs`
+- `required_fields`
 
-##### cli_entry
+##### run_phase2_backup
 
-Point d'entrée CLI
+Exécuter la sauvegarde Phase2
 
 **Paramètres :**
 
-- `args`
+- `project_path`
+
+##### run_phase2_error_handling
+
+Gestion d'erreur Phase2
+
+**Paramètres :**
+
+- `operation`
 
 ---
 

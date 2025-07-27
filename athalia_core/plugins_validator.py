@@ -5,10 +5,11 @@ import sys
 import importlib.util
 import types
 import logging
+from typing import Dict, Any
 
 logger = logging.getLogger(__name__)
 
-def validate_plugin(path):
+def validate_plugin(path: str) -> Dict[str, Any]:
     """Valide un plugin Python : héritage, méthode run / execute, docstring."""
     result = {"f": False, "errors": [], "class_name": None}
     if not os.path.exists(path):
