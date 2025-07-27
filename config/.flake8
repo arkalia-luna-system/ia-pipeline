@@ -1,0 +1,37 @@
+[flake8]
+max-line-length = 100
+exclude = 
+    .git,
+    __pycache__,
+    venv,
+    .venv,
+    build,
+    dist,
+    *.egg-info,
+    archive,
+    backups,
+    logs,
+    data/reports,
+    docs/archive
+
+# Ignorer certaines règles pour les fichiers de test et validation
+per-file-ignores =
+    # Fichiers de test et validation - règles plus souples
+    tests/*:E501,W291,W292,E722,F401,F541
+    scripts/validation_objective.py:E501,W291,W292,E722,F401,F541
+    scripts/*:E501,W291,W292,E722,F401,F541
+    
+    # Fichiers de configuration et utilitaires
+    setup/*:E501,W291,W292
+    config/*:E501,W291,W292
+    bin/*:E501,W291,W292
+
+# Règles à ignorer globalement
+ignore = 
+    E203,
+    W503,
+    F401,
+    E722,
+    W291,
+    W292,
+    F541 
