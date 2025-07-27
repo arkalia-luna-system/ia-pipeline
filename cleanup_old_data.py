@@ -175,7 +175,8 @@ class DataCleaner:
         }
         
         return report
-    
+
+
     def cleanup(self, dry_run=False):
         """Exécute le nettoyage complet"""
         logger.info("🧹 DÉBUT DU NETTOYAGE DES DONNÉES")
@@ -231,6 +232,7 @@ class DataCleaner:
         logger.info(f"📄 Rapport sauvegardé: {report_file}")
         
         return report
+
 
 def main():
     """Fonction principale"""

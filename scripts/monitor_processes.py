@@ -63,7 +63,6 @@ class AthaliaProcessMonitor:
 
         return killed_count
 
-
     def monitor_processes(self, interval: int = 30, max_duration: int = 3600):
         """Surveille les processus en continu"""
         start_time = time.time()
@@ -86,7 +85,6 @@ class AthaliaProcessMonitor:
                 self.logger.info("ℹ️ Aucun processus athalia_core.main actif")
 
             time.sleep(interval)
-
 
     def get_process_stats(self) -> Dict[str, Any]:
         """Retourne les statistiques des processus"""
