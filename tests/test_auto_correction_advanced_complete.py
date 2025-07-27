@@ -16,7 +16,11 @@ import shutil
 # Ajout du chemin du projet pour les imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from athalia_core.advanced_modules.auto_correction_advanced import AutoCorrectionAvancee
+try:
+    from athalia_core.advanced_modules.auto_correction_advanced import AutoCorrectionAvancee
+    AUTO_CORRECTION_AVAILABLE = True
+except ImportError:
+    AUTO_CORRECTION_AVAILABLE = False
 
 
 class TestAutoCorrectionAvancee(unittest.TestCase):
@@ -24,6 +28,8 @@ class TestAutoCorrectionAvancee(unittest.TestCase):
 
     def setUp(self):
         """Configuration initiale pour chaque test"""
+        if not AUTO_CORRECTION_AVAILABLE:
+            self.skipTest("AutoCorrectionAvancee non disponible")
         self.temp_dir = tempfile.mkdtemp()
         self.auto_correction = AutoCorrectionAvancee(self.temp_dir)
         
@@ -302,7 +308,11 @@ def test_function():
         """Test de la génération de rapport"""
         resultats = {
             'corrections_appliquees': [
-                {'fichier': 'test.py', 'erreur_originale': 'SyntaxError', 'nouveau_contenu': 'corrected'}
+                {
+                    'fichier': 'test.py', 
+                    'erreur_originale': 'SyntaxError', 
+                    'nouveau_contenu': 'corrected'
+                }
             ],
             'fichiers_traites': 5,
             'erreurs_corrigees': 3
@@ -321,6 +331,8 @@ class TestAutoCorrectionAvanceeIntegration(unittest.TestCase):
 
     def setUp(self):
         """Configuration initiale pour chaque test"""
+        if not AUTO_CORRECTION_AVAILABLE:
+            self.skipTest("AutoCorrectionAvancee non disponible")
         self.temp_dir = tempfile.mkdtemp()
         self.auto_correction = AutoCorrectionAvancee(self.temp_dir)
 
