@@ -114,14 +114,14 @@ def generate_technical_debt_analysis(project_path: str = ".") -> Dict[str, Any]:
         ] if debt_indicators else ["Projet en bon état"]
     }
 
-def generate_analytics_html(projects_info: Dict[str, Any]) -> str:
+def generate_analytics_html(project_path: str = ".") -> str:
     """Générer un rapport HTML d'analytics"""
-    # Si projects_info est une liste, prendre le premier projet
-    if isinstance(projects_info, list) and projects_info:
-        project_path = projects_info[0]
-    elif isinstance(projects_info, dict) and "path" in projects_info:
-        project_path = projects_info["path"]
-    else:
+    # Si project_path est un dictionnaire, extraire le chemin
+    if isinstance(project_path, dict) and "path" in project_path:
+        project_path = project_path["path"]
+    elif isinstance(project_path, list) and project_path:
+        project_path = project_path[0]
+    elif not isinstance(project_path, str):
         project_path = "."
         
     analysis = analyze_project(project_path)
