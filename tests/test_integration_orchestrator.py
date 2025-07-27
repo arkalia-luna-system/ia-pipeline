@@ -118,7 +118,8 @@ if __name__ == "__main__":
         """Test de la configuration de l'orchestrateur"""
         try:
             from athalia_core.unified_orchestrator import UnifiedOrchestrator
-            orchestrator = UnifiedOrchestrator(self.temp_dir)
+            # Initialiser sans argument pour éviter les problèmes de composants
+            orchestrator = UnifiedOrchestrator()
             
             # Vérifier la configuration par défaut
             self.assertIn("audit", orchestrator.config)
