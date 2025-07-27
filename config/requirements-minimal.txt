@@ -20,5 +20,8 @@ pytest-benchmark>=4.0.0
 psutil>=6.1.0
 gitpython
 
+# Linting
+flake8>=7.0.0
+
 # Security
 cryptography>=45.0.0 
