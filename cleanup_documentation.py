@@ -183,7 +183,8 @@ class DocumentationCleaner:
         report = self.create_documentation_report(categories, archived_count)
 
         # Sauvegarder le rapport
-        report_file = self.docs_dir / f"cleanup_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        report_file = self.docs_dir / f"cleanup_report_{timestamp}.json"
         with open(report_file, 'w', encoding='utf-8') as f:
             json.dump(report, f, indent=2, ensure_ascii=False)
 
