@@ -47,7 +47,10 @@ class AutoCorrectionAvancee:
         # 5. Amélioration de la lisibilité
         resultats.update(self._ameliorer_lisibilite(dry_run))
 
-        corrections_count = len(resultats.get('corrections_appliquees', []) or [])
+        corrections_appliquees = resultats.get('corrections_appliquees', [])
+        if not isinstance(corrections_appliquees, list):
+            corrections_appliquees = []
+        corrections_count = len(corrections_appliquees)
         logger.info(
             f"✅ Auto-correction terminée: "
             f"{corrections_count} corrections appliquées"
