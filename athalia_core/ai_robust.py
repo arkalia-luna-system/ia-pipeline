@@ -392,7 +392,7 @@ Retourne un JSON avec: vulnerabilities[], recommendations[], risk_level
             **kwargs) -> dict:
         """Génère une réponse IA robuste avec fallback."""
         prompt = self._get_dynamic_prompt(context, **kwargs)
-        
+
         # Essayer chaque modèle dans la chaîne de fallback
         for model in self.fallback_chain:
             try:
@@ -407,7 +407,7 @@ Retourne un JSON avec: vulnerabilities[], recommendations[], risk_level
             except Exception as e:
                 logging.warning(f"Modèle {model.value} échoué: {e}")
                 continue
-        
+
         # Fallback final
         return {
             'model': 'mock',

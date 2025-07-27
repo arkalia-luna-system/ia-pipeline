@@ -2612,6 +2612,103 @@ Test simple de correction
 
 ---
 
+### test_dashboard_unified
+
+Tests unitaires pour le module dashboard_unified.py
+
+#### Classes
+
+##### TestDashboardUnifieSimple
+
+Tests pour la classe DashboardUnifieSimple
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `test_init_database()`
+- `test_enregistrer_metrique()`
+- `test_enregistrer_evenement()`
+- `test_enregistrer_rapport()`
+- `test_obtenir_metriques_temps_reel()`
+- `test_generer_rapport_consolide()`
+- `test_generer_dashboard_html()`
+- `test_ouvrir_dashboard()`
+
+##### TestDashboardIntegration
+
+Tests d'intégration pour le dashboard
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `test_workflow_complet()`
+
+#### Fonctions
+
+##### setUp
+
+Configuration initiale pour chaque test
+
+##### tearDown
+
+Nettoyage après chaque test
+
+##### test_init_database
+
+Test de l'initialisation de la base de données
+
+##### test_enregistrer_metrique
+
+Test d'enregistrement de métrique
+
+##### test_enregistrer_evenement
+
+Test d'enregistrement d'événement
+
+##### test_enregistrer_rapport
+
+Test d'enregistrement de rapport
+
+##### test_obtenir_metriques_temps_reel
+
+Test d'obtention des métriques en temps réel
+
+##### test_generer_rapport_consolide
+
+Test de génération de rapport consolidé
+
+##### test_generer_dashboard_html
+
+Test de génération du dashboard HTML
+
+**Paramètres :**
+
+- `mock_webbrowser`
+
+##### test_ouvrir_dashboard
+
+Test d'ouverture du dashboard
+
+**Paramètres :**
+
+- `mock_webbrowser`
+
+##### setUp
+
+Configuration initiale pour chaque test
+
+##### tearDown
+
+Nettoyage après chaque test
+
+##### test_workflow_complet
+
+Test d'un workflow complet du dashboard
+
+---
+
 ### test_auto_cicd_unit
 
 #### Classes
@@ -2943,6 +3040,122 @@ Test qu'il n'y a pas de répertoires vides
 **Paramètres :**
 
 - `tmp_path`
+
+---
+
+### test_context_prompt
+
+Tests unitaires pour le module context_prompt.py
+
+#### Classes
+
+##### TestContextPrompt
+
+Tests pour les fonctions de context_prompt
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `test_score_prompt()`
+- `test_detect_prompts_scoring()`
+- `test_detect_prompt_semantic()`
+- `test_detect_prompt_semantic_error()`
+- `test_show_prompts_with_semantic()`
+- `test_show_prompts_without_semantic()`
+- `test_show_prompts_empty()`
+- `test_score_prompt_with_keywords()`
+- `test_score_prompt_no_match()`
+
+##### TestContextPromptIntegration
+
+Tests d'intégration pour context_prompt
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `test_workflow_complet()`
+
+#### Fonctions
+
+##### setUp
+
+Configuration initiale pour chaque test
+
+##### tearDown
+
+Nettoyage après chaque test
+
+##### test_score_prompt
+
+Test de scoring d'un prompt
+
+##### test_detect_prompts_scoring
+
+Test de détection de prompts par scoring
+
+##### test_detect_prompt_semantic
+
+Test de détection de prompt sémantique
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_detect_prompt_semantic_error
+
+Test de détection sémantique avec erreur
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_show_prompts_with_semantic
+
+Test d'affichage des prompts avec prompt sémantique
+
+**Paramètres :**
+
+- `mock_logging`
+- `mock_open`
+- `mock_exists`
+
+##### test_show_prompts_without_semantic
+
+Test d'affichage des prompts sans prompt sémantique
+
+**Paramètres :**
+
+- `mock_logging`
+
+##### test_show_prompts_empty
+
+Test d'affichage des prompts avec liste vide
+
+**Paramètres :**
+
+- `mock_logging`
+
+##### test_score_prompt_with_keywords
+
+Test de scoring avec mots-clés spécifiques
+
+##### test_score_prompt_no_match
+
+Test de scoring sans correspondance
+
+##### setUp
+
+Configuration initiale pour chaque test
+
+##### tearDown
+
+Nettoyage après chaque test
+
+##### test_workflow_complet
+
+Test d'un workflow complet de détection de prompts
 
 ---
 
@@ -3454,6 +3667,157 @@ Test de la génération d'insights d'apprentissage
 
 ---
 
+### test_user_profiles_advanced
+
+Tests unitaires pour le module user_profiles_advanced.py
+
+#### Classes
+
+##### TestProfilUtilisateur
+
+Tests pour la classe ProfilUtilisateur
+
+**Méthodes :**
+
+- `setUp()`
+- `test_init()`
+- `test_to_dict()`
+- `test_from_dict()`
+
+##### TestGestionnaireProfils
+
+Tests pour la classe GestionnaireProfils
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `test_init_database()`
+- `test_creer_profil()`
+- `test_obtenir_profil()`
+- `test_obtenir_profil_inexistant()`
+- `test_mettre_a_jour_profil()`
+- `test_enregistrer_action()`
+- `test_enregistrer_consultation_projet()`
+- `test_obtenir_statistiques()`
+- `test_generer_rapport_profil()`
+- `test_generer_rapport_profil_inexistant()`
+- `test_lister_profils()`
+- `test_supprimer_profil()`
+- `test_supprimer_profil_inexistant()`
+- `test_exporter_profil()`
+- `test_importer_profil()`
+
+##### TestGestionnaireProfilsIntegration
+
+Tests d'intégration pour GestionnaireProfils
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `test_workflow_complet()`
+
+#### Fonctions
+
+##### setUp
+
+Configuration initiale pour chaque test
+
+##### test_init
+
+Test de l'initialisation
+
+##### test_to_dict
+
+Test de conversion en dictionnaire
+
+##### test_from_dict
+
+Test de création depuis un dictionnaire
+
+##### setUp
+
+Configuration initiale pour chaque test
+
+##### tearDown
+
+Nettoyage après chaque test
+
+##### test_init_database
+
+Test de l'initialisation de la base de données
+
+##### test_creer_profil
+
+Test de création de profil
+
+##### test_obtenir_profil
+
+Test d'obtention de profil
+
+##### test_obtenir_profil_inexistant
+
+Test d'obtention d'un profil inexistant
+
+##### test_mettre_a_jour_profil
+
+Test de mise à jour de profil
+
+##### test_enregistrer_action
+
+Test d'enregistrement d'action
+
+##### test_enregistrer_consultation_projet
+
+Test d'enregistrement de consultation de projet
+
+##### test_obtenir_statistiques
+
+Test d'obtention de statistiques
+
+##### test_generer_rapport_profil
+
+Test de génération de rapport de profil
+
+##### test_generer_rapport_profil_inexistant
+
+Test de génération de rapport pour un profil inexistant
+
+##### test_lister_profils
+
+Test de listage des profils
+
+##### test_supprimer_profil
+
+Test de suppression de profil
+
+##### test_supprimer_profil_inexistant
+
+Test de suppression d'un profil inexistant
+
+##### test_exporter_profil
+
+Test d'export de profil
+
+##### test_importer_profil
+
+Test d'import de profil
+
+##### setUp
+
+Configuration initiale pour chaque test
+
+##### tearDown
+
+Nettoyage après chaque test
+
+##### test_workflow_complet
+
+Test d'un workflow complet de gestion de profils
+
+---
+
 ### test_code_genetics
 
 #### Classes
@@ -3611,6 +3975,50 @@ Fonction principale de f
 
 ---
 
+### test_architecture_analyzer_unit
+
+Tests unitaires pour le module architecture_analyzer
+
+#### Fonctions
+
+##### test_architecture_analyzer_constructor
+
+Test du constructeur de ArchitectureAnalyzer
+
+##### test_analyze_single_module
+
+Test de l'analyse d'un module unique
+
+##### test_extract_dependencies
+
+Test de l'extraction des dépendances
+
+##### test_calculate_performance_score
+
+Test du calcul du score de performance
+
+##### test_detect_module_issues
+
+Test de la détection des problèmes de module
+
+##### test_generate_recommendations
+
+Test de la génération de recommandations
+
+##### test_analyze_entire_architecture
+
+Test de l'analyse complète de l'architecture
+
+##### test_get_optimization_plan
+
+Test de la génération du plan d'optimisation
+
+##### test_generate_intelligent_coordination
+
+Test de la génération de coordination intelligente
+
+---
+
 ### test_coverage_threshold
 
 Test de seuil de couverture de code
@@ -3738,6 +4146,128 @@ Tente de corriger une erreur de syntaxe
 ##### get_results
 
 Retourne les résultats des tests de syntaxe
+
+---
+
+### test_auto_correction_advanced
+
+Tests unitaires pour le module auto_correction_advanced.py
+
+#### Classes
+
+##### TestAutoCorrectionAvancee
+
+Tests pour la classe AutoCorrectionAvancee
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `test_init()`
+- `test_analyser_et_corriger_dry_run()`
+- `test_corriger_syntaxe_avancee()`
+- `test_optimiser_code()`
+- `test_refactoring_automatique()`
+- `test_corriger_anti_patterns()`
+- `test_ameliorer_lisibilite()`
+- `test_generer_rapport()`
+- `test_corriger_erreur_syntaxe()`
+- `test_corriger_indentation()`
+- `test_corriger_parentheses()`
+- `test_corriger_guillemets()`
+- `test_corriger_virgules()`
+
+##### TestAutoCorrectionIntegration
+
+Tests d'intégration pour l'auto-correction
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `test_workflow_complet()`
+
+##### MockSyntaxError
+
+**Méthodes :**
+
+- `__init__()`
+
+#### Fonctions
+
+##### setUp
+
+Configuration initiale pour chaque test
+
+##### tearDown
+
+Nettoyage après chaque test
+
+##### test_init
+
+Test de l'initialisation
+
+##### test_analyser_et_corriger_dry_run
+
+Test d'analyse et correction en mode dry-run
+
+##### test_corriger_syntaxe_avancee
+
+Test de correction de syntaxe avancée
+
+##### test_optimiser_code
+
+Test d'optimisation de code
+
+##### test_refactoring_automatique
+
+Test de refactoring automatique
+
+##### test_corriger_anti_patterns
+
+Test de correction d'anti-patterns
+
+##### test_ameliorer_lisibilite
+
+Test d'amélioration de lisibilité
+
+##### test_generer_rapport
+
+Test de génération de rapport
+
+##### test_corriger_erreur_syntaxe
+
+Test de correction d'erreur de syntaxe
+
+##### test_corriger_indentation
+
+Test de correction d'indentation
+
+##### test_corriger_parentheses
+
+Test de correction de parenthèses
+
+##### test_corriger_guillemets
+
+Test de correction de guillemets
+
+##### test_corriger_virgules
+
+Test de correction de virgules
+
+##### setUp
+
+Configuration initiale pour chaque test
+
+##### tearDown
+
+Nettoyage après chaque test
+
+##### test_workflow_complet
+
+Test d'un workflow complet d'auto-correction
+
+##### __init__
 
 ---
 
@@ -880942,7 +881472,7 @@ Appel local à Qwen 7B via Ollama.
 
 ##### query_mistral
 
-Appel local à Mistral Small via Ollama.
+Appel local à Mistral 7B via Ollama.
 
 **Paramètres :**
 
@@ -880970,7 +881500,7 @@ Extrait un nom de projet de l'idée
 
 ##### review_code
 
-Fait une revue de code et retourne un rapport mocké.
+Génère une revue de code mockée.
 
 **Paramètres :**
 
@@ -881027,9 +881557,7 @@ Charge les templates de prompts dynamiques.
 
 ##### generate_response
 
-Gère la génération de réponse IA avec fallback ou distillation.
-Si distillation=True, interroge tous les modèles et agrège les réponses.
-Retourne un dict: {model: réponse, ..., 'distilled': ...}
+Génère une réponse IA robuste avec fallback.
 
 **Paramètres :**
 
@@ -881038,6 +881566,8 @@ Retourne un dict: {model: réponse, ..., 'distilled': ...}
 
 ##### _call_model
 
+Appelle un modèle IA spécifique.
+
 **Paramètres :**
 
 - `model`
@@ -881045,7 +881575,7 @@ Retourne un dict: {model: réponse, ..., 'distilled': ...}
 
 ##### _classify_project_complexity
 
-Alias privé pour compatibilité avec les tests. Retourne un dict de complexité.
+Alias privé pour compatibilité avec les tests.
 
 **Paramètres :**
 
@@ -882615,6 +883145,31 @@ Calculer la complexité globale d'un arbre AST
 
 ---
 
+### cleanup
+
+#### Fonctions
+
+##### clean_old_tests_and_caches
+
+Supprime les anciens fichiers de test non-suffixés et les caches Python dans le projet cible.
+Log chaque suppression pour audit. Retourne la liste des fichiers supprimés.
+
+**Paramètres :**
+
+- `outdir`
+
+##### clean_macos_files
+
+Supprime automatiquement les fichiers macOS parasites et temporaires dans tout le projet.
+Inclut les fichiers système macOS spécifiques comme .!44956!*.clean
+Retourne la liste des fichiers supprimés.
+
+**Paramètres :**
+
+- `directory`
+
+---
+
 ### intelligent_auditor
 
 #### Classes
@@ -882840,31 +883395,6 @@ Génération des recommandations
 ##### generate_report
 
 Génère un rapport d'audit
-
----
-
-### cleanup
-
-#### Fonctions
-
-##### clean_old_tests_and_caches
-
-Supprime les anciens fichiers de test non-suffixés et les caches Python dans le projet cible.
-Log chaque suppression pour audit. Retourne la liste des fichiers supprimés.
-
-**Paramètres :**
-
-- `outdir`
-
-##### clean_macos_files
-
-Supprime automatiquement les fichiers macOS parasites et temporaires dans tout le projet.
-Inclut les fichiers système macOS spécifiques comme .!44956!*.clean
-Retourne la liste des fichiers supprimés.
-
-**Paramètres :**
-
-- `directory`
 
 ---
 
@@ -883986,6 +884516,33 @@ Affichage du rapport de sécurité
 
 ---
 
+### onboarding
+
+#### Fonctions
+
+##### generate_onboarding_md
+
+**Paramètres :**
+
+- `blueprint`
+- `outdir`
+
+##### generate_onboard_cli
+
+**Paramètres :**
+
+- `blueprint`
+- `outdir`
+
+##### generate_onboarding_html_advanced
+
+**Paramètres :**
+
+- `blueprint`
+- `outdir`
+
+---
+
 ### code_linter
 
 #### Classes
@@ -884046,33 +884603,6 @@ Calcul du score de qualité
 ##### print_report
 
 Affichage du rapport de linting
-
----
-
-### onboarding
-
-#### Fonctions
-
-##### generate_onboarding_md
-
-**Paramètres :**
-
-- `blueprint`
-- `outdir`
-
-##### generate_onboard_cli
-
-**Paramètres :**
-
-- `blueprint`
-- `outdir`
-
-##### generate_onboarding_html_advanced
-
-**Paramètres :**
-
-- `blueprint`
-- `outdir`
 
 ---
 
@@ -885367,6 +885897,106 @@ Fusionne plusieurs audits en un score global et des recommandations synthétique
 
 ---
 
+### response_distiller
+
+Module de distillation de réponses IA pour Athalia/Arkalia
+Permet de fusionner plusieurs réponses IA en une solution optimale 
+(voting, stacking, bagging, consensus scoring...)
+
+#### Classes
+
+##### ResponseDistiller
+
+**Méthodes :**
+
+- `__init__()`
+- `distill()`
+- `majority_voting()`
+- `stacking()`
+- `bagging()`
+- `consensus_scoring()`
+- `creative_fusion()`
+
+#### Fonctions
+
+##### distill_responses
+
+Fonction utilitaire pour distiller une liste de réponses IA.
+
+**Paramètres :**
+
+- `responses`
+- `strategy`
+- `context`
+
+##### __init__
+
+**Paramètres :**
+
+- `strategy`
+
+##### distill
+
+Fusionne plusieurs réponses IA selon la stratégie choisie.
+:param responses: Liste de réponses IA (str)
+:param context: Contexte optionnel (pour scoring avancé)
+:return: Réponse distillée (str)
+
+**Paramètres :**
+
+- `responses`
+- `context`
+
+##### majority_voting
+
+Retourne la réponse la plus fréquente (majorité).
+
+**Paramètres :**
+
+- `responses`
+
+##### stacking
+
+Concatène les parties communes, puis les parties uniques.
+
+**Paramètres :**
+
+- `responses`
+- `context`
+
+##### bagging
+
+Retourne une réponse aléatoire parmi les plus fréquentes (bagging).
+
+**Paramètres :**
+
+- `responses`
+
+##### consensus_scoring
+
+Retourne la plus longue sous-chaîne commune ET les parties divergentes.
+
+**Paramètres :**
+
+- `responses`
+
+##### creative_fusion
+
+Fusion créative : mélange de fragments, ajout d'un tag IA, et concat unique.
+
+**Paramètres :**
+
+- `responses`
+
+##### lcs
+
+**Paramètres :**
+
+- `a`
+- `b`
+
+---
+
 ### code_genetics
 
 Code Genetics pour Athalia/Arkalia
@@ -885628,106 +886258,6 @@ Module de scoring de qualité pour Athalia/Arkalia
 
 - `solution`
 - `context`
-
----
-
-### response_distiller
-
-Module de distillation de réponses IA pour Athalia/Arkalia
-Permet de fusionner plusieurs réponses IA en une solution optimale 
-(voting, stacking, bagging, consensus scoring...)
-
-#### Classes
-
-##### ResponseDistiller
-
-**Méthodes :**
-
-- `__init__()`
-- `distill()`
-- `majority_voting()`
-- `stacking()`
-- `bagging()`
-- `consensus_scoring()`
-- `creative_fusion()`
-
-#### Fonctions
-
-##### distill_responses
-
-Fonction utilitaire pour distiller une liste de réponses IA.
-
-**Paramètres :**
-
-- `responses`
-- `strategy`
-- `context`
-
-##### __init__
-
-**Paramètres :**
-
-- `strategy`
-
-##### distill
-
-Fusionne plusieurs réponses IA selon la stratégie choisie.
-:param responses: Liste de réponses IA (str)
-:param context: Contexte optionnel (pour scoring avancé)
-:return: Réponse distillée (str)
-
-**Paramètres :**
-
-- `responses`
-- `context`
-
-##### majority_voting
-
-Retourne la réponse la plus fréquente (majorité).
-
-**Paramètres :**
-
-- `responses`
-
-##### stacking
-
-Concatène les parties communes, puis les parties uniques.
-
-**Paramètres :**
-
-- `responses`
-- `context`
-
-##### bagging
-
-Retourne une réponse aléatoire parmi les plus fréquentes (bagging).
-
-**Paramètres :**
-
-- `responses`
-
-##### consensus_scoring
-
-Retourne la plus longue sous-chaîne commune ET les parties divergentes.
-
-**Paramètres :**
-
-- `responses`
-
-##### creative_fusion
-
-Fusion créative : mélange de fragments, ajout d'un tag IA, et concat unique.
-
-**Paramètres :**
-
-- `responses`
-
-##### lcs
-
-**Paramètres :**
-
-- `a`
-- `b`
 
 ---
 
