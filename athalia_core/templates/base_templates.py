@@ -233,7 +233,7 @@ class MemoryManager:
                     'error': 'Clé non trouvée'
                 }
 
-                        item = self.memory[key]
+            item = self.memory[key]
 
             # Vérifier le TTL
             if item.get('ttl'):
