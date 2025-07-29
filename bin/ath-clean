@@ -139,6 +139,21 @@ is_important_file() {
         fi
     done
     
+    # Protection spéciale pour les fichiers de tests
+    if [[ "$file" == *"test_"* ]] || [[ "$file" == *"_test"* ]] || [[ "$file" == *"tests/"* ]]; then
+        return 0  # Fichier de test important
+    fi
+    
+    # Protection spéciale pour les fichiers de configuration
+    if [[ "$file" == *"config/"* ]] || [[ "$file" == *".cfg" ]] || [[ "$file" == *".ini" ]] || [[ "$file" == *".yaml" ]] || [[ "$file" == *".yml" ]]; then
+        return 0  # Fichier de configuration important
+    fi
+    
+    # Protection spéciale pour les fichiers de documentation
+    if [[ "$file" == *"docs/"* ]] || [[ "$file" == *".md" ]] || [[ "$file" == *".rst" ]] || [[ "$file" == *".txt" ]]; then
+        return 0  # Fichier de documentation important
+    fi
+    
     return 1  # Fichier non important
 }
 
@@ -485,6 +500,34 @@ secure_clean "Fichiers de documentation temporaires" "*.md.tmp" "*.rst.tmp" "*.t
 # Nettoyage SÉCURISÉ des fichiers de IDE/éditeurs (seulement les fichiers .tmp)
 print_section "Nettoyage SÉCURISÉ des fichiers d'éditeurs"
 secure_clean "Fichiers d'éditeurs" ".vscode/settings.json.tmp" ".idea/workspace.xml.tmp" "*.sublime-*" ".editorconfig.tmp"
+
+# Nettoyage SÉCURISÉ des fichiers temporaires macOS spécifiques
+print_section "Nettoyage SÉCURISÉ des fichiers temporaires macOS"
+secure_clean "Fichiers temporaires macOS" "._*" ".!*" "*.f(f)" "._.coverage.*" ".coverage.Mac.*"
+
+# Nettoyage SÉCURISÉ des fichiers de processus interrompus
+print_section "Nettoyage SÉCURISÉ des fichiers de processus interrompus"
+if [ "$DRY_RUN_MODE" = true ]; then
+    echo -e "${YELLOW}   [DRY-RUN] Recherche de fichiers de processus interrompus...${NC}"
+    find . -name ".*" -type f -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" 2>/dev/null | while read file; do
+        if is_important_file "$file"; then
+            echo -e "${YELLOW}   [DRY-RUN] PROTÉGÉ (fichier important): $file${NC}"
+        else
+            echo -e "${YELLOW}   [DRY-RUN] Fichier temporaire trouvé: $file${NC}"
+        fi
+    done
+else
+    find . -name ".*" -type f -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" 2>/dev/null | while read file; do
+        if is_important_file "$file"; then
+            print_warning "PROTÉGÉ (fichier important): $file"
+        else
+            if rm -f "$file" 2>/dev/null; then
+                print_success "Fichier temporaire supprimé: $file"
+                CLEANED_COUNT=$((CLEANED_COUNT + 1))
+            fi
+        fi
+    done
+fi
 
 # Affichage du résumé
 print_summary 
