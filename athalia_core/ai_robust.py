@@ -7,9 +7,8 @@ Gestion des modèles IA avec fallback intelligent
 
 import logging
 import subprocess
-import yaml
 from enum import Enum
-from typing import Dict, List, Optional, Any
+from typing import Dict, List, Optional
 import requests
 
 

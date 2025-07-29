@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 from pathlib import Path
-from typing import Dict, List, Any
+from typing import Dict, Any
 import subprocess
-import ast
-import re
 import logging
 
 logger = logging.getLogger(__name__)

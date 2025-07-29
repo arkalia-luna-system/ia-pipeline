@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<package format="3">
-  <name>demo_package</name>
-  <version>0.1.0</version>
-  <description>Demo package for Athalia Robotics</description>
-  <maintainer email="demo@example.com">Demo User</maintainer>
-  <license>MIT</license>
-  <depend>rclpy</depend>
-</package>

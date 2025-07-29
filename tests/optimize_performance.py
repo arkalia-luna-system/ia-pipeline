@@ -10,9 +10,8 @@ import os
 import sys
 import time
 import subprocess
-import json
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, List
 
 # Standard library imports
 import argparse
@@ -100,7 +99,7 @@ class TestPerformanceOptimizer:
                         time_str = time_part[1:-1]
                         if 's' in time_str:
                             return float(time_str.replace('s', ''))
-        except:
+        except Exception:
             pass
         return 0.0
     

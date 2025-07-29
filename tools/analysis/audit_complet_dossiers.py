@@ -5,12 +5,10 @@ Audit Complet des Dossiers - Athalia/Arkalia
 Analyse approfondie de tous les dossiers du projet
 """
 
-import os
 import ast
-import re
 from pathlib import Path
 from dataclasses import dataclass, field
-from typing import List, Optional, Dict, Any
+from typing import List, Optional
 from datetime import datetime
 
 

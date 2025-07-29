@@ -9,9 +9,7 @@ import http.server
 import socketserver
 import json
 import subprocess
-import time
 from datetime import datetime
-import os
 
 
 class ValidationDashboardHandler(http.server.SimpleHTTPRequestHandler):

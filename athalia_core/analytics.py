@@ -6,10 +6,8 @@ Module d'analyse et de métriques de projets.
 Fournit des analyses de base pour les tests.
 """
 
-import os
-import json
 from pathlib import Path
-from typing import Dict, List, Any, Optional
+from typing import Dict, Any
 from datetime import datetime
 
 
