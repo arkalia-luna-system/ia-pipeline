@@ -4,8 +4,6 @@
 Protection contre la création automatique de fichiers de tests
 """
 
-import os
-import sys
 from pathlib import Path
 
 def _protect_test_directory():
