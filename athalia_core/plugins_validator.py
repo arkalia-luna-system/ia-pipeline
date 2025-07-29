@@ -5,11 +5,10 @@ Validation et vérification des plugins tiers
 """
 
 import ast
-import importlib.util
 import json
 import logging
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict
 
 import yaml
 

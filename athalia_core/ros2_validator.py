@@ -4,15 +4,13 @@ Module de validation ROS2 pour Athalia
 Validation et vérification des packages ROS2
 """
 
-import json
 import logging
 import re
 import subprocess
 import xml.etree.ElementTree as ET
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict
 
-import yaml
 
 logger = logging.getLogger(__name__)
 

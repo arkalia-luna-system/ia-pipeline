@@ -5,11 +5,9 @@ Module de génération simplifié pour Athalia
 Version simplifiée sans f-strings complexes
 """
 
-import json
-import os
 import re
 from pathlib import Path
-from typing import Dict, Optional
+from typing import Optional
 
 
 def generate_blueprint_mock(idea: str = "", *args, **kwargs):
