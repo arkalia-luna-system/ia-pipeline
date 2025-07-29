@@ -11,7 +11,7 @@ import click
 import logging
 
 from .ai_robust import RobustAI, AIModel
-from .generation import generate_blueprint_mock, generate_project
+from .generation import generate_project
 from .audit import audit_project_intelligent
 
 # TODO: Préparer l'internationalisation (i18n) des messages CLI et prompts
@@ -144,7 +144,7 @@ def test_ai(idea):
         click.echo("📋 Génération de blueprint...")
         blueprint = ai.generate_blueprint(idea)
 
-        click.echo(f"✅ Blueprint généré:")
+        click.echo("✅ Blueprint généré:")
         click.echo(f"  • Nom: {blueprint.get('project_name', 'N/A')}")
         click.echo(f"  • Type: {blueprint.get('project_type', 'N/A')}")
         click.echo(f"  • Modules: {len(blueprint.get('modules', []))}")
@@ -165,7 +165,7 @@ def hello_world():
             current_score=50
         )
 
-        click.echo(f"✅ Revue générée:")
+        click.echo("✅ Revue générée:")
         click.echo(f"  • Score: {review.get('score', 'N/A')}")
         click.echo(f"  • Problèmes: {len(review.get('issues', []))}")
         click.echo(f"  • Suggestions: {len(review.get('suggestions', []))}")

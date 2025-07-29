@@ -15,10 +15,10 @@ import logging
 import sqlite3
 import hashlib
 import re
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Any, Optional, Set, Tuple
-from dataclasses import dataclass, asdict
+from typing import Dict, List, Any, Optional
+from dataclasses import dataclass
 import difflib
 
 logger = logging.getLogger(__name__)
@@ -677,7 +677,7 @@ def main():
 
     # Obtenir les insights
     insights = memory.get_learning_insights()
-    print(f"\n📊 Insights d'apprentissage:")
+    print("\n📊 Insights d'apprentissage:")
     print(f"  • Événements totaux: {insights['total_events']}")
     print(f"  • Taux d'erreur: {insights['error_rate']:.2f}")
     print(f"  • Patterns appris: {insights['total_patterns']}")

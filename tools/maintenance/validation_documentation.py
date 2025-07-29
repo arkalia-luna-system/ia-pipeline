@@ -5,15 +5,13 @@ Script de Validation Documentation - Athalia
 Vérifie la cohérence entre la documentation et le code réel
 """
 
-import os
 import sys
 import re
 import json
 import argparse
 import logging
 from pathlib import Path
-from typing import Dict, List, Set, Tuple
-import importlib.util
+from typing import Dict, List
 import ast
 
 # Configuration du logging
@@ -374,7 +372,7 @@ def main():
 
     print(f"\n📊 SCORE GLOBAL: {report['summary']['score']:.1f}/100")
 
-    print(f"\n📈 MÉTRIQUES:")
+    print("\n📈 MÉTRIQUES:")
     print(f"  • Commandes: {report['summary']['total_commands']}")
     print(f"  • Modules: {report['summary']['total_modules']}")
     print(f"  • Fonctions: {report['summary']['total_functions']}")
@@ -404,7 +402,7 @@ def main():
             print(f"  • {mod}")
 
     # Recommandations
-    print(f"\n💡 RECOMMANDATIONS:")
+    print("\n💡 RECOMMANDATIONS:")
     for rec in report["recommendations"]:
         print(f"  • {rec}")
 

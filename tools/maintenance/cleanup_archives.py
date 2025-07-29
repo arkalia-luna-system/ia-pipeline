@@ -8,11 +8,10 @@ afin de réduire les liens cassés et améliorer la structure.
 """
 
 import logging
-import os
 import shutil
 from datetime import datetime
 from pathlib import Path
-from typing import List, Dict, Any
+from typing import Dict, Any
 
 # Configuration du logging
 logging.basicConfig(
@@ -179,7 +178,7 @@ class ArchiveCleaner:
         with open(report_path, 'w', encoding='utf-8') as f:
             f.write("# 🧹 Rapport de Nettoyage des Archives - Athalia\n\n")
             f.write(f"**Date :** {datetime.now().strftime('%d/%m/%Y à %H:%M')}\n")
-            f.write(f"**Nettoyeur :** Script automatique\n\n")
+            f.write("**Nettoyeur :** Script automatique\n\n")
             
             f.write("## 📊 Résultats du Nettoyage\n\n")
             f.write(f"- **Fichiers déplacés :** {len(self.cleanup_results['moved_files'])}\n")
@@ -222,7 +221,7 @@ def main():
     report_path = cleaner.generate_cleanup_report()
     
     # Affichage des résultats
-    print(f"\n🧹 Résultats du nettoyage :")
+    print("\n🧹 Résultats du nettoyage :")
     print(f"- Fichiers déplacés : {len(results['moved_files'])}")
     print(f"- Fichiers supprimés : {len(results['deleted_files'])}")
     print(f"- Dossiers organisés : {len(results['organized_dirs'])}")

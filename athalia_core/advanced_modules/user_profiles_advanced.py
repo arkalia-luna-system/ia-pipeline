@@ -9,7 +9,6 @@ import json
 import logging
 from datetime import datetime
 from typing import Dict, List, Any, Optional
-from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
@@ -316,14 +315,14 @@ class GestionnaireProfils:
         for action, count in list(stats['actions_frequentes'].items())[:5]:
             rapport += f"• {action}: {count} fois\n"
 
-        rapport += f"""
+        rapport += """
 📁 PROJETS LES PLUS CONSULTÉS:
 """
 
         for projet, count in list(stats['projets_frequents'].items())[:5]:
             rapport += f"• {projet}: {count} consultations\n"
 
-        rapport += f"""
+        rapport += """
 ⚙️ PRÉFÉRENCES:
 """
 

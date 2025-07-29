@@ -4,7 +4,6 @@ import os
 import re
 import sys
 import tempfile
-from collections import defaultdict
 from datetime import datetime
 import logging
 import subprocess

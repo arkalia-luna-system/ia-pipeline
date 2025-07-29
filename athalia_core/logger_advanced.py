@@ -7,12 +7,11 @@ Logging intelligent avec rotation, compression et analyse automatique
 
 import logging
 import logging.handlers
-import os
 import json
 import time
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Dict, Any, Optional, List
+from typing import Dict, Any, Optional
 import gzip
 import shutil
 import threading

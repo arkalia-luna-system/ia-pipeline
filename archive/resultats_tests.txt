@@ -1,6 +1,0 @@
-.........s................................s............................s [ 24%]
-.................sssss.................................................. [ 48%]
-...........................ssssssssssss.ssssssssssssssssssssssss.s.sss.s [ 72%]
-s..s.sssssssssss.s.sssssssss.ssssssss.ssssssssssssssss.ss.ss.s....ssssss [ 96%]
-s.ssssssssss                                                             [100%]
-182 passed, 118 skipped, 20 warnings in 199.50s (0:03:19)

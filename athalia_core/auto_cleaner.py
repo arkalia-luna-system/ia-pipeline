@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 from pathlib import Path
-from typing import Dict, List, Any, Set
+from typing import Dict, List, Any
 import json
 import os
-import re
 import hashlib
 import argparse
 from datetime import datetime, timedelta

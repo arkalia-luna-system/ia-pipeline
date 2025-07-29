@@ -10,12 +10,9 @@ Audit complet des projets robotiques Reachy :
 - Tests de connectivité
 """
 
-import os
-import json
-import subprocess
 import yaml
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import List, Optional, Tuple
 from dataclasses import dataclass
 from datetime import datetime
 

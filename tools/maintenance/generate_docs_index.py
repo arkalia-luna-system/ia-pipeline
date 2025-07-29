@@ -8,10 +8,9 @@ de la documentation du projet Athalia.
 """
 
 import logging
-import os
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Any
+from typing import Dict, List
 
 # Configuration du logging
 logging.basicConfig(

@@ -6,14 +6,13 @@ Module d'analyse d'architecture pour comprendre la structure
 du projet, les dépendances et les relations entre modules.
 """
 
-import ast
 import json
 import logging
 import sqlite3
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Any, Optional, Set, Tuple
-from dataclasses import dataclass, asdict
+from typing import Dict, List, Any, Optional
+from dataclasses import dataclass
 import yaml
 
 from .ast_analyzer import ASTAnalyzer, FileAnalysis

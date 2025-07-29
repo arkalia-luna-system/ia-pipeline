@@ -6,7 +6,6 @@ Script de correction des chaînes non terminées dans athalia_core
 
 import os
 import re
-from pathlib import Path
 
 
 def corriger_chaînes_fichier(file_path):

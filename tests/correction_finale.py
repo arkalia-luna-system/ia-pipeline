@@ -7,7 +7,6 @@ Corrige toutes les erreurs restantes dans les fichiers principaux
 
 import os
 import re
-from pathlib import Path
 
 def corriger_fichier(file_path):
     """Corrige un fichier en remplaçant les patterns problématiques"""
