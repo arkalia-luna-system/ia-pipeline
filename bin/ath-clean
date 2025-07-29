@@ -19,6 +19,7 @@ NC='\033[0m'
 CLEANED_COUNT=0
 DRY_RUN_MODE=false
 KILL_PROCESSES=false
+FORCE_APPLEDOUBLE=false
 
 # Détection des options
 for arg in "$@"; do
@@ -29,11 +30,15 @@ for arg in "$@"; do
         --kill-processes|-k)
             KILL_PROCESSES=true
             ;;
+        --force-appledouble|-f)
+            FORCE_APPLEDOUBLE=true
+            ;;
         --help|-h)
             echo "Usage: ath-clean [OPTIONS]"
             echo "Options:"
             echo "  --dry-run, -d     Mode simulation (ne supprime rien)"
             echo "  --kill-processes, -k  Arrête tous les processus Athalia"
+            echo "  --force-appledouble, -f  Force la suppression des fichiers AppleDouble"
             echo "  --help, -h        Affiche cette aide"
             exit 0
             ;;
@@ -227,11 +232,53 @@ clean_cache_directories() {
 }
 
 # =============================================================================
-# SECTION 5: EXÉCUTION PRINCIPALE COMPLÈTE
+# SECTION 5: FONCTIONS DE PRÉVENTION
+# =============================================================================
+
+# Fonction pour désactiver la création de fichiers AppleDouble
+disable_appledouble_creation() {
+    print_section "Désactivation de la création de fichiers AppleDouble"
+    
+    if [ "$DRY_RUN_MODE" = true ]; then
+        echo -e "${YELLOW}   [DRY-RUN] Vérification de la configuration AppleDouble...${NC}"
+        if defaults read com.apple.desktopservices DSDontWriteNetworkStores 2>/dev/null | grep -q "1"; then
+            echo -e "${YELLOW}   [DRY-RUN] Configuration AppleDouble déjà désactivée${NC}"
+        else
+            echo -e "${YELLOW}   [DRY-RUN] Configuration AppleDouble à désactiver${NC}"
+        fi
+    else
+        # Désactiver la création de fichiers AppleDouble sur les volumes réseau
+        if defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true 2>/dev/null; then
+            print_success "Création de fichiers AppleDouble désactivée sur les volumes réseau"
+        else
+            print_warning "Impossible de désactiver la création de fichiers AppleDouble (droits insuffisants)"
+        fi
+        
+        # Désactiver la création de fichiers AppleDouble localement
+        if defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true 2>/dev/null; then
+            print_success "Création de fichiers AppleDouble désactivée sur les volumes USB"
+        else
+            print_warning "Impossible de désactiver la création de fichiers AppleDouble USB (droits insuffisants)"
+        fi
+        
+        # Redémarrer Finder pour appliquer les changements
+        if killall Finder 2>/dev/null; then
+            print_info "Finder redémarré pour appliquer les changements"
+        fi
+    fi
+    
+    echo
+}
+
+# =============================================================================
+# SECTION 6: EXÉCUTION PRINCIPALE COMPLÈTE
 # =============================================================================
 
 # Affichage de l'en-tête
 print_header
+
+# Désactivation de la création de fichiers AppleDouble
+disable_appledouble_creation
 
 # Arrêt des processus Athalia si demandé
 if [ "$KILL_PROCESSES" = true ]; then
@@ -241,6 +288,72 @@ fi
 # Nettoyage complet des fichiers AppleDouble et macOS
 print_section "Nettoyage des fichiers AppleDouble et macOS"
 fast_clean "Fichiers système macOS" "._*" ".DS_Store" ".!*" "*.noindex" "Thumbs.db" "desktop.ini"
+
+# Nettoyage spécifique des fichiers AppleDouble (.DS_Store et ._*)
+print_section "Nettoyage spécifique des fichiers AppleDouble"
+if [ "$DRY_RUN_MODE" = true ]; then
+    echo -e "${YELLOW}   [DRY-RUN] Recherche de fichiers AppleDouble...${NC}"
+    find . -name "._*" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" 2>/dev/null | while read file; do
+        echo -e "${YELLOW}   [DRY-RUN] Fichier AppleDouble trouvé: $file${NC}"
+    done
+    find . -name ".DS_Store" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" 2>/dev/null | while read file; do
+        echo -e "${YELLOW}   [DRY-RUN] Fichier .DS_Store trouvé: $file${NC}"
+    done
+else
+    # Compter d'abord les fichiers AppleDouble
+    apple_double_count=$(find . -name "._*" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" 2>/dev/null | wc -l)
+    if [ $apple_double_count -gt 0 ]; then
+        # Supprimer les fichiers AppleDouble
+        find . -name "._*" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" -delete 2>/dev/null
+        print_success "$apple_double_count fichiers AppleDouble (._*) supprimés"
+        CLEANED_COUNT=$((CLEANED_COUNT + apple_double_count))
+    fi
+    
+    # Compter d'abord les fichiers .DS_Store
+    ds_store_count=$(find . -name ".DS_Store" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" 2>/dev/null | wc -l)
+    if [ $ds_store_count -gt 0 ]; then
+        # Supprimer les fichiers .DS_Store
+        find . -name ".DS_Store" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" -delete 2>/dev/null
+        print_success "$ds_store_count fichiers .DS_Store supprimés"
+        CLEANED_COUNT=$((CLEANED_COUNT + ds_store_count))
+    fi
+fi
+
+# Nettoyage spécifique des fichiers AppleDouble dans athalia_core
+print_section "Nettoyage spécifique des fichiers AppleDouble dans athalia_core"
+if [ "$DRY_RUN_MODE" = true ]; then
+    echo -e "${YELLOW}   [DRY-RUN] Recherche de fichiers AppleDouble dans athalia_core...${NC}"
+    if [ -d "./athalia_core" ]; then
+        find ./athalia_core -name "._*" 2>/dev/null | while read file; do
+            echo -e "${YELLOW}   [DRY-RUN] Fichier AppleDouble trouvé dans athalia_core: $file${NC}"
+        done
+    fi
+else
+    if [ -d "./athalia_core" ]; then
+        # Compter d'abord les fichiers AppleDouble dans athalia_core
+        core_apple_double_count=$(find ./athalia_core -name "._*" 2>/dev/null | wc -l)
+        if [ $core_apple_double_count -gt 0 ]; then
+            # Supprimer les fichiers AppleDouble dans athalia_core
+            find ./athalia_core -name "._*" -delete 2>/dev/null
+            print_success "$core_apple_double_count fichiers AppleDouble supprimés dans athalia_core"
+            CLEANED_COUNT=$((CLEANED_COUNT + core_apple_double_count))
+            
+            # Si l'option force est activée, supprimer à nouveau après un délai
+            if [ "$FORCE_APPLEDOUBLE" = true ]; then
+                print_info "Attente de 2 secondes pour la suppression forcée..."
+                sleep 2
+                force_count=$(find ./athalia_core -name "._*" 2>/dev/null | wc -l)
+                if [ $force_count -gt 0 ]; then
+                    find ./athalia_core -name "._*" -delete 2>/dev/null
+                    print_success "$force_count fichiers AppleDouble supprimés en mode forcé"
+                    CLEANED_COUNT=$((CLEANED_COUNT + force_count))
+                fi
+            fi
+        else
+            print_info "Aucun fichier AppleDouble trouvé dans athalia_core"
+        fi
+    fi
+fi
 
 # Nettoyage complet des fichiers Python compilés
 print_section "Nettoyage des fichiers Python compilés"

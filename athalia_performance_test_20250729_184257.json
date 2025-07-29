@@ -1,0 +1,33 @@
+{
+  "single_test": {
+    "timestamp": "2025-07-29T18:42:52.348468",
+    "test_path": "athalia_core",
+    "baseline": {
+      "execution_time": 1.090127944946289,
+      "success": true,
+      "output_lines": 1,
+      "error_lines": 14
+    },
+    "with_cache": {
+      "execution_time": 1.7070651054382324,
+      "success": true,
+      "output_lines": 1,
+      "error_lines": 14
+    },
+    "improvement": {
+      "time_saved": -0.6169371604919434,
+      "improvement_percent": -56.593096558252164,
+      "speedup_factor": 0.6385977555709188
+    }
+  },
+  "multiple_test": {
+    "first_execution": 1.0432541370391846,
+    "avg_subsequent": 0.7897299528121948,
+    "improvement_percent": 24.30128721526147,
+    "all_times": [
+      1.0432541370391846,
+      0.8146178722381592,
+      0.7648420333862305
+    ]
+  }
+}

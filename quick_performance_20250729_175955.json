@@ -1,0 +1,31 @@
+{
+  "performance_test": {
+    "timestamp": "2025-07-29T17:59:54.908892",
+    "test_path": "athalia_core",
+    "execution_time": 0.10505390167236328,
+    "memory_usage_percent": -0.09999999999999432,
+    "cpu_usage_percent": 26.9,
+    "success": true,
+    "output_lines": 1,
+    "needs_optimization": false,
+    "optimization_priority": "low"
+  },
+  "module_analysis": {
+    "athalia_core/unified_orchestrator.py": {
+      "error": "unterminated string literal (detected at line 15) (security_auditor.py, line 15)",
+      "needs_optimization": true
+    },
+    "athalia_core/intelligent_auditor.py": {
+      "error": "unterminated string literal (detected at line 18) (intelligent_auditor.py, line 18)",
+      "needs_optimization": true
+    },
+    "athalia_core/auto_tester.py": {
+      "error": "unterminated string literal (detected at line 110) (auto_tester.py, line 110)",
+      "needs_optimization": true
+    },
+    "athalia_core/advanced_analytics.py": {
+      "error": "unterminated string literal (detected at line 15) (advanced_analytics.py, line 15)",
+      "needs_optimization": true
+    }
+  }
+}

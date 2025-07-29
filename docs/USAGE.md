@@ -1,6 +1,6 @@
 # Guide d'utilisation - athalia-dev-setup
 
-## Vue d'ensemble
+## Vue densemble
 
 Ce guide explique comment utiliser athalia-dev-setup.
 
@@ -44,7 +44,7 @@ database:
 
 #### AthaliaOrchestrator
 
-**Exemple d'utilisation :**
+**Exemple dutilisation :**
 
 ```python
 from athalia-dev-setup import AthaliaOrchestrator
@@ -59,7 +59,7 @@ result = instance.industrialize_project()
 
 Auditeur intelligent de projets générés.
 
-**Exemple d'utilisation :**
+**Exemple dutilisation :**
 
 ```python
 from athalia-dev-setup import ProjectAuditor
@@ -70,19 +70,17 @@ instance = ProjectAuditor()
 result = instance.__init__()
 ```
 
-#### TestLoggingSystem
+#### DossierInfo
 
-Tests pour le système de logging d'Athalia
+Informations sur un dossier
 
-**Exemple d'utilisation :**
+**Exemple dutilisation :**
 
 ```python
-from athalia-dev-setup import TestLoggingSystem
+from athalia-dev-setup import DossierInfo
 
 # Créer une instance
-instance = TestLoggingSystem()
-# Utiliser une méthode
-result = instance.setup_method()
+instance = DossierInfo()
 ```
 
 ### Fonctions utilitaires
@@ -91,7 +89,7 @@ result = instance.setup_method()
 
 Fonction principale du CLI unifié
 
-**Exemple d'utilisation :**
+**Exemple dutilisation :**
 
 ```python
 from athalia-dev-setup import main
@@ -101,7 +99,7 @@ result = main()
 
 #### industrialize_project
 
-**Exemple d'utilisation :**
+**Exemple dutilisation :**
 
 ```python
 from athalia-dev-setup import industrialize_project
@@ -111,7 +109,7 @@ result = industrialize_project(project_path, config)
 
 #### audit_project
 
-**Exemple d'utilisation :**
+**Exemple dutilisation :**
 
 ```python
 from athalia-dev-setup import audit_project
@@ -121,7 +119,7 @@ result = audit_project(project_path)
 
 #### scan_projects
 
-**Exemple d'utilisation :**
+**Exemple dutilisation :**
 
 ```python
 from athalia-dev-setup import scan_projects
@@ -129,16 +127,16 @@ from athalia-dev-setup import scan_projects
 result = scan_projects(project_path)
 ```
 
-#### audit_project_intelligent
+#### include_setuptools
 
-Fonction principale pour l'audit intelligent.
+Install setuptools only if absent, not excluded and when using Python <3.12.
 
-**Exemple d'utilisation :**
+**Exemple dutilisation :**
 
 ```python
-from athalia-dev-setup import audit_project_intelligent
+from athalia-dev-setup import include_setuptools
 
-result = audit_project_intelligent(project_path)
+result = include_setuptools(args)
 ```
 
 
@@ -167,7 +165,7 @@ try:
     result = some_function()
 except Exception as e:
     logger.info(f"Erreur: {e}")
-    # Gestion de l'erreur
+    # Gestion de lerreur
 ```
 
 ## Bonnes pratiques

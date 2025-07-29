@@ -26,7 +26,7 @@ class CodeLinter:
         }
 
     def run(self) -> Dict[str, Any]:
-        """Lance l'analyse de qualité du projet"""
+        """Lance lanalyse de qualité du projet"""
         logger.info(f"📏 Analyse de qualité pour : {self.project_path.name}")
 
         # Analyses en séquence

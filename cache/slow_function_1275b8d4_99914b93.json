@@ -1,0 +1,11 @@
+{
+  "result": {
+    "result": "slow_1"
+  },
+  "metadata": {
+    "created_at": "2025-07-29T18:44:02.771641",
+    "project_path": "/test/project",
+    "analysis_type": "slow_function",
+    "parameters": {}
+  }
+}

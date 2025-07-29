@@ -121,7 +121,7 @@ def generate_technical_debt_analysis(
 
 
 def generate_analytics_html(project_path: str = ".") -> str:
-    """Générer un rapport HTML d'analytics"""
+    """Générer un rapport HTML danalytics"""
     # Si project_path est un dictionnaire, extraire le chemin
     if isinstance(project_path, dict) and "path" in project_path:
         project_path = project_path["path"]

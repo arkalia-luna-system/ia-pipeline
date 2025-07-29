@@ -95,8 +95,8 @@ class AutoCICD:
         if req_file.exists():
             try:
                 with open(req_file, 'r') as file_handle:
-                    deps = [line.strip() for line in file_handle if line.strip(
-                    ) and not line.startswith('#')]
+                    deps = [line.strip() for line in file_handle if line.strip()
+                            and not line.startswith('#')]
                     dependencies['python'] = deps
             except Exception:
                 pass
@@ -114,7 +114,7 @@ class AutoCICD:
         return dependencies
 
     def _find_entry_points(self) -> List[str]:
-        """Trouve les points d'entrée du projet"""
+        """Trouve les points dentrée du projet"""
         entry_points = []
         main_patterns = ["main.py", "app.py", "run.py", "server.py", "cli.py"]
         for pattern in main_patterns:

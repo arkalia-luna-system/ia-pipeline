@@ -1,0 +1,35 @@
+{
+  "performance_test": {
+    "timestamp": "2025-07-29T18:42:48.812589",
+    "test_path": "athalia_core",
+    "execution_time": 0.7757627964019775,
+    "memory_usage_percent": 0.09999999999999432,
+    "cpu_usage_percent": 39.8,
+    "success": true,
+    "output_lines": 1,
+    "needs_optimization": false,
+    "optimization_priority": "low"
+  },
+  "module_analysis": {
+    "athalia_core/unified_orchestrator.py": {
+      "load_time": 0.09104800224304199,
+      "size_kb": 30.759765625,
+      "needs_optimization": false
+    },
+    "athalia_core/intelligent_auditor.py": {
+      "load_time": 1.4066696166992188e-05,
+      "size_kb": 28.41015625,
+      "needs_optimization": false
+    },
+    "athalia_core/auto_tester.py": {
+      "load_time": 6.9141387939453125e-06,
+      "size_kb": 22.650390625,
+      "needs_optimization": false
+    },
+    "athalia_core/advanced_analytics.py": {
+      "load_time": 5.9604644775390625e-06,
+      "size_kb": 11.7509765625,
+      "needs_optimization": false
+    }
+  }
+}

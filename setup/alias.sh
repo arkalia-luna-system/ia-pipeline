@@ -6,6 +6,9 @@
 # Nettoie le projet (cache Python, fichiers temporaires, logs)
 alias ath-clean='$(git rev-parse --show-toplevel)/bin/ath-clean'
 
+# Nettoie les fichiers AppleDouble et configure la prévention
+alias ath-clean-appledouble='$(git rev-parse --show-toplevel)/bin/ath-clean-appledouble'
+
 # Menu interactif de prompts IA (debug, UX, audit, test, refactor)
 alias ath-dev-boost='bash $(git rev-parse --show-toplevel)/setup/ath-dev-boost.sh'
 

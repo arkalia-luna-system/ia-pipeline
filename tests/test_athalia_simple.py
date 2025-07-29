@@ -48,4 +48,5 @@ def test_project_structure():
 
 
 if __name__ == "__main__":
-    pytest.main([__file__, "-v"]) 
+    import unittest
+    unittest.main() 

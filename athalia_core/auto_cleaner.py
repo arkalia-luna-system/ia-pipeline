@@ -34,7 +34,7 @@ class AutoCleaner:
         }
 
     def clean_project(self, dry_run: bool = False) -> Dict[str, Any]:
-        """Nettoyage complet d'un projet"""
+        """Nettoyage complet dun projet"""
         self.dry_run = dry_run
         project_path_obj = self.project_path
 
@@ -56,7 +56,7 @@ class AutoCleaner:
         return self._generate_cleanup_report()
 
     def run(self) -> Dict[str, Any]:
-        """Méthode run() pour l'orchestrateur - exécute le nettoyage"""
+        """Méthode run() pour lorchestrateur - exécute le nettoyage"""
         return self.clean_project(dry_run=False)
 
     def _clean_system_files(self, project_path: Path):
@@ -194,7 +194,7 @@ class AutoCleaner:
 
     def _clean_empty_directories(self, project_path: Path):
         """Nettoyage des répertoires vides"""
-        # Parcours en profondeur pour traiter les sous-dossiers d'abord
+        # Parcours en profondeur pour traiter les sous-dossiers dabord
         for root, dirs, files in os.walk(project_path, topdown=False):
             for dir_name in dirs:
                 dir_path = Path(root) / dir_name
@@ -232,7 +232,7 @@ class AutoCleaner:
                     pass
 
     def _safe_remove_file(self, file_path: Path, reason: str):
-        """Suppression sécurisée d'un fichier"""
+        """Suppression sécurisée dun fichier"""
         try:
             if not self.dry_run:
                 file_size = file_path.stat().st_size / (1024 * 1024)  # MB
@@ -253,7 +253,7 @@ class AutoCleaner:
             self.stats["errors"] += 1
 
     def _safe_remove_dir(self, dir_path: Path, reason: str):
-        """Suppression sécurisée d'un répertoire"""
+        """Suppression sécurisée dun répertoire"""
         try:
             if not self.dry_run:
                 shutil.rmtree(dir_path)
@@ -297,7 +297,7 @@ class AutoCleaner:
             return False
 
     def _calculate_file_hash(self, file_path: Path) -> str:
-        """Calcule le hash d'un fichier"""
+        """Calcule le hash dun fichier"""
         hash_md5 = hashlib.md5()
         try:
             with open(file_path, "rb") as file_handle:
@@ -333,7 +333,7 @@ class AutoCleaner:
                 reasons[reason] = []
             reasons[reason].append(file_info)
 
-        summary = f"""
+        summary = f""""
 {'='*60}
 🧹 RAPPORT DE NETTOYAGE AUTOMATIQUE
 {'='*60}
@@ -422,7 +422,7 @@ class AutoCleaner:
 
 
 def main():
-    """Point d'entrée du module AutoCleaner"""
+    """Point dentrée du module AutoCleaner"""
 
     parser = argparse.ArgumentParser(description="Nettoyage automatique de f")
     parser.add_argument(
@@ -440,13 +440,13 @@ def main():
     args = parser.parse_args()
 
     if not os.path.exists(args.project_path):
-        logger.info(f"❌ Le chemin {args.project_path} n'existe pas")
+        logger.info(f"❌ Le chemin {args.project_path} nexiste pas")
         return
 
     # Configuration du logging
     logging.basicConfig(
         level=logging.INFO,
-        format='%(asctime)s - %(levelname)s-%(message)s)')
+        format='%(asctime)s - %(levelname)s - %(message)s')
 
     # Nettoyage
     cleaner = AutoCleaner(args.project_path)
@@ -464,7 +464,7 @@ def main():
             logger.info(f"   • {opt}")
 
     # Sauvegarde du rapport
-            report_file = f"data/reports/cleanup_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+    report_file = f"data/reports/cleanup_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
     with open(report_file, 'w', encoding='utf-8') as f:
         json.dump(cleanup_report, f, indent=2, ensure_ascii=False)
 
