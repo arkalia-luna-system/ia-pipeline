@@ -1,11 +1,11 @@
 #!/bin/bash
-# 🌟 Nettoyage Complet du Projet Athalia - VERSION OPTIMISÉE
-# Version 5.1 - Nettoyage complet + Arrêt des processus Athalia
+# 🌟 Nettoyage SÉCURISÉ du Projet Athalia - VERSION PROTÉGÉE
+# Version 6.0 - Nettoyage sécurisé + Protection des fichiers importants
 
 set -euo pipefail
 
 # =============================================================================
-# SECTION 1: CONFIGURATION RAPIDE
+# SECTION 1: CONFIGURATION SÉCURISÉE
 # =============================================================================
 
 # Couleurs simplifiées
@@ -40,6 +40,9 @@ for arg in "$@"; do
             echo "  --kill-processes, -k  Arrête tous les processus Athalia"
             echo "  --force-appledouble, -f  Force la suppression des fichiers AppleDouble"
             echo "  --help, -h        Affiche cette aide"
+            echo ""
+            echo "⚠️  ATTENTION: Ce script est maintenant SÉCURISÉ et ne supprime que les fichiers temporaires"
+            echo "🛡️  Les fichiers importants (tests, code, docs) sont PROTÉGÉS"
             exit 0
             ;;
     esac
@@ -50,7 +53,8 @@ done
 # =============================================================================
 
 print_header() {
-    echo -e "${BLUE}🚀 Nettoyage Complet Athalia${NC}"
+    echo -e "${BLUE}🚀 Nettoyage SÉCURISÉ Athalia${NC}"
+    echo -e "${YELLOW}🛡️  Mode PROTECTION ACTIVÉE - Fichiers importants préservés${NC}"
     echo
 }
 
@@ -77,11 +81,102 @@ print_error() {
 print_summary() {
     echo
     echo -e "${GREEN}🎯 Total nettoyé : $CLEANED_COUNT éléments${NC}"
+    echo -e "${BLUE}🛡️  Fichiers importants préservés avec succès${NC}"
     echo
 }
 
 # =============================================================================
-# SECTION 3: FONCTIONS DE GESTION DES PROCESSUS
+# SECTION 3: FONCTIONS DE PROTECTION
+# =============================================================================
+
+# Fonction pour vérifier si un fichier est important (à protéger)
+is_important_file() {
+    local file="$1"
+    
+    # Liste des patterns de fichiers importants à PROTÉGER
+    local important_patterns=(
+        "tests/"
+        "athalia_core/"
+        "docs/"
+        "config/"
+        "bin/"
+        "scripts/"
+        "*.py"
+        "*.md"
+        "*.yaml"
+        "*.yml"
+        "*.json"
+        "*.txt"
+        "*.sh"
+        "*.js"
+        "*.html"
+        "*.css"
+        "*.xml"
+        "*.toml"
+        "*.cfg"
+        "*.ini"
+        "requirements"
+        "setup.py"
+        "pyproject.toml"
+        "Cargo.toml"
+        "package.json"
+        "Makefile"
+        "Dockerfile"
+        "docker-compose"
+        "README"
+        "LICENSE"
+        ".gitignore"
+        ".env"
+        "*.sql"
+        "*.sqlite"
+        "*.db"
+    )
+    
+    # Vérifier si le fichier correspond à un pattern important
+    for pattern in "${important_patterns[@]}"; do
+        if [[ "$file" == *"$pattern"* ]] || [[ "$file" == "$pattern" ]]; then
+            return 0  # Fichier important
+        fi
+    done
+    
+    return 1  # Fichier non important
+}
+
+# Fonction pour vérifier si un dossier est important
+is_important_directory() {
+    local dir="$1"
+    
+    # Liste des dossiers importants à PROTÉGER
+    local important_dirs=(
+        "tests"
+        "athalia_core"
+        "docs"
+        "config"
+        "bin"
+        "scripts"
+        "plugins"
+        "templates"
+        "data"
+        "backups"
+        "blueprints_history"
+        "dashboard"
+        "prompts"
+        "setup"
+        "tools"
+    )
+    
+    # Vérifier si le dossier est important
+    for important_dir in "${important_dirs[@]}"; do
+        if [[ "$dir" == "$important_dir" ]] || [[ "$dir" == "./$important_dir" ]] || [[ "$dir" == "*/$important_dir" ]]; then
+            return 0  # Dossier important
+        fi
+    done
+    
+    return 1  # Dossier non important
+}
+
+# =============================================================================
+# SECTION 4: FONCTIONS DE GESTION DES PROCESSUS
 # =============================================================================
 
 # Fonction pour arrêter tous les processus Athalia
@@ -165,63 +260,92 @@ kill_athalia_processes() {
 }
 
 # =============================================================================
-# SECTION 4: FONCTIONS DE NETTOYAGE COMPLETES
+# SECTION 5: FONCTIONS DE NETTOYAGE SÉCURISÉES
 # =============================================================================
 
-# Fonction de nettoyage rapide avec patterns multiples
-fast_clean() {
+# Fonction de nettoyage sécurisé avec protection des fichiers importants
+secure_clean() {
     local patterns=("$@")
     local description="${patterns[0]}"
     shift
     local pattern_list=("$@")
     
-    echo -e "${BLUE}🔍 $description...${NC}"
+    echo -e "${BLUE}🔍 $description (SÉCURISÉ)...${NC}"
     
     local total_count=0
+    local protected_count=0
     
     for pattern in "${pattern_list[@]}"; do
         if [ "$DRY_RUN_MODE" = true ]; then
-            local count=$(find . -path "$pattern" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" 2>/dev/null | wc -l)
-            if [ $count -gt 0 ]; then
-                echo -e "${YELLOW}   [DRY-RUN] $count fichiers trouvés avec pattern: $pattern${NC}"
-                total_count=$((total_count + count))
-            fi
+            # Mode simulation - afficher ce qui serait nettoyé
+            while IFS= read -r -d '' file; do
+                if is_important_file "$file" || is_important_directory "$file"; then
+                    echo -e "${YELLOW}   [DRY-RUN] PROTÉGÉ: $file${NC}"
+                    protected_count=$((protected_count + 1))
+                else
+                    echo -e "${YELLOW}   [DRY-RUN] Nettoyé: $file${NC}"
+                    total_count=$((total_count + 1))
+                fi
+            done < <(find . -path "$pattern" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" -print0 2>/dev/null)
         else
-            local count=$(find . -path "$pattern" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" -delete 2>/dev/null | wc -l)
-            if [ $count -gt 0 ]; then
-                print_success "$count éléments nettoyés avec pattern: $pattern"
-                total_count=$((total_count + count))
-            fi
+            # Mode réel - nettoyer avec protection
+            while IFS= read -r -d '' file; do
+                if is_important_file "$file" || is_important_directory "$file"; then
+                    print_warning "PROTÉGÉ: $file"
+                    protected_count=$((protected_count + 1))
+                else
+                    if rm -rf "$file" 2>/dev/null; then
+                        print_success "Nettoyé: $file"
+                        total_count=$((total_count + 1))
+                    fi
+                fi
+            done < <(find . -path "$pattern" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" -print0 2>/dev/null)
         fi
     done
     
     if [ $total_count -gt 0 ]; then
         CLEANED_COUNT=$((CLEANED_COUNT + total_count))
     fi
+    
+    if [ $protected_count -gt 0 ]; then
+        print_info "$protected_count fichiers/dossiers importants protégés"
+    fi
 }
 
-# Fonction de nettoyage des dossiers cache
-clean_cache_directories() {
+# Fonction de nettoyage des dossiers cache sécurisée
+secure_clean_cache_directories() {
     local dirs=("$@")
     local description="$1"
     
-    echo -e "${BLUE}🗂️  $description...${NC}"
+    echo -e "${BLUE}🗂️  $description (SÉCURISÉ)...${NC}"
     
     local total_count=0
+    local protected_count=0
     
     for dir in "${dirs[@]}"; do
         if [ "$DRY_RUN_MODE" = true ]; then
             if [ -d "$dir" ]; then
                 local size=$(du -sh "$dir" 2>/dev/null | cut -f1)
-                echo -e "${YELLOW}   [DRY-RUN] Dossier trouvé: $dir ($size)${NC}"
-                total_count=$((total_count + 1))
+                if is_important_directory "$dir"; then
+                    echo -e "${YELLOW}   [DRY-RUN] PROTÉGÉ: $dir ($size)${NC}"
+                    protected_count=$((protected_count + 1))
+                else
+                    echo -e "${YELLOW}   [DRY-RUN] Dossier trouvé: $dir ($size)${NC}"
+                    total_count=$((total_count + 1))
+                fi
             fi
         else
             if [ -d "$dir" ]; then
                 local size=$(du -sh "$dir" 2>/dev/null | cut -f1)
-                rm -rf "$dir" 2>/dev/null
-                print_success "Dossier supprimé: $dir ($size)"
-                total_count=$((total_count + 1))
+                if is_important_directory "$dir"; then
+                    print_warning "PROTÉGÉ: $dir ($size)"
+                    protected_count=$((protected_count + 1))
+                else
+                    if rm -rf "$dir" 2>/dev/null; then
+                        print_success "Dossier supprimé: $dir ($size)"
+                        total_count=$((total_count + 1))
+                    fi
+                fi
             fi
         fi
     done
@@ -229,10 +353,14 @@ clean_cache_directories() {
     if [ $total_count -gt 0 ]; then
         CLEANED_COUNT=$((CLEANED_COUNT + total_count))
     fi
+    
+    if [ $protected_count -gt 0 ]; then
+        print_info "$protected_count dossiers importants protégés"
+    fi
 }
 
 # =============================================================================
-# SECTION 5: FONCTIONS DE PRÉVENTION
+# SECTION 6: FONCTIONS DE PRÉVENTION
 # =============================================================================
 
 # Fonction pour désactiver la création de fichiers AppleDouble
@@ -271,7 +399,7 @@ disable_appledouble_creation() {
 }
 
 # =============================================================================
-# SECTION 6: EXÉCUTION PRINCIPALE COMPLÈTE
+# SECTION 7: EXÉCUTION PRINCIPALE SÉCURISÉE
 # =============================================================================
 
 # Affichage de l'en-tête
@@ -285,140 +413,78 @@ if [ "$KILL_PROCESSES" = true ]; then
     kill_athalia_processes
 fi
 
-# Nettoyage complet des fichiers AppleDouble et macOS
-print_section "Nettoyage des fichiers AppleDouble et macOS"
-fast_clean "Fichiers système macOS" "._*" ".DS_Store" ".!*" "*.noindex" "Thumbs.db" "desktop.ini"
+# Nettoyage SÉCURISÉ des fichiers AppleDouble et macOS (seulement les fichiers système)
+print_section "Nettoyage SÉCURISÉ des fichiers AppleDouble et macOS"
+secure_clean "Fichiers système macOS" "._*" ".DS_Store" ".!*" "*.noindex" "Thumbs.db" "desktop.ini"
 
-# Nettoyage spécifique des fichiers AppleDouble (.DS_Store et ._*)
-print_section "Nettoyage spécifique des fichiers AppleDouble"
-if [ "$DRY_RUN_MODE" = true ]; then
-    echo -e "${YELLOW}   [DRY-RUN] Recherche de fichiers AppleDouble...${NC}"
-    find . -name "._*" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" 2>/dev/null | while read file; do
-        echo -e "${YELLOW}   [DRY-RUN] Fichier AppleDouble trouvé: $file${NC}"
-    done
-    find . -name ".DS_Store" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" 2>/dev/null | while read file; do
-        echo -e "${YELLOW}   [DRY-RUN] Fichier .DS_Store trouvé: $file${NC}"
-    done
-else
-    # Compter d'abord les fichiers AppleDouble
-    apple_double_count=$(find . -name "._*" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" 2>/dev/null | wc -l)
-    if [ $apple_double_count -gt 0 ]; then
-        # Supprimer les fichiers AppleDouble
-        find . -name "._*" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" -delete 2>/dev/null
-        print_success "$apple_double_count fichiers AppleDouble (._*) supprimés"
-        CLEANED_COUNT=$((CLEANED_COUNT + apple_double_count))
-    fi
-    
-    # Compter d'abord les fichiers .DS_Store
-    ds_store_count=$(find . -name ".DS_Store" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" 2>/dev/null | wc -l)
-    if [ $ds_store_count -gt 0 ]; then
-        # Supprimer les fichiers .DS_Store
-        find . -name ".DS_Store" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" -delete 2>/dev/null
-        print_success "$ds_store_count fichiers .DS_Store supprimés"
-        CLEANED_COUNT=$((CLEANED_COUNT + ds_store_count))
-    fi
-fi
+# Nettoyage SÉCURISÉ des fichiers Python compilés (seulement les caches)
+print_section "Nettoyage SÉCURISÉ des fichiers Python compilés"
+secure_clean "Fichiers Python compilés" "*.pyc" "*.pyo" "__pycache__"
 
-# Nettoyage spécifique des fichiers AppleDouble dans athalia_core
-print_section "Nettoyage spécifique des fichiers AppleDouble dans athalia_core"
-if [ "$DRY_RUN_MODE" = true ]; then
-    echo -e "${YELLOW}   [DRY-RUN] Recherche de fichiers AppleDouble dans athalia_core...${NC}"
-    if [ -d "./athalia_core" ]; then
-        find ./athalia_core -name "._*" 2>/dev/null | while read file; do
-            echo -e "${YELLOW}   [DRY-RUN] Fichier AppleDouble trouvé dans athalia_core: $file${NC}"
-        done
-    fi
-else
-    if [ -d "./athalia_core" ]; then
-        # Compter d'abord les fichiers AppleDouble dans athalia_core
-        core_apple_double_count=$(find ./athalia_core -name "._*" 2>/dev/null | wc -l)
-        if [ $core_apple_double_count -gt 0 ]; then
-            # Supprimer les fichiers AppleDouble dans athalia_core
-            find ./athalia_core -name "._*" -delete 2>/dev/null
-            print_success "$core_apple_double_count fichiers AppleDouble supprimés dans athalia_core"
-            CLEANED_COUNT=$((CLEANED_COUNT + core_apple_double_count))
-            
-            # Si l'option force est activée, supprimer à nouveau après un délai
-            if [ "$FORCE_APPLEDOUBLE" = true ]; then
-                print_info "Attente de 2 secondes pour la suppression forcée..."
-                sleep 2
-                force_count=$(find ./athalia_core -name "._*" 2>/dev/null | wc -l)
-                if [ $force_count -gt 0 ]; then
-                    find ./athalia_core -name "._*" -delete 2>/dev/null
-                    print_success "$force_count fichiers AppleDouble supprimés en mode forcé"
-                    CLEANED_COUNT=$((CLEANED_COUNT + force_count))
-                fi
-            fi
-        else
-            print_info "Aucun fichier AppleDouble trouvé dans athalia_core"
-        fi
-    fi
-fi
+# Nettoyage SÉCURISÉ des caches de tests et outils (seulement les caches)
+print_section "Nettoyage SÉCURISÉ des caches de tests et outils"
+secure_clean "Caches de tests" ".pytest_cache" ".mypy_cache" ".ruff_cache" ".coverage" "coverage.xml" "htmlcov" ".tox" ".cache"
 
-# Nettoyage complet des fichiers Python compilés
-print_section "Nettoyage des fichiers Python compilés"
-fast_clean "Fichiers Python compilés" "*.pyc" "*.pyo" "*.pyd" "__pycache__" "*.so" "*.dll" "*.dylib"
+# Nettoyage SÉCURISÉ des fichiers de couverture (seulement les rapports)
+print_section "Nettoyage SÉCURISÉ des fichiers de couverture"
+secure_clean "Fichiers de couverture" "*.coverage" "coverage.xml" "htmlcov" ".coverage.*" "coverage_html" "cov.xml"
 
-# Nettoyage complet des caches de tests et outils
-print_section "Nettoyage des caches de tests et outils"
-fast_clean "Caches de tests" ".pytest_cache" ".mypy_cache" ".ruff_cache" ".coverage" "coverage.xml" "htmlcov" ".tox" ".cache"
+# Nettoyage SÉCURISÉ des fichiers temporaires (seulement les fichiers vraiment temporaires)
+print_section "Nettoyage SÉCURISÉ des fichiers temporaires"
+secure_clean "Fichiers temporaires" "*.tmp" "*.temp" "*.swp" "*.swo" "*~" "*.bak" "*.backup" "*.orig"
 
-# Nettoyage complet des fichiers de couverture
-print_section "Nettoyage des fichiers de couverture"
-fast_clean "Fichiers de couverture" "*.coverage" "coverage.xml" "htmlcov" ".coverage.*" "coverage_html" "cov.xml"
+# Nettoyage SÉCURISÉ des fichiers de build (seulement les dossiers build)
+print_section "Nettoyage SÉCURISÉ des fichiers de build"
+secure_clean "Fichiers de build" "build" "dist" "*.egg-info" "*.egg"
 
-# Nettoyage complet des fichiers temporaires
-print_section "Nettoyage des fichiers temporaires"
-fast_clean "Fichiers temporaires" "*.tmp" "*.temp" "*.swp" "*.swo" "*~" "*.bak" "*.backup" "*.orig"
+# Nettoyage SÉCURISÉ des fichiers de logs (seulement les logs temporaires)
+print_section "Nettoyage SÉCURISÉ des fichiers de logs"
+secure_clean "Fichiers de logs temporaires" "*.log.tmp" "*.out.tmp" "*.err.tmp" "debug.log.tmp" "error.log.tmp"
 
-# Nettoyage complet des fichiers de build
-print_section "Nettoyage des fichiers de build"
-fast_clean "Fichiers de build" "build" "dist" "*.egg-info" "*.egg" "__pycache__" "*.pyc" "*.pyo"
+# Nettoyage SÉCURISÉ des fichiers corrompus (seulement les fichiers vraiment corrompus)
+print_section "Nettoyage SÉCURISÉ des fichiers corrompus"
+secure_clean "Fichiers corrompus" "*.f(f)" "*.corrupt" "*.broken"
 
-# Nettoyage complet des fichiers de logs
-print_section "Nettoyage des fichiers de logs"
-fast_clean "Fichiers de logs" "*.log" "logs" "*.out" "*.err" "debug.log" "error.log"
+# Nettoyage SÉCURISÉ des dossiers cache spécifiques
+print_section "Nettoyage SÉCURISÉ des dossiers cache spécifiques"
+secure_clean_cache_directories "Dossiers cache" ".pytest_cache" ".mypy_cache" ".ruff_cache" ".coverage" "htmlcov" ".tox" ".cache" "build" "dist" "*.egg-info" "__pycache__"
 
-# Nettoyage complet des fichiers de données temporaires
-print_section "Nettoyage des fichiers de données temporaires"
-fast_clean "Fichiers de données temporaires" "*.db" "*.sqlite" "*.sqlite3" "*.cache" "*.dat" "*.tmp"
-
-# Nettoyage complet des fichiers corrompus
-print_section "Nettoyage des fichiers corrompus"
-fast_clean "Fichiers corrompus" "*.f(f)" "*.corrupt" "*.broken"
-
-# Nettoyage des dossiers cache spécifiques
-print_section "Nettoyage des dossiers cache spécifiques"
-clean_cache_directories "Dossiers cache" ".pytest_cache" ".mypy_cache" ".ruff_cache" ".coverage" "htmlcov" ".tox" ".cache" "build" "dist" "*.egg-info" "__pycache__"
-
-# Nettoyage des caractères null des fichiers Python
-print_section "Nettoyage des caractères null"
+# Nettoyage SÉCURISÉ des caractères null des fichiers Python (seulement les fichiers non importants)
+print_section "Nettoyage SÉCURISÉ des caractères null"
 if [ "$DRY_RUN_MODE" = true ]; then
     echo -e "${YELLOW}   [DRY-RUN] Recherche de fichiers avec caractères null${NC}"
     find . -name "*.py" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" -exec grep -l $'\x00' {} \; 2>/dev/null | while read file; do
-        echo -e "${YELLOW}   [DRY-RUN] Fichier avec caractères null: $file${NC}"
+        if is_important_file "$file"; then
+            echo -e "${YELLOW}   [DRY-RUN] PROTÉGÉ (avec caractères null): $file${NC}"
+        else
+            echo -e "${YELLOW}   [DRY-RUN] Fichier avec caractères null: $file${NC}"
+        fi
     done
 else
     find . -name "*.py" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" -exec grep -l $'\x00' {} \; 2>/dev/null | while read file; do
         if [ -f "$file" ]; then
-            tr -d '\000' < "$file" > "$file.tmp" 2>/dev/null && mv "$file.tmp" "$file" 2>/dev/null
-            print_success "Nettoyé: $file"
-            CLEANED_COUNT=$((CLEANED_COUNT + 1))
+            if is_important_file "$file"; then
+                print_warning "PROTÉGÉ (avec caractères null): $file"
+            else
+                tr -d '\000' < "$file" > "$file.tmp" 2>/dev/null && mv "$file.tmp" "$file" 2>/dev/null
+                print_success "Nettoyé: $file"
+                CLEANED_COUNT=$((CLEANED_COUNT + 1))
+            fi
         fi
     done
 fi
 
-# Nettoyage des fichiers de configuration temporaires
-print_section "Nettoyage des fichiers de configuration temporaires"
-fast_clean "Fichiers de configuration temporaires" "*.cfg.tmp" "*.ini.tmp" "*.yaml.tmp" "*.yml.tmp" "*.json.tmp"
+# Nettoyage SÉCURISÉ des fichiers de configuration temporaires (seulement les fichiers .tmp)
+print_section "Nettoyage SÉCURISÉ des fichiers de configuration temporaires"
+secure_clean "Fichiers de configuration temporaires" "*.cfg.tmp" "*.ini.tmp" "*.yaml.tmp" "*.yml.tmp" "*.json.tmp"
 
-# Nettoyage des fichiers de documentation temporaires
-print_section "Nettoyage des fichiers de documentation temporaires"
-fast_clean "Fichiers de documentation temporaires" "*.md.tmp" "*.rst.tmp" "*.txt.tmp" "docs/_build" "docs/build"
+# Nettoyage SÉCURISÉ des fichiers de documentation temporaires (seulement les fichiers .tmp)
+print_section "Nettoyage SÉCURISÉ des fichiers de documentation temporaires"
+secure_clean "Fichiers de documentation temporaires" "*.md.tmp" "*.rst.tmp" "*.txt.tmp" "docs/_build" "docs/build"
 
-# Nettoyage des fichiers de IDE/éditeurs
-print_section "Nettoyage des fichiers d'éditeurs"
-fast_clean "Fichiers d'éditeurs" ".vscode/settings.json.tmp" ".idea/workspace.xml.tmp" "*.sublime-*" ".editorconfig.tmp"
+# Nettoyage SÉCURISÉ des fichiers de IDE/éditeurs (seulement les fichiers .tmp)
+print_section "Nettoyage SÉCURISÉ des fichiers d'éditeurs"
+secure_clean "Fichiers d'éditeurs" ".vscode/settings.json.tmp" ".idea/workspace.xml.tmp" "*.sublime-*" ".editorconfig.tmp"
 
 # Affichage du résumé
 print_summary 
