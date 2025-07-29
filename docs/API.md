@@ -2044,51 +2044,99 @@ Créer des données de benchmark d'exemple
 
 ##### test_show_benchmarks_with_data
 
-Test de show_benchmarks avec données - DÉSACTIVÉ
+Test de show_benchmarks avec données
+
+**Paramètres :**
+
+- `mock_st`
 
 ##### test_show_benchmarks_without_data
 
-Test de show_benchmarks sans données - DÉSACTIVÉ
+Test de show_benchmarks sans données
+
+**Paramètres :**
+
+- `mock_st`
 
 ##### test_show_benchmarks_with_filter
 
-Test de show_benchmarks avec filtre - DÉSACTIVÉ
+Test de show_benchmarks avec filtre
+
+**Paramètres :**
+
+- `mock_st`
 
 ##### test_show_benchmarks_data_processing
 
-Test du traitement des données dans show_benchmarks - DÉSACTIVÉ
+Test du traitement des données dans show_benchmarks
+
+**Paramètres :**
+
+- `mock_st`
 
 ##### test_show_benchmarks_filter_processing
 
-Test du filtrage des données - DÉSACTIVÉ
+Test du filtrage des données
+
+**Paramètres :**
+
+- `mock_st`
 
 ##### test_main_function
 
-Test de la fonction main - DÉSACTIVÉ
+Test de la fonction main
+
+**Paramètres :**
+
+- `mock_st`
 
 ##### test_main_function_different_pages
 
-Test de la fonction main avec différentes pages - DÉSACTIVÉ
+Test de la fonction main avec différentes pages
+
+**Paramètres :**
+
+- `mock_st`
 
 ##### test_show_benchmarks_error_handling
 
-Test de la gestion d'erreurs dans show_benchmarks - DÉSACTIVÉ
+Test de la gestion d'erreurs dans show_benchmarks
+
+**Paramètres :**
+
+- `mock_st`
 
 ##### test_show_benchmarks_empty_dataframe
 
-Test avec un dataframe vide - DÉSACTIVÉ
+Test avec un dataframe vide
+
+**Paramètres :**
+
+- `mock_st`
 
 ##### test_show_benchmarks_missing_columns
 
-Test avec des colonnes manquantes - DÉSACTIVÉ
+Test avec des colonnes manquantes
+
+**Paramètres :**
+
+- `mock_st`
 
 ##### test_show_benchmarks_complex_data
 
-Test avec des données complexes - DÉSACTIVÉ
+Test avec des données complexes
+
+**Paramètres :**
+
+- `mock_st`
 
 ##### test_show_benchmarks_info_message
 
-Test du message d'information - DÉSACTIVÉ
+Test du message d'information
+
+**Paramètres :**
+
+- `mock_st`
 
 ##### __init__
 
@@ -5538,6 +5586,266 @@ Retourne les résultats des tests d'imports
 
 ---
 
+### test_code_linter_complete
+
+Tests complets pour code_linter.py
+Objectif : Atteindre 80%+ de couverture
+
+#### Classes
+
+##### TestCodeLinterComplete
+
+Tests complets pour CodeLinter
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_init()`
+- `test_init_with_auto_fix()`
+- `test_run_basic()`
+- `test_run_flake8_success()`
+- `test_run_flake8_with_errors()`
+- `test_run_flake8_exception()`
+- `test_run_black_success()`
+- `test_run_black_with_issues()`
+- `test_run_black_exception()`
+- `test_run_isort_success()`
+- `test_run_isort_with_issues()`
+- `test_run_isort_exception()`
+- `test_run_mypy_success()`
+- `test_run_mypy_with_issues()`
+- `test_run_mypy_exception()`
+- `test_run_bandit_success()`
+- `test_run_bandit_with_issues()`
+- `test_run_bandit_exception()`
+- `test_calculate_score_perfect()`
+- `test_calculate_score_with_errors()`
+- `test_calculate_score_minimum()`
+- `test_print_report()`
+- `test_full_linting_workflow()`
+- `test_linting_with_empty_project()`
+- `test_linting_with_all_tools()`
+- `test_linting_performance()`
+- `test_linting_with_auto_fix()`
+
+##### TestCodeLinterIntegration
+
+Tests d'intégration pour CodeLinter
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_linting_real_project_structure()`
+- `test_linting_error_handling()`
+
+#### Fonctions
+
+##### setup_method
+
+Setup avant chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_init
+
+Test l'initialisation de CodeLinter
+
+##### test_init_with_auto_fix
+
+Test initialisation avec auto_fix activé
+
+##### test_run_basic
+
+Test exécution basique du linter
+
+##### test_run_flake8_success
+
+Test exécution de Flake8 réussie
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_flake8_with_errors
+
+Test exécution de Flake8 avec erreurs
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_flake8_exception
+
+Test exécution de Flake8 avec exception
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_black_success
+
+Test exécution de Black réussie
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_black_with_issues
+
+Test exécution de Black avec problèmes
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_black_exception
+
+Test exécution de Black avec exception
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_isort_success
+
+Test exécution de isort réussie
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_isort_with_issues
+
+Test exécution de isort avec problèmes
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_isort_exception
+
+Test exécution de isort avec exception
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_mypy_success
+
+Test exécution de MyPy réussie
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_mypy_with_issues
+
+Test exécution de MyPy avec problèmes
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_mypy_exception
+
+Test exécution de MyPy avec exception
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_bandit_success
+
+Test exécution de Bandit réussie
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_bandit_with_issues
+
+Test exécution de Bandit avec problèmes
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_bandit_exception
+
+Test exécution de Bandit avec exception
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_calculate_score_perfect
+
+Test calcul du score parfait
+
+##### test_calculate_score_with_errors
+
+Test calcul du score avec erreurs
+
+##### test_calculate_score_minimum
+
+Test calcul du score minimum
+
+##### test_print_report
+
+Test affichage du rapport
+
+**Paramètres :**
+
+- `mock_logger`
+
+##### test_full_linting_workflow
+
+Test workflow complet de linting
+
+##### test_linting_with_empty_project
+
+Test linting avec projet vide
+
+##### test_linting_with_all_tools
+
+Test linting avec tous les outils
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_linting_performance
+
+Test performance du linting
+
+##### test_linting_with_auto_fix
+
+Test linting avec auto_fix activé
+
+##### setup_method
+
+Setup avant chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_linting_real_project_structure
+
+Test linting avec structure de projet réelle
+
+##### test_linting_error_handling
+
+Test gestion d'erreurs du linting
+
+##### mock_run_side_effect
+
+---
+
 ### test_cli_complete
 
 Tests complets pour athalia_core.cli
@@ -6075,374 +6383,6 @@ Test workflow de fusion de configurations
 
 ---
 
-### test_analytics
-
-Tests pour le module analytics
-
-#### Classes
-
-##### TestAnalyticsModule
-
-Tests pour le module analytics d'Athalia
-
-**Méthodes :**
-
-- `setup_method()`
-- `teardown_method()`
-- `create_test_project()`
-- `test_analytics_module_import()`
-- `test_analyze_project()`
-- `test_generate_heatmap_data()`
-- `test_generate_technical_debt_analysis()`
-- `test_generate_analytics_html()`
-- `test_analytics_with_empty_project()`
-- `test_analytics_with_nonexistent_project()`
-
-#### Fonctions
-
-##### test_analytics_integration
-
-Test d'intégration du module analytics
-
-##### setup_method
-
-Configuration avant chaque test
-
-##### teardown_method
-
-Nettoyage après chaque test
-
-##### create_test_project
-
-Créer un projet de test pour les analyses
-
-##### test_analytics_module_import
-
-Test d'import du module analytics
-
-##### test_analyze_project
-
-Test d'analyse de projet
-
-##### test_generate_heatmap_data
-
-Test de génération de données pour heatmap
-
-##### test_generate_technical_debt_analysis
-
-Test d'analyse de dette technique
-
-##### test_generate_analytics_html
-
-Test de génération de rapport HTML
-
-##### test_analytics_with_empty_project
-
-Test d'analyse avec un projet vide
-
-##### test_analytics_with_nonexistent_project
-
-Test d'analyse avec un projet inexistant
-
----
-
-### test_advanced_analytics_unit
-
-#### Classes
-
-##### TestAdvancedAnalytics
-
-**Méthodes :**
-
-- `setUp()`
-- `test_constructor()`
-- `test_run()`
-- `test_analyze_coverage()`
-- `test_analyze_performance()`
-- `test_generate_dashboard()`
-- `test_generate_summary()`
-- `test_print_report()`
-
-#### Fonctions
-
-##### setUp
-
-##### test_constructor
-
-##### test_run
-
-##### test_analyze_coverage
-
-##### test_analyze_performance
-
-##### test_generate_dashboard
-
-##### test_generate_summary
-
-##### test_print_report
-
----
-
-### test_code_linter_complete
-
-Tests complets pour code_linter.py
-Objectif : Atteindre 80%+ de couverture
-
-#### Classes
-
-##### TestCodeLinterComplete
-
-Tests complets pour CodeLinter
-
-**Méthodes :**
-
-- `setup_method()`
-- `teardown_method()`
-- `test_init()`
-- `test_init_with_auto_fix()`
-- `test_run_basic()`
-- `test_run_flake8_success()`
-- `test_run_flake8_with_errors()`
-- `test_run_flake8_exception()`
-- `test_run_black_success()`
-- `test_run_black_with_issues()`
-- `test_run_black_exception()`
-- `test_run_isort_success()`
-- `test_run_isort_with_issues()`
-- `test_run_isort_exception()`
-- `test_run_mypy_success()`
-- `test_run_mypy_with_issues()`
-- `test_run_mypy_exception()`
-- `test_run_bandit_success()`
-- `test_run_bandit_with_issues()`
-- `test_run_bandit_exception()`
-- `test_calculate_score_perfect()`
-- `test_calculate_score_with_errors()`
-- `test_calculate_score_minimum()`
-- `test_print_report()`
-- `test_full_linting_workflow()`
-- `test_linting_with_empty_project()`
-- `test_linting_with_all_tools()`
-- `test_linting_performance()`
-- `test_linting_with_auto_fix()`
-
-##### TestCodeLinterIntegration
-
-Tests d'intégration pour CodeLinter
-
-**Méthodes :**
-
-- `setup_method()`
-- `teardown_method()`
-- `test_linting_real_project_structure()`
-- `test_linting_error_handling()`
-
-#### Fonctions
-
-##### setup_method
-
-Setup avant chaque test
-
-##### teardown_method
-
-Cleanup après chaque test
-
-##### test_init
-
-Test l'initialisation de CodeLinter
-
-##### test_init_with_auto_fix
-
-Test initialisation avec auto_fix activé
-
-##### test_run_basic
-
-Test exécution basique du linter
-
-##### test_run_flake8_success
-
-Test exécution de Flake8 réussie
-
-**Paramètres :**
-
-- `mock_run`
-
-##### test_run_flake8_with_errors
-
-Test exécution de Flake8 avec erreurs
-
-**Paramètres :**
-
-- `mock_run`
-
-##### test_run_flake8_exception
-
-Test exécution de Flake8 avec exception
-
-**Paramètres :**
-
-- `mock_run`
-
-##### test_run_black_success
-
-Test exécution de Black réussie
-
-**Paramètres :**
-
-- `mock_run`
-
-##### test_run_black_with_issues
-
-Test exécution de Black avec problèmes
-
-**Paramètres :**
-
-- `mock_run`
-
-##### test_run_black_exception
-
-Test exécution de Black avec exception
-
-**Paramètres :**
-
-- `mock_run`
-
-##### test_run_isort_success
-
-Test exécution de isort réussie
-
-**Paramètres :**
-
-- `mock_run`
-
-##### test_run_isort_with_issues
-
-Test exécution de isort avec problèmes
-
-**Paramètres :**
-
-- `mock_run`
-
-##### test_run_isort_exception
-
-Test exécution de isort avec exception
-
-**Paramètres :**
-
-- `mock_run`
-
-##### test_run_mypy_success
-
-Test exécution de MyPy réussie
-
-**Paramètres :**
-
-- `mock_run`
-
-##### test_run_mypy_with_issues
-
-Test exécution de MyPy avec problèmes
-
-**Paramètres :**
-
-- `mock_run`
-
-##### test_run_mypy_exception
-
-Test exécution de MyPy avec exception
-
-**Paramètres :**
-
-- `mock_run`
-
-##### test_run_bandit_success
-
-Test exécution de Bandit réussie
-
-**Paramètres :**
-
-- `mock_run`
-
-##### test_run_bandit_with_issues
-
-Test exécution de Bandit avec problèmes
-
-**Paramètres :**
-
-- `mock_run`
-
-##### test_run_bandit_exception
-
-Test exécution de Bandit avec exception
-
-**Paramètres :**
-
-- `mock_run`
-
-##### test_calculate_score_perfect
-
-Test calcul du score parfait
-
-##### test_calculate_score_with_errors
-
-Test calcul du score avec erreurs
-
-##### test_calculate_score_minimum
-
-Test calcul du score minimum
-
-##### test_print_report
-
-Test affichage du rapport
-
-**Paramètres :**
-
-- `mock_logger`
-
-##### test_full_linting_workflow
-
-Test workflow complet de linting
-
-##### test_linting_with_empty_project
-
-Test linting avec projet vide
-
-##### test_linting_with_all_tools
-
-Test linting avec tous les outils
-
-**Paramètres :**
-
-- `mock_run`
-
-##### test_linting_performance
-
-Test performance du linting
-
-##### test_linting_with_auto_fix
-
-Test linting avec auto_fix activé
-
-##### setup_method
-
-Setup avant chaque test
-
-##### teardown_method
-
-Cleanup après chaque test
-
-##### test_linting_real_project_structure
-
-Test linting avec structure de projet réelle
-
-##### test_linting_error_handling
-
-Test gestion d'erreurs du linting
-
-##### mock_run_side_effect
-
----
-
 ### test_main_complete
 
 Tests complets pour main.py
@@ -6855,6 +6795,1333 @@ Test gestion d'erreurs de main
 ##### test_main_performance
 
 Test performance de main
+
+---
+
+### test_auto_tester_complete
+
+Tests complets pour auto_tester.py
+Objectif : Atteindre 85%+ de couverture
+
+#### Classes
+
+##### TestAutoTesterComplete
+
+Tests complets pour AutoTester
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_init_with_project_path()`
+- `test_init_without_project_path()`
+- `test_run_with_project_path()`
+- `test_run_without_project_path()`
+- `test_generate_tests()`
+- `test_analyze_modules_empty_project()`
+- `test_analyze_modules_with_python_files()`
+- `test_analyze_modules_with_imports()`
+- `test_analyze_modules_with_property_decorator()`
+- `test_analyze_modules_with_error()`
+- `test_generate_unit_tests()`
+- `test_generate_module_unit_tests()`
+- `test_generate_integration_tests()`
+- `test_generate_performance_tests()`
+- `test_save_tests()`
+- `test_run_tests_success()`
+- `test_run_tests_failure()`
+- `test_run_tests_timeout()`
+- `test_run_tests_exception()`
+- `test_get_created_files()`
+- `test_generate_test_report()`
+- `test_generate_test_report_empty_results()`
+- `test_full_workflow()`
+- `test_analyze_modules_skip_macos_files()`
+- `test_analyze_modules_skip_test_files()`
+- `test_analyze_modules_skip_init_files()`
+
+##### TestAutoTesterIntegration
+
+Tests d'intégration pour AutoTester
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_integration_with_real_project()`
+- `test_integration_error_handling()`
+- `test_integration_performance()`
+
+##### TestMainFunction
+
+Tests pour la fonction main
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_main_direct_execution()`
+
+#### Fonctions
+
+##### setup_method
+
+Setup avant chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_init_with_project_path
+
+Test initialisation avec chemin de projet
+
+##### test_init_without_project_path
+
+Test initialisation sans chemin de projet
+
+##### test_run_with_project_path
+
+Test méthode run avec chemin de projet
+
+##### test_run_without_project_path
+
+Test méthode run sans chemin de projet
+
+##### test_generate_tests
+
+Test génération complète de tests
+
+##### test_analyze_modules_empty_project
+
+Test analyse de modules sur projet vide
+
+##### test_analyze_modules_with_python_files
+
+Test analyse de modules avec fichiers Python
+
+##### test_analyze_modules_with_imports
+
+Test analyse de modules avec imports
+
+##### test_analyze_modules_with_property_decorator
+
+Test analyse de modules avec décorateur property
+
+##### test_analyze_modules_with_error
+
+Test analyse de modules avec erreur de syntaxe
+
+##### test_generate_unit_tests
+
+Test génération de tests unitaires
+
+##### test_generate_module_unit_tests
+
+Test génération de tests unitaires pour un module
+
+##### test_generate_integration_tests
+
+Test génération de tests d'intégration
+
+##### test_generate_performance_tests
+
+Test génération de tests de performance
+
+##### test_save_tests
+
+Test sauvegarde des tests
+
+##### test_run_tests_success
+
+Test exécution des tests avec succès
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_tests_failure
+
+Test exécution des tests avec échec
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_tests_timeout
+
+Test exécution des tests avec timeout
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_tests_exception
+
+Test exécution des tests avec exception
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_get_created_files
+
+Test récupération des fichiers créés
+
+##### test_generate_test_report
+
+Test génération du rapport de tests
+
+##### test_generate_test_report_empty_results
+
+Test génération du rapport avec résultats vides
+
+##### test_full_workflow
+
+Test workflow complet
+
+##### test_analyze_modules_skip_macos_files
+
+Test que les fichiers macOS ._* sont ignorés
+
+##### test_analyze_modules_skip_test_files
+
+Test que les fichiers de test sont ignorés
+
+##### test_analyze_modules_skip_init_files
+
+Test que les fichiers __init__.py sont ignorés
+
+##### setup_method
+
+Setup avant chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_integration_with_real_project
+
+Test d'intégration avec un vrai projet
+
+##### test_integration_error_handling
+
+Test gestion d'erreurs en intégration
+
+##### test_integration_performance
+
+Test performance en intégration
+
+##### setup_method
+
+Setup avant chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_main_direct_execution
+
+Test exécution directe de main
+
+---
+
+### test_ready_check
+
+Tests pour ready_check.py
+
+#### Fonctions
+
+##### test_check_ready_ok
+
+Test que le projet est prêt
+
+##### test_check_ready_missing
+
+Test avec un projet manquant
+
+---
+
+### test_robotics_docker_complete
+
+Tests complets pour athalia_core.robotics.docker_robotics
+
+#### Classes
+
+##### TestDockerRoboticsComplete
+
+Tests unitaires complets pour DockerRoboticsManager
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_init()`
+- `test_validate_docker_setup_no_compose()`
+- `test_validate_docker_setup_with_valid_compose()`
+- `test_validate_docker_setup_with_invalid_compose()`
+- `test_validate_docker_setup_without_reachy_service()`
+- `test_parse_service_config_valid()`
+- `test_parse_service_config_minimal()`
+- `test_parse_service_config_invalid()`
+- `test_validate_reachy_service_complete()`
+- `test_validate_reachy_service_missing_image()`
+- `test_validate_reachy_service_wrong_image()`
+- `test_validate_reachy_service_missing_ros_domain()`
+- `test_validate_reachy_service_missing_display()`
+- `test_validate_reachy_service_missing_volumes()`
+- `test_validate_reachy_service_wrong_network_mode()`
+- `test_create_reachy_compose_template()`
+- `test_create_dockerfile_template()`
+- `test_create_start_script_template()`
+- `test_setup_reachy_environment_success()`
+- `test_setup_reachy_environment_exception()`
+- `test_run_docker_compose_success()`
+- `test_run_docker_compose_failure()`
+- `test_run_docker_compose_exception()`
+- `test_run_docker_compose_no_compose_file()`
+- `test_generate_docker_report()`
+
+##### TestDockerRoboticsIntegration
+
+Tests d'intégration pour DockerRoboticsManager
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_full_docker_workflow()`
+- `test_docker_validation_with_real_files()`
+- `test_docker_service_config_parsing_real()`
+
+##### TestDockerRoboticsEdgeCases
+
+Tests des cas limites pour DockerRoboticsManager
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_validate_docker_setup_empty_compose()`
+- `test_validate_docker_setup_compose_without_services()`
+- `test_validate_reachy_service_environment_list()`
+- `test_validate_reachy_service_environment_mixed()`
+- `test_generate_docker_report_empty_result()`
+- `test_generate_docker_report_with_issues()`
+- `test_docker_service_config_dataclass()`
+- `test_docker_validation_result_dataclass()`
+
+##### TestMainFunction
+
+Tests pour les fonctions principales
+
+**Méthodes :**
+
+- `test_docker_service_config_creation()`
+- `test_docker_validation_result_creation()`
+
+#### Fonctions
+
+##### setup_method
+
+Setup pour chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_init
+
+Test initialisation
+
+##### test_validate_docker_setup_no_compose
+
+Test validation sans docker-compose.yaml
+
+##### test_validate_docker_setup_with_valid_compose
+
+Test validation avec docker-compose.yaml valide
+
+##### test_validate_docker_setup_with_invalid_compose
+
+Test validation avec docker-compose.yaml invalide
+
+##### test_validate_docker_setup_without_reachy_service
+
+Test validation sans service Reachy
+
+##### test_parse_service_config_valid
+
+Test parsing de configuration de service valide
+
+##### test_parse_service_config_minimal
+
+Test parsing de configuration de service minimale
+
+##### test_parse_service_config_invalid
+
+Test parsing de configuration de service invalide
+
+##### test_validate_reachy_service_complete
+
+Test validation complète du service Reachy
+
+##### test_validate_reachy_service_missing_image
+
+Test validation service Reachy sans image
+
+##### test_validate_reachy_service_wrong_image
+
+Test validation service Reachy avec mauvaise image
+
+##### test_validate_reachy_service_missing_ros_domain
+
+Test validation service Reachy sans ROS_DOMAIN_ID
+
+##### test_validate_reachy_service_missing_display
+
+Test validation service Reachy sans DISPLAY
+
+##### test_validate_reachy_service_missing_volumes
+
+Test validation service Reachy sans volumes
+
+##### test_validate_reachy_service_wrong_network_mode
+
+Test validation service Reachy avec mauvais network_mode
+
+##### test_create_reachy_compose_template
+
+Test création du template docker-compose
+
+##### test_create_dockerfile_template
+
+Test création du template Dockerfile
+
+##### test_create_start_script_template
+
+Test création du template de script de démarrage
+
+##### test_setup_reachy_environment_success
+
+Test setup complet de l'environnement Reachy
+
+##### test_setup_reachy_environment_exception
+
+Test setup avec exception
+
+##### test_run_docker_compose_success
+
+Test lancement docker-compose réussi
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_docker_compose_failure
+
+Test lancement docker-compose échoué
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_docker_compose_exception
+
+Test lancement docker-compose avec exception
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_docker_compose_no_compose_file
+
+Test lancement docker-compose sans fichier
+
+##### test_generate_docker_report
+
+Test génération de rapport Docker
+
+##### setup_method
+
+Setup pour chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_full_docker_workflow
+
+Test workflow Docker complet
+
+##### test_docker_validation_with_real_files
+
+Test validation avec de vrais fichiers
+
+##### test_docker_service_config_parsing_real
+
+Test parsing de configuration de service avec de vrais fichiers
+
+##### setup_method
+
+Setup pour chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_validate_docker_setup_empty_compose
+
+Test validation avec docker-compose.yaml vide
+
+##### test_validate_docker_setup_compose_without_services
+
+Test validation avec docker-compose.yaml sans services
+
+##### test_validate_reachy_service_environment_list
+
+Test validation service Reachy avec environment en liste
+
+##### test_validate_reachy_service_environment_mixed
+
+Test validation service Reachy avec environment mixte
+
+##### test_generate_docker_report_empty_result
+
+Test génération de rapport avec résultat vide
+
+##### test_generate_docker_report_with_issues
+
+Test génération de rapport avec problèmes
+
+##### test_docker_service_config_dataclass
+
+Test création et utilisation de DockerServiceConfig
+
+##### test_docker_validation_result_dataclass
+
+Test création et utilisation de DockerValidationResult
+
+##### test_docker_service_config_creation
+
+Test création de DockerServiceConfig
+
+##### test_docker_validation_result_creation
+
+Test création de DockerValidationResult
+
+---
+
+### test_auto_cleaner_complete
+
+Tests complets pour auto_cleaner.py
+Amélioration de la couverture de 15% à 85%
+
+#### Classes
+
+##### TestAutoCleanerComplete
+
+Tests complets pour AutoCleaner
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_init()`
+- `test_clean_project_dry_run()`
+- `test_clean_project_real()`
+- `test_run_method()`
+- `test_clean_system_files()`
+- `test_clean_cache_files()`
+- `test_clean_backup_files()`
+- `test_clean_temp_files()`
+- `test_clean_duplicate_files()`
+- `test_clean_empty_directories()`
+- `test_clean_old_files()`
+- `test_clean_large_files()`
+- `test_safe_remove_file_dry_run()`
+- `test_safe_remove_file_real()`
+- `test_safe_remove_file_error()`
+- `test_safe_remove_dir_dry_run()`
+- `test_safe_remove_dir_real()`
+- `test_is_code_file()`
+- `test_is_important_file()`
+- `test_is_empty_directory()`
+- `test_calculate_file_hash()`
+- `test_calculate_file_hash_error()`
+- `test_generate_cleanup_report()`
+- `test_generate_summary()`
+- `test_optimize_project_structure()`
+- `test_organize_files()`
+
+##### TestAutoCleanerIntegration
+
+Tests d'intégration pour AutoCleaner
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_full_cleanup_workflow()`
+- `test_cleanup_with_real_project_structure()`
+- `test_cleanup_performance()`
+
+##### TestMainFunction
+
+Tests pour la fonction main
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_main_with_valid_path()`
+- `test_main_with_invalid_path()`
+- `test_main_with_optimize_flag()`
+- `test_main_with_all_flags()`
+
+##### TestAutoCleanerEdgeCases
+
+Tests pour les cas limites
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_cleanup_with_no_files()`
+- `test_cleanup_with_permission_errors()`
+- `test_cleanup_with_symlinks()`
+- `test_cleanup_with_nested_directories()`
+- `test_cleanup_with_unicode_filenames()`
+- `test_cleanup_with_very_large_files()`
+- `test_cleanup_with_network_paths()`
+
+#### Fonctions
+
+##### setup_method
+
+Configuration avant chaque test
+
+##### teardown_method
+
+Nettoyage après chaque test
+
+##### test_init
+
+Test de l'initialisation
+
+##### test_clean_project_dry_run
+
+Test du nettoyage en mode simulation
+
+##### test_clean_project_real
+
+Test du nettoyage réel
+
+##### test_run_method
+
+Test de la méthode run()
+
+##### test_clean_system_files
+
+Test du nettoyage des fichiers système
+
+##### test_clean_cache_files
+
+Test du nettoyage des fichiers de cache
+
+##### test_clean_backup_files
+
+Test du nettoyage des fichiers de sauvegarde
+
+##### test_clean_temp_files
+
+Test du nettoyage des fichiers temporaires
+
+##### test_clean_duplicate_files
+
+Test du nettoyage des fichiers dupliqués
+
+##### test_clean_empty_directories
+
+Test du nettoyage des répertoires vides
+
+##### test_clean_old_files
+
+Test du nettoyage des fichiers anciens
+
+##### test_clean_large_files
+
+Test du nettoyage des fichiers volumineux
+
+##### test_safe_remove_file_dry_run
+
+Test de la suppression sécurisée de fichier en mode simulation
+
+##### test_safe_remove_file_real
+
+Test de la suppression sécurisée de fichier en mode réel
+
+##### test_safe_remove_file_error
+
+Test de la suppression sécurisée avec erreur
+
+##### test_safe_remove_dir_dry_run
+
+Test de la suppression sécurisée de répertoire en mode simulation
+
+##### test_safe_remove_dir_real
+
+Test de la suppression sécurisée de répertoire en mode réel
+
+##### test_is_code_file
+
+Test de la détection des fichiers de code
+
+##### test_is_important_file
+
+Test de la détection des fichiers importants
+
+##### test_is_empty_directory
+
+Test de la détection des répertoires vides
+
+##### test_calculate_file_hash
+
+Test du calcul de hash de fichier
+
+##### test_calculate_file_hash_error
+
+Test du calcul de hash avec erreur
+
+##### test_generate_cleanup_report
+
+Test de la génération du rapport de nettoyage
+
+##### test_generate_summary
+
+Test de la génération du résumé
+
+##### test_optimize_project_structure
+
+Test de l'optimisation de la structure du projet
+
+##### test_organize_files
+
+Test de l'organisation des fichiers
+
+##### setup_method
+
+Configuration avant chaque test
+
+##### teardown_method
+
+Nettoyage après chaque test
+
+##### test_full_cleanup_workflow
+
+Test du workflow complet de nettoyage
+
+##### test_cleanup_with_real_project_structure
+
+Test avec une structure de projet réelle
+
+##### test_cleanup_performance
+
+Test de performance du nettoyage
+
+##### setup_method
+
+Configuration avant chaque test
+
+##### teardown_method
+
+Nettoyage après chaque test
+
+##### test_main_with_valid_path
+
+Test de main avec un chemin valide
+
+##### test_main_with_invalid_path
+
+Test de main avec un chemin invalide
+
+##### test_main_with_optimize_flag
+
+Test de main avec le flag d'optimisation
+
+##### test_main_with_all_flags
+
+Test de main avec tous les flags
+
+##### setup_method
+
+Configuration avant chaque test
+
+##### teardown_method
+
+Nettoyage après chaque test
+
+##### test_cleanup_with_no_files
+
+Test du nettoyage sans fichiers
+
+##### test_cleanup_with_permission_errors
+
+Test du nettoyage avec erreurs de permission
+
+##### test_cleanup_with_symlinks
+
+Test du nettoyage avec liens symboliques
+
+##### test_cleanup_with_nested_directories
+
+Test du nettoyage avec répertoires imbriqués
+
+##### test_cleanup_with_unicode_filenames
+
+Test du nettoyage avec noms de fichiers Unicode
+
+##### test_cleanup_with_very_large_files
+
+Test du nettoyage avec des fichiers très volumineux
+
+##### test_cleanup_with_network_paths
+
+Test du nettoyage avec des chemins réseau
+
+---
+
+### test_robotics_reachy_auditor_complete
+
+Tests complets pour athalia_core.robotics.reachy_auditor
+
+#### Classes
+
+##### TestReachyAuditorComplete
+
+Tests complets pour ReachyAuditor
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_init()`
+- `test_audit_complete_all_valid()`
+- `test_audit_complete_ros2_invalid()`
+- `test_audit_complete_docker_invalid()`
+- `test_audit_ros2_success()`
+- `test_audit_ros2_no_src()`
+- `test_audit_ros2_no_packages()`
+- `test_audit_docker_success()`
+- `test_audit_docker_no_compose()`
+- `test_audit_docker_invalid_yaml()`
+- `test_audit_docker_no_reachy_service()`
+- `test_audit_rust_success()`
+- `test_audit_rust_no_projects()`
+- `test_audit_rust_invalid_cargo()`
+- `test_audit_structure_success()`
+- `test_audit_structure_no_readme()`
+- `test_audit_structure_no_tests()`
+- `test_generate_report()`
+- `test_save_report()`
+- `test_save_report_custom_path()`
+
+##### TestReachyAuditorIntegration
+
+Tests d'intégration pour ReachyAuditor
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_full_reachy_audit_integration()`
+- `test_reachy_audit_report_integration()`
+
+##### TestReachyAuditorEdgeCases
+
+Tests des cas limites pour ReachyAuditor
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_audit_complete_empty_project()`
+- `test_audit_complete_perfect_score()`
+- `test_generate_report_empty_result()`
+- `test_save_report_permission_error()`
+
+##### TestMainFunction
+
+Tests pour les fonctions principales
+
+**Méthodes :**
+
+- `test_reachy_audit_result_dataclass()`
+
+#### Fonctions
+
+##### setup_method
+
+Setup pour chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_init
+
+Test l'initialisation de ReachyAuditor
+
+##### test_audit_complete_all_valid
+
+Test audit complet avec tout valide
+
+##### test_audit_complete_ros2_invalid
+
+Test audit complet avec ROS2 invalide
+
+##### test_audit_complete_docker_invalid
+
+Test audit complet avec Docker invalide
+
+##### test_audit_ros2_success
+
+Test audit ROS2 - succès
+
+##### test_audit_ros2_no_src
+
+Test audit ROS2 - pas de dossier src
+
+##### test_audit_ros2_no_packages
+
+Test audit ROS2 - pas de packages
+
+##### test_audit_docker_success
+
+Test audit Docker - succès
+
+##### test_audit_docker_no_compose
+
+Test audit Docker - pas de docker-compose
+
+##### test_audit_docker_invalid_yaml
+
+Test audit Docker - YAML invalide
+
+##### test_audit_docker_no_reachy_service
+
+Test audit Docker - pas de service reachy_2023
+
+##### test_audit_rust_success
+
+Test audit Rust - succès
+
+##### test_audit_rust_no_projects
+
+Test audit Rust - pas de projets
+
+##### test_audit_rust_invalid_cargo
+
+Test audit Rust - Cargo.toml invalide
+
+##### test_audit_structure_success
+
+Test audit structure - succès
+
+##### test_audit_structure_no_readme
+
+Test audit structure - pas de README
+
+##### test_audit_structure_no_tests
+
+Test audit structure - pas de tests
+
+##### test_generate_report
+
+Test génération de rapport
+
+##### test_save_report
+
+Test sauvegarde de rapport
+
+##### test_save_report_custom_path
+
+Test sauvegarde de rapport avec chemin personnalisé
+
+##### setup_method
+
+Setup pour chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_full_reachy_audit_integration
+
+Test intégration audit Reachy complet
+
+##### test_reachy_audit_report_integration
+
+Test intégration génération et sauvegarde de rapport
+
+##### setup_method
+
+Setup pour chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_audit_complete_empty_project
+
+Test audit complet avec projet vide
+
+##### test_audit_complete_perfect_score
+
+Test audit complet avec score parfait
+
+##### test_generate_report_empty_result
+
+Test génération rapport avec résultat vide
+
+##### test_save_report_permission_error
+
+Test sauvegarde rapport avec erreur de permission
+
+##### test_reachy_audit_result_dataclass
+
+Test dataclass ReachyAuditResult
+
+---
+
+### test_analytics
+
+Tests pour le module analytics
+
+#### Classes
+
+##### TestAnalyticsModule
+
+Tests pour le module analytics d'Athalia
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `create_test_project()`
+- `test_analytics_module_import()`
+- `test_analyze_project()`
+- `test_generate_heatmap_data()`
+- `test_generate_technical_debt_analysis()`
+- `test_generate_analytics_html()`
+- `test_analytics_with_empty_project()`
+- `test_analytics_with_nonexistent_project()`
+
+#### Fonctions
+
+##### test_analytics_integration
+
+Test d'intégration du module analytics
+
+##### setup_method
+
+Configuration avant chaque test
+
+##### teardown_method
+
+Nettoyage après chaque test
+
+##### create_test_project
+
+Créer un projet de test pour les analyses
+
+##### test_analytics_module_import
+
+Test d'import du module analytics
+
+##### test_analyze_project
+
+Test d'analyse de projet
+
+##### test_generate_heatmap_data
+
+Test de génération de données pour heatmap
+
+##### test_generate_technical_debt_analysis
+
+Test d'analyse de dette technique
+
+##### test_generate_analytics_html
+
+Test de génération de rapport HTML
+
+##### test_analytics_with_empty_project
+
+Test d'analyse avec un projet vide
+
+##### test_analytics_with_nonexistent_project
+
+Test d'analyse avec un projet inexistant
+
+---
+
+### test_advanced_analytics_unit
+
+#### Classes
+
+##### TestAdvancedAnalytics
+
+**Méthodes :**
+
+- `setUp()`
+- `test_constructor()`
+- `test_run()`
+- `test_analyze_coverage()`
+- `test_analyze_performance()`
+- `test_generate_dashboard()`
+- `test_generate_summary()`
+- `test_print_report()`
+
+#### Fonctions
+
+##### setUp
+
+##### test_constructor
+
+##### test_run
+
+##### test_analyze_coverage
+
+##### test_analyze_performance
+
+##### test_generate_dashboard
+
+##### test_generate_summary
+
+##### test_print_report
+
+---
+
+### test_robotics_ros2_validator_complete
+
+Tests complets pour athalia_core.robotics.ros2_validator
+
+#### Classes
+
+##### TestROS2ValidatorComplete
+
+Tests complets pour ROS2Validator
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_init()`
+- `test_validate_workspace_no_src()`
+- `test_validate_workspace_empty_src()`
+- `test_validate_workspace_with_packages()`
+- `test_validate_workspace_with_invalid_package()`
+- `test_validate_workspace_build_system_failure()`
+- `test_analyze_package_success()`
+- `test_analyze_package_no_package_xml()`
+- `test_analyze_package_invalid_xml()`
+- `test_detect_package_type_ament_python()`
+- `test_detect_package_type_ament_cmake()`
+- `test_detect_package_type_unknown()`
+- `test_check_build_system_success()`
+- `test_check_build_system_failure()`
+- `test_check_build_system_exception()`
+- `test_validate_launch_files_success()`
+- `test_validate_launch_files_invalid_syntax()`
+- `test_validate_launch_files_no_imports()`
+- `test_validate_urdf_files_success()`
+- `test_validate_urdf_files_invalid()`
+- `test_validate_urdf_files_xacro()`
+- `test_generate_validation_report()`
+
+##### TestROS2ValidatorIntegration
+
+Tests d'intégration pour ROS2Validator
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_full_ros2_validation_workflow()`
+- `test_ros2_validation_with_real_structure()`
+- `test_ros2_validation_performance()`
+
+##### TestROS2ValidatorEdgeCases
+
+Tests des cas limites pour ROS2Validator
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_validate_with_malformed_package_xml()`
+- `test_validate_with_empty_package_xml()`
+- `test_validate_with_unicode_content()`
+- `test_validate_with_large_package_xml()`
+
+##### TestMainFunction
+
+Tests pour les fonctions principales
+
+**Méthodes :**
+
+- `test_ros2_package_info_dataclass()`
+- `test_ros2_validation_result_dataclass()`
+
+#### Fonctions
+
+##### setup_method
+
+Setup pour chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_init
+
+Test l'initialisation de ROS2Validator
+
+##### test_validate_workspace_no_src
+
+Test validation workspace sans dossier src
+
+##### test_validate_workspace_empty_src
+
+Test validation workspace avec src vide
+
+##### test_validate_workspace_with_packages
+
+Test validation workspace avec packages
+
+##### test_validate_workspace_with_invalid_package
+
+Test validation workspace avec package invalide
+
+##### test_validate_workspace_build_system_failure
+
+Test validation workspace avec build system échoué
+
+##### test_analyze_package_success
+
+Test analyse de package réussi
+
+##### test_analyze_package_no_package_xml
+
+Test analyse de package sans package.xml
+
+##### test_analyze_package_invalid_xml
+
+Test analyse de package avec XML invalide
+
+##### test_detect_package_type_ament_python
+
+Test détection type package ament_python
+
+##### test_detect_package_type_ament_cmake
+
+Test détection type package ament_cmake
+
+##### test_detect_package_type_unknown
+
+Test détection type package inconnu
+
+##### test_check_build_system_success
+
+Test vérification build system - succès
+
+##### test_check_build_system_failure
+
+Test vérification build system - échec
+
+##### test_check_build_system_exception
+
+Test vérification build system - exception
+
+##### test_validate_launch_files_success
+
+Test validation fichiers launch - succès
+
+##### test_validate_launch_files_invalid_syntax
+
+Test validation fichiers launch - syntaxe invalide
+
+##### test_validate_launch_files_no_imports
+
+Test validation fichiers launch - pas d'imports ROS2
+
+##### test_validate_urdf_files_success
+
+Test validation fichiers URDF - succès
+
+##### test_validate_urdf_files_invalid
+
+Test validation fichiers URDF - invalide
+
+##### test_validate_urdf_files_xacro
+
+Test validation fichiers XACRO
+
+##### test_generate_validation_report
+
+Test génération rapport de validation
+
+##### setup_method
+
+Setup pour chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_full_ros2_validation_workflow
+
+Test workflow complet de validation ROS2
+
+##### test_ros2_validation_with_real_structure
+
+Test validation avec structure ROS2 réelle
+
+##### test_ros2_validation_performance
+
+Test performance de la validation ROS2
+
+##### setup_method
+
+Setup pour chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_validate_with_malformed_package_xml
+
+Test validation avec package.xml malformé
+
+##### test_validate_with_empty_package_xml
+
+Test validation avec package.xml vide
+
+##### test_validate_with_unicode_content
+
+Test validation avec contenu Unicode
+
+##### test_validate_with_large_package_xml
+
+Test validation avec package.xml volumineux
+
+##### test_ros2_package_info_dataclass
+
+Test dataclass ROS2PackageInfo
+
+##### test_ros2_validation_result_dataclass
+
+Test dataclass ROS2ValidationResult
 
 ---
 
@@ -7504,250 +8771,6 @@ Test performance de l'audit
 
 ---
 
-### test_ready_check
-
-Tests pour ready_check.py
-
-#### Fonctions
-
-##### test_check_ready_ok
-
-Test que le projet est prêt
-
-##### test_check_ready_missing
-
-Test avec un projet manquant
-
----
-
-### test_auto_tester_complete
-
-Tests complets pour auto_tester.py
-Objectif : Atteindre 85%+ de couverture
-
-#### Classes
-
-##### TestAutoTesterComplete
-
-Tests complets pour AutoTester
-
-**Méthodes :**
-
-- `setup_method()`
-- `teardown_method()`
-- `test_init_with_project_path()`
-- `test_init_without_project_path()`
-- `test_run_with_project_path()`
-- `test_run_without_project_path()`
-- `test_generate_tests()`
-- `test_analyze_modules_empty_project()`
-- `test_analyze_modules_with_python_files()`
-- `test_analyze_modules_with_imports()`
-- `test_analyze_modules_with_property_decorator()`
-- `test_analyze_modules_with_error()`
-- `test_generate_unit_tests()`
-- `test_generate_module_unit_tests()`
-- `test_generate_integration_tests()`
-- `test_generate_performance_tests()`
-- `test_save_tests()`
-- `test_run_tests_success()`
-- `test_run_tests_failure()`
-- `test_run_tests_timeout()`
-- `test_run_tests_exception()`
-- `test_get_created_files()`
-- `test_generate_test_report()`
-- `test_generate_test_report_empty_results()`
-- `test_full_workflow()`
-- `test_analyze_modules_skip_macos_files()`
-- `test_analyze_modules_skip_test_files()`
-- `test_analyze_modules_skip_init_files()`
-
-##### TestAutoTesterIntegration
-
-Tests d'intégration pour AutoTester
-
-**Méthodes :**
-
-- `setup_method()`
-- `teardown_method()`
-- `test_integration_with_real_project()`
-- `test_integration_error_handling()`
-- `test_integration_performance()`
-
-##### TestMainFunction
-
-Tests pour la fonction main
-
-**Méthodes :**
-
-- `setup_method()`
-- `teardown_method()`
-- `test_main_direct_execution()`
-
-#### Fonctions
-
-##### setup_method
-
-Setup avant chaque test
-
-##### teardown_method
-
-Cleanup après chaque test
-
-##### test_init_with_project_path
-
-Test initialisation avec chemin de projet
-
-##### test_init_without_project_path
-
-Test initialisation sans chemin de projet
-
-##### test_run_with_project_path
-
-Test méthode run avec chemin de projet
-
-##### test_run_without_project_path
-
-Test méthode run sans chemin de projet
-
-##### test_generate_tests
-
-Test génération complète de tests
-
-##### test_analyze_modules_empty_project
-
-Test analyse de modules sur projet vide
-
-##### test_analyze_modules_with_python_files
-
-Test analyse de modules avec fichiers Python
-
-##### test_analyze_modules_with_imports
-
-Test analyse de modules avec imports
-
-##### test_analyze_modules_with_property_decorator
-
-Test analyse de modules avec décorateur property
-
-##### test_analyze_modules_with_error
-
-Test analyse de modules avec erreur de syntaxe
-
-##### test_generate_unit_tests
-
-Test génération de tests unitaires
-
-##### test_generate_module_unit_tests
-
-Test génération de tests unitaires pour un module
-
-##### test_generate_integration_tests
-
-Test génération de tests d'intégration
-
-##### test_generate_performance_tests
-
-Test génération de tests de performance
-
-##### test_save_tests
-
-Test sauvegarde des tests
-
-##### test_run_tests_success
-
-Test exécution des tests avec succès
-
-**Paramètres :**
-
-- `mock_run`
-
-##### test_run_tests_failure
-
-Test exécution des tests avec échec
-
-**Paramètres :**
-
-- `mock_run`
-
-##### test_run_tests_timeout
-
-Test exécution des tests avec timeout
-
-**Paramètres :**
-
-- `mock_run`
-
-##### test_run_tests_exception
-
-Test exécution des tests avec exception
-
-**Paramètres :**
-
-- `mock_run`
-
-##### test_get_created_files
-
-Test récupération des fichiers créés
-
-##### test_generate_test_report
-
-Test génération du rapport de tests
-
-##### test_generate_test_report_empty_results
-
-Test génération du rapport avec résultats vides
-
-##### test_full_workflow
-
-Test workflow complet
-
-##### test_analyze_modules_skip_macos_files
-
-Test que les fichiers macOS ._* sont ignorés
-
-##### test_analyze_modules_skip_test_files
-
-Test que les fichiers de test sont ignorés
-
-##### test_analyze_modules_skip_init_files
-
-Test que les fichiers __init__.py sont ignorés
-
-##### setup_method
-
-Setup avant chaque test
-
-##### teardown_method
-
-Cleanup après chaque test
-
-##### test_integration_with_real_project
-
-Test d'intégration avec un vrai projet
-
-##### test_integration_error_handling
-
-Test gestion d'erreurs en intégration
-
-##### test_integration_performance
-
-Test performance en intégration
-
-##### setup_method
-
-Setup avant chaque test
-
-##### teardown_method
-
-Cleanup après chaque test
-
-##### test_main_direct_execution
-
-Test exécution directe de main
-
----
-
 ### test_logger_advanced_complete
 
 Tests complets pour logger_advanced.py
@@ -8037,285 +9060,6 @@ Test de l'export avec métriques vides
 
 ---
 
-### test_auto_cleaner_complete
-
-Tests complets pour auto_cleaner.py
-Amélioration de la couverture de 15% à 85%
-
-#### Classes
-
-##### TestAutoCleanerComplete
-
-Tests complets pour AutoCleaner
-
-**Méthodes :**
-
-- `setup_method()`
-- `teardown_method()`
-- `test_init()`
-- `test_clean_project_dry_run()`
-- `test_clean_project_real()`
-- `test_run_method()`
-- `test_clean_system_files()`
-- `test_clean_cache_files()`
-- `test_clean_backup_files()`
-- `test_clean_temp_files()`
-- `test_clean_duplicate_files()`
-- `test_clean_empty_directories()`
-- `test_clean_old_files()`
-- `test_clean_large_files()`
-- `test_safe_remove_file_dry_run()`
-- `test_safe_remove_file_real()`
-- `test_safe_remove_file_error()`
-- `test_safe_remove_dir_dry_run()`
-- `test_safe_remove_dir_real()`
-- `test_is_code_file()`
-- `test_is_important_file()`
-- `test_is_empty_directory()`
-- `test_calculate_file_hash()`
-- `test_calculate_file_hash_error()`
-- `test_generate_cleanup_report()`
-- `test_generate_summary()`
-- `test_optimize_project_structure()`
-- `test_organize_files()`
-
-##### TestAutoCleanerIntegration
-
-Tests d'intégration pour AutoCleaner
-
-**Méthodes :**
-
-- `setup_method()`
-- `teardown_method()`
-- `test_full_cleanup_workflow()`
-- `test_cleanup_with_real_project_structure()`
-- `test_cleanup_performance()`
-
-##### TestMainFunction
-
-Tests pour la fonction main
-
-**Méthodes :**
-
-- `setup_method()`
-- `teardown_method()`
-- `test_main_with_valid_path()`
-- `test_main_with_invalid_path()`
-- `test_main_with_optimize_flag()`
-- `test_main_with_all_flags()`
-
-##### TestAutoCleanerEdgeCases
-
-Tests pour les cas limites
-
-**Méthodes :**
-
-- `setup_method()`
-- `teardown_method()`
-- `test_cleanup_with_no_files()`
-- `test_cleanup_with_permission_errors()`
-- `test_cleanup_with_symlinks()`
-- `test_cleanup_with_nested_directories()`
-- `test_cleanup_with_unicode_filenames()`
-- `test_cleanup_with_very_large_files()`
-- `test_cleanup_with_network_paths()`
-
-#### Fonctions
-
-##### setup_method
-
-Configuration avant chaque test
-
-##### teardown_method
-
-Nettoyage après chaque test
-
-##### test_init
-
-Test de l'initialisation
-
-##### test_clean_project_dry_run
-
-Test du nettoyage en mode simulation
-
-##### test_clean_project_real
-
-Test du nettoyage réel
-
-##### test_run_method
-
-Test de la méthode run()
-
-##### test_clean_system_files
-
-Test du nettoyage des fichiers système
-
-##### test_clean_cache_files
-
-Test du nettoyage des fichiers de cache
-
-##### test_clean_backup_files
-
-Test du nettoyage des fichiers de sauvegarde
-
-##### test_clean_temp_files
-
-Test du nettoyage des fichiers temporaires
-
-##### test_clean_duplicate_files
-
-Test du nettoyage des fichiers dupliqués
-
-##### test_clean_empty_directories
-
-Test du nettoyage des répertoires vides
-
-##### test_clean_old_files
-
-Test du nettoyage des fichiers anciens
-
-##### test_clean_large_files
-
-Test du nettoyage des fichiers volumineux
-
-##### test_safe_remove_file_dry_run
-
-Test de la suppression sécurisée de fichier en mode simulation
-
-##### test_safe_remove_file_real
-
-Test de la suppression sécurisée de fichier en mode réel
-
-##### test_safe_remove_file_error
-
-Test de la suppression sécurisée avec erreur
-
-##### test_safe_remove_dir_dry_run
-
-Test de la suppression sécurisée de répertoire en mode simulation
-
-##### test_safe_remove_dir_real
-
-Test de la suppression sécurisée de répertoire en mode réel
-
-##### test_is_code_file
-
-Test de la détection des fichiers de code
-
-##### test_is_important_file
-
-Test de la détection des fichiers importants
-
-##### test_is_empty_directory
-
-Test de la détection des répertoires vides
-
-##### test_calculate_file_hash
-
-Test du calcul de hash de fichier
-
-##### test_calculate_file_hash_error
-
-Test du calcul de hash avec erreur
-
-##### test_generate_cleanup_report
-
-Test de la génération du rapport de nettoyage
-
-##### test_generate_summary
-
-Test de la génération du résumé
-
-##### test_optimize_project_structure
-
-Test de l'optimisation de la structure du projet
-
-##### test_organize_files
-
-Test de l'organisation des fichiers
-
-##### setup_method
-
-Configuration avant chaque test
-
-##### teardown_method
-
-Nettoyage après chaque test
-
-##### test_full_cleanup_workflow
-
-Test du workflow complet de nettoyage
-
-##### test_cleanup_with_real_project_structure
-
-Test avec une structure de projet réelle
-
-##### test_cleanup_performance
-
-Test de performance du nettoyage
-
-##### setup_method
-
-Configuration avant chaque test
-
-##### teardown_method
-
-Nettoyage après chaque test
-
-##### test_main_with_valid_path
-
-Test de main avec un chemin valide
-
-##### test_main_with_invalid_path
-
-Test de main avec un chemin invalide
-
-##### test_main_with_optimize_flag
-
-Test de main avec le flag d'optimisation
-
-##### test_main_with_all_flags
-
-Test de main avec tous les flags
-
-##### setup_method
-
-Configuration avant chaque test
-
-##### teardown_method
-
-Nettoyage après chaque test
-
-##### test_cleanup_with_no_files
-
-Test du nettoyage sans fichiers
-
-##### test_cleanup_with_permission_errors
-
-Test du nettoyage avec erreurs de permission
-
-##### test_cleanup_with_symlinks
-
-Test du nettoyage avec liens symboliques
-
-##### test_cleanup_with_nested_directories
-
-Test du nettoyage avec répertoires imbriqués
-
-##### test_cleanup_with_unicode_filenames
-
-Test du nettoyage avec noms de fichiers Unicode
-
-##### test_cleanup_with_very_large_files
-
-Test du nettoyage avec des fichiers très volumineux
-
-##### test_cleanup_with_network_paths
-
-Test du nettoyage avec des chemins réseau
-
----
-
 ### test_robotics_rust_analyzer_complete
 
 Tests complets pour athalia_core.robotics.rust_analyzer
@@ -8574,6 +9318,234 @@ Test dataclass RustAnalysisResult
 
 ---
 
+### test_robotics_ci_complete
+
+Tests complets pour athalia_core.robotics.robotics_ci
+
+#### Classes
+
+##### TestRoboticsCIComplete
+
+Tests complets pour RoboticsCI
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_init()`
+- `test_create_github_workflow()`
+- `test_create_docker_compose_ci()`
+- `test_run_ci_pipeline_all_enabled()`
+- `test_run_ci_pipeline_ros2_failure()`
+- `test_run_ci_pipeline_partial_enabled()`
+- `test_run_ros2_validation_success()`
+- `test_run_ros2_validation_no_src()`
+- `test_run_ros2_validation_no_packages()`
+- `test_run_ros2_validation_build_failure()`
+- `test_run_docker_build_success()`
+- `test_run_docker_build_no_dockerfile()`
+- `test_run_docker_build_failure()`
+- `test_run_rust_build_success()`
+- `test_run_rust_build_no_projects()`
+- `test_run_rust_build_failure()`
+- `test_run_tests_success()`
+- `test_run_tests_ros2_failure()`
+- `test_run_tests_python_failure()`
+- `test_run_deployment_success()`
+- `test_collect_artifacts()`
+- `test_generate_ci_report()`
+- `test_setup_ci_environment_success()`
+- `test_setup_ci_environment_failure()`
+
+##### TestRoboticsCIIntegration
+
+Tests d'intégration pour RoboticsCI
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_full_ci_pipeline_integration()`
+- `test_ci_environment_setup_integration()`
+
+##### TestRoboticsCIEdgeCases
+
+Tests des cas limites pour RoboticsCI
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_run_ci_pipeline_empty_config()`
+- `test_run_ci_pipeline_timeout()`
+- `test_collect_artifacts_empty_project()`
+- `test_generate_ci_report_empty_result()`
+
+##### TestMainFunction
+
+Tests pour les fonctions principales
+
+**Méthodes :**
+
+- `test_cic_config_dataclass()`
+- `test_ci_result_dataclass()`
+
+#### Fonctions
+
+##### setup_method
+
+Setup pour chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_init
+
+Test l'initialisation de RoboticsCI
+
+##### test_create_github_workflow
+
+Test création de workflow GitHub Actions
+
+##### test_create_docker_compose_ci
+
+Test création de docker-compose CI
+
+##### test_run_ci_pipeline_all_enabled
+
+Test pipeline CI avec tous les stages activés
+
+##### test_run_ci_pipeline_ros2_failure
+
+Test pipeline CI avec échec ROS2
+
+##### test_run_ci_pipeline_partial_enabled
+
+Test pipeline CI avec seulement certains stages activés
+
+##### test_run_ros2_validation_success
+
+Test validation ROS2 - succès
+
+##### test_run_ros2_validation_no_src
+
+Test validation ROS2 - pas de dossier src
+
+##### test_run_ros2_validation_no_packages
+
+Test validation ROS2 - pas de packages
+
+##### test_run_ros2_validation_build_failure
+
+Test validation ROS2 - échec build
+
+##### test_run_docker_build_success
+
+Test build Docker - succès
+
+##### test_run_docker_build_no_dockerfile
+
+Test build Docker - pas de Dockerfile
+
+##### test_run_docker_build_failure
+
+Test build Docker - échec
+
+##### test_run_rust_build_success
+
+Test build Rust - succès
+
+##### test_run_rust_build_no_projects
+
+Test build Rust - pas de projets
+
+##### test_run_rust_build_failure
+
+Test build Rust - échec
+
+##### test_run_tests_success
+
+Test exécution tests - succès
+
+##### test_run_tests_ros2_failure
+
+Test exécution tests - échec ROS2
+
+##### test_run_tests_python_failure
+
+Test exécution tests - échec Python
+
+##### test_run_deployment_success
+
+Test déploiement - succès
+
+##### test_collect_artifacts
+
+Test collecte d'artifacts
+
+##### test_generate_ci_report
+
+Test génération rapport CI
+
+##### test_setup_ci_environment_success
+
+Test configuration environnement CI - succès
+
+##### test_setup_ci_environment_failure
+
+Test configuration environnement CI - échec
+
+##### setup_method
+
+Setup pour chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_full_ci_pipeline_integration
+
+Test intégration pipeline CI complet
+
+##### test_ci_environment_setup_integration
+
+Test intégration configuration environnement CI
+
+##### setup_method
+
+Setup pour chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_run_ci_pipeline_empty_config
+
+Test pipeline CI avec configuration vide
+
+##### test_run_ci_pipeline_timeout
+
+Test pipeline CI avec timeout
+
+##### test_collect_artifacts_empty_project
+
+Test collecte d'artifacts dans projet vide
+
+##### test_generate_ci_report_empty_result
+
+Test génération rapport avec résultat vide
+
+##### test_cic_config_dataclass
+
+Test dataclass CIConfig
+
+##### test_ci_result_dataclass
+
+Test dataclass CIResult
+
+---
+
 ### test_ath_audit
 
 #### Fonctions
@@ -8600,7 +9572,7 @@ Test que ath-build.py peut être exécuté sans se bloquer
 
 ##### test_ath_coverage_runs
 
-Test désactivé car il cause une récursivité infinie
+Test que ath-coverage.py fonctionne sans récursivité
 
 ---
 
@@ -8618,7 +9590,7 @@ Test désactivé car il cause une récursivité infinie
 
 ##### test_ath_test_runs
 
-Test désactivé car il cause une récursivité infinie
+Test que ath-test.py fonctionne sans récursivité
 
 ---
 

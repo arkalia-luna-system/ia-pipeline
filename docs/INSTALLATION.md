@@ -20,7 +20,7 @@ pip install -r requirements.txt
 Le projet utilise un fichier de configuration YAML :
 
 ```yaml
-# config.yml
+# config/athalia_config.yaml
 app:
   name: athalia-dev-setup
   debug: true
@@ -34,7 +34,11 @@ database:
 ## Lancement rapide
 
 ```bash
-python main.py
+# Vérifier l'installation
+python athalia_unified.py --help
+
+# Test rapide
+python athalia_unified.py . --action audit --dry-run
 ```
 
 ---

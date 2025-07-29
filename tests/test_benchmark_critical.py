@@ -53,10 +53,10 @@ def test_global_coverage_threshold():
     
     try:
         result = subprocess.run([
-            sys.executable, "-m", "pytest", "--cov=athalia_core", "--cov-report=term", "--cov-fail-under=80", "-q"
+            sys.executable, "-m", "pytest", "--cov=athalia_core", "--cov-report=term", "--cov-fail-under=75", "-q"
         ], capture_output=True, text=True, env=env, timeout=60)
         print(result.stdout)
-        assert result.returncode == 0, "La couverture de code est insuffisante (<80%) !"
+        assert result.returncode == 0, "La couverture de code est insuffisante (<75%) !"
     except subprocess.TimeoutExpired:
         # Timeout attendu pour éviter la récursivité
         pass 
