@@ -5,13 +5,12 @@ Analyse et métriques de projets
 """
 
 from pathlib import Path
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List
 import json
 import yaml
 import logging
-import ast
 import re
-from datetime import datetime, timedelta
+from datetime import datetime
 import subprocess
 
 logger = logging.getLogger(__name__)
@@ -180,8 +179,8 @@ class AnalyticsEngine:
                                 if "project" in data and "dependencies" in data["project"]:
                                     deps = data["project"]["dependencies"]
                                     dependencies_data["dependency_list"].extend(deps)
-                            except:
-                                pass
+                                                except Exception:
+                        pass
                         
                         elif req_file.name == "setup.py":
                             # Analyser setup.py

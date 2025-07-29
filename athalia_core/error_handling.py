@@ -254,7 +254,7 @@ class ErrorContext:
             else:
                 raise_athalia_error(
                     self.error_code,
-                    f"Erreur dans le contexte",
+                    "Erreur dans le contexte",
                     str(exc_val),
                     self.context,
                 )

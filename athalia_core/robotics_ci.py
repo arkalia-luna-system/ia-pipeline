@@ -4,14 +4,11 @@ Module de CI/CD pour projets robotics
 Intégration continue pour ROS2, Rust et projets robotics
 """
 
-import json
 import logging
 import subprocess
-import xml.etree.ElementTree as ET
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict
 
-import yaml
 
 logger = logging.getLogger(__name__)
 
