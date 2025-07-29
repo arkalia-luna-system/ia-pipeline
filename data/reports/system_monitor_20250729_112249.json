@@ -1,0 +1,41 @@
+{
+  "system": {
+    "cpu_percent": 27.1,
+    "memory_percent": 67.6,
+    "disk_usage": 2.1,
+    "timestamp": "2025-07-29T11:22:49.503842"
+  },
+  "project": {
+    "total_files": 16342,
+    "python_files": 5584,
+    "data_files": 3210,
+    "log_files": 5,
+    "backup_files": 0
+  },
+  "paths": {
+    "athalia_core/": {
+      "exists": true,
+      "size": 131072
+    },
+    "tests/": {
+      "exists": true,
+      "size": 131072
+    },
+    "docs/": {
+      "exists": true,
+      "size": 131072
+    },
+    "data/": {
+      "exists": true,
+      "size": 131072
+    },
+    "logs/": {
+      "exists": true,
+      "size": 131072
+    },
+    "requirements.txt": {
+      "exists": true,
+      "size": 1071
+    }
+  }
+}
