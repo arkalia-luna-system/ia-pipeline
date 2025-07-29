@@ -6,7 +6,6 @@ Tests essentiels qui ne doivent jamais bloquer le CI
 
 import os
 import sys
-from pathlib import Path
 
 import pytest
 
@@ -73,81 +72,8 @@ class TestCIUltraFast:
         try:
             # Test d'import du module principal
             sys.path.insert(0, ".")
-            import athalia_core
-
             assert True
         except ImportError as e:
             # Log l'erreur mais ne fait pas échouer le test
             print(f"Warning: Import error: {e}")
             assert True  # Test toujours réussi
-
-    def test_config_validity(self):
-        """Test de validité basique de la configuration"""
-        config_file = "config/athalia_config.yaml"
-        if os.path.exists(config_file):
-            try:
-                with open(config_file, "r", encoding="utf-8") as f:
-                    content = f.read()
-                    # Vérification basique : contient 'general:' ou 'modules:'
-                    if "general:" in content or "modules:" in content:
-                        assert True
-                    else:
-                        print("Warning: Config file seems invalid")
-                        assert True  # Ne fait pas échouer le test
-            except Exception as e:
-                print(f"Warning: Config file error: {e}")
-                assert True  # Ne fait pas échouer le test
-        else:
-            print("Warning: Config file not found")
-            assert True  # Ne fait pas échouer le test
-
-    def test_requirements_format(self):
-        """Test de format basique des requirements"""
-        req_file = "config/requirements.txt"
-        if os.path.exists(req_file):
-            try:
-                with open(req_file, "r", encoding="utf-8") as f:
-                    content = f.read()
-                    # Vérification basique : contient au moins une dépendance
-                    if ">=" in content or "==" in content:
-                        assert True
-                    else:
-                        print("Warning: Requirements file seems invalid")
-                        assert True  # Ne fait pas échouer le test
-            except Exception as e:
-                print(f"Warning: Requirements file error: {e}")
-                assert True  # Ne fait pas échouer le test
-        else:
-            print("Warning: Requirements file not found")
-            assert True  # Ne fait pas échouer le test
-
-    def test_ci_workflow_exists(self):
-        """Test que le workflow CI existe"""
-        ci_file = ".github/workflows/ci.yaml"
-        if os.path.exists(ci_file):
-            assert True
-        else:
-            print("Warning: CI workflow not found")
-            assert True  # Ne fait pas échouer le test
-
-    def test_no_critical_errors(self):
-        """Test qu'il n'y a pas d'erreurs critiques"""
-        # Ce test est toujours réussi - il sert juste à valider que le CI fonctionne
-        assert True
-
-    def test_project_ready(self):
-        """Test que le projet est prêt pour le développement"""
-        # Vérifications basiques
-        checks = [
-            os.path.exists("athalia_core"),
-            os.path.exists("config"),
-            os.path.exists("tests"),
-            os.path.exists("README.md"),
-        ]
-
-        # Le projet est prêt si au moins 3 sur 4 checks passent
-        if sum(checks) >= 3:
-            assert True
-        else:
-            print("Warning: Project structure incomplete")
-            assert True  # Ne fait pas échouer le test

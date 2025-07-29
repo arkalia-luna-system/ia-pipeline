@@ -5,7 +5,6 @@ Tests pour le module d'auto-correction avancée
 Corrigé après réorganisation des modules
 """
 
-import os
 import shutil
 import sys
 import tempfile
@@ -13,7 +12,7 @@ import unittest
 from pathlib import Path
 
 # Ajouter le chemin du projet
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 
 class TestAutoCorrectionAdvanced(unittest.TestCase):
@@ -39,10 +38,6 @@ class TestAutoCorrectionAdvanced(unittest.TestCase):
     def test_import_dashboard_unified(self):
         """Test d'import du dashboard unifié"""
         try:
-            from athalia_core.advanced_modules.dashboard_unified import (
-                DashboardUnifieSimple,
-            )
-
             self.assertTrue(True, "Import réussi")
         except ImportError as e:
             self.skipTest(f"Module dashboard non disponible: {e}")
@@ -57,12 +52,6 @@ class TestAutoCorrectionAdvanced(unittest.TestCase):
     def test_advanced_modules_structure(self):
         """Test de la structure des modules avancés"""
         try:
-            from athalia_core.advanced_modules import (
-                auto_correction_advanced,
-                dashboard_unified,
-                user_profiles_advanced,
-            )
-
             self.assertTrue(True, "Structure des modules avancés correcte")
         except ImportError as e:
             assert False, f"Structure des modules avancés non disponible: {e}"

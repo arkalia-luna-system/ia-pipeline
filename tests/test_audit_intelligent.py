@@ -116,7 +116,6 @@ def test_basic():
         assert isinstance(result, dict)
         # Les problèmes de sécurité peuvent être dans les issues
         if "issues" in result:
-            issues_text = " ".join(result["issues"])
             # Vérifier la présence de problèmes de sécurité
             assert any(
                 "password" in issue.lower() or "api_key" in issue.lower()

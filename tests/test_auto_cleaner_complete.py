@@ -4,11 +4,9 @@ Couverture : 100% des fonctionnalités d'auto_cleaner
 Tests : 30 tests unitaires et d'intégration
 """
 
-import pytest
 import tempfile
-import os
 from pathlib import Path
-from unittest.mock import Mock, patch, MagicMock
+from unittest.mock import Mock, patch
 import json
 import shutil
 from datetime import datetime
@@ -151,6 +149,7 @@ class TestAutoCleaner:
             with open(file_path, "w") as f:
                 f.write("old content")
             # Modifier la date de modification
+            import os
             os.utime(file_path, (0, 0))  # Date très ancienne
 
         result = self.cleaner.cleanup_old_files(days_old=1)
