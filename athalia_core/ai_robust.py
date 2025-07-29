@@ -12,6 +12,9 @@ from typing import Dict, List, Optional
 
 import requests
 
+# Configuration du logging
+logger = logging.getLogger(__name__)
+
 
 class AIModel(Enum):
     """Modèles IA disponibles."""
@@ -425,7 +428,7 @@ def query_mistral(prompt: str) -> str:
 if __name__ == "__main__":
     # Test du module
     ai = RobustAI()
-    print(f"Modèles disponibles: {[m.value for m in ai.available_models]}")
+    logger.info(f"Modèles disponibles: {[m.value for m in ai.available_models]}")
 
     # Test de génération
     response = ai.generate_response(
@@ -434,4 +437,4 @@ if __name__ == "__main__":
         project_type="ai_assistant",
         complexity="medium",
     )
-    print(f"Réponse générée: {response}")
+    logger.info(f"Réponse générée: {response}")

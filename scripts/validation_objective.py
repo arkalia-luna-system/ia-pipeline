@@ -12,6 +12,16 @@ import time
 from datetime import datetime
 from pathlib import Path
 
+# Import du validateur de sécurité
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    # Fallback si le module n'est pas disponible
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+    class SecurityError(Exception):
+        pass
+
 
 class ValidationObjective:
     def __init__(self):
@@ -49,9 +59,9 @@ if __name__ == "__main__":
         cmd = f"python scripts/athalia_unified.py {projet_test} --action complete --auto-fix"
 
         try:
-            result = subprocess.run(
-                cmd, shell=True, capture_output=True, text=True, timeout=60
-            )
+            # Utilisation du validateur de sécurité
+            cmd_parts = cmd.split()
+            result = validate_and_run(cmd_parts, timeout=60)
             temps_generation = time.time() - start
 
             if result.returncode != 0:
@@ -190,8 +200,8 @@ def fonction_syntaxe():
         tests_robustesse = []
 
         # Test avec fichier inexistant
-        cmd = "python scripts/athalia_unified.py --audit /fichier/inexistant/qui/n/existe/pas"
-        result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+        cmd = ["python", "scripts/athalia_unified.py", "--audit", "/fichier/inexistant/qui/n/existe/pas"]
+        result = validate_and_run(cmd)
         tests_robustesse.append(
             {
                 "test": "fichier_inexistant",
@@ -205,8 +215,8 @@ def fonction_syntaxe():
         with open(fichier_vide, "w") as f:
             f.write("")
 
-        cmd = f"python scripts/athalia_unified.py --audit {fichier_vide}"
-        result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+        cmd = ["python", "scripts/athalia_unified.py", "--audit", fichier_vide]
+        result = validate_and_run(cmd)
         tests_robustesse.append(
             {
                 "test": "fichier_vide",
@@ -220,8 +230,8 @@ def fonction_syntaxe():
         with open(fichier_syntaxe_invalide, "w") as f:
             f.write("def func(:\n    invalid syntax here\n    )")
 
-        cmd = f"python scripts/athalia_unified.py --audit {fichier_syntaxe_invalide}"
-        result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+        cmd = ["python", "scripts/athalia_unified.py", "--audit", fichier_syntaxe_invalide]
+        result = validate_and_run(cmd)
         tests_robustesse.append(
             {
                 "test": "syntaxe_invalide",
@@ -260,10 +270,8 @@ if __name__ == "__main__":
 """
             )
 
-        cmd = f"python scripts/athalia_unified.py {projet_benchmark} --action complete"
-        result = subprocess.run(
-            cmd, shell=True, capture_output=True, text=True, timeout=60
-        )
+        cmd = ["python", "scripts/athalia_unified.py", projet_benchmark, "--action", "complete"]
+        result = validate_and_run(cmd, timeout=60)
         temps_athalia = time.time() - start
 
         if result.returncode != 0:
