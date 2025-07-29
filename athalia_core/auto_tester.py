@@ -363,21 +363,21 @@ if __name__ == '__main__':
 
         # Tests unitaires
         for index, test_content in enumerate(unit_tests):
-            test_file = tests_dir / f"test_unit_{index + 1}.py"
+            test_file = tests_dir / f"auto_generated_unit_{index + 1}.py"
             with open(test_file, 'w', encoding='utf-8') as file_handle:
                 file_handle.write(test_content)
             self.generated_tests.append(str(test_file))
 
         # Tests dintégration
         for index, test_content in enumerate(integration_tests):
-            test_file = tests_dir / f"test_integration_{index + 1}.py"
+            test_file = tests_dir / f"auto_generated_integration_{index + 1}.py"
             with open(test_file, 'w', encoding='utf-8') as file_handle:
                 file_handle.write(test_content)
             self.generated_tests.append(str(test_file))
 
         # Tests de performance
         for index, test_content in enumerate(performance_tests):
-            test_file = tests_dir / f"test_performance_{index + 1}.py"
+            test_file = tests_dir / f"auto_generated_performance_{index + 1}.py"
             with open(test_file, 'w', encoding='utf-8') as file_handle:
                 file_handle.write(test_content)
             self.generated_tests.append(str(test_file))
@@ -414,15 +414,15 @@ echo "🧪 Lancement des tests pour {self.project_path.name}"
 
 # Tests unitaires
 echo "📋 Tests unitaires..."
-python -m pytest tests/test_unit_*.py -v
+python -m pytest tests/auto_generated_unit_*.py -v
 
 # Tests dintégration
 echo "🔗 Tests dintégration..."
-python -m pytest tests/test_integration_*.py -v
+python -m pytest tests/auto_generated_integration_*.py -v
 
 # Tests de performance
 echo "⚡ Tests de performance..."
-python -m pytest tests/test_performance_*.py -v
+python -m pytest tests/auto_generated_performance_*.py -v
 
 # Tests avec couverture
 echo "📊 Tests avec couverture..."
@@ -431,7 +431,11 @@ python -m pytest tests/ --cov=. --cov-report=html --cov-report=term
 echo "✅ Tests terminés !"
 """
 
-        run_tests_file = self.project_path / "scripts" / "run_tests.sh"
+        # Créer le dossier scripts s'il n'existe pas
+        scripts_dir = self.project_path / "scripts"
+        scripts_dir.mkdir(exist_ok=True)
+        
+        run_tests_file = scripts_dir / "run_tests.sh"
         with open(run_tests_file, 'w', encoding='utf-8') as file_handle:
             file_handle.write(run_tests_script)
 
@@ -455,7 +459,7 @@ echo "✅ Tests terminés !"
             logger.info("🧪 Exécution des tests unitaires...")
             try:
                 result = subprocess.run(
-                    ["python", "-m", "pytest", "tests/test_unit_*.py", "-v", "--tb=short"],
+                    ["python", "-m", "pytest", "tests/auto_generated_unit_*.py", "-v", "--tb=short"],
                     capture_output=True,
                     text=True,
                     timeout=60
@@ -478,7 +482,7 @@ echo "✅ Tests terminés !"
             logger.info("🔗 Exécution des tests dintégration...")
             try:
                 result = subprocess.run(
-                    ["python", "-m", "pytest", "tests/test_integration_*.py", "-v", "--tb=short"],
+                    ["python", "-m", "pytest", "tests/auto_generated_integration_*.py", "-v", "--tb=short"],
                     capture_output=True,
                     text=True,
                     timeout=60
