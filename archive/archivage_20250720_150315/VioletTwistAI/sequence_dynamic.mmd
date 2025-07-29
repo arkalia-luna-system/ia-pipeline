@@ -1,8 +1,0 @@
-sequenceDiagram
-    participant User
-    participant API
-    API->>violette_game: Appel /api/violette_game
-    violette_game-->>API: Réponse
-    API->>ai_player: Appel /api/ai_player
-    ai_player-->>API: Réponse
-    API-->>User: Résultat global
