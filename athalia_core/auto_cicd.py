@@ -183,7 +183,7 @@ def generate_github_ci_yaml(outdir):
     ci_dir = outdir / ".f" / "f"
     ci_dir.mkdir(parents=True, exist_ok=True)
     (ci_dir / "ci.f(f").write_text("# CI/CD config")
-    print(f'[DEBUG] Fichier généré : {ci_dir / "ci.f(f"}')
+    logger.debug(f'Fichier généré : {ci_dir / "ci.f(f"}')
 
 
 __all__ = ["AutoCICD", "generate_github_ci_yaml"]

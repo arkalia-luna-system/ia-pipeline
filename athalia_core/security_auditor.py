@@ -6,6 +6,16 @@ import subprocess
 from pathlib import Path
 from typing import Any, Dict
 
+# Import du validateur de sécurité
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    # Fallback pour les tests
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+    class SecurityError(Exception):
+        pass
+
 logger = logging.getLogger(__name__)
 
 
@@ -61,7 +71,7 @@ class SecurityAuditor:
         """Vérification des dépendances"""
         try:
             # Utiliser bandit pour lanalyse de sécurité
-            result = subprocess.run(
+            result = validate_and_run(
                 ["bandit", "-r", str(self.project_path), "-f", "json"],
                 capture_output=True,
                 text=True,
@@ -77,12 +87,12 @@ class SecurityAuditor:
                     f"Vulnérabilités Bandit détectées: {result.stdout}"
                 )
 
-        except Exception as e:
+        except (Exception, SecurityError) as e:
             self.report["warnings"].append(f"Bandit non exécuté: {e}")
 
         # Vérifier avec safety si disponible
         try:
-            result = subprocess.run(
+            result = validate_and_run(
                 ["safety", "check", "--json"],
                 capture_output=True,
                 text=True,
@@ -97,7 +107,7 @@ class SecurityAuditor:
                         f"{vuln['installed_version']}"
                     )
 
-        except Exception as e:
+        except (Exception, SecurityError) as e:
             self.report["warnings"].append(f"Safety non exécuté: {e}")
 
     def _check_code_vulnerabilities(self):

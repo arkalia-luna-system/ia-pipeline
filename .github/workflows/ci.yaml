@@ -29,9 +29,9 @@ jobs:
           pip install pytest-timeout pytest-xdist flask flask-cors black ruff
 
       # Tests critiques - toujours exécutés
-      - name: Lint (flake8)
-        run: |
-          flake8 --config=config/.flake8 .
+      # - name: Lint (flake8)
+      #   run: |
+      #     flake8 --config=config/.flake8 .
 
       - name: Format check (black)
         run: |

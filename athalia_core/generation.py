@@ -446,7 +446,7 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-EXPOSE 8000
+EXPOSE ${{PORT:-8000}}
 
 CMD ["python", "src/main.py"]
 """
@@ -462,10 +462,10 @@ services:
   {project_name}:
     build: .
     ports:
-      - "8000:8000"
+      - "${{PORT:-8000}}:${{PORT:-8000}}"
     volumes:
       - .:/app
     environment:
-      - DEBUG=true
+      - DEBUG=${{DEBUG:-false}}
 """
     return docker_compose
