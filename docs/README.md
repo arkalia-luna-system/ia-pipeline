@@ -13,4 +13,4 @@
 3. Explorez l'[Documentation API](API.md) pour les fonctionnalités avancées
 
 ---
-*Généré automatiquement par Athalia* - 2025-07-27
+*Généré automatiquement par Athalia* - 2025-07-29

@@ -3950,6 +3950,129 @@ Test d'un workflow complet de gestion de profils
 
 ---
 
+### test_intelligent_memory
+
+Tests pour le module intelligent_memory.py
+Teste le système de mémoire intelligente d'Athalia
+
+#### Classes
+
+##### TestIntelligentMemory
+
+Tests pour le système de mémoire intelligente
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `test_init_database()`
+- `test_learn_from_error()`
+- `test_learn_from_correction()`
+- `test_learn_from_duplicate()`
+- `test_predict_issues()`
+- `test_suggest_corrections()`
+- `test_get_learning_insights()`
+- `test_analyze_code_pattern()`
+- `test_normalize_code()`
+- `test_calculate_code_similarity()`
+- `test_record_learning_event()`
+- `test_find_similar_patterns()`
+- `test_check_antipatterns()`
+- `test_check_potential_duplicates()`
+- `test_save_correction_suggestion()`
+- `test_learning_event_dataclass()`
+- `test_prediction_dataclass()`
+- `test_correction_suggestion_dataclass()`
+- `test_integration_workflow()`
+
+#### Fonctions
+
+##### setUp
+
+Configuration initiale pour chaque test
+
+##### tearDown
+
+Nettoyage après chaque test
+
+##### test_init_database
+
+Test de l'initialisation de la base de données
+
+##### test_learn_from_error
+
+Test d'apprentissage d'une erreur
+
+##### test_learn_from_correction
+
+Test d'apprentissage d'une correction
+
+##### test_learn_from_duplicate
+
+Test d'apprentissage d'un doublon
+
+##### test_predict_issues
+
+Test de prédiction d'issues
+
+##### test_suggest_corrections
+
+Test de suggestions de corrections
+
+##### test_get_learning_insights
+
+Test de récupération des insights d'apprentissage
+
+##### test_analyze_code_pattern
+
+Test d'analyse de pattern de code
+
+##### test_normalize_code
+
+Test de normalisation de code
+
+##### test_calculate_code_similarity
+
+Test de calcul de similarité de code
+
+##### test_record_learning_event
+
+Test d'enregistrement d'événement d'apprentissage
+
+##### test_find_similar_patterns
+
+Test de recherche de patterns similaires
+
+##### test_check_antipatterns
+
+Test de vérification d'anti-patterns
+
+##### test_check_potential_duplicates
+
+Test de vérification de doublons potentiels
+
+##### test_save_correction_suggestion
+
+Test de sauvegarde de suggestion de correction
+
+##### test_learning_event_dataclass
+
+Test de la dataclass LearningEvent
+
+##### test_prediction_dataclass
+
+Test de la dataclass Prediction
+
+##### test_correction_suggestion_dataclass
+
+Test de la dataclass CorrectionSuggestion
+
+##### test_integration_workflow
+
+Test d'un workflow d'intégration complet
+
+---
+
 ### test_continue_models
 
 Test de présence des modèles dans la config Continue
@@ -4929,6 +5052,87 @@ Test d'intégration avec plusieurs utilisateurs
 ##### test_integration_error_handling
 
 Test d'intégration de la gestion d'erreurs
+
+---
+
+### test_pattern_detector
+
+Tests pour le détecteur de patterns
+
+#### Classes
+
+##### TestPatternDetector
+
+Tests pour PatternDetector
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_init()`
+- `test_analyze_project_patterns_empty()`
+- `test_analyze_project_patterns_with_files()`
+- `test_extract_patterns_from_file()`
+- `test_detect_duplicates()`
+- `test_calculate_similarity()`
+- `test_detect_antipatterns()`
+- `test_generate_recommendations()`
+- `test_get_learning_insights()`
+- `test_save_analysis_results()`
+
+#### Fonctions
+
+##### test_pattern_detector_integration
+
+Test d'intégration complet
+
+##### setup_method
+
+Configuration avant chaque test
+
+##### teardown_method
+
+Nettoyage après chaque test
+
+##### test_init
+
+Test de l'initialisation
+
+##### test_analyze_project_patterns_empty
+
+Test d'analyse d'un projet vide
+
+##### test_analyze_project_patterns_with_files
+
+Test d'analyse avec des fichiers Python
+
+##### test_extract_patterns_from_file
+
+Test d'extraction de patterns d'un fichier
+
+##### test_detect_duplicates
+
+Test de détection de doublons
+
+##### test_calculate_similarity
+
+Test de calcul de similarité
+
+##### test_detect_antipatterns
+
+Test de détection d'anti-patterns
+
+##### test_generate_recommendations
+
+Test de génération de recommandations
+
+##### test_get_learning_insights
+
+Test d'obtention d'insights d'apprentissage
+
+##### test_save_analysis_results
+
+Test de sauvegarde des résultats
 
 ---
 
@@ -895224,7 +895428,8 @@ Alias privé pour compatibilité avec les tests.
 
 ##### _get_dynamic_prompt
 
-Alias privé pour compatibilité avec les tests. Accepte PromptContext ou str et fait un .format sur le template.
+Alias privé pour compatibilité avec les tests. 
+Accepte PromptContext ou str et fait un .format sur le template.
 
 **Paramètres :**
 
@@ -897737,6 +897942,33 @@ Sauvegarder une suggestion de correction
 
 ---
 
+### onboarding
+
+#### Fonctions
+
+##### generate_onboarding_md
+
+**Paramètres :**
+
+- `blueprint`
+- `outdir`
+
+##### generate_onboard_cli
+
+**Paramètres :**
+
+- `blueprint`
+- `outdir`
+
+##### generate_onboarding_html_advanced
+
+**Paramètres :**
+
+- `blueprint`
+- `outdir`
+
+---
+
 ### plugins_validator
 
 #### Fonctions
@@ -898157,33 +898389,6 @@ Affichage du rapport de sécurité
 
 ---
 
-### onboarding
-
-#### Fonctions
-
-##### generate_onboarding_md
-
-**Paramètres :**
-
-- `blueprint`
-- `outdir`
-
-##### generate_onboard_cli
-
-**Paramètres :**
-
-- `blueprint`
-- `outdir`
-
-##### generate_onboarding_html_advanced
-
-**Paramètres :**
-
-- `blueprint`
-- `outdir`
-
----
-
 ### code_linter
 
 #### Classes
@@ -898282,7 +898487,8 @@ avec logs et rollback.
 
 Applique la fonction de correction à chaque fichier.
 :param files: Liste des chemins de fichiers à corriger
-:param correction_fn: Fonction qui prend le contenu du fichier et retourne le contenu corrigé
+:param correction_fn: Fonction qui prend le contenu du fichier et
+                     retourne le contenu corrigé
 :return: Dictionnaire de résultats (succès, erreurs, logs)
 
 **Paramètres :**
@@ -899715,6 +899921,52 @@ Fait évoluer les solutions sur plusieurs générations (croisement, mutation, s
 
 ---
 
+### multimodal_distiller
+
+Distillation multimodale pour Athalia/Arkalia
+- Fusionne réponses texte et image (LLaVA)
+- Appel réel à LLaVA via RobustAI (Ollama)
+
+#### Classes
+
+##### MultimodalDistiller
+
+**Méthodes :**
+
+- `distill()`
+- `call_llava()`
+
+#### Fonctions
+
+##### distill
+
+Fusionne les réponses texte et image en utilisant LLaVA (Ollama) et
+d'autres modèles si besoin.
+:param text_prompts: Liste de prompts texte
+:param image_paths: Liste de chemins d'images (un par prompt ou global)
+:param context: Contexte optionnel
+:return: Réponse multimodale fusionnée
+
+**Paramètres :**
+
+- `text_prompts`
+- `image_paths`
+- `context`
+
+##### call_llava
+
+Appelle LLaVA via Ollama pour une analyse multimodale (texte + image).
+:param prompt: Prompt texte
+:param image_path: Chemin de l'image à analyser
+:return: Réponse de LLaVA (str)
+
+**Paramètres :**
+
+- `prompt`
+- `image_path`
+
+---
+
 ### correction_distiller
 
 Module de distillation de corrections IA pour Athalia/Arkalia
@@ -899750,52 +900002,6 @@ Sélectionne ou fusionne la meilleure correction IA.
 - `corrections`
 - `scores`
 - `context`
-
----
-
-### multimodal_distiller
-
-Distillation multimodale pour Athalia/Arkalia
-- Fusionne réponses texte et image (LLaVA)
-- Appel réel à LLaVA via RobustAI (Ollama)
-
-#### Classes
-
-##### MultimodalDistiller
-
-**Méthodes :**
-
-- `distill()`
-- `call_llava()`
-
-#### Fonctions
-
-##### distill
-
-Fusionne les réponses texte et image en utilisant LLaVA (Ollama) et 
-d'autres modèles si besoin.
-:param text_prompts: Liste de prompts texte
-:param image_paths: Liste de chemins d'images (un par prompt ou global)
-:param context: Contexte optionnel
-:return: Réponse multimodale fusionnée
-
-**Paramètres :**
-
-- `text_prompts`
-- `image_paths`
-- `context`
-
-##### call_llava
-
-Appelle LLaVA via Ollama pour une analyse multimodale (texte + image).
-:param prompt: Prompt texte
-:param image_path: Chemin de l'image à analyser
-:return: Réponse de LLaVA (str)
-
-**Paramètres :**
-
-- `prompt`
-- `image_path`
 
 ---
 
