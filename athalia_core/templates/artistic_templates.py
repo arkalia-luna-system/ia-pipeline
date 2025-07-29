@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from typing import Dict, Tuple
+from typing import Dict
 import logging
 
 logger = logging.getLogger(__name__)

@@ -4,11 +4,9 @@
 Module sécurité, audit, scan de secrets, prompts sécurité.
 """
 
-import logging
 import os
 import re
 from pathlib import Path
-from typing import Dict, List
 
 
 def security_audit_project(project_path):

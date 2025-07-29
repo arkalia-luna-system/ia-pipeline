@@ -5,11 +5,9 @@ Module d'audit intelligent pour analyser la qualité des projets générés.
 Analyse le code, détecte la dette technique, et propose des améliorations.
 """
 
-from typing import Dict, List, Tuple, Any
+from typing import Dict, List, Any
 import json
 import os
-import re
-from datetime import datetime
 import ast
 import logging
 import builtins
@@ -236,7 +234,7 @@ class ProjectAuditor:
                     content = f.read()
                 if '"""' not in content and "'''" not in content:
                     files_without_docstrings += 1
-            except:
+            except Exception:
                 pass
 
         if files_without_docstrings > 0:

@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 from pathlib import Path
-from typing import Dict, List, Any
+from typing import Dict, Any
 import subprocess
 import json
-import ast
 import re
 import logging
 

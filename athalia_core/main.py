@@ -3,16 +3,9 @@
 from athalia_core.ci import generate_github_ci_yaml, add_coverage_badge
 from athalia_core.cleanup import clean_old_tests_and_caches
 # from athalia_core.dashboard import generate_dashboard_html, generate_multi_project_mermaid
-from athalia_core.advanced_analytics import enrich_genesis_md
-from athalia_core.generation import (
-    generate_project,
-    generate_blueprint_mock,
-    save_blueprint,
-    scan_existing_project)
 from athalia_core.onboarding import generate_onboard_cli, generate_onboarding_html_advanced
 from athalia_core.security import security_audit_project
 import os
-import sys
 from datetime import datetime
 import logging
 import shutil
@@ -146,7 +139,7 @@ def main(test_mode=False):
                 # outdir = blueprint['project_name']
                 # save_blueprint(blueprint, outdir)
                 # generate_project(blueprint, outdir)
-                logger.info(f"Projet généré dans le dossier spécifié.")
+                logger.info("Projet généré dans le dossier spécifié.")
             elif choix == '2':
                 outdir = safe_input("Nom du dossier projet à nettoyer : ")
                 if not outdir:
@@ -220,7 +213,7 @@ def main(test_mode=False):
                 # outdir = blueprint['project_name']
                 # save_blueprint(blueprint, outdir)
                 # actions = generate_project(blueprint, outdir, dry_run=True)
-                logger.info(f"Simulation dry-run terminée.")
+                logger.info("Simulation dry-run terminée.")
             elif choix == '9':
                 outdir = safe_input(
                     "Nom du dossier projet pour voir le rapport : ")

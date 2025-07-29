@@ -5,7 +5,6 @@
 Script simple pour vérifier l'intégration actuelle de l'orchestrateur unifié.
 """
 
-import sys
 from pathlib import Path
 import re
 
@@ -58,7 +57,7 @@ def main():
     print(f"\n📈 SCORE D'INTÉGRATION : {integration_score:.2f}/10")
     
     # Recommandations
-    print(f"\n🎯 RECOMMANDATIONS :")
+    print("\n🎯 RECOMMANDATIONS :")
     if integration_score < 5.0:
         print("  ⚠️ Score faible - Nécessite une amélioration urgente")
     
@@ -69,7 +68,7 @@ def main():
             print(f"    - {module}")
     
     # Vérifier les tests
-    print(f"\n🧪 VÉRIFICATION DES TESTS :")
+    print("\n🧪 VÉRIFICATION DES TESTS :")
     test_files = list(Path("tests").glob("*orchestrator*"))
     test_files.extend(Path("tests").glob("*unified*"))
     
