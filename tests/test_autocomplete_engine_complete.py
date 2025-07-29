@@ -1,13 +1,12 @@
 """
 Tests complets pour autocomplete_engine.py
-Couverture : 100% des fonctionnalités d'autocomplete_engine
+Couverture : 100% des fonctionnalités d'autocomplete
 Tests : 20 tests unitaires et d'intégration
 """
-import pytest
+
 import tempfile
-import os
 from pathlib import Path
-from unittest.mock import Mock, patch, MagicMock
+from unittest.mock import Mock, patch
 import json
 from athalia_core.autocomplete_engine import AutocompleteEngine, get_suggestions, train_model
 

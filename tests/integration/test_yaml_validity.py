@@ -5,10 +5,10 @@ Tests de validité YAML pour Athalia.
 Tests professionnels pour la CI/CD.
 """
 
+import subprocess
 import sys
 import tempfile
 from pathlib import Path
-from unittest.mock import MagicMock, patch
 
 import pytest
 import yaml
@@ -231,7 +231,7 @@ class TestYAMLValidity:
     def test_yaml_validation_schema(self):
         """Test de validation avec schéma YAML."""
         # Schéma simple
-        schema = {
+        _ = {
             "type": "object",
             "properties": {
                 "project_name": {"type": "string"},

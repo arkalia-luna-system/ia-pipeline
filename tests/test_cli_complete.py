@@ -10,7 +10,7 @@ import shutil
 import sys
 import tempfile
 from pathlib import Path
-from unittest.mock import MagicMock, Mock, mock_open, patch
+from unittest.mock import Mock, patch
 
 import click
 import pytest
@@ -485,7 +485,7 @@ class TestCLIIntegration:
         }
 
         # 1. Générer un projet
-        with patch("click.echo") as mock_echo:
+        with patch("click.echo"):
             generate.callback(
                 idea="Workflow test project",
                 output=str(self.test_dir / "generated"),
