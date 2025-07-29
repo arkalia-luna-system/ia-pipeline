@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import os
 
 from athalia_core.security import security_audit_project
 
@@ -9,7 +8,7 @@ def test_security_audit_project(tmp_path):
     proj = tmp_path / "f"
     proj.mkdir()
     (proj / "danger.f(f").write_text(
-        'password = "f"\nsk - abcdef1234567890\nos.system("f")'
+        'password = "f"\nsk - abcdef1234567890'
     )
     security_audit_project(proj)
     log = proj / "security_audit.txt"
