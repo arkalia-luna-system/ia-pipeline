@@ -47,15 +47,21 @@ class RobustAI:
 
         # Détection du type de projet
         project_type = 'generic'
-        if any(word in idea_lower for word in ['fastapi', 'swagger', 'openapi', 'api', 'rest', 'endpoint']):
+        api_keywords = ['fastapi', 'swagger', 'openapi', 'api', 'rest', 'endpoint']
+        robotics_keywords = ['robot', 'reachy', 'ros', 'opencv']
+        desktop_keywords = ['calculatrice', 'calculator', 'desktop', 'tkinter']
+        web_keywords = ['web', 'flask', 'django', 'interface', 'react', 'vue', 'angular']
+        ai_keywords = ['ia', 'ai', 'machine learning', 'ml']
+
+        if any(word in idea_lower for word in api_keywords):
             project_type = 'api'
-        elif any(word in idea_lower for word in ['robot', 'reachy', 'ros', 'opencv']):
+        elif any(word in idea_lower for word in robotics_keywords):
             project_type = 'robotics'
-        elif any(word in idea_lower for word in ['calculatrice', 'calculator', 'desktop', 'tkinter']):
+        elif any(word in idea_lower for word in desktop_keywords):
             project_type = 'desktop'
-        elif any(word in idea_lower for word in ['web', 'flask', 'django', 'interface', 'react', 'vue', 'angular']):
+        elif any(word in idea_lower for word in web_keywords):
             project_type = 'web'
-        elif any(word in idea_lower for word in ['ia', 'ai', 'machine learning', 'ml']):
+        elif any(word in idea_lower for word in ai_keywords):
             project_type = 'ai_application'
 
         # Extraction du nom de projet
@@ -137,7 +143,9 @@ class RobustAI:
 
     def generate_documentation(self, project_name: str, project_type: str, modules: list) -> str:
         """Génère une documentation technique mockée."""
-        return f"# Documentation de {project_name}\n\nType: {project_type}\nModules: {', '.join(modules)}\n..."
+        return (f"# Documentation de {project_name}\n\n"
+                f"Type: {project_type}\n"
+                f"Modules: {', '.join(modules)}\n...")
 
     def classify_project_complexity(self, codebase_path: str) -> dict:
         """Classifie la complexité d'un projet (mock)."""
@@ -149,7 +157,7 @@ class RobustAI:
     def get_dynamic_prompt(self, context: str, **kwargs) -> str:
         """Retourne un prompt dynamique mocké selon le contexte."""
         return self.prompt_templates.get(context, f"Prompt mocké pour le contexte : {context}")
-    
+
     def _get_dynamic_prompt(self, context, **kwargs) -> str:
         """Alias privé pour compatibilité avec les tests."""
         ctx = context.value if hasattr(context, 'value') else str(context)
@@ -158,23 +166,23 @@ class RobustAI:
             return template.format(**kwargs)
         except Exception:
             return template
-    
+
     def _classify_project_complexity(self, codebase_path: str) -> dict:
         """Alias privé pour compatibilité avec les tests."""
         if 'f' in codebase_path:
             return {'complexity': 'f'}
         return self.classify_project_complexity(codebase_path)
-    
+
     @property
     def generate_bluelogger(self):
         """Proxy pour compatibilité avec les tests."""
         class BlueprintProxy:
             def __init__(self, parent):
                 self.parent = parent
-            
+
             def info(self, *args, **kwargs):
                 return self.parent.generate_blueprint(*args, **kwargs)
-        
+
         return BlueprintProxy(self)
 
     def _detect_available_models(self) -> List[AIModel]:
@@ -196,7 +204,7 @@ class RobustAI:
                     available.append(AIModel.OLLAMA_CODEGEN)
         except Exception as e:
             logging.warning(f"Ollama non détecté: {e}")
-        
+
         available.append(AIModel.MOCK)
         logging.info(f"Modèles IA disponibles: {[m.value for m in available]}")
         return available
@@ -221,14 +229,35 @@ class RobustAI:
     def _load_prompt_templates(self) -> Dict[str, str]:
         """Charge les templates de prompts dynamiques."""
         return {
-            PromptContext.BLUEPRINT.value: "Génère un blueprint complet pour le projet suivant. Idée: {idea}, Type: {project_type}, Complexité: {complexity}. Inclus tous les détails nécessaires pour la création du projet.",
-            PromptContext.CODE_REVIEW.value: "Effectue une revue de code approfondie du fichier {filename} contenant le code suivant: {code}. Analyse la qualité, les bonnes pratiques et propose des améliorations.",
-            PromptContext.DOCUMENTATION.value: "Génère une documentation complète pour le projet {project_name} de type {project_type} avec les modules suivants: {modules}. Inclus guides d'installation, utilisation et API.",
-            PromptContext.TESTING.value: "Crée une suite de tests complète pour le module {module_name} avec les fonctionnalités suivantes: {features}. Type de projet: {project_type}. Inclus tests unitaires et d'intégration.",
-            PromptContext.SECURITY.value: "Effectue un audit de sécurité du code suivant: {code}. Type d'application: {app_type}, Environnement: {environment}. Identifie les vulnérabilités et propose des corrections."
+            PromptContext.BLUEPRINT.value: (
+                "Génère un blueprint complet pour le projet suivant. "
+                "Idée: {idea}, Type: {project_type}, Complexité: {complexity}. "
+                "Inclus tous les détails nécessaires pour la création du projet."
+            ),
+            PromptContext.CODE_REVIEW.value: (
+                "Effectue une revue de code approfondie du fichier {filename} "
+                "contenant le code suivant: {code}. Analyse la qualité, "
+                "les bonnes pratiques et propose des améliorations."
+            ),
+            PromptContext.DOCUMENTATION.value: (
+                "Génère une documentation complète pour le projet {project_name} "
+                "de type {project_type} avec les modules suivants: {modules}. "
+                "Inclus guides d'installation, utilisation et API."
+            ),
+            PromptContext.TESTING.value: (
+                "Crée une suite de tests complète pour le module {module_name} "
+                "avec les fonctionnalités suivantes: {features}. "
+                "Type de projet: {project_type}. Inclus tests unitaires et d'intégration."
+            ),
+            PromptContext.SECURITY.value: (
+                "Effectue un audit de sécurité du code suivant: {code}. "
+                "Type d'application: {app_type}, Environnement: {environment}. "
+                "Identifie les vulnérabilités et propose des corrections."
+            )
         }
 
-    def generate_response(self, context: PromptContext, distillation: bool = False, **kwargs) -> dict:
+    def generate_response(self, context: PromptContext, distillation: bool = False,
+                          **kwargs) -> dict:
         """Génère une réponse IA robuste avec fallback."""
         prompt = self._get_dynamic_prompt(context.value, **kwargs)
 
@@ -391,4 +420,4 @@ if __name__ == "__main__":
         project_type="ai_assistant",
         complexity="medium"
     )
-    print(f"Réponse générée: {response}") 
+    print(f"Réponse générée: {response}")
