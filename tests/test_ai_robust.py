@@ -273,8 +273,9 @@ def test_function():
             assert result is None
 
     def test_call_model_unsupported(self):
-        """Test l'appel de modèle non supporté."""
-        
+        """Test l'appel d'un modèle non supporté."""
+        # Créer un enum personnalisé pour simuler un modèle non supporté
+        from enum import Enum
         class UnsupportedModel(Enum):
             UNSUPPORTED = "unsupported"
         
