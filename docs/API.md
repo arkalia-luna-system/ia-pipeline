@@ -48,176 +48,6 @@ Fonction principale du CLI unifié
 
 ---
 
-### cleanup_documentation
-
-Script de nettoyage et d'organisation de la documentation
-
-#### Classes
-
-##### DocumentationCleaner
-
-Classe pour nettoyer et organiser la documentation
-
-**Méthodes :**
-
-- `__init__()`
-- `scan_documentation()`
-- `archive_obsolete_docs()`
-- `create_documentation_report()`
-- `cleanup()`
-
-#### Fonctions
-
-##### main
-
-Fonction principale
-
-##### __init__
-
-**Paramètres :**
-
-- `docs_dir`
-
-##### scan_documentation
-
-Scanne la documentation et catégorise les fichiers
-
-##### archive_obsolete_docs
-
-Archive les documents obsolètes
-
-**Paramètres :**
-
-- `obsolete_files`
-
-##### create_documentation_report
-
-Crée un rapport de nettoyage de la documentation
-
-**Paramètres :**
-
-- `categories`
-- `archived_count`
-
-##### cleanup
-
-Exécute le nettoyage complet de la documentation
-
-**Paramètres :**
-
-- `dry_run`
-
----
-
-### cleanup_old_data
-
-Script de nettoyage des anciennes données d'analyse
-
-#### Classes
-
-##### DataCleaner
-
-Classe pour nettoyer les anciennes données d'analyse
-
-**Méthodes :**
-
-- `__init__()`
-- `get_file_hash()`
-- `find_analysis_files()`
-- `categorize_files()`
-- `archive_important_files()`
-- `is_file_important()`
-- `remove_duplicates()`
-- `remove_old_files()`
-- `generate_report()`
-- `cleanup()`
-
-#### Fonctions
-
-##### main
-
-Fonction principale
-
-##### __init__
-
-**Paramètres :**
-
-- `data_dir`
-
-##### get_file_hash
-
-Calcule le hash MD5 d'un fichier
-
-**Paramètres :**
-
-- `file_path`
-
-##### find_analysis_files
-
-Trouve tous les fichiers d'analyse
-
-##### categorize_files
-
-Catégorise les fichiers par âge et importance
-
-**Paramètres :**
-
-- `files`
-
-##### archive_important_files
-
-Archive les fichiers importants
-
-**Paramètres :**
-
-- `files`
-
-##### is_file_important
-
-Détermine si un fichier est important à archiver
-
-**Paramètres :**
-
-- `file_path`
-- `mtime`
-
-##### remove_duplicates
-
-Supprime les fichiers en double
-
-**Paramètres :**
-
-- `duplicates`
-
-##### remove_old_files
-
-Supprime les anciens fichiers non importants
-
-**Paramètres :**
-
-- `old_files`
-
-##### generate_report
-
-Génère un rapport de nettoyage
-
-**Paramètres :**
-
-- `categories`
-- `archived_count`
-- `removed_duplicates`
-- `removed_old`
-
-##### cleanup
-
-Exécute le nettoyage complet
-
-**Paramètres :**
-
-- `dry_run`
-
----
-
 ### audit
 
 Module d'audit intelligent pour analyser la qualité des projets générés.
@@ -2115,183 +1945,6 @@ Tester l'intégration complète
 ##### main
 
 Fonction principale de test
-
----
-
-### test_unified_orchestrator_complete
-
-🧪 TESTS COMPLETS POUR L'ORCHESTRATEUR UNIFIÉ ATHALIA
-
-Ce fichier teste TOUTES les fonctionnalités de l'orchestrateur unifié
-pour atteindre une couverture de test élevée.
-
-#### Classes
-
-##### TestUnifiedOrchestratorComplete
-
-Tests complets pour l'orchestrateur unifié
-
-**Méthodes :**
-
-- `setup_method()`
-- `teardown_method()`
-- `test_orchestrator_initialization()`
-- `test_database_initialization()`
-- `test_orchestrate_project_complete_basic()`
-- `test_orchestrate_project_complete_with_industrialization()`
-- `test_run_audit()`
-- `test_run_linting()`
-- `test_run_security_audit()`
-- `test_run_analytics()`
-- `test_run_cleanup()`
-- `test_run_documentation()`
-- `test_run_testing()`
-- `test_run_cicd()`
-- `test_run_robotics_audit()`
-- `test_generate_predictions()`
-- `test_generate_optimizations()`
-- `test_learn_from_results()`
-- `test_generate_unified_report()`
-- `test_save_unified_results()`
-- `test_get_orchestration_insights()`
-- `test_phase2_backup()`
-- `test_phase2_error_handling()`
-- `test_validate_phase2_inputs()`
-- `test_get_phase2_backup_stats()`
-- `test_orchestrate_with_phase2_features()`
-- `test_error_handling_in_industrialization()`
-- `test_cli_entry_point()`
-- `test_main_entry_point()`
-- `test_main_with_args()`
-- `test_orchestrator_auto_backup()`
-
-#### Fonctions
-
-##### setup_method
-
-Configuration avant chaque test
-
-##### teardown_method
-
-Nettoyage après chaque test
-
-##### test_orchestrator_initialization
-
-Test l'initialisation complète de l'orchestrateur
-
-##### test_database_initialization
-
-Test l'initialisation de la base de données
-
-##### test_orchestrate_project_complete_basic
-
-Test l'orchestration complète basique
-
-##### test_orchestrate_project_complete_with_industrialization
-
-Test l'orchestration avec industrialisation
-
-##### test_run_audit
-
-Test l'exécution de l'audit
-
-##### test_run_linting
-
-Test l'exécution du linting
-
-##### test_run_security_audit
-
-Test l'exécution de l'audit de sécurité
-
-##### test_run_analytics
-
-Test l'exécution de l'analytics
-
-##### test_run_cleanup
-
-Test l'exécution du nettoyage
-
-##### test_run_documentation
-
-Test l'exécution de la documentation
-
-##### test_run_testing
-
-Test l'exécution des tests
-
-##### test_run_cicd
-
-Test l'exécution du CI/CD
-
-##### test_run_robotics_audit
-
-Test l'exécution de l'audit robotique
-
-##### test_generate_predictions
-
-Test la génération de prédictions
-
-##### test_generate_optimizations
-
-Test la génération d'optimisations
-
-##### test_learn_from_results
-
-Test l'apprentissage des résultats
-
-##### test_generate_unified_report
-
-Test la génération du rapport unifié
-
-##### test_save_unified_results
-
-Test la sauvegarde des résultats
-
-##### test_get_orchestration_insights
-
-Test la récupération des insights d'orchestration
-
-##### test_phase2_backup
-
-Test la sauvegarde Phase 2
-
-##### test_phase2_error_handling
-
-Test la gestion d'erreurs Phase 2
-
-##### test_validate_phase2_inputs
-
-Test la validation des entrées Phase 2
-
-##### test_get_phase2_backup_stats
-
-Test les statistiques de sauvegarde Phase 2
-
-##### test_orchestrate_with_phase2_features
-
-Test l'orchestration avec fonctionnalités Phase 2
-
-##### test_error_handling_in_industrialization
-
-Test la gestion d'erreurs dans l'industrialisation
-
-##### test_cli_entry_point
-
-Test le point d'entrée CLI
-
-##### test_main_entry_point
-
-Test le point d'entrée principal
-
-##### test_main_with_args
-
-Test le point d'entrée principal avec arguments
-
-##### test_orchestrator_auto_backup
-
-Test la sauvegarde automatique de l'orchestrateur
-
-##### test_operation
 
 ---
 
@@ -4878,6 +4531,26 @@ Test d'intégration avec un projet de grande taille
 
 ---
 
+### correction_chaînes
+
+Script de correction des chaînes non terminées dans athalia_core
+
+#### Fonctions
+
+##### corriger_chaînes_fichier
+
+Corrige les chaînes non terminées dans un fichier
+
+**Paramètres :**
+
+- `file_path`
+
+##### main
+
+Fonction principale
+
+---
+
 ### test_user_profiles_advanced_complete
 
 Tests complets pour le module user_profiles_advanced.py
@@ -5055,6 +4728,183 @@ Test d'intégration de la gestion d'erreurs
 
 ---
 
+### test_unified_orchestrator_complete
+
+🧪 TESTS COMPLETS POUR L'ORCHESTRATEUR UNIFIÉ ATHALIA
+
+Ce fichier teste TOUTES les fonctionnalités de l'orchestrateur unifié
+pour atteindre une couverture de test élevée.
+
+#### Classes
+
+##### TestUnifiedOrchestratorComplete
+
+Tests complets pour l'orchestrateur unifié
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_orchestrator_initialization()`
+- `test_database_initialization()`
+- `test_orchestrate_project_complete_basic()`
+- `test_orchestrate_project_complete_with_industrialization()`
+- `test_run_audit()`
+- `test_run_linting()`
+- `test_run_security_audit()`
+- `test_run_analytics()`
+- `test_run_cleanup()`
+- `test_run_documentation()`
+- `test_run_testing()`
+- `test_run_cicd()`
+- `test_run_robotics_audit()`
+- `test_generate_predictions()`
+- `test_generate_optimizations()`
+- `test_learn_from_results()`
+- `test_generate_unified_report()`
+- `test_save_unified_results()`
+- `test_get_orchestration_insights()`
+- `test_phase2_backup()`
+- `test_phase2_error_handling()`
+- `test_validate_phase2_inputs()`
+- `test_get_phase2_backup_stats()`
+- `test_orchestrate_with_phase2_features()`
+- `test_error_handling_in_industrialization()`
+- `test_cli_entry_point()`
+- `test_main_entry_point()`
+- `test_main_with_args()`
+- `test_orchestrator_auto_backup()`
+
+#### Fonctions
+
+##### setup_method
+
+Configuration avant chaque test
+
+##### teardown_method
+
+Nettoyage après chaque test
+
+##### test_orchestrator_initialization
+
+Test l'initialisation complète de l'orchestrateur
+
+##### test_database_initialization
+
+Test l'initialisation de la base de données
+
+##### test_orchestrate_project_complete_basic
+
+Test l'orchestration complète basique
+
+##### test_orchestrate_project_complete_with_industrialization
+
+Test l'orchestration avec industrialisation
+
+##### test_run_audit
+
+Test l'exécution de l'audit
+
+##### test_run_linting
+
+Test l'exécution du linting
+
+##### test_run_security_audit
+
+Test l'exécution de l'audit de sécurité
+
+##### test_run_analytics
+
+Test l'exécution de l'analytics
+
+##### test_run_cleanup
+
+Test l'exécution du nettoyage
+
+##### test_run_documentation
+
+Test l'exécution de la documentation
+
+##### test_run_testing
+
+Test l'exécution des tests
+
+##### test_run_cicd
+
+Test l'exécution du CI/CD
+
+##### test_run_robotics_audit
+
+Test l'exécution de l'audit robotique
+
+##### test_generate_predictions
+
+Test la génération de prédictions
+
+##### test_generate_optimizations
+
+Test la génération d'optimisations
+
+##### test_learn_from_results
+
+Test l'apprentissage des résultats
+
+##### test_generate_unified_report
+
+Test la génération du rapport unifié
+
+##### test_save_unified_results
+
+Test la sauvegarde des résultats
+
+##### test_get_orchestration_insights
+
+Test la récupération des insights d'orchestration
+
+##### test_phase2_backup
+
+Test la sauvegarde Phase 2
+
+##### test_phase2_error_handling
+
+Test la gestion d'erreurs Phase 2
+
+##### test_validate_phase2_inputs
+
+Test la validation des entrées Phase 2
+
+##### test_get_phase2_backup_stats
+
+Test les statistiques de sauvegarde Phase 2
+
+##### test_orchestrate_with_phase2_features
+
+Test l'orchestration avec fonctionnalités Phase 2
+
+##### test_error_handling_in_industrialization
+
+Test la gestion d'erreurs dans l'industrialisation
+
+##### test_cli_entry_point
+
+Test le point d'entrée CLI
+
+##### test_main_entry_point
+
+Test le point d'entrée principal
+
+##### test_main_with_args
+
+Test le point d'entrée principal avec arguments
+
+##### test_orchestrator_auto_backup
+
+Test la sauvegarde automatique de l'orchestrateur
+
+##### test_operation
+
+---
+
 ### test_pattern_detector
 
 Tests pour le détecteur de patterns
@@ -5155,6 +5005,27 @@ Test de sauvegarde des résultats
 **Paramètres :**
 
 - `content`
+
+---
+
+### correction_finale
+
+Script de correction finale pour Athalia
+Corrige toutes les erreurs restantes dans les fichiers principaux
+
+#### Fonctions
+
+##### corriger_fichier
+
+Corrige un fichier en remplaçant les patterns problématiques
+
+**Paramètres :**
+
+- `file_path`
+
+##### main
+
+Fonction principale
 
 ---
 
@@ -5302,6 +5173,72 @@ Test de la méthode d'audit robotique
 
 ---
 
+### test_ai_robust_integration
+
+#### Classes
+
+##### TestAIRobustIntegration
+
+Tests d'intégration pour l'IA robuste.
+
+**Méthodes :**
+
+- `setup_method()`
+- `test_complete_workflow_simple_project()`
+- `test_fallback_chain_behavior()`
+- `test_different_project_complexities()`
+- `test_prompt_contexts()`
+- `test_model_detection()`
+- `test_error_handling()`
+
+#### Fonctions
+
+##### test_ai_robust_performance
+
+Test de performance de l'IA robuste.
+
+##### test_ai_robust_memory_usage
+
+Test de l'utilisation mémoire de l'IA robuste.
+
+##### setup_method
+
+Initialise l'IA robuste pour les tests.
+
+##### test_complete_workflow_simple_project
+
+Test du workflow complet pour un projet simple.
+
+##### test_fallback_chain_behavior
+
+Test du comportement de la chaîne de fallback.
+
+##### test_different_project_complexities
+
+Test avec différents niveaux de complexité.
+
+##### test_prompt_contexts
+
+Test de tous les contextes de prompts.
+
+##### test_model_detection
+
+Test de la détection des modèles.
+
+##### test_error_handling
+
+Test de la gestion d'erreurs.
+
+##### mock_call_fail
+
+**Paramètres :**
+
+- `model`
+- `prompt`
+- `timeout`
+
+---
+
 ### test_profils_utilisateur_avances
 
 Tests pour les profils utilisateur avancés
@@ -5350,165 +5287,6 @@ Test de la fonctionnalité des profils
 #### Fonctions
 
 ##### test_project_import_concept
-
----
-
-### test_ready_check
-
-Tests pour ready_check.py
-
-#### Fonctions
-
-##### test_check_ready_ok
-
-Test que le projet est prêt
-
-##### test_check_ready_missing
-
-Test avec un projet manquant
-
----
-
-### test_requirements_consistency
-
-Test de cohérence des dépendances
-Vérifie que les fichiers de dépendances sont cohérents
-
-#### Classes
-
-##### TestRequirementsConsistency
-
-Tests de cohérence des dépendances
-
-**Méthodes :**
-
-- `test_requirements_txt_exists()`
-- `test_requirements_txt_readable()`
-- `test_requirements_format()`
-- `test_essential_dependencies()`
-- `test_no_duplicate_dependencies()`
-- `test_pyproject_toml_exists()`
-- `test_pyproject_toml_readable()`
-- `test_requirements_vs_pyproject_consistency()`
-- `test_no_conflicting_versions()`
-- `test_no_obsolete_dependencies()`
-- `test_requirements_installable()`
-
-#### Fonctions
-
-##### test_requirements_txt_exists
-
-Vérifie que requirements.txt existe
-
-##### test_requirements_txt_readable
-
-Vérifie que requirements.txt est lisible
-
-##### test_requirements_format
-
-Vérifie le format de requirements.txt
-
-##### test_essential_dependencies
-
-Vérifie que les dépendances essentielles sont présentes
-
-##### test_no_duplicate_dependencies
-
-Test qu'il n'y a pas de dépendances dupliquées
-
-##### test_pyproject_toml_exists
-
-Vérifie que pyproject.toml existe
-
-##### test_pyproject_toml_readable
-
-Vérifie que pyproject.toml est lisible
-
-##### test_requirements_vs_pyproject_consistency
-
-Vérifie la cohérence entre requirements.txt et pyproject.toml
-
-##### test_no_conflicting_versions
-
-Vérifie qu'il n'y a pas de versions conflictuelles
-
-##### test_no_obsolete_dependencies
-
-Vérifie qu'il n'y a pas de dépendances obsolètes
-
-##### test_requirements_installable
-
-Vérifie que requirements.txt est installable
-
----
-
-### test_complet_athalia_imports
-
-Tests spécialisés pour les imports Python
-Extrait de test_complet_athalia.py pour améliorer la maintenabilité
-
-#### Classes
-
-##### TestImportsPython
-
-Tests spécialisés pour les imports Python
-
-**Méthodes :**
-
-- `__init__()`
-- `safe_read_file()`
-- `test_imports()`
-- `module_exists()`
-- `test_imports_specific_modules()`
-- `get_results()`
-
-#### Fonctions
-
-##### test_imports_basic
-
-Test basique des imports
-
-##### test_imports_specific
-
-Test des imports de modules spécifiques
-
-##### test_imports_athalia_core
-
-Test des imports athalia_core
-
-##### __init__
-
-**Paramètres :**
-
-- `project_root`
-
-##### safe_read_file
-
-Lit un fichier en gérant différents encodages
-
-**Paramètres :**
-
-- `file_path`
-
-##### test_imports
-
-Test des imports Python
-
-##### module_exists
-
-Vérifie si un module existe
-
-**Paramètres :**
-
-- `module_name`
-
-##### test_imports_specific_modules
-
-Test des imports de modules spécifiques
-
-##### get_results
-
-Retourne les résultats des tests d'imports
 
 ---
 
@@ -5642,24 +5420,202 @@ Résultat attendu : Utilisation du fallback MOCK
 
 ---
 
-### correction_finale
+### test_ready_check
 
-Script de correction finale pour Athalia
-Corrige toutes les erreurs restantes dans les fichiers principaux
+Tests pour ready_check.py
 
 #### Fonctions
 
-##### corriger_fichier
+##### test_check_ready_ok
 
-Corrige un fichier en remplaçant les patterns problématiques
+Test que le projet est prêt
+
+##### test_check_ready_missing
+
+Test avec un projet manquant
+
+---
+
+### test_requirements_consistency
+
+Test de cohérence des dépendances
+Vérifie que les fichiers de dépendances sont cohérents
+
+#### Classes
+
+##### TestRequirementsConsistency
+
+Tests de cohérence des dépendances
+
+**Méthodes :**
+
+- `test_requirements_txt_exists()`
+- `test_requirements_txt_readable()`
+- `test_requirements_format()`
+- `test_essential_dependencies()`
+- `test_no_duplicate_dependencies()`
+- `test_pyproject_toml_exists()`
+- `test_pyproject_toml_readable()`
+- `test_requirements_vs_pyproject_consistency()`
+- `test_no_conflicting_versions()`
+- `test_no_obsolete_dependencies()`
+- `test_requirements_installable()`
+
+#### Fonctions
+
+##### test_requirements_txt_exists
+
+Vérifie que requirements.txt existe
+
+##### test_requirements_txt_readable
+
+Vérifie que requirements.txt est lisible
+
+##### test_requirements_format
+
+Vérifie le format de requirements.txt
+
+##### test_essential_dependencies
+
+Vérifie que les dépendances essentielles sont présentes
+
+##### test_no_duplicate_dependencies
+
+Test qu'il n'y a pas de dépendances dupliquées
+
+##### test_pyproject_toml_exists
+
+Vérifie que pyproject.toml existe
+
+##### test_pyproject_toml_readable
+
+Vérifie que pyproject.toml est lisible
+
+##### test_requirements_vs_pyproject_consistency
+
+Vérifie la cohérence entre requirements.txt et pyproject.toml
+
+##### test_no_conflicting_versions
+
+Vérifie qu'il n'y a pas de versions conflictuelles
+
+##### test_no_obsolete_dependencies
+
+Vérifie qu'il n'y a pas de dépendances obsolètes
+
+##### test_requirements_installable
+
+Vérifie que requirements.txt est installable
+
+---
+
+### test_ai_robust_unit
+
+#### Classes
+
+##### TestAiRobust
+
+**Méthodes :**
+
+- `test_robust_ai_instance()`
+- `test_fallback_ia()`
+- `test_query_qwen()`
+- `test_query_mistral()`
+- `test_robustai_generate_blueprint()`
+- `test_robustai_review_code()`
+- `test_robustai_generate_documentation()`
+- `test_robustai_classify_project_complexity()`
+- `test_robustai_get_dynamic_prompt()`
+
+#### Fonctions
+
+##### test_robust_ai_instance
+
+##### test_fallback_ia
+
+##### test_query_qwen
+
+##### test_query_mistral
+
+##### test_robustai_generate_blueprint
+
+##### test_robustai_review_code
+
+##### test_robustai_generate_documentation
+
+##### test_robustai_classify_project_complexity
+
+##### test_robustai_get_dynamic_prompt
+
+---
+
+### test_complet_athalia_imports
+
+Tests spécialisés pour les imports Python
+Extrait de test_complet_athalia.py pour améliorer la maintenabilité
+
+#### Classes
+
+##### TestImportsPython
+
+Tests spécialisés pour les imports Python
+
+**Méthodes :**
+
+- `__init__()`
+- `safe_read_file()`
+- `test_imports()`
+- `module_exists()`
+- `test_imports_specific_modules()`
+- `get_results()`
+
+#### Fonctions
+
+##### test_imports_basic
+
+Test basique des imports
+
+##### test_imports_specific
+
+Test des imports de modules spécifiques
+
+##### test_imports_athalia_core
+
+Test des imports athalia_core
+
+##### __init__
+
+**Paramètres :**
+
+- `project_root`
+
+##### safe_read_file
+
+Lit un fichier en gérant différents encodages
 
 **Paramètres :**
 
 - `file_path`
 
-##### main
+##### test_imports
 
-Fonction principale
+Test des imports Python
+
+##### module_exists
+
+Vérifie si un module existe
+
+**Paramètres :**
+
+- `module_name`
+
+##### test_imports_specific_modules
+
+Test des imports de modules spécifiques
+
+##### get_results
+
+Retourne les résultats des tests d'imports
 
 ---
 
@@ -5816,112 +5772,6 @@ Résultat attendu : Utilisation mémoire stable
 ##### run_audit
 
 ##### run_cleanup
-
----
-
-### test_ai_robust_integration
-
-#### Classes
-
-##### TestAIRobustIntegration
-
-Tests d'intégration pour l'IA robuste.
-
-**Méthodes :**
-
-- `setup_method()`
-- `test_complete_workflow_simple_project()`
-- `test_fallback_chain_behavior()`
-- `test_different_project_complexities()`
-- `test_prompt_contexts()`
-- `test_model_detection()`
-- `test_error_handling()`
-
-#### Fonctions
-
-##### test_ai_robust_performance
-
-Test de performance de l'IA robuste.
-
-##### test_ai_robust_memory_usage
-
-Test de l'utilisation mémoire de l'IA robuste.
-
-##### setup_method
-
-Initialise l'IA robuste pour les tests.
-
-##### test_complete_workflow_simple_project
-
-Test du workflow complet pour un projet simple.
-
-##### test_fallback_chain_behavior
-
-Test du comportement de la chaîne de fallback.
-
-##### test_different_project_complexities
-
-Test avec différents niveaux de complexité.
-
-##### test_prompt_contexts
-
-Test de tous les contextes de prompts.
-
-##### test_model_detection
-
-Test de la détection des modèles.
-
-##### test_error_handling
-
-Test de la gestion d'erreurs.
-
-##### mock_call_fail
-
-**Paramètres :**
-
-- `model`
-- `prompt`
-- `timeout`
-
----
-
-### test_ai_robust_unit
-
-#### Classes
-
-##### TestAiRobust
-
-**Méthodes :**
-
-- `test_robust_ai_instance()`
-- `test_fallback_ia()`
-- `test_query_qwen()`
-- `test_query_mistral()`
-- `test_robustai_generate_blueprint()`
-- `test_robustai_review_code()`
-- `test_robustai_generate_documentation()`
-- `test_robustai_classify_project_complexity()`
-- `test_robustai_get_dynamic_prompt()`
-
-#### Fonctions
-
-##### test_robust_ai_instance
-
-##### test_fallback_ia
-
-##### test_query_qwen
-
-##### test_query_mistral
-
-##### test_robustai_generate_blueprint
-
-##### test_robustai_review_code
-
-##### test_robustai_generate_documentation
-
-##### test_robustai_classify_project_complexity
-
-##### test_robustai_get_dynamic_prompt
 
 ---
 
@@ -6107,26 +5957,6 @@ Teste la gestion d'erreurs
 ##### test_assertion_functionality
 
 Teste la fonctionnalité d'assertion
-
----
-
-### correction_chaînes
-
-Script de correction des chaînes non terminées dans athalia_core
-
-#### Fonctions
-
-##### corriger_chaînes_fichier
-
-Corrige les chaînes non terminées dans un fichier
-
-**Paramètres :**
-
-- `file_path`
-
-##### main
-
-Fonction principale
 
 ---
 
@@ -9510,6 +9340,69 @@ Fonction principale
 
 ---
 
+### system_monitor
+
+Script de monitoring système pour Athalia
+Surveille les performances, l'espace disque, et l'état des processus
+
+#### Classes
+
+##### SystemMonitor
+
+Moniteur système pour Athalia
+
+**Méthodes :**
+
+- `__init__()`
+- `get_system_info()`
+- `get_project_stats()`
+- `check_critical_paths()`
+- `generate_report()`
+- `save_report()`
+- `monitor()`
+
+#### Fonctions
+
+##### main
+
+Fonction principale
+
+##### __init__
+
+**Paramètres :**
+
+- `project_path`
+
+##### get_system_info
+
+Récupère les informations système
+
+##### get_project_stats
+
+Récupère les statistiques du projet
+
+##### check_critical_paths
+
+Vérifie les chemins critiques
+
+##### generate_report
+
+Génère un rapport complet
+
+##### save_report
+
+Sauvegarde le rapport
+
+**Paramètres :**
+
+- `report`
+
+##### monitor
+
+Exécute le monitoring complet
+
+---
+
 ### cleanup_archives
 
 🧹 Nettoyeur d'Archives Documentation Athalia
@@ -9702,6 +9595,67 @@ Générer des recommandations d'amélioration
 
 ---
 
+### cleanup_documentation
+
+Script de nettoyage et d'organisation de la documentation
+
+#### Classes
+
+##### DocumentationCleaner
+
+Classe pour nettoyer et organiser la documentation
+
+**Méthodes :**
+
+- `__init__()`
+- `scan_documentation()`
+- `archive_obsolete_docs()`
+- `create_documentation_report()`
+- `cleanup()`
+
+#### Fonctions
+
+##### main
+
+Fonction principale
+
+##### __init__
+
+**Paramètres :**
+
+- `docs_dir`
+
+##### scan_documentation
+
+Scanne la documentation et catégorise les fichiers
+
+##### archive_obsolete_docs
+
+Archive les documents obsolètes
+
+**Paramètres :**
+
+- `obsolete_files`
+
+##### create_documentation_report
+
+Crée un rapport de nettoyage de la documentation
+
+**Paramètres :**
+
+- `categories`
+- `archived_count`
+
+##### cleanup
+
+Exécute le nettoyage complet de la documentation
+
+**Paramètres :**
+
+- `dry_run`
+
+---
+
 ### generate_docs_index
 
 📋 Générateur d'Index Documentation Athalia
@@ -9763,6 +9717,115 @@ Génère un index pour une section spécifique
 **Paramètres :**
 
 - `section`
+
+---
+
+### cleanup_old_data
+
+Script de nettoyage des anciennes données d'analyse
+
+#### Classes
+
+##### DataCleaner
+
+Classe pour nettoyer les anciennes données d'analyse
+
+**Méthodes :**
+
+- `__init__()`
+- `get_file_hash()`
+- `find_analysis_files()`
+- `categorize_files()`
+- `archive_important_files()`
+- `is_file_important()`
+- `remove_duplicates()`
+- `remove_old_files()`
+- `generate_report()`
+- `cleanup()`
+
+#### Fonctions
+
+##### main
+
+Fonction principale
+
+##### __init__
+
+**Paramètres :**
+
+- `data_dir`
+
+##### get_file_hash
+
+Calcule le hash MD5 d'un fichier
+
+**Paramètres :**
+
+- `file_path`
+
+##### find_analysis_files
+
+Trouve tous les fichiers d'analyse
+
+##### categorize_files
+
+Catégorise les fichiers par âge et importance
+
+**Paramètres :**
+
+- `files`
+
+##### archive_important_files
+
+Archive les fichiers importants
+
+**Paramètres :**
+
+- `files`
+
+##### is_file_important
+
+Détermine si un fichier est important à archiver
+
+**Paramètres :**
+
+- `file_path`
+- `mtime`
+
+##### remove_duplicates
+
+Supprime les fichiers en double
+
+**Paramètres :**
+
+- `duplicates`
+
+##### remove_old_files
+
+Supprime les anciens fichiers non importants
+
+**Paramètres :**
+
+- `old_files`
+
+##### generate_report
+
+Génère un rapport de nettoyage
+
+**Paramètres :**
+
+- `categories`
+- `archived_count`
+- `removed_duplicates`
+- `removed_old`
+
+##### cleanup
+
+Exécute le nettoyage complet
+
+**Paramètres :**
+
+- `dry_run`
 
 ---
 
@@ -142565,28 +142628,6 @@ ourselves. music.set_pos() will set the position in seconds.
 
 ---
 
-### video
-
-pg.examples.video
-
-Experimental!
-
-* dialog message boxes with messagebox.
-* multiple windows with Window
-* driver selection
-* Renderer, Texture, and Image classes
-* Drawing lines, rects, and such onto Renderers.
-
-#### Fonctions
-
-##### load_img
-
-**Paramètres :**
-
-- `file`
-
----
-
 ### eventlist
 
 pygame.examples.eventlist
@@ -142629,6 +142670,28 @@ and a scrolling list of events are displayed on the bottom.
 - `text`
 
 ##### main
+
+---
+
+### video
+
+pg.examples.video
+
+Experimental!
+
+* dialog message boxes with messagebox.
+* multiple windows with Window
+* driver selection
+* Renderer, Texture, and Image classes
+* Drawing lines, rects, and such onto Renderers.
+
+#### Fonctions
+
+##### load_img
+
+**Paramètres :**
+
+- `file`
 
 ---
 
@@ -177185,6 +177248,28 @@ Dummy implementation of getaddrinfo for use in mocks
 
 ---
 
+### import_test
+
+#### Classes
+
+##### ImportTest
+
+**Méthodes :**
+
+- `test_import_everything()`
+- `test_lazy_import()`
+- `test_import_aliases()`
+
+#### Fonctions
+
+##### test_import_everything
+
+##### test_lazy_import
+
+##### test_import_aliases
+
+---
+
 ### http1connection_test
 
 #### Classes
@@ -177234,28 +177319,6 @@ Dummy implementation of getaddrinfo for use in mocks
 - `data`
 
 ##### finish
-
----
-
-### import_test
-
-#### Classes
-
-##### ImportTest
-
-**Méthodes :**
-
-- `test_import_everything()`
-- `test_lazy_import()`
-- `test_import_aliases()`
-
-#### Fonctions
-
-##### test_import_everything
-
-##### test_lazy_import
-
-##### test_import_aliases
 
 ---
 
@@ -194276,6 +194339,59 @@ Builtins for the MqlLexer.
 
 ---
 
+### actionscript
+
+pygments.lexers.actionscript
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Lexers for ActionScript and MXML.
+
+:copyright: Copyright 2006-2025 by the Pygments team, see AUTHORS.
+:license: BSD, see LICENSE for details.
+
+#### Classes
+
+##### ActionScriptLexer
+
+For ActionScript source code.
+
+**Méthodes :**
+
+- `analyse_text()`
+
+##### ActionScript3Lexer
+
+For ActionScript 3 source code.
+
+**Méthodes :**
+
+- `analyse_text()`
+
+##### MxmlLexer
+
+For MXML markup.
+Nested AS3 in <script> tags is highlighted by the appropriate lexer.
+
+#### Fonctions
+
+##### analyse_text
+
+This is only used to disambiguate between ActionScript and
+ActionScript3. We return 0 here; the ActionScript3 lexer will match
+AS3 variable definitions and that will hopefully suffice.
+
+**Paramètres :**
+
+- `text`
+
+##### analyse_text
+
+**Paramètres :**
+
+- `text`
+
+---
+
 ### _mysql_builtins
 
 pygments.lexers._mysql_builtins
@@ -194591,59 +194707,6 @@ This file is autogenerated by scripts/get_vimkw.py
 ##### _getcommand
 
 ##### _getoption
-
----
-
-### actionscript
-
-pygments.lexers.actionscript
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Lexers for ActionScript and MXML.
-
-:copyright: Copyright 2006-2025 by the Pygments team, see AUTHORS.
-:license: BSD, see LICENSE for details.
-
-#### Classes
-
-##### ActionScriptLexer
-
-For ActionScript source code.
-
-**Méthodes :**
-
-- `analyse_text()`
-
-##### ActionScript3Lexer
-
-For ActionScript 3 source code.
-
-**Méthodes :**
-
-- `analyse_text()`
-
-##### MxmlLexer
-
-For MXML markup.
-Nested AS3 in <script> tags is highlighted by the appropriate lexer.
-
-#### Fonctions
-
-##### analyse_text
-
-This is only used to disambiguate between ActionScript and
-ActionScript3. We return 0 here; the ActionScript3 lexer will match
-AS3 variable definitions and that will hopefully suffice.
-
-**Paramètres :**
-
-- `text`
-
-##### analyse_text
-
-**Paramètres :**
-
-- `text`
 
 ---
 
@@ -208258,6 +208321,10 @@ Return the most recent opening square bracket (if any).
 
 ---
 
+### _width_table
+
+---
+
 ### lines
 
 #### Classes
@@ -208610,10 +208677,6 @@ lines (two on module-level).
 - `current_line`
 - `before`
 - `user_had_newline`
-
----
-
-### _width_table
 
 ---
 
@@ -233378,42 +233441,6 @@ Takes a string like abc.1.twelve and turns it into ("abc", 1, "twelve").
 
 ---
 
-### any
-
-Contains the Any helper APIs.
-
-#### Fonctions
-
-##### pack
-
-**Paramètres :**
-
-- `msg`
-- `type_url_prefix`
-- `deterministic`
-
-##### unpack
-
-**Paramètres :**
-
-- `any_msg`
-- `msg`
-
-##### type_name
-
-**Paramètres :**
-
-- `any_msg`
-
-##### is_type
-
-**Paramètres :**
-
-- `any_msg`
-- `des`
-
----
-
 ### descriptor
 
 Descriptors essentially contain exactly the information found in a .proto
@@ -234458,6 +234485,42 @@ Args:
 - `edition`
 - `pool`
 - `create_key`
+
+---
+
+### any
+
+Contains the Any helper APIs.
+
+#### Fonctions
+
+##### pack
+
+**Paramètres :**
+
+- `msg`
+- `type_url_prefix`
+- `deterministic`
+
+##### unpack
+
+**Paramètres :**
+
+- `any_msg`
+- `msg`
+
+##### type_name
+
+**Paramètres :**
+
+- `any_msg`
+
+##### is_type
+
+**Paramètres :**
+
+- `any_msg`
+- `des`
 
 ---
 
@@ -236639,6 +236702,71 @@ Returns:
 
 ---
 
+### proto_json
+
+Contains the Nextgen Pythonic Protobuf JSON APIs.
+
+#### Fonctions
+
+##### serialize
+
+Converts protobuf message to a dictionary.
+
+When the dictionary is encoded to JSON, it conforms to proto3 JSON spec.
+
+Args:
+  message: The protocol buffers message instance to serialize.
+  always_print_fields_with_no_presence: If True, fields without
+    presence (implicit presence scalars, repeated fields, and map fields) will
+    always be serialized. Any field that supports presence is not affected by
+    this option (including singular message fields and oneof fields).
+  preserving_proto_field_name: If True, use the original proto field names as
+    defined in the .proto file. If False, convert the field names to
+    lowerCamelCase.
+  use_integers_for_enums: If true, print integers instead of enum names.
+  descriptor_pool: A Descriptor Pool for resolving types. If None use the
+    default.
+  float_precision: If set, use this to specify float field valid digits.
+
+Returns:
+  A dict representation of the protocol buffer message.
+
+**Paramètres :**
+
+- `message`
+- `always_print_fields_with_no_presence`
+- `preserving_proto_field_name`
+- `use_integers_for_enums`
+- `descriptor_pool`
+- `float_precision`
+
+##### parse
+
+Parses a JSON dictionary representation into a message.
+
+Args:
+  message_class: The message meta class.
+  js_dict: Dict representation of a JSON message.
+  ignore_unknown_fields: If True, do not raise errors for unknown fields.
+  descriptor_pool: A Descriptor Pool for resolving types. If None use the
+    default.
+  max_recursion_depth: max recursion depth of JSON message to be deserialized.
+    JSON messages over this depth will fail to be deserialized. Default value
+    is 100.
+
+Returns:
+  A new message passed from json_dict.
+
+**Paramètres :**
+
+- `message_class`
+- `js_dict`
+- `ignore_unknown_fields`
+- `descriptor_pool`
+- `max_recursion_depth`
+
+---
+
 ### proto
 
 Contains the Nextgen Pythonic protobuf APIs.
@@ -236781,71 +236909,6 @@ Populate FileDescriptorProto for MessageFactory's DescriptorPool.
 - `proto_file_name`
 - `full_name`
 - `field_items`
-
----
-
-### proto_json
-
-Contains the Nextgen Pythonic Protobuf JSON APIs.
-
-#### Fonctions
-
-##### serialize
-
-Converts protobuf message to a dictionary.
-
-When the dictionary is encoded to JSON, it conforms to proto3 JSON spec.
-
-Args:
-  message: The protocol buffers message instance to serialize.
-  always_print_fields_with_no_presence: If True, fields without
-    presence (implicit presence scalars, repeated fields, and map fields) will
-    always be serialized. Any field that supports presence is not affected by
-    this option (including singular message fields and oneof fields).
-  preserving_proto_field_name: If True, use the original proto field names as
-    defined in the .proto file. If False, convert the field names to
-    lowerCamelCase.
-  use_integers_for_enums: If true, print integers instead of enum names.
-  descriptor_pool: A Descriptor Pool for resolving types. If None use the
-    default.
-  float_precision: If set, use this to specify float field valid digits.
-
-Returns:
-  A dict representation of the protocol buffer message.
-
-**Paramètres :**
-
-- `message`
-- `always_print_fields_with_no_presence`
-- `preserving_proto_field_name`
-- `use_integers_for_enums`
-- `descriptor_pool`
-- `float_precision`
-
-##### parse
-
-Parses a JSON dictionary representation into a message.
-
-Args:
-  message_class: The message meta class.
-  js_dict: Dict representation of a JSON message.
-  ignore_unknown_fields: If True, do not raise errors for unknown fields.
-  descriptor_pool: A Descriptor Pool for resolving types. If None use the
-    default.
-  max_recursion_depth: max recursion depth of JSON message to be deserialized.
-    JSON messages over this depth will fail to be deserialized. Default value
-    is 100.
-
-Returns:
-  A new message passed from json_dict.
-
-**Paramètres :**
-
-- `message_class`
-- `js_dict`
-- `ignore_unknown_fields`
-- `descriptor_pool`
-- `max_recursion_depth`
 
 ---
 
@@ -239151,13 +239214,13 @@ UnknownField container.
 
 ---
 
-### any_pb2
+### api_pb2
 
 Generated protocol buffer code.
 
 ---
 
-### api_pb2
+### any_pb2
 
 Generated protocol buffer code.
 
@@ -254163,49 +254226,6 @@ Or with another call to action:
 
 ---
 
-### BufrStubImagePlugin
-
-#### Classes
-
-##### BufrStubImageFile
-
-**Méthodes :**
-
-- `_open()`
-- `_load()`
-
-#### Fonctions
-
-##### register_handler
-
-Install application-specific BUFR image handler.
-
-:param handler: Handler object.
-
-**Paramètres :**
-
-- `handler`
-
-##### _accept
-
-**Paramètres :**
-
-- `prefix`
-
-##### _save
-
-**Paramètres :**
-
-- `im`
-- `fp`
-- `filename`
-
-##### _open
-
-##### _load
-
----
-
 ### ImageFilter
 
 #### Classes
@@ -254584,6 +254604,49 @@ a new LUT with altered values.
 **Paramètres :**
 
 - `image`
+
+---
+
+### BufrStubImagePlugin
+
+#### Classes
+
+##### BufrStubImageFile
+
+**Méthodes :**
+
+- `_open()`
+- `_load()`
+
+#### Fonctions
+
+##### register_handler
+
+Install application-specific BUFR image handler.
+
+:param handler: Handler object.
+
+**Paramètres :**
+
+- `handler`
+
+##### _accept
+
+**Paramètres :**
+
+- `prefix`
+
+##### _save
+
+**Paramètres :**
+
+- `im`
+- `fp`
+- `filename`
+
+##### _open
+
+##### _load
 
 ---
 
@@ -262142,258 +262205,6 @@ Returns a QPixmap copy of this image
 
 ---
 
-### report
-
----
-
-### ImImagePlugin
-
-#### Classes
-
-##### ImImageFile
-
-**Méthodes :**
-
-- `_open()`
-- `n_frames()`
-- `is_animated()`
-- `seek()`
-- `tell()`
-
-#### Fonctions
-
-##### number
-
-**Paramètres :**
-
-- `s`
-
-##### _save
-
-**Paramètres :**
-
-- `im`
-- `fp`
-- `filename`
-
-##### _open
-
-##### n_frames
-
-##### is_animated
-
-##### seek
-
-**Paramètres :**
-
-- `frame`
-
-##### tell
-
----
-
-### PsdImagePlugin
-
-#### Classes
-
-##### PsdImageFile
-
-**Méthodes :**
-
-- `_open()`
-- `layers()`
-- `n_frames()`
-- `is_animated()`
-- `seek()`
-- `tell()`
-
-#### Fonctions
-
-##### _accept
-
-**Paramètres :**
-
-- `prefix`
-
-##### _layerinfo
-
-**Paramètres :**
-
-- `fp`
-- `ct_bytes`
-
-##### _maketile
-
-**Paramètres :**
-
-- `file`
-- `mode`
-- `bbox`
-- `channels`
-
-##### _open
-
-##### layers
-
-##### n_frames
-
-##### is_animated
-
-##### seek
-
-**Paramètres :**
-
-- `layer`
-
-##### tell
-
-##### read
-
-**Paramètres :**
-
-- `size`
-
----
-
-### JpegImagePlugin
-
-#### Classes
-
-##### JpegImageFile
-
-**Méthodes :**
-
-- `_open()`
-- `__getattr__()`
-- `__getstate__()`
-- `__setstate__()`
-- `load_read()`
-- `draft()`
-- `load_djpeg()`
-- `_getexif()`
-- `_read_dpi_from_exif()`
-- `_getmp()`
-
-#### Fonctions
-
-##### Skip
-
-**Paramètres :**
-
-- `marker`
-
-##### APP
-
-**Paramètres :**
-
-- `marker`
-
-##### COM
-
-**Paramètres :**
-
-- `marker`
-
-##### SOF
-
-**Paramètres :**
-
-- `marker`
-
-##### DQT
-
-**Paramètres :**
-
-- `marker`
-
-##### _accept
-
-**Paramètres :**
-
-- `prefix`
-
-##### _getexif
-
-##### _getmp
-
-##### get_sampling
-
-**Paramètres :**
-
-- `im`
-
-##### _save
-
-**Paramètres :**
-
-- `im`
-- `fp`
-- `filename`
-
-##### _save_cjpeg
-
-**Paramètres :**
-
-- `im`
-- `fp`
-- `filename`
-
-##### jpeg_factory
-
-**Paramètres :**
-
-- `fp`
-- `filename`
-
-##### _open
-
-##### __getattr__
-
-**Paramètres :**
-
-- `name`
-
-##### __getstate__
-
-##### __setstate__
-
-**Paramètres :**
-
-- `state`
-
-##### load_read
-
-internal: read more image data
-For premature EOF and LOAD_TRUNCATED_IMAGES adds EOI marker
-so libjpeg can finish decoding
-
-**Paramètres :**
-
-- `read_bytes`
-
-##### draft
-
-**Paramètres :**
-
-- `mode`
-- `size`
-
-##### load_djpeg
-
-##### _getexif
-
-##### _read_dpi_from_exif
-
-##### _getmp
-
-##### validate_qtables
-
-**Paramètres :**
-
-- `qtables`
-
----
-
 ### ImageFont
 
 #### Classes
@@ -263062,6 +262873,258 @@ object.
 
 - `width`
 - `height`
+
+---
+
+### report
+
+---
+
+### ImImagePlugin
+
+#### Classes
+
+##### ImImageFile
+
+**Méthodes :**
+
+- `_open()`
+- `n_frames()`
+- `is_animated()`
+- `seek()`
+- `tell()`
+
+#### Fonctions
+
+##### number
+
+**Paramètres :**
+
+- `s`
+
+##### _save
+
+**Paramètres :**
+
+- `im`
+- `fp`
+- `filename`
+
+##### _open
+
+##### n_frames
+
+##### is_animated
+
+##### seek
+
+**Paramètres :**
+
+- `frame`
+
+##### tell
+
+---
+
+### PsdImagePlugin
+
+#### Classes
+
+##### PsdImageFile
+
+**Méthodes :**
+
+- `_open()`
+- `layers()`
+- `n_frames()`
+- `is_animated()`
+- `seek()`
+- `tell()`
+
+#### Fonctions
+
+##### _accept
+
+**Paramètres :**
+
+- `prefix`
+
+##### _layerinfo
+
+**Paramètres :**
+
+- `fp`
+- `ct_bytes`
+
+##### _maketile
+
+**Paramètres :**
+
+- `file`
+- `mode`
+- `bbox`
+- `channels`
+
+##### _open
+
+##### layers
+
+##### n_frames
+
+##### is_animated
+
+##### seek
+
+**Paramètres :**
+
+- `layer`
+
+##### tell
+
+##### read
+
+**Paramètres :**
+
+- `size`
+
+---
+
+### JpegImagePlugin
+
+#### Classes
+
+##### JpegImageFile
+
+**Méthodes :**
+
+- `_open()`
+- `__getattr__()`
+- `__getstate__()`
+- `__setstate__()`
+- `load_read()`
+- `draft()`
+- `load_djpeg()`
+- `_getexif()`
+- `_read_dpi_from_exif()`
+- `_getmp()`
+
+#### Fonctions
+
+##### Skip
+
+**Paramètres :**
+
+- `marker`
+
+##### APP
+
+**Paramètres :**
+
+- `marker`
+
+##### COM
+
+**Paramètres :**
+
+- `marker`
+
+##### SOF
+
+**Paramètres :**
+
+- `marker`
+
+##### DQT
+
+**Paramètres :**
+
+- `marker`
+
+##### _accept
+
+**Paramètres :**
+
+- `prefix`
+
+##### _getexif
+
+##### _getmp
+
+##### get_sampling
+
+**Paramètres :**
+
+- `im`
+
+##### _save
+
+**Paramètres :**
+
+- `im`
+- `fp`
+- `filename`
+
+##### _save_cjpeg
+
+**Paramètres :**
+
+- `im`
+- `fp`
+- `filename`
+
+##### jpeg_factory
+
+**Paramètres :**
+
+- `fp`
+- `filename`
+
+##### _open
+
+##### __getattr__
+
+**Paramètres :**
+
+- `name`
+
+##### __getstate__
+
+##### __setstate__
+
+**Paramètres :**
+
+- `state`
+
+##### load_read
+
+internal: read more image data
+For premature EOF and LOAD_TRUNCATED_IMAGES adds EOI marker
+so libjpeg can finish decoding
+
+**Paramètres :**
+
+- `read_bytes`
+
+##### draft
+
+**Paramètres :**
+
+- `mode`
+- `size`
+
+##### load_djpeg
+
+##### _getexif
+
+##### _read_dpi_from_exif
+
+##### _getmp
+
+##### validate_qtables
+
+**Paramètres :**
+
+- `qtables`
 
 ---
 
@@ -266877,20 +266940,6 @@ like ``"float64"`` can be used.
 
 ---
 
-### _distributor_init
-
-Distributor init file
-
-Distributors: you can add custom code here to support particular distributions
-of numpy.
-
-For example, this is a good place to put any BLAS/LAPACK initialization code.
-
-The numpy standard source distribution will not put code in this file, so you
-can safely replace this file with your own version.
-
----
-
 ### exceptions
 
 Exceptions and Warnings (:mod:`numpy.exceptions`)
@@ -267097,6 +267146,20 @@ mismatch.
 - `msg_prefix`
 
 ##### __str__
+
+---
+
+### _distributor_init
+
+Distributor init file
+
+Distributors: you can add custom code here to support particular distributions
+of numpy.
+
+For example, this is a good place to put any BLAS/LAPACK initialization code.
+
+The numpy standard source distribution will not put code in this file, so you
+can safely replace this file with your own version.
 
 ---
 
@@ -443823,73 +443886,6 @@ We also ensure that frozen-ness of classes is inherited.
 
 ---
 
-### _version_info
-
-#### Classes
-
-##### VersionInfo
-
-A version object that can be compared to tuple of length 1--4:
-
->>> attr.VersionInfo(19, 1, 0, "final")  <= (19, 2)
-True
->>> attr.VersionInfo(19, 1, 0, "final") < (19, 1, 1)
-True
->>> vi = attr.VersionInfo(19, 2, 0, "final")
->>> vi < (19, 1, 1)
-False
->>> vi < (19,)
-False
->>> vi == (19, 2,)
-True
->>> vi == (19, 2, 1)
-False
-
-.. versionadded:: 19.2
-
-**Méthodes :**
-
-- `_from_version_string()`
-- `_ensure_tuple()`
-- `__eq__()`
-- `__lt__()`
-
-#### Fonctions
-
-##### _from_version_string
-
-Parse *s* and return a _VersionInfo.
-
-**Paramètres :**
-
-- `cls`
-- `s`
-
-##### _ensure_tuple
-
-Ensure *other* is a tuple of a valid length.
-
-Returns a possibly transformed *other* and ourselves as a tuple of
-the same length as *other*.
-
-**Paramètres :**
-
-- `other`
-
-##### __eq__
-
-**Paramètres :**
-
-- `other`
-
-##### __lt__
-
-**Paramètres :**
-
-- `other`
-
----
-
 ### converters
 
 Commonly useful converters.
@@ -444002,6 +443998,73 @@ Raises:
 **Paramètres :**
 
 - `val`
+
+---
+
+### _version_info
+
+#### Classes
+
+##### VersionInfo
+
+A version object that can be compared to tuple of length 1--4:
+
+>>> attr.VersionInfo(19, 1, 0, "final")  <= (19, 2)
+True
+>>> attr.VersionInfo(19, 1, 0, "final") < (19, 1, 1)
+True
+>>> vi = attr.VersionInfo(19, 2, 0, "final")
+>>> vi < (19, 1, 1)
+False
+>>> vi < (19,)
+False
+>>> vi == (19, 2,)
+True
+>>> vi == (19, 2, 1)
+False
+
+.. versionadded:: 19.2
+
+**Méthodes :**
+
+- `_from_version_string()`
+- `_ensure_tuple()`
+- `__eq__()`
+- `__lt__()`
+
+#### Fonctions
+
+##### _from_version_string
+
+Parse *s* and return a _VersionInfo.
+
+**Paramètres :**
+
+- `cls`
+- `s`
+
+##### _ensure_tuple
+
+Ensure *other* is a tuple of a valid length.
+
+Returns a possibly transformed *other* and ourselves as a tuple of
+the same length as *other*.
+
+**Paramètres :**
+
+- `other`
+
+##### __eq__
+
+**Paramètres :**
+
+- `other`
+
+##### __lt__
+
+**Paramètres :**
+
+- `other`
 
 ---
 
@@ -835325,25 +835388,13 @@ Generated protocol buffer code.
 
 ---
 
-### AudioInput_pb2
-
-Generated protocol buffer code.
-
----
-
-### AuthRedirect_pb2
-
-Generated protocol buffer code.
-
----
-
 ### BackMsg_pb2
 
 Generated protocol buffer code.
 
 ---
 
-### AutoRerun_pb2
+### AudioInput_pb2
 
 Generated protocol buffer code.
 
@@ -835355,7 +835406,19 @@ Generated protocol buffer code.
 
 ---
 
+### AuthRedirect_pb2
+
+Generated protocol buffer code.
+
+---
+
 ### Block_pb2
+
+Generated protocol buffer code.
+
+---
+
+### AutoRerun_pb2
 
 Generated protocol buffer code.
 
@@ -835368,6 +835431,12 @@ Generated protocol buffer code.
 ---
 
 ### BokehChart_pb2
+
+Generated protocol buffer code.
+
+---
+
+### Checkbox_pb2
 
 Generated protocol buffer code.
 
@@ -835386,12 +835455,6 @@ Generated protocol buffer code.
 ---
 
 ### ChatInput_pb2
-
-Generated protocol buffer code.
-
----
-
-### Checkbox_pb2
 
 Generated protocol buffer code.
 
@@ -835535,13 +835598,13 @@ Generated protocol buffer code.
 
 ---
 
-### IFrame_pb2
+### Image_pb2
 
 Generated protocol buffer code.
 
 ---
 
-### Image_pb2
+### IFrame_pb2
 
 Generated protocol buffer code.
 
@@ -835607,6 +835670,12 @@ Generated protocol buffer code.
 
 ---
 
+### PageLink_pb2
+
+Generated protocol buffer code.
+
+---
+
 ### Navigation_pb2
 
 Generated protocol buffer code.
@@ -835626,12 +835695,6 @@ Generated protocol buffer code.
 ---
 
 ### PageConfig_pb2
-
-Generated protocol buffer code.
-
----
-
-### PageLink_pb2
 
 Generated protocol buffer code.
 
@@ -835667,6 +835730,12 @@ Generated protocol buffer code.
 
 ---
 
+### Skeleton_pb2
+
+Generated protocol buffer code.
+
+---
+
 ### PlotlyChart_pb2
 
 Generated protocol buffer code.
@@ -835679,19 +835748,13 @@ Generated protocol buffer code.
 
 ---
 
-### Skeleton_pb2
+### Slider_pb2
 
 Generated protocol buffer code.
 
 ---
 
 ### RootContainer_pb2
-
-Generated protocol buffer code.
-
----
-
-### Slider_pb2
 
 Generated protocol buffer code.
 
@@ -835757,13 +835820,13 @@ Generated protocol buffer code.
 
 ---
 
-### VegaLiteChart_pb2
+### Video_pb2
 
 Generated protocol buffer code.
 
 ---
 
-### Video_pb2
+### VegaLiteChart_pb2
 
 Generated protocol buffer code.
 
@@ -835775,13 +835838,13 @@ Generated protocol buffer code.
 
 ---
 
-### WidthConfig_pb2
+### openmetrics_data_model_pb2
 
 Generated protocol buffer code.
 
 ---
 
-### openmetrics_data_model_pb2
+### WidthConfig_pb2
 
 Generated protocol buffer code.
 
@@ -868901,6 +868964,20 @@ During the core schema traversing, any `'definition-ref'` schema is:
 
 ---
 
+### _serializers
+
+#### Fonctions
+
+##### serialize_sequence_via_list
+
+**Paramètres :**
+
+- `v`
+- `handler`
+- `info`
+
+---
+
 ### _schema_generation_shared
 
 Types and utility functions used by various other internal tools.
@@ -869001,20 +869078,6 @@ Raises:
 **Paramètres :**
 
 - `maybe_ref_schema`
-
----
-
-### _serializers
-
-#### Fonctions
-
-##### serialize_sequence_via_list
-
-**Paramètres :**
-
-- `v`
-- `handler`
-- `info`
 
 ---
 
@@ -887308,6 +887371,10 @@ Read more about it in the
 
 ---
 
+### websockets
+
+---
+
 ### utils
 
 #### Fonctions
@@ -887370,10 +887437,6 @@ Otherwise, the first item (a `DefaultPlaceholder`) will be returned.
 **Paramètres :**
 
 - `first_item`
-
----
-
-### websockets
 
 ---
 
@@ -896375,6 +896438,69 @@ Orchestrer avec les fonctionnalités Phase 2
 
 ---
 
+### code_linter
+
+#### Classes
+
+##### CodeLinter
+
+Linter de code pour Athalia
+
+**Méthodes :**
+
+- `__init__()`
+- `run()`
+- `_run_flake8()`
+- `_run_black()`
+- `_run_isort()`
+- `_run_mypy()`
+- `_run_bandit()`
+- `_calculate_score()`
+- `print_report()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `project_path`
+- `auto_fix`
+
+##### run
+
+Lance l'analyse de qualité du projet
+
+##### _run_flake8
+
+Exécution de Flake8
+
+##### _run_black
+
+Exécution de Black
+
+##### _run_isort
+
+Exécution de isort
+
+##### _run_mypy
+
+Exécution de MyPy
+
+##### _run_bandit
+
+Exécution de Bandit pour la sécurité
+
+##### _calculate_score
+
+Calcul du score de qualité
+
+##### print_report
+
+Affichage du rapport de linting
+
+---
+
 ### audit
 
 Fichier de compatibilité pour l'audit
@@ -898386,69 +898512,6 @@ Affichage du rapport de sécurité
 **Paramètres :**
 
 - `project_path`
-
----
-
-### code_linter
-
-#### Classes
-
-##### CodeLinter
-
-Linter de code pour Athalia
-
-**Méthodes :**
-
-- `__init__()`
-- `run()`
-- `_run_flake8()`
-- `_run_black()`
-- `_run_isort()`
-- `_run_mypy()`
-- `_run_bandit()`
-- `_calculate_score()`
-- `print_report()`
-
-#### Fonctions
-
-##### __init__
-
-**Paramètres :**
-
-- `project_path`
-- `auto_fix`
-
-##### run
-
-Lance l'analyse de qualité du projet
-
-##### _run_flake8
-
-Exécution de Flake8
-
-##### _run_black
-
-Exécution de Black
-
-##### _run_isort
-
-Exécution de isort
-
-##### _run_mypy
-
-Exécution de MyPy
-
-##### _run_bandit
-
-Exécution de Bandit pour la sécurité
-
-##### _calculate_score
-
-Calcul du score de qualité
-
-##### print_report
-
-Affichage du rapport de linting
 
 ---
 
@@ -900757,48 +900820,6 @@ Restaure une sauvegarde
 #### Fonctions
 
 ##### main
-
----
-
-### athalia_unified
-
-Athalia Unified - Pipeline d'industrialisation IA complet
-Interface unifiée pour tous les modules Athalia
-
-#### Classes
-
-##### AthaliaOrchestrator
-
-**Méthodes :**
-
-- `industrialize_project()`
-- `audit_project()`
-- `scan_projects()`
-
-#### Fonctions
-
-##### main
-
-Fonction principale du CLI unifié
-
-##### industrialize_project
-
-**Paramètres :**
-
-- `project_path`
-- `config`
-
-##### audit_project
-
-**Paramètres :**
-
-- `project_path`
-
-##### scan_projects
-
-**Paramètres :**
-
-- `project_path`
 
 ---
 
