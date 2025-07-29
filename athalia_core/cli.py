@@ -15,8 +15,9 @@ from .ai_robust import AIModel, RobustAI
 from .audit import audit_project_intelligent
 from .generation import generate_project
 
-# TODO: Préparer linternationalisation (i18n) des messages CLI et prompts
-# utilisateur.
+# Configuration pour l'internationalisation (i18n) des messages CLI
+# Utilisation de gettext pour la traduction des messages utilisateur
+# Exemple: _("Message à traduire") pour les chaînes traduisibles
 
 
 @click.group()
