@@ -1,11 +1,7 @@
 #!/usr/bin/env python3
 from pathlib import Path
-from typing import Dict, List, Any, Optional
+from typing import Dict, List, Any
 import json
-import os
-import argparse
-from datetime import datetime
-import yaml
 import logging
 import builtins
 

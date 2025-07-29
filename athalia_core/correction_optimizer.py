@@ -8,17 +8,11 @@ Améliore le taux de réussite de 80% à 95%+ en utilisant des techniques avanc�
 import ast
 import re
 import time
-import json
-import os
-from pathlib import Path
 from typing import Dict, List, Any, Tuple, Optional
 from dataclasses import dataclass
 from collections import defaultdict
-import subprocess
-import tempfile
-import shutil
 
-from .logger_advanced import log_correction, log_performance, log_error
+from .logger_advanced import log_correction, log_error
 
 
 @dataclass

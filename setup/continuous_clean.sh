@@ -38,6 +38,11 @@ clean_aggressively() {
     # 6. Supprimer les fichiers .noindex
     find . -name "*.noindex" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -delete 2>/dev/null
     
+    # 7. PROTECTION DES TESTS - Supprimer les fichiers de tests automatiques
+    find tests/ -name "test_unit_*.py" -delete 2>/dev/null || true
+    find tests/ -name "test_integration_*.py" -delete 2>/dev/null || true
+    find tests/ -name "test_performance_*.py" -delete 2>/dev/null || true
+    
     echo "✅ Nettoyage terminé"
 }
 

@@ -1,5 +1,0 @@
-__pycache__
-auto_correction_avancee.py
-dashboard_unifie_simple.py
-orchestrateur_principal.py
-profils_utilisateur_avances.py

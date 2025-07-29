@@ -4,7 +4,6 @@
 Analyseur de projets Rust pour Athalia Robotics
 """
 
-import json
 import logging
 import subprocess
 from dataclasses import dataclass

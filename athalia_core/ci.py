@@ -19,7 +19,7 @@ def generate_github_ci_yaml(outdir):
     print(
         f'[DEBUG CI] Fichier généré : {ci_file} (exists: {ci_file.exists()})')
     readme_path = os.path.join(outdir, 'README.md')
-    badge = f"![CI](https://github.com /< user>/<repo >/ actions/workflows / ci.yaml / badge.svg)\n"
+    badge = "![CI](https://github.com /< user>/<repo >/ actions/workflows / ci.yaml / badge.svg)\n"
     if os.path.exists(readme_path):
         with open(readme_path, 'r+') as file_handle:
             content = file_handle.read()

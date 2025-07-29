@@ -1,10 +1,9 @@
 # Module de génération amélioré pour Athalia
-import os
 import re
 from pathlib import Path
 import yaml
 import json
-from typing import Dict, List, Any, Optional
+from typing import Optional
 
 
 def generate_blueprint_mock(idea: str = "", *args, **kwargs):

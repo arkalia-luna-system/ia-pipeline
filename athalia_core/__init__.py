@@ -4,7 +4,7 @@
 
 from .ai_robust import RobustAI
 import logging
-from . import generation
+# from . import generation  # Import non utilisé
 
 logger = logging.getLogger(__name__)
 
