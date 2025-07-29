@@ -1,6 +1,6 @@
 #!/bin/bash
-# 🌟 Nettoyage Rapide du Projet Athalia - VERSION OPTIMISÉE
-# Version 4.0 - Performance maximale, interface simplifiée
+# 🌟 Nettoyage Complet du Projet Athalia - VERSION OPTIMISÉE
+# Version 5.0 - Nettoyage complet de tous les fichiers cache
 
 set -euo pipefail
 
@@ -29,7 +29,7 @@ fi
 # =============================================================================
 
 print_header() {
-    echo -e "${BLUE}🚀 Nettoyage Rapide Athalia${NC}"
+    echo -e "${BLUE}🚀 Nettoyage Complet Athalia${NC}"
     echo
 }
 
@@ -56,69 +56,128 @@ print_summary() {
 }
 
 # =============================================================================
-# SECTION 3: FONCTIONS DE NETTOYAGE RAPIDES
+# SECTION 3: FONCTIONS DE NETTOYAGE COMPLETES
 # =============================================================================
 
-# Fonction de nettoyage rapide
+# Fonction de nettoyage rapide avec patterns multiples
 fast_clean() {
-    local pattern="$1"
-    local description="$2"
+    local patterns=("$@")
+    local description="${patterns[0]}"
+    shift
+    local pattern_list=("$@")
     
     echo -e "${BLUE}🔍 $description...${NC}"
     
-    if [ "$DRY_RUN_MODE" = true ]; then
-        local count=$(find . -path "$pattern" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" 2>/dev/null | wc -l)
-        echo -e "${YELLOW}   [DRY-RUN] $count fichiers trouvés${NC}"
-        return
-    fi
+    local total_count=0
     
-    local count=$(find . -path "$pattern" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -delete 2>/dev/null | wc -l)
-    if [ $count -gt 0 ]; then
-        print_success "$count éléments nettoyés"
-        CLEANED_COUNT=$((CLEANED_COUNT + count))
+    for pattern in "${pattern_list[@]}"; do
+        if [ "$DRY_RUN_MODE" = true ]; then
+            local count=$(find . -path "$pattern" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" 2>/dev/null | wc -l)
+            if [ $count -gt 0 ]; then
+                echo -e "${YELLOW}   [DRY-RUN] $count fichiers trouvés avec pattern: $pattern${NC}"
+                total_count=$((total_count + count))
+            fi
+        else
+            local count=$(find . -path "$pattern" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" -delete 2>/dev/null | wc -l)
+            if [ $count -gt 0 ]; then
+                print_success "$count éléments nettoyés avec pattern: $pattern"
+                total_count=$((total_count + count))
+            fi
+        fi
+    done
+    
+    if [ $total_count -gt 0 ]; then
+        CLEANED_COUNT=$((CLEANED_COUNT + total_count))
+    fi
+}
+
+# Fonction de nettoyage des dossiers cache
+clean_cache_directories() {
+    local dirs=("$@")
+    local description="$1"
+    
+    echo -e "${BLUE}🗂️  $description...${NC}"
+    
+    local total_count=0
+    
+    for dir in "${dirs[@]}"; do
+        if [ "$DRY_RUN_MODE" = true ]; then
+            if [ -d "$dir" ]; then
+                local size=$(du -sh "$dir" 2>/dev/null | cut -f1)
+                echo -e "${YELLOW}   [DRY-RUN] Dossier trouvé: $dir ($size)${NC}"
+                total_count=$((total_count + 1))
+            fi
+        else
+            if [ -d "$dir" ]; then
+                local size=$(du -sh "$dir" 2>/dev/null | cut -f1)
+                rm -rf "$dir" 2>/dev/null
+                print_success "Dossier supprimé: $dir ($size)"
+                total_count=$((total_count + 1))
+            fi
+        fi
+    done
+    
+    if [ $total_count -gt 0 ]; then
+        CLEANED_COUNT=$((CLEANED_COUNT + total_count))
     fi
 }
 
 # =============================================================================
-# SECTION 4: EXÉCUTION PRINCIPALE RAPIDE
+# SECTION 4: EXÉCUTION PRINCIPALE COMPLÈTE
 # =============================================================================
 
 # Affichage de l'en-tête
 print_header
 
-# Nettoyage rapide des fichiers AppleDouble et macOS
+# Nettoyage complet des fichiers AppleDouble et macOS
 print_section "Nettoyage des fichiers AppleDouble et macOS"
-fast_clean "._*" "Fichiers AppleDouble"
-fast_clean ".DS_Store" "Fichiers .DS_Store"
-fast_clean ".!*" "Fichiers temporaires"
-fast_clean "*.noindex" "Fichiers .noindex"
+fast_clean "Fichiers système macOS" "._*" ".DS_Store" ".!*" "*.noindex" "Thumbs.db" "desktop.ini"
 
-# Nettoyage rapide des fichiers Python compilés
+# Nettoyage complet des fichiers Python compilés
 print_section "Nettoyage des fichiers Python compilés"
-fast_clean "*.pyc" "Fichiers .pyc"
-fast_clean "__pycache__" "Dossiers __pycache__"
+fast_clean "Fichiers Python compilés" "*.pyc" "*.pyo" "*.pyd" "__pycache__" "*.so" "*.dll" "*.dylib"
 
-# Nettoyage rapide des caches de tests
-print_section "Nettoyage des caches de tests"
-fast_clean ".pytest_cache" "Cache pytest"
-fast_clean ".mypy_cache" "Cache mypy"
-fast_clean "htmlcov" "Rapports de couverture"
+# Nettoyage complet des caches de tests et outils
+print_section "Nettoyage des caches de tests et outils"
+fast_clean "Caches de tests" ".pytest_cache" ".mypy_cache" ".ruff_cache" ".coverage" "coverage.xml" "htmlcov" ".tox" ".cache"
 
-# Nettoyage rapide des fichiers de couverture
+# Nettoyage complet des fichiers de couverture
 print_section "Nettoyage des fichiers de couverture"
-fast_clean "*.coverage" "Fichiers de couverture"
-fast_clean "coverage.xml" "Rapports XML de couverture"
+fast_clean "Fichiers de couverture" "*.coverage" "coverage.xml" "htmlcov" ".coverage.*" "coverage_html" "cov.xml"
 
-# Nettoyage rapide des fichiers corrompus
+# Nettoyage complet des fichiers temporaires
+print_section "Nettoyage des fichiers temporaires"
+fast_clean "Fichiers temporaires" "*.tmp" "*.temp" "*.swp" "*.swo" "*~" "*.bak" "*.backup" "*.orig"
+
+# Nettoyage complet des fichiers de build
+print_section "Nettoyage des fichiers de build"
+fast_clean "Fichiers de build" "build" "dist" "*.egg-info" "*.egg" "__pycache__" "*.pyc" "*.pyo"
+
+# Nettoyage complet des fichiers de logs
+print_section "Nettoyage des fichiers de logs"
+fast_clean "Fichiers de logs" "*.log" "logs" "*.out" "*.err" "debug.log" "error.log"
+
+# Nettoyage complet des fichiers de données temporaires
+print_section "Nettoyage des fichiers de données temporaires"
+fast_clean "Fichiers de données temporaires" "*.db" "*.sqlite" "*.sqlite3" "*.cache" "*.dat" "*.tmp"
+
+# Nettoyage complet des fichiers corrompus
 print_section "Nettoyage des fichiers corrompus"
-fast_clean "*.f(f)" "Fichiers corrompus"
+fast_clean "Fichiers corrompus" "*.f(f)" "*.corrupt" "*.broken"
+
+# Nettoyage des dossiers cache spécifiques
+print_section "Nettoyage des dossiers cache spécifiques"
+clean_cache_directories "Dossiers cache" ".pytest_cache" ".mypy_cache" ".ruff_cache" ".coverage" "htmlcov" ".tox" ".cache" "build" "dist" "*.egg-info" "__pycache__"
 
 # Nettoyage des caractères null des fichiers Python
 print_section "Nettoyage des caractères null"
 if [ "$DRY_RUN_MODE" = true ]; then
     echo -e "${YELLOW}   [DRY-RUN] Recherche de fichiers avec caractères null${NC}"
+    find . -name "*.py" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" -exec grep -l $'\x00' {} \; 2>/dev/null | while read file; do
+        echo -e "${YELLOW}   [DRY-RUN] Fichier avec caractères null: $file${NC}"
+    done
 else
-    find . -name "*.py" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -exec grep -l $'\x00' {} \; 2>/dev/null | while read file; do
+    find . -name "*.py" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" -exec grep -l $'\x00' {} \; 2>/dev/null | while read file; do
         if [ -f "$file" ]; then
             tr -d '\000' < "$file" > "$file.tmp" 2>/dev/null && mv "$file.tmp" "$file" 2>/dev/null
             print_success "Nettoyé: $file"
@@ -126,6 +185,18 @@ else
         fi
     done
 fi
+
+# Nettoyage des fichiers de configuration temporaires
+print_section "Nettoyage des fichiers de configuration temporaires"
+fast_clean "Fichiers de configuration temporaires" "*.cfg.tmp" "*.ini.tmp" "*.yaml.tmp" "*.yml.tmp" "*.json.tmp"
+
+# Nettoyage des fichiers de documentation temporaires
+print_section "Nettoyage des fichiers de documentation temporaires"
+fast_clean "Fichiers de documentation temporaires" "*.md.tmp" "*.rst.tmp" "*.txt.tmp" "docs/_build" "docs/build"
+
+# Nettoyage des fichiers de IDE/éditeurs
+print_section "Nettoyage des fichiers d'éditeurs"
+fast_clean "Fichiers d'éditeurs" ".vscode/settings.json.tmp" ".idea/workspace.xml.tmp" "*.sublime-*" ".editorconfig.tmp"
 
 # Affichage du résumé
 print_summary 
