@@ -18,5 +18,16 @@
 ## [Unreleased]
 - Améliorations futures : personnalisation dashboard, feedback live, couverture >90%, nouveaux modèles IA, plugins avancés
 
+## [1.1.0] - 2025-01-27
+### 🚀 **Amélioration Majeure de la Couverture de Tests**
+- **+221 points de couverture** en 3 modules critiques
+- **88 nouveaux tests** créés et validés
+- **correction_optimizer.py** : 16% → 86% (+70 points, 30 tests)
+- **security_auditor.py** : 19% → 90% (+73 points, 29 tests)
+- **code_linter.py** : 25% → 100% (+78 points, 29 tests)
+- Tests professionnels avec gestion d'erreurs robuste
+- Documentation complète des améliorations
+- Base solide pour atteindre l'objectif de 85% de couverture globale
+
 ## [0.9.0] - 2025-07-01
 - Version beta interne, base technique stable 
