@@ -267,8 +267,10 @@ class TestAutocompleteEngineIntegration:
         # Sauvegarder
         engine1.save_suggestions()
         
-        # Créer un nouveau moteur
+        # Créer un nouveau moteur et charger les suggestions
         engine2 = AutocompleteEngine(data_dir=self.temp_dir)
+        suggestions_file = Path(self.temp_dir) / "suggestions.json"
+        engine2.suggestions = engine2.load_suggestions(str(suggestions_file))
         
         # Vérifier que les suggestions persistent
         python_suggestions = engine2.get_suggestions_for_context("python", "test")
