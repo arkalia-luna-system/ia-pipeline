@@ -26,13 +26,15 @@ class TestCodeGenetics(unittest.TestCase):
 
     def test_select(self):
         # Score = longueur de la solution
-        scorer = lambda s: len(s)
+        def scorer(s):
+            return len(s)
         selected = self.genetics.select(self.solutions, scorer, top_k=2)
         self.assertEqual(len(selected), 2)
         self.assertTrue(all(isinstance(s, str) for s in selected))
 
     def test_evolve(self):
-        scorer = lambda s: len(s)  # Favorise les solutions longues
+        def scorer(s):
+            return len(s)  # Favorise les solutions longues
         best = self.genetics.evolve(
             self.solutions, scorer, generations=2, mutation_rate=0.5
         )
@@ -40,8 +42,10 @@ class TestCodeGenetics(unittest.TestCase):
         self.assertTrue(len(best) > 0)
 
     def test_empty(self):
+        def scorer(s):
+            return 1
         self.assertEqual(self.genetics.crossover([]), "")
-        self.assertEqual(self.genetics.evolve([], lambda s: 1), "")
+        self.assertEqual(self.genetics.evolve([], scorer), "")
 
 
 if __name__ == "__main__":

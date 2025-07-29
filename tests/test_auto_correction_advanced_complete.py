@@ -4,14 +4,12 @@ Tests complets pour le module auto_correction_advanced.py
 Tests unitaires et d'intégration pour AutoCorrectionAvancee
 """
 
-import os
 import shutil
-import sqlite3
 import sys
 import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import MagicMock, mock_open, patch
+from unittest.mock import Mock, patch
 
 # Ajout du chemin du projet pour les imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -45,6 +43,7 @@ class TestAutoCorrectionAvancee(unittest.TestCase):
 
     def create_test_files(self):
         """Création de fichiers de test avec différents types d'erreurs"""
+        import os
         # Fichier avec erreur d'indentation
         with open(os.path.join(self.temp_dir, "test_indentation.py"), "w") as f:
             f.write(
@@ -88,7 +87,7 @@ class TestAutoCorrectionAvancee(unittest.TestCase):
     result = []
     for i in range(10):
         if i % 2 == 0:
-            result.append(i * 2)
+        result.append(i * 2)
     return result
 """
             )
@@ -361,6 +360,7 @@ class TestAutoCorrectionAvanceeIntegration(unittest.TestCase):
 
     def test_integration_complete_workflow(self):
         """Test d'intégration du workflow complet"""
+        import os
         # Création d'un fichier avec plusieurs erreurs
         test_file = os.path.join(self.temp_dir, "integration_test.py")
         with open(test_file, "w") as f:
@@ -393,6 +393,7 @@ class TestAutoCorrectionAvanceeIntegration(unittest.TestCase):
 
     def test_integration_with_large_project(self):
         """Test d'intégration avec un projet de grande taille"""
+        import os
         # Création de plusieurs fichiers
         for i in range(10):
             test_file = os.path.join(self.temp_dir, f"test_{i}.py")

@@ -3,8 +3,6 @@
 """
 Tests pour le module cleanup
 """
-from pathlib import Path
-
 import pytest
 
 

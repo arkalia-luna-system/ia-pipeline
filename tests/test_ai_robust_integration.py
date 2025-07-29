@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import os
-import tempfile
 import time
 
 import pytest
@@ -162,12 +160,18 @@ def multiply(a, b):
         """Test de la détection des modèles."""
         models = self.ai.available_models
         assert len(models) > 0
-        assert AIModel.MOCK in models
+        
+        # Vérifier que MOCK est dans la liste (peut être à n'importe quelle position)
+        mock_found = any(model == AIModel.MOCK for model in models)
+        assert mock_found, f"MOCK devrait être dans la liste des modèles: {models}"
 
         # Vérifier que la chaîne de fallback est cohérente
         chain = self.ai.fallback_chain
         assert len(chain) > 0
-        assert AIModel.MOCK in chain
+        
+        # Vérifier que MOCK est dans la chaîne de fallback
+        mock_in_chain = any(model == AIModel.MOCK for model in chain)
+        assert mock_in_chain, f"MOCK devrait être dans la chaîne de fallback: {chain}"
 
         # Vérifier que tous les modèles de la chaîne sont disponibles
         for model in chain:

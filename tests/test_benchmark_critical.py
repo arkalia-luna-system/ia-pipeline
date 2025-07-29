@@ -6,8 +6,6 @@ import pytest
 
 # Vérification de la disponibilité de pytest-benchmark
 try:
-    import pytest_benchmark
-
     BENCHMARK_AVAILABLE = True
 except ImportError:
     BENCHMARK_AVAILABLE = False

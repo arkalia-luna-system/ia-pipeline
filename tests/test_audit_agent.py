@@ -4,12 +4,11 @@ Tests pour le module audit_agent.py
 Tests unitaires et d'intégration pour AuditAgent
 """
 
-import os
 import sys
 import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 
 # Ajout du chemin du projet pour les imports
 sys.path.insert(0, str(Path(__file__).parent.parent))

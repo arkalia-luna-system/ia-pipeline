@@ -4,11 +4,9 @@ Couverture : 100% des fonctionnalités d'auto_documenter
 Tests : 25 tests unitaires et d'intégration
 """
 
-import pytest
 import tempfile
-import os
 from pathlib import Path
-from unittest.mock import Mock, patch, MagicMock
+from unittest.mock import Mock, patch
 import json
 import yaml
 from datetime import datetime

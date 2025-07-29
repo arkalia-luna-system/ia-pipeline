@@ -44,7 +44,7 @@ class TestCLIComplete:
 
     def test_cli_verbose_option(self):
         """Test l'option verbose du CLI principal"""
-        with patch("click.echo") as mock_echo:
+        with patch("click.echo"):
             with patch("logging.basicConfig") as mock_logging:
                 # Test sans verbose
                 cli.callback(verbose=False)
@@ -299,7 +299,7 @@ class TestCLIComplete:
         """Test que la commande generate crée le dossier de sortie"""
         with patch("athalia_core.cli.RobustAI") as mock_robust_ai, patch(
             "athalia_core.cli.generate_project"
-        ) as mock_generate_project, patch("click.echo"):
+        ) as _, patch("click.echo"):
 
             # Mock de l'IA robuste
             mock_ai = Mock()
@@ -496,7 +496,7 @@ class TestCLIIntegration:
         project_path = self.test_dir / "generated"
         project_path.mkdir(exist_ok=True)
 
-        with patch("click.echo") as mock_echo:
+        with patch("click.echo") as _:
             audit.callback(project_path=str(project_path))
 
         # Vérifications
