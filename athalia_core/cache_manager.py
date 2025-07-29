@@ -13,7 +13,6 @@ import pickle
 import time
 import gzip
 import hashlib
-from datetime import datetime, timedelta
 from functools import wraps
 
 logger = logging.getLogger(__name__)
@@ -139,11 +138,11 @@ class CacheManager:
                 # Essayer JSON d'abord (format par défaut)
                 try:
                     cache_data = json.loads(serialized_data.decode('utf-8'))
-                except:
+                except (json.JSONDecodeError, UnicodeDecodeError):
                     # Sinon essayer pickle
                     try:
                         cache_data = pickle.loads(serialized_data)
-                    except:
+                    except (pickle.UnpicklingError, EOFError):
                         logger.error(f"Impossible de désérialiser les données pour {key}")
                         return None
             except Exception as e:
@@ -269,14 +268,14 @@ class CacheManager:
                 # Essayer JSON d'abord (format par défaut)
                 try:
                     cache_data = json.loads(serialized_data.decode('utf-8'))
-                except:
+                except (json.JSONDecodeError, UnicodeDecodeError):
                     # Sinon essayer pickle
                     try:
                         cache_data = pickle.loads(serialized_data)
-                    except:
+                    except (pickle.UnpicklingError, EOFError):
                         # Dernier essai avec gestion d'erreur
                         return False
-            except:
+            except (OSError, IOError):
                 return False
             
             return not self._is_expired(cache_data)
