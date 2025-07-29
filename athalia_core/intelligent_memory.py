@@ -341,32 +341,15 @@ class IntelligentMemory:
             total_patterns = cursor.fetchone()[0]
 
             # Prédictions
-            cursor.execute(
-                "SELECT COUNT(*) FROM predictions WHERE validated = 1")
-            validated_predictions = cursor.fetchone()[0]
-
-            cursor.execute(
-                "SELECT COUNT(*) FROM predictions WHERE validated = 1 AND "
-                "validation_result = 'correct'")
-            correct_predictions = cursor.fetchone()[0]
+            cursor.execute("SELECT COUNT(*) FROM predictions")
+            total_predictions = cursor.fetchone()[0]
 
             # Corrections suggérées
-            cursor.execute(
-                "SELECT COUNT(*) FROM correction_suggestions WHERE applied = 1")
-            applied_corrections = cursor.fetchone()[0]
-
-            cursor.execute(
-                "SELECT COUNT(*) FROM correction_suggestions WHERE applied = 1 AND success = 1")
-            successful_corrections = cursor.fetchone()[0]
+            cursor.execute("SELECT COUNT(*) FROM correction_suggestions")
+            total_corrections = cursor.fetchone()[0]
 
             # Calculer les taux de succès
             error_rate = total_errors / total_events if total_events > 0 else 0
-            prediction_accuracy = (
-                correct_predictions / validated_predictions
-                if validated_predictions > 0 else 0
-            )
-            correction_success_rate = (successful_corrections / applied_corrections
-                                       if applied_corrections > 0 else 0)
 
             return {
                 "total_events": total_events,
@@ -374,12 +357,8 @@ class IntelligentMemory:
                 "total_successes": total_successes,
                 "error_rate": error_rate,
                 "total_patterns": total_patterns,
-                "validated_predictions": validated_predictions,
-                "correct_predictions": correct_predictions,
-                "prediction_accuracy": prediction_accuracy,
-                "applied_corrections": applied_corrections,
-                "successful_corrections": successful_corrections,
-                "correction_success_rate": correction_success_rate,
+                "total_predictions": total_predictions,
+                "total_corrections": total_corrections,
                 "learning_progress": "Système d'apprentissage actif"
             }
 
@@ -460,7 +439,7 @@ class IntelligentMemory:
                 # Mettre à jour le pattern existant
                 occurrences = existing[3] + 1
                 success_count = int(
-                    float(existing[5]) * existing[3]) + (1 if success else 0)
+                    float(existing[6]) * existing[3]) + (1 if success else 0)
                 success_rate = success_count / occurrences
 
                 cursor.execute("""
