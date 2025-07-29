@@ -155,7 +155,8 @@ alias ath-dashboard-full='open $(git rev-parse --show-toplevel)/dashboard/analyt
 # === Auto-complétion intelligente pour tous les alias ath- ===
 # (Zsh)
 if [ -n "$ZSH_VERSION" ]; then
-  compctl -K _athalia_aliases ath-*
+  # Auto-complétion pour les alias ath- spécifiques
+  compctl -K _athalia_aliases ath-audit ath-build ath-clean ath-coverage ath-lint ath-test ath-kill
   _athalia_aliases() { reply=($(compgen -A function -A command -A alias -- "${words[1]}")); }
 fi
 # (Bash)
@@ -165,7 +166,8 @@ fi
 
 # === Auto-complétion intelligente pour les plugins ath-plugin-* ===
 if [ -n "$ZSH_VERSION" ]; then
-  compctl -K _athalia_plugins ath-plugin-*
+  # Auto-complétion pour les plugins spécifiques
+  compctl -K _athalia_plugins ath-plugin-docker ath-plugin-hello
   _athalia_plugins() { reply=($(ls $(git rev-parse --show-toplevel)/athalia_core/external_plugins/ | grep -E '^.*_plugin\\.py$' | sed 's/\\.py$//;s/_plugin$//;s/^/ath-plugin-/')); }
 fi
 if [ -n "$BASH_VERSION" ]; then
@@ -205,3 +207,6 @@ alias ath-doc-api='open $(git rev-parse --show-toplevel)/docs/API.md'
 alias ath-security='python3 $(git rev-parse --show-toplevel)/athalia_core/security_auditor.py'
 # Documentation Guide
 alias ath-doc-guide='open $(git rev-parse --show-toplevel)/docs/GUIDE.md'
+
+# Arrêt des processus Athalia
+alias ath-kill='$(git rev-parse --show-toplevel)/bin/ath-clean --kill-processes'
