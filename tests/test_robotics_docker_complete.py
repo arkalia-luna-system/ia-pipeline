@@ -32,6 +32,7 @@ class TestDockerRoboticsComplete:
     def teardown_method(self):
         """Cleanup après chaque test"""
         import shutil
+
         shutil.rmtree(self.temp_dir, ignore_errors=True)
 
     def test_init(self):
@@ -114,34 +115,34 @@ class TestDockerRoboticsComplete:
     def test_parse_service_config_valid(self):
         """Test parsing de configuration de service valide"""
         config = {
-            'image': 'test:latest',
-            'environment': {'TEST': 'value'},
-            'volumes': ['./src:/opt/src'],
-            'ports': ['8080:8080'],
-            'depends_on': ['other'],
-            'network_mode': 'host'
+            "image": "test:latest",
+            "environment": {"TEST": "value"},
+            "volumes": ["./src:/opt/src"],
+            "ports": ["8080:8080"],
+            "depends_on": ["other"],
+            "network_mode": "host",
         }
 
-        service = self.manager._parse_service_config('test_service', config)
+        service = self.manager._parse_service_config("test_service", config)
 
         assert isinstance(service, DockerServiceConfig)
-        assert service.name == 'test_service'
-        assert service.image == 'test:latest'
-        assert service.environment == {'TEST': 'value'}
-        assert service.volumes == ['./src:/opt/src']
-        assert service.ports == ['8080:8080']
-        assert service.depends_on == ['other']
-        assert service.network_mode == 'host'
+        assert service.name == "test_service"
+        assert service.image == "test:latest"
+        assert service.environment == {"TEST": "value"}
+        assert service.volumes == ["./src:/opt/src"]
+        assert service.ports == ["8080:8080"]
+        assert service.depends_on == ["other"]
+        assert service.network_mode == "host"
 
     def test_parse_service_config_minimal(self):
         """Test parsing de configuration de service minimale"""
-        config = {'image': 'test:latest'}
+        config = {"image": "test:latest"}
 
-        service = self.manager._parse_service_config('test_service', config)
+        service = self.manager._parse_service_config("test_service", config)
 
         assert isinstance(service, DockerServiceConfig)
-        assert service.name == 'test_service'
-        assert service.image == 'test:latest'
+        assert service.name == "test_service"
+        assert service.image == "test:latest"
         assert service.environment == {}
         assert service.volumes == []
         assert service.ports == []
@@ -150,8 +151,8 @@ class TestDockerRoboticsComplete:
 
     def test_parse_service_config_invalid(self):
         """Test parsing de configuration de service invalide"""
-        with patch.object(self.manager.logger, 'error') as mock_logger:
-            service = self.manager._parse_service_config('test_service', None)
+        with patch.object(self.manager.logger, "error") as mock_logger:
+            service = self.manager._parse_service_config("test_service", None)
 
         assert service is None
         mock_logger.assert_called_once()
@@ -159,13 +160,13 @@ class TestDockerRoboticsComplete:
     def test_validate_reachy_service_complete(self):
         """Test validation complète du service Reachy"""
         service = DockerServiceConfig(
-            name='reachy_2023',
-            image='pollenrobotics/reachy_2023:1.1',
-            environment={'ROS_DOMAIN_ID': '42', 'DISPLAY': ':0'},
-            volumes=['./src:/opt/src'],
+            name="reachy_2023",
+            image="pollenrobotics/reachy_2023:1.1",
+            environment={"ROS_DOMAIN_ID": "42", "DISPLAY": ":0"},
+            volumes=["./src:/opt/src"],
             ports=[],
             depends_on=[],
-            network_mode='host'
+            network_mode="host",
         )
 
         issues = []
@@ -180,13 +181,13 @@ class TestDockerRoboticsComplete:
     def test_validate_reachy_service_missing_image(self):
         """Test validation service Reachy sans image"""
         service = DockerServiceConfig(
-            name='reachy_2023',
-            image='',
+            name="reachy_2023",
+            image="",
             environment={},
             volumes=[],
             ports=[],
             depends_on=[],
-            network_mode=None
+            network_mode=None,
         )
 
         issues = []
@@ -200,13 +201,13 @@ class TestDockerRoboticsComplete:
     def test_validate_reachy_service_wrong_image(self):
         """Test validation service Reachy avec mauvaise image"""
         service = DockerServiceConfig(
-            name='reachy_2023',
-            image='ubuntu:latest',
+            name="reachy_2023",
+            image="ubuntu:latest",
             environment={},
             volumes=[],
             ports=[],
             depends_on=[],
-            network_mode=None
+            network_mode=None,
         )
 
         issues = []
@@ -221,13 +222,13 @@ class TestDockerRoboticsComplete:
     def test_validate_reachy_service_missing_ros_domain(self):
         """Test validation service Reachy sans ROS_DOMAIN_ID"""
         service = DockerServiceConfig(
-            name='reachy_2023',
-            image='pollenrobotics/reachy_2023:1.1',
-            environment={'DISPLAY': ':0'},
+            name="reachy_2023",
+            image="pollenrobotics/reachy_2023:1.1",
+            environment={"DISPLAY": ":0"},
             volumes=[],
             ports=[],
             depends_on=[],
-            network_mode=None
+            network_mode=None,
         )
 
         issues = []
@@ -242,13 +243,13 @@ class TestDockerRoboticsComplete:
     def test_validate_reachy_service_missing_display(self):
         """Test validation service Reachy sans DISPLAY"""
         service = DockerServiceConfig(
-            name='reachy_2023',
-            image='pollenrobotics/reachy_2023:1.1',
-            environment={'ROS_DOMAIN_ID': '42'},
+            name="reachy_2023",
+            image="pollenrobotics/reachy_2023:1.1",
+            environment={"ROS_DOMAIN_ID": "42"},
             volumes=[],
             ports=[],
             depends_on=[],
-            network_mode=None
+            network_mode=None,
         )
 
         issues = []
@@ -263,13 +264,13 @@ class TestDockerRoboticsComplete:
     def test_validate_reachy_service_missing_volumes(self):
         """Test validation service Reachy sans volumes"""
         service = DockerServiceConfig(
-            name='reachy_2023',
-            image='pollenrobotics/reachy_2023:1.1',
-            environment={'ROS_DOMAIN_ID': '42', 'DISPLAY': ':0'},
+            name="reachy_2023",
+            image="pollenrobotics/reachy_2023:1.1",
+            environment={"ROS_DOMAIN_ID": "42", "DISPLAY": ":0"},
             volumes=[],
             ports=[],
             depends_on=[],
-            network_mode='host'
+            network_mode="host",
         )
 
         issues = []
@@ -284,13 +285,13 @@ class TestDockerRoboticsComplete:
     def test_validate_reachy_service_wrong_network_mode(self):
         """Test validation service Reachy avec mauvais network_mode"""
         service = DockerServiceConfig(
-            name='reachy_2023',
-            image='pollenrobotics/reachy_2023:1.1',
-            environment={'ROS_DOMAIN_ID': '42', 'DISPLAY': ':0'},
-            volumes=['./src:/opt/src'],
+            name="reachy_2023",
+            image="pollenrobotics/reachy_2023:1.1",
+            environment={"ROS_DOMAIN_ID": "42", "DISPLAY": ":0"},
+            volumes=["./src:/opt/src"],
             ports=[],
             depends_on=[],
-            network_mode='bridge'
+            network_mode="bridge",
         )
 
         issues = []
@@ -313,7 +314,7 @@ class TestDockerRoboticsComplete:
         assert "reachy_rviz:" in template
         assert "pollenrobotics/reachy_2023:1.1" in template
         assert "ROS_DOMAIN_ID" in template
-        assert "network_mode: \"host\"" in template
+        assert 'network_mode: "host"' in template
 
     def test_create_dockerfile_template(self):
         """Test création du template Dockerfile"""
@@ -338,24 +339,26 @@ class TestDockerRoboticsComplete:
 
     def test_setup_reachy_environment_success(self):
         """Test setup complet de l'environnement Reachy"""
-        with patch('builtins.open', mock_open()) as mock_file:
-            with patch('os.chmod') as mock_chmod:
+        with patch("builtins.open", mock_open()) as mock_file:
+            with patch("os.chmod") as mock_chmod:
                 result = self.manager.setup_reachy_environment()
 
         assert result is True
-        assert mock_file.call_count >= 4  # compose.yaml, Dockerfile, start.sh, .dockerignore
+        assert (
+            mock_file.call_count >= 4
+        )  # compose.yaml, Dockerfile, start.sh, .dockerignore
         mock_chmod.assert_called_once()
 
     def test_setup_reachy_environment_exception(self):
         """Test setup avec exception"""
-        with patch('builtins.open', side_effect=Exception("Test error")):
-            with patch.object(self.manager.logger, 'error') as mock_logger:
+        with patch("builtins.open", side_effect=Exception("Test error")):
+            with patch.object(self.manager.logger, "error") as mock_logger:
                 result = self.manager.setup_reachy_environment()
 
         assert result is False
         mock_logger.assert_called_once()
 
-    @patch('subprocess.run')
+    @patch("subprocess.run")
     def test_run_docker_compose_success(self, mock_run):
         """Test lancement docker-compose réussi"""
         mock_run.return_value.returncode = 0
@@ -369,7 +372,7 @@ class TestDockerRoboticsComplete:
         assert result is True
         mock_run.assert_called_once()
 
-    @patch('subprocess.run')
+    @patch("subprocess.run")
     def test_run_docker_compose_failure(self, mock_run):
         """Test lancement docker-compose échoué"""
         mock_run.return_value.returncode = 1
@@ -378,13 +381,13 @@ class TestDockerRoboticsComplete:
         compose_file = self.docker_path / "compose.yaml"
         compose_file.write_text("services: {}")
 
-        with patch.object(self.manager.logger, 'error') as mock_logger:
+        with patch.object(self.manager.logger, "error") as mock_logger:
             result = self.manager.run_docker_compose()
 
         assert result is False
         mock_logger.assert_called_once()
 
-    @patch('subprocess.run')
+    @patch("subprocess.run")
     def test_run_docker_compose_exception(self, mock_run):
         """Test lancement docker-compose avec exception"""
         mock_run.side_effect = Exception("Test error")
@@ -392,7 +395,7 @@ class TestDockerRoboticsComplete:
         compose_file = self.docker_path / "compose.yaml"
         compose_file.write_text("services: {}")
 
-        with patch.object(self.manager.logger, 'error') as mock_logger:
+        with patch.object(self.manager.logger, "error") as mock_logger:
             result = self.manager.run_docker_compose()
 
         assert result is False
@@ -400,7 +403,7 @@ class TestDockerRoboticsComplete:
 
     def test_run_docker_compose_no_compose_file(self):
         """Test lancement docker-compose sans fichier"""
-        with patch.object(self.manager.logger, 'error') as mock_logger:
+        with patch.object(self.manager.logger, "error") as mock_logger:
             result = self.manager.run_docker_compose()
 
         assert result is False
@@ -409,21 +412,21 @@ class TestDockerRoboticsComplete:
     def test_generate_docker_report(self):
         """Test génération de rapport Docker"""
         service = DockerServiceConfig(
-            name='reachy_2023',
-            image='pollenrobotics/reachy_2023:1.1',
-            environment={'ROS_DOMAIN_ID': '42'},
-            volumes=['./src:/opt/src'],
-            ports=['8080:8080'],
+            name="reachy_2023",
+            image="pollenrobotics/reachy_2023:1.1",
+            environment={"ROS_DOMAIN_ID": "42"},
+            volumes=["./src:/opt/src"],
+            ports=["8080:8080"],
             depends_on=[],
-            network_mode='host'
+            network_mode="host",
         )
 
         result = DockerValidationResult(
             compose_valid=True,
             services=[service],
             issues=[],
-            recommendations=['Test recommendation'],
-            ready_to_run=True
+            recommendations=["Test recommendation"],
+            ready_to_run=True,
         )
 
         report = self.manager.generate_docker_report(result)
@@ -449,13 +452,14 @@ class TestDockerRoboticsIntegration:
     def teardown_method(self):
         """Cleanup après chaque test"""
         import shutil
+
         shutil.rmtree(self.temp_dir, ignore_errors=True)
 
     def test_full_docker_workflow(self):
         """Test workflow Docker complet"""
         # 1. Setup initial
-        with patch('builtins.open', mock_open()) as mock_file:
-            with patch('os.chmod'):
+        with patch("builtins.open", mock_open()) as mock_file:
+            with patch("os.chmod"):
                 setup_result = self.manager.setup_reachy_environment()
 
         assert setup_result is True
@@ -571,6 +575,7 @@ class TestDockerRoboticsEdgeCases:
     def teardown_method(self):
         """Cleanup après chaque test"""
         import shutil
+
         shutil.rmtree(self.temp_dir, ignore_errors=True)
 
     def test_validate_docker_setup_empty_compose(self):
@@ -604,13 +609,13 @@ networks:
     def test_validate_reachy_service_environment_list(self):
         """Test validation service Reachy avec environment en liste"""
         service = DockerServiceConfig(
-            name='reachy_2023',
-            image='pollenrobotics/reachy_2023:1.1',
-            environment=['ROS_DOMAIN_ID=42', 'DISPLAY=:0'],
+            name="reachy_2023",
+            image="pollenrobotics/reachy_2023:1.1",
+            environment=["ROS_DOMAIN_ID=42", "DISPLAY=:0"],
             volumes=[],
             ports=[],
             depends_on=[],
-            network_mode='host'
+            network_mode="host",
         )
 
         issues = []
@@ -624,13 +629,13 @@ networks:
     def test_validate_reachy_service_environment_mixed(self):
         """Test validation service Reachy avec environment mixte"""
         service = DockerServiceConfig(
-            name='reachy_2023',
-            image='pollenrobotics/reachy_2023:1.1',
-            environment={'ROS_DOMAIN_ID': '42', 'DISPLAY': ':0'},
+            name="reachy_2023",
+            image="pollenrobotics/reachy_2023:1.1",
+            environment={"ROS_DOMAIN_ID": "42", "DISPLAY": ":0"},
             volumes=[],
             ports=[],
             depends_on=[],
-            network_mode='host'
+            network_mode="host",
         )
 
         issues = []
@@ -648,7 +653,7 @@ networks:
             services=[],
             issues=[],
             recommendations=[],
-            ready_to_run=False
+            ready_to_run=False,
         )
 
         report = self.manager.generate_docker_report(result)
@@ -662,9 +667,9 @@ networks:
         result = DockerValidationResult(
             compose_valid=False,
             services=[],
-            issues=['Problème 1', 'Problème 2'],
-            recommendations=['Recommandation 1'],
-            ready_to_run=False
+            issues=["Problème 1", "Problème 2"],
+            recommendations=["Recommandation 1"],
+            ready_to_run=False,
         )
 
         report = self.manager.generate_docker_report(result)
@@ -677,22 +682,22 @@ networks:
     def test_docker_service_config_dataclass(self):
         """Test création et utilisation de DockerServiceConfig"""
         service = DockerServiceConfig(
-            name='test_service',
-            image='test:latest',
-            environment={'TEST': 'value'},
-            volumes=['./src:/opt/src'],
-            ports=['8080:8080'],
-            depends_on=['other'],
-            network_mode='host'
+            name="test_service",
+            image="test:latest",
+            environment={"TEST": "value"},
+            volumes=["./src:/opt/src"],
+            ports=["8080:8080"],
+            depends_on=["other"],
+            network_mode="host",
         )
 
-        assert service.name == 'test_service'
-        assert service.image == 'test:latest'
-        assert service.environment == {'TEST': 'value'}
-        assert service.volumes == ['./src:/opt/src']
-        assert service.ports == ['8080:8080']
-        assert service.depends_on == ['other']
-        assert service.network_mode == 'host'
+        assert service.name == "test_service"
+        assert service.image == "test:latest"
+        assert service.environment == {"TEST": "value"}
+        assert service.volumes == ["./src:/opt/src"]
+        assert service.ports == ["8080:8080"]
+        assert service.depends_on == ["other"]
+        assert service.network_mode == "host"
 
     def test_docker_validation_result_dataclass(self):
         """Test création et utilisation de DockerValidationResult"""
@@ -701,7 +706,7 @@ networks:
             services=[],
             issues=[],
             recommendations=[],
-            ready_to_run=True
+            ready_to_run=True,
         )
 
         assert result.compose_valid is True
@@ -717,17 +722,17 @@ class TestMainFunction:
     def test_docker_service_config_creation(self):
         """Test création de DockerServiceConfig"""
         service = DockerServiceConfig(
-            name='test',
-            image='test:latest',
+            name="test",
+            image="test:latest",
             environment={},
             volumes=[],
             ports=[],
             depends_on=[],
-            network_mode=None
+            network_mode=None,
         )
 
         assert isinstance(service, DockerServiceConfig)
-        assert service.name == 'test'
+        assert service.name == "test"
 
     def test_docker_validation_result_creation(self):
         """Test création de DockerValidationResult"""
@@ -736,9 +741,9 @@ class TestMainFunction:
             services=[],
             issues=[],
             recommendations=[],
-            ready_to_run=True
+            ready_to_run=True,
         )
 
         assert isinstance(result, DockerValidationResult)
         assert result.compose_valid is True
-        assert result.ready_to_run is True 
+        assert result.ready_to_run is True

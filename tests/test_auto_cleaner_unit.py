@@ -15,6 +15,7 @@ class TestAutoCleaner(unittest.TestCase):
 
     def tearDown(self):
         import shutil
+
         shutil.rmtree(self.temp_dir, ignore_errors=True)
 
     def test_constructor(self):
@@ -29,19 +30,19 @@ class TestAutoCleaner(unittest.TestCase):
         # Créer des fichiers de test
         test_file = Path(self.temp_dir) / "test.pyc"
         test_file.write_text("test")
-        
+
         result = self.cleaner.clean_project(dry_run=True)
-        self.assertIn('stats', result)
-        self.assertIn('files_removed', result['stats'])
-        self.assertIn('dirs_removed', result['stats'])
-        self.assertIn('space_freed_mb', result['stats'])
-        self.assertIn('errors', result['stats'])
+        self.assertIn("stats", result)
+        self.assertIn("files_removed", result["stats"])
+        self.assertIn("dirs_removed", result["stats"])
+        self.assertIn("space_freed_mb", result["stats"])
+        self.assertIn("errors", result["stats"])
 
     def test_clean_system_files(self):
         # Créer un fichier système
         ds_store = Path(self.temp_dir) / ".DS_Store"
         ds_store.write_text("system file")
-        
+
         self.cleaner._clean_system_files(Path(self.temp_dir))
         # En mode dry_run=True, le fichier ne devrait pas être supprimé
         self.assertTrue(ds_store.exists())
@@ -51,7 +52,7 @@ class TestAutoCleaner(unittest.TestCase):
         pycache_dir = Path(self.temp_dir) / "__pycache__"
         pycache_dir.mkdir()
         (pycache_dir / "test.pyc").write_text("cache")
-        
+
         self.cleaner._clean_cache_files(Path(self.temp_dir))
         # En mode dry_run=True, les fichiers ne devraient pas être supprimés
         self.assertTrue(pycache_dir.exists())
@@ -60,7 +61,7 @@ class TestAutoCleaner(unittest.TestCase):
         # Créer un fichier de backup
         backup_file = Path(self.temp_dir) / "test.bak"
         backup_file.write_text("backup")
-        
+
         self.cleaner._clean_backup_files(Path(self.temp_dir))
         # En mode dry_run=True, le fichier ne devrait pas être supprimé
         self.assertTrue(backup_file.exists())
@@ -69,7 +70,7 @@ class TestAutoCleaner(unittest.TestCase):
         # Créer un fichier temporaire
         temp_file = Path(self.temp_dir) / "temp.tmp"
         temp_file.write_text("temp")
-        
+
         self.cleaner._clean_temp_files(Path(self.temp_dir))
         # En mode dry_run=True, le fichier ne devrait pas être supprimé
         self.assertTrue(temp_file.exists())
@@ -81,7 +82,7 @@ class TestAutoCleaner(unittest.TestCase):
         content = "print('Hello')"
         file1.write_text(content)
         file2.write_text(content)
-        
+
         self.cleaner._clean_duplicate_files(Path(self.temp_dir))
         # En mode dry_run=True, les fichiers ne devraient pas être supprimés
         self.assertTrue(file1.exists())
@@ -91,7 +92,7 @@ class TestAutoCleaner(unittest.TestCase):
         # Créer un répertoire vide
         empty_dir = Path(self.temp_dir) / "empty_dir"
         empty_dir.mkdir()
-        
+
         self.cleaner._clean_empty_directories(Path(self.temp_dir))
         # En mode dry_run=True, le répertoire ne devrait pas être supprimé
         self.assertTrue(empty_dir.exists())
@@ -99,9 +100,9 @@ class TestAutoCleaner(unittest.TestCase):
     def test_is_code_file(self):
         code_file = Path(self.temp_dir) / "test.py"
         code_file.write_text("print('test')")
-        
+
         self.assertTrue(self.cleaner._is_code_file(code_file))
-        
+
         non_code_file = Path(self.temp_dir) / "test.txt"
         non_code_file.write_text("text")
         self.assertFalse(self.cleaner._is_code_file(non_code_file))
@@ -117,7 +118,7 @@ class TestAutoCleaner(unittest.TestCase):
             # Au moins certains fichiers devraient être importants
             if filename in ["README.md", "requirements.txt"]:
                 self.assertTrue(is_important, f"{filename} devrait être important")
-        
+
         # Fichier non important
         non_important = Path(self.temp_dir) / "temp.txt"
         non_important.write_text("temp")
@@ -128,7 +129,7 @@ class TestAutoCleaner(unittest.TestCase):
         empty_dir = Path(self.temp_dir) / "empty"
         empty_dir.mkdir()
         self.assertTrue(self.cleaner._is_empty_directory(empty_dir))
-        
+
         # Répertoire avec fichier
         non_empty_dir = Path(self.temp_dir) / "non_empty"
         non_empty_dir.mkdir()
@@ -138,10 +139,10 @@ class TestAutoCleaner(unittest.TestCase):
     def test_calculate_file_hash(self):
         test_file = Path(self.temp_dir) / "hash_test.txt"
         test_file.write_text("Hello World")
-        
+
         hash1 = self.cleaner._calculate_file_hash(test_file)
         hash2 = self.cleaner._calculate_file_hash(test_file)
-        
+
         self.assertEqual(hash1, hash2)
         self.assertIsInstance(hash1, str)
 
@@ -151,18 +152,19 @@ class TestAutoCleaner(unittest.TestCase):
         self.cleaner.cleaned_dirs = [{"path": "empty_dir", "reason": "Empty"}]
         self.cleaner.stats["files_removed"] = 1
         self.cleaner.stats["dirs_removed"] = 1
-        
+
         report = self.cleaner._generate_cleanup_report()
-        self.assertIn('stats', report)
-        self.assertIn('files', report)  # Clé réelle utilisée
-        self.assertIn('dirs', report)   # Clé réelle utilisée
-        self.assertIn('summary', report)
+        self.assertIn("stats", report)
+        self.assertIn("files", report)  # Clé réelle utilisée
+        self.assertIn("dirs", report)  # Clé réelle utilisée
+        self.assertIn("summary", report)
 
     def test_optimize_project_structure(self):
         result = self.cleaner.optimize_project_structure(self.temp_dir)
-        self.assertIn('optimizations', result)
+        self.assertIn("optimizations", result)
         # Vérifier les clés réellement retournées
-        self.assertIn('dry_run', result)
+        self.assertIn("dry_run", result)
+
 
 if __name__ == "__main__":
-    unittest.main() 
+    unittest.main()

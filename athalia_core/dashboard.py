@@ -22,7 +22,9 @@ class Dashboard:
         self.metrics = {}
         self.config = self.load_dashboard_config()
 
-    def load_dashboard_config(self, config_path: Optional[str] = None) -> Dict[str, Any]:
+    def load_dashboard_config(
+        self, config_path: Optional[str] = None
+    ) -> Dict[str, Any]:
         """Charge la configuration du dashboard"""
         default_config = {
             "theme": "light",
@@ -30,17 +32,19 @@ class Dashboard:
             "widgets": ["metrics", "charts", "alerts", "performance", "security"],
             "layout": "grid",
             "auto_refresh": True,
-            "show_timestamps": True
+            "show_timestamps": True,
         }
-        
+
         if config_path:
             try:
-                with open(config_path, 'r', encoding='utf-8') as f:
+                with open(config_path, "r", encoding="utf-8") as f:
                     user_config = yaml.safe_load(f)
                     default_config.update(user_config)
             except Exception as e:
-                logger.warning(f"Impossible de charger la configuration {config_path}: {e}")
-        
+                logger.warning(
+                    f"Impossible de charger la configuration {config_path}: {e}"
+                )
+
         return default_config
 
     def generate_metrics_widget(self) -> Dict[str, Any]:
@@ -50,18 +54,26 @@ class Dashboard:
             "title": "Métriques du Projet",
             "data": self.metrics,
             "timestamp": datetime.now().isoformat(),
-            "refresh_interval": self.config.get("refresh_interval", 30)
+            "refresh_interval": self.config.get("refresh_interval", 30),
         }
-        
+
         # Calculer des métriques agrégées
         if self.metrics:
             widget["summary"] = {
-                "total_files": self.metrics.get("code_complexity", {}).get("files_analyzed", 0),
-                "security_score": self.metrics.get("security", {}).get("security_score", 0),
-                "test_coverage": self.metrics.get("test_coverage", {}).get("test_files_count", 0),
-                "dependencies": self.metrics.get("dependencies", {}).get("total_dependencies", 0)
+                "total_files": self.metrics.get("code_complexity", {}).get(
+                    "files_analyzed", 0
+                ),
+                "security_score": self.metrics.get("security", {}).get(
+                    "security_score", 0
+                ),
+                "test_coverage": self.metrics.get("test_coverage", {}).get(
+                    "test_files_count", 0
+                ),
+                "dependencies": self.metrics.get("dependencies", {}).get(
+                    "total_dependencies", 0
+                ),
             }
-        
+
         return widget
 
     def generate_charts_widget(self, chart_data: Dict[str, Any]) -> Dict[str, Any]:
@@ -71,9 +83,9 @@ class Dashboard:
             "title": "Graphiques et Tendances",
             "charts": chart_data,
             "timestamp": datetime.now().isoformat(),
-            "chart_types": ["bar", "line", "pie", "radar"]
+            "chart_types": ["bar", "line", "pie", "radar"],
         }
-        
+
         return widget
 
     def generate_alerts_widget(self, alerts: List[Dict[str, Any]]) -> Dict[str, Any]:
@@ -87,22 +99,24 @@ class Dashboard:
             "severity_counts": {
                 "high": len([a for a in alerts if a.get("severity") == "high"]),
                 "medium": len([a for a in alerts if a.get("severity") == "medium"]),
-                "low": len([a for a in alerts if a.get("severity") == "low"])
-            }
+                "low": len([a for a in alerts if a.get("severity") == "low"]),
+            },
         }
-        
+
         return widget
 
-    def generate_performance_widget(self, performance_data: Dict[str, Any]) -> Dict[str, Any]:
+    def generate_performance_widget(
+        self, performance_data: Dict[str, Any]
+    ) -> Dict[str, Any]:
         """Génère le widget performance"""
         widget = {
             "type": "performance",
             "title": "Métriques de Performance",
             "performance_data": performance_data,
             "timestamp": datetime.now().isoformat(),
-            "status": "normal"
+            "status": "normal",
         }
-        
+
         # Déterminer le statut basé sur les métriques
         if "execution_time" in performance_data:
             avg_time = performance_data["execution_time"].get("average", 0)
@@ -110,7 +124,7 @@ class Dashboard:
                 widget["status"] = "warning"
             elif avg_time > 10.0:
                 widget["status"] = "critical"
-        
+
         return widget
 
     def generate_security_widget(self, security_data: Dict[str, Any]) -> Dict[str, Any]:
@@ -120,56 +134,60 @@ class Dashboard:
             "title": "Sécurité du Projet",
             "security_data": security_data,
             "timestamp": datetime.now().isoformat(),
-            "status": "secure"
+            "status": "secure",
         }
-        
+
         # Déterminer le statut de sécurité
         security_score = security_data.get("security_score", 100)
         if security_score < 70:
             widget["status"] = "critical"
         elif security_score < 85:
             widget["status"] = "warning"
-        
+
         return widget
 
-    def generate_test_coverage_widget(self, coverage_data: Dict[str, Any]) -> Dict[str, Any]:
+    def generate_test_coverage_widget(
+        self, coverage_data: Dict[str, Any]
+    ) -> Dict[str, Any]:
         """Génère le widget couverture de tests"""
         widget = {
             "type": "test_coverage",
             "title": "Couverture de Tests",
             "coverage_data": coverage_data,
             "timestamp": datetime.now().isoformat(),
-            "status": "good"
+            "status": "good",
         }
-        
+
         # Déterminer le statut de couverture
         overall_coverage = coverage_data.get("overall_coverage", 0)
         if overall_coverage < 50:
             widget["status"] = "poor"
         elif overall_coverage < 80:
             widget["status"] = "fair"
-        
+
         return widget
 
-    def generate_dependency_widget(self, dependency_data: Dict[str, Any]) -> Dict[str, Any]:
+    def generate_dependency_widget(
+        self, dependency_data: Dict[str, Any]
+    ) -> Dict[str, Any]:
         """Génère le widget dépendances"""
         widget = {
             "type": "dependencies",
             "title": "Gestion des Dépendances",
             "dependency_data": dependency_data,
             "timestamp": datetime.now().isoformat(),
-            "status": "healthy"
+            "status": "healthy",
         }
-        
+
         # Déterminer le statut des dépendances
         outdated = dependency_data.get("outdated_packages", 0)
         vulnerable = dependency_data.get("vulnerable_packages", 0)
-        
+
         if vulnerable > 0:
             widget["status"] = "critical"
         elif outdated > 5:
             widget["status"] = "warning"
-        
+
         return widget
 
     def generate_documentation_widget(self, doc_data: Dict[str, Any]) -> Dict[str, Any]:
@@ -179,16 +197,16 @@ class Dashboard:
             "title": "Documentation du Projet",
             "doc_data": doc_data,
             "timestamp": datetime.now().isoformat(),
-            "status": "complete"
+            "status": "complete",
         }
-        
+
         # Déterminer le statut de la documentation
         doc_coverage = doc_data.get("doc_coverage_percentage", 0)
         if doc_coverage < 30:
             widget["status"] = "incomplete"
         elif doc_coverage < 70:
             widget["status"] = "partial"
-        
+
         return widget
 
     def generate_git_widget(self, git_data: Dict[str, Any]) -> Dict[str, Any]:
@@ -198,44 +216,49 @@ class Dashboard:
             "title": "Activité Git",
             "git_data": git_data,
             "timestamp": datetime.now().isoformat(),
-            "status": "active"
+            "status": "active",
         }
-        
+
         # Déterminer le statut d'activité
         commits_count = git_data.get("commits_count", 0)
         if commits_count == 0:
             widget["status"] = "inactive"
         elif commits_count < 10:
             widget["status"] = "low_activity"
-        
+
         return widget
 
-    def generate_dashboard_layout(self, widgets: List[Dict[str, Any]], layout_type: str = "grid") -> Dict[str, Any]:
+    def generate_dashboard_layout(
+        self, widgets: List[Dict[str, Any]], layout_type: str = "grid"
+    ) -> Dict[str, Any]:
         """Génère la mise en page du dashboard"""
         layout = {
             "layout_type": layout_type,
             "widgets": widgets,
             "timestamp": datetime.now().isoformat(),
-            "total_widgets": len(widgets)
+            "total_widgets": len(widgets),
         }
-        
+
         if layout_type == "grid":
             layout["grid_config"] = {
                 "columns": 3,
                 "rows": (len(widgets) + 2) // 3,
-                "gap": "20px"
+                "gap": "20px",
             }
         elif layout_type == "sidebar":
             layout["sidebar_config"] = {
                 "sidebar_width": "300px",
-                "main_content_width": "calc(100% - 300px)"
+                "main_content_width": "calc(100% - 300px)",
             }
         elif layout_type == "tabs":
             layout["tabs_config"] = {
-                "tab_names": [widget.get("title", f"Widget {i}") for i, widget in enumerate(widgets)],
-                "active_tab": 0
+                "tab_names": [
+                    widget.get("title", f"Widget {i}")
+                    for i, widget in enumerate(widgets)
+                ],
+                "active_tab": 0,
             }
-        
+
         return layout
 
     def generate_dashboard_html(self, dashboard_data: Dict[str, Any]) -> str:
@@ -243,7 +266,7 @@ class Dashboard:
         theme = dashboard_data.get("theme", "light")
         widgets = dashboard_data.get("widgets", [])
         config = dashboard_data.get("config", {})
-        
+
         html_template = f"""<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -269,7 +292,7 @@ class Dashboard:
     <main class="dashboard-content">
         <div class="widgets-container">
 """
-        
+
         for widget in widgets:
             html_template += f"""
             <div class="widget widget-{widget.get('type', 'default')}">
@@ -279,7 +302,7 @@ class Dashboard:
                 </div>
             </div>
 """
-        
+
         html_template += f"""
         </div>
     </main>
@@ -293,7 +316,7 @@ class Dashboard:
     </script>
 </body>
 </html>"""
-        
+
         return html_template
 
     def generate_dashboard_css(self, theme: str = "light") -> str:
@@ -417,7 +440,7 @@ body {
     def generate_dashboard_js(self, config: Dict[str, Any]) -> str:
         """Génère le JavaScript du dashboard"""
         refresh_interval = config.get("refresh_interval", 30)
-        
+
         return f"""
 // Configuration du dashboard
 const dashboardConfig = {{
@@ -473,7 +496,7 @@ document.addEventListener('DOMContentLoaded', function() {{
     def save_dashboard_html(self, html_content: str, output_path: str) -> bool:
         """Sauvegarde le dashboard HTML"""
         try:
-            with open(output_path, 'w', encoding='utf-8') as f:
+            with open(output_path, "w", encoding="utf-8") as f:
                 f.write(html_content)
             return True
         except Exception as e:
@@ -487,40 +510,46 @@ document.addEventListener('DOMContentLoaded', function() {{
             "title": "Dashboard Athalia - Rapport Complet",
             "theme": self.config.get("theme", "light"),
             "widgets": [],
-            "config": self.config
+            "config": self.config,
         }
-        
+
         # Générer tous les widgets disponibles
         if self.metrics:
             dashboard_data["widgets"].append(self.generate_metrics_widget())
-        
+
         # Ajouter des widgets d'exemple si pas de métriques
         if not self.metrics:
-            dashboard_data["widgets"].extend([
-                {
-                    "type": "metrics",
-                    "title": "Métriques (Exemple)",
-                    "data": {"example": "Données d'exemple"},
-                    "timestamp": datetime.now().isoformat()
-                },
-                {
-                    "type": "alerts",
-                    "title": "Alertes (Exemple)",
-                    "alerts": [
-                        {"severity": "info", "message": "Dashboard en mode démonstration", "category": "system"}
-                    ],
-                    "timestamp": datetime.now().isoformat()
-                }
-            ])
-        
+            dashboard_data["widgets"].extend(
+                [
+                    {
+                        "type": "metrics",
+                        "title": "Métriques (Exemple)",
+                        "data": {"example": "Données d'exemple"},
+                        "timestamp": datetime.now().isoformat(),
+                    },
+                    {
+                        "type": "alerts",
+                        "title": "Alertes (Exemple)",
+                        "alerts": [
+                            {
+                                "severity": "info",
+                                "message": "Dashboard en mode démonstration",
+                                "category": "system",
+                            }
+                        ],
+                        "timestamp": datetime.now().isoformat(),
+                    },
+                ]
+            )
+
         # Générer le HTML
         html_content = self.generate_dashboard_html(dashboard_data)
-        
+
         return {
             "dashboard_data": dashboard_data,
             "html_content": html_content,
             "config": self.config,
-            "generated_at": datetime.now().isoformat()
+            "generated_at": datetime.now().isoformat(),
         }
 
 

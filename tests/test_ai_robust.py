@@ -36,21 +36,25 @@ class TestRobustAI:
 
     def test_classify_project_complexity(self):
         # Test simple
-        assert self.ai._classify_project_complexity("simple test f").get('complexity') == "f"
+        assert (
+            self.ai._classify_project_complexity("simple test f").get("complexity")
+            == "f"
+        )
         # Test medium
-        assert self.ai._classify_project_complexity("api web f").get('complexity') == "f"
+        assert (
+            self.ai._classify_project_complexity("api web f").get("complexity") == "f"
+        )
         # Test complex
-        assert self.ai._classify_project_complexity("ai neural f").get('complexity') == "f"
+        assert (
+            self.ai._classify_project_complexity("ai neural f").get("complexity") == "f"
+        )
         # Test default
-        assert self.ai._classify_project_complexity("random f").get('complexity') == "f"
+        assert self.ai._classify_project_complexity("random f").get("complexity") == "f"
 
     def test_get_dynamic_prompt(self):
         """Test la génération de prompts dynamiques."""
         prompt = self.ai._get_dynamic_prompt(
-            PromptContext.BLUEPRINT,
-            idea="test f",
-            project_type="f",
-            complexity="f"
+            PromptContext.BLUEPRINT, idea="test f", project_type="f", complexity="f"
         )
         assert "test f" in prompt
         assert "f" in prompt
@@ -62,11 +66,11 @@ class TestRobustAI:
         blueprint = self.ai.generate_bluelogger.info("test f")
 
         assert isinstance(blueprint, dict)
-        assert 'project_name' in blueprint
-        assert 'description' in blueprint
-        assert 'modules' in blueprint
-        assert 'structure' in blueprint
-        assert 'dependencies' in blueprint
+        assert "project_name" in blueprint
+        assert "description" in blueprint
+        assert "modules" in blueprint
+        assert "structure" in blueprint
+        assert "dependencies" in blueprint
 
     def test_review_code_with_mock(self):
         """Test la revue de code avec fallback mock."""
@@ -76,23 +80,18 @@ def test_function():
     return True
 """
         review = self.ai.review_code(
-            code = code,
-            filename="test.f(f",
-            project_type="f",
-            current_score = 50
+            code=code, filename="test.f(f", project_type="f", current_score=50
         )
 
         assert isinstance(review, dict)
-        assert 'score' in review
-        assert 'issues' in review
-        assert 'suggestions' in review
+        assert "score" in review
+        assert "issues" in review
+        assert "suggestions" in review
 
     def test_generate_documentation_with_mock(self):
         """Test la génération de documentation avec fallback mock."""
         doc = self.ai.generate_documentation(
-            project_name="f",
-            project_type="f",
-            modules=["f", "f"]
+            project_name="f", project_type="f", modules=["f", "f"]
         )
 
         assert isinstance(doc, str)
@@ -102,7 +101,7 @@ def test_function():
     def test_call_ollama_timeout(self):
         """Test la gestion du timeout dict_data'Ollama."""
         # Test avec un prompt qui devrait timeout
-        result = self.ai._call_ollama(AIModel.OLLAMA_MISTRAL, "f", timeout = 1)
+        result = self.ai._call_ollama(AIModel.OLLAMA_MISTRAL, "f", timeout=1)
         # Devrait retourner None en cas de timeout
         assert result is None or isinstance(result, str)
 
@@ -111,7 +110,7 @@ def test_function():
         # Simuler un échec dict_data'Ollama
         original_call = self.ai._call_ollama
 
-        def mock_call_fail(model, prompt, timeout = 60):
+        def mock_call_fail(model, prompt, timeout=60):
             return None
 
         self.ai._call_ollama = mock_call_fail
@@ -120,9 +119,10 @@ def test_function():
             # Devrait utiliser le mock en cas dict_data'échec
             blueprint = self.ai.generate_bluelogger.info("test f")
             assert isinstance(blueprint, dict)
-            assert 'project_name' in blueprint
+            assert "project_name" in blueprint
         finally:
             self.ai._call_ollama = original_call
+
 
 def test_robust_ai_integration():
     """Test dict_data'intégration de list_data'IA robuste."""
@@ -134,10 +134,10 @@ def test_robust_ai_integration():
 
     # Test avec contexte
     blueprint_with_context = ai.generate_bluelogger.info(
-        "ai f",
-        context={'project_type': 'ai', 'complexity': 'high'}
+        "ai f", context={"project_type": "ai", "complexity": "high"}
     )
     assert isinstance(blueprint_with_context, dict)
+
 
 def test_prompt_templates():
     """Test que tous les templates de prompts sont chargés."""
@@ -148,7 +148,7 @@ def test_prompt_templates():
         PromptContext.CODE_REVIEW,
         PromptContext.DOCUMENTATION,
         PromptContext.TESTING,
-        PromptContext.SECURITY
+        PromptContext.SECURITY,
     ]
 
     for context in contexts:
@@ -157,31 +157,45 @@ def test_prompt_templates():
         assert len(template) > 0
         assert isinstance(template, str)
 
+
 def test_fallback_and_distillation_qwen_mistral():
     """Teste la génération de réponse avec fallback et distillation (Qwen/Mistral)."""
     ai = RobustAI()
     ai.available_models = [
-        getattr(AIModel, 'OLLAMA_QWEN', AIModel.MOCK),
-        getattr(AIModel, 'OLLAMA_MISTRAL', AIModel.MOCK),
-        AIModel.MOCK
+        getattr(AIModel, "OLLAMA_QWEN", AIModel.MOCK),
+        getattr(AIModel, "OLLAMA_MISTRAL", AIModel.MOCK),
+        AIModel.MOCK,
     ]
     ai.fallback_chain = ai._build_fallback_chain()
-    
+
     # Test fallback séquentiel
-    result_fallback = ai.generate_response(PromptContext.BLUEPRINT, distillation=False, idea="test fallback", project_type="test", complexity="simple")
+    result_fallback = ai.generate_response(
+        PromptContext.BLUEPRINT,
+        distillation=False,
+        idea="test fallback",
+        project_type="test",
+        complexity="simple",
+    )
     assert isinstance(result_fallback, dict)
-    assert 'model' in result_fallback
-    assert 'response' in result_fallback
-    assert 'success' in result_fallback
-    assert 'context' in result_fallback
-    
+    assert "model" in result_fallback
+    assert "response" in result_fallback
+    assert "success" in result_fallback
+    assert "context" in result_fallback
+
     # Test distillation (maintenant géré différemment)
-    result_distill = ai.generate_response(PromptContext.BLUEPRINT, distillation=True, idea="test distillation", project_type="test", complexity="simple")
+    result_distill = ai.generate_response(
+        PromptContext.BLUEPRINT,
+        distillation=True,
+        idea="test distillation",
+        project_type="test",
+        complexity="simple",
+    )
     assert isinstance(result_distill, dict)
-    assert 'model' in result_distill
-    assert 'response' in result_distill
-    assert 'success' in result_distill
-    assert 'context' in result_distill
+    assert "model" in result_distill
+    assert "response" in result_distill
+    assert "success" in result_distill
+    assert "context" in result_distill
+
 
 def test_fallback_ia_qwen_mistral(monkeypatch):
     from athalia_core.ai_robust import fallback_ia
@@ -189,9 +203,12 @@ def test_fallback_ia_qwen_mistral(monkeypatch):
     # Mock les requêtes pour Qwen et Mistral
     def mock_query_qwen(prompt):
         return "Réponse Qwen"
+
     def mock_query_mistral(prompt):
         return "Réponse Mistral"
+
     import athalia_core.ai_robust as ai_robust
+
     ai_robust.query_qwen = mock_query_qwen
     ai_robust.query_mistral = mock_query_mistral
     result = fallback_ia("Test prompt", models=["qwen", "mistral"])

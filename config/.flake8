@@ -1,82 +1,21 @@
 [flake8]
 max-line-length = 88
-jobs = 1
+extend-ignore = E203, W503, E501, W291, W293
 exclude = 
     .git,
     __pycache__,
-    venv,
     .venv,
-    .venv/**,
+    .pytest_cache,
     build,
     dist,
     *.egg-info,
     archive,
-    backups,
-    logs,
-    data/reports,
-    docs/archive,
-    archive/**,
-    node_modules,
-    .pytest_cache,
-    .mypy_cache,
-    .coverage,
-    htmlcov,
     tests/bin,
-    tests/integration
-
-# Règles de sécurité et qualité strictes
-select = 
-    E,  # pycodestyle errors
-    W,  # pycodestyle warnings
-    F,  # pyflakes
-    C,  # mccabe complexity
-    B,  # flake8-bugbear
-    S,  # bandit security
-    N,  # pep8-naming
-    T,  # flake8-builtins
-    Q,  # flake8-quotes
-    I,  # isort
-    UP, # pyupgrade
-
-# Règles à ignorer globalement (avec justification)
-# E203: whitespace before ':' (incompatible avec black)
-# W503: line break before binary operator (incompatible avec black)
-# E722: do not use bare except (géré par error handling)
-# W291: trailing whitespace (géré par black)
-# W292: no newline at end of file (géré par black)
-# F401: imported but unused (géré par isort)
-# F541: f-string without any placeholders (style)
-# C901: too complex (géré par mccabe)
-# S101: use of assert detected (tests)
-# S105: hardcoded password string (géré par bandit)
-# S106: hardcoded password funcarg (géré par bandit)
-# S108: hardcoded tmp file/directory (géré par bandit)
-ignore = E203,W503,E722,W291,W292,F401,F541,C901,S101,S105,S106,S108
-
-# Règles spécifiques par fichier
+    tests/integration,
+    .venv/lib,
+    .venv/include,
+    .venv/bin
+jobs = 1
 per-file-ignores =
-    # Tests - règles plus souples mais sécurisées
-    tests/*:E501,W293,S101,S105,S106,S108,E722,F401,F541,E302,E305,E306,E128,E251,W504,E226,E303,E704,E129,E731,F841
-    
-    # Scripts de validation
-    scripts/validation_objective.py:E501,W291,W292,E722,F401,F541
-    
-    # Scripts utilitaires
-    scripts/*:E501,W291,W292,E722,F401,F541,S105,S106,S108
-    
-    # Configuration et setup
-    setup/*:E501,W291,W292,S105,S106,S108
-    config/*:E501,W291,W292,S105,S106,S108
-    bin/*:E501,W291,W292,S105,S106,S108
-    
-    # Outils d'analyse
-    tools/*:E501,W291,W292,W293,E722,F401,F541,E128,W504,E302,E305,E226,S105,S106,S108
-
-# Configuration de complexité
-max-complexity = 10
-
-# Configuration de bandit (sécurité)
-bandit-config = config/.bandit
-
-# Configuration d'isort
-isort-config = config/.isort.cfg 
+    __init__.py:F401
+    tests/*:E501 

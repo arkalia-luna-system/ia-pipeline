@@ -13,7 +13,8 @@ import unittest
 from pathlib import Path
 
 # Ajouter le chemin du projet
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+
 
 class TestUserProfilesAdvanced(unittest.TestCase):
     """Tests pour les profils utilisateur avancés (corrigé)"""
@@ -33,6 +34,7 @@ class TestUserProfilesAdvanced(unittest.TestCase):
             from athalia_core.advanced_modules.user_profiles_advanced import (
                 GestionnaireProfilsAvances,
             )
+
             self.assertTrue(True, "Import réussi")
         except ImportError as e:
             self.skipTest(f"Module profils utilisateur non disponible: {e}")
@@ -41,6 +43,7 @@ class TestUserProfilesAdvanced(unittest.TestCase):
         """Test de la structure des profils"""
         try:
             from athalia_core.advanced_modules import user_profiles_advanced
+
             self.assertTrue(True, "Structure des profils correcte")
         except ImportError as e:
             self.skipTest(f"Structure des profils non disponible: {e}")
@@ -55,9 +58,10 @@ class TestUserProfilesAdvanced(unittest.TestCase):
             # Test de création du gestionnaire
             manager = GestionnaireProfilsAvances(self.db_path)
             self.assertIsNotNone(manager)
-            
+
         except ImportError as e:
             self.skipTest(f"Fonctionnalité des profils non disponible: {e}")
+
 
 if __name__ == "__main__":
     unittest.main()

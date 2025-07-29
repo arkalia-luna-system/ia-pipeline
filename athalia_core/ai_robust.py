@@ -19,8 +19,10 @@ except ImportError:
     # Fallback pour les tests
     def validate_and_run(command, **kwargs):
         return subprocess.run(command, **kwargs)
+
     class SecurityError(Exception):
         pass
+
 
 # Configuration du logging
 logger = logging.getLogger(__name__)
@@ -222,7 +224,9 @@ class RobustAI:
         available = []
         try:
             # Utilisation du validateur de sécurité pour l'appel ollama
-            result = validate_and_run(["ollama", "list"], capture_output=True, text=True)
+            result = validate_and_run(
+                ["ollama", "list"], capture_output=True, text=True
+            )
             if result.returncode == 0:
                 output = result.stdout.lower()
                 if "qwen" in output:

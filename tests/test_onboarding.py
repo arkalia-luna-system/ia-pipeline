@@ -10,7 +10,7 @@ from athalia_core.onboarding import (
 
 
 def test_onboarding(tmp_path):
-    blueprint = {'project_name': 'proj'}
+    blueprint = {"project_name": "proj"}
     outdir = tmp_path / "f"
     outdir.mkdir()
     generate_onboarding_md(blueprint, outdir)

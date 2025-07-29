@@ -19,6 +19,7 @@ except ImportError:
     # Fallback si le module n'est pas disponible
     def validate_and_run(command, **kwargs):
         return subprocess.run(command, **kwargs)
+
     class SecurityError(Exception):
         pass
 
@@ -200,7 +201,12 @@ def fonction_syntaxe():
         tests_robustesse = []
 
         # Test avec fichier inexistant
-        cmd = ["python", "scripts/athalia_unified.py", "--audit", "/fichier/inexistant/qui/n/existe/pas"]
+        cmd = [
+            "python",
+            "scripts/athalia_unified.py",
+            "--audit",
+            "/fichier/inexistant/qui/n/existe/pas",
+        ]
         result = validate_and_run(cmd)
         tests_robustesse.append(
             {
@@ -230,7 +236,12 @@ def fonction_syntaxe():
         with open(fichier_syntaxe_invalide, "w") as f:
             f.write("def func(:\n    invalid syntax here\n    )")
 
-        cmd = ["python", "scripts/athalia_unified.py", "--audit", fichier_syntaxe_invalide]
+        cmd = [
+            "python",
+            "scripts/athalia_unified.py",
+            "--audit",
+            fichier_syntaxe_invalide,
+        ]
         result = validate_and_run(cmd)
         tests_robustesse.append(
             {
@@ -270,7 +281,13 @@ if __name__ == "__main__":
 """
             )
 
-        cmd = ["python", "scripts/athalia_unified.py", projet_benchmark, "--action", "complete"]
+        cmd = [
+            "python",
+            "scripts/athalia_unified.py",
+            projet_benchmark,
+            "--action",
+            "complete",
+        ]
         result = validate_and_run(cmd, timeout=60)
         temps_athalia = time.time() - start
 

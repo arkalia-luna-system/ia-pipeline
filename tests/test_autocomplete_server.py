@@ -8,6 +8,7 @@ try:
     from fastapi.testclient import TestClient
 
     from athalia_core.autocomplete_server import app
+
     FASTAPI_AVAILABLE = True
     client = TestClient(app)
 except ImportError:
@@ -17,20 +18,25 @@ except ImportError:
 # Vérification de la disponibilité du module autocomplete
 try:
     from athalia_core.autocomplete_engine import OllamaAutocompleteEngine
+
     AUTOCOMPLETE_AVAILABLE = True
 except ImportError:
     AUTOCOMPLETE_AVAILABLE = False
+
 
 @pytest.mark.skipif(not FASTAPI_AVAILABLE, reason="FastAPI non disponible")
 def test_autocomplete_nominal():
     if client is None:
         pytest.skip("Client FastAPI non disponible")
-    response = client.post("/autocomplete", json={"prompt": "test", "max_suggestions": 3})
+    response = client.post(
+        "/autocomplete", json={"prompt": "test", "max_suggestions": 3}
+    )
     assert response.status_code == 200
     data = response.json()
     assert "suggestions" in data
     assert len(data["suggestions"]) == 3
     assert all(s.startswith("test_auto_") for s in data["suggestions"])
+
 
 @pytest.mark.skipif(not FASTAPI_AVAILABLE, reason="FastAPI non disponible")
 def test_autocomplete_empty_prompt():
@@ -41,17 +47,23 @@ def test_autocomplete_empty_prompt():
     data = response.json()
     assert data["detail"] == "Le prompt ne peut pas être vide."
 
-@pytest.mark.skipif(not AUTOCOMPLETE_AVAILABLE, reason="Module autocomplete non disponible")
+
+@pytest.mark.skipif(
+    not AUTOCOMPLETE_AVAILABLE, reason="Module autocomplete non disponible"
+)
 def test_ollama_autocomplete_engine(monkeypatch):
     # Mock de la réponse Ollama
     class MockResp:
         def raise_for_status(self):
             pass
+
         def json(self):
             return {"response": "sugg1\nsugg2\nsugg3"}
+
     def mock_post(*args, **kwargs):
         return MockResp()
+
     with patch.object(requests, "post", mock_post):
         engine = OllamaAutocompleteEngine()
         suggestions = engine.suggest("test", 3)
-        assert suggestions == ["sugg1", "sugg2", "sugg3"] 
+        assert suggestions == ["sugg1", "sugg2", "sugg3"]

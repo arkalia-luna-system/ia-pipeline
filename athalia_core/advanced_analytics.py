@@ -262,7 +262,7 @@ class AdvancedAnalytics:
         <p>Docstrings : {docstrings}</p>
         <p>Commentaires : {comments}</p>
         <p>Lignes vides : {empty_lines}</p>
-        <p>Ratio commentaires : {comments / max(1, total_quality_lines) * 100:.1f}%</p>
+        <p>Ratio commentaires : {(comments / max(1, total_quality_lines) * 100):.1f}%</p>
     </div>
 
     <div class="metric">

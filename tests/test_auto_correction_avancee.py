@@ -13,7 +13,8 @@ import unittest
 from pathlib import Path
 
 # Ajouter le chemin du projet
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+
 
 class TestAutoCorrectionAdvanced(unittest.TestCase):
     """Tests pour l'auto-correction avancée (corrigé)"""
@@ -41,6 +42,7 @@ class TestAutoCorrectionAdvanced(unittest.TestCase):
             from athalia_core.advanced_modules.dashboard_unified import (
                 DashboardUnifieSimple,
             )
+
             self.assertTrue(True, "Import réussi")
         except ImportError as e:
             self.skipTest(f"Module dashboard non disponible: {e}")
@@ -60,10 +62,11 @@ class TestAutoCorrectionAdvanced(unittest.TestCase):
                 dashboard_unified,
                 user_profiles_advanced,
             )
-            
+
             self.assertTrue(True, "Structure des modules avancés correcte")
         except ImportError as e:
             assert False, f"Structure des modules avancés non disponible: {e}"
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -27,6 +27,7 @@ class TestYAMLValidity:
     def teardown_method(self):
         """Nettoyage après chaque test."""
         import shutil
+
         if self.test_dir.exists():
             shutil.rmtree(self.test_dir)
 
@@ -41,12 +42,12 @@ class TestYAMLValidity:
             - pytest
             - requests
         """
-        
+
         try:
             data = yaml.safe_load(valid_yaml)
             assert isinstance(data, dict)
-            assert 'project' in data
-            assert data['project']['name'] == 'test_project'
+            assert "project" in data
+            assert data["project"]["name"] == "test_project"
         except yaml.YAMLError as e:
             pytest.fail(f"YAML valide rejeté : {e}")
 
@@ -62,7 +63,7 @@ class TestYAMLValidity:
             - requests
           invalid_key: [unclosed_bracket
         """
-        
+
         with pytest.raises(yaml.YAMLError):
             yaml.safe_load(invalid_yaml)
 
@@ -71,20 +72,24 @@ class TestYAMLValidity:
         config_path = Path("config/athalia_config.yaml")
         if not config_path.exists():
             pytest.skip("Fichier de configuration non trouvé")
-        
+
         try:
-            with open(config_path, 'r', encoding='utf-8') as f:
+            with open(config_path, "r", encoding="utf-8") as f:
                 data = yaml.safe_load(f)
-            
+
             assert isinstance(data, dict), "La configuration doit être un dictionnaire"
-            
+
             # Vérifier les clés essentielles
-            if 'general' in data:
-                assert isinstance(data['general'], dict), "La section general doit être un dictionnaire"
-            
-            if 'modules' in data:
-                assert isinstance(data['modules'], dict), "La section modules doit être un dictionnaire"
-                
+            if "general" in data:
+                assert isinstance(
+                    data["general"], dict
+                ), "La section general doit être un dictionnaire"
+
+            if "modules" in data:
+                assert isinstance(
+                    data["modules"], dict
+                ), "La section modules doit être un dictionnaire"
+
         except yaml.YAMLError as e:
             pytest.fail(f"Configuration YAML invalide : {e}")
 
@@ -92,26 +97,26 @@ class TestYAMLValidity:
         """Test de la structure des blueprints YAML."""
         # Créer un blueprint de test
         blueprint = {
-            'project_name': 'test_project',
-            'project_type': 'api',
-            'version': '1.0.0',
-            'description': 'Test project',
-            'modules': ['api', 'database'],
-            'dependencies': {
-                'python': ['flask', 'sqlalchemy'],
-                'system': ['git', 'docker']
-            }
+            "project_name": "test_project",
+            "project_type": "api",
+            "version": "1.0.0",
+            "description": "Test project",
+            "modules": ["api", "database"],
+            "dependencies": {
+                "python": ["flask", "sqlalchemy"],
+                "system": ["git", "docker"],
+            },
         }
-        
+
         # Convertir en YAML
         yaml_content = yaml.dump(blueprint, default_flow_style=False)
-        
+
         # Recharger et vérifier
         loaded_blueprint = yaml.safe_load(yaml_content)
-        assert loaded_blueprint['project_name'] == 'test_project'
-        assert loaded_blueprint['project_type'] == 'api'
-        assert 'modules' in loaded_blueprint
-        assert 'dependencies' in loaded_blueprint
+        assert loaded_blueprint["project_name"] == "test_project"
+        assert loaded_blueprint["project_type"] == "api"
+        assert "modules" in loaded_blueprint
+        assert "dependencies" in loaded_blueprint
 
     def test_yaml_anchors_and_aliases(self):
         """Test des ancres et alias YAML."""
@@ -128,17 +133,17 @@ class TestYAMLValidity:
           <<: *defaults
           command: athalia
         """
-        
+
         try:
             data = yaml.safe_load(yaml_with_anchors)
-            assert 'defaults' in data
-            assert 'api_config' in data
-            assert 'cli_config' in data
-            
+            assert "defaults" in data
+            assert "api_config" in data
+            assert "cli_config" in data
+
             # Vérifier que les alias fonctionnent
-            assert data['api_config']['timeout'] == 30
-            assert data['cli_config']['timeout'] == 30
-            
+            assert data["api_config"]["timeout"] == 30
+            assert data["cli_config"]["timeout"] == 30
+
         except yaml.YAMLError as e:
             pytest.fail(f"YAML avec ancres rejeté : {e}")
 
@@ -170,14 +175,14 @@ class TestYAMLValidity:
                   method: POST
                   auth: required
         """
-        
+
         try:
             data = yaml.safe_load(complex_yaml)
-            assert isinstance(data['project']['metadata']['tags'], list)
-            assert isinstance(data['project']['metadata']['authors'], list)
-            assert isinstance(data['project']['config']['database'], dict)
-            assert isinstance(data['project']['config']['api']['endpoints'], list)
-            
+            assert isinstance(data["project"]["metadata"]["tags"], list)
+            assert isinstance(data["project"]["metadata"]["authors"], list)
+            assert isinstance(data["project"]["config"]["database"], dict)
+            assert isinstance(data["project"]["config"]["api"]["endpoints"], list)
+
         except yaml.YAMLError as e:
             pytest.fail(f"YAML complexe rejeté : {e}")
 
@@ -192,71 +197,65 @@ class TestYAMLValidity:
             - "Web Services"
             - "Microservices"
         """
-        
+
         try:
             data = yaml.safe_load(unicode_yaml)
-            assert "éàçù" in data['project']['name']
-            assert "€£¥" in data['project']['description']
-            assert "API REST" in data['project']['tags']
-            
+            assert "éàçù" in data["project"]["name"]
+            assert "€£¥" in data["project"]["description"]
+            assert "API REST" in data["project"]["tags"]
+
         except yaml.YAMLError as e:
             pytest.fail(f"YAML Unicode rejeté : {e}")
 
     def test_yaml_file_roundtrip(self):
         """Test d'aller-retour fichier YAML."""
         original_data = {
-            'project': {
-                'name': 'roundtrip_test',
-                'version': '1.0.0',
-                'config': {
-                    'debug': True,
-                    'log_level': 'INFO'
-                }
+            "project": {
+                "name": "roundtrip_test",
+                "version": "1.0.0",
+                "config": {"debug": True, "log_level": "INFO"},
             }
         }
-        
+
         # Écrire en YAML
         yaml_file = self.test_dir / "test.yaml"
-        with open(yaml_file, 'w', encoding='utf-8') as f:
+        with open(yaml_file, "w", encoding="utf-8") as f:
             yaml.dump(original_data, f, default_flow_style=False)
-        
+
         # Relire et comparer
-        with open(yaml_file, 'r', encoding='utf-8') as f:
+        with open(yaml_file, "r", encoding="utf-8") as f:
             loaded_data = yaml.safe_load(f)
-        
+
         assert loaded_data == original_data
 
     def test_yaml_validation_schema(self):
         """Test de validation avec schéma YAML."""
         # Schéma simple
         schema = {
-            'type': 'object',
-            'properties': {
-                'project_name': {'type': 'string'},
-                'version': {'type': 'string'},
-                'dependencies': {'type': 'array'}
+            "type": "object",
+            "properties": {
+                "project_name": {"type": "string"},
+                "version": {"type": "string"},
+                "dependencies": {"type": "array"},
             },
-            'required': ['project_name', 'version']
+            "required": ["project_name", "version"],
         }
-        
+
         # Données valides
         valid_data = {
-            'project_name': 'test_project',
-            'version': '1.0.0',
-            'dependencies': ['pytest', 'requests']
+            "project_name": "test_project",
+            "version": "1.0.0",
+            "dependencies": ["pytest", "requests"],
         }
-        
+
         # Données invalides
-        invalid_data = {
-            'project_name': 123,  # Doit être une string
-            'version': '1.0.0'
-        }
-        
+        invalid_data = {"project_name": 123, "version": "1.0.0"}  # Doit être une string
+
         # Test avec des données valides
         yaml_content = yaml.dump(valid_data)
         loaded_data = yaml.safe_load(yaml_content)
-        assert isinstance(loaded_data['project_name'], str)
-        
+        assert isinstance(loaded_data["project_name"], str)
+
         # Test avec des données invalides
         yaml_content = yaml.dump(invalid_data)
         loaded_data = yaml.safe_load(yaml_content)
@@ -272,10 +271,10 @@ class TestYAMLValidity:
             debug: true
             invalid_key: [unclosed_bracket
         """
-        
+
         with pytest.raises(yaml.YAMLError):
             yaml.safe_load(invalid_yaml)
-        
+
         # YAML avec caractères non-UTF8 (simulé)
         try:
             # Test avec des caractères spéciaux
@@ -294,29 +293,29 @@ class TestYAMLValidity:
 
         # Créer un YAML complexe
         complex_data = {
-            'project': {
-                'name': 'performance_test',
-                'modules': [f'module_{i}' for i in range(100)],
-                'config': {
-                    f'key_{i}': f'value_{i}' for i in range(50)
-                }
+            "project": {
+                "name": "performance_test",
+                "modules": [f"module_{i}" for i in range(100)],
+                "config": {f"key_{i}": f"value_{i}" for i in range(50)},
             }
         }
-        
+
         # Test de sérialisation
         start_time = time.time()
         yaml_content = yaml.dump(complex_data)
         serialize_time = time.time() - start_time
-        
+
         # Test de désérialisation
         start_time = time.time()
         loaded_data = yaml.safe_load(yaml_content)
         deserialize_time = time.time() - start_time
-        
+
         # Les opérations ne devraient pas prendre plus de 1 seconde
         assert serialize_time < 1.0, f"Sérialisation trop lente : {serialize_time:.3f}s"
-        assert deserialize_time < 1.0, f"Désérialisation trop lente : {deserialize_time:.3f}s"
-        
+        assert (
+            deserialize_time < 1.0
+        ), f"Désérialisation trop lente : {deserialize_time:.3f}s"
+
         # Vérifier l'intégrité des données
         assert loaded_data == complex_data
 
@@ -327,7 +326,7 @@ class TestYAMLValidity:
         project:
           name: !python/object/apply:os.system ['echo "dangerous"']
         """
-        
+
         # Utiliser safe_load pour éviter l'exécution de code
         try:
             data = yaml.safe_load(dangerous_yaml)
@@ -345,28 +344,28 @@ def test_yaml_basic_functionality():
     name: test
     value: 42
     """
-    
+
     data = yaml.safe_load(simple_yaml)
-    assert data['name'] == 'test'
-    assert data['value'] == 42
+    assert data["name"] == "test"
+    assert data["value"] == 42
 
 
 def test_yaml_file_operations():
     """Test des opérations de fichiers YAML."""
     with tempfile.TemporaryDirectory() as temp_dir:
         temp_path = Path(temp_dir)
-        
+
         # Créer un fichier YAML
-        test_data = {'test': 'data'}
+        test_data = {"test": "data"}
         yaml_file = temp_path / "test.yaml"
-        
-        with open(yaml_file, 'w') as f:
+
+        with open(yaml_file, "w") as f:
             yaml.dump(test_data, f)
-        
+
         # Lire le fichier
-        with open(yaml_file, 'r') as f:
+        with open(yaml_file, "r") as f:
             loaded_data = yaml.safe_load(f)
-        
+
         assert loaded_data == test_data
 
 
