@@ -6,13 +6,12 @@ Module spécialisé dans l'analyse des performances du code,
 détection des goulots d'étranglement et optimisation.
 """
 
-import ast
 import logging
 import sqlite3
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Any, Optional, Set, Tuple
-from dataclasses import dataclass, asdict
+from typing import Dict, List, Any
+from dataclasses import dataclass
 import time
 import cProfile
 import pstats
@@ -147,7 +146,7 @@ class PerformanceAnalyzer:
         # Limiter le nombre de fichiers pour les performances
         if len(python_files) > 50:
             python_files = python_files[:50]
-            logger.info(f"📁 Limitation à 50 fichiers pour les performances")
+            logger.info("📁 Limitation à 50 fichiers pour les performances")
 
         all_metrics = []
         all_issues = []

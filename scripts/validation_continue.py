@@ -10,9 +10,8 @@ import json
 import os
 import threading
 import logging
-from datetime import datetime, timedelta
+from datetime import datetime
 import subprocess
-import sys
 
 
 class ValidationContinue:
@@ -215,7 +214,7 @@ class ValidationContinue:
             try:
                 with open(alertes_file, 'r') as f:
                     alertes = json.load(f)
-            except:
+            except Exception:
                 alertes = []
 
         alertes.append(alerte)
@@ -257,7 +256,7 @@ class ValidationContinue:
             if not resultat.get('succes'):
                 rapport += f"  - Erreur: {resultat.get('erreur', 'Inconnue')}\n"
 
-        rapport += f"""
+        rapport += """
 ## 🎯 Actions Recommandées
 
 1. **Vérifier** les derniers changements de code

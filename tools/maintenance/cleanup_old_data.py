@@ -8,7 +8,6 @@ import hashlib
 import json
 import logging
 import shutil
-import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -195,7 +194,7 @@ class DataCleaner:
         categories = self.categorize_files(files)
 
         # Afficher les statistiques
-        logger.info(f"📊 Statistiques:")
+        logger.info("📊 Statistiques:")
         logger.info(f"  - Récents (< 1h): {len(categories['recent'])}")
         logger.info(f"  - Anciens (1h-1j): {len(categories['old'])}")
         logger.info(f"  - Très anciens (>1j): {len(categories['very_old'])}")

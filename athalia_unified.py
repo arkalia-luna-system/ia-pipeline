@@ -9,7 +9,6 @@ import os
 import sys
 import argparse
 import logging
-from pathlib import Path
 
 # Configuration du logging
 logging.basicConfig(

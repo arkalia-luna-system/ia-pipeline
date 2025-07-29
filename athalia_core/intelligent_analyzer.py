@@ -446,7 +446,7 @@ def main():
     print(f"Score global: {analysis.overall_score:.1f}/100")
     print(f"Date d'analyse: {analysis.analysis_date}")
 
-    print(f"\n📊 RÉSUMÉ:")
+    print("\n📊 RÉSUMÉ:")
     print(f"- Fichiers analysés: {analysis.ast_analysis['files_analyzed']}")
     print(
         f"- Doublons détectés: {analysis.pattern_analysis['summary']['total_duplicates']}")
@@ -455,11 +455,11 @@ def main():
     print(
         f"- Problèmes de performance: {len(analysis.performance_analysis['issues'])}")
 
-    print(f"\n💡 RECOMMANDATIONS:")
+    print("\n💡 RECOMMANDATIONS:")
     for i, rec in enumerate(analysis.recommendations, 1):
         print(f"{i}. {rec}")
 
-    print(f"\n🚀 PLAN D'OPTIMISATION:")
+    print("\n🚀 PLAN D'OPTIMISATION:")
     plan = analysis.optimization_plan
     print(f"- Effort estimé: {plan['estimated_effort']:.1f} heures")
     print(f"- Amélioration attendue: {plan['expected_improvement']:.1f}%")

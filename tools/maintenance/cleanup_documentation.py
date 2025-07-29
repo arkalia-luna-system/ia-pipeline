@@ -6,7 +6,6 @@ Script de nettoyage et d'organisation de la documentation
 
 import json
 import logging
-import sys
 from datetime import datetime
 from pathlib import Path
 
@@ -167,7 +166,7 @@ class DocumentationCleaner:
         categories = self.scan_documentation()
 
         # Afficher les statistiques
-        logger.info(f"📊 Statistiques:")
+        logger.info("📊 Statistiques:")
         logger.info(f"  - Documents actuels: {len(categories['current'])}")
         logger.info(f"  - Documents obsolètes: {len(categories['obsolete'])}")
         logger.info(f"  - Documents inconnus: {len(categories['unknown'])}")

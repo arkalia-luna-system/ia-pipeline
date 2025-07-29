@@ -17,13 +17,12 @@ from .advanced_analytics import AdvancedAnalytics
 import argparse
 import json
 import logging
-import subprocess
 import sys
 import time
-from datetime import datetime, timedelta
-from dataclasses import dataclass, asdict
+from datetime import datetime
+from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Any, Optional, Set, Tuple
+from typing import Dict, List, Any, Optional
 
 # Configuration du logging
 logging.basicConfig(level=logging.INFO)
@@ -36,65 +35,66 @@ PHASE2_AVAILABLE = True
 
 # Imports robotiques (optionnels)
 try:
-    from .robotics.reachy_auditor import ReachyAuditor
-    from .robotics.ros2_validator import ROS2Validator
-    from .robotics.docker_robotics import DockerRoboticsManager
-    from .robotics.rust_analyzer import RustAnalyzer
-    from .robotics.robotics_ci import RoboticsCI
+    # from .robotics.reachy_auditor import ReachyAuditor
+    # from .robotics.ros2_validator import ROS2Validator
+    # from .robotics.docker_robotics import DockerRoboticsManager
+    # from .robotics.rust_analyzer import RustAnalyzer
+    # from .robotics.robotics_ci import RoboticsCI
     ROBOTICS_AVAILABLE = True
 except ImportError:
     ROBOTICS_AVAILABLE = False
 
 # Imports de distillation (optionnels)
 try:
-    from .distillation.response_distiller import ResponseDistiller
-    from .distillation.audit_distiller import AuditDistiller
-    from .distillation.correction_distiller import CorrectionDistiller
-    from .distillation.adaptive_distillation import AdaptiveDistiller
-    from .distillation.code_genetics import CodeGenetics
-    from .distillation.predictive_cache import PredictiveCache
+    # from .distillation.response_distiller import ResponseDistiller
+    # from .distillation.audit_distiller import AuditDistiller
+    # from .distillation.correction_distiller import CorrectionDistiller
+    # from .distillation.adaptive_distillation import AdaptiveDistiller
+    # from .distillation.code_genetics import CodeGenetics
+    # from .distillation.predictive_cache import PredictiveCache
     DISTILLATION_AVAILABLE = True
 except ImportError:
     DISTILLATION_AVAILABLE = False
 
 # Imports IA robuste (optionnels)
 try:
-    from .ai_robust import RobustAI, AIModel, PromptContext
+    # from .ai_robust import RobustAI, AIModel, PromptContext
     AI_ROBUST_AVAILABLE = True
 except ImportError:
     AI_ROBUST_AVAILABLE = False
 
 # Imports optionnels pour compatibilité
 try:
-    from .ci import generate_github_ci_yaml
-    from .plugins_validator import validate_plugin
-    from .architecture_analyzer import ArchitectureAnalyzer
-    from .multi_file_editor import MultiFileEditor
-    from .ast_analyzer import ASTAnalyzer
-    from .autocomplete_server import AutocompleteRequest
-    from .autocomplete_engine import BaseAutocompleteEngine
-    from .analytics import (
-        analyze_project, generate_heatmap_data,
-        generate_technical_debt_analysis, generate_analytics_html
-    )
-    from .cleanup import clean_old_tests_and_caches, clean_macos_files
-    from .cli import cli, generate
-    from .main import main
-    from .security import security_audit_project
-    from .onboarding import (
-        generate_onboarding_md, generate_onboard_cli,
-        generate_onboarding_html_advanced
-    )
-    from .plugins_manager import run_all_plugins
-    from .ready_check import open_patch, check_ready
-    from .dashboard import main as dashboard_main
-    from .audit import Audit
-    from .config_manager import ConfigManager
-    from .correction_optimizer import CorrectionOptimizer
-    from .intelligent_memory import IntelligentMemory
-    from .logger_advanced import AthaliaLogger
-    from .pattern_detector import PatternDetector
-    from .performance_analyzer import PerformanceAnalyzer
+    # from .ci import generate_github_ci_yaml
+    # from .plugins_validator import validate_plugin
+    # from .architecture_analyzer import ArchitectureAnalyzer
+    # from .multi_file_editor import MultiFileEditor
+    # from .ast_analyzer import ASTAnalyzer
+    # from .autocomplete_server import AutocompleteRequest
+    # from .autocomplete_engine import BaseAutocompleteEngine
+    # from .analytics import (
+    #     analyze_project, generate_heatmap_data,
+    #     generate_technical_debt_analysis, generate_analytics_html
+    # )
+    # from .cleanup import clean_old_tests_and_caches, clean_macos_files
+    # from .cli import cli, generate
+    # from .main import main
+    # from .security import security_audit_project
+    # from .onboarding import (
+    #     generate_onboarding_md, generate_onboard_cli,
+    #     generate_onboarding_html_advanced
+    # )
+    # from .plugins_manager import run_all_plugins
+    # from .ready_check import open_patch, check_ready
+    # from .dashboard import main as dashboard_main
+    # from .audit import Audit
+    # from .config_manager import ConfigManager
+    # from .correction_optimizer import CorrectionOptimizer
+    # from .intelligent_memory import IntelligentMemory
+    # from .logger_advanced import AthaliaLogger
+    # from .pattern_detector import PatternDetector
+    # from .performance_analyzer import PerformanceAnalyzer
+    pass
 except ImportError:
     pass
 
