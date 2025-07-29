@@ -280,7 +280,7 @@ class AdvancedAnalytics:
 </html>
 """
 
-        dashboard_path = self.project_path / "analytics_dashboard.html"
+        dashboard_path = self.project_path / "dashboard" / "analytics_dashboard.html"
         with open(dashboard_path, 'w', encoding='utf-8') as f:
             f.write(dashboard_html)
 
@@ -324,7 +324,7 @@ class AdvancedAnalytics:
 • Fichiers Python: {len(perf_file_sizes)}
 
 📊 FICHIERS GÉNÉRÉS:
-• Dashboard HTML: analytics_dashboard.html
+        • Dashboard HTML: dashboard/analytics_dashboard.html
 """
         return summary
 

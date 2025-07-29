@@ -27,7 +27,7 @@ Cette section contient tous les audits de qualité, de performance et de conform
 - [Audit Complet Dossiers](audit_complet_dossiers.md) - Structure des dossiers
 
 ### **📊 Données**
-- [Rapport de Nettoyage](cleanup_report_20250729_152143.json) - Données de nettoyage
+- [Rapport de Nettoyage](../../../data/reports/cleanup_report_20250729_152143.json) - Données de nettoyage
 
 ---
 
