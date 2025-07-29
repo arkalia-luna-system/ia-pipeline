@@ -48,58 +48,6 @@ Fonction principale du CLI unifié
 
 ---
 
-### get-pip
-
-#### Fonctions
-
-##### include_setuptools
-
-Install setuptools only if absent, not excluded and when using Python <3.12.
-
-**Paramètres :**
-
-- `args`
-
-##### include_wheel
-
-Install wheel only if absent, not excluded and when using Python <3.12.
-
-**Paramètres :**
-
-- `args`
-
-##### determine_pip_install_arguments
-
-##### monkeypatch_for_cert
-
-Patches `pip install` to provide default certificate with the lowest priority.
-
-This ensures that the bundled certificates are used unless the user specifies a
-custom cert via any of pip's option passing mechanisms (config, env-var, CLI).
-
-A monkeypatch is the easiest way to achieve this, without messing too much with
-the rest of pip's internals.
-
-**Paramètres :**
-
-- `tmpdir`
-
-##### bootstrap
-
-**Paramètres :**
-
-- `tmpdir`
-
-##### main
-
-##### cert_parse_args
-
-**Paramètres :**
-
-- `args`
-
----
-
 ### test_cleanup
 
 Tests pour le module cleanup
@@ -439,44 +387,221 @@ Test simple de correction
 
 ---
 
-### correction_chaînes
+### test_dashboard_complete
 
-Script de correction des chaînes non terminées dans athalia_core
+Tests complets pour dashboard.py
+Couverture : 100% des fonctionnalités de dashboard
+Tests : 20 tests unitaires et d'intégration
+
+#### Classes
+
+##### TestDashboard
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_init_with_project_path()`
+- `test_load_dashboard_config()`
+- `test_load_dashboard_config_default()`
+- `test_generate_metrics_widget()`
+- `test_generate_charts_widget()`
+- `test_generate_alerts_widget()`
+- `test_generate_performance_widget()`
+- `test_generate_security_widget()`
+- `test_generate_test_coverage_widget()`
+- `test_generate_dependency_widget()`
+- `test_generate_documentation_widget()`
+- `test_generate_git_widget()`
+- `test_generate_dashboard_layout()`
+- `test_generate_dashboard_html()`
+- `test_generate_dashboard_css()`
+- `test_generate_dashboard_js()`
+- `test_save_dashboard_html()`
+- `test_generate_dashboard_report()`
+- `test_error_handling_config_not_found()`
+- `test_error_handling_invalid_yaml()`
+- `test_integration_full_dashboard()`
+
+##### TestDashboardIntegration
+
+Tests d'intégration pour Dashboard
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_full_dashboard_workflow()`
+- `test_dashboard_with_custom_config()`
 
 #### Fonctions
 
-##### corriger_chaînes_fichier
+##### test_generate_dashboard_html
 
-Corrige les chaînes non terminées dans un fichier
+Test de la fonction utilitaire generate_dashboard_html
 
-**Paramètres :**
+##### test_create_dashboard_report
 
-- `file_path`
+Test de la fonction utilitaire create_dashboard_report
 
-##### main
+##### setup_method
 
-Fonction principale
+##### teardown_method
+
+##### test_init_with_project_path
+
+Test de l'initialisation avec project_path
+
+##### test_load_dashboard_config
+
+Test de chargement de la configuration du dashboard
+
+##### test_load_dashboard_config_default
+
+Test de chargement de la configuration par défaut
+
+##### test_generate_metrics_widget
+
+Test de génération du widget métriques
+
+##### test_generate_charts_widget
+
+Test de génération du widget graphiques
+
+##### test_generate_alerts_widget
+
+Test de génération du widget alertes
+
+##### test_generate_performance_widget
+
+Test de génération du widget performance
+
+##### test_generate_security_widget
+
+Test de génération du widget sécurité
+
+##### test_generate_test_coverage_widget
+
+Test de génération du widget couverture de tests
+
+##### test_generate_dependency_widget
+
+Test de génération du widget dépendances
+
+##### test_generate_documentation_widget
+
+Test de génération du widget documentation
+
+##### test_generate_git_widget
+
+Test de génération du widget Git
+
+##### test_generate_dashboard_layout
+
+Test de génération de la mise en page du dashboard
+
+##### test_generate_dashboard_html
+
+Test de génération du HTML du dashboard
+
+##### test_generate_dashboard_css
+
+Test de génération du CSS du dashboard
+
+##### test_generate_dashboard_js
+
+Test de génération du JavaScript du dashboard
+
+##### test_save_dashboard_html
+
+Test de sauvegarde du dashboard HTML
+
+##### test_generate_dashboard_report
+
+Test de génération du rapport de dashboard
+
+##### test_error_handling_config_not_found
+
+Test de gestion d'erreur configuration non trouvée
+
+##### test_error_handling_invalid_yaml
+
+Test de gestion d'erreur YAML invalide
+
+##### test_integration_full_dashboard
+
+Test d'intégration du dashboard complet
+
+##### setup_method
+
+##### teardown_method
+
+##### test_full_dashboard_workflow
+
+Test du workflow complet du dashboard
+
+##### test_dashboard_with_custom_config
+
+Test du dashboard avec configuration personnalisée
 
 ---
 
 ### correction_finale
 
-Script de correction finale pour Athalia
-Corrige toutes les erreurs restantes dans les fichiers principaux
+Outil de validation et correction finale pour Athalia
+Module de vérification de la qualité et de la conformité du code
+
+#### Classes
+
+##### FinalValidator
+
+Classe pour la validation et correction finale du projet Athalia.
+
+**Méthodes :**
+
+- `__init__()`
+- `validate_code_quality()`
+- `fix_common_issues()`
+- `scan_project_files()`
+- `run_final_validation()`
 
 #### Fonctions
 
-##### corriger_fichier
+##### main
 
-Corrige un fichier en remplaçant les patterns problématiques
+Fonction principale du validateur final.
+
+##### __init__
+
+Initialise le validateur final.
+
+**Paramètres :**
+
+- `project_root`
+
+##### validate_code_quality
+
+Valide la qualité du code dans un fichier.
 
 **Paramètres :**
 
 - `file_path`
 
-##### main
+##### fix_common_issues
 
-Fonction principale
+Corrige les problèmes communs dans un fichier.
+
+**Paramètres :**
+
+- `file_path`
+
+##### scan_project_files
+
+Scanne le projet pour trouver les fichiers Python principaux.
+
+##### run_final_validation
+
+Exécute la validation finale complète du projet.
 
 ---
 
@@ -670,7 +795,7 @@ Identifie les tests lents
 
 Args:
     threshold: Seuil en secondes pour considérer un test comme lent
-    
+
 Returns:
     Liste des tests lents
 
@@ -684,7 +809,7 @@ Identifie les tests rapides
 
 Args:
     threshold: Seuil en secondes pour considérer un test comme rapide
-    
+
 Returns:
     Liste des tests rapides
 
@@ -822,13 +947,23 @@ Test de la gestion d'erreurs.
 
 ---
 
-### test_plugins_validator
+### test_athalia_simple
+
+Tests simples pour Athalia
 
 #### Fonctions
 
-##### test_validate_plugin_ok
+##### test_athalia_core_import
 
-##### test_validate_plugin_fail
+Test d'import du module core
+
+##### test_essential_files_exist
+
+Test que les fichiers essentiels existent
+
+##### test_project_structure
+
+Test de la structure du projet
 
 ---
 
@@ -965,6 +1100,102 @@ Test le comportement de la chaîne de fallback.
 
 ---
 
+### test_continue_models
+
+Test de présence des modèles dans la config Continue
+
+#### Fonctions
+
+##### test_models_presence
+
+Vérifie la présence des modèles Claude et Mistral dans la config Continue.
+
+---
+
+### conftest
+
+Configuration pytest pour Athalia
+Gestion automatique du nettoyage des processus et ressources
+
+#### Classes
+
+##### ProcessMonitor
+
+**Méthodes :**
+
+- `__init__()`
+- `track_process()`
+- `cleanup()`
+
+#### Fonctions
+
+##### kill_athalia_processes
+
+Arrête tous les processus Athalia en cours
+
+##### cleanup_athalia_resources
+
+Nettoie les ressources Athalia (fichiers temporaires, etc.)
+
+##### setup_test_session
+
+Configuration de la session de test
+
+##### cleanup_after_test
+
+Nettoyage automatique après chaque test
+
+##### athalia_clean_environment
+
+Environnement propre pour les tests Athalia
+
+##### athalia_process_monitor
+
+Moniteur de processus pour les tests Athalia
+
+##### pytest_configure
+
+Configuration pytest
+
+**Paramètres :**
+
+- `config`
+
+##### pytest_collection_modifyitems
+
+Modifier les items de collection
+
+**Paramètres :**
+
+- `config`
+- `items`
+
+##### pytest_terminal_summary
+
+Résumé terminal après les tests
+
+**Paramètres :**
+
+- `terminalreporter`
+- `exitstatus`
+- `config`
+
+##### __init__
+
+##### track_process
+
+Suivre un processus
+
+**Paramètres :**
+
+- `pid`
+
+##### cleanup
+
+Nettoyer tous les processus suivis
+
+---
+
 ### test_ai_robust_unit
 
 #### Classes
@@ -1076,23 +1307,186 @@ Test d'analyse avec un projet inexistant
 
 ---
 
-### test_athalia_simple
+### test_security_auditor_complete
 
-Tests simples pour Athalia
+Tests complets pour security_auditor.py
+Couverture : 100% des fonctionnalités de sécurité
+Tests : 32 tests unitaires et d'intégration
+
+#### Classes
+
+##### TestSecurityAuditor
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_init_with_project_path()`
+- `test_run_returns_dict()`
+- `test_check_dependencies_with_bandit_success()`
+- `test_check_dependencies_with_bandit_failure()`
+- `test_check_code_vulnerabilities()`
+- `test_check_secrets()`
+- `test_check_permissions()`
+- `test_check_encryption_without_encryption()`
+- `test_check_encryption_with_encryption()`
+- `test_calculate_score()`
+- `test_calculate_score_no_issues()`
+- `test_print_report()`
+- `test_run_complete_workflow()`
+- `test_run_with_file_creation()`
+- `test_run_with_exception_handling()`
+- `test_project_path_validation()`
+- `test_report_structure()`
+- `test_vulnerability_detection_patterns()`
+- `test_secret_detection_patterns()`
+- `test_encryption_detection()`
+- `test_score_calculation_with_many_vulnerabilities()`
+- `test_score_calculation_edge_cases()`
+- `test_file_handling_errors()`
+- `test_subprocess_timeout_handling()`
+- `test_json_parsing_errors()`
+- `test_regex_pattern_matching()`
+- `test_logging_integration()`
+- `test_path_operations()`
+- `test_report_file_creation()`
+- `test_report_file_creation_error_handling()`
+- `test_return_value_structure()`
+- `test_integration_with_real_project()`
 
 #### Fonctions
 
-##### test_athalia_core_import
+##### setup_method
 
-Test d'import du module core
+##### teardown_method
 
-##### test_essential_files_exist
+##### test_init_with_project_path
 
-Test que les fichiers essentiels existent
+Test de l'initialisation avec project_path
 
-##### test_project_structure
+##### test_run_returns_dict
 
-Test de la structure du projet
+Test que run() retourne un dictionnaire
+
+##### test_check_dependencies_with_bandit_success
+
+Test de la vérification des dépendances avec bandit
+
+##### test_check_dependencies_with_bandit_failure
+
+Test de la vérification des dépendances avec bandit en échec
+
+##### test_check_code_vulnerabilities
+
+Test de la détection des vulnérabilités dans le code
+
+##### test_check_secrets
+
+Test de la détection des secrets
+
+##### test_check_permissions
+
+Test de la vérification des permissions
+
+##### test_check_encryption_without_encryption
+
+Test de la vérification du chiffrement sans modules de chiffrement
+
+##### test_check_encryption_with_encryption
+
+Test de la vérification du chiffrement avec modules de chiffrement
+
+##### test_calculate_score
+
+Test du calcul du score de sécurité
+
+##### test_calculate_score_no_issues
+
+Test du calcul du score sans problèmes
+
+##### test_print_report
+
+Test de l'affichage du rapport
+
+##### test_run_complete_workflow
+
+Test du workflow complet de run()
+
+##### test_run_with_file_creation
+
+Test que run() crée le fichier attendu
+
+##### test_run_with_exception_handling
+
+Test de la gestion des exceptions dans run()
+
+##### test_project_path_validation
+
+Test de la validation du chemin du projet
+
+##### test_report_structure
+
+Test de la structure du rapport
+
+##### test_vulnerability_detection_patterns
+
+Test de la détection des patterns de vulnérabilités
+
+##### test_secret_detection_patterns
+
+Test de la détection des patterns de secrets
+
+##### test_encryption_detection
+
+Test de la détection des modules de chiffrement
+
+##### test_score_calculation_with_many_vulnerabilities
+
+Test du calcul de score avec beaucoup de vulnérabilités
+
+##### test_score_calculation_edge_cases
+
+Test des cas limites du calcul de score
+
+##### test_file_handling_errors
+
+Test de la gestion des erreurs de fichiers
+
+##### test_subprocess_timeout_handling
+
+Test de la gestion des timeouts de subprocess
+
+##### test_json_parsing_errors
+
+Test de la gestion des erreurs de parsing JSON
+
+##### test_regex_pattern_matching
+
+Test de la correspondance des patterns regex
+
+##### test_logging_integration
+
+Test de l'intégration avec le système de logging
+
+##### test_path_operations
+
+Test des opérations sur les chemins
+
+##### test_report_file_creation
+
+Test de la création du fichier de rapport
+
+##### test_report_file_creation_error_handling
+
+Test de la gestion d'erreur lors de la création du fichier de rapport
+
+##### test_return_value_structure
+
+Test de la structure de la valeur de retour de run()
+
+##### test_integration_with_real_project
+
+Test d'intégration avec un projet réel
 
 ---
 
@@ -1161,15 +1555,259 @@ Test de la structure du projet
 
 ---
 
-### test_continue_models
+### test_coverage_threshold
 
-Test de présence des modèles dans la config Continue
+Test de seuil de couverture de code
+Vérifie que la couverture de code est suffisante
+
+#### Classes
+
+##### TestCoverageThreshold
+
+Tests de seuil de couverture
+
+**Méthodes :**
+
+- `test_coverage_file_exists()`
+- `test_minimum_coverage_threshold()`
+- `test_core_modules_coverage()`
+- `test_test_files_exist()`
+- `test_test_coverage_structure()`
+- `test_no_untested_critical_modules()`
+- `test_coverage_report_readable()`
+- `test_coverage_configuration()`
+- `test_test_execution_coverage()`
+- `test_coverage_quality_metrics()`
 
 #### Fonctions
 
-##### test_models_presence
+##### test_coverage_file_exists
 
-Vérifie la présence des modèles Claude et Mistral dans la config Continue.
+Vérifie que le fichier de couverture existe
+
+##### test_minimum_coverage_threshold
+
+Vérifie le seuil minimum de couverture
+
+##### test_core_modules_coverage
+
+Vérifie la couverture des modules core
+
+##### test_test_files_exist
+
+Vérifie que les fichiers de test existent
+
+##### test_test_coverage_structure
+
+Vérifie la structure de couverture des tests
+
+##### test_no_untested_critical_modules
+
+Vérifie qu'il n'y a pas de modules critiques non testés
+
+##### test_coverage_report_readable
+
+Vérifie que le rapport de couverture est lisible
+
+##### test_coverage_configuration
+
+Vérifie la configuration de couverture
+
+##### test_test_execution_coverage
+
+Vérifie que les tests s'exécutent avec couverture
+
+##### test_coverage_quality_metrics
+
+Vérifie les métriques de qualité de la couverture
+
+---
+
+### test_code_linter_complete
+
+Tests complets pour code_linter.py
+Couverture : 100% des fonctionnalités de linting
+Tests : 28 tests unitaires et d'intégration
+
+#### Classes
+
+##### TestCodeLinter
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_init_with_project_path()`
+- `test_init_with_auto_fix()`
+- `test_run_returns_dict()`
+- `test_run_flake8_success()`
+- `test_run_flake8_with_errors()`
+- `test_run_black_success()`
+- `test_run_black_with_issues()`
+- `test_run_isort_success()`
+- `test_run_isort_with_issues()`
+- `test_run_mypy_success()`
+- `test_run_mypy_with_issues()`
+- `test_run_bandit_success()`
+- `test_run_bandit_with_issues()`
+- `test_calculate_score()`
+- `test_calculate_score_no_issues()`
+- `test_print_report()`
+- `test_run_complete_workflow()`
+- `test_project_path_validation()`
+- `test_report_structure()`
+- `test_subprocess_exception_handling()`
+- `test_subprocess_timeout_handling()`
+- `test_score_calculation_with_many_issues()`
+- `test_score_calculation_edge_cases()`
+- `test_logging_integration()`
+- `test_path_operations()`
+- `test_return_value_structure()`
+- `test_integration_with_real_project()`
+- `test_auto_fix_flag()`
+- `test_multiple_tool_execution()`
+- `test_error_accumulation()`
+- `test_warning_accumulation()`
+- `test_empty_output_handling()`
+- `test_newline_handling_in_output()`
+
+#### Fonctions
+
+##### setup_method
+
+##### teardown_method
+
+##### test_init_with_project_path
+
+Test de l'initialisation avec project_path
+
+##### test_init_with_auto_fix
+
+Test de l'initialisation avec auto_fix=True
+
+##### test_run_returns_dict
+
+Test que run() retourne un dictionnaire
+
+##### test_run_flake8_success
+
+Test de l'exécution de flake8 avec succès
+
+##### test_run_flake8_with_errors
+
+Test de l'exécution de flake8 avec des erreurs
+
+##### test_run_black_success
+
+Test de l'exécution de black avec succès
+
+##### test_run_black_with_issues
+
+Test de l'exécution de black avec des problèmes
+
+##### test_run_isort_success
+
+Test de l'exécution de isort avec succès
+
+##### test_run_isort_with_issues
+
+Test de l'exécution de isort avec des problèmes
+
+##### test_run_mypy_success
+
+Test de l'exécution de mypy avec succès
+
+##### test_run_mypy_with_issues
+
+Test de l'exécution de mypy avec des problèmes
+
+##### test_run_bandit_success
+
+Test de l'exécution de bandit avec succès
+
+##### test_run_bandit_with_issues
+
+Test de l'exécution de bandit avec des problèmes
+
+##### test_calculate_score
+
+Test du calcul du score de qualité
+
+##### test_calculate_score_no_issues
+
+Test du calcul du score sans problèmes
+
+##### test_print_report
+
+Test de l'affichage du rapport
+
+##### test_run_complete_workflow
+
+Test du workflow complet de run()
+
+##### test_project_path_validation
+
+Test de la validation du chemin du projet
+
+##### test_report_structure
+
+Test de la structure du rapport
+
+##### test_subprocess_exception_handling
+
+Test de la gestion des exceptions de subprocess
+
+##### test_subprocess_timeout_handling
+
+Test de la gestion des timeouts de subprocess
+
+##### test_score_calculation_with_many_issues
+
+Test du calcul de score avec beaucoup de problèmes
+
+##### test_score_calculation_edge_cases
+
+Test des cas limites du calcul de score
+
+##### test_logging_integration
+
+Test de l'intégration avec le système de logging
+
+##### test_path_operations
+
+Test des opérations sur les chemins
+
+##### test_return_value_structure
+
+Test de la structure de la valeur de retour de run()
+
+##### test_integration_with_real_project
+
+Test d'intégration avec un projet réel
+
+##### test_auto_fix_flag
+
+Test du flag auto_fix
+
+##### test_multiple_tool_execution
+
+Test de l'exécution de plusieurs outils
+
+##### test_error_accumulation
+
+Test de l'accumulation des erreurs
+
+##### test_warning_accumulation
+
+Test de l'accumulation des avertissements
+
+##### test_empty_output_handling
+
+Test de la gestion des sorties vides
+
+##### test_newline_handling_in_output
+
+Test de la gestion des retours à la ligne dans les sorties
 
 ---
 
@@ -1318,71 +1956,13 @@ Test d'intégration avec analyse de code
 
 ---
 
-### test_coverage_threshold
-
-Test de seuil de couverture de code
-Vérifie que la couverture de code est suffisante
-
-#### Classes
-
-##### TestCoverageThreshold
-
-Tests de seuil de couverture
-
-**Méthodes :**
-
-- `test_coverage_file_exists()`
-- `test_minimum_coverage_threshold()`
-- `test_core_modules_coverage()`
-- `test_test_files_exist()`
-- `test_test_coverage_structure()`
-- `test_no_untested_critical_modules()`
-- `test_coverage_report_readable()`
-- `test_coverage_configuration()`
-- `test_test_execution_coverage()`
-- `test_coverage_quality_metrics()`
+### test_plugins_validator
 
 #### Fonctions
 
-##### test_coverage_file_exists
+##### test_validate_plugin_ok
 
-Vérifie que le fichier de couverture existe
-
-##### test_minimum_coverage_threshold
-
-Vérifie le seuil minimum de couverture
-
-##### test_core_modules_coverage
-
-Vérifie la couverture des modules core
-
-##### test_test_files_exist
-
-Vérifie que les fichiers de test existent
-
-##### test_test_coverage_structure
-
-Vérifie la structure de couverture des tests
-
-##### test_no_untested_critical_modules
-
-Vérifie qu'il n'y a pas de modules critiques non testés
-
-##### test_coverage_report_readable
-
-Vérifie que le rapport de couverture est lisible
-
-##### test_coverage_configuration
-
-Vérifie la configuration de couverture
-
-##### test_test_execution_coverage
-
-Vérifie que les tests s'exécutent avec couverture
-
-##### test_coverage_quality_metrics
-
-Vérifie les métriques de qualité de la couverture
+##### test_validate_plugin_fail
 
 ---
 
@@ -1511,6 +2091,47 @@ Crée un projet de test avec des problèmes connus.
 ##### test_generate_deployment_config
 
 ##### test_get_created_files
+
+---
+
+### test_hardcoded_paths
+
+Tests pour détecter les chemins hardcodés
+
+#### Classes
+
+##### TestHardcodedPaths
+
+Tests pour détecter les chemins hardcodés
+
+**Méthodes :**
+
+- `test_no_absolute_paths_in_source()`
+- `test_no_absolute_paths()`
+- `test_no_desktop_paths()`
+- `_is_acceptable_path()`
+
+#### Fonctions
+
+##### test_no_absolute_paths_in_source
+
+Test qu'il n'y a pas de chemins absolus dans le code source (sauf tests)
+
+##### test_no_absolute_paths
+
+Test qu'il n'y a pas de chemins absolus hardcodés
+
+##### test_no_desktop_paths
+
+Test qu'il n'y a pas de chemins Desktop hardcodés
+
+##### _is_acceptable_path
+
+Vérifie si un chemin absolu est acceptable
+
+**Paramètres :**
+
+- `path`
 
 ---
 
@@ -1766,7 +2387,7 @@ Test d'intégration avec un projet de grande taille
 
 ### test_cache_simple
 
-Test simple du cache de performance
+Tests simples pour le cache.
 
 #### Classes
 
@@ -1821,371 +2442,6 @@ Test d'amélioration des performances.
 **Paramètres :**
 
 - `project_path`
-
----
-
-### test_auto_correction_avancee
-
-Tests pour le module d'auto-correction avancée
-Corrigé après réorganisation des modules
-
-#### Classes
-
-##### TestAutoCorrectionAdvanced
-
-Tests pour l'auto-correction avancée (corrigé)
-
-**Méthodes :**
-
-- `setUp()`
-- `tearDown()`
-- `test_import_auto_correction()`
-- `test_import_dashboard_unified()`
-- `test_import_user_profiles()`
-- `test_advanced_modules_structure()`
-
-#### Fonctions
-
-##### setUp
-
-Configuration des tests
-
-##### tearDown
-
-Nettoyage après les tests
-
-##### test_import_auto_correction
-
-Test d'import du module d'auto-correction
-
-##### test_import_dashboard_unified
-
-Test d'import du dashboard unifié
-
-##### test_import_user_profiles
-
-Test d'import des profils utilisateur
-
-##### test_advanced_modules_structure
-
-Test de la structure des modules avancés
-
----
-
-### test_hardcoded_paths
-
-Tests pour détecter les chemins hardcodés
-
-#### Classes
-
-##### TestHardcodedPaths
-
-Tests pour détecter les chemins hardcodés
-
-**Méthodes :**
-
-- `test_no_absolute_paths_in_source()`
-- `test_no_absolute_paths()`
-- `test_no_desktop_paths()`
-- `_is_acceptable_path()`
-
-#### Fonctions
-
-##### test_no_absolute_paths_in_source
-
-Test qu'il n'y a pas de chemins absolus dans le code source (sauf tests)
-
-##### test_no_absolute_paths
-
-Test qu'il n'y a pas de chemins absolus hardcodés
-
-##### test_no_desktop_paths
-
-Test qu'il n'y a pas de chemins Desktop hardcodés
-
-##### _is_acceptable_path
-
-Vérifie si un chemin absolu est acceptable
-
-**Paramètres :**
-
-- `path`
-
----
-
-### test_auto_documenter_unit
-
-#### Classes
-
-##### TestAutoDocumenter
-
-**Méthodes :**
-
-- `setUp()`
-- `test_constructor()`
-- `test_load_translations()`
-- `test_document_project()`
-- `test_generate_readme()`
-- `test_generate_api_documentation()`
-- `test_generate_setup_guide()`
-- `test_generate_usage_guide()`
-- `test_get_created_files()`
-
-#### Fonctions
-
-##### setUp
-
-##### test_constructor
-
-##### test_load_translations
-
-##### test_document_project
-
-##### test_generate_readme
-
-##### test_generate_api_documentation
-
-##### test_generate_setup_guide
-
-##### test_generate_usage_guide
-
-##### test_get_created_files
-
----
-
-### test_auto_tester_unit
-
-#### Classes
-
-##### TestAutoTester
-
-**Méthodes :**
-
-- `setUp()`
-- `tearDown()`
-- `test_constructor()`
-- `test_analyze_modules()`
-- `test_generate_unit_tests()`
-- `test_generate_integration_tests()`
-- `test_generate_performance_tests()`
-- `test_generate_test_report()`
-- `test_generate_tests()`
-
-#### Fonctions
-
-##### setUp
-
-##### tearDown
-
-##### test_constructor
-
-##### test_analyze_modules
-
-##### test_generate_unit_tests
-
-##### test_generate_integration_tests
-
-##### test_generate_performance_tests
-
-##### test_generate_test_report
-
-##### test_generate_tests
-
----
-
-### test_autocomplete_server
-
-#### Classes
-
-##### MockResp
-
-**Méthodes :**
-
-- `raise_for_status()`
-- `json()`
-
-#### Fonctions
-
-##### test_autocomplete_nominal
-
-##### test_autocomplete_empty_prompt
-
-##### test_ollama_autocomplete_engine
-
-**Paramètres :**
-
-- `monkeypatch`
-
-##### mock_post
-
-##### raise_for_status
-
-##### json
-
----
-
-### test_profils_utilisateur_avances
-
-Tests pour les profils utilisateur avancés
-Corrigé après réorganisation des modules
-
-#### Classes
-
-##### TestUserProfilesAdvanced
-
-Tests pour les profils utilisateur avancés (corrigé)
-
-**Méthodes :**
-
-- `setUp()`
-- `tearDown()`
-- `test_import_user_profiles()`
-- `test_profiles_structure()`
-- `test_profiles_functionality()`
-
-#### Fonctions
-
-##### setUp
-
-Configuration des tests
-
-##### tearDown
-
-Nettoyage après les tests
-
-##### test_import_user_profiles
-
-Test d'import des profils utilisateur
-
-##### test_profiles_structure
-
-Test de la structure des profils
-
-##### test_profiles_functionality
-
-Test de la fonctionnalité des profils
-
----
-
-### test_benchmark_critical
-
-#### Fonctions
-
-##### import_critical_function
-
-**Paramètres :**
-
-- `module_name`
-- `func_name`
-
-##### test_critical_function_benchmark
-
-**Paramètres :**
-
-- `benchmark`
-- `module_name`
-- `func_name`
-- `needs_path`
-
-##### test_global_coverage_threshold
-
-Ce test échoue si la couverture descend sous 80%.
-
----
-
-### test_ci_robust
-
-🧪 Tests CI Robustes - Athalia/Arkalia
-=====================================
-
-Tests robustes pour la validation CI/CD complète
-Tests plus approfondis pour validation de qualité
-
-#### Classes
-
-##### TestCIRobust
-
-Tests CI robustes pour validation complète
-
-**Méthodes :**
-
-- `test_python_environment()`
-- `test_project_structure_complete()`
-- `test_config_files_complete()`
-- `test_test_suite_structure()`
-- `test_requirements_validation()`
-- `test_ci_workflow_validation()`
-- `test_file_permissions_complete()`
-- `test_encoding_validation()`
-- `test_json_yaml_parsing()`
-- `test_subprocess_functionality()`
-- `test_time_functionality()`
-- `test_pathlib_functionality()`
-- `test_environment_robustness()`
-- `test_error_handling()`
-- `test_assertion_functionality()`
-
-#### Fonctions
-
-##### test_python_environment
-
-Vérifie l'environnement Python complet
-
-##### test_project_structure_complete
-
-Vérifie la structure complète du projet
-
-##### test_config_files_complete
-
-Vérifie tous les fichiers de configuration
-
-##### test_test_suite_structure
-
-Vérifie la structure de la suite de tests
-
-##### test_requirements_validation
-
-Valide les fichiers requirements
-
-##### test_ci_workflow_validation
-
-Valide le workflow CI
-
-##### test_file_permissions_complete
-
-Vérifie les permissions complètes
-
-##### test_encoding_validation
-
-Valide l'encodage UTF-8 complet
-
-##### test_json_yaml_parsing
-
-Teste le parsing JSON et YAML
-
-##### test_subprocess_functionality
-
-Teste la fonctionnalité subprocess
-
-##### test_time_functionality
-
-Teste la fonctionnalité time
-
-##### test_pathlib_functionality
-
-Teste la fonctionnalité pathlib
-
-##### test_environment_robustness
-
-Teste la robustesse de l'environnement
-
-##### test_error_handling
-
-Teste la gestion d'erreurs
-
-##### test_assertion_functionality
-
-Teste la fonctionnalité d'assertion
 
 ---
 
@@ -2262,165 +2518,51 @@ Test des imports de bibliothèques tierces
 
 ---
 
-### test_ci_ultra_fast
+### test_auto_correction_avancee
 
-Tests CI ultra-rapides pour Athalia
-Tests essentiels qui ne doivent jamais bloquer le CI
-
-#### Classes
-
-##### TestCIUltraFast
-
-Tests CI ultra-rapides et essentiels
-
-**Méthodes :**
-
-- `test_project_structure()`
-- `test_essential_files()`
-- `test_python_syntax_basic()`
-- `test_imports_basic()`
-- `test_config_validity()`
-- `test_requirements_format()`
-- `test_ci_workflow_exists()`
-- `test_no_critical_errors()`
-- `test_project_ready()`
-
-#### Fonctions
-
-##### test_project_structure
-
-Test que la structure de base du projet existe
-
-##### test_essential_files
-
-Test que les fichiers essentiels existent
-
-##### test_python_syntax_basic
-
-Test de syntaxe Python basique sur les fichiers principaux
-
-##### test_imports_basic
-
-Test d'imports basiques
-
-##### test_config_validity
-
-Test de validité basique de la configuration
-
-##### test_requirements_format
-
-Test de format basique des requirements
-
-##### test_ci_workflow_exists
-
-Test que le workflow CI existe
-
-##### test_no_critical_errors
-
-Test qu'il n'y a pas d'erreurs critiques
-
-##### test_project_ready
-
-Test que le projet est prêt pour le développement
-
----
-
-### test_security_comprehensive
-
-🧪 TESTS COMPLETS - SECURITY MODULE
-===================================
-Tests complets pour améliorer la couverture du module security.py.
+Tests pour le module d'auto-correction avancée
+Corrigé après réorganisation des modules
 
 #### Classes
 
-##### TestSecurityComprehensive
+##### TestAutoCorrectionAdvanced
 
-Tests complets pour le module security
+Tests pour l'auto-correction avancée (corrigé)
 
 **Méthodes :**
 
-- `setup_method()`
-- `teardown_method()`
-- `test_security_audit_project_clean_project()`
-- `test_security_audit_project_with_password()`
-- `test_security_audit_project_with_api_key()`
-- `test_security_audit_project_with_os_system()`
-- `test_security_audit_project_multiple_issues()`
-- `test_security_audit_project_with_f_files()`
-- `test_security_audit_project_file_read_error()`
-- `test_security_audit_project_empty_directory()`
-- `test_security_audit_project_ignores_non_python_files()`
-- `test_security_audit_project_case_insensitive()`
-- `test_security_audit_project_creates_audit_file()`
-- `test_security_audit_project_score_calculation()`
-- `test_security_audit_project_with_subdirectories()`
-- `test_security_audit_project_complex_patterns()`
+- `setUp()`
+- `tearDown()`
+- `test_import_auto_correction()`
+- `test_import_dashboard_unified()`
+- `test_import_user_profiles()`
+- `test_advanced_modules_structure()`
 
 #### Fonctions
 
-##### setup_method
+##### setUp
 
-Configuration avant chaque test
+Configuration des tests
 
-##### teardown_method
+##### tearDown
 
-Nettoyage après chaque test
+Nettoyage après les tests
 
-##### test_security_audit_project_clean_project
+##### test_import_auto_correction
 
-Test d'audit de sécurité sur un projet propre
+Test d'import du module d'auto-correction
 
-##### test_security_audit_project_with_password
+##### test_import_dashboard_unified
 
-Test d'audit avec mot de passe en clair
+Test d'import du dashboard unifié
 
-##### test_security_audit_project_with_api_key
+##### test_import_user_profiles
 
-Test d'audit avec clé API
+Test d'import des profils utilisateur
 
-##### test_security_audit_project_with_os_system
+##### test_advanced_modules_structure
 
-Test d'audit avec appel système
-
-##### test_security_audit_project_multiple_issues
-
-Test d'audit avec plusieurs problèmes
-
-##### test_security_audit_project_with_f_files
-
-Test d'audit avec fichiers .f(f
-
-##### test_security_audit_project_file_read_error
-
-Test d'audit avec erreur de lecture de fichier
-
-##### test_security_audit_project_empty_directory
-
-Test d'audit sur un répertoire vide
-
-##### test_security_audit_project_ignores_non_python_files
-
-Test que l'audit ignore les fichiers non Python
-
-##### test_security_audit_project_case_insensitive
-
-Test que l'audit est insensible à la casse
-
-##### test_security_audit_project_creates_audit_file
-
-Test que l'audit crée le fichier de rapport
-
-##### test_security_audit_project_score_calculation
-
-Test du calcul du score de sécurité
-
-##### test_security_audit_project_with_subdirectories
-
-Test d'audit avec sous-répertoires
-
-##### test_security_audit_project_complex_patterns
-
-Test d'audit avec des patterns complexes
+Test de la structure des modules avancés
 
 ---
 
@@ -2661,6 +2803,976 @@ Test la robustesse de la gestion d'erreurs de la CLI
 
 ---
 
+### test_auto_documenter_unit
+
+#### Classes
+
+##### TestAutoDocumenter
+
+**Méthodes :**
+
+- `setUp()`
+- `test_constructor()`
+- `test_load_translations()`
+- `test_document_project()`
+- `test_generate_readme()`
+- `test_generate_api_documentation()`
+- `test_generate_setup_guide()`
+- `test_generate_usage_guide()`
+- `test_get_created_files()`
+
+#### Fonctions
+
+##### setUp
+
+##### test_constructor
+
+##### test_load_translations
+
+##### test_document_project
+
+##### test_generate_readme
+
+##### test_generate_api_documentation
+
+##### test_generate_setup_guide
+
+##### test_generate_usage_guide
+
+##### test_get_created_files
+
+---
+
+### test_auto_tester_unit
+
+#### Classes
+
+##### TestAutoTester
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `test_constructor()`
+- `test_analyze_modules()`
+- `test_generate_unit_tests()`
+- `test_generate_integration_tests()`
+- `test_generate_performance_tests()`
+- `test_generate_test_report()`
+- `test_generate_tests()`
+
+#### Fonctions
+
+##### setUp
+
+##### tearDown
+
+##### test_constructor
+
+##### test_analyze_modules
+
+##### test_generate_unit_tests
+
+##### test_generate_integration_tests
+
+##### test_generate_performance_tests
+
+##### test_generate_test_report
+
+##### test_generate_tests
+
+---
+
+### test_autocomplete_server
+
+#### Classes
+
+##### MockResp
+
+**Méthodes :**
+
+- `raise_for_status()`
+- `json()`
+
+#### Fonctions
+
+##### test_autocomplete_nominal
+
+##### test_autocomplete_empty_prompt
+
+##### test_ollama_autocomplete_engine
+
+**Paramètres :**
+
+- `monkeypatch`
+
+##### mock_post
+
+##### raise_for_status
+
+##### json
+
+---
+
+### test_profils_utilisateur_avances
+
+Tests pour les profils utilisateur avancés
+Corrigé après réorganisation des modules
+
+#### Classes
+
+##### TestUserProfilesAdvanced
+
+Tests pour les profils utilisateur avancés (corrigé)
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `test_import_user_profiles()`
+- `test_profiles_structure()`
+- `test_profiles_functionality()`
+
+#### Fonctions
+
+##### setUp
+
+Configuration des tests
+
+##### tearDown
+
+Nettoyage après les tests
+
+##### test_import_user_profiles
+
+Test d'import des profils utilisateur
+
+##### test_profiles_structure
+
+Test de la structure des profils
+
+##### test_profiles_functionality
+
+Test de la fonctionnalité des profils
+
+---
+
+### test_benchmark_critical
+
+#### Fonctions
+
+##### import_critical_function
+
+**Paramètres :**
+
+- `module_name`
+- `func_name`
+
+##### test_critical_function_benchmark
+
+**Paramètres :**
+
+- `benchmark`
+- `module_name`
+- `func_name`
+- `needs_path`
+
+##### test_global_coverage_threshold
+
+Ce test échoue si la couverture descend sous 80%.
+
+---
+
+### test_correction_optimizer_complete
+
+Tests complets pour correction_optimizer.py
+Couverture : 100% des fonctionnalités
+Tests : 35 tests unitaires et d'intégration
+
+#### Classes
+
+##### TestCorrectionOptimizer
+
+Tests complets pour CorrectionOptimizer
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_init_with_project_path()`
+- `test_init_without_project_path()`
+- `test_optimize_correction()`
+- `test_optimize_correction_with_syntax_error()`
+- `test_get_correction_stats()`
+- `test_optimize_performance()`
+- `test_generate_corrections()`
+- `test_apply_corrections()`
+- `test_validate_corrections()`
+- `test_generate_report()`
+- `test_save_report()`
+- `test_load_report()`
+- `test_compare_versions()`
+- `test_estimate_effort()`
+- `test_validate_syntax()`
+- `test_extract_metrics()`
+- `test_identify_bottlenecks()`
+- `test_generate_optimization_plan()`
+- `test_apply_automatic_fixes()`
+- `test_validate_improvements()`
+- `test_generate_documentation()`
+- `test_create_test_suite()`
+- `test_analyze_dependencies()`
+- `test_optimize_imports()`
+- `test_validate_naming_conventions()`
+- `test_generate_refactoring_suggestions()`
+- `test_analyze_security_issues()`
+- `test_optimize_memory_usage()`
+- `test_generate_performance_profile()`
+- `test_validate_code_standards()`
+- `test_generate_migration_plan()`
+- `test_analyze_code_complexity()`
+- `test_optimize_algorithm_efficiency()`
+- `test_generate_code_review_checklist()`
+- `test_validate_test_coverage()`
+- `test_generate_optimization_metrics()`
+- `test_analyze_code_duplication()`
+
+##### TestCorrectionOptimizerIntegration
+
+Tests d'intégration pour CorrectionOptimizer
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_full_optimization_workflow()`
+- `test_error_handling()`
+
+#### Fonctions
+
+##### setup_method
+
+Configuration avant chaque test
+
+##### teardown_method
+
+Nettoyage après chaque test
+
+##### test_init_with_project_path
+
+Test initialisation avec chemin de projet
+
+##### test_init_without_project_path
+
+Test initialisation sans chemin de projet
+
+##### test_optimize_correction
+
+Test optimisation de correction
+
+##### test_optimize_correction_with_syntax_error
+
+Test optimisation avec erreur de syntaxe
+
+##### test_get_correction_stats
+
+Test récupération des statistiques de correction
+
+##### test_optimize_performance
+
+Test optimisation des performances
+
+##### test_generate_corrections
+
+Test génération de corrections
+
+##### test_apply_corrections
+
+Test application de corrections
+
+##### test_validate_corrections
+
+Test validation des corrections
+
+##### test_generate_report
+
+Test génération de rapport
+
+##### test_save_report
+
+Test sauvegarde de rapport
+
+##### test_load_report
+
+Test chargement de rapport
+
+##### test_compare_versions
+
+Test comparaison de versions
+
+##### test_estimate_effort
+
+Test estimation d'effort
+
+##### test_validate_syntax
+
+Test validation de syntaxe
+
+##### test_extract_metrics
+
+Test extraction de métriques
+
+##### test_identify_bottlenecks
+
+Test identification des goulots d'étranglement
+
+##### test_generate_optimization_plan
+
+Test génération de plan d'optimisation
+
+##### test_apply_automatic_fixes
+
+Test application de corrections automatiques
+
+##### test_validate_improvements
+
+Test validation des améliorations
+
+##### test_generate_documentation
+
+Test génération de documentation
+
+##### test_create_test_suite
+
+Test création de suite de tests
+
+##### test_analyze_dependencies
+
+Test analyse des dépendances
+
+##### test_optimize_imports
+
+Test optimisation des imports
+
+##### test_validate_naming_conventions
+
+Test validation des conventions de nommage
+
+##### test_generate_refactoring_suggestions
+
+Test génération de suggestions de refactoring
+
+##### test_analyze_security_issues
+
+Test analyse des problèmes de sécurité
+
+##### test_optimize_memory_usage
+
+Test optimisation de l'utilisation mémoire
+
+##### test_generate_performance_profile
+
+Test génération de profil de performance
+
+##### test_validate_code_standards
+
+Test validation des standards de code
+
+##### test_generate_migration_plan
+
+Test génération de plan de migration
+
+##### test_analyze_code_complexity
+
+Test analyse de la complexité du code
+
+##### test_optimize_algorithm_efficiency
+
+Test optimisation de l'efficacité algorithmique
+
+##### test_generate_code_review_checklist
+
+Test génération de checklist de revue de code
+
+##### test_validate_test_coverage
+
+Test validation de la couverture de tests
+
+##### test_generate_optimization_metrics
+
+Test génération de métriques d'optimisation
+
+##### test_analyze_code_duplication
+
+Test analyse de la duplication de code
+
+##### setup_method
+
+Configuration avant chaque test
+
+##### teardown_method
+
+Nettoyage après chaque test
+
+##### test_full_optimization_workflow
+
+Test workflow complet d'optimisation
+
+##### test_error_handling
+
+Test gestion des erreurs
+
+---
+
+### test_ci_robust
+
+🧪 Tests CI Robustes - Athalia/Arkalia
+=====================================
+
+Tests robustes pour la validation CI/CD complète
+Tests plus approfondis pour validation de qualité
+
+#### Classes
+
+##### TestCIRobust
+
+Tests CI robustes pour validation complète
+
+**Méthodes :**
+
+- `test_python_environment()`
+- `test_project_structure_complete()`
+- `test_config_files_complete()`
+- `test_test_suite_structure()`
+- `test_requirements_validation()`
+- `test_ci_workflow_validation()`
+- `test_file_permissions_complete()`
+- `test_encoding_validation()`
+- `test_json_yaml_parsing()`
+- `test_subprocess_functionality()`
+- `test_time_functionality()`
+- `test_pathlib_functionality()`
+- `test_environment_robustness()`
+- `test_error_handling()`
+- `test_assertion_functionality()`
+
+#### Fonctions
+
+##### test_python_environment
+
+Vérifie l'environnement Python complet
+
+##### test_project_structure_complete
+
+Vérifie la structure complète du projet
+
+##### test_config_files_complete
+
+Vérifie tous les fichiers de configuration
+
+##### test_test_suite_structure
+
+Vérifie la structure de la suite de tests
+
+##### test_requirements_validation
+
+Valide les fichiers requirements
+
+##### test_ci_workflow_validation
+
+Valide le workflow CI
+
+##### test_file_permissions_complete
+
+Vérifie les permissions complètes
+
+##### test_encoding_validation
+
+Valide l'encodage UTF-8 complet
+
+##### test_json_yaml_parsing
+
+Teste le parsing JSON et YAML
+
+##### test_subprocess_functionality
+
+Teste la fonctionnalité subprocess
+
+##### test_time_functionality
+
+Teste la fonctionnalité time
+
+##### test_pathlib_functionality
+
+Teste la fonctionnalité pathlib
+
+##### test_environment_robustness
+
+Teste la robustesse de l'environnement
+
+##### test_error_handling
+
+Teste la gestion d'erreurs
+
+##### test_assertion_functionality
+
+Teste la fonctionnalité d'assertion
+
+---
+
+### test_no_polluting_files
+
+Tests pour détecter les fichiers polluants
+
+#### Classes
+
+##### TestNoPollutingFiles
+
+Tests pour détecter les fichiers polluants
+
+**Méthodes :**
+
+- `test_no_macos_hidden_files()`
+- `test_no_python_cache_files()`
+- `test_no_temp_files()`
+- `test_no_corrupted_files()`
+- `test_no_editor_files()`
+- `test_no_archive_files()`
+- `test_no_secret_files()`
+- `test_no_large_files()`
+- `test_no_duplicate_files()`
+- `test_no_empty_directories()`
+
+#### Fonctions
+
+##### test_no_macos_hidden_files
+
+Test qu'il n'y a pas de fichiers cachés macOS
+
+##### test_no_python_cache_files
+
+Test qu'il n'y a pas de fichiers cache Python
+
+##### test_no_temp_files
+
+Test qu'il n'y a pas de fichiers temporaires
+
+##### test_no_corrupted_files
+
+Test qu'il n'y a pas de fichiers corrompus
+
+##### test_no_editor_files
+
+Test qu'il n'y a pas de fichiers d'éditeur
+
+##### test_no_archive_files
+
+Test qu'il n'y a pas de fichiers d'archive dans le projet
+
+##### test_no_secret_files
+
+Test qu'il n'y a pas de fichiers de secrets
+
+##### test_no_large_files
+
+Test qu'il n'y a pas de fichiers trop volumineux
+
+##### test_no_duplicate_files
+
+Test qu'il n'y a pas de fichiers dupliqués
+
+##### test_no_empty_directories
+
+Test qu'il n'y a pas de répertoires vides
+
+---
+
+### test_ci_ultra_fast
+
+Tests CI ultra-rapides pour Athalia
+Tests essentiels qui ne doivent jamais bloquer le CI
+
+#### Classes
+
+##### TestCIUltraFast
+
+Tests CI ultra-rapides et essentiels
+
+**Méthodes :**
+
+- `test_project_structure()`
+- `test_essential_files()`
+- `test_python_syntax_basic()`
+- `test_imports_basic()`
+- `test_config_validity()`
+- `test_requirements_format()`
+- `test_ci_workflow_exists()`
+- `test_no_critical_errors()`
+- `test_project_ready()`
+
+#### Fonctions
+
+##### test_project_structure
+
+Test que la structure de base du projet existe
+
+##### test_essential_files
+
+Test que les fichiers essentiels existent
+
+##### test_python_syntax_basic
+
+Test de syntaxe Python basique sur les fichiers principaux
+
+##### test_imports_basic
+
+Test d'imports basiques
+
+##### test_config_validity
+
+Test de validité basique de la configuration
+
+##### test_requirements_format
+
+Test de format basique des requirements
+
+##### test_ci_workflow_exists
+
+Test que le workflow CI existe
+
+##### test_no_critical_errors
+
+Test qu'il n'y a pas d'erreurs critiques
+
+##### test_project_ready
+
+Test que le projet est prêt pour le développement
+
+---
+
+### test_security_patterns
+
+Test de détection des patterns de sécurité dangereux
+Vérifie qu'il n'y a pas de code dangereux dans le projet
+
+#### Classes
+
+##### TestSecurityPatterns
+
+Tests de détection des patterns de sécurité
+
+**Méthodes :**
+
+- `test_no_hardcoded_passwords()`
+- `test_no_sql_injection_patterns()`
+- `test_no_eval_usage()`
+- `test_no_shell_injection()`
+- `test_no_debug_code()`
+- `test_no_hardcoded_urls()`
+- `test_no_weak_crypto()`
+
+#### Fonctions
+
+##### test_no_hardcoded_passwords
+
+Test qu'il n'y a pas de mots de passe hardcodés
+
+##### test_no_sql_injection_patterns
+
+Test qu'il n'y a pas de patterns d'injection SQL
+
+##### test_no_eval_usage
+
+Test qu'il n'y a pas d'utilisation de fonctions dangereuses
+
+##### test_no_shell_injection
+
+Test qu'il n'y a pas d'injection shell
+
+##### test_no_debug_code
+
+Test qu'il n'y a pas de code de debug
+
+##### test_no_hardcoded_urls
+
+Vérifie qu'il n'y a pas d'URLs hardcodées
+
+##### test_no_weak_crypto
+
+Vérifie qu'il n'y a pas de crypto faible
+
+---
+
+### test_security_comprehensive
+
+🧪 TESTS COMPLETS - SECURITY MODULE
+===================================
+Tests complets pour améliorer la couverture du module security.py.
+
+#### Classes
+
+##### TestSecurityComprehensive
+
+Tests complets pour le module security
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_security_audit_project_clean_project()`
+- `test_security_audit_project_with_password()`
+- `test_security_audit_project_with_api_key()`
+- `test_security_audit_project_with_os_system()`
+- `test_security_audit_project_multiple_issues()`
+- `test_security_audit_project_with_f_files()`
+- `test_security_audit_project_file_read_error()`
+- `test_security_audit_project_empty_directory()`
+- `test_security_audit_project_ignores_non_python_files()`
+- `test_security_audit_project_case_insensitive()`
+- `test_security_audit_project_creates_audit_file()`
+- `test_security_audit_project_score_calculation()`
+- `test_security_audit_project_with_subdirectories()`
+- `test_security_audit_project_complex_patterns()`
+
+#### Fonctions
+
+##### setup_method
+
+Configuration avant chaque test
+
+##### teardown_method
+
+Nettoyage après chaque test
+
+##### test_security_audit_project_clean_project
+
+Test d'audit de sécurité sur un projet propre
+
+##### test_security_audit_project_with_password
+
+Test d'audit avec mot de passe en clair
+
+##### test_security_audit_project_with_api_key
+
+Test d'audit avec clé API
+
+##### test_security_audit_project_with_os_system
+
+Test d'audit avec appel système
+
+##### test_security_audit_project_multiple_issues
+
+Test d'audit avec plusieurs problèmes
+
+##### test_security_audit_project_with_f_files
+
+Test d'audit avec fichiers .f(f
+
+##### test_security_audit_project_file_read_error
+
+Test d'audit avec erreur de lecture de fichier
+
+##### test_security_audit_project_empty_directory
+
+Test d'audit sur un répertoire vide
+
+##### test_security_audit_project_ignores_non_python_files
+
+Test que l'audit ignore les fichiers non Python
+
+##### test_security_audit_project_case_insensitive
+
+Test que l'audit est insensible à la casse
+
+##### test_security_audit_project_creates_audit_file
+
+Test que l'audit crée le fichier de rapport
+
+##### test_security_audit_project_score_calculation
+
+Test du calcul du score de sécurité
+
+##### test_security_audit_project_with_subdirectories
+
+Test d'audit avec sous-répertoires
+
+##### test_security_audit_project_complex_patterns
+
+Test d'audit avec des patterns complexes
+
+---
+
+### test_error_handling
+
+Tests pour le système de gestion d'erreurs d'Athalia
+
+#### Classes
+
+##### TestErrorCodes
+
+Tests pour les codes d'erreur.
+
+**Méthodes :**
+
+- `test_error_code_enum()`
+- `test_error_severity_enum()`
+- `test_get_error_description()`
+- `test_get_error_severity()`
+- `test_format_error_message()`
+
+##### TestAthaliaError
+
+Tests pour la classe AthaliaError.
+
+**Méthodes :**
+
+- `test_athalia_error_creation()`
+- `test_athalia_error_to_dict()`
+
+##### TestErrorHandler
+
+Tests pour le gestionnaire d'erreurs.
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `test_error_handler_initialization()`
+- `test_handle_athalia_error()`
+- `test_handle_python_exception()`
+- `test_handle_critical_error()`
+- `test_error_summary()`
+- `test_clear_errors()`
+
+##### TestErrorHandlerGlobal
+
+Tests pour le gestionnaire d'erreurs global.
+
+**Méthodes :**
+
+- `test_get_error_handler()`
+- `test_handle_error_global()`
+- `test_raise_athalia_error()`
+
+##### TestErrorDecorators
+
+Tests pour les décorateurs de gestion d'erreurs.
+
+**Méthodes :**
+
+- `test_error_handler_decorator()`
+- `test_error_handler_decorator_no_error()`
+
+##### TestErrorContext
+
+Tests pour le context manager ErrorContext.
+
+**Méthodes :**
+
+- `test_error_context_no_error()`
+- `test_error_context_with_error()`
+- `test_error_context_with_athalia_error()`
+
+#### Fonctions
+
+##### test_error_code_enum
+
+Test de l'énumération des codes d'erreur.
+
+##### test_error_severity_enum
+
+Test de l'énumération des niveaux de sévérité.
+
+##### test_get_error_description
+
+Test de récupération des descriptions d'erreur.
+
+##### test_get_error_severity
+
+Test de détermination de la sévérité.
+
+##### test_format_error_message
+
+Test de formatage des messages d'erreur.
+
+##### test_athalia_error_creation
+
+Test de création d'une AthaliaError.
+
+##### test_athalia_error_to_dict
+
+Test de conversion en dictionnaire.
+
+##### setUp
+
+Configuration avant chaque test.
+
+##### tearDown
+
+Nettoyage après chaque test.
+
+##### test_error_handler_initialization
+
+Test d'initialisation du gestionnaire d'erreurs.
+
+##### test_handle_athalia_error
+
+Test de gestion d'une AthaliaError.
+
+##### test_handle_python_exception
+
+Test de gestion d'une exception Python.
+
+##### test_handle_critical_error
+
+Test de gestion d'une erreur critique.
+
+##### test_error_summary
+
+Test du résumé des erreurs.
+
+##### test_clear_errors
+
+Test d'effacement des erreurs.
+
+##### test_get_error_handler
+
+Test de récupération du gestionnaire global.
+
+##### test_handle_error_global
+
+Test de gestion d'erreur globale.
+
+##### test_raise_athalia_error
+
+Test de levée d'AthaliaError.
+
+##### test_error_handler_decorator
+
+Test du décorateur error_handler.
+
+##### test_error_handler_decorator_no_error
+
+Test du décorateur sans erreur.
+
+##### test_error_context_no_error
+
+Test du context manager sans erreur.
+
+##### test_error_context_with_error
+
+Test du context manager avec erreur.
+
+##### test_error_context_with_athalia_error
+
+Test du context manager avec AthaliaError.
+
+##### test_function
+
+##### test_function
+
+---
+
 ### test_requirements_consistency
 
 Test de cohérence des dépendances
@@ -2765,56 +3877,354 @@ Vérifie que requirements.txt est installable
 
 ---
 
-### test_security_patterns
+### test_robotics_ci_complete
 
-Test de détection des patterns de sécurité dangereux
-Vérifie qu'il n'y a pas de code dangereux dans le projet
+Tests complets pour robotics_ci.py
+Couverture : 100% des fonctionnalités de CI/CD robotics
+Tests : 20 tests unitaires et d'intégration
 
 #### Classes
 
-##### TestSecurityPatterns
-
-Tests de détection des patterns de sécurité
+##### TestRoboticsCI
 
 **Méthodes :**
 
-- `test_no_hardcoded_passwords()`
-- `test_no_sql_injection_patterns()`
-- `test_no_eval_usage()`
-- `test_no_shell_injection()`
-- `test_no_debug_code()`
-- `test_no_hardcoded_urls()`
-- `test_no_weak_crypto()`
+- `setup_method()`
+- `teardown_method()`
+- `test_init_with_project_path()`
+- `test_check_project_structure_ros2()`
+- `test_check_project_structure_rust()`
+- `test_check_project_structure_missing_files()`
+- `test_run_build_rust_success()`
+- `test_run_build_rust_failure()`
+- `test_run_build_ros2_success()`
+- `test_run_build_python_success()`
+- `test_run_tests_rust_success()`
+- `test_run_tests_ros2_success()`
+- `test_run_linting_rust_success()`
+- `test_run_linting_python_success()`
+- `test_run_security_scan_rust_success()`
+- `test_run_security_scan_python_success()`
+- `test_run_deployment_check_with_configs()`
+- `test_run_deployment_check_without_configs()`
+- `test_calculate_ci_score_perfect()`
+- `test_calculate_ci_score_with_failures()`
+- `test_generate_ci_report()`
+- `test_run_full_pipeline()`
+- `test_error_handling_timeout()`
+- `test_error_handling_exception()`
+
+##### TestRoboticsCIIntegration
+
+Tests d'intégration pour RoboticsCI
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_full_ci_workflow()`
 
 #### Fonctions
 
-##### test_no_hardcoded_passwords
+##### test_run_robotics_ci_function
 
-Test qu'il n'y a pas de mots de passe hardcodés
+Test de la fonction utilitaire run_robotics_ci
 
-##### test_no_sql_injection_patterns
+##### setup_method
 
-Test qu'il n'y a pas de patterns d'injection SQL
+##### teardown_method
 
-##### test_no_eval_usage
+##### test_init_with_project_path
 
-Test qu'il n'y a pas d'utilisation de fonctions dangereuses
+Test de l'initialisation avec project_path
 
-##### test_no_shell_injection
+##### test_check_project_structure_ros2
 
-Test qu'il n'y a pas d'injection shell
+Test de vérification de structure ROS2
 
-##### test_no_debug_code
+##### test_check_project_structure_rust
 
-Test qu'il n'y a pas de code de debug
+Test de vérification de structure Rust
 
-##### test_no_hardcoded_urls
+##### test_check_project_structure_missing_files
 
-Vérifie qu'il n'y a pas d'URLs hardcodées
+Test de vérification avec fichiers manquants
 
-##### test_no_weak_crypto
+##### test_run_build_rust_success
 
-Vérifie qu'il n'y a pas de crypto faible
+Test de build Rust réussi
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_build_rust_failure
+
+Test de build Rust échoué
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_build_ros2_success
+
+Test de build ROS2 réussi
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_build_python_success
+
+Test de build Python réussi
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_tests_rust_success
+
+Test de tests Rust réussi
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_tests_ros2_success
+
+Test de tests ROS2 réussi
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_linting_rust_success
+
+Test de linting Rust réussi
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_linting_python_success
+
+Test de linting Python réussi
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_security_scan_rust_success
+
+Test de scan sécurité Rust réussi
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_security_scan_python_success
+
+Test de scan sécurité Python réussi
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_deployment_check_with_configs
+
+Test de vérification déploiement avec fichiers de config
+
+##### test_run_deployment_check_without_configs
+
+Test de vérification déploiement sans fichiers de config
+
+##### test_calculate_ci_score_perfect
+
+Test de calcul de score CI parfait
+
+##### test_calculate_ci_score_with_failures
+
+Test de calcul de score CI avec échecs
+
+##### test_generate_ci_report
+
+Test de génération du rapport CI
+
+##### test_run_full_pipeline
+
+Test du pipeline complet
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_error_handling_timeout
+
+Test de gestion des timeouts
+
+##### test_error_handling_exception
+
+Test de gestion des exceptions
+
+##### setup_method
+
+##### teardown_method
+
+##### test_full_ci_workflow
+
+Test du workflow CI complet
+
+**Paramètres :**
+
+- `mock_run`
+
+---
+
+### test_ros2_validator_complete
+
+Tests complets pour ros2_validator.py
+Couverture : 100% des fonctionnalités de validation ROS2
+Tests : 20 tests unitaires et d'intégration
+
+#### Classes
+
+##### TestROS2Validator
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_init_with_project_path()`
+- `test_check_package_structure_valid()`
+- `test_check_package_structure_missing_files()`
+- `test_validate_package_xml_valid()`
+- `test_validate_package_xml_missing_elements()`
+- `test_validate_package_xml_invalid_xml()`
+- `test_validate_setup_py_valid()`
+- `test_validate_setup_py_missing_patterns()`
+- `test_validate_cmakelists_valid()`
+- `test_validate_cmakelists_missing_patterns()`
+- `test_check_launch_files()`
+- `test_check_test_files()`
+- `test_check_dependencies_success()`
+- `test_check_dependencies_failure()`
+- `test_validate_package_complete()`
+- `test_generate_validation_report()`
+- `test_error_handling_file_errors()`
+- `test_integration_with_real_package()`
+
+##### TestROS2ValidatorIntegration
+
+Tests d'intégration pour ROS2Validator
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_full_validation_workflow()`
+- `test_error_handling()`
+
+#### Fonctions
+
+##### test_validate_ros2_package_function
+
+Test de la fonction utilitaire validate_ros2_package
+
+##### setup_method
+
+##### teardown_method
+
+##### test_init_with_project_path
+
+Test de l'initialisation avec project_path
+
+##### test_check_package_structure_valid
+
+Test de vérification de structure valide
+
+##### test_check_package_structure_missing_files
+
+Test de vérification de structure avec fichiers manquants
+
+##### test_validate_package_xml_valid
+
+Test de validation package.xml valide
+
+##### test_validate_package_xml_missing_elements
+
+Test de validation package.xml avec éléments manquants
+
+##### test_validate_package_xml_invalid_xml
+
+Test de validation package.xml avec XML invalide
+
+##### test_validate_setup_py_valid
+
+Test de validation setup.py valide
+
+##### test_validate_setup_py_missing_patterns
+
+Test de validation setup.py avec patterns manquants
+
+##### test_validate_cmakelists_valid
+
+Test de validation CMakeLists.txt valide
+
+##### test_validate_cmakelists_missing_patterns
+
+Test de validation CMakeLists.txt avec patterns manquants
+
+##### test_check_launch_files
+
+Test de vérification des fichiers de lancement
+
+##### test_check_test_files
+
+Test de vérification des fichiers de test
+
+##### test_check_dependencies_success
+
+Test de vérification des dépendances réussie
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_check_dependencies_failure
+
+Test de vérification des dépendances échouée
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_validate_package_complete
+
+Test de validation complète d'un package
+
+##### test_generate_validation_report
+
+Test de génération du rapport de validation
+
+##### test_error_handling_file_errors
+
+Test de gestion des erreurs de fichiers
+
+##### test_integration_with_real_package
+
+Test d'intégration avec un package réel
+
+##### setup_method
+
+##### teardown_method
+
+##### test_full_validation_workflow
+
+Test du workflow complet de validation
+
+##### test_error_handling
+
+Test de gestion des erreurs
 
 ---
 
@@ -2856,178 +4266,390 @@ Fonction principale de f
 
 ### test_unified_orchestrator_complete
 
-🧪 TESTS COMPLETS POUR L'ORCHESTRATEUR UNIFIÉ ATHALIA
-
-Ce fichier teste TOUTES les fonctionnalités de l'orchestrateur unifié
-pour atteindre une couverture de test élevée.
+Tests complets pour unified_orchestrator.py
+Couverture : 100% des fonctionnalités d'orchestration unifiée
+Tests : 20 tests unitaires et d'intégration
 
 #### Classes
 
-##### TestUnifiedOrchestratorComplete
-
-Tests complets pour l'orchestrateur unifié
+##### TestUnifiedOrchestrator
 
 **Méthodes :**
 
 - `setup_method()`
 - `teardown_method()`
-- `test_orchestrator_initialization()`
-- `test_database_initialization()`
-- `test_orchestrate_project_complete_basic()`
-- `test_orchestrate_project_complete_with_industrialization()`
-- `test_run_audit()`
-- `test_run_linting()`
-- `test_run_security_audit()`
-- `test_run_analytics()`
-- `test_run_cleanup()`
-- `test_run_documentation()`
-- `test_run_testing()`
-- `test_run_cicd()`
-- `test_run_robotics_audit()`
-- `test_generate_predictions()`
-- `test_generate_optimizations()`
-- `test_learn_from_results()`
-- `test_generate_unified_report()`
-- `test_save_unified_results()`
-- `test_get_orchestration_insights()`
-- `test_phase2_backup()`
-- `test_phase2_error_handling()`
-- `test_validate_phase2_inputs()`
-- `test_get_phase2_backup_stats()`
-- `test_orchestrate_with_phase2_features()`
-- `test_error_handling_in_industrialization()`
-- `test_cli_entry_point()`
-- `test_main_entry_point()`
-- `test_main_with_args()`
-- `test_orchestrator_auto_backup()`
+- `test_init_with_project_path()`
+- `test_initialize_modules_success()`
+- `test_initialize_modules_failure()`
+- `test_step_generate_project_success()`
+- `test_step_generate_project_failure()`
+- `test_step_security_audit_success()`
+- `test_step_security_audit_failure()`
+- `test_step_code_linting_success()`
+- `test_step_correction_optimization_success()`
+- `test_step_auto_testing_success()`
+- `test_step_auto_documentation_success()`
+- `test_step_auto_cleaning_success()`
+- `test_step_auto_cicd_success()`
+- `test_generate_workflow_report()`
+- `test_save_workflow_results()`
+- `test_run_full_workflow_success()`
+- `test_run_full_workflow_failure()`
+- `test_error_handling_module_initialization()`
+- `test_workflow_results_structure()`
+
+##### TestUnifiedOrchestratorIntegration
+
+Tests d'intégration pour UnifiedOrchestrator
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_full_integration_workflow()`
 
 #### Fonctions
 
-##### setup_method
+##### test_run_unified_workflow_function
 
-Configuration avant chaque test
+Test de la fonction utilitaire run_unified_workflow
+
+##### setup_method
 
 ##### teardown_method
 
-Nettoyage après chaque test
+##### test_init_with_project_path
 
-##### test_orchestrator_initialization
+Test de l'initialisation avec project_path
 
-Test l'initialisation complète de l'orchestrateur
+##### test_initialize_modules_success
 
-##### test_database_initialization
+Test d'initialisation des modules réussie
 
-Test l'initialisation de la base de données
+**Paramètres :**
 
-##### test_orchestrate_project_complete_basic
+- `mock_cicd`
+- `mock_cleaner`
+- `mock_doc`
+- `mock_tester`
+- `mock_optimizer`
+- `mock_linter`
+- `mock_security`
+- `mock_ai`
 
-Test l'orchestration complète basique
+##### test_initialize_modules_failure
 
-##### test_orchestrate_project_complete_with_industrialization
+Test d'initialisation des modules échouée
 
-Test l'orchestration avec industrialisation
+**Paramètres :**
 
-##### test_run_audit
+- `mock_ai`
 
-Test l'exécution de l'audit
+##### test_step_generate_project_success
 
-##### test_run_linting
+Test de l'étape de génération de projet réussie
 
-Test l'exécution du linting
+**Paramètres :**
 
-##### test_run_security_audit
+- `mock_generate`
 
-Test l'exécution de l'audit de sécurité
+##### test_step_generate_project_failure
 
-##### test_run_analytics
+Test de l'étape de génération de projet échouée
 
-Test l'exécution de l'analytics
+**Paramètres :**
 
-##### test_run_cleanup
+- `mock_generate`
 
-Test l'exécution du nettoyage
+##### test_step_security_audit_success
 
-##### test_run_documentation
+Test de l'étape d'audit de sécurité réussie
 
-Test l'exécution de la documentation
+**Paramètres :**
 
-##### test_run_testing
+- `mock_security_class`
 
-Test l'exécution des tests
+##### test_step_security_audit_failure
 
-##### test_run_cicd
+Test de l'étape d'audit de sécurité échouée
 
-Test l'exécution du CI/CD
+**Paramètres :**
 
-##### test_run_robotics_audit
+- `mock_security_class`
 
-Test l'exécution de l'audit robotique
+##### test_step_code_linting_success
 
-##### test_generate_predictions
+Test de l'étape de linting réussie
 
-Test la génération de prédictions
+**Paramètres :**
 
-##### test_generate_optimizations
+- `mock_linter_class`
 
-Test la génération d'optimisations
+##### test_step_correction_optimization_success
 
-##### test_learn_from_results
+Test de l'étape d'optimisation des corrections réussie
 
-Test l'apprentissage des résultats
+**Paramètres :**
 
-##### test_generate_unified_report
+- `mock_optimizer_class`
 
-Test la génération du rapport unifié
+##### test_step_auto_testing_success
 
-##### test_save_unified_results
+Test de l'étape de tests automatiques réussie
 
-Test la sauvegarde des résultats
+**Paramètres :**
 
-##### test_get_orchestration_insights
+- `mock_tester_class`
 
-Test la récupération des insights d'orchestration
+##### test_step_auto_documentation_success
 
-##### test_phase2_backup
+Test de l'étape de documentation automatique réussie
 
-Test la sauvegarde Phase 2
+**Paramètres :**
 
-##### test_phase2_error_handling
+- `mock_doc_class`
 
-Test la gestion d'erreurs Phase 2
+##### test_step_auto_cleaning_success
 
-##### test_validate_phase2_inputs
+Test de l'étape de nettoyage automatique réussie
 
-Test la validation des entrées Phase 2
+**Paramètres :**
 
-##### test_get_phase2_backup_stats
+- `mock_cleaner_class`
 
-Test les statistiques de sauvegarde Phase 2
+##### test_step_auto_cicd_success
 
-##### test_orchestrate_with_phase2_features
+Test de l'étape de CI/CD automatique réussie
 
-Test l'orchestration avec fonctionnalités Phase 2
+**Paramètres :**
 
-##### test_error_handling_in_industrialization
+- `mock_cicd_class`
 
-Test la gestion d'erreurs dans l'industrialisation
+##### test_generate_workflow_report
 
-##### test_cli_entry_point
+Test de génération du rapport de workflow
 
-Test le point d'entrée CLI
+##### test_save_workflow_results
 
-##### test_main_entry_point
+Test de sauvegarde des résultats de workflow
 
-Test le point d'entrée principal
+**Paramètres :**
 
-##### test_main_with_args
+- `mock_open`
 
-Test le point d'entrée principal avec arguments
+##### test_run_full_workflow_success
 
-##### test_orchestrator_auto_backup
+Test du workflow complet réussi
 
-Test la sauvegarde automatique de l'orchestrateur
+**Paramètres :**
 
-##### test_operation
+- `mock_cicd`
+- `mock_cleaner`
+- `mock_doc`
+- `mock_tester`
+- `mock_optimizer`
+- `mock_linter`
+- `mock_security`
+- `mock_generate`
+
+##### test_run_full_workflow_failure
+
+Test du workflow complet échoué
+
+**Paramètres :**
+
+- `mock_generate`
+
+##### test_error_handling_module_initialization
+
+Test de gestion des erreurs d'initialisation de modules
+
+##### test_workflow_results_structure
+
+Test de la structure des résultats de workflow
+
+##### setup_method
+
+##### teardown_method
+
+##### test_full_integration_workflow
+
+Test d'intégration du workflow complet
+
+**Paramètres :**
+
+- `mock_cicd`
+- `mock_cleaner`
+- `mock_doc`
+- `mock_tester`
+- `mock_optimizer`
+- `mock_linter`
+- `mock_security`
+- `mock_generate`
+
+---
+
+### test_plugins_validator_complete
+
+Tests complets pour plugins_validator.py
+Couverture : 100% des fonctionnalités de validation de plugins
+Tests : 25 tests unitaires et d'intégration
+
+#### Classes
+
+##### TestPluginValidator
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_init_with_plugins_dir()`
+- `test_validate_plugin_with_valid_structure()`
+- `test_validate_plugin_without_init()`
+- `test_validate_plugin_with_syntax_error()`
+- `test_validate_plugin_with_metadata()`
+- `test_validate_plugin_with_requirements()`
+- `test_validate_all_plugins_empty_directory()`
+- `test_validate_all_plugins_with_valid_plugins()`
+- `test_validate_all_plugins_with_mixed_plugins()`
+- `test_generate_validation_report()`
+- `test_check_plugin_structure_success()`
+- `test_check_plugin_structure_failure()`
+- `test_check_python_syntax_success()`
+- `test_check_python_syntax_failure()`
+- `test_check_metadata_yaml()`
+- `test_check_metadata_json()`
+- `test_check_metadata_missing_required_fields()`
+- `test_check_dependencies_requirements_txt()`
+- `test_validate_plugin_nonexistent_path()`
+- `test_file_handling_errors()`
+- `test_metadata_parsing_errors()`
+- `test_integration_with_real_plugin()`
+
+##### TestPluginValidatorIntegration
+
+Tests d'intégration pour PluginValidator
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_full_validation_workflow()`
+- `test_error_handling()`
+
+#### Fonctions
+
+##### test_validate_plugin_function
+
+Test de la fonction utilitaire validate_plugin
+
+##### test_validate_all_plugins_function
+
+Test de la fonction utilitaire validate_all_plugins
+
+##### setup_method
+
+##### teardown_method
+
+##### test_init_with_plugins_dir
+
+Test de l'initialisation avec plugins_dir
+
+##### test_validate_plugin_with_valid_structure
+
+Test de validation d'un plugin avec structure valide
+
+##### test_validate_plugin_without_init
+
+Test de validation d'un plugin sans __init__.py
+
+##### test_validate_plugin_with_syntax_error
+
+Test de validation d'un plugin avec erreur de syntaxe
+
+##### test_validate_plugin_with_metadata
+
+Test de validation d'un plugin avec métadonnées
+
+##### test_validate_plugin_with_requirements
+
+Test de validation d'un plugin avec requirements.txt
+
+##### test_validate_all_plugins_empty_directory
+
+Test de validation de tous les plugins dans un répertoire vide
+
+##### test_validate_all_plugins_with_valid_plugins
+
+Test de validation de tous les plugins avec des plugins valides
+
+##### test_validate_all_plugins_with_mixed_plugins
+
+Test de validation avec des plugins valides et invalides
+
+##### test_generate_validation_report
+
+Test de génération du rapport de validation
+
+##### test_check_plugin_structure_success
+
+Test de vérification de structure réussie
+
+##### test_check_plugin_structure_failure
+
+Test de vérification de structure échouée
+
+##### test_check_python_syntax_success
+
+Test de vérification de syntaxe Python réussie
+
+##### test_check_python_syntax_failure
+
+Test de vérification de syntaxe Python échouée
+
+##### test_check_metadata_yaml
+
+Test de vérification des métadonnées YAML
+
+##### test_check_metadata_json
+
+Test de vérification des métadonnées JSON
+
+##### test_check_metadata_missing_required_fields
+
+Test de vérification des métadonnées avec champs requis manquants
+
+##### test_check_dependencies_requirements_txt
+
+Test de vérification des dépendances requirements.txt
+
+##### test_validate_plugin_nonexistent_path
+
+Test de validation d'un plugin inexistant
+
+##### test_file_handling_errors
+
+Test de gestion des erreurs de fichiers
+
+##### test_metadata_parsing_errors
+
+Test de gestion des erreurs de parsing des métadonnées
+
+##### test_integration_with_real_plugin
+
+Test d'intégration avec un plugin réel
+
+##### setup_method
+
+##### teardown_method
+
+##### test_full_validation_workflow
+
+Test du workflow complet de validation
+
+##### test_error_handling
+
+Test de gestion des erreurs
 
 ---
 
@@ -3089,6 +4711,10 @@ Test que tous les fichiers ont des fins de ligne cohérentes
 
 ---
 
+### .!26497!__init__
+
+---
+
 ### test_generation
 
 #### Fonctions
@@ -3128,6 +4754,127 @@ Test que tous les fichiers ont des fins de ligne cohérentes
 **Paramètres :**
 
 - `tmp_path`
+
+---
+
+### test_performance_optimization
+
+Tests de performance et d'optimisation pour Athalia.
+Tests professionnels pour la CI/CD.
+
+#### Classes
+
+##### TestPerformanceOptimization
+
+Tests de performance et d'optimisation.
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_performance_analyzer_initialization()`
+- `test_cache_manager_initialization()`
+- `test_performance_analysis_basic()`
+- `test_cache_operations()`
+- `test_performance_optimization_suggestions()`
+- `test_memory_usage_analysis()`
+- `test_execution_time_measurement()`
+- `test_bottleneck_detection()`
+- `test_performance_regression_detection()`
+- `test_optimization_application()`
+- `test_performance_report_generation()`
+- `test_cache_performance()`
+- `test_memory_leak_detection()`
+- `test_performance_thresholds()`
+- `test_optimization_impact_measurement()`
+
+#### Fonctions
+
+##### test_performance_analyzer_integration
+
+Test d'intégration de l'analyseur de performance.
+
+##### test_system_performance_monitoring
+
+Test de monitoring des performances système.
+
+##### test_performance_optimization_workflow
+
+Test du workflow complet d'optimisation de performance.
+
+##### setup_method
+
+Initialisation pour chaque test.
+
+##### teardown_method
+
+Nettoyage après chaque test.
+
+##### test_performance_analyzer_initialization
+
+Test de l'initialisation de l'analyseur de performance.
+
+##### test_cache_manager_initialization
+
+Test de l'initialisation du gestionnaire de cache.
+
+##### test_performance_analysis_basic
+
+Test d'analyse de performance basique.
+
+##### test_cache_operations
+
+Test des opérations de cache.
+
+##### test_performance_optimization_suggestions
+
+Test des suggestions d'optimisation.
+
+##### test_memory_usage_analysis
+
+Test d'analyse de l'utilisation mémoire.
+
+##### test_execution_time_measurement
+
+Test de mesure du temps d'exécution.
+
+##### test_bottleneck_detection
+
+Test de détection des goulots d'étranglement.
+
+##### test_performance_regression_detection
+
+Test de détection de régression de performance.
+
+##### test_optimization_application
+
+Test d'application d'optimisations.
+
+##### test_performance_report_generation
+
+Test de génération de rapport de performance.
+
+##### test_cache_performance
+
+Test de performance du cache.
+
+##### test_memory_leak_detection
+
+Test de détection de fuites mémoire.
+
+##### test_performance_thresholds
+
+Test des seuils de performance.
+
+##### test_optimization_impact_measurement
+
+Test de mesure de l'impact des optimisations.
+
+##### test_function
+
+---
+
+### .!26501!test_cleanup
 
 ---
 
@@ -3401,6 +5148,195 @@ Test création de DockerValidationResult
 
 ---
 
+### test_intelligent_memory
+
+Tests pour le module intelligent_memory.py
+Teste le système de mémoire intelligente d'Athalia
+
+#### Classes
+
+##### TestIntelligentMemory
+
+Tests pour le système de mémoire intelligente
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `test_init_database()`
+- `test_learn_from_error()`
+- `test_learn_from_correction()`
+- `test_learn_from_duplicate()`
+- `test_predict_issues()`
+- `test_suggest_corrections()`
+- `test_get_learning_insights()`
+- `test_analyze_code_pattern()`
+- `test_normalize_code()`
+- `test_calculate_code_similarity()`
+- `test_record_learning_event()`
+- `test_find_similar_patterns()`
+- `test_check_antipatterns()`
+- `test_check_potential_duplicates()`
+- `test_save_correction_suggestion()`
+- `test_learning_event_dataclass()`
+- `test_prediction_dataclass()`
+- `test_correction_suggestion_dataclass()`
+- `test_integration_workflow()`
+
+#### Fonctions
+
+##### setUp
+
+Configuration initiale pour chaque test
+
+##### tearDown
+
+Nettoyage après chaque test
+
+##### test_init_database
+
+Test de l'initialisation de la base de données
+
+##### test_learn_from_error
+
+Test d'apprentissage d'une erreur
+
+##### test_learn_from_correction
+
+Test d'apprentissage d'une correction
+
+##### test_learn_from_duplicate
+
+Test d'apprentissage d'un doublon
+
+##### test_predict_issues
+
+Test de prédiction d'issues
+
+##### test_suggest_corrections
+
+Test de suggestions de corrections
+
+##### test_get_learning_insights
+
+Test de récupération des insights d'apprentissage
+
+##### test_analyze_code_pattern
+
+Test d'analyse de pattern de code
+
+##### test_normalize_code
+
+Test de normalisation de code
+
+##### test_calculate_code_similarity
+
+Test de calcul de similarité de code
+
+##### test_record_learning_event
+
+Test d'enregistrement d'événement d'apprentissage
+
+##### test_find_similar_patterns
+
+Test de recherche de patterns similaires
+
+##### test_check_antipatterns
+
+Test de vérification d'anti-patterns
+
+##### test_check_potential_duplicates
+
+Test de vérification de doublons potentiels
+
+##### test_save_correction_suggestion
+
+Test de sauvegarde de suggestion de correction
+
+##### test_learning_event_dataclass
+
+Test de la dataclass LearningEvent
+
+##### test_prediction_dataclass
+
+Test de la dataclass Prediction
+
+##### test_correction_suggestion_dataclass
+
+Test de la dataclass CorrectionSuggestion
+
+##### test_integration_workflow
+
+Test d'un workflow d'intégration complet
+
+---
+
+### .!26502!audit
+
+---
+
+### test_lint_flake8
+
+Tests pour le linting flake8
+
+#### Fonctions
+
+##### test_flake8_clean
+
+Test que le code passe flake8 sans erreurs
+
+---
+
+### test_multi_file_editor
+
+#### Fonctions
+
+##### test_apply_corrections_and_rollback
+
+##### test_apply_corrections_error
+
+##### corr_fn
+
+**Paramètres :**
+
+- `content`
+
+##### corr_fn
+
+**Paramètres :**
+
+- `content`
+
+---
+
+### .!26503!test_i18n
+
+---
+
+### test_multimodal_distiller
+
+#### Classes
+
+##### TestMultimodalDistiller
+
+**Méthodes :**
+
+- `test_distill()`
+- `test_empty()`
+
+#### Fonctions
+
+##### test_distill
+
+**Paramètres :**
+
+- `mock_model`
+- `mock_llava`
+
+##### test_empty
+
+---
+
 ### test_robotics_reachy_auditor_complete
 
 Tests complets pour athalia_core.robotics.reachy_auditor
@@ -3604,254 +5540,6 @@ Test dataclass ReachyAuditResult
 
 ---
 
-### test_intelligent_memory
-
-Tests pour le module intelligent_memory.py
-Teste le système de mémoire intelligente d'Athalia
-
-#### Classes
-
-##### TestIntelligentMemory
-
-Tests pour le système de mémoire intelligente
-
-**Méthodes :**
-
-- `setUp()`
-- `tearDown()`
-- `test_init_database()`
-- `test_learn_from_error()`
-- `test_learn_from_correction()`
-- `test_learn_from_duplicate()`
-- `test_predict_issues()`
-- `test_suggest_corrections()`
-- `test_get_learning_insights()`
-- `test_analyze_code_pattern()`
-- `test_normalize_code()`
-- `test_calculate_code_similarity()`
-- `test_record_learning_event()`
-- `test_find_similar_patterns()`
-- `test_check_antipatterns()`
-- `test_check_potential_duplicates()`
-- `test_save_correction_suggestion()`
-- `test_learning_event_dataclass()`
-- `test_prediction_dataclass()`
-- `test_correction_suggestion_dataclass()`
-- `test_integration_workflow()`
-
-#### Fonctions
-
-##### setUp
-
-Configuration initiale pour chaque test
-
-##### tearDown
-
-Nettoyage après chaque test
-
-##### test_init_database
-
-Test de l'initialisation de la base de données
-
-##### test_learn_from_error
-
-Test d'apprentissage d'une erreur
-
-##### test_learn_from_correction
-
-Test d'apprentissage d'une correction
-
-##### test_learn_from_duplicate
-
-Test d'apprentissage d'un doublon
-
-##### test_predict_issues
-
-Test de prédiction d'issues
-
-##### test_suggest_corrections
-
-Test de suggestions de corrections
-
-##### test_get_learning_insights
-
-Test de récupération des insights d'apprentissage
-
-##### test_analyze_code_pattern
-
-Test d'analyse de pattern de code
-
-##### test_normalize_code
-
-Test de normalisation de code
-
-##### test_calculate_code_similarity
-
-Test de calcul de similarité de code
-
-##### test_record_learning_event
-
-Test d'enregistrement d'événement d'apprentissage
-
-##### test_find_similar_patterns
-
-Test de recherche de patterns similaires
-
-##### test_check_antipatterns
-
-Test de vérification d'anti-patterns
-
-##### test_check_potential_duplicates
-
-Test de vérification de doublons potentiels
-
-##### test_save_correction_suggestion
-
-Test de sauvegarde de suggestion de correction
-
-##### test_learning_event_dataclass
-
-Test de la dataclass LearningEvent
-
-##### test_prediction_dataclass
-
-Test de la dataclass Prediction
-
-##### test_correction_suggestion_dataclass
-
-Test de la dataclass CorrectionSuggestion
-
-##### test_integration_workflow
-
-Test d'un workflow d'intégration complet
-
----
-
-### test_lint_flake8
-
-Tests pour le linting flake8
-
-#### Fonctions
-
-##### test_flake8_clean
-
-Test que le code passe flake8 sans erreurs
-
----
-
-### test_multi_file_editor
-
-#### Fonctions
-
-##### test_apply_corrections_and_rollback
-
-##### test_apply_corrections_error
-
-##### corr_fn
-
-**Paramètres :**
-
-- `content`
-
-##### corr_fn
-
-**Paramètres :**
-
-- `content`
-
----
-
-### test_multimodal_distiller
-
-#### Classes
-
-##### TestMultimodalDistiller
-
-**Méthodes :**
-
-- `test_distill()`
-- `test_empty()`
-
-#### Fonctions
-
-##### test_distill
-
-**Paramètres :**
-
-- `mock_model`
-- `mock_llava`
-
-##### test_empty
-
----
-
-### test_no_polluting_files
-
-Tests pour détecter les fichiers polluants
-
-#### Classes
-
-##### TestNoPollutingFiles
-
-Tests pour détecter les fichiers polluants
-
-**Méthodes :**
-
-- `test_no_macos_hidden_files()`
-- `test_no_python_cache_files()`
-- `test_no_temp_files()`
-- `test_no_corrupted_files()`
-- `test_no_editor_files()`
-- `test_no_archive_files()`
-- `test_no_secret_files()`
-- `test_no_large_files()`
-- `test_no_duplicate_files()`
-- `test_no_empty_directories()`
-
-#### Fonctions
-
-##### test_no_macos_hidden_files
-
-Test qu'il n'y a pas de fichiers cachés macOS
-
-##### test_no_python_cache_files
-
-Test qu'il n'y a pas de fichiers cache Python
-
-##### test_no_temp_files
-
-Test qu'il n'y a pas de fichiers temporaires
-
-##### test_no_corrupted_files
-
-Test qu'il n'y a pas de fichiers corrompus
-
-##### test_no_editor_files
-
-Test qu'il n'y a pas de fichiers d'éditeur
-
-##### test_no_archive_files
-
-Test qu'il n'y a pas de fichiers d'archive dans le projet
-
-##### test_no_secret_files
-
-Test qu'il n'y a pas de fichiers de secrets
-
-##### test_no_large_files
-
-Test qu'il n'y a pas de fichiers trop volumineux
-
-##### test_no_duplicate_files
-
-Test qu'il n'y a pas de fichiers dupliqués
-
-##### test_no_empty_directories
-
-Test qu'il n'y a pas de répertoires vides
-
----
-
 ### test_onboarding
 
 #### Fonctions
@@ -3861,6 +5549,22 @@ Test qu'il n'y a pas de répertoires vides
 **Paramètres :**
 
 - `tmp_path`
+
+---
+
+### .!26504!audit_complet_dossiers
+
+---
+
+### .!26505!debug_correction
+
+---
+
+### .!26506!correction_chaînes
+
+---
+
+### .!26507!correction_finale
 
 ---
 
@@ -4041,6 +5745,436 @@ Test d'intégration de la gestion d'erreurs
 
 ---
 
+### .!26508!test_plugin_complet
+
+---
+
+### .!26510!test_adaptive_distillation
+
+---
+
+### test_security_validator
+
+Tests pour le module de validation de sécurité
+
+#### Classes
+
+##### TestSecurityValidator
+
+Tests pour le validateur de sécurité.
+
+**Méthodes :**
+
+- `setUp()`
+- `test_allowed_commands()`
+- `test_forbidden_commands()`
+- `test_dangerous_paths()`
+- `test_safe_paths()`
+- `test_forbidden_patterns()`
+- `test_empty_command()`
+- `test_security_error_exception()`
+- `test_safe_command_execution()`
+- `test_add_allowed_command()`
+- `test_remove_allowed_command()`
+- `test_add_safe_directory()`
+- `test_security_report()`
+
+##### TestSecurityFunctions
+
+Tests pour les fonctions utilitaires de sécurité.
+
+**Méthodes :**
+
+- `test_validate_and_run_safe()`
+- `test_validate_and_run_unsafe()`
+- `test_is_command_safe()`
+
+##### TestSecurityIntegration
+
+Tests d'intégration pour la sécurité.
+
+**Méthodes :**
+
+- `test_multiple_commands()`
+- `test_command_with_arguments()`
+
+##### SecurityValidator
+
+**Méthodes :**
+
+- `__init__()`
+
+##### SecurityError
+
+#### Fonctions
+
+##### setUp
+
+Configuration avant chaque test.
+
+##### test_allowed_commands
+
+Test des commandes autorisées.
+
+##### test_forbidden_commands
+
+Test des commandes interdites.
+
+##### test_dangerous_paths
+
+Test des chemins dangereux.
+
+##### test_safe_paths
+
+Test des chemins sûrs.
+
+##### test_forbidden_patterns
+
+Test des patterns interdits.
+
+##### test_empty_command
+
+Test d'une commande vide.
+
+##### test_security_error_exception
+
+Test de l'exception SecurityError.
+
+##### test_safe_command_execution
+
+Test de l'exécution sécurisée d'une commande.
+
+##### test_add_allowed_command
+
+Test d'ajout d'une commande autorisée.
+
+##### test_remove_allowed_command
+
+Test de suppression d'une commande autorisée.
+
+##### test_add_safe_directory
+
+Test d'ajout d'un répertoire sûr.
+
+##### test_security_report
+
+Test de génération du rapport de sécurité.
+
+##### test_validate_and_run_safe
+
+Test de validate_and_run avec une commande sûre.
+
+##### test_validate_and_run_unsafe
+
+Test de validate_and_run avec une commande dangereuse.
+
+##### test_is_command_safe
+
+Test de is_command_safe.
+
+##### test_multiple_commands
+
+Test de validation de multiples commandes.
+
+##### test_command_with_arguments
+
+Test de commandes avec arguments.
+
+##### validate_and_run
+
+**Paramètres :**
+
+- `command`
+
+##### is_command_safe
+
+**Paramètres :**
+
+- `command`
+
+##### __init__
+
+---
+
+### .!26520!test_security_auditor_complete
+
+---
+
+### .!26521!test_analytics_unit
+
+---
+
+### .!26522!test_predictive_cache
+
+---
+
+### .!26523!test_coverage_threshold
+
+---
+
+### .!26524!test_code_linter_complete
+
+---
+
+### .!26525!test_audit_agent
+
+---
+
+### .!26526!test_plugins_validator
+
+---
+
+### .!26527!test_audit_intelligent
+
+---
+
+### .!26528!test_project_importer
+
+---
+
+### .!26530!test_auto_cicd_unit
+
+---
+
+### .!26532!test_hardcoded_paths
+
+---
+
+### .!26533!test_auto_cleaner_unit
+
+---
+
+### .!26534!test_ready_check
+
+---
+
+### .!26535!test_auto_correction_advanced_complete
+
+---
+
+### .!26536!test_cache_simple
+
+---
+
+### .!26537!test_imports_all
+
+---
+
+### .!26538!test_auto_correction_avancee
+
+---
+
+### .!26539!test_cli_complete
+
+---
+
+### .!26540!test_auto_documenter_unit
+
+---
+
+### .!26541!test_auto_tester_unit
+
+---
+
+### .!26542!test_autocomplete_server
+
+---
+
+### .!26543!test_profils_utilisateur_avances
+
+---
+
+### .!26544!test_benchmark_critical
+
+---
+
+### .!26545!test_correction_optimizer_complete
+
+---
+
+### .!26546!test_ci_robust
+
+---
+
+### .!26547!test_no_polluting_files
+
+---
+
+### .!26548!test_ci_ultra_fast
+
+---
+
+### .!26549!test_security_patterns
+
+---
+
+### .!26550!test_security_comprehensive
+
+---
+
+### .!26551!test_error_handling
+
+---
+
+### test_analytics_complete
+
+Tests complets pour analytics.py
+Couverture : 100% des fonctionnalités d'analytics
+Tests : 25 tests unitaires et d'intégration
+
+#### Classes
+
+##### TestAnalyticsEngine
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_init_with_project_path()`
+- `test_analyze_code_complexity()`
+- `test_analyze_code_complexity_empty_directory()`
+- `test_analyze_test_coverage()`
+- `test_analyze_dependencies()`
+- `test_analyze_dependencies_no_requirements()`
+- `test_analyze_performance_metrics()`
+- `test_analyze_security_metrics()`
+- `test_analyze_documentation_coverage()`
+- `test_analyze_git_metrics()`
+- `test_generate_comprehensive_report()`
+- `test_calculate_project_score()`
+- `test_generate_recommendations()`
+- `test_export_metrics_to_json()`
+- `test_export_metrics_to_yaml()`
+- `test_analyze_trends()`
+- `test_compare_with_baseline()`
+- `test_generate_visualization_data()`
+- `test_error_handling_file_not_found()`
+- `test_error_handling_permission_error()`
+- `test_integration_full_analysis()`
+
+##### TestAnalyticsIntegration
+
+Tests d'intégration pour AnalyticsEngine
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_full_analytics_workflow()`
+- `test_metrics_persistence()`
+
+#### Fonctions
+
+##### test_generate_analytics_report
+
+Test de la fonction utilitaire generate_analytics_report
+
+##### test_analyze_project_metrics
+
+Test de la fonction utilitaire analyze_project_metrics
+
+##### setup_method
+
+##### teardown_method
+
+##### test_init_with_project_path
+
+Test de l'initialisation avec project_path
+
+##### test_analyze_code_complexity
+
+Test d'analyse de complexité du code
+
+##### test_analyze_code_complexity_empty_directory
+
+Test d'analyse de complexité avec répertoire vide
+
+##### test_analyze_test_coverage
+
+Test d'analyse de couverture de tests
+
+##### test_analyze_dependencies
+
+Test d'analyse des dépendances
+
+##### test_analyze_dependencies_no_requirements
+
+Test d'analyse des dépendances sans requirements.txt
+
+##### test_analyze_performance_metrics
+
+Test d'analyse des métriques de performance
+
+##### test_analyze_security_metrics
+
+Test d'analyse des métriques de sécurité
+
+##### test_analyze_documentation_coverage
+
+Test d'analyse de couverture de documentation
+
+##### test_analyze_git_metrics
+
+Test d'analyse des métriques Git
+
+##### test_generate_comprehensive_report
+
+Test de génération de rapport complet
+
+##### test_calculate_project_score
+
+Test de calcul du score du projet
+
+##### test_generate_recommendations
+
+Test de génération de recommandations
+
+##### test_export_metrics_to_json
+
+Test d'export des métriques en JSON
+
+##### test_export_metrics_to_yaml
+
+Test d'export des métriques en YAML
+
+##### test_analyze_trends
+
+Test d'analyse des tendances
+
+##### test_compare_with_baseline
+
+Test de comparaison avec une baseline
+
+##### test_generate_visualization_data
+
+Test de génération de données pour visualisation
+
+##### test_error_handling_file_not_found
+
+Test de gestion d'erreur fichier non trouvé
+
+##### test_error_handling_permission_error
+
+Test de gestion d'erreur permission
+
+##### test_integration_full_analysis
+
+Test d'intégration d'analyse complète
+
+##### setup_method
+
+##### teardown_method
+
+##### test_full_analytics_workflow
+
+Test du workflow complet d'analytics
+
+##### test_metrics_persistence
+
+Test de persistance des métriques
+
+---
+
 ### test_ath_audit
 
 #### Fonctions
@@ -4071,11 +6205,7 @@ Test que ath-coverage.py fonctionne sans récursivité
 
 ---
 
-### test_ath_lint
-
-#### Fonctions
-
-##### test_ath_lint_runs
+### .!26492!test_ath_audit
 
 ---
 
@@ -4089,44 +6219,308 @@ Test que ath-test.py fonctionne sans récursivité
 
 ---
 
-### test_cli_robustesse
-
-Test d'intégration CLI robuste pour Athalia
+### test_ath_lint
 
 #### Fonctions
 
-##### test_cli_robustesse
+##### test_ath_lint_runs
 
-Test simple de la CLI sans interaction complexe
+---
+
+### .!26493!test_ath_build
+
+---
+
+### .!26494!test_ath_coverage
+
+---
+
+### .!26495!test_ath_test
+
+---
+
+### .!26496!test_ath_lint
+
+---
+
+### test_cli_robustesse
+
+Tests d'intégration CLI robuste pour Athalia.
+Tests professionnels pour la CI/CD.
+
+#### Classes
+
+##### TestCLIRobustesse
+
+Tests de robustesse de l'interface en ligne de commande.
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_cli_help_command()`
+- `test_cli_version_command()`
+- `test_cli_invalid_argument()`
+- `test_cli_missing_argument()`
+- `test_cli_dry_run_mode()`
+- `test_cli_verbose_mode()`
+- `test_cli_timeout_handling()`
+- `test_cli_error_handling()`
+- `test_cli_output_format()`
+- `test_cli_environment_variables()`
+- `test_cli_concurrent_execution()`
+
+#### Fonctions
+
+##### test_cli_basic_functionality
+
+Test de fonctionnalité de base de la CLI.
+
+##### test_cli_integration_workflow
+
+Test du workflow d'intégration CLI.
+
+##### setup_method
+
+Initialisation pour chaque test.
+
+##### teardown_method
+
+Nettoyage après chaque test.
+
+##### test_cli_help_command
+
+Test de la commande d'aide.
+
+##### test_cli_version_command
+
+Test de la commande de version.
+
+##### test_cli_invalid_argument
+
+Test avec des arguments invalides.
+
+##### test_cli_missing_argument
+
+Test avec des arguments manquants.
+
+##### test_cli_dry_run_mode
+
+Test du mode simulation (dry-run).
+
+##### test_cli_verbose_mode
+
+Test du mode verbeux.
+
+##### test_cli_timeout_handling
+
+Test de la gestion des timeouts.
+
+##### test_cli_error_handling
+
+Test de la gestion d'erreurs.
+
+##### test_cli_output_format
+
+Test du format de sortie.
+
+##### test_cli_environment_variables
+
+Test avec des variables d'environnement.
+
+##### test_cli_concurrent_execution
+
+Test d'exécution concurrente.
 
 ---
 
 ### test_end_to_end
 
-Test d'intégration end-to-end pour la génération de projet Athalia
+Tests d'intégration end-to-end pour Athalia.
+Tests professionnels pour la CI/CD.
+
+#### Classes
+
+##### TestEndToEndIntegration
+
+Tests d'intégration end-to-end complets.
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_generation_end_to_end_api()`
+- `test_generation_end_to_end_web()`
+- `test_generation_end_to_end_cli()`
+- `test_workflow_complete()`
+- `test_integration_with_external_tools()`
+- `test_error_handling_end_to_end()`
+- `test_performance_end_to_end()`
+- `test_concurrent_generation()`
 
 #### Fonctions
 
-##### test_generation_end_to_end
+##### test_generation_end_to_end_simple
 
-Génère un projet API complet et vérifie tous les artefacts essentiels.
-Rend le test plus robuste pour la CI : skip si dépendances manquantes.
+Test de génération end-to-end simplifié pour la compatibilité.
 
 **Paramètres :**
 
 - `tmp_path`
 
+##### setup_method
+
+Initialisation pour chaque test.
+
+##### teardown_method
+
+Nettoyage après chaque test.
+
+##### test_generation_end_to_end_api
+
+Test de génération end-to-end pour un projet API.
+
+##### test_generation_end_to_end_web
+
+Test de génération end-to-end pour un projet web.
+
+##### test_generation_end_to_end_cli
+
+Test de génération end-to-end pour un projet CLI.
+
+##### test_workflow_complete
+
+Test du workflow complet d'Athalia.
+
+##### test_integration_with_external_tools
+
+Test d'intégration avec des outils externes.
+
+##### test_error_handling_end_to_end
+
+Test de gestion d'erreurs end-to-end.
+
+##### test_performance_end_to_end
+
+Test de performance end-to-end.
+
+##### test_concurrent_generation
+
+Test de génération concurrente.
+
+##### generate_blueprint_thread
+
+**Paramètres :**
+
+- `thread_id`
+
+---
+
+### .!26498!test_cli_robustesse
+
 ---
 
 ### test_yaml_validity
 
-Test de validité YAML pour tous les fichiers openapi.yaml du repo
+Tests de validité YAML pour Athalia.
+Tests professionnels pour la CI/CD.
+
+#### Classes
+
+##### TestYAMLValidity
+
+Tests de validité des fichiers YAML.
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_yaml_syntax_validity()`
+- `test_yaml_syntax_invalidity()`
+- `test_config_yaml_validity()`
+- `test_blueprint_yaml_structure()`
+- `test_yaml_anchors_and_aliases()`
+- `test_yaml_complex_types()`
+- `test_yaml_unicode_support()`
+- `test_yaml_file_roundtrip()`
+- `test_yaml_validation_schema()`
+- `test_yaml_error_handling()`
+- `test_yaml_performance()`
+- `test_yaml_security()`
 
 #### Fonctions
 
-##### test_all_openapi_yaml_valid
+##### test_yaml_basic_functionality
 
-Vérifie que tous les fichiers openapi*.yaml sont valides.
+Test de fonctionnalité de base YAML.
+
+##### test_yaml_file_operations
+
+Test des opérations de fichiers YAML.
+
+##### setup_method
+
+Initialisation pour chaque test.
+
+##### teardown_method
+
+Nettoyage après chaque test.
+
+##### test_yaml_syntax_validity
+
+Test de la validité syntaxique YAML.
+
+##### test_yaml_syntax_invalidity
+
+Test de la détection d'YAML invalide.
+
+##### test_config_yaml_validity
+
+Test de validité du fichier de configuration.
+
+##### test_blueprint_yaml_structure
+
+Test de la structure des blueprints YAML.
+
+##### test_yaml_anchors_and_aliases
+
+Test des ancres et alias YAML.
+
+##### test_yaml_complex_types
+
+Test des types complexes en YAML.
+
+##### test_yaml_unicode_support
+
+Test du support Unicode en YAML.
+
+##### test_yaml_file_roundtrip
+
+Test d'aller-retour fichier YAML.
+
+##### test_yaml_validation_schema
+
+Test de validation avec schéma YAML.
+
+##### test_yaml_error_handling
+
+Test de la gestion d'erreurs YAML.
+
+##### test_yaml_performance
+
+Test de performance YAML.
+
+##### test_yaml_security
+
+Test de sécurité YAML.
+
+---
+
+### .!26499!test_end_to_end
+
+---
+
+### .!26500!test_yaml_validity
 
 ---
 
@@ -4146,6 +6540,28 @@ Informations sur le plugin
 
 ---
 
+### plugins_manager
+
+#### Fonctions
+
+##### list_plugins
+
+Liste tous les plugins disponibles.
+
+##### load_plugin
+
+Charge dynamiquement un plugin par nom.
+
+**Paramètres :**
+
+- `name`
+
+##### run_all_plugins
+
+Exécute la fonction run() de tous les plugins et retourne les résultats.
+
+---
+
 ### hello_plugin
 
 Plugin de démonstration Hello World
@@ -4159,6 +6575,20 @@ Fonction principale du plugin
 ##### get_info
 
 Informations sur le plugin
+
+---
+
+### plugins_validator
+
+#### Fonctions
+
+##### validate_plugin
+
+Valide un plugin Python : héritage, méthode run / execute, docstring.
+
+**Paramètres :**
+
+- `path`
 
 ---
 
@@ -8712,6 +11142,10 @@ name starts with argument_name and which contain selected tests.
 ---
 
 ### .!26417!six
+
+---
+
+### _black_version
 
 ---
 
@@ -88048,6 +90482,744 @@ Make the formatter from the requested user options.
 
 ---
 
+### pygram
+
+Export the Python grammar and symbols.
+
+#### Classes
+
+##### Symbols
+
+**Méthodes :**
+
+- `__init__()`
+
+##### _python_symbols
+
+##### _pattern_symbols
+
+#### Fonctions
+
+##### initialize
+
+**Paramètres :**
+
+- `cache_dir`
+
+##### __init__
+
+Initializer.
+
+Creates an attribute for each grammar symbol (nonterminal),
+whose value is the symbol's type (an int >= 256).
+
+**Paramètres :**
+
+- `grammar`
+
+---
+
+### pytree
+
+Python parse tree definitions.
+
+This is a very concrete parse tree; we need to keep every token and
+even the comments and whitespace between tokens.
+
+There's also a pattern matching implementation here.
+
+#### Classes
+
+##### Base
+
+Abstract base class for Node and Leaf.
+
+This provides some default functionality and boilerplate using the
+template pattern.
+
+A node may be a subnode of at most one parent.
+
+**Méthodes :**
+
+- `__new__()`
+- `__eq__()`
+- `prefix()`
+- `_eq()`
+- `__deepcopy__()`
+- `clone()`
+- `post_order()`
+- `pre_order()`
+- `replace()`
+- `get_lineno()`
+- `changed()`
+- `remove()`
+- `next_sibling()`
+- `prev_sibling()`
+- `leaves()`
+- `depth()`
+- `get_suffix()`
+
+##### Node
+
+Concrete implementation for interior nodes.
+
+**Méthodes :**
+
+- `__init__()`
+- `__repr__()`
+- `__str__()`
+- `_eq()`
+- `clone()`
+- `post_order()`
+- `pre_order()`
+- `prefix()`
+- `prefix()`
+- `set_child()`
+- `insert_child()`
+- `append_child()`
+- `invalidate_sibling_maps()`
+- `update_sibling_maps()`
+
+##### Leaf
+
+Concrete implementation for leaf nodes.
+
+**Méthodes :**
+
+- `__init__()`
+- `__repr__()`
+- `__str__()`
+- `_eq()`
+- `clone()`
+- `leaves()`
+- `post_order()`
+- `pre_order()`
+- `prefix()`
+- `prefix()`
+
+##### BasePattern
+
+A pattern is a tree matching pattern.
+
+It looks for a specific node type (token or symbol), and
+optionally for a specific content.
+
+This is an abstract base class.  There are three concrete
+subclasses:
+
+- LeafPattern matches a single leaf node;
+- NodePattern matches a single node (usually non-leaf);
+- WildcardPattern matches a sequence of nodes of variable length.
+
+**Méthodes :**
+
+- `__new__()`
+- `__repr__()`
+- `_submatch()`
+- `optimize()`
+- `match()`
+- `match_seq()`
+- `generate_matches()`
+
+##### LeafPattern
+
+**Méthodes :**
+
+- `__init__()`
+- `match()`
+- `_submatch()`
+
+##### NodePattern
+
+**Méthodes :**
+
+- `__init__()`
+- `_submatch()`
+
+##### WildcardPattern
+
+A wildcard pattern can match zero or more nodes.
+
+This has all the flexibility needed to implement patterns like:
+
+.*      .+      .?      .{m,n}
+(a b c | d e | f)
+(...)*  (...)+  (...)?  (...){m,n}
+
+except it always uses non-greedy matching.
+
+**Méthodes :**
+
+- `__init__()`
+- `optimize()`
+- `match()`
+- `match_seq()`
+- `generate_matches()`
+- `_iterative_matches()`
+- `_bare_name_matches()`
+- `_recursive_matches()`
+
+##### NegatedPattern
+
+**Méthodes :**
+
+- `__init__()`
+- `match()`
+- `match_seq()`
+- `generate_matches()`
+
+#### Fonctions
+
+##### type_repr
+
+**Paramètres :**
+
+- `type_num`
+
+##### convert
+
+Convert raw node information to a Node or Leaf instance.
+
+This is passed to the parser driver which calls it whenever a reduction of a
+grammar rule produces a new complete node, so that the tree is build
+strictly bottom-up.
+
+**Paramètres :**
+
+- `gr`
+- `raw_node`
+
+##### generate_matches
+
+Generator yielding matches for a sequence of patterns and nodes.
+
+Args:
+    patterns: a sequence of patterns
+    nodes: a sequence of nodes
+
+Yields:
+    (count, results) tuples where:
+    count: the entire sequence of patterns matches nodes[:count];
+    results: dict containing named submatches.
+
+**Paramètres :**
+
+- `patterns`
+- `nodes`
+
+##### __new__
+
+Constructor that prevents Base from being instantiated.
+
+**Paramètres :**
+
+- `cls`
+
+##### __eq__
+
+Compare two nodes for equality.
+
+This calls the method _eq().
+
+**Paramètres :**
+
+- `other`
+
+##### prefix
+
+##### _eq
+
+Compare two nodes for equality.
+
+This is called by __eq__ and __ne__.  It is only called if the two nodes
+have the same type.  This must be implemented by the concrete subclass.
+Nodes should be considered equal if they have the same structure,
+ignoring the prefix string and other context information.
+
+**Paramètres :**
+
+- `other`
+
+##### __deepcopy__
+
+**Paramètres :**
+
+- `memo`
+
+##### clone
+
+Return a cloned (deep) copy of self.
+
+This must be implemented by the concrete subclass.
+
+##### post_order
+
+Return a post-order iterator for the tree.
+
+This must be implemented by the concrete subclass.
+
+##### pre_order
+
+Return a pre-order iterator for the tree.
+
+This must be implemented by the concrete subclass.
+
+##### replace
+
+Replace this node with a new one in the parent.
+
+**Paramètres :**
+
+- `new`
+
+##### get_lineno
+
+Return the line number which generated the invocant node.
+
+##### changed
+
+##### remove
+
+Remove the node from the tree. Returns the position of the node in its
+parent's children before it was removed.
+
+##### next_sibling
+
+The node immediately following the invocant in their parent's children
+list. If the invocant does not have a next sibling, it is None
+
+##### prev_sibling
+
+The node immediately preceding the invocant in their parent's children
+list. If the invocant does not have a previous sibling, it is None.
+
+##### leaves
+
+##### depth
+
+##### get_suffix
+
+Return the string immediately following the invocant node. This is
+effectively equivalent to node.next_sibling.prefix
+
+##### __init__
+
+Initializer.
+
+Takes a type constant (a symbol number >= 256), a sequence of
+child nodes, and an optional context keyword argument.
+
+As a side effect, the parent pointers of the children are updated.
+
+**Paramètres :**
+
+- `type`
+- `children`
+- `context`
+- `prefix`
+- `fixers_applied`
+
+##### __repr__
+
+Return a canonical string representation.
+
+##### __str__
+
+Return a pretty string representation.
+
+This reproduces the input source exactly.
+
+##### _eq
+
+Compare two nodes for equality.
+
+**Paramètres :**
+
+- `other`
+
+##### clone
+
+##### post_order
+
+Return a post-order iterator for the tree.
+
+##### pre_order
+
+Return a pre-order iterator for the tree.
+
+##### prefix
+
+The whitespace and comments preceding this node in the input.
+
+##### prefix
+
+**Paramètres :**
+
+- `prefix`
+
+##### set_child
+
+Equivalent to 'node.children[i] = child'. This method also sets the
+child's parent attribute appropriately.
+
+**Paramètres :**
+
+- `i`
+- `child`
+
+##### insert_child
+
+Equivalent to 'node.children.insert(i, child)'. This method also sets
+the child's parent attribute appropriately.
+
+**Paramètres :**
+
+- `i`
+- `child`
+
+##### append_child
+
+Equivalent to 'node.children.append(child)'. This method also sets the
+child's parent attribute appropriately.
+
+**Paramètres :**
+
+- `child`
+
+##### invalidate_sibling_maps
+
+##### update_sibling_maps
+
+##### __init__
+
+Initializer.
+
+Takes a type constant (a token number < 256), a string value, and an
+optional context keyword argument.
+
+**Paramètres :**
+
+- `type`
+- `value`
+- `context`
+- `prefix`
+- `fixers_applied`
+- `opening_bracket`
+- `fmt_pass_converted_first_leaf`
+
+##### __repr__
+
+Return a canonical string representation.
+
+##### __str__
+
+Return a pretty string representation.
+
+This reproduces the input source exactly.
+
+##### _eq
+
+Compare two nodes for equality.
+
+**Paramètres :**
+
+- `other`
+
+##### clone
+
+##### leaves
+
+##### post_order
+
+Return a post-order iterator for the tree.
+
+##### pre_order
+
+Return a pre-order iterator for the tree.
+
+##### prefix
+
+The whitespace and comments preceding this token in the input.
+
+##### prefix
+
+**Paramètres :**
+
+- `prefix`
+
+##### __new__
+
+Constructor that prevents BasePattern from being instantiated.
+
+**Paramètres :**
+
+- `cls`
+
+##### __repr__
+
+##### _submatch
+
+**Paramètres :**
+
+- `node`
+- `results`
+
+##### optimize
+
+A subclass can define this as a hook for optimizations.
+
+Returns either self or another node with the same effect.
+
+##### match
+
+Does this pattern exactly match a node?
+
+Returns True if it matches, False if not.
+
+If results is not None, it must be a dict which will be
+updated with the nodes matching named subpatterns.
+
+Default implementation for non-wildcard patterns.
+
+**Paramètres :**
+
+- `node`
+- `results`
+
+##### match_seq
+
+Does this pattern exactly match a sequence of nodes?
+
+Default implementation for non-wildcard patterns.
+
+**Paramètres :**
+
+- `nodes`
+- `results`
+
+##### generate_matches
+
+Generator yielding all matches for this pattern.
+
+Default implementation for non-wildcard patterns.
+
+**Paramètres :**
+
+- `nodes`
+
+##### __init__
+
+Initializer.  Takes optional type, content, and name.
+
+The type, if given must be a token type (< 256).  If not given,
+this matches any *leaf* node; the content may still be required.
+
+The content, if given, must be a string.
+
+If a name is given, the matching node is stored in the results
+dict under that key.
+
+**Paramètres :**
+
+- `type`
+- `content`
+- `name`
+
+##### match
+
+Override match() to insist on a leaf node.
+
+**Paramètres :**
+
+- `node`
+- `results`
+
+##### _submatch
+
+Match the pattern's content to the node's children.
+
+This assumes the node type matches and self.content is not None.
+
+Returns True if it matches, False if not.
+
+If results is not None, it must be a dict which will be
+updated with the nodes matching named subpatterns.
+
+When returning False, the results dict may still be updated.
+
+**Paramètres :**
+
+- `node`
+- `results`
+
+##### __init__
+
+Initializer.  Takes optional type, content, and name.
+
+The type, if given, must be a symbol type (>= 256).  If the
+type is None this matches *any* single node (leaf or not),
+except if content is not None, in which it only matches
+non-leaf nodes that also match the content pattern.
+
+The content, if not None, must be a sequence of Patterns that
+must match the node's children exactly.  If the content is
+given, the type must not be None.
+
+If a name is given, the matching node is stored in the results
+dict under that key.
+
+**Paramètres :**
+
+- `type`
+- `content`
+- `name`
+
+##### _submatch
+
+Match the pattern's content to the node's children.
+
+This assumes the node type matches and self.content is not None.
+
+Returns True if it matches, False if not.
+
+If results is not None, it must be a dict which will be
+updated with the nodes matching named subpatterns.
+
+When returning False, the results dict may still be updated.
+
+**Paramètres :**
+
+- `node`
+- `results`
+
+##### __init__
+
+Initializer.
+
+Args:
+    content: optional sequence of subsequences of patterns;
+             if absent, matches one node;
+             if present, each subsequence is an alternative [*]
+    min: optional minimum number of times to match, default 0
+    max: optional maximum number of times to match, default HUGE
+    name: optional name assigned to this match
+
+[*] Thus, if content is [[a, b, c], [d, e], [f, g, h]] this is
+    equivalent to (a b c | d e | f g h); if content is None,
+    this is equivalent to '.' in regular expression terms.
+    The min and max parameters work as follows:
+        min=0, max=maxint: .*
+        min=1, max=maxint: .+
+        min=0, max=1: .?
+        min=1, max=1: .
+    If content is not None, replace the dot with the parenthesized
+    list of alternatives, e.g. (a b c | d e | f g h)*
+
+**Paramètres :**
+
+- `content`
+- `min`
+- `max`
+- `name`
+
+##### optimize
+
+Optimize certain stacked wildcard patterns.
+
+##### match
+
+Does this pattern exactly match a node?
+
+**Paramètres :**
+
+- `node`
+- `results`
+
+##### match_seq
+
+Does this pattern exactly match a sequence of nodes?
+
+**Paramètres :**
+
+- `nodes`
+- `results`
+
+##### generate_matches
+
+Generator yielding matches for a sequence of nodes.
+
+Args:
+    nodes: sequence of nodes
+
+Yields:
+    (count, results) tuples where:
+    count: the match comprises nodes[:count];
+    results: dict containing named submatches.
+
+**Paramètres :**
+
+- `nodes`
+
+##### _iterative_matches
+
+Helper to iteratively yield the matches.
+
+**Paramètres :**
+
+- `nodes`
+
+##### _bare_name_matches
+
+Special optimized matcher for bare_name.
+
+**Paramètres :**
+
+- `nodes`
+
+##### _recursive_matches
+
+Helper to recursively yield the matches.
+
+**Paramètres :**
+
+- `nodes`
+- `count`
+
+##### __init__
+
+Initializer.
+
+The argument is either a pattern or None.  If it is None, this
+only matches an empty sequence (effectively '$' in regex
+lingo).  If it is not None, this matches whenever the argument
+pattern doesn't have any matches.
+
+**Paramètres :**
+
+- `content`
+
+##### match
+
+**Paramètres :**
+
+- `node`
+- `results`
+
+##### match_seq
+
+**Paramètres :**
+
+- `nodes`
+- `results`
+
+##### generate_matches
+
+**Paramètres :**
+
+- `nodes`
+
+---
+
 ### .!26646!__init__
 
 ---
@@ -88060,7 +91232,1169 @@ Make the formatter from the requested user options.
 
 ---
 
+### token
+
+Token constants (from "token.h").
+
+#### Fonctions
+
+##### ISTERMINAL
+
+**Paramètres :**
+
+- `x`
+
+##### ISNONTERMINAL
+
+**Paramètres :**
+
+- `x`
+
+##### ISEOF
+
+**Paramètres :**
+
+- `x`
+
+---
+
+### pgen
+
+#### Classes
+
+##### PgenGrammar
+
+##### ParserGenerator
+
+**Méthodes :**
+
+- `__init__()`
+- `make_grammar()`
+- `make_first()`
+- `make_label()`
+- `addfirstsets()`
+- `calcfirst()`
+- `parse()`
+- `make_dfa()`
+- `dump_nfa()`
+- `dump_dfa()`
+- `simplify_dfa()`
+- `parse_rhs()`
+- `parse_alt()`
+- `parse_item()`
+- `parse_atom()`
+- `expect()`
+- `gettoken()`
+- `raise_error()`
+
+##### NFAState
+
+**Méthodes :**
+
+- `__init__()`
+- `addarc()`
+
+##### DFAState
+
+**Méthodes :**
+
+- `__init__()`
+- `addarc()`
+- `unifystate()`
+- `__eq__()`
+
+#### Fonctions
+
+##### generate_grammar
+
+**Paramètres :**
+
+- `filename`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `stream`
+
+##### make_grammar
+
+##### make_first
+
+**Paramètres :**
+
+- `c`
+- `name`
+
+##### make_label
+
+**Paramètres :**
+
+- `c`
+- `label`
+
+##### addfirstsets
+
+##### calcfirst
+
+**Paramètres :**
+
+- `name`
+
+##### parse
+
+##### make_dfa
+
+**Paramètres :**
+
+- `start`
+- `finish`
+
+##### dump_nfa
+
+**Paramètres :**
+
+- `name`
+- `start`
+- `finish`
+
+##### dump_dfa
+
+**Paramètres :**
+
+- `name`
+- `dfa`
+
+##### simplify_dfa
+
+**Paramètres :**
+
+- `dfa`
+
+##### parse_rhs
+
+##### parse_alt
+
+##### parse_item
+
+##### parse_atom
+
+##### expect
+
+**Paramètres :**
+
+- `type`
+- `value`
+
+##### gettoken
+
+##### raise_error
+
+**Paramètres :**
+
+- `msg`
+
+##### __init__
+
+##### addarc
+
+**Paramètres :**
+
+- `next`
+- `label`
+
+##### __init__
+
+**Paramètres :**
+
+- `nfaset`
+- `final`
+
+##### addarc
+
+**Paramètres :**
+
+- `next`
+- `label`
+
+##### unifystate
+
+**Paramètres :**
+
+- `old`
+- `new`
+
+##### __eq__
+
+**Paramètres :**
+
+- `other`
+
+##### closure
+
+**Paramètres :**
+
+- `state`
+
+##### addclosure
+
+**Paramètres :**
+
+- `state`
+- `base`
+
+---
+
+### literals
+
+Safely evaluate Python string literals without using eval().
+
+#### Fonctions
+
+##### escape
+
+**Paramètres :**
+
+- `m`
+
+##### evalString
+
+**Paramètres :**
+
+- `s`
+
+##### test
+
+---
+
 ### .!26669!pgen
+
+---
+
+### grammar
+
+This module defines the data structures used to represent a grammar.
+
+These are a bit arcane because they are derived from the data
+structures used by Python's 'pgen' parser generator.
+
+There's also a table here mapping operators to their names in the
+token module; the Python tokenize module reports all operators as the
+fallback token code OP, but the parser needs the actual token code.
+
+#### Classes
+
+##### Grammar
+
+Pgen parsing tables conversion class.
+
+Once initialized, this class supplies the grammar tables for the
+parsing engine implemented by parse.py.  The parsing engine
+accesses the instance variables directly.  The class here does not
+provide initialization of the tables; several subclasses exist to
+do this (see the conv and pgen modules).
+
+The load() method reads the tables from a pickle file, which is
+much faster than the other ways offered by subclasses.  The pickle
+file is written by calling dump() (after loading the grammar
+tables using a subclass).  The report() method prints a readable
+representation of the tables to stdout, for debugging.
+
+The instance variables are as follows:
+
+symbol2number -- a dict mapping symbol names to numbers.  Symbol
+                 numbers are always 256 or higher, to distinguish
+                 them from token numbers, which are between 0 and
+                 255 (inclusive).
+
+number2symbol -- a dict mapping numbers to symbol names;
+                 these two are each other's inverse.
+
+states        -- a list of DFAs, where each DFA is a list of
+                 states, each state is a list of arcs, and each
+                 arc is a (i, j) pair where i is a label and j is
+                 a state number.  The DFA number is the index into
+                 this list.  (This name is slightly confusing.)
+                 Final states are represented by a special arc of
+                 the form (0, j) where j is its own state number.
+
+dfas          -- a dict mapping symbol numbers to (DFA, first)
+                 pairs, where DFA is an item from the states list
+                 above, and first is a set of tokens that can
+                 begin this grammar rule (represented by a dict
+                 whose values are always 1).
+
+labels        -- a list of (x, y) pairs where x is either a token
+                 number or a symbol number, and y is either None
+                 or a string; the strings are keywords.  The label
+                 number is the index in this list; label numbers
+                 are used to mark state transitions (arcs) in the
+                 DFAs.
+
+start         -- the number of the grammar's start symbol.
+
+keywords      -- a dict mapping keyword strings to arc labels.
+
+tokens        -- a dict mapping token numbers to arc labels.
+
+**Méthodes :**
+
+- `__init__()`
+- `dump()`
+- `_update()`
+- `load()`
+- `loads()`
+- `copy()`
+- `report()`
+
+#### Fonctions
+
+##### __init__
+
+##### dump
+
+Dump the grammar tables to a pickle file.
+
+**Paramètres :**
+
+- `filename`
+
+##### _update
+
+**Paramètres :**
+
+- `attrs`
+
+##### load
+
+Load the grammar tables from a pickle file.
+
+**Paramètres :**
+
+- `filename`
+
+##### loads
+
+Load the grammar tables from a pickle bytes object.
+
+**Paramètres :**
+
+- `pkl`
+
+##### copy
+
+Copy the grammar.
+
+##### report
+
+Dump the grammar tables to standard output, for debugging.
+
+---
+
+### conv
+
+Convert graminit.[ch] spit out by pgen to Python code.
+
+Pgen is the Python parser generator.  It is useful to quickly create a
+parser from a grammar file in Python's grammar notation.  But I don't
+want my parsers to be written in C (yet), so I'm translating the
+parsing tables to Python data structures and writing a Python parse
+engine.
+
+Note that the token numbers are constants determined by the standard
+Python tokenizer.  The standard token module defines these numbers and
+their names (the names are not used much).  The token numbers are
+hardcoded into the Python tokenizer and into pgen.  A Python
+implementation of the Python tokenizer is also available, in the
+standard tokenize module.
+
+On the other hand, symbol numbers (representing the grammar's
+non-terminals) are assigned by pgen based on the actual grammar
+input.
+
+Note: this module is pretty much obsolete; the pgen module generates
+equivalent grammar tables directly from the Grammar.txt input file
+without having to invoke the Python pgen C program.
+
+#### Classes
+
+##### Converter
+
+Grammar subclass that reads classic pgen output files.
+
+The run() method reads the tables as produced by the pgen parser
+generator, typically contained in two C files, graminit.h and
+graminit.c.  The other methods are for internal use only.
+
+See the base class for more documentation.
+
+**Méthodes :**
+
+- `run()`
+- `parse_graminit_h()`
+- `parse_graminit_c()`
+- `finish_off()`
+
+#### Fonctions
+
+##### run
+
+Load the grammar tables from the text files written by pgen.
+
+**Paramètres :**
+
+- `graminit_h`
+- `graminit_c`
+
+##### parse_graminit_h
+
+Parse the .h file written by pgen.  (Internal)
+
+This file is a sequence of #define statements defining the
+nonterminals of the grammar as numbers.  We build two tables
+mapping the numbers to names and back.
+
+**Paramètres :**
+
+- `filename`
+
+##### parse_graminit_c
+
+Parse the .c file written by pgen.  (Internal)
+
+The file looks as follows.  The first two lines are always this:
+
+#include "pgenheaders.h"
+#include "grammar.h"
+
+After that come four blocks:
+
+1) one or more state definitions
+2) a table defining dfas
+3) a table defining labels
+4) a struct defining the grammar
+
+A state definition has the following form:
+- one or more arc arrays, each of the form:
+  static arc arcs_<n>_<m>[<k>] = {
+          {<i>, <j>},
+          ...
+  };
+- followed by a state array, of the form:
+  static state states_<s>[<t>] = {
+          {<k>, arcs_<n>_<m>},
+          ...
+  };
+
+**Paramètres :**
+
+- `filename`
+
+##### finish_off
+
+Create additional useful structures.  (Internal).
+
+---
+
+### parse
+
+Parser engine for the grammar tables generated by pgen.
+
+The grammar table must be loaded first.
+
+See Parser/parser.c in the Python distribution for additional info on
+how this parsing engine works.
+
+#### Classes
+
+##### Recorder
+
+**Méthodes :**
+
+- `__init__()`
+- `ilabels()`
+- `switch_to()`
+- `backtrack()`
+- `add_token()`
+- `determine_route()`
+
+##### ParseError
+
+Exception to signal the parser is stuck.
+
+**Méthodes :**
+
+- `__init__()`
+
+##### Parser
+
+Parser engine.
+
+The proper usage sequence is:
+
+p = Parser(grammar, [converter])  # create instance
+p.setup([start])                  # prepare for parsing
+<for each input token>:
+    if p.addtoken(...):           # parse a token; may raise ParseError
+        break
+root = p.rootnode                 # root of abstract syntax tree
+
+A Parser instance may be reused by calling setup() repeatedly.
+
+A Parser instance contains state pertaining to the current token
+sequence, and should not be used concurrently by different threads
+to parse separate token sequences.
+
+See driver.py for how to get input tokens by tokenizing a file or
+string.
+
+Parsing is complete when addtoken() returns True; the root of the
+abstract syntax tree can then be retrieved from the rootnode
+instance variable.  When a syntax error occurs, addtoken() raises
+the ParseError exception.  There is no error recovery; the parser
+cannot be used after a syntax error was reported (but it can be
+reinitialized by calling setup()).
+
+**Méthodes :**
+
+- `__init__()`
+- `setup()`
+- `addtoken()`
+- `_addtoken()`
+- `classify()`
+- `shift()`
+- `push()`
+- `pop()`
+
+#### Fonctions
+
+##### lam_sub
+
+**Paramètres :**
+
+- `grammar`
+- `node`
+
+##### stack_copy
+
+Nodeless stack copy.
+
+**Paramètres :**
+
+- `stack`
+
+##### __init__
+
+**Paramètres :**
+
+- `parser`
+- `ilabels`
+- `context`
+
+##### ilabels
+
+##### switch_to
+
+**Paramètres :**
+
+- `ilabel`
+
+##### backtrack
+
+Use the node-level invariant ones for basic parsing operations (push/pop/shift).
+These still will operate on the stack; but they won't create any new nodes, or
+modify the contents of any other existing nodes.
+
+This saves us a ton of time when we are backtracking, since we
+want to restore to the initial state as quick as possible, which
+can only be done by having as little mutatations as possible.
+
+##### add_token
+
+**Paramètres :**
+
+- `tok_type`
+- `tok_val`
+- `raw`
+
+##### determine_route
+
+**Paramètres :**
+
+- `value`
+- `force`
+
+##### __init__
+
+**Paramètres :**
+
+- `msg`
+- `type`
+- `value`
+- `context`
+
+##### __init__
+
+Constructor.
+
+The grammar argument is a grammar.Grammar instance; see the
+grammar module for more information.
+
+The parser is not ready yet for parsing; you must call the
+setup() method to get it started.
+
+The optional convert argument is a function mapping concrete
+syntax tree nodes to abstract syntax tree nodes.  If not
+given, no conversion is done and the syntax tree produced is
+the concrete syntax tree.  If given, it must be a function of
+two arguments, the first being the grammar (a grammar.Grammar
+instance), and the second being the concrete syntax tree node
+to be converted.  The syntax tree is converted from the bottom
+up.
+
+**post-note: the convert argument is ignored since for Black's
+usage, convert will always be blib2to3.pytree.convert. Allowing
+this to be dynamic hurts mypyc's ability to use early binding.
+These docs are left for historical and informational value.
+
+A concrete syntax tree node is a (type, value, context, nodes)
+tuple, where type is the node type (a token or symbol number),
+value is None for symbols and a string for tokens, context is
+None or an opaque value used for error reporting (typically a
+(lineno, offset) pair), and nodes is a list of children for
+symbols, and None for tokens.
+
+An abstract syntax tree node may be anything; this is entirely
+up to the converter function.
+
+**Paramètres :**
+
+- `grammar`
+- `convert`
+
+##### setup
+
+Prepare for parsing.
+
+This *must* be called before starting to parse.
+
+The optional argument is an alternative start symbol; it
+defaults to the grammar's start symbol.
+
+You can use a Parser instance to parse any number of programs;
+each time you call setup() the parser is reset to an initial
+state determined by the (implicit or explicit) start symbol.
+
+**Paramètres :**
+
+- `proxy`
+- `start`
+
+##### addtoken
+
+Add a token; return True iff this is the end of the program.
+
+**Paramètres :**
+
+- `type`
+- `value`
+- `context`
+
+##### _addtoken
+
+**Paramètres :**
+
+- `ilabel`
+- `type`
+- `value`
+- `context`
+
+##### classify
+
+Turn a token into a label.  (Internal)
+
+Depending on whether the value is a soft-keyword or not,
+this function may return multiple labels to choose from.
+
+**Paramètres :**
+
+- `type`
+- `value`
+- `context`
+
+##### shift
+
+Shift a token.  (Internal)
+
+**Paramètres :**
+
+- `type`
+- `value`
+- `newstate`
+- `context`
+
+##### push
+
+Push a nonterminal.  (Internal)
+
+**Paramètres :**
+
+- `type`
+- `newdfa`
+- `newstate`
+- `context`
+
+##### pop
+
+Pop a nonterminal.  (Internal)
+
+---
+
+### driver
+
+Parser driver.
+
+This provides a high-level interface to parse a file into a syntax tree.
+
+#### Classes
+
+##### ReleaseRange
+
+**Méthodes :**
+
+- `lock()`
+
+##### TokenProxy
+
+**Méthodes :**
+
+- `__init__()`
+- `release()`
+- `eat()`
+- `__iter__()`
+- `__next__()`
+- `can_advance()`
+
+##### Driver
+
+**Méthodes :**
+
+- `__init__()`
+- `parse_tokens()`
+- `parse_stream_raw()`
+- `parse_stream()`
+- `parse_file()`
+- `parse_string()`
+- `_partially_consume_prefix()`
+
+#### Fonctions
+
+##### _generate_pickle_name
+
+**Paramètres :**
+
+- `gt`
+- `cache_dir`
+
+##### load_grammar
+
+Load the grammar (maybe from a pickle).
+
+**Paramètres :**
+
+- `gt`
+- `gp`
+- `save`
+- `force`
+- `logger`
+
+##### _newer
+
+Inquire whether file a was written since file b.
+
+**Paramètres :**
+
+- `a`
+- `b`
+
+##### load_packaged_grammar
+
+Normally, loads a pickled grammar by doing
+    pkgutil.get_data(package, pickled_grammar)
+where *pickled_grammar* is computed from *grammar_source* by adding the
+Python version and using a ``.pickle`` extension.
+
+However, if *grammar_source* is an extant file, load_grammar(grammar_source)
+is called instead. This facilitates using a packaged grammar file when needed
+but preserves load_grammar's automatic regeneration behavior when possible.
+
+**Paramètres :**
+
+- `package`
+- `grammar_source`
+- `cache_dir`
+
+##### main
+
+Main program, when run as a script: produce grammar pickle files.
+
+Calls load_grammar for each argument, a path to a grammar text file.
+
+##### lock
+
+##### __init__
+
+**Paramètres :**
+
+- `generator`
+
+##### release
+
+##### eat
+
+**Paramètres :**
+
+- `point`
+
+##### __iter__
+
+##### __next__
+
+##### can_advance
+
+**Paramètres :**
+
+- `to`
+
+##### __init__
+
+**Paramètres :**
+
+- `grammar`
+- `logger`
+
+##### parse_tokens
+
+Parse a series of tokens and return the syntax tree.
+
+**Paramètres :**
+
+- `tokens`
+- `debug`
+
+##### parse_stream_raw
+
+Parse a stream and return the syntax tree.
+
+**Paramètres :**
+
+- `stream`
+- `debug`
+
+##### parse_stream
+
+Parse a stream and return the syntax tree.
+
+**Paramètres :**
+
+- `stream`
+- `debug`
+
+##### parse_file
+
+Parse a file and return the syntax tree.
+
+**Paramètres :**
+
+- `filename`
+- `encoding`
+- `debug`
+
+##### parse_string
+
+Parse a string and return the syntax tree.
+
+**Paramètres :**
+
+- `text`
+- `debug`
+
+##### _partially_consume_prefix
+
+**Paramètres :**
+
+- `prefix`
+- `column`
+
+---
+
+### tokenize
+
+Tokenization help for Python programs.
+
+generate_tokens(readline) is a generator that breaks a stream of
+text into Python tokens.  It accepts a readline-like method which is called
+repeatedly to get the next line of input (or "" for EOF).  It generates
+5-tuples with these members:
+
+    the token type (see token.py)
+    the token (a string)
+    the starting (row, column) indices of the token (a 2-tuple of ints)
+    the ending (row, column) indices of the token (a 2-tuple of ints)
+    the original line (string)
+
+It is designed to match the working of the Python tokenizer exactly, except
+that it produces COMMENT tokens for comments and gives type OP for all
+operators
+
+Older entry points
+    tokenize_loop(readline, tokeneater)
+    tokenize(readline, tokeneater=printtoken)
+are the same, except instead of generating tokens, tokeneater is a callback
+function to which the 5 fields described above are passed as 5 arguments,
+each time a new token is found.
+
+#### Classes
+
+##### TokenError
+
+##### StopTokenizing
+
+##### Untokenizer
+
+**Méthodes :**
+
+- `__init__()`
+- `add_whitespace()`
+- `untokenize()`
+- `compat()`
+
+##### FStringState
+
+Keeps track of state around f-strings.
+
+    The tokenizer should call the appropriate method on this class when
+    it transitions to a different part of an f-string. This is needed
+    because the tokenization depends on knowing where exactly we are in
+    the f-string.
+
+    For example, consider the following f-string:
+
+        f"a{1:b{2}c}d"
+
+    The following is the tokenization of this string and the states
+    tracked by this class:
+
+        1,0-1,2:        FSTRING_START   'f"'  # [STATE_NOT_FSTRING, STATE_MIDDLE]
+        1,2-1,3:        FSTRING_MIDDLE  'a'
+        1,3-1,4:        LBRACE  '{'  # [STATE_NOT_FSTRING, STATE_IN_BRACES]
+        1,4-1,5:        NUMBER  '1'
+        1,5-1,6:        OP      ':'  # [STATE_NOT_FSTRING, STATE_IN_COLON]
+        1,6-1,7:        FSTRING_MIDDLE  'b'
+        1,7-1,8:        LBRACE  '{'  # [STATE_NOT_FSTRING, STATE_IN_COLON, STATE_IN_BRACES]
+        1,8-1,9:        NUMBER  '2'
+        1,9-1,10:       RBRACE  '}'  # [STATE_NOT_FSTRING, STATE_IN_COLON]
+        1,10-1,11:      FSTRING_MIDDLE  'c'
+        1,11-1,12:      RBRACE  '}'  # [STATE_NOT_FSTRING, STATE_MIDDLE]
+        1,12-1,13:      FSTRING_MIDDLE  'd'
+        1,13-1,14:      FSTRING_END     '"'  # [STATE_NOT_FSTRING]
+        1,14-1,15:      NEWLINE '
+'
+        2,0-2,0:        ENDMARKER       ''
+
+    Notice that the nested braces in the format specifier are represented
+    by adding a STATE_IN_BRACES entry to the state stack. The stack is
+    also used if there are nested f-strings.
+
+    
+
+**Méthodes :**
+
+- `__init__()`
+- `is_in_fstring_expression()`
+- `current()`
+- `enter_fstring()`
+- `leave_fstring()`
+- `consume_lbrace()`
+- `consume_rbrace()`
+- `consume_colon()`
+
+#### Fonctions
+
+##### group
+
+##### any
+
+##### maybe
+
+##### _combinations
+
+##### printtoken
+
+**Paramètres :**
+
+- `type`
+- `token`
+- `srow_col`
+- `erow_col`
+- `line`
+
+##### tokenize
+
+The tokenize() function accepts two parameters: one representing the
+input stream, and one providing an output mechanism for tokenize().
+
+The first parameter, readline, must be a callable object which provides
+the same interface as the readline() method of built-in file objects.
+Each call to the function should return one line of input as a string.
+
+The second parameter, tokeneater, must also be a callable object. It is
+called once for each token, with five arguments, corresponding to the
+tuples generated by generate_tokens().
+
+**Paramètres :**
+
+- `readline`
+- `tokeneater`
+
+##### tokenize_loop
+
+**Paramètres :**
+
+- `readline`
+- `tokeneater`
+
+##### _get_normal_name
+
+Imitates get_normal_name in tokenizer.c.
+
+**Paramètres :**
+
+- `orig_enc`
+
+##### detect_encoding
+
+The detect_encoding() function is used to detect the encoding that should
+be used to decode a Python source file. It requires one argument, readline,
+in the same way as the tokenize() generator.
+
+It will call readline a maximum of twice, and return the encoding used
+(as a string) and a list of any lines (left as bytes) it has read
+in.
+
+It detects the encoding from the presence of a utf-8 bom or an encoding
+cookie as specified in pep-0263. If both a bom and a cookie are present, but
+disagree, a SyntaxError will be raised. If the encoding cookie is an invalid
+charset, raise a SyntaxError.  Note that if a utf-8 bom is found,
+'utf-8-sig' is returned.
+
+If no encoding is specified, then the default of 'utf-8' will be returned.
+
+**Paramètres :**
+
+- `readline`
+
+##### untokenize
+
+Transform tokens back into Python source code.
+
+Each element returned by the iterable must be a token sequence
+with at least two elements, a token number and token value.  If
+only two tokens are passed, the resulting output is poor.
+
+Round-trip invariant for full input:
+    Untokenized source will match input source exactly
+
+Round-trip invariant for limited input:
+    # Output text will tokenize the back to the input
+    t1 = [tok[:2] for tok in generate_tokens(f.readline)]
+    newcode = untokenize(t1)
+    readline = iter(newcode.splitlines(1)).next
+    t2 = [tok[:2] for tokin generate_tokens(readline)]
+    assert t1 == t2
+
+**Paramètres :**
+
+- `iterable`
+
+##### is_fstring_start
+
+**Paramètres :**
+
+- `token`
+
+##### _split_fstring_start_and_middle
+
+**Paramètres :**
+
+- `token`
+
+##### generate_tokens
+
+The generate_tokens() generator requires one argument, readline, which
+must be a callable object which provides the same interface as the
+readline() method of built-in file objects. Each call to the function
+should return one line of input as a string.  Alternately, readline
+can be a callable function terminating with StopIteration:
+    readline = open(myfile).next    # Example of alternate readline
+
+The generator produces 5-tuples with these members: the token type; the
+token string; a 2-tuple (srow, scol) of ints specifying the row and
+column where the token begins in the source; a 2-tuple (erow, ecol) of
+ints specifying the row and column where the token ends in the source;
+and the line on which the token was found. The line passed is the
+logical line; continuation lines are included.
+
+**Paramètres :**
+
+- `readline`
+- `grammar`
+
+##### __init__
+
+##### add_whitespace
+
+**Paramètres :**
+
+- `start`
+
+##### untokenize
+
+**Paramètres :**
+
+- `iterable`
+
+##### compat
+
+**Paramètres :**
+
+- `token`
+- `iterable`
+
+##### read_or_stop
+
+##### find_cookie
+
+**Paramètres :**
+
+- `line`
+
+##### __init__
+
+##### is_in_fstring_expression
+
+##### current
+
+##### enter_fstring
+
+##### leave_fstring
+
+##### consume_lbrace
+
+##### consume_rbrace
+
+##### consume_colon
 
 ---
 
@@ -88671,6 +93005,22 @@ Decide whether this is running in a REPL or IPython notebook
 ---
 
 ### .!26720!__init__
+
+---
+
+### middlewares
+
+#### Fonctions
+
+##### cors
+
+**Paramètres :**
+
+- `allow_headers`
+
+---
+
+### __main__
 
 ---
 
@@ -109596,7 +113946,4409 @@ Low contrast Zenburn style.
 
 ---
 
+### files
+
+#### Fonctions
+
+##### _load_toml
+
+**Paramètres :**
+
+- `path`
+
+##### _cached_resolve
+
+**Paramètres :**
+
+- `path`
+
+##### find_project_root
+
+Return a directory containing .git, .hg, or pyproject.toml.
+
+pyproject.toml files are only considered if they contain a [tool.black]
+section and are ignored otherwise.
+
+That directory will be a common parent of all files and directories
+passed in `srcs`.
+
+If no directory in the tree contains a marker that would specify it's the
+project root, the root of the file system is returned.
+
+Returns a two-tuple with the first element as the project root path and
+the second element as a string describing the method by which the
+project root was discovered.
+
+**Paramètres :**
+
+- `srcs`
+- `stdin_filename`
+
+##### find_pyproject_toml
+
+Find the absolute filepath to a pyproject.toml if it exists
+
+**Paramètres :**
+
+- `path_search_start`
+- `stdin_filename`
+
+##### parse_pyproject_toml
+
+Parse a pyproject toml file, pulling out relevant parts for Black.
+
+If parsing fails, will raise a tomllib.TOMLDecodeError.
+
+**Paramètres :**
+
+- `path_config`
+
+##### infer_target_version
+
+Infer Black's target version from the project metadata in pyproject.toml.
+
+Supports the PyPA standard format (PEP 621):
+https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#requires-python
+
+If the target version cannot be inferred, returns None.
+
+**Paramètres :**
+
+- `pyproject_toml`
+
+##### parse_req_python_version
+
+Parse a version string (i.e. ``"3.7"``) to a list of TargetVersion.
+
+If parsing fails, will raise a packaging.version.InvalidVersion error.
+If the parsed version cannot be mapped to a valid TargetVersion, returns None.
+
+**Paramètres :**
+
+- `requires_python`
+
+##### parse_req_python_specifier
+
+Parse a specifier string (i.e. ``">=3.7,<3.10"``) to a list of TargetVersion.
+
+If parsing fails, will raise a packaging.specifiers.InvalidSpecifier error.
+If the parsed specifier cannot be mapped to a valid TargetVersion, returns None.
+
+**Paramètres :**
+
+- `requires_python`
+
+##### strip_specifier_set
+
+Strip minor versions for some specifiers in the specifier set.
+
+For background on version specifiers, see PEP 440:
+https://peps.python.org/pep-0440/#version-specifiers
+
+**Paramètres :**
+
+- `specifier_set`
+
+##### find_user_pyproject_toml
+
+Return the path to the top-level user configuration for black.
+
+This looks for ~\.black on Windows and ~/.config/black on Linux and other
+Unix systems.
+
+May raise:
+- RuntimeError: if the current user has no homedir
+- PermissionError: if the current process cannot access the user's homedir
+
+##### get_gitignore
+
+Return a PathSpec matching gitignore content if present.
+
+**Paramètres :**
+
+- `root`
+
+##### resolves_outside_root_or_cannot_stat
+
+Returns whether the path is a symbolic link that points outside the
+root directory. Also returns True if we failed to resolve the path.
+
+**Paramètres :**
+
+- `path`
+- `root`
+- `report`
+
+##### best_effort_relative_path
+
+**Paramètres :**
+
+- `path`
+- `root`
+
+##### _path_is_ignored
+
+**Paramètres :**
+
+- `root_relative_path`
+- `root`
+- `gitignore_dict`
+
+##### path_is_excluded
+
+**Paramètres :**
+
+- `normalized_path`
+- `pattern`
+
+##### gen_python_files
+
+Generate all files under `path` whose paths are not excluded by the
+`exclude_regex`, `extend_exclude`, or `force_exclude` regexes,
+but are included by the `include` regex.
+
+Symbolic links pointing outside of the `root` directory are ignored.
+
+`report` is where output about exclusions goes.
+
+**Paramètres :**
+
+- `paths`
+- `root`
+- `include`
+- `exclude`
+- `extend_exclude`
+- `force_exclude`
+- `report`
+- `gitignore_dict`
+
+##### wrap_stream_for_windows
+
+Wrap stream with colorama's wrap_stream so colors are shown on Windows.
+
+If `colorama` is unavailable, the original stream is returned unmodified.
+Otherwise, the `wrap_stream()` function determines whether the stream needs
+to be wrapped for a Windows environment and will accordingly either return
+an `AnsiToWin32` wrapper or the original stream.
+
+**Paramètres :**
+
+- `f`
+
+---
+
 ### .!28662!mode
+
+---
+
+### parsing
+
+Parse Python code and perform AST validation.
+
+#### Classes
+
+##### InvalidInput
+
+Raised when input source code fails all parse attempts.
+
+##### ASTSafetyError
+
+Raised when Black's generated code is not equivalent to the old AST.
+
+#### Fonctions
+
+##### get_grammars
+
+**Paramètres :**
+
+- `target_versions`
+
+##### lib2to3_parse
+
+Given a string with source, return the lib2to3 Node.
+
+**Paramètres :**
+
+- `src_txt`
+- `target_versions`
+
+##### matches_grammar
+
+**Paramètres :**
+
+- `src_txt`
+- `grammar`
+
+##### lib2to3_unparse
+
+Given a lib2to3 node, return its string representation.
+
+**Paramètres :**
+
+- `node`
+
+##### _parse_single_version
+
+**Paramètres :**
+
+- `src`
+- `version`
+
+##### parse_ast
+
+**Paramètres :**
+
+- `src`
+
+##### _normalize
+
+**Paramètres :**
+
+- `lineend`
+- `value`
+
+##### stringify_ast
+
+Simple visitor generating strings to compare ASTs by content.
+
+**Paramètres :**
+
+- `node`
+
+##### _stringify_ast_with_new_parent
+
+**Paramètres :**
+
+- `node`
+- `parent_stack`
+- `new_parent`
+
+##### _stringify_ast
+
+**Paramètres :**
+
+- `node`
+- `parent_stack`
+
+---
+
+### handle_ipynb_magics
+
+Functions to process IPython magics with.
+
+#### Classes
+
+##### Replacement
+
+##### CellMagic
+
+**Méthodes :**
+
+- `header()`
+
+##### CellMagicFinder
+
+Find cell magics.
+
+Note that the source of the abstract syntax tree
+will already have been processed by IPython's
+TransformerManager().transform_cell.
+
+For example,
+
+    %%time
+
+    foo()
+
+would have been transformed to
+
+    get_ipython().run_cell_magic('time', '', 'foo()\n')
+
+and we look for instances of the latter.
+
+**Méthodes :**
+
+- `__init__()`
+- `visit_Expr()`
+
+##### OffsetAndMagic
+
+##### MagicFinder
+
+Visit cell to look for get_ipython calls.
+
+Note that the source of the abstract syntax tree
+will already have been processed by IPython's
+TransformerManager().transform_cell.
+
+For example,
+
+    %matplotlib inline
+
+would have been transformed to
+
+    get_ipython().run_line_magic('matplotlib', 'inline')
+
+and we look for instances of the latter (and likewise for other
+types of magics).
+
+**Méthodes :**
+
+- `__init__()`
+- `visit_Assign()`
+- `visit_Expr()`
+
+#### Fonctions
+
+##### jupyter_dependencies_are_installed
+
+##### validate_cell
+
+Check that cell does not already contain TransformerManager transformations,
+    or non-Python cell magics, which might cause tokenizer_rt to break because of
+    indentations.
+
+    If a cell contains ``!ls``, then it'll be transformed to
+    ``get_ipython().system('ls')``. However, if the cell originally contained
+    ``get_ipython().system('ls')``, then it would get transformed in the same way:
+
+        >>> TransformerManager().transform_cell("get_ipython().system('ls')")
+        "get_ipython().system('ls')
+"
+        >>> TransformerManager().transform_cell("!ls")
+        "get_ipython().system('ls')
+"
+
+    Due to the impossibility of safely roundtripping in such situations, cells
+    containing transformed magics will be ignored.
+    
+
+**Paramètres :**
+
+- `src`
+- `mode`
+
+##### remove_trailing_semicolon
+
+Remove trailing semicolon from Jupyter notebook cell.
+
+For example,
+
+    fig, ax = plt.subplots()
+    ax.plot(x_data, y_data);  # plot data
+
+would become
+
+    fig, ax = plt.subplots()
+    ax.plot(x_data, y_data)  # plot data
+
+Mirrors the logic in `quiet` from `IPython.core.displayhook`, but uses
+``tokenize_rt`` so that round-tripping works fine.
+
+**Paramètres :**
+
+- `src`
+
+##### put_trailing_semicolon_back
+
+Put trailing semicolon back if cell originally had it.
+
+Mirrors the logic in `quiet` from `IPython.core.displayhook`, but uses
+``tokenize_rt`` so that round-tripping works fine.
+
+**Paramètres :**
+
+- `src`
+- `has_trailing_semicolon`
+
+##### mask_cell
+
+Mask IPython magics so content becomes parseable Python code.
+
+For example,
+
+    %matplotlib inline
+    'foo'
+
+becomes
+
+    b"25716f358c32750"
+    'foo'
+
+The replacements are returned, along with the transformed code.
+
+**Paramètres :**
+
+- `src`
+
+##### create_token
+
+Create a randomly generated token that is n_chars characters long.
+
+**Paramètres :**
+
+- `n_chars`
+
+##### get_token
+
+Return randomly generated token to mask IPython magic with.
+
+For example, if 'magic' was `%matplotlib inline`, then a possible
+token to mask it with would be `"43fdd17f7e5ddc83"`. The token
+will be the same length as the magic, and we make sure that it was
+not already present anywhere else in the cell.
+
+**Paramètres :**
+
+- `src`
+- `magic`
+
+##### replace_cell_magics
+
+Replace cell magic with token.
+
+Note that 'src' will already have been processed by IPython's
+TransformerManager().transform_cell.
+
+Example,
+
+    get_ipython().run_cell_magic('t', '-n1', 'ls =!ls\n')
+
+becomes
+
+    "a794."
+    ls =!ls
+
+The replacement, along with the transformed code, is returned.
+
+**Paramètres :**
+
+- `src`
+
+##### replace_magics
+
+Replace magics within body of cell.
+
+Note that 'src' will already have been processed by IPython's
+TransformerManager().transform_cell.
+
+Example, this
+
+    get_ipython().run_line_magic('matplotlib', 'inline')
+    'foo'
+
+becomes
+
+    "5e67db56d490fd39"
+    'foo'
+
+The replacement, along with the transformed code, are returned.
+
+**Paramètres :**
+
+- `src`
+
+##### unmask_cell
+
+Remove replacements from cell.
+
+For example
+
+    "9b20"
+    foo = bar
+
+becomes
+
+    %%time
+    foo = bar
+
+**Paramètres :**
+
+- `src`
+- `replacements`
+
+##### _get_code_start
+
+Provides the first line where the code starts.
+
+Iterates over lines of code until it finds the first line that doesn't
+contain only empty spaces and comments. It removes any empty spaces at the
+start of the line and returns it. If such line doesn't exist, it returns an
+empty string.
+
+**Paramètres :**
+
+- `src`
+
+##### _is_ipython_magic
+
+Check if attribute is IPython magic.
+
+Note that the source of the abstract syntax tree
+will already have been processed by IPython's
+TransformerManager().transform_cell.
+
+**Paramètres :**
+
+- `node`
+
+##### _get_str_args
+
+**Paramètres :**
+
+- `args`
+
+##### header
+
+##### __init__
+
+**Paramètres :**
+
+- `cell_magic`
+
+##### visit_Expr
+
+Find cell magic, extract header and body.
+
+**Paramètres :**
+
+- `node`
+
+##### __init__
+
+##### visit_Assign
+
+Look for system assign magics.
+
+For example,
+
+    black_version = !black --version
+    env = %env var
+
+would have been (respectively) transformed to
+
+    black_version = get_ipython().getoutput('black --version')
+    env = get_ipython().run_line_magic('env', 'var')
+
+and we look for instances of any of the latter.
+
+**Paramètres :**
+
+- `node`
+
+##### visit_Expr
+
+Look for magics in body of cell.
+
+For examples,
+
+    !ls
+    !!ls
+    ?ls
+    ??ls
+
+would (respectively) get transformed to
+
+    get_ipython().system('ls')
+    get_ipython().getoutput('ls')
+    get_ipython().run_line_magic('pinfo', 'ls')
+    get_ipython().run_line_magic('pinfo2', 'ls')
+
+and we look for instances of any of the latter.
+
+**Paramètres :**
+
+- `node`
+
+---
+
+### rusty
+
+An error-handling model influenced by that used by the Rust programming language
+
+See https://doc.rust-lang.org/book/ch09-00-error-handling.html.
+
+#### Classes
+
+##### Ok
+
+**Méthodes :**
+
+- `__init__()`
+- `ok()`
+
+##### Err
+
+**Méthodes :**
+
+- `__init__()`
+- `err()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `value`
+
+##### ok
+
+##### __init__
+
+**Paramètres :**
+
+- `e`
+
+##### err
+
+---
+
+### concurrency
+
+Formatting many files at once via multiprocessing. Contains entrypoint and utilities.
+
+NOTE: this module is only imported if we need to format several files at once.
+
+#### Fonctions
+
+##### maybe_install_uvloop
+
+If our environment has uvloop installed we use it.
+
+This is called only from command-line entry points to avoid
+interfering with the parent process if Black is used as a library.
+
+##### cancel
+
+asyncio signal handler that cancels all `tasks` and reports to stderr.
+
+**Paramètres :**
+
+- `tasks`
+
+##### shutdown
+
+Cancel all pending tasks on `loop`, wait for them, and close the loop.
+
+**Paramètres :**
+
+- `loop`
+
+##### reformat_many
+
+Reformat multiple files using a ProcessPoolExecutor.
+
+**Paramètres :**
+
+- `sources`
+- `fast`
+- `write_back`
+- `mode`
+- `report`
+- `workers`
+
+---
+
+### cache
+
+Caching of formatted files with feature-based invalidation.
+
+#### Classes
+
+##### FileData
+
+##### Cache
+
+**Méthodes :**
+
+- `read()`
+- `hash_digest()`
+- `get_file_data()`
+- `is_changed()`
+- `filtered_cached()`
+- `write()`
+
+#### Fonctions
+
+##### get_cache_dir
+
+Get the cache directory used by black.
+
+Users can customize this directory on all systems using `BLACK_CACHE_DIR`
+environment variable. By default, the cache directory is the user cache directory
+under the black application.
+
+This result is immediately set to a constant `black.cache.CACHE_DIR` as to avoid
+repeated calls.
+
+##### get_cache_file
+
+**Paramètres :**
+
+- `mode`
+
+##### read
+
+Read the cache if it exists and is well-formed.
+
+If it is not well-formed, the call to write later should
+resolve the issue.
+
+**Paramètres :**
+
+- `cls`
+- `mode`
+
+##### hash_digest
+
+Return hash digest for path.
+
+**Paramètres :**
+
+- `path`
+
+##### get_file_data
+
+Return file data for path.
+
+**Paramètres :**
+
+- `path`
+
+##### is_changed
+
+Check if source has changed compared to cached version.
+
+**Paramètres :**
+
+- `source`
+
+##### filtered_cached
+
+Split an iterable of paths in `sources` into two sets.
+
+The first contains paths of files that modified on disk or are not in the
+cache. The other contains paths to non-modified files.
+
+**Paramètres :**
+
+- `sources`
+
+##### write
+
+Update the cache file data and write a new cache file.
+
+**Paramètres :**
+
+- `sources`
+
+---
+
+### brackets
+
+Builds on top of nodes.py to track brackets.
+
+#### Classes
+
+##### BracketMatchError
+
+Raised when an opening bracket is unable to be matched to a closing bracket.
+
+##### BracketTracker
+
+Keeps track of brackets on a line.
+
+**Méthodes :**
+
+- `mark()`
+- `any_open_for_or_lambda()`
+- `any_open_brackets()`
+- `max_delimiter_priority()`
+- `delimiter_count_with_priority()`
+- `maybe_increment_for_loop_variable()`
+- `maybe_decrement_after_for_loop_variable()`
+- `maybe_increment_lambda_arguments()`
+- `maybe_decrement_after_lambda_arguments()`
+- `get_open_lsqb()`
+
+#### Fonctions
+
+##### is_split_after_delimiter
+
+Return the priority of the `leaf` delimiter, given a line break after it.
+
+The delimiter priorities returned here are from those delimiters that would
+cause a line break after themselves.
+
+Higher numbers are higher priority.
+
+**Paramètres :**
+
+- `leaf`
+
+##### is_split_before_delimiter
+
+Return the priority of the `leaf` delimiter, given a line break before it.
+
+The delimiter priorities returned here are from those delimiters that would
+cause a line break before themselves.
+
+Higher numbers are higher priority.
+
+**Paramètres :**
+
+- `leaf`
+- `previous`
+
+##### max_delimiter_priority_in_atom
+
+Return maximum delimiter priority inside `node`.
+
+This is specific to atoms with contents contained in a pair of parentheses.
+If `node` isn't an atom or there are no enclosing parentheses, returns 0.
+
+**Paramètres :**
+
+- `node`
+
+##### get_leaves_inside_matching_brackets
+
+Return leaves that are inside matching brackets.
+
+The input `leaves` can have non-matching brackets at the head or tail parts.
+Matching brackets are included.
+
+**Paramètres :**
+
+- `leaves`
+
+##### mark
+
+Mark `leaf` with bracket-related metadata. Keep track of delimiters.
+
+All leaves receive an int `bracket_depth` field that stores how deep
+within brackets a given leaf is. 0 means there are no enclosing brackets
+that started on this line.
+
+If a leaf is itself a closing bracket and there is a matching opening
+bracket earlier, it receives an `opening_bracket` field with which it forms a
+pair. This is a one-directional link to avoid reference cycles. Closing
+bracket without opening happens on lines continued from previous
+breaks, e.g. `) -> "ReturnType":` as part of a funcdef where we place
+the return type annotation on its own line of the previous closing RPAR.
+
+If a leaf is a delimiter (a token on which Black can split the line if
+needed) and it's on depth 0, its `id()` is stored in the tracker's
+`delimiters` field.
+
+**Paramètres :**
+
+- `leaf`
+
+##### any_open_for_or_lambda
+
+Return True if there is an open for or lambda expression on the line.
+
+See maybe_increment_for_loop_variable and maybe_increment_lambda_arguments
+for details.
+
+##### any_open_brackets
+
+Return True if there is an yet unmatched open bracket on the line.
+
+##### max_delimiter_priority
+
+Return the highest priority of a delimiter found on the line.
+
+Values are consistent with what `is_split_*_delimiter()` return.
+Raises ValueError on no delimiters.
+
+**Paramètres :**
+
+- `exclude`
+
+##### delimiter_count_with_priority
+
+Return the number of delimiters with the given `priority`.
+
+If no `priority` is passed, defaults to max priority on the line.
+
+**Paramètres :**
+
+- `priority`
+
+##### maybe_increment_for_loop_variable
+
+In a for loop, or comprehension, the variables are often unpacks.
+
+To avoid splitting on the comma in this situation, increase the depth of
+tokens between `for` and `in`.
+
+**Paramètres :**
+
+- `leaf`
+
+##### maybe_decrement_after_for_loop_variable
+
+See `maybe_increment_for_loop_variable` above for explanation.
+
+**Paramètres :**
+
+- `leaf`
+
+##### maybe_increment_lambda_arguments
+
+In a lambda expression, there might be more than one argument.
+
+To avoid splitting on the comma in this situation, increase the depth of
+tokens between `lambda` and `:`.
+
+**Paramètres :**
+
+- `leaf`
+
+##### maybe_decrement_after_lambda_arguments
+
+See `maybe_increment_lambda_arguments` above for explanation.
+
+**Paramètres :**
+
+- `leaf`
+
+##### get_open_lsqb
+
+Return the most recent opening square bracket (if any).
+
+---
+
+### lines
+
+#### Classes
+
+##### Line
+
+Holds leaves and comments. Can be printed with `str(line)`.
+
+**Méthodes :**
+
+- `append()`
+- `append_safe()`
+- `is_comment()`
+- `is_decorator()`
+- `is_import()`
+- `is_with_or_async_with_stmt()`
+- `is_class()`
+- `is_stub_class()`
+- `is_def()`
+- `is_stub_def()`
+- `is_class_paren_empty()`
+- `_is_triple_quoted_string()`
+- `is_docstring()`
+- `is_chained_assignment()`
+- `opens_block()`
+- `is_fmt_pass_converted()`
+- `contains_standalone_comments()`
+- `contains_implicit_multiline_string_with_comments()`
+- `contains_uncollapsable_type_comments()`
+- `contains_unsplittable_type_ignore()`
+- `contains_multiline_strings()`
+- `has_magic_trailing_comma()`
+- `append_comment()`
+- `comments_after()`
+- `remove_trailing_comma()`
+- `is_complex_subscript()`
+- `enumerate_with_length()`
+- `clone()`
+- `__str__()`
+- `__bool__()`
+
+##### RHSResult
+
+Intermediate split result from a right hand split.
+
+##### LinesBlock
+
+Class that holds information about a block of formatted lines.
+
+This is introduced so that the EmptyLineTracker can look behind the standalone
+comments and adjust their empty lines for class or def lines.
+
+**Méthodes :**
+
+- `all_lines()`
+
+##### EmptyLineTracker
+
+Provides a stateful method that returns the number of potential extra
+empty lines needed before and after the currently processed line.
+
+Note: this tracker works on lines that haven't been split yet.  It assumes
+the prefix of the first leaf consists of optional newlines.  Those newlines
+are consumed by `maybe_empty_lines()` and included in the computation.
+
+**Méthodes :**
+
+- `maybe_empty_lines()`
+- `_maybe_empty_lines()`
+- `_maybe_empty_lines_for_class_or_def()`
+
+#### Fonctions
+
+##### enumerate_reversed
+
+Like `reversed(enumerate(sequence))` if that were possible.
+
+**Paramètres :**
+
+- `sequence`
+
+##### append_leaves
+
+Append leaves (taken from @old_line) to @new_line, making sure to fix the
+underlying Node structure where appropriate.
+
+All of the leaves in @leaves are duplicated. The duplicates are then
+appended to @new_line and used to replace their originals in the underlying
+Node structure. Any comments attached to the old leaves are reattached to
+the new leaves.
+
+Pre-conditions:
+    set(@leaves) is a subset of set(@old_line.leaves).
+
+**Paramètres :**
+
+- `new_line`
+- `old_line`
+- `leaves`
+- `preformatted`
+
+##### is_line_short_enough
+
+For non-multiline strings, return True if `line` is no longer than `line_length`.
+For multiline strings, looks at the context around `line` to determine
+if it should be inlined or split up.
+Uses the provided `line_str` rendering, if any, otherwise computes a new one.
+
+**Paramètres :**
+
+- `line`
+
+##### can_be_split
+
+Return False if the line cannot be split *for sure*.
+
+This is not an exhaustive search but a cheap heuristic that we can use to
+avoid some unfortunate formattings (mostly around wrapping unsplittable code
+in unnecessary parentheses).
+
+**Paramètres :**
+
+- `line`
+
+##### can_omit_invisible_parens
+
+Does `rhs.body` have a shape safe to reformat without optional parens around it?
+
+Returns True for only a subset of potentially nice looking formattings but
+the point is to not return false positives that end up producing lines that
+are too long.
+
+**Paramètres :**
+
+- `rhs`
+- `line_length`
+
+##### _can_omit_opening_paren
+
+See `can_omit_invisible_parens`.
+
+**Paramètres :**
+
+- `line`
+
+##### _can_omit_closing_paren
+
+See `can_omit_invisible_parens`.
+
+**Paramètres :**
+
+- `line`
+
+##### line_to_string
+
+Returns the string representation of @line.
+
+WARNING: This is known to be computationally expensive.
+
+**Paramètres :**
+
+- `line`
+
+##### append
+
+Add a new `leaf` to the end of the line.
+
+Unless `preformatted` is True, the `leaf` will receive a new consistent
+whitespace prefix and metadata applied by :class:`BracketTracker`.
+Trailing commas are maybe removed, unpacked for loop variables are
+demoted from being delimiters.
+
+Inline comments are put aside.
+
+**Paramètres :**
+
+- `leaf`
+- `preformatted`
+- `track_bracket`
+
+##### append_safe
+
+Like :func:`append()` but disallow invalid standalone comment structure.
+
+Raises ValueError when any `leaf` is appended after a standalone comment
+or when a standalone comment is not the first leaf on the line.
+
+**Paramètres :**
+
+- `leaf`
+- `preformatted`
+
+##### is_comment
+
+Is this line a standalone comment?
+
+##### is_decorator
+
+Is this line a decorator?
+
+##### is_import
+
+Is this an import line?
+
+##### is_with_or_async_with_stmt
+
+Is this a with_stmt line?
+
+##### is_class
+
+Is this line a class definition?
+
+##### is_stub_class
+
+Is this line a class definition with a body consisting only of "..."?
+
+##### is_def
+
+Is this a function definition? (Also returns True for async defs.)
+
+##### is_stub_def
+
+Is this line a function definition with a body consisting only of "..."?
+
+##### is_class_paren_empty
+
+Is this a class with no base classes but using parentheses?
+
+Those are unnecessary and should be removed.
+
+##### _is_triple_quoted_string
+
+Is the line a triple quoted string?
+
+##### is_docstring
+
+Is the line a docstring?
+
+##### is_chained_assignment
+
+Is the line a chained assignment
+
+##### opens_block
+
+Does this line open a new level of indentation.
+
+##### is_fmt_pass_converted
+
+Is this line converted from fmt off/skip code?
+
+If first_leaf_matches is not None, it only returns True if the first
+leaf of converted code matches.
+
+##### contains_standalone_comments
+
+If so, needs to be split before emitting.
+
+##### contains_implicit_multiline_string_with_comments
+
+Chck if we have an implicit multiline string with comments on the line
+
+##### contains_uncollapsable_type_comments
+
+##### contains_unsplittable_type_ignore
+
+##### contains_multiline_strings
+
+##### has_magic_trailing_comma
+
+Return True if we have a magic trailing comma, that is when:
+- there's a trailing comma here
+- it's not from single-element square bracket indexing
+- it's not a one-tuple
+
+**Paramètres :**
+
+- `closing`
+
+##### append_comment
+
+Add an inline or standalone comment to the line.
+
+**Paramètres :**
+
+- `comment`
+
+##### comments_after
+
+Generate comments that should appear directly after `leaf`.
+
+**Paramètres :**
+
+- `leaf`
+
+##### remove_trailing_comma
+
+Remove the trailing comma and moves the comments attached to it.
+
+##### is_complex_subscript
+
+Return True iff `leaf` is part of a slice with non-trivial exprs.
+
+**Paramètres :**
+
+- `leaf`
+
+##### enumerate_with_length
+
+Return an enumeration of leaves with their length.
+
+Stops prematurely on multiline strings and standalone comments.
+
+**Paramètres :**
+
+- `is_reversed`
+
+##### clone
+
+##### __str__
+
+Render the line.
+
+##### __bool__
+
+Return True if the line has leaves or comments.
+
+##### all_lines
+
+##### maybe_empty_lines
+
+Return the number of extra empty lines before and after the `current_line`.
+
+This is for separating `def`, `async def` and `class` with extra empty
+lines (two on module-level).
+
+**Paramètres :**
+
+- `current_line`
+
+##### _maybe_empty_lines
+
+**Paramètres :**
+
+- `current_line`
+
+##### _maybe_empty_lines_for_class_or_def
+
+**Paramètres :**
+
+- `current_line`
+- `before`
+- `user_had_newline`
+
+---
+
+### mode
+
+Data structures configuring Black behavior.
+
+Mostly around Python language feature support per version and Black configuration
+chosen by the user.
+
+#### Classes
+
+##### TargetVersion
+
+**Méthodes :**
+
+- `pretty()`
+
+##### Feature
+
+##### Preview
+
+Individual preview style features.
+
+##### Deprecated
+
+Visible deprecation warning.
+
+##### Mode
+
+**Méthodes :**
+
+- `__contains__()`
+- `get_cache_key()`
+
+#### Fonctions
+
+##### supports_feature
+
+**Paramètres :**
+
+- `target_versions`
+- `feature`
+
+##### pretty
+
+##### __contains__
+
+Provide `Preview.FEATURE in Mode` syntax that mirrors the ``preview`` flag.
+
+In unstable mode, all features are enabled. In preview mode, all features
+except those in UNSTABLE_FEATURES are enabled. Any features in
+`self.enabled_features` are also enabled.
+
+**Paramètres :**
+
+- `feature`
+
+##### get_cache_key
+
+---
+
+### _width_table
+
+---
+
+### ranges
+
+Functions related to Black's formatting by line ranges feature.
+
+#### Classes
+
+##### _TopLevelStatementsVisitor
+
+A node visitor that converts unchanged top-level statements to
+STANDALONE_COMMENT.
+
+This is used in addition to _convert_unchanged_line_by_line, to
+speed up formatting when there are unchanged top-level
+classes/functions/statements.
+
+**Méthodes :**
+
+- `__init__()`
+- `visit_simple_stmt()`
+- `visit_suite()`
+
+##### _LinesMapping
+
+1-based lines mapping from original source to modified source.
+
+Lines [original_start, original_end] from original source
+are mapped to [modified_start, modified_end].
+
+The ranges are inclusive on both ends.
+
+#### Fonctions
+
+##### parse_line_ranges
+
+**Paramètres :**
+
+- `line_ranges`
+
+##### is_valid_line_range
+
+Returns whether the line range is valid.
+
+**Paramètres :**
+
+- `lines`
+
+##### sanitized_lines
+
+Returns the valid line ranges for the given source.
+
+This removes ranges that are entirely outside the valid lines.
+
+Other ranges are normalized so that the start values are at least 1 and the
+end values are at most the (1-based) index of the last source line.
+
+**Paramètres :**
+
+- `lines`
+- `src_contents`
+
+##### adjusted_lines
+
+Returns the adjusted line ranges based on edits from the original code.
+
+This computes the new line ranges by diffing original_source and
+modified_source, and adjust each range based on how the range overlaps with
+the diffs.
+
+Note the diff can contain lines outside of the original line ranges. This can
+happen when the formatting has to be done in adjacent to maintain consistent
+local results. For example:
+
+1. def my_func(arg1, arg2,
+2.             arg3,):
+3.   pass
+
+If it restricts to line 2-2, it can't simply reformat line 2, it also has
+to reformat line 1:
+
+1. def my_func(
+2.     arg1,
+3.     arg2,
+4.     arg3,
+5. ):
+6.   pass
+
+In this case, we will expand the line ranges to also include the whole diff
+block.
+
+Args:
+  lines: a collection of line ranges.
+  original_source: the original source.
+  modified_source: the modified source.
+
+**Paramètres :**
+
+- `lines`
+- `original_source`
+- `modified_source`
+
+##### convert_unchanged_lines
+
+Converts unchanged lines to STANDALONE_COMMENT.
+
+    The idea is similar to how `# fmt: on/off` is implemented. It also converts the
+    nodes between those markers as a single `STANDALONE_COMMENT` leaf node with
+    the unformatted code as its value. `STANDALONE_COMMENT` is a "fake" token
+    that will be formatted as-is with its prefix normalized.
+
+    Here we perform two passes:
+
+    1. Visit the top-level statements, and convert them to a single
+       `STANDALONE_COMMENT` when unchanged. This speeds up formatting when some
+       of the top-level statements aren't changed.
+    2. Convert unchanged "unwrapped lines" to `STANDALONE_COMMENT` nodes line by
+       line. "unwrapped lines" are divided by the `NEWLINE` token. e.g. a
+       multi-line statement is *one* "unwrapped line" that ends with `NEWLINE`,
+       even though this statement itself can span multiple lines, and the
+       tokenizer only sees the last '
+' as the `NEWLINE` token.
+
+    NOTE: During pass (2), comment prefixes and indentations are ALWAYS
+    normalized even when the lines aren't changed. This is fixable by moving
+    more formatting to pass (1). However, it's hard to get it correct when
+    incorrect indentations are used. So we defer this to future optimizations.
+    
+
+**Paramètres :**
+
+- `src_node`
+- `lines`
+
+##### _contains_standalone_comment
+
+**Paramètres :**
+
+- `node`
+
+##### _convert_unchanged_line_by_line
+
+Converts unchanged to STANDALONE_COMMENT line by line.
+
+**Paramètres :**
+
+- `node`
+- `lines_set`
+
+##### _convert_node_to_standalone_comment
+
+Convert node to STANDALONE_COMMENT by modifying the tree inline.
+
+**Paramètres :**
+
+- `node`
+
+##### _convert_nodes_to_standalone_comment
+
+Convert nodes to STANDALONE_COMMENT by modifying the tree inline.
+
+**Paramètres :**
+
+- `nodes`
+
+##### _leaf_line_end
+
+Returns the line number of the leaf node's last line.
+
+**Paramètres :**
+
+- `leaf`
+
+##### _get_line_range
+
+Returns the line range of this node or list of nodes.
+
+**Paramètres :**
+
+- `node_or_nodes`
+
+##### _calculate_lines_mappings
+
+Returns a sequence of _LinesMapping by diffing the sources.
+
+For example, given the following diff:
+    import re
+  - def func(arg1,
+  -   arg2, arg3):
+  + def func(arg1, arg2, arg3):
+      pass
+It returns the following mappings:
+  original -> modified
+   (1, 1)  ->  (1, 1), is_changed_block=False (the "import re" line)
+   (2, 3)  ->  (2, 2), is_changed_block=True (the diff)
+   (4, 4)  ->  (3, 3), is_changed_block=False (the "pass" line)
+
+You can think of this visually as if it brings up a side-by-side diff, and tries
+to map the line ranges from the left side to the right side:
+
+  (1, 1)->(1, 1)    1. import re          1. import re
+  (2, 3)->(2, 2)    2. def func(arg1,     2. def func(arg1, arg2, arg3):
+                    3.   arg2, arg3):
+  (4, 4)->(3, 3)    4.   pass             3.   pass
+
+Args:
+  original_source: the original source.
+  modified_source: the modified source.
+
+**Paramètres :**
+
+- `original_source`
+- `modified_source`
+
+##### _find_lines_mapping_index
+
+Returns the original index of the lines mappings for the original line.
+
+**Paramètres :**
+
+- `original_line`
+- `lines_mappings`
+- `start_index`
+
+##### __init__
+
+**Paramètres :**
+
+- `lines_set`
+
+##### visit_simple_stmt
+
+**Paramètres :**
+
+- `node`
+
+##### visit_suite
+
+**Paramètres :**
+
+- `node`
+
+---
+
+### debug
+
+#### Classes
+
+##### DebugVisitor
+
+**Méthodes :**
+
+- `out()`
+- `visit_default()`
+- `show()`
+
+#### Fonctions
+
+##### out
+
+**Paramètres :**
+
+- `message`
+
+##### visit_default
+
+**Paramètres :**
+
+- `node`
+
+##### show
+
+Pretty-print the lib2to3 AST of a given string of `code`.
+
+Convenience method for debugging.
+
+**Paramètres :**
+
+- `cls`
+- `code`
+
+---
+
+### trans
+
+String transformers that can split and merge strings.
+
+#### Classes
+
+##### CannotTransform
+
+Base class for errors raised by Transformers.
+
+##### StringTransformer
+
+An implementation of the Transformer protocol that relies on its
+subclasses overriding the template methods `do_match(...)` and
+`do_transform(...)`.
+
+This Transformer works exclusively on strings (for example, by merging
+or splitting them).
+
+The following sections can be found among the docstrings of each concrete
+StringTransformer subclass.
+
+Requirements:
+    Which requirements must be met of the given Line for this
+    StringTransformer to be applied?
+
+Transformations:
+    If the given Line meets all of the above requirements, which string
+    transformations can you expect to be applied to it by this
+    StringTransformer?
+
+Collaborations:
+    What contractual agreements does this StringTransformer have with other
+    StringTransfomers? Such collaborations should be eliminated/minimized
+    as much as possible.
+
+**Méthodes :**
+
+- `__init__()`
+- `do_match()`
+- `do_transform()`
+- `__call__()`
+
+##### CustomSplit
+
+A custom (i.e. manual) string split.
+
+A single CustomSplit instance represents a single substring.
+
+Examples:
+    Consider the following string:
+    ```
+    "Hi there friend."
+    " This is a custom"
+    f" string {split}."
+    ```
+
+    This string will correspond to the following three CustomSplit instances:
+    ```
+    CustomSplit(False, 16)
+    CustomSplit(False, 17)
+    CustomSplit(True, 16)
+    ```
+
+##### CustomSplitMapMixin
+
+This mixin class is used to map merged strings to a sequence of
+CustomSplits, which will then be used to re-split the strings iff none of
+the resultant substrings go over the configured max line length.
+
+**Méthodes :**
+
+- `_get_key()`
+- `add_custom_splits()`
+- `pop_custom_splits()`
+- `has_custom_splits()`
+
+##### StringMerger
+
+StringTransformer that merges strings together.
+
+Requirements:
+    (A) The line contains adjacent strings such that ALL of the validation checks
+    listed in StringMerger._validate_msg(...)'s docstring pass.
+    OR
+    (B) The line contains a string which uses line continuation backslashes.
+
+Transformations:
+    Depending on which of the two requirements above where met, either:
+
+    (A) The string group associated with the target string is merged.
+    OR
+    (B) All line-continuation backslashes are removed from the target string.
+
+Collaborations:
+    StringMerger provides custom split information to StringSplitter.
+
+**Méthodes :**
+
+- `do_match()`
+- `do_transform()`
+- `_remove_backslash_line_continuation_chars()`
+- `_merge_string_group()`
+- `_merge_one_string_group()`
+- `_validate_msg()`
+
+##### StringParenStripper
+
+StringTransformer that strips surrounding parentheses from strings.
+
+Requirements:
+    The line contains a string which is surrounded by parentheses and:
+        - The target string is NOT the only argument to a function call.
+        - The target string is NOT a "pointless" string.
+        - The target string is NOT a dictionary value.
+        - If the target string contains a PERCENT, the brackets are not
+          preceded or followed by an operator with higher precedence than
+          PERCENT.
+
+Transformations:
+    The parentheses mentioned in the 'Requirements' section are stripped.
+
+Collaborations:
+    StringParenStripper has its own inherent usefulness, but it is also
+    relied on to clean up the parentheses created by StringParenWrapper (in
+    the event that they are no longer needed).
+
+**Méthodes :**
+
+- `do_match()`
+- `do_transform()`
+- `_transform_to_new_line()`
+
+##### BaseStringSplitter
+
+Abstract class for StringTransformers which transform a Line's strings by splitting
+them or placing them on their own lines where necessary to avoid going over
+the configured line length.
+
+Requirements:
+    * The target string value is responsible for the line going over the
+      line length limit. It follows that after all of black's other line
+      split methods have been exhausted, this line (or one of the resulting
+      lines after all line splits are performed) would still be over the
+      line_length limit unless we split this string.
+      AND
+
+    * The target string is NOT a "pointless" string (i.e. a string that has
+      no parent or siblings).
+      AND
+
+    * The target string is not followed by an inline comment that appears
+      to be a pragma.
+      AND
+
+    * The target string is not a multiline (i.e. triple-quote) string.
+
+**Méthodes :**
+
+- `do_splitter_match()`
+- `do_match()`
+- `_validate()`
+- `_get_max_string_length()`
+- `_prefer_paren_wrap_match()`
+
+##### StringSplitter
+
+StringTransformer that splits "atom" strings (i.e. strings which exist on
+lines by themselves).
+
+Requirements:
+    * The line consists ONLY of a single string (possibly prefixed by a
+      string operator [e.g. '+' or '==']), MAYBE a string trailer, and MAYBE
+      a trailing comma.
+      AND
+    * All of the requirements listed in BaseStringSplitter's docstring.
+
+Transformations:
+    The string mentioned in the 'Requirements' section is split into as
+    many substrings as necessary to adhere to the configured line length.
+
+    In the final set of substrings, no substring should be smaller than
+    MIN_SUBSTR_SIZE characters.
+
+    The string will ONLY be split on spaces (i.e. each new substring should
+    start with a space). Note that the string will NOT be split on a space
+    which is escaped with a backslash.
+
+    If the string is an f-string, it will NOT be split in the middle of an
+    f-expression (e.g. in f"FooBar: {foo() if x else bar()}", {foo() if x
+    else bar()} is an f-expression).
+
+    If the string that is being split has an associated set of custom split
+    records and those custom splits will NOT result in any line going over
+    the configured line length, those custom splits are used. Otherwise the
+    string is split as late as possible (from left-to-right) while still
+    adhering to the transformation rules listed above.
+
+Collaborations:
+    StringSplitter relies on StringMerger to construct the appropriate
+    CustomSplit objects and add them to the custom split map.
+
+**Méthodes :**
+
+- `do_splitter_match()`
+- `do_transform()`
+- `_iter_nameescape_slices()`
+- `_iter_fexpr_slices()`
+- `_get_illegal_split_indices()`
+- `_get_break_idx()`
+- `_maybe_normalize_string_quotes()`
+- `_normalize_f_string()`
+- `_get_string_operator_leaves()`
+
+##### StringParenWrapper
+
+StringTransformer that wraps strings in parens and then splits at the LPAR.
+
+Requirements:
+    All of the requirements listed in BaseStringSplitter's docstring in
+    addition to the requirements listed below:
+
+    * The line is a return/yield statement, which returns/yields a string.
+      OR
+    * The line is part of a ternary expression (e.g. `x = y if cond else
+      z`) such that the line starts with `else <string>`, where <string> is
+      some string.
+      OR
+    * The line is an assert statement, which ends with a string.
+      OR
+    * The line is an assignment statement (e.g. `x = <string>` or `x +=
+      <string>`) such that the variable is being assigned the value of some
+      string.
+      OR
+    * The line is a dictionary key assignment where some valid key is being
+      assigned the value of some string.
+      OR
+    * The line is an lambda expression and the value is a string.
+      OR
+    * The line starts with an "atom" string that prefers to be wrapped in
+      parens. It's preferred to be wrapped when it's is an immediate child of
+      a list/set/tuple literal, AND the string is surrounded by commas (or is
+      the first/last child).
+
+Transformations:
+    The chosen string is wrapped in parentheses and then split at the LPAR.
+
+    We then have one line which ends with an LPAR and another line that
+    starts with the chosen string. The latter line is then split again at
+    the RPAR. This results in the RPAR (and possibly a trailing comma)
+    being placed on its own line.
+
+    NOTE: If any leaves exist to the right of the chosen string (except
+    for a trailing comma, which would be placed after the RPAR), those
+    leaves are placed inside the parentheses.  In effect, the chosen
+    string is not necessarily being "wrapped" by parentheses. We can,
+    however, count on the LPAR being placed directly before the chosen
+    string.
+
+    In other words, StringParenWrapper creates "atom" strings. These
+    can then be split again by StringSplitter, if necessary.
+
+Collaborations:
+    In the event that a string line split by StringParenWrapper is
+    changed such that it no longer needs to be given its own line,
+    StringParenWrapper relies on StringParenStripper to clean up the
+    parentheses it created.
+
+    For "atom" strings that prefers to be wrapped in parens, it requires
+    StringSplitter to hold the split until the string is wrapped in parens.
+
+**Méthodes :**
+
+- `do_splitter_match()`
+- `_return_match()`
+- `_else_match()`
+- `_assert_match()`
+- `_assign_match()`
+- `_dict_or_lambda_match()`
+- `do_transform()`
+
+##### StringParser
+
+A state machine that aids in parsing a string's "trailer", which can be
+either non-existent, an old-style formatting sequence (e.g. `% varX` or `%
+(varX, varY)`), or a method-call / attribute access (e.g. `.format(varX,
+varY)`).
+
+NOTE: A new StringParser object MUST be instantiated for each string
+trailer we need to parse.
+
+Examples:
+    We shall assume that `line` equals the `Line` object that corresponds
+    to the following line of python code:
+    ```
+    x = "Some {}.".format("String") + some_other_string
+    ```
+
+    Furthermore, we will assume that `string_idx` is some index such that:
+    ```
+    assert line.leaves[string_idx].value == "Some {}."
+    ```
+
+    The following code snippet then holds:
+    ```
+    string_parser = StringParser()
+    idx = string_parser.parse(line.leaves, string_idx)
+    assert line.leaves[idx].type == token.PLUS
+    ```
+
+**Méthodes :**
+
+- `__init__()`
+- `parse()`
+- `_next_state()`
+
+#### Fonctions
+
+##### TErr
+
+(T)ransform Err
+
+Convenience function used when working with the TResult type.
+
+**Paramètres :**
+
+- `err_msg`
+
+##### hug_power_op
+
+A transformer which normalizes spacing around power operators.
+
+**Paramètres :**
+
+- `line`
+- `features`
+- `mode`
+
+##### handle_is_simple_look_up_prev
+
+Handling the determination of is_simple_lookup for the lines prior to the doublestar
+token. This is required because of the need to isolate the chained expression
+to determine the bracket or parenthesis belong to the single expression.
+
+**Paramètres :**
+
+- `line`
+- `index`
+- `disallowed`
+
+##### handle_is_simple_lookup_forward
+
+Handling decision is_simple_lookup for the lines behind the doublestar token.
+This function is simplified to keep consistent with the prior logic and the forward
+case are more straightforward and do not need to care about chained expressions.
+
+**Paramètres :**
+
+- `line`
+- `index`
+- `disallowed`
+
+##### is_expression_chained
+
+Function to determine if the variable is a chained call.
+(e.g., foo.lookup, foo().lookup, (foo.lookup())) will be recognized as chained call)
+
+**Paramètres :**
+
+- `chained_leaves`
+
+##### iter_fexpr_spans
+
+Yields spans corresponding to expressions in a given f-string.
+Spans are half-open ranges (left inclusive, right exclusive).
+Assumes the input string is a valid f-string, but will not crash if the input
+string is invalid.
+
+**Paramètres :**
+
+- `s`
+
+##### fstring_contains_expr
+
+**Paramètres :**
+
+- `s`
+
+##### _toggle_fexpr_quotes
+
+Toggles quotes used in f-string expressions that are `old_quote`.
+
+f-string expressions can't contain backslashes, so we need to toggle the
+quotes if the f-string itself will end up using the same quote. We can
+simply toggle without escaping because, quotes can't be reused in f-string
+expressions. They will fail to parse.
+
+NOTE: If PEP 701 is accepted, above statement will no longer be true.
+Though if quotes can be reused, we can simply reuse them without updates or
+escaping, once Black figures out how to parse the new grammar.
+
+**Paramètres :**
+
+- `fstring`
+- `old_quote`
+
+##### insert_str_child_factory
+
+Factory for a convenience function that is used to orphan @string_leaf
+and then insert multiple new leaves into the same part of the node
+structure that @string_leaf had originally occupied.
+
+Examples:
+    Let `string_leaf = Leaf(token.STRING, '"foo"')` and `N =
+    string_leaf.parent`. Assume the node `N` has the following
+    original structure:
+
+    Node(
+        expr_stmt, [
+            Leaf(NAME, 'x'),
+            Leaf(EQUAL, '='),
+            Leaf(STRING, '"foo"'),
+        ]
+    )
+
+    We then run the code snippet shown below.
+    ```
+    insert_str_child = insert_str_child_factory(string_leaf)
+
+    lpar = Leaf(token.LPAR, '(')
+    insert_str_child(lpar)
+
+    bar = Leaf(token.STRING, '"bar"')
+    insert_str_child(bar)
+
+    rpar = Leaf(token.RPAR, ')')
+    insert_str_child(rpar)
+    ```
+
+    After which point, it follows that `string_leaf.parent is None` and
+    the node `N` now has the following structure:
+
+    Node(
+        expr_stmt, [
+            Leaf(NAME, 'x'),
+            Leaf(EQUAL, '='),
+            Leaf(LPAR, '('),
+            Leaf(STRING, '"bar"'),
+            Leaf(RPAR, ')'),
+        ]
+    )
+
+**Paramètres :**
+
+- `string_leaf`
+
+##### is_valid_index_factory
+
+Examples:
+    ```
+    my_list = [1, 2, 3]
+
+    is_valid_index = is_valid_index_factory(my_list)
+
+    assert is_valid_index(0)
+    assert is_valid_index(2)
+
+    assert not is_valid_index(3)
+    assert not is_valid_index(-1)
+    ```
+
+**Paramètres :**
+
+- `seq`
+
+##### is_simple_lookup
+
+**Paramètres :**
+
+- `index`
+- `kind`
+
+##### is_simple_operand
+
+**Paramètres :**
+
+- `index`
+- `kind`
+
+##### __init__
+
+**Paramètres :**
+
+- `line_length`
+- `normalize_strings`
+
+##### do_match
+
+Returns:
+    * Ok(string_indices) such that for each index, `line.leaves[index]`
+      is our target string if a match was able to be made. For
+      transformers that don't result in more lines (e.g. StringMerger,
+      StringParenStripper), multiple matches and transforms are done at
+      once to reduce the complexity.
+      OR
+    * Err(CannotTransform), if no match could be made.
+
+**Paramètres :**
+
+- `line`
+
+##### do_transform
+
+Yields:
+    * Ok(new_line) where new_line is the new transformed line.
+      OR
+    * Err(CannotTransform) if the transformation failed for some reason. The
+      `do_match(...)` template method should usually be used to reject
+      the form of the given Line, but in some cases it is difficult to
+      know whether or not a Line meets the StringTransformer's
+      requirements until the transformation is already midway.
+
+Side Effects:
+    This method should NOT mutate @line directly, but it MAY mutate the
+    Line's underlying Node structure. (WARNING: If the underlying Node
+    structure IS altered, then this method should NOT be allowed to
+    yield an CannotTransform after that point.)
+
+**Paramètres :**
+
+- `line`
+- `string_indices`
+
+##### __call__
+
+StringTransformer instances have a call signature that mirrors that of
+the Transformer type.
+
+Raises:
+    CannotTransform(...) if the concrete StringTransformer class is unable
+    to transform @line.
+
+**Paramètres :**
+
+- `line`
+- `_features`
+- `_mode`
+
+##### _get_key
+
+Returns:
+    A unique identifier that is used internally to map @string to a
+    group of custom splits.
+
+**Paramètres :**
+
+- `string`
+
+##### add_custom_splits
+
+Custom Split Map Setter Method
+
+Side Effects:
+    Adds a mapping from @string to the custom splits @custom_splits.
+
+**Paramètres :**
+
+- `string`
+- `custom_splits`
+
+##### pop_custom_splits
+
+Custom Split Map Getter Method
+
+Returns:
+    * A list of the custom splits that are mapped to @string, if any
+      exist.
+      OR
+    * [], otherwise.
+
+Side Effects:
+    Deletes the mapping between @string and its associated custom
+    splits (which are returned to the caller).
+
+**Paramètres :**
+
+- `string`
+
+##### has_custom_splits
+
+Returns:
+    True iff @string is associated with a set of custom splits.
+
+**Paramètres :**
+
+- `string`
+
+##### do_match
+
+**Paramètres :**
+
+- `line`
+
+##### do_transform
+
+**Paramètres :**
+
+- `line`
+- `string_indices`
+
+##### _remove_backslash_line_continuation_chars
+
+Merge strings that were split across multiple lines using
+line-continuation backslashes.
+
+Returns:
+    Ok(new_line), if @line contains backslash line-continuation
+    characters.
+        OR
+    Err(CannotTransform), otherwise.
+
+**Paramètres :**
+
+- `line`
+- `string_indices`
+
+##### _merge_string_group
+
+Merges string groups (i.e. set of adjacent strings).
+
+Each index from `string_indices` designates one string group's first
+leaf in `line.leaves`.
+
+Returns:
+    Ok(new_line), if ALL of the validation checks found in
+    _validate_msg(...) pass.
+        OR
+    Err(CannotTransform), otherwise.
+
+**Paramètres :**
+
+- `line`
+- `string_indices`
+
+##### _merge_one_string_group
+
+Merges one string group where the first string in the group is
+`LL[string_idx]`.
+
+Returns:
+    A tuple of `(num_of_strings, leaf)` where `num_of_strings` is the
+    number of strings merged and `leaf` is the newly merged string
+    to be replaced in the new line.
+
+**Paramètres :**
+
+- `LL`
+- `string_idx`
+- `is_valid_index`
+
+##### _validate_msg
+
+Validate (M)erge (S)tring (G)roup
+
+Transform-time string validation logic for _merge_string_group(...).
+
+Returns:
+    * Ok(None), if ALL validation checks (listed below) pass.
+        OR
+    * Err(CannotTransform), if any of the following are true:
+        - The target string group does not contain ANY stand-alone comments.
+        - The target string is not in a string group (i.e. it has no
+          adjacent strings).
+        - The string group has more than one inline comment.
+        - The string group has an inline comment that appears to be a pragma.
+        - The set of all string prefixes in the string group is of
+          length greater than one and is not equal to {"", "f"}.
+        - The string group consists of raw strings.
+        - The string group would merge f-strings with different quote types
+          and internal quotes.
+        - The string group is stringified type annotations. We don't want to
+          process stringified type annotations since pyright doesn't support
+          them spanning multiple string values. (NOTE: mypy, pytype, pyre do
+          support them, so we can change if pyright also gains support in the
+          future. See https://github.com/microsoft/pyright/issues/4359.)
+
+**Paramètres :**
+
+- `line`
+- `string_idx`
+
+##### do_match
+
+**Paramètres :**
+
+- `line`
+
+##### do_transform
+
+**Paramètres :**
+
+- `line`
+- `string_indices`
+
+##### _transform_to_new_line
+
+**Paramètres :**
+
+- `line`
+- `string_and_rpar_indices`
+
+##### do_splitter_match
+
+BaseStringSplitter asks its clients to override this method instead of
+`StringTransformer.do_match(...)`.
+
+Follows the same protocol as `StringTransformer.do_match(...)`.
+
+Refer to `help(StringTransformer.do_match)` for more information.
+
+**Paramètres :**
+
+- `line`
+
+##### do_match
+
+**Paramètres :**
+
+- `line`
+
+##### _validate
+
+Checks that @line meets all of the requirements listed in this classes'
+docstring. Refer to `help(BaseStringSplitter)` for a detailed
+description of those requirements.
+
+Returns:
+    * Ok(None), if ALL of the requirements are met.
+      OR
+    * Err(CannotTransform), if ANY of the requirements are NOT met.
+
+**Paramètres :**
+
+- `line`
+- `string_idx`
+
+##### _get_max_string_length
+
+Calculates the max string length used when attempting to determine
+whether or not the target string is responsible for causing the line to
+go over the line length limit.
+
+WARNING: This method is tightly coupled to both StringSplitter and
+(especially) StringParenWrapper. There is probably a better way to
+accomplish what is being done here.
+
+Returns:
+    max_string_length: such that `line.leaves[string_idx].value >
+    max_string_length` implies that the target string IS responsible
+    for causing this line to exceed the line length limit.
+
+**Paramètres :**
+
+- `line`
+- `string_idx`
+
+##### _prefer_paren_wrap_match
+
+Returns:
+    string_idx such that @LL[string_idx] is equal to our target (i.e.
+    matched) string, if this line matches the "prefer paren wrap" statement
+    requirements listed in the 'Requirements' section of the StringParenWrapper
+    class's docstring.
+        OR
+    None, otherwise.
+
+**Paramètres :**
+
+- `LL`
+
+##### do_splitter_match
+
+**Paramètres :**
+
+- `line`
+
+##### do_transform
+
+**Paramètres :**
+
+- `line`
+- `string_indices`
+
+##### _iter_nameescape_slices
+
+Yields:
+    All ranges of @string which, if @string were to be split there,
+    would result in the splitting of an \N{...} expression (which is NOT
+    allowed).
+
+**Paramètres :**
+
+- `string`
+
+##### _iter_fexpr_slices
+
+Yields:
+    All ranges of @string which, if @string were to be split there,
+    would result in the splitting of an f-expression (which is NOT
+    allowed).
+
+**Paramètres :**
+
+- `string`
+
+##### _get_illegal_split_indices
+
+**Paramètres :**
+
+- `string`
+
+##### _get_break_idx
+
+This method contains the algorithm that StringSplitter uses to
+determine which character to split each string at.
+
+Args:
+    @string: The substring that we are attempting to split.
+    @max_break_idx: The ideal break index. We will return this value if it
+    meets all the necessary conditions. In the likely event that it
+    doesn't we will try to find the closest index BELOW @max_break_idx
+    that does. If that fails, we will expand our search by also
+    considering all valid indices ABOVE @max_break_idx.
+
+Pre-Conditions:
+    * assert_is_leaf_string(@string)
+    * 0 <= @max_break_idx < len(@string)
+
+Returns:
+    break_idx, if an index is able to be found that meets all of the
+    conditions listed in the 'Transformations' section of this classes'
+    docstring.
+        OR
+    None, otherwise.
+
+**Paramètres :**
+
+- `string`
+- `max_break_idx`
+
+##### _maybe_normalize_string_quotes
+
+**Paramètres :**
+
+- `leaf`
+
+##### _normalize_f_string
+
+Pre-Conditions:
+    * assert_is_leaf_string(@string)
+
+Returns:
+    * If @string is an f-string that contains no f-expressions, we
+    return a string identical to @string except that the 'f' prefix
+    has been stripped and all double braces (i.e. '{{' or '}}') have
+    been normalized (i.e. turned into '{' or '}').
+        OR
+    * Otherwise, we return @string.
+
+**Paramètres :**
+
+- `string`
+- `prefix`
+
+##### _get_string_operator_leaves
+
+**Paramètres :**
+
+- `leaves`
+
+##### do_splitter_match
+
+**Paramètres :**
+
+- `line`
+
+##### _return_match
+
+Returns:
+    string_idx such that @LL[string_idx] is equal to our target (i.e.
+    matched) string, if this line matches the return/yield statement
+    requirements listed in the 'Requirements' section of this classes'
+    docstring.
+        OR
+    None, otherwise.
+
+**Paramètres :**
+
+- `LL`
+
+##### _else_match
+
+Returns:
+    string_idx such that @LL[string_idx] is equal to our target (i.e.
+    matched) string, if this line matches the ternary expression
+    requirements listed in the 'Requirements' section of this classes'
+    docstring.
+        OR
+    None, otherwise.
+
+**Paramètres :**
+
+- `LL`
+
+##### _assert_match
+
+Returns:
+    string_idx such that @LL[string_idx] is equal to our target (i.e.
+    matched) string, if this line matches the assert statement
+    requirements listed in the 'Requirements' section of this classes'
+    docstring.
+        OR
+    None, otherwise.
+
+**Paramètres :**
+
+- `LL`
+
+##### _assign_match
+
+Returns:
+    string_idx such that @LL[string_idx] is equal to our target (i.e.
+    matched) string, if this line matches the assignment statement
+    requirements listed in the 'Requirements' section of this classes'
+    docstring.
+        OR
+    None, otherwise.
+
+**Paramètres :**
+
+- `LL`
+
+##### _dict_or_lambda_match
+
+Returns:
+    string_idx such that @LL[string_idx] is equal to our target (i.e.
+    matched) string, if this line matches the dictionary key assignment
+    statement or lambda expression requirements listed in the
+    'Requirements' section of this classes' docstring.
+        OR
+    None, otherwise.
+
+**Paramètres :**
+
+- `LL`
+
+##### do_transform
+
+**Paramètres :**
+
+- `line`
+- `string_indices`
+
+##### __init__
+
+##### parse
+
+Pre-conditions:
+    * @leaves[@string_idx].type == token.STRING
+
+Returns:
+    The index directly after the last leaf which is a part of the string
+    trailer, if a "trailer" exists.
+    OR
+    @string_idx + 1, if no string "trailer" exists.
+
+**Paramètres :**
+
+- `leaves`
+- `string_idx`
+
+##### _next_state
+
+Pre-conditions:
+    * On the first call to this function, @leaf MUST be the leaf that
+      was directly after the string leaf in question (e.g. if our target
+      string is `line.leaves[i]` then the first call to this method must
+      be `line.leaves[i + 1]`).
+    * On the next call to this function, the leaf parameter passed in
+      MUST be the leaf directly following @leaf.
+
+Returns:
+    True iff @leaf is a part of the string's trailer.
+
+**Paramètres :**
+
+- `leaf`
+
+##### insert_str_child
+
+**Paramètres :**
+
+- `child`
+
+##### is_valid_index
+
+Returns:
+    True iff @idx is positive AND seq[@idx] does NOT raise an
+    IndexError.
+
+**Paramètres :**
+
+- `idx`
+
+##### make_naked
+
+Strip @string (i.e. make it a "naked" string)
+
+Pre-conditions:
+    * assert_is_leaf_string(@string)
+
+Returns:
+    A string that is identical to @string except that
+    @string_prefix has been stripped, the surrounding QUOTE
+    characters have been removed, and any remaining QUOTE
+    characters have been escaped.
+
+**Paramètres :**
+
+- `string`
+- `string_prefix`
+
+##### maybe_append_string_operators
+
+Side Effects:
+    If @line starts with a string operator and this is the first
+    line we are constructing, this function appends the string
+    operator to @new_line and replaces the old string operator leaf
+    in the node structure. Otherwise this function does nothing.
+
+**Paramètres :**
+
+- `new_line`
+
+##### max_last_string_column
+
+Returns:
+    The max allowed width of the string value used for the last
+    line we will construct.  Note that this value means the width
+    rather than the number of characters (e.g., many East Asian
+    characters expand to two columns).
+
+##### more_splits_should_be_made
+
+Returns:
+    True iff `rest_value` (the remaining string value from the last
+    split), should be split again.
+
+##### breaks_unsplittable_expression
+
+Returns:
+    True iff returning @i would result in the splitting of an
+    unsplittable expression (which is NOT allowed).
+
+**Paramètres :**
+
+- `i`
+
+##### passes_all_checks
+
+Returns:
+    True iff ALL of the conditions listed in the 'Transformations'
+    section of this classes' docstring would be met by returning @i.
+
+**Paramètres :**
+
+- `i`
+
+---
+
+### nodes
+
+blib2to3 Node/Leaf transformation-related utility functions.
+
+#### Classes
+
+##### Visitor
+
+Basic lib2to3 visitor that yields things of type `T` on `visit()`.
+
+**Méthodes :**
+
+- `visit()`
+- `visit_default()`
+
+#### Fonctions
+
+##### whitespace
+
+Return whitespace prefix if needed for the given `leaf`.
+
+`complex_subscript` signals whether the given leaf is part of a subscription
+which has non-trivial arguments, like arithmetic expressions or function calls.
+
+**Paramètres :**
+
+- `leaf`
+
+##### make_simple_prefix
+
+Generate a normalized prefix string.
+
+**Paramètres :**
+
+- `nl_count`
+- `form_feed`
+- `empty_line`
+
+##### preceding_leaf
+
+Return the first leaf that precedes `node`, if any.
+
+**Paramètres :**
+
+- `node`
+
+##### prev_siblings_are
+
+Return if the `node` and its previous siblings match types against the provided
+list of tokens; the provided `node`has its type matched against the last element in
+the list.  `None` can be used as the first element to declare that the start of the
+list is anchored at the start of its parent's children.
+
+**Paramètres :**
+
+- `node`
+- `tokens`
+
+##### parent_type
+
+Returns:
+    @node.parent.type, if @node is not None and has a parent.
+        OR
+    None, otherwise.
+
+**Paramètres :**
+
+- `node`
+
+##### child_towards
+
+Return the child of `ancestor` that contains `descendant`.
+
+**Paramètres :**
+
+- `ancestor`
+- `descendant`
+
+##### replace_child
+
+Side Effects:
+    * If @old_child.parent is set, replace @old_child with @new_child in
+    @old_child's underlying Node structure.
+        OR
+    * Otherwise, this function does nothing.
+
+**Paramètres :**
+
+- `old_child`
+- `new_child`
+
+##### container_of
+
+Return `leaf` or one of its ancestors that is the topmost container of it.
+
+By "container" we mean a node where `leaf` is the very first child.
+
+**Paramètres :**
+
+- `leaf`
+
+##### first_leaf_of
+
+Returns the first leaf of the node tree.
+
+**Paramètres :**
+
+- `node`
+
+##### is_arith_like
+
+Whether node is an arithmetic or a binary arithmetic expression
+
+**Paramètres :**
+
+- `node`
+
+##### is_docstring
+
+**Paramètres :**
+
+- `node`
+
+##### is_empty_tuple
+
+Return True if `node` holds an empty tuple.
+
+**Paramètres :**
+
+- `node`
+
+##### is_one_tuple
+
+Return True if `node` holds a tuple with one element, with or without parens.
+
+**Paramètres :**
+
+- `node`
+
+##### is_tuple_containing_walrus
+
+Return True if `node` holds a tuple that contains a walrus operator.
+
+**Paramètres :**
+
+- `node`
+
+##### is_tuple_containing_star
+
+Return True if `node` holds a tuple that contains a star operator.
+
+**Paramètres :**
+
+- `node`
+
+##### is_generator
+
+Return True if `node` holds a generator.
+
+**Paramètres :**
+
+- `node`
+
+##### is_one_sequence_between
+
+Return True if content between `opening` and `closing` is a one-sequence.
+
+**Paramètres :**
+
+- `opening`
+- `closing`
+- `leaves`
+- `brackets`
+
+##### is_walrus_assignment
+
+Return True iff `node` is of the shape ( test := test )
+
+**Paramètres :**
+
+- `node`
+
+##### is_simple_decorator_trailer
+
+Return True iff `node` is a trailer valid in a simple decorator
+
+**Paramètres :**
+
+- `node`
+- `last`
+
+##### is_simple_decorator_expression
+
+Return True iff `node` could be a 'dotted name' decorator
+
+This function takes the node of the 'namedexpr_test' of the new decorator
+grammar and test if it would be valid under the old decorator grammar.
+
+The old grammar was: decorator: @ dotted_name [arguments] NEWLINE
+The new grammar is : decorator: @ namedexpr_test NEWLINE
+
+**Paramètres :**
+
+- `node`
+
+##### is_yield
+
+Return True if `node` holds a `yield` or `yield from` expression.
+
+**Paramètres :**
+
+- `node`
+
+##### is_vararg
+
+Return True if `leaf` is a star or double star in a vararg or kwarg.
+
+If `within` includes VARARGS_PARENTS, this applies to function signatures.
+If `within` includes UNPACKING_PARENTS, it applies to right hand-side
+extended iterable unpacking (PEP 3132) and additional unpacking
+generalizations (PEP 448).
+
+**Paramètres :**
+
+- `leaf`
+- `within`
+
+##### is_fstring
+
+Return True if the node is an f-string
+
+**Paramètres :**
+
+- `node`
+
+##### fstring_to_string
+
+Converts an fstring node back to a string node.
+
+**Paramètres :**
+
+- `node`
+
+##### is_multiline_string
+
+Return True if `leaf` is a multiline string that actually spans many lines.
+
+**Paramètres :**
+
+- `node`
+
+##### is_parent_function_or_class
+
+**Paramètres :**
+
+- `node`
+
+##### is_function_or_class
+
+**Paramètres :**
+
+- `node`
+
+##### is_stub_suite
+
+Return True if `node` is a suite with a stub body.
+
+**Paramètres :**
+
+- `node`
+
+##### is_stub_body
+
+Return True if `node` is a simple statement containing an ellipsis.
+
+**Paramètres :**
+
+- `node`
+
+##### is_atom_with_invisible_parens
+
+Given a `LN`, determines whether it's an atom `node` with invisible
+parens. Useful in dedupe-ing and normalizing parens.
+
+**Paramètres :**
+
+- `node`
+
+##### is_empty_par
+
+**Paramètres :**
+
+- `leaf`
+
+##### is_empty_lpar
+
+**Paramètres :**
+
+- `leaf`
+
+##### is_empty_rpar
+
+**Paramètres :**
+
+- `leaf`
+
+##### is_import
+
+Return True if the given leaf starts an import statement.
+
+**Paramètres :**
+
+- `leaf`
+
+##### is_with_or_async_with_stmt
+
+Return True if the given leaf starts a with or async with statement.
+
+**Paramètres :**
+
+- `leaf`
+
+##### is_async_stmt_or_funcdef
+
+Return True if the given leaf starts an async def/for/with statement.
+
+Note that `async def` can be either an `async_stmt` or `async_funcdef`,
+the latter is used when it has decorators.
+
+**Paramètres :**
+
+- `leaf`
+
+##### is_type_comment
+
+Return True if the given leaf is a type comment. This function should only
+be used for general type comments (excluding ignore annotations, which should
+use `is_type_ignore_comment`). Note that general type comments are no longer
+used in modern version of Python, this function may be deprecated in the future.
+
+**Paramètres :**
+
+- `leaf`
+
+##### is_type_ignore_comment
+
+Return True if the given leaf is a type comment with ignore annotation.
+
+**Paramètres :**
+
+- `leaf`
+
+##### is_type_ignore_comment_string
+
+Return True if the given string match with type comment with
+ignore annotation.
+
+**Paramètres :**
+
+- `value`
+
+##### wrap_in_parentheses
+
+Wrap `child` in parentheses.
+
+This replaces `child` with an atom holding the parentheses and the old
+child.  That requires moving the prefix.
+
+If `visible` is False, the leaves will be valueless (and thus invisible).
+
+**Paramètres :**
+
+- `parent`
+- `child`
+
+##### unwrap_singleton_parenthesis
+
+Returns `wrapped` if `node` is of the shape ( wrapped ).
+
+Parenthesis can be optional. Returns None otherwise
+
+**Paramètres :**
+
+- `node`
+
+##### ensure_visible
+
+Make sure parentheses are visible.
+
+They could be invisible as part of some statements (see
+:func:`normalize_invisible_parens` and :func:`visit_import_from`).
+
+**Paramètres :**
+
+- `leaf`
+
+##### is_name_token
+
+**Paramètres :**
+
+- `nl`
+
+##### is_lpar_token
+
+**Paramètres :**
+
+- `nl`
+
+##### is_rpar_token
+
+**Paramètres :**
+
+- `nl`
+
+##### is_number_token
+
+**Paramètres :**
+
+- `nl`
+
+##### get_annotation_type
+
+Returns the type of annotation this leaf is part of, if any.
+
+**Paramètres :**
+
+- `leaf`
+
+##### is_part_of_annotation
+
+Returns whether this leaf is part of a type annotation.
+
+**Paramètres :**
+
+- `leaf`
+
+##### first_leaf
+
+Returns the first leaf of the ancestor node.
+
+**Paramètres :**
+
+- `node`
+
+##### last_leaf
+
+Returns the last leaf of the ancestor node.
+
+**Paramètres :**
+
+- `node`
+
+##### furthest_ancestor_with_last_leaf
+
+Returns the furthest ancestor that has this leaf node as the last leaf.
+
+**Paramètres :**
+
+- `leaf`
+
+##### visit
+
+Main method to visit `node` and its children.
+
+It tries to find a `visit_*()` method for the given `node.type`, like
+`visit_simple_stmt` for Node objects or `visit_INDENT` for Leaf objects.
+If no dedicated `visit_*()` method is found, chooses `visit_default()`
+instead.
+
+Then yields objects of type `T` from the selected visitor.
+
+**Paramètres :**
+
+- `node`
+
+##### visit_default
+
+Default `visit_*()` implementation. Recurses to children of `node`.
+
+**Paramètres :**
+
+- `node`
+
+---
+
+### linegen
+
+Generating lines of code.
+
+#### Classes
+
+##### CannotSplit
+
+A readable split that fits the allotted line length is impossible.
+
+##### LineGenerator
+
+Generates reformatted Line objects.  Empty lines are not emitted.
+
+Note: destroys the tree it's visiting by mutating prefixes of its leaves
+in ways that will no longer stringify to valid Python code on the tree.
+
+**Méthodes :**
+
+- `__init__()`
+- `line()`
+- `visit_default()`
+- `visit_test()`
+- `visit_INDENT()`
+- `visit_DEDENT()`
+- `visit_stmt()`
+- `visit_typeparams()`
+- `visit_typevartuple()`
+- `visit_paramspec()`
+- `visit_dictsetmaker()`
+- `visit_funcdef()`
+- `visit_match_case()`
+- `visit_suite()`
+- `visit_simple_stmt()`
+- `visit_async_stmt()`
+- `visit_decorators()`
+- `visit_power()`
+- `visit_SEMI()`
+- `visit_ENDMARKER()`
+- `visit_STANDALONE_COMMENT()`
+- `visit_factor()`
+- `visit_tname()`
+- `visit_STRING()`
+- `visit_NUMBER()`
+- `visit_atom()`
+- `visit_fstring()`
+- `__post_init__()`
+
+##### _BracketSplitComponent
+
+#### Fonctions
+
+##### _hugging_power_ops_line_to_string
+
+**Paramètres :**
+
+- `line`
+- `features`
+- `mode`
+
+##### transform_line
+
+Transform a `line`, potentially splitting it into many lines.
+
+They should fit in the allotted `line_length` but might not be able to.
+
+`features` are syntactical features that may be used in the output.
+
+**Paramètres :**
+
+- `line`
+- `mode`
+- `features`
+
+##### should_split_funcdef_with_rhs
+
+If a funcdef has a magic trailing comma in the return type, then we should first
+split the line with rhs to respect the comma.
+
+**Paramètres :**
+
+- `line`
+- `mode`
+
+##### left_hand_split
+
+Split line into many lines, starting with the first matching bracket pair.
+
+Note: this usually looks weird, only use this for function definitions.
+Prefer RHS otherwise.  This is why this function is not symmetrical with
+:func:`right_hand_split` which also handles optional parentheses.
+
+**Paramètres :**
+
+- `line`
+- `_features`
+- `mode`
+
+##### right_hand_split
+
+Split line into many lines, starting with the last matching bracket pair.
+
+If the split was by optional parentheses, attempt splitting without them, too.
+`omit` is a collection of closing bracket IDs that shouldn't be considered for
+this split.
+
+Note: running this function modifies `bracket_depth` on the leaves of `line`.
+
+**Paramètres :**
+
+- `line`
+- `mode`
+- `features`
+- `omit`
+
+##### _first_right_hand_split
+
+Split the line into head, body, tail starting with the last bracket pair.
+
+Note: this function should not have side effects. It's relied upon by
+_maybe_split_omitting_optional_parens to get an opinion whether to prefer
+splitting on the right side of an assignment statement.
+
+**Paramètres :**
+
+- `line`
+- `omit`
+
+##### _maybe_split_omitting_optional_parens
+
+**Paramètres :**
+
+- `rhs`
+- `line`
+- `mode`
+- `features`
+- `omit`
+
+##### _prefer_split_rhs_oop_over_rhs
+
+Returns whether we should prefer the result from a split omitting optional parens
+(rhs_oop) over the original (rhs).
+
+**Paramètres :**
+
+- `rhs_oop`
+- `rhs`
+- `mode`
+
+##### bracket_split_succeeded_or_raise
+
+Raise :exc:`CannotSplit` if the last left- or right-hand split failed.
+
+Do nothing otherwise.
+
+A left- or right-hand split is based on a pair of brackets. Content before
+(and including) the opening bracket is left on one line, content inside the
+brackets is put on a separate line, and finally content starting with and
+following the closing bracket is put on a separate line.
+
+Those are called `head`, `body`, and `tail`, respectively. If the split
+produced the same line (all content in `head`) or ended up with an empty `body`
+and the `tail` is just the closing bracket, then it's considered failed.
+
+**Paramètres :**
+
+- `head`
+- `body`
+- `tail`
+
+##### _ensure_trailing_comma
+
+**Paramètres :**
+
+- `leaves`
+- `original`
+- `opening_bracket`
+
+##### bracket_split_build_line
+
+Return a new line with given `leaves` and respective comments from `original`.
+
+If it's the head component, brackets will be tracked so trailing commas are
+respected.
+
+If it's the body component, the result line is one-indented inside brackets and as
+such has its first leaf's prefix normalized and a trailing comma added when
+expected.
+
+**Paramètres :**
+
+- `leaves`
+- `original`
+- `opening_bracket`
+
+##### dont_increase_indentation
+
+Normalize prefix of the first leaf in every line returned by `split_func`.
+
+This is a decorator over relevant split functions.
+
+**Paramètres :**
+
+- `split_func`
+
+##### _get_last_non_comment_leaf
+
+**Paramètres :**
+
+- `line`
+
+##### _can_add_trailing_comma
+
+**Paramètres :**
+
+- `leaf`
+- `features`
+
+##### _safe_add_trailing_comma
+
+**Paramètres :**
+
+- `safe`
+- `delimiter_priority`
+- `line`
+
+##### delimiter_split
+
+Split according to delimiters of the highest priority.
+
+If the appropriate Features are given, the split will add trailing commas
+also in function signatures and calls that contain `*` and `**`.
+
+**Paramètres :**
+
+- `line`
+- `features`
+- `mode`
+
+##### standalone_comment_split
+
+Split standalone comments from the rest of the line.
+
+**Paramètres :**
+
+- `line`
+- `features`
+- `mode`
+
+##### normalize_invisible_parens
+
+Make existing optional parentheses invisible or create new ones.
+
+`parens_after` is a set of string leaf values immediately after which parens
+should be put.
+
+Standardizes on visible parentheses for single-element tuples, and keeps
+existing visible parentheses for other tuples and generator expressions.
+
+**Paramètres :**
+
+- `node`
+- `parens_after`
+
+##### _normalize_import_from
+
+**Paramètres :**
+
+- `parent`
+- `child`
+- `index`
+
+##### remove_await_parens
+
+**Paramètres :**
+
+- `node`
+
+##### _maybe_wrap_cms_in_parens
+
+When enabled and safe, wrap the multiple context managers in invisible parens.
+
+It is only safe when `features` contain Feature.PARENTHESIZED_CONTEXT_MANAGERS.
+
+**Paramètres :**
+
+- `node`
+- `mode`
+- `features`
+
+##### remove_with_parens
+
+Recursively hide optional parens in `with` statements.
+
+**Paramètres :**
+
+- `node`
+- `parent`
+
+##### maybe_make_parens_invisible_in_atom
+
+If it's safe, make the parens in the atom `node` invisible, recursively.
+Additionally, remove repeated, adjacent invisible parens from the atom `node`
+as they are redundant.
+
+Returns whether the node should itself be wrapped in invisible parentheses.
+
+**Paramètres :**
+
+- `node`
+- `parent`
+- `remove_brackets_around_comma`
+
+##### should_split_line
+
+Should `line` be immediately split with `delimiter_split()` after RHS?
+
+**Paramètres :**
+
+- `line`
+- `opening_bracket`
+
+##### generate_trailers_to_omit
+
+Generate sets of closing bracket IDs that should be omitted in a RHS.
+
+Brackets can be omitted if the entire trailer up to and including
+a preceding closing bracket fits in one line.
+
+Yielded sets are cumulative (contain results of previous yields, too).  First
+set is empty, unless the line should explode, in which case bracket pairs until
+the one that needs to explode are omitted.
+
+**Paramètres :**
+
+- `line`
+- `line_length`
+
+##### run_transformer
+
+**Paramètres :**
+
+- `line`
+- `transform`
+- `mode`
+- `features`
+
+##### __init__
+
+**Paramètres :**
+
+- `mode`
+- `features`
+
+##### line
+
+Generate a line.
+
+If the line is empty, only emit if it makes sense.
+If the line is too long, split it first and then generate.
+
+If any lines were generated, set up a new current_line.
+
+**Paramètres :**
+
+- `indent`
+
+##### visit_default
+
+Default `visit_*()` implementation. Recurses to children of `node`.
+
+**Paramètres :**
+
+- `node`
+
+##### visit_test
+
+Visit an `x if y else z` test
+
+**Paramètres :**
+
+- `node`
+
+##### visit_INDENT
+
+Increase indentation level, maybe yield a line.
+
+**Paramètres :**
+
+- `node`
+
+##### visit_DEDENT
+
+Decrease indentation level, maybe yield a line.
+
+**Paramètres :**
+
+- `node`
+
+##### visit_stmt
+
+Visit a statement.
+
+This implementation is shared for `if`, `while`, `for`, `try`, `except`,
+`def`, `with`, `class`, `assert`, and assignments.
+
+The relevant Python language `keywords` for a given statement will be
+NAME leaves within it. This methods puts those on a separate line.
+
+`parens` holds a set of string leaf values immediately after which
+invisible parens should be put.
+
+**Paramètres :**
+
+- `node`
+- `keywords`
+- `parens`
+
+##### visit_typeparams
+
+**Paramètres :**
+
+- `node`
+
+##### visit_typevartuple
+
+**Paramètres :**
+
+- `node`
+
+##### visit_paramspec
+
+**Paramètres :**
+
+- `node`
+
+##### visit_dictsetmaker
+
+**Paramètres :**
+
+- `node`
+
+##### visit_funcdef
+
+Visit function definition.
+
+**Paramètres :**
+
+- `node`
+
+##### visit_match_case
+
+Visit either a match or case statement.
+
+**Paramètres :**
+
+- `node`
+
+##### visit_suite
+
+Visit a suite.
+
+**Paramètres :**
+
+- `node`
+
+##### visit_simple_stmt
+
+Visit a statement without nested statements.
+
+**Paramètres :**
+
+- `node`
+
+##### visit_async_stmt
+
+Visit `async def`, `async for`, `async with`.
+
+**Paramètres :**
+
+- `node`
+
+##### visit_decorators
+
+Visit decorators.
+
+**Paramètres :**
+
+- `node`
+
+##### visit_power
+
+**Paramètres :**
+
+- `node`
+
+##### visit_SEMI
+
+Remove a semicolon and put the other statement on a separate line.
+
+**Paramètres :**
+
+- `leaf`
+
+##### visit_ENDMARKER
+
+End of file. Process outstanding comments and end with a newline.
+
+**Paramètres :**
+
+- `leaf`
+
+##### visit_STANDALONE_COMMENT
+
+**Paramètres :**
+
+- `leaf`
+
+##### visit_factor
+
+Force parentheses between a unary op and a binary power:
+
+-2 ** 8 -> -(2 ** 8)
+
+**Paramètres :**
+
+- `node`
+
+##### visit_tname
+
+Add potential parentheses around types in function parameter lists to be made
+into real parentheses in case the type hint is too long to fit on a line
+Examples:
+def foo(a: int, b: float = 7): ...
+
+->
+
+def foo(a: (int), b: (float) = 7): ...
+
+**Paramètres :**
+
+- `node`
+
+##### visit_STRING
+
+**Paramètres :**
+
+- `leaf`
+
+##### visit_NUMBER
+
+**Paramètres :**
+
+- `leaf`
+
+##### visit_atom
+
+Visit any atom
+
+**Paramètres :**
+
+- `node`
+
+##### visit_fstring
+
+**Paramètres :**
+
+- `node`
+
+##### __post_init__
+
+You are in a twisty little maze of passages.
+
+##### split_wrapper
+
+**Paramètres :**
+
+- `line`
+- `features`
+- `mode`
+
+##### append_to_line
+
+Append `leaf` to current line or to new line if appending impossible.
+
+**Paramètres :**
+
+- `leaf`
+
+##### append_comments
+
+**Paramètres :**
+
+- `leaf`
+
+##### append_to_line
+
+Append `leaf` to current line or to new line if appending impossible.
+
+**Paramètres :**
+
+- `leaf`
+
+##### _rhs
+
+Wraps calls to `right_hand_split`.
+
+The calls increasingly `omit` right-hand trailers (bracket pairs with
+content), meaning the trailers get glued together to split on another
+bracket pair instead.
+
+**Paramètres :**
+
+- `line`
+- `features`
+- `mode`
+
+---
+
+### __main__
+
+---
+
+### report
+
+Summarize Black runs to users.
+
+#### Classes
+
+##### Changed
+
+##### NothingChanged
+
+Raised when reformatted code is the same as source.
+
+##### Report
+
+Provides a reformatting counter. Can be rendered with `str(report)`.
+
+**Méthodes :**
+
+- `done()`
+- `failed()`
+- `path_ignored()`
+- `return_code()`
+- `__str__()`
+
+#### Fonctions
+
+##### done
+
+Increment the counter for successful reformatting. Write out a message.
+
+**Paramètres :**
+
+- `src`
+- `changed`
+
+##### failed
+
+Increment the counter for failed reformatting. Write out a message.
+
+**Paramètres :**
+
+- `src`
+- `message`
+
+##### path_ignored
+
+**Paramètres :**
+
+- `path`
+- `message`
+
+##### return_code
+
+Return the exit code that the app should use.
+
+This considers the current state of changed files and failures:
+- if there were any failures, return 123;
+- if any files were changed and --check is being used, return 1;
+- otherwise return 0.
+
+##### __str__
+
+Render a color report of the current state.
+
+Use `click.unstyle` to remove colors.
+
+---
+
+### strings
+
+Simple formatting on strings. Further string formatting code is in trans.py.
+
+#### Fonctions
+
+##### sub_twice
+
+Replace `regex` with `replacement` twice on `original`.
+
+This is used by string normalization to perform replaces on
+overlapping matches.
+
+**Paramètres :**
+
+- `regex`
+- `replacement`
+- `original`
+
+##### has_triple_quotes
+
+Returns:
+    True iff @string starts with three quotation characters.
+
+**Paramètres :**
+
+- `string`
+
+##### lines_with_leading_tabs_expanded
+
+Splits string into lines and expands only leading tabs (following the normal
+Python rules)
+
+**Paramètres :**
+
+- `s`
+
+##### fix_multiline_docstring
+
+**Paramètres :**
+
+- `docstring`
+- `prefix`
+
+##### get_string_prefix
+
+Pre-conditions:
+    * assert_is_leaf_string(@string)
+
+Returns:
+    @string's prefix (e.g. '', 'r', 'f', or 'rf').
+
+**Paramètres :**
+
+- `string`
+
+##### assert_is_leaf_string
+
+Checks the pre-condition that @string has the format that you would expect
+of `leaf.value` where `leaf` is some Leaf such that `leaf.type ==
+token.STRING`. A more precise description of the pre-conditions that are
+checked are listed below.
+
+Pre-conditions:
+    * @string starts with either ', ", <prefix>', or <prefix>" where
+    `set(<prefix>)` is some subset of `set(STRING_PREFIX_CHARS)`.
+    * @string ends with a quote character (' or ").
+
+Raises:
+    AssertionError(...) if the pre-conditions listed above are not
+    satisfied.
+
+**Paramètres :**
+
+- `string`
+
+##### normalize_string_prefix
+
+Make all string prefixes lowercase.
+
+**Paramètres :**
+
+- `s`
+
+##### _cached_compile
+
+**Paramètres :**
+
+- `pattern`
+
+##### normalize_string_quotes
+
+Prefer double quotes but only if it doesn't cause more escaping.
+
+Adds or removes backslashes as appropriate.
+
+**Paramètres :**
+
+- `s`
+
+##### normalize_fstring_quotes
+
+Prefer double quotes but only if it doesn't cause more escaping.
+
+Adds or removes backslashes as appropriate.
+
+**Paramètres :**
+
+- `quote`
+- `middles`
+- `is_raw_fstring`
+
+##### normalize_unicode_escape_sequences
+
+Replace hex codes in Unicode escape sequences with lowercase representation.
+
+**Paramètres :**
+
+- `leaf`
+
+##### char_width
+
+Return the width of a single character as it would be displayed in a
+terminal or editor (which respects Unicode East Asian Width).
+
+Full width characters are counted as 2, while half width characters are
+counted as 1.  Also control characters are counted as 0.
+
+**Paramètres :**
+
+- `char`
+
+##### str_width
+
+Return the width of `line_str` as it would be displayed in a terminal
+or editor (which respects Unicode East Asian Width).
+
+You could utilize this function to determine, for example, if a string
+is too wide to display in a terminal or editor.
+
+**Paramètres :**
+
+- `line_str`
+
+##### count_chars_in_width
+
+Count the number of characters in `line_str` that would fit in a
+terminal or editor of `max_width` (which respects Unicode East Asian
+Width).
+
+**Paramètres :**
+
+- `line_str`
+- `max_width`
+
+##### replace
+
+**Paramètres :**
+
+- `m`
+
+---
+
+### const
+
+---
+
+### output
+
+Nice output for Black.
+
+The double calls are for patching purposes in tests.
+
+#### Fonctions
+
+##### _out
+
+**Paramètres :**
+
+- `message`
+- `nl`
+
+##### _err
+
+**Paramètres :**
+
+- `message`
+- `nl`
+
+##### out
+
+**Paramètres :**
+
+- `message`
+- `nl`
+
+##### err
+
+**Paramètres :**
+
+- `message`
+- `nl`
+
+##### ipynb_diff
+
+Return a unified diff string between each cell in notebooks `a` and `b`.
+
+**Paramètres :**
+
+- `a`
+- `b`
+- `a_name`
+- `b_name`
+
+##### _splitlines_no_ff
+
+Split a string into lines ignoring form feed and other chars.
+
+This mimics how the Python parser splits source code.
+
+A simplified version of the function with the same name in Lib/ast.py
+
+**Paramètres :**
+
+- `source`
+
+##### diff
+
+Return a unified diff string between strings `a` and `b`.
+
+**Paramètres :**
+
+- `a`
+- `b`
+- `a_name`
+- `b_name`
+
+##### color_diff
+
+Inject the ANSI color codes to the diff.
+
+**Paramètres :**
+
+- `contents`
+
+##### dump_to_file
+
+Dump `output` to a temporary file. Return path to the file.
+
+---
+
+### numerics
+
+Formatting numeric literals.
+
+#### Fonctions
+
+##### format_hex
+
+Formats a hexadecimal string like "0x12B3"
+
+**Paramètres :**
+
+- `text`
+
+##### format_scientific_notation
+
+Formats a numeric string utilizing scientific notation
+
+**Paramètres :**
+
+- `text`
+
+##### format_complex_number
+
+Formats a complex string like `10j`
+
+**Paramètres :**
+
+- `text`
+
+##### format_float_or_int_string
+
+Formats a float string like "1.0".
+
+**Paramètres :**
+
+- `text`
+
+##### normalize_numeric_literal
+
+Normalizes numeric (float, int, and complex) literals.
+
+All letters used in the representation are normalized to lowercase.
+
+**Paramètres :**
+
+- `leaf`
+
+---
+
+### comments
+
+#### Classes
+
+##### ProtoComment
+
+Describes a piece of syntax that is a comment.
+
+It's not a :class:`blib2to3.pytree.Leaf` so that:
+
+* it can be cached (`Leaf` objects should not be reused more than once as
+  they store their lineno, column, prefix, and parent information);
+* `newlines` and `consumed` fields are kept separate from the `value`. This
+  simplifies handling of special marker comments like ``# fmt: off/on``.
+
+#### Fonctions
+
+##### generate_comments
+
+Clean the prefix of the `leaf` and generate comments from it, if any.
+
+Comments in lib2to3 are shoved into the whitespace prefix.  This happens
+in `pgen2/driver.py:Driver.parse_tokens()`.  This was a brilliant implementation
+move because it does away with modifying the grammar to include all the
+possible places in which comments can be placed.
+
+The sad consequence for us though is that comments don't "belong" anywhere.
+This is why this function generates simple parentless Leaf objects for
+comments.  We simply don't know what the correct parent should be.
+
+No matter though, we can live without this.  We really only need to
+differentiate between inline and standalone comments.  The latter don't
+share the line with any code.
+
+Inline comments are emitted as regular token.COMMENT leaves.  Standalone
+are emitted with a fake STANDALONE_COMMENT token identifier.
+
+**Paramètres :**
+
+- `leaf`
+
+##### list_comments
+
+Return a list of :class:`ProtoComment` objects parsed from the given `prefix`.
+
+**Paramètres :**
+
+- `prefix`
+
+##### normalize_trailing_prefix
+
+Normalize the prefix that's left over after generating comments.
+
+Note: don't use backslashes for formatting or you'll lose your voting rights.
+
+**Paramètres :**
+
+- `leaf`
+- `total_consumed`
+
+##### make_comment
+
+Return a consistently formatted comment from the given `content` string.
+
+All comments (except for "##", "#!", "#:", '#'") should have a single
+space between the hash sign and the content.
+
+If `content` didn't start with a hash sign, one is provided.
+
+**Paramètres :**
+
+- `content`
+
+##### normalize_fmt_off
+
+Convert content between `# fmt: off`/`# fmt: on` into standalone comments.
+
+**Paramètres :**
+
+- `node`
+- `mode`
+- `lines`
+
+##### convert_one_fmt_off_pair
+
+Convert content of a single `# fmt: off`/`# fmt: on` into a standalone comment.
+
+Returns True if a pair was converted.
+
+**Paramètres :**
+
+- `node`
+- `mode`
+- `lines`
+
+##### generate_ignored_nodes
+
+Starting from the container of `leaf`, generate all leaves until `# fmt: on`.
+
+If comment is skip, returns leaf only.
+Stops at the end of the block.
+
+**Paramètres :**
+
+- `leaf`
+- `comment`
+- `mode`
+
+##### _generate_ignored_nodes_from_fmt_skip
+
+Generate all leaves that should be ignored by the `# fmt: skip` from `leaf`.
+
+**Paramètres :**
+
+- `leaf`
+- `comment`
+
+##### is_fmt_on
+
+Determine whether formatting is switched on within a container.
+Determined by whether the last `# fmt:` comment is `on` or `off`.
+
+**Paramètres :**
+
+- `container`
+
+##### children_contains_fmt_on
+
+Determine if children have formatting switched on.
+
+**Paramètres :**
+
+- `container`
+
+##### contains_pragma_comment
+
+Returns:
+    True iff one of the comments in @comment_list is a pragma used by one
+    of the more common static analysis tools for python (e.g. mypy, flake8,
+    pylint).
+
+**Paramètres :**
+
+- `comment_list`
+
+##### _contains_fmt_skip_comment
+
+Checks if the given comment contains FMT_SKIP alone or paired with other comments.
+Matching styles:
+  # fmt:skip                           <-- single comment
+  # noqa:XXX # fmt:skip # a nice line  <-- multiple comments (Preview)
+  # pylint:XXX; fmt:skip               <-- list of comments (; separated, Preview)
+
+**Paramètres :**
+
+- `comment_line`
+- `mode`
+
+---
+
+### schema
+
+#### Fonctions
+
+##### get_schema
+
+Get the stored complete schema for black's settings.
+
+**Paramètres :**
+
+- `tool_name`
 
 ---
 
@@ -161422,44 +170174,268 @@ Affiche le rapport danalyse
 
 ### analytics
 
-📊 MODULE ANALYTICS ATHALIA
-===========================
-Module d'analyse et de métriques de projets.
-Fournit des analyses de base pour les tests.
+Module d'analytics pour Athalia
+Analyse et métriques de projets
+
+#### Classes
+
+##### AnalyticsEngine
+
+Moteur d'analyse pour projets
+
+**Méthodes :**
+
+- `__init__()`
+- `analyze_code_complexity()`
+- `_calculate_file_complexity()`
+- `analyze_test_coverage()`
+- `analyze_dependencies()`
+- `analyze_performance_metrics()`
+- `analyze_security_metrics()`
+- `analyze_documentation_coverage()`
+- `analyze_git_metrics()`
+- `_get_git_metrics()`
+- `generate_comprehensive_report()`
+- `calculate_project_score()`
+- `generate_recommendations()`
+- `export_metrics_to_json()`
+- `export_metrics_to_yaml()`
+- `analyze_trends()`
+- `compare_with_baseline()`
+- `generate_visualization_data()`
 
 #### Fonctions
 
-##### analyze_project
+##### generate_analytics_report
 
-Analyser un projet et retourner des métriques de base
-
-**Paramètres :**
-
-- `project_path`
-
-##### generate_heatmap_data
-
-Générer des données pour une heatmap de complexité
+Fonction utilitaire pour générer un rapport d'analytics
 
 **Paramètres :**
 
 - `project_path`
 
-##### generate_technical_debt_analysis
+##### analyze_project_metrics
 
-Analyser la dette technique du projet
+Fonction utilitaire pour analyser les métriques d'un projet
+
+**Paramètres :**
+
+- `project_path`
+
+##### __init__
 
 **Paramètres :**
 
 - `project_path`
 
-##### generate_analytics_html
+##### analyze_code_complexity
 
-Générer un rapport HTML danalytics
+Analyse la complexité cyclomatique du code
+
+##### _calculate_file_complexity
+
+Calcule la complexité cyclomatique d'un fichier
+
+**Paramètres :**
+
+- `content`
+
+##### analyze_test_coverage
+
+Analyse la couverture de tests
+
+##### analyze_dependencies
+
+Analyse les dépendances du projet
+
+##### analyze_performance_metrics
+
+Analyse les métriques de performance
+
+##### analyze_security_metrics
+
+Analyse les métriques de sécurité
+
+##### analyze_documentation_coverage
+
+Analyse la couverture de documentation
+
+##### analyze_git_metrics
+
+Analyse les métriques Git
+
+##### _get_git_metrics
+
+Récupère les métriques Git
+
+##### generate_comprehensive_report
+
+Génère un rapport complet d'analyse
+
+##### calculate_project_score
+
+Calcule le score global du projet
+
+**Paramètres :**
+
+- `metrics`
+
+##### generate_recommendations
+
+Génère des recommandations basées sur les métriques
+
+**Paramètres :**
+
+- `metrics`
+
+##### export_metrics_to_json
+
+Exporte les métriques en JSON
+
+**Paramètres :**
+
+- `output_path`
+
+##### export_metrics_to_yaml
+
+Exporte les métriques en YAML
+
+**Paramètres :**
+
+- `output_path`
+
+##### analyze_trends
+
+Analyse les tendances des métriques
+
+**Paramètres :**
+
+- `historical_data`
+
+##### compare_with_baseline
+
+Compare les métriques actuelles avec une baseline
+
+**Paramètres :**
+
+- `baseline`
+- `current`
+
+##### generate_visualization_data
+
+Génère des données pour visualisation
+
+---
+
+### auto_tester
+
+#### Classes
+
+##### AutoTester
+
+Générateur de tests pour Athalia
+
+**Méthodes :**
+
+- `__init__()`
+- `run()`
+- `generate_tests()`
+- `_analyze_modules()`
+- `_generate_unit_tests()`
+- `_generate_module_unit_tests()`
+- `_generate_integration_tests()`
+- `_generate_performance_tests()`
+- `_save_tests()`
+- `_cleanup_generated_tests()`
+- `_run_tests()`
+- `_get_created_files()`
+- `generate_test_report()`
+
+#### Fonctions
+
+##### main
+
+Point dentrée principal
+
+##### __init__
 
 **Paramètres :**
 
 - `project_path`
+
+##### run
+
+Méthode run() pour lorchestrateur - exécute les tests
+
+##### generate_tests
+
+Génération complète de tests pour un projet
+
+**Paramètres :**
+
+- `project_path`
+
+##### _analyze_modules
+
+Analyse les modules Python du projet
+
+##### _generate_unit_tests
+
+Génère les tests f
+
+**Paramètres :**
+
+- `modules`
+
+##### _generate_module_unit_tests
+
+Génère les tests unitaires pour un module
+
+**Paramètres :**
+
+- `module`
+
+##### _generate_integration_tests
+
+Génère les tests dintégration
+
+**Paramètres :**
+
+- `modules`
+
+##### _generate_performance_tests
+
+Génère les tests de performance
+
+**Paramètres :**
+
+- `modules`
+
+##### _save_tests
+
+Sauvegarde les tests f
+
+**Paramètres :**
+
+- `unit_tests`
+- `integration_tests`
+- `performance_tests`
+
+##### _cleanup_generated_tests
+
+Nettoie les fichiers de tests auto-générés après exécution
+
+##### _run_tests
+
+Exécute les tests générés et collecte les résultats
+
+##### _get_created_files
+
+Retourne la liste des fichiers créés
+
+##### generate_test_report
+
+Génère un rapport de tests
 
 ---
 
@@ -161852,6 +170828,144 @@ Méthode de compatibilité
 
 ---
 
+### generation
+
+Module de génération simplifié pour Athalia
+Version simplifiée sans f-strings complexes
+
+#### Fonctions
+
+##### generate_blueprint_mock
+
+Génère un blueprint mock pour les tests.
+
+**Paramètres :**
+
+- `idea`
+
+##### extract_project_name
+
+Extrait un nom de projet de l'idée.
+
+**Paramètres :**
+
+- `idea`
+
+##### generate_project
+
+Génère un projet à partir d'un blueprint.
+
+**Paramètres :**
+
+- `blueprint`
+- `outdir`
+
+##### generate_readme
+
+Génère un README basique.
+
+**Paramètres :**
+
+- `blueprint`
+- `project_path`
+
+##### generate_main_code
+
+Génère le code principal.
+
+**Paramètres :**
+
+- `blueprint`
+- `project_path`
+
+##### generate_test_code
+
+Génère le code de test.
+
+**Paramètres :**
+
+- `blueprint`
+- `project_path`
+
+##### generate_requirements
+
+Génère un fichier requirements.txt basique.
+
+**Paramètres :**
+
+- `blueprint`
+- `project_path`
+
+##### save_blueprint
+
+Sauvegarde un blueprint dans un fichier YAML.
+
+**Paramètres :**
+
+- `blueprint`
+- `outdir`
+
+##### inject_booster_ia_elements
+
+Injecte les éléments Booster IA.
+
+**Paramètres :**
+
+- `outdir`
+
+##### scan_existing_project
+
+Scanne un projet existant.
+
+**Paramètres :**
+
+- `outdir`
+
+##### merge_or_suffix_file
+
+Fusionne ou suffixe un fichier.
+
+**Paramètres :**
+
+- `file_path`
+- `content`
+- `file_type`
+- `section_header`
+
+##### backup_file
+
+Crée une sauvegarde d'un fichier.
+
+**Paramètres :**
+
+- `file_path`
+
+##### generate_api_docs
+
+Génère la documentation API.
+
+**Paramètres :**
+
+- `blueprint`
+
+##### generate_dockerfile
+
+Génère un Dockerfile.
+
+**Paramètres :**
+
+- `blueprint`
+
+##### generate_docker_compose
+
+Génère un docker-compose.yml.
+
+**Paramètres :**
+
+- `blueprint`
+
+---
+
 ### auto_cicd
 
 #### Classes
@@ -162144,35 +171258,43 @@ Organise les fichiers dans la structure du projet
 
 ---
 
-### auto_tester
+### unified_orchestrator
+
+Orchestrateur unifié pour Athalia
+Coordination centralisée de tous les modules
 
 #### Classes
 
-##### AutoTester
+##### UnifiedOrchestrator
 
-Générateur de tests pour Athalia
+Orchestrateur unifié pour Athalia
 
 **Méthodes :**
 
 - `__init__()`
-- `run()`
-- `generate_tests()`
-- `_analyze_modules()`
-- `_generate_unit_tests()`
-- `_generate_module_unit_tests()`
-- `_generate_integration_tests()`
-- `_generate_performance_tests()`
-- `_save_tests()`
-- `_cleanup_generated_tests()`
-- `_run_tests()`
-- `_get_created_files()`
-- `generate_test_report()`
+- `initialize_modules()`
+- `run_full_workflow()`
+- `_step_generate_project()`
+- `_step_security_audit()`
+- `_step_code_linting()`
+- `_step_correction_optimization()`
+- `_step_auto_testing()`
+- `_step_auto_documentation()`
+- `_step_auto_cleaning()`
+- `_step_auto_cicd()`
+- `generate_workflow_report()`
+- `save_workflow_results()`
 
 #### Fonctions
 
-##### main
+##### run_unified_workflow
 
-Point dentrée principal
+Fonction utilitaire pour exécuter le workflow unifié
+
+**Paramètres :**
+
+- `blueprint`
+- `project_path`
 
 ##### __init__
 
@@ -162180,79 +171302,143 @@ Point dentrée principal
 
 - `project_path`
 
-##### run
+##### initialize_modules
 
-Méthode run() pour lorchestrateur - exécute les tests
+Initialise tous les modules
 
-##### generate_tests
+##### run_full_workflow
 
-Génération complète de tests pour un projet
+Exécute le workflow complet
+
+**Paramètres :**
+
+- `blueprint`
+
+##### _step_generate_project
+
+Étape 1: Génération du projet
+
+**Paramètres :**
+
+- `blueprint`
+
+##### _step_security_audit
+
+Étape 2: Audit de sécurité
+
+##### _step_code_linting
+
+Étape 3: Linting du code
+
+##### _step_correction_optimization
+
+Étape 4: Optimisation des corrections
+
+##### _step_auto_testing
+
+Étape 5: Tests automatiques
+
+##### _step_auto_documentation
+
+Étape 6: Documentation automatique
+
+##### _step_auto_cleaning
+
+Étape 7: Nettoyage automatique
+
+##### _step_auto_cicd
+
+Étape 8: CI/CD automatique
+
+##### generate_workflow_report
+
+Génère un rapport du workflow
+
+##### save_workflow_results
+
+Sauvegarde les résultats du workflow
+
+**Paramètres :**
+
+- `output_path`
+
+---
+
+### robotics_ci
+
+Module de CI/CD pour projets robotics
+Intégration continue pour ROS2, Rust et projets robotics
+
+#### Classes
+
+##### RoboticsCI
+
+Système de CI/CD pour projets robotics
+
+**Méthodes :**
+
+- `__init__()`
+- `run_full_pipeline()`
+- `_check_project_structure()`
+- `_run_build()`
+- `_run_tests()`
+- `_run_linting()`
+- `_run_security_scan()`
+- `_run_deployment_check()`
+- `_calculate_ci_score()`
+- `generate_ci_report()`
+
+#### Fonctions
+
+##### run_robotics_ci
+
+Fonction utilitaire pour exécuter la CI/CD robotics
 
 **Paramètres :**
 
 - `project_path`
 
-##### _analyze_modules
-
-Analyse les modules Python du projet
-
-##### _generate_unit_tests
-
-Génère les tests f
+##### __init__
 
 **Paramètres :**
 
-- `modules`
+- `project_path`
 
-##### _generate_module_unit_tests
+##### run_full_pipeline
 
-Génère les tests unitaires pour un module
+Exécute le pipeline CI/CD complet
 
-**Paramètres :**
+##### _check_project_structure
 
-- `module`
+Vérifie la structure du projet robotics
 
-##### _generate_integration_tests
+##### _run_build
 
-Génère les tests dintégration
-
-**Paramètres :**
-
-- `modules`
-
-##### _generate_performance_tests
-
-Génère les tests de performance
-
-**Paramètres :**
-
-- `modules`
-
-##### _save_tests
-
-Sauvegarde les tests f
-
-**Paramètres :**
-
-- `unit_tests`
-- `integration_tests`
-- `performance_tests`
-
-##### _cleanup_generated_tests
-
-Nettoie les fichiers de tests auto-générés après exécution
+Exécute la compilation du projet
 
 ##### _run_tests
 
-Exécute les tests générés et collecte les résultats
+Exécute les tests
 
-##### _get_created_files
+##### _run_linting
 
-Retourne la liste des fichiers créés
+Exécute le linting
 
-##### generate_test_report
+##### _run_security_scan
 
-Génère un rapport de tests
+Exécute le scan de sécurité
+
+##### _run_deployment_check
+
+Vérifie la préparation au déploiement
+
+##### _calculate_ci_score
+
+Calcule le score global de CI/CD
+
+##### generate_ci_report
+
+Génère un rapport de CI/CD
 
 ---
 
@@ -162397,223 +171583,205 @@ Sauvegarde les documents générés
 
 ---
 
-### ai_robust_broken
+### plugins_validator
 
-Module IA robuste pour Athalia
-Gestion des modèles IA avec fallback intelligent
+Module de validation de plugins pour Athalia
+Validation et vérification des plugins tiers
 
 #### Classes
 
-##### AIModel
+##### PluginValidator
 
-Modèles IA disponibles.
-
-##### PromptContext
-
-Contextes de prompts.
-
-##### RobustAI
-
-Gestionnaire IA robuste avec fallback intelligent.
+Validateur de plugins pour Athalia
 
 **Méthodes :**
 
 - `__init__()`
-- `generate_blueprint()`
-- `_extract_project_name()`
-- `review_code()`
-- `generate_documentation()`
-- `classify_project_complexity()`
-- `get_dynamic_prompt()`
-- `generate_bluelogger()`
-- `generate_blueprint_mock()`
-- `save_blueprint()`
-- `scan_existing_project()`
-- `_detect_available_models()`
-- `_build_fallback_chain()`
-- `_load_prompt_templates()`
-- `generate_response()`
-- `_call_model()`
-- `_classify_project_complexity()`
-- `_get_dynamic_prompt()`
-- `_call_ollama()`
-- `_mock_response()`
-
-##### _BlueprintProxy
-
-**Méthodes :**
-
-- `__init__()`
-- `info()`
+- `validate_plugin()`
+- `_check_plugin_structure()`
+- `_check_python_syntax()`
+- `_check_metadata()`
+- `_check_dependencies()`
+- `validate_all_plugins()`
+- `generate_validation_report()`
 
 #### Fonctions
 
-##### robust_ai
+##### validate_plugin
 
-Fonction factory pour créer une instance RobustAI.
-
-##### fallback_ia
-
-Fallback IA multi-modèles (Qwen, Mistral, Ollama, Claude, GPT, Mock...)
+Fonction utilitaire pour valider un plugin
 
 **Paramètres :**
 
-- `prompt`
-- `models`
+- `plugin_path`
 
-##### query_qwen
+##### validate_all_plugins
 
-Appel local à Qwen 7B via Ollama.
-
-**Paramètres :**
-
-- `prompt`
-
-##### query_mistral
-
-Appel local à Mistral 7B via Ollama.
+Fonction utilitaire pour valider tous les plugins
 
 **Paramètres :**
 
-- `prompt`
-
-##### __init__
-
-Initialise le gestionnaire IA.
-
-##### generate_blueprint
-
-Génère un blueprint de projet à partir dune idée.
-
-**Paramètres :**
-
-- `idea`
-
-##### _extract_project_name
-
-Extrait un nom de projet de lidée
-
-**Paramètres :**
-
-- `idea`
-
-##### review_code
-
-Génère une revue de code mockée.
-
-**Paramètres :**
-
-- `code`
-- `filename`
-- `project_type`
-- `current_score`
-
-##### generate_documentation
-
-Génère une documentation technique mockée.
-
-**Paramètres :**
-
-- `project_name`
-- `project_type`
-- `modules`
-
-##### classify_project_complexity
-
-Classifie la complexité dun projet (mock).
-
-**Paramètres :**
-
-- `codebase_path`
-
-##### get_dynamic_prompt
-
-Retourne un prompt dynamique mocké selon le contexte.
-
-**Paramètres :**
-
-- `context`
-
-##### generate_bluelogger
-
-##### generate_blueprint_mock
-
-##### save_blueprint
-
-##### scan_existing_project
-
-##### _detect_available_models
-
-Détecte les modèles IA disponibles.
-
-##### _build_fallback_chain
-
-Construit la chaîne de fallback.
-
-##### _load_prompt_templates
-
-Charge les templates de prompts dynamiques.
-
-##### generate_response
-
-Génère une réponse IA robuste avec fallback.
-
-**Paramètres :**
-
-- `context`
-- `distillation`
-
-##### _call_model
-
-Appelle un modèle IA spécifique.
-
-**Paramètres :**
-
-- `model`
-- `prompt`
-
-##### _classify_project_complexity
-
-Alias privé pour compatibilité avec les tests.
-
-**Paramètres :**
-
-- `codebase_path`
-
-##### _get_dynamic_prompt
-
-Alias privé pour compatibilité avec les tests.
-Accepte PromptContext ou str et fait un .format sur le template.
-
-**Paramètres :**
-
-- `context`
-
-##### _call_ollama
-
-Appelle Ollama avec un modèle spécifique et timeout paramétrable.
-
-**Paramètres :**
-
-- `model_name`
-- `prompt`
-- `timeout`
-
-##### _mock_response
-
-Réponse mock pour les tests.
-
-**Paramètres :**
-
-- `prompt`
+- `plugins_dir`
 
 ##### __init__
 
 **Paramètres :**
 
-- `parent`
+- `plugins_dir`
 
-##### info
+##### validate_plugin
+
+Valide un plugin spécifique
+
+**Paramètres :**
+
+- `plugin_path`
+
+##### _check_plugin_structure
+
+Vérifie la structure du plugin
+
+**Paramètres :**
+
+- `plugin_path`
+- `results`
+
+##### _check_python_syntax
+
+Vérifie la syntaxe Python du plugin
+
+**Paramètres :**
+
+- `plugin_path`
+- `results`
+
+##### _check_metadata
+
+Vérifie les métadonnées du plugin
+
+**Paramètres :**
+
+- `plugin_path`
+- `results`
+
+##### _check_dependencies
+
+Vérifie les dépendances du plugin
+
+**Paramètres :**
+
+- `plugin_path`
+- `results`
+
+##### validate_all_plugins
+
+Valide tous les plugins dans le répertoire
+
+##### generate_validation_report
+
+Génère un rapport de validation
+
+---
+
+### security_validator
+
+Module de validation sécurisée pour les commandes subprocess
+Protection contre les injections de commandes et exécution non autorisée
+
+#### Classes
+
+##### SecurityValidator
+
+Validateur de sécurité pour les commandes subprocess.
+
+**Méthodes :**
+
+- `__init__()`
+- `validate_command()`
+- `_is_dangerous_path()`
+- `run_safe_command()`
+- `add_allowed_command()`
+- `remove_allowed_command()`
+- `add_safe_directory()`
+- `get_security_report()`
+
+##### SecurityError
+
+Exception levée en cas d'erreur de sécurité.
+
+#### Fonctions
+
+##### validate_and_run
+
+Fonction utilitaire pour valider et exécuter une commande.
+
+**Paramètres :**
+
+- `command`
+
+##### is_command_safe
+
+Vérifie si une commande est sûre.
+
+**Paramètres :**
+
+- `command`
+
+##### __init__
+
+Initialise le validateur de sécurité.
+
+##### validate_command
+
+Valide une commande subprocess.
+
+**Paramètres :**
+
+- `command`
+
+##### _is_dangerous_path
+
+Vérifie si un chemin est dangereux.
+
+**Paramètres :**
+
+- `path`
+
+##### run_safe_command
+
+Exécute une commande de manière sécurisée.
+
+**Paramètres :**
+
+- `command`
+
+##### add_allowed_command
+
+Ajoute une commande à la liste des commandes autorisées.
+
+**Paramètres :**
+
+- `command`
+
+##### remove_allowed_command
+
+Retire une commande de la liste des commandes autorisées.
+
+**Paramètres :**
+
+- `command`
+
+##### add_safe_directory
+
+Ajoute un répertoire à la liste des répertoires sûrs.
+
+**Paramètres :**
+
+- `directory`
+
+##### get_security_report
+
+Génère un rapport de sécurité.
 
 ---
 
@@ -162694,21 +171862,49 @@ Retourne une liste de suggestions d'autocomplétion pour un prompt donné.
 
 ---
 
-### ci
+### cli
+
+Interface CLI pour Athalia avec IA robuste.
 
 #### Fonctions
 
-##### generate_github_ci_yaml
+##### cli
+
+Athalia-Générateur de projets IA intelligent.
 
 **Paramètres :**
 
-- `outdir`
+- `verbose`
 
-##### add_coverage_badge
+##### generate
+
+Génère un projet complet à partir dune idée.
 
 **Paramètres :**
 
-- `outdir`
+- `idea`
+- `output`
+- `dry_run`
+
+##### audit
+
+Audit intelligent dun projet existant.
+
+**Paramètres :**
+
+- `project_path`
+
+##### ai_status
+
+Affiche le statut de lIA robuste.
+
+##### test_ai
+
+Teste lIA robuste avec une idée de projet.
+
+**Paramètres :**
+
+- `idea`
 
 ---
 
@@ -162775,6 +171971,442 @@ Affichage du rapport de linting
 
 ---
 
+### ai_robust_enhanced
+
+Module IA robuste pour Athalia
+Gestion des modèles IA avec fallback intelligent et gestion d'erreurs avancée
+
+#### Classes
+
+##### AIModel
+
+Modèles IA disponibles.
+
+##### PromptContext
+
+Contextes de prompts.
+
+##### RobustAI
+
+Gestionnaire IA robuste avec fallback intelligent.
+
+**Méthodes :**
+
+- `__init__()`
+- `generate_blueprint()`
+- `_detect_project_type()`
+- `_extract_project_name()`
+- `_get_dependencies_for_type()`
+- `_get_structure_for_type()`
+- `_generate_fallback_blueprint()`
+- `review_code()`
+- `_analyze_code_quality()`
+- `_generate_code_suggestions()`
+- `_calculate_improved_score()`
+- `generate_documentation()`
+- `classify_project_complexity()`
+- `get_dynamic_prompt()`
+- `_detect_available_models()`
+- `_build_fallback_chain()`
+- `_load_prompt_templates()`
+- `generate_response()`
+- `_call_model()`
+- `_call_ollama()`
+- `_mock_response()`
+
+#### Fonctions
+
+##### robust_ai
+
+Factory function pour créer une instance RobustAI.
+
+##### fallback_ia
+
+Fonction de fallback pour l'IA.
+
+**Paramètres :**
+
+- `prompt`
+- `models`
+
+##### query_qwen
+
+Interroge le modèle Qwen.
+
+**Paramètres :**
+
+- `prompt`
+
+##### query_mistral
+
+Interroge le modèle Mistral.
+
+**Paramètres :**
+
+- `prompt`
+
+##### __init__
+
+Initialise le gestionnaire IA.
+
+##### generate_blueprint
+
+Génère un blueprint de projet à partir d'une idée.
+
+**Paramètres :**
+
+- `idea`
+
+##### _detect_project_type
+
+Détecte le type de projet à partir de l'idée.
+
+**Paramètres :**
+
+- `idea_lower`
+
+##### _extract_project_name
+
+Extrait un nom de projet de l'idée.
+
+**Paramètres :**
+
+- `idea`
+
+##### _get_dependencies_for_type
+
+Retourne les dépendances appropriées selon le type de projet.
+
+**Paramètres :**
+
+- `project_type`
+
+##### _get_structure_for_type
+
+Retourne la structure appropriée selon le type de projet.
+
+**Paramètres :**
+
+- `project_type`
+
+##### _generate_fallback_blueprint
+
+Génère un blueprint de fallback en cas d'erreur.
+
+**Paramètres :**
+
+- `idea`
+
+##### review_code
+
+Analyse et révise du code.
+
+**Paramètres :**
+
+- `code`
+- `filename`
+- `project_type`
+- `current_score`
+
+##### _analyze_code_quality
+
+Analyse la qualité du code.
+
+**Paramètres :**
+
+- `code`
+
+##### _generate_code_suggestions
+
+Génère des suggestions d'amélioration du code.
+
+**Paramètres :**
+
+- `code`
+- `project_type`
+
+##### _calculate_improved_score
+
+Calcule le score amélioré basé sur les problèmes identifiés.
+
+**Paramètres :**
+
+- `current_score`
+- `issues`
+
+##### generate_documentation
+
+Génère de la documentation pour le projet.
+
+**Paramètres :**
+
+- `project_name`
+- `project_type`
+- `modules`
+
+##### classify_project_complexity
+
+Classifie la complexité d'un projet.
+
+**Paramètres :**
+
+- `codebase_path`
+
+##### get_dynamic_prompt
+
+Génère un prompt dynamique selon le contexte.
+
+**Paramètres :**
+
+- `context`
+
+##### _detect_available_models
+
+Détecte les modèles IA disponibles.
+
+##### _build_fallback_chain
+
+Construit la chaîne de fallback des modèles.
+
+##### _load_prompt_templates
+
+Charge les templates de prompts.
+
+##### generate_response
+
+Génère une réponse IA avec fallback.
+
+**Paramètres :**
+
+- `context`
+- `distillation`
+
+##### _call_model
+
+Appelle un modèle IA spécifique.
+
+**Paramètres :**
+
+- `model`
+- `prompt`
+
+##### _call_ollama
+
+Appelle un modèle Ollama.
+
+**Paramètres :**
+
+- `model_name`
+- `prompt`
+- `timeout`
+
+##### _mock_response
+
+Génère une réponse mock pour les tests.
+
+**Paramètres :**
+
+- `prompt`
+
+---
+
+### ci
+
+#### Fonctions
+
+##### generate_github_ci_yaml
+
+**Paramètres :**
+
+- `outdir`
+
+##### add_coverage_badge
+
+**Paramètres :**
+
+- `outdir`
+
+---
+
+### dashboard
+
+Module dashboard pour Athalia
+Interface de visualisation et monitoring
+
+#### Classes
+
+##### Dashboard
+
+Dashboard pour visualisation des métriques
+
+**Méthodes :**
+
+- `__init__()`
+- `load_dashboard_config()`
+- `generate_metrics_widget()`
+- `generate_charts_widget()`
+- `generate_alerts_widget()`
+- `generate_performance_widget()`
+- `generate_security_widget()`
+- `generate_test_coverage_widget()`
+- `generate_dependency_widget()`
+- `generate_documentation_widget()`
+- `generate_git_widget()`
+- `generate_dashboard_layout()`
+- `generate_dashboard_html()`
+- `generate_dashboard_css()`
+- `generate_dashboard_js()`
+- `save_dashboard_html()`
+- `generate_dashboard_report()`
+
+#### Fonctions
+
+##### generate_dashboard_html
+
+Fonction utilitaire pour générer le HTML du dashboard
+
+**Paramètres :**
+
+- `project_path`
+
+##### create_dashboard_report
+
+Fonction utilitaire pour créer un rapport de dashboard
+
+**Paramètres :**
+
+- `project_path`
+
+##### __init__
+
+**Paramètres :**
+
+- `project_path`
+
+##### load_dashboard_config
+
+Charge la configuration du dashboard
+
+**Paramètres :**
+
+- `config_path`
+
+##### generate_metrics_widget
+
+Génère le widget métriques
+
+##### generate_charts_widget
+
+Génère le widget graphiques
+
+**Paramètres :**
+
+- `chart_data`
+
+##### generate_alerts_widget
+
+Génère le widget alertes
+
+**Paramètres :**
+
+- `alerts`
+
+##### generate_performance_widget
+
+Génère le widget performance
+
+**Paramètres :**
+
+- `performance_data`
+
+##### generate_security_widget
+
+Génère le widget sécurité
+
+**Paramètres :**
+
+- `security_data`
+
+##### generate_test_coverage_widget
+
+Génère le widget couverture de tests
+
+**Paramètres :**
+
+- `coverage_data`
+
+##### generate_dependency_widget
+
+Génère le widget dépendances
+
+**Paramètres :**
+
+- `dependency_data`
+
+##### generate_documentation_widget
+
+Génère le widget documentation
+
+**Paramètres :**
+
+- `doc_data`
+
+##### generate_git_widget
+
+Génère le widget Git
+
+**Paramètres :**
+
+- `git_data`
+
+##### generate_dashboard_layout
+
+Génère la mise en page du dashboard
+
+**Paramètres :**
+
+- `widgets`
+- `layout_type`
+
+##### generate_dashboard_html
+
+Génère le HTML du dashboard
+
+**Paramètres :**
+
+- `dashboard_data`
+
+##### generate_dashboard_css
+
+Génère le CSS du dashboard
+
+**Paramètres :**
+
+- `theme`
+
+##### generate_dashboard_js
+
+Génère le JavaScript du dashboard
+
+**Paramètres :**
+
+- `config`
+
+##### save_dashboard_html
+
+Sauvegarde le dashboard HTML
+
+**Paramètres :**
+
+- `html_content`
+- `output_path`
+
+##### generate_dashboard_report
+
+Génère un rapport complet du dashboard
+
+---
+
 ### cleanup
 
 #### Fonctions
@@ -162800,197 +172432,273 @@ Retourne la liste des fichiers supprimés.
 
 ---
 
-### cli
+### intelligent_auditor
 
-Interface CLI pour Athalia avec IA robuste.
+#### Classes
+
+##### IntelligentAuditor
+
+Auditeur intelligent pour analyse automatique des projets
+
+**Méthodes :**
+
+- `__init__()`
+- `run()`
+- `audit_project()`
+- `_analyze_project_info()`
+- `_detect_project_type()`
+- `_calculate_project_size()`
+- `_is_code_file()`
+- `_detect_languages()`
+- `_detect_dependencies()`
+- `_get_last_modified()`
+- `_analyze_code_quality()`
+- `_analyze_complexity()`
+- `_calculate_cyclomatic_complexity()`
+- `_analyze_style()`
+- `_analyze_code_documentation()`
+- `_analyze_naming_conventions()`
+- `_analyze_security()`
+- `_detect_security_vulnerabilities()`
+- `_detect_secrets()`
+- `_analyze_permissions()`
+- `_analyze_performance()`
+- `_analyze_file_sizes()`
+- `_analyze_imports()`
+- `_estimate_memory_usage()`
+- `_analyze_documentation()`
+- `_check_readme()`
+- `_check_api_documentation()`
+- `_check_guides()`
+- `_analyze_testing()`
+- `_analyze_test_coverage()`
+- `_find_test_files()`
+- `_analyze_test_quality()`
+- `_analyze_structure()`
+- `_analyze_organization()`
+- `_analyze_structure_naming()`
+- `_analyze_modularity()`
+- `_calculate_score()`
+- `_generate_recommendations()`
+- `generate_report()`
 
 #### Fonctions
-
-##### cli
-
-Athalia-Générateur de projets IA intelligent.
-
-**Paramètres :**
-
-- `verbose`
-
-##### generate
-
-Génère un projet complet à partir dune idée.
-
-**Paramètres :**
-
-- `idea`
-- `output`
-- `dry_run`
-
-##### audit
-
-Audit intelligent dun projet existant.
-
-**Paramètres :**
-
-- `project_path`
-
-##### ai_status
-
-Affiche le statut de lIA robuste.
-
-##### test_ai
-
-Teste lIA robuste avec une idée de projet.
-
-**Paramètres :**
-
-- `idea`
-
----
-
-### dashboard
-
-#### Fonctions
-
-##### show_benchmarks
 
 ##### main
 
+Point dentrée
+
+##### __init__
+
+**Paramètres :**
+
+- `project_path`
+
+##### run
+
+Méthode run() pour lorchestrateur - exécute laudit
+
+##### audit_project
+
+Audit complet dun projet
+
+**Paramètres :**
+
+- `project_path`
+
+##### _analyze_project_info
+
+Analyse des informations du projet
+
+##### _detect_project_type
+
+Détection automatique du type de projet
+
+##### _calculate_project_size
+
+Calcul de la taille du projet
+
+##### _is_code_file
+
+Détermine si un fichier est un fichier de code
+
+**Paramètres :**
+
+- `file_path`
+
+##### _detect_languages
+
+Détection des langages du projet
+
+##### _detect_dependencies
+
+Détection des dépendances du projet
+
+##### _get_last_modified
+
+Date de dernière modification
+
+##### _analyze_code_quality
+
+Analyse de la qualité du code
+
+##### _analyze_complexity
+
+Analyse de la complexité du code
+
+##### _calculate_cyclomatic_complexity
+
+Calcul de la complexité cyclomatique dun fichier
+
+**Paramètres :**
+
+- `tree`
+
+##### _analyze_style
+
+Analyse du style du code
+
+##### _analyze_code_documentation
+
+Analyse de la documentation du code
+
+##### _analyze_naming_conventions
+
+Analyse des conventions de nommage
+
+##### _analyze_security
+
+Analyse de la sécurité
+
+##### _detect_security_vulnerabilities
+
+Détection des vulnérabilités de sécurité
+
+##### _detect_secrets
+
+Détection de secrets
+
+##### _analyze_permissions
+
+Analyse des permissions des fichiers
+
+##### _analyze_performance
+
+Analyse de la performance
+
+##### _analyze_file_sizes
+
+Analyse de la taille des fichiers
+
+##### _analyze_imports
+
+Analyse des imports
+
+##### _estimate_memory_usage
+
+Estimation de la list_datausage
+
+##### _analyze_documentation
+
+Analyse de la documentation
+
+##### _check_readme
+
+Vérification du README
+
+##### _check_api_documentation
+
+Vérification de la documentation API
+
+##### _check_guides
+
+Vérification des guides
+
+##### _analyze_testing
+
+Analyse des tests
+
+##### _analyze_test_coverage
+
+Analyse de la couverture de tests
+
+##### _find_test_files
+
+Trouve les fichiers de tests
+
+##### _analyze_test_quality
+
+Analyse de la qualité des tests
+
+##### _analyze_structure
+
+Analyse de la structure du projet
+
+##### _analyze_organization
+
+Analyse de lorganisation des dossiers
+
+##### _analyze_structure_naming
+
+Analyse du nommage des fichiers et dossiers
+
+##### _analyze_modularity
+
+Analyse de la modularité
+
+##### _calculate_score
+
+Calcul du score global
+
+##### _generate_recommendations
+
+Génération des recommandations
+
+##### generate_report
+
+Génère un rapport daudit
+
 ---
 
-### generation
-
-Module de génération simplifié pour Athalia
-Version simplifiée sans f-strings complexes
+### main
 
 #### Fonctions
 
-##### generate_blueprint_mock
+##### signal_handler
 
-Génère un blueprint mock pour les tests.
-
-**Paramètres :**
-
-- `idea`
-
-##### extract_project_name
-
-Extrait un nom de projet de l'idée.
+Gestionnaire de signal pour arrêt propre
 
 **Paramètres :**
 
-- `idea`
+- `signum`
+- `frame`
 
-##### generate_project
+##### menu
 
-Génère un projet à partir d'un blueprint.
+##### safe_input
 
-**Paramètres :**
-
-- `blueprint`
-- `outdir`
-
-##### generate_readme
-
-Génère un README basique.
+Entrée sécurisée avec gestion derreurs.
 
 **Paramètres :**
 
-- `blueprint`
-- `project_path`
+- `prompt`
 
-##### generate_main_code
+##### surveillance_mode
 
-Génère le code principal.
+Mode surveillance avec arrêt automatique
 
-**Paramètres :**
-
-- `blueprint`
-- `project_path`
-
-##### generate_test_code
-
-Génère le code de test.
+##### main
 
 **Paramètres :**
 
-- `blueprint`
-- `project_path`
+- `test_mode`
 
-##### generate_requirements
-
-Génère un fichier requirements.txt basique.
+##### log_main
 
 **Paramètres :**
 
-- `blueprint`
-- `project_path`
-
-##### save_blueprint
-
-Sauvegarde un blueprint dans un fichier YAML.
-
-**Paramètres :**
-
-- `blueprint`
-- `outdir`
-
-##### inject_booster_ia_elements
-
-Injecte les éléments Booster IA.
-
-**Paramètres :**
-
-- `outdir`
-
-##### scan_existing_project
-
-Scanne un projet existant.
-
-**Paramètres :**
-
-- `outdir`
-
-##### merge_or_suffix_file
-
-Fusionne ou suffixe un fichier.
-
-**Paramètres :**
-
-- `file_path`
-- `content`
-- `file_type`
-- `section_header`
-
-##### backup_file
-
-Crée une sauvegarde d'un fichier.
-
-**Paramètres :**
-
-- `file_path`
-
-##### generate_api_docs
-
-Génère la documentation API.
-
-**Paramètres :**
-
-- `blueprint`
-
-##### generate_dockerfile
-
-Génère un Dockerfile.
-
-**Paramètres :**
-
-- `blueprint`
-
-##### generate_docker_compose
-
-Génère un docker-compose.yml.
-
-**Paramètres :**
-
-- `blueprint`
+- `msg`
+- `level`
 
 ---
 
@@ -163185,193 +172893,384 @@ Module onboarding, guides, scripts d'installation.
 
 ---
 
-### cache_manager
+### ros2_validator
 
-Gestionnaire de cache intelligent pour Athalia
-Optimisation des performances avec cache LRU
+Module de validation ROS2 pour Athalia
+Validation et vérification des packages ROS2
 
 #### Classes
 
-##### AnalysisCache
+##### ROS2Validator
 
-Gestionnaire de cache intelligent pour les analyses.
+Validateur de packages ROS2
 
 **Méthodes :**
 
 - `__init__()`
-- `_generate_cache_key()`
-- `_get_cache_file_path()`
-- `_is_cache_valid()`
-- `get()`
-- `set()`
-- `_cleanup_cache()`
-- `clear()`
-- `get_stats()`
+- `validate_package()`
+- `_check_package_structure()`
+- `_validate_package_xml()`
+- `_validate_setup_py()`
+- `_validate_cmakelists()`
+- `_check_launch_files()`
+- `_check_test_files()`
+- `_check_dependencies()`
+- `generate_validation_report()`
 
 #### Fonctions
 
-##### cached_analysis
+##### validate_ros2_package
 
-Décorateur pour mettre en cache les analyses.
+Fonction utilitaire pour valider un package ROS2
 
-Args:
-    func: Fonction à décorer
-    
-Returns:
-    Fonction décorée avec cache
+**Paramètres :**
+
+- `package_path`
+
+##### __init__
+
+**Paramètres :**
+
+- `project_path`
+
+##### validate_package
+
+Valide un package ROS2 complet
+
+##### _check_package_structure
+
+Vérifie la structure de base du package
+
+##### _validate_package_xml
+
+Valide le fichier package.xml
+
+##### _validate_setup_py
+
+Valide le fichier setup.py
+
+##### _validate_cmakelists
+
+Valide le fichier CMakeLists.txt
+
+##### _check_launch_files
+
+Vérifie les fichiers de lancement
+
+##### _check_test_files
+
+Vérifie les fichiers de test
+
+##### _check_dependencies
+
+Vérifie les dépendances du package
+
+##### generate_validation_report
+
+Génère un rapport de validation
+
+---
+
+### athalia_orchestrator
+
+Orchestrateur unifié pour Athalia - Industrialisation IA complète
+
+#### Classes
+
+##### BackupSystem
+
+Système de sauvegarde simplifié
+
+##### OrchestrationTask
+
+Tâche d'orchestration unifiée
+
+##### IntelligentInsight
+
+Insight intelligent unifié
+
+##### IndustrializationStep
+
+Étape d'industrialisation
+
+##### AthaliaOrchestrator
+
+Orchestrateur unifié pour l'industrialisation IA
+
+**Méthodes :**
+
+- `__init__()`
+- `_init_database()`
+- `_init_components()`
+- `orchestrate_project_complete()`
+- `_run_industrialization()`
+- `_run_audit()`
+- `_run_linting()`
+- `_run_security_audit()`
+- `_run_analytics()`
+- `_run_cleanup()`
+- `_run_documentation()`
+- `_run_testing()`
+- `_run_cicd()`
+- `_run_robotics_audit()`
+- `_generate_predictions()`
+- `_generate_optimizations()`
+- `_learn_from_results()`
+- `_generate_unified_report()`
+- `_save_unified_results()`
+- `get_orchestration_insights()`
+- `_run_plugins()`
+- `phase2_backup()`
+- `get_phase2_backup_stats()`
+- `validate_phase2_inputs()`
+- `run_phase2_backup()`
+- `run_phase2_error_handling()`
+- `_run_templates()`
+- `orchestrate_with_phase2_features()`
+
+#### Fonctions
+
+##### get_backup_system
+
+Obtenir le système de sauvegarde
+
+##### standardize_cli_script
+
+Standardiser le script CLI
+
+##### cli_entry
+
+Point d'entrée CLI
+
+##### error_handler
+
+Décorateur de gestion d'erreur
 
 **Paramètres :**
 
 - `func`
 
-##### get_cache_stats
+##### orchestrator_auto_backup
 
-Retourne les statistiques du cache global.
+Sauvegarde automatique de l'orchestrateur
 
-Returns:
-    Statistiques du cache
+##### orchestrator_main
 
-##### clear_cache
+Fonction principale de l'orchestrateur
 
-Vide le cache global.
+##### main_orchestrator
 
-##### cached_function
-
-Décorateur pour cache LRU simple.
-
-Args:
-    max_size: Taille maximale du cache
-    
-Returns:
-    Décorateur
-
-**Paramètres :**
-
-- `max_size`
-
-##### analyze_project_structure
-
-Analyse la structure d'un projet (exemple).
-
-Args:
-    project_path: Chemin du projet
-    detailed: Analyse détaillée
-    
-Returns:
-    Résultat de l'analyse
-
-**Paramètres :**
-
-- `project_path`
-- `detailed`
+Point d'entrée principal pour compatibilité
 
 ##### __init__
 
-Initialise le gestionnaire de cache.
-
-Args:
-    cache_dir: Répertoire de stockage du cache
-    max_size: Taille maximale du cache en entrées
-    ttl_hours: Durée de vie du cache en heures
-
 **Paramètres :**
 
-- `cache_dir`
-- `max_size`
-- `ttl_hours`
+- `root_path`
 
-##### _generate_cache_key
+##### _init_database
 
-Génère une clé de cache unique.
+Initialiser la base de données
 
-Args:
-    project_path: Chemin du projet
-    analysis_type: Type d'analyse
-    **kwargs: Paramètres supplémentaires
-    
-Returns:
-    Clé de cache unique
+##### _init_components
+
+Initialiser les composants disponibles
+
+##### orchestrate_project_complete
+
+Orchestrer l'industrialisation complète d'un projet
 
 **Paramètres :**
 
 - `project_path`
-- `analysis_type`
+- `config`
 
-##### _get_cache_file_path
+##### _run_industrialization
 
-Retourne le chemin du fichier de cache.
-
-**Paramètres :**
-
-- `cache_key`
-
-##### _is_cache_valid
-
-Vérifie si le cache est encore valide.
-
-Args:
-    cache_file: Chemin du fichier de cache
-    
-Returns:
-    True si le cache est valide
-
-**Paramètres :**
-
-- `cache_file`
-
-##### get
-
-Récupère un résultat du cache.
-
-Args:
-    project_path: Chemin du projet
-    analysis_type: Type d'analyse
-    **kwargs: Paramètres supplémentaires
-    
-Returns:
-    Résultat du cache ou None si non trouvé
+Exécuter l'industrialisation
 
 **Paramètres :**
 
 - `project_path`
-- `analysis_type`
 
-##### set
+##### _run_audit
 
-Stocke un résultat dans le cache.
-
-Args:
-    project_path: Chemin du projet
-    analysis_type: Type d'analyse
-    result: Résultat à stocker
-    **kwargs: Paramètres supplémentaires
+Exécuter l'audit
 
 **Paramètres :**
 
 - `project_path`
-- `analysis_type`
-- `result`
 
-##### _cleanup_cache
+##### _run_linting
 
-Nettoie le cache en supprimant les entrées expirées.
+Exécuter le linting
 
-##### clear
+**Paramètres :**
 
-Vide complètement le cache.
+- `project_path`
 
-##### get_stats
+##### _run_security_audit
 
-Retourne les statistiques du cache.
+Exécuter l'audit de sécurité
 
-Returns:
-    Statistiques du cache
+**Paramètres :**
+
+- `project_path`
+
+##### _run_analytics
+
+Exécuter l'analyse
+
+**Paramètres :**
+
+- `project_path`
+
+##### _run_cleanup
+
+Exécuter le nettoyage
+
+**Paramètres :**
+
+- `project_path`
+
+##### _run_documentation
+
+Exécuter la documentation
+
+**Paramètres :**
+
+- `project_path`
+
+##### _run_testing
+
+Exécuter les tests
+
+**Paramètres :**
+
+- `project_path`
+
+##### _run_cicd
+
+Exécuter le CI/CD
+
+**Paramètres :**
+
+- `project_path`
+
+##### _run_robotics_audit
+
+Exécuter l'audit robotique
+
+**Paramètres :**
+
+- `project_path`
+
+##### _generate_predictions
+
+Générer des prédictions intelligentes
+
+**Paramètres :**
+
+- `project_path`
+
+##### _generate_optimizations
+
+Générer des optimisations intelligentes
+
+**Paramètres :**
+
+- `project_path`
+
+##### _learn_from_results
+
+Apprendre des résultats pour améliorer les futures exécutions
+
+**Paramètres :**
+
+- `results`
+
+##### _generate_unified_report
+
+Générer un rapport unifié
+
+**Paramètres :**
+
+- `results`
+
+##### _save_unified_results
+
+Sauvegarder les résultats unifiés
+
+**Paramètres :**
+
+- `results`
+
+##### get_orchestration_insights
+
+Obtenir les insights d'orchestration
+
+##### _run_plugins
+
+Exécuter les plugins
+
+**Paramètres :**
+
+- `project_path`
+
+##### phase2_backup
+
+Sauvegarde Phase 2
+
+**Paramètres :**
+
+- `project_path`
+
+##### get_phase2_backup_stats
+
+Obtenir les statistiques de sauvegarde Phase 2
+
+##### validate_phase2_inputs
+
+Valider les entrées Phase 2
+
+**Paramètres :**
+
+- `inputs`
+- `required_fields`
+
+##### run_phase2_backup
+
+Exécuter la sauvegarde Phase 2
+
+**Paramètres :**
+
+- `backup_type`
+
+##### run_phase2_error_handling
+
+Gestion d'erreur Phase 2
+
+**Paramètres :**
+
+- `operation`
+
+##### _run_templates
+
+Exécuter les templates
+
+**Paramètres :**
+
+- `project_path`
+
+##### orchestrate_with_phase2_features
+
+Orchestrer avec les fonctionnalités Phase 2
+
+**Paramètres :**
+
+- `project_path`
 
 ##### wrapper
-
-**Paramètres :**
-
-- `project_path`
 
 ---
 
@@ -163654,231 +173553,114 @@ Utiliser l'orchestrateur unifié pour une orchestration complète
 
 ---
 
-### intelligent_auditor
+### project_importer
 
 #### Classes
 
-##### IntelligentAuditor
-
-Auditeur intelligent pour analyse automatique des projets
+##### ProjectImporter
 
 **Méthodes :**
 
 - `__init__()`
-- `run()`
-- `audit_project()`
-- `_analyze_project_info()`
+- `import_project()`
+- `_scan_structure()`
 - `_detect_project_type()`
-- `_calculate_project_size()`
-- `_is_code_file()`
-- `_detect_languages()`
-- `_detect_dependencies()`
-- `_get_last_modified()`
 - `_analyze_code_quality()`
-- `_analyze_complexity()`
-- `_calculate_cyclomatic_complexity()`
-- `_analyze_style()`
-- `_analyze_code_documentation()`
-- `_analyze_naming_conventions()`
-- `_analyze_security()`
-- `_detect_security_vulnerabilities()`
-- `_detect_secrets()`
-- `_analyze_permissions()`
-- `_analyze_performance()`
-- `_analyze_file_sizes()`
-- `_analyze_imports()`
-- `_estimate_memory_usage()`
-- `_analyze_documentation()`
-- `_check_readme()`
-- `_check_api_documentation()`
-- `_check_guides()`
-- `_analyze_testing()`
-- `_analyze_test_coverage()`
-- `_find_test_files()`
-- `_analyze_test_quality()`
-- `_analyze_structure()`
-- `_analyze_organization()`
-- `_analyze_structure_naming()`
-- `_analyze_modularity()`
-- `_calculate_score()`
-- `_generate_recommendations()`
-- `generate_report()`
+- `_generate_correction_blueprint()`
+- `_suggest_modules()`
+- `_suggest_structure()`
+- `_suggest_dependencies()`
+- `_suggest_prompts()`
+- `_suggest_enhancements()`
 
 #### Fonctions
 
-##### main
-
-Point dentrée
-
 ##### __init__
 
-**Paramètres :**
+##### import_project
 
-- `project_path`
-
-##### run
-
-Méthode run() pour lorchestrateur - exécute laudit
-
-##### audit_project
-
-Audit complet dun projet
+Importe et analyse un projet existant.
 
 **Paramètres :**
 
 - `project_path`
 
-##### _analyze_project_info
+##### _scan_structure
 
-Analyse des informations du projet
+Analyse la structure du projet.
+
+**Paramètres :**
+
+- `project_path`
 
 ##### _detect_project_type
 
-Détection automatique du type de projet
-
-##### _calculate_project_size
-
-Calcul de la taille du projet
-
-##### _is_code_file
-
-Détermine si un fichier est un fichier de code
+Détecte automatiquement le type de projet.
 
 **Paramètres :**
 
-- `file_path`
-
-##### _detect_languages
-
-Détection des langages du projet
-
-##### _detect_dependencies
-
-Détection des dépendances du projet
-
-##### _get_last_modified
-
-Date de dernière modification
+- `project_path`
+- `structure`
 
 ##### _analyze_code_quality
 
-Analyse de la qualité du code
-
-##### _analyze_complexity
-
-Analyse de la complexité du code
-
-##### _calculate_cyclomatic_complexity
-
-Calcul de la complexité cyclomatique dun fichier
+Analyse la qualité du code.
 
 **Paramètres :**
 
-- `tree`
+- `project_path`
 
-##### _analyze_style
+##### _generate_correction_blueprint
 
-Analyse du style du code
+Génère un blueprint de correction pour le projet.
 
-##### _analyze_code_documentation
+**Paramètres :**
 
-Analyse de la documentation du code
+- `project_path`
+- `structure`
+- `project_type`
+- `quality_analysis`
 
-##### _analyze_naming_conventions
+##### _suggest_modules
 
-Analyse des conventions de nommage
+Suggère des modules selon le type de projet.
 
-##### _analyze_security
+**Paramètres :**
 
-Analyse de la sécurité
+- `project_type`
 
-##### _detect_security_vulnerabilities
+##### _suggest_structure
 
-Détection des vulnérabilités de sécurité
+Gère une structure améliorée.
 
-##### _detect_secrets
+**Paramètres :**
 
-Détection de secrets
+- `structure`
 
-##### _analyze_permissions
+##### _suggest_dependencies
 
-Analyse des permissions des fichiers
+Suggère des dépendances selon le type de projet.
 
-##### _analyze_performance
+**Paramètres :**
 
-Analyse de la performance
+- `project_type`
 
-##### _analyze_file_sizes
+##### _suggest_prompts
 
-Analyse de la taille des fichiers
+Suggère des prompts selon le type de projet.
 
-##### _analyze_imports
+**Paramètres :**
 
-Analyse des imports
+- `project_type`
 
-##### _estimate_memory_usage
+##### _suggest_enhancements
 
-Estimation de la list_datausage
+Suggère des améliorations spécifiques.
 
-##### _analyze_documentation
+**Paramètres :**
 
-Analyse de la documentation
-
-##### _check_readme
-
-Vérification du README
-
-##### _check_api_documentation
-
-Vérification de la documentation API
-
-##### _check_guides
-
-Vérification des guides
-
-##### _analyze_testing
-
-Analyse des tests
-
-##### _analyze_test_coverage
-
-Analyse de la couverture de tests
-
-##### _find_test_files
-
-Trouve les fichiers de tests
-
-##### _analyze_test_quality
-
-Analyse de la qualité des tests
-
-##### _analyze_structure
-
-Analyse de la structure du projet
-
-##### _analyze_organization
-
-Analyse de lorganisation des dossiers
-
-##### _analyze_structure_naming
-
-Analyse du nommage des fichiers et dossiers
-
-##### _analyze_modularity
-
-Analyse de la modularité
-
-##### _calculate_score
-
-Calcul du score global
-
-##### _generate_recommendations
-
-Génération des recommandations
-
-##### generate_report
-
-Génère un rapport daudit
+- `project_type`
+- `quality_analysis`
 
 ---
 
@@ -164122,45 +173904,81 @@ Sauvegarder une suggestion de correction
 
 ---
 
-### main
+### security
+
+Module sécurité, audit, scan de secrets, prompts sécurité.
 
 #### Fonctions
 
-##### signal_handler
+##### security_audit_project
 
-Gestionnaire de signal pour arrêt propre
-
-**Paramètres :**
-
-- `signum`
-- `frame`
-
-##### menu
-
-##### safe_input
-
-Entrée sécurisée avec gestion derreurs.
+Audit de sécurité dun projet
 
 **Paramètres :**
 
-- `prompt`
+- `project_path`
 
-##### surveillance_mode
+---
 
-Mode surveillance avec arrêt automatique
+### security_auditor
 
-##### main
+#### Classes
+
+##### SecurityAuditor
+
+Auditeur de sécurité pour Athalia
+
+**Méthodes :**
+
+- `__init__()`
+- `run()`
+- `_check_dependencies()`
+- `_check_code_vulnerabilities()`
+- `_check_secrets()`
+- `_check_permissions()`
+- `_check_encryption()`
+- `_calculate_score()`
+- `print_report()`
+
+#### Fonctions
+
+##### __init__
 
 **Paramètres :**
 
-- `test_mode`
+- `project_path`
 
-##### log_main
+##### run
 
-**Paramètres :**
+Lance laudit de sécurité
 
-- `msg`
-- `level`
+##### _check_dependencies
+
+Vérification des dépendances
+
+##### _check_code_vulnerabilities
+
+Vérification des vulnérabilités dans le code
+
+##### _check_secrets
+
+Vérification des secrets
+
+##### _check_permissions
+
+Vérification des permissions des fichiers
+
+##### _check_encryption
+
+Vérification de lutilisation du chiffrement
+
+##### _calculate_score
+
+Calcul du score de sécurité
+
+##### print_report
+
+Affichage du rapport de sécurité
 
 ---
 
@@ -164381,135 +174199,6 @@ Exporte toutes les métriques
 **Paramètres :**
 
 - `output_file`
-
----
-
-### generation_simple
-
-Module de génération simplifié pour Athalia
-Version simplifiée sans f-strings complexes
-
-#### Fonctions
-
-##### generate_blueprint_mock
-
-Génère un blueprint mock pour les tests.
-
-**Paramètres :**
-
-- `idea`
-
-##### extract_project_name
-
-Extrait un nom de projet de l'idée.
-
-**Paramètres :**
-
-- `idea`
-
-##### generate_project
-
-Génère un projet à partir d'un blueprint.
-
-**Paramètres :**
-
-- `blueprint`
-- `outdir`
-
-##### generate_readme
-
-Génère un README basique.
-
-**Paramètres :**
-
-- `blueprint`
-- `project_path`
-
-##### generate_main_code
-
-Génère le code principal.
-
-**Paramètres :**
-
-- `blueprint`
-- `project_path`
-
-##### generate_test_code
-
-Génère le code de test.
-
-**Paramètres :**
-
-- `blueprint`
-- `project_path`
-
-##### save_blueprint
-
-Sauvegarde un blueprint dans un fichier YAML.
-
-**Paramètres :**
-
-- `blueprint`
-- `outdir`
-
-##### inject_booster_ia_elements
-
-Injecte les éléments Booster IA.
-
-**Paramètres :**
-
-- `outdir`
-
-##### scan_existing_project
-
-Scanne un projet existant.
-
-**Paramètres :**
-
-- `outdir`
-
-##### merge_or_suffix_file
-
-Fusionne ou suffixe un fichier.
-
-**Paramètres :**
-
-- `file_path`
-- `content`
-- `file_type`
-- `section_header`
-
-##### backup_file
-
-Crée une sauvegarde d'un fichier.
-
-**Paramètres :**
-
-- `file_path`
-
-##### generate_api_docs
-
-Génère la documentation API.
-
-**Paramètres :**
-
-- `blueprint`
-
-##### generate_dockerfile
-
-Génère un Dockerfile.
-
-**Paramètres :**
-
-- `blueprint`
-
-##### generate_docker_compose
-
-Génère un docker-compose.yml.
-
-**Paramètres :**
-
-- `blueprint`
 
 ---
 
@@ -164841,531 +174530,534 @@ Obtenir des insights de performance
 
 ---
 
-### plugins_manager
+### cache_manager
 
-#### Fonctions
-
-##### list_plugins
-
-Liste tous les plugins disponibles.
-
-##### load_plugin
-
-Charge dynamiquement un plugin par nom.
-
-**Paramètres :**
-
-- `name`
-
-##### run_all_plugins
-
-Exécute la fonction run() de tous les plugins et retourne les résultats.
-
----
-
-### plugins_validator
-
-#### Fonctions
-
-##### validate_plugin
-
-Valide un plugin Python : héritage, méthode run / execute, docstring.
-
-**Paramètres :**
-
-- `path`
-
----
-
-### security
-
-Module sécurité, audit, scan de secrets, prompts sécurité.
-
-#### Fonctions
-
-##### security_audit_project
-
-Audit de sécurité dun projet
-
-**Paramètres :**
-
-- `project_path`
-
----
-
-### project_importer
+Gestionnaire de cache intelligent pour Athalia
+Optimisation des performances avec cache LRU
 
 #### Classes
 
-##### ProjectImporter
+##### AnalysisCache
+
+Gestionnaire de cache intelligent pour les analyses.
 
 **Méthodes :**
 
 - `__init__()`
-- `import_project()`
-- `_scan_structure()`
-- `_detect_project_type()`
-- `_analyze_code_quality()`
-- `_generate_correction_blueprint()`
-- `_suggest_modules()`
-- `_suggest_structure()`
-- `_suggest_dependencies()`
-- `_suggest_prompts()`
-- `_suggest_enhancements()`
+- `_generate_cache_key()`
+- `_get_cache_file_path()`
+- `_is_cache_valid()`
+- `get()`
+- `set()`
+- `_cleanup_cache()`
+- `clear()`
+- `get_stats()`
 
 #### Fonctions
 
-##### __init__
+##### cached_analysis
 
-##### import_project
+Décorateur pour mettre en cache les analyses.
 
-Importe et analyse un projet existant.
+Args:
+    func: Fonction à décorer
 
-**Paramètres :**
-
-- `project_path`
-
-##### _scan_structure
-
-Analyse la structure du projet.
-
-**Paramètres :**
-
-- `project_path`
-
-##### _detect_project_type
-
-Détecte automatiquement le type de projet.
-
-**Paramètres :**
-
-- `project_path`
-- `structure`
-
-##### _analyze_code_quality
-
-Analyse la qualité du code.
-
-**Paramètres :**
-
-- `project_path`
-
-##### _generate_correction_blueprint
-
-Génère un blueprint de correction pour le projet.
-
-**Paramètres :**
-
-- `project_path`
-- `structure`
-- `project_type`
-- `quality_analysis`
-
-##### _suggest_modules
-
-Suggère des modules selon le type de projet.
-
-**Paramètres :**
-
-- `project_type`
-
-##### _suggest_structure
-
-Gère une structure améliorée.
-
-**Paramètres :**
-
-- `structure`
-
-##### _suggest_dependencies
-
-Suggère des dépendances selon le type de projet.
-
-**Paramètres :**
-
-- `project_type`
-
-##### _suggest_prompts
-
-Suggère des prompts selon le type de projet.
-
-**Paramètres :**
-
-- `project_type`
-
-##### _suggest_enhancements
-
-Suggère des améliorations spécifiques.
-
-**Paramètres :**
-
-- `project_type`
-- `quality_analysis`
-
----
-
-### security_auditor
-
-#### Classes
-
-##### SecurityAuditor
-
-Auditeur de sécurité pour Athalia
-
-**Méthodes :**
-
-- `__init__()`
-- `run()`
-- `_check_dependencies()`
-- `_check_code_vulnerabilities()`
-- `_check_secrets()`
-- `_check_permissions()`
-- `_check_encryption()`
-- `_calculate_score()`
-- `print_report()`
-
-#### Fonctions
-
-##### __init__
-
-**Paramètres :**
-
-- `project_path`
-
-##### run
-
-Lance laudit de sécurité
-
-##### _check_dependencies
-
-Vérification des dépendances
-
-##### _check_code_vulnerabilities
-
-Vérification des vulnérabilités dans le code
-
-##### _check_secrets
-
-Vérification des secrets
-
-##### _check_permissions
-
-Vérification des permissions des fichiers
-
-##### _check_encryption
-
-Vérification de lutilisation du chiffrement
-
-##### _calculate_score
-
-Calcul du score de sécurité
-
-##### print_report
-
-Affichage du rapport de sécurité
-
----
-
-### unified_orchestrator
-
-Orchestrateur unifié pour Athalia - Industrialisation IA complète
-
-#### Classes
-
-##### BackupSystem
-
-Système de sauvegarde simplifié
-
-##### OrchestrationTask
-
-Tâche d'orchestration unifiée
-
-##### IntelligentInsight
-
-Insight intelligent unifié
-
-##### IndustrializationStep
-
-Étape d'industrialisation
-
-##### UnifiedOrchestrator
-
-Orchestrateur unifié pour l'industrialisation IA
-
-**Méthodes :**
-
-- `__init__()`
-- `_init_database()`
-- `_init_components()`
-- `orchestrate_project_complete()`
-- `_run_industrialization()`
-- `_run_audit()`
-- `_run_linting()`
-- `_run_security_audit()`
-- `_run_analytics()`
-- `_run_cleanup()`
-- `_run_documentation()`
-- `_run_testing()`
-- `_run_cicd()`
-- `_run_robotics_audit()`
-- `_generate_predictions()`
-- `_generate_optimizations()`
-- `_learn_from_results()`
-- `_generate_unified_report()`
-- `_save_unified_results()`
-- `get_orchestration_insights()`
-- `_run_plugins()`
-- `phase2_backup()`
-- `get_phase2_backup_stats()`
-- `validate_phase2_inputs()`
-- `run_phase2_backup()`
-- `run_phase2_error_handling()`
-- `_run_templates()`
-- `orchestrate_with_phase2_features()`
-
-#### Fonctions
-
-##### get_backup_system
-
-Obtenir le système de sauvegarde
-
-##### standardize_cli_script
-
-Standardiser le script CLI
-
-##### cli_entry
-
-Point d'entrée CLI
-
-##### error_handler
-
-Décorateur de gestion d'erreur
+Returns:
+    Fonction décorée avec cache
 
 **Paramètres :**
 
 - `func`
 
-##### orchestrator_auto_backup
+##### get_cache_stats
 
-Sauvegarde automatique de l'orchestrateur
+Retourne les statistiques du cache global.
 
-##### orchestrator_main
+Returns:
+    Statistiques du cache
 
-Fonction principale de l'orchestrateur
+##### clear_cache
 
-##### main_orchestrator
+Vide le cache global.
 
-Point d'entrée principal pour compatibilité
+##### cached_function
+
+Décorateur pour cache LRU simple.
+
+Args:
+    max_size: Taille maximale du cache
+
+Returns:
+    Décorateur
+
+**Paramètres :**
+
+- `max_size`
+
+##### analyze_project_structure
+
+Analyse la structure d'un projet (exemple).
+
+Args:
+    project_path: Chemin du projet
+    detailed: Analyse détaillée
+
+Returns:
+    Résultat de l'analyse
+
+**Paramètres :**
+
+- `project_path`
+- `detailed`
+
+##### __init__
+
+Initialise le gestionnaire de cache.
+
+Args:
+    cache_dir: Répertoire de stockage du cache
+    max_size: Taille maximale du cache en entrées
+    ttl_hours: Durée de vie du cache en heures
+
+**Paramètres :**
+
+- `cache_dir`
+- `max_size`
+- `ttl_hours`
+
+##### _generate_cache_key
+
+Génère une clé de cache unique.
+
+Args:
+    project_path: Chemin du projet
+    analysis_type: Type d'analyse
+    **kwargs: Paramètres supplémentaires
+
+Returns:
+    Clé de cache unique
+
+**Paramètres :**
+
+- `project_path`
+- `analysis_type`
+
+##### _get_cache_file_path
+
+Retourne le chemin du fichier de cache.
+
+**Paramètres :**
+
+- `cache_key`
+
+##### _is_cache_valid
+
+Vérifie si le cache est encore valide.
+
+Args:
+    cache_file: Chemin du fichier de cache
+
+Returns:
+    True si le cache est valide
+
+**Paramètres :**
+
+- `cache_file`
+
+##### get
+
+Récupère un résultat du cache.
+
+Args:
+    project_path: Chemin du projet
+    analysis_type: Type d'analyse
+    **kwargs: Paramètres supplémentaires
+
+Returns:
+    Résultat du cache ou None si non trouvé
+
+**Paramètres :**
+
+- `project_path`
+- `analysis_type`
+
+##### set
+
+Stocke un résultat dans le cache.
+
+Args:
+    project_path: Chemin du projet
+    analysis_type: Type d'analyse
+    result: Résultat à stocker
+    **kwargs: Paramètres supplémentaires
+
+**Paramètres :**
+
+- `project_path`
+- `analysis_type`
+- `result`
+
+##### _cleanup_cache
+
+Nettoie le cache en supprimant les entrées expirées.
+
+##### clear
+
+Vide complètement le cache.
+
+##### get_stats
+
+Retourne les statistiques du cache.
+
+Returns:
+    Statistiques du cache
+
+##### wrapper
+
+**Paramètres :**
+
+- `project_path`
+
+---
+
+### error_codes
+
+Codes d'erreur standardisés pour Athalia
+Centralisation des codes d'erreur pour une gestion cohérente
+
+#### Classes
+
+##### ErrorCode
+
+Codes d'erreur standardisés pour Athalia.
+
+##### ErrorSeverity
+
+Niveaux de sévérité des erreurs.
+
+#### Fonctions
+
+##### get_error_description
+
+Récupère la description d'un code d'erreur.
+
+**Paramètres :**
+
+- `error_code`
+
+##### get_error_severity
+
+Détermine la sévérité d'un code d'erreur.
+
+**Paramètres :**
+
+- `error_code`
+
+##### format_error_message
+
+Formate un message d'erreur complet.
+
+**Paramètres :**
+
+- `error_code`
+- `details`
+- `context`
+
+---
+
+### error_handling
+
+Gestion centralisée des erreurs pour Athalia
+Système unifié de gestion d'erreurs avec logging et reporting
+
+#### Classes
+
+##### AthaliaError
+
+Exception de base pour Athalia avec code d'erreur.
+
+**Méthodes :**
+
+- `__init__()`
+- `to_dict()`
+
+##### ErrorHandler
+
+Gestionnaire centralisé des erreurs.
+
+**Méthodes :**
+
+- `__init__()`
+- `_setup_logging()`
+- `handle_error()`
+- `_classify_error()`
+- `_log_error()`
+- `register_callback()`
+- `get_error_summary()`
+- `clear_errors()`
+
+##### ErrorContext
+
+Context manager pour gestion d'erreurs dans un bloc de code.
+
+**Méthodes :**
+
+- `__init__()`
+- `__enter__()`
+- `__exit__()`
+
+#### Fonctions
+
+##### get_error_handler
+
+Récupère l'instance globale du gestionnaire d'erreurs.
+
+##### handle_error
+
+Fonction utilitaire pour gérer une erreur.
+
+**Paramètres :**
+
+- `error`
+- `context`
+
+##### raise_athalia_error
+
+Lève une AthaliaError avec gestion automatique.
+
+**Paramètres :**
+
+- `error_code`
+- `message`
+- `details`
+- `context`
+
+##### error_handler
+
+Décorateur pour gestion automatique d'erreurs.
+
+**Paramètres :**
+
+- `error_code`
 
 ##### __init__
 
 **Paramètres :**
 
-- `root_path`
+- `error_code`
+- `message`
+- `details`
+- `context`
 
-##### _init_database
+##### to_dict
 
-Initialiser la base de données
+Convertit l'erreur en dictionnaire pour sérialisation.
 
-##### _init_components
-
-Initialiser les composants disponibles
-
-##### orchestrate_project_complete
-
-Orchestrer l'industrialisation complète d'un projet
+##### __init__
 
 **Paramètres :**
 
-- `project_path`
-- `config`
+- `log_file`
 
-##### _run_industrialization
+##### _setup_logging
 
-Exécuter l'industrialisation
+Configure le système de logging.
 
-**Paramètres :**
+##### handle_error
 
-- `project_path`
-
-##### _run_audit
-
-Exécuter l'audit
+Gère une erreur et la convertit en AthaliaError.
 
 **Paramètres :**
 
-- `project_path`
+- `error`
+- `context`
 
-##### _run_linting
+##### _classify_error
 
-Exécuter le linting
-
-**Paramètres :**
-
-- `project_path`
-
-##### _run_security_audit
-
-Exécuter l'audit de sécurité
+Classifie une exception en code d'erreur Athalia.
 
 **Paramètres :**
 
-- `project_path`
+- `error`
 
-##### _run_analytics
+##### _log_error
 
-Exécuter l'analyse
-
-**Paramètres :**
-
-- `project_path`
-
-##### _run_cleanup
-
-Exécuter le nettoyage
+Log une erreur avec le niveau approprié.
 
 **Paramètres :**
 
-- `project_path`
+- `error`
 
-##### _run_documentation
+##### register_callback
 
-Exécuter la documentation
-
-**Paramètres :**
-
-- `project_path`
-
-##### _run_testing
-
-Exécuter les tests
+Enregistre un callback pour un type d'erreur spécifique.
 
 **Paramètres :**
 
-- `project_path`
+- `error_code`
+- `callback`
 
-##### _run_cicd
+##### get_error_summary
 
-Exécuter le CI/CD
+Retourne un résumé des erreurs.
 
-**Paramètres :**
+##### clear_errors
 
-- `project_path`
+Efface l'historique des erreurs.
 
-##### _run_robotics_audit
-
-Exécuter l'audit robotique
-
-**Paramètres :**
-
-- `project_path`
-
-##### _generate_predictions
-
-Générer des prédictions intelligentes
+##### decorator
 
 **Paramètres :**
 
-- `project_path`
+- `func`
 
-##### _generate_optimizations
-
-Générer des optimisations intelligentes
+##### __init__
 
 **Paramètres :**
 
-- `project_path`
+- `error_code`
+- `context`
 
-##### _learn_from_results
+##### __enter__
 
-Apprendre des résultats pour améliorer les futures exécutions
-
-**Paramètres :**
-
-- `results`
-
-##### _generate_unified_report
-
-Générer un rapport unifié
+##### __exit__
 
 **Paramètres :**
 
-- `results`
-
-##### _save_unified_results
-
-Sauvegarder les résultats unifiés
-
-**Paramètres :**
-
-- `results`
-
-##### get_orchestration_insights
-
-Obtenir les insights d'orchestration
-
-##### _run_plugins
-
-Exécuter les plugins
-
-**Paramètres :**
-
-- `project_path`
-
-##### phase2_backup
-
-Sauvegarde Phase 2
-
-**Paramètres :**
-
-- `project_path`
-
-##### get_phase2_backup_stats
-
-Obtenir les statistiques de sauvegarde Phase 2
-
-##### validate_phase2_inputs
-
-Valider les entrées Phase 2
-
-**Paramètres :**
-
-- `inputs`
-- `required_fields`
-
-##### run_phase2_backup
-
-Exécuter la sauvegarde Phase 2
-
-**Paramètres :**
-
-- `backup_type`
-
-##### run_phase2_error_handling
-
-Gestion d'erreur Phase 2
-
-**Paramètres :**
-
-- `operation`
-
-##### _run_templates
-
-Exécuter les templates
-
-**Paramètres :**
-
-- `project_path`
-
-##### orchestrate_with_phase2_features
-
-Orchestrer avec les fonctionnalités Phase 2
-
-**Paramètres :**
-
-- `project_path`
+- `exc_type`
+- `exc_val`
+- `exc_tb`
 
 ##### wrapper
+
+---
+
+### generation_simple
+
+Module de génération simplifié pour Athalia
+Version simplifiée sans f-strings complexes
+
+#### Fonctions
+
+##### generate_blueprint_mock
+
+Génère un blueprint mock pour les tests.
+
+**Paramètres :**
+
+- `idea`
+
+##### extract_project_name
+
+Extrait un nom de projet de l'idée.
+
+**Paramètres :**
+
+- `idea`
+
+##### generate_project
+
+Génère un projet à partir d'un blueprint.
+
+**Paramètres :**
+
+- `blueprint`
+- `outdir`
+
+##### generate_readme
+
+Génère un README basique.
+
+**Paramètres :**
+
+- `blueprint`
+- `project_path`
+
+##### generate_main_code
+
+Génère le code principal.
+
+**Paramètres :**
+
+- `blueprint`
+- `project_path`
+
+##### generate_test_code
+
+Génère le code de test.
+
+**Paramètres :**
+
+- `blueprint`
+- `project_path`
+
+##### save_blueprint
+
+Sauvegarde un blueprint dans un fichier YAML.
+
+**Paramètres :**
+
+- `blueprint`
+- `outdir`
+
+##### inject_booster_ia_elements
+
+Injecte les éléments Booster IA.
+
+**Paramètres :**
+
+- `outdir`
+
+##### scan_existing_project
+
+Scanne un projet existant.
+
+**Paramètres :**
+
+- `outdir`
+
+##### merge_or_suffix_file
+
+Fusionne ou suffixe un fichier.
+
+**Paramètres :**
+
+- `file_path`
+- `content`
+- `file_type`
+- `section_header`
+
+##### backup_file
+
+Crée une sauvegarde d'un fichier.
+
+**Paramètres :**
+
+- `file_path`
+
+##### generate_api_docs
+
+Génère la documentation API.
+
+**Paramètres :**
+
+- `blueprint`
+
+##### generate_dockerfile
+
+Génère un Dockerfile.
+
+**Paramètres :**
+
+- `blueprint`
+
+##### generate_docker_compose
+
+Génère un docker-compose.yml.
+
+**Paramètres :**
+
+- `blueprint`
 
 ---
 
@@ -166829,93 +176521,6 @@ Configurer l'environnement CI
 
 ---
 
-### ros2_validator
-
-ROS2 Validator - Validation spécialisée ROS2
-============================================
-
-Validation complète des workspaces ROS2 :
-- Structure workspace
-- Packages et dépendances
-- Launch files
-- URDF/XACRO
-- Build system
-
-#### Classes
-
-##### ROS2PackageInfo
-
-Informations sur un package ROS2
-
-##### ROS2ValidationResult
-
-Résultat de validation ROS2
-
-##### ROS2Validator
-
-Validateur spécialisé ROS2
-
-**Méthodes :**
-
-- `__init__()`
-- `validate_workspace()`
-- `_analyze_package()`
-- `_detect_package_type()`
-- `_check_build_system()`
-- `validate_launch_files()`
-- `validate_urdf_files()`
-- `generate_validation_report()`
-
-#### Fonctions
-
-##### __init__
-
-**Paramètres :**
-
-- `workspace_path`
-
-##### validate_workspace
-
-Validation complète du workspace ROS2
-
-##### _analyze_package
-
-Analyser un package ROS2
-
-**Paramètres :**
-
-- `package_dir`
-
-##### _detect_package_type
-
-Détecter le type de package ROS2
-
-**Paramètres :**
-
-- `package_dir`
-
-##### _check_build_system
-
-Vérifier si le build system est configuré
-
-##### validate_launch_files
-
-Valider les fichiers launch
-
-##### validate_urdf_files
-
-Valider les fichiers URDF/XACRO
-
-##### generate_validation_report
-
-Générer rapport de validation
-
-**Paramètres :**
-
-- `result`
-
----
-
 ### rust_analyzer
 
 Analyseur de projets Rust pour Athalia Robotics
@@ -167042,6 +176647,93 @@ Créer un template de projet Rust robotique
 **Paramètres :**
 
 - `project_name`
+
+---
+
+### ros2_validator
+
+ROS2 Validator - Validation spécialisée ROS2
+============================================
+
+Validation complète des workspaces ROS2 :
+- Structure workspace
+- Packages et dépendances
+- Launch files
+- URDF/XACRO
+- Build system
+
+#### Classes
+
+##### ROS2PackageInfo
+
+Informations sur un package ROS2
+
+##### ROS2ValidationResult
+
+Résultat de validation ROS2
+
+##### ROS2Validator
+
+Validateur spécialisé ROS2
+
+**Méthodes :**
+
+- `__init__()`
+- `validate_workspace()`
+- `_analyze_package()`
+- `_detect_package_type()`
+- `_check_build_system()`
+- `validate_launch_files()`
+- `validate_urdf_files()`
+- `generate_validation_report()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `workspace_path`
+
+##### validate_workspace
+
+Validation complète du workspace ROS2
+
+##### _analyze_package
+
+Analyser un package ROS2
+
+**Paramètres :**
+
+- `package_dir`
+
+##### _detect_package_type
+
+Détecter le type de package ROS2
+
+**Paramètres :**
+
+- `package_dir`
+
+##### _check_build_system
+
+Vérifier si le build system est configuré
+
+##### validate_launch_files
+
+Valider les fichiers launch
+
+##### validate_urdf_files
+
+Valider les fichiers URDF/XACRO
+
+##### generate_validation_report
+
+Générer rapport de validation
+
+**Paramètres :**
+
+- `result`
 
 ---
 
@@ -167183,9 +176875,43 @@ Restaure une sauvegarde
 
 ### ath-test
 
+Script de test Athalia avec nettoyage automatique
+Usage: ./bin/ath-test.py [options]
+
 #### Fonctions
 
+##### run_tests_with_cleanup
+
+Exécute les tests avec nettoyage automatique
+
 ##### main
+
+Fonction principale
+
+---
+
+### ath-test-clean
+
+Script de nettoyage automatique des processus Athalia après les tests
+Usage: python bin/ath-test-clean.py
+
+#### Fonctions
+
+##### kill_athalia_processes
+
+Arrête tous les processus Athalia en cours
+
+##### cleanup_athalia_resources
+
+Nettoie les ressources Athalia (fichiers temporaires, etc.)
+
+##### run_ath_clean
+
+Exécute le script ath-clean
+
+##### main
+
+Fonction principale
 
 ---
 
@@ -167345,6 +177071,40 @@ Génère un rapport de tendance basé sur l'historique
 
 ---
 
+### quick_performance_test
+
+Test de performance rapide pour Athalia
+Version ciblée et rapide
+
+#### Fonctions
+
+##### quick_performance_test
+
+Test de performance rapide.
+
+##### analyze_modules
+
+Analyse rapide des modules.
+
+##### print_summary
+
+Affiche un résumé.
+
+**Paramètres :**
+
+- `results`
+- `analysis`
+
+##### main
+
+Fonction principale.
+
+---
+
+### .!26472!monitor_processes
+
+---
+
 ### validation_dashboard_simple
 
 Dashboard de Validation Simple - Athalia/Arkalia
@@ -167408,6 +177168,8 @@ Tests qui ne peuvent pas mentir - Mesures concrètes et indépendantes
 - `validation_complete()`
 - `generer_rapport_objectif()`
 
+##### SecurityError
+
 #### Fonctions
 
 ##### __init__
@@ -167445,35 +177207,15 @@ Génère un rapport objectif et détaillé
 - `resultats`
 - `temps_total`
 
----
-
-### quick_performance_test
-
-Test de performance rapide pour Athalia
-Version ciblée et rapide
-
-#### Fonctions
-
-##### quick_performance_test
-
-Test de performance rapide.
-
-##### analyze_modules
-
-Analyse rapide des modules.
-
-##### print_summary
-
-Affiche un résumé.
+##### validate_and_run
 
 **Paramètres :**
 
-- `results`
-- `analysis`
+- `command`
 
-##### main
+---
 
-Fonction principale.
+### .!26473!validation_continue
 
 ---
 
@@ -167503,6 +177245,22 @@ Affiche un résumé des résultats.
 ##### main
 
 Fonction principale.
+
+---
+
+### .!26474!quick_performance_test
+
+---
+
+### .!26475!validation_dashboard_simple
+
+---
+
+### .!26476!validation_objective
+
+---
+
+### .!26477!test_athalia_performance
 
 ---
 

@@ -74,25 +74,6 @@ class Dashboard:
             "chart_types": ["bar", "line", "pie", "radar"]
         }
         
-        # Ajouter des métadonnées pour chaque graphique
-        if "complexity_distribution" in chart_data and isinstance(chart_data["complexity_distribution"], dict):
-            if "complexity_distribution" not in widget["charts"]:
-                widget["charts"]["complexity_distribution"] = {}
-            widget["charts"]["complexity_distribution"]["type"] = "pie"
-            widget["charts"]["complexity_distribution"]["title"] = "Distribution de Complexité"
-        
-        if "test_coverage_trend" in chart_data and isinstance(chart_data["test_coverage_trend"], list):
-            if "test_coverage_trend" not in widget["charts"]:
-                widget["charts"]["test_coverage_trend"] = {}
-            widget["charts"]["test_coverage_trend"]["type"] = "line"
-            widget["charts"]["test_coverage_trend"]["title"] = "Évolution Couverture Tests"
-        
-        if "security_score_history" in chart_data and isinstance(chart_data["security_score_history"], list):
-            if "security_score_history" not in widget["charts"]:
-                widget["charts"]["security_score_history"] = {}
-            widget["charts"]["security_score_history"]["type"] = "line"
-            widget["charts"]["security_score_history"]["title"] = "Évolution Score Sécurité"
-        
         return widget
 
     def generate_alerts_widget(self, alerts: List[Dict[str, Any]]) -> Dict[str, Any]:
