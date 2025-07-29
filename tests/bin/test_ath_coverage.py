@@ -19,11 +19,11 @@ def test_ath_coverage_runs():
     """Test que ath-coverage.py fonctionne sans récursivité"""
     cleanup_coverage_files()
     script = os.path.join(os.path.dirname(__file__), "../../bin/ath-coverage.py")
-    
+
     # Utiliser un environnement sans ATHALIA_COVERAGE_RUNNING pour éviter la récursivité
     env = os.environ.copy()
-    env.pop('ATHALIA_COVERAGE_RUNNING', None)
-    
+    env.pop("ATHALIA_COVERAGE_RUNNING", None)
+
     start = time.time()
     result = None
     try:
@@ -34,7 +34,7 @@ def test_ath_coverage_runs():
         return
     finally:
         cleanup_coverage_files()
-    
+
     # 0 = succès, 1 = échec de couverture, mais pas crash
     if result and result.returncode not in (0, 1):
         print(result.stdout.decode(errors="ignore"))

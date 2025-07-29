@@ -23,7 +23,9 @@ class AutoDocumenter:
         self.doc_config = self.load_documentation_config()
         self.doc_history = []
 
-    def load_documentation_config(self, config_path: Optional[str] = None) -> Dict[str, Any]:
+    def load_documentation_config(
+        self, config_path: Optional[str] = None
+    ) -> Dict[str, Any]:
         """Charge la configuration de documentation"""
         default_config = {
             "output_formats": ["md", "html"],
@@ -33,17 +35,19 @@ class AutoDocumenter:
             "template_engine": "jinja2",
             "output_directory": "docs",
             "exclude_patterns": ["__pycache__", "*.pyc", ".git", "venv", ".venv"],
-            "include_patterns": ["*.py", "*.md", "*.txt", "*.yaml", "*.yml"]
+            "include_patterns": ["*.py", "*.md", "*.txt", "*.yaml", "*.yml"],
         }
-        
+
         if config_path:
             try:
-                with open(config_path, 'r', encoding='utf-8') as f:
+                with open(config_path, "r", encoding="utf-8") as f:
                     user_config = yaml.safe_load(f)
                     default_config.update(user_config)
             except Exception as e:
-                logger.warning(f"Impossible de charger la configuration {config_path}: {e}")
-        
+                logger.warning(
+                    f"Impossible de charger la configuration {config_path}: {e}"
+                )
+
         return default_config
 
     def scan_project_structure(self) -> Dict[str, Any]:
@@ -53,14 +57,14 @@ class AutoDocumenter:
             "test_files": [],
             "documentation_files": [],
             "config_files": [],
-            "other_files": []
+            "other_files": [],
         }
-        
+
         try:
             for file_path in self.project_path.rglob("*"):
                 if file_path.is_file() and not self._is_excluded(file_path):
                     relative_path = str(file_path.relative_to(self.project_path))
-                    
+
                     if file_path.suffix == ".py":
                         if "test" in relative_path.lower():
                             structure["test_files"].append(relative_path)
@@ -74,7 +78,7 @@ class AutoDocumenter:
                         structure["other_files"].append(relative_path)
         except Exception as e:
             logger.error(f"Erreur scan structure: {e}")
-        
+
         return structure
 
     def _is_excluded(self, path: Path) -> bool:
@@ -94,20 +98,20 @@ class AutoDocumenter:
             "total_methods": 0,
             "documented_functions": 0,
             "documented_classes": 0,
-            "documented_methods": 0
+            "documented_methods": 0,
         }
-        
+
         try:
             for py_file in self.project_path.rglob("*.py"):
                 if py_file.is_file() and not self._is_excluded(py_file):
                     analysis["total_files"] += 1
-                    
+
                     try:
-                        with open(py_file, 'r', encoding='utf-8') as f:
+                        with open(py_file, "r", encoding="utf-8") as f:
                             content = f.read()
-                        
+
                         tree = ast.parse(content)
-                        
+
                         for node in ast.walk(tree):
                             if isinstance(node, ast.FunctionDef):
                                 analysis["total_functions"] += 1
@@ -119,7 +123,10 @@ class AutoDocumenter:
                                     analysis["documented_classes"] += 1
                                 # Compter les méthodes
                                 for child in ast.walk(node):
-                                    if isinstance(child, ast.FunctionDef) and child != node:
+                                    if (
+                                        isinstance(child, ast.FunctionDef)
+                                        and child != node
+                                    ):
                                         analysis["total_methods"] += 1
                                         if ast.get_docstring(child):
                                             analysis["documented_methods"] += 1
@@ -127,39 +134,41 @@ class AutoDocumenter:
                         logger.warning(f"Erreur analyse {py_file}: {e}")
         except Exception as e:
             logger.error(f"Erreur analyse fichiers Python: {e}")
-        
+
         return analysis
 
     def extract_docstrings(self, file_path: str) -> List[Dict[str, Any]]:
         """Extrait les docstrings d'un fichier Python"""
         docstrings = []
-        
+
         try:
-            with open(file_path, 'r', encoding='utf-8') as f:
+            with open(file_path, "r", encoding="utf-8") as f:
                 content = f.read()
-            
+
             tree = ast.parse(content)
-            
+
             for node in ast.walk(tree):
                 if isinstance(node, (ast.FunctionDef, ast.ClassDef, ast.Module)):
                     docstring = ast.get_docstring(node)
                     if docstring:
-                        docstrings.append({
-                            "type": type(node).__name__,
-                            "name": getattr(node, 'name', 'module'),
-                            "docstring": docstring,
-                            "line_number": getattr(node, 'lineno', 0)
-                        })
+                        docstrings.append(
+                            {
+                                "type": type(node).__name__,
+                                "name": getattr(node, "name", "module"),
+                                "docstring": docstring,
+                                "line_number": getattr(node, "lineno", 0),
+                            }
+                        )
         except Exception as e:
             logger.error(f"Erreur extraction docstrings {file_path}: {e}")
-        
+
         return docstrings
 
     def generate_readme(self) -> str:
         """Génère un README"""
         project_name = self.project_path.name
         structure = self.scan_project_structure()
-        
+
         readme_content = f"""# {project_name}
 
 ## Description
@@ -197,38 +206,38 @@ pytest tests/
 
 MIT License
 """
-        
+
         return readme_content
 
     def generate_api_documentation(self) -> Dict[str, Any]:
         """Génère la documentation API"""
-        api_docs = {
-            "functions": [],
-            "classes": [],
-            "modules": []
-        }
-        
+        api_docs = {"functions": [], "classes": [], "modules": []}
+
         try:
             for py_file in self.project_path.rglob("*.py"):
                 if py_file.is_file() and not self._is_excluded(py_file):
                     docstrings = self.extract_docstrings(str(py_file))
-                    
+
                     for doc in docstrings:
                         if doc["type"] == "FunctionDef":
-                            api_docs["functions"].append({
-                                "name": doc["name"],
-                                "docstring": doc["docstring"],
-                                "file": str(py_file.relative_to(self.project_path))
-                            })
+                            api_docs["functions"].append(
+                                {
+                                    "name": doc["name"],
+                                    "docstring": doc["docstring"],
+                                    "file": str(py_file.relative_to(self.project_path)),
+                                }
+                            )
                         elif doc["type"] == "ClassDef":
-                            api_docs["classes"].append({
-                                "name": doc["name"],
-                                "docstring": doc["docstring"],
-                                "file": str(py_file.relative_to(self.project_path))
-                            })
+                            api_docs["classes"].append(
+                                {
+                                    "name": doc["name"],
+                                    "docstring": doc["docstring"],
+                                    "file": str(py_file.relative_to(self.project_path)),
+                                }
+                            )
         except Exception as e:
             logger.error(f"Erreur génération API docs: {e}")
-        
+
         return api_docs
 
     def generate_function_documentation(self, function_info: Dict[str, Any]) -> str:
@@ -238,16 +247,16 @@ MIT License
 {function_info['docstring']}
 
 """
-        
-        if function_info.get('parameters'):
+
+        if function_info.get("parameters"):
             doc += "### Paramètres\n\n"
-            for param in function_info['parameters']:
+            for param in function_info["parameters"]:
                 doc += f"- `{param}`\n"
             doc += "\n"
-        
-        if function_info.get('return_type'):
+
+        if function_info.get("return_type"):
             doc += f"### Retour\n\n`{function_info['return_type']}`\n\n"
-        
+
         return doc
 
     def generate_class_documentation(self, class_info: Dict[str, Any]) -> str:
@@ -257,12 +266,12 @@ MIT License
 {class_info['docstring']}
 
 """
-        
-        if class_info.get('methods'):
+
+        if class_info.get("methods"):
             doc += "### Méthodes\n\n"
-            for method in class_info['methods']:
+            for method in class_info["methods"]:
                 doc += f"#### {method['name']}\n\n{method['docstring']}\n\n"
-        
+
         return doc
 
     def generate_installation_guide(self) -> str:
@@ -301,7 +310,7 @@ pip install -r requirements.txt
 python -c "import <project-name>; print('Installation réussie!')"
 ```
 """
-        
+
         return guide
 
     def generate_usage_examples(self) -> str:
@@ -340,7 +349,7 @@ config = {
 result = <project-name>.configured_function(config)
 ```
 """
-        
+
         return examples
 
     def generate_changelog(self) -> str:
@@ -375,7 +384,7 @@ Tous les changements notables de ce projet seront documentés dans ce fichier.
 - Version initiale
 - Fonctionnalités de base
 """
-        
+
         return changelog
 
     def generate_contributing_guide(self) -> str:
@@ -415,7 +424,7 @@ Utiliser des messages de commit conventionnels :
 - `test:` tests
 - `chore:` maintenance
 """
-        
+
         return guide
 
     def generate_license_file(self, license_type: str = "MIT") -> str:
@@ -445,22 +454,22 @@ SOFTWARE.
 """
         else:
             license_content = f"# {license_type} License\n\nLicence {license_type} pour {self.project_path.name}"
-        
+
         return license_content
 
     def generate_documentation_index(self) -> str:
         """Génère l'index de documentation"""
         structure = self.scan_project_structure()
-        
+
         index = """# Index de Documentation
 
 ## Fichiers de Documentation
 
 """
-        
+
         for doc_file in structure["documentation_files"]:
             index += f"- [{doc_file}]({doc_file})\n"
-        
+
         index += f"""
 ## Statistiques
 
@@ -478,17 +487,13 @@ SOFTWARE.
 - [Changelog](CHANGELOG.md)
 - [Licence](LICENSE)
 """
-        
+
         return index
 
     def validate_documentation(self) -> Dict[str, Any]:
         """Valide la documentation"""
-        validation = {
-            "is_valid": True,
-            "issues": [],
-            "warnings": []
-        }
-        
+        validation = {"is_valid": True, "issues": [], "warnings": []}
+
         try:
             # Vérifier la présence de fichiers essentiels
             essential_files = ["README.md", "LICENSE", "requirements.txt"]
@@ -497,38 +502,50 @@ SOFTWARE.
                 if not file_path.exists():
                     validation["issues"].append(f"Fichier manquant: {file_name}")
                     validation["is_valid"] = False
-            
+
             # Vérifier la couverture de documentation
             coverage = self.calculate_documentation_coverage()
             if coverage["coverage_percentage"] < 50:
-                validation["warnings"].append(f"Couverture de documentation faible: {coverage['coverage_percentage']}%")
-            
+                validation["warnings"].append(
+                    f"Couverture de documentation faible: {coverage['coverage_percentage']}%"
+                )
+
             # Vérifier la qualité des docstrings
             for py_file in self.project_path.rglob("*.py"):
                 if py_file.is_file() and not self._is_excluded(py_file):
                     docstrings = self.extract_docstrings(str(py_file))
                     for doc in docstrings:
                         if len(doc["docstring"]) < 10:
-                            validation["warnings"].append(f"Docstring trop courte dans {py_file}: {doc['name']}")
-        
+                            validation["warnings"].append(
+                                f"Docstring trop courte dans {py_file}: {doc['name']}"
+                            )
+
         except Exception as e:
             logger.error(f"Erreur validation documentation: {e}")
             validation["is_valid"] = False
             validation["issues"].append(f"Erreur de validation: {e}")
-        
+
         return validation
 
     def calculate_documentation_coverage(self) -> Dict[str, Any]:
         """Calcule la couverture de documentation"""
         analysis = self.analyze_python_files()
-        
-        total_items = analysis["total_functions"] + analysis["total_classes"] + analysis["total_methods"]
-        documented_items = analysis["documented_functions"] + analysis["documented_classes"] + analysis["documented_methods"]
-        
+
+        total_items = (
+            analysis["total_functions"]
+            + analysis["total_classes"]
+            + analysis["total_methods"]
+        )
+        documented_items = (
+            analysis["documented_functions"]
+            + analysis["documented_classes"]
+            + analysis["documented_methods"]
+        )
+
         coverage_percentage = 0
         if total_items > 0:
             coverage_percentage = (documented_items / total_items) * 100
-        
+
         return {
             "total_functions": analysis["total_functions"],
             "total_classes": analysis["total_classes"],
@@ -538,7 +555,7 @@ SOFTWARE.
             "documented_methods": analysis["documented_methods"],
             "total_items": total_items,
             "documented_items": documented_items,
-            "coverage_percentage": round(coverage_percentage, 2)
+            "coverage_percentage": round(coverage_percentage, 2),
         }
 
     def generate_documentation_report(self) -> Dict[str, Any]:
@@ -546,38 +563,40 @@ SOFTWARE.
         coverage = self.calculate_documentation_coverage()
         validation = self.validate_documentation()
         structure = self.scan_project_structure()
-        
+
         report = {
             "summary": {
                 "project_path": str(self.project_path),
                 "analysis_date": datetime.now().isoformat(),
                 "coverage_percentage": coverage["coverage_percentage"],
-                "is_valid": validation["is_valid"]
+                "is_valid": validation["is_valid"],
             },
             "detailed_results": {
                 "coverage": coverage,
                 "validation": validation,
-                "structure": structure
+                "structure": structure,
             },
-            "recommendations": []
+            "recommendations": [],
         }
-        
+
         # Générer des recommandations
         if coverage["coverage_percentage"] < 50:
             report["recommendations"].append("Améliorer la couverture de documentation")
-        
+
         if validation["issues"]:
             report["recommendations"].append("Corriger les problèmes de validation")
-        
+
         if len(structure["documentation_files"]) < 3:
-            report["recommendations"].append("Ajouter plus de fichiers de documentation")
-        
+            report["recommendations"].append(
+                "Ajouter plus de fichiers de documentation"
+            )
+
         return report
 
     def save_documentation_history(self, output_path: str) -> bool:
         """Sauvegarde l'historique de documentation"""
         try:
-            with open(output_path, 'w', encoding='utf-8') as f:
+            with open(output_path, "w", encoding="utf-8") as f:
                 json.dump(self.doc_history, f, indent=2, default=str)
             return True
         except Exception as e:
@@ -587,7 +606,7 @@ SOFTWARE.
     def load_documentation_history(self, history_path: str) -> List[Dict[str, Any]]:
         """Charge l'historique de documentation"""
         try:
-            with open(history_path, 'r', encoding='utf-8') as f:
+            with open(history_path, "r", encoding="utf-8") as f:
                 history = json.load(f)
                 self.doc_history = history
                 return history
@@ -598,84 +617,84 @@ SOFTWARE.
     def perform_full_documentation(self) -> Dict[str, Any]:
         """Effectue une documentation complète"""
         start_time = datetime.now()
-        
+
         # Créer le répertoire de sortie
         output_dir = self.project_path / self.doc_config["output_directory"]
         output_dir.mkdir(exist_ok=True)
-        
+
         files_generated = []
-        
+
         try:
             # Générer README
             readme_content = self.generate_readme()
             readme_file = output_dir / "README.md"
-            with open(readme_file, 'w', encoding='utf-8') as f:
+            with open(readme_file, "w", encoding="utf-8") as f:
                 f.write(readme_content)
             files_generated.append("README.md")
-            
+
             # Générer guide d'installation
             install_guide = self.generate_installation_guide()
             install_file = output_dir / "INSTALLATION.md"
-            with open(install_file, 'w', encoding='utf-8') as f:
+            with open(install_file, "w", encoding="utf-8") as f:
                 f.write(install_guide)
             files_generated.append("INSTALLATION.md")
-            
+
             # Générer exemples
             examples = self.generate_usage_examples()
             examples_file = output_dir / "EXAMPLES.md"
-            with open(examples_file, 'w', encoding='utf-8') as f:
+            with open(examples_file, "w", encoding="utf-8") as f:
                 f.write(examples)
             files_generated.append("EXAMPLES.md")
-            
+
             # Générer changelog
             changelog = self.generate_changelog()
             changelog_file = output_dir / "CHANGELOG.md"
-            with open(changelog_file, 'w', encoding='utf-8') as f:
+            with open(changelog_file, "w", encoding="utf-8") as f:
                 f.write(changelog)
             files_generated.append("CHANGELOG.md")
-            
+
             # Générer guide de contribution
             contributing = self.generate_contributing_guide()
             contributing_file = output_dir / "CONTRIBUTING.md"
-            with open(contributing_file, 'w', encoding='utf-8') as f:
+            with open(contributing_file, "w", encoding="utf-8") as f:
                 f.write(contributing)
             files_generated.append("CONTRIBUTING.md")
-            
+
             # Générer licence
             license_content = self.generate_license_file()
             license_file = output_dir / "LICENSE"
-            with open(license_file, 'w', encoding='utf-8') as f:
+            with open(license_file, "w", encoding="utf-8") as f:
                 f.write(license_content)
             files_generated.append("LICENSE")
-            
+
             # Générer index
             index = self.generate_documentation_index()
             index_file = output_dir / "INDEX.md"
-            with open(index_file, 'w', encoding='utf-8') as f:
+            with open(index_file, "w", encoding="utf-8") as f:
                 f.write(index)
             files_generated.append("INDEX.md")
-            
+
         except Exception as e:
             logger.error(f"Erreur génération documentation: {e}")
-        
+
         # Calculer la couverture
         coverage = self.calculate_documentation_coverage()
-        
+
         # Enregistrer dans l'historique
         doc_record = {
             "timestamp": datetime.now().isoformat(),
             "files_generated": len(files_generated),
             "coverage": coverage["coverage_percentage"],
-            "documentation_time": (datetime.now() - start_time).total_seconds()
+            "documentation_time": (datetime.now() - start_time).total_seconds(),
         }
         self.doc_history.append(doc_record)
-        
+
         return {
             "files_generated": len(files_generated),
             "files_list": files_generated,
             "coverage": coverage["coverage_percentage"],
             "documentation_time": doc_record["documentation_time"],
-            "output_directory": str(output_dir)
+            "output_directory": str(output_dir),
         }
 
 

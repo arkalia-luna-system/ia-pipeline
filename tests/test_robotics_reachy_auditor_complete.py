@@ -38,40 +38,45 @@ class TestReachyAuditorComplete:
         # Créer structure complète
         src_dir = Path(self.temp_dir) / "src"
         src_dir.mkdir()
-        
+
         package_dir = src_dir / "test_package"
         package_dir.mkdir()
-        
+
         package_xml = package_dir / "package.xml"
-        package_xml.write_text("""<?xml version="1.0"?>
+        package_xml.write_text(
+            """<?xml version="1.0"?>
 <package format="3">
   <name>test_package</name>
   <version>0.1.0</version>
-</package>""")
-        
+</package>"""
+        )
+
         # Docker
         docker_dir = Path(self.temp_dir) / "docker"
         docker_dir.mkdir()
-        
+
         compose_file = docker_dir / "compose.yaml"
-        compose_file.write_text("""version: '3.8'
+        compose_file.write_text(
+            """version: '3.8'
 services:
   reachy_2023:
     environment:
       - ROS_DOMAIN_ID=42
     volumes:
       - ./data:/data
-""")
-        
+"""
+        )
+
         dockerfile = docker_dir / "Dockerfile"
         dockerfile.write_text("FROM ubuntu:20.04\nRUN echo 'test'")
-        
+
         # Rust
         rust_dir = Path(self.temp_dir) / "rust_project"
         rust_dir.mkdir()
-        
+
         cargo_toml = rust_dir / "Cargo.toml"
-        cargo_toml.write_text("""[package]
+        cargo_toml.write_text(
+            """[package]
 name = "test_project"
 version = "0.1.0"
 edition = "2021"
@@ -79,18 +84,19 @@ edition = "2021"
 [dependencies]
 ros2 = "0.1"
 dynamixel = "0.2"
-""")
-        
+"""
+        )
+
         # README
         readme = Path(self.temp_dir) / "README.md"
         readme.write_text("# Test Project\n\nDescription")
-        
+
         # Tests
         test_file = Path(self.temp_dir) / "test_example.py"
         test_file.write_text("def test_example(): pass")
-        
+
         result = self.auditor.audit_complete()
-        
+
         assert isinstance(result, ReachyAuditResult)
         assert result.ros2_valid is True
         assert result.docker_valid is True
@@ -101,11 +107,11 @@ dynamixel = "0.2"
     def test_audit_complete_ros2_invalid(self):
         """Test audit complet avec ROS2 invalide"""
         result = self.auditor.audit_complete()
-        
+
         assert isinstance(result, ReachyAuditResult)
         assert result.ros2_valid is False
         assert result.docker_valid is True  # Pas de Docker = pas d'erreur
-        assert result.rust_valid is True    # Pas de Rust = pas d'erreur
+        assert result.rust_valid is True  # Pas de Rust = pas d'erreur
         assert result.structure_valid is False  # Pas de README
         assert result.score < 70  # Score plus bas à cause de ROS2
 
@@ -119,11 +125,13 @@ dynamixel = "0.2"
         package_dir.mkdir()
 
         package_xml = package_dir / "package.xml"
-        package_xml.write_text("""<?xml version="1.0"?>
+        package_xml.write_text(
+            """<?xml version="1.0"?>
 <package format="3">
   <name>test_package</name>
   <version>0.1.0</version>
-</package>""")
+</package>"""
+        )
 
         # Créer docker-compose invalide
         docker_dir = Path(self.temp_dir) / "docker"
@@ -147,27 +155,31 @@ dynamixel = "0.2"
         # Créer structure ROS2 valide
         src_dir = Path(self.temp_dir) / "src"
         src_dir.mkdir()
-        
+
         package_dir = src_dir / "test_package"
         package_dir.mkdir()
-        
+
         package_xml = package_dir / "package.xml"
-        package_xml.write_text("""<?xml version="1.0"?>
+        package_xml.write_text(
+            """<?xml version="1.0"?>
 <package format="3">
   <name>test_package</name>
   <version>0.1.0</version>
-</package>""")
-        
+</package>"""
+        )
+
         # Launch file
         launch_file = Path(self.temp_dir) / "test.launch.py"
         launch_file.write_text("from launch import LaunchDescription")
-        
+
         # URDF file
         urdf_file = Path(self.temp_dir) / "robot.urdf"
-        urdf_file.write_text('<robot name="test_robot"><link name="base_link"/></robot>')
-        
+        urdf_file.write_text(
+            '<robot name="test_robot"><link name="base_link"/></robot>'
+        )
+
         valid, issues, recommendations = self.auditor._audit_ros2()
-        
+
         assert valid is True
         assert len(issues) == 0
         assert len(recommendations) >= 0
@@ -175,7 +187,7 @@ dynamixel = "0.2"
     def test_audit_ros2_no_src(self):
         """Test audit ROS2 - pas de dossier src"""
         valid, issues, recommendations = self.auditor._audit_ros2()
-        
+
         assert valid is False
         assert len(issues) == 1
         assert "Dossier 'src' manquant" in issues[0]
@@ -184,9 +196,9 @@ dynamixel = "0.2"
         """Test audit ROS2 - pas de packages"""
         src_dir = Path(self.temp_dir) / "src"
         src_dir.mkdir()
-        
+
         valid, issues, recommendations = self.auditor._audit_ros2()
-        
+
         assert valid is False
         assert len(issues) == 1
         assert "Aucun package.xml trouvé" in issues[0]
@@ -195,22 +207,24 @@ dynamixel = "0.2"
         """Test audit Docker - succès"""
         docker_dir = Path(self.temp_dir) / "docker"
         docker_dir.mkdir()
-        
+
         compose_file = docker_dir / "compose.yaml"
-        compose_file.write_text("""version: '3.8'
+        compose_file.write_text(
+            """version: '3.8'
 services:
   reachy_2023:
     environment:
       - ROS_DOMAIN_ID=42
     volumes:
       - ./data:/data
-""")
-        
+"""
+        )
+
         dockerfile = docker_dir / "Dockerfile"
         dockerfile.write_text("FROM ubuntu:20.04\nRUN echo 'test'")
-        
+
         valid, issues, recommendations = self.auditor._audit_docker()
-        
+
         assert valid is True
         assert len(issues) == 0
         assert len(recommendations) == 0
@@ -218,7 +232,7 @@ services:
     def test_audit_docker_no_compose(self):
         """Test audit Docker - pas de docker-compose"""
         valid, issues, recommendations = self.auditor._audit_docker()
-        
+
         assert valid is True  # Pas d'erreur, juste des recommandations
         assert len(issues) == 0
         assert len(recommendations) >= 1
@@ -243,16 +257,18 @@ services:
         """Test audit Docker - pas de service reachy_2023"""
         docker_dir = Path(self.temp_dir) / "docker"
         docker_dir.mkdir()
-        
+
         compose_file = docker_dir / "compose.yaml"
-        compose_file.write_text("""version: '3.8'
+        compose_file.write_text(
+            """version: '3.8'
 services:
   other_service:
     image: ubuntu:20.04
-""")
-        
+"""
+        )
+
         valid, issues, recommendations = self.auditor._audit_docker()
-        
+
         assert valid is True
         assert len(issues) == 0
         assert len(recommendations) >= 1
@@ -261,9 +277,10 @@ services:
         """Test audit Rust - succès"""
         rust_dir = Path(self.temp_dir) / "rust_project"
         rust_dir.mkdir()
-        
+
         cargo_toml = rust_dir / "Cargo.toml"
-        cargo_toml.write_text("""[package]
+        cargo_toml.write_text(
+            """[package]
 name = "test_project"
 version = "0.1.0"
 edition = "2021"
@@ -271,10 +288,11 @@ edition = "2021"
 [dependencies]
 ros2 = "0.1"
 dynamixel = "0.2"
-""")
-        
+"""
+        )
+
         valid, issues, recommendations = self.auditor._audit_rust()
-        
+
         assert valid is True
         assert len(issues) == 0
         assert len(recommendations) == 0
@@ -282,7 +300,7 @@ dynamixel = "0.2"
     def test_audit_rust_no_projects(self):
         """Test audit Rust - pas de projets"""
         valid, issues, recommendations = self.auditor._audit_rust()
-        
+
         assert valid is True
         assert len(issues) == 0
         assert len(recommendations) == 1
@@ -308,17 +326,17 @@ dynamixel = "0.2"
         # README
         readme = Path(self.temp_dir) / "README.md"
         readme.write_text("# Test Project\n\nDescription")
-        
+
         # .gitignore
         gitignore = Path(self.temp_dir) / ".gitignore"
         gitignore.write_text("*.pyc\n__pycache__/")
-        
+
         # Tests
         test_file = Path(self.temp_dir) / "test_example.py"
         test_file.write_text("def test_example(): pass")
-        
+
         valid, issues, recommendations = self.auditor._audit_structure()
-        
+
         assert valid is True
         assert len(issues) == 0
         assert len(recommendations) >= 0
@@ -326,7 +344,7 @@ dynamixel = "0.2"
     def test_audit_structure_no_readme(self):
         """Test audit structure - pas de README"""
         valid, issues, recommendations = self.auditor._audit_structure()
-        
+
         assert valid is False
         assert len(issues) == 1
         assert "README manquant" in issues[0]
@@ -357,11 +375,11 @@ dynamixel = "0.2"
             structure_valid=True,
             issues=["Test issue"],
             recommendations=["Test recommendation"],
-            score=75.5
+            score=75.5,
         )
-        
+
         report = self.auditor.generate_report(result)
-        
+
         assert isinstance(report, str)
         assert "Rapport d'Audit Reachy" in report
         assert "75.5/100" in report
@@ -381,14 +399,14 @@ dynamixel = "0.2"
             structure_valid=True,
             issues=[],
             recommendations=[],
-            score=100.0
+            score=100.0,
         )
-        
+
         output_path = self.auditor.save_report(result)
-        
+
         assert isinstance(output_path, str)
         assert output_path.endswith(".md")
-        
+
         # Vérifier que le fichier a été créé
         report_file = Path(output_path)
         assert report_file.exists()
@@ -405,12 +423,12 @@ dynamixel = "0.2"
             structure_valid=True,
             issues=[],
             recommendations=[],
-            score=100.0
+            score=100.0,
         )
-        
+
         custom_path = Path(self.temp_dir) / "custom_report.md"
         output_path = self.auditor.save_report(result, str(custom_path))
-        
+
         assert output_path == str(custom_path)
         assert custom_path.exists()
 
@@ -432,39 +450,48 @@ class TestReachyAuditorIntegration:
         # Créer structure de projet Reachy complète
         src_dir = Path(self.temp_dir) / "src"
         src_dir.mkdir()
-        
+
         # Package ROS2
         package_dir = src_dir / "test_package"
         package_dir.mkdir()
-        (package_dir / "package.xml").write_text("""<?xml version="1.0"?>
+        (package_dir / "package.xml").write_text(
+            """<?xml version="1.0"?>
 <package format="3">
   <name>test_package</name>
   <version>0.1.0</version>
-</package>""")
-        
+</package>"""
+        )
+
         # Launch file
-        (Path(self.temp_dir) / "test.launch.py").write_text("from launch import LaunchDescription")
-        
+        (Path(self.temp_dir) / "test.launch.py").write_text(
+            "from launch import LaunchDescription"
+        )
+
         # URDF file
-        (Path(self.temp_dir) / "robot.urdf").write_text('<robot name="test_robot"><link name="base_link"/></robot>')
-        
+        (Path(self.temp_dir) / "robot.urdf").write_text(
+            '<robot name="test_robot"><link name="base_link"/></robot>'
+        )
+
         # Docker
         docker_dir = Path(self.temp_dir) / "docker"
         docker_dir.mkdir()
-        (docker_dir / "compose.yaml").write_text("""version: '3.8'
+        (docker_dir / "compose.yaml").write_text(
+            """version: '3.8'
 services:
   reachy_2023:
     environment:
       - ROS_DOMAIN_ID=42
     volumes:
       - ./data:/data
-""")
+"""
+        )
         (docker_dir / "Dockerfile").write_text("FROM ubuntu:20.04\nRUN echo 'test'")
-        
+
         # Rust
         rust_dir = Path(self.temp_dir) / "rust_project"
         rust_dir.mkdir()
-        (rust_dir / "Cargo.toml").write_text("""[package]
+        (rust_dir / "Cargo.toml").write_text(
+            """[package]
 name = "test_project"
 version = "0.1.0"
 edition = "2021"
@@ -472,17 +499,18 @@ edition = "2021"
 [dependencies]
 ros2 = "0.1"
 dynamixel = "0.2"
-""")
-        
+"""
+        )
+
         # Documentation
         (Path(self.temp_dir) / "README.md").write_text("# Test Project\n\nDescription")
         (Path(self.temp_dir) / ".gitignore").write_text("*.pyc\n__pycache__/")
-        
+
         # Tests
         (Path(self.temp_dir) / "test_example.py").write_text("def test_example(): pass")
-        
+
         result = self.auditor.audit_complete()
-        
+
         assert isinstance(result, ReachyAuditResult)
         assert result.ros2_valid is True
         assert result.docker_valid is True
@@ -501,15 +529,15 @@ dynamixel = "0.2"
             structure_valid=False,
             issues=["ROS2 workspace invalide", "Structure projet incomplète"],
             recommendations=["Configurer Docker", "Ajouter README"],
-            score=65.0
+            score=65.0,
         )
-        
+
         # Générer rapport
         report = self.auditor.generate_report(result)
-        
+
         # Sauvegarder rapport
         output_path = self.auditor.save_report(result)
-        
+
         assert isinstance(report, str)
         assert isinstance(output_path, str)
         assert "65.0/100" in report
@@ -532,7 +560,7 @@ class TestReachyAuditorEdgeCases:
     def test_audit_complete_empty_project(self):
         """Test audit complet avec projet vide"""
         result = self.auditor.audit_complete()
-        
+
         assert isinstance(result, ReachyAuditResult)
         assert result.ros2_valid is False
         assert result.docker_valid is True
@@ -545,34 +573,43 @@ class TestReachyAuditorEdgeCases:
         # Créer structure parfaite
         src_dir = Path(self.temp_dir) / "src"
         src_dir.mkdir()
-        
+
         package_dir = src_dir / "test_package"
         package_dir.mkdir()
-        (package_dir / "package.xml").write_text("""<?xml version="1.0"?>
+        (package_dir / "package.xml").write_text(
+            """<?xml version="1.0"?>
 <package format="3">
   <name>test_package</name>
   <version>0.1.0</version>
-</package>""")
-        
+</package>"""
+        )
+
         # Tous les fichiers requis
-        (Path(self.temp_dir) / "test.launch.py").write_text("from launch import LaunchDescription")
-        (Path(self.temp_dir) / "robot.urdf").write_text('<robot name="test_robot"><link name="base_link"/></robot>')
-        
+        (Path(self.temp_dir) / "test.launch.py").write_text(
+            "from launch import LaunchDescription"
+        )
+        (Path(self.temp_dir) / "robot.urdf").write_text(
+            '<robot name="test_robot"><link name="base_link"/></robot>'
+        )
+
         docker_dir = Path(self.temp_dir) / "docker"
         docker_dir.mkdir()
-        (docker_dir / "compose.yaml").write_text("""version: '3.8'
+        (docker_dir / "compose.yaml").write_text(
+            """version: '3.8'
 services:
   reachy_2023:
     environment:
       - ROS_DOMAIN_ID=42
     volumes:
       - ./data:/data
-""")
+"""
+        )
         (docker_dir / "Dockerfile").write_text("FROM ubuntu:20.04\nRUN echo 'test'")
-        
+
         rust_dir = Path(self.temp_dir) / "rust_project"
         rust_dir.mkdir()
-        (rust_dir / "Cargo.toml").write_text("""[package]
+        (rust_dir / "Cargo.toml").write_text(
+            """[package]
 name = "test_project"
 version = "0.1.0"
 edition = "2021"
@@ -580,14 +617,15 @@ edition = "2021"
 [dependencies]
 ros2 = "0.1"
 dynamixel = "0.2"
-""")
-        
+"""
+        )
+
         (Path(self.temp_dir) / "README.md").write_text("# Test Project\n\nDescription")
         (Path(self.temp_dir) / ".gitignore").write_text("*.pyc\n__pycache__/")
         (Path(self.temp_dir) / "test_example.py").write_text("def test_example(): pass")
-        
+
         result = self.auditor.audit_complete()
-        
+
         assert isinstance(result, ReachyAuditResult)
         assert result.ros2_valid is True
         assert result.docker_valid is True
@@ -606,11 +644,11 @@ dynamixel = "0.2"
             structure_valid=False,
             issues=[],
             recommendations=[],
-            score=0.0
+            score=0.0,
         )
-        
+
         report = self.auditor.generate_report(result)
-        
+
         assert isinstance(report, str)
         assert "0.0/100" in report
         assert "Aucun problème critique détecté" in report
@@ -626,11 +664,11 @@ dynamixel = "0.2"
             structure_valid=True,
             issues=[],
             recommendations=[],
-            score=100.0
+            score=100.0,
         )
-        
+
         # Essayer de sauvegarder dans un répertoire non accessible
-        with patch('builtins.open', side_effect=PermissionError("Permission denied")):
+        with patch("builtins.open", side_effect=PermissionError("Permission denied")):
             with pytest.raises(PermissionError):
                 self.auditor.save_report(result, "/root/test.md")
 
@@ -650,9 +688,9 @@ class TestMainFunction:
             structure_valid=False,
             issues=["issue1", "issue2"],
             recommendations=["rec1"],
-            score=75.5
+            score=75.5,
         )
-        
+
         assert result.project_path == "/test/project"
         assert result.timestamp == timestamp
         assert result.ros2_valid is True
@@ -661,4 +699,4 @@ class TestMainFunction:
         assert result.structure_valid is False
         assert len(result.issues) == 2
         assert len(result.recommendations) == 1
-        assert result.score == 75.5 
+        assert result.score == 75.5

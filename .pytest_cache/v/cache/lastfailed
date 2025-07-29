@@ -1,0 +1,3 @@
+{
+  "tests/test_imports_all.py::TestImportsAll::test_plugins_modules_import": true
+}

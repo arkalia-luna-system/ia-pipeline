@@ -22,6 +22,7 @@ try:
         GestionnaireProfils,
         ProfilUtilisateur,
     )
+
     USER_PROFILES_AVAILABLE = True
 except ImportError:
     USER_PROFILES_AVAILABLE = False
@@ -50,13 +51,13 @@ class TestProfilUtilisateur(unittest.TestCase):
         """Test de l'initialisation avec des préférences"""
         preferences = {"theme": "dark", "language": "fr"}
         profil = ProfilUtilisateur("TestUser", "test@example.com", preferences)
-        
+
         self.assertEqual(profil.preferences, preferences)
 
     def test_to_dict(self):
         """Test de la conversion en dictionnaire"""
         dict_profil = self.profil.to_dict()
-        
+
         self.assertIsInstance(dict_profil, dict)
         self.assertEqual(dict_profil["nom"], "TestUser")
         self.assertEqual(dict_profil["email"], "test@example.com")
@@ -75,11 +76,11 @@ class TestProfilUtilisateur(unittest.TestCase):
             "date_creation": "2023-01-01T00:00:00",
             "derniere_connexion": "2023-01-02T00:00:00",
             "projets_consultes": ["projet1", "projet2"],
-            "actions_frequentes": {"action1": 5}
+            "actions_frequentes": {"action1": 5},
         }
-        
+
         profil = ProfilUtilisateur.from_dict(data)
-        
+
         self.assertEqual(profil.nom, "TestUser")
         self.assertEqual(profil.email, "test@example.com")
         self.assertEqual(profil.preferences, {"theme": "dark"})
@@ -91,11 +92,11 @@ class TestProfilUtilisateur(unittest.TestCase):
         data = {
             "nom": "TestUser",
             "date_creation": "2023-01-01T00:00:00",
-            "derniere_connexion": "2023-01-02T00:00:00"
+            "derniere_connexion": "2023-01-02T00:00:00",
         }
-        
+
         profil = ProfilUtilisateur.from_dict(data)
-        
+
         self.assertEqual(profil.nom, "TestUser")
         self.assertEqual(profil.email, "")
         self.assertEqual(profil.preferences, {})
@@ -117,12 +118,13 @@ class TestGestionnaireProfils(unittest.TestCase):
     def tearDown(self):
         """Nettoyage après chaque test"""
         import shutil
+
         shutil.rmtree(self.temp_dir, ignore_errors=True)
 
     def test_initialization(self):
         """Test de l'initialisation du gestionnaire"""
         self.assertEqual(self.gestionnaire.db_path, self.db_path)
-        
+
         # Vérification que la base de données a été créée
         self.assertTrue(os.path.exists(self.db_path))
 
@@ -131,15 +133,19 @@ class TestGestionnaireProfils(unittest.TestCase):
         # Vérification que les tables existent
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
-            
+
             # Vérification de la table profils
-            cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='profils'")
+            cursor.execute(
+                "SELECT name FROM sqlite_master WHERE type='table' AND name='profils'"
+            )
             self.assertIsNotNone(cursor.fetchone())
-            
+
             # Vérification de la table actions
-            cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='actions'")
+            cursor.execute(
+                "SELECT name FROM sqlite_master WHERE type='table' AND name='actions'"
+            )
             self.assertIsNotNone(cursor.fetchone())
-            
+
             # Vérification de la table projets_consultes
             cursor.execute(
                 "SELECT name FROM sqlite_master WHERE type='table' AND name='projets_consultes'"
@@ -149,15 +155,17 @@ class TestGestionnaireProfils(unittest.TestCase):
     def test_creer_profil(self):
         """Test de la création d'un profil"""
         profil = self.gestionnaire.creer_profil("TestUser", "test@example.com")
-        
+
         self.assertIsInstance(profil, ProfilUtilisateur)
         self.assertEqual(profil.nom, "TestUser")
         self.assertEqual(profil.email, "test@example.com")
-        
+
         # Vérification en base
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
-            cursor.execute("SELECT nom, email FROM profils WHERE nom = ?", ("TestUser",))
+            cursor.execute(
+                "SELECT nom, email FROM profils WHERE nom = ?", ("TestUser",)
+            )
             result = cursor.fetchone()
             self.assertIsNotNone(result)
             self.assertEqual(result[0], "TestUser")
@@ -166,14 +174,18 @@ class TestGestionnaireProfils(unittest.TestCase):
     def test_creer_profil_with_preferences(self):
         """Test de la création d'un profil avec préférences"""
         preferences = {"theme": "dark", "language": "fr"}
-        profil = self.gestionnaire.creer_profil("TestUser", "test@example.com", preferences)
-        
+        profil = self.gestionnaire.creer_profil(
+            "TestUser", "test@example.com", preferences
+        )
+
         self.assertEqual(profil.preferences, preferences)
-        
+
         # Vérification en base
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
-            cursor.execute("SELECT preferences FROM profils WHERE nom = ?", ("TestUser",))
+            cursor.execute(
+                "SELECT preferences FROM profils WHERE nom = ?", ("TestUser",)
+            )
             result = cursor.fetchone()
             self.assertIsNotNone(result)
             stored_preferences = json.loads(result[0])
@@ -183,10 +195,10 @@ class TestGestionnaireProfils(unittest.TestCase):
         """Test de l'obtention d'un profil"""
         # Création d'un profil
         self.gestionnaire.creer_profil("TestUser", "test@example.com")
-        
+
         # Récupération du profil
         profil = self.gestionnaire.obtenir_profil("TestUser")
-        
+
         self.assertIsInstance(profil, ProfilUtilisateur)
         self.assertEqual(profil.nom, "TestUser")
         self.assertEqual(profil.email, "test@example.com")
@@ -194,21 +206,21 @@ class TestGestionnaireProfils(unittest.TestCase):
     def test_obtenir_profil_inexistant(self):
         """Test de l'obtention d'un profil inexistant"""
         profil = self.gestionnaire.obtenir_profil("Inexistant")
-        
+
         self.assertIsNone(profil)
 
     def test_mettre_a_jour_profil(self):
         """Test de la mise à jour d'un profil"""
         # Création d'un profil
         profil = self.gestionnaire.creer_profil("TestUser", "test@example.com")
-        
+
         # Modification du profil
         profil.email = "nouveau@example.com"
         profil.preferences = {"theme": "light"}
-        
+
         # Mise à jour
         self.gestionnaire.mettre_a_jour_profil(profil)
-        
+
         # Vérification
         profil_updated = self.gestionnaire.obtenir_profil("TestUser")
         self.assertEqual(profil_updated.email, "nouveau@example.com")
@@ -218,19 +230,24 @@ class TestGestionnaireProfils(unittest.TestCase):
         """Test de l'enregistrement d'une action"""
         # Création d'un profil
         self.gestionnaire.creer_profil("TestUser", "test@example.com")
-        
+
         # Enregistrement d'une action
-        self.gestionnaire.enregistrer_action("TestUser", "test_action", {"detail": "test"})
-        
+        self.gestionnaire.enregistrer_action(
+            "TestUser", "test_action", {"detail": "test"}
+        )
+
         # Vérification en base
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
-            cursor.execute("""
+            cursor.execute(
+                """
                 SELECT a.action, a.details 
                 FROM actions a 
                 JOIN profils p ON a.profil_id = p.id 
                 WHERE p.nom = ?
-            """, ("TestUser",))
+            """,
+                ("TestUser",),
+            )
             result = cursor.fetchone()
             self.assertIsNotNone(result)
             self.assertEqual(result[0], "test_action")
@@ -240,19 +257,24 @@ class TestGestionnaireProfils(unittest.TestCase):
         """Test de l'enregistrement d'une consultation de projet"""
         # Création d'un profil
         self.gestionnaire.creer_profil("TestUser", "test@example.com")
-        
+
         # Enregistrement d'une consultation
-        self.gestionnaire.enregistrer_consultation_projet("TestUser", "/path/to/project", 120)
-        
+        self.gestionnaire.enregistrer_consultation_projet(
+            "TestUser", "/path/to/project", 120
+        )
+
         # Vérification en base
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
-            cursor.execute("""
+            cursor.execute(
+                """
                 SELECT pc.chemin_projet, pc.duree_consultation 
                 FROM projets_consultes pc 
                 JOIN profils p ON pc.profil_id = p.id 
                 WHERE p.nom = ?
-            """, ("TestUser",))
+            """,
+                ("TestUser",),
+            )
             result = cursor.fetchone()
             self.assertIsNotNone(result)
             self.assertEqual(result[0], "/path/to/project")
@@ -262,22 +284,22 @@ class TestGestionnaireProfils(unittest.TestCase):
         """Test de l'obtention des statistiques"""
         # Création d'un profil
         self.gestionnaire.creer_profil("TestUser", "test@example.com")
-        
+
         # Enregistrement d'actions et consultations
         self.gestionnaire.enregistrer_action("TestUser", "action1")
         self.gestionnaire.enregistrer_action("TestUser", "action2")
         self.gestionnaire.enregistrer_consultation_projet("TestUser", "/projet1", 60)
         self.gestionnaire.enregistrer_consultation_projet("TestUser", "/projet2", 120)
-        
+
         # Obtention des statistiques
         stats = self.gestionnaire.obtenir_statistiques("TestUser")
-        
+
         self.assertIsInstance(stats, dict)
         self.assertIn("total_actions", stats)
         self.assertIn("projets_consultes", stats)
         self.assertIn("duree_totale", stats)
         self.assertIn("actions_frequentes", stats)
-        
+
         self.assertEqual(stats["total_actions"], 2)
         self.assertEqual(len(stats["projets_consultes"]), 2)
         self.assertEqual(stats["duree_totale"], 180)
@@ -286,14 +308,14 @@ class TestGestionnaireProfils(unittest.TestCase):
         """Test de la génération de rapport de profil"""
         # Création d'un profil
         self.gestionnaire.creer_profil("TestUser", "test@example.com")
-        
+
         # Enregistrement d'activité
         self.gestionnaire.enregistrer_action("TestUser", "action1")
         self.gestionnaire.enregistrer_consultation_projet("TestUser", "/projet1", 60)
-        
+
         # Génération du rapport
         rapport = self.gestionnaire.generer_rapport_profil("TestUser")
-        
+
         self.assertIsInstance(rapport, str)
         self.assertIn("TestUser", rapport)
         self.assertIn("action1", rapport)
@@ -305,10 +327,10 @@ class TestGestionnaireProfils(unittest.TestCase):
         self.gestionnaire.creer_profil("User1", "user1@example.com")
         self.gestionnaire.creer_profil("User2", "user2@example.com")
         self.gestionnaire.creer_profil("User3", "user3@example.com")
-        
+
         # Liste des profils
         profils = self.gestionnaire.lister_profils()
-        
+
         self.assertIsInstance(profils, list)
         self.assertIn("User1", profils)
         self.assertIn("User2", profils)
@@ -319,38 +341,38 @@ class TestGestionnaireProfils(unittest.TestCase):
         """Test de la suppression d'un profil"""
         # Création d'un profil
         self.gestionnaire.creer_profil("TestUser", "test@example.com")
-        
+
         # Vérification que le profil existe
         self.assertIsNotNone(self.gestionnaire.obtenir_profil("TestUser"))
-        
+
         # Suppression
         result = self.gestionnaire.supprimer_profil("TestUser")
-        
+
         self.assertTrue(result)
-        
+
         # Vérification que le profil n'existe plus
         self.assertIsNone(self.gestionnaire.obtenir_profil("TestUser"))
 
     def test_supprimer_profil_inexistant(self):
         """Test de la suppression d'un profil inexistant"""
         result = self.gestionnaire.supprimer_profil("Inexistant")
-        
+
         self.assertFalse(result)
 
     def test_exporter_profil(self):
         """Test de l'export d'un profil"""
         # Création d'un profil
         self.gestionnaire.creer_profil("TestUser", "test@example.com")
-        
+
         # Export
         export_path = os.path.join(self.temp_dir, "export.json")
         result = self.gestionnaire.exporter_profil("TestUser", export_path)
-        
+
         self.assertTrue(result)
         self.assertTrue(os.path.exists(export_path))
-        
+
         # Vérification du contenu
-        with open(export_path, 'r') as f:
+        with open(export_path, "r") as f:
             data = json.load(f)
             self.assertEqual(data["nom"], "TestUser")
             self.assertEqual(data["email"], "test@example.com")
@@ -365,18 +387,18 @@ class TestGestionnaireProfils(unittest.TestCase):
             "date_creation": "2023-01-01T00:00:00",
             "derniere_connexion": "2023-01-02T00:00:00",
             "projets_consultes": [],
-            "actions_frequentes": {}
+            "actions_frequentes": {},
         }
-        
+
         export_path = os.path.join(self.temp_dir, "import.json")
-        with open(export_path, 'w') as f:
+        with open(export_path, "w") as f:
             json.dump(export_data, f)
-        
+
         # Import
         result = self.gestionnaire.importer_profil(export_path)
-        
+
         self.assertTrue(result)
-        
+
         # Vérification
         profil = self.gestionnaire.obtenir_profil("ImportedUser")
         self.assertIsNotNone(profil)
@@ -398,6 +420,7 @@ class TestGestionnaireProfilsIntegration(unittest.TestCase):
     def tearDown(self):
         """Nettoyage après chaque test"""
         import shutil
+
         shutil.rmtree(self.temp_dir, ignore_errors=True)
 
     def test_integration_complete_workflow(self):
@@ -405,36 +428,36 @@ class TestGestionnaireProfilsIntegration(unittest.TestCase):
         # 1. Création de profils
         profil1 = self.gestionnaire.creer_profil("User1", "user1@example.com")
         profil2 = self.gestionnaire.creer_profil("User2", "user2@example.com")
-        
+
         # 2. Enregistrement d'activités
         self.gestionnaire.enregistrer_action("User1", "login")
         self.gestionnaire.enregistrer_action("User1", "edit_file")
         self.gestionnaire.enregistrer_action("User2", "login")
-        
+
         self.gestionnaire.enregistrer_consultation_projet("User1", "/projet1", 300)
         self.gestionnaire.enregistrer_consultation_projet("User2", "/projet2", 180)
-        
+
         # 3. Mise à jour de profil
         profil1.preferences = {"theme": "dark"}
         self.gestionnaire.mettre_a_jour_profil(profil1)
-        
+
         # 4. Vérifications
         stats1 = self.gestionnaire.obtenir_statistiques("User1")
         stats2 = self.gestionnaire.obtenir_statistiques("User2")
-        
+
         self.assertEqual(stats1["total_actions"], 2)
         self.assertEqual(stats2["total_actions"], 1)
         self.assertEqual(stats1["duree_totale"], 300)
         self.assertEqual(stats2["duree_totale"], 180)
-        
+
         # 5. Export/Import
         export_path = os.path.join(self.temp_dir, "export.json")
         self.gestionnaire.exporter_profil("User1", export_path)
-        
+
         # Suppression et réimport
         self.gestionnaire.supprimer_profil("User1")
         self.gestionnaire.importer_profil(export_path)
-        
+
         # Vérification
         profil_imported = self.gestionnaire.obtenir_profil("User1")
         self.assertIsNotNone(profil_imported)
@@ -448,16 +471,18 @@ class TestGestionnaireProfilsIntegration(unittest.TestCase):
             user_name = f"User{i}"
             self.gestionnaire.creer_profil(user_name, f"user{i}@example.com")
             users.append(user_name)
-        
+
         # Enregistrement d'activités variées
         for i, user in enumerate(users):
             self.gestionnaire.enregistrer_action(user, f"action_{i}")
-            self.gestionnaire.enregistrer_consultation_projet(user, f"/projet_{i}", (i + 1) * 60)
-        
+            self.gestionnaire.enregistrer_consultation_projet(
+                user, f"/projet_{i}", (i + 1) * 60
+            )
+
         # Vérifications
         profils = self.gestionnaire.lister_profils()
         self.assertEqual(len(profils), 10)
-        
+
         for user in users:
             stats = self.gestionnaire.obtenir_statistiques(user)
             self.assertEqual(stats["total_actions"], 1)
@@ -468,15 +493,17 @@ class TestGestionnaireProfilsIntegration(unittest.TestCase):
         # Test avec des données invalides - devrait retourner None
         result = self.gestionnaire.obtenir_profil("")  # Nom vide
         self.assertIsNone(result)
-        
+
         # Test avec des chemins de fichiers invalides
-        result = self.gestionnaire.exporter_profil("Inexistant", "/invalid/path/file.json")
+        result = self.gestionnaire.exporter_profil(
+            "Inexistant", "/invalid/path/file.json"
+        )
         self.assertFalse(result)
-        
+
         result = self.gestionnaire.importer_profil("/invalid/path/file.json")
         self.assertFalse(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Configuration des tests
-    unittest.main(verbosity=2) 
+    unittest.main(verbosity=2)

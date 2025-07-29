@@ -37,16 +37,12 @@ class FinalValidator:
                 "encoding_issues": 0,
                 "string_issues": 0,
                 "syntax_errors": 0,
-                "quality_issues": 0
+                "quality_issues": 0,
             }
 
             # Vérifier les f-strings malformées
-            f_string_patterns = [
-                r'ff"([^"]*)"',
-                r'f"([^"]*)"([^"]*)"',
-                r'"f"([^"]*)"'
-            ]
-            
+            f_string_patterns = [r'ff"([^"]*)"', r'f"([^"]*)"([^"]*)"', r'"f"([^"]*)"']
+
             for pattern in f_string_patterns:
                 matches = re.findall(pattern, content)
                 issues["f_strings_malformed"] += len(matches)
@@ -59,9 +55,9 @@ class FinalValidator:
             string_patterns = [
                 r'"""([^"]*)\'([^"]*)"""',
                 r'"""([^"]*)dict_data([^"]*)"""',
-                r'"([^"]*)\'([^"]*)"'
+                r'"([^"]*)\'([^"]*)"',
             ]
-            
+
             for pattern in string_patterns:
                 matches = re.findall(pattern, content)
                 issues["string_issues"] += len(matches)
@@ -131,7 +127,7 @@ class FinalValidator:
                 '"f"': '"score"',
                 '"f"': '"vulnerabilities"',
                 '"f"': '"100"',
-                '"f"': '"complete"'
+                '"f"': '"complete"',
             }
 
             for old, new in replacements.items():
@@ -153,29 +149,23 @@ class FinalValidator:
     def scan_project_files(self) -> List[Path]:
         """Scanne le projet pour trouver les fichiers Python principaux."""
         main_files = []
-        
+
         # Fichiers principaux du projet
-        main_paths = [
-            "athalia_core/",
-            "tests/",
-            "tools/",
-            "scripts/",
-            "bin/"
-        ]
-        
+        main_paths = ["athalia_core/", "tests/", "tools/", "scripts/", "bin/"]
+
         for path in main_paths:
             full_path = self.project_root / path
             if full_path.exists():
                 for py_file in full_path.rglob("*.py"):
                     if not any(part.startswith(".") for part in py_file.parts):
                         main_files.append(py_file)
-        
+
         return main_files
 
     def run_final_validation(self) -> Dict[str, any]:
         """Exécute la validation finale complète du projet."""
         logger.info("🔍 Début de la validation finale...")
-        
+
         project_files = self.scan_project_files()
         logger.info(f"📁 {len(project_files)} fichiers à valider")
 
@@ -189,8 +179,8 @@ class FinalValidator:
                 "f_strings_malformed": 0,
                 "encoding_issues": 0,
                 "string_issues": 0,
-                "syntax_errors": 0
-            }
+                "syntax_errors": 0,
+            },
         }
 
         total_quality_score = 0
@@ -198,18 +188,22 @@ class FinalValidator:
         for file_path in project_files:
             # Valider la qualité
             quality_issues = self.validate_code_quality(file_path)
-            
+
             if "error" not in quality_issues:
                 validation_results["valid_files"] += 1
                 total_quality_score += quality_issues["quality_score"]
-                
+
                 # Compter les problèmes par type
                 for issue_type, count in quality_issues.items():
                     if issue_type in validation_results["issues_by_type"]:
                         validation_results["issues_by_type"][issue_type] += count
 
                 # Corriger si nécessaire
-                if any(count > 0 for count in quality_issues.values() if isinstance(count, int)):
+                if any(
+                    count > 0
+                    for count in quality_issues.values()
+                    if isinstance(count, int)
+                ):
                     if self.fix_common_issues(file_path):
                         validation_results["corrected_files"] += 1
             else:
@@ -217,13 +211,17 @@ class FinalValidator:
 
         # Calculer le score moyen
         if validation_results["valid_files"] > 0:
-            validation_results["average_quality_score"] = total_quality_score / validation_results["valid_files"]
+            validation_results["average_quality_score"] = (
+                total_quality_score / validation_results["valid_files"]
+            )
 
         logger.info(f"📊 Validation terminée:")
         logger.info(f"   - Fichiers valides: {validation_results['valid_files']}")
         logger.info(f"   - Fichiers corrigés: {validation_results['corrected_files']}")
         logger.info(f"   - Fichiers en erreur: {validation_results['error_files']}")
-        logger.info(f"   - Score de qualité moyen: {validation_results['average_quality_score']:.1f}%")
+        logger.info(
+            f"   - Score de qualité moyen: {validation_results['average_quality_score']:.1f}%"
+        )
 
         return validation_results
 
@@ -231,10 +229,10 @@ class FinalValidator:
 def main():
     """Fonction principale du validateur final."""
     validator = FinalValidator()
-    
+
     # Exécuter la validation finale
     results = validator.run_final_validation()
-    
+
     # Afficher le résumé
     if results["average_quality_score"] >= 90:
         logger.info("🎉 Projet en excellent état !")

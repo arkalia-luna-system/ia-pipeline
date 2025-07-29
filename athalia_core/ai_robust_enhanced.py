@@ -18,8 +18,10 @@ except ImportError:
     # Fallback pour les tests
     def validate_and_run(command, **kwargs):
         return subprocess.run(command, **kwargs)
+
     class SecurityError(Exception):
         pass
+
 
 # Configuration du logging
 logger = logging.getLogger(__name__)
@@ -54,7 +56,9 @@ class RobustAI:
         self.available_models = self._detect_available_models()
         self.fallback_chain = self._build_fallback_chain()
         self.prompt_templates = self._load_prompt_templates()
-        logger.info(f"IA robuste initialisée avec {len(self.available_models)} modèles disponibles")
+        logger.info(
+            f"IA robuste initialisée avec {len(self.available_models)} modèles disponibles"
+        )
 
     def generate_blueprint(self, idea: str, **kwargs) -> Dict[str, Any]:
         """Génère un blueprint de projet à partir d'une idée."""
@@ -104,9 +108,23 @@ class RobustAI:
             return "api"
         elif any(word in idea_lower for word in ["robot", "reachy", "ros", "opencv"]):
             return "robotics"
-        elif any(word in idea_lower for word in ["calculatrice", "calculator", "desktop", "tkinter"]):
+        elif any(
+            word in idea_lower
+            for word in ["calculatrice", "calculator", "desktop", "tkinter"]
+        ):
             return "desktop"
-        elif any(word in idea_lower for word in ["web", "flask", "django", "interface", "react", "vue", "angular"]):
+        elif any(
+            word in idea_lower
+            for word in [
+                "web",
+                "flask",
+                "django",
+                "interface",
+                "react",
+                "vue",
+                "angular",
+            ]
+        ):
             return "web"
         elif any(word in idea_lower for word in ["ia", "ai", "machine learning", "ml"]):
             return "ai_application"
@@ -116,7 +134,7 @@ class RobustAI:
     def _extract_project_name(self, idea: str) -> str:
         """Extrait un nom de projet de l'idée."""
         import re
-        
+
         # Cherche des mots clés spécifiques
         patterns = [
             r"calculatrice\s+(\w+)",
@@ -142,37 +160,39 @@ class RobustAI:
     def _get_dependencies_for_type(self, project_type: str) -> List[str]:
         """Retourne les dépendances appropriées selon le type de projet."""
         base_deps = ["numpy", "pandas"]
-        
+
         if project_type == "api":
-            base_deps.extend([
-                "fastapi",
-                "uvicorn",
-                "pydantic",
-                "sqlalchemy",
-                "python-jose[cryptography]",
-                "passlib[bcrypt]",
-                "httpx",
-            ])
+            base_deps.extend(
+                [
+                    "fastapi",
+                    "uvicorn",
+                    "pydantic",
+                    "sqlalchemy",
+                    "python-jose[cryptography]",
+                    "passlib[bcrypt]",
+                    "httpx",
+                ]
+            )
         elif project_type == "web":
             base_deps.extend(["flask", "requests", "jinja2", "flask-cors"])
         elif project_type == "robotics":
             base_deps.extend(["opencv-python", "numpy", "matplotlib", "rospy"])
         elif project_type == "ai_application":
             base_deps.extend(["scikit-learn", "tensorflow", "torch", "matplotlib"])
-        
+
         return base_deps
 
     def _get_structure_for_type(self, project_type: str) -> List[str]:
         """Retourne la structure appropriée selon le type de projet."""
         base_structure = ["src/", "tests/", "docs/", "README.md"]
-        
+
         if project_type == "api":
             base_structure.extend(["src/api/", "src/models/", "src/services/"])
         elif project_type == "web":
             base_structure.extend(["src/templates/", "src/static/", "src/routes/"])
         elif project_type == "robotics":
             base_structure.extend(["src/robotics/", "src/sensors/", "src/actuators/"])
-        
+
         return base_structure
 
     def _generate_fallback_blueprint(self, idea: str) -> Dict[str, Any]:
@@ -192,24 +212,26 @@ class RobustAI:
             "documentation": True,
         }
 
-    def review_code(self, code: str, filename: str, project_type: str, current_score: int) -> Dict[str, Any]:
+    def review_code(
+        self, code: str, filename: str, project_type: str, current_score: int
+    ) -> Dict[str, Any]:
         """Analyse et révise du code."""
         try:
             # Analyse de base du code
             issues = self._analyze_code_quality(code)
-            
+
             # Suggestions d'amélioration
             suggestions = self._generate_code_suggestions(code, project_type)
-            
+
             # Calcul du nouveau score
             new_score = self._calculate_improved_score(current_score, issues)
-            
+
             return {
                 "issues": issues,
                 "suggestions": suggestions,
                 "score": new_score,
                 "filename": filename,
-                "project_type": project_type
+                "project_type": project_type,
             }
         except Exception as e:
             logger.error(f"Erreur lors de la révision du code: {e}")
@@ -218,59 +240,69 @@ class RobustAI:
     def _analyze_code_quality(self, code: str) -> List[Dict[str, Any]]:
         """Analyse la qualité du code."""
         issues = []
-        
+
         # Vérifications de base
         if "print(" in code:
-            issues.append({
-                "type": "warning",
-                "message": "Utilisation de print() détectée",
-                "suggestion": "Remplacer par logging approprié"
-            })
-        
+            issues.append(
+                {
+                    "type": "warning",
+                    "message": "Utilisation de print() détectée",
+                    "suggestion": "Remplacer par logging approprié",
+                }
+            )
+
         if "TODO" in code or "FIXME" in code:
-            issues.append({
-                "type": "info",
-                "message": "Marqueurs TODO/FIXME détectés",
-                "suggestion": "Compléter ou documenter les tâches"
-            })
-        
+            issues.append(
+                {
+                    "type": "info",
+                    "message": "Marqueurs TODO/FIXME détectés",
+                    "suggestion": "Compléter ou documenter les tâches",
+                }
+            )
+
         if "pass" in code:
-            issues.append({
-                "type": "warning",
-                "message": "Instructions pass détectées",
-                "suggestion": "Implémenter la logique manquante"
-            })
-        
+            issues.append(
+                {
+                    "type": "warning",
+                    "message": "Instructions pass détectées",
+                    "suggestion": "Implémenter la logique manquante",
+                }
+            )
+
         return issues
 
     def _generate_code_suggestions(self, code: str, project_type: str) -> List[str]:
         """Génère des suggestions d'amélioration du code."""
         suggestions = []
-        
+
         if project_type == "api" and "FastAPI" not in code:
             suggestions.append("Considérer l'utilisation de FastAPI pour les APIs")
-        
+
         if "logging" not in code:
             suggestions.append("Ajouter un système de logging approprié")
-        
+
         if "try:" not in code and "except" not in code:
             suggestions.append("Ajouter la gestion d'erreurs appropriée")
-        
+
         return suggestions
 
-    def _calculate_improved_score(self, current_score: int, issues: List[Dict[str, Any]]) -> int:
+    def _calculate_improved_score(
+        self, current_score: int, issues: List[Dict[str, Any]]
+    ) -> int:
         """Calcule le score amélioré basé sur les problèmes identifiés."""
         penalty = len([issue for issue in issues if issue["type"] == "warning"]) * 5
         return max(0, current_score - penalty)
 
-    def generate_documentation(self, project_name: str, project_type: str, modules: List[str]) -> str:
+    def generate_documentation(
+        self, project_name: str, project_type: str, modules: List[str]
+    ) -> str:
         """Génère de la documentation pour le projet."""
         try:
             doc_template = self.prompt_templates.get("documentation", "")
             return doc_template.format(
                 project_name=project_name,
                 project_type=project_type,
-                modules=", ".join(modules)
+                modules=", ".join(modules),
             )
         except Exception as e:
             logger.error(f"Erreur lors de la génération de documentation: {e}")
@@ -284,7 +316,7 @@ class RobustAI:
                 "complexity": "medium",
                 "lines_of_code": 0,
                 "modules_count": 0,
-                "dependencies_count": 0
+                "dependencies_count": 0,
             }
         except Exception as e:
             logger.error(f"Erreur lors de la classification: {e}")
@@ -302,11 +334,13 @@ class RobustAI:
     def _detect_available_models(self) -> List[AIModel]:
         """Détecte les modèles IA disponibles."""
         available_models = [AIModel.MOCK]  # Toujours disponible
-        
+
         # Vérifier Ollama
         try:
             # Utilisation du validateur de sécurité pour l'appel ollama
-            result = validate_and_run(["ollama", "list"], capture_output=True, text=True, timeout=10)
+            result = validate_and_run(
+                ["ollama", "list"], capture_output=True, text=True, timeout=10
+            )
             if result.returncode == 0:
                 if "mistral" in result.stdout.lower():
                     available_models.append(AIModel.OLLAMA_MISTRAL)
@@ -318,26 +352,26 @@ class RobustAI:
                     available_models.append(AIModel.OLLAMA_QWEN)
         except (Exception, SecurityError) as e:
             logger.warning(f"Impossible de détecter les modèles Ollama: {e}")
-        
+
         return available_models
 
     def _build_fallback_chain(self) -> List[AIModel]:
         """Construit la chaîne de fallback des modèles."""
         fallback_chain = []
-        
+
         # Ajouter les modèles disponibles dans l'ordre de préférence
         preferred_models = [
             AIModel.OLLAMA_MISTRAL,
             AIModel.OLLAMA_LLAMA,
             AIModel.OLLAMA_CODEGEN,
             AIModel.OLLAMA_QWEN,
-            AIModel.MOCK
+            AIModel.MOCK,
         ]
-        
+
         for model in preferred_models:
             if model in self.available_models:
                 fallback_chain.append(model)
-        
+
         return fallback_chain
 
     def _load_prompt_templates(self) -> Dict[str, str]:
@@ -363,14 +397,16 @@ Type: {project_type}
             "security": """
 Audit de sécurité pour {project_name}
 Type: {project_type}
-"""
+""",
         }
 
-    def generate_response(self, context: PromptContext, distillation: bool = False, **kwargs) -> Dict[str, Any]:
+    def generate_response(
+        self, context: PromptContext, distillation: bool = False, **kwargs
+    ) -> Dict[str, Any]:
         """Génère une réponse IA avec fallback."""
         try:
             prompt = self.get_dynamic_prompt(context.value, **kwargs)
-            
+
             # Essayer chaque modèle dans la chaîne de fallback
             for model in self.fallback_chain:
                 try:
@@ -380,25 +416,25 @@ Type: {project_type}
                             "success": True,
                             "response": response,
                             "model": model.value,
-                            "context": context.value
+                            "context": context.value,
                         }
                 except Exception as e:
                     logger.warning(f"Modèle {model.value} a échoué: {e}")
                     continue
-            
+
             # Si tous les modèles échouent
             return {
                 "success": False,
                 "error": "Aucun modèle IA disponible",
-                "fallback_response": self._mock_response(prompt)
+                "fallback_response": self._mock_response(prompt),
             }
-            
+
         except Exception as e:
             logger.error(f"Erreur lors de la génération de réponse: {e}")
             return {
                 "success": False,
                 "error": str(e),
-                "fallback_response": "Erreur de génération"
+                "fallback_response": "Erreur de génération",
             }
 
     def _call_model(self, model: AIModel, prompt: str) -> Optional[str]:
@@ -411,7 +447,9 @@ Type: {project_type}
         else:
             raise ValueError(f"Modèle non supporté: {model}")
 
-    def _call_ollama(self, model_name: str, prompt: str, timeout: int = 30) -> Optional[str]:
+    def _call_ollama(
+        self, model_name: str, prompt: str, timeout: int = 30
+    ) -> Optional[str]:
         """Appelle un modèle Ollama."""
         try:
             # Utilisation du validateur de sécurité pour l'appel ollama
@@ -419,15 +457,15 @@ Type: {project_type}
                 ["ollama", "run", model_name, prompt],
                 capture_output=True,
                 text=True,
-                timeout=timeout
+                timeout=timeout,
             )
-            
+
             if result.returncode == 0:
                 return result.stdout.strip()
             else:
                 logger.error(f"Erreur Ollama: {result.stderr}")
                 return None
-                
+
         except subprocess.TimeoutExpired:
             logger.error(f"Timeout lors de l'appel à Ollama {model_name}")
             return None
@@ -461,12 +499,12 @@ def fallback_ia(prompt: str, models: Optional[List[str]] = None) -> str:
     try:
         ai = RobustAI()
         response = ai.generate_response(PromptContext.BLUEPRINT, prompt=prompt)
-        
+
         if response["success"]:
             return response["response"]
         else:
             return response.get("fallback_response", "Erreur de génération")
-            
+
     except Exception as e:
         logger.error(f"Erreur dans fallback_ia: {e}")
         return f"Erreur: {e}"

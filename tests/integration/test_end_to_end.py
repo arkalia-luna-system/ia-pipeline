@@ -29,6 +29,7 @@ class TestEndToEndIntegration:
     def teardown_method(self):
         """Nettoyage après chaque test."""
         import shutil
+
         if self.test_dir.exists():
             shutil.rmtree(self.test_dir)
 
@@ -45,10 +46,10 @@ class TestEndToEndIntegration:
         # Générer un projet API complet
         try:
             blueprint = generate_blueprint_mock("api calculatrice test")
-            blueprint['project_type'] = 'api'
+            blueprint["project_type"] = "api"
         except Exception as e:
             pytest.skip(f"Impossible de générer le blueprint : {e}")
-        
+
         outdir = self.test_dir / "projet_api_test"
         try:
             generate_project(blueprint, str(outdir))
@@ -56,8 +57,8 @@ class TestEndToEndIntegration:
             pytest.skip(f"Impossible de générer le projet : {e}")
 
         # Vérifications essentielles
-        project_name = blueprint.get('project_name', 'projet_ia')
-        
+        project_name = blueprint.get("project_name", "projet_ia")
+
         # Vérifier requirements.txt
         req = outdir / project_name / "requirements.txt"
         assert req.exists(), "requirements.txt manquant dans le projet généré"
@@ -65,9 +66,9 @@ class TestEndToEndIntegration:
         # Vérifier openapi.yaml pour les projets API
         openapi = outdir / project_name / "openapi.yaml"
         if openapi.exists():
-            with open(openapi, 'r') as f:
+            with open(openapi, "r") as f:
                 data = yaml.safe_load(f)
-            assert 'openapi' in data, "Clé 'openapi' absente du openapi.yaml généré"
+            assert "openapi" in data, "Clé 'openapi' absente du openapi.yaml généré"
 
         # Vérifier le code principal
         main_py = outdir / project_name / "src" / "main.py"
@@ -78,18 +79,21 @@ class TestEndToEndIntegration:
         # Tester l'exécution
         try:
             result = subprocess.run(
-                [sys.executable, str(main_py)], 
-                capture_output=True, 
-                timeout=10
+                [sys.executable, str(main_py)], capture_output=True, timeout=10
             )
-            assert result.returncode in [0, 1], f"main.py a retourné un code inattendu : {result.returncode}"
+            assert result.returncode in [
+                0,
+                1,
+            ], f"main.py a retourné un code inattendu : {result.returncode}"
         except subprocess.TimeoutExpired:
             pytest.skip("main.py a dépassé le timeout de 10s")
 
         # Vérifier le contenu Python
         with open(main_py) as f:
             content = f.read()
-        assert "def" in content or "class" in content, "Aucune fonction ou classe trouvée dans main.py"
+        assert (
+            "def" in content or "class" in content
+        ), "Aucune fonction ou classe trouvée dans main.py"
 
     def test_generation_end_to_end_web(self):
         """Test de génération end-to-end pour un projet web."""
@@ -104,10 +108,10 @@ class TestEndToEndIntegration:
         # Générer un projet web
         try:
             blueprint = generate_blueprint_mock("web application test")
-            blueprint['project_type'] = 'web'
+            blueprint["project_type"] = "web"
         except Exception as e:
             pytest.skip(f"Impossible de générer le blueprint web : {e}")
-        
+
         outdir = self.test_dir / "projet_web_test"
         try:
             generate_project(blueprint, str(outdir))
@@ -115,14 +119,14 @@ class TestEndToEndIntegration:
             pytest.skip(f"Impossible de générer le projet web : {e}")
 
         # Vérifications spécifiques aux projets web
-        project_name = blueprint.get('project_name', 'projet_web')
-        
+        project_name = blueprint.get("project_name", "projet_web")
+
         # Vérifier package.json pour les projets web
         package_json = outdir / project_name / "package.json"
         if package_json.exists():
-            with open(package_json, 'r') as f:
+            with open(package_json, "r") as f:
                 data = yaml.safe_load(f)
-            assert 'name' in data, "Clé 'name' absente du package.json généré"
+            assert "name" in data, "Clé 'name' absente du package.json généré"
 
         # Vérifier README.md
         readme = outdir / project_name / "README.md"
@@ -141,10 +145,10 @@ class TestEndToEndIntegration:
         # Générer un projet CLI
         try:
             blueprint = generate_blueprint_mock("cli tool test")
-            blueprint['project_type'] = 'cli'
+            blueprint["project_type"] = "cli"
         except Exception as e:
             pytest.skip(f"Impossible de générer le blueprint CLI : {e}")
-        
+
         outdir = self.test_dir / "projet_cli_test"
         try:
             generate_project(blueprint, str(outdir))
@@ -152,12 +156,14 @@ class TestEndToEndIntegration:
             pytest.skip(f"Impossible de générer le projet CLI : {e}")
 
         # Vérifications spécifiques aux projets CLI
-        project_name = blueprint.get('project_name', 'projet_cli')
-        
+        project_name = blueprint.get("project_name", "projet_cli")
+
         # Vérifier setup.py ou pyproject.toml
         setup_py = outdir / project_name / "setup.py"
         pyproject_toml = outdir / project_name / "pyproject.toml"
-        assert setup_py.exists() or pyproject_toml.exists(), "Fichier de configuration manquant"
+        assert (
+            setup_py.exists() or pyproject_toml.exists()
+        ), "Fichier de configuration manquant"
 
     def test_workflow_complete(self):
         """Test du workflow complet d'Athalia."""
@@ -169,26 +175,28 @@ class TestEndToEndIntegration:
         # Créer un projet de test
         test_project = self.test_dir / "workflow_test"
         test_project.mkdir()
-        
+
         # Créer un fichier de test
         test_file = test_project / "test.py"
-        test_file.write_text("""
+        test_file.write_text(
+            """
 def test_function():
     return "test"
-""")
+"""
+        )
 
         try:
             # Initialiser l'orchestrateur
             orchestrator = UnifiedOrchestrator(str(test_project))
-            
+
             # Exécuter un audit
             audit_result = orchestrator.run_audit(dry_run=True)
             assert isinstance(audit_result, dict)
-            
+
             # Exécuter une analyse
             analysis_result = orchestrator.run_analysis(dry_run=True)
             assert isinstance(analysis_result, dict)
-            
+
         except Exception as e:
             pytest.skip(f"Workflow non disponible : {e}")
 
@@ -197,10 +205,7 @@ def test_function():
         # Test avec git
         try:
             result = subprocess.run(
-                ["git", "--version"],
-                capture_output=True,
-                text=True,
-                timeout=10
+                ["git", "--version"], capture_output=True, text=True, timeout=10
             )
             assert result.returncode == 0, "Git non disponible"
         except (subprocess.TimeoutExpired, FileNotFoundError):
@@ -212,7 +217,7 @@ def test_function():
                 [sys.executable, "--version"],
                 capture_output=True,
                 text=True,
-                timeout=10
+                timeout=10,
             )
             assert result.returncode == 0, "Python non disponible"
         except subprocess.TimeoutExpired:
@@ -239,16 +244,17 @@ def test_function():
     def test_performance_end_to_end(self):
         """Test de performance end-to-end."""
         start_time = time.time()
-        
+
         try:
             from athalia_core.generation import generate_blueprint_mock
+
             blueprint = generate_blueprint_mock("performance test")
         except ImportError:
             pytest.skip("Modules de génération non disponibles")
-        
+
         end_time = time.time()
         execution_time = end_time - start_time
-        
+
         # La génération de blueprint ne devrait pas prendre plus de 5 secondes
         assert execution_time < 5.0, f"Génération trop lente : {execution_time:.2f}s"
 
@@ -263,7 +269,7 @@ def test_function():
         import threading
 
         results = queue.Queue()
-        
+
         def generate_blueprint_thread(thread_id):
             try:
                 blueprint = generate_blueprint_mock(f"concurrent test {thread_id}")
@@ -287,7 +293,9 @@ def test_function():
             thread_id, result = results.get()
             if isinstance(result, Exception):
                 pytest.skip(f"Génération concurrente échouée : {result}")
-            assert isinstance(result, dict), f"Résultat invalide pour le thread {thread_id}"
+            assert isinstance(
+                result, dict
+            ), f"Résultat invalide pour le thread {thread_id}"
 
 
 def test_generation_end_to_end_simple(tmp_path):
@@ -300,10 +308,10 @@ def test_generation_end_to_end_simple(tmp_path):
     # Générer un projet API complet
     try:
         blueprint = generate_blueprint_mock("api calculatrice test")
-        blueprint['project_type'] = 'api'
+        blueprint["project_type"] = "api"
     except Exception as e:
         pytest.skip(f"Impossible de générer le blueprint : {e}")
-    
+
     outdir = tmp_path / "projet_test"
     try:
         generate_project(blueprint, str(outdir))
@@ -311,8 +319,8 @@ def test_generation_end_to_end_simple(tmp_path):
         pytest.skip(f"Impossible de générer le projet : {e}")
 
     # Vérifications essentielles
-    project_name = blueprint.get('project_name', 'projet_ia')
-    
+    project_name = blueprint.get("project_name", "projet_ia")
+
     # Vérifier requirements.txt
     req = outdir / project_name / "requirements.txt"
     assert req.exists(), "requirements.txt manquant dans le projet généré"
@@ -326,18 +334,21 @@ def test_generation_end_to_end_simple(tmp_path):
     # Tester l'exécution
     try:
         result = subprocess.run(
-            [sys.executable, str(main_py)], 
-            capture_output=True, 
-            timeout=10
+            [sys.executable, str(main_py)], capture_output=True, timeout=10
         )
-        assert result.returncode in [0, 1], f"main.py a retourné un code inattendu : {result.returncode}"
+        assert result.returncode in [
+            0,
+            1,
+        ], f"main.py a retourné un code inattendu : {result.returncode}"
     except subprocess.TimeoutExpired:
         pytest.skip("main.py a dépassé le timeout de 10s")
 
     # Vérifier le contenu Python
     with open(main_py) as f:
         content = f.read()
-    assert "def" in content or "class" in content, "Aucune fonction ou classe trouvée dans main.py"
+    assert (
+        "def" in content or "class" in content
+    ), "Aucune fonction ou classe trouvée dans main.py"
 
 
 if __name__ == "__main__":

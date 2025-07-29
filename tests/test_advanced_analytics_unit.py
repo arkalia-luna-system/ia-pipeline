@@ -47,5 +47,6 @@ class TestAdvancedAnalytics(unittest.TestCase):
         except Exception as e:
             self.fail(f"print_report a levé une exception: {e}")
 
+
 if __name__ == "__main__":
-    unittest.main() 
+    unittest.main()

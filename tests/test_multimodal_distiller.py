@@ -5,8 +5,10 @@ from athalia_core.distillation.multimodal_distiller import MultimodalDistiller
 
 
 class TestMultimodalDistiller(unittest.TestCase):
-    @patch.object(MultimodalDistiller, 'call_llava', return_value="Analyse image OK")
-    @patch('athalia_core.ai_robust.RobustAI._call_model', return_value="Réponse texte OK")
+    @patch.object(MultimodalDistiller, "call_llava", return_value="Analyse image OK")
+    @patch(
+        "athalia_core.ai_robust.RobustAI._call_model", return_value="Réponse texte OK"
+    )
     def test_distill(self, mock_model, mock_llava):
         distiller = MultimodalDistiller()
         text_prompts = ["Décris cette image"]
@@ -21,5 +23,6 @@ class TestMultimodalDistiller(unittest.TestCase):
         result = distiller.distill([], [])
         self.assertEqual(result, "\n[Image: ]")
 
-if __name__ == '__main__':
-    unittest.main() 
+
+if __name__ == "__main__":
+    unittest.main()

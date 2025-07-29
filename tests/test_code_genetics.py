@@ -6,16 +6,17 @@ from athalia_core.distillation.code_genetics import CodeGenetics
 class TestCodeGenetics(unittest.TestCase):
     def setUp(self):
         self.genetics = CodeGenetics()
-        self.solutions = [
-            "print('hello world')",
-            "print('hello')",
-            "world = 1"
-        ]
+        self.solutions = ["print('hello world')", "print('hello')", "world = 1"]
 
     def test_crossover(self):
         # Le résultat doit être une combinaison de fragments des solutions
         result = self.genetics.crossover(self.solutions)
-        self.assertTrue(any(word in result for word in ["print('hello", "world')", "world", "=", "1"]))
+        self.assertTrue(
+            any(
+                word in result
+                for word in ["print('hello", "world')", "world", "=", "1"]
+            )
+        )
 
     def test_mutate(self):
         solution = "print('hello world')"
@@ -32,7 +33,9 @@ class TestCodeGenetics(unittest.TestCase):
 
     def test_evolve(self):
         scorer = lambda s: len(s)  # Favorise les solutions longues
-        best = self.genetics.evolve(self.solutions, scorer, generations=2, mutation_rate=0.5)
+        best = self.genetics.evolve(
+            self.solutions, scorer, generations=2, mutation_rate=0.5
+        )
         self.assertIsInstance(best, str)
         self.assertTrue(len(best) > 0)
 
@@ -40,5 +43,6 @@ class TestCodeGenetics(unittest.TestCase):
         self.assertEqual(self.genetics.crossover([]), "")
         self.assertEqual(self.genetics.evolve([], lambda s: 1), "")
 
-if __name__ == '__main__':
-    unittest.main() 
+
+if __name__ == "__main__":
+    unittest.main()

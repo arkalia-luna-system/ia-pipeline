@@ -28,12 +28,13 @@ class TestCLIRobustesse:
         self.cli_paths = [
             Path("athalia_core/main.py"),
             Path("athalia_unified.py"),
-            Path("bin/ath-test.py")
+            Path("bin/ath-test.py"),
         ]
 
     def teardown_method(self):
         """Nettoyage après chaque test."""
         import shutil
+
         if self.test_dir.exists():
             shutil.rmtree(self.test_dir)
 
@@ -46,13 +47,13 @@ class TestCLIRobustesse:
                         [sys.executable, str(cli_path), "--help"],
                         capture_output=True,
                         text=True,
-                        timeout=30
+                        timeout=30,
                     )
-                    
+
                     # Vérifier que la commande s'exécute sans erreur
                     assert result.returncode in [0, 1]  # 0 = succès, 1 = aide affichée
                     assert len(result.stdout) > 0 or len(result.stderr) > 0
-                    
+
                 except subprocess.TimeoutExpired:
                     pytest.skip(f"CLI {cli_path} prend trop de temps à démarrer")
                 except Exception as e:
@@ -67,12 +68,12 @@ class TestCLIRobustesse:
                         [sys.executable, str(cli_path), "--version"],
                         capture_output=True,
                         text=True,
-                        timeout=30
+                        timeout=30,
                     )
-                    
+
                     # Vérifier que la commande s'exécute
                     assert result.returncode in [0, 1]
-                    
+
                 except subprocess.TimeoutExpired:
                     pytest.skip(f"CLI {cli_path} prend trop de temps à démarrer")
                 except Exception as e:
@@ -87,12 +88,12 @@ class TestCLIRobustesse:
                         [sys.executable, str(cli_path), "--invalid-arg"],
                         capture_output=True,
                         text=True,
-                        timeout=30
+                        timeout=30,
                     )
-                    
+
                     # Devrait retourner une erreur pour un argument invalide
                     assert result.returncode != 0
-                    
+
                 except subprocess.TimeoutExpired:
                     pytest.skip(f"CLI {cli_path} prend trop de temps à démarrer")
                 except Exception as e:
@@ -107,12 +108,12 @@ class TestCLIRobustesse:
                         [sys.executable, str(cli_path), "--action"],
                         capture_output=True,
                         text=True,
-                        timeout=30
+                        timeout=30,
                     )
-                    
+
                     # Devrait retourner une erreur pour un argument manquant
                     assert result.returncode != 0
-                    
+
                 except subprocess.TimeoutExpired:
                     pytest.skip(f"CLI {cli_path} prend trop de temps à démarrer")
                 except Exception as e:
@@ -127,12 +128,12 @@ class TestCLIRobustesse:
                         [sys.executable, str(cli_path), "--dry-run"],
                         capture_output=True,
                         text=True,
-                        timeout=30
+                        timeout=30,
                     )
-                    
+
                     # Le mode dry-run ne devrait pas échouer
                     assert result.returncode in [0, 1]
-                    
+
                 except subprocess.TimeoutExpired:
                     pytest.skip(f"CLI {cli_path} prend trop de temps à démarrer")
                 except Exception as e:
@@ -147,12 +148,12 @@ class TestCLIRobustesse:
                         [sys.executable, str(cli_path), "--verbose"],
                         capture_output=True,
                         text=True,
-                        timeout=30
+                        timeout=30,
                     )
-                    
+
                     # Le mode verbeux devrait produire plus de sortie
                     assert result.returncode in [0, 1]
-                    
+
                 except subprocess.TimeoutExpired:
                     pytest.skip(f"CLI {cli_path} prend trop de temps à démarrer")
                 except Exception as e:
@@ -168,12 +169,12 @@ class TestCLIRobustesse:
                         [sys.executable, str(cli_path), "--help"],
                         capture_output=True,
                         text=True,
-                        timeout=1  # Timeout très court
+                        timeout=1,  # Timeout très court
                     )
-                    
+
                     # Si le timeout est respecté, c'est bien
                     assert True
-                    
+
                 except subprocess.TimeoutExpired:
                     # Le timeout est normal pour un timeout court
                     assert True
@@ -190,12 +191,12 @@ class TestCLIRobustesse:
                         [sys.executable, str(cli_path), "/chemin/inexistant"],
                         capture_output=True,
                         text=True,
-                        timeout=30
+                        timeout=30,
                     )
-                    
+
                     # Devrait gérer l'erreur gracieusement
                     assert result.returncode != 0
-                    
+
                 except subprocess.TimeoutExpired:
                     pytest.skip(f"CLI {cli_path} prend trop de temps à démarrer")
                 except Exception as e:
@@ -210,15 +211,15 @@ class TestCLIRobustesse:
                         [sys.executable, str(cli_path), "--help"],
                         capture_output=True,
                         text=True,
-                        timeout=30
+                        timeout=30,
                     )
-                    
+
                     # La sortie devrait être du texte
                     if result.stdout:
                         assert isinstance(result.stdout, str)
                     if result.stderr:
                         assert isinstance(result.stderr, str)
-                    
+
                 except subprocess.TimeoutExpired:
                     pytest.skip(f"CLI {cli_path} prend trop de temps à démarrer")
                 except Exception as e:
@@ -231,19 +232,19 @@ class TestCLIRobustesse:
                 try:
                     # Test avec des variables d'environnement
                     env = os.environ.copy()
-                    env['ATHALIA_DEBUG'] = '1'
-                    
+                    env["ATHALIA_DEBUG"] = "1"
+
                     result = subprocess.run(
                         [sys.executable, str(cli_path), "--help"],
                         capture_output=True,
                         text=True,
                         timeout=30,
-                        env=env
+                        env=env,
                     )
-                    
+
                     # Devrait fonctionner avec les variables d'environnement
                     assert result.returncode in [0, 1]
-                    
+
                 except subprocess.TimeoutExpired:
                     pytest.skip(f"CLI {cli_path} prend trop de temps à démarrer")
                 except Exception as e:
@@ -260,15 +261,15 @@ class TestCLIRobustesse:
                         process = subprocess.Popen(
                             [sys.executable, str(cli_path), "--help"],
                             capture_output=True,
-                            text=True
+                            text=True,
                         )
                         processes.append(process)
-                    
+
                     # Attendre que tous les processus se terminent
                     for process in processes:
                         process.wait(timeout=30)
                         assert process.returncode in [0, 1]
-                    
+
                 except subprocess.TimeoutExpired:
                     pytest.skip(f"CLI {cli_path} prend trop de temps à démarrer")
                 except Exception as e:
@@ -281,17 +282,17 @@ def test_cli_basic_functionality():
     cli_path = Path("athalia_unified.py")
     if not cli_path.exists():
         pytest.skip("CLI principale non trouvée")
-    
+
     try:
         result = subprocess.run(
             [sys.executable, str(cli_path), "--help"],
             capture_output=True,
             text=True,
-            timeout=30
+            timeout=30,
         )
-        
+
         assert result.returncode in [0, 1]
-        
+
     except subprocess.TimeoutExpired:
         pytest.skip("CLI prend trop de temps à démarrer")
     except Exception as e:
@@ -303,20 +304,27 @@ def test_cli_integration_workflow():
     cli_path = Path("athalia_unified.py")
     if not cli_path.exists():
         pytest.skip("CLI principale non trouvée")
-    
+
     with tempfile.TemporaryDirectory() as temp_dir:
         try:
             # Test d'un workflow complet
             result = subprocess.run(
-                [sys.executable, str(cli_path), temp_dir, "--action", "audit", "--dry-run"],
+                [
+                    sys.executable,
+                    str(cli_path),
+                    temp_dir,
+                    "--action",
+                    "audit",
+                    "--dry-run",
+                ],
                 capture_output=True,
                 text=True,
-                timeout=60
+                timeout=60,
             )
-            
+
             # Le workflow devrait s'exécuter sans erreur critique
             assert result.returncode in [0, 1]
-            
+
         except subprocess.TimeoutExpired:
             pytest.skip("Workflow CLI prend trop de temps")
         except Exception as e:
