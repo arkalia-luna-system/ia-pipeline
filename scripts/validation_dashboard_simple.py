@@ -16,19 +16,19 @@ import os
 
 class ValidationDashboardHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
-        if self.path == '/':
-            self.path = '/dashboard_validation.html'
-        elif self.path == '/api/validate':
+        if self.path == "/":
+            self.path = "/dashboard_validation.html"
+        elif self.path == "/api/validate":
             self.send_validation_result()
             return
-        elif self.path == '/api/history':
+        elif self.path == "/api/history":
             self.send_history()
             return
 
         return http.server.SimpleHTTPRequestHandler.do_GET(self)
 
     def do_POST(self):
-        if self.path == '/api/validate':
+        if self.path == "/api/validate":
             self.send_validation_result()
             return
 
@@ -42,46 +42,48 @@ class ValidationDashboardHandler(http.server.SimpleHTTPRequestHandler):
                 ["python", "scripts/validation_objective.py"],
                 capture_output=True,
                 text=True,
-                timeout=60
+                timeout=60,
             )
 
             if result.returncode == 0:
                 # Parse le score final
                 output = result.stdout
                 if "SCORE FINAL:" in output:
-                    score_line = [line for line in output.split('\n') if "SCORE FINAL:" in line][0]
-                    score = float(score_line.split(':')[1].strip().replace('%', ''))
+                    score_line = [
+                        line for line in output.split("\n") if "SCORE FINAL:" in line
+                    ][0]
+                    score = float(score_line.split(":")[1].strip().replace("%", ""))
                 else:
                     score = 80
 
                 response_data = {
-                    'success': True,
-                    'score': score,
-                    'execution_time': 30,
-                    'status': 'success',
-                    'message': 'Validation terminée avec succès'
+                    "success": True,
+                    "score": score,
+                    "execution_time": 30,
+                    "status": "success",
+                    "message": "Validation terminée avec succès",
                 }
             else:
                 response_data = {
-                    'success': False,
-                    'error': result.stderr,
-                    'status': 'error',
-                    'message': 'Erreur lors de la validation'
+                    "success": False,
+                    "error": result.stderr,
+                    "status": "error",
+                    "message": "Erreur lors de la validation",
                 }
 
         except Exception as e:
             response_data = {
-                'success': False,
-                'error': str(e),
-                'status': 'error',
-                'message': 'Exception lors de la validation'
+                "success": False,
+                "error": str(e),
+                "status": "error",
+                "message": "Exception lors de la validation",
             }
 
         self.send_response(200)
-        self.send_header('Content-type', 'application/json')
-        self.send_header('Access-Control-Allow-Origin', '*')
-        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
-        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+        self.send_header("Content-type", "application/json")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type")
         self.end_headers()
         self.wfile.write(json.dumps(response_data).encode())
 
@@ -91,32 +93,26 @@ class ValidationDashboardHandler(http.server.SimpleHTTPRequestHandler):
             # Crée un historique simulé pour l'instant
             history = [
                 {
-                    'timestamp': datetime.now().isoformat(),
-                    'score': 100,
-                    'type': 'objective',
-                    'execution_time': 30
+                    "timestamp": datetime.now().isoformat(),
+                    "score": 100,
+                    "type": "objective",
+                    "execution_time": 30,
                 }
             ]
 
-            response_data = {
-                'success': True,
-                'history': history
-            }
+            response_data = {"success": True, "history": history}
 
         except Exception as e:
-            response_data = {
-                'success': False,
-                'error': str(e)
-            }
+            response_data = {"success": False, "error": str(e)}
 
         self.send_response(200)
-        self.send_header('Content-type', 'application/json')
-        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header("Content-type", "application/json")
+        self.send_header("Access-Control-Allow-Origin", "*")
         self.end_headers()
         self.wfile.write(json.dumps(response_data).encode())
 
     def end_headers(self):
-        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header("Access-Control-Allow-Origin", "*")
         super().end_headers()
 
 
@@ -136,4 +132,4 @@ def run_dashboard(port=5001):
 
 
 if __name__ == "__main__":
-    run_dashboard() 
+    run_dashboard()

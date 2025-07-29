@@ -44,7 +44,7 @@ class BackupManager:
             "*.log",
             ".DS_Store",
             "backups",
-            "archive"
+            "archive",
         ]
 
         logger.info(f"Création de la sauvegarde: {backup_name}")
@@ -64,7 +64,7 @@ class BackupManager:
             "backup_name": backup_name,
             "timestamp": datetime.now().isoformat(),
             "project_root": str(self.project_root),
-            "files_count": len(list(backup_path.rglob("*")))
+            "files_count": len(list(backup_path.rglob("*"))),
         }
 
         metadata_file = backup_path / "backup_metadata.json"
@@ -83,14 +83,18 @@ class BackupManager:
         dst_file.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(src, dst_file)
 
-    def _copy_directory(self, src: Path, dst_dir: Path, exclude_patterns: List[str]) -> None:
+    def _copy_directory(
+        self, src: Path, dst_dir: Path, exclude_patterns: List[str]
+    ) -> None:
         """Copie un répertoire en respectant les exclusions"""
         if self._should_exclude(src, exclude_patterns):
             return
 
         dst_path = dst_dir / src.relative_to(self.project_root)
         if not dst_path.exists():
-            shutil.copytree(src, dst_path, ignore=shutil.ignore_patterns(*exclude_patterns))
+            shutil.copytree(
+                src, dst_path, ignore=shutil.ignore_patterns(*exclude_patterns)
+            )
 
     def _should_exclude(self, path: Path, exclude_patterns: List[str]) -> bool:
         """Vérifie si un chemin doit être exclu"""
@@ -109,7 +113,9 @@ class BackupManager:
                         backups.append(metadata)
         return sorted(backups, key=lambda x: x["timestamp"], reverse=True)
 
-    def restore_backup(self, backup_name: str, target_dir: Optional[str] = None) -> bool:
+    def restore_backup(
+        self, backup_name: str, target_dir: Optional[str] = None
+    ) -> bool:
         """Restaure une sauvegarde"""
         backup_path = self.backup_dir / backup_name
         if not backup_path.exists():
@@ -146,7 +152,9 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(description="Script de sauvegarde Athalia")
-    parser.add_argument("action", choices=["create", "list", "restore"], help="Action à effectuer")
+    parser.add_argument(
+        "action", choices=["create", "list", "restore"], help="Action à effectuer"
+    )
     parser.add_argument("--name", help="Nom de la sauvegarde")
     parser.add_argument("--target", help="Répertoire cible pour la restauration")
     parser.add_argument("--project-root", default=".", help="Racine du projet")
@@ -176,4 +184,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main() 
+    main()
