@@ -16,7 +16,7 @@ import time
 try:
     from athalia_core.logger_advanced import athalia_logger, log_main
 except ImportError:
-    # Fallback vers le logging standard si le module avancé n'est pas
+    # Fallback vers le logging standard si le module avancé n'est pas'
     # disponible
     athalia_logger = None
 
@@ -37,7 +37,7 @@ running = True
 def signal_handler(signum, frame):
     """Gestionnaire de signal pour arrêt propre"""
     global running
-    logger.info("\n🛑 Signal d'arrêt reçu. Arrêt propre en cours...")
+    logger.info("\n🛑 Signal darrêt reçu. Arrêt propre en cours...")
     running = False
 
 
@@ -47,13 +47,13 @@ def menu():
     logger.info("2. Nettoyer un projet (tests / caches)")
     logger.info("3. Générer la CI et les fichiers")
     logger.info("4. Générer le dashboard")
-    logger.info("5. Générer guides d'onboarding")
+    logger.info("5. Générer guides donboarding")
     logger.info("6. Audit sécurité (à venir)")
-    logger.info("7. Scan de l'existant (audit non destructif)")
+    logger.info("7. Scan de lexistant (audit non destructif)")
     logger.info("8. Génération dry-run (simulation, rapport)")
-    logger.info("9. Voir rapport d'intégration")
+    logger.info("9. Voir rapport dintégration")
     logger.info("10. Rollback automatique (restauration .backups)")
-    logger.info("11. Logs détaillés d'intégration")
+    logger.info("11. Logs détaillés dintégration")
     logger.info("12. 🔍 Audit intelligent (nouveau)")
     logger.info("13. Quitter")
     logger.info("14. Mode surveillance (nouveau)")
@@ -65,7 +65,7 @@ def menu():
 
 
 def safe_input(prompt: str) -> str:
-    """Entrée sécurisée avec gestion d'erreurs."""
+    """Entrée sécurisée avec gestion derreurs."""
     try:
         return input(prompt).strip()
     except (EOFError, KeyboardInterrupt):
@@ -180,8 +180,8 @@ def main(test_mode=False):
                     continue
                 # blueprint = generate_blueprint_mock("Onboarding")
                 # generate_onboarding_md(blueprint, outdir)
-                # Il faut un blueprint ici, mais comme il n'est pas généré, on
-                # passe un dict vide pour éviter l'erreur
+                # Il faut un blueprint ici, mais comme il n'est pas généré, on'
+                # passe un dict vide pour éviter lerreur
                 generate_onboard_cli({}, outdir)
                 generate_onboarding_html_advanced({}, outdir)
                 logger.info(f"Guides d'onboarding générés dans {outdir}")
@@ -224,7 +224,7 @@ def main(test_mode=False):
                 if os.path.exists(report_file):
                     logger.info(open(report_file).read())
                 else:
-                    logger.info("Aucun rapport d'intégration trouvé.")
+                    logger.info("Aucun rapport dintégration trouvé.")
             elif choix == '10':
                 outdir = safe_input("Nom du dossier projet à rollback : ")
                 if not outdir:
@@ -268,7 +268,7 @@ def main(test_mode=False):
                 if os.path.exists(log_file):
                     logger.info(open(log_file).read())
                 else:
-                    logger.info("Aucun log d'intégration trouvé.")
+                    logger.info("Aucun log dintégration trouvé.")
             elif choix == '12':
                 outdir = safe_input(
                     "Nom du dossier projet à auditer intelligemment : ")
@@ -279,7 +279,7 @@ def main(test_mode=False):
                     # report = generate_audit_report(outdir) # This line was
                     # removed as per the edit hint.
                     logger.info("\n" + "=" * 50)
-                    logger.info("🔍 RAPPORT D'AUDIT")
+                    logger.info("🔍 RAPPORT DAUDIT")
                     logger.info("=" * 50)
                     # logger.info(report) # This line was removed as per the
                     # edit hint.
@@ -298,7 +298,7 @@ def main(test_mode=False):
             if test_mode:
                 break  # On sort après un tour en mode test
         except KeyboardInterrupt:
-            logger.info("\n🛑 Arrêt demandé par l'utilisateur...")
+            logger.info("\n🛑 Arrêt demandé par lutilisateur...")
             running = False
             break
         except Exception as e:

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Fichier de compatibilité pour l'audit
+Fichier de compatibilité pour laudit
 Redirige vers intelligent_auditor.py pour maintenir la compatibilité
 """
 
@@ -12,7 +12,7 @@ from athalia_core.intelligent_auditor import IntelligentAuditor
 
 
 class ProjectAuditor:
-    """Alias pour compatibilité avec l'ancien audit.py"""
+    """Alias pour compatibilité avec lancien audit.py"""
 
     def __init__(self, project_path: str):
         self.project_path = project_path

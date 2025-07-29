@@ -197,7 +197,8 @@ class ProjectImporter:
             'corrections_needed': quality_analysis['issues'],
             'enhancements': self._suggest_enhancements(
                 project_type,
-                quality_analysis)}
+                quality_analysis)
+        }
 
         return blueprint
 
@@ -235,10 +236,10 @@ class ProjectImporter:
         """Suggère des dépendances selon le type de projet."""
         suggestions = {
             'game': ['pygame', 'pymunk'],
-            'api': ['fastapi, sqlalchemy', 'pydantic'],
+            'api': ['fastapi', 'sqlalchemy', 'pydantic'],
             'ai': ['tensorflow', 'pandas', 'scikit-learn'],
-            'web': ['flask', 'jinja2, emy'],
-            'data': ['pandas', 'numpy, lib'],
+            'web': ['flask', 'jinja2', 'emy'],
+            'data': ['pandas', 'numpy', 'lib'],
             'mobile': ['kivy', 'requests'],
             'iot': ['pyserial', 'requests']
         }
@@ -252,12 +253,11 @@ class ProjectImporter:
             'ai': ['ml_pipeline.md', 'model_evaluation.md'],
             'web': ['web_design.md', 'responsive_ui.md'],
             'data': ['data_analysis.md', 'visualization.md'],
-            'mobile': ('mobile_ui.md', 'performance.md'),
+            'mobile': ['mobile_ui.md', 'performance.md'],
             'iot': ['iot_architecture.md', 'sensor_integration.md']
         }
         return suggestions.get(
-            project_type, [
-                'dev_debug.yaml', 'ux_fun_boost.md'])
+            project_type, ['prompt.md'])
 
     def _suggest_enhancements(self,
                               project_type: str,

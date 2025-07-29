@@ -29,7 +29,7 @@ class AdvancedAnalytics:
         }
 
     def run(self) -> Dict[str, Any]:
-        """Lance l'analyse complète du projet"""
+        """Lance lanalyse complète du projet"""
         logger.info(f"📊 Analytics avancée pour : {self.project_path.name}")
 
         # Calcul des métriques
@@ -75,7 +75,7 @@ class AdvancedAnalytics:
         self.metrics["complexity"] = complexity_data
 
     def _calculate_complexity(self, tree: ast.AST) -> int:
-        """Calcule la complexité cyclomatique d'un fichier"""
+        """Calcule la complexité cyclomatique dun fichier"""
         complexity = 1  # Base complexity
 
         for node in ast.walk(tree):
@@ -122,8 +122,7 @@ class AdvancedAnalytics:
                 # Compter les lignes de code, docstrings, commentaires et vides
                 for line in lines:
                     stripped = line.strip()
-                    if stripped.startswith(
-                            '"""') or stripped.startswith("'''"):
+                    if stripped.startswith('"""') or stripped.startswith("'''"):
                         coverage_data["docstrings"] += 1
                     elif stripped.startswith('#'):
                         coverage_data["comments"] += 1
@@ -182,8 +181,7 @@ class AdvancedAnalytics:
 
                 for line in lines:
                     stripped = line.strip()
-                    if stripped.startswith(
-                            '"""') or stripped.startswith("'''"):
+                    if stripped.startswith('"""') or stripped.startswith("'''"):
                         quality_data["docstrings"] += 1
                     elif stripped.startswith('#'):
                         quality_data["comments"] += 1
@@ -196,7 +194,7 @@ class AdvancedAnalytics:
         self.metrics["quality"] = quality_data
 
     def _analyze_evolution(self):
-        """Analyse l'évolution du projet"""
+        """Analyse lévolution du projet"""
         evolution_data = {
             "last_modified": None,
             "total_files": 0
@@ -329,7 +327,7 @@ class AdvancedAnalytics:
         return summary
 
     def print_report(self):
-        """Affiche le rapport d'analyse"""
+        """Affiche le rapport danalyse"""
         logger.info(self._generate_summary())
 
 

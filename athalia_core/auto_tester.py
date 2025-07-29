@@ -1,5 +1,4 @@
 
-#!/usr/bin/env python3
 import os
 from pathlib import Path
 from typing import Dict, List, Any
@@ -11,10 +10,8 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-"""
-Module de tests automatiques pour Athalia
-Génération automatique de tests unitaires et d'intégration
-"""
+# Module de tests automatiques pour Athalia
+# Génération automatique de tests unitaires et d'intégration'
 
 
 class AutoTester:
@@ -27,7 +24,7 @@ class AutoTester:
         self.generated_tests = []
 
     def run(self) -> Dict[str, Any]:
-        """Méthode run() pour l'orchestrateur - exécute les tests"""
+        """Méthode run() pour lorchestrateur - exécute les tests"""
         if not self.project_path:
             raise ValueError("project_path doit être défini")
         return self.generate_tests(str(self.project_path))
@@ -128,7 +125,7 @@ class AutoTester:
 
     def _generate_module_unit_tests(self, module: Dict[str, Any]) -> str:
         """Génère les tests unitaires pour un module"""
-        test_content = """#!/usr/bin/env python3
+        test_content = """#!/usr/bin/env python3"
 import unittest
 import sys
 import os
@@ -161,7 +158,7 @@ class Test{module_name}(unittest.TestCase):
             self.assertIsNotNone(instance)
         except Exception as e:
             self.skipTest(f"Impossible de créer {class_name}: {{e}}")
-""".format(class_name=class_info['name'], module_name=module["name"])
+""".format(class_name=class_info["name"], module_name=module["name"])
 
             # Tests pour les méthodes
             for method_name in class_info["methods"]:
@@ -181,11 +178,11 @@ class Test{module_name}(unittest.TestCase):
             self.assertIsNotNone(result)
         except Exception as e:
             self.skipTest(f"Impossible de tester {method_name}: {{e}}")
-""".format(class_name=class_info['name'], method_name=method_name, module_name=module["name"])
+""".format(class_name=class_info["name"], method_name=method_name, module_name=module["name"])
 
         # Tests pour les fonctions
         for func_name in module["functions"]:
-            test_content += """
+            test_content += """"
     def test_{func_name}(self):
         \"\"\"Test de la fonction {func_name}\"\"\"
         try:
@@ -202,7 +199,7 @@ class Test{module_name}(unittest.TestCase):
 
         test_content += """
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
 """
 
@@ -210,11 +207,11 @@ if __name__ == '__main__':
 
     def _generate_integration_tests(
             self, modules: List[Dict[str, Any]]) -> List[str]:
-        """Génère les tests d'intégration"""
+        """Génère les tests dintégration"""
         integration_tests = []
 
-        # Test d'intégration principal
-        integration_content = """#!/usr/bin/env python3
+        # Test dintégration principal
+        integration_content = """#!/usr/bin/env python3"
 import unittest
 import sys
 import os
@@ -225,7 +222,7 @@ import shutil
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 class TestIntegration(unittest.TestCase):
-    \"\"\"Tests d'intégration\"\"\"
+    \"\"\"Tests dintégration\"\"\"
 
     def setUp(self):
         \"\"\"Configuration avant chaque test\"\"\"
@@ -236,17 +233,17 @@ class TestIntegration(unittest.TestCase):
         shutil.rmtree(self.temp_dir, ignore_errors=True)
 
     def test_project_import(self):
-        \"\"\"Test d'import du projet\"\"\"
+        \"\"\"Test dimport du projet\"\"\"
         try:
-            # Tester l'import des modules principaux
-            for module in {[m['name'] for m in modules]}:
+            # Tester l'import des modules principaux'
+            for module in {[m['name] for m in modules]}:'
                 try:
                     __import__(module)
                 except ImportError:
                     pass  # Module optionnel
             self.assertTrue(True)
         except Exception as e:
-            self.fail(f"Erreur d'import: {{e}}")
+            self.fail(f"Erreur d'import: {{e}}")'
 
     def test_basic_functionality(self):
         \"\"\"Test de fonctionnalité de base\"\"\"
@@ -257,9 +254,9 @@ class TestIntegration(unittest.TestCase):
             self.skipTest(f"Fonctionnalité de base non disponible: {{e}}")
 
     def test_error_handling(self):
-        \"\"\"Test de gestion d'erreurs\"\"\"
+        \"\"\"Test de gestion derreurs\"\"\"
         try:
-            # TODO: Ajouter des tests de gestion d'erreurs
+            # TODO: Ajouter des tests de gestion derreurs
             self.assertTrue(True)
         except Exception as e:
             self.skipTest(f"Gestion d'erreurs non testable: {{e}}")
@@ -278,7 +275,7 @@ if __name__ == '__main__':
         performance_tests = []
 
         # Test de performance principal
-        performance_content = """#!/usr/bin/env python3
+        performance_content = """#!/usr/bin/env python3"
 import unittest
 import sys
 import os
@@ -298,7 +295,7 @@ class TestPerformance(unittest.TestCase):
         \"\"\"Test de performance des imports\"\"\"
         start_time = time.time()
         try:
-            # Tester l'import des modules principaux
+            # Tester l'import des modules principaux'
             for module in {[m['name'] for m in modules]}:
                 try:
                     __import__(module)
@@ -368,7 +365,7 @@ if __name__ == '__main__':
                 file_handle.write(test_content)
             self.generated_tests.append(str(test_file))
 
-        # Tests dintégration
+        # Tests d'intégration
         for index, test_content in enumerate(integration_tests):
             test_file = tests_dir / f"auto_generated_integration_{index + 1}.py"
             with open(test_file, 'w', encoding='utf-8') as file_handle:
@@ -431,16 +428,43 @@ python -m pytest tests/ --cov=. --cov-report=html --cov-report=term
 echo "✅ Tests terminés !"
 """
 
-        # Créer le dossier scripts s'il n'existe pas
+        # Créer le dossier scripts s'il nexiste pas
         scripts_dir = self.project_path / "scripts"
         scripts_dir.mkdir(exist_ok=True)
-        
+
         run_tests_file = scripts_dir / "run_tests.sh"
         with open(run_tests_file, 'w', encoding='utf-8') as file_handle:
             file_handle.write(run_tests_script)
 
         # Rendre le script exécutable
         os.chmod(run_tests_file, 0o755)
+
+    def _cleanup_generated_tests(self):
+        """Nettoie les fichiers de tests auto-générés après exécution"""
+        logger.info("🧹 Nettoyage des fichiers de tests auto-générés...")
+
+        # Supprimer les fichiers de tests auto-générés
+        test_patterns = [
+            "tests/auto_generated_unit_*.py",
+            "tests/auto_generated_integration_*.py",
+            "tests/auto_generated_performance_*.py"
+        ]
+
+        for pattern in test_patterns:
+            for test_file in self.project_path.glob(pattern):
+                try:
+                    test_file.unlink()
+                    logger.debug(f"Supprimé: {test_file}")
+                except Exception as e:
+                    logger.warning(f"Impossible de supprimer {test_file}: {e}")
+
+        # Supprimer aussi les fichiers macOS ._* sils existent
+        for test_file in self.project_path.rglob("tests/._auto_generated_*.py"):
+            try:
+                test_file.unlink()
+                logger.debug(f"Supprimé fichier macOS: {test_file}")
+            except Exception as e:
+                logger.warning(f"Impossible de supprimer {test_file}: {e}")
 
     def _run_tests(self) -> Dict[str, Any]:
         """Exécute les tests générés et collecte les résultats"""
@@ -459,7 +483,8 @@ echo "✅ Tests terminés !"
             logger.info("🧪 Exécution des tests unitaires...")
             try:
                 result = subprocess.run(
-                    ["python", "-m", "pytest", "tests/auto_generated_unit_*.py", "-v", "--tb=short"],
+                    ["python", "-m", "pytest", "tests/auto_generated_unit_*.py",
+                     "-v", "--tb=short"],
                     capture_output=True,
                     text=True,
                     timeout=60
@@ -474,7 +499,7 @@ echo "✅ Tests terminés !"
                     results["unit_tests"]["errors"].append(result.stderr)
             except subprocess.TimeoutExpired:
                 results["unit_tests"]["errors"].append(
-                    "Timeout lors de l'exécution")
+                    "Timeout lors de lexécution")
             except Exception as e:
                 results["unit_tests"]["errors"].append(str(e))
 
@@ -482,7 +507,8 @@ echo "✅ Tests terminés !"
             logger.info("🔗 Exécution des tests dintégration...")
             try:
                 result = subprocess.run(
-                    ["python", "-m", "pytest", "tests/auto_generated_integration_*.py", "-v", "--tb=short"],
+                    ["python", "-m", "pytest", "tests/auto_generated_integration_*.py",
+                     "-v", "--tb=short"],
                     capture_output=True,
                     text=True,
                     timeout=60
@@ -498,15 +524,23 @@ echo "✅ Tests terminés !"
                         result.stderr)
             except subprocess.TimeoutExpired:
                 results["integration_tests"]["errors"].append(
-                    "Timeout lors de l'exécution")
+                    "Timeout lors de lexécution")
             except Exception as e:
                 results["integration_tests"]["errors"].append(str(e))
 
             # Retourner au répertoire original
             os.chdir(original_dir)
 
+            # Nettoyer les fichiers de tests auto-générés
+            self._cleanup_generated_tests()
+
         except Exception as e:
             results["unit_tests"]["errors"].append(f"Erreur générale: {e}")
+            # Nettoyer même en cas derreur
+            try:
+                self._cleanup_generated_tests()
+            except Exception:
+                pass
 
         return results
 
@@ -530,7 +564,7 @@ echo "✅ Tests terminés !"
    • Échoués: {unit_failed}
    • Erreurs: {unit_errors}
 
-🔗 Tests d'intégration:
+🔗 Tests dintégration:
    • Réussis: {integration_passed}
    • Échoués: {integration_failed}
    • Erreurs: {integration_errors}
@@ -564,7 +598,7 @@ echo "✅ Tests terminés !"
 
 ```bash
 cd {project_path}
-        ./scripts/run_tests.sh
+./scripts/run_tests.sh
 ```
 
 Ou manuellement:
@@ -581,19 +615,19 @@ python -m pytest tests/ -v
 
 
 def main():
-    """Point dentrée f"""
+    """Point dentrée principal"""
 
-    parser = argparse.ArgumentParser(description="Génération automatique de f")
-    parser.add_argument("project_path", help="Chemin du projet à f")
+    parser = argparse.ArgumentParser(description="Génération automatique de tests")
+    parser.add_argument("project_path", help="Chemin du projet à tester")
     parser.add_argument(
         "--run",
         action="store_true",
-        help="Exécuter les tests après f")
+        help="Exécuter les tests après génération")
 
     args = parser.parse_args()
 
     if not os.path.exists(args.project_path):
-        logger.info(f"❌ Le chemin {args.project_path} nexiste f")
+        logger.info(f"❌ Le chemin {args.project_path} nexiste pas")
         return
 
     tester = AutoTester()

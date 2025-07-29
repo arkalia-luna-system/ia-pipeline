@@ -27,13 +27,13 @@ class IntelligentAuditor:
         self.recommendations = []
 
     def run(self) -> Dict[str, Any]:
-        """Méthode run() pour l'orchestrateur - exécute l'audit"""
+        """Méthode run() pour lorchestrateur - exécute laudit"""
         if not self.project_path:
             raise ValueError("project_path doit être défini")
         return self.audit_project(str(self.project_path))
 
     def audit_project(self, project_path: str) -> Dict[str, Any]:
-        """Audit complet d'un projet"""
+        """Audit complet dun projet"""
         self.project_path = Path(project_path)
         self.audit_results = {
             "info": {},
@@ -225,7 +225,7 @@ class IntelligentAuditor:
         }
 
     def _calculate_cyclomatic_complexity(self, tree: ast.AST) -> int:
-        """Calcul de la complexité cyclomatique d'un fichier"""
+        """Calcul de la complexité cyclomatique dun fichier"""
         complexity = 1  # Base complexity
 
         for node in ast.walk(tree):
@@ -336,12 +336,12 @@ class IntelligentAuditor:
 
         # Recherche de patterns dangereux
         dangerous_patterns = [
-            (r'eval\(', "Utilisation de 'eval()'"),
-            (r'exec\(', "Utilisation de 'exec()'"),
-            (r'os\.system\(', "Utilisation de 'os.system()'"),
-            (r'subprocess\.call\(', "Utilisation de 'subprocess.call()'"),
-            (r'password\s*=\s*["\'][^"\']+["\']', "Mot de passe en clair"),
-            (r'api_key\s*=\s*["\'][^"\']+["\']', "Clé API en clair")
+            (r"eval\(", "Utilisation de 'eval()'"),
+            (r"exec\(", "Utilisation de 'exec()'"),
+            (r"os\.system\(", "Utilisation de 'os.system()'"),
+            (r"subprocess\.call\(", "Utilisation de 'subprocess.call()'"),
+            (r'password\s*=\s*["\"][^"\']+["\"]', "Mot de passe en clair"),
+            (r'api_key\s*=\s*["\"][^"\']+["\"]', "Clé API en clair"),
         ]
 
         for file_path in self.project_path.rglob("*.py"):
@@ -364,7 +364,7 @@ class IntelligentAuditor:
         secret_patterns = [
             r'[A-Za-z0-9+/]{40,}={0,2}',  # Base64 long
             r'sk_[A-Za-z0-9]{24}',  # Stripe secret key
-            r'AKIA[0-9A-Z]{16}',  # AWS access key
+            r'AKIA[0-9A-Z]{16},  # AWS access key'
         ]
 
         for file_path in self.project_path.rglob("*"):
@@ -578,7 +578,7 @@ class IntelligentAuditor:
                     content = file_handle.read()
                     if "assert" not in content and "self." not in content:
                         quality_issues.append(
-                            f"Pas d'assertions: {file_path.name}")
+                            f"Pas dassertions: {file_path.name}")
                     if "def test_" not in content:
                         quality_issues.append(
                             f"Pas de fonctions de test: {file_path.name}")
@@ -600,7 +600,7 @@ class IntelligentAuditor:
         self.audit_results["structure"] = structure
 
     def _analyze_organization(self) -> Dict[str, Any]:
-        """Analyse de l'organisation des dossiers"""
+        """Analyse de lorganisation des dossiers"""
         directories = [
             dict_data for dict_data in self.project_path.iterdir() if dict_data.is_dir()]
 
@@ -728,7 +728,7 @@ class IntelligentAuditor:
         self.audit_results["recommendations"] = recommendations
 
     def generate_report(self) -> str:
-        """Génère un rapport d'audit"""
+        """Génère un rapport daudit"""
         report = f"""
 {'='*60}
 🔍 RAPPORT D'AUDIT INTELLIGENT - {self.audit_results['info']['name']}
@@ -760,7 +760,7 @@ class IntelligentAuditor:
 
 
 def main():
-    """Point d'entrée"""
+    """Point dentrée"""
     if len(sys.argv) != 2:
         logger.info("Usage: python intelligent_auditor.py <project_path>")
         sys.exit(1)
@@ -768,7 +768,7 @@ def main():
     project_path = sys.argv[1]
 
     if not os.path.exists(project_path):
-        logger.info(f"❌ Le chemin {project_path} n'existe pas")
+        logger.info(f"❌ Le chemin {project_path} nexiste pas")
         sys.exit(1)
 
     auditor = IntelligentAuditor()

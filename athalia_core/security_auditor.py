@@ -28,7 +28,7 @@ class SecurityAuditor:
         }
 
     def run(self) -> Dict[str, Any]:
-        """Lance l'audit de sécurité"""
+        """Lance laudit de sécurité"""
         logger.info(f"🔒 Audit de sécurité pour : {self.project_path.name}")
 
         # Vérifications en séquence
@@ -61,7 +61,7 @@ class SecurityAuditor:
     def _check_dependencies(self):
         """Vérification des dépendances"""
         try:
-            # Utiliser bandit pour l'analyse de sécurité
+            # Utiliser bandit pour lanalyse de sécurité
             result = subprocess.run([
                 "bandit", "-r", str(self.project_path), "-f", "json"
             ], capture_output=True, text=True, timeout=30)
@@ -160,7 +160,7 @@ class SecurityAuditor:
                     continue
 
     def _check_encryption(self):
-        """Vérification de l'utilisation du chiffrement"""
+        """Vérification de lutilisation du chiffrement"""
         encryption_patterns = [
             r"from cryptography",
             r"import hashlib",
@@ -183,7 +183,7 @@ class SecurityAuditor:
 
         if not has_encryption:
             self.report["recommendations"].append(
-                "Considérer l'utilisation de modules de chiffrement pour les données sensibles."
+                "Considérer lutilisation de modules de chiffrement pour les données sensibles."
             )
 
     def _calculate_score(self):

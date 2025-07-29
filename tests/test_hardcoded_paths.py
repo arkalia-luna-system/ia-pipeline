@@ -126,4 +126,5 @@ class TestHardcodedPaths:
 
 
 if __name__ == "__main__":
-    pytest.main([__file__, "-v", "--tb=short"]) 
+    import unittest
+    unittest.main() 

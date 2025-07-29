@@ -157,3 +157,7 @@ data/analysis_*.json
 data/report_*.json
 data/archive/*/archived_comprehensive_analysis_*.json
 archive/
+
+# Fichiers AppleDouble et macOS
+._*
+.DS_Store

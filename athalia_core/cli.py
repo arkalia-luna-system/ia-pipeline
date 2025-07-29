@@ -14,7 +14,7 @@ from .ai_robust import RobustAI, AIModel
 from .generation import generate_project
 from .audit import audit_project_intelligent
 
-# TODO: Préparer l'internationalisation (i18n) des messages CLI et prompts
+# TODO: Préparer linternationalisation (i18n) des messages CLI et prompts
 # utilisateur.
 
 
@@ -36,14 +36,14 @@ def cli(verbose):
               help='Dossier de sortie')
 @click.option('--dry-run', is_flag=True, help='Mode simulation')
 def generate(idea, output, dry_run):
-    """Génère un projet complet à partir d'une idée."""
+    """Génère un projet complet à partir dune idée."""
     try:
         click.echo(f"🚀 Génération du projet: {idea}")
 
         if dry_run:
             click.echo("🔍 Mode simulation activé")
 
-        # 1. Générer le blueprint avec l'IA robuste
+        # 1. Générer le blueprint avec lIA robuste
         click.echo("🤖 Génération du blueprint avec IA robuste...")
         ai = RobustAI()
         blueprint = ai.generate_blueprint(idea)
@@ -76,7 +76,7 @@ def generate(idea, output, dry_run):
 @cli.command()
 @click.argument('project_path')
 def audit(project_path):
-    """Audit intelligent d'un projet existant."""
+    """Audit intelligent dun projet existant."""
     try:
         click.echo(f"🔍 Audit du projet: {project_path}")
 
@@ -100,10 +100,10 @@ def audit(project_path):
 
 @cli.command()
 def ai_status():
-    """Affiche le statut de l'IA robuste."""
+    """Affiche le statut de lIA robuste."""
     try:
         ai = RobustAI()
-        click.echo("🤖 Statut de l'IA robuste")
+        click.echo("🤖 Statut de lIA robuste")
         click.echo("=" * 40)
 
         # Modèles disponibles
@@ -123,7 +123,7 @@ def ai_status():
         for context in ai.prompt_templates.keys():
             click.echo(f"  • {context}")
 
-        click.echo("\n✨ IA robuste prête à l'emploi!")
+        click.echo("\n✨ IA robuste prête à lemploi!")
 
     except ImportError:
         click.echo("❌ Module ai_robust non disponible")
@@ -134,7 +134,7 @@ def ai_status():
 @cli.command()
 @click.argument('idea')
 def test_ai(idea):
-    """Teste l'IA robuste avec une idée de projet."""
+    """Teste lIA robuste avec une idée de projet."""
     try:
         ai = RobustAI()
         click.echo(f"🧪 Test IA robuste: {idea}")

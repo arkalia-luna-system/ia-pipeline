@@ -10,7 +10,7 @@ from pathlib import Path
 
 
 def security_audit_project(project_path):
-    """Audit de sécurité d'un projet"""
+    """Audit de sécurité dun projet"""
     audit_path = Path(project_path) / 'security_audit.txt'
     issues = []
     patterns = [

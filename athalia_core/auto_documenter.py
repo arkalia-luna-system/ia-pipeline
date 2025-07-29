@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from pathlib import Path
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional
 import json
 import os
 import re
@@ -24,7 +24,7 @@ class AutoDocumenter:
     project_info: Dict[str, Any]
     api_docs: Dict[str, Any]
 
-    def __init__(self, project_path: str = None, lang: str = 'fr'):
+    def __init__(self, project_path: Optional[str] = None, lang: str = 'fr'):
         self.project_path: Path = Path(
             project_path) if project_path else Path('.')
         self.project_info = {}
@@ -41,13 +41,13 @@ class AutoDocumenter:
             return {}
 
     def run(self) -> Dict[str, Any]:
-        """Méthode run() pour l'orchestrateur - exécute la documentation"""
+        """Méthode run() pour lorchestrateur - exécute la documentation"""
         if not self.project_path:
             raise ValueError("project_path doit être défini")
         return self.document_project(str(self.project_path))
 
     def document_project(self, project_path: str) -> Dict[str, Any]:
-        """Documentation complète d'un projet"""
+        """Documentation complète dun projet"""
         self.project_path = Path(project_path)
 
         logger.info(
@@ -77,9 +77,9 @@ class AutoDocumenter:
     def _analyze_project(self):
         """Analyse du projet pour la documentation"""
         if not self.project_path:
-            raise ValueError("project_path doit être défini avant l'analyse")
+            raise ValueError("project_path doit être défini avant lanalyse")
 
-        # Analyser d'abord les modules
+        # Analyser d'abord les modules'
         modules = self._analyze_modules()
 
         self.project_info = {
@@ -157,7 +157,7 @@ class AutoDocumenter:
         return "1.0.0"
 
     def _extract_author(self) -> str:
-        """Extrait l'auteur du projet"""
+        """Extrait lauteur du projet"""
         # Chercher dans setup.py
         setup_file = self.project_path / "setup.py"
         if setup_file.exists():
@@ -211,7 +211,7 @@ class AutoDocumenter:
         return dependencies
 
     def _find_entry_points(self) -> List[str]:
-        """Trouve les points d'entrée du projet"""
+        """Trouve les points dentrée du projet"""
         entry_points = []
 
         # Chercher les fichiers main
@@ -355,7 +355,8 @@ class AutoDocumenter:
                 'Licence'),
             prerequisites=t.get(
                 'prerequisites',
-                'Prérequis'))
+                'Prérequis')
+        )
 
         # Dépendances
         if self.project_info["dependencies"].get("python"):
@@ -373,7 +374,7 @@ class AutoDocumenter:
 
 ```bash
 # Cloner le repository
-git clone <repository - url>
+git clone <repository-url>
 cd {project_name}
 
 # Installer les dépendances
@@ -387,13 +388,13 @@ pip install -r requirements.txt
             usage=t.get('usage', 'Utilisation')
         )
 
-        # Points d'entrée
+        # Points dentrée
         if self.project_info["entry_points"]:
             readme += "### Lancement\n\n"
             for entry_point in self.project_info["entry_points"]:
                 readme += f"```bash\npython {entry_point}\n```\n\n"
 
-        readme += """### Exemple d'utilisation
+        readme += """### Exemple dutilisation
 
 ```python
 # Utilisation basique
@@ -422,7 +423,7 @@ main()
                 if func_info["args"]:
                     readme += f"**Paramètres :** {', '.join(func_info['args'])}\n\n"
 
-        readme += """## 🧪 {tests}
+        readme += """## 🧪 {tests}"
 
 ```bash
 # Lancer les tests
@@ -436,7 +437,7 @@ python -m pytest --cov={project_name}
 
 1. Fork le projet
 2. Créer une branche feature (`git checkout -b feature / AmazingFeature`)
-3. Commit les changements (`git commit -m 'Add some AmazingFeature'`)
+3. Commit les changements (`git commit -m Add some AmazingFeature`)
 4. Push vers la branche (`git push origin feature / AmazingFeature`)
 5. Ouvrir une Pull Request
 
@@ -463,11 +464,11 @@ python -m pytest --cov={project_name}
             f"# {t.get('api_documentation', 'API Documentation')} - "
             f"{self.project_info['name']}"
         )
-        api_docs = f"""{api_title}
+        api_docs = f"""{api_title}"
 
-## Vue d'ensemble
+## Vue densemble
 
-Cette documentation décrit l'API de {self.project_info['name']}.
+Cette documentation décrit lAPI de {self.project_info['name']}.
 
 ## Modules
 
@@ -511,24 +512,29 @@ Cette documentation décrit l'API de {self.project_info['name']}.
         return api_docs
 
     def _generate_setup_guide(self) -> str:
-        """Génère le guide d'installation du projet"""
+        """Génère le guide dinstallation du projet"""
         t = self.translations
         current_date = datetime.now().strftime("%Y-%m-%d")
 
-        setup_guide = """# {setup_guide} - {project_name}
+        setup_guide = """# {setup_guide} - {project_name}"
 
-## Vue d'ensemble
+## Vue densemble
 
 Ce guide explique comment installer et configurer {project_name}.
 
 ## Prérequis
 
-- Python >= 3.8
-- Dépendances listées dans requirements.txt
+- Python 3.8+
+- pip
 
 ## Installation
 
 ```bash
+# Cloner le projet
+git clone <repository_url>
+cd {project_name}
+
+# Installer les dépendances
 pip install -r requirements.txt
 ```
 
@@ -564,13 +570,13 @@ python main.py
         return setup_guide
 
     def _generate_usage_guide(self) -> str:
-        """Génère le guide d'utilisation du projet"""
+        """Génère le guide dutilisation du projet"""
         t = self.translations
         current_date = datetime.now().strftime("%Y-%m-%d")
 
         usage_guide = """# {usage_guide} - {project_name}
 
-## Vue d'ensemble
+## Vue densemble
 
 Ce guide explique comment utiliser {project_name}.
 
@@ -624,7 +630,7 @@ database:
                 usage_guide += f"#### {class_info['name']}\n\n"
                 if class_info["docstring"]:
                     usage_guide += f"{class_info['docstring']}\n\n"
-                usage_guide += "**Exemple d'utilisation :**\n\n"
+                usage_guide += "**Exemple dutilisation :**\n\n"
                 usage_guide += "```python\n"
                 usage_guide += f"from {self.project_info['name']} import {class_info['name']}\n\n"
                 usage_guide += "# Créer une instance\n"
@@ -643,7 +649,7 @@ database:
                 usage_guide += f"#### {func_info['name']}\n\n"
                 if func_info["docstring"]:
                     usage_guide += f"{func_info['docstring']}\n\n"
-                usage_guide += "**Exemple d'utilisation :**\n\n"
+                usage_guide += "**Exemple dutilisation :**\n\n"
                 usage_guide += "```python\n"
                 usage_guide += f"from {self.project_info['name']} import {func_info['name']}\n\n"
                 if func_info["args"]:
@@ -680,7 +686,7 @@ try:
     result = some_function()
 except Exception as e:
     logger.info(f"Erreur: {e}")
-    # Gestion de l'erreur
+    # Gestion de lerreur
 ```
 
 ## Bonnes pratiques
@@ -726,12 +732,12 @@ except Exception as e:
         with open(api_file, 'w', encoding='utf-8') as f:
             f.write(api_docs)
 
-        # Guide d'installation
+        # Guide dinstallation
         setup_file = docs_dir / "INSTALLATION.md"
         with open(setup_file, 'w', encoding='utf-8') as f:
             f.write(setup_guide)
 
-        # Guide d'utilisation
+        # Guide dutilisation
         usage_file = docs_dir / "USAGE.md"
         with open(usage_file, 'w', encoding='utf-8') as f:
             f.write(usage_guide)
@@ -763,7 +769,7 @@ except Exception as e:
 
 1. Suivez le [{setup_guide_text}](INSTALLATION.md)
 2. Consultez le [{usage_guide_text}](USAGE.md)
-3. Explorez l'[{api_doc_text}](API.md) pour les fonctionnalités avancées
+3. Explorez l[{api_doc_text}](API.md) pour les fonctionnalités avancées
 
 ---
 *Généré automatiquement par Athalia* - {current_date}
@@ -784,7 +790,7 @@ except Exception as e:
 
 
 def main():
-    """Point d'entrée du script"""
+    """Point dentrée du script"""
 
     parser = argparse.ArgumentParser(
         description="Génération automatique de documentation")
@@ -797,7 +803,7 @@ def main():
     args = parser.parse_args()
 
     if not os.path.exists(args.project_path):
-        logger.info(f"❌ Le chemin {args.project_path} n'existe pas")
+        logger.info(f"❌ Le chemin {args.project_path} nexiste pas")
         return
 
     documenter = AutoDocumenter(args.project_path, args.lang)

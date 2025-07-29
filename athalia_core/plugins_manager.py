@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 Gestionnaire de plugins dynamiques.
 """
 
-PLUGINS_DIR = os.path.join(os.path.dirname(__file__), '..', 'plugins')
+PLUGINS_DIR = os.path.join(os.path.dirname(__file__), "..", "plugins")
 
 
 def list_plugins():
