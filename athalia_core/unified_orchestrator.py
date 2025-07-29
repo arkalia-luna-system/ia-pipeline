@@ -35,11 +35,11 @@ PHASE2_AVAILABLE = True
 
 # Imports robotiques (optionnels)
 try:
-    # from .robotics.reachy_auditor import ReachyAuditor
-    # from .robotics.ros2_validator import ROS2Validator
-    # from .robotics.docker_robotics import DockerRoboticsManager
-    # from .robotics.rust_analyzer import RustAnalyzer
-    # from .robotics.robotics_ci import RoboticsCI
+    from .robotics.reachy_auditor import ReachyAuditor
+    from .robotics.ros2_validator import ROS2Validator
+    from .robotics.docker_robotics import DockerRoboticsManager
+    from .robotics.rust_analyzer import RustAnalyzer
+    from .robotics.robotics_ci import RoboticsCI
     ROBOTICS_AVAILABLE = True
 except ImportError:
     ROBOTICS_AVAILABLE = False
@@ -483,10 +483,73 @@ class UnifiedOrchestrator:
     def _run_robotics_audit(self, project_path: Path) -> Dict[str, Any]:
         """Exécuter l'audit robotique"""
         try:
+            if not ROBOTICS_AVAILABLE:
+                return {
+                    'status': 'completed',
+                    'passed': True,
+                    'result': {'message': 'Modules robotiques non disponibles'},
+                    'robotics_score': 0
+                }
+            
+            results = {}
+            
+            # Audit Reachy
+            try:
+                reachy_auditor = ReachyAuditor()
+                reachy_result = reachy_auditor.audit_complete(str(project_path))
+                results['reachy'] = reachy_result
+            except Exception as e:
+                results['reachy'] = {'error': str(e), 'score': 0}
+            
+            # Validation ROS2
+            try:
+                ros2_validator = ROS2Validator()
+                ros2_result = ros2_validator.validate_workspace(str(project_path))
+                results['ros2'] = ros2_result
+            except Exception as e:
+                results['ros2'] = {'error': str(e), 'valid': False}
+            
+            # Gestion Docker
+            try:
+                docker_manager = DockerRoboticsManager()
+                docker_result = docker_manager.manage_containers(str(project_path))
+                results['docker'] = docker_result
+            except Exception as e:
+                results['docker'] = {'error': str(e), 'containers': 0}
+            
+            # Analyse Rust
+            try:
+                rust_analyzer = RustAnalyzer()
+                rust_result = rust_analyzer.analyze_rust_code(str(project_path))
+                results['rust'] = rust_result
+            except Exception as e:
+                results['rust'] = {'error': str(e), 'crates': 0}
+            
+            # CI Robotique
+            try:
+                robotics_ci = RoboticsCI()
+                ci_result = robotics_ci.setup_robotics_ci(str(project_path))
+                results['ci'] = ci_result
+            except Exception as e:
+                results['ci'] = {'error': str(e), 'tests_passed': 0}
+            
+            # Calculer le score global
+            scores = []
+            for component, result in results.items():
+                if 'score' in result:
+                    scores.append(result['score'])
+                elif 'valid' in result and result['valid']:
+                    scores.append(100)
+                elif 'tests_passed' in result and result['tests_passed'] > 0:
+                    scores.append(80)
+            
+            robotics_score = sum(scores) / len(scores) if scores else 0
+            
             return {
                 'status': 'completed',
-                'passed': True,
-                'result': {'reachy': {'score': 80, 'compatible': True}, 'robotics_score': 80}
+                'passed': robotics_score >= 50,
+                'result': results,
+                'robotics_score': robotics_score
             }
         except Exception as e:
             return {'status': 'failed', 'error': str(e)}

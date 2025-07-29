@@ -295,17 +295,44 @@ class TestUnifiedOrchestratorComplete:
             assert result["passed"] is True
             assert "pipelines_created" in result["result"]
 
-    @pytest.mark.skip(reason="Modules robotiques temporairement désactivés")
     def test_run_robotics_audit(self):
         """Test l'exécution de l'audit robotique"""
         project_path = self.test_dir / "test_project"
         project_path.mkdir()
         
-        # Test simplifié sans les modules robotiques
-        result = self.orchestrator._run_robotics_audit(project_path)
-        
-        assert result["status"] == "completed"
-        assert "message" in result
+        with patch('athalia_core.unified_orchestrator.ROBOTICS_AVAILABLE', True), \
+             patch('athalia_core.unified_orchestrator.ReachyAuditor') as mock_reachy_class, \
+             patch('athalia_core.unified_orchestrator.ROS2Validator') as mock_ros2_class, \
+             patch('athalia_core.unified_orchestrator.DockerRoboticsManager') as mock_docker_class, \
+             patch('athalia_core.unified_orchestrator.RustAnalyzer') as mock_rust_class, \
+             patch('athalia_core.unified_orchestrator.RoboticsCI') as mock_ci_class:
+            
+            # Mock des résultats
+            mock_reachy = MagicMock()
+            mock_reachy.audit_complete.return_value = {"score": 80}
+            mock_reachy_class.return_value = mock_reachy
+            
+            mock_ros2 = MagicMock()
+            mock_ros2.validate_workspace.return_value = {"valid": True}
+            mock_ros2_class.return_value = mock_ros2
+            
+            mock_docker = MagicMock()
+            mock_docker.manage_containers.return_value = {"containers": 2}
+            mock_docker_class.return_value = mock_docker
+            
+            mock_rust = MagicMock()
+            mock_rust.analyze_rust_code.return_value = {"crates": 5}
+            mock_rust_class.return_value = mock_rust
+            
+            mock_ci = MagicMock()
+            mock_ci.setup_robotics_ci.return_value = {"tests_passed": 15}
+            mock_ci_class.return_value = mock_ci
+            
+            result = self.orchestrator._run_robotics_audit(project_path)
+            
+            assert result["status"] == "completed"
+            assert result["passed"] is True
+            assert "reachy" in result["result"]
 
     def test_generate_predictions(self):
         """Test la génération de prédictions"""
