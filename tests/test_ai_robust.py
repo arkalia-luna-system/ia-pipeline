@@ -276,6 +276,7 @@ def test_function():
         """Test l'appel d'un modèle non supporté."""
         # Créer un enum personnalisé pour simuler un modèle non supporté
         from enum import Enum
+        
         class UnsupportedModel(Enum):
             UNSUPPORTED = "unsupported"
         
