@@ -127,16 +127,16 @@ from athalia-dev-setup import scan_projects
 result = scan_projects(project_path)
 ```
 
-#### include_setuptools
+#### test_clean_old_tests_and_caches
 
-Install setuptools only if absent, not excluded and when using Python <3.12.
+Test de nettoyage des anciens tests et caches
 
 **Exemple dutilisation :**
 
 ```python
-from athalia-dev-setup import include_setuptools
+from athalia-dev-setup import test_clean_old_tests_and_caches
 
-result = include_setuptools(args)
+result = test_clean_old_tests_and_caches(tmp_path)
 ```
 
 

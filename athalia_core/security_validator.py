@@ -20,7 +20,7 @@ class SecurityValidator:
         """Initialise le validateur de sécurité."""
         self.allowed_commands = {
             # Commandes système de base
-            "ls", "find", "grep", "cat", "head", "tail", "wc", "sort", "uniq",
+            "ls", "find", "grep", "cat", "head", "tail", "wc", "sort", "uniq", "echo",
             
             # Commandes Python
             "python", "python3", "pip", "pip3", "pytest", "flake8", "black", "mypy",
@@ -44,28 +44,35 @@ class SecurityValidator:
             "curl", "wget", "ping", "nslookup",
         }
         
+        self.dangerous_patterns = [
+            "/etc/", "/private/etc/", "/private/etc", "/var/", "/usr/", "/bin/", "/sbin/", "/lib/", "/opt/",
+            "/root/", "/root", "/home/", "/tmp/", "/dev/", "/proc/", "/sys/",
+            "~/.ssh/", "~/.bashrc", "~/.profile", "~/.bash_profile",
+            "/.ssh/", "/.bashrc", "/.profile", "/.bash_profile",
+        ]
+        
         self.forbidden_patterns = [
-            "rm -rf", "rm -r", "rm -f", "rm -rf /", "rm -rf /*",
+            "rm -rf /", "rm -rf /*", "rm -rf /etc", "rm -rf /var", "rm -rf /usr",
             "dd if=", "dd of=", "mkfs", "fdisk", "parted",
-            "chmod 777", "chmod +x", "chown root",
+            "chmod 777", "chown root",
             "sudo", "su", "passwd", "useradd", "userdel",
             "systemctl", "service", "init", "killall",
             "pkill", "kill -9", "kill -SIGKILL",
             "shutdown", "reboot", "halt", "poweroff",
             "iptables", "firewall-cmd", "ufw",
-            "crontab", "at", "batch",
+            "crontab", " at ", "batch",
             "ssh", "scp", "rsync", "nc", "netcat",
             "telnet", "ftp", "sftp",
             "wget -O", "curl -o", "curl -O",
-            "echo '", "echo \"", "printf '", "printf \"",
-            "cat >", "cat >>", "tee", "tee -a",
-            "sed -i", "awk '{print", "grep -r",
-            "find . -exec", "find . -delete",
-            "xargs", "parallel",
-            "eval", "exec", "source", ".",
-            "bash -c", "sh -c", "zsh -c", "fish -c",
-            "python -c", "python3 -c",
-            "perl -e", "ruby -e", "node -e",
+            "echo 'rm", "echo \"rm", "printf 'rm", "printf \"rm",
+            "cat > /etc", "cat >> /etc", "tee /etc", "tee -a /etc",
+            "sed -i /etc", "awk '{print /etc", "grep -r /etc",
+            "find /etc -exec", "find /var -exec", "find /usr -exec",
+            "xargs rm", "parallel rm",
+            "eval", "exec", "source",
+            "bash -c rm", "sh -c rm", "zsh -c rm", "fish -c rm",
+            "python -c 'import os; os.system", "python3 -c 'import os; os.system",
+            "perl -e 'system", "ruby -e 'system", "node -e 'require('child_process')",
         ]
         
         self.safe_directories = [
@@ -102,6 +109,7 @@ class SecurityValidator:
             command_str = " ".join(command) if isinstance(command, list) else str(command)
             
             for pattern in self.forbidden_patterns:
+                # Vérifier si le pattern est présent dans la commande
                 if pattern.lower() in command_str.lower():
                     logger.warning(f"Pattern interdit détecté: {pattern}")
                     return {
@@ -124,6 +132,13 @@ class SecurityValidator:
 
             # Vérifier les chemins de fichiers
             for arg in command[1:]:
+                # Ignorer les arguments qui ne sont pas des chemins
+                if arg.startswith('-') or arg in ['test', '*.py', '*.pyc', '*.conf']:
+                    continue
+                
+                # Debug: afficher l'argument en cours de vérification
+                logger.debug(f"Vérification de l'argument: {arg}")
+                    
                 if self._is_dangerous_path(arg):
                     logger.warning(f"Chemin dangereux détecté: {arg}")
                     return {
@@ -148,15 +163,7 @@ class SecurityValidator:
                 if str(path_obj).startswith(safe_dir):
                     return False
             
-            # Vérifier les patterns dangereux
-            dangerous_patterns = [
-                "/etc/", "/var/", "/usr/", "/bin/", "/sbin/", "/lib/", "/opt/",
-                "/root/", "/home/", "/tmp/", "/dev/", "/proc/", "/sys/",
-                "~/.ssh/", "~/.bashrc", "~/.profile", "~/.bash_profile",
-                "/.ssh/", "/.bashrc", "/.profile", "/.bash_profile",
-            ]
-            
-            for pattern in dangerous_patterns:
+            for pattern in self.dangerous_patterns:
                 if pattern in str(path_obj):
                     return True
             

@@ -77,11 +77,11 @@ Fonction principale du CLI unifié
 
 **Paramètres :** project_path
 
-#### include_setuptools
+#### test_clean_old_tests_and_caches
 
-Install setuptools only if absent, not excluded and when using Python <3.12.
+Test de nettoyage des anciens tests et caches
 
-**Paramètres :** args
+**Paramètres :** tmp_path
 
 ## 🧪 Tests"
 
