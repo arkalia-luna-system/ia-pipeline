@@ -2,12 +2,19 @@
 # -*- coding: utf-8 -*-
 """
 Protection contre la création automatique de fichiers de tests
+⚠️ DÉSACTIVÉE TEMPORAIREMENT pour éviter la suppression de tests légitimes
 """
 
 from pathlib import Path
 
 def _protect_test_directory():
     """Protège le répertoire tests contre la création automatique de fichiers."""
+    # ⚠️ PROTECTION DÉSACTIVÉE TEMPORAIREMENT
+    # Le système supprimait des tests légitimes
+    print("🛡️ Protection automatique des tests DÉSACTIVÉE")
+    print("⚠️ Les fichiers de tests ne seront plus supprimés automatiquement")
+    return
+    
     test_dir = Path(__file__).parent
     
     # Liste des fichiers de tests autorisés
