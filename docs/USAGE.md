@@ -55,34 +55,34 @@ instance = AthaliaOrchestrator()
 result = instance.industrialize_project()
 ```
 
-#### DocumentationCleaner
+#### ProjectAuditor
 
-Classe pour nettoyer et organiser la documentation
+Auditeur intelligent de projets générés.
 
 **Exemple d'utilisation :**
 
 ```python
-from athalia-dev-setup import DocumentationCleaner
+from athalia-dev-setup import ProjectAuditor
 
 # Créer une instance
-instance = DocumentationCleaner()
+instance = ProjectAuditor()
 # Utiliser une méthode
 result = instance.__init__()
 ```
 
-#### DataCleaner
+#### TestLoggingSystem
 
-Classe pour nettoyer les anciennes données d'analyse
+Tests pour le système de logging d'Athalia
 
 **Exemple d'utilisation :**
 
 ```python
-from athalia-dev-setup import DataCleaner
+from athalia-dev-setup import TestLoggingSystem
 
 # Créer une instance
-instance = DataCleaner()
+instance = TestLoggingSystem()
 # Utiliser une méthode
-result = instance.__init__()
+result = instance.setup_method()
 ```
 
 ### Fonctions utilitaires
@@ -129,16 +129,16 @@ from athalia-dev-setup import scan_projects
 result = scan_projects(project_path)
 ```
 
-#### main
+#### audit_project_intelligent
 
-Fonction principale
+Fonction principale pour l'audit intelligent.
 
 **Exemple d'utilisation :**
 
 ```python
-from athalia-dev-setup import main
+from athalia-dev-setup import audit_project_intelligent
 
-result = main()
+result = audit_project_intelligent(project_path)
 ```
 
 

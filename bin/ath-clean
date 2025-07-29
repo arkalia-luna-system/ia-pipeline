@@ -1,30 +1,22 @@
 #!/bin/bash
-# 🌟 Nettoyage Complet du Projet Athalia/Arkalia - VERSION ULTRA-SÉCURISÉE
-# Version 3.0 - Interface stylisée avec couleurs et organisation modulaire
-# Protection maximale contre la suppression accidentelle
+# 🌟 Nettoyage Rapide du Projet Athalia - VERSION OPTIMISÉE
+# Version 4.0 - Performance maximale, interface simplifiée
 
-set -euo pipefail  # Mode strict - arrêt sur erreur
+set -euo pipefail
 
 # =============================================================================
-# SECTION 1: CONFIGURATION ET COULEURS
+# SECTION 1: CONFIGURATION RAPIDE
 # =============================================================================
 
-# Couleurs pour l'interface
+# Couleurs simplifiées
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
-PURPLE='\033[0;35m'
-CYAN='\033[0;36m'
-WHITE='\033[1;37m'
-BOLD='\033[1m'
-NC='\033[0m' # No Color
+NC='\033[0m'
 
-# Variables de sécurité
-PROJECT_ROOT=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
-CLEANED_FILES=0
-CLEANED_DIRS=0
-CLEANED_PROCESSES=0
+# Variables optimisées
+CLEANED_COUNT=0
 DRY_RUN_MODE=false
 
 # Détection du mode dry-run
@@ -33,19 +25,16 @@ if [ "${1:-}" = "--dry-run" ] || [ "${1:-}" = "-d" ]; then
 fi
 
 # =============================================================================
-# SECTION 2: FONCTIONS D'AFFICHAGE ET UI
+# SECTION 2: FONCTIONS D'AFFICHAGE OPTIMISÉES
 # =============================================================================
 
 print_header() {
-    echo -e "${BOLD}${CYAN}🔒 Nettoyage Athalia/Arkalia - MODE SÉCURISÉ${NC}"
-    echo -e "${CYAN}==============================================${NC}"
+    echo -e "${BLUE}🚀 Nettoyage Rapide Athalia${NC}"
     echo
 }
 
 print_section() {
-    local title="$1"
-    echo -e "${BOLD}${PURPLE}📋 $title${NC}"
-    echo -e "${PURPLE}--------------------------------${NC}"
+    echo -e "${BLUE}📋 $1${NC}"
 }
 
 print_success() {
@@ -56,491 +45,87 @@ print_warning() {
     echo -e "${YELLOW}⚠️  $1${NC}"
 }
 
-print_error() {
-    echo -e "${RED}🚨 $1${NC}"
-}
-
 print_info() {
     echo -e "${BLUE}ℹ️  $1${NC}"
 }
 
-print_clean() {
-    echo -e "${GREEN}🗑️  $1${NC}"
-}
-
-print_dry_run() {
-    echo -e "${YELLOW}🔍 [DRY-RUN] $1${NC}"
-}
-
 print_summary() {
     echo
-    echo -e "${BOLD}${CYAN}🎯 Résumé du nettoyage :${NC}"
-    echo -e "${WHITE}   📊 Total d'éléments nettoyés : ${GREEN}$CLEANED_FILES${NC}"
-    echo -e "${WHITE}   📁 Dossiers nettoyés : ${GREEN}$CLEANED_DIRS${NC}"
-    echo -e "${WHITE}   🔄 Processus arrêtés : ${GREEN}$CLEANED_PROCESSES${NC}"
-    echo
-    echo -e "${BOLD}${GREEN}🛡️  Sécurité :${NC}"
-    echo -e "${WHITE}   ✅ Tous les fichiers critiques ont été préservés${NC}"
-    echo -e "${WHITE}   ✅ Aucun fichier système n'a été touché${NC}"
-    echo -e "${WHITE}   ✅ Vérifications de sécurité activées${NC}"
+    echo -e "${GREEN}🎯 Total nettoyé : $CLEANED_COUNT éléments${NC}"
     echo
 }
 
-print_footer() {
+# =============================================================================
+# SECTION 3: FONCTIONS DE NETTOYAGE RAPIDES
+# =============================================================================
+
+# Fonction de nettoyage rapide
+fast_clean() {
+    local pattern="$1"
+    local description="$2"
+    
+    echo -e "${BLUE}🔍 $description...${NC}"
+    
     if [ "$DRY_RUN_MODE" = true ]; then
-        echo -e "${YELLOW}🔍 MODE DRY-RUN - Aucun fichier n'a été supprimé${NC}"
-    else
-        echo -e "${GREEN}✅ Nettoyage terminé ! Le projet Athalia/Arkalia est maintenant propre et optimisé.${NC}"
-    fi
-    echo
-    echo -e "${BOLD}${CYAN}💡 Conseils :${NC}"
-    echo -e "${WHITE}   - Exécutez 'ath-clean --dry-run' pour tester sans supprimer${NC}"
-    echo -e "${WHITE}   - Utilisez 'ark-process-check.sh' pour surveiller les processus${NC}"
-    echo -e "${WHITE}   - Les fichiers critiques sont automatiquement préservés${NC}"
-    echo -e "${WHITE}   - La configuration a été optimisée pour les performances${NC}"
-    echo
-    echo -e "${BOLD}${GREEN}🚀 Pour redémarrer proprement :${NC}"
-    echo -e "${WHITE}   python3 -m athalia_core.main${NC}"
-}
-
-# =============================================================================
-# SECTION 3: SÉCURITÉ ET VÉRIFICATIONS
-# =============================================================================
-
-# LISTE DES FICHIERS/DOSSIERS CRITIQUES - JAMAIS SUPPRIMÉS
-CRITICAL_PATHS=(
-    ".git"
-    ".venv"
-    "venv"
-    "env"
-    "node_modules"
-    "data"
-    "config"
-    "docs"
-    "tests"
-    "athalia_core"
-    "bin"
-    "scripts"
-    "setup"
-    "tools"
-    "plugins"
-    "templates"
-    "prompts"
-    "blueprints_history"
-    "backups"
-    "logs"
-    "archive"
-    "*.py"
-    "*.md"
-    "*.yaml"
-    "*.yml"
-    "*.json"
-    "*.toml"
-    "*.cfg"
-    "*.ini"
-    "*.sh"
-    "*.txt"
-    "*.rst"
-    "*.html"
-    "*.css"
-    "*.js"
-    "*.ts"
-    "*.vue"
-    "*.jsx"
-    "*.tsx"
-    "*.sql"
-    "*.db"
-    "*.sqlite"
-    "*.sqlite3"
-    "*.log"
-    "*.lock"
-    "requirements.txt"
-    "setup.py"
-    "pyproject.toml"
-    "Cargo.toml"
-    "package.json"
-    "composer.json"
-    "Gemfile"
-    "Dockerfile"
-    "docker-compose.yml"
-    "Makefile"
-    "README*"
-    "CHANGELOG*"
-    "LICENSE*"
-    "ROADMAP*"
-    "CONTRIBUTING*"
-    "CODE_OF_CONDUCT*"
-    ".gitignore"
-    ".gitattributes"
-    ".editorconfig"
-    ".eslintrc*"
-    ".prettierrc*"
-    ".babelrc*"
-    ".env*"
-    ".dockerignore"
-    ".npmrc"
-    ".yarnrc"
-    ".bowerrc"
-    ".jshintrc"
-    ".jscsrc"
-    ".stylelintrc*"
-    ".browserslistrc"
-    ".babelrc*"
-    ".postcssrc*"
-    ".eslintignore"
-    ".prettierignore"
-    ".stylelintignore"
-    ".flowconfig"
-    ".flowconfig.js"
-    ".flowconfig.json"
-    ".babelrc.js"
-    ".babelrc.json"
-    ".postcssrc.js"
-    ".postcssrc.json"
-    ".eslintrc.js"
-    ".eslintrc.json"
-    ".prettierrc.js"
-    ".prettierrc.json"
-    ".stylelintrc.js"
-    ".stylelintrc.json"
-    ".jshintrc.js"
-    ".jshintrc.json"
-    ".jscsrc.js"
-    ".jscsrc.json"
-    ".browserslistrc.js"
-    ".browserslistrc.json"
-    ".babelrc.js"
-    ".babelrc.json"
-    ".postcssrc.js"
-    ".postcssrc.json"
-    ".eslintrc.js"
-    ".eslintrc.json"
-    ".prettierrc.js"
-    ".prettierrc.json"
-    ".stylelintrc.js"
-    ".stylelintrc.json"
-    ".jshintrc.js"
-    ".jshintrc.json"
-    ".jscsrc.js"
-    ".jscsrc.json"
-    ".browserslistrc.js"
-    ".browserslistrc.json"
-)
-
-# Fonction de vérification de sécurité
-is_critical_path() {
-    local path="$1"
-    
-    # Exception spéciale : les fichiers ._* (AppleDouble) ne sont jamais critiques
-    # Sauf s'ils sont dans des dossiers vraiment critiques
-    if [[ "$path" == *"/._"* ]] || [[ "$path" == "._"* ]]; then
-        # Permettre la suppression des ._* même dans les caches
-        if [[ "$path" == *"/.mypy_cache/"* ]] || [[ "$path" == *"/__pycache__/"* ]] || [[ "$path" == *"/.pytest_cache/"* ]]; then
-            return 1  # Non critique - peut être supprimé
-        fi
-        # Pour les autres dossiers, vérifier s'ils sont vraiment critiques
-        for critical in "${CRITICAL_PATHS[@]}"; do
-            if [[ "$path" == *"$critical"* ]] || [[ "$path" == "$critical" ]]; then
-                # Exception : permettre ._* dans les caches même s'ils sont dans des dossiers critiques
-                if [[ "$critical" == ".mypy_cache" ]] || [[ "$critical" == "__pycache__" ]] || [[ "$critical" == ".pytest_cache" ]]; then
-                    return 1  # Non critique - peut être supprimé
-                fi
-                return 0  # Critique - ne pas supprimer
-            fi
-        done
-        return 1  # Non critique - peut être supprimé
+        local count=$(find . -path "$pattern" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" 2>/dev/null | wc -l)
+        echo -e "${YELLOW}   [DRY-RUN] $count fichiers trouvés${NC}"
+        return
     fi
     
-    for critical in "${CRITICAL_PATHS[@]}"; do
-        if [[ "$path" == *"$critical"* ]] || [[ "$path" == "$critical" ]]; then
-            return 0  # Critique - ne pas supprimer
-        fi
-    done
-    return 1  # Non critique - peut être supprimé
-}
-
-# Fonction de vérification de sécurité renforcée
-is_safe_to_delete() {
-    local path="$1"
-    
-    # Vérifications de sécurité
-    if [[ "$path" == "/" ]] || [[ "$path" == "/home" ]] || [[ "$path" == "/Users" ]]; then
-        print_error "Tentative de suppression d'un répertoire système critique: $path"
-        return 1
-    fi
-    
-    if [[ "$path" == *".."* ]]; then
-        print_error "Chemin suspect détecté: $path"
-        return 1
-    fi
-    
-    if [[ "$path" == *"/"* ]] && [[ ! "$path" =~ ^\./ ]]; then
-        print_error "Chemin absolu détecté: $path"
-        return 1
-    fi
-    
-    if is_critical_path "$path"; then
-        print_warning "Fichier critique préservé: $path"
-        return 1
-    fi
-    
-    return 0
-}
-
-# =============================================================================
-# SECTION 4: FONCTIONS DE NETTOYAGE
-# =============================================================================
-
-# Fonction pour compter les fichiers supprimés
-count_cleaned() {
-    local count=$1
+    local count=$(find . -path "$pattern" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -delete 2>/dev/null | wc -l)
     if [ $count -gt 0 ]; then
         print_success "$count éléments nettoyés"
-        CLEANED_FILES=$((CLEANED_FILES + count))
-    fi
-}
-
-# Fonction de nettoyage sécurisé
-safe_delete() {
-    local pattern="$1"
-    local description="$2"
-    local dry_run=${3:-false}
-    
-    echo -e "${BLUE}🔍 $description...${NC}"
-    
-    if [ "$dry_run" = true ]; then
-        print_dry_run "Recherche de fichiers: $pattern"
-        local count=$(find . -path "$pattern" -not -path "./.git/*" -not -path "./.venv/*" 2>/dev/null | wc -l)
-        echo -e "${WHITE}   📊 [DRY-RUN] $count fichiers trouvés${NC}"
-        return
-    fi
-    
-    local count=0
-    while IFS= read -r -d '' file; do
-        if is_safe_to_delete "$file"; then
-            if rm -f "$file" 2>/dev/null; then
-                count=$((count + 1))
-                print_clean "Supprimé: $file"
-            fi
-        fi
-    done < <(find . -path "$pattern" -not -path "./.git/*" -not -path "./.venv/*" -print0 2>/dev/null)
-    
-    count_cleaned $count
-}
-
-# Fonction de nettoyage de dossiers sécurisé
-safe_delete_dir() {
-    local pattern="$1"
-    local description="$2"
-    local dry_run=${3:-false}
-    
-    echo -e "${BLUE}🔍 $description...${NC}"
-    
-    if [ "$dry_run" = true ]; then
-        print_dry_run "Recherche de dossiers: $pattern"
-        local count=$(find . -path "$pattern" -type d -not -path "./.git/*" -not -path "./.venv/*" 2>/dev/null | wc -l)
-        echo -e "${WHITE}   📊 [DRY-RUN] $count dossiers trouvés${NC}"
-        return
-    fi
-    
-    local count=0
-    while IFS= read -r -d '' dir; do
-        if is_safe_to_delete "$dir"; then
-            if rm -rf "$dir" 2>/dev/null; then
-                count=$((count + 1))
-                print_clean "Supprimé: $dir"
-            fi
-        fi
-    done < <(find . -path "$pattern" -type d -not -path "./.git/*" -not -path "./.venv/*" -print0 2>/dev/null)
-    
-    count_cleaned $count
-}
-
-# Fonction pour gérer les processus
-manage_processes() {
-    print_section "Analyse des processus Athalia"
-    
-    # Vérifier les processus Python athalia_core
-    ATHALIA_PROCESSES=$(ps aux | grep -c "[a]thalia_core.main" 2>/dev/null || echo "0")
-    if [ "$ATHALIA_PROCESSES" -gt 0 ] 2>/dev/null; then
-        print_warning "$ATHALIA_PROCESSES processus Athalia détectés"
-        print_info "Utilisez 'ark-process-check.sh' pour les gérer"
-        
-        if [ "$DRY_RUN_MODE" != true ]; then
-            read -p "   Voulez-vous arrêter les processus Athalia ? (y/N): " -n 1 -r
-            echo
-            if [[ $REPLY =~ ^[Yy]$ ]]; then
-                echo -e "${YELLOW}   🔪 Arrêt des processus Athalia...${NC}"
-                pkill -f "athalia_core.main" 2>/dev/null
-                CLEANED_PROCESSES=$ATHALIA_PROCESSES
-                print_success "$ATHALIA_PROCESSES processus arrêtés"
-            fi
-        fi
-    else
-        print_success "Aucun processus Athalia en cours"
-    fi
-}
-
-# Fonction pour nettoyer les caractères null de manière sécurisée
-clean_null_bytes_safe() {
-    print_section "Nettoyage des caractères null (corruption de fichiers)"
-    
-    local count=0
-    
-    # Nettoyer uniquement les fichiers Python du projet principal
-    echo -e "${BLUE}   🔍 Recherche de fichiers Python avec caractères null...${NC}"
-    
-    while IFS= read -r -d '' file; do
-        if [ -f "$file" ] && [ -r "$file" ]; then
-            if grep -q $'\x00' "$file" 2>/dev/null; then
-                if [ "$DRY_RUN_MODE" = "true" ]; then
-                    print_dry_run "Caractères null détectés dans: $file"
-                    count=$((count + 1))
-                else
-                    # Nettoyage direct sans sauvegarde
-                    if tr -d '\000' < "$file" > "$file.tmp" 2>/dev/null && mv "$file.tmp" "$file" 2>/dev/null; then
-                        count=$((count + 1))
-                        print_clean "Fichier nettoyé : $file"
-                    fi
-                fi
-            fi
-        fi
-    done < <(find . -name "*.py" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./.mypy_cache/*" -print0 2>/dev/null)
-    
-    if [ "$count" -gt 0 ]; then
-        if [ "$DRY_RUN_MODE" = "true" ]; then
-            echo -e "${WHITE}   📊 [DRY-RUN] $count fichiers Python avec caractères null détectés${NC}"
-        else
-            print_success "$count fichiers Python nettoyés des caractères null"
-            count_cleaned $count
-        fi
-    else
-        print_success "Aucun caractère null détecté dans les fichiers Python"
+        CLEANED_COUNT=$((CLEANED_COUNT + count))
     fi
 }
 
 # =============================================================================
-# SECTION 5: EXÉCUTION PRINCIPALE
+# SECTION 4: EXÉCUTION PRINCIPALE RAPIDE
 # =============================================================================
 
 # Affichage de l'en-tête
 print_header
 
-# Vérification du mode dry-run
-if [ "$DRY_RUN_MODE" = true ]; then
-    echo -e "${YELLOW}🔍 MODE DRY-RUN ACTIVÉ - Aucun fichier ne sera supprimé${NC}"
-    echo -e "${YELLOW}======================================================${NC}"
-    echo
-fi
+# Nettoyage rapide des fichiers AppleDouble et macOS
+print_section "Nettoyage des fichiers AppleDouble et macOS"
+fast_clean "._*" "Fichiers AppleDouble"
+fast_clean ".DS_Store" "Fichiers .DS_Store"
+fast_clean ".!*" "Fichiers temporaires"
+fast_clean "*.noindex" "Fichiers .noindex"
 
-# Gestion des processus
-manage_processes
+# Nettoyage rapide des fichiers Python compilés
+print_section "Nettoyage des fichiers Python compilés"
+fast_clean "*.pyc" "Fichiers .pyc"
+fast_clean "__pycache__" "Dossiers __pycache__"
 
-# Nettoyage des caches Python
-print_section "Nettoyage des caches Python"
-safe_delete_dir "*/__pycache__" "Cache Python" "$DRY_RUN_MODE"
-safe_delete "*.pyc" "Fichiers Python compilés" "$DRY_RUN_MODE"
-
-# Nettoyage des fichiers temporaires
-print_section "Nettoyage des fichiers temporaires"
-safe_delete "*.tmp" "Fichiers temporaires .tmp" "$DRY_RUN_MODE"
-safe_delete "*.temp" "Fichiers temporaires .temp" "$DRY_RUN_MODE"
-safe_delete "*~" "Fichiers de sauvegarde ~" "$DRY_RUN_MODE"
-safe_delete ".#*" "Fichiers de verrouillage" "$DRY_RUN_MODE"
-
-# Nettoyage des fichiers macOS
-print_section "Nettoyage des fichiers macOS"
-# Nettoyage spécial des fichiers ._* (AppleDouble) - même dans les dossiers protégés
-echo -e "${BLUE}🔍 Nettoyage des fichiers AppleDouble (.DS_Store, ._*)...${NC}"
-if [ "$DRY_RUN_MODE" = true ]; then
-    print_dry_run "Recherche de fichiers AppleDouble"
-    count=$(find . -name "._*" -not -path "./.git/*" -not -path "./.venv/*" 2>/dev/null | wc -l)
-    echo -e "${WHITE}   📊 [DRY-RUN] $count fichiers AppleDouble trouvés${NC}"
-else
-    count=0
-    while IFS= read -r -d '' file; do
-        if rm -f "$file" 2>/dev/null; then
-            count=$((count + 1))
-            print_clean "Supprimé: $file"
-        fi
-    done < <(find . -name "._*" -not -path "./.git/*" -not -path "./.venv/*" -print0 2>/dev/null)
-    count_cleaned $count
-fi
-
-# Nettoyage des fichiers temporaires avec numéros de processus
-echo -e "${BLUE}🔍 Nettoyage des fichiers temporaires avec numéros de processus...${NC}"
-if [ "$DRY_RUN_MODE" = true ]; then
-    print_dry_run "Recherche de fichiers .!*"
-    count=$(find . -name ".!*" -not -path "./.git/*" -not -path "./.venv/*" 2>/dev/null | wc -l)
-    echo -e "${WHITE}   📊 [DRY-RUN] $count fichiers .!* trouvés${NC}"
-else
-    count=0
-    while IFS= read -r -d '' file; do
-        if rm -f "$file" 2>/dev/null; then
-            count=$((count + 1))
-            print_clean "Supprimé: $file"
-        fi
-    done < <(find . -name ".!*" -not -path "./.git/*" -not -path "./.venv/*" -print0 2>/dev/null)
-    count_cleaned $count
-fi
-
-safe_delete ".!*" "Fichiers temporaires macOS" "$DRY_RUN_MODE"
-safe_delete "*.clean" "Fichiers de nettoyage" "$DRY_RUN_MODE"
-safe_delete ".DS_Store" "Fichiers .DS_Store" "$DRY_RUN_MODE"
-
-# Nettoyage des logs
-print_section "Nettoyage des logs"
-safe_delete "*.log" "Fichiers de log (sauf athalia.log)" "$DRY_RUN_MODE"
-
-# Nettoyage des caches de tests
+# Nettoyage rapide des caches de tests
 print_section "Nettoyage des caches de tests"
-safe_delete_dir ".pytest_cache" "Cache pytest" "$DRY_RUN_MODE"
-safe_delete_dir ".benchmarks" "Cache benchmarks" "$DRY_RUN_MODE"
-safe_delete_dir ".mypy_cache" "Cache mypy" "$DRY_RUN_MODE"
+fast_clean ".pytest_cache" "Cache pytest"
+fast_clean ".mypy_cache" "Cache mypy"
+fast_clean "htmlcov" "Rapports de couverture"
 
-# Nettoyage des fichiers temporaires de tests
-echo -e "${BLUE}🧪 Nettoyage des fichiers temporaires de tests...${NC}"
-safe_delete "test_*_temp*" "Fichiers temporaires de tests" "$DRY_RUN_MODE"
-safe_delete "*_test_temp*" "Fichiers temporaires de tests" "$DRY_RUN_MODE"
-safe_delete "temp_test_*" "Fichiers temporaires de tests" "$DRY_RUN_MODE"
-
-# Nettoyage des caches de build
-print_section "Nettoyage des caches de build"
-safe_delete_dir "build" "Dossier build" "$DRY_RUN_MODE"
-safe_delete_dir "dist" "Dossier dist" "$DRY_RUN_MODE"
-safe_delete_dir "*.egg-info" "Dossiers egg-info" "$DRY_RUN_MODE"
-
-# Nettoyage des fichiers de couverture
+# Nettoyage rapide des fichiers de couverture
 print_section "Nettoyage des fichiers de couverture"
-safe_delete "*.coverage" "Fichiers de couverture" "$DRY_RUN_MODE"
-safe_delete "coverage.xml" "Rapports de couverture XML" "$DRY_RUN_MODE"
-safe_delete_dir "htmlcov" "Rapports HTML de couverture" "$DRY_RUN_MODE"
+fast_clean "*.coverage" "Fichiers de couverture"
+fast_clean "coverage.xml" "Rapports XML de couverture"
 
-# Nettoyage des fichiers de profilage
-print_section "Nettoyage des fichiers de profilage"
-safe_delete "profile.out" "Fichiers de profilage" "$DRY_RUN_MODE"
-safe_delete "*.prof" "Fichiers de profilage Python" "$DRY_RUN_MODE"
-
-# Nettoyage des fichiers de recherche
-print_section "Nettoyage des fichiers de recherche"
-safe_delete_dir ".vscode" "Configuration VSCode" "$DRY_RUN_MODE"
-safe_delete_dir ".idea" "Configuration IntelliJ" "$DRY_RUN_MODE"
-
-# Nettoyage des dossiers temporaires
-print_section "Nettoyage des dossiers temporaires"
-safe_delete_dir "temp" "Dossiers temp" "$DRY_RUN_MODE"
-safe_delete_dir "tmp" "Dossiers tmp" "$DRY_RUN_MODE"
-safe_delete_dir "cache" "Dossiers cache" "$DRY_RUN_MODE"
-
-# Nettoyage des fichiers corrompus
+# Nettoyage rapide des fichiers corrompus
 print_section "Nettoyage des fichiers corrompus"
-safe_delete "*.f(f)" "Fichiers corrompus .f(f)" "$DRY_RUN_MODE"
-safe_delete "*.corrupt" "Fichiers corrompus" "$DRY_RUN_MODE"
-safe_delete "*.broken" "Fichiers cassés" "$DRY_RUN_MODE"
+fast_clean "*.f(f)" "Fichiers corrompus"
 
-# Nettoyage des caractères null (sécurisé)
-clean_null_bytes_safe
+# Nettoyage des caractères null des fichiers Python
+print_section "Nettoyage des caractères null"
+if [ "$DRY_RUN_MODE" = true ]; then
+    echo -e "${YELLOW}   [DRY-RUN] Recherche de fichiers avec caractères null${NC}"
+else
+    find . -name "*.py" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -exec grep -l $'\x00' {} \; 2>/dev/null | while read file; do
+        if [ -f "$file" ]; then
+            tr -d '\000' < "$file" > "$file.tmp" 2>/dev/null && mv "$file.tmp" "$file" 2>/dev/null
+            print_success "Nettoyé: $file"
+            CLEANED_COUNT=$((CLEANED_COUNT + 1))
+        fi
+    done
+fi
 
-# Affichage du résumé et du pied de page
-print_summary
-print_footer 
+# Affichage du résumé
+print_summary 
