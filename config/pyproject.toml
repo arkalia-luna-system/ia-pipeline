@@ -85,6 +85,34 @@ include = ["athalia_core*"]
 [tool.setuptools.package-data]
 athalia_core = ["templates/*.py", "classification/*.py", "plugins/*.py"]
 
+# Configuration pour éviter les fichiers .pyc en développement
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--verbose",
+    "--tb=short",
+    "--strict-markers",
+    "--disable-warnings",
+    "--cache-clear",  # Nettoie le cache pytest à chaque exécution
+]
+markers = [
+    "fast: marks tests as fast (deselect with '-m \"not fast\"')",
+    "medium: marks tests as medium speed (deselect with '-m \"not medium\"')",
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "benchmark: marks tests as benchmark tests",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+    "performance: marks tests as performance tests",
+]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning",
+]
+
 [tool.black]
 line-length = 88
 target-version = ['py310']
@@ -116,11 +144,4 @@ warn_redundant_casts = true
 warn_unused_ignores = true
 warn_no_return = true
 warn_unreachable = true
-strict_equality = true
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-python_files = ["test_*.py", "*_test.py"]
-python_classes = ["Test*"]
-python_functions = ["test_*"]
-addopts = "-v --tb=short" 
+strict_equality = true 
