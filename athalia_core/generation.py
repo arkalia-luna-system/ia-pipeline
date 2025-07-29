@@ -60,7 +60,7 @@ def generate_project(blueprint: dict, outdir, *args, **kwargs):
     dry_run = kwargs.get('dry_run', False)
     project_name = blueprint.get('project_name', 'projet_ia')
     project_path = Path(outdir) / project_name
-    
+
     if dry_run:
         # Mode dry-run : générer seulement le rapport
         report_content = f"""[DRY-RUN] Génération du projet {project_name}
@@ -79,26 +79,26 @@ Fichiers qui seraient créés :
 - requirements.txt
 
 [DRY-RUN] Aucun fichier réel créé."""
-        
+
         # Créer le rapport dans le répertoire parent (outdir)
         report_file = Path(outdir) / "dry_run_report.txt"
         report_file.write_text(report_content, encoding='utf-8')
         return str(project_path)
-    
+
     # Mode normal : générer le projet
     project_path.mkdir(parents=True, exist_ok=True)
-    
+
     # Créer la structure de base
     (project_path / 'src').mkdir(exist_ok=True)
     (project_path / 'tests').mkdir(exist_ok=True)
     (project_path / 'docs').mkdir(exist_ok=True)
-    
+
     # Générer les fichiers de base
     generate_readme(blueprint, project_path)
     generate_main_code(blueprint, project_path)
     generate_test_code(blueprint, project_path)
     generate_requirements(blueprint, project_path)
-    
+
     return str(project_path)
 
 
@@ -106,7 +106,7 @@ def generate_readme(blueprint: dict, project_path: Optional[Path] = None) -> str
     """Génère un README basique."""
     project_name = blueprint.get('project_name', 'projet_ia')
     description = blueprint.get('description', 'Projet généré par Athalia')
-    
+
     readme_content = f"""# {project_name}
 
 {description}
@@ -132,11 +132,11 @@ python -m pytest tests/
 ---
 *Généré automatiquement par Athalia*
 """
-    
+
     if project_path:
         readme_file = project_path / 'README.md'
         readme_file.write_text(readme_content, encoding='utf-8')
-    
+
     return readme_content
 
 
@@ -144,7 +144,7 @@ def generate_main_code(blueprint: dict, project_path: Optional[Path] = None) -> 
     """Génère le code principal."""
     project_name = blueprint.get('project_name', 'projet_ia')
     project_type = blueprint.get('project_type', 'generic')
-    
+
     if project_type == 'api':
         main_content = f"""#!/usr/bin/env python3
 \"\"\"
@@ -200,19 +200,19 @@ def run():
 if __name__ == "__main__":
     main()
 """
-    
+
     if project_path:
         main_file = project_path / 'src' / 'main.py'
         main_file.parent.mkdir(exist_ok=True)
         main_file.write_text(main_content, encoding='utf-8')
-    
+
     return main_content
 
 
 def generate_test_code(blueprint: dict, project_path: Optional[Path] = None) -> str:
     """Génère le code de test."""
     project_name = blueprint.get('project_name', 'projet_ia')
-    
+
     test_content = f"""#!/usr/bin/env python3
 \"\"\"
 Tests pour {project_name}
@@ -255,12 +255,12 @@ class Test{project_name.title().replace('_', '')}(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 """
-    
+
     if project_path:
         test_file = project_path / 'tests' / 'test_main.py'
         test_file.parent.mkdir(exist_ok=True)
         test_file.write_text(test_content, encoding='utf-8')
-    
+
     return test_content
 
 
@@ -268,20 +268,20 @@ def generate_requirements(blueprint: dict, project_path: Optional[Path] = None) 
     """Génère un fichier requirements.txt basique."""
     if project_path is None:
         project_path = Path('.')
-    
+
     requirements_file = project_path / 'requirements.txt'
-    
+
     # Dépendances de base
     base_deps = [
         'pytest>=7.0.0',
         'pytest-cov>=4.0.0'
     ]
-    
+
     # Ajouter les dépendances spécifiques au projet
     project_deps = blueprint.get('dependencies', [])
     if isinstance(project_deps, list):
         base_deps.extend(project_deps)
-    
+
     # Ajouter des dépendances selon le type de projet
     project_type = blueprint.get('project_type', 'generic')
     if project_type == 'api':
@@ -290,12 +290,12 @@ def generate_requirements(blueprint: dict, project_path: Optional[Path] = None) 
         base_deps.extend(['flask>=2.3.0', 'jinja2>=3.1.0'])
     elif project_type == 'data':
         base_deps.extend(['pandas>=2.0.0', 'numpy>=1.24.0'])
-    
+
     requirements_content = '\n'.join(base_deps) + '\n'
-    
+
     with open(requirements_file, 'w', encoding='utf-8') as f:
         f.write(requirements_content)
-    
+
     return str(requirements_file)
 
 
@@ -303,37 +303,37 @@ def save_blueprint(blueprint: dict, outdir):
     """Sauvegarde un blueprint dans un fichier YAML."""
     from pathlib import Path
     import yaml
-    
+
     outdir = Path(outdir)
     outdir.mkdir(parents=True, exist_ok=True)
-    
+
     blueprint_file = outdir / 'blueprint.yaml'
     with open(blueprint_file, 'w', encoding='utf-8') as f:
         yaml.dump(blueprint, f, allow_unicode=True)
-    
+
     return str(blueprint_file)
 
 
 def inject_booster_ia_elements(outdir):
     """Injecte les éléments Booster IA."""
     from pathlib import Path
-    
+
     outdir = Path(outdir)
     (outdir / 'booster_ia.txt').write_text('Booster IA injecté')
     (outdir / 'prompts').mkdir(exist_ok=True)
     (outdir / 'setup').mkdir(exist_ok=True)
     (outdir / 'agents').mkdir(exist_ok=True)
-    
+
     return str(outdir / 'booster_ia.txt')
 
 
 def scan_existing_project(outdir):
     """Scanne un projet existant."""
     from pathlib import Path
-    
+
     outdir = Path(outdir)
     files = {
-        f.name: True for f in outdir.iterdir() 
+        f.name: True for f in outdir.iterdir()
         if f.is_file() and f.name in [
             'README.md',
             'test_module.py',
@@ -353,10 +353,10 @@ def merge_or_suffix_file(
 ):
     """Fusionne ou suffixe un fichier."""
     from pathlib import Path
-    
+
     file = Path(file_path)
     action = None
-    
+
     if not file.exists():
         file.write_text(content)
         action = 'created'
@@ -384,7 +384,7 @@ def merge_or_suffix_file(
 def backup_file(file_path: str):
     """Crée une sauvegarde d'un fichier."""
     from pathlib import Path
-    
+
     file = Path(file_path)
     backup = file.with_suffix(file.suffix + '.backup')
     backup.write_text(file.read_text())
@@ -395,7 +395,7 @@ def backup_file(file_path: str):
 def generate_api_docs(blueprint: dict) -> str:
     """Génère la documentation API."""
     project_name = blueprint.get('project_name', 'projet_ia')
-    
+
     return f"""# Documentation API - {project_name}
 
 ## Endpoints
@@ -441,7 +441,7 @@ La documentation interactive sera sur http://localhost:8000/docs
 def generate_dockerfile(blueprint: dict) -> str:
     """Génère un Dockerfile."""
     project_name = blueprint.get('project_name', 'projet_ia')
-    
+
     return f"""# Dockerfile pour {project_name}
 FROM python:3.9-slim
 
@@ -461,8 +461,8 @@ CMD ["python", "src/main.py"]
 def generate_docker_compose(blueprint: dict) -> str:
     """Génère un docker-compose.yml."""
     project_name = blueprint.get('project_name', 'projet_ia')
-    
-    return f"""version: '3.8'
+
+    docker_compose = f"""version: '3.8'
 
 services:
   {project_name}:
@@ -473,4 +473,5 @@ services:
       - .:/app
     environment:
       - DEBUG=true
-""" 
+"""
+    return docker_compose

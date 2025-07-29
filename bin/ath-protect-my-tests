@@ -17,9 +17,20 @@ PROTECTED_TESTS=(
     "test_cache_simple.py"
     "test_performance_optimization.py"
     "test_benchmark_critical.py"
-    "test_cli_robustesse.py"
-    "test_end_to_end.py"
-    "test_yaml_validity.py"
+    "integration/test_cli_robustesse.py"
+    "integration/test_end_to_end.py"
+    "integration/test_yaml_validity.py"
+    "test_cleanup.py"
+    "test_audit.py"
+    "test_i18n.py"
+    "audit_complet_dossiers.py"
+    "debug_correction.py"
+    "correction_chaînes.py"
+    "correction_finale.py"
+    "test_plugin_complet.py"
+    "test_plugins.py"
+    "test_adaptive_distillation.py"
+    "optimize_performance.py"
 )
 
 # Fonction pour vérifier si un test est protégé
