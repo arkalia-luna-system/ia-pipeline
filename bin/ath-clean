@@ -1,6 +1,6 @@
 #!/bin/bash
 # 🌟 Nettoyage Complet du Projet Athalia - VERSION OPTIMISÉE
-# Version 5.0 - Nettoyage complet de tous les fichiers cache
+# Version 5.1 - Nettoyage complet + Arrêt des processus Athalia
 
 set -euo pipefail
 
@@ -18,11 +18,27 @@ NC='\033[0m'
 # Variables optimisées
 CLEANED_COUNT=0
 DRY_RUN_MODE=false
+KILL_PROCESSES=false
 
-# Détection du mode dry-run
-if [ "${1:-}" = "--dry-run" ] || [ "${1:-}" = "-d" ]; then
-    DRY_RUN_MODE=true
-fi
+# Détection des options
+for arg in "$@"; do
+    case $arg in
+        --dry-run|-d)
+            DRY_RUN_MODE=true
+            ;;
+        --kill-processes|-k)
+            KILL_PROCESSES=true
+            ;;
+        --help|-h)
+            echo "Usage: ath-clean [OPTIONS]"
+            echo "Options:"
+            echo "  --dry-run, -d     Mode simulation (ne supprime rien)"
+            echo "  --kill-processes, -k  Arrête tous les processus Athalia"
+            echo "  --help, -h        Affiche cette aide"
+            exit 0
+            ;;
+    esac
+done
 
 # =============================================================================
 # SECTION 2: FONCTIONS D'AFFICHAGE OPTIMISÉES
@@ -49,6 +65,10 @@ print_info() {
     echo -e "${BLUE}ℹ️  $1${NC}"
 }
 
+print_error() {
+    echo -e "${RED}❌ $1${NC}"
+}
+
 print_summary() {
     echo
     echo -e "${GREEN}🎯 Total nettoyé : $CLEANED_COUNT éléments${NC}"
@@ -56,7 +76,91 @@ print_summary() {
 }
 
 # =============================================================================
-# SECTION 3: FONCTIONS DE NETTOYAGE COMPLETES
+# SECTION 3: FONCTIONS DE GESTION DES PROCESSUS
+# =============================================================================
+
+# Fonction pour arrêter tous les processus Athalia
+kill_athalia_processes() {
+    print_section "Arrêt des processus Athalia"
+    
+    # Patterns pour identifier les processus Athalia
+    local patterns=(
+        "athalia_core"
+        "athalia_unified"
+        "ath-"
+        "pytest.*athalia"
+        "python.*athalia"
+        "python3.*athalia"
+    )
+    
+    local killed_count=0
+    
+    for pattern in "${patterns[@]}"; do
+        if [ "$DRY_RUN_MODE" = true ]; then
+            # Mode simulation - afficher les processus qui seraient arrêtés
+            local processes=$(ps aux | grep -E "$pattern" | grep -v grep | grep -v "ath-clean" || true)
+            if [ -n "$processes" ]; then
+                echo -e "${YELLOW}   [DRY-RUN] Processus qui seraient arrêtés avec pattern '$pattern':${NC}"
+                echo "$processes" | while read line; do
+                    echo -e "${YELLOW}   [DRY-RUN] $line${NC}"
+                done
+                local count=$(echo "$processes" | wc -l)
+                killed_count=$((killed_count + count))
+            fi
+        else
+            # Mode réel - arrêter les processus
+            local processes=$(ps aux | grep -E "$pattern" | grep -v grep | grep -v "ath-clean" || true)
+            if [ -n "$processes" ]; then
+                echo -e "${BLUE}   Arrêt des processus avec pattern '$pattern'...${NC}"
+                echo "$processes" | while read line; do
+                    local pid=$(echo "$line" | awk '{print $2}')
+                    local cmd=$(echo "$line" | awk '{for(i=11;i<=NF;i++) printf "%s ", $i; print ""}')
+                    if [ -n "$pid" ] && [ "$pid" != "$$" ]; then
+                        if kill -TERM "$pid" 2>/dev/null; then
+                            print_success "Arrêté PID $pid: $cmd"
+                            killed_count=$((killed_count + 1))
+                        else
+                            print_warning "Impossible d'arrêter PID $pid: $cmd"
+                        fi
+                    fi
+                done
+            fi
+        fi
+    done
+    
+    # Attendre un peu pour les processus qui se terminent proprement
+    if [ "$DRY_RUN_MODE" = false ] && [ $killed_count -gt 0 ]; then
+        print_info "Attente de 3 secondes pour la terminaison propre..."
+        sleep 3
+        
+        # Forcer l'arrêt des processus qui n'ont pas répondu au SIGTERM
+        for pattern in "${patterns[@]}"; do
+            local processes=$(ps aux | grep -E "$pattern" | grep -v grep | grep -v "ath-clean" || true)
+            if [ -n "$processes" ]; then
+                echo "$processes" | while read line; do
+                    local pid=$(echo "$line" | awk '{print $2}')
+                    local cmd=$(echo "$line" | awk '{for(i=11;i<=NF;i++) printf "%s ", $i; print ""}')
+                    if [ -n "$pid" ] && [ "$pid" != "$$" ]; then
+                        if kill -KILL "$pid" 2>/dev/null; then
+                            print_warning "Forcé l'arrêt PID $pid: $cmd"
+                        fi
+                    fi
+                done
+            fi
+        done
+    fi
+    
+    if [ $killed_count -gt 0 ]; then
+        print_success "Total: $killed_count processus Athalia arrêtés"
+    else
+        print_info "Aucun processus Athalia trouvé"
+    fi
+    
+    echo
+}
+
+# =============================================================================
+# SECTION 4: FONCTIONS DE NETTOYAGE COMPLETES
 # =============================================================================
 
 # Fonction de nettoyage rapide avec patterns multiples
@@ -123,11 +227,16 @@ clean_cache_directories() {
 }
 
 # =============================================================================
-# SECTION 4: EXÉCUTION PRINCIPALE COMPLÈTE
+# SECTION 5: EXÉCUTION PRINCIPALE COMPLÈTE
 # =============================================================================
 
 # Affichage de l'en-tête
 print_header
+
+# Arrêt des processus Athalia si demandé
+if [ "$KILL_PROCESSES" = true ]; then
+    kill_athalia_processes
+fi
 
 # Nettoyage complet des fichiers AppleDouble et macOS
 print_section "Nettoyage des fichiers AppleDouble et macOS"
