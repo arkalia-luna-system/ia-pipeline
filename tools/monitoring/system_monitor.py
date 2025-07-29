@@ -97,14 +97,13 @@ class SystemMonitor:
             json.dump(report, f, indent=2)
 
         logger.info(f"📊 Rapport système sauvegardé: {report_file}")
-        return report_file
 
     def monitor(self):
         """Exécute le monitoring complet"""
         logger.info("🔍 Démarrage du monitoring système...")
         
         report = self.generate_report()
-        report_file = self.save_report(report)
+        self.save_report(report)
         
         # Affichage des alertes
         if report["system"]["cpu_percent"] > 80:
