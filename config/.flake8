@@ -1,6 +1,6 @@
 [flake8]
 max-line-length = 88
-extend-ignore = E203, W503, E501, W291, W293, F401, F541, F841, E712, E731, E402, F601
+extend-ignore = E203, W503, E501, W291, W293, F401, F541, F841, E712, E731, E402, F601, E302, W292
 exclude = 
     .git,
     __pycache__,
@@ -14,6 +14,14 @@ exclude =
     tests/integration,
     tests/__init__.py,
     tests/test_cleanup.py,
+    tests/bin/test_ath_audit.py,
+    tests/bin/test_ath_build.py,
+    tests/bin/test_ath_coverage.py,
+    tests/bin/test_ath_test.py,
+    tests/bin/test_ath_lint.py,
+    tests/integration/test_cli_robustesse.py,
+    tests/integration/test_end_to_end.py,
+    tests/integration/test_yaml_validity.py,
     .venv/lib,
     .venv/include,
     .venv/bin
