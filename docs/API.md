@@ -1843,74 +1843,99 @@ Test simple de l'analyse intelligente avec gestion d'erreurs robuste
 
 ---
 
-### test_analytics
+### test_ci_robust
 
-Tests pour le module analytics
+🧪 Tests CI Robustes - Athalia/Arkalia
+=====================================
+
+Tests robustes pour la validation CI/CD complète
+Tests plus approfondis pour validation de qualité
 
 #### Classes
 
-##### TestAnalyticsModule
+##### TestCIRobust
 
-Tests pour le module analytics d'Athalia
+Tests CI robustes pour validation complète
 
 **Méthodes :**
 
-- `setup_method()`
-- `teardown_method()`
-- `create_test_project()`
-- `test_analytics_module_import()`
-- `test_analyze_project()`
-- `test_generate_heatmap_data()`
-- `test_generate_technical_debt_analysis()`
-- `test_generate_analytics_html()`
-- `test_analytics_with_empty_project()`
-- `test_analytics_with_nonexistent_project()`
+- `test_python_environment()`
+- `test_project_structure_complete()`
+- `test_config_files_complete()`
+- `test_test_suite_structure()`
+- `test_requirements_validation()`
+- `test_ci_workflow_validation()`
+- `test_file_permissions_complete()`
+- `test_encoding_validation()`
+- `test_json_yaml_parsing()`
+- `test_subprocess_functionality()`
+- `test_time_functionality()`
+- `test_pathlib_functionality()`
+- `test_environment_robustness()`
+- `test_error_handling()`
+- `test_assertion_functionality()`
 
 #### Fonctions
 
-##### test_analytics_integration
+##### test_python_environment
 
-Test d'intégration du module analytics
+Vérifie l'environnement Python complet
 
-##### setup_method
+##### test_project_structure_complete
 
-Configuration avant chaque test
+Vérifie la structure complète du projet
 
-##### teardown_method
+##### test_config_files_complete
 
-Nettoyage après chaque test
+Vérifie tous les fichiers de configuration
 
-##### create_test_project
+##### test_test_suite_structure
 
-Créer un projet de test pour les analyses
+Vérifie la structure de la suite de tests
 
-##### test_analytics_module_import
+##### test_requirements_validation
 
-Test d'import du module analytics
+Valide les fichiers requirements
 
-##### test_analyze_project
+##### test_ci_workflow_validation
 
-Test d'analyse de projet
+Valide le workflow CI
 
-##### test_generate_heatmap_data
+##### test_file_permissions_complete
 
-Test de génération de données pour heatmap
+Vérifie les permissions complètes
 
-##### test_generate_technical_debt_analysis
+##### test_encoding_validation
 
-Test d'analyse de dette technique
+Valide l'encodage UTF-8 complet
 
-##### test_generate_analytics_html
+##### test_json_yaml_parsing
 
-Test de génération de rapport HTML
+Teste le parsing JSON et YAML
 
-##### test_analytics_with_empty_project
+##### test_subprocess_functionality
 
-Test d'analyse avec un projet vide
+Teste la fonctionnalité subprocess
 
-##### test_analytics_with_nonexistent_project
+##### test_time_functionality
 
-Test d'analyse avec un projet inexistant
+Teste la fonctionnalité time
+
+##### test_pathlib_functionality
+
+Teste la fonctionnalité pathlib
+
+##### test_environment_robustness
+
+Teste la robustesse de l'environnement
+
+##### test_error_handling
+
+Teste la gestion d'erreurs
+
+##### test_assertion_functionality
+
+Teste la fonctionnalité d'assertion
 
 ---
 
@@ -1948,40 +1973,15 @@ Fonction principale de test
 
 ---
 
-### test_advanced_analytics_unit
-
-#### Classes
-
-##### TestAdvancedAnalytics
-
-**Méthodes :**
-
-- `setUp()`
-- `test_constructor()`
-- `test_run()`
-- `test_analyze_coverage()`
-- `test_analyze_performance()`
-- `test_generate_dashboard()`
-- `test_generate_summary()`
-- `test_print_report()`
+### test_onboarding
 
 #### Fonctions
 
-##### setUp
+##### test_onboarding
 
-##### test_constructor
+**Paramètres :**
 
-##### test_run
-
-##### test_analyze_coverage
-
-##### test_analyze_performance
-
-##### test_generate_dashboard
-
-##### test_generate_summary
-
-##### test_print_report
+- `tmp_path`
 
 ---
 
@@ -2022,6 +2022,12 @@ Tests complets pour le module dashboard
 - `__init__()`
 - `to_csv()`
 
+##### MockStreamlit
+
+**Méthodes :**
+
+- `__getattr__()`
+
 #### Fonctions
 
 ##### setup_method
@@ -2038,99 +2044,51 @@ Créer des données de benchmark d'exemple
 
 ##### test_show_benchmarks_with_data
 
-Test de show_benchmarks avec données
-
-**Paramètres :**
-
-- `mock_st`
+Test de show_benchmarks avec données - DÉSACTIVÉ
 
 ##### test_show_benchmarks_without_data
 
-Test de show_benchmarks sans données
-
-**Paramètres :**
-
-- `mock_st`
+Test de show_benchmarks sans données - DÉSACTIVÉ
 
 ##### test_show_benchmarks_with_filter
 
-Test de show_benchmarks avec filtre
-
-**Paramètres :**
-
-- `mock_st`
+Test de show_benchmarks avec filtre - DÉSACTIVÉ
 
 ##### test_show_benchmarks_data_processing
 
-Test du traitement des données dans show_benchmarks
-
-**Paramètres :**
-
-- `mock_st`
+Test du traitement des données dans show_benchmarks - DÉSACTIVÉ
 
 ##### test_show_benchmarks_filter_processing
 
-Test du filtrage des données
-
-**Paramètres :**
-
-- `mock_st`
+Test du filtrage des données - DÉSACTIVÉ
 
 ##### test_main_function
 
-Test de la fonction main
-
-**Paramètres :**
-
-- `mock_st`
+Test de la fonction main - DÉSACTIVÉ
 
 ##### test_main_function_different_pages
 
-Test de la fonction main avec différentes pages
-
-**Paramètres :**
-
-- `mock_st`
+Test de la fonction main avec différentes pages - DÉSACTIVÉ
 
 ##### test_show_benchmarks_error_handling
 
-Test de la gestion d'erreurs dans show_benchmarks
-
-**Paramètres :**
-
-- `mock_st`
+Test de la gestion d'erreurs dans show_benchmarks - DÉSACTIVÉ
 
 ##### test_show_benchmarks_empty_dataframe
 
-Test avec un dataframe vide
-
-**Paramètres :**
-
-- `mock_st`
+Test avec un dataframe vide - DÉSACTIVÉ
 
 ##### test_show_benchmarks_missing_columns
 
-Test avec des colonnes manquantes
-
-**Paramètres :**
-
-- `mock_st`
+Test avec des colonnes manquantes - DÉSACTIVÉ
 
 ##### test_show_benchmarks_complex_data
 
-Test avec des données complexes
-
-**Paramètres :**
-
-- `mock_st`
+Test avec des données complexes - DÉSACTIVÉ
 
 ##### test_show_benchmarks_info_message
 
-Test du message d'information
-
-**Paramètres :**
-
-- `mock_st`
+Test du message d'information - DÉSACTIVÉ
 
 ##### __init__
 
@@ -2144,6 +2102,12 @@ Test du message d'information
 
 - `filename`
 - `index`
+
+##### __getattr__
+
+**Paramètres :**
+
+- `name`
 
 ---
 
@@ -3738,96 +3702,6 @@ Vérifie la présence des modèles Claude et Mistral dans la config Continue.
 
 ---
 
-### test_integration_orchestrator
-
-🧪 TESTS D'INTÉGRATION ORCHESTRATEUR
-====================================
-Tests pour valider l'intégration des modules dans l'orchestrateur unifié.
-
-#### Classes
-
-##### TestOrchestratorIntegration
-
-Tests d'intégration de l'orchestrateur
-
-**Méthodes :**
-
-- `setUp()`
-- `tearDown()`
-- `create_test_project()`
-- `test_orchestrator_imports()`
-- `test_integrated_modules_imports()`
-- `test_orchestrator_initialization()`
-- `test_orchestrator_configuration()`
-- `test_integration_score()`
-- `test_module_functionality()`
-- `test_orchestrator_orchestration()`
-
-##### TestIntegrationCompleteness
-
-Tests de complétude de l'intégration
-
-**Méthodes :**
-
-- `test_all_modules_available()`
-- `test_integration_consistency()`
-
-#### Fonctions
-
-##### main
-
-Fonction principale
-
-##### setUp
-
-Configuration des tests
-
-##### tearDown
-
-Nettoyage après les tests
-
-##### create_test_project
-
-Créer un projet de test
-
-##### test_orchestrator_imports
-
-Test des imports de l'orchestrateur
-
-##### test_integrated_modules_imports
-
-Test des imports des modules intégrés
-
-##### test_orchestrator_initialization
-
-Test de l'initialisation de l'orchestrateur avec modules intégrés
-
-##### test_orchestrator_configuration
-
-Test de la configuration de l'orchestrateur
-
-##### test_integration_score
-
-Test du score d'intégration
-
-##### test_module_functionality
-
-Test de la fonctionnalité des modules intégrés
-
-##### test_orchestrator_orchestration
-
-Test d'orchestration avec modules intégrés
-
-##### test_all_modules_available
-
-Test que tous les modules intégrés sont disponibles
-
-##### test_integration_consistency
-
-Test de la cohérence de l'intégration
-
----
-
 ### test_correction
 
 Script de test pour la correction du projet EmotionSensingRoboticEyes
@@ -4314,6 +4188,46 @@ Test d'intégration avec analyse de code
 **Paramètres :**
 
 - `mock_query_qwen`
+
+---
+
+### test_plugin_complet
+
+Test complet du plugin VS Code Athalia
+Vérifie tous les composants nécessaires au fonctionnement
+
+#### Fonctions
+
+##### print_status
+
+**Paramètres :**
+
+- `message`
+- `status`
+
+##### test_vscode_installation
+
+Test si VS Code est installé et accessible
+
+##### test_plugin_compilation
+
+Test si le plugin est compilé
+
+##### test_package_json
+
+Test la configuration package.json
+
+##### test_ai_server
+
+Test si le serveur d'autocomplétion IA fonctionne
+
+##### test_apple_double_files
+
+Test s'il y a des fichiers AppleDouble parasites
+
+##### generate_test_report
+
+Génère un rapport de test complet
 
 ---
 
@@ -5029,43 +4943,69 @@ Fonction principale
 
 ---
 
-### test_plugin_complet
+### test_ai_robust_integration
 
-Test complet du plugin VS Code Athalia
-Vérifie tous les composants nécessaires au fonctionnement
+#### Classes
+
+##### TestAIRobustIntegration
+
+Tests d'intégration pour l'IA robuste.
+
+**Méthodes :**
+
+- `setup_method()`
+- `test_complete_workflow_simple_project()`
+- `test_fallback_chain_behavior()`
+- `test_different_project_complexities()`
+- `test_prompt_contexts()`
+- `test_model_detection()`
+- `test_error_handling()`
 
 #### Fonctions
 
-##### print_status
+##### test_ai_robust_performance
+
+Test de performance de l'IA robuste.
+
+##### test_ai_robust_memory_usage
+
+Test de l'utilisation mémoire de l'IA robuste.
+
+##### setup_method
+
+Initialise l'IA robuste pour les tests.
+
+##### test_complete_workflow_simple_project
+
+Test du workflow complet pour un projet simple.
+
+##### test_fallback_chain_behavior
+
+Test du comportement de la chaîne de fallback.
+
+##### test_different_project_complexities
+
+Test avec différents niveaux de complexité.
+
+##### test_prompt_contexts
+
+Test de tous les contextes de prompts.
+
+##### test_model_detection
+
+Test de la détection des modèles.
+
+##### test_error_handling
+
+Test de la gestion d'erreurs.
+
+##### mock_call_fail
 
 **Paramètres :**
 
-- `message`
-- `status`
-
-##### test_vscode_installation
-
-Test si VS Code est installé et accessible
-
-##### test_plugin_compilation
-
-Test si le plugin est compilé
-
-##### test_package_json
-
-Test la configuration package.json
-
-##### test_ai_server
-
-Test si le serveur d'autocomplétion IA fonctionne
-
-##### test_apple_double_files
-
-Test s'il y a des fichiers AppleDouble parasites
-
-##### generate_test_report
-
-Génère un rapport de test complet
+- `model`
+- `prompt`
+- `timeout`
 
 ---
 
@@ -5133,160 +5073,6 @@ Test l'import du module robotique
 ##### test_robotics_audit_method
 
 Test de la méthode d'audit robotique
-
----
-
-### test_predictive_cache
-
-#### Classes
-
-##### TestPredictiveCache
-
-**Méthodes :**
-
-- `test_set_get()`
-- `test_predict_key()`
-- `test_pre_generate()`
-- `test_invalidate()`
-- `test_stats()`
-- `test_ttl()`
-
-#### Fonctions
-
-##### test_set_get
-
-##### test_predict_key
-
-##### test_pre_generate
-
-##### test_invalidate
-
-##### test_stats
-
-##### test_ttl
-
-##### gen
-
-**Paramètres :**
-
-- `ctx`
-
----
-
-### test_ai_robust_integration
-
-#### Classes
-
-##### TestAIRobustIntegration
-
-Tests d'intégration pour l'IA robuste.
-
-**Méthodes :**
-
-- `setup_method()`
-- `test_complete_workflow_simple_project()`
-- `test_fallback_chain_behavior()`
-- `test_different_project_complexities()`
-- `test_prompt_contexts()`
-- `test_model_detection()`
-- `test_error_handling()`
-
-#### Fonctions
-
-##### test_ai_robust_performance
-
-Test de performance de l'IA robuste.
-
-##### test_ai_robust_memory_usage
-
-Test de l'utilisation mémoire de l'IA robuste.
-
-##### setup_method
-
-Initialise l'IA robuste pour les tests.
-
-##### test_complete_workflow_simple_project
-
-Test du workflow complet pour un projet simple.
-
-##### test_fallback_chain_behavior
-
-Test du comportement de la chaîne de fallback.
-
-##### test_different_project_complexities
-
-Test avec différents niveaux de complexité.
-
-##### test_prompt_contexts
-
-Test de tous les contextes de prompts.
-
-##### test_model_detection
-
-Test de la détection des modèles.
-
-##### test_error_handling
-
-Test de la gestion d'erreurs.
-
-##### mock_call_fail
-
-**Paramètres :**
-
-- `model`
-- `prompt`
-- `timeout`
-
----
-
-### test_profils_utilisateur_avances
-
-Tests pour les profils utilisateur avancés
-Corrigé après réorganisation des modules
-
-#### Classes
-
-##### TestUserProfilesAdvanced
-
-Tests pour les profils utilisateur avancés (corrigé)
-
-**Méthodes :**
-
-- `setUp()`
-- `tearDown()`
-- `test_import_user_profiles()`
-- `test_profiles_structure()`
-- `test_profiles_functionality()`
-
-#### Fonctions
-
-##### setUp
-
-Configuration des tests
-
-##### tearDown
-
-Nettoyage après les tests
-
-##### test_import_user_profiles
-
-Test d'import des profils utilisateur
-
-##### test_profiles_structure
-
-Test de la structure des profils
-
-##### test_profiles_functionality
-
-Test de la fonctionnalité des profils
-
----
-
-### test_project_importer
-
-#### Fonctions
-
-##### test_project_import_concept
 
 ---
 
@@ -5420,19 +5206,91 @@ Résultat attendu : Utilisation du fallback MOCK
 
 ---
 
-### test_ready_check
+### test_predictive_cache
 
-Tests pour ready_check.py
+#### Classes
+
+##### TestPredictiveCache
+
+**Méthodes :**
+
+- `test_set_get()`
+- `test_predict_key()`
+- `test_pre_generate()`
+- `test_invalidate()`
+- `test_stats()`
+- `test_ttl()`
 
 #### Fonctions
 
-##### test_check_ready_ok
+##### test_set_get
 
-Test que le projet est prêt
+##### test_predict_key
 
-##### test_check_ready_missing
+##### test_pre_generate
 
-Test avec un projet manquant
+##### test_invalidate
+
+##### test_stats
+
+##### test_ttl
+
+##### gen
+
+**Paramètres :**
+
+- `ctx`
+
+---
+
+### test_project_importer
+
+#### Fonctions
+
+##### test_project_import_concept
+
+---
+
+### test_profils_utilisateur_avances
+
+Tests pour les profils utilisateur avancés
+Corrigé après réorganisation des modules
+
+#### Classes
+
+##### TestUserProfilesAdvanced
+
+Tests pour les profils utilisateur avancés (corrigé)
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `test_import_user_profiles()`
+- `test_profiles_structure()`
+- `test_profiles_functionality()`
+
+#### Fonctions
+
+##### setUp
+
+Configuration des tests
+
+##### tearDown
+
+Nettoyage après les tests
+
+##### test_import_user_profiles
+
+Test d'import des profils utilisateur
+
+##### test_profiles_structure
+
+Test de la structure des profils
+
+##### test_profiles_functionality
+
+Test de la fonctionnalité des profils
 
 ---
 
@@ -5619,162 +5477,6 @@ Retourne les résultats des tests d'imports
 
 ---
 
-### test_performance_optimized
-
-Tests optimisés pour les performances
-Version: 1.0
-Auteur: Athalia Team
-
-#### Classes
-
-##### TestPerformanceOptimized
-
-Tests optimisés pour les performances
-
-Cette classe utilise des techniques d'optimisation :
-- Cache des objets coûteux
-- Setup/teardown optimisés
-- Tests parallélisables
-- Réduction des I/O
-
-**Méthodes :**
-
-- `setUpClass()`
-- `tearDownClass()`
-- `setUp()`
-- `tearDown()`
-- `test_analytics_instantiation()`
-- `test_audit_instantiation()`
-- `test_cleanup_instantiation()`
-- `test_analytics_basic_operations()`
-- `test_audit_basic_operations()`
-- `test_cleanup_basic_operations()`
-- `test_analytics_with_cache()`
-- `test_parallel_operations()`
-- `test_memory_usage()`
-
-#### Fonctions
-
-##### test_import_performance
-
-Test de performance des imports
-
-Scénario : Import des modules principaux
-Données : Modules athalia_core
-Résultat attendu : Imports rapides
-
-##### test_module_instantiation_performance
-
-Test de performance d'instanciation
-
-Scénario : Instanciation des modules principaux
-Données : Classes principales
-Résultat attendu : Instanciation rapide
-
-##### setUpClass
-
-Setup de classe - exécuté une seule fois pour tous les tests
-
-**Paramètres :**
-
-- `cls`
-
-##### tearDownClass
-
-Teardown de classe - nettoyage final
-
-**Paramètres :**
-
-- `cls`
-
-##### setUp
-
-Setup rapide pour chaque test
-
-##### tearDown
-
-Teardown rapide avec vérification de performance
-
-##### test_analytics_instantiation
-
-Test d'instanciation rapide d'Analytics
-
-Scénario : Instanciation d'Analytics
-Données : Instance Analytics
-Résultat attendu : Instance valide créée rapidement
-
-##### test_audit_instantiation
-
-Test d'instanciation rapide d'Audit
-
-Scénario : Instanciation d'Audit
-Données : Instance Audit
-Résultat attendu : Instance valide créée rapidement
-
-##### test_cleanup_instantiation
-
-Test d'instanciation rapide de Cleanup
-
-Scénario : Instanciation de Cleanup
-Données : Instance Cleanup
-Résultat attendu : Instance valide créée rapidement
-
-##### test_analytics_basic_operations
-
-Test des opérations basiques d'Analytics
-
-Scénario : Opérations basiques d'Analytics
-Données : Instance Analytics
-Résultat attendu : Opérations exécutées rapidement
-
-##### test_audit_basic_operations
-
-Test des opérations basiques d'Audit
-
-Scénario : Opérations basiques d'Audit
-Données : Instance Audit
-Résultat attendu : Opérations exécutées rapidement
-
-##### test_cleanup_basic_operations
-
-Test des opérations basiques de Cleanup
-
-Scénario : Opérations basiques de Cleanup
-Données : Instance Cleanup
-Résultat attendu : Opérations exécutées rapidement
-
-##### test_analytics_with_cache
-
-Test d'Analytics avec cache
-
-Scénario : Utilisation du cache pour améliorer les performances
-Données : Instance Analytics avec cache
-Résultat attendu : Opérations plus rapides avec cache
-
-##### test_parallel_operations
-
-Test d'opérations parallèles
-
-Scénario : Exécution d'opérations en parallèle
-Données : Plusieurs instances
-Résultat attendu : Opérations exécutées en parallèle
-
-##### test_memory_usage
-
-Test de l'utilisation mémoire
-
-Scénario : Vérification de l'utilisation mémoire
-Données : Opérations répétées
-Résultat attendu : Utilisation mémoire stable
-
-##### run_analytics
-
-##### run_audit
-
-##### run_cleanup
-
----
-
 ### test_auto_cleaner_unit
 
 #### Classes
@@ -5836,127 +5538,3039 @@ Résultat attendu : Utilisation mémoire stable
 
 ---
 
-### test_integration_multimodal
+### test_cli_complete
+
+Tests complets pour athalia_core.cli
+Couverture maximale avec tests professionnels
 
 #### Classes
 
-##### TestIntegrationMultimodal
+##### TestCLIComplete
+
+Tests complets pour la CLI athalia_core
 
 **Méthodes :**
 
-- `test_multimodal_distillation()`
+- `setup_method()`
+- `teardown_method()`
+- `test_cli_group_creation()`
+- `test_cli_verbose_option()`
+- `test_generate_command_success()`
+- `test_generate_command_dry_run()`
+- `test_generate_command_no_blueprint()`
+- `test_generate_command_exception()`
+- `test_audit_command_success()`
+- `test_audit_command_exception()`
+- `test_ai_status_command_success()`
+- `test_ai_status_command_import_error()`
+- `test_ai_status_command_exception()`
+- `test_test_ai_command_success()`
+- `test_test_ai_command_import_error()`
+- `test_test_ai_command_exception()`
+- `test_generate_command_output_directory_creation()`
+- `test_audit_command_report_creation()`
+- `test_cli_help_output()`
+- `test_generate_command_default_output()`
+- `test_test_ai_command_review_code_parameters()`
+- `test_test_ai_command_documentation_parameters()`
+
+##### TestCLIIntegration
+
+Tests d'intégration pour la CLI
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_cli_workflow_complete()`
+- `test_cli_error_handling_robustness()`
 
 #### Fonctions
 
-##### test_multimodal_distillation
+##### setup_method
 
----
+Setup pour chaque test
 
-### test_onboarding
+##### teardown_method
 
-#### Fonctions
+Cleanup après chaque test
 
-##### test_onboarding
+##### test_cli_group_creation
+
+Test la création du groupe CLI principal
+
+##### test_cli_verbose_option
+
+Test l'option verbose du CLI principal
+
+##### test_generate_command_success
+
+Test la commande generate avec succès
 
 **Paramètres :**
 
-- `tmp_path`
+- `mock_echo`
+- `mock_generate_project`
+- `mock_robust_ai`
+
+##### test_generate_command_dry_run
+
+Test la commande generate en mode dry-run
+
+**Paramètres :**
+
+- `mock_echo`
+- `mock_robust_ai`
+
+##### test_generate_command_no_blueprint
+
+Test la commande generate quand le blueprint ne peut pas être généré
+
+**Paramètres :**
+
+- `mock_echo`
+- `mock_robust_ai`
+
+##### test_generate_command_exception
+
+Test la commande generate avec exception
+
+**Paramètres :**
+
+- `mock_echo`
+- `mock_robust_ai`
+
+##### test_audit_command_success
+
+Test la commande audit avec succès
+
+**Paramètres :**
+
+- `mock_echo`
+- `mock_audit`
+
+##### test_audit_command_exception
+
+Test la commande audit avec exception
+
+**Paramètres :**
+
+- `mock_echo`
+- `mock_audit`
+
+##### test_ai_status_command_success
+
+Test la commande ai_status avec succès
+
+**Paramètres :**
+
+- `mock_echo`
+- `mock_robust_ai`
+
+##### test_ai_status_command_import_error
+
+Test la commande ai_status avec ImportError
+
+**Paramètres :**
+
+- `mock_echo`
+- `mock_robust_ai`
+
+##### test_ai_status_command_exception
+
+Test la commande ai_status avec exception générale
+
+**Paramètres :**
+
+- `mock_echo`
+- `mock_robust_ai`
+
+##### test_test_ai_command_success
+
+Test la commande test_ai avec succès
+
+**Paramètres :**
+
+- `mock_echo`
+- `mock_robust_ai`
+
+##### test_test_ai_command_import_error
+
+Test la commande test_ai avec ImportError
+
+**Paramètres :**
+
+- `mock_echo`
+- `mock_robust_ai`
+
+##### test_test_ai_command_exception
+
+Test la commande test_ai avec exception générale
+
+**Paramètres :**
+
+- `mock_echo`
+- `mock_robust_ai`
+
+##### test_generate_command_output_directory_creation
+
+Test que la commande generate crée le dossier de sortie
+
+##### test_audit_command_report_creation
+
+Test que la commande audit crée un rapport YAML
+
+**Paramètres :**
+
+- `mock_echo`
+- `mock_audit`
+
+##### test_cli_help_output
+
+Test que la CLI affiche l'aide correctement
+
+##### test_generate_command_default_output
+
+Test que la commande generate utilise le dossier par défaut
+
+##### test_test_ai_command_review_code_parameters
+
+Test que test_ai appelle review_code avec les bons paramètres
+
+**Paramètres :**
+
+- `mock_echo`
+- `mock_robust_ai`
+
+##### test_test_ai_command_documentation_parameters
+
+Test que test_ai appelle generate_documentation avec les bons paramètres
+
+**Paramètres :**
+
+- `mock_echo`
+- `mock_robust_ai`
+
+##### setup_method
+
+Setup pour chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_cli_workflow_complete
+
+Test un workflow complet de la CLI
+
+**Paramètres :**
+
+- `mock_audit`
+- `mock_generate_project`
+- `mock_robust_ai`
+
+##### test_cli_error_handling_robustness
+
+Test la robustesse de la gestion d'erreurs de la CLI
 
 ---
 
-### test_ci_robust
+### test_config_manager_complete
 
-🧪 Tests CI Robustes - Athalia/Arkalia
-=====================================
-
-Tests robustes pour la validation CI/CD complète
-Tests plus approfondis pour validation de qualité
+Tests complets pour config_manager.py
+Objectif : Atteindre 85%+ de couverture
 
 #### Classes
 
-##### TestCIRobust
+##### TestConfigManagerComplete
 
-Tests CI robustes pour validation complète
+Tests complets pour ConfigManager
 
 **Méthodes :**
 
-- `test_python_environment()`
-- `test_project_structure_complete()`
-- `test_config_files_complete()`
-- `test_test_suite_structure()`
-- `test_requirements_validation()`
-- `test_ci_workflow_validation()`
-- `test_file_permissions_complete()`
-- `test_encoding_validation()`
-- `test_json_yaml_parsing()`
-- `test_subprocess_functionality()`
-- `test_time_functionality()`
-- `test_pathlib_functionality()`
-- `test_environment_robustness()`
-- `test_error_handling()`
-- `test_assertion_functionality()`
+- `setup_method()`
+- `teardown_method()`
+- `test_init_with_default_config()`
+- `test_init_with_existing_config_file()`
+- `test_load_config_with_valid_file()`
+- `test_load_config_with_invalid_file()`
+- `test_load_config_with_nonexistent_file()`
+- `test_save_config_success()`
+- `test_save_config_with_directory_creation()`
+- `test_save_config_failure()`
+- `test_merge_yaml_config_general()`
+- `test_merge_yaml_config_modules()`
+- `test_merge_yaml_config_database()`
+- `test_merge_yaml_config_ai()`
+- `test_merge_yaml_config_testing()`
+- `test_merge_yaml_config_cicd()`
+- `test_merge_yaml_config_cleanup()`
+- `test_merge_yaml_config_dashboard()`
+- `test_merge_yaml_config_profiles()`
+- `test_merge_yaml_config_security()`
+- `test_merge_yaml_config_analytics()`
+- `test_merge_yaml_config_empty_data()`
+- `test_merge_env_config()`
+- `test_setup_logging()`
+- `test_get_simple_key()`
+- `test_get_nested_key()`
+- `test_is_module_enabled_with_modules_config()`
+- `test_is_module_enabled_without_modules_config()`
+- `test_get_enabled_plugins_with_config()`
+- `test_get_enabled_plugins_without_config()`
+- `test_get_enabled_plugins_with_auto_discovery()`
+- `test_get_available_templates_with_config()`
+- `test_get_available_templates_without_config()`
+- `test_get_available_templates_with_auto_discovery()`
+- `test_get_cleanup_patterns_with_config()`
+- `test_get_cleanup_patterns_without_config()`
+- `test_set_simple_key()`
+- `test_set_nested_key()`
+- `test_validate_config_valid()`
+- `test_validate_config_invalid_type()`
+- `test_validate_config_missing_keys()`
+- `test_merge_configs_simple()`
+- `test_merge_configs_nested()`
+- `test_resolve_environment_variables_simple()`
+- `test_resolve_environment_variables_nested()`
+- `test_resolve_environment_variables_no_vars()`
+- `test_to_dict()`
+
+##### TestConfigManagerIntegration
+
+Tests d'intégration pour ConfigManager
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_full_config_workflow()`
+- `test_environment_override_workflow()`
+- `test_config_validation_workflow()`
+- `test_config_merge_workflow()`
 
 #### Fonctions
 
-##### test_python_environment
+##### setup_method
 
-Vérifie l'environnement Python complet
+Setup avant chaque test
 
-##### test_project_structure_complete
+##### teardown_method
 
-Vérifie la structure complète du projet
+Cleanup après chaque test
 
-##### test_config_files_complete
+##### test_init_with_default_config
 
-Vérifie tous les fichiers de configuration
+Test initialisation avec configuration par défaut
 
-##### test_test_suite_structure
+##### test_init_with_existing_config_file
 
-Vérifie la structure de la suite de tests
+Test initialisation avec fichier de configuration existant
 
-##### test_requirements_validation
+##### test_load_config_with_valid_file
 
-Valide les fichiers requirements
+Test chargement de configuration avec fichier valide
 
-##### test_ci_workflow_validation
+##### test_load_config_with_invalid_file
 
-Valide le workflow CI
+Test chargement de configuration avec fichier invalide
 
-##### test_file_permissions_complete
+##### test_load_config_with_nonexistent_file
 
-Vérifie les permissions complètes
+Test chargement de configuration avec fichier inexistant
 
-##### test_encoding_validation
+##### test_save_config_success
 
-Valide l'encodage UTF-8 complet
+Test sauvegarde de configuration avec succès
 
-##### test_json_yaml_parsing
+##### test_save_config_with_directory_creation
 
-Teste le parsing JSON et YAML
+Test sauvegarde avec création de répertoire
 
-##### test_subprocess_functionality
+##### test_save_config_failure
 
-Teste la fonctionnalité subprocess
+Test sauvegarde de configuration avec échec
 
-##### test_time_functionality
+##### test_merge_yaml_config_general
 
-Teste la fonctionnalité time
+Test fusion de configuration YAML - section générale
 
-##### test_pathlib_functionality
+##### test_merge_yaml_config_modules
 
-Teste la fonctionnalité pathlib
+Test fusion de configuration YAML - modules
 
-##### test_environment_robustness
+##### test_merge_yaml_config_database
 
-Teste la robustesse de l'environnement
+Test fusion de configuration YAML - base de données
 
-##### test_error_handling
+##### test_merge_yaml_config_ai
 
-Teste la gestion d'erreurs
+Test fusion de configuration YAML - IA
 
-##### test_assertion_functionality
+##### test_merge_yaml_config_testing
 
-Teste la fonctionnalité d'assertion
+Test fusion de configuration YAML - tests
+
+##### test_merge_yaml_config_cicd
+
+Test fusion de configuration YAML - CI/CD
+
+##### test_merge_yaml_config_cleanup
+
+Test fusion de configuration YAML - nettoyage
+
+##### test_merge_yaml_config_dashboard
+
+Test fusion de configuration YAML - dashboard
+
+##### test_merge_yaml_config_profiles
+
+Test fusion de configuration YAML - profils
+
+##### test_merge_yaml_config_security
+
+Test fusion de configuration YAML - sécurité
+
+##### test_merge_yaml_config_analytics
+
+Test fusion de configuration YAML - analytics
+
+##### test_merge_yaml_config_empty_data
+
+Test fusion avec données YAML vides
+
+##### test_merge_env_config
+
+Test fusion avec variables d'environnement
+
+##### test_setup_logging
+
+Test configuration du logging
+
+##### test_get_simple_key
+
+Test récupération de clé simple
+
+##### test_get_nested_key
+
+Test récupération de clé imbriquée
+
+##### test_is_module_enabled_with_modules_config
+
+Test vérification d'activation de module avec configuration
+
+##### test_is_module_enabled_without_modules_config
+
+Test vérification d'activation de module sans configuration
+
+##### test_get_enabled_plugins_with_config
+
+Test récupération de plugins avec configuration
+
+##### test_get_enabled_plugins_without_config
+
+Test récupération de plugins sans configuration
+
+##### test_get_enabled_plugins_with_auto_discovery
+
+Test récupération de plugins avec auto-découverte
+
+**Paramètres :**
+
+- `mock_glob`
+- `mock_exists`
+
+##### test_get_available_templates_with_config
+
+Test récupération de templates avec configuration
+
+##### test_get_available_templates_without_config
+
+Test récupération de templates sans configuration
+
+##### test_get_available_templates_with_auto_discovery
+
+Test récupération de templates avec auto-découverte
+
+**Paramètres :**
+
+- `mock_iterdir`
+- `mock_exists`
+
+##### test_get_cleanup_patterns_with_config
+
+Test récupération de patterns de nettoyage avec configuration
+
+##### test_get_cleanup_patterns_without_config
+
+Test récupération de patterns de nettoyage sans configuration
+
+##### test_set_simple_key
+
+Test définition de clé simple
+
+##### test_set_nested_key
+
+Test définition de clé imbriquée
+
+##### test_validate_config_valid
+
+Test validation de configuration valide
+
+##### test_validate_config_invalid_type
+
+Test validation de configuration avec type invalide
+
+##### test_validate_config_missing_keys
+
+Test validation de configuration avec clés manquantes
+
+##### test_merge_configs_simple
+
+Test fusion de configurations simples
+
+##### test_merge_configs_nested
+
+Test fusion de configurations imbriquées
+
+##### test_resolve_environment_variables_simple
+
+Test résolution de variables d'environnement simples
+
+##### test_resolve_environment_variables_nested
+
+Test résolution de variables d'environnement imbriquées
+
+##### test_resolve_environment_variables_no_vars
+
+Test résolution sans variables d'environnement
+
+##### test_to_dict
+
+Test conversion en dictionnaire
+
+##### setup_method
+
+Setup avant chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_full_config_workflow
+
+Test workflow complet de configuration
+
+##### test_environment_override_workflow
+
+Test workflow avec surcharge par variables d'environnement
+
+##### test_config_validation_workflow
+
+Test workflow de validation de configuration
+
+##### test_config_merge_workflow
+
+Test workflow de fusion de configurations
+
+---
+
+### test_analytics
+
+Tests pour le module analytics
+
+#### Classes
+
+##### TestAnalyticsModule
+
+Tests pour le module analytics d'Athalia
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `create_test_project()`
+- `test_analytics_module_import()`
+- `test_analyze_project()`
+- `test_generate_heatmap_data()`
+- `test_generate_technical_debt_analysis()`
+- `test_generate_analytics_html()`
+- `test_analytics_with_empty_project()`
+- `test_analytics_with_nonexistent_project()`
+
+#### Fonctions
+
+##### test_analytics_integration
+
+Test d'intégration du module analytics
+
+##### setup_method
+
+Configuration avant chaque test
+
+##### teardown_method
+
+Nettoyage après chaque test
+
+##### create_test_project
+
+Créer un projet de test pour les analyses
+
+##### test_analytics_module_import
+
+Test d'import du module analytics
+
+##### test_analyze_project
+
+Test d'analyse de projet
+
+##### test_generate_heatmap_data
+
+Test de génération de données pour heatmap
+
+##### test_generate_technical_debt_analysis
+
+Test d'analyse de dette technique
+
+##### test_generate_analytics_html
+
+Test de génération de rapport HTML
+
+##### test_analytics_with_empty_project
+
+Test d'analyse avec un projet vide
+
+##### test_analytics_with_nonexistent_project
+
+Test d'analyse avec un projet inexistant
+
+---
+
+### test_advanced_analytics_unit
+
+#### Classes
+
+##### TestAdvancedAnalytics
+
+**Méthodes :**
+
+- `setUp()`
+- `test_constructor()`
+- `test_run()`
+- `test_analyze_coverage()`
+- `test_analyze_performance()`
+- `test_generate_dashboard()`
+- `test_generate_summary()`
+- `test_print_report()`
+
+#### Fonctions
+
+##### setUp
+
+##### test_constructor
+
+##### test_run
+
+##### test_analyze_coverage
+
+##### test_analyze_performance
+
+##### test_generate_dashboard
+
+##### test_generate_summary
+
+##### test_print_report
+
+---
+
+### test_code_linter_complete
+
+Tests complets pour code_linter.py
+Objectif : Atteindre 80%+ de couverture
+
+#### Classes
+
+##### TestCodeLinterComplete
+
+Tests complets pour CodeLinter
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_init()`
+- `test_init_with_auto_fix()`
+- `test_run_basic()`
+- `test_run_flake8_success()`
+- `test_run_flake8_with_errors()`
+- `test_run_flake8_exception()`
+- `test_run_black_success()`
+- `test_run_black_with_issues()`
+- `test_run_black_exception()`
+- `test_run_isort_success()`
+- `test_run_isort_with_issues()`
+- `test_run_isort_exception()`
+- `test_run_mypy_success()`
+- `test_run_mypy_with_issues()`
+- `test_run_mypy_exception()`
+- `test_run_bandit_success()`
+- `test_run_bandit_with_issues()`
+- `test_run_bandit_exception()`
+- `test_calculate_score_perfect()`
+- `test_calculate_score_with_errors()`
+- `test_calculate_score_minimum()`
+- `test_print_report()`
+- `test_full_linting_workflow()`
+- `test_linting_with_empty_project()`
+- `test_linting_with_all_tools()`
+- `test_linting_performance()`
+- `test_linting_with_auto_fix()`
+
+##### TestCodeLinterIntegration
+
+Tests d'intégration pour CodeLinter
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_linting_real_project_structure()`
+- `test_linting_error_handling()`
+
+#### Fonctions
+
+##### setup_method
+
+Setup avant chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_init
+
+Test l'initialisation de CodeLinter
+
+##### test_init_with_auto_fix
+
+Test initialisation avec auto_fix activé
+
+##### test_run_basic
+
+Test exécution basique du linter
+
+##### test_run_flake8_success
+
+Test exécution de Flake8 réussie
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_flake8_with_errors
+
+Test exécution de Flake8 avec erreurs
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_flake8_exception
+
+Test exécution de Flake8 avec exception
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_black_success
+
+Test exécution de Black réussie
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_black_with_issues
+
+Test exécution de Black avec problèmes
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_black_exception
+
+Test exécution de Black avec exception
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_isort_success
+
+Test exécution de isort réussie
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_isort_with_issues
+
+Test exécution de isort avec problèmes
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_isort_exception
+
+Test exécution de isort avec exception
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_mypy_success
+
+Test exécution de MyPy réussie
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_mypy_with_issues
+
+Test exécution de MyPy avec problèmes
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_mypy_exception
+
+Test exécution de MyPy avec exception
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_bandit_success
+
+Test exécution de Bandit réussie
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_bandit_with_issues
+
+Test exécution de Bandit avec problèmes
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_bandit_exception
+
+Test exécution de Bandit avec exception
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_calculate_score_perfect
+
+Test calcul du score parfait
+
+##### test_calculate_score_with_errors
+
+Test calcul du score avec erreurs
+
+##### test_calculate_score_minimum
+
+Test calcul du score minimum
+
+##### test_print_report
+
+Test affichage du rapport
+
+**Paramètres :**
+
+- `mock_logger`
+
+##### test_full_linting_workflow
+
+Test workflow complet de linting
+
+##### test_linting_with_empty_project
+
+Test linting avec projet vide
+
+##### test_linting_with_all_tools
+
+Test linting avec tous les outils
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_linting_performance
+
+Test performance du linting
+
+##### test_linting_with_auto_fix
+
+Test linting avec auto_fix activé
+
+##### setup_method
+
+Setup avant chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_linting_real_project_structure
+
+Test linting avec structure de projet réelle
+
+##### test_linting_error_handling
+
+Test gestion d'erreurs du linting
+
+##### mock_run_side_effect
+
+---
+
+### test_main_complete
+
+Tests complets pour main.py
+Objectif : Atteindre 70%+ de couverture
+
+#### Classes
+
+##### TestMainComplete
+
+Tests complets pour main.py
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_signal_handler()`
+- `test_menu_valid_choice()`
+- `test_menu_eof_error()`
+- `test_menu_keyboard_interrupt()`
+- `test_safe_input_success()`
+- `test_safe_input_eof_error()`
+- `test_safe_input_keyboard_interrupt()`
+- `test_surveillance_mode()`
+- `test_main_init_success()`
+- `test_main_with_existing_instances()`
+- `test_main_without_advanced_logger()`
+- `test_main_choice_1_generate_project()`
+- `test_main_choice_2_cleanup()`
+- `test_main_choice_3_ci_generation()`
+- `test_main_choice_4_dashboard()`
+- `test_main_choice_5_onboarding()`
+- `test_main_choice_6_security_audit()`
+- `test_main_choice_7_scan_existing()`
+- `test_main_choice_8_dry_run()`
+- `test_main_choice_9_integration_report()`
+- `test_main_choice_10_rollback()`
+- `test_main_choice_11_logs()`
+- `test_main_choice_12_intelligent_audit()`
+- `test_main_choice_13_quit()`
+- `test_main_choice_14_surveillance()`
+- `test_main_invalid_choice()`
+- `test_main_keyboard_interrupt()`
+- `test_main_exception()`
+- `test_main_direct_execution()`
+
+##### TestMainIntegration
+
+Tests d'intégration pour main.py
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_full_workflow_main()`
+- `test_main_error_handling()`
+- `test_main_performance()`
+
+#### Fonctions
+
+##### setup_method
+
+Setup avant chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_signal_handler
+
+Test gestionnaire de signal
+
+##### test_menu_valid_choice
+
+Test menu avec choix valide
+
+**Paramètres :**
+
+- `mock_input`
+
+##### test_menu_eof_error
+
+Test menu avec EOFError
+
+**Paramètres :**
+
+- `mock_input`
+
+##### test_menu_keyboard_interrupt
+
+Test menu avec KeyboardInterrupt
+
+**Paramètres :**
+
+- `mock_input`
+
+##### test_safe_input_success
+
+Test safe_input réussi
+
+**Paramètres :**
+
+- `mock_input`
+
+##### test_safe_input_eof_error
+
+Test safe_input avec EOFError
+
+**Paramètres :**
+
+- `mock_input`
+
+##### test_safe_input_keyboard_interrupt
+
+Test safe_input avec KeyboardInterrupt
+
+**Paramètres :**
+
+- `mock_input`
+
+##### test_surveillance_mode
+
+Test mode surveillance
+
+**Paramètres :**
+
+- `mock_sleep`
+
+##### test_main_init_success
+
+Test initialisation de main réussie
+
+**Paramètres :**
+
+- `mock_input`
+- `mock_logger`
+- `mock_signal`
+- `mock_getpid`
+- `mock_process_iter`
+
+##### test_main_with_existing_instances
+
+Test main avec instances existantes
+
+**Paramètres :**
+
+- `mock_input`
+- `mock_logger`
+- `mock_signal`
+- `mock_getpid`
+- `mock_process_iter`
+
+##### test_main_without_advanced_logger
+
+Test main sans logger avancé
+
+**Paramètres :**
+
+- `mock_input`
+- `mock_signal`
+- `mock_getpid`
+- `mock_process_iter`
+
+##### test_main_choice_1_generate_project
+
+Test choix 1 - génération de projet
+
+**Paramètres :**
+
+- `mock_input`
+- `mock_logger`
+- `mock_signal`
+- `mock_getpid`
+- `mock_process_iter`
+
+##### test_main_choice_2_cleanup
+
+Test choix 2 - nettoyage
+
+**Paramètres :**
+
+- `mock_cleanup`
+- `mock_input`
+- `mock_logger`
+- `mock_signal`
+- `mock_getpid`
+- `mock_process_iter`
+
+##### test_main_choice_3_ci_generation
+
+Test choix 3 - génération CI
+
+**Paramètres :**
+
+- `mock_badge`
+- `mock_ci`
+- `mock_input`
+- `mock_logger`
+- `mock_signal`
+- `mock_getpid`
+- `mock_process_iter`
+
+##### test_main_choice_4_dashboard
+
+Test choix 4 - génération dashboard
+
+**Paramètres :**
+
+- `mock_isdir`
+- `mock_listdir`
+- `mock_input`
+- `mock_logger`
+- `mock_signal`
+- `mock_getpid`
+- `mock_process_iter`
+
+##### test_main_choice_5_onboarding
+
+Test choix 5 - génération onboarding
+
+**Paramètres :**
+
+- `mock_html`
+- `mock_cli`
+- `mock_input`
+- `mock_logger`
+- `mock_signal`
+- `mock_getpid`
+- `mock_process_iter`
+
+##### test_main_choice_6_security_audit
+
+Test choix 6 - audit sécurité
+
+**Paramètres :**
+
+- `mock_audit`
+- `mock_input`
+- `mock_logger`
+- `mock_signal`
+- `mock_getpid`
+- `mock_process_iter`
+
+##### test_main_choice_7_scan_existing
+
+Test choix 7 - scan existant
+
+**Paramètres :**
+
+- `mock_input`
+- `mock_logger`
+- `mock_signal`
+- `mock_getpid`
+- `mock_process_iter`
+
+##### test_main_choice_8_dry_run
+
+Test choix 8 - dry run
+
+**Paramètres :**
+
+- `mock_input`
+- `mock_logger`
+- `mock_signal`
+- `mock_getpid`
+- `mock_process_iter`
+
+##### test_main_choice_9_integration_report
+
+Test choix 9 - rapport d'intégration
+
+**Paramètres :**
+
+- `mock_file`
+- `mock_exists`
+- `mock_input`
+- `mock_logger`
+- `mock_signal`
+- `mock_getpid`
+- `mock_process_iter`
+
+##### test_main_choice_10_rollback
+
+Test choix 10 - rollback
+
+**Paramètres :**
+
+- `mock_copy`
+- `mock_listdir`
+- `mock_exists`
+- `mock_input`
+- `mock_logger`
+- `mock_signal`
+- `mock_getpid`
+- `mock_process_iter`
+
+##### test_main_choice_11_logs
+
+Test choix 11 - logs
+
+**Paramètres :**
+
+- `mock_file`
+- `mock_exists`
+- `mock_input`
+- `mock_logger`
+- `mock_signal`
+- `mock_getpid`
+- `mock_process_iter`
+
+##### test_main_choice_12_intelligent_audit
+
+Test choix 12 - audit intelligent
+
+**Paramètres :**
+
+- `mock_input`
+- `mock_logger`
+- `mock_signal`
+- `mock_getpid`
+- `mock_process_iter`
+
+##### test_main_choice_13_quit
+
+Test choix 13 - quitter
+
+**Paramètres :**
+
+- `mock_input`
+- `mock_logger`
+- `mock_signal`
+- `mock_getpid`
+- `mock_process_iter`
+
+##### test_main_choice_14_surveillance
+
+Test choix 14 - mode surveillance
+
+**Paramètres :**
+
+- `mock_input`
+- `mock_logger`
+- `mock_signal`
+- `mock_getpid`
+- `mock_process_iter`
+
+##### test_main_invalid_choice
+
+Test choix invalide
+
+**Paramètres :**
+
+- `mock_input`
+- `mock_logger`
+- `mock_signal`
+- `mock_getpid`
+- `mock_process_iter`
+
+##### test_main_keyboard_interrupt
+
+Test main avec KeyboardInterrupt
+
+**Paramètres :**
+
+- `mock_input`
+- `mock_logger`
+- `mock_signal`
+- `mock_getpid`
+- `mock_process_iter`
+
+##### test_main_exception
+
+Test main avec exception
+
+**Paramètres :**
+
+- `mock_input`
+- `mock_logger`
+- `mock_signal`
+- `mock_getpid`
+- `mock_process_iter`
+
+##### test_main_direct_execution
+
+Test exécution directe de main
+
+##### setup_method
+
+Setup avant chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_full_workflow_main
+
+Test workflow complet de main
+
+**Paramètres :**
+
+- `mock_input`
+- `mock_logger`
+- `mock_signal`
+- `mock_getpid`
+- `mock_process_iter`
+
+##### test_main_error_handling
+
+Test gestion d'erreurs de main
+
+##### test_main_performance
+
+Test performance de main
+
+---
+
+### test_advanced_analytics_complete
+
+Tests complets pour advanced_analytics.py
+Amélioration de la couverture de 13% à 85%
+
+#### Classes
+
+##### TestAdvancedAnalyticsComplete
+
+Tests complets pour AdvancedAnalytics
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_init()`
+- `test_run()`
+- `test_analyze_complexity_empty_project()`
+- `test_analyze_complexity_with_files()`
+- `test_calculate_complexity()`
+- `test_analyze_coverage_empty_project()`
+- `test_analyze_coverage_with_files()`
+- `test_analyze_performance_empty_project()`
+- `test_analyze_performance_with_files()`
+- `test_analyze_quality_empty_project()`
+- `test_analyze_quality_with_files()`
+- `test_analyze_evolution_empty_project()`
+- `test_analyze_evolution_with_files()`
+- `test_generate_dashboard()`
+- `test_generate_summary()`
+- `test_print_report()`
+
+##### TestAdvancedAnalyticsIntegration
+
+Tests d'intégration pour AdvancedAnalytics
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_full_analytics_workflow()`
+- `test_analytics_with_real_project_structure()`
+- `test_analytics_performance()`
+
+##### TestEnrichGenesisMd
+
+Tests pour la fonction enrich_genesis_md
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_enrich_genesis_md_new_file()`
+- `test_enrich_genesis_md_existing_file()`
+- `test_enrich_genesis_md_with_audit_ia()`
+
+##### TestAdvancedAnalyticsEdgeCases
+
+Tests pour les cas limites
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_analytics_with_invalid_python_files()`
+- `test_analytics_with_empty_python_files()`
+- `test_analytics_with_unicode_files()`
+- `test_analytics_with_large_files()`
+- `test_analytics_with_nested_directories()`
+- `test_analytics_with_special_characters_in_filenames()`
+- `test_analytics_with_mixed_file_types()`
+
+#### Fonctions
+
+##### setup_method
+
+Configuration avant chaque test
+
+##### teardown_method
+
+Nettoyage après chaque test
+
+##### test_init
+
+Test de l'initialisation
+
+##### test_run
+
+Test de la méthode run()
+
+##### test_analyze_complexity_empty_project
+
+Test de l'analyse de complexité avec projet vide
+
+##### test_analyze_complexity_with_files
+
+Test de l'analyse de complexité avec fichiers
+
+##### test_calculate_complexity
+
+Test du calcul de complexité
+
+##### test_analyze_coverage_empty_project
+
+Test de l'analyse de couverture avec projet vide
+
+##### test_analyze_coverage_with_files
+
+Test de l'analyse de couverture avec fichiers
+
+##### test_analyze_performance_empty_project
+
+Test de l'analyse de performance avec projet vide
+
+##### test_analyze_performance_with_files
+
+Test de l'analyse de performance avec fichiers
+
+##### test_analyze_quality_empty_project
+
+Test de l'analyse de qualité avec projet vide
+
+##### test_analyze_quality_with_files
+
+Test de l'analyse de qualité avec fichiers
+
+##### test_analyze_evolution_empty_project
+
+Test de l'analyse d'évolution avec projet vide
+
+##### test_analyze_evolution_with_files
+
+Test de l'analyse d'évolution avec fichiers
+
+##### test_generate_dashboard
+
+Test de la génération du dashboard
+
+##### test_generate_summary
+
+Test de la génération du résumé
+
+##### test_print_report
+
+Test de l'affichage du rapport
+
+##### setup_method
+
+Configuration avant chaque test
+
+##### teardown_method
+
+Nettoyage après chaque test
+
+##### test_full_analytics_workflow
+
+Test du workflow complet d'analytics
+
+##### test_analytics_with_real_project_structure
+
+Test avec une structure de projet réelle
+
+##### test_analytics_performance
+
+Test de performance de l'analytics
+
+##### setup_method
+
+Configuration avant chaque test
+
+##### teardown_method
+
+Nettoyage après chaque test
+
+##### test_enrich_genesis_md_new_file
+
+Test de enrich_genesis_md avec nouveau fichier
+
+##### test_enrich_genesis_md_existing_file
+
+Test de enrich_genesis_md avec fichier existant
+
+##### test_enrich_genesis_md_with_audit_ia
+
+Test de enrich_genesis_md avec Audit IA déjà présent
+
+##### setup_method
+
+Configuration avant chaque test
+
+##### teardown_method
+
+Nettoyage après chaque test
+
+##### test_analytics_with_invalid_python_files
+
+Test avec des fichiers Python invalides
+
+##### test_analytics_with_empty_python_files
+
+Test avec des fichiers Python vides
+
+##### test_analytics_with_unicode_files
+
+Test avec des fichiers contenant des caractères Unicode
+
+##### test_analytics_with_large_files
+
+Test avec des fichiers volumineux
+
+##### test_analytics_with_nested_directories
+
+Test avec des répertoires imbriqués
+
+##### test_analytics_with_special_characters_in_filenames
+
+Test avec des caractères spéciaux dans les noms de fichiers
+
+##### test_analytics_with_mixed_file_types
+
+Test avec des types de fichiers mixtes
+
+---
+
+### test_correction_optimizer_complete
+
+Tests complets pour correction_optimizer.py
+Objectif : Atteindre 80%+ de couverture
+
+#### Classes
+
+##### TestCorrectionOptimizerComplete
+
+Tests complets pour CorrectionOptimizer
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_init()`
+- `test_optimize_correction_success()`
+- `test_optimize_correction_with_basic_fixes()`
+- `test_optimize_correction_with_syntax_error()`
+- `test_apply_basic_corrections_indentation()`
+- `test_apply_basic_corrections_spacing()`
+- `test_apply_basic_corrections_function_params()`
+- `test_apply_basic_corrections_no_changes()`
+- `test_apply_ast_corrections()`
+- `test_apply_contextual_corrections()`
+- `test_analyze_syntax_error()`
+- `test_fix_indentation_error()`
+- `test_fix_bracket_balance()`
+- `test_fix_string_issues()`
+- `test_analyze_context()`
+- `test_validate_correction_success()`
+- `test_validate_correction_failure()`
+- `test_learn_from_correction()`
+- `test_extract_patterns()`
+- `test_get_correction_stats()`
+- `test_optimize_correction_edge_cases()`
+- `test_optimize_correction_complex_code()`
+- `test_optimize_correction_logging()`
+- `test_correction_result_dataclass()`
+- `test_correction_result_with_error()`
+
+##### TestModuleFunctions
+
+Tests pour les fonctions du module
+
+**Méthodes :**
+
+- `test_optimize_correction_function()`
+- `test_get_correction_stats_function()`
+
+##### TestCorrectionOptimizerIntegration
+
+Tests d'intégration pour CorrectionOptimizer
+
+**Méthodes :**
+
+- `test_full_correction_workflow()`
+- `test_correction_with_real_file()`
+- `test_performance_tracking()`
+
+#### Fonctions
+
+##### setup_method
+
+Setup avant chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_init
+
+Test l'initialisation de CorrectionOptimizer
+
+##### test_optimize_correction_success
+
+Test correction optimisée réussie
+
+##### test_optimize_correction_with_basic_fixes
+
+Test correction avec corrections basiques
+
+##### test_optimize_correction_with_syntax_error
+
+Test correction avec erreur de syntaxe
+
+##### test_apply_basic_corrections_indentation
+
+Test corrections basiques - indentation
+
+##### test_apply_basic_corrections_spacing
+
+Test corrections basiques - espacement
+
+##### test_apply_basic_corrections_function_params
+
+Test corrections basiques - paramètres de fonction
+
+##### test_apply_basic_corrections_no_changes
+
+Test corrections basiques - aucun changement nécessaire
+
+##### test_apply_ast_corrections
+
+Test corrections AST
+
+##### test_apply_contextual_corrections
+
+Test corrections contextuelles
+
+##### test_analyze_syntax_error
+
+Test analyse d'erreur de syntaxe
+
+##### test_fix_indentation_error
+
+Test correction d'erreur d'indentation
+
+##### test_fix_bracket_balance
+
+Test correction d'équilibre des parenthèses
+
+##### test_fix_string_issues
+
+Test correction de problèmes de chaînes
+
+##### test_analyze_context
+
+Test analyse de contexte
+
+##### test_validate_correction_success
+
+Test validation de correction réussie
+
+##### test_validate_correction_failure
+
+Test validation de correction échouée
+
+##### test_learn_from_correction
+
+Test apprentissage à partir d'une correction
+
+##### test_extract_patterns
+
+Test extraction de patterns
+
+##### test_get_correction_stats
+
+Test obtention des statistiques de correction
+
+##### test_optimize_correction_edge_cases
+
+Test cas limites de correction
+
+##### test_optimize_correction_complex_code
+
+Test correction de code complexe
+
+##### test_optimize_correction_logging
+
+Test logging des corrections
+
+**Paramètres :**
+
+- `mock_log`
+
+##### test_correction_result_dataclass
+
+Test dataclass CorrectionResult
+
+##### test_correction_result_with_error
+
+Test CorrectionResult avec erreur
+
+##### test_optimize_correction_function
+
+Test fonction optimize_correction
+
+##### test_get_correction_stats_function
+
+Test fonction get_correction_stats
+
+##### test_full_correction_workflow
+
+Test workflow complet de correction
+
+##### test_correction_with_real_file
+
+Test correction avec un vrai fichier
+
+##### test_performance_tracking
+
+Test suivi des performances
+
+---
+
+### test_security_auditor_complete
+
+Tests complets pour security_auditor.py
+Objectif : Atteindre 85%+ de couverture
+
+#### Classes
+
+##### TestSecurityAuditorComplete
+
+Tests complets pour SecurityAuditor
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_init()`
+- `test_run_basic()`
+- `test_check_dependencies_bandit_success()`
+- `test_check_dependencies_bandit_failure()`
+- `test_check_dependencies_bandit_exception()`
+- `test_check_dependencies_safety_success()`
+- `test_check_dependencies_safety_exception()`
+- `test_check_code_vulnerabilities_no_files()`
+- `test_check_code_vulnerabilities_with_dangerous_patterns()`
+- `test_check_code_vulnerabilities_with_safe_code()`
+- `test_check_secrets_no_files()`
+- `test_check_secrets_with_secrets()`
+- `test_check_secrets_without_secrets()`
+- `test_check_permissions_no_files()`
+- `test_check_permissions_with_files()`
+- `test_check_permissions_with_open_permissions()`
+- `test_check_encryption_no_encryption()`
+- `test_check_encryption_with_encryption()`
+- `test_calculate_score_no_issues()`
+- `test_calculate_score_with_vulnerabilities()`
+- `test_calculate_score_minimum()`
+- `test_print_report()`
+- `test_full_audit_workflow()`
+- `test_audit_with_empty_project()`
+- `test_audit_with_external_tools()`
+- `test_error_handling_in_file_operations()`
+- `test_security_audit_file_creation()`
+
+##### TestSecurityAuditorIntegration
+
+Tests d'intégration pour SecurityAuditor
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_audit_real_project_structure()`
+- `test_audit_performance()`
+
+#### Fonctions
+
+##### setup_method
+
+Setup avant chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_init
+
+Test l'initialisation de SecurityAuditor
+
+##### test_run_basic
+
+Test exécution basique de l'audit
+
+##### test_check_dependencies_bandit_success
+
+Test vérification des dépendances avec Bandit réussi
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_check_dependencies_bandit_failure
+
+Test vérification des dépendances avec Bandit échec
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_check_dependencies_bandit_exception
+
+Test vérification des dépendances avec exception Bandit
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_check_dependencies_safety_success
+
+Test vérification des dépendances avec Safety réussi
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_check_dependencies_safety_exception
+
+Test vérification des dépendances avec exception Safety
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_check_code_vulnerabilities_no_files
+
+Test vérification des vulnérabilités sans fichiers Python
+
+##### test_check_code_vulnerabilities_with_dangerous_patterns
+
+Test vérification des vulnérabilités avec patterns dangereux
+
+##### test_check_code_vulnerabilities_with_safe_code
+
+Test vérification des vulnérabilités avec code sûr
+
+##### test_check_secrets_no_files
+
+Test vérification des secrets sans fichiers Python
+
+##### test_check_secrets_with_secrets
+
+Test vérification des secrets avec secrets détectés
+
+##### test_check_secrets_without_secrets
+
+Test vérification des secrets sans secrets
+
+##### test_check_permissions_no_files
+
+Test vérification des permissions sans fichiers
+
+##### test_check_permissions_with_files
+
+Test vérification des permissions avec fichiers
+
+##### test_check_permissions_with_open_permissions
+
+Test vérification des permissions avec permissions ouvertes
+
+**Paramètres :**
+
+- `mock_stat`
+
+##### test_check_encryption_no_encryption
+
+Test vérification du chiffrement sans chiffrement
+
+##### test_check_encryption_with_encryption
+
+Test vérification du chiffrement avec chiffrement
+
+##### test_calculate_score_no_issues
+
+Test calcul du score sans problèmes
+
+##### test_calculate_score_with_vulnerabilities
+
+Test calcul du score avec vulnérabilités
+
+##### test_calculate_score_minimum
+
+Test calcul du score minimum
+
+##### test_print_report
+
+Test affichage du rapport
+
+**Paramètres :**
+
+- `mock_logger`
+
+##### test_full_audit_workflow
+
+Test workflow complet d'audit
+
+##### test_audit_with_empty_project
+
+Test audit avec projet vide
+
+##### test_audit_with_external_tools
+
+Test audit avec outils externes
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_error_handling_in_file_operations
+
+Test gestion d'erreurs dans les opérations de fichiers
+
+##### test_security_audit_file_creation
+
+Test création du fichier de rapport d'audit
+
+##### setup_method
+
+Setup avant chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_audit_real_project_structure
+
+Test audit avec structure de projet réelle
+
+##### test_audit_performance
+
+Test performance de l'audit
+
+##### mock_run_side_effect
+
+##### mock_run_side_effect
+
+---
+
+### test_ready_check
+
+Tests pour ready_check.py
+
+#### Fonctions
+
+##### test_check_ready_ok
+
+Test que le projet est prêt
+
+##### test_check_ready_missing
+
+Test avec un projet manquant
+
+---
+
+### test_auto_tester_complete
+
+Tests complets pour auto_tester.py
+Objectif : Atteindre 85%+ de couverture
+
+#### Classes
+
+##### TestAutoTesterComplete
+
+Tests complets pour AutoTester
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_init_with_project_path()`
+- `test_init_without_project_path()`
+- `test_run_with_project_path()`
+- `test_run_without_project_path()`
+- `test_generate_tests()`
+- `test_analyze_modules_empty_project()`
+- `test_analyze_modules_with_python_files()`
+- `test_analyze_modules_with_imports()`
+- `test_analyze_modules_with_property_decorator()`
+- `test_analyze_modules_with_error()`
+- `test_generate_unit_tests()`
+- `test_generate_module_unit_tests()`
+- `test_generate_integration_tests()`
+- `test_generate_performance_tests()`
+- `test_save_tests()`
+- `test_run_tests_success()`
+- `test_run_tests_failure()`
+- `test_run_tests_timeout()`
+- `test_run_tests_exception()`
+- `test_get_created_files()`
+- `test_generate_test_report()`
+- `test_generate_test_report_empty_results()`
+- `test_full_workflow()`
+- `test_analyze_modules_skip_macos_files()`
+- `test_analyze_modules_skip_test_files()`
+- `test_analyze_modules_skip_init_files()`
+
+##### TestAutoTesterIntegration
+
+Tests d'intégration pour AutoTester
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_integration_with_real_project()`
+- `test_integration_error_handling()`
+- `test_integration_performance()`
+
+##### TestMainFunction
+
+Tests pour la fonction main
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_main_direct_execution()`
+
+#### Fonctions
+
+##### setup_method
+
+Setup avant chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_init_with_project_path
+
+Test initialisation avec chemin de projet
+
+##### test_init_without_project_path
+
+Test initialisation sans chemin de projet
+
+##### test_run_with_project_path
+
+Test méthode run avec chemin de projet
+
+##### test_run_without_project_path
+
+Test méthode run sans chemin de projet
+
+##### test_generate_tests
+
+Test génération complète de tests
+
+##### test_analyze_modules_empty_project
+
+Test analyse de modules sur projet vide
+
+##### test_analyze_modules_with_python_files
+
+Test analyse de modules avec fichiers Python
+
+##### test_analyze_modules_with_imports
+
+Test analyse de modules avec imports
+
+##### test_analyze_modules_with_property_decorator
+
+Test analyse de modules avec décorateur property
+
+##### test_analyze_modules_with_error
+
+Test analyse de modules avec erreur de syntaxe
+
+##### test_generate_unit_tests
+
+Test génération de tests unitaires
+
+##### test_generate_module_unit_tests
+
+Test génération de tests unitaires pour un module
+
+##### test_generate_integration_tests
+
+Test génération de tests d'intégration
+
+##### test_generate_performance_tests
+
+Test génération de tests de performance
+
+##### test_save_tests
+
+Test sauvegarde des tests
+
+##### test_run_tests_success
+
+Test exécution des tests avec succès
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_tests_failure
+
+Test exécution des tests avec échec
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_tests_timeout
+
+Test exécution des tests avec timeout
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_run_tests_exception
+
+Test exécution des tests avec exception
+
+**Paramètres :**
+
+- `mock_run`
+
+##### test_get_created_files
+
+Test récupération des fichiers créés
+
+##### test_generate_test_report
+
+Test génération du rapport de tests
+
+##### test_generate_test_report_empty_results
+
+Test génération du rapport avec résultats vides
+
+##### test_full_workflow
+
+Test workflow complet
+
+##### test_analyze_modules_skip_macos_files
+
+Test que les fichiers macOS ._* sont ignorés
+
+##### test_analyze_modules_skip_test_files
+
+Test que les fichiers de test sont ignorés
+
+##### test_analyze_modules_skip_init_files
+
+Test que les fichiers __init__.py sont ignorés
+
+##### setup_method
+
+Setup avant chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_integration_with_real_project
+
+Test d'intégration avec un vrai projet
+
+##### test_integration_error_handling
+
+Test gestion d'erreurs en intégration
+
+##### test_integration_performance
+
+Test performance en intégration
+
+##### setup_method
+
+Setup avant chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_main_direct_execution
+
+Test exécution directe de main
+
+---
+
+### test_logger_advanced_complete
+
+Tests complets pour logger_advanced.py
+Amélioration de la couverture de 35% à 80%
+
+#### Classes
+
+##### TestAthaliaLoggerComplete
+
+Tests complets pour AthaliaLogger
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_init()`
+- `test_create_logger()`
+- `test_create_logger_errors_with_console()`
+- `test_log_main()`
+- `test_log_main_different_levels()`
+- `test_log_validation()`
+- `test_log_validation_metrics_limit()`
+- `test_log_correction()`
+- `test_log_correction_failure()`
+- `test_log_performance()`
+- `test_log_performance_with_kwargs()`
+- `test_log_error()`
+- `test_log_error_limit()`
+- `test_get_validation_stats_empty()`
+- `test_get_validation_stats_with_data()`
+- `test_get_correction_stats_empty()`
+- `test_get_correction_stats_with_data()`
+- `test_get_performance_stats_empty()`
+- `test_get_performance_stats_with_data()`
+- `test_get_error_stats_empty()`
+- `test_get_error_stats_with_data()`
+- `test_cleanup_worker()`
+- `test_start_stop_cleanup_worker()`
+- `test_cleanup_old_logs()`
+- `test_compress_old_logs()`
+- `test_export_metrics()`
+- `test_export_metrics_default_filename()`
+
+##### TestLoggerAdvancedIntegration
+
+Tests d'intégration pour logger_advanced.py
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_full_logging_workflow()`
+- `test_logger_with_real_files()`
+- `test_logger_error_handling()`
+- `test_logger_performance_under_load()`
+
+##### TestModuleFunctions
+
+Tests pour les fonctions de niveau module
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_log_main_function()`
+- `test_log_validation_function()`
+- `test_log_correction_function()`
+- `test_log_performance_function()`
+- `test_log_error_function()`
+
+##### TestLoggerAdvancedEdgeCases
+
+Tests pour les cas limites
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_logger_with_empty_message()`
+- `test_logger_with_very_long_message()`
+- `test_logger_with_special_characters()`
+- `test_stats_with_old_data()`
+- `test_cleanup_with_nonexistent_files()`
+- `test_export_with_empty_metrics()`
+
+#### Fonctions
+
+##### setup_method
+
+Configuration avant chaque test
+
+##### teardown_method
+
+Nettoyage après chaque test
+
+##### test_init
+
+Test de l'initialisation
+
+##### test_create_logger
+
+Test de création de logger
+
+##### test_create_logger_errors_with_console
+
+Test de création du logger d'erreurs avec console
+
+##### test_log_main
+
+Test du logging principal
+
+##### test_log_main_different_levels
+
+Test du logging avec différents niveaux
+
+##### test_log_validation
+
+Test du logging de validation
+
+##### test_log_validation_metrics_limit
+
+Test de la limite des métriques de validation
+
+##### test_log_correction
+
+Test du logging de correction
+
+##### test_log_correction_failure
+
+Test du logging de correction échouée
+
+##### test_log_performance
+
+Test du logging de performance
+
+##### test_log_performance_with_kwargs
+
+Test du logging de performance avec kwargs
+
+##### test_log_error
+
+Test du logging d'erreur
+
+##### test_log_error_limit
+
+Test de la limite des métriques d'erreur
+
+##### test_get_validation_stats_empty
+
+Test des statistiques de validation vides
+
+##### test_get_validation_stats_with_data
+
+Test des statistiques de validation avec données
+
+##### test_get_correction_stats_empty
+
+Test des statistiques de correction vides
+
+##### test_get_correction_stats_with_data
+
+Test des statistiques de correction avec données
+
+##### test_get_performance_stats_empty
+
+Test des statistiques de performance vides
+
+##### test_get_performance_stats_with_data
+
+Test des statistiques de performance avec données
+
+##### test_get_error_stats_empty
+
+Test des statistiques d'erreur vides
+
+##### test_get_error_stats_with_data
+
+Test des statistiques d'erreur avec données
+
+##### test_cleanup_worker
+
+Test du thread de nettoyage
+
+##### test_start_stop_cleanup_worker
+
+Test du démarrage et arrêt du thread de nettoyage
+
+##### test_cleanup_old_logs
+
+Test du nettoyage des anciens logs
+
+##### test_compress_old_logs
+
+Test de la compression des logs anciens
+
+##### test_export_metrics
+
+Test de l'export des métriques
+
+##### test_export_metrics_default_filename
+
+Test de l'export avec nom de fichier par défaut
+
+##### setup_method
+
+Configuration avant chaque test
+
+##### teardown_method
+
+Nettoyage après chaque test
+
+##### test_full_logging_workflow
+
+Test du workflow complet de logging
+
+##### test_logger_with_real_files
+
+Test du logger avec de vrais fichiers
+
+##### test_logger_error_handling
+
+Test de la gestion d'erreurs du logger
+
+##### test_logger_performance_under_load
+
+Test de performance sous charge
+
+##### setup_method
+
+Configuration avant chaque test
+
+##### teardown_method
+
+Nettoyage après chaque test
+
+##### test_log_main_function
+
+Test de la fonction log_main
+
+##### test_log_validation_function
+
+Test de la fonction log_validation
+
+##### test_log_correction_function
+
+Test de la fonction log_correction
+
+##### test_log_performance_function
+
+Test de la fonction log_performance
+
+##### test_log_error_function
+
+Test de la fonction log_error
+
+##### setup_method
+
+Configuration avant chaque test
+
+##### teardown_method
+
+Nettoyage après chaque test
+
+##### test_logger_with_empty_message
+
+Test avec message vide
+
+##### test_logger_with_very_long_message
+
+Test avec message très long
+
+##### test_logger_with_special_characters
+
+Test avec caractères spéciaux
+
+##### test_stats_with_old_data
+
+Test des statistiques avec données anciennes
+
+##### test_cleanup_with_nonexistent_files
+
+Test du nettoyage avec fichiers inexistants
+
+##### test_export_with_empty_metrics
+
+Test de l'export avec métriques vides
+
+---
+
+### test_auto_cleaner_complete
+
+Tests complets pour auto_cleaner.py
+Amélioration de la couverture de 15% à 85%
+
+#### Classes
+
+##### TestAutoCleanerComplete
+
+Tests complets pour AutoCleaner
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_init()`
+- `test_clean_project_dry_run()`
+- `test_clean_project_real()`
+- `test_run_method()`
+- `test_clean_system_files()`
+- `test_clean_cache_files()`
+- `test_clean_backup_files()`
+- `test_clean_temp_files()`
+- `test_clean_duplicate_files()`
+- `test_clean_empty_directories()`
+- `test_clean_old_files()`
+- `test_clean_large_files()`
+- `test_safe_remove_file_dry_run()`
+- `test_safe_remove_file_real()`
+- `test_safe_remove_file_error()`
+- `test_safe_remove_dir_dry_run()`
+- `test_safe_remove_dir_real()`
+- `test_is_code_file()`
+- `test_is_important_file()`
+- `test_is_empty_directory()`
+- `test_calculate_file_hash()`
+- `test_calculate_file_hash_error()`
+- `test_generate_cleanup_report()`
+- `test_generate_summary()`
+- `test_optimize_project_structure()`
+- `test_organize_files()`
+
+##### TestAutoCleanerIntegration
+
+Tests d'intégration pour AutoCleaner
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_full_cleanup_workflow()`
+- `test_cleanup_with_real_project_structure()`
+- `test_cleanup_performance()`
+
+##### TestMainFunction
+
+Tests pour la fonction main
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_main_with_valid_path()`
+- `test_main_with_invalid_path()`
+- `test_main_with_optimize_flag()`
+- `test_main_with_all_flags()`
+
+##### TestAutoCleanerEdgeCases
+
+Tests pour les cas limites
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_cleanup_with_no_files()`
+- `test_cleanup_with_permission_errors()`
+- `test_cleanup_with_symlinks()`
+- `test_cleanup_with_nested_directories()`
+- `test_cleanup_with_unicode_filenames()`
+- `test_cleanup_with_very_large_files()`
+- `test_cleanup_with_network_paths()`
+
+#### Fonctions
+
+##### setup_method
+
+Configuration avant chaque test
+
+##### teardown_method
+
+Nettoyage après chaque test
+
+##### test_init
+
+Test de l'initialisation
+
+##### test_clean_project_dry_run
+
+Test du nettoyage en mode simulation
+
+##### test_clean_project_real
+
+Test du nettoyage réel
+
+##### test_run_method
+
+Test de la méthode run()
+
+##### test_clean_system_files
+
+Test du nettoyage des fichiers système
+
+##### test_clean_cache_files
+
+Test du nettoyage des fichiers de cache
+
+##### test_clean_backup_files
+
+Test du nettoyage des fichiers de sauvegarde
+
+##### test_clean_temp_files
+
+Test du nettoyage des fichiers temporaires
+
+##### test_clean_duplicate_files
+
+Test du nettoyage des fichiers dupliqués
+
+##### test_clean_empty_directories
+
+Test du nettoyage des répertoires vides
+
+##### test_clean_old_files
+
+Test du nettoyage des fichiers anciens
+
+##### test_clean_large_files
+
+Test du nettoyage des fichiers volumineux
+
+##### test_safe_remove_file_dry_run
+
+Test de la suppression sécurisée de fichier en mode simulation
+
+##### test_safe_remove_file_real
+
+Test de la suppression sécurisée de fichier en mode réel
+
+##### test_safe_remove_file_error
+
+Test de la suppression sécurisée avec erreur
+
+##### test_safe_remove_dir_dry_run
+
+Test de la suppression sécurisée de répertoire en mode simulation
+
+##### test_safe_remove_dir_real
+
+Test de la suppression sécurisée de répertoire en mode réel
+
+##### test_is_code_file
+
+Test de la détection des fichiers de code
+
+##### test_is_important_file
+
+Test de la détection des fichiers importants
+
+##### test_is_empty_directory
+
+Test de la détection des répertoires vides
+
+##### test_calculate_file_hash
+
+Test du calcul de hash de fichier
+
+##### test_calculate_file_hash_error
+
+Test du calcul de hash avec erreur
+
+##### test_generate_cleanup_report
+
+Test de la génération du rapport de nettoyage
+
+##### test_generate_summary
+
+Test de la génération du résumé
+
+##### test_optimize_project_structure
+
+Test de l'optimisation de la structure du projet
+
+##### test_organize_files
+
+Test de l'organisation des fichiers
+
+##### setup_method
+
+Configuration avant chaque test
+
+##### teardown_method
+
+Nettoyage après chaque test
+
+##### test_full_cleanup_workflow
+
+Test du workflow complet de nettoyage
+
+##### test_cleanup_with_real_project_structure
+
+Test avec une structure de projet réelle
+
+##### test_cleanup_performance
+
+Test de performance du nettoyage
+
+##### setup_method
+
+Configuration avant chaque test
+
+##### teardown_method
+
+Nettoyage après chaque test
+
+##### test_main_with_valid_path
+
+Test de main avec un chemin valide
+
+##### test_main_with_invalid_path
+
+Test de main avec un chemin invalide
+
+##### test_main_with_optimize_flag
+
+Test de main avec le flag d'optimisation
+
+##### test_main_with_all_flags
+
+Test de main avec tous les flags
+
+##### setup_method
+
+Configuration avant chaque test
+
+##### teardown_method
+
+Nettoyage après chaque test
+
+##### test_cleanup_with_no_files
+
+Test du nettoyage sans fichiers
+
+##### test_cleanup_with_permission_errors
+
+Test du nettoyage avec erreurs de permission
+
+##### test_cleanup_with_symlinks
+
+Test du nettoyage avec liens symboliques
+
+##### test_cleanup_with_nested_directories
+
+Test du nettoyage avec répertoires imbriqués
+
+##### test_cleanup_with_unicode_filenames
+
+Test du nettoyage avec noms de fichiers Unicode
+
+##### test_cleanup_with_very_large_files
+
+Test du nettoyage avec des fichiers très volumineux
+
+##### test_cleanup_with_network_paths
+
+Test du nettoyage avec des chemins réseau
+
+---
+
+### test_robotics_rust_analyzer_complete
+
+Tests complets pour athalia_core.robotics.rust_analyzer
+
+#### Classes
+
+##### TestRustAnalyzerComplete
+
+Tests complets pour RustAnalyzer
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_init()`
+- `test_analyze_rust_projects_no_rust()`
+- `test_analyze_rust_projects_no_cargo_files()`
+- `test_analyze_rust_projects_with_cargo_files()`
+- `test_analyze_cargo_project_success()`
+- `test_analyze_cargo_project_error()`
+- `test_parse_dependencies_string_version()`
+- `test_parse_dependencies_dict_version()`
+- `test_is_robotics_dependency_true()`
+- `test_is_robotics_dependency_false()`
+- `test_analyze_build_targets_bin_only()`
+- `test_analyze_build_targets_lib_only()`
+- `test_analyze_build_targets_bin_files()`
+- `test_analyze_build_targets_none()`
+- `test_check_rust_build_system_success()`
+- `test_check_rust_build_system_failure()`
+- `test_check_rust_build_system_exception()`
+- `test_calculate_optimization_score_no_projects()`
+- `test_calculate_optimization_score_basic_project()`
+- `test_calculate_optimization_score_robotics_project()`
+- `test_calculate_optimization_score_max()`
+- `test_generate_recommendations_no_projects()`
+- `test_generate_recommendations_with_projects()`
+- `test_validate_cargo_toml_success()`
+- `test_validate_cargo_toml_error()`
+- `test_generate_rust_report()`
+- `test_create_rust_template()`
+
+##### TestRustAnalyzerIntegration
+
+Tests d'intégration pour RustAnalyzer
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_full_rust_analysis_workflow()`
+- `test_rust_analysis_with_real_project_structure()`
+- `test_rust_analysis_performance()`
+
+##### TestRustAnalyzerEdgeCases
+
+Tests des cas limites pour RustAnalyzer
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_analyze_with_invalid_cargo_toml()`
+- `test_analyze_with_empty_cargo_toml()`
+- `test_analyze_with_malformed_dependencies()`
+- `test_analyze_with_unicode_content()`
+- `test_analyze_with_large_cargo_toml()`
+
+##### TestMainFunction
+
+Tests pour les fonctions principales
+
+**Méthodes :**
+
+- `test_cargo_dependency_dataclass()`
+- `test_rust_project_info_dataclass()`
+- `test_rust_analysis_result_dataclass()`
+
+#### Fonctions
+
+##### setup_method
+
+Setup pour chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_init
+
+Test l'initialisation de RustAnalyzer
+
+##### test_analyze_rust_projects_no_rust
+
+Test analyse sans Rust installé
+
+##### test_analyze_rust_projects_no_cargo_files
+
+Test analyse sans fichiers Cargo.toml
+
+##### test_analyze_rust_projects_with_cargo_files
+
+Test analyse avec fichiers Cargo.toml
+
+##### test_analyze_cargo_project_success
+
+Test analyse d'un projet Cargo réussi
+
+##### test_analyze_cargo_project_error
+
+Test analyse d'un projet Cargo avec erreur
+
+##### test_parse_dependencies_string_version
+
+Test parsing des dépendances avec version string
+
+##### test_parse_dependencies_dict_version
+
+Test parsing des dépendances avec version dict
+
+##### test_is_robotics_dependency_true
+
+Test détection de dépendance robotique
+
+##### test_is_robotics_dependency_false
+
+Test détection de dépendance non-robotique
+
+##### test_analyze_build_targets_bin_only
+
+Test analyse des targets de build - binaire seulement
+
+##### test_analyze_build_targets_lib_only
+
+Test analyse des targets de build - lib seulement
+
+##### test_analyze_build_targets_bin_files
+
+Test analyse des targets de build - fichiers bin
+
+##### test_analyze_build_targets_none
+
+Test analyse des targets de build - aucun
+
+##### test_check_rust_build_system_success
+
+Test vérification du build system Rust - succès
+
+##### test_check_rust_build_system_failure
+
+Test vérification du build system Rust - échec
+
+##### test_check_rust_build_system_exception
+
+Test vérification du build system Rust - exception
+
+##### test_calculate_optimization_score_no_projects
+
+Test calcul du score d'optimisation - aucun projet
+
+##### test_calculate_optimization_score_basic_project
+
+Test calcul du score d'optimisation - projet basique
+
+##### test_calculate_optimization_score_robotics_project
+
+Test calcul du score d'optimisation - projet robotique
+
+##### test_calculate_optimization_score_max
+
+Test calcul du score d'optimisation - maximum
+
+##### test_generate_recommendations_no_projects
+
+Test génération de recommandations - aucun projet
+
+##### test_generate_recommendations_with_projects
+
+Test génération de recommandations - avec projets
+
+##### test_validate_cargo_toml_success
+
+Test validation de Cargo.toml - succès
+
+##### test_validate_cargo_toml_error
+
+Test validation de Cargo.toml - erreur
+
+##### test_generate_rust_report
+
+Test génération de rapport Rust
+
+##### test_create_rust_template
+
+Test création de template Rust
+
+##### setup_method
+
+Setup pour chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_full_rust_analysis_workflow
+
+Test workflow complet d'analyse Rust
+
+##### test_rust_analysis_with_real_project_structure
+
+Test analyse avec structure de projet réelle
+
+##### test_rust_analysis_performance
+
+Test performance de l'analyse Rust
+
+##### setup_method
+
+Setup pour chaque test
+
+##### teardown_method
+
+Cleanup après chaque test
+
+##### test_analyze_with_invalid_cargo_toml
+
+Test analyse avec Cargo.toml invalide
+
+##### test_analyze_with_empty_cargo_toml
+
+Test analyse avec Cargo.toml vide
+
+##### test_analyze_with_malformed_dependencies
+
+Test analyse avec dépendances malformées
+
+##### test_analyze_with_unicode_content
+
+Test analyse avec contenu Unicode
+
+##### test_analyze_with_large_cargo_toml
+
+Test analyse avec Cargo.toml volumineux
+
+##### test_cargo_dependency_dataclass
+
+Test dataclass CargoDependency
+
+##### test_rust_project_info_dataclass
+
+Test dataclass RustProjectInfo
+
+##### test_rust_analysis_result_dataclass
+
+Test dataclass RustAnalysisResult
 
 ---
 
@@ -6081,572 +8695,83 @@ Informations sur le plugin
 
 ---
 
-### main
+### .!20755!main
 
 ---
 
-### benchmark_suite
-
-Suite de benchmarks pour l'assistant vocal multilingue
-Tests de performance, charge, et robustesse
-
-#### Classes
-
-##### BenchmarkSuite
-
-Suite complète de benchmarks pour l'assistant vocal
-
-**Méthodes :**
-
-- `__init__()`
-- `_generate_test_data()`
-- `_generate_final_report()`
-- `_generate_recommendations()`
-- `save_report()`
-
-#### Fonctions
-
-##### __init__
-
-##### _generate_test_data
-
-Génère des données de test
-
-##### _generate_final_report
-
-Génère le rapport final des benchmarks
-
-##### _generate_recommendations
-
-Génère des recommandations basées sur les résultats
-
-##### save_report
-
-Sauvegarde le rapport dans un fichier
-
-**Paramètres :**
-
-- `filename`
+### .!20761!benchmark_suite
 
 ---
 
-### main
-
-#### Classes
-
-##### FlowerAnimation
-
-**Méthodes :**
-
-- `__init__()`
-
-#### Fonctions
-
-##### __init__
+### .!20765!main
 
 ---
 
-### voice_assistant
-
-Système d'IA conversationnel multilingue avec reconnaissance vocale et synthèse vocale
-Version ultra-performante avec benchmarks automatiques
-
-#### Classes
-
-##### VoiceConfig
-
-Configuration pour la reconnaissance et synthèse vocale
-
-##### ConversationContext
-
-Contexte de conversation
-
-##### MultilingualVoiceAssistant
-
-Assistant vocal multilingue ultra-performant
-
-**Méthodes :**
-
-- `__init__()`
-- `_initialize_models()`
-- `_update_performance_metrics()`
-- `get_performance_report()`
-- `cleanup()`
-
-##### VoiceAssistantInterface
-
-Interface principale pour l'assistant vocal
-
-**Méthodes :**
-
-- `__init__()`
-- `get_performance_report()`
-
-#### Fonctions
-
-##### __init__
-
-**Paramètres :**
-
-- `config`
-
-##### _initialize_models
-
-Initialise les modèles de langage et moteurs vocaux
-
-##### _update_performance_metrics
-
-Met à jour les métriques de performance
-
-**Paramètres :**
-
-- `response_time`
-- `success`
-
-##### get_performance_report
-
-Génère un rapport de performance
-
-##### cleanup
-
-Nettoie les ressources
-
-##### __init__
-
-##### get_performance_report
-
-Obtient le rapport de performance
+### .!20774!voice_assistant
 
 ---
 
-### correction_chaînes
-
-Script de correction des chaînes non terminées dans athalia_core
-
-#### Fonctions
-
-##### corriger_chaînes_fichier
-
-Corrige les chaînes non terminées dans un fichier
-
-**Paramètres :**
-
-- `file_path`
-
-##### main
-
-Fonction principale
+### .!20778!correction_chaînes
 
 ---
 
-### correction_finale
-
-Script de correction finale pour Athalia
-Corrige toutes les erreurs restantes dans les fichiers principaux
-
-#### Fonctions
-
-##### corriger_fichier
-
-Corrige un fichier en remplaçant les patterns problématiques
-
-**Paramètres :**
-
-- `file_path`
-
-##### main
-
-Fonction principale
+### .!20784!correction_finale
 
 ---
 
-### optimize_performance
-
-Script d'optimisation des performances des tests
-Version: 1.0
-Auteur: Athalia Team
-
-#### Classes
-
-##### TestPerformanceOptimizer
-
-Optimiseur de performances des tests
-
-**Méthodes :**
-
-- `__init__()`
-- `analyze_test_performance()`
-- `_parse_durations()`
-- `_extract_duration()`
-- `identify_slow_tests()`
-- `identify_fast_tests()`
-- `generate_optimization_report()`
-- `save_report()`
-- `run_fast_tests_only()`
-
-#### Fonctions
-
-##### main
-
-Fonction principale
-
-##### __init__
-
-**Paramètres :**
-
-- `test_dir`
-
-##### analyze_test_performance
-
-Analyse les performances de tous les tests
-
-Returns:
-    Dict avec les temps d'exécution par test
-
-##### _parse_durations
-
-Parse la sortie de pytest --durations
-
-**Paramètres :**
-
-- `output`
-
-##### _extract_duration
-
-Extrait la durée d'une ligne de test
-
-**Paramètres :**
-
-- `line`
-
-##### identify_slow_tests
-
-Identifie les tests lents
-
-Args:
-    threshold: Seuil en secondes pour considérer un test comme lent
-    
-Returns:
-    Liste des tests lents
-
-**Paramètres :**
-
-- `threshold`
-
-##### identify_fast_tests
-
-Identifie les tests rapides
-
-Args:
-    threshold: Seuil en secondes pour considérer un test comme rapide
-    
-Returns:
-    Liste des tests rapides
-
-**Paramètres :**
-
-- `threshold`
-
-##### generate_optimization_report
-
-Génère un rapport d'optimisation
-
-Returns:
-    Contenu du rapport
-
-##### save_report
-
-Sauvegarde le rapport d'optimisation
-
-Args:
-    filename: Nom du fichier de rapport
-
-**Paramètres :**
-
-- `filename`
-
-##### run_fast_tests_only
-
-Exécute seulement les tests rapides
-
-Returns:
-    True si tous les tests rapides passent
+### .!20789!optimize_performance
 
 ---
 
-### main
+### .!20793!main
 
 ---
 
-### module2
-
-#### Fonctions
-
-##### test2
+### .!20799!module2
 
 ---
 
-### demo_system_intelligent
-
-🎯 DÉMONSTRATION DU SYSTÈME INTELLIGENT ATHALIA
-===============================================
-Script de démonstration pour montrer toutes les capacités du système.
-
-#### Fonctions
-
-##### demo_level_1_analysis
-
-Démonstration du niveau 1 - Analyse intelligente
-
-##### demo_level_2_orchestration
-
-Démonstration du niveau 2 - Orchestration
-
-##### demo_level_3_coordination
-
-Démonstration du niveau 3 - Coordination globale
-
-##### demo_integration
-
-Démonstration de l'intégration
-
-##### main
-
-Démonstration complète du système
+### .!20813!demo_system_intelligent
 
 ---
 
-### ath_context_prompt
+### .!20804!ath_context_prompt
 
 ---
 
-### main
-
-Module connectivity pour EmotionSensingRoboticEyes.
-
-#### Classes
-
-##### ConnectivityManager
-
-Gestionnaire pour le module connectivity.
-
-**Méthodes :**
-
-- `__init__()`
-- `process()`
-
-#### Fonctions
-
-##### main
-
-Test du module connectivity.
-
-##### __init__
-
-##### process
-
-Traite les données.
-
-**Paramètres :**
-
-- `data`
+### .!20809!main
 
 ---
 
-### main
-
-Module emotion_detection pour EmotionSensingRoboticEyes.
-
-#### Classes
-
-##### EmotionDetectionManager
-
-Gestionnaire pour le module emotion_detection.
-
-**Méthodes :**
-
-- `__init__()`
-- `process()`
-
-#### Fonctions
-
-##### main
-
-Test du module emotion_detection.
-
-##### __init__
-
-##### process
-
-Traite les données.
-
-**Paramètres :**
-
-- `data`
+### .!20818!main
 
 ---
 
-### demo.launch
-
-#### Fonctions
-
-##### generate_launch_description
+### .!20824!demo.launch
 
 ---
 
-### main
-
-Module motion_control pour EmotionSensingRoboticEyes.
-
-#### Classes
-
-##### MotionControlManager
-
-Gestionnaire pour le module motion_control.
-
-**Méthodes :**
-
-- `__init__()`
-- `process()`
-
-#### Fonctions
-
-##### main
-
-Test du module motion_control.
-
-##### __init__
-
-##### process
-
-Traite les données.
-
-**Paramètres :**
-
-- `data`
+### .!20828!main
 
 ---
 
-### main
-
-#### Classes
-
-##### FlowerAnimation
-
-**Méthodes :**
-
-- `__init__()`
-
-#### Fonctions
-
-##### __init__
+### .!20833!main
 
 ---
 
-### main
-
-Auto - docstring ajoutée
+### .!20839!main
 
 ---
 
-### ath_context_prompt
-
-#### Fonctions
-
-##### score_prompt
-
-**Paramètres :**
-
-- `prompt`
-- `filename`
-- `content`
-
-##### detect_prompts_scoring
-
-**Paramètres :**
-
-- `filepath`
-
-##### detect_prompt_semantic
-
-**Paramètres :**
-
-- `filepath`
-
-##### show_prompts
-
-**Paramètres :**
-
-- `scored`
-- `semantic_prompt`
-
-##### main
+### .!20844!ath_context_prompt
 
 ---
 
-### main
-
-Module ai_player pour VioletTwistAI.
-
-#### Classes
-
-##### AIPlayerManager
-
-Gestionnaire pour le module ai_player.
-
-**Méthodes :**
-
-- `__init__()`
-- `process()`
-
-#### Fonctions
-
-##### main
-
-Test du module ai_player.
-
-##### __init__
-
-##### process
-
-Traite les données.
-
-**Paramètres :**
-
-- `data`
+### .!20850!main
 
 ---
 
-### main
-
-Module violette_game pour VioletTwistAI.
-
-#### Classes
-
-##### VioletteGameManager
-
-Gestionnaire pour le module violette_game.
-
-**Méthodes :**
-
-- `__init__()`
-- `process()`
-
-#### Fonctions
-
-##### main
-
-Test du module violette_game.
-
-##### __init__
-
-##### process
-
-Traite les données.
-
-**Paramètres :**
-
-- `data`
+### .!20855!main
 
 ---
 
@@ -6725,2422 +8850,163 @@ Test avec de vrais fichiers
 
 ---
 
-### athalia_orchestrator
-
-#### Classes
-
-##### AthaliaOrchestrator
-
-**Méthodes :**
-
-- `__init__()`
-- `industrialize_project()`
-- `_run_robotics_audit()`
-- `_run_audit()`
-- `_run_cleanup()`
-- `_run_documentation()`
-- `_run_testing()`
-- `_run_cicd()`
-- `_generate_final_report()`
-- `_convert_dataclasses_to_dict()`
-- `_save_report()`
-- `scan_projects()`
-- `_is_project()`
-- `_detect_project_type()`
-- `_get_project_size()`
-- `_add_quality_badge()`
-- `_add_security_badge()`
-- `distill_ia_responses()`
-- `distill_audits()`
-- `distill_corrections()`
-- `distill_adaptive_responses()`
-- `distill_genetics()`
-- `cache_predictive()`
-
-#### Fonctions
-
-##### main
-
-Point d'entrée du programme
-
-##### __init__
-
-##### industrialize_project
-
-Industrialisation complète d'un projet
-
-**Paramètres :**
-
-- `project_path`
-- `config`
-
-##### _run_robotics_audit
-
-Exécute l'audit robotique spécialisé
-
-##### _run_audit
-
-Exécute l'audit intelligent
-
-##### _run_cleanup
-
-Exécute le nettoyage
-
-##### _run_documentation
-
-Exécute la génération de documentation
-
-##### _run_testing
-
-Exécute la génération de tests
-
-##### _run_cicd
-
-Exécute la configuration CI / CD
-
-##### _generate_final_report
-
-Génère le rapport final d'industrialisation Athalia.
-
-**Paramètres :**
-
-- `results`
-
-##### _convert_dataclasses_to_dict
-
-Convertit les dataclasses en dictionnaires pour la sérialisation JSON
-
-**Paramètres :**
-
-- `obj`
-
-##### _save_report
-
-Sauvegarde le fichier de rapport
-
-**Paramètres :**
-
-- `results`
-
-##### scan_projects
-
-Scan les projets et ajoute la clé 'path' à chaque projet.
-
-**Paramètres :**
-
-- `base_dir`
-
-##### _is_project
-
-Détermine si un répertoire est un projet
-
-**Paramètres :**
-
-- `path`
-
-##### _detect_project_type
-
-Détecte le type de projet
-
-**Paramètres :**
-
-- `path`
-
-##### _get_project_size
-
-Calcule la taille du projet
-
-**Paramètres :**
-
-- `path`
-
-##### _add_quality_badge
-
-Ajoute un badge de qualité dans le README du projet
-
-**Paramètres :**
-
-- `score`
-
-##### _add_security_badge
-
-Ajoute un badge de sécurité dans le README du projet
-
-**Paramètres :**
-
-- `score`
-
-##### distill_ia_responses
-
-Interroge Qwen, Mistral, Mock (via RobustAI), distille les réponses et retourne la meilleure.
-
-**Paramètres :**
-
-- `prompt`
-- `models`
-- `strategy`
-
-##### distill_audits
-
-Fusionne plusieurs audits en un score global distillé.
-
-**Paramètres :**
-
-- `audits`
-
-##### distill_corrections
-
-Sélectionne la meilleure correction parmi plusieurs suggestions IA.
-
-**Paramètres :**
-
-- `corrections`
-- `scores`
-
-##### distill_adaptive_responses
-
-Fusionne plusieurs réponses IA de façon adaptative.
-
-**Paramètres :**
-
-- `responses`
-
-##### distill_genetics
-
-**Paramètres :**
-
-- `solutions`
-
-##### cache_predictive
-
-**Paramètres :**
-
-- `key`
-- `value`
+### .!20860!test_correction_optimizer_optimized
 
 ---
 
-### intelligent_orchestrator
-
-🎯 ORCHESTRATEUR INTELLIGENT ATHALIA
-====================================
-Orchestrateur qui :
-- Intègre l'analyseur intelligent et la mémoire
-- Coordonne tous les modules avec apprentissage
-- Prédit et prévient les problèmes
-- Optimise automatiquement le code
-- Apprend de chaque action pour s'améliorer
-
-#### Classes
-
-##### OrchestrationTask
-
-Tâche d'orchestration
-
-##### IntelligentInsight
-
-Insight intelligent
-
-##### IntelligentOrchestrator
-
-Orchestrateur intelligent pour Athalia
-
-**Méthodes :**
-
-- `__init__()`
-- `_init_database()`
-- `orchestrate_project()`
-- `predict_project_issues()`
-- `suggest_optimizations()`
-- `get_orchestration_insights()`
-- `_create_task()`
-- `_execute_analysis()`
-- `_learn_from_analysis()`
-- `_generate_predictions()`
-- `_generate_optimizations()`
-- `_save_insight()`
-- `_save_orchestration_results()`
-- `_generate_orchestration_report()`
-
-#### Fonctions
-
-##### main
-
-Test de l'orchestrateur intelligent
-
-##### __init__
-
-**Paramètres :**
-
-- `root_path`
-
-##### _init_database
-
-Initialiser la base de données d'orchestration
-
-##### orchestrate_project
-
-Orchestrer l'analyse complète d'un projet
-
-**Paramètres :**
-
-- `project_path`
-- `include_predictions`
-- `include_optimizations`
-
-##### predict_project_issues
-
-Prédire les problèmes potentiels d'un projet
-
-**Paramètres :**
-
-- `project_path`
-
-##### suggest_optimizations
-
-Suggérer des optimisations pour un projet
-
-**Paramètres :**
-
-- `project_path`
-
-##### get_orchestration_insights
-
-Obtenir des insights d'orchestration
-
-##### _create_task
-
-Créer une nouvelle tâche d'orchestration
-
-**Paramètres :**
-
-- `task_type`
-- `target_path`
-- `priority`
-
-##### _execute_analysis
-
-Exécuter l'analyse intelligente
-
-**Paramètres :**
-
-- `project_path`
-
-##### _learn_from_analysis
-
-Apprendre des résultats d'analyse
-
-**Paramètres :**
-
-- `analysis_result`
-
-##### _generate_predictions
-
-Générer des prédictions intelligentes
-
-**Paramètres :**
-
-- `project_path`
-
-##### _generate_optimizations
-
-Générer des optimisations intelligentes
-
-**Paramètres :**
-
-- `project_path`
-
-##### _save_insight
-
-Sauvegarder un insight intelligent
-
-**Paramètres :**
-
-- `insight`
-
-##### _save_orchestration_results
-
-Sauvegarder les résultats d'orchestration
-
-**Paramètres :**
-
-- `results`
-
-##### _generate_orchestration_report
-
-Générer un rapport d'orchestration
-
-**Paramètres :**
-
-- `results`
+### .!20864!athalia_orchestrator
 
 ---
 
-### benchmark_qwen_mistral
-
-Script de benchmark Qwen/Mistral/Mock pour Athalia/Arkalia
-
-Usage :
-    python benchmark_qwen_mistral.py
-
-- Compare Qwen, Mistral, Mock sur 10 prompts types
-- Mesure temps de réponse, score qualité (heuristique), mémoire
-- Résultats exportés en CSV et Markdown
-
-#### Fonctions
-
-##### call_qwen
-
-**Paramètres :**
-
-- `prompt`
-
-##### call_mistral
-
-**Paramètres :**
-
-- `prompt`
-
-##### call_mock
-
-**Paramètres :**
-
-- `prompt`
-
-##### quality_score
-
-**Paramètres :**
-
-- `output`
+### .!20869!intelligent_orchestrator
 
 ---
 
-### debug_correction
-
-Script de débogage pour le système de correction
-
-#### Fonctions
-
-##### test_correction
-
-Test simple de correction
+### .!20876!benchmark_qwen_mistral
 
 ---
 
-### audit
-
-Module d'audit intelligent pour analyser la qualité des projets générés.
-Analyse le code, détecte la dette technique, et propose des améliorations.
-
-#### Classes
-
-##### ProjectAuditor
-
-Auditeur intelligent de projets générés.
-
-**Méthodes :**
-
-- `__init__()`
-- `audit_project()`
-- `_analyze_structure()`
-- `_analyze_code_quality()`
-- `_analyze_python_file()`
-- `_analyze_tests()`
-- `_analyze_documentation()`
-- `_analyze_security()`
-- `_analyze_performance()`
-- `_calculate_score()`
-- `_generate_report()`
-- `_find_modules()`
-
-#### Fonctions
-
-##### audit_project_intelligent
-
-Fonction principale pour l'audit intelligent.
-
-**Paramètres :**
-
-- `project_path`
-
-##### generate_audit_report
-
-**Paramètres :**
-
-- `project_path`
-
-##### __init__
-
-**Paramètres :**
-
-- `project_path`
-
-##### audit_project
-
-Audit complet du projet.
-
-##### _analyze_structure
-
-Analyse la structure du projet.
-
-##### _analyze_code_quality
-
-Analyse la qualité du code Python.
-
-##### _analyze_python_file
-
-Analyse un fichier Python avec AST.
-
-**Paramètres :**
-
-- `tree`
-- `content`
-
-##### _analyze_tests
-
-Analyse la couverture de tests.
-
-##### _analyze_documentation
-
-Analyse la documentation.
-
-##### _analyze_security
-
-Analyse la sécurité.
-
-##### _analyze_performance
-
-Analyse la performance.
-
-##### _calculate_score
-
-Calcule le score global du projet.
-
-##### _generate_report
-
-Génère le rapport d'audit.
-
-##### _find_modules
-
-Trouve les modules Python dans le projet.
+### .!20881!debug_correction
 
 ---
 
-### network_agent
-
-#### Classes
-
-##### AuditAgent
-
-**Méthodes :**
-
-- `act()`
-
-##### CorrectionAgent
-
-**Méthodes :**
-
-- `act()`
-
-##### SynthesisAgent
-
-**Méthodes :**
-
-- `act()`
-
-#### Fonctions
-
-##### act
-
-**Paramètres :**
-
-- `prompt`
-
-##### act
-
-**Paramètres :**
-
-- `prompt`
-
-##### act
-
-**Paramètres :**
-
-- `prompt`
-- `responses`
+### .!20887!audit
 
 ---
 
-### qwen_agent
-
-Agent AutoGen pour Qwen 7B (prototype)
-
-#### Classes
-
-##### QwenAgent
-
-**Méthodes :**
-
-- `act()`
-
-#### Fonctions
-
-##### act
-
-**Paramètres :**
-
-- `prompt`
+### .!20891!network_agent
 
 ---
 
-### analyze_intelligence_usage
-
-🔍 ANALYSE DE L'UTILISATION DE L'INTELLIGENCE ET DÉTECTION DE DOUBLONS
-=====================================================================
-Script pour analyser tous les modules intelligents et détecter les doublons.
-
-#### Classes
-
-##### ModuleInfo
-
-Informations sur un module
-
-##### DuplicateInfo
-
-Information sur un doublon
-
-##### IntelligenceAnalyzer
-
-Analyseur de l'utilisation de l'intelligence
-
-**Méthodes :**
-
-- `__init__()`
-- `discover_intelligent_modules()`
-- `_analyze_module()`
-- `detect_duplicates()`
-- `_calculate_similarity()`
-- `_generate_duplicate_recommendation()`
-- `analyze_intelligence_usage()`
-- `generate_report()`
-
-#### Fonctions
-
-##### main
-
-Analyse complète de l'utilisation de l'intelligence
-
-##### __init__
-
-**Paramètres :**
-
-- `root_path`
-
-##### discover_intelligent_modules
-
-Découvrir tous les modules intelligents
-
-##### _analyze_module
-
-Analyser un module Python
-
-**Paramètres :**
-
-- `file_path`
-- `module_type`
-
-##### detect_duplicates
-
-Détecter les doublons entre modules
-
-##### _calculate_similarity
-
-Calculer la similarité entre deux modules
-
-**Paramètres :**
-
-- `module1`
-- `module2`
-
-##### _generate_duplicate_recommendation
-
-Générer une recommandation pour un doublon
-
-**Paramètres :**
-
-- `module1`
-- `module2`
-- `similarity`
-
-##### analyze_intelligence_usage
-
-Analyser l'utilisation de l'intelligence
-
-##### generate_report
-
-Générer un rapport complet
+### .!20894!qwen_agent
 
 ---
 
-### api_distillation
-
-#### Classes
-
-##### PromptRequest
-
-#### Fonctions
-
-##### distill_ia
-
-**Paramètres :**
-
-- `req`
-
-##### feedback
-
-**Paramètres :**
-
-- `req`
+### .!20907!__init__
 
 ---
 
-### athalia-coordinator
-
-🚀 ATHALIA INTELLIGENT COORDINATOR
-==================================
-Système de coordination intelligente qui :
-- Gère tous les modules Athalia
-- Apprend de chaque action
-- Coordonne les interactions entre modules
-- Met à jour la documentation automatiquement
-- Optimise les performances du système
-
-#### Classes
-
-##### ModuleInfo
-
-Informations sur un module
-
-##### ActionRecord
-
-Enregistrement d'une action
-
-##### AthaliaCoordinator
-
-Coordinateur intelligent pour Athalia
-
-**Méthodes :**
-
-- `__init__()`
-- `_init_databases()`
-- `_discover_modules()`
-- `record_action()`
-- `get_module_recommendations()`
-- `analyze_system_health()`
-- `update_documentation()`
-- `_update_alias_documentation()`
-- `coordinate_action()`
-- `get_learning_insights()`
-- `_generate_recommendations()`
-
-#### Fonctions
-
-##### main
-
-Fonction principale
-
-##### __init__
-
-**Paramètres :**
-
-- `root_path`
-
-##### _init_databases
-
-Initialiser les bases de données
-
-##### _discover_modules
-
-Découvrir tous les modules disponibles
-
-##### record_action
-
-Enregistrer une action pour l'apprentissage
-
-**Paramètres :**
-
-- `action`
-- `module`
-- `success`
-- `duration`
-- `details`
-- `context`
-
-##### get_module_recommendations
-
-Obtenir des recommandations de modules basées sur le contexte
-
-**Paramètres :**
-
-- `context`
-
-##### analyze_system_health
-
-Analyser la santé du système
-
-##### update_documentation
-
-Mettre à jour la documentation automatiquement
-
-##### _update_alias_documentation
-
-Mettre à jour la documentation des alias
-
-##### coordinate_action
-
-Coordonner une action entre les modules
-
-**Paramètres :**
-
-- `action`
-- `target`
-- `context`
-
-##### get_learning_insights
-
-Obtenir des insights d'apprentissage
-
-##### _generate_recommendations
-
-Générer des recommandations basées sur l'apprentissage
-
-**Paramètres :**
-
-- `learning_data`
+### .!20901!analyze_intelligence_usage
 
 ---
 
-### athalia-doc-generator
-
-📚 ATHALIA DOCUMENTATION GENERATOR
-==================================
-Générateur automatique de documentation qui :
-- Met à jour tous les fichiers de documentation
-- Génère des guides d'utilisation
-- Crée des index automatiques
-- Synchronise la documentation avec le code
-
-#### Classes
-
-##### AthaliaDocGenerator
-
-Générateur de documentation automatique
-
-**Méthodes :**
-
-- `__init__()`
-- `generate_main_index()`
-- `generate_alias_documentation()`
-- `generate_modules_documentation()`
-- `generate_usage_guide()`
-- `generate_all_documentation()`
-- `update_documentation()`
-
-#### Fonctions
-
-##### main
-
-Fonction principale
-
-##### __init__
-
-**Paramètres :**
-
-- `root_path`
-
-##### generate_main_index
-
-Générer l'index principal de la documentation
-
-##### generate_alias_documentation
-
-Générer la documentation des alias
-
-##### generate_modules_documentation
-
-Générer la documentation des modules
-
-##### generate_usage_guide
-
-Générer le guide d'utilisation
-
-##### generate_all_documentation
-
-Générer toute la documentation
-
-##### update_documentation
-
-Mettre à jour la documentation existante
+### .!20940!en
 
 ---
 
-### athalia-super-brain
-
-🧠 ATHALIA SUPER BRAIN
-======================
-Super cerveau intelligent qui :
-- Analyse toute l'architecture du projet
-- Détecte les doublons et erreurs
-- Optimise les performances
-- Coordonne tous les modules intelligemment
-- Apprend et s'améliore continuellement
-
-#### Classes
-
-##### ModuleAnalysis
-
-Analyse d'un module
-
-##### DuplicateAnalysis
-
-Analyse des doublons
-
-##### PerformanceIssue
-
-Problème de performance
-
-##### ArchitectureMapping
-
-Mapping de l'architecture
-
-##### AthaliaSuperBrain
-
-Super cerveau intelligent pour Athalia
-
-**Méthodes :**
-
-- `__init__()`
-- `_init_database()`
-- `_load_config()`
-- `analyze_entire_architecture()`
-- `_analyze_all_modules()`
-- `_analyze_single_module()`
-- `_calculate_complexity()`
-- `_detect_module_issues()`
-- `_calculate_performance_score()`
-- `_extract_dependencies()`
-- `_detect_duplicates()`
-- `_analyze_performance()`
-- `_build_dependency_graph()`
-- `_generate_recommendations()`
-- `_save_analysis()`
-- `get_optimization_plan()`
-- `generate_intelligent_coordination()`
-
-#### Fonctions
-
-##### main
-
-Fonction principale
-
-##### __init__
-
-**Paramètres :**
-
-- `root_path`
-
-##### _init_database
-
-Initialiser la base de données du super cerveau
-
-##### _load_config
-
-Charger la configuration
-
-##### analyze_entire_architecture
-
-Analyser toute l'architecture du projet
-
-##### _analyze_all_modules
-
-Analyser tous les modules du projet
-
-##### _analyze_single_module
-
-Analyser un module individuel
-
-**Paramètres :**
-
-- `file_path`
-- `module_type`
-
-##### _calculate_complexity
-
-Calculer la complexité cyclomatique
-
-**Paramètres :**
-
-- `tree`
-
-##### _detect_module_issues
-
-Détecter les problèmes dans un module
-
-**Paramètres :**
-
-- `tree`
-- `content`
-
-##### _calculate_performance_score
-
-Calculer un score de performance
-
-**Paramètres :**
-
-- `tree`
-- `content`
-
-##### _extract_dependencies
-
-Extraire les dépendances d'un module
-
-**Paramètres :**
-
-- `imports`
-- `module_type`
-
-##### _detect_duplicates
-
-Détecter les doublons dans le code
-
-**Paramètres :**
-
-- `modules`
-
-##### _analyze_performance
-
-Analyser les problèmes de performance
-
-**Paramètres :**
-
-- `modules`
-
-##### _build_dependency_graph
-
-Construire le graphe de dépendances
-
-**Paramètres :**
-
-- `modules`
-
-##### _generate_recommendations
-
-Générer des recommandations d'amélioration
-
-**Paramètres :**
-
-- `modules`
-- `duplicates`
-- `performance_issues`
-
-##### _save_analysis
-
-Sauvegarder l'analyse dans la base de données et le fichier JSON
-
-**Paramètres :**
-
-- `architecture`
-
-##### get_optimization_plan
-
-Générer un plan d'optimisation
-
-##### generate_intelligent_coordination
-
-Générer un plan de coordination intelligente
+### .!20911!api_distillation
 
 ---
 
-### analyse_integration_orchestrateur
-
-🔍 ANALYSE D'INTÉGRATION ORCHESTRATEUR
-=====================================
-Script pour analyser l'intégration actuelle de l'orchestrateur unifié
-et identifier les modules manquants.
-
-#### Classes
-
-##### ModuleIntegration
-
-Informations sur l'intégration d'un module
-
-##### IntegrationAnalysis
-
-Analyse d'intégration complète
-
-##### OrchestratorIntegrationAnalyzer
-
-Analyseur d'intégration de l'orchestrateur
-
-**Méthodes :**
-
-- `__init__()`
-- `analyze_orchestrator_integration()`
-- `_get_all_athalia_modules()`
-- `_analyze_orchestrator_file()`
-- `_analyze_imports()`
-- `_analyze_usage()`
-- `_analyze_integration_status()`
-- `_create_empty_analysis()`
-- `_generate_integration_recommendations()`
-- `generate_integration_report()`
-
-#### Fonctions
-
-##### main
-
-Fonction principale
-
-##### __init__
-
-**Paramètres :**
-
-- `root_path`
-
-##### analyze_orchestrator_integration
-
-Analyser l'intégration de l'orchestrateur
-
-##### _get_all_athalia_modules
-
-Obtenir tous les modules athalia_core
-
-##### _analyze_orchestrator_file
-
-Analyser le fichier de l'orchestrateur
-
-##### _analyze_imports
-
-Analyser les imports de l'orchestrateur
-
-**Paramètres :**
-
-- `tree`
-- `content`
-
-##### _analyze_usage
-
-Analyser l'utilisation des modules
-
-**Paramètres :**
-
-- `tree`
-- `content`
-
-##### _analyze_integration_status
-
-Analyser le statut d'intégration
-
-**Paramètres :**
-
-- `all_modules`
-
-##### _create_empty_analysis
-
-Créer une analyse vide si l'orchestrateur n'existe pas
-
-**Paramètres :**
-
-- `all_modules`
-
-##### _generate_integration_recommendations
-
-Générer des recommandations d'intégration
-
-**Paramètres :**
-
-- `analysis`
-
-##### generate_integration_report
-
-Générer un rapport d'intégration
-
-**Paramètres :**
-
-- `analysis`
+### .!20917!athalia-coordinator
 
 ---
 
-### analyze_orchestrators_detailed
-
-🎯 ANALYSE DÉTAILLÉE DES ORCHESTRATEURS
-=======================================
-Analyse détaillée pour détecter les doublons fonctionnels entre orchestrateurs.
-
-#### Classes
-
-##### OrchestratorInfo
-
-Informations détaillées sur un orchestrateur
-
-##### OrchestratorAnalyzer
-
-Analyseur détaillé des orchestrateurs
-
-**Méthodes :**
-
-- `__init__()`
-- `analyze_orchestrators()`
-- `_analyze_orchestrator_file()`
-- `_extract_responsibilities()`
-- `_extract_dependencies()`
-- `detect_functional_duplicates()`
-- `_calculate_functional_similarity()`
-- `_generate_functional_recommendation()`
-- `generate_detailed_report()`
-
-#### Fonctions
-
-##### main
-
-Analyse détaillée des orchestrateurs
-
-##### __init__
-
-##### analyze_orchestrators
-
-Analyser tous les orchestrateurs
-
-##### _analyze_orchestrator_file
-
-Analyser un fichier orchestrateur
-
-**Paramètres :**
-
-- `file_path`
-
-##### _extract_responsibilities
-
-Extraire les responsabilités du code
-
-**Paramètres :**
-
-- `content`
-
-##### _extract_dependencies
-
-Extraire les dépendances
-
-**Paramètres :**
-
-- `content`
-
-##### detect_functional_duplicates
-
-Détecter les doublons fonctionnels
-
-##### _calculate_functional_similarity
-
-Calculer la similarité fonctionnelle
-
-**Paramètres :**
-
-- `orch1`
-- `orch2`
-
-##### _generate_functional_recommendation
-
-Générer une recommandation fonctionnelle
-
-**Paramètres :**
-
-- `orch1`
-- `orch2`
-- `common_resp`
-- `common_methods`
-
-##### generate_detailed_report
-
-Générer un rapport détaillé
+### .!20926!athalia-super-brain
 
 ---
 
-### en
-
-English translations for Athalia
-
-#### Fonctions
-
-##### get_translation
-
-Returns English translations
-
-**Paramètres :**
-
-- `lang`
+### .!20921!athalia-doc-generator
 
 ---
 
-### athalia-intelligent-orchestrator
-
-🎯 ATHALIA INTELLIGENT ORCHESTRATOR
-===================================
-Orchestrateur intelligent qui :
-- Utilise les insights du super cerveau
-- Coordonne tous les modules de manière optimale
-- Apprend des patterns d'exécution
-- Optimise les performances en temps réel
-- Gère les dépendances intelligemment
-
-#### Classes
-
-##### TaskDefinition
-
-Définition d'une tâche
-
-##### ExecutionResult
-
-Résultat d'exécution d'une tâche
-
-##### OrchestrationPlan
-
-Plan d'orchestration
-
-##### AthaliaIntelligentOrchestrator
-
-Orchestrateur intelligent pour Athalia
-
-**Méthodes :**
-
-- `__init__()`
-- `_init_database()`
-- `_load_config()`
-- `load_super_brain_insights()`
-- `create_intelligent_orchestration_plan()`
-- `_create_complete_pipeline_tasks()`
-- `_create_audit_pipeline_tasks()`
-- `_create_test_pipeline_tasks()`
-- `_create_default_pipeline_tasks()`
-- `_optimize_execution_order()`
-- `_create_parallel_groups()`
-- `_execute_task()`
-- `_save_execution_results()`
-- `get_performance_insights()`
-
-#### Fonctions
-
-##### main
-
-Fonction principale
-
-##### __init__
-
-**Paramètres :**
-
-- `root_path`
-
-##### _init_database
-
-Initialiser la base de données d'orchestration
-
-##### _load_config
-
-Charger la configuration
-
-##### load_super_brain_insights
-
-Charger les insights du super cerveau
-
-##### create_intelligent_orchestration_plan
-
-Créer un plan d'orchestration intelligent
-
-**Paramètres :**
-
-- `target_action`
-
-##### _create_complete_pipeline_tasks
-
-Créer les tâches pour le pipeline complet
-
-##### _create_audit_pipeline_tasks
-
-Créer les tâches pour le pipeline d'audit
-
-##### _create_test_pipeline_tasks
-
-Créer les tâches pour le pipeline de tests
-
-##### _create_default_pipeline_tasks
-
-Créer les tâches par défaut
-
-##### _optimize_execution_order
-
-Optimiser l'ordre d'exécution basé sur les insights
-
-**Paramètres :**
-
-- `tasks`
-- `insights`
-
-##### _create_parallel_groups
-
-Créer des groupes de tâches parallèles
-
-**Paramètres :**
-
-- `tasks`
-- `execution_order`
-
-##### _execute_task
-
-Exécuter une tâche individuelle
-
-**Paramètres :**
-
-- `task`
-- `project_path`
-
-##### _save_execution_results
-
-Sauvegarder les résultats d'exécution
-
-**Paramètres :**
-
-- `results`
-
-##### get_performance_insights
-
-Obtenir des insights de performance
-
-##### dfs
-
-**Paramètres :**
-
-- `task_name`
+### .!20931!analyse_integration_orchestrateur
 
 ---
 
-### fr
-
-Traductions françaises pour Athalia
-
-#### Fonctions
-
-##### get_translation
-
-Retourne les traductions françaises
-
-**Paramètres :**
-
-- `lang`
+### .!20935!analyze_orchestrators_detailed
 
 ---
 
-### athalia_robotics_integration
-
-Intégration Robotique Athalia
-=============================
-
-Script simple pour utiliser le module robotique avec Athalia
-
-#### Fonctions
-
-##### main
-
-Fonction principale d'intégration
+### .!20946!athalia-intelligent-orchestrator
 
 ---
 
-### audit_complet_dossiers
-
-🔍 AUDIT COMPLET DOSSIERS ET SOUS-DOSSIERS
-==========================================
-Script pour analyser chaque dossier et sous-dossier du projet Athalia.
-Vérifie : utilité, implémentation, tests, documentation, intégration.
-
-#### Classes
-
-##### DossierInfo
-
-Informations sur un dossier
-
-##### ModuleInfo
-
-Informations sur un module Python
-
-##### AuditResult
-
-Résultat d'audit pour un dossier
-
-##### AuditCompletDossiers
-
-Auditeur complet des dossiers et sous-dossiers
-
-**Méthodes :**
-
-- `__init__()`
-- `analyser_tous_dossiers()`
-- `_trouver_sous_dossiers_caches()`
-- `_analyser_dossier_complet()`
-- `_analyser_dossier_info()`
-- `_analyser_module()`
-- `_chercher_tests_associes()`
-- `_chercher_documentation_associee()`
-- `_verifier_integration_orchestrateur()`
-- `_calculer_score_utilite()`
-- `_calculer_score_implementation()`
-- `_calculer_score_tests()`
-- `_calculer_score_documentation()`
-- `_calculer_score_integration()`
-- `_generer_recommandations()`
-- `_chercher_pepites()`
-- `generer_rapport()`
-
-#### Fonctions
-
-##### main
-
-Fonction principale
-
-##### __init__
-
-**Paramètres :**
-
-- `root_path`
-
-##### analyser_tous_dossiers
-
-Analyser tous les dossiers et sous-dossiers
-
-##### _trouver_sous_dossiers_caches
-
-Trouver les sous-dossiers cachés qui pourraient contenir des pépites
-
-##### _analyser_dossier_complet
-
-Analyser un dossier complet
-
-**Paramètres :**
-
-- `dossier_path`
-- `nom_dossier`
-
-##### _analyser_dossier_info
-
-Analyser les informations d'un dossier
-
-**Paramètres :**
-
-- `dossier_path`
-- `nom_dossier`
-
-##### _analyser_module
-
-Analyser un module Python
-
-**Paramètres :**
-
-- `file_path`
-
-##### _chercher_tests_associes
-
-Chercher les tests associés à un module
-
-**Paramètres :**
-
-- `file_path`
-
-##### _chercher_documentation_associee
-
-Chercher la documentation associée à un module
-
-**Paramètres :**
-
-- `file_path`
-
-##### _verifier_integration_orchestrateur
-
-Vérifier si le module est intégré dans l'orchestrateur
-
-**Paramètres :**
-
-- `content`
-- `imports`
-
-##### _calculer_score_utilite
-
-Calculer le score d'utilité
-
-**Paramètres :**
-
-- `dossier_info`
-- `modules`
-
-##### _calculer_score_implementation
-
-Calculer le score d'implémentation
-
-**Paramètres :**
-
-- `modules`
-
-##### _calculer_score_tests
-
-Calculer le score des tests
-
-**Paramètres :**
-
-- `dossier_info`
-- `modules`
-
-##### _calculer_score_documentation
-
-Calculer le score de documentation
-
-**Paramètres :**
-
-- `dossier_info`
-- `modules`
-
-##### _calculer_score_integration
-
-Calculer le score d'intégration
-
-**Paramètres :**
-
-- `modules`
-
-##### _generer_recommandations
-
-Générer des recommandations
-
-**Paramètres :**
-
-- `dossier_info`
-- `modules`
-- `score_total`
-
-##### _chercher_pepites
-
-Chercher des pépites dans le dossier
-
-**Paramètres :**
-
-- `dossier_info`
-- `modules`
-
-##### generer_rapport
-
-Générer un rapport complet
+### .!20950!fr
 
 ---
 
-### benchmark_distillation
-
-#### Fonctions
-
-##### main
+### .!20955!athalia_robotics_integration
 
 ---
 
-### cleanup_workspace
-
-Script de nettoyage automatique du workspace Athalia
-Maintient l'organisation et supprime les fichiers parasites
-
-#### Fonctions
-
-##### load_paths_config
-
-Charge la configuration des f
-
-##### cleanup_macos_files
-
-Supprime les fichiers parasites f
-
-##### cleanup_cache_dirs
-
-Nettoie les dossiers de f
-
-##### organize_files
-
-Organise les fichiers selon la structure f
-
-##### remove_empty_files
-
-Supprime les fichiers f
-
-##### main
-
-Fonction f
+### .!20960!audit_complet_dossiers
 
 ---
 
-### demo_robotics
-
-Démonstration du module Robotics Athalia
-========================================
-
-Script de démonstration pour tester toutes les fonctionnalités robotiques :
-- Audit Reachy
-- Validation ROS2
-- Gestion Docker
-- Analyse Rust
-- CI/CD robotique
-
-#### Fonctions
-
-##### demo_reachy_auditor
-
-Démonstration de l'auditeur Reachy
-
-##### demo_ros2_validator
-
-Démonstration du validateur ROS2
-
-##### demo_docker_robotics
-
-Démonstration du gestionnaire Docker
-
-##### demo_rust_analyzer
-
-Démonstration de l'analyseur Rust
-
-##### demo_robotics_ci
-
-Démonstration du CI/CD robotique
-
-##### create_sample_project
-
-Créer un projet exemple pour la démonstration
-
-##### main
-
-Fonction principale de démonstration
+### .!20969!cleanup_workspace
 
 ---
 
-### docker_export_plugin
-
-Plugin d'export Docker pour projet Python.
-
-#### Fonctions
-
-##### export_docker
-
-Génère un Dockerfile optimisé pour le projet donné.
-
-**Paramètres :**
-
-- `project_path`
-- `output_path`
-
-##### analyze_dependencies
-
-Affiche les dépendances du projet.
-
-**Paramètres :**
-
-- `project_path`
-
-##### run
-
-Fonction d'entrée standard pour le plugin.
-
-**Paramètres :**
-
-- `project_path`
+### .!20964!benchmark_distillation
 
 ---
 
-### identify_problematic_tests
-
-Script pour identifier les tests problématiques qui pourraient faire échouer la CI
-
-#### Fonctions
-
-##### find_problematic_tests
-
-Identifie les tests problématiques
-
-##### suggest_fixes
-
-Suggère des corrections pour les problèmes identifiés
-
-**Paramètres :**
-
-- `problems`
-
-##### generate_ci_safe_test_list
-
-Génère une liste de tests sûrs pour la CI
-
-##### main
-
-Fonction principale
+### .!20975!demo_robotics
 
 ---
 
-### hello_world_plugin
-
-Plugin exemple : Hello Plugin
-
-#### Fonctions
-
-##### run
+### .!20980!docker_export_plugin
 
 ---
 
-### integration_automatique
-
-🔗 INTÉGRATION AUTOMATIQUE DES MODULES
-======================================
-Script pour intégrer automatiquement les modules manquants dans l'orchestrateur unifié.
-
-#### Fonctions
-
-##### main
-
-Fonction principale
-
-##### analyze_modules_for_classes
-
-Analyser les modules pour déterminer la classe principale
-
-**Paramètres :**
-
-- `modules`
-
-##### select_main_class
-
-Sélectionner la classe principale d'un module
-
-**Paramètres :**
-
-- `classes`
-- `module_name`
-
-##### generate_imports
-
-Générer les imports pour les modules
-
-**Paramètres :**
-
-- `module_classes`
-
-##### get_current_imports
-
-Obtenir les imports actuels de l'orchestrateur
-
-##### integrate_imports
-
-Intégrer les nouveaux imports dans le contenu
-
-**Paramètres :**
-
-- `content`
-- `new_imports`
-
-##### verify_integration
-
-Vérifier l'intégration après mise à jour
+### .!20984!identify_problematic_tests
 
 ---
 
-### integration_finale_phase4
-
-🔗 INTÉGRATION FINALE PHASE 4
-=============================
-Script pour intégrer les modules restants et finaliser l'intégration complète.
-
-#### Fonctions
-
-##### main
-
-Fonction principale
-
-##### analyze_modules_for_integration
-
-Analyser les modules pour déterminer les éléments à intégrer
-
-**Paramètres :**
-
-- `modules`
-
-##### select_main_class
-
-Sélectionner la classe principale d'un module
-
-**Paramètres :**
-
-- `classes`
-- `module_name`
-
-##### select_main_functions
-
-Sélectionner les fonctions principales d'un module
-
-**Paramètres :**
-
-- `functions`
-- `module_name`
-
-##### generate_final_imports
-
-Générer les imports finaux pour les modules
-
-**Paramètres :**
-
-- `module_integrations`
-
-##### get_current_imports
-
-Obtenir les imports actuels de l'orchestrateur
-
-##### integrate_final_imports
-
-Intégrer les nouveaux imports finaux dans le contenu
-
-**Paramètres :**
-
-- `content`
-- `new_imports`
-
-##### verify_final_integration
-
-Vérifier l'intégration finale après mise à jour
+### .!20989!hello_world_plugin
 
 ---
 
-### integration_modules_fonctionnels
-
-🔗 INTÉGRATION MODULES FONCTIONNELS
-===================================
-Script pour intégrer les modules fonctionnels (sans classes) dans l'orchestrateur unifié.
-
-#### Fonctions
-
-##### main
-
-Fonction principale
-
-##### analyze_modules_for_functions
-
-Analyser les modules pour déterminer les fonctions principales
-
-**Paramètres :**
-
-- `modules`
-
-##### select_main_functions
-
-Sélectionner les fonctions principales d'un module
-
-**Paramètres :**
-
-- `functions`
-- `module_name`
-
-##### generate_function_imports
-
-Générer les imports pour les modules fonctionnels
-
-**Paramètres :**
-
-- `module_functions`
-
-##### get_current_imports
-
-Obtenir les imports actuels de l'orchestrateur
-
-##### integrate_function_imports
-
-Intégrer les nouveaux imports de fonctions dans le contenu
-
-**Paramètres :**
-
-- `content`
-- `new_imports`
-
-##### verify_integration
-
-Vérifier l'intégration après mise à jour
+### .!20993!integration_automatique
 
 ---
 
-### integration_phase3
-
-🔗 INTÉGRATION PHASE 3 : MODULES PRIORITAIRES
-=============================================
-Script pour intégrer les modules prioritaires restants dans l'orchestrateur unifié.
-
-#### Fonctions
-
-##### main
-
-Fonction principale
-
-##### analyze_modules_for_classes
-
-Analyser les modules pour déterminer la classe principale
-
-**Paramètres :**
-
-- `modules`
-
-##### select_main_class
-
-Sélectionner la classe principale d'un module
-
-**Paramètres :**
-
-- `classes`
-- `module_name`
-
-##### generate_imports
-
-Générer les imports pour les modules
-
-**Paramètres :**
-
-- `module_classes`
-
-##### get_current_imports
-
-Obtenir les imports actuels de l'orchestrateur
-
-##### integrate_imports
-
-Intégrer les nouveaux imports dans le contenu
-
-**Paramètres :**
-
-- `content`
-- `new_imports`
-
-##### verify_integration
-
-Vérifier l'intégration après mise à jour
+### .!20999!integration_finale_phase4
 
 ---
 
-### simple_orchestrator_analysis
-
-🎯 ANALYSE SIMPLE DES ORCHESTRATEURS
-====================================
-Analyse simple pour vérifier l'utilisation de l'intelligence.
-
-#### Fonctions
-
-##### analyze_file_content
-
-Analyser le contenu d'un fichier
-
-**Paramètres :**
-
-- `file_path`
-
-##### main
-
-Analyse simple des orchestrateurs
+### .!21002!integration_modules_fonctionnels
 
 ---
 
-### validation_dashboard_simple
-
-Dashboard de Validation Simple - Athalia/Arkalia
-Version simplifiée qui fonctionne directement
-
-#### Classes
-
-##### ValidationDashboardHandler
-
-**Méthodes :**
-
-- `do_GET()`
-- `do_POST()`
-- `send_validation_result()`
-- `send_history()`
-- `end_headers()`
-
-#### Fonctions
-
-##### run_dashboard
-
-Lance le dashboard de validation
-
-**Paramètres :**
-
-- `port`
-
-##### do_GET
-
-##### do_POST
-
-##### send_validation_result
-
-Envoie le résultat de validation en temps réel
-
-##### send_history
-
-Envoie l'historique des validations
-
-##### end_headers
+### .!21007!integration_phase3
 
 ---
 
-### validation_continue
-
-Validation Continue d'Athalia/Arkalia
-Surveillance automatique et détection de régressions
-
-#### Classes
-
-##### ValidationContinue
-
-**Méthodes :**
-
-- `__init__()`
-- `test_rapide()`
-- `test_demarrage()`
-- `test_imports()`
-- `test_generation_mini()`
-- `test_correction_basique()`
-- `detecter_regression()`
-- `demarrer_surveillance()`
-- `arreter_surveillance()`
-- `alerter_regression()`
-- `generer_rapport_alerte()`
-- `sauvegarder_historique()`
-- `charger_historique()`
-- `generer_rapport_tendance()`
-
-#### Fonctions
-
-##### __init__
-
-**Paramètres :**
-
-- `intervalle_minutes`
-
-##### test_rapide
-
-Test rapide pour validation continue (5-10 secondes)
-
-##### test_demarrage
-
-Test: Athalia démarre-t-il ?
-
-##### test_imports
-
-Test: Les imports fonctionnent-ils ?
-
-##### test_generation_mini
-
-Test: Génération d'un mini-projet
-
-##### test_correction_basique
-
-Test: Correction basique
-
-##### detecter_regression
-
-Détecte les régressions par rapport à l'historique
-
-**Paramètres :**
-
-- `validation_actuelle`
-
-##### demarrer_surveillance
-
-Démarre la surveillance continue
-
-##### arreter_surveillance
-
-Arrête la surveillance continue
-
-##### alerter_regression
-
-Génère une alerte de régression
-
-**Paramètres :**
-
-- `validation`
-- `regression`
-
-##### generer_rapport_alerte
-
-Génère un rapport d'alerte détaillé
-
-**Paramètres :**
-
-- `alerte`
-
-##### sauvegarder_historique
-
-Sauvegarde l'historique des validations
-
-##### charger_historique
-
-Charge l'historique des validations
-
-##### generer_rapport_tendance
-
-Génère un rapport de tendance basé sur l'historique
-
-##### boucle_surveillance
-
-Boucle de surveillance avec arrêt propre
+### .!21013!simple_orchestrator_analysis
 
 ---
 
-### validation_objective
-
-Validation Objective d'Athalia/Arkalia
-Tests qui ne peuvent pas mentir - Mesures concrètes et indépendantes
-
-#### Classes
-
-##### ValidationObjective
-
-**Méthodes :**
-
-- `__init__()`
-- `test_generation_et_compilation()`
-- `test_correction_reelle()`
-- `test_robustesse_cas_limites()`
-- `test_performance_benchmark()`
-- `test_qualite_code_genere()`
-- `validation_complete()`
-- `generer_rapport_objectif()`
-
-#### Fonctions
-
-##### __init__
-
-##### test_generation_et_compilation
-
-Test 1: Le code généré compile-t-il vraiment ?
-
-##### test_correction_reelle
-
-Test 2: Athalia corrige-t-il vraiment les erreurs ?
-
-##### test_robustesse_cas_limites
-
-Test 3: Athalia gère-t-il gracieusement les cas d'erreur ?
-
-##### test_performance_benchmark
-
-Test 4: Performance vs solution manuelle
-
-##### test_qualite_code_genere
-
-Test 5: Qualité objective du code généré
-
-##### validation_complete
-
-Validation complète objective
-
-##### generer_rapport_objectif
-
-Génère un rapport objectif et détaillé
-
-**Paramètres :**
-
-- `resultats`
-- `temps_total`
+### .!21017!validation_dashboard_simple
 
 ---
 
-### verification_integration_simple
-
-🔍 VÉRIFICATION SIMPLE D'INTÉGRATION ORCHESTRATEUR
-==================================================
-Script simple pour vérifier l'intégration actuelle de l'orchestrateur unifié.
-
-#### Fonctions
-
-##### main
-
-Fonction principale
+### .!21022!validation_continue
 
 ---
 
-### correction_chaînes
-
-Script de correction des chaînes non terminées dans athalia_core
-
-#### Fonctions
-
-##### corriger_chaînes_fichier
-
-Corrige les chaînes non terminées dans un fichier
-
-**Paramètres :**
-
-- `file_path`
-
-##### main
-
-Fonction principale
+### .!21027!validation_objective
 
 ---
 
-### correction_finale
-
-Script de correction finale pour Athalia
-Corrige toutes les erreurs restantes dans les fichiers principaux
-
-#### Fonctions
-
-##### corriger_fichier
-
-Corrige un fichier en remplaçant les patterns problématiques
-
-**Paramètres :**
-
-- `file_path`
-
-##### main
-
-Fonction principale
+### .!21032!verification_integration_simple
 
 ---
 
-### optimize_performance
-
-Script d'optimisation des performances des tests
-Version: 1.0
-Auteur: Athalia Team
-
-#### Classes
-
-##### TestPerformanceOptimizer
-
-Optimiseur de performances des tests
-
-**Méthodes :**
-
-- `__init__()`
-- `analyze_test_performance()`
-- `_parse_durations()`
-- `_extract_duration()`
-- `identify_slow_tests()`
-- `identify_fast_tests()`
-- `generate_optimization_report()`
-- `save_report()`
-- `run_fast_tests_only()`
-
-#### Fonctions
-
-##### main
-
-Fonction principale
-
-##### __init__
-
-**Paramètres :**
-
-- `test_dir`
-
-##### analyze_test_performance
-
-Analyse les performances de tous les tests
-
-Returns:
-    Dict avec les temps d'exécution par test
-
-##### _parse_durations
-
-Parse la sortie de pytest --durations
-
-**Paramètres :**
-
-- `output`
-
-##### _extract_duration
-
-Extrait la durée d'une ligne de test
-
-**Paramètres :**
-
-- `line`
-
-##### identify_slow_tests
-
-Identifie les tests lents
-
-Args:
-    threshold: Seuil en secondes pour considérer un test comme lent
-    
-Returns:
-    Liste des tests lents
-
-**Paramètres :**
-
-- `threshold`
-
-##### identify_fast_tests
-
-Identifie les tests rapides
-
-Args:
-    threshold: Seuil en secondes pour considérer un test comme rapide
-    
-Returns:
-    Liste des tests rapides
-
-**Paramètres :**
-
-- `threshold`
-
-##### generate_optimization_report
-
-Génère un rapport d'optimisation
-
-Returns:
-    Contenu du rapport
-
-##### save_report
-
-Sauvegarde le rapport d'optimisation
-
-Args:
-    filename: Nom du fichier de rapport
-
-**Paramètres :**
-
-- `filename`
-
-##### run_fast_tests_only
-
-Exécute seulement les tests rapides
-
-Returns:
-    True si tous les tests rapides passent
+### .!21038!correction_chaînes
 
 ---
 
-### correction_chaînes
+### .!21043!correction_finale
 
-Script de correction des chaînes non terminées dans athalia_core
+---
 
-#### Fonctions
+### .!21046!optimize_performance
 
-##### corriger_chaînes_fichier
+---
 
-Corrige les chaînes non terminées dans un fichier
-
-**Paramètres :**
-
-- `file_path`
-
-##### main
-
-Fonction principale
+### .!21053!correction_chaînes
 
 ---
 
@@ -15006,7 +14872,43 @@ called with the proxied value inserted at `arg_pos`
 
 ---
 
+### .!26417!six
+
+---
+
 ### py
+
+---
+
+### .!29912!py
+
+---
+
+### .!25581!pycodestyle
+
+---
+
+### .!25928!typing_extensions
+
+---
+
+### .!26318!mccabe
+
+---
+
+### .!26349!jsonref
+
+---
+
+### .!26352!mypy_extensions
+
+---
+
+### .!26643!proxytypes
+
+---
+
+### .!26709!_black_version
 
 ---
 
@@ -15145,6 +15047,10 @@ Makes use of the `appname <platformdirs.api.PlatformDirsABC.appname>`, `version
 ##### site_runtime_dir
 
 :return: runtime directory shared by users, same as `user_runtime_dir`
+
+---
+
+### .!21138!api
 
 ---
 
@@ -15402,6 +15308,10 @@ Create a new platform directory.
 ##### iter_runtime_paths
 
 :yield: all user and site runtime paths.
+
+---
+
+### .!21148!unix
 
 ---
 
@@ -15857,7 +15767,39 @@ Get folder with ctypes.
 
 ---
 
+### .!21123!__init__
+
+---
+
+### .!21128!__main__
+
+---
+
+### .!21131!android
+
+---
+
+### .!21143!macos
+
+---
+
+### .!21153!version
+
+---
+
+### .!21156!windows
+
+---
+
 ### override
+
+---
+
+### .!21162!__init__
+
+---
+
+### .!21168!override
 
 ---
 
@@ -15875,6 +15817,10 @@ saved on the method.
 - `method`
 
 ##### wrapper
+
+---
+
+### .!21183!glob
 
 ---
 
@@ -16010,6 +15956,14 @@ Ensure that * will not match an empty segment.
 
 ---
 
+### .!21171!__init__
+
+---
+
+### .!21176!_functools
+
+---
+
 ### overlay
 
 Expose zipp.Path as .zipfile.Path.
@@ -16091,6 +16045,22 @@ hashable (#126).
 
 - `f1`
 - `f2`
+
+---
+
+### .!21192!overlay
+
+---
+
+### .!21197!py310
+
+---
+
+### .!21201!py313
+
+---
+
+### .!21206!__init__
 
 ---
 
@@ -16736,6 +16706,14 @@ to io.TextIOWrapper().
 
 ---
 
+### .!21223!zipp
+
+---
+
+### .!21218!appdirs
+
+---
+
 ### _adapters
 
 #### Classes
@@ -16948,6 +16926,10 @@ Return the native reader if it supports files().
 **Paramètres :**
 
 - `mode`
+
+---
+
+### .!21254!abc
 
 ---
 
@@ -17657,6 +17639,38 @@ Obtain a File-like for a named resource.
 
 ---
 
+### .!21227!__init__
+
+---
+
+### .!21232!_adapters
+
+---
+
+### .!21238!_common
+
+---
+
+### .!21241!_compat
+
+---
+
+### .!21248!_itertools
+
+---
+
+### .!21250!_legacy
+
+---
+
+### .!21260!readers
+
+---
+
+### .!21263!simple
+
+---
+
 ### context
 
 #### Classes
@@ -18300,6 +18314,18 @@ ensure at least 1/max_rate seconds from last call
 ##### wrapper
 
 ##### wrapper
+
+---
+
+### .!21276!context
+
+---
+
+### .!21279!functools
+
+---
+
+### .!21285!__init__
 
 ---
 
@@ -21939,6 +21965,18 @@ For a variant with more features, see :func:`windowed`.
 
 ---
 
+### .!21292!__init__
+
+---
+
+### .!21299!more
+
+---
+
+### .!21304!recipes
+
+---
+
 ### __about__
 
 ---
@@ -22026,6 +22064,10 @@ uses version strings like "2.20-2014.11"). See gh-3588.
 **Paramètres :**
 
 - `fmt`
+
+---
+
+### .!21346!tags
 
 ---
 
@@ -23278,6 +23320,46 @@ Takes a string like abc.1.twelve and turns it into ("abc", 1, "twelve").
 ##### minor
 
 ##### micro
+
+---
+
+### .!21309!__about__
+
+---
+
+### .!21316!__init__
+
+---
+
+### .!21319!_manylinux
+
+---
+
+### .!21323!_musllinux
+
+---
+
+### .!21330!_structures
+
+---
+
+### .!21332!markers
+
+---
+
+### .!21336!requirements
+
+---
+
+### .!21341!specifiers
+
+---
+
+### .!21351!utils
+
+---
+
+### .!21355!version
 
 ---
 
@@ -27385,6 +27467,10 @@ Extends ``ignore_whitespace`` defined in base class, and also invokes ``leave_wh
 
 ---
 
+### .!21373!core
+
+---
+
 ### exceptions
 
 #### Classes
@@ -27568,6 +27654,10 @@ of parser expressions, you may have to set ``ParserElement.verbose_stacktrace = 
 - `parseElementList`
 
 ##### __str__
+
+---
+
+### .!21399!util
 
 ---
 
@@ -29360,6 +29450,46 @@ Returns the line of text containing loc within a string, counting newlines as li
 **Paramètres :**
 
 - `_`
+
+---
+
+### .!21361!__init__
+
+---
+
+### .!21365!actions
+
+---
+
+### .!21370!common
+
+---
+
+### .!21378!exceptions
+
+---
+
+### .!21382!helpers
+
+---
+
+### .!21386!results
+
+---
+
+### .!21392!testing
+
+---
+
+### .!21395!unicode
+
+---
+
+### .!21404!__init__
+
+---
+
+### .!21409!__init__
 
 ---
 
@@ -31791,6 +31921,42 @@ Get UNIX sockets used by process by parsing 'pfiles' output.
 
 - `start`
 - `end`
+
+---
+
+### .!21416!_pswindows
+
+---
+
+### .!21422!_common
+
+---
+
+### .!21425!__init__
+
+---
+
+### .!21430!_psosx
+
+---
+
+### .!21435!_psbsd
+
+---
+
+### .!21440!_psaix
+
+---
+
+### .!21447!_pslinux
+
+---
+
+### .!21453!_psposix
+
+---
+
+### .!21455!_pssunos
 
 ---
 
@@ -35787,6 +35953,82 @@ Tests for testing utils (psutil.tests namespace).
 
 ---
 
+### .!21463!test_contracts
+
+---
+
+### .!21467!test_connections
+
+---
+
+### .!21473!test_unicode
+
+---
+
+### .!21478!test_misc
+
+---
+
+### .!21484!test_posix
+
+---
+
+### .!21488!test_linux
+
+---
+
+### .!21494!test_sunos
+
+---
+
+### .!21500!__init__
+
+---
+
+### .!21505!test_aix
+
+---
+
+### .!21509!test_process_all
+
+---
+
+### .!21515!test_process
+
+---
+
+### .!21520!test_bsd
+
+---
+
+### .!21526!test_system
+
+---
+
+### .!21532!test_osx
+
+---
+
+### .!21534!test_memleaks
+
+---
+
+### .!21542!test_windows
+
+---
+
+### .!21545!test_scripts
+
+---
+
+### .!21551!__main__
+
+---
+
+### .!21555!test_testutils
+
+---
+
 ### _deprecation_warning
 
 #### Classes
@@ -35988,6 +36230,10 @@ False
 
 ---
 
+### .!21572!_imp
+
+---
+
 ### _reqs
 
 #### Fonctions
@@ -36009,6 +36255,10 @@ Deprecated drop-in replacement for pkg_resources.parse_requirements.
 **Paramètres :**
 
 - `strs`
+
+---
+
+### .!21621!dist
 
 ---
 
@@ -36501,6 +36751,14 @@ Returns the basename of the info directory, e.g. `proj-0.0.0.dist-info`.
 
 - `metadata_directory`
 - `config_settings`
+
+---
+
+### .!21638!glob
+
+---
+
+### .!21659!msvc
 
 ---
 
@@ -40299,6 +40557,110 @@ From http://stackoverflow.com/questions/19622133/
 
 ---
 
+### .!21561!__init__
+
+---
+
+### .!21564!_deprecation_warning
+
+---
+
+### .!21569!_entry_points
+
+---
+
+### .!21577!_importlib
+
+---
+
+### .!21583!_itertools
+
+---
+
+### .!21587!_path
+
+---
+
+### .!21594!_reqs
+
+---
+
+### .!21599!archive_util
+
+---
+
+### .!21602!build_meta
+
+---
+
+### .!21608!dep_util
+
+---
+
+### .!21612!depends
+
+---
+
+### .!21615!discovery
+
+---
+
+### .!21624!extension
+
+---
+
+### .!21630!errors
+
+---
+
+### .!21633!installer
+
+---
+
+### .!21643!launch
+
+---
+
+### .!21645!logging
+
+---
+
+### .!21650!monkey
+
+---
+
+### .!21654!namespaces
+
+---
+
+### .!21666!package_index
+
+---
+
+### .!21671!py34compat
+
+---
+
+### .!21674!sandbox
+
+---
+
+### .!21679!unicode_utils
+
+---
+
+### .!21684!version
+
+---
+
+### .!21690!wheel
+
+---
+
+### .!21694!windows_support
+
+---
+
 ### _collections
 
 #### Classes
@@ -42166,6 +42528,10 @@ used to drive the Distutils.
 
 ---
 
+### .!21736!cmd
+
+---
+
 ### cygwinccompiler
 
 distutils.cygwinccompiler
@@ -42314,6 +42680,10 @@ Add support for rc and res files.
 
 ---
 
+### .!21745!core
+
+---
+
 ### dep_util
 
 distutils.dep_util
@@ -42367,6 +42737,10 @@ commands).
 - `sources`
 - `target`
 - `missing`
+
+---
+
+### .!21770!dist
 
 ---
 
@@ -42484,6 +42858,10 @@ This is useful to make 'path' the second argument to os.path.join().
 **Paramètres :**
 
 - `path`
+
+---
+
+### .!21797!log
 
 ---
 
@@ -43014,6 +43392,10 @@ Write the PKG-INFO format data to a file object.
 
 - `header`
 - `val`
+
+---
+
+### .!21841!util
 
 ---
 
@@ -45595,6 +45977,118 @@ constructor.  It may be either a string or StrictVersion.
 
 ---
 
+### .!21700!__init__
+
+---
+
+### .!21703!_collections
+
+---
+
+### .!21708!_functools
+
+---
+
+### .!21712!_macos_compat
+
+---
+
+### .!21718!_msvccompiler
+
+---
+
+### .!21721!archive_util
+
+---
+
+### .!21727!bcppcompiler
+
+---
+
+### .!21732!ccompiler
+
+---
+
+### .!21740!config
+
+---
+
+### .!21750!cygwinccompiler
+
+---
+
+### .!21755!debug
+
+---
+
+### .!21758!dep_util
+
+---
+
+### .!21765!dir_util
+
+---
+
+### .!21773!errors
+
+---
+
+### .!21777!extension
+
+---
+
+### .!21782!fancy_getopt
+
+---
+
+### .!21785!file_util
+
+---
+
+### .!21792!filelist
+
+---
+
+### .!21801!msvc9compiler
+
+---
+
+### .!21807!msvccompiler
+
+---
+
+### .!21813!py38compat
+
+---
+
+### .!21818!py39compat
+
+---
+
+### .!21823!spawn
+
+---
+
+### .!21828!sysconfig
+
+---
+
+### .!21834!text_file
+
+---
+
+### .!21836!unixccompiler
+
+---
+
+### .!21845!version
+
+---
+
+### .!21849!versionpredicate
+
+---
+
 ### _framework_compat
 
 Backward compatibility for homebrew builds on macOS.
@@ -47302,6 +47796,98 @@ index).
 - `command`
 - `pyversion`
 - `filename`
+
+---
+
+### .!21854!__init__
+
+---
+
+### .!21857!_framework_compat
+
+---
+
+### .!21863!bdist
+
+---
+
+### .!21866!bdist_dumb
+
+---
+
+### .!21870!bdist_rpm
+
+---
+
+### .!21873!build
+
+---
+
+### .!21879!build_clib
+
+---
+
+### .!21884!build_ext
+
+---
+
+### .!21888!build_py
+
+---
+
+### .!21893!build_scripts
+
+---
+
+### .!21897!check
+
+---
+
+### .!21903!clean
+
+---
+
+### .!21908!config
+
+---
+
+### .!21911!install
+
+---
+
+### .!21917!install_data
+
+---
+
+### .!21923!install_egg_info
+
+---
+
+### .!21925!install_headers
+
+---
+
+### .!21930!install_lib
+
+---
+
+### .!21935!install_scripts
+
+---
+
+### .!21938!py37compat
+
+---
+
+### .!21943!register
+
+---
+
+### .!21948!sdist
+
+---
+
+### .!21952!upload
 
 ---
 
@@ -49621,6 +50207,18 @@ to io.TextIOWrapper().
 
 ---
 
+### .!21974!zipp
+
+---
+
+### .!21965!ordered_set
+
+---
+
+### .!21969!typing_extensions
+
+---
+
 ### _adapters
 
 #### Classes
@@ -50137,6 +50735,38 @@ Does self appear in other?
 
 ---
 
+### .!21980!__init__
+
+---
+
+### .!21984!_adapters
+
+---
+
+### .!21990!_collections
+
+---
+
+### .!21994!_compat
+
+---
+
+### .!21999!_functools
+
+---
+
+### .!22004!_itertools
+
+---
+
+### .!22008!_meta
+
+---
+
+### .!22012!_text
+
+---
+
 ### _adapters
 
 #### Classes
@@ -50349,6 +50979,10 @@ Return the native reader if it supports files().
 **Paramètres :**
 
 - `mode`
+
+---
+
+### .!22049!abc
 
 ---
 
@@ -51058,6 +51692,38 @@ Obtain a File-like for a named resource.
 
 ---
 
+### .!22017!__init__
+
+---
+
+### .!22022!_adapters
+
+---
+
+### .!22029!_common
+
+---
+
+### .!22034!_compat
+
+---
+
+### .!22039!_itertools
+
+---
+
+### .!22044!_legacy
+
+---
+
+### .!22053!readers
+
+---
+
+### .!22058!simple
+
+---
+
 ### context
 
 #### Classes
@@ -51701,6 +52367,18 @@ ensure at least 1/max_rate seconds from last call
 ##### wrapper
 
 ##### wrapper
+
+---
+
+### .!22068!context
+
+---
+
+### .!22072!functools
+
+---
+
+### .!22080!__init__
 
 ---
 
@@ -54473,6 +55151,10 @@ are encountered.
 
 ---
 
+### .!22090!more
+
+---
+
 ### recipes
 
 Imported from the recipes section of the itertools documentation.
@@ -54990,7 +55672,19 @@ is immediately consumed and stored.
 
 ---
 
+### .!22085!__init__
+
+---
+
+### .!22096!recipes
+
+---
+
 ### __about__
+
+---
+
+### .!22144!tags
 
 ---
 
@@ -56332,6 +57026,46 @@ Takes a string like abc.1.twelve and turns it into ("abc", 1, "twelve").
 
 ---
 
+### .!22104!__about__
+
+---
+
+### .!22109!__init__
+
+---
+
+### .!22115!_manylinux
+
+---
+
+### .!22120!_musllinux
+
+---
+
+### .!22126!_structures
+
+---
+
+### .!22129!markers
+
+---
+
+### .!22135!requirements
+
+---
+
+### .!22139!specifiers
+
+---
+
+### .!22148!utils
+
+---
+
+### .!22153!version
+
+---
+
 ### actions
 
 #### Classes
@@ -56767,6 +57501,10 @@ Prints::
 - `s`
 - `l`
 - `t`
+
+---
+
+### .!22174!core
 
 ---
 
@@ -60436,6 +61174,10 @@ Extends ``ignore_whitespace`` defined in base class, and also invokes ``leave_wh
 
 ---
 
+### .!22202!util
+
+---
+
 ### exceptions
 
 #### Classes
@@ -62414,6 +63156,42 @@ Returns the line of text containing loc within a string, counting newlines as li
 
 ---
 
+### .!22157!__init__
+
+---
+
+### .!22162!actions
+
+---
+
+### .!22167!common
+
+---
+
+### .!22178!exceptions
+
+---
+
+### .!22183!helpers
+
+---
+
+### .!22186!results
+
+---
+
+### .!22193!testing
+
+---
+
+### .!22197!unicode
+
+---
+
+### .!22207!__init__
+
+---
+
 ### _parser
 
 #### Classes
@@ -62705,6 +63483,10 @@ instead of returning illegal types.
 
 ---
 
+### .!22224!_re
+
+---
+
 ### _re
 
 #### Fonctions
@@ -62747,6 +63529,18 @@ or datetime.
 
 ---
 
+### .!22213!__init__
+
+---
+
+### .!22218!_parser
+
+---
+
+### .!22229!_types
+
+---
+
 ### alias
 
 #### Classes
@@ -62783,6 +63577,10 @@ Quote an argument for later parsing by shlex.split()
 ##### finalize_options
 
 ##### run
+
+---
+
+### .!22347!test
 
 ---
 
@@ -66307,6 +67105,106 @@ Build up the MIME payload for the POST data
 
 ---
 
+### .!22232!__init__
+
+---
+
+### .!22240!alias
+
+---
+
+### .!22245!bdist_egg
+
+---
+
+### .!22249!bdist_rpm
+
+---
+
+### .!22254!build
+
+---
+
+### .!22259!build_clib
+
+---
+
+### .!22262!build_ext
+
+---
+
+### .!22268!build_py
+
+---
+
+### .!22273!develop
+
+---
+
+### .!22277!dist_info
+
+---
+
+### .!22285!easy_install
+
+---
+
+### .!22290!editable_wheel
+
+---
+
+### .!22292!egg_info
+
+---
+
+### .!22299!install
+
+---
+
+### .!22304!install_egg_info
+
+---
+
+### .!22309!install_lib
+
+---
+
+### .!22313!install_scripts
+
+---
+
+### .!22320!py36compat
+
+---
+
+### .!22324!register
+
+---
+
+### .!22330!rotate
+
+---
+
+### .!22333!saveopts
+
+---
+
+### .!22338!sdist
+
+---
+
+### .!22343!setopt
+
+---
+
+### .!22351!upload
+
+---
+
+### .!22356!upload_docs
+
+---
+
 ### _apply_pyprojecttoml
 
 Translation layer between pyproject config and setuptools distribution and
@@ -67684,6 +68582,26 @@ Parses `data_files` configuration file section.
 
 ---
 
+### .!22360!__init__
+
+---
+
+### .!22365!_apply_pyprojecttoml
+
+---
+
+### .!22371!expand
+
+---
+
+### .!22373!pyprojecttoml
+
+---
+
+### .!22379!setupcfg
+
+---
+
 ### error_reporting
 
 #### Classes
@@ -68151,6 +69069,34 @@ Expression that can be used to specify/lock versions (including ranges)
 **Paramètres :**
 
 - `value`
+
+---
+
+### .!22385!__init__
+
+---
+
+### .!22390!error_reporting
+
+---
+
+### .!22394!extra_validations
+
+---
+
+### .!22399!fastjsonschema_exceptions
+
+---
+
+### .!22404!fastjsonschema_validations
+
+---
+
+### .!22410!formats
+
+---
+
+### .!22413!__init__
 
 ---
 
@@ -68672,6 +69618,18 @@ Returns the result in a dict
 
 ---
 
+### .!22420!__init__
+
+---
+
+### .!22427!__main__
+
+---
+
+### .!22431!cpuinfo
+
+---
+
 ### __main__
 
 ---
@@ -68706,6 +69664,18 @@ an import statement.
 - `fullname`
 - `path`
 - `target`
+
+---
+
+### .!22436!__init__
+
+---
+
+### .!22444!__main__
+
+---
+
+### .!22448!__pip-runner__
 
 ---
 
@@ -69038,6 +70008,10 @@ or ephemeral cache.
 
 - `cache_dir`
 - `download_info`
+
+---
+
+### .!22481!main
 
 ---
 
@@ -70024,6 +70998,38 @@ Build wheels.
 
 ---
 
+### .!22455!__init__
+
+---
+
+### .!22461!build_env
+
+---
+
+### .!22465!cache
+
+---
+
+### .!22473!configuration
+
+---
+
+### .!22477!exceptions
+
+---
+
+### .!22486!pyproject
+
+---
+
+### .!22493!self_outdated_check
+
+---
+
+### .!22498!wheel_builder
+
+---
+
 ### autocompletion
 
 Logic that powers autocompletion installed by ``pip completion``.
@@ -70372,6 +71378,10 @@ pointed to in a dict by the algo name.
 **Paramètres :**
 
 - `options`
+
+---
+
+### .!22532!main
 
 ---
 
@@ -70973,6 +71983,54 @@ Create a package finder appropriate to this requirement command.
 
 ---
 
+### .!22504!__init__
+
+---
+
+### .!22510!autocompletion
+
+---
+
+### .!22515!base_command
+
+---
+
+### .!22517!cmdoptions
+
+---
+
+### .!22523!command_context
+
+---
+
+### .!22526!index_command
+
+---
+
+### .!22536!main_parser
+
+---
+
+### .!22542!parser
+
+---
+
+### .!22546!progress_bars
+
+---
+
+### .!22551!req_command
+
+---
+
+### .!22556!spinners
+
+---
+
+### .!22560!status_codes
+
+---
+
 ### cache
 
 #### Classes
@@ -71382,6 +72440,10 @@ an easy way to specify a whole environment to be downloaded.
 
 ---
 
+### .!22608!hash
+
+---
+
 ### freeze
 
 #### Classes
@@ -71411,6 +72473,10 @@ packages are listed in a case-insensitive sorted order.
 
 - `options`
 - `args`
+
+---
+
+### .!22614!help
 
 ---
 
@@ -71452,6 +72518,10 @@ Return the hash digest of a file.
 
 ---
 
+### .!22630!list
+
+---
+
 ### help
 
 #### Classes
@@ -71472,6 +72542,10 @@ Show help for commands
 
 - `options`
 - `args`
+
+---
+
+### .!22635!lock
 
 ---
 
@@ -71518,6 +72592,10 @@ Create a package finder appropriate to the index command.
 
 - `options`
 - `args`
+
+---
+
+### .!22643!show
 
 ---
 
@@ -72026,6 +73104,62 @@ https://pip.pypa.io/en/stable/reference/build-system/
 
 ---
 
+### .!22565!__init__
+
+---
+
+### .!22572!cache
+
+---
+
+### .!22577!check
+
+---
+
+### .!22583!completion
+
+---
+
+### .!22588!configuration
+
+---
+
+### .!22593!debug
+
+---
+
+### .!22598!download
+
+---
+
+### .!22602!freeze
+
+---
+
+### .!22617!index
+
+---
+
+### .!22623!inspect
+
+---
+
+### .!22626!install
+
+---
+
+### .!22639!search
+
+---
+
+### .!22648!uninstall
+
+---
+
+### .!22651!wheel
+
+---
+
 ### base
 
 #### Classes
@@ -72113,6 +73247,10 @@ been computed.
 - `finder`
 - `build_isolation`
 - `check_build_deps`
+
+---
+
+### .!22663!base
 
 ---
 
@@ -72219,6 +73357,22 @@ requirement.
 - `finder`
 - `build_isolation`
 - `check_build_deps`
+
+---
+
+### .!22658!__init__
+
+---
+
+### .!22668!installed
+
+---
+
+### .!22673!sdist
+
+---
+
+### .!22679!wheel
 
 ---
 
@@ -73162,6 +74316,22 @@ and project_name_to_urls at the same time
 
 ---
 
+### .!22687!__init__
+
+---
+
+### .!22691!collector
+
+---
+
+### .!22695!package_finder
+
+---
+
+### .!22700!sources
+
+---
+
 ### _distutils
 
 Locations where we look for configs, install stuff, etc
@@ -73294,6 +74464,10 @@ Get the "scheme" corresponding to the input parameters.
 
 ---
 
+### .!22719!base
+
+---
+
 ### base
 
 #### Fonctions
@@ -73321,6 +74495,18 @@ This is borrowed from Python's standard library's distutils module.
 ##### get_src_prefix
 
 ##### is_osx_framework
+
+---
+
+### .!22706!__init__
+
+---
+
+### .!22710!_distutils
+
+---
+
+### .!22716!_sysconfig
 
 ---
 
@@ -73870,6 +75056,10 @@ site directory.
 
 ---
 
+### .!22733!base
+
+---
+
 ### pkg_resources
 
 #### Classes
@@ -74085,6 +75275,18 @@ match the behavior of ``pkg_resources.get_distribution()``.
 **Paramètres :**
 
 - `name`
+
+---
+
+### .!22724!__init__
+
+---
+
+### .!22730!_json
+
+---
+
+### .!22741!pkg_resources
 
 ---
 
@@ -74424,6 +75626,22 @@ location are returned.
 
 ---
 
+### .!22747!__init__
+
+---
+
+### .!22752!_compat
+
+---
+
+### .!22757!_dists
+
+---
+
+### .!22760!_envs
+
+---
+
 ### candidate
 
 #### Classes
@@ -74603,6 +75821,10 @@ in the case of a git URL.
 ##### to_json
 
 ##### is_local_editable
+
+---
+
+### .!22795!link
 
 ---
 
@@ -75350,6 +76572,54 @@ Return whether the wheel is compatible with one of the given tags.
 
 ---
 
+### .!22766!__init__
+
+---
+
+### .!22770!candidate
+
+---
+
+### .!22775!direct_url
+
+---
+
+### .!22780!format_control
+
+---
+
+### .!22785!index
+
+---
+
+### .!22788!installation_report
+
+---
+
+### .!22800!pylock
+
+---
+
+### .!22806!scheme
+
+---
+
+### .!22810!search_scope
+
+---
+
+### .!22814!selection_prefs
+
+---
+
+### .!22818!target_python
+
+---
+
+### .!22823!wheel
+
+---
+
 ### auth
 
 Network Authentication Helpers
@@ -75726,6 +76996,10 @@ requests as if caching wasn't enabled.
 
 - `key`
 - `body`
+
+---
+
+### .!22835!auth
 
 ---
 
@@ -76289,6 +77563,34 @@ object.
 
 ---
 
+### .!22827!__init__
+
+---
+
+### .!22839!cache
+
+---
+
+### .!22844!download
+
+---
+
+### .!22851!lazy_wheel
+
+---
+
+### .!22855!session
+
+---
+
+### .!22860!utils
+
+---
+
+### .!22865!xmlrpc
+
+---
+
 ### check
 
 Validation of dependencies of packages
@@ -76635,6 +77937,18 @@ Prepare an already-installed requirement.
 
 ---
 
+### .!22879!check
+
+---
+
+### .!22884!freeze
+
+---
+
+### .!22891!prepare
+
+---
+
 ### build_tracker
 
 #### Classes
@@ -76873,6 +78187,34 @@ Returns path to wheel if successfully built. Otherwise, returns None.
 - `global_options`
 - `build_options`
 - `tempd`
+
+---
+
+### .!22902!build_tracker
+
+---
+
+### .!22908!metadata
+
+---
+
+### .!22911!metadata_editable
+
+---
+
+### .!22917!metadata_legacy
+
+---
+
+### .!22922!wheel
+
+---
+
+### .!22927!wheel_editable
+
+---
+
+### .!22931!wheel_legacy
 
 ---
 
@@ -77201,6 +78543,18 @@ Return the path the pyc file would have been written to.
 **Paramètres :**
 
 - `record_path`
+
+---
+
+### .!22938!__init__
+
+---
+
+### .!22943!editable_legacy
+
+---
+
+### .!22947!wheel
 
 ---
 
@@ -78315,6 +79669,34 @@ Remove temporary save dir: rollback will no longer be possible.
 
 ---
 
+### .!22952!__init__
+
+---
+
+### .!22956!constructors
+
+---
+
+### .!22961!req_dependency_group
+
+---
+
+### .!22964!req_file
+
+---
+
+### .!22970!req_install
+
+---
+
+### .!22973!req_set
+
+---
+
+### .!22979!req_uninstall
+
+---
+
 ### base
 
 #### Classes
@@ -78340,6 +79722,10 @@ Remove temporary save dir: rollback will no longer be possible.
 **Paramètres :**
 
 - `req_set`
+
+---
+
+### .!22990!base
 
 ---
 
@@ -78559,6 +79945,10 @@ and make no other guarantees.
 **Paramètres :**
 
 - `req`
+
+---
+
+### .!23002!resolver
 
 ---
 
@@ -79310,6 +80700,10 @@ Get the candidate for the currently-installed version.
 
 ---
 
+### .!23011!base
+
+---
+
 ### found_candidates
 
 Utilities to lazily create and visit candidates found.
@@ -79976,6 +81370,34 @@ would be broken, other than it *would* be broken.
 
 ---
 
+### .!23019!candidates
+
+---
+
+### .!23024!factory
+
+---
+
+### .!23031!found_candidates
+
+---
+
+### .!23036!provider
+
+---
+
+### .!23040!reporter
+
+---
+
+### .!23045!requirements
+
+---
+
+### .!23049!resolver
+
+---
+
 ### _jaraco_text
 
 Functions brought over from jaraco.text.
@@ -80429,6 +81851,10 @@ This method will just return the first one found.
 
 ---
 
+### .!23064!_log
+
+---
+
 ### entrypoints
 
 #### Fonctions
@@ -80536,6 +81962,10 @@ with filenames which match the UNIX-style shell glob pattern.
 
 ---
 
+### .!23130!misc
+
+---
+
 ### filetypes
 
 Filetype information.
@@ -80549,6 +81979,10 @@ Return True if `name` is a considered as an archive file.
 **Paramètres :**
 
 - `name`
+
+---
+
+### .!23167!urls
 
 ---
 
@@ -82014,6 +83448,94 @@ name: name of wheel or package to raise exception about
 
 ---
 
+### .!23059!_jaraco_text
+
+---
+
+### .!23069!appdirs
+
+---
+
+### .!23074!compat
+
+---
+
+### .!23078!compatibility_tags
+
+---
+
+### .!23083!datetime
+
+---
+
+### .!23087!deprecation
+
+---
+
+### .!23093!direct_url_helpers
+
+---
+
+### .!23098!egg_link
+
+---
+
+### .!23103!entrypoints
+
+---
+
+### .!23108!filesystem
+
+---
+
+### .!23112!filetypes
+
+---
+
+### .!23117!glibc
+
+---
+
+### .!23121!hashes
+
+---
+
+### .!23124!logging
+
+---
+
+### .!23136!packaging
+
+---
+
+### .!23141!retry
+
+---
+
+### .!23146!setuptools_build
+
+---
+
+### .!23150!subprocess
+
+---
+
+### .!23155!temp_dir
+
+---
+
+### .!23161!unpacking
+
+---
+
+### .!23170!virtualenv
+
+---
+
+### .!23175!wheel
+
+---
+
 ### bazaar
 
 #### Classes
@@ -82342,6 +83864,10 @@ In either https or ssh form, requirements must be prefixed with git+.
 **Paramètres :**
 
 - `repo_url`
+
+---
+
+### .!23190!git
 
 ---
 
@@ -83122,6 +84648,26 @@ example, the Git override checks that Git is actually available.
 
 - `cls`
 - `location`
+
+---
+
+### .!23181!__init__
+
+---
+
+### .!23185!bazaar
+
+---
+
+### .!23195!mercurial
+
+---
+
+### .!23198!subversion
+
+---
+
+### .!23203!versioncontrol
 
 ---
 
@@ -85596,6 +87142,14 @@ Corresponds to is_unionable() in unionobject.c in CPython.
 
 ---
 
+### .!23210!__init__
+
+---
+
+### .!23213!typing_extensions
+
+---
+
 ### _cmd
 
 #### Fonctions
@@ -85672,6 +87226,10 @@ cached response
 **Paramètres :**
 
 - `weak_self`
+
+---
+
+### .!23222!_cmd
 
 ---
 
@@ -86183,6 +87741,38 @@ HTTPResponse object.
 
 ---
 
+### .!23220!__init__
+
+---
+
+### .!23227!adapter
+
+---
+
+### .!23233!cache
+
+---
+
+### .!23237!controller
+
+---
+
+### .!23243!filewrapper
+
+---
+
+### .!23247!heuristics
+
+---
+
+### .!23252!serialize
+
+---
+
+### .!23256!wrapper
+
+---
+
 ### file_cache
 
 #### Classes
@@ -86367,7 +87957,23 @@ Redis uses connection pooling, no need to close the connection.
 
 ---
 
+### .!23263!__init__
+
+---
+
+### .!23269!file_cache
+
+---
+
+### .!23274!redis_cache
+
+---
+
 ### __main__
+
+---
+
+### .!23289!core
 
 ---
 
@@ -86402,6 +88008,14 @@ This module returns the installation location of cacert.pem or its contents.
 ##### where
 
 ##### contents
+
+---
+
+### .!23279!__init__
+
+---
+
+### .!23283!__main__
 
 ---
 
@@ -86564,6 +88178,30 @@ This is a helper for cached resolution to strings.
 ---
 
 ### _toml_compat
+
+---
+
+### .!23294!__init__
+
+---
+
+### .!23299!__main__
+
+---
+
+### .!23304!_implementation
+
+---
+
+### .!23309!_lint_dependency_groups
+
+---
+
+### .!23315!_pip_wrapper
+
+---
+
+### .!23319!_toml_compat
 
 ---
 
@@ -87978,6 +89616,10 @@ Create a list of dependencies from a requires.txt file.
 **Paramètres :**
 
 - `path`
+
+---
+
+### .!23370!util
 
 ---
 
@@ -91858,6 +93500,54 @@ This method returns the same value the modifier returns.
 
 ---
 
+### .!23324!__init__
+
+---
+
+### .!23328!compat
+
+---
+
+### .!23333!database
+
+---
+
+### .!23336!index
+
+---
+
+### .!23340!locators
+
+---
+
+### .!23345!manifest
+
+---
+
+### .!23349!markers
+
+---
+
+### .!23355!metadata
+
+---
+
+### .!23360!resources
+
+---
+
+### .!23364!scripts
+
+---
+
+### .!23375!version
+
+---
+
+### .!23381!wheel
+
+---
+
 ### __main__
 
 ---
@@ -92811,6 +94501,18 @@ Returns:
 
 ---
 
+### .!23385!__init__
+
+---
+
+### .!23390!__main__
+
+---
+
+### .!23395!distro
+
+---
+
 ### codec
 
 #### Classes
@@ -92899,6 +94601,10 @@ Returns:
 **Paramètres :**
 
 - `s`
+
+---
+
+### .!23414!core
 
 ---
 
@@ -93274,6 +94980,34 @@ Determine if `int_` falls into one of the ranges in `ranges`.
 
 ---
 
+### .!23402!__init__
+
+---
+
+### .!23407!codec
+
+---
+
+### .!23413!compat
+
+---
+
+### .!23421!idnadata
+
+---
+
+### .!23426!intranges
+
+---
+
+### .!23430!package_data
+
+---
+
+### .!23434!uts46data
+
+---
+
 ### exceptions
 
 #### Classes
@@ -93488,6 +95222,10 @@ Create a Timestamp from datetime with tzinfo.
 **Paramètres :**
 
 - `dt`
+
+---
+
+### .!23450!ext
 
 ---
 
@@ -93892,6 +95630,18 @@ Return view of internal buffer.
 
 ---
 
+### .!23439!__init__
+
+---
+
+### .!23445!exceptions
+
+---
+
+### .!23454!fallback
+
+---
+
 ### _elffile
 
 ELF file parser.
@@ -94024,6 +95774,10 @@ Generate manylinux tags compatible to the current platform.
 **Paramètres :**
 
 - `archs`
+
+---
+
+### .!23512!tags
 
 ---
 
@@ -96245,6 +97999,58 @@ Release segment without any trailing zeros.
 
 ---
 
+### .!23459!__init__
+
+---
+
+### .!23464!_elffile
+
+---
+
+### .!23468!_manylinux
+
+---
+
+### .!23473!_musllinux
+
+---
+
+### .!23477!_parser
+
+---
+
+### .!23482!_structures
+
+---
+
+### .!23487!_tokenizer
+
+---
+
+### .!23493!markers
+
+---
+
+### .!23498!metadata
+
+---
+
+### .!23502!requirements
+
+---
+
+### .!23508!specifiers
+
+---
+
+### .!23516!utils
+
+---
+
+### .!23522!version
+
+---
+
 ### _spdx
 
 #### Classes
@@ -96252,6 +98058,18 @@ Release segment without any trailing zeros.
 ##### SPDXLicense
 
 ##### SPDXException
+
+---
+
+### .!23527!__init__
+
+---
+
+### .!23533!_spdx
+
+---
+
+### .!23537!__init__
 
 ---
 
@@ -96650,6 +98468,10 @@ Create a new platform directory.
 
 ---
 
+### .!23559!api
+
+---
+
 ### macos
 
 macOS.
@@ -96770,6 +98592,10 @@ Makes use of the `appname <platformdirs.api.PlatformDirsABC.appname>`,
 ##### site_runtime_dir
 
 :return: runtime directory shared by users, same as `user_runtime_dir`
+
+---
+
+### .!23570!unix
 
 ---
 
@@ -97102,6 +98928,30 @@ Get folder with ctypes.
 
 ---
 
+### .!23542!__init__
+
+---
+
+### .!23549!__main__
+
+---
+
+### .!23555!android
+
+---
+
+### .!23564!macos
+
+---
+
+### .!23573!version
+
+---
+
+### .!23577!windows
+
+---
+
 ### __main__
 
 pygments.__main__
@@ -97148,6 +98998,10 @@ Format ``text`` with a color and/or some attributes::
 
 - `attr`
 - `text`
+
+---
+
+### .!23653!util
 
 ---
 
@@ -98667,7 +100521,75 @@ Return our best guess of encoding for the given *term*.
 
 ---
 
+### .!23582!__init__
+
+---
+
+### .!23589!__main__
+
+---
+
+### .!23595!console
+
+---
+
+### .!23601!filter
+
+---
+
+### .!23606!formatter
+
+---
+
+### .!23611!lexer
+
+---
+
+### .!23615!modeline
+
+---
+
+### .!23620!plugin
+
+---
+
+### .!23625!regexopt
+
+---
+
+### .!23630!scanner
+
+---
+
+### .!23633!sphinxext
+
+---
+
+### .!23637!style
+
+---
+
+### .!23642!token
+
+---
+
+### .!23648!unistring
+
+---
+
+### .!23657!__init__
+
+---
+
 ### _mapping
+
+---
+
+### .!23663!__init__
+
+---
+
+### .!23668!_mapping
 
 ---
 
@@ -98835,7 +100757,27 @@ A Python lexer recognizing Numerical Python builtins.
 
 ---
 
+### .!23672!__init__
+
+---
+
+### .!23678!_mapping
+
+---
+
+### .!23681!python
+
+---
+
 ### _mapping
+
+---
+
+### .!23686!__init__
+
+---
+
+### .!23693!_mapping
 
 ---
 
@@ -99175,6 +101117,14 @@ Build an sdist from this project.
 
 ---
 
+### .!23697!__init__
+
+---
+
+### .!23703!_impl
+
+---
+
 ### _in_process
 
 This is invoked in a subprocess to call the build backend hooks.
@@ -99424,6 +101374,14 @@ Invoke the mandatory build_sdist hook.
 **Paramètres :**
 
 - `context`
+
+---
+
+### .!23706!__init__
+
+---
+
+### .!23712!_in_process
 
 ---
 
@@ -100203,6 +102161,10 @@ Takes the given response and tries digest-auth, if needed.
 
 ---
 
+### .!23738!api
+
+---
+
 ### certs
 
 requests.certs
@@ -100214,6 +102176,10 @@ only one — the one from the certifi package.
 If you are packaging Requests, e.g., for a Linux distribution or a managed
 environment, you can change the definition of where() to return a separately
 packaged CA bundle.
+
+---
+
+### .!23742!auth
 
 ---
 
@@ -100231,6 +102197,10 @@ compatibility until the next major version.
 ##### _resolve_char_detection
 
 Find supported character detection libraries.
+
+---
+
+### .!23765!help
 
 ---
 
@@ -102456,6 +104426,66 @@ or the registry.
 
 ---
 
+### .!23719!__init__
+
+---
+
+### .!23724!__version__
+
+---
+
+### .!23729!_internal_utils
+
+---
+
+### .!23735!adapters
+
+---
+
+### .!23747!certs
+
+---
+
+### .!23751!compat
+
+---
+
+### .!23756!cookies
+
+---
+
+### .!23761!exceptions
+
+---
+
+### .!23770!hooks
+
+---
+
+### .!23774!models
+
+---
+
+### .!23779!packages
+
+---
+
+### .!23784!sessions
+
+---
+
+### .!23790!status_codes
+
+---
+
+### .!23794!structures
+
+---
+
+### .!23799!utils
+
+---
+
 ### providers
 
 #### Classes
@@ -102970,6 +105000,22 @@ Nothing happens if the vertices are already connected.
 
 ---
 
+### .!23806!__init__
+
+---
+
+### .!23812!providers
+
+---
+
+### .!23816!reporters
+
+---
+
+### .!23822!structs
+
+---
+
 ### abstract
 
 #### Classes
@@ -103340,6 +105386,26 @@ The following exceptions may be raised if a resolution cannot be found:
 
 - `requirements`
 - `max_rounds`
+
+---
+
+### .!23827!__init__
+
+---
+
+### .!23833!abstract
+
+---
+
+### .!23837!criterion
+
+---
+
+### .!23842!exceptions
+
+---
+
+### .!23849!resolution
 
 ---
 
@@ -103870,6 +105936,10 @@ Spinners are from:
 
 ---
 
+### .!23959!abc
+
+---
+
 ### _stack
 
 #### Classes
@@ -103899,6 +105969,10 @@ Push an item on to the stack (append in stack nomenclature).
 
 ---
 
+### .!23967!ansi
+
+---
+
 ### _timer
 
 Timer context manager, only used in debug.
@@ -103912,6 +105986,10 @@ print the elapsed time. (only used in debugging)
 **Paramètres :**
 
 - `subject`
+
+---
+
+### .!23972!bar
 
 ---
 
@@ -104297,6 +106375,10 @@ Returns:
 
 ---
 
+### .!23977!box
+
+---
+
 ### _windows_renderer
 
 #### Fonctions
@@ -104352,6 +106434,10 @@ Returns:
 
 ---
 
+### .!24050!json
+
+---
+
 ### abc
 
 #### Classes
@@ -104382,6 +106468,10 @@ Check if this class supports the rich render protocol.
 
 - `cls`
 - `other`
+
+---
+
+### .!24065!live
 
 ---
 
@@ -104529,6 +106619,10 @@ Align a renderable to the right.
 
 ---
 
+### .!24141!repr
+
+---
+
 ### ansi
 
 #### Classes
@@ -104601,6 +106695,10 @@ Returns:
 
 ---
 
+### .!24145!rule
+
+---
+
 ### bar
 
 #### Classes
@@ -104649,6 +106747,10 @@ Args:
 
 - `console`
 - `options`
+
+---
+
+### .!24200!text
 
 ---
 
@@ -104765,6 +106867,10 @@ Returns:
 **Paramètres :**
 
 - `widths`
+
+---
+
+### .!24220!tree
 
 ---
 
@@ -113612,6 +115718,274 @@ Make a Segment for a level of the guide lines.
 
 ---
 
+### .!23853!__init__
+
+---
+
+### .!23861!__main__
+
+---
+
+### .!23864!_cell_widths
+
+---
+
+### .!23867!_emoji_codes
+
+---
+
+### .!23872!_emoji_replace
+
+---
+
+### .!23879!_export_format
+
+---
+
+### .!23883!_extension
+
+---
+
+### .!23888!_fileno
+
+---
+
+### .!23893!_inspect
+
+---
+
+### .!23897!_log_render
+
+---
+
+### .!23902!_loop
+
+---
+
+### .!23906!_null_file
+
+---
+
+### .!23911!_palettes
+
+---
+
+### .!23914!_pick
+
+---
+
+### .!23920!_ratio
+
+---
+
+### .!23924!_spinners
+
+---
+
+### .!23929!_stack
+
+---
+
+### .!23934!_timer
+
+---
+
+### .!23939!_win32_console
+
+---
+
+### .!23944!_windows
+
+---
+
+### .!23947!_windows_renderer
+
+---
+
+### .!23952!_wrap
+
+---
+
+### .!23963!align
+
+---
+
+### .!23982!cells
+
+---
+
+### .!23985!color
+
+---
+
+### .!23990!color_triplet
+
+---
+
+### .!23994!columns
+
+---
+
+### .!23999!console
+
+---
+
+### .!24003!constrain
+
+---
+
+### .!24008!containers
+
+---
+
+### .!24012!control
+
+---
+
+### .!24019!default_styles
+
+---
+
+### .!24023!diagnose
+
+---
+
+### .!24028!emoji
+
+---
+
+### .!24033!errors
+
+---
+
+### .!24039!file_proxy
+
+---
+
+### .!24042!filesize
+
+---
+
+### .!24046!highlighter
+
+---
+
+### .!24055!jupyter
+
+---
+
+### .!24060!layout
+
+---
+
+### .!24071!live_render
+
+---
+
+### .!24075!logging
+
+---
+
+### .!24080!markup
+
+---
+
+### .!24085!measure
+
+---
+
+### .!24090!padding
+
+---
+
+### .!24094!pager
+
+---
+
+### .!24101!palette
+
+---
+
+### .!24105!panel
+
+---
+
+### .!24110!pretty
+
+---
+
+### .!24117!progress
+
+---
+
+### .!24121!progress_bar
+
+---
+
+### .!24127!prompt
+
+---
+
+### .!24132!protocol
+
+---
+
+### .!24136!region
+
+---
+
+### .!24151!scope
+
+---
+
+### .!24155!screen
+
+---
+
+### .!24162!segment
+
+---
+
+### .!24166!spinner
+
+---
+
+### .!24171!status
+
+---
+
+### .!24175!style
+
+---
+
+### .!24180!styled
+
+---
+
+### .!24184!syntax
+
+---
+
+### .!24190!table
+
+---
+
+### .!24194!terminal_theme
+
+---
+
+### .!24206!theme
+
+---
+
+### .!24210!themes
+
+---
+
+### .!24215!traceback
+
+---
+
 ### _parser
 
 #### Classes
@@ -113951,7 +116325,23 @@ or datetime.
 
 ---
 
+### .!24236!_re
+
+---
+
 ### _types
+
+---
+
+### .!24224!__init__
+
+---
+
+### .!24231!_parser
+
+---
+
+### .!24240!_types
 
 ---
 
@@ -114043,6 +116433,14 @@ choice for a given table.
 
 - `allow_multiline`
 - `indent`
+
+---
+
+### .!24246!__init__
+
+---
+
+### .!24251!_writer
 
 ---
 
@@ -114413,6 +116811,10 @@ Verify using 'SecTrustEvaluateWithError' API for macOS 10.14+.
 
 ---
 
+### .!24263!_api
+
+---
+
 ### _openssl
 
 #### Fonctions
@@ -114531,6 +116933,26 @@ Verify the cert_chain from the server using Windows APIs.
 **Paramètres :**
 
 - `ctx`
+
+---
+
+### .!24257!__init__
+
+---
+
+### .!24269!_macos
+
+---
+
+### .!24275!_openssl
+
+---
+
+### .!24279!_ssl_constants
+
+---
+
+### .!24285!_windows
 
 ---
 
@@ -116891,6 +119313,50 @@ will return the final redirect location.
 
 ---
 
+### .!24290!__init__
+
+---
+
+### .!24295!_collections
+
+---
+
+### .!24300!_version
+
+---
+
+### .!24304!connection
+
+---
+
+### .!24311!connectionpool
+
+---
+
+### .!24315!exceptions
+
+---
+
+### .!24320!fields
+
+---
+
+### .!24325!filepost
+
+---
+
+### .!24331!poolmanager
+
+---
+
+### .!24334!request
+
+---
+
+### .!24339!response
+
+---
+
 ### _appengine_environ
 
 This module provides means to detect the App Engine environment.
@@ -117812,6 +120278,30 @@ Establish a new connection via the SOCKS proxy.
 
 ---
 
+### .!24350!_appengine_environ
+
+---
+
+### .!24354!appengine
+
+---
+
+### .!24360!ntlmpool
+
+---
+
+### .!24365!pyopenssl
+
+---
+
+### .!24368!securetransport
+
+---
+
+### .!24373!socks
+
+---
+
 ### bindings
 
 This module uses ctypes to bind a whole bunch of functions and constants from
@@ -118004,6 +120494,14 @@ Builds a TLS alert record for an unknown CA.
 **Paramètres :**
 
 - `version`
+
+---
+
+### .!24387!bindings
+
+---
+
+### .!24391!low_level
 
 ---
 
@@ -118581,6 +121079,10 @@ The new-style print function for Python 2.4 and 2.5.
 
 ---
 
+### .!24402!six
+
+---
+
 ### makefile
 
 backports.makefile
@@ -118696,6 +121198,14 @@ Whether finalizer should be called at exit
 **Paramètres :**
 
 - `cls`
+
+---
+
+### .!24413!makefile
+
+---
+
+### .!24418!weakref_finalize
 
 ---
 
@@ -118909,6 +121419,10 @@ Primarily used for request redirects and retries.
 
 ---
 
+### .!24457!ssl_
+
+---
+
 ### response
 
 #### Fonctions
@@ -118952,6 +121466,10 @@ Handles the quirks of AppEngine.
 **Paramètres :**
 
 - `response`
+
+---
+
+### .!24475!url
 
 ---
 
@@ -119315,6 +121833,10 @@ Return a new Retry object with incremented retry counters.
 **Paramètres :**
 
 - `item`
+
+---
+
+### .!24480!wait
 
 ---
 
@@ -120212,9 +122734,53 @@ Returns True if the socket is readable, or False if the timeout expired.
 
 ---
 
+### .!24424!__init__
+
+---
+
+### .!24428!connection
+
+---
+
+### .!24436!proxy
+
+---
+
+### .!24439!queue
+
+---
+
+### .!24443!request
+
+---
+
+### .!24447!response
+
+---
+
+### .!24453!retry
+
+---
+
+### .!24463!ssl_match_hostname
+
+---
+
+### .!24466!ssltransport
+
+---
+
+### .!24470!timeout
+
+---
+
 ### _meta
 
 This module contains the project meta-data.
+
+---
+
+### .!24508!util
 
 ---
 
@@ -121255,6 +123821,26 @@ Returns that stat result (:class:`os.stat_result`).
 
 ---
 
+### .!24484!__init__
+
+---
+
+### .!24490!_meta
+
+---
+
+### .!24495!gitignore
+
+---
+
+### .!24500!pathspec
+
+---
+
+### .!24504!pattern
+
+---
+
 ### gitwildmatch
 
 This module implements Git's wildmatch pattern matching which itself is derived
@@ -121349,6 +123935,14 @@ Warn about deprecation.
 **Paramètres :**
 
 - `cls`
+
+---
+
+### .!24512!__init__
+
+---
+
+### .!24517!gitwildmatch
 
 ---
 
@@ -121491,6 +124085,10 @@ Set populated on first use.
 ##### _lazy
 
 ##### _lazy
+
+---
+
+### .!24534!lazy
 
 ---
 
@@ -122068,6 +124666,26 @@ Ambiguous
 ##### __repr__
 
 ##### __reduce__
+
+---
+
+### .!24524!__init__
+
+---
+
+### .!24529!exceptions
+
+---
+
+### .!24537!reference
+
+---
+
+### .!24540!tzfile
+
+---
+
+### .!24545!tzinfo
 
 ---
 
@@ -122836,6 +125454,10 @@ SDL Version class.
 ##### __repr__
 
 ##### __str__
+
+---
+
+### .!24588!midi
 
 ---
 
@@ -125687,6 +128309,78 @@ the local namespace for your module
 
 ---
 
+### .!24552!surfarray
+
+---
+
+### .!24557!sysfont
+
+---
+
+### .!24561!_camera_vidcapture
+
+---
+
+### .!24566!sndarray
+
+---
+
+### .!24570!version
+
+---
+
+### .!24574!draw_py
+
+---
+
+### .!24578!colordict
+
+---
+
+### .!24585!ftfont
+
+---
+
+### .!24593!cursors
+
+---
+
+### .!24597!__init__
+
+---
+
+### .!24603!sprite
+
+---
+
+### .!24606!macosx
+
+---
+
+### .!24611!camera
+
+---
+
+### .!24614!freetype
+
+---
+
+### .!24618!pkgdata
+
+---
+
+### .!24624!fastevent
+
+---
+
+### .!24627!_camera_opencv
+
+---
+
+### .!24632!locals
+
+---
+
 ### hook-pygame
 
 binaries hook for pygame seems to be required for pygame 2.0 Windows.
@@ -125702,6 +128396,14 @@ correctly with pyinstaller
 **Paramètres :**
 
 - `file_path`
+
+---
+
+### .!24637!__init__
+
+---
+
+### .!24642!hook-pygame
 
 ---
 
@@ -137191,6 +139893,230 @@ Tests straight alpha case. Source is high alpha, destination is low alpha
 
 ---
 
+### .!24648!base_test
+
+---
+
+### .!24653!font_test
+
+---
+
+### .!24657!mixer_test
+
+---
+
+### .!24663!rwobject_test
+
+---
+
+### .!24667!pixelcopy_test
+
+---
+
+### .!24672!video_test
+
+---
+
+### .!24676!scrap_test
+
+---
+
+### .!24680!imageext_tags
+
+---
+
+### .!24686!pixelarray_test
+
+---
+
+### .!24693!draw_test
+
+---
+
+### .!24698!transform_test
+
+---
+
+### .!24703!blit_test
+
+---
+
+### .!24707!bufferproxy_test
+
+---
+
+### .!24714!surfarray_test
+
+---
+
+### .!24717!mouse_test
+
+---
+
+### .!24722!surfarray_tags
+
+---
+
+### .!24726!controller_test
+
+---
+
+### .!24730!event_test
+
+---
+
+### .!24735!imageext_test
+
+---
+
+### .!24739!sprite_test
+
+---
+
+### .!24745!touch_test
+
+---
+
+### .!24748!gfxdraw_test
+
+---
+
+### .!24755!rect_test
+
+---
+
+### .!24761!scrap_tags
+
+---
+
+### .!24766!__init__
+
+---
+
+### .!24770!color_test
+
+---
+
+### .!24776!camera_test
+
+---
+
+### .!24781!surflock_test
+
+---
+
+### .!24786!key_test
+
+---
+
+### .!24790!sysfont_test
+
+---
+
+### .!24796!mixer_tags
+
+---
+
+### .!24799!constants_test
+
+---
+
+### .!24805!mixer_music_tags
+
+---
+
+### .!24809!sndarray_test
+
+---
+
+### .!24814!image_test
+
+---
+
+### .!24818!version_test
+
+---
+
+### .!24823!freetype_test
+
+---
+
+### .!24827!joystick_test
+
+---
+
+### .!24834!docs_test
+
+---
+
+### .!24837!ftfont_tags
+
+---
+
+### .!24846!image__save_gl_surface_test
+
+---
+
+### .!24849!cursors_test
+
+---
+
+### .!24852!display_test
+
+---
+
+### .!24856!ftfont_test
+
+---
+
+### .!24860!mask_test
+
+---
+
+### .!24865!midi_test
+
+---
+
+### .!24870!freetype_tags
+
+---
+
+### .!24875!math_test
+
+---
+
+### .!24878!time_test
+
+---
+
+### .!24885!image_tags
+
+---
+
+### .!24887!threads_test
+
+---
+
+### .!24893!locals_test
+
+---
+
+### .!24896!__main__
+
+---
+
+### .!24900!mixer_music_test
+
+---
+
+### .!24905!sndarray_tags
+
+---
+
+### .!24911!surface_test
+
+---
+
 ### run_tests
 
 #### Fonctions
@@ -137305,6 +140231,10 @@ Return the 32 bit unsigned integer big-endian representation of i
 **Paramètres :**
 
 - `i`
+
+---
+
+### .!24933!png
 
 ---
 
@@ -139594,6 +142524,38 @@ kill function for Win32
 
 ---
 
+### .!24916!run_tests
+
+---
+
+### .!24920!endian
+
+---
+
+### .!24924!test_machinery
+
+---
+
+### .!24929!__init__
+
+---
+
+### .!24939!test_runner
+
+---
+
+### .!24945!arrinter
+
+---
+
+### .!24950!buftools
+
+---
+
+### .!24954!async_sub
+
+---
+
 ### run_tests__test
 
 #### Fonctions
@@ -139635,96 +142597,11 @@ normalize differences, such as timing between output
 
 ---
 
-### fake_3_test
-
-#### Classes
-
-##### KeyModuleTest
-
-**Méthodes :**
-
-- `test_get_focused()`
-- `test_get_mods()`
-- `test_get_pressed()`
-- `test_name()`
-- `test_set_mods()`
-- `test_set_repeat()`
-
-#### Fonctions
-
-##### test_get_focused
-
-##### test_get_mods
-
-##### test_get_pressed
-
-##### test_name
-
-##### test_set_mods
-
-##### test_set_repeat
+### .!24962!run_tests__test
 
 ---
 
-### fake_2_test
-
-#### Classes
-
-##### KeyModuleTest
-
-**Méthodes :**
-
-- `test_get_focused()`
-- `test_get_mods()`
-- `test_get_pressed()`
-- `test_name()`
-- `test_set_mods()`
-- `test_set_repeat()`
-
-#### Fonctions
-
-##### test_get_focused
-
-##### test_get_mods
-
-##### test_get_pressed
-
-##### test_name
-
-##### test_set_mods
-
-##### test_set_repeat
-
----
-
-### fake_4_test
-
-#### Classes
-
-##### KeyModuleTest
-
-**Méthodes :**
-
-- `test_get_focused()`
-- `test_get_mods()`
-- `test_get_pressed()`
-- `test_name()`
-- `test_set_mods()`
-- `test_set_repeat()`
-
-#### Fonctions
-
-##### test_get_focused
-
-##### test_get_mods
-
-##### test_get_pressed
-
-##### test_name
-
-##### test_set_mods
-
-##### test_set_repeat
+### .!24965!__init__
 
 ---
 
@@ -139818,6 +142695,131 @@ normalize differences, such as timing between output
 ##### test_set_mods
 
 ##### test_set_repeat
+
+---
+
+### .!24972!fake_3_test
+
+---
+
+### .!24977!fake_2_test
+
+---
+
+### .!24982!__init__
+
+---
+
+### .!24988!fake_4_test
+
+---
+
+### fake_3_test
+
+#### Classes
+
+##### KeyModuleTest
+
+**Méthodes :**
+
+- `test_get_focused()`
+- `test_get_mods()`
+- `test_get_pressed()`
+- `test_name()`
+- `test_set_mods()`
+- `test_set_repeat()`
+
+#### Fonctions
+
+##### test_get_focused
+
+##### test_get_mods
+
+##### test_get_pressed
+
+##### test_name
+
+##### test_set_mods
+
+##### test_set_repeat
+
+---
+
+### fake_2_test
+
+#### Classes
+
+##### KeyModuleTest
+
+**Méthodes :**
+
+- `test_get_focused()`
+- `test_get_mods()`
+- `test_get_pressed()`
+- `test_name()`
+- `test_set_mods()`
+- `test_set_repeat()`
+
+#### Fonctions
+
+##### test_get_focused
+
+##### test_get_mods
+
+##### test_get_pressed
+
+##### test_name
+
+##### test_set_mods
+
+##### test_set_repeat
+
+---
+
+### fake_4_test
+
+#### Classes
+
+##### KeyModuleTest
+
+**Méthodes :**
+
+- `test_get_focused()`
+- `test_get_mods()`
+- `test_get_pressed()`
+- `test_name()`
+- `test_set_mods()`
+- `test_set_repeat()`
+
+#### Fonctions
+
+##### test_get_focused
+
+##### test_get_mods
+
+##### test_get_pressed
+
+##### test_name
+
+##### test_set_mods
+
+##### test_set_repeat
+
+---
+
+### .!24995!fake_3_test
+
+---
+
+### .!24999!fake_2_test
+
+---
+
+### .!25004!__init__
+
+---
+
+### .!25010!fake_4_test
 
 ---
 
@@ -139883,6 +142885,18 @@ normalize differences, such as timing between output
 
 ---
 
+### .!25014!fake_2_test
+
+---
+
+### .!25019!fake_1_test
+
+---
+
+### .!25024!__init__
+
+---
+
 ### fake_3_test
 
 #### Classes
@@ -139942,6 +142956,18 @@ normalize differences, such as timing between output
 ##### todo_test_set_mods
 
 ##### test_set_repeat
+
+---
+
+### .!25030!fake_3_test
+
+---
+
+### .!25035!fake_2_test
+
+---
+
+### .!25039!__init__
 
 ---
 
@@ -140035,6 +143061,22 @@ normalize differences, such as timing between output
 
 ---
 
+### .!25043!magic_tag_test
+
+---
+
+### .!25048!fake_2_test
+
+---
+
+### .!25053!__init__
+
+---
+
+### .!25057!invisible_tag_test
+
+---
+
 ### fake_3_test
 
 #### Classes
@@ -140094,6 +143136,18 @@ normalize differences, such as timing between output
 ##### todo_test_set_mods
 
 ##### test_set_repeat
+
+---
+
+### .!25063!fake_3_test
+
+---
+
+### .!25069!fake_2_test
+
+---
+
+### .!25073!__init__
 
 ---
 
@@ -140203,6 +143257,26 @@ normalize differences, such as timing between output
 
 ---
 
+### .!25078!sleep_test
+
+---
+
+### .!25082!magic_tag_test
+
+---
+
+### .!25087!fake_2_test
+
+---
+
+### .!25091!incomplete_todo_test
+
+---
+
+### .!25096!__init__
+
+---
+
 ### sleep_test
 
 #### Classes
@@ -140247,6 +143321,18 @@ normalize differences, such as timing between output
 ##### test_set_mods
 
 ##### test_set_repeat
+
+---
+
+### .!25100!sleep_test
+
+---
+
+### .!25107!fake_2_test
+
+---
+
+### .!25113!__init__
 
 ---
 
@@ -140340,6 +143426,22 @@ normalize differences, such as timing between output
 ##### test_set_mods
 
 ##### test_set_repeat
+
+---
+
+### .!25117!fake_3_test
+
+---
+
+### .!25121!fake_2_test
+
+---
+
+### .!25126!__init__
+
+---
+
+### .!25131!fake_4_test
 
 ---
 
@@ -140537,6 +143639,38 @@ normalize differences, such as timing between output
 
 ---
 
+### .!25138!fake_3_test
+
+---
+
+### .!25144!fake_2_test
+
+---
+
+### .!25148!__init__
+
+---
+
+### .!25154!fake_4_test
+
+---
+
+### .!25158!fake_5_test
+
+---
+
+### .!25162!no_assertions__ret_code_of_1__test
+
+---
+
+### .!25167!zero_tests_test
+
+---
+
+### .!25172!fake_6_test
+
+---
+
 ### __main__
 
 #### Fonctions
@@ -140550,6 +143684,14 @@ normalize differences, such as timing between output
 ##### has_local_docs
 
 ##### open_docs
+
+---
+
+### .!25179!__main__
+
+---
+
+### .!25186!__init__
 
 ---
 
@@ -140801,6 +143943,10 @@ Play an audio file as a buffered sound sample
 
 ---
 
+### .!25196!mask
+
+---
+
 ### aacircle
 
 Proof of concept gfxdraw example
@@ -140808,6 +143954,10 @@ Proof of concept gfxdraw example
 #### Fonctions
 
 ##### main
+
+---
+
+### .!25204!grid
 
 ---
 
@@ -140925,6 +144075,10 @@ spin the monkey image
 this will cause the monkey to start spinning
 
 ##### play
+
+---
+
+### .!25242!midi
 
 ---
 
@@ -141627,6 +144781,10 @@ error codes.
 - `down`
 - `left`
 - `right`
+
+---
+
+### .!25270!blit_blends
 
 ---
 
@@ -142762,6 +145920,150 @@ Uses these events:
 #### Fonctions
 
 ##### main
+
+---
+
+### .!25191!playmus
+
+---
+
+### .!25200!sound
+
+---
+
+### .!25211!aacircle
+
+---
+
+### .!25213!setmodescale
+
+---
+
+### .!25219!chimp
+
+---
+
+### .!25223!font_viewer
+
+---
+
+### .!25228!liquid
+
+---
+
+### .!25233!audiocapture
+
+---
+
+### .!25239!sound_array_demos
+
+---
+
+### .!25247!scroll
+
+---
+
+### .!25253!cursors
+
+---
+
+### .!25259!moveit
+
+---
+
+### .!25276!sprite_texture
+
+---
+
+### .!25280!testsprite
+
+---
+
+### .!25285!textinput
+
+---
+
+### .!25288!go_over_there
+
+---
+
+### .!25296!vgrade
+
+---
+
+### .!25300!arraydemo
+
+---
+
+### .!25305!stars
+
+---
+
+### .!25311!camera
+
+---
+
+### .!25315!joystick
+
+---
+
+### .!25320!blend_fill
+
+---
+
+### .!25325!fonty
+
+---
+
+### .!25330!headless_no_windows_needed
+
+---
+
+### .!25338!glcube
+
+---
+
+### .!25342!resizing_new
+
+---
+
+### .!25347!aliens
+
+---
+
+### .!25352!freetype_misc
+
+---
+
+### .!25357!scaletest
+
+---
+
+### .!25360!music_drop_fade
+
+---
+
+### .!25367!eventlist
+
+---
+
+### .!25374!video
+
+---
+
+### .!25380!scrap_clipboard
+
+---
+
+### .!25385!pixelarray
+
+---
+
+### .!25391!dropevent
+
+---
+
+### .!25396!__init__
 
 ---
 
@@ -145763,6 +149065,54 @@ will return the final redirect location.
 
 ---
 
+### .!25401!__init__
+
+---
+
+### .!25405!_base_connection
+
+---
+
+### .!25411!_collections
+
+---
+
+### .!25415!_request_methods
+
+---
+
+### .!25419!_version
+
+---
+
+### .!25423!connection
+
+---
+
+### .!25428!connectionpool
+
+---
+
+### .!25434!exceptions
+
+---
+
+### .!25439!fields
+
+---
+
+### .!25441!filepost
+
+---
+
+### .!25447!poolmanager
+
+---
+
+### .!25452!response
+
+---
+
 ### pyopenssl
 
 Module for using pyOpenSSL as a TLS backend. This module was relevant before
@@ -146147,6 +149497,14 @@ Establish a new connection via the SOCKS proxy.
 - `password`
 - `num_pools`
 - `headers`
+
+---
+
+### .!25465!pyopenssl
+
+---
+
+### .!25471!socks
 
 ---
 
@@ -146713,6 +150071,26 @@ On exit, release the connection back to the pool.
 
 ---
 
+### .!25477!__init__
+
+---
+
+### .!25480!connection
+
+---
+
+### .!25487!fetch
+
+---
+
+### .!25492!request
+
+---
+
+### .!25495!response
+
+---
+
 ### connection
 
 #### Classes
@@ -146927,6 +150305,18 @@ This function is for testing purposes only. Gets the current state of the probe 
 ##### _reset
 
 This function is for testing purposes only. Reset the cache values
+
+---
+
+### .!25502!__init__
+
+---
+
+### .!25509!connection
+
+---
+
+### .!25512!probe
 
 ---
 
@@ -147475,6 +150865,10 @@ Return a new Retry object with incremented retry counters.
 
 ---
 
+### .!25549!ssl_
+
+---
+
 ### ssl_
 
 #### Classes
@@ -147699,6 +151093,10 @@ Detects if a key file is encrypted or not.
 
 ---
 
+### .!25567!url
+
+---
+
 ### ssl_match_hostname
 
 The match_hostname() function from Python 3.5, essential when using SSL.
@@ -147750,6 +151148,10 @@ returns nothing.
 - `cert`
 - `hostname`
 - `hostname_checks_common_name`
+
+---
+
+### .!25573!util
 
 ---
 
@@ -148170,6 +151572,10 @@ raised.
 
 ---
 
+### .!25576!wait
+
+---
+
 ### url
 
 #### Classes
@@ -148449,6 +151855,42 @@ Returns True if the socket is readable, or False if the timeout expired.
 
 ---
 
+### .!25518!__init__
+
+---
+
+### .!25525!connection
+
+---
+
+### .!25529!proxy
+
+---
+
+### .!25533!request
+
+---
+
+### .!25538!response
+
+---
+
+### .!25542!retry
+
+---
+
+### .!25553!ssl_match_hostname
+
+---
+
+### .!25558!ssltransport
+
+---
+
+### .!25562!timeout
+
+---
+
 ### __main__
 
 ---
@@ -148575,6 +152017,10 @@ Returns True if the socket is readable, or False if the timeout expired.
 
 ---
 
+### .!25598!cli
+
+---
+
 ### csv
 
 #### Classes
@@ -148602,6 +152048,10 @@ Returns True if the socket is readable, or False if the timeout expired.
 
 - `output_file`
 - `groups`
+
+---
+
+### .!25605!csv
 
 ---
 
@@ -149872,6 +153322,58 @@ Convert pstats structure to list of sorted dicts about each function.
 
 ---
 
+### .!25587!__init__
+
+---
+
+### .!25592!__main__
+
+---
+
+### .!25602!compat
+
+---
+
+### .!25609!fixture
+
+---
+
+### .!25613!histogram
+
+---
+
+### .!25619!hookspec
+
+---
+
+### .!25624!logger
+
+---
+
+### .!25630!plugin
+
+---
+
+### .!25634!session
+
+---
+
+### .!25640!stats
+
+---
+
+### .!25647!table
+
+---
+
+### .!25652!timers
+
+---
+
+### .!25656!utils
+
+---
+
 ### elasticsearch
 
 #### Classes
@@ -150036,6 +153538,18 @@ source (uncommon part of path) to benchmark dict.
 
 ---
 
+### .!25666!elasticsearch
+
+---
+
+### .!25671!file
+
+---
+
+### .!25676!__init__
+
+---
+
 ### __main__
 
 ---
@@ -150149,6 +153663,10 @@ Entry point for the script "pyflakes".
 
 - `sig`
 - `f`
+
+---
+
+### .!25829!api
 
 ---
 
@@ -151823,9 +155341,33 @@ pyflakes found something wrong with the code.
 
 ---
 
+### .!25819!__init__
+
+---
+
+### .!25823!__main__
+
+---
+
+### .!25834!checker
+
+---
+
+### .!25838!messages
+
+---
+
+### .!25842!reporter
+
+---
+
 ### pyflakes
 
 Implementation of the command-line I{pyflakes} tool.
+
+---
+
+### .!25855!pyflakes
 
 ---
 
@@ -154556,6 +158098,54 @@ expression.
 
 A Name node with an unrecognized context results in a RuntimeError being
 raised.
+
+---
+
+### .!25867!harness
+
+---
+
+### .!25870!test_api
+
+---
+
+### .!25875!test_builtin
+
+---
+
+### .!25880!test_dict
+
+---
+
+### .!25886!test_code_segment
+
+---
+
+### .!25890!test_doctests
+
+---
+
+### .!25896!test_imports
+
+---
+
+### .!25901!test_match
+
+---
+
+### .!25906!test_is_literal
+
+---
+
+### .!25912!test_other
+
+---
+
+### .!25918!test_type_annotations
+
+---
+
+### .!25923!test_undefined_names
 
 ---
 
@@ -159454,6 +163044,10 @@ If there was an error on the request, raise an `HTTPError`.
 
 ---
 
+### .!25939!auth
+
+---
+
 ### _locale_data
 
 Data used by the tornado.locale module.
@@ -159988,6 +163582,14 @@ yield point that is not ready.
 **Paramètres :**
 
 - `f`
+
+---
+
+### .!25955!web
+
+---
+
+### .!25977!gen
 
 ---
 
@@ -160833,6 +164435,10 @@ handshake to complete). It may only be called once per stream.
 
 ---
 
+### .!25989!log
+
+---
+
 ### log
 
 Logging support for Tornado.
@@ -160947,6 +164553,10 @@ this method is only necessary if you have created your own `.OptionParser`.
 **Paramètres :**
 
 - `record`
+
+---
+
+### .!25995!util
 
 ---
 
@@ -161284,6 +164894,10 @@ to ``kwargs`` and None will be returned as ``old_value``.
 - `new_value`
 - `args`
 - `kwargs`
+
+---
+
+### .!26088!wsgi
 
 ---
 
@@ -169055,6 +172669,106 @@ Converts a `tornado.httputil.HTTPServerRequest` to a WSGI environment.
 
 ---
 
+### .!25934!options
+
+---
+
+### .!25945!concurrent
+
+---
+
+### .!25951!escape
+
+---
+
+### .!25961!queues
+
+---
+
+### .!25966!httpclient
+
+---
+
+### .!25970!_locale_data
+
+---
+
+### .!25983!iostream
+
+---
+
+### .!26000!locks
+
+---
+
+### .!26004!httpserver
+
+---
+
+### .!26009!__init__
+
+---
+
+### .!26014!netutil
+
+---
+
+### .!26021!httputil
+
+---
+
+### .!26025!ioloop
+
+---
+
+### .!26031!routing
+
+---
+
+### .!26034!tcpserver
+
+---
+
+### .!26040!template
+
+---
+
+### .!26045!locale
+
+---
+
+### .!26049!curl_httpclient
+
+---
+
+### .!26054!process
+
+---
+
+### .!26058!autoreload
+
+---
+
+### .!26064!testing
+
+---
+
+### .!26067!simple_httpclient
+
+---
+
+### .!26075!http1connection
+
+---
+
+### .!26078!tcpclient
+
+---
+
+### .!26084!websocket
+
+---
+
 ### httpclient_test
 
 #### Classes
@@ -170838,6 +174552,10 @@ A missing SSL key should cause an immediate exception.
 ##### fn
 
 ##### fn
+
+---
+
+### .!26120!util
 
 ---
 
@@ -178436,6 +182154,150 @@ Counts the number of WARNING or higher log records.
 
 ---
 
+### .!26093!httpclient_test
+
+---
+
+### .!26098!queues_test
+
+---
+
+### .!26102!auth_test
+
+---
+
+### .!26107!httpserver_test
+
+---
+
+### .!26112!process_test
+
+---
+
+### .!26117!twisted_test
+
+---
+
+### .!26125!circlerefs_test
+
+---
+
+### .!26130!gen_test
+
+---
+
+### .!26134!concurrent_test
+
+---
+
+### .!26141!web_test
+
+---
+
+### .!26145!routing_test
+
+---
+
+### .!26150!locks_test
+
+---
+
+### .!26154!template_test
+
+---
+
+### .!26160!autoreload_test
+
+---
+
+### .!26165!wsgi_test
+
+---
+
+### .!26174!curl_httpclient_test
+
+---
+
+### .!26180!ioloop_test
+
+---
+
+### .!26185!simple_httpclient_test
+
+---
+
+### .!26190!httputil_test
+
+---
+
+### .!26195!websocket_test
+
+---
+
+### .!26199!util_test
+
+---
+
+### .!26203!log_test
+
+---
+
+### .!26208!tcpclient_test
+
+---
+
+### .!26212!netutil_test
+
+---
+
+### .!26217!options_test
+
+---
+
+### .!26222!import_test
+
+---
+
+### .!26226!http1connection_test
+
+---
+
+### .!26233!testing_test
+
+---
+
+### .!26237!tcpserver_test
+
+---
+
+### .!26242!locale_test
+
+---
+
+### .!26246!resolve_test_helper
+
+---
+
+### .!26251!asyncio_test
+
+---
+
+### .!26256!__main__
+
+---
+
+### .!26260!iostream_test
+
+---
+
+### .!26264!runtests
+
+---
+
+### .!26269!escape_test
+
+---
+
 ### asyncio
 
 Bridges between the `asyncio` module and Tornado IOLoop.
@@ -178970,6 +182832,18 @@ Install ``AsyncioSelectorReactor`` as the default Twisted reactor.
 
 ---
 
+### .!26276!asyncio
+
+---
+
+### .!26289!caresresolver
+
+---
+
+### .!26293!twisted
+
+---
+
 ### _parser
 
 #### Classes
@@ -179309,7 +183183,23 @@ or datetime.
 
 ---
 
+### .!26309!_re
+
+---
+
 ### _types
+
+---
+
+### .!26300!__init__
+
+---
+
+### .!26303!_parser
+
+---
+
+### .!26313!_types
 
 ---
 
@@ -179821,6 +183711,10 @@ https://github.com/toml-lang/toml#user-content-inline-table
 
 ---
 
+### .!26343!tz
+
+---
+
 ### ordered
 
 #### Classes
@@ -179890,6 +183784,22 @@ https://github.com/toml-lang/toml#user-content-inline-table
 **Paramètres :**
 
 - `dt`
+
+---
+
+### .!26324!__init__
+
+---
+
+### .!26331!decoder
+
+---
+
+### .!26334!encoder
+
+---
+
+### .!26338!ordered
 
 ---
 
@@ -179998,6 +183908,10 @@ Before call strategy that logs to some logger the attempt.
 
 ---
 
+### .!26384!nap
+
+---
+
 ### before_sleep
 
 #### Fonctions
@@ -180064,6 +183978,14 @@ This is the default strategy, and may be mocked out for unit testing.
 **Paramètres :**
 
 - `timeout`
+
+---
+
+### .!26391!stop
+
+---
+
+### .!26402!wait
 
 ---
 
@@ -180828,6 +184750,34 @@ where n is the retry count.
 
 ---
 
+### .!26359!__init__
+
+---
+
+### .!26363!_utils
+
+---
+
+### .!26369!after
+
+---
+
+### .!26373!before
+
+---
+
+### .!26377!before_sleep
+
+---
+
+### .!26387!retry
+
+---
+
+### .!26395!tornadoweb
+
+---
+
 ### retry
 
 #### Classes
@@ -180916,6 +184866,14 @@ Retries if all the retries condition are valid.
 ##### __init__
 
 ##### __init__
+
+---
+
+### .!26406!__init__
+
+---
+
+### .!26411!retry
 
 ---
 
@@ -181616,6 +185574,22 @@ Release all resources this instance might hold. Must only be called if there usa
 
 ---
 
+### .!26425!buf
+
+---
+
+### .!26422!__init__
+
+---
+
+### .!26430!mman
+
+---
+
+### .!26434!util
+
+---
+
 ### lib
 
 Provide base classes for the test system
@@ -181716,6 +185690,10 @@ Foundation used by all tests
 
 ---
 
+### .!26446!lib
+
+---
+
 ### test_tutorial
 
 #### Classes
@@ -181754,6 +185732,22 @@ Foundation used by all tests
 ##### test_region_list
 
 ##### test_util
+
+---
+
+### .!26451!test_buf
+
+---
+
+### .!26455!test_mman
+
+---
+
+### .!26460!test_tutorial
+
+---
+
+### .!26466!test_util
 
 ---
 
@@ -183063,6 +187057,54 @@ Determine if a comment has been added to ignore this line.
 
 ---
 
+### .!26471!__init__
+
+---
+
+### .!26475!__main__
+
+---
+
+### .!26481!_compat
+
+---
+
+### .!26486!checker
+
+---
+
+### .!26490!defaults
+
+---
+
+### .!26496!discover_files
+
+---
+
+### .!26501!exceptions
+
+---
+
+### .!26507!processor
+
+---
+
+### .!26512!statistics
+
+---
+
+### .!26517!style_guide
+
+---
+
+### .!26522!utils
+
+---
+
+### .!26529!violation
+
+---
+
 ### legacy
 
 Module containing shims around Flake8 2.x behaviour.
@@ -183244,6 +187286,14 @@ instance.
 **Paramètres :**
 
 - `path`
+
+---
+
+### .!26533!__init__
+
+---
+
+### .!26538!legacy
 
 ---
 
@@ -183462,6 +187512,10 @@ Clean up after reporting is finished.
 
 ---
 
+### .!26556!base
+
+---
+
 ### default
 
 Default formatting class for Flake8.
@@ -183573,6 +187627,18 @@ Do not print the source.
 **Paramètres :**
 
 - `error`
+
+---
+
+### .!26543!__init__
+
+---
+
+### .!26549!_windows_color
+
+---
+
+### .!26560!default
 
 ---
 
@@ -183708,6 +187774,10 @@ and then exits the application.
 
 ---
 
+### .!26575!cli
+
+---
+
 ### debug
 
 Module containing the logic for our debugging logic.
@@ -183808,6 +187878,22 @@ Representation for debugging.
 ##### __str__
 
 Format our JobsArgument class.
+
+---
+
+### .!26566!__init__
+
+---
+
+### .!26570!application
+
+---
+
+### .!26581!debug
+
+---
+
+### .!26585!options
 
 ---
 
@@ -184081,6 +188167,26 @@ Procedure for parsing args, config, loading plugins.
 **Paramètres :**
 
 - `argv`
+
+---
+
+### .!26591!__init__
+
+---
+
+### .!26595!aggregator
+
+---
+
+### .!26602!config
+
+---
+
+### .!26607!manager
+
+---
+
+### .!26612!parse_args
 
 ---
 
@@ -184371,6 +188477,26 @@ Make the formatter from the requested user options.
 
 - `reporters`
 - `options`
+
+---
+
+### .!26617!__init__
+
+---
+
+### .!26620!finder
+
+---
+
+### .!26626!pycodestyle
+
+---
+
+### .!26632!pyflakes
+
+---
+
+### .!26637!reporter
 
 ---
 
@@ -185112,6 +189238,18 @@ pattern doesn't have any matches.
 
 ---
 
+### .!26646!__init__
+
+---
+
+### .!26653!pygram
+
+---
+
+### .!26658!pytree
+
+---
+
 ### token
 
 Token constants (from "token.h").
@@ -185827,6 +189965,10 @@ Pop a nonterminal.  (Internal)
 
 ---
 
+### .!26669!pgen
+
+---
+
 ### driver
 
 Parser driver.
@@ -186274,6 +190416,46 @@ logical line; continuation lines are included.
 
 ---
 
+### .!26664!token
+
+---
+
+### .!26672!__init__
+
+---
+
+### .!26678!literals
+
+---
+
+### .!26684!grammar
+
+---
+
+### .!26687!conv
+
+---
+
+### .!26693!parse
+
+---
+
+### .!26698!driver
+
+---
+
+### .!26703!tokenize
+
+---
+
+### .!26714!__init__
+
+---
+
+### .!26720!__init__
+
+---
+
 ### middlewares
 
 #### Fonctions
@@ -186287,6 +190469,18 @@ logical line; continuation lines are included.
 ---
 
 ### __main__
+
+---
+
+### .!26724!__init__
+
+---
+
+### .!26730!middlewares
+
+---
+
+### .!26737!__main__
 
 ---
 
@@ -188712,6 +192906,102 @@ deserialization
 
 ---
 
+### .!26743!scanner
+
+---
+
+### .!26748!error
+
+---
+
+### .!26751!constructor
+
+---
+
+### .!26755!composer
+
+---
+
+### .!26760!events
+
+---
+
+### .!26765!__init__
+
+---
+
+### .!26768!representer
+
+---
+
+### .!26772!tokens
+
+---
+
+### .!26777!dumper
+
+---
+
+### .!26782!cyaml
+
+---
+
+### .!26786!parser
+
+---
+
+### .!26790!reader
+
+---
+
+### .!26795!loader
+
+---
+
+### .!26799!resolver
+
+---
+
+### .!26803!serializer
+
+---
+
+### .!26810!nodes
+
+---
+
+### .!26813!emitter
+
+---
+
+### .!26817!__init__
+
+---
+
+### .!26823!__init__
+
+---
+
+### .!26829!__init__
+
+---
+
+### .!26837!__init__
+
+---
+
+### .!26842!__init__
+
+---
+
+### .!26848!__init__
+
+---
+
+### .!26852!__init__
+
+---
+
 ### context
 
 #### Classes
@@ -188819,6 +193109,26 @@ Args:
 **Paramètres :**
 
 - `token`
+
+---
+
+### .!26858!__init__
+
+---
+
+### .!26863!context
+
+---
+
+### .!26868!contextvars_context
+
+---
+
+### .!26872!__init__
+
+---
+
+### .!26879!__init__
 
 ---
 
@@ -189366,6 +193676,22 @@ Args:
 
 ---
 
+### .!26884!__init__
+
+---
+
+### .!26889!instrument
+
+---
+
+### .!26895!observation
+
+---
+
+### .!26901!__init__
+
+---
+
 ### composite
 
 #### Classes
@@ -189635,6 +193961,18 @@ present in this attribute should be deleted before calling `inject`.
 
 Returns:
     A set with the fields set in `inject`.
+
+---
+
+### .!26906!composite
+
+---
+
+### .!26912!textmap
+
+---
+
+### .!26921!span
 
 ---
 
@@ -190221,6 +194559,14 @@ Returns true if unset, false otherwise.
 
 ---
 
+### .!26918!__init__
+
+---
+
+### .!26927!status
+
+---
+
 ### tracecontext
 
 #### Classes
@@ -190267,6 +194613,14 @@ Returns a set with the fields set in `inject`.
 
 See
 `opentelemetry.propagators.textmap.TextMapPropagator.fields`
+
+---
+
+### .!26931!__init__
+
+---
+
+### .!26935!tracecontext
 
 ---
 
@@ -190371,6 +194725,10 @@ Returns:
 
 ---
 
+### .!26961!re
+
+---
+
 ### re
 
 #### Fonctions
@@ -190398,6 +194756,30 @@ with other languages SDKs that accept non URL-encoded headers by default.
 ---
 
 ### types
+
+---
+
+### .!26941!_decorator
+
+---
+
+### .!26946!_importlib_metadata
+
+---
+
+### .!26951!_once
+
+---
+
+### .!26955!_providers
+
+---
+
+### .!26965!types
+
+---
+
+### .!26971!__init__
 
 ---
 
@@ -190493,6 +194875,10 @@ Main command line entry point.
 - `indent_increment`
 - `max_help_position`
 - `width`
+
+---
+
+### .!27056!util
 
 ---
 
@@ -192049,6 +196435,70 @@ Return our best guess of encoding for the given *term*.
 
 ---
 
+### .!26977!__init__
+
+---
+
+### .!26981!__main__
+
+---
+
+### .!26988!cmdline
+
+---
+
+### .!26993!console
+
+---
+
+### .!26999!filter
+
+---
+
+### .!27004!formatter
+
+---
+
+### .!27009!lexer
+
+---
+
+### .!27013!modeline
+
+---
+
+### .!27020!plugin
+
+---
+
+### .!27026!regexopt
+
+---
+
+### .!27032!scanner
+
+---
+
+### .!27036!sphinxext
+
+---
+
+### .!27042!style
+
+---
+
+### .!27044!token
+
+---
+
+### .!27051!unistring
+
+---
+
+### .!27061!__init__
+
+---
+
 ### _mapping
 
 ---
@@ -193210,6 +197660,10 @@ Options accepted:
 
 ---
 
+### .!27087!html
+
+---
+
 ### latex
 
 pygments.formatters.latex
@@ -193435,6 +197889,10 @@ Find escape tokens within text, give token=None otherwise
 
 ---
 
+### .!27090!img
+
+---
+
 ### other
 
 pygments.formatters.other
@@ -193527,6 +197985,10 @@ Format tokens as appropriate for a new testcase.
 
 ---
 
+### .!27096!irc
+
+---
+
 ### pangomarkup
 
 pygments.formatters.pangomarkup
@@ -193569,6 +198031,10 @@ Escape & and < for Pango Markup.
 
 - `tokensource`
 - `outfile`
+
+---
+
+### .!27116!rtf
 
 ---
 
@@ -193736,6 +198202,10 @@ the RTF color table.
 
 - `tokensource`
 - `outfile`
+
+---
+
+### .!27121!svg
 
 ---
 
@@ -194089,6 +198559,42 @@ Options accepted:
 - `color`
 
 ##### _setup_styles
+
+---
+
+### .!27067!__init__
+
+---
+
+### .!27073!_mapping
+
+---
+
+### .!27076!bbcode
+
+---
+
+### .!27082!groff
+
+---
+
+### .!27101!latex
+
+---
+
+### .!27107!other
+
+---
+
+### .!27110!pangomarkup
+
+---
+
+### .!27127!terminal
+
+---
+
+### .!27131!terminal256
 
 ---
 
@@ -200108,6 +204614,10 @@ For the F* language.
 
 ---
 
+### .!27290!ada
+
+---
+
 ### modeling
 
 pygments.lexers.modeling
@@ -200172,6 +204682,10 @@ User's Guide and Reference Manual, v2.17.0*,
 **Paramètres :**
 
 - `text`
+
+---
+
+### .!27315!ampl
 
 ---
 
@@ -200365,6 +204879,10 @@ instead.
 
 ---
 
+### .!27324!apl
+
+---
+
 ### mojo
 
 pygments.lexers.mojo
@@ -200409,6 +204927,10 @@ For Mojo source code (version 24.2.1).
 
 ---
 
+### .!27343!asc
+
+---
+
 ### monte
 
 pygments.lexers.monte
@@ -200424,6 +204946,10 @@ Lexer for the Monte programming language.
 ##### MonteLexer
 
 Lexer for the Monte programming language.
+
+---
+
+### .!27348!asm
 
 ---
 
@@ -200446,6 +204972,10 @@ For the Mosel optimization language.
 
 ---
 
+### .!27353!asn1
+
+---
+
 ### ncl
 
 pygments.lexers.ncl
@@ -200461,6 +204991,10 @@ Lexers for NCAR Command Language.
 ##### NCLLexer
 
 Lexer for NCL code.
+
+---
+
+### .!27362!bare
 
 ---
 
@@ -200494,6 +205028,10 @@ For Nim source code.
 
 ---
 
+### .!27374!bdd
+
+---
+
 ### nit
 
 pygments.lexers.nit
@@ -200509,6 +205047,10 @@ Lexer for the Nit language.
 ##### NitLexer
 
 For nit source.
+
+---
+
+### .!27391!boa
 
 ---
 
@@ -200542,6 +205084,10 @@ For the Nix language.
 
 ---
 
+### .!27397!bqn
+
+---
+
 ### numbair
 
 pygments.lexers.numbair
@@ -200557,6 +205103,10 @@ Lexer for other Numba Intermediate Representation.
 ##### NumbaIRLexer
 
 Lexer for Numba IR
+
+---
+
+### .!27424!cddl
 
 ---
 
@@ -200591,6 +205141,10 @@ common across various business languages as well.
 **Paramètres :**
 
 - `text`
+
+---
+
+### .!27474!css
 
 ---
 
@@ -200677,6 +205231,10 @@ extensions.
 
 ---
 
+### .!27479!d
+
+---
+
 ### ooc
 
 pygments.lexers.ooc
@@ -200714,6 +205272,10 @@ For openSCAD code.
 
 ---
 
+### .!27487!data
+
+---
+
 ### other
 
 pygments.lexers.other
@@ -200723,6 +205285,10 @@ Just export lexer classes previously contained in this module.
 
 :copyright: Copyright 2006-2025 by the Pygments team, see AUTHORS.
 :license: BSD, see LICENSE for details.
+
+---
+
+### .!27492!dax
 
 ---
 
@@ -200741,6 +205307,10 @@ Lexer for ParaSail.
 ##### ParaSailLexer
 
 For ParaSail source code.
+
+---
+
+### .!27502!diff
 
 ---
 
@@ -201061,6 +205631,10 @@ grammars.
 
 ---
 
+### .!27507!dns
+
+---
+
 ### pascal
 
 pygments.lexers.pascal
@@ -201125,6 +205699,10 @@ Additional options accepted:
 
 ---
 
+### .!27515!dsls
+
+---
+
 ### pawn
 
 pygments.lexers.pawn
@@ -201175,6 +205753,10 @@ though and is nearly unique to this language.
 
 ---
 
+### .!27526!ecl
+
+---
+
 ### pddl
 
 pygments.lexers.pddl
@@ -201192,6 +205774,10 @@ Lexer for the Planning Domain Definition Language.
 A PDDL lexer.
 
 It should support up to PDDL 3.1.
+
+---
+
+### .!27533!elm
 
 ---
 
@@ -201300,6 +205886,10 @@ For Raku (a.k.a. Perl 6) source code.
 
 ---
 
+### .!27538!elpi
+
+---
+
 ### phix
 
 pygments.lexers.phix
@@ -201316,6 +205906,10 @@ Lexers for Phix.
 
 Pygments Lexer for Phix files (.exw).
 See http://phix.x10.mx
+
+---
+
+### .!27575!fift
 
 ---
 
@@ -201420,6 +206014,10 @@ Additional options accepted:
 
 ---
 
+### .!27603!func
+
+---
+
 ### pointless
 
 pygments.lexers.pointless
@@ -201435,6 +206033,10 @@ Lexers for Pointless.
 ##### PointlessLexer
 
 For Pointless source code.
+
+---
+
+### .!27634!go
 
 ---
 
@@ -201474,6 +206076,10 @@ For Praat scripts.
 
 ---
 
+### .!27660!gsql
+
+---
+
 ### procfile
 
 pygments.lexers.procfile
@@ -201492,6 +206098,10 @@ Lexer for Procfile file format.
 
 The format is used to run processes on Heroku or is used by Foreman or
 Honcho tools.
+
+---
+
+### .!27664!hare
 
 ---
 
@@ -201541,6 +206151,10 @@ Competes with IDL and Visual Prolog on *.pro
 
 ---
 
+### .!27676!haxe
+
+---
+
 ### promql
 
 pygments.lexers.promql
@@ -201561,6 +206175,10 @@ For details about the grammar see:
 https://github.com/prometheus/prometheus/tree/master/promql/parser
 
 .. versionadded: 2.7
+
+---
+
+### .!27678!hdl
 
 ---
 
@@ -201603,6 +206221,10 @@ grammar: https://github.com/PRQL/prql/tree/main/grammars
 
 ---
 
+### .!27689!html
+
+---
+
 ### ptx
 
 pygments.lexers.ptx
@@ -201619,6 +206241,10 @@ Lexer for other PTX language.
 
 For NVIDIA `PTX <https://docs.nvidia.com/cuda/parallel-thread-execution/>`_
 source.
+
+---
+
+### .!27694!idl
 
 ---
 
@@ -201782,6 +206408,10 @@ A Python lexer recognizing Numerical Python builtins.
 
 ---
 
+### .!27699!igor
+
+---
+
 ### q
 
 pygments.lexers.q
@@ -201801,6 +206431,10 @@ For K source code.
 ##### QLexer
 
 For `Q <https://code.kx.com/>`_ source code.
+
+---
+
+### .!27724!j
 
 ---
 
@@ -201853,6 +206487,10 @@ Notable tokens assignments:
 
 - Name.Builtin.Pseudo is assigned to the pre-defined variables 'this',
   'self' and 'result'.
+
+---
+
+### .!27739!jslt
 
 ---
 
@@ -201909,6 +206547,10 @@ and `Parsing Rd files <http://developer.r-project.org/parseRd.pdf>`_.
 
 ---
 
+### .!27754!jsx
+
+---
+
 ### rdf
 
 pygments.lexers.rdf
@@ -201944,6 +206586,10 @@ Lexer for ShExC shape expressions language syntax.
 **Paramètres :**
 
 - `text`
+
+---
+
+### .!27762!jvm
 
 ---
 
@@ -202002,6 +206648,10 @@ Check if code contains REBOL header and so it probably not R code
 
 ---
 
+### .!27768!kuin
+
+---
+
 ### rego
 
 pygments.lexers.rego
@@ -202017,6 +206667,10 @@ Lexers for the Rego policy languages.
 ##### RegoLexer
 
 For Rego source.
+
+---
+
+### .!27777!ldap
 
 ---
 
@@ -202051,6 +206705,10 @@ Lexer for ICU Resource bundles.
 
 ---
 
+### .!27781!lean
+
+---
+
 ### ride
 
 pygments.lexers.ride
@@ -202066,6 +206724,10 @@ Lexer for the Ride programming language.
 ##### RideLexer
 
 For Ride source code.
+
+---
+
+### .!27790!lisp
 
 ---
 
@@ -202087,6 +206749,10 @@ Lexer for RITA.
 
 ---
 
+### .!27800!make
+
+---
+
 ### rnc
 
 pygments.lexers.rnc
@@ -202102,6 +206768,10 @@ Lexer for Relax-NG Compact syntax
 ##### RNCCompactLexer
 
 For RelaxNG-compact syntax.
+
+---
+
+### .!27812!math
 
 ---
 
@@ -202124,6 +206794,10 @@ Lexer for Roboconf graph files.
 ##### RoboconfInstancesLexer
 
 Lexer for Roboconf instances files.
+
+---
+
+### .!27831!mime
 
 ---
 
@@ -202726,6 +207400,10 @@ running on Rubinius, the Ruby VM.
 
 ---
 
+### .!27840!mips
+
+---
+
 ### rust
 
 pygments.lexers.rust
@@ -202741,6 +207419,10 @@ Lexers for the Rust language.
 ##### RustLexer
 
 Lexer for the Rust programming language (version 1.47).
+
+---
+
+### .!27846!ml
 
 ---
 
@@ -202782,6 +207464,10 @@ For Savi source code.
 
 ---
 
+### .!27859!mojo
+
+---
+
 ### scdoc
 
 pygments.lexers.scdoc
@@ -202812,6 +207498,10 @@ every scdoc file must start with a strictly defined first line.
 **Paramètres :**
 
 - `text`
+
+---
+
+### .!27872!ncl
 
 ---
 
@@ -203043,6 +207733,10 @@ Recognize JCL job by header.
 
 ---
 
+### .!27881!nit
+
+---
+
 ### sgf
 
 pygments.lexers.sgf
@@ -203061,6 +207755,10 @@ Lexer for Smart Game Format (sgf) file format.
 
 The format is used to store game records of board games for two players
 (mainly Go game).
+
+---
+
+### .!27887!nix
 
 ---
 
@@ -203261,6 +207959,10 @@ Lexer for Laurent Bercot's execline language.
 
 ---
 
+### .!27911!ooc
+
+---
+
 ### sieve
 
 pygments.lexers.sieve
@@ -203285,6 +207987,10 @@ https://tools.ietf.org/html/rfc8580
 ##### SieveLexer
 
 Lexer for sieve format.
+
+---
+
+### .!27944!pawn
 
 ---
 
@@ -203335,6 +208041,10 @@ Lexer for the Slash programming language.
 
 ---
 
+### .!27949!pddl
+
+---
+
 ### smalltalk
 
 pygments.lexers.smalltalk
@@ -203359,6 +208069,10 @@ For Newspeak syntax.
 
 ---
 
+### .!27953!perl
+
+---
+
 ### smithy
 
 pygments.lexers.smithy
@@ -203377,6 +208091,10 @@ For Smithy IDL
 
 ---
 
+### .!27957!phix
+
+---
+
 ### smv
 
 pygments.lexers.smv
@@ -203392,6 +208110,10 @@ Lexers for the SMV languages.
 ##### NuSMVLexer
 
 Lexer for the NuSMV language.
+
+---
+
+### .!27961!php
 
 ---
 
@@ -203416,6 +208138,10 @@ Does not require spaces around binary operators.
 
 ---
 
+### .!27971!pony
+
+---
+
 ### solidity
 
 pygments.lexers.solidity
@@ -203434,6 +208160,10 @@ For Solidity source code.
 
 ---
 
+### .!27993!prql
+
+---
+
 ### soong
 
 pygments.lexers.soong
@@ -203447,6 +208177,10 @@ Lexers for Soong (Android.bp Blueprint) files.
 #### Classes
 
 ##### SoongLexer
+
+---
+
+### .!28001!ptx
 
 ---
 
@@ -203467,6 +208201,10 @@ Derived from pygments/lexers/reason.py.
 ##### SophiaLexer
 
 A Sophia lexer.
+
+---
+
+### .!28010!q
 
 ---
 
@@ -203566,6 +208304,10 @@ Lexers for the Spice programming language.
 ##### SpiceLexer
 
 For Spice source.
+
+---
+
+### .!28015!qlik
 
 ---
 
@@ -203801,6 +208543,10 @@ plpgsql if inside a DO statement and no LANGUAGE has been found.
 
 ---
 
+### .!28021!qvt
+
+---
+
 ### srcinfo
 
 pygments.lexers.srcinfo
@@ -203820,6 +208566,10 @@ https://wiki.archlinux.org/title/.SRCINFO
 
 Lexer for .SRCINFO files used by Arch Linux Packages.
     
+
+---
+
+### .!28024!r
 
 ---
 
@@ -203891,6 +208641,10 @@ Lexer for TableGen
 
 ---
 
+### .!28029!rdf
+
+---
+
 ### tact
 
 pygments.lexers.tact
@@ -203906,6 +208660,10 @@ Lexers for Tact.
 ##### TactLexer
 
 For Tact source code.
+
+---
+
+### .!28038!rego
 
 ---
 
@@ -203938,6 +208696,10 @@ For Uxntal source code.
 **Paramètres :**
 
 - `text`
+
+---
+
+### .!28047!ride
 
 ---
 
@@ -203980,6 +208742,10 @@ For Tcl source code.
 
 ---
 
+### .!28052!rita
+
+---
+
 ### teal
 
 pygments.lexers.teal
@@ -203998,6 +208764,10 @@ For the Transaction Execution Approval Language (TEAL)
 
 For more information about the grammar, see:
 https://github.com/algorand/go-algorand/blob/master/data/transactions/logic/assembler.go
+
+---
+
+### .!28057!rnc
 
 ---
 
@@ -204978,6 +209748,10 @@ Evoque templates use $evoque, which is unique.
 
 ---
 
+### .!28072!ruby
+
+---
+
 ### teraterm
 
 pygments.lexers.teraterm
@@ -205005,6 +209779,10 @@ For Tera Term macro source code.
 **Paramètres :**
 
 - `text`
+
+---
+
+### .!28077!rust
 
 ---
 
@@ -205042,6 +209820,10 @@ For Test Anything Protocol (TAP) output.
 
 ---
 
+### .!28082!sas
+
+---
+
 ### text
 
 pygments.lexers.text
@@ -205051,6 +209833,10 @@ Lexers for non-source code file types.
 
 :copyright: Copyright 2006-2025 by the Pygments team, see AUTHORS.
 :license: BSD, see LICENSE for details.
+
+---
+
+### .!28086!savi
 
 ---
 
@@ -205111,6 +209897,10 @@ we match `\b\w+\b` and then call is_in() on those tokens.  See
 **Paramètres :**
 
 - `text`
+
+---
+
+### .!28101!sgf
 
 ---
 
@@ -205221,6 +210011,10 @@ Reset the content-type state.
 
 ---
 
+### .!28130!smv
+
+---
+
 ### theorem
 
 pygments.lexers.theorem
@@ -205257,6 +210051,10 @@ For the Isabelle proof assistant.
 
 ---
 
+### .!28162!sql
+
+---
+
 ### thingsdb
 
 pygments.lexers.thingsdb
@@ -205272,6 +210070,10 @@ Lexers for the ThingsDB language.
 ##### ThingsDBLexer
 
 Lexer for the ThingsDB programming language.
+
+---
+
+### .!28186!tact
 
 ---
 
@@ -205293,6 +210095,10 @@ For TL-b source code.
 
 ---
 
+### .!28194!tal
+
+---
+
 ### tls
 
 pygments.lexers.tls
@@ -205308,6 +210114,10 @@ Lexers for the TLS presentation language.
 ##### TlsLexer
 
 The TLS presentation language, described in RFC 8446.
+
+---
+
+### .!28198!tcl
 
 ---
 
@@ -205418,6 +210228,10 @@ Returns a list of TNT tokens.
 
 ---
 
+### .!28205!teal
+
+---
+
 ### trafficscript
 
 pygments.lexers.trafficscript
@@ -205471,6 +210285,10 @@ Lexer for TypoScript code.
 
 ---
 
+### .!28226!text
+
+---
+
 ### typst
 
 pygments.lexers.typst
@@ -205507,6 +210325,10 @@ Additional options accepted:
 **Paramètres :**
 
 - `text`
+
+---
+
+### .!28251!tlb
 
 ---
 
@@ -205580,6 +210402,10 @@ Lexer for UL4 embedded in Python.
 
 ---
 
+### .!28254!tls
+
+---
+
 ### unicon
 
 pygments.lexers.unicon
@@ -205618,6 +210444,10 @@ endsuspend and endrepeat are unique to this language, and
 **Paramètres :**
 
 - `text`
+
+---
+
+### .!28260!tnt
 
 ---
 
@@ -205663,6 +210493,10 @@ waituntil are unique keywords.
 
 ---
 
+### .!28277!ul4
+
+---
+
 ### usd
 
 pygments.lexers.usd
@@ -205687,6 +210521,10 @@ A lexer that parses Pixar's Universal Scene Description file format.
 
 - `words`
 - `type_`
+
+---
+
+### .!28287!urbi
 
 ---
 
@@ -205734,6 +210572,10 @@ For Varnish Configuration Language snippets.
 
 ---
 
+### .!28291!usd
+
+---
+
 ### verification
 
 pygments.lexers.verification
@@ -205771,6 +210613,10 @@ Lexers for Verifpal languages.
 ##### VerifpalLexer
 
 For Verifpal code.
+
+---
+
+### .!28310!vip
 
 ---
 
@@ -205826,6 +210672,10 @@ No competditors (currently)
 
 ---
 
+### .!28319!web
+
+---
+
 ### vyper
 
 pygments.lexers.vyper
@@ -205845,6 +210695,10 @@ For the Vyper smart contract language.
 
 ---
 
+### .!28340!wgsl
+
+---
+
 ### web
 
 pygments.lexers.web
@@ -205854,6 +210708,10 @@ Just export previously exported lexers.
 
 :copyright: Copyright 2006-2025 by the Pygments team, see AUTHORS.
 :license: BSD, see LICENSE for details.
+
+---
+
+### .!28354!wren
 
 ---
 
@@ -205895,6 +210753,10 @@ Lexers for Web IDL, including some extensions.
 ##### WebIDLLexer
 
 For Web IDL.
+
+---
+
+### .!28361!x10
 
 ---
 
@@ -206194,6 +211056,10 @@ For Slim markup.
 
 ---
 
+### .!28364!xorg
+
+---
+
 ### wgsl
 
 pygments.lexers.wgsl
@@ -206212,6 +211078,10 @@ Lexer for the WebGPU Shading Language.
 
 ---
 
+### .!28367!yang
+
+---
+
 ### whiley
 
 pygments.lexers.whiley
@@ -206227,6 +211097,10 @@ Lexers for the Whiley language.
 ##### WhileyLexer
 
 Lexer for the Whiley programming language.
+
+---
+
+### .!28373!yara
 
 ---
 
@@ -206274,6 +211148,10 @@ Lexer for World of Warcraft TOC files.
 **Paramètres :**
 
 - `text`
+
+---
+
+### .!28380!zig
 
 ---
 
@@ -206384,6 +211262,670 @@ Lexers for Zig.
 Lexer for the Zig language.
 
 grammar: https://ziglang.org/documentation/master/#Grammar
+
+---
+
+### .!27136!__init__
+
+---
+
+### .!27143!_ada_builtins
+
+---
+
+### .!27148!_asy_builtins
+
+---
+
+### .!27152!_cl_builtins
+
+---
+
+### .!27157!_cocoa_builtins
+
+---
+
+### .!27161!_csound_builtins
+
+---
+
+### .!27166!_css_builtins
+
+---
+
+### .!27170!_googlesql_builtins
+
+---
+
+### .!27175!_julia_builtins
+
+---
+
+### .!27180!_lasso_builtins
+
+---
+
+### .!27183!_lilypond_builtins
+
+---
+
+### .!27189!_lua_builtins
+
+---
+
+### .!27195!_luau_builtins
+
+---
+
+### .!27199!_mapping
+
+---
+
+### .!27204!_mql_builtins
+
+---
+
+### .!27209!actionscript
+
+---
+
+### .!27215!_mysql_builtins
+
+---
+
+### .!27219!_openedge_builtins
+
+---
+
+### .!27226!_php_builtins
+
+---
+
+### .!27231!_postgres_builtins
+
+---
+
+### .!27236!_qlik_builtins
+
+---
+
+### .!27241!_scheme_builtins
+
+---
+
+### .!27244!_scilab_builtins
+
+---
+
+### .!27250!_sourcemod_builtins
+
+---
+
+### .!27257!_sql_builtins
+
+---
+
+### .!27261!_stan_builtins
+
+---
+
+### .!27267!_stata_builtins
+
+---
+
+### .!27272!_tsql_builtins
+
+---
+
+### .!27276!_usd_builtins
+
+---
+
+### .!27281!_vbscript_builtins
+
+---
+
+### .!27287!_vim_builtins
+
+---
+
+### .!27297!agile
+
+---
+
+### .!27301!algebra
+
+---
+
+### .!27306!ambient
+
+---
+
+### .!27310!amdgpu
+
+---
+
+### .!27319!apdlexer
+
+---
+
+### .!27328!archetype
+
+---
+
+### .!27333!arrow
+
+---
+
+### .!27338!arturo
+
+---
+
+### .!27358!automation
+
+---
+
+### .!27369!basic
+
+---
+
+### .!27377!berry
+
+---
+
+### .!27383!bibtex
+
+---
+
+### .!27387!blueprint
+
+---
+
+### .!27400!business
+
+---
+
+### .!27406!c_cpp
+
+---
+
+### .!27411!c_like
+
+---
+
+### .!27415!capnproto
+
+---
+
+### .!27421!carbon
+
+---
+
+### .!27429!chapel
+
+---
+
+### .!27433!clean
+
+---
+
+### .!27438!codeql
+
+---
+
+### .!27442!comal
+
+---
+
+### .!27447!compiled
+
+---
+
+### .!27452!configs
+
+---
+
+### .!27456!console
+
+---
+
+### .!27462!cplint
+
+---
+
+### .!27467!crystal
+
+---
+
+### .!27469!csound
+
+---
+
+### .!27482!dalvik
+
+---
+
+### .!27496!devicetree
+
+---
+
+### .!27511!dotnet
+
+---
+
+### .!27521!dylan
+
+---
+
+### .!27531!eiffel
+
+---
+
+### .!27542!email
+
+---
+
+### .!27547!erlang
+
+---
+
+### .!27552!esoteric
+
+---
+
+### .!27556!ezhil
+
+---
+
+### .!27561!factor
+
+---
+
+### .!27565!fantom
+
+---
+
+### .!27570!felix
+
+---
+
+### .!27581!floscript
+
+---
+
+### .!27585!forth
+
+---
+
+### .!27588!fortran
+
+---
+
+### .!27593!foxpro
+
+---
+
+### .!27599!freefem
+
+---
+
+### .!27609!functional
+
+---
+
+### .!27614!futhark
+
+---
+
+### .!27616!gcodelexer
+
+---
+
+### .!27624!gdscript
+
+---
+
+### .!27628!gleam
+
+---
+
+### .!27640!grammar_notation
+
+---
+
+### .!27643!graph
+
+---
+
+### .!27647!graphics
+
+---
+
+### .!27652!graphql
+
+---
+
+### .!27655!graphviz
+
+---
+
+### .!27668!haskell
+
+---
+
+### .!27682!hexdump
+
+---
+
+### .!27705!inferno
+
+---
+
+### .!27708!installers
+
+---
+
+### .!27713!int_fiction
+
+---
+
+### .!27719!iolang
+
+---
+
+### .!27727!javascript
+
+---
+
+### .!27734!jmespath
+
+---
+
+### .!27746!json5
+
+---
+
+### .!27749!jsonnet
+
+---
+
+### .!27758!julia
+
+---
+
+### .!27772!kusto
+
+---
+
+### .!27787!lilypond
+
+---
+
+### .!27795!macaulay2
+
+---
+
+### .!27803!maple
+
+---
+
+### .!27808!markup
+
+---
+
+### .!27817!matlab
+
+---
+
+### .!27822!maxima
+
+---
+
+### .!27826!meson
+
+---
+
+### .!27836!minecraft
+
+---
+
+### .!27850!modeling
+
+---
+
+### .!27854!modula2
+
+---
+
+### .!27864!monte
+
+---
+
+### .!27867!mosel
+
+---
+
+### .!27876!nimrod
+
+---
+
+### .!27894!numbair
+
+---
+
+### .!27899!oberon
+
+---
+
+### .!27904!objective
+
+---
+
+### .!27916!openscad
+
+---
+
+### .!27921!other
+
+---
+
+### .!27926!parasail
+
+---
+
+### .!27933!parsers
+
+---
+
+### .!27937!pascal
+
+---
+
+### .!27966!pointless
+
+---
+
+### .!27975!praat
+
+---
+
+### .!27980!procfile
+
+---
+
+### .!27984!prolog
+
+---
+
+### .!27990!promql
+
+---
+
+### .!28006!python
+
+---
+
+### .!28033!rebol
+
+---
+
+### .!28043!resource
+
+---
+
+### .!28063!roboconf
+
+---
+
+### .!28067!robotframework
+
+---
+
+### .!28091!scdoc
+
+---
+
+### .!28098!scripting
+
+---
+
+### .!28108!shell
+
+---
+
+### .!28112!sieve
+
+---
+
+### .!28118!slash
+
+---
+
+### .!28122!smalltalk
+
+---
+
+### .!28125!smithy
+
+---
+
+### .!28134!snobol
+
+---
+
+### .!28140!solidity
+
+---
+
+### .!28143!soong
+
+---
+
+### .!28149!sophia
+
+---
+
+### .!28153!special
+
+---
+
+### .!28158!spice
+
+---
+
+### .!28168!srcinfo
+
+---
+
+### .!28173!stata
+
+---
+
+### .!28177!supercollider
+
+---
+
+### .!28180!tablegen
+
+---
+
+### .!28209!templates
+
+---
+
+### .!28215!teraterm
+
+---
+
+### .!28220!testing
+
+---
+
+### .!28231!textedit
+
+---
+
+### .!28236!textfmts
+
+---
+
+### .!28243!theorem
+
+---
+
+### .!28245!thingsdb
+
+---
+
+### .!28264!trafficscript
+
+---
+
+### .!28267!typoscript
+
+---
+
+### .!28272!typst
+
+---
+
+### .!28281!unicon
+
+---
+
+### .!28297!varnish
+
+---
+
+### .!28301!verification
+
+---
+
+### .!28305!verifpal
+
+---
+
+### .!28314!vyper
+
+---
+
+### .!28326!webassembly
+
+---
+
+### .!28331!webidl
+
+---
+
+### .!28335!webmisc
+
+---
+
+### .!28345!whiley
+
+---
+
+### .!28350!wowtoc
 
 ---
 
@@ -206625,6 +212167,10 @@ See https://github.com/dracula/pygments/tree/fee9ed5613d1086bc01b9d0a5a0e9867a00
 
 ---
 
+### .!28395!abap
+
+---
+
 ### emacs
 
 pygments.styles.emacs
@@ -206640,6 +212186,10 @@ A highlighting style for Pygments, inspired by Emacs.
 ##### EmacsStyle
 
 The default style (inspired by Emacs 22).
+
+---
+
+### .!28427!bw
 
 ---
 
@@ -206684,6 +212234,10 @@ A modern grayscale style based on the friendly style.
 
 ---
 
+### .!28478!igor
+
+---
+
 ### fruity
 
 pygments.styles.fruity
@@ -206699,6 +212253,10 @@ pygments version of my "fruity" vim theme.
 ##### FruityStyle
 
 Pygments version of the "native" vim theme.
+
+---
+
+### .!28525!nord
 
 ---
 
@@ -206718,6 +212276,10 @@ Colors extracted from https://github.com/primer/primitives
 ##### GhDarkStyle
 
 Github's Dark-Colorscheme based theme for Pygments
+
+---
+
+### .!28556!rrt
 
 ---
 
@@ -206744,6 +212306,10 @@ Pygments version of the "gruvbox" Light vim theme.
 
 ---
 
+### .!28561!sas
+
+---
+
 ### igor
 
 pygments.styles.igor
@@ -206759,6 +212325,10 @@ Igor Pro default style.
 ##### IgorStyle
 
 Pygments version of the official colors for Igor Pro procedures.
+
+---
+
+### .!28590!trac
 
 ---
 
@@ -206778,6 +212348,10 @@ A highlighting style for Pygments, inspired by the Inkpot theme for VIM.
 
 ---
 
+### .!28594!vim
+
+---
+
 ### lightbulb
 
 pygments.styles.lightbulb
@@ -206793,6 +212367,10 @@ A minimal dark theme based on the Lightbulb theme for VSCode.
 ##### LightbulbStyle
 
 A minimal dark theme based on the Lightbulb theme for VSCode.
+
+---
+
+### .!28599!vs
 
 ---
 
@@ -207349,6 +212927,162 @@ Low contrast Zenburn style.
 
 ---
 
+### .!28384!__init__
+
+---
+
+### .!28390!_mapping
+
+---
+
+### .!28403!algol
+
+---
+
+### .!28407!algol_nu
+
+---
+
+### .!28414!arduino
+
+---
+
+### .!28419!autumn
+
+---
+
+### .!28424!borland
+
+---
+
+### .!28433!coffee
+
+---
+
+### .!28436!colorful
+
+---
+
+### .!28441!default
+
+---
+
+### .!28446!dracula
+
+---
+
+### .!28451!emacs
+
+---
+
+### .!28455!friendly
+
+---
+
+### .!28459!friendly_grayscale
+
+---
+
+### .!28464!fruity
+
+---
+
+### .!28468!gh_dark
+
+---
+
+### .!28473!gruvbox
+
+---
+
+### .!28482!inkpot
+
+---
+
+### .!28487!lightbulb
+
+---
+
+### .!28493!lilypond
+
+---
+
+### .!28497!lovelace
+
+---
+
+### .!28502!manni
+
+---
+
+### .!28507!material
+
+---
+
+### .!28513!monokai
+
+---
+
+### .!28518!murphy
+
+---
+
+### .!28522!native
+
+---
+
+### .!28531!onedark
+
+---
+
+### .!28534!paraiso_dark
+
+---
+
+### .!28539!paraiso_light
+
+---
+
+### .!28543!pastie
+
+---
+
+### .!28547!perldoc
+
+---
+
+### .!28552!rainbow_dash
+
+---
+
+### .!28566!solarized
+
+---
+
+### .!28571!staroffice
+
+---
+
+### .!28576!stata_dark
+
+---
+
+### .!28581!stata_light
+
+---
+
+### .!28585!tango
+
+---
+
+### .!28605!xcode
+
+---
+
+### .!28608!zenburn
+
+---
+
 ### files
 
 #### Fonctions
@@ -207537,6 +213271,10 @@ an `AnsiToWin32` wrapper or the original stream.
 **Paramètres :**
 
 - `f`
+
+---
+
+### .!28662!mode
 
 ---
 
@@ -211751,6 +217489,98 @@ Get the stored complete schema for black's settings.
 
 ---
 
+### .!28613!files
+
+---
+
+### .!28617!parsing
+
+---
+
+### .!28623!handle_ipynb_magics
+
+---
+
+### .!28628!concurrency
+
+---
+
+### .!28632!rusty
+
+---
+
+### .!28638!cache
+
+---
+
+### .!28643!__init__
+
+---
+
+### .!28648!brackets
+
+---
+
+### .!28652!_width_table
+
+---
+
+### .!28658!lines
+
+---
+
+### .!28667!ranges
+
+---
+
+### .!28672!debug
+
+---
+
+### .!28675!trans
+
+---
+
+### .!28681!nodes
+
+---
+
+### .!28685!linegen
+
+---
+
+### .!28690!__main__
+
+---
+
+### .!28694!report
+
+---
+
+### .!28700!strings
+
+---
+
+### .!28704!const
+
+---
+
+### .!28707!output
+
+---
+
+### .!28712!numerics
+
+---
+
+### .!28716!comments
+
+---
+
+### .!28721!schema
+
+---
+
 ### benchmark
 
 ---
@@ -214134,6 +219964,10 @@ Close the ORC file
 
 ---
 
+### .!28760!cffi
+
+---
+
 ### pandas_compat
 
 #### Fonctions
@@ -215055,6 +220889,90 @@ location expected by Arrow which is %USERPROFILE%\Downloads\tzdata.
 
 ---
 
+### .!28773!csv
+
+---
+
+### .!28777!cuda
+
+---
+
+### .!28797!fs
+
+---
+
+### .!28801!ipc
+
+---
+
+### .!28806!json
+
+---
+
+### .!28811!jvm
+
+---
+
+### .!28734!__init__
+
+---
+
+### .!28819!orc
+
+---
+
+### .!28834!util
+
+---
+
+### .!28741!benchmark
+
+---
+
+### .!28746!acero
+
+---
+
+### .!28750!_compute_docstrings
+
+---
+
+### .!28756!_generated_version
+
+---
+
+### .!28764!compute
+
+---
+
+### .!28768!conftest
+
+---
+
+### .!28781!dataset
+
+---
+
+### .!28787!feather
+
+---
+
+### .!28789!flight
+
+---
+
+### .!28815!substrait
+
+---
+
+### .!28824!pandas_compat
+
+---
+
+### .!28827!types
+
+---
+
 ### buffer
 
 #### Classes
@@ -215832,6 +221750,26 @@ pa.Buffer
 - `length`
 - `offset`
 - `allow_copy`
+
+---
+
+### .!28847!__init__
+
+---
+
+### .!28853!buffer
+
+---
+
+### .!28857!column
+
+---
+
+### .!28860!dataframe
+
+---
+
+### .!28866!from_dataframe
 
 ---
 
@@ -216996,7 +222934,19 @@ The partitioning of the Dataset source, if discovered.
 
 ---
 
+### .!28877!core
+
+---
+
 ### encryption
+
+---
+
+### .!28872!__init__
+
+---
+
+### .!28883!encryption
 
 ---
 
@@ -225316,6 +231266,10 @@ Select the innermost frame with the given function name.
 
 ---
 
+### .!29151!util
+
+---
+
 ### test_io
 
 #### Classes
@@ -230779,6 +236733,218 @@ Checks whether it's running on musl systems or not.
 
 ---
 
+### .!28894!arrow_16597
+
+---
+
+### .!28899!arrow_39313
+
+---
+
+### .!28904!arrow_7980
+
+---
+
+### .!28908!conftest
+
+---
+
+### .!28913!strategies
+
+---
+
+### .!28917!pandas_examples
+
+---
+
+### .!28920!pandas_threaded_import
+
+---
+
+### .!28925!read_record_batch
+
+---
+
+### .!28929!test_acero
+
+---
+
+### .!28935!test_adhoc_memory_leak
+
+---
+
+### .!28938!test_array
+
+---
+
+### .!28943!test_builder
+
+---
+
+### .!28948!test_cffi
+
+---
+
+### .!28956!test_compute
+
+---
+
+### .!28961!test_convert_builtin
+
+---
+
+### .!28966!test_cpp_internals
+
+---
+
+### .!28973!test_csv
+
+---
+
+### .!28976!test_cuda
+
+---
+
+### .!28981!test_cuda_numba_interop
+
+---
+
+### .!28986!test_cython
+
+---
+
+### .!28992!test_dataset
+
+---
+
+### .!28997!test_dataset_encryption
+
+---
+
+### .!29002!test_deprecations
+
+---
+
+### .!29008!test_device
+
+---
+
+### .!29013!test_dlpack
+
+---
+
+### .!29017!test_exec_plan
+
+---
+
+### .!29022!test_extension_type
+
+---
+
+### .!29026!test_feather
+
+---
+
+### .!29033!test_flight
+
+---
+
+### .!29038!test_flight_async
+
+---
+
+### .!29042!test_fs
+
+---
+
+### .!29048!test_gandiva
+
+---
+
+### .!29053!test_gdb
+
+---
+
+### .!29058!test_io
+
+---
+
+### .!29061!test_ipc
+
+---
+
+### .!29067!test_json
+
+---
+
+### .!29073!test_jvm
+
+---
+
+### .!29077!test_memory
+
+---
+
+### .!29081!test_misc
+
+---
+
+### .!29085!test_orc
+
+---
+
+### .!29090!test_pandas
+
+---
+
+### .!29094!test_scalars
+
+---
+
+### .!29100!test_schema
+
+---
+
+### .!29105!test_sparse_tensor
+
+---
+
+### .!29111!test_strategies
+
+---
+
+### .!29115!test_substrait
+
+---
+
+### .!29120!test_table
+
+---
+
+### .!29125!test_tensor
+
+---
+
+### .!29130!test_types
+
+---
+
+### .!29135!test_udf
+
+---
+
+### .!29139!test_util
+
+---
+
+### .!29144!test_without_numpy
+
+---
+
+### .!29155!wsgi_examples
+
+---
+
 ### test_conversion
 
 #### Fonctions
@@ -230943,6 +237109,18 @@ Checks whether it's running on musl systems or not.
 - `indices_type`
 - `bitwidth`
 - `f_string`
+
+---
+
+### .!29162!__init__
+
+---
+
+### .!29166!test_conversion
+
+---
+
+### .!29175!test_interchange_spec
 
 ---
 
@@ -232746,6 +238924,62 @@ Applies to read_table, ParquetDataset, and ParquetFile
 
 ---
 
+### .!29178!__init__
+
+---
+
+### .!29186!common
+
+---
+
+### .!29190!conftest
+
+---
+
+### .!29195!encryption
+
+---
+
+### .!29200!test_basic
+
+---
+
+### .!29204!test_compliant_nested_type
+
+---
+
+### .!29207!test_data_types
+
+---
+
+### .!29211!test_dataset
+
+---
+
+### .!29217!test_datetime
+
+---
+
+### .!29223!test_encryption
+
+---
+
+### .!29231!test_metadata
+
+---
+
+### .!29236!test_pandas
+
+---
+
+### .!29240!test_parquet_file
+
+---
+
+### .!29245!test_parquet_writer
+
+---
+
 ### docscrape
 
 Extract reference documentation from the NumPy source tree.
@@ -233438,6 +239672,18 @@ Takes a string like abc.1.twelve and turns it into ("abc", 1, "twelve").
 ##### minor
 
 ##### micro
+
+---
+
+### .!29250!__init__
+
+---
+
+### .!29254!docscrape
+
+---
+
+### .!29259!version
 
 ---
 
@@ -236912,6 +243158,10 @@ Populate FileDescriptorProto for MessageFactory's DescriptorPool.
 
 ---
 
+### .!29277!any
+
+---
+
 ### reflection
 
 Contains a metaclass and helper functions used to create
@@ -239296,9 +245546,137 @@ Generated protocol buffer code.
 
 ---
 
+### .!29266!__init__
+
+---
+
+### .!29271!descriptor
+
+---
+
+### .!29296!descriptor_database
+
+---
+
+### .!29301!descriptor_pool
+
+---
+
+### .!29306!duration
+
+---
+
+### .!29392!json_format
+
+---
+
+### .!29399!message
+
+---
+
+### .!29404!message_factory
+
+---
+
+### .!29408!proto_json
+
+---
+
+### .!29413!proto
+
+---
+
+### .!29418!proto_builder
+
+---
+
+### .!29432!reflection
+
+---
+
+### .!29434!runtime_version
+
+---
+
+### .!29439!service
+
+---
+
+### .!29444!service_reflection
+
+---
+
+### .!29447!symbol_database
+
+---
+
+### .!29458!text_encoding
+
+---
+
+### .!29462!text_format
+
+---
+
+### .!29468!timestamp
+
+---
+
+### .!29473!unknown_fields
+
+---
+
+### .!29478!api_pb2
+
+---
+
+### .!29490!any_pb2
+
+---
+
+### .!29494!descriptor_pb2
+
+---
+
+### .!29500!duration_pb2
+
+---
+
+### .!29505!empty_pb2
+
+---
+
+### .!29507!field_mask_pb2
+
+---
+
+### .!29511!source_context_pb2
+
+---
+
+### .!29517!struct_pb2
+
+---
+
+### .!29521!timestamp_pb2
+
+---
+
+### .!29526!type_pb2
+
+---
+
+### .!29532!wrappers_pb2
+
+---
+
 ### plugin_pb2
 
 Generated protocol buffer code.
+
+---
+
+### .!29290!plugin_pb2
 
 ---
 
@@ -244376,6 +250754,74 @@ Returns:
 
 ---
 
+### .!29312!__init__
+
+---
+
+### .!29317!_parameterized
+
+---
+
+### .!29321!api_implementation
+
+---
+
+### .!29325!builder
+
+---
+
+### .!29330!containers
+
+---
+
+### .!29336!decoder
+
+---
+
+### .!29341!encoder
+
+---
+
+### .!29346!enum_type_wrapper
+
+---
+
+### .!29349!extension_dict
+
+---
+
+### .!29354!field_mask
+
+---
+
+### .!29359!message_listener
+
+---
+
+### .!29366!python_edition_defaults
+
+---
+
+### .!29370!python_message
+
+---
+
+### .!29374!testing_refleaks
+
+---
+
+### .!29380!type_checkers
+
+---
+
+### .!29384!well_known_types
+
+---
+
+### .!29388!wire_format
+
+---
+
 ### cpp_message
 
 Protocol message implementation hooks for C++ implementation.
@@ -244404,6 +250850,10 @@ myproto.foo_field = 23
 The above example will not work for nested types. If you wish to include them,
 use reflection.MakeClass() instead of manually instantiating the class in
 order to create the appropriate class structure.
+
+---
+
+### .!29428!cpp_message
 
 ---
 
@@ -247057,6 +253507,146 @@ Example:
 
 ---
 
+### .!29540!__init__
+
+---
+
+### .!29546!_agent
+
+---
+
+### .!29553!_agent_id
+
+---
+
+### .!29558!_agent_instantiation
+
+---
+
+### .!29562!_agent_metadata
+
+---
+
+### .!29568!_agent_proxy
+
+---
+
+### .!29574!_agent_runtime
+
+---
+
+### .!29578!_agent_type
+
+---
+
+### .!29583!_base_agent
+
+---
+
+### .!29588!_cache_store
+
+---
+
+### .!29595!_cancellation_token
+
+---
+
+### .!29598!_closure_agent
+
+---
+
+### .!29603!_component_config
+
+---
+
+### .!29606!_constants
+
+---
+
+### .!29610!_default_subscription
+
+---
+
+### .!29616!_default_topic
+
+---
+
+### .!29619!_function_utils
+
+---
+
+### .!29626!_image
+
+---
+
+### .!29630!_intervention
+
+---
+
+### .!29636!_message_context
+
+---
+
+### .!29642!_message_handler_context
+
+---
+
+### .!29645!_queue
+
+---
+
+### .!29652!_routed_agent
+
+---
+
+### .!29655!_runtime_impl_helpers
+
+---
+
+### .!29658!_serialization
+
+---
+
+### .!29662!_single_threaded_agent_runtime
+
+---
+
+### .!29668!_subscription
+
+---
+
+### .!29671!_subscription_context
+
+---
+
+### .!29675!_topic
+
+---
+
+### .!29680!_type_helpers
+
+---
+
+### .!29684!_type_prefix_subscription
+
+---
+
+### .!29689!_type_subscription
+
+---
+
+### .!29694!_types
+
+---
+
+### .!29699!exceptions
+
+---
+
+### .!29705!logging
+
+---
+
 ### _constants
 
 ---
@@ -247425,6 +254015,30 @@ Returns:
 
 ---
 
+### .!29709!__init__
+
+---
+
+### .!29713!_constants
+
+---
+
+### .!29719!_genai
+
+---
+
+### .!29724!_propagation
+
+---
+
+### .!29730!_tracing
+
+---
+
+### .!29734!_tracing_config
+
+---
+
 ### _base
 
 #### Classes
@@ -247681,6 +254295,18 @@ Returns:
 
 ---
 
+### .!29737!__init__
+
+---
+
+### .!29745!_base
+
+---
+
+### .!29750!_func_with_reqs
+
+---
+
 ### _base_memory
 
 #### Classes
@@ -247837,6 +254463,18 @@ Args:
 - `config`
 
 ##### _to_config
+
+---
+
+### .!29754!__init__
+
+---
+
+### .!29760!_base_memory
+
+---
+
+### .!29764!_list_memory
 
 ---
 
@@ -248059,6 +254697,30 @@ An unbounded chat completion context that keeps a view of the all the messages.
 
 ---
 
+### .!29772!__init__
+
+---
+
+### .!29775!_buffered_chat_completion_context
+
+---
+
+### .!29780!_chat_completion_context
+
+---
+
+### .!29787!_head_and_tail_chat_completion_context
+
+---
+
+### .!29792!_token_limited_chat_completion_context
+
+---
+
+### .!29797!_unbounded_chat_completion_context
+
+---
+
 ### _model_client
 
 #### Classes
@@ -248237,6 +254899,18 @@ Create result contains the output of a model completion.
 
 ---
 
+### .!29801!__init__
+
+---
+
+### .!29807!_model_client
+
+---
+
+### .!29812!_types
+
+---
+
 ### _caller_loop
 
 ---
@@ -248278,6 +254952,18 @@ Args:
 - `tools`
 
 ##### tools
+
+---
+
+### .!29818!__init__
+
+---
+
+### .!29823!_caller_loop
+
+---
+
+### .!29828!_tool_agent
 
 ---
 
@@ -248655,6 +255341,26 @@ Args:
 
 ---
 
+### .!29832!__init__
+
+---
+
+### .!29837!_base
+
+---
+
+### .!29843!_function_tool
+
+---
+
+### .!29850!_static_workbench
+
+---
+
+### .!29854!_workbench
+
+---
+
 ### _json_to_pydantic
 
 #### Classes
@@ -248972,6 +255678,18 @@ Extract JSON objects from a string. Supports backtick enclosed JSON objects
 **Paramètres :**
 
 - `content`
+
+---
+
+### .!29860!__init__
+
+---
+
+### .!29863!_json_to_pydantic
+
+---
+
+### .!29867!_load_json
 
 ---
 
@@ -250042,6 +256760,38 @@ If the exception is unintended, fix the underlying cause.
 If the exception is intended, switch to :ref:`new-style hook wrappers
 <hookwrappers>`, or use :func:`result.force_exception()
 <pluggy.Result.force_exception>` to set the exception instead of raising.
+
+---
+
+### .!29873!__init__
+
+---
+
+### .!29876!_callers
+
+---
+
+### .!29883!_hooks
+
+---
+
+### .!29887!_manager
+
+---
+
+### .!29892!_result
+
+---
+
+### .!29897!_tracing
+
+---
+
+### .!29903!_version
+
+---
+
+### .!29906!_warnings
 
 ---
 
@@ -263301,6 +270051,390 @@ Note: All data is stored in little-Endian (Intel) byte order.
 
 ---
 
+### .!29918!MpoImagePlugin
+
+---
+
+### .!29923!ImageMode
+
+---
+
+### .!29929!PngImagePlugin
+
+---
+
+### .!29933!AvifImagePlugin
+
+---
+
+### .!29939!XbmImagePlugin
+
+---
+
+### .!29942!PcxImagePlugin
+
+---
+
+### .!29947!SunImagePlugin
+
+---
+
+### .!29953!ImageFile
+
+---
+
+### .!29957!SpiderImagePlugin
+
+---
+
+### .!29962!TarIO
+
+---
+
+### .!29966!MpegImagePlugin
+
+---
+
+### .!29970!BdfFontFile
+
+---
+
+### .!29975!GribStubImagePlugin
+
+---
+
+### .!29980!ImageStat
+
+---
+
+### .!29985!PixarImagePlugin
+
+---
+
+### .!29992!GimpPaletteFile
+
+---
+
+### .!29997!ImageColor
+
+---
+
+### .!30001!QoiImagePlugin
+
+---
+
+### .!30008!ContainerIO
+
+---
+
+### .!30012!_typing
+
+---
+
+### .!30016!MspImagePlugin
+
+---
+
+### .!30021!MicImagePlugin
+
+---
+
+### .!30025!_version
+
+---
+
+### .!30029!ImtImagePlugin
+
+---
+
+### .!30034!GifImagePlugin
+
+---
+
+### .!30038!PalmImagePlugin
+
+---
+
+### .!30043!ImageQt
+
+---
+
+### .!30048!ImageMath
+
+---
+
+### .!30052!PaletteFile
+
+---
+
+### .!30056!FontFile
+
+---
+
+### .!30062!PdfParser
+
+---
+
+### .!30065!ExifTags
+
+---
+
+### .!30069!ImageCms
+
+---
+
+### .!30074!FpxImagePlugin
+
+---
+
+### .!30079!ImageChops
+
+---
+
+### .!30084!_deprecate
+
+---
+
+### .!30088!ImageFilter
+
+---
+
+### .!30093!BufrStubImagePlugin
+
+---
+
+### .!30098!PSDraw
+
+---
+
+### .!30101!PcdImagePlugin
+
+---
+
+### .!30106!ImageDraw2
+
+---
+
+### .!30110!ImagePath
+
+---
+
+### .!30115!DcxImagePlugin
+
+---
+
+### .!30121!__init__
+
+---
+
+### .!30127!JpegPresets
+
+---
+
+### .!30134!Hdf5StubImagePlugin
+
+---
+
+### .!30139!features
+
+---
+
+### .!30145!ImageDraw
+
+---
+
+### .!30150!GimpGradientFile
+
+---
+
+### .!30155!ImageWin
+
+---
+
+### .!30159!IcoImagePlugin
+
+---
+
+### .!30164!_tkinter_finder
+
+---
+
+### .!30168!EpsImagePlugin
+
+---
+
+### .!30173!TgaImagePlugin
+
+---
+
+### .!30178!ImageMorph
+
+---
+
+### .!30183!Jpeg2KImagePlugin
+
+---
+
+### .!30186!WalImageFile
+
+---
+
+### .!30191!PcfFontFile
+
+---
+
+### .!30197!BlpImagePlugin
+
+---
+
+### .!30201!ImageTk
+
+---
+
+### .!30205!GbrImagePlugin
+
+---
+
+### .!30209!ImageOps
+
+---
+
+### .!30216!ImageShow
+
+---
+
+### .!30221!PdfImagePlugin
+
+---
+
+### .!30226!ImageEnhance
+
+---
+
+### .!30232!WmfImagePlugin
+
+---
+
+### .!30236!ImageGrab
+
+---
+
+### .!30241!WebPImagePlugin
+
+---
+
+### .!30247!FliImagePlugin
+
+---
+
+### .!30250!TiffTags
+
+---
+
+### .!30256!CurImagePlugin
+
+---
+
+### .!30260!GdImageFile
+
+---
+
+### .!30263!_util
+
+---
+
+### .!30270!TiffImagePlugin
+
+---
+
+### .!30275!IptcImagePlugin
+
+---
+
+### .!30279!ImagePalette
+
+---
+
+### .!30284!BmpImagePlugin
+
+---
+
+### .!30290!ImageTransform
+
+---
+
+### .!30297!IcnsImagePlugin
+
+---
+
+### .!30304!McIdasImagePlugin
+
+---
+
+### .!30311!FitsImagePlugin
+
+---
+
+### .!30317!XpmImagePlugin
+
+---
+
+### .!30321!DdsImagePlugin
+
+---
+
+### .!30326!_binary
+
+---
+
+### .!30332!ImageSequence
+
+---
+
+### .!30336!Image
+
+---
+
+### .!30341!__main__
+
+---
+
+### .!30347!XVThumbImagePlugin
+
+---
+
+### .!30351!SgiImagePlugin
+
+---
+
+### .!30355!ImageFont
+
+---
+
+### .!30360!report
+
+---
+
+### .!30366!ImImagePlugin
+
+---
+
+### .!30371!PsdImagePlugin
+
+---
+
+### .!30376!JpegImagePlugin
+
+---
+
+### .!30379!PpmImagePlugin
+
+---
+
+### .!30383!FtexImagePlugin
+
+---
+
 ### requirements
 
 #### Classes
@@ -264180,6 +271314,10 @@ Generate musllinux tags compatible to the current platform.
 **Paramètres :**
 
 - `archs`
+
+---
+
+### .!30433!tags
 
 ---
 
@@ -265654,6 +272792,58 @@ Release segment without any trailing zeros.
 
 ---
 
+### .!30391!__init__
+
+---
+
+### .!30394!requirements
+
+---
+
+### .!30399!_elffile
+
+---
+
+### .!30404!specifiers
+
+---
+
+### .!30409!_manylinux
+
+---
+
+### .!30414!_musllinux
+
+---
+
+### .!30420!_parser
+
+---
+
+### .!30425!_structures
+
+---
+
+### .!30429!_tokenizer
+
+---
+
+### .!30439!markers
+
+---
+
+### .!30444!metadata
+
+---
+
+### .!30447!utils
+
+---
+
+### .!30452!version
+
+---
+
 ### _spdx
 
 #### Classes
@@ -265661,6 +272851,14 @@ Release segment without any trailing zeros.
 ##### SPDXLicense
 
 ##### SPDXException
+
+---
+
+### .!30457!__init__
+
+---
+
+### .!30461!_spdx
 
 ---
 
@@ -266382,6 +273580,46 @@ Does self appear in other?
 
 ---
 
+### .!30474!__init__
+
+---
+
+### .!30481!_adapters
+
+---
+
+### .!30485!_collections
+
+---
+
+### .!30492!_compat
+
+---
+
+### .!30496!_functools
+
+---
+
+### .!30501!_itertools
+
+---
+
+### .!30505!_meta
+
+---
+
+### .!30509!_text
+
+---
+
+### .!30516!_typing
+
+---
+
+### .!30520!diagnose
+
+---
+
 ### py311
 
 #### Fonctions
@@ -266427,6 +273665,14 @@ Workaround for ``EntryPoint`` objects without the ``matches`` method.
 **Paramètres :**
 
 - `ep`
+
+---
+
+### .!30535!py39
+
+---
+
+### .!30532!py311
 
 ---
 
@@ -268022,6 +275268,62 @@ True
 - `coverage`
 - `durations`
 - `tests`
+
+---
+
+### .!30542!_array_api_info
+
+---
+
+### .!30547!conftest
+
+---
+
+### .!30550!version
+
+---
+
+### .!30557!_globals
+
+---
+
+### .!30561!_configtool
+
+---
+
+### .!30567!__init__
+
+---
+
+### .!30572!__config__
+
+---
+
+### .!30575!dtypes
+
+---
+
+### .!30579!exceptions
+
+---
+
+### .!30584!_distributor_init
+
+---
+
+### .!30589!ctypeslib
+
+---
+
+### .!30593!matlib
+
+---
+
+### .!30599!_expired_attrs_2_0
+
+---
+
+### .!30604!_pytesttester
 
 ---
 
@@ -270990,6 +278292,14 @@ the argument list in a single dictionary.
 
 - `f`
 - `p`
+
+---
+
+### .!30648!log
+
+---
+
+### .!30679!core
 
 ---
 
@@ -274421,6 +281731,98 @@ in order to get the full picture.
 
 ---
 
+### .!30610!unixccompiler
+
+---
+
+### .!30614!numpy_distribution
+
+---
+
+### .!30617!conv_template
+
+---
+
+### .!30624!cpuinfo
+
+---
+
+### .!30629!ccompiler
+
+---
+
+### .!30634!msvc9compiler
+
+---
+
+### .!30640!npy_pkg_config
+
+---
+
+### .!30643!misc_util
+
+---
+
+### .!30654!line_endings
+
+---
+
+### .!30657!lib2def
+
+---
+
+### .!30665!pathccompiler
+
+---
+
+### .!30669!system_info
+
+---
+
+### .!30674!__init__
+
+---
+
+### .!30682!exec_command
+
+---
+
+### .!30689!from_template
+
+---
+
+### .!30693!fujitsuccompiler
+
+---
+
+### .!30696!mingw32ccompiler
+
+---
+
+### .!30701!extension
+
+---
+
+### .!30705!msvccompiler
+
+---
+
+### .!30710!armccompiler
+
+---
+
+### .!30716!intelccompiler
+
+---
+
+### .!30721!_shell_utils
+
+---
+
+### .!30726!ccompiler_opt
+
+---
+
 ### test_system_info
 
 #### Classes
@@ -275200,6 +282602,70 @@ Context manager to emulate os.name != 'posix'
 
 ---
 
+### .!30732!test_system_info
+
+---
+
+### .!30736!test_ccompiler_opt_conf
+
+---
+
+### .!30743!test_mingw32ccompiler
+
+---
+
+### .!30746!test_from_template
+
+---
+
+### .!30756!test_log
+
+---
+
+### .!30760!test_fcompiler_intel
+
+---
+
+### .!30765!utilities
+
+---
+
+### .!30770!test_misc_util
+
+---
+
+### .!30776!test_fcompiler
+
+---
+
+### .!30780!test_build_ext
+
+---
+
+### .!30785!test_shell_utils
+
+---
+
+### .!30790!test_exec_command
+
+---
+
+### .!30793!test_npy_pkg_config
+
+---
+
+### .!30796!test_fcompiler_nagfor
+
+---
+
+### .!30801!test_ccompiler_opt
+
+---
+
+### .!30806!test_fcompiler_gnu
+
+---
+
 ### gnu
 
 #### Classes
@@ -275880,6 +283346,10 @@ List of compiler library directories.
 
 ---
 
+### .!30811!gnu
+
+---
+
 ### environment
 
 #### Classes
@@ -275966,6 +283436,10 @@ List of compiler library directories.
 
 ---
 
+### .!30826!none
+
+---
+
 ### fujitsu
 
 fujitsu
@@ -275997,6 +283471,10 @@ This compiler is developed by Fujitsu and is used in A64FX on Fugaku.
 - `dir`
 
 ##### get_libraries
+
+---
+
+### .!30832!nag
 
 ---
 
@@ -276054,6 +283532,10 @@ This compiler is developed by Fujitsu and is used in A64FX on Fugaku.
 
 ---
 
+### .!30835!pg
+
+---
+
 ### vast
 
 #### Classes
@@ -276073,6 +283555,70 @@ This compiler is developed by Fujitsu and is used in A64FX on Fugaku.
 ##### get_version_cmd
 
 ##### get_flags_arch
+
+---
+
+### .!30817!compaq
+
+---
+
+### .!30821!intel
+
+---
+
+### .!30842!ibm
+
+---
+
+### .!30846!sun
+
+---
+
+### .!30849!nv
+
+---
+
+### .!30853!lahey
+
+---
+
+### .!30858!__init__
+
+---
+
+### .!30862!g95
+
+---
+
+### .!30867!arm
+
+---
+
+### .!30873!mips
+
+---
+
+### .!30875!hpux
+
+---
+
+### .!30882!environment
+
+---
+
+### .!30885!pathf95
+
+---
+
+### .!30889!fujitsu
+
+---
+
+### .!30894!absoft
+
+---
+
+### .!30898!vast
 
 ---
 
@@ -277007,6 +284553,78 @@ files with filenames.
 
 ---
 
+### .!30902!build
+
+---
+
+### .!30907!config_compiler
+
+---
+
+### .!30910!build_ext
+
+---
+
+### .!30915!config
+
+---
+
+### .!30920!install_headers
+
+---
+
+### .!30924!build_py
+
+---
+
+### .!30930!build_src
+
+---
+
+### .!30936!__init__
+
+---
+
+### .!30943!sdist
+
+---
+
+### .!30948!build_scripts
+
+---
+
+### .!30955!bdist_rpm
+
+---
+
+### .!30959!install_clib
+
+---
+
+### .!30963!build_clib
+
+---
+
+### .!30968!autodist
+
+---
+
+### .!30972!egg_info
+
+---
+
+### .!30977!install
+
+---
+
+### .!30981!develop
+
+---
+
+### .!30985!install_data
+
+---
+
 ### _pep440
 
 Utility to compare pep440 compatible version strings.
@@ -277502,6 +285120,26 @@ argument is an optional function to format the sequence of arguments.
 
 ---
 
+### .!30990!_pep440
+
+---
+
+### .!30996!__init__
+
+---
+
+### .!30999!_convertions
+
+---
+
+### .!31005!_inspect
+
+---
+
+### .!31010!__init__
+
+---
+
 ### py3k
 
 Python 3.X compatibility tools.
@@ -277634,6 +285272,18 @@ mod : module
 ##### __enter__
 
 ##### __exit__
+
+---
+
+### .!31017!py3k
+
+---
+
+### .!31022!__init__
+
+---
+
+### .!31033!__init__
 
 ---
 
@@ -277859,6 +285509,82 @@ mod : module
 **Paramètres :**
 
 - `attr_name`
+
+---
+
+### .!31035!umath
+
+---
+
+### .!31043!fromnumeric
+
+---
+
+### .!31048!_dtype
+
+---
+
+### .!31054!_internal
+
+---
+
+### .!31060!multiarray
+
+---
+
+### .!31066!records
+
+---
+
+### .!31072!__init__
+
+---
+
+### .!31075!overrides
+
+---
+
+### .!31079!getlimits
+
+---
+
+### .!31085!_dtype_ctypes
+
+---
+
+### .!31088!defchararray
+
+---
+
+### .!31092!shape_base
+
+---
+
+### .!31098!numeric
+
+---
+
+### .!31101!function_base
+
+---
+
+### .!31107!einsumfunc
+
+---
+
+### .!31113!numerictypes
+
+---
+
+### .!31117!arrayprint
+
+---
+
+### .!31121!_utils
+
+---
+
+### .!31126!_multiarray_umath
 
 ---
 
@@ -280693,6 +288419,18 @@ array([ 3.,  8., 10.])
 
 ---
 
+### .!31132!__init__
+
+---
+
+### .!31136!_linalg
+
+---
+
+### .!31139!linalg
+
+---
+
 ### test_linalg
 
 Test functions for linalg module
@@ -281719,6 +289457,18 @@ Test functions for linalg module
 - `rtol`
 
 ##### test_openblas_threading
+
+---
+
+### .!31144!test_linalg
+
+---
+
+### .!31148!test_deprecations
+
+---
+
+### .!31159!test_regression
 
 ---
 
@@ -283627,6 +291377,10 @@ Returns the result of the loose comparison between x and y).
 
 - `x`
 - `y`
+
+---
+
+### .!31179!core
 
 ---
 
@@ -290632,6 +298386,26 @@ Return a 3-tuple for pickling a MaskedArray.
 
 ---
 
+### .!31165!extras
+
+---
+
+### .!31167!testutils
+
+---
+
+### .!31175!__init__
+
+---
+
+### .!31184!timer_comparison
+
+---
+
+### .!31188!mrecords
+
+---
+
 ### test_old_ma
 
 #### Classes
@@ -293014,6 +300788,38 @@ Tests suite for mrecords.
 ##### test_masked_array_tobytes_fortran
 
 ##### test_structured_array
+
+---
+
+### .!31193!test_old_ma
+
+---
+
+### .!31197!test_core
+
+---
+
+### .!31203!test_deprecations
+
+---
+
+### .!31215!test_subclassing
+
+---
+
+### .!31220!test_extras
+
+---
+
+### .!31225!test_arrayobject
+
+---
+
+### .!31230!test_mrecords
+
+---
+
+### .!31233!test_regression
 
 ---
 
@@ -310839,6 +318645,126 @@ the signature of __init__.
 - `x`
 
 ##### wrapper
+
+---
+
+### .!31239!umath
+
+---
+
+### .!31246!fromnumeric
+
+---
+
+### .!31250!_add_newdocs
+
+---
+
+### .!31256!_dtype
+
+---
+
+### .!31260!_methods
+
+---
+
+### .!31265!_internal
+
+---
+
+### .!31271!_string_helpers
+
+---
+
+### .!31275!multiarray
+
+---
+
+### .!31281!_asarray
+
+---
+
+### .!31284!records
+
+---
+
+### .!31290!_add_newdocs_scalars
+
+---
+
+### .!31294!__init__
+
+---
+
+### .!31299!_machar
+
+---
+
+### .!31306!overrides
+
+---
+
+### .!31310!memmap
+
+---
+
+### .!31315!getlimits
+
+---
+
+### .!31321!_dtype_ctypes
+
+---
+
+### .!31328!defchararray
+
+---
+
+### .!31333!shape_base
+
+---
+
+### .!31338!numeric
+
+---
+
+### .!31342!function_base
+
+---
+
+### .!31348!einsumfunc
+
+---
+
+### .!31351!_ufunc_config
+
+---
+
+### .!31355!_exceptions
+
+---
+
+### .!31361!numerictypes
+
+---
+
+### .!31364!cversions
+
+---
+
+### .!31371!_type_aliases
+
+---
+
+### .!31374!strings
+
+---
+
+### .!31378!printoptions
+
+---
+
+### .!31382!arrayprint
 
 ---
 
@@ -332496,6 +340422,274 @@ x.flat shouldn't modify data
 
 ---
 
+### .!31390!test_numerictypes
+
+---
+
+### .!31395!test_scalar_methods
+
+---
+
+### .!31399!test_scalarmath
+
+---
+
+### .!31403!test_item_selection
+
+---
+
+### .!31408!test_array_coercion
+
+---
+
+### .!31413!test_limited_api
+
+---
+
+### .!31416!test_casting_floatingpoint_errors
+
+---
+
+### .!31421!test_machar
+
+---
+
+### .!31426!_natype
+
+---
+
+### .!31429!test_unicode
+
+---
+
+### .!31434!test_cpu_dispatcher
+
+---
+
+### .!31439!test_arrayprint
+
+---
+
+### .!31442!test_multithreading
+
+---
+
+### .!31447!test_scalarbuffer
+
+---
+
+### .!31454!test_indexerrors
+
+---
+
+### .!31458!test_print
+
+---
+
+### .!31463!test_half
+
+---
+
+### .!31468!test_arraymethod
+
+---
+
+### .!31473!test_mem_overlap
+
+---
+
+### .!31478!test_shape_base
+
+---
+
+### .!31484!test_hashtable
+
+---
+
+### .!31489!test_array_interface
+
+---
+
+### .!31494!test_deprecations
+
+---
+
+### .!31499!test_errstate
+
+---
+
+### .!31505!test_nep50_promotions
+
+---
+
+### .!31509!test_records
+
+---
+
+### .!31516!test_mem_policy
+
+---
+
+### .!31520!test_simd
+
+---
+
+### .!31523!test_scalarinherit
+
+---
+
+### .!31528!test_indexing
+
+---
+
+### .!31532!test_umath
+
+---
+
+### .!31536!test_numeric
+
+---
+
+### .!31541!test_function_base
+
+---
+
+### .!31547!test_datetime
+
+---
+
+### .!31550!test__exceptions
+
+---
+
+### .!31554!test_extint128
+
+---
+
+### .!31559!test_cython
+
+---
+
+### .!31564!test_umath_complex
+
+---
+
+### .!31568!_locales
+
+---
+
+### .!31573!test_custom_dtypes
+
+---
+
+### .!31577!test_defchararray
+
+---
+
+### .!31582!test_conversion_utils
+
+---
+
+### .!31587!test_arrayobject
+
+---
+
+### .!31590!test_scalarprint
+
+---
+
+### .!31598!test_casting_unittests
+
+---
+
+### .!31602!test_abc
+
+---
+
+### .!31607!test_ufunc
+
+---
+
+### .!31613!test_dtype
+
+---
+
+### .!31618!test_umath_accuracy
+
+---
+
+### .!31623!test_simd_module
+
+---
+
+### .!31628!test_getlimits
+
+---
+
+### .!31634!test_stringdtype
+
+---
+
+### .!31638!test_strings
+
+---
+
+### .!31644!test_dlpack
+
+---
+
+### .!31650!test_einsum
+
+---
+
+### .!31655!test_api
+
+---
+
+### .!31660!test_longdouble
+
+---
+
+### .!31665!test_overrides
+
+---
+
+### .!31671!test_scalar_ctors
+
+---
+
+### .!31675!test_multiarray
+
+---
+
+### .!31681!test_memmap
+
+---
+
+### .!31685!test_nditer
+
+---
+
+### .!31690!test_cpu_features
+
+---
+
+### .!31693!test_protocols
+
+---
+
+### .!31697!test_array_api_info
+
+---
+
+### .!31702!test_argparse
+
+---
+
+### .!31705!test_regression
+
+---
+
 ### setup
 
 Provide python-space access to the functions exposed in numpy/__init__.pxd
@@ -332503,9 +340697,17 @@ for testing.
 
 ---
 
+### .!31713!setup
+
+---
+
 ### setup
 
 Build an example package using the limited Python C API.
+
+---
+
+### .!31717!setup
 
 ---
 
@@ -332797,6 +340999,54 @@ Return the number of occurrences of `value`.
 ##### index
 
 Return the first index of `value`.
+
+---
+
+### .!31723!_char_codes
+
+---
+
+### .!31729!_extended_precision
+
+---
+
+### .!31735!_nbit
+
+---
+
+### .!31738!_ufunc
+
+---
+
+### .!31743!__init__
+
+---
+
+### .!31748!_dtype_like
+
+---
+
+### .!31751!_nbit_base
+
+---
+
+### .!31755!_array_like
+
+---
+
+### .!31759!_scalars
+
+---
+
+### .!31764!_shape
+
+---
+
+### .!31769!_add_docstring
+
+---
+
+### .!31774!_nested_sequence
 
 ---
 
@@ -333269,6 +341519,50 @@ Check the numpy config is valid.
 
 ---
 
+### .!31779!test_warnings
+
+---
+
+### .!31782!test_matlib
+
+---
+
+### .!31787!test_ctypeslib
+
+---
+
+### .!31790!test_lazyloading
+
+---
+
+### .!31794!test__all__
+
+---
+
+### .!31798!test_numpy_version
+
+---
+
+### .!31808!test_reloading
+
+---
+
+### .!31812!test_scripts
+
+---
+
+### .!31818!test_public_api
+
+---
+
+### .!31823!test_configtool
+
+---
+
+### .!31825!test_numpy_config
+
+---
+
 ### hook-numpy
 
 This hook should collect all binary files and any hidden modules that numpy
@@ -333276,6 +341570,10 @@ needs.
 
 Our (some-what inadequate) docs for writing PyInstaller hooks are kept here:
 https://pyinstaller.readthedocs.io/en/stable/hooks.html
+
+---
+
+### .!31834!hook-numpy
 
 ---
 
@@ -333307,6 +341605,22 @@ output - merely that it made it to the end OK. This script should not
 explicitly import any of numpy's submodules as that gives PyInstaller undue
 hints that those submodules exist and should be collected (accessing implicitly
 loaded submodules is OK).
+
+---
+
+### .!31836!test_pyinstaller
+
+---
+
+### .!31843!__init__
+
+---
+
+### .!31846!pyinstaller-smoke
+
+---
+
+### .!31850!__init__
 
 ---
 
@@ -333428,6 +341742,14 @@ Handle all import-based overrides.
 **Paramètres :**
 
 - `file`
+
+---
+
+### .!31855!__init__
+
+---
+
+### .!31857!mypy_plugin
 
 ---
 
@@ -333623,6 +341945,18 @@ Test that ``TYPES.keys()`` and ``numpy.typing.__all__`` are synced.
 
 ---
 
+### .!31865!test_isfile
+
+---
+
+### .!31869!test_typing
+
+---
+
+### .!31873!test_runtime
+
+---
+
 ### fromnumeric
 
 Tests for :mod:`numpy._core.fromnumeric`.
@@ -333766,6 +342100,10 @@ These tests are based on the doctests from `numpy/lib/recfunctions.py`.
 
 ---
 
+### .!31904!ma
+
+---
+
 ### array_constructors
 
 #### Classes
@@ -333813,6 +342151,10 @@ function-based counterpart in `../from_numeric.py`.
 ---
 
 ### ndarray_shape_manipulation
+
+---
+
+### .!32007!mod
 
 ---
 
@@ -334102,6 +342444,142 @@ Based on the `if __name__ == "__main__"` test code in `lib/_user_array_impl.py`.
 ---
 
 ### bitwise_ops
+
+---
+
+### .!31883!fromnumeric
+
+---
+
+### .!31887!arithmetic
+
+---
+
+### .!31890!recfunctions
+
+---
+
+### .!31897!ndarray_conversion
+
+---
+
+### .!31899!literal
+
+---
+
+### .!31908!comparisons
+
+---
+
+### .!31911!multiarray
+
+---
+
+### .!31915!array_constructors
+
+---
+
+### .!31920!dtype
+
+---
+
+### .!31922!ndarray_misc
+
+---
+
+### .!31926!ndarray_shape_manipulation
+
+---
+
+### .!31931!ufuncs
+
+---
+
+### .!31935!ufunc_config
+
+---
+
+### .!31939!nditer
+
+---
+
+### .!31943!simple_py3
+
+---
+
+### .!31946!random
+
+---
+
+### .!31950!index_tricks
+
+---
+
+### .!31956!warnings_and_errors
+
+---
+
+### .!31959!arrayterator
+
+---
+
+### .!31963!numeric
+
+---
+
+### .!31968!lib_utils
+
+---
+
+### .!31973!shape
+
+---
+
+### .!31976!modules
+
+---
+
+### .!31978!einsumfunc
+
+---
+
+### .!31981!lib_version
+
+---
+
+### .!31985!scalars
+
+---
+
+### .!31990!array_like
+
+---
+
+### .!31996!simple
+
+---
+
+### .!32000!flatiter
+
+---
+
+### .!32002!numerictypes
+
+---
+
+### .!32012!lib_user_array
+
+---
+
+### .!32014!arrayprint
+
+---
+
+### .!32021!ufunclike
+
+---
+
+### .!32023!bitwise_ops
 
 ---
 
@@ -337081,6 +345559,78 @@ tuple of (dict, list)
 
 ---
 
+### .!32028!cfuncs
+
+---
+
+### .!32033!_isocbind
+
+---
+
+### .!32035!_src_pyf
+
+---
+
+### .!32040!common_rules
+
+---
+
+### .!32045!crackfortran
+
+---
+
+### .!32050!__main__
+
+---
+
+### .!32053!cb_rules
+
+---
+
+### .!32057!__init__
+
+---
+
+### .!32062!rules
+
+---
+
+### .!32066!f2py2e
+
+---
+
+### .!32068!func2subr
+
+---
+
+### .!32072!__version__
+
+---
+
+### .!32076!symbolic
+
+---
+
+### .!32079!diagnose
+
+---
+
+### .!32085!capi_maps
+
+---
+
+### .!32089!f90mod_rules
+
+---
+
+### .!32092!use_rules
+
+---
+
+### .!32097!auxfuncs
+
+---
+
 ### _backend
 
 #### Classes
@@ -337253,6 +345803,22 @@ Writes the meson build file at specified location
 - `build_dir`
 
 ##### compile
+
+---
+
+### .!32101!_backend
+
+---
+
+### .!32104!__init__
+
+---
+
+### .!32109!_distutils
+
+---
+
+### .!32112!_meson
 
 ---
 
@@ -337599,6 +346165,10 @@ of up to 31 digits precision (extended/quadruple).
 ##### test_quad_precision
 
 Test kind_func for quadruple precision [`real(16)`] of 32+ digits .
+
+---
+
+### .!32163!util
 
 ---
 
@@ -339680,6 +348250,134 @@ CLI :: <filename>.o <filename>.so <filename>.a
 
 ---
 
+### .!32118!test_character
+
+---
+
+### .!32122!test_mixed
+
+---
+
+### .!32125!test_return_logical
+
+---
+
+### .!32130!test_assumed_shape
+
+---
+
+### .!32132!test_common
+
+---
+
+### .!32137!test_pyf_src
+
+---
+
+### .!32141!test_kind
+
+---
+
+### .!32146!test_isoc
+
+---
+
+### .!32151!test_array_from_pyobj
+
+---
+
+### .!32154!test_return_real
+
+---
+
+### .!32157!test_symbolic
+
+---
+
+### .!32166!test_size
+
+---
+
+### .!32170!test_callback
+
+---
+
+### .!32176!test_string
+
+---
+
+### .!32178!test_docs
+
+---
+
+### .!32185!__init__
+
+---
+
+### .!32188!test_quoted_character
+
+---
+
+### .!32191!test_parameter
+
+---
+
+### .!32196!test_abstract_interface
+
+---
+
+### .!32198!test_routines
+
+---
+
+### .!32200!test_f2cmap
+
+---
+
+### .!32204!test_semicolon_split
+
+---
+
+### .!32210!test_block_docstring
+
+---
+
+### .!32212!test_return_integer
+
+---
+
+### .!32219!test_return_character
+
+---
+
+### .!32222!test_data
+
+---
+
+### .!32226!test_value_attrspec
+
+---
+
+### .!32232!test_return_complex
+
+---
+
+### .!32235!test_modules
+
+---
+
+### .!32243!test_crackfortran
+
+---
+
+### .!32244!test_f2py2e
+
+---
+
+### .!32249!test_regression
+
+---
+
 ### overrides
 
 Tools for testing implementations of __array_function__ and ufunc overrides
@@ -339824,6 +348522,18 @@ actual ones.
 **Paramètres :**
 
 - `field`
+
+---
+
+### .!32256!__init__
+
+---
+
+### .!32262!overrides
+
+---
+
+### .!32266!print_coercion_tables
 
 ---
 
@@ -340497,6 +349207,10 @@ error, instead of hanging forever trying to clear it.
 ##### __init__
 
 ##### __del__
+
+---
+
+### .!32271!test_utils
 
 ---
 
@@ -342353,6 +351067,14 @@ Return memory usage of running python. [Not implemented]
 ##### wrapper
 
 ##### wrapper
+
+---
+
+### .!32284!extbuild
+
+---
+
+### .!32287!utils
 
 ---
 
@@ -362205,6 +370927,130 @@ Decorator call.  Refer to ``decorate``.
 
 ---
 
+### .!32294!_iotools
+
+---
+
+### .!32296!recfunctions
+
+---
+
+### .!32299!mixins
+
+---
+
+### .!32303!_polynomial_impl
+
+---
+
+### .!32309!_user_array_impl
+
+---
+
+### .!32312!_array_utils_impl
+
+---
+
+### .!32318!_arraysetops_impl
+
+---
+
+### .!32321!scimath
+
+---
+
+### .!32325!_stride_tricks_impl
+
+---
+
+### .!32329!_version
+
+---
+
+### .!32333!array_utils
+
+---
+
+### .!32339!_type_check_impl
+
+---
+
+### .!32342!user_array
+
+---
+
+### .!32348!_scimath_impl
+
+---
+
+### .!32352!__init__
+
+---
+
+### .!32358!introspect
+
+---
+
+### .!32362!format
+
+---
+
+### .!32365!_arrayterator_impl
+
+---
+
+### .!32369!npyio
+
+---
+
+### .!32373!_npyio_impl
+
+---
+
+### .!32376!_shape_base_impl
+
+---
+
+### .!32382!_datasource
+
+---
+
+### .!32386!stride_tricks
+
+---
+
+### .!32391!_histograms_impl
+
+---
+
+### .!32395!_arraypad_impl
+
+---
+
+### .!32399!_ufunclike_impl
+
+---
+
+### .!32403!_index_tricks_impl
+
+---
+
+### .!32406!_twodim_base_impl
+
+---
+
+### .!32411!_function_base_impl
+
+---
+
+### .!32416!_nanfunctions_impl
+
+---
+
+### .!32419!_utils_impl
+
+---
+
 ### test_type_check
 
 #### Classes
@@ -369481,6 +378327,106 @@ Old-style class in python2, normal class in python3
 
 ---
 
+### .!32423!test_type_check
+
+---
+
+### .!32427!test_utils
+
+---
+
+### .!32432!test_twodim_base
+
+---
+
+### .!32436!test_polynomial
+
+---
+
+### .!32438!test__iotools
+
+---
+
+### .!32443!test_shape_base
+
+---
+
+### .!32447!test_ufunclike
+
+---
+
+### .!32450!test_index_tricks
+
+---
+
+### .!32458!test_arrayterator
+
+---
+
+### .!32463!test__version
+
+---
+
+### .!32465!test_io
+
+---
+
+### .!32468!test_array_utils
+
+---
+
+### .!32474!test_mixins
+
+---
+
+### .!32476!test_arraysetops
+
+---
+
+### .!32481!test_function_base
+
+---
+
+### .!32486!test_arraypad
+
+---
+
+### .!32488!test_loadtxt
+
+---
+
+### .!32495!test_packbits
+
+---
+
+### .!32498!test__datasource
+
+---
+
+### .!32502!test_stride_tricks
+
+---
+
+### .!32507!test_recfunctions
+
+---
+
+### .!32509!test_nanfunctions
+
+---
+
+### .!32515!test_format
+
+---
+
+### .!32519!test_histograms
+
+---
+
+### .!32522!test_regression
+
+---
+
 ### _helper
 
 Discrete Fourier Transforms - _helper.py
@@ -371322,6 +380268,22 @@ array([[0., 0., 0., 0., 0.],
 
 ---
 
+### .!32529!_helper
+
+---
+
+### .!32532!_pocketfft
+
+---
+
+### .!32535!__init__
+
+---
+
+### .!32540!helper
+
+---
+
 ### test_pocketfft
 
 #### Classes
@@ -371645,6 +380607,14 @@ How ifftshift was implemented in v1.14
 
 ---
 
+### .!32543!test_pocketfft
+
+---
+
+### .!32548!test_helper
+
+---
+
 ### ufuncs
 
 ===================
@@ -371785,6 +380755,10 @@ results in an error. There are two alternatives:
 
 ---
 
+### .!32557!ufuncs
+
+---
+
 ### _pickle
 
 #### Fonctions
@@ -371851,6 +380825,14 @@ rs : RandomState
 
 - `bit_generator_name`
 - `bit_generator_ctor`
+
+---
+
+### .!32563!_pickle
+
+---
+
+### .!32567!__init__
 
 ---
 
@@ -374840,6 +383822,46 @@ Ensure that the implicit zero-padding does not cause problems.
 
 ---
 
+### .!32573!test_generator_mt19937
+
+---
+
+### .!32576!test_randomstate
+
+---
+
+### .!32581!test_direct
+
+---
+
+### .!32586!test_extending
+
+---
+
+### .!32594!test_smoke
+
+---
+
+### .!32598!test_randomstate_regression
+
+---
+
+### .!32601!test_random
+
+---
+
+### .!32607!test_seed_sequence
+
+---
+
+### .!32609!test_generator_mt19937_regressions
+
+---
+
+### .!32612!test_regression
+
+---
+
 ### parse
 
 #### Fonctions
@@ -374861,6 +383883,14 @@ be filled in when loading the library.
 ### extending
 
 Use cffi to access any of the underlying C functions from distributions.h
+
+---
+
+### .!32620!parse
+
+---
+
+### .!32623!extending
 
 ---
 
@@ -374933,6 +383963,14 @@ move distributions.dll ../../_examples/numba/
 
 - `n`
 - `bit_generator`
+
+---
+
+### .!32629!extending
+
+---
+
+### .!32631!extending_distributions
 
 ---
 
@@ -375941,6 +384979,14 @@ matrix([[ 0. -0.j,  4. +4.j,  8. +8.j],
 
 ---
 
+### .!32634!__init__
+
+---
+
+### .!32639!defmatrix
+
+---
+
 ### test_matrix_linalg
 
 Test functions for linalg module using the matrix class.
@@ -376395,6 +385441,34 @@ Note that tests with MaskedArray and linalg are done in separate files.
 ##### test_matrix_std_argmax
 
 ##### mul
+
+---
+
+### .!32642!test_matrix_linalg
+
+---
+
+### .!32645!test_defmatrix
+
+---
+
+### .!32658!test_interaction
+
+---
+
+### .!32662!test_numeric
+
+---
+
+### .!32666!test_masked_matrix
+
+---
+
+### .!32670!test_multiarray
+
+---
+
+### .!32674!test_regression
 
 ---
 
@@ -386888,6 +395962,42 @@ array([0.01831564, 0.36787944, 1.        , 0.36787944])
 
 ---
 
+### .!32677!laguerre
+
+---
+
+### .!32683!_polybase
+
+---
+
+### .!32687!polyutils
+
+---
+
+### .!32692!__init__
+
+---
+
+### .!32695!polynomial
+
+---
+
+### .!32698!hermite_e
+
+---
+
+### .!32704!chebyshev
+
+---
+
+### .!32707!legendre
+
+---
+
+### .!32712!hermite
+
+---
+
 ### test_chebyshev
 
 Tests for chebyshev module.
@@ -388789,6 +397899,46 @@ Tests for polyutils module.
 
 ---
 
+### .!32717!test_chebyshev
+
+---
+
+### .!32721!test_hermite_e
+
+---
+
+### .!32726!test_polynomial
+
+---
+
+### .!32734!test_laguerre
+
+---
+
+### .!32739!test_hermite
+
+---
+
+### .!32743!test_legendre
+
+---
+
+### .!32747!test_printing
+
+---
+
+### .!32751!test_classes
+
+---
+
+### .!32754!test_symbol
+
+---
+
+### .!32758!test_polyutils
+
+---
+
 ### _constants
 
 ---
@@ -388837,6 +397987,10 @@ Tools for working with the Polars duration string language.
 
 ---
 
+### .!32815!expr
+
+---
+
 ### _enum
 
 #### Classes
@@ -388881,6 +398035,10 @@ Raises:
 - `start`
 - `count`
 - `last_values`
+
+---
+
+### .!32885!this
 
 ---
 
@@ -405275,6 +414433,134 @@ Examples:
 
 ---
 
+### .!32763!__init__
+
+---
+
+### .!32768!_constants
+
+---
+
+### .!32772!_duration
+
+---
+
+### .!32774!_enum
+
+---
+
+### .!32777!_expression_parsing
+
+---
+
+### .!32783!_namespace
+
+---
+
+### .!32787!_translate
+
+---
+
+### .!32792!_typing_compat
+
+---
+
+### .!32797!_utils
+
+---
+
+### .!32801!dataframe
+
+---
+
+### .!32805!dependencies
+
+---
+
+### .!32810!dtypes
+
+---
+
+### .!32812!exceptions
+
+---
+
+### .!32820!expr_cat
+
+---
+
+### .!32822!expr_dt
+
+---
+
+### .!32826!expr_list
+
+---
+
+### .!32832!expr_name
+
+---
+
+### .!32835!expr_str
+
+---
+
+### .!32841!expr_struct
+
+---
+
+### .!32844!functions
+
+---
+
+### .!32850!group_by
+
+---
+
+### .!32856!schema
+
+---
+
+### .!32859!selectors
+
+---
+
+### .!32863!series
+
+---
+
+### .!32867!series_cat
+
+---
+
+### .!32871!series_dt
+
+---
+
+### .!32876!series_list
+
+---
+
+### .!32878!series_str
+
+---
+
+### .!32881!series_struct
+
+---
+
+### .!32889!translate
+
+---
+
+### .!32892!typing
+
+---
+
+### .!32898!utils
+
+---
+
 ### dataframe
 
 #### Classes
@@ -406610,6 +415896,10 @@ Parallel is unused, exists for compatibility.
 
 ---
 
+### .!32910!expr
+
+---
+
 ### series_dt
 
 #### Classes
@@ -407014,6 +416304,54 @@ Returns:
 **Paramètres :**
 
 - `pattern`
+
+---
+
+### .!32908!dataframe
+
+---
+
+### .!32913!group_by
+
+---
+
+### .!32918!namespace
+
+---
+
+### .!32922!selectors
+
+---
+
+### .!32926!series
+
+---
+
+### .!32932!series_cat
+
+---
+
+### .!32936!series_dt
+
+---
+
+### .!32941!series_list
+
+---
+
+### .!32945!series_str
+
+---
+
+### .!32949!series_struct
+
+---
+
+### .!32955!typing
+
+---
+
+### .!32957!utils
 
 ---
 
@@ -407886,6 +417224,10 @@ Extract native Series, broadcasting to `len(self)` if necessary.
 **Paramètres :**
 
 - `file`
+
+---
+
+### .!32972!expr
 
 ---
 
@@ -410672,6 +420014,46 @@ Non-expressifiable args which we may need to reuse in `agg` or `over`.
 
 ---
 
+### .!32961!__init__
+
+---
+
+### .!32965!any_namespace
+
+---
+
+### .!32968!dataframe
+
+---
+
+### .!32976!group_by
+
+---
+
+### .!32979!namespace
+
+---
+
+### .!32984!selectors
+
+---
+
+### .!32988!series
+
+---
+
+### .!32990!typing
+
+---
+
+### .!32995!when_then
+
+---
+
+### .!33001!window
+
+---
+
 ### dataframe
 
 #### Classes
@@ -411645,6 +421027,10 @@ Notice that a native object is returned.
 
 ---
 
+### .!33018!expr
+
+---
+
 ### group_by
 
 #### Classes
@@ -411932,6 +421318,34 @@ Notice that a native object is returned.
 
 - `dtype`
 - `version`
+
+---
+
+### .!33013!dataframe
+
+---
+
+### .!33023!expr_dt
+
+---
+
+### .!33026!expr_str
+
+---
+
+### .!33033!group_by
+
+---
+
+### .!33035!namespace
+
+---
+
+### .!33039!selectors
+
+---
+
+### .!33044!utils
 
 ---
 
@@ -412931,6 +422345,10 @@ Notice that a native object is returned.
 
 ---
 
+### .!33058!expr
+
+---
+
 ### selectors
 
 #### Classes
@@ -413107,6 +422525,50 @@ Returns:
 ##### time_zone
 
 Fetch relation time zone (if it wasn't calculated already).
+
+---
+
+### .!33053!dataframe
+
+---
+
+### .!33061!expr_dt
+
+---
+
+### .!33066!expr_list
+
+---
+
+### .!33070!expr_str
+
+---
+
+### .!33075!expr_struct
+
+---
+
+### .!33079!group_by
+
+---
+
+### .!33083!namespace
+
+---
+
+### .!33089!selectors
+
+---
+
+### .!33092!series
+
+---
+
+### .!33095!typing
+
+---
+
+### .!33099!utils
 
 ---
 
@@ -414124,6 +423586,10 @@ Ibis adds a suffix to the right table col, even when it matches the left during 
 
 ---
 
+### .!33116!expr
+
+---
+
 ### selectors
 
 #### Classes
@@ -414243,6 +423709,46 @@ Ibis adds a suffix to the right table col, even when it matches the left during 
 
 ---
 
+### .!33110!dataframe
+
+---
+
+### .!33118!expr_dt
+
+---
+
+### .!33127!expr_list
+
+---
+
+### .!33129!expr_str
+
+---
+
+### .!33132!expr_struct
+
+---
+
+### .!33135!group_by
+
+---
+
+### .!33140!namespace
+
+---
+
+### .!33144!selectors
+
+---
+
+### .!33148!series
+
+---
+
+### .!33151!utils
+
+---
+
 ### dataframe
 
 #### Classes
@@ -414345,6 +423851,14 @@ Ibis adds a suffix to the right table col, even when it matches the left during 
 **Paramètres :**
 
 - `attr`
+
+---
+
+### .!33160!dataframe
+
+---
+
+### .!33164!series
 
 ---
 
@@ -415906,6 +425420,10 @@ Parallel is unused, exists for compatibility.
 
 ---
 
+### .!33176!expr
+
+---
+
 ### series_dt
 
 #### Classes
@@ -416339,6 +425857,54 @@ Return `True` if `dtype` is `"numpy_nullable"`.
 **Paramètres :**
 
 - `dtype`
+
+---
+
+### .!33172!dataframe
+
+---
+
+### .!33180!group_by
+
+---
+
+### .!33185!namespace
+
+---
+
+### .!33189!selectors
+
+---
+
+### .!33192!series
+
+---
+
+### .!33196!series_cat
+
+---
+
+### .!33201!series_dt
+
+---
+
+### .!33204!series_list
+
+---
+
+### .!33209!series_str
+
+---
+
+### .!33213!series_struct
+
+---
+
+### .!33216!typing
+
+---
+
+### .!33220!utils
 
 ---
 
@@ -417658,6 +427224,10 @@ Otherwise, the validation will have taken place already.
 
 ---
 
+### .!33235!expr
+
+---
+
 ### utils
 
 #### Fonctions
@@ -417719,6 +427289,30 @@ Otherwise, the validation will have taken place already.
 **Paramètres :**
 
 - `exception`
+
+---
+
+### .!33230!dataframe
+
+---
+
+### .!33238!group_by
+
+---
+
+### .!33243!namespace
+
+---
+
+### .!33248!series
+
+---
+
+### .!33251!typing
+
+---
+
+### .!33254!utils
 
 ---
 
@@ -418887,6 +428481,10 @@ Format microseconds if present in format, else it's a no-op.
 
 ---
 
+### .!33266!expr
+
+---
+
 ### selectors
 
 #### Classes
@@ -418978,6 +428576,42 @@ Converts a Python strptime datetime format string to a PySpark datetime format s
 ##### catch_pyspark_sql_exception
 
 ##### catch_pyspark_connect_exception
+
+---
+
+### .!33262!dataframe
+
+---
+
+### .!33270!expr_dt
+
+---
+
+### .!33273!expr_list
+
+---
+
+### .!33277!expr_str
+
+---
+
+### .!33282!expr_struct
+
+---
+
+### .!33286!group_by
+
+---
+
+### .!33290!namespace
+
+---
+
+### .!33295!selectors
+
+---
+
+### .!33299!utils
 
 ---
 
@@ -419565,6 +429199,30 @@ Converts a Python strptime datetime format string to a PySpark datetime format s
 
 ---
 
+### .!33307!dataframe
+
+---
+
+### .!33311!expr
+
+---
+
+### .!33314!group_by
+
+---
+
+### .!33318!typing
+
+---
+
+### .!33321!when_then
+
+---
+
+### .!33325!__init__
+
+---
+
 ### _dtypes
 
 #### Classes
@@ -419818,6 +429476,34 @@ By "pandas-like", we mean: pandas, Modin, cuDF.
 
 ---
 
+### .!33331!__init__
+
+---
+
+### .!33336!_dtypes
+
+---
+
+### .!33342!_namespace
+
+---
+
+### .!33345!dependencies
+
+---
+
+### .!33351!dtypes
+
+---
+
+### .!33354!selectors
+
+---
+
+### .!33358!typing
+
+---
+
 ### _decode
 
 #### Fonctions
@@ -419841,6 +429527,10 @@ By "pandas-like", we mean: pandas, Modin, cuDF.
 
 - `match`
 - `cache`
+
+---
+
+### .!33382!_url
 
 ---
 
@@ -419920,11 +429610,39 @@ By "pandas-like", we mean: pandas, Modin, cuDF.
 
 ---
 
+### .!33362!__init__
+
+---
+
+### .!33365!_decode
+
+---
+
+### .!33368!_encode
+
+---
+
+### .!33372!_format
+
+---
+
+### .!33377!_parse
+
+---
+
 ### _native
 
 #### Fonctions
 
 ##### _escape_inner
+
+---
+
+### .!33388!__init__
+
+---
+
+### .!33392!_native
 
 ---
 
@@ -419985,6 +429703,22 @@ By "pandas-like", we mean: pandas, Modin, cuDF.
 - `msg`
 
 ##### __str__
+
+---
+
+### .!33398!__init__
+
+---
+
+### .!33401!_parse
+
+---
+
+### .!33407!_version
+
+---
+
+### .!33410!exceptions
 
 ---
 
@@ -420450,6 +430184,14 @@ Create a message from a dictionary of JSON-serializable data.
 **Paramètres :**
 
 - `data`
+
+---
+
+### .!33415!__init__
+
+---
+
+### .!33419!messages
 
 ---
 
@@ -422002,6 +431744,34 @@ Find the HandoffMessage in the message sequence that addresses this agent.
 
 ---
 
+### .!33421!__init__
+
+---
+
+### .!33426!_assistant_agent
+
+---
+
+### .!33430!_base_chat_agent
+
+---
+
+### .!33433!_code_executor_agent
+
+---
+
+### .!33440!_message_filter_agent
+
+---
+
+### .!33441!_society_of_mind_agent
+
+---
+
+### .!33445!_user_proxy_agent
+
+---
+
 ### _chat_agent
 
 #### Classes
@@ -422249,6 +432019,30 @@ Create an OR termination condition from a config.
 
 - `cls`
 - `config`
+
+---
+
+### .!33452!__init__
+
+---
+
+### .!33455!_chat_agent
+
+---
+
+### .!33460!_handoff
+
+---
+
+### .!33463!_task
+
+---
+
+### .!33467!_team
+
+---
+
+### .!33471!_termination
 
 ---
 
@@ -422682,6 +432476,14 @@ Set the termination condition to terminated.
 
 ---
 
+### .!33475!__init__
+
+---
+
+### .!33478!_terminations
+
+---
+
 ### _states
 
 #### Classes
@@ -422725,6 +432527,18 @@ State for :class:`~autogen_agentchat.teams.MagneticOneGroupChat` orchestrator.
 ##### SocietyOfMindAgentState
 
 State for a Society of Mind agent.
+
+---
+
+### .!33484!__init__
+
+---
+
+### .!33487!_states
+
+---
+
+### .!33492!__init__
 
 ---
 
@@ -423638,6 +433452,38 @@ Using the :class:`~autogen_agentchat.conditions.HandoffTermination` for human-in
 
 ---
 
+### .!33500!_base_group_chat
+
+---
+
+### .!33506!_base_group_chat_manager
+
+---
+
+### .!33510!_chat_agent_container
+
+---
+
+### .!33515!_events
+
+---
+
+### .!33519!_round_robin_group_chat
+
+---
+
+### .!33523!_selector_group_chat
+
+---
+
+### .!33526!_sequential_routed_agent
+
+---
+
+### .!33530!_swarm_group_chat
+
+---
+
 ### _digraph_group_chat
 
 #### Classes
@@ -424311,6 +434157,18 @@ Return the list of agents in the builder, in insertion order.
 
 ---
 
+### .!33535!__init__
+
+---
+
+### .!33540!_digraph_group_chat
+
+---
+
+### .!33543!_graph_builder
+
+---
+
 ### _magentic_one_group_chat
 
 #### Classes
@@ -424541,6 +434399,22 @@ Ensure that the messages are compatible with the underlying client, by removing 
 
 ---
 
+### .!33548!__init__
+
+---
+
+### .!33554!_magentic_one_group_chat
+
+---
+
+### .!33557!_magentic_one_orchestrator
+
+---
+
+### .!33560!_prompts
+
+---
+
 ### _agent
 
 #### Classes
@@ -424768,6 +434642,22 @@ Example:
 
 ---
 
+### .!33565!__init__
+
+---
+
+### .!33571!_agent
+
+---
+
+### .!33575!_task_runner_tool
+
+---
+
+### .!33580!_team
+
+---
+
 ### _console
 
 #### Classes
@@ -424810,6 +434700,14 @@ Example:
 
 ---
 
+### .!33584!__init__
+
+---
+
+### .!33588!_console
+
+---
+
 ### _utils
 
 #### Fonctions
@@ -424829,6 +434727,14 @@ Remove images from a list of LLMMessages
 **Paramètres :**
 
 - `messages`
+
+---
+
+### .!33593!__init__
+
+---
+
+### .!33597!_utils
 
 ---
 
@@ -424920,6 +434826,10 @@ Remove images from a list of LLMMessages
 **Paramètres :**
 
 - `s`
+
+---
+
+### .!33616!core
 
 ---
 
@@ -425292,6 +435202,34 @@ Determine if `int_` falls into one of the ranges in `ranges`.
 ##### _seg_80
 
 ##### _seg_81
+
+---
+
+### .!33601!__init__
+
+---
+
+### .!33606!codec
+
+---
+
+### .!33612!compat
+
+---
+
+### .!33620!idnadata
+
+---
+
+### .!33625!intranges
+
+---
+
+### .!33628!package_data
+
+---
+
+### .!33632!uts46data
 
 ---
 
@@ -426482,6 +436420,10 @@ Make the URL people should start at for this version of coverage.py.
 
 ---
 
+### .!33642!misc
+
+---
+
 ### env
 
 Determine facts about the environment.
@@ -426497,6 +436439,10 @@ Flags indicating this Python's behavior.
 ##### debug_info
 
 Return a list of (name, value) pairs for printing debug information.
+
+---
+
+### .!33667!env
 
 ---
 
@@ -426691,6 +436637,10 @@ Handle BRANCH_RIGHT and BRANCH_LEFT events.
 
 ---
 
+### .!33707!html
+
+---
+
 ### templite
 
 A simple Python template renderer, for a nano-subset of Django syntax.
@@ -426871,6 +436821,10 @@ Evaluate dotted expressions at run-time.
 ##### flush_output
 
 Force `buffered` to the code builder.
+
+---
+
+### .!33726!core
 
 ---
 
@@ -427081,6 +437035,10 @@ Return a numerator and denominator for the coverage ratio.
 **Paramètres :**
 
 - `other`
+
+---
+
+### .!33817!data
 
 ---
 
@@ -433523,6 +443481,158 @@ Get the sorted lines for a file, for tests.
 
 ---
 
+### .!33639!patch
+
+---
+
+### .!33648!files
+
+---
+
+### .!33652!phystokens
+
+---
+
+### .!33656!lcovreport
+
+---
+
+### .!33661!config
+
+---
+
+### .!33664!version
+
+---
+
+### .!33672!sysmon
+
+---
+
+### .!33676!templite
+
+---
+
+### .!33680!results
+
+---
+
+### .!33685!plugin_support
+
+---
+
+### .!33689!numbits
+
+---
+
+### .!33693!regions
+
+---
+
+### .!33698!control
+
+---
+
+### .!33703!sqlitedb
+
+---
+
+### .!33711!cmdline
+
+---
+
+### .!33716!collector
+
+---
+
+### .!33722!__init__
+
+---
+
+### .!33729!pytracer
+
+---
+
+### .!33733!types
+
+---
+
+### .!33737!annotate
+
+---
+
+### .!33741!sqldata
+
+---
+
+### .!33746!disposition
+
+---
+
+### .!33749!parser
+
+---
+
+### .!33754!context
+
+---
+
+### .!33757!xmlreport
+
+---
+
+### .!33761!debug
+
+---
+
+### .!33767!python
+
+---
+
+### .!33771!plugin
+
+---
+
+### .!33776!exceptions
+
+---
+
+### .!33779!inorout
+
+---
+
+### .!33784!jsonreport
+
+---
+
+### .!33789!report_core
+
+---
+
+### .!33791!bytecode
+
+---
+
+### .!33797!tomlconfig
+
+---
+
+### .!33802!execfile
+
+---
+
+### .!33805!multiproc
+
+---
+
+### .!33809!__main__
+
+---
+
+### .!33814!report
+
+---
+
 ### _compat
 
 #### Classes
@@ -434125,6 +444235,10 @@ yielded block returns.
 **Paramètres :**
 
 - `echo`
+
+---
+
+### .!33842!core
 
 ---
 
@@ -439848,6 +449962,66 @@ file wrapper.  For instance this will never close stdin.
 
 ---
 
+### .!33823!__init__
+
+---
+
+### .!33826!_compat
+
+---
+
+### .!33830!_termui_impl
+
+---
+
+### .!33834!_textwrap
+
+---
+
+### .!33839!_winconsole
+
+---
+
+### .!33846!decorators
+
+---
+
+### .!33851!exceptions
+
+---
+
+### .!33854!formatting
+
+---
+
+### .!33858!globals
+
+---
+
+### .!33861!parser
+
+---
+
+### .!33867!shell_completion
+
+---
+
+### .!33871!termui
+
+---
+
+### .!33874!testing
+
+---
+
+### .!33879!types
+
+---
+
+### .!33883!utils
+
+---
+
 ### md
 
 #### Classes
@@ -440506,6 +450680,10 @@ are disabled to be stricter around ASCII-compatible but unlikely to be a string.
 
 ---
 
+### .!33891!md
+
+---
+
 ### utils
 
 #### Fonctions
@@ -440822,6 +451000,42 @@ A layer = Character extraction by alphabets/ranges.
 
 ---
 
+### .!33911!api
+
+---
+
+### .!33895!version
+
+---
+
+### .!33900!legacy
+
+---
+
+### .!33904!models
+
+---
+
+### .!33908!__init__
+
+---
+
+### .!33915!utils
+
+---
+
+### .!33922!constant
+
+---
+
+### .!33925!__main__
+
+---
+
+### .!33928!cd
+
+---
+
 ### __main__
 
 #### Classes
@@ -440900,7 +451114,19 @@ CLI assistant using ARGV and ArgumentParser
 
 ---
 
+### .!33933!__init__
+
+---
+
+### .!33936!__main__
+
+---
+
 ### __main__
+
+---
+
+### .!33951!core
 
 ---
 
@@ -440922,6 +451148,14 @@ This module returns the installation location of cacert.pem or its contents.
 ##### where
 
 ##### contents
+
+---
+
+### .!33942!__init__
+
+---
+
+### .!33946!__main__
 
 ---
 
@@ -441203,6 +451437,10 @@ algorithm with a per-item time-to-live (TTL) value.
 
 ---
 
+### .!33968!func
+
+---
+
 ### keys
 
 Key functions for memoizing decorators.
@@ -441262,6 +451500,22 @@ Return a typed cache key for use with cached methods.
 - `add`
 
 ##### __getstate__
+
+---
+
+### .!33955!__init__
+
+---
+
+### .!33961!_cached
+
+---
+
+### .!33964!_cachedmethod
+
+---
+
+### .!33972!keys
 
 ---
 
@@ -441655,6 +451909,18 @@ if required. Repeated calls with the same name return the same signal.
 
 ---
 
+### .!33981!base
+
+---
+
+### .!33976!__init__
+
+---
+
+### .!33978!_utilities
+
+---
+
 ### _cmp
 
 #### Fonctions
@@ -441749,6 +452015,10 @@ Initialize object with *value*.
 **Paramètres :**
 
 - `other`
+
+---
+
+### .!33987!_cmp
 
 ---
 
@@ -444871,6 +455141,54 @@ We use a callable class to be able to change the ``__repr__``.
 
 ---
 
+### .!33984!__init__
+
+---
+
+### .!33990!_compat
+
+---
+
+### .!33994!_config
+
+---
+
+### .!33997!_funcs
+
+---
+
+### .!34000!_make
+
+---
+
+### .!34006!_next_gen
+
+---
+
+### .!34010!converters
+
+---
+
+### .!34014!_version_info
+
+---
+
+### .!34017!exceptions
+
+---
+
+### .!34019!filters
+
+---
+
+### .!34022!setters
+
+---
+
+### .!34025!validators
+
+---
+
 ### converters
 
 ---
@@ -444888,6 +455206,30 @@ We use a callable class to be able to change the ``__repr__``.
 ---
 
 ### validators
+
+---
+
+### .!34027!__init__
+
+---
+
+### .!34031!converters
+
+---
+
+### .!34034!exceptions
+
+---
+
+### .!34036!filters
+
+---
+
+### .!34039!setters
+
+---
+
+### .!34041!validators
 
 ---
 
@@ -445667,6 +456009,10 @@ Takes the given response and tries digest-auth, if needed.
 
 ---
 
+### .!34058!api
+
+---
+
 ### certs
 
 requests.certs
@@ -445678,6 +456024,10 @@ only one — the one from the certifi package.
 If you are packaging Requests, e.g., for a Linux distribution or a managed
 environment, you can change the definition of where() to return a separately
 packaged CA bundle.
+
+---
+
+### .!34062!auth
 
 ---
 
@@ -445695,6 +456045,10 @@ compatibility until the next major version.
 ##### _resolve_char_detection
 
 Find supported character detection libraries.
+
+---
+
+### .!34076!help
 
 ---
 
@@ -447922,6 +458276,66 @@ or the registry.
 
 ---
 
+### .!34044!__init__
+
+---
+
+### .!34047!__version__
+
+---
+
+### .!34051!_internal_utils
+
+---
+
+### .!34055!adapters
+
+---
+
+### .!34064!certs
+
+---
+
+### .!34067!compat
+
+---
+
+### .!34069!cookies
+
+---
+
+### .!34073!exceptions
+
+---
+
+### .!34077!hooks
+
+---
+
+### .!34081!models
+
+---
+
+### .!34084!packages
+
+---
+
+### .!34085!sessions
+
+---
+
+### .!34089!status_codes
+
+---
+
+### .!34092!structures
+
+---
+
+### .!34094!utils
+
+---
+
 ### _attrs
 
 #### Classes
@@ -448886,6 +459300,34 @@ Return the resource for this anchor.
 
 ---
 
+### .!34099!__init__
+
+---
+
+### .!34102!_attrs
+
+---
+
+### .!34107!_core
+
+---
+
+### .!34110!exceptions
+
+---
+
+### .!34114!jsonschema
+
+---
+
+### .!34117!retrieval
+
+---
+
+### .!34120!typing
+
+---
+
 ### test_core
 
 #### Classes
@@ -449482,6 +459924,26 @@ The $schema keyword in JSON Schema is a dialect identifier.
 **Paramètres :**
 
 - `uri`
+
+---
+
+### .!34126!test_core
+
+---
+
+### .!34129!test_exceptions
+
+---
+
+### .!34132!test_jsonschema
+
+---
+
+### .!34134!test_referencing_suite
+
+---
+
+### .!34137!test_retrieval
 
 ---
 
@@ -450611,6 +461073,38 @@ to be considered equal.
 
 ---
 
+### .!34140!__init__
+
+---
+
+### .!34144!_common
+
+---
+
+### .!34145!_version
+
+---
+
+### .!34149!easter
+
+---
+
+### .!34152!relativedelta
+
+---
+
+### .!34153!rrule
+
+---
+
+### .!34155!tzwin
+
+---
+
+### .!34158!utils
+
+---
+
 ### _parser
 
 This module offers a generic date/time string parser which is able to parse
@@ -451564,6 +462058,18 @@ This function is effectively the inverse of
 
 - `tzstr`
 - `zero_as_utc`
+
+---
+
+### .!34160!__init__
+
+---
+
+### .!34163!_parser
+
+---
+
+### .!34167!isoparser
 
 ---
 
@@ -453263,6 +463769,26 @@ function returns ``None``.
 
 ---
 
+### .!34169!__init__
+
+---
+
+### .!34172!_common
+
+---
+
+### .!34175!_factories
+
+---
+
+### .!34178!tz
+
+---
+
+### .!34182!win
+
+---
+
 ### rebuild
 
 #### Fonctions
@@ -453305,6 +463831,14 @@ e is an exception raised by subprocess.check_call()
 **Paramètres :**
 
 - `e`
+
+---
+
+### .!34186!__init__
+
+---
+
+### .!34189!rebuild
 
 ---
 
@@ -453358,6 +463892,10 @@ e is an exception raised by subprocess.check_call()
 **Paramètres :**
 
 - `obj`
+
+---
+
+### .!34201!main
 
 ---
 
@@ -453654,6 +464192,10 @@ Normalize autolink content
 **Paramètres :**
 
 - `link`
+
+---
+
+### .!34224!tree
 
 ---
 
@@ -454765,6 +465307,46 @@ Highlighter function: (content, langName, langAttrs) -> escaped HTML.
 
 ---
 
+### .!34192!__init__
+
+---
+
+### .!34195!_compat
+
+---
+
+### .!34199!_punycode
+
+---
+
+### .!34205!parser_block
+
+---
+
+### .!34207!parser_core
+
+---
+
+### .!34211!parser_inline
+
+---
+
+### .!34215!renderer
+
+---
+
+### .!34219!ruler
+
+---
+
+### .!34221!token
+
+---
+
+### .!34228!utils
+
+---
+
 ### parse
 
 CLI interface to markdown-it-py
@@ -454807,6 +465389,10 @@ Parse input CLI arguments.
 - `args`
 
 ##### print_heading
+
+---
+
+### .!34236!parse
 
 ---
 
@@ -455052,6 +465638,26 @@ Helper to unify [reference labels].
 
 ---
 
+### .!34245!entities
+
+---
+
+### .!34250!html_blocks
+
+---
+
+### .!34253!html_re
+
+---
+
+### .!34256!normalize_url
+
+---
+
+### .!34258!utils
+
+---
+
 ### parse_link_destination
 
 Parse link destination
@@ -455126,6 +465732,22 @@ Parse link title
 
 ---
 
+### .!34261!__init__
+
+---
+
+### .!34263!parse_link_destination
+
+---
+
+### .!34266!parse_link_label
+
+---
+
+### .!34268!parse_link_title
+
+---
+
 ### commonmark
 
 Commonmark default options.
@@ -455139,6 +465761,10 @@ primarily in that it allows HTML and does not enable components:
 #### Fonctions
 
 ##### make
+
+---
+
+### .!34281!zero
 
 ---
 
@@ -455160,6 +465786,18 @@ modes. For example, to parse bold/italic only.
 #### Fonctions
 
 ##### make
+
+---
+
+### .!34272!__init__
+
+---
+
+### .!34274!commonmark
+
+---
+
+### .!34277!default
 
 ---
 
@@ -455227,6 +465865,10 @@ Atex heading (#, ##, ...)
 
 ---
 
+### .!34292!code
+
+---
+
 ### hr
 
 Horizontal rule
@@ -455243,6 +465885,10 @@ At least 3 of these characters on a line * - _
 - `startLine`
 - `endLine`
 - `silent`
+
+---
+
+### .!34301!hr
 
 ---
 
@@ -455273,6 +465919,10 @@ At least 3 of these characters on a line * - _
 - `startLine`
 - `endLine`
 - `silent`
+
+---
+
+### .!34309!list
 
 ---
 
@@ -455510,6 +466160,46 @@ i.e. the code block rule is enabled and text is indented by more than 3 spaces.
 
 ---
 
+### .!34285!__init__
+
+---
+
+### .!34288!blockquote
+
+---
+
+### .!34295!fence
+
+---
+
+### .!34299!heading
+
+---
+
+### .!34304!html_block
+
+---
+
+### .!34307!lheading
+
+---
+
+### .!34312!paragraph
+
+---
+
+### .!34315!reference
+
+---
+
+### .!34317!state_block
+
+---
+
+### .!34321!table
+
+---
+
 ### block
 
 #### Fonctions
@@ -455686,6 +466376,42 @@ Join raw text for escape sequences (`text_special`) tokens with the rest of the 
 
 ---
 
+### .!34323!__init__
+
+---
+
+### .!34326!block
+
+---
+
+### .!34330!inline
+
+---
+
+### .!34333!linkify
+
+---
+
+### .!34337!normalize
+
+---
+
+### .!34338!replacements
+
+---
+
+### .!34342!smartquotes
+
+---
+
+### .!34344!state_core
+
+---
+
+### .!34347!text_join
+
+---
+
 ### autolink
 
 #### Fonctions
@@ -455709,6 +466435,10 @@ Join raw text for escape sequences (`text_special`) tokens with the rest of the 
 
 - `state`
 - `silent`
+
+---
+
+### .!34385!link
 
 ---
 
@@ -455762,6 +466492,10 @@ Walk through delimiter list and replace text tokens with tags.
 **Paramètres :**
 
 - `state`
+
+---
+
+### .!34401!text
 
 ---
 
@@ -455990,6 +466724,62 @@ Walk through delimiter list and replace text tokens with tags.
 
 - `state`
 - `silent`
+
+---
+
+### .!34349!__init__
+
+---
+
+### .!34354!autolink
+
+---
+
+### .!34357!backticks
+
+---
+
+### .!34361!balance_pairs
+
+---
+
+### .!34365!emphasis
+
+---
+
+### .!34369!entity
+
+---
+
+### .!34372!escape
+
+---
+
+### .!34375!fragments_join
+
+---
+
+### .!34378!html_inline
+
+---
+
+### .!34380!image
+
+---
+
+### .!34387!linkify
+
+---
+
+### .!34392!newline
+
+---
+
+### .!34395!state_inline
+
+---
+
+### .!34398!strikethrough
 
 ---
 
@@ -457414,7 +468204,15 @@ Output extra source code after visiting a child of an
 
 ---
 
+### .!34431!ext
+
+---
+
 ### constants
+
+---
+
+### .!34447!meta
 
 ---
 
@@ -464771,6 +475569,98 @@ can be used to enforce a list as return value.
 
 ---
 
+### .!34403!__init__
+
+---
+
+### .!34407!_identifier
+
+---
+
+### .!34409!async_utils
+
+---
+
+### .!34413!bccache
+
+---
+
+### .!34417!compiler
+
+---
+
+### .!34420!constants
+
+---
+
+### .!34422!debug
+
+---
+
+### .!34424!defaults
+
+---
+
+### .!34426!environment
+
+---
+
+### .!34429!exceptions
+
+---
+
+### .!34434!filters
+
+---
+
+### .!34438!idtracking
+
+---
+
+### .!34441!lexer
+
+---
+
+### .!34445!loaders
+
+---
+
+### .!34450!nativetypes
+
+---
+
+### .!34454!nodes
+
+---
+
+### .!34458!optimizer
+
+---
+
+### .!34460!parser
+
+---
+
+### .!34464!runtime
+
+---
+
+### .!34468!sandbox
+
+---
+
+### .!34472!tests
+
+---
+
+### .!34474!utils
+
+---
+
+### .!34478!visitor
+
+---
+
 ### base
 
 Module with basic data structures - they are designed to be lightweight and fast
@@ -466575,9 +477465,17 @@ Multiple writes are not supported
 
 ---
 
+### .!34485!base
+
+---
+
 ### typ
 
 Module containing information about types known to the database
+
+---
+
+### .!34490!exc
 
 ---
 
@@ -466847,6 +477745,34 @@ Handle the lock according to the write mode
 - `fmt`
 - `data`
 - `offset`
+
+---
+
+### .!34494!fun
+
+---
+
+### .!34496!pack
+
+---
+
+### .!34500!typ
+
+---
+
+### .!34481!__init__
+
+---
+
+### .!34486!const
+
+---
+
+### .!34498!stream
+
+---
+
+### .!34503!util
 
 ---
 
@@ -467477,6 +478403,10 @@ and remove deleted ones. We keep the unchanged ones
 
 ---
 
+### .!34510!base
+
+---
+
 ### ref
 
 #### Classes
@@ -467513,6 +478443,30 @@ A database consisting of database referred to in a file
 **Paramètres :**
 
 - `force`
+
+---
+
+### .!34506!__init__
+
+---
+
+### .!34514!git
+
+---
+
+### .!34518!loose
+
+---
+
+### .!34521!mem
+
+---
+
+### .!34524!pack
+
+---
+
+### .!34526!ref
 
 ---
 
@@ -467659,6 +478613,10 @@ Copy all files found according to the given source glob into the target director
 - `stream`
 
 ##### _assert
+
+---
+
+### .!34531!lib
 
 ---
 
@@ -467828,6 +478786,30 @@ Test for object db
 
 ---
 
+### .!34529!__init__
+
+---
+
+### .!34534!test_base
+
+---
+
+### .!34536!test_example
+
+---
+
+### .!34539!test_pack
+
+---
+
+### .!34543!test_stream
+
+---
+
+### .!34547!test_util
+
+---
+
 ### encoding
 
 #### Fonctions
@@ -467845,6 +478827,10 @@ Test for object db
 
 - `data`
 - `encoding`
+
+---
+
+### .!34554!encoding
 
 ---
 
@@ -468283,6 +479269,30 @@ Backport of :class:`contextlib.suppress` from Python 3.12.1.
 ---
 
 ### _version
+
+---
+
+### .!34557!__init__
+
+---
+
+### .!34560!_catch
+
+---
+
+### .!34563!_exceptions
+
+---
+
+### .!34566!_formatting
+
+---
+
+### .!34571!_suppress
+
+---
+
+### .!34572!_version
 
 ---
 
@@ -468813,6 +479823,10 @@ Spinners are from:
 
 ---
 
+### .!34645!abc
+
+---
+
 ### _stack
 
 #### Classes
@@ -468842,6 +479856,10 @@ Push an item on to the stack (append in stack nomenclature).
 
 ---
 
+### .!34655!ansi
+
+---
+
 ### _timer
 
 Timer context manager, only used in debug.
@@ -468855,6 +479873,10 @@ print the elapsed time. (only used in debugging)
 **Paramètres :**
 
 - `subject`
+
+---
+
+### .!34658!bar
 
 ---
 
@@ -469240,6 +480262,10 @@ Returns:
 
 ---
 
+### .!34660!box
+
+---
+
 ### _windows_renderer
 
 #### Fonctions
@@ -469295,6 +480321,10 @@ Returns:
 
 ---
 
+### .!34708!json
+
+---
+
 ### abc
 
 #### Classes
@@ -469325,6 +480355,10 @@ Check if this class supports the rich render protocol.
 
 - `cls`
 - `other`
+
+---
+
+### .!34716!live
 
 ---
 
@@ -469472,6 +480506,10 @@ Align a renderable to the right.
 
 ---
 
+### .!34768!repr
+
+---
+
 ### ansi
 
 #### Classes
@@ -469544,6 +480582,10 @@ Returns:
 
 ---
 
+### .!34771!rule
+
+---
+
 ### bar
 
 #### Classes
@@ -469592,6 +480634,10 @@ Args:
 
 - `console`
 - `options`
+
+---
+
+### .!34807!text
 
 ---
 
@@ -469708,6 +480754,10 @@ Returns:
 **Paramètres :**
 
 - `widths`
+
+---
+
+### .!34816!tree
 
 ---
 
@@ -479215,6 +490265,278 @@ Make a Segment for a level of the guide lines.
 
 ---
 
+### .!34576!__init__
+
+---
+
+### .!34581!__main__
+
+---
+
+### .!34584!_cell_widths
+
+---
+
+### .!34586!_emoji_codes
+
+---
+
+### .!34590!_emoji_replace
+
+---
+
+### .!34593!_export_format
+
+---
+
+### .!34597!_extension
+
+---
+
+### .!34599!_fileno
+
+---
+
+### .!34601!_inspect
+
+---
+
+### .!34604!_log_render
+
+---
+
+### .!34608!_loop
+
+---
+
+### .!34612!_null_file
+
+---
+
+### .!34613!_palettes
+
+---
+
+### .!34615!_pick
+
+---
+
+### .!34619!_ratio
+
+---
+
+### .!34621!_spinners
+
+---
+
+### .!34624!_stack
+
+---
+
+### .!34627!_timer
+
+---
+
+### .!34631!_win32_console
+
+---
+
+### .!34635!_windows
+
+---
+
+### .!34638!_windows_renderer
+
+---
+
+### .!34642!_wrap
+
+---
+
+### .!34650!align
+
+---
+
+### .!34663!cells
+
+---
+
+### .!34667!color
+
+---
+
+### .!34670!color_triplet
+
+---
+
+### .!34672!columns
+
+---
+
+### .!34675!console
+
+---
+
+### .!34677!constrain
+
+---
+
+### .!34681!containers
+
+---
+
+### .!34684!control
+
+---
+
+### .!34688!default_styles
+
+---
+
+### .!34690!diagnose
+
+---
+
+### .!34693!emoji
+
+---
+
+### .!34697!errors
+
+---
+
+### .!34701!file_proxy
+
+---
+
+### .!34703!filesize
+
+---
+
+### .!34706!highlighter
+
+---
+
+### .!34711!jupyter
+
+---
+
+### .!34712!layout
+
+---
+
+### .!34720!live_render
+
+---
+
+### .!34724!logging
+
+---
+
+### .!34729!markdown
+
+---
+
+### .!34732!markup
+
+---
+
+### .!34736!measure
+
+---
+
+### .!34737!padding
+
+---
+
+### .!34741!pager
+
+---
+
+### .!34742!palette
+
+---
+
+### .!34746!panel
+
+---
+
+### .!34749!pretty
+
+---
+
+### .!34753!progress
+
+---
+
+### .!34755!progress_bar
+
+---
+
+### .!34757!prompt
+
+---
+
+### .!34761!protocol
+
+---
+
+### .!34764!region
+
+---
+
+### .!34773!scope
+
+---
+
+### .!34776!screen
+
+---
+
+### .!34780!segment
+
+---
+
+### .!34786!spinner
+
+---
+
+### .!34789!status
+
+---
+
+### .!34792!style
+
+---
+
+### .!34795!styled
+
+---
+
+### .!34798!syntax
+
+---
+
+### .!34802!table
+
+---
+
+### .!34803!terminal_theme
+
+---
+
+### .!34808!theme
+
+---
+
+### .!34811!themes
+
+---
+
+### .!34814!traceback
+
+---
+
 ### _argcomplete
 
 Allow bash-completion for argparse with argcomplete if installed.
@@ -479320,6 +490642,10 @@ Fast file completer class.
 ---
 
 ### _version
+
+---
+
+### .!34877!main
 
 ---
 
@@ -493155,6 +504481,186 @@ Convert a warnings.WarningMessage to a string.
 
 ---
 
+### .!34819!__init__
+
+---
+
+### .!34823!_argcomplete
+
+---
+
+### .!34827!_version
+
+---
+
+### .!34831!cacheprovider
+
+---
+
+### .!34835!capture
+
+---
+
+### .!34839!compat
+
+---
+
+### .!34842!debugging
+
+---
+
+### .!34846!deprecated
+
+---
+
+### .!34847!doctest
+
+---
+
+### .!34851!faulthandler
+
+---
+
+### .!34853!fixtures
+
+---
+
+### .!34856!freeze_support
+
+---
+
+### .!34859!helpconfig
+
+---
+
+### .!34861!hookspec
+
+---
+
+### .!34866!junitxml
+
+---
+
+### .!34871!legacypath
+
+---
+
+### .!34874!logging
+
+---
+
+### .!34881!monkeypatch
+
+---
+
+### .!34883!nodes
+
+---
+
+### .!34885!outcomes
+
+---
+
+### .!34888!pastebin
+
+---
+
+### .!34892!pathlib
+
+---
+
+### .!34893!pytester
+
+---
+
+### .!34897!pytester_assertions
+
+---
+
+### .!34901!python
+
+---
+
+### .!34904!python_api
+
+---
+
+### .!34907!raises
+
+---
+
+### .!34911!recwarn
+
+---
+
+### .!34914!reports
+
+---
+
+### .!34917!runner
+
+---
+
+### .!34920!scope
+
+---
+
+### .!34922!setuponly
+
+---
+
+### .!34925!setupplan
+
+---
+
+### .!34929!skipping
+
+---
+
+### .!34932!stash
+
+---
+
+### .!34934!stepwise
+
+---
+
+### .!34937!terminal
+
+---
+
+### .!34940!threadexception
+
+---
+
+### .!34944!timing
+
+---
+
+### .!34948!tmpdir
+
+---
+
+### .!34951!tracemalloc
+
+---
+
+### .!34954!unittest
+
+---
+
+### .!34958!unraisableexception
+
+---
+
+### .!34961!warning_types
+
+---
+
+### .!34966!warnings
+
+---
+
 ### code
 
 #### Classes
@@ -494236,6 +505742,18 @@ Return a new Source object deindented.
 
 ---
 
+### .!34969!__init__
+
+---
+
+### .!34974!code
+
+---
+
+### .!34977!source
+
+---
+
 ### pprint
 
 #### Classes
@@ -494853,6 +506371,26 @@ Returns -1 if the string contains non-printable characters.
 **Paramètres :**
 
 - `s`
+
+---
+
+### .!34981!__init__
+
+---
+
+### .!34986!pprint
+
+---
+
+### .!34989!saferepr
+
+---
+
+### .!34991!terminalwriter
+
+---
+
+### .!34994!wcwidth
 
 ---
 
@@ -495889,6 +507427,14 @@ Check if path denotes directory scheduled for removal
 
 ---
 
+### .!34999!error
+
+---
+
+### .!35001!path
+
+---
+
 ### rewrite
 
 Rewrite assertion AST to produce nice error messages.
@@ -496465,6 +508011,10 @@ will be replaced by a usage message.
 
 ---
 
+### .!35016!util
+
+---
+
 ### util
 
 Utilities for assertion debugging.
@@ -496737,6 +508287,18 @@ Apply highlighting to the given source.
 
 - `source`
 - `lexer`
+
+---
+
+### .!35005!__init__
+
+---
+
+### .!35008!rewrite
+
+---
+
+### .!35011!truncate
 
 ---
 
@@ -497240,6 +508802,26 @@ file system ("/" on Unix and "C:\\" on Windows for example).
 **Paramètres :**
 
 - `v`
+
+---
+
+### .!35020!__init__
+
+---
+
+### .!35023!argparsing
+
+---
+
+### .!35026!compat
+
+---
+
+### .!35029!exceptions
+
+---
+
+### .!35031!findpaths
 
 ---
 
@@ -497908,9 +509490,29 @@ Generate a new :class:`MarkDecorator` with the given name.
 
 ---
 
+### .!35035!__init__
+
+---
+
+### .!35037!expression
+
+---
+
+### .!35041!structures
+
+---
+
 ### __main__
 
 The pytest entry point.
+
+---
+
+### .!35045!__init__
+
+---
+
+### .!35048!__main__
 
 ---
 
@@ -497974,6 +509576,22 @@ default_layer_attributes : dict
 
 - `name`
 - `uri`
+
+---
+
+### .!35050!__init__
+
+---
+
+### .!35052!_version
+
+---
+
+### .!35054!frontend_semver
+
+---
+
+### .!35059!settings
 
 ---
 
@@ -498215,6 +509833,10 @@ Return a JSON-ified version of the Deck object.
 
 ---
 
+### .!35067!deck
+
+---
+
 ### layer
 
 #### Classes
@@ -498334,6 +509956,10 @@ serializing the data to JSON
 **Paramètres :**
 
 - `kwargs`
+
+---
+
+### .!35082!view
 
 ---
 
@@ -498500,6 +510126,34 @@ bearing : float, default None
 - `max_zoom`
 - `pitch`
 - `bearing`
+
+---
+
+### .!35061!__init__
+
+---
+
+### .!35063!base_map_provider
+
+---
+
+### .!35071!json_tools
+
+---
+
+### .!35073!layer
+
+---
+
+### .!35076!light_settings
+
+---
+
+### .!35079!map_styles
+
+---
+
+### .!35085!view_state
 
 ---
 
@@ -498756,6 +510410,26 @@ pydeck.Viewport
 
 ---
 
+### .!35089!__init__
+
+---
+
+### .!35094!binary_transfer
+
+---
+
+### .!35096!color_scales
+
+---
+
+### .!35100!type_checking
+
+---
+
+### .!35103!viewport_helpers
+
+---
+
 ### exceptions
 
 #### Classes
@@ -498763,6 +510437,14 @@ pydeck.Viewport
 ##### PydeckException
 
 ##### BinaryTransportException
+
+---
+
+### .!35106!__init__
+
+---
+
+### .!35109!exceptions
 
 ---
 
@@ -498845,6 +510527,14 @@ Converts deck.gl format JSON to an HTML page
 
 ---
 
+### .!35116!html
+
+---
+
+### .!35119!__init__
+
+---
+
 ### base
 
 #### Classes
@@ -498858,6 +510548,10 @@ Converts deck.gl format JSON to an HTML page
 #### Fonctions
 
 ##### __init__
+
+---
+
+### .!35125!base
 
 ---
 
@@ -499002,6 +510696,22 @@ value : str
 - `other`
 
 ##### __repr__
+
+---
+
+### .!35122!__init__
+
+---
+
+### .!35129!function
+
+---
+
+### .!35132!image
+
+---
+
+### .!35135!string
 
 ---
 
@@ -499159,6 +510869,22 @@ Callback for storing data on click
 - `_`
 - `content`
 - `buffers`
+
+---
+
+### .!35139!__init__
+
+---
+
+### .!35142!_frontend
+
+---
+
+### .!35144!debounce
+
+---
+
+### .!35147!widget
 
 ---
 
@@ -500783,6 +512509,30 @@ Public testing utility functions.
 
 ---
 
+### .!35149!conftest
+
+---
+
+### .!35153!_typing
+
+---
+
+### .!35156!_version
+
+---
+
+### .!35159!__init__
+
+---
+
+### .!35161!_version_meson
+
+---
+
+### .!35165!testing
+
+---
+
 ### _constants
 
 _constants
@@ -500943,6 +512693,30 @@ without copying if possible (otherwise will copy).
 **Paramètres :**
 
 - `b`
+
+---
+
+### .!35167!_constants
+
+---
+
+### .!35170!_optional
+
+---
+
+### .!35174!pyarrow
+
+---
+
+### .!35179!__init__
+
+---
+
+### .!35184!pickle_compat
+
+---
+
+### .!35187!compressors
 
 ---
 
@@ -501144,6 +512918,14 @@ ValueError
 - `fname`
 - `max_fname_arg_count`
 - `method`
+
+---
+
+### .!35192!__init__
+
+---
+
+### .!35196!function
 
 ---
 
@@ -505526,6 +517308,10 @@ TypeError if incompatible axis
 
 ---
 
+### .!35254!api
+
+---
+
 ### arraylike
 
 Methods that can be shared by many array-like classes or subclasses:
@@ -505920,6 +517706,10 @@ moose     3.0     NaN
 **Paramètres :**
 
 - `result`
+
+---
+
+### .!35278!base
 
 ---
 
@@ -519873,6 +531663,10 @@ np.ndarray[np.intp]
 
 ---
 
+### .!35258!common
+
+---
+
 ### api
 
 ---
@@ -531171,6 +542965,78 @@ see https://github.com/numpy/numpy/issues/8352
 
 ---
 
+### .!35199!accessor
+
+---
+
+### .!35203!nanops
+
+---
+
+### .!35207!roperator
+
+---
+
+### .!35211!missing
+
+---
+
+### .!35216!algorithms
+
+---
+
+### .!35220!resample
+
+---
+
+### .!35223!arraylike
+
+---
+
+### .!35227!construction
+
+---
+
+### .!35232!config_init
+
+---
+
+### .!35235!flags
+
+---
+
+### .!35239!generic
+
+---
+
+### .!35243!series
+
+---
+
+### .!35247!sorting
+
+---
+
+### .!35262!frame
+
+---
+
+### .!35267!shared_docs
+
+---
+
+### .!35270!sample
+
+---
+
+### .!35274!indexing
+
+---
+
+### .!35281!apply
+
+---
+
 ### utils
 
 Low-dependency indexing utilities.
@@ -531795,6 +543661,18 @@ indexer_kwargs : dict or None
 - `center`
 - `closed`
 - `step`
+
+---
+
+### .!35285!__init__
+
+---
+
+### .!35290!utils
+
+---
+
+### .!35293!objects
 
 ---
 
@@ -534068,6 +545946,14 @@ position `level_num`, otherwise return `level_num`.
 
 ---
 
+### .!35297!tile
+
+---
+
+### .!35311!util
+
+---
+
 ### api
 
 ---
@@ -534421,6 +546307,10 @@ famid birth age
 
 ---
 
+### .!35320!api
+
+---
+
 ### pivot
 
 #### Fonctions
@@ -534688,6 +546578,30 @@ unique_colnames: list[str]
 - `key`
 
 ##### _all_key
+
+---
+
+### .!35301!merge
+
+---
+
+### .!35305!encoding
+
+---
+
+### .!35308!concat
+
+---
+
+### .!35314!reshape
+
+---
+
+### .!35325!melt
+
+---
+
+### .!35329!pivot
 
 ---
 
@@ -537231,6 +549145,10 @@ convert : bool, default True
 
 ---
 
+### .!35343!base
+
+---
+
 ### base
 
 #### Classes
@@ -537582,6 +549500,18 @@ See :ref:`Series.str` for the docstring of each method.
 - `pat`
 - `flags`
 - `expand`
+
+---
+
+### .!35333!accessor
+
+---
+
+### .!35336!object_array
+
+---
+
+### .!35339!__init__
 
 ---
 
@@ -538563,6 +550493,22 @@ dtype: Float32
 
 ---
 
+### .!35347!timedeltas
+
+---
+
+### .!35350!datetimes
+
+---
+
+### .!35359!times
+
+---
+
+### .!35363!numeric
+
+---
+
 ### describe
 
 Module responsible for execution of NDFrame.describe() method.
@@ -538979,6 +550925,18 @@ dict, list or collections.abc.Mapping
 
 ---
 
+### .!35366!describe
+
+---
+
+### .!35375!selectn
+
+---
+
+### .!35379!to_dict
+
+---
+
 ### hashing
 
 data hash pandas / numpy objects
@@ -539172,6 +551130,14 @@ function
 
 ---
 
+### .!35387!hashing
+
+---
+
+### .!35391!numba_
+
+---
+
 ### transforms
 
 transforms.py is for shape-preserving functions.
@@ -539359,6 +551325,10 @@ quantiles : scalar or array
 
 - `values`
 - `qs`
+
+---
+
+### .!35414!take
 
 ---
 
@@ -539890,6 +551860,38 @@ Otherwise, returns the comparison result as expected.
 **Paramètres :**
 
 - `s`
+
+---
+
+### .!35395!transforms
+
+---
+
+### .!35399!masked_accumulations
+
+---
+
+### .!35403!quantile
+
+---
+
+### .!35407!__init__
+
+---
+
+### .!35411!masked_reductions
+
+---
+
+### .!35419!datetimelike_accumulations
+
+---
+
+### .!35422!putmask
+
+---
+
+### .!35426!replace
 
 ---
 
@@ -540891,6 +552893,30 @@ Return the buffer containing the offset values for variable-size binary
 data (e.g., variable-length strings) and the buffer's associated dtype.
 Raises NoBufferPresent if the data buffer does not have an associated
 offsets buffer.
+
+---
+
+### .!35430!from_dataframe
+
+---
+
+### .!35433!dataframe
+
+---
+
+### .!35442!dataframe_protocol
+
+---
+
+### .!35446!utils
+
+---
+
+### .!35449!buffer
+
+---
+
+### .!35454!column
 
 ---
 
@@ -542478,6 +554504,10 @@ define generic base classes for pandas objects
 
 ---
 
+### .!35462!cast
+
+---
+
 ### dtypes
 
 Define extension dtypes.
@@ -543843,7 +555873,15 @@ Construct IntegerArray/FloatingArray from pyarrow Array/ChunkedArray.
 
 ---
 
+### .!35485!api
+
+---
+
 ### api
+
+---
+
+### .!35497!base
 
 ---
 
@@ -545996,6 +558034,34 @@ return the first matching dtype, otherwise return None
 **Paramètres :**
 
 - `dtype`
+
+---
+
+### .!35458!astype
+
+---
+
+### .!35465!missing
+
+---
+
+### .!35470!concat
+
+---
+
+### .!35474!generic
+
+---
+
+### .!35481!dtypes
+
+---
+
+### .!35489!common
+
+---
+
+### .!35492!inference
 
 ---
 
@@ -548500,6 +560566,10 @@ we can retain ExtensionDtypes.
 
 ---
 
+### .!35512!ops
+
+---
+
 ### indexing
 
 #### Classes
@@ -548708,6 +560778,10 @@ GroupBy.nth : Take the nth row from each group if n is an int, or a
 **Paramètres :**
 
 - `n`
+
+---
+
+### .!35531!base
 
 ---
 
@@ -552019,6 +564093,34 @@ Provide basic components for groupby.
 
 ---
 
+### .!35500!categorical
+
+---
+
+### .!35504!generic
+
+---
+
+### .!35508!__init__
+
+---
+
+### .!35515!grouper
+
+---
+
+### .!35519!indexing
+
+---
+
+### .!35523!groupby
+
+---
+
+### .!35527!numba_
+
+---
+
 ### concat
 
 #### Classes
@@ -553398,6 +565500,10 @@ Blockwise `all` reduction.
 
 ---
 
+### .!35549!api
+
+---
+
 ### blocks
 
 #### Classes
@@ -554485,6 +566591,10 @@ return a boolean if I am possibly a view
 
 ---
 
+### .!35552!ops
+
+---
+
 ### base
 
 Base class for the internal managers. Both BlockManager and ArrayManager
@@ -554754,6 +566864,10 @@ the dtype.
 - `cls`
 - `arr`
 - `index`
+
+---
+
+### .!35561!base
 
 ---
 
@@ -555851,6 +567965,30 @@ assuming shape and indexes have already been checked.
 
 ---
 
+### .!35535!concat
+
+---
+
+### .!35538!construction
+
+---
+
+### .!35542!__init__
+
+---
+
+### .!35546!array_manager
+
+---
+
+### .!35556!blocks
+
+---
+
+### .!35564!managers
+
+---
+
 ### parsing
 
 :func:`~pandas.eval` source string parsing functions
@@ -556743,6 +568881,10 @@ Get test result and reset test_results.
 
 ---
 
+### .!35595!api
+
+---
+
 ### ops
 
 Operator classes for eval.
@@ -557080,6 +569222,10 @@ Convert datetimes to a comparable value in an expression.
 
 ---
 
+### .!35599!ops
+
+---
+
 ### common
 
 #### Fonctions
@@ -557096,6 +569242,10 @@ If we have bytes, decode them to unicode.
 
 Wrapper around numpy.result_type which overcomes the NPY_MAXARGS (32)
 argument limit.
+
+---
+
+### .!35606!eval
 
 ---
 
@@ -557337,6 +569487,10 @@ We can add a new column using ``pd.eval``:
 - `level`
 - `target`
 - `inplace`
+
+---
+
+### .!35614!expr
 
 ---
 
@@ -558099,6 +570253,38 @@ Get the names in an expression.
 
 ---
 
+### .!35568!parsing
+
+---
+
+### .!35572!check
+
+---
+
+### .!35575!align
+
+---
+
+### .!35580!pytables
+
+---
+
+### .!35584!engines
+
+---
+
+### .!35587!expressions
+
+---
+
+### .!35602!common
+
+---
+
+### .!35609!scope
+
+---
+
 ### extensions
 
 Utility classes/functions to let numba recognize
@@ -558631,6 +570817,14 @@ Numba function
 
 ---
 
+### .!35622!extensions
+
+---
+
+### .!35625!executor
+
+---
+
 ### sum_
 
 Numba 1D sum kernels that can be shared by
@@ -558728,6 +570922,10 @@ Mirrors pandas/_libs/window/aggregation.pyx
 
 ---
 
+### .!35628!sum_
+
+---
+
 ### mean_
 
 Numba 1D mean kernels that can be shared by
@@ -558780,6 +570978,10 @@ Mirrors pandas/_libs/window/aggregation.pyx
 - `labels`
 - `ngroups`
 - `min_periods`
+
+---
+
+### .!35647!var_
 
 ---
 
@@ -558851,6 +571053,22 @@ Mirrors pandas/_libs/window/aggregation.pyx
 - `ngroups`
 - `min_periods`
 - `ddof`
+
+---
+
+### .!35632!min_max_
+
+---
+
+### .!35634!__init__
+
+---
+
+### .!35639!mean_
+
+---
+
+### .!35642!shared
 
 ---
 
@@ -560513,6 +572731,10 @@ Validate that each group in self._on is monotonic
 
 ---
 
+### .!35650!ewm
+
+---
+
 ### common
 
 Common utility functions for rolling operations
@@ -560547,6 +572769,10 @@ Common utility functions for rolling operations
 
 - `data`
 - `frame_template`
+
+---
+
+### .!35669!doc
 
 ---
 
@@ -561021,6 +573247,30 @@ Return an indexer class that will compute the window start and end bounds
 Returns
 -------
 GroupbyIndexer
+
+---
+
+### .!35653!online
+
+---
+
+### .!35658!__init__
+
+---
+
+### .!35662!rolling
+
+---
+
+### .!35665!common
+
+---
+
+### .!35672!numba_
+
+---
+
+### .!35676!expanding
 
 ---
 
@@ -563778,6 +576028,10 @@ Create a new IntervalArray with our dtype from a 1D complex128 ndarray.
 - `combined`
 
 ##### unique
+
+---
+
+### .!35744!base
 
 ---
 
@@ -571911,6 +584165,82 @@ dtype : ExtensionDtype
 
 ---
 
+### .!35680!floating
+
+---
+
+### .!35684!categorical
+
+---
+
+### .!35688!interval
+
+---
+
+### .!35691!_arrow_string_mixins
+
+---
+
+### .!35695!timedeltas
+
+---
+
+### .!35699!datetimes
+
+---
+
+### .!35703!string_
+
+---
+
+### .!35707!__init__
+
+---
+
+### .!35710!numpy_
+
+---
+
+### .!35713!_ranges
+
+---
+
+### .!35719!string_arrow
+
+---
+
+### .!35721!boolean
+
+---
+
+### .!35725!integer
+
+---
+
+### .!35729!masked
+
+---
+
+### .!35734!period
+
+---
+
+### .!35736!numeric
+
+---
+
+### .!35740!datetimelike
+
+---
+
+### .!35748!_mixins
+
+---
+
+### .!35752!_utils
+
+---
+
 ### accessors
 
 Accessors for arrow-backed data.
@@ -573799,6 +586129,26 @@ Apply a callable to each element while maintaining the chunking structure.
 
 ---
 
+### .!35756!accessors
+
+---
+
+### .!35760!_arrow_utils
+
+---
+
+### .!35764!__init__
+
+---
+
+### .!35767!extension_types
+
+---
+
+### .!35771!array
+
+---
+
 ### accessor
 
 Sparse accessor
@@ -575173,6 +587523,22 @@ scalar
 
 ---
 
+### .!35775!accessor
+
+---
+
+### .!35779!scipy_sparse
+
+---
+
+### .!35782!__init__
+
+---
+
+### .!35786!array
+
+---
+
 ### array_ops
 
 Functions for arithmetic and comparison operations on NumPy arrays and
@@ -575818,7 +588184,43 @@ pandas.core.common.consensus_name_attr
 
 ---
 
+### .!35790!array_ops
+
+---
+
+### .!35795!missing
+
+---
+
+### .!35798!dispatch
+
+---
+
+### .!35802!invalid
+
+---
+
+### .!35807!__init__
+
+---
+
+### .!35810!docstrings
+
+---
+
+### .!35814!mask_ops
+
+---
+
+### .!35818!common
+
+---
+
 ### api
+
+---
+
+### .!35827!api
 
 ---
 
@@ -580461,6 +592863,10 @@ has to be handled outside.
 
 ---
 
+### .!35858!api
+
+---
+
 ### api
 
 #### Fonctions
@@ -580659,6 +593065,10 @@ The common type or None if no indexes were given
 **Paramètres :**
 
 - `i`
+
+---
+
+### .!35878!base
 
 ---
 
@@ -586505,6 +598915,50 @@ Index(['first', 'second', nan], dtype='object')
 
 ---
 
+### .!35831!accessors
+
+---
+
+### .!35834!interval
+
+---
+
+### .!35839!timedeltas
+
+---
+
+### .!35842!range
+
+---
+
+### .!35847!datetimes
+
+---
+
+### .!35850!multi
+
+---
+
+### .!35862!period
+
+---
+
+### .!35866!frozen
+
+---
+
+### .!35871!extension
+
+---
+
+### .!35875!datetimelike
+
+---
+
+### .!35883!category
+
+---
+
 ### _test_decorators
 
 This module provides decorator functions which can be applied to test objects
@@ -587481,6 +599935,42 @@ running: pytest...
 
 - `extra_args`
 - `run_doctests`
+
+---
+
+### .!35887!_test_decorators
+
+---
+
+### .!35890!_validators
+
+---
+
+### .!35895!_print_versions
+
+---
+
+### .!35898!__init__
+
+---
+
+### .!35903!_decorators
+
+---
+
+### .!35907!_doctools
+
+---
+
+### .!35910!_exceptions
+
+---
+
+### .!35914!_tester
+
+---
+
+### .!35918!__init__
 
 ---
 
@@ -592891,6 +605381,10 @@ file not to be named something.zip, because that causes confusion (GH39465).
 
 ---
 
+### .!35923!orc
+
+---
+
 ### _util
 
 #### Fonctions
@@ -592907,6 +605401,10 @@ file not to be named something.zip, because that causes confusion (GH39465).
 - `dtype_backend`
 - `null_to_int64`
 - `to_pandas_kwargs`
+
+---
+
+### .!35937!html
 
 ---
 
@@ -593048,6 +605546,10 @@ Examples
 - `filepath_or_buffer`
 - `compression`
 - `storage_options`
+
+---
+
+### .!35942!xml
 
 ---
 
@@ -594717,6 +607219,10 @@ method : {None, 'multi', callable}, default None
 
 ---
 
+### .!35953!api
+
+---
+
 ### stata
 
 Module contains tools for processing Stata files into DataFrames
@@ -596255,6 +608761,10 @@ the ascii range where the characters supported are a-z, A-Z, 0-9 and _.
 
 ---
 
+### .!35967!sql
+
+---
+
 ### gbq
 
 Google BigQuery support 
@@ -596440,6 +608950,10 @@ Example taken from `Google BigQuery documentation
 
 ---
 
+### .!35975!gbq
+
+---
+
 ### spss
 
 #### Fonctions
@@ -596481,6 +608995,46 @@ Examples
 - `usecols`
 - `convert_categoricals`
 - `dtype_backend`
+
+---
+
+### .!35979!spss
+
+---
+
+### .!35926!feather_format
+
+---
+
+### .!35930!parquet
+
+---
+
+### .!35934!pytables
+
+---
+
+### .!35946!__init__
+
+---
+
+### .!35949!clipboards
+
+---
+
+### .!35956!common
+
+---
+
+### .!35960!_util
+
+---
+
+### .!35963!pickle
+
+---
+
+### .!35971!stata
 
 ---
 
@@ -598006,6 +610560,30 @@ undergo such conversions.
 - `values`
 - `index`
 - `try_parse_dates`
+
+---
+
+### .!35983!readers
+
+---
+
+### .!35986!__init__
+
+---
+
+### .!35990!python_parser
+
+---
+
+### .!35994!base_parser
+
+---
+
+### .!35997!arrow_parser_wrapper
+
+---
+
+### .!36001!c_parser_wrapper
 
 ---
 
@@ -602763,6 +615341,10 @@ Remove key where value is None, through nested dicts
 
 ---
 
+### .!36013!html
+
+---
+
 ### style_render
 
 #### Classes
@@ -604212,6 +616794,10 @@ Extract all visible row indices recursively from concatenated stylers.
 
 ---
 
+### .!36016!xml
+
+---
+
 ### css
 
 Utilities for interpreting CSS from Stylers for formatting non-HTML outputs.
@@ -604417,6 +617003,10 @@ declarations_str : str
 
 ---
 
+### .!36034!css
+
+---
+
 ### _color_data
 
 ---
@@ -604562,6 +617152,10 @@ Create the writer & save.
 
 ---
 
+### .!36043!csvs
+
+---
+
 ### string
 
 Module for formatting output data in console (to string).
@@ -604646,6 +617240,10 @@ Formatter for string representation of a dataframe.
 **Paramètres :**
 
 - `strcols`
+
+---
+
+### .!36050!info
 
 ---
 
@@ -605579,6 +618177,42 @@ Calculate display width considering unicode East Asian Width
 **Paramètres :**
 
 - `t`
+
+---
+
+### .!36004!console
+
+---
+
+### .!36009!style
+
+---
+
+### .!36020!__init__
+
+---
+
+### .!36023!format
+
+---
+
+### .!36027!excel
+
+---
+
+### .!36030!style_render
+
+---
+
+### .!36039!_color_data
+
+---
+
+### .!36046!string
+
+---
+
+### .!36054!printing
 
 ---
 
@@ -607409,6 +620043,46 @@ Save workbook to disk.
 
 ---
 
+### .!36057!_openpyxl
+
+---
+
+### .!36061!_base
+
+---
+
+### .!36065!_calamine
+
+---
+
+### .!36069!_xlrd
+
+---
+
+### .!36073!__init__
+
+---
+
+### .!36077!_pyxlsb
+
+---
+
+### .!36080!_odswriter
+
+---
+
+### .!36084!_util
+
+---
+
+### .!36088!_odfreader
+
+---
+
+### .!36091!_xlsxwriter
+
+---
+
 ### _json
 
 #### Classes
@@ -608560,6 +621234,22 @@ pandas.read_json
 
 ---
 
+### .!36096!_json
+
+---
+
+### .!36100!_normalize
+
+---
+
+### .!36103!_table_schema
+
+---
+
+### .!36108!__init__
+
+---
+
 ### sas7bdat
 
 Read SAS7BDAT files
@@ -609062,6 +621752,30 @@ DataFrame
 
 ---
 
+### .!36111!sas7bdat
+
+---
+
+### .!36115!sas_constants
+
+---
+
+### .!36120!sasreader
+
+---
+
+### .!36124!__init__
+
+---
+
+### .!36127!sas_xport
+
+---
+
+### .!36132!__init__
+
+---
+
 ### api
 
 Timeseries API
@@ -609069,6 +621783,10 @@ Timeseries API
 ---
 
 ### offsets
+
+---
+
+### .!36140!api
 
 ---
 
@@ -609675,6 +622393,22 @@ inplace : bool (default=False)
 
 - `other`
 - `inplace`
+
+---
+
+### .!36135!__init__
+
+---
+
+### .!36144!offsets
+
+---
+
+### .!36148!frequencies
+
+---
+
+### .!36151!holiday
 
 ---
 
@@ -611974,6 +624708,58 @@ everything you wanted to test about sorting
 
 ---
 
+### .!36155!test_optional_dependency
+
+---
+
+### .!36158!test_expressions
+
+---
+
+### .!36163!test_register_accessor
+
+---
+
+### .!36166!test_common
+
+---
+
+### .!36170!test_downstream
+
+---
+
+### .!36174!test_errors
+
+---
+
+### .!36177!test_sorting
+
+---
+
+### .!36181!test_aggregation
+
+---
+
+### .!36190!test_nanops
+
+---
+
+### .!36193!test_take
+
+---
+
+### .!36197!test_algos
+
+---
+
+### .!36201!test_multilevel
+
+---
+
+### .!36205!test_flags
+
+---
+
 ### test_logical_ops
 
 #### Classes
@@ -614095,6 +626881,62 @@ Tests for np.foo applied to Series, not necessarily ufuncs.
 - `fill_value`
 
 ##### _constructor
+
+---
+
+### .!36209!test_logical_ops
+
+---
+
+### .!36213!test_reductions
+
+---
+
+### .!36217!test_constructors
+
+---
+
+### .!36220!test_missing
+
+---
+
+### .!36225!test_unary
+
+---
+
+### .!36229!test_cumulative
+
+---
+
+### .!36237!test_subclass
+
+---
+
+### .!36240!test_formats
+
+---
+
+### .!36246!test_ufunc
+
+---
+
+### .!36249!test_iteration
+
+---
+
+### .!36253!test_validate
+
+---
+
+### .!36256!test_npfuncs
+
+---
+
+### .!36261!test_api
+
+---
+
+### .!36265!test_arithmetic
 
 ---
 
@@ -618330,6 +631172,290 @@ are tested here.
 
 ---
 
+### .!36269!test_autocorr
+
+---
+
+### .!36273!test_value_counts
+
+---
+
+### .!36276!test_combine
+
+---
+
+### .!36280!test_convert_dtypes
+
+---
+
+### .!36285!test_cov_corr
+
+---
+
+### .!36289!test_repeat
+
+---
+
+### .!36293!test_searchsorted
+
+---
+
+### .!36296!test_add_prefix_suffix
+
+---
+
+### .!36301!test_round
+
+---
+
+### .!36304!test_combine_first
+
+---
+
+### .!36308!test_infer_objects
+
+---
+
+### .!36312!test_sort_values
+
+---
+
+### .!36316!test_to_frame
+
+---
+
+### .!36320!test_nunique
+
+---
+
+### .!36323!test_argsort
+
+---
+
+### .!36326!test_reset_index
+
+---
+
+### .!36330!test_describe
+
+---
+
+### .!36333!test_size
+
+---
+
+### .!36337!test_reindex_like
+
+---
+
+### .!36341!test_copy
+
+---
+
+### .!36345!test_set_name
+
+---
+
+### .!36348!test_truncate
+
+---
+
+### .!36352!test_drop_duplicates
+
+---
+
+### .!36356!__init__
+
+---
+
+### .!36359!test_head_tail
+
+---
+
+### .!36363!test_unstack
+
+---
+
+### .!36368!test_count
+
+---
+
+### .!36371!test_quantile
+
+---
+
+### .!36375!test_between
+
+---
+
+### .!36379!test_equals
+
+---
+
+### .!36382!test_nlargest
+
+---
+
+### .!36386!test_tz_localize
+
+---
+
+### .!36390!test_update
+
+---
+
+### .!36394!test_diff
+
+---
+
+### .!36396!test_astype
+
+---
+
+### .!36401!test_dropna
+
+---
+
+### .!36405!test_explode
+
+---
+
+### .!36408!test_matmul
+
+---
+
+### .!36414!test_values
+
+---
+
+### .!36416!test_view
+
+---
+
+### .!36421!test_duplicated
+
+---
+
+### .!36425!test_case_when
+
+---
+
+### .!36429!test_align
+
+---
+
+### .!36434!test_pop
+
+---
+
+### .!36437!test_pct_change
+
+---
+
+### .!36441!test_tolist
+
+---
+
+### .!36445!test_isin
+
+---
+
+### .!36448!test_rename
+
+---
+
+### .!36453!test_fillna
+
+---
+
+### .!36457!test_sort_index
+
+---
+
+### .!36461!test_map
+
+---
+
+### .!36463!test_drop
+
+---
+
+### .!36468!test_is_unique
+
+---
+
+### .!36471!test_item
+
+---
+
+### .!36474!test_is_monotonic
+
+---
+
+### .!36478!test_asof
+
+---
+
+### .!36482!test_get_numeric_data
+
+---
+
+### .!36486!test_compare
+
+---
+
+### .!36490!test_to_dict
+
+---
+
+### .!36494!test_rename_axis
+
+---
+
+### .!36498!test_rank
+
+---
+
+### .!36501!test_replace
+
+---
+
+### .!36505!test_unique
+
+---
+
+### .!36510!test_clip
+
+---
+
+### .!36513!test_info
+
+---
+
+### .!36519!test_dtypes
+
+---
+
+### .!36523!test_isna
+
+---
+
+### .!36527!test_to_numpy
+
+---
+
+### .!36530!test_interpolate
+
+---
+
+### .!36536!test_reindex
+
+---
+
+### .!36538!test_to_csv
+
+---
+
 ### test_dt_accessor
 
 #### Classes
@@ -618698,6 +631824,30 @@ are tested here.
 
 - `indices`
 - `name`
+
+---
+
+### .!36543!test_dt_accessor
+
+---
+
+### .!36546!test_str_accessor
+
+---
+
+### .!36555!test_list_accessor
+
+---
+
+### .!36558!test_cat_accessor
+
+---
+
+### .!36562!test_sparse_accessor
+
+---
+
+### .!36566!test_struct_accessor
 
 ---
 
@@ -620415,6 +633565,50 @@ Also test support for datetime64[ns] in Series / DataFrame
 ##### test_delitem_missing_key
 
 ##### test_delitem_extension_dtype
+
+---
+
+### .!36571!test_set_value
+
+---
+
+### .!36575!test_mask
+
+---
+
+### .!36578!test_xs
+
+---
+
+### .!36582!test_getitem
+
+---
+
+### .!36586!test_setitem
+
+---
+
+### .!36595!test_indexing
+
+---
+
+### .!36600!test_take
+
+---
+
+### .!36603!test_datetime
+
+---
+
+### .!36607!test_get
+
+---
+
+### .!36611!test_where
+
+---
+
+### .!36614!test_delitem
 
 ---
 
@@ -622281,6 +635475,46 @@ Also test support for datetime64[ns] in Series / DataFrame
 
 ---
 
+### .!36618!test_pivot_multilevel
+
+---
+
+### .!36622!test_cut
+
+---
+
+### .!36626!test_get_dummies
+
+---
+
+### .!36631!test_union_categoricals
+
+---
+
+### .!36634!test_qcut
+
+---
+
+### .!36642!test_pivot
+
+---
+
+### .!36646!test_util
+
+---
+
+### .!36650!test_melt
+
+---
+
+### .!36654!test_from_dummies
+
+---
+
+### .!36657!test_crosstab
+
+---
+
 ### conftest
 
 #### Fonctions
@@ -623410,6 +636644,54 @@ Test common dtype coercion rules between concat and append.
 ##### test_inner_sort_columns
 
 ##### test_sort_columns_one_df
+
+---
+
+### .!36661!conftest
+
+---
+
+### .!36666!test_categorical
+
+---
+
+### .!36669!test_append
+
+---
+
+### .!36678!test_invalid
+
+---
+
+### .!36683!test_sort
+
+---
+
+### .!36685!test_concat
+
+---
+
+### .!36690!test_index
+
+---
+
+### .!36694!test_empty
+
+---
+
+### .!36698!test_datetimes
+
+---
+
+### .!36704!test_series
+
+---
+
+### .!36709!test_append_common
+
+---
+
+### .!36712!test_dataframe
 
 ---
 
@@ -625353,6 +638635,34 @@ right dataframe (multi-indexed) for multi-index join tests
 
 ---
 
+### .!36716!test_merge_index_as_string
+
+---
+
+### .!36720!test_merge_asof
+
+---
+
+### .!36724!test_join
+
+---
+
+### .!36732!test_merge
+
+---
+
+### .!36736!test_merge_cross
+
+---
+
+### .!36740!test_multi
+
+---
+
+### .!36743!test_merge_ordered
+
+---
+
 ### test_invalid_arg
 
 #### Fonctions
@@ -626821,6 +640131,46 @@ over frame_or_series.
 
 ---
 
+### .!36748!test_invalid_arg
+
+---
+
+### .!36756!test_series_transform
+
+---
+
+### .!36759!test_str
+
+---
+
+### .!36763!test_series_apply
+
+---
+
+### .!36767!common
+
+---
+
+### .!36771!test_series_apply_relabeling
+
+---
+
+### .!36775!test_numba
+
+---
+
+### .!36779!test_frame_apply
+
+---
+
+### .!36782!test_frame_apply_relabeling
+
+---
+
+### .!36787!test_frame_transform
+
+---
+
 ### test_cat
 
 #### Fonctions
@@ -628203,6 +641553,50 @@ Examples
 - `any_string_dtype`
 
 ##### test_extractall_preserves_dtype
+
+---
+
+### .!36791!test_cat
+
+---
+
+### .!36795!test_string_array
+
+---
+
+### .!36798!test_split_partition
+
+---
+
+### .!36803!conftest
+
+---
+
+### .!36806!test_get_dummies
+
+---
+
+### .!36810!test_find_replace
+
+---
+
+### .!36814!__init__
+
+---
+
+### .!36817!test_case_justify
+
+---
+
+### .!36821!test_strings
+
+---
+
+### .!36825!test_api
+
+---
+
+### .!36829!test_extract
 
 ---
 
@@ -630305,6 +643699,22 @@ Timestamp at 1960-01-01 in various forms.
 ##### test_invalid_dtype_backend
 
 ##### test_coerce_pyarrow_backend
+
+---
+
+### .!36832!test_to_time
+
+---
+
+### .!36841!test_to_timedelta
+
+---
+
+### .!36844!test_to_datetime
+
+---
+
+### .!36847!test_to_numeric
 
 ---
 
@@ -633608,6 +647018,54 @@ Length-100 array in which all the elements are two.
 
 ---
 
+### .!36851!test_period
+
+---
+
+### .!36855!test_masked
+
+---
+
+### .!36858!test_extension
+
+---
+
+### .!36862!conftest
+
+---
+
+### .!36865!test_common
+
+---
+
+### .!36868!test_sparse
+
+---
+
+### .!36873!test_string
+
+---
+
+### .!36876!test_categorical
+
+---
+
+### .!36886!test_interval
+
+---
+
+### .!36888!test_numpy
+
+---
+
+### .!36893!test_datetime
+
+---
+
+### .!36897!test_arrow
+
+---
+
 ### test_decimal
 
 #### Classes
@@ -634142,6 +647600,18 @@ type
 
 ---
 
+### .!36901!test_decimal
+
+---
+
+### .!36906!__init__
+
+---
+
+### .!36909!array
+
+---
+
 ### test_array_with_attr
 
 #### Fonctions
@@ -634229,6 +647699,18 @@ type
 
 - `cls`
 - `to_concat`
+
+---
+
+### .!36913!test_array_with_attr
+
+---
+
+### .!36917!__init__
+
+---
+
+### .!36920!array
 
 ---
 
@@ -634330,6 +647812,14 @@ type
 
 - `cls`
 - `scalars`
+
+---
+
+### .!36924!__init__
+
+---
+
+### .!36929!array
 
 ---
 
@@ -634914,6 +648404,18 @@ type
 
 ---
 
+### .!36933!__init__
+
+---
+
+### .!36936!test_json
+
+---
+
+### .!36940!array
+
+---
+
 ### test_list
 
 #### Fonctions
@@ -635024,6 +648526,18 @@ type
 
 - `cls`
 - `to_concat`
+
+---
+
+### .!36945!test_list
+
+---
+
+### .!36948!__init__
+
+---
+
+### .!36952!array
 
 ---
 
@@ -636186,6 +649700,10 @@ In some cases, assumes that obj.index is the default RangeIndex.
 
 ---
 
+### .!36983!io
+
+---
+
 ### dtype
 
 #### Classes
@@ -636374,6 +649892,10 @@ Base class for ExtensionDtype classes
 
 ---
 
+### .!37001!ops
+
+---
+
 ### accumulate
 
 #### Classes
@@ -636413,6 +649935,10 @@ make sense for numeric/boolean operations.
 - `data`
 - `all_numeric_accumulations`
 - `skipna`
+
+---
+
+### .!37006!dim2
 
 ---
 
@@ -636534,6 +650060,10 @@ Tests that the basic interface is satisfied.
 **Paramètres :**
 
 - `data`
+
+---
+
+### .!37018!base
 
 ---
 
@@ -637456,6 +650986,66 @@ Tests checking the formatting of your EA when printed.
 **Paramètres :**
 
 - `data`
+
+---
+
+### .!36956!missing
+
+---
+
+### .!36958!reshaping
+
+---
+
+### .!36963!index
+
+---
+
+### .!36966!methods
+
+---
+
+### .!36971!reduce
+
+---
+
+### .!36974!setitem
+
+---
+
+### .!36978!dtype
+
+---
+
+### .!36987!accumulate
+
+---
+
+### .!36990!interface
+
+---
+
+### .!36994!__init__
+
+---
+
+### .!36997!getitem
+
+---
+
+### .!37011!casting
+
+---
+
+### .!37014!groupby
+
+---
+
+### .!37021!constructors
+
+---
+
+### .!37026!printing
 
 ---
 
@@ -639478,6 +653068,38 @@ Check TimeGrouper's aggregation is identical as normal groupby.
 
 ---
 
+### .!37030!conftest
+
+---
+
+### .!37034!test_resampler_grouper
+
+---
+
+### .!37041!test_timedelta
+
+---
+
+### .!37044!test_base
+
+---
+
+### .!37049!test_period_index
+
+---
+
+### .!37053!test_datetime_index
+
+---
+
+### .!37057!test_time_grouper
+
+---
+
+### .!37060!test_resample_api
+
+---
+
 ### test_deprecate_nonkeyword_arguments
 
 Tests for the `deprecate_nonkeyword_arguments` decorator
@@ -641153,6 +654775,106 @@ b : object
 
 ---
 
+### .!37064!test_deprecate_nonkeyword_arguments
+
+---
+
+### .!37066!test_validate_args_and_kwargs
+
+---
+
+### .!37070!test_assert_series_equal
+
+---
+
+### .!37074!conftest
+
+---
+
+### .!37078!test_assert_frame_equal
+
+---
+
+### .!37082!test_show_versions
+
+---
+
+### .!37087!test_assert_interval_array_equal
+
+---
+
+### .!37096!test_assert_attr_equal
+
+---
+
+### .!37100!test_util
+
+---
+
+### .!37104!test_assert_index_equal
+
+---
+
+### .!37106!test_hashing
+
+---
+
+### .!37108!test_shares_memory
+
+---
+
+### .!37111!test_validate_args
+
+---
+
+### .!37115!test_validate_kwargs
+
+---
+
+### .!37120!test_assert_categorical_equal
+
+---
+
+### .!37124!test_assert_numpy_array_equal
+
+---
+
+### .!37127!test_assert_extension_array_equal
+
+---
+
+### .!37131!test_deprecate
+
+---
+
+### .!37135!test_numba
+
+---
+
+### .!37138!test_validate_inclusive
+
+---
+
+### .!37142!test_assert_produces_warning
+
+---
+
+### .!37145!test_doc
+
+---
+
+### .!37149!test_deprecate_kwarg
+
+---
+
+### .!37154!test_assert_almost_equal
+
+---
+
+### .!37158!test_rewrite_warning
+
+---
+
 ### test_localization
 
 #### Fonctions
@@ -641312,6 +655034,14 @@ b : object
 **Paramètres :**
 
 - `key`
+
+---
+
+### .!37162!test_localization
+
+---
+
+### .!37169!test_config
 
 ---
 
@@ -646536,6 +660266,46 @@ create the pickle data
 
 - `s3_public_bucket_with_data`
 - `s3so`
+
+---
+
+### .!37173!test_parquet
+
+---
+
+### .!37176!test_fsspec
+
+---
+
+### .!37179!test_compression
+
+---
+
+### .!37183!conftest
+
+---
+
+### .!37188!test_common
+
+---
+
+### .!37190!test_pickle
+
+---
+
+### .!37195!test_orc
+
+---
+
+### .!37198!test_clipboard
+
+---
+
+### .!37207!test_stata
+
+---
+
+### .!37211!test_html
 
 ---
 
@@ -897370,6 +911140,101 @@ Génère un rapport d'audit
 
 ---
 
+### auto_cicd
+
+#### Classes
+
+##### AutoCICD
+
+Générateur de CI / CD
+
+**Méthodes :**
+
+- `__init__()`
+- `setup_cicd()`
+- `_analyze_project()`
+- `_detect_project_type()`
+- `_detect_languages()`
+- `_extract_dependencies()`
+- `_find_entry_points()`
+- `_has_tests()`
+- `_has_documentation()`
+- `_generate_github_actions()`
+- `_generate_docker_config()`
+- `_generate_deployment_config()`
+- `_save_cicd_configs()`
+- `_get_created_files()`
+
+#### Fonctions
+
+##### generate_github_ci_yaml
+
+**Paramètres :**
+
+- `outdir`
+
+##### __init__
+
+##### setup_cicd
+
+Configuration complète CI / CD pour un projet
+
+**Paramètres :**
+
+- `project_path`
+
+##### _analyze_project
+
+Analyse du projet pour la CI/CD
+
+##### _detect_project_type
+
+Détection du type de projet
+
+##### _detect_languages
+
+Détection des langages du projet
+
+##### _extract_dependencies
+
+Extraction des dépendances du projet
+
+##### _find_entry_points
+
+Trouve les points d'entrée du projet
+
+##### _has_tests
+
+Vérifie si le projet a des tests
+
+##### _has_documentation
+
+Vérifie si le projet a de la documentation
+
+##### _generate_github_actions
+
+Génère les workflows GitHub Actions
+
+##### _generate_docker_config
+
+Génère la configuration Docker
+
+##### _generate_deployment_config
+
+Génère la configuration de déploiement
+
+##### _save_cicd_configs
+
+**Paramètres :**
+
+- `github_actions`
+- `docker_config`
+- `deployment_config`
+
+##### _get_created_files
+
+---
+
 ### logger_advanced
 
 Système de logging avancé pour Athalia/Arkalia
@@ -897752,101 +911617,6 @@ Convertit la configuration en f
 
 ---
 
-### auto_cicd
-
-#### Classes
-
-##### AutoCICD
-
-Générateur de CI / CD
-
-**Méthodes :**
-
-- `__init__()`
-- `setup_cicd()`
-- `_analyze_project()`
-- `_detect_project_type()`
-- `_detect_languages()`
-- `_extract_dependencies()`
-- `_find_entry_points()`
-- `_has_tests()`
-- `_has_documentation()`
-- `_generate_github_actions()`
-- `_generate_docker_config()`
-- `_generate_deployment_config()`
-- `_save_cicd_configs()`
-- `_get_created_files()`
-
-#### Fonctions
-
-##### generate_github_ci_yaml
-
-**Paramètres :**
-
-- `outdir`
-
-##### __init__
-
-##### setup_cicd
-
-Configuration complète CI / CD pour un projet
-
-**Paramètres :**
-
-- `project_path`
-
-##### _analyze_project
-
-Analyse du projet pour la CI/CD
-
-##### _detect_project_type
-
-Détection du type de projet
-
-##### _detect_languages
-
-Détection des langages du projet
-
-##### _extract_dependencies
-
-Extraction des dépendances du projet
-
-##### _find_entry_points
-
-Trouve les points d'entrée du projet
-
-##### _has_tests
-
-Vérifie si le projet a des tests
-
-##### _has_documentation
-
-Vérifie si le projet a de la documentation
-
-##### _generate_github_actions
-
-Génère les workflows GitHub Actions
-
-##### _generate_docker_config
-
-Génère la configuration Docker
-
-##### _generate_deployment_config
-
-Génère la configuration de déploiement
-
-##### _save_cicd_configs
-
-**Paramètres :**
-
-- `github_actions`
-- `docker_config`
-- `deployment_config`
-
-##### _get_created_files
-
----
-
 ### intelligent_memory
 
 🧠 MÉMOIRE INTELLIGENTE ATHALIA
@@ -898069,6 +911839,8 @@ Sauvegarder une suggestion de correction
 ---
 
 ### onboarding
+
+Module onboarding, guides, scripts d'installation.
 
 #### Fonctions
 
