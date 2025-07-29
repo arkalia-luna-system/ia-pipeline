@@ -117,9 +117,8 @@ class RustAnalyzer:
             version = package_info.get('version', '0.1.0')
 
             # Analyser les dépendances
-            dependencies = []
-            for dep in cargo_data.get('dependencies', {}).keys():
-                dependencies.append(dep)
+            dependencies = self._parse_dependencies(
+                cargo_data.get('dependencies', {}))
             dev_dependencies = self._parse_dependencies(
                 cargo_data.get('dev-dependencies', {}))
             build_dependencies = self._parse_dependencies(
