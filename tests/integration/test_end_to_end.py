@@ -6,14 +6,11 @@ Tests professionnels pour la CI/CD.
 """
 
 import subprocess
-import sys
 import tempfile
 import time
 from pathlib import Path
-from unittest.mock import MagicMock, patch
 
 import pytest
-import yaml
 
 # Ajouter le répertoire parent au path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
@@ -226,10 +223,7 @@ def test_function():
     def test_error_handling_end_to_end(self):
         """Test de gestion d'erreurs end-to-end."""
         try:
-            from athalia_core.generation import (
-                generate_blueprint_mock,
-                generate_project,
-            )
+            from athalia_core.generation import generate_blueprint_mock
         except ImportError:
             pytest.skip("Modules de génération non disponibles")
 

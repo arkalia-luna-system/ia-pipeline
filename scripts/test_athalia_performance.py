@@ -5,7 +5,6 @@ Test de performance d'Athalia avec cache
 """
 
 import json
-import os
 import subprocess
 import time
 from datetime import datetime
@@ -146,7 +145,7 @@ def test_multiple_runs():
 
         improvement = ((first_time - avg_subsequent) / first_time) * 100
 
-        print(f"\n📊 Résultats multiples:")
+        print("\n📊 Résultats multiples:")
         print(f"  Premier exécution: {first_time:.2f}s")
         print(f"  Moyenne suivantes: {avg_subsequent:.2f}s")
         print(f"  Amélioration: {improvement:.1f}%")

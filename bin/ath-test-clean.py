@@ -1,16 +1,13 @@
 #!/usr/bin/env python3
 """
-Script de nettoyage automatique des processus Athalia après les tests
-Usage: python bin/ath-test-clean.py
+Script de nettoyage des tests Athalia
+Nettoie les processus et fichiers temporaires
 """
 
-import os
-import signal
 import subprocess
-import sys
 import time
-from pathlib import Path
 import psutil
+from pathlib import Path
 
 
 def kill_athalia_processes():

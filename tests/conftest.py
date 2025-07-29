@@ -4,10 +4,8 @@ Gestion automatique du nettoyage des processus et ressources
 """
 
 import os
-import signal
 import subprocess
 import time
-from typing import Generator
 import psutil
 import pytest
 

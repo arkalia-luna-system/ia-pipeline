@@ -27,7 +27,7 @@ class TestCoverageThreshold:
     def test_minimum_coverage_threshold(self):
         """Vérifie le seuil minimum de couverture"""
         # Seuil minimum de couverture (en pourcentage)
-        min_coverage = 50
+        _ = 50
 
         # Vérifie si on a un fichier de couverture
         coverage_file = Path(".coverage")

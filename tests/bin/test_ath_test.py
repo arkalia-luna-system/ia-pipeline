@@ -1,8 +1,6 @@
 import os
 import subprocess
 
-import pytest
-
 
 def test_ath_test_runs():
     """Test que ath-test.py fonctionne sans récursivité"""

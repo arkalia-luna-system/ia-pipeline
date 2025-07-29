@@ -5,13 +5,11 @@ Tests : 35 tests unitaires et d'intégration
 """
 
 import json
-import os
 import tempfile
 from pathlib import Path
-from unittest.mock import MagicMock, Mock, patch
+from unittest.mock import Mock, patch
 
 import pytest
-import yaml
 
 # Import du module à tester
 from athalia_core.correction_optimizer import CorrectionOptimizer
@@ -120,7 +118,7 @@ class Calculator:
 
     def test_generate_corrections(self):
         """Test génération de corrections"""
-        issues = [
+        _ = [
             {"type": "complexity", "line": 1, "message": "Function too complex"},
             {"type": "naming", "line": 3, "message": "Variable name unclear"},
         ]
@@ -161,7 +159,7 @@ class Calculator:
 
     def test_validate_corrections(self):
         """Test validation des corrections"""
-        corrections = [
+        _ = [
             {"line": 1, "suggestion": "def calculate_sum(a, b):", "priority": "high"},
             {"line": 3, "suggestion": "    return a + b", "priority": "high"},
         ]
@@ -181,8 +179,8 @@ class Calculator:
 
     def test_generate_report(self):
         """Test génération de rapport"""
-        analysis = {"complexity": 5, "maintainability": 8}
-        corrections = [{"type": "complexity", "suggestion": "Simplify function"}]
+        _ = {"complexity": 5, "maintainability": 8}
+        _ = [{"type": "complexity", "suggestion": "Simplify function"}]
 
         # Test avec mock pour simuler la génération de rapport
         with patch.object(self.optimizer, "get_correction_stats") as mock_stats:
@@ -367,8 +365,8 @@ class Calculator:
 
     def test_validate_improvements(self):
         """Test validation des améliorations"""
-        original_metrics = {"complexity": 10, "maintainability": 5}
-        new_metrics = {"complexity": 7, "maintainability": 8}
+        _ = {"complexity": 10, "maintainability": 5}
+        _ = {"complexity": 7, "maintainability": 8}
 
         # Test avec mock pour simuler la validation d'améliorations
         with patch.object(self.optimizer, "get_correction_stats") as mock_stats:

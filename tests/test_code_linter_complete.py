@@ -12,8 +12,6 @@ import tempfile
 from pathlib import Path
 from unittest.mock import MagicMock, Mock, patch
 
-import pytest
-
 from athalia_core.code_linter import CodeLinter
 
 
@@ -300,7 +298,7 @@ class TestClass:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = ""
 
-            result = self.linter.run()
+            _ = self.linter.run()
 
             # Vérifier que tous les outils ont été appelés
             assert mock_run.call_count >= 5  # flake8, black, isort, mypy, bandit

@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Script robuste pour nettoyer les octets null et fichiers Apple Double
+Script robuste de nettoyage des octets null et fichiers Apple Double
+Version améliorée avec gestion d'erreurs et validation
 """
 
 import os
 import sys
-import shutil
-from pathlib import Path
 
 
 def clean_null_bytes_in_file(file_path):
@@ -106,7 +104,7 @@ def clean_project_files():
                         print(f"✨ Nettoyé: {file_path}")
                         total_cleaned += 1
 
-    print(f"\n📊 RÉSUMÉ:")
+    print("\n📊 RÉSUMÉ:")
     print(f"   Fichiers nettoyés (octets null): {total_cleaned}")
     print(f"   Fichiers Apple Double supprimés: {total_apple_removed}")
     print(f"   Total d'actions: {total_cleaned + total_apple_removed}")
@@ -120,7 +118,7 @@ if __name__ == "__main__":
         if actions > 0:
             print(f"\n✅ Nettoyage terminé avec succès! {actions} actions effectuées.")
         else:
-            print(f"\n✅ Aucun fichier à nettoyer trouvé.")
+            print("\n✅ Aucun fichier à nettoyer trouvé.")
         sys.exit(0)
     except KeyboardInterrupt:
         print("\n⚠️  Nettoyage interrompu par l'utilisateur.")

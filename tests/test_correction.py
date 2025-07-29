@@ -5,7 +5,6 @@ Script de test pour la correction du projet EmotionSensingRoboticEyes
 
 import os
 import sys
-from pathlib import Path
 
 # Ajout des chemins
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "athalia_core"))
@@ -19,7 +18,7 @@ def test_audit():
         from athalia_core.audit import audit_project_intelligent
 
         result = audit_project_intelligent("./mon-projet")
-        print(f"✅ Audit réussi!")
+        print("✅ Audit réussi!")
         print(f"📊 Score: {result.get('score', 'N/A')}/100")
         print(f"🚨 Problèmes: {len(result.get('issues', []))}")
         print(f"💡 Suggestions: {len(result.get('suggestions', []))}")
@@ -48,7 +47,7 @@ def test_correction():
 
         corrector = AutoCorrectionAvancee("./mon-projet")
         result = corrector.analyser_et_corriger(dry_run=True)
-        print(f"✅ Correction testée!")
+        print("✅ Correction testée!")
         print(
             f"📝 Corrections proposées: {len(result.get('corrections_proposees', []))}"
         )
@@ -75,7 +74,7 @@ def test_generation_improvement():
         result = generate_project(
             blueprint=idea, outdir="./test-improved-f", dry_run=True
         )
-        print(f"✅ Génération améliorée testée!")
+        print("✅ Génération améliorée testée!")
         return result
     except Exception as e:
         print(f"❌ Erreur lors de l'amélioration: {e}")

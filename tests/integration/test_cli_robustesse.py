@@ -9,9 +9,7 @@ import os
 import subprocess
 import sys
 import tempfile
-import time
 from pathlib import Path
-from unittest.mock import MagicMock, patch
 
 import pytest
 
@@ -165,7 +163,7 @@ class TestCLIRobustesse:
             if cli_path.exists():
                 try:
                     # Test avec un timeout très court
-                    result = subprocess.run(
+                    _ = subprocess.run(
                         [sys.executable, str(cli_path), "--help"],
                         capture_output=True,
                         text=True,
