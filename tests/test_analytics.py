@@ -3,17 +3,18 @@
 """
 Tests pour le module analytics
 """
-import pytest
 import tempfile
 from pathlib import Path
+
+import pytest
 
 # Import conditionnel du module analytics
 try:
     from athalia_core.analytics import (
-        analyze_project, 
-        generate_heatmap_data, 
+        analyze_project,
+        generate_analytics_html,
+        generate_heatmap_data,
         generate_technical_debt_analysis,
-        generate_analytics_html
     )
     ANALYTICS_AVAILABLE = True
 except ImportError:

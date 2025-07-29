@@ -4,12 +4,12 @@ Tests pour le module audit_agent.py
 Tests unitaires et d'intégration pour AuditAgent
 """
 
-import unittest
-import tempfile
 import os
 import sys
-from unittest.mock import patch, MagicMock
+import tempfile
+import unittest
 from pathlib import Path
+from unittest.mock import MagicMock, patch
 
 # Ajout du chemin du projet pour les imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -167,7 +167,7 @@ class TestAuditAgent(unittest.TestCase):
     def test_agent_performance(self, mock_query_qwen):
         """Test de performance de l'agent"""
         import time
-        
+
         # Configuration du mock
         mock_query_qwen.return_value = "Test de performance"
         

@@ -4,22 +4,23 @@ Tests complets pour le module user_profiles_advanced.py
 Tests unitaires et d'intégration pour ProfilUtilisateur et GestionnaireProfils
 """
 
-import unittest
-import tempfile
-import os
-import sys
-import sqlite3
 import json
-from unittest.mock import patch, MagicMock
-from pathlib import Path
+import os
+import sqlite3
+import sys
+import tempfile
+import unittest
 from datetime import datetime, timedelta
+from pathlib import Path
+from unittest.mock import MagicMock, patch
 
 # Ajout du chemin du projet pour les imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 try:
     from athalia_core.advanced_modules.user_profiles_advanced import (
-        ProfilUtilisateur, GestionnaireProfils
+        GestionnaireProfils,
+        ProfilUtilisateur,
     )
     USER_PROFILES_AVAILABLE = True
 except ImportError:

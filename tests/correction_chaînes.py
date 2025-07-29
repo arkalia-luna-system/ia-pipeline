@@ -21,9 +21,7 @@ def corriger_chaînes_fichier(file_path):
         content = re.sub(r'"""([^"]*)\'([^"]*)"""', r'"""\1\2"""', content)
 
         # Pattern: """...dict_data...""" -> """......"""
-        content = re.sub(
-            r'"""([^"]*)dict_data([^"]*)"""', r'"""\1\2"""', content
-        )
+        content = re.sub(r'"""([^"]*)dict_data([^"]*)"""', r'"""\1\2"""', content)
 
         # Pattern: "..."'..." -> "......"
         content = re.sub(r'"([^"]*)\'([^"]*)"', r'"\1\2"', content)

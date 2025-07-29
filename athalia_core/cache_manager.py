@@ -7,18 +7,20 @@ Optimisation des performances avec cache LRU
 
 import hashlib
 import json
+import logging
 import os
 import time
 from datetime import datetime, timedelta
 from functools import lru_cache, wraps
-from typing import Any, Dict, Optional, Callable
-import logging
+from typing import Any, Callable, Dict, Optional
 
 
 class AnalysisCache:
     """Gestionnaire de cache intelligent pour les analyses."""
 
-    def __init__(self, cache_dir: str = "cache", max_size: int = 1000, ttl_hours: int = 24):
+    def __init__(
+        self, cache_dir: str = "cache", max_size: int = 1000, ttl_hours: int = 24
+    ):
         """
         Initialise le gestionnaire de cache.
 
@@ -39,9 +41,13 @@ class AnalysisCache:
         # Cache en mémoire pour les accès rapides
         self._memory_cache = {}
 
-        logging.info(f"Cache initialisé: {cache_dir}, max_size={max_size}, ttl={ttl_hours}h")
+        logging.info(
+            f"Cache initialisé: {cache_dir}, max_size={max_size}, ttl={ttl_hours}h"
+        )
 
-    def _generate_cache_key(self, project_path: str, analysis_type: str, **kwargs) -> str:
+    def _generate_cache_key(
+        self, project_path: str, analysis_type: str, **kwargs
+    ) -> str:
         """
         Génère une clé de cache unique.
 
@@ -57,7 +63,9 @@ class AnalysisCache:
         project_hash = hashlib.md5(project_path.encode()).hexdigest()[:8]
 
         # Paramètres supplémentaires
-        params_hash = hashlib.md5(json.dumps(kwargs, sort_keys=True).encode()).hexdigest()[:8]
+        params_hash = hashlib.md5(
+            json.dumps(kwargs, sort_keys=True).encode()
+        ).hexdigest()[:8]
 
         return f"{analysis_type}_{project_hash}_{params_hash}"
 
@@ -84,7 +92,9 @@ class AnalysisCache:
 
         return cache_age < timedelta(hours=self.ttl_hours)
 
-    def get(self, project_path: str, analysis_type: str, **kwargs) -> Optional[Dict[str, Any]]:
+    def get(
+        self, project_path: str, analysis_type: str, **kwargs
+    ) -> Optional[Dict[str, Any]]:
         """
         Récupère un résultat du cache.
 
@@ -109,7 +119,7 @@ class AnalysisCache:
 
         if self._is_cache_valid(cache_file):
             try:
-                with open(cache_file, 'r', encoding='utf-8') as f:
+                with open(cache_file, "r", encoding="utf-8") as f:
                     result = json.load(f)
 
                 # Mise en cache mémoire
@@ -126,7 +136,9 @@ class AnalysisCache:
         logging.debug(f"Cache miss: {cache_key}")
         return None
 
-    def set(self, project_path: str, analysis_type: str, result: Dict[str, Any], **kwargs) -> None:
+    def set(
+        self, project_path: str, analysis_type: str, result: Dict[str, Any], **kwargs
+    ) -> None:
         """
         Stocke un résultat dans le cache.
 
@@ -145,8 +157,8 @@ class AnalysisCache:
                 "created_at": datetime.now().isoformat(),
                 "project_path": project_path,
                 "analysis_type": analysis_type,
-                "parameters": kwargs
-            }
+                "parameters": kwargs,
+            },
         }
 
         # Stockage en mémoire
@@ -155,7 +167,7 @@ class AnalysisCache:
         # Stockage fichier
         cache_file = self._get_cache_file_path(cache_key)
         try:
-            with open(cache_file, 'w', encoding='utf-8') as f:
+            with open(cache_file, "w", encoding="utf-8") as f:
                 json.dump(cache_data, f, indent=2, ensure_ascii=False)
 
             logging.debug(f"Cache stored: {cache_key}")
@@ -175,7 +187,7 @@ class AnalysisCache:
             cache_files = os.listdir(self.cache_dir)
 
             for filename in cache_files:
-                if not filename.endswith('.json'):
+                if not filename.endswith(".json"):
                     continue
 
                 cache_file = os.path.join(self.cache_dir, filename)
@@ -191,8 +203,8 @@ class AnalysisCache:
             # Nettoyage du cache mémoire
             expired_keys = []
             for key, data in self._memory_cache.items():
-                if 'metadata' in data:
-                    created_at = datetime.fromisoformat(data['metadata']['created_at'])
+                if "metadata" in data:
+                    created_at = datetime.fromisoformat(data["metadata"]["created_at"])
                     if datetime.now() - created_at > timedelta(hours=self.ttl_hours):
                         expired_keys.append(key)
 
@@ -208,7 +220,7 @@ class AnalysisCache:
             # Suppression des fichiers
             if os.path.exists(self.cache_dir):
                 for filename in os.listdir(self.cache_dir):
-                    if filename.endswith('.json'):
+                    if filename.endswith(".json"):
                         try:
                             os.remove(os.path.join(self.cache_dir, filename))
                         except OSError:
@@ -243,7 +255,9 @@ class AnalysisCache:
             "total_requests": total_requests,
             "hit_rate_percent": hit_rate,
             "memory_cache_size": len(self._memory_cache),
-            "file_cache_size": len([f for f in os.listdir(self.cache_dir) if f.endswith('.json')])
+            "file_cache_size": len(
+                [f for f in os.listdir(self.cache_dir) if f.endswith(".json")]
+            ),
         }
 
 
@@ -261,6 +275,7 @@ def cached_analysis(func: Callable) -> Callable:
     Returns:
         Fonction décorée avec cache
     """
+
     @wraps(func)
     def wrapper(project_path: str, *args, **kwargs):
         # Génération de la clé de cache
@@ -314,7 +329,9 @@ def cached_function(max_size: int = 1000):
 
 # Exemple d'utilisation
 @cached_analysis
-def analyze_project_structure(project_path: str, detailed: bool = False) -> Dict[str, Any]:
+def analyze_project_structure(
+    project_path: str, detailed: bool = False
+) -> Dict[str, Any]:
     """
     Analyse la structure d'un projet (exemple).
 
@@ -333,7 +350,7 @@ def analyze_project_structure(project_path: str, detailed: bool = False) -> Dict
         "files_count": 100,
         "structure": ["src/", "tests/", "docs/"],
         "detailed": detailed,
-        "timestamp": datetime.now().isoformat()
+        "timestamp": datetime.now().isoformat(),
     }
 
 

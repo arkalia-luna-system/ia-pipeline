@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from athalia_core.onboarding import generate_onboarding_md, generate_onboard_cli, generate_onboarding_html_advanced
 import os
 
-
+from athalia_core.onboarding import (
+    generate_onboard_cli,
+    generate_onboarding_html_advanced,
+    generate_onboarding_md,
+)
 
 
 def test_onboarding(tmp_path):

@@ -3,7 +3,7 @@
 Module de distillation d'audits pour Athalia/Arkalia
 Fusionne et pondère plusieurs audits (sécurité, qualité, performance...)
 """
-from typing import List, Dict, Any, Optional
+from typing import Any, Dict, List, Optional
 
 
 class AuditDistiller:
@@ -24,13 +24,10 @@ class AuditDistiller:
         total_score = 0.0
         total_weight = 0.0
         for audit in audits:
-            t = audit.get('type', 'autre')
-            score = audit.get('score', 0)
+            t = audit.get("type", "autre")
+            score = audit.get("score", 0)
             w = self.weights.get(t, 1.0)
             total_score += score * w
             total_weight += w
         global_score = total_score / total_weight if total_weight else 0.0
-        return {
-            'global_score': global_score,
-            'details': audits
-        }
+        return {"global_score": global_score, "details": audits}

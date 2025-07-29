@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from athalia_core.project_importer import ProjectImporter
 import os
-
 import tempfile
+
+from athalia_core.project_importer import ProjectImporter
 
 
 def test_project_import_concept():

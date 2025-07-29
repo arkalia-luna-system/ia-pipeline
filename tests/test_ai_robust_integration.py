@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import os
-from athalia_core.ai_robust import RobustAI, AIModel, PromptContext
-import time
-import pytest
 import tempfile
+import time
+
+import pytest
+
+from athalia_core.ai_robust import AIModel, PromptContext, RobustAI
 
 # Import conditionnel de psutil
 try:

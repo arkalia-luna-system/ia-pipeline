@@ -4,17 +4,20 @@ Tests pour le module intelligent_memory.py
 Teste le système de mémoire intelligente d'Athalia
 """
 
-import unittest
-import tempfile
-import os
 import json
+import os
+import tempfile
+import unittest
 from datetime import datetime
-from unittest.mock import patch, MagicMock
 from pathlib import Path
+from unittest.mock import MagicMock, patch
 
 # Import du module à tester
 from athalia_core.intelligent_memory import (
-    IntelligentMemory, LearningEvent, Prediction, CorrectionSuggestion
+    CorrectionSuggestion,
+    IntelligentMemory,
+    LearningEvent,
+    Prediction,
 )
 
 

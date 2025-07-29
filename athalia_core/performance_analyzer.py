@@ -6,16 +6,16 @@ Module spécialisé dans l'analyse des performances du code,
 détection des goulots d'étranglement et optimisation.
 """
 
+import cProfile
+import io
 import logging
+import pstats
 import sqlite3
+import time
+from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Any
-from dataclasses import dataclass
-import time
-import cProfile
-import pstats
-import io
+from typing import Any, Dict, List
 
 from .ast_analyzer import ASTAnalyzer, FileAnalysis
 
@@ -25,6 +25,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class PerformanceMetric:
     """Métrique de performance"""
+
     metric_type: str
     value: float
     unit: str
@@ -36,6 +37,7 @@ class PerformanceMetric:
 @dataclass
 class PerformanceIssue:
     """Problème de performance détecté"""
+
     issue_type: str
     location: str
     description: str
@@ -47,6 +49,7 @@ class PerformanceIssue:
 @dataclass
 class PerformanceReport:
     """Rapport de performance complet"""
+
     overall_score: float
     metrics: List[PerformanceMetric]
     issues: List[PerformanceIssue]
@@ -77,7 +80,7 @@ class PerformanceAnalyzer:
             "class_size": 200,
             "imports": 30,
             "nested_depth": 5,
-            "loop_complexity": 3
+            "loop_complexity": 3,
         }
 
         logger.info(f"⚡ Performance Analyzer initialisé dans {self.root_path}")
@@ -88,7 +91,8 @@ class PerformanceAnalyzer:
             cursor = conn.cursor()
 
             # Table des métriques de performance
-            cursor.execute("""
+            cursor.execute(
+                """
                 CREATE TABLE IF NOT EXISTS performance_metrics (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     metric_type TEXT NOT NULL,
@@ -99,10 +103,12 @@ class PerformanceAnalyzer:
                     status TEXT NOT NULL,
                     measured_at TEXT NOT NULL
                 )
-            """)
+            """
+            )
 
             # Table des problèmes de performance
-            cursor.execute("""
+            cursor.execute(
+                """
                 CREATE TABLE IF NOT EXISTS performance_issues (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     issue_type TEXT NOT NULL,
@@ -114,10 +120,12 @@ class PerformanceAnalyzer:
                     detected_at TEXT NOT NULL,
                     resolved_at TEXT
                 )
-            """)
+            """
+            )
 
             # Table des profils de performance
-            cursor.execute("""
+            cursor.execute(
+                """
                 CREATE TABLE IF NOT EXISTS performance_profiles (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     function_name TEXT NOT NULL,
@@ -127,20 +135,22 @@ class PerformanceAnalyzer:
                     profile_data TEXT,
                     profiled_at TEXT NOT NULL
                 )
-            """)
+            """
+            )
 
             conn.commit()
 
     def analyze_project_performance(
-            self, project_path: str = None) -> PerformanceReport:
+        self, project_path: str = None
+    ) -> PerformanceReport:
         """Analyser les performances d'un projet complet"""
         project_path = Path(project_path or self.root_path)
-        logger.info(
-            f"⚡ Analyse des performances du projet: {project_path.name}")
+        logger.info(f"⚡ Analyse des performances du projet: {project_path.name}")
 
         # Analyser tous les fichiers Python (ignorer les fichiers cachés)
-        python_files = [f for f in project_path.rglob(
-            "*.py") if not f.name.startswith('._')]
+        python_files = [
+            f for f in project_path.rglob("*.py") if not f.name.startswith("._")
+        ]
         logger.info(f"📁 {len(python_files)} fichiers Python analysés")
 
         # Limiter le nombre de fichiers pour les performances
@@ -155,28 +165,26 @@ class PerformanceAnalyzer:
             try:
                 file_analysis = self.ast_analyzer.analyze_file(py_file)
                 if file_analysis:
-                    file_metrics = self._analyze_file_performance(
-                        file_analysis)
-                    file_issues = self._detect_performance_issues(
-                        file_analysis)
+                    file_metrics = self._analyze_file_performance(file_analysis)
+                    file_issues = self._detect_performance_issues(file_analysis)
 
                     all_metrics.extend(file_metrics)
                     all_issues.extend(file_issues)
             except Exception as e:
                 logger.warning(
-                    f"Erreur lors de l'analyse de performance de "
-                    f"{py_file}: {e}")
+                    f"Erreur lors de l'analyse de performance de " f"{py_file}: {e}"
+                )
 
         # Calculer le score global
         overall_score = self._calculate_overall_score(all_metrics)
 
         # Générer les recommandations
-        recommendations = self._generate_performance_recommendations(
-            all_issues)
+        recommendations = self._generate_performance_recommendations(all_issues)
 
         # Identifier les opportunités d'optimisation
         optimization_opportunities = self._identify_optimization_opportunities(
-            all_issues)
+            all_issues
+        )
 
         # Créer le rapport
         report = PerformanceReport(
@@ -184,7 +192,7 @@ class PerformanceAnalyzer:
             metrics=all_metrics,
             issues=all_issues,
             recommendations=recommendations,
-            optimization_opportunities=optimization_opportunities
+            optimization_opportunities=optimization_opportunities,
         )
 
         # Sauvegarder le rapport
@@ -193,7 +201,8 @@ class PerformanceAnalyzer:
         return report
 
     def _analyze_file_performance(
-            self, file_analysis: FileAnalysis) -> List[PerformanceMetric]:
+        self, file_analysis: FileAnalysis
+    ) -> List[PerformanceMetric]:
         """Analyser les performances d'un fichier"""
         metrics = []
 
@@ -205,8 +214,9 @@ class PerformanceAnalyzer:
             location=str(file_analysis.file_path),
             threshold=self.thresholds["complexity"],
             status=self._get_metric_status(
-                file_analysis.complexity_score,
-                self.thresholds["complexity"]))
+                file_analysis.complexity_score, self.thresholds["complexity"]
+            ),
+        )
         metrics.append(complexity_metric)
 
         # Métrique de taille
@@ -217,9 +227,9 @@ class PerformanceAnalyzer:
             location=str(file_analysis.file_path),
             threshold=500,
             status=self._get_metric_status(
-                file_analysis.total_lines,
-                500,
-                reverse=True))
+                file_analysis.total_lines, 500, reverse=True
+            ),
+        )
         metrics.append(size_metric)
 
         # Métrique d'imports
@@ -230,8 +240,8 @@ class PerformanceAnalyzer:
             location=str(file_analysis.file_path),
             threshold=self.thresholds["imports"],
             status=self._get_metric_status(
-                len(file_analysis.imports),
-                self.thresholds["imports"])
+                len(file_analysis.imports), self.thresholds["imports"]
+            ),
         )
         metrics.append(imports_metric)
 
@@ -244,14 +254,16 @@ class PerformanceAnalyzer:
                 location=f"{file_analysis.file_path}:{func.line_number}",
                 threshold=self.thresholds["function_size"],
                 status=self._get_metric_status(
-                    func.complexity,
-                    self.thresholds["function_size"]))
+                    func.complexity, self.thresholds["function_size"]
+                ),
+            )
             metrics.append(func_metric)
 
         return metrics
 
     def _detect_performance_issues(
-            self, file_analysis: FileAnalysis) -> List[PerformanceIssue]:
+        self, file_analysis: FileAnalysis
+    ) -> List[PerformanceIssue]:
         """Détecter les problèmes de performance dans un fichier"""
         issues = []
 
@@ -263,7 +275,8 @@ class PerformanceAnalyzer:
                 description=f"Complexité élevée: {file_analysis.complexity_score:.1f}",
                 impact="medium" if file_analysis.complexity_score < 15 else "high",
                 suggestion="Refactoriser en modules plus petits",
-                estimated_improvement=20.0)
+                estimated_improvement=20.0,
+            )
             issues.append(issue)
 
         # Vérifier la taille du fichier
@@ -274,7 +287,8 @@ class PerformanceAnalyzer:
                 description=f"Fichier très long: {file_analysis.total_lines} lignes",
                 impact="medium",
                 suggestion="Diviser en fichiers plus petits",
-                estimated_improvement=15.0)
+                estimated_improvement=15.0,
+            )
             issues.append(issue)
 
         # Vérifier les fonctions complexes
@@ -287,7 +301,8 @@ class PerformanceAnalyzer:
                     f"{func.complexity}",
                     impact="high",
                     suggestion="Diviser en sous-fonctions",
-                    estimated_improvement=25.0)
+                    estimated_improvement=25.0,
+                )
                 issues.append(issue)
 
         # Vérifier les imports excessifs
@@ -298,7 +313,7 @@ class PerformanceAnalyzer:
                 description=f"Trop d'imports: {len(file_analysis.imports)}",
                 impact="low",
                 suggestion="Nettoyer les imports inutilisés",
-                estimated_improvement=5.0
+                estimated_improvement=5.0,
             )
             issues.append(issue)
 
@@ -312,16 +327,15 @@ class PerformanceAnalyzer:
                     f"{cls.complexity}",
                     impact="high",
                     suggestion="Diviser en classes plus petites",
-                    estimated_improvement=30.0)
+                    estimated_improvement=30.0,
+                )
                 issues.append(issue)
 
         return issues
 
     def _get_metric_status(
-            self,
-            value: float,
-            threshold: float,
-            reverse: bool = False) -> str:
+        self, value: float, threshold: float, reverse: bool = False
+    ) -> str:
         """Déterminer le statut d'une métrique"""
         if reverse:
             if value > threshold * 1.5:
@@ -338,8 +352,7 @@ class PerformanceAnalyzer:
             else:
                 return "good"
 
-    def _calculate_overall_score(
-            self, metrics: List[PerformanceMetric]) -> float:
+    def _calculate_overall_score(self, metrics: List[PerformanceMetric]) -> float:
         """Calculer le score de performance global"""
         if not metrics:
             return 100.0
@@ -362,7 +375,7 @@ class PerformanceAnalyzer:
             "complexity": 3.0,
             "function_complexity": 2.5,
             "file_size": 1.5,
-            "imports": 1.0
+            "imports": 1.0,
         }
         return weights.get(metric_type, 1.0)
 
@@ -376,7 +389,8 @@ class PerformanceAnalyzer:
             return 30.0
 
     def _generate_performance_recommendations(
-            self, issues: List[PerformanceIssue]) -> List[str]:
+        self, issues: List[PerformanceIssue]
+    ) -> List[str]:
         """Générer des recommandations de performance"""
         recommendations = []
 
@@ -391,41 +405,44 @@ class PerformanceAnalyzer:
         if "high_complexity" in issue_types:
             count = len(issue_types["high_complexity"])
             recommendations.append(
-                f"🧠 {count} modules très complexes - priorité au refactoring")
+                f"🧠 {count} modules très complexes - priorité au refactoring"
+            )
 
         if "complex_function" in issue_types:
             count = len(issue_types["complex_function"])
             recommendations.append(
-                f"⚙️ {count} fonctions complexes - diviser en sous-fonctions")
+                f"⚙️ {count} fonctions complexes - diviser en sous-fonctions"
+            )
 
         if "large_file" in issue_types:
             count = len(issue_types["large_file"])
             recommendations.append(
-                f"📄 {count} fichiers très longs - diviser en modules")
+                f"📄 {count} fichiers très longs - diviser en modules"
+            )
 
         if "excessive_imports" in issue_types:
             count = len(issue_types["excessive_imports"])
             recommendations.append(
-                f"📦 {count} fichiers avec trop d'imports - nettoyer")
+                f"📦 {count} fichiers avec trop d'imports - nettoyer"
+            )
 
         # Recommandations générales
         if issues:
-            total_improvement = sum(
-                issue.estimated_improvement for issue in issues)
+            total_improvement = sum(issue.estimated_improvement for issue in issues)
             recommendations.append(
-                f"📈 Amélioration potentielle estimée: {total_improvement:.1f}%")
+                f"📈 Amélioration potentielle estimée: {total_improvement:.1f}%"
+            )
 
         return recommendations
 
     def _identify_optimization_opportunities(
-            self, issues: List[PerformanceIssue]) -> List[str]:
+        self, issues: List[PerformanceIssue]
+    ) -> List[str]:
         """Identifier les opportunités d'optimisation"""
         opportunities = []
 
         # Opportunités par impact
-        high_impact_issues = [
-            i for i in issues if i.impact in [
-                "high", "critical"]]
+        high_impact_issues = [i for i in issues if i.impact in ["high", "critical"]]
         if high_impact_issues:
             opportunities.append("🚀 Optimisations critiques disponibles")
 
@@ -439,7 +456,8 @@ class PerformanceAnalyzer:
             opportunities.append("🧩 Refactoring de complexité")
 
         size_issues = [
-            i for i in issues if "size" in i.issue_type or "large" in i.issue_type]
+            i for i in issues if "size" in i.issue_type or "large" in i.issue_type
+        ]
         if size_issues:
             opportunities.append("📦 Division de modules")
 
@@ -452,52 +470,55 @@ class PerformanceAnalyzer:
 
             # Sauvegarder les métriques
             for metric in report.metrics:
-                cursor.execute("""
+                cursor.execute(
+                    """
                     INSERT INTO performance_metrics
                     (metric_type, value, unit, location, threshold, status,
                      measured_at)
                     VALUES (?, ?, ?, ?, ?, ?, ?)
-                """, (
-                    metric.metric_type,
-                    metric.value,
-                    metric.unit,
-                    metric.location,
-                    metric.threshold,
-                    metric.status,
-                    datetime.now().isoformat()
-                ))
+                """,
+                    (
+                        metric.metric_type,
+                        metric.value,
+                        metric.unit,
+                        metric.location,
+                        metric.threshold,
+                        metric.status,
+                        datetime.now().isoformat(),
+                    ),
+                )
 
             # Sauvegarder les problèmes
             for issue in report.issues:
-                cursor.execute("""
+                cursor.execute(
+                    """
                     INSERT INTO performance_issues
                     (issue_type, location, description, impact, suggestion,
                      estimated_improvement, detected_at)
                     VALUES (?, ?, ?, ?, ?, ?, ?)
-                """, (
-                    issue.issue_type,
-                    issue.location,
-                    issue.description,
-                    issue.impact,
-                    issue.suggestion,
-                    issue.estimated_improvement,
-                    datetime.now().isoformat()
-                ))
+                """,
+                    (
+                        issue.issue_type,
+                        issue.location,
+                        issue.description,
+                        issue.impact,
+                        issue.suggestion,
+                        issue.estimated_improvement,
+                        datetime.now().isoformat(),
+                    ),
+                )
 
             conn.commit()
 
-    def profile_function(self,
-                         function_path: str,
-                         function_name: str,
-                         *args,
-                         **kwargs) -> Dict[str,
-                                           Any]:
+    def profile_function(
+        self, function_path: str, function_name: str, *args, **kwargs
+    ) -> Dict[str, Any]:
         """Profiler une fonction spécifique"""
         try:
             # Importer et exécuter la fonction
             import importlib.util
-            spec = importlib.util.spec_from_file_location(
-                "module", function_path)
+
+            spec = importlib.util.spec_from_file_location("module", function_path)
             module = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(module)
 
@@ -515,14 +536,14 @@ class PerformanceAnalyzer:
 
             # Analyser les statistiques
             s = io.StringIO()
-            stats = pstats.Stats(profiler, stream=s).sort_stats('cumulative')
+            stats = pstats.Stats(profiler, stream=s).sort_stats("cumulative")
             stats.print_stats()
 
             return {
                 "function_name": function_name,
                 "execution_time": execution_time,
                 "profile_data": s.getvalue(),
-                "result": result
+                "result": result,
             }
 
         except Exception as e:
@@ -537,16 +558,16 @@ class PerformanceAnalyzer:
             # Statistiques globales
             cursor.execute(
                 "SELECT AVG(value) FROM performance_metrics "
-                "WHERE metric_type = 'complexity'")
+                "WHERE metric_type = 'complexity'"
+            )
             avg_complexity = cursor.fetchone()[0] or 0
 
             cursor.execute(
-                "SELECT COUNT(*) FROM performance_issues "
-                "WHERE resolved_at IS NULL")
+                "SELECT COUNT(*) FROM performance_issues " "WHERE resolved_at IS NULL"
+            )
             unresolved_issues = cursor.fetchone()[0]
 
-            cursor.execute(
-                "SELECT AVG(estimated_improvement) FROM performance_issues")
+            cursor.execute("SELECT AVG(estimated_improvement) FROM performance_issues")
             avg_improvement = cursor.fetchone()[0] or 0
 
             return {
@@ -555,5 +576,5 @@ class PerformanceAnalyzer:
                 "average_improvement_potential": avg_improvement,
                 "performance_health": max(
                     0, 100 - (avg_complexity * 2 + unresolved_issues * 5)
-                )
+                ),
             }

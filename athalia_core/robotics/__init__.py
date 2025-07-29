@@ -17,18 +17,18 @@ Modules disponibles :
 - robotics_ci: CI/CD robotique
 """
 
-from .reachy_auditor import ReachyAuditor
-from .ros2_validator import ROS2Validator
 from .docker_robotics import DockerRoboticsManager
-from .rust_analyzer import RustAnalyzer
+from .reachy_auditor import ReachyAuditor
 from .robotics_ci import RoboticsCI
+from .ros2_validator import ROS2Validator
+from .rust_analyzer import RustAnalyzer
 
 __all__ = [
-    'ReachyAuditor',
-    'ROS2Validator',
-    'DockerRoboticsManager',
-    'RustAnalyzer',
-    'RoboticsCI'
+    "ReachyAuditor",
+    "ROS2Validator",
+    "DockerRoboticsManager",
+    "RustAnalyzer",
+    "RoboticsCI",
 ]
 
 __version__ = "1.0.0"

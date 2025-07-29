@@ -6,9 +6,9 @@ Module d'analyse et de métriques de projets.
 Fournit des analyses de base pour les tests.
 """
 
-from pathlib import Path
-from typing import Dict, Any
 from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict
 
 
 def analyze_project(project_path: str = ".") -> Dict[str, Any]:
@@ -18,12 +18,14 @@ def analyze_project(project_path: str = ".") -> Dict[str, Any]:
     # Compter les fichiers
     python_files = list(project_path_obj.rglob("*.py"))
     md_files = list(project_path_obj.rglob("*.md"))
-    yaml_files = list(project_path_obj.rglob("*.yaml")) + \
-        list(project_path_obj.rglob("*.yml"))
+    yaml_files = list(project_path_obj.rglob("*.yaml")) + list(
+        project_path_obj.rglob("*.yml")
+    )
 
     # Calculer la taille du projet
     total_size = sum(
-        f.stat().st_size for f in project_path_obj.rglob("*") if f.is_file())
+        f.stat().st_size for f in project_path_obj.rglob("*") if f.is_file()
+    )
 
     # Analyser la structure
     structure = {
@@ -31,7 +33,7 @@ def analyze_project(project_path: str = ".") -> Dict[str, Any]:
         "files": len([f for f in project_path_obj.rglob("*") if f.is_file()]),
         "python_files": len(python_files),
         "markdown_files": len(md_files),
-        "config_files": len(yaml_files)
+        "config_files": len(yaml_files),
     }
 
     # Calculer un score de qualité basique
@@ -53,9 +55,9 @@ def analyze_project(project_path: str = ".") -> Dict[str, Any]:
         "metrics": {
             "total_size_mb": total_size / (1024 * 1024),
             "quality_score": min(100, quality_score),
-            "complexity": "medium"
+            "complexity": "medium",
         },
-        "score": min(100, quality_score)
+        "score": min(100, quality_score),
     }
 
 
@@ -67,28 +69,29 @@ def generate_heatmap_data(project_path: str = ".") -> Dict[str, Any]:
     heatmap_data = []
     for py_file in python_files:
         try:
-            with open(py_file, 'r', encoding='utf-8') as f:
+            with open(py_file, "r", encoding="utf-8") as f:
                 lines = f.readlines()
                 # Complexité basique basée sur le nombre de lignes
                 complexity = len(lines)
 
-                heatmap_data.append({
-                    "file": str(py_file.relative_to(project_path_obj)),
-                    "complexity": complexity,
-                    "lines": len(lines)
-                })
+                heatmap_data.append(
+                    {
+                        "file": str(py_file.relative_to(project_path_obj)),
+                        "complexity": complexity,
+                        "lines": len(lines),
+                    }
+                )
         except Exception:
             continue
 
     return {
         "heatmap_data": heatmap_data,
         "total_files": len(heatmap_data),
-        "max_complexity": max([d["complexity"] for d in heatmap_data], default=0)
+        "max_complexity": max([d["complexity"] for d in heatmap_data], default=0),
     }
 
 
-def generate_technical_debt_analysis(
-        project_path: str = ".") -> Dict[str, Any]:
+def generate_technical_debt_analysis(project_path: str = ".") -> Dict[str, Any]:
     """Analyser la dette technique du projet"""
     project_path_obj = Path(project_path)
 
@@ -98,7 +101,7 @@ def generate_technical_debt_analysis(
     # Chercher les TODO, FIXME, etc.
     for py_file in project_path_obj.rglob("*.py"):
         try:
-            with open(py_file, 'r', encoding='utf-8') as f:
+            with open(py_file, "r", encoding="utf-8") as f:
                 content = f.read()
                 if "TODO" in content:
                     debt_indicators.append(f"TODO dans {py_file.name}")
@@ -112,11 +115,15 @@ def generate_technical_debt_analysis(
     return {
         "technical_debt_score": max(0, 100 - len(debt_indicators) * 5),
         "debt_indicators": debt_indicators,
-        "recommendations": [
-            "Réviser les TODO et FIXME",
-            "Améliorer la documentation",
-            "Optimiser les imports"
-        ] if debt_indicators else ["Projet en bon état"]
+        "recommendations": (
+            [
+                "Réviser les TODO et FIXME",
+                "Améliorer la documentation",
+                "Optimiser les imports",
+            ]
+            if debt_indicators
+            else ["Projet en bon état"]
+        ),
     }
 
 

@@ -5,14 +5,14 @@ Script de Validation Documentation - Athalia
 Vérifie la cohérence entre la documentation et le code réel
 """
 
-import sys
-import re
-import json
 import argparse
+import ast
+import json
 import logging
+import re
+import sys
 from pathlib import Path
 from typing import Dict, List
-import ast
 
 # Configuration du logging
 logging.basicConfig(

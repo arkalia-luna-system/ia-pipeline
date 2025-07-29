@@ -4,9 +4,11 @@
 Tests pour détecter les fichiers polluants
 """
 
-import pytest
 import os
 from pathlib import Path
+
+import pytest
+
 
 class TestNoPollutingFiles:
     """Tests pour détecter les fichiers polluants"""

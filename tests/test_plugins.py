@@ -8,6 +8,7 @@ import shutil
 import tempfile
 import unittest
 
+
 # Simulation des fonctions pour les tests
 def list_plugins():
     """Simulation de la fonction list_plugins"""

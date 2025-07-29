@@ -5,10 +5,10 @@ Module d'édition/correction multi-fichiers pour Athalia/Arkalia.
 Permet d'appliquer des corrections/refactoring sur plusieurs fichiers en une seule commande,
 avec logs et rollback.
 """
+import logging
 import os
 import shutil
-from typing import List, Callable, Dict, Any, Tuple
-import logging
+from typing import Any, Callable, Dict, List, Tuple
 
 logger = logging.getLogger(__name__)
 

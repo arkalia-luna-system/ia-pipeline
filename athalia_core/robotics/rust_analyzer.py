@@ -16,6 +16,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class CargoDependency:
     """Dépendance Cargo"""
+
     name: str
     version: str
     features: List[str]
@@ -25,6 +26,7 @@ class CargoDependency:
 @dataclass
 class RustProjectInfo:
     """Informations sur un projet Rust"""
+
     name: str
     path: Path
     version: str
@@ -39,6 +41,7 @@ class RustProjectInfo:
 @dataclass
 class RustAnalysisResult:
     """Résultat d'analyse Rust"""
+
     projects: List[RustProjectInfo]
     issues: List[str]
     recommendations: List[str]
@@ -71,14 +74,13 @@ class RustAnalyzer:
 
         if not cargo_files:
             issues.append("Aucun projet Rust trouvé (Cargo.toml manquant)")
-            recommendations.append(
-                "Créer un projet Rust avec: cargo new nom_projet")
+            recommendations.append("Créer un projet Rust avec: cargo new nom_projet")
             return RustAnalysisResult(
                 projects=[],
                 issues=issues,
                 recommendations=recommendations,
                 build_ready=False,
-                optimization_score=0.0
+                optimization_score=0.0,
             )
 
         # Analyser chaque projet
@@ -101,34 +103,34 @@ class RustAnalyzer:
             issues=issues,
             recommendations=recommendations,
             build_ready=build_ready,
-            optimization_score=optimization_score
+            optimization_score=optimization_score,
         )
 
-    def _analyze_cargo_project(
-            self, cargo_file: Path) -> Optional[RustProjectInfo]:
+    def _analyze_cargo_project(self, cargo_file: Path) -> Optional[RustProjectInfo]:
         """Analyse un projet Cargo spécifique"""
         try:
             project_path = cargo_file.parent
             cargo_data = self.validate_cargo_toml(cargo_file)
 
             # Extraire les informations de base
-            package_info = cargo_data.get('package', {})
-            name = package_info.get('name', project_path.name)
-            version = package_info.get('version', '0.1.0')
+            package_info = cargo_data.get("package", {})
+            name = package_info.get("name", project_path.name)
+            version = package_info.get("version", "0.1.0")
 
             # Analyser les dépendances
-            dependencies = self._parse_dependencies(
-                cargo_data.get('dependencies', {}))
+            dependencies = self._parse_dependencies(cargo_data.get("dependencies", {}))
             dev_dependencies = self._parse_dependencies(
-                cargo_data.get('dev-dependencies', {}))
+                cargo_data.get("dev-dependencies", {})
+            )
             build_dependencies = self._parse_dependencies(
-                cargo_data.get('build-dependencies', {}))
+                cargo_data.get("build-dependencies", {})
+            )
 
             # Vérifier les dépendances robotiques
             has_robotics_deps = any(
-                self._is_robotics_dependency(dep) for dep in dependencies)
-            has_ros2_deps = any('ros2' in dep.name.lower()
-                                for dep in dependencies)
+                self._is_robotics_dependency(dep) for dep in dependencies
+            )
+            has_ros2_deps = any("ros2" in dep.name.lower() for dep in dependencies)
 
             # Analyser les targets de build
             build_targets = self._analyze_build_targets(project_path)
@@ -142,7 +144,7 @@ class RustAnalyzer:
                 build_dependencies=build_dependencies,
                 has_ros2_deps=has_ros2_deps,
                 has_robotics_deps=has_robotics_deps,
-                build_targets=build_targets
+                build_targets=build_targets,
             )
 
         except Exception as e:
@@ -156,32 +158,42 @@ class RustAnalyzer:
         for name, dep_info in deps_dict.items():
             if isinstance(dep_info, str):
                 # Version simple
-                dependencies.append(CargoDependency(
-                    name=name,
-                    version=dep_info,
-                    features=[],
-                    optional=False
-                ))
+                dependencies.append(
+                    CargoDependency(
+                        name=name, version=dep_info, features=[], optional=False
+                    )
+                )
             elif isinstance(dep_info, dict):
                 # Configuration complète
-                dependencies.append(CargoDependency(
-                    name=name,
-                    version=dep_info.get('version', '0.0.0'),
-                    features=dep_info.get('features', []),
-                    optional=dep_info.get('optional', False)
-                ))
+                dependencies.append(
+                    CargoDependency(
+                        name=name,
+                        version=dep_info.get("version", "0.0.0"),
+                        features=dep_info.get("features", []),
+                        optional=dep_info.get("optional", False),
+                    )
+                )
 
         return dependencies
 
     def _is_robotics_dependency(self, dep: CargoDependency) -> bool:
         """Vérifier si c'est une dépendance robotique"""
         robotics_keywords = [
-            'ros2', 'dynamixel', 'robot', 'motor', 'servo', 'kinematics',
-            'gazebo', 'rviz', 'tf', 'geometry', 'control', 'sensor'
+            "ros2",
+            "dynamixel",
+            "robot",
+            "motor",
+            "servo",
+            "kinematics",
+            "gazebo",
+            "rviz",
+            "tf",
+            "geometry",
+            "control",
+            "sensor",
         ]
 
-        return any(keyword in dep.name.lower()
-                   for keyword in robotics_keywords)
+        return any(keyword in dep.name.lower() for keyword in robotics_keywords)
 
     def _analyze_build_targets(self, project_path: Path) -> List[str]:
         """Analyser les targets de build"""
@@ -206,15 +218,13 @@ class RustAnalyzer:
         """Vérifier si le build system Rust est configuré"""
         try:
             result = subprocess.run(
-                ['cargo', '--version'],
-                capture_output=True, text=True, timeout=5
+                ["cargo", "--version"], capture_output=True, text=True, timeout=5
             )
             return result.returncode == 0
         except BaseException:
             return False
 
-    def _calculate_optimization_score(
-            self, projects: List[RustProjectInfo]) -> float:
+    def _calculate_optimization_score(self, projects: List[RustProjectInfo]) -> float:
         """Calculer le score d'optimisation"""
         if not projects:
             return 0.0
@@ -234,7 +244,7 @@ class RustAnalyzer:
                 score += 20.0
 
             # Bonus pour lib + bin
-            if 'lib' in project.build_targets and 'bin' in project.build_targets:
+            if "lib" in project.build_targets and "bin" in project.build_targets:
                 score += 10.0
 
             # Bonus pour tests
@@ -244,8 +254,10 @@ class RustAnalyzer:
         return min(100.0, score)
 
     def _generate_recommendations(
-        self, projects: List[RustProjectInfo],
-        issues: List[str], recommendations: List[str]
+        self,
+        projects: List[RustProjectInfo],
+        issues: List[str],
+        recommendations: List[str],
     ):
         """Générer des recommandations basées sur l'analyse"""
         if not projects:
@@ -256,7 +268,8 @@ class RustAnalyzer:
             if not project.has_robotics_deps:
                 recommendations.append(
                     f"Projet {project.name}: Ajouter des dépendances robotiques "
-                    f"(ex: ros2, dynamixel)")
+                    f"(ex: ros2, dynamixel)"
+                )
 
             # Recommandations pour ROS2
             if not project.has_ros2_deps:
@@ -281,7 +294,7 @@ class RustAnalyzer:
     def validate_cargo_toml(self, cargo_file: Path) -> Dict:
         """Valider et parser un fichier Cargo.toml"""
         try:
-            with open(cargo_file, 'r', encoding='utf-8') as f:
+            with open(cargo_file, "r", encoding="utf-8") as f:
                 content = f.read()
 
             # Parser le TOML (version simplifiée)
@@ -289,16 +302,16 @@ class RustAnalyzer:
             cargo_data = {}
             current_section = None
 
-            for line in content.split('\n'):
+            for line in content.split("\n"):
                 line = line.strip()
-                if not line or line.startswith('#'):
+                if not line or line.startswith("#"):
                     continue
 
-                if line.startswith('[') and line.endswith(']'):
+                if line.startswith("[") and line.endswith("]"):
                     current_section = line[1:-1]
                     cargo_data[current_section] = {}
-                elif '=' in line and current_section:
-                    key, value = line.split('=', 1)
+                elif "=" in line and current_section:
+                    key, value = line.split("=", 1)
                     key = key.strip()
                     value = value.strip().strip('"').strip("'")
                     cargo_data[current_section][key] = value

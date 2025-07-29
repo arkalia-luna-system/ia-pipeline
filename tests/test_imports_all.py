@@ -2,10 +2,11 @@
 Test d'importation exhaustive de tous les modules
 Vérifie que tous les modules peuvent être importés sans erreur
 """
-import pytest
-import sys
 import os
+import sys
 from pathlib import Path
+
+import pytest
 
 
 class TestImportsAll:

@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-from pathlib import Path
-from typing import Dict, List, Any
-import json
-import os
-import hashlib
 import argparse
-from datetime import datetime, timedelta
-import shutil
+import hashlib
+import json
 import logging
+import os
+import shutil
+from datetime import datetime, timedelta
+from pathlib import Path
+from typing import Any, Dict, List
 
 logger = logging.getLogger(__name__)
 
@@ -30,7 +30,7 @@ class AutoCleaner:
             "files_removed": 0,
             "dirs_removed": 0,
             "space_freed_mb": 0.0,
-            "errors": 0
+            "errors": 0,
         }
 
     def clean_project(self, dry_run: bool = False) -> Dict[str, Any]:
@@ -38,8 +38,7 @@ class AutoCleaner:
         self.dry_run = dry_run
         project_path_obj = self.project_path
 
-        logger.info(
-            f"🧹 Nettoyage automatique en cours pour : {project_path_obj.name}")
+        logger.info(f"🧹 Nettoyage automatique en cours pour : {project_path_obj.name}")
         if dry_run:
             logger.info("🔍 Mode simulation - aucun fichier ne sera supprimé")
 
@@ -82,8 +81,7 @@ class AutoCleaner:
 
         for pattern in system_patterns:
             for file_path in project_path.rglob(pattern):
-                self._safe_remove_file(
-                    file_path, f"Fichier système: {pattern}")
+                self._safe_remove_file(file_path, f"Fichier système: {pattern}")
 
         # Nettoyage spécifique des dossiers macOS
         macos_dirs = [
@@ -92,14 +90,15 @@ class AutoCleaner:
             ".fseventsd",
             ".TemporaryItems",
             ".AppleDouble",
-            ".LSOverride"
+            ".LSOverride",
         ]
 
         for dir_name in macos_dirs:
             for dir_path in project_path.rglob(dir_name):
                 if dir_path.is_dir():
                     self._safe_remove_dir(
-                        dir_path, f"Dossier système macOS: {dir_name}")
+                        dir_path, f"Dossier système macOS: {dir_name}"
+                    )
 
     def _clean_cache_files(self, project_path: Path):
         """Nettoyage des fichiers de cache"""
@@ -209,10 +208,8 @@ class AutoCleaner:
             if file_path.is_file():
                 try:
                     mtime = datetime.fromtimestamp(file_path.stat().st_mtime)
-                    if mtime < cutoff_date and not self._is_important_file(
-                            file_path):
-                        self._safe_remove_file(
-                            file_path, "Fichier ancien (>1 an)")
+                    if mtime < cutoff_date and not self._is_important_file(file_path):
+                        self._safe_remove_file(file_path, "Fichier ancien (>1 an)")
                 except Exception:
                     pass
 
@@ -224,10 +221,10 @@ class AutoCleaner:
             if file_path.is_file():
                 try:
                     size_mb = file_path.stat().st_size / (1024 * 1024)
-                    if size_mb > max_size_mb and not self._is_important_file(
-                            file_path):
+                    if size_mb > max_size_mb and not self._is_important_file(file_path):
                         self._safe_remove_file(
-                            file_path, f"Fichier volumineux ({size_mb:.1f}MB)")
+                            file_path, f"Fichier volumineux ({size_mb:.1f}MB)"
+                        )
                 except Exception:
                     pass
 
@@ -237,16 +234,13 @@ class AutoCleaner:
             if not self.dry_run:
                 file_size = file_path.stat().st_size / (1024 * 1024)  # MB
                 file_path.unlink()
-                self.cleaned_files.append({
-                    "path": str(file_path),
-                    "reason": reason,
-                    "size_mb": file_size
-                })
+                self.cleaned_files.append(
+                    {"path": str(file_path), "reason": reason, "size_mb": file_size}
+                )
                 self.stats["files_removed"] += 1
                 self.stats["space_freed_mb"] += file_size
             else:
-                logger.info(
-                    f"🔍 Simulation: Suppression de {file_path} ({reason})")
+                logger.info(f"🔍 Simulation: Suppression de {file_path} ({reason})")
 
         except Exception as e:
             self.errors.append(f"Erreur suppression {file_path}: {e}")
@@ -259,10 +253,7 @@ class AutoCleaner:
                 shutil.rmtree(dir_path)
                 self.stats["dirs_removed"] += 1
 
-            self.cleaned_dirs.append({
-                "path": str(dir_path),
-                "reason": reason
-            })
+            self.cleaned_dirs.append({"path": str(dir_path), "reason": reason})
 
         except Exception as e:
             self.errors.append(f"Erreur suppression {dir_path}: {e}")
@@ -271,23 +262,52 @@ class AutoCleaner:
     def _is_code_file(self, file_path: Path) -> bool:
         """Détermine si un fichier est un fichier de code"""
         code_extensions = {
-            '.py', '.js', '.ts', '.jsx', '.tsx', '.java', '.cpp', '.c', '.h',
-            '.go', '.rs', '.php', '.rb', '.swift', '.kt', '.scala', '.cs',
-            '.html', '.css', '.scss', '.sass', '.xml', '.json', '.yaml', '.yml'
+            ".py",
+            ".js",
+            ".ts",
+            ".jsx",
+            ".tsx",
+            ".java",
+            ".cpp",
+            ".c",
+            ".h",
+            ".go",
+            ".rs",
+            ".php",
+            ".rb",
+            ".swift",
+            ".kt",
+            ".scala",
+            ".cs",
+            ".html",
+            ".css",
+            ".scss",
+            ".sass",
+            ".xml",
+            ".json",
+            ".yaml",
+            ".yml",
         }
         return file_path.suffix.lower() in code_extensions
 
     def _is_important_file(self, file_path: Path) -> bool:
         """Détermine si un fichier est important (ex: config, requirements, etc.)"""
         important_patterns = [
-            "README", "LICENSE", "requirements.txt", "package.json",
-            "Makefile", "docker-compose.yml", ".env",
-            "setup.py", "pyproject.toml", "Cargo.toml", "go.mod"
+            "README",
+            "LICENSE",
+            "requirements.txt",
+            "package.json",
+            "Makefile",
+            "docker-compose.yml",
+            ".env",
+            "setup.py",
+            "pyproject.toml",
+            "Cargo.toml",
+            "go.mod",
         ]
 
         file_name = file_path.name.lower()
-        return any(
-            pattern.lower() in file_name for pattern in important_patterns)
+        return any(pattern.lower() in file_name for pattern in important_patterns)
 
     def _is_empty_directory(self, dir_path: Path) -> bool:
         """Vérifie si un répertoire est vide"""
@@ -321,7 +341,7 @@ class AutoCleaner:
             "files": self.cleaned_files,
             "dirs": self.cleaned_dirs,
             "errors": self.errors,
-            "summary": self._generate_summary()
+            "summary": self._generate_summary(),
         }
 
     def _generate_summary(self) -> str:
@@ -371,8 +391,7 @@ class AutoCleaner:
         project_path_obj = Path(project_path)
         optimizations = []
 
-        logger.info(
-            f"⚡ Optimisation de la structure pour : {project_path_obj.name}")
+        logger.info(f"⚡ Optimisation de la structure pour : {project_path_obj.name}")
 
         # Création de répertoires standards
         standard_dirs = ["src", "tests", "docs", "data", "scripts", "assets"]
@@ -386,10 +405,7 @@ class AutoCleaner:
         # Déplacement des fichiers dans les bons répertoires
         self._organize_files(project_path_obj, optimizations)
 
-        return {
-            "optimizations": optimizations,
-            "dry_run": self.dry_run
-        }
+        return {"optimizations": optimizations, "dry_run": self.dry_run}
 
     def _organize_files(self, project_path: Path, optimizations: List[str]):
         """Organise les fichiers dans la structure du projet"""
@@ -407,8 +423,7 @@ class AutoCleaner:
                 new_path = project_path / "scripts" / file_path.name
                 if not self.dry_run and not new_path.exists():
                     file_path.rename(new_path)
-                    optimizations.append(
-                        f"Déplacé: {file_path.name} → scripts/")
+                    optimizations.append(f"Déplacé: {file_path.name} → scripts/")
 
         # Déplacer les assets
         for ext in ["png", "jpg", "jpeg", "gif", "svg", "ico"]:
@@ -417,25 +432,22 @@ class AutoCleaner:
                     new_path = project_path / "assets" / file_path.name
                 if not self.dry_run and not new_path.exists():
                     file_path.rename(new_path)
-                    optimizations.append(
-                        f"Déplacé: {file_path.name} → assets/")
+                    optimizations.append(f"Déplacé: {file_path.name} → assets/")
 
 
 def main():
     """Point dentrée du module AutoCleaner"""
 
     parser = argparse.ArgumentParser(description="Nettoyage automatique de f")
-    parser.add_argument(
-        "project_path",
-        help="Chemin vers le projet à nettoyer")
+    parser.add_argument("project_path", help="Chemin vers le projet à nettoyer")
     parser.add_argument(
         "--dry-run",
         action="store_true",
-        help="Mode simulation - aucun fichier ne sera supprimé")
+        help="Mode simulation - aucun fichier ne sera supprimé",
+    )
     parser.add_argument(
-        "--optimize",
-        action="store_true",
-        help="Optimiser la structure du projet")
+        "--optimize", action="store_true", help="Optimiser la structure du projet"
+    )
 
     args = parser.parse_args()
 
@@ -445,8 +457,8 @@ def main():
 
     # Configuration du logging
     logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(levelname)s - %(message)s')
+        level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+    )
 
     # Nettoyage
     cleaner = AutoCleaner(args.project_path)
@@ -457,15 +469,16 @@ def main():
 
     # Optimisation de structure si demandée
     if args.optimize:
-        structure_report = cleaner.optimize_project_structure(
-            args.project_path)
+        structure_report = cleaner.optimize_project_structure(args.project_path)
         logger.info("\n⚡ OPTIMISATIONS DE STRUCTURE:")
         for opt in structure_report["optimizations"]:
             logger.info(f"   • {opt}")
 
     # Sauvegarde du rapport
-    report_file = f"data/reports/cleanup_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
-    with open(report_file, 'w', encoding='utf-8') as f:
+    report_file = (
+        f"data/reports/cleanup_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+    )
+    with open(report_file, "w", encoding="utf-8") as f:
         json.dump(cleanup_report, f, indent=2, ensure_ascii=False)
 
     logger.info(f"\n📄 Rapport sauvegardé: {report_file}")

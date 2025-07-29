@@ -10,12 +10,12 @@ Système CI/CD adapté aux projets Reachy/ROS2 :
 - Déploiement automatisé
 """
 
+import logging
 import subprocess
+import time
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Tuple
-from dataclasses import dataclass
-import logging
-import time
 
 logger = logging.getLogger(__name__)
 
@@ -23,6 +23,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class CIConfig:
     """Configuration CI/CD"""
+
     ros2_enabled: bool
     docker_enabled: bool
     rust_enabled: bool
@@ -34,6 +35,7 @@ class CIConfig:
 @dataclass
 class CIResult:
     """Résultat d'exécution CI/CD"""
+
     success: bool
     stages: Dict[str, bool]
     logs: Dict[str, str]
@@ -210,7 +212,7 @@ services:
                     stages=stages,
                     logs=logs,
                     artifacts=artifacts,
-                    duration=time.time() - start_time
+                    duration=time.time() - start_time,
                 )
 
         # Stage 2: Build Docker
@@ -263,7 +265,7 @@ services:
             stages=stages,
             logs=logs,
             artifacts=artifacts,
-            duration=duration
+            duration=duration,
         )
 
     def _run_ros2_validation(self) -> Tuple[bool, str]:
@@ -285,7 +287,7 @@ services:
                 cwd=self.project_path,
                 capture_output=True,
                 text=True,
-                timeout=300
+                timeout=300,
             )
 
             if result.returncode == 0:
@@ -304,11 +306,19 @@ services:
                 return False, "Dockerfile non trouvé"
 
             result = subprocess.run(
-                ["docker", "build", "-f", str(dockerfile), "-t", "reachy-robotics", "."],
+                [
+                    "docker",
+                    "build",
+                    "-f",
+                    str(dockerfile),
+                    "-t",
+                    "reachy-robotics",
+                    ".",
+                ],
                 cwd=self.project_path,
                 capture_output=True,
                 text=True,
-                timeout=600
+                timeout=600,
             )
 
             if result.returncode == 0:
@@ -333,11 +343,14 @@ services:
                     cwd=project_dir,
                     capture_output=True,
                     text=True,
-                    timeout=300
+                    timeout=300,
                 )
 
                 if result.returncode != 0:
-                    return False, f"Build Rust échoué dans {project_dir}: {result.stderr}"
+                    return (
+                        False,
+                        f"Build Rust échoué dans {project_dir}: {result.stderr}",
+                    )
 
             return True, f"Build Rust réussi: {len(cargo_files)} projets"
 
@@ -353,7 +366,7 @@ services:
                 cwd=self.project_path,
                 capture_output=True,
                 text=True,
-                timeout=300
+                timeout=300,
             )
 
             if result.returncode != 0:
@@ -367,7 +380,7 @@ services:
                     cwd=self.project_path,
                     capture_output=True,
                     text=True,
-                    timeout=300
+                    timeout=300,
                 )
 
                 if result.returncode != 0:
@@ -445,12 +458,12 @@ services:
 
             # Créer workflow
             workflow_file = workflows_dir / "robotics-ci.yml"
-            with open(workflow_file, 'w') as f:
+            with open(workflow_file, "w") as f:
                 f.write(self.create_github_workflow())
 
             # Créer docker-compose.ci.yml
             compose_file = self.project_path / "docker-compose.ci.yml"
-            with open(compose_file, 'w') as f:
+            with open(compose_file, "w") as f:
                 f.write(self.create_docker_compose_ci())
 
             self.logger.info("✅ Environnement CI configuré")

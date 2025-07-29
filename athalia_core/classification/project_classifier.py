@@ -24,53 +24,128 @@ def classify_project(idea: str) -> ProjectType:
 
     # Ajout détection explicite pour todo-list
     if any(
-        kw in idea_lower for kw in [
-            'todo',
-            'tâche',
-            'taches',
-            'task',
-            'liste de tâches',
-            'liste de taches',
-            'todo-list',
-            'todo list']):
+        kw in idea_lower
+        for kw in [
+            "todo",
+            "tâche",
+            "taches",
+            "task",
+            "liste de tâches",
+            "liste de taches",
+            "todo-list",
+            "todo list",
+        ]
+    ):
         return ProjectType.API
 
     # Mots-clés pour chaque type de projet
     artistic_keywords = [
-        'fleure', 'fleur', 'danse', 'dance', 'art', 'artistique', 'visuel',
-        'animation', 'musique', 'couleur', 'peinture', 'dessin', 'sculpture',
-        'créatif', 'creative', 'esthétique', 'beauté', 'harmonie'
+        "fleure",
+        "fleur",
+        "danse",
+        "dance",
+        "art",
+        "artistique",
+        "visuel",
+        "animation",
+        "musique",
+        "couleur",
+        "peinture",
+        "dessin",
+        "sculpture",
+        "créatif",
+        "creative",
+        "esthétique",
+        "beauté",
+        "harmonie",
     ]
 
     api_keywords = [
-        'api', 'service', 'backend', 'rest', 'graphql', 'microservice',
-        'endpoint', 'webservice', 'serveur', 'server', 'interface'
+        "api",
+        "service",
+        "backend",
+        "rest",
+        "graphql",
+        "microservice",
+        "endpoint",
+        "webservice",
+        "serveur",
+        "server",
+        "interface",
     ]
 
     game_keywords = [
-        'jeu', 'game', 'jouer', 'play', 'score', 'niveau', 'level',
-        'gagner', 'win', 'perdre', 'lose', 'règles', 'rules', 'plateforme'
+        "jeu",
+        "game",
+        "jouer",
+        "play",
+        "score",
+        "niveau",
+        "level",
+        "gagner",
+        "win",
+        "perdre",
+        "lose",
+        "règles",
+        "rules",
+        "plateforme",
     ]
 
     data_keywords = [
-        'data', 'données', 'analyse', 'analysis', 'ml', 'machine learning',
-        'ai', 'intelligence artificielle', 'statistiques', 'stats',
-        'prédiction', 'prediction', 'modèle', 'model'
+        "data",
+        "données",
+        "analyse",
+        "analysis",
+        "ml",
+        "machine learning",
+        "ai",
+        "intelligence artificielle",
+        "statistiques",
+        "stats",
+        "prédiction",
+        "prediction",
+        "modèle",
+        "model",
     ]
 
     web_keywords = [
-        'web', 'site', 'application web', 'frontend', 'backend',
-        'html', 'css', 'javascript', 'react', 'vue', 'angular'
+        "web",
+        "site",
+        "application web",
+        "frontend",
+        "backend",
+        "html",
+        "css",
+        "javascript",
+        "react",
+        "vue",
+        "angular",
     ]
 
     mobile_keywords = [
-        'mobile', 'app', 'application mobile', 'smartphone', 'tablet',
-        'ios', 'android', 'touch', 'geste', 'swipe'
+        "mobile",
+        "app",
+        "application mobile",
+        "smartphone",
+        "tablet",
+        "ios",
+        "android",
+        "touch",
+        "geste",
+        "swipe",
     ]
 
     iot_keywords = [
-        'iot', 'capteur', 'sensor', 'arduino', 'raspberry', 'pi',
-        'électronique', 'electronic', 'hardware', 'matériel'
+        "iot",
+        "capteur",
+        "sensor",
+        "arduino",
+        "raspberry",
+        "pi",
+        "électronique",
+        "electronic",
+        "hardware",
+        "matériel",
     ]
 
     # Calcul des scores pour chaque type
@@ -85,15 +160,13 @@ def classify_project(idea: str) -> ProjectType:
     }
 
     # Règles spéciales
-    if 'fleure qui danse' in idea_lower or 'fleur qui danse' in idea_lower:
+    if "fleure qui danse" in idea_lower or "fleur qui danse" in idea_lower:
         return ProjectType.ARTISTIC
 
-    if 'api' in idea_lower and any(
-            kw in idea_lower for kw in [
-            'service', 'backend']):
+    if "api" in idea_lower and any(kw in idea_lower for kw in ["service", "backend"]):
         return ProjectType.API
 
-    if any(word in idea_lower for word in ['jeu', 'game', 'play']):
+    if any(word in idea_lower for word in ["jeu", "game", "play"]):
         return ProjectType.GAME
 
     # Retourner le type avec le score le plus élevé
@@ -119,33 +192,33 @@ def get_project_name(idea: str, project_type: ProjectType) -> str:
         str: Nom de projet généré
     """
     # Extraire des mots-clés de l'idée
-    words = re.findall(r'\b\w+\b', idea.lower())
+    words = re.findall(r"\b\w+\b", idea.lower())
 
     if project_type == ProjectType.ARTISTIC:
-        if 'fleure' in idea.lower() or 'fleur' in idea.lower():
-            return 'artistic_flower_dance'
-        return 'artistic_project'
+        if "fleure" in idea.lower() or "fleur" in idea.lower():
+            return "artistic_flower_dance"
+        return "artistic_project"
 
     elif project_type == ProjectType.API:
-        return 'api_service'
+        return "api_service"
 
     elif project_type == ProjectType.GAME:
-        return 'interactive_game'
+        return "interactive_game"
 
     elif project_type == ProjectType.DATA:
-        return 'data_analysis_project'
+        return "data_analysis_project"
 
     elif project_type == ProjectType.WEB:
-        return 'web_application'
+        return "web_application"
 
     elif project_type == ProjectType.MOBILE:
-        return 'mobile_app'
+        return "mobile_app"
 
     elif project_type == ProjectType.IOT:
-        return 'iot_project'
+        return "iot_project"
 
     else:
         # Générique : utiliser les premiers mots de l'idée
         if len(words) >= 2:
             return f"{words[0]}_{words[1]}_project"
-        return 'ia_project'
+        return "ia_project"

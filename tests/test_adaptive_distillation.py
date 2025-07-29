@@ -1,6 +1,8 @@
-import unittest
 import os
+import unittest
+
 from athalia_core.distillation.adaptive_distillation import AdaptiveDistiller
+
 
 class TestAdaptiveDistiller(unittest.TestCase):
     def setUp(self):

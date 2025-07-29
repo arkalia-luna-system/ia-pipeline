@@ -13,5 +13,5 @@ def get_info():
     return {
         "name": "Hello Plugin",
         "version": "1.0.0",
-        "description": "Plugin de démonstration"
-    } 
+        "description": "Plugin de démonstration",
+    }

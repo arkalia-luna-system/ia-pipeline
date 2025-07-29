@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from athalia_core import generation
 import os
-import pytest
 import shutil
 
+import pytest
+
+from athalia_core import generation
 
 
 def test_save_and_inject(tmp_path):

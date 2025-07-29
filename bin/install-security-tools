@@ -1,0 +1,96 @@
+#!/usr/bin/env python3
+"""
+Script d'installation des outils de sécurité pour Athalia.
+"""
+
+import subprocess
+import sys
+from pathlib import Path
+
+# Outils de sécurité et qualité
+SECURITY_TOOLS = [
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+    "isort>=5.12.0",
+    "bandit>=1.7.0",
+    "flake8-bugbear>=23.0.0",
+    "flake8-builtins>=2.0.0",
+    "flake8-quotes>=3.3.0",
+    "pep8-naming>=0.13.0",
+    "mccabe>=0.7.0",
+    "pyupgrade>=3.0.0",
+    "pre-commit>=3.0.0",
+    "safety>=2.0.0",
+    "pip-audit>=2.0.0",
+    "types-requests",
+    "types-PyYAML",
+]
+
+def install_tool(package: str) -> bool:
+    """Installe un outil."""
+    print(f"📦 Installation de {package}...")
+    try:
+        subprocess.run(
+            [sys.executable, "-m", "pip", "install", package],
+            check=True,
+            capture_output=True,
+            text=True
+        )
+        print(f"✅ {package} installé avec succès")
+        return True
+    except subprocess.CalledProcessError as e:
+        print(f"❌ Erreur lors de l'installation de {package}: {e}")
+        return False
+
+def setup_pre_commit() -> bool:
+    """Configure pre-commit."""
+    print("🔧 Configuration de pre-commit...")
+    try:
+        subprocess.run(["pre-commit", "install"], check=True)
+        subprocess.run(["pre-commit", "install", "--hook-type", "commit-msg"], check=True)
+        print("✅ Pre-commit configuré avec succès")
+        return True
+    except subprocess.CalledProcessError as e:
+        print(f"❌ Erreur lors de la configuration de pre-commit: {e}")
+        return False
+
+def main():
+    """Fonction principale."""
+    print("🛡️  INSTALLATION DES OUTILS DE SÉCURITÉ")
+    print("="*50)
+    
+    # Vérifier que nous sommes dans le bon répertoire
+    if not Path("athalia_core").exists():
+        print("❌ Erreur: Répertoire athalia_core non trouvé")
+        print("   Exécutez ce script depuis la racine du projet")
+        sys.exit(1)
+    
+    # Installer les outils
+    success_count = 0
+    total_count = len(SECURITY_TOOLS)
+    
+    for tool in SECURITY_TOOLS:
+        if install_tool(tool):
+            success_count += 1
+    
+    print(f"\n📊 Résumé: {success_count}/{total_count} outils installés")
+    
+    if success_count == total_count:
+        print("🎉 Tous les outils installés avec succès!")
+        
+        # Configurer pre-commit
+        if setup_pre_commit():
+            print("\n🚀 Configuration terminée!")
+            print("\n📋 Prochaines étapes:")
+            print("1. Exécutez: ./bin/ath-lint-secure")
+            print("2. Ou utilisez: pre-commit run --all-files")
+            print("3. Pour corriger automatiquement: black . && isort .")
+        else:
+            print("⚠️  Pre-commit non configuré")
+    else:
+        print("⚠️  Certains outils n'ont pas pu être installés")
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main() 

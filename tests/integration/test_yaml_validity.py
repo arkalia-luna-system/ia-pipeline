@@ -5,12 +5,13 @@ Tests de validité YAML pour Athalia.
 Tests professionnels pour la CI/CD.
 """
 
+import sys
+import tempfile
+from pathlib import Path
+from unittest.mock import MagicMock, patch
+
 import pytest
 import yaml
-import tempfile
-import sys
-from pathlib import Path
-from unittest.mock import patch, MagicMock
 
 # Ajouter le répertoire parent au path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
@@ -290,7 +291,7 @@ class TestYAMLValidity:
     def test_yaml_performance(self):
         """Test de performance YAML."""
         import time
-        
+
         # Créer un YAML complexe
         complex_data = {
             'project': {

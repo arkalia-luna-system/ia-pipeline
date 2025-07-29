@@ -1,10 +1,12 @@
+from unittest.mock import patch
+
 import pytest
 import requests
-from unittest.mock import patch
 
 # Vérification de la disponibilité de FastAPI
 try:
     from fastapi.testclient import TestClient
+
     from athalia_core.autocomplete_server import app
     FASTAPI_AVAILABLE = True
     client = TestClient(app)

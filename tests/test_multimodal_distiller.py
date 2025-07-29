@@ -1,6 +1,8 @@
 import unittest
 from unittest.mock import patch
+
 from athalia_core.distillation.multimodal_distiller import MultimodalDistiller
+
 
 class TestMultimodalDistiller(unittest.TestCase):
     @patch.object(MultimodalDistiller, 'call_llava', return_value="Analyse image OK")

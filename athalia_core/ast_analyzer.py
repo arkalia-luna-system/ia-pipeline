@@ -8,11 +8,11 @@ des fichiers Python. Utilisé par les autres modules d'analyse.
 
 import ast
 import logging
+import re
+from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 from typing import List, Optional
-from dataclasses import dataclass
-import re
 
 logger = logging.getLogger(__name__)
 
@@ -20,6 +20,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class ASTNodeInfo:
     """Informations extraites d'un nœud AST"""
+
     node_type: str
     name: str
     line_number: int
@@ -31,6 +32,7 @@ class ASTNodeInfo:
 @dataclass
 class FileAnalysis:
     """Analyse complète d'un fichier Python"""
+
     file_path: Path
     functions: List[ASTNodeInfo]
     classes: List[ASTNodeInfo]
@@ -52,10 +54,10 @@ class ASTAnalyzer:
         """Analyser un fichier Python et extraire toutes les informations"""
         try:
             # Ignorer les fichiers cachés macOS
-            if file_path.name.startswith('._'):
+            if file_path.name.startswith("._"):
                 return None
 
-            with open(file_path, 'r', encoding='utf-8') as f:
+            with open(file_path, "r", encoding="utf-8") as f:
                 content = f.read()
 
             tree = ast.parse(content)
@@ -78,7 +80,7 @@ class ASTAnalyzer:
                 imports=imports,
                 total_lines=len(content.splitlines()),
                 complexity_score=complexity_score,
-                last_modified=last_modified
+                last_modified=last_modified,
             )
 
         except Exception as e:
@@ -86,10 +88,8 @@ class ASTAnalyzer:
             return None
 
     def _extract_functions(
-            self,
-            tree: ast.AST,
-            content: str,
-            file_path: Path) -> List[ASTNodeInfo]:
+        self, tree: ast.AST, content: str, file_path: Path
+    ) -> List[ASTNodeInfo]:
         """Extraire toutes les fonctions du fichier"""
         functions = []
 
@@ -101,17 +101,15 @@ class ASTAnalyzer:
                     line_number=node.lineno,
                     complexity=self._calculate_node_complexity(node),
                     signature=self._create_function_signature(node, content),
-                    content=self._extract_node_content(node, content)
+                    content=self._extract_node_content(node, content),
                 )
                 functions.append(func_info)
 
         return functions
 
     def _extract_classes(
-            self,
-            tree: ast.AST,
-            content: str,
-            file_path: Path) -> List[ASTNodeInfo]:
+        self, tree: ast.AST, content: str, file_path: Path
+    ) -> List[ASTNodeInfo]:
         """Extraire toutes les classes du fichier"""
         classes = []
 
@@ -123,17 +121,15 @@ class ASTAnalyzer:
                     line_number=node.lineno,
                     complexity=self._calculate_node_complexity(node),
                     signature=self._create_class_signature(node, content),
-                    content=self._extract_node_content(node, content)
+                    content=self._extract_node_content(node, content),
                 )
                 classes.append(class_info)
 
         return classes
 
     def _extract_conditionals(
-            self,
-            tree: ast.AST,
-            content: str,
-            file_path: Path) -> List[ASTNodeInfo]:
+        self, tree: ast.AST, content: str, file_path: Path
+    ) -> List[ASTNodeInfo]:
         """Extraire toutes les structures conditionnelles"""
         conditionals = []
 
@@ -144,18 +140,16 @@ class ASTAnalyzer:
                     name=f"if_{node.lineno}",
                     line_number=node.lineno,
                     complexity=self._calculate_node_complexity(node),
-                    signature=self._create_conditional_signature(
-                        node,
-                        content),
-                    content=self._extract_node_content(
-                        node,
-                        content))
+                    signature=self._create_conditional_signature(node, content),
+                    content=self._extract_node_content(node, content),
+                )
                 conditionals.append(cond_info)
 
         return conditionals
 
-    def _extract_loops(self, tree: ast.AST, content: str,
-                       file_path: Path) -> List[ASTNodeInfo]:
+    def _extract_loops(
+        self, tree: ast.AST, content: str, file_path: Path
+    ) -> List[ASTNodeInfo]:
         """Extraire toutes les boucles"""
         loops = []
 
@@ -167,7 +161,7 @@ class ASTAnalyzer:
                     line_number=node.lineno,
                     complexity=self._calculate_node_complexity(node),
                     signature=self._create_loop_signature(node, content),
-                    content=self._extract_node_content(node, content)
+                    content=self._extract_node_content(node, content),
                 )
                 loops.append(loop_info)
 
@@ -188,10 +182,7 @@ class ASTAnalyzer:
 
         return imports
 
-    def _create_function_signature(
-            self,
-            node: ast.FunctionDef,
-            code: str) -> str:
+    def _create_function_signature(self, node: ast.FunctionDef, code: str) -> str:
         """Créer une signature unique pour une fonction"""
         # Extraire les paramètres
         args = []
@@ -233,27 +224,27 @@ class ASTAnalyzer:
     def _extract_node_content(self, node: ast.AST, code: str) -> str:
         """Extraire le contenu d'un nœud AST"""
         lines = code.splitlines()
-        start_line = getattr(node, 'lineno', 1) - 1
-        end_line = getattr(node, 'end_lineno', start_line + 1)
+        start_line = getattr(node, "lineno", 1) - 1
+        end_line = getattr(node, "end_lineno", start_line + 1)
 
         if end_line > len(lines):
             end_line = len(lines)
 
-        return '\n'.join(lines[start_line:end_line])
+        return "\n".join(lines[start_line:end_line])
 
     def _normalize_code(self, code: str) -> str:
         """Normaliser le code pour la comparaison"""
         # Supprimer les commentaires
-        code = re.sub(r'#.*$', '', code, flags=re.MULTILINE)
+        code = re.sub(r"#.*$", "", code, flags=re.MULTILINE)
 
         # Supprimer les espaces en début/fin
         code = code.strip()
 
         # Normaliser les espaces
-        code = re.sub(r'\s+', ' ', code)
+        code = re.sub(r"\s+", " ", code)
 
         # Supprimer les lignes vides
-        code = re.sub(r'\n\s*\n', '\n', code)
+        code = re.sub(r"\n\s*\n", "\n", code)
 
         return code
 
@@ -262,12 +253,7 @@ class ASTAnalyzer:
         complexity = 1
 
         for child in ast.walk(node):
-            if isinstance(
-                child,
-                (ast.If,
-                 ast.While,
-                 ast.For,
-                 ast.ExceptHandler)):
+            if isinstance(child, (ast.If, ast.While, ast.For, ast.ExceptHandler)):
                 complexity += 1
             elif isinstance(child, ast.BoolOp):
                 complexity += len(child.values) - 1
@@ -281,12 +267,8 @@ class ASTAnalyzer:
 
         for node in ast.walk(tree):
             if isinstance(
-                node,
-                (ast.FunctionDef,
-                 ast.ClassDef,
-                 ast.If,
-                 ast.While,
-                 ast.For)):
+                node, (ast.FunctionDef, ast.ClassDef, ast.If, ast.While, ast.For)
+            ):
                 total_complexity += self._calculate_node_complexity(node)
                 node_count += 1
 

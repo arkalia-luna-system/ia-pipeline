@@ -4,20 +4,22 @@ Tests complets pour le module auto_correction_advanced.py
 Tests unitaires et d'intégration pour AutoCorrectionAvancee
 """
 
-import unittest
-import tempfile
 import os
-import sys
-import sqlite3
-from unittest.mock import patch, MagicMock, mock_open
-from pathlib import Path
 import shutil
+import sqlite3
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+from unittest.mock import MagicMock, mock_open, patch
 
 # Ajout du chemin du projet pour les imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 try:
-    from athalia_core.advanced_modules.auto_correction_advanced import AutoCorrectionAvancee
+    from athalia_core.advanced_modules.auto_correction_advanced import (
+        AutoCorrectionAvancee,
+    )
     AUTO_CORRECTION_AVAILABLE = True
 except ImportError:
     AUTO_CORRECTION_AVAILABLE = False

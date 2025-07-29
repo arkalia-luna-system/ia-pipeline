@@ -4,9 +4,10 @@
 Tests pour ready_check.py
 """
 
-import pytest
-import sys
 import os
+import sys
+
+import pytest
 
 # Ajouter le chemin du projet
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))

@@ -6,20 +6,30 @@ Système unifié de gestion d'erreurs avec logging et reporting
 """
 
 import logging
-import traceback
 import sys
-from typing import Optional, Dict, Any, Callable
-from pathlib import Path
+import traceback
 from datetime import datetime
+from pathlib import Path
+from typing import Any, Callable, Dict, Optional
 
-from .error_codes import ErrorCode, ErrorSeverity, format_error_message, get_error_severity
+from .error_codes import (
+    ErrorCode,
+    ErrorSeverity,
+    format_error_message,
+    get_error_severity,
+)
 
 
 class AthaliaError(Exception):
     """Exception de base pour Athalia avec code d'erreur."""
 
-    def __init__(self, error_code: ErrorCode, message: str = "", details: str = "", 
-                 context: Dict[str, Any] = None):
+    def __init__(
+        self,
+        error_code: ErrorCode,
+        message: str = "",
+        details: str = "",
+        context: Dict[str, Any] = None,
+    ):
         self.error_code = error_code
         self.message = message
         self.details = details
@@ -37,14 +47,14 @@ class AthaliaError(Exception):
     def to_dict(self) -> Dict[str, Any]:
         """Convertit l'erreur en dictionnaire pour sérialisation."""
         return {
-            'error_code': self.error_code.name,
-            'error_value': self.error_code.value,
-            'message': self.message,
-            'details': self.details,
-            'context': self.context,
-            'timestamp': self.timestamp.isoformat(),
-            'severity': self.severity.name,
-            'traceback': traceback.format_exc()
+            "error_code": self.error_code.name,
+            "error_value": self.error_code.value,
+            "message": self.message,
+            "details": self.details,
+            "context": self.context,
+            "timestamp": self.timestamp.isoformat(),
+            "severity": self.severity.name,
+            "traceback": traceback.format_exc(),
         }
 
 
@@ -62,7 +72,7 @@ class ErrorHandler:
 
     def _setup_logging(self):
         """Configure le système de logging."""
-        log_format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        log_format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
         # Handler pour console
         console_handler = logging.StreamHandler(sys.stdout)
@@ -78,15 +88,13 @@ class ErrorHandler:
             handlers.append(file_handler)
 
         # Configuration du logger principal
-        logging.basicConfig(
-            level=logging.DEBUG,
-            handlers=handlers,
-            force=True
-        )
+        logging.basicConfig(level=logging.DEBUG, handlers=handlers, force=True)
 
-        self.logger = logging.getLogger('athalia.error_handler')
+        self.logger = logging.getLogger("athalia.error_handler")
 
-    def handle_error(self, error: Exception, context: Dict[str, Any] = None) -> AthaliaError:
+    def handle_error(
+        self, error: Exception, context: Dict[str, Any] = None
+    ) -> AthaliaError:
         """Gère une erreur et la convertit en AthaliaError."""
         if isinstance(error, AthaliaError):
             athalia_error = error
@@ -94,9 +102,7 @@ class ErrorHandler:
             # Convertir l'erreur en AthaliaError
             error_code = self._classify_error(error)
             athalia_error = AthaliaError(
-                error_code=error_code,
-                message=str(error),
-                context=context or {}
+                error_code=error_code, message=str(error), context=context or {}
             )
 
         # Log de l'erreur
@@ -124,16 +130,16 @@ class ErrorHandler:
 
         # Mapping des types d'erreurs Python vers les codes Athalia
         error_mapping = {
-            'FileNotFoundError': ErrorCode.FILE_NOT_FOUND,
-            'PermissionError': ErrorCode.PERMISSION_DENIED,
-            'ImportError': ErrorCode.MODULE_IMPORT_ERROR,
-            'ModuleNotFoundError': ErrorCode.MODULE_NOT_FOUND,
-            'ValueError': ErrorCode.INVALID_INPUT,
-            'TypeError': ErrorCode.INVALID_INPUT,
-            'KeyError': ErrorCode.MISSING_REQUIRED_PARAMETER,
-            'TimeoutError': ErrorCode.TIMEOUT_EXCEEDED,
-            'MemoryError': ErrorCode.MEMORY_EXHAUSTED,
-            'OSError': ErrorCode.FILE_ACCESS_DENIED,
+            "FileNotFoundError": ErrorCode.FILE_NOT_FOUND,
+            "PermissionError": ErrorCode.PERMISSION_DENIED,
+            "ImportError": ErrorCode.MODULE_IMPORT_ERROR,
+            "ModuleNotFoundError": ErrorCode.MODULE_NOT_FOUND,
+            "ValueError": ErrorCode.INVALID_INPUT,
+            "TypeError": ErrorCode.INVALID_INPUT,
+            "KeyError": ErrorCode.MISSING_REQUIRED_PARAMETER,
+            "TimeoutError": ErrorCode.TIMEOUT_EXCEEDED,
+            "MemoryError": ErrorCode.MEMORY_EXHAUSTED,
+            "OSError": ErrorCode.FILE_ACCESS_DENIED,
         }
 
         return error_mapping.get(error_type, ErrorCode.UNKNOWN_ERROR)
@@ -151,17 +157,21 @@ class ErrorHandler:
         else:
             self.logger.info(log_message)
 
-    def register_callback(self, error_code: ErrorCode, callback: Callable[[AthaliaError], None]):
+    def register_callback(
+        self, error_code: ErrorCode, callback: Callable[[AthaliaError], None]
+    ):
         """Enregistre un callback pour un type d'erreur spécifique."""
         self.error_callbacks[error_code] = callback
 
     def get_error_summary(self) -> Dict[str, Any]:
         """Retourne un résumé des erreurs."""
         return {
-            'total_errors': self.error_count,
-            'critical_errors': len(self.critical_errors),
-            'has_critical_errors': len(self.critical_errors) > 0,
-            'critical_error_details': [error.to_dict() for error in self.critical_errors]
+            "total_errors": self.error_count,
+            "critical_errors": len(self.critical_errors),
+            "has_critical_errors": len(self.critical_errors) > 0,
+            "critical_error_details": [
+                error.to_dict() for error in self.critical_errors
+            ],
         }
 
     def clear_errors(self):
@@ -189,8 +199,12 @@ def handle_error(error: Exception, context: Dict[str, Any] = None) -> AthaliaErr
     return get_error_handler().handle_error(error, context)
 
 
-def raise_athalia_error(error_code: ErrorCode, message: str = "", details: str = "", 
-                       context: Dict[str, Any] = None):
+def raise_athalia_error(
+    error_code: ErrorCode,
+    message: str = "",
+    details: str = "",
+    context: Dict[str, Any] = None,
+):
     """Lève une AthaliaError avec gestion automatique."""
     error = AthaliaError(error_code, message, details, context)
     get_error_handler().handle_error(error)
@@ -200,6 +214,7 @@ def raise_athalia_error(error_code: ErrorCode, message: str = "", details: str =
 # Décorateur pour gestion automatique d'erreurs
 def error_handler(error_code: ErrorCode = ErrorCode.UNKNOWN_ERROR):
     """Décorateur pour gestion automatique d'erreurs."""
+
     def decorator(func: Callable) -> Callable:
         def wrapper(*args, **kwargs):
             try:
@@ -208,8 +223,12 @@ def error_handler(error_code: ErrorCode = ErrorCode.UNKNOWN_ERROR):
                 if isinstance(e, AthaliaError):
                     raise
                 else:
-                    raise_athalia_error(error_code, f"Erreur dans {func.__name__}", str(e))
+                    raise_athalia_error(
+                        error_code, f"Erreur dans {func.__name__}", str(e)
+                    )
+
         return wrapper
+
     return decorator
 
 
@@ -217,7 +236,11 @@ def error_handler(error_code: ErrorCode = ErrorCode.UNKNOWN_ERROR):
 class ErrorContext:
     """Context manager pour gestion d'erreurs dans un bloc de code."""
 
-    def __init__(self, error_code: ErrorCode = ErrorCode.UNKNOWN_ERROR, context: Dict[str, Any] = None):
+    def __init__(
+        self,
+        error_code: ErrorCode = ErrorCode.UNKNOWN_ERROR,
+        context: Dict[str, Any] = None,
+    ):
         self.error_code = error_code
         self.context = context or {}
 
@@ -229,5 +252,10 @@ class ErrorContext:
             if isinstance(exc_val, AthaliaError):
                 return False  # Laisse l'erreur se propager
             else:
-                raise_athalia_error(self.error_code, f"Erreur dans le contexte", str(exc_val), self.context)
+                raise_athalia_error(
+                    self.error_code,
+                    f"Erreur dans le contexte",
+                    str(exc_val),
+                    self.context,
+                )
         return True

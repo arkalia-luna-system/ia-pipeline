@@ -3,14 +3,15 @@
 """
 Tests simples pour Athalia
 """
-import pytest
 from pathlib import Path
+
+import pytest
 
 
 def test_athalia_core_import():
     """Test d'import du module core"""
     try:
-        from athalia_core import audit, cleanup, analytics
+        from athalia_core import analytics, audit, cleanup
         assert audit is not None
         assert cleanup is not None
         assert analytics is not None

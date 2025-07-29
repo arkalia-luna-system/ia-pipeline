@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
-import subprocess
-import sys
 import argparse
 import os
+import subprocess
+import sys
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Vérifie la couverture de tests Athalia/Arkalia")
-    parser.add_argument('--html', action='store_true', help='Générer un rapport HTML')
+    parser = argparse.ArgumentParser(
+        description="Vérifie la couverture de tests Athalia/Arkalia"
+    )
+    parser.add_argument("--html", action="store_true", help="Générer un rapport HTML")
     args = parser.parse_args()
     cmd = ["pytest", "--cov=athalia_core", "--ignore=tests/bin/"]
     if args.html:
@@ -21,4 +23,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main() 
+    main()
