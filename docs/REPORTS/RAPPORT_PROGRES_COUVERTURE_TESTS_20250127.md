@@ -20,8 +20,9 @@
 | **cli.py** | 24% | **99%** | +75 points | 25 tests |
 | **main.py** | 10% | **43%** | +33 points | 30 tests |
 | **auto_tester.py** | 14% | **88%** | +74 points | 30 tests |
+| **config_manager.py** | 56% | **96%** | +40 points | 49 tests |
 
-**Total** : **+403 points de couverture**, **173 tests créés**
+**Total** : **+443 points de couverture**, **222 tests créés**
 
 ---
 
@@ -67,6 +68,51 @@
   - Calcul de score de qualité
   - Gestion d'erreurs et exceptions
 - **Qualité** : Couverture parfaite, tests exhaustifs
+
+### 4. **cli.py** ✅ **TERMINÉ**
+- **Couverture** : 24% → **99%** (+75 points)
+- **Tests créés** : `tests/test_cli_complete.py`
+- **Fonctionnalités testées** :
+  - Interface en ligne de commande complète
+  - Gestion des commandes (generate, audit, ai_status, test_ai)
+  - Gestion des arguments et options
+  - Interactions utilisateur
+  - Gestion d'erreurs CLI
+- **Qualité** : Tests avec CliRunner, mocks appropriés
+
+### 5. **main.py** ✅ **TERMINÉ**
+- **Couverture** : 10% → **43%** (+33 points)
+- **Tests créés** : `tests/test_main_complete.py`
+- **Fonctionnalités testées** :
+  - Point d'entrée principal
+  - Menu interactif
+  - Gestion des signaux
+  - Workflows principaux
+  - Gestion d'erreurs et exceptions
+- **Qualité** : Tests avec mocks pour interactions système
+
+### 6. **auto_tester.py** ✅ **TERMINÉ**
+- **Couverture** : 14% → **88%** (+74 points)
+- **Tests créés** : `tests/test_auto_tester_complete.py`
+- **Fonctionnalités testées** :
+  - Génération automatique de tests
+  - Analyse de modules Python
+  - Génération de tests unitaires, intégration, performance
+  - Exécution de tests
+  - Rapports de couverture
+- **Qualité** : Tests avec mocks pour éviter création de fichiers
+
+### 7. **config_manager.py** ✅ **TERMINÉ**
+- **Couverture** : 56% → **96%** (+40 points)
+- **Tests créés** : `tests/test_config_manager_complete.py`
+- **Fonctionnalités testées** :
+  - Gestion de configuration YAML
+  - Variables d'environnement
+  - Validation de configuration
+  - Fusion de configurations
+  - Gestion des modules et plugins
+  - Templates et patterns de nettoyage
+- **Qualité** : Tests complets avec fichiers temporaires
 
 ---
 
