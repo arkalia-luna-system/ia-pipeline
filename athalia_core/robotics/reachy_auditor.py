@@ -284,7 +284,7 @@ class ReachyAuditor:
             output_path: Optional[str] = None) -> str:
         """Sauvegarder le rapport"""
         if output_path is None:
-            output_path = f"reachy_audit_{datetime.now().strftime('%Y%m%d_%H%M%S')}.md"
+            output_path = f"data/reports/audits/reachy_audit_{datetime.now().strftime('%Y%m%d_%H%M%S')}.md"
 
         report = self.generate_report(result)
 

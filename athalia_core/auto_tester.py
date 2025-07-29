@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 import os
 from pathlib import Path
@@ -430,7 +431,7 @@ python -m pytest tests/ --cov=. --cov-report=html --cov-report=term
 echo "✅ Tests terminés !"
 """
 
-        run_tests_file = self.project_path / "run_tests.sh"
+        run_tests_file = self.project_path / "scripts" / "run_tests.sh"
         with open(run_tests_file, 'w', encoding='utf-8') as file_handle:
             file_handle.write(run_tests_script)
 
@@ -507,7 +508,7 @@ echo "✅ Tests terminés !"
 
     def _get_created_files(self) -> List[str]:
         """Retourne la liste des fichiers créés"""
-        files = ["pytest.ini", "run_tests.sh"] + self.generated_tests
+        files = ["pytest.ini", "scripts/run_tests.sh"] + self.generated_tests
         return [str(self.project_path / file_handle) if not file_handle.startswith(
             str(self.project_path)) else file_handle for file_handle in files]
 
@@ -559,7 +560,7 @@ echo "✅ Tests terminés !"
 
 ```bash
 cd {project_path}
-./run_tests.sh
+        ./scripts/run_tests.sh
 ```
 
 Ou manuellement:
