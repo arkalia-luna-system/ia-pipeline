@@ -349,6 +349,23 @@ else
     count_cleaned $count
 fi
 
+# Nettoyage des fichiers temporaires avec numéros de processus
+echo "🔍 Nettoyage des fichiers temporaires avec numéros de processus..."
+if [ "$DRY_RUN_MODE" = true ]; then
+    echo "   🔍 [DRY-RUN] Recherche de fichiers .!*"
+    count=$(find . -name ".!*" -not -path "./.git/*" -not -path "./.venv/*" 2>/dev/null | wc -l)
+    echo "   📊 [DRY-RUN] $count fichiers .!* trouvés"
+else
+    count=0
+    while IFS= read -r -d '' file; do
+        if rm -f "$file" 2>/dev/null; then
+            count=$((count + 1))
+            echo "   🗑️  Supprimé: $file"
+        fi
+    done < <(find . -name ".!*" -not -path "./.git/*" -not -path "./.venv/*" -print0 2>/dev/null)
+    count_cleaned $count
+fi
+
 safe_delete ".!*" "Fichiers temporaires macOS" "$DRY_RUN_MODE"
 safe_delete "*.clean" "Fichiers de nettoyage" "$DRY_RUN_MODE"
 safe_delete ".DS_Store" "Fichiers .DS_Store" "$DRY_RUN_MODE"
@@ -360,6 +377,12 @@ echo "🧪 Nettoyage des caches de tests..."
 safe_delete_dir ".pytest_cache" "Cache pytest" "$DRY_RUN_MODE"
 safe_delete_dir ".benchmarks" "Cache benchmarks" "$DRY_RUN_MODE"
 safe_delete_dir ".mypy_cache" "Cache mypy" "$DRY_RUN_MODE"
+
+# Nettoyage des fichiers temporaires de tests
+echo "🧪 Nettoyage des fichiers temporaires de tests..."
+safe_delete "test_*_temp*" "Fichiers temporaires de tests" "$DRY_RUN_MODE"
+safe_delete "*_test_temp*" "Fichiers temporaires de tests" "$DRY_RUN_MODE"
+safe_delete "temp_test_*" "Fichiers temporaires de tests" "$DRY_RUN_MODE"
 
 echo "📦 Nettoyage des caches de build..."
 safe_delete_dir "build" "Dossier build" "$DRY_RUN_MODE"

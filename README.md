@@ -1,107 +1,190 @@
-# athalia-dev-setup
+# 🚀 Athalia - Système d'Intelligence Artificielle Avancé
 
-# athalia-dev-setup
+## 📋 Présentation
 
-## 📋 Table des matières
+Athalia est un système d'intelligence artificielle avancé conçu pour l'analyse, l'optimisation et l'orchestration de projets de développement. Il intègre des modules d'auto-correction, de distillation multimodale, et de mémoire intelligente.
 
-- [Installation](#installation)
-- [Utilisation](#utilisation)
-- [API](#api)
-- [Tests](#tests)
-- [Contribution](#contribution)
-- [Licence](#licence)
+## 🏗️ Structure du Projet
+
+```
+athalia-dev-setup/
+├── athalia_core/           # Modules principaux
+│   ├── advanced_modules/   # Modules avancés (auto-correction, etc.)
+│   ├── agents/            # Agents intelligents
+│   ├── distillation/      # Distillation multimodale
+│   ├── robotics/          # Modules robotiques
+│   └── ...
+├── bin/                   # Scripts exécutables
+│   ├── ath-audit.py      # Audit du projet
+│   ├── ath-backup.py     # Sauvegarde
+│   ├── ath-clean         # Nettoyage
+│   └── ark-process-check.sh # Monitoring processus
+├── tools/                 # Outils de maintenance
+│   ├── maintenance/      # Scripts de nettoyage
+│   ├── analysis/         # Scripts d'analyse
+│   └── monitoring/       # Scripts de surveillance
+├── data/                  # Données et rapports
+│   ├── reports/          # Rapports d'analyse
+│   ├── analytics/        # Données d'analytics
+│   └── cache/            # Cache temporaire
+├── docs/                  # Documentation
+│   ├── API/              # Documentation API
+│   ├── ARCHITECTURE/     # Architecture du système
+│   ├── DEVELOPER/        # Guide développeur
+│   ├── DASHBOARD/        # Documentation dashboard
+│   └── REPORTS/          # Rapports et audits
+├── tests/                 # Tests unitaires et d'intégration
+├── dashboard/             # Dashboards web
+├── logs/                  # Fichiers de logs
+├── backups/               # Sauvegardes automatiques
+└── archive/               # Archives et anciennes versions
+```
 
 ## 🚀 Installation
 
 ### Prérequis
-**Python :**
-- requests>=2.28.0
-- pyyaml>=6.0
-- jinja2>=3.1.0
-- click>=8.1.0
-- rich>=12.0.0
+- Python 3.10+
+- Git
+- Espace disque : 2GB minimum
 
-### Installation
-
+### Installation rapide
 ```bash
-# Cloner le repository
-git clone <repository - url>
+# Cloner le projet
+git clone <repository-url>
 cd athalia-dev-setup
 
 # Installer les dépendances
 pip install -r requirements.txt
+
+# Configuration initiale
+python athalia_core/main.py --setup
 ```
 
-## 💻 Utilisation
-### Exemple d'utilisation
+## 🎯 Utilisation
 
+### Commandes principales
+```bash
+# Audit complet du projet
+python bin/ath-audit.py
+
+# Sauvegarde automatique
+python bin/ath-backup.py
+
+# Nettoyage du projet
+./bin/ath-clean
+
+# Monitoring système
+python tools/monitoring/system_monitor.py
+
+# Lancement du dashboard
+python athalia_core/dashboard_unified.py
+```
+
+### Modules principaux
+
+#### 🔧 Auto-correction avancée
 ```python
-# Utilisation basique
-main()
+from athalia_core.advanced_modules.auto_correction_advanced import AutoCorrectionAvancee
+
+corrector = AutoCorrectionAvancee("./mon_projet")
+resultats = corrector.analyser_et_corriger(dry_run=True)
 ```
 
-## 🔧 API
-### Classes principales
+#### 🧠 Mémoire intelligente
+```python
+from athalia_core.intelligent_memory import IntelligentMemory
 
-#### AthaliaOrchestrator
+memory = IntelligentMemory()
+event_id = memory.learn_from_error(
+    error_description="Fonction trop longue",
+    code_snippet="def very_long_function(): ...",
+    location="test.py:10"
+)
+```
 
-**Méthodes :** industrialize_project, audit_project, scan_projects
+#### 🎨 Distillation multimodale
+```python
+from athalia_core.distillation.multimodal_distiller import MultimodalDistiller
 
-#### DocumentationCleaner
+distiller = MultimodalDistiller()
+response = distiller.distill(
+    text_prompts=["Analyse cette image"],
+    image_paths=["image.jpg"]
+)
+```
 
-Classe pour nettoyer et organiser la documentation
+## 📊 Dashboard
 
-**Méthodes :** __init__, scan_documentation, archive_obsolete_docs, create_documentation_report, cleanup
+Le dashboard web permet de visualiser :
+- Activité du pipeline IA
+- Distillation multimodale
+- Performances système
+- Métriques d'apprentissage
 
-#### DataCleaner
-
-Classe pour nettoyer les anciennes données d'analyse
-
-**Méthodes :** __init__, get_file_hash, find_analysis_files, categorize_files, archive_important_files
-
-### Fonctions principales
-
-#### main
-
-Fonction principale du CLI unifié
-
-#### industrialize_project
-
-**Paramètres :** project_path, config
-
-#### audit_project
-
-**Paramètres :** project_path
-
-#### scan_projects
-
-**Paramètres :** project_path
-
-#### main
-
-Fonction principale
+Accès : http://localhost:8080 (par défaut)
 
 ## 🧪 Tests
 
 ```bash
-# Lancer les tests
-python -m pytest
+# Tests unitaires
+python -m pytest tests/
 
-# Avec couverture
-python -m pytest --cov=athalia-dev-setup
+# Tests avec couverture
+python -m pytest --cov=athalia_core tests/
+
+# Tests spécifiques
+python -m pytest tests/test_intelligent_memory.py
 ```
+
+## 🔧 Maintenance
+
+### Nettoyage automatique
+```bash
+# Nettoyage des anciennes données
+python tools/maintenance/cleanup_old_data.py
+
+# Nettoyage de la documentation
+python tools/maintenance/cleanup_documentation.py
+```
+
+### Monitoring système
+```bash
+# Vérification des processus
+./bin/ark-process-check.sh
+
+# Monitoring complet
+python tools/monitoring/system_monitor.py
+```
+
+## 📚 Documentation
+
+- **API** : `docs/API/`
+- **Architecture** : `docs/ARCHITECTURE/`
+- **Guide développeur** : `docs/DEVELOPER/`
+- **Dashboard** : `docs/DASHBOARD/`
 
 ## 🤝 Contribution
 
 1. Fork le projet
-2. Créer une branche feature (`git checkout -b feature / AmazingFeature`)
-3. Commit les changements (`git commit -m 'Add some AmazingFeature'`)
-4. Push vers la branche (`git push origin feature / AmazingFeature`)
+2. Créer une branche feature (`git checkout -b feature/AmazingFeature`)
+3. Commit les changements (`git commit -m 'Add AmazingFeature'`)
+4. Push vers la branche (`git push origin feature/AmazingFeature`)
 5. Ouvrir une Pull Request
 
 ## 📄 Licence
 
-Voir fichier LICENSE
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
+
+## 🆘 Support
+
+- **Issues** : [GitHub Issues](https://github.com/username/athalia-dev-setup/issues)
+- **Documentation** : `docs/`
+- **Logs** : `logs/`
+
+## 🔄 Changelog
+
+Voir `docs/CHANGELOG.md` pour l'historique des versions.
 
 ---
-*Généré automatiquement par Athalia* - 2025-07-27
+
+**Athalia** - Système d'Intelligence Artificielle Avancé 🚀
