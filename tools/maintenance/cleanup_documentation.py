@@ -106,11 +106,11 @@ class DocumentationCleaner:
                 continue
 
             if file_name in self.current_docs:
-                categories['current'].append(file_path)
+                categories["current"].append(file_path)
             elif file_name in self.obsolete_docs:
-                categories['obsolete'].append(file_path)
+                categories["obsolete"].append(file_path)
             else:
-                categories['unknown'].append(file_path)
+                categories["unknown"].append(file_path)
 
         return categories
 
@@ -122,8 +122,8 @@ class DocumentationCleaner:
             try:
                 # Copier vers l'archive
                 archive_path = self.archive_dir / file_path.name
-                with open(file_path, 'r', encoding='utf-8') as src:
-                    with open(archive_path, 'w', encoding='utf-8') as dst:
+                with open(file_path, "r", encoding="utf-8") as src:
+                    with open(archive_path, "w", encoding="utf-8") as dst:
                         dst.write(src.read())
 
                 # Supprimer l'original
