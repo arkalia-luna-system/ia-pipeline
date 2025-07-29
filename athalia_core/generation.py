@@ -57,8 +57,35 @@ def extract_project_name(idea: str) -> str:
 
 def generate_project(blueprint: dict, outdir, *args, **kwargs):
     """Génère un projet à partir d'un blueprint."""
+    dry_run = kwargs.get('dry_run', False)
     project_name = blueprint.get('project_name', 'projet_ia')
     project_path = Path(outdir) / project_name
+    
+    if dry_run:
+        # Mode dry-run : générer seulement le rapport
+        report_content = f"""[DRY-RUN] Génération du projet {project_name}
+
+Structure prévue :
+- {project_path}/src/
+- {project_path}/tests/
+- {project_path}/docs/
+- {project_path}/README.md
+- {project_path}/requirements.txt
+
+Fichiers qui seraient créés :
+- main.py
+- test_main.py
+- README.md
+- requirements.txt
+
+[DRY-RUN] Aucun fichier réel créé."""
+        
+        # Créer le rapport dans le répertoire parent (outdir)
+        report_file = Path(outdir) / "dry_run_report.txt"
+        report_file.write_text(report_content, encoding='utf-8')
+        return str(project_path)
+    
+    # Mode normal : générer le projet
     project_path.mkdir(parents=True, exist_ok=True)
     
     # Créer la structure de base
@@ -70,6 +97,7 @@ def generate_project(blueprint: dict, outdir, *args, **kwargs):
     generate_readme(blueprint, project_path)
     generate_main_code(blueprint, project_path)
     generate_test_code(blueprint, project_path)
+    generate_requirements(blueprint, project_path)
     
     return str(project_path)
 
@@ -234,6 +262,41 @@ if __name__ == '__main__':
         test_file.write_text(test_content, encoding='utf-8')
     
     return test_content
+
+
+def generate_requirements(blueprint: dict, project_path: Optional[Path] = None) -> str:
+    """Génère un fichier requirements.txt basique."""
+    if project_path is None:
+        project_path = Path('.')
+    
+    requirements_file = project_path / 'requirements.txt'
+    
+    # Dépendances de base
+    base_deps = [
+        'pytest>=7.0.0',
+        'pytest-cov>=4.0.0'
+    ]
+    
+    # Ajouter les dépendances spécifiques au projet
+    project_deps = blueprint.get('dependencies', [])
+    if isinstance(project_deps, list):
+        base_deps.extend(project_deps)
+    
+    # Ajouter des dépendances selon le type de projet
+    project_type = blueprint.get('project_type', 'generic')
+    if project_type == 'api':
+        base_deps.extend(['fastapi>=0.100.0', 'uvicorn>=0.20.0'])
+    elif project_type == 'web':
+        base_deps.extend(['flask>=2.3.0', 'jinja2>=3.1.0'])
+    elif project_type == 'data':
+        base_deps.extend(['pandas>=2.0.0', 'numpy>=1.24.0'])
+    
+    requirements_content = '\n'.join(base_deps) + '\n'
+    
+    with open(requirements_file, 'w', encoding='utf-8') as f:
+        f.write(requirements_content)
+    
+    return str(requirements_file)
 
 
 def save_blueprint(blueprint: dict, outdir):

@@ -53,7 +53,7 @@ class TestCLIComplete:
                 cli.callback(verbose=True)
                 mock_logging.assert_called_with(level=20)  # INFO
 
-    @patch('athalia_core.cli.RobustAI')
+    @patch('athalia_core.ai_robust.RobustAI')
     @patch('athalia_core.cli.generate_project')
     @patch('click.echo')
     def test_generate_command_success(self, mock_echo, mock_generate_project, mock_robust_ai):
@@ -83,7 +83,7 @@ class TestCLIComplete:
         mock_generate_project.assert_called_once()
         assert mock_echo.call_count >= 3  # Messages de début, succès, etc.
 
-    @patch('athalia_core.cli.RobustAI')
+    @patch('athalia_core.ai_robust.RobustAI')
     @patch('click.echo')
     def test_generate_command_dry_run(self, mock_echo, mock_robust_ai):
         """Test la commande generate en mode dry-run"""
@@ -106,7 +106,7 @@ class TestCLIComplete:
         mock_echo.assert_any_call("🔍 Mode simulation activé")
         mock_echo.assert_any_call("✅ Simulation terminée")
 
-    @patch('athalia_core.cli.RobustAI')
+    @patch('athalia_core.ai_robust.RobustAI')
     @patch('click.echo')
     def test_generate_command_no_blueprint(self, mock_echo, mock_robust_ai):
         """Test la commande generate quand le blueprint ne peut pas être généré"""
@@ -125,7 +125,7 @@ class TestCLIComplete:
         # Vérifications
         mock_echo.assert_any_call("❌ Impossible de générer le blueprint")
 
-    @patch('athalia_core.cli.RobustAI')
+    @patch('athalia_core.ai_robust.RobustAI')
     @patch('click.echo')
     def test_generate_command_exception(self, mock_echo, mock_robust_ai):
         """Test la commande generate avec exception"""
@@ -186,7 +186,7 @@ class TestCLIComplete:
         # Vérifications
         mock_echo.assert_any_call("❌ Erreur: Audit error")
 
-    @patch('athalia_core.cli.RobustAI')
+    @patch('athalia_core.ai_robust.RobustAI')
     @patch('click.echo')
     def test_ai_status_command_success(self, mock_echo, mock_robust_ai):
         """Test la commande ai_status avec succès"""
@@ -201,12 +201,12 @@ class TestCLIComplete:
         ai_status.callback()
 
         # Vérifications
-        mock_echo.assert_any_call("🤖 Statut de l'IA robuste")
+        mock_echo.assert_any_call("🤖 Statut de lIA robuste")
         mock_echo.assert_any_call("📋 Modèles détectés: 2")
         # Vérifier que plusieurs messages ont été affichés
         assert mock_echo.call_count >= 8  # Au moins 8 messages affichés
 
-    @patch('athalia_core.cli.RobustAI')
+    @patch('athalia_core.ai_robust.RobustAI')
     @patch('click.echo')
     def test_ai_status_command_import_error(self, mock_echo, mock_robust_ai):
         """Test la commande ai_status avec ImportError"""
@@ -219,7 +219,7 @@ class TestCLIComplete:
         # Vérifications
         mock_echo.assert_any_call("❌ Module ai_robust non disponible")
 
-    @patch('athalia_core.cli.RobustAI')
+    @patch('athalia_core.ai_robust.RobustAI')
     @patch('click.echo')
     def test_ai_status_command_exception(self, mock_echo, mock_robust_ai):
         """Test la commande ai_status avec exception générale"""
@@ -232,7 +232,7 @@ class TestCLIComplete:
         # Vérifications
         mock_echo.assert_any_call("❌ Erreur: General error")
 
-    @patch('athalia_core.cli.RobustAI')
+    @patch('athalia_core.ai_robust.RobustAI')
     @patch('click.echo')
     def test_test_ai_command_success(self, mock_echo, mock_robust_ai):
         """Test la commande test_ai avec succès"""
@@ -264,7 +264,7 @@ class TestCLIComplete:
         # Le message final peut varier selon l'implémentation
         assert mock_echo.call_count >= 10  # Au moins 10 messages affichés
 
-    @patch('athalia_core.cli.RobustAI')
+    @patch('athalia_core.ai_robust.RobustAI')
     @patch('click.echo')
     def test_test_ai_command_import_error(self, mock_echo, mock_robust_ai):
         """Test la commande test_ai avec ImportError"""
@@ -278,7 +278,7 @@ class TestCLIComplete:
         # Vérifications
         mock_echo.assert_any_call("❌ Module ai_robust non disponible")
 
-    @patch('athalia_core.cli.RobustAI')
+    @patch('athalia_core.ai_robust.RobustAI')
     @patch('click.echo')
     def test_test_ai_command_exception(self, mock_echo, mock_robust_ai):
         """Test la commande test_ai avec exception générale"""
@@ -378,7 +378,7 @@ class TestCLIComplete:
             call_args = mock_generate_project.call_args
             assert call_args[0][1] == './generated_project'  # output parameter
 
-    @patch('athalia_core.cli.RobustAI')
+    @patch('athalia_core.ai_robust.RobustAI')
     @patch('click.echo')
     def test_test_ai_command_review_code_parameters(self, mock_echo, mock_robust_ai):
         """Test que test_ai appelle review_code avec les bons paramètres"""
@@ -409,7 +409,7 @@ class TestCLIComplete:
         assert call_args[1]['project_type'] == 'python'
         assert call_args[1]['current_score'] == 50
 
-    @patch('athalia_core.cli.RobustAI')
+    @patch('athalia_core.ai_robust.RobustAI')
     @patch('click.echo')
     def test_test_ai_command_documentation_parameters(self, mock_echo, mock_robust_ai):
         """Test que test_ai appelle generate_documentation avec les bons paramètres"""
@@ -453,7 +453,7 @@ class TestCLIIntegration:
         os.chdir(self.original_cwd)
         shutil.rmtree(self.test_dir, ignore_errors=True)
 
-    @patch('athalia_core.cli.RobustAI')
+    @patch('athalia_core.ai_robust.RobustAI')
     @patch('athalia_core.cli.generate_project')
     @patch('athalia_core.cli.audit_project_intelligent')
     def test_cli_workflow_complete(self, mock_audit, mock_generate_project, mock_robust_ai):

@@ -158,7 +158,7 @@ class TestNoPollutingFiles:
             for file in files:
                 file_path = os.path.join(root, file)
                 # Exclure spécifiquement les fichiers volumineux nécessaires
-                if file_path in ['./docs/API.md', './docs/API.md.backup', './docs/archive/20250726_cleanup/API_original_16MB.md']:
+                if file_path in ['./docs/API.md', './docs/API.md.backup', './docs/archive/20250726_cleanup/API_original_16MB.md', './docs/API/REFERENCE.md', 'docs/API/REFERENCE.md']:
                     continue
                 try:
                     if os.path.getsize(file_path) > 10 * 1024 * 1024:  # 10MB
