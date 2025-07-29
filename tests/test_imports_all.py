@@ -189,7 +189,6 @@ class TestImportsAll:
             'requests',
             'jinja2',
             'click',
-            'rich',
             'pathlib',
             'json',
             'os',
