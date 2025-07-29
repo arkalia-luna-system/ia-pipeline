@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import sys
 from pathlib import Path
-from typing import Dict, List, Any, Optional
+from typing import Dict, Any, Optional
 import json
 import os
 

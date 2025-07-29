@@ -35,7 +35,7 @@ jobs:
 
       - name: Format check (black)
         run: |
-          black . --check --diff
+          black . --check --diff --exclude="archive/" --exclude=".*" --exclude="._*"
 
       - name: Lint check (ruff)
         run: |

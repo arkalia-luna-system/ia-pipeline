@@ -10,11 +10,9 @@ Système CI/CD adapté aux projets Reachy/ROS2 :
 - Déploiement automatisé
 """
 
-import os
-import yaml
 import subprocess
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Tuple
 from dataclasses import dataclass
 import logging
 import time

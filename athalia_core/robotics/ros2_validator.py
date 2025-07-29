@@ -10,10 +10,9 @@ Validation complète des workspaces ROS2 :
 - Build system
 """
 
-import os
 import xml.etree.ElementTree as ET
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
 from dataclasses import dataclass
 import logging
 import subprocess

@@ -156,3 +156,4 @@ data/comprehensive_analysis_*.json
 data/analysis_*.json
 data/report_*.json
 data/archive/*/archived_comprehensive_analysis_*.json
+archive/

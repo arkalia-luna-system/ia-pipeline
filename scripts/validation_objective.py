@@ -9,10 +9,7 @@ import subprocess
 import time
 import json
 import os
-import sys
 from pathlib import Path
-import tempfile
-import shutil
 from datetime import datetime
 
 
@@ -318,7 +315,7 @@ if __name__ == "__main__":
                     }
                 except json.JSONDecodeError:
                     pass
-        except:
+        except Exception:
             pass
 
         # Fallback: analyse basique
@@ -335,7 +332,7 @@ if __name__ == "__main__":
                     total_lignes += len(lignes)
                     fonctions += contenu.count('def ')
                     classes += contenu.count('class ')
-            except:
+            except Exception:
                 pass
 
         return {
@@ -446,7 +443,7 @@ if __name__ == "__main__":
             elif nom == 'correction_erreurs':
                 if resultat.get('succes'):
                     rapport += f"- ⏱️ Temps de correction: {resultat.get('temps', 0):.1f}s\n"
-                    rapport += f"- ✅ Code compile après correction: OUI\n"
+                    rapport += "- ✅ Code compile après correction: OUI\n"
                 else:
                     rapport += f"- ❌ Erreur: {resultat.get('erreur', 'Inconnue')}\n"
 

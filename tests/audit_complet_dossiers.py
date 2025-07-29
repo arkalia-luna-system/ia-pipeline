@@ -9,10 +9,8 @@ Vérifie : utilité, implémentation, tests, documentation, intégration.
 import sys
 from pathlib import Path
 import ast
-import re
-from typing import Dict, List, Set, Any, Optional
+from typing import List, Optional
 from dataclasses import dataclass, field
-import json
 
 # Ajouter le répertoire parent au path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
@@ -103,7 +101,7 @@ class AuditCompletDossiers:
                     results.append(result)
         
         # Analyser les sous-dossiers cachés
-        print(f"\n🔍 ANALYSE DES SOUS-DOSSIERS CACHÉS")
+        print("\n🔍 ANALYSE DES SOUS-DOSSIERS CACHÉS")
         sous_dossiers_caches = self._trouver_sous_dossiers_caches()
         for sous_dossier in sous_dossiers_caches:
             print(f"\n📁 ANALYSE DU SOUS-DOSSIER CACHÉ : {sous_dossier}")
