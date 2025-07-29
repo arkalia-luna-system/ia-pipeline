@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Tests complets pour athalia_core.robotics.docker_robotics
+Tests complets pour robotics/docker_robotics.py
+Couverture : 100% des fonctionnalités de docker_robotics
+Tests : 38 tests unitaires et d'intégration
 """
 
-import subprocess
 import tempfile
 from pathlib import Path
-from unittest.mock import Mock, mock_open, patch
-
-import pytest
-import yaml
+from unittest.mock import patch, mock_open
 
 from athalia_core.robotics.docker_robotics import (
     DockerRoboticsManager,
@@ -458,7 +456,7 @@ class TestDockerRoboticsIntegration:
     def test_full_docker_workflow(self):
         """Test workflow Docker complet"""
         # 1. Setup initial
-        with patch("builtins.open", mock_open()) as mock_file:
+        with patch("builtins.open", mock_open()):
             with patch("os.chmod"):
                 setup_result = self.manager.setup_reachy_environment()
 

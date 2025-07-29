@@ -1,20 +1,16 @@
 """
 Tests complets pour security_auditor.py
-Couverture : 100% des fonctionnalités de sécurité
+Couverture : 100% des fonctionnalités de security_auditor
 Tests : 32 tests unitaires et d'intégration
 """
 
-import base64
-import hashlib
-import json
 import os
 import re
 import subprocess
 import tempfile
 from pathlib import Path
-from unittest.mock import MagicMock, Mock, patch
+from unittest.mock import Mock, patch
 
-import pytest
 
 from athalia_core.security_auditor import SecurityAuditor
 
@@ -165,7 +161,7 @@ def dangerous_function():
         with patch("subprocess.run") as mock_run:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = ""
-            result = self.auditor.run()
+            self.auditor.run()
 
             # Vérifier que le fichier a été créé
             report_file = Path(self.temp_dir) / "security_audit.f(f"

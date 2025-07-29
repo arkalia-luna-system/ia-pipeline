@@ -1,17 +1,12 @@
 """
 Tests complets pour ros2_validator.py
-Couverture : 100% des fonctionnalités de validation ROS2
+Couverture : 100% des fonctionnalités de ros2_validator
 Tests : 20 tests unitaires et d'intégration
 """
 
-import os
-import subprocess
 import tempfile
-import xml.etree.ElementTree as ET
 from pathlib import Path
-from unittest.mock import MagicMock, Mock, patch
-
-import pytest
+from unittest.mock import patch
 
 from athalia_core.ros2_validator import ROS2Validator, validate_ros2_package
 
@@ -47,13 +42,13 @@ class TestROS2Validator:
             f.write("from setuptools import setup\nsetup()")
 
         success = self.validator._check_package_structure()
-        assert success == True
+        assert success
         assert len(self.validator.validation_results["errors"]) == 0
 
     def test_check_package_structure_missing_files(self):
         """Test de vérification de structure avec fichiers manquants"""
         success = self.validator._check_package_structure()
-        assert success == False
+        assert not success
         assert len(self.validator.validation_results["errors"]) > 0
 
     def test_validate_package_xml_valid(self):
@@ -74,7 +69,7 @@ class TestROS2Validator:
             f.write(xml_content)
 
         success = self.validator._validate_package_xml()
-        assert success == True
+        assert success
         assert "name" in self.validator.validation_results["metadata"]
         assert self.validator.validation_results["metadata"]["name"] == "test_package"
 
@@ -91,7 +86,7 @@ class TestROS2Validator:
             f.write(xml_content)
 
         success = self.validator._validate_package_xml()
-        assert success == False
+        assert not success
         assert len(self.validator.validation_results["errors"]) > 0
 
     def test_validate_package_xml_invalid_xml(self):
@@ -101,7 +96,7 @@ class TestROS2Validator:
             f.write("<package><name>test_package</name>")  # XML incomplet
 
         success = self.validator._validate_package_xml()
-        assert success == False
+        assert not success
         assert len(self.validator.validation_results["errors"]) > 0
 
     def test_validate_setup_py_valid(self):
@@ -135,7 +130,7 @@ setup(
             f.write(setup_content)
 
         success = self.validator._validate_setup_py()
-        assert success == True
+        assert success
 
     def test_validate_setup_py_missing_patterns(self):
         """Test de validation setup.py avec patterns manquants"""
@@ -144,7 +139,7 @@ setup(
             f.write('print("Hello World")')  # Pas de patterns requis
 
         success = self.validator._validate_setup_py()
-        assert success == True  # setup.py est optionnel
+        assert success  # setup.py est optionnel
         assert len(self.validator.validation_results["warnings"]) > 0
 
     def test_validate_cmakelists_valid(self):
@@ -173,7 +168,7 @@ ament_package()"""
             f.write(cmake_content)
 
         success = self.validator._validate_cmakelists()
-        assert success == True
+        assert success
 
     def test_validate_cmakelists_missing_patterns(self):
         """Test de validation CMakeLists.txt avec patterns manquants"""
@@ -182,7 +177,7 @@ ament_package()"""
             f.write('print("Hello World")')  # Pas de patterns requis
 
         success = self.validator._validate_cmakelists()
-        assert success == True  # CMakeLists.txt est optionnel
+        assert success  # CMakeLists.txt est optionnel
         assert len(self.validator.validation_results["warnings"]) > 0
 
     def test_check_launch_files(self):
@@ -280,7 +275,7 @@ setup(
             f.write(setup_content)
 
         result = self.validator.validate_package()
-        assert result["valid"] == True
+        assert result["valid"]
         assert "metadata" in result
         assert result["metadata"]["name"] == "test_package"
 
@@ -310,7 +305,7 @@ setup(
             f.write("<invalid>xml</invalid>")
 
         success = self.validator._validate_package_xml()
-        assert success == False
+        assert not success
         assert len(self.validator.validation_results["errors"]) > 0
 
     def test_integration_with_real_package(self):
@@ -362,7 +357,7 @@ setup(
             f.write("def test_function(): assert True")
 
         result = self.validator.validate_package()
-        assert result["valid"] == True
+        assert result["valid"]
         assert result["metadata"]["name"] == "real_package"
         assert len(result["launch_files"]) == 1
         assert len(result["test_files"]) == 1
@@ -402,7 +397,7 @@ class TestROS2ValidatorIntegration:
             f.write("from setuptools import setup\nsetup()")
 
         result = validator.validate_package()
-        assert result["valid"] == True
+        assert result["valid"]
         assert "metadata" in result
         assert result["metadata"]["name"] == "workflow_package"
 
@@ -412,7 +407,7 @@ class TestROS2ValidatorIntegration:
 
         # Test avec package invalide
         result = validator.validate_package()
-        assert result["valid"] == False
+        assert not result["valid"]
         assert len(result["errors"]) > 0
 
 
