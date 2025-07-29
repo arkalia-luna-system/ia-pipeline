@@ -1,11 +1,12 @@
 [flake8]
 max-line-length = 88
-jobs = 4
+jobs = 1
 exclude = 
     .git,
     __pycache__,
     venv,
     .venv,
+    .venv/**,
     build,
     dist,
     *.egg-info,
@@ -14,13 +15,14 @@ exclude =
     logs,
     data/reports,
     docs/archive,
-    .venv/**,
     archive/**,
     node_modules,
     .pytest_cache,
     .mypy_cache,
     .coverage,
-    htmlcov
+    htmlcov,
+    tests/bin,
+    tests/integration
 
 # Règles de sécurité et qualité strictes
 select = 

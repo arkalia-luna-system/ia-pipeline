@@ -12,6 +12,16 @@ from typing import Dict, List, Optional, Any
 
 import requests
 
+# Import du validateur de sécurité
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    # Fallback pour les tests
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+    class SecurityError(Exception):
+        pass
+
 # Configuration du logging
 logger = logging.getLogger(__name__)
 
@@ -296,7 +306,8 @@ class RobustAI:
         
         # Vérifier Ollama
         try:
-            result = subprocess.run(["ollama", "list"], capture_output=True, text=True, timeout=10)
+            # Utilisation du validateur de sécurité pour l'appel ollama
+            result = validate_and_run(["ollama", "list"], capture_output=True, text=True, timeout=10)
             if result.returncode == 0:
                 if "mistral" in result.stdout.lower():
                     available_models.append(AIModel.OLLAMA_MISTRAL)
@@ -306,7 +317,7 @@ class RobustAI:
                     available_models.append(AIModel.OLLAMA_CODEGEN)
                 if "qwen" in result.stdout.lower():
                     available_models.append(AIModel.OLLAMA_QWEN)
-        except Exception as e:
+        except (Exception, SecurityError) as e:
             logger.warning(f"Impossible de détecter les modèles Ollama: {e}")
         
         return available_models
@@ -404,7 +415,8 @@ Type: {project_type}
     def _call_ollama(self, model_name: str, prompt: str, timeout: int = 30) -> Optional[str]:
         """Appelle un modèle Ollama."""
         try:
-            result = subprocess.run(
+            # Utilisation du validateur de sécurité pour l'appel ollama
+            result = validate_and_run(
                 ["ollama", "run", model_name, prompt],
                 capture_output=True,
                 text=True,
@@ -420,7 +432,7 @@ Type: {project_type}
         except subprocess.TimeoutExpired:
             logger.error(f"Timeout lors de l'appel à Ollama {model_name}")
             return None
-        except Exception as e:
+        except (Exception, SecurityError) as e:
             logger.error(f"Erreur lors de l'appel à Ollama {model_name}: {e}")
             return None
 

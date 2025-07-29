@@ -12,6 +12,16 @@ from typing import Dict, List, Optional
 
 import requests
 
+# Import du validateur de sécurité
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    # Fallback pour les tests
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+    class SecurityError(Exception):
+        pass
+
 # Configuration du logging
 logger = logging.getLogger(__name__)
 
@@ -211,7 +221,8 @@ class RobustAI:
         """Détecte les modèles IA disponibles."""
         available = []
         try:
-            result = subprocess.run(["ollama", "list"], capture_output=True, text=True)
+            # Utilisation du validateur de sécurité pour l'appel ollama
+            result = validate_and_run(["ollama", "list"], capture_output=True, text=True)
             if result.returncode == 0:
                 output = result.stdout.lower()
                 if "qwen" in output:
@@ -224,7 +235,7 @@ class RobustAI:
                     available.append(AIModel.OLLAMA_LLAMA)
                 if "codegen" in output:
                     available.append(AIModel.OLLAMA_CODEGEN)
-        except Exception as e:
+        except (Exception, SecurityError) as e:
             logging.warning(f"Ollama non détecté: {e}")
 
         available.append(AIModel.MOCK)
@@ -324,7 +335,8 @@ class RobustAI:
     ) -> Optional[str]:
         """Appelle Ollama avec un modèle spécifique."""
         try:
-            result = subprocess.run(
+            # Utilisation du validateur de sécurité pour l'appel ollama
+            result = validate_and_run(
                 ["ollama", "run", model_name, prompt],
                 capture_output=True,
                 text=True,
@@ -335,7 +347,7 @@ class RobustAI:
             else:
                 logging.error(f"Ollama erreur: {result.stderr}")
                 return None
-        except Exception as e:
+        except (Exception, SecurityError) as e:
             logging.error(f"Erreur Ollama: {e}")
             return None
 

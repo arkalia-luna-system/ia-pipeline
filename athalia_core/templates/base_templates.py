@@ -16,6 +16,7 @@ API principale du projet.
 
 import logging
 import json
+import os
 from flask import Flask, request, jsonify
 from typing import Dict, Any
 
@@ -76,7 +77,7 @@ def internal_error(error):
 
 if __name__ == '__main__':
     logger.info("Démarrage de l'API {{ project_name }}")
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=os.getenv('DEBUG', 'false').lower() == 'true', host='0.0.0.0', port=int(os.getenv('PORT', 5000)))
 ''',
         "tts/tts.py": '''"""
 Module de synthèse vocale.
