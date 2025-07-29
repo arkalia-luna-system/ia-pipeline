@@ -179,8 +179,8 @@ class AnalyticsEngine:
                                 if "project" in data and "dependencies" in data["project"]:
                                     deps = data["project"]["dependencies"]
                                     dependencies_data["dependency_list"].extend(deps)
-                                                except Exception:
-                        pass
+                            except Exception:
+                                pass
                         
                         elif req_file.name == "setup.py":
                             # Analyser setup.py
