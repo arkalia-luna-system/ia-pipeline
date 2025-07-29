@@ -6,11 +6,13 @@ Tests professionnels pour la CI/CD.
 """
 
 import subprocess
+import sys
 import tempfile
 import time
 from pathlib import Path
 
 import pytest
+import yaml
 
 # Ajouter le répertoire parent au path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
@@ -242,7 +244,7 @@ def test_function():
         try:
             from athalia_core.generation import generate_blueprint_mock
 
-            blueprint = generate_blueprint_mock("performance test")
+            _ = generate_blueprint_mock("performance test")
         except ImportError:
             pytest.skip("Modules de génération non disponibles")
 

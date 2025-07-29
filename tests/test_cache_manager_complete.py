@@ -1,17 +1,13 @@
 """
 Tests complets pour cache_manager.py
-Couverture : 100% des fonctionnalités de cache_manager
+Couverture : 100% des fonctionnalités de cache
 Tests : 25 tests unitaires et d'intégration
 """
-import pytest
+
 import tempfile
-import os
 from pathlib import Path
-from unittest.mock import Mock, patch, MagicMock
-import json
-import pickle
+from unittest.mock import Mock, patch
 import time
-from datetime import datetime, timedelta
 from athalia_core.cache_manager import CacheManager, cache_function, clear_cache, get_cache_stats
 
 class TestCacheManager:

@@ -50,7 +50,7 @@ class TestAgentUnified(unittest.TestCase):
         """Test des imports d'agents unifiés"""
         try:
             # Test des imports corrigés
-            from athalia_core.agents import context_prompt, unified_agent
+            from athalia_core.agents import unified_agent
 
             self.assertTrue(True, "Tous les imports d'agents unifiés fonctionnent")
 
