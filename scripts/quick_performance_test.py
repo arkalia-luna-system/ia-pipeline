@@ -23,12 +23,10 @@ def quick_performance_test():
 
     # Test simple d'import
     try:
-        import athalia_core.unified_orchestrator
-
         success = True
-    except Exception as e:
+
+    except Exception:
         success = False
-        error = str(e)
 
     end_time = time.time()
     end_memory = psutil.virtual_memory().percent

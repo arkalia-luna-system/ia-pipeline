@@ -6,10 +6,9 @@ Module de vérification de la qualité et de la conformité du code
 """
 
 import logging
-import os
 import re
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, List
 
 # Configuration du logging
 logging.basicConfig(level=logging.INFO)
@@ -86,51 +85,38 @@ class FinalValidator:
         try:
             with open(file_path, "r", encoding="utf-8") as f:
                 content = f.read()
-
             original_content = content
 
-            # Correction des f-strings malformées
-            content = re.sub(r'ff"([^"]*)"', r'f"\1"', content)
-            content = re.sub(r'f"([^"]*)"([^"]*)"', r'f"\1\2"', content)
+            # Liste de remplacements (ancien, nouveau)
+            replacements = [
+                ('"f"', '"success"'),
+                ('"f"', '"error"'),
+                ('"f"', '"steps"'),
+                ('"f"', '"name"'),
+                ('"f"', '"status"'),
+                ('"f"', '"details"'),
+                ('"f"', '"final_score"'),
+                ('"f"', '"project"'),
+                ('"f"', '"user"'),
+                ('"f"', '"timestamp"'),
+                ('"f"', '"industrialization"'),
+                ('"f"', '"cleanup"'),
+                ('"f"', '"correction"'),
+                ('"f"', '"linting"'),
+                ('"f"', '"security"'),
+                ('"f"', '"documentation"'),
+                ('"f"', '"tests"'),
+                ('"f"', '"cicd"'),
+                ('"f"', '"deleted_files"'),
+                ('"f"', '"applied_corrections"'),
+                ('"f"', '"generated_files"'),
+                ('"f"', '"score"'),
+                ('"f"', '"vulnerabilities"'),
+                ('"f"', '"100"'),
+                ('"f"', '"complete"'),
+            ]
 
-            # Correction des chaînes malformées
-            content = re.sub(r'"""([^"]*)\'([^"]*)"""', r'"""\1\2"""', content)
-            content = re.sub(r'"""([^"]*)dict_data([^"]*)"""', r'"""\1\2"""', content)
-            content = re.sub(r'"([^"]*)\'([^"]*)"', r'"\1\2"', content)
-
-            # Correction de l'encodage
-            content = content.replace("utf - 8", "utf-8")
-
-            # Correction des variables malformées (remplacer "f" par des noms appropriés)
-            replacements = {
-                '"f"': '"success"',
-                '"f"': '"error"',
-                '"f"': '"steps"',
-                '"f"': '"name"',
-                '"f"': '"status"',
-                '"f"': '"details"',
-                '"f"': '"final_score"',
-                '"f"': '"project"',
-                '"f"': '"user"',
-                '"f"': '"timestamp"',
-                '"f"': '"industrialization"',
-                '"f"': '"cleanup"',
-                '"f"': '"correction"',
-                '"f"': '"linting"',
-                '"f"': '"security"',
-                '"f"': '"documentation"',
-                '"f"': '"tests"',
-                '"f"': '"cicd"',
-                '"f"': '"deleted_files"',
-                '"f"': '"applied_corrections"',
-                '"f"': '"generated_files"',
-                '"f"': '"score"',
-                '"f"': '"vulnerabilities"',
-                '"f"': '"100"',
-                '"f"': '"complete"',
-            }
-
-            for old, new in replacements.items():
+            for old, new in replacements:
                 content = content.replace(old, new)
 
             if content != original_content:
@@ -215,7 +201,7 @@ class FinalValidator:
                 total_quality_score / validation_results["valid_files"]
             )
 
-        logger.info(f"📊 Validation terminée:")
+        logger.info("📊 Validation terminée:")
         logger.info(f"   - Fichiers valides: {validation_results['valid_files']}")
         logger.info(f"   - Fichiers corrigés: {validation_results['corrected_files']}")
         logger.info(f"   - Fichiers en erreur: {validation_results['error_files']}")

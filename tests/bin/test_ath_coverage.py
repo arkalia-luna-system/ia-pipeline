@@ -3,8 +3,6 @@ import os
 import subprocess
 import time
 
-import pytest
-
 
 def cleanup_coverage_files():
     # Supprime tous les fichiers .coverage.* pour éviter les conflits

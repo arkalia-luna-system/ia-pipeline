@@ -1,14 +1,12 @@
 #!/usr/bin/env python3
 """
-Script de test Athalia avec nettoyage automatique
-Usage: ./bin/ath-test.py [options]
+Script de test Athalia
+Exécute les tests avec différentes options
 """
 
 import os
 import subprocess
 import sys
-import time
-from pathlib import Path
 
 
 def run_tests_with_cleanup():

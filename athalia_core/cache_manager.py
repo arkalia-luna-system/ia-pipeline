@@ -440,7 +440,7 @@ class CacheManager:
         try:
             gzip.decompress(data)
             return True
-        except:
+        except (OSError, ValueError):
             return False
 
     def _is_encrypted(self, data: bytes) -> bool:

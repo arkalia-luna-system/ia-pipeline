@@ -4,7 +4,6 @@ Couverture : 100% des fonctionnalités de dashboard
 Tests : 20 tests unitaires et d'intégration
 """
 
-import pytest
 import tempfile
 import os
 from pathlib import Path
