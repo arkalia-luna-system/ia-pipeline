@@ -64,7 +64,7 @@ class ROS2Validator:
     def _check_package_structure(self) -> bool:
         """Vérifie la structure de base du package"""
         required_files = ["package.xml", "setup.py"]
-        optional_files = ["CMakeLists.txt", "launch/", "test/", "src/"]
+        # optional_files = ["CMakeLists.txt", "launch/", "test/", "src/"]
 
         missing_required = []
         for file in required_files:

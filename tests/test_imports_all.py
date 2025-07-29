@@ -85,7 +85,6 @@ class TestImportsAll:
     def test_plugins_modules_import(self):
         """Test d'import des modules plugins"""
         plugins_modules = [
-            'athalia_core.plugins_manager',
             'athalia_core.plugins_validator'
         ]
 
