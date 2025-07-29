@@ -42,32 +42,32 @@ database:
 
 ### Classes principales
 
-#### AthaliaOrchestrator
+#### UnifiedOrchestrator
 
 **Exemple d'utilisation :**
 
 ```python
-from athalia-dev-setup import AthaliaOrchestrator
+from athalia_core.unified_orchestrator import UnifiedOrchestrator
 
 # Créer une instance
-instance = AthaliaOrchestrator()
+instance = UnifiedOrchestrator("./mon-projet")
 # Utiliser une méthode
-result = instance.industrialize_project()
+result = instance.orchestrate_project_complete("./mon-projet")
 ```
 
-#### ProjectAuditor
+#### IntelligentAuditor
 
 Auditeur intelligent de projets générés.
 
 **Exemple d'utilisation :**
 
 ```python
-from athalia-dev-setup import ProjectAuditor
+from athalia_core.intelligent_auditor import IntelligentAuditor
 
 # Créer une instance
-instance = ProjectAuditor()
+instance = IntelligentAuditor("./mon-projet")
 # Utiliser une méthode
-result = instance.__init__()
+result = instance.audit_project()
 ```
 
 #### TestLoggingSystem
