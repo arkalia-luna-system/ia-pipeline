@@ -4,15 +4,15 @@
 Tests complets pour athalia_core.robotics.reachy_auditor
 """
 
-import pytest
-import tempfile
 import shutil
-from pathlib import Path
-from unittest.mock import Mock, patch, mock_open
+import tempfile
 from datetime import datetime
-from athalia_core.robotics.reachy_auditor import (
-    ReachyAuditor, ReachyAuditResult
-)
+from pathlib import Path
+from unittest.mock import Mock, mock_open, patch
+
+import pytest
+
+from athalia_core.robotics.reachy_auditor import ReachyAuditor, ReachyAuditResult
 
 
 class TestReachyAuditorComplete:

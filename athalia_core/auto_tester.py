@@ -1,12 +1,11 @@
-
-import os
-from pathlib import Path
-from typing import Dict, List, Any
-import re
 import argparse
 import ast
-import subprocess
 import logging
+import os
+import re
+import subprocess
+from pathlib import Path
+from typing import Any, Dict, List
 
 logger = logging.getLogger(__name__)
 
@@ -18,8 +17,7 @@ class AutoTester:
     """Générateur de tests pour Athalia"""
 
     def __init__(self, project_path: str = None):
-        self.project_path: Path = Path(
-            project_path) if project_path else Path('.')
+        self.project_path: Path = Path(project_path) if project_path else Path(".")
         self.test_results = {}
         self.generated_tests = []
 
@@ -54,7 +52,7 @@ class AutoTester:
             "integration_tests": integration_tests,
             "performance_tests": performance_tests,
             "test_results": test_results,
-            "files_created": self._get_created_files()
+            "files_created": self._get_created_files(),
         }
 
     def _analyze_modules(self) -> List[Dict[str, Any]]:
@@ -68,46 +66,45 @@ class AutoTester:
 
             if py_file.name != "__init__.py" and "test" not in py_file.name.lower():
                 try:
-                    with open(py_file, 'r', encoding='utf-8') as file_handle:
+                    with open(py_file, "r", encoding="utf-8") as file_handle:
                         content = file_handle.read()
 
                     tree = ast.parse(content)
                     module_info = {
-                        'name': py_file.stem,
-                        'path': str(py_file),
-                        'classes': [],
-                        'functions': [],
-                        'imports': []
+                        "name": py_file.stem,
+                        "path": str(py_file),
+                        "classes": [],
+                        "functions": [],
+                        "imports": [],
                     }
 
                     for item in tree.body:
                         if isinstance(item, ast.ClassDef):
-                            class_info = {
-                                'name': item.name,
-                                'methods': []
-                            }
+                            class_info = {"name": item.name, "methods": []}
                             for node in item.body:
                                 if isinstance(node, ast.FunctionDef):
-                                    class_info['methods'].append(node.name)
-                            module_info['classes'].append(class_info)
+                                    class_info["methods"].append(node.name)
+                            module_info["classes"].append(class_info)
                         elif isinstance(item, ast.FunctionDef) and not any(
-                            decorator.id == 'property' if isinstance(decorator, ast.Name) else False
+                            (
+                                decorator.id == "property"
+                                if isinstance(decorator, ast.Name)
+                                else False
+                            )
                             for decorator in (item.decorator_list or [])
                         ):
-                            module_info['functions'].append(item.name)
+                            module_info["functions"].append(item.name)
                         elif isinstance(item, (ast.Import, ast.ImportFrom)):
                             if isinstance(item, ast.Import):
                                 for alias in item.names:
-                                    module_info['imports'].append(alias.name)
+                                    module_info["imports"].append(alias.name)
                             else:
-                                module_info['imports'].append(
-                                    item.module or '')
+                                module_info["imports"].append(item.module or "")
 
                     modules.append(module_info)
 
                 except Exception as e:
-                    logger.warning(
-                        f"Erreur lors de l'analyse de {py_file}: {e}")
+                    logger.warning(f"Erreur lors de l'analyse de {py_file}: {e}")
                     continue
 
         return modules
@@ -143,7 +140,9 @@ class Test{module_name}(unittest.TestCase):
     def tearDown(self):
         \"\"\"Nettoyage après chaque test\"\"\"
         pass
-""".format(module_name=module["name"].title())
+""".format(
+            module_name=module["name"].title()
+        )
 
         # Tests pour les classes
         for class_info in module["classes"]:
@@ -158,7 +157,9 @@ class Test{module_name}(unittest.TestCase):
             self.assertIsNotNone(instance)
         except Exception as e:
             self.skipTest(f"Impossible de créer {class_name}: {{e}}")
-""".format(class_name=class_info["name"], module_name=module["name"])
+""".format(
+                class_name=class_info["name"], module_name=module["name"]
+            )
 
             # Tests pour les méthodes
             for method_name in class_info["methods"]:
@@ -178,7 +179,11 @@ class Test{module_name}(unittest.TestCase):
             self.assertIsNotNone(result)
         except Exception as e:
             self.skipTest(f"Impossible de tester {method_name}: {{e}}")
-""".format(class_name=class_info["name"], method_name=method_name, module_name=module["name"])
+""".format(
+                        class_name=class_info["name"],
+                        method_name=method_name,
+                        module_name=module["name"],
+                    )
 
         # Tests pour les fonctions
         for func_name in module["functions"]:
@@ -195,7 +200,9 @@ class Test{module_name}(unittest.TestCase):
             self.assertIsNotNone(result)
         except Exception as e:
             self.skipTest(f"Impossible de tester {func_name}: {{e}}")
-""".format(func_name=func_name, module_name=module["name"])
+""".format(
+                func_name=func_name, module_name=module["name"]
+            )
 
         test_content += """
 
@@ -205,8 +212,7 @@ if __name__ == "__main__":
 
         return test_content
 
-    def _generate_integration_tests(
-            self, modules: List[Dict[str, Any]]) -> List[str]:
+    def _generate_integration_tests(self, modules: List[Dict[str, Any]]) -> List[str]:
         """Génère les tests dintégration"""
         integration_tests = []
 
@@ -269,8 +275,7 @@ if __name__ == '__main__':
 
         return integration_tests
 
-    def _generate_performance_tests(
-            self, modules: List[Dict[str, Any]]) -> List[str]:
+    def _generate_performance_tests(self, modules: List[Dict[str, Any]]) -> List[str]:
         """Génère les tests de performance"""
         performance_tests = []
 
@@ -350,10 +355,11 @@ if __name__ == '__main__':
         return performance_tests
 
     def _save_tests(
-            self,
-            unit_tests: List[str],
-            integration_tests: List[str],
-            performance_tests: List[str]):
+        self,
+        unit_tests: List[str],
+        integration_tests: List[str],
+        performance_tests: List[str],
+    ):
         """Sauvegarde les tests f"""
         tests_dir = self.project_path / "tests"
         tests_dir.mkdir(exist_ok=True)
@@ -361,21 +367,21 @@ if __name__ == '__main__':
         # Tests unitaires
         for index, test_content in enumerate(unit_tests):
             test_file = tests_dir / f"auto_generated_unit_{index + 1}.py"
-            with open(test_file, 'w', encoding='utf-8') as file_handle:
+            with open(test_file, "w", encoding="utf-8") as file_handle:
                 file_handle.write(test_content)
             self.generated_tests.append(str(test_file))
 
         # Tests d'intégration
         for index, test_content in enumerate(integration_tests):
             test_file = tests_dir / f"auto_generated_integration_{index + 1}.py"
-            with open(test_file, 'w', encoding='utf-8') as file_handle:
+            with open(test_file, "w", encoding="utf-8") as file_handle:
                 file_handle.write(test_content)
             self.generated_tests.append(str(test_file))
 
         # Tests de performance
         for index, test_content in enumerate(performance_tests):
             test_file = tests_dir / f"auto_generated_performance_{index + 1}.py"
-            with open(test_file, 'w', encoding='utf-8') as file_handle:
+            with open(test_file, "w", encoding="utf-8") as file_handle:
                 file_handle.write(test_content)
             self.generated_tests.append(str(test_file))
 
@@ -399,7 +405,7 @@ markers = (
 """
 
         pytest_file = self.project_path / "pytest.ini"
-        with open(pytest_file, 'w', encoding='utf-8') as file_handle:
+        with open(pytest_file, "w", encoding="utf-8") as file_handle:
             file_handle.write(pytest_config)
 
         # Script de lancement des tests
@@ -433,7 +439,7 @@ echo "✅ Tests terminés !"
         scripts_dir.mkdir(exist_ok=True)
 
         run_tests_file = scripts_dir / "run_tests.sh"
-        with open(run_tests_file, 'w', encoding='utf-8') as file_handle:
+        with open(run_tests_file, "w", encoding="utf-8") as file_handle:
             file_handle.write(run_tests_script)
 
         # Rendre le script exécutable
@@ -447,7 +453,7 @@ echo "✅ Tests terminés !"
         test_patterns = [
             "tests/auto_generated_unit_*.py",
             "tests/auto_generated_integration_*.py",
-            "tests/auto_generated_performance_*.py"
+            "tests/auto_generated_performance_*.py",
         ]
 
         for pattern in test_patterns:
@@ -471,7 +477,7 @@ echo "✅ Tests terminés !"
         results = {
             "unit_tests": {"passed": 0, "failed": 0, "errors": []},
             "integration_tests": {"passed": 0, "failed": 0, "errors": []},
-            "performance_tests": {"passed": 0, "failed": 0, "errors": []}
+            "performance_tests": {"passed": 0, "failed": 0, "errors": []},
         }
 
         try:
@@ -483,23 +489,30 @@ echo "✅ Tests terminés !"
             logger.info("🧪 Exécution des tests unitaires...")
             try:
                 result = subprocess.run(
-                    ["python", "-m", "pytest", "tests/auto_generated_unit_*.py",
-                     "-v", "--tb=short"],
+                    [
+                        "python",
+                        "-m",
+                        "pytest",
+                        "tests/auto_generated_unit_*.py",
+                        "-v",
+                        "--tb=short",
+                    ],
                     capture_output=True,
                     text=True,
-                    timeout=60
+                    timeout=60,
                 )
 
                 if result.returncode == 0:
                     results["unit_tests"]["passed"] = len(
-                        re.findall(r"PASSED", result.stdout))
+                        re.findall(r"PASSED", result.stdout)
+                    )
                 else:
                     results["unit_tests"]["failed"] = len(
-                        re.findall(r"FAILED", result.stdout))
+                        re.findall(r"FAILED", result.stdout)
+                    )
                     results["unit_tests"]["errors"].append(result.stderr)
             except subprocess.TimeoutExpired:
-                results["unit_tests"]["errors"].append(
-                    "Timeout lors de lexécution")
+                results["unit_tests"]["errors"].append("Timeout lors de lexécution")
             except Exception as e:
                 results["unit_tests"]["errors"].append(str(e))
 
@@ -507,24 +520,32 @@ echo "✅ Tests terminés !"
             logger.info("🔗 Exécution des tests dintégration...")
             try:
                 result = subprocess.run(
-                    ["python", "-m", "pytest", "tests/auto_generated_integration_*.py",
-                     "-v", "--tb=short"],
+                    [
+                        "python",
+                        "-m",
+                        "pytest",
+                        "tests/auto_generated_integration_*.py",
+                        "-v",
+                        "--tb=short",
+                    ],
                     capture_output=True,
                     text=True,
-                    timeout=60
+                    timeout=60,
                 )
 
                 if result.returncode == 0:
                     results["integration_tests"]["passed"] = len(
-                        re.findall(r"PASSED", result.stdout))
+                        re.findall(r"PASSED", result.stdout)
+                    )
                 else:
                     results["integration_tests"]["failed"] = len(
-                        re.findall(r"FAILED", result.stdout))
-                    results["integration_tests"]["errors"].append(
-                        result.stderr)
+                        re.findall(r"FAILED", result.stdout)
+                    )
+                    results["integration_tests"]["errors"].append(result.stderr)
             except subprocess.TimeoutExpired:
                 results["integration_tests"]["errors"].append(
-                    "Timeout lors de lexécution")
+                    "Timeout lors de lexécution"
+                )
             except Exception as e:
                 results["integration_tests"]["errors"].append(str(e))
 
@@ -547,8 +568,14 @@ echo "✅ Tests terminés !"
     def _get_created_files(self) -> List[str]:
         """Retourne la liste des fichiers créés"""
         files = ["pytest.ini", "scripts/run_tests.sh"] + self.generated_tests
-        return [str(self.project_path / file_handle) if not file_handle.startswith(
-            str(self.project_path)) else file_handle for file_handle in files]
+        return [
+            (
+                str(self.project_path / file_handle)
+                if not file_handle.startswith(str(self.project_path))
+                else file_handle
+            )
+            for file_handle in files
+        ]
 
     def generate_test_report(self) -> str:
         """Génère un rapport de tests"""
@@ -577,19 +604,26 @@ echo "✅ Tests terminés !"
 📄 FICHIERS CRÉÉS ({num_files}):
 """
         report = report.format(
-            sep='=' * 60,
+            sep="=" * 60,
             project_name=self.project_path.name,
-            unit_passed=self.test_results.get('unit_tests', {}).get('passed', 0),
-            unit_failed=self.test_results.get('unit_tests', {}).get('failed', 0),
-            unit_errors=len(self.test_results.get('unit_tests', {}).get('errors', [])),
-            integration_passed=self.test_results.get('integration_tests', {}).get('passed', 0),
-            integration_failed=self.test_results.get('integration_tests', {}).get('failed', 0),
-            integration_errors=len(self.test_results.get(
-                'integration_tests', {}).get('errors', [])),
-            perf_passed=self.test_results.get('performance_tests', {}).get('passed', 0),
-            perf_failed=self.test_results.get('performance_tests', {}).get('failed', 0),
-            perf_errors=len(self.test_results.get('performance_tests', {}).get('errors', [])),
-            num_files=len(self.generated_tests)
+            unit_passed=self.test_results.get("unit_tests", {}).get("passed", 0),
+            unit_failed=self.test_results.get("unit_tests", {}).get("failed", 0),
+            unit_errors=len(self.test_results.get("unit_tests", {}).get("errors", [])),
+            integration_passed=self.test_results.get("integration_tests", {}).get(
+                "passed", 0
+            ),
+            integration_failed=self.test_results.get("integration_tests", {}).get(
+                "failed", 0
+            ),
+            integration_errors=len(
+                self.test_results.get("integration_tests", {}).get("errors", [])
+            ),
+            perf_passed=self.test_results.get("performance_tests", {}).get("passed", 0),
+            perf_failed=self.test_results.get("performance_tests", {}).get("failed", 0),
+            perf_errors=len(
+                self.test_results.get("performance_tests", {}).get("errors", [])
+            ),
+            num_files=len(self.generated_tests),
         )
         for test_file in self.generated_tests:
             report += f"   • {test_file}\n"
@@ -608,8 +642,7 @@ python -m pytest tests/ -v
 
 {sep2}
 """.format(
-            project_path=self.project_path,
-            sep2='=' * 60
+            project_path=self.project_path, sep2="=" * 60
         )
         return report
 
@@ -620,9 +653,8 @@ def main():
     parser = argparse.ArgumentParser(description="Génération automatique de tests")
     parser.add_argument("project_path", help="Chemin du projet à tester")
     parser.add_argument(
-        "--run",
-        action="store_true",
-        help="Exécuter les tests après génération")
+        "--run", action="store_true", help="Exécuter les tests après génération"
+    )
 
     args = parser.parse_args()
 
@@ -635,12 +667,12 @@ def main():
 
     logger.info("✅ Tests générés avec succès !")
     logger.info(f"\n📄 Fichiers créés ({len(result['files_created'])}):")
-    for file_path in result['files_created']:
+    for file_path in result["files_created"]:
         logger.info(f"   • {file_path}")
 
     if args.run:
         logger.info("\n🧪 Exécution des tests...")
-        tester.test_results = result['test_results']
+        tester.test_results = result["test_results"]
         logger.info(tester.generate_test_report())
 
 

@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-from pathlib import Path
-from typing import Dict, Any
-import subprocess
 import json
-import re
 import logging
+import re
+import subprocess
+from pathlib import Path
+from typing import Any, Dict
 
 logger = logging.getLogger(__name__)
 
@@ -24,7 +24,7 @@ class SecurityAuditor:
             "score": 0,
             "vulnerabilities": [],
             "warnings": [],
-            "recommendations": []
+            "recommendations": [],
         }
 
     def run(self) -> Dict[str, Any]:
@@ -43,44 +43,51 @@ class SecurityAuditor:
 
         # Ecrire 'Clé API f' dans le fichier attendu pour le test
         try:
-            report_file = self.project_path / 'security_audit.f(f'
-            with open(report_file, 'w', encoding='utf-8') as f:
-                f.write('Clé API f\n')
+            report_file = self.project_path / "security_audit.f(f"
+            with open(report_file, "w", encoding="utf-8") as f:
+                f.write("Clé API f\n")
         except Exception as e:
-            logger.warning(
-                f"Impossible d'écrire le rapport de sécurité mock : {e}")
+            logger.warning(f"Impossible d'écrire le rapport de sécurité mock : {e}")
 
         # Adapter le retour pour les tests
         return {
-            'global_score': int(self.report.get('score', 0)),
-            'summary': list(self.report.get('warnings', [])),
-            'details': list(self.report.get('vulnerabilities', [])),
-            'files': list(self.report.get('recommendations', []))
+            "global_score": int(self.report.get("score", 0)),
+            "summary": list(self.report.get("warnings", [])),
+            "details": list(self.report.get("vulnerabilities", [])),
+            "files": list(self.report.get("recommendations", [])),
         }
 
     def _check_dependencies(self):
         """Vérification des dépendances"""
         try:
             # Utiliser bandit pour lanalyse de sécurité
-            result = subprocess.run([
-                "bandit", "-r", str(self.project_path), "-f", "json"
-            ], capture_output=True, text=True, timeout=30)
+            result = subprocess.run(
+                ["bandit", "-r", str(self.project_path), "-f", "json"],
+                capture_output=True,
+                text=True,
+                timeout=30,
+            )
 
             if result.returncode == 0:
                 self.report["vulnerabilities"].append(
-                    "Aucune vulnérabilité détectée par Bandit")
+                    "Aucune vulnérabilité détectée par Bandit"
+                )
             else:
                 self.report["vulnerabilities"].append(
-                    f"Vulnérabilités Bandit détectées: {result.stdout}")
+                    f"Vulnérabilités Bandit détectées: {result.stdout}"
+                )
 
         except Exception as e:
             self.report["warnings"].append(f"Bandit non exécuté: {e}")
 
         # Vérifier avec safety si disponible
         try:
-            result = subprocess.run([
-                "safety", "check", "--json"
-            ], capture_output=True, text=True, timeout=30)
+            result = subprocess.run(
+                ["safety", "check", "--json"],
+                capture_output=True,
+                text=True,
+                timeout=30,
+            )
 
             if result.returncode != 0:
                 vulns = json.loads(result.stdout)
@@ -102,18 +109,18 @@ class SecurityAuditor:
             r"os\.system\(",
             r"pickle\.loads\(",
             r"yaml\.load\(",
-            r"input\("
+            r"input\(",
         ]
 
         for py_file in self.project_path.rglob("*.py"):
             try:
-                with open(py_file, 'r', encoding='utf-8') as f:
+                with open(py_file, "r", encoding="utf-8") as f:
                     content = f.read()
 
                 for pattern in dangerous_patterns:
                     matches = re.finditer(pattern, content)
                     for match in matches:
-                        line_num = content[:match.start()].count('\n') + 1
+                        line_num = content[: match.start()].count("\n") + 1
                         self.report["vulnerabilities"].append(
                             f"Pattern dangereux {pattern} dans {py_file.name}:{line_num}"
                         )
@@ -127,18 +134,18 @@ class SecurityAuditor:
             r"password\s*=\s*\"[^\"]+\"",
             r"api_key\s*=\s*\"[^\"]+\"",
             r"secret\s*=\s*\"[^\"]+\"",
-            r"token\s*=\s*\"[^\"]+\""
+            r"token\s*=\s*\"[^\"]+\"",
         ]
 
         for py_file in self.project_path.rglob("*.py"):
             try:
-                with open(py_file, 'r', encoding='utf-8') as f:
+                with open(py_file, "r", encoding="utf-8") as f:
                     content = f.read()
 
                 for pattern in secret_patterns:
                     matches = re.finditer(pattern, content)
                     for match in matches:
-                        line_num = content[:match.start()].count('\n') + 1
+                        line_num = content[: match.start()].count("\n") + 1
                         self.report["vulnerabilities"].append(
                             f"Secret potentiel dans {py_file.name}:{line_num}"
                         )
@@ -164,13 +171,13 @@ class SecurityAuditor:
         encryption_patterns = [
             r"from cryptography",
             r"import hashlib",
-            r"import secrets"
+            r"import secrets",
         ]
 
         has_encryption = False
         for py_file in self.project_path.rglob("*.py"):
             try:
-                with open(py_file, 'r', encoding='utf-8') as f:
+                with open(py_file, "r", encoding="utf-8") as f:
                     content = f.read()
 
                 for pattern in encryption_patterns:

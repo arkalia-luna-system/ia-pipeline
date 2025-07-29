@@ -6,7 +6,7 @@ Centralisation des codes d'erreur pour une gestion cohérente
 """
 
 from enum import Enum, auto
-from typing import Dict, Any
+from typing import Any, Dict
 
 
 class ErrorCode(Enum):
@@ -72,6 +72,7 @@ class ErrorCode(Enum):
 
 class ErrorSeverity(Enum):
     """Niveaux de sévérité des erreurs."""
+
     INFO = auto()
     WARNING = auto()
     ERROR = auto()
@@ -137,7 +138,6 @@ def get_error_severity(error_code: ErrorCode) -> ErrorSeverity:
         ErrorCode.AI_MODEL_LOAD_FAILED: ErrorSeverity.CRITICAL,
         ErrorCode.SECURITY_VIOLATION: ErrorSeverity.CRITICAL,
         ErrorCode.MEMORY_EXHAUSTED: ErrorSeverity.CRITICAL,
-
         # Erreurs importantes
         ErrorCode.INVALID_CONFIGURATION: ErrorSeverity.ERROR,
         ErrorCode.PERMISSION_DENIED: ErrorSeverity.ERROR,
@@ -154,7 +154,6 @@ def get_error_severity(error_code: ErrorCode) -> ErrorSeverity:
         ErrorCode.VULNERABILITY_DETECTED: ErrorSeverity.ERROR,
         ErrorCode.PERFORMANCE_DEGRADED: ErrorSeverity.ERROR,
         ErrorCode.CPU_OVERLOAD: ErrorSeverity.ERROR,
-
         # Avertissements
         ErrorCode.INVALID_INPUT: ErrorSeverity.WARNING,
         ErrorCode.MISSING_REQUIRED_PARAMETER: ErrorSeverity.WARNING,
@@ -179,13 +178,16 @@ def get_error_severity(error_code: ErrorCode) -> ErrorSeverity:
     return severity_mapping.get(error_code, ErrorSeverity.INFO)
 
 
-def format_error_message(error_code: ErrorCode, details: str = "", context: Dict[str, Any] = None) -> str:
+def format_error_message(
+    error_code: ErrorCode, details: str = "", context: Dict[str, Any] = None
+) -> str:
     """Formate un message d'erreur complet."""
     description = get_error_description(error_code)
     severity = get_error_severity(error_code)
 
-    message = (f"[{severity.name}] {error_code.name} ({error_code.value}): "
-               f"{description}")
+    message = (
+        f"[{severity.name}] {error_code.name} ({error_code.value}): " f"{description}"
+    )
 
     if details:
         message += f" - {details}"

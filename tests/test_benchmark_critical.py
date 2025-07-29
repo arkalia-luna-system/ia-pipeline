@@ -1,7 +1,8 @@
-import pytest
 import importlib
 import os
 import sys
+
+import pytest
 
 # Vérification de la disponibilité de pytest-benchmark
 try:

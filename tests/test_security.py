@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from athalia_core.security import security_audit_project
 import os
 
-
+from athalia_core.security import security_audit_project
 
 
 def test_security_audit_project(tmp_path):

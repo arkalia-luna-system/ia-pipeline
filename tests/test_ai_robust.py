@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from athalia_core.ai_robust import RobustAI, AIModel, PromptContext
 import os
-
-import pytest
 import tempfile
 from unittest.mock import patch
+
+import pytest
+
+from athalia_core.ai_robust import AIModel, PromptContext, RobustAI
 
 """
 Tests pour le module dict_data'IA robuste.
@@ -184,6 +185,7 @@ def test_fallback_and_distillation_qwen_mistral():
 
 def test_fallback_ia_qwen_mistral(monkeypatch):
     from athalia_core.ai_robust import fallback_ia
+
     # Mock les requêtes pour Qwen et Mistral
     def mock_query_qwen(prompt):
         return "Réponse Qwen"

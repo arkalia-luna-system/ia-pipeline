@@ -37,19 +37,19 @@ select =
     UP, # pyupgrade
 
 # Règles à ignorer globalement (avec justification)
-ignore = 
-    E203,  # whitespace before ':' (incompatible avec black)
-    W503,  # line break before binary operator (incompatible avec black)
-    E722,  # do not use bare except (géré par error handling)
-    W291,  # trailing whitespace (géré par black)
-    W292,  # no newline at end of file (géré par black)
-    F401,  # imported but unused (géré par isort)
-    F541,  # f-string without any placeholders (style)
-    C901,  # too complex (géré par mccabe)
-    S101,  # use of assert detected (tests)
-    S105,  # hardcoded password string (géré par bandit)
-    S106,  # hardcoded password funcarg (géré par bandit)
-    S108,  # hardcoded tmp file/directory (géré par bandit)
+# E203: whitespace before ':' (incompatible avec black)
+# W503: line break before binary operator (incompatible avec black)
+# E722: do not use bare except (géré par error handling)
+# W291: trailing whitespace (géré par black)
+# W292: no newline at end of file (géré par black)
+# F401: imported but unused (géré par isort)
+# F541: f-string without any placeholders (style)
+# C901: too complex (géré par mccabe)
+# S101: use of assert detected (tests)
+# S105: hardcoded password string (géré par bandit)
+# S106: hardcoded password funcarg (géré par bandit)
+# S108: hardcoded tmp file/directory (géré par bandit)
+ignore = E203,W503,E722,W291,W292,F401,F541,C901,S101,S105,S106,S108
 
 # Règles spécifiques par fichier
 per-file-ignores =

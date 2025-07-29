@@ -4,10 +4,12 @@
 Tests pour détecter les chemins hardcodés
 """
 
-import pytest
+import os
 import re
 from pathlib import Path
-import os
+
+import pytest
+
 
 class TestHardcodedPaths:
     """Tests pour détecter les chemins hardcodés"""

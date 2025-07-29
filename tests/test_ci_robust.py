@@ -8,14 +8,15 @@ Tests robustes pour la validation CI/CD complète
 Tests plus approfondis pour validation de qualité
 """
 
-import pytest
-from pathlib import Path
-import sys
-import os
 import json
-import yaml
+import os
 import subprocess
+import sys
 import time
+from pathlib import Path
+
+import pytest
+import yaml
 
 
 class TestCIRobust:

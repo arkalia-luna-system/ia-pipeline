@@ -4,17 +4,18 @@
 Tests complets pour athalia_core.robotics.docker_robotics
 """
 
-import pytest
-import tempfile
 import subprocess
+import tempfile
 from pathlib import Path
-from unittest.mock import Mock, patch, mock_open
+from unittest.mock import Mock, mock_open, patch
+
+import pytest
 import yaml
 
 from athalia_core.robotics.docker_robotics import (
     DockerRoboticsManager,
     DockerServiceConfig,
-    DockerValidationResult
+    DockerValidationResult,
 )
 
 

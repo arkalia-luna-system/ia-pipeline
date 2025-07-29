@@ -12,8 +12,7 @@ class QualityScorer:
         # 'impact': 0.2})
         self.weights = weights or {}
 
-    def score(self, solution: Any,
-              context: Optional[Dict[str, Any]] = None) -> float:
+    def score(self, solution: Any, context: Optional[Dict[str, Any]] = None) -> float:
         """
         Évalue la qualité d'une solution IA.
         :param solution: Solution à scorer (str, dict, ...)

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
+import os
 import subprocess
 import sys
-import os
 
 
 def main():
@@ -12,4 +12,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main() 
+    main()

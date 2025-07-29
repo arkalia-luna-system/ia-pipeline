@@ -4,13 +4,14 @@ Module de CI/CD pour projets robotics
 Intégration continue pour ROS2, Rust et projets robotics
 """
 
-from pathlib import Path
-from typing import Dict, Any, List, Optional
-import subprocess
 import json
-import yaml
 import logging
+import subprocess
 import xml.etree.ElementTree as ET
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+import yaml
 
 logger = logging.getLogger(__name__)
 
@@ -28,7 +29,7 @@ class RoboticsCI:
             "deployment_status": "unknown",
             "errors": [],
             "warnings": [],
-            "metrics": {}
+            "metrics": {},
         }
 
     def run_full_pipeline(self) -> Dict[str, Any]:
@@ -51,7 +52,7 @@ class RoboticsCI:
     def _check_project_structure(self):
         """Vérifie la structure du projet robotics"""
         required_files = []
-        
+
         # Détecter le type de projet
         if (self.project_path / "package.xml").exists():
             # Projet ROS2
@@ -62,7 +63,7 @@ class RoboticsCI:
         elif (self.project_path / "package.json").exists():
             # Projet Node.js
             required_files = ["package.json"]
-        
+
         missing_files = []
         for file in required_files:
             if isinstance(file, str):
@@ -71,9 +72,11 @@ class RoboticsCI:
             else:  # Directory
                 if not (self.project_path / file).is_dir():
                     missing_files.append(file)
-        
+
         if missing_files:
-            self.ci_results["errors"].append(f"Fichiers requis manquants: {missing_files}")
+            self.ci_results["errors"].append(
+                f"Fichiers requis manquants: {missing_files}"
+            )
             self.ci_results["build_status"] = "failed"
 
     def _run_build(self):
@@ -86,14 +89,16 @@ class RoboticsCI:
                     cwd=self.project_path,
                     capture_output=True,
                     text=True,
-                    timeout=300
+                    timeout=300,
                 )
                 if result.returncode == 0:
                     self.ci_results["build_status"] = "success"
                 else:
                     self.ci_results["build_status"] = "failed"
-                    self.ci_results["errors"].append(f"Build Rust échoué: {result.stderr}")
-            
+                    self.ci_results["errors"].append(
+                        f"Build Rust échoué: {result.stderr}"
+                    )
+
             elif (self.project_path / "package.xml").exists():
                 # Build ROS2
                 result = subprocess.run(
@@ -101,14 +106,16 @@ class RoboticsCI:
                     cwd=self.project_path,
                     capture_output=True,
                     text=True,
-                    timeout=300
+                    timeout=300,
                 )
                 if result.returncode == 0:
                     self.ci_results["build_status"] = "success"
                 else:
                     self.ci_results["build_status"] = "failed"
-                    self.ci_results["errors"].append(f"Build ROS2 échoué: {result.stderr}")
-            
+                    self.ci_results["errors"].append(
+                        f"Build ROS2 échoué: {result.stderr}"
+                    )
+
             else:
                 # Build Python standard
                 result = subprocess.run(
@@ -116,14 +123,16 @@ class RoboticsCI:
                     cwd=self.project_path,
                     capture_output=True,
                     text=True,
-                    timeout=300
+                    timeout=300,
                 )
                 if result.returncode == 0:
                     self.ci_results["build_status"] = "success"
                 else:
                     self.ci_results["build_status"] = "failed"
-                    self.ci_results["errors"].append(f"Build Python échoué: {result.stderr}")
-        
+                    self.ci_results["errors"].append(
+                        f"Build Python échoué: {result.stderr}"
+                    )
+
         except subprocess.TimeoutExpired:
             self.ci_results["build_status"] = "failed"
             self.ci_results["errors"].append("Build timeout")
@@ -141,14 +150,16 @@ class RoboticsCI:
                     cwd=self.project_path,
                     capture_output=True,
                     text=True,
-                    timeout=300
+                    timeout=300,
                 )
                 if result.returncode == 0:
                     self.ci_results["test_status"] = "success"
                 else:
                     self.ci_results["test_status"] = "failed"
-                    self.ci_results["errors"].append(f"Tests Rust échoués: {result.stderr}")
-            
+                    self.ci_results["errors"].append(
+                        f"Tests Rust échoués: {result.stderr}"
+                    )
+
             elif (self.project_path / "package.xml").exists():
                 # Tests ROS2
                 result = subprocess.run(
@@ -156,14 +167,16 @@ class RoboticsCI:
                     cwd=self.project_path,
                     capture_output=True,
                     text=True,
-                    timeout=300
+                    timeout=300,
                 )
                 if result.returncode == 0:
                     self.ci_results["test_status"] = "success"
                 else:
                     self.ci_results["test_status"] = "failed"
-                    self.ci_results["errors"].append(f"Tests ROS2 échoués: {result.stderr}")
-            
+                    self.ci_results["errors"].append(
+                        f"Tests ROS2 échoués: {result.stderr}"
+                    )
+
             else:
                 # Tests Python
                 result = subprocess.run(
@@ -171,14 +184,16 @@ class RoboticsCI:
                     cwd=self.project_path,
                     capture_output=True,
                     text=True,
-                    timeout=300
+                    timeout=300,
                 )
                 if result.returncode == 0:
                     self.ci_results["test_status"] = "success"
                 else:
                     self.ci_results["test_status"] = "failed"
-                    self.ci_results["errors"].append(f"Tests Python échoués: {result.stderr}")
-        
+                    self.ci_results["errors"].append(
+                        f"Tests Python échoués: {result.stderr}"
+                    )
+
         except subprocess.TimeoutExpired:
             self.ci_results["test_status"] = "failed"
             self.ci_results["errors"].append("Tests timeout")
@@ -196,14 +211,14 @@ class RoboticsCI:
                     cwd=self.project_path,
                     capture_output=True,
                     text=True,
-                    timeout=120
+                    timeout=120,
                 )
                 if result.returncode == 0:
                     self.ci_results["lint_status"] = "success"
                 else:
                     self.ci_results["lint_status"] = "failed"
                     self.ci_results["warnings"].append(f"Lint Rust: {result.stderr}")
-            
+
             else:
                 # Lint Python
                 result = subprocess.run(
@@ -211,14 +226,14 @@ class RoboticsCI:
                     cwd=self.project_path,
                     capture_output=True,
                     text=True,
-                    timeout=120
+                    timeout=120,
                 )
                 if result.returncode == 0:
                     self.ci_results["lint_status"] = "success"
                 else:
                     self.ci_results["lint_status"] = "failed"
                     self.ci_results["warnings"].append(f"Lint Python: {result.stdout}")
-        
+
         except subprocess.TimeoutExpired:
             self.ci_results["lint_status"] = "failed"
             self.ci_results["warnings"].append("Lint timeout")
@@ -236,14 +251,14 @@ class RoboticsCI:
                     cwd=self.project_path,
                     capture_output=True,
                     text=True,
-                    timeout=120
+                    timeout=120,
                 )
                 if result.returncode == 0:
                     self.ci_results["security_status"] = "success"
                 else:
                     self.ci_results["security_status"] = "failed"
                     self.ci_results["warnings"].append(f"Audit Rust: {result.stderr}")
-            
+
             else:
                 # Scan Python
                 result = subprocess.run(
@@ -251,14 +266,16 @@ class RoboticsCI:
                     cwd=self.project_path,
                     capture_output=True,
                     text=True,
-                    timeout=120
+                    timeout=120,
                 )
                 if result.returncode == 0:
                     self.ci_results["security_status"] = "success"
                 else:
                     self.ci_results["security_status"] = "failed"
-                    self.ci_results["warnings"].append(f"Scan sécurité: {result.stdout}")
-        
+                    self.ci_results["warnings"].append(
+                        f"Scan sécurité: {result.stdout}"
+                    )
+
         except subprocess.TimeoutExpired:
             self.ci_results["security_status"] = "failed"
             self.ci_results["warnings"].append("Scan sécurité timeout")
@@ -272,18 +289,20 @@ class RoboticsCI:
             # Vérifier les fichiers de configuration
             config_files = ["docker-compose.yml", "Dockerfile", "deploy.yaml"]
             found_configs = []
-            
+
             for config_file in config_files:
                 if (self.project_path / config_file).exists():
                     found_configs.append(config_file)
-            
+
             if found_configs:
                 self.ci_results["deployment_status"] = "ready"
                 self.ci_results["metrics"]["config_files"] = found_configs
             else:
                 self.ci_results["deployment_status"] = "not_ready"
-                self.ci_results["warnings"].append("Aucun fichier de déploiement trouvé")
-        
+                self.ci_results["warnings"].append(
+                    "Aucun fichier de déploiement trouvé"
+                )
+
         except Exception as e:
             self.ci_results["deployment_status"] = "failed"
             self.ci_results["errors"].append(f"Erreur vérification déploiement: {e}")
@@ -291,24 +310,22 @@ class RoboticsCI:
     def _calculate_ci_score(self):
         """Calcule le score global de CI/CD"""
         score = 100
-        
+
         # Pénalités par statut
-        status_penalties = {
-            "failed": 25,
-            "unknown": 10,
-            "not_ready": 5
-        }
-        
-        for status in [self.ci_results["build_status"], 
-                      self.ci_results["test_status"],
-                      self.ci_results["lint_status"],
-                      self.ci_results["security_status"]]:
+        status_penalties = {"failed": 25, "unknown": 10, "not_ready": 5}
+
+        for status in [
+            self.ci_results["build_status"],
+            self.ci_results["test_status"],
+            self.ci_results["lint_status"],
+            self.ci_results["security_status"],
+        ]:
             score -= status_penalties.get(status, 0)
-        
+
         # Pénalités pour erreurs et avertissements
         score -= len(self.ci_results["errors"]) * 5
         score -= len(self.ci_results["warnings"]) * 2
-        
+
         self.ci_results["metrics"]["ci_score"] = max(0, score)
 
     def generate_ci_report(self) -> str:
@@ -316,7 +333,7 @@ class RoboticsCI:
         report = []
         report.append("# Rapport CI/CD Robotics")
         report.append("")
-        
+
         report.append("## Statuts")
         report.append(f"- 🏗️ Build: {self.ci_results['build_status']}")
         report.append(f"- 🧪 Tests: {self.ci_results['test_status']}")
@@ -324,31 +341,33 @@ class RoboticsCI:
         report.append(f"- 🔒 Sécurité: {self.ci_results['security_status']}")
         report.append(f"- 🚀 Déploiement: {self.ci_results['deployment_status']}")
         report.append("")
-        
-        report.append(f"## Score CI/CD: {self.ci_results['metrics'].get('ci_score', 0)}/100")
+
+        report.append(
+            f"## Score CI/CD: {self.ci_results['metrics'].get('ci_score', 0)}/100"
+        )
         report.append("")
-        
+
         if self.ci_results["errors"]:
             report.append("## Erreurs")
             for error in self.ci_results["errors"]:
                 report.append(f"- ❌ {error}")
             report.append("")
-        
+
         if self.ci_results["warnings"]:
             report.append("## Avertissements")
             for warning in self.ci_results["warnings"]:
                 report.append(f"- ⚠️ {warning}")
             report.append("")
-        
+
         if self.ci_results["metrics"]:
             report.append("## Métriques")
             for key, value in self.ci_results["metrics"].items():
                 report.append(f"- {key}: {value}")
-        
+
         return "\n".join(report)
 
 
 def run_robotics_ci(project_path: str = ".") -> Dict[str, Any]:
     """Fonction utilitaire pour exécuter la CI/CD robotics"""
     ci = RoboticsCI(project_path)
-    return ci.run_full_pipeline() 
+    return ci.run_full_pipeline()

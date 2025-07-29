@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from typing import Dict
 import logging
+from typing import Dict
 
 logger = logging.getLogger(__name__)
 
@@ -78,7 +78,6 @@ if __name__ == '__main__':
     logger.info("Démarrage de l'API {{ project_name }}")
     app.run(debug=True, host='0.0.0.0', port=5000)
 ''',
-
         "tts/tts.py": '''"""
 Module de synthèse vocale.
 """
@@ -159,7 +158,6 @@ def main():
 if __name__ == "__main__":
     main()
 ''',
-
         "memory/memory.py": '''"""
 Module de gestion mémoire et stockage.
 """
@@ -319,5 +317,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-'''
+''',
     }

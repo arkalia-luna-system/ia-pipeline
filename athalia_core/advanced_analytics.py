@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-from pathlib import Path
-from typing import Dict, Any
-import json
 import argparse
-from datetime import datetime
 import ast
+import json
 import logging
+from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict
 
 logger = logging.getLogger(__name__)
 
@@ -25,7 +25,7 @@ class AdvancedAnalytics:
             "coverage": {},
             "performance": {},
             "quality": {},
-            "evolution": {}
+            "evolution": {},
         }
 
     def run(self) -> Dict[str, Any]:
@@ -45,7 +45,7 @@ class AdvancedAnalytics:
         return {
             "metrics": self.metrics,
             "dashboard": dashboard,
-            "summary": self._generate_summary()
+            "summary": self._generate_summary(),
         }
 
     def _analyze_complexity(self):
@@ -56,7 +56,7 @@ class AdvancedAnalytics:
 
         for py_file in self.project_path.rglob("*.py"):
             try:
-                with open(py_file, 'r', encoding='utf-8') as f:
+                with open(py_file, "r", encoding="utf-8") as f:
                     tree = ast.parse(f.read())
 
                 complexity = self._calculate_complexity(tree)
@@ -95,12 +95,12 @@ class AdvancedAnalytics:
             "docstrings": 0,
             "comments": 0,
             "empty_lines": 0,
-            "files": 0
+            "files": 0,
         }
 
         for py_file in self.project_path.rglob("*.py"):
             try:
-                with open(py_file, 'r', encoding='utf-8') as f:
+                with open(py_file, "r", encoding="utf-8") as f:
                     content = f.read()
                     lines = content.splitlines()
                     tree = ast.parse(content)
@@ -124,7 +124,7 @@ class AdvancedAnalytics:
                     stripped = line.strip()
                     if stripped.startswith('"""') or stripped.startswith("'''"):
                         coverage_data["docstrings"] += 1
-                    elif stripped.startswith('#'):
+                    elif stripped.startswith("#"):
                         coverage_data["comments"] += 1
                     elif not stripped:
                         coverage_data["empty_lines"] += 1
@@ -136,17 +136,15 @@ class AdvancedAnalytics:
 
     def _analyze_performance(self):
         """Analyse les métriques de performance du projet"""
-        performance_data = {
-            "file_sizes": {},
-            "dependencies": 0
-        }
+        performance_data = {"file_sizes": {}, "dependencies": 0}
 
         # Analyser les tailles de fichiers
         for py_file in self.project_path.rglob("*.py"):
             try:
                 size = py_file.stat().st_size
-                performance_data["file_sizes"][str(
-                    py_file.relative_to(self.project_path))] = size
+                performance_data["file_sizes"][
+                    str(py_file.relative_to(self.project_path))
+                ] = size
             except Exception:
                 continue
 
@@ -154,9 +152,12 @@ class AdvancedAnalytics:
         req_file = self.project_path / "requirements.txt"
         if req_file.exists():
             try:
-                with open(req_file, 'r') as f:
-                    deps = [line.strip() for line in f if line.strip()
-                            and not line.startswith('#')]
+                with open(req_file, "r") as f:
+                    deps = [
+                        line.strip()
+                        for line in f
+                        if line.strip() and not line.startswith("#")
+                    ]
                     performance_data["dependencies"] = len(deps)
             except Exception:
                 pass
@@ -169,12 +170,12 @@ class AdvancedAnalytics:
             "total_lines": 0,
             "docstrings": 0,
             "comments": 0,
-            "empty_lines": 0
+            "empty_lines": 0,
         }
 
         for py_file in self.project_path.rglob("*.py"):
             try:
-                with open(py_file, 'r', encoding='utf-8') as f:
+                with open(py_file, "r", encoding="utf-8") as f:
                     lines = f.readlines()
 
                 quality_data["total_lines"] += len(lines)
@@ -183,7 +184,7 @@ class AdvancedAnalytics:
                     stripped = line.strip()
                     if stripped.startswith('"""') or stripped.startswith("'''"):
                         quality_data["docstrings"] += 1
-                    elif stripped.startswith('#'):
+                    elif stripped.startswith("#"):
                         quality_data["comments"] += 1
                     elif not stripped:
                         quality_data["empty_lines"] += 1
@@ -195,17 +196,17 @@ class AdvancedAnalytics:
 
     def _analyze_evolution(self):
         """Analyse lévolution du projet"""
-        evolution_data = {
-            "last_modified": None,
-            "total_files": 0
-        }
+        evolution_data = {"last_modified": None, "total_files": 0}
 
         # Compter les fichiers
         for py_file in self.project_path.rglob("*.py"):
             evolution_data["total_files"] += 1
             try:
                 mtime = py_file.stat().st_mtime
-                if not evolution_data["last_modified"] or mtime > evolution_data["last_modified"]:
+                if (
+                    not evolution_data["last_modified"]
+                    or mtime > evolution_data["last_modified"]
+                ):
                     evolution_data["last_modified"] = mtime
             except Exception:
                 continue
@@ -215,20 +216,20 @@ class AdvancedAnalytics:
     def _generate_dashboard(self) -> str:
         """Génère un dashboard HTML"""
         metrics = self.metrics
-        complexity = metrics.get('complexity', {})
-        coverage = metrics.get('coverage', {})
-        quality = metrics.get('quality', {})
-        performance = metrics.get('performance', {})
-        average = complexity.get('average', 0.0)
-        total_files = complexity.get('total_files', 0)
-        total_lines = coverage.get('total_lines', 0)
-        docstrings = coverage.get('docstrings', 0)
-        files = coverage.get('files', 0)
-        comments = quality.get('comments', 0)
-        empty_lines = quality.get('empty_lines', 0)
-        total_quality_lines = quality.get('total_lines', 1)
-        perf_dependencies = performance.get('dependencies', 0)
-        perf_file_sizes = performance.get('file_sizes', {})
+        complexity = metrics.get("complexity", {})
+        coverage = metrics.get("coverage", {})
+        quality = metrics.get("quality", {})
+        performance = metrics.get("performance", {})
+        average = complexity.get("average", 0.0)
+        total_files = complexity.get("total_files", 0)
+        total_lines = coverage.get("total_lines", 0)
+        docstrings = coverage.get("docstrings", 0)
+        files = coverage.get("files", 0)
+        comments = quality.get("comments", 0)
+        empty_lines = quality.get("empty_lines", 0)
+        total_quality_lines = quality.get("total_lines", 1)
+        perf_dependencies = performance.get("dependencies", 0)
+        perf_file_sizes = performance.get("file_sizes", {})
 
         dashboard_html = f"""
 <!DOCTYPE html>
@@ -279,7 +280,7 @@ class AdvancedAnalytics:
 """
 
         dashboard_path = self.project_path / "dashboard" / "analytics_dashboard.html"
-        with open(dashboard_path, 'w', encoding='utf-8') as f:
+        with open(dashboard_path, "w", encoding="utf-8") as f:
             f.write(dashboard_html)
 
         return str(dashboard_path)
@@ -287,19 +288,19 @@ class AdvancedAnalytics:
     def _generate_summary(self) -> str:
         """Génère un résumé des métriques"""
         metrics = self.metrics
-        complexity = metrics.get('complexity', {})
-        coverage = metrics.get('coverage', {})
-        quality = metrics.get('quality', {})
-        performance = metrics.get('performance', {})
-        average = complexity.get('average', 0.0)
-        total_files = complexity.get('total_files', 0)
-        total_lines = coverage.get('total_lines', 0)
-        docstrings = coverage.get('docstrings', 0)
-        files = coverage.get('files', 0)
-        comments = quality.get('comments', 0)
-        total_quality_lines = quality.get('total_lines', 1)
-        perf_dependencies = performance.get('dependencies', 0)
-        perf_file_sizes = performance.get('file_sizes', {})
+        complexity = metrics.get("complexity", {})
+        coverage = metrics.get("coverage", {})
+        quality = metrics.get("quality", {})
+        performance = metrics.get("performance", {})
+        average = complexity.get("average", 0.0)
+        total_files = complexity.get("total_files", 0)
+        total_lines = coverage.get("total_lines", 0)
+        docstrings = coverage.get("docstrings", 0)
+        files = coverage.get("files", 0)
+        comments = quality.get("comments", 0)
+        total_quality_lines = quality.get("total_lines", 1)
+        perf_dependencies = performance.get("dependencies", 0)
+        perf_file_sizes = performance.get("file_sizes", {})
 
         summary = f"""
 📊 ANALYTICS AVANCÉE-{self.project_path.name}
@@ -333,10 +334,11 @@ class AdvancedAnalytics:
 
 def enrich_genesis_md(outdir, infos, perf_log=None, test_log=None):
     from pathlib import Path
-    genesis = Path(outdir) / 'GENESIS.f(f'
-    content = genesis.read_text() if genesis.exists() else ''
-    if 'Audit IA' not in content:
-        content += '\nAudit IA\n'
+
+    genesis = Path(outdir) / "GENESIS.f(f"
+    content = genesis.read_text() if genesis.exists() else ""
+    if "Audit IA" not in content:
+        content += "\nAudit IA\n"
     genesis.write_text(content)
     return str(genesis)
 

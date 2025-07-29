@@ -4,10 +4,11 @@ Tests CI ultra-rapides pour Athalia
 Tests essentiels qui ne doivent jamais bloquer le CI
 """
 
-import pytest
 import os
 import sys
 from pathlib import Path
+
+import pytest
 
 
 class TestCIUltraFast:

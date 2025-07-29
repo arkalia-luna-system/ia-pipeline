@@ -4,9 +4,11 @@
 Tests pour le linting flake8
 """
 
-import pytest
 import subprocess
 import sys
+
+import pytest
+
 
 def test_flake8_clean():
     """Test que le code passe flake8 sans erreurs"""

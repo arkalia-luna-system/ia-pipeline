@@ -2,10 +2,11 @@
 Test de détection des patterns de sécurité dangereux
 Vérifie qu'il n'y a pas de code dangereux dans le projet
 """
-import pytest
+import os
 import re
 from pathlib import Path
-import os
+
+import pytest
 
 
 class TestSecurityPatterns:

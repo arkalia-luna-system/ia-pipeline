@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import os
 import importlib.util
 import logging
+import os
 
 logger = logging.getLogger(__name__)
 
@@ -17,7 +17,7 @@ def list_plugins():
     """Liste tous les plugins disponibles."""
     plugins = []
     for fname in os.listdir(PLUGINS_DIR):
-        if fname.endswith('.py') and fname != '__init__.py':
+        if fname.endswith(".py") and fname != "__init__.py":
             plugins.append(fname[:-3])
     return plugins
 
@@ -39,10 +39,10 @@ def run_all_plugins():
     for name in list_plugins():
         try:
             mod = load_plugin(name)
-            if hasattr(mod, 'run'):
+            if hasattr(mod, "run"):
                 results[name] = mod.run()
             else:
-                results[name] = 'Pas de fonction run()'
+                results[name] = "Pas de fonction run()"
         except Exception as e:
             results[name] = f"Erreur: {e}"
     return results

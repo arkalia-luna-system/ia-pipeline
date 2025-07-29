@@ -6,11 +6,12 @@ Tests pour le système d'audit intelligent Athalia
 import os
 import shutil
 import tempfile
+
 import pytest
 
 try:
-    from athalia_core.intelligent_auditor import IntelligentAuditor
     from athalia_core.audit import audit_project_intelligent
+    from athalia_core.intelligent_auditor import IntelligentAuditor
     ProjectAuditor = IntelligentAuditor  # Alias pour compatibilité
     generate_audit_report = None
 except ImportError:

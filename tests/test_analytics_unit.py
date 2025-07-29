@@ -1,6 +1,8 @@
 import unittest
 from unittest.mock import patch
+
 from athalia_core import analytics
+
 
 class TestAnalytics(unittest.TestCase):
     def setUp(self):
@@ -11,8 +13,8 @@ class TestAnalytics(unittest.TestCase):
         ]
 
     def test_generate_heatmap_data(self):
-        import tempfile
         import os
+        import tempfile
         with tempfile.TemporaryDirectory() as tmpdir:
             # Créer des fichiers de test
             open(os.path.join(tmpdir, 'main.py'), 'w').close()
@@ -23,8 +25,8 @@ class TestAnalytics(unittest.TestCase):
             self.assertIn('max_complexity', data)
 
     def test_generate_technical_debt_analysis(self):
-        import tempfile
         import os
+        import tempfile
         with tempfile.TemporaryDirectory() as tmpdir:
             # Créer des fichiers de test
             with open(os.path.join(tmpdir, 'main.py'), 'w') as f:
@@ -35,8 +37,8 @@ class TestAnalytics(unittest.TestCase):
             self.assertIn('recommendations', data)
 
     def test_generate_analytics_html(self):
-        import tempfile
         import os
+        import tempfile
         with tempfile.TemporaryDirectory() as tmpdir:
             # Créer des fichiers de test
             open(os.path.join(tmpdir, 'main.py'), 'w').close()
@@ -46,8 +48,8 @@ class TestAnalytics(unittest.TestCase):
             self.assertIn('Analytics', html)
 
     def test_analyze_project(self):
-        import tempfile
         import os
+        import tempfile
         with tempfile.TemporaryDirectory() as tmpdir:
             # Créer des fichiers de test
             open(os.path.join(tmpdir, 'main.py'), 'w').close()

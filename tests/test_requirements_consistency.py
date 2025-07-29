@@ -2,9 +2,10 @@
 Test de cohérence des dépendances
 Vérifie que les fichiers de dépendances sont cohérents
 """
-import pytest
-from pathlib import Path
 import os
+from pathlib import Path
+
+import pytest
 
 
 class TestRequirementsConsistency:

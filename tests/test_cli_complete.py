@@ -6,19 +6,20 @@ Couverture maximale avec tests professionnels
 """
 
 import os
+import shutil
 import sys
 import tempfile
-import shutil
 from pathlib import Path
-from unittest.mock import Mock, patch, MagicMock, mock_open
-import pytest
+from unittest.mock import MagicMock, Mock, mock_open, patch
+
 import click
+import pytest
 import yaml
 
 # Ajouter le répertoire parent au path pour les imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from athalia_core.cli import cli, generate, audit, ai_status, test_ai  # noqa: E402
+from athalia_core.cli import ai_status, audit, cli, generate, test_ai  # noqa: E402
 
 
 class TestCLIComplete:

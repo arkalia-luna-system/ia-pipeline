@@ -1,6 +1,7 @@
-import streamlit as st
-import pandas as pd
 import os
+
+import pandas as pd
+import streamlit as st
 
 
 def show_benchmarks():
@@ -9,7 +10,8 @@ def show_benchmarks():
     if not os.path.exists(csv_path):
         st.warning(
             "Aucun benchmark_results.csv trouvé. Lancez le script de benchmark "
-            "pour générer les résultats.")
+            "pour générer les résultats."
+        )
         return
 
     try:
@@ -27,8 +29,7 @@ def show_benchmarks():
         # Filtres
         if "model" in available_columns:
             model = st.selectbox(
-                "Filtrer par modèle",
-                ["Tous"] + sorted(df["model"].unique())
+                "Filtrer par modèle", ["Tous"] + sorted(df["model"].unique())
             )
             if model != "Tous":
                 df = df[df["model"] == model]

@@ -10,8 +10,7 @@ from datetime import datetime
 from pathlib import Path
 
 logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
 )
 logger = logging.getLogger(__name__)
 
@@ -27,81 +26,97 @@ class DocumentationCleaner:
         # Documents à conserver (actuels)
         self.current_docs = {
             # Principaux
-            'README.md', 'INDEX_PRINCIPAL.md', 'INSTALLATION.md', 'USAGE.md', 'API.md',
+            "README.md",
+            "INDEX_PRINCIPAL.md",
+            "INSTALLATION.md",
+            "USAGE.md",
+            "API.md",
             # Plans d'action
-            'PHASE_1_URGENT_TERMINEE.md', 'PLAN_ACTION_IMPORTANT.md',
-            'PLAN_ACTION_AMELIORATION.md', 'PLAN_ACTION_URGENT.md', 'CAHIER_CHARGES_COMPLET.md',
+            "PHASE_1_URGENT_TERMINEE.md",
+            "PLAN_ACTION_IMPORTANT.md",
+            "PLAN_ACTION_AMELIORATION.md",
+            "PLAN_ACTION_URGENT.md",
+            "CAHIER_CHARGES_COMPLET.md",
             # Guides techniques
-            'MODULES.md', 'TESTS_GUIDE.md', 'PLUGINS_GUIDE.md', 'DEPLOYMENT.md',
-            'DEVELOPER_GUIDE.md', 'CONTRIBUTING.md', 'GIT_WORKFLOW.md', 'BEST_PRACTICES.md',
+            "MODULES.md",
+            "TESTS_GUIDE.md",
+            "PLUGINS_GUIDE.md",
+            "DEPLOYMENT.md",
+            "DEVELOPER_GUIDE.md",
+            "CONTRIBUTING.md",
+            "GIT_WORKFLOW.md",
+            "BEST_PRACTICES.md",
             # Robotics et IA
-            'ROBOTICS_GUIDE.md', 'REACHY_SETUP_GUIDE.md', 'RESUME_TEST_PROMPTS.md',
-            'UNIFIED_ORCHESTRATOR.md', 'ALIAS_UNIFIED.md',
+            "ROBOTICS_GUIDE.md",
+            "REACHY_SETUP_GUIDE.md",
+            "RESUME_TEST_PROMPTS.md",
+            "UNIFIED_ORCHESTRATOR.md",
+            "ALIAS_UNIFIED.md",
             # Analyses et rapports
-            'RAPPORT_FINAL.md', 'AUDIT_COMPLET_PROJET.md', 'INVENTAIRE_COMPLET.md',
-            'ANALYSE_PLAN_OPTIMISATION_AVANCE.md', 'OPTIMISATION_PERFORMANCES.md',
-            'ORGANISATION_WORKSPACE.md',
+            "RAPPORT_FINAL.md",
+            "AUDIT_COMPLET_PROJET.md",
+            "INVENTAIRE_COMPLET.md",
+            "ANALYSE_PLAN_OPTIMISATION_AVANCE.md",
+            "OPTIMISATION_PERFORMANCES.md",
+            "ORGANISATION_WORKSPACE.md",
             # Support
-            'FAQ.md', 'TROUBLESHOOTING.md'
+            "FAQ.md",
+            "TROUBLESHOOTING.md",
         }
 
         # Documents obsolètes à archiver
         self.obsolete_docs = [
-            'INDEX.md',  # Remplacé par INDEX_PRINCIPAL.md
-            'dashboard.md',  # Remplacé par dashboard optimisé
-            'ROADMAP.md',  # Contenu obsolète
-            'GENESIS.md',  # Historique
-            'FINAL_SUMMARY.md',  # Remplacé par PHASE_1_URGENT_TERMINEE.md
-            'FINAL_SYSTEM_STATUS.md',  # Remplacé par RAPPORT_FINAL.md
-            'USER_GUIDE.md',  # Remplacé par USAGE.md
-            'ALIAS.md',  # Remplacé par ALIAS_UNIFIED.md
-            'INSTALL.md',  # Remplacé par INSTALLATION.md
-            'API_REFERENCE.md',  # Remplacé par API.md
-            'CLEANUP_REPORT.md',  # Historique
-            'CI_PROBLEMS_ANALYSIS.md',  # Historique
-            'NETTOYAGE_FINAL.md',  # Historique
-            'CORRECTIONS_EFFECTUEES.md',  # Historique
-            'PROCHAINES_ETAPES.md',  # Remplacé par PLAN_ACTION_*.md
-            'STATUT_ACTUEL.md',  # Remplacé par PHASE_1_URGENT_TERMINEE.md
-            'INVENTAIRE_COMPLET_SYSTEME.md',  # Remplacé par INVENTAIRE_COMPLET.md
-            'ORGANISATION_PROJET.md',  # Remplacé par ORGANISATION_WORKSPACE.md
-            'GUIDE_TEST_PLUGIN_VSCODE.md',  # Spécifique, à archiver
-            'GUIDE_VALIDATION.md',  # Remplacé par TESTS_GUIDE.md
-            'GUIDE_VALIDATION_TEMPS_REEL.md',  # Historique
-            'GUIDE_PROMPTS_TEST.md',  # Remplacé par RESUME_TEST_PROMPTS.md
-            'INTELLIGENT_MODULES.md',  # Remplacé par MODULES.md
-            'ORCHESTRATION_CLARIFICATION.md',  # Historique
-            'RAPPORT_AUDIT_FINAL.md',  # Remplacé par AUDIT_COMPLET_PROJET.md
-            'RAPPORT_COHERENCE_DOCUMENTATION.md',  # Historique
-            'RAPPORT_NETTOYAGE_COMPLET.md',  # Historique
-            'RAPPORT_RANGEMENT_RACINE.md',  # Historique
-            'RAPPORT_OPTIMISATION_FINALE.md',  # Historique
-            'RAPPORT_OPTIMISATION_FINALE_V2.md',  # Historique
-            'RAPPORT_FINAL_COMPLET.md',  # Remplacé par RAPPORT_FINAL.md
-            'PROCHAINES_ETAPES_FINALES.md',  # Remplacé par PLAN_ACTION_*.md
-            'RAPPORT_CORRECTIONS_AUTO_TESTER.md',  # Historique
-            'RAPPORT_FINAL_VALIDATION_PROFESSIONNELLE.md',  # Historique
-            'RAPPORT_PROGRESSION_VALIDATION.md',  # Historique
-            'RAPPORT_FINAL_CORRECTIONS.md',  # Historique
-            'RAPPORT_FINAL_OPTIMISATION.md',  # Historique
-            'RAPPORT_FINAL_CORRECTIONS.md',  # Historique
+            "INDEX.md",  # Remplacé par INDEX_PRINCIPAL.md
+            "dashboard.md",  # Remplacé par dashboard optimisé
+            "ROADMAP.md",  # Contenu obsolète
+            "GENESIS.md",  # Historique
+            "FINAL_SUMMARY.md",  # Remplacé par PHASE_1_URGENT_TERMINEE.md
+            "FINAL_SYSTEM_STATUS.md",  # Remplacé par RAPPORT_FINAL.md
+            "USER_GUIDE.md",  # Remplacé par USAGE.md
+            "ALIAS.md",  # Remplacé par ALIAS_UNIFIED.md
+            "INSTALL.md",  # Remplacé par INSTALLATION.md
+            "API_REFERENCE.md",  # Remplacé par API.md
+            "CLEANUP_REPORT.md",  # Historique
+            "CI_PROBLEMS_ANALYSIS.md",  # Historique
+            "NETTOYAGE_FINAL.md",  # Historique
+            "CORRECTIONS_EFFECTUEES.md",  # Historique
+            "PROCHAINES_ETAPES.md",  # Remplacé par PLAN_ACTION_*.md
+            "STATUT_ACTUEL.md",  # Remplacé par PHASE_1_URGENT_TERMINEE.md
+            "INVENTAIRE_COMPLET_SYSTEME.md",  # Remplacé par INVENTAIRE_COMPLET.md
+            "ORGANISATION_PROJET.md",  # Remplacé par ORGANISATION_WORKSPACE.md
+            "GUIDE_TEST_PLUGIN_VSCODE.md",  # Spécifique, à archiver
+            "GUIDE_VALIDATION.md",  # Remplacé par TESTS_GUIDE.md
+            "GUIDE_VALIDATION_TEMPS_REEL.md",  # Historique
+            "GUIDE_PROMPTS_TEST.md",  # Remplacé par RESUME_TEST_PROMPTS.md
+            "INTELLIGENT_MODULES.md",  # Remplacé par MODULES.md
+            "ORCHESTRATION_CLARIFICATION.md",  # Historique
+            "RAPPORT_AUDIT_FINAL.md",  # Remplacé par AUDIT_COMPLET_PROJET.md
+            "RAPPORT_COHERENCE_DOCUMENTATION.md",  # Historique
+            "RAPPORT_NETTOYAGE_COMPLET.md",  # Historique
+            "RAPPORT_RANGEMENT_RACINE.md",  # Historique
+            "RAPPORT_OPTIMISATION_FINALE.md",  # Historique
+            "RAPPORT_OPTIMISATION_FINALE_V2.md",  # Historique
+            "RAPPORT_FINAL_COMPLET.md",  # Remplacé par RAPPORT_FINAL.md
+            "PROCHAINES_ETAPES_FINALES.md",  # Remplacé par PLAN_ACTION_*.md
+            "RAPPORT_CORRECTIONS_AUTO_TESTER.md",  # Historique
+            "RAPPORT_FINAL_VALIDATION_PROFESSIONNELLE.md",  # Historique
+            "RAPPORT_PROGRESSION_VALIDATION.md",  # Historique
+            "RAPPORT_FINAL_CORRECTIONS.md",  # Historique
+            "RAPPORT_FINAL_OPTIMISATION.md",  # Historique
+            "RAPPORT_FINAL_CORRECTIONS.md",  # Historique
         ]
 
     def scan_documentation(self):
         """Scanne la documentation et catégorise les fichiers"""
         all_files = list(self.docs_dir.glob("*.md"))
 
-        categories = {
-            'current': [],
-            'obsolete': [],
-            'unknown': []
-        }
+        categories = {"current": [], "obsolete": [], "unknown": []}
 
         for file_path in all_files:
             file_name = file_path.name
 
             # Ignorer les fichiers système macOS
-            if file_name.startswith('._'):
+            if file_name.startswith("._"):
                 continue
 
             if file_name in self.current_docs:
@@ -138,18 +153,18 @@ class DocumentationCleaner:
     def create_documentation_report(self, categories, archived_count):
         """Crée un rapport de nettoyage de la documentation"""
         report = {
-            'timestamp': datetime.now().isoformat(),
-            'summary': {
-                'current_docs': len(categories['current']),
-                'obsolete_docs': len(categories['obsolete']),
-                'unknown_docs': len(categories['unknown']),
-                'archived_count': archived_count
+            "timestamp": datetime.now().isoformat(),
+            "summary": {
+                "current_docs": len(categories["current"]),
+                "obsolete_docs": len(categories["obsolete"]),
+                "unknown_docs": len(categories["unknown"]),
+                "archived_count": archived_count,
             },
-            'categories': {
-                'current': [str(f) for f in categories['current']],
-                'obsolete': [str(f) for f in categories['obsolete']],
-                'unknown': [str(f) for f in categories['unknown']]
-            }
+            "categories": {
+                "current": [str(f) for f in categories["current"]],
+                "obsolete": [str(f) for f in categories["obsolete"]],
+                "unknown": [str(f) for f in categories["unknown"]],
+            },
         }
 
         return report
@@ -176,15 +191,15 @@ class DocumentationCleaner:
 
         if not dry_run:
             # Archiver les documents obsolètes
-            archived_count = self.archive_obsolete_docs(categories['obsolete'])
+            archived_count = self.archive_obsolete_docs(categories["obsolete"])
 
         # Générer le rapport
         report = self.create_documentation_report(categories, archived_count)
 
         # Sauvegarder le rapport
-        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         report_file = self.docs_dir / f"cleanup_report_{timestamp}.json"
-        with open(report_file, 'w', encoding='utf-8') as f:
+        with open(report_file, "w", encoding="utf-8") as f:
             json.dump(report, f, indent=2, ensure_ascii=False)
 
         # Afficher le résumé
@@ -215,4 +230,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main() 
+    main()

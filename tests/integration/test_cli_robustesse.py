@@ -5,14 +5,15 @@ Tests d'intégration CLI robuste pour Athalia.
 Tests professionnels pour la CI/CD.
 """
 
-import sys
 import os
-import time
 import subprocess
-import pytest
+import sys
 import tempfile
+import time
 from pathlib import Path
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
+
+import pytest
 
 # Ajouter le répertoire parent au path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))

@@ -4,25 +4,26 @@
 Orchestrateur unifié pour Athalia - Industrialisation IA complète
 """
 
-from .intelligent_analyzer import IntelligentAnalyzer
-from .security_auditor import SecurityAuditor
-from .project_importer import ProjectImporter
-from .intelligent_auditor import IntelligentAuditor
-from .code_linter import CodeLinter
-from .auto_tester import AutoTester
-from .auto_documenter import AutoDocumenter
-from .auto_cleaner import AutoCleaner
-from .auto_cicd import AutoCICD
-from .advanced_analytics import AdvancedAnalytics
 import argparse
 import json
 import logging
 import sys
 import time
-from datetime import datetime
 from dataclasses import dataclass
+from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Any, Optional
+from typing import Any, Dict, List, Optional
+
+from .advanced_analytics import AdvancedAnalytics
+from .auto_cicd import AutoCICD
+from .auto_cleaner import AutoCleaner
+from .auto_documenter import AutoDocumenter
+from .auto_tester import AutoTester
+from .code_linter import CodeLinter
+from .intelligent_analyzer import IntelligentAnalyzer
+from .intelligent_auditor import IntelligentAuditor
+from .project_importer import ProjectImporter
+from .security_auditor import SecurityAuditor
 
 # Configuration du logging
 logging.basicConfig(level=logging.INFO)
@@ -35,11 +36,11 @@ PHASE2_AVAILABLE = True
 
 # Imports robotiques (optionnels)
 try:
-    from .robotics.reachy_auditor import ReachyAuditor
-    from .robotics.ros2_validator import ROS2Validator
     from .robotics.docker_robotics import DockerRoboticsManager
-    from .robotics.rust_analyzer import RustAnalyzer
+    from .robotics.reachy_auditor import ReachyAuditor
     from .robotics.robotics_ci import RoboticsCI
+    from .robotics.ros2_validator import ROS2Validator
+    from .robotics.rust_analyzer import RustAnalyzer
 
     ROBOTICS_AVAILABLE = True
 except ImportError:

@@ -3,8 +3,8 @@
 Caching prédictif pour Athalia/Arkalia
 - Anticipation contextuelle, pré-génération, invalidation intelligente, stats
 """
-from typing import Dict, Any, Callable, Optional
 import time
+from typing import Any, Callable, Dict, Optional
 
 
 class PredictiveCache:
@@ -20,17 +20,17 @@ class PredictiveCache:
     def get(self, key: str) -> Optional[Any]:
         entry = self.cache.get(key)
         if entry:
-            if self.ttl and time.time() - entry['time'] > self.ttl:
+            if self.ttl and time.time() - entry["time"] > self.ttl:
                 self.invalidate(key)
                 self.misses += 1
                 return None
             self.hits += 1
-            return entry['value']
+            return entry["value"]
         self.misses += 1
         return None
 
     def set(self, key: str, value: Any):
-        self.cache[key] = {'value': value, 'time': time.time()}
+        self.cache[key] = {"value": value, "time": time.time()}
 
     def predict_key(self, context: Dict) -> str:
         # Hash du contexte pour générer une clé unique
@@ -57,8 +57,8 @@ class PredictiveCache:
         total = self.hits + self.misses
         hit_rate = self.hits / total if total else 0
         return {
-            'hits': self.hits,
-            'misses': self.misses,
-            'hit_rate': hit_rate,
-            'size': len(self.cache)
+            "hits": self.hits,
+            "misses": self.misses,
+            "hit_rate": hit_rate,
+            "size": len(self.cache),
         }

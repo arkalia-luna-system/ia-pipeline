@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from typing import Dict
 import logging
+from typing import Dict
 
 logger = logging.getLogger(__name__)
 
@@ -89,7 +89,6 @@ def main():
 if __name__ == "__main__":
     main()
 ''',
-
         "audio/main.py": '''"""
 Module audio pour projet artistique.
 Gère la musique et la synchronisation.
@@ -156,7 +155,6 @@ def main():
 if __name__ == "__main__":
     main()
 ''',
-
         "visualization/main.py": '''"""
 Module de visualisation pour projet artistique.
 Gère les effets visuels et particules.
@@ -253,5 +251,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-'''
+''',
     }

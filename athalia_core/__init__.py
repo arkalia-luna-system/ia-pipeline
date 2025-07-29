@@ -5,36 +5,41 @@ Athalia Dev Setup - Système d'industrialisation et d'intelligence pour projets 
 Version 2.0.0
 """
 
-# Imports principaux
-from .athalia_orchestrator import AthaliaOrchestrator
-from .main import main
-from .cli import cli
-
-# Gestion d'erreurs
-from .error_codes import ErrorCode, ErrorSeverity
-from .error_handling import AthaliaError, ErrorHandler, handle_error, raise_athalia_error
+# Analytics et performance
+from .advanced_analytics import AdvancedAnalytics
 
 # IA et génération
 from .ai_robust import RobustAI
-from .generation import generate_project, generate_blueprint_mock
+
+# Imports principaux
+from .athalia_orchestrator import AthaliaOrchestrator
+from .auto_cicd import AutoCICD
+from .auto_cleaner import AutoCleaner
+from .auto_documenter import AutoDocumenter
 
 # Modules automatiques
 from .auto_tester import AutoTester
-from .auto_documenter import AutoDocumenter
-from .auto_cleaner import AutoCleaner
-from .auto_cicd import AutoCICD
+from .cli import cli
+from .code_linter import CodeLinter
 
-# Analytics et performance
-from .advanced_analytics import AdvancedAnalytics
+# Configuration et utilitaires
+from .config_manager import ConfigManager
+from .correction_optimizer import CorrectionOptimizer
+
+# Gestion d'erreurs
+from .error_codes import ErrorCode, ErrorSeverity
+from .error_handling import (
+    AthaliaError,
+    ErrorHandler,
+    handle_error,
+    raise_athalia_error,
+)
+from .generation import generate_blueprint_mock, generate_project
+from .main import main
 from .performance_analyzer import PerformanceAnalyzer
 
 # Sécurité et qualité
 from .security_auditor import SecurityAuditor
-from .code_linter import CodeLinter
-from .correction_optimizer import CorrectionOptimizer
-
-# Configuration et utilitaires
-from .config_manager import ConfigManager
 
 # Version
 __version__ = "2.0.0"
@@ -44,38 +49,32 @@ __description__ = "Système d'industrialisation et d'intelligence pour projets I
 # Exports principaux
 __all__ = [
     # Orchestrateur principal
-    'AthaliaOrchestrator',
-    'main',
-    'cli',
-    
+    "AthaliaOrchestrator",
+    "main",
+    "cli",
     # Gestion d'erreurs
-    'ErrorCode',
-    'ErrorSeverity', 
-    'AthaliaError',
-    'ErrorHandler',
-    'handle_error',
-    'raise_athalia_error',
-    
+    "ErrorCode",
+    "ErrorSeverity",
+    "AthaliaError",
+    "ErrorHandler",
+    "handle_error",
+    "raise_athalia_error",
     # IA et génération
-    'RobustAI',
-    'generate_project',
-    'generate_blueprint_mock',
-    
+    "RobustAI",
+    "generate_project",
+    "generate_blueprint_mock",
     # Modules automatiques
-    'AutoTester',
-    'AutoDocumenter', 
-    'AutoCleaner',
-    'AutoCICD',
-    
+    "AutoTester",
+    "AutoDocumenter",
+    "AutoCleaner",
+    "AutoCICD",
     # Analytics et performance
-    'AdvancedAnalytics',
-    'PerformanceAnalyzer',
-    
+    "AdvancedAnalytics",
+    "PerformanceAnalyzer",
     # Sécurité et qualité
-    'SecurityAuditor',
-    'CodeLinter',
-    'CorrectionOptimizer',
-    
+    "SecurityAuditor",
+    "CodeLinter",
+    "CorrectionOptimizer",
     # Configuration et utilitaires
-    'ConfigManager',
+    "ConfigManager",
 ]

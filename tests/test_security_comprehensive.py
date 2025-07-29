@@ -5,11 +5,12 @@
 Tests complets pour améliorer la couverture du module security.py.
 """
 
-import pytest
-import tempfile
 import os
+import tempfile
 from pathlib import Path
-from unittest.mock import Mock, patch, mock_open
+from unittest.mock import Mock, mock_open, patch
+
+import pytest
 
 # Import du module à tester
 from athalia_core.security import security_audit_project

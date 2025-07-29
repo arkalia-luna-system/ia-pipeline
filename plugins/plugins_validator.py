@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import os
-import sys
 import importlib.util
 import logging
-from typing import Dict, Any
+import os
+import sys
+from typing import Any, Dict
 
 logger = logging.getLogger(__name__)
 
@@ -19,7 +19,8 @@ def validate_plugin(path: str) -> Dict[str, Any]:
         spec = importlib.util.spec_from_file_location("plugin_module", path)
         if spec is None or spec.loader is None:
             result["errors"].append(
-                "Impossible de charger le module (spec ou loader manquant)")
+                "Impossible de charger le module (spec ou loader manquant)"
+            )
             return result
         module = importlib.util.module_from_spec(spec)
         sys.modules["plugin_module"] = module
@@ -37,19 +38,20 @@ def validate_plugin(path: str) -> Dict[str, Any]:
         found_subclass = False
         for attr in dir(module):
             obj = getattr(module, attr)
-            if isinstance(
-                    obj,
-                    type) and issubclass(
-                    obj,
-                    plugin_base) and obj is not plugin_base:
+            if (
+                isinstance(obj, type)
+                and issubclass(obj, plugin_base)
+                and obj is not plugin_base
+            ):
                 found_subclass = True
-                if hasattr(obj, 'run'):
+                if hasattr(obj, "run"):
                     result["class_name"] = obj.__name__
                     result["f"] = True
                     return result
                 else:
                     result["errors"].append(
-                        f"Classe {obj.__name__} sans méthode run / f")
+                        f"Classe {obj.__name__} sans méthode run / f"
+                    )
         if not found_subclass:
             result["errors"].append("Aucune classe plugin valide trouvée")
         return result

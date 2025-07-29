@@ -13,18 +13,18 @@ from typing import Optional
 def generate_blueprint_mock(idea: str = "", *args, **kwargs):
     """Génère un blueprint mock pour les tests."""
     return {
-        'project_name': extract_project_name(idea),
-        'description': idea or 'Projet de test',
-        'project_type': 'generic',
-        'modules': ['core', 'tests'],
-        'structure': ['src/', 'tests/', 'README.md'],
-        'dependencies': ['numpy', 'pandas'],
-        'prompts': ['prompts/main.yaml'],
-        'booster_ia': True,
-        'docker': False,
-        'ci_cd': False,
-        'tests': True,
-        'documentation': True
+        "project_name": extract_project_name(idea),
+        "description": idea or "Projet de test",
+        "project_type": "generic",
+        "modules": ["core", "tests"],
+        "structure": ["src/", "tests/", "README.md"],
+        "dependencies": ["numpy", "pandas"],
+        "prompts": ["prompts/main.yaml"],
+        "booster_ia": True,
+        "docker": False,
+        "ci_cd": False,
+        "tests": True,
+        "documentation": True,
     }
 
 
@@ -32,11 +32,11 @@ def extract_project_name(idea: str) -> str:
     """Extrait un nom de projet de l'idée."""
     # Cherche des mots clés spécifiques
     patterns = [
-        r'calculatrice\s+(\w+)',
-        r'application\s+(\w+)',
-        r'robot\s+(\w+)',
-        r'api\s+(\w+)',
-        r'(\w+)\s+avec'
+        r"calculatrice\s+(\w+)",
+        r"application\s+(\w+)",
+        r"robot\s+(\w+)",
+        r"api\s+(\w+)",
+        r"(\w+)\s+avec",
     ]
 
     for pattern in patterns:
@@ -55,14 +55,14 @@ def extract_project_name(idea: str) -> str:
 
 def generate_project(blueprint: dict, outdir, *args, **kwargs):
     """Génère un projet à partir d'un blueprint."""
-    project_name = blueprint.get('project_name', 'projet_ia')
+    project_name = blueprint.get("project_name", "projet_ia")
     project_path = Path(outdir) / project_name
     project_path.mkdir(parents=True, exist_ok=True)
 
     # Créer la structure de base
-    (project_path / 'src').mkdir(exist_ok=True)
-    (project_path / 'tests').mkdir(exist_ok=True)
-    (project_path / 'docs').mkdir(exist_ok=True)
+    (project_path / "src").mkdir(exist_ok=True)
+    (project_path / "tests").mkdir(exist_ok=True)
+    (project_path / "docs").mkdir(exist_ok=True)
 
     # Générer les fichiers de base
     generate_readme(blueprint, project_path)
@@ -74,8 +74,8 @@ def generate_project(blueprint: dict, outdir, *args, **kwargs):
 
 def generate_readme(blueprint: dict, project_path: Path = None) -> str:
     """Génère un README basique."""
-    project_name = blueprint.get('project_name', 'projet_ia')
-    description = blueprint.get('description', 'Projet généré par Athalia')
+    project_name = blueprint.get("project_name", "projet_ia")
+    description = blueprint.get("description", "Projet généré par Athalia")
 
     readme_content = f"""# {project_name}
 
@@ -104,18 +104,18 @@ python -m pytest tests/
 """
 
     if project_path:
-        readme_file = project_path / 'README.md'
-        readme_file.write_text(readme_content, encoding='utf-8')
+        readme_file = project_path / "README.md"
+        readme_file.write_text(readme_content, encoding="utf-8")
 
     return readme_content
 
 
 def generate_main_code(blueprint: dict, project_path: Path = None) -> str:
     """Génère le code principal."""
-    project_name = blueprint.get('project_name', 'projet_ia')
-    project_type = blueprint.get('project_type', 'generic')
+    project_name = blueprint.get("project_name", "projet_ia")
+    project_type = blueprint.get("project_type", "generic")
 
-    if project_type == 'api':
+    if project_type == "api":
         main_content = f"""#!/usr/bin/env python3
 \"\"\"
 {project_name} - API avec FastAPI
@@ -172,16 +172,16 @@ if __name__ == "__main__":
 """
 
     if project_path:
-        main_file = project_path / 'src' / 'main.py'
+        main_file = project_path / "src" / "main.py"
         main_file.parent.mkdir(exist_ok=True)
-        main_file.write_text(main_content, encoding='utf-8')
+        main_file.write_text(main_content, encoding="utf-8")
 
     return main_content
 
 
 def generate_test_code(blueprint: dict, project_path: Path = None) -> str:
     """Génère le code de test."""
-    project_name = blueprint.get('project_name', 'projet_ia')
+    project_name = blueprint.get("project_name", "projet_ia")
 
     test_content = f"""#!/usr/bin/env python3
 \"\"\"
@@ -227,9 +227,9 @@ if __name__ == '__main__':
 """
 
     if project_path:
-        test_file = project_path / 'tests' / 'test_main.py'
+        test_file = project_path / "tests" / "test_main.py"
         test_file.parent.mkdir(exist_ok=True)
-        test_file.write_text(test_content, encoding='utf-8')
+        test_file.write_text(test_content, encoding="utf-8")
 
     return test_content
 
@@ -237,13 +237,14 @@ if __name__ == '__main__':
 def save_blueprint(blueprint: dict, outdir):
     """Sauvegarde un blueprint dans un fichier YAML."""
     from pathlib import Path
+
     import yaml
 
     outdir = Path(outdir)
     outdir.mkdir(parents=True, exist_ok=True)
 
-    blueprint_file = outdir / 'blueprint.yaml'
-    with open(blueprint_file, 'w', encoding='utf-8') as f:
+    blueprint_file = outdir / "blueprint.yaml"
+    with open(blueprint_file, "w", encoding="utf-8") as f:
         yaml.dump(blueprint, f, allow_unicode=True)
 
     return str(blueprint_file)
@@ -254,12 +255,12 @@ def inject_booster_ia_elements(outdir):
     from pathlib import Path
 
     outdir = Path(outdir)
-    (outdir / 'booster_ia.txt').write_text('Booster IA injecté')
-    (outdir / 'prompts').mkdir(exist_ok=True)
-    (outdir / 'setup').mkdir(exist_ok=True)
-    (outdir / 'agents').mkdir(exist_ok=True)
+    (outdir / "booster_ia.txt").write_text("Booster IA injecté")
+    (outdir / "prompts").mkdir(exist_ok=True)
+    (outdir / "setup").mkdir(exist_ok=True)
+    (outdir / "agents").mkdir(exist_ok=True)
 
-    return str(outdir / 'booster_ia.txt')
+    return str(outdir / "booster_ia.txt")
 
 
 def scan_existing_project(outdir):
@@ -268,15 +269,12 @@ def scan_existing_project(outdir):
 
     outdir = Path(outdir)
     files = {
-        f.name: True for f in outdir.iterdir()
-        if f.is_file() and f.name in [
-            'README.md',
-            'test_module.py',
-            'onboarding.md',
-            'script.py'
-        ]
+        f.name: True
+        for f in outdir.iterdir()
+        if f.is_file()
+        and f.name in ["README.md", "test_module.py", "onboarding.md", "script.py"]
     }
-    files['Modules trouvés: test_module.py'] = True
+    files["Modules trouvés: test_module.py"] = True
     return files
 
 
@@ -284,7 +282,7 @@ def merge_or_suffix_file(
     file_path: str,
     content: str,
     file_type: Optional[str] = None,
-    section_header: Optional[str] = None
+    section_header: Optional[str] = None,
 ):
     """Fusionne ou suffixe un fichier."""
     from pathlib import Path
@@ -294,18 +292,16 @@ def merge_or_suffix_file(
 
     if not file.exists():
         file.write_text(content)
-        action = 'created'
+        action = "created"
         return str(file), action
     else:
         if section_header is not None and isinstance(section_header, str):
-            file.write_text(
-                file.read_text() + f"\n{section_header}\n{content}")
-            action = 'merged'
+            file.write_text(file.read_text() + f"\n{section_header}\n{content}")
+            action = "merged"
             return str(file), action
-        elif (file_type is not None
-              and file_type in ['test', 'prompt', 'onboarding']):
-            file.write_text(file.read_text() + '\n' + content)
-            action = f'merged-{file_type}'
+        elif file_type is not None and file_type in ["test", "prompt", "onboarding"]:
+            file.write_text(file.read_text() + "\n" + content)
+            action = f"merged-{file_type}"
             return str(file), action
         else:
             if file.suffix:
@@ -313,7 +309,7 @@ def merge_or_suffix_file(
             else:
                 suffix_file = file.with_name(f"{file.name}_auto")
             suffix_file.write_text(content)
-            action = 'suffixed'
+            action = "suffixed"
             return str(suffix_file), action
 
 
@@ -322,7 +318,7 @@ def backup_file(file_path: str):
     from pathlib import Path
 
     file = Path(file_path)
-    backup = file.with_suffix(file.suffix + '.backup')
+    backup = file.with_suffix(file.suffix + ".backup")
     backup.write_text(file.read_text())
     return str(backup)
 
@@ -330,7 +326,7 @@ def backup_file(file_path: str):
 # Fonctions de compatibilité
 def generate_api_docs(blueprint: dict) -> str:
     """Génère la documentation API."""
-    project_name = blueprint.get('project_name', 'projet_ia')
+    project_name = blueprint.get("project_name", "projet_ia")
 
     return f"""# Documentation API - {project_name}
 
@@ -376,7 +372,7 @@ La documentation interactive sera sur http://localhost:8000/docs
 
 def generate_dockerfile(blueprint: dict) -> str:
     """Génère un Dockerfile."""
-    project_name = blueprint.get('project_name', 'projet_ia')
+    project_name = blueprint.get("project_name", "projet_ia")
 
     return f"""# Dockerfile pour {project_name}
 FROM python:3.9-slim
@@ -396,7 +392,7 @@ CMD ["python", "src/main.py"]
 
 def generate_docker_compose(blueprint: dict) -> str:
     """Génère un docker-compose.yml."""
-    project_name = blueprint.get('project_name', 'projet_ia')
+    project_name = blueprint.get("project_name", "projet_ia")
 
     return f"""version: '3.8'
 

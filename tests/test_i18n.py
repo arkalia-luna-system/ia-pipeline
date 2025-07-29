@@ -3,8 +3,9 @@
 """
 Tests pour le module i18n
 """
-import pytest
 from pathlib import Path
+
+import pytest
 
 
 def test_i18n_module_import():
@@ -39,8 +40,8 @@ def test_english_translations():
 def test_translation_consistency():
     """Test de la cohérence des traductions"""
     try:
-        from athalia_core.i18n import fr, en
-        
+        from athalia_core.i18n import en, fr
+
         # Vérifie que les deux modules ont les mêmes clés
         fr_keys = set(fr.translations.keys())
         en_keys = set(en.translations.keys())

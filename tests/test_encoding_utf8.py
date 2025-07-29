@@ -2,8 +2,9 @@
 Test de vérification de l'encodage UTF-8
 Vérifie que tous les fichiers sont correctement encodés en UTF-8
 """
-import pytest
 from pathlib import Path
+
+import pytest
 
 
 class TestEncodingUTF8:
@@ -149,7 +150,7 @@ class TestEncodingUTF8:
     def test_consistent_line_endings(self):
         """Test que tous les fichiers ont des fins de ligne cohérentes"""
         import os
-        
+
         # Exclure les dossiers qui peuvent contenir des fichiers avec des fins de ligne mixtes
         exclude_dirs = {'.git', '__pycache__', '.venv', 'venv', 'node_modules', 'build', 'dist'}
         

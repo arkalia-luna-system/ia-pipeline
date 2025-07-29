@@ -6,7 +6,7 @@ Moniteur de processus Athalia
 
 import logging
 import time
-from typing import Dict, Any, List
+from typing import Any, Dict, List
 
 import psutil
 
