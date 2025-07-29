@@ -221,11 +221,11 @@ class RobustAI:
     def _load_prompt_templates(self) -> Dict[str, str]:
         """Charge les templates de prompts dynamiques."""
         return {
-            PromptContext.BLUEPRINT.value: "Template pour blueprint: {idea} {project_type} {complexity}",
-            PromptContext.CODE_REVIEW.value: "Template pour revue de code",
-            PromptContext.DOCUMENTATION.value: "Template pour documentation",
-            PromptContext.TESTING.value: "Template pour tests",
-            PromptContext.SECURITY.value: "Template pour sécurité"
+            PromptContext.BLUEPRINT.value: "Génère un blueprint complet pour le projet suivant. Idée: {idea}, Type: {project_type}, Complexité: {complexity}. Inclus tous les détails nécessaires pour la création du projet.",
+            PromptContext.CODE_REVIEW.value: "Effectue une revue de code approfondie du fichier {filename} contenant le code suivant: {code}. Analyse la qualité, les bonnes pratiques et propose des améliorations.",
+            PromptContext.DOCUMENTATION.value: "Génère une documentation complète pour le projet {project_name} de type {project_type} avec les modules suivants: {modules}. Inclus guides d'installation, utilisation et API.",
+            PromptContext.TESTING.value: "Crée une suite de tests complète pour le module {module_name} avec les fonctionnalités suivantes: {features}. Type de projet: {project_type}. Inclus tests unitaires et d'intégration.",
+            PromptContext.SECURITY.value: "Effectue un audit de sécurité du code suivant: {code}. Type d'application: {app_type}, Environnement: {environment}. Identifie les vulnérabilités et propose des corrections."
         }
 
     def generate_response(self, context: PromptContext, distillation: bool = False, **kwargs) -> dict:

@@ -35,24 +35,25 @@ def test_generation_end_to_end(tmp_path):
         pytest.skip(f"Impossible de générer le projet : {e}")
 
     # Vérifie requirements.txt
-    req = outdir / "requirements.txt"
+    project_name = blueprint.get('project_name', 'projet_ia')
+    req = outdir / project_name / "requirements.txt"
     assert req.exists(), "requirements.txt manquant dans le projet généré"
 
     # Vérifie le parsing YAML (pour projet API)
-    openapi = outdir / "openapi.yaml"
+    openapi = outdir / project_name / "openapi.yaml"
     if openapi.exists():
         with open(openapi, 'r') as file_handle:
             data = yaml.safe_load(file_handle)
         assert 'openapi' in data, "Clé 'openapi' absente du openapi.yaml généré"
     else:
         # Pour les projets non-API, vérifier d'autres fichiers
-        readme = outdir / "README.md"
+        readme = outdir / project_name / "README.md"
         assert readme.exists(), "README.md manquant dans le projet généré"
 
     # Vérifie l'existence du code principal
-    main_py = outdir / "src" / "main.py"
+    main_py = outdir / project_name / "src" / "main.py"
     if not main_py.exists():
-        main_py = outdir / "main.py"  # Fallback
+        main_py = outdir / project_name / "main.py"  # Fallback
     assert main_py.exists(), "main.py manquant dans le projet généré"
 
     # Teste l'exécution (sans crash)

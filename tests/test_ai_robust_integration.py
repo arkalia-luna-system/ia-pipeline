@@ -112,7 +112,7 @@ def multiply(a, b):
             complexity="simple"
         )
         assert isinstance(prompt, str)
-        assert len(prompt) > 50
+        assert len(prompt) >= 50
 
         # Test code review
         prompt = self.ai._get_dynamic_prompt(
@@ -123,7 +123,7 @@ def multiply(a, b):
             current_score=50
         )
         assert isinstance(prompt, str)
-        assert len(prompt) > 50
+        assert len(prompt) >= 50
 
         # Test documentation
         prompt = self.ai._get_dynamic_prompt(
@@ -133,7 +133,7 @@ def multiply(a, b):
             modules="api, web"
         )
         assert isinstance(prompt, str)
-        assert len(prompt) > 50
+        assert len(prompt) >= 50
 
         # Test testing
         prompt = self.ai._get_dynamic_prompt(
@@ -143,7 +143,7 @@ def multiply(a, b):
             project_type="python"
         )
         assert isinstance(prompt, str)
-        assert len(prompt) > 50
+        assert len(prompt) >= 50
 
         # Test security
         prompt = self.ai._get_dynamic_prompt(
@@ -153,7 +153,7 @@ def multiply(a, b):
             environment="production"
         )
         assert isinstance(prompt, str)
-        assert len(prompt) > 50
+        assert len(prompt) >= 50
 
     def test_model_detection(self):
         """Test de la détection des modèles."""

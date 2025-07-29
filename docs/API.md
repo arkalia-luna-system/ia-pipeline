@@ -520,6 +520,57 @@ Génère un rapport de test complet
 
 ---
 
+### test_plugins
+
+Tests pour le système de plugins dynamiques Athalia
+
+#### Classes
+
+##### TestPlugins
+
+**Méthodes :**
+
+- `test_list_plugins()`
+- `test_load_plugin()`
+- `test_run_all_plugins()`
+- `test_export_docker_plugin()`
+
+##### MockPlugin
+
+**Méthodes :**
+
+- `run()`
+
+#### Fonctions
+
+##### list_plugins
+
+Simulation de la fonction list_plugins
+
+##### load_plugin
+
+Simulation de la fonction load_plugin
+
+**Paramètres :**
+
+- `name`
+
+##### run_all_plugins
+
+Simulation de la fonction run_all_plugins
+
+##### test_list_plugins
+
+##### test_load_plugin
+
+##### test_run_all_plugins
+
+##### test_export_docker_plugin
+
+##### run
+
+---
+
 ### test_adaptive_distillation
 
 #### Classes
@@ -1025,54 +1076,23 @@ Test d'analyse avec un projet inexistant
 
 ---
 
-### test_plugins
+### test_athalia_simple
 
-Tests pour le système de plugins dynamiques Athalia
-
-#### Classes
-
-##### TestPlugins
-
-**Méthodes :**
-
-- `test_list_plugins()`
-- `test_load_plugin()`
-- `test_run_all_plugins()`
-- `test_export_docker_plugin()`
-
-##### MockPlugin
-
-**Méthodes :**
-
-- `run()`
+Tests simples pour Athalia
 
 #### Fonctions
 
-##### list_plugins
+##### test_athalia_core_import
 
-Simulation de la fonction list_plugins
+Test d'import du module core
 
-##### load_plugin
+##### test_essential_files_exist
 
-Simulation de la fonction load_plugin
+Test que les fichiers essentiels existent
 
-**Paramètres :**
+##### test_project_structure
 
-- `name`
-
-##### run_all_plugins
-
-Simulation de la fonction run_all_plugins
-
-##### test_list_plugins
-
-##### test_load_plugin
-
-##### test_run_all_plugins
-
-##### test_export_docker_plugin
-
-##### run
+Test de la structure du projet
 
 ---
 
@@ -1141,23 +1161,15 @@ Simulation de la fonction run_all_plugins
 
 ---
 
-### test_athalia_simple
+### test_continue_models
 
-Tests simples pour Athalia
+Test de présence des modèles dans la config Continue
 
 #### Fonctions
 
-##### test_athalia_core_import
+##### test_models_presence
 
-Test d'import du module core
-
-##### test_essential_files_exist
-
-Test que les fichiers essentiels existent
-
-##### test_project_structure
-
-Test de la structure du projet
+Vérifie la présence des modèles Claude et Mistral dans la config Continue.
 
 ---
 
@@ -1303,6 +1315,74 @@ Test d'intégration avec analyse de code
 **Paramètres :**
 
 - `mock_query_qwen`
+
+---
+
+### test_coverage_threshold
+
+Test de seuil de couverture de code
+Vérifie que la couverture de code est suffisante
+
+#### Classes
+
+##### TestCoverageThreshold
+
+Tests de seuil de couverture
+
+**Méthodes :**
+
+- `test_coverage_file_exists()`
+- `test_minimum_coverage_threshold()`
+- `test_core_modules_coverage()`
+- `test_test_files_exist()`
+- `test_test_coverage_structure()`
+- `test_no_untested_critical_modules()`
+- `test_coverage_report_readable()`
+- `test_coverage_configuration()`
+- `test_test_execution_coverage()`
+- `test_coverage_quality_metrics()`
+
+#### Fonctions
+
+##### test_coverage_file_exists
+
+Vérifie que le fichier de couverture existe
+
+##### test_minimum_coverage_threshold
+
+Vérifie le seuil minimum de couverture
+
+##### test_core_modules_coverage
+
+Vérifie la couverture des modules core
+
+##### test_test_files_exist
+
+Vérifie que les fichiers de test existent
+
+##### test_test_coverage_structure
+
+Vérifie la structure de couverture des tests
+
+##### test_no_untested_critical_modules
+
+Vérifie qu'il n'y a pas de modules critiques non testés
+
+##### test_coverage_report_readable
+
+Vérifie que le rapport de couverture est lisible
+
+##### test_coverage_configuration
+
+Vérifie la configuration de couverture
+
+##### test_test_execution_coverage
+
+Vérifie que les tests s'exécutent avec couverture
+
+##### test_coverage_quality_metrics
+
+Vérifie les métriques de qualité de la couverture
 
 ---
 
@@ -1792,6 +1872,47 @@ Test de la structure des modules avancés
 
 ---
 
+### test_hardcoded_paths
+
+Tests pour détecter les chemins hardcodés
+
+#### Classes
+
+##### TestHardcodedPaths
+
+Tests pour détecter les chemins hardcodés
+
+**Méthodes :**
+
+- `test_no_absolute_paths_in_source()`
+- `test_no_absolute_paths()`
+- `test_no_desktop_paths()`
+- `_is_acceptable_path()`
+
+#### Fonctions
+
+##### test_no_absolute_paths_in_source
+
+Test qu'il n'y a pas de chemins absolus dans le code source (sauf tests)
+
+##### test_no_absolute_paths
+
+Test qu'il n'y a pas de chemins absolus hardcodés
+
+##### test_no_desktop_paths
+
+Test qu'il n'y a pas de chemins Desktop hardcodés
+
+##### _is_acceptable_path
+
+Vérifie si un chemin absolu est acceptable
+
+**Paramètres :**
+
+- `path`
+
+---
+
 ### test_auto_documenter_unit
 
 #### Classes
@@ -2065,6 +2186,79 @@ Teste la gestion d'erreurs
 ##### test_assertion_functionality
 
 Teste la fonctionnalité d'assertion
+
+---
+
+### test_imports_all
+
+Test d'importation exhaustive de tous les modules
+Vérifie que tous les modules peuvent être importés sans erreur
+
+#### Classes
+
+##### TestImportsAll
+
+Tests d'importation exhaustive
+
+**Méthodes :**
+
+- `test_core_modules_import()`
+- `test_distillation_modules_import()`
+- `test_classification_modules_import()`
+- `test_i18n_modules_import()`
+- `test_plugins_modules_import()`
+- `test_modules_import()`
+- `test_agents_import()`
+- `test_templates_import()`
+- `test_all_python_files_importable()`
+- `test_no_circular_imports()`
+- `test_third_party_imports()`
+
+#### Fonctions
+
+##### test_core_modules_import
+
+Test d'import des modules core
+
+##### test_distillation_modules_import
+
+Test d'import des modules de distillation
+
+##### test_classification_modules_import
+
+Test d'import des modules de classification
+
+##### test_i18n_modules_import
+
+Test d'import des modules i18n
+
+##### test_plugins_modules_import
+
+Test d'import des modules plugins
+
+##### test_modules_import
+
+Test d'import des modules externes
+
+##### test_agents_import
+
+Test que tous les modules agents peuvent être importés
+
+##### test_templates_import
+
+Test que tous les modules templates peuvent être importés
+
+##### test_all_python_files_importable
+
+Test que tous les fichiers Python peuvent être importés
+
+##### test_no_circular_imports
+
+Test qu'il n'y a pas d'imports circulaires
+
+##### test_third_party_imports
+
+Test des imports de bibliothèques tierces
 
 ---
 
@@ -2571,122 +2765,6 @@ Vérifie que requirements.txt est installable
 
 ---
 
-### test_continue_models
-
-Test de présence des modèles dans la config Continue
-
-#### Fonctions
-
-##### test_models_presence
-
-Vérifie la présence des modèles Claude et Mistral dans la config Continue.
-
----
-
-### test_security
-
-#### Fonctions
-
-##### test_security_audit_project
-
-**Paramètres :**
-
-- `tmp_path`
-
----
-
-### test_correction
-
-Script de test pour la correction du projet EmotionSensingRoboticEyes
-
-#### Fonctions
-
-##### test_audit
-
-Test de l'audit du f
-
-##### test_correction
-
-Test de la correction du f
-
-##### test_generation_improvement
-
-Test d'amélioration du service de f
-
-##### main
-
-Fonction principale de f
-
----
-
-### test_coverage_threshold
-
-Test de seuil de couverture de code
-Vérifie que la couverture de code est suffisante
-
-#### Classes
-
-##### TestCoverageThreshold
-
-Tests de seuil de couverture
-
-**Méthodes :**
-
-- `test_coverage_file_exists()`
-- `test_minimum_coverage_threshold()`
-- `test_core_modules_coverage()`
-- `test_test_files_exist()`
-- `test_test_coverage_structure()`
-- `test_no_untested_critical_modules()`
-- `test_coverage_report_readable()`
-- `test_coverage_configuration()`
-- `test_test_execution_coverage()`
-- `test_coverage_quality_metrics()`
-
-#### Fonctions
-
-##### test_coverage_file_exists
-
-Vérifie que le fichier de couverture existe
-
-##### test_minimum_coverage_threshold
-
-Vérifie le seuil minimum de couverture
-
-##### test_core_modules_coverage
-
-Vérifie la couverture des modules core
-
-##### test_test_files_exist
-
-Vérifie que les fichiers de test existent
-
-##### test_test_coverage_structure
-
-Vérifie la structure de couverture des tests
-
-##### test_no_untested_critical_modules
-
-Vérifie qu'il n'y a pas de modules critiques non testés
-
-##### test_coverage_report_readable
-
-Vérifie que le rapport de couverture est lisible
-
-##### test_coverage_configuration
-
-Vérifie la configuration de couverture
-
-##### test_test_execution_coverage
-
-Vérifie que les tests s'exécutent avec couverture
-
-##### test_coverage_quality_metrics
-
-Vérifie les métriques de qualité de la couverture
-
----
-
 ### test_security_patterns
 
 Test de détection des patterns de sécurité dangereux
@@ -2737,6 +2815,219 @@ Vérifie qu'il n'y a pas d'URLs hardcodées
 ##### test_no_weak_crypto
 
 Vérifie qu'il n'y a pas de crypto faible
+
+---
+
+### test_security
+
+#### Fonctions
+
+##### test_security_audit_project
+
+**Paramètres :**
+
+- `tmp_path`
+
+---
+
+### test_correction
+
+Script de test pour la correction du projet EmotionSensingRoboticEyes
+
+#### Fonctions
+
+##### test_audit
+
+Test de l'audit du f
+
+##### test_correction
+
+Test de la correction du f
+
+##### test_generation_improvement
+
+Test d'amélioration du service de f
+
+##### main
+
+Fonction principale de f
+
+---
+
+### test_unified_orchestrator_complete
+
+🧪 TESTS COMPLETS POUR L'ORCHESTRATEUR UNIFIÉ ATHALIA
+
+Ce fichier teste TOUTES les fonctionnalités de l'orchestrateur unifié
+pour atteindre une couverture de test élevée.
+
+#### Classes
+
+##### TestUnifiedOrchestratorComplete
+
+Tests complets pour l'orchestrateur unifié
+
+**Méthodes :**
+
+- `setup_method()`
+- `teardown_method()`
+- `test_orchestrator_initialization()`
+- `test_database_initialization()`
+- `test_orchestrate_project_complete_basic()`
+- `test_orchestrate_project_complete_with_industrialization()`
+- `test_run_audit()`
+- `test_run_linting()`
+- `test_run_security_audit()`
+- `test_run_analytics()`
+- `test_run_cleanup()`
+- `test_run_documentation()`
+- `test_run_testing()`
+- `test_run_cicd()`
+- `test_run_robotics_audit()`
+- `test_generate_predictions()`
+- `test_generate_optimizations()`
+- `test_learn_from_results()`
+- `test_generate_unified_report()`
+- `test_save_unified_results()`
+- `test_get_orchestration_insights()`
+- `test_phase2_backup()`
+- `test_phase2_error_handling()`
+- `test_validate_phase2_inputs()`
+- `test_get_phase2_backup_stats()`
+- `test_orchestrate_with_phase2_features()`
+- `test_error_handling_in_industrialization()`
+- `test_cli_entry_point()`
+- `test_main_entry_point()`
+- `test_main_with_args()`
+- `test_orchestrator_auto_backup()`
+
+#### Fonctions
+
+##### setup_method
+
+Configuration avant chaque test
+
+##### teardown_method
+
+Nettoyage après chaque test
+
+##### test_orchestrator_initialization
+
+Test l'initialisation complète de l'orchestrateur
+
+##### test_database_initialization
+
+Test l'initialisation de la base de données
+
+##### test_orchestrate_project_complete_basic
+
+Test l'orchestration complète basique
+
+##### test_orchestrate_project_complete_with_industrialization
+
+Test l'orchestration avec industrialisation
+
+##### test_run_audit
+
+Test l'exécution de l'audit
+
+##### test_run_linting
+
+Test l'exécution du linting
+
+##### test_run_security_audit
+
+Test l'exécution de l'audit de sécurité
+
+##### test_run_analytics
+
+Test l'exécution de l'analytics
+
+##### test_run_cleanup
+
+Test l'exécution du nettoyage
+
+##### test_run_documentation
+
+Test l'exécution de la documentation
+
+##### test_run_testing
+
+Test l'exécution des tests
+
+##### test_run_cicd
+
+Test l'exécution du CI/CD
+
+##### test_run_robotics_audit
+
+Test l'exécution de l'audit robotique
+
+##### test_generate_predictions
+
+Test la génération de prédictions
+
+##### test_generate_optimizations
+
+Test la génération d'optimisations
+
+##### test_learn_from_results
+
+Test l'apprentissage des résultats
+
+##### test_generate_unified_report
+
+Test la génération du rapport unifié
+
+##### test_save_unified_results
+
+Test la sauvegarde des résultats
+
+##### test_get_orchestration_insights
+
+Test la récupération des insights d'orchestration
+
+##### test_phase2_backup
+
+Test la sauvegarde Phase 2
+
+##### test_phase2_error_handling
+
+Test la gestion d'erreurs Phase 2
+
+##### test_validate_phase2_inputs
+
+Test la validation des entrées Phase 2
+
+##### test_get_phase2_backup_stats
+
+Test les statistiques de sauvegarde Phase 2
+
+##### test_orchestrate_with_phase2_features
+
+Test l'orchestration avec fonctionnalités Phase 2
+
+##### test_error_handling_in_industrialization
+
+Test la gestion d'erreurs dans l'industrialisation
+
+##### test_cli_entry_point
+
+Test le point d'entrée CLI
+
+##### test_main_entry_point
+
+Test le point d'entrée principal
+
+##### test_main_with_args
+
+Test le point d'entrée principal avec arguments
+
+##### test_orchestrator_auto_backup
+
+Test la sauvegarde automatique de l'orchestrateur
+
+##### test_operation
 
 ---
 
@@ -2837,47 +3128,6 @@ Test que tous les fichiers ont des fins de ligne cohérentes
 **Paramètres :**
 
 - `tmp_path`
-
----
-
-### test_hardcoded_paths
-
-Tests pour détecter les chemins hardcodés
-
-#### Classes
-
-##### TestHardcodedPaths
-
-Tests pour détecter les chemins hardcodés
-
-**Méthodes :**
-
-- `test_no_absolute_paths_in_source()`
-- `test_no_absolute_paths()`
-- `test_no_desktop_paths()`
-- `_is_acceptable_path()`
-
-#### Fonctions
-
-##### test_no_absolute_paths_in_source
-
-Test qu'il n'y a pas de chemins absolus dans le code source (sauf tests)
-
-##### test_no_absolute_paths
-
-Test qu'il n'y a pas de chemins absolus hardcodés
-
-##### test_no_desktop_paths
-
-Test qu'il n'y a pas de chemins Desktop hardcodés
-
-##### _is_acceptable_path
-
-Vérifie si un chemin absolu est acceptable
-
-**Paramètres :**
-
-- `path`
 
 ---
 
@@ -3148,79 +3398,6 @@ Test création de DockerServiceConfig
 ##### test_docker_validation_result_creation
 
 Test création de DockerValidationResult
-
----
-
-### test_imports_all
-
-Test d'importation exhaustive de tous les modules
-Vérifie que tous les modules peuvent être importés sans erreur
-
-#### Classes
-
-##### TestImportsAll
-
-Tests d'importation exhaustive
-
-**Méthodes :**
-
-- `test_core_modules_import()`
-- `test_distillation_modules_import()`
-- `test_classification_modules_import()`
-- `test_i18n_modules_import()`
-- `test_plugins_modules_import()`
-- `test_modules_import()`
-- `test_agents_import()`
-- `test_templates_import()`
-- `test_all_python_files_importable()`
-- `test_no_circular_imports()`
-- `test_third_party_imports()`
-
-#### Fonctions
-
-##### test_core_modules_import
-
-Test d'import des modules core
-
-##### test_distillation_modules_import
-
-Test d'import des modules de distillation
-
-##### test_classification_modules_import
-
-Test d'import des modules de classification
-
-##### test_i18n_modules_import
-
-Test d'import des modules i18n
-
-##### test_plugins_modules_import
-
-Test d'import des modules plugins
-
-##### test_modules_import
-
-Test d'import des modules externes
-
-##### test_agents_import
-
-Test que tous les modules agents peuvent être importés
-
-##### test_templates_import
-
-Test que tous les modules templates peuvent être importés
-
-##### test_all_python_files_importable
-
-Test que tous les fichiers Python peuvent être importés
-
-##### test_no_circular_imports
-
-Test qu'il n'y a pas d'imports circulaires
-
-##### test_third_party_imports
-
-Test des imports de bibliothèques tierces
 
 ---
 
@@ -3684,183 +3861,6 @@ Test qu'il n'y a pas de répertoires vides
 **Paramètres :**
 
 - `tmp_path`
-
----
-
-### test_unified_orchestrator_complete
-
-🧪 TESTS COMPLETS POUR L'ORCHESTRATEUR UNIFIÉ ATHALIA
-
-Ce fichier teste TOUTES les fonctionnalités de l'orchestrateur unifié
-pour atteindre une couverture de test élevée.
-
-#### Classes
-
-##### TestUnifiedOrchestratorComplete
-
-Tests complets pour l'orchestrateur unifié
-
-**Méthodes :**
-
-- `setup_method()`
-- `teardown_method()`
-- `test_orchestrator_initialization()`
-- `test_database_initialization()`
-- `test_orchestrate_project_complete_basic()`
-- `test_orchestrate_project_complete_with_industrialization()`
-- `test_run_audit()`
-- `test_run_linting()`
-- `test_run_security_audit()`
-- `test_run_analytics()`
-- `test_run_cleanup()`
-- `test_run_documentation()`
-- `test_run_testing()`
-- `test_run_cicd()`
-- `test_run_robotics_audit()`
-- `test_generate_predictions()`
-- `test_generate_optimizations()`
-- `test_learn_from_results()`
-- `test_generate_unified_report()`
-- `test_save_unified_results()`
-- `test_get_orchestration_insights()`
-- `test_phase2_backup()`
-- `test_phase2_error_handling()`
-- `test_validate_phase2_inputs()`
-- `test_get_phase2_backup_stats()`
-- `test_orchestrate_with_phase2_features()`
-- `test_error_handling_in_industrialization()`
-- `test_cli_entry_point()`
-- `test_main_entry_point()`
-- `test_main_with_args()`
-- `test_orchestrator_auto_backup()`
-
-#### Fonctions
-
-##### setup_method
-
-Configuration avant chaque test
-
-##### teardown_method
-
-Nettoyage après chaque test
-
-##### test_orchestrator_initialization
-
-Test l'initialisation complète de l'orchestrateur
-
-##### test_database_initialization
-
-Test l'initialisation de la base de données
-
-##### test_orchestrate_project_complete_basic
-
-Test l'orchestration complète basique
-
-##### test_orchestrate_project_complete_with_industrialization
-
-Test l'orchestration avec industrialisation
-
-##### test_run_audit
-
-Test l'exécution de l'audit
-
-##### test_run_linting
-
-Test l'exécution du linting
-
-##### test_run_security_audit
-
-Test l'exécution de l'audit de sécurité
-
-##### test_run_analytics
-
-Test l'exécution de l'analytics
-
-##### test_run_cleanup
-
-Test l'exécution du nettoyage
-
-##### test_run_documentation
-
-Test l'exécution de la documentation
-
-##### test_run_testing
-
-Test l'exécution des tests
-
-##### test_run_cicd
-
-Test l'exécution du CI/CD
-
-##### test_run_robotics_audit
-
-Test l'exécution de l'audit robotique
-
-##### test_generate_predictions
-
-Test la génération de prédictions
-
-##### test_generate_optimizations
-
-Test la génération d'optimisations
-
-##### test_learn_from_results
-
-Test l'apprentissage des résultats
-
-##### test_generate_unified_report
-
-Test la génération du rapport unifié
-
-##### test_save_unified_results
-
-Test la sauvegarde des résultats
-
-##### test_get_orchestration_insights
-
-Test la récupération des insights d'orchestration
-
-##### test_phase2_backup
-
-Test la sauvegarde Phase 2
-
-##### test_phase2_error_handling
-
-Test la gestion d'erreurs Phase 2
-
-##### test_validate_phase2_inputs
-
-Test la validation des entrées Phase 2
-
-##### test_get_phase2_backup_stats
-
-Test les statistiques de sauvegarde Phase 2
-
-##### test_orchestrate_with_phase2_features
-
-Test l'orchestration avec fonctionnalités Phase 2
-
-##### test_error_handling_in_industrialization
-
-Test la gestion d'erreurs dans l'industrialisation
-
-##### test_cli_entry_point
-
-Test le point d'entrée CLI
-
-##### test_main_entry_point
-
-Test le point d'entrée principal
-
-##### test_main_with_args
-
-Test le point d'entrée principal avec arguments
-
-##### test_orchestrator_auto_backup
-
-Test la sauvegarde automatique de l'orchestrateur
-
-##### test_operation
 
 ---
 
@@ -80296,7 +80296,1794 @@ source (uncommon part of path) to benchmark dict.
 
 ---
 
+### __main__
+
+---
+
+### api
+
+API for the command-line I{pyflakes} tool.
+
+#### Fonctions
+
+##### check
+
+Check the Python source given by C{codeString} for flakes.
+
+@param codeString: The Python source to check.
+@type codeString: C{str}
+
+@param filename: The name of the file the source came from, used to report
+    errors.
+@type filename: C{str}
+
+@param reporter: A L{Reporter} instance, where errors and warnings will be
+    reported.
+
+@return: The number of warnings emitted.
+@rtype: C{int}
+
+**Paramètres :**
+
+- `codeString`
+- `filename`
+- `reporter`
+
+##### checkPath
+
+Check the given path, printing out any warnings detected.
+
+@param reporter: A L{Reporter} instance, where errors and warnings will be
+    reported.
+
+@return: the number of warnings printed
+
+**Paramètres :**
+
+- `filename`
+- `reporter`
+
+##### isPythonFile
+
+Return True if filename points to a Python file.
+
+**Paramètres :**
+
+- `filename`
+
+##### iterSourceCode
+
+Iterate over all Python source files in C{paths}.
+
+@param paths: A list of paths.  Directories will be recursed into and
+    any .py files found will be yielded.  Any non-directories will be
+    yielded as-is.
+
+**Paramètres :**
+
+- `paths`
+
+##### checkRecursive
+
+Recursively check all source files in C{paths}.
+
+@param paths: A list of paths to Python source files and directories
+    containing Python source files.
+@param reporter: A L{Reporter} where all of the warnings and errors
+    will be reported to.
+@return: The number of warnings found.
+
+**Paramètres :**
+
+- `paths`
+- `reporter`
+
+##### _exitOnSignal
+
+Handles a signal with sys.exit.
+
+Some of these signals (SIGPIPE, for example) don't exist or are invalid on
+Windows. So, ignore errors that might arise.
+
+**Paramètres :**
+
+- `sigName`
+- `message`
+
+##### _get_version
+
+Retrieve and format package version along with python version & OS used
+
+##### main
+
+Entry point for the script "pyflakes".
+
+**Paramètres :**
+
+- `prog`
+- `args`
+
+##### handler
+
+**Paramètres :**
+
+- `sig`
+- `f`
+
+---
+
 ### .!25829!api
+
+---
+
+### checker
+
+Main module.
+
+Implement the central Checker class.
+Also, it models the Bindings and Scopes.
+
+#### Classes
+
+##### _FieldsOrder
+
+Fix order of AST node fields.
+
+**Méthodes :**
+
+- `_get_fields()`
+- `__missing__()`
+
+##### Binding
+
+Represents the binding of a value to a name.
+
+The checker uses this to keep track of which names have been bound and
+which names have not. See L{Assignment} for a special type of binding that
+is checked with stricter rules.
+
+@ivar used: pair of (L{Scope}, node) indicating the scope and
+            the node that this binding was last used.
+
+**Méthodes :**
+
+- `__init__()`
+- `__str__()`
+- `__repr__()`
+- `redefines()`
+
+##### Definition
+
+A binding that defines a function or a class.
+
+**Méthodes :**
+
+- `redefines()`
+
+##### Builtin
+
+A definition created for all Python builtins.
+
+**Méthodes :**
+
+- `__init__()`
+- `__repr__()`
+
+##### UnhandledKeyType
+
+A dictionary key of a type that we cannot or do not check for duplicates.
+
+##### VariableKey
+
+A dictionary key which is a variable.
+
+@ivar item: The variable AST object.
+
+**Méthodes :**
+
+- `__init__()`
+- `__eq__()`
+- `__hash__()`
+
+##### Importation
+
+A binding created by an import statement.
+
+@ivar fullName: The complete name given to the import statement,
+    possibly including multiple dotted components.
+@type fullName: C{str}
+
+**Méthodes :**
+
+- `__init__()`
+- `redefines()`
+- `_has_alias()`
+- `source_statement()`
+- `__str__()`
+
+##### SubmoduleImportation
+
+A binding created by a submodule import statement.
+
+A submodule import is a special case where the root module is implicitly
+imported, without an 'as' clause, and the submodule is also imported.
+Python does not restrict which attributes of the root module may be used.
+
+This class is only used when the submodule import is without an 'as' clause.
+
+pyflakes handles this case by registering the root module name in the scope,
+allowing any attribute of the root module to be accessed.
+
+RedefinedWhileUnused is suppressed in `redefines` unless the submodule
+name is also the same, to avoid false positives.
+
+**Méthodes :**
+
+- `__init__()`
+- `redefines()`
+- `__str__()`
+- `source_statement()`
+
+##### ImportationFrom
+
+**Méthodes :**
+
+- `__init__()`
+- `__str__()`
+- `source_statement()`
+
+##### StarImportation
+
+A binding created by a 'from x import *' statement.
+
+**Méthodes :**
+
+- `__init__()`
+- `source_statement()`
+- `__str__()`
+
+##### FutureImportation
+
+A binding created by a from `__future__` import statement.
+
+`__future__` imports are implicitly used.
+
+**Méthodes :**
+
+- `__init__()`
+
+##### Argument
+
+Represents binding a name as an argument.
+
+##### Assignment
+
+Represents binding a name with an explicit assignment.
+
+The checker will raise warnings for any Assignment that isn't used. Also,
+the checker does not consider assignments in tuple/list unpacking to be
+Assignments, rather it treats them as simple Bindings.
+
+##### NamedExprAssignment
+
+Represents binding a name with an assignment expression.
+
+##### Annotation
+
+Represents binding a name to a type without an associated value.
+
+As long as this name is not assigned a value in another binding, it is considered
+undefined for most purposes. One notable exception is using the name as a type
+annotation.
+
+**Méthodes :**
+
+- `redefines()`
+
+##### FunctionDefinition
+
+##### ClassDefinition
+
+##### ExportBinding
+
+A binding created by an C{__all__} assignment.  If the names in the list
+can be determined statically, they will be treated as names for export and
+additional checking applied to them.
+
+The only recognized C{__all__} assignment via list/tuple concatenation is in the
+following format:
+
+    __all__ = ['a'] + ['b'] + ['c']
+
+Names which are imported and not otherwise used but appear in the value of
+C{__all__} will not have an unused import warning reported for them.
+
+**Méthodes :**
+
+- `__init__()`
+
+##### Scope
+
+**Méthodes :**
+
+- `__repr__()`
+
+##### ClassScope
+
+**Méthodes :**
+
+- `__init__()`
+
+##### FunctionScope
+
+I represent a name scope for a function.
+
+@ivar globals: Names declared 'global' in this function.
+
+**Méthodes :**
+
+- `__init__()`
+- `unused_assignments()`
+- `unused_annotations()`
+
+##### TypeScope
+
+##### GeneratorScope
+
+##### ModuleScope
+
+Scope for a module.
+
+##### DoctestScope
+
+Scope for a doctest.
+
+##### DetectClassScopedMagic
+
+##### AnnotationState
+
+##### Checker
+
+I check the cleanliness and sanity of Python code.
+
+**Méthodes :**
+
+- `__init__()`
+- `deferFunction()`
+- `_run_deferred()`
+- `_in_doctest()`
+- `futuresAllowed()`
+- `futuresAllowed()`
+- `annotationsFutureEnabled()`
+- `annotationsFutureEnabled()`
+- `scope()`
+- `in_scope()`
+- `checkDeadScopes()`
+- `report()`
+- `getParent()`
+- `getCommonAncestor()`
+- `descendantOf()`
+- `_getAncestor()`
+- `getScopeNode()`
+- `differentForks()`
+- `addBinding()`
+- `_unknown_handler()`
+- `getNodeHandler()`
+- `handleNodeLoad()`
+- `handleNodeStore()`
+- `handleNodeDelete()`
+- `_enter_annotation()`
+- `_in_postponed_annotation()`
+- `handleChildren()`
+- `isLiteralTupleUnpacking()`
+- `isDocstring()`
+- `getDocstring()`
+- `handleNode()`
+- `handleDoctests()`
+- `handleStringAnnotation()`
+- `handle_annotation_always_deferred()`
+- `handleAnnotation()`
+- `ignore()`
+- `SUBSCRIPT()`
+- `_handle_string_dot_format()`
+- `CALL()`
+- `_handle_percent_format()`
+- `BINOP()`
+- `CONSTANT()`
+- `RAISE()`
+- `JOINEDSTR()`
+- `TEMPLATESTR()`
+- `DICT()`
+- `IF()`
+- `ASSERT()`
+- `GLOBAL()`
+- `GENERATOREXP()`
+- `NAME()`
+- `CONTINUE()`
+- `RETURN()`
+- `YIELD()`
+- `FUNCTIONDEF()`
+- `LAMBDA()`
+- `ARGUMENTS()`
+- `ARG()`
+- `CLASSDEF()`
+- `AUGASSIGN()`
+- `TUPLE()`
+- `IMPORT()`
+- `IMPORTFROM()`
+- `TRY()`
+- `EXCEPTHANDLER()`
+- `ANNASSIGN()`
+- `COMPARE()`
+- `_match_target()`
+- `_type_param_scope()`
+- `TYPEVAR()`
+- `TYPEALIAS()`
+
+#### Fonctions
+
+##### getAlternatives
+
+**Paramètres :**
+
+- `n`
+
+##### _is_singleton
+
+**Paramètres :**
+
+- `node`
+
+##### _is_tuple_constant
+
+**Paramètres :**
+
+- `node`
+
+##### _is_constant
+
+**Paramètres :**
+
+- `node`
+
+##### _is_const_non_singleton
+
+**Paramètres :**
+
+- `node`
+
+##### _is_name_or_attr
+
+**Paramètres :**
+
+- `node`
+- `name`
+
+##### _must_match
+
+**Paramètres :**
+
+- `regex`
+- `string`
+- `pos`
+
+##### parse_percent_format
+
+Parses the string component of a `'...' % ...` format call
+
+Copied from https://github.com/asottile/pyupgrade at v1.20.1
+
+**Paramètres :**
+
+- `s`
+
+##### iter_child_nodes
+
+Yield all direct child nodes of *node*, that is, all fields that
+are nodes and all items of fields that are lists of nodes.
+
+:param node:          AST node to be iterated upon
+:param omit:          String or tuple of strings denoting the
+                      attributes of the node to be omitted from
+                      further parsing
+:param _fields_order: Order of AST node fields
+
+**Paramètres :**
+
+- `node`
+- `omit`
+- `_fields_order`
+
+##### convert_to_value
+
+**Paramètres :**
+
+- `item`
+
+##### is_notimplemented_name_node
+
+**Paramètres :**
+
+- `node`
+
+##### getNodeName
+
+**Paramètres :**
+
+- `node`
+
+##### _is_typing_helper
+
+Internal helper to determine whether or not something is a member of a
+typing module. This is used as part of working out whether we are within a
+type annotation context.
+
+Note: you probably don't want to use this function directly. Instead see the
+utils below which wrap it (`_is_typing` and `_is_any_typing_member`).
+
+**Paramètres :**
+
+- `node`
+- `is_name_match_fn`
+- `scope_stack`
+
+##### _is_typing
+
+Determine whether `node` represents the member of a typing module specified
+by `typing_attr`.
+
+This is used as part of working out whether we are within a type annotation
+context.
+
+**Paramètres :**
+
+- `node`
+- `typing_attr`
+- `scope_stack`
+
+##### _is_any_typing_member
+
+Determine whether `node` represents any member of a typing module.
+
+This is used as part of working out whether we are within a type annotation
+context.
+
+**Paramètres :**
+
+- `node`
+- `scope_stack`
+
+##### is_typing_overload
+
+**Paramètres :**
+
+- `value`
+- `scope_stack`
+
+##### in_annotation
+
+**Paramètres :**
+
+- `func`
+
+##### in_string_annotation
+
+**Paramètres :**
+
+- `func`
+
+##### _parse_inner
+
+##### _get_fields
+
+**Paramètres :**
+
+- `node_class`
+
+##### __missing__
+
+**Paramètres :**
+
+- `node_class`
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `source`
+
+##### __str__
+
+##### __repr__
+
+##### redefines
+
+**Paramètres :**
+
+- `other`
+
+##### redefines
+
+**Paramètres :**
+
+- `other`
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+
+##### __repr__
+
+##### __init__
+
+**Paramètres :**
+
+- `item`
+
+##### __eq__
+
+**Paramètres :**
+
+- `compare`
+
+##### __hash__
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `source`
+- `full_name`
+
+##### redefines
+
+**Paramètres :**
+
+- `other`
+
+##### _has_alias
+
+Return whether importation needs an as clause.
+
+##### source_statement
+
+Generate a source statement equivalent to the import.
+
+##### __str__
+
+Return import full name with alias.
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `source`
+
+##### redefines
+
+**Paramètres :**
+
+- `other`
+
+##### __str__
+
+##### source_statement
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `source`
+- `module`
+- `real_name`
+
+##### __str__
+
+Return import full name with alias.
+
+##### source_statement
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `source`
+
+##### source_statement
+
+##### __str__
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `source`
+- `scope`
+
+##### redefines
+
+An Annotation doesn't define any name, so it cannot redefine one.
+
+**Paramètres :**
+
+- `other`
+
+##### __init__
+
+**Paramètres :**
+
+- `name`
+- `source`
+- `scope`
+
+##### __repr__
+
+##### __init__
+
+##### __init__
+
+##### unused_assignments
+
+Return a generator for the assignments which have not been used.
+
+##### unused_annotations
+
+Return a generator for the annotations which have not been used.
+
+##### _bare_name_is_attr
+
+**Paramètres :**
+
+- `name`
+
+##### _module_scope_is_typing
+
+**Paramètres :**
+
+- `name`
+
+##### in_annotation_func
+
+##### in_annotation_func
+
+##### __init__
+
+**Paramètres :**
+
+- `tree`
+- `filename`
+- `builtins`
+- `withDoctest`
+- `file_tokens`
+
+##### deferFunction
+
+Schedule a function handler to be called just before completion.
+
+This is used for handling function bodies, which must be deferred
+because code later in the file might modify the global scope. When
+`callable` is called, the scope at the time this is called will be
+restored, however it will contain any new bindings added to it.
+
+**Paramètres :**
+
+- `callable`
+
+##### _run_deferred
+
+##### _in_doctest
+
+##### futuresAllowed
+
+##### futuresAllowed
+
+**Paramètres :**
+
+- `value`
+
+##### annotationsFutureEnabled
+
+##### annotationsFutureEnabled
+
+**Paramètres :**
+
+- `value`
+
+##### scope
+
+##### in_scope
+
+**Paramètres :**
+
+- `cls`
+
+##### checkDeadScopes
+
+Look at scopes which have been fully examined and report names in them
+which were imported but unused.
+
+##### report
+
+**Paramètres :**
+
+- `messageClass`
+
+##### getParent
+
+**Paramètres :**
+
+- `node`
+
+##### getCommonAncestor
+
+**Paramètres :**
+
+- `lnode`
+- `rnode`
+- `stop`
+
+##### descendantOf
+
+**Paramètres :**
+
+- `node`
+- `ancestors`
+- `stop`
+
+##### _getAncestor
+
+**Paramètres :**
+
+- `node`
+- `ancestor_type`
+
+##### getScopeNode
+
+**Paramètres :**
+
+- `node`
+
+##### differentForks
+
+True, if lnode and rnode are located on different forks of IF/TRY
+
+**Paramètres :**
+
+- `lnode`
+- `rnode`
+
+##### addBinding
+
+Called when a binding is altered.
+
+- `node` is the statement responsible for the change
+- `value` is the new value, a Binding instance
+
+**Paramètres :**
+
+- `node`
+- `value`
+
+##### _unknown_handler
+
+**Paramètres :**
+
+- `node`
+
+##### getNodeHandler
+
+**Paramètres :**
+
+- `node_class`
+
+##### handleNodeLoad
+
+**Paramètres :**
+
+- `node`
+- `parent`
+
+##### handleNodeStore
+
+**Paramètres :**
+
+- `node`
+
+##### handleNodeDelete
+
+**Paramètres :**
+
+- `node`
+
+##### _enter_annotation
+
+**Paramètres :**
+
+- `ann_type`
+
+##### _in_postponed_annotation
+
+##### handleChildren
+
+**Paramètres :**
+
+- `tree`
+- `omit`
+
+##### isLiteralTupleUnpacking
+
+**Paramètres :**
+
+- `node`
+
+##### isDocstring
+
+Determine if the given node is a docstring, as long as it is at the
+correct place in the node tree.
+
+**Paramètres :**
+
+- `node`
+
+##### getDocstring
+
+**Paramètres :**
+
+- `node`
+
+##### handleNode
+
+**Paramètres :**
+
+- `node`
+- `parent`
+
+##### handleDoctests
+
+**Paramètres :**
+
+- `node`
+
+##### handleStringAnnotation
+
+**Paramètres :**
+
+- `s`
+- `node`
+- `ref_lineno`
+- `ref_col_offset`
+- `err`
+
+##### handle_annotation_always_deferred
+
+**Paramètres :**
+
+- `annotation`
+- `parent`
+
+##### handleAnnotation
+
+**Paramètres :**
+
+- `annotation`
+- `node`
+
+##### ignore
+
+**Paramètres :**
+
+- `node`
+
+##### SUBSCRIPT
+
+**Paramètres :**
+
+- `node`
+
+##### _handle_string_dot_format
+
+**Paramètres :**
+
+- `node`
+
+##### CALL
+
+**Paramètres :**
+
+- `node`
+
+##### _handle_percent_format
+
+**Paramètres :**
+
+- `node`
+
+##### BINOP
+
+**Paramètres :**
+
+- `node`
+
+##### CONSTANT
+
+**Paramètres :**
+
+- `node`
+
+##### RAISE
+
+**Paramètres :**
+
+- `node`
+
+##### JOINEDSTR
+
+**Paramètres :**
+
+- `node`
+
+##### TEMPLATESTR
+
+**Paramètres :**
+
+- `node`
+
+##### DICT
+
+**Paramètres :**
+
+- `node`
+
+##### IF
+
+**Paramètres :**
+
+- `node`
+
+##### ASSERT
+
+**Paramètres :**
+
+- `node`
+
+##### GLOBAL
+
+Keep track of globals declarations.
+
+**Paramètres :**
+
+- `node`
+
+##### GENERATOREXP
+
+**Paramètres :**
+
+- `node`
+
+##### NAME
+
+Handle occurrence of Name (which can be a load/store/delete access.)
+
+**Paramètres :**
+
+- `node`
+
+##### CONTINUE
+
+**Paramètres :**
+
+- `node`
+
+##### RETURN
+
+**Paramètres :**
+
+- `node`
+
+##### YIELD
+
+**Paramètres :**
+
+- `node`
+
+##### FUNCTIONDEF
+
+**Paramètres :**
+
+- `node`
+
+##### LAMBDA
+
+**Paramètres :**
+
+- `node`
+
+##### ARGUMENTS
+
+**Paramètres :**
+
+- `node`
+
+##### ARG
+
+**Paramètres :**
+
+- `node`
+
+##### CLASSDEF
+
+Check names used in a class definition, including its decorators, base
+classes, and the body of its definition.  Additionally, add its name to
+the current scope.
+
+**Paramètres :**
+
+- `node`
+
+##### AUGASSIGN
+
+**Paramètres :**
+
+- `node`
+
+##### TUPLE
+
+**Paramètres :**
+
+- `node`
+
+##### IMPORT
+
+**Paramètres :**
+
+- `node`
+
+##### IMPORTFROM
+
+**Paramètres :**
+
+- `node`
+
+##### TRY
+
+**Paramètres :**
+
+- `node`
+
+##### EXCEPTHANDLER
+
+**Paramètres :**
+
+- `node`
+
+##### ANNASSIGN
+
+**Paramètres :**
+
+- `node`
+
+##### COMPARE
+
+**Paramètres :**
+
+- `node`
+
+##### _match_target
+
+**Paramètres :**
+
+- `node`
+
+##### _type_param_scope
+
+**Paramètres :**
+
+- `node`
+
+##### TYPEVAR
+
+**Paramètres :**
+
+- `node`
+
+##### TYPEALIAS
+
+**Paramètres :**
+
+- `node`
+
+##### _add_to_names
+
+**Paramètres :**
+
+- `container`
+
+##### on_conditional_branch
+
+Return `True` if node is part of a conditional body.
+
+##### _add_key
+
+Returns True if there is an error which should early-exit
+
+**Paramètres :**
+
+- `fmtkey`
+
+##### runFunction
+
+---
+
+### messages
+
+Provide the class Message and its subclasses.
+
+#### Classes
+
+##### Message
+
+**Méthodes :**
+
+- `__init__()`
+- `__str__()`
+
+##### UnusedImport
+
+**Méthodes :**
+
+- `__init__()`
+
+##### RedefinedWhileUnused
+
+**Méthodes :**
+
+- `__init__()`
+
+##### ImportShadowedByLoopVar
+
+**Méthodes :**
+
+- `__init__()`
+
+##### ImportStarNotPermitted
+
+**Méthodes :**
+
+- `__init__()`
+
+##### ImportStarUsed
+
+**Méthodes :**
+
+- `__init__()`
+
+##### ImportStarUsage
+
+**Méthodes :**
+
+- `__init__()`
+
+##### UndefinedName
+
+**Méthodes :**
+
+- `__init__()`
+
+##### DoctestSyntaxError
+
+**Méthodes :**
+
+- `__init__()`
+
+##### UndefinedExport
+
+**Méthodes :**
+
+- `__init__()`
+
+##### UndefinedLocal
+
+**Méthodes :**
+
+- `__init__()`
+
+##### DuplicateArgument
+
+**Méthodes :**
+
+- `__init__()`
+
+##### MultiValueRepeatedKeyLiteral
+
+**Méthodes :**
+
+- `__init__()`
+
+##### MultiValueRepeatedKeyVariable
+
+**Méthodes :**
+
+- `__init__()`
+
+##### LateFutureImport
+
+##### FutureFeatureNotDefined
+
+An undefined __future__ feature name was imported.
+
+**Méthodes :**
+
+- `__init__()`
+
+##### UnusedVariable
+
+Indicates that a variable has been explicitly assigned to but not actually
+used.
+
+**Méthodes :**
+
+- `__init__()`
+
+##### UnusedAnnotation
+
+Indicates that a variable has been explicitly annotated to but not actually
+used.
+
+**Méthodes :**
+
+- `__init__()`
+
+##### UnusedIndirectAssignment
+
+A `global` or `nonlocal` statement where the name is never reassigned
+
+**Méthodes :**
+
+- `__init__()`
+
+##### ReturnOutsideFunction
+
+Indicates a return statement outside of a function/method.
+
+##### YieldOutsideFunction
+
+Indicates a yield or yield from statement outside of a function/method.
+
+##### ContinueOutsideLoop
+
+Indicates a continue statement outside of a while or for loop.
+
+##### BreakOutsideLoop
+
+Indicates a break statement outside of a while or for loop.
+
+##### DefaultExceptNotLast
+
+Indicates an except: block as not the last exception handler.
+
+##### TwoStarredExpressions
+
+Two or more starred expressions in an assignment (a, *b, *c = d).
+
+##### TooManyExpressionsInStarredAssignment
+
+Too many expressions in an assignment with star-unpacking
+
+##### IfTuple
+
+Conditional test is a non-empty tuple literal, which are always True.
+
+##### AssertTuple
+
+Assertion test is a non-empty tuple literal, which are always True.
+
+##### ForwardAnnotationSyntaxError
+
+**Méthodes :**
+
+- `__init__()`
+
+##### RaiseNotImplemented
+
+##### InvalidPrintSyntax
+
+##### IsLiteral
+
+##### FStringMissingPlaceholders
+
+##### TStringMissingPlaceholders
+
+##### StringDotFormatExtraPositionalArguments
+
+**Méthodes :**
+
+- `__init__()`
+
+##### StringDotFormatExtraNamedArguments
+
+**Méthodes :**
+
+- `__init__()`
+
+##### StringDotFormatMissingArgument
+
+**Méthodes :**
+
+- `__init__()`
+
+##### StringDotFormatMixingAutomatic
+
+##### StringDotFormatInvalidFormat
+
+**Méthodes :**
+
+- `__init__()`
+
+##### PercentFormatInvalidFormat
+
+**Méthodes :**
+
+- `__init__()`
+
+##### PercentFormatMixedPositionalAndNamed
+
+##### PercentFormatUnsupportedFormatCharacter
+
+**Méthodes :**
+
+- `__init__()`
+
+##### PercentFormatPositionalCountMismatch
+
+**Méthodes :**
+
+- `__init__()`
+
+##### PercentFormatExtraNamedArguments
+
+**Méthodes :**
+
+- `__init__()`
+
+##### PercentFormatMissingArgument
+
+**Méthodes :**
+
+- `__init__()`
+
+##### PercentFormatExpectedMapping
+
+##### PercentFormatExpectedSequence
+
+##### PercentFormatStarRequiresSequence
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+
+##### __str__
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `name`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `name`
+- `orig_loc`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `name`
+- `orig_loc`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `modname`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `modname`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `name`
+- `from_list`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `name`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `position`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `name`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `name`
+- `orig_loc`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `name`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `key`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `key`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `name`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `names`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `names`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `name`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `annotation`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `extra_positions`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `extra_keywords`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `missing_arguments`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `error`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `error`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `c`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `n_placeholders`
+- `n_substitutions`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `extra_keywords`
+
+##### __init__
+
+**Paramètres :**
+
+- `filename`
+- `loc`
+- `missing_arguments`
+
+---
+
+### reporter
+
+Provide the Reporter class.
+
+#### Classes
+
+##### Reporter
+
+Formats the results of pyflakes checks to users.
+
+**Méthodes :**
+
+- `__init__()`
+- `unexpectedError()`
+- `syntaxError()`
+- `flake()`
+
+#### Fonctions
+
+##### _makeDefaultReporter
+
+Make a reporter that can be used when no reporter is specified.
+
+##### __init__
+
+Construct a L{Reporter}.
+
+@param warningStream: A file-like object where warnings will be
+    written to.  The stream's C{write} method must accept unicode.
+    C{sys.stdout} is a good value.
+@param errorStream: A file-like object where error output will be
+    written to.  The stream's C{write} method must accept unicode.
+    C{sys.stderr} is a good value.
+
+**Paramètres :**
+
+- `warningStream`
+- `errorStream`
+
+##### unexpectedError
+
+An unexpected error occurred trying to process C{filename}.
+
+@param filename: The path to a file that we could not process.
+@ptype filename: C{unicode}
+@param msg: A message explaining the problem.
+@ptype msg: C{unicode}
+
+**Paramètres :**
+
+- `filename`
+- `msg`
+
+##### syntaxError
+
+There was a syntax error in C{filename}.
+
+@param filename: The path to the file with the syntax error.
+@ptype filename: C{unicode}
+@param msg: An explanation of the syntax error.
+@ptype msg: C{unicode}
+@param lineno: The line number where the syntax error occurred.
+@ptype lineno: C{int}
+@param offset: The column on which the syntax error occurred, or None.
+@ptype offset: C{int}
+@param text: The source code containing the syntax error.
+@ptype text: C{unicode}
+
+**Paramètres :**
+
+- `filename`
+- `msg`
+- `lineno`
+- `offset`
+- `text`
+
+##### flake
+
+pyflakes found something wrong with the code.
+
+@param: A L{pyflakes.messages.Message}.
+
+**Paramètres :**
+
+- `message`
 
 ---
 
@@ -80320,7 +82107,2743 @@ source (uncommon part of path) to benchmark dict.
 
 ---
 
+### pyflakes
+
+Implementation of the command-line I{pyflakes} tool.
+
+---
+
 ### .!25855!pyflakes
+
+---
+
+### harness
+
+#### Classes
+
+##### TestCase
+
+**Méthodes :**
+
+- `flakes()`
+
+#### Fonctions
+
+##### flakes
+
+**Paramètres :**
+
+- `input`
+
+---
+
+### test_api
+
+Tests for L{pyflakes.scripts.pyflakes}.
+
+#### Classes
+
+##### Node
+
+Mock an AST node.
+
+**Méthodes :**
+
+- `__init__()`
+
+##### SysStreamCapturing
+
+Context manager capturing sys.stdin, sys.stdout and sys.stderr.
+
+The file handles are replaced with a StringIO object.
+
+**Méthodes :**
+
+- `__init__()`
+- `__enter__()`
+- `__exit__()`
+
+##### LoggingReporter
+
+Implementation of Reporter that just appends any error to a list.
+
+**Méthodes :**
+
+- `__init__()`
+- `flake()`
+- `unexpectedError()`
+- `syntaxError()`
+
+##### TestIterSourceCode
+
+Tests for L{iterSourceCode}.
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `makeEmptyFile()`
+- `test_emptyDirectory()`
+- `test_singleFile()`
+- `test_onlyPythonSource()`
+- `test_recurses()`
+- `test_shebang()`
+- `test_multipleDirectories()`
+- `test_explicitFiles()`
+
+##### TestReporter
+
+Tests for L{Reporter}.
+
+**Méthodes :**
+
+- `test_syntaxError()`
+- `test_syntaxErrorNoOffset()`
+- `test_syntaxErrorNoText()`
+- `test_multiLineSyntaxError()`
+- `test_unexpectedError()`
+- `test_flake()`
+
+##### CheckTests
+
+Tests for L{check} and L{checkPath} which check a file for flakes.
+
+**Méthodes :**
+
+- `makeTempFile()`
+- `assertHasErrors()`
+- `getErrors()`
+- `test_legacyScript()`
+- `test_missingTrailingNewline()`
+- `test_checkPathNonExisting()`
+- `test_multilineSyntaxError()`
+- `test_eofSyntaxError()`
+- `test_eofSyntaxErrorWithTab()`
+- `test_nonDefaultFollowsDefaultSyntaxError()`
+- `test_nonKeywordAfterKeywordSyntaxError()`
+- `test_invalidEscape()`
+- `test_permissionDenied()`
+- `test_pyflakesWarning()`
+- `test_encodedFileUTF8()`
+- `test_CRLFLineEndings()`
+- `test_misencodedFileUTF8()`
+- `test_misencodedFileUTF16()`
+- `test_checkRecursive()`
+- `test_stdinReportsErrors()`
+
+##### IntegrationTests
+
+Tests of the pyflakes script that actually spawn the script.
+
+**Méthodes :**
+
+- `setUp()`
+- `tearDown()`
+- `getPyflakesBinary()`
+- `runPyflakes()`
+- `test_goodFile()`
+- `test_fileWithFlakes()`
+- `test_errors_io()`
+- `test_errors_syntax()`
+- `test_readFromStdin()`
+
+##### TestMain
+
+Tests of the pyflakes main function.
+
+**Méthodes :**
+
+- `runPyflakes()`
+
+#### Fonctions
+
+##### withStderrTo
+
+Call C{f} with C{sys.stderr} redirected to C{stderr}.
+
+**Paramètres :**
+
+- `stderr`
+- `f`
+
+##### __init__
+
+**Paramètres :**
+
+- `lineno`
+- `col_offset`
+
+##### __init__
+
+**Paramètres :**
+
+- `stdin`
+
+##### __enter__
+
+##### __exit__
+
+##### __init__
+
+Construct a C{LoggingReporter}.
+
+@param log: A list to append log messages to.
+
+**Paramètres :**
+
+- `log`
+
+##### flake
+
+**Paramètres :**
+
+- `message`
+
+##### unexpectedError
+
+**Paramètres :**
+
+- `filename`
+- `message`
+
+##### syntaxError
+
+**Paramètres :**
+
+- `filename`
+- `msg`
+- `lineno`
+- `offset`
+- `line`
+
+##### setUp
+
+##### tearDown
+
+##### makeEmptyFile
+
+##### test_emptyDirectory
+
+There are no Python files in an empty directory.
+
+##### test_singleFile
+
+If the directory contains one Python file, C{iterSourceCode} will find
+it.
+
+##### test_onlyPythonSource
+
+Files that are not Python source files are not included.
+
+##### test_recurses
+
+If the Python files are hidden deep down in child directories, we will
+find them.
+
+##### test_shebang
+
+Find Python files that don't end with `.py`, but contain a Python
+shebang.
+
+##### test_multipleDirectories
+
+L{iterSourceCode} can be given multiple directories.  It will recurse
+into each of them.
+
+##### test_explicitFiles
+
+If one of the paths given to L{iterSourceCode} is not a directory but
+a file, it will include that in its output.
+
+##### test_syntaxError
+
+C{syntaxError} reports that there was a syntax error in the source
+file.  It reports to the error stream and includes the filename, line
+number, error message, actual line of source and a caret pointing to
+where the error is.
+
+##### test_syntaxErrorNoOffset
+
+C{syntaxError} doesn't include a caret pointing to the error if
+C{offset} is passed as C{None}.
+
+##### test_syntaxErrorNoText
+
+C{syntaxError} doesn't include text or nonsensical offsets if C{text} is C{None}.
+
+This typically happens when reporting syntax errors from stdin.
+
+##### test_multiLineSyntaxError
+
+If there's a multi-line syntax error, then we only report the last
+line.  The offset is adjusted so that it is relative to the start of
+the last line.
+
+##### test_unexpectedError
+
+C{unexpectedError} reports an error processing a source file.
+
+##### test_flake
+
+C{flake} reports a code warning from Pyflakes.  It is exactly the
+str() of a L{pyflakes.messages.Message}.
+
+##### makeTempFile
+
+Make a temporary file containing C{content} and return a path to it.
+
+**Paramètres :**
+
+- `content`
+
+##### assertHasErrors
+
+Assert that C{path} causes errors.
+
+@param path: A path to a file to check.
+@param errorList: A list of errors expected to be printed to stderr.
+
+**Paramètres :**
+
+- `path`
+- `errorList`
+
+##### getErrors
+
+Get any warnings or errors reported by pyflakes for the file at C{path}.
+
+@param path: The path to a Python file on disk that pyflakes will check.
+@return: C{(count, log)}, where C{count} is the number of warnings or
+    errors generated, and log is a list of those warnings, presented
+    as structured data.  See L{LoggingReporter} for more details.
+
+**Paramètres :**
+
+- `path`
+
+##### test_legacyScript
+
+##### test_missingTrailingNewline
+
+Source which doesn't end with a newline shouldn't cause any
+exception to be raised nor an error indicator to be returned by
+L{check}.
+
+##### test_checkPathNonExisting
+
+L{checkPath} handles non-existing files.
+
+##### test_multilineSyntaxError
+
+Source which includes a syntax error which results in the raised
+L{SyntaxError.text} containing multiple lines of source are reported
+with only the last line of that source.
+
+##### test_eofSyntaxError
+
+The error reported for source files which end prematurely causing a
+syntax error reflects the cause for the syntax error.
+
+##### test_eofSyntaxErrorWithTab
+
+The error reported for source files which end prematurely causing a
+syntax error reflects the cause for the syntax error.
+
+##### test_nonDefaultFollowsDefaultSyntaxError
+
+Source which has a non-default argument following a default argument
+should include the line number of the syntax error.  However these
+exceptions do not include an offset.
+
+##### test_nonKeywordAfterKeywordSyntaxError
+
+Source which has a non-keyword argument after a keyword argument should
+include the line number of the syntax error.  However these exceptions
+do not include an offset.
+
+##### test_invalidEscape
+
+The invalid escape syntax raises ValueError in Python 2
+
+##### test_permissionDenied
+
+If the source file is not readable, this is reported on standard
+error.
+
+##### test_pyflakesWarning
+
+If the source file has a pyflakes warning, this is reported as a
+'flake'.
+
+##### test_encodedFileUTF8
+
+If source file declares the correct encoding, no error is reported.
+
+##### test_CRLFLineEndings
+
+Source files with Windows CR LF line endings are parsed successfully.
+
+##### test_misencodedFileUTF8
+
+If a source file contains bytes which cannot be decoded, this is
+reported on stderr.
+
+##### test_misencodedFileUTF16
+
+If a source file contains bytes which cannot be decoded, this is
+reported on stderr.
+
+##### test_checkRecursive
+
+L{checkRecursive} descends into each directory, finding Python files
+and reporting problems.
+
+##### test_stdinReportsErrors
+
+L{check} reports syntax errors from stdin
+
+##### setUp
+
+##### tearDown
+
+##### getPyflakesBinary
+
+Return the path to the pyflakes binary.
+
+##### runPyflakes
+
+Launch a subprocess running C{pyflakes}.
+
+@param paths: Command-line arguments to pass to pyflakes.
+@param stdin: Text to use as stdin.
+@return: C{(returncode, stdout, stderr)} of the completed pyflakes
+    process.
+
+**Paramètres :**
+
+- `paths`
+- `stdin`
+
+##### test_goodFile
+
+When a Python source file is all good, the return code is zero and no
+messages are printed to either stdout or stderr.
+
+##### test_fileWithFlakes
+
+When a Python source file has warnings, the return code is non-zero
+and the warnings are printed to stdout.
+
+##### test_errors_io
+
+When pyflakes finds errors with the files it's given, (if they don't
+exist, say), then the return code is non-zero and the errors are
+printed to stderr.
+
+##### test_errors_syntax
+
+When pyflakes finds errors with the files it's given, (if they don't
+exist, say), then the return code is non-zero and the errors are
+printed to stderr.
+
+##### test_readFromStdin
+
+If no arguments are passed to C{pyflakes} then it reads from stdin.
+
+##### runPyflakes
+
+**Paramètres :**
+
+- `paths`
+- `stdin`
+
+##### evaluate
+
+**Paramètres :**
+
+- `source`
+
+---
+
+### test_builtin
+
+Tests for detecting redefinition of builtins.
+
+#### Classes
+
+##### TestBuiltins
+
+**Méthodes :**
+
+- `test_builtin_unbound_local()`
+- `test_global_shadowing_builtin()`
+
+#### Fonctions
+
+##### test_builtin_unbound_local
+
+##### test_global_shadowing_builtin
+
+---
+
+### test_code_segment
+
+#### Classes
+
+##### TestCodeSegments
+
+Tests for segments of a module
+
+**Méthodes :**
+
+- `test_function_segment()`
+- `test_class_segment()`
+- `test_scope_class()`
+- `test_scope_function()`
+- `test_scope_async_function()`
+
+#### Fonctions
+
+##### test_function_segment
+
+##### test_class_segment
+
+##### test_scope_class
+
+##### test_scope_function
+
+##### test_scope_async_function
+
+---
+
+### test_dict
+
+Tests for dict duplicate keys Pyflakes behavior.
+
+#### Classes
+
+##### Test
+
+**Méthodes :**
+
+- `test_duplicate_keys()`
+- `test_duplicate_keys_bytes_vs_unicode_py3()`
+- `test_duplicate_values_bytes_vs_unicode_py3()`
+- `test_multiple_duplicate_keys()`
+- `test_duplicate_keys_in_function()`
+- `test_duplicate_keys_in_lambda()`
+- `test_duplicate_keys_tuples()`
+- `test_duplicate_keys_tuples_int_and_float()`
+- `test_duplicate_keys_ints()`
+- `test_duplicate_keys_bools()`
+- `test_duplicate_keys_bools_false()`
+- `test_duplicate_keys_none()`
+- `test_duplicate_variable_keys()`
+- `test_duplicate_variable_values()`
+- `test_duplicate_variable_values_same_value()`
+- `test_duplicate_key_float_and_int()`
+- `test_no_duplicate_key_error_same_value()`
+- `test_no_duplicate_key_errors()`
+- `test_no_duplicate_keys_tuples_same_first_element()`
+- `test_no_duplicate_key_errors_func_call()`
+- `test_no_duplicate_key_errors_bool_or_none()`
+- `test_no_duplicate_key_errors_ints()`
+- `test_no_duplicate_key_errors_vars()`
+- `test_no_duplicate_key_errors_tuples()`
+- `test_no_duplicate_key_errors_instance_attributes()`
+
+#### Fonctions
+
+##### test_duplicate_keys
+
+##### test_duplicate_keys_bytes_vs_unicode_py3
+
+##### test_duplicate_values_bytes_vs_unicode_py3
+
+##### test_multiple_duplicate_keys
+
+##### test_duplicate_keys_in_function
+
+##### test_duplicate_keys_in_lambda
+
+##### test_duplicate_keys_tuples
+
+##### test_duplicate_keys_tuples_int_and_float
+
+##### test_duplicate_keys_ints
+
+##### test_duplicate_keys_bools
+
+##### test_duplicate_keys_bools_false
+
+##### test_duplicate_keys_none
+
+##### test_duplicate_variable_keys
+
+##### test_duplicate_variable_values
+
+##### test_duplicate_variable_values_same_value
+
+##### test_duplicate_key_float_and_int
+
+These do look like different values, but when it comes to their use as
+keys, they compare as equal and so are actually duplicates.
+The literal dict {1: 1, 1.0: 1} actually becomes {1.0: 1}.
+
+##### test_no_duplicate_key_error_same_value
+
+##### test_no_duplicate_key_errors
+
+##### test_no_duplicate_keys_tuples_same_first_element
+
+##### test_no_duplicate_key_errors_func_call
+
+##### test_no_duplicate_key_errors_bool_or_none
+
+##### test_no_duplicate_key_errors_ints
+
+##### test_no_duplicate_key_errors_vars
+
+##### test_no_duplicate_key_errors_tuples
+
+##### test_no_duplicate_key_errors_instance_attributes
+
+---
+
+### test_doctests
+
+#### Classes
+
+##### _DoctestMixin
+
+**Méthodes :**
+
+- `doctestify()`
+- `flakes()`
+
+##### Test
+
+**Méthodes :**
+
+- `test_scope_class()`
+- `test_nested_doctest_ignored()`
+- `test_global_module_scope_pollution()`
+- `test_global_undefined()`
+- `test_nested_class()`
+- `test_ignore_nested_function()`
+- `test_inaccessible_scope_class()`
+- `test_importBeforeDoctest()`
+- `test_importBeforeAndInDoctest()`
+- `test_importInDoctestAndAfter()`
+- `test_offsetInDoctests()`
+- `test_offsetInLambdasInDoctests()`
+- `test_offsetAfterDoctests()`
+- `test_syntaxErrorInDoctest()`
+- `test_indentationErrorInDoctest()`
+- `test_offsetWithMultiLineArgs()`
+- `test_doctestCanReferToFunction()`
+- `test_doctestCanReferToClass()`
+- `test_noOffsetSyntaxErrorInDoctest()`
+- `test_singleUnderscoreInDoctest()`
+- `test_globalUnderscoreInDoctest()`
+
+##### TestOther
+
+Run TestOther with each test wrapped in a doctest.
+
+##### TestImports
+
+Run TestImports with each test wrapped in a doctest.
+
+##### TestUndefinedNames
+
+Run TestUndefinedNames with each test wrapped in a doctest.
+
+#### Fonctions
+
+##### doctestify
+
+**Paramètres :**
+
+- `input`
+
+##### flakes
+
+**Paramètres :**
+
+- `input`
+
+##### test_scope_class
+
+Check that a doctest is given a DoctestScope.
+
+##### test_nested_doctest_ignored
+
+Check that nested doctests are ignored.
+
+##### test_global_module_scope_pollution
+
+Check that global in doctest does not pollute module scope.
+
+##### test_global_undefined
+
+##### test_nested_class
+
+Doctest within nested class are processed.
+
+##### test_ignore_nested_function
+
+Doctest module does not process doctest in nested functions.
+
+##### test_inaccessible_scope_class
+
+Doctest may not access class scope.
+
+##### test_importBeforeDoctest
+
+##### test_importBeforeAndInDoctest
+
+##### test_importInDoctestAndAfter
+
+##### test_offsetInDoctests
+
+##### test_offsetInLambdasInDoctests
+
+##### test_offsetAfterDoctests
+
+##### test_syntaxErrorInDoctest
+
+##### test_indentationErrorInDoctest
+
+##### test_offsetWithMultiLineArgs
+
+##### test_doctestCanReferToFunction
+
+##### test_doctestCanReferToClass
+
+##### test_noOffsetSyntaxErrorInDoctest
+
+##### test_singleUnderscoreInDoctest
+
+##### test_globalUnderscoreInDoctest
+
+---
+
+### test_imports
+
+#### Classes
+
+##### TestImportationObject
+
+**Méthodes :**
+
+- `test_import_basic()`
+- `test_import_as()`
+- `test_import_submodule()`
+- `test_import_submodule_as()`
+- `test_import_submodule_as_source_name()`
+- `test_importfrom_relative()`
+- `test_importfrom_relative_parent()`
+- `test_importfrom_relative_with_module()`
+- `test_importfrom_relative_with_module_as()`
+- `test_importfrom_member()`
+- `test_importfrom_submodule_member()`
+- `test_importfrom_member_as()`
+- `test_importfrom_submodule_member_as()`
+- `test_importfrom_star()`
+- `test_importfrom_star_relative()`
+- `test_importfrom_future()`
+- `test_unusedImport_underscore()`
+
+##### Test
+
+**Méthodes :**
+
+- `test_unusedImport()`
+- `test_unusedImport_relative()`
+- `test_aliasedImport()`
+- `test_aliasedImportShadowModule()`
+- `test_usedImport()`
+- `test_usedImport_relative()`
+- `test_redefinedWhileUnused()`
+- `test_redefinedIf()`
+- `test_redefinedIfElse()`
+- `test_redefinedTry()`
+- `test_redefinedTryExcept()`
+- `test_redefinedTryNested()`
+- `test_redefinedTryExceptMulti()`
+- `test_redefinedTryElse()`
+- `test_redefinedTryExceptElse()`
+- `test_redefinedTryExceptFinally()`
+- `test_redefinedTryExceptElseFinally()`
+- `test_redefinedByFunction()`
+- `test_redefinedInNestedFunction()`
+- `test_redefinedInNestedFunctionTwice()`
+- `test_redefinedButUsedLater()`
+- `test_redefinedByClass()`
+- `test_redefinedBySubclass()`
+- `test_redefinedInClass()`
+- `test_importInClass()`
+- `test_usedInFunction()`
+- `test_shadowedByParameter()`
+- `test_newAssignment()`
+- `test_usedInGetattr()`
+- `test_usedInSlice()`
+- `test_usedInIfBody()`
+- `test_usedInIfConditional()`
+- `test_usedInElifConditional()`
+- `test_usedInElse()`
+- `test_usedInCall()`
+- `test_usedInClass()`
+- `test_usedInClassBase()`
+- `test_notUsedInNestedScope()`
+- `test_usedInFor()`
+- `test_usedInForElse()`
+- `test_redefinedByFor()`
+- `test_shadowedByFor()`
+- `test_shadowedByForDeep()`
+- `test_usedInReturn()`
+- `test_usedInOperators()`
+- `test_usedInAssert()`
+- `test_usedInSubscript()`
+- `test_usedInLogic()`
+- `test_usedInList()`
+- `test_usedInTuple()`
+- `test_usedInTry()`
+- `test_usedInExcept()`
+- `test_redefinedByExcept()`
+- `test_usedInRaise()`
+- `test_usedInYield()`
+- `test_usedInDict()`
+- `test_usedInParameterDefault()`
+- `test_usedInAttributeAssign()`
+- `test_usedInKeywordArg()`
+- `test_usedInAssignment()`
+- `test_usedInListComp()`
+- `test_usedInTryFinally()`
+- `test_usedInWhile()`
+- `test_usedInGlobal()`
+- `test_usedAndGlobal()`
+- `test_assignedToGlobal()`
+- `test_usedInExec()`
+- `test_usedInLambda()`
+- `test_shadowedByLambda()`
+- `test_usedInSliceObj()`
+- `test_unusedInNestedScope()`
+- `test_methodsDontUseClassScope()`
+- `test_nestedFunctionsNestScope()`
+- `test_nestedClassAndFunctionScope()`
+- `test_importStar()`
+- `test_importStar_relative()`
+- `test_localImportStar()`
+- `test_packageImport()`
+- `test_unusedPackageImport()`
+- `test_duplicateSubmoduleImport()`
+- `test_differentSubmoduleImport()`
+- `test_used_package_with_submodule_import()`
+- `test_used_package_with_submodule_import_of_alias()`
+- `test_unused_package_with_submodule_import()`
+- `test_assignRHSFirst()`
+- `test_tryingMultipleImports()`
+- `test_nonGlobalDoesNotRedefine()`
+- `test_functionsRunLater()`
+- `test_functionNamesAreBoundNow()`
+- `test_ignoreNonImportRedefinitions()`
+- `test_importingForImportError()`
+- `test_importedInClass()`
+- `test_importUsedInMethodDefinition()`
+- `test_futureImport()`
+- `test_futureImportFirst()`
+- `test_futureImportUsed()`
+- `test_futureImportUndefined()`
+- `test_futureImportStar()`
+
+##### TestSpecialAll
+
+Tests for suppression of unused import warnings by C{__all__}.
+
+**Méthodes :**
+
+- `test_ignoredInFunction()`
+- `test_ignoredInClass()`
+- `test_ignored_when_not_directly_assigned()`
+- `test_warningSuppressed()`
+- `test_augmentedAssignment()`
+- `test_list_concatenation_assignment()`
+- `test_tuple_concatenation_assignment()`
+- `test_all_with_attributes()`
+- `test_all_with_names()`
+- `test_all_with_attributes_added()`
+- `test_all_mixed_attributes_and_strings()`
+- `test_unboundExported()`
+- `test_importStarExported()`
+- `test_importStarNotExported()`
+- `test_usedInGenExp()`
+- `test_redefinedByGenExp()`
+- `test_usedAsDecorator()`
+- `test_usedAsClassDecorator()`
+
+#### Fonctions
+
+##### test_import_basic
+
+##### test_import_as
+
+##### test_import_submodule
+
+##### test_import_submodule_as
+
+##### test_import_submodule_as_source_name
+
+##### test_importfrom_relative
+
+##### test_importfrom_relative_parent
+
+##### test_importfrom_relative_with_module
+
+##### test_importfrom_relative_with_module_as
+
+##### test_importfrom_member
+
+##### test_importfrom_submodule_member
+
+##### test_importfrom_member_as
+
+##### test_importfrom_submodule_member_as
+
+##### test_importfrom_star
+
+##### test_importfrom_star_relative
+
+##### test_importfrom_future
+
+##### test_unusedImport_underscore
+
+The magic underscore var should be reported as unused when used as an
+import alias.
+
+##### test_unusedImport
+
+##### test_unusedImport_relative
+
+##### test_aliasedImport
+
+##### test_aliasedImportShadowModule
+
+Imported aliases can shadow the source of the import.
+
+##### test_usedImport
+
+##### test_usedImport_relative
+
+##### test_redefinedWhileUnused
+
+##### test_redefinedIf
+
+Test that importing a module twice within an if
+block does raise a warning.
+
+##### test_redefinedIfElse
+
+Test that importing a module twice in if
+and else blocks does not raise a warning.
+
+##### test_redefinedTry
+
+Test that importing a module twice in a try block
+does raise a warning.
+
+##### test_redefinedTryExcept
+
+Test that importing a module twice in a try
+and except block does not raise a warning.
+
+##### test_redefinedTryNested
+
+Test that importing a module twice using a nested
+try/except and if blocks does not issue a warning.
+
+##### test_redefinedTryExceptMulti
+
+##### test_redefinedTryElse
+
+##### test_redefinedTryExceptElse
+
+##### test_redefinedTryExceptFinally
+
+##### test_redefinedTryExceptElseFinally
+
+##### test_redefinedByFunction
+
+##### test_redefinedInNestedFunction
+
+Test that shadowing a global name with a nested function definition
+generates a warning.
+
+##### test_redefinedInNestedFunctionTwice
+
+Test that shadowing a global name with a nested function definition
+generates a warning.
+
+##### test_redefinedButUsedLater
+
+Test that a global import which is redefined locally,
+but used later in another scope does not generate a warning.
+
+##### test_redefinedByClass
+
+##### test_redefinedBySubclass
+
+If an imported name is redefined by a class statement which also uses
+that name in the bases list, no warning is emitted.
+
+##### test_redefinedInClass
+
+Test that shadowing a global with a class attribute does not produce a
+warning.
+
+##### test_importInClass
+
+Test that import within class is a locally scoped attribute.
+
+##### test_usedInFunction
+
+##### test_shadowedByParameter
+
+##### test_newAssignment
+
+##### test_usedInGetattr
+
+##### test_usedInSlice
+
+##### test_usedInIfBody
+
+##### test_usedInIfConditional
+
+##### test_usedInElifConditional
+
+##### test_usedInElse
+
+##### test_usedInCall
+
+##### test_usedInClass
+
+##### test_usedInClassBase
+
+##### test_notUsedInNestedScope
+
+##### test_usedInFor
+
+##### test_usedInForElse
+
+##### test_redefinedByFor
+
+##### test_shadowedByFor
+
+Test that shadowing a global name with a for loop variable generates a
+warning.
+
+##### test_shadowedByForDeep
+
+Test that shadowing a global name with a for loop variable nested in a
+tuple unpack generates a warning.
+
+##### test_usedInReturn
+
+##### test_usedInOperators
+
+##### test_usedInAssert
+
+##### test_usedInSubscript
+
+##### test_usedInLogic
+
+##### test_usedInList
+
+##### test_usedInTuple
+
+##### test_usedInTry
+
+##### test_usedInExcept
+
+##### test_redefinedByExcept
+
+##### test_usedInRaise
+
+##### test_usedInYield
+
+##### test_usedInDict
+
+##### test_usedInParameterDefault
+
+##### test_usedInAttributeAssign
+
+##### test_usedInKeywordArg
+
+##### test_usedInAssignment
+
+##### test_usedInListComp
+
+##### test_usedInTryFinally
+
+##### test_usedInWhile
+
+##### test_usedInGlobal
+
+A 'global' statement shadowing an unused import should not prevent it
+from being reported.
+
+##### test_usedAndGlobal
+
+A 'global' statement shadowing a used import should not cause it to be
+reported as unused.
+
+##### test_assignedToGlobal
+
+Binding an import to a declared global should not cause it to be
+reported as unused.
+
+##### test_usedInExec
+
+##### test_usedInLambda
+
+##### test_shadowedByLambda
+
+##### test_usedInSliceObj
+
+##### test_unusedInNestedScope
+
+##### test_methodsDontUseClassScope
+
+##### test_nestedFunctionsNestScope
+
+##### test_nestedClassAndFunctionScope
+
+##### test_importStar
+
+Use of import * at module level is reported.
+
+##### test_importStar_relative
+
+Use of import * from a relative import is reported.
+
+##### test_localImportStar
+
+import * is only allowed at module level.
+
+##### test_packageImport
+
+If a dotted name is imported and used, no warning is reported.
+
+##### test_unusedPackageImport
+
+If a dotted name is imported and not used, an unused import warning is
+reported.
+
+##### test_duplicateSubmoduleImport
+
+If a submodule of a package is imported twice, an unused import warning
+and a redefined while unused warning are reported.
+
+##### test_differentSubmoduleImport
+
+If two different submodules of a package are imported, no duplicate
+import warning is reported for the package.
+
+##### test_used_package_with_submodule_import
+
+Usage of package marks submodule imports as used.
+
+##### test_used_package_with_submodule_import_of_alias
+
+Usage of package by alias marks submodule imports as used.
+
+##### test_unused_package_with_submodule_import
+
+When a package and its submodule are imported, only report once.
+
+##### test_assignRHSFirst
+
+##### test_tryingMultipleImports
+
+##### test_nonGlobalDoesNotRedefine
+
+##### test_functionsRunLater
+
+##### test_functionNamesAreBoundNow
+
+##### test_ignoreNonImportRedefinitions
+
+##### test_importingForImportError
+
+##### test_importedInClass
+
+Imports in class scope can be used through self.
+
+##### test_importUsedInMethodDefinition
+
+Method named 'foo' with default args referring to module named 'foo'.
+
+##### test_futureImport
+
+__future__ is special.
+
+##### test_futureImportFirst
+
+__future__ imports must come before anything else.
+
+##### test_futureImportUsed
+
+__future__ is special, but names are injected in the namespace.
+
+##### test_futureImportUndefined
+
+Importing undefined names from __future__ fails.
+
+##### test_futureImportStar
+
+Importing '*' from __future__ fails.
+
+##### test_ignoredInFunction
+
+An C{__all__} definition does not suppress unused import warnings in a
+function scope.
+
+##### test_ignoredInClass
+
+An C{__all__} definition in a class does not suppress unused import warnings.
+
+##### test_ignored_when_not_directly_assigned
+
+##### test_warningSuppressed
+
+If a name is imported and unused but is named in C{__all__}, no warning
+is reported.
+
+##### test_augmentedAssignment
+
+The C{__all__} variable is defined incrementally.
+
+##### test_list_concatenation_assignment
+
+The C{__all__} variable is defined through list concatenation.
+
+##### test_tuple_concatenation_assignment
+
+The C{__all__} variable is defined through tuple concatenation.
+
+##### test_all_with_attributes
+
+##### test_all_with_names
+
+##### test_all_with_attributes_added
+
+##### test_all_mixed_attributes_and_strings
+
+##### test_unboundExported
+
+If C{__all__} includes a name which is not bound, a warning is emitted.
+
+##### test_importStarExported
+
+Report undefined if import * is used
+
+##### test_importStarNotExported
+
+Report unused import when not needed to satisfy __all__.
+
+##### test_usedInGenExp
+
+Using a global in a generator expression results in no warnings.
+
+##### test_redefinedByGenExp
+
+Re-using a global name as the loop variable for a generator
+expression results in a redefinition warning.
+
+##### test_usedAsDecorator
+
+Using a global name in a decorator statement results in no warnings,
+but using an undefined name in a decorator statement results in an
+undefined name warning.
+
+##### test_usedAsClassDecorator
+
+Using an imported name as a class decorator results in no warnings,
+but using an undefined name as a class decorator results in an
+undefined name warning.
+
+---
+
+### test_is_literal
+
+#### Classes
+
+##### Test
+
+**Méthodes :**
+
+- `test_is_str()`
+- `test_is_bytes()`
+- `test_is_unicode()`
+- `test_is_int()`
+- `test_is_true()`
+- `test_is_false()`
+- `test_is_not_str()`
+- `test_is_not_bytes()`
+- `test_is_not_unicode()`
+- `test_is_not_int()`
+- `test_is_not_true()`
+- `test_is_not_false()`
+- `test_left_is_str()`
+- `test_left_is_bytes()`
+- `test_left_is_unicode()`
+- `test_left_is_int()`
+- `test_left_is_true()`
+- `test_left_is_false()`
+- `test_left_is_not_str()`
+- `test_left_is_not_bytes()`
+- `test_left_is_not_unicode()`
+- `test_left_is_not_int()`
+- `test_left_is_not_true()`
+- `test_left_is_not_false()`
+- `test_chained_operators_is_true()`
+- `test_chained_operators_is_str()`
+- `test_chained_operators_is_true_end()`
+- `test_chained_operators_is_str_end()`
+- `test_is_tuple_constant()`
+- `test_is_tuple_constant_containing_constants()`
+- `test_is_tuple_containing_variables_ok()`
+
+#### Fonctions
+
+##### test_is_str
+
+##### test_is_bytes
+
+##### test_is_unicode
+
+##### test_is_int
+
+##### test_is_true
+
+##### test_is_false
+
+##### test_is_not_str
+
+##### test_is_not_bytes
+
+##### test_is_not_unicode
+
+##### test_is_not_int
+
+##### test_is_not_true
+
+##### test_is_not_false
+
+##### test_left_is_str
+
+##### test_left_is_bytes
+
+##### test_left_is_unicode
+
+##### test_left_is_int
+
+##### test_left_is_true
+
+##### test_left_is_false
+
+##### test_left_is_not_str
+
+##### test_left_is_not_bytes
+
+##### test_left_is_not_unicode
+
+##### test_left_is_not_int
+
+##### test_left_is_not_true
+
+##### test_left_is_not_false
+
+##### test_chained_operators_is_true
+
+##### test_chained_operators_is_str
+
+##### test_chained_operators_is_true_end
+
+##### test_chained_operators_is_str_end
+
+##### test_is_tuple_constant
+
+##### test_is_tuple_constant_containing_constants
+
+##### test_is_tuple_containing_variables_ok
+
+---
+
+### test_match
+
+#### Classes
+
+##### TestMatch
+
+**Méthodes :**
+
+- `test_match_bindings()`
+- `test_match_pattern_matched_class()`
+- `test_match_placeholder()`
+- `test_match_singleton()`
+- `test_match_or_pattern()`
+- `test_match_star()`
+- `test_match_double_star()`
+- `test_defined_in_different_branches()`
+
+#### Fonctions
+
+##### test_match_bindings
+
+##### test_match_pattern_matched_class
+
+##### test_match_placeholder
+
+##### test_match_singleton
+
+##### test_match_or_pattern
+
+##### test_match_star
+
+##### test_match_double_star
+
+##### test_defined_in_different_branches
+
+---
+
+### test_other
+
+Tests for various Pyflakes behavior.
+
+#### Classes
+
+##### Test
+
+**Méthodes :**
+
+- `test_duplicateArgs()`
+- `test_localReferencedBeforeAssignment()`
+- `test_redefinedInGenerator()`
+- `test_redefinedInSetComprehension()`
+- `test_redefinedInDictComprehension()`
+- `test_redefinedFunction()`
+- `test_redefined_function_shadows_variable()`
+- `test_redefinedUnderscoreFunction()`
+- `test_redefinedUnderscoreImportation()`
+- `test_redefinedClassFunction()`
+- `test_redefinedIfElseFunction()`
+- `test_redefinedIfFunction()`
+- `test_redefinedTryExceptFunction()`
+- `test_redefinedTryFunction()`
+- `test_redefinedIfElseInListComp()`
+- `test_functionDecorator()`
+- `test_classFunctionDecorator()`
+- `test_modernProperty()`
+- `test_unaryPlus()`
+- `test_undefinedBaseClass()`
+- `test_classNameUndefinedInClassBody()`
+- `test_classNameDefinedPreviously()`
+- `test_classRedefinition()`
+- `test_functionRedefinedAsClass()`
+- `test_classRedefinedAsFunction()`
+- `test_classWithReturn()`
+- `test_moduleWithReturn()`
+- `test_classWithYield()`
+- `test_moduleWithYield()`
+- `test_classWithYieldFrom()`
+- `test_moduleWithYieldFrom()`
+- `test_continueOutsideLoop()`
+- `test_continueInsideLoop()`
+- `test_breakOutsideLoop()`
+- `test_breakInsideLoop()`
+- `test_defaultExceptLast()`
+- `test_defaultExceptNotLast()`
+- `test_starredAssignmentNoError()`
+- `test_starredAssignmentErrors()`
+- `test_doubleAssignment()`
+- `test_doubleAssignmentConditionally()`
+- `test_doubleAssignmentWithUse()`
+- `test_comparison()`
+- `test_identity()`
+- `test_containment()`
+- `test_loopControl()`
+- `test_ellipsis()`
+- `test_extendedSlice()`
+- `test_varAugmentedAssignment()`
+- `test_attrAugmentedAssignment()`
+- `test_globalDeclaredInDifferentScope()`
+- `test_unused_global_statement()`
+- `test_unused_nonlocal_statement()`
+- `test_unused_global_statement_not_marked_as_used_by_nested_scope()`
+- `test_global_nonlocal_in_class_bodies()`
+- `test_unused_global_in_class()`
+- `test_unused_nonlocal_in_clas()`
+- `test_function_arguments()`
+- `test_function_arguments_python3()`
+
+##### TestUnusedAssignment
+
+Tests for warning about unused assignments.
+
+**Méthodes :**
+
+- `test_unusedVariable()`
+- `test_unusedUnderscoreVariable()`
+- `test_unusedVariableAsLocals()`
+- `test_unusedVariableNoLocals()`
+- `test_unusedReassignedVariable()`
+- `test_variableUsedInLoop()`
+- `test_assignToGlobal()`
+- `test_assignToNonlocal()`
+- `test_assignToMember()`
+- `test_assignInForLoop()`
+- `test_assignInListComprehension()`
+- `test_generatorExpression()`
+- `test_assignmentInsideLoop()`
+- `test_tupleUnpacking()`
+- `test_listUnpacking()`
+- `test_closedOver()`
+- `test_doubleClosedOver()`
+- `test_tracebackhideSpecialVariable()`
+- `test_debuggerskipSpecialVariable()`
+- `test_ifexp()`
+- `test_if_tuple()`
+- `test_withStatementNoNames()`
+- `test_withStatementSingleName()`
+- `test_withStatementAttributeName()`
+- `test_withStatementSubscript()`
+- `test_withStatementSubscriptUndefined()`
+- `test_withStatementTupleNames()`
+- `test_withStatementListNames()`
+- `test_withStatementComplicatedTarget()`
+- `test_withStatementSingleNameUndefined()`
+- `test_withStatementTupleNamesUndefined()`
+- `test_withStatementSingleNameRedefined()`
+- `test_withStatementTupleNamesRedefined()`
+- `test_withStatementUndefinedInside()`
+- `test_withStatementNameDefinedInBody()`
+- `test_withStatementUndefinedInExpression()`
+- `test_dictComprehension()`
+- `test_setComprehensionAndLiteral()`
+- `test_exceptionUsedInExcept()`
+- `test_exceptionUnusedInExcept()`
+- `test_exception_unused_in_except_star()`
+- `test_exceptionUnusedInExceptInFunction()`
+- `test_exceptWithoutNameInFunction()`
+- `test_exceptWithoutNameInFunctionTuple()`
+- `test_augmentedAssignmentImportedFunctionCall()`
+- `test_assert_without_message()`
+- `test_assert_with_message()`
+- `test_assert_tuple()`
+- `test_assert_tuple_empty()`
+- `test_assert_static()`
+- `test_yieldFromUndefined()`
+- `test_f_string()`
+- `test_t_string()`
+- `test_assign_expr()`
+- `test_assign_expr_after_annotation()`
+- `test_assign_expr_generator_scope()`
+- `test_assign_expr_generator_scope_reassigns_parameter()`
+- `test_assign_expr_nested()`
+
+##### TestStringFormatting
+
+**Méthodes :**
+
+- `test_f_string_without_placeholders()`
+- `test_t_string_missing_placeholders()`
+- `test_invalid_dot_format_calls()`
+- `test_invalid_percent_format_calls()`
+- `test_ok_percent_format_cannot_determine_element_count()`
+
+##### TestAsyncStatements
+
+**Méthodes :**
+
+- `test_asyncDef()`
+- `test_asyncDefAwait()`
+- `test_asyncDefUndefined()`
+- `test_asyncFor()`
+- `test_asyncForUnderscoreLoopVar()`
+- `test_loopControlInAsyncFor()`
+- `test_loopControlInAsyncForElse()`
+- `test_asyncWith()`
+- `test_asyncWithItem()`
+- `test_matmul()`
+- `test_formatstring()`
+- `test_raise_notimplemented()`
+
+##### TestIncompatiblePrintOperator
+
+Tests for warning about invalid use of print function.
+
+**Méthodes :**
+
+- `test_valid_print()`
+- `test_invalid_print_when_imported_from_future()`
+- `test_print_augmented_assign()`
+- `test_print_function_assignment()`
+- `test_print_in_lambda()`
+- `test_print_returned_in_function()`
+- `test_print_as_condition_test()`
+
+#### Fonctions
+
+##### test_duplicateArgs
+
+##### test_localReferencedBeforeAssignment
+
+##### test_redefinedInGenerator
+
+Test that reusing a variable in a generator does not raise
+a warning.
+
+##### test_redefinedInSetComprehension
+
+Test that reusing a variable in a set comprehension does not raise
+a warning.
+
+##### test_redefinedInDictComprehension
+
+Test that reusing a variable in a dict comprehension does not raise
+a warning.
+
+##### test_redefinedFunction
+
+Test that shadowing a function definition with another one raises a
+warning.
+
+##### test_redefined_function_shadows_variable
+
+##### test_redefinedUnderscoreFunction
+
+Test that shadowing a function definition named with underscore doesn't
+raise anything.
+
+##### test_redefinedUnderscoreImportation
+
+Test that shadowing an underscore importation raises a warning.
+
+##### test_redefinedClassFunction
+
+Test that shadowing a function definition in a class suite with another
+one raises a warning.
+
+##### test_redefinedIfElseFunction
+
+Test that shadowing a function definition twice in an if
+and else block does not raise a warning.
+
+##### test_redefinedIfFunction
+
+Test that shadowing a function definition within an if block
+raises a warning.
+
+##### test_redefinedTryExceptFunction
+
+Test that shadowing a function definition twice in try
+and except block does not raise a warning.
+
+##### test_redefinedTryFunction
+
+Test that shadowing a function definition within a try block
+raises a warning.
+
+##### test_redefinedIfElseInListComp
+
+Test that shadowing a variable in a list comprehension in
+an if and else block does not raise a warning.
+
+##### test_functionDecorator
+
+Test that shadowing a function definition with a decorated version of
+that function does not raise a warning.
+
+##### test_classFunctionDecorator
+
+Test that shadowing a function definition in a class suite with a
+decorated version of that function does not raise a warning.
+
+##### test_modernProperty
+
+##### test_unaryPlus
+
+Don't die on unary +.
+
+##### test_undefinedBaseClass
+
+If a name in the base list of a class definition is undefined, a
+warning is emitted.
+
+##### test_classNameUndefinedInClassBody
+
+If a class name is used in the body of that class's definition and
+the name is not already defined, a warning is emitted.
+
+##### test_classNameDefinedPreviously
+
+If a class name is used in the body of that class's definition and
+the name was previously defined in some other way, no warning is
+emitted.
+
+##### test_classRedefinition
+
+If a class is defined twice in the same module, a warning is emitted.
+
+##### test_functionRedefinedAsClass
+
+If a function is redefined as a class, a warning is emitted.
+
+##### test_classRedefinedAsFunction
+
+If a class is redefined as a function, a warning is emitted.
+
+##### test_classWithReturn
+
+If a return is used inside a class, a warning is emitted.
+
+##### test_moduleWithReturn
+
+If a return is used at the module level, a warning is emitted.
+
+##### test_classWithYield
+
+If a yield is used inside a class, a warning is emitted.
+
+##### test_moduleWithYield
+
+If a yield is used at the module level, a warning is emitted.
+
+##### test_classWithYieldFrom
+
+If a yield from is used inside a class, a warning is emitted.
+
+##### test_moduleWithYieldFrom
+
+If a yield from is used at the module level, a warning is emitted.
+
+##### test_continueOutsideLoop
+
+##### test_continueInsideLoop
+
+##### test_breakOutsideLoop
+
+##### test_breakInsideLoop
+
+##### test_defaultExceptLast
+
+A default except block should be last.
+
+YES:
+
+try:
+    ...
+except Exception:
+    ...
+except:
+    ...
+
+NO:
+
+try:
+    ...
+except:
+    ...
+except Exception:
+    ...
+
+##### test_defaultExceptNotLast
+
+##### test_starredAssignmentNoError
+
+Python 3 extended iterable unpacking
+
+##### test_starredAssignmentErrors
+
+SyntaxErrors (not encoded in the ast) surrounding Python 3 extended
+iterable unpacking
+
+##### test_doubleAssignment
+
+If a variable is re-assigned to without being used, no warning is
+emitted.
+
+##### test_doubleAssignmentConditionally
+
+If a variable is re-assigned within a conditional, no warning is
+emitted.
+
+##### test_doubleAssignmentWithUse
+
+If a variable is re-assigned to after being used, no warning is
+emitted.
+
+##### test_comparison
+
+If a defined name is used on either side of any of the six comparison
+operators, no warning is emitted.
+
+##### test_identity
+
+If a defined name is used on either side of an identity test, no
+warning is emitted.
+
+##### test_containment
+
+If a defined name is used on either side of a containment test, no
+warning is emitted.
+
+##### test_loopControl
+
+break and continue statements are supported.
+
+##### test_ellipsis
+
+Ellipsis in a slice is supported.
+
+##### test_extendedSlice
+
+Extended slices are supported.
+
+##### test_varAugmentedAssignment
+
+Augmented assignment of a variable is supported.
+We don't care about var refs.
+
+##### test_attrAugmentedAssignment
+
+Augmented assignment of attributes is supported.
+We don't care about attr refs.
+
+##### test_globalDeclaredInDifferentScope
+
+A 'global' can be declared in one scope and reused in another.
+
+##### test_unused_global_statement
+
+##### test_unused_nonlocal_statement
+
+##### test_unused_global_statement_not_marked_as_used_by_nested_scope
+
+##### test_global_nonlocal_in_class_bodies
+
+##### test_unused_global_in_class
+
+##### test_unused_nonlocal_in_clas
+
+##### test_function_arguments
+
+Test to traverse ARG and ARGUMENT handler
+
+##### test_function_arguments_python3
+
+##### test_unusedVariable
+
+Warn when a variable in a function is assigned a value that's never
+used.
+
+##### test_unusedUnderscoreVariable
+
+Don't warn when the magic "_" (underscore) variable is unused.
+See issue #202.
+
+##### test_unusedVariableAsLocals
+
+Using locals() it is perfectly valid to have unused variables
+
+##### test_unusedVariableNoLocals
+
+Using locals() in wrong scope should not matter
+
+##### test_unusedReassignedVariable
+
+Shadowing a used variable can still raise an UnusedVariable warning.
+
+##### test_variableUsedInLoop
+
+Shadowing a used variable cannot raise an UnusedVariable warning in the
+context of a loop.
+
+##### test_assignToGlobal
+
+Assigning to a global and then not using that global is perfectly
+acceptable. Do not mistake it for an unused local variable.
+
+##### test_assignToNonlocal
+
+Assigning to a nonlocal and then not using that binding is perfectly
+acceptable. Do not mistake it for an unused local variable.
+
+##### test_assignToMember
+
+Assigning to a member of another object and then not using that member
+variable is perfectly acceptable. Do not mistake it for an unused
+local variable.
+
+##### test_assignInForLoop
+
+Don't warn when a variable in a for loop is assigned to but not used.
+
+##### test_assignInListComprehension
+
+Don't warn when a variable in a list comprehension is
+assigned to but not used.
+
+##### test_generatorExpression
+
+Don't warn when a variable in a generator expression is
+assigned to but not used.
+
+##### test_assignmentInsideLoop
+
+Don't warn when a variable assignment occurs lexically after its use.
+
+##### test_tupleUnpacking
+
+Don't warn when a variable included in tuple unpacking is unused. It's
+very common for variables in a tuple unpacking assignment to be unused
+in good Python code, so warning will only create false positives.
+
+##### test_listUnpacking
+
+Don't warn when a variable included in list unpacking is unused.
+
+##### test_closedOver
+
+Don't warn when the assignment is used in an inner function.
+
+##### test_doubleClosedOver
+
+Don't warn when the assignment is used in an inner function, even if
+that inner function itself is in an inner function.
+
+##### test_tracebackhideSpecialVariable
+
+Do not warn about unused local variable __tracebackhide__, which is
+a special variable for py.test.
+
+##### test_debuggerskipSpecialVariable
+
+Do not warn about unused local variable __debuggerskip__, which is
+a special variable for IPython.
+
+##### test_ifexp
+
+Test C{foo if bar else baz} statements.
+
+##### test_if_tuple
+
+Test C{if (foo,)} conditions.
+
+##### test_withStatementNoNames
+
+No warnings are emitted for using inside or after a nameless C{with}
+statement a name defined beforehand.
+
+##### test_withStatementSingleName
+
+No warnings are emitted for using a name defined by a C{with} statement
+within the suite or afterwards.
+
+##### test_withStatementAttributeName
+
+No warnings are emitted for using an attribute as the target of a
+C{with} statement.
+
+##### test_withStatementSubscript
+
+No warnings are emitted for using a subscript as the target of a
+C{with} statement.
+
+##### test_withStatementSubscriptUndefined
+
+An undefined name warning is emitted if the subscript used as the
+target of a C{with} statement is not defined.
+
+##### test_withStatementTupleNames
+
+No warnings are emitted for using any of the tuple of names defined by
+a C{with} statement within the suite or afterwards.
+
+##### test_withStatementListNames
+
+No warnings are emitted for using any of the list of names defined by a
+C{with} statement within the suite or afterwards.
+
+##### test_withStatementComplicatedTarget
+
+If the target of a C{with} statement uses any or all of the valid forms
+for that part of the grammar (See
+U{http://docs.python.org/reference/compound_stmts.html#the-with-statement}),
+the names involved are checked both for definedness and any bindings
+created are respected in the suite of the statement and afterwards.
+
+##### test_withStatementSingleNameUndefined
+
+An undefined name warning is emitted if the name first defined by a
+C{with} statement is used before the C{with} statement.
+
+##### test_withStatementTupleNamesUndefined
+
+An undefined name warning is emitted if a name first defined by the
+tuple-unpacking form of the C{with} statement is used before the
+C{with} statement.
+
+##### test_withStatementSingleNameRedefined
+
+A redefined name warning is emitted if a name bound by an import is
+rebound by the name defined by a C{with} statement.
+
+##### test_withStatementTupleNamesRedefined
+
+A redefined name warning is emitted if a name bound by an import is
+rebound by one of the names defined by the tuple-unpacking form of a
+C{with} statement.
+
+##### test_withStatementUndefinedInside
+
+An undefined name warning is emitted if a name is used inside the
+body of a C{with} statement without first being bound.
+
+##### test_withStatementNameDefinedInBody
+
+A name defined in the body of a C{with} statement can be used after
+the body ends without warning.
+
+##### test_withStatementUndefinedInExpression
+
+An undefined name warning is emitted if a name in the I{test}
+expression of a C{with} statement is undefined.
+
+##### test_dictComprehension
+
+Dict comprehensions are properly handled.
+
+##### test_setComprehensionAndLiteral
+
+Set comprehensions are properly handled.
+
+##### test_exceptionUsedInExcept
+
+##### test_exceptionUnusedInExcept
+
+##### test_exception_unused_in_except_star
+
+##### test_exceptionUnusedInExceptInFunction
+
+##### test_exceptWithoutNameInFunction
+
+Don't issue false warning when an unnamed exception is used.
+Previously, there would be a false warning, but only when the
+try..except was in a function
+
+##### test_exceptWithoutNameInFunctionTuple
+
+Don't issue false warning when an unnamed exception is used.
+This example catches a tuple of exception types.
+
+##### test_augmentedAssignmentImportedFunctionCall
+
+Consider a function that is called on the right part of an
+augassign operation to be used.
+
+##### test_assert_without_message
+
+An assert without a message is not an error.
+
+##### test_assert_with_message
+
+An assert with a message is not an error.
+
+##### test_assert_tuple
+
+An assert of a non-empty tuple is always True.
+
+##### test_assert_tuple_empty
+
+An assert of an empty tuple is always False.
+
+##### test_assert_static
+
+An assert of a static value is not an error.
+
+##### test_yieldFromUndefined
+
+Test C{yield from} statement
+
+##### test_f_string
+
+Test PEP 498 f-strings are treated as a usage.
+
+##### test_t_string
+
+##### test_assign_expr
+
+Test PEP 572 assignment expressions are treated as usage / write.
+
+##### test_assign_expr_after_annotation
+
+##### test_assign_expr_generator_scope
+
+Test assignment expressions in generator expressions.
+
+##### test_assign_expr_generator_scope_reassigns_parameter
+
+##### test_assign_expr_nested
+
+Test assignment expressions in nested expressions.
+
+##### test_f_string_without_placeholders
+
+##### test_t_string_missing_placeholders
+
+##### test_invalid_dot_format_calls
+
+##### test_invalid_percent_format_calls
+
+##### test_ok_percent_format_cannot_determine_element_count
+
+##### test_asyncDef
+
+##### test_asyncDefAwait
+
+##### test_asyncDefUndefined
+
+##### test_asyncFor
+
+##### test_asyncForUnderscoreLoopVar
+
+##### test_loopControlInAsyncFor
+
+##### test_loopControlInAsyncForElse
+
+##### test_asyncWith
+
+##### test_asyncWithItem
+
+##### test_matmul
+
+##### test_formatstring
+
+##### test_raise_notimplemented
+
+##### test_valid_print
+
+##### test_invalid_print_when_imported_from_future
+
+##### test_print_augmented_assign
+
+##### test_print_function_assignment
+
+A valid assignment, tested for catching false positives.
+
+##### test_print_in_lambda
+
+##### test_print_returned_in_function
+
+##### test_print_as_condition_test
+
+---
+
+### test_type_annotations
+
+Tests for behaviour related to type annotations.
+
+#### Classes
+
+##### TestTypeAnnotations
+
+**Méthodes :**
+
+- `test_typingOverload()`
+- `test_typingExtensionsOverload()`
+- `test_typingOverloadAsync()`
+- `test_overload_with_multiple_decorators()`
+- `test_overload_in_class()`
+- `test_aliased_import()`
+- `test_not_a_typing_overload()`
+- `test_variable_annotations()`
+- `test_variable_annotation_references_self_name_undefined()`
+- `test_TypeAlias_annotations()`
+- `test_annotating_an_import()`
+- `test_unused_annotation()`
+- `test_unused_annotation_in_outer_scope_reassigned_in_local_scope()`
+- `test_unassigned_annotation_is_undefined()`
+- `test_annotated_async_def()`
+- `test_postponed_annotations()`
+- `test_annotations_do_not_define_names_with_future_annotations()`
+- `test_postponed_annotations_py314()`
+- `test_type_annotation_clobbers_all()`
+- `test_return_annotation_is_class_scope_variable()`
+- `test_return_annotation_is_function_body_variable()`
+- `test_positional_only_argument_annotations()`
+- `test_partially_quoted_type_annotation()`
+- `test_partially_quoted_type_assignment()`
+- `test_nested_partially_quoted_type_assignment()`
+- `test_quoted_type_cast()`
+- `test_type_cast_literal_str_to_str()`
+- `test_quoted_type_cast_renamed_import()`
+- `test_quoted_TypeVar_constraints()`
+- `test_quoted_TypeVar_bound()`
+- `test_literal_type_typing()`
+- `test_literal_type_typing_extensions()`
+- `test_annotated_type_typing_missing_forward_type()`
+- `test_annotated_type_typing_missing_forward_type_multiple_args()`
+- `test_annotated_type_typing_with_string_args()`
+- `test_annotated_type_typing_with_string_args_in_union()`
+- `test_literal_type_some_other_module()`
+- `test_literal_union_type_typing()`
+- `test_deferred_twice_annotation()`
+- `test_partial_string_annotations_with_future_annotations()`
+- `test_forward_annotations_for_classes_in_scope()`
+- `test_idomiatic_typing_guards()`
+- `test_typing_guard_for_protocol()`
+- `test_typednames_correct_forward_ref()`
+- `test_namedtypes_classes()`
+- `test_variadic_generics()`
+- `test_type_statements()`
+- `test_type_parameters_functions()`
+- `test_type_parameters_do_not_escape_function_scopes()`
+- `test_type_parameters_classes()`
+- `test_type_parameters_do_not_escape_class_scopes()`
+- `test_type_parameters_TypeVarTuple()`
+- `test_type_parameters_ParamSpec()`
+- `test_type_parameter_defaults()`
+
+#### Fonctions
+
+##### test_typingOverload
+
+Allow intentional redefinitions via @typing.overload
+
+##### test_typingExtensionsOverload
+
+Allow intentional redefinitions via @typing_extensions.overload
+
+##### test_typingOverloadAsync
+
+Allow intentional redefinitions via @typing.overload (async)
+
+##### test_overload_with_multiple_decorators
+
+##### test_overload_in_class
+
+##### test_aliased_import
+
+Detect when typing is imported as another name
+
+##### test_not_a_typing_overload
+
+regression test for @typing.overload detection bug in 2.1.0
+
+##### test_variable_annotations
+
+##### test_variable_annotation_references_self_name_undefined
+
+##### test_TypeAlias_annotations
+
+##### test_annotating_an_import
+
+##### test_unused_annotation
+
+##### test_unused_annotation_in_outer_scope_reassigned_in_local_scope
+
+##### test_unassigned_annotation_is_undefined
+
+##### test_annotated_async_def
+
+##### test_postponed_annotations
+
+##### test_annotations_do_not_define_names_with_future_annotations
+
+##### test_postponed_annotations_py314
+
+##### test_type_annotation_clobbers_all
+
+##### test_return_annotation_is_class_scope_variable
+
+##### test_return_annotation_is_function_body_variable
+
+##### test_positional_only_argument_annotations
+
+##### test_partially_quoted_type_annotation
+
+##### test_partially_quoted_type_assignment
+
+##### test_nested_partially_quoted_type_assignment
+
+##### test_quoted_type_cast
+
+##### test_type_cast_literal_str_to_str
+
+##### test_quoted_type_cast_renamed_import
+
+##### test_quoted_TypeVar_constraints
+
+##### test_quoted_TypeVar_bound
+
+##### test_literal_type_typing
+
+##### test_literal_type_typing_extensions
+
+##### test_annotated_type_typing_missing_forward_type
+
+##### test_annotated_type_typing_missing_forward_type_multiple_args
+
+##### test_annotated_type_typing_with_string_args
+
+##### test_annotated_type_typing_with_string_args_in_union
+
+##### test_literal_type_some_other_module
+
+err on the side of false-negatives for types named Literal
+
+##### test_literal_union_type_typing
+
+##### test_deferred_twice_annotation
+
+##### test_partial_string_annotations_with_future_annotations
+
+##### test_forward_annotations_for_classes_in_scope
+
+##### test_idomiatic_typing_guards
+
+##### test_typing_guard_for_protocol
+
+##### test_typednames_correct_forward_ref
+
+##### test_namedtypes_classes
+
+##### test_variadic_generics
+
+##### test_type_statements
+
+##### test_type_parameters_functions
+
+##### test_type_parameters_do_not_escape_function_scopes
+
+##### test_type_parameters_classes
+
+##### test_type_parameters_do_not_escape_class_scopes
+
+##### test_type_parameters_TypeVarTuple
+
+##### test_type_parameters_ParamSpec
+
+##### test_type_parameter_defaults
+
+##### undefined_names_before_py314
+
+---
+
+### test_undefined_names
+
+#### Classes
+
+##### Test
+
+**Méthodes :**
+
+- `test_undefined()`
+- `test_definedInListComp()`
+- `test_undefinedInListComp()`
+- `test_undefinedExceptionName()`
+- `test_namesDeclaredInExceptBlocks()`
+- `test_undefinedExceptionNameObscuringLocalVariable()`
+- `test_undefinedExceptionNameObscuringLocalVariable2()`
+- `test_undefinedExceptionNameObscuringLocalVariableFalsePositive1()`
+- `test_delExceptionInExcept()`
+- `test_undefinedExceptionNameObscuringLocalVariableFalsePositive2()`
+- `test_undefinedExceptionNameObscuringGlobalVariable()`
+- `test_undefinedExceptionNameObscuringGlobalVariable2()`
+- `test_undefinedExceptionNameObscuringGlobalVariableFalsePositive1()`
+- `test_undefinedExceptionNameObscuringGlobalVariableFalsePositive2()`
+- `test_functionsNeedGlobalScope()`
+- `test_builtins()`
+- `test_builtinWindowsError()`
+- `test_moduleAnnotations()`
+- `test_magicGlobalsFile()`
+- `test_magicGlobalsBuiltins()`
+- `test_magicGlobalsName()`
+- `test_magicGlobalsPath()`
+- `test_magicModuleInClassScope()`
+- `test_magicQualnameInClassScope()`
+- `test_globalImportStar()`
+- `test_definedByGlobal()`
+- `test_definedByGlobalMultipleNames()`
+- `test_globalInGlobalScope()`
+- `test_global_reset_name_only()`
+- `test_unused_global()`
+- `test_del()`
+- `test_delGlobal()`
+- `test_delUndefined()`
+- `test_delConditional()`
+- `test_delConditionalNested()`
+- `test_delWhile()`
+- `test_delWhileTestUsage()`
+- `test_delWhileNested()`
+- `test_globalFromNestedScope()`
+- `test_laterRedefinedGlobalFromNestedScope()`
+- `test_laterRedefinedGlobalFromNestedScope2()`
+- `test_intermediateClassScopeIgnored()`
+- `test_doubleNestingReportsClosestName()`
+- `test_laterRedefinedGlobalFromNestedScope3()`
+- `test_undefinedAugmentedAssignment()`
+- `test_nestedClass()`
+- `test_badNestedClass()`
+- `test_definedAsStarArgs()`
+- `test_definedAsStarUnpack()`
+- `test_usedAsStarUnpack()`
+- `test_unusedAsStarUnpack()`
+- `test_keywordOnlyArgs()`
+- `test_keywordOnlyArgsUndefined()`
+- `test_annotationUndefined()`
+- `test_metaClassUndefined()`
+- `test_definedInGenExp()`
+- `test_undefinedInGenExpNested()`
+- `test_undefinedWithErrorHandler()`
+- `test_definedInClass()`
+- `test_definedInClassNested()`
+- `test_undefinedInLoop()`
+- `test_definedFromLambdaInDictionaryComprehension()`
+- `test_definedFromLambdaInGenerator()`
+- `test_undefinedFromLambdaInDictionaryComprehension()`
+- `test_undefinedFromLambdaInComprehension()`
+- `test_dunderClass()`
+
+##### NameTests
+
+Tests for some extra cases of name handling.
+
+**Méthodes :**
+
+- `test_impossibleContext()`
+
+#### Fonctions
+
+##### test_undefined
+
+##### test_definedInListComp
+
+##### test_undefinedInListComp
+
+##### test_undefinedExceptionName
+
+Exception names can't be used after the except: block.
+
+The exc variable is unused inside the exception handler.
+
+##### test_namesDeclaredInExceptBlocks
+
+Locals declared in except: blocks can be used after the block.
+
+This shows the example in test_undefinedExceptionName is
+different.
+
+##### test_undefinedExceptionNameObscuringLocalVariable
+
+Exception names obscure locals, can't be used after.
+
+Last line will raise UnboundLocalError on Python 3 after exiting
+the except: block. Note next two examples for false positives to
+watch out for.
+
+##### test_undefinedExceptionNameObscuringLocalVariable2
+
+Exception names are unbound after the `except:` block.
+
+Last line will raise UnboundLocalError.
+The exc variable is unused inside the exception handler.
+
+##### test_undefinedExceptionNameObscuringLocalVariableFalsePositive1
+
+Exception names obscure locals, can't be used after. Unless.
+
+Last line will never raise UnboundLocalError because it's only
+entered if no exception was raised.
+
+##### test_delExceptionInExcept
+
+The exception name can be deleted in the except: block.
+
+##### test_undefinedExceptionNameObscuringLocalVariableFalsePositive2
+
+Exception names obscure locals, can't be used after. Unless.
+
+Last line will never raise UnboundLocalError because `error` is
+only falsy if the `except:` block has not been entered.
+
+##### test_undefinedExceptionNameObscuringGlobalVariable
+
+Exception names obscure globals, can't be used after.
+
+Last line will raise UnboundLocalError because the existence of that
+exception name creates a local scope placeholder for it, obscuring any
+globals, etc.
+
+##### test_undefinedExceptionNameObscuringGlobalVariable2
+
+Exception names obscure globals, can't be used after.
+
+Last line will raise NameError on Python 3 because the name is
+locally unbound after the `except:` block, even if it's
+nonlocal. We should issue an error in this case because code
+only working correctly if an exception isn't raised, is invalid.
+Unless it's explicitly silenced, see false positives below.
+
+##### test_undefinedExceptionNameObscuringGlobalVariableFalsePositive1
+
+Exception names obscure globals, can't be used after. Unless.
+
+Last line will never raise NameError because it's only entered
+if no exception was raised.
+
+##### test_undefinedExceptionNameObscuringGlobalVariableFalsePositive2
+
+Exception names obscure globals, can't be used after. Unless.
+
+Last line will never raise NameError because `error` is only
+falsy if the `except:` block has not been entered.
+
+##### test_functionsNeedGlobalScope
+
+##### test_builtins
+
+##### test_builtinWindowsError
+
+C{WindowsError} is sometimes a builtin name, so no warning is emitted
+for using it.
+
+##### test_moduleAnnotations
+
+Use of the C{__annotations__} in module scope should not emit
+an undefined name warning when version is greater than or equal to 3.6.
+
+##### test_magicGlobalsFile
+
+Use of the C{__file__} magic global should not emit an undefined name
+warning.
+
+##### test_magicGlobalsBuiltins
+
+Use of the C{__builtins__} magic global should not emit an undefined
+name warning.
+
+##### test_magicGlobalsName
+
+Use of the C{__name__} magic global should not emit an undefined name
+warning.
+
+##### test_magicGlobalsPath
+
+Use of the C{__path__} magic global should not emit an undefined name
+warning, if you refer to it from a file called __init__.py.
+
+##### test_magicModuleInClassScope
+
+Use of the C{__module__} magic builtin should not emit an undefined
+name warning if used in class scope.
+
+##### test_magicQualnameInClassScope
+
+Use of the C{__qualname__} magic builtin should not emit an undefined
+name warning if used in class scope.
+
+##### test_globalImportStar
+
+Can't find undefined names with import *.
+
+##### test_definedByGlobal
+
+"global" can make an otherwise undefined name in another function
+defined.
+
+##### test_definedByGlobalMultipleNames
+
+"global" can accept multiple names.
+
+##### test_globalInGlobalScope
+
+A global statement in the global scope is ignored.
+
+##### test_global_reset_name_only
+
+A global statement does not prevent other names being undefined.
+
+##### test_unused_global
+
+An unused global statement does not define the name.
+
+##### test_del
+
+Del deletes bindings.
+
+##### test_delGlobal
+
+Del a global binding from a function.
+
+##### test_delUndefined
+
+Del an undefined name.
+
+##### test_delConditional
+
+Ignores conditional bindings deletion.
+
+##### test_delConditionalNested
+
+Ignored conditional bindings deletion even if they are nested in other
+blocks.
+
+##### test_delWhile
+
+Ignore bindings deletion if called inside the body of a while
+statement.
+
+##### test_delWhileTestUsage
+
+Ignore bindings deletion if called inside the body of a while
+statement and name is used inside while's test part.
+
+##### test_delWhileNested
+
+Ignore bindings deletions if node is part of while's test, even when
+del is in a nested block.
+
+##### test_globalFromNestedScope
+
+Global names are available from nested scopes.
+
+##### test_laterRedefinedGlobalFromNestedScope
+
+Test that referencing a local name that shadows a global, before it is
+defined, generates a warning.
+
+##### test_laterRedefinedGlobalFromNestedScope2
+
+Test that referencing a local name in a nested scope that shadows a
+global declared in an enclosing scope, before it is defined, generates
+a warning.
+
+##### test_intermediateClassScopeIgnored
+
+If a name defined in an enclosing scope is shadowed by a local variable
+and the name is used locally before it is bound, an unbound local
+warning is emitted, even if there is a class scope between the enclosing
+scope and the local scope.
+
+##### test_doubleNestingReportsClosestName
+
+Test that referencing a local name in a nested scope that shadows a
+variable declared in two different outer scopes before it is defined
+in the innermost scope generates an UnboundLocal warning which
+refers to the nearest shadowed name.
+
+##### test_laterRedefinedGlobalFromNestedScope3
+
+Test that referencing a local name in a nested scope that shadows a
+global, before it is defined, generates a warning.
+
+##### test_undefinedAugmentedAssignment
+
+##### test_nestedClass
+
+Nested classes can access enclosing scope.
+
+##### test_badNestedClass
+
+Free variables in nested classes must bind at class creation.
+
+##### test_definedAsStarArgs
+
+Star and double-star arg names are defined.
+
+##### test_definedAsStarUnpack
+
+Star names in unpack are defined.
+
+##### test_usedAsStarUnpack
+
+Star names in unpack are used if RHS is not a tuple/list literal.
+
+##### test_unusedAsStarUnpack
+
+Star names in unpack are unused if RHS is a tuple/list literal.
+
+##### test_keywordOnlyArgs
+
+Keyword-only arg names are defined.
+
+##### test_keywordOnlyArgsUndefined
+
+Typo in kwonly name.
+
+##### test_annotationUndefined
+
+Undefined annotations.
+
+##### test_metaClassUndefined
+
+##### test_definedInGenExp
+
+Using the loop variable of a generator expression results in no
+warnings.
+
+##### test_undefinedInGenExpNested
+
+The loop variables of generator expressions nested together are
+not defined in the other generator.
+
+##### test_undefinedWithErrorHandler
+
+Some compatibility code checks explicitly for NameError.
+It should not trigger warnings.
+
+##### test_definedInClass
+
+Defined name for generator expressions and dict/set comprehension.
+
+##### test_definedInClassNested
+
+Defined name for nested generator expressions in a class.
+
+##### test_undefinedInLoop
+
+The loop variable is defined after the expression is computed.
+
+##### test_definedFromLambdaInDictionaryComprehension
+
+Defined name referenced from a lambda function within a dict/set
+comprehension.
+
+##### test_definedFromLambdaInGenerator
+
+Defined name referenced from a lambda function within a generator
+expression.
+
+##### test_undefinedFromLambdaInDictionaryComprehension
+
+Undefined name referenced from a lambda function within a dict/set
+comprehension.
+
+##### test_undefinedFromLambdaInComprehension
+
+Undefined name referenced from a lambda function within a generator
+expression.
+
+##### test_dunderClass
+
+##### test_impossibleContext
+
+A Name node with an unrecognized context results in a RuntimeError being
+raised.
 
 ---
 
@@ -157874,6 +162397,226 @@ Sauvegarde les documents générés
 
 ---
 
+### ai_robust_broken
+
+Module IA robuste pour Athalia
+Gestion des modèles IA avec fallback intelligent
+
+#### Classes
+
+##### AIModel
+
+Modèles IA disponibles.
+
+##### PromptContext
+
+Contextes de prompts.
+
+##### RobustAI
+
+Gestionnaire IA robuste avec fallback intelligent.
+
+**Méthodes :**
+
+- `__init__()`
+- `generate_blueprint()`
+- `_extract_project_name()`
+- `review_code()`
+- `generate_documentation()`
+- `classify_project_complexity()`
+- `get_dynamic_prompt()`
+- `generate_bluelogger()`
+- `generate_blueprint_mock()`
+- `save_blueprint()`
+- `scan_existing_project()`
+- `_detect_available_models()`
+- `_build_fallback_chain()`
+- `_load_prompt_templates()`
+- `generate_response()`
+- `_call_model()`
+- `_classify_project_complexity()`
+- `_get_dynamic_prompt()`
+- `_call_ollama()`
+- `_mock_response()`
+
+##### _BlueprintProxy
+
+**Méthodes :**
+
+- `__init__()`
+- `info()`
+
+#### Fonctions
+
+##### robust_ai
+
+Fonction factory pour créer une instance RobustAI.
+
+##### fallback_ia
+
+Fallback IA multi-modèles (Qwen, Mistral, Ollama, Claude, GPT, Mock...)
+
+**Paramètres :**
+
+- `prompt`
+- `models`
+
+##### query_qwen
+
+Appel local à Qwen 7B via Ollama.
+
+**Paramètres :**
+
+- `prompt`
+
+##### query_mistral
+
+Appel local à Mistral 7B via Ollama.
+
+**Paramètres :**
+
+- `prompt`
+
+##### __init__
+
+Initialise le gestionnaire IA.
+
+##### generate_blueprint
+
+Génère un blueprint de projet à partir dune idée.
+
+**Paramètres :**
+
+- `idea`
+
+##### _extract_project_name
+
+Extrait un nom de projet de lidée
+
+**Paramètres :**
+
+- `idea`
+
+##### review_code
+
+Génère une revue de code mockée.
+
+**Paramètres :**
+
+- `code`
+- `filename`
+- `project_type`
+- `current_score`
+
+##### generate_documentation
+
+Génère une documentation technique mockée.
+
+**Paramètres :**
+
+- `project_name`
+- `project_type`
+- `modules`
+
+##### classify_project_complexity
+
+Classifie la complexité dun projet (mock).
+
+**Paramètres :**
+
+- `codebase_path`
+
+##### get_dynamic_prompt
+
+Retourne un prompt dynamique mocké selon le contexte.
+
+**Paramètres :**
+
+- `context`
+
+##### generate_bluelogger
+
+##### generate_blueprint_mock
+
+##### save_blueprint
+
+##### scan_existing_project
+
+##### _detect_available_models
+
+Détecte les modèles IA disponibles.
+
+##### _build_fallback_chain
+
+Construit la chaîne de fallback.
+
+##### _load_prompt_templates
+
+Charge les templates de prompts dynamiques.
+
+##### generate_response
+
+Génère une réponse IA robuste avec fallback.
+
+**Paramètres :**
+
+- `context`
+- `distillation`
+
+##### _call_model
+
+Appelle un modèle IA spécifique.
+
+**Paramètres :**
+
+- `model`
+- `prompt`
+
+##### _classify_project_complexity
+
+Alias privé pour compatibilité avec les tests.
+
+**Paramètres :**
+
+- `codebase_path`
+
+##### _get_dynamic_prompt
+
+Alias privé pour compatibilité avec les tests.
+Accepte PromptContext ou str et fait un .format sur le template.
+
+**Paramètres :**
+
+- `context`
+
+##### _call_ollama
+
+Appelle Ollama avec un modèle spécifique et timeout paramétrable.
+
+**Paramètres :**
+
+- `model_name`
+- `prompt`
+- `timeout`
+
+##### _mock_response
+
+Réponse mock pour les tests.
+
+**Paramètres :**
+
+- `prompt`
+
+##### __init__
+
+**Paramètres :**
+
+- `parent`
+
+##### info
+
+---
+
 ### autocomplete_engine
 
 #### Classes
@@ -157969,6 +162712,69 @@ Retourne une liste de suggestions d'autocomplétion pour un prompt donné.
 
 ---
 
+### code_linter
+
+#### Classes
+
+##### CodeLinter
+
+Linter de code pour Athalia
+
+**Méthodes :**
+
+- `__init__()`
+- `run()`
+- `_run_flake8()`
+- `_run_black()`
+- `_run_isort()`
+- `_run_mypy()`
+- `_run_bandit()`
+- `_calculate_score()`
+- `print_report()`
+
+#### Fonctions
+
+##### __init__
+
+**Paramètres :**
+
+- `project_path`
+- `auto_fix`
+
+##### run
+
+Lance lanalyse de qualité du projet
+
+##### _run_flake8
+
+Exécution de Flake8
+
+##### _run_black
+
+Exécution de Black
+
+##### _run_isort
+
+Exécution de isort
+
+##### _run_mypy
+
+Exécution de MyPy
+
+##### _run_bandit
+
+Exécution de Bandit pour la sécurité
+
+##### _calculate_score
+
+Calcul du score de qualité
+
+##### print_report
+
+Affichage du rapport de linting
+
+---
+
 ### cleanup
 
 #### Fonctions
@@ -158040,69 +162846,6 @@ Teste lIA robuste avec une idée de projet.
 
 ---
 
-### code_linter
-
-#### Classes
-
-##### CodeLinter
-
-Linter de code pour Athalia
-
-**Méthodes :**
-
-- `__init__()`
-- `run()`
-- `_run_flake8()`
-- `_run_black()`
-- `_run_isort()`
-- `_run_mypy()`
-- `_run_bandit()`
-- `_calculate_score()`
-- `print_report()`
-
-#### Fonctions
-
-##### __init__
-
-**Paramètres :**
-
-- `project_path`
-- `auto_fix`
-
-##### run
-
-Lance lanalyse de qualité du projet
-
-##### _run_flake8
-
-Exécution de Flake8
-
-##### _run_black
-
-Exécution de Black
-
-##### _run_isort
-
-Exécution de isort
-
-##### _run_mypy
-
-Exécution de MyPy
-
-##### _run_bandit
-
-Exécution de Bandit pour la sécurité
-
-##### _calculate_score
-
-Calcul du score de qualité
-
-##### print_report
-
-Affichage du rapport de linting
-
----
-
 ### dashboard
 
 #### Fonctions
@@ -158110,6 +162853,144 @@ Affichage du rapport de linting
 ##### show_benchmarks
 
 ##### main
+
+---
+
+### generation
+
+Module de génération simplifié pour Athalia
+Version simplifiée sans f-strings complexes
+
+#### Fonctions
+
+##### generate_blueprint_mock
+
+Génère un blueprint mock pour les tests.
+
+**Paramètres :**
+
+- `idea`
+
+##### extract_project_name
+
+Extrait un nom de projet de l'idée.
+
+**Paramètres :**
+
+- `idea`
+
+##### generate_project
+
+Génère un projet à partir d'un blueprint.
+
+**Paramètres :**
+
+- `blueprint`
+- `outdir`
+
+##### generate_readme
+
+Génère un README basique.
+
+**Paramètres :**
+
+- `blueprint`
+- `project_path`
+
+##### generate_main_code
+
+Génère le code principal.
+
+**Paramètres :**
+
+- `blueprint`
+- `project_path`
+
+##### generate_test_code
+
+Génère le code de test.
+
+**Paramètres :**
+
+- `blueprint`
+- `project_path`
+
+##### generate_requirements
+
+Génère un fichier requirements.txt basique.
+
+**Paramètres :**
+
+- `blueprint`
+- `project_path`
+
+##### save_blueprint
+
+Sauvegarde un blueprint dans un fichier YAML.
+
+**Paramètres :**
+
+- `blueprint`
+- `outdir`
+
+##### inject_booster_ia_elements
+
+Injecte les éléments Booster IA.
+
+**Paramètres :**
+
+- `outdir`
+
+##### scan_existing_project
+
+Scanne un projet existant.
+
+**Paramètres :**
+
+- `outdir`
+
+##### merge_or_suffix_file
+
+Fusionne ou suffixe un fichier.
+
+**Paramètres :**
+
+- `file_path`
+- `content`
+- `file_type`
+- `section_header`
+
+##### backup_file
+
+Crée une sauvegarde d'un fichier.
+
+**Paramètres :**
+
+- `file_path`
+
+##### generate_api_docs
+
+Génère la documentation API.
+
+**Paramètres :**
+
+- `blueprint`
+
+##### generate_dockerfile
+
+Génère un Dockerfile.
+
+**Paramètres :**
+
+- `blueprint`
+
+##### generate_docker_compose
+
+Génère un docker-compose.yml.
+
+**Paramètres :**
+
+- `blueprint`
 
 ---
 
@@ -158301,6 +163182,196 @@ Module onboarding, guides, scripts d'installation.
 
 - `blueprint`
 - `outdir`
+
+---
+
+### cache_manager
+
+Gestionnaire de cache intelligent pour Athalia
+Optimisation des performances avec cache LRU
+
+#### Classes
+
+##### AnalysisCache
+
+Gestionnaire de cache intelligent pour les analyses.
+
+**Méthodes :**
+
+- `__init__()`
+- `_generate_cache_key()`
+- `_get_cache_file_path()`
+- `_is_cache_valid()`
+- `get()`
+- `set()`
+- `_cleanup_cache()`
+- `clear()`
+- `get_stats()`
+
+#### Fonctions
+
+##### cached_analysis
+
+Décorateur pour mettre en cache les analyses.
+
+Args:
+    func: Fonction à décorer
+    
+Returns:
+    Fonction décorée avec cache
+
+**Paramètres :**
+
+- `func`
+
+##### get_cache_stats
+
+Retourne les statistiques du cache global.
+
+Returns:
+    Statistiques du cache
+
+##### clear_cache
+
+Vide le cache global.
+
+##### cached_function
+
+Décorateur pour cache LRU simple.
+
+Args:
+    max_size: Taille maximale du cache
+    
+Returns:
+    Décorateur
+
+**Paramètres :**
+
+- `max_size`
+
+##### analyze_project_structure
+
+Analyse la structure d'un projet (exemple).
+
+Args:
+    project_path: Chemin du projet
+    detailed: Analyse détaillée
+    
+Returns:
+    Résultat de l'analyse
+
+**Paramètres :**
+
+- `project_path`
+- `detailed`
+
+##### __init__
+
+Initialise le gestionnaire de cache.
+
+Args:
+    cache_dir: Répertoire de stockage du cache
+    max_size: Taille maximale du cache en entrées
+    ttl_hours: Durée de vie du cache en heures
+
+**Paramètres :**
+
+- `cache_dir`
+- `max_size`
+- `ttl_hours`
+
+##### _generate_cache_key
+
+Génère une clé de cache unique.
+
+Args:
+    project_path: Chemin du projet
+    analysis_type: Type d'analyse
+    **kwargs: Paramètres supplémentaires
+    
+Returns:
+    Clé de cache unique
+
+**Paramètres :**
+
+- `project_path`
+- `analysis_type`
+
+##### _get_cache_file_path
+
+Retourne le chemin du fichier de cache.
+
+**Paramètres :**
+
+- `cache_key`
+
+##### _is_cache_valid
+
+Vérifie si le cache est encore valide.
+
+Args:
+    cache_file: Chemin du fichier de cache
+    
+Returns:
+    True si le cache est valide
+
+**Paramètres :**
+
+- `cache_file`
+
+##### get
+
+Récupère un résultat du cache.
+
+Args:
+    project_path: Chemin du projet
+    analysis_type: Type d'analyse
+    **kwargs: Paramètres supplémentaires
+    
+Returns:
+    Résultat du cache ou None si non trouvé
+
+**Paramètres :**
+
+- `project_path`
+- `analysis_type`
+
+##### set
+
+Stocke un résultat dans le cache.
+
+Args:
+    project_path: Chemin du projet
+    analysis_type: Type d'analyse
+    result: Résultat à stocker
+    **kwargs: Paramètres supplémentaires
+
+**Paramètres :**
+
+- `project_path`
+- `analysis_type`
+- `result`
+
+##### _cleanup_cache
+
+Nettoie le cache en supprimant les entrées expirées.
+
+##### clear
+
+Vide complètement le cache.
+
+##### get_stats
+
+Retourne les statistiques du cache.
+
+Returns:
+    Statistiques du cache
+
+##### wrapper
+
+**Paramètres :**
+
+- `project_path`
 
 ---
 
@@ -159313,6 +164384,135 @@ Exporte toutes les métriques
 
 ---
 
+### generation_simple
+
+Module de génération simplifié pour Athalia
+Version simplifiée sans f-strings complexes
+
+#### Fonctions
+
+##### generate_blueprint_mock
+
+Génère un blueprint mock pour les tests.
+
+**Paramètres :**
+
+- `idea`
+
+##### extract_project_name
+
+Extrait un nom de projet de l'idée.
+
+**Paramètres :**
+
+- `idea`
+
+##### generate_project
+
+Génère un projet à partir d'un blueprint.
+
+**Paramètres :**
+
+- `blueprint`
+- `outdir`
+
+##### generate_readme
+
+Génère un README basique.
+
+**Paramètres :**
+
+- `blueprint`
+- `project_path`
+
+##### generate_main_code
+
+Génère le code principal.
+
+**Paramètres :**
+
+- `blueprint`
+- `project_path`
+
+##### generate_test_code
+
+Génère le code de test.
+
+**Paramètres :**
+
+- `blueprint`
+- `project_path`
+
+##### save_blueprint
+
+Sauvegarde un blueprint dans un fichier YAML.
+
+**Paramètres :**
+
+- `blueprint`
+- `outdir`
+
+##### inject_booster_ia_elements
+
+Injecte les éléments Booster IA.
+
+**Paramètres :**
+
+- `outdir`
+
+##### scan_existing_project
+
+Scanne un projet existant.
+
+**Paramètres :**
+
+- `outdir`
+
+##### merge_or_suffix_file
+
+Fusionne ou suffixe un fichier.
+
+**Paramètres :**
+
+- `file_path`
+- `content`
+- `file_type`
+- `section_header`
+
+##### backup_file
+
+Crée une sauvegarde d'un fichier.
+
+**Paramètres :**
+
+- `file_path`
+
+##### generate_api_docs
+
+Génère la documentation API.
+
+**Paramètres :**
+
+- `blueprint`
+
+##### generate_dockerfile
+
+Génère un Dockerfile.
+
+**Paramètres :**
+
+- `blueprint`
+
+##### generate_docker_compose
+
+Génère un docker-compose.yml.
+
+**Paramètres :**
+
+- `blueprint`
+
+---
+
 ### multi_file_editor
 
 Module d'édition/correction multi-fichiers pour Athalia/Arkalia.
@@ -159487,135 +164687,6 @@ Générer des recommandations basées sur l'analyse
 ##### get_learning_insights
 
 Obtenir des insights d'apprentissage
-
----
-
-### generation_simple
-
-Module de génération simplifié pour Athalia
-Version simplifiée sans f-strings complexes
-
-#### Fonctions
-
-##### generate_blueprint_mock
-
-Génère un blueprint mock pour les tests.
-
-**Paramètres :**
-
-- `idea`
-
-##### extract_project_name
-
-Extrait un nom de projet de l'idée.
-
-**Paramètres :**
-
-- `idea`
-
-##### generate_project
-
-Génère un projet à partir d'un blueprint.
-
-**Paramètres :**
-
-- `blueprint`
-- `outdir`
-
-##### generate_readme
-
-Génère un README basique.
-
-**Paramètres :**
-
-- `blueprint`
-- `project_path`
-
-##### generate_main_code
-
-Génère le code principal.
-
-**Paramètres :**
-
-- `blueprint`
-- `project_path`
-
-##### generate_test_code
-
-Génère le code de test.
-
-**Paramètres :**
-
-- `blueprint`
-- `project_path`
-
-##### save_blueprint
-
-Sauvegarde un blueprint dans un fichier YAML.
-
-**Paramètres :**
-
-- `blueprint`
-- `outdir`
-
-##### inject_booster_ia_elements
-
-Injecte les éléments Booster IA.
-
-**Paramètres :**
-
-- `outdir`
-
-##### scan_existing_project
-
-Scanne un projet existant.
-
-**Paramètres :**
-
-- `outdir`
-
-##### merge_or_suffix_file
-
-Fusionne ou suffixe un fichier.
-
-**Paramètres :**
-
-- `file_path`
-- `content`
-- `file_type`
-- `section_header`
-
-##### backup_file
-
-Crée une sauvegarde d'un fichier.
-
-**Paramètres :**
-
-- `file_path`
-
-##### generate_api_docs
-
-Génère la documentation API.
-
-**Paramètres :**
-
-- `blueprint`
-
-##### generate_dockerfile
-
-Génère un Dockerfile.
-
-**Paramètres :**
-
-- `blueprint`
-
-##### generate_docker_compose
-
-Génère un docker-compose.yml.
-
-**Paramètres :**
-
-- `blueprint`
 
 ---
 
@@ -160295,545 +165366,6 @@ Orchestrer avec les fonctionnalités Phase 2
 - `project_path`
 
 ##### wrapper
-
----
-
-### generation
-
-Module de génération simplifié pour Athalia
-Version simplifiée sans f-strings complexes
-
-#### Fonctions
-
-##### generate_blueprint_mock
-
-Génère un blueprint mock pour les tests.
-
-**Paramètres :**
-
-- `idea`
-
-##### extract_project_name
-
-Extrait un nom de projet de l'idée.
-
-**Paramètres :**
-
-- `idea`
-
-##### generate_project
-
-Génère un projet à partir d'un blueprint.
-
-**Paramètres :**
-
-- `blueprint`
-- `outdir`
-
-##### generate_readme
-
-Génère un README basique.
-
-**Paramètres :**
-
-- `blueprint`
-- `project_path`
-
-##### generate_main_code
-
-Génère le code principal.
-
-**Paramètres :**
-
-- `blueprint`
-- `project_path`
-
-##### generate_test_code
-
-Génère le code de test.
-
-**Paramètres :**
-
-- `blueprint`
-- `project_path`
-
-##### save_blueprint
-
-Sauvegarde un blueprint dans un fichier YAML.
-
-**Paramètres :**
-
-- `blueprint`
-- `outdir`
-
-##### inject_booster_ia_elements
-
-Injecte les éléments Booster IA.
-
-**Paramètres :**
-
-- `outdir`
-
-##### scan_existing_project
-
-Scanne un projet existant.
-
-**Paramètres :**
-
-- `outdir`
-
-##### merge_or_suffix_file
-
-Fusionne ou suffixe un fichier.
-
-**Paramètres :**
-
-- `file_path`
-- `content`
-- `file_type`
-- `section_header`
-
-##### backup_file
-
-Crée une sauvegarde d'un fichier.
-
-**Paramètres :**
-
-- `file_path`
-
-##### generate_api_docs
-
-Génère la documentation API.
-
-**Paramètres :**
-
-- `blueprint`
-
-##### generate_dockerfile
-
-Génère un Dockerfile.
-
-**Paramètres :**
-
-- `blueprint`
-
-##### generate_docker_compose
-
-Génère un docker-compose.yml.
-
-**Paramètres :**
-
-- `blueprint`
-
----
-
-### cache_manager
-
-Gestionnaire de cache intelligent pour Athalia
-Optimisation des performances avec cache LRU
-
-#### Classes
-
-##### AnalysisCache
-
-Gestionnaire de cache intelligent pour les analyses.
-
-**Méthodes :**
-
-- `__init__()`
-- `_generate_cache_key()`
-- `_get_cache_file_path()`
-- `_is_cache_valid()`
-- `get()`
-- `set()`
-- `_cleanup_cache()`
-- `clear()`
-- `get_stats()`
-
-#### Fonctions
-
-##### cached_analysis
-
-Décorateur pour mettre en cache les analyses.
-
-Args:
-    func: Fonction à décorer
-    
-Returns:
-    Fonction décorée avec cache
-
-**Paramètres :**
-
-- `func`
-
-##### get_cache_stats
-
-Retourne les statistiques du cache global.
-
-Returns:
-    Statistiques du cache
-
-##### clear_cache
-
-Vide le cache global.
-
-##### cached_function
-
-Décorateur pour cache LRU simple.
-
-Args:
-    max_size: Taille maximale du cache
-    
-Returns:
-    Décorateur
-
-**Paramètres :**
-
-- `max_size`
-
-##### analyze_project_structure
-
-Analyse la structure d'un projet (exemple).
-
-Args:
-    project_path: Chemin du projet
-    detailed: Analyse détaillée
-    
-Returns:
-    Résultat de l'analyse
-
-**Paramètres :**
-
-- `project_path`
-- `detailed`
-
-##### __init__
-
-Initialise le gestionnaire de cache.
-
-Args:
-    cache_dir: Répertoire de stockage du cache
-    max_size: Taille maximale du cache en entrées
-    ttl_hours: Durée de vie du cache en heures
-
-**Paramètres :**
-
-- `cache_dir`
-- `max_size`
-- `ttl_hours`
-
-##### _generate_cache_key
-
-Génère une clé de cache unique.
-
-Args:
-    project_path: Chemin du projet
-    analysis_type: Type d'analyse
-    **kwargs: Paramètres supplémentaires
-    
-Returns:
-    Clé de cache unique
-
-**Paramètres :**
-
-- `project_path`
-- `analysis_type`
-
-##### _get_cache_file_path
-
-Retourne le chemin du fichier de cache.
-
-**Paramètres :**
-
-- `cache_key`
-
-##### _is_cache_valid
-
-Vérifie si le cache est encore valide.
-
-Args:
-    cache_file: Chemin du fichier de cache
-    
-Returns:
-    True si le cache est valide
-
-**Paramètres :**
-
-- `cache_file`
-
-##### get
-
-Récupère un résultat du cache.
-
-Args:
-    project_path: Chemin du projet
-    analysis_type: Type d'analyse
-    **kwargs: Paramètres supplémentaires
-    
-Returns:
-    Résultat du cache ou None si non trouvé
-
-**Paramètres :**
-
-- `project_path`
-- `analysis_type`
-
-##### set
-
-Stocke un résultat dans le cache.
-
-Args:
-    project_path: Chemin du projet
-    analysis_type: Type d'analyse
-    result: Résultat à stocker
-    **kwargs: Paramètres supplémentaires
-
-**Paramètres :**
-
-- `project_path`
-- `analysis_type`
-- `result`
-
-##### _cleanup_cache
-
-Nettoie le cache en supprimant les entrées expirées.
-
-##### clear
-
-Vide complètement le cache.
-
-##### get_stats
-
-Retourne les statistiques du cache.
-
-Returns:
-    Statistiques du cache
-
-##### wrapper
-
-**Paramètres :**
-
-- `project_path`
-
----
-
-### ai_robust_broken
-
-Module IA robuste pour Athalia
-Gestion des modèles IA avec fallback intelligent
-
-#### Classes
-
-##### AIModel
-
-Modèles IA disponibles.
-
-##### PromptContext
-
-Contextes de prompts.
-
-##### RobustAI
-
-Gestionnaire IA robuste avec fallback intelligent.
-
-**Méthodes :**
-
-- `__init__()`
-- `generate_blueprint()`
-- `_extract_project_name()`
-- `review_code()`
-- `generate_documentation()`
-- `classify_project_complexity()`
-- `get_dynamic_prompt()`
-- `generate_bluelogger()`
-- `generate_blueprint_mock()`
-- `save_blueprint()`
-- `scan_existing_project()`
-- `_detect_available_models()`
-- `_build_fallback_chain()`
-- `_load_prompt_templates()`
-- `generate_response()`
-- `_call_model()`
-- `_classify_project_complexity()`
-- `_get_dynamic_prompt()`
-- `_call_ollama()`
-- `_mock_response()`
-
-##### _BlueprintProxy
-
-**Méthodes :**
-
-- `__init__()`
-- `info()`
-
-#### Fonctions
-
-##### robust_ai
-
-Fonction factory pour créer une instance RobustAI.
-
-##### fallback_ia
-
-Fallback IA multi-modèles (Qwen, Mistral, Ollama, Claude, GPT, Mock...)
-
-**Paramètres :**
-
-- `prompt`
-- `models`
-
-##### query_qwen
-
-Appel local à Qwen 7B via Ollama.
-
-**Paramètres :**
-
-- `prompt`
-
-##### query_mistral
-
-Appel local à Mistral 7B via Ollama.
-
-**Paramètres :**
-
-- `prompt`
-
-##### __init__
-
-Initialise le gestionnaire IA.
-
-##### generate_blueprint
-
-Génère un blueprint de projet à partir dune idée.
-
-**Paramètres :**
-
-- `idea`
-
-##### _extract_project_name
-
-Extrait un nom de projet de lidée
-
-**Paramètres :**
-
-- `idea`
-
-##### review_code
-
-Génère une revue de code mockée.
-
-**Paramètres :**
-
-- `code`
-- `filename`
-- `project_type`
-- `current_score`
-
-##### generate_documentation
-
-Génère une documentation technique mockée.
-
-**Paramètres :**
-
-- `project_name`
-- `project_type`
-- `modules`
-
-##### classify_project_complexity
-
-Classifie la complexité dun projet (mock).
-
-**Paramètres :**
-
-- `codebase_path`
-
-##### get_dynamic_prompt
-
-Retourne un prompt dynamique mocké selon le contexte.
-
-**Paramètres :**
-
-- `context`
-
-##### generate_bluelogger
-
-##### generate_blueprint_mock
-
-##### save_blueprint
-
-##### scan_existing_project
-
-##### _detect_available_models
-
-Détecte les modèles IA disponibles.
-
-##### _build_fallback_chain
-
-Construit la chaîne de fallback.
-
-##### _load_prompt_templates
-
-Charge les templates de prompts dynamiques.
-
-##### generate_response
-
-Génère une réponse IA robuste avec fallback.
-
-**Paramètres :**
-
-- `context`
-- `distillation`
-
-##### _call_model
-
-Appelle un modèle IA spécifique.
-
-**Paramètres :**
-
-- `model`
-- `prompt`
-
-##### _classify_project_complexity
-
-Alias privé pour compatibilité avec les tests.
-
-**Paramètres :**
-
-- `codebase_path`
-
-##### _get_dynamic_prompt
-
-Alias privé pour compatibilité avec les tests.
-Accepte PromptContext ou str et fait un .format sur le template.
-
-**Paramètres :**
-
-- `context`
-
-##### _call_ollama
-
-Appelle Ollama avec un modèle spécifique et timeout paramétrable.
-
-**Paramètres :**
-
-- `model_name`
-- `prompt`
-- `timeout`
-
-##### _mock_response
-
-Réponse mock pour les tests.
-
-**Paramètres :**
-
-- `prompt`
-
-##### __init__
-
-**Paramètres :**
-
-- `parent`
-
-##### info
 
 ---
 

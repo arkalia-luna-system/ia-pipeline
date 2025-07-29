@@ -413,8 +413,8 @@ echo "🧪 Lancement des tests pour {self.project_path.name}"
 echo "📋 Tests unitaires..."
 python -m pytest tests/auto_generated_unit_*.py -v
 
-# Tests dintégration
-echo "🔗 Tests dintégration..."
+# Tests d'intégration
+echo "🔗 Tests d'intégration..."
 python -m pytest tests/auto_generated_integration_*.py -v
 
 # Tests de performance
@@ -564,7 +564,7 @@ echo "✅ Tests terminés !"
    • Échoués: {unit_failed}
    • Erreurs: {unit_errors}
 
-🔗 Tests dintégration:
+🔗 Tests d'intégration:
    • Réussis: {integration_passed}
    • Échoués: {integration_failed}
    • Erreurs: {integration_errors}
