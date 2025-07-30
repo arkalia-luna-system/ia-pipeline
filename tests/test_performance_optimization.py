@@ -272,14 +272,9 @@ def inefficient_function():
 
     def test_cache_performance(self):
         """Test de performance du cache."""
-        if not CacheManager:
-            pytest.skip("CacheManager non disponible")
-
-        # Test de performance du cache
         start_time = time.time()
 
         # Opérations de cache multiples
-        project_path = str(self.test_dir)
         for i in range(100):
             self.cache_manager.set_cache(f"test_{i}", {"value": i})
             self.cache_manager.get_cache(f"test_{i}")
@@ -393,7 +388,6 @@ def test_performance_optimization_workflow():
 
     with tempfile.TemporaryDirectory() as temp_dir:
         analyzer = PerformanceAnalyzer(temp_dir)
-        cache_manager = CacheManager()
 
         # 1. Analyser les performances actuelles
         current_performance = analyzer.analyze_project_performance(temp_dir)
