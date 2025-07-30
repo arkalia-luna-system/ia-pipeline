@@ -152,13 +152,16 @@ alias ath-dev-auto='python3 "$ATHALIA_ROOT/bin/ath-workflow" --mode develop --au
 alias ath-dev-push='python3 "$ATHALIA_ROOT/bin/ath-workflow" --mode develop --auto-commit --auto-push'
 
 # Workflow rapide (développement quotidien)
-alias ath-quick='python3 "$ATHALIA_ROOT/bin/ath-workflow" --mode develop --auto-commit --auto-push --skip-checks'
+alias ath-quick='python3 "$ATHALIA_ROOT/bin/ath-workflow" --mode develop --auto-commit --auto-push'
 
 # Workflow de feature complet
 alias ath-feature-full='python3 "$ATHALIA_ROOT/bin/ath-workflow" --mode feature --auto-commit --auto-push'
 
 # Workflow de release complet
 alias ath-release-full='python3 "$ATHALIA_ROOT/bin/ath-workflow" --mode release --auto-commit --auto-push'
+
+# Test des outils de workflow
+alias ath-test-workflow='python3 "$ATHALIA_ROOT/bin/ath-test-workflow"'
 
 # === ALIAS MODULES AVANCÉS ===
 # Modules spécialisés du pipeline

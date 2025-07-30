@@ -44,7 +44,7 @@ alias ath-dev-auto='/Volumes/T7/athalia-dev-setup/bin/ath-workflow --mode develo
 alias ath-dev-push='/Volumes/T7/athalia-dev-setup/bin/ath-workflow --mode develop --auto-commit --auto-push'
 
 # Workflow rapide (développement quotidien)
-alias ath-quick='/Volumes/T7/athalia-dev-setup/bin/ath-workflow --mode develop --auto-commit --auto-push --skip-checks'
+alias ath-quick='/Volumes/T7/athalia-dev-setup/bin/ath-workflow --mode develop --auto-commit --auto-push'
 
 # Workflow de feature complet
 alias ath-feature-full='/Volumes/T7/athalia-dev-setup/bin/ath-workflow --mode feature --auto-commit --auto-push'

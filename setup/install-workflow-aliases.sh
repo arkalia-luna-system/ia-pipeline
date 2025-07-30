@@ -132,7 +132,7 @@ alias ath-dev-auto='$PROJECT_ROOT/bin/ath-workflow --mode develop --auto-commit'
 alias ath-dev-push='$PROJECT_ROOT/bin/ath-workflow --mode develop --auto-commit --auto-push'
 
 # Workflow rapide (développement quotidien)
-alias ath-quick='$PROJECT_ROOT/bin/ath-workflow --mode develop --auto-commit --auto-push --skip-checks'
+alias ath-quick='$PROJECT_ROOT/bin/ath-workflow --mode develop --auto-commit --auto-push'
 
 # Workflow de feature complet
 alias ath-feature-full='$PROJECT_ROOT/bin/ath-workflow --mode feature --auto-commit --auto-push'

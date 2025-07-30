@@ -60,6 +60,9 @@ alias ath-dev-auto='$(git rev-parse --show-toplevel)/bin/ath-workflow --mode dev
 # Workflow avec push automatique
 alias ath-dev-push='$(git rev-parse --show-toplevel)/bin/ath-workflow --mode develop --auto-commit --auto-push'
 
+# Test des outils de workflow
+alias ath-test-workflow='$(git rev-parse --show-toplevel)/bin/ath-test-workflow'
+
 # Tests unitaires spécifiques
 alias ath-test-unit='python3 -m pytest tests/ -m "unit" -v'
 

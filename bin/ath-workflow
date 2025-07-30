@@ -19,6 +19,7 @@ DRY_RUN=false
 VERBOSE=false
 AUTO_COMMIT=false
 AUTO_PUSH=false
+SKIP_CHECKS=false
 
 # Fonctions d'affichage
 print_header() {
@@ -74,6 +75,10 @@ while [[ $# -gt 0 ]]; do
             AUTO_PUSH=true
             shift
             ;;
+        --skip-checks|-s)
+            SKIP_CHECKS=true
+            shift
+            ;;
         --help|-h)
             echo "Usage: ./bin/ath-workflow [OPTIONS]"
             echo ""
@@ -88,6 +93,7 @@ while [[ $# -gt 0 ]]; do
             echo "  --verbose, -v      # Affichage détaillé"
             echo "  --auto-commit, -c  # Commit automatique"
             echo "  --auto-push, -p    # Push automatique"
+            echo "  --skip-checks, -s  # Ignorer les vérifications"
             echo "  --help, -h         # Affiche cette aide"
             echo ""
             echo "Exemples:"
