@@ -18,6 +18,7 @@
 - **[DOCUMENTATION_MAINTENANCE.md](DOCUMENTATION_MAINTENANCE.md)** - Maintenance de la documentation
 - **[APPLE_DOUBLE_MANAGEMENT.md](APPLE_DOUBLE_MANAGEMENT.md)** - Gestion des fichiers AppleDouble
 - **[MACOS_TEMP_CLEANUP.md](MACOS_TEMP_CLEANUP.md)** - Nettoyage des fichiers temporaires macOS
+- **[CLEAN_SHUTDOWN_GUIDE.md](CLEAN_SHUTDOWN_GUIDE.md)** - Guide de fermeture propre d'Athalia
 - **[WORKFLOW_AMELIORATIONS.md](WORKFLOW_AMELIORATIONS.md)** - Améliorations du workflow de développement
 - **[ALIAS_WORKFLOW_QUICK_GUIDE.md](ALIAS_WORKFLOW_QUICK_GUIDE.md)** - Guide rapide des alias de workflow
 
