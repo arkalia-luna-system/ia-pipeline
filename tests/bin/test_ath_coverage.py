@@ -1,6 +1,7 @@
 import glob
 import os
 import subprocess
+import sys
 import time
 
 
@@ -25,7 +26,7 @@ def test_ath_coverage_runs():
     start = time.time()
     result = None
     try:
-        result = subprocess.run([script], capture_output=True, env=env, timeout=30)
+        result = subprocess.run([sys.executable, script], capture_output=True, env=env, timeout=30)
     except subprocess.TimeoutExpired:
         cleanup_coverage_files()
         # Timeout attendu pour éviter la récursivité
