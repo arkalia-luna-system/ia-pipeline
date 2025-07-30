@@ -5,7 +5,6 @@ Tests pour les profils utilisateur avancés.
 Tests professionnels pour la CI/CD.
 """
 
-import json
 import os
 import shutil
 import tempfile

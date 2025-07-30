@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import os
-import shutil
 
-import pytest
 
 from athalia_core import generation
 
@@ -40,7 +38,7 @@ def test_generate_project_dry_run(tmp_path):
     blueprint = generation.generate_blueprint_mock("Projet test")
     outdir = tmp_path / "projet_test"
     outdir.mkdir()
-    actions = generation.generate_project(blueprint, str(outdir), dry_run=True)
+    generation.generate_project(blueprint, str(outdir), dry_run=True)
     # Le rapport dry-run doit exister
     report_file = outdir / "dry_run_report.txt"
     assert report_file.exists()
