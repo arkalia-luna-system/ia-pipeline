@@ -490,6 +490,7 @@ class AutoCleaner:
     def cleanup_ide_files(self) -> Dict[str, Any]:
         """Nettoie les fichiers d'IDE"""
         cleaned_files = []
+        cleaned_directories = []
         total_size_freed = 0
 
         ide_patterns = [
@@ -512,7 +513,8 @@ class AutoCleaner:
                         if file_path.is_file() and not self._is_excluded(file_path):
                             try:
                                 file_size = file_path.stat().st_size
-                                file_path.unlink()
+                                if not getattr(self, 'dry_run', False):
+                                    file_path.unlink()
                                 cleaned_files.append(str(file_path))
                                 total_size_freed += file_size
                             except Exception as e:
@@ -523,7 +525,8 @@ class AutoCleaner:
                     if exact_path.exists() and exact_path.is_file() and not self._is_excluded(exact_path):
                         try:
                             file_size = exact_path.stat().st_size
-                            exact_path.unlink()
+                            if not getattr(self, 'dry_run', False):
+                                exact_path.unlink()
                             cleaned_files.append(str(exact_path))
                             total_size_freed += file_size
                         except Exception as e:
@@ -536,8 +539,9 @@ class AutoCleaner:
                 if ide_dir.exists() and ide_dir.is_dir():
                     try:
                         dir_size = self._get_directory_size(ide_dir)
-                        shutil.rmtree(ide_dir)
-                        cleaned_files.append(str(ide_dir))
+                        if not getattr(self, 'dry_run', False):
+                            shutil.rmtree(ide_dir)
+                        cleaned_directories.append(str(ide_dir))
                         total_size_freed += dir_size
                     except Exception as e:
                         logger.warning(f"Impossible de supprimer {ide_dir}: {e}")
@@ -546,9 +550,10 @@ class AutoCleaner:
             logger.error(f"Erreur lors du nettoyage des fichiers IDE: {e}")
 
         result = {
-            "cleaned_files": cleaned_files,
-            "total_size_freed_mb": round(total_size_freed / (1024 * 1024), 2),
-            "files_count": len(cleaned_files),
+            "removed_files": cleaned_files,
+            "removed_directories": cleaned_directories,
+            "total_size_freed": total_size_freed,
+            "errors": []
         }
 
         self.cleanup_history.append({

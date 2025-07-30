@@ -18,8 +18,9 @@ logger = logging.getLogger(__name__)
 class AutoDocumenter:
     """Générateur automatique de documentation"""
 
-    def __init__(self, project_path: str = "."):
+    def __init__(self, project_path: str = ".", lang: str = "en"):
         self.project_path = Path(project_path)
+        self.lang = lang
         self.doc_config = self.load_documentation_config()
         self.doc_history = []
 
@@ -615,87 +616,268 @@ SOFTWARE.
             return []
 
     def perform_full_documentation(self) -> Dict[str, Any]:
-        """Effectue une documentation complète"""
-        start_time = datetime.now()
-
-        # Créer le répertoire de sortie
-        output_dir = self.project_path / self.doc_config["output_directory"]
-        output_dir.mkdir(exist_ok=True)
-
-        files_generated = []
+        """Effectue une documentation complète du projet"""
+        result = {
+            "summary": "",
+            "detailed_results": {},
+            "recommendations": [],
+            "errors": [],
+        }
 
         try:
-            # Générer README
-            readme_content = self.generate_readme()
-            readme_file = output_dir / "README.md"
-            with open(readme_file, "w", encoding="utf-8") as f:
-                f.write(readme_content)
-            files_generated.append("README.md")
+            # Analyser la structure du projet
+            structure = self.scan_project_structure()
+            result["detailed_results"]["structure"] = structure
 
-            # Générer guide d'installation
-            install_guide = self.generate_installation_guide()
-            install_file = output_dir / "INSTALLATION.md"
-            with open(install_file, "w", encoding="utf-8") as f:
-                f.write(install_guide)
-            files_generated.append("INSTALLATION.md")
+            # Analyser les fichiers Python
+            python_analysis = self.analyze_python_files()
+            result["detailed_results"]["python_analysis"] = python_analysis
 
-            # Générer exemples
-            examples = self.generate_usage_examples()
-            examples_file = output_dir / "EXAMPLES.md"
-            with open(examples_file, "w", encoding="utf-8") as f:
-                f.write(examples)
-            files_generated.append("EXAMPLES.md")
+            # Calculer la couverture de documentation
+            coverage = self.calculate_documentation_coverage()
+            result["detailed_results"]["coverage"] = coverage
 
-            # Générer changelog
-            changelog = self.generate_changelog()
-            changelog_file = output_dir / "CHANGELOG.md"
-            with open(changelog_file, "w", encoding="utf-8") as f:
-                f.write(changelog)
-            files_generated.append("CHANGELOG.md")
+            # Valider la documentation existante
+            validation = self.validate_documentation()
+            result["detailed_results"]["validation"] = validation
 
-            # Générer guide de contribution
-            contributing = self.generate_contributing_guide()
-            contributing_file = output_dir / "CONTRIBUTING.md"
-            with open(contributing_file, "w", encoding="utf-8") as f:
-                f.write(contributing)
-            files_generated.append("CONTRIBUTING.md")
+            # Générer le rapport
+            report = self.generate_documentation_report()
+            result["summary"] = report.get("summary", "Documentation générée avec succès")
 
-            # Générer licence
-            license_content = self.generate_license_file()
-            license_file = output_dir / "LICENSE"
-            with open(license_file, "w", encoding="utf-8") as f:
-                f.write(license_content)
-            files_generated.append("LICENSE")
+            # Ajouter des recommandations
+            if coverage["coverage_percentage"] < 80:
+                result["recommendations"].append(
+                    "Améliorer la couverture de documentation (actuellement {}%)".format(
+                        coverage["coverage_percentage"]
+                    )
+                )
 
-            # Générer index
-            index = self.generate_documentation_index()
-            index_file = output_dir / "INDEX.md"
-            with open(index_file, "w", encoding="utf-8") as f:
-                f.write(index)
-            files_generated.append("INDEX.md")
+            if validation["issues"]:
+                result["recommendations"].append(
+                    "Corriger {} problèmes de documentation identifiés".format(
+                        len(validation["issues"])
+                    )
+                )
 
         except Exception as e:
-            logger.error(f"Erreur génération documentation: {e}")
+            result["errors"].append(f"Erreur documentation complète: {e}")
+            logger.error(f"Erreur documentation complète: {e}")
 
-        # Calculer la couverture
-        coverage = self.calculate_documentation_coverage()
-
-        # Enregistrer dans l'historique
-        doc_record = {
+        self.doc_history.append({
             "timestamp": datetime.now().isoformat(),
-            "files_generated": len(files_generated),
-            "coverage": coverage["coverage_percentage"],
-            "documentation_time": (datetime.now() - start_time).total_seconds(),
-        }
-        self.doc_history.append(doc_record)
+            "operation": "perform_full_documentation",
+            "result": result,
+        })
 
-        return {
-            "files_generated": len(files_generated),
-            "files_list": files_generated,
-            "coverage": coverage["coverage_percentage"],
-            "documentation_time": doc_record["documentation_time"],
-            "output_directory": str(output_dir),
+        return result
+
+    def document_project(self, project_path: str) -> Dict[str, Any]:
+        """Documente un projet complet"""
+        self.project_path = Path(project_path)
+        
+        # Initialiser les informations du projet si pas déjà fait
+        if not hasattr(self, 'project_info'):
+            self.project_info = {
+                "name": self.project_path.name,
+                "description": "Projet documenté automatiquement",
+                "version": "1.0.0",
+                "modules": [],
+                "dependencies": {},
+                "classes": [],
+                "functions": [],
+                "entry_points": [],
+                "license": "MIT"
+            }
+
+        result = {
+            "readme": self._generate_readme(),
+            "api_docs": self._generate_api_documentation(),
+            "setup_guide": self._generate_setup_guide(),
+            "usage_guide": self._generate_usage_guide(),
+            "created_files": self._get_created_files()
         }
+
+        return result
+
+    def _load_translations(self, lang: str) -> Dict[str, str]:
+        """Charge les traductions pour la langue spécifiée"""
+        translations = {
+            "fr": {
+                "readme_title": "Documentation du Projet",
+                "api_docs_title": "Documentation API",
+                "setup_guide_title": "Guide d'Installation",
+                "usage_guide_title": "Guide d'Utilisation",
+                "functions": "Fonctions",
+                "classes": "Classes",
+                "methods": "Méthodes",
+                "parameters": "Paramètres",
+                "returns": "Retourne",
+                "examples": "Exemples"
+            },
+            "en": {
+                "readme_title": "Project Documentation",
+                "api_docs_title": "API Documentation",
+                "setup_guide_title": "Installation Guide",
+                "usage_guide_title": "Usage Guide",
+                "functions": "Functions",
+                "classes": "Classes",
+                "methods": "Methods",
+                "parameters": "Parameters",
+                "returns": "Returns",
+                "examples": "Examples"
+            }
+        }
+        return translations.get(lang, translations["en"])
+
+    def _generate_readme(self) -> str:
+        """Génère un README basique"""
+        translations = self._load_translations(self.lang)
+        
+        readme = f"""# {self.project_info.get('name', 'Projet')}
+
+{self.project_info.get('description', 'Description du projet')}
+
+## Installation
+
+```bash
+pip install -r requirements.txt
+```
+
+## Utilisation
+
+```python
+from {self.project_info.get('name', 'project')} import main
+main()
+```
+
+## Documentation
+
+Consultez la documentation complète dans le dossier `docs/`.
+
+## Licence
+
+{self.project_info.get('license', 'MIT')}
+"""
+        return readme
+
+    def _generate_api_documentation(self) -> str:
+        """Génère la documentation API"""
+        translations = self._load_translations(self.lang)
+        
+        api_docs = f"""# {translations['api_docs_title']}
+
+## {translations['classes']}
+
+"""
+        
+        for class_info in self.project_info.get('classes', []):
+            api_docs += f"""### {class_info['name']}
+
+{class_info.get('docstring', 'Aucune description')}
+
+#### {translations['methods']}
+
+"""
+            for method in class_info.get('methods', []):
+                api_docs += f"- `{method}()`\n"
+            api_docs += "\n"
+
+        api_docs += f"""## {translations['functions']}
+
+"""
+        
+        for func_info in self.project_info.get('functions', []):
+            api_docs += f"""### {func_info['name']}
+
+{func_info.get('docstring', 'Aucune description')}
+
+"""
+            if func_info.get('args'):
+                api_docs += f"**{translations['parameters']}:** {', '.join(func_info['args'])}\n\n"
+
+        return api_docs
+
+    def _generate_setup_guide(self) -> str:
+        """Génère le guide d'installation"""
+        translations = self._load_translations(self.lang)
+        
+        setup_guide = f"""# {translations['setup_guide_title']}
+
+## Prérequis
+
+- Python 3.8+
+- pip
+
+## Installation
+
+1. Cloner le repository :
+```bash
+git clone <repository-url>
+cd {self.project_info.get('name', 'project')}
+```
+
+2. Installer les dépendances :
+```bash
+pip install -r requirements.txt
+```
+
+3. Configuration :
+```bash
+cp config.example.yml config.yml
+# Éditer config.yml selon vos besoins
+```
+
+## Vérification
+
+```bash
+python -m pytest tests/
+```
+"""
+        return setup_guide
+
+    def _generate_usage_guide(self) -> str:
+        """Génère le guide d'utilisation"""
+        translations = self._load_translations(self.lang)
+        
+        usage_guide = f"""# {translations['usage_guide_title']}
+
+## Démarrage rapide
+
+```python
+from {self.project_info.get('name', 'project')} import main
+
+# Configuration de base
+config = {{"debug": True}}
+
+# Lancement
+main(config)
+```
+
+## {translations['examples']}
+
+### Exemple 1 : Utilisation basique
+
+```python
+# Code d'exemple
+```
+
+### Exemple 2 : Configuration avancée
+
+```python
+# Code d'exemple avancé
+```
+"""
+        return usage_guide
+
+    def _get_created_files(self) -> List[str]:
+        """Retourne la liste des fichiers créés"""
+        return [
+            "README.md",
+            "docs/api.md",
+            "docs/setup.md",
+            "docs/usage.md"
+        ]
 
 
 def generate_documentation(project_path: str = ".") -> Dict[str, Any]:
