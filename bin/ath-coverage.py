@@ -28,7 +28,7 @@ def main():
         cmd.append("--cov-report=term-missing")
     env = os.environ.copy()
     env["ATHALIA_COVERAGE_RUNNING"] = "1"
-    result = subprocess.run(cmd, check=False, env=env)
+    result = validate_and_run(cmd, check=False, env=env)
     sys.exit(result.returncode)
 
 
