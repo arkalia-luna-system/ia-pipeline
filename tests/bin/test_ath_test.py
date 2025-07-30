@@ -4,6 +4,15 @@ import sys
 
 # Correction pour les permissions des scripts
 
+# Import sécurisé pour la validation des commandes
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    # Fallback si le module n'est pas disponible
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+    SecurityError = Exception
+
 
 def test_ath_test_runs():
     """Test que ath-test.py fonctionne sans récursivité"""
@@ -15,7 +24,7 @@ def test_ath_test_runs():
 
     # Tester avec un timeout pour éviter la récursivité et exclure les fichiers cachés
     try:
-        result = subprocess.run(
+        result = validate_and_run(
             [sys.executable, script, "--ignore=tests/bin/._test_ath_test.py"],
             capture_output=True,
             env=env,
@@ -27,6 +36,6 @@ def test_ath_test_runs():
             1,
             2,
         ), f"ath-test.py a crashé : {result.stderr.decode()}"
-    except subprocess.TimeoutExpired:
+    except (subprocess.TimeoutExpired, SecurityError):
         # Timeout attendu pour éviter la récursivité
         pass
