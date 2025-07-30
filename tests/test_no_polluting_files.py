@@ -321,6 +321,10 @@ class TestNoPollutingFiles:
         allowed_empty_dirs = {
             "./.pytest_cache",  # Cache pytest normal
             "./.mypy_cache",  # Cache mypy normal
+            "./.mypy_cache/3.10",  # Cache mypy version spécifique
+            "./.mypy_cache/3.10/athalia_core",  # Cache mypy module spécifique
+            "./.mypy_cache/3.10/athalia_core/robotics",  # Cache mypy sous-module
+            "./.cache",  # Cache général normal
             "./.coverage",  # Cache coverage normal
             "./.ruff_cache",  # Cache ruff normal
             "./.autocomplete",  # Cache autocomplétion normal
@@ -335,6 +339,7 @@ class TestNoPollutingFiles:
             "./.benchmarks",  # Benchmarks normaux
             "./.venv/include",  # Include venv normal
             "./athalia_core/logs",  # Logs athalia_core normaux
+            "./athalia_core/__pycache__",  # Cache Python normal
         }
 
         # Filtrer les répertoires autorisés
