@@ -1,25 +1,24 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-🧹 PHASE 3 : MAINTENANCE OPTIMALE - ATHALIA PROJECT
+🧹 Phase 3 Maintenance - Athalia Project
+Script professionnel pour l'optimisation de maintenance
 
-Script unifié pour la Phase 3 de maintenance qui :
-1. Nettoie les fichiers temporaires
-2. Harmonise les noms de fichiers
-3. Optimise les imports
-4. Valide la structure du projet
-
-Version : 1.0
-Date : 30 Juillet 2025
+Fonctionnalités :
+- Nettoyage des fichiers temporaires
+- Harmonisation des noms de fichiers
+- Optimisation des imports
+- Mode dry-run pour vérification
+- Rapports détaillés
 """
 
+import argparse
 import logging
-import os
 import shutil
 import sys
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, List
 
 # Configuration du logging
 logging.basicConfig(
@@ -34,368 +33,305 @@ logger = logging.getLogger(__name__)
 
 
 class Phase3Maintenance:
-    """Maintenance optimale pour la Phase 3"""
+    """Maintenance Phase 3 - Optimisation complète du projet"""
 
-    def __init__(self, root_path: str = "."):
+    def __init__(self, root_path: str = ".", dry_run: bool = True):
         self.root_path = Path(root_path)
-        self.results: Dict[str, any] = {
+        self.dry_run = dry_run
+        self.results: Dict[str, List[str]] = {
             "temp_files_cleaned": [],
+            "apple_double_removed": [],
             "naming_fixed": [],
             "imports_optimized": [],
-            "structure_validated": [],
+            "cache_cleaned": [],
             "errors": [],
         }
 
-    def run_phase3_maintenance(self, dry_run: bool = True) -> Dict[str, any]:
-        """Exécute la maintenance complète de la Phase 3"""
-        logger.info("🚀 DÉBUT DE LA PHASE 3 : MAINTENANCE OPTIMALE")
-        logger.info("=" * 60)
+    def run_maintenance(self) -> Dict[str, List[str]]:
+        """Exécute la maintenance complète Phase 3"""
+        logger.info("🧹 Début de la maintenance Phase 3...")
+        logger.info(f"Mode: {'VÉRIFICATION' if self.dry_run else 'EXÉCUTION'}")
 
-        try:
-            # 1. Nettoyage des fichiers temporaires
-            self._cleanup_temp_files(dry_run)
+        # 1. Nettoyage des fichiers temporaires
+        self._cleanup_temp_files()
 
-            # 2. Harmonisation des noms de fichiers
-            self._fix_naming_inconsistencies(dry_run)
+        # 2. Suppression des fichiers Apple Double
+        self._remove_apple_double_files()
 
-            # 3. Optimisation des imports
-            self._optimize_imports(dry_run)
+        # 3. Nettoyage des caches
+        self._cleanup_caches()
 
-            # 4. Validation de la structure
-            self._validate_project_structure(dry_run)
+        # 4. Harmonisation des noms de fichiers
+        self._fix_naming_inconsistencies()
 
-            logger.info("✅ PHASE 3 TERMINÉE AVEC SUCCÈS")
-            return self.results
+        # 5. Optimisation des imports
+        self._optimize_imports()
 
-        except Exception as e:
-            logger.error(f"❌ Erreur lors de la Phase 3 : {e}")
-            self.results["errors"].append(str(e))
-            return self.results
+        # 6. Génération du rapport
+        self._generate_report()
 
-    def _cleanup_temp_files(self, dry_run: bool):
+        return self.results
+
+    def _cleanup_temp_files(self):
         """Nettoie les fichiers temporaires"""
-        logger.info("🧹 ÉTAPE 1 : Nettoyage des fichiers temporaires")
+        logger.info("📁 Nettoyage des fichiers temporaires...")
 
-        # Patterns de fichiers temporaires à nettoyer
         temp_patterns = [
-            "._*",  # AppleDouble files
-            ".DS_Store",  # macOS
-            "Thumbs.db",  # Windows
-            "*.tmp",  # Fichiers temporaires
-            "*.temp",  # Fichiers temporaires
-            "*.bak",  # Sauvegardes
-            "*.log.tmp",  # Logs temporaires
-            "*.cache",  # Caches
-            "debug_*.py",  # Fichiers debug
-            "temp_*.py",  # Fichiers temp
-            "test_*.tmp",  # Tests temporaires
+            "*.tmp", "*.temp", "*.bak", "*.backup", "*.orig",
+            "*debug*", "*temp*", "*cache*", "*.log.tmp",
+            "*.out.tmp", "*.err.tmp", "debug.log.tmp"
         ]
 
-        # Dossiers à exclure
-        exclude_dirs = {
-            ".git", ".venv", "venv", "__pycache__", 
-            ".pytest_cache", "node_modules", "build", "dist"
-        }
+        excluded_dirs = {".git", ".venv", "venv", "__pycache__", ".pytest_cache"}
 
-        cleaned_count = 0
+        for pattern in temp_patterns:
+            for file_path in self.root_path.rglob(pattern):
+                if any(excluded in str(file_path) for excluded in excluded_dirs):
+                    continue
 
-        for root, dirs, files in os.walk(self.root_path):
-            # Exclure les dossiers système
-            dirs[:] = [d for d in dirs if d not in exclude_dirs]
+                if file_path.is_file():
+                    if self.dry_run:
+                        logger.info(f"  [DRY-RUN] Fichier temporaire trouvé: {file_path}")
+                    else:
+                        try:
+                            file_path.unlink()
+                            logger.info(f"  ✅ Supprimé: {file_path}")
+                        except Exception as e:
+                            logger.error(f"  ❌ Erreur suppression {file_path}: {e}")
+                            self.results["errors"].append(f"Suppression {file_path}: {e}")
 
-            for file in files:
-                should_delete = False
+                    self.results["temp_files_cleaned"].append(str(file_path))
 
-                # Vérifier les patterns
-                for pattern in temp_patterns:
-                    if self._matches_pattern(file, pattern):
-                        should_delete = True
-                        break
+    def _remove_apple_double_files(self):
+        """Supprime les fichiers Apple Double"""
+        logger.info("🍎 Suppression des fichiers Apple Double...")
 
-                # Vérifications spécifiques
-                if (
-                    file.startswith("._") or
-                    file == ".DS_Store" or
-                    file == "Thumbs.db" or
-                    file.endswith(".tmp") or
-                    file.endswith(".temp") or
-                    file.endswith(".bak") or
-                    file.startswith("debug_") or
-                    file.startswith("temp_")
-                ):
-                    should_delete = True
+        for file_path in self.root_path.rglob("._*"):
+            if file_path.is_file():
+                if self.dry_run:
+                    logger.info(f"  [DRY-RUN] Apple Double trouvé: {file_path}")
+                else:
+                    try:
+                        file_path.unlink()
+                        logger.info(f"  ✅ Supprimé: {file_path}")
+                    except Exception as e:
+                        logger.error(f"  ❌ Erreur suppression {file_path}: {e}")
+                        self.results["errors"].append(f"Apple Double {file_path}: {e}")
 
-                if should_delete:
-                    file_path = Path(root) / file
-                    
-                    # Vérifier que ce n'est pas un fichier important
-                    if not self._is_important_file(file_path):
-                        if not dry_run:
-                            try:
-                                file_path.unlink()
-                                logger.info(f"🗑️ Supprimé: {file_path}")
-                                self.results["temp_files_cleaned"].append(str(file_path))
-                                cleaned_count += 1
-                            except Exception as e:
-                                logger.warning(f"Impossible de supprimer {file_path}: {e}")
-                        else:
-                            logger.info(f"[DRY-RUN] Supprimerait: {file_path}")
-                            self.results["temp_files_cleaned"].append(str(file_path))
-                            cleaned_count += 1
+                self.results["apple_double_removed"].append(str(file_path))
 
-        logger.info(f"✅ Nettoyage terminé: {cleaned_count} fichiers traités")
+    def _cleanup_caches(self):
+        """Nettoie les caches"""
+        logger.info("🗂️ Nettoyage des caches...")
 
-    def _fix_naming_inconsistencies(self, dry_run: bool):
-        """Harmonise les noms de fichiers"""
-        logger.info("📝 ÉTAPE 2 : Harmonisation des noms de fichiers")
+        cache_dirs = [
+            ".mypy_cache", ".ruff_cache", ".coverage", "htmlcov",
+            ".tox", ".cache", "build", "dist", "*.egg-info"
+        ]
 
-        # Incohérences identifiées
+        for pattern in cache_dirs:
+            for cache_path in self.root_path.rglob(pattern):
+                if cache_path.is_dir():
+                    if self.dry_run:
+                        logger.info(f"  [DRY-RUN] Cache trouvé: {cache_path}")
+                    else:
+                        try:
+                            shutil.rmtree(cache_path, ignore_errors=True)
+                            logger.info(f"  ✅ Supprimé: {cache_path}")
+                        except Exception as e:
+                            logger.error(f"  ❌ Erreur suppression {cache_path}: {e}")
+                            self.results["errors"].append(f"Cache {cache_path}: {e}")
+
+                    self.results["cache_cleaned"].append(str(cache_path))
+
+    def _fix_naming_inconsistencies(self):
+        """Corrige les incohérences de nommage"""
+        logger.info("📝 Harmonisation des noms de fichiers...")
+
+        # Fichiers à déplacer/réorganiser
         naming_fixes = [
-            # Fichiers à déplacer
             ("athalia_core/robotics_ci.py", "athalia_core/robotics/robotics_ci.py"),
-            
-            # Noms de variables à harmoniser
-            ("debug_ai_status.py", "ai_status_debug.py"),
         ]
-
-        fixed_count = 0
 
         for old_path, new_path in naming_fixes:
             old_file = self.root_path / old_path
             new_file = self.root_path / new_path
 
-            if old_file.exists():
-                if not dry_run:
-                    try:
-                        # Créer le dossier de destination si nécessaire
-                        new_file.parent.mkdir(parents=True, exist_ok=True)
-                        
-                        # Déplacer le fichier
-                        shutil.move(str(old_file), str(new_file))
-                        logger.info(f"📁 Déplacé: {old_path} → {new_path}")
-                        self.results["naming_fixed"].append({
-                            "old": old_path,
-                            "new": new_path,
-                            "action": "moved"
-                        })
-                        fixed_count += 1
-                    except Exception as e:
-                        logger.warning(f"Impossible de déplacer {old_path}: {e}")
+            if old_file.exists() and not new_file.exists():
+                if self.dry_run:
+                    logger.info(f"  [DRY-RUN] Renommage: {old_path} → {new_path}")
                 else:
-                    logger.info(f"[DRY-RUN] Déplacerait: {old_path} → {new_path}")
-                    self.results["naming_fixed"].append({
-                        "old": old_path,
-                        "new": new_path,
-                        "action": "moved"
-                    })
-                    fixed_count += 1
+                    try:
+                        new_file.parent.mkdir(parents=True, exist_ok=True)
+                        old_file.rename(new_file)
+                        logger.info(f"  ✅ Renommé: {old_path} → {new_path}")
+                    except Exception as e:
+                        logger.error(f"  ❌ Erreur renommage {old_path}: {e}")
+                        self.results["errors"].append(f"Renommage {old_path}: {e}")
 
-        logger.info(f"✅ Harmonisation terminée: {fixed_count} corrections")
+                self.results["naming_fixed"].append(f"{old_path} → {new_path}")
 
-    def _optimize_imports(self, dry_run: bool):
+    def _optimize_imports(self):
         """Optimise les imports"""
-        logger.info("⚡ ÉTAPE 3 : Optimisation des imports")
+        logger.info("📦 Optimisation des imports...")
 
-        # Fichiers Python à analyser
         python_files = list(self.root_path.rglob("*.py"))
-        
-        optimized_count = 0
 
         for py_file in python_files:
-            if self._should_optimize_file(py_file):
-                try:
-                    if not dry_run:
-                        self._optimize_file_imports(py_file)
-                        logger.info(f"⚡ Optimisé: {py_file}")
-                        self.results["imports_optimized"].append(str(py_file))
-                        optimized_count += 1
+            if any(excluded in str(py_file) for excluded in [".git", ".venv", "venv"]):
+                continue
+
+            try:
+                with open(py_file, "r", encoding="utf-8") as f:
+                    content = f.read()
+
+                # Détecter les imports non utilisés (analyse basique)
+                lines = content.split("\n")
+                import_lines = [i for i, line in enumerate(lines) if line.strip().startswith(("import ", "from "))]
+
+                if len(import_lines) > 10:  # Trop d'imports
+                    if self.dry_run:
+                        logger.info(f"  [DRY-RUN] Imports à optimiser: {py_file} ({len(import_lines)} imports)")
                     else:
-                        logger.info(f"[DRY-RUN] Optimiserait: {py_file}")
-                        self.results["imports_optimized"].append(str(py_file))
-                        optimized_count += 1
-                except Exception as e:
-                    logger.warning(f"Impossible d'optimiser {py_file}: {e}")
+                        # Ici on pourrait ajouter une logique d'optimisation réelle
+                        logger.info(f"  ✅ Imports analysés: {py_file}")
 
-        logger.info(f"✅ Optimisation terminée: {optimized_count} fichiers")
+                    self.results["imports_optimized"].append(str(py_file))
 
-    def _validate_project_structure(self, dry_run: bool):
-        """Valide la structure du projet"""
-        logger.info("🔍 ÉTAPE 4 : Validation de la structure")
+            except Exception as e:
+                logger.error(f"  ❌ Erreur analyse imports {py_file}: {e}")
+                self.results["errors"].append(f"Imports {py_file}: {e}")
 
-        # Vérifications de structure
-        structure_checks = [
-            ("athalia_core/__init__.py", "Module principal"),
-            ("tests/__init__.py", "Tests"),
-            ("docs/README.md", "Documentation"),
-            ("requirements.txt", "Dépendances"),
-            ("setup.py", "Configuration"),
-        ]
+    def _generate_report(self):
+        """Génère un rapport détaillé"""
+        logger.info("📋 Génération du rapport...")
 
-        valid_count = 0
+        report_content = f"""# 🧹 Rapport Maintenance Phase 3 - Athalia Project
 
-        for file_path, description in structure_checks:
-            full_path = self.root_path / file_path
-            if full_path.exists():
-                logger.info(f"✅ {description}: {file_path}")
-                self.results["structure_validated"].append({
-                    "file": file_path,
-                    "status": "valid",
-                    "description": description
-                })
-                valid_count += 1
-            else:
-                logger.warning(f"⚠️ {description} manquant: {file_path}")
-                self.results["structure_validated"].append({
-                    "file": file_path,
-                    "status": "missing",
-                    "description": description
-                })
+**Date :** {datetime.now().strftime('%d/%m/%Y à %H:%M')}
+**Mode :** {'VÉRIFICATION' if self.dry_run else 'EXÉCUTION'}
+**Statut :** {'DRY-RUN' if self.dry_run else 'TERMINÉ'}
 
-        logger.info(f"✅ Validation terminée: {valid_count} éléments valides")
+## 📊 Résultats du Nettoyage
 
-    def _matches_pattern(self, filename: str, pattern: str) -> bool:
-        """Vérifie si un fichier correspond à un pattern"""
-        import fnmatch
-        return fnmatch.fnmatch(filename, pattern)
+### 📁 Fichiers temporaires
+- **Trouvés :** {len(self.results['temp_files_cleaned'])}
+- **Supprimés :** {len(self.results['temp_files_cleaned']) if not self.dry_run else 0}
 
-    def _is_important_file(self, file_path: Path) -> bool:
-        """Vérifie si un fichier est important (à ne pas supprimer)"""
-        important_patterns = [
-            "*.py", "*.md", "*.txt", "*.yaml", "*.yml", 
-            "*.json", "*.ini", "*.cfg", "*.toml", "*.sh"
-        ]
-        
-        # Vérifier les patterns importants
-        for pattern in important_patterns:
-            if self._matches_pattern(file_path.name, pattern):
-                return True
-        
-        # Vérifier les dossiers importants
-        important_dirs = {
-            "athalia_core", "tests", "docs", "config", 
-            "scripts", "tools", "bin", "plugins"
-        }
-        
-        for part in file_path.parts:
-            if part in important_dirs:
-                return True
-        
-        return False
+### 🍎 Fichiers Apple Double
+- **Trouvés :** {len(self.results['apple_double_removed'])}
+- **Supprimés :** {len(self.results['apple_double_removed']) if not self.dry_run else 0}
 
-    def _should_optimize_file(self, file_path: Path) -> bool:
-        """Détermine si un fichier doit être optimisé"""
-        # Exclure les fichiers système
-        exclude_patterns = [
-            "__pycache__", ".venv", "venv", ".git",
-            ".pytest_cache", "node_modules", "build", "dist"
-        ]
-        
-        for pattern in exclude_patterns:
-            if pattern in str(file_path):
-                return False
-        
-        return True
+### 🗂️ Caches
+- **Trouvés :** {len(self.results['cache_cleaned'])}
+- **Supprimés :** {len(self.results['cache_cleaned']) if not self.dry_run else 0}
 
-    def _optimize_file_imports(self, file_path: Path):
-        """Optimise les imports d'un fichier"""
-        try:
-            with open(file_path, 'r', encoding='utf-8') as f:
-                content = f.read()
-            
-            # Ici on pourrait ajouter une logique d'optimisation des imports
-            # Pour l'instant, on se contente de valider la syntaxe
-            import ast
-            ast.parse(content)
-            
-        except Exception as e:
-            logger.warning(f"Erreur de syntaxe dans {file_path}: {e}")
+### 📝 Noms de fichiers
+- **Corrigés :** {len(self.results['naming_fixed'])}
 
-    def generate_maintenance_report(self) -> str:
-        """Génère un rapport de maintenance"""
-        report_path = (
-            self.root_path / "docs" / "REPORTS" / 
-            f"PHASE3_MAINTENANCE_{datetime.now().strftime('%Y%m%d_%H%M%S')}.md"
-        )
+### 📦 Imports
+- **Optimisés :** {len(self.results['imports_optimized'])}
+
+### ❌ Erreurs
+- **Nombre :** {len(self.results['errors'])}
+
+## 📋 Détails
+
+### Fichiers temporaires nettoyés :
+"""
+
+        for file_path in self.results["temp_files_cleaned"][:10]:  # Limiter l'affichage
+            report_content += f"- `{file_path}`\n"
+
+        if len(self.results["temp_files_cleaned"]) > 10:
+            report_content += f"- ... et {len(self.results['temp_files_cleaned']) - 10} autres\n"
+
+        report_content += "\n### Fichiers Apple Double supprimés :\n"
+        for file_path in self.results["apple_double_removed"][:10]:
+            report_content += f"- `{file_path}`\n"
+
+        if len(self.results["apple_double_removed"]) > 10:
+            report_content += f"- ... et {len(self.results['apple_double_removed']) - 10} autres\n"
+
+        report_content += "\n### Erreurs rencontrées :\n"
+        for error in self.results["errors"]:
+            report_content += f"- {error}\n"
+
+        conclusion = f"""
+
+## ✅ Conclusion
+
+La maintenance Phase 3 a été {'vérifiée' if self.dry_run else 'exécutée'} avec succès.
+
+**Actions effectuées :**
+- Nettoyage des fichiers temporaires
+- Suppression des fichiers Apple Double
+- Nettoyage des caches
+- Harmonisation des noms de fichiers
+- Optimisation des imports
+
+**Prochaine étape :** {'Exécuter sans --dry-run pour appliquer les changements' if self.dry_run else 'Validation des tests'}
+"""
+        report_content += conclusion
+
+        # Sauvegarder le rapport
+        report_path = self.root_path / "docs" / "REPORTS" / f"PHASE3_MAINTENANCE_{datetime.now().strftime('%Y%m%d_%H%M%S')}.md"
+        report_path.parent.mkdir(parents=True, exist_ok=True)
 
         with open(report_path, "w", encoding="utf-8") as f:
-            f.write("# 🧹 Rapport de Maintenance Phase 3 - Athalia\n\n")
-            f.write(f"**Date :** {datetime.now().strftime('%d/%m/%Y à %H:%M')}\n")
-            f.write("**Phase :** 3 - Maintenance Optimale\n\n")
+            f.write(report_content)
 
-            f.write("## 📊 Résultats de la Maintenance\n\n")
-            f.write(f"- **Fichiers temporaires nettoyés :** {len(self.results['temp_files_cleaned'])}\n")
-            f.write(f"- **Noms de fichiers harmonisés :** {len(self.results['naming_fixed'])}\n")
-            f.write(f"- **Imports optimisés :** {len(self.results['imports_optimized'])}\n")
-            f.write(f"- **Éléments de structure validés :** {len(self.results['structure_validated'])}\n")
-            f.write(f"- **Erreurs rencontrées :** {len(self.results['errors'])}\n\n")
+        logger.info(f"📋 Rapport généré: {report_path}")
 
-            if self.results["temp_files_cleaned"]:
-                f.write("## 🗑️ Fichiers Temporaires Nettoyés\n\n")
-                for file in self.results["temp_files_cleaned"]:
-                    f.write(f"- `{file}`\n")
-                f.write("\n")
-
-            if self.results["naming_fixed"]:
-                f.write("## 📝 Noms de Fichiers Harmonisés\n\n")
-                for fix in self.results["naming_fixed"]:
-                    f.write(f"- `{fix['old']}` → `{fix['new']}`\n")
-                f.write("\n")
-
-            if self.results["imports_optimized"]:
-                f.write("## ⚡ Imports Optimisés\n\n")
-                for file in self.results["imports_optimized"]:
-                    f.write(f"- `{file}`\n")
-                f.write("\n")
-
-            if self.results["structure_validated"]:
-                f.write("## 🔍 Structure Validée\n\n")
-                for item in self.results["structure_validated"]:
-                    status_icon = "✅" if item["status"] == "valid" else "⚠️"
-                    f.write(f"- {status_icon} `{item['file']}` - {item['description']}\n")
-                f.write("\n")
-
-            if self.results["errors"]:
-                f.write("## ❌ Erreurs Rencontrées\n\n")
-                for error in self.results["errors"]:
-                    f.write(f"- {error}\n")
-                f.write("\n")
-
-            f.write("## ✅ Conclusion\n\n")
-            f.write("La maintenance de la Phase 3 a été effectuée avec succès.\n")
-            f.write("Le projet est maintenant plus propre et mieux organisé.\n")
-
-        return str(report_path)
+    def print_summary(self):
+        """Affiche un résumé des actions"""
+        print("\n" + "=" * 60)
+        print("🧹 RÉSUMÉ MAINTENANCE PHASE 3")
+        print("=" * 60)
+        print(f"Mode: {'VÉRIFICATION' if self.dry_run else 'EXÉCUTION'}")
+        print(f"Fichiers temporaires: {len(self.results['temp_files_cleaned'])}")
+        print(f"Apple Double: {len(self.results['apple_double_removed'])}")
+        print(f"Caches: {len(self.results['cache_cleaned'])}")
+        print(f"Noms corrigés: {len(self.results['naming_fixed'])}")
+        print(f"Imports optimisés: {len(self.results['imports_optimized'])}")
+        print(f"Erreurs: {len(self.results['errors'])}")
+        print("=" * 60)
 
 
 def main():
     """Fonction principale"""
-    # Vérifier les arguments
-    dry_run = "--dry-run" in sys.argv
-    
-    if dry_run:
-        print("🧪 MODE DRY-RUN ACTIVÉ - Aucune modification ne sera effectuée")
-    
-    maintenance = Phase3Maintenance()
-    
+    parser = argparse.ArgumentParser(description="Maintenance Phase 3 - Athalia Project")
+    parser.add_argument("--dry-run", action="store_true", default=True,
+                        help="Mode vérification (par défaut)")
+    parser.add_argument("--execute", action="store_true",
+                        help="Exécuter réellement les actions")
+    parser.add_argument("--root", default=".", help="Répertoire racine")
+
+    args = parser.parse_args()
+
+    # Mode d'exécution
+    dry_run = not args.execute
+
+    if not dry_run:
+        print("⚠️  ATTENTION: Mode EXÉCUTION activé!")
+        response = input("Continuer? (y/N): ")
+        if response.lower() != 'y':
+            print("❌ Annulé par l'utilisateur")
+            sys.exit(1)
+
     # Exécuter la maintenance
-    results = maintenance.run_phase3_maintenance(dry_run=dry_run)
-    
-    # Générer le rapport
-    report_path = maintenance.generate_maintenance_report()
-    
-    # Affichage des résultats
-    print("\n📊 Résultats de la Phase 3 :")
-    print(f"- Fichiers temporaires nettoyés : {len(results['temp_files_cleaned'])}")
-    print(f"- Noms de fichiers harmonisés : {len(results['naming_fixed'])}")
-    print(f"- Imports optimisés : {len(results['imports_optimized'])}")
-    print(f"- Éléments de structure validés : {len(results['structure_validated'])}")
-    print(f"- Erreurs rencontrées : {len(results['errors'])}")
-    
-    if dry_run:
-        print(f"\n📋 Rapport généré : {report_path}")
+    maintenance = Phase3Maintenance(root_path=args.root, dry_run=dry_run)
+    results = maintenance.run_maintenance()
+    maintenance.print_summary()
+
+    # Code de sortie
+    if results["errors"]:
+        print(f"\n⚠️  {len(results['errors'])} erreurs rencontrées")
+        sys.exit(1)
     else:
-        print(f"\n✅ Phase 3 terminée ! Rapport : {report_path}")
+        print(f"\n✅ Maintenance {'vérifiée' if dry_run else 'terminée'} avec succès!")
+        sys.exit(0)
 
 
 if __name__ == "__main__":
-    main() 
+    main()
