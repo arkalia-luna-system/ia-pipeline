@@ -110,17 +110,16 @@ def test_function():
             pytest.skip("CacheManager non disponible")
 
         # Test de mise en cache
-        project_path = str(self.test_dir)
-        analysis_type = "test_analysis"
+        key = "test_analysis"
         data = {"test": "data"}
 
-        self.cache_manager.set(project_path, analysis_type, data)
+        success = self.cache_manager.set_cache(key, data)
+        assert success is True
 
         # Test de récupération
-        retrieved = self.cache_manager.get(project_path, analysis_type)
+        retrieved = self.cache_manager.get_cache(key)
         assert retrieved is not None
-        assert "result" in retrieved
-        assert retrieved["result"] == data
+        assert retrieved == data
 
     def test_performance_optimization_suggestions(self):
         """Test des suggestions d'optimisation."""
@@ -389,12 +388,12 @@ def test_system_performance_monitoring():
 
 def test_performance_optimization_workflow():
     """Test du workflow complet d'optimisation de performance."""
-    if not PerformanceAnalyzer or not AnalysisCache:
+    if not PerformanceAnalyzer or not CacheManager:
         pytest.skip("Modules de performance non disponibles")
 
     with tempfile.TemporaryDirectory() as temp_dir:
         analyzer = PerformanceAnalyzer(temp_dir)
-        _ = AnalysisCache()
+        cache_manager = CacheManager()
 
         # 1. Analyser les performances actuelles
         current_performance = analyzer.analyze_project_performance(temp_dir)
