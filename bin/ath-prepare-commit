@@ -1,0 +1,235 @@
+#!/bin/bash
+# Script de préparation au commit Athalia
+# Exécute toutes les vérifications et corrections avant le commit
+
+set -e
+
+# Couleurs
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+NC='\033[0m'
+
+# Variables
+DRY_RUN=false
+AUTO_FIX=false
+SKIP_TESTS=false
+VERBOSE=false
+
+# Fonctions d'affichage
+print_header() {
+    echo -e "${PURPLE}🚀 Préparation au commit Athalia${NC}"
+    echo -e "${BLUE}📋 Vérifications et corrections automatiques${NC}"
+    echo
+}
+
+print_section() {
+    echo -e "${BLUE}📋 $1${NC}"
+}
+
+print_success() {
+    echo -e "${GREEN}✅ $1${NC}"
+}
+
+print_warning() {
+    echo -e "${YELLOW}⚠️  $1${NC}"
+}
+
+print_error() {
+    echo -e "${RED}❌ $1${NC}"
+}
+
+print_info() {
+    echo -e "${BLUE}ℹ️  $1${NC}"
+}
+
+# Parsing des arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --dry-run|-d)
+            DRY_RUN=true
+            shift
+            ;;
+        --auto-fix|-a)
+            AUTO_FIX=true
+            shift
+            ;;
+        --skip-tests|-s)
+            SKIP_TESTS=true
+            shift
+            ;;
+        --verbose|-v)
+            VERBOSE=true
+            shift
+            ;;
+        --help|-h)
+            echo "Usage: ./bin/ath-prepare-commit [OPTIONS]"
+            echo ""
+            echo "Options:"
+            echo "  --dry-run, -d     Mode simulation (ne fait rien)"
+            echo "  --auto-fix, -a    Correction automatique des problèmes détectés"
+            echo "  --skip-tests, -s  Ignore les tests (plus rapide)"
+            echo "  --verbose, -v     Affichage détaillé"
+            echo "  --help, -h        Affiche cette aide"
+            echo ""
+            echo "Ce script prépare automatiquement votre commit en:"
+            echo "  - Nettoyant les fichiers polluants"
+            echo "  - Vérifiant le linting"
+            echo "  - Exécutant les tests essentiels"
+            echo "  - Vérifiant la configuration"
+            exit 0
+            ;;
+        *)
+            print_error "Option inconnue: $1"
+            exit 1
+            ;;
+    esac
+done
+
+# Fonction principale
+main() {
+    print_header
+    
+    # Étape 1: Vérification de l'état Git
+    print_section "Vérification de l'état Git"
+    if ! git rev-parse --git-dir > /dev/null 2>&1; then
+        print_error "Pas dans un dépôt Git"
+        exit 1
+    fi
+    
+    # Vérifier s'il y a des changements
+    if [ -z "$(git status --porcelain)" ]; then
+        print_warning "Aucun changement détecté"
+        exit 0
+    fi
+    
+    print_success "État Git OK"
+    
+    # Étape 2: Nettoyage automatique
+    print_section "Nettoyage automatique"
+    if [ "$DRY_RUN" = false ]; then
+        if [ "$VERBOSE" = true ]; then
+            ./bin/ath-clean --dry-run
+        else
+            ./bin/ath-clean --dry-run > /dev/null 2>&1
+        fi
+        
+        # Nettoyage des caches Python
+        find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
+        find . -type d -name ".pytest_cache" -exec rm -rf {} + 2>/dev/null || true
+        find . -name "*.pyc" -delete 2>/dev/null || true
+        
+        print_success "Nettoyage terminé"
+    else
+        print_info "Mode simulation - nettoyage ignoré"
+    fi
+    
+    # Étape 3: Vérification des fichiers polluants
+    print_section "Vérification des fichiers polluants"
+    if python -m pytest tests/test_no_polluting_files.py::TestNoPollutingFiles::test_no_macos_hidden_files -q >/dev/null 2>&1; then
+        print_success "Aucun fichier caché macOS"
+    else
+        print_warning "Fichiers cachés macOS détectés"
+        if [ "$AUTO_FIX" = true ] && [ "$DRY_RUN" = false ]; then
+            find . -name "._*" -not -path "./.git/*" -not -path "./.venv/*" -delete 2>/dev/null || true
+            print_success "Fichiers cachés supprimés"
+        fi
+    fi
+    
+    # Étape 4: Linting et formatage
+    print_section "Vérification du linting"
+    STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.py$' || true)
+    UNSTAGED_FILES=$(git diff --name-only | grep '\.py$' || true)
+    ALL_PY_FILES="$STAGED_FILES $UNSTAGED_FILES"
+    
+    if [ -n "$ALL_PY_FILES" ]; then
+        # Vérification flake8
+        if echo "$ALL_PY_FILES" | xargs -r flake8 --config=config/.flake8 2>/dev/null; then
+            print_success "Linting OK"
+        else
+            print_warning "Erreurs de linting détectées"
+            if [ "$AUTO_FIX" = true ] && [ "$DRY_RUN" = false ]; then
+                print_info "Correction automatique du linting..."
+                echo "$ALL_PY_FILES" | xargs -r autopep8 --in-place --aggressive --max-line-length=88
+                print_success "Linting corrigé"
+            fi
+        fi
+        
+        # Formatage avec black
+        if [ "$AUTO_FIX" = true ] && [ "$DRY_RUN" = false ]; then
+            print_info "Formatage avec black..."
+            echo "$ALL_PY_FILES" | xargs -r black --line-length=88 --preview
+            print_success "Formatage terminé"
+        fi
+    else
+        print_info "Aucun fichier Python modifié"
+    fi
+    
+    # Étape 5: Tests essentiels (si activés)
+    if [ "$SKIP_TESTS" = false ]; then
+        print_section "Tests essentiels"
+        
+        # Tests de base
+        if python -m pytest tests/test_imports_all.py -q >/dev/null 2>&1; then
+            print_success "Tests d'imports OK"
+        else
+            print_warning "Problèmes d'imports détectés"
+        fi
+        
+        if python -m pytest tests/test_encoding_utf8.py -q >/dev/null 2>&1; then
+            print_success "Tests d'encodage OK"
+        else
+            print_warning "Problèmes d'encodage détectés"
+        fi
+        
+        # Tests de sécurité (mode adaptatif)
+        if python -m pytest tests/test_security_patterns.py -q >/dev/null 2>&1; then
+            print_success "Tests de sécurité OK"
+        else
+            print_warning "Problèmes de sécurité détectés (mode adaptatif)"
+        fi
+    else
+        print_info "Tests ignorés (--skip-tests)"
+    fi
+    
+    # Étape 6: Vérification de la configuration
+    print_section "Vérification de la configuration"
+    MISSING_CONFIGS=0
+    for config_file in config/requirements.txt config/athalia_config.yaml README.md; do
+        if [ -f "$config_file" ]; then
+            print_success "$config_file présent"
+        else
+            print_warning "$config_file manquant"
+            MISSING_CONFIGS=$((MISSING_CONFIGS + 1))
+        fi
+    done
+    
+    if [ $MISSING_CONFIGS -gt 1 ]; then
+        print_error "Trop de fichiers de configuration manquants"
+        exit 1
+    fi
+    
+    # Étape 7: Résumé et recommandations
+    echo
+    print_success "🎉 Préparation au commit terminée !"
+    echo
+    print_info "📋 Prochaines étapes recommandées:"
+    print_info "  1. git add ."
+    print_info "  2. git commit -m \"votre message\""
+    print_info "  3. git push"
+    echo
+    print_info "💡 Commandes utiles:"
+    print_info "  - ./bin/ath-test.py          # Tests complets"
+    print_info "  - ./bin/ath-lint-secure      # Linting sécurisé"
+    print_info "  - ./bin/ath-clean            # Nettoyage complet"
+    echo
+    
+    if [ "$DRY_RUN" = true ]; then
+        print_warning "Mode simulation - aucune modification effectuée"
+    fi
+}
+
+# Exécution
+main "$@" 

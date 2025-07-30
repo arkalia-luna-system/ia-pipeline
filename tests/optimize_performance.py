@@ -16,6 +16,16 @@ import time
 from pathlib import Path
 from typing import Dict, List
 
+# Import sécurisé pour la validation des commandes
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    # Fallback si le module n'est pas disponible
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+
+    SecurityError = Exception
+
 # Third party imports
 try:
     import pytest
@@ -53,7 +63,7 @@ class TestPerformanceOptimizer:
 
         start_time = time.time()
         try:
-            result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
+            result = validate_and_run(cmd, capture_output=True, text=True, timeout=300)
             total_time = time.time() - start_time
 
             # Parse des résultats
@@ -237,7 +247,7 @@ class TestPerformanceOptimizer:
             temp_file = f.name
 
         try:
-            result = subprocess.run(
+            result = validate_and_run(
                 [sys.executable, temp_file], capture_output=True, text=True
             )
             success = result.returncode == 0
