@@ -92,11 +92,10 @@ def test_another():
         )
         (self.project_dir / "requirements.txt").write_text("pytest\nrequests")
 
-    @pytest.mark.skipif(
-        not ANALYTICS_AVAILABLE, reason="Module analytics non disponible"
-    )
     def test_analytics_module_import(self):
         """Test d'import du module analytics"""
+        if not ANALYTICS_AVAILABLE:
+            pytest.skip("Module analytics non disponible")
         assert ANALYTICS_AVAILABLE
         assert analyze_project is not None
         assert generate_heatmap_data is not None

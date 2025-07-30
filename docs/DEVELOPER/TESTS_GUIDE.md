@@ -59,4 +59,89 @@
 ### **🎯 PLAN DE CORRECTION**
 1. **Implémenter les placeholders** (195 occurrences)
 2. **Consolider les modules redondants**
-3. **Standardiser les interfaces** 
+3. **Standardiser les interfaces**
+
+---
+
+## 🔍 **ANALYSE DES TESTS SKIPÉS**
+
+### **📊 STATISTIQUES DES TESTS SKIPÉS**
+- **Total des tests skipés** : 41 tests
+- **Tests corrigés** : 3 tests (autocomplete_server)
+- **Tests à corriger** : 38 tests
+- **Tests nécessitant des modules manquants** : 15 tests
+
+### **📋 CATÉGORIES DE TESTS SKIPÉS**
+
+#### **✅ TESTS CORRIGÉS (3 tests)**
+- **tests/test_autocomplete_server.py** : 3 tests
+  - ✅ `test_autocomplete_nominal` - Corrigé (FastAPI + AutocompleteEngine)
+  - ✅ `test_autocomplete_empty_prompt` - Corrigé
+  - ✅ `test_autocomplete_engine` - Corrigé
+
+#### **🔧 TESTS CORRIGEABLES (15 tests)**
+- **tests/test_performance_optimization.py** : 15 tests
+  - Problème : Import `AnalysisCache` → `CacheManager`
+  - Solution : Corriger les imports et adapter les tests
+
+#### **❌ TESTS NÉCESSITANT DES MODULES MANQUANTS (23 tests)**
+- **tests/test_i18n.py** : 4 tests
+  - Module `i18n` manquant (internationalisation)
+  - Solution : Créer le module i18n ou supprimer les tests
+
+- **tests/test_analytics.py** : 1 test
+  - Module `analytics` non disponible
+  - Solution : Vérifier l'import du module analytics
+
+- **tests/test_audit_intelligent.py** : 8 tests
+  - Module `audit` non disponible
+  - Solution : Vérifier l'import du module intelligent_auditor
+
+- **tests/test_benchmark_critical.py** : 1 test
+  - Module spécifique non disponible
+  - Solution : Corriger l'import ou adapter le test
+
+#### **⏰ TESTS AVEC TIMEOUTS (10 tests)**
+- **tests/integration/test_cli_robustesse.py** : 10 tests
+  - Problème : Timeouts dans les tests CLI
+  - Solution : Augmenter les timeouts ou optimiser les scripts
+
+#### **📁 TESTS DE FICHIERS MANQUANTS (8 tests)**
+- **tests/test_coverage_threshold.py** : 5 tests
+  - Fichiers de couverture manquants
+  - Solution : Générer les fichiers de couverture
+
+- **tests/test_requirements_consistency.py** : 1 test
+  - Fichier requirements.txt manquant
+  - Solution : Vérifier la présence du fichier
+
+- **tests/test_hardcoded_paths.py** : 3 tests
+  - Tests de chemins absolus
+  - Solution : Adapter les tests au système
+
+#### **🔒 TESTS DE SÉCURITÉ (7 tests)**
+- **tests/test_security_patterns.py** : 7 tests
+  - Tests de patterns de sécurité
+  - Solution : Implémenter les tests de sécurité
+
+#### **🧹 TESTS DE NETTOYAGE (7 tests)**
+- **tests/test_no_polluting_files.py** : 7 tests
+  - Tests de fichiers polluants
+  - Solution : Adapter les tests au système
+
+### **🎯 PRIORITÉS DE CORRECTION**
+
+#### **PRIORITÉ HAUTE (Tests facilement corrigeables)**
+1. **tests/test_performance_optimization.py** - Corriger les imports
+2. **tests/test_analytics.py** - Vérifier l'import du module
+3. **tests/test_audit_intelligent.py** - Vérifier l'import du module
+
+#### **PRIORITÉ MOYENNE (Tests nécessitant du développement)**
+1. **tests/test_i18n.py** - Créer le module i18n
+2. **tests/test_coverage_threshold.py** - Générer les fichiers de couverture
+3. **tests/test_security_patterns.py** - Implémenter les tests de sécurité
+
+#### **PRIORITÉ BASSE (Tests optionnels)**
+1. **tests/test_no_polluting_files.py** - Tests de nettoyage
+2. **tests/test_hardcoded_paths.py** - Tests de chemins
+3. **tests/integration/test_cli_robustesse.py** - Tests avec timeouts 
