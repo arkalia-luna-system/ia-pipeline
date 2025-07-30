@@ -10,6 +10,7 @@ def main():
         description="Vérifie la couverture de tests Athalia/Arkalia"
     )
     parser.add_argument("--html", action="store_true", help="Générer un rapport HTML")
+    parser.add_argument("--version", action="version", version="ath-coverage.py version 1.0.0")
     args = parser.parse_args()
     cmd = ["pytest", "--cov=athalia_core", "--ignore=tests/bin/"]
     if args.html:

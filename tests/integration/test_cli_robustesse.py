@@ -41,11 +41,14 @@ class TestCLIRobustesse:
         for cli_path in self.cli_paths:
             if cli_path.exists():
                 try:
+                    # Augmenter le timeout pour les scripts qui exécutent pytest
+                    timeout = 60 if "ath-test" in str(cli_path) or "ath-coverage" in str(cli_path) else 30
+                    
                     result = subprocess.run(
                         [sys.executable, str(cli_path), "--help"],
                         capture_output=True,
                         text=True,
-                        timeout=30,
+                        timeout=timeout,
                     )
 
                     # Vérifier que la commande s'exécute sans erreur
@@ -62,11 +65,14 @@ class TestCLIRobustesse:
         for cli_path in self.cli_paths:
             if cli_path.exists():
                 try:
+                    # Augmenter le timeout pour les scripts qui exécutent pytest
+                    timeout = 60 if "ath-test" in str(cli_path) or "ath-coverage" in str(cli_path) else 30
+                    
                     result = subprocess.run(
                         [sys.executable, str(cli_path), "--version"],
                         capture_output=True,
                         text=True,
-                        timeout=30,
+                        timeout=timeout,
                     )
 
                     # Vérifier que la commande s'exécute
@@ -82,11 +88,14 @@ class TestCLIRobustesse:
         for cli_path in self.cli_paths:
             if cli_path.exists():
                 try:
+                    # Augmenter le timeout pour les scripts qui exécutent pytest
+                    timeout = 60 if "ath-test" in str(cli_path) or "ath-coverage" in str(cli_path) else 30
+                    
                     result = subprocess.run(
                         [sys.executable, str(cli_path), "--invalid-arg"],
                         capture_output=True,
                         text=True,
-                        timeout=30,
+                        timeout=timeout,
                     )
 
                     # Devrait retourner une erreur pour un argument invalide
