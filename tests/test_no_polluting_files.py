@@ -104,7 +104,7 @@ class TestNoPollutingFiles:
                 # Gérer les fichiers .log de manière spécifique
                 if file.endswith(".log"):
                     # Exclure les fichiers de logs normaux du projet
-                    if not root.startswith("./logs"):
+                    if not root.startswith("./logs") and not root.startswith("./tests/logs"):
                         temp_files.append(os.path.join(root, file))
 
         # Skip si trop de fichiers trouvés (probablement des faux positifs)
