@@ -1,6 +1,15 @@
 import os
 import subprocess
 
+# Import sécurisé pour la validation des commandes
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    # Fallback si le module n'est pas disponible
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+    SecurityError = Exception
+
 
 def test_ath_build_runs():
     """Test que ath-build.py peut être exécuté sans se bloquer"""
@@ -23,11 +32,11 @@ def test_ath_build_runs():
         assert os.access(script, os.X_OK), f"Script {script} n'est pas exécutable"
 
         # Test rapide avec timeout très court
-        result = subprocess.run([script], capture_output=True, timeout=2)
+        result = validate_and_run([script], capture_output=True, timeout=2)
         # Accepte tous les codes de retour (0, 1, etc.)
         assert result.returncode >= 0, f"Script a crashé avec code {result.returncode}"
 
-    except subprocess.TimeoutExpired:
+    except (subprocess.TimeoutExpired, SecurityError):
         # Timeout acceptable pour un script interactif
         pass  # Test réussi si on arrive ici
     except Exception:

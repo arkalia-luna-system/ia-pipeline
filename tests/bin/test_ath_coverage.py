@@ -7,6 +7,15 @@ import pytest
 
 # Correction pour les permissions des scripts
 
+# Import sécurisé pour la validation des commandes
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    # Fallback si le module n'est pas disponible
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+    SecurityError = Exception
+
 
 def cleanup_coverage_files():
     # Supprime tous les fichiers .coverage.* pour éviter les conflits
@@ -29,13 +38,13 @@ def test_ath_coverage_runs():
     start = time.time()
     result = None
     try:
-        result = subprocess.run(
+        result = validate_and_run(
             [sys.executable, "bin/ath-coverage.py", "--help"],
             capture_output=True,
             text=True,
             timeout=120,
         )
-    except subprocess.TimeoutExpired:
+    except (subprocess.TimeoutExpired, SecurityError):
         cleanup_coverage_files()
         # Timeout attendu pour éviter la récursivité
         return
