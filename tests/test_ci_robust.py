@@ -18,6 +18,18 @@ from pathlib import Path
 import pytest
 import yaml
 
+# Import sécurisé pour la validation des commandes
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+
+    class SecurityErrorFallback(Exception):
+        pass
+
+    SecurityError = SecurityErrorFallback
+
 
 class TestCIRobust:
     """Tests CI robustes pour validation complète"""
@@ -191,12 +203,12 @@ class TestCIRobust:
         """Teste la fonctionnalité subprocess"""
         try:
             # Test simple commande
-            result = subprocess.run(
+            result = validate_and_run(
                 ["echo", "test"], capture_output=True, text=True, timeout=5
             )
             assert result.returncode == 0, "Commande echo échouée"
             assert "test" in result.stdout, "Sortie echo incorrecte"
-        except subprocess.TimeoutExpired:
+        except (subprocess.TimeoutExpired, SecurityError):
             pytest.fail("Timeout sur commande simple")
         except Exception as e:
             pytest.fail(f"Erreur subprocess: {e}")

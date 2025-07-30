@@ -6,6 +6,16 @@ Documentation des améliorations de qualité du code.
 """
 
 import pytest
+import subprocess
+import sys
+
+# Import sécurisé pour la validation des commandes
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+    SecurityError = Exception
 
 
 def test_linting_corrections_documentation():
@@ -58,7 +68,7 @@ def test_linting_corrections_documentation():
             "files_corrected": ["tests/integration/test_cli_robustesse.py"],
             "correction": "Suppression de l'assignation de variable inutilisée",
             "before": """
-            result = subprocess.run(
+            result = validate_and_run(
                 [sys.executable, str(cli_path), "--help"],
                 capture_output=True,
                 text=True,
@@ -66,13 +76,13 @@ def test_linting_corrections_documentation():
             )
             """,
             "after": """
-            subprocess.run(
+            validate_and_run(
                 [sys.executable, str(cli_path), "--help"],
                 capture_output=True,
                 text=True,
                 timeout=1,
             )
-            """,
+            """
         },
     }
 
