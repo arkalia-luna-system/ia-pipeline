@@ -1,5 +1,6 @@
 import os
 import subprocess
+import sys
 
 
 def test_ath_test_runs():
@@ -13,7 +14,7 @@ def test_ath_test_runs():
     # Tester avec un timeout pour éviter la récursivité et exclure les fichiers cachés
     try:
         result = subprocess.run(
-            [script, "--ignore=tests/bin/._test_ath_test.py"],
+            [sys.executable, script, "--ignore=tests/bin/._test_ath_test.py"],
             capture_output=True,
             env=env,
             timeout=10,
