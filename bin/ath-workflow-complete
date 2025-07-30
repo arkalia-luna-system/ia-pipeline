@@ -1,0 +1,185 @@
+#!/bin/bash
+# Script de workflow complet pour Athalia
+# Gère tout le cycle de développement : démarrage → travail → fermeture
+
+set -e
+
+# Couleurs pour l'affichage
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+NC='\033[0m' # No Color
+
+# Configuration
+PROJECT_NAME="athalia-dev-setup"
+BRANCH="develop"
+
+echo -e "${PURPLE}🔄 Workflow Complet Athalia${NC}"
+echo -e "${PURPLE}========================${NC}"
+echo -e "${BLUE}📂 Projet: $PROJECT_NAME${NC}"
+echo -e "${BLUE}🌿 Branche: $BRANCH${NC}"
+echo ""
+
+# Fonction pour afficher les étapes
+show_step() {
+    echo -e "${CYAN}▶️  $1${NC}"
+}
+
+# Fonction pour afficher le succès
+show_success() {
+    echo -e "${GREEN}✅ $1${NC}"
+}
+
+# Fonction pour afficher l'erreur
+show_error() {
+    echo -e "${RED}❌ $1${NC}"
+}
+
+# Fonction pour afficher l'avertissement
+show_warning() {
+    echo -e "${YELLOW}⚠️  $1${NC}"
+}
+
+# Fonction pour afficher l'info
+show_info() {
+    echo -e "${BLUE}ℹ️  $1${NC}"
+}
+
+# Vérifier les arguments
+if [ $# -eq 0 ]; then
+    echo -e "${YELLOW}Usage: $0 [start|work|shutdown|full|help]${NC}"
+    echo ""
+    echo -e "${CYAN}Commandes disponibles:${NC}"
+    echo -e "   ${GREEN}start${NC}     - Démarrage rapide de l'environnement"
+    echo -e "   ${GREEN}work${NC}      - Vérification et préparation au travail"
+    echo -e "   ${GREEN}shutdown${NC}  - Fermeture propre complète"
+    echo -e "   ${GREEN}full${NC}      - Cycle complet (start → work → shutdown)"
+    echo -e "   ${GREEN}help${NC}      - Afficher cette aide"
+    echo ""
+    echo -e "${YELLOW}💡 Exemple: $0 full${NC}"
+    exit 1
+fi
+
+COMMAND=$1
+
+case $COMMAND in
+    "start")
+        show_step "🚀 Démarrage de l'environnement Athalia"
+        ./bin/ath-quick-start
+        ;;
+        
+    "work")
+        show_step "💼 Préparation au travail"
+        
+        # Vérifier l'état Git
+        show_info "Vérification de l'état Git..."
+        if git status --porcelain | grep -q .; then
+            show_warning "Changements détectés"
+            git status --short
+            echo ""
+            read -p "Voulez-vous commiter ces changements? (o/n): " -r
+            if [[ $REPLY =~ ^[Oo]$ ]]; then
+                git add .
+                git commit -m "💼 Travail en cours - $(date '+%Y-%m-%d %H:%M:%S')"
+                show_success "Changements commités"
+            fi
+        else
+            show_success "Aucun changement en attente"
+        fi
+        
+        # Vérifier les tests
+        show_info "Vérification des tests..."
+        if [ -d "tests" ]; then
+            TEST_COUNT=$(find tests -name "*.py" | wc -l)
+            show_success "$TEST_COUNT tests disponibles"
+            
+            read -p "Voulez-vous exécuter les tests? (o/n): " -r
+            if [[ $REPLY =~ ^[Oo]$ ]]; then
+                show_info "Exécution des tests..."
+                python3 -m pytest tests/ -v --tb=short
+            fi
+        fi
+        
+        # Vérifier le linting
+        show_info "Vérification de la qualité du code..."
+        read -p "Voulez-vous vérifier le linting? (o/n): " -r
+        if [[ $REPLY =~ ^[Oo]$ ]]; then
+            show_info "Exécution du linting..."
+            ./bin/ath-lint.py
+        fi
+        
+        show_success "Environnement de travail prêt !"
+        ;;
+        
+    "shutdown")
+        show_step "🛑 Fermeture propre de l'environnement"
+        ./bin/ath-clean-shutdown
+        ;;
+        
+    "full")
+        show_step "🔄 Cycle complet de développement"
+        echo ""
+        
+        # Phase 1: Démarrage
+        show_info "Phase 1: Démarrage"
+        ./bin/ath-quick-start
+        echo ""
+        
+        # Phase 2: Travail
+        show_info "Phase 2: Préparation au travail"
+        echo -e "${YELLOW}💡 Vous pouvez maintenant travailler sur votre projet${NC}"
+        echo -e "${YELLOW}💡 Utilisez 'ath-test' pour tester, 'ath-lint' pour vérifier la qualité${NC}"
+        echo ""
+        
+        read -p "Appuyez sur Entrée quand vous avez terminé votre travail..."
+        
+        # Phase 3: Fermeture
+        show_info "Phase 3: Fermeture propre"
+        ./bin/ath-clean-shutdown
+        ;;
+        
+    "help")
+        echo -e "${PURPLE}🔄 Workflow Complet Athalia - Aide${NC}"
+        echo -e "${PURPLE}================================${NC}"
+        echo ""
+        echo -e "${CYAN}Commandes disponibles:${NC}"
+        echo ""
+        echo -e "${GREEN}start${NC} - Démarrage rapide"
+        echo -e "   Vérifie l'environnement, charge les alias, active l'environnement virtuel"
+        echo -e "   Usage: $0 start"
+        echo ""
+        echo -e "${GREEN}work${NC} - Préparation au travail"
+        echo -e "   Vérifie l'état Git, propose de commiter, exécute les tests et le linting"
+        echo -e "   Usage: $0 work"
+        echo ""
+        echo -e "${GREEN}shutdown${NC} - Fermeture propre"
+        echo -e "   Commit, push, arrêt des processus, nettoyage, génération de rapport"
+        echo -e "   Usage: $0 shutdown"
+        echo ""
+        echo -e "${GREEN}full${NC} - Cycle complet"
+        echo -e "   Exécute start → work → shutdown en séquence"
+        echo -e "   Usage: $0 full"
+        echo ""
+        echo -e "${CYAN}Workflow recommandé:${NC}"
+        echo -e "   1. ${YELLOW}$0 start${NC}    - Au début de votre session"
+        echo -e "   2. ${YELLOW}$0 work${NC}     - Avant de commencer à coder"
+        echo -e "   3. ${YELLOW}$0 shutdown${NC} - À la fin de votre session"
+        echo ""
+        echo -e "${CYAN}Ou utilisez le cycle complet:${NC}"
+        echo -e "   ${YELLOW}$0 full${NC} - Tout en une seule commande"
+        echo ""
+        echo -e "${YELLOW}💡 Conseil: Utilisez 'full' pour un workflow automatisé complet${NC}"
+        ;;
+        
+    *)
+        show_error "Commande inconnue: $COMMAND"
+        echo -e "${YELLOW}Utilisez '$0 help' pour voir les commandes disponibles${NC}"
+        exit 1
+        ;;
+esac
+
+echo ""
+echo -e "${PURPLE}🎉 Workflow terminé avec succès !${NC}" 
