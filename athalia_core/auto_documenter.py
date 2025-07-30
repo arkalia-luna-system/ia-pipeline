@@ -732,7 +732,6 @@ SOFTWARE.
 
     def _generate_readme(self) -> str:
         """Génère un README basique"""
-        translations = self._load_translations(self.lang)
         
         readme = f"""# {self.project_info.get('name', 'Projet')}
 
