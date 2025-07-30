@@ -155,7 +155,6 @@ class TestEndToEndIntegration:
             pytest.skip(f"Impossible de générer le projet CLI : {e}")
 
         # Vérifications spécifiques aux projets CLI
-        project_name = blueprint.get("project_name", "projet_cli")
 
         # Vérifier setup.py ou pyproject.toml dans le répertoire racine du projet
         setup_py = outdir / "setup.py"
