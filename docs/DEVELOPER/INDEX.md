@@ -20,6 +20,7 @@
 - **[MACOS_TEMP_CLEANUP.md](MACOS_TEMP_CLEANUP.md)** - Nettoyage des fichiers temporaires macOS
 - **[CLEAN_SHUTDOWN_GUIDE.md](CLEAN_SHUTDOWN_GUIDE.md)** - Guide de fermeture propre d'Athalia
 - **[WORKFLOW_COMPLETE_GUIDE.md](WORKFLOW_COMPLETE_GUIDE.md)** - Guide du workflow complet automatisé
+- **[BIN_CLEANUP_REPORT.md](BIN_CLEANUP_REPORT.md)** - Rapport de nettoyage du dossier bin
 - **[WORKFLOW_AMELIORATIONS.md](WORKFLOW_AMELIORATIONS.md)** - Améliorations du workflow de développement
 - **[ALIAS_WORKFLOW_QUICK_GUIDE.md](ALIAS_WORKFLOW_QUICK_GUIDE.md)** - Guide rapide des alias de workflow
 

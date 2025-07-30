@@ -359,8 +359,12 @@ class TestDockerRoboticsComplete:
     @patch("athalia_core.robotics.docker_robotics.validate_and_run")
     def test_run_docker_compose_success(self, mock_run):
         """Test lancement docker-compose réussi"""
-        mock_run.return_value.returncode = 0
-        mock_run.return_value.stderr = ""
+        # Créer un mock qui simule subprocess.CompletedProcess
+        from unittest.mock import Mock
+        mock_result = Mock()
+        mock_result.returncode = 0
+        mock_result.stderr = ""
+        mock_run.return_value = mock_result
 
         compose_file = self.docker_path / "compose.yaml"
         compose_file.write_text("services: {}")

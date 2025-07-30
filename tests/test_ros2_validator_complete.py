@@ -229,8 +229,12 @@ def test_talker():
     @patch("athalia_core.ros2_validator.validate_and_run")
     def test_check_dependencies_success(self, mock_run):
         """Test de vérification des dépendances réussie"""
-        mock_run.return_value.returncode = 0
-        mock_run.return_value.stderr = ""
+        # Créer un mock qui simule subprocess.CompletedProcess
+        from unittest.mock import Mock
+        mock_result = Mock()
+        mock_result.returncode = 0
+        mock_result.stderr = ""
+        mock_run.return_value = mock_result
 
         self.validator._check_dependencies()
         # Le test peut avoir des warnings à cause du validateur de sécurité
