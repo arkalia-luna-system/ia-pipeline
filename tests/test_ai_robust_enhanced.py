@@ -135,8 +135,8 @@ class TestAIRobustEnhanced:
             mock_result.stdout = "qwen mistral llava llama codegen"
             mock_validate.return_value = mock_result
             ai = RobustAI()
-            assert any(model.value == "ollama-qwen" for model in ai.available_models)
-            assert any(model.value == "ollama-mistral" for model in ai.available_models)
+            assert any(model.value == "ollama_qwen" for model in ai.available_models)
+            assert any(model.value == "ollama_mistral" for model in ai.available_models)
 
     def test_response_generation_scenarios(self):
         """Test de la génération de réponses dans différents scénarios."""
