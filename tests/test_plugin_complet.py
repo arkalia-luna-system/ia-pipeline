@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
-Test complet du plugin VS Code Athalia
-Vérifie tous les composants nécessaires au fonctionnement
+Tests complets pour les plugins Athalia.
+Tests professionnels pour la CI/CD.
 """
 
 import json
-import os
 import subprocess
 import sys
-import time
 from pathlib import Path
 
+import pytest
 import requests
 
 

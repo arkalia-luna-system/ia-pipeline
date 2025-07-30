@@ -1,16 +1,15 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
-Tests complets pour plugins_validator.py
-Couverture : 100% des fonctionnalités de validation de plugins
-Tests : 25 tests unitaires et d'intégration
+Tests complets pour le validateur de plugins.
+Tests professionnels pour la CI/CD.
 """
 
 import json
-import os
 import tempfile
 from pathlib import Path
-from unittest.mock import MagicMock, Mock, patch
+from unittest.mock import patch
 
-import pytest
 import yaml
 
 from athalia_core.plugins_validator import (
@@ -58,7 +57,7 @@ class TestClass:
             f.write(self.test_plugin_code)
 
         result = self.validator.validate_plugin(str(plugin_dir))
-        assert result["valid"] == True
+        assert result["valid"]
         assert len(result["errors"]) == 0
 
     def test_validate_plugin_without_init(self):
@@ -67,7 +66,7 @@ class TestClass:
         plugin_dir.mkdir()
 
         result = self.validator.validate_plugin(str(plugin_dir))
-        assert result["valid"] == False
+        assert not result["valid"]
         assert len(result["errors"]) > 0
 
     def test_validate_plugin_with_syntax_error(self):
@@ -80,7 +79,7 @@ class TestClass:
             f.write("def test_function( return")  # Syntaxe invalide
 
         result = self.validator.validate_plugin(str(plugin_dir))
-        assert result["valid"] == False
+        assert not result["valid"]
         assert len(result["errors"]) > 0
 
     def test_validate_plugin_with_metadata(self):
@@ -106,7 +105,7 @@ class TestClass:
             yaml.dump(metadata, f)
 
         result = self.validator.validate_plugin(str(plugin_dir))
-        assert result["valid"] == True
+        assert result["valid"]
         assert "metadata" in result
         assert result["metadata"]["name"] == "test_plugin"
 
@@ -126,7 +125,7 @@ class TestClass:
             f.write("pytest\nrequests\n")
 
         result = self.validator.validate_plugin(str(plugin_dir))
-        assert result["valid"] == True
+        assert result["valid"]
         assert "metadata" in result
         assert "dependencies" in result["metadata"]
 
@@ -201,7 +200,7 @@ class TestClass:
 
         results = {"errors": []}
         success = self.validator._check_plugin_structure(plugin_dir, results)
-        assert success == True
+        assert success
         assert len(results["errors"]) == 0
 
     def test_check_plugin_structure_failure(self):
@@ -212,7 +211,7 @@ class TestClass:
 
         results = {"errors": []}
         success = self.validator._check_plugin_structure(plugin_dir, results)
-        assert success == False
+        assert not success
         assert len(results["errors"]) > 0
 
     def test_check_python_syntax_success(self):
@@ -226,7 +225,7 @@ class TestClass:
 
         results = {"errors": []}
         success = self.validator._check_python_syntax(plugin_dir, results)
-        assert success == True
+        assert success
         assert len(results["errors"]) == 0
 
     def test_check_python_syntax_failure(self):
@@ -240,7 +239,7 @@ class TestClass:
 
         results = {"errors": []}
         success = self.validator._check_python_syntax(plugin_dir, results)
-        assert success == False
+        assert not success
         assert len(results["errors"]) > 0
 
     def test_check_metadata_yaml(self):
@@ -317,7 +316,7 @@ class TestClass:
     def test_validate_plugin_nonexistent_path(self):
         """Test de validation d'un plugin inexistant"""
         result = self.validator.validate_plugin("/nonexistent/path")
-        assert result["valid"] == False
+        assert not result["valid"]
         assert len(result["errors"]) > 0
 
     def test_file_handling_errors(self):
@@ -333,7 +332,7 @@ class TestClass:
         # Simuler une erreur de lecture
         with patch("builtins.open", side_effect=PermissionError):
             results = {"errors": []}
-            success = self.validator._check_python_syntax(plugin_dir, results)
+            _ = self.validator._check_python_syntax(plugin_dir, results)
             # Le test doit passer sans exception
 
     def test_metadata_parsing_errors(self):
@@ -375,7 +374,7 @@ class TestClass:
             f.write("pytest\nrequests")
 
         result = self.validator.validate_plugin(str(plugin_dir))
-        assert result["valid"] == True
+        assert result["valid"]
         assert "metadata" in result
         assert result["metadata"]["name"] == "real_plugin"
 
@@ -421,14 +420,14 @@ class TestPluginValidatorIntegration:
         """Test de gestion des erreurs"""
         # Test avec chemin invalide
         result = self.validator.validate_plugin("/invalid/path")
-        assert result["valid"] == False
+        assert not result["valid"]
         assert len(result["errors"]) > 0
 
         # Test avec plugin sans structure valide
         plugin_dir = Path(self.temp_dir) / "empty_plugin"
         plugin_dir.mkdir()
         result = self.validator.validate_plugin(str(plugin_dir))
-        assert result["valid"] == False
+        assert not result["valid"]
         assert len(result["errors"]) > 0
 
 
