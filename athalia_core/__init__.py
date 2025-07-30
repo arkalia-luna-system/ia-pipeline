@@ -7,37 +7,27 @@ Version 2.0.0
 
 # Analytics et performance
 from .advanced_analytics import AdvancedAnalytics
-
 # IA et génération
 from .ai_robust import RobustAI
 from .auto_cicd import AutoCICD
 from .auto_cleaner import AutoCleaner
 from .auto_documenter import AutoDocumenter
-
 # Modules automatiques
 from .auto_tester import AutoTester
 from .cli import cli
 from .code_linter import CodeLinter
-
 # Configuration et utilitaires
 from .config_manager import ConfigManager
 from .correction_optimizer import CorrectionOptimizer
-
 # Gestion d'erreurs
 from .error_codes import ErrorCode, ErrorSeverity
-from .error_handling import (
-    AthaliaError,
-    ErrorHandler,
-    handle_error,
-    raise_athalia_error,
-)
+from .error_handling import (AthaliaError, ErrorHandler, handle_error,
+                             raise_athalia_error)
 from .generation import generate_blueprint_mock, generate_project
 from .main import main
 from .performance_analyzer import PerformanceAnalyzer
-
 # Sécurité et qualité
 from .security_auditor import SecurityAuditor
-
 # Imports principaux
 from .unified_orchestrator import UnifiedOrchestrator
 

@@ -10,11 +10,8 @@ from unittest.mock import Mock, patch
 
 import yaml
 
-from athalia_core.dashboard import (
-    Dashboard,
-    create_dashboard_report,
-    generate_dashboard_html,
-)
+from athalia_core.dashboard import (Dashboard, create_dashboard_report,
+                                    generate_dashboard_html)
 
 
 class TestDashboard:

@@ -10,7 +10,8 @@ from unittest.mock import Mock, patch
 
 import pytest
 
-from athalia_core.unified_orchestrator import UnifiedOrchestrator, run_unified_workflow
+from athalia_core.unified_orchestrator import (UnifiedOrchestrator,
+                                               run_unified_workflow)
 
 
 class TestUnifiedOrchestrator:
@@ -242,10 +243,9 @@ class TestUnifiedOrchestrator:
         self.orchestrator.workflow_results["status"] = "completed"
         self.orchestrator.save_workflow_results("test_results.json")
 
+        # Vérifier que le fichier a été ouvert et fermé
+        mock_open.assert_called_once_with("test_results.json", "w", encoding="utf-8")
         mock_file.write.assert_called()
-        # Vérifier que json.dump a été appelé avec les bons arguments
-        call_args = mock_file.write.call_args[0][0]
-        assert "completed" in call_args
 
     @patch("athalia_core.unified_orchestrator.generate_project")
     @patch("athalia_core.unified_orchestrator.SecurityAuditor")

@@ -11,11 +11,8 @@ from datetime import datetime
 from pathlib import Path
 from unittest.mock import Mock, patch
 
-from athalia_core.auto_cleaner import (
-    AutoCleaner,
-    analyze_cleanup_needs,
-    cleanup_project,
-)
+from athalia_core.auto_cleaner import (AutoCleaner, analyze_cleanup_needs,
+                                       cleanup_project)
 
 
 class TestAutoCleaner:

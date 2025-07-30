@@ -10,11 +10,9 @@ import tempfile
 from pathlib import Path
 from unittest.mock import mock_open, patch
 
-from athalia_core.robotics.docker_robotics import (
-    DockerRoboticsManager,
-    DockerServiceConfig,
-    DockerValidationResult,
-)
+from athalia_core.robotics.docker_robotics import (DockerRoboticsManager,
+                                                   DockerServiceConfig,
+                                                   DockerValidationResult)
 
 
 class TestDockerRoboticsComplete:
