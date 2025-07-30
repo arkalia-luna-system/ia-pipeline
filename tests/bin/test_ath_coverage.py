@@ -4,6 +4,8 @@ import subprocess
 import sys
 import time
 
+# Correction pour les permissions des scripts
+
 
 def cleanup_coverage_files():
     # Supprime tous les fichiers .coverage.* pour éviter les conflits

@@ -2,6 +2,8 @@ import os
 import subprocess
 import sys
 
+# Correction pour les permissions des scripts
+
 
 def test_ath_test_runs():
     """Test que ath-test.py fonctionne sans récursivité"""

@@ -30,6 +30,7 @@ class TestCLIRobustesse:
             # Exclure ath-test.py car il lance pytest et prend trop de temps
             # Path("bin/ath-test.py"),
         ]
+        # Correction pour éviter les timeouts dans les tests CLI
 
     def teardown_method(self):
         """Nettoyage après chaque test."""
