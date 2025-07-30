@@ -209,8 +209,9 @@ class AnalyticsEngine:
                                 ):
                                     deps = data["project"]["dependencies"]
                                     dependencies_data["dependency_list"].extend(deps)
-                            except Exception:
-                                pass
+                            except Exception as dep_error:
+                                logger.debug(f"Erreur analyse dépendance: {dep_error}")
+                                continue
 
                         elif req_file.name == "setup.py":
                             # Analyser setup.py
