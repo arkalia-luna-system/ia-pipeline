@@ -4,17 +4,12 @@
 Tests avancés pour IA robuste
 """
 from unittest.mock import Mock, patch
+
 import pytest
 
-from athalia_core.ai_robust import (
-    AIModel,
-    PromptContext,
-    RobustAI,
-    robust_ai,
-    fallback_ia,
-    query_qwen,
-    query_mistral,
-)
+from athalia_core.ai_robust import (AIModel, PromptContext, RobustAI,
+                                    fallback_ia, query_mistral, query_qwen,
+                                    robust_ai)
 
 
 class TestAIRobustEnhanced:

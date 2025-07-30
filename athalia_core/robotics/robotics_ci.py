@@ -19,7 +19,7 @@ from typing import Dict, List, Tuple
 
 # Import du validateur de sécurité
 try:
-    from athalia_core.security_validator import validate_and_run, SecurityError
+    from athalia_core.security_validator import SecurityError, validate_and_run
 except ImportError:
     # Fallback pour les tests
     def validate_and_run(command, **kwargs):

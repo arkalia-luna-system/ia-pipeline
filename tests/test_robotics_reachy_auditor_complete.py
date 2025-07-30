@@ -12,7 +12,8 @@ from unittest.mock import patch
 
 import pytest
 
-from athalia_core.robotics.reachy_auditor import ReachyAuditor, ReachyAuditResult
+from athalia_core.robotics.reachy_auditor import (ReachyAuditor,
+                                                  ReachyAuditResult)
 
 
 class TestReachyAuditorComplete:

@@ -6,17 +6,12 @@ Couverture étendue avec tests d'intégration et de robustesse.
 """
 
 from unittest.mock import Mock, patch
+
 import pytest
 
-from athalia_core.ai_robust import (
-    AIModel,
-    PromptContext,
-    RobustAI,
-    robust_ai,
-    fallback_ia,
-    query_qwen,
-    query_mistral,
-)
+from athalia_core.ai_robust import (AIModel, PromptContext, RobustAI,
+                                    fallback_ia, query_mistral, query_qwen,
+                                    robust_ai)
 
 
 class TestRobustAI:
@@ -600,6 +595,7 @@ def test_security_validator_import_fallback():
     try:
         # Recharger le module pour tester le fallback
         import importlib
+
         import athalia_core.ai_robust
 
         importlib.reload(athalia_core.ai_robust)

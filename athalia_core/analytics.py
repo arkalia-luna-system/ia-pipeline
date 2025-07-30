@@ -4,18 +4,19 @@ Module d'analytics pour Athalia
 Analyse et métriques de projets
 """
 
-from pathlib import Path
-from typing import Dict, Any, List
 import json
-import yaml
 import logging
 import re
-from datetime import datetime
 import subprocess
+from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, List
+
+import yaml
 
 # Import du validateur de sécurité
 try:
-    from athalia_core.security_validator import validate_and_run, SecurityError
+    from athalia_core.security_validator import SecurityError, validate_and_run
 except ImportError:
 
     def validate_and_run(command, **kwargs):

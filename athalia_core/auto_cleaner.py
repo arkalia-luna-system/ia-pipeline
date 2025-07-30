@@ -4,14 +4,15 @@ Module auto_cleaner pour Athalia
 Nettoyage automatique des projets
 """
 
-from pathlib import Path
-from typing import Dict, Any, List, Optional
+import hashlib
 import json
-import yaml
 import logging
 import shutil
-import hashlib
 from datetime import datetime, timedelta
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+import yaml
 
 logger = logging.getLogger(__name__)
 

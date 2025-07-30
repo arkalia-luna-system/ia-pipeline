@@ -12,11 +12,9 @@ from unittest.mock import patch
 
 import yaml
 
-from athalia_core.plugins_validator import (
-    PluginValidator,
-    validate_all_plugins,
-    validate_plugin,
-)
+from athalia_core.plugins_validator import (PluginValidator,
+                                            validate_all_plugins,
+                                            validate_plugin)
 
 
 class TestPluginValidator:

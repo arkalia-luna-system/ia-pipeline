@@ -4,12 +4,12 @@ Module autocomplete_engine pour Athalia
 Moteur de complétion automatique intelligent
 """
 
-from pathlib import Path
-from typing import Dict, List, Optional
+import ast
 import json
 import logging
 import re
-import ast
+from pathlib import Path
+from typing import Dict, List, Optional
 
 logger = logging.getLogger(__name__)
 

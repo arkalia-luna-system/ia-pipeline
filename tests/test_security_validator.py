@@ -5,19 +5,17 @@ Tests pour le module security_validator.
 Tests professionnels pour la CI/CD.
 """
 
-import unittest
 import subprocess
-from pathlib import Path
 import tempfile
+import unittest
+from pathlib import Path
 
 # Import du module à tester
 try:
-    from athalia_core.security_validator import (
-        SecurityValidator,
-        SecurityError,
-        validate_and_run,
-        is_command_safe,
-    )
+    from athalia_core.security_validator import (SecurityError,
+                                                 SecurityValidator,
+                                                 is_command_safe,
+                                                 validate_and_run)
 except ImportError:
     SecurityValidator = None
     SecurityError = Exception

@@ -19,7 +19,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 # Import sécurisé pour la validation des commandes
 try:
-    from athalia_core.security_validator import validate_and_run, SecurityError
+    from athalia_core.security_validator import SecurityError, validate_and_run
 except ImportError:
     # Fallback si le module n'est pas disponible
     def validate_and_run(command, **kwargs):
@@ -45,10 +45,8 @@ class TestEndToEndIntegration:
     def test_generation_end_to_end_api(self):
         """Test de génération end-to-end pour un projet API."""
         try:
-            from athalia_core.generation import (
-                generate_blueprint_mock,
-                generate_project,
-            )
+            from athalia_core.generation import (generate_blueprint_mock,
+                                                 generate_project)
         except ImportError:
             pytest.skip("Modules de génération non disponibles")
 
@@ -107,10 +105,8 @@ class TestEndToEndIntegration:
     def test_generation_end_to_end_web(self):
         """Test de génération end-to-end pour un projet web."""
         try:
-            from athalia_core.generation import (
-                generate_blueprint_mock,
-                generate_project,
-            )
+            from athalia_core.generation import (generate_blueprint_mock,
+                                                 generate_project)
         except ImportError:
             pytest.skip("Modules de génération non disponibles")
 
@@ -147,10 +143,8 @@ class TestEndToEndIntegration:
     def test_generation_end_to_end_cli(self):
         """Test de génération end-to-end pour un projet CLI."""
         try:
-            from athalia_core.generation import (
-                generate_blueprint_mock,
-                generate_project,
-            )
+            from athalia_core.generation import (generate_blueprint_mock,
+                                                 generate_project)
         except ImportError:
             pytest.skip("Modules de génération non disponibles")
 
@@ -309,7 +303,8 @@ def test_function():
 def test_generation_end_to_end_simple(tmp_path):
     """Test de génération end-to-end simplifié pour la compatibilité."""
     try:
-        from athalia_core.generation import generate_blueprint_mock, generate_project
+        from athalia_core.generation import (generate_blueprint_mock,
+                                             generate_project)
     except ImportError:
         pytest.skip("Modules de génération non disponibles")
 

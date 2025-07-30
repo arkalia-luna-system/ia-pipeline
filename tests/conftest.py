@@ -6,6 +6,7 @@ Gestion automatique du nettoyage des processus et ressources
 import os
 import subprocess
 import time
+
 import psutil
 import pytest
 
@@ -14,7 +15,7 @@ os.environ["PYTHONDONTWRITEBYTECODE"] = "1"
 
 # Import sécurisé pour la validation des commandes
 try:
-    from athalia_core.security_validator import validate_and_run, SecurityError
+    from athalia_core.security_validator import SecurityError, validate_and_run
 except ImportError:
     # Fallback si le module n'est pas disponible
     def validate_and_run(command, **kwargs):
@@ -84,8 +85,8 @@ def cleanup_athalia_resources():
 
         # Nettoyer les fichiers cache Python
         try:
-            import shutil
             import glob
+            import shutil
 
             # Nettoyer les dossiers __pycache__
             for pycache_dir in glob.glob("**/__pycache__", recursive=True):

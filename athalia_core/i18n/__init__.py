@@ -5,7 +5,7 @@ Module d'internationalisation (i18n) pour Athalia
 Gestion des traductions et localisation
 """
 
-from . import fr, en
+from . import en, fr
 
 # Configuration par défaut
 DEFAULT_LOCALE = "fr"

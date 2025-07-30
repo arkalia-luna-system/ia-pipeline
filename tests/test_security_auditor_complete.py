@@ -11,7 +11,6 @@ import tempfile
 from pathlib import Path
 from unittest.mock import Mock, patch
 
-
 from athalia_core.security_auditor import SecurityAuditor
 
 
