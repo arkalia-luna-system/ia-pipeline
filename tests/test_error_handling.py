@@ -7,7 +7,6 @@ Tests pour le système de gestion d'erreurs d'Athalia
 import os
 import tempfile
 import unittest
-from pathlib import Path
 
 from athalia_core.error_codes import (
     ErrorCode,

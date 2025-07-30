@@ -7,6 +7,18 @@ import subprocess
 from pathlib import Path
 from typing import Any, Dict, List
 
+# Import du validateur de sécurité
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    # Fallback pour les tests
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+
+
+class SecurityError(Exception):
+        pass
+
 logger = logging.getLogger(__name__)
 
 # Module de tests automatiques pour Athalia
@@ -489,7 +501,7 @@ echo "✅ Tests terminés !"
             # Exécuter les tests unitaires
             logger.info("🧪 Exécution des tests unitaires...")
             try:
-                result = subprocess.run(
+                result = validate_and_run(
                     [
                         "python",
                         "-m",
@@ -520,7 +532,7 @@ echo "✅ Tests terminés !"
             # Exécuter les tests dintégration
             logger.info("🔗 Exécution des tests dintégration...")
             try:
-                result = subprocess.run(
+                result = validate_and_run(
                     [
                         "python",
                         "-m",

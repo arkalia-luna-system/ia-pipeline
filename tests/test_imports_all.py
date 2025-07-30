@@ -4,8 +4,6 @@ Vérifie que tous les modules peuvent être importés sans erreur
 """
 
 import os
-import sys
-from pathlib import Path
 
 import pytest
 
@@ -153,7 +151,7 @@ class TestImportsAll:
                 import_errors.append(f"{py_file}: {e}")
 
         if import_errors:
-            pytest.fail(f"Erreurs d'import trouvées:\n" + "\n".join(import_errors))
+            pytest.fail("Erreurs d'import trouvées:\n" + "\n".join(import_errors))
 
     def test_no_circular_imports(self):
         """Test qu'il n'y a pas d'imports circulaires"""
@@ -181,10 +179,6 @@ class TestImportsAll:
             "requests",
             "jinja2",
             "click",
-            "pathlib",
-            "json",
-            "os",
-            "sys",
         ]
 
         for module in third_party_modules:

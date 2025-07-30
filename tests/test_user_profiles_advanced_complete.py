@@ -10,9 +10,8 @@ import sqlite3
 import sys
 import tempfile
 import unittest
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
-from unittest.mock import MagicMock, patch
 
 # Ajout du chemin du projet pour les imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -427,7 +426,6 @@ class TestGestionnaireProfilsIntegration(unittest.TestCase):
         """Test d'intégration du workflow complet"""
         # 1. Création de profils
         profil1 = self.gestionnaire.creer_profil("User1", "user1@example.com")
-        profil2 = self.gestionnaire.creer_profil("User2", "user2@example.com")
 
         # 2. Enregistrement d'activités
         self.gestionnaire.enregistrer_action("User1", "login")

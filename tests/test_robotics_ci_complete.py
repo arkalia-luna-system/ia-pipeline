@@ -1,16 +1,14 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
-Tests complets pour robotics_ci.py
-Couverture : 100% des fonctionnalités de CI/CD robotics
-Tests : 20 tests unitaires et d'intégration
+Tests complets pour le module robotics_ci.
+Tests professionnels pour la CI/CD.
 """
 
-import os
 import subprocess
 import tempfile
 from pathlib import Path
-from unittest.mock import MagicMock, Mock, patch
-
-import pytest
+from unittest.mock import Mock, patch
 
 from athalia_core.robotics_ci import RoboticsCI, run_robotics_ci
 

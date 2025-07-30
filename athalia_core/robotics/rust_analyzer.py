@@ -10,6 +10,18 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Optional
 
+# Import du validateur de sécurité
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    # Fallback pour les tests
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+
+
+class SecurityError(Exception):
+        pass
+
 logger = logging.getLogger(__name__)
 
 
@@ -217,11 +229,12 @@ class RustAnalyzer:
     def _check_rust_build_system(self) -> bool:
         """Vérifier si le build system Rust est configuré"""
         try:
-            result = subprocess.run(
+            # Utilisation du validateur de sécurité pour l'appel cargo
+            result = validate_and_run(
                 ["cargo", "--version"], capture_output=True, text=True, timeout=5
             )
             return result.returncode == 0
-        except BaseException:
+        except (BaseException, SecurityError):
             return False
 
     def _calculate_optimization_score(self, projects: List[RustProjectInfo]) -> float:

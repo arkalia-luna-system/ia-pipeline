@@ -3,7 +3,6 @@
 """
 Tests pour le module i18n
 """
-from pathlib import Path
 
 import pytest
 

@@ -1,35 +1,28 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Tests pour le module de validation de sécurité
+Tests pour le module security_validator.
+Tests professionnels pour la CI/CD.
 """
 
 import unittest
 import subprocess
 from pathlib import Path
 import tempfile
-import os
 
 # Import du module à tester
 try:
     from athalia_core.security_validator import (
-        SecurityValidator,
-        SecurityError,
-        validate_and_run,
-        is_command_safe,
+        SecurityValidator, 
+        SecurityError, 
+        validate_and_run, 
+        is_command_safe
     )
 except ImportError:
-    # Fallback pour les tests
-    class SecurityValidator:
-        def __init__(self):
-            pass
-
-    class SecurityError(Exception):
-        pass
-
+    SecurityValidator = None
+    SecurityError = Exception
     def validate_and_run(command, **kwargs):
         return subprocess.run(command, **kwargs)
-
     def is_command_safe(command):
         return True
 

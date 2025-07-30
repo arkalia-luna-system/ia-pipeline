@@ -5,7 +5,6 @@ Tests de validité YAML pour Athalia.
 Tests professionnels pour la CI/CD.
 """
 
-import subprocess
 import sys
 import tempfile
 from pathlib import Path
