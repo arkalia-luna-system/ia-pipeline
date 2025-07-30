@@ -45,23 +45,27 @@
 - ✅ **athalia_core/cache_manager.py** - Exception générique → spécifique
 - ✅ **athalia_core/security_auditor.py** - 4 exceptions génériques → spécifiques
 
-#### **1.3 Tests de sécurité (2/15 résolus)**
+#### **1.3 Tests de sécurité (6/15 résolus)**
 - ✅ **tests/test_lint_flake8.py** - 1 subprocess → validate_and_run
 - ✅ **tests/test_benchmark_critical.py** - 1 subprocess → validate_and_run
-- 🔄 **Tests restants** : 13/15 à sécuriser
+- ✅ **tests/conftest.py** - 1 subprocess → validate_and_run
+- ✅ **tests/optimize_performance.py** - 2 subprocess → validate_and_run
+- ✅ **tests/bin/test_ath_lint.py** - 1 subprocess → validate_and_run
+- ✅ **tests/bin/test_ath_test.py** - 1 subprocess → validate_and_run
+- 🔄 **Tests restants** : 9/15 à sécuriser
 
 ### **🔄 PROBLÈMES EN COURS (1/45)**
 
-#### **1.3 Tests de sécurité (13 restants)**
-- 🔄 **Tests restants** : 13/15 à sécuriser
+#### **1.3 Tests de sécurité (9 restants)**
+- 🔄 **Tests restants** : 9/15 à sécuriser
   - `tests/test_linting_corrections.py` - 2 subprocess
-  - `tests/conftest.py` - 1 subprocess
-  - `tests/optimize_performance.py` - 2 subprocess
+      - `tests/conftest.py` - 1 subprocess ✅
+      - `tests/optimize_performance.py` - 2 subprocess ✅
   - `tests/test_plugin_complet.py` - 1 subprocess
   - `tests/test_ci_robust.py` - 1 subprocess
   - `tests/integration/test_end_to_end.py` - 4 subprocess
-  - `tests/bin/test_ath_lint.py` - 1 subprocess
-  - `tests/bin/test_ath_test.py` - 1 subprocess
+      - `tests/bin/test_ath_lint.py` - 1 subprocess ✅
+    - `tests/bin/test_ath_test.py` - 1 subprocess ✅
   - `tests/bin/test_ath_build.py` - 1 subprocess
   - `tests/bin/test_ath_coverage.py` - 1 subprocess
   - `tests/bin/test_ath_audit.py` - 1 subprocess
