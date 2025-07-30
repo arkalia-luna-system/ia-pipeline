@@ -259,3 +259,5 @@ alias ath-doc-guide='open $(git rev-parse --show-toplevel)/docs/GUIDE.md'
 # Arrêt des processus Athalia
 alias ath-kill='$(git rev-parse --show-toplevel)/bin/ath-clean --kill-processes'
 alias ath-stop-all='$(git rev-parse --show-toplevel)/bin/stop-all-except-cursor.sh'
+alias ath-maintenance='python $(git rev-parse --show-toplevel)/tools/maintenance/phase3_maintenance.py'
+alias ath-maintenance-execute='python $(git rev-parse --show-toplevel)/tools/maintenance/phase3_maintenance.py --execute'
