@@ -309,9 +309,12 @@ class TestNoPollutingFiles:
             "./docs/archive",  # Archive documentation normale
             "./logs",  # Logs normaux
             "./logs/archive",  # Archive des logs normale
+            "./logs/reports",  # Rapports de logs normaux
             "./temp",  # Temp normal
             "./tmp",  # Temp normal
             "./.benchmarks",  # Benchmarks normaux
+            "./.venv/include",  # Include venv normal
+            "./athalia_core/logs",  # Logs athalia_core normaux
         }
         
         # Filtrer les répertoires autorisés
