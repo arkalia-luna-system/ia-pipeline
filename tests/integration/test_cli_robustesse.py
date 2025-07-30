@@ -24,6 +24,11 @@ class TestCLIRobustesse:
         """Initialisation pour chaque test."""
         self.test_dir = Path(tempfile.mkdtemp())
         self.cli_paths = [
+            # Scripts CLI simples qui fonctionnent
+            Path("bin/ath-audit.py"),
+            Path("bin/ath-coverage.py"),
+            Path("bin/ath-build.py"),
+            Path("bin/ath-lint.py"),
             # Exclure athalia_core/main.py car c'est un script interactif
             # Path("athalia_core/main.py"),
             # Exclure athalia_unified.py car il entre dans une boucle interactive
