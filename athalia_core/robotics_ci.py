@@ -9,6 +9,15 @@ import subprocess
 from pathlib import Path
 from typing import Any, Dict
 
+# Import sécurisé pour la validation des commandes
+try:
+    from .security_validator import validate_and_run, SecurityError
+except ImportError:
+    # Fallback si le module n'est pas disponible
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+    SecurityError = Exception
+
 
 logger = logging.getLogger(__name__)
 
@@ -81,7 +90,7 @@ class RoboticsCI:
         try:
             if (self.project_path / "Cargo.toml").exists():
                 # Build Rust
-                result = subprocess.run(
+                result = validate_and_run(
                     ["cargo", "build", "--release"],
                     cwd=self.project_path,
                     capture_output=True,
@@ -98,7 +107,7 @@ class RoboticsCI:
 
             elif (self.project_path / "package.xml").exists():
                 # Build ROS2
-                result = subprocess.run(
+                result = validate_and_run(
                     ["colcon", "build"],
                     cwd=self.project_path,
                     capture_output=True,
@@ -115,7 +124,7 @@ class RoboticsCI:
 
             else:
                 # Build Python standard
-                result = subprocess.run(
+                result = validate_and_run(
                     ["python", "-m", "pip", "install", "-e", "."],
                     cwd=self.project_path,
                     capture_output=True,
@@ -142,7 +151,7 @@ class RoboticsCI:
         try:
             if (self.project_path / "Cargo.toml").exists():
                 # Tests Rust
-                result = subprocess.run(
+                result = validate_and_run(
                     ["cargo", "test"],
                     cwd=self.project_path,
                     capture_output=True,
@@ -159,7 +168,7 @@ class RoboticsCI:
 
             elif (self.project_path / "package.xml").exists():
                 # Tests ROS2
-                result = subprocess.run(
+                result = validate_and_run(
                     ["colcon", "test"],
                     cwd=self.project_path,
                     capture_output=True,
@@ -176,7 +185,7 @@ class RoboticsCI:
 
             else:
                 # Tests Python
-                result = subprocess.run(
+                result = validate_and_run(
                     ["python", "-m", "pytest"],
                     cwd=self.project_path,
                     capture_output=True,
