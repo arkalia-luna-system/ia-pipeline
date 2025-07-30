@@ -350,6 +350,11 @@ class TestNoPollutingFiles:
             "./.venv/include",  # Include venv normal
             "./athalia_core/logs",  # Logs athalia_core normaux
             "./athalia_core/__pycache__",  # Cache Python normal
+            "./.venv",  # Environnement virtuel complet
+            "./.venv/bin",  # Bin venv normal
+            "./.venv/lib",  # Lib venv normal
+            "./.venv/lib/python3.10",  # Python venv normal
+            "./.venv/lib/python3.10/site-packages",  # Site-packages venv normal
         }
 
         # Filtrer les répertoires autorisés
