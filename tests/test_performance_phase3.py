@@ -7,10 +7,9 @@ Tests pour optimiser les performances du projet
 
 import time
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict
 
-import psutil
-import pytest
+import psutil  # type: ignore
 
 
 class PerformanceMonitor:
