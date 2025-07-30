@@ -15,8 +15,9 @@ class TestMultimodalDistiller(unittest.TestCase):
         image_paths = ["img1.png"]
         result = distiller.distill(text_prompts, image_paths)
         self.assertIn("[Image: Analyse image OK]", result)
-        # Vérifie simplement que la partie texte n'est pas vide
-        self.assertTrue(result.split("\n[Image:")[0].strip())
+        # Vérifie que la partie texte contient la réponse mockée
+        text_part = result.split("\n[Image:")[0].strip()
+        self.assertIn("Réponse texte OK", text_part)
 
     def test_empty(self):
         distiller = MultimodalDistiller()
