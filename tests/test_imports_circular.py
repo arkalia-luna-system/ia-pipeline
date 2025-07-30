@@ -127,7 +127,7 @@ if __name__ == "__main__":
     print("🧪 Test des imports circulaires...")
     
     try:
-        import athalia_core  # noqa: F401 - Test d'import principal
+        import athalia_core as ath_main  # noqa: F401 - Test d'import
         print("✅ Import principal réussi")
     except ImportError as e:
         print(f"❌ Erreur import principal: {e}")
