@@ -244,7 +244,12 @@ class TestUnifiedOrchestrator:
 
         # Vérifier que le fichier a été ouvert et fermé
         mock_open.assert_called_once_with("test_results.json", "w", encoding="utf-8")
+        # Vérifier que write a été appelé avec du contenu JSON
         mock_file.write.assert_called()
+        # Vérifier que le contenu écrit contient "completed"
+        write_calls = mock_file.write.call_args_list
+        content = "".join([call[0][0] for call in write_calls])
+        assert "completed" in content
 
     @patch("athalia_core.unified_orchestrator.generate_project")
     @patch("athalia_core.unified_orchestrator.SecurityAuditor")
