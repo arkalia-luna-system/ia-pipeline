@@ -119,7 +119,7 @@ class TestCLIRobustesse:
                         [sys.executable, str(cli_path), "--action"],
                         capture_output=True,
                         text=True,
-                        timeout=30,
+                        timeout=15,  # Timeout réduit
                     )
 
                     # Devrait retourner une erreur pour un argument manquant
@@ -139,7 +139,7 @@ class TestCLIRobustesse:
                         [sys.executable, str(cli_path), "--dry-run"],
                         capture_output=True,
                         text=True,
-                        timeout=30,
+                        timeout=15,  # Timeout réduit
                     )
 
                     # Le mode dry-run ne devrait pas échouer
@@ -159,7 +159,7 @@ class TestCLIRobustesse:
                         [sys.executable, str(cli_path), "--verbose"],
                         capture_output=True,
                         text=True,
-                        timeout=30,
+                        timeout=15,  # Timeout réduit
                     )
 
                     # Le mode verbeux devrait produire plus de sortie
@@ -202,7 +202,7 @@ class TestCLIRobustesse:
                         [sys.executable, str(cli_path), "/chemin/inexistant"],
                         capture_output=True,
                         text=True,
-                        timeout=30,
+                        timeout=15,  # Timeout réduit
                     )
 
                     # Devrait gérer l'erreur gracieusement
@@ -222,7 +222,7 @@ class TestCLIRobustesse:
                         [sys.executable, str(cli_path), "--help"],
                         capture_output=True,
                         text=True,
-                        timeout=30,
+                        timeout=15,  # Timeout réduit
                     )
 
                     # La sortie devrait être du texte
@@ -249,7 +249,7 @@ class TestCLIRobustesse:
                         [sys.executable, str(cli_path), "--help"],
                         capture_output=True,
                         text=True,
-                        timeout=30,
+                        timeout=15,  # Timeout réduit
                         env=env,
                     )
 
