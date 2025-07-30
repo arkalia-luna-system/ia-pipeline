@@ -160,7 +160,8 @@ class TestEncodingUTF8:
         """Test que tous les fichiers ont des fins de ligne cohérentes"""
         import os
 
-        # Exclure les dossiers qui peuvent contenir des fichiers avec des fins de ligne mixtes
+        # Exclure les dossiers qui peuvent contenir des fichiers avec des fins de
+        # ligne mixtes
         exclude_dirs = {
             ".git",
             "__pycache__",

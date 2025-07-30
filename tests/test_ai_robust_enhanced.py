@@ -7,7 +7,13 @@ from unittest.mock import Mock, patch
 import pytest
 
 from athalia_core.ai_robust import (
-    AIModel, PromptContext, RobustAI, robust_ai, fallback_ia, query_qwen, query_mistral
+    AIModel,
+    PromptContext,
+    RobustAI,
+    robust_ai,
+    fallback_ia,
+    query_qwen,
+    query_mistral,
 )
 
 
@@ -25,29 +31,29 @@ class TestAIRobustEnhanced:
         assert blueprint["project_type"] == "api"
         assert "fastapi" in blueprint["dependencies"]
         assert "auth" in blueprint["modules"]
-        
+
         # Test Web
         blueprint = self.ai.generate_blueprint("application web flask")
         assert blueprint["project_type"] == "web"
         assert "flask" in blueprint["dependencies"]
         assert "templates" in blueprint["modules"]
-        
+
         # Test Robotics
         blueprint = self.ai.generate_blueprint("robot reachy navigation")
         assert blueprint["project_type"] == "robotics"
         assert "opencv-python" in blueprint["dependencies"]
         assert "vision" in blueprint["modules"]
-        
+
         # Test Desktop
         blueprint = self.ai.generate_blueprint("calculatrice desktop")
         assert blueprint["project_type"] == "desktop"
         assert "tkinter" in blueprint["dependencies"]
-        
+
         # Test AI
         blueprint = self.ai.generate_blueprint("application ia machine learning")
         assert blueprint["project_type"] == "ai_application"
         assert "scikit-learn" in blueprint["dependencies"]
-        
+
         # Test Generic
         blueprint = self.ai.generate_blueprint("projet simple")
         assert blueprint["project_type"] == "generic"
@@ -58,27 +64,27 @@ class TestAIRobustEnhanced:
         # Test avec pattern calculatrice
         name = self.ai._extract_project_name("calculatrice scientifique")
         assert name == "scientifique"
-        
+
         # Test avec pattern application
         name = self.ai._extract_project_name("application gestion")
         assert name == "gestion"
-        
+
         # Test avec pattern robot
         name = self.ai._extract_project_name("robot navigation")
         assert name == "navigation"
-        
+
         # Test avec pattern api
         name = self.ai._extract_project_name("api utilisateurs")
         assert name == "utilisateurs"
-        
+
         # Test avec pattern "avec"
         name = self.ai._extract_project_name("projet avec interface")
         assert name == "projet"
-        
+
         # Test fallback
         name = self.ai._extract_project_name("simple test")
         assert name == "simple"
-        
+
         # Test fallback final
         name = self.ai._extract_project_name("a b c")
         assert name == "projet_ia"
@@ -86,42 +92,42 @@ class TestAIRobustEnhanced:
     def test_ollama_integration_scenarios(self):
         """Test des différents scénarios d'intégration avec Ollama."""
         # Test succès
-        with patch('athalia_core.ai_robust.validate_and_run') as mock_validate:
+        with patch("athalia_core.ai_robust.validate_and_run") as mock_validate:
             mock_result = Mock()
             mock_result.returncode = 0
             mock_result.stdout = "Réponse Ollama"
             mock_validate.return_value = mock_result
-            
+
             result = self.ai._call_ollama("mistral", "test prompt")
             assert result == "Réponse Ollama"
 
         # Test échec
-        with patch('athalia_core.ai_robust.validate_and_run') as mock_validate:
+        with patch("athalia_core.ai_robust.validate_and_run") as mock_validate:
             mock_result = Mock()
             mock_result.returncode = 1
             mock_result.stderr = "Erreur Ollama"
             mock_validate.return_value = mock_result
-            
+
             result = self.ai._call_ollama("mistral", "test prompt")
             assert result is None
 
         # Test exception
-        with patch('athalia_core.ai_robust.validate_and_run') as mock_validate:
+        with patch("athalia_core.ai_robust.validate_and_run") as mock_validate:
             mock_validate.side_effect = Exception("Erreur système")
-            
+
             result = self.ai._call_ollama("mistral", "test prompt")
             assert result is None
 
     def test_model_detection_scenarios(self):
         """Test de la détection des modèles dans différents scénarios."""
         # Test avec erreur Ollama
-        with patch('athalia_core.ai_robust.validate_and_run') as mock_validate:
+        with patch("athalia_core.ai_robust.validate_and_run") as mock_validate:
             mock_validate.side_effect = Exception("Ollama error")
             ai = RobustAI()
             assert any(model.value == "mock" for model in ai.available_models)
 
         # Test avec échec Ollama
-        with patch('athalia_core.ai_robust.validate_and_run') as mock_validate:
+        with patch("athalia_core.ai_robust.validate_and_run") as mock_validate:
             mock_result = Mock()
             mock_result.returncode = 1
             mock_validate.return_value = mock_result
@@ -129,7 +135,7 @@ class TestAIRobustEnhanced:
             assert any(model.value == "mock" for model in ai.available_models)
 
         # Test avec succès Ollama
-        with patch('athalia_core.ai_robust.validate_and_run') as mock_validate:
+        with patch("athalia_core.ai_robust.validate_and_run") as mock_validate:
             mock_result = Mock()
             mock_result.returncode = 0
             mock_result.stdout = "qwen mistral llava llama codegen"
@@ -141,46 +147,46 @@ class TestAIRobustEnhanced:
     def test_response_generation_scenarios(self):
         """Test de la génération de réponses dans différents scénarios."""
         # Test succès
-        with patch.object(self.ai, '_call_model') as mock_call:
+        with patch.object(self.ai, "_call_model") as mock_call:
             mock_call.return_value = "Réponse réussie"
-            
+
             result = self.ai.generate_response(
                 PromptContext.BLUEPRINT,
                 idea="test",
                 project_type="test",
-                complexity="simple"
+                complexity="simple",
             )
-            
+
             assert result["success"] is True
             assert result["response"] == "Réponse réussie"
             assert "model" in result
 
         # Test fallback
-        with patch.object(self.ai, '_call_model') as mock_call:
+        with patch.object(self.ai, "_call_model") as mock_call:
             mock_call.return_value = None
-            
+
             result = self.ai.generate_response(
                 PromptContext.BLUEPRINT,
                 idea="test",
                 project_type="test",
-                complexity="simple"
+                complexity="simple",
             )
-            
+
             assert result["success"] is False
             assert result["model"] == "mock"
             assert "error" in result
 
         # Test exception
-        with patch.object(self.ai, '_call_model') as mock_call:
+        with patch.object(self.ai, "_call_model") as mock_call:
             mock_call.side_effect = Exception("Erreur modèle")
-            
+
             result = self.ai.generate_response(
                 PromptContext.BLUEPRINT,
                 idea="test",
                 project_type="test",
-                complexity="simple"
+                complexity="simple",
             )
-            
+
             assert result["success"] is False
             assert result["model"] == "mock"
 
@@ -204,8 +210,9 @@ class TestAIRobustEnhanced:
         """Test du fallback du validateur de sécurité."""
         # Test que la fonction existe et peut être appelée
         from athalia_core.ai_robust import validate_and_run
+
         assert callable(validate_and_run)
-        
+
         # Test avec une commande simple
         result = validate_and_run(["echo", "test"], capture_output=True, text=True)
         assert result.returncode == 0
@@ -214,7 +221,7 @@ class TestAIRobustEnhanced:
     def test_security_error_handling(self):
         """Test de la gestion des erreurs de sécurité."""
         from athalia_core.ai_robust import SecurityError
-        
+
         # Test que SecurityError peut être levée et attrapée
         try:
             raise SecurityError("Test d'erreur de sécurité")
@@ -224,24 +231,24 @@ class TestAIRobustEnhanced:
     def test_fallback_ia_comprehensive(self):
         """Test complet de la fonction fallback_ia."""
         # Test avec modèles par défaut
-        with patch('athalia_core.ai_robust.query_qwen') as mock_qwen:
+        with patch("athalia_core.ai_robust.query_qwen") as mock_qwen:
             mock_qwen.return_value = "Réponse Qwen"
             result = fallback_ia("Test prompt")
             assert result == "Réponse Qwen"
 
         # Test sans réponse
-        with patch('athalia_core.ai_robust.query_qwen') as mock_qwen:
+        with patch("athalia_core.ai_robust.query_qwen") as mock_qwen:
             mock_qwen.return_value = ""
             result = fallback_ia("Test prompt", models=["qwen", "mock"])
             assert result == "Réponse mock générée."
 
         # Test tous les modèles échouent
-        with patch('athalia_core.ai_robust.query_qwen') as mock_qwen:
+        with patch("athalia_core.ai_robust.query_qwen") as mock_qwen:
             mock_qwen.return_value = ""
             result = fallback_ia("Test prompt", models=["qwen"])
             assert result == "[Aucune réponse IA]"
 
-    @patch('requests.post')
+    @patch("requests.post")
     def test_query_functions_comprehensive(self, mock_post):
         """Test complet des fonctions query."""
         # Test Qwen succès
@@ -249,7 +256,7 @@ class TestAIRobustEnhanced:
         mock_response.status_code = 200
         mock_response.json.return_value = {"response": "Réponse Qwen"}
         mock_post.return_value = mock_response
-        
+
         result = query_qwen("Test prompt")
         assert result == "Réponse Qwen"
 
@@ -268,7 +275,7 @@ class TestAIRobustEnhanced:
         mock_response.status_code = 200
         mock_response.json.return_value = {"response": "Réponse Mistral"}
         mock_post.return_value = mock_response
-        
+
         result = query_mistral("Test prompt")
         assert result == "Réponse Mistral"
 
@@ -302,15 +309,15 @@ class TestAIRobustEnhanced:
     def test_robust_ai_initialization_comprehensive(self):
         """Test complet de l'initialisation de RobustAI."""
         ai = RobustAI()
-        
-        assert hasattr(ai, 'available_models')
-        assert hasattr(ai, 'fallback_chain')
-        assert hasattr(ai, 'prompt_templates')
-        
+
+        assert hasattr(ai, "available_models")
+        assert hasattr(ai, "fallback_chain")
+        assert hasattr(ai, "prompt_templates")
+
         assert isinstance(ai.available_models, list)
         assert isinstance(ai.fallback_chain, list)
         assert isinstance(ai.prompt_templates, dict)
-        
+
         assert len(ai.available_models) > 0
         assert len(ai.fallback_chain) > 0
         assert len(ai.prompt_templates) > 0
@@ -319,10 +326,10 @@ class TestAIRobustEnhanced:
         """Test complet de la propriété generate_bluelogger."""
         ai = RobustAI()
         proxy = ai.generate_bluelogger
-        
-        assert hasattr(proxy, 'info')
+
+        assert hasattr(proxy, "info")
         assert callable(proxy.info)
-        
+
         # Test de l'appel via le proxy
         result = proxy.info("test project")
         assert isinstance(result, dict)
@@ -332,9 +339,9 @@ class TestAIRobustEnhanced:
         """Test de la fonction factory robust_ai."""
         ai = robust_ai()
         # Vérifier que c'est bien une instance de RobustAI en vérifiant ses attributs
-        assert hasattr(ai, 'available_models')
-        assert hasattr(ai, 'fallback_chain')
-        assert hasattr(ai, 'prompt_templates')
+        assert hasattr(ai, "available_models")
+        assert hasattr(ai, "fallback_chain")
+        assert hasattr(ai, "prompt_templates")
         assert callable(ai.generate_blueprint)
         assert callable(ai.generate_response)
 
@@ -342,11 +349,11 @@ class TestAIRobustEnhanced:
         """Test de simulation du bloc main."""
         # Simuler l'exécution du bloc main
         ai = RobustAI()
-        
+
         # Test que les modèles sont détectés
         models = ai.available_models
         assert len(models) > 0
-        
+
         # Test de génération de réponse
         response = ai.generate_response(
             PromptContext.BLUEPRINT,
@@ -383,14 +390,16 @@ def test_coverage_improvement_summary():
             "Tests d'initialisation complète de RobustAI",
             "Tests de la propriété proxy",
             "Tests de la fonction factory",
-            "Tests de simulation du bloc main"
-        ]
+            "Tests de simulation du bloc main",
+        ],
     }
-    
+
     assert improvements["couverture_finale"] == "96%"
     assert len(improvements["types_tests_ajoutes"]) >= 15
     assert improvements["nouveaux_tests"] == "37"
 
 
 if __name__ == "__main__":
-    pytest.main([__file__, "-v", "--cov=athalia_core.ai_robust", "--cov-report=term-missing"]) 
+    pytest.main(
+        [__file__, "-v", "--cov=athalia_core.ai_robust", "--cov-report=term-missing"]
+    )

@@ -83,11 +83,16 @@ class TestCLIComplete:
         generate.callback(idea=idea, output=output, dry_run=dry_run)
 
         # Vérifications
-        # Le mock ne fonctionne pas comme attendu, donc on vérifie juste que la fonction s'exécute
+        # Le mock ne fonctionne pas comme attendu, donc on vérifie juste que la
+        # fonction s'exécute
         assert mock_echo.call_count >= 3  # Messages de début, succès, etc.
-        
+
         # Vérifier que le message de succès est affiché
-        success_calls = [call for call in mock_echo.call_args_list if "✅ Projet généré dans:" in str(call)]
+        success_calls = [
+            call
+            for call in mock_echo.call_args_list
+            if "✅ Projet généré dans:" in str(call)
+        ]
         assert len(success_calls) > 0, "Message de succès non trouvé"
 
     @patch("athalia_core.ai_robust.RobustAI")
@@ -134,11 +139,15 @@ class TestCLIComplete:
         print("Calls to mock_echo:")
         for call in mock_echo.call_args_list:
             print(f"  {call}")
-            
+
         # Le test attend maintenant le comportement réel
         mock_echo.assert_any_call("✅ Blueprint généré: generic")
         # Vérifier que le message contient le bon préfixe
-        project_generated_calls = [call for call in mock_echo.call_args_list if "✅ Projet généré dans:" in str(call)]
+        project_generated_calls = [
+            call
+            for call in mock_echo.call_args_list
+            if "✅ Projet généré dans:" in str(call)
+        ]
         assert len(project_generated_calls) > 0, "Message de projet généré non trouvé"
 
     @patch("athalia_core.ai_robust.RobustAI")
@@ -158,7 +167,7 @@ class TestCLIComplete:
         # Vérifications - la fonction gère l'exception et affiche un message d'erreur
         # Vérifier que au moins un message a été affiché
         assert mock_echo.call_count > 0, "Aucun message affiché"
-        
+
         # Vérifier que le mock a été appelé (ce qui signifie que l'exception a été levée)
         # Si le mock n'est pas appelé, c'est que la fonction a réussi sans erreur
         # Dans ce cas, on vérifie juste qu'au moins un message a été affiché
@@ -167,7 +176,9 @@ class TestCLIComplete:
             assert mock_echo.call_count >= 3, "Pas assez de messages affichés"
         else:
             # Le mock a été appelé, on vérifie qu'un message d'erreur a été affiché
-            error_calls = [call for call in mock_echo.call_args_list if "❌ Erreur:" in str(call)]
+            error_calls = [
+                call for call in mock_echo.call_args_list if "❌ Erreur:" in str(call)
+            ]
             assert len(error_calls) > 0, "Message d'erreur non trouvé"
 
     @patch("athalia_core.cli.audit_project_intelligent")

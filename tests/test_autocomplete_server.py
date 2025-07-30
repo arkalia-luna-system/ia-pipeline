@@ -4,6 +4,7 @@ import pytest
 try:
     from fastapi.testclient import TestClient
     from athalia_core.autocomplete_server import app
+
     FASTAPI_AVAILABLE = True
     client = TestClient(app)
 except ImportError:
@@ -46,7 +47,7 @@ def test_autocomplete_engine():
     """Test du moteur de complétion automatique"""
     if not AUTOCOMPLETE_AVAILABLE:
         pytest.skip("Module autocomplete non disponible")
-    
+
     engine = AutocompleteEngine()
     suggestions = engine.get_suggestions_for_context("python", "def")
     assert isinstance(suggestions, list)

@@ -240,9 +240,9 @@ class TestGestionnaireProfils(unittest.TestCase):
             cursor = conn.cursor()
             cursor.execute(
                 """
-                SELECT a.action, a.details 
-                FROM actions a 
-                JOIN profils p ON a.profil_id = p.id 
+                SELECT a.action, a.details
+                FROM actions a
+                JOIN profils p ON a.profil_id = p.id
                 WHERE p.nom = ?
             """,
                 ("TestUser",),
@@ -267,9 +267,9 @@ class TestGestionnaireProfils(unittest.TestCase):
             cursor = conn.cursor()
             cursor.execute(
                 """
-                SELECT pc.chemin_projet, pc.duree_consultation 
-                FROM projets_consultes pc 
-                JOIN profils p ON pc.profil_id = p.id 
+                SELECT pc.chemin_projet, pc.duree_consultation
+                FROM projets_consultes pc
+                JOIN profils p ON pc.profil_id = p.id
                 WHERE p.nom = ?
             """,
                 ("TestUser",),

@@ -45,8 +45,10 @@ class TestHardcodedPaths:
 
         # Skip si trop de chemins trouvés (probablement des faux positifs)
         if len(problematic_paths) > 5:
-            pytest.skip(f"Trop de chemins absolus détectés ({len(problematic_paths)}), probablement des faux positifs")
-        
+            pytest.skip(
+                f"Trop de chemins absolus détectés ({len(problematic_paths)}), probablement des faux positifs"
+            )
+
         if problematic_paths:
             pytest.fail(
                 "Chemins absolus hardcodés trouvés:\n"

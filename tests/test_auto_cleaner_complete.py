@@ -150,6 +150,7 @@ class TestAutoCleaner:
                 f.write("old content")
             # Modifier la date de modification
             import os
+
             os.utime(file_path, (0, 0))  # Date très ancienne
 
         result = self.cleaner.cleanup_old_files(days_old=1)

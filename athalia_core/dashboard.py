@@ -288,7 +288,7 @@ class Dashboard:
             </select>
         </div>
     </header>
-    
+
     <main class="dashboard-content">
         <div class="widgets-container">
 """
@@ -306,11 +306,11 @@ class Dashboard:
         html_template += f"""
         </div>
     </main>
-    
+
     <footer class="dashboard-footer">
         <p>Généré le {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
     </footer>
-    
+
     <script>
         {self.generate_dashboard_js(config)}
     </script>
@@ -468,7 +468,7 @@ document.addEventListener('DOMContentLoaded', function() {{
     if (refreshBtn) {{
         refreshBtn.addEventListener('click', refreshDashboard);
     }}
-    
+
     // Gestionnaire pour le sélecteur de thème
     const themeSelector = document.getElementById('theme-selector');
     if (themeSelector) {{
@@ -476,12 +476,12 @@ document.addEventListener('DOMContentLoaded', function() {{
             changeTheme(this.value);
         }});
     }}
-    
+
     // Actualisation automatique
     if (dashboardConfig.autoRefresh) {{
         setInterval(refreshDashboard, dashboardConfig.refreshInterval);
     }}
-    
+
     // Restaurer le thème sauvegardé
     const savedTheme = localStorage.getItem('dashboard-theme');
     if (savedTheme) {{

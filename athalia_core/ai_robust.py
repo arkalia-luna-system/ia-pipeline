@@ -22,6 +22,7 @@ except ImportError:
 
     class SecurityError(Exception):
         """Exception levée pour les erreurs de sécurité."""
+
         pass
 
 

@@ -618,7 +618,7 @@ SOFTWARE.
     def perform_full_documentation(self) -> Dict[str, Any]:
         """Effectue une documentation complète du projet"""
         start_time = datetime.now()
-        
+
         result = {
             "summary": "",
             "detailed_results": {},
@@ -626,7 +626,7 @@ SOFTWARE.
             "errors": [],
             "files_generated": 0,
             "coverage": 0,
-            "documentation_time": 0
+            "documentation_time": 0,
         }
 
         try:
@@ -649,15 +649,17 @@ SOFTWARE.
 
             # Générer le rapport
             report = self.generate_documentation_report()
-            result["summary"] = report.get("summary", "Documentation générée avec succès")
+            result["summary"] = report.get(
+                "summary", "Documentation générée avec succès"
+            )
 
             # Simuler la génération de fichiers
             files_generated = [
                 "README.md",
-                "docs/api.md", 
+                "docs/api.md",
                 "docs/setup.md",
                 "docs/usage.md",
-                "docs/index.md"
+                "docs/index.md",
             ]
             result["files_generated"] = len(files_generated)
 
@@ -683,20 +685,22 @@ SOFTWARE.
         # Calculer le temps d'exécution
         result["documentation_time"] = (datetime.now() - start_time).total_seconds()
 
-        self.doc_history.append({
-            "timestamp": datetime.now().isoformat(),
-            "operation": "perform_full_documentation",
-            "result": result,
-        })
+        self.doc_history.append(
+            {
+                "timestamp": datetime.now().isoformat(),
+                "operation": "perform_full_documentation",
+                "result": result,
+            }
+        )
 
         return result
 
     def document_project(self, project_path: str) -> Dict[str, Any]:
         """Documente un projet complet"""
         self.project_path = Path(project_path)
-        
+
         # Initialiser les informations du projet si pas déjà fait
-        if not hasattr(self, 'project_info'):
+        if not hasattr(self, "project_info"):
             self.project_info = {
                 "name": self.project_path.name,
                 "description": "Projet documenté automatiquement",
@@ -706,7 +710,7 @@ SOFTWARE.
                 "classes": [],
                 "functions": [],
                 "entry_points": [],
-                "license": "MIT"
+                "license": "MIT",
             }
 
         result = {
@@ -714,7 +718,7 @@ SOFTWARE.
             "api_docs": self._generate_api_documentation(),
             "setup_guide": self._generate_setup_guide(),
             "usage_guide": self._generate_usage_guide(),
-            "created_files": self._get_created_files()
+            "created_files": self._get_created_files(),
         }
 
         return result
@@ -732,7 +736,7 @@ SOFTWARE.
                 "methods": "Méthodes",
                 "parameters": "Paramètres",
                 "returns": "Retourne",
-                "examples": "Exemples"
+                "examples": "Exemples",
             },
             "en": {
                 "readme_title": "Project Documentation",
@@ -744,14 +748,14 @@ SOFTWARE.
                 "methods": "Methods",
                 "parameters": "Parameters",
                 "returns": "Returns",
-                "examples": "Examples"
-            }
+                "examples": "Examples",
+            },
         }
         return translations.get(lang, translations["en"])
 
     def _generate_readme(self) -> str:
         """Génère un README basique"""
-        
+
         readme = f"""# {self.project_info.get('name', 'Projet')}
 
 {self.project_info.get('description', 'Description du projet')}
@@ -782,14 +786,14 @@ Consultez la documentation complète dans le dossier `docs/`.
     def _generate_api_documentation(self) -> str:
         """Génère la documentation API"""
         translations = self._load_translations(self.lang)
-        
+
         api_docs = f"""# {translations['api_docs_title']}
 
 ## {translations['classes']}
 
 """
-        
-        for class_info in self.project_info.get('classes', []):
+
+        for class_info in self.project_info.get("classes", []):
             api_docs += f"""### {class_info['name']}
 
 {class_info.get('docstring', 'Aucune description')}
@@ -797,21 +801,21 @@ Consultez la documentation complète dans le dossier `docs/`.
 #### {translations['methods']}
 
 """
-            for method in class_info.get('methods', []):
+            for method in class_info.get("methods", []):
                 api_docs += f"- `{method}()`\n"
             api_docs += "\n"
 
         api_docs += f"""## {translations['functions']}
 
 """
-        
-        for func_info in self.project_info.get('functions', []):
+
+        for func_info in self.project_info.get("functions", []):
             api_docs += f"""### {func_info['name']}
 
 {func_info.get('docstring', 'Aucune description')}
 
 """
-            if func_info.get('args'):
+            if func_info.get("args"):
                 api_docs += f"**{translations['parameters']}:** {', '.join(func_info['args'])}\n\n"
 
         return api_docs
@@ -819,7 +823,7 @@ Consultez la documentation complète dans le dossier `docs/`.
     def _generate_setup_guide(self) -> str:
         """Génère le guide d'installation"""
         translations = self._load_translations(self.lang)
-        
+
         setup_guide = f"""# {translations['setup_guide_title']}
 
 ## Prérequis
@@ -857,7 +861,7 @@ python -m pytest tests/
     def _generate_usage_guide(self) -> str:
         """Génère le guide d'utilisation"""
         translations = self._load_translations(self.lang)
-        
+
         usage_guide = f"""# {translations['usage_guide_title']}
 
 ## Démarrage rapide
@@ -890,12 +894,7 @@ main(config)
 
     def _get_created_files(self) -> List[str]:
         """Retourne la liste des fichiers créés"""
-        return [
-            "README.md",
-            "docs/api.md",
-            "docs/setup.md",
-            "docs/usage.md"
-        ]
+        return ["README.md", "docs/api.md", "docs/setup.md", "docs/usage.md"]
 
 
 def generate_documentation(project_path: str = ".") -> Dict[str, Any]:

@@ -17,8 +17,10 @@ import subprocess
 try:
     from athalia_core.security_validator import validate_and_run, SecurityError
 except ImportError:
+
     def validate_and_run(command, **kwargs):
         return subprocess.run(command, **kwargs)
+
     SecurityError = Exception
 
 logger = logging.getLogger(__name__)
@@ -767,7 +769,7 @@ def analyze_project_metrics(project_path: str = ".") -> Dict[str, Any]:
 def analyze_project(project_path: str = ".") -> Dict[str, Any]:
     """Analyse complète d'un projet"""
     engine = AnalyticsEngine(project_path)
-    
+
     # Analyser toutes les métriques
     complexity = engine.analyze_code_complexity()
     coverage = engine.analyze_test_coverage()
@@ -776,13 +778,13 @@ def analyze_project(project_path: str = ".") -> Dict[str, Any]:
     security = engine.analyze_security_metrics()
     documentation = engine.analyze_documentation_coverage()
     git_metrics = engine.analyze_git_metrics()
-    
+
     # Générer le rapport complet
     report = engine.generate_comprehensive_report()
-    
+
     # Calculer le score global
     score_data = engine.calculate_project_score(report)
-    
+
     # Structure de retour
     return {
         "project_name": Path(project_path).name,
@@ -793,106 +795,110 @@ def analyze_project(project_path: str = ".") -> Dict[str, Any]:
             "performance": performance,
             "security": security,
             "documentation": documentation,
-            "git": git_metrics
+            "git": git_metrics,
         },
         "score": score_data["overall_score"],
         "metrics": report,
         "recommendations": engine.generate_recommendations(report),
-        "timestamp": datetime.now().isoformat()
+        "timestamp": datetime.now().isoformat(),
     }
 
 
 def generate_heatmap_data(project_path: str = ".") -> Dict[str, Any]:
     """Génère les données pour une heatmap de complexité du code"""
     engine = AnalyticsEngine(project_path)
-    
+
     heatmap_data = {
         "heatmap_data": [],
         "total_files": 0,
         "max_complexity": 0,
-        "file_types": {}
+        "file_types": {},
     }
-    
+
     try:
         python_files = list(Path(project_path).rglob("*.py"))
         heatmap_data["total_files"] = len(python_files)
-        
+
         for py_file in python_files:
             try:
                 with open(py_file, "r", encoding="utf-8") as f:
                     content = f.read()
-                
+
                 complexity = engine._calculate_file_complexity(content)
-                heatmap_data["max_complexity"] = max(heatmap_data["max_complexity"], complexity)
-                
+                heatmap_data["max_complexity"] = max(
+                    heatmap_data["max_complexity"], complexity
+                )
+
                 # Données pour la heatmap
-                heatmap_data["heatmap_data"].append({
-                    "file": str(py_file.relative_to(project_path)),
-                    "complexity": complexity,
-                    "lines": len(content.splitlines()),
-                    "size": len(content)
-                })
-                
+                heatmap_data["heatmap_data"].append(
+                    {
+                        "file": str(py_file.relative_to(project_path)),
+                        "complexity": complexity,
+                        "lines": len(content.splitlines()),
+                        "size": len(content),
+                    }
+                )
+
                 # Statistiques par type de fichier
                 file_type = py_file.suffix
                 if file_type not in heatmap_data["file_types"]:
                     heatmap_data["file_types"][file_type] = {
                         "count": 0,
                         "total_complexity": 0,
-                        "avg_complexity": 0
+                        "avg_complexity": 0,
                     }
-                
+
                 heatmap_data["file_types"][file_type]["count"] += 1
                 heatmap_data["file_types"][file_type]["total_complexity"] += complexity
-                
+
             except Exception as e:
                 logger.warning(f"Impossible d'analyser {py_file}: {e}")
-        
+
         # Calculer les moyennes par type de fichier
         for file_type, stats in heatmap_data["file_types"].items():
             if stats["count"] > 0:
                 stats["avg_complexity"] = stats["total_complexity"] / stats["count"]
-    
+
     except Exception as e:
         logger.error(f"Erreur génération heatmap: {e}")
-    
+
     return heatmap_data
 
 
 def generate_technical_debt_analysis(project_path: str = ".") -> Dict[str, Any]:
     """Analyse de la dette technique d'un projet"""
     engine = AnalyticsEngine(project_path)
-    
+
     # Analyser les métriques
     complexity = engine.analyze_code_complexity()
     coverage = engine.analyze_test_coverage()
     documentation = engine.analyze_documentation_coverage()
     security = engine.analyze_security_metrics()
-    
+
     # Calculer le score de dette technique
     debt_score = 0
     debt_indicators = []
-    
+
     # Complexité élevée
     if complexity.get("average_complexity", 0) > 7:
         debt_score += 20
         debt_indicators.append("Complexité cyclomatique élevée")
-    
+
     # Couverture de tests faible
     if coverage.get("overall_coverage", 0) < 80:
         debt_score += 25
         debt_indicators.append("Couverture de tests insuffisante")
-    
+
     # Documentation manquante
     if documentation.get("documentation_score", 0) < 70:
         debt_score += 15
         debt_indicators.append("Documentation incomplète")
-    
+
     # Problèmes de sécurité
     if security.get("security_score", 0) < 80:
         debt_score += 20
         debt_indicators.append("Vulnérabilités de sécurité détectées")
-    
+
     # Recommandations
     recommendations = []
     if debt_score > 50:
@@ -901,7 +907,7 @@ def generate_technical_debt_analysis(project_path: str = ".") -> Dict[str, Any]:
         recommendations.append("Ajouter des tests unitaires et d'intégration")
     if documentation.get("documentation_score", 0) < 70:
         recommendations.append("Améliorer la documentation du code")
-    
+
     return {
         "technical_debt_score": min(debt_score, 100),
         "debt_indicators": debt_indicators,
@@ -910,15 +916,15 @@ def generate_technical_debt_analysis(project_path: str = ".") -> Dict[str, Any]:
             "complexity": complexity,
             "coverage": coverage,
             "documentation": documentation,
-            "security": security
-        }
+            "security": security,
+        },
     }
 
 
 def generate_analytics_html(project_path: str = ".") -> str:
     """Génère un rapport HTML d'analytics"""
     analysis = analyze_project(project_path)
-    
+
     html_template = f"""
 <!DOCTYPE html>
 <html lang="fr">
@@ -940,23 +946,23 @@ def generate_analytics_html(project_path: str = ".") -> str:
         <p>Généré le {analysis['timestamp']}</p>
         <div class="score">Score global: {analysis['score']}/100</div>
     </div>
-    
+
     <h2>📈 Métriques</h2>
     <div class="metric">
         <h3>Complexité du code</h3>
         <p>Complexité moyenne: {analysis['structure']['complexity'].get('average_complexity', 0):.2f}</p>
         <p>Complexité maximale: {analysis['structure']['complexity'].get('max_complexity', 0)}</p>
     </div>
-    
+
     <div class="metric">
         <h3>Couverture de tests</h3>
         <p>Couverture globale: {analysis['structure']['coverage'].get('overall_coverage', 0):.1f}%</p>
     </div>
-    
+
     <h2>💡 Recommandations</h2>
     {''.join([f'<div class="recommendation">• {rec}</div>' for rec in analysis['recommendations']])}
 </body>
 </html>
 """
-    
+
     return html_template

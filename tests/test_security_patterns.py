@@ -12,8 +12,16 @@ import pytest
 def should_skip_directory(root):
     """Détermine si un répertoire doit être ignoré"""
     skip_patterns = [
-        ".git", ".venv", "__pycache__", "tests", "tools", 
-        "scripts", "bin", "archive", "backups", "cache"
+        ".git",
+        ".venv",
+        "__pycache__",
+        "tests",
+        "tools",
+        "scripts",
+        "bin",
+        "archive",
+        "backups",
+        "cache",
     ]
     return any(pattern in root for pattern in skip_patterns)
 
@@ -52,11 +60,12 @@ class TestSecurityPatterns:
         # Filtrer les faux positifs (tests et exemples)
         filtered_passwords = []
         for password in hardcoded_passwords:
-            if not any(exclude in password.lower() for exclude in [
-                "test_", "example", "sample", "mock", "dummy", "fake"
-            ]):
+            if not any(
+                exclude in password.lower()
+                for exclude in ["test_", "example", "sample", "mock", "dummy", "fake"]
+            ):
                 filtered_passwords.append(password)
-        
+
         if filtered_passwords:
             pytest.fail(
                 "Mots de passe hardcodés trouvés:\n" + "\n".join(filtered_passwords)
@@ -93,15 +102,18 @@ class TestSecurityPatterns:
         # Filtrer les faux positifs (tests et exemples)
         filtered_injections = []
         for injection in sql_injections:
-            if not any(exclude in injection.lower() for exclude in [
-                "test_", "example", "sample", "mock", "dummy", "fake"
-            ]):
+            if not any(
+                exclude in injection.lower()
+                for exclude in ["test_", "example", "sample", "mock", "dummy", "fake"]
+            ):
                 filtered_injections.append(injection)
-        
+
         # Skip si trop de patterns trouvés (probablement des faux positifs)
         if len(filtered_injections) > 5:
-            pytest.skip(f"Trop de patterns SQL détectés ({len(filtered_injections)}), probablement des faux positifs")
-        
+            pytest.skip(
+                f"Trop de patterns SQL détectés ({len(filtered_injections)}), probablement des faux positifs"
+            )
+
         if filtered_injections:
             pytest.fail(
                 "Patterns d'injection SQL trouvés:\n" + "\n".join(filtered_injections)
@@ -137,15 +149,18 @@ class TestSecurityPatterns:
         # Filtrer les faux positifs (tests et exemples)
         filtered_usage = []
         for usage in dangerous_usage:
-            if not any(exclude in usage.lower() for exclude in [
-                "test_", "example", "sample", "mock", "dummy", "fake"
-            ]):
+            if not any(
+                exclude in usage.lower()
+                for exclude in ["test_", "example", "sample", "mock", "dummy", "fake"]
+            ):
                 filtered_usage.append(usage)
-        
+
         # Skip si trop de patterns trouvés (probablement des faux positifs)
         if len(filtered_usage) > 5:
-            pytest.skip(f"Trop de fonctions dangereuses détectées ({len(filtered_usage)}), probablement des faux positifs")
-        
+            pytest.skip(
+                f"Trop de fonctions dangereuses détectées ({len(filtered_usage)}), probablement des faux positifs"
+            )
+
         if filtered_usage:
             pytest.fail(
                 "Utilisation de fonctions dangereuses trouvée:\n"
@@ -182,8 +197,10 @@ class TestSecurityPatterns:
 
         # Skip si trop de patterns trouvés (probablement des faux positifs)
         if len(filtered_injections) > 20:
-            pytest.skip(f"Trop d'injections shell détectées ({len(filtered_injections)}), probablement des faux positifs")
-        
+            pytest.skip(
+                f"Trop d'injections shell détectées ({len(filtered_injections)}), probablement des faux positifs"
+            )
+
         if filtered_injections:
             pytest.fail("Injections shell trouvées:\n" + "\n".join(filtered_injections))
 
@@ -217,15 +234,18 @@ class TestSecurityPatterns:
         # Filtrer les faux positifs (tests et exemples)
         filtered_debug = []
         for debug in debug_code:
-            if not any(exclude in debug.lower() for exclude in [
-                "test_", "example", "sample", "mock", "dummy", "fake"
-            ]):
+            if not any(
+                exclude in debug.lower()
+                for exclude in ["test_", "example", "sample", "mock", "dummy", "fake"]
+            ):
                 filtered_debug.append(debug)
-        
+
         # Skip si trop de patterns trouvés (probablement des faux positifs)
         if len(filtered_debug) > 30:
-            pytest.skip(f"Trop de code de debug détecté ({len(filtered_debug)}), probablement des faux positifs")
-        
+            pytest.skip(
+                f"Trop de code de debug détecté ({len(filtered_debug)}), probablement des faux positifs"
+            )
+
         if filtered_debug:
             pytest.fail("Code de debug trouvé:\n" + "\n".join(filtered_debug))
 
@@ -258,15 +278,18 @@ class TestSecurityPatterns:
         # Filtrer les faux positifs (tests et exemples)
         filtered_urls = []
         for url in hardcoded_urls:
-            if not any(exclude in url.lower() for exclude in [
-                "test_", "example", "sample", "mock", "dummy", "fake"
-            ]):
+            if not any(
+                exclude in url.lower()
+                for exclude in ["test_", "example", "sample", "mock", "dummy", "fake"]
+            ):
                 filtered_urls.append(url)
-        
+
         # Skip si trop de patterns trouvés (probablement des faux positifs)
         if len(filtered_urls) > 5:
-            pytest.skip(f"Trop d'URLs hardcodées détectées ({len(filtered_urls)}), probablement des faux positifs")
-        
+            pytest.skip(
+                f"Trop d'URLs hardcodées détectées ({len(filtered_urls)}), probablement des faux positifs"
+            )
+
         if filtered_urls:
             pytest.fail("URLs hardcodées trouvées:\n" + "\n".join(filtered_urls))
 
@@ -300,15 +323,18 @@ class TestSecurityPatterns:
         # Filtrer les faux positifs (tests et exemples)
         filtered_crypto = []
         for crypto in weak_crypto:
-            if not any(exclude in crypto.lower() for exclude in [
-                "test_", "example", "sample", "mock", "dummy", "fake"
-            ]):
+            if not any(
+                exclude in crypto.lower()
+                for exclude in ["test_", "example", "sample", "mock", "dummy", "fake"]
+            ):
                 filtered_crypto.append(crypto)
-        
+
         # Skip si trop de patterns trouvés (probablement des faux positifs)
         if len(filtered_crypto) > 5:
-            pytest.skip(f"Trop de crypto faible détectée ({len(filtered_crypto)}), probablement des faux positifs")
-        
+            pytest.skip(
+                f"Trop de crypto faible détectée ({len(filtered_crypto)}), probablement des faux positifs"
+            )
+
         if filtered_crypto:
             pytest.fail("Crypto faible trouvée:\n" + "\n".join(filtered_crypto))
 

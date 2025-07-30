@@ -117,7 +117,7 @@ class GestionnaireProfils:
             cursor = conn.cursor()
             cursor.execute(
                 """
-                INSERT INTO profils (nom, email, preferences, date_creation, 
+                INSERT INTO profils (nom, email, preferences, date_creation,
                 derniere_connexion) VALUES (?, ?, ?, ?, ?)
             """,
                 (
@@ -138,7 +138,7 @@ class GestionnaireProfils:
             cursor = conn.cursor()
             cursor.execute(
                 """
-                SELECT nom, email, preferences, date_creation, 
+                SELECT nom, email, preferences, date_creation,
                 derniere_connexion FROM profils WHERE nom = ?
             """,
                 (nom,),
@@ -236,7 +236,7 @@ class GestionnaireProfils:
             if profil_id:
                 cursor.execute(
                     """
-                    INSERT INTO projets_consultes 
+                    INSERT INTO projets_consultes
                     (profil_id, chemin_projet, date_consultation, duree_consultation)
                     VALUES (?, ?, ?, ?)
                 """,

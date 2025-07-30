@@ -31,7 +31,7 @@ class AutoCleaner:
             "files_removed": 0,
             "dirs_removed": 0,
             "space_freed_mb": 0,
-            "errors": 0
+            "errors": 0,
         }
 
     def load_cleanup_config(self, config_path: Optional[str] = None) -> Dict[str, Any]:
@@ -301,7 +301,7 @@ class AutoCleaner:
                         if file_hash in file_hashes:
                             # Fichier dupliqué trouvé
                             size = file_path.stat().st_size
-                            if not getattr(self, 'dry_run', False):
+                            if not getattr(self, "dry_run", False):
                                 file_path.unlink()
                             result["removed_files"].append(str(file_path))
                             result["total_size_freed"] += size
@@ -513,19 +513,25 @@ class AutoCleaner:
                         if file_path.is_file() and not self._is_excluded(file_path):
                             try:
                                 file_size = file_path.stat().st_size
-                                if not getattr(self, 'dry_run', False):
+                                if not getattr(self, "dry_run", False):
                                     file_path.unlink()
                                 cleaned_files.append(str(file_path))
                                 total_size_freed += file_size
                             except Exception as e:
-                                logger.warning(f"Impossible de supprimer {file_path}: {e}")
+                                logger.warning(
+                                    f"Impossible de supprimer {file_path}: {e}"
+                                )
                 else:
                     # Pattern exact
                     exact_path = self.project_path / pattern
-                    if exact_path.exists() and exact_path.is_file() and not self._is_excluded(exact_path):
+                    if (
+                        exact_path.exists()
+                        and exact_path.is_file()
+                        and not self._is_excluded(exact_path)
+                    ):
                         try:
                             file_size = exact_path.stat().st_size
-                            if not getattr(self, 'dry_run', False):
+                            if not getattr(self, "dry_run", False):
                                 exact_path.unlink()
                             cleaned_files.append(str(exact_path))
                             total_size_freed += file_size
@@ -539,7 +545,7 @@ class AutoCleaner:
                 if ide_dir.exists() and ide_dir.is_dir():
                     try:
                         dir_size = self._get_directory_size(ide_dir)
-                        if not getattr(self, 'dry_run', False):
+                        if not getattr(self, "dry_run", False):
                             shutil.rmtree(ide_dir)
                         cleaned_directories.append(str(ide_dir))
                         total_size_freed += dir_size
@@ -553,14 +559,16 @@ class AutoCleaner:
             "removed_files": cleaned_files,
             "removed_directories": cleaned_directories,
             "total_size_freed": total_size_freed,
-            "errors": []
+            "errors": [],
         }
 
-        self.cleanup_history.append({
-            "timestamp": datetime.now().isoformat(),
-            "operation": "cleanup_ide_files",
-            "result": result,
-        })
+        self.cleanup_history.append(
+            {
+                "timestamp": datetime.now().isoformat(),
+                "operation": "cleanup_ide_files",
+                "result": result,
+            }
+        )
 
         return result
 
@@ -568,7 +576,7 @@ class AutoCleaner:
         """Nettoie les fichiers de sauvegarde"""
         cleaned_files = []
         total_size_freed = 0
-        
+
         # Utiliser le path fourni ou le path du projet par défaut
         target_path = path if path else self.project_path
 
@@ -587,7 +595,7 @@ class AutoCleaner:
                     if file_path.is_file() and not self._is_excluded(file_path):
                         try:
                             file_size = file_path.stat().st_size
-                            if not getattr(self, 'dry_run', False):
+                            if not getattr(self, "dry_run", False):
                                 file_path.unlink()
                             cleaned_files.append(str(file_path))
                             total_size_freed += file_size
@@ -603,11 +611,13 @@ class AutoCleaner:
             "files_count": len(cleaned_files),
         }
 
-        self.cleanup_history.append({
-            "timestamp": datetime.now().isoformat(),
-            "operation": "_clean_backup_files",
-            "result": result,
-        })
+        self.cleanup_history.append(
+            {
+                "timestamp": datetime.now().isoformat(),
+                "operation": "_clean_backup_files",
+                "result": result,
+            }
+        )
 
         return result
 
@@ -615,7 +625,7 @@ class AutoCleaner:
         """Nettoie les fichiers de cache"""
         cleaned_files = []
         total_size_freed = 0
-        
+
         # Utiliser le path fourni ou le path du projet par défaut
         target_path = path if path else self.project_path
 
@@ -637,19 +647,21 @@ class AutoCleaner:
                         if file_path.is_file() and not self._is_excluded(file_path):
                             try:
                                 file_size = file_path.stat().st_size
-                                if not getattr(self, 'dry_run', False):
+                                if not getattr(self, "dry_run", False):
                                     file_path.unlink()
                                 cleaned_files.append(str(file_path))
                                 total_size_freed += file_size
                             except Exception as e:
-                                logger.warning(f"Impossible de supprimer {file_path}: {e}")
+                                logger.warning(
+                                    f"Impossible de supprimer {file_path}: {e}"
+                                )
                 else:
                     # Pattern exact (répertoire)
                     cache_dir = target_path / pattern
                     if cache_dir.exists() and cache_dir.is_dir():
                         try:
                             dir_size = self._get_directory_size(cache_dir)
-                            if not getattr(self, 'dry_run', False):
+                            if not getattr(self, "dry_run", False):
                                 shutil.rmtree(cache_dir)
                             cleaned_files.append(str(cache_dir))
                             total_size_freed += dir_size
@@ -665,11 +677,13 @@ class AutoCleaner:
             "files_count": len(cleaned_files),
         }
 
-        self.cleanup_history.append({
-            "timestamp": datetime.now().isoformat(),
-            "operation": "_clean_cache_files",
-            "result": result,
-        })
+        self.cleanup_history.append(
+            {
+                "timestamp": datetime.now().isoformat(),
+                "operation": "_clean_cache_files",
+                "result": result,
+            }
+        )
 
         return result
 
@@ -700,7 +714,7 @@ class AutoCleaner:
                 if dir_path.is_dir() and not self._is_excluded(dir_path):
                     try:
                         if not any(dir_path.iterdir()):
-                            if not getattr(self, 'dry_run', False):
+                            if not getattr(self, "dry_run", False):
                                 dir_path.rmdir()
                             cleaned_dirs.append(str(dir_path))
                     except Exception as e:
@@ -729,7 +743,7 @@ class AutoCleaner:
                     if file_path.is_file() and not self._is_excluded(file_path):
                         try:
                             file_size = file_path.stat().st_size
-                            if not getattr(self, 'dry_run', False):
+                            if not getattr(self, "dry_run", False):
                                 file_path.unlink()
                             cleaned_files.append(str(file_path))
                             total_size_freed += file_size
@@ -760,7 +774,7 @@ class AutoCleaner:
                     if temp_file.is_file() and not self._is_excluded(temp_file):
                         try:
                             size = temp_file.stat().st_size
-                            if not getattr(self, 'dry_run', False):
+                            if not getattr(self, "dry_run", False):
                                 temp_file.unlink()
                             cleaned_files.append(str(temp_file))
                             total_size_freed += size
@@ -779,15 +793,39 @@ class AutoCleaner:
 
     def _is_code_file(self, file_path: Path) -> bool:
         """Vérifie si un fichier est un fichier de code"""
-        code_extensions = {'.py', '.js', '.ts', '.java', '.cpp', '.c', '.h', '.cs', '.php', '.rb', '.go', '.rs', '.swift', '.kt'}
+        code_extensions = {
+            ".py",
+            ".js",
+            ".ts",
+            ".java",
+            ".cpp",
+            ".c",
+            ".h",
+            ".cs",
+            ".php",
+            ".rb",
+            ".go",
+            ".rs",
+            ".swift",
+            ".kt",
+        }
         return file_path.suffix.lower() in code_extensions
 
     def _is_important_file(self, file_path: Path) -> bool:
         """Vérifie si un fichier est important"""
         important_files = {
-            'README.md', 'requirements.txt', 'setup.py', 'pyproject.toml',
-            'package.json', 'Cargo.toml', 'pom.xml', 'build.gradle',
-            'Dockerfile', '.gitignore', 'LICENSE', 'Makefile'
+            "README.md",
+            "requirements.txt",
+            "setup.py",
+            "pyproject.toml",
+            "package.json",
+            "Cargo.toml",
+            "pom.xml",
+            "build.gradle",
+            "Dockerfile",
+            ".gitignore",
+            "LICENSE",
+            "Makefile",
         }
         return file_path.name in important_files
 
@@ -808,12 +846,12 @@ class AutoCleaner:
             "files_removed": 0,
             "dirs_removed": 0,
             "space_freed_mb": 0,
-            "errors": 0
+            "errors": 0,
         }
 
         # Exécuter tous les nettoyages
         results = {}
-        
+
         # Nettoyage des fichiers de cache
         cache_result = self._clean_cache_files()
         results["cache"] = cache_result
@@ -843,11 +881,7 @@ class AutoCleaner:
         results["empty_dirs"] = empty_result
         self.stats["dirs_removed"] += empty_result.get("directories_count", 0)
 
-        return {
-            "stats": self.stats,
-            "results": results,
-            "dry_run": dry_run
-        }
+        return {"stats": self.stats, "results": results, "dry_run": dry_run}
 
     def _generate_cleanup_report(self) -> Dict[str, Any]:
         """Génère un rapport de nettoyage"""
@@ -855,7 +889,7 @@ class AutoCleaner:
             "stats": self.stats,
             "files": self.cleaned_files,
             "dirs": self.cleaned_dirs,
-            "summary": f"Nettoyage terminé: {self.stats['files_removed']} fichiers, {self.stats['dirs_removed']} répertoires, {self.stats['space_freed_mb']:.2f} MB libérés"
+            "summary": f"Nettoyage terminé: {self.stats['files_removed']} fichiers, {self.stats['dirs_removed']} répertoires, {self.stats['space_freed_mb']:.2f} MB libérés",
         }
 
     def optimize_project_structure(self, project_path: str) -> Dict[str, Any]:
@@ -863,10 +897,16 @@ class AutoCleaner:
         # Cette méthode simule une optimisation de structure
         return {
             "optimized": True,
-            "optimizations": ["Organiser les fichiers par type", "Créer des sous-répertoires logiques"],
-            "suggestions": ["Organiser les fichiers par type", "Créer des sous-répertoires logiques"],
+            "optimizations": [
+                "Organiser les fichiers par type",
+                "Créer des sous-répertoires logiques",
+            ],
+            "suggestions": [
+                "Organiser les fichiers par type",
+                "Créer des sous-répertoires logiques",
+            ],
             "project_path": project_path,
-            "dry_run": getattr(self, 'dry_run', False)
+            "dry_run": getattr(self, "dry_run", False),
         }
 
     def calculate_cleanup_impact(self) -> Dict[str, Any]:

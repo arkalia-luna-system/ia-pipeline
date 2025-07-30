@@ -123,11 +123,11 @@ class TestYAMLValidity:
         defaults: &defaults
           timeout: 30
           retries: 3
-        
+
         api_config:
           <<: *defaults
           endpoint: /api/v1
-        
+
         cli_config:
           <<: *defaults
           command: athalia
@@ -258,7 +258,8 @@ class TestYAMLValidity:
         # Test avec des données invalides
         yaml_content = yaml.dump(invalid_data)
         loaded_data = yaml.safe_load(yaml_content)
-        # Note: YAML lui-même ne valide pas les types, c'est juste pour tester la structure
+        # Note: YAML lui-même ne valide pas les types, c'est juste pour tester la
+        # structure
 
     def test_yaml_error_handling(self):
         """Test de la gestion d'erreurs YAML."""

@@ -179,7 +179,9 @@ def detect_prompt_semantic(filepath):
             "mistral",
             f"[INST] {system_prompt} \n\nContenu :\n{content}\n[/INST]",
         ]
-        result = validate_and_run(ollama_cmd, capture_output=True, text=True, timeout=20)
+        result = validate_and_run(
+            ollama_cmd, capture_output=True, text=True, timeout=20
+        )
         answer = result.stdout.strip().split("\n")[-1].strip()
         for p in PROMPTS:
             if p["name"].lower() in answer.lower():

@@ -15,8 +15,10 @@ from typing import Any, Dict
 try:
     from athalia_core.security_validator import validate_and_run, SecurityError
 except ImportError:
+
     def validate_and_run(command, **kwargs):
         return subprocess.run(command, **kwargs)
+
     SecurityError = Exception
 
 

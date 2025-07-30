@@ -11,6 +11,7 @@ except ImportError:
     # Fallback si le module n'est pas disponible
     def validate_and_run(command, **kwargs):
         return subprocess.run(command, **kwargs)
+
     SecurityError = Exception
 
 
@@ -30,7 +31,8 @@ def test_ath_test_runs():
             env=env,
             timeout=10,
         )
-        # 0 = succès, 1 = échec de tests, 2 = erreurs de collection (fichiers cachés), mais pas crash
+        # 0 = succès, 1 = échec de tests, 2 = erreurs de collection (fichiers
+        # cachés), mais pas crash
         assert result.returncode in (
             0,
             1,
