@@ -8,14 +8,22 @@ import os
 import tempfile
 import unittest
 
-from athalia_core.error_codes import (ErrorCode, ErrorSeverity,
-                                      format_error_message,
-                                      get_error_description,
-                                      get_error_severity)
-from athalia_core.error_handling import (AthaliaError, ErrorContext,
-                                         ErrorHandler, error_handler,
-                                         get_error_handler, handle_error,
-                                         raise_athalia_error)
+from athalia_core.error_codes import (
+    ErrorCode,
+    ErrorSeverity,
+    format_error_message,
+    get_error_description,
+    get_error_severity,
+)
+from athalia_core.error_handling import (
+    AthaliaError,
+    ErrorContext,
+    ErrorHandler,
+    error_handler,
+    get_error_handler,
+    handle_error,
+    raise_athalia_error,
+)
 
 
 class TestErrorCodes(unittest.TestCase):

@@ -18,7 +18,9 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 try:
     from athalia_core.advanced_modules.user_profiles_advanced import (
-        GestionnaireProfils, ProfilUtilisateur)
+        GestionnaireProfils,
+        ProfilUtilisateur,
+    )
 
     USER_PROFILES_AVAILABLE = True
 except ImportError:
@@ -424,6 +426,7 @@ class TestGestionnaireProfilsIntegration(unittest.TestCase):
         """Test d'intégration du workflow complet"""
         # 1. Création de profils
         profil1 = self.gestionnaire.creer_profil("User1", "user1@example.com")
+        self.gestionnaire.creer_profil("User2", "user2@example.com")
 
         # 2. Enregistrement d'activités
         self.gestionnaire.enregistrer_action("User1", "login")

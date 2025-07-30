@@ -19,8 +19,7 @@ import yaml  # type: ignore
 # Ajouter le répertoire parent au path pour les imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from athalia_core.cli import (ai_status, audit, cli, generate,  # noqa: E402
-                              test_ai)
+from athalia_core.cli import ai_status, audit, cli, generate, test_ai  # noqa: E402
 
 
 class TestCLIComplete:

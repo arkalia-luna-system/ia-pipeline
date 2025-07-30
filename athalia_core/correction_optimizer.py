@@ -528,7 +528,7 @@ class CorrectionOptimizer:
 
                 # Extraire les paramètres de la fonction
                 if "(" in func_def and ")" in func_def:
-                    params_part = func_def[func_def.find("(") + 1: func_def.find(")")]
+                    params_part = func_def[func_def.find("(") + 1 : func_def.find(")")]
                     params = [
                         p.strip().split("=")[0].strip()
                         for p in params_part.split(",")
