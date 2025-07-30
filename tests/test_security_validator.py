@@ -23,6 +23,7 @@ except ImportError:
     SecurityError = Exception
     def validate_and_run(command, **kwargs):
         return subprocess.run(command, **kwargs)
+
     def is_command_safe(command):
         return True
 
