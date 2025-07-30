@@ -217,6 +217,7 @@ cache/
 
 # Large files
 athalia.f(f
+*.f(f
 
 # Robotics specific
 *.bag
