@@ -64,7 +64,7 @@ class TestCLIRobustesse:
         for cli_path in self.cli_paths:
             if cli_path.exists():
                 try:
-                    result = subprocess.run(
+                    result = validate_and_run(
                         [sys.executable, str(cli_path), "--help"],
                         capture_output=True,
                         text=True,
@@ -75,7 +75,7 @@ class TestCLIRobustesse:
                     assert result.returncode in [0, 1]  # 0 = succès, 1 = aide affichée
                     assert len(result.stdout) > 0 or len(result.stderr) > 0
 
-                except subprocess.TimeoutExpired:
+                except (subprocess.TimeoutExpired, SecurityError):
                     pytest.skip(f"CLI {cli_path} prend trop de temps à démarrer")
                 except Exception as e:
                     pytest.skip(f"CLI {cli_path} non disponible: {e}")
@@ -86,7 +86,7 @@ class TestCLIRobustesse:
         for cli_path in self.cli_paths:
             if cli_path.exists():
                 try:
-                    result = subprocess.run(
+                    result = validate_and_run(
                         [sys.executable, str(cli_path), "--version"],
                         capture_output=True,
                         text=True,
@@ -96,7 +96,7 @@ class TestCLIRobustesse:
                     # Vérifier que la commande s'exécute
                     assert result.returncode in [0, 1]
 
-                except subprocess.TimeoutExpired:
+                except (subprocess.TimeoutExpired, SecurityError):
                     pytest.skip(f"CLI {cli_path} prend trop de temps à démarrer")
                 except Exception as e:
                     pytest.skip(f"CLI {cli_path} non disponible: {e}")
