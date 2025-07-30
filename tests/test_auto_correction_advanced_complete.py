@@ -14,8 +14,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 try:
-    from athalia_core.advanced_modules.auto_correction_advanced import \
-        AutoCorrectionAvancee
+    from athalia_core.advanced_modules.auto_correction_advanced import (
+        AutoCorrectionAvancee,
+    )
 
     AUTO_CORRECTION_AVAILABLE = True
 except ImportError:

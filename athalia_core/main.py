@@ -9,9 +9,12 @@ from datetime import datetime
 
 from athalia_core.ci import add_coverage_badge, generate_github_ci_yaml
 from athalia_core.cleanup import clean_old_tests_and_caches
+
 # from athalia_core.dashboard import generate_dashboard_html, generate_multi_project_mermaid
-from athalia_core.onboarding import (generate_onboard_cli,
-                                     generate_onboarding_html_advanced)
+from athalia_core.onboarding import (
+    generate_onboard_cli,
+    generate_onboarding_html_advanced,
+)
 from athalia_core.security import security_audit_project
 
 # Import du système de logging avancé

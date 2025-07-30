@@ -22,11 +22,13 @@ class TestAgentUnified(unittest.TestCase):
         """Test basique des agents unifiés"""
         try:
             # Test d'import des nouveaux modules unifiés
-            from athalia_core.agents.unified_agent import (AuditAgent,
-                                                           CorrectionAgent,
-                                                           QwenAgent,
-                                                           SynthesisAgent,
-                                                           UnifiedAgent)
+            from athalia_core.agents.unified_agent import (
+                AuditAgent,
+                CorrectionAgent,
+                QwenAgent,
+                SynthesisAgent,
+                UnifiedAgent,
+            )
 
             # Test de création d'agents
             unified_agent = UnifiedAgent("test")
