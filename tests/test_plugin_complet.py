@@ -30,7 +30,7 @@ def test_vscode_installation():
     """Test si VS Code est installé et accessible"""
     print_status("Test de l'installation VS Code...")
     try:
-        result = subprocess.run(
+        result = validate_and_run(
             ["code", "--version"], capture_output=True, text=True, timeout=10
         )
         if result.returncode == 0:
