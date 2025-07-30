@@ -10,6 +10,7 @@ try:
 except ImportError:
     # Fallback si le module n'est pas disponible
     import subprocess
+
     def validate_and_run(command, **kwargs):
         return subprocess.run(command, **kwargs)
     SecurityError = Exception
