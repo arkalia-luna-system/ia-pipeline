@@ -116,6 +116,34 @@
 
 ---
 
+## 🛠️ **OUTILS DE NETTOYAGE EXISTANTS (À UTILISER)**
+
+### **✅ Scripts de nettoyage disponibles :**
+
+#### **1. Script principal sécurisé : `bin/ath-clean`**
+- **Fonctionnalités** : Nettoyage sécurisé avec protection des fichiers importants
+- **Options** : `--dry-run`, `--kill-processes`, `--force-appledouble`
+- **Sécurité** : Protection automatique des fichiers importants
+- **Usage recommandé** : `./bin/ath-clean --dry-run` (simulation d'abord)
+
+#### **2. Script de nettoyage complet : `bin/ath-cleanup-complete`**
+- **Fonctionnalités** : Nettoyage agressif de tous les fichiers temporaires
+- **Avantages** : Suppression complète des fichiers système
+- **Usage recommandé** : Après validation avec `ath-clean`
+
+#### **3. Script de nettoyage des octets null : `bin/clean-null-bytes-robust.py`**
+- **Fonctionnalités** : Nettoyage des octets null et fichiers Apple Double
+- **Avantages** : Script Python robuste avec gestion d'erreurs
+- **Usage recommandé** : `python3 bin/clean-null-bytes-robust.py`
+
+#### **4. Scripts spécialisés :**
+- **`bin/ath-cleanup-appledouble`** : Nettoyage spécifique des fichiers Apple Double
+- **`bin/ath-cleanup-analysis`** : Analyse avant nettoyage
+- **`bin/ath-cleanup-preventive`** : Nettoyage préventif
+- **`bin/ath-cleanup-status`** : Statut du nettoyage
+
+---
+
 ## 📊 **ANALYSE DÉTAILLÉE DES PROBLÈMES**
 
 ### **🔴 PROBLÈMES CRITIQUES**
@@ -162,38 +190,38 @@
 
 ---
 
-## 🎯 **PLAN D'ACTION PHASE 4**
+## 🎯 **PLAN D'ACTION PHASE 4 - AVEC OUTILS EXISTANTS**
 
 ### **📋 Priorité 1 : Nettoyage Critique (15 problèmes)**
-1. **Supprimer le fichier corrompu** `athalia.f(f`
-2. **Nettoyer tous les fichiers Apple Double** (._*)
-3. **Supprimer les caches temporaires** (.pytest_cache, .ruff_cache, etc.)
-4. **Nettoyer les données de test obsolètes**
-5. **Optimiser la gestion des logs**
+1. **Simulation avec ath-clean** : `./bin/ath-clean --dry-run`
+2. **Nettoyage sécurisé** : `./bin/ath-clean` (sans options)
+3. **Nettoyage des octets null** : `python3 bin/clean-null-bytes-robust.py`
+4. **Nettoyage complet** : `./bin/ath-cleanup-complete`
+5. **Suppression manuelle du fichier corrompu** : `rm athalia.f(f`
 
 ### **📋 Priorité 2 : Optimisation des Tests (10 problèmes)**
-1. **Consolider les tests redondants**
-2. **Supprimer les tests de debug**
-3. **Optimiser les scripts de test**
-4. **Nettoyer les fichiers de test temporaires**
+1. **Analyse des tests redondants** : Identifier les tests similaires
+2. **Consolidation des tests** : Fusionner les tests redondants
+3. **Suppression des tests de debug** : Nettoyer les fichiers de debug
+4. **Optimisation des scripts de test** : Consolider les scripts similaires
 
 ### **📋 Priorité 3 : Optimisation des Scripts (10 problèmes)**
-1. **Consolider les scripts redondants**
-2. **Documenter les scripts existants**
-3. **Supprimer les scripts obsolètes**
-4. **Optimiser les scripts de nettoyage**
+1. **Analyse des scripts redondants** : Identifier les doublons
+2. **Documentation des scripts** : Ajouter des commentaires
+3. **Suppression des scripts obsolètes** : Nettoyer les scripts inutilisés
+4. **Optimisation des scripts de nettoyage** : Améliorer l'efficacité
 
 ### **📋 Priorité 4 : Documentation et Templates (10 problèmes)**
-1. **Mettre à jour la documentation**
-2. **Nettoyer les templates obsolètes**
-3. **Supprimer les blueprints historiques**
-4. **Optimiser la structure des docs**
+1. **Mise à jour de la documentation** : Corriger les docs obsolètes
+2. **Nettoyage des templates** : Supprimer les templates inutilisés
+3. **Suppression des blueprints** : Nettoyer l'historique
+4. **Optimisation de la structure** : Réorganiser les docs
 
 ### **📋 Priorité 5 : Validation et Tests (5 problèmes)**
-1. **Exécuter tous les tests après nettoyage**
-2. **Valider la performance**
-3. **Vérifier la sécurité**
-4. **Documenter les changements**
+1. **Exécution des tests** : `./bin/ath-test.py`
+2. **Validation de la performance** : `./bin/ath-coverage.py`
+3. **Vérification de la sécurité** : `./bin/ath-audit.py`
+4. **Documentation des changements** : Mettre à jour l'audit
 
 ---
 
@@ -226,6 +254,7 @@
 
 ---
 
-**📅 Dernière mise à jour :** 30 Juillet 2025 - 18:30  
+**📅 Dernière mise à jour :** 30 Juillet 2025 - 18:45  
 **🔄 Statut :** Phase 4 - Nettoyage Final (0% terminé)  
-**🎯 Objectif :** 100% pour la production finale 
+**🎯 Objectif :** 100% pour la production finale  
+**🛠️ Outils disponibles :** Scripts de nettoyage sécurisés prêts à l'emploi 
