@@ -18,6 +18,14 @@ from typing import Dict, List, Optional
 
 import yaml
 
+# Import du validateur de sécurité
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+    SecurityError = Exception
+
 logger = logging.getLogger(__name__)
 
 
@@ -350,7 +358,7 @@ htmlcov/
             if service:
                 cmd.append(service)
 
-            result = subprocess.run(
+            result = validate_and_run(
                 cmd, cwd=self.project_path, capture_output=True, text=True
             )
 

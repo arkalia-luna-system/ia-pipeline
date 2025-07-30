@@ -146,11 +146,15 @@ class Test{module_name}(unittest.TestCase):
 
     def setUp(self):
         \"\"\"Configuration avant chaque test\"\"\"
-        pass
+        # Configuration de base pour les tests
+        self.test_data = {{}}
+        self.test_config = {{"debug": False}}
 
     def tearDown(self):
         \"\"\"Nettoyage après chaque test\"\"\"
-        pass
+        # Nettoyage des données de test
+        self.test_data.clear()
+        self.test_config.clear()
 """.format(
             module_name=module["name"].title()
         )
@@ -305,7 +309,8 @@ class TestPerformance(unittest.TestCase):
 
     def setUp(self):
         \"\"\"Configuration avant chaque test\"\"\"
-        pass
+        # Configuration de base pour les tests de performance
+        self.performance_thresholds = {{"import_time": 5.0, "memory_limit": 100, "execution_time": 1.0}}
 
     def test_import_performance(self):
         \"\"\"Test de performance des imports\"\"\"
@@ -572,8 +577,9 @@ echo "✅ Tests terminés !"
             # Nettoyer même en cas derreur
             try:
                 self._cleanup_generated_tests()
-            except Exception:
-                pass
+            except Exception as cleanup_error:
+                # Log de l'erreur de nettoyage mais ne pas faire échouer le test
+                logger.warning(f"Erreur lors du nettoyage: {cleanup_error}")
 
         return results
 

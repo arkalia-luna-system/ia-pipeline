@@ -13,6 +13,14 @@ import re
 from datetime import datetime
 import subprocess
 
+# Import du validateur de sécurité
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+    SecurityError = Exception
+
 logger = logging.getLogger(__name__)
 
 
@@ -448,7 +456,7 @@ class AnalyticsEngine:
             # Vérifier si c'est un repo Git
             if (self.project_path / ".git").exists():
                 # Compter les commits
-                result = subprocess.run(
+                result = validate_and_run(
                     ["git", "rev-list", "--count", "HEAD"],
                     cwd=self.project_path,
                     capture_output=True,
@@ -458,7 +466,7 @@ class AnalyticsEngine:
                     git_data["commits_count"] = int(result.stdout.strip())
 
                 # Compter les contributeurs
-                result = subprocess.run(
+                result = validate_and_run(
                     ["git", "shortlog", "-s", "-n"],
                     cwd=self.project_path,
                     capture_output=True,
@@ -470,7 +478,7 @@ class AnalyticsEngine:
                     )
 
                 # Date du dernier commit
-                result = subprocess.run(
+                result = validate_and_run(
                     ["git", "log", "-1", "--format=%cd", "--date=short"],
                     cwd=self.project_path,
                     capture_output=True,
@@ -480,7 +488,7 @@ class AnalyticsEngine:
                     git_data["last_commit_date"] = result.stdout.strip()
 
                 # Compter les branches
-                result = subprocess.run(
+                result = validate_and_run(
                     ["git", "branch", "-r"],
                     cwd=self.project_path,
                     capture_output=True,

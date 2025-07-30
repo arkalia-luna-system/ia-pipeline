@@ -4,9 +4,18 @@ Distillation multimodale pour Athalia/Arkalia
 - Fusionne réponses texte et image (LLaVA)
 - Appel réel à LLaVA via RobustAI (Ollama)
 """
+import subprocess
 from typing import Any, Dict, List, Optional
 
 from athalia_core.ai_robust import AIModel, RobustAI
+
+# Import du validateur de sécurité
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+    SecurityError = Exception
 
 
 class MultimodalDistiller:
@@ -50,10 +59,8 @@ class MultimodalDistiller:
         :return: Réponse de LLaVA (str)
         """
         # Ollama LLaVA supporte --image <path> en CLI
-        import subprocess
-
         try:
-            result = subprocess.run(
+            result = validate_and_run(
                 ["ollama", "run", "llava:latest", "--image", image_path, prompt],
                 capture_output=True,
                 text=True,

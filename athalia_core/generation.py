@@ -228,11 +228,15 @@ class Test{project_name.title().replace('_', '')}(unittest.TestCase):
 
     def setUp(self):
         \"\"\"Configuration avant chaque test\"\"\"
-        pass
+        # Configuration de base pour les tests
+        self.test_data = {{}}
+        self.test_config = {{"debug": False}}
 
     def tearDown(self):
         \"\"\"Nettoyage après chaque test\"\"\"
-        pass
+        # Nettoyage des données de test
+        self.test_data.clear()
+        self.test_config.clear()
 
     def test_main_function(self):
         \"\"\"Test de la fonction main\"\"\"

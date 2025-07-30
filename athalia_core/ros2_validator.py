@@ -11,6 +11,14 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import Any, Dict
 
+# Import du validateur de sécurité
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+    SecurityError = Exception
+
 
 logger = logging.getLogger(__name__)
 
@@ -266,7 +274,7 @@ class ROS2Validator:
         """Vérifie les dépendances du package"""
         try:
             # Vérifier avec rosdep
-            result = subprocess.run(
+            result = validate_and_run(
                 [
                     "rosdep",
                     "check",
