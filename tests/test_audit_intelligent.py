@@ -56,7 +56,7 @@ def slow_function():
 # Problème de logging
 def debug_function():
     import logging
-    logging.info("Debug f")
+    logging.info("Debug function called")
     return True
 
 # Appel shell risqué
