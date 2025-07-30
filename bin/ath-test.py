@@ -8,6 +8,15 @@ import os
 import subprocess
 import sys
 
+# Import sécurisé pour la validation des commandes
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    # Fallback si le module n'est pas disponible
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+    SecurityError = Exception
+
 
 def run_tests_with_cleanup():
     """Exécute les tests avec nettoyage automatique"""
@@ -24,7 +33,7 @@ def run_tests_with_cleanup():
     try:
         # Exécuter les tests
         print("🚀 Exécution des tests...")
-        result = subprocess.run(
+        result = validate_and_run(
             ["pytest", "tests/", "-v", "--tb=short"], env=env, check=False
         )
 
@@ -33,7 +42,7 @@ def run_tests_with_cleanup():
         print("=" * 60)
 
         # Nettoyage automatique
-        cleanup_result = subprocess.run(
+        cleanup_result = validate_and_run(
             [sys.executable, "bin/ath-test-clean.py"], capture_output=True, text=True
         )
 
@@ -55,7 +64,7 @@ def run_tests_with_cleanup():
         print("🧹 Nettoyage d'urgence...")
 
         # Nettoyage d'urgence
-        subprocess.run([sys.executable, "bin/ath-test-clean.py"], capture_output=True)
+        validate_and_run([sys.executable, "bin/ath-test-clean.py"], capture_output=True)
 
         return 1
     except Exception as e:
@@ -63,7 +72,7 @@ def run_tests_with_cleanup():
         print("🧹 Nettoyage d'urgence...")
 
         # Nettoyage d'urgence
-        subprocess.run([sys.executable, "bin/ath-test-clean.py"], capture_output=True)
+        validate_and_run([sys.executable, "bin/ath-test-clean.py"], capture_output=True)
 
         return 1
 
@@ -88,12 +97,12 @@ def main():
         # Mode avec arguments (compatibilité)
         env = os.environ.copy()
         env["ATHALIA_TEST_RUNNING"] = "1"
-        result = subprocess.run(
+        result = validate_and_run(
             ["pytest", "tests/"] + sys.argv[1:], env=env, check=False
         )
 
         # Nettoyage après les tests
-        subprocess.run([sys.executable, "bin/ath-test-clean.py"], capture_output=True)
+        validate_and_run([sys.executable, "bin/ath-test-clean.py"], capture_output=True)
 
         sys.exit(result.returncode)
     else:

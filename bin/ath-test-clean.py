@@ -9,6 +9,15 @@ import time
 import psutil
 from pathlib import Path
 
+# Import sécurisé pour la validation des commandes
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    # Fallback si le module n'est pas disponible
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+    SecurityError = Exception
+
 
 def kill_athalia_processes():
     """Arrête tous les processus Athalia en cours"""
@@ -63,7 +72,7 @@ def cleanup_athalia_resources():
         ]
 
         for pattern in temp_patterns:
-            subprocess.run(
+            validate_and_run(
                 f"find . -name '{pattern}' -delete 2>/dev/null",
                 shell=True,
                 capture_output=True,
@@ -79,7 +88,7 @@ def run_ath_clean():
         ath_clean_path = Path(__file__).parent / "ath-clean"
         if ath_clean_path.exists():
             print("🧹 Exécution du script ath-clean...")
-            result = subprocess.run(
+            result = validate_and_run(
                 [str(ath_clean_path), "--kill-processes"],
                 capture_output=True,
                 text=True,

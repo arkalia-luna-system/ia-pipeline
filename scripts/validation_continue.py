@@ -127,7 +127,7 @@ class ValidationContinue:
                 f.write("x = 1\ny = 2\nprint(x + y + z)  # Erreur: z non défini")
 
             cmd = f"python scripts/athalia_unified.py {os.path.dirname(fichier_test)} --action fix"
-            result = subprocess.run(
+            result = validate_and_run(
                 cmd, shell=True, capture_output=True, text=True, timeout=30
             )
 
