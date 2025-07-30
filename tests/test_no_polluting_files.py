@@ -62,6 +62,10 @@ class TestNoPollutingFiles:
             "./tests/__pycache__",  # Cache Python normal dans tests
             "./tests/__pycache__/._test_no_polluting_files.cpython-310-pytest-8.4.1.pyc",  # Cache Python normal
             "./tests/__pycache__/test_no_polluting_files.cpython-310-pytest-8.4.1.pyc",  # Cache Python normal
+            "./.venv",  # Environnement virtuel complet
+            "./.venv/lib/python3.10/site-packages/_distutils_hack/__pycache__",  # Cache Python dans venv
+            "./.venv/lib/python3.10/site-packages/_distutils_hack/__pycache__/.___init__.cpython-310.pyc",  # Cache Python dans venv
+            "./.venv/lib/python3.10/site-packages/_distutils_hack/__pycache__/__init__.cpython-310.pyc",  # Cache Python dans venv
         }
 
         # Filtrer les fichiers autorisés
