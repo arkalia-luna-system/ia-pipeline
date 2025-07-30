@@ -389,7 +389,7 @@ class SecurityValidator:
         # Logging sécurisé avec vérification de l'état du logger
         try:
             # Vérifier si le logger est dans un état valide
-            if hasattr(logger, 'handlers') and logger.handlers:
+            if hasattr(logger, "handlers") and logger.handlers:
                 logger.info(f"Exécution de commande sécurisée: {' '.join(command)}")
         except (ValueError, OSError, AttributeError):
             # Fallback vers print si le logging échoue

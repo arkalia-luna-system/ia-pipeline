@@ -52,7 +52,7 @@ class TestClass:
 
     def test_run_returns_dict(self):
         """Test que run() retourne un dictionnaire"""
-        with patch("subprocess.run") as mock_run:
+        with patch("athalia_core.code_linter.validate_and_run") as mock_run:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = ""
             result = self.linter.run()
@@ -64,7 +64,7 @@ class TestClass:
 
     def test_run_flake8_success(self):
         """Test de l'exécution de flake8 avec succès"""
-        with patch("subprocess.run") as mock_run:
+        with patch("athalia_core.code_linter.validate_and_run") as mock_run:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = ""
             self.linter._run_flake8()
@@ -72,7 +72,7 @@ class TestClass:
 
     def test_run_flake8_with_errors(self):
         """Test de l'exécution de flake8 avec des erreurs"""
-        with patch("subprocess.run") as mock_run:
+        with patch("athalia_core.code_linter.validate_and_run") as mock_run:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = "test.py:1:1 E302 expected 2 blank lines"
             self.linter._run_flake8()
@@ -80,7 +80,7 @@ class TestClass:
 
     def test_run_black_success(self):
         """Test de l'exécution de black avec succès"""
-        with patch("subprocess.run") as mock_run:
+        with patch("athalia_core.code_linter.validate_and_run") as mock_run:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = ""
             self.linter._run_black()
@@ -88,7 +88,7 @@ class TestClass:
 
     def test_run_black_with_issues(self):
         """Test de l'exécution de black avec des problèmes"""
-        with patch("subprocess.run") as mock_run:
+        with patch("athalia_core.code_linter.validate_and_run") as mock_run:
             mock_run.return_value.returncode = 1
             mock_run.return_value.stdout = "would reformat"
             self.linter._run_black()
@@ -96,7 +96,7 @@ class TestClass:
 
     def test_run_isort_success(self):
         """Test de l'exécution de isort avec succès"""
-        with patch("subprocess.run") as mock_run:
+        with patch("athalia_core.code_linter.validate_and_run") as mock_run:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = ""
             self.linter._run_isort()
@@ -104,7 +104,7 @@ class TestClass:
 
     def test_run_isort_with_issues(self):
         """Test de l'exécution de isort avec des problèmes"""
-        with patch("subprocess.run") as mock_run:
+        with patch("athalia_core.code_linter.validate_and_run") as mock_run:
             mock_run.return_value.returncode = 1
             mock_run.return_value.stdout = "Imports are incorrectly sorted"
             self.linter._run_isort()
@@ -112,7 +112,7 @@ class TestClass:
 
     def test_run_mypy_success(self):
         """Test de l'exécution de mypy avec succès"""
-        with patch("subprocess.run") as mock_run:
+        with patch("athalia_core.code_linter.validate_and_run") as mock_run:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = ""
             self.linter._run_mypy()
@@ -120,7 +120,7 @@ class TestClass:
 
     def test_run_mypy_with_issues(self):
         """Test de l'exécution de mypy avec des problèmes"""
-        with patch("subprocess.run") as mock_run:
+        with patch("athalia_core.code_linter.validate_and_run") as mock_run:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = "test.py:1: error: Incompatible types"
             self.linter._run_mypy()
@@ -128,7 +128,7 @@ class TestClass:
 
     def test_run_bandit_success(self):
         """Test de l'exécution de bandit avec succès"""
-        with patch("subprocess.run") as mock_run:
+        with patch("athalia_core.code_linter.validate_and_run") as mock_run:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = ""
             self.linter._run_bandit()
@@ -136,7 +136,7 @@ class TestClass:
 
     def test_run_bandit_with_issues(self):
         """Test de l'exécution de bandit avec des problèmes"""
-        with patch("subprocess.run") as mock_run:
+        with patch("athalia_core.code_linter.validate_and_run") as mock_run:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = (
                 ">> Issue: [B101:assert_used] Use of assert detected"
@@ -171,7 +171,7 @@ class TestClass:
 
     def test_run_complete_workflow(self):
         """Test du workflow complet de run()"""
-        with patch("subprocess.run") as mock_run:
+        with patch("athalia_core.code_linter.validate_and_run") as mock_run:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = ""
             result = self.linter.run()
@@ -244,7 +244,7 @@ class TestClass:
 
     def test_return_value_structure(self):
         """Test de la structure de la valeur de retour de run()"""
-        with patch("subprocess.run") as mock_run:
+        with patch("athalia_core.code_linter.validate_and_run") as mock_run:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = ""
 
@@ -274,7 +274,7 @@ class TestClass:
         with open(requirements_file, "w") as f:
             f.write("pytest\nrequests")
 
-        with patch("subprocess.run") as mock_run:
+        with patch("athalia_core.code_linter.validate_and_run") as mock_run:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = ""
 
@@ -292,7 +292,7 @@ class TestClass:
 
     def test_multiple_tool_execution(self):
         """Test de l'exécution de plusieurs outils"""
-        with patch("subprocess.run") as mock_run:
+        with patch("athalia_core.code_linter.validate_and_run") as mock_run:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = ""
 
@@ -303,7 +303,7 @@ class TestClass:
 
     def test_error_accumulation(self):
         """Test de l'accumulation des erreurs"""
-        with patch("subprocess.run") as mock_run:
+        with patch("athalia_core.code_linter.validate_and_run") as mock_run:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = "Error 1\nError 2\nError 3"
 
@@ -313,7 +313,7 @@ class TestClass:
 
     def test_warning_accumulation(self):
         """Test de l'accumulation des avertissements"""
-        with patch("subprocess.run") as mock_run:
+        with patch("athalia_core.code_linter.validate_and_run") as mock_run:
             mock_run.return_value.returncode = 1
             mock_run.return_value.stdout = "Warning message"
 
@@ -323,7 +323,7 @@ class TestClass:
 
     def test_empty_output_handling(self):
         """Test de la gestion des sorties vides"""
-        with patch("subprocess.run") as mock_run:
+        with patch("athalia_core.code_linter.validate_and_run") as mock_run:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = ""
 
@@ -339,7 +339,7 @@ class TestClass:
 
     def test_newline_handling_in_output(self):
         """Test de la gestion des retours à la ligne dans les sorties"""
-        with patch("subprocess.run") as mock_run:
+        with patch("athalia_core.code_linter.validate_and_run") as mock_run:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = "Error 1\n\nError 2\n\n\nError 3"
 
