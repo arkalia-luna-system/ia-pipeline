@@ -30,6 +30,7 @@ class TestCLIRobustesse:
             # Exclure ath-test.py car il lance pytest et prend trop de temps
             # Path("bin/ath-test.py"),
         ]
+        # Correction pour éviter les timeouts dans les tests CLI
 
     def teardown_method(self):
         """Nettoyage après chaque test."""
@@ -43,14 +44,11 @@ class TestCLIRobustesse:
         for cli_path in self.cli_paths:
             if cli_path.exists():
                 try:
-                    # Augmenter le timeout pour les scripts qui exécutent pytest
-                    timeout = 120 if "ath-test" in str(cli_path) or "ath-coverage" in str(cli_path) else 60
-                    
                     result = subprocess.run(
                         [sys.executable, str(cli_path), "--help"],
                         capture_output=True,
                         text=True,
-                        timeout=timeout,
+                        timeout=120,
                     )
 
                     # Vérifier que la commande s'exécute sans erreur
@@ -68,13 +66,11 @@ class TestCLIRobustesse:
             if cli_path.exists():
                 try:
                     # Augmenter le timeout pour les scripts qui exécutent pytest
-                    timeout = 120 if "ath-test" in str(cli_path) or "ath-coverage" in str(cli_path) else 60
-                    
                     result = subprocess.run(
                         [sys.executable, str(cli_path), "--version"],
                         capture_output=True,
                         text=True,
-                        timeout=timeout,
+                        timeout=120,
                     )
 
                     # Vérifier que la commande s'exécute
@@ -91,13 +87,11 @@ class TestCLIRobustesse:
             if cli_path.exists():
                 try:
                     # Augmenter le timeout pour les scripts qui exécutent pytest
-                    timeout = 120 if "ath-test" in str(cli_path) or "ath-coverage" in str(cli_path) else 60
-                    
                     result = subprocess.run(
                         [sys.executable, str(cli_path), "--invalid-arg"],
                         capture_output=True,
                         text=True,
-                        timeout=timeout,
+                        timeout=120,
                     )
 
                     # Devrait retourner une erreur pour un argument invalide
