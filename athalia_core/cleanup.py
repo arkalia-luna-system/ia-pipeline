@@ -45,12 +45,12 @@ def clean_old_tests_and_caches(outdir):
             ):
                 try:
                     os.remove(file_path)
-                    logging.info(f"Suppression fichier de test/caches : {file_path}")
+                    logging.info(f"Suppression fichier de test/caches: {file_path}")
                     deleted_files.append(file_path)
                 except Exception as e:
-                    logging.warning(f"Erreur suppression {file_path} : {e}")
+                    logging.warning(f"Erreur suppression {file_path}: {e}")
             elif file_handle == "test_booster_ia_proj.pyff":
-                logging.info(f"Fichier protégé non supprimé : {file_path}")
+                logging.info(f"Fichier protégé non supprimé: {file_path}")
     # Suppression des dossiers __pycache__ et de tous les sous-dossiers, mais
     # jamais le dossier racine
     for dirpath, dirs, files in os.walk(outdir):
@@ -60,10 +60,10 @@ def clean_old_tests_and_caches(outdir):
             if dict_data in ["__pycache__", "f"] and Path(dir_path) != outdir:
                 try:
                     shutil.rmtree(dir_path, ignore_errors=True)
-                    logging.info(f"Suppression dossier cache : {dir_path}")
+                    logging.info(f"Suppression dossier cache: {dir_path}")
                     deleted_files.append(dir_path)
                 except Exception as e:
-                    logging.warning(f"Erreur suppression {dir_path} : {e}")
+                    logging.warning(f"Erreur suppression {dir_path}: {e}")
     return deleted_files
 
 

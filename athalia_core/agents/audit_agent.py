@@ -13,4 +13,4 @@ class AuditAgent:
 
 if __name__ == "__main__":
     agent = AuditAgent()
-    print(agent.act("Audit ce code : def foo(): pass"))
+    print(agent.act("Audit ce code: def foo(): pass"))

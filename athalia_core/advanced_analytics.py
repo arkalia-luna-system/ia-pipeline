@@ -30,7 +30,7 @@ class AdvancedAnalytics:
 
     def run(self) -> Dict[str, Any]:
         """Lance lanalyse complète du projet"""
-        logger.info(f"📊 Analytics avancée pour : {self.project_path.name}")
+        logger.info(f"📊 Analytics avancée pour: {self.project_path.name}")
 
         # Calcul des métriques
         self._analyze_complexity()
@@ -249,26 +249,26 @@ class AdvancedAnalytics:
 
     <div class="summary">
         <h2>📈 Résumé</h2>
-        <p><strong>Complexité moyenne :</strong> {average:.2f}</p>
-        <p><strong>Fichiers analysés :</strong> {total_files}</p>
-        <p><strong>Lignes de code :</strong> {total_lines}</p>
-        <p><strong>Fonctions :</strong> {docstrings}</p>
-        <p><strong>Classes :</strong> {docstrings}</p>
-        <p><strong>Fichiers de test :</strong> {files - total_files}</p>
+        <p><strong>Complexité moyenne:</strong> {average:.2f}</p>
+        <p><strong>Fichiers analysés:</strong> {total_files}</p>
+        <p><strong>Lignes de code:</strong> {total_lines}</p>
+        <p><strong>Fonctions:</strong> {docstrings}</p>
+        <p><strong>Classes:</strong> {docstrings}</p>
+        <p><strong>Fichiers de test:</strong> {files - total_files}</p>
     </div>
 
     <div class="metric">
         <h3>🎯 Métriques de qualité</h3>
-        <p>Docstrings : {docstrings}</p>
-        <p>Commentaires : {comments}</p>
-        <p>Lignes vides : {empty_lines}</p>
-        <p>Ratio commentaires : {(comments / max(1, total_quality_lines) * 100):.1f}%</p>
+        <p>Docstrings: {docstrings}</p>
+        <p>Commentaires: {comments}</p>
+        <p>Lignes vides: {empty_lines}</p>
+        <p>Ratio commentaires: {(comments / max(1, total_quality_lines) * 100):.1f}%</p>
     </div>
 
     <div class="metric">
         <h3>⚡ Performance</h3>
-        <p>Dépendances : {perf_dependencies}</p>
-        <p>Fichiers Python : {len(perf_file_sizes)}</p>
+        <p>Dépendances: {perf_dependencies}</p>
+        <p>Fichiers Python: {len(perf_file_sizes)}</p>
     </div>
 
     <div class="metric">

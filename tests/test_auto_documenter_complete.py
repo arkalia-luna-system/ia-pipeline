@@ -1,7 +1,7 @@
 """
 Tests complets pour auto_documenter.py
-Couverture : 100% des fonctionnalités d'auto_documenter
-Tests : 25 tests unitaires et d'intégration
+Couverture: 100% des fonctionnalités d'auto_documenter
+Tests: 25 tests unitaires et d'intégration
 """
 
 import json

@@ -1,7 +1,7 @@
 """
 Tests complets pour dashboard.py
-Couverture : 100% des fonctionnalités du dashboard
-Tests : 20 tests unitaires et d'intégration
+Couverture: 100% des fonctionnalités du dashboard
+Tests: 20 tests unitaires et d'intégration
 """
 
 import tempfile

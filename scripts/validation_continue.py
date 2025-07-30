@@ -258,8 +258,8 @@ class ValidationContinue:
 
         rapport = f"""# 🚨 ALERTE RÉGRESSION - Athalia/Arkalia
 
-**Date:** {datetime.now().strftime("%d/%m/%Y %H:%M:%S")}  
-**Gravité:** {alerte['gravite']}  
+**Date:** {datetime.now().strftime("%d/%m/%Y %H:%M:%S")}
+**Gravité:** {alerte['gravite']}
 **Baisse détectée:** {regression['baisse']:.1f}%
 
 ## 📊 Détails de la Régression
@@ -345,7 +345,7 @@ class ValidationContinue:
 
         rapport = f"""# 📊 Rapport de Tendance - Athalia/Arkalia
 
-**Période analysée:** {len(self.historique)} validations  
+**Période analysée:** {len(self.historique)} validations
 **Tendance:** {'📈 AMÉLIORATION' if evolution > 0 else '📉 RÉGRESSION' if evolution < 0 else '➡️ STABLE'}
 
 ## 📈 Métriques de Tendance

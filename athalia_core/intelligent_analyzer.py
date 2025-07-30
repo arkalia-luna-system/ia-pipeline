@@ -2,7 +2,7 @@
 """
 🧠 ANALYSEUR INTELLIGENT ATHALIA - ORCHESTRATEUR PRINCIPAL
 ==========================================================
-Orchestrateur principal qui coordonne tous les modules d'analyse :
+Orchestrateur principal qui coordonne tous les modules d'analyse:
 - AST Analyzer (analyse de base)
 - Pattern Detector (détection de patterns et doublons)
 - Architecture Analyzer (analyse d'architecture)

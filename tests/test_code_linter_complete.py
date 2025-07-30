@@ -1,7 +1,7 @@
 """
 Tests complets pour code_linter.py
-Couverture : 100% des fonctionnalités de linting
-Tests : 30 tests unitaires et d'intégration
+Couverture: 100% des fonctionnalités de linting
+Tests: 30 tests unitaires et d'intégration
 """
 
 import subprocess

@@ -12,7 +12,7 @@ def test_models_presence():
     """Vérifie la présence des modèles Claude et Mistral dans la config Continue."""
     config_path = os.path.expanduser("~/.continue/config.yaml")
     if not os.path.exists(config_path):
-        pytest.skip(f"Fichier de config introuvable : {config_path}")
+        pytest.skip(f"Fichier de config introuvable: {config_path}")
     with open(config_path, "r") as file_handle:
         content = file_handle.read()
     assert (

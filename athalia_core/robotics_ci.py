@@ -70,6 +70,11 @@ class RoboticsCI:
         elif (self.project_path / "package.json").exists():
             # Projet Node.js
             required_files = ["package.json"]
+        else:
+            # Aucun type de projet détecté
+            self.ci_results["errors"].append("Aucun type de projet robotics détecté")
+            self.ci_results["build_status"] = "failed"
+            return
 
         missing_files = []
         for file in required_files:

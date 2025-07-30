@@ -14,13 +14,13 @@ class AuditDistiller:
 
     def distill(self, audits: List[Dict[str, Any]]) -> Dict[str, Any]:
         """
-        Fusionne plusieurs audits en un score global et des recommandations synthétiques.
+          Fusionne plusieurs audits en un score global et des recommandations synthétiques.
         :param audits: Liste de résultats d'audit (dict)
         :return: Audit distillé (dict)
         """
         if not audits:
             return {}
-        # Exemple simple : moyenne pondérée des scores
+        # Exemple simple: moyenne pondérée des scores
         total_score = 0.0
         total_weight = 0.0
         for audit in audits:

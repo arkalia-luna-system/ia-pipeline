@@ -47,7 +47,7 @@ class IntelligentAuditor:
             "score": 0,
         }
 
-        logger.info(f"🔍 Audit intelligent en cours pour : {self.project_path.name}")
+        logger.info(f"🔍 Audit intelligent en cours pour: {self.project_path.name}")
 
         # Analyses parallèles
         self._analyze_project_info()

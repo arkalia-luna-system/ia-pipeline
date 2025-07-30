@@ -1,7 +1,7 @@
 """
 Package des agents IA pour Athalia/Arkalia.
 
-Ce package contient les agents intelligents spécialisés :
+Ce package contient les agents intelligents spécialisés:
 - context_prompt.py - Agent de prompts contextuels
 - network_agent.py - Agent de gestion réseau
 - audit_agent.py - Agent d'audit intelligent

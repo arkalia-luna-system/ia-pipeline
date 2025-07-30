@@ -1,7 +1,7 @@
 """
 Tests complets pour ros2_validator.py
-Couverture : 100% des fonctionnalités de ros2_validator
-Tests : 20 tests unitaires et d'intégration
+Couverture: 100% des fonctionnalités de ros2_validator
+Tests: 20 tests unitaires et d'intégration
 """
 
 import tempfile

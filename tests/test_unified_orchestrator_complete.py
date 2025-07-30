@@ -1,7 +1,7 @@
 """
 Tests complets pour unified_orchestrator.py
-Couverture : 100% des fonctionnalités d'orchestration unifiée
-Tests : 20 tests unitaires et d'intégration
+Couverture: 100% des fonctionnalités d'orchestration unifiée
+Tests: 20 tests unitaires et d'intégration
 """
 
 import tempfile

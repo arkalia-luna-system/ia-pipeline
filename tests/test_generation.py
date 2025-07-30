@@ -49,19 +49,19 @@ def test_generate_project_dry_run(tmp_path):
 
 
 def test_merge_or_suffix_file(tmp_path):
-    # Cas 1 : création
+    # Cas 1: création
     file = tmp_path / "file.txt"
     path, action = generation.merge_or_suffix_file(str(file), "Contenu initial")
     assert action == "created"
     assert file.read_text() == "Contenu initial"
-    # Cas 2 : fusion (ajout de section)
+    # Cas 2: fusion (ajout de section)
     path, action = generation.merge_or_suffix_file(
         str(file), "Nouveau contenu", section_header="Section"
     )
     assert action == "merged"
     txt = file.read_text()
     assert "Section" in txt and "Nouveau contenu" in txt
-    # Cas 3 : suffixe si pas de header
+    # Cas 3: suffixe si pas de header
     path, action = generation.merge_or_suffix_file(str(file), "Autre contenu")
     assert action == "suffixed"
     assert path.endswith("_auto.txt")

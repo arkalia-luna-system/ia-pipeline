@@ -1,7 +1,7 @@
 """
 Tests complets pour autocomplete_engine.py
-Couverture : 100% des fonctionnalités d'autocomplete
-Tests : 20 tests unitaires et d'intégration
+Couverture: 100% des fonctionnalités d'autocomplete
+Tests: 20 tests unitaires et d'intégration
 """
 
 import json

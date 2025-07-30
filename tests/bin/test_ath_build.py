@@ -19,7 +19,7 @@ def test_ath_build_runs():
     # Vérifier que le script existe
     assert os.path.exists(script), f"Script {script} n'existe pas"
 
-    # Test simple : vérifier que le script peut être importé
+    # Test simple: vérifier que le script peut être importé
     try:
         # Test d'import du module main
         import athalia_core.main

@@ -21,7 +21,7 @@ def test_apply_corrections_and_rollback():
         with open(file2, "w", encoding="utf-8") as f:
             f.write("foo baz")
 
-        # Correction : remplacer 'foo' par 'bar'
+        # Correction: remplacer 'foo' par 'bar'
         def corr_fn(content):
             return content.replace("foo", "bar")
 

@@ -17,7 +17,7 @@ class CorrectionDistiller:
         context: Optional[Dict[str, Any]] = None,
     ) -> str:
         """
-        Sélectionne ou fusionne la meilleure correction IA.
+          Sélectionne ou fusionne la meilleure correction IA.
         :param corrections: Liste de corrections proposées (str)
         :param scores: Scores optionnels pour chaque correction
         :param context: Contexte optionnel

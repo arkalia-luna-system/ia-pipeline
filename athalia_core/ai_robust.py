@@ -188,14 +188,14 @@ class RobustAI:
     def get_dynamic_prompt(self, context: str, **kwargs) -> str:
         """Retourne un prompt dynamique mocké selon le contexte."""
         return self.prompt_templates.get(
-            context, f"Prompt mocké pour le contexte : {context}"
+            context, f"Prompt mocké pour le contexte: {context}"
         )
 
     def _get_dynamic_prompt(self, context, **kwargs) -> str:
         """Alias privé pour compatibilité avec les tests."""
         ctx = context.value if hasattr(context, "value") else str(context)
         template = self.prompt_templates.get(
-            ctx, f"Prompt mocké pour le contexte : {ctx}"
+            ctx, f"Prompt mocké pour le contexte: {ctx}"
         )
         try:
             return template.format(**kwargs)

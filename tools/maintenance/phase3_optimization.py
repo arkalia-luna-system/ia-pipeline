@@ -4,7 +4,7 @@
 🧹 Phase 3 Optimization - Athalia Project
 Script sécurisé pour l'optimisation de maintenance
 
-Fonctionnalités :
+Fonctionnalités:
 - Optimisation des performances
 - Nettoyage intelligent des caches
 - Analyse de l'espace disque

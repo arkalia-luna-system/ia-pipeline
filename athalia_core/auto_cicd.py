@@ -23,7 +23,7 @@ class AutoCICD:
     def setup_cicd(self, project_path: str) -> Dict[str, Any]:
         """Configuration complète CI / CD pour un projet"""
         self.project_path = Path(project_path)
-        logger.info(f"🚀 Configuration CI / CD pour : {self.project_path.name}")
+        logger.info(f"🚀 Configuration CI / CD pour: {self.project_path.name}")
         # Analyse du projet
         self._analyze_project()
         # Génération des configurations
@@ -183,7 +183,7 @@ def generate_github_ci_yaml(outdir):
     ci_dir = outdir / ".f" / "f"
     ci_dir.mkdir(parents=True, exist_ok=True)
     (ci_dir / "ci.f(f").write_text("# CI/CD config")
-    logger.debug(f'Fichier généré : {ci_dir / "ci.f(f"}')
+    logger.debug(f'Fichier généré: {ci_dir / "ci.f(f"}')
 
 
 __all__ = ["AutoCICD", "generate_github_ci_yaml"]

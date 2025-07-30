@@ -18,7 +18,7 @@ def generate_github_ci_yaml(outdir):
     ci_dir.mkdir(parents=True, exist_ok=True)
     ci_file = ci_dir / "ci.f(f"
     ci_file.write_text("# CI/CD config")
-    logger.debug(f"Fichier généré : {ci_file} (exists: {ci_file.exists()})")
+    logger.debug(f"Fichier généré: {ci_file} (exists: {ci_file.exists()})")
     readme_path = os.path.join(outdir, "README.md")
     badge = "![CI](https://github.com /< user>/<repo >/ actions/workflows / ci.yaml / badge.svg)\n"
     if os.path.exists(readme_path):

@@ -63,7 +63,7 @@ def menu():
     logger.info("13. Quitter")
     logger.info("14. Mode surveillance (nouveau)")
     try:
-        return input("Choix : ").strip()
+        return input("Choix: ").strip()
     except (EOFError, KeyboardInterrupt):
         logger.info("\nSortie...")
         return "q"
@@ -139,7 +139,7 @@ def main(test_mode=False):
         try:
             choix = menu()
             if choix == "1":
-                idea = safe_input("Décris ton projet IA en une phrase : ")
+                idea = safe_input("Décris ton projet IA en une phrase: ")
                 if not idea:
                     logger.info("Description requise.")
                     continue
@@ -149,14 +149,14 @@ def main(test_mode=False):
                 # generate_project(blueprint, outdir)
                 logger.info("Projet généré dans le dossier spécifié.")
             elif choix == "2":
-                outdir = safe_input("Nom du dossier projet à nettoyer : ")
+                outdir = safe_input("Nom du dossier projet à nettoyer: ")
                 if not outdir:
                     logger.info("Nom de dossier requis.")
                     continue
                 clean_old_tests_and_caches(outdir)
                 logger.info(f"Nettoyage terminé pour {outdir}")
             elif choix == "3":
-                outdir = safe_input("Nom du dossier projet pour la CI : ")
+                outdir = safe_input("Nom du dossier projet pour la CI: ")
                 if not outdir:
                     logger.info("Nom de dossier requis.")
                     continue
@@ -185,7 +185,7 @@ def main(test_mode=False):
                 # disponible
                 logger.info("Dashboard généré.")
             elif choix == "5":
-                outdir = safe_input("Nom du dossier projet pour onboarding : ")
+                outdir = safe_input("Nom du dossier projet pour onboarding: ")
                 if not outdir:
                     logger.info("Nom de dossier requis.")
                     continue
@@ -197,25 +197,25 @@ def main(test_mode=False):
                 generate_onboarding_html_advanced({}, outdir)
                 logger.info(f"Guides d'onboarding générés dans {outdir}")
             elif choix == "6":
-                outdir = safe_input("Nom du dossier projet à auditer (sécurité) : ")
+                outdir = safe_input("Nom du dossier projet à auditer (sécurité): ")
                 if not outdir:
                     logger.info("Nom de dossier requis.")
                     continue
                 security_audit_project(outdir)
                 logger.info(f"Audit sécurité terminé pour {outdir}")
             elif choix == "7":
-                outdir = safe_input("Nom du dossier projet à scanner : ")
+                outdir = safe_input("Nom du dossier projet à scanner: ")
                 if not outdir:
                     logger.info("Nom de dossier requis.")
                     continue
                 # report = scan_existing_project(outdir)
                 # if report:
-                #     logger.info("Fichiers / dossiers critiques détectés :\n" + "\n".join(report))
+                #     logger.info("Fichiers / dossiers critiques détectés:\n" + "\n".join(report))
                 # else:
                 #     logger.info("Aucun fichier critique détecté.")
                 logger.info("Scan terminé.")
             elif choix == "8":
-                idea = safe_input("Décris ton projet IA (dry-run) : ")
+                idea = safe_input("Décris ton projet IA (dry-run): ")
                 if not idea:
                     logger.info("Description requise.")
                     continue
@@ -225,7 +225,7 @@ def main(test_mode=False):
                 # actions = generate_project(blueprint, outdir, dry_run=True)
                 logger.info("Simulation dry-run terminée.")
             elif choix == "9":
-                outdir = safe_input("Nom du dossier projet pour voir le rapport : ")
+                outdir = safe_input("Nom du dossier projet pour voir le rapport: ")
                 if not outdir:
                     logger.info("Nom de dossier requis.")
                     continue
@@ -235,7 +235,7 @@ def main(test_mode=False):
                 else:
                     logger.info("Aucun rapport dintégration trouvé.")
             elif choix == "10":
-                outdir = safe_input("Nom du dossier projet à rollback : ")
+                outdir = safe_input("Nom du dossier projet à rollback: ")
                 if not outdir:
                     logger.info("Nom de dossier requis.")
                     continue
@@ -251,11 +251,11 @@ def main(test_mode=False):
                     if not backups:
                         logger.info("Aucune sauvegarde .bak trouvée.")
                     else:
-                        logger.info("Sauvegardes disponibles :")
+                        logger.info("Sauvegardes disponibles:")
                         for index, b in enumerate(backups):
                             logger.info(f"{index + 1}. {b}")
                         try:
-                            idx_input = safe_input("Numéro à restaurer : ")
+                            idx_input = safe_input("Numéro à restaurer: ")
                             if not idx_input:
                                 logger.info("Numéro requis.")
                                 continue
@@ -272,7 +272,7 @@ def main(test_mode=False):
                         except (ValueError, IndexError):
                             logger.info("Numéro invalide.")
             elif choix == "11":
-                outdir = safe_input("Nom du dossier projet pour voir les logs : ")
+                outdir = safe_input("Nom du dossier projet pour voir les logs: ")
                 if not outdir:
                     logger.info("Nom de dossier requis.")
                     continue
@@ -282,7 +282,7 @@ def main(test_mode=False):
                 else:
                     logger.info("Aucun log dintégration trouvé.")
             elif choix == "12":
-                outdir = safe_input("Nom du dossier projet à auditer intelligemment : ")
+                outdir = safe_input("Nom du dossier projet à auditer intelligemment: ")
                 if not outdir:
                     logger.info("Nom de dossier requis.")
                     continue

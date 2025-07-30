@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 """
 Tests complets pour robotics/docker_robotics.py
-Couverture : 100% des fonctionnalités de docker_robotics
-Tests : 38 tests unitaires et d'intégration
+Couverture: 100% des fonctionnalités de docker_robotics
+Tests: 38 tests unitaires et d'intégration
 """
 
 import tempfile

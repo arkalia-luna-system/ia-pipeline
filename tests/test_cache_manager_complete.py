@@ -1,7 +1,7 @@
 """
 Tests complets pour cache_manager.py
-Couverture : 100% des fonctionnalités de cache
-Tests : 25 tests unitaires et d'intégration
+Couverture: 100% des fonctionnalités de cache
+Tests: 25 tests unitaires et d'intégration
 """
 
 import tempfile

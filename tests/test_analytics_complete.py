@@ -1,7 +1,7 @@
 """
 Tests complets pour analytics.py
-Couverture : 100% des fonctionnalités d'analytics
-Tests : 25 tests unitaires et d'intégration
+Couverture: 100% des fonctionnalités d'analytics
+Tests: 25 tests unitaires et d'intégration
 """
 
 import json

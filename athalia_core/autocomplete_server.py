@@ -33,4 +33,4 @@ def autocomplete(request: AutocompleteRequest):
     return AutocompleteResponse(suggestions=suggestions)
 
 
-# Pour lancer : uvicorn athalia_core.autocomplete_server:app --reload
+# Pour lancer: uvicorn athalia_core.autocomplete_server:app --reload

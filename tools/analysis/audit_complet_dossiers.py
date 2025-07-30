@@ -468,7 +468,7 @@ class AuditCompletDossiers:
 
         rapport = f"""# 📊 Rapport d'Audit Complet des Dossiers - Athalia/Arkalia
 
-**Date:** {datetime.now().strftime("%d/%m/%Y %H:%M:%S")}  
+**Date:** {datetime.now().strftime("%d/%m/%Y %H:%M:%S")}
 **Dossiers analysés:** {len(results)}
 
 ## 📈 Résultats par Dossier
@@ -479,8 +479,8 @@ class AuditCompletDossiers:
             dossier = result.dossier
             rapport += f"""### 📁 {dossier.nom} ({dossier.type_dossier})
 
-**Score total:** {result.score_total:.1f}/10  
-**Modules:** {len(result.modules)}  
+**Score total:** {result.score_total:.1f}/10
+**Modules:** {len(result.modules)}
 **Taille:** {dossier.taille_totale / 1024:.1f} KB
 
 **Scores détaillés:**
@@ -508,8 +508,8 @@ class AuditCompletDossiers:
             score_moyen = sum(scores_totaux) / len(scores_totaux)
             rapport += f"""## 📊 Statistiques Globales
 
-**Score moyen:** {score_moyen:.1f}/10  
-**Meilleur dossier:** {max(results, key=lambda r: r.score_total).dossier.nom} ({max(scores_totaux):.1f}/10)  
+**Score moyen:** {score_moyen:.1f}/10
+**Meilleur dossier:** {max(results, key=lambda r: r.score_total).dossier.nom} ({max(scores_totaux):.1f}/10)
 **Dossier à améliorer:** {min(results, key=lambda r: r.score_total).dossier.nom} ({min(scores_totaux):.1f}/10)
 
 ## 🎯 Recommandations Globales

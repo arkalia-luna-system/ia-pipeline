@@ -219,7 +219,7 @@ class ProjectImporter:
             base_structure.append("src/")
         if not structure["test_files"]:
             base_structure.append("tests/")
-        # Correction du NameError : remplacer 'doc' par 'docname'
+        # Correction du NameError: remplacer 'doc' par 'docname'
         docnames = ["readme", "doc", "documentation"]
         if not any(
             any(docname in file_handle.lower() for docname in docnames)
