@@ -87,11 +87,11 @@ def main():
             print("Usage: ath-test.py [options]")
             print("\nOptions:")
             print("  --help, -h     Afficher cette aide")
-            print("  --version, -v  Afficher la version")
+            print("  --version      Afficher la version")
             print("  [autres]       Arguments passés à pytest")
             sys.exit(0)
 
-        if "--version" in sys.argv or "-v" in sys.argv:
+        if "--version" in sys.argv:
             print("ath-test.py version 1.0.0")
             sys.exit(0)
 

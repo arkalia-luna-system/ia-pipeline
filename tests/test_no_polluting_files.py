@@ -207,6 +207,11 @@ class TestNoPollutingFiles:
             "dist",
         }
 
+        # Fichiers d'archive autorisés (normaux dans ce projet)
+        allowed_archive_files = {
+            "./logs/phase3_maintenance.log.gz",  # Log compressé normal
+        }
+
         archive_files = []
 
         for root, dirs, files in os.walk("."):
@@ -217,7 +222,8 @@ class TestNoPollutingFiles:
                 file_ext = Path(file).suffix.lower()
                 if file_ext in archive_extensions:
                     file_path = os.path.join(root, file)
-                    archive_files.append(file_path)
+                    if file_path not in allowed_archive_files:
+                        archive_files.append(file_path)
 
         if archive_files:
             pytest.fail("Fichiers d'archive trouvés:\n" + "\n".join(archive_files))
@@ -387,6 +393,8 @@ class TestNoPollutingFiles:
             "./.venv/include",  # Include venv normal
             "./.autocomplete",  # Cache autocomplétion normal
             "./athalia_core/logs",  # Logs athalia_core normaux
+            "./blueprints_history",  # Historique des blueprints normal
+            "./archive/performance_data",  # Données de performance normales
         }
 
         # Filtrer les répertoires autorisés

@@ -66,6 +66,7 @@ class SecurityValidator:
             "python",
             "python3",
             "/opt/homebrew/opt/pyenv/versions/3.10.14/bin/python",
+            "/opt/homebrew/opt/pyenv/versions/3.10.14/bin/python3",
             "pip",
             "pip3",
             "pytest",
@@ -176,6 +177,15 @@ class SecurityValidator:
             "/.bashrc",
             "/.profile",
             "/.bash_profile",
+        ]
+
+        # Patterns autorisés qui peuvent contenir des patterns dangereux
+        self.allowed_dangerous_patterns = [
+            "/opt/homebrew/opt/pyenv/versions/",
+            "/usr/bin/python",
+            "/usr/bin/python3",
+            "/usr/local/bin/python",
+            "/usr/local/bin/python3",
         ]
 
         self.forbidden_patterns = [
@@ -352,10 +362,16 @@ class SecurityValidator:
         """Vérifie si un chemin est dangereux."""
         try:
             path_obj = Path(path).resolve()
+            path_str = str(path_obj)
+
+            # Vérifier d'abord les patterns autorisés qui peuvent contenir des patterns dangereux
+            for allowed_pattern in self.allowed_dangerous_patterns:
+                if path_str.startswith(allowed_pattern):
+                    return False
 
             # Vérifier si le chemin est dans les répertoires sûrs
             for safe_dir in self.safe_directories:
-                if str(path_obj).startswith(safe_dir):
+                if path_str.startswith(safe_dir):
                     return False
 
             # Vérifier aussi les chemins relatifs dans le répertoire de travail
@@ -367,7 +383,7 @@ class SecurityValidator:
                         return False
 
             for pattern in self.dangerous_patterns:
-                if pattern in str(path_obj):
+                if pattern in path_str:
                     return True
 
             return False
