@@ -6,12 +6,12 @@ Tests simples pour le cache.
 
 import os
 import shutil
-import sys
 import tempfile
 import time
 import unittest
 
-from athalia_core.cache_manager import CacheManager, cache_function, clear_cache, get_cache_stats
+from athalia_core.cache_manager import (CacheManager, cache_function,
+                                        clear_cache, get_cache_stats)
 
 
 class TestCacheSimple(unittest.TestCase):

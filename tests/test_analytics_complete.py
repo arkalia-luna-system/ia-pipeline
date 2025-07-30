@@ -11,11 +11,8 @@ from unittest.mock import Mock, patch
 
 import yaml
 
-from athalia_core.analytics import (
-    AnalyticsEngine,
-    analyze_project_metrics,
-    generate_analytics_report,
-)
+from athalia_core.analytics import (AnalyticsEngine, analyze_project_metrics,
+                                    generate_analytics_report)
 
 
 class TestAnalyticsEngine:

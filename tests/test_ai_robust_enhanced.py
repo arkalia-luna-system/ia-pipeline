@@ -7,15 +7,9 @@ from unittest.mock import Mock, patch
 
 import pytest
 
-from athalia_core.ai_robust import (
-    AIModel,
-    PromptContext,
-    RobustAI,
-    fallback_ia,
-    query_mistral,
-    query_qwen,
-    robust_ai,
-)
+from athalia_core.ai_robust import (AIModel, PromptContext, RobustAI,
+                                    fallback_ia, query_mistral, query_qwen,
+                                    robust_ai)
 
 
 class TestAIRobustEnhanced:

@@ -133,7 +133,8 @@ MODULES INTÉGRÉS:
 
             # Import de l'orchestrateur principal
             try:
-                from athalia_core.athalia_orchestrator import AthaliaOrchestrator
+                from athalia_core.athalia_orchestrator import \
+                    AthaliaOrchestrator
             except ImportError:
                 logger.info(
                     "⚠️ Module athalia_orchestrator non disponible, "
@@ -193,7 +194,8 @@ MODULES INTÉGRÉS:
         elif args.action == "fix":
             logger.info("🔧 Lancement de l'auto-correction...")
             try:
-                from modules.auto_correction_avancee import AutoCorrectionAvancee
+                from modules.auto_correction_avancee import \
+                    AutoCorrectionAvancee
 
                 corrector = AutoCorrectionAvancee(args.project_path)
                 result = corrector.analyser_et_corriger(dry_run=args.dry_run)
@@ -204,7 +206,8 @@ MODULES INTÉGRÉS:
         elif args.action == "dashboard":
             logger.info("📊 Lancement du dashboard...")
             try:
-                from modules.dashboard_unifie_simple import DashboardUnifieSimple
+                from modules.dashboard_unifie_simple import \
+                    DashboardUnifieSimple
 
                 dashboard = DashboardUnifieSimple()
                 print(dashboard.generer_rapport_consolide())

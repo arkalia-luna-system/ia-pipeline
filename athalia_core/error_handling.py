@@ -12,12 +12,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Callable, Dict, Optional
 
-from .error_codes import (
-    ErrorCode,
-    ErrorSeverity,
-    format_error_message,
-    get_error_severity,
-)
+from .error_codes import (ErrorCode, ErrorSeverity, format_error_message,
+                          get_error_severity)
 
 
 class AthaliaError(Exception):

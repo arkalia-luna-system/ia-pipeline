@@ -9,11 +9,8 @@ import tempfile
 from pathlib import Path
 from unittest.mock import Mock, patch
 
-from athalia_core.autocomplete_engine import (
-    AutocompleteEngine,
-    get_suggestions,
-    train_model,
-)
+from athalia_core.autocomplete_engine import (AutocompleteEngine,
+                                              get_suggestions, train_model)
 
 
 class TestAutocompleteEngine:
