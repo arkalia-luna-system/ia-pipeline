@@ -218,7 +218,7 @@ def get_project_name(idea: str, project_type: ProjectType) -> str:
         return "iot_project"
 
     else:
-        # Générique : utiliser les premiers mots de l'idée
+        # Générique: utiliser les premiers mots de l'idée
         if len(words) >= 2:
             return f"{words[0]}_{words[1]}_project"
         return "ia_project"

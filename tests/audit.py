@@ -363,20 +363,20 @@ def generate_audit_report(project_path):
     auditor = ProjectAuditor(project_path)
     result = auditor.audit_project()
     metrics = result.get("metrics", {})
-    metriques_str = "\n".join([f"- {k} : {v}" for k, v in metrics.items()])
+    metriques_str = "\n".join([f"- {k}: {v}" for k, v in metrics.items()])
     issues_str = "\n".join([f"- {issue}" for issue in result.get("issues", [])])
     suggestions_str = "\n".join([f"- {s}" for s in result.get("suggestions", [])])
     rapport = (
         "AUDIT PROJET\n"
         "============\n"
-        f"Score global : {result.get('global_score', result.get('score', 0))}\n"
-        "PROBLÈMES DÉTECTÉS :\n"
+        f"Score global: {result.get('global_score', result.get('score', 0))}\n"
+        "PROBLÈMES DÉTECTÉS:\n"
         f"{issues_str}\n"
-        "Métriques :\n"
+        "Métriques:\n"
         f"{metriques_str}\n"
-        "SUGGESTIONS D'AMÉLIORATION :\n"
+        "SUGGESTIONS D'AMÉLIORATION:\n"
         f"{suggestions_str}\n"
-        f"Résumé : {result.get('summary', '')}\n"
+        f"Résumé: {result.get('summary', '')}\n"
     )
     # Sauvegarde des fichiers attendus par les tests
     json_path = os.path.join(project_path, "audit_report.json")

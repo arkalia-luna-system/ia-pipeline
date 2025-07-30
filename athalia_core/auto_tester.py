@@ -42,7 +42,7 @@ class AutoTester:
         """Génération complète de tests pour un projet"""
         self.project_path = Path(project_path)
 
-        logger.info(f"🧪 Génération de tests pour : {self.project_path.name}")
+        logger.info(f"🧪 Génération de tests pour: {self.project_path.name}")
 
         # Analyse du projet
         modules = self._analyze_modules()

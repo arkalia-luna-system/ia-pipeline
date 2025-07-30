@@ -44,6 +44,10 @@ class TestRoboticsCI:
         with open(setup_py, "w") as f:
             f.write("from setuptools import setup\nsetup()")
 
+        cmake_lists = Path(self.temp_dir) / "CMakeLists.txt"
+        with open(cmake_lists, "w") as f:
+            f.write("cmake_minimum_required(VERSION 3.8)\nproject(test_package)")
+
         self.ci._check_project_structure()
         assert self.ci.ci_results["build_status"] == "unknown"
 
@@ -300,9 +304,11 @@ class TestRoboticsCIIntegration:
         ci = RoboticsCI(project_path=self.temp_dir)
         result = ci.run_full_pipeline()
 
-        assert result["status"] in ["unknown", "success", "failed"]
         assert "build_status" in result
         assert "test_status" in result
+        assert "lint_status" in result
+        assert "security_status" in result
+        assert "deployment_status" in result
 
 
 # Tests pour les fonctions utilitaires

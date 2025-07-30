@@ -74,7 +74,7 @@ if __name__ == "__main__":
     synth = SynthesisAgent()
     qwen = QwenAgent()
 
-    prompt = "Corrige ce code : def foo(): pass"
+    prompt = "Corrige ce code: def foo(): pass"
 
     print("=== Test des agents unifiés ===")
     print(f"Audit: {audit.act(prompt)}")

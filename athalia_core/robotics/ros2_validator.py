@@ -2,7 +2,7 @@
 ROS2 Validator - Validation spécialisée ROS2
 ============================================
 
-Validation complète des workspaces ROS2 :
+Validation complète des workspaces ROS2:
 - Structure workspace
 - Packages et dépendances
 - Launch files

@@ -60,17 +60,17 @@ def generate_project(blueprint: dict, outdir, *args, **kwargs):
     project_path = Path(outdir) / project_name
 
     if dry_run:
-        # Mode dry-run : générer seulement le rapport
+        # Mode dry-run: générer seulement le rapport
         report_content = f"""[DRY-RUN] Génération du projet {project_name}
 
-Structure prévue :
+Structure prévue:
 - {project_path}/src/
 - {project_path}/tests/
 - {project_path}/docs/
 - {project_path}/README.md
 - {project_path}/requirements.txt
 
-Fichiers qui seraient créés :
+Fichiers qui seraient créés:
 - main.py
 - test_main.py
 - README.md
@@ -83,7 +83,7 @@ Fichiers qui seraient créés :
         report_file.write_text(report_content, encoding="utf-8")
         return str(project_path)
 
-    # Mode normal : générer le projet
+    # Mode normal: générer le projet
     project_path.mkdir(parents=True, exist_ok=True)
 
     # Créer la structure de base

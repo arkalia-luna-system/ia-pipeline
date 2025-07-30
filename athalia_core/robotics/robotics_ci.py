@@ -2,7 +2,7 @@
 Robotics CI - CI/CD spécialisé pour projets robotiques
 ======================================================
 
-Système CI/CD adapté aux projets Reachy/ROS2 :
+Système CI/CD adapté aux projets Reachy/ROS2:
 - Tests ROS2
 - Build Docker
 - Compilation Rust

@@ -334,11 +334,11 @@ class DashboardUnifieSimple:
         """
         file_handle.write("<h2>Résultat de la distillation IA</h2>")
         file_handle.write(
-            "<p><b>Réponse distillée :</b> Réponse de Ollama à "
+            "<p><b>Réponse distillée:</b> Réponse de Ollama à "
             '"Explique la distillation IA en 2 phrases."</p>'
         )
-        file_handle.write("<p><b>Score audit distillé :</b> 7.60</p>")
-        file_handle.write("<p><b>Correction distillée :</b> fix2</p>")
+        file_handle.write("<p><b>Score audit distillé:</b> 7.60</p>")
+        file_handle.write("<p><b>Correction distillée:</b> fix2</p>")
 
     def generer_dashboard_html(self, output_file: str = "dashboard/index.html"):
         """Génération d'un dashboard HTML moderne et valide"""
@@ -470,7 +470,7 @@ class DashboardUnifieSimple:
         </div>
         <div class="footer">
             <div class="update-time">
-                Dernière mise à jour : {metriques['derniere_mise_a_jour']}
+                Dernière mise à jour: {metriques['derniere_mise_a_jour']}
             </div>
         </div>
     </div>

@@ -166,7 +166,7 @@ def detect_prompt_semantic(filepath):
     prompt_list = "\n".join([f"- {p['name']} ({p['file']})" for p in PROMPTS])
     system_prompt = (
         "Tu es un assistant expert en analyse de contexte de code. "
-        "Voici la liste des prompts disponibles :\n"
+        "Voici la liste des prompts disponibles:\n"
         + prompt_list
         + "\nLis le contenu suivant et indique le nom du prompt le plus pertinent "
         "pour améliorer ou analyser. Réponds uniquement par le nom exact du prompt."
@@ -177,7 +177,7 @@ def detect_prompt_semantic(filepath):
             "ollama",
             "run",
             "mistral",
-            f"[INST] {system_prompt} \n\nContenu :\n{content}\n[/INST]",
+            f"[INST] {system_prompt} \n\nContenu:\n{content}\n[/INST]",
         ]
         result = validate_and_run(
             ollama_cmd, capture_output=True, text=True, timeout=20
@@ -187,14 +187,14 @@ def detect_prompt_semantic(filepath):
             if p["name"].lower() in answer.lower():
                 return p
     except Exception as e:
-        logging.warning(f"Analyse sémantique Ollama / Mistral échouée : {e}")
+        logging.warning(f"Analyse sémantique Ollama / Mistral échouée: {e}")
     return None
 
 
 def show_prompts(scored, semantic_prompt=None):
     if semantic_prompt:
         logging.info(
-            f"\nPrompt IA recommandé par analyse sémantique : "
+            f"\nPrompt IA recommandé par analyse sémantique: "
             f"{semantic_prompt['name']} -> {semantic_prompt['file']}"
         )
         if os.path.exists(semantic_prompt["file"]):
@@ -206,19 +206,19 @@ def show_prompts(scored, semantic_prompt=None):
                     pyperclip.copy(prompt_text)
                     logging.info("  (Prompt copié dans le presse-papiers)")
                 else:
-                    logging.info("  (pyperclip non installé : prompt non copié)")
+                    logging.info("  (pyperclip non installé: prompt non copié)")
             except Exception:
                 logging.info("  (Erreur lors de la copie)")
         logging.info()
-        logging.info(f"Prompt sémantique recommandé : {semantic_prompt['name']}")
+        logging.info(f"Prompt sémantique recommandé: {semantic_prompt['name']}")
         return
     if not scored:
         logging.info("Aucun prompt IA pertinent détecté pour ce fichier.")
         return
-    logging.info("\nPrompts IA recommandés (par pertinence) :\n" + "=" * 40)
+    logging.info("\nPrompts IA recommandés (par pertinence):\n" + "=" * 40)
     for index, (score, prompt, explanations) in enumerate(scored, 1):
         logging.info(f"{index}. {prompt['name']} (score {score}) -> {prompt['file']}")
-        logging.info("  Explications : " + "; ".join(explanations))
+        logging.info("  Explications: " + "; ".join(explanations))
         if index == 1:
             # Affiche le prompt principal
             if os.path.exists(prompt["file"]):
@@ -232,27 +232,27 @@ def show_prompts(scored, semantic_prompt=None):
                         pyperclip.copy(prompt_text)
                         logging.info("  (Prompt copié dans le presse-papiers)")
                     else:
-                        logging.info("  (pyperclip non installé : prompt non copié)")
+                        logging.info("  (pyperclip non installé: prompt non copié)")
                 except Exception:
                     logging.info("  (Erreur lors de la copie)")
         logging.info()
-    logging.info(f"Prompts recommandés : {[p[1]['name'] for p in scored]}")
+    logging.info(f"Prompts recommandés: {[p[1]['name'] for p in scored]}")
 
 
 def main():
     if len(sys.argv) < 2:
-        logging.info("Usage : ath_context_prompt.py <fichier1> [<fichier2> ...]")
+        logging.info("Usage: ath_context_prompt.py <fichier1> [<fichier2> ...]")
         sys.exit(1)
     filepaths = sys.argv[1:]
     all_content = ""
     for filepath in filepaths:
         if not os.path.exists(filepath):
-            logging.info(f"Fichier introuvable : {filepath}")
+            logging.info(f"Fichier introuvable: {filepath}")
             sys.exit(1)
         try:
             with open(filepath, "r", encoding="utf-8", errors="ignore") as file_handle:
                 all_content += (
-                    f"\n# Fichier : {os.path.basename(filepath)}\n" + file_handle.read()
+                    f"\n# Fichier: {os.path.basename(filepath)}\n" + file_handle.read()
                 )
         except Exception:
             continue

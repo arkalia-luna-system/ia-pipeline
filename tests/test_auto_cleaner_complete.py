@@ -1,7 +1,7 @@
 """
 Tests complets pour auto_cleaner.py
-Couverture : 100% des fonctionnalités d'auto_cleaner
-Tests : 30 tests unitaires et d'intégration
+Couverture: 100% des fonctionnalités d'auto_cleaner
+Tests: 30 tests unitaires et d'intégration
 """
 
 import json

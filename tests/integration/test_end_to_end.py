@@ -57,13 +57,13 @@ class TestEndToEndIntegration:
             blueprint = generate_blueprint_mock("api calculatrice test")
             blueprint["project_type"] = "api"
         except Exception as e:
-            pytest.skip(f"Impossible de générer le blueprint : {e}")
+            pytest.skip(f"Impossible de générer le blueprint: {e}")
 
         outdir = self.test_dir / "projet_api_test"
         try:
             generate_project(blueprint, str(outdir))
         except Exception as e:
-            pytest.skip(f"Impossible de générer le projet : {e}")
+            pytest.skip(f"Impossible de générer le projet: {e}")
 
         # Vérifications essentielles
         project_name = blueprint.get("project_name", "projet_ia")
@@ -93,7 +93,7 @@ class TestEndToEndIntegration:
             assert result.returncode in [
                 0,
                 1,
-            ], f"main.py a retourné un code inattendu : {result.returncode}"
+            ], f"main.py a retourné un code inattendu: {result.returncode}"
         except (subprocess.TimeoutExpired, SecurityError):
             pytest.skip("main.py a dépassé le timeout de 10s")
 
@@ -119,13 +119,13 @@ class TestEndToEndIntegration:
             blueprint = generate_blueprint_mock("web application test")
             blueprint["project_type"] = "web"
         except Exception as e:
-            pytest.skip(f"Impossible de générer le blueprint web : {e}")
+            pytest.skip(f"Impossible de générer le blueprint web: {e}")
 
         outdir = self.test_dir / "projet_web_test"
         try:
             generate_project(blueprint, str(outdir))
         except Exception as e:
-            pytest.skip(f"Impossible de générer le projet web : {e}")
+            pytest.skip(f"Impossible de générer le projet web: {e}")
 
         # Vérifications spécifiques aux projets web
         project_name = blueprint.get("project_name", "projet_web")
@@ -159,13 +159,13 @@ class TestEndToEndIntegration:
             blueprint = generate_blueprint_mock("cli tool test")
             blueprint["project_type"] = "cli"
         except Exception as e:
-            pytest.skip(f"Impossible de générer le blueprint CLI : {e}")
+            pytest.skip(f"Impossible de générer le blueprint CLI: {e}")
 
         outdir = self.test_dir / "projet_cli_test"
         try:
             generate_project(blueprint, str(outdir))
         except Exception as e:
-            pytest.skip(f"Impossible de générer le projet CLI : {e}")
+            pytest.skip(f"Impossible de générer le projet CLI: {e}")
 
         # Vérifications spécifiques aux projets CLI
 
@@ -209,7 +209,7 @@ def test_function():
             assert isinstance(analysis_result, dict)
 
         except Exception as e:
-            pytest.skip(f"Workflow non disponible : {e}")
+            pytest.skip(f"Workflow non disponible: {e}")
 
     def test_integration_with_external_tools(self):
         """Test d'intégration avec des outils externes."""
@@ -247,7 +247,7 @@ def test_function():
             # Le blueprint devrait être valide même avec une chaîne vide
             assert isinstance(blueprint, dict)
         except Exception as e:
-            pytest.skip(f"Gestion d'erreur non disponible : {e}")
+            pytest.skip(f"Gestion d'erreur non disponible: {e}")
 
     def test_performance_end_to_end(self):
         """Test de performance end-to-end."""
@@ -264,7 +264,7 @@ def test_function():
         execution_time = end_time - start_time
 
         # La génération de blueprint ne devrait pas prendre plus de 5 secondes
-        assert execution_time < 5.0, f"Génération trop lente : {execution_time:.2f}s"
+        assert execution_time < 5.0, f"Génération trop lente: {execution_time:.2f}s"
 
     def test_concurrent_generation(self):
         """Test de génération concurrente."""
@@ -300,7 +300,7 @@ def test_function():
         while not results.empty():
             thread_id, result = results.get()
             if isinstance(result, Exception):
-                pytest.skip(f"Génération concurrente échouée : {result}")
+                pytest.skip(f"Génération concurrente échouée: {result}")
             assert isinstance(
                 result, dict
             ), f"Résultat invalide pour le thread {thread_id}"
@@ -318,13 +318,13 @@ def test_generation_end_to_end_simple(tmp_path):
         blueprint = generate_blueprint_mock("api calculatrice test")
         blueprint["project_type"] = "api"
     except Exception as e:
-        pytest.skip(f"Impossible de générer le blueprint : {e}")
+        pytest.skip(f"Impossible de générer le blueprint: {e}")
 
     outdir = tmp_path / "projet_test"
     try:
         generate_project(blueprint, str(outdir))
     except Exception as e:
-        pytest.skip(f"Impossible de générer le projet : {e}")
+        pytest.skip(f"Impossible de générer le projet: {e}")
 
     # Vérifications essentielles
     project_name = blueprint.get("project_name", "projet_ia")
@@ -347,7 +347,7 @@ def test_generation_end_to_end_simple(tmp_path):
         assert result.returncode in [
             0,
             1,
-        ], f"main.py a retourné un code inattendu : {result.returncode}"
+        ], f"main.py a retourné un code inattendu: {result.returncode}"
     except (subprocess.TimeoutExpired, SecurityError):
         pytest.skip("main.py a dépassé le timeout de 10s")
 

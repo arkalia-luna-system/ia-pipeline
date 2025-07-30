@@ -3,7 +3,7 @@
 🔍 AUDIT COMPLET DOSSIERS ET SOUS-DOSSIERS
 ==========================================
 Script pour analyser chaque dossier et sous-dossier du projet Athalia.
-Vérifie : utilité, implémentation, tests, documentation, intégration.
+Vérifie: utilité, implémentation, tests, documentation, intégration.
 """
 
 import ast
@@ -102,7 +102,7 @@ class AuditCompletDossiers:
         for dossier_nom in dossiers_principaux:
             dossier_path = self.root_path / dossier_nom
             if dossier_path.exists():
-                print(f"\n📁 ANALYSE DU DOSSIER : {dossier_nom}")
+                print(f"\n📁 ANALYSE DU DOSSIER: {dossier_nom}")
                 result = self._analyser_dossier_complet(dossier_path, dossier_nom)
                 if result:
                     results.append(result)
@@ -111,7 +111,7 @@ class AuditCompletDossiers:
         print("\n🔍 ANALYSE DES SOUS-DOSSIERS CACHÉS")
         sous_dossiers_caches = self._trouver_sous_dossiers_caches()
         for sous_dossier in sous_dossiers_caches:
-            print(f"\n📁 ANALYSE DU SOUS-DOSSIER CACHÉ : {sous_dossier}")
+            print(f"\n📁 ANALYSE DU SOUS-DOSSIER CACHÉ: {sous_dossier}")
             result = self._analyser_dossier_complet(sous_dossier, sous_dossier.name)
             if result:
                 results.append(result)
@@ -512,7 +512,7 @@ class AuditCompletDossiers:
         for module in modules:
             if len(module.fonctions) > 10 or len(module.classes) > 5:
                 pepites.append(
-                    f"💎 Module riche : {module.nom} ({len(module.fonctions)} fonctions, {len(module.classes)} classes)"
+                    f"💎 Module riche: {module.nom} ({len(module.fonctions)} fonctions, {len(module.classes)} classes)"
                 )
 
         # Chercher des modules avec des noms intéressants
@@ -530,19 +530,19 @@ class AuditCompletDossiers:
                     "deep",
                 ]
             ):
-                pepites.append(f"🧠 Module IA : {module.nom}")
+                pepites.append(f"🧠 Module IA: {module.nom}")
 
         # Chercher des modules avec beaucoup d'imports
         for module in modules:
             if len(module.imports) > 10:
                 pepites.append(
-                    f"🔗 Module complexe : {module.nom} ({len(module.imports)} imports)"
+                    f"🔗 Module complexe: {module.nom} ({len(module.imports)} imports)"
                 )
 
         # Chercher des fichiers de configuration
         if dossier_info.fichiers_yaml:
             pepites.append(
-                f"⚙️ Configuration : {len(dossier_info.fichiers_yaml)} fichiers YAML"
+                f"⚙️ Configuration: {len(dossier_info.fichiers_yaml)} fichiers YAML"
             )
 
         return pepites
@@ -552,39 +552,39 @@ class AuditCompletDossiers:
         rapport = []
         rapport.append("# 🔍 AUDIT COMPLET DOSSIERS ET SOUS-DOSSIERS")
         rapport.append("=" * 60)
-        rapport.append(f"**Date** : {Path.cwd().name}")
-        rapport.append(f"**Total dossiers analysés** : {len(self.results)}")
+        rapport.append(f"**Date**: {Path.cwd().name}")
+        rapport.append(f"**Total dossiers analysés**: {len(self.results)}")
         rapport.append("")
 
         # Résumé global
         scores_totaux = [r.score_total for r in self.results]
         if scores_totaux:
             rapport.append(
-                f"**Score moyen global** : {sum(scores_totaux) / len(scores_totaux):.2f}/10"
+                f"**Score moyen global**: {sum(scores_totaux) / len(scores_totaux):.2f}/10"
             )
-            rapport.append(f"**Meilleur score** : {max(scores_totaux):.2f}/10")
-            rapport.append(f"**Pire score** : {min(scores_totaux):.2f}/10")
+            rapport.append(f"**Meilleur score**: {max(scores_totaux):.2f}/10")
+            rapport.append(f"**Pire score**: {min(scores_totaux):.2f}/10")
         rapport.append("")
 
         # Détails par dossier
         for result in sorted(self.results, key=lambda x: x.score_total, reverse=True):
             rapport.append(f"## 📁 {result.dossier.nom}")
-            rapport.append(f"**Type** : {result.dossier.type_dossier}")
-            rapport.append(f"**Score total** : {result.score_total:.2f}/10")
-            rapport.append(f"**Modules Python** : {len(result.modules)}")
-            rapport.append(f"**Fichiers MD** : {len(result.dossier.fichiers_md)}")
-            rapport.append(f"**Sous-dossiers** : {len(result.dossier.sous_dossiers)}")
+            rapport.append(f"**Type**: {result.dossier.type_dossier}")
+            rapport.append(f"**Score total**: {result.score_total:.2f}/10")
+            rapport.append(f"**Modules Python**: {len(result.modules)}")
+            rapport.append(f"**Fichiers MD**: {len(result.dossier.fichiers_md)}")
+            rapport.append(f"**Sous-dossiers**: {len(result.dossier.sous_dossiers)}")
             rapport.append("")
 
             # Scores détaillés
             rapport.append("### 📊 Scores détaillés")
-            rapport.append(f"- **Utilité** : {result.score_utilite:.2f}/10")
+            rapport.append(f"- **Utilité**: {result.score_utilite:.2f}/10")
             rapport.append(
-                f"- **Implémentation** : {result.score_implementation:.2f}/10"
+                f"- **Implémentation**: {result.score_implementation:.2f}/10"
             )
-            rapport.append(f"- **Tests** : {result.score_tests:.2f}/10")
-            rapport.append(f"- **Documentation** : {result.score_documentation:.2f}/10")
-            rapport.append(f"- **Intégration** : {result.score_integration:.2f}/10")
+            rapport.append(f"- **Tests**: {result.score_tests:.2f}/10")
+            rapport.append(f"- **Documentation**: {result.score_documentation:.2f}/10")
+            rapport.append(f"- **Intégration**: {result.score_integration:.2f}/10")
             rapport.append("")
 
             # Pépites trouvées
@@ -606,7 +606,7 @@ class AuditCompletDossiers:
                 rapport.append("### 📦 Modules principaux")
                 for module in result.modules[:5]:  # Top 5
                     rapport.append(
-                        f"- **{module.nom}** : {len(module.fonctions)} fonctions, {len(module.classes)} classes"
+                        f"- **{module.nom}**: {len(module.fonctions)} fonctions, {len(module.classes)} classes"
                     )
                 rapport.append("")
 
@@ -629,16 +629,16 @@ def main():
     with open(rapport_path, "w", encoding="utf-8") as f:
         f.write(rapport)
 
-    print(f"\n✅ Rapport sauvegardé dans : {rapport_path}")
+    print(f"\n✅ Rapport sauvegardé dans: {rapport_path}")
 
     # Afficher un résumé
     print("\n📊 RÉSUMÉ EXÉCUTIF:")
-    print(f"  📁 Dossiers analysés : {len(results)}")
+    print(f"  📁 Dossiers analysés: {len(results)}")
     if results:
         scores = [r.score_total for r in results]
-        print(f"  📈 Score moyen : {sum(scores) / len(scores):.2f}/10")
-        print(f"  🏆 Meilleur : {max(scores):.2f}/10")
-        print(f"  ⚠️ Pire : {min(scores):.2f}/10")
+        print(f"  📈 Score moyen: {sum(scores) / len(scores):.2f}/10")
+        print(f"  🏆 Meilleur: {max(scores):.2f}/10")
+        print(f"  ⚠️ Pire: {min(scores):.2f}/10")
 
     # Afficher les pépites
     toutes_pepites = []

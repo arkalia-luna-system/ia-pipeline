@@ -37,7 +37,7 @@ def test_ath_test_runs():
             0,
             1,
             2,
-        ), f"ath-test.py a crashé : {result.stderr.decode()}"
+        ), f"ath-test.py a crashé: {result.stderr.decode()}"
     except (subprocess.TimeoutExpired, SecurityError):
         # Timeout attendu pour éviter la récursivité
         pass

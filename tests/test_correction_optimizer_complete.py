@@ -1,7 +1,7 @@
 """
 Tests complets pour correction_optimizer.py
-Couverture : 100% des fonctionnalités
-Tests : 35 tests unitaires et d'intégration
+Couverture: 100% des fonctionnalités
+Tests: 35 tests unitaires et d'intégration
 """
 
 import json

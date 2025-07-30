@@ -28,7 +28,7 @@ def test_ath_lint_runs():
     try:
         result = validate_and_run([script], capture_output=True, text=True)
         # 0 = succès, 1 = échec de linting, mais pas crash
-        assert result.returncode in (0, 1), f"ath-lint.py a crashé : {result.stderr}"
+        assert result.returncode in (0, 1), f"ath-lint.py a crashé: {result.stderr}"
     except PermissionError:
         pytest.skip(f"Permission refusée pour {script}")
     except FileNotFoundError:

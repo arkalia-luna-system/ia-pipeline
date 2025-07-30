@@ -287,13 +287,13 @@ MIT License
 
 ## Installation
 
-1. Cloner le repository :
+1. Cloner le repository:
 ```bash
 git clone <repository-url>
 cd <project-name>
 ```
 
-2. Créer un environnement virtuel :
+2. Créer un environnement virtuel:
 ```bash
 python -m venv venv
 source venv/bin/activate  # Linux/Mac
@@ -301,7 +301,7 @@ source venv/bin/activate  # Linux/Mac
 venv\\Scripts\\activate  # Windows
 ```
 
-3. Installer les dépendances :
+3. Installer les dépendances:
 ```bash
 pip install -r requirements.txt
 ```
@@ -417,7 +417,7 @@ pytest tests/
 
 ## Style de Commit
 
-Utiliser des messages de commit conventionnels :
+Utiliser des messages de commit conventionnels:
 - `feat:` nouvelle fonctionnalité
 - `fix:` correction de bug
 - `docs:` documentation
@@ -834,18 +834,18 @@ Consultez la documentation complète dans le dossier `docs/`.
 
 ## Installation
 
-1. Cloner le repository :
+1. Cloner le repository:
 ```bash
 git clone <repository-url>
 cd {self.project_info.get('name', 'project')}
 ```
 
-2. Installer les dépendances :
+2. Installer les dépendances:
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Configuration :
+3. Configuration:
 ```bash
 cp config.example.yml config.yml
 # Éditer config.yml selon vos besoins
@@ -879,13 +879,13 @@ main(config)
 
 ## {translations['examples']}
 
-### Exemple 1 : Utilisation basique
+### Exemple 1: Utilisation basique
 
 ```python
 # Code d'exemple
 ```
 
-### Exemple 2 : Configuration avancée
+### Exemple 2: Configuration avancée
 
 ```python
 # Code d'exemple avancé

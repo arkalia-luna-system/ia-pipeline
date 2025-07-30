@@ -2,7 +2,7 @@
 Docker Robotics Manager - Gestion Docker pour projets robotiques
 ===============================================================
 
-Gestion spécialisée Docker pour projets Reachy/ROS2 :
+Gestion spécialisée Docker pour projets Reachy/ROS2:
 - Configuration Docker Compose
 - Variables d'environnement ROS
 - Volumes et networking

@@ -331,7 +331,7 @@ class TestClass:
 
         # Simuler une erreur de lecture
         with patch("builtins.open", side_effect=PermissionError):
-            results = {"errors": []}
+            results = {"errors": [], "warnings": []}
             _ = self.validator._check_python_syntax(plugin_dir, results)
             # Le test doit passer sans exception
 

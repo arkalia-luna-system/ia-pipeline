@@ -2,7 +2,7 @@
 """
 🧠 MÉMOIRE INTELLIGENTE ATHALIA
 ===============================
-Système de mémoire qui :
+Système de mémoire qui:
 - Apprend de chaque erreur et correction
 - Prédit les problèmes futurs
 - Suggère des corrections automatiques

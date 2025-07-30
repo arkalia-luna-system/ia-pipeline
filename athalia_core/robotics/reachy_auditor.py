@@ -2,7 +2,7 @@
 Reachy Auditor - Audit spécialisé pour projets Reachy/ROS2
 ==========================================================
 
-Audit complet des projets robotiques Reachy :
+Audit complet des projets robotiques Reachy:
 - Validation workspace ROS2
 - Contrôle Docker/Containers
 - Analyse Rust/Cargo

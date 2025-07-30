@@ -481,8 +481,8 @@ if __name__ == "__main__":
 
         rapport = f"""# 📊 Rapport de Validation Objective - Athalia/Arkalia
 
-**Date:** {datetime.now().strftime("%d/%m/%Y %H:%M:%S")}  
-**Temps total:** {temps_total:.1f} secondes  
+**Date:** {datetime.now().strftime("%d/%m/%Y %H:%M:%S")}
+**Temps total:** {temps_total:.1f} secondes
 **Tests réussis:** {tests_succes}/{len(resultats)} ({taux_succes:.1f}%)
 
 ## 🎯 Verdict Global

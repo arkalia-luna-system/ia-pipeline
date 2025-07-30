@@ -61,7 +61,7 @@ def test_ath_coverage_runs():
         assert result.returncode in (
             0,
             1,
-        ), f"ath-coverage.py a crashé : {result.stderr.decode(errors='ignore')}"
+        ), f"ath-coverage.py a crashé: {result.stderr.decode(errors='ignore')}"
         assert (
             time.time() - start
         ) < 35, "ath-coverage.py a mis trop de temps à s'exécuter (>30s)"

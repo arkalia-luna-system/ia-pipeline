@@ -1,7 +1,7 @@
 """
 Package des modules avancés pour Athalia/Arkalia.
 
-Ce package contient les modules avancés qui étendent les fonctionnalités de base :
+Ce package contient les modules avancés qui étendent les fonctionnalités de base:
 - auto_correction_advanced.py - Correction automatique avancée
 - dashboard_unified.py - Dashboard unifié simplifié
 - user_profiles_advanced.py - Gestion avancée des profils utilisateur

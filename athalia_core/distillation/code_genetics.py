@@ -10,7 +10,7 @@ from typing import Callable, List
 class CodeGenetics:
     def crossover(self, solutions: List[str]) -> str:
         """
-        Croisement de solutions : mélange aléatoire de fragments de chaque solution.
+          Croisement de solutions: mélange aléatoire de fragments de chaque solution.
         :param solutions: Liste de solutions (str)
         :return: Nouvelle solution croisée
         """
@@ -26,7 +26,7 @@ class CodeGenetics:
 
     def mutate(self, solution: str, mutation_rate: float = 0.1) -> str:
         """
-        Mutation simple : modifie aléatoirement des mots de la solution.
+          Mutation simple: modifie aléatoirement des mots de la solution.
         :param solution: Solution à muter
         :param mutation_rate: Taux de mutation (0-1)
         :return: Solution mutée
@@ -41,7 +41,7 @@ class CodeGenetics:
         self, solutions: List[str], scorer: Callable[[str], float], top_k: int = 2
     ) -> List[str]:
         """
-        Sélectionne les meilleures solutions selon un score.
+          Sélectionne les meilleures solutions selon un score.
         :param solutions: Liste de solutions
         :param scorer: Fonction de scoring (str -> float)
         :param top_k: Nombre de solutions à garder
@@ -58,7 +58,7 @@ class CodeGenetics:
         mutation_rate: float = 0.1,
     ) -> str:
         """
-        Fait évoluer les solutions sur plusieurs générations (croisement, mutation, sélection).
+          Fait évoluer les solutions sur plusieurs générations (croisement, mutation, sélection).
         :param solutions: Liste initiale
         :param scorer: Fonction de scoring
         :param generations: Nombre de générations

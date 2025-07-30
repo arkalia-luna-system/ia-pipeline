@@ -147,7 +147,7 @@ class PluginValidator:
             }
 
         for plugin_dir in self.plugins_dir.iterdir():
-            if plugin_dir.is_dir() and (plugin_dir / "__init__.py").exists():
+            if plugin_dir.is_dir():
                 result = self.validate_plugin(str(plugin_dir))
 
                 if result["valid"]:

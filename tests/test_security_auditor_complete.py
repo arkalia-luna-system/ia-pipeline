@@ -1,7 +1,7 @@
 """
 Tests complets pour security_auditor.py
-Couverture : 100% des fonctionnalités de security_auditor
-Tests : 32 tests unitaires et d'intégration
+Couverture: 100% des fonctionnalités de security_auditor
+Tests: 32 tests unitaires et d'intégration
 """
 
 import os

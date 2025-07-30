@@ -48,7 +48,7 @@ class TestYAMLValidity:
             assert "project" in data
             assert data["project"]["name"] == "test_project"
         except yaml.YAMLError as e:
-            pytest.fail(f"YAML valide rejeté : {e}")
+            pytest.fail(f"YAML valide rejeté: {e}")
 
     def test_yaml_syntax_invalidity(self):
         """Test de la détection d'YAML invalide."""
@@ -90,7 +90,7 @@ class TestYAMLValidity:
                 ), "La section modules doit être un dictionnaire"
 
         except yaml.YAMLError as e:
-            pytest.fail(f"Configuration YAML invalide : {e}")
+            pytest.fail(f"Configuration YAML invalide: {e}")
 
     def test_blueprint_yaml_structure(self):
         """Test de la structure des blueprints YAML."""
@@ -144,7 +144,7 @@ class TestYAMLValidity:
             assert data["cli_config"]["timeout"] == 30
 
         except yaml.YAMLError as e:
-            pytest.fail(f"YAML avec ancres rejeté : {e}")
+            pytest.fail(f"YAML avec ancres rejeté: {e}")
 
     def test_yaml_complex_types(self):
         """Test des types complexes en YAML."""
@@ -183,7 +183,7 @@ class TestYAMLValidity:
             assert isinstance(data["project"]["config"]["api"]["endpoints"], list)
 
         except yaml.YAMLError as e:
-            pytest.fail(f"YAML complexe rejeté : {e}")
+            pytest.fail(f"YAML complexe rejeté: {e}")
 
     def test_yaml_unicode_support(self):
         """Test du support Unicode en YAML."""
@@ -204,7 +204,7 @@ class TestYAMLValidity:
             assert "API REST" in data["project"]["tags"]
 
         except yaml.YAMLError as e:
-            pytest.fail(f"YAML Unicode rejeté : {e}")
+            pytest.fail(f"YAML Unicode rejeté: {e}")
 
     def test_yaml_file_roundtrip(self):
         """Test d'aller-retour fichier YAML."""
@@ -311,10 +311,10 @@ class TestYAMLValidity:
         deserialize_time = time.time() - start_time
 
         # Les opérations ne devraient pas prendre plus de 1 seconde
-        assert serialize_time < 1.0, f"Sérialisation trop lente : {serialize_time:.3f}s"
+        assert serialize_time < 1.0, f"Sérialisation trop lente: {serialize_time:.3f}s"
         assert (
             deserialize_time < 1.0
-        ), f"Désérialisation trop lente : {deserialize_time:.3f}s"
+        ), f"Désérialisation trop lente: {deserialize_time:.3f}s"
 
         # Vérifier l'intégrité des données
         assert loaded_data == complex_data

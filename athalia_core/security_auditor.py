@@ -41,7 +41,7 @@ class SecurityAuditor:
 
     def run(self) -> Dict[str, Any]:
         """Lance laudit de sécurité"""
-        logger.info(f"🔒 Audit de sécurité pour : {self.project_path.name}")
+        logger.info(f"🔒 Audit de sécurité pour: {self.project_path.name}")
 
         # Vérifications en séquence
         self._check_dependencies()
@@ -59,7 +59,7 @@ class SecurityAuditor:
             with open(report_file, "w", encoding="utf-8") as f:
                 f.write("Clé API f\n")
         except Exception as e:
-            logger.warning(f"Impossible d'écrire le rapport de sécurité mock : {e}")
+            logger.warning(f"Impossible d'écrire le rapport de sécurité mock: {e}")
 
         # Adapter le retour pour les tests
         return {

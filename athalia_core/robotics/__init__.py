@@ -2,14 +2,14 @@
 Module Robotics - Support pour projets ROS2/Reachy
 ==================================================
 
-Ce module étend Athalia pour gérer les projets robotiques :
+Ce module étend Athalia pour gérer les projets robotiques:
 - Audit spécialisé ROS2
 - Validation Docker/Containers
 - Analyse Rust/Cargo
 - Tests robotiques
 - CI/CD adapté
 
-Modules disponibles :
+Modules disponibles:
 - reachy_auditor: Audit spécialisé Reachy
 - ros2_validator: Validation ROS2 workspace
 - docker_robotics: Gestion Docker robotique

@@ -31,7 +31,7 @@ def test_ath_audit_runs():
             [script, "--project", "."], capture_output=True, text=True
         )
         # 0 = succès, 1 = échec d'audit, mais pas crash
-        assert result.returncode in (0, 1), f"ath-audit.py a crashé : {result.stderr}"
+        assert result.returncode in (0, 1), f"ath-audit.py a crashé: {result.stderr}"
     except PermissionError:
         pytest.skip(f"Permission refusée pour {script}")
     except FileNotFoundError:

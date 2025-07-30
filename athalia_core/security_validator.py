@@ -86,6 +86,8 @@ class SecurityValidator:
             "cargo",
             "npm",
             "yarn",
+            "colcon",
+            "bandit",
             # Commandes de conteneurisation
             "docker",
             "docker-compose",

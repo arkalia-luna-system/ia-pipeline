@@ -49,11 +49,11 @@ class TestAuditAgent(unittest.TestCase):
         mock_query_qwen.return_value = "Audit terminé avec succès"
 
         # Test
-        result = self.agent.act("Audit ce code : def foo(): pass")
+        result = self.agent.act("Audit ce code: def foo(): pass")
 
         # Vérifications
         self.assertEqual(result, "Audit terminé avec succès")
-        mock_query_qwen.assert_called_once_with("Audit ce code : def foo(): pass")
+        mock_query_qwen.assert_called_once_with("Audit ce code: def foo(): pass")
 
     @patch("athalia_core.agents.audit_agent.query_qwen")
     def test_act_method_with_complex_prompt(self, mock_query_qwen):
@@ -63,7 +63,7 @@ class TestAuditAgent(unittest.TestCase):
 
         # Test avec un prompt plus complexe
         complex_prompt = """
-        Audit complet du projet :
+        Audit complet du projet:
         - Vérification de la qualité du code
         - Analyse des performances
         - Contrôle de sécurité

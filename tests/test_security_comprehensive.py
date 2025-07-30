@@ -274,7 +274,7 @@ OS.SYSTEM("ls")
         assert result["f"] is False
         assert len(result["issues"]) >= 5
 
-        # Le score devrait être calculé : max(0, 100 - 20 * nombre_issues)
+        # Le score devrait être calculé: max(0, 100 - 20 * nombre_issues)
         expected_score = max(0, 100 - 20 * len(result["issues"]))
         assert result["score"] == expected_score
 

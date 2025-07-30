@@ -28,10 +28,10 @@ def main():
     # Chercher les imports relatifs
     imports = re.findall(r"from \.(\w+) import (\w+)", content)
 
-    print(f"📦 Imports trouvés : {len(imports)}")
+    print(f"📦 Imports trouvés: {len(imports)}")
 
     # Afficher les imports
-    print("\n✅ MODULES INTÉGRÉS :")
+    print("\n✅ MODULES INTÉGRÉS:")
     for module, class_name in imports:
         print(f"  - {module} -> {class_name}")
 
@@ -43,38 +43,38 @@ def main():
             module_name = py_file.stem
             core_modules.append(module_name)
 
-    print(f"\n📦 Modules athalia_core totaux : {len(core_modules)}")
+    print(f"\n📦 Modules athalia_core totaux: {len(core_modules)}")
 
     # Identifier les modules non intégrés
     integrated_modules = [module for module, _ in imports]
     non_integrated = [m for m in core_modules if m not in integrated_modules]
 
-    print(f"\n❌ MODULES NON INTÉGRÉS ({len(non_integrated)}) :")
+    print(f"\n❌ MODULES NON INTÉGRÉS ({len(non_integrated)}):")
     for module in non_integrated:
         print(f"  - {module}")
 
     # Calculer le score
     integration_score = len(integrated_modules) / len(core_modules) * 10
-    print(f"\n📈 SCORE D'INTÉGRATION : {integration_score:.2f}/10")
+    print(f"\n📈 SCORE D'INTÉGRATION: {integration_score:.2f}/10")
 
     # Recommandations
-    print("\n🎯 RECOMMANDATIONS :")
+    print("\n🎯 RECOMMANDATIONS:")
     if integration_score < 5.0:
         print("  ⚠️ Score faible - Nécessite une amélioration urgente")
 
     if non_integrated:
         print(f"  📦 {len(non_integrated)} modules à intégrer")
-        print("  🎯 Priorité (top 5) :")
+        print("  🎯 Priorité (top 5):")
         for module in non_integrated[:5]:
             print(f"    - {module}")
 
     # Vérifier les tests
-    print("\n🧪 VÉRIFICATION DES TESTS :")
+    print("\n🧪 VÉRIFICATION DES TESTS:")
     test_files = list(Path("tests").glob("*orchestrator*"))
     test_files.extend(Path("tests").glob("*unified*"))
 
     if test_files:
-        print(f"  ✅ Tests trouvés : {len(test_files)}")
+        print(f"  ✅ Tests trouvés: {len(test_files)}")
         for test_file in test_files:
             print(f"    - {test_file.name}")
     else:

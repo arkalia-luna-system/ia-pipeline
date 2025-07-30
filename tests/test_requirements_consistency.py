@@ -198,7 +198,7 @@ class TestRequirementsConsistency:
 
                 # Vérifier chaque dépendance obsolète
                 for dep in obsolete_deps:
-                    # Recherche plus précise : mot entier ou package
+                    # Recherche plus précise: mot entier ou package
                     if (
                         f"{dep.lower()}>=" in line_lower
                         or f"{dep.lower()}==" in line_lower

@@ -122,7 +122,9 @@ class ArchiveCleaner:
         logger.info("📋 Création de l'index des archives...")
 
         index_content = "# 📚 Index des Archives - Athalia\n\n"
-        index_content += f"**Date de génération :** {datetime.now().strftime('%d/%m/%Y à %H:%M')}\n\n"
+        index_content += (
+            f"**Date de génération:** {datetime.now().strftime('%d/%m/%Y à %H:%M')}\n\n"
+        )
 
         # Lister les archives organisées
         for date_dir in sorted(self.archive_path.iterdir()):
@@ -173,21 +175,21 @@ class ArchiveCleaner:
 
         with open(report_path, "w", encoding="utf-8") as f:
             f.write("# 🧹 Rapport de Nettoyage des Archives - Athalia\n\n")
-            f.write(f"**Date :** {datetime.now().strftime('%d/%m/%Y à %H:%M')}\n")
-            f.write("**Nettoyeur :** Script automatique\n\n")
+            f.write(f"**Date:** {datetime.now().strftime('%d/%m/%Y à %H:%M')}\n")
+            f.write("**Nettoyeur:** Script automatique\n\n")
 
             f.write("## 📊 Résultats du Nettoyage\n\n")
             f.write(
-                f"- **Fichiers déplacés :** {len(self.cleanup_results['moved_files'])}\n"
+                f"- **Fichiers déplacés:** {len(self.cleanup_results['moved_files'])}\n"
             )
             f.write(
-                f"- **Fichiers supprimés :** {len(self.cleanup_results['deleted_files'])}\n"
+                f"- **Fichiers supprimés:** {len(self.cleanup_results['deleted_files'])}\n"
             )
             f.write(
-                f"- **Dossiers organisés :** {len(self.cleanup_results['organized_dirs'])}\n"
+                f"- **Dossiers organisés:** {len(self.cleanup_results['organized_dirs'])}\n"
             )
             f.write(
-                f"- **Liens cassés corrigés :** {self.cleanup_results['broken_links_fixed']}\n\n"
+                f"- **Liens cassés corrigés:** {self.cleanup_results['broken_links_fixed']}\n\n"
             )
 
             if self.cleanup_results["moved_files"]:
@@ -227,16 +229,16 @@ def main():
     report_path = cleaner.generate_cleanup_report()
 
     # Affichage des résultats
-    print("\n🧹 Résultats du nettoyage :")
-    print(f"- Fichiers déplacés : {len(results['moved_files'])}")
-    print(f"- Fichiers supprimés : {len(results['deleted_files'])}")
-    print(f"- Dossiers organisés : {len(results['organized_dirs'])}")
-    print(f"- Liens cassés corrigés : {results['broken_links_fixed']}")
+    print("\n🧹 Résultats du nettoyage:")
+    print(f"- Fichiers déplacés: {len(results['moved_files'])}")
+    print(f"- Fichiers supprimés: {len(results['deleted_files'])}")
+    print(f"- Dossiers organisés: {len(results['organized_dirs'])}")
+    print(f"- Liens cassés corrigés: {results['broken_links_fixed']}")
 
     if dry_run:
-        print(f"\n📋 Rapport généré : {report_path}")
+        print(f"\n📋 Rapport généré: {report_path}")
     else:
-        print(f"\n✅ Nettoyage terminé ! Rapport : {report_path}")
+        print(f"\n✅ Nettoyage terminé ! Rapport: {report_path}")
 
 
 if __name__ == "__main__":
