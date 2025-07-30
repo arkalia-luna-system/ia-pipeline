@@ -83,7 +83,10 @@ class TestCLIComplete:
         success_calls = [
             call
             for call in mock_echo.call_args_list
-            if any(keyword in str(call) for keyword in ["✅", "Projet", "généré", "Blueprint"])
+            if any(
+                keyword in str(call)
+                for keyword in ["✅", "Projet", "généré", "Blueprint"]
+            )
         ]
         assert len(success_calls) > 0, "Aucun message de succès trouvé"
 
@@ -201,9 +204,7 @@ class TestCLIComplete:
 
         # Vérifier que le message d'erreur est affiché
         error_calls = [
-            call
-            for call in mock_echo.call_args_list
-            if "❌ Erreur" in str(call)
+            call for call in mock_echo.call_args_list if "❌ Erreur" in str(call)
         ]
         assert len(error_calls) > 0, "Message d'erreur non trouvé"
 
@@ -224,9 +225,7 @@ class TestCLIComplete:
         # Vérifier que le message de statut est affiché
         # Le message exact peut varier selon l'implémentation
         status_calls = [
-            call
-            for call in mock_echo.call_args_list
-            if "Modèles détectés" in str(call)
+            call for call in mock_echo.call_args_list if "Modèles détectés" in str(call)
         ]
         assert len(status_calls) > 0, "Message de statut non trouvé"
 
@@ -470,9 +469,7 @@ class TestCLIIntegration:
 
     @patch("athalia_core.ai_robust.RobustAI")
     @patch("athalia_core.audit.audit_project_intelligent")
-    def test_cli_workflow_complete(
-        self, mock_audit, mock_robust_ai
-    ):
+    def test_cli_workflow_complete(self, mock_audit, mock_robust_ai):
         """Test un workflow complet CLI"""
         # Mock de l'IA robuste
         mock_ai = Mock()
@@ -514,9 +511,7 @@ class TestCLIIntegration:
 
             # Vérifier qu'une erreur est affichée
             error_calls = [
-                call
-                for call in mock_echo.call_args_list
-                if "❌ Erreur" in str(call)
+                call for call in mock_echo.call_args_list if "❌ Erreur" in str(call)
             ]
             assert len(error_calls) > 0, "Erreur non gérée pour chemin inexistant"
 

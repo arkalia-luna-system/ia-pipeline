@@ -12,7 +12,9 @@ import time
 import unittest
 
 # Ajout du chemin athalia_core pour l'import
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../athalia_core')))
+sys.path.insert(
+    0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../athalia_core"))
+)
 
 from cache_manager import CacheManager, cache_function, clear_cache, get_cache_stats
 
