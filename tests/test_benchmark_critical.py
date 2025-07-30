@@ -74,9 +74,11 @@ def test_global_coverage_threshold():
 
     try:
         # Utiliser un timeout plus court et des options plus rapides
+        # Ajouter -B pour éviter la génération de fichiers .pyc
         result = validate_and_run(
             [
                 sys.executable,
+                "-B",  # Ne pas écrire de fichiers .pyc
                 "-m",
                 "pytest",
                 "--cov=athalia_core",
@@ -99,6 +101,17 @@ def test_global_coverage_threshold():
             print(f"❌ Erreurs: {result.stderr}")
             
         assert result.returncode == 0, "La couverture de code est insuffisante (<75%) !"
+        
+        # Nettoyer les fichiers cache générés par pytest
+        try:
+            validate_and_run(
+                ["find", ".", "-name", "__pycache__", "-type", "d", "-exec", "rm", "-rf", "{}", "+"],
+                capture_output=True,
+                timeout=10,
+            )
+        except Exception:
+            # Ignorer les erreurs de nettoyage
+            pass
         
     except subprocess.TimeoutExpired:
         # Si timeout, on considère que c'est OK (évite les problèmes de récursivité)

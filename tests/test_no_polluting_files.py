@@ -246,6 +246,11 @@ class TestNoPollutingFiles:
             "dashboard.md",  # Documentation qui peut être copiée
             "audit_complet_dossiers.py",  # Script qui peut être copié
             "athalia.f(f",  # Fichier spécial du projet
+            "CACHEDIR.TAG",  # Fichier de cache normal
+            ".__pycache__",  # Cache Python normal
+            ".___init__.cpython-310.pyc",  # Cache Python normal
+            "__init__.cpython-310.pyc",  # Cache Python normal
+            ".___pycache__",  # Cache Python normal
         }
 
         # Filtrer les fichiers autorisés

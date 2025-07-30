@@ -109,6 +109,57 @@ alias ath-commit='echo "💾 Commit avec message conventionnel" && git add . && 
 alias ath-push='echo "📤 Push feature branch" && git push -u origin'
 alias ath-merge='echo "🔄 Retour develop et merge" && git checkout develop && git pull origin develop'
 
+# === NOUVEAUX OUTILS DE WORKFLOW INTELLIGENT ===
+# Scripts de workflow intelligent créés pour faciliter le développement
+
+# Préparation automatique au commit
+alias ath-prepare='python3 "$ATHALIA_ROOT/bin/ath-prepare-commit"'
+
+# Préparation avec correction automatique
+alias ath-prepare-fix='python3 "$ATHALIA_ROOT/bin/ath-prepare-commit" --auto-fix'
+
+# Préparation en mode simulation
+alias ath-prepare-dry='python3 "$ATHALIA_ROOT/bin/ath-prepare-commit" --dry-run'
+
+# Push intelligent avec vérifications
+alias ath-push-smart='python3 "$ATHALIA_ROOT/bin/ath-push"'
+
+# Push en mode simulation
+alias ath-push-dry='python3 "$ATHALIA_ROOT/bin/ath-push" --dry-run'
+
+# Push forcé (ignorer les erreurs)
+alias ath-push-force='python3 "$ATHALIA_ROOT/bin/ath-push" --force'
+
+# Workflow complet orchestré
+alias ath-workflow='python3 "$ATHALIA_ROOT/bin/ath-workflow"'
+
+# Workflow de développement
+alias ath-dev='python3 "$ATHALIA_ROOT/bin/ath-workflow" --mode develop'
+
+# Workflow de feature
+alias ath-feature='python3 "$ATHALIA_ROOT/bin/ath-workflow" --mode feature'
+
+# Workflow de hotfix
+alias ath-hotfix='python3 "$ATHALIA_ROOT/bin/ath-workflow" --mode hotfix'
+
+# Workflow de release
+alias ath-release='python3 "$ATHALIA_ROOT/bin/ath-workflow" --mode release'
+
+# Workflow avec commit automatique
+alias ath-dev-auto='python3 "$ATHALIA_ROOT/bin/ath-workflow" --mode develop --auto-commit'
+
+# Workflow avec push automatique
+alias ath-dev-push='python3 "$ATHALIA_ROOT/bin/ath-workflow" --mode develop --auto-commit --auto-push'
+
+# Workflow rapide (développement quotidien)
+alias ath-quick='python3 "$ATHALIA_ROOT/bin/ath-workflow" --mode develop --auto-commit --auto-push --skip-checks'
+
+# Workflow de feature complet
+alias ath-feature-full='python3 "$ATHALIA_ROOT/bin/ath-workflow" --mode feature --auto-commit --auto-push'
+
+# Workflow de release complet
+alias ath-release-full='python3 "$ATHALIA_ROOT/bin/ath-workflow" --mode release --auto-commit --auto-push'
+
 # === ALIAS MODULES AVANCÉS ===
 # Modules spécialisés du pipeline
 
@@ -216,6 +267,18 @@ function ath-help() {
     echo "  ath-push      : Push feature branch"
     echo "  ath-merge     : Retour develop"
     echo ""
+    echo "🔄 WORKFLOW INTELLIGENT (NOUVEAU) :"
+    echo "  ath-prepare   : Préparation automatique au commit"
+    echo "  ath-prepare-fix : Préparation avec correction auto"
+    echo "  ath-push-smart : Push intelligent avec vérifications"
+    echo "  ath-dev       : Workflow de développement"
+    echo "  ath-feature   : Workflow de feature"
+    echo "  ath-hotfix    : Workflow de hotfix"
+    echo "  ath-release   : Workflow de release"
+    echo "  ath-quick     : Workflow rapide quotidien"
+    echo "  ath-dev-auto  : Développement avec commit auto"
+    echo "  ath-dev-push  : Développement complet auto"
+    echo ""
     echo "🧪 TESTS & QUALITÉ :"
     echo "  ath-test      : Tests complets"
     echo "  ath-test-unit : Tests unitaires uniquement"
@@ -243,6 +306,7 @@ function ath-help() {
     echo ""
     echo "💡 Tapez 'ath-<tab>' pour l'auto-complétion"
     echo "📖 Consultez docs/ALIAS.md pour plus de détails"
+    echo "🆕 Nouveaux outils de workflow : docs/DEVELOPER/WORKFLOW_AMELIORATIONS.md"
 }
 
 function ath-status() {

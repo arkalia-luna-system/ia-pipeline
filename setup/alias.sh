@@ -18,6 +18,48 @@ alias ath-perplex='open https://www.perplexity.ai/'
 # Lance les tests via script Python dédié
 alias ath-test='$(git rev-parse --show-toplevel)/bin/ath-test.py'
 
+# === NOUVEAUX OUTILS DE WORKFLOW ===
+# Scripts de workflow intelligent créés pour faciliter le développement
+
+# Préparation automatique au commit
+alias ath-prepare='$(git rev-parse --show-toplevel)/bin/ath-prepare-commit'
+
+# Préparation avec correction automatique
+alias ath-prepare-fix='$(git rev-parse --show-toplevel)/bin/ath-prepare-commit --auto-fix'
+
+# Préparation en mode simulation
+alias ath-prepare-dry='$(git rev-parse --show-toplevel)/bin/ath-prepare-commit --dry-run'
+
+# Push intelligent avec vérifications
+alias ath-push-smart='$(git rev-parse --show-toplevel)/bin/ath-push'
+
+# Push en mode simulation
+alias ath-push-dry='$(git rev-parse --show-toplevel)/bin/ath-push --dry-run'
+
+# Push forcé (ignorer les erreurs)
+alias ath-push-force='$(git rev-parse --show-toplevel)/bin/ath-push --force'
+
+# Workflow complet orchestré
+alias ath-workflow='$(git rev-parse --show-toplevel)/bin/ath-workflow'
+
+# Workflow de développement
+alias ath-dev='$(git rev-parse --show-toplevel)/bin/ath-workflow --mode develop'
+
+# Workflow de feature
+alias ath-feature='$(git rev-parse --show-toplevel)/bin/ath-workflow --mode feature'
+
+# Workflow de hotfix
+alias ath-hotfix='$(git rev-parse --show-toplevel)/bin/ath-workflow --mode hotfix'
+
+# Workflow de release
+alias ath-release='$(git rev-parse --show-toplevel)/bin/ath-workflow --mode release'
+
+# Workflow avec commit automatique
+alias ath-dev-auto='$(git rev-parse --show-toplevel)/bin/ath-workflow --mode develop --auto-commit'
+
+# Workflow avec push automatique
+alias ath-dev-push='$(git rev-parse --show-toplevel)/bin/ath-workflow --mode develop --auto-commit --auto-push'
+
 # Tests unitaires spécifiques
 alias ath-test-unit='python3 -m pytest tests/ -m "unit" -v'
 
