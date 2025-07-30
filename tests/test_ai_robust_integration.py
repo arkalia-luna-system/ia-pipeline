@@ -4,7 +4,7 @@ import time
 
 import pytest
 
-from athalia_core.ai_robust import AIModel, PromptContext, RobustAI
+from athalia_core.ai_robust import PromptContext, RobustAI
 
 # Import conditionnel de psutil
 try:
