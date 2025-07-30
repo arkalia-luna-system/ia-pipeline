@@ -162,7 +162,7 @@ def multiply(a, b):
         assert len(models) > 0
         
         # Vérifier que MOCK est dans la liste (peut être à n'importe quelle position)
-        mock_found = AIModel.MOCK in models
+        mock_found = any(model.value == "mock" for model in models)
         assert mock_found, f"MOCK devrait être dans la liste des modèles: {models}"
 
         # Vérifier que la chaîne de fallback est cohérente
@@ -170,12 +170,12 @@ def multiply(a, b):
         assert len(chain) > 0
         
         # Vérifier que MOCK est dans la chaîne de fallback
-        mock_in_chain = AIModel.MOCK in chain
+        mock_in_chain = any(model.value == "mock" for model in chain)
         assert mock_in_chain, f"MOCK devrait être dans la chaîne de fallback: {chain}"
 
         # Vérifier que tous les modèles de la chaîne sont disponibles
         for model in chain:
-            assert model in models
+            assert any(m.value == model.value for m in models)
 
     def test_error_handling(self):
         """Test de la gestion d'erreurs."""

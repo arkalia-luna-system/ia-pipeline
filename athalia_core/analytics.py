@@ -759,11 +759,204 @@ def generate_analytics_report(project_path: str = ".") -> Dict[str, Any]:
 
 
 def analyze_project_metrics(project_path: str = ".") -> Dict[str, Any]:
-    """Fonction utilitaire pour analyser les métriques d'un projet"""
-    analytics = AnalyticsEngine(project_path)
-    analytics.analyze_code_complexity()
-    analytics.analyze_test_coverage()
-    analytics.analyze_dependencies()
-    analytics.analyze_security_metrics()
-    analytics.analyze_documentation_coverage()
-    return analytics.metrics
+    """Analyse les métriques d'un projet"""
+    engine = AnalyticsEngine(project_path)
+    return engine.generate_comprehensive_report()
+
+
+def analyze_project(project_path: str = ".") -> Dict[str, Any]:
+    """Analyse complète d'un projet"""
+    engine = AnalyticsEngine(project_path)
+    
+    # Analyser toutes les métriques
+    complexity = engine.analyze_code_complexity()
+    coverage = engine.analyze_test_coverage()
+    dependencies = engine.analyze_dependencies()
+    performance = engine.analyze_performance_metrics()
+    security = engine.analyze_security_metrics()
+    documentation = engine.analyze_documentation_coverage()
+    git_metrics = engine.analyze_git_metrics()
+    
+    # Générer le rapport complet
+    report = engine.generate_comprehensive_report()
+    
+    # Calculer le score global
+    score_data = engine.calculate_project_score(report)
+    
+    # Structure de retour
+    return {
+        "project_name": Path(project_path).name,
+        "structure": {
+            "complexity": complexity,
+            "coverage": coverage,
+            "dependencies": dependencies,
+            "performance": performance,
+            "security": security,
+            "documentation": documentation,
+            "git": git_metrics
+        },
+        "score": score_data["overall_score"],
+        "metrics": report,
+        "recommendations": engine.generate_recommendations(report),
+        "timestamp": datetime.now().isoformat()
+    }
+
+
+def generate_heatmap_data(project_path: str = ".") -> Dict[str, Any]:
+    """Génère les données pour une heatmap de complexité du code"""
+    engine = AnalyticsEngine(project_path)
+    
+    heatmap_data = {
+        "heatmap_data": [],
+        "total_files": 0,
+        "max_complexity": 0,
+        "file_types": {}
+    }
+    
+    try:
+        python_files = list(Path(project_path).rglob("*.py"))
+        heatmap_data["total_files"] = len(python_files)
+        
+        for py_file in python_files:
+            try:
+                with open(py_file, "r", encoding="utf-8") as f:
+                    content = f.read()
+                
+                complexity = engine._calculate_file_complexity(content)
+                heatmap_data["max_complexity"] = max(heatmap_data["max_complexity"], complexity)
+                
+                # Données pour la heatmap
+                heatmap_data["heatmap_data"].append({
+                    "file": str(py_file.relative_to(project_path)),
+                    "complexity": complexity,
+                    "lines": len(content.splitlines()),
+                    "size": len(content)
+                })
+                
+                # Statistiques par type de fichier
+                file_type = py_file.suffix
+                if file_type not in heatmap_data["file_types"]:
+                    heatmap_data["file_types"][file_type] = {
+                        "count": 0,
+                        "total_complexity": 0,
+                        "avg_complexity": 0
+                    }
+                
+                heatmap_data["file_types"][file_type]["count"] += 1
+                heatmap_data["file_types"][file_type]["total_complexity"] += complexity
+                
+            except Exception as e:
+                logger.warning(f"Impossible d'analyser {py_file}: {e}")
+        
+        # Calculer les moyennes par type de fichier
+        for file_type, stats in heatmap_data["file_types"].items():
+            if stats["count"] > 0:
+                stats["avg_complexity"] = stats["total_complexity"] / stats["count"]
+    
+    except Exception as e:
+        logger.error(f"Erreur génération heatmap: {e}")
+    
+    return heatmap_data
+
+
+def generate_technical_debt_analysis(project_path: str = ".") -> Dict[str, Any]:
+    """Analyse de la dette technique d'un projet"""
+    engine = AnalyticsEngine(project_path)
+    
+    # Analyser les métriques
+    complexity = engine.analyze_code_complexity()
+    coverage = engine.analyze_test_coverage()
+    documentation = engine.analyze_documentation_coverage()
+    security = engine.analyze_security_metrics()
+    
+    # Calculer le score de dette technique
+    debt_score = 0
+    debt_indicators = []
+    
+    # Complexité élevée
+    if complexity.get("average_complexity", 0) > 7:
+        debt_score += 20
+        debt_indicators.append("Complexité cyclomatique élevée")
+    
+    # Couverture de tests faible
+    if coverage.get("overall_coverage", 0) < 80:
+        debt_score += 25
+        debt_indicators.append("Couverture de tests insuffisante")
+    
+    # Documentation manquante
+    if documentation.get("documentation_score", 0) < 70:
+        debt_score += 15
+        debt_indicators.append("Documentation incomplète")
+    
+    # Problèmes de sécurité
+    if security.get("security_score", 0) < 80:
+        debt_score += 20
+        debt_indicators.append("Vulnérabilités de sécurité détectées")
+    
+    # Recommandations
+    recommendations = []
+    if debt_score > 50:
+        recommendations.append("Priorité haute: Refactoring du code complexe")
+    if coverage.get("overall_coverage", 0) < 80:
+        recommendations.append("Ajouter des tests unitaires et d'intégration")
+    if documentation.get("documentation_score", 0) < 70:
+        recommendations.append("Améliorer la documentation du code")
+    
+    return {
+        "technical_debt_score": min(debt_score, 100),
+        "debt_indicators": debt_indicators,
+        "recommendations": recommendations,
+        "metrics": {
+            "complexity": complexity,
+            "coverage": coverage,
+            "documentation": documentation,
+            "security": security
+        }
+    }
+
+
+def generate_analytics_html(project_path: str = ".") -> str:
+    """Génère un rapport HTML d'analytics"""
+    analysis = analyze_project(project_path)
+    
+    html_template = f"""
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapport Analytics - {analysis['project_name']}</title>
+    <style>
+        body {{ font-family: Arial, sans-serif; margin: 20px; }}
+        .header {{ background: #f0f0f0; padding: 20px; border-radius: 5px; }}
+        .metric {{ margin: 10px 0; padding: 10px; border: 1px solid #ddd; border-radius: 3px; }}
+        .score {{ font-size: 24px; font-weight: bold; color: #007bff; }}
+        .recommendation {{ background: #fff3cd; padding: 10px; margin: 5px 0; border-radius: 3px; }}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📊 Rapport Analytics - {analysis['project_name']}</h1>
+        <p>Généré le {analysis['timestamp']}</p>
+        <div class="score">Score global: {analysis['score']}/100</div>
+    </div>
+    
+    <h2>📈 Métriques</h2>
+    <div class="metric">
+        <h3>Complexité du code</h3>
+        <p>Complexité moyenne: {analysis['structure']['complexity'].get('average_complexity', 0):.2f}</p>
+        <p>Complexité maximale: {analysis['structure']['complexity'].get('max_complexity', 0)}</p>
+    </div>
+    
+    <div class="metric">
+        <h3>Couverture de tests</h3>
+        <p>Couverture globale: {analysis['structure']['coverage'].get('overall_coverage', 0):.1f}%</p>
+    </div>
+    
+    <h2>💡 Recommandations</h2>
+    {''.join([f'<div class="recommendation">• {rec}</div>' for rec in analysis['recommendations']])}
+</body>
+</html>
+"""
+    
+    return html_template
