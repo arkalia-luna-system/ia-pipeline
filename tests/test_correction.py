@@ -48,9 +48,8 @@ def test_correction():
         corrector = AutoCorrectionAvancee("./mon-projet")
         result = corrector.analyser_et_corriger(dry_run=True)
         print("✅ Correction testée!")
-        print(
-            f"📝 Corrections proposées: {len(result.get('corrections_proposees', []))}"
-        )
+        print(f"📝 Corrections proposées: {len(result.get('corrections_proposees', []))}")
+
         return result
     except Exception as e:
         print(f"❌ Erreur lors de la correction: {e}")

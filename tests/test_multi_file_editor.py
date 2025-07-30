@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import os
-import shutil
-import tempfile
+"""
+Tests pour le module multi_file_editor.
+Tests professionnels pour la CI/CD.
+"""
 
-import pytest
+import os
+import tempfile
 
 from athalia_core.multi_file_editor import MultiFileEditor
 

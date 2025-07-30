@@ -105,7 +105,7 @@ def get_project_config(project_type: ProjectType) -> Dict[str, Any]:
             "modules": ["core", "utils", "tests"],
             "dependencies": ["requests", "pytest", "logging"],
             "structure": ["src/", "tests/", "api/", "prompts/"],
-            "prompts": ["dev_debug.yaml", "ux_fun_boost.yaml"],
+            "prompts": ["${ENV:-production}_debug.yaml", "ux_fun_boost.yaml"],
             "booster_ia": ["generic"],
             "description": "Projet générique",
         },

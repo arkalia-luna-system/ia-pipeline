@@ -10,6 +10,16 @@ from datetime import datetime
 
 import yaml
 
+# Import du validateur de sécurité
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    # Fallback pour les tests
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+    class SecurityError(Exception):
+        pass
+
 try:
     import pyperclip
 except ImportError:
@@ -76,7 +86,7 @@ PROMPTS = [
     },
     {
         "name": "Débogage",
-        "file": "prompts/dev_debug.yaml",
+        "file": f"prompts/{os.getenv('ENV', 'production')}_debug.yaml",
         "patterns": [
             r"error",
             r"raise",
@@ -167,7 +177,7 @@ def detect_prompt_semantic(filepath):
             "mistral",
             f"[INST] {system_prompt} \n\nContenu :\n{content}\n[/INST]",
         ]
-        result = subprocess.run(ollama_cmd, capture_output=True, text=True, timeout=20)
+        result = validate_and_run(ollama_cmd, capture_output=True, text=True, timeout=20)
         answer = result.stdout.strip().split("\n")[-1].strip()
         for p in PROMPTS:
             if p["name"].lower() in answer.lower():

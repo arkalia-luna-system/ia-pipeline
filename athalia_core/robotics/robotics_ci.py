@@ -17,6 +17,18 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Tuple
 
+# Import du validateur de sécurité
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    # Fallback pour les tests
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+
+
+class SecurityError(Exception):
+        pass
+
 logger = logging.getLogger(__name__)
 
 
@@ -282,7 +294,7 @@ services:
                 return False, "Aucun package ROS2 trouvé"
 
             # Build workspace
-            result = subprocess.run(
+            result = validate_and_run(
                 ["colcon", "build", "--symlink-install"],
                 cwd=self.project_path,
                 capture_output=True,
@@ -305,7 +317,7 @@ services:
             if not dockerfile.exists():
                 return False, "Dockerfile non trouvé"
 
-            result = subprocess.run(
+            result = validate_and_run(
                 [
                     "docker",
                     "build",
@@ -338,7 +350,7 @@ services:
 
             for cargo_file in cargo_files:
                 project_dir = cargo_file.parent
-                result = subprocess.run(
+                result = validate_and_run(
                     ["cargo", "build", "--release"],
                     cwd=project_dir,
                     capture_output=True,
@@ -361,7 +373,7 @@ services:
         """Exécuter tests"""
         try:
             # Tests ROS2
-            result = subprocess.run(
+            result = validate_and_run(
                 ["colcon", "test", "--event-handlers", "console_direct+"],
                 cwd=self.project_path,
                 capture_output=True,
@@ -375,7 +387,7 @@ services:
             # Tests Python
             test_files = list(self.project_path.rglob("test_*.py"))
             if test_files:
-                result = subprocess.run(
+                result = validate_and_run(
                     ["python", "-m", "pytest", "tests/", "-v"],
                     cwd=self.project_path,
                     capture_output=True,

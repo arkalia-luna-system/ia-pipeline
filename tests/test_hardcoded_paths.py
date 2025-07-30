@@ -6,7 +6,6 @@ Tests pour détecter les chemins hardcodés
 
 import os
 import re
-from pathlib import Path
 
 import pytest
 
@@ -49,7 +48,7 @@ class TestHardcodedPaths:
 
         if problematic_paths:
             pytest.fail(
-                f"Chemins absolus hardcodés trouvés:\n"
+                "Chemins absolus hardcodés trouvés:\n"
                 + "\n".join([f"{file}: {paths}" for file, paths in problematic_paths])
             )
 
@@ -80,7 +79,7 @@ class TestHardcodedPaths:
 
         if absolute_paths:
             pytest.fail(
-                f"Chemins absolus hardcodés trouvés:\n"
+                "Chemins absolus hardcodés trouvés:\n"
                 + "\n".join([f"{file}: {paths}" for file, paths in absolute_paths])
             )
 
@@ -113,7 +112,7 @@ class TestHardcodedPaths:
 
         if desktop_paths:
             pytest.fail(
-                f"Chemins Desktop hardcodés trouvés:\n"
+                "Chemins Desktop hardcodés trouvés:\n"
                 + "\n".join([f"{file}: {paths}" for file, paths in desktop_paths])
             )
 

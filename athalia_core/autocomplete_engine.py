@@ -5,12 +5,11 @@ Moteur de complétion automatique intelligent
 """
 
 from pathlib import Path
-from typing import Dict, Any, List, Optional
+from typing import Dict, List, Optional
 import json
 import logging
 import re
 import ast
-from collections import defaultdict
 
 logger = logging.getLogger(__name__)
 

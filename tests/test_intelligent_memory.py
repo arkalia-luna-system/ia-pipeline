@@ -1,24 +1,28 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
-Tests pour le module intelligent_memory.py
-Teste le système de mémoire intelligente d'Athalia
+Tests pour le module intelligent_memory.
+Tests professionnels pour la CI/CD.
 """
 
-import json
-import os
 import tempfile
 import unittest
 from datetime import datetime
 from pathlib import Path
-from unittest.mock import MagicMock, patch
 
 # Import du module à tester
-from athalia_core.intelligent_memory import (
-    CorrectionSuggestion,
-    IntelligentMemory,
-    LearningEvent,
-    Prediction,
-)
+try:
+    from athalia_core.intelligent_memory import (
+        CorrectionSuggestion,
+        IntelligentMemory,
+        LearningEvent,
+        Prediction,
+    )
+except ImportError:
+    IntelligentMemory = None
+    CorrectionSuggestion = None
+    LearningEvent = None
+    Prediction = None
 
 
 class TestIntelligentMemory(unittest.TestCase):

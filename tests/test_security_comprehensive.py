@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
-🧪 TESTS COMPLETS - SECURITY MODULE
-===================================
-Tests complets pour améliorer la couverture du module security.py.
+Tests complets pour la sécurité.
+Tests professionnels pour la CI/CD.
 """
 
-import os
 import tempfile
 from pathlib import Path
-from unittest.mock import Mock, mock_open, patch
+from unittest.mock import patch
 
 import pytest
 
@@ -250,7 +249,7 @@ OS.SYSTEM("ls")
         problem_file.write_text('password = "secret"')
 
         # Exécuter l'audit
-        result = security_audit_project(str(self.project_dir))
+        _ = security_audit_project(str(self.project_dir))
 
         # Vérifier que le fichier d'audit a été créé
         audit_file = self.project_dir / "security_audit.txt"

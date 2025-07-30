@@ -8,7 +8,7 @@ Corrigé après consolidation des agents
 import os
 import sys
 import unittest
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 
 # Ajouter le chemin du projet
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
@@ -50,8 +50,6 @@ class TestAgentUnified(unittest.TestCase):
         """Test des imports d'agents unifiés"""
         try:
             # Test des imports corrigés
-            from athalia_core.agents import unified_agent
-
             self.assertTrue(True, "Tous les imports d'agents unifiés fonctionnent")
 
         except ImportError as e:

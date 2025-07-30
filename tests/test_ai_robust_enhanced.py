@@ -1,24 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Tests améliorés pour le module IA robuste - Couverture étendue à 96%
-Documentation des améliorations apportées au module ai_robust.py
+Tests avancés pour IA robuste
 """
-
-import logging
-import subprocess
-from unittest.mock import Mock, patch, MagicMock
+from unittest.mock import Mock, patch
 import pytest
-import requests
 
 from athalia_core.ai_robust import (
-    AIModel, 
-    PromptContext, 
-    RobustAI, 
-    robust_ai, 
-    fallback_ia, 
-    query_qwen, 
-    query_mistral
+    AIModel, PromptContext, RobustAI, robust_ai, fallback_ia, query_qwen, query_mistral
 )
 
 

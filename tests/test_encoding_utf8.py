@@ -32,7 +32,7 @@ class TestEncodingUTF8:
 
         if encoding_errors:
             pytest.fail(
-                f"Erreurs d'encodage UTF-8 trouvées:\n" + "\n".join(encoding_errors)
+                "Erreurs d'encodage UTF-8 trouvées:\n" + "\n".join(encoding_errors)
             )
 
     def test_markdown_files_utf8(self):
@@ -54,7 +54,7 @@ class TestEncodingUTF8:
 
         if encoding_errors:
             pytest.fail(
-                f"Erreurs d'encodage UTF-8 dans les fichiers MD:\n"
+                "Erreurs d'encodage UTF-8 dans les fichiers MD:\n"
                 + "\n".join(encoding_errors)
             )
 
@@ -78,7 +78,7 @@ class TestEncodingUTF8:
 
         if encoding_errors:
             pytest.fail(
-                f"Erreurs d'encodage UTF-8 dans les fichiers YAML:\n"
+                "Erreurs d'encodage UTF-8 dans les fichiers YAML:\n"
                 + "\n".join(encoding_errors)
             )
 
@@ -99,7 +99,7 @@ class TestEncodingUTF8:
 
         if encoding_errors:
             pytest.fail(
-                f"Erreurs d'encodage UTF-8 dans les fichiers TXT:\n"
+                "Erreurs d'encodage UTF-8 dans les fichiers TXT:\n"
                 + "\n".join(encoding_errors)
             )
 
@@ -152,7 +152,7 @@ class TestEncodingUTF8:
 
         if bom_files:
             pytest.fail(
-                f"Fichiers avec marqueur BOM UTF-8 trouvés:\n"
+                "Fichiers avec marqueur BOM UTF-8 trouvés:\n"
                 + "\n".join(str(f) for f in bom_files)
             )
 
@@ -198,7 +198,7 @@ class TestEncodingUTF8:
 
         if files_with_mixed_endings:
             pytest.fail(
-                f"Fichiers avec fins de ligne mixtes trouvés:\n"
+                "Fichiers avec fins de ligne mixtes trouvés:\n"
                 + "\n".join(files_with_mixed_endings)
             )
 
