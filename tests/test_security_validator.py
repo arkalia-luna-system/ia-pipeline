@@ -21,6 +21,7 @@ try:
 except ImportError:
     SecurityValidator = None
     SecurityError = Exception
+    
     def validate_and_run(command, **kwargs):
         return subprocess.run(command, **kwargs)
 
