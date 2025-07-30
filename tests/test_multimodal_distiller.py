@@ -2,13 +2,12 @@ import unittest
 from unittest.mock import patch
 
 from athalia_core.distillation.multimodal_distiller import MultimodalDistiller
+from athalia_core.ai_robust import RobustAI
 
 
 class TestMultimodalDistiller(unittest.TestCase):
     @patch.object(MultimodalDistiller, "call_llava", return_value="Analyse image OK")
-    @patch(
-        "athalia_core.ai_robust.RobustAI._call_model", return_value="Réponse texte OK"
-    )
+    @patch.object(RobustAI, "_call_model", return_value="Réponse texte OK")
     def test_distill(self, mock_model, mock_llava):
         distiller = MultimodalDistiller()
         text_prompts = ["Décris cette image"]
