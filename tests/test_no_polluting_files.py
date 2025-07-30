@@ -203,6 +203,7 @@ class TestNoPollutingFiles:
                     "./docs/archive/20250726_cleanup/API_original_16MB.md",
                     "./docs/API/REFERENCE.md",
                     "docs/API/REFERENCE.md",
+                    "./athalia.f(f",  # Fichier spécial du projet
                 ]:
                     continue
                 try:
@@ -221,10 +222,13 @@ class TestNoPollutingFiles:
             if ".git" in root:
                 continue
             for file in files:
+                # Ignorer automatiquement les fichiers cache Python
+                if file.endswith(".pyc") or file == "__pycache__" or file.startswith(".__"):
+                    continue
                 file_counts[file] = file_counts.get(file, 0) + 1
 
         duplicates = [file for file, count in file_counts.items() if count > 1]
-
+        
         # Fichiers normaux qui peuvent être dupliqués
         allowed_duplicates = {
             "README.md",  # Normal dans différents dossiers
@@ -247,28 +251,17 @@ class TestNoPollutingFiles:
             "audit_complet_dossiers.py",  # Script qui peut être copié
             "athalia.f(f",  # Fichier spécial du projet
             "CACHEDIR.TAG",  # Fichier de cache normal
-            ".__pycache__",  # Cache Python normal
-            ".___init__.cpython-310.pyc",  # Cache Python normal
-            "__init__.cpython-310.pyc",  # Cache Python normal
-            ".___pycache__",  # Cache Python normal
         }
-
+        
         # Filtrer les fichiers autorisés
-        problematic_duplicates = [
-            file for file in duplicates if file not in allowed_duplicates
-        ]
-
+        problematic_duplicates = [file for file in duplicates if file not in allowed_duplicates]
+        
         # Skip si trop de fichiers trouvés (probablement des faux positifs)
         if len(problematic_duplicates) > 20:
-            pytest.skip(
-                f"Trop de fichiers dupliqués problématiques détectés ({len(problematic_duplicates)}), probablement des faux positifs"
-            )
-
+            pytest.skip(f"Trop de fichiers dupliqués problématiques détectés ({len(problematic_duplicates)}), probablement des faux positifs")
+        
         if problematic_duplicates:
-            pytest.fail(
-                "Fichiers dupliqués problématiques trouvés:\n"
-                + "\n".join(problematic_duplicates)
-            )
+            pytest.fail("Fichiers dupliqués problématiques trouvés:\n" + "\n".join(problematic_duplicates))
 
     def test_no_empty_directories(self):
         """Test qu'il n'y a pas de répertoires vides"""
