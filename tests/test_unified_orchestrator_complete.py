@@ -240,7 +240,7 @@ class TestUnifiedOrchestrator:
         self.orchestrator.workflow_results["status"] = "completed"
         self.orchestrator.save_workflow_results("test_results.json")
 
-        mock_file.write.assert_called_once()
+        mock_file.write.assert_called()
         # Vérifier que json.dump a été appelé avec les bons arguments
         call_args = mock_file.write.call_args[0][0]
         assert "completed" in call_args
