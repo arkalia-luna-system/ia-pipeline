@@ -197,7 +197,9 @@ class RobustAI:
         )
         try:
             return template.format(**kwargs)
-        except Exception:
+        except (KeyError, ValueError, TypeError) as format_error:
+            # Gestion spécifique des erreurs de formatage
+            logger.warning(f"Erreur de formatage du template: {format_error}")
             return template
 
     def _classify_project_complexity(self, codebase_path: str) -> dict:

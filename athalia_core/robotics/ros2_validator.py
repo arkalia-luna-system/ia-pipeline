@@ -20,6 +20,14 @@ from typing import Dict, List, Optional
 
 logger = logging.getLogger(__name__)
 
+# Import du validateur de sécurité
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+    SecurityError = Exception
+
 
 @dataclass
 class ROS2PackageInfo:
@@ -175,11 +183,11 @@ class ROS2Validator:
     def _check_build_system(self) -> bool:
         """Vérifier si le build system est configuré"""
         try:
-            result = subprocess.run(
+            result = validate_and_run(
                 ["colcon", "--version"], capture_output=True, text=True, timeout=10
             )
             return result.returncode == 0
-        except BaseException:
+        except (BaseException, SecurityError):
             return False
 
     def validate_launch_files(self) -> List[Dict]:
