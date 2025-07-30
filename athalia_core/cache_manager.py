@@ -420,7 +420,8 @@ class CacheManager:
             current_time = time.time()
             return (current_time - timestamp) > ttl
             
-        except Exception:
+        except (KeyError, TypeError, ValueError) as cache_error:
+            logger.warning(f"Erreur lors de la vérification d'expiration du cache: {cache_error}")
             return True
 
     def _is_compressed(self, data: bytes) -> bool:

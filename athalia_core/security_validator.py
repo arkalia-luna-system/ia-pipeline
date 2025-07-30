@@ -279,8 +279,9 @@ class SecurityValidator:
 
             return False
 
-        except Exception:
-            # En cas d'erreur, considérer comme dangereux
+        except (OSError, ValueError, RuntimeError) as path_error:
+            # En cas d'erreur de chemin, considérer comme dangereux
+            logger.warning(f"Erreur lors de la validation du chemin {path}: {path_error}")
             return True
 
     def run_safe_command(
