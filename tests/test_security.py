@@ -6,7 +6,6 @@ Tests de base pour l'audit de sécurité des projets.
 """
 
 import pytest
-from pathlib import Path
 
 # Import conditionnel du module security
 try:

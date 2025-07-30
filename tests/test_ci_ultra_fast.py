@@ -7,8 +7,6 @@ Tests essentiels qui ne doivent jamais bloquer le CI
 import os
 import sys
 
-import pytest
-
 
 class TestCIUltraFast:
     """Tests CI ultra-rapides et essentiels"""
