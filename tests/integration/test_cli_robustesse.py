@@ -16,6 +16,18 @@ import pytest
 # Ajouter le répertoire parent au path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
+# Import sécurisé pour la validation des commandes
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+
+    class SecurityErrorFallback(Exception):
+        pass
+
+    SecurityError = SecurityErrorFallback
+
 
 class TestCLIRobustesse:
     """Tests de robustesse de l'interface en ligne de commande."""
