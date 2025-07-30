@@ -13,15 +13,15 @@ import tempfile
 # Import du module à tester
 try:
     from athalia_core.security_validator import (
-        SecurityValidator, 
-        SecurityError, 
-        validate_and_run, 
-        is_command_safe
+        SecurityValidator,
+        SecurityError,
+        validate_and_run,
+        is_command_safe,
     )
 except ImportError:
     SecurityValidator = None
     SecurityError = Exception
-    
+
     def validate_and_run(command, **kwargs):
         return subprocess.run(command, **kwargs)
 

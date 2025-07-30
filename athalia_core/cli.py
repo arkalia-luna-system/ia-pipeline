@@ -25,14 +25,14 @@ def generate_project(blueprint, output_path, dry_run=False):
         if dry_run:
             click.echo("🔍 Mode simulation - Aucun fichier créé")
             return True
-            
+
         # Créer la structure du projet
         project_path = Path(output_path)
         project_path.mkdir(parents=True, exist_ok=True)
-        
+
         # Créer les fichiers de base
-        project_name = blueprint.get('project_name', 'my_project')
-        
+        project_name = blueprint.get("project_name", "my_project")
+
         # README.md
         readme_content = f"""# {project_name}
 
@@ -51,16 +51,16 @@ from {project_name} import main
 main()
 ```
 """
-        
+
         with open(project_path / "README.md", "w") as f:
             f.write(readme_content)
-            
+
         # requirements.txt
-        dependencies = blueprint.get('dependencies', [])
+        dependencies = blueprint.get("dependencies", [])
         if dependencies:
             with open(project_path / "requirements.txt", "w") as f:
                 f.write("\n".join(dependencies))
-                
+
         # main.py
         main_content = f"""#!/usr/bin/env python3
 \"\"\"
@@ -74,12 +74,12 @@ def main():
 if __name__ == "__main__":
     main()
 """
-        
+
         with open(project_path / "main.py", "w") as f:
             f.write(main_content)
-            
+
         return True
-        
+
     except Exception as e:
         click.echo(f"❌ Erreur lors de la génération: {e}")
         return False
@@ -125,7 +125,7 @@ def generate(idea, output, dry_run):
 
         # Variable non utilisée supprimée
         result = generate_project(blueprint, output, dry_run=dry_run)
-        
+
         if result:
             if not dry_run:
                 click.echo(f"✅ Projet généré dans: {output}")

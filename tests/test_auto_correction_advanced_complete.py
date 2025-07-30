@@ -43,6 +43,7 @@ class TestAutoCorrectionAvancee(unittest.TestCase):
     def create_test_files(self):
         """Création de fichiers de test avec différents types d'erreurs"""
         import os
+
         # Fichier avec erreur d'indentation
         with open(os.path.join(self.temp_dir, "test_indentation.py"), "w") as f:
             f.write(
@@ -360,6 +361,7 @@ class TestAutoCorrectionAvanceeIntegration(unittest.TestCase):
     def test_integration_complete_workflow(self):
         """Test d'intégration du workflow complet"""
         import os
+
         # Création d'un fichier avec plusieurs erreurs
         test_file = os.path.join(self.temp_dir, "integration_test.py")
         with open(test_file, "w") as f:
@@ -393,6 +395,7 @@ class TestAutoCorrectionAvanceeIntegration(unittest.TestCase):
     def test_integration_with_large_project(self):
         """Test d'intégration avec un projet de grande taille"""
         import os
+
         # Création de plusieurs fichiers
         for i in range(10):
             test_file = os.path.join(self.temp_dir, f"test_{i}.py")

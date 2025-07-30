@@ -138,7 +138,9 @@ class SecurityAuditor:
                         )
 
             except (OSError, UnicodeDecodeError, PermissionError) as file_error:
-                logger.debug(f"Erreur lors de l'analyse du fichier {py_file}: {file_error}")
+                logger.debug(
+                    f"Erreur lors de l'analyse du fichier {py_file}: {file_error}"
+                )
                 continue
 
     def _check_secrets(self):
@@ -164,7 +166,9 @@ class SecurityAuditor:
                         )
 
             except (OSError, UnicodeDecodeError, PermissionError) as file_error:
-                logger.debug(f"Erreur lors de l'analyse du fichier {py_file}: {file_error}")
+                logger.debug(
+                    f"Erreur lors de l'analyse du fichier {py_file}: {file_error}"
+                )
                 continue
 
     def _check_permissions(self):
@@ -178,7 +182,9 @@ class SecurityAuditor:
                             f"Permissions trop ouvertes: {file_path}"
                         )
                 except (OSError, PermissionError) as perm_error:
-                    logger.debug(f"Erreur lors de la vérification des permissions {file_path}: {perm_error}")
+                    logger.debug(
+                        f"Erreur lors de la vérification des permissions {file_path}: {perm_error}"
+                    )
                     continue
 
     def _check_encryption(self):
@@ -201,7 +207,9 @@ class SecurityAuditor:
                         break
 
             except (OSError, UnicodeDecodeError, PermissionError) as file_error:
-                logger.debug(f"Erreur lors de l'analyse du fichier {py_file}: {file_error}")
+                logger.debug(
+                    f"Erreur lors de l'analyse du fichier {py_file}: {file_error}"
+                )
                 continue
 
         if not has_encryption:

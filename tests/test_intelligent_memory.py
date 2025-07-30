@@ -121,7 +121,8 @@ class TestIntelligentMemory(unittest.TestCase):
         predictions = self.memory.predict_issues(code_snippet)
 
         self.assertIsInstance(predictions, list)
-        # Même sans données d'apprentissage, on peut avoir des prédictions basées sur des anti-patterns
+        # Même sans données d'apprentissage, on peut avoir des prédictions basées
+        # sur des anti-patterns
         self.assertGreaterEqual(len(predictions), 0)
 
     def test_suggest_corrections(self):

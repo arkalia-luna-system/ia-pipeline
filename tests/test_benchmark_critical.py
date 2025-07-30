@@ -13,6 +13,7 @@ except ImportError:
 
     def validate_and_run(command, **kwargs):
         return subprocess.run(command, **kwargs)
+
     SecurityError = Exception
 
 
@@ -93,26 +94,38 @@ def test_global_coverage_threshold():
             env=env,
             timeout=30,  # Timeout réduit à 30 secondes
         )
-        
+
         if result.returncode == 0:
             print(f"✅ Couverture OK: {result.stdout}")
         else:
             print(f"❌ Couverture insuffisante: {result.stdout}")
             print(f"❌ Erreurs: {result.stderr}")
-            
+
         assert result.returncode == 0, "La couverture de code est insuffisante (<75%) !"
-        
+
         # Nettoyer les fichiers cache générés par pytest
         try:
             validate_and_run(
-                ["find", ".", "-name", "__pycache__", "-type", "d", "-exec", "rm", "-rf", "{}", "+"],
+                [
+                    "find",
+                    ".",
+                    "-name",
+                    "__pycache__",
+                    "-type",
+                    "d",
+                    "-exec",
+                    "rm",
+                    "-rf",
+                    "{}",
+                    "+",
+                ],
                 capture_output=True,
                 timeout=10,
             )
         except Exception:
             # Ignorer les erreurs de nettoyage
             pass
-        
+
     except subprocess.TimeoutExpired:
         # Si timeout, on considère que c'est OK (évite les problèmes de récursivité)
         print("⚠️ Timeout du test de couverture - considéré comme OK")

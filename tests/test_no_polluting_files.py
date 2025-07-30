@@ -63,16 +63,25 @@ class TestNoPollutingFiles:
             "./tests/__pycache__/._test_no_polluting_files.cpython-310-pytest-8.4.1.pyc",  # Cache Python normal
             "./tests/__pycache__/test_no_polluting_files.cpython-310-pytest-8.4.1.pyc",  # Cache Python normal
         }
-        
+
         # Filtrer les fichiers autorisés
-        problematic_cache_files = [file_path for file_path in cache_files if file_path not in allowed_cache_files]
+        problematic_cache_files = [
+            file_path
+            for file_path in cache_files
+            if file_path not in allowed_cache_files
+        ]
 
         # Skip si trop de fichiers trouvés (probablement des faux positifs)
         if len(problematic_cache_files) > 5:
-            pytest.skip(f"Trop de fichiers cache problématiques détectés ({len(problematic_cache_files)}), probablement des faux positifs")
-        
+            pytest.skip(
+                f"Trop de fichiers cache problématiques détectés ({len(problematic_cache_files)}), probablement des faux positifs"
+            )
+
         if problematic_cache_files:
-            pytest.fail("Fichiers cache Python problématiques trouvés:\n" + "\n".join(problematic_cache_files))
+            pytest.fail(
+                "Fichiers cache Python problématiques trouvés:\n"
+                + "\n".join(problematic_cache_files)
+            )
 
     def test_no_temp_files(self):
         """Test qu'il n'y a pas de fichiers temporaires"""
@@ -87,7 +96,7 @@ class TestNoPollutingFiles:
                     or file.endswith(".cache")
                 ):
                     temp_files.append(os.path.join(root, file))
-                
+
                 # Gérer les fichiers .log de manière spécifique
                 if file.endswith(".log"):
                     # Exclure les fichiers de logs normaux du projet
@@ -248,12 +257,16 @@ class TestNoPollutingFiles:
                 continue
             for file in files:
                 # Ignorer automatiquement les fichiers cache Python
-                if file.endswith(".pyc") or file == "__pycache__" or file.startswith(".__"):
+                if (
+                    file.endswith(".pyc")
+                    or file == "__pycache__"
+                    or file.startswith(".__")
+                ):
                     continue
                 file_counts[file] = file_counts.get(file, 0) + 1
 
         duplicates = [file for file, count in file_counts.items() if count > 1]
-        
+
         # Fichiers normaux qui peuvent être dupliqués
         allowed_duplicates = {
             "README.md",  # Normal dans différents dossiers
@@ -277,16 +290,23 @@ class TestNoPollutingFiles:
             "athalia.f(f",  # Fichier spécial du projet
             "CACHEDIR.TAG",  # Fichier de cache normal
         }
-        
+
         # Filtrer les fichiers autorisés
-        problematic_duplicates = [file for file in duplicates if file not in allowed_duplicates]
-        
+        problematic_duplicates = [
+            file for file in duplicates if file not in allowed_duplicates
+        ]
+
         # Skip si trop de fichiers trouvés (probablement des faux positifs)
         if len(problematic_duplicates) > 20:
-            pytest.skip(f"Trop de fichiers dupliqués problématiques détectés ({len(problematic_duplicates)}), probablement des faux positifs")
-        
+            pytest.skip(
+                f"Trop de fichiers dupliqués problématiques détectés ({len(problematic_duplicates)}), probablement des faux positifs"
+            )
+
         if problematic_duplicates:
-            pytest.fail("Fichiers dupliqués problématiques trouvés:\n" + "\n".join(problematic_duplicates))
+            pytest.fail(
+                "Fichiers dupliqués problématiques trouvés:\n"
+                + "\n".join(problematic_duplicates)
+            )
 
     def test_no_empty_directories(self):
         """Test qu'il n'y a pas de répertoires vides"""
@@ -316,13 +336,20 @@ class TestNoPollutingFiles:
             "./.venv/include",  # Include venv normal
             "./athalia_core/logs",  # Logs athalia_core normaux
         }
-        
+
         # Filtrer les répertoires autorisés
-        problematic_empty_dirs = [dir_path for dir_path in empty_dirs if dir_path not in allowed_empty_dirs]
+        problematic_empty_dirs = [
+            dir_path for dir_path in empty_dirs if dir_path not in allowed_empty_dirs
+        ]
 
         # Skip si trop de répertoires trouvés (probablement des faux positifs)
         if len(problematic_empty_dirs) > 10:
-            pytest.skip(f"Trop de répertoires vides problématiques détectés ({len(problematic_empty_dirs)}), probablement des faux positifs")
-        
+            pytest.skip(
+                f"Trop de répertoires vides problématiques détectés ({len(problematic_empty_dirs)}), probablement des faux positifs"
+            )
+
         if problematic_empty_dirs:
-            pytest.fail("Répertoires vides problématiques trouvés:\n" + "\n".join(problematic_empty_dirs))
+            pytest.fail(
+                "Répertoires vides problématiques trouvés:\n"
+                + "\n".join(problematic_empty_dirs)
+            )

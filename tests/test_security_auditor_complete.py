@@ -145,7 +145,8 @@ def dangerous_function():
         with patch("logging.getLogger") as mock_logger:
             mock_logger.return_value.info = Mock()
             self.auditor.print_report()
-            # Le test peut passer même si info n'est pas appelé car le rapport peut être vide
+            # Le test peut passer même si info n'est pas appelé car le rapport peut
+            # être vide
 
     def test_run_complete_workflow(self):
         """Test du workflow complet de run()"""
@@ -283,7 +284,8 @@ def dangerous_function():
             # Exécuter une méthode qui utilise le logging
             self.auditor._check_dependencies()
 
-            # Le test peut passer même si info n'est pas appelé car le rapport peut être vide
+            # Le test peut passer même si info n'est pas appelé car le rapport peut
+            # être vide
 
     def test_path_operations(self):
         """Test des opérations sur les chemins"""

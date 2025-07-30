@@ -8,7 +8,12 @@ import tempfile
 from pathlib import Path
 from unittest.mock import Mock, patch
 import json
-from athalia_core.autocomplete_engine import AutocompleteEngine, get_suggestions, train_model
+from athalia_core.autocomplete_engine import (
+    AutocompleteEngine,
+    get_suggestions,
+    train_model,
+)
+
 
 class TestAutocompleteEngine:
     def setup_method(self):
@@ -17,13 +22,14 @@ class TestAutocompleteEngine:
 
     def teardown_method(self):
         import shutil
+
         shutil.rmtree(self.temp_dir, ignore_errors=True)
 
     def test_init_with_data_dir(self):
         """Test de l'initialisation avec data_dir"""
         assert self.engine.data_dir == Path(self.temp_dir)
-        assert hasattr(self.engine, 'suggestions')
-        assert hasattr(self.engine, 'context')
+        assert hasattr(self.engine, "suggestions")
+        assert hasattr(self.engine, "context")
 
     def test_load_suggestions(self):
         """Test de chargement des suggestions"""
@@ -32,12 +38,12 @@ class TestAutocompleteEngine:
         suggestions_data = {
             "python": ["def", "class", "import", "from"],
             "javascript": ["function", "const", "let", "var"],
-            "html": ["<div>", "<span>", "<p>", "<h1>"]
+            "html": ["<div>", "<span>", "<p>", "<h1>"],
         }
-        
-        with open(suggestions_file, 'w') as f:
+
+        with open(suggestions_file, "w") as f:
             json.dump(suggestions_data, f)
-        
+
         suggestions = self.engine.load_suggestions(str(suggestions_file))
         assert isinstance(suggestions, dict)
         assert "python" in suggestions
@@ -54,9 +60,9 @@ class TestAutocompleteEngine:
         # Créer des suggestions de test
         self.engine.suggestions = {
             "python": ["def", "class", "import", "from"],
-            "javascript": ["function", "const", "let", "var"]
+            "javascript": ["function", "const", "let", "var"],
         }
-        
+
         # Test avec contexte Python
         suggestions = self.engine.get_suggestions_for_context("python", "def")
         assert isinstance(suggestions, list)
@@ -69,7 +75,9 @@ class TestAutocompleteEngine:
 
     def test_get_suggestions_for_context_unknown(self):
         """Test de récupération des suggestions avec contexte inconnu"""
-        suggestions = self.engine.get_suggestions_for_context("unknown_language", "test")
+        suggestions = self.engine.get_suggestions_for_context(
+            "unknown_language", "test"
+        )
         assert isinstance(suggestions, list)
 
     def test_filter_suggestions(self):
@@ -107,16 +115,16 @@ class TestAutocompleteEngine:
     def test_add_suggestion(self):
         """Test d'ajout d'une suggestion"""
         initial_count = len(self.engine.suggestions.get("python", []))
-        
+
         self.engine.add_suggestion("python", "new_function")
-        
+
         new_count = len(self.engine.suggestions.get("python", []))
         assert new_count >= initial_count
 
     def test_add_suggestion_new_context(self):
         """Test d'ajout d'une suggestion pour un nouveau contexte"""
         self.engine.add_suggestion("new_language", "new_suggestion")
-        
+
         assert "new_language" in self.engine.suggestions
         assert "new_suggestion" in self.engine.suggestions["new_language"]
 
@@ -124,7 +132,7 @@ class TestAutocompleteEngine:
         """Test de suppression d'une suggestion"""
         # Ajouter d'abord une suggestion
         self.engine.add_suggestion("python", "test_function")
-        
+
         # Puis la supprimer
         result = self.engine.remove_suggestion("python", "test_function")
         assert result is True
@@ -139,7 +147,7 @@ class TestAutocompleteEngine:
         # Ajouter des suggestions
         self.engine.add_suggestion("python", "test_function")
         self.engine.add_suggestion("javascript", "test_var")
-        
+
         # Sauvegarder
         result = self.engine.save_suggestions()
         assert result is True
@@ -147,10 +155,10 @@ class TestAutocompleteEngine:
     def test_save_suggestions_custom_path(self):
         """Test de sauvegarde des suggestions avec chemin personnalisé"""
         custom_path = Path(self.temp_dir) / "custom_suggestions.json"
-        
+
         # Ajouter des suggestions
         self.engine.add_suggestion("python", "test_function")
-        
+
         # Sauvegarder avec chemin personnalisé
         result = self.engine.save_suggestions(str(custom_path))
         assert result is True
@@ -160,8 +168,9 @@ class TestAutocompleteEngine:
         """Test d'entraînement sur un fichier"""
         # Créer un fichier Python de test
         test_file = Path(self.temp_dir) / "test.py"
-        with open(test_file, 'w') as f:
-            f.write("""
+        with open(test_file, "w") as f:
+            f.write(
+                """
 def test_function():
     return "Hello World"
 
@@ -171,8 +180,9 @@ class TestClass:
 
 import os
 from pathlib import Path
-""")
-        
+"""
+            )
+
         # Entraîner sur le fichier
         result = self.engine.train_on_file(str(test_file))
         assert result is True
@@ -182,9 +192,9 @@ from pathlib import Path
         # Créer des fichiers de test
         for i in range(3):
             test_file = Path(self.temp_dir) / f"test_{i}.py"
-            with open(test_file, 'w') as f:
+            with open(test_file, "w") as f:
                 f.write(f"def function_{i}():\n    pass\n")
-        
+
         # Entraîner sur le répertoire
         result = self.engine.train_on_directory(self.temp_dir)
         assert result is True
@@ -195,16 +205,16 @@ from pathlib import Path
         self.engine.context = {
             "current_file": "test.py",
             "language": "python",
-            "line": "def test_"
+            "line": "def test_",
         }
-        
+
         suggestions = self.engine.get_context_suggestions()
         assert isinstance(suggestions, list)
 
     def test_get_context_suggestions_no_context(self):
         """Test de récupération des suggestions sans contexte"""
         self.engine.context = {}
-        
+
         suggestions = self.engine.get_context_suggestions()
         assert isinstance(suggestions, list)
 
@@ -222,24 +232,26 @@ from pathlib import Path
         """Test d'intégration du workflow complet"""
         # Créer un fichier de test
         test_file = Path(self.temp_dir) / "test.py"
-        with open(test_file, 'w') as f:
-            f.write("""
+        with open(test_file, "w") as f:
+            f.write(
+                """
 def test_function():
     return "Hello"
 
 class TestClass:
     def __init__(self):
         pass
-""")
-        
+"""
+            )
+
         # Entraîner sur le fichier
         train_result = self.engine.train_on_file(str(test_file))
         assert train_result is True
-        
+
         # Obtenir des suggestions
         suggestions = self.engine.get_suggestions_for_context("python", "def")
         assert isinstance(suggestions, list)
-        
+
         # Sauvegarder les suggestions
         save_result = self.engine.save_suggestions()
         assert save_result is True
@@ -247,34 +259,37 @@ class TestClass:
 
 class TestAutocompleteEngineIntegration:
     """Tests d'intégration pour AutocompleteEngine"""
-    
+
     def setup_method(self):
         self.temp_dir = tempfile.mkdtemp()
-    
+
     def teardown_method(self):
         import shutil
+
         shutil.rmtree(self.temp_dir, ignore_errors=True)
-    
+
     def test_suggestions_persistence(self):
         """Test de persistance des suggestions"""
         engine1 = AutocompleteEngine(data_dir=self.temp_dir)
-        
+
         # Ajouter des suggestions
         engine1.add_suggestion("python", "test_function")
         engine1.add_suggestion("javascript", "test_var")
-        
+
         # Sauvegarder
         engine1.save_suggestions()
-        
+
         # Créer un nouveau moteur et charger les suggestions
         engine2 = AutocompleteEngine(data_dir=self.temp_dir)
         suggestions_file = Path(self.temp_dir) / "suggestions.json"
         engine2.suggestions = engine2.load_suggestions(str(suggestions_file))
-        
+
         # Vérifier que les suggestions persistent
         python_suggestions = engine2.get_suggestions_for_context("python", "test")
-        javascript_suggestions = engine2.get_suggestions_for_context("javascript", "test")
-        
+        javascript_suggestions = engine2.get_suggestions_for_context(
+            "javascript", "test"
+        )
+
         assert "test_function" in python_suggestions
         assert "test_var" in javascript_suggestions
 
@@ -283,26 +298,33 @@ class TestAutocompleteEngineIntegration:
 def test_get_suggestions():
     """Test de la fonction utilitaire get_suggestions"""
     with tempfile.TemporaryDirectory() as temp_dir:
-        with patch('athalia_core.autocomplete_engine.AutocompleteEngine') as mock_engine_class:
+        with patch(
+            "athalia_core.autocomplete_engine.AutocompleteEngine"
+        ) as mock_engine_class:
             mock_engine = Mock()
             mock_engine.get_suggestions_for_context.return_value = ["def", "class"]
             mock_engine_class.return_value = mock_engine
-            
+
             suggestions = get_suggestions(temp_dir, "python", "def")
-            
+
             assert isinstance(suggestions, list)
             assert "def" in suggestions
-            mock_engine.get_suggestions_for_context.assert_called_once_with("python", "def")
+            mock_engine.get_suggestions_for_context.assert_called_once_with(
+                "python", "def"
+            )
+
 
 def test_train_model():
     """Test de la fonction utilitaire train_model"""
     with tempfile.TemporaryDirectory() as temp_dir:
-        with patch('athalia_core.autocomplete_engine.AutocompleteEngine') as mock_engine_class:
+        with patch(
+            "athalia_core.autocomplete_engine.AutocompleteEngine"
+        ) as mock_engine_class:
             mock_engine = Mock()
             mock_engine.train_on_file.return_value = True
             mock_engine_class.return_value = mock_engine
-            
+
             result = train_model(temp_dir, "test.py")
-            
+
             assert result is True
-            mock_engine.train_on_file.assert_called_once_with("test.py") 
+            mock_engine.train_on_file.assert_called_once_with("test.py")

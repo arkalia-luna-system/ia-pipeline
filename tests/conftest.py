@@ -82,21 +82,21 @@ def cleanup_athalia_resources():
         try:
             import shutil
             import glob
-            
+
             # Nettoyer les dossiers __pycache__
             for pycache_dir in glob.glob("**/__pycache__", recursive=True):
                 try:
                     shutil.rmtree(pycache_dir)
                 except Exception:
                     pass
-            
+
             # Nettoyer les fichiers .pyc
             for pyc_file in glob.glob("**/*.pyc", recursive=True):
                 try:
                     os.remove(pyc_file)
                 except Exception:
                     pass
-                    
+
         except Exception:
             # Ignorer les erreurs de nettoyage des fichiers cache
             pass

@@ -112,11 +112,11 @@ class TestAuditAgent(unittest.TestCase):
 
         # Test avec un prompt multi-lignes
         multiline_prompt = """Audit du code Python:
-        
+
         def fonction_test():
             print("Hello World")
             return True
-        
+
         class MaClasse:
             def __init__(self):
                 self.valeur = 42
@@ -202,7 +202,7 @@ class TestAuditAgentIntegration(unittest.TestCase):
         - Performance: 7/10
         - Sécurité: 9/10
         - Documentation: 6/10
-        
+
         RECOMMANDATIONS:
         1. Améliorer la documentation
         2. Optimiser les boucles
@@ -212,7 +212,7 @@ class TestAuditAgentIntegration(unittest.TestCase):
         # Test d'audit complet
         audit_prompt = """
         Effectue un audit complet du code suivant:
-        
+
         def calculer_moyenne(nombres):
             total = 0
             for n in nombres:
@@ -238,10 +238,10 @@ class TestAuditAgentIntegration(unittest.TestCase):
         class MonProjet:
             def __init__(self):
                 self.data = []
-            
+
             def ajouter(self, item):
                 self.data.append(item)
-            
+
             def obtenir(self, index):
                 return self.data[index]
         """

@@ -29,7 +29,7 @@ def autocomplete(request: AutocompleteRequest):
     # Utiliser get_suggestions_for_context avec un contexte par défaut
     suggestions = engine.get_suggestions_for_context("python", request.prompt)
     # Limiter le nombre de suggestions
-    suggestions = suggestions[:request.max_suggestions]
+    suggestions = suggestions[: request.max_suggestions]
     return AutocompleteResponse(suggestions=suggestions)
 
 

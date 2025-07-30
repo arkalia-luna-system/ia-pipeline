@@ -98,7 +98,7 @@ class MyClass:
     \"\"\"Ma classe\"\"\"
     def __init__(self):
         self.value = 42
-    
+
     def get_value(self):
         return self.value
             """,
@@ -134,7 +134,7 @@ def documented_function():
 
 class DocumentedClass:
     """Ceci est une classe documentée."""
-    
+
     def documented_method(self):
         """Ceci est une méthode documentée."""
         return False
@@ -251,7 +251,7 @@ class APIClass:
 def example_function():
     \"\"\"
     Exemple d'utilisation:
-    
+
     >>> example_function()
     'Hello World'
     \"\"\"

@@ -4,6 +4,7 @@
 Tests simples pour le cache.
 """
 
+from cache_manager import CacheManager, cache_function, clear_cache, get_cache_stats
 import os
 import shutil
 import sys
@@ -13,7 +14,6 @@ import unittest
 
 # Import direct du cache sans dépendances
 sys.path.append("athalia_core")
-from cache_manager import CacheManager, cache_function, clear_cache, get_cache_stats
 
 
 class TestCacheSimple(unittest.TestCase):

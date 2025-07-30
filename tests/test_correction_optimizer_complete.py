@@ -32,7 +32,7 @@ def calculate_product(x, y):
 class Calculator:
     def __init__(self):
         self.history = []
-    
+
     def add(self, a, b):
         result = a + b
         self.history.append(f"{a} + {b} = {result}")

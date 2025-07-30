@@ -183,7 +183,7 @@ check_quality() {
         print_warning "Problèmes de linting détectés"
         if [ "$DRY_RUN" = false ]; then
             print_info "Correction automatique..."
-            autopep8 --in-place --aggressive --max-line-length=88 athalia_core/ tests/
+            find athalia_core/ tests/ -name "*.py" -exec autopep8 --in-place --aggressive --max-line-length=88 {} \;
             print_success "Linting corrigé"
         fi
     fi
@@ -195,7 +195,7 @@ check_quality() {
         print_warning "Problèmes de formatage détectés"
         if [ "$DRY_RUN" = false ]; then
             print_info "Correction automatique..."
-            black --line-length=88 athalia_core/ tests/
+            black --line-length=88 athalia_core/ tests/ --quiet
             print_success "Formatage corrigé"
         fi
     fi
