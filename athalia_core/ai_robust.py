@@ -21,6 +21,7 @@ except ImportError:
         return subprocess.run(command, **kwargs)
 
     class SecurityError(Exception):
+        """Exception levée pour les erreurs de sécurité."""
         pass
 
 

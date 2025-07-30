@@ -320,8 +320,9 @@ class TestPerformance(unittest.TestCase):
             for module in {[m['name'] for m in modules]}:
                 try:
                     __import__(module)
-                except ImportError:
-                    pass
+                except ImportError as import_error:
+                    logger.debug(f"Module {module} non disponible: {import_error}")
+                    continue
             end_time = time.time()
             import_time = end_time - start_time
             self.assertLess(import_time, 5.0, f"Import trop lent: {{import_time:.2f}}s")
@@ -574,7 +575,7 @@ echo "✅ Tests terminés !"
 
         except Exception as e:
             results["unit_tests"]["errors"].append(f"Erreur générale: {e}")
-            # Nettoyer même en cas derreur
+            # Nettoyer même en cas d'erreur
             try:
                 self._cleanup_generated_tests()
             except Exception as cleanup_error:

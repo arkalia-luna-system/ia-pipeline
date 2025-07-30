@@ -12,7 +12,7 @@ from .advanced_analytics import AdvancedAnalytics
 from .ai_robust import RobustAI
 
 # Imports principaux
-from .athalia_orchestrator import AthaliaOrchestrator
+from .unified_orchestrator import UnifiedOrchestrator
 from .auto_cicd import AutoCICD
 from .auto_cleaner import AutoCleaner
 from .auto_documenter import AutoDocumenter
@@ -49,7 +49,7 @@ __description__ = "Système d'industrialisation et d'intelligence pour projets I
 # Exports principaux
 __all__ = [
     # Orchestrateur principal
-    "AthaliaOrchestrator",
+    "UnifiedOrchestrator",
     "main",
     "cli",
     # Gestion d'erreurs
