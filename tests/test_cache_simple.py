@@ -4,16 +4,17 @@
 Tests simples pour le cache.
 """
 
-from cache_manager import CacheManager, cache_function, clear_cache, get_cache_stats
 import os
-import shutil
 import sys
+import shutil
 import tempfile
 import time
 import unittest
 
-# Import direct du cache sans dépendances
-sys.path.append("athalia_core")
+# Ajout du chemin athalia_core pour l'import
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../athalia_core')))
+
+from cache_manager import CacheManager, cache_function, clear_cache, get_cache_stats
 
 
 class TestCacheSimple(unittest.TestCase):
