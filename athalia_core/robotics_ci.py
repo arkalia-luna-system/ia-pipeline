@@ -212,7 +212,7 @@ class RoboticsCI:
         try:
             if (self.project_path / "Cargo.toml").exists():
                 # Lint Rust
-                result = subprocess.run(
+                result = validate_and_run(
                     ["cargo", "clippy"],
                     cwd=self.project_path,
                     capture_output=True,
@@ -227,7 +227,7 @@ class RoboticsCI:
 
             else:
                 # Lint Python
-                result = subprocess.run(
+                result = validate_and_run(
                     ["flake8", "."],
                     cwd=self.project_path,
                     capture_output=True,
@@ -252,7 +252,7 @@ class RoboticsCI:
         try:
             if (self.project_path / "Cargo.toml").exists():
                 # Audit Rust
-                result = subprocess.run(
+                result = validate_and_run(
                     ["cargo", "audit"],
                     cwd=self.project_path,
                     capture_output=True,
@@ -267,7 +267,7 @@ class RoboticsCI:
 
             else:
                 # Scan Python
-                result = subprocess.run(
+                result = validate_and_run(
                     ["bandit", "-r", "."],
                     cwd=self.project_path,
                     capture_output=True,
