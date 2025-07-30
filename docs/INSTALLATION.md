@@ -1,17 +1,22 @@
-# Guide d'installation - athalia-dev-setup
+# Guide d'installation - athalia-dev-setup"
 
-## Vue d'ensemble
+## Vue densemble
 
 Ce guide explique comment installer et configurer athalia-dev-setup.
 
 ## Prérequis
 
-- Python >= 3.8
-- Dépendances listées dans requirements.txt
+- Python 3.8+
+- pip
 
 ## Installation
 
 ```bash
+# Cloner le projet
+git clone <repository_url>
+cd athalia-dev-setup
+
+# Installer les dépendances
 pip install -r requirements.txt
 ```
 

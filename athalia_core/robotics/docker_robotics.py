@@ -9,13 +9,14 @@ Gestion spécialisée Docker pour projets Reachy/ROS2 :
 - Images spécialisées
 """
 
+import logging
 import os
-import yaml
 import subprocess
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Optional
-from dataclasses import dataclass
-import logging
+
+import yaml
 
 logger = logging.getLogger(__name__)
 
@@ -23,6 +24,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class DockerServiceConfig:
     """Configuration d'un service Docker"""
+
     name: str
     image: str
     environment: Dict[str, str]
@@ -35,6 +37,7 @@ class DockerServiceConfig:
 @dataclass
 class DockerValidationResult:
     """Résultat de validation Docker"""
+
     compose_valid: bool
     services: List[DockerServiceConfig]
     issues: List[str]
@@ -62,90 +65,94 @@ class DockerRoboticsManager:
         compose_file = self.docker_path / "compose.yaml"
         if compose_file.exists():
             try:
-                with open(compose_file, 'r') as f:
+                with open(compose_file, "r") as f:
                     compose_data = yaml.safe_load(f)
 
-                if 'services' in compose_data:
-                    for service_name, service_config in compose_data['services'].items(
-                    ):
+                if "services" in compose_data:
+                    for service_name, service_config in compose_data[
+                        "services"
+                    ].items():
                         service = self._parse_service_config(
-                            service_name, service_config)
+                            service_name, service_config
+                        )
                         if service:
                             services.append(service)
 
                 # Vérifications spécifiques Reachy
                 reachy_service = next(
-                    (s for s in services if 'reachy' in s.name.lower()), None)
+                    (s for s in services if "reachy" in s.name.lower()), None
+                )
                 if reachy_service:
                     self._validate_reachy_service(
-                        reachy_service, issues, recommendations)
+                        reachy_service, issues, recommendations
+                    )
                 else:
                     recommendations.append(
-                        "Ajouter un service 'reachy_2023' pour la robotique")
+                        "Ajouter un service 'reachy_2023' pour la robotique"
+                    )
 
             except Exception as e:
                 issues.append(f"Erreur parsing docker-compose.yaml: {e}")
         else:
             issues.append("docker-compose.yaml manquant")
-            recommendations.append(
-                "Créer docker-compose.yaml pour le déploiement")
+            recommendations.append("Créer docker-compose.yaml pour le déploiement")
 
         # Vérifier Dockerfile
         dockerfile = self.docker_path / "Dockerfile"
         if not dockerfile.exists():
-            recommendations.append(
-                "Ajouter Dockerfile pour la containerisation")
+            recommendations.append("Ajouter Dockerfile pour la containerisation")
 
         # Vérifier .dockerignore
         dockerignore = self.project_path / ".dockerignore"
         if not dockerignore.exists():
-            recommendations.append(
-                "Ajouter .dockerignore pour optimiser les builds")
+            recommendations.append("Ajouter .dockerignore pour optimiser les builds")
 
         compose_valid = len(issues) == 0
         ready_to_run = compose_valid and any(
-            'reachy' in s.name.lower() for s in services)
+            "reachy" in s.name.lower() for s in services
+        )
 
         return DockerValidationResult(
             compose_valid=compose_valid,
             services=services,
             issues=issues,
             recommendations=recommendations,
-            ready_to_run=ready_to_run
+            ready_to_run=ready_to_run,
         )
 
     def _parse_service_config(
-            self,
-            name: str,
-            config: Dict) -> Optional[DockerServiceConfig]:
+        self, name: str, config: Dict
+    ) -> Optional[DockerServiceConfig]:
         """Parser la configuration d'un service"""
         try:
             return DockerServiceConfig(
                 name=name,
-                image=config.get('image', ''),
-                environment=config.get('environment', {}),
-                volumes=config.get('volumes', []),
-                ports=config.get('ports', []),
-                depends_on=config.get('depends_on', []),
-                network_mode=config.get('network_mode')
+                image=config.get("image", ""),
+                environment=config.get("environment", {}),
+                volumes=config.get("volumes", []),
+                ports=config.get("ports", []),
+                depends_on=config.get("depends_on", []),
+                network_mode=config.get("network_mode"),
             )
         except Exception as e:
             self.logger.error(f"Erreur parsing service {name}: {e}")
             return None
 
     def _validate_reachy_service(
-            self,
-            service: DockerServiceConfig,
-            issues: List[str],
-            recommendations: List[str]):
+        self,
+        service: DockerServiceConfig,
+        issues: List[str],
+        recommendations: List[str],
+    ):
         """Valider spécifiquement le service Reachy"""
 
         # Vérifier image
         if not service.image:
             issues.append("Image Docker manquante pour le service Reachy")
-        elif 'pollenrobotics/reachy' not in service.image:
+        elif "pollenrobotics/reachy" not in service.image:
             recommendations.append(
-                "Utiliser l'image officielle pollenrobotics/reachy_2023")
+                "Utiliser l'image officielle pollenrobotics/reachy_2023"
+            )
 
         # Vérifier variables d'environnement ROS
         if isinstance(service.environment, list):
@@ -153,26 +160,27 @@ class DockerRoboticsManager:
         else:
             env_vars = [str(v) for v in service.environment.values()]
 
-        if not any('ROS_DOMAIN_ID' in var for var in env_vars):
+        if not any("ROS_DOMAIN_ID" in var for var in env_vars):
             recommendations.append(
-                "Ajouter ROS_DOMAIN_ID dans les variables d'environnement")
+                "Ajouter ROS_DOMAIN_ID dans les variables d'environnement"
+            )
 
-        if not any('DISPLAY' in var for var in env_vars):
+        if not any("DISPLAY" in var for var in env_vars):
             recommendations.append("Ajouter DISPLAY pour la visualisation")
 
         # Vérifier volumes
         if not service.volumes:
             recommendations.append(
-                "Configurer les volumes pour la persistance des données")
+                "Configurer les volumes pour la persistance des données"
+            )
         else:
             # Vérifier volume source code
-            source_volumes = [v for v in service.volumes if 'src' in v.lower()]
+            source_volumes = [v for v in service.volumes if "src" in v.lower()]
             if not source_volumes:
-                recommendations.append(
-                    "Monter le code source dans le container")
+                recommendations.append("Monter le code source dans le container")
 
         # Vérifier network mode
-        if service.network_mode != 'host':
+        if service.network_mode != "host":
             recommendations.append("Utiliser network_mode: host pour ROS2")
 
     def create_reachy_compose_template(self) -> str:
@@ -286,21 +294,21 @@ ros2 launch reachy_bringup reachy_bringup.launch.py
             # Créer docker-compose.yaml
             compose_file = self.docker_path / "compose.yaml"
             if not compose_file.exists():
-                with open(compose_file, 'w') as f:
+                with open(compose_file, "w") as f:
                     f.write(self.create_reachy_compose_template())
                 self.logger.info("✅ docker-compose.yaml créé")
 
             # Créer Dockerfile
             dockerfile = self.docker_path / "Dockerfile"
             if not dockerfile.exists():
-                with open(dockerfile, 'w') as f:
+                with open(dockerfile, "w") as f:
                     f.write(self.create_dockerfile_template())
                 self.logger.info("✅ Dockerfile créé")
 
             # Créer script de démarrage
             start_script = self.docker_path / "start.sh"
             if not start_script.exists():
-                with open(start_script, 'w') as f:
+                with open(start_script, "w") as f:
                     f.write(self.create_start_script_template())
                 os.chmod(start_script, 0o755)
                 self.logger.info("✅ start.sh créé")
@@ -308,8 +316,9 @@ ros2 launch reachy_bringup reachy_bringup.launch.py
             # Créer .dockerignore
             dockerignore = self.project_path / ".dockerignore"
             if not dockerignore.exists():
-                with open(dockerignore, 'w') as f:
-                    f.write("""# Fichiers à ignorer pour Docker
+                with open(dockerignore, "w") as f:
+                    f.write(
+                        """# Fichiers à ignorer pour Docker
 .git
 .gitignore
 README.md
@@ -319,7 +328,8 @@ __pycache__
 .coverage
 htmlcov/
 .pytest_cache/
-""")
+"""
+                    )
                 self.logger.info("✅ .dockerignore créé")
 
             return True
@@ -341,10 +351,8 @@ htmlcov/
                 cmd.append(service)
 
             result = subprocess.run(
-                cmd,
-                cwd=self.project_path,
-                capture_output=True,
-                text=True)
+                cmd, cwd=self.project_path, capture_output=True, text=True
+            )
 
             if result.returncode == 0:
                 self.logger.info("✅ Docker Compose lancé avec succès")

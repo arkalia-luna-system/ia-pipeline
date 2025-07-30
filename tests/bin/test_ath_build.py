@@ -1,7 +1,5 @@
-import subprocess
 import os
-import signal
-import time
+import subprocess
 
 
 def test_ath_build_runs():
@@ -32,6 +30,6 @@ def test_ath_build_runs():
     except subprocess.TimeoutExpired:
         # Timeout acceptable pour un script interactif
         pass  # Test réussi si on arrive ici
-    except Exception as e:
+    except Exception:
         # Autres erreurs sont acceptables (module non trouvé, etc.)
         pass  # Test réussi si on arrive ici

@@ -1,0 +1,113 @@
+# Configuration principale d'Athalia Dev Setup
+# Fichier de configuration centralisé pour tous les modules
+
+app:
+  name: athalia-dev-setup
+  version: "2.0.0"
+  description: "Système d'industrialisation et d'intelligence pour projets IA"
+  debug: true
+  port: 8000
+  host: "0.0.0.0"
+
+# Configuration de la base de données
+database:
+  url: "sqlite:///data/athalia.db"
+  echo: false
+  pool_size: 10
+  max_overflow: 20
+
+# Configuration des logs
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/athalia.log"
+  max_size: "10MB"
+  backup_count: 5
+
+# Configuration des modèles IA
+ai:
+  default_model: "ollama_qwen"
+  fallback_models:
+    - "ollama_mistral"
+    - "ollama_llama2"
+  timeout: 30
+  max_retries: 3
+  temperature: 0.7
+  max_tokens: 2048
+
+# Configuration de la génération
+generation:
+  default_project_type: "generic"
+  templates_path: "templates"
+  output_path: "generated_projects"
+  backup_enabled: true
+  dry_run_enabled: true
+
+# Configuration des tests
+testing:
+  framework: "pytest"
+  coverage_threshold: 90
+  parallel_execution: true
+  timeout: 300
+  output_format: "html"
+
+# Configuration CI/CD
+ci_cd:
+  enabled: true
+  github_actions: true
+  docker_enabled: true
+  auto_deploy: false
+  quality_gates:
+    - "tests_pass"
+    - "coverage_above_threshold"
+    - "linting_clean"
+
+# Configuration de sécurité
+security:
+  audit_enabled: true
+  vulnerability_scan: true
+  secrets_scan: true
+  dependency_check: true
+
+# Configuration de performance
+performance:
+  monitoring_enabled: true
+  profiling_enabled: false
+  memory_limit: "2GB"
+  cpu_limit: "80%"
+
+# Configuration des plugins
+plugins:
+  enabled: true
+  auto_load: true
+  validation_enabled: true
+  path: "plugins"
+
+# Configuration de la documentation
+documentation:
+  auto_generate: true
+  format: "markdown"
+  include_examples: true
+  api_docs_enabled: true
+
+# Configuration des sauvegardes
+backup:
+  enabled: true
+  frequency: "daily"
+  retention_days: 30
+  compression: true
+  path: "backups"
+
+# Configuration des archives
+archive:
+  enabled: true
+  auto_cleanup: true
+  max_size: "1GB"
+  path: "archive"
+
+# Configuration des rapports
+reports:
+  auto_generate: true
+  format: "markdown"
+  include_metrics: true
+  path: "docs/REPORTS" 

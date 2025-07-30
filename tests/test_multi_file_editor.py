@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+Tests pour le module multi_file_editor.
+Tests professionnels pour la CI/CD.
+"""
+
 import os
 import tempfile
-import shutil
-import pytest
+
 from athalia_core.multi_file_editor import MultiFileEditor
+
 
 def test_apply_corrections_and_rollback():
     # Préparer des fichiers temporaires
@@ -15,9 +20,11 @@ def test_apply_corrections_and_rollback():
             f.write("foo bar")
         with open(file2, "w", encoding="utf-8") as f:
             f.write("foo baz")
+
         # Correction : remplacer 'foo' par 'bar'
         def corr_fn(content):
             return content.replace("foo", "bar")
+
         mfe = MultiFileEditor(backup_dir=os.path.join(tmpdir, "backups"))
         result = mfe.apply_corrections([file1, file2], corr_fn)
         assert file1 in result["success"]
@@ -33,11 +40,14 @@ def test_apply_corrections_and_rollback():
         with open(file2, "r", encoding="utf-8") as f:
             assert f.read() == "foo baz"
 
+
 def test_apply_corrections_error():
     # Fichier inexistant
     mfe = MultiFileEditor()
+
     def corr_fn(content):
         return content
+
     result = mfe.apply_corrections(["/tmp/does_not_exist.txt"], corr_fn)
     assert len(result["errors"]) == 1
-    assert "/tmp/does_not_exist.txt" in result["errors"][0][0] 
+    assert "/tmp/does_not_exist.txt" in result["errors"][0][0]

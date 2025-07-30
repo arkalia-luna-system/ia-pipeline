@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import os
-import logging
 import builtins
+import logging
+import os
+
 _real_open = builtins.open
 
 logger = logging.getLogger(__name__)
 
 
-def open_patch(file, mode='r', *args, **kwargs):
-    if mode == 'f':
-        mode = 'w'
+def open_patch(file, mode="r", *args, **kwargs):
+    if mode == "f":
+        mode = "w"
     return _real_open(file, mode, *args, **kwargs)
 
 

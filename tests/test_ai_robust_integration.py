@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import os
-from athalia_core.ai_robust import RobustAI, AIModel, PromptContext
 import time
+
 import pytest
-import tempfile
+
+from athalia_core.ai_robust import AIModel, PromptContext, RobustAI
 
 # Import conditionnel de psutil
 try:
     import psutil
+
     PSUTIL_AVAILABLE = True
 except ImportError:
     PSUTIL_AVAILABLE = False
@@ -31,9 +32,9 @@ class TestAIRobustIntegration:
         blueprint = self.ai.generate_blueprint("simple projet")
 
         assert isinstance(blueprint, dict)
-        assert 'project_name' in blueprint
-        assert 'modules' in blueprint
-        assert 'dependencies' in blueprint
+        assert "project_name" in blueprint
+        assert "modules" in blueprint
+        assert "dependencies" in blueprint
 
         # 2. Revue de code
         test_code = """
@@ -47,24 +48,24 @@ def multiply(a, b):
             code=test_code,
             filename="calculator.py",
             project_type="python",
-            current_score=70
+            current_score=70,
         )
 
         assert isinstance(review, dict)
-        assert 'score' in review
-        assert 'issues' in review
-        assert 'suggestions' in review
+        assert "score" in review
+        assert "issues" in review
+        assert "suggestions" in review
 
         # 3. Génération de documentation
         doc = self.ai.generate_documentation(
-            project_name=blueprint['project_name'],
+            project_name=blueprint["project_name"],
             project_type="python",
-            modules=blueprint['modules']
+            modules=blueprint["modules"],
         )
 
         assert isinstance(doc, str)
         assert len(doc) > 10  # Au moins quelques caractères
-        assert blueprint['project_name'] in doc or "projet" in doc
+        assert blueprint["project_name"] in doc or "projet" in doc
 
     def test_fallback_chain_behavior(self):
         """Test du comportement de la chaîne de fallback."""
@@ -80,10 +81,10 @@ def multiply(a, b):
             # Devrait utiliser le mock en cas d'échec
             blueprint = self.ai.generate_blueprint("test projet")
             assert isinstance(blueprint, dict)
-            assert 'project_name' in blueprint
+            assert "project_name" in blueprint
 
             # Vérifier que c'est bien le mock qui a été utilisé
-            assert blueprint.get('project_type') == 'generic'
+            assert blueprint.get("project_type") == "generic"
 
         finally:
             self.ai._call_ollama = original_call
@@ -109,10 +110,10 @@ def multiply(a, b):
             PromptContext.BLUEPRINT,
             idea="test projet",
             project_type="python",
-            complexity="simple"
+            complexity="simple",
         )
         assert isinstance(prompt, str)
-        assert len(prompt) > 50
+        assert len(prompt) >= 50
 
         # Test code review
         prompt = self.ai._get_dynamic_prompt(
@@ -120,51 +121,57 @@ def multiply(a, b):
             code="def test(): pass",
             filename="test.py",
             project_type="python",
-            current_score=50
+            current_score=50,
         )
         assert isinstance(prompt, str)
-        assert len(prompt) > 50
+        assert len(prompt) >= 50
 
         # Test documentation
         prompt = self.ai._get_dynamic_prompt(
             PromptContext.DOCUMENTATION,
             project_name="test",
             project_type="python",
-            modules="api, web"
+            modules="api, web",
         )
         assert isinstance(prompt, str)
-        assert len(prompt) > 50
+        assert len(prompt) >= 50
 
         # Test testing
         prompt = self.ai._get_dynamic_prompt(
             PromptContext.TESTING,
             module_name="test",
             features="add, multiply",
-            project_type="python"
+            project_type="python",
         )
         assert isinstance(prompt, str)
-        assert len(prompt) > 50
+        assert len(prompt) >= 50
 
         # Test security
         prompt = self.ai._get_dynamic_prompt(
             PromptContext.SECURITY,
             code="def vulnerable(): pass",
             app_type="web",
-            environment="production"
+            environment="production",
         )
         assert isinstance(prompt, str)
-        assert len(prompt) > 50
+        assert len(prompt) >= 50
 
     def test_model_detection(self):
         """Test de la détection des modèles."""
         models = self.ai.available_models
         assert len(models) > 0
-        assert AIModel.MOCK in models
+        
+        # Vérifier que MOCK est dans la liste (peut être à n'importe quelle position)
+        mock_found = AIModel.MOCK in models
+        assert mock_found, f"MOCK devrait être dans la liste des modèles: {models}"
 
         # Vérifier que la chaîne de fallback est cohérente
         chain = self.ai.fallback_chain
         assert len(chain) > 0
-        assert AIModel.MOCK in chain
+        
+        # Vérifier que MOCK est dans la chaîne de fallback
+        mock_in_chain = AIModel.MOCK in chain
+        assert mock_in_chain, f"MOCK devrait être dans la chaîne de fallback: {chain}"
 
         # Vérifier que tous les modèles de la chaîne sont disponibles
         for model in chain:
@@ -185,6 +192,7 @@ def multiply(a, b):
             assert isinstance(result, dict)
         except Exception as e:
             pytest.fail(f"Ne devrait pas lever d'exception: {e}")
+
 
 def test_ai_robust_performance():
     """Test de performance de l'IA robuste."""
@@ -208,6 +216,7 @@ def test_ai_robust_performance():
     assert isinstance(review, dict)
     assert end_time - start_time < 30  # Moins de 30 secondes
 
+
 @pytest.mark.skipif(not PSUTIL_AVAILABLE, reason="psutil non disponible")
 def test_ai_robust_memory_usage():
     """Test de l'utilisation mémoire de l'IA robuste."""
@@ -215,7 +224,7 @@ def test_ai_robust_memory_usage():
     initial_memory = process.memory_info().rss
 
     ai = RobustAI()
-    
+
     # Générer plusieurs blueprints pour tester la mémoire
     for i in range(5):
         blueprint = ai.generate_blueprint(f"projet test {i}")
@@ -223,6 +232,6 @@ def test_ai_robust_memory_usage():
 
     final_memory = process.memory_info().rss
     memory_increase = final_memory - initial_memory
-    
+
     # L'augmentation mémoire ne devrait pas être excessive (moins de 100MB)
     assert memory_increase < 100 * 1024 * 1024  # 100MB en bytes

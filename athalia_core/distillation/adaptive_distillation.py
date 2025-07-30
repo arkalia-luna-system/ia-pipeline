@@ -4,9 +4,9 @@ Distillation adaptative pour Athalia/Arkalia
 - Pondération dynamique selon préférences et feedback utilisateur
 - Historique sauvegardé/chargé en JSON
 """
-from typing import List, Dict, Any, Optional
 import json
 from pathlib import Path
+from typing import Any, Dict, List, Optional
 
 
 class AdaptiveDistiller:
@@ -15,9 +15,8 @@ class AdaptiveDistiller:
         Initialise le distillateur adaptatif.
         :param history_path: Chemin du fichier JSON pour l'historique (optionnel)
         """
-        self.preference_weights: Dict[str,
-                                      float] = {}  # Pondération des réponses
-        self.success_history: List[str] = []     # Historique des succès
+        self.preference_weights: Dict[str, float] = {}  # Pondération des réponses
+        self.success_history: List[str] = []  # Historique des succès
         # {réponse: [succès, échecs]}
         self.feedback: Dict[str, List[int]] = {}
         self.history_path = history_path or "adaptive_distillation_history.json"
@@ -64,12 +63,14 @@ class AdaptiveDistiller:
         :param responses: Liste de réponses IA
         :return: Liste triée
         """
+
         def score(r):
             w = self.preference_weights.get(r, 0)
             s, f = self.feedback.get(r, [0, 0])
             total = s + f
             taux_succes = s / total if total > 0 else 0
             return w + taux_succes
+
         return sorted(responses, key=score, reverse=True)
 
     def ensemble_fusion(
@@ -82,8 +83,9 @@ class AdaptiveDistiller:
         :return: Réponse fusionnée
         """
         from collections import Counter
+
         if not responses:
-            return ''
+            return ""
         counter = Counter(responses)
         return counter.most_common(1)[0][0]
 
@@ -92,7 +94,7 @@ class AdaptiveDistiller:
         data = {
             "preference_weights": self.preference_weights,
             "success_history": self.success_history,
-            "feedback": self.feedback
+            "feedback": self.feedback,
         }
         try:
             with open(self.history_path, "w", encoding="utf-8") as f:
@@ -111,5 +113,4 @@ class AdaptiveDistiller:
                 self.success_history = data.get("success_history", [])
                 self.feedback = data.get("feedback", {})
             except Exception as e:
-                print(
-                    f"[AdaptiveDistiller] Erreur chargement historique : {e}")
+                print(f"[AdaptiveDistiller] Erreur chargement historique : {e}")

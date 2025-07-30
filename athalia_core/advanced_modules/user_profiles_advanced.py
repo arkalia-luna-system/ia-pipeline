@@ -4,11 +4,11 @@ Module de gestion des profils utilisateur avancés pour Athalia
 Gestion des préférences, historique, statistiques et personnalisation
 """
 
-import sqlite3
 import json
 import logging
+import sqlite3
 from datetime import datetime
-from typing import Dict, List, Any, Optional
+from typing import Any, Dict, List, Optional
 
 logger = logging.getLogger(__name__)
 
@@ -34,17 +34,16 @@ class ProfilUtilisateur:
             "date_creation": self.date_creation.isoformat(),
             "derniere_connexion": self.derniere_connexion.isoformat(),
             "projets_consultes": self.projets_consultes,
-            "actions_frequentes": self.actions_frequentes
+            "actions_frequentes": self.actions_frequentes,
         }
 
     @classmethod
-    def from_dict(cls, data: Dict[str, Any]) -> 'ProfilUtilisateur':
+    def from_dict(cls, data: Dict[str, Any]) -> "ProfilUtilisateur":
         """Création depuis un dictionnaire"""
         profil = cls(data["nom"], data.get("email", ""))
         profil.preferences = data.get("preferences", {})
         profil.date_creation = datetime.fromisoformat(data["date_creation"])
-        profil.derniere_connexion = datetime.fromisoformat(
-            data["derniere_connexion"])
+        profil.derniere_connexion = datetime.fromisoformat(data["derniere_connexion"])
         profil.projets_consultes = data.get("projets_consultes", [])
         profil.actions_frequentes = data.get("actions_frequentes", {})
         return profil
@@ -63,7 +62,8 @@ class GestionnaireProfils:
             cursor = conn.cursor()
 
             # Table des profils
-            cursor.execute("""
+            cursor.execute(
+                """
                 CREATE TABLE IF NOT EXISTS profils (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     nom TEXT UNIQUE NOT NULL,
@@ -72,10 +72,12 @@ class GestionnaireProfils:
                     date_creation TEXT,
                     derniere_connexion TEXT
                 )
-            """)
+            """
+            )
 
             # Table des actions
-            cursor.execute("""
+            cursor.execute(
+                """
                 CREATE TABLE IF NOT EXISTS actions (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     profil_id INTEGER,
@@ -84,10 +86,12 @@ class GestionnaireProfils:
                     details TEXT,
                     FOREIGN KEY (profil_id) REFERENCES profils (id)
                 )
-            """)
+            """
+            )
 
             # Table des projets consultés
-            cursor.execute("""
+            cursor.execute(
+                """
                 CREATE TABLE IF NOT EXISTS projets_consultes (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     profil_id INTEGER,
@@ -96,15 +100,14 @@ class GestionnaireProfils:
                     duree_consultation INTEGER,
                     FOREIGN KEY (profil_id) REFERENCES profils (id)
                 )
-            """)
+            """
+            )
 
             conn.commit()
 
     def creer_profil(
-            self,
-            nom: str,
-            email: str = "",
-            preferences: Dict = None) -> ProfilUtilisateur:
+        self, nom: str, email: str = "", preferences: Dict = None
+    ) -> ProfilUtilisateur:
         """Création d'un nouveau profil"""
         logger.info(f"Création du profil utilisateur: {nom}")
 
@@ -112,16 +115,19 @@ class GestionnaireProfils:
 
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
-            cursor.execute("""
-                INSERT INTO profils (nom, email, preferences, date_creation, derniere_connexion)
-                VALUES (?, ?, ?, ?, ?)
-            """, (
-                profil.nom,
-                profil.email,
-                json.dumps(profil.preferences),
-                profil.date_creation.isoformat(),
-                profil.derniere_connexion.isoformat()
-            ))
+            cursor.execute(
+                """
+                INSERT INTO profils (nom, email, preferences, date_creation, 
+                derniere_connexion) VALUES (?, ?, ?, ?, ?)
+            """,
+                (
+                    profil.nom,
+                    profil.email,
+                    json.dumps(profil.preferences),
+                    profil.date_creation.isoformat(),
+                    profil.derniere_connexion.isoformat(),
+                ),
+            )
             conn.commit()
 
         return profil
@@ -130,10 +136,13 @@ class GestionnaireProfils:
         """Récupération d'un profil par nom"""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
-            cursor.execute("""
-                SELECT nom, email, preferences, date_creation, derniere_connexion
-                FROM profils WHERE nom = ?
-            """, (nom,))
+            cursor.execute(
+                """
+                SELECT nom, email, preferences, date_creation, 
+                derniere_connexion FROM profils WHERE nom = ?
+            """,
+                (nom,),
+            )
 
             row = cursor.fetchone()
             if row:
@@ -143,25 +152,30 @@ class GestionnaireProfils:
                 profil.derniere_connexion = datetime.fromisoformat(row[4])
 
                 # Récupération des actions fréquentes
-                cursor.execute("""
+                cursor.execute(
+                    """
                     SELECT action, COUNT(*) as count
                     FROM actions WHERE profil_id = (SELECT id FROM profils WHERE nom = ?)
                     GROUP BY action ORDER BY count DESC LIMIT 10
-                """, (nom,))
+                """,
+                    (nom,),
+                )
 
                 for action, count in cursor.fetchall():
                     profil.actions_frequentes[action] = count
 
                 # Récupération des projets consultés
-                cursor.execute("""
+                cursor.execute(
+                    """
                     SELECT chemin_projet, date_consultation
                     FROM projets_consultes
                     WHERE profil_id = (SELECT id FROM profils WHERE nom = ?)
                     ORDER BY date_consultation DESC LIMIT 20
-                """, (nom,))
+                """,
+                    (nom,),
+                )
 
-                profil.projets_consultes = [row[0]
-                                            for row in cursor.fetchall()]
+                profil.projets_consultes = [row[0] for row in cursor.fetchall()]
 
                 return profil
 
@@ -173,65 +187,61 @@ class GestionnaireProfils:
 
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
-            cursor.execute("""
+            cursor.execute(
+                """
                 UPDATE profils
                 SET email = ?, preferences = ?, derniere_connexion = ?
                 WHERE nom = ?
-            """, (
-                profil.email,
-                json.dumps(profil.preferences),
-                profil.derniere_connexion.isoformat(),
-                profil.nom
-            ))
+            """,
+                (
+                    profil.email,
+                    json.dumps(profil.preferences),
+                    profil.derniere_connexion.isoformat(),
+                    profil.nom,
+                ),
+            )
             conn.commit()
 
-    def enregistrer_action(
-            self,
-            nom_profil: str,
-            action: str,
-            details: Dict = None):
+    def enregistrer_action(self, nom_profil: str, action: str, details: Dict = None):
         """Enregistrement d'une action utilisateur"""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
-            cursor.execute(
-                "SELECT id FROM profils WHERE nom = ?", (nom_profil,))
+            cursor.execute("SELECT id FROM profils WHERE nom = ?", (nom_profil,))
             profil_id = cursor.fetchone()
 
             if profil_id:
-                cursor.execute("""
+                cursor.execute(
+                    """
                     INSERT INTO actions (profil_id, action, timestamp, details)
                     VALUES (?, ?, ?, ?)
-                """, (
-                    profil_id[0],
-                    action,
-                    datetime.now().isoformat(),
-                    json.dumps(details) if details else None
-                ))
+                """,
+                    (
+                        profil_id[0],
+                        action,
+                        datetime.now().isoformat(),
+                        json.dumps(details) if details else None,
+                    ),
+                )
                 conn.commit()
 
     def enregistrer_consultation_projet(
-            self,
-            nom_profil: str,
-            chemin_projet: str,
-            duree: int = 0):
+        self, nom_profil: str, chemin_projet: str, duree: int = 0
+    ):
         """Enregistrement de la consultation d'un projet"""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
-            cursor.execute(
-                "SELECT id FROM profils WHERE nom = ?", (nom_profil,))
+            cursor.execute("SELECT id FROM profils WHERE nom = ?", (nom_profil,))
             profil_id = cursor.fetchone()
 
             if profil_id:
-                cursor.execute("""
+                cursor.execute(
+                    """
                     INSERT INTO projets_consultes 
                     (profil_id, chemin_projet, date_consultation, duree_consultation)
                     VALUES (?, ?, ?, ?)
-                """, (
-                    profil_id[0],
-                    chemin_projet,
-                    datetime.now().isoformat(),
-                    duree
-                ))
+                """,
+                    (profil_id[0], chemin_projet, datetime.now().isoformat(), duree),
+                )
                 conn.commit()
 
     def obtenir_statistiques(self, nom_profil: str) -> Dict[str, Any]:
@@ -240,7 +250,8 @@ class GestionnaireProfils:
             cursor = conn.cursor()
 
             # Actions les plus fréquentes
-            cursor.execute("""
+            cursor.execute(
+                """
                 SELECT action, COUNT(*) as count
                 FROM actions a
                 JOIN profils p ON a.profil_id = p.id
@@ -248,12 +259,15 @@ class GestionnaireProfils:
                 GROUP BY action
                 ORDER BY count DESC
                 LIMIT 10
-            """, (nom_profil,))
+            """,
+                (nom_profil,),
+            )
 
             actions_frequentes = {row[0]: row[1] for row in cursor.fetchall()}
 
             # Projets les plus consultés
-            cursor.execute("""
+            cursor.execute(
+                """
                 SELECT chemin_projet, COUNT(*) as count
                 FROM projets_consultes pc
                 JOIN profils p ON pc.profil_id = p.id
@@ -261,18 +275,23 @@ class GestionnaireProfils:
                 GROUP BY chemin_projet
                 ORDER BY count DESC
                 LIMIT 10
-            """, (nom_profil,))
+            """,
+                (nom_profil,),
+            )
 
             projets_frequents = {row[0]: row[1] for row in cursor.fetchall()}
             projets_consultes = list(projets_frequents.keys())
 
             # Temps total passé
-            cursor.execute("""
+            cursor.execute(
+                """
                 SELECT SUM(duree_consultation) as total_time
                 FROM projets_consultes pc
                 JOIN profils p ON pc.profil_id = p.id
                 WHERE p.nom = ?
-            """, (nom_profil,))
+            """,
+                (nom_profil,),
+            )
 
             temps_total = cursor.fetchone()[0] or 0
 
@@ -284,7 +303,7 @@ class GestionnaireProfils:
                 "duree_totale": temps_total,
                 "total_actions": sum(actions_frequentes.values()),
                 "total_projets": len(projets_frequents),
-                "connexion": actions_frequentes.get('connexion', 0)
+                "connexion": actions_frequentes.get("connexion", 0),
             }
 
     def generer_rapport_profil(self, nom_profil: str) -> str:
@@ -312,14 +331,14 @@ class GestionnaireProfils:
 🔝 ACTIONS LES PLUS FRÉQUENTES:
 """
 
-        for action, count in list(stats['actions_frequentes'].items())[:5]:
+        for action, count in list(stats["actions_frequentes"].items())[:5]:
             rapport += f"• {action}: {count} fois\n"
 
         rapport += """
 📁 PROJETS LES PLUS CONSULTÉS:
 """
 
-        for projet, count in list(stats['projets_frequents'].items())[:5]:
+        for projet, count in list(stats["projets_frequents"].items())[:5]:
             rapport += f"• {projet}: {count} consultations\n"
 
         rapport += """
@@ -335,8 +354,7 @@ class GestionnaireProfils:
         """Liste de tous les profils"""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
-            cursor.execute(
-                "SELECT nom FROM profils ORDER BY derniere_connexion DESC")
+            cursor.execute("SELECT nom FROM profils ORDER BY derniere_connexion DESC")
             return [row[0] for row in cursor.fetchall()]
 
     def supprimer_profil(self, nom: str) -> bool:
@@ -358,7 +376,7 @@ class GestionnaireProfils:
             if not profil:
                 return False
 
-            with open(fichier_destination, 'w', encoding='utf-8') as f:
+            with open(fichier_destination, "w", encoding="utf-8") as f:
                 json.dump(profil.to_dict(), f, indent=2, ensure_ascii=False)
 
             return True
@@ -369,7 +387,7 @@ class GestionnaireProfils:
     def importer_profil(self, fichier_source: str) -> bool:
         """Import d'un profil depuis un fichier JSON"""
         try:
-            with open(fichier_source, 'r', encoding='utf-8') as f:
+            with open(fichier_source, "r", encoding="utf-8") as f:
                 data = json.load(f)
 
             profil = ProfilUtilisateur.from_dict(data)
@@ -384,16 +402,12 @@ def main():
     """Fonction principale pour test"""
     import argparse
 
-    parser = argparse.ArgumentParser(
-        description="Gestionnaire de profils utilisateur")
+    parser = argparse.ArgumentParser(description="Gestionnaire de profils utilisateur")
     parser.add_argument(
         "action",
-        choices=[
-            "creer",
-            "obtenir",
-            "lister",
-            "rapport"],
-        help="Action à effectuer")
+        choices=["creer", "obtenir", "lister", "rapport"],
+        help="Action à effectuer",
+    )
     parser.add_argument("nom", nargs="?", help="Nom du profil")
     parser.add_argument("--email", help="Email du profil")
 

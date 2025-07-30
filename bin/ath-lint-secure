@@ -1,0 +1,180 @@
+#!/usr/bin/env python3
+"""
+Script de linting sécurisé pour Athalia.
+Exécute tous les outils de qualité et sécurité.
+"""
+
+import json
+import os
+import subprocess
+import sys
+import time
+from pathlib import Path
+from typing import Any, Dict, List
+
+# Configuration
+TOOLS = {
+    "black": {
+        "command": ["black", "--check", "--diff", "--line-length=88", "--preview", "."],
+        "description": "Formatage du code",
+        "critical": False
+    },
+    "isort": {
+        "command": ["isort", "--check-only", "--diff", "--profile=black", "."],
+        "description": "Organisation des imports",
+        "critical": False
+    },
+    "flake8": {
+        "command": ["flake8", "--config=config/.flake8", "."],
+        "description": "Analyse statique du code",
+        "critical": True
+    },
+    "mypy": {
+        "command": ["mypy", "--config-file=config/pyproject.toml", "athalia_core"],
+        "description": "Vérification des types",
+        "critical": False
+    },
+    "bandit": {
+        "command": ["bandit", "-c", "config/.bandit", "-r", "athalia_core", "scripts", "tools"],
+        "description": "Analyse de sécurité",
+        "critical": True
+    },
+    "safety": {
+        "command": ["safety", "check", "--json"],
+        "description": "Vérification des vulnérabilités",
+        "critical": True
+    },
+    "pip-audit": {
+        "command": ["pip-audit", "--format=json"],
+        "description": "Audit des dépendances",
+        "critical": True
+    }
+}
+
+def run_tool(name: str, config: Dict[str, Any]) -> Dict[str, Any]:
+    """Exécute un outil de linting."""
+    print(f"🔍 {config['description']} ({name})...")
+    
+    start_time = time.time()
+    result = {
+        "name": name,
+        "description": config["description"],
+        "success": False,
+        "output": "",
+        "error": "",
+        "duration": 0,
+        "critical": config["critical"]
+    }
+    
+    try:
+        # Exécuter l'outil
+        process = subprocess.run(
+            config["command"],
+            capture_output=True,
+            text=True,
+            cwd=Path.cwd(),
+            timeout=300  # 5 minutes max
+        )
+        
+        result["duration"] = time.time() - start_time
+        result["output"] = process.stdout
+        result["error"] = process.stderr
+        result["success"] = process.returncode == 0
+        
+        if result["success"]:
+            print(f"✅ {name}: OK ({result['duration']:.2f}s)")
+        else:
+            print(f"❌ {name}: ÉCHEC ({result['duration']:.2f}s)")
+            if result["error"]:
+                print(f"   Erreur: {result['error'][:200]}...")
+            if result["output"]:
+                print(f"   Sortie: {result['output'][:200]}...")
+                
+    except subprocess.TimeoutExpired:
+        result["error"] = "Timeout (5 minutes dépassées)"
+        print(f"⏰ {name}: TIMEOUT")
+    except FileNotFoundError:
+        result["error"] = f"Outil {name} non trouvé"
+        print(f"🚫 {name}: NON INSTALLÉ")
+    except Exception as e:
+        result["error"] = str(e)
+        print(f"💥 {name}: ERREUR - {e}")
+    
+    return result
+
+def generate_report(results: List[Dict[str, Any]]) -> None:
+    """Génère un rapport de linting."""
+    print("\n" + "="*60)
+    print("📊 RAPPORT DE LINTING SÉCURISÉ")
+    print("="*60)
+    
+    # Statistiques
+    total = len(results)
+    successful = sum(1 for r in results if r["success"])
+    failed = total - successful
+    critical_failed = sum(1 for r in results if not r["success"] and r["critical"])
+    
+    print(f"📈 Total: {total} outils")
+    print(f"✅ Succès: {successful}")
+    print(f"❌ Échecs: {failed}")
+    print(f"🚨 Critiques échoués: {critical_failed}")
+    
+    # Détails par outil
+    print("\n🔍 DÉTAILS PAR OUTIL:")
+    for result in results:
+        status = "✅" if result["success"] else "❌"
+        critical = "🚨" if result["critical"] else "  "
+        print(f"{status} {critical} {result['name']}: {result['description']}")
+        if not result["success"] and result["error"]:
+            print(f"   Erreur: {result['error']}")
+    
+    # Sauvegarde du rapport
+    report_file = f"logs/linting_report_{int(time.time())}.json"
+    os.makedirs("logs", exist_ok=True)
+    with open(report_file, "w") as f:
+        json.dump({
+            "timestamp": time.time(),
+            "summary": {
+                "total": total,
+                "successful": successful,
+                "failed": failed,
+                "critical_failed": critical_failed
+            },
+            "results": results
+        }, f, indent=2)
+    
+    print(f"\n💾 Rapport sauvegardé: {report_file}")
+    
+    # Code de retour
+    if critical_failed > 0:
+        print("\n🚨 ERREURS CRITIQUES DÉTECTÉES!")
+        sys.exit(1)
+    elif failed > 0:
+        print("\n⚠️  ERREURS NON-CRITIQUES DÉTECTÉES")
+        sys.exit(2)
+    else:
+        print("\n🎉 TOUS LES TESTS PASSENT!")
+        sys.exit(0)
+
+def main():
+    """Fonction principale."""
+    print("🛡️  LINTING SÉCURISÉ ATHALIA")
+    print("="*40)
+    
+    # Vérifier que nous sommes dans le bon répertoire
+    if not Path("athalia_core").exists():
+        print("❌ Erreur: Répertoire athalia_core non trouvé")
+        print("   Exécutez ce script depuis la racine du projet")
+        sys.exit(1)
+    
+    # Exécuter tous les outils
+    results = []
+    for name, config in TOOLS.items():
+        result = run_tool(name, config)
+        results.append(result)
+    
+    # Générer le rapport
+    generate_report(results)
+
+if __name__ == "__main__":
+    main() 

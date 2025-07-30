@@ -13,5 +13,5 @@ def get_info():
     return {
         "name": "Docker Export Plugin",
         "version": "1.0.0",
-        "description": "Plugin d'export Docker"
-    } 
+        "description": "Plugin d'export Docker",
+    }

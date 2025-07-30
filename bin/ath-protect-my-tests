@@ -1,0 +1,122 @@
+#!/bin/bash
+# Script de protection des tests légitimes
+# Empêche la suppression des tests créés manuellement
+
+set -e
+
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+TESTS_DIR="$PROJECT_ROOT/tests"
+
+echo "🛡️ Protection des tests légitimes activée..."
+
+# Liste des tests à protéger (ajoutez vos tests ici)
+PROTECTED_TESTS=(
+    "test_ai_robust.py"
+    "test_ai_robust_unit.py"
+    "test_ai_robust_integration.py"
+    "test_cache_simple.py"
+    "test_performance_optimization.py"
+    "test_benchmark_critical.py"
+    "integration/test_cli_robustesse.py"
+    "integration/test_end_to_end.py"
+    "integration/test_yaml_validity.py"
+    "test_cleanup.py"
+    "test_audit.py"
+    "test_i18n.py"
+    "audit_complet_dossiers.py"
+    "debug_correction.py"
+    "correction_chaînes.py"
+    "correction_finale.py"
+    "test_plugin_complet.py"
+    "test_plugins.py"
+    "test_adaptive_distillation.py"
+    "optimize_performance.py"
+)
+
+# Fonction pour vérifier si un test est protégé
+is_protected_test() {
+    local test_file="$1"
+    for protected in "${PROTECTED_TESTS[@]}"; do
+        if [[ "$test_file" == "$protected" ]]; then
+            return 0  # Test protégé
+        fi
+    done
+    return 1  # Test non protégé
+}
+
+# Fonction pour surveiller les suppressions
+monitor_deletions() {
+    echo "👀 Surveillance des suppressions de tests..."
+    
+    # Utiliser fswatch si disponible
+    if command -v fswatch >/dev/null 2>&1; then
+        fswatch -o "$TESTS_DIR" | while read num; do
+            # Vérifier les fichiers supprimés
+            for test_file in "${PROTECTED_TESTS[@]}"; do
+                if [[ ! -f "$TESTS_DIR/$test_file" ]]; then
+                    echo "🚨 ALERTE: Test protégé supprimé: $test_file"
+                    echo "⚠️ Vérifiez les scripts de nettoyage automatique"
+                fi
+            done
+        done
+    else
+        echo "⚠️ fswatch non disponible. Surveillance manuelle recommandée."
+        echo "💡 Installez fswatch: brew install fswatch"
+    fi
+}
+
+# Fonction pour lister les tests protégés
+list_protected_tests() {
+    echo "📋 Tests protégés:"
+    for test_file in "${PROTECTED_TESTS[@]}"; do
+        if [[ -f "$TESTS_DIR/$test_file" ]]; then
+            echo "  ✅ $test_file"
+        else
+            echo "  ❌ $test_file (MANQUANT)"
+        fi
+    done
+}
+
+# Fonction pour ajouter un test à la protection
+add_protected_test() {
+    local test_file="$1"
+    if [[ -z "$test_file" ]]; then
+        echo "❌ Usage: $0 add <nom_du_test.py>"
+        exit 1
+    fi
+    
+    # Vérifier si le test existe
+    if [[ ! -f "$TESTS_DIR/$test_file" ]]; then
+        echo "❌ Test non trouvé: $test_file"
+        exit 1
+    fi
+    
+    # Ajouter à la liste (nécessite modification manuelle du script)
+    echo "📝 Pour ajouter $test_file à la protection:"
+    echo "   1. Éditez ce script"
+    echo "   2. Ajoutez \"$test_file\" à la liste PROTECTED_TESTS"
+    echo "   3. Relancez la protection"
+}
+
+# Menu principal
+case "${1:-}" in
+    "monitor")
+        monitor_deletions
+        ;;
+    "list")
+        list_protected_tests
+        ;;
+    "add")
+        add_protected_test "$2"
+        ;;
+    *)
+        echo "🛡️ Protection des tests légitimes"
+        echo ""
+        echo "Usage:"
+        echo "  $0 monitor    - Surveiller les suppressions"
+        echo "  $0 list       - Lister les tests protégés"
+        echo "  $0 add <test> - Ajouter un test à la protection"
+        echo ""
+        list_protected_tests
+        ;;
+esac 

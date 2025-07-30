@@ -10,7 +10,7 @@
 
 1. Suivez le [Guide d'installation](INSTALLATION.md)
 2. Consultez le [Guide d'utilisation](USAGE.md)
-3. Explorez l'[Documentation API](API.md) pour les fonctionnalités avancées
+3. Explorez l[Documentation API](API.md) pour les fonctionnalités avancées
 
 ---
 *Généré automatiquement par Athalia* - 2025-07-29

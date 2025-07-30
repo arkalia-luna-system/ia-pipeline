@@ -34,6 +34,7 @@ class UnifiedAgent:
         """Synthétise plusieurs réponses"""
         return " | ".join(responses)
 
+
 # Classes spécialisées pour compatibilité
 
 

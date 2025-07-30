@@ -1,21 +1,20 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from athalia_core import generation
 import os
-import pytest
-import shutil
 
+from athalia_core import generation
 
 
 def test_save_and_inject(tmp_path):
     blueprint = generation.generate_blueprint_mock("Projet test")
     outdir = tmp_path / "projet_test"
     generation.save_blueprint(blueprint, outdir)
-    assert (outdir / 'blueprint.yaml').exists()
+    assert (outdir / "blueprint.yaml").exists()
     generation.inject_booster_ia_elements(outdir)
-    assert (outdir / 'prompts').exists()
-    assert (outdir / 'setup').exists()
-    assert (outdir / 'agents').exists()
+    assert (outdir / "prompts").exists()
+    assert (outdir / "setup").exists()
+    assert (outdir / "agents").exists()
+
 
 def test_scan_existing_project(tmp_path):
     # Crée un projet existant avec des fichiers critiques
@@ -33,11 +32,12 @@ def test_scan_existing_project(tmp_path):
     assert "Modules trouvés: test_module.py" in result
     assert "custom.txt" not in result
 
+
 def test_generate_project_dry_run(tmp_path):
     blueprint = generation.generate_blueprint_mock("Projet test")
     outdir = tmp_path / "projet_test"
     outdir.mkdir()
-    actions = generation.generate_project(blueprint, str(outdir), dry_run=True)
+    generation.generate_project(blueprint, str(outdir), dry_run=True)
     # Le rapport dry-run doit exister
     report_file = outdir / "dry_run_report.txt"
     assert report_file.exists()
@@ -47,6 +47,7 @@ def test_generate_project_dry_run(tmp_path):
     files = list(outdir.iterdir())
     assert set(file.name for file in files) == {"dry_run_report.txt"}
 
+
 def test_merge_or_suffix_file(tmp_path):
     # Cas 1 : création
     file = tmp_path / "file.txt"
@@ -54,7 +55,9 @@ def test_merge_or_suffix_file(tmp_path):
     assert action == "created"
     assert file.read_text() == "Contenu initial"
     # Cas 2 : fusion (ajout de section)
-    path, action = generation.merge_or_suffix_file(str(file), "Nouveau contenu", section_header="Section")
+    path, action = generation.merge_or_suffix_file(
+        str(file), "Nouveau contenu", section_header="Section"
+    )
     assert action == "merged"
     txt = file.read_text()
     assert "Section" in txt and "Nouveau contenu" in txt
@@ -63,6 +66,7 @@ def test_merge_or_suffix_file(tmp_path):
     assert action == "suffixed"
     assert path.endswith("_auto.txt")
     assert "Autre contenu" in open(path).read()
+
 
 def test_merge_or_suffix_file_types(tmp_path):
     # Test fusion de test
@@ -83,9 +87,12 @@ def test_merge_or_suffix_file_types(tmp_path):
     o = tmp_path / "ONBOARDING.md"
     o.write_text("# Onboarding\n")
     content3 = "Nouvelle section"
-    path, action = generation.merge_or_suffix_file(str(o), content3, file_type="onboarding")
+    path, action = generation.merge_or_suffix_file(
+        str(o), content3, file_type="onboarding"
+    )
     assert action == "merged-onboarding"
     assert "Nouvelle section" in o.read_text()
+
 
 def test_backup_file(tmp_path):
     file = tmp_path / "file.txt"
