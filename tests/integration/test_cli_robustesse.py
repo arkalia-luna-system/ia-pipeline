@@ -278,7 +278,7 @@ class TestCLIRobustesse:
 
                     # Attendre que tous les processus se terminent
                     for process in processes:
-                        process.wait(timeout=30)
+                        process.wait(timeout=15)  # Timeout réduit
                         assert process.returncode in [0, 1]
 
                 except subprocess.TimeoutExpired:
@@ -299,7 +299,7 @@ def test_cli_basic_functionality():
             [sys.executable, str(cli_path), "--help"],
             capture_output=True,
             text=True,
-            timeout=30,
+            timeout=15,  # Timeout réduit
         )
 
         assert result.returncode in [0, 1]
@@ -330,7 +330,7 @@ def test_cli_integration_workflow():
                 ],
                 capture_output=True,
                 text=True,
-                timeout=60,
+                timeout=30,  # Timeout réduit
             )
 
             # Le workflow devrait s'exécuter sans erreur critique
