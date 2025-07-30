@@ -368,6 +368,8 @@ class TestNoPollutingFiles:
             "./temp",  # Temp normal
             "./tmp",  # Temp normal
             "./.benchmarks",  # Benchmarks normaux
+            "./tests/.benchmarks",  # Benchmarks tests normaux
+            "./tests/logs/archive",  # Archive logs tests normale
             "./.venv/include",  # Include venv normal
             "./athalia_core/logs",  # Logs athalia_core normaux
             "./athalia_core/__pycache__",  # Cache Python normal

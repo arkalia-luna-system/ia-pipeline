@@ -1,0 +1,93 @@
+#!/bin/bash
+# -*- coding: utf-8 -*-
+"""
+Script de nettoyage des fichiers Apple Double dans le dossier tests.
+Supprime automatiquement tous les fichiers ._* créés par macOS.
+"""
+
+set -euo pipefail
+
+# Couleurs pour l'affichage
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+# Configuration
+TESTS_DIR="tests"
+BACKUP_DIR="backups/appledouble_cleanup"
+TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+
+echo -e "${BLUE}🧹 Nettoyage des fichiers Apple Double - Athalia${NC}"
+echo "=================================================="
+
+# Vérifier que le dossier tests existe
+if [[ ! -d "$TESTS_DIR" ]]; then
+    echo -e "${RED}❌ Erreur: Le dossier $TESTS_DIR n'existe pas${NC}"
+    exit 1
+fi
+
+# Créer le dossier de backup
+mkdir -p "$BACKUP_DIR"
+
+# Compter les fichiers Apple Double avant nettoyage
+echo -e "${YELLOW}📊 Analyse des fichiers Apple Double...${NC}"
+APPLE_DOUBLE_COUNT=$(find "$TESTS_DIR" -name "._*" -type f | wc -l | tr -d ' ')
+
+if [[ $APPLE_DOUBLE_COUNT -eq 0 ]]; then
+    echo -e "${GREEN}✅ Aucun fichier Apple Double trouvé dans $TESTS_DIR${NC}"
+    exit 0
+fi
+
+echo -e "${YELLOW}📁 Trouvé $APPLE_DOUBLE_COUNT fichiers Apple Double${NC}"
+
+# Lister les fichiers trouvés
+echo -e "${BLUE}📋 Fichiers Apple Double détectés:${NC}"
+find "$TESTS_DIR" -name "._*" -type f | head -10
+
+if [[ $APPLE_DOUBLE_COUNT -gt 10 ]]; then
+    echo -e "${YELLOW}   ... et $((APPLE_DOUBLE_COUNT - 10)) autres fichiers${NC}"
+fi
+
+# Demander confirmation
+echo ""
+echo -e "${YELLOW}⚠️  Voulez-vous supprimer ces $APPLE_DOUBLE_COUNT fichiers ? (y/N)${NC}"
+read -r response
+
+if [[ ! "$response" =~ ^[Yy]$ ]]; then
+    echo -e "${BLUE}🛑 Nettoyage annulé${NC}"
+    exit 0
+fi
+
+# Créer un backup avant suppression
+echo -e "${BLUE}💾 Création du backup...${NC}"
+BACKUP_FILE="$BACKUP_DIR/appledouble_backup_$TIMESTAMP.txt"
+find "$TESTS_DIR" -name "._*" -type f > "$BACKUP_FILE"
+echo -e "${GREEN}✅ Backup créé: $BACKUP_FILE${NC}"
+
+# Supprimer les fichiers Apple Double
+echo -e "${YELLOW}🗑️  Suppression des fichiers Apple Double...${NC}"
+find "$TESTS_DIR" -name "._*" -type f -delete
+
+# Vérifier le résultat
+REMAINING_COUNT=$(find "$TESTS_DIR" -name "._*" -type f | wc -l | tr -d ' ')
+DELETED_COUNT=$((APPLE_DOUBLE_COUNT - REMAINING_COUNT))
+
+if [[ $REMAINING_COUNT -eq 0 ]]; then
+    echo -e "${GREEN}✅ Nettoyage réussi ! $DELETED_COUNT fichiers supprimés${NC}"
+else
+    echo -e "${YELLOW}⚠️  Nettoyage partiel: $DELETED_COUNT fichiers supprimés, $REMAINING_COUNT restants${NC}"
+fi
+
+# Afficher les statistiques finales
+echo ""
+echo -e "${BLUE}📊 Statistiques finales:${NC}"
+echo "   • Fichiers Apple Double supprimés: $DELETED_COUNT"
+echo "   • Fichiers restants: $REMAINING_COUNT"
+echo "   • Backup créé: $BACKUP_FILE"
+
+# Vérifier l'espace disque libéré (approximatif)
+echo ""
+echo -e "${GREEN}🎉 Nettoyage terminé avec succès !${NC}"
+echo "==================================================" 
