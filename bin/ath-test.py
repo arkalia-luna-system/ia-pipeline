@@ -10,11 +10,12 @@ import sys
 
 # Import sécurisé pour la validation des commandes
 try:
-    from athalia_core.security_validator import validate_and_run, SecurityError
+    from athalia_core.security_validator import SecurityError, validate_and_run
 except ImportError:
     # Fallback si le module n'est pas disponible
     def validate_and_run(command, **kwargs):
         return subprocess.run(command, **kwargs)
+
     SecurityError = Exception
 
 
@@ -89,11 +90,11 @@ def main():
             print("  --version, -v  Afficher la version")
             print("  [autres]       Arguments passés à pytest")
             sys.exit(0)
-        
+
         if "--version" in sys.argv or "-v" in sys.argv:
             print("ath-test.py version 1.0.0")
             sys.exit(0)
-        
+
         # Mode avec arguments (compatibilité)
         env = os.environ.copy()
         env["ATHALIA_TEST_RUNNING"] = "1"

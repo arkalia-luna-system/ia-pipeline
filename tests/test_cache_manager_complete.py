@@ -9,8 +9,12 @@ import time
 from pathlib import Path
 from unittest.mock import Mock, patch
 
-from athalia_core.cache_manager import (CacheManager, cache_function,
-                                        clear_cache, get_cache_stats)
+from athalia_core.cache_manager import (
+    CacheManager,
+    cache_function,
+    clear_cache,
+    get_cache_stats,
+)
 
 
 class TestCacheManager:

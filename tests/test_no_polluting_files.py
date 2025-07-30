@@ -104,7 +104,7 @@ class TestNoPollutingFiles:
                         temp_files.append(os.path.join(root, file))
 
         # Skip si trop de fichiers trouvés (probablement des faux positifs)
-        if len(temp_files) > 20:
+        if len(temp_files) > 50:  # Augmenter le seuil
             pytest.skip(
                 f"Trop de fichiers temporaires détectés ({len(temp_files)}), probablement des faux positifs"
             )
@@ -343,7 +343,7 @@ class TestNoPollutingFiles:
         ]
 
         # Skip si trop de répertoires trouvés (probablement des faux positifs)
-        if len(problematic_empty_dirs) > 10:
+        if len(problematic_empty_dirs) > 20:  # Augmenter le seuil
             pytest.skip(
                 f"Trop de répertoires vides problématiques détectés ({len(problematic_empty_dirs)}), probablement des faux positifs"
             )

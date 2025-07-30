@@ -77,8 +77,8 @@ class RoboticsCI:
                 if not (self.project_path / file).exists():
                     missing_files.append(file)
             else:  # Directory
-                if not (self.project_path / file).is_dir():
-                    missing_files.append(file)
+                if not (self.project_path / str(file)).is_dir():
+                    missing_files.append(str(file))
 
         if missing_files:
             self.ci_results["errors"].append(

@@ -12,9 +12,11 @@ from unittest.mock import Mock, patch
 
 import yaml
 
-from athalia_core.auto_documenter import (AutoDocumenter,
-                                          analyze_documentation_needs,
-                                          generate_documentation)
+from athalia_core.auto_documenter import (
+    AutoDocumenter,
+    analyze_documentation_needs,
+    generate_documentation,
+)
 
 
 class TestAutoDocumenter:

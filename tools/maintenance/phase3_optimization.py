@@ -61,13 +61,15 @@ def analyze_cache_sizes() -> Dict[str, float]:
             cache_sizes[description] = {
                 "size_mb": total_size / 1024 / 1024,
                 "files": file_count,
-                "path": cache_dir
+                "path": cache_dir,
             }
 
     return cache_sizes
 
 
-def clean_cache_intelligently(cache_sizes: Dict[str, float], dry_run: bool = True) -> Dict[str, int]:
+def clean_cache_intelligently(
+    cache_sizes: Dict[str, float], dry_run: bool = True
+) -> Dict[str, int]:
     """Nettoie les caches de manière intelligente"""
     cleaned = {}
 
@@ -78,7 +80,9 @@ def clean_cache_intelligently(cache_sizes: Dict[str, float], dry_run: bool = Tru
         # Nettoyer seulement si le cache est volumineux (> 50MB)
         if size_mb > 50:
             if dry_run:
-                logger.info(f"🔍 [DRY-RUN] Nettoyage du cache {description}: {size_mb:.1f}MB")
+                logger.info(
+                    f"🔍 [DRY-RUN] Nettoyage du cache {description}: {size_mb:.1f}MB"
+                )
             else:
                 try:
                     if cache_path.is_dir():
@@ -86,12 +90,16 @@ def clean_cache_intelligently(cache_sizes: Dict[str, float], dry_run: bool = Tru
                     else:
                         cache_path.unlink()
 
-                    logger.info(f"✅ Cache {description} nettoyé: {size_mb:.1f}MB libérés")
+                    logger.info(
+                        f"✅ Cache {description} nettoyé: {size_mb:.1f}MB libérés"
+                    )
                     cleaned[description] = int(size_mb)
                 except Exception as e:
                     logger.error(f"❌ Erreur nettoyage {description}: {e}")
         else:
-            logger.info(f"ℹ️ Cache {description} conservé: {size_mb:.1f}MB (taille acceptable)")
+            logger.info(
+                f"ℹ️ Cache {description} conservé: {size_mb:.1f}MB (taille acceptable)"
+            )
 
     return cleaned
 
@@ -115,7 +123,7 @@ def analyze_disk_usage() -> Dict[str, float]:
     return {
         "total_size_mb": total_size / 1024 / 1024,
         "file_count": file_count,
-        "dir_count": dir_count
+        "dir_count": dir_count,
     }
 
 
@@ -145,7 +153,7 @@ def generate_optimization_report(
     cache_sizes: Dict[str, float],
     disk_usage: Dict[str, float],
     cleaned: Dict[str, int],
-    optimized: Dict[str, int]
+    optimized: Dict[str, int],
 ) -> str:
     """Génère un rapport d'optimisation"""
     report = []
@@ -161,7 +169,9 @@ def generate_optimization_report(
     report.append(f"   Taille totale des caches: {total_cache_size:.1f}MB")
 
     for description, info in cache_sizes.items():
-        report.append(f"   - {description}: {info['size_mb']:.1f}MB ({info['files']} fichiers)")
+        report.append(
+            f"   - {description}: {info['size_mb']:.1f}MB ({info['files']} fichiers)"
+        )
 
     report.append("")
 
@@ -192,11 +202,18 @@ def generate_optimization_report(
 
 def main():
     """Fonction principale"""
-    parser = argparse.ArgumentParser(description="Optimisation Phase 3 - Athalia Project")
-    parser.add_argument("--dry-run", action="store_true", default=True,
-                        help="Mode vérification (par défaut)")
-    parser.add_argument("--execute", action="store_true",
-                        help="Exécuter réellement les optimisations")
+    parser = argparse.ArgumentParser(
+        description="Optimisation Phase 3 - Athalia Project"
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        default=True,
+        help="Mode vérification (par défaut)",
+    )
+    parser.add_argument(
+        "--execute", action="store_true", help="Exécuter réellement les optimisations"
+    )
     parser.add_argument("--root", default=".", help="Répertoire racine")
 
     args = parser.parse_args()
