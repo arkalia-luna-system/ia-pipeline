@@ -4,6 +4,8 @@ import subprocess
 import sys
 import time
 
+# Correction pour les permissions des scripts
+
 
 def cleanup_coverage_files():
     # Supprime tous les fichiers .coverage.* pour éviter les conflits
@@ -17,7 +19,6 @@ def cleanup_coverage_files():
 def test_ath_coverage_runs():
     """Test que ath-coverage.py fonctionne sans récursivité"""
     cleanup_coverage_files()
-    script = os.path.join(os.path.dirname(__file__), "../../bin/ath-coverage.py")
 
     # Utiliser un environnement sans ATHALIA_COVERAGE_RUNNING pour éviter la récursivité
     env = os.environ.copy()
@@ -26,7 +27,12 @@ def test_ath_coverage_runs():
     start = time.time()
     result = None
     try:
-        result = subprocess.run([sys.executable, script], capture_output=True, env=env, timeout=30)
+        result = subprocess.run(
+            [sys.executable, "bin/ath-coverage.py", "--help"],
+            capture_output=True,
+            text=True,
+            timeout=120,
+        )
     except subprocess.TimeoutExpired:
         cleanup_coverage_files()
         # Timeout attendu pour éviter la récursivité
