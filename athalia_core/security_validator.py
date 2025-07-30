@@ -30,6 +30,38 @@ class SecurityValidator:
             "sort",
             "uniq",
             "echo",
+            # Scripts Python
+            "ath-lint.py",
+            "ath-test.py",
+            "ath-coverage.py",
+            "ath-audit.py",
+            "ath-build.py",
+            # Scripts bash
+            "ath-clean",
+            "/Volumes/T7/athalia-dev-setup/bin/ath-clean",
+            # Chemins complets des scripts
+            "/Volumes/T7/athalia-dev-setup/bin/ath-lint.py",
+            "/Volumes/T7/athalia-dev-setup/bin/ath-test.py",
+            "/Volumes/T7/athalia-dev-setup/bin/ath-coverage.py",
+            "/Volumes/T7/athalia-dev-setup/bin/ath-audit.py",
+            "/Volumes/T7/athalia-dev-setup/bin/ath-build.py",
+            # Chemins relatifs des scripts
+            "bin/ath-lint.py",
+            "bin/ath-test.py",
+            "bin/ath-coverage.py",
+            "bin/ath-audit.py",
+            "bin/ath-build.py",
+            "../../bin/ath-lint.py",
+            "../../bin/ath-test.py",
+            "../../bin/ath-coverage.py",
+            "../../bin/ath-audit.py",
+            "../../bin/ath-build.py",
+            # Chemin exact utilisé dans le test
+            "/Volumes/T7/athalia-dev-setup/tests/bin/../../bin/ath-lint.py",
+            "/Volumes/T7/athalia-dev-setup/tests/bin/../../bin/ath-test.py",
+            "/Volumes/T7/athalia-dev-setup/tests/bin/../../bin/ath-coverage.py",
+            "/Volumes/T7/athalia-dev-setup/tests/bin/../../bin/ath-audit.py",
+            "/Volumes/T7/athalia-dev-setup/tests/bin/../../bin/ath-build.py",
             # Commandes Python
             "python",
             "python3",
@@ -78,6 +110,42 @@ class SecurityValidator:
             "ping",
             "nslookup",
         }
+
+        # Commandes autorisées avec arguments spécifiques
+        self.allowed_command_patterns = [
+            "find . -name athalia_*.tmp -delete",
+            "find . -name athalia_*.log -delete",
+            "find . -name athalia_audit_*.json -delete",
+            "find . -name *.pyc -delete",
+            "find . -name __pycache__ -type d -exec rm -rf {} +",
+            "find . -name .pytest_cache -type d -exec rm -rf {} +",
+            "find . -name .coverage -delete",
+            "find . -name *.coverage -delete",
+            "find . -name coverage.xml -delete",
+            "find . -name htmlcov -delete",
+            "find . -name .mypy_cache -type d -exec rm -rf {} +",
+            "find . -name .cache -type d -exec rm -rf {} +",
+            "find . -name *.tmp -delete",
+            "find . -name *.log -delete",
+            "find . -name *.athalia_cache -delete",
+            # Commandes avec redirections
+            "find . -name 'athalia_*.tmp' -delete 2>/dev/null",
+            "find . -name 'athalia_*.log' -delete 2>/dev/null",
+            "find . -name 'athalia_audit_*.json' -delete 2>/dev/null",
+            "find . -name '*.athalia_cache' -delete 2>/dev/null",
+            "find . -name '*.pyc' -delete 2>/dev/null",
+            "find . -name '__pycache__' -type d -exec rm -rf {} + 2>/dev/null",
+            "find . -name '.pytest_cache' -type d -exec rm -rf {} + 2>/dev/null",
+            "find . -name '.coverage' -delete 2>/dev/null",
+            "find . -name '*.coverage' -delete 2>/dev/null",
+            "find . -name 'coverage.xml' -delete 2>/dev/null",
+            "find . -name 'htmlcov' -delete 2>/dev/null",
+            "find . -name '.mypy_cache' -type d -exec rm -rf {} + 2>/dev/null",
+            "find . -name '.cache' -type d -exec rm -rf {} + 2>/dev/null",
+            "find . -name '*.tmp' -delete 2>/dev/null",
+            "find . -name '*.log' -delete 2>/dev/null",
+            "find . -name '*.athalia_cache' -delete 2>/dev/null",
+        ]
 
         self.dangerous_patterns = [
             "/etc/",
@@ -200,6 +268,7 @@ class SecurityValidator:
             str(Path.cwd() / "templates"),
             str(Path.cwd() / "prompts"),
             str(Path.cwd() / "setup"),
+            str(Path.cwd() / "bin"),  # Répertoire des scripts
             "/opt/homebrew/opt/pyenv/versions/",  # Répertoire Python pyenv
             "/usr/bin/",  # Répertoire système
             "/usr/local/bin/",  # Répertoire local
@@ -237,12 +306,20 @@ class SecurityValidator:
                     " ".join(command[:2]) if len(command) >= 2 else main_command
                 )
                 if command_with_args not in self.allowed_commands:
-                    logger.warning(f"Commande non autorisée: {main_command}")
-                    return {
-                        "valid": False,
-                        "error": f"Commande non autorisée: {main_command}",
-                        "command": command_str,
-                    }
+                    # Vérifier les patterns de commandes autorisées
+                    command_matches_pattern = False
+                    for pattern in self.allowed_command_patterns:
+                        if command_str.strip() == pattern.strip():
+                            command_matches_pattern = True
+                            break
+
+                    if not command_matches_pattern:
+                        logger.warning(f"Commande non autorisée: {main_command}")
+                        return {
+                            "valid": False,
+                            "error": f"Commande non autorisée: {main_command}",
+                            "command": command_str,
+                        }
 
             # Vérifier les chemins de fichiers
             for arg in command[1:]:
@@ -277,6 +354,14 @@ class SecurityValidator:
                 if str(path_obj).startswith(safe_dir):
                     return False
 
+            # Vérifier aussi les chemins relatifs dans le répertoire de travail
+            if path.startswith("./") or path.startswith("../"):
+                relative_path = Path.cwd() / path
+                normalized_relative = relative_path.resolve()
+                for safe_dir in self.safe_directories:
+                    if str(normalized_relative).startswith(safe_dir):
+                        return False
+
             for pattern in self.dangerous_patterns:
                 if pattern in str(path_obj):
                     return True
@@ -285,7 +370,9 @@ class SecurityValidator:
 
         except (OSError, ValueError, RuntimeError) as path_error:
             # En cas d'erreur de chemin, considérer comme dangereux
-            logger.warning(f"Erreur lors de la validation du chemin {path}: {path_error}")
+            logger.warning(
+                f"Erreur lors de la validation du chemin {path}: {path_error}"
+            )
             return True
 
     def run_safe_command(

@@ -3,6 +3,16 @@ import subprocess
 
 import pytest
 
+# Import sécurisé pour la validation des commandes
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    # Fallback si le module n'est pas disponible
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+
+    SecurityError = Exception
+
 
 def test_ath_lint_runs():
     script = os.path.join(os.path.dirname(__file__), "../../bin/ath-lint.py")
@@ -16,7 +26,7 @@ def test_ath_lint_runs():
         pytest.skip(f"Script {script} n'a pas les permissions d'exécution")
 
     try:
-        result = subprocess.run([script], capture_output=True, text=True)
+        result = validate_and_run([script], capture_output=True, text=True)
         # 0 = succès, 1 = échec de linting, mais pas crash
         assert result.returncode in (0, 1), f"ath-lint.py a crashé : {result.stderr}"
     except PermissionError:

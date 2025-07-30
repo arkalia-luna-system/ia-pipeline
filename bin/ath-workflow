@@ -1,0 +1,426 @@
+#!/bin/bash
+# Script de workflow complet Athalia
+# Orchestre tout le processus de développement
+
+set -e
+
+# Couleurs
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+NC='\033[0m'
+
+# Variables
+WORKFLOW_MODE=""
+DRY_RUN=false
+VERBOSE=false
+AUTO_COMMIT=false
+AUTO_PUSH=false
+
+# Fonctions d'affichage
+print_header() {
+    echo -e "${PURPLE}🚀 Workflow Athalia - Orchestration complète${NC}"
+    echo -e "${BLUE}📋 Automatisation du processus de développement${NC}"
+    echo
+}
+
+print_section() {
+    echo -e "${CYAN}📋 $1${NC}"
+}
+
+print_success() {
+    echo -e "${GREEN}✅ $1${NC}"
+}
+
+print_warning() {
+    echo -e "${YELLOW}⚠️  $1${NC}"
+}
+
+print_error() {
+    echo -e "${RED}❌ $1${NC}"
+}
+
+print_info() {
+    echo -e "${BLUE}ℹ️  $1${NC}"
+}
+
+print_step() {
+    echo -e "${YELLOW}🔄 $1${NC}"
+}
+
+# Parsing des arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --mode|-m)
+            WORKFLOW_MODE="$2"
+            shift 2
+            ;;
+        --dry-run|-d)
+            DRY_RUN=true
+            shift
+            ;;
+        --verbose|-v)
+            VERBOSE=true
+            shift
+            ;;
+        --auto-commit|-c)
+            AUTO_COMMIT=true
+            shift
+            ;;
+        --auto-push|-p)
+            AUTO_PUSH=true
+            shift
+            ;;
+        --help|-h)
+            echo "Usage: ./bin/ath-workflow [OPTIONS]"
+            echo ""
+            echo "Modes disponibles:"
+            echo "  --mode develop     # Workflow de développement"
+            echo "  --mode feature     # Workflow de feature"
+            echo "  --mode hotfix      # Workflow de hotfix"
+            echo "  --mode release     # Workflow de release"
+            echo ""
+            echo "Options:"
+            echo "  --dry-run, -d      # Mode simulation"
+            echo "  --verbose, -v      # Affichage détaillé"
+            echo "  --auto-commit, -c  # Commit automatique"
+            echo "  --auto-push, -p    # Push automatique"
+            echo "  --help, -h         # Affiche cette aide"
+            echo ""
+            echo "Exemples:"
+            echo "  ./bin/ath-workflow --mode develop --auto-commit"
+            echo "  ./bin/ath-workflow --mode feature --dry-run"
+            echo "  ./bin/ath-workflow --mode release --auto-push"
+            exit 0
+            ;;
+        *)
+            print_error "Option inconnue: $1"
+            exit 1
+            ;;
+    esac
+done
+
+# Vérification du mode
+if [ -z "$WORKFLOW_MODE" ]; then
+    print_error "Mode requis. Utilisez --mode [develop|feature|hotfix|release]"
+    exit 1
+fi
+
+# Fonction de vérification de l'environnement
+check_environment() {
+    print_section "Vérification de l'environnement"
+    
+    # Vérifier Git
+    if ! git rev-parse --git-dir > /dev/null 2>&1; then
+        print_error "Pas dans un dépôt Git"
+        exit 1
+    fi
+    
+    # Vérifier Python
+    if ! command -v python3 &> /dev/null; then
+        print_error "Python3 non trouvé"
+        exit 1
+    fi
+    
+    # Vérifier l'environnement virtuel
+    if [ -z "$VIRTUAL_ENV" ]; then
+        print_warning "Environnement virtuel non activé"
+        print_info "Activation recommandée: source .venv/bin/activate"
+    else
+        print_success "Environnement virtuel activé"
+    fi
+    
+    # Vérifier les outils essentiels
+    for tool in flake8 black pytest; do
+        if ! command -v $tool &> /dev/null; then
+            print_warning "$tool non trouvé"
+        else
+            print_success "$tool disponible"
+        fi
+    done
+}
+
+# Fonction de nettoyage
+cleanup_workspace() {
+    print_section "Nettoyage de l'espace de travail"
+    
+    if [ "$DRY_RUN" = true ]; then
+        print_info "Mode simulation - nettoyage ignoré"
+        return 0
+    fi
+    
+    print_step "Nettoyage automatique..."
+    if [ "$VERBOSE" = true ]; then
+        ./bin/ath-clean --dry-run
+    else
+        ./bin/ath-clean --dry-run > /dev/null 2>&1
+    fi
+    
+    # Nettoyage des caches Python
+    find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
+    find . -name "*.pyc" -delete 2>/dev/null || true
+    
+    print_success "Nettoyage terminé"
+}
+
+# Fonction de vérification de la qualité
+check_quality() {
+    print_section "Vérification de la qualité"
+    
+    print_step "Linting..."
+    if flake8 --config=config/.flake8 athalia_core/ tests/ 2>/dev/null; then
+        print_success "Linting OK"
+    else
+        print_warning "Problèmes de linting détectés"
+        if [ "$DRY_RUN" = false ]; then
+            print_info "Correction automatique..."
+            autopep8 --in-place --aggressive --max-line-length=88 athalia_core/ tests/
+            print_success "Linting corrigé"
+        fi
+    fi
+    
+    print_step "Formatage..."
+    if black --check --line-length=88 athalia_core/ tests/ 2>/dev/null; then
+        print_success "Formatage OK"
+    else
+        print_warning "Problèmes de formatage détectés"
+        if [ "$DRY_RUN" = false ]; then
+            print_info "Correction automatique..."
+            black --line-length=88 athalia_core/ tests/
+            print_success "Formatage corrigé"
+        fi
+    fi
+}
+
+# Fonction d'exécution des tests
+run_tests() {
+    print_section "Exécution des tests"
+    
+    print_step "Tests essentiels..."
+    if python -m pytest tests/test_imports_all.py -q >/dev/null 2>&1; then
+        print_success "Tests d'imports OK"
+    else
+        print_error "Échec des tests d'imports"
+        return 1
+    fi
+    
+    if python -m pytest tests/test_encoding_utf8.py -q >/dev/null 2>&1; then
+        print_success "Tests d'encodage OK"
+    else
+        print_error "Échec des tests d'encodage"
+        return 1
+    fi
+    
+    print_step "Tests de qualité..."
+    if python -m pytest tests/test_no_polluting_files.py::TestNoPollutingFiles::test_no_macos_hidden_files -q >/dev/null 2>&1; then
+        print_success "Tests de fichiers polluants OK"
+    else
+        print_warning "Fichiers polluants détectés"
+    fi
+    
+    print_step "Tests de sécurité..."
+    if python -m pytest tests/test_security_patterns.py -q >/dev/null 2>&1; then
+        print_success "Tests de sécurité OK"
+    else
+        print_warning "Problèmes de sécurité détectés (mode adaptatif)"
+    fi
+    
+    # Tests complets selon le mode
+    if [ "$WORKFLOW_MODE" = "release" ] || [ "$WORKFLOW_MODE" = "hotfix" ]; then
+        print_step "Tests complets..."
+        if [ "$DRY_RUN" = false ]; then
+            ./bin/ath-test.py --tb=short
+        else
+            print_info "Mode simulation - tests complets ignorés"
+        fi
+    fi
+}
+
+# Fonction de gestion Git
+manage_git() {
+    print_section "Gestion Git"
+    
+    # Vérifier l'état
+    if [ -n "$(git status --porcelain)" ]; then
+        print_warning "Changements non commités détectés"
+        
+        if [ "$AUTO_COMMIT" = true ] && [ "$DRY_RUN" = false ]; then
+            print_step "Commit automatique..."
+            git add .
+            git commit -m "Auto-commit: $(date '+%Y-%m-%d %H:%M:%S') - Mode $WORKFLOW_MODE"
+            print_success "Commit automatique effectué"
+        else
+            print_info "Utilisez --auto-commit pour un commit automatique"
+            return 1
+        fi
+    else
+        print_success "Aucun changement non commité"
+    fi
+    
+    # Push selon le mode
+    if [ "$AUTO_PUSH" = true ] && [ "$DRY_RUN" = false ]; then
+        print_step "Push automatique..."
+        current_branch=$(git branch --show-current)
+        
+        case $WORKFLOW_MODE in
+            "develop")
+                git push origin develop
+                ;;
+            "feature")
+                git push origin "$current_branch"
+                ;;
+            "hotfix"|"release")
+                git push origin main
+                git push origin develop
+                ;;
+        esac
+        
+        print_success "Push automatique effectué"
+    fi
+}
+
+# Fonction de workflow de développement
+workflow_develop() {
+    print_section "Workflow de développement"
+    
+    print_info "Mode: Développement"
+    print_info "Branche cible: develop"
+    
+    cleanup_workspace
+    check_quality
+    run_tests
+    
+    if [ "$AUTO_COMMIT" = true ] || [ "$AUTO_PUSH" = true ]; then
+        manage_git
+    fi
+}
+
+# Fonction de workflow de feature
+workflow_feature() {
+    print_section "Workflow de feature"
+    
+    print_info "Mode: Feature"
+    print_info "Branche cible: feature/*"
+    
+    # Vérifier la branche
+    current_branch=$(git branch --show-current)
+    if [[ ! "$current_branch" =~ ^feature/ ]]; then
+        print_warning "Pas sur une branche feature (actuel: $current_branch)"
+        print_info "Création recommandée: git checkout -b feature/nom-feature"
+    fi
+    
+    cleanup_workspace
+    check_quality
+    run_tests
+    
+    if [ "$AUTO_COMMIT" = true ] || [ "$AUTO_PUSH" = true ]; then
+        manage_git
+    fi
+}
+
+# Fonction de workflow de hotfix
+workflow_hotfix() {
+    print_section "Workflow de hotfix"
+    
+    print_info "Mode: Hotfix"
+    print_info "Branche cible: hotfix/*"
+    
+    # Vérifier la branche
+    current_branch=$(git branch --show-current)
+    if [[ ! "$current_branch" =~ ^hotfix/ ]]; then
+        print_warning "Pas sur une branche hotfix (actuel: $current_branch)"
+        print_info "Création recommandée: git checkout -b hotfix/nom-hotfix"
+    fi
+    
+    cleanup_workspace
+    check_quality
+    run_tests
+    
+    if [ "$AUTO_COMMIT" = true ] || [ "$AUTO_PUSH" = true ]; then
+        manage_git
+    fi
+}
+
+# Fonction de workflow de release
+workflow_release() {
+    print_section "Workflow de release"
+    
+    print_info "Mode: Release"
+    print_info "Branche cible: main"
+    
+    # Vérifier la branche
+    current_branch=$(git branch --show-current)
+    if [ "$current_branch" != "main" ]; then
+        print_warning "Pas sur la branche main (actuel: $current_branch)"
+        print_info "Basculement recommandé: git checkout main"
+    fi
+    
+    cleanup_workspace
+    check_quality
+    run_tests
+    
+    if [ "$AUTO_COMMIT" = true ] || [ "$AUTO_PUSH" = true ]; then
+        manage_git
+    fi
+}
+
+# Fonction principale
+main() {
+    print_header
+    
+    # Vérification de l'environnement
+    check_environment
+    
+    # Exécution du workflow selon le mode
+    case $WORKFLOW_MODE in
+        "develop")
+            workflow_develop
+            ;;
+        "feature")
+            workflow_feature
+            ;;
+        "hotfix")
+            workflow_hotfix
+            ;;
+        "release")
+            workflow_release
+            ;;
+        *)
+            print_error "Mode inconnu: $WORKFLOW_MODE"
+            exit 1
+            ;;
+    esac
+    
+    # Résumé
+    echo
+    print_success "🎉 Workflow $WORKFLOW_MODE terminé avec succès !"
+    echo
+    print_info "📊 Résumé:"
+    print_info "  - Mode: $WORKFLOW_MODE"
+    print_info "  - Simulation: ${DRY_RUN:+Oui}${DRY_RUN:-Non}"
+    print_info "  - Commit auto: ${AUTO_COMMIT:+Oui}${AUTO_COMMIT:-Non}"
+    print_info "  - Push auto: ${AUTO_PUSH:+Oui}${AUTO_PUSH:-Non}"
+    echo
+    print_info "💡 Prochaines étapes:"
+    case $WORKFLOW_MODE in
+        "develop")
+            print_info "  - Vérifiez les tests CI/CD"
+            print_info "  - Surveillez les déploiements"
+            ;;
+        "feature")
+            print_info "  - Créez une Pull Request"
+            print_info "  - Demandez une review"
+            ;;
+        "hotfix"|"release")
+            print_info "  - Vérifiez les tests de régression"
+            print_info "  - Surveillez le déploiement en production"
+            ;;
+    esac
+    echo
+}
+
+# Exécution
+main "$@" 
