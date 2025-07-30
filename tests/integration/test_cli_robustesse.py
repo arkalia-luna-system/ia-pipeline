@@ -51,7 +51,7 @@ class TestCLIRobustesse:
                         [sys.executable, str(cli_path), "--help"],
                         capture_output=True,
                         text=True,
-                        timeout=timeout,
+                        timeout=120,
                     )
 
                     # Vérifier que la commande s'exécute sans erreur
@@ -75,7 +75,7 @@ class TestCLIRobustesse:
                         [sys.executable, str(cli_path), "--version"],
                         capture_output=True,
                         text=True,
-                        timeout=timeout,
+                        timeout=120,
                     )
 
                     # Vérifier que la commande s'exécute
@@ -98,7 +98,7 @@ class TestCLIRobustesse:
                         [sys.executable, str(cli_path), "--invalid-arg"],
                         capture_output=True,
                         text=True,
-                        timeout=timeout,
+                        timeout=120,
                     )
 
                     # Devrait retourner une erreur pour un argument invalide
