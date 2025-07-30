@@ -5,13 +5,10 @@ Tests de performance et d'optimisation pour Athalia.
 Tests professionnels pour la CI/CD.
 """
 
-import os
-import subprocess
 import sys
 import tempfile
 import time
 from pathlib import Path
-from unittest.mock import MagicMock, patch
 
 import pytest
 
@@ -394,7 +391,7 @@ def test_performance_optimization_workflow():
 
     with tempfile.TemporaryDirectory() as temp_dir:
         analyzer = PerformanceAnalyzer(temp_dir)
-        cache_manager = AnalysisCache()
+        _ = AnalysisCache()
 
         # 1. Analyser les performances actuelles
         current_performance = analyzer.analyze_project_performance(temp_dir)

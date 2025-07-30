@@ -25,7 +25,7 @@ class TestNoPollutingFiles:
                     hidden_files.append(os.path.join(root, file))
 
         if hidden_files:
-            pytest.fail(f"Fichiers cachés macOS trouvés:\n" + "\n".join(hidden_files))
+            pytest.fail("Fichiers cachés macOS trouvés:\n" + "\n".join(hidden_files))
 
     @pytest.mark.skip(reason="Test désactivé - fichiers cache normaux")
     def test_no_python_cache_files(self):
@@ -42,7 +42,7 @@ class TestNoPollutingFiles:
                     cache_files.append(os.path.join(root, dir_name))
 
         if cache_files:
-            pytest.fail(f"Fichiers cache Python trouvés:\n" + "\n".join(cache_files))
+            pytest.fail("Fichiers cache Python trouvés:\n" + "\n".join(cache_files))
 
     @pytest.mark.skip(reason="Test désactivé - fichiers temporaires normaux")
     def test_no_temp_files(self):
@@ -61,7 +61,7 @@ class TestNoPollutingFiles:
                     temp_files.append(os.path.join(root, file))
 
         if temp_files:
-            pytest.fail(f"Fichiers temporaires trouvés:\n" + "\n".join(temp_files))
+            pytest.fail("Fichiers temporaires trouvés:\n" + "\n".join(temp_files))
 
     @pytest.mark.skip(reason="Test désactivé - fichiers corrompus cachés macOS")
     def test_no_corrupted_files(self):
@@ -79,7 +79,7 @@ class TestNoPollutingFiles:
                         corrupted_files.append(os.path.join(root, file))
 
         if corrupted_files:
-            pytest.fail(f"Fichiers corrompus trouvés:\n" + "\n".join(corrupted_files))
+            pytest.fail("Fichiers corrompus trouvés:\n" + "\n".join(corrupted_files))
 
     def test_no_editor_files(self):
         """Test qu'il n'y a pas de fichiers d'éditeur"""
@@ -97,7 +97,7 @@ class TestNoPollutingFiles:
                     editor_files.append(os.path.join(root, file))
 
         if editor_files:
-            pytest.fail(f"Fichiers d'éditeur trouvés:\n" + "\n".join(editor_files))
+            pytest.fail("Fichiers d'éditeur trouvés:\n" + "\n".join(editor_files))
 
     def test_no_archive_files(self):
         """Test qu'il n'y a pas de fichiers d'archive dans le projet"""
@@ -135,7 +135,7 @@ class TestNoPollutingFiles:
                     archive_files.append(file_path)
 
         if archive_files:
-            pytest.fail(f"Fichiers d'archive trouvés:\n" + "\n".join(archive_files))
+            pytest.fail("Fichiers d'archive trouvés:\n" + "\n".join(archive_files))
 
     @pytest.mark.skip(reason="Test désactivé - fichiers secrets normaux")
     def test_no_secret_files(self):
@@ -154,7 +154,7 @@ class TestNoPollutingFiles:
                     secret_files.append(os.path.join(root, file))
 
         if secret_files:
-            pytest.fail(f"Fichiers de secrets trouvés:\n" + "\n".join(secret_files))
+            pytest.fail("Fichiers de secrets trouvés:\n" + "\n".join(secret_files))
 
     def test_no_large_files(self):
         """Test qu'il n'y a pas de fichiers trop volumineux"""
@@ -187,7 +187,7 @@ class TestNoPollutingFiles:
                     continue
 
         if large_files:
-            pytest.fail(f"Fichiers trop volumineux trouvés:\n" + "\n".join(large_files))
+            pytest.fail("Fichiers trop volumineux trouvés:\n" + "\n".join(large_files))
 
     @pytest.mark.skip(reason="Test désactivé - fichiers dupliqués normaux")
     def test_no_duplicate_files(self):
@@ -197,14 +197,11 @@ class TestNoPollutingFiles:
             if ".git" in root:
                 continue
             for file in files:
-                if file in file_counts:
-                    file_counts[file] += 1
-                else:
-                    file_counts[file] = 1
+                file_counts[file] = file_counts.get(file, 0) + 1
 
         duplicates = [file for file, count in file_counts.items() if count > 1]
         if duplicates:
-            pytest.fail(f"Fichiers dupliqués trouvés:\n" + "\n".join(duplicates))
+            pytest.fail("Fichiers dupliqués trouvés:\n" + "\n".join(duplicates))
 
     @pytest.mark.skip(reason="Test désactivé - répertoires vides normaux")
     def test_no_empty_directories(self):
@@ -217,4 +214,4 @@ class TestNoPollutingFiles:
                 empty_dirs.append(root)
 
         if empty_dirs:
-            pytest.fail(f"Répertoires vides trouvés:\n" + "\n".join(empty_dirs))
+            pytest.fail("Répertoires vides trouvés:\n" + "\n".join(empty_dirs))
