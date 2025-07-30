@@ -157,9 +157,9 @@ class TestEndToEndIntegration:
         # Vérifications spécifiques aux projets CLI
         project_name = blueprint.get("project_name", "projet_cli")
 
-        # Vérifier setup.py ou pyproject.toml
-        setup_py = outdir / project_name / "setup.py"
-        pyproject_toml = outdir / project_name / "pyproject.toml"
+        # Vérifier setup.py ou pyproject.toml dans le répertoire racine du projet
+        setup_py = outdir / "setup.py"
+        pyproject_toml = outdir / "pyproject.toml"
         assert (
             setup_py.exists() or pyproject_toml.exists()
         ), "Fichier de configuration manquant"
