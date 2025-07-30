@@ -72,11 +72,15 @@ def cleanup_athalia_resources():
         ]
 
         for pattern in temp_patterns:
-            validate_and_run(
-                f"find . -name '{pattern}' -delete 2>/dev/null",
-                shell=True,
-                capture_output=True,
-            )
+            try:
+                validate_and_run(
+                    f"find . -name '{pattern}' -delete 2>/dev/null",
+                    shell=True,
+                    capture_output=True,
+                )
+            except Exception:
+                # Ignorer les erreurs de nettoyage
+                pass
 
         # Nettoyer les fichiers cache Python
         try:

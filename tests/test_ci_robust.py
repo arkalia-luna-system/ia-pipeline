@@ -16,7 +16,7 @@ import time
 from pathlib import Path
 
 import pytest
-import yaml
+import yaml  # type: ignore
 
 # Import sécurisé pour la validation des commandes
 try:
@@ -28,7 +28,7 @@ except ImportError:
     class SecurityErrorFallback(Exception):
         pass
 
-    SecurityError = SecurityErrorFallback
+    SecurityError = SecurityErrorFallback  # type: ignore
 
 
 class TestCIRobust:
