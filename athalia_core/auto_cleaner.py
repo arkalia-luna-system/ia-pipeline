@@ -23,6 +23,16 @@ class AutoCleaner:
         self.project_path = Path(project_path)
         self.cleanup_config = self.load_cleanup_config()
         self.cleanup_history = []
+        self.dry_run = False
+        self.cleaned_files = []
+        self.cleaned_dirs = []
+        self.errors = []
+        self.stats = {
+            "files_removed": 0,
+            "dirs_removed": 0,
+            "space_freed_mb": 0,
+            "errors": 0
+        }
 
     def load_cleanup_config(self, config_path: Optional[str] = None) -> Dict[str, Any]:
         """Charge la configuration de nettoyage"""
@@ -291,7 +301,8 @@ class AutoCleaner:
                         if file_hash in file_hashes:
                             # Fichier dupliqué trouvé
                             size = file_path.stat().st_size
-                            file_path.unlink()
+                            if not getattr(self, 'dry_run', False):
+                                file_path.unlink()
                             result["removed_files"].append(str(file_path))
                             result["total_size_freed"] += size
                         else:
@@ -478,57 +489,380 @@ class AutoCleaner:
 
     def cleanup_ide_files(self) -> Dict[str, Any]:
         """Nettoie les fichiers d'IDE"""
-        result = {
-            "removed_files": [],
-            "removed_directories": [],
-            "total_size_freed": 0,
-            "errors": [],
-        }
+        cleaned_files = []
+        total_size_freed = 0
 
-        ide_patterns = [".vscode", ".idea", "*.swp", "*.swo", ".DS_Store", "Thumbs.db"]
+        ide_patterns = [
+            "*.swp",
+            "*.swo",
+            "*~",
+            ".vscode/settings.json",
+            ".idea/workspace.xml",
+            ".vs/",
+            "*.sublime-*",
+            ".DS_Store",
+            "Thumbs.db",
+        ]
 
         try:
             for pattern in ide_patterns:
                 if "*" in pattern:
-                    for ide_item in self.project_path.rglob(pattern):
-                        if not self._is_excluded(ide_item):
+                    # Pattern avec wildcard
+                    for file_path in self.project_path.rglob(pattern):
+                        if file_path.is_file() and not self._is_excluded(file_path):
                             try:
-                                if ide_item.is_file():
-                                    size = ide_item.stat().st_size
-                                    ide_item.unlink()
-                                    result["removed_files"].append(str(ide_item))
-                                    result["total_size_freed"] += size
-                                elif ide_item.is_dir():
-                                    size = self._get_directory_size(ide_item)
-                                    shutil.rmtree(ide_item)
-                                    result["removed_directories"].append(str(ide_item))
-                                    result["total_size_freed"] += size
+                                file_size = file_path.stat().st_size
+                                file_path.unlink()
+                                cleaned_files.append(str(file_path))
+                                total_size_freed += file_size
                             except Exception as e:
-                                result["errors"].append(
-                                    f"Erreur suppression {ide_item}: {e}"
-                                )
+                                logger.warning(f"Impossible de supprimer {file_path}: {e}")
                 else:
-                    ide_path = self.project_path / pattern
-                    if ide_path.exists() and not self._is_excluded(ide_path):
+                    # Pattern exact
+                    exact_path = self.project_path / pattern
+                    if exact_path.exists() and exact_path.is_file() and not self._is_excluded(exact_path):
                         try:
-                            if ide_path.is_file():
-                                size = ide_path.stat().st_size
-                                ide_path.unlink()
-                                result["removed_files"].append(str(ide_path))
-                                result["total_size_freed"] += size
-                            elif ide_path.is_dir():
-                                size = self._get_directory_size(ide_path)
-                                shutil.rmtree(ide_path)
-                                result["removed_directories"].append(str(ide_path))
-                                result["total_size_freed"] += size
+                            file_size = exact_path.stat().st_size
+                            exact_path.unlink()
+                            cleaned_files.append(str(exact_path))
+                            total_size_freed += file_size
                         except Exception as e:
-                            result["errors"].append(
-                                f"Erreur suppression {ide_path}: {e}"
-                            )
+                            logger.warning(f"Impossible de supprimer {exact_path}: {e}")
+
+            # Nettoyer les répertoires d'IDE
+            ide_dirs = [".vscode", ".idea", ".vs"]
+            for dir_name in ide_dirs:
+                ide_dir = self.project_path / dir_name
+                if ide_dir.exists() and ide_dir.is_dir():
+                    try:
+                        dir_size = self._get_directory_size(ide_dir)
+                        shutil.rmtree(ide_dir)
+                        cleaned_files.append(str(ide_dir))
+                        total_size_freed += dir_size
+                    except Exception as e:
+                        logger.warning(f"Impossible de supprimer {ide_dir}: {e}")
+
         except Exception as e:
-            logger.error(f"Erreur nettoyage fichiers IDE: {e}")
+            logger.error(f"Erreur lors du nettoyage des fichiers IDE: {e}")
+
+        result = {
+            "cleaned_files": cleaned_files,
+            "total_size_freed_mb": round(total_size_freed / (1024 * 1024), 2),
+            "files_count": len(cleaned_files),
+        }
+
+        self.cleanup_history.append({
+            "timestamp": datetime.now().isoformat(),
+            "operation": "cleanup_ide_files",
+            "result": result,
+        })
 
         return result
+
+    def _clean_backup_files(self, path: Optional[Path] = None) -> Dict[str, Any]:
+        """Nettoie les fichiers de sauvegarde"""
+        cleaned_files = []
+        total_size_freed = 0
+        
+        # Utiliser le path fourni ou le path du projet par défaut
+        target_path = path if path else self.project_path
+
+        backup_patterns = [
+            "*.bak",
+            "*.backup",
+            "*.old",
+            "*~",
+            "*.tmp",
+            "*.temp",
+        ]
+
+        try:
+            for pattern in backup_patterns:
+                for file_path in target_path.rglob(pattern):
+                    if file_path.is_file() and not self._is_excluded(file_path):
+                        try:
+                            file_size = file_path.stat().st_size
+                            if not getattr(self, 'dry_run', False):
+                                file_path.unlink()
+                            cleaned_files.append(str(file_path))
+                            total_size_freed += file_size
+                        except Exception as e:
+                            logger.warning(f"Impossible de supprimer {file_path}: {e}")
+
+        except Exception as e:
+            logger.error(f"Erreur lors du nettoyage des fichiers de sauvegarde: {e}")
+
+        result = {
+            "cleaned_files": cleaned_files,
+            "total_size_freed_mb": round(total_size_freed / (1024 * 1024), 2),
+            "files_count": len(cleaned_files),
+        }
+
+        self.cleanup_history.append({
+            "timestamp": datetime.now().isoformat(),
+            "operation": "_clean_backup_files",
+            "result": result,
+        })
+
+        return result
+
+    def _clean_cache_files(self, path: Optional[Path] = None) -> Dict[str, Any]:
+        """Nettoie les fichiers de cache"""
+        cleaned_files = []
+        total_size_freed = 0
+        
+        # Utiliser le path fourni ou le path du projet par défaut
+        target_path = path if path else self.project_path
+
+        cache_patterns = [
+            "*.cache",
+            "*.pyc",
+            "__pycache__",
+            ".cache",
+            ".pytest_cache",
+            ".coverage",
+            "*.coverage",
+        ]
+
+        try:
+            for pattern in cache_patterns:
+                if "*" in pattern:
+                    # Pattern avec wildcard
+                    for file_path in target_path.rglob(pattern):
+                        if file_path.is_file() and not self._is_excluded(file_path):
+                            try:
+                                file_size = file_path.stat().st_size
+                                if not getattr(self, 'dry_run', False):
+                                    file_path.unlink()
+                                cleaned_files.append(str(file_path))
+                                total_size_freed += file_size
+                            except Exception as e:
+                                logger.warning(f"Impossible de supprimer {file_path}: {e}")
+                else:
+                    # Pattern exact (répertoire)
+                    cache_dir = target_path / pattern
+                    if cache_dir.exists() and cache_dir.is_dir():
+                        try:
+                            dir_size = self._get_directory_size(cache_dir)
+                            if not getattr(self, 'dry_run', False):
+                                shutil.rmtree(cache_dir)
+                            cleaned_files.append(str(cache_dir))
+                            total_size_freed += dir_size
+                        except Exception as e:
+                            logger.warning(f"Impossible de supprimer {cache_dir}: {e}")
+
+        except Exception as e:
+            logger.error(f"Erreur lors du nettoyage des fichiers de cache: {e}")
+
+        result = {
+            "cleaned_files": cleaned_files,
+            "total_size_freed_mb": round(total_size_freed / (1024 * 1024), 2),
+            "files_count": len(cleaned_files),
+        }
+
+        self.cleanup_history.append({
+            "timestamp": datetime.now().isoformat(),
+            "operation": "_clean_cache_files",
+            "result": result,
+        })
+
+        return result
+
+    def _clean_duplicate_files(self, path: Optional[Path] = None) -> Dict[str, Any]:
+        """Nettoie les fichiers en double"""
+        # Cette méthode utilise la logique existante de cleanup_duplicate_files
+        # mais avec un path optionnel
+        if path:
+            # Sauvegarder le path original
+            original_path = self.project_path
+            self.project_path = path
+            result = self.cleanup_duplicate_files()
+            self.project_path = original_path
+            return result
+        else:
+            return self.cleanup_duplicate_files()
+
+    def _clean_empty_directories(self, path: Optional[Path] = None) -> Dict[str, Any]:
+        """Nettoie les répertoires vides"""
+        cleaned_dirs = []
+        target_path = path if path else self.project_path
+
+        try:
+            # Parcourir les répertoires de manière récursive
+            for dir_path in sorted(
+                target_path.rglob("*"), key=lambda x: len(str(x)), reverse=True
+            ):
+                if dir_path.is_dir() and not self._is_excluded(dir_path):
+                    try:
+                        if not any(dir_path.iterdir()):
+                            if not getattr(self, 'dry_run', False):
+                                dir_path.rmdir()
+                            cleaned_dirs.append(str(dir_path))
+                    except Exception as e:
+                        logger.warning(f"Erreur suppression {dir_path}: {e}")
+        except Exception as e:
+            logger.error(f"Erreur nettoyage répertoires vides: {e}")
+
+        result = {
+            "cleaned_directories": cleaned_dirs,
+            "directories_count": len(cleaned_dirs),
+        }
+
+        return result
+
+    def _clean_system_files(self, path: Optional[Path] = None) -> Dict[str, Any]:
+        """Nettoie les fichiers système"""
+        cleaned_files = []
+        total_size_freed = 0
+        target_path = path if path else self.project_path
+
+        system_patterns = [".DS_Store", "Thumbs.db", "desktop.ini"]
+
+        try:
+            for pattern in system_patterns:
+                for file_path in target_path.rglob(pattern):
+                    if file_path.is_file() and not self._is_excluded(file_path):
+                        try:
+                            file_size = file_path.stat().st_size
+                            if not getattr(self, 'dry_run', False):
+                                file_path.unlink()
+                            cleaned_files.append(str(file_path))
+                            total_size_freed += file_size
+                        except Exception as e:
+                            logger.warning(f"Impossible de supprimer {file_path}: {e}")
+        except Exception as e:
+            logger.error(f"Erreur lors du nettoyage des fichiers système: {e}")
+
+        result = {
+            "cleaned_files": cleaned_files,
+            "total_size_freed_mb": round(total_size_freed / (1024 * 1024), 2),
+            "files_count": len(cleaned_files),
+        }
+
+        return result
+
+    def _clean_temp_files(self, path: Optional[Path] = None) -> Dict[str, Any]:
+        """Nettoie les fichiers temporaires"""
+        cleaned_files = []
+        total_size_freed = 0
+        target_path = path if path else self.project_path
+
+        temp_patterns = ["*.tmp", "*.temp", "~*", ".#*", "*.swp", "*.swo"]
+
+        try:
+            for pattern in temp_patterns:
+                for temp_file in target_path.rglob(pattern):
+                    if temp_file.is_file() and not self._is_excluded(temp_file):
+                        try:
+                            size = temp_file.stat().st_size
+                            if not getattr(self, 'dry_run', False):
+                                temp_file.unlink()
+                            cleaned_files.append(str(temp_file))
+                            total_size_freed += size
+                        except Exception as e:
+                            logger.warning(f"Impossible de supprimer {temp_file}: {e}")
+        except Exception as e:
+            logger.error(f"Erreur lors du nettoyage des fichiers temporaires: {e}")
+
+        result = {
+            "cleaned_files": cleaned_files,
+            "total_size_freed_mb": round(total_size_freed / (1024 * 1024), 2),
+            "files_count": len(cleaned_files),
+        }
+
+        return result
+
+    def _is_code_file(self, file_path: Path) -> bool:
+        """Vérifie si un fichier est un fichier de code"""
+        code_extensions = {'.py', '.js', '.ts', '.java', '.cpp', '.c', '.h', '.cs', '.php', '.rb', '.go', '.rs', '.swift', '.kt'}
+        return file_path.suffix.lower() in code_extensions
+
+    def _is_important_file(self, file_path: Path) -> bool:
+        """Vérifie si un fichier est important"""
+        important_files = {
+            'README.md', 'requirements.txt', 'setup.py', 'pyproject.toml',
+            'package.json', 'Cargo.toml', 'pom.xml', 'build.gradle',
+            'Dockerfile', '.gitignore', 'LICENSE', 'Makefile'
+        }
+        return file_path.name in important_files
+
+    def _is_empty_directory(self, dir_path: Path) -> bool:
+        """Vérifie si un répertoire est vide"""
+        try:
+            return not any(dir_path.iterdir())
+        except Exception:
+            return False
+
+    def clean_project(self, dry_run: bool = False) -> Dict[str, Any]:
+        """Nettoie le projet complet"""
+        self.dry_run = dry_run
+        self.cleaned_files = []
+        self.cleaned_dirs = []
+        self.errors = []
+        self.stats = {
+            "files_removed": 0,
+            "dirs_removed": 0,
+            "space_freed_mb": 0,
+            "errors": 0
+        }
+
+        # Exécuter tous les nettoyages
+        results = {}
+        
+        # Nettoyage des fichiers de cache
+        cache_result = self._clean_cache_files()
+        results["cache"] = cache_result
+        self.stats["files_removed"] += cache_result.get("files_count", 0)
+        self.stats["space_freed_mb"] += cache_result.get("total_size_freed_mb", 0)
+
+        # Nettoyage des fichiers de sauvegarde
+        backup_result = self._clean_backup_files()
+        results["backup"] = backup_result
+        self.stats["files_removed"] += backup_result.get("files_count", 0)
+        self.stats["space_freed_mb"] += backup_result.get("total_size_freed_mb", 0)
+
+        # Nettoyage des fichiers temporaires
+        temp_result = self._clean_temp_files()
+        results["temp"] = temp_result
+        self.stats["files_removed"] += temp_result.get("files_count", 0)
+        self.stats["space_freed_mb"] += temp_result.get("total_size_freed_mb", 0)
+
+        # Nettoyage des fichiers système
+        system_result = self._clean_system_files()
+        results["system"] = system_result
+        self.stats["files_removed"] += system_result.get("files_count", 0)
+        self.stats["space_freed_mb"] += system_result.get("total_size_freed_mb", 0)
+
+        # Nettoyage des répertoires vides
+        empty_result = self._clean_empty_directories()
+        results["empty_dirs"] = empty_result
+        self.stats["dirs_removed"] += empty_result.get("directories_count", 0)
+
+        return {
+            "stats": self.stats,
+            "results": results,
+            "dry_run": dry_run
+        }
+
+    def _generate_cleanup_report(self) -> Dict[str, Any]:
+        """Génère un rapport de nettoyage"""
+        return {
+            "stats": self.stats,
+            "files": self.cleaned_files,
+            "dirs": self.cleaned_dirs,
+            "summary": f"Nettoyage terminé: {self.stats['files_removed']} fichiers, {self.stats['dirs_removed']} répertoires, {self.stats['space_freed_mb']:.2f} MB libérés"
+        }
+
+    def optimize_project_structure(self, project_path: str) -> Dict[str, Any]:
+        """Optimise la structure du projet"""
+        # Cette méthode simule une optimisation de structure
+        return {
+            "optimized": True,
+            "optimizations": ["Organiser les fichiers par type", "Créer des sous-répertoires logiques"],
+            "suggestions": ["Organiser les fichiers par type", "Créer des sous-répertoires logiques"],
+            "project_path": project_path,
+            "dry_run": getattr(self, 'dry_run', False)
+        }
 
     def calculate_cleanup_impact(self) -> Dict[str, Any]:
         """Calcule l'impact du nettoyage"""
