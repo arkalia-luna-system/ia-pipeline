@@ -34,6 +34,9 @@ try:
 except ImportError:
     CacheManager = None
 
+# Alias pour compatibilité avec les tests existants
+AnalysisCache = CacheManager
+
 
 class TestPerformanceOptimization:
     """Tests de performance et d'optimisation."""
@@ -270,8 +273,8 @@ def inefficient_function():
 
     def test_cache_performance(self):
         """Test de performance du cache."""
-        if not AnalysisCache:
-            pytest.skip("AnalysisCache non disponible")
+        if not CacheManager:
+            pytest.skip("CacheManager non disponible")
 
         # Test de performance du cache
         start_time = time.time()
@@ -279,8 +282,8 @@ def inefficient_function():
         # Opérations de cache multiples
         project_path = str(self.test_dir)
         for i in range(100):
-            self.cache_manager.set(project_path, f"test_{i}", {"value": i})
-            self.cache_manager.get(project_path, f"test_{i}")
+            self.cache_manager.set_cache(f"test_{i}", {"value": i})
+            self.cache_manager.get_cache(f"test_{i}")
 
         end_time = time.time()
         execution_time = end_time - start_time
