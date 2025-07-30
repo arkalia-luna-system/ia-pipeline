@@ -3,6 +3,7 @@ import os
 import subprocess
 import sys
 import time
+import pytest
 
 # Correction pour les permissions des scripts
 
@@ -16,6 +17,7 @@ def cleanup_coverage_files():
             pass
 
 
+@pytest.mark.timeout(120)
 def test_ath_coverage_runs():
     """Test que ath-coverage.py fonctionne sans récursivité"""
     cleanup_coverage_files()
