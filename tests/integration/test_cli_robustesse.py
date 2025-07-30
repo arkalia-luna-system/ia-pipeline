@@ -39,6 +39,7 @@ class TestCLIRobustesse:
         if self.test_dir.exists():
             shutil.rmtree(self.test_dir)
 
+    @pytest.mark.timeout(120)
     def test_cli_help_command(self):
         """Test de la commande d'aide."""
         for cli_path in self.cli_paths:
@@ -60,12 +61,12 @@ class TestCLIRobustesse:
                 except Exception as e:
                     pytest.skip(f"CLI {cli_path} non disponible: {e}")
 
+    @pytest.mark.timeout(120)
     def test_cli_version_command(self):
         """Test de la commande de version."""
         for cli_path in self.cli_paths:
             if cli_path.exists():
                 try:
-                    # Augmenter le timeout pour les scripts qui exécutent pytest
                     result = subprocess.run(
                         [sys.executable, str(cli_path), "--version"],
                         capture_output=True,
@@ -81,12 +82,12 @@ class TestCLIRobustesse:
                 except Exception as e:
                     pytest.skip(f"CLI {cli_path} non disponible: {e}")
 
+    @pytest.mark.timeout(120)
     def test_cli_invalid_argument(self):
         """Test avec des arguments invalides."""
         for cli_path in self.cli_paths:
             if cli_path.exists():
                 try:
-                    # Augmenter le timeout pour les scripts qui exécutent pytest
                     result = subprocess.run(
                         [sys.executable, str(cli_path), "--invalid-arg"],
                         capture_output=True,
