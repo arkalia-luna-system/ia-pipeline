@@ -137,7 +137,8 @@ class SecurityAuditor:
                             f"Pattern dangereux {pattern} dans {py_file.name}:{line_num}"
                         )
 
-            except Exception:
+            except (OSError, UnicodeDecodeError, PermissionError) as file_error:
+                logger.debug(f"Erreur lors de l'analyse du fichier {py_file}: {file_error}")
                 continue
 
     def _check_secrets(self):
@@ -162,7 +163,8 @@ class SecurityAuditor:
                             f"Secret potentiel dans {py_file.name}:{line_num}"
                         )
 
-            except Exception:
+            except (OSError, UnicodeDecodeError, PermissionError) as file_error:
+                logger.debug(f"Erreur lors de l'analyse du fichier {py_file}: {file_error}")
                 continue
 
     def _check_permissions(self):
@@ -175,7 +177,8 @@ class SecurityAuditor:
                         self.report["warnings"].append(
                             f"Permissions trop ouvertes: {file_path}"
                         )
-                except Exception:
+                except (OSError, PermissionError) as perm_error:
+                    logger.debug(f"Erreur lors de la vérification des permissions {file_path}: {perm_error}")
                     continue
 
     def _check_encryption(self):
@@ -197,7 +200,8 @@ class SecurityAuditor:
                         has_encryption = True
                         break
 
-            except Exception:
+            except (OSError, UnicodeDecodeError, PermissionError) as file_error:
+                logger.debug(f"Erreur lors de l'analyse du fichier {py_file}: {file_error}")
                 continue
 
         if not has_encryption:

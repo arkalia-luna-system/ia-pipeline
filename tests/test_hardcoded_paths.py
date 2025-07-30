@@ -13,9 +13,6 @@ import pytest
 class TestHardcodedPaths:
     """Tests pour détecter les chemins hardcodés"""
 
-    @pytest.mark.skip(
-        reason="Test désactivé - chemins absolus acceptables dans le code source"
-    )
     def test_no_absolute_paths_in_source(self):
         """Test qu'il n'y a pas de chemins absolus dans le code source (sauf tests)"""
         # Exclure les fichiers de test

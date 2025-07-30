@@ -33,6 +33,7 @@ class SecurityValidator:
             # Commandes Python
             "python",
             "python3",
+            "/opt/homebrew/opt/pyenv/versions/3.10.14/bin/python",
             "pip",
             "pip3",
             "pytest",
@@ -199,6 +200,9 @@ class SecurityValidator:
             str(Path.cwd() / "templates"),
             str(Path.cwd() / "prompts"),
             str(Path.cwd() / "setup"),
+            "/opt/homebrew/opt/pyenv/versions/",  # Répertoire Python pyenv
+            "/usr/bin/",  # Répertoire système
+            "/usr/local/bin/",  # Répertoire local
         ]
 
     def validate_command(self, command: List[str]) -> Dict[str, Any]:
