@@ -1,0 +1,12 @@
+{
+  "stats": {
+    "files_removed": 0,
+    "dirs_removed": 0,
+    "space_freed_mb": 0.0,
+    "errors": 0
+  },
+  "files": [],
+  "dirs": [],
+  "errors": [],
+  "summary": "\n============================================================\n🧹 RAPPORT DE NETTOYAGE AUTOMATIQUE\n============================================================\n\n📊 STATISTIQUES:\n• Fichiers supprimés: 0\n• Répertoires supprimés: 0\n• Espace libéré: 0.0 MB\n• Erreurs: 0\n\n📁 FICHIERS SUPPRIMÉS PAR CATÉGORIE:\n\n============================================================\n"
+}

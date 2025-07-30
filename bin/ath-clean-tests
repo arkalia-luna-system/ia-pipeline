@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Script de nettoyage des fichiers de tests auto-générés
+# Usage: ./bin/ath-clean-tests
+
+echo "🧹 Nettoyage des fichiers de tests auto-générés..."
+
+# Supprimer les fichiers de tests auto-générés
+find tests/ -name "auto_generated_*.py" -type f -delete
+
+# Supprimer les fichiers macOS ._*
+find tests/ -name "._auto_generated_*.py" -type f -delete
+
+# Supprimer les fichiers de tests avec des caractères null
+find tests/ -name "auto_generated_*.py" -type f -exec grep -l $'\x00' {} \; | xargs rm -f
+
+echo "✅ Nettoyage terminé !" 

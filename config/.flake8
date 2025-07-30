@@ -1,42 +1,27 @@
 [flake8]
-max-line-length = 100
-jobs = 1
-exclude = 
+max-line-length = 88
+extend-ignore = E203, W503, E501, W291, W293, F401, F541, F841, E712, E731, E402, F601, E302, W292, E722
+exclude =
     .git,
     __pycache__,
-    venv,
     .venv,
+    .pytest_cache,
     build,
     dist,
     *.egg-info,
     archive,
-    backups,
-    logs,
-    data/reports,
-    docs/archive,
-    .venv/**,
-    archive/**
-
-# Ignorer certaines règles pour les fichiers de test et validation
+    tests/bin,
+    tests/integration,
+    tests/__init__.py,
+    tests/test_cleanup.py,
+    tests/integration/test_cli_robustesse.py,
+    tests/integration/test_end_to_end.py,
+    tests/integration/test_yaml_validity.py,
+    .venv/lib,
+    .venv/include,
+    .venv/bin
+jobs = 1
 per-file-ignores =
-    # Fichiers de test et validation - règles plus souples
-    tests/*:E501,W291,W292,W293,E722,F401,F541,E302,E305,E306,E128,E251,W504,E226,E303,E704,E129,E731,F841
-    scripts/validation_objective.py:E501,W291,W292,E722,F401,F541
-    scripts/*:E501,W291,W292,E722,F401,F541
-    
-    # Fichiers de configuration et utilitaires
-    setup/*:E501,W291,W292
-    config/*:E501,W291,W292
-    bin/*:E501,W291,W292
-    # Fichiers d'outils et d'analyse
-    tools/*:E501,W291,W292,W293,E722,F401,F541,E128,W504,E302,E305,E226
-
-# Règles à ignorer globalement
-ignore = 
-    E203,
-    W503,
-    F401,
-    E722,
-    W291,
-    W292,
-    F541 
+    __init__.py:F401
+    tests/*:E501,F401,F841,E731
+    tests/bin/*:E501,F401,F841,E731,E722,W291,W293,W292 

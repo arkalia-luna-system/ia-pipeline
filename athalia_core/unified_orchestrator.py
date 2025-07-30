@@ -1,887 +1,286 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Orchestrateur unifié pour Athalia - Industrialisation IA complète
+Orchestrateur unifié pour Athalia
+Coordination centralisée de tous les modules
 """
 
-from .intelligent_analyzer import IntelligentAnalyzer
-from .security_auditor import SecurityAuditor
-from .project_importer import ProjectImporter
-from .intelligent_auditor import IntelligentAuditor
-from .code_linter import CodeLinter
-from .auto_tester import AutoTester
-from .auto_documenter import AutoDocumenter
-from .auto_cleaner import AutoCleaner
-from .auto_cicd import AutoCICD
-from .advanced_analytics import AdvancedAnalytics
-import argparse
 import json
 import logging
-import sys
-import time
 from datetime import datetime
-from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Any, Optional
+from typing import Any, Dict
 
-# Configuration du logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
-# Constantes pour les tests
-PHASE2_AVAILABLE = True
 
 # Imports des modules Athalia
+from .ai_robust import RobustAI
+from .auto_cicd import AutoCICD
+from .auto_cleaner import AutoCleaner
+from .auto_documenter import AutoDocumenter
+from .auto_tester import AutoTester
+from .code_linter import CodeLinter
+from .correction_optimizer import CorrectionOptimizer
+from .generation import generate_project
+from .security_auditor import SecurityAuditor
 
-# Imports robotiques (optionnels)
-try:
-    from .robotics.reachy_auditor import ReachyAuditor
-    from .robotics.ros2_validator import ROS2Validator
-    from .robotics.docker_robotics import DockerRoboticsManager
-    from .robotics.rust_analyzer import RustAnalyzer
-    from .robotics.robotics_ci import RoboticsCI
-
-    ROBOTICS_AVAILABLE = True
-except ImportError:
-    ROBOTICS_AVAILABLE = False
-
-# Imports de distillation (optionnels)
-try:
-    # from .distillation.response_distiller import ResponseDistiller
-    # from .distillation.audit_distiller import AuditDistiller
-    # from .distillation.correction_distiller import CorrectionDistiller
-    # from .distillation.adaptive_distillation import AdaptiveDistiller
-    # from .distillation.code_genetics import CodeGenetics
-    # from .distillation.predictive_cache import PredictiveCache
-    DISTILLATION_AVAILABLE = True
-except ImportError:
-    DISTILLATION_AVAILABLE = False
-
-# Imports IA robuste (optionnels)
-try:
-    # from .ai_robust import RobustAI, AIModel, PromptContext
-    AI_ROBUST_AVAILABLE = True
-except ImportError:
-    AI_ROBUST_AVAILABLE = False
-
-# Imports optionnels pour compatibilité
-try:
-    # from .ci import generate_github_ci_yaml
-    # from .plugins_validator import validate_plugin
-    # from .architecture_analyzer import ArchitectureAnalyzer
-    # from .multi_file_editor import MultiFileEditor
-    # from .ast_analyzer import ASTAnalyzer
-    # from .autocomplete_server import AutocompleteRequest
-    # from .autocomplete_engine import BaseAutocompleteEngine
-    # from .analytics import (
-    #     analyze_project, generate_heatmap_data,
-    #     generate_technical_debt_analysis, generate_analytics_html
-    # )
-    # from .cleanup import clean_old_tests_and_caches, clean_macos_files
-    # from .cli import cli, generate
-    # from .main import main
-    # from .security import security_audit_project
-    # from .onboarding import (
-    #     generate_onboarding_md, generate_onboard_cli,
-    #     generate_onboarding_html_advanced
-    # )
-    # from .plugins_manager import run_all_plugins
-    # from .ready_check import open_patch, check_ready
-    # from .dashboard import main as dashboard_main
-    # from .audit import Audit
-    # from .config_manager import ConfigManager
-    # from .correction_optimizer import CorrectionOptimizer
-    # from .intelligent_memory import IntelligentMemory
-    # from .logger_advanced import AthaliaLogger
-    # from .pattern_detector import PatternDetector
-    # from .performance_analyzer import PerformanceAnalyzer
-    pass
-except ImportError:
-    pass
-
-
-@dataclass
-class BackupSystem:
-    """Système de sauvegarde simplifié"""
-
-    backup_id: str
-    files_count: int
-    size_bytes: int
-
-
-def get_backup_system():
-    """Obtenir le système de sauvegarde"""
-    return BackupSystem("backup_001", 100, 1024)
-
-
-def standardize_cli_script():
-    """Standardiser le script CLI"""
-    return "CLI script standardized"
-
-
-@dataclass
-class OrchestrationTask:
-    """Tâche d'orchestration unifiée"""
-
-    task_id: str
-    task_type: str  # 'industrialization', 'analysis', 'correction', 'optimization', 'prediction'
-    target_path: str
-    priority: int  # 1-5 (1 = critique, 5 = faible)
-    status: str  # 'pending', 'running', 'completed', 'failed'
-    created_at: datetime
-    started_at: Optional[datetime] = None
-    completed_at: Optional[datetime] = None
-    result: Optional[Dict[str, Any]] = None
-    error: Optional[str] = None
-
-
-@dataclass
-class IntelligentInsight:
-    """Insight intelligent unifié"""
-
-    insight_type: str  # 'prediction', 'optimization', 'warning', 'suggestion', 'industrialization'
-    title: str
-    description: str
-    confidence: float
-    priority: str  # 'low', 'medium', 'high', 'critical'
-    suggested_action: str
-    estimated_impact: str
-    code_location: Optional[str] = None
-
-
-@dataclass
-class IndustrializationStep:
-    """Étape d'industrialisation"""
-
-    name: str
-    status: str  # 'pending', 'running', 'completed', 'failed'
-    result: Optional[Dict[str, Any]] = None
-    duration: Optional[float] = None
-    error: Optional[str] = None
+logger = logging.getLogger(__name__)
 
 
 class UnifiedOrchestrator:
-    """Orchestrateur unifié pour l'industrialisation IA"""
+    """Orchestrateur unifié pour Athalia"""
 
-    def __init__(self, root_path: str = None):
-        self.root_path = Path(root_path) if root_path else Path.cwd()
-        self.logger = logging.getLogger(__name__)
-        self.tasks: List[OrchestrationTask] = []
-        self.insights: List[IntelligentInsight] = []
-        self.industrialization_steps: List[IndustrializationStep] = []
-
-        # Chemin de la base de données
-        self.db_path = self.root_path / "data" / "unified_orchestration.db"
-
-        # Configuration par défaut
-        self.config = {
-            "audit": True,
-            "lint": True,
-            "security": True,
-            "analytics": True,
-            "docs": True,
-            "cicd": True,
-            "robotics": True,
-            "intelligence": True,
-            "predictions": True,
-            "optimizations": True,
-            "learning": True,
-            "plugins": True,
-            "templates": True,
-        }
-
-        # Initialiser l'analyseur intelligent
-        try:
-            self.intelligent_analyzer = IntelligentAnalyzer(str(self.root_path))
-        except Exception:
-            self.intelligent_analyzer = None
-
-        # Initialiser les composants
-        self._init_database()
-        self._init_components()
-
-    def _init_database(self):
-        """Initialiser la base de données"""
-        try:
-            # Créer le dossier de données si nécessaire
-            data_dir = self.root_path / "data"
-            data_dir.mkdir(exist_ok=True)
-
-            # Base de données SQLite
-            import sqlite3
-
-            with sqlite3.connect(self.db_path) as conn:
-                cursor = conn.cursor()
-                cursor.execute(
-                    """
-                    CREATE TABLE IF NOT EXISTS orchestration_tasks (
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        task_id TEXT UNIQUE,
-                        task_type TEXT,
-                        target_path TEXT,
-                        priority INTEGER,
-                        status TEXT,
-                        created_at TEXT,
-                        started_at TEXT,
-                        completed_at TEXT,
-                        result TEXT,
-                        error TEXT
-                    )
-                """
-                )
-                cursor.execute(
-                    """
-                    CREATE TABLE IF NOT EXISTS intelligent_insights (
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        insight_type TEXT,
-                        title TEXT,
-                        description TEXT,
-                        confidence REAL,
-                        priority TEXT,
-                        suggested_action TEXT,
-                        estimated_impact TEXT,
-                        code_location TEXT,
-                        created_at TEXT
-                    )
-                """
-                )
-                cursor.execute(
-                    """
-                    CREATE TABLE IF NOT EXISTS industrialization_steps (
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        name TEXT,
-                        status TEXT,
-                        result TEXT,
-                        duration REAL,
-                        error TEXT,
-                        created_at TEXT
-                    )
-                """
-                )
-                conn.commit()
-
-        except Exception as e:
-            self.logger.error(f"Erreur initialisation DB: {e}")
-
-    def _init_components(self):
-        """Initialiser les composants disponibles"""
-        self.components = {
-            "analytics": (
-                AdvancedAnalytics(str(self.root_path))
-                if "AdvancedAnalytics" in globals()
-                else None
-            ),
-            "cicd": AutoCICD() if "AutoCICD" in globals() else None,
-            "cleaner": (
-                AutoCleaner(str(self.root_path)) if "AutoCleaner" in globals() else None
-            ),
-            "documenter": (
-                AutoDocumenter(str(self.root_path))
-                if "AutoDocumenter" in globals()
-                else None
-            ),
-            "tester": (
-                AutoTester(str(self.root_path)) if "AutoTester" in globals() else None
-            ),
-            "linter": (
-                CodeLinter(str(self.root_path)) if "CodeLinter" in globals() else None
-            ),
-            "auditor": (
-                IntelligentAuditor(str(self.root_path))
-                if "IntelligentAuditor" in globals()
-                else None
-            ),
-            "importer": ProjectImporter() if "ProjectImporter" in globals() else None,
-            "security": (
-                SecurityAuditor(str(self.root_path))
-                if "SecurityAuditor" in globals()
-                else None
-            ),
-            "analyzer": (
-                IntelligentAnalyzer(str(self.root_path))
-                if "IntelligentAnalyzer" in globals()
-                else None
-            ),
-        }
-
-    def orchestrate_project_complete(
-        self, project_path: str, config: Optional[Dict[str, Any]] = None
-    ) -> Dict[str, Any]:
-        """Orchestrer l'industrialisation complète d'un projet"""
-        project_path = Path(project_path)
-        self.logger.info(f"🚀 Orchestration complète pour: {project_path.name}")
-
-        results = {
-            "project_path": str(project_path),
-            "project_name": project_path.name,
-            "orchestration_timestamp": datetime.now().isoformat(),
-            "started_at": datetime.now().isoformat(),
-            "config": config or {},
-            "steps": {},
-            "insights": [],
-            "predictions": [],
-            "optimizations": [],
+    def __init__(self, project_path: str = "."):
+        self.project_path = Path(project_path)
+        self.workflow_results = {
+            "status": "idle",
+            "steps_completed": [],
             "errors": [],
+            "warnings": [],
+            "metrics": {},
+            "artifacts": {},
         }
 
+        # Initialiser les modules
+        self.robust_ai = None
+        self.security_auditor = None
+        self.code_linter = None
+        self.correction_optimizer = None
+        self.auto_tester = None
+        self.auto_documenter = None
+        self.auto_cleaner = None
+        self.auto_cicd = None
+
+    def initialize_modules(self):
+        """Initialise tous les modules"""
         try:
-            # Phase 1: Industrialisation
-            results["steps"]["industrialization"] = self._run_industrialization(
-                project_path
+            self.robust_ai = RobustAI()
+            self.security_auditor = SecurityAuditor(str(self.project_path))
+            self.code_linter = CodeLinter(str(self.project_path))
+            self.correction_optimizer = CorrectionOptimizer()
+            self.auto_tester = AutoTester(str(self.project_path))
+            self.auto_documenter = AutoDocumenter(str(self.project_path))
+            self.auto_cleaner = AutoCleaner(str(self.project_path))
+            self.auto_cicd = AutoCICD(str(self.project_path))
+
+            self.workflow_results["status"] = "initialized"
+            logger.info("✅ Tous les modules initialisés")
+
+        except Exception as e:
+            self.workflow_results["errors"].append(
+                f"Erreur initialisation modules: {e}"
             )
+            logger.error(f"❌ Erreur initialisation: {e}")
 
-            # Phase 2: Audit et analyse
-            results["steps"]["audit"] = self._run_audit(project_path)
-            results["steps"]["lint"] = self._run_linting(project_path)
-            results["steps"]["security"] = self._run_security_audit(project_path)
-            results["steps"]["analytics"] = self._run_analytics(project_path)
-
-            # Phase 3: Optimisation
-            results["steps"]["cleanup"] = self._run_cleanup(project_path)
-            results["steps"]["docs"] = self._run_documentation(project_path)
-            results["steps"]["tests"] = self._run_testing(project_path)
-            results["steps"]["cicd"] = self._run_cicd(project_path)
-
-            # Phase 4: Robotique (si disponible)
-            if ROBOTICS_AVAILABLE:
-                results["steps"]["robotics"] = self._run_robotics_audit(project_path)
-
-            # Phase 5: Plugins et Templates
-            results["steps"]["plugins"] = self._run_plugins(project_path)
-            results["steps"]["templates"] = self._run_templates(project_path)
-
-            # Phase 6: IA et prédictions
-            results["predictions"] = self._generate_predictions(project_path)
-            results["optimizations"] = self._generate_optimizations(project_path)
-
-            # Phase 6: Apprentissage et rapport
-            results["learning_data"] = self._learn_from_results(results)
-            results["final_report"] = self._generate_unified_report(results)
-            results["intelligent_analysis"] = {"score": 85.0, "insights": []}
-            results["industrialization_steps"] = results["steps"]
-
-            # Sauvegarder les résultats
-            self._save_unified_results(results)
-
-            results["completed_at"] = datetime.now().isoformat()
-            results["status"] = "success"
-
-        except Exception as e:
-            self.logger.error(f"Erreur orchestration: {e}")
-            results["errors"].append(str(e))
-            results["status"] = "failed"
-
-        return results
-
-    def _run_industrialization(self, project_path: Path) -> Dict[str, Any]:
-        """Exécuter l'industrialisation"""
-        step = IndustrializationStep(name="industrialization", status="running")
-        self.industrialization_steps.append(step)
+    def run_full_workflow(self, blueprint: Dict[str, Any]) -> Dict[str, Any]:
+        """Exécute le workflow complet"""
+        logger.info("🚀 Démarrage du workflow unifié")
+        self.workflow_results["status"] = "running"
 
         try:
-            start_time = time.time()
+            # Étape 1: Génération du projet
+            self._step_generate_project(blueprint)
 
-            # Logique d'industrialisation
-            result = {
-                "status": "completed",
-                "message": "Industrialisation terminée",
-                "files_processed": 0,
-                "optimizations_applied": 0,
-            }
+            # Étape 2: Audit de sécurité
+            self._step_security_audit()
 
-            step.status = "completed"
-            step.result = result
-            step.duration = time.time() - start_time
+            # Étape 3: Linting du code
+            self._step_code_linting()
 
-            return result
+            # Étape 4: Optimisation des corrections
+            self._step_correction_optimization()
 
-        except Exception as e:
-            step.status = "failed"
-            step.error = str(e)
-            return {"status": "failed", "error": str(e)}
+            # Étape 5: Tests automatiques
+            self._step_auto_testing()
 
-    def _run_audit(self, project_path: Path) -> Dict[str, Any]:
-        """Exécuter l'audit"""
-        try:
-            return {
-                "status": "completed",
-                "passed": True,
-                "result": {"score": 85, "issues": 5},
-            }
-        except Exception as e:
-            return {"status": "failed", "error": str(e)}
+            # Étape 6: Documentation automatique
+            self._step_auto_documentation()
 
-    def _run_linting(self, project_path: Path) -> Dict[str, Any]:
-        """Exécuter le linting"""
-        try:
-            return {
-                "status": "completed",
-                "passed": True,
-                "result": {"score": 90, "issues": 2},
-            }
-        except Exception as e:
-            return {"status": "failed", "error": str(e)}
+            # Étape 7: Nettoyage automatique
+            self._step_auto_cleaning()
 
-    def _run_security_audit(self, project_path: Path) -> Dict[str, Any]:
-        """Exécuter l'audit de sécurité"""
-        try:
-            return {
-                "status": "completed",
-                "passed": True,
-                "result": {"score": 95, "issues": 1},
-            }
-        except Exception as e:
-            return {"status": "failed", "error": str(e)}
+            # Étape 8: CI/CD automatique
+            self._step_auto_cicd()
 
-    def _run_analytics(self, project_path: Path) -> Dict[str, Any]:
-        """Exécuter l'analyse"""
-        try:
-            return {
-                "status": "completed",
-                "passed": True,
-                "result": {
-                    "score": 88,
-                    "metrics": {"complexity": 7.2, "maintainability": 8.1},
-                },
-            }
-        except Exception as e:
-            return {"status": "failed", "error": str(e)}
-
-    def _run_cleanup(self, project_path: Path) -> Dict[str, Any]:
-        """Exécuter le nettoyage"""
-        try:
-            return {
-                "status": "completed",
-                "passed": True,
-                "result": {"files_removed": 0, "space_freed": 0},
-            }
-        except Exception as e:
-            return {"status": "failed", "error": str(e)}
-
-    def _run_documentation(self, project_path: Path) -> Dict[str, Any]:
-        """Exécuter la documentation"""
-        try:
-            return {
-                "status": "completed",
-                "passed": True,
-                "result": {"files_created": 3, "docs_generated": True},
-            }
-        except Exception as e:
-            return {"status": "failed", "error": str(e)}
-
-    def _run_testing(self, project_path: Path) -> Dict[str, Any]:
-        """Exécuter les tests"""
-        try:
-            return {
-                "status": "completed",
-                "passed": True,
-                "result": {"total": 0, "passed": 0, "failed": 0},
-            }
-        except Exception as e:
-            return {"status": "failed", "error": str(e)}
-
-    def _run_cicd(self, project_path: Path) -> Dict[str, Any]:
-        """Exécuter le CI/CD"""
-        try:
-            return {
-                "status": "completed",
-                "passed": True,
-                "result": {"workflows_created": 2, "pipelines_created": True},
-            }
-        except Exception as e:
-            return {"status": "failed", "error": str(e)}
-
-    def _run_robotics_audit(self, project_path: Path) -> Dict[str, Any]:
-        """Exécuter l'audit robotique"""
-        try:
-            if not ROBOTICS_AVAILABLE:
-                return {
-                    "status": "completed",
-                    "passed": True,
-                    "result": {"message": "Modules robotiques non disponibles"},
-                    "robotics_score": 0,
-                }
-
-            results = {}
-
-            # Audit Reachy
-            try:
-                reachy_auditor = ReachyAuditor()
-                reachy_result = reachy_auditor.audit_complete(str(project_path))
-                results["reachy"] = reachy_result
-            except Exception as e:
-                results["reachy"] = {"error": str(e), "score": 0}
-
-            # Validation ROS2
-            try:
-                ros2_validator = ROS2Validator()
-                ros2_result = ros2_validator.validate_workspace(str(project_path))
-                results["ros2"] = ros2_result
-            except Exception as e:
-                results["ros2"] = {"error": str(e), "valid": False}
-
-            # Gestion Docker
-            try:
-                docker_manager = DockerRoboticsManager()
-                docker_result = docker_manager.manage_containers(str(project_path))
-                results["docker"] = docker_result
-            except Exception as e:
-                results["docker"] = {"error": str(e), "containers": 0}
-
-            # Analyse Rust
-            try:
-                rust_analyzer = RustAnalyzer()
-                rust_result = rust_analyzer.analyze_rust_code(str(project_path))
-                results["rust"] = rust_result
-            except Exception as e:
-                results["rust"] = {"error": str(e), "crates": 0}
-
-            # CI Robotique
-            try:
-                robotics_ci = RoboticsCI()
-                ci_result = robotics_ci.setup_robotics_ci(str(project_path))
-                results["ci"] = ci_result
-            except Exception as e:
-                results["ci"] = {"error": str(e), "tests_passed": 0}
-
-            # Calculer le score global
-            scores = []
-            for component, result in results.items():
-                if "score" in result:
-                    scores.append(result["score"])
-                elif "valid" in result and result["valid"]:
-                    scores.append(100)
-                elif "tests_passed" in result and result["tests_passed"] > 0:
-                    scores.append(80)
-
-            robotics_score = sum(scores) / len(scores) if scores else 0
-
-            return {
-                "status": "completed",
-                "passed": robotics_score >= 50,
-                "result": results,
-                "robotics_score": robotics_score,
-            }
-        except Exception as e:
-            return {"status": "failed", "error": str(e)}
-
-    def _generate_predictions(self, project_path: Path) -> List[IntelligentInsight]:
-        """Générer des prédictions intelligentes"""
-        predictions = []
-
-        # Prédictions basées sur l'analyse du projet
-        predictions.append(
-            IntelligentInsight(
-                insight_type="prediction",
-                title="Analyse de complexité",
-                description="Le projet semble avoir une complexité modérée",
-                confidence=0.85,
-                priority="medium",
-                suggested_action="Considérer la modularisation",
-                estimated_impact="Réduction de 20% de la complexité",
-            )
-        )
-
-        return predictions
-
-    def _generate_optimizations(self, project_path: Path) -> List[IntelligentInsight]:
-        """Générer des optimisations intelligentes"""
-        optimizations = []
-        optimizations.append(
-            IntelligentInsight(
-                insight_type="optimization",
-                title="Optimisation des imports",
-                description="Réduire les imports inutilisés pourrait améliorer les performances",
-                confidence=0.92,
-                priority="high",
-                suggested_action="Exécuter un audit des imports",
-                estimated_impact="Réduction de 10% du temps de chargement",
-            )
-        )
-
-        return optimizations
-
-    def _learn_from_results(self, results: Dict[str, Any]) -> Dict[str, Any]:
-        """Apprendre des résultats pour améliorer les futures exécutions"""
-        learning_data = {
-            "timestamp": datetime.now().isoformat(),
-            "execution_time": time.time(),
-            "success_rate": 0.0,
-            "improvements": [],
-            "lessons_learned": [],
-            "project_insights": [],
-            "performance_metrics": {},
-            "recommendations": [],
-        }
-
-        # Calculer le taux de succès
-        steps = results.get("steps", {})
-        successful_steps = sum(
-            1 for step in steps.values() if step.get("status") == "completed"
-        )
-        total_steps = len(steps)
-        learning_data["success_rate"] = (
-            successful_steps / total_steps if total_steps > 0 else 0.0
-        )
-
-        return learning_data
-
-    def _generate_unified_report(self, results: Dict[str, Any]) -> str:
-        """Générer un rapport unifié"""
-        project_name = results.get("project_name", "Unknown Project")
-        report = f"""
-# RAPPORT D'ORCHESTRATION UNIFIÉE - {project_name}
-
-## Résumé
-- **Statut**: {results.get('status', 'unknown')}
-- **Démarré**: {results.get('started_at', 'unknown')}
-- **Terminé**: {results.get('completed_at', 'unknown')}
-
-## Étapes exécutées
-"""
-        for step_name, step_result in results.get("steps", {}).items():
-            status = step_result.get("status", "unknown")
-            report += f"- **{step_name}**: {status}\n"
-
-        if results.get("predictions"):
-            report += "\n## Prédictions\n"
-            for pred in results["predictions"]:
-                report += f"- **{pred.title}**: {pred.description}\n"
-
-        if results.get("optimizations"):
-            report += "\n## Optimisations\n"
-            for opt in results["optimizations"]:
-                report += f"- **{opt.title}**: {opt.description}\n"
-
-        report += "\n## INDUSTRIALISATION\n"
-        report += "- **Statut**: En cours\n"
-        report += "- **Étapes**: Configuration terminée\n"
-
-        return report
-
-    def _save_unified_results(self, results: Dict[str, Any]):
-        """Sauvegarder les résultats unifiés"""
-        try:
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            results_file = (
-                self.root_path / "data" / f"orchestration_results_{timestamp}.json"
-            )
-            with open(results_file, "w") as f:
-                json.dump(results, f, indent=2, default=str)
-
-            self.logger.info(f"Résultats sauvegardés: {results_file}")
+            self.workflow_results["status"] = "completed"
+            logger.info("✅ Workflow terminé avec succès")
 
         except Exception as e:
-            self.logger.error(f"Erreur sauvegarde résultats: {e}")
+            self.workflow_results["status"] = "failed"
+            self.workflow_results["errors"].append(f"Erreur workflow: {e}")
+            logger.error(f"❌ Erreur workflow: {e}")
 
-    def get_orchestration_insights(self) -> Dict[str, Any]:
-        """Obtenir les insights d'orchestration"""
-        return {
-            "total_tasks": len(self.tasks),
-            "completed_tasks": len([t for t in self.tasks if t.status == "completed"]),
-            "failed_tasks": len([t for t in self.tasks if t.status == "failed"]),
-            "total_insights": len(self.insights),
-            "industrialization_steps": len(self.industrialization_steps),
-            "success_rate": (
-                len([t for t in self.tasks if t.status == "completed"])
-                / len(self.tasks)
-                if self.tasks
-                else 0.0
-            ),
-        }
+        return self.workflow_results
 
-    def _run_plugins(self, project_path: Path) -> Dict[str, Any]:
-        """Exécuter les plugins"""
+    def _step_generate_project(self, blueprint: Dict[str, Any]):
+        """Étape 1: Génération du projet"""
+        logger.info("📁 Génération du projet...")
+
         try:
-            # return run_all_plugins(str(project_path))  # Fonction non disponible
-            return {
-                "status": "completed",
-                "message": "Plugins désactivés temporairement",
-            }
-        except Exception as e:
-            return {"status": "failed", "error": str(e)}
-
-    def phase2_backup(self, project_path: str) -> Dict[str, Any]:
-        """Sauvegarde Phase 2"""
-        try:
-            backup_system = get_backup_system()
-            backup_result = backup_system.create_backup()
-
-            return {
-                "status": "success",
-                "backup_id": backup_result.backup_id,
-                "files_count": backup_result.files_count,
-                "size_bytes": backup_result.size_bytes,
-            }
+            project_path = generate_project(blueprint, self.project_path)
+            self.workflow_results["steps_completed"].append("project_generation")
+            self.workflow_results["artifacts"]["project_path"] = project_path
+            logger.info(f"✅ Projet généré: {project_path}")
 
         except Exception as e:
-            return {"status": "failed", "error": str(e)}
+            self.workflow_results["errors"].append(f"Erreur génération projet: {e}")
+            raise
 
-    def get_phase2_backup_stats(self) -> Dict[str, Any]:
-        """Obtenir les statistiques de sauvegarde Phase 2"""
+    def _step_security_audit(self):
+        """Étape 2: Audit de sécurité"""
+        logger.info("🔒 Audit de sécurité...")
+
         try:
-            backup_system = get_backup_system()
-            stats = backup_system.get_backup_stats()
-            return {"status": "success", "stats": stats}
+            if self.security_auditor:
+                security_results = self.security_auditor.run()
+                self.workflow_results["steps_completed"].append("security_audit")
+                self.workflow_results["artifacts"]["security_report"] = security_results
+                logger.info("✅ Audit de sécurité terminé")
 
         except Exception as e:
-            return {"status": "failed", "error": str(e)}
+            self.workflow_results["warnings"].append(f"Erreur audit sécurité: {e}")
 
-    def validate_phase2_inputs(
-        self, inputs: Dict[str, Any], required_fields: List[str] = None
-    ) -> Dict[str, Any]:
-        """Valider les entrées Phase 2"""
-        if required_fields is None:
-            required_fields = ["project_path"]
+    def _step_code_linting(self):
+        """Étape 3: Linting du code"""
+        logger.info("📏 Linting du code...")
 
-        missing_fields = [field for field in required_fields if field not in inputs]
-        is_valid = len(missing_fields) == 0
-
-        return {
-            "status": "success" if is_valid else "error",
-            "valid": is_valid,
-            "missing_fields": missing_fields,
-        }
-
-    def run_phase2_backup(self, backup_type: str = "daily") -> Dict[str, Any]:
-        """Exécuter la sauvegarde Phase 2"""
         try:
-            backup_result = self.phase2_backup(str(self.root_path))
-            if backup_result["status"] == "success":
-                return {
-                    "status": "success",
-                    "message": f"Sauvegarde {backup_type} créée avec succès",
-                    "backup_id": backup_result["backup_id"],
-                }
-            else:
-                return backup_result
+            if self.code_linter:
+                lint_results = self.code_linter.run()
+                self.workflow_results["steps_completed"].append("code_linting")
+                self.workflow_results["artifacts"]["lint_report"] = lint_results
+                logger.info("✅ Linting terminé")
 
         except Exception as e:
-            return {"status": "failed", "error": str(e)}
+            self.workflow_results["warnings"].append(f"Erreur linting: {e}")
 
-    def run_phase2_error_handling(self, operation) -> Dict[str, Any]:
-        """Gestion d'erreur Phase 2"""
+    def _step_correction_optimization(self):
+        """Étape 4: Optimisation des corrections"""
+        logger.info("🔧 Optimisation des corrections...")
+
         try:
-            result = operation()
-            return {"status": "success", "result": result}
+            if self.correction_optimizer:
+                # Optimiser les corrections basées sur les rapports précédents
+                optimization_results = self.correction_optimizer.get_correction_stats()
+                self.workflow_results["steps_completed"].append(
+                    "correction_optimization"
+                )
+                self.workflow_results["artifacts"][
+                    "optimization_stats"
+                ] = optimization_results
+                logger.info("✅ Optimisation terminée")
 
         except Exception as e:
-            return {"status": "failed", "error": str(e)}
+            self.workflow_results["warnings"].append(f"Erreur optimisation: {e}")
 
-    def _run_templates(self, project_path: Path) -> Dict[str, Any]:
-        """Exécuter les templates"""
+    def _step_auto_testing(self):
+        """Étape 5: Tests automatiques"""
+        logger.info("🧪 Tests automatiques...")
+
         try:
-            # Logique de génération de templates
-            return {
-                "status": "completed",
-                "templates_generated": 0,
-                "message": "Templates générés avec succès",
-            }
+            if self.auto_tester:
+                test_results = self.auto_tester.run_tests()
+                self.workflow_results["steps_completed"].append("auto_testing")
+                self.workflow_results["artifacts"]["test_results"] = test_results
+                logger.info("✅ Tests automatiques terminés")
 
         except Exception as e:
-            return {"status": "failed", "error": str(e)}
+            self.workflow_results["warnings"].append(f"Erreur tests automatiques: {e}")
 
-    def orchestrate_with_phase2_features(self, project_path: str) -> Dict[str, Any]:
-        """Orchestrer avec les fonctionnalités Phase 2"""
+    def _step_auto_documentation(self):
+        """Étape 6: Documentation automatique"""
+        logger.info("📚 Documentation automatique...")
+
         try:
-            # Validation des entrées
-            validation = self.validate_phase2_inputs({"project_path": project_path})
-            if not validation["valid"]:
-                return {"status": "failed", "error": "Entrées invalides"}
-
-            # Sauvegarde Phase 2
-            backup_result = self.run_phase2_backup()
-
-            # Orchestration complète
-            orchestration_result = self.orchestrate_project_complete(project_path)
-
-            # Statistiques de sauvegarde
-            backup_stats = self.get_phase2_backup_stats()
-
-            return {
-                "status": "success",
-                "backup": backup_result,
-                "orchestration": orchestration_result,
-                "phase2_backup_stats": backup_stats,
-            }
+            if self.auto_documenter:
+                doc_results = self.auto_documenter.generate_documentation()
+                self.workflow_results["steps_completed"].append("auto_documentation")
+                self.workflow_results["artifacts"]["documentation"] = doc_results
+                logger.info("✅ Documentation générée")
 
         except Exception as e:
-            return {"status": "failed", "error": str(e)}
+            self.workflow_results["warnings"].append(f"Erreur documentation: {e}")
 
+    def _step_auto_cleaning(self):
+        """Étape 7: Nettoyage automatique"""
+        logger.info("🧹 Nettoyage automatique...")
 
-def cli_entry():
-    """Point d'entrée CLI"""
-    parser = argparse.ArgumentParser(description="Orchestrateur unifié Athalia")
-    parser.add_argument("project_path", help="Chemin du projet")
-    parser.add_argument("--config", help="Fichier de configuration")
-    args = parser.parse_args()
-
-    orchestrator = UnifiedOrchestrator()
-    result = orchestrator.orchestrate_project_complete(args.project_path)
-    print(json.dumps(result, indent=2))
-
-
-def error_handler(func):
-    """Décorateur de gestion d'erreur"""
-
-    def wrapper(*args, **kwargs):
         try:
-            return func(*args, **kwargs)
+            if self.auto_cleaner:
+                clean_results = self.auto_cleaner.clean_project()
+                self.workflow_results["steps_completed"].append("auto_cleaning")
+                self.workflow_results["artifacts"]["cleaning_report"] = clean_results
+                logger.info("✅ Nettoyage terminé")
+
         except Exception as e:
-            logger.error(f"Erreur dans {func.__name__}: {e}")
-            return {"status": "error", "error": str(e)}
+            self.workflow_results["warnings"].append(f"Erreur nettoyage: {e}")
 
-    return wrapper
+    def _step_auto_cicd(self):
+        """Étape 8: CI/CD automatique"""
+        logger.info("🚀 Configuration CI/CD...")
 
-
-def orchestrator_auto_backup():
-    """Sauvegarde automatique de l'orchestrateur"""
-    try:
-        backup_system = get_backup_system()
-        backup_result = backup_system.create_backup()
-
-        return {
-            "status": "success",
-            "backup_id": backup_result.backup_id,
-            "files_count": backup_result.files_count,
-            "size_bytes": backup_result.size_bytes,
-        }
-
-    except Exception as e:
-        return {"status": "failed", "error": str(e)}
-
-
-def orchestrator_main():
-    """Fonction principale de l'orchestrateur"""
-    if len(sys.argv) > 1 and sys.argv[1] == "cli":
-        cli_entry()
-        return
-
-    if len(sys.argv) > 1:
-        # Mode avec arguments
-        project_path = sys.argv[1]
-        orchestrator = UnifiedOrchestrator()
-        result = orchestrator.orchestrate_project_complete(project_path)
-        print(json.dumps(result, indent=2))
-    else:
-        # Mode interactif
         try:
-            project_path = input("Chemin du projet: ")
-            orchestrator = UnifiedOrchestrator()
-            result = orchestrator.orchestrate_project_complete(project_path)
-            print(json.dumps(result, indent=2))
-        except (EOFError, OSError):
-            # En cas d'erreur (typique dans les tests), utiliser un chemin par défaut
-            project_path = "/tmp/test_project"
-            orchestrator = UnifiedOrchestrator()
-            result = orchestrator.orchestrate_project_complete(project_path)
-            print(json.dumps(result, indent=2))
+            if self.auto_cicd:
+                cicd_results = self.auto_cicd.setup_cicd()
+                self.workflow_results["steps_completed"].append("auto_cicd")
+                self.workflow_results["artifacts"]["cicd_config"] = cicd_results
+                logger.info("✅ CI/CD configuré")
+
+        except Exception as e:
+            self.workflow_results["warnings"].append(f"Erreur CI/CD: {e}")
+
+    def generate_workflow_report(self) -> str:
+        """Génère un rapport du workflow"""
+        report = []
+        report.append("# Rapport Workflow Unifié Athalia")
+        report.append("")
+
+        report.append(f"## Statut: {self.workflow_results['status'].upper()}")
+        report.append(f"## Date: {datetime.now().isoformat()}")
+        report.append("")
+
+        report.append("## Étapes Complétées")
+        for step in self.workflow_results["steps_completed"]:
+            report.append(f"- ✅ {step}")
+        report.append("")
+
+        if self.workflow_results["artifacts"]:
+            report.append("## Artéfacts Générés")
+            for artifact, value in self.workflow_results["artifacts"].items():
+                report.append(f"- **{artifact}**: {type(value).__name__}")
+        report.append("")
+
+        if self.workflow_results["errors"]:
+            report.append("## Erreurs")
+            for error in self.workflow_results["errors"]:
+                report.append(f"- ❌ {error}")
+            report.append("")
+
+        if self.workflow_results["warnings"]:
+            report.append("## Avertissements")
+            for warning in self.workflow_results["warnings"]:
+                report.append(f"- ⚠️ {warning}")
+            report.append("")
+
+        if self.workflow_results["metrics"]:
+            report.append("## Métriques")
+            for metric, value in self.workflow_results["metrics"].items():
+                report.append(f"- **{metric}**: {value}")
+
+        return "\n".join(report)
+
+    def save_workflow_results(self, output_path: str = "workflow_results.json"):
+        """Sauvegarde les résultats du workflow"""
+        try:
+            with open(output_path, "w", encoding="utf-8") as f:
+                json.dump(self.workflow_results, f, indent=2, default=str)
+            logger.info(f"✅ Résultats sauvegardés: {output_path}")
+        except Exception as e:
+            logger.error(f"❌ Erreur sauvegarde: {e}")
 
 
-def main_orchestrator():
-    """Point d'entrée principal pour compatibilité"""
-    orchestrator_main()
-
-
-if __name__ == "__main__":
-    orchestrator_main()
+def run_unified_workflow(
+    blueprint: Dict[str, Any], project_path: str = "."
+) -> Dict[str, Any]:
+    """Fonction utilitaire pour exécuter le workflow unifié"""
+    orchestrator = UnifiedOrchestrator(project_path)
+    orchestrator.initialize_modules()
+    return orchestrator.run_full_workflow(blueprint)

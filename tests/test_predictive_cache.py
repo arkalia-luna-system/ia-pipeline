@@ -1,6 +1,8 @@
-import unittest
 import time
+import unittest
+
 from athalia_core.distillation.predictive_cache import PredictiveCache
+
 
 class TestPredictiveCache(unittest.TestCase):
     def test_set_get(self):
@@ -17,7 +19,10 @@ class TestPredictiveCache(unittest.TestCase):
     def test_pre_generate(self):
         cache = PredictiveCache()
         context = {"x": 42}
-        def gen(ctx): return f"val_{ctx['x']}"
+
+        def gen(ctx):
+            return f"val_{ctx['x']}"
+
         cache.pre_generate(context, gen)
         key = cache.predict_key(context)
         self.assertEqual(cache.get(key), "val_42")
@@ -34,10 +39,10 @@ class TestPredictiveCache(unittest.TestCase):
         cache.get("a")  # hit
         cache.get("b")  # miss
         stats = cache.get_stats()
-        self.assertEqual(stats['hits'], 1)
-        self.assertEqual(stats['misses'], 1)
-        self.assertGreaterEqual(stats['hit_rate'], 0)
-        self.assertEqual(stats['size'], 1)
+        self.assertEqual(stats["hits"], 1)
+        self.assertEqual(stats["misses"], 1)
+        self.assertGreaterEqual(stats["hit_rate"], 0)
+        self.assertEqual(stats["size"], 1)
 
     def test_ttl(self):
         cache = PredictiveCache(ttl=1)
@@ -46,5 +51,6 @@ class TestPredictiveCache(unittest.TestCase):
         time.sleep(1.1)
         self.assertIsNone(cache.get("k"))
 
-if __name__ == '__main__':
-    unittest.main() 
+
+if __name__ == "__main__":
+    unittest.main()

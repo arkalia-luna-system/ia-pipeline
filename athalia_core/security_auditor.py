@@ -1,10 +1,22 @@
 #!/usr/bin/env python3
-from pathlib import Path
-from typing import Dict, Any
-import subprocess
 import json
-import re
 import logging
+import re
+import subprocess
+from pathlib import Path
+from typing import Any, Dict
+
+# Import du validateur de sécurité
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    # Fallback pour les tests
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+
+    class SecurityError(Exception):
+        pass
+
 
 logger = logging.getLogger(__name__)
 
@@ -24,11 +36,11 @@ class SecurityAuditor:
             "score": 0,
             "vulnerabilities": [],
             "warnings": [],
-            "recommendations": []
+            "recommendations": [],
         }
 
     def run(self) -> Dict[str, Any]:
-        """Lance l'audit de sécurité"""
+        """Lance laudit de sécurité"""
         logger.info(f"🔒 Audit de sécurité pour : {self.project_path.name}")
 
         # Vérifications en séquence
@@ -43,44 +55,51 @@ class SecurityAuditor:
 
         # Ecrire 'Clé API f' dans le fichier attendu pour le test
         try:
-            report_file = self.project_path / 'security_audit.f(f'
-            with open(report_file, 'w', encoding='utf-8') as f:
-                f.write('Clé API f\n')
+            report_file = self.project_path / "security_audit.f(f"
+            with open(report_file, "w", encoding="utf-8") as f:
+                f.write("Clé API f\n")
         except Exception as e:
-            logger.warning(
-                f"Impossible d'écrire le rapport de sécurité mock : {e}")
+            logger.warning(f"Impossible d'écrire le rapport de sécurité mock : {e}")
 
         # Adapter le retour pour les tests
         return {
-            'global_score': int(self.report.get('score', 0)),
-            'summary': list(self.report.get('warnings', [])),
-            'details': list(self.report.get('vulnerabilities', [])),
-            'files': list(self.report.get('recommendations', []))
+            "global_score": int(self.report.get("score", 0)),
+            "summary": list(self.report.get("warnings", [])),
+            "details": list(self.report.get("vulnerabilities", [])),
+            "files": list(self.report.get("recommendations", [])),
         }
 
     def _check_dependencies(self):
         """Vérification des dépendances"""
         try:
-            # Utiliser bandit pour l'analyse de sécurité
-            result = subprocess.run([
-                "bandit", "-r", str(self.project_path), "-f", "json"
-            ], capture_output=True, text=True, timeout=30)
+            # Utiliser bandit pour lanalyse de sécurité
+            result = validate_and_run(
+                ["bandit", "-r", str(self.project_path), "-f", "json"],
+                capture_output=True,
+                text=True,
+                timeout=30,
+            )
 
             if result.returncode == 0:
                 self.report["vulnerabilities"].append(
-                    "Aucune vulnérabilité détectée par Bandit")
+                    "Aucune vulnérabilité détectée par Bandit"
+                )
             else:
                 self.report["vulnerabilities"].append(
-                    f"Vulnérabilités Bandit détectées: {result.stdout}")
+                    f"Vulnérabilités Bandit détectées: {result.stdout}"
+                )
 
-        except Exception as e:
+        except (Exception, SecurityError) as e:
             self.report["warnings"].append(f"Bandit non exécuté: {e}")
 
         # Vérifier avec safety si disponible
         try:
-            result = subprocess.run([
-                "safety", "check", "--json"
-            ], capture_output=True, text=True, timeout=30)
+            result = validate_and_run(
+                ["safety", "check", "--json"],
+                capture_output=True,
+                text=True,
+                timeout=30,
+            )
 
             if result.returncode != 0:
                 vulns = json.loads(result.stdout)
@@ -90,7 +109,7 @@ class SecurityAuditor:
                         f"{vuln['installed_version']}"
                     )
 
-        except Exception as e:
+        except (Exception, SecurityError) as e:
             self.report["warnings"].append(f"Safety non exécuté: {e}")
 
     def _check_code_vulnerabilities(self):
@@ -102,18 +121,18 @@ class SecurityAuditor:
             r"os\.system\(",
             r"pickle\.loads\(",
             r"yaml\.load\(",
-            r"input\("
+            r"input\(",
         ]
 
         for py_file in self.project_path.rglob("*.py"):
             try:
-                with open(py_file, 'r', encoding='utf-8') as f:
+                with open(py_file, "r", encoding="utf-8") as f:
                     content = f.read()
 
                 for pattern in dangerous_patterns:
                     matches = re.finditer(pattern, content)
                     for match in matches:
-                        line_num = content[:match.start()].count('\n') + 1
+                        line_num = content[: match.start()].count("\n") + 1
                         self.report["vulnerabilities"].append(
                             f"Pattern dangereux {pattern} dans {py_file.name}:{line_num}"
                         )
@@ -127,18 +146,18 @@ class SecurityAuditor:
             r"password\s*=\s*\"[^\"]+\"",
             r"api_key\s*=\s*\"[^\"]+\"",
             r"secret\s*=\s*\"[^\"]+\"",
-            r"token\s*=\s*\"[^\"]+\""
+            r"token\s*=\s*\"[^\"]+\"",
         ]
 
         for py_file in self.project_path.rglob("*.py"):
             try:
-                with open(py_file, 'r', encoding='utf-8') as f:
+                with open(py_file, "r", encoding="utf-8") as f:
                     content = f.read()
 
                 for pattern in secret_patterns:
                     matches = re.finditer(pattern, content)
                     for match in matches:
-                        line_num = content[:match.start()].count('\n') + 1
+                        line_num = content[: match.start()].count("\n") + 1
                         self.report["vulnerabilities"].append(
                             f"Secret potentiel dans {py_file.name}:{line_num}"
                         )
@@ -160,17 +179,17 @@ class SecurityAuditor:
                     continue
 
     def _check_encryption(self):
-        """Vérification de l'utilisation du chiffrement"""
+        """Vérification de lutilisation du chiffrement"""
         encryption_patterns = [
             r"from cryptography",
             r"import hashlib",
-            r"import secrets"
+            r"import secrets",
         ]
 
         has_encryption = False
         for py_file in self.project_path.rglob("*.py"):
             try:
-                with open(py_file, 'r', encoding='utf-8') as f:
+                with open(py_file, "r", encoding="utf-8") as f:
                     content = f.read()
 
                 for pattern in encryption_patterns:
@@ -183,7 +202,7 @@ class SecurityAuditor:
 
         if not has_encryption:
             self.report["recommendations"].append(
-                "Considérer l'utilisation de modules de chiffrement pour les données sensibles."
+                "Considérer lutilisation de modules de chiffrement pour les données sensibles."
             )
 
     def _calculate_score(self):

@@ -6,15 +6,16 @@ Analyse approfondie de tous les dossiers du projet
 """
 
 import ast
-from pathlib import Path
 from dataclasses import dataclass, field
-from typing import List, Optional
 from datetime import datetime
+from pathlib import Path
+from typing import List, Optional
 
 
 @dataclass
 class DossierInfo:
     """Informations sur un dossier"""
+
     path: Path
     nom: str
     type_dossier: str  # 'core', 'tests', 'docs', 'tools', 'archive', etc.
@@ -30,6 +31,7 @@ class DossierInfo:
 @dataclass
 class ModuleInfo:
     """Informations sur un module Python"""
+
     path: Path
     nom: str
     taille: int
@@ -45,6 +47,7 @@ class ModuleInfo:
 @dataclass
 class AuditResult:
     """Résultat d'audit pour un dossier"""
+
     dossier: DossierInfo
     modules: List[ModuleInfo]
     score_utilite: float  # 0-10
@@ -63,7 +66,12 @@ class AuditCompletDossiers:
     def __init__(self, root_path: Optional[str] = None):
         self.root_path = Path(root_path) if root_path else Path.cwd()
         self.dossiers_principaux = [
-            "athalia_core", "tests", "docs", "tools", "scripts", "config"
+            "athalia_core",
+            "tests",
+            "docs",
+            "tools",
+            "scripts",
+            "config",
         ]
 
     def analyser_tous_dossiers(self) -> List[AuditResult]:
@@ -99,7 +107,7 @@ class AuditCompletDossiers:
         core_path = self.root_path / "athalia_core"
         if core_path.exists():
             for item in core_path.iterdir():
-                if item.is_dir() and not item.name.startswith('.'):
+                if item.is_dir() and not item.name.startswith("."):
                     # Vérifier s'il contient des fichiers Python
                     if list(item.rglob("*.py")):
                         sous_dossiers_caches.append(item)
@@ -108,7 +116,7 @@ class AuditCompletDossiers:
         tests_path = self.root_path / "tests"
         if tests_path.exists():
             for item in tests_path.iterdir():
-                if item.is_dir() and not item.name.startswith('.'):
+                if item.is_dir() and not item.name.startswith("."):
                     if list(item.rglob("*.py")):
                         sous_dossiers_caches.append(item)
 
@@ -116,13 +124,15 @@ class AuditCompletDossiers:
         tools_path = self.root_path / "tools"
         if tools_path.exists():
             for item in tools_path.iterdir():
-                if item.is_dir() and not item.name.startswith('.'):
+                if item.is_dir() and not item.name.startswith("."):
                     if list(item.rglob("*.py")):
                         sous_dossiers_caches.append(item)
 
         return sous_dossiers_caches
 
-    def _analyser_dossier_complet(self, dossier_path: Path, nom_dossier: str) -> Optional[AuditResult]:
+    def _analyser_dossier_complet(
+        self, dossier_path: Path, nom_dossier: str
+    ) -> Optional[AuditResult]:
         """Analyser un dossier complet"""
         try:
             # Informations du dossier
@@ -131,7 +141,7 @@ class AuditCompletDossiers:
             # Analyser les modules Python
             modules = []
             for py_file in dossier_path.rglob("*.py"):
-                if py_file.name != "__init__.py" and not py_file.name.startswith('._'):
+                if py_file.name != "__init__.py" and not py_file.name.startswith("._"):
                     module_info = self._analyser_module(py_file)
                     if module_info:
                         modules.append(module_info)
@@ -140,14 +150,23 @@ class AuditCompletDossiers:
             score_utilite = self._calculer_score_utilite(dossier_info, modules)
             score_implementation = self._calculer_score_implementation(modules)
             score_tests = self._calculer_score_tests(dossier_info, modules)
-            score_documentation = self._calculer_score_documentation(dossier_info, modules)
+            score_documentation = self._calculer_score_documentation(
+                dossier_info, modules
+            )
             score_integration = self._calculer_score_integration(modules)
 
-            score_total = (score_utilite + score_implementation + score_tests +
-                          score_documentation + score_integration) / 5
+            score_total = (
+                score_utilite
+                + score_implementation
+                + score_tests
+                + score_documentation
+                + score_integration
+            ) / 5
 
             # Générer recommandations
-            recommandations = self._generer_recommandations(dossier_info, modules, score_total)
+            recommandations = self._generer_recommandations(
+                dossier_info, modules, score_total
+            )
 
             # Chercher des pépites
             pepites = self._chercher_pepites(dossier_info, modules)
@@ -162,18 +181,22 @@ class AuditCompletDossiers:
                 score_integration=score_integration,
                 score_total=score_total,
                 recommandations=recommandations,
-                pepites_trouvees=pepites
+                pepites_trouvees=pepites,
             )
 
         except Exception as e:
             print(f"⚠️ Erreur lors de l'analyse de {dossier_path}: {e}")
             return None
 
-    def _analyser_dossier_info(self, dossier_path: Path, nom_dossier: str) -> DossierInfo:
+    def _analyser_dossier_info(
+        self, dossier_path: Path, nom_dossier: str
+    ) -> DossierInfo:
         """Analyser les informations d'un dossier"""
         fichiers_python = list(dossier_path.rglob("*.py"))
         fichiers_md = list(dossier_path.rglob("*.md"))
-        fichiers_yaml = list(dossier_path.rglob("*.yaml")) + list(dossier_path.rglob("*.yml"))
+        fichiers_yaml = list(dossier_path.rglob("*.yaml")) + list(
+            dossier_path.rglob("*.yml")
+        )
         fichiers_json = list(dossier_path.rglob("*.json"))
         sous_dossiers = [item for item in dossier_path.iterdir() if item.is_dir()]
 
@@ -197,7 +220,9 @@ class AuditCompletDossiers:
             type_dossier = "autre"
 
         # Générer une description
-        description = f"Dossier {type_dossier} avec {len(fichiers_python)} fichiers Python"
+        description = (
+            f"Dossier {type_dossier} avec {len(fichiers_python)} fichiers Python"
+        )
 
         return DossierInfo(
             path=dossier_path,
@@ -209,13 +234,13 @@ class AuditCompletDossiers:
             fichiers_json=fichiers_json,
             sous_dossiers=sous_dossiers,
             taille_totale=taille_totale,
-            description=description
+            description=description,
         )
 
     def _analyser_module(self, file_path: Path) -> Optional[ModuleInfo]:
         """Analyser un module Python"""
         try:
-            with open(file_path, 'r', encoding='utf-8') as f:
+            with open(file_path, "r", encoding="utf-8") as f:
                 content = f.read()
 
             # Parse le code Python
@@ -248,7 +273,9 @@ class AuditCompletDossiers:
             documentation_associee = self._chercher_documentation_associee(file_path)
 
             # Vérifier l'intégration avec l'orchestrateur
-            integration_orchestrateur = self._verifier_integration_orchestrateur(content, imports)
+            integration_orchestrateur = self._verifier_integration_orchestrateur(
+                content, imports
+            )
 
             return ModuleInfo(
                 path=file_path,
@@ -260,7 +287,7 @@ class AuditCompletDossiers:
                 docstring=docstring,
                 tests_associes=tests_associes,
                 documentation_associee=documentation_associee,
-                integration_orchestrateur=integration_orchestrateur
+                integration_orchestrateur=integration_orchestrateur,
             )
 
         except Exception as e:
@@ -296,13 +323,17 @@ class AuditCompletDossiers:
 
         return docs
 
-    def _verifier_integration_orchestrateur(self, content: str, imports: List[str]) -> bool:
+    def _verifier_integration_orchestrateur(
+        self, content: str, imports: List[str]
+    ) -> bool:
         """Vérifier si le module s'intègre avec l'orchestrateur principal"""
         # Vérifier les imports d'Athalia
         athalia_imports = [imp for imp in imports if "athalia" in imp.lower()]
         return len(athalia_imports) > 0
 
-    def _calculer_score_utilite(self, dossier_info: DossierInfo, modules: List[ModuleInfo]) -> float:
+    def _calculer_score_utilite(
+        self, dossier_info: DossierInfo, modules: List[ModuleInfo]
+    ) -> float:
         """Calculer le score d'utilité du dossier"""
         if not modules:
             return 0.0
@@ -310,10 +341,16 @@ class AuditCompletDossiers:
         # Critères d'utilité
         nb_fonctions = sum(len(m.fonctions) for m in modules)
         nb_classes = sum(len(m.classes) for m in modules)
-        nb_imports_athalia = sum(len([imp for imp in m.imports if "athalia" in imp.lower()]) for m in modules)
+        nb_imports_athalia = sum(
+            len([imp for imp in m.imports if "athalia" in imp.lower()]) for m in modules
+        )
 
         # Score basé sur la complexité et l'intégration
-        score = min(10.0, (nb_fonctions * 0.5 + nb_classes * 1.0 + nb_imports_athalia * 0.3) / len(modules))
+        score = min(
+            10.0,
+            (nb_fonctions * 0.5 + nb_classes * 1.0 + nb_imports_athalia * 0.3)
+            / len(modules),
+        )
 
         return round(score, 2)
 
@@ -326,12 +363,18 @@ class AuditCompletDossiers:
         for module in modules:
             # Score basé sur la taille et la complexité
             if module.taille > 0:
-                score = min(10.0, (len(module.fonctions) + len(module.classes) * 2) / (module.taille / 1000))
+                score = min(
+                    10.0,
+                    (len(module.fonctions) + len(module.classes) * 2)
+                    / (module.taille / 1000),
+                )
                 scores.append(score)
 
         return round(sum(scores) / len(scores), 2) if scores else 0.0
 
-    def _calculer_score_tests(self, dossier_info: DossierInfo, modules: List[ModuleInfo]) -> float:
+    def _calculer_score_tests(
+        self, dossier_info: DossierInfo, modules: List[ModuleInfo]
+    ) -> float:
         """Calculer le score de tests"""
         if not modules:
             return 0.0
@@ -341,7 +384,9 @@ class AuditCompletDossiers:
 
         return round(score, 2)
 
-    def _calculer_score_documentation(self, dossier_info: DossierInfo, modules: List[ModuleInfo]) -> float:
+    def _calculer_score_documentation(
+        self, dossier_info: DossierInfo, modules: List[ModuleInfo]
+    ) -> float:
         """Calculer le score de documentation"""
         if not modules:
             return 0.0
@@ -365,7 +410,9 @@ class AuditCompletDossiers:
 
         return round(score, 2)
 
-    def _generer_recommandations(self, dossier_info: DossierInfo, modules: List[ModuleInfo], score_total: float) -> List[str]:
+    def _generer_recommandations(
+        self, dossier_info: DossierInfo, modules: List[ModuleInfo], score_total: float
+    ) -> List[str]:
         """Générer des recommandations d'amélioration"""
         recommandations = []
 
@@ -380,25 +427,35 @@ class AuditCompletDossiers:
         if len(modules) > 0:
             modules_sans_tests = [m for m in modules if not m.tests_associes]
             if modules_sans_tests:
-                recommandations.append(f"📝 Ajouter des tests pour {len(modules_sans_tests)} modules")
+                recommandations.append(
+                    f"📝 Ajouter des tests pour {len(modules_sans_tests)} modules"
+                )
 
             modules_sans_docs = [m for m in modules if not m.docstring]
             if modules_sans_docs:
-                recommandations.append(f"📚 Ajouter de la documentation pour {len(modules_sans_docs)} modules")
+                recommandations.append(
+                    f"📚 Ajouter de la documentation pour {len(modules_sans_docs)} modules"
+                )
 
         return recommandations
 
-    def _chercher_pepites(self, dossier_info: DossierInfo, modules: List[ModuleInfo]) -> List[str]:
+    def _chercher_pepites(
+        self, dossier_info: DossierInfo, modules: List[ModuleInfo]
+    ) -> List[str]:
         """Chercher des pépites (fonctionnalités intéressantes)"""
         pepites = []
 
         for module in modules:
             # Chercher des patterns intéressants
             if len(module.fonctions) > 10:
-                pepites.append(f"🚀 Module {module.nom}: {len(module.fonctions)} fonctions (très actif)")
+                pepites.append(
+                    f"🚀 Module {module.nom}: {len(module.fonctions)} fonctions (très actif)"
+                )
 
             if len(module.classes) > 5:
-                pepites.append(f"🏗️ Module {module.nom}: {len(module.classes)} classes (architecture complexe)")
+                pepites.append(
+                    f"🏗️ Module {module.nom}: {len(module.classes)} classes (architecture complexe)"
+                )
 
             if module.integration_orchestrateur:
                 pepites.append(f"🔗 Module {module.nom}: Intégré avec l'orchestrateur")
@@ -462,7 +519,9 @@ class AuditCompletDossiers:
             if score_moyen < 5.0:
                 rapport += "🔴 **Action critique nécessaire** - Le projet nécessite une refonte majeure"
             elif score_moyen < 7.0:
-                rapport += "🟡 **Amélioration recommandée** - Quelques ajustements nécessaires"
+                rapport += (
+                    "🟡 **Amélioration recommandée** - Quelques ajustements nécessaires"
+                )
             else:
                 rapport += "🟢 **Excellent état** - Le projet est bien structuré"
 
@@ -478,7 +537,7 @@ def main():
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     rapport_file = f"rapport_audit_complet_{timestamp}.md"
 
-    with open(rapport_file, 'w', encoding='utf-8') as f:
+    with open(rapport_file, "w", encoding="utf-8") as f:
         f.write(rapport)
 
     print(f"📄 Rapport sauvegardé: {rapport_file}")
@@ -487,4 +546,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main() 
+    main()

@@ -15,17 +15,17 @@
 
 ### Prérequis
 **Python :**
-- requests>=2.28.0
-- pyyaml>=6.0
-- jinja2>=3.1.0
-- click>=8.1.0
-- rich>=12.0.0
+- requests==2.32.4
+- pyyaml==6.0.2
+- jinja2==3.1.6
+- click==8.2.1
+- rich==14.1.0
 
 ### Installation
 
 ```bash
 # Cloner le repository
-git clone <repository - url>
+git clone <repository-url>
 cd athalia-dev-setup
 
 # Installer les dépendances
@@ -33,7 +33,7 @@ pip install -r requirements.txt
 ```
 
 ## 💻 Utilisation
-### Exemple d'utilisation
+### Exemple dutilisation
 
 ```python
 # Utilisation basique
@@ -53,11 +53,11 @@ Auditeur intelligent de projets générés.
 
 **Méthodes :** __init__, audit_project, _analyze_structure, _analyze_code_quality, _analyze_python_file
 
-#### TestLoggingSystem
+#### DossierInfo
 
-Tests pour le système de logging d'Athalia
+Informations sur un dossier
 
-**Méthodes :** setup_method, teardown_method, test_basic_logging_creation, test_advanced_logging_import, test_advanced_logging_functionality
+**Méthodes :** 
 
 ### Fonctions principales
 
@@ -77,13 +77,13 @@ Fonction principale du CLI unifié
 
 **Paramètres :** project_path
 
-#### audit_project_intelligent
+#### test_clean_old_tests_and_caches
 
-Fonction principale pour l'audit intelligent.
+Test de nettoyage des anciens tests et caches
 
-**Paramètres :** project_path
+**Paramètres :** tmp_path
 
-## 🧪 Tests
+## 🧪 Tests"
 
 ```bash
 # Lancer les tests
@@ -97,7 +97,7 @@ python -m pytest --cov=athalia-dev-setup
 
 1. Fork le projet
 2. Créer une branche feature (`git checkout -b feature / AmazingFeature`)
-3. Commit les changements (`git commit -m 'Add some AmazingFeature'`)
+3. Commit les changements (`git commit -m Add some AmazingFeature`)
 4. Push vers la branche (`git push origin feature / AmazingFeature`)
 5. Ouvrir une Pull Request
 

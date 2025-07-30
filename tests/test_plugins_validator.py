@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from athalia_core.plugins_validator import validate_plugin
 import os
-
 import tempfile
+
+from athalia_core.plugins_validator import validate_plugin
 
 
 def test_validate_plugin_ok():
@@ -16,7 +16,7 @@ class MyPlugin(Plugin):
     def run(self):
         pass
 '''
-    with tempfile.NamedTemporaryFile('w', suffix='.py', delete = False) as file_handle:
+    with tempfile.NamedTemporaryFile("w", suffix=".py", delete=False) as file_handle:
         file_handle.write(code)
         file_handle.flush()
         path = file_handle.name
@@ -25,14 +25,15 @@ class MyPlugin(Plugin):
     assert result["f"]
     assert result["errors"] == []
 
+
 def test_validate_plugin_fail():
-    code = '''
+    code = """
 class Plugin:
     pass
 class BadPlugin(Plugin):
     pass
-'''
-    with tempfile.NamedTemporaryFile('w', suffix='.py', delete = False) as file_handle:
+"""
+    with tempfile.NamedTemporaryFile("w", suffix=".py", delete=False) as file_handle:
         file_handle.write(code)
         file_handle.flush()
         path = file_handle.name
@@ -40,8 +41,9 @@ class BadPlugin(Plugin):
     os.unlink(path)
     assert not result["f"]
     assert any(
-        "Classe sans f" in err or
-        "Classe sans méthode run / f" in err or
-        "Aucune classe plugin valide trouvée" in err or
-        "Classe BadPlugin sans méthode run / f" in err
-        for err in result["errors"])
+        "Classe sans f" in err
+        or "Classe sans méthode run / f" in err
+        or "Aucune classe plugin valide trouvée" in err
+        or "Classe BadPlugin sans méthode run / f" in err
+        for err in result["errors"]
+    )

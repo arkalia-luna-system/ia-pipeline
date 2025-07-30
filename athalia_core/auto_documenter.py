@@ -1,530 +1,185 @@
 #!/usr/bin/env python3
+"""
+Module auto_documenter pour Athalia
+Génération automatique de documentation
+"""
+
 from pathlib import Path
-from typing import Dict, List, Any
+from typing import Dict, Any, List, Optional
 import json
-import os
-import re
-import argparse
-from datetime import datetime
-import ast
-import importlib
+import yaml
 import logging
+import ast
+from datetime import datetime
 
 logger = logging.getLogger(__name__)
 
-"""
-Module de documentation automatique pour Athalia
-Génération automatique de README, docs API et guides techniques
-"""
-
 
 class AutoDocumenter:
-    """Générateur de documentation automatique"""
+    """Générateur automatique de documentation"""
 
-    project_info: Dict[str, Any]
-    api_docs: Dict[str, Any]
-
-    def __init__(self, project_path: str = None, lang: str = 'fr'):
-        self.project_path: Path = Path(
-            project_path) if project_path else Path('.')
-        self.project_info = {}
-        self.api_docs = {}
-        self.readme_content = ""
-        self.lang = lang
-        self.translations = self._load_translations(lang)
-
-    def _load_translations(self, lang: str):
-        try:
-            mod = importlib.import_module(f"athalia_core.i18n.{lang}")
-            return getattr(mod, "translations", {})
-        except Exception:
-            return {}
-
-    def run(self) -> Dict[str, Any]:
-        """Méthode run() pour l'orchestrateur - exécute la documentation"""
-        if not self.project_path:
-            raise ValueError("project_path doit être défini")
-        return self.document_project(str(self.project_path))
-
-    def document_project(self, project_path: str) -> Dict[str, Any]:
-        """Documentation complète d'un projet"""
+    def __init__(self, project_path: str = "."):
         self.project_path = Path(project_path)
+        self.doc_config = self.load_documentation_config()
+        self.doc_history = []
 
-        logger.info(
-            f"📚 {self.translations.get('doc_generation', 'Génération de documentation pour')} : "
-            f"{self.project_path.name}")
-
-        # Analyse du projet
-        self._analyze_project()
-
-        # Génération des documents
-        readme = self._generate_readme()
-        api_docs = self._generate_api_documentation()
-        setup_guide = self._generate_setup_guide()
-        usage_guide = self._generate_usage_guide()
-
-        # Sauvegarde des documents
-        self._save_documents(readme, api_docs, setup_guide, usage_guide)
-
-        return {
-            "readme": readme,
-            "api_docs": api_docs,
-            "setup_guide": setup_guide,
-            "usage_guide": usage_guide,
-            "created_files": self._get_created_files()
+    def load_documentation_config(
+        self, config_path: Optional[str] = None
+    ) -> Dict[str, Any]:
+        """Charge la configuration de documentation"""
+        default_config = {
+            "output_formats": ["md", "html"],
+            "include_private": False,
+            "generate_api_docs": True,
+            "include_examples": True,
+            "template_engine": "jinja2",
+            "output_directory": "docs",
+            "exclude_patterns": ["__pycache__", "*.pyc", ".git", "venv", ".venv"],
+            "include_patterns": ["*.py", "*.md", "*.txt", "*.yaml", "*.yml"],
         }
 
-    def _analyze_project(self):
-        """Analyse du projet pour la documentation"""
-        if not self.project_path:
-            raise ValueError("project_path doit être défini avant l'analyse")
+        if config_path:
+            try:
+                with open(config_path, "r", encoding="utf-8") as f:
+                    user_config = yaml.safe_load(f)
+                    default_config.update(user_config)
+            except Exception as e:
+                logger.warning(
+                    f"Impossible de charger la configuration {config_path}: {e}"
+                )
 
-        # Analyser d'abord les modules
-        modules = self._analyze_modules()
+        return default_config
 
-        self.project_info = {
-            "name": self.project_path.name,
-            "description": self._extract_description(),
-            "version": self._extract_version(),
-            "author": self._extract_author(),
-            "license": self._extract_license(),
-            "dependencies": self._extract_dependencies(),
-            "entry_points": self._find_entry_points(),
-            "modules": modules,
-            "classes": self._analyze_classes(modules),
-            "functions": self._analyze_functions(modules)
+    def scan_project_structure(self) -> Dict[str, Any]:
+        """Scanne la structure du projet"""
+        structure = {
+            "python_files": [],
+            "test_files": [],
+            "documentation_files": [],
+            "config_files": [],
+            "other_files": [],
         }
 
-    def _extract_description(self) -> str:
-        """Extrait la description du projet"""
-        # Chercher dans README existant
-        readme_files = list(self.project_path.glob("README*"))
-        if readme_files:
-            try:
-                with open(readme_files[0], 'r', encoding='utf-8') as f:
-                    content = f.read()
-                    # Extraire la première ligne non vide
-                    lines = [line.strip()
-                             for line in content.split('\n') if line.strip()]
-                    if lines:
-                        return lines[0]
-            except Exception:
-                pass
-
-        # Chercher dans setup.py ou pyproject.toml
-        setup_file = self.project_path / "setup.py"
-        if setup_file.exists():
-            try:
-                with open(setup_file, 'r', encoding='utf-8') as f:
-                    content = f.read()
-                    match = re.search(
-                        r'description\s*=\s*["\']([^"\']+)["\']', content)
-                    if match:
-                        return match.group(1)
-            except Exception:
-                pass
-
-        return f"Projet {self.project_path.name}"
-
-    def _extract_version(self) -> str:
-        """Extrait la version du projet"""
-        # Chercher dans __init__.py
-        init_file = self.project_path / "__init__.py"
-        if init_file.exists():
-            try:
-                with open(init_file, 'r', encoding='utf-8') as f:
-                    content = f.read()
-                    match = re.search(
-                        r'__version__\s*=\s*["\']([^"\']+)["\']', content)
-                    if match:
-                        return match.group(1)
-            except Exception:
-                pass
-
-        # Chercher dans setup.py
-        setup_file = self.project_path / "setup.py"
-        if setup_file.exists():
-            try:
-                with open(setup_file, 'r', encoding='utf-8') as f:
-                    content = f.read()
-                    match = re.search(
-                        r'version\s*=\s*["\']([^"\']+)["\']', content)
-                    if match:
-                        return match.group(1)
-            except Exception:
-                pass
-
-        return "1.0.0"
-
-    def _extract_author(self) -> str:
-        """Extrait l'auteur du projet"""
-        # Chercher dans setup.py
-        setup_file = self.project_path / "setup.py"
-        if setup_file.exists():
-            try:
-                with open(setup_file, 'r', encoding='utf-8') as f:
-                    content = f.read()
-                    match = re.search(
-                        r'author\s*=\s*["\']([^"\']+)["\']', content)
-                    if match:
-                        return match.group(1)
-            except Exception:
-                pass
-
-        return "Auteur inconnu"
-
-    def _extract_license(self) -> str:
-        """Extrait la licence du projet"""
-        license_files = list(self.project_path.glob("LICENSE*"))
-        if license_files:
-            return "Voir fichier LICENSE"
-
-        return "Licence inconnue"
-
-    def _extract_dependencies(self) -> Dict[str, List[str]]:
-        """Extrait les dépendances du projet"""
-        dependencies = {}
-
-        # Python
-        req_file = self.project_path / "requirements.txt"
-        if req_file.exists():
-            try:
-                with open(req_file, 'r') as f:
-                    deps = [line.strip() for line in f if line.strip()
-                            and not line.startswith('#')]
-                    dependencies['python'] = deps
-            except Exception:
-                pass
-
-        # Node.js
-        package_file = self.project_path / "package.json"
-        if package_file.exists():
-            try:
-                with open(package_file, 'r') as f:
-                    data = json.load(f)
-                    deps = list(data.get('dependencies', {}).keys())
-                    dev_deps = list(data.get('devDependencies', {}).keys())
-                    dependencies['nodejs'] = deps + dev_deps
-            except Exception:
-                pass
-
-        return dependencies
-
-    def _find_entry_points(self) -> List[str]:
-        """Trouve les points d'entrée du projet"""
-        entry_points = []
-
-        # Chercher les fichiers main
-        main_patterns = ["main.py", "app.py", "run.py", "server.py", "cli.py"]
-        for pattern in main_patterns:
-            main_file = self.project_path / pattern
-            if main_file.exists():
-                entry_points.append(str(main_file))
-
-        # Chercher dans setup.py
-        setup_file = self.project_path / "setup.py"
-        if setup_file.exists():
-            try:
-                with open(setup_file, 'r', encoding='utf-8') as f:
-                    content = f.read()
-                    matches = re.findall(
-                        r'entry_points.*?\[(.*?)\]', content, re.DOTALL)
-                    for match in matches:
-                        entry_points.extend(
-                            [ep.strip() for ep in match.split(',') if ep.strip()])
-            except Exception:
-                pass
-
-        return entry_points
-
-    def _analyze_modules(self) -> List[Dict[str, Any]]:
-        """Analyse les modules du projet"""
-        modules = []
-        for py_file in self.project_path.rglob("*.py"):
-            if py_file.name != "__init__.py":
-                try:
-                    with open(py_file, 'r', encoding='utf-8') as f:
-                        tree = ast.parse(f.read())
-
-                    module_info = {
-                        "name": py_file.stem,
-                        "docstring": ast.get_docstring(tree) or "",
-                        "classes": [],  # Initialisé comme liste mutable
-                        "functions": []  # Initialisé comme liste mutable
-                    }
-
-                    for node in ast.walk(tree):
-                        if isinstance(node, ast.ClassDef):
-                            module_info["classes"].append({
-                                "name": node.name,
-                                "docstring": ast.get_docstring(node) or "",
-                                "methods": [
-                                    m.name for m in node.body
-                                    if isinstance(m, ast.FunctionDef)
-                                ]
-                            })
-                        elif isinstance(node, ast.FunctionDef):
-                            module_info["functions"].append({
-                                "name": node.name,
-                                "docstring": ast.get_docstring(node) or "",
-                                "args": [
-                                    arg.arg for arg in node.args.args
-                                    if arg.arg != 'self'
-                                ]
-                            })
-
-                    modules.append(module_info)
-                except Exception as e:
-                    logger.warning(f"Could not analyze module {py_file}: {e}")
-        return modules
-
-    def _analyze_classes(
-            self, modules: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-        """Analyse les classes du projet"""
-        classes = []
-
-        for module in modules:
-            for class_info in module["classes"]:
-                classes.append({
-                    "name": class_info["name"],
-                    "module": module["name"],
-                    "docstring": class_info["docstring"],
-                    "methods": class_info["methods"]
-                })
-
-        return classes
-
-    def _analyze_functions(
-            self, modules: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-        """Analyse les fonctions du projet"""
-        functions = []
-
-        for module in modules:
-            for func_info in module["functions"]:
-                functions.append({
-                    "name": func_info["name"],
-                    "module": module["name"],
-                    "docstring": func_info["docstring"],
-                    "args": func_info["args"]
-                })
-
-        return functions
-
-    def _generate_readme(self) -> str:
-        """Génère le README du projet"""
-        t = self.translations
-        current_date = datetime.now().strftime("%Y-%m-%d")
-
-        readme = """# {project_name}
-
-{description}
-
-## {table_of_contents}
-
-- [{installation}](#installation)
-- [{usage}](#utilisation)
-- [API](#api)
-- [{tests}](#tests)
-- [{contribution}](#contribution)
-- [{license}](#licence)
-
-## 🚀 {installation}
-
-### {prerequisites}
-"""
-        readme = readme.format(
-            project_name=self.project_info['name'],
-            description=self.project_info['description'],
-            table_of_contents=t.get(
-                'table_of_contents',
-                '📋 Table des matières'),
-            installation=t.get(
-                'installation',
-                'Installation'),
-            usage=t.get(
-                'usage',
-                'Utilisation'),
-            tests=t.get(
-                'tests',
-                'Tests'),
-            contribution=t.get(
-                'contribution',
-                'Contribution'),
-            license=t.get(
-                'license',
-                'Licence'),
-            prerequisites=t.get(
-                'prerequisites',
-                'Prérequis'))
-
-        # Dépendances
-        if self.project_info["dependencies"].get("python"):
-            readme += "**Python :**\n"
-            for dep in self.project_info["dependencies"]["python"][:5]:
-                readme += f"- {dep}\n"
-            readme += "\n"
-        if self.project_info["dependencies"].get("nodejs"):
-            readme += "**Node.js :**\n"
-            for dep in self.project_info["dependencies"]["nodejs"][:5]:
-                readme += f"- {dep}\n"
-            readme += "\n"
-
-        readme += """### {installation_step}
-
-```bash
-# Cloner le repository
-git clone <repository - url>
-cd {project_name}
-
-# Installer les dépendances
-pip install -r requirements.txt
-```
-
-## 💻 {usage}
-""".format(
-            installation_step=t.get('installation_step', 'Installation'),
-            project_name=self.project_info['name'],
-            usage=t.get('usage', 'Utilisation')
-        )
-
-        # Points d'entrée
-        if self.project_info["entry_points"]:
-            readme += "### Lancement\n\n"
-            for entry_point in self.project_info["entry_points"]:
-                readme += f"```bash\npython {entry_point}\n```\n\n"
-
-        readme += """### Exemple d'utilisation
-
-```python
-# Utilisation basique
-main()
-```
-
-## 🔧 API
-"""
-
-        # Classes principales
-        if self.project_info["classes"]:
-            readme += "### Classes principales\n\n"
-            for class_info in self.project_info["classes"][:3]:
-                readme += f"#### {class_info['name']}\n\n"
-                if class_info["docstring"]:
-                    readme += f"{class_info['docstring']}\n\n"
-                readme += f"**Méthodes :** {', '.join(class_info['methods'][:5])}\n\n"
-
-        # Fonctions principales
-        if self.project_info["functions"]:
-            readme += "### Fonctions principales\n\n"
-            for func_info in self.project_info["functions"][:5]:
-                readme += f"#### {func_info['name']}\n\n"
-                if func_info["docstring"]:
-                    readme += f"{func_info['docstring']}\n\n"
-                if func_info["args"]:
-                    readme += f"**Paramètres :** {', '.join(func_info['args'])}\n\n"
-
-        readme += """## 🧪 {tests}
-
-```bash
-# Lancer les tests
-python -m pytest
-
-# Avec couverture
-python -m pytest --cov={project_name}
-```
-
-## 🤝 {contribution}
-
-1. Fork le projet
-2. Créer une branche feature (`git checkout -b feature / AmazingFeature`)
-3. Commit les changements (`git commit -m 'Add some AmazingFeature'`)
-4. Push vers la branche (`git push origin feature / AmazingFeature`)
-5. Ouvrir une Pull Request
-
-## 📄 {license}
-
-{license_content}
-
----
-""".format(
-            tests=t.get('tests', 'Tests'),
-            project_name=self.project_info['name'],
-            contribution=t.get('contribution', 'Contribution'),
-            license=t.get('license', 'Licence'),
-            license_content=self.project_info['license']
-        )
-        readme += "*Généré automatiquement par Athalia* - {}\n".format(
-            current_date)
-        return readme
-
-    def _generate_api_documentation(self) -> str:
-        """Génère la documentation API du projet"""
-        t = self.translations
-        api_title = (
-            f"# {t.get('api_documentation', 'API Documentation')} - "
-            f"{self.project_info['name']}"
-        )
-        api_docs = f"""{api_title}
-
-## Vue d'ensemble
-
-Cette documentation décrit l'API de {self.project_info['name']}.
-
-## Modules
-
-"""
-
-        for module in self.project_info["modules"]:
-            api_docs += f"### {module['name']}\n\n"
-            if module["docstring"]:
-                api_docs += f"{module['docstring']}\n\n"
-
-            # Classes du module
-            if module["classes"]:
-                api_docs += "#### Classes\n\n"
-                for class_info in module["classes"]:
-                    api_docs += f"##### {class_info['name']}\n\n"
-                    if class_info["docstring"]:
-                        api_docs += f"{class_info['docstring']}\n\n"
-
-                    if class_info["methods"]:
-                        api_docs += "**Méthodes :**\n\n"
-                        for method in class_info["methods"]:
-                            api_docs += f"- `{method}()`\n"
-                        api_docs += "\n"
-
-            # Fonctions du module
-            if module["functions"]:
-                api_docs += "#### Fonctions\n\n"
-                for func_info in module["functions"]:
-                    api_docs += f"##### {func_info['name']}\n\n"
-                    if func_info["docstring"]:
-                        api_docs += f"{func_info['docstring']}\n\n"
-
-                    if func_info["args"]:
-                        api_docs += "**Paramètres :**\n\n"
-                        for arg in func_info["args"]:
-                            api_docs += f"- `{arg}`\n"
-                        api_docs += "\n"
-
-            api_docs += "---\n\n"
-
-        return api_docs
-
-    def _generate_setup_guide(self) -> str:
-        """Génère le guide d'installation du projet"""
-        t = self.translations
-        current_date = datetime.now().strftime("%Y-%m-%d")
-
-        setup_guide = """# {setup_guide} - {project_name}
-
-## Vue d'ensemble
-
-Ce guide explique comment installer et configurer {project_name}.
-
-## Prérequis
-
-- Python >= 3.8
-- Dépendances listées dans requirements.txt
+        try:
+            for file_path in self.project_path.rglob("*"):
+                if file_path.is_file() and not self._is_excluded(file_path):
+                    relative_path = str(file_path.relative_to(self.project_path))
+
+                    if file_path.suffix == ".py":
+                        if "test" in relative_path.lower():
+                            structure["test_files"].append(relative_path)
+                        else:
+                            structure["python_files"].append(relative_path)
+                    elif file_path.suffix in [".md", ".rst", ".txt"]:
+                        structure["documentation_files"].append(relative_path)
+                    elif file_path.suffix in [".yaml", ".yml", ".json", ".toml"]:
+                        structure["config_files"].append(relative_path)
+                    else:
+                        structure["other_files"].append(relative_path)
+        except Exception as e:
+            logger.error(f"Erreur scan structure: {e}")
+
+        return structure
+
+    def _is_excluded(self, path: Path) -> bool:
+        """Vérifie si un chemin est exclu"""
+        path_str = str(path)
+        for exclude_pattern in self.doc_config["exclude_patterns"]:
+            if exclude_pattern in path_str:
+                return True
+        return False
+
+    def analyze_python_files(self) -> Dict[str, Any]:
+        """Analyse les fichiers Python"""
+        analysis = {
+            "total_files": 0,
+            "total_functions": 0,
+            "total_classes": 0,
+            "total_methods": 0,
+            "documented_functions": 0,
+            "documented_classes": 0,
+            "documented_methods": 0,
+        }
+
+        try:
+            for py_file in self.project_path.rglob("*.py"):
+                if py_file.is_file() and not self._is_excluded(py_file):
+                    analysis["total_files"] += 1
+
+                    try:
+                        with open(py_file, "r", encoding="utf-8") as f:
+                            content = f.read()
+
+                        tree = ast.parse(content)
+
+                        for node in ast.walk(tree):
+                            if isinstance(node, ast.FunctionDef):
+                                analysis["total_functions"] += 1
+                                if ast.get_docstring(node):
+                                    analysis["documented_functions"] += 1
+                            elif isinstance(node, ast.ClassDef):
+                                analysis["total_classes"] += 1
+                                if ast.get_docstring(node):
+                                    analysis["documented_classes"] += 1
+                                # Compter les méthodes
+                                for child in ast.walk(node):
+                                    if (
+                                        isinstance(child, ast.FunctionDef)
+                                        and child != node
+                                    ):
+                                        analysis["total_methods"] += 1
+                                        if ast.get_docstring(child):
+                                            analysis["documented_methods"] += 1
+                    except Exception as e:
+                        logger.warning(f"Erreur analyse {py_file}: {e}")
+        except Exception as e:
+            logger.error(f"Erreur analyse fichiers Python: {e}")
+
+        return analysis
+
+    def extract_docstrings(self, file_path: str) -> List[Dict[str, Any]]:
+        """Extrait les docstrings d'un fichier Python"""
+        docstrings = []
+
+        try:
+            with open(file_path, "r", encoding="utf-8") as f:
+                content = f.read()
+
+            tree = ast.parse(content)
+
+            for node in ast.walk(tree):
+                if isinstance(node, (ast.FunctionDef, ast.ClassDef, ast.Module)):
+                    docstring = ast.get_docstring(node)
+                    if docstring:
+                        docstrings.append(
+                            {
+                                "type": type(node).__name__,
+                                "name": getattr(node, "name", "module"),
+                                "docstring": docstring,
+                                "line_number": getattr(node, "lineno", 0),
+                            }
+                        )
+        except Exception as e:
+            logger.error(f"Erreur extraction docstrings {file_path}: {e}")
+
+        return docstrings
+
+    def generate_readme(self) -> str:
+        """Génère un README"""
+        project_name = self.project_path.name
+        structure = self.scan_project_structure()
+
+        readme_content = f"""# {project_name}
+
+## Description
+
+Projet {project_name} généré automatiquement par Athalia.
+
+## Structure du Projet
+
+- **Fichiers Python**: {len(structure['python_files'])}
+- **Fichiers de Test**: {len(structure['test_files'])}
+- **Fichiers de Documentation**: {len(structure['documentation_files'])}
 
 ## Installation
 
@@ -532,282 +187,524 @@ Ce guide explique comment installer et configurer {project_name}.
 pip install -r requirements.txt
 ```
 
-## Configuration
-
-Le projet utilise un fichier de configuration YAML :
-
-```yaml
-# config.yml
-app:
-  name: {project_name}
-  debug: true
-  port: 8000
-
-database:
-  url: sqlite:///app.db
-  echo: false
-```
-
-## Lancement rapide
-
-```bash
-python main.py
-```
-
----
-""".format(
-            setup_guide=t.get('setup_guide', 'Guide d\'installation'),
-            project_name=self.project_info['name']
-        )
-        setup_guide += "*Généré automatiquement par Athalia* - {}\n".format(
-            current_date)
-        return setup_guide
-
-    def _generate_usage_guide(self) -> str:
-        """Génère le guide d'utilisation du projet"""
-        t = self.translations
-        current_date = datetime.now().strftime("%Y-%m-%d")
-
-        usage_guide = """# {usage_guide} - {project_name}
-
-## Vue d'ensemble
-
-Ce guide explique comment utiliser {project_name}.
-
-## Configuration
-
-```yaml
-name: {project_name}
-version: {version}
-description: {description}
-```
-
-### Lancement rapide
-
-```bash
-# Mode développement
-python main.py
-
-# Mode production
-python main.py --production
-```
-
-### Configuration
-
-Le projet utilise un fichier de configuration YAML :
-
-```yaml
-# config.yml
-app:
-  name: {project_name}
-  debug: true
-  port: 8000
-
-database:
-  url: sqlite:///app.db
-  echo: false
-```
-
-## Fonctionnalités principales
-
-""".format(
-            usage_guide=t.get('usage_guide', 'Guide d\'utilisation'),
-            project_name=self.project_info['name'],
-            version=self.project_info['version'],
-            description=self.project_info['description']
-        )
-
-        # Décrire les classes principales
-        if self.project_info["classes"]:
-            usage_guide += "### Classes principales\n\n"
-            for class_info in self.project_info["classes"][:3]:
-                usage_guide += f"#### {class_info['name']}\n\n"
-                if class_info["docstring"]:
-                    usage_guide += f"{class_info['docstring']}\n\n"
-                usage_guide += "**Exemple d'utilisation :**\n\n"
-                usage_guide += "```python\n"
-                usage_guide += f"from {self.project_info['name']} import {class_info['name']}\n\n"
-                usage_guide += "# Créer une instance\n"
-                usage_guide += f"instance = {class_info['name']}()\n"
-                if class_info["methods"]:
-                    usage_guide += (
-                        f"# Utiliser une méthode\n"
-                        f"result = instance.{class_info['methods'][0]}()\n"
-                    )
-                usage_guide += "```\n\n"
-
-        # Décrire les fonctions principales
-        if self.project_info["functions"]:
-            usage_guide += "### Fonctions utilitaires\n\n"
-            for func_info in self.project_info["functions"][:5]:
-                usage_guide += f"#### {func_info['name']}\n\n"
-                if func_info["docstring"]:
-                    usage_guide += f"{func_info['docstring']}\n\n"
-                usage_guide += "**Exemple d'utilisation :**\n\n"
-                usage_guide += "```python\n"
-                usage_guide += f"from {self.project_info['name']} import {func_info['name']}\n\n"
-                if func_info["args"]:
-                    args_str = ", ".join(
-                        (f"{arg}" for arg in func_info["args"]))
-                    usage_guide += f"result = {func_info['name']}({args_str})\n"
-                else:
-                    usage_guide += f"result = {func_info['name']}()\n"
-                usage_guide += "```\n\n"
-
-        usage_guide += """
-## Cas d'usage avancés
-
-### Intégration avec d'autres outils
+## Utilisation
 
 ```python
-# Exemple d'intégration
+# Exemple d'utilisation
+from {project_name} import main
 
-# Configuration personnalisée
+main()
+```
+
+## Tests
+
+```bash
+pytest tests/
+```
+
+## Licence
+
+MIT License
+"""
+
+        return readme_content
+
+    def generate_api_documentation(self) -> Dict[str, Any]:
+        """Génère la documentation API"""
+        api_docs = {"functions": [], "classes": [], "modules": []}
+
+        try:
+            for py_file in self.project_path.rglob("*.py"):
+                if py_file.is_file() and not self._is_excluded(py_file):
+                    docstrings = self.extract_docstrings(str(py_file))
+
+                    for doc in docstrings:
+                        if doc["type"] == "FunctionDef":
+                            api_docs["functions"].append(
+                                {
+                                    "name": doc["name"],
+                                    "docstring": doc["docstring"],
+                                    "file": str(py_file.relative_to(self.project_path)),
+                                }
+                            )
+                        elif doc["type"] == "ClassDef":
+                            api_docs["classes"].append(
+                                {
+                                    "name": doc["name"],
+                                    "docstring": doc["docstring"],
+                                    "file": str(py_file.relative_to(self.project_path)),
+                                }
+                            )
+        except Exception as e:
+            logger.error(f"Erreur génération API docs: {e}")
+
+        return api_docs
+
+    def generate_function_documentation(self, function_info: Dict[str, Any]) -> str:
+        """Génère la documentation d'une fonction"""
+        doc = f"""## {function_info['name']}
+
+{function_info['docstring']}
+
+"""
+
+        if function_info.get("parameters"):
+            doc += "### Paramètres\n\n"
+            for param in function_info["parameters"]:
+                doc += f"- `{param}`\n"
+            doc += "\n"
+
+        if function_info.get("return_type"):
+            doc += f"### Retour\n\n`{function_info['return_type']}`\n\n"
+
+        return doc
+
+    def generate_class_documentation(self, class_info: Dict[str, Any]) -> str:
+        """Génère la documentation d'une classe"""
+        doc = f"""## {class_info['name']}
+
+{class_info['docstring']}
+
+"""
+
+        if class_info.get("methods"):
+            doc += "### Méthodes\n\n"
+            for method in class_info["methods"]:
+                doc += f"#### {method['name']}\n\n{method['docstring']}\n\n"
+
+        return doc
+
+    def generate_installation_guide(self) -> str:
+        """Génère le guide d'installation"""
+        guide = """# Guide d'Installation
+
+## Prérequis
+
+- Python 3.8+
+- pip
+
+## Installation
+
+1. Cloner le repository :
+```bash
+git clone <repository-url>
+cd <project-name>
+```
+
+2. Créer un environnement virtuel :
+```bash
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# ou
+venv\\Scripts\\activate  # Windows
+```
+
+3. Installer les dépendances :
+```bash
+pip install -r requirements.txt
+```
+
+## Vérification
+
+```bash
+python -c "import <project-name>; print('Installation réussie!')"
+```
+"""
+
+        return guide
+
+    def generate_usage_examples(self) -> str:
+        """Génère des exemples d'utilisation"""
+        examples = """# Exemples d'Utilisation
+
+## Exemple Basique
+
+```python
+from <project-name> import main_function
+
+result = main_function()
+print(result)
+```
+
+## Exemple Avancé
+
+```python
+from <project-name> import MyClass
+
+obj = MyClass()
+result = obj.method()
+print(result)
+```
+
+## Exemple avec Configuration
+
+```python
+import <project-name>
+
 config = {
-    'option1': 'value1',
-    'option2': 'value2'
+    "option1": "value1",
+    "option2": "value2"
 }
 
-# Utilisation
-app = main_class(config)
-app.run()
+result = <project-name>.configured_function(config)
 ```
-
-### Gestion des erreurs
-
-```python
-try:
-    result = some_function()
-except Exception as e:
-    logger.info(f"Erreur: {e}")
-    # Gestion de l'erreur
-```
-
-## Bonnes pratiques
-
-1. **Toujours utiliser un environnement virtuel**
-2. **Vérifier la configuration avant le lancement**
-3. **Utiliser les logs pour le débogage**
-4. **Tester les nouvelles fonctionnalités**
-
-## Support et assistance
-
-- Documentation API complète
-- Signaler un bug
-- Proposer une amélioration
-- Contact : support@example.com
-
----
-"""
-        usage_guide += "*Généré automatiquement par Athalia* - {}\n".format(
-            current_date)
-        return usage_guide
-
-    def _save_documents(
-            self,
-            readme: str,
-            api_docs: str,
-            setup_guide: str,
-            usage_guide: str):
-        """Sauvegarde les documents générés"""
-        current_date = datetime.now().strftime('%Y-%m-%d')
-        t = self.translations
-
-        docs_dir = self.project_path / "docs"
-        docs_dir.mkdir(exist_ok=True)
-
-        # README principal
-        readme_file = self.project_path / "README.md"
-        with open(readme_file, 'w', encoding='utf-8') as f:
-            f.write(readme)
-
-        # Documentation API
-        api_file = docs_dir / "API.md"
-        with open(api_file, 'w', encoding='utf-8') as f:
-            f.write(api_docs)
-
-        # Guide d'installation
-        setup_file = docs_dir / "INSTALLATION.md"
-        with open(setup_file, 'w', encoding='utf-8') as f:
-            f.write(setup_guide)
-
-        # Guide d'utilisation
-        usage_file = docs_dir / "USAGE.md"
-        with open(usage_file, 'w', encoding='utf-8') as f:
-            f.write(usage_guide)
-
-        # Index de documentation
-        setup_guide_text = t.get('setup_guide', 'Guide d\'installation')
-        usage_guide_text = t.get('usage_guide', 'Guide d\'utilisation')
-        api_doc_text = t.get('api_documentation', 'Documentation API')
-        setup_desc = t.get(
-            'setup_guide_description',
-            'Comment installer et configurer le projet')
-        usage_desc = t.get(
-            'usage_guide_description',
-            'Comment utiliser les fonctionnalités')
-        api_desc = t.get(
-            'api_documentation_description',
-            'Référence complète de l\'API')
-        doc_index = t.get('documentation_index', 'Index de documentation')
-
-        index_content = f"""# {doc_index} - {self.project_info['name']}
-
-## 📚 Guides disponibles
-
-- [{setup_guide_text}](INSTALLATION.md) - {setup_desc}
-- [{usage_guide_text}](USAGE.md) - {usage_desc}
-- [{api_doc_text}](API.md) - {api_desc}
-
-## 🚀 Démarrage rapide
-
-1. Suivez le [{setup_guide_text}](INSTALLATION.md)
-2. Consultez le [{usage_guide_text}](USAGE.md)
-3. Explorez l'[{api_doc_text}](API.md) pour les fonctionnalités avancées
-
----
-*Généré automatiquement par Athalia* - {current_date}
 """
 
-        index_file = docs_dir / "README.md"
-        with open(index_file, 'w', encoding='utf-8') as f:
-            f.write(index_content)
+        return examples
 
-    def _get_created_files(self) -> List[str]:
-        files = [
-            "README.md",
-            "docs/API.md",
-            "docs/INSTALLATION.md",
-            "docs/USAGE.md"
-        ]
-        return [str(self.project_path / f) for f in files]
+    def generate_changelog(self) -> str:
+        """Génère un changelog"""
+        changelog = """# Changelog
+
+Tous les changements notables de ce projet seront documentés dans ce fichier.
+
+## [Unreleased]
+
+### Added
+- Fonctionnalités initiales
+
+### Changed
+- Aucun changement
+
+### Deprecated
+- Aucune dépréciation
+
+### Removed
+- Aucune suppression
+
+### Fixed
+- Aucun correctif
+
+### Security
+- Aucune amélioration de sécurité
+
+## [0.1.0] - 2024-01-01
+
+### Added
+- Version initiale
+- Fonctionnalités de base
+"""
+
+        return changelog
+
+    def generate_contributing_guide(self) -> str:
+        """Génère le guide de contribution"""
+        guide = """# Guide de Contribution
+
+Merci de votre intérêt pour contribuer à ce projet !
+
+## Comment Contribuer
+
+1. Fork le projet
+2. Créer une branche pour votre fonctionnalité (`git checkout -b feature/AmazingFeature`)
+3. Commit vos changements (`git commit -m 'Add some AmazingFeature'`)
+4. Push vers la branche (`git push origin feature/AmazingFeature`)
+5. Ouvrir une Pull Request
+
+## Standards de Code
+
+- Suivre PEP 8
+- Ajouter des tests pour les nouvelles fonctionnalités
+- Mettre à jour la documentation si nécessaire
+
+## Tests
+
+```bash
+pytest tests/
+```
+
+## Style de Commit
+
+Utiliser des messages de commit conventionnels :
+- `feat:` nouvelle fonctionnalité
+- `fix:` correction de bug
+- `docs:` documentation
+- `style:` formatage
+- `refactor:` refactorisation
+- `test:` tests
+- `chore:` maintenance
+"""
+
+        return guide
+
+    def generate_license_file(self, license_type: str = "MIT") -> str:
+        """Génère un fichier de licence"""
+        if license_type.upper() == "MIT":
+            license_content = f"""MIT License
+
+Copyright (c) {datetime.now().year} {self.project_path.name}
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
+        else:
+            license_content = f"# {license_type} License\n\nLicence {license_type} pour {self.project_path.name}"
+
+        return license_content
+
+    def generate_documentation_index(self) -> str:
+        """Génère l'index de documentation"""
+        structure = self.scan_project_structure()
+
+        index = """# Index de Documentation
+
+## Fichiers de Documentation
+
+"""
+
+        for doc_file in structure["documentation_files"]:
+            index += f"- [{doc_file}]({doc_file})\n"
+
+        index += f"""
+## Statistiques
+
+- **Fichiers Python**: {len(structure['python_files'])}
+- **Fichiers de Test**: {len(structure['test_files'])}
+- **Fichiers de Documentation**: {len(structure['documentation_files'])}
+
+## Navigation
+
+- [README](README.md)
+- [Installation](INSTALLATION.md)
+- [API](API.md)
+- [Exemples](EXAMPLES.md)
+- [Contributing](CONTRIBUTING.md)
+- [Changelog](CHANGELOG.md)
+- [Licence](LICENSE)
+"""
+
+        return index
+
+    def validate_documentation(self) -> Dict[str, Any]:
+        """Valide la documentation"""
+        validation = {"is_valid": True, "issues": [], "warnings": []}
+
+        try:
+            # Vérifier la présence de fichiers essentiels
+            essential_files = ["README.md", "LICENSE", "requirements.txt"]
+            for file_name in essential_files:
+                file_path = self.project_path / file_name
+                if not file_path.exists():
+                    validation["issues"].append(f"Fichier manquant: {file_name}")
+                    validation["is_valid"] = False
+
+            # Vérifier la couverture de documentation
+            coverage = self.calculate_documentation_coverage()
+            if coverage["coverage_percentage"] < 50:
+                validation["warnings"].append(
+                    f"Couverture de documentation faible: {coverage['coverage_percentage']}%"
+                )
+
+            # Vérifier la qualité des docstrings
+            for py_file in self.project_path.rglob("*.py"):
+                if py_file.is_file() and not self._is_excluded(py_file):
+                    docstrings = self.extract_docstrings(str(py_file))
+                    for doc in docstrings:
+                        if len(doc["docstring"]) < 10:
+                            validation["warnings"].append(
+                                f"Docstring trop courte dans {py_file}: {doc['name']}"
+                            )
+
+        except Exception as e:
+            logger.error(f"Erreur validation documentation: {e}")
+            validation["is_valid"] = False
+            validation["issues"].append(f"Erreur de validation: {e}")
+
+        return validation
+
+    def calculate_documentation_coverage(self) -> Dict[str, Any]:
+        """Calcule la couverture de documentation"""
+        analysis = self.analyze_python_files()
+
+        total_items = (
+            analysis["total_functions"]
+            + analysis["total_classes"]
+            + analysis["total_methods"]
+        )
+        documented_items = (
+            analysis["documented_functions"]
+            + analysis["documented_classes"]
+            + analysis["documented_methods"]
+        )
+
+        coverage_percentage = 0
+        if total_items > 0:
+            coverage_percentage = (documented_items / total_items) * 100
+
+        return {
+            "total_functions": analysis["total_functions"],
+            "total_classes": analysis["total_classes"],
+            "total_methods": analysis["total_methods"],
+            "documented_functions": analysis["documented_functions"],
+            "documented_classes": analysis["documented_classes"],
+            "documented_methods": analysis["documented_methods"],
+            "total_items": total_items,
+            "documented_items": documented_items,
+            "coverage_percentage": round(coverage_percentage, 2),
+        }
+
+    def generate_documentation_report(self) -> Dict[str, Any]:
+        """Génère un rapport de documentation"""
+        coverage = self.calculate_documentation_coverage()
+        validation = self.validate_documentation()
+        structure = self.scan_project_structure()
+
+        report = {
+            "summary": {
+                "project_path": str(self.project_path),
+                "analysis_date": datetime.now().isoformat(),
+                "coverage_percentage": coverage["coverage_percentage"],
+                "is_valid": validation["is_valid"],
+            },
+            "detailed_results": {
+                "coverage": coverage,
+                "validation": validation,
+                "structure": structure,
+            },
+            "recommendations": [],
+        }
+
+        # Générer des recommandations
+        if coverage["coverage_percentage"] < 50:
+            report["recommendations"].append("Améliorer la couverture de documentation")
+
+        if validation["issues"]:
+            report["recommendations"].append("Corriger les problèmes de validation")
+
+        if len(structure["documentation_files"]) < 3:
+            report["recommendations"].append(
+                "Ajouter plus de fichiers de documentation"
+            )
+
+        return report
+
+    def save_documentation_history(self, output_path: str) -> bool:
+        """Sauvegarde l'historique de documentation"""
+        try:
+            with open(output_path, "w", encoding="utf-8") as f:
+                json.dump(self.doc_history, f, indent=2, default=str)
+            return True
+        except Exception as e:
+            logger.error(f"Erreur sauvegarde historique: {e}")
+            return False
+
+    def load_documentation_history(self, history_path: str) -> List[Dict[str, Any]]:
+        """Charge l'historique de documentation"""
+        try:
+            with open(history_path, "r", encoding="utf-8") as f:
+                history = json.load(f)
+                self.doc_history = history
+                return history
+        except Exception as e:
+            logger.warning(f"Impossible de charger l'historique {history_path}: {e}")
+            return []
+
+    def perform_full_documentation(self) -> Dict[str, Any]:
+        """Effectue une documentation complète"""
+        start_time = datetime.now()
+
+        # Créer le répertoire de sortie
+        output_dir = self.project_path / self.doc_config["output_directory"]
+        output_dir.mkdir(exist_ok=True)
+
+        files_generated = []
+
+        try:
+            # Générer README
+            readme_content = self.generate_readme()
+            readme_file = output_dir / "README.md"
+            with open(readme_file, "w", encoding="utf-8") as f:
+                f.write(readme_content)
+            files_generated.append("README.md")
+
+            # Générer guide d'installation
+            install_guide = self.generate_installation_guide()
+            install_file = output_dir / "INSTALLATION.md"
+            with open(install_file, "w", encoding="utf-8") as f:
+                f.write(install_guide)
+            files_generated.append("INSTALLATION.md")
+
+            # Générer exemples
+            examples = self.generate_usage_examples()
+            examples_file = output_dir / "EXAMPLES.md"
+            with open(examples_file, "w", encoding="utf-8") as f:
+                f.write(examples)
+            files_generated.append("EXAMPLES.md")
+
+            # Générer changelog
+            changelog = self.generate_changelog()
+            changelog_file = output_dir / "CHANGELOG.md"
+            with open(changelog_file, "w", encoding="utf-8") as f:
+                f.write(changelog)
+            files_generated.append("CHANGELOG.md")
+
+            # Générer guide de contribution
+            contributing = self.generate_contributing_guide()
+            contributing_file = output_dir / "CONTRIBUTING.md"
+            with open(contributing_file, "w", encoding="utf-8") as f:
+                f.write(contributing)
+            files_generated.append("CONTRIBUTING.md")
+
+            # Générer licence
+            license_content = self.generate_license_file()
+            license_file = output_dir / "LICENSE"
+            with open(license_file, "w", encoding="utf-8") as f:
+                f.write(license_content)
+            files_generated.append("LICENSE")
+
+            # Générer index
+            index = self.generate_documentation_index()
+            index_file = output_dir / "INDEX.md"
+            with open(index_file, "w", encoding="utf-8") as f:
+                f.write(index)
+            files_generated.append("INDEX.md")
+
+        except Exception as e:
+            logger.error(f"Erreur génération documentation: {e}")
+
+        # Calculer la couverture
+        coverage = self.calculate_documentation_coverage()
+
+        # Enregistrer dans l'historique
+        doc_record = {
+            "timestamp": datetime.now().isoformat(),
+            "files_generated": len(files_generated),
+            "coverage": coverage["coverage_percentage"],
+            "documentation_time": (datetime.now() - start_time).total_seconds(),
+        }
+        self.doc_history.append(doc_record)
+
+        return {
+            "files_generated": len(files_generated),
+            "files_list": files_generated,
+            "coverage": coverage["coverage_percentage"],
+            "documentation_time": doc_record["documentation_time"],
+            "output_directory": str(output_dir),
+        }
 
 
-def main():
-    """Point d'entrée du script"""
-
-    parser = argparse.ArgumentParser(
-        description="Génération automatique de documentation")
-    parser.add_argument("project_path", help="Chemin du projet à documenter")
-    parser.add_argument(
-        "--lang",
-        default="fr",
-        help="Langue pour la génération de la documentation (fr, en, es, etc.)")
-
-    args = parser.parse_args()
-
-    if not os.path.exists(args.project_path):
-        logger.info(f"❌ Le chemin {args.project_path} n'existe pas")
-        return
-
-    documenter = AutoDocumenter(args.project_path, args.lang)
-    result = documenter.run()
-
-    logger.info("✅ Documentation générée avec succès !")
-    logger.info("\n📄 Fichiers créés :")
-    for file_path in result["created_files"]:
-        logger.info(f"   • {file_path}")
+def generate_documentation(project_path: str = ".") -> Dict[str, Any]:
+    """Fonction utilitaire pour générer la documentation"""
+    documenter = AutoDocumenter(project_path)
+    return documenter.perform_full_documentation()
 
 
-if __name__ == "__main__":
-    main()
+def analyze_documentation_needs(project_path: str = ".") -> Dict[str, Any]:
+    """Fonction utilitaire pour analyser les besoins de documentation"""
+    documenter = AutoDocumenter(project_path)
+    return documenter.calculate_documentation_coverage()

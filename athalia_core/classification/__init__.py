@@ -14,4 +14,4 @@ Analyse le contexte et détermine le type de projet approprié.
 """
 
 
-__all__ = ['classify_project', 'ProjectType', 'get_project_config']
+__all__ = ["classify_project", "ProjectType", "get_project_config"]

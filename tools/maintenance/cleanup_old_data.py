@@ -13,11 +13,11 @@ from pathlib import Path
 
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
+    format="%(asctime)s - %(levelname)s - %(message)s",
     handlers=[
-        logging.FileHandler('logs/athalia.log', mode='a', encoding='utf-8'),
-        logging.StreamHandler()
-    ]
+        logging.FileHandler("logs/athalia.log", mode="a", encoding="utf-8"),
+        logging.StreamHandler(),
+    ],
 )
 logger = logging.getLogger(__name__)
 
@@ -47,10 +47,10 @@ class DataCleaner:
         """Catégorise les fichiers par âge et importance"""
         now = datetime.now()
         categories = {
-            'recent': [],      # < 1 heure
-            'old': [],         # 1 heure - 1 jour
-            'very_old': [],    # > 1 jour
-            'duplicates': []   # Doublons détectés
+            "recent": [],  # < 1 heure
+            "old": [],  # 1 heure - 1 jour
+            "very_old": [],  # > 1 jour
+            "duplicates": [],  # Doublons détectés
         }
 
         file_hashes = {}
@@ -65,15 +65,15 @@ class DataCleaner:
 
             # Catégoriser par âge
             if age < timedelta(hours=1):
-                categories['recent'].append((file_path, mtime, file_hash))
+                categories["recent"].append((file_path, mtime, file_hash))
             elif age < timedelta(days=1):
-                categories['old'].append((file_path, mtime, file_hash))
+                categories["old"].append((file_path, mtime, file_hash))
             else:
-                categories['very_old'].append((file_path, mtime, file_hash))
+                categories["very_old"].append((file_path, mtime, file_hash))
 
             # Détecter les doublons
             if file_hash in file_hashes:
-                categories['duplicates'].append((file_path, mtime, file_hash))
+                categories["duplicates"].append((file_path, mtime, file_hash))
             else:
                 file_hashes[file_hash] = file_path
 
@@ -114,7 +114,7 @@ class DataCleaner:
             return True
 
         # Fichiers avec des noms spécifiques sont importants
-        important_patterns = ['athalia-dev-setup', 'demo-app-ia-complete']
+        important_patterns = ["athalia-dev-setup", "demo-app-ia-complete"]
         for pattern in important_patterns:
             if pattern in file_path.name:
                 return True
@@ -153,26 +153,28 @@ class DataCleaner:
 
         return removed_count
 
-    def generate_report(self, categories, archived_count, removed_duplicates, removed_old):
+    def generate_report(
+        self, categories, archived_count, removed_duplicates, removed_old
+    ):
         """Génère un rapport de nettoyage"""
         report = {
-            'timestamp': datetime.now().isoformat(),
-            'summary': {
-                'total_files': sum(len(files) for files in categories.values()),
-                'recent_files': len(categories['recent']),
-                'old_files': len(categories['old']),
-                'very_old_files': len(categories['very_old']),
-                'duplicates': len(categories['duplicates']),
-                'archived': archived_count,
-                'removed_duplicates': removed_duplicates,
-                'removed_old': removed_old
+            "timestamp": datetime.now().isoformat(),
+            "summary": {
+                "total_files": sum(len(files) for files in categories.values()),
+                "recent_files": len(categories["recent"]),
+                "old_files": len(categories["old"]),
+                "very_old_files": len(categories["very_old"]),
+                "duplicates": len(categories["duplicates"]),
+                "archived": archived_count,
+                "removed_duplicates": removed_duplicates,
+                "removed_old": removed_old,
             },
-            'categories': {
-                'recent': [str(f[0]) for f in categories['recent']],
-                'old': [str(f[0]) for f in categories['old']],
-                'very_old': [str(f[0]) for f in categories['very_old']],
-                'duplicates': [str(f[0]) for f in categories['duplicates']]
-            }
+            "categories": {
+                "recent": [str(f[0]) for f in categories["recent"]],
+                "old": [str(f[0]) for f in categories["old"]],
+                "very_old": [str(f[0]) for f in categories["very_old"]],
+                "duplicates": [str(f[0]) for f in categories["duplicates"]],
+            },
         }
 
         return report
@@ -207,22 +209,24 @@ class DataCleaner:
 
         if not dry_run:
             # Archiver les fichiers importants
-            important_files = categories['recent'] + categories['old']
+            important_files = categories["recent"] + categories["old"]
             archived_count = self.archive_important_files(important_files)
 
             # Supprimer les doublons
-            removed_duplicates = self.remove_duplicates(categories['duplicates'])
+            removed_duplicates = self.remove_duplicates(categories["duplicates"])
 
             # Supprimer les anciens fichiers non importants
-            removed_old = self.remove_old_files(categories['very_old'])
+            removed_old = self.remove_old_files(categories["very_old"])
 
         # Générer le rapport
-        report = self.generate_report(categories, archived_count, removed_duplicates, removed_old)
+        report = self.generate_report(
+            categories, archived_count, removed_duplicates, removed_old
+        )
 
         # Sauvegarder le rapport
-        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         report_file = self.data_dir / f"cleanup_report_{timestamp}.json"
-        with open(report_file, 'w', encoding='utf-8') as f:
+        with open(report_file, "w", encoding="utf-8") as f:
             json.dump(report, f, indent=2, ensure_ascii=False)
 
         # Afficher le résumé
@@ -255,4 +259,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main() 
+    main()

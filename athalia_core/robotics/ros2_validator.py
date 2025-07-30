@@ -10,13 +10,13 @@ Validation complète des workspaces ROS2 :
 - Build system
 """
 
-import xml.etree.ElementTree as ET
-from pathlib import Path
-from typing import Dict, List, Optional
-from dataclasses import dataclass
+import ast
 import logging
 import subprocess
-import ast
+import xml.etree.ElementTree as ET
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Dict, List, Optional
 
 logger = logging.getLogger(__name__)
 
@@ -24,6 +24,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class ROS2PackageInfo:
     """Informations sur un package ROS2"""
+
     name: str
     path: Path
     package_type: str  # ament_cmake, ament_python, etc.
@@ -36,6 +37,7 @@ class ROS2PackageInfo:
 @dataclass
 class ROS2ValidationResult:
     """Résultat de validation ROS2"""
+
     workspace_valid: bool
     packages: List[ROS2PackageInfo]
     issues: List[str]
@@ -61,14 +63,13 @@ class ROS2Validator:
 
         # Vérifier structure workspace
         if not self.src_path.exists():
-            issues.append(
-                "Dossier 'src' manquant - structure workspace ROS2 invalide")
+            issues.append("Dossier 'src' manquant - structure workspace ROS2 invalide")
             return ROS2ValidationResult(
                 workspace_valid=False,
                 packages=[],
                 issues=issues,
                 recommendations=recommendations,
-                build_ready=False
+                build_ready=False,
             )
 
         # Analyser packages
@@ -92,15 +93,15 @@ class ROS2Validator:
         # Vérifier launch files
         launch_files = list(self.workspace_path.rglob("*.launch.py"))
         if not launch_files:
-            recommendations.append(
-                "Ajouter des fichiers launch.py pour le déploiement")
+            recommendations.append("Ajouter des fichiers launch.py pour le déploiement")
 
         # Vérifier URDF/XACRO
         urdf_files = list(self.workspace_path.rglob("*.urdf"))
         xacro_files = list(self.workspace_path.rglob("*.xacro"))
         if not urdf_files and not xacro_files:
             recommendations.append(
-                "Ajouter des fichiers URDF/XACRO pour la description du robot")
+                "Ajouter des fichiers URDF/XACRO pour la description du robot"
+            )
 
         workspace_valid = len(issues) == 0
 
@@ -109,7 +110,7 @@ class ROS2Validator:
             packages=packages,
             issues=issues,
             recommendations=recommendations,
-            build_ready=build_ready
+            build_ready=build_ready,
         )
 
     def _analyze_package(self, package_dir: Path) -> Optional[ROS2PackageInfo]:
@@ -125,29 +126,27 @@ class ROS2Validator:
             root = tree.getroot()
 
             # Extraire nom du package
-            name = root.get('name', package_dir.name)
+            name = root.get("name", package_dir.name)
 
             # Déterminer type de package
             package_type = self._detect_package_type(package_dir)
 
             # Extraire dépendances
             dependencies = []
-            for dep in root.findall('.//depend'):
+            for dep in root.findall(".//depend"):
                 dependencies.append(dep.text)
 
             # Vérifier présence de fichiers importants
-            has_launch = (
-                (package_dir / "launch").exists()
-                or list(package_dir.glob("*.launch.py"))
+            has_launch = (package_dir / "launch").exists() or list(
+                package_dir.glob("*.launch.py")
             )
             has_urdf = (
                 (package_dir / "urdf").exists()
                 or list(package_dir.glob("*.urdf"))
                 or list(package_dir.glob("*.xacro"))
             )
-            has_tests = (
-                (package_dir / "test").exists()
-                or list(package_dir.glob("test_*.py"))
+            has_tests = (package_dir / "test").exists() or list(
+                package_dir.glob("test_*.py")
             )
 
             return ROS2PackageInfo(
@@ -157,7 +156,7 @@ class ROS2Validator:
                 dependencies=dependencies,
                 has_launch=bool(has_launch),
                 has_urdf=bool(has_urdf),
-                has_tests=bool(has_tests)
+                has_tests=bool(has_tests),
             )
 
         except Exception as e:
@@ -177,8 +176,7 @@ class ROS2Validator:
         """Vérifier si le build system est configuré"""
         try:
             result = subprocess.run(
-                ['colcon', '--version'],
-                capture_output=True, text=True, timeout=10
+                ["colcon", "--version"], capture_output=True, text=True, timeout=10
             )
             return result.returncode == 0
         except BaseException:
@@ -192,28 +190,28 @@ class ROS2Validator:
         for launch_file in launch_files:
             try:
                 # Vérifier syntaxe Python
-                with open(launch_file, 'r') as f:
+                with open(launch_file, "r") as f:
                     ast.parse(f.read())
 
                 # Vérifier imports ROS2
-                with open(launch_file, 'r') as f:
+                with open(launch_file, "r") as f:
                     content = f.read()
-                    has_launch_import = 'from launch import' in content
-                    has_launch_ros_import = 'from launch_ros' in content
+                    has_launch_import = "from launch import" in content
+                    has_launch_ros_import = "from launch_ros" in content
 
-                results.append({
-                    'file': str(launch_file),
-                    'valid': True,
-                    'has_launch_import': has_launch_import,
-                    'has_launch_ros_import': has_launch_ros_import
-                })
+                results.append(
+                    {
+                        "file": str(launch_file),
+                        "valid": True,
+                        "has_launch_import": has_launch_import,
+                        "has_launch_ros_import": has_launch_ros_import,
+                    }
+                )
 
             except Exception as e:
-                results.append({
-                    'file': str(launch_file),
-                    'valid': False,
-                    'error': str(e)
-                })
+                results.append(
+                    {"file": str(launch_file), "valid": False, "error": str(e)}
+                )
 
         return results
 
@@ -225,28 +223,28 @@ class ROS2Validator:
 
         for urdf_file in urdf_files + xacro_files:
             try:
-                with open(urdf_file, 'r') as f:
+                with open(urdf_file, "r") as f:
                     content = f.read()
 
                 # Vérifications basiques
-                has_robot_tag = '<robot' in content
-                has_link_tags = '<link' in content
-                has_joint_tags = '<joint' in content
+                has_robot_tag = "<robot" in content
+                has_link_tags = "<link" in content
+                has_joint_tags = "<joint" in content
 
-                results.append({
-                    'file': str(urdf_file),
-                    'valid': True,
-                    'has_robot_tag': has_robot_tag,
-                    'has_link_tags': has_link_tags,
-                    'has_joint_tags': has_joint_tags
-                })
+                results.append(
+                    {
+                        "file": str(urdf_file),
+                        "valid": True,
+                        "has_robot_tag": has_robot_tag,
+                        "has_link_tags": has_link_tags,
+                        "has_joint_tags": has_joint_tags,
+                    }
+                )
 
             except Exception as e:
-                results.append({
-                    'file': str(urdf_file),
-                    'valid': False,
-                    'error': str(e)
-                })
+                results.append(
+                    {"file": str(urdf_file), "valid": False, "error": str(e)}
+                )
 
         return results
 

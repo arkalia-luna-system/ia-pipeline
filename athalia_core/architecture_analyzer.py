@@ -9,10 +9,11 @@ du projet, les dépendances et les relations entre modules.
 import json
 import logging
 import sqlite3
+from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Any, Optional
-from dataclasses import dataclass
+from typing import Any, Dict, List, Optional
+
 import yaml
 
 from .ast_analyzer import ASTAnalyzer, FileAnalysis
@@ -23,6 +24,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class ModuleAnalysis:
     """Analyse d'un module"""
+
     name: str
     path: str
     type: str
@@ -40,6 +42,7 @@ class ModuleAnalysis:
 @dataclass
 class PerformanceIssue:
     """Problème de performance"""
+
     type: str
     location: str
     description: str
@@ -50,6 +53,7 @@ class PerformanceIssue:
 @dataclass
 class ArchitectureMapping:
     """Mapping de l'architecture complète"""
+
     modules: Dict[str, ModuleAnalysis]
     dependencies: Dict[str, List[str]]
     duplicates: List[Any]  # DuplicateAnalysis
@@ -77,8 +81,7 @@ class ArchitectureAnalyzer:
         # Charger la configuration
         self.config = self._load_config()
 
-        logger.info(
-            f"🏗️ Architecture Analyzer initialisé dans {self.root_path}")
+        logger.info(f"🏗️ Architecture Analyzer initialisé dans {self.root_path}")
 
     def _init_database(self):
         """Initialiser la base de données d'architecture"""
@@ -86,7 +89,8 @@ class ArchitectureAnalyzer:
             cursor = conn.cursor()
 
             # Table des modules
-            cursor.execute("""
+            cursor.execute(
+                """
                 CREATE TABLE IF NOT EXISTS modules (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     name TEXT UNIQUE NOT NULL,
@@ -103,10 +107,12 @@ class ArchitectureAnalyzer:
                     last_modified TEXT NOT NULL,
                     analyzed_at TEXT NOT NULL
                 )
-            """)
+            """
+            )
 
             # Table des dépendances
-            cursor.execute("""
+            cursor.execute(
+                """
                 CREATE TABLE IF NOT EXISTS dependencies (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     module_name TEXT NOT NULL,
@@ -115,10 +121,12 @@ class ArchitectureAnalyzer:
                     strength REAL DEFAULT 1.0,
                     created_at TEXT NOT NULL
                 )
-            """)
+            """
+            )
 
             # Table des problèmes de performance
-            cursor.execute("""
+            cursor.execute(
+                """
                 CREATE TABLE IF NOT EXISTS performance_issues (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     issue_type TEXT NOT NULL,
@@ -129,14 +137,15 @@ class ArchitectureAnalyzer:
                     detected_at TEXT NOT NULL,
                     resolved_at TEXT
                 )
-            """)
+            """
+            )
 
             conn.commit()
 
     def _load_config(self) -> Dict[str, Any]:
         """Charger la configuration"""
         if self.config_path.exists():
-            with open(self.config_path, 'r', encoding='utf-8') as f:
+            with open(self.config_path, "r", encoding="utf-8") as f:
                 return yaml.safe_load(f)
         return {}
 
@@ -158,7 +167,8 @@ class ArchitectureAnalyzer:
 
         # Générer les recommandations
         recommendations = self._generate_recommendations(
-            modules, duplicates, performance_issues)
+            modules, duplicates, performance_issues
+        )
 
         # Créer le mapping d'architecture
         architecture = ArchitectureMapping(
@@ -166,7 +176,7 @@ class ArchitectureAnalyzer:
             dependencies=dependencies,
             duplicates=duplicates,
             performance_issues=performance_issues,
-            recommendations=recommendations
+            recommendations=recommendations,
         )
 
         # Sauvegarder l'analyse
@@ -183,10 +193,8 @@ class ArchitectureAnalyzer:
         core_path = self.root_path / "athalia_core"
         if core_path.exists():
             for py_file in core_path.rglob("*.py"):
-                if py_file.name != "__init__.py" and not py_file.name.startswith(
-                        '._'):
-                    module_analysis = self._analyze_single_module(
-                        py_file, "core")
+                if py_file.name != "__init__.py" and not py_file.name.startswith("._"):
+                    module_analysis = self._analyze_single_module(py_file, "core")
                     if module_analysis:
                         modules[module_analysis.name] = module_analysis
 
@@ -194,9 +202,8 @@ class ArchitectureAnalyzer:
         tests_path = self.root_path / "tests"
         if tests_path.exists():
             for py_file in tests_path.rglob("*.py"):
-                if not py_file.name.startswith('._'):
-                    module_analysis = self._analyze_single_module(
-                        py_file, "test")
+                if not py_file.name.startswith("._"):
+                    module_analysis = self._analyze_single_module(py_file, "test")
                     if module_analysis:
                         modules[module_analysis.name] = module_analysis
 
@@ -204,9 +211,8 @@ class ArchitectureAnalyzer:
         setup_path = self.root_path / "setup"
         if setup_path.exists():
             for py_file in setup_path.rglob("*.py"):
-                if not py_file.name.startswith('._'):
-                    module_analysis = self._analyze_single_module(
-                        py_file, "setup")
+                if not py_file.name.startswith("._"):
+                    module_analysis = self._analyze_single_module(py_file, "setup")
                     if module_analysis:
                         modules[module_analysis.name] = module_analysis
 
@@ -214,9 +220,8 @@ class ArchitectureAnalyzer:
         return modules
 
     def _analyze_single_module(
-            self,
-            file_path: Path,
-            module_type: str) -> Optional[ModuleAnalysis]:
+        self, file_path: Path, module_type: str
+    ) -> Optional[ModuleAnalysis]:
         """Analyser un module individuel"""
         try:
             # Analyser le fichier avec l'analyseur AST
@@ -237,8 +242,7 @@ class ArchitectureAnalyzer:
             issues = self._detect_module_issues(file_analysis)
 
             # Calculer le score de performance
-            performance_score = self._calculate_performance_score(
-                file_analysis)
+            performance_score = self._calculate_performance_score(file_analysis)
 
             return ModuleAnalysis(
                 name=module_name,
@@ -252,18 +256,14 @@ class ArchitectureAnalyzer:
                 complexity=file_analysis.complexity_score,
                 issues=issues,
                 performance_score=performance_score,
-                last_modified=file_analysis.last_modified
+                last_modified=file_analysis.last_modified,
             )
 
         except Exception as e:
-            logger.error(
-                f"Erreur lors de l'analyse du module {file_path}: {e}")
+            logger.error(f"Erreur lors de l'analyse du module {file_path}: {e}")
             return None
 
-    def _extract_dependencies(
-            self,
-            imports: List[str],
-            module_type: str) -> List[str]:
+    def _extract_dependencies(self, imports: List[str], module_type: str) -> List[str]:
         """Extraire les dépendances d'un module"""
         dependencies = []
 
@@ -287,13 +287,11 @@ class ArchitectureAnalyzer:
 
         # Vérifier la complexité
         if file_analysis.complexity_score > 10:
-            issues.append(
-                f"Complexité élevée: {file_analysis.complexity_score:.1f}")
+            issues.append(f"Complexité élevée: {file_analysis.complexity_score:.1f}")
 
         # Vérifier la taille
         if file_analysis.total_lines > 500:
-            issues.append(
-                f"Fichier très long: {file_analysis.total_lines} lignes")
+            issues.append(f"Fichier très long: {file_analysis.total_lines} lignes")
 
         # Vérifier le nombre de fonctions
         if len(file_analysis.functions) > 20:
@@ -309,8 +307,7 @@ class ArchitectureAnalyzer:
 
         return issues
 
-    def _calculate_performance_score(
-            self, file_analysis: FileAnalysis) -> float:
+    def _calculate_performance_score(self, file_analysis: FileAnalysis) -> float:
         """Calculer un score de performance pour un module"""
         score = 100.0
 
@@ -332,15 +329,15 @@ class ArchitectureAnalyzer:
 
         return max(0.0, score)
 
-    def _detect_duplicates(
-            self, modules: Dict[str, ModuleAnalysis]) -> List[Any]:
+    def _detect_duplicates(self, modules: Dict[str, ModuleAnalysis]) -> List[Any]:
         """Détecter les doublons entre modules"""
         # Cette fonction sera implémentée en utilisant le PatternDetector
         # Pour l'instant, retourner une liste vide
         return []
 
     def _analyze_performance(
-            self, modules: Dict[str, ModuleAnalysis]) -> List[PerformanceIssue]:
+        self, modules: Dict[str, ModuleAnalysis]
+    ) -> List[PerformanceIssue]:
         """Analyser les problèmes de performance"""
         issues = []
 
@@ -355,7 +352,8 @@ class ArchitectureAnalyzer:
                         f"{module.performance_score:.1f}"
                     ),
                     impact="medium",
-                    suggestion="Refactoriser pour réduire la complexité et la taille")
+                    suggestion="Refactoriser pour réduire la complexité et la taille",
+                )
                 issues.append(issue)
 
             # Vérifier les modules très complexes
@@ -365,13 +363,15 @@ class ArchitectureAnalyzer:
                     location=module.path,
                     description=f"Module {module_name} très complexe: {module.complexity:.1f}",
                     impact="high",
-                    suggestion="Diviser en modules plus petits")
+                    suggestion="Diviser en modules plus petits",
+                )
                 issues.append(issue)
 
         return issues
 
     def _build_dependency_graph(
-            self, modules: Dict[str, ModuleAnalysis]) -> Dict[str, List[str]]:
+        self, modules: Dict[str, ModuleAnalysis]
+    ) -> Dict[str, List[str]]:
         """Construire le graphe de dépendances"""
         dependencies = {}
 
@@ -380,11 +380,12 @@ class ArchitectureAnalyzer:
 
         return dependencies
 
-    def _generate_recommendations(self,
-                                  modules: Dict[str,
-                                                ModuleAnalysis],
-                                  duplicates: List[Any],
-                                  performance_issues: List[PerformanceIssue]) -> List[str]:
+    def _generate_recommendations(
+        self,
+        modules: Dict[str, ModuleAnalysis],
+        duplicates: List[Any],
+        performance_issues: List[PerformanceIssue],
+    ) -> List[str]:
         """Générer des recommandations d'architecture"""
         recommendations = []
 
@@ -392,22 +393,26 @@ class ArchitectureAnalyzer:
         large_modules = [m for m in modules.values() if m.size > 300]
         if large_modules:
             recommendations.append(
-                f"📦 {len(large_modules)} modules très grands détectés - considérer la division")
+                f"📦 {len(large_modules)} modules très grands détectés - considérer la division"
+            )
 
         complex_modules = [m for m in modules.values() if m.complexity > 10]
         if complex_modules:
             recommendations.append(
-                f"🧠 {len(complex_modules)} modules complexes - refactoring recommandé")
+                f"🧠 {len(complex_modules)} modules complexes - refactoring recommandé"
+            )
 
         # Recommandations basées sur les performances
         if performance_issues:
             recommendations.append(
-                f"⚡ {len(performance_issues)} problèmes de performance - optimisation nécessaire")
+                f"⚡ {len(performance_issues)} problèmes de performance - optimisation nécessaire"
+            )
 
         # Recommandations générales
         if len(modules) > 20:
             recommendations.append(
-                "🏗️ Architecture complexe - documenter les dépendances")
+                "🏗️ Architecture complexe - documenter les dépendances"
+            )
 
         return recommendations
 
@@ -418,41 +423,47 @@ class ArchitectureAnalyzer:
 
             # Sauvegarder les modules
             for module_name, module in architecture.modules.items():
-                cursor.execute("""
+                cursor.execute(
+                    """
                     INSERT OR REPLACE INTO modules
                     (name, path, type, size, functions, classes, imports, dependencies,
                      complexity, issues, performance_score, last_modified, analyzed_at)
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                """, (
-                    module.name,
-                    module.path,
-                    module.type,
-                    module.size,
-                    json.dumps(module.functions),
-                    json.dumps(module.classes),
-                    json.dumps(module.imports),
-                    json.dumps(module.dependencies),
-                    module.complexity,
-                    json.dumps(module.issues),
-                    module.performance_score,
-                    module.last_modified.isoformat(),
-                    datetime.now().isoformat()
-                ))
+                """,
+                    (
+                        module.name,
+                        module.path,
+                        module.type,
+                        module.size,
+                        json.dumps(module.functions),
+                        json.dumps(module.classes),
+                        json.dumps(module.imports),
+                        json.dumps(module.dependencies),
+                        module.complexity,
+                        json.dumps(module.issues),
+                        module.performance_score,
+                        module.last_modified.isoformat(),
+                        datetime.now().isoformat(),
+                    ),
+                )
 
             # Sauvegarder les problèmes de performance
             for issue in architecture.performance_issues:
-                cursor.execute("""
+                cursor.execute(
+                    """
                     INSERT INTO performance_issues
                     (issue_type, location, description, impact, suggestion, detected_at)
                     VALUES (?, ?, ?, ?, ?, ?)
-                """, (
-                    issue.type,
-                    issue.location,
-                    issue.description,
-                    issue.impact,
-                    issue.suggestion,
-                    datetime.now().isoformat()
-                ))
+                """,
+                    (
+                        issue.type,
+                        issue.location,
+                        issue.description,
+                        issue.impact,
+                        issue.suggestion,
+                        datetime.now().isoformat(),
+                    ),
+                )
 
             conn.commit()
 
@@ -475,16 +486,19 @@ class ArchitectureAnalyzer:
             # Modules problématiques
             cursor.execute(
                 "SELECT name, complexity, performance_score FROM modules "
-                "WHERE complexity > 10 OR performance_score < 50")
+                "WHERE complexity > 10 OR performance_score < 50"
+            )
             problematic_modules = cursor.fetchall()
 
-        return {"total_modules": total_modules,
-                "average_complexity": avg_complexity,
-                "average_performance": avg_performance,
-                "problematic_modules": problematic_modules,
-                "optimization_score": max(
-                    0, 100 - (avg_complexity * 2 + (100 - avg_performance) * 0.5)
-                )}
+        return {
+            "total_modules": total_modules,
+            "average_complexity": avg_complexity,
+            "average_performance": avg_performance,
+            "problematic_modules": problematic_modules,
+            "optimization_score": max(
+                0, 100 - (avg_complexity * 2 + (100 - avg_performance) * 0.5)
+            ),
+        }
 
     def generate_intelligent_coordination(self) -> Dict[str, Any]:
         """Générer des recommandations de coordination intelligente"""
@@ -494,26 +508,30 @@ class ArchitectureAnalyzer:
             "priority_tasks": [],
             "parallel_tasks": [],
             "dependencies": [],
-            "estimated_time": 0
+            "estimated_time": 0,
         }
 
         # Tâches prioritaires basées sur l'analyse
         if optimization_plan["average_complexity"] > 8:
-            coordination_plan["priority_tasks"].append({
-                "task": "refactor_high_complexity_modules",
-                "description": "Refactoriser les modules très complexes",
-                "effort": "high",
-                "impact": "high"
-            })
+            coordination_plan["priority_tasks"].append(
+                {
+                    "task": "refactor_high_complexity_modules",
+                    "description": "Refactoriser les modules très complexes",
+                    "effort": "high",
+                    "impact": "high",
+                }
+            )
             coordination_plan["estimated_time"] += 4  # heures
 
         if optimization_plan["average_performance"] < 70:
-            coordination_plan["priority_tasks"].append({
-                "task": "optimize_performance",
-                "description": "Optimiser les performances des modules",
-                "effort": "medium",
-                "impact": "medium"
-            })
+            coordination_plan["priority_tasks"].append(
+                {
+                    "task": "optimize_performance",
+                    "description": "Optimiser les performances des modules",
+                    "effort": "medium",
+                    "impact": "medium",
+                }
+            )
             coordination_plan["estimated_time"] += 2  # heures
 
         return coordination_plan

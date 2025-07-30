@@ -1,6 +1,8 @@
-import unittest
 import os
+import unittest
+
 from athalia_core.distillation.adaptive_distillation import AdaptiveDistiller
+
 
 class TestAdaptiveDistiller(unittest.TestCase):
     def setUp(self):
@@ -58,5 +60,6 @@ class TestAdaptiveDistiller(unittest.TestCase):
         self.assertEqual(distiller2.feedback, distiller.feedback)
         self.assertEqual(distiller2.success_history, distiller.success_history)
 
-if __name__ == '__main__':
-    unittest.main() 
+
+if __name__ == "__main__":
+    unittest.main()

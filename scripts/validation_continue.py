@@ -5,13 +5,13 @@ Validation Continue d'Athalia/Arkalia
 Surveillance en temps réel de la qualité et détection de régressions
 """
 
-import time
 import json
-import os
-import threading
 import logging
-from datetime import datetime
+import os
 import subprocess
+import threading
+import time
+from datetime import datetime
 
 
 class ValidationContinue:
@@ -25,11 +25,11 @@ class ValidationContinue:
         # Configuration du logging
         logging.basicConfig(
             level=logging.INFO,
-            format='%(asctime)s - %(levelname)s - %(message)s',
+            format="%(asctime)s - %(levelname)s - %(message)s",
             handlers=[
-                logging.FileHandler('validation_continue.log'),
-                logging.StreamHandler()
-            ]
+                logging.FileHandler("validation_continue.log"),
+                logging.StreamHandler(),
+            ],
         )
         self.logger = logging.getLogger(__name__)
 
@@ -39,29 +39,31 @@ class ValidationContinue:
         resultats = {}
 
         # Test 1: Démarrage
-        resultats['demarrage'] = self.test_demarrage()
+        resultats["demarrage"] = self.test_demarrage()
 
         # Test 2: Imports
-        resultats['imports'] = self.test_imports()
+        resultats["imports"] = self.test_imports()
 
         # Test 3: Génération mini
-        resultats['generation'] = self.test_generation_mini()
+        resultats["generation"] = self.test_generation_mini()
 
         # Test 4: Correction basique
-        resultats['correction'] = self.test_correction_basique()
+        resultats["correction"] = self.test_correction_basique()
 
         temps_total = time.time() - start
 
         # Calcul du taux de succès
-        succes = sum(1 for r in resultats.values() if r.get('succes', False))
+        succes = sum(1 for r in resultats.values() if r.get("succes", False))
         taux_succes = (succes / len(resultats)) * 100
 
         validation = {
-            'timestamp': datetime.now().isoformat(),
-            'taux_succes': taux_succes,
-            'temps_total': temps_total,
-            'resultats': resultats,
-            'erreurs_critiques': len([r for r in resultats.values() if not r.get('succes', False)])
+            "timestamp": datetime.now().isoformat(),
+            "taux_succes": taux_succes,
+            "temps_total": temps_total,
+            "resultats": resultats,
+            "erreurs_critiques": len(
+                [r for r in resultats.values() if not r.get("succes", False)]
+            ),
         }
 
         # Sauvegarde dans l'historique
@@ -74,19 +76,23 @@ class ValidationContinue:
         """Test de démarrage d'Athalia"""
         try:
             cmd = "python scripts/athalia_unified.py --help"
-            result = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=10)
-            return {'succes': result.returncode == 0}
+            result = subprocess.run(
+                cmd, shell=True, capture_output=True, text=True, timeout=10
+            )
+            return {"succes": result.returncode == 0}
         except Exception as e:
-            return {'succes': False, 'erreur': str(e)}
+            return {"succes": False, "erreur": str(e)}
 
     def test_imports(self):
         """Test des imports critiques"""
         try:
             cmd = "python -c 'import athalia_core; print(\"OK\")'"
-            result = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=10)
-            return {'succes': result.returncode == 0}
+            result = subprocess.run(
+                cmd, shell=True, capture_output=True, text=True, timeout=10
+            )
+            return {"succes": result.returncode == 0}
         except Exception as e:
-            return {'succes': False, 'erreur': str(e)}
+            return {"succes": False, "erreur": str(e)}
 
     def test_generation_mini(self):
         """Test de génération minimal"""
@@ -95,37 +101,42 @@ class ValidationContinue:
             projet_test = f"/tmp/test_continue_{int(time.time())}"
             os.makedirs(projet_test, exist_ok=True)
 
-            with open(f"{projet_test}/main.py", 'w') as f:
+            with open(f"{projet_test}/main.py", "w") as f:
                 f.write("print('test')")
 
             cmd = f"python scripts/athalia_unified.py {projet_test} --action audit"
-            result = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=30)
+            result = subprocess.run(
+                cmd, shell=True, capture_output=True, text=True, timeout=30
+            )
 
             # Nettoyage
             import shutil
+
             shutil.rmtree(projet_test, ignore_errors=True)
 
-            return {'succes': result.returncode == 0}
+            return {"succes": result.returncode == 0}
         except Exception as e:
-            return {'succes': False, 'erreur': str(e)}
+            return {"succes": False, "erreur": str(e)}
 
     def test_correction_basique(self):
         """Test de correction basique"""
         try:
             # Crée un fichier avec une erreur simple
             fichier_test = "/tmp/test_correction.py"
-            with open(fichier_test, 'w') as f:
+            with open(fichier_test, "w") as f:
                 f.write("x = 1\ny = 2\nprint(x + y + z)  # Erreur: z non défini")
 
             cmd = f"python scripts/athalia_unified.py {os.path.dirname(fichier_test)} --action fix"
-            result = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=30)
+            result = subprocess.run(
+                cmd, shell=True, capture_output=True, text=True, timeout=30
+            )
 
             # Nettoyage
             os.remove(fichier_test)
 
-            return {'succes': result.returncode == 0}
+            return {"succes": result.returncode == 0}
         except Exception as e:
-            return {'succes': False, 'erreur': str(e)}
+            return {"succes": False, "erreur": str(e)}
 
     def detecter_regression(self, validation_actuelle):
         """Détecte une régression par rapport à l'historique"""
@@ -134,16 +145,16 @@ class ValidationContinue:
 
         # Compare avec les 3 dernières validations
         recentes = self.historique[-3:]
-        taux_moyen_recent = sum(v['taux_succes'] for v in recentes) / len(recentes)
+        taux_moyen_recent = sum(v["taux_succes"] for v in recentes) / len(recentes)
 
-        baisse = taux_moyen_recent - validation_actuelle['taux_succes']
+        baisse = taux_moyen_recent - validation_actuelle["taux_succes"]
 
         if baisse > self.seuil_regression:
             return {
-                'type': 'regression',
-                'baisse': baisse,
-                'taux_avant': taux_moyen_recent,
-                'taux_apres': validation_actuelle['taux_succes']
+                "type": "regression",
+                "baisse": baisse,
+                "taux_avant": taux_moyen_recent,
+                "taux_apres": validation_actuelle["taux_succes"],
             }
 
         return None
@@ -168,7 +179,9 @@ class ValidationContinue:
                     regression = self.detecter_regression(validation)
 
                     if regression:
-                        self.logger.warning(f"🚨 RÉGRESSION DÉTECTÉE: {regression['baisse']:.1f}% de baisse")
+                        self.logger.warning(
+                            f"🚨 RÉGRESSION DÉTECTÉE: {regression['baisse']:.1f}% de baisse"
+                        )
                         self.alerter_regression(validation, regression)
 
                     # Rapport de tendance périodique
@@ -176,7 +189,9 @@ class ValidationContinue:
                         self.generer_rapport_tendance()
                         self.logger.info("📊 Rapport de tendance généré")
 
-                    self.logger.info(f"✅ Test terminé: {validation['taux_succes']:.1f}% de succès")
+                    self.logger.info(
+                        f"✅ Test terminé: {validation['taux_succes']:.1f}% de succès"
+                    )
 
                 except Exception as e:
                     self.logger.error(f"❌ Erreur lors du test: {str(e)}")
@@ -184,7 +199,9 @@ class ValidationContinue:
                 # Attente jusqu'au prochain test
                 time.sleep(self.intervalle_minutes * 60)
 
-        self.thread_surveillance = threading.Thread(target=boucle_surveillance, daemon=True)
+        self.thread_surveillance = threading.Thread(
+            target=boucle_surveillance, daemon=True
+        )
         self.thread_surveillance.start()
 
         return self.thread_surveillance
@@ -199,27 +216,27 @@ class ValidationContinue:
     def alerter_regression(self, validation, regression):
         """Génère une alerte en cas de régression"""
         alerte = {
-            'timestamp': datetime.now().isoformat(),
-            'type': 'regression',
-            'validation': validation,
-            'regression': regression,
-            'gravite': 'CRITIQUE' if regression['baisse'] > 20 else 'MOYENNE'
+            "timestamp": datetime.now().isoformat(),
+            "type": "regression",
+            "validation": validation,
+            "regression": regression,
+            "gravite": "CRITIQUE" if regression["baisse"] > 20 else "MOYENNE",
         }
 
         # Sauvegarde de l'alerte
-        alertes_file = 'alertes_regression.json'
+        alertes_file = "alertes_regression.json"
         alertes = []
 
         if os.path.exists(alertes_file):
             try:
-                with open(alertes_file, 'r') as f:
+                with open(alertes_file, "r") as f:
                     alertes = json.load(f)
             except Exception:
                 alertes = []
 
         alertes.append(alerte)
 
-        with open(alertes_file, 'w') as f:
+        with open(alertes_file, "w") as f:
             json.dump(alertes, f, indent=2)
 
         # Génération du rapport d'alerte
@@ -228,8 +245,8 @@ class ValidationContinue:
 
     def generer_rapport_alerte(self, alerte):
         """Génère un rapport d'alerte détaillé"""
-        regression = alerte['regression']
-        validation = alerte['validation']
+        regression = alerte["regression"]
+        validation = alerte["validation"]
 
         rapport = f"""# 🚨 ALERTE RÉGRESSION - Athalia/Arkalia
 
@@ -249,11 +266,11 @@ class ValidationContinue:
 
 """
 
-        for nom, resultat in validation['resultats'].items():
-            status = "✅ SUCCÈS" if resultat.get('succes') else "❌ ÉCHEC"
+        for nom, resultat in validation["resultats"].items():
+            status = "✅ SUCCÈS" if resultat.get("succes") else "❌ ÉCHEC"
             rapport += f"- **{nom}:** {status}\n"
 
-            if not resultat.get('succes'):
+            if not resultat.get("succes"):
                 rapport += f"  - Erreur: {resultat.get('erreur', 'Inconnue')}\n"
 
         rapport += """
@@ -270,14 +287,16 @@ class ValidationContinue:
 
         # Affiche les 5 dernières validations
         for validation in self.historique[-5:]:
-            date = datetime.fromisoformat(validation['timestamp']).strftime("%d/%m %H:%M")
+            date = datetime.fromisoformat(validation["timestamp"]).strftime(
+                "%d/%m %H:%M"
+            )
             rapport += f"- {date}: {validation['taux_succes']:.1f}% de succès\n"
 
         # Sauvegarde du rapport
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         rapport_file = f"alerte_regression_{timestamp}.md"
 
-        with open(rapport_file, 'w', encoding='utf-8') as f:
+        with open(rapport_file, "w", encoding="utf-8") as f:
             f.write(rapport)
 
         self.logger.info(f"📄 Rapport d'alerte généré: {rapport_file}")
@@ -285,7 +304,7 @@ class ValidationContinue:
     def sauvegarder_historique(self):
         """Sauvegarde l'historique des validations"""
         try:
-            with open('historique_validation.json', 'w') as f:
+            with open("historique_validation.json", "w") as f:
                 json.dump(self.historique, f, indent=2)
         except Exception as e:
             self.logger.error(f"Erreur sauvegarde historique: {str(e)}")
@@ -293,8 +312,8 @@ class ValidationContinue:
     def charger_historique(self):
         """Charge l'historique des validations"""
         try:
-            if os.path.exists('historique_validation.json'):
-                with open('historique_validation.json', 'r') as f:
+            if os.path.exists("historique_validation.json"):
+                with open("historique_validation.json", "r") as f:
                     self.historique = json.load(f)
         except Exception as e:
             self.logger.error(f"Erreur chargement historique: {str(e)}")
@@ -309,10 +328,10 @@ class ValidationContinue:
         anciennes = self.historique[:10]  # 10 premières validations
 
         if len(anciennes) < 10:
-            anciennes = self.historique[:len(self.historique) // 2]
+            anciennes = self.historique[: len(self.historique) // 2]
 
-        taux_recent = sum(v['taux_succes'] for v in recentes) / len(recentes)
-        taux_ancien = sum(v['taux_succes'] for v in anciennes) / len(anciennes)
+        taux_recent = sum(v["taux_succes"] for v in recentes) / len(recentes)
+        taux_ancien = sum(v["taux_succes"] for v in anciennes) / len(anciennes)
 
         evolution = taux_recent - taux_ancien
 
@@ -334,7 +353,9 @@ class ValidationContinue:
 """
 
         if evolution > 5:
-            rapport += "🎉 **Excellent !** Athalia s'améliore. Continue dans cette direction."
+            rapport += (
+                "🎉 **Excellent !** Athalia s'améliore. Continue dans cette direction."
+            )
         elif evolution > 0:
             rapport += "✅ **Bien !** Légère amélioration détectée."
         elif evolution > -5:
@@ -371,4 +392,4 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("\n🛑 Arrêt de la surveillance...")
     finally:
-        validator.arreter_surveillance() 
+        validator.arreter_surveillance()

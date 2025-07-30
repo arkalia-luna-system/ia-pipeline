@@ -1,6 +1,8 @@
-import unittest
 import os
+import unittest
+
 from athalia_core.advanced_analytics import AdvancedAnalytics
+
 
 class TestAdvancedAnalytics(unittest.TestCase):
     def setUp(self):
@@ -45,5 +47,6 @@ class TestAdvancedAnalytics(unittest.TestCase):
         except Exception as e:
             self.fail(f"print_report a levé une exception: {e}")
 
+
 if __name__ == "__main__":
-    unittest.main() 
+    unittest.main()
