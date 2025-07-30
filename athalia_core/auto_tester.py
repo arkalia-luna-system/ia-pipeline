@@ -17,7 +17,8 @@ except ImportError:
 
 
 class SecurityError(Exception):
-        pass
+    pass
+
 
 logger = logging.getLogger(__name__)
 
