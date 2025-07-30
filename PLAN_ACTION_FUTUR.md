@@ -12,7 +12,7 @@
 Corriger systématiquement tous les problèmes futurs identifiés dans l'audit pour garantir la robustesse et la sécurité du projet Athalia.
 
 ### **📈 Progression Actuelle**
-- **Phase 1 (Sécurité) :** 45 problèmes → 1 problème restant (98% terminé)
+- **Phase 1 (Sécurité) :** 45 problèmes → 1 problème restant (98% terminé) 🔄
 - **Phase 2 (Qualité) :** 52 problèmes → 52 problèmes (0% terminé)
 - **Phase 3 (Maintenance) :** 30 problèmes → 30 problèmes (0% terminé)
 
