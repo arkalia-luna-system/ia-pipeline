@@ -13,7 +13,6 @@ import yaml
 
 from .ai_robust import AIModel, RobustAI
 from .audit import audit_project_intelligent
-from .generation import generate_project
 
 # Configuration pour l'internationalisation (i18n) des messages CLI
 # Utilisation de gettext pour la traduction des messages utilisateur

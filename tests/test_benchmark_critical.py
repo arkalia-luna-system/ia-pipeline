@@ -14,6 +14,7 @@ except ImportError:
         return subprocess.run(command, **kwargs)
     SecurityError = Exception
 
+
 # Vérification de la disponibilité de pytest-benchmark
 try:
     BENCHMARK_AVAILABLE = True
