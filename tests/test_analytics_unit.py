@@ -42,8 +42,8 @@ class TestAnalytics(unittest.TestCase):
             # Créer des fichiers de test
             open(os.path.join(tmpdir, "main.py"), "w").close()
             open(os.path.join(tmpdir, "README.md"), "w").close()
-            html = analytics.generate_analytics_html({"path": tmpdir})
-            self.assertIn("<html>", html)
+            html = analytics.generate_analytics_html(tmpdir)
+            self.assertIn("<html", html)
             self.assertIn("Analytics", html)
 
     def test_analyze_project(self):
@@ -58,9 +58,9 @@ class TestAnalytics(unittest.TestCase):
             os.mkdir(os.path.join(tmpdir, "subdir"))
             report = analytics.analyze_project(tmpdir)
             self.assertIn("structure", report)
-            self.assertIn("python_files", report["structure"])
-            self.assertIn("markdown_files", report["structure"])
-            self.assertIn("config_files", report["structure"])
+            self.assertIn("complexity", report["structure"])
+            self.assertIn("coverage", report["structure"])
+            self.assertIn("dependencies", report["structure"])
             self.assertIn("score", report)
 
 

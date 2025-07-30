@@ -469,14 +469,19 @@ def test_analyze_project_metrics():
     with tempfile.TemporaryDirectory() as temp_dir:
         with patch("athalia_core.analytics.AnalyticsEngine") as mock_analytics_class:
             mock_analytics = Mock()
-            mock_analytics.metrics = {
-                "code_complexity": {"average_complexity": 3.5},
-                "test_coverage": {"test_files_count": 5},
+            mock_analytics.generate_comprehensive_report.return_value = {
+                "summary": "Test report",
+                "detailed_metrics": {
+                    "code_complexity": {"average_complexity": 3.5},
+                    "test_coverage": {"test_files_count": 5},
+                },
+                "recommendations": [],
             }
             mock_analytics_class.return_value = mock_analytics
 
             result = analyze_project_metrics(temp_dir)
 
             assert isinstance(result, dict)
-            assert "code_complexity" in result
-            assert "test_coverage" in result
+            assert "summary" in result
+            assert "detailed_metrics" in result
+            mock_analytics.generate_comprehensive_report.assert_called_once()
