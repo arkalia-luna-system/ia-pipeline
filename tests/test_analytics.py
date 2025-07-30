@@ -10,10 +10,12 @@ import pytest
 
 # Import conditionnel du module analytics
 try:
-    from athalia_core.analytics import (analyze_project,
-                                        generate_analytics_html,
-                                        generate_heatmap_data,
-                                        generate_technical_debt_analysis)
+    from athalia_core.analytics import (
+        analyze_project,
+        generate_analytics_html,
+        generate_heatmap_data,
+        generate_technical_debt_analysis,
+    )
 
     ANALYTICS_AVAILABLE = True
 except ImportError:

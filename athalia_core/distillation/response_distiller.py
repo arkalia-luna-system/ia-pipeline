@@ -69,7 +69,7 @@ class ResponseDistiller:
 
         def lcs(a, b):
             match = SequenceMatcher(None, a, b).find_longest_match(0, len(a), 0, len(b))
-            return a[match.a: match.a + match.size]
+            return a[match.a : match.a + match.size]
 
         consensus = responses[0]
         for r in responses[1:]:

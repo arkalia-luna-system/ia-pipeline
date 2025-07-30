@@ -10,8 +10,7 @@ from unittest.mock import Mock, patch
 
 import pytest
 
-from athalia_core.unified_orchestrator import (UnifiedOrchestrator,
-                                               run_unified_workflow)
+from athalia_core.unified_orchestrator import UnifiedOrchestrator, run_unified_workflow
 
 
 class TestUnifiedOrchestrator:

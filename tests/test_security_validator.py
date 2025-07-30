@@ -12,10 +12,12 @@ from pathlib import Path
 
 # Import du module à tester
 try:
-    from athalia_core.security_validator import (SecurityError,
-                                                 SecurityValidator,
-                                                 is_command_safe,
-                                                 validate_and_run)
+    from athalia_core.security_validator import (
+        SecurityError,
+        SecurityValidator,
+        is_command_safe,
+        validate_and_run,
+    )
 except ImportError:
     SecurityValidator = None
     SecurityError = Exception

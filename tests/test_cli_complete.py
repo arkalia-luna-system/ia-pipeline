@@ -19,8 +19,7 @@ import yaml  # type: ignore
 # Ajouter le répertoire parent au path pour les imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from athalia_core.cli import (ai_status, audit, cli, generate,  # noqa: E402
-                              test_ai)
+from athalia_core.cli import ai_status, audit, cli, generate, test_ai  # noqa: E402
 
 
 class TestCLIComplete:
@@ -205,9 +204,7 @@ class TestCLIComplete:
 
         # Vérifier que le message d'erreur est affiché
         error_calls = [
-            call 
-            for call in mock_echo.call_args_list 
-            if "❌ Erreur" in str(call)
+            call for call in mock_echo.call_args_list if "❌ Erreur" in str(call)
         ]
         assert len(error_calls) > 0, "Message d'erreur non trouvé"
 

@@ -134,9 +134,7 @@ def test_apple_double_files():
     apple_double_files = list(plugin_dir.rglob("._*"))
 
     if apple_double_files:
-        print_status(
-            f"⚠️ Fichiers AppleDouble trouvés: {len(apple_double_files)}",
-            "⚠️")
+        print_status(f"⚠️ Fichiers AppleDouble trouvés: {len(apple_double_files)}", "⚠️")
         for file in apple_double_files[:5]:  # Afficher les 5 premiers
             print(f"   - {file}")
         if len(apple_double_files) > 5:

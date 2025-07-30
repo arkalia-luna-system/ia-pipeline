@@ -36,11 +36,11 @@ class TestRoboticsCI:
     def test_check_project_structure_ros2(self):
         """Test de vérification de structure ROS2"""
         # Créer un projet ROS2
-        package_xml = self.temp_dir / "package.xml"
+        package_xml = Path(self.temp_dir) / "package.xml"
         with open(package_xml, "w") as f:
             f.write("<package><name>test_package</name></package>")
 
-        setup_py = self.temp_dir / "setup.py"
+        setup_py = Path(self.temp_dir) / "setup.py"
         with open(setup_py, "w") as f:
             f.write("from setuptools import setup\nsetup()")
 
@@ -50,11 +50,11 @@ class TestRoboticsCI:
     def test_check_project_structure_rust(self):
         """Test de vérification de structure Rust"""
         # Créer un projet Rust
-        cargo_toml = self.temp_dir / "Cargo.toml"
+        cargo_toml = Path(self.temp_dir) / "Cargo.toml"
         with open(cargo_toml, "w") as f:
             f.write('[package]\nname = "test_project"')
 
-        src_dir = self.temp_dir / "src"
+        src_dir = Path(self.temp_dir) / "src"
         src_dir.mkdir()
 
         self.ci._check_project_structure()
@@ -69,7 +69,7 @@ class TestRoboticsCI:
     def test_run_build_rust_success(self, mock_run):
         """Test de build Rust réussi"""
         # Créer Cargo.toml
-        cargo_toml = self.temp_dir / "Cargo.toml"
+        cargo_toml = Path(self.temp_dir) / "Cargo.toml"
         with open(cargo_toml, "w") as f:
             f.write('[package]\nname = "test_project"')
 
@@ -82,7 +82,7 @@ class TestRoboticsCI:
     @patch("subprocess.run")
     def test_run_build_rust_failure(self, mock_run):
         """Test de build Rust échoué"""
-        cargo_toml = self.temp_dir / "Cargo.toml"
+        cargo_toml = Path(self.temp_dir) / "Cargo.toml"
         with open(cargo_toml, "w") as f:
             f.write('[package]\nname = "test_project"')
 
@@ -96,7 +96,7 @@ class TestRoboticsCI:
     @patch("subprocess.run")
     def test_run_build_ros2_success(self, mock_run):
         """Test de build ROS2 réussi"""
-        package_xml = self.temp_dir / "package.xml"
+        package_xml = Path(self.temp_dir) / "package.xml"
         with open(package_xml, "w") as f:
             f.write("<package><name>test_package</name></package>")
 
@@ -118,7 +118,7 @@ class TestRoboticsCI:
     @patch("subprocess.run")
     def test_run_tests_rust_success(self, mock_run):
         """Test de tests Rust réussi"""
-        cargo_toml = self.temp_dir / "Cargo.toml"
+        cargo_toml = Path(self.temp_dir) / "Cargo.toml"
         with open(cargo_toml, "w") as f:
             f.write('[package]\nname = "test_project"')
 
@@ -131,7 +131,7 @@ class TestRoboticsCI:
     @patch("subprocess.run")
     def test_run_tests_ros2_success(self, mock_run):
         """Test de tests ROS2 réussi"""
-        package_xml = self.temp_dir / "package.xml"
+        package_xml = Path(self.temp_dir) / "package.xml"
         with open(package_xml, "w") as f:
             f.write("<package><name>test_package</name></package>")
 
@@ -144,7 +144,7 @@ class TestRoboticsCI:
     @patch("subprocess.run")
     def test_run_linting_rust_success(self, mock_run):
         """Test de linting Rust réussi"""
-        cargo_toml = self.temp_dir / "Cargo.toml"
+        cargo_toml = Path(self.temp_dir) / "Cargo.toml"
         with open(cargo_toml, "w") as f:
             f.write('[package]\nname = "test_project"')
 
@@ -166,7 +166,7 @@ class TestRoboticsCI:
     @patch("subprocess.run")
     def test_run_security_scan_rust_success(self, mock_run):
         """Test de scan sécurité Rust réussi"""
-        cargo_toml = self.temp_dir / "Cargo.toml"
+        cargo_toml = Path(self.temp_dir) / "Cargo.toml"
         with open(cargo_toml, "w") as f:
             f.write('[package]\nname = "test_project"')
 
@@ -187,7 +187,7 @@ class TestRoboticsCI:
 
     def test_run_deployment_check_with_configs(self):
         """Test de vérification déploiement avec fichiers de config"""
-        dockerfile = self.temp_dir / "Dockerfile"
+        dockerfile = Path(self.temp_dir) / "Dockerfile"
         with open(dockerfile, "w") as f:
             f.write("FROM python:3.9")
 

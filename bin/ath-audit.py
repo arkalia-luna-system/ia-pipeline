@@ -23,8 +23,7 @@ def main():
     )
     args = parser.parse_args()
     result = validate_and_run(
-        ["python3", "-m", "athalia_core.cli", "audit", args.project],
-        check=False
+        ["python3", "-m", "athalia_core.cli", "audit", args.project], check=False
     )
     sys.exit(result.returncode)
 

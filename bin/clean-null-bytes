@@ -3,10 +3,11 @@
 Script pour nettoyer les octets null des fichiers Python.
 """
 
-import os
 import glob
+import os
 import sys
 from pathlib import Path
+
 
 def clean_null_bytes(filepath):
     """Nettoie les octets null d'un fichier."""
