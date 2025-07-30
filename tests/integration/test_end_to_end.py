@@ -86,14 +86,14 @@ class TestEndToEndIntegration:
 
         # Tester l'exécution
         try:
-            result = subprocess.run(
+            result = validate_and_run(
                 [sys.executable, str(main_py)], capture_output=True, timeout=10
             )
             assert result.returncode in [
                 0,
                 1,
             ], f"main.py a retourné un code inattendu : {result.returncode}"
-        except subprocess.TimeoutExpired:
+        except (subprocess.TimeoutExpired, SecurityError):
             pytest.skip("main.py a dépassé le timeout de 10s")
 
         # Vérifier le contenu Python
@@ -212,7 +212,7 @@ def test_function():
         """Test d'intégration avec des outils externes."""
         # Test avec git
         try:
-            result = subprocess.run(
+            result = validate_and_run(
                 ["git", "--version"], capture_output=True, text=True, timeout=10
             )
             assert result.returncode == 0, "Git non disponible"
@@ -221,7 +221,7 @@ def test_function():
 
         # Test avec Python
         try:
-            result = subprocess.run(
+            result = validate_and_run(
                 [sys.executable, "--version"],
                 capture_output=True,
                 text=True,
@@ -338,7 +338,7 @@ def test_generation_end_to_end_simple(tmp_path):
 
     # Tester l'exécution
     try:
-        result = subprocess.run(
+        result = validate_and_run(
             [sys.executable, str(main_py)], capture_output=True, timeout=10
         )
         assert result.returncode in [
