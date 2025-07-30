@@ -30,9 +30,9 @@ except ImportError:
     PerformanceAnalyzer = None
 
 try:
-    from athalia_core.cache_manager import AnalysisCache
+    from athalia_core.cache_manager import CacheManager
 except ImportError:
-    AnalysisCache = None
+    CacheManager = None
 
 
 class TestPerformanceOptimization:
@@ -48,8 +48,8 @@ class TestPerformanceOptimization:
         else:
             self.performance_analyzer = None
 
-        if AnalysisCache:
-            self.cache_manager = AnalysisCache()
+        if CacheManager:
+            self.cache_manager = CacheManager()
         else:
             self.cache_manager = None
 
@@ -71,8 +71,8 @@ class TestPerformanceOptimization:
 
     def test_cache_manager_initialization(self):
         """Test de l'initialisation du gestionnaire de cache."""
-        if not AnalysisCache:
-            pytest.skip("AnalysisCache non disponible")
+        if not CacheManager:
+            pytest.skip("CacheManager non disponible")
 
         assert self.cache_manager is not None
         assert hasattr(self.cache_manager, "cache_dir")
@@ -103,8 +103,8 @@ def test_function():
 
     def test_cache_operations(self):
         """Test des opérations de cache."""
-        if not AnalysisCache:
-            pytest.skip("AnalysisCache non disponible")
+        if not CacheManager:
+            pytest.skip("CacheManager non disponible")
 
         # Test de mise en cache
         project_path = str(self.test_dir)
