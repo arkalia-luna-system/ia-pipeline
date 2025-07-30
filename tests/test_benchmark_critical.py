@@ -4,6 +4,16 @@ import sys
 
 import pytest
 
+# Import sécurisé pour la validation des commandes
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    # Fallback si le module n'est pas disponible
+    import subprocess
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+    SecurityError = Exception
+
 # Vérification de la disponibilité de pytest-benchmark
 try:
     BENCHMARK_AVAILABLE = True
@@ -61,7 +71,7 @@ def test_global_coverage_threshold():
     env["ATHALIA_COVERAGE_SUBPROCESS"] = "1"
 
     try:
-        result = subprocess.run(
+        result = validate_and_run(
             [
                 sys.executable,
                 "-m",

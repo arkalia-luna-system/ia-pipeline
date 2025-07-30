@@ -9,11 +9,20 @@ import sys
 
 import pytest
 
+# Import sécurisé pour la validation des commandes
+try:
+    from athalia_core.security_validator import validate_and_run, SecurityError
+except ImportError:
+    # Fallback si le module n'est pas disponible
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+    SecurityError = Exception
+
 
 def test_flake8_clean():
     """Test que le code passe flake8 sans erreurs"""
     # Test sur un fichier spécifique qui fonctionne
-    result = subprocess.run(
+    result = validate_and_run(
         [
             sys.executable,
             "-m",

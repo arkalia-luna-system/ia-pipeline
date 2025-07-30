@@ -20,6 +20,72 @@ from .generation import generate_project
 # Exemple: _("Message à traduire") pour les chaînes traduisibles
 
 
+def generate_project(blueprint, output_path, dry_run=False):
+    """Génère un projet à partir d'un blueprint"""
+    try:
+        if dry_run:
+            click.echo("🔍 Mode simulation - Aucun fichier créé")
+            return True
+            
+        # Créer la structure du projet
+        project_path = Path(output_path)
+        project_path.mkdir(parents=True, exist_ok=True)
+        
+        # Créer les fichiers de base
+        project_name = blueprint.get('project_name', 'my_project')
+        
+        # README.md
+        readme_content = f"""# {project_name}
+
+{blueprint.get('description', 'Projet généré automatiquement')}
+
+## Installation
+
+```bash
+pip install -r requirements.txt
+```
+
+## Utilisation
+
+```python
+from {project_name} import main
+main()
+```
+"""
+        
+        with open(project_path / "README.md", "w") as f:
+            f.write(readme_content)
+            
+        # requirements.txt
+        dependencies = blueprint.get('dependencies', [])
+        if dependencies:
+            with open(project_path / "requirements.txt", "w") as f:
+                f.write("\n".join(dependencies))
+                
+        # main.py
+        main_content = f"""#!/usr/bin/env python3
+\"\"\"
+{project_name} - Projet généré automatiquement
+\"\"\"
+
+def main():
+    \"\"\"Fonction principale\"\"\"
+    print("Hello from {project_name}!")
+
+if __name__ == "__main__":
+    main()
+"""
+        
+        with open(project_path / "main.py", "w") as f:
+            f.write(main_content)
+            
+        return True
+        
+    except Exception as e:
+        click.echo(f"❌ Erreur lors de la génération: {e}")
+        return False
+
+
 @click.group()
 @click.option("--verbose", "-v", is_flag=True, help="Mode verbeux")
 def cli(verbose):
@@ -59,12 +125,15 @@ def generate(idea, output, dry_run):
         os.makedirs(output, exist_ok=True)
 
         # Variable non utilisée supprimée
-        generate_project(blueprint, output, dry_run=dry_run)
-
-        if not dry_run:
-            click.echo(f"✅ Projet généré dans: {output}")
+        result = generate_project(blueprint, output, dry_run=dry_run)
+        
+        if result:
+            if not dry_run:
+                click.echo(f"✅ Projet généré dans: {output}")
+            else:
+                click.echo("✅ Simulation terminée")
         else:
-            click.echo("✅ Simulation terminée")
+            click.echo("❌ Erreur lors de la génération du projet")
 
     except Exception as e:
         click.echo(f"❌ Erreur: {e}")
