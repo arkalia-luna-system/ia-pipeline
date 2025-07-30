@@ -7,7 +7,6 @@ Documentation des améliorations de qualité du code.
 
 import pytest
 import subprocess
-import sys
 
 # Import sécurisé pour la validation des commandes
 try:

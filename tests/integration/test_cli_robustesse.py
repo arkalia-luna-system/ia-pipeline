@@ -20,8 +20,9 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 try:
     from athalia_core.security_validator import validate_and_run, SecurityError
 except ImportError:
+
     def validate_and_run(command, **kwargs):
-        return validate_and_run(command, **kwargs)
+        return subprocess.run(command, **kwargs)
 
     class SecurityErrorFallback(Exception):
         pass
@@ -75,7 +76,7 @@ class TestCLIRobustesse:
                     assert result.returncode in [0, 1]  # 0 = succès, 1 = aide affichée
                     assert len(result.stdout) > 0 or len(result.stderr) > 0
 
-                except ((subprocess.TimeoutExpired, SecurityError), SecurityError):
+                except (subprocess.TimeoutExpired, SecurityError):
                     pytest.skip(f"CLI {cli_path} prend trop de temps à démarrer")
                 except Exception as e:
                     pytest.skip(f"CLI {cli_path} non disponible: {e}")
@@ -96,7 +97,7 @@ class TestCLIRobustesse:
                     # Vérifier que la commande s'exécute
                     assert result.returncode in [0, 1]
 
-                except ((subprocess.TimeoutExpired, SecurityError), SecurityError):
+                except (subprocess.TimeoutExpired, SecurityError):
                     pytest.skip(f"CLI {cli_path} prend trop de temps à démarrer")
                 except Exception as e:
                     pytest.skip(f"CLI {cli_path} non disponible: {e}")
@@ -117,7 +118,7 @@ class TestCLIRobustesse:
                     # Vérifier que la commande gère l'erreur correctement
                     assert result.returncode in [1, 2]  # Code d'erreur attendu
 
-                except ((subprocess.TimeoutExpired, SecurityError), SecurityError):
+                except (subprocess.TimeoutExpired, SecurityError):
                     pytest.skip(f"CLI {cli_path} prend trop de temps à démarrer")
                 except Exception as e:
                     pytest.skip(f"CLI {cli_path} non disponible: {e}")
@@ -138,7 +139,7 @@ class TestCLIRobustesse:
                     # Vérifier que la commande gère l'absence d'arguments
                     assert result.returncode in [0, 1, 2]
 
-                except ((subprocess.TimeoutExpired, SecurityError), SecurityError):
+                except (subprocess.TimeoutExpired, SecurityError):
                     pytest.skip(f"CLI {cli_path} prend trop de temps à démarrer")
                 except Exception as e:
                     pytest.skip(f"CLI {cli_path} non disponible: {e}")
@@ -159,7 +160,7 @@ class TestCLIRobustesse:
                     # Vérifier que le mode dry-run fonctionne
                     assert result.returncode in [0, 1]
 
-                except ((subprocess.TimeoutExpired, SecurityError), SecurityError):
+                except (subprocess.TimeoutExpired, SecurityError):
                     pytest.skip(f"CLI {cli_path} prend trop de temps à démarrer")
                 except Exception as e:
                     pytest.skip(f"CLI {cli_path} non disponible: {e}")
@@ -180,7 +181,7 @@ class TestCLIRobustesse:
                     # Vérifier que le mode verbose fonctionne
                     assert result.returncode in [0, 1]
 
-                except ((subprocess.TimeoutExpired, SecurityError), SecurityError):
+                except (subprocess.TimeoutExpired, SecurityError):
                     pytest.skip(f"CLI {cli_path} prend trop de temps à démarrer")
                 except Exception as e:
                     pytest.skip(f"CLI {cli_path} non disponible: {e}")
