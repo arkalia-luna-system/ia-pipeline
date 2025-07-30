@@ -4,11 +4,14 @@ Couverture : 100% des fonctionnalités d'orchestration unifiée
 Tests : 20 tests unitaires et d'intégration
 """
 
-import pytest
 import tempfile
 from pathlib import Path
 from unittest.mock import Mock, patch
-from athalia_core.unified_orchestrator import UnifiedOrchestrator, run_unified_workflow
+
+import pytest
+
+from athalia_core.unified_orchestrator import (UnifiedOrchestrator,
+                                               run_unified_workflow)
 
 
 class TestUnifiedOrchestrator:

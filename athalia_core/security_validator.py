@@ -7,8 +7,8 @@ Protection contre les injections de commandes et exécution non autorisée
 
 import logging
 import subprocess
-from typing import List, Dict, Any
 from pathlib import Path
+from typing import Any, Dict, List
 
 logger = logging.getLogger(__name__)
 

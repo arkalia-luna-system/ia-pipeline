@@ -7,12 +7,11 @@ Tests : 20 tests unitaires et d'intégration
 import tempfile
 from pathlib import Path
 from unittest.mock import Mock, patch
+
 import yaml
-from athalia_core.dashboard import (
-    Dashboard,
-    generate_dashboard_html,
-    create_dashboard_report,
-)
+
+from athalia_core.dashboard import (Dashboard, create_dashboard_report,
+                                    generate_dashboard_html)
 
 
 class TestDashboard:

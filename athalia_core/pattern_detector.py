@@ -304,7 +304,7 @@ class PatternDetector:
 
                 similar_patterns = [pattern1]
 
-                for j, pattern2 in enumerate(type_patterns[i + 1 :], i + 1):
+                for j, pattern2 in enumerate(type_patterns[i + 1:], i + 1):
                     if pattern2.signature in processed:
                         continue
 

@@ -4,12 +4,13 @@ Module dashboard pour Athalia
 Interface de visualisation et monitoring
 """
 
-from pathlib import Path
-from typing import Dict, Any, List, Optional
 import json
-import yaml
 import logging
 from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+import yaml
 
 logger = logging.getLogger(__name__)
 

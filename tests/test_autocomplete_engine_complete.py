@@ -4,15 +4,13 @@ Couverture : 100% des fonctionnalités d'autocomplete
 Tests : 20 tests unitaires et d'intégration
 """
 
+import json
 import tempfile
 from pathlib import Path
 from unittest.mock import Mock, patch
-import json
-from athalia_core.autocomplete_engine import (
-    AutocompleteEngine,
-    get_suggestions,
-    train_model,
-)
+
+from athalia_core.autocomplete_engine import (AutocompleteEngine,
+                                              get_suggestions, train_model)
 
 
 class TestAutocompleteEngine:

@@ -185,8 +185,8 @@ class CorrectionOptimizer:
             if "def " in line and "(" in line and ")" in line:
                 # Extraire la partie avant les parenthèses
                 before_paren = line[: line.find("(")]
-                after_paren = line[line.find(")") :]
-                params_part = line[line.find("(") + 1 : line.find(")")]
+                after_paren = line[line.find(")"):]
+                params_part = line[line.find("(") + 1: line.find(")")]
 
                 # Nettoyer les paramètres
                 params = [p.strip() for p in params_part.split(",") if p.strip()]
@@ -528,7 +528,7 @@ class CorrectionOptimizer:
 
                 # Extraire les paramètres de la fonction
                 if "(" in func_def and ")" in func_def:
-                    params_part = func_def[func_def.find("(") + 1 : func_def.find(")")]
+                    params_part = func_def[func_def.find("(") + 1: func_def.find(")")]
                     params = [
                         p.strip().split("=")[0].strip()
                         for p in params_part.split(",")

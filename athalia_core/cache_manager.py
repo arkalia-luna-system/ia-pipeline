@@ -4,16 +4,17 @@ Module cache_manager pour Athalia
 Gestion du cache avec persistance et optimisation
 """
 
-from pathlib import Path
-from typing import Dict, Any, List, Optional, Union
+import gzip
+import hashlib
 import json
-import yaml
 import logging
 import pickle
 import time
-import gzip
-import hashlib
 from functools import wraps
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Union
+
+import yaml
 
 logger = logging.getLogger(__name__)
 

@@ -4,17 +4,17 @@ Couverture : 100% des fonctionnalités d'auto_documenter
 Tests : 25 tests unitaires et d'intégration
 """
 
+import json
 import tempfile
+from datetime import datetime
 from pathlib import Path
 from unittest.mock import Mock, patch
-import json
+
 import yaml
-from datetime import datetime
-from athalia_core.auto_documenter import (
-    AutoDocumenter,
-    generate_documentation,
-    analyze_documentation_needs,
-)
+
+from athalia_core.auto_documenter import (AutoDocumenter,
+                                          analyze_documentation_needs,
+                                          generate_documentation)
 
 
 class TestAutoDocumenter:

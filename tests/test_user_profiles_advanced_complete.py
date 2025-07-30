@@ -18,9 +18,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 try:
     from athalia_core.advanced_modules.user_profiles_advanced import (
-        GestionnaireProfils,
-        ProfilUtilisateur,
-    )
+        GestionnaireProfils, ProfilUtilisateur)
 
     USER_PROFILES_AVAILABLE = True
 except ImportError:

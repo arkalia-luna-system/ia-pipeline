@@ -14,7 +14,7 @@ import requests
 
 # Import sécurisé pour la validation des commandes
 try:
-    from athalia_core.security_validator import validate_and_run, SecurityError
+    from athalia_core.security_validator import SecurityError, validate_and_run
 except ImportError:
     # Fallback si le module n'est pas disponible
     def validate_and_run(command, **kwargs):
@@ -134,7 +134,9 @@ def test_apple_double_files():
     apple_double_files = list(plugin_dir.rglob("._*"))
 
     if apple_double_files:
-        print_status(f"⚠️ Fichiers AppleDouble trouvés: {len(apple_double_files)}", "⚠️")
+        print_status(
+            f"⚠️ Fichiers AppleDouble trouvés: {len(apple_double_files)}",
+            "⚠️")
         for file in apple_double_files[:5]:  # Afficher les 5 premiers
             print(f"   - {file}")
         if len(apple_double_files) > 5:

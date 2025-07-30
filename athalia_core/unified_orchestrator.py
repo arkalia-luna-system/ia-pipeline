@@ -10,7 +10,6 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict
 
-
 # Imports des modules Athalia
 from .ai_robust import RobustAI
 from .auto_cicd import AutoCICD

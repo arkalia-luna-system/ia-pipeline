@@ -3,13 +3,14 @@ import os
 import subprocess
 import sys
 import time
+
 import pytest
 
 # Correction pour les permissions des scripts
 
 # Import sécurisé pour la validation des commandes
 try:
-    from athalia_core.security_validator import validate_and_run, SecurityError
+    from athalia_core.security_validator import SecurityError, validate_and_run
 except ImportError:
     # Fallback si le module n'est pas disponible
     def validate_and_run(command, **kwargs):

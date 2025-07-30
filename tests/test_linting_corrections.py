@@ -5,12 +5,13 @@ Tests de documentation des corrections de linting.
 Documentation des améliorations de qualité du code.
 """
 
-import pytest
 import subprocess
+
+import pytest
 
 # Import sécurisé pour la validation des commandes
 try:
-    from athalia_core.security_validator import validate_and_run, SecurityError
+    from athalia_core.security_validator import SecurityError, validate_and_run
 except ImportError:
 
     def validate_and_run(command, **kwargs):

@@ -4,16 +4,15 @@ Couverture : 100% des fonctionnalités d'analytics
 Tests : 25 tests unitaires et d'intégration
 """
 
+import json
 import tempfile
 from pathlib import Path
 from unittest.mock import Mock, patch
-import json
+
 import yaml
-from athalia_core.analytics import (
-    AnalyticsEngine,
-    generate_analytics_report,
-    analyze_project_metrics,
-)
+
+from athalia_core.analytics import (AnalyticsEngine, analyze_project_metrics,
+                                    generate_analytics_report)
 
 
 class TestAnalyticsEngine:

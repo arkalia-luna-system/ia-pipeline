@@ -6,10 +6,11 @@ Tests pour optimiser les performances du projet
 """
 
 import time
-import psutil
-import pytest
 from pathlib import Path
 from typing import Dict, List, Tuple
+
+import psutil
+import pytest
 
 
 class PerformanceMonitor:
@@ -56,10 +57,10 @@ class TestPerformancePhase3:
         monitor.start()
 
         # Test d'import des modules principaux
-        import athalia_core  # noqa: F401
-        import athalia_core.cli  # noqa: F401
-        import athalia_core.main  # noqa: F401
-        import athalia_core.security_validator  # noqa: F401
+        import athalia_core as ath_core  # noqa: F401
+        import athalia_core.cli as ath_cli  # noqa: F401
+        import athalia_core.main as ath_main  # noqa: F401
+        import athalia_core.security_validator as ath_sec  # noqa: F401
 
         metrics = monitor.stop()
 
