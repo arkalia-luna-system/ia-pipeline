@@ -9,6 +9,9 @@ import time
 import psutil
 import pytest
 
+# Désactiver la génération de fichiers .pyc pour tous les tests
+os.environ["PYTHONDONTWRITEBYTECODE"] = "1"
+
 # Import sécurisé pour la validation des commandes
 try:
     from athalia_core.security_validator import validate_and_run, SecurityError
@@ -74,6 +77,29 @@ def cleanup_athalia_resources():
                 shell=True,
                 capture_output=True,
             )
+
+        # Nettoyer les fichiers cache Python
+        try:
+            import shutil
+            import glob
+            
+            # Nettoyer les dossiers __pycache__
+            for pycache_dir in glob.glob("**/__pycache__", recursive=True):
+                try:
+                    shutil.rmtree(pycache_dir)
+                except Exception:
+                    pass
+            
+            # Nettoyer les fichiers .pyc
+            for pyc_file in glob.glob("**/*.pyc", recursive=True):
+                try:
+                    os.remove(pyc_file)
+                except Exception:
+                    pass
+                    
+        except Exception:
+            # Ignorer les erreurs de nettoyage des fichiers cache
+            pass
 
     except Exception as e:
         print(f"⚠️ Erreur lors du nettoyage des ressources: {e}")
