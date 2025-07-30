@@ -13,6 +13,14 @@ import threading
 import time
 from datetime import datetime
 
+# Import du validateur de sécurité
+try:
+    from athalia_core.security_validator import validate_and_run
+except ImportError:
+    # Fallback si le module n'est pas disponible
+    def validate_and_run(command, **kwargs):
+        return subprocess.run(command, **kwargs)
+
 
 class ValidationContinue:
     def __init__(self, intervalle_minutes=60):
