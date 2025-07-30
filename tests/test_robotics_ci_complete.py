@@ -281,11 +281,11 @@ class TestRoboticsCIIntegration:
     def test_full_ci_workflow(self, mock_run):
         """Test du workflow CI complet"""
         # Créer un projet Rust simple
-        cargo_toml = self.temp_dir / "Cargo.toml"
+        cargo_toml = Path(self.temp_dir) / "Cargo.toml"
         with open(cargo_toml, "w") as f:
             f.write('[package]\nname = "test_project"')
 
-        src_dir = self.temp_dir / "src"
+        src_dir = Path(self.temp_dir) / "src"
         src_dir.mkdir()
 
         main_rs = src_dir / "main.rs"
