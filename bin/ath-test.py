@@ -71,6 +71,20 @@ def run_tests_with_cleanup():
 def main():
     """Fonction principale"""
     if len(sys.argv) > 1:
+        # Gestion des arguments spéciaux
+        if "--help" in sys.argv or "-h" in sys.argv:
+            print("🧪 Script de test Athalia")
+            print("Usage: ath-test.py [options]")
+            print("\nOptions:")
+            print("  --help, -h     Afficher cette aide")
+            print("  --version, -v  Afficher la version")
+            print("  [autres]       Arguments passés à pytest")
+            sys.exit(0)
+        
+        if "--version" in sys.argv or "-v" in sys.argv:
+            print("ath-test.py version 1.0.0")
+            sys.exit(0)
+        
         # Mode avec arguments (compatibilité)
         env = os.environ.copy()
         env["ATHALIA_TEST_RUNNING"] = "1"
