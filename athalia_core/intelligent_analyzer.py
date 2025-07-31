@@ -21,7 +21,6 @@ from .ast_analyzer import ASTAnalyzer
 from .pattern_detector import PatternDetector
 from .performance_analyzer import PerformanceAnalyzer
 
-
 # Import de l'orchestrateur unifié (optionnel)
 try:
     from .unified_orchestrator import UnifiedOrchestrator
@@ -367,8 +366,7 @@ class IntelligentAnalyzer:
                     {
                         "task": "refactor_medium_impact_antipatterns",
                         "description": (
-                            f"Refactoriser {len(medium_impact_antipatterns)} "
-                            "anti-patterns"
+                            f"Refactoriser {len(medium_impact_antipatterns)} anti-patterns"
                         ),
                         "effort": "medium",
                         "impact": "medium",

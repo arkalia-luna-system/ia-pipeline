@@ -155,9 +155,7 @@ class Test{module_name}(unittest.TestCase):
         # Nettoyage des données de test
         self.test_data.clear()
         self.test_config.clear()
-""".format(
-            module_name=module["name"].title()
-        )
+""".format(module_name=module["name"].title())
 
         # Tests pour les classes
         for class_info in module["classes"]:
@@ -172,9 +170,7 @@ class Test{module_name}(unittest.TestCase):
             self.assertIsNotNone(instance)
         except Exception as e:
             self.skipTest(f"Impossible de créer {class_name}: {{e}}")
-""".format(
-                class_name=class_info["name"], module_name=module["name"]
-            )
+""".format(class_name=class_info["name"], module_name=module["name"])
 
             # Tests pour les méthodes
             for method_name in class_info["methods"]:
@@ -215,9 +211,7 @@ class Test{module_name}(unittest.TestCase):
             self.assertIsNotNone(result)
         except Exception as e:
             self.skipTest(f"Impossible de tester {func_name}: {{e}}")
-""".format(
-                func_name=func_name, module_name=module["name"]
-            )
+""".format(func_name=func_name, module_name=module["name"])
 
         test_content += """
 
@@ -668,9 +662,7 @@ python -m pytest tests/ -v
 ```
 
 {sep2}
-""".format(
-            project_path=self.project_path, sep2="=" * 60
-        )
+""".format(project_path=self.project_path, sep2="=" * 60)
         return report
 
 
