@@ -12,6 +12,7 @@ from pathlib import Path
 import subprocess
 import time
 
+
 # Import du validateur de sécurité
 try:
     from athalia_core.security_validator import SecurityError, validate_and_run
@@ -320,7 +321,9 @@ if __name__ == "__main__":
             "efficacite": (
                 "EXCELLENTE"
                 if gain_temps > 10
-                else "BONNE" if gain_temps > 5 else "MOYENNE"
+                else "BONNE"
+                if gain_temps > 5
+                else "MOYENNE"
             ),
         }
 
@@ -383,7 +386,9 @@ if __name__ == "__main__":
                         "qualite": (
                             "EXCELLENTE"
                             if score_pylint >= 9.0
-                            else "BONNE" if score_pylint >= 7.0 else "MOYENNE"
+                            else "BONNE"
+                            if score_pylint >= 7.0
+                            else "MOYENNE"
                         ),
                     }
                 except json.JSONDecodeError:
@@ -583,9 +588,8 @@ if __name__ == "__main__":
 
 | Métrique | Valeur | Seuil | Statut |
 |----------|--------|-------|--------|
-| Taux de succès global | {taux_succes:.1f}% | 85% | {'✅' if taux_succes >= 85 else '❌'} |
-| Temps total de validation | {temps_total:.1f}s | <300s | {'✅' if temps_total < 300 else '❌'} |
-| Tests critiques passés | {tests_succes}/{len(resultats)} | {len(resultats)} | {'✅' if tests_succes == len(resultats) else '❌'} |
+| Taux de succès global | {taux_succes:.1f}% | 85% | "
+ f"{'✅' if taux_succes >= 85 else '❌'} |"
 
 ## 🔍 Points d'Attention
 
@@ -605,7 +609,8 @@ if __name__ == "__main__":
 
         rapport += f"""
 ## 🎉 Conclusion
-Ce rapport est basé sur des **tests objectifs et mesurables**. Les résultats ne peuvent pas mentir.
+Ce rapport est basé sur des **tests objectifs et mesurables**. "
+"Les résultats ne peuvent pas mentir."
 
 **{verdict}**
 

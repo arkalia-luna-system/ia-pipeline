@@ -7,7 +7,6 @@ Amélioration de la couverture de code de 10.05% à 80%+
 import signal
 from unittest.mock import MagicMock, patch
 
-
 from athalia_core.main import main, menu, safe_input, signal_handler, surveillance_mode
 
 
@@ -140,13 +139,12 @@ class TestSurveillanceMode:
 class TestMain:
     """Tests pour la fonction main"""
 
-    @patch("athalia_core.main.menu")
-    @patch("athalia_core.main.safe_input")
+    @patch("builtins.input")
     @patch("athalia_core.cleanup.clean_old_tests_and_caches")
-    def test_main_cleanup_choice(self, mock_cleanup, mock_safe_input, mock_menu):
+    def test_main_cleanup_choice(self, mock_cleanup, mock_input):
         """Test de la fonction main avec choix de nettoyage"""
-        mock_menu.return_value = "2"
-        mock_safe_input.return_value = "test_project"
+        # Simuler le menu et l'entrée utilisateur
+        mock_input.side_effect = ["2", "test_project"]
 
         # Mock pour éviter la boucle infinie
         with patch("athalia_core.main.running", False):

@@ -247,7 +247,7 @@ class CIProAnalyzer:
         # Mesure de couverture réelle
         returncode, stdout, stderr = self.run_command(
             "python -m coverage run --source=athalia_core -m pytest tests/ -q "
-            "--tb=no && python -m coverage report"
+            "--tb=no --maxfail=9999 && python -m coverage report"
         )
         if returncode == 0:
             # Extraire le pourcentage de couverture
