@@ -48,6 +48,13 @@ jobs:
           pip install -r config/requirements-minimal.txt --timeout 300
           pip install pytest-timeout pytest-xdist flask flask-cors black ruff --timeout 300
 
+      - name: Clean coverage files
+        run: |
+          echo "🧹 Nettoyage des fichiers de couverture..."
+          find . -name ".coverage*" -type f -delete || true
+          rm -rf htmlcov/ || true
+          echo "✅ Fichiers de couverture nettoyés"
+
       # Tests critiques - toujours exécutés
       - name: Lint (flake8)
         run: |
@@ -63,57 +70,57 @@ jobs:
 
       - name: Check polluting files
         run: |
-          python -m pytest tests/test_no_polluting_files.py -v
+          python -m pytest tests/test_no_polluting_files.py -v --no-cov
 
       - name: Check all imports
         run: |
-          python -m pytest tests/test_imports_all.py -v
+          python -m pytest tests/test_imports_all.py -v --no-cov
 
       - name: Check UTF-8 encoding
         run: |
-          python -m pytest tests/test_encoding_utf8.py -v
+          python -m pytest tests/test_encoding_utf8.py -v --no-cov
 
       # Tests de sécurité - mode adaptatif pour le développement
       - name: Check for dangerous patterns
         if: github.actor != 'athalia'
         continue-on-error: true
         run: |
-          python -m pytest tests/test_security_patterns.py -v
+          python -m pytest tests/test_security_patterns.py -v --no-cov
 
       - name: Check for hardcoded paths
         if: github.actor != 'athalia'
         continue-on-error: true
         run: |
-          python -m pytest tests/test_hardcoded_paths.py -v
+          python -m pytest tests/test_hardcoded_paths.py -v --no-cov
 
       # Tests de qualité - mode adaptatif
       - name: Check requirements consistency
         if: github.actor != 'athalia'
         continue-on-error: true
         run: |
-          python -m pytest tests/test_requirements_consistency.py -v
+          python -m pytest tests/test_requirements_consistency.py -v --no-cov
 
       - name: Coverage threshold
         if: github.actor != 'athalia'
         continue-on-error: true
         run: |
-          python -m pytest tests/test_coverage_threshold.py -v
+          python -m pytest tests/test_coverage_threshold.py -v --no-cov
 
       # Tests CI - mode adaptatif pour le développement
       - name: Run ultra-fast CI tests
         run: |
-          python -m pytest tests/test_ci_ultra_fast.py -v --tb=short
+          python -m pytest tests/test_ci_ultra_fast.py -v --tb=short --no-cov
 
       - name: Run robust CI tests
         if: github.actor != 'athalia'
         continue-on-error: true
         run: |
-          python -m pytest tests/test_ci_robust.py -v --tb=short
+          python -m pytest tests/test_ci_robust.py -v --tb=short --no-cov
 
       - name: Run safe core tests
         timeout-minutes: 15
         run: |
-          python -m pytest tests/ -m "not slow and not skip_ci" --tb=short -x --maxfail=3 --timeout=30 --durations=10
+          python -m pytest tests/ -m "not slow and not skip_ci" --tb=short -x --maxfail=3 --timeout=30 --durations=10 --no-cov
 
       # Vérifications de base
       - name: Syntax check
