@@ -40,6 +40,7 @@ def cleanup_coverage_files():
         pass
 
 
+@pytest.mark.no_cov  # Marqueur pour désactiver la couverture
 def test_ath_lint_runs():
     # Nettoyer les fichiers de couverture avant le test
     cleanup_coverage_files()

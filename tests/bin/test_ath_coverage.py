@@ -45,6 +45,7 @@ def cleanup_coverage_files():
 
 
 @pytest.mark.timeout(120)
+@pytest.mark.no_cov  # Marqueur pour désactiver la couverture
 def test_ath_coverage_runs():
     """Test que ath-coverage.py fonctionne sans récursivité"""
     # Nettoyer les fichiers de couverture avant le test

@@ -122,6 +122,11 @@ jobs:
         run: |
           python -m pytest tests/ -m "not slow and not skip_ci" --tb=short -x --maxfail=3 --timeout=30 --durations=10 --no-cov
 
+      - name: Run bin tests without coverage
+        timeout-minutes: 10
+        run: |
+          python -m pytest tests/bin/ -v --no-cov --tb=short
+
       # Vérifications de base
       - name: Syntax check
         run: |

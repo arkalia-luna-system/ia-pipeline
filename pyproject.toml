@@ -117,7 +117,6 @@ addopts = [
     "--cov-report=term-missing",
     # "--cov-fail-under=60",  # Désactivé temporairement
     "--cov-branch",
-    "--cov-context=test",
 ]
 markers = [
     "fast: marks tests as fast (deselect with '-m \"not fast\"')",
@@ -129,6 +128,7 @@ markers = [
     "performance: marks tests as performance tests",
     "security: marks tests as security tests",
     "timeout: marks tests with timeout",
+    "no_cov: marks tests that should not use coverage",
 ]
 filterwarnings = [
     "ignore::DeprecationWarning",
