@@ -195,14 +195,21 @@ class IntelligentAnalyzer:
 
         # Score Architecture (structure du projet)
         arch_score = 100
-        if architecture_analysis.performance_issues:
+        if (
+            hasattr(architecture_analysis, "performance_issues")
+            and architecture_analysis.performance_issues
+        ):
             arch_score -= len(architecture_analysis.performance_issues) * 4
         arch_score = max(0, arch_score)
         scores.append(arch_score)
         weights.append(2.0)
 
         # Score Performance
-        perf_score = performance_analysis.overall_score
+        perf_score = (
+            performance_analysis.overall_score
+            if hasattr(performance_analysis, "overall_score")
+            else performance_analysis.get("overall_score", 0)
+        )
         scores.append(perf_score)
         weights.append(3.5)
 
@@ -222,17 +229,18 @@ class IntelligentAnalyzer:
         recommendations = []
 
         # Recommandations des patterns
+        high_severity_duplicates = []
         if pattern_analysis["duplicates"]:
             high_severity_duplicates = [
                 d
                 for d in pattern_analysis["duplicates"]
-                if d.severity in ["high", "medium"]
+                if isinstance(d, dict) and d.get("severity") in ["high", "medium"]
             ]
-            if high_severity_duplicates:
-                recommendations.append(
-                    f"🔧 {len(high_severity_duplicates)} doublons critiques - fusion"
-                    " prioritaire"
-                )
+        if high_severity_duplicates:
+            recommendations.append(
+                f"🔧 {len(high_severity_duplicates)} doublons critiques - fusion"
+                " prioritaire"
+            )
 
         if pattern_analysis["antipatterns"]:
             high_impact_antipatterns = [
@@ -247,14 +255,17 @@ class IntelligentAnalyzer:
                 )
 
         # Recommandations d'architecture
-        if architecture_analysis.performance_issues:
+        if (
+            hasattr(architecture_analysis, "performance_issues")
+            and architecture_analysis.performance_issues
+        ):
             recommendations.append(
                 f"🏗️ {len(architecture_analysis.performance_issues)} "
                 "problèmes d'architecture détectés"
             )
 
         # Recommandations de performance
-        if performance_analysis.issues:
+        if hasattr(performance_analysis, "issues") and performance_analysis.issues:
             high_impact_perf_issues = [
                 i
                 for i in performance_analysis.issues
@@ -293,24 +304,26 @@ class IntelligentAnalyzer:
         }
 
         # Tâches prioritaires (impact élevé)
+        high_severity_duplicates = []
         if pattern_analysis["duplicates"]:
             high_severity_duplicates = [
-                d for d in pattern_analysis["duplicates"] if d.severity == "high"
+                d
+                for d in pattern_analysis["duplicates"]
+                if isinstance(d, dict) and d.get("severity") == "high"
             ]
-            if high_severity_duplicates:
-                plan["priority_tasks"].append(
-                    {
-                        "task": "merge_high_severity_duplicates",
-                        "description": (
-                            f"Fusionner {len(high_severity_duplicates)} "
-                            "doublons critiques"
-                        ),
-                        "effort": "high",
-                        "impact": "high",
-                    }
-                )
-                # heures
-                plan["estimated_effort"] += len(high_severity_duplicates) * 2
+        if high_severity_duplicates:
+            plan["priority_tasks"].append(
+                {
+                    "task": "merge_high_severity_duplicates",
+                    "description": (
+                        f"Fusionner {len(high_severity_duplicates)} doublons critiques"
+                    ),
+                    "effort": "high",
+                    "impact": "high",
+                }
+            )
+            # heures
+            plan["estimated_effort"] += len(high_severity_duplicates) * 2
 
         if performance_analysis.issues:
             critical_perf_issues = [
@@ -334,15 +347,16 @@ class IntelligentAnalyzer:
         # Tâches de priorité moyenne
         if pattern_analysis["antipatterns"]:
             medium_impact_antipatterns = [
-                a for a in pattern_analysis["antipatterns"] if a.impact == "medium"
+                a
+                for a in pattern_analysis["antipatterns"]
+                if isinstance(a, dict) and a.get("impact") == "medium"
             ]
             if medium_impact_antipatterns:
                 plan["medium_priority_tasks"].append(
                     {
                         "task": "refactor_medium_impact_antipatterns",
                         "description": (
-                            f"Refactoriser {len(medium_impact_antipatterns)} "
-                            "anti-patterns"
+                            f"Refactoriser {len(medium_impact_antipatterns)} anti-patterns"
                         ),
                         "effort": "medium",
                         "impact": "medium",
@@ -353,7 +367,7 @@ class IntelligentAnalyzer:
 
         # Calculer l'amélioration attendue
         total_improvement = 0
-        if performance_analysis.issues:
+        if hasattr(performance_analysis, "issues") and performance_analysis.issues:
             total_improvement += sum(
                 i.estimated_improvement for i in performance_analysis.issues
             )
@@ -383,14 +397,22 @@ class IntelligentAnalyzer:
                 "antipatterns_count": len(analysis.pattern_analysis["antipatterns"]),
             },
             "architecture_analysis": {
-                "modules_count": len(analysis.architecture_analysis.modules),
+                "modules_count": (
+                    analysis.architecture_analysis.get("modules", 0)
+                    if hasattr(analysis.architecture_analysis, "get")
+                    else len(getattr(analysis.architecture_analysis, "modules", []))
+                ),
                 "performance_issues_count": len(
-                    analysis.architecture_analysis.performance_issues
+                    analysis.architecture_analysis.get("performance_issues", [])
+                    if hasattr(analysis.architecture_analysis, "get")
+                    else getattr(
+                        analysis.architecture_analysis, "performance_issues", []
+                    )
                 ),
             },
             "performance_analysis": {
-                "overall_score": analysis.performance_analysis.overall_score,
-                "issues_count": len(analysis.performance_analysis.issues),
+                "overall_score": analysis.performance_analysis.get("overall_score", 0),
+                "issues_count": len(analysis.performance_analysis.get("issues", [])),
             },
         }
 

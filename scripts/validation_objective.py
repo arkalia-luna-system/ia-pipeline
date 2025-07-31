@@ -12,7 +12,6 @@ from pathlib import Path
 import subprocess
 import time
 
-
 # Import du validateur de sécurité
 try:
     from athalia_core.security_validator import SecurityError, validate_and_run
@@ -589,7 +588,7 @@ if __name__ == "__main__":
 | Métrique | Valeur | Seuil | Statut |
 |----------|--------|-------|--------|
 | Taux de succès global | {taux_succes:.1f}% | 85% | "
- f"{'✅' if taux_succes >= 85 else '❌'} |"
+ f"{"✅" if taux_succes >= 85 else "❌"} |"
 
 ## 🔍 Points d'Attention
 
