@@ -224,3 +224,7 @@ athalia.f(f
 *.db3
 *.db-shm
 *.db-wal
+
+# Fichiers AppleDouble et macOS
+._*
+.DS_Store
