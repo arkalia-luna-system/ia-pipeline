@@ -104,7 +104,9 @@ class TestNoPollutingFiles:
                 # Gérer les fichiers .log de manière spécifique
                 if file.endswith(".log"):
                     # Exclure les fichiers de logs normaux du projet
-                    if not root.startswith("./logs") and not root.startswith("./tests/logs"):
+                    if not root.startswith("./logs") and not root.startswith(
+                        "./tests/logs"
+                    ):
                         temp_files.append(os.path.join(root, file))
 
         # Skip si trop de fichiers trouvés (probablement des faux positifs)
@@ -141,7 +143,9 @@ class TestNoPollutingFiles:
             )
 
         if problematic_temp_files:
-            pytest.fail("Fichiers temporaires trouvés:\n" + "\n".join(problematic_temp_files))
+            pytest.fail(
+                "Fichiers temporaires trouvés:\n" + "\n".join(problematic_temp_files)
+            )
 
     def test_no_corrupted_files(self):
         """Test qu'il n'y a pas de fichiers corrompus"""

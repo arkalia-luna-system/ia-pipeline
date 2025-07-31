@@ -131,9 +131,7 @@ class TestIntelligentMemory(unittest.TestCase):
 
     def test_suggest_corrections(self):
         """Test de suggestions de corrections"""
-        problematic_code = (
-            "def bad_function():\n    print('Hello')\n    print('World')\n    print('Again')"
-        )
+        problematic_code = "def bad_function():\n    print('Hello')\n    print('World')\n    print('Again')"
         issue_description = "Fonction avec trop de prints"
 
         suggestions = self.memory.suggest_corrections(

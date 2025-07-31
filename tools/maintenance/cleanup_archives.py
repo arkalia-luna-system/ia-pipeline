@@ -132,9 +132,7 @@ class ArchiveCleaner:
                 index_content += f"## 📅 {date_dir.name}\n\n"
 
                 for file_path in sorted(date_dir.glob("*.md")):
-                    index_content += (
-                        f"- [{file_path.stem}]({file_path.relative_to(self.docs_path)})\n"
-                    )
+                    index_content += f"- [{file_path.stem}]({file_path.relative_to(self.docs_path)})\n"
 
                 index_content += "\n"
 
