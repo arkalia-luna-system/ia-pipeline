@@ -505,14 +505,20 @@ class TestArchitectureAnalyzer:
                 )
                 mock_analyze.return_value = mock_architecture
 
-                # Mock la fonction max pour éviter les erreurs de comparaison
-                with patch("builtins.max", return_value=85.0):
-                    plan = analyzer.get_optimization_plan()
+                # Mock les valeurs de retour de la base de données
+                mock_cursor.fetchone.return_value = [
+                    10,
+                    5.0,
+                    85.0,
+                ]  # total_modules, avg_complexity, avg_performance
+                mock_cursor.fetchall.return_value = [["module1", "high"]]
 
-                    assert isinstance(plan, dict)
-                    assert "recommendations" in plan
-                    assert "performance_issues" in plan
-                    assert "duplicates" in plan
+                plan = analyzer.get_optimization_plan()
+
+                assert isinstance(plan, dict)
+                assert "recommendations" in plan
+                assert "performance_issues" in plan
+                assert "duplicates" in plan
 
     @patch("pathlib.Path.mkdir")
     @patch("sqlite3.connect")
@@ -536,14 +542,20 @@ class TestArchitectureAnalyzer:
                 )
                 mock_analyze.return_value = mock_architecture
 
-                # Mock la fonction max pour éviter les erreurs de comparaison
-                with patch("builtins.max", return_value=85.0):
-                    coordination = analyzer.generate_intelligent_coordination()
+                # Mock les valeurs de retour de la base de données
+                mock_cursor.fetchone.return_value = [
+                    10,
+                    5.0,
+                    85.0,
+                ]  # total_modules, avg_complexity, avg_performance
+                mock_cursor.fetchall.return_value = [["module1", "high"]]
 
-                    assert isinstance(coordination, dict)
-                    assert "modules" in coordination
-                    assert "dependencies" in coordination
-                    assert "optimization_plan" in coordination
+                coordination = analyzer.generate_intelligent_coordination()
+
+                assert isinstance(coordination, dict)
+                assert "modules" in coordination
+                assert "dependencies" in coordination
+                assert "optimization_plan" in coordination
 
 
 class TestIntegration:
@@ -593,9 +605,12 @@ class TestIntegration:
                                 assert isinstance(architecture, ArchitectureMapping)
 
                                 # Test plan d'optimisation
-                                with patch("builtins.max", return_value=85.0):
-                                    plan = analyzer.get_optimization_plan()
-                                    assert isinstance(plan, dict)
+                                mock_cursor.fetchone.return_value = [10, 5.0, 85.0]
+                                mock_cursor.fetchall.return_value = [
+                                    ["module1", "high"]
+                                ]
+                                plan = analyzer.get_optimization_plan()
+                                assert isinstance(plan, dict)
 
                                 # Test coordination intelligente
                                 coordination = (

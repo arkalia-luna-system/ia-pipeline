@@ -354,14 +354,15 @@ class TestPatternDetector:
 
         detector = PatternDetector("/tmp/test")
 
-        # Mock la fonction max pour éviter les erreurs de comparaison
-        with patch("builtins.max", return_value=0.9):
-            insights = detector.get_learning_insights()
+        # Mock les valeurs de retour pour éviter les erreurs de comparaison
+        mock_cursor.fetchone.return_value = [0.9, 0.8, 0.7]  # max_scores
 
-            assert isinstance(insights, dict)
-            assert "pattern_types" in insights
-            assert "duplicate_trends" in insights
-            assert "antipattern_frequency" in insights
+        insights = detector.get_learning_insights()
+
+        assert isinstance(insights, dict)
+        assert "pattern_types" in insights
+        assert "duplicate_trends" in insights
+        assert "antipattern_frequency" in insights
 
 
 class TestIntegration:
@@ -399,9 +400,9 @@ class TestIntegration:
                             assert isinstance(result, dict)
 
                             # Test insights d'apprentissage
-                            with patch("builtins.max", return_value=0.9):
-                                insights = detector.get_learning_insights()
-                                assert isinstance(insights, dict)
+                            mock_cursor.fetchone.return_value = [0.9, 0.8, 0.7]
+                            insights = detector.get_learning_insights()
+                            assert isinstance(insights, dict)
 
                             # Vérifier que toutes les méthodes ont été appelées
                             mock_detect_duplicates.assert_called_once()
