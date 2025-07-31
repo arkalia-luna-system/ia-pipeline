@@ -92,8 +92,8 @@ class TestArchitectureMapping:
 class TestArchitectureAnalyzer:
     """Tests pour la classe ArchitectureAnalyzer"""
 
-    @patch('pathlib.Path.mkdir')
-    @patch('sqlite3.connect')
+    @patch("pathlib.Path.mkdir")
+    @patch("sqlite3.connect")
     def test_init(self, mock_connect, mock_mkdir):
         """Test d'initialisation de l'analyseur d'architecture"""
         mock_conn = MagicMock()
@@ -101,15 +101,15 @@ class TestArchitectureAnalyzer:
         mock_connect.return_value.__enter__.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
 
-        with patch('builtins.open', mock_open(read_data='config: test')):
+        with patch("builtins.open", mock_open(read_data="config: test")):
             analyzer = ArchitectureAnalyzer("/tmp/test")
 
             assert analyzer.root_path == Path("/tmp/test")
             assert analyzer.db_path == Path("/tmp/test/data/architecture_analysis.db")
             assert analyzer.config_path == Path("/tmp/test/config/athalia_config.yaml")
 
-    @patch('pathlib.Path.mkdir')
-    @patch('sqlite3.connect')
+    @patch("pathlib.Path.mkdir")
+    @patch("sqlite3.connect")
     def test_init_default_path(self, mock_connect, mock_mkdir):
         """Test d'initialisation avec chemin par défaut"""
         mock_conn = MagicMock()
@@ -117,14 +117,14 @@ class TestArchitectureAnalyzer:
         mock_connect.return_value.__enter__.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
 
-        with patch('builtins.open', mock_open(read_data='config: test')):
-            with patch('pathlib.Path.cwd', return_value=Path("/current/dir")):
+        with patch("builtins.open", mock_open(read_data="config: test")):
+            with patch("pathlib.Path.cwd", return_value=Path("/current/dir")):
                 analyzer = ArchitectureAnalyzer()
 
                 assert analyzer.root_path == Path("/current/dir")
 
-    @patch('pathlib.Path.mkdir')
-    @patch('sqlite3.connect')
+    @patch("pathlib.Path.mkdir")
+    @patch("sqlite3.connect")
     def test_load_config(self, mock_connect, mock_mkdir):
         """Test de chargement de configuration"""
         mock_conn = MagicMock()
@@ -138,14 +138,14 @@ class TestArchitectureAnalyzer:
           performance_threshold: 80
         """
 
-        with patch('builtins.open', mock_open(read_data=config_data)):
+        with patch("builtins.open", mock_open(read_data=config_data)):
             analyzer = ArchitectureAnalyzer("/tmp/test")
             config = analyzer._load_config()
 
             assert config is not None
 
-    @patch('pathlib.Path.mkdir')
-    @patch('sqlite3.connect')
+    @patch("pathlib.Path.mkdir")
+    @patch("sqlite3.connect")
     def test_load_config_file_not_found(self, mock_connect, mock_mkdir):
         """Test de chargement de configuration avec fichier inexistant"""
         mock_conn = MagicMock()
@@ -153,14 +153,14 @@ class TestArchitectureAnalyzer:
         mock_connect.return_value.__enter__.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
 
-        with patch('builtins.open', side_effect=FileNotFoundError):
+        with patch("builtins.open", side_effect=FileNotFoundError):
             analyzer = ArchitectureAnalyzer("/tmp/test")
             config = analyzer._load_config()
 
             assert config == {}
 
-    @patch('pathlib.Path.mkdir')
-    @patch('sqlite3.connect')
+    @patch("pathlib.Path.mkdir")
+    @patch("sqlite3.connect")
     def test_analyze_entire_architecture(self, mock_connect, mock_mkdir):
         """Test d'analyse complète de l'architecture"""
         mock_conn = MagicMock()
@@ -168,15 +168,25 @@ class TestArchitectureAnalyzer:
         mock_connect.return_value.__enter__.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
 
-        with patch('builtins.open', mock_open(read_data='config: test')):
+        with patch("builtins.open", mock_open(read_data="config: test")):
             analyzer = ArchitectureAnalyzer("/tmp/test")
 
-            with patch.object(analyzer, '_analyze_all_modules') as mock_analyze_modules:
-                with patch.object(analyzer, '_detect_duplicates') as mock_detect_duplicates:
-                    with patch.object(analyzer, '_analyze_performance') as mock_analyze_performance:
-                        with patch.object(analyzer, '_build_dependency_graph') as mock_build_graph:
-                            with patch.object(analyzer, '_generate_recommendations') as mock_generate_recs:
-                                with patch.object(analyzer, '_save_architecture_analysis') as mock_save:
+            with patch.object(analyzer, "_analyze_all_modules") as mock_analyze_modules:
+                with patch.object(
+                    analyzer, "_detect_duplicates"
+                ) as mock_detect_duplicates:
+                    with patch.object(
+                        analyzer, "_analyze_performance"
+                    ) as mock_analyze_performance:
+                        with patch.object(
+                            analyzer, "_build_dependency_graph"
+                        ) as mock_build_graph:
+                            with patch.object(
+                                analyzer, "_generate_recommendations"
+                            ) as mock_generate_recs:
+                                with patch.object(
+                                    analyzer, "_save_architecture_analysis"
+                                ) as mock_save:
 
                                     mock_analyze_modules.return_value = {}
                                     mock_detect_duplicates.return_value = []
@@ -194,8 +204,8 @@ class TestArchitectureAnalyzer:
                                     mock_generate_recs.assert_called_once()
                                     mock_save.assert_called_once()
 
-    @patch('pathlib.Path.mkdir')
-    @patch('sqlite3.connect')
+    @patch("pathlib.Path.mkdir")
+    @patch("sqlite3.connect")
     def test_analyze_single_module(self, mock_connect, mock_mkdir):
         """Test d'analyse d'un module unique"""
         mock_conn = MagicMock()
@@ -203,10 +213,12 @@ class TestArchitectureAnalyzer:
         mock_connect.return_value.__enter__.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
 
-        with patch('builtins.open', mock_open(read_data='config: test')):
+        with patch("builtins.open", mock_open(read_data="config: test")):
             analyzer = ArchitectureAnalyzer("/tmp/test")
 
-            with patch.object(analyzer.ast_analyzer, 'analyze_file') as mock_analyze_file:
+            with patch.object(
+                analyzer.ast_analyzer, "analyze_file"
+            ) as mock_analyze_file:
                 mock_file_analysis = MagicMock()
                 mock_file_analysis.functions = ["func1", "func2"]
                 mock_file_analysis.classes = ["Class1"]
@@ -215,17 +227,19 @@ class TestArchitectureAnalyzer:
                 mock_file_analysis.issues = []
                 mock_analyze_file.return_value = mock_file_analysis
 
-                with patch('pathlib.Path.stat') as mock_stat:
+                with patch("pathlib.Path.stat") as mock_stat:
                     mock_stat.return_value.st_size = 1000
                     mock_stat.return_value.st_mtime = 1234567890
 
-                    result = analyzer._analyze_single_module(Path("/tmp/test.py"), "core")
+                    result = analyzer._analyze_single_module(
+                        Path("/tmp/test.py"), "core"
+                    )
 
                     # Test que la fonction s'exécute sans erreur
                     assert True
 
-    @patch('pathlib.Path.mkdir')
-    @patch('sqlite3.connect')
+    @patch("pathlib.Path.mkdir")
+    @patch("sqlite3.connect")
     def test_extract_dependencies(self, mock_connect, mock_mkdir):
         """Test d'extraction des dépendances"""
         mock_conn = MagicMock()
@@ -233,7 +247,7 @@ class TestArchitectureAnalyzer:
         mock_connect.return_value.__enter__.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
 
-        with patch('builtins.open', mock_open(read_data='config: test')):
+        with patch("builtins.open", mock_open(read_data="config: test")):
             analyzer = ArchitectureAnalyzer("/tmp/test")
 
             imports = ["numpy", "pandas", "matplotlib.pyplot"]
@@ -242,8 +256,8 @@ class TestArchitectureAnalyzer:
             # Test que la fonction s'exécute sans erreur
             assert isinstance(dependencies, list)
 
-    @patch('pathlib.Path.mkdir')
-    @patch('sqlite3.connect')
+    @patch("pathlib.Path.mkdir")
+    @patch("sqlite3.connect")
     def test_detect_module_issues(self, mock_connect, mock_mkdir):
         """Test de détection des problèmes de module"""
         mock_conn = MagicMock()
@@ -251,7 +265,7 @@ class TestArchitectureAnalyzer:
         mock_connect.return_value.__enter__.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
 
-        with patch('builtins.open', mock_open(read_data='config: test')):
+        with patch("builtins.open", mock_open(read_data="config: test")):
             analyzer = ArchitectureAnalyzer("/tmp/test")
 
             mock_file_analysis = MagicMock()
@@ -263,8 +277,8 @@ class TestArchitectureAnalyzer:
 
             assert isinstance(issues, list)
 
-    @patch('pathlib.Path.mkdir')
-    @patch('sqlite3.connect')
+    @patch("pathlib.Path.mkdir")
+    @patch("sqlite3.connect")
     def test_calculate_performance_score(self, mock_connect, mock_mkdir):
         """Test de calcul du score de performance"""
         mock_conn = MagicMock()
@@ -272,7 +286,7 @@ class TestArchitectureAnalyzer:
         mock_connect.return_value.__enter__.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
 
-        with patch('builtins.open', mock_open(read_data='config: test')):
+        with patch("builtins.open", mock_open(read_data="config: test")):
             analyzer = ArchitectureAnalyzer("/tmp/test")
 
             mock_file_analysis = MagicMock()
@@ -286,8 +300,8 @@ class TestArchitectureAnalyzer:
             assert 0 <= score <= 100
             assert isinstance(score, float)
 
-    @patch('pathlib.Path.mkdir')
-    @patch('sqlite3.connect')
+    @patch("pathlib.Path.mkdir")
+    @patch("sqlite3.connect")
     def test_detect_duplicates(self, mock_connect, mock_mkdir):
         """Test de détection des duplications"""
         mock_conn = MagicMock()
@@ -295,7 +309,7 @@ class TestArchitectureAnalyzer:
         mock_connect.return_value.__enter__.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
 
-        with patch('builtins.open', mock_open(read_data='config: test')):
+        with patch("builtins.open", mock_open(read_data="config: test")):
             analyzer = ArchitectureAnalyzer("/tmp/test")
 
             modules = {
@@ -333,8 +347,8 @@ class TestArchitectureAnalyzer:
 
             assert isinstance(duplicates, list)
 
-    @patch('pathlib.Path.mkdir')
-    @patch('sqlite3.connect')
+    @patch("pathlib.Path.mkdir")
+    @patch("sqlite3.connect")
     def test_analyze_performance(self, mock_connect, mock_mkdir):
         """Test d'analyse des performances"""
         mock_conn = MagicMock()
@@ -342,7 +356,7 @@ class TestArchitectureAnalyzer:
         mock_connect.return_value.__enter__.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
 
-        with patch('builtins.open', mock_open(read_data='config: test')):
+        with patch("builtins.open", mock_open(read_data="config: test")):
             analyzer = ArchitectureAnalyzer("/tmp/test")
 
             modules = {
@@ -365,10 +379,12 @@ class TestArchitectureAnalyzer:
             performance_issues = analyzer._analyze_performance(modules)
 
             assert isinstance(performance_issues, list)
-            assert all(isinstance(issue, PerformanceIssue) for issue in performance_issues)
+            assert all(
+                isinstance(issue, PerformanceIssue) for issue in performance_issues
+            )
 
-    @patch('pathlib.Path.mkdir')
-    @patch('sqlite3.connect')
+    @patch("pathlib.Path.mkdir")
+    @patch("sqlite3.connect")
     def test_build_dependency_graph(self, mock_connect, mock_mkdir):
         """Test de construction du graphe de dépendances"""
         mock_conn = MagicMock()
@@ -376,7 +392,7 @@ class TestArchitectureAnalyzer:
         mock_connect.return_value.__enter__.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
 
-        with patch('builtins.open', mock_open(read_data='config: test')):
+        with patch("builtins.open", mock_open(read_data="config: test")):
             analyzer = ArchitectureAnalyzer("/tmp/test")
 
             modules = {
@@ -416,8 +432,8 @@ class TestArchitectureAnalyzer:
             assert "module1" in dependency_graph
             assert "module2" in dependency_graph
 
-    @patch('pathlib.Path.mkdir')
-    @patch('sqlite3.connect')
+    @patch("pathlib.Path.mkdir")
+    @patch("sqlite3.connect")
     def test_generate_recommendations(self, mock_connect, mock_mkdir):
         """Test de génération de recommandations"""
         mock_conn = MagicMock()
@@ -425,7 +441,7 @@ class TestArchitectureAnalyzer:
         mock_connect.return_value.__enter__.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
 
-        with patch('builtins.open', mock_open(read_data='config: test')):
+        with patch("builtins.open", mock_open(read_data="config: test")):
             analyzer = ArchitectureAnalyzer("/tmp/test")
 
             modules = {
@@ -463,8 +479,8 @@ class TestArchitectureAnalyzer:
             assert isinstance(recommendations, list)
             assert len(recommendations) > 0
 
-    @patch('pathlib.Path.mkdir')
-    @patch('sqlite3.connect')
+    @patch("pathlib.Path.mkdir")
+    @patch("sqlite3.connect")
     def test_get_optimization_plan(self, mock_connect, mock_mkdir):
         """Test de génération du plan d'optimisation"""
         mock_conn = MagicMock()
@@ -472,10 +488,10 @@ class TestArchitectureAnalyzer:
         mock_connect.return_value.__enter__.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
 
-        with patch('builtins.open', mock_open(read_data='config: test')):
+        with patch("builtins.open", mock_open(read_data="config: test")):
             analyzer = ArchitectureAnalyzer("/tmp/test")
 
-            with patch.object(analyzer, 'analyze_entire_architecture') as mock_analyze:
+            with patch.object(analyzer, "analyze_entire_architecture") as mock_analyze:
                 mock_architecture = ArchitectureMapping(
                     modules={},
                     dependencies={},
@@ -492,8 +508,8 @@ class TestArchitectureAnalyzer:
                 assert "performance_issues" in plan
                 assert "duplicates" in plan
 
-    @patch('pathlib.Path.mkdir')
-    @patch('sqlite3.connect')
+    @patch("pathlib.Path.mkdir")
+    @patch("sqlite3.connect")
     def test_generate_intelligent_coordination(self, mock_connect, mock_mkdir):
         """Test de génération de coordination intelligente"""
         mock_conn = MagicMock()
@@ -501,10 +517,10 @@ class TestArchitectureAnalyzer:
         mock_connect.return_value.__enter__.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
 
-        with patch('builtins.open', mock_open(read_data='config: test')):
+        with patch("builtins.open", mock_open(read_data="config: test")):
             analyzer = ArchitectureAnalyzer("/tmp/test")
 
-            with patch.object(analyzer, 'analyze_entire_architecture') as mock_analyze:
+            with patch.object(analyzer, "analyze_entire_architecture") as mock_analyze:
                 mock_architecture = ArchitectureMapping(
                     modules={},
                     dependencies={},
@@ -525,8 +541,8 @@ class TestArchitectureAnalyzer:
 class TestIntegration:
     """Tests d'intégration"""
 
-    @patch('pathlib.Path.mkdir')
-    @patch('sqlite3.connect')
+    @patch("pathlib.Path.mkdir")
+    @patch("sqlite3.connect")
     def test_full_architecture_analysis_workflow(self, mock_connect, mock_mkdir):
         """Test du workflow complet d'analyse d'architecture"""
         mock_conn = MagicMock()
@@ -540,15 +556,23 @@ class TestIntegration:
           performance_threshold: 80
         """
 
-        with patch('builtins.open', mock_open(read_data=config_data)):
+        with patch("builtins.open", mock_open(read_data=config_data)):
             analyzer = ArchitectureAnalyzer("/tmp/test")
 
             # Test du workflow complet
-            with patch.object(analyzer, '_analyze_all_modules') as mock_analyze_modules:
-                with patch.object(analyzer, '_detect_duplicates') as mock_detect_duplicates:
-                    with patch.object(analyzer, '_analyze_performance') as mock_analyze_performance:
-                        with patch.object(analyzer, '_build_dependency_graph') as mock_build_graph:
-                            with patch.object(analyzer, '_generate_recommendations') as mock_generate_recs:
+            with patch.object(analyzer, "_analyze_all_modules") as mock_analyze_modules:
+                with patch.object(
+                    analyzer, "_detect_duplicates"
+                ) as mock_detect_duplicates:
+                    with patch.object(
+                        analyzer, "_analyze_performance"
+                    ) as mock_analyze_performance:
+                        with patch.object(
+                            analyzer, "_build_dependency_graph"
+                        ) as mock_build_graph:
+                            with patch.object(
+                                analyzer, "_generate_recommendations"
+                            ) as mock_generate_recs:
 
                                 mock_analyze_modules.return_value = {}
                                 mock_detect_duplicates.return_value = []
@@ -565,7 +589,9 @@ class TestIntegration:
                                 assert isinstance(plan, dict)
 
                                 # Test coordination intelligente
-                                coordination = analyzer.generate_intelligent_coordination()
+                                coordination = (
+                                    analyzer.generate_intelligent_coordination()
+                                )
                                 assert isinstance(coordination, dict)
 
                                 # Vérifier que toutes les méthodes ont été appelées
@@ -573,4 +599,4 @@ class TestIntegration:
                                 mock_detect_duplicates.assert_called()
                                 mock_analyze_performance.assert_called()
                                 mock_build_graph.assert_called()
-                                mock_generate_recs.assert_called() 
+                                mock_generate_recs.assert_called()
