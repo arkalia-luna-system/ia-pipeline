@@ -42,19 +42,19 @@ class AnalyticsEngine:
 
     def analyze_performance_metrics(self) -> Dict[str, Any]:
         """Analyse les métriques de performance"""
-        return {"execution_time": 0.0, "memory_usage": 0.0}
+        return {"average_execution_time": 0.0, "memory_usage": 0.0, "cpu_usage": 0.0}
 
     def analyze_security_metrics(self) -> Dict[str, Any]:
         """Analyse les métriques de sécurité"""
-        return {"vulnerabilities": 0, "security_score": 100}
+        return {"security_score": 100, "vulnerabilities_count": 0, "high_severity_count": 0}
 
     def analyze_documentation_coverage(self) -> Dict[str, Any]:
         """Analyse la couverture de documentation"""
-        return {"documentation_score": 0.0, "files_documented": 0}
+        return {"documentation_files": 0, "readme_exists": False, "api_docs_exists": False}
 
     def analyze_git_metrics(self) -> Dict[str, Any]:
         """Analyse les métriques Git"""
-        return {"commits_count": 0, "branches_count": 0}
+        return {"commits_count": 0, "contributors_count": 0, "last_commit_date": None}
 
     def generate_comprehensive_report(self) -> Dict[str, Any]:
         """Génère un rapport complet"""

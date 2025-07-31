@@ -302,7 +302,8 @@ class IntelligentAnalyzer:
                     {
                         "task": "merge_high_severity_duplicates",
                         "description": (
-                            f"Fusionner {len(high_severity_duplicates)} doublons critiques"
+                            f"Fusionner {len(high_severity_duplicates)} "
+                            "doublons critiques"
                         ),
                         "effort": "high",
                         "impact": "high",
