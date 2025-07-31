@@ -297,10 +297,15 @@ class TestNoPollutingFiles:
             pytest.fail("Fichiers trop volumineux trouvés:\n" + "\n".join(large_files))
 
     def test_no_duplicate_files(self):
-        """Test qu'il n'y a pas de fichiers dupliqués"""
-        file_counts = {}
+        """Test qu'il n'y a pas de fichiers dupliqués avec le même contenu"""
+        import hashlib
+
+        # Dictionnaire pour stocker les hashs de contenu
+        content_hashes = {}
+        duplicate_files = []
+
         for root, dirs, files in os.walk("."):
-            if ".git" in root:
+            if ".git" in root or ".venv" in root:
                 continue
             for file in files:
                 # Ignorer automatiquement les fichiers cache Python
@@ -308,11 +313,31 @@ class TestNoPollutingFiles:
                     file.endswith(".pyc")
                     or file == "__pycache__"
                     or file.startswith(".__")
+                    or file.endswith(".pyo")
+                    or file.endswith(".pyd")
                 ):
                     continue
-                file_counts[file] = file_counts.get(file, 0) + 1
 
-        duplicates = [file for file, count in file_counts.items() if count > 1]
+                file_path = os.path.join(root, file)
+                try:
+                    # Lire le contenu du fichier
+                    with open(file_path, "rb") as f:
+                        content = f.read()
+
+                    # Calculer le hash du contenu
+                    content_hash = hashlib.md5(content).hexdigest()
+
+                    if content_hash in content_hashes:
+                        # Fichier dupliqué trouvé
+                        duplicate_files.append(
+                            f"{file_path} (identique à {content_hashes[content_hash]})"
+                        )
+                    else:
+                        content_hashes[content_hash] = file_path
+
+                except (IOError, OSError):
+                    # Ignorer les fichiers non lisibles
+                    continue
 
         # Fichiers normaux qui peuvent être dupliqués
         allowed_duplicates = {
@@ -338,21 +363,41 @@ class TestNoPollutingFiles:
             "audit_complet_dossiers.py",  # Script qui peut être copié
             "athalia.f(f",  # Fichier spécial du projet
             "CACHEDIR.TAG",  # Fichier de cache normal
+            "athalia.log",  # Fichier de log normal
+            "validation.log",  # Fichier de log normal
+            "correction.log",  # Fichier de log normal
+            "performance.log",  # Fichier de log normal
+            "errors.log",  # Fichier de log normal
         }
 
-        # Filtrer les fichiers autorisés
-        problematic_duplicates = [
-            file for file in duplicates if file not in allowed_duplicates
-        ]
+        # Filtrer les fichiers autorisés et les fichiers système macOS
+        problematic_duplicates = []
+        for duplicate in duplicate_files:
+            file_name = os.path.basename(duplicate.split(" (")[0])
+            # Ignorer les fichiers Apple Double, les fichiers temporaires macOS et les fichiers de coverage
+            if (
+                not file_name.startswith("._")
+                and not file_name.startswith(".!")
+                and file_name != "athalia.f(f"
+                and not file_name.startswith(".coverage")
+                and file_name not in allowed_duplicates
+            ):
+                problematic_duplicates.append(duplicate)
 
         # Skip si trop de fichiers trouvés (probablement des faux positifs)
-        if len(problematic_duplicates) > 20:
+        if len(problematic_duplicates) > 200:
             pytest.skip(
                 "Trop de fichiers dupliqués problématiques détectés"
                 f" ({len(problematic_duplicates)}), probablement des faux positifs"
             )
 
         if problematic_duplicates:
+            print(f"\n🔍 Fichiers dupliqués détectés ({len(problematic_duplicates)}):")
+            for i, duplicate in enumerate(problematic_duplicates[:10], 1):
+                print(f"  {i}. {duplicate}")
+            if len(problematic_duplicates) > 10:
+                print(f"  ... et {len(problematic_duplicates) - 10} autres")
+
             pytest.fail(
                 "Fichiers dupliqués problématiques trouvés:\n"
                 + "\n".join(problematic_duplicates)
