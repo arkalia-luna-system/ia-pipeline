@@ -10,7 +10,8 @@ import time
 from athalia_core.ci import add_coverage_badge, generate_github_ci_yaml
 from athalia_core.cleanup import clean_old_tests_and_caches
 
-# from athalia_core.dashboard import generate_dashboard_html, generate_multi_project_mermaid
+# from athalia_core.dashboard import generate_dashboard_html, 
+# generate_multi_project_mermaid
 from athalia_core.onboarding import (
     generate_onboard_cli,
     generate_onboarding_html_advanced,
@@ -210,7 +211,8 @@ def main(test_mode=False):
                     continue
                 # report = scan_existing_project(outdir)
                 # if report:
-                #     logger.info("Fichiers / dossiers critiques détectés:\n" + "\n".join(report))
+                #     logger.info("Fichiers / dossiers critiques détectés:\n" + 
+                #                "\n".join(report))
                 # else:
                 #     logger.info("Aucun fichier critique détecté.")
                 logger.info("Scan terminé.")
