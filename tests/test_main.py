@@ -16,7 +16,7 @@ class TestSignalHandler:
     def test_signal_handler(self):
         """Test du gestionnaire de signal"""
         # Sauvegarder l'état initial
-        import athalia_core.main as main_module
+        from athalia_core import main as main_module
 
         original_running = main_module.running
 
