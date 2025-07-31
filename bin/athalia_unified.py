@@ -145,7 +145,9 @@ MODULES INTÉGRÉS:
 
                     def industrialize_project(self, project_path, config=None):
                         return {
-                            "status": "Industrialisation simulée - Modules non disponibles"
+                            "status": (
+                                "Industrialisation simulée - Modules non disponibles"
+                            )
                         }
 
                     def audit_project(self, project_path):
