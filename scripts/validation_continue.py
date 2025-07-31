@@ -13,6 +13,7 @@ import subprocess
 import threading
 import time
 
+
 # Import du validateur de sécurité
 try:
     from athalia_core.security_validator import validate_and_run
@@ -352,8 +353,8 @@ class ValidationContinue:
 
 **Période analysée:** {len(self.historique)} validations
 **Tendance:** (
-    '📈 AMÉLIORATION' if evolution > 0 
-    else '📉 RÉGRESSION' if evolution < 0 
+    '📈 AMÉLIORATION' if evolution > 0
+    else '📉 RÉGRESSION' if evolution < 0
     else '➡️ STABLE'
 )
 
@@ -363,8 +364,12 @@ class ValidationContinue:
 |----------|--------|--------|-----------|
 | Taux de succès | {taux_ancien:.1f}% | {taux_recent:.1f}% | "
  f"{evolution:+.1f}% |"
-| Temps moyen | {sum(v['temps_total'] for v in anciennes)/len(anciennes):.1f}s | {sum(v['temps_total'] for v in recentes)/len(recentes):.1f}s | - |
-| Erreurs critiques | {sum(v['erreurs_critiques'] for v in anciennes)/len(anciennes):.1f} | {sum(v['erreurs_critiques'] for v in recentes)/len(recentes):.1f} | - |
+| Temps moyen | "
+ f"{sum(v['temps_total'] for v in anciennes)/len(anciennes):.1f}s | "
+ f"{sum(v['temps_total'] for v in recentes)/len(recentes):.1f}s | - |"
+| Erreurs critiques | "
+ f"{sum(v['erreurs_critiques'] for v in anciennes)/len(anciennes):.1f} | "
+ f"{sum(v['erreurs_critiques'] for v in recentes)/len(recentes):.1f} | - |"
 
 ## 🎯 Recommandations
 
