@@ -737,25 +737,27 @@ class AnalyticsEngine:
         """Génère des données pour visualisation"""
         viz_data = {
             "charts": {
-                "complexity_distribution": self.metrics.get("code_complexity", {}).get(
-                    "complexity_distribution", {}
+                "complexity_distribution": (
+                    self.metrics.get("code_complexity", {}).get(
+                        "complexity_distribution", {}
+                    )
                 ),
-                "security_score": self.metrics.get("security", {}).get(
-                    "security_score", 0
+                "security_score": (
+                    self.metrics.get("security", {}).get("security_score", 0)
                 ),
-                "test_coverage": self.metrics.get("test_coverage", {}).get(
-                    "test_files_count", 0
+                "test_coverage": (
+                    self.metrics.get("test_coverage", {}).get("test_files_count", 0)
                 ),
             },
             "metrics_summary": {
                 "overall_score": self.calculate_project_score(self.metrics)[
                     "overall_score"
                 ],
-                "total_files": self.metrics.get("code_complexity", {}).get(
-                    "files_analyzed", 0
+                "total_files": (
+                    self.metrics.get("code_complexity", {}).get("files_analyzed", 0)
                 ),
-                "total_dependencies": self.metrics.get("dependencies", {}).get(
-                    "total_dependencies", 0
+                "total_dependencies": (
+                    self.metrics.get("dependencies", {}).get("total_dependencies", 0)
                 ),
             },
             "trends": {"score_trend": "stable", "complexity_trend": "stable"},

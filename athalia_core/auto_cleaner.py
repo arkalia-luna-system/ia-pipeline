@@ -890,7 +890,9 @@ class AutoCleaner:
             "stats": self.stats,
             "files": self.cleaned_files,
             "dirs": self.cleaned_dirs,
-            "summary": f"Nettoyage terminé: {self.stats['files_removed']} fichiers, {self.stats['dirs_removed']} répertoires, {self.stats['space_freed_mb']:.2f} MB libérés",
+            "summary": (
+                f"Nettoyage terminé: {self.stats['files_removed']} fichiers, {self.stats['dirs_removed']} répertoires, {self.stats['space_freed_mb']:.2f} MB libérés"
+            ),
         }
 
     def optimize_project_structure(self, project_path: str) -> Dict[str, Any]:

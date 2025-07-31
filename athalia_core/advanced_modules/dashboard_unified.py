@@ -270,8 +270,8 @@ class DashboardUnifieSimple:
                         "type": row[0],
                         "projet": row[1],
                         "utilisateur": row[2],
-                        "timestamp": datetime.fromisoformat(row[3]).strftime(
-                            "%d/%m/%Y %H:%f"
+                        "timestamp": (
+                            datetime.fromisoformat(row[3]).strftime("%d/%m/%Y %H:%f")
                         ),
                         "statut": row[4],
                     }

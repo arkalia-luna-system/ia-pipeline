@@ -296,7 +296,9 @@ class IntelligentAnalyzer:
                 plan["priority_tasks"].append(
                     {
                         "task": "merge_high_severity_duplicates",
-                        "description": f"Fusionner {len(high_severity_duplicates)} doublons critiques",
+                        "description": (
+                            f"Fusionner {len(high_severity_duplicates)} doublons critiques"
+                        ),
                         "effort": "high",
                         "impact": "high",
                     }
@@ -332,7 +334,9 @@ class IntelligentAnalyzer:
                 plan["medium_priority_tasks"].append(
                     {
                         "task": "refactor_medium_impact_antipatterns",
-                        "description": f"Refactoriser {len(medium_impact_antipatterns)} anti-patterns",
+                        "description": (
+                            f"Refactoriser {len(medium_impact_antipatterns)} anti-patterns"
+                        ),
                         "effort": "medium",
                         "impact": "medium",
                     }
@@ -395,7 +399,9 @@ class IntelligentAnalyzer:
             "ast_insights": "Analyse AST de base disponible",
             "pattern_insights": self.pattern_detector.get_learning_insights(),
             "architecture_insights": self.architecture_analyzer.get_optimization_plan(),
-            "performance_insights": self.performance_analyzer.get_performance_insights(),
+            "performance_insights": (
+                self.performance_analyzer.get_performance_insights()
+            ),
         }
 
     def generate_intelligent_coordination(self) -> Dict[str, Any]:

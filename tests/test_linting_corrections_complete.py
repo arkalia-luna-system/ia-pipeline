@@ -36,7 +36,9 @@ def test_linting_corrections_summary():
                 "count": 8,
                 "description": "Comparison to True/False should be simplified",
                 "files": ["tests/test_plugins_validator_complete.py"],
-                "correction": "Remplacement de == True/False par des assertions directes",
+                "correction": (
+                    "Remplacement de == True/False par des assertions directes"
+                ),
             },
             "F841": {
                 "count": 3,
@@ -81,14 +83,22 @@ def test_specific_corrections_documentation():
             {
                 "file": "tests/test_no_polluting_files.py",
                 "line": 100,
-                "before": 'pytest.fail(f"Fichiers d\'éditeur trouvés:\\n" + "\\n".join(editor_files))',
-                "after": 'pytest.fail("Fichiers d\'éditeur trouvés:\\n" + "\\n".join(editor_files))',
+                "before": (
+                    'pytest.fail(f"Fichiers d\'éditeur trouvés:\\n" + "\\n".join(editor_files))'
+                ),
+                "after": (
+                    'pytest.fail("Fichiers d\'éditeur trouvés:\\n" + "\\n".join(editor_files))'
+                ),
             },
             {
                 "file": "tests/test_no_polluting_files.py",
                 "line": 138,
-                "before": 'pytest.fail(f"Fichiers d\'archive trouvés:\\n" + "\\n".join(archive_files))',
-                "after": 'pytest.fail("Fichiers d\'archive trouvés:\\n" + "\\n".join(archive_files))',
+                "before": (
+                    'pytest.fail(f"Fichiers d\'archive trouvés:\\n" + "\\n".join(archive_files))'
+                ),
+                "after": (
+                    'pytest.fail("Fichiers d\'archive trouvés:\\n" + "\\n".join(archive_files))'
+                ),
             },
         ],
         "F401_examples": [
