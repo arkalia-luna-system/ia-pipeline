@@ -462,7 +462,7 @@ class TestAutoCleaner:
         assert "total_directories_removed" in result
         assert "total_space_freed" in result
         assert "cleanup_time" in result
-        
+
         # Le nettoyage a été exécuté avec succès
         # Les résultats dépendent de la configuration et des exclusions
         assert result["cleanup_time"] >= 0

@@ -1,0 +1,95 @@
+{
+  "timestamp": "2025-07-31T16:04:22.955221",
+  "workflow_analysis": {
+    "status": "OK",
+    "files": [
+      {
+        "name": "ci.yaml",
+        "size": 9484,
+        "has_timeout": true,
+        "has_retry": true
+      },
+      {
+        "name": "ci-pro-level1.yaml",
+        "size": 3807,
+        "has_timeout": false,
+        "has_retry": false
+      },
+      {
+        "name": "ci-pro-level2.yaml",
+        "size": 4460,
+        "has_timeout": false,
+        "has_retry": false
+      },
+      {
+        "name": "ci-pro-level3.yaml",
+        "size": 5426,
+        "has_timeout": false,
+        "has_retry": false
+      },
+      {
+        "name": "ci-pro-level4.yaml",
+        "size": 6274,
+        "has_timeout": false,
+        "has_retry": false
+      },
+      {
+        "name": "ci-pro-level5.yaml",
+        "size": 8651,
+        "has_timeout": false,
+        "has_retry": false
+      },
+      {
+        "name": "sync-to-ci-pro.yaml",
+        "size": 2432,
+        "has_timeout": false,
+        "has_retry": false
+      }
+    ],
+    "issues": [
+      "ci-pro-level1.yaml: Pas de timeout d\u00e9fini",
+      "ci-pro-level2.yaml: Pas de timeout d\u00e9fini",
+      "ci-pro-level3.yaml: Pas de timeout d\u00e9fini",
+      "ci-pro-level4.yaml: Pas de timeout d\u00e9fini",
+      "ci-pro-level5.yaml: Pas de timeout d\u00e9fini",
+      "sync-to-ci-pro.yaml: Pas de timeout d\u00e9fini"
+    ]
+  },
+  "dependencies_analysis": {
+    "status": "OK",
+    "issues": [],
+    "total_deps": 38
+  },
+  "test_performance": {
+    "status": "WARNING",
+    "issues": [
+      "Tests lents d\u00e9tect\u00e9s: 6"
+    ],
+    "total_tests": 88,
+    "slow_tests": [
+      "test_cache_manager_complete.py",
+      "test_cache_simple.py",
+      "test_predictive_cache.py",
+      "test_main.py",
+      "test_ci_robust.py",
+      "test_performance_optimization.py"
+    ]
+  },
+  "ci_configuration": {
+    "status": "OK",
+    "issues": [],
+    "recommendations": [],
+    "checks": {
+      "has_timeout": true,
+      "has_cache": true,
+      "has_continue_on_error": true,
+      "has_parallel": true,
+      "has_artifacts": true
+    }
+  },
+  "summary": {
+    "total_issues": 7,
+    "critical_issues": 0,
+    "recommendations": []
+  }
+}

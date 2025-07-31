@@ -83,7 +83,10 @@ def complex_function(x):
                 """
 import pytest
 
-pytest.skip("Test temporairement désactivé - Interface analytics en cours de développement", allow_module_level=True)
+pytest.skip(
+    "Test temporairement désactivé - Interface analytics en cours de développement",
+    allow_module_level=True,
+)
 
 def test_function():
     assert True
