@@ -12,6 +12,7 @@ from typing import Any, Dict, List, Optional
 
 import yaml
 
+
 logger = logging.getLogger(__name__)
 
 
@@ -67,17 +68,17 @@ class Dashboard:
         # Calculer des métriques agrégées
         if self.metrics:
             widget["summary"] = {
-                "total_files": (
-                    self.metrics.get("code_complexity", {}).get("files_analyzed", 0)
+                "total_files": self.metrics.get("code_complexity", {}).get(
+                    "files_analyzed", 0
                 ),
-                "security_score": (
-                    self.metrics.get("security", {}).get("security_score", 0)
+                "security_score": self.metrics.get("security", {}).get(
+                    "security_score", 0
                 ),
-                "test_coverage": (
-                    self.metrics.get("test_coverage", {}).get("test_files_count", 0)
+                "test_coverage": self.metrics.get("test_coverage", {}).get(
+                    "test_files_count", 0
                 ),
-                "dependencies": (
-                    self.metrics.get("dependencies", {}).get("total_dependencies", 0)
+                "dependencies": self.metrics.get("dependencies", {}).get(
+                    "total_dependencies", 0
                 ),
             }
 
@@ -290,8 +291,12 @@ class Dashboard:
         <div class="dashboard-controls">
             <button id="refresh-btn">Actualiser</button>
             <select id="theme-selector">
-                <option value="light" {'selected' if theme == 'light' else ''}>Clair</option>
-                <option value="dark" {'selected' if theme == 'dark' else ''}>Sombre</option>
+                <option value="light" {'selected' if theme == 'light' else ''}>
+                    Clair
+                </option>
+                <option value="dark" {'selected' if theme == 'dark' else ''}>
+                    Sombre
+                </option>
             </select>
         </div>
     </header>

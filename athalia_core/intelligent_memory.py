@@ -21,6 +21,7 @@ import re
 import sqlite3
 from typing import Any, Dict, List, Optional
 
+
 logger = logging.getLogger(__name__)
 
 
@@ -435,7 +436,7 @@ class IntelligentMemory:
         normalized = self._normalize_code(code)
 
         # Créer un hash
-        return hashlib.md5(normalized.encode()).hexdigest()
+        return hashlib.md5(normalized.encode(), usedforsecurity=False).hexdigest()
 
     def _normalize_code(self, code: str) -> str:
         """Normaliser le code pour la comparaison"""
