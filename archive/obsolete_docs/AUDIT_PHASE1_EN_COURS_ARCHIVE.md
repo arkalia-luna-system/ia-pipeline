@@ -172,4 +172,4 @@
 ### **✅ Métriques actuelles :**
 - **Cache total** : 39.6MB (taille acceptable)
 - **Projet** : 665.7MB avec 14 928 fichiers
-- **Performance** : Imports < 1s, mémoire < 100MB 
+- **Performance** : Imports < 1s, mémoire < 100MB

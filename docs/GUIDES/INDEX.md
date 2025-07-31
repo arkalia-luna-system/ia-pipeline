@@ -1,6 +1,6 @@
 # 📚 Guides Utilisateur - Athalia
 
-**Section :** Guides d'utilisation  
+**Section :** Guides d'utilisation
 **Date :** 27 janvier 2025
 
 ---
@@ -33,4 +33,4 @@ Cette section contient tous les guides nécessaires pour utiliser Athalia effica
 
 ---
 
-*Section organisée pour faciliter l'apprentissage et l'utilisation d'Athalia* 
+*Section organisée pour faciliter l'apprentissage et l'utilisation d'Athalia*

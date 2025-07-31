@@ -18,6 +18,7 @@ from typing import Dict, List, Optional
 
 import yaml
 
+
 # Import du validateur de sécurité
 try:
     from athalia_core.security_validator import SecurityError, validate_and_run
@@ -320,7 +321,7 @@ ros2 launch reachy_bringup reachy_bringup.launch.py
             if not start_script.exists():
                 with open(start_script, "w") as f:
                     f.write(self.create_start_script_template())
-                os.chmod(start_script, 0o755)
+                os.chmod(start_script, 0o755)  # nosec B103
                 self.logger.info("✅ start.sh créé")
 
             # Créer .dockerignore

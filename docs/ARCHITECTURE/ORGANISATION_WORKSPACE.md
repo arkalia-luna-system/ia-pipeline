@@ -124,10 +124,10 @@ Si vous avez des fichiers qui ne respectent pas cette organisation, le script de
 
 Pour toute question sur l'organisation, consultez :
 - `docs/USER_GUIDE.md` - Guide utilisateur complet
-- `FAQ.md` - Solutions aux problèmes courants 
+- `FAQ.md` - Solutions aux problèmes courants
 
 ## 🧹 Nettoyage final 17/07/2025
 - Suppression des fichiers obsolètes (athalia_report_20250717_071804.json, athalia_quick_start.py, AppleDouble, logs vides, templates inutiles)
 - Script de nettoyage automatique corrigé et relancé
 - Structure des dossiers validée (voir ci-dessus)
-- Tous les tests passent (125/125) 
+- Tous les tests passent (125/125)

@@ -1,6 +1,6 @@
 # 🚀 Guide de Démarrage Rapide - Athalia
 
-**Temps estimé :** 5 minutes  
+**Temps estimé :** 5 minutes
 **Niveau :** Débutant à Intermédiaire
 
 ---
@@ -15,7 +15,7 @@ Ce guide vous permettra de **démarrer avec Athalia en 5 minutes** et de compren
 
 ### ✅ **Système Requis**
 - **OS :** macOS, Linux, Windows (WSL)
-- **Python :** 3.8+ 
+- **Python :** 3.8+
 - **Git :** 2.20+
 - **Espace disque :** 2GB minimum
 
@@ -178,11 +178,11 @@ python athalia_unified.py /chemin/projet --dry-run --auto-fix
 project:
   name: "mon-projet"
   version: "1.0.0"
-  
+
 performance:
   max_memory: "2GB"
   timeout: 300
-  
+
 robotics:
   enable: true
   reachy_ip: "192.168.1.100"
@@ -259,4 +259,4 @@ Vous avez maintenant :
 
 ---
 
-*Guide de démarrage rapide Athalia - Version 3.0* 
+*Guide de démarrage rapide Athalia - Version 3.0*

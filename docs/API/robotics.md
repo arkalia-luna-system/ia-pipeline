@@ -1,6 +1,6 @@
 # 🤖 Robotics - Documentation API
 
-**Date :** 27 juillet 2025  
+**Date :** 27 juillet 2025
 **Statut :** Documentation exhaustive et conforme au code
 
 ## 🎯 Vue d'ensemble
@@ -60,4 +60,4 @@ Le module Robotics d'Athalia fournit l'intégration avec les systèmes robotique
 
 ---
 
-*Documentation exhaustive et conforme au code réel, mise à jour le 27/07/2025.* 
+*Documentation exhaustive et conforme au code réel, mise à jour le 27/07/2025.*

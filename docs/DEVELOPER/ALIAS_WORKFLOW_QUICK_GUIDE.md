@@ -241,4 +241,4 @@ cat setup/athalia-workflow-aliases.sh
 
 ---
 
-**💡 Astuce** : Tapez `ath-` puis `Tab` pour l'auto-complétion de tous les alias disponibles ! 
+**💡 Astuce** : Tapez `ath-` puis `Tab` pour l'auto-complétion de tous les alias disponibles !

@@ -4,4 +4,4 @@ Mistral,test_prompt_1,1.2,0.92,2024-01-01
 Qwen,test_prompt_1,0.8,0.88,2024-01-01
 Mock,test_prompt_2,0.3,0.82,2024-01-02
 Mistral,test_prompt_2,1.0,0.90,2024-01-02
-Qwen,test_prompt_2,0.7,0.86,2024-01-02 
+Qwen,test_prompt_2,0.7,0.86,2024-01-02

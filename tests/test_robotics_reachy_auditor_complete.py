@@ -4,10 +4,10 @@
 Tests complets pour athalia_core.robotics.reachy_auditor
 """
 
-import shutil
-import tempfile
 from datetime import datetime
 from pathlib import Path
+import shutil
+import tempfile
 from unittest.mock import patch
 
 import pytest

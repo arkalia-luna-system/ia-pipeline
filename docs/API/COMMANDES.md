@@ -1,6 +1,6 @@
 # 📋 Commandes API - Athalia
 
-**Date :** 27 juillet 2025  
+**Date :** 27 juillet 2025
 **Statut :** Guide complet des commandes validées
 
 ## 🎯 Vue d'ensemble
@@ -15,7 +15,7 @@ Ce document liste toutes les commandes valides d'Athalia avec leurs options et e
 ```bash
 python athalia_unified.py <project_path> --action audit
 ```
-**Description :** Analyse complète d'un projet  
+**Description :** Analyse complète d'un projet
 **Options :**
 - `--dry-run` : Mode simulation
 - `--verbose` : Affichage détaillé
@@ -37,7 +37,7 @@ python athalia_unified.py /chemin/projet --action audit --verbose
 ```bash
 python athalia_unified.py <project_path> --action fix
 ```
-**Description :** Correction automatique des problèmes  
+**Description :** Correction automatique des problèmes
 **Options :**
 - `--dry-run` : Mode simulation
 - `--auto-fix` : Correction automatique
@@ -59,7 +59,7 @@ python athalia_unified.py /chemin/projet --action fix --auto-fix
 ```bash
 python athalia_unified.py <project_path> --action dashboard
 ```
-**Description :** Lance le dashboard interactif  
+**Description :** Lance le dashboard interactif
 **Options :**
 - `--utilisateur <nom>` : Profil utilisateur
 - `--verbose` : Affichage détaillé
@@ -77,7 +77,7 @@ python athalia_unified.py /chemin/projet --action dashboard --utilisateur dev
 ```bash
 python athalia_unified.py <project_path> --action complete
 ```
-**Description :** Processus complet d'industrialisation  
+**Description :** Processus complet d'industrialisation
 **Options :**
 - `--no-audit` : Sans audit préalable
 - `--no-clean` : Sans nettoyage
@@ -104,7 +104,7 @@ python athalia_unified.py /chemin/projet --action complete --no-clean
 ```bash
 python athalia_unified.py <project_path> --scan
 ```
-**Description :** Scanner un projet pour analyse rapide  
+**Description :** Scanner un projet pour analyse rapide
 **Exemples :**
 ```bash
 # Scanner le projet courant
@@ -122,7 +122,7 @@ python athalia_unified.py /chemin/projet --scan
 ```bash
 --lang <fr|en>
 ```
-**Description :** Définir la langue de sortie  
+**Description :** Définir la langue de sortie
 **Exemples :**
 ```bash
 python athalia_unified.py . --action audit --lang fr
@@ -133,7 +133,7 @@ python athalia_unified.py . --action audit --lang en
 ```bash
 --verbose
 ```
-**Description :** Affichage détaillé des opérations  
+**Description :** Affichage détaillé des opérations
 **Exemples :**
 ```bash
 python athalia_unified.py . --action audit --verbose
@@ -144,7 +144,7 @@ python athalia_unified.py . --action fix --verbose
 ```bash
 --utilisateur <nom>
 ```
-**Description :** Utiliser un profil utilisateur spécifique  
+**Description :** Utiliser un profil utilisateur spécifique
 **Exemples :**
 ```bash
 python athalia_unified.py . --action dashboard --utilisateur developpeur
@@ -155,7 +155,7 @@ python athalia_unified.py . --action dashboard --utilisateur admin
 ```bash
 --dry-run
 ```
-**Description :** Exécuter en mode simulation (sans modification)  
+**Description :** Exécuter en mode simulation (sans modification)
 **Exemples :**
 ```bash
 python athalia_unified.py . --action audit --dry-run
@@ -166,7 +166,7 @@ python athalia_unified.py . --action fix --dry-run
 ```bash
 --auto-fix
 ```
-**Description :** Correction automatique des problèmes  
+**Description :** Correction automatique des problèmes
 **Exemples :**
 ```bash
 python athalia_unified.py . --action fix --auto-fix
@@ -178,7 +178,7 @@ python athalia_unified.py . --action fix --auto-fix
 ```bash
 --no-audit
 ```
-**Description :** Exclure l'audit du processus  
+**Description :** Exclure l'audit du processus
 **Exemples :**
 ```bash
 python athalia_unified.py . --action complete --no-audit
@@ -188,7 +188,7 @@ python athalia_unified.py . --action complete --no-audit
 ```bash
 --no-clean
 ```
-**Description :** Exclure le nettoyage du processus  
+**Description :** Exclure le nettoyage du processus
 **Exemples :**
 ```bash
 python athalia_unified.py . --action complete --no-clean
@@ -300,4 +300,4 @@ python tools/maintenance/validation_documentation.py . --verbose
 
 ---
 
-*Guide des commandes mis à jour le 27 juillet 2025 avec toutes les commandes validées* 
+*Guide des commandes mis à jour le 27 juillet 2025 avec toutes les commandes validées*

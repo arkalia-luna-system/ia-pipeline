@@ -198,4 +198,4 @@ echo "     - $EXECUTABLE_FILES fichiers exécutables"
 echo "     - Environnement propre et organisé"
 echo ""
 
-show_success "Analyse terminée !" 
+show_success "Analyse terminée !"

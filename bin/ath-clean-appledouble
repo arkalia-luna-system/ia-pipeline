@@ -35,22 +35,22 @@ print_error() {
 # Fonction pour nettoyer les fichiers AppleDouble
 clean_apple_double_files() {
     print_info "Recherche et suppression des fichiers AppleDouble..."
-    
+
     # Compter les fichiers avant suppression
     local count_before=$(find . -name "._*" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" 2>/dev/null | wc -l)
-    
+
     if [ $count_before -gt 0 ]; then
         print_info "Trouvé $count_before fichiers AppleDouble à supprimer"
-        
+
         # Supprimer les fichiers AppleDouble
         find . -name "._*" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" -delete 2>/dev/null
-        
+
         # Compter après suppression
         local count_after=$(find . -name "._*" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" 2>/dev/null | wc -l)
-        
+
         local deleted=$((count_before - count_after))
         print_success "$deleted fichiers AppleDouble supprimés"
-        
+
         if [ $count_after -gt 0 ]; then
             print_warning "$count_after fichiers AppleDouble restent (peuvent se recréer automatiquement)"
         fi
@@ -62,16 +62,16 @@ clean_apple_double_files() {
 # Fonction pour nettoyer les fichiers .DS_Store
 clean_ds_store_files() {
     print_info "Recherche et suppression des fichiers .DS_Store..."
-    
+
     local count_before=$(find . -name ".DS_Store" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" 2>/dev/null | wc -l)
-    
+
     if [ $count_before -gt 0 ]; then
         print_info "Trouvé $count_before fichiers .DS_Store à supprimer"
-        
+
         find . -name ".DS_Store" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" -delete 2>/dev/null
-        
+
         local count_after=$(find . -name ".DS_Store" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" 2>/dev/null | wc -l)
-        
+
         local deleted=$((count_before - count_after))
         print_success "$deleted fichiers .DS_Store supprimés"
     else
@@ -82,7 +82,7 @@ clean_ds_store_files() {
 # Fonction pour configurer la prévention
 setup_prevention() {
     print_info "Configuration de la prévention des fichiers AppleDouble..."
-    
+
     # Créer un fichier .gitignore global si il n'existe pas
     if [ ! -f ~/.gitignore_global ]; then
         echo "# Fichiers AppleDouble et macOS" > ~/.gitignore_global
@@ -98,7 +98,7 @@ setup_prevention() {
     else
         print_info "Fichier ~/.gitignore_global existe déjà"
     fi
-    
+
     # Configurer Git pour utiliser le gitignore global
     if ! git config --global core.excludesfile ~/.gitignore_global >/dev/null 2>&1; then
         git config --global core.excludesfile ~/.gitignore_global
@@ -106,7 +106,7 @@ setup_prevention() {
     else
         print_info "Git déjà configuré pour ignorer les fichiers AppleDouble"
     fi
-    
+
     # Ajouter au .gitignore du projet si pas déjà présent
     if [ -f .gitignore ]; then
         if ! grep -q "^\._*$" .gitignore; then
@@ -147,7 +147,7 @@ show_prevention_commands() {
 # Fonction principale
 main() {
     print_header
-    
+
     case "${1:-clean}" in
         "clean")
             clean_apple_double_files
@@ -183,10 +183,10 @@ main() {
             exit 1
             ;;
     esac
-    
+
     echo
     print_success "Opération terminée !"
 }
 
 # Exécution
-main "$@" 
+main "$@"

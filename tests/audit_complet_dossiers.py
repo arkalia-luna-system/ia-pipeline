@@ -7,10 +7,11 @@ Vérifie: utilité, implémentation, tests, documentation, intégration.
 """
 
 import ast
-import sys
 from dataclasses import dataclass, field
 from pathlib import Path
+import sys
 from typing import List, Optional
+
 
 # Ajouter le répertoire parent au path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
@@ -492,14 +493,14 @@ class AuditCompletDossiers:
         if modules_sans_docstring:
             recommandations.append(
                 f"📖 {len(modules_sans_docstring)} modules sans docstring - "
-                f"Ajouter de la documentation"
+                "Ajouter de la documentation"
             )
 
         modules_non_integres = [m for m in modules if not m.integration_orchestrateur]
         if modules_non_integres:
             recommandations.append(
                 f"🔗 {len(modules_non_integres)} modules non intégrés - "
-                f"Considérer l'intégration"
+                "Considérer l'intégration"
             )
 
         return recommandations
@@ -514,7 +515,8 @@ class AuditCompletDossiers:
         for module in modules:
             if len(module.fonctions) > 10 or len(module.classes) > 5:
                 pepites.append(
-                    f"💎 Module riche: {module.nom} ({len(module.fonctions)} fonctions, {len(module.classes)} classes)"
+                    f"💎 Module riche: {module.nom} ({len(module.fonctions)} fonctions,"
+                    f" {len(module.classes)} classes)"
                 )
 
         # Chercher des modules avec des noms intéressants
@@ -562,7 +564,8 @@ class AuditCompletDossiers:
         scores_totaux = [r.score_total for r in self.results]
         if scores_totaux:
             rapport.append(
-                f"**Score moyen global**: {sum(scores_totaux) / len(scores_totaux):.2f}/10"
+                "**Score moyen global**:"
+                f" {sum(scores_totaux) / len(scores_totaux):.2f}/10"
             )
             rapport.append(f"**Meilleur score**: {max(scores_totaux):.2f}/10")
             rapport.append(f"**Pire score**: {min(scores_totaux):.2f}/10")
@@ -608,7 +611,8 @@ class AuditCompletDossiers:
                 rapport.append("### 📦 Modules principaux")
                 for module in result.modules[:5]:  # Top 5
                     rapport.append(
-                        f"- **{module.nom}**: {len(module.fonctions)} fonctions, {len(module.classes)} classes"
+                        f"- **{module.nom}**: {len(module.fonctions)} fonctions,"
+                        f" {len(module.classes)} classes"
                     )
                 rapport.append("")
 

@@ -5,59 +5,59 @@
 # Fichier simplifié pour éviter les conflits de résolution
 # =====================================================
 
-# --- CORE PYTHON ---
-requests>=2.28.0
-pyyaml>=6.0
-jinja2>=3.1.0
-click>=8.1.0
-rich>=12.0.0
-python-dotenv>=0.19.0
-pydantic>=2.11.0
-fastapi>=0.115.0
-uvicorn>=0.29.0
-pillow>=11.0.0
-
-# --- IA/ML ---
-openai>=1.0.0
 anthropic>=0.3.0
-transformers>=4.20.0
-torch>=1.12.0
-scikit-learn>=1.7.0
-pandas>=2.3.0
-numpy>=2.2.0
-langchain>=0.3.26
-crewai>=0.148.0
-pyautogen>=0.10.0
-
-# --- API & WEB ---
-flask>=3.1.0
-streamlit>=1.47.0
-plotly>=6.2.0
-
-# --- TESTS ---
-pytest>=8.0.0
-pytest-cov>=4.0.0
-pytest-mock>=3.8.0
-pytest-benchmark>=5.0.0
-
-# --- LINTING ---
-flake8>=7.0.0
 black>=25.0.0
-isort>=6.0.0
-
-# --- UTILS ---
-psutil>=6.1.0
-loguru>=0.7.0
+click>=8.1.0
+crewai>=0.148.0
 
 # --- SÉCURITÉ ---
 cryptography>=45.0.0
+fastapi>=0.115.0
+
+# --- LINTING ---
+flake8>=7.0.0
+
+# --- API & WEB ---
+flask>=3.1.0
 
 # --- CI/CD ---
 gitpython
+isort>=6.0.0
+jinja2>=3.1.0
+langchain>=0.3.26
+loguru>=0.7.0
 
 # --- DOCS ---
 markdown
+numpy>=2.2.0
+
+# --- IA/ML ---
+openai>=1.0.0
+pandas>=2.3.0
+pillow>=11.0.0
+plotly>=6.2.0
 
 # --- DÉVELOPPEMENT ---
 pre-commit>=2.20.0
+
+# --- UTILS ---
+psutil>=6.1.0
+pyautogen>=0.10.0
+pydantic>=2.11.0
+
+# --- TESTS ---
+pytest>=8.0.0
+pytest-benchmark>=5.0.0
+pytest-cov>=4.0.0
+pytest-mock>=3.8.0
+python-dotenv>=0.19.0
+pyyaml>=6.0
+# --- CORE PYTHON ---
+requests>=2.28.0
+rich>=12.0.0
+scikit-learn>=1.7.0
+streamlit>=1.47.0
+torch>=1.12.0
 tox>=3.25.0
+transformers>=4.20.0
+uvicorn>=0.29.0

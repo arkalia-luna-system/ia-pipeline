@@ -77,4 +77,4 @@ Ce script peut être intégré dans votre workflow de développement :
 - Les fichiers temporaires macOS commencent par `.!`
 - Ils sont créés automatiquement par le système de fichiers macOS
 - Ils ne sont pas nécessaires au fonctionnement du projet
-- Leur suppression est sûre et n'affecte pas les fichiers originaux 
+- Leur suppression est sûre et n'affecte pas les fichiers originaux

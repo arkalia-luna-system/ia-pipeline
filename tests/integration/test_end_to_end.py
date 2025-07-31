@@ -5,14 +5,15 @@ Tests d'intégration end-to-end pour Athalia.
 Tests professionnels pour la CI/CD.
 """
 
+from pathlib import Path
 import subprocess
 import sys
 import tempfile
 import time
-from pathlib import Path
 
 import pytest
 import yaml
+
 
 # Ajouter le répertoire parent au path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
@@ -142,7 +143,10 @@ class TestEndToEndIntegration:
         assert readme.exists(), "README.md manquant dans le projet généré"
 
     @pytest.mark.skip(
-        reason="Test désactivé - génération de fichiers non disponible dans l'environnement de test"
+        reason=(
+            "Test désactivé - génération de fichiers non disponible dans"
+            " l'environnement de test"
+        )
     )
     def test_generation_end_to_end_cli(self):
         """Test de génération end-to-end pour un projet CLI."""

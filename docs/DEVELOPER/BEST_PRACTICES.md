@@ -126,4 +126,4 @@ python3 tools/maintenance/workspace_organizer.py --validate-docs
 - [ ] Audit de sécurité
 - [ ] Nettoyage des logs
 - [ ] Mise à jour des dépendances
-- [ ] Validation de la documentation 
+- [ ] Validation de la documentation

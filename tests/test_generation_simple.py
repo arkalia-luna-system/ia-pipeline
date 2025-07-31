@@ -4,22 +4,23 @@ Tests pour le module generation_simple.py
 Amélioration de la couverture de code
 """
 
-from unittest.mock import patch, mock_open
+from unittest.mock import mock_open, patch
+
 from athalia_core.generation_simple import (
-    generate_blueprint_mock,
+    backup_file,
     extract_project_name,
+    generate_api_docs,
+    generate_blueprint_mock,
+    generate_docker_compose,
+    generate_dockerfile,
+    generate_main_code,
     generate_project,
     generate_readme,
-    generate_main_code,
     generate_test_code,
-    save_blueprint,
     inject_booster_ia_elements,
-    scan_existing_project,
     merge_or_suffix_file,
-    backup_file,
-    generate_api_docs,
-    generate_dockerfile,
-    generate_docker_compose,
+    save_blueprint,
+    scan_existing_project,
 )
 
 

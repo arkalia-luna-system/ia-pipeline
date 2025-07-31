@@ -5,8 +5,8 @@ Tests: 20 tests unitaires et d'intégration
 """
 
 import json
-import tempfile
 from pathlib import Path
+import tempfile
 from unittest.mock import Mock, patch
 
 from athalia_core.autocomplete_engine import (

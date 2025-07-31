@@ -223,4 +223,4 @@ athalia.f(f
 *.bag
 *.db3
 *.db-shm
-*.db-wal 
+*.db-wal

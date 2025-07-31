@@ -14,4 +14,4 @@ find tests/ -name "._auto_generated_*.py" -type f -delete
 # Supprimer les fichiers de tests avec des caractères null
 find tests/ -name "auto_generated_*.py" -type f -exec grep -l $'\x00' {} \; | xargs rm -f
 
-echo "✅ Nettoyage terminé !" 
+echo "✅ Nettoyage terminé !"

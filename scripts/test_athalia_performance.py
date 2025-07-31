@@ -4,10 +4,10 @@
 Test de performance d'Athalia avec cache
 """
 
+from datetime import datetime
 import json
 import subprocess
 import time
-from datetime import datetime
 
 
 def test_athalia_performance():
@@ -173,7 +173,7 @@ def print_summary(results, multiple_results=None):
 
     if "with_cache" in results and "execution_time" in results["with_cache"]:
         print(
-            f"⚡ Temps avec cache: "
+            "⚡ Temps avec cache: "
             f"{results['with_cache']['execution_time']:.2f} secondes"
         )
 
@@ -192,7 +192,7 @@ def print_summary(results, multiple_results=None):
 
     if multiple_results and "improvement_percent" in multiple_results:
         print(
-            f"\n🔄 Test multiple: "
+            "\n🔄 Test multiple: "
             f"{multiple_results['improvement_percent']:.1f}% d'amélioration"
         )
 

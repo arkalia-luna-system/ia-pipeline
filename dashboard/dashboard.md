@@ -10,4 +10,4 @@ L’onglet **Benchmarks** du dashboard permet de visualiser et comparer les perf
     - Mémoire consommée par modèle
 - **Analyse comparative automatique** : surbrillance des écarts, identification du meilleur modèle.
 
-Pour mettre à jour les résultats, régénérez le fichier `benchmark_results.csv` puis rechargez la page. 
+Pour mettre à jour les résultats, régénérez le fichier `benchmark_results.csv` puis rechargez la page.

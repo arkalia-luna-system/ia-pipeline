@@ -337,4 +337,4 @@ python3 athalia_core/ready_check.py --verbose
 
 ---
 
-**🚀 Athalia - Prêt pour la Production !** 
+**🚀 Athalia - Prêt pour la Production !**

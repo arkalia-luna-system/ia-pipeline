@@ -1,7 +1,7 @@
 # 🔌 Plugins et Templates - Documentation API
 
-**Date :** 26 juillet 2025  
-**Module :** Plugins et Templates  
+**Date :** 26 juillet 2025
+**Module :** Plugins et Templates
 **Statut :** Documentation complète
 
 ## 🎯 Vue d'ensemble
@@ -106,10 +106,10 @@ if __name__ == '__main__':
 class Memory:
     def __init__(self):
         self.data = {}
-    
+
     def store(self, key, value):
         self.data[key] = value
-    
+
     def retrieve(self, key):
         return self.data.get(key)
 ```
@@ -119,7 +119,7 @@ class Memory:
 class TTS:
     def __init__(self):
         self.engine = None
-    
+
     def speak(self, text):
         # Implémentation TTS
         pass
@@ -226,4 +226,3 @@ template_stats = orchestrator.get_template_statistics()
 ---
 
 **Généré automatiquement** - 26/07/2025
-

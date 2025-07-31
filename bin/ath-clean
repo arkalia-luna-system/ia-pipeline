@@ -92,7 +92,7 @@ print_summary() {
 # Fonction pour vérifier si un fichier est important (à protéger)
 is_important_file() {
     local file="$1"
-    
+
     # Liste des patterns de fichiers importants à PROTÉGER
     local important_patterns=(
         "tests/"
@@ -131,36 +131,36 @@ is_important_file() {
         "*.sqlite"
         "*.db"
     )
-    
+
     # Vérifier si le fichier correspond à un pattern important
     for pattern in "${important_patterns[@]}"; do
         if [[ "$file" == *"$pattern"* ]] || [[ "$file" == "$pattern" ]]; then
             return 0  # Fichier important
         fi
     done
-    
+
     # Protection spéciale pour les fichiers de tests
     if [[ "$file" == *"test_"* ]] || [[ "$file" == *"_test"* ]] || [[ "$file" == *"tests/"* ]]; then
         return 0  # Fichier de test important
     fi
-    
+
     # Protection spéciale pour les fichiers de configuration
     if [[ "$file" == *"config/"* ]] || [[ "$file" == *".cfg" ]] || [[ "$file" == *".ini" ]] || [[ "$file" == *".yaml" ]] || [[ "$file" == *".yml" ]]; then
         return 0  # Fichier de configuration important
     fi
-    
+
     # Protection spéciale pour les fichiers de documentation
     if [[ "$file" == *"docs/"* ]] || [[ "$file" == *".md" ]] || [[ "$file" == *".rst" ]] || [[ "$file" == *".txt" ]]; then
         return 0  # Fichier de documentation important
     fi
-    
+
     return 1  # Fichier non important
 }
 
 # Fonction pour vérifier si un dossier est important
 is_important_directory() {
     local dir="$1"
-    
+
     # Liste des dossiers importants à PROTÉGER
     local important_dirs=(
         "tests"
@@ -179,14 +179,14 @@ is_important_directory() {
         "setup"
         "tools"
     )
-    
+
     # Vérifier si le dossier est important
     for important_dir in "${important_dirs[@]}"; do
         if [[ "$dir" == "$important_dir" ]] || [[ "$dir" == "./$important_dir" ]] || [[ "$dir" == "*/$important_dir" ]]; then
             return 0  # Dossier important
         fi
     done
-    
+
     return 1  # Dossier non important
 }
 
@@ -197,7 +197,7 @@ is_important_directory() {
 # Fonction pour arrêter tous les processus Athalia
 kill_athalia_processes() {
     print_section "Arrêt des processus Athalia"
-    
+
     # Patterns pour identifier les processus Athalia
     local patterns=(
         "athalia_core"
@@ -207,9 +207,9 @@ kill_athalia_processes() {
         "python.*athalia"
         "python3.*athalia"
     )
-    
+
     local killed_count=0
-    
+
     for pattern in "${patterns[@]}"; do
         if [ "$DRY_RUN_MODE" = true ]; then
             # Mode simulation - afficher les processus qui seraient arrêtés
@@ -242,12 +242,12 @@ kill_athalia_processes() {
             fi
         fi
     done
-    
+
     # Attendre un peu pour les processus qui se terminent proprement
     if [ "$DRY_RUN_MODE" = false ] && [ $killed_count -gt 0 ]; then
         print_info "Attente de 3 secondes pour la terminaison propre..."
         sleep 3
-        
+
         # Forcer l'arrêt des processus qui n'ont pas répondu au SIGTERM
         for pattern in "${patterns[@]}"; do
             local processes=$(ps aux | grep -E "$pattern" | grep -v grep | grep -v "ath-clean" || true)
@@ -264,13 +264,13 @@ kill_athalia_processes() {
             fi
         done
     fi
-    
+
     if [ $killed_count -gt 0 ]; then
         print_success "Total: $killed_count processus Athalia arrêtés"
     else
         print_info "Aucun processus Athalia trouvé"
     fi
-    
+
     echo
 }
 
@@ -284,12 +284,12 @@ secure_clean() {
     local description="${patterns[0]}"
     shift
     local pattern_list=("$@")
-    
+
     echo -e "${BLUE}🔍 $description (SÉCURISÉ)...${NC}"
-    
+
     local total_count=0
     local protected_count=0
-    
+
     for pattern in "${pattern_list[@]}"; do
         if [ "$DRY_RUN_MODE" = true ]; then
             # Mode simulation - afficher ce qui serait nettoyé
@@ -317,11 +317,11 @@ secure_clean() {
             done < <(find . -path "$pattern" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" -print0 2>/dev/null)
         fi
     done
-    
+
     if [ $total_count -gt 0 ]; then
         CLEANED_COUNT=$((CLEANED_COUNT + total_count))
     fi
-    
+
     if [ $protected_count -gt 0 ]; then
         print_info "$protected_count fichiers/dossiers importants protégés"
     fi
@@ -331,12 +331,12 @@ secure_clean() {
 secure_clean_cache_directories() {
     local dirs=("$@")
     local description="$1"
-    
+
     echo -e "${BLUE}🗂️  $description (SÉCURISÉ)...${NC}"
-    
+
     local total_count=0
     local protected_count=0
-    
+
     for dir in "${dirs[@]}"; do
         if [ "$DRY_RUN_MODE" = true ]; then
             if [ -d "$dir" ]; then
@@ -364,11 +364,11 @@ secure_clean_cache_directories() {
             fi
         fi
     done
-    
+
     if [ $total_count -gt 0 ]; then
         CLEANED_COUNT=$((CLEANED_COUNT + total_count))
     fi
-    
+
     if [ $protected_count -gt 0 ]; then
         print_info "$protected_count dossiers importants protégés"
     fi
@@ -381,7 +381,7 @@ secure_clean_cache_directories() {
 # Fonction pour désactiver la création de fichiers AppleDouble
 disable_appledouble_creation() {
     print_section "Désactivation de la création de fichiers AppleDouble"
-    
+
     if [ "$DRY_RUN_MODE" = true ]; then
         echo -e "${YELLOW}   [DRY-RUN] Vérification de la configuration AppleDouble...${NC}"
         if defaults read com.apple.desktopservices DSDontWriteNetworkStores 2>/dev/null | grep -q "1"; then
@@ -396,20 +396,20 @@ disable_appledouble_creation() {
         else
             print_warning "Impossible de désactiver la création de fichiers AppleDouble (droits insuffisants)"
         fi
-        
+
         # Désactiver la création de fichiers AppleDouble localement
         if defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true 2>/dev/null; then
             print_success "Création de fichiers AppleDouble désactivée sur les volumes USB"
         else
             print_warning "Impossible de désactiver la création de fichiers AppleDouble USB (droits insuffisants)"
         fi
-        
+
         # Redémarrer Finder pour appliquer les changements
         if killall Finder 2>/dev/null; then
             print_info "Finder redémarré pour appliquer les changements"
         fi
     fi
-    
+
     echo
 }
 
@@ -530,4 +530,4 @@ else
 fi
 
 # Affichage du résumé
-print_summary 
+print_summary

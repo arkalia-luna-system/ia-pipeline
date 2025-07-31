@@ -6,15 +6,16 @@ Couverture maximale avec tests professionnels
 """
 
 import os
+from pathlib import Path
 import shutil
 import sys
 import tempfile
-from pathlib import Path
 from unittest.mock import Mock, patch
 
 import click
 import pytest
 import yaml  # type: ignore
+
 
 # Ajouter le répertoire parent au path pour les imports
 sys.path.insert(0, str(Path(__file__).parent.parent))

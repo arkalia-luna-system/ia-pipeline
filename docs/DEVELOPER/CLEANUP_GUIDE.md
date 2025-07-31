@@ -192,4 +192,4 @@ En cas de problème avec les scripts de nettoyage :
 
 ---
 
-**Note :** Ce guide doit être mis à jour régulièrement pour refléter les nouvelles pratiques et outils de nettoyage. 
+**Note :** Ce guide doit être mis à jour régulièrement pour refléter les nouvelles pratiques et outils de nettoyage.

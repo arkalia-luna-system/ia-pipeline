@@ -116,4 +116,4 @@ performance:
   max_cpu_percent: 50  # Limite CPU
   auto_cleanup_interval: 3600  # Nettoyage toutes les heures
   log_rotation_size: 10  # MB
-  log_rotation_count: 3  # Fichiers max 
+  log_rotation_count: 3  # Fichiers max

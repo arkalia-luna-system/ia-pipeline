@@ -130,4 +130,4 @@ REPORT_FILE="logs/validation_express_$(date +%Y%m%d_%H%M%S).txt"
 echo ""
 echo "📄 Rapport sauvegardé: $REPORT_FILE"
 
-exit $EXIT_CODE 
+exit $EXIT_CODE

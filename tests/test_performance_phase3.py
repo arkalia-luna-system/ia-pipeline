@@ -5,8 +5,8 @@
 Tests pour optimiser les performances du projet
 """
 
-import time
 from pathlib import Path
+import time
 from typing import Dict
 
 import psutil  # type: ignore
@@ -202,7 +202,8 @@ class TestPerformancePhase3:
         # Recommandation si le cache est trop gros
         if cache_size_mb > 100:
             print(
-                f"⚠️ Cache volumineux détecté: {cache_size_mb:.1f}MB - Considérer le nettoyage"
+                f"⚠️ Cache volumineux détecté: {cache_size_mb:.1f}MB - Considérer le"
+                " nettoyage"
             )
 
 

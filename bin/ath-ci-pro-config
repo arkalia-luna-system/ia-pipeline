@@ -120,7 +120,7 @@ show_status() {
     echo -e "🔒 Vérifications performance: ${CYAN}$PERFORMANCE_CHECKS${NC}"
     echo -e "🔒 Intégration pre-commit: ${CYAN}$PRE_COMMIT_INTEGRATION${NC}"
     echo
-    
+
     print_section "Description des niveaux"
     echo
     case $CI_PRO_LEVEL in
@@ -136,15 +136,15 @@ show_status() {
 # Fonction de définition du niveau
 set_level() {
     local level=$1
-    
+
     if ! [[ "$level" =~ ^[1-5]$ ]]; then
         print_error "Niveau invalide: $level (doit être 1-5)"
         exit 1
     fi
-    
+
     CI_PRO_LEVEL=$level
     save_config
-    
+
     print_success "Niveau CI/CD Pro défini à $level"
     echo
     show_status
@@ -153,7 +153,7 @@ set_level() {
 # Fonction d'activation
 enable_feature() {
     local feature=$1
-    
+
     case $feature in
         strict-mode)
             STRICT_MODE=true
@@ -180,14 +180,14 @@ enable_feature() {
             exit 1
             ;;
     esac
-    
+
     save_config
 }
 
 # Fonction de désactivation
 disable_feature() {
     local feature=$1
-    
+
     case $feature in
         strict-mode)
             STRICT_MODE=false
@@ -214,21 +214,21 @@ disable_feature() {
             exit 1
             ;;
     esac
-    
+
     save_config
 }
 
 # Fonction de reset
 reset_config() {
     print_warning "Remise à zéro de la configuration CI/CD Pro..."
-    
+
     CI_PRO_LEVEL=1
     STRICT_MODE=false
     AUTO_FIX=false
     SECURITY_CHECKS=true
     PERFORMANCE_CHECKS=false
     PRE_COMMIT_INTEGRATION=true
-    
+
     save_config
     print_success "Configuration remise à zéro"
     echo
@@ -238,10 +238,10 @@ reset_config() {
 # Fonction principale
 main() {
     print_header
-    
+
     # Charger la configuration
     load_config
-    
+
     # Parsing des arguments
     case $1 in
         status)
@@ -284,4 +284,4 @@ main() {
 }
 
 # Exécution
-main "$@" 
+main "$@"

@@ -4,11 +4,11 @@ Couverture: 100% des fonctionnalités d'auto_cleaner
 Tests: 30 tests unitaires et d'intégration
 """
 
+from datetime import datetime
 import json
+from pathlib import Path
 import shutil
 import tempfile
-from datetime import datetime
-from pathlib import Path
 from unittest.mock import Mock, patch
 
 from athalia_core.auto_cleaner import (

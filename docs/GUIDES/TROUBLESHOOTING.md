@@ -1,6 +1,6 @@
 # 🔧 Guide de Dépannage - Athalia
 
-**Date :** 27 janvier 2025  
+**Date :** 27 janvier 2025
 **Version :** 1.0
 
 ---
@@ -163,4 +163,4 @@ pip install -r requirements.txt
 
 ---
 
-*Guide de dépannage pour résoudre les problèmes courants avec Athalia* 
+*Guide de dépannage pour résoudre les problèmes courants avec Athalia*

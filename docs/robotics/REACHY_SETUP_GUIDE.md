@@ -294,4 +294,4 @@ Avec cette configuration, tu es maintenant **parfaitement équipé** pour :
 - ✅ **Développer tes compétences** en robotique
 - ✅ **Te faire connaître** dans la communauté
 
-**Bonne chance pour tes contributions au projet Reachy !** 🤖✨ 
+**Bonne chance pour tes contributions au projet Reachy !** 🤖✨

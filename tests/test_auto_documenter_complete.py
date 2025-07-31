@@ -4,10 +4,10 @@ Couverture: 100% des fonctionnalités d'auto_documenter
 Tests: 25 tests unitaires et d'intégration
 """
 
-import json
-import tempfile
 from datetime import datetime
+import json
 from pathlib import Path
+import tempfile
 from unittest.mock import Mock, patch
 
 import yaml

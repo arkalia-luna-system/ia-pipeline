@@ -63,4 +63,4 @@ python -m pytest tests/ --cov=athalia_core --cov-report=html --cov-report=term-m
 echo ""
 echo "🎉 Validation CI/CD terminée avec succès"
 echo "📊 Rapport de couverture disponible dans htmlcov/index.html"
-echo "📈 Couverture actuelle : $(python -m pytest tests/ --cov=athalia_core --cov-report=term | grep TOTAL | awk '{print $4}')" 
+echo "📈 Couverture actuelle : $(python -m pytest tests/ --cov=athalia_core --cov-report=term | grep TOTAL | awk '{print $4}')"

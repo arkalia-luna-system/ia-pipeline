@@ -240,4 +240,4 @@ git commit
 - [Git Flow](https://nvie.com/posts/a-successful-git-branching-model/)
 - [Conventional Commits](https://www.conventionalcommits.org/)
 - [GitHub Flow](https://guides.github.com/introduction/flow/)
-- [Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf) 
+- [Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)

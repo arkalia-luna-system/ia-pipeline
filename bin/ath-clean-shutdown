@@ -49,19 +49,19 @@ if ! git status --porcelain | grep -q .; then
     show_success "Aucun changement en attente"
 else
     show_warning "Changements détectés, préparation du commit..."
-    
+
     # Ajouter tous les fichiers
     git add .
-    
+
     # Créer un commit avec timestamp
     TIMESTAMP=$(date "+%Y-%m-%d %H:%M:%S")
     COMMIT_MSG="🧹 Nettoyage automatique - $TIMESTAMP
-    
+
     - Nettoyage des fichiers temporaires
     - Mise à jour de la documentation
     - Correction des tests
     - Optimisation du code"
-    
+
     if git commit -m "$COMMIT_MSG"; then
         show_success "Commit créé avec succès"
     else
@@ -238,4 +238,4 @@ echo -e "   - Espace disque: $DISK_USAGE%"
 echo -e "   - Rapport: $REPORT_FILE"
 echo ""
 echo -e "${YELLOW}💡 Conseil: Vérifiez le rapport pour plus de détails${NC}"
-echo "" 
+echo ""

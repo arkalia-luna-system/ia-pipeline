@@ -29,7 +29,8 @@ class TestAnalytics(unittest.TestCase):
             # Créer des fichiers de test
             with open(os.path.join(tmpdir, "main.py"), "w") as f:
                 f.write(
-                    "# Test comment for technical debt analysis\n# Bug comment for testing\n"
+                    "# Test comment for technical debt analysis\n# Bug comment for"
+                    " testing\n"
                 )
             data = analytics.generate_technical_debt_analysis(tmpdir)
             self.assertIn("technical_debt_score", data)

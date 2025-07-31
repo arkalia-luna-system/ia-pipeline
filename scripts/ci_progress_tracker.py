@@ -4,10 +4,10 @@ Script de suivi de progression CI/CD professionnelle
 Gère les métriques et rapports de progression
 """
 
+from datetime import datetime
 import json
 import os
-from datetime import datetime
-from typing import Dict, Any
+from typing import Any, Dict
 
 
 class CIProgressTracker:

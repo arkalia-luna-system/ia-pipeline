@@ -1,7 +1,7 @@
 # 📚 Documentation API - Athalia Dev Setup
 
-**Section :** Documentation API  
-**Date :** 29 juillet 2025  
+**Section :** Documentation API
+**Date :** 29 juillet 2025
 **Version :** 2.0.0
 
 ---

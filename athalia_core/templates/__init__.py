@@ -4,6 +4,7 @@
 
 from .base_templates import get_base_templates
 
+
 # Fichier dinitialisation du sous - package templates dict_data'athalia_core
 
 

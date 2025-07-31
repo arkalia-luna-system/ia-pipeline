@@ -206,4 +206,4 @@ if [ $TOTAL_ISSUES -eq 0 ]; then
     show_success "🌟 Le projet Athalia est en excellent état !"
 else
     show_warning "🔧 Quelques améliorations possibles pour optimiser le projet"
-fi 
+fi

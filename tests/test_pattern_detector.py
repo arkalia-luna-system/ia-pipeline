@@ -4,14 +4,15 @@ Tests pour le module pattern_detector.py
 Amélioration de la couverture de code de 0% à 80%+
 """
 
-from unittest.mock import patch, MagicMock
-from pathlib import Path
 from datetime import datetime
+from pathlib import Path
+from unittest.mock import MagicMock, patch
+
 from athalia_core.pattern_detector import (
-    PatternDetector,
+    AntiPattern,
     CodePattern,
     DuplicateAnalysis,
-    AntiPattern,
+    PatternDetector,
 )
 
 
@@ -162,7 +163,6 @@ class TestPatternDetector:
                         with patch.object(
                             detector, "_generate_recommendations"
                         ) as mock_generate_recs:
-
                             mock_extract.return_value = []
                             mock_detect_duplicates.return_value = []
                             mock_detect_antipatterns.return_value = []
@@ -397,7 +397,6 @@ class TestIntegration:
                         with patch.object(
                             detector, "_generate_recommendations"
                         ) as mock_generate_recs:
-
                             mock_extract.return_value = []
                             mock_detect_duplicates.return_value = []
                             mock_detect_antipatterns.return_value = []

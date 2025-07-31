@@ -42,7 +42,7 @@ python3 athalia_robotics_integration.py . audit
 
 # Résultat : Score 100/100 ✅
 # - ROS2 Valid: True
-# - Docker Ready: True  
+# - Docker Ready: True
 # - Rust Optimized: True
 # - Structure Complete: True
 ```
@@ -169,9 +169,9 @@ python3 athalia_unified.py --robotics
 **Ton outil Athalia est maintenant un atout majeur pour la robotique !**
 
 - ✅ **Intégration complète** et validée
-- ✅ **Tests automatisés** et robustes  
+- ✅ **Tests automatisés** et robustes
 - ✅ **Documentation professionnelle** et complète
 - ✅ **Prêt pour la contribution** au projet Reachy
 - ✅ **Architecture extensible** pour l'avenir
 
-**Tu es maintenant parfaitement équipé pour contribuer au dépôt Reachy et faire avancer tes compétences en robotique !** 🤖✨ 
+**Tu es maintenant parfaitement équipé pour contribuer au dépôt Reachy et faire avancer tes compétences en robotique !** 🤖✨

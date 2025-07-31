@@ -69,4 +69,4 @@ else
     if [ "$ERROR_COUNT" -gt 0 ]; then
         echo -e "   - ${RED}$ERROR_COUNT erreur(s)${NC}"
     fi
-fi 
+fi

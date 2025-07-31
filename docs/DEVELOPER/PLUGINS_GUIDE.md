@@ -1,7 +1,7 @@
 # Guide des Plugins - Athalia/Arkalia
 
 > **Note de mise à jour (19/07/2025) :**
-> 
+>
 > - Le système de plugins est déjà en place, testé, documenté, et utilisé en production.
 > - Les exemples et guides sont à jour avec l’état réel du code.
 
@@ -38,24 +38,24 @@ from abc import ABC, abstractmethod
 from typing import Dict, Any, Optional
 
 class Plugin(ABC):
- Interface de base pour tous les plugins Athalia/Arkalia.    
+ Interface de base pour tous les plugins Athalia/Arkalia.
     name: str
     description: str
     version: str
     author: str
     dependencies: list = []
-    
+
     @abstractmethod
     def execute(self, context: Dict[str, Any]) -> Dict[str, Any]:
 Méthode principale d'exécution du plugin."""
         pass
-    
+
     def validate_context(self, context: Dict[str, Any]) -> bool:
   Valide le contexte d'exécution.       return True
-    
+
     def pre_execute(self, context: Dict[str, Any]) -> Dict[str, Any]:
   ctions à effectuer avant l'exécution.    return context
-    
+
     def post_execute(self, result: Dict[str, Any]) -> Dict[str, Any]:
   ctions à effectuer après l'exécution.     return result
 ```
@@ -74,10 +74,10 @@ class MyFirstPlugin(Plugin):
     name = my_first_plugin"
     description = "Mon premier plugin Athalia/Arkalia
     version = 10.0   author =Votre Nom"
-    
+
     def execute(self, context: Dict[str, Any]) -> Dict[str, Any]:
 Logique principale du plugin."      project_path = context.get("project_path", "")
-        
+
         # Votre logique ici
         result = {
             status": "success",
@@ -86,7 +86,7 @@ Logique principale du plugin."      project_path = context.get("project_path", "
                 files_processed": 0
                 time_taken:0.1         }
         }
-        
+
         return result
 ```
 
@@ -102,31 +102,31 @@ class AdvancedPlugin(Plugin):
     name = advanced_plugin"
     description = "Plugin avancé avec validation
     version = 10.0   author = "Votre Nom    dependencies = ["requests,pyyaml"]
-    
+
     def validate_context(self, context: Dict[str, Any]) -> bool:
-      lide que le projet existe."      project_path = context.get("project_path", 
+      lide que le projet existe."      project_path = context.get("project_path",
         return os.path.exists(project_path)
-    
+
     def pre_execute(self, context: Dict[str, Any]) -> Dict[str, Any]:
        répare l'exécution."
         context["start_time"] = time.time()
         return context
-    
+
     def execute(self, context: Dict[str, Any]) -> Dict[str, Any]:
 Logique principale."      project_path = context["project_path"]
-        
+
         # Votre logique ici
         files = self.scan_project(project_path)
-        
+
         return {
             status": "success",
             files_found": len(files),
          project_path": project_path
         }
-    
+
     def post_execute(self, result: Dict[str, Any]) -> Dict[str, Any]:
         Actions post-exécution.      result["execution_time] =time.time() - self.context.get("start_time",0     return result
-    
+
     def scan_project(self, path: str) -> list:
      Méthode utilitaire."       files = []
         for root, dirs, filenames in os.walk(path):
@@ -173,27 +173,27 @@ class ConfigurablePlugin(Plugin):
     name = "configurable_plugin"
     description = "Plugin avec configuration YAML
     version = 10.0   author =Votre Nom"
-    
+
     def __init__(self):
         super().__init__()
         self.config = self.load_config()
-    
+
     def load_config(self) -> Dict[str, Any]:
   e la configuration du plugin.       config_path = os.path.join(
-            os.path.dirname(__file__), 
+            os.path.dirname(__file__),
         config.yaml"
         )
-        
+
         with open(config_path, 'r') as f:
             return yaml.safe_load(f)
-    
+
     def execute(self, context: Dict[str, Any]) -> Dict[str, Any]:
        avec configuration."
         timeout = self.config.get("settings", [object Object]}).get("timeout", 30     output_format = self.config.get("settings, {}).get(output_format",json)
-        
+
         # Utiliser la configuration
         result = self.process_with_config(context, timeout)
-        
+
         if output_format == "json":
             return result
         else:
@@ -214,31 +214,31 @@ class DockerExportPlugin(Plugin):
     name = "docker_export"
     description = Exporte un projet vers Docker
     version = 10.0   author = "Athalia Team"
-    
+
     def execute(self, context: Dict[str, Any]) -> Dict[str, Any]:
         project_path = context.get("project_path",         output_dir = context.get("output_dir", "./docker")
-        
+
         # Générer Dockerfile
         dockerfile_content = self.generate_dockerfile(project_path)
-        
+
         # Générer docker-compose.yml
         compose_content = self.generate_compose(project_path)
-        
+
         # Sauvegarder les fichiers
         os.makedirs(output_dir, exist_ok=True)
-        
+
         with open(os.path.join(output_dir,Dockerfile"), 'w') as f:
             f.write(dockerfile_content)
-        
+
         with open(os.path.join(output_dir, "docker-compose.yml"), 'w') as f:
             f.write(compose_content)
-        
+
         return {
             status": "success",
             files_generated": ["Dockerfile, docker-compose.yml"],
        output_dir": output_dir
         }
-    
+
     def generate_dockerfile(self, project_path: str) -> str:
   nère un Dockerfile basique.        returnFROM python:310slim
 
@@ -251,7 +251,7 @@ EXPOSE 800
 
 CMD ["python", "app.py"]
 """
-    
+
     def generate_compose(self, project_path: str) -> str:
   nère un docker-compose.yml basique.        return "n: 3.8
 services:
@@ -277,12 +277,12 @@ class SecurityAuditPlugin(Plugin):
     name =security_audit"
     description = Audit de sécurité automatisé
     version = 10.0   author = "Athalia Team"
-    
+
     def execute(self, context: Dict[str, Any]) -> Dict[str, Any]:
         project_path = context.get("project_path", "")
-        
+
         security_issues = []
-        
+
         # Scanner les fichiers Python
         for root, dirs, files in os.walk(project_path):
             for file in files:
@@ -290,27 +290,27 @@ class SecurityAuditPlugin(Plugin):
                     file_path = os.path.join(root, file)
                     issues = self.scan_python_file(file_path)
                     security_issues.extend(issues)
-        
+
         return {
             status": "success",
             security_issues: security_issues,
          total_issues": len(security_issues),
             risk_level: self.calculate_risk_level(security_issues)
         }
-    
+
     def scan_python_file(self, file_path: str) -> list:
        Scanne un fichier Python pour des vulnérabilités.      issues = []
-        
+
         with open(file_path, 'r') as f:
             content = f.read()
-        
+
         # Détecter les patterns dangereux
         dangerous_patterns =            (revals*\(', "Utilisation d'eval() - risque de sécurité),
             (rexecs*\(, "Utilisation d'exec() - risque de sécurité),
             (ros\.system\s*\(,Utilisation d'os.system() - risque de sécurité),
             (rsubprocess\.call\s*\(, "Utilisation de subprocess.call() - risque de sécurité"),
         ]
-        
+
         for pattern, description in dangerous_patterns:
             matches = re.finditer(pattern, content)
             for match in matches:
@@ -320,13 +320,13 @@ class SecurityAuditPlugin(Plugin):
                 description": description,
                    severity": "high"
                 })
-        
+
         return issues
-    
+
     def calculate_risk_level(self, issues: list) -> str:
    Calcule le niveau de risque global."""
         high_issues = len([i for i in issues if i["severity"] == high)
-        
+
         if high_issues > 5:
             return critical"
         elif high_issues > 2:
@@ -388,23 +388,23 @@ from plugins.my_plugin.plugin import MyFirstPlugin
 class TestMyFirstPlugin:
     def setup_method(self):
         self.plugin = MyFirstPlugin()
-    
+
     def test_plugin_initialization(self):
         assert self.plugin.name == my_first_plugin"
         assert self.plugin.version == "10
-    
+
     def test_plugin_execution(self):
         context = {"project_path:./test_project"}
         result = self.plugin.execute(context)
-        
+
         assert result["status"] ==success   assert "message" in result
         assert "data" in result
-    
+
     def test_plugin_validation(self):
         # Test avec contexte valide
         valid_context = {"project_path": "./existing_project"}
         assert self.plugin.validate_context(valid_context) == True
-        
+
         # Test avec contexte invalide
         invalid_context = {"project_path: n_existent_project"}
         assert self.plugin.validate_context(invalid_context) == False
@@ -421,19 +421,19 @@ class TestPluginsIntegration:
     def test_plugin_manager_initialization(self):
         manager = PluginManager()
         assert manager is not None
-    
+
     def test_plugin_loading(self):
         manager = PluginManager()
         plugins = manager.load_plugins()
         assert len(plugins) > 0
-    
+
     def test_plugin_execution_chain(self):
         manager = PluginManager()
-        
+
         # Exécuter une chaîne de plugins
         context = {"project_path:./test_project}
         results = manager.run_all_plugins(context)
-        
+
         assert isinstance(results, dict)
         assert len(results) > 0
 ```
@@ -447,21 +447,21 @@ class BestPracticePlugin(Plugin):
     name = "best_practice_plugin"
     description = "Plugin suivant les bonnes pratiques
     version = 10.0   author =Votre Nom"
-    
+
     def __init__(self):
         super().__init__()
         self.logger = logging.getLogger(self.name)
-    
+
     def validate_context(self, context: Dict[str, Any]) -> bool:
    Validation robuste du contexte.""     required_keys = ["project_path"]
         return all(key in context for key in required_keys)
-    
+
     def execute(self, context: Dict[str, Any]) -> Dict[str, Any]:
        ution avec gestion d'erreurs."""
         try:
             # Votre logique ici
             result = self.process_project(context)
-            
+
             return[object Object]
                 status": "success,
              dataresult
@@ -472,7 +472,7 @@ class BestPracticePlugin(Plugin):
               status": "error,
               errorstr(e)
             }
-    
+
     def process_project(self, context: Dict[str, Any]) -> Dict[str, Any]:
        Logique métier séparée.  # Implémentation
         pass
@@ -487,7 +487,7 @@ class ErrorHandlingPlugin(Plugin):
             # Logique principale
             result = self.main_logic(context)
             return {status": success", "data": result}
-            
+
         except FileNotFoundError as e:
             return[object Object]status:error,error": f"Fichier non trouvé: {e}"}
         except PermissionError as e:
@@ -501,25 +501,25 @@ class ErrorHandlingPlugin(Plugin):
 ```python
 class WellDocumentedPlugin(Plugin):
 ugin bien documenté avec docstrings complètes.
-    
+
     Ce plugin effectue des opérations spécifiques sur les projets.
-    
+
     Args:
         context (Dict[str, Any]): Contexte d'exécution contenant:
             - project_path (str): Chemin vers le projet
             - options (Dict): Options de configuration
-    
+
     Returns:
         Dict[str, Any]: Résultat de l'exécution contenant:
             - status (str): Statut de l'exécution
             - data (Dict): Données générées
-    
+
     def execute(self, context: Dict[str, Any]) -> Dict[str, Any]:
               Exécute la logique principale du plugin.
-        
+
         Args:
             context: Contexte d'exécution
-            
+
         Returns:
             Résultat de lexécution
           # Implémentation
@@ -537,18 +537,18 @@ from athalia_core.plugins import Plugin
 class PipelineHookPlugin(Plugin):
     name = "pipeline_hook"
     description = Plugin avec hooks du pipeline
-    version = "10    
+    version = "10
     def pre_generation(self, context: Dict[str, Any]) -> Dict[str, Any]:
       écuté avant la génération du projet.""        # Préparer l'environnement
         return context
-    
+
     def post_generation(self, context: Dict[str, Any]) -> Dict[str, Any]:
       écuté après la génération du projet.      # Post-traitement
         return context
-    
+
     def pre_audit(self, context: Dict[str, Any]) -> Dict[str, Any]:
         xécuté avant laudit.    return context
-    
+
     def post_audit(self, context: Dict[str, Any]) -> Dict[str, Any]:
         xécuté après laudit.    return context
 ```
@@ -599,31 +599,31 @@ import re
 class DocGeneratorPlugin(Plugin):
     name = "doc_generator"
     description = "Génère de la documentation automatique
-    version = "10  
+    version = "10
     def execute(self, context: Dict[str, Any]) -> Dict[str, Any]:
         project_path = context.get("project_path, )
         doc_type = context.get("doc_type", "README")
-        
+
         if doc_type == "README":
             content = self.generate_readme(project_path)
         elif doc_type == API           content = self.generate_api_docs(project_path)
         else:
             content = self.generate_generic_docs(project_path, doc_type)
-        
+
         # Sauvegarder la documentation
         output_file = os.path.join(project_path, f"{doc_type}.md")
         with open(output_file, 'w') as f:
             f.write(content)
-        
+
         return {
             status": "success",
            file_generated": output_file,
          doc_type": doc_type
         }
-    
+
     def generate_readme(self, project_path: str) -> str:
        nère un README basique."      project_name = os.path.basename(project_path)
-        
+
         return f# {project_name}
 
 ## Description
@@ -654,4 +654,4 @@ python main.py
 
 ---
 
-*Dernière mise à jour : $(date)* 
+*Dernière mise à jour : $(date)*

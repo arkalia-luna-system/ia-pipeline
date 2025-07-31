@@ -6,8 +6,8 @@ Couverture: 100% des fonctionnalités de docker_robotics
 Tests: 38 tests unitaires et d'intégration
 """
 
-import tempfile
 from pathlib import Path
+import tempfile
 from unittest.mock import mock_open, patch
 
 from athalia_core.robotics.docker_robotics import (

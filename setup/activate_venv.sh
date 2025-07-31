@@ -26,4 +26,4 @@ if [ "$VIRTUAL_ENV" = "$(pwd)/.venv" ]; then
 else
     echo "❌ Erreur lors de l'activation du venv"
     return 1
-fi 
+fi

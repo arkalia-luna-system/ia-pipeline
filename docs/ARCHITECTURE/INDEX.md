@@ -1,6 +1,6 @@
 # 🏗️ Architecture - Athalia
 
-**Section :** Architecture et design  
+**Section :** Architecture et design
 **Date :** 27 janvier 2025
 
 ---
@@ -57,4 +57,4 @@ Cette section contient la documentation d'architecture et de design du système 
 
 ---
 
-*Section dédiée à l'architecture et au design du système* 
+*Section dédiée à l'architecture et au design du système*

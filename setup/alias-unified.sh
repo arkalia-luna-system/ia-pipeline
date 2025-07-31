@@ -239,7 +239,7 @@ alias ath-mkdocs='echo "🚧 Fonctionnalité à implémenter : ath-mkdocs"'
 
 if [ -n "$ZSH_VERSION" ]; then
     compctl -K _athalia_aliases ath-
-    _athalia_aliases() { 
+    _athalia_aliases() {
         reply=($(compgen -A function -A command -A alias -- "${words[1]}"))
     }
 elif [ -n "$BASH_VERSION" ]; then
@@ -249,7 +249,7 @@ fi
 # Auto-complétion pour les plugins ath-plugin-*
 if [ -n "$ZSH_VERSION" ]; then
     compctl -K _athalia_plugins ath-plugin-
-    _athalia_plugins() { 
+    _athalia_plugins() {
         reply=($(ls "$ATHALIA_ROOT/plugins/" | grep -E '^.*_plugin\\.py$' | sed 's/\\.py$//;s/_plugin$//;s/^/ath-plugin-/'))
     }
 elif [ -n "$BASH_VERSION" ]; then
@@ -355,4 +355,4 @@ echo "🚀 Alias Athalia/Arkalia unifiés chargés !"
 echo "💡 Tapez 'ath-help' pour voir toutes les commandes"
 echo "🔍 Tapez 'ath-status' pour l'état du projet"
 echo "🧠 Tapez 'ath-brain-analyze' pour analyser l'architecture"
-echo "🎯 Tapez 'ath-orchestrate-plan' pour voir les plans d'orchestration" 
+echo "🎯 Tapez 'ath-orchestrate-plan' pour voir les plans d'orchestration"

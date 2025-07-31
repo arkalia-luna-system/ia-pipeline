@@ -110,4 +110,4 @@ reports:
   auto_generate: true
   format: "markdown"
   include_metrics: true
-  path: "docs/REPORTS" 
+  path: "docs/REPORTS"

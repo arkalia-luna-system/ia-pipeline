@@ -90,4 +90,4 @@ echo "   • Backup créé: $BACKUP_FILE"
 # Vérifier l'espace disque libéré (approximatif)
 echo ""
 echo -e "${GREEN}🎉 Nettoyage terminé avec succès !${NC}"
-echo "==================================================" 
+echo "=================================================="

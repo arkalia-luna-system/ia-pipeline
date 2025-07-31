@@ -2,8 +2,8 @@
 
 ## 📊 Résumé du Nettoyage
 
-**Date :** 30 juillet 2025  
-**Action :** Nettoyage et analyse du dossier `bin/`  
+**Date :** 30 juillet 2025
+**Action :** Nettoyage et analyse du dossier `bin/`
 **Objectif :** Identifier et supprimer les doublons et fichiers inutiles
 
 ## ✅ Actions Effectuées
@@ -178,4 +178,4 @@ Le nettoyage du dossier `bin/` a été un succès. L'environnement est maintenan
 - **Plus maintenable** : Documentation et outils d'analyse créés
 - **Plus efficace** : Suppression des doublons et fichiers obsolètes
 
-Le dossier `bin/` est maintenant optimisé et prêt pour un développement efficace avec Athalia. 
+Le dossier `bin/` est maintenant optimisé et prêt pour un développement efficace avec Athalia.

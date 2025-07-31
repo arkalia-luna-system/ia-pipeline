@@ -5,10 +5,10 @@ Tests: 32 tests unitaires et d'intégration
 """
 
 import os
+from pathlib import Path
 import re
 import subprocess
 import tempfile
-from pathlib import Path
 from unittest.mock import Mock, patch
 
 from athalia_core.security_auditor import SecurityAuditor

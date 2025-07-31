@@ -144,4 +144,4 @@ Pour ajouter un nouveau template :
 
 ## 📚 Exemples
 
-Voir le dossier `examples/` pour des exemples d'utilisation complets. 
+Voir le dossier `examples/` pour des exemples d'utilisation complets.

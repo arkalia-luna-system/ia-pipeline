@@ -50,4 +50,4 @@ Ce répertoire contient toute la documentation nécessaire pour les développeur
 Pour ajouter un nouveau document :
 1. Créez le fichier dans ce répertoire
 2. Ajoutez-le à cet index
-3. Mettez à jour les références croisées si nécessaire 
+3. Mettez à jour les références croisées si nécessaire

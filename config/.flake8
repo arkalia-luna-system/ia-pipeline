@@ -24,4 +24,4 @@ jobs = 1
 per-file-ignores =
     __init__.py:F401
     tests/*:E501,F401,F841,E731
-    tests/bin/*:E501,F401,F841,E731,E722,W291,W293,W292 
+    tests/bin/*:E501,F401,F841,E731,E722,W291,W293,W292

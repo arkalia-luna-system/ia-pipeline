@@ -40,7 +40,7 @@ def kill_athalia_processes():
     """Arrête tous les processus Athalia en cours"""
     patterns = [
         "athalia_core.main",
-        "athalia_core.cli", 
+        "athalia_core.cli",
         "ath-audit",
         "python.*athalia"
     ]
@@ -59,10 +59,10 @@ def run_tests_with_cleanup():
     # Configuration de l'environnement de test
     env["ATHALIA_TEST_MODE"] = "1"
     env["ATHALIA_VERBOSE"] = "0"
-    
+
     # Exécution des tests
     result = subprocess.run(["pytest", "tests/", "-v"])
-    
+
     # Nettoyage automatique
     subprocess.run([sys.executable, "bin/ath-test-clean.py"])
 ```
@@ -155,7 +155,7 @@ ATHALIA_LOG_LEVEL=ERROR  # Niveau de log minimal
 
 ### **Configuration pytest (`pytest.ini`)**
 ```ini
-addopts = 
+addopts =
     --verbose
     --tb=short
     --cleanup-on-fail
@@ -236,4 +236,4 @@ Le système de nettoyage automatique garantit que :
 - ✅ **Les performances** du système sont optimisées
 - ✅ **L'expérience utilisateur** est améliorée
 
-**Plus besoin de nettoyage manuel !** 🎯 
+**Plus besoin de nettoyage manuel !** 🎯

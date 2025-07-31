@@ -96,20 +96,23 @@ class TestDashboardUnifieSimple:
         mock_connect.return_value.__enter__.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
 
-        # Mock des données de métriques
-        mock_cursor.fetchall.return_value = [
-            ("couverture_tests", 85.5, "test_project", "2023-01-01", '{"tests": 100}'),
-            ("performance", 92.3, "test_project", "2023-01-01", '{"temps": 1.2}'),
-        ]
+        # Mock des données de métriques avec la vraie structure
+        mock_cursor.fetchone.return_value = [
+            10,
+            50,
+            85.5,
+            90.2,
+        ]  # projets, actions, qualite, securite
 
         dashboard = DashboardUnifieSimple("test_db.sqlite")
 
         metriques = dashboard.obtenir_metriques_temps_reel()
 
         assert isinstance(metriques, dict)
-        assert "metriques" in metriques
-        assert "evenements" in metriques
-        assert "rapports" in metriques
+        assert "projets_analyses" in metriques
+        assert "actions_effectuees" in metriques
+        assert "score_qualite_moyen" in metriques
+        assert "score_securite_moyen" in metriques
 
     @patch("sqlite3.connect")
     def test_generer_rapport_consolide(self, mock_connect):
@@ -119,9 +122,17 @@ class TestDashboardUnifieSimple:
         mock_connect.return_value.__enter__.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
 
-        # Mock des données pour le rapport
+        # Mock des données pour le rapport avec la vraie structure
         mock_cursor.fetchall.side_effect = [
-            [("couverture_tests", 85.5)],  # métriques
+            [
+                (
+                    "couverture_tests",
+                    85.5,
+                    "test_project",
+                    "2023-01-01",
+                    '{"tests": 100}',
+                )
+            ],  # métriques
             [
                 (
                     "test_execution",
@@ -130,6 +141,7 @@ class TestDashboardUnifieSimple:
                     "2023-01-01",
                     120,
                     "succes",
+                    "details",
                 )
             ],  # événements
             [
@@ -155,9 +167,17 @@ class TestDashboardUnifieSimple:
         mock_connect.return_value.__enter__.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
 
-        # Mock des données pour le dashboard
+        # Mock des données pour le dashboard avec la vraie structure
         mock_cursor.fetchall.side_effect = [
-            [("couverture_tests", 85.5)],  # métriques
+            [
+                (
+                    "couverture_tests",
+                    85.5,
+                    "test_project",
+                    "2023-01-01",
+                    '{"tests": 100}',
+                )
+            ],  # métriques
             [
                 (
                     "test_execution",
@@ -166,6 +186,7 @@ class TestDashboardUnifieSimple:
                     "2023-01-01",
                     120,
                     "succes",
+                    "details",
                 )
             ],  # événements
             [
@@ -177,7 +198,8 @@ class TestDashboardUnifieSimple:
 
         result = dashboard.generer_dashboard_html("test_dashboard.html")
 
-        assert result is True
+        # La fonction retourne le nom du fichier, pas True
+        assert result == "test_dashboard.html"
         mock_file.assert_called()
 
     @patch("sqlite3.connect")
@@ -192,7 +214,7 @@ class TestDashboardUnifieSimple:
         dashboard = DashboardUnifieSimple("test_db.sqlite")
 
         with patch.object(dashboard, "generer_dashboard_html") as mock_generate:
-            mock_generate.return_value = True
+            mock_generate.return_value = "dashboard.html"
 
             dashboard.ouvrir_dashboard()
 

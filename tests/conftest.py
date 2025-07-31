@@ -10,6 +10,7 @@ import time
 import psutil
 import pytest
 
+
 # Désactiver la génération de fichiers .pyc pour tous les tests
 os.environ["PYTHONDONTWRITEBYTECODE"] = "1"
 
@@ -44,7 +45,8 @@ def kill_athalia_processes():
                         cmdline = " ".join(proc.info["cmdline"])
                         if pattern in cmdline and "conftest.py" not in cmdline:
                             print(
-                                f"🔄 Arrêt du processus {proc.info['pid']}: {cmdline[:100]}..."
+                                f"🔄 Arrêt du processus {proc.info['pid']}:"
+                                f" {cmdline[:100]}..."
                             )
                             proc.terminate()
                             killed_count += 1

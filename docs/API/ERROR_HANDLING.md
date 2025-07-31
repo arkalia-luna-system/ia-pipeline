@@ -1,6 +1,6 @@
 # 🛡️ Gestion d'Erreurs - Athalia
 
-**Section :** Documentation API - Gestion d'Erreurs  
+**Section :** Documentation API - Gestion d'Erreurs
 **Date :** 29 juillet 2025
 
 ---
@@ -22,7 +22,7 @@ Système de codes d'erreur standardisés avec niveaux de sévérité.
 
 ```python
 from athalia_core.error_codes import (
-    ErrorCode, ErrorSeverity, 
+    ErrorCode, ErrorSeverity,
     get_error_description, get_error_severity,
     format_error_message
 )
@@ -65,7 +65,7 @@ Système complet de gestion d'erreurs avec logging et callbacks.
 
 ```python
 from athalia_core.error_handling import (
-    AthaliaError, ErrorHandler, 
+    AthaliaError, ErrorHandler,
     get_error_handler, handle_error,
     raise_athalia_error, error_handler, ErrorContext
 )
@@ -139,7 +139,7 @@ def validate_user_data(user_data):
             "Champ email manquant",
             {"user_id": user_data.get('id')}
         )
-    
+
     if not is_valid_email(user_data['email']):
         raise AthaliaError(
             ErrorCode.INVALID_INPUT,
@@ -156,10 +156,10 @@ from athalia_core.error_handling import handle_error, ErrorContext
 def load_project_config(project_path):
     with ErrorContext(ErrorCode.FILE_NOT_FOUND, {"project": project_path}):
         config_file = Path(project_path) / "config.yml"
-        
+
         if not config_file.exists():
             raise FileNotFoundError(f"Config introuvable: {config_file}")
-        
+
         return yaml.safe_load(config_file.read_text())
 ```
 
@@ -170,12 +170,12 @@ from athalia_core.error_handling import get_error_handler
 def generate_error_report():
     handler = get_error_handler()
     summary = handler.get_error_summary()
-    
+
     if summary['has_critical_errors']:
         print("⚠️ Erreurs critiques détectées:")
         for error in summary['critical_error_details']:
             print(f"  - {error['message']} ({error['error_code']})")
-    
+
     return summary
 ```
 
@@ -189,4 +189,4 @@ def generate_error_report():
 
 ---
 
-*Documentation générée automatiquement par Athalia - 2025-07-29* 
+*Documentation générée automatiquement par Athalia - 2025-07-29*

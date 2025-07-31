@@ -4,14 +4,15 @@ Tests complets pour le module user_profiles_advanced.py
 Tests unitaires et d'intégration pour ProfilUtilisateur et GestionnaireProfils
 """
 
+from datetime import datetime
 import json
 import os
+from pathlib import Path
 import sqlite3
 import sys
 import tempfile
 import unittest
-from datetime import datetime
-from pathlib import Path
+
 
 # Ajout du chemin du projet pour les imports
 sys.path.insert(0, str(Path(__file__).parent.parent))

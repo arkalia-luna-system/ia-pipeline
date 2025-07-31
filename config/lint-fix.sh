@@ -32,4 +32,4 @@ autopep8 --in-place --aggressive --aggressive --max-line-length=79 --recursive "
 echo "📊 État après correction:"
 flake8 "$TARGET_DIR" --select=W293,E302,E305,E501,F841 --count || true
 
-echo "✅ Correction terminée !" 
+echo "✅ Correction terminée !"

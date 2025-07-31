@@ -2,6 +2,7 @@
 import subprocess
 import sys
 
+
 # Import sécurisé pour la validation des commandes
 try:
     from athalia_core.security_validator import SecurityError, validate_and_run
@@ -32,8 +33,9 @@ def main() -> None:
             if result.stderr:
                 print(result.stderr)
             print(
-                f"📊 Total: {result.stdout.strip().split()[-1] if result.stdout else 'N/A'} "
-                f"erreurs"
+                "📊 Total:"
+                f" {result.stdout.strip().split()[-1] if result.stdout else 'N/A'} "
+                "erreurs"
             )
             sys.exit(1)
         else:
@@ -58,8 +60,9 @@ def main() -> None:
             if result.stderr:
                 print(result.stderr)
             print(
-                f"📊 Total: {result.stdout.strip().split()[-1] if result.stdout else 'N/A'} "
-                f"erreurs"
+                "📊 Total:"
+                f" {result.stdout.strip().split()[-1] if result.stdout else 'N/A'} "
+                "erreurs"
             )
             sys.exit(1)
         else:

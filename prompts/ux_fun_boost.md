@@ -5,4 +5,4 @@ Propose des idées pour rendre ce jeu plus fun, immersif et agréable à jouer.
 - Améliore l’ergonomie et l’accessibilité
 - Ajoute des éléments de surprise ou de narration
 
-Analyse le code ou la description fournie et donne des recommandations concrètes. 
+Analyse le code ou la description fournie et donne des recommandations concrètes.

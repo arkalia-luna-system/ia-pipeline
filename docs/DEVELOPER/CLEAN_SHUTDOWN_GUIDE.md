@@ -281,4 +281,4 @@ Les logs sont disponibles dans :
 Pour des problèmes ou suggestions :
 1. Consultez les logs dans `./logs/`
 2. Vérifiez la documentation dans `./docs/`
-3. Utilisez `ath-help` pour l'aide générale 
+3. Utilisez `ath-help` pour l'aide générale

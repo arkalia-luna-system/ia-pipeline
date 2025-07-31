@@ -115,20 +115,20 @@ fi
 # Fonction de vérification de base (Niveau 1)
 check_level1_basic() {
     print_section "Niveau 1 - Tests de Base (Obligatoire)"
-    
+
     # Vérification Git
     if ! git rev-parse --git-dir > /dev/null 2>&1; then
         print_error "Pas dans un dépôt Git"
         return 1
     fi
-    
+
     # Fichiers modifiés
     STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.py$' || true)
     if [ -z "$STAGED_FILES" ]; then
         print_info "Aucun fichier Python modifié"
         return 0
     fi
-    
+
     # Linting basique
     print_ci_pro "Vérification du linting..."
     if echo "$STAGED_FILES" | xargs -r flake8 --config=config/.flake8 --max-line-length=88 --extend-ignore=E203,W503,E501,W291,W293,F401,F541,F841,E712,E731,E402,F601,E302,W292,E722 2>/dev/null; then
@@ -143,7 +143,7 @@ check_level1_basic() {
             return 1
         fi
     fi
-    
+
     # Syntaxe Python
     print_ci_pro "Vérification de la syntaxe Python..."
     for file in $STAGED_FILES; do
@@ -155,7 +155,7 @@ check_level1_basic() {
         fi
     done
     print_success "Syntaxe Python OK"
-    
+
     # Imports essentiels
     print_ci_pro "Vérification des imports essentiels..."
     python -c "
@@ -173,7 +173,7 @@ if len(errors) > 1:
     sys.exit(1)
 print('✅ Imports essentiels OK')
 " || return 1
-    
+
     print_success "Niveau 1 - Tests de base validés"
     return 0
 }
@@ -184,9 +184,9 @@ check_level2_security() {
         print_info "Vérifications de sécurité ignorées"
         return 0
     fi
-    
+
     print_section "Niveau 2 - Tests de Sécurité (Obligatoire)"
-    
+
     # Scan Bandit basique
     print_ci_pro "Scan de sécurité avec Bandit..."
     if command -v bandit >/dev/null 2>&1; then
@@ -205,7 +205,7 @@ check_level2_security() {
     else
         print_warning "Bandit non installé - scan de sécurité ignoré"
     fi
-    
+
     # Tests de sécurité spécifiques
     print_ci_pro "Tests de sécurité spécifiques..."
     if python -m pytest tests/test_security_patterns.py -q >/dev/null 2>&1; then
@@ -217,7 +217,7 @@ check_level2_security() {
             return 1
         fi
     fi
-    
+
     print_success "Niveau 2 - Tests de sécurité validés"
     return 0
 }
@@ -228,13 +228,13 @@ check_level3_performance() {
         print_info "Vérifications de performance ignorées"
         return 0
     fi
-    
+
     if [ "$CI_PRO_LEVEL" -lt 3 ]; then
         return 0
     fi
-    
+
     print_section "Niveau 3 - Tests de Performance (Optionnel)"
-    
+
     # Tests de performance basiques
     print_ci_pro "Tests de performance basiques..."
     if python -m pytest tests/test_performance_optimization.py -q >/dev/null 2>&1; then
@@ -246,7 +246,7 @@ check_level3_performance() {
             return 1
         fi
     fi
-    
+
     print_success "Niveau 3 - Tests de performance validés"
     return 0
 }
@@ -256,9 +256,9 @@ check_level4_advanced() {
     if [ "$CI_PRO_LEVEL" -lt 4 ]; then
         return 0
     fi
-    
+
     print_section "Niveau 4 - Tests Avancés (Optionnel)"
-    
+
     # Couverture de code basique
     print_ci_pro "Vérification de la couverture de code..."
     if command -v coverage >/dev/null 2>&1; then
@@ -274,7 +274,7 @@ check_level4_advanced() {
     else
         print_info "Coverage non installé - vérification ignorée"
     fi
-    
+
     print_success "Niveau 4 - Tests avancés validés"
     return 0
 }
@@ -284,9 +284,9 @@ check_level5_complete() {
     if [ "$CI_PRO_LEVEL" -lt 5 ]; then
         return 0
     fi
-    
+
     print_section "Niveau 5 - Tests Complets (Optionnel)"
-    
+
     # Tests d'intégration
     print_ci_pro "Tests d'intégration..."
     if python -m pytest tests/test_integration/ -q >/dev/null 2>&1; then
@@ -294,7 +294,7 @@ check_level5_complete() {
     else
         print_warning "Tests d'intégration échoués"
     fi
-    
+
     print_success "Niveau 5 - Tests complets validés"
     return 0
 }
@@ -302,35 +302,35 @@ check_level5_complete() {
 # Fonction principale
 main() {
     print_header
-    
+
     # Vérifications par niveau
     local exit_code=0
-    
+
     # Niveau 1 - Obligatoire
     if ! check_level1_basic; then
         exit_code=1
     fi
-    
+
     # Niveau 2 - Obligatoire
     if [ $exit_code -eq 0 ] && ! check_level2_security; then
         exit_code=1
     fi
-    
+
     # Niveau 3 - Optionnel
     if [ $exit_code -eq 0 ] && ! check_level3_performance; then
         exit_code=1
     fi
-    
+
     # Niveau 4 - Optionnel
     if [ $exit_code -eq 0 ] && ! check_level4_advanced; then
         exit_code=1
     fi
-    
+
     # Niveau 5 - Optionnel
     if [ $exit_code -eq 0 ] && ! check_level5_complete; then
         exit_code=1
     fi
-    
+
     # Résumé final
     echo
     if [ $exit_code -eq 0 ]; then
@@ -343,16 +343,16 @@ main() {
         print_info "💡 Utilisez --auto-fix pour correction automatique"
         print_info "💡 Utilisez --strict pour mode strict"
     fi
-    
+
     echo
     print_info "📋 Commandes utiles:"
     print_info "  - ./bin/ath-ci-pro-pre-commit --auto-fix"
     print_info "  - ./bin/ath-ci-pro-pre-commit --level 2"
     print_info "  - ./bin/ath-ci-pro-pre-commit --strict"
     echo
-    
+
     exit $exit_code
 }
 
 # Exécution
-main "$@" 
+main "$@"

@@ -26,7 +26,8 @@ class TestNoPollutingFiles:
         # Skip si trop de fichiers trouvés (probablement des faux positifs)
         if len(hidden_files) > 10:
             pytest.skip(
-                f"Trop de fichiers cachés détectés ({len(hidden_files)}), probablement des faux positifs"
+                f"Trop de fichiers cachés détectés ({len(hidden_files)}), probablement"
+                " des faux positifs"
             )
 
         if hidden_files:
@@ -78,7 +79,8 @@ class TestNoPollutingFiles:
         # Skip si trop de fichiers trouvés (probablement des faux positifs)
         if len(problematic_cache_files) > 5:
             pytest.skip(
-                f"Trop de fichiers cache problématiques détectés ({len(problematic_cache_files)}), probablement des faux positifs"
+                "Trop de fichiers cache problématiques détectés"
+                f" ({len(problematic_cache_files)}), probablement des faux positifs"
             )
 
         if problematic_cache_files:
@@ -112,7 +114,8 @@ class TestNoPollutingFiles:
         # Skip si trop de fichiers trouvés (probablement des faux positifs)
         if len(temp_files) > 50:  # Augmenter le seuil
             pytest.skip(
-                f"Trop de fichiers temporaires détectés ({len(temp_files)}), probablement des faux positifs"
+                f"Trop de fichiers temporaires détectés ({len(temp_files)}),"
+                " probablement des faux positifs"
             )
 
         # Fichiers temporaires autorisés (normaux dans un projet)
@@ -139,7 +142,8 @@ class TestNoPollutingFiles:
         # Skip si trop de fichiers trouvés (probablement des faux positifs)
         if len(problematic_temp_files) > 5:
             pytest.skip(
-                f"Trop de fichiers temporaires détectés ({len(problematic_temp_files)}), probablement des faux positifs"
+                "Trop de fichiers temporaires détectés"
+                f" ({len(problematic_temp_files)}), probablement des faux positifs"
             )
 
         if problematic_temp_files:
@@ -164,7 +168,8 @@ class TestNoPollutingFiles:
         # Skip si trop de fichiers trouvés (probablement des faux positifs)
         if len(corrupted_files) > 1:
             pytest.skip(
-                f"Trop de fichiers corrompus détectés ({len(corrupted_files)}), probablement des faux positifs"
+                f"Trop de fichiers corrompus détectés ({len(corrupted_files)}),"
+                " probablement des faux positifs"
             )
 
         if corrupted_files:
@@ -250,7 +255,8 @@ class TestNoPollutingFiles:
         # Skip si trop de fichiers trouvés (probablement des faux positifs)
         if len(secret_files) > 5:
             pytest.skip(
-                f"Trop de fichiers secrets détectés ({len(secret_files)}), probablement des faux positifs"
+                f"Trop de fichiers secrets détectés ({len(secret_files)}), probablement"
+                " des faux positifs"
             )
 
         if secret_files:
@@ -342,7 +348,8 @@ class TestNoPollutingFiles:
         # Skip si trop de fichiers trouvés (probablement des faux positifs)
         if len(problematic_duplicates) > 20:
             pytest.skip(
-                f"Trop de fichiers dupliqués problématiques détectés ({len(problematic_duplicates)}), probablement des faux positifs"
+                "Trop de fichiers dupliqués problématiques détectés"
+                f" ({len(problematic_duplicates)}), probablement des faux positifs"
             )
 
         if problematic_duplicates:
@@ -412,7 +419,8 @@ class TestNoPollutingFiles:
         # Skip si trop de répertoires trouvés (probablement des faux positifs)
         if len(problematic_empty_dirs) > 20:  # Augmenter le seuil
             pytest.skip(
-                f"Trop de répertoires vides problématiques détectés ({len(problematic_empty_dirs)}), probablement des faux positifs"
+                "Trop de répertoires vides problématiques détectés"
+                f" ({len(problematic_empty_dirs)}), probablement des faux positifs"
             )
 
         if problematic_empty_dirs:

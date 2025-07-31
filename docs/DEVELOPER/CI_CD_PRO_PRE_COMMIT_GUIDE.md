@@ -279,4 +279,4 @@ Avec ce système, tu as maintenant :
 ✅ **Correction automatique** des problèmes détectables
 ✅ **Flexibilité** dans la configuration des niveaux
 
-**Plus jamais de mauvais code commité !** 🚀 
+**Plus jamais de mauvais code commité !** 🚀

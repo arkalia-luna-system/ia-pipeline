@@ -5,11 +5,11 @@ Test de performance rapide pour Athalia
 Version ciblée et rapide
 """
 
+from datetime import datetime
 import importlib
 import json
 import os
 import time
-from datetime import datetime
 
 import psutil
 

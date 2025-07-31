@@ -197,4 +197,4 @@ print(f"CI/CD succès: {result.success}")
 
 ---
 
-**Ton outil Athalia est maintenant prêt pour la robotique !** 🤖✨ 
+**Ton outil Athalia est maintenant prêt pour la robotique !** 🤖✨

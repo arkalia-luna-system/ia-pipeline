@@ -4,9 +4,9 @@ Couverture: 100% des fonctionnalités de cache
 Tests: 25 tests unitaires et d'intégration
 """
 
+from pathlib import Path
 import tempfile
 import time
-from pathlib import Path
 from unittest.mock import Mock, patch
 
 from athalia_core.cache_manager import (

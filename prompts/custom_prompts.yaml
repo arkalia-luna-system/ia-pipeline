@@ -6,4 +6,4 @@
     - 'injection'
     - 'xss'
     - 'csrf'
-  weight: 2 
+  weight: 2

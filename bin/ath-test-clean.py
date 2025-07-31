@@ -4,11 +4,12 @@ Script de nettoyage des tests Athalia
 Nettoie les processus et fichiers temporaires
 """
 
+from pathlib import Path
 import subprocess
 import time
-from pathlib import Path
 
 import psutil
+
 
 # Import sécurisé pour la validation des commandes
 try:
@@ -42,7 +43,8 @@ def kill_athalia_processes():
                         cmdline = " ".join(proc.info["cmdline"])
                         if pattern in cmdline and "ath-test-clean.py" not in cmdline:
                             print(
-                                f"🔄 Arrêt du processus {proc.info['pid']}: {cmdline[:100]}..."
+                                f"🔄 Arrêt du processus {proc.info['pid']}:"
+                                f" {cmdline[:100]}..."
                             )
                             proc.terminate()
                             killed_count += 1

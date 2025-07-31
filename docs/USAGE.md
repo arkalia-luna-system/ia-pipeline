@@ -1,6 +1,6 @@
 # 🚀 Guide d'Utilisation - Athalia
 
-**Version :** 10.0 (FINAL - 100% TERMINÉE ✅)  
+**Version :** 10.0 (FINAL - 100% TERMINÉE ✅)
 **Date :** 30 Juillet 2025
 
 ---
@@ -363,5 +363,5 @@ Pour toute question ou problème :
 
 ---
 
-**📅 Dernière mise à jour :** 30 Juillet 2025  
+**📅 Dernière mise à jour :** 30 Juillet 2025
 **🎯 Projet prêt pour la production !**

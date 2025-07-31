@@ -298,4 +298,4 @@ pytest --cov=athalia_core --cov-report=html
 - [Documentation Bandit](https://bandit.readthedocs.io/)
 - [Documentation Pre-commit](https://pre-commit.com/)
 - [PEP 8](https://www.python.org/dev/peps/pep-0008/)
-- [PEP 484](https://www.python.org/dev/peps/pep-0484/) 
+- [PEP 484](https://www.python.org/dev/peps/pep-0484/)

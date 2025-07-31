@@ -4,11 +4,12 @@ Tests complets pour le module auto_correction_advanced.py
 Tests unitaires et d'intégration pour AutoCorrectionAvancee
 """
 
+from pathlib import Path
 import shutil
 import sys
 import tempfile
 import unittest
-from pathlib import Path
+
 
 # Ajout du chemin du projet pour les imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -219,9 +220,10 @@ def test_function():
     return result
 """
 
-        nouveau_contenu, corrections = (
-            self.auto_correction._optimiser_list_comprehensions(contenu)
-        )
+        (
+            nouveau_contenu,
+            corrections,
+        ) = self.auto_correction._optimiser_list_comprehensions(contenu)
 
         self.assertIsInstance(nouveau_contenu, str)
         self.assertIsInstance(corrections, list)

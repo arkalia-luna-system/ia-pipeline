@@ -91,22 +91,22 @@ done
 # Fonction principale
 main() {
     print_header
-    
+
     # Étape 1: Vérification de l'état Git
     print_section "Vérification de l'état Git"
     if ! git rev-parse --git-dir > /dev/null 2>&1; then
         print_error "Pas dans un dépôt Git"
         exit 1
     fi
-    
+
     # Vérifier s'il y a des changements
     if [ -z "$(git status --porcelain)" ]; then
         print_warning "Aucun changement détecté"
         exit 0
     fi
-    
+
     print_success "État Git OK"
-    
+
     # Étape 2: Nettoyage automatique
     print_section "Nettoyage automatique"
     if [ "$DRY_RUN" = false ]; then
@@ -115,17 +115,17 @@ main() {
         else
             ./bin/ath-clean --dry-run > /dev/null 2>&1
         fi
-        
+
         # Nettoyage des caches Python
         find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
         find . -type d -name ".pytest_cache" -exec rm -rf {} + 2>/dev/null || true
         find . -name "*.pyc" -delete 2>/dev/null || true
-        
+
         print_success "Nettoyage terminé"
     else
         print_info "Mode simulation - nettoyage ignoré"
     fi
-    
+
     # Étape 3: Vérification des fichiers polluants
     print_section "Vérification des fichiers polluants"
     if python -m pytest tests/test_no_polluting_files.py::TestNoPollutingFiles::test_no_macos_hidden_files -q >/dev/null 2>&1; then
@@ -137,13 +137,13 @@ main() {
             print_success "Fichiers cachés supprimés"
         fi
     fi
-    
+
     # Étape 4: Linting et formatage
     print_section "Vérification du linting"
     STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.py$' || true)
     UNSTAGED_FILES=$(git diff --name-only | grep '\.py$' || true)
     ALL_PY_FILES="$STAGED_FILES $UNSTAGED_FILES"
-    
+
     if [ -n "$ALL_PY_FILES" ]; then
         # Vérification flake8
         if echo "$ALL_PY_FILES" | xargs -r flake8 --config=config/.flake8 2>/dev/null; then
@@ -156,7 +156,7 @@ main() {
                 print_success "Linting corrigé"
             fi
         fi
-        
+
         # Formatage avec black
         if [ "$AUTO_FIX" = true ] && [ "$DRY_RUN" = false ]; then
             print_info "Formatage avec black..."
@@ -166,24 +166,24 @@ main() {
     else
         print_info "Aucun fichier Python modifié"
     fi
-    
+
     # Étape 5: Tests essentiels (si activés)
     if [ "$SKIP_TESTS" = false ]; then
         print_section "Tests essentiels"
-        
+
         # Tests de base
         if python -m pytest tests/test_imports_all.py -q >/dev/null 2>&1; then
             print_success "Tests d'imports OK"
         else
             print_warning "Problèmes d'imports détectés"
         fi
-        
+
         if python -m pytest tests/test_encoding_utf8.py -q >/dev/null 2>&1; then
             print_success "Tests d'encodage OK"
         else
             print_warning "Problèmes d'encodage détectés"
         fi
-        
+
         # Tests de sécurité (mode adaptatif)
         if python -m pytest tests/test_security_patterns.py -q >/dev/null 2>&1; then
             print_success "Tests de sécurité OK"
@@ -193,7 +193,7 @@ main() {
     else
         print_info "Tests ignorés (--skip-tests)"
     fi
-    
+
     # Étape 6: Vérification de la configuration
     print_section "Vérification de la configuration"
     MISSING_CONFIGS=0
@@ -205,12 +205,12 @@ main() {
             MISSING_CONFIGS=$((MISSING_CONFIGS + 1))
         fi
     done
-    
+
     if [ $MISSING_CONFIGS -gt 1 ]; then
         print_error "Trop de fichiers de configuration manquants"
         exit 1
     fi
-    
+
     # Étape 7: Résumé et recommandations
     echo
     print_success "🎉 Préparation au commit terminée !"
@@ -225,11 +225,11 @@ main() {
     print_info "  - ./bin/ath-lint-secure      # Linting sécurisé"
     print_info "  - ./bin/ath-clean            # Nettoyage complet"
     echo
-    
+
     if [ "$DRY_RUN" = true ]; then
         print_warning "Mode simulation - aucune modification effectuée"
     fi
 }
 
 # Exécution
-main "$@" 
+main "$@"

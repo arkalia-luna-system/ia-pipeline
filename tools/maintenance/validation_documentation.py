@@ -9,10 +9,11 @@ import argparse
 import ast
 import json
 import logging
+from pathlib import Path
 import re
 import sys
-from pathlib import Path
 from typing import Dict, List
+
 
 # Configuration du logging
 logging.basicConfig(
@@ -317,19 +318,25 @@ class DocumentationValidator:
         # Recommandations pour les commandes manquantes
         if self.validation_results["commands"]["missing"]:
             recommendations.append(
-                f"📝 Documenter {len(self.validation_results['commands']['missing'])} commandes manquantes"
+                "📝 Documenter"
+                f" {len(self.validation_results['commands']['missing'])} commandes"
+                " manquantes"
             )
 
         # Recommandations pour les commandes incorrectes
         if self.validation_results["commands"]["incorrect"]:
             recommendations.append(
-                f"🔧 Corriger {len(self.validation_results['commands']['incorrect'])} commandes documentées mais inexistantes"
+                "🔧 Corriger"
+                f" {len(self.validation_results['commands']['incorrect'])} commandes"
+                " documentées mais inexistantes"
             )
 
         # Recommandations pour les modules manquants
         if self.validation_results["modules"]["missing"]:
             recommendations.append(
-                f"📚 Documenter {len(self.validation_results['modules']['missing'])} modules manquants"
+                "📚 Documenter"
+                f" {len(self.validation_results['modules']['missing'])} modules"
+                " manquants"
             )
 
         # Recommandations générales
@@ -382,21 +389,24 @@ def main():
     # Détails des problèmes
     if report["details"]["commands"]["missing"]:
         print(
-            f"\n❌ COMMANDES MANQUANTES DANS LA DOC ({len(report['details']['commands']['missing'])}):"
+            "\n❌ COMMANDES MANQUANTES DANS LA DOC"
+            f" ({len(report['details']['commands']['missing'])}):"
         )
         for cmd in report["details"]["commands"]["missing"][:10]:  # Limiter à 10
             print(f"  • {cmd}")
 
     if report["details"]["commands"]["incorrect"]:
         print(
-            f"\n⚠️ COMMANDES DOCUMENTÉES MAIS INEXISTANTES ({len(report['details']['commands']['incorrect'])}):"
+            "\n⚠️ COMMANDES DOCUMENTÉES MAIS INEXISTANTES"
+            f" ({len(report['details']['commands']['incorrect'])}):"
         )
         for cmd in report["details"]["commands"]["incorrect"][:10]:  # Limiter à 10
             print(f"  • {cmd}")
 
     if report["details"]["modules"]["missing"]:
         print(
-            f"\n❌ MODULES MANQUANTS DANS LA DOC ({len(report['details']['modules']['missing'])}):"
+            "\n❌ MODULES MANQUANTS DANS LA DOC"
+            f" ({len(report['details']['modules']['missing'])}):"
         )
         for mod in report["details"]["modules"]["missing"][:10]:  # Limiter à 10
             print(f"  • {mod}")

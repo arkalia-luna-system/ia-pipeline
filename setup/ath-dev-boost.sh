@@ -30,4 +30,4 @@ else
     refactor) cat "$PROMPT_DIR/code_refactor.yaml" ;;
     *) echo "Usage : $0 [debug|ux|design|test|refactor]"; exit 1;;
   esac
-fi 
+fi

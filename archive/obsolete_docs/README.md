@@ -1,6 +1,6 @@
 # 📚 Archive - Documents Obsolètes
 
-**Date de création :** 30 Juillet 2025  
+**Date de création :** 30 Juillet 2025
 **Raison :** Nettoyage et organisation du projet
 
 ---
@@ -57,5 +57,5 @@ Ces documents peuvent être restaurés si nécessaire, mais ils ne reflètent pl
 
 ---
 
-**📅 Archivage effectué :** 30 Juillet 2025  
-**🎯 Projet Athalia : Prêt pour la production !** 
+**📅 Archivage effectué :** 30 Juillet 2025
+**🎯 Projet Athalia : Prêt pour la production !**

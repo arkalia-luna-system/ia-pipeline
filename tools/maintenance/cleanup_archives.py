@@ -7,11 +7,12 @@ Script pour nettoyer et organiser les archives de documentation
 afin de réduire les liens cassés et améliorer la structure.
 """
 
-import logging
-import shutil
 from datetime import datetime
+import logging
 from pathlib import Path
+import shutil
 from typing import Any, Dict
+
 
 # Configuration du logging
 logging.basicConfig(
@@ -183,13 +184,16 @@ class ArchiveCleaner:
                 f"- **Fichiers déplacés:** {len(self.cleanup_results['moved_files'])}\n"
             )
             f.write(
-                f"- **Fichiers supprimés:** {len(self.cleanup_results['deleted_files'])}\n"
+                "- **Fichiers supprimés:**"
+                f" {len(self.cleanup_results['deleted_files'])}\n"
             )
             f.write(
-                f"- **Dossiers organisés:** {len(self.cleanup_results['organized_dirs'])}\n"
+                "- **Dossiers organisés:**"
+                f" {len(self.cleanup_results['organized_dirs'])}\n"
             )
             f.write(
-                f"- **Liens cassés corrigés:** {self.cleanup_results['broken_links_fixed']}\n\n"
+                "- **Liens cassés corrigés:**"
+                f" {self.cleanup_results['broken_links_fixed']}\n\n"
             )
 
             if self.cleanup_results["moved_files"]:
@@ -207,7 +211,8 @@ class ArchiveCleaner:
             f.write("## ✅ Conclusion\n\n")
             f.write("Le nettoyage des archives a été effectué avec succès.\n")
             f.write(
-                "La structure est maintenant plus organisée et les liens cassés réduits.\n"
+                "La structure est maintenant plus organisée et les liens cassés"
+                " réduits.\n"
             )
 
         return str(report_path)

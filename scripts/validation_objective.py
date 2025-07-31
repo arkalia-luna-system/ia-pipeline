@@ -5,12 +5,13 @@ Validation Objective d'Athalia/Arkalia
 Tests qui ne peuvent pas mentir - Mesures concrètes et indépendantes
 """
 
+from datetime import datetime
 import json
 import os
+from pathlib import Path
 import subprocess
 import time
-from datetime import datetime
-from pathlib import Path
+
 
 # Import du validateur de sécurité
 try:
@@ -57,7 +58,10 @@ if __name__ == "__main__":
 """
             )
 
-        cmd = f"python scripts/athalia_unified.py {projet_test} --action complete --auto-fix"
+        cmd = (
+            f"python scripts/athalia_unified.py {projet_test} --action complete"
+            " --auto-fix"
+        )
 
         try:
             # Utilisation du validateur de sécurité
@@ -149,7 +153,10 @@ def fonction_syntaxe():
         start = time.time()
 
         # Utilise Athalia pour corriger
-        cmd = f"python scripts/athalia_unified.py {os.path.dirname(fichier_test)} --action fix --auto-fix"
+        cmd = (
+            "python scripts/athalia_unified.py"
+            f" {os.path.dirname(fichier_test)} --action fix --auto-fix"
+        )
 
         try:
             result = subprocess.run(
@@ -314,7 +321,9 @@ if __name__ == "__main__":
             "efficacite": (
                 "EXCELLENTE"
                 if gain_temps > 10
-                else "BONNE" if gain_temps > 5 else "MOYENNE"
+                else "BONNE"
+                if gain_temps > 5
+                else "MOYENNE"
             ),
         }
 
@@ -377,7 +386,9 @@ if __name__ == "__main__":
                         "qualite": (
                             "EXCELLENTE"
                             if score_pylint >= 9.0
-                            else "BONNE" if score_pylint >= 7.0 else "MOYENNE"
+                            else "BONNE"
+                            if score_pylint >= 7.0
+                            else "MOYENNE"
                         ),
                     }
                 except json.JSONDecodeError:
@@ -504,8 +515,14 @@ if __name__ == "__main__":
                     rapport += (
                         f"- ⏱️ Temps de génération: {resultat.get('temps', 0):.1f}s\n"
                     )
-                    rapport += f"- 📁 Fichiers générés: {resultat.get('fichiers_generes', 0)}\n"
-                    rapport += f"- ✅ Taux de compilation: {resultat.get('taux_compilation', 0):.1f}%\n"
+                    rapport += (
+                        "- 📁 Fichiers générés:"
+                        f" {resultat.get('fichiers_generes', 0)}\n"
+                    )
+                    rapport += (
+                        "- ✅ Taux de compilation:"
+                        f" {resultat.get('taux_compilation', 0):.1f}%\n"
+                    )
                 else:
                     rapport += f"- ❌ Erreur: {resultat.get('erreur', 'Inconnue')}\n"
 
@@ -519,17 +536,26 @@ if __name__ == "__main__":
                     rapport += f"- ❌ Erreur: {resultat.get('erreur', 'Inconnue')}\n"
 
             elif nom == "robustesse":
-                rapport += f"- 🛡️ Taux de robustesse: {resultat.get('taux_robustesse', 0):.1f}%\n"
+                rapport += (
+                    "- 🛡️ Taux de robustesse:"
+                    f" {resultat.get('taux_robustesse', 0):.1f}%\n"
+                )
                 for test in resultat.get("tests_detail", []):
                     status_test = "✅" if test["succes"] else "❌"
-                    rapport += f"- {status_test} {test['test']}: exit code {test['exit_code']}\n"
+                    rapport += (
+                        f"- {status_test} {test['test']}: exit code"
+                        f" {test['exit_code']}\n"
+                    )
 
             elif nom == "performance":
                 if resultat.get("succes"):
                     rapport += (
                         f"- ⏱️ Temps Athalia: {resultat.get('temps_athalia', 0):.1f}s\n"
                     )
-                    rapport += f"- ⏱️ Temps estimé manuel: {resultat.get('temps_estime_manuel', 0):.1f}s\n"
+                    rapport += (
+                        "- ⏱️ Temps estimé manuel:"
+                        f" {resultat.get('temps_estime_manuel', 0):.1f}s\n"
+                    )
                     rapport += (
                         f"- 🚀 Gain de temps: {resultat.get('gain_temps', 0):.1f}x\n"
                     )

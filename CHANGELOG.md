@@ -32,5 +32,3 @@
 
 ## [Unreleased]
 - Améliorations futures : personnalisation dashboard, feedback live, couverture >90%, nouveaux modèles IA, plugins avancés
-
- 

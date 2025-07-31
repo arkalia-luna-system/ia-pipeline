@@ -240,4 +240,4 @@ exclude_lines = [
     "@(abc\\.)?abstractmethod",
 ]
 show_missing = true
-precision = 2 
+precision = 2

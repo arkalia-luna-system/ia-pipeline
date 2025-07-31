@@ -4,15 +4,16 @@ Tests pour le module ai_robust_enhanced.py
 Amélioration de la couverture de code
 """
 
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
+
 from athalia_core.ai_robust_enhanced import (
-    RobustAI,
     AIModel,
     PromptContext,
-    robust_ai,
+    RobustAI,
     fallback_ia,
-    query_qwen,
     query_mistral,
+    query_qwen,
+    robust_ai,
 )
 
 

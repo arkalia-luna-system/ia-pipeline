@@ -1,6 +1,6 @@
 # 📚 Guide de Maintenance de la Documentation
 
-**Date :** 27 juillet 2025  
+**Date :** 27 juillet 2025
 **Objectif :** Maintenir la documentation à jour et organisée
 
 ---
@@ -175,4 +175,4 @@ La maintenance de la documentation est **essentielle** pour la qualité du proje
 
 ---
 
-*Guide de maintenance - Athalia 2025* 
+*Guide de maintenance - Athalia 2025*

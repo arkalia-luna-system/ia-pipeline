@@ -182,15 +182,15 @@
             .container {
                 padding: 10px;
             }
-            
+
             .header h1 {
                 font-size: 2rem;
             }
-            
+
             .grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .card {
                 padding: 20px;
             }
@@ -411,7 +411,7 @@
                     tests: 118
                 }
             };
-            
+
             const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -439,10 +439,10 @@
         document.addEventListener('DOMContentLoaded', function() {
             updateDates();
             animateCards();
-            
+
             // Mise à jour automatique toutes les 30 secondes
             setInterval(updateDates, 30000);
         });
     </script>
 </body>
-</html> 
+</html>

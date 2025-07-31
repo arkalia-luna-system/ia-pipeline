@@ -97,13 +97,13 @@ done
 # Fonction de vérification de l'état Git
 check_git_status() {
     print_section "Vérification de l'état Git"
-    
+
     # Vérifier si on est dans un dépôt Git
     if ! git rev-parse --git-dir > /dev/null 2>&1; then
         print_error "Pas dans un dépôt Git"
         exit 1
     fi
-    
+
     # Vérifier s'il y a des changements non commités
     if [ -n "$(git status --porcelain)" ]; then
         print_warning "Changements non commités détectés"
@@ -115,15 +115,15 @@ check_git_status() {
             print_warning "Mode force - continuation..."
         fi
     fi
-    
+
     # Déterminer la branche
     if [ -z "$BRANCH" ]; then
         BRANCH=$(git branch --show-current)
     fi
-    
+
     print_success "Branche: $BRANCH"
     print_success "Remote: $REMOTE"
-    
+
     # Vérifier si la branche existe sur le remote
     if ! git ls-remote --heads "$REMOTE" "$BRANCH" | grep -q "$BRANCH"; then
         print_warning "Branche $BRANCH n'existe pas sur $REMOTE"
@@ -137,9 +137,9 @@ run_tests() {
         print_info "Vérifications ignorées (--skip-checks)"
         return 0
     fi
-    
+
     print_section "Exécution des tests essentiels"
-    
+
     # Tests critiques
     print_info "Tests de base..."
     if python -m pytest tests/test_imports_all.py -q >/dev/null 2>&1; then
@@ -150,7 +150,7 @@ run_tests() {
             exit 1
         fi
     fi
-    
+
     if python -m pytest tests/test_encoding_utf8.py -q >/dev/null 2>&1; then
         print_success "Tests d'encodage OK"
     else
@@ -159,7 +159,7 @@ run_tests() {
             exit 1
         fi
     fi
-    
+
     # Tests de qualité
     print_info "Tests de qualité..."
     if python -m pytest tests/test_no_polluting_files.py::TestNoPollutingFiles::test_no_macos_hidden_files -q >/dev/null 2>&1; then
@@ -171,7 +171,7 @@ run_tests() {
             exit 1
         fi
     fi
-    
+
     # Tests de sécurité (mode adaptatif)
     print_info "Tests de sécurité..."
     if python -m pytest tests/test_security_patterns.py -q >/dev/null 2>&1; then
@@ -186,9 +186,9 @@ check_quality() {
     if [ "$SKIP_CHECKS" = true ]; then
         return 0
     fi
-    
+
     print_section "Vérification de la qualité"
-    
+
     # Linting
     print_info "Vérification du linting..."
     if flake8 --config=config/.flake8 athalia_core/ tests/ 2>/dev/null; then
@@ -200,7 +200,7 @@ check_quality() {
             exit 1
         fi
     fi
-    
+
     # Formatage
     print_info "Vérification du formatage..."
     if black --check --diff --line-length=88 athalia_core/ tests/ 2>/dev/null; then
@@ -217,23 +217,23 @@ check_quality() {
 # Fonction de push
 do_push() {
     print_section "Push vers GitHub"
-    
+
     if [ "$DRY_RUN" = true ]; then
         print_info "Mode simulation - push ignoré"
         print_info "Commande qui serait exécutée:"
         print_info "  git push $REMOTE $BRANCH"
         return 0
     fi
-    
+
     # Vérifier la connectivité
     print_info "Vérification de la connectivité..."
     if ! git ls-remote "$REMOTE" > /dev/null 2>&1; then
         print_error "Impossible de se connecter au remote $REMOTE"
         exit 1
     fi
-    
+
     print_success "Connectivité OK"
-    
+
     # Push
     print_info "Push en cours..."
     if git push "$REMOTE" "$BRANCH"; then
@@ -247,19 +247,19 @@ do_push() {
 # Fonction principale
 main() {
     print_header
-    
+
     # Étape 1: Vérification de l'état Git
     check_git_status
-    
+
     # Étape 2: Tests essentiels
     run_tests
-    
+
     # Étape 3: Vérification de la qualité
     check_quality
-    
+
     # Étape 4: Push
     do_push
-    
+
     # Résumé
     echo
     print_success "🎉 Push terminé avec succès !"
@@ -278,4 +278,4 @@ main() {
 }
 
 # Exécution
-main "$@" 
+main "$@"

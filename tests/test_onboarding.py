@@ -5,8 +5,9 @@ Tests pour le module onboarding.
 Tests professionnels pour la CI/CD.
 """
 
-import pytest
 from pathlib import Path
+
+import pytest
 
 
 def test_onboarding_module_import():

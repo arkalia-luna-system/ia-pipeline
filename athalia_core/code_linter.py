@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 import logging
-import subprocess
 from pathlib import Path
+import subprocess
 from typing import Any, Dict
+
 
 # Import du validateur de sécurité
 try:

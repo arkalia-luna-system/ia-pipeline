@@ -285,4 +285,4 @@ Les scripts peuvent être personnalisés en modifiant :
 
 ---
 
-**Note** : Ces améliorations sont conçues pour être rétrocompatibles et peuvent être activées progressivement selon les besoins de l'équipe. 
+**Note** : Ces améliorations sont conçues pour être rétrocompatibles et peuvent être activées progressivement selon les besoins de l'équipe.

@@ -5,8 +5,8 @@ Tests complets pour la sécurité.
 Tests professionnels pour la CI/CD.
 """
 
-import tempfile
 from pathlib import Path
+import tempfile
 from unittest.mock import patch
 
 import pytest

@@ -5,11 +5,12 @@ Tests pour le module d'auto-correction avancée
 Corrigé après réorganisation des modules
 """
 
+from pathlib import Path
 import shutil
 import sys
 import tempfile
 import unittest
-from pathlib import Path
+
 
 # Ajouter le chemin du projet
 sys.path.insert(0, str(Path(__file__).parent.parent))

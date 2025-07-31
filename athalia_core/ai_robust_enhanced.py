@@ -10,6 +10,7 @@ import logging
 import subprocess
 from typing import Any, Dict, List, Optional
 
+
 # Import du validateur de sécurité
 try:
     from athalia_core.security_validator import SecurityError, validate_and_run
@@ -380,37 +381,27 @@ class RobustAI:
     def _load_prompt_templates(self) -> Dict[str, str]:
         """Charge les templates de prompts."""
         return {
-            "blueprint": (
-                """
+            "blueprint": """
 Génère un blueprint pour le projet: {project_name}
 Type: {project_type}
 Description: {description}
-"""
-            ),
-            "code_review": (
-                """
+""",
+            "code_review": """
 Analyse ce code pour le projet {project_type}:
 {code}
-"""
-            ),
-            "documentation": (
-                """
+""",
+            "documentation": """
 Génère la documentation pour {project_name} ({project_type})
 Modules: {modules}
-"""
-            ),
-            "testing": (
-                """
+""",
+            "testing": """
 Génère des tests pour {project_name}
 Type: {project_type}
-"""
-            ),
-            "security": (
-                """
+""",
+            "security": """
 Audit de sécurité pour {project_name}
 Type: {project_type}
-"""
-            ),
+""",
         }
 
     def generate_response(
