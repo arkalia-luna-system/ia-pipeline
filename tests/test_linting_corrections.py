@@ -9,7 +9,6 @@ import subprocess
 
 import pytest
 
-
 # Import sécurisé pour la validation des commandes
 try:
     from athalia_core.security_validator import SecurityError, validate_and_run
@@ -32,20 +31,24 @@ def test_linting_corrections_documentation():
                 "Remplacement du dictionnaire avec clés répétées par une liste de"
                 " tuples"
             ),
-            "before": """
+            "before": (
+                """
             replacements = {
                 '"f"': '"success"',
                 '"f"': '"error"',  # Clé répétée
                 '"f"': '"steps"',  # Clé répétée
             }
-            """,
-            "after": """
+            """
+            ),
+            "after": (
+                """
             replacements = [
                 ('"f"', '"success"'),
                 ('"f"', '"error"'),
                 ('"f"', '"steps"'),
             ]
-            """,
+            """
+            ),
         },
         "F541": {
             "description": "f-string without any placeholders",
@@ -63,34 +66,42 @@ def test_linting_corrections_documentation():
                 "tests/integration/test_end_to_end.py",
             ],
             "correction": "Suppression des imports inutilisés",
-            "before": """
+            "before": (
+                """
             import time
             from unittest.mock import MagicMock, patch
-            """,
-            "after": """
+            """
+            ),
+            "after": (
+                """
             # Imports supprimés car non utilisés
-            """,
+            """
+            ),
         },
         "F841": {
             "description": "Local variable assigned but never used",
             "files_corrected": ["tests/integration/test_cli_robustesse.py"],
             "correction": "Suppression de l'assignation de variable inutilisée",
-            "before": """
+            "before": (
+                """
             result = validate_and_run(
                 [sys.executable, str(cli_path), "--help"],
                 capture_output=True,
                 text=True,
                 timeout=1,
             )
-            """,
-            "after": """
+            """
+            ),
+            "after": (
+                """
             validate_and_run(
                 [sys.executable, str(cli_path), "--help"],
                 capture_output=True,
                 text=True,
                 timeout=1,
             )
-            """,
+            """
+            ),
         },
     }
 

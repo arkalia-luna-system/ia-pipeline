@@ -7,7 +7,6 @@ Tests de base pour l'audit de sécurité des projets.
 
 import pytest
 
-
 # Import conditionnel du module security
 try:
     from athalia_core.security import security_audit_project

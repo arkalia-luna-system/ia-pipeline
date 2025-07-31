@@ -12,7 +12,6 @@ import tempfile
 import pytest
 import yaml
 
-
 # Ajouter le répertoire parent au path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 

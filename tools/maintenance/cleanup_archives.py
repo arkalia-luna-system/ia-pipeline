@@ -13,7 +13,6 @@ from pathlib import Path
 import shutil
 from typing import Any, Dict
 
-
 # Configuration du logging
 logging.basicConfig(
     level=logging.INFO,

@@ -21,7 +21,6 @@ from .ast_analyzer import ASTAnalyzer
 from .pattern_detector import PatternDetector
 from .performance_analyzer import PerformanceAnalyzer
 
-
 # Import de l'orchestrateur unifié (optionnel)
 try:
     from .unified_orchestrator import UnifiedOrchestrator

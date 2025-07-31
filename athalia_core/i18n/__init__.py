@@ -7,7 +7,6 @@ Gestion des traductions et localisation
 
 from . import en, fr
 
-
 # Configuration par défaut
 DEFAULT_LOCALE = "fr"
 SUPPORTED_LOCALES = ["fr", "en"]
