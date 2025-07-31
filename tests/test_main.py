@@ -16,18 +16,18 @@ class TestSignalHandler:
     def test_signal_handler(self):
         """Test du gestionnaire de signal"""
         # Sauvegarder l'état initial
-        from athalia_core import main as main_module
+        import athalia_core.main
 
-        original_running = main_module.running
+        original_running = athalia_core.main.running
 
         # Test du signal handler
         signal_handler(signal.SIGINT, None)
 
         # Vérifier que running est mis à False
-        assert main_module.running is False
+        assert athalia_core.main.running is False
 
         # Restaurer l'état
-        main_module.running = original_running
+        athalia_core.main.running = original_running
 
 
 class TestMenu:
