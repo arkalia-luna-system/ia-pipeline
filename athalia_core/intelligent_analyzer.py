@@ -21,6 +21,7 @@ from .ast_analyzer import ASTAnalyzer
 from .pattern_detector import PatternDetector
 from .performance_analyzer import PerformanceAnalyzer
 
+
 # Import de l'orchestrateur unifié (optionnel)
 try:
     from .unified_orchestrator import UnifiedOrchestrator
@@ -366,8 +367,7 @@ class IntelligentAnalyzer:
                     {
                         "task": "refactor_medium_impact_antipatterns",
                         "description": (
-                            f"Refactoriser {len(medium_impact_antipatterns)} "
-                            "anti-patterns"
+                            f"Refactoriser {len(medium_impact_antipatterns)} anti-patterns"
                         ),
                         "effort": "medium",
                         "impact": "medium",
@@ -428,8 +428,16 @@ class IntelligentAnalyzer:
                 ),
             },
             "performance_analysis": {
-                "overall_score": analysis.performance_analysis.get("overall_score", 0),
-                "issues_count": len(analysis.performance_analysis.get("issues", [])),
+                "overall_score": (
+                    analysis.performance_analysis.get("overall_score", 0)
+                    if hasattr(analysis.performance_analysis, "get")
+                    else getattr(analysis.performance_analysis, "overall_score", 0)
+                ),
+                "issues_count": len(
+                    analysis.performance_analysis.get("issues", [])
+                    if hasattr(analysis.performance_analysis, "get")
+                    else getattr(analysis.performance_analysis, "issues", [])
+                ),
             },
         }
 

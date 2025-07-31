@@ -4,6 +4,7 @@ import re
 
 from .project_types import ProjectType
 
+
 """
 Classifieur intelligent de projets.
 Analyse le contexte et détermine le type de projet approprié.

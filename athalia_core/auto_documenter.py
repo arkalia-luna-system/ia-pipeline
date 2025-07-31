@@ -13,6 +13,7 @@ from typing import Any, Dict, List, Optional
 
 import yaml
 
+
 logger = logging.getLogger(__name__)
 
 
@@ -190,9 +191,9 @@ Projet {project_name} généré automatiquement par Athalia.
 
 ## Structure du Projet
 
-- **Fichiers Python**: {len(structure['python_files'])}
-- **Fichiers de Test**: {len(structure['test_files'])}
-- **Fichiers de Documentation**: {len(structure['documentation_files'])}
+- **Fichiers Python**: {len(structure["python_files"])}
+- **Fichiers de Test**: {len(structure["test_files"])}
+- **Fichiers de Documentation**: {len(structure["documentation_files"])}
 
 ## Installation
 
@@ -255,9 +256,9 @@ MIT License
 
     def generate_function_documentation(self, function_info: Dict[str, Any]) -> str:
         """Génère la documentation d'une fonction"""
-        doc = f"""## {function_info['name']}
+        doc = f"""## {function_info["name"]}
 
-{function_info['docstring']}
+{function_info["docstring"]}
 
 """
 
@@ -274,9 +275,9 @@ MIT License
 
     def generate_class_documentation(self, class_info: Dict[str, Any]) -> str:
         """Génère la documentation d'une classe"""
-        doc = f"""## {class_info['name']}
+        doc = f"""## {class_info["name"]}
 
-{class_info['docstring']}
+{class_info["docstring"]}
 
 """
 
@@ -490,9 +491,9 @@ SOFTWARE.
         index += f"""
 ## Statistiques
 
-- **Fichiers Python**: {len(structure['python_files'])}
-- **Fichiers de Test**: {len(structure['test_files'])}
-- **Fichiers de Documentation**: {len(structure['documentation_files'])}
+- **Fichiers Python**: {len(structure["python_files"])}
+- **Fichiers de Test**: {len(structure["test_files"])}
+- **Fichiers de Documentation**: {len(structure["documentation_files"])}
 
 ## Navigation
 
@@ -772,9 +773,9 @@ SOFTWARE.
     def _generate_readme(self) -> str:
         """Génère un README basique"""
 
-        readme = f"""# {self.project_info.get('name', 'Projet')}
+        readme = f"""# {self.project_info.get("name", "Projet")}
 
-{self.project_info.get('description', 'Description du projet')}
+{self.project_info.get("description", "Description du projet")}
 
 ## Installation
 
@@ -785,7 +786,7 @@ pip install -r requirements.txt
 ## Utilisation
 
 ```python
-from {self.project_info.get('name', 'project')} import main
+from {self.project_info.get("name", "project")} import main
 main()
 ```
 
@@ -795,7 +796,7 @@ Consultez la documentation complète dans le dossier `docs/`.
 
 ## Licence
 
-{self.project_info.get('license', 'MIT')}
+{self.project_info.get("license", "MIT")}
 """
         return readme
 
@@ -803,32 +804,32 @@ Consultez la documentation complète dans le dossier `docs/`.
         """Génère la documentation API"""
         translations = self._load_translations(self.lang)
 
-        api_docs = f"""# {translations['api_docs_title']}
+        api_docs = f"""# {translations["api_docs_title"]}
 
-## {translations['classes']}
+## {translations["classes"]}
 
 """
 
         for class_info in self.project_info.get("classes", []):
-            api_docs += f"""### {class_info['name']}
+            api_docs += f"""### {class_info["name"]}
 
-{class_info.get('docstring', 'Aucune description')}
+{class_info.get("docstring", "Aucune description")}
 
-#### {translations['methods']}
+#### {translations["methods"]}
 
 """
             for method in class_info.get("methods", []):
                 api_docs += f"- `{method}()`\n"
             api_docs += "\n"
 
-        api_docs += f"""## {translations['functions']}
+        api_docs += f"""## {translations["functions"]}
 
 """
 
         for func_info in self.project_info.get("functions", []):
-            api_docs += f"""### {func_info['name']}
+            api_docs += f"""### {func_info["name"]}
 
-{func_info.get('docstring', 'Aucune description')}
+{func_info.get("docstring", "Aucune description")}
 
 """
             if func_info.get("args"):
@@ -843,7 +844,7 @@ Consultez la documentation complète dans le dossier `docs/`.
         """Génère le guide d'installation"""
         translations = self._load_translations(self.lang)
 
-        setup_guide = f"""# {translations['setup_guide_title']}
+        setup_guide = f"""# {translations["setup_guide_title"]}
 
 ## Prérequis
 
@@ -855,7 +856,7 @@ Consultez la documentation complète dans le dossier `docs/`.
 1. Cloner le repository:
 ```bash
 git clone <repository-url>
-cd {self.project_info.get('name', 'project')}
+cd {self.project_info.get("name", "project")}
 ```
 
 2. Installer les dépendances:
@@ -881,12 +882,12 @@ python -m pytest tests/
         """Génère le guide d'utilisation"""
         translations = self._load_translations(self.lang)
 
-        usage_guide = f"""# {translations['usage_guide_title']}
+        usage_guide = f"""# {translations["usage_guide_title"]}
 
 ## Démarrage rapide
 
 ```python
-from {self.project_info.get('name', 'project')} import main
+from {self.project_info.get("name", "project")} import main
 
 # Configuration de base
 config = {{"debug": True}}
@@ -895,7 +896,7 @@ config = {{"debug": True}}
 main(config)
 ```
 
-## {translations['examples']}
+## {translations["examples"]}
 
 ### Exemple 1: Utilisation basique
 

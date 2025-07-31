@@ -64,14 +64,14 @@ class TestPerformancePhase3:
         metrics = monitor.stop()
 
         # Vérifier que les imports sont rapides (< 1 seconde)
-        assert (
-            metrics["duration"] < 1.0
-        ), f"Imports trop lents: {metrics['duration']:.3f}s"
+        assert metrics["duration"] < 1.0, (
+            f"Imports trop lents: {metrics['duration']:.3f}s"
+        )
 
         # Vérifier que l'utilisation mémoire est raisonnable (< 100MB)
-        assert (
-            metrics["memory_used_mb"] < 100
-        ), f"Utilisation mémoire excessive: {metrics['memory_used_mb']:.1f}MB"
+        assert metrics["memory_used_mb"] < 100, (
+            f"Utilisation mémoire excessive: {metrics['memory_used_mb']:.1f}MB"
+        )
 
         print(
             f"✅ Imports: {metrics['duration']:.3f}s, {metrics['memory_used_mb']:.1f}MB"
@@ -89,14 +89,14 @@ class TestPerformancePhase3:
         metrics = monitor.stop()
 
         # Vérifier que le scan est rapide (< 2 secondes)
-        assert (
-            metrics["duration"] < 2.0
-        ), f"Scan de fichiers trop lent: {metrics['duration']:.3f}s"
+        assert metrics["duration"] < 2.0, (
+            f"Scan de fichiers trop lent: {metrics['duration']:.3f}s"
+        )
 
         # Vérifier qu'on trouve des fichiers
-        assert (
-            len(python_files) > 50
-        ), f"Trop peu de fichiers Python trouvés: {len(python_files)}"
+        assert len(python_files) > 50, (
+            f"Trop peu de fichiers Python trouvés: {len(python_files)}"
+        )
 
         print(
             f"✅ Scan fichiers: {metrics['duration']:.3f}s, "
@@ -131,9 +131,9 @@ class TestPerformancePhase3:
         assert result.returncode == 0, f"Tests échoués: {result.stderr}"
 
         # Vérifier que l'exécution est rapide (< 10 secondes)
-        assert (
-            metrics["duration"] < 10.0
-        ), f"Exécution des tests trop lente: {metrics['duration']:.3f}s"
+        assert metrics["duration"] < 10.0, (
+            f"Exécution des tests trop lente: {metrics['duration']:.3f}s"
+        )
 
         print(
             f"✅ Tests: {metrics['duration']:.3f}s, {metrics['memory_used_mb']:.1f}MB"
@@ -170,9 +170,9 @@ class TestPerformancePhase3:
         total_size_mb = total_size / 1024 / 1024
 
         # Vérifier que la taille est raisonnable (< 1GB)
-        assert (
-            total_size_mb < 1024
-        ), f"Taille du projet excessive: {total_size_mb:.1f}MB"
+        assert total_size_mb < 1024, (
+            f"Taille du projet excessive: {total_size_mb:.1f}MB"
+        )
 
         print(f"✅ Taille projet: {total_size_mb:.1f}MB, {file_count} fichiers")
 

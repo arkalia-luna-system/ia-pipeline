@@ -10,6 +10,7 @@ import re
 import sys
 from typing import Any, Dict, List
 
+
 logger = logging.getLogger(__name__)
 
 """
@@ -751,24 +752,24 @@ class IntelligentAuditor:
     def generate_report(self) -> str:
         """Génère un rapport daudit"""
         report = f"""
-{'='*60}
-🔍 RAPPORT D'AUDIT INTELLIGENT - {self.audit_results['info']['name']}
-{'='*60}
+{"=" * 60}
+🔍 RAPPORT D'AUDIT INTELLIGENT - {self.audit_results["info"]["name"]}
+{"=" * 60}
 
-📊 SCORE GLOBAL: {self.audit_results['score']}/100
+📊 SCORE GLOBAL: {self.audit_results["score"]}/100
 
 📋 INFORMATIONS PROJET:
-   • Type: {self.audit_results['info']['type']}
-   • Langages: {', '.join(self.audit_results['info']['languages'])}
-   • Taille: {self.audit_results['info']['size']['total_files']} fichiers
-   • Dernière modification: {self.audit_results['info']['last_modified']}
+   • Type: {self.audit_results["info"]["type"]}
+   • Langages: {", ".join(self.audit_results["info"]["languages"])}
+   • Taille: {self.audit_results["info"]["size"]["total_files"]} fichiers
+   • Dernière modification: {self.audit_results["info"]["last_modified"]}
 
-🔒 SÉCURITÉ: {len(self.audit_results['security']['vulnerabilities'])} "
+🔒 SÉCURITÉ: {len(self.audit_results["security"]["vulnerabilities"])} "
    "vulnérabilités détectées"
-📚 DOCUMENTATION: {self.audit_results['documentation']['readme']['status']}
-🧪 TESTS: {self.audit_results['testing']['coverage']['status']}
-⚡ PERFORMANCE: {self.audit_results['performance']['file_sizes']['status']}
-📁 STRUCTURE: {self.audit_results['structure']['organization']['status']}
+📚 DOCUMENTATION: {self.audit_results["documentation"]["readme"]["status"]}
+🧪 TESTS: {self.audit_results["testing"]["coverage"]["status"]}
+⚡ PERFORMANCE: {self.audit_results["performance"]["file_sizes"]["status"]}
+📁 STRUCTURE: {self.audit_results["structure"]["organization"]["status"]}
 
 💡 RECOMMANDATIONS:
 """
@@ -776,7 +777,7 @@ class IntelligentAuditor:
         for rec in self.audit_results["recommendations"]:
             report += f"   • {rec}\n"
 
-        report += f"\n{'='*60}\n"
+        report += f"\n{'=' * 60}\n"
 
         return report
 

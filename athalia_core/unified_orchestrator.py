@@ -21,6 +21,7 @@ from .correction_optimizer import CorrectionOptimizer
 from .generation import generate_project
 from .security_auditor import SecurityAuditor
 
+
 logger = logging.getLogger(__name__)
 
 
@@ -162,9 +163,9 @@ class UnifiedOrchestrator:
                 self.workflow_results["steps_completed"].append(
                     "correction_optimization"
                 )
-                self.workflow_results["artifacts"][
-                    "optimization_stats"
-                ] = optimization_results
+                self.workflow_results["artifacts"]["optimization_stats"] = (
+                    optimization_results
+                )
                 logger.info("✅ Optimisation terminée")
 
         except Exception as e:

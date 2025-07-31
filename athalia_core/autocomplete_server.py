@@ -5,6 +5,7 @@ from pydantic import BaseModel
 
 from athalia_core.autocomplete_engine import AutocompleteEngine
 
+
 app = FastAPI(title="Athalia Autocomplete Server")
 
 

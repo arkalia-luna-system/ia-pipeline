@@ -18,6 +18,7 @@ import subprocess
 from typing import Dict, List, Optional
 import xml.etree.ElementTree as ET
 
+
 logger = logging.getLogger(__name__)
 
 # Import du validateur de sécurité
@@ -267,8 +268,8 @@ class ROS2Validator:
 # 🤖 Rapport de Validation ROS2
 
 ## 📊 Résumé
-- **Workspace Valide**: {'✅' if result.workspace_valid else '❌'}
-- **Build Ready**: {'✅' if result.build_ready else '❌'}
+- **Workspace Valide**: {"✅" if result.workspace_valid else "❌"}
+- **Build Ready**: {"✅" if result.build_ready else "❌"}
 - **Packages**: {len(result.packages)}
 
 ## 📦 Packages Détectés
@@ -279,9 +280,9 @@ class ROS2Validator:
 ### {package.name}
 - **Type**: {package.package_type}
 - **Dépendances**: {len(package.dependencies)}
-- **Launch**: {'✅' if package.has_launch else '❌'}
-- **URDF**: {'✅' if package.has_urdf else '❌'}
-- **Tests**: {'✅' if package.has_tests else '❌'}
+- **Launch**: {"✅" if package.has_launch else "❌"}
+- **URDF**: {"✅" if package.has_urdf else "❌"}
+- **Tests**: {"✅" if package.has_tests else "❌"}
 """
 
         if result.issues:

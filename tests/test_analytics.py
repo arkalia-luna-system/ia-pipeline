@@ -3,10 +3,12 @@
 """
 Tests pour le module analytics
 """
+
 from pathlib import Path
 import tempfile
 
 import pytest
+
 
 # Import conditionnel du module analytics
 try:

@@ -9,6 +9,7 @@ import sys
 
 from athalia_core.correction_optimizer import optimize_correction
 
+
 # Ajouter le répertoire parent au path
 sys.path.insert(0, str(Path(__file__).parent))
 
@@ -41,7 +42,7 @@ def test_function( x,y ):
 
     print("Corrections détaillées:")
     for i, correction in enumerate(result.corrections_applied):
-        print(f"  {i+1}. {correction}")
+        print(f"  {i + 1}. {correction}")
 
 
 if __name__ == "__main__":

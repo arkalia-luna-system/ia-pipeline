@@ -4,10 +4,12 @@ Distillation multimodale pour Athalia/Arkalia
 - Fusionne réponses texte et image (LLaVA)
 - Appel réel à LLaVA via RobustAI (Ollama)
 """
+
 import subprocess
 from typing import Any, Dict, List, Optional
 
 from athalia_core.ai_robust import AIModel, RobustAI
+
 
 # Import du validateur de sécurité
 try:

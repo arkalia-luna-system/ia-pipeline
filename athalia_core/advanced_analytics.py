@@ -7,6 +7,7 @@ import logging
 from pathlib import Path
 from typing import Any, Dict
 
+
 logger = logging.getLogger(__name__)
 
 """
@@ -250,7 +251,7 @@ class AdvancedAnalytics:
 </head>
 <body>
     <h1>📊 Dashboard Analytics-{self.project_path.name}</h1>
-    <p>Généré le {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
+    <p>Généré le {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}</p>
 
     <div class="summary">
         <h2>📈 Résumé</h2>

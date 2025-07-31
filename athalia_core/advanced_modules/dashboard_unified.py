@@ -10,6 +10,7 @@ import sys
 from typing import Any, Dict, Optional
 import webbrowser
 
+
 # !/usr/bin/env python3
 """
 Module de dashboard unifié simplifié pour Athalia
@@ -449,19 +450,19 @@ class DashboardUnifieSimple:
         <div class="metrics-grid">
             <div class="metric-card">
                 <div class="metric-label">Projets Analysés (24h)</div>
-                <div class="metric-value">{metriques['projets_analyses']}</div>
+                <div class="metric-value">{metriques["projets_analyses"]}</div>
             </div>
             <div class="metric-card">
                 <div class="metric-label">Actions Effectuées (24h)</div>
-                <div class="metric-value">{metriques['actions_effectuees']}</div>
+                <div class="metric-value">{metriques["actions_effectuees"]}</div>
             </div>
             <div class="metric-card">
                 <div class="metric-label">Score Qualité Moyen</div>
-                <div class="metric-value">{metriques['score_qualite_moyen']}</div>
+                <div class="metric-value">{metriques["score_qualite_moyen"]}</div>
             </div>
             <div class="metric-card">
                 <div class="metric-label">Score Sécurité Moyen</div>
-                <div class="metric-value">{metriques['score_securite_moyen']}</div>
+                <div class="metric-value">{metriques["score_securite_moyen"]}</div>
             </div>
         </div>
         <div class="content-section">
@@ -470,7 +471,7 @@ class DashboardUnifieSimple:
         </div>
         <div class="footer">
             <div class="update-time">
-                Dernière mise à jour: {metriques['derniere_mise_a_jour']}
+                Dernière mise à jour: {metriques["derniere_mise_a_jour"]}
             </div>
         </div>
     </div>

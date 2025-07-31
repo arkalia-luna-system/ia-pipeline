@@ -14,6 +14,7 @@ import yaml
 from .ai_robust import AIModel, RobustAI
 from .audit import audit_project_intelligent
 
+
 # Configuration pour l'internationalisation (i18n) des messages CLI
 # Utilisation de gettext pour la traduction des messages utilisateur
 # Exemple: _("Message à traduire") pour les chaînes traduisibles
@@ -36,7 +37,7 @@ def generate_project(blueprint, output_path, dry_run=False):
         # README.md
         readme_content = f"""# {project_name}
 
-{blueprint.get('description', 'Projet généré automatiquement')}
+{blueprint.get("description", "Projet généré automatiquement")}
 
 ## Installation
 

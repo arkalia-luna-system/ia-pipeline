@@ -12,6 +12,7 @@ from pathlib import Path
 
 import psutil
 
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 

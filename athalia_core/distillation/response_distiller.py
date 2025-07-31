@@ -4,6 +4,7 @@ Module de distillation de réponses IA pour Athalia/Arkalia
 Permet de fusionner plusieurs réponses IA en une solution optimale
 (voting, stacking, bagging, consensus scoring...)
 """
+
 from collections import Counter
 import random
 from typing import Any, Dict, List, Optional
