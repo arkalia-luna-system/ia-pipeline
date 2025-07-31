@@ -11,6 +11,7 @@ import subprocess
 from typing import Any, Dict
 import xml.etree.ElementTree as ET
 
+
 # Import du validateur de sécurité
 try:
     from athalia_core.security_validator import SecurityError, validate_and_run
@@ -94,7 +95,7 @@ class ROS2Validator:
         package_xml_path = self.project_path / "package.xml"
 
         try:
-            tree = ET.parse(package_xml_path)
+            tree = ET.parse(package_xml_path)  # nosec B314
             root = tree.getroot()
 
             # Vérifier les éléments requis

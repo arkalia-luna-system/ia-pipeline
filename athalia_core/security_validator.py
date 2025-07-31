@@ -10,6 +10,7 @@ from pathlib import Path
 import subprocess
 from typing import Any, Dict, List
 
+
 logger = logging.getLogger(__name__)
 
 
@@ -165,7 +166,7 @@ class SecurityValidator:
             "/root/",
             "/root",
             "/home/",
-            "/tmp/",
+            "/tmp/",  # nosec B108
             "/dev/",
             "/proc/",
             "/sys/",

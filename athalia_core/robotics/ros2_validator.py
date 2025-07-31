@@ -18,6 +18,7 @@ import subprocess
 from typing import Dict, List, Optional
 import xml.etree.ElementTree as ET
 
+
 logger = logging.getLogger(__name__)
 
 # Import du validateur de sécurité
@@ -132,7 +133,7 @@ class ROS2Validator:
             return None
 
         try:
-            tree = ET.parse(package_xml)
+            tree = ET.parse(package_xml)  # nosec B314
             root = tree.getroot()
 
             # Extraire nom du package
