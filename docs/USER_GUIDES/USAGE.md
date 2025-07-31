@@ -62,7 +62,7 @@ python athalia_unified.py --help
 
 ### **Fichier de Configuration Principal**
 ```yaml
-# config/config.yml
+# config.yml
 app:
   name: athalia
   version: "10.0"
