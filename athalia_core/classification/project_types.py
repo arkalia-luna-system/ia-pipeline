@@ -3,7 +3,6 @@
 from enum import Enum
 from typing import Any, Dict
 
-
 """
 Types de projets et leurs configurations spécialisées.
 """

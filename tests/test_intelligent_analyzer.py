@@ -160,7 +160,7 @@ class TestIntelligentAnalyzer:
             assert isinstance(result, dict)
             assert "files_analyzed" in result
             assert "summary" in result
-            assert "total_functions" in result
+            assert "total_functions" in result["summary"]
 
     def test_calculate_overall_score(self):
         """Test de calcul du score global"""

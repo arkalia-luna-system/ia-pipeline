@@ -10,7 +10,6 @@ import sys
 from typing import Any, Dict, Optional
 import webbrowser
 
-
 # !/usr/bin/env python3
 """
 Module de dashboard unifié simplifié pour Athalia
