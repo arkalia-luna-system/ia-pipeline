@@ -270,7 +270,8 @@ class ValidationContinue:
 
 | Métrique | Avant | Après | Baisse |
 |----------|-------|-------|--------|
-| Taux de succès | {regression['taux_avant']:.1f}% | {regression['taux_apres']:.1f}% | {regression['baisse']:.1f}% |
+| Taux de succès | {regression['taux_avant']:.1f}% | {regression['taux_apres']:.1f}% | "
+ f"{regression['baisse']:.1f}% |"
 | Temps total | - | {validation['temps_total']:.1f}s | - |
 | Erreurs critiques | - | {validation['erreurs_critiques']} | - |
 
@@ -350,13 +351,18 @@ class ValidationContinue:
         rapport = f"""# 📊 Rapport de Tendance - Athalia/Arkalia
 
 **Période analysée:** {len(self.historique)} validations
-**Tendance:** {'📈 AMÉLIORATION' if evolution > 0 else '📉 RÉGRESSION' if evolution < 0 else '➡️ STABLE'}
+**Tendance:** (
+    '📈 AMÉLIORATION' if evolution > 0 
+    else '📉 RÉGRESSION' if evolution < 0 
+    else '➡️ STABLE'
+)
 
 ## 📈 Métriques de Tendance
 
 | Métrique | Ancien | Récent | Évolution |
 |----------|--------|--------|-----------|
-| Taux de succès | {taux_ancien:.1f}% | {taux_recent:.1f}% | {evolution:+.1f}% |
+| Taux de succès | {taux_ancien:.1f}% | {taux_recent:.1f}% | "
+ f"{evolution:+.1f}% |"
 | Temps moyen | {sum(v['temps_total'] for v in anciennes)/len(anciennes):.1f}s | {sum(v['temps_total'] for v in recentes)/len(recentes):.1f}s | - |
 | Erreurs critiques | {sum(v['erreurs_critiques'] for v in anciennes)/len(anciennes):.1f} | {sum(v['erreurs_critiques'] for v in recentes)/len(recentes):.1f} | - |
 
