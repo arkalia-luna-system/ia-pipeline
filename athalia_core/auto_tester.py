@@ -364,7 +364,10 @@ class TestPerformance(unittest.TestCase):
             time.sleep(0.1)  # Simulation d'opération
             end_time = time.time()
             execution_time = end_time - start_time
-            self.assertLess(execution_time, 1.0, f"Exécution trop lente: {{execution_time:.2f}}s")
+            self.assertLess(
+                execution_time, 1.0,
+                f"Exécution trop lente: {{execution_time:.2f}}s"
+            )
         except Exception as e:
             self.skipTest(f"Test d'exécution impossible: {{e}}")
 
