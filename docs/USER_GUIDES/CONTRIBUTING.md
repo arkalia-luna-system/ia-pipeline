@@ -91,7 +91,7 @@ python3 athalia_core/auto_documenter.py --validate
 - Testez les cas d'erreur et les edge cases
 
 ### Documentation
-- Documentez vos ajouts dans le README ou le DEVELOPER_GUIDE
+- Documentez vos ajouts dans le README ou la documentation développeur
 - Ajoutez des docstrings pour toutes les fonctions
 - Mettez à jour la documentation API si nécessaire
 

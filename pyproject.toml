@@ -115,7 +115,8 @@ addopts = [
     "--cov=athalia_core",
     "--cov-report=html:htmlcov",
     "--cov-report=term-missing",
-    # "--cov-fail-under=80",  # Temporairement désactivé pour permettre aux GitHub Actions de fonctionner
+    "--cov-fail-under=60",
+    "--cov-branch",
 ]
 markers = [
     "fast: marks tests as fast (deselect with '-m \"not fast\"')",
