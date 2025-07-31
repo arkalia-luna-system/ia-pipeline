@@ -226,7 +226,10 @@ omit = [
     "*/archive/*",
     "*/backups/*",
     "*/logs/*",
+    "*/htmlcov/*",
 ]
+branch = true
+relative_files = true
 
 [tool.coverage.report]
 exclude_lines = [

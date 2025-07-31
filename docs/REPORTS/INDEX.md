@@ -17,6 +17,10 @@
   - **1084 tests passent** (0 échec)
   - **CI/CD fonctionnel** avec Python 3.10-3.12
   - **Scripts de prévention** opérationnels
+- **📄 [Phase 18 Couverture Tests](AMELIORATION_COUVERTURE_TESTS_20250731.md)** ⭐
+  - **Couverture améliorée** : 8.78% → 9.38% (+0.60%)
+  - **10 nouveaux tests** créés
+  - **Outils d'analyse** automatique
 
 ### **🔒 SÉCURITÉ ET QUALITÉ**
 - **📄 [Audit Sécurité](AUDITS/AUDIT_SECURITY_QUALITY_REPORT.md)** ⭐
@@ -59,6 +63,7 @@
 **Rapports de corrections et optimisations**
 - **[Phase 14-16 Summary](CORRECTIONS/PHASE_14_16_SUMMARY.md)** - Corrections de linting
 - **[Phase 17 Python 3.1](CORRECTIONS/CORRECTION_PYTHON_3_1_PHASE17_20250731.md)** - Correction Python + Tests
+- **[Phase 18 Couverture Tests](AMELIORATION_COUVERTURE_TESTS_20250731.md)** - Amélioration couverture tests
 
 ### **📁 [AUDITS/](AUDITS/)**
 **Rapports d'audit et de sécurité**
