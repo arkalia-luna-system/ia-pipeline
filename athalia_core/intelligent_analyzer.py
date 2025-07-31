@@ -397,7 +397,8 @@ class IntelligentAnalyzer:
         output_file = (
             self.root_path
             / "data"
-            / f"comprehensive_analysis_{analysis.project_name}_{analysis.analysis_date.strftime('%Y%m%d_%H%M%S')}.json"
+            / f"comprehensive_analysis_{analysis.project_name}_"
+            f"{analysis.analysis_date.strftime('%Y%m%d_%H%M%S')}.json"
         )
 
         # Convertir en dictionnaire pour la sérialisation JSON
