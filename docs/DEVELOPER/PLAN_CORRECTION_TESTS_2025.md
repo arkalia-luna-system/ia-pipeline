@@ -10,8 +10,8 @@
 
 ### **🎯 Métriques Globales**
 - **Couverture de Code** : **73.63%** (objectif 75% ✅)
-- **Tests Passants** : **1039/1077** (96.4% de succès)
-- **Tests Échouants** : **38 tests** (à corriger)
+- **Tests Passants** : **1049/1077** (97.4% de succès)
+- **Tests Échouants** : **28 tests** (à corriger)
 - **Tests Skipés** : **42 tests** (à optimiser)
 - **Temps d'exécution** : **18 minutes** (acceptable)
 

@@ -350,7 +350,7 @@ repos:
 - **Temps d'exécution** : 18 minutes (à optimiser)
 
 ### **🔍 Métriques de Qualité**
-- **Fiabilité des tests** : 96.4%
+- **Fiabilité des tests** : 96.8%
 - **Couverture des modules critiques** : 73.63% (objectif atteint ✅)
 - **Tests de sécurité** : 100% passants
 - **Tests de performance** : 100% passants
@@ -368,12 +368,12 @@ repos:
 
 ### **⚠️ Points d'Amélioration**
 - **Couverture de code** : 73.63% (objectif 75% ✅)
-- **Tests échouants** : 38 tests à corriger
+- **Tests échouants** : 28 tests à corriger
 - **Tests skipés** : 42 tests à corriger
 - **Optimisation** : Temps d'exécution à réduire
 
 ### **🚀 Recommandations Prioritaires**
-1. **Corriger les 38 tests échouants** pour atteindre 100% de succès
+1. **Corriger les 28 tests échouants** pour atteindre 100% de succès
 2. **Améliorer la couverture** des modules < 60%
 3. **Optimiser les tests skipés** avec filtrage intelligent
 4. **Automatiser la CI/CD** avec GitHub Actions

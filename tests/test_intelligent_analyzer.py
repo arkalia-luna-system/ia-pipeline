@@ -204,8 +204,17 @@ class TestIntelligentAnalyzer:
             "antipatterns": [],
             "summary": {"total_duplicates": 1, "total_antipatterns": 0},
         }
-        architecture_analysis = {"modules": 3, "dependencies": 10}
-        performance_analysis = {"execution_time": 1.2, "memory_usage": 50.5}
+        architecture_analysis = {
+            "modules": 3,
+            "dependencies": 10,
+            "performance_issues": [],
+        }
+        performance_analysis = {
+            "execution_time": 1.2,
+            "memory_usage": 50.5,
+            "overall_score": 85.0,
+            "issues": [],
+        }
 
         recommendations = analyzer._generate_comprehensive_recommendations(
             pattern_analysis, architecture_analysis, performance_analysis
@@ -225,8 +234,17 @@ class TestIntelligentAnalyzer:
             "antipatterns": [],
             "summary": {"total_duplicates": 1, "total_antipatterns": 0},
         }
-        architecture_analysis = {"modules": 3, "dependencies": 10}
-        performance_analysis = {"execution_time": 1.2, "memory_usage": 50.5}
+        architecture_analysis = {
+            "modules": 3,
+            "dependencies": 10,
+            "performance_issues": [],
+        }
+        performance_analysis = {
+            "execution_time": 1.2,
+            "memory_usage": 50.5,
+            "overall_score": 85.0,
+            "issues": [],
+        }
 
         plan = analyzer._create_optimization_plan(
             pattern_analysis, architecture_analysis, performance_analysis
@@ -234,8 +252,8 @@ class TestIntelligentAnalyzer:
 
         assert isinstance(plan, dict)
         assert "priority_tasks" in plan
-        assert "estimated_time" in plan
-        assert "impact_score" in plan
+        assert "estimated_effort" in plan
+        assert "expected_improvement" in plan
 
     @patch("builtins.open", new_callable=mock_open)
     @patch("json.dump")
