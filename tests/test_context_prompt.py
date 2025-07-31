@@ -114,7 +114,7 @@ class TestPromptDetection:
 
         assert isinstance(scored_prompts, list)
         # Vérifier qu'au moins un prompt de test a un score > 0
-        assert any(score > 0 for _, score in scored_prompts)
+        assert any(score > 0 for score, prompt, explanations in scored_prompts)
 
     @patch(
         "builtins.open",

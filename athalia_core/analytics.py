@@ -9,6 +9,7 @@ import logging
 from pathlib import Path
 from typing import Any, Dict
 
+
 logger = logging.getLogger(__name__)
 
 
@@ -236,6 +237,9 @@ def analyze_project(project_path: str) -> Dict[str, Any]:
             "directories_count": len(
                 [d for d in Path(project_path).rglob("*") if d.is_dir()]
             ),
+            "complexity": engine.analyze_code_complexity(),
+            "coverage": engine.analyze_test_coverage(),
+            "dependencies": engine.analyze_dependencies(),
         },
         "score": engine.calculate_project_score(),
         "metrics": engine.generate_comprehensive_report(),
@@ -247,14 +251,16 @@ def analyze_project(project_path: str) -> Dict[str, Any]:
 def generate_heatmap_data(project_path: str) -> Dict[str, Any]:
     """Génère des données pour heatmap"""
     engine = AnalyticsEngine(project_path)
+    complexity_data = engine.analyze_code_complexity()
     return {
         "heatmap_data": {
-            "complexity": engine.analyze_code_complexity(),
+            "complexity": complexity_data,
             "coverage": engine.analyze_test_coverage(),
             "security": engine.analyze_security_metrics(),
             "documentation": engine.analyze_documentation_coverage(),
         },
         "total_files": len(list(Path(project_path).rglob("*.py"))),
+        "max_complexity": complexity_data.get("max_complexity", 0),
     }
 
 
