@@ -1,0 +1,37 @@
+#!/bin/bash
+# Script pour tester la couverture de tests pour CI/CD
+# Utilise: ./bin/ath-test-coverage
+
+set -e
+
+echo "🧪 TEST DE COUVERTURE ATHALIA"
+echo "=============================="
+
+# Activer l'environnement virtuel
+source .venv/bin/activate
+
+# Nettoyer les fichiers corrompus
+echo "🧹 Nettoyage des fichiers corrompus..."
+find tests/ -name "*!*" -delete 2>/dev/null || true
+find tests/ -name "*..*" -delete 2>/dev/null || true
+find tests/ -name "._*" -delete 2>/dev/null || true
+
+# Vérifier le nombre de tests
+echo "📊 Découverte des tests..."
+TEST_COUNT=$(python -m pytest --collect-only -q 2>/dev/null | wc -l)
+echo "✅ $TEST_COUNT tests découverts"
+
+# Test de couverture avec timeout
+echo "🔍 Test de couverture en cours..."
+timeout 600 python -m pytest \
+    --cov=athalia_core \
+    --cov-report=term-missing \
+    --cov-report=html:htmlcov \
+    --cov-fail-under=60 \
+    --tb=no \
+    -q \
+    --no-cov-on-fail \
+    --disable-warnings \
+    --maxfail=10
+
+echo "✅ Test de couverture terminé" 
