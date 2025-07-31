@@ -21,7 +21,6 @@ import re
 import sqlite3
 from typing import Any, Dict, List, Optional
 
-
 logger = logging.getLogger(__name__)
 
 
@@ -317,7 +316,7 @@ class IntelligentMemory:
             cursor = conn.cursor()
             cursor.execute(
                 """
-                SELECT original_code, suggested_code, reason, confidence, 
+                SELECT original_code, suggested_code, reason, confidence,
                        based_on_corrections
                 FROM correction_suggestions
                 WHERE applied = 1 AND success = 1
@@ -496,7 +495,7 @@ class IntelligentMemory:
                 cursor.execute(
                     """
                     INSERT INTO learned_patterns
-                    (pattern_hash, pattern_type, occurrences, first_seen, 
+                    (pattern_hash, pattern_type, occurrences, first_seen,
                      last_seen, success_rate)
                     VALUES (?, ?, ?, ?, ?, ?)
                 """,
