@@ -22,7 +22,7 @@ except ImportError:
     def validate_and_run(command, **kwargs):
         return subprocess.run(command, **kwargs)
 
-    SecurityError = Exception
+    SecurityError = Exception  # type: ignore
 
 logger = logging.getLogger(__name__)
 
@@ -32,8 +32,8 @@ class AnalyticsEngine:
 
     def __init__(self, project_path: str = "."):
         self.project_path = Path(project_path)
-        self.metrics = {}
-        self.reports = []
+        self.metrics: Dict[str, Any] = {}
+        self.reports: List[Any] = []
 
     def analyze_code_complexity(self) -> Dict[str, Any]:
         """Analyse la complexité cyclomatique du code"""
@@ -601,7 +601,10 @@ class AnalyticsEngine:
                 recommendations.append(
                     {
                         "category": "code_complexity",
-                        "suggestion": "Considérer la refactorisation pour réduire la complexité cyclomatique",
+                        "suggestion": (
+                            "Considérer la refactorisation pour réduire la "
+                            "complexité cyclomatique"
+                        ),
                     }
                 )
 
@@ -612,7 +615,10 @@ class AnalyticsEngine:
                 recommendations.append(
                     {
                         "category": "test_coverage",
-                        "suggestion": "Augmenter la couverture de tests en ajoutant plus de fichiers de test",
+                        "suggestion": (
+                            "Augmenter la couverture de tests en ajoutant plus de "
+                            "fichiers de test"
+                        ),
                     }
                 )
 
@@ -623,7 +629,10 @@ class AnalyticsEngine:
                 recommendations.append(
                     {
                         "category": "security",
-                        "suggestion": "Réviser et corriger les vulnérabilités de sécurité identifiées",
+                        "suggestion": (
+                            "Réviser et corriger les vulnérabilités de sécurité "
+                            "identifiées"
+                        ),
                     }
                 )
 
@@ -936,9 +945,19 @@ def generate_analytics_html(project_path: str = ".") -> str:
     <style>
         body {{ font-family: Arial, sans-serif; margin: 20px; }}
         .header {{ background: #f0f0f0; padding: 20px; border-radius: 5px; }}
-        .metric {{ margin: 10px 0; padding: 10px; border: 1px solid #ddd; border-radius: 3px; }}
+        .metric {{ 
+            margin: 10px 0; 
+            padding: 10px; 
+            border: 1px solid #ddd; 
+            border-radius: 3px; 
+        }}
         .score {{ font-size: 24px; font-weight: bold; color: #007bff; }}
-        .recommendation {{ background: #fff3cd; padding: 10px; margin: 5px 0; border-radius: 3px; }}
+        .recommendation {{ 
+            background: #fff3cd; 
+            padding: 10px; 
+            margin: 5px 0; 
+            border-radius: 3px; 
+        }}
     </style>
 </head>
 <body>

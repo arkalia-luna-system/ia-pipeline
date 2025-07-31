@@ -56,7 +56,8 @@ class RobustAI:
         self.fallback_chain = self._build_fallback_chain()
         self.prompt_templates = self._load_prompt_templates()
         logger.info(
-            f"IA robuste initialisée avec {len(self.available_models)} modèles disponibles"
+            f"IA robuste initialisée avec {len(self.available_models)} "
+            "modèles disponibles"
         )
 
     def generate_blueprint(self, idea: str, **kwargs) -> Dict[str, Any]:
@@ -305,7 +306,10 @@ class RobustAI:
             )
         except Exception as e:
             logger.error(f"Erreur lors de la génération de documentation: {e}")
-            return f"# Documentation pour {project_name}\n\nDocumentation générée automatiquement."
+            return (
+                f"# Documentation pour {project_name}\n\n"
+                "Documentation générée automatiquement."
+            )
 
     def classify_project_complexity(self, codebase_path: str) -> Dict[str, Any]:
         """Classifie la complexité d'un projet."""

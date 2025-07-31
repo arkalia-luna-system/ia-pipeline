@@ -395,6 +395,7 @@ class TestNoPollutingFiles:
             "./athalia_core/logs",  # Logs athalia_core normaux
             "./blueprints_history",  # Historique des blueprints normal
             "./archive/performance_data",  # Données de performance normales
+            "./athalia_core/docs",  # Documentation athalia_core (peut être vide)
         }
 
         # Filtrer les répertoires autorisés
