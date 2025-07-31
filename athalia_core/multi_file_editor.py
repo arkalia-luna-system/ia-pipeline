@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 """
 Module d'édition/correction multi-fichiers pour Athalia/Arkalia.
-Permet d'appliquer des corrections/refactoring sur plusieurs fichiers en une seule commande,
-avec logs et rollback.
+Permet d'appliquer des corrections/refactoring sur plusieurs fichiers en une 
+seule commande, avec logs et rollback.
 """
 import logging
 import os

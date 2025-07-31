@@ -131,28 +131,17 @@ class TestDashboardUnifieSimple:
         ]
         mock_cursor.fetchall.side_effect = [
             [
-                (
-                    "couverture_tests",
-                    85.5,
-                    "test_project",
-                    "2023-01-01",
-                    '{"tests": 100}',
-                )
-            ],  # métriques
+                ("test_project", 85.5, 90.0),  # projet, score_qualite, score_securite
+            ],  # top projets
             [
                 (
                     "test_execution",
                     "test_project",
                     "test_user",
-                    "2023-01-01",
-                    120,
+                    "2023-01-01T12:00:00",
                     "succes",
-                    "details",
                 )
             ],  # événements
-            [
-                ("analyse_securite", "test_project", "Rapport", "2023-01-01", 85, 90)
-            ],  # rapports
         ]
 
         dashboard = DashboardUnifieSimple("test_db.sqlite")
@@ -160,9 +149,9 @@ class TestDashboardUnifieSimple:
         rapport = dashboard.generer_rapport_consolide()
 
         assert isinstance(rapport, str)
-        assert "RAPPORT CONSOLIDÉ" in rapport
-        assert "MÉTRIQUES" in rapport
-        assert "ÉVÉNEMENTS" in rapport
+        assert "Dashboard Unifié" in rapport
+        assert "Métriques en Temps Réel" in rapport
+        assert "Événements Récents" in rapport
 
     @patch("sqlite3.connect")
     @patch("builtins.open", new_callable=mock_open)
@@ -182,28 +171,17 @@ class TestDashboardUnifieSimple:
         ]
         mock_cursor.fetchall.side_effect = [
             [
-                (
-                    "couverture_tests",
-                    85.5,
-                    "test_project",
-                    "2023-01-01",
-                    '{"tests": 100}',
-                )
-            ],  # métriques
+                ("test_project", 85.5, 90.0),  # projet, score_qualite, score_securite
+            ],  # top projets
             [
                 (
                     "test_execution",
                     "test_project",
                     "test_user",
-                    "2023-01-01",
-                    120,
+                    "2023-01-01T12:00:00",
                     "succes",
-                    "details",
                 )
             ],  # événements
-            [
-                ("analyse_securite", "test_project", "Rapport", "2023-01-01", 85, 90)
-            ],  # rapports
         ]
 
         dashboard = DashboardUnifieSimple("test_db.sqlite")
@@ -247,28 +225,30 @@ class TestIntegration:
         mock_conn.cursor.return_value = mock_cursor
 
         # Mock des données variées
+        mock_cursor.fetchone.side_effect = [
+            [5],  # projets_analyses
+            [10],  # actions_effectuees
+            [85.5],  # score_qualite_moyen
+            [90.2],  # score_securite_moyen
+            # Répétition pour les appels supplémentaires
+            [5],  # projets_analyses (pour generer_rapport_consolide)
+            [10],  # actions_effectuees (pour generer_rapport_consolide)
+            [85.5],  # score_qualite_moyen (pour generer_rapport_consolide)
+            [90.2],  # score_securite_moyen (pour generer_rapport_consolide)
+        ]
         mock_cursor.fetchall.side_effect = [
             [
-                (
-                    "couverture_tests",
-                    85.5,
-                    "test_project",
-                    "2023-01-01",
-                    '{"tests": 100}',
-                )
+                ("test_project", 85.5, 90.0),  # projet, score_qualite, score_securite
             ],
             [
                 (
                     "test_execution",
                     "test_project",
                     "test_user",
-                    "2023-01-01",
-                    120,
+                    "2023-01-01T12:00:00",
                     "succes",
-                    "details",
                 )
             ],
-            [("analyse_securite", "test_project", "Rapport", "2023-01-01", 85, 90)],
         ]
 
         dashboard = DashboardUnifieSimple("test_db.sqlite")
@@ -292,6 +272,14 @@ class TestIntegration:
         mock_cursor = MagicMock()
         mock_connect.return_value.__enter__.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
+
+        # Mock des données de métriques
+        mock_cursor.fetchone.side_effect = [
+            [5],  # projets_analyses
+            [10],  # actions_effectuees
+            [85.5],  # score_qualite_moyen
+            [90.2],  # score_securite_moyen
+        ]
 
         dashboard = DashboardUnifieSimple("test_db.sqlite")
 
