@@ -667,10 +667,10 @@ dynamixel = "0.2"
             score=100.0,
         )
 
-        # Essayer de sauvegarder dans un répertoire non accessible
-        with patch("builtins.open", side_effect=PermissionError("Permission denied")):
+        # Mock la création de répertoire pour qu'elle échoue
+        with patch("pathlib.Path.mkdir", side_effect=PermissionError("Permission denied")):
             with pytest.raises(PermissionError):
-                self.auditor.save_report(result, "/root/test.md")
+                self.auditor.save_report(result, "/tmp/test.md")
 
 
 class TestMainFunction:
