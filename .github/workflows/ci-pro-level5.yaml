@@ -60,7 +60,7 @@ jobs:
 
       - name: Install security tools
         run: |
-          pip install bandit safety
+          pip install bandit safety pytest
 
       - name: Security scan with Bandit
         run: |
