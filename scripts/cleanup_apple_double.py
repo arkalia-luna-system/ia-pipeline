@@ -43,7 +43,8 @@ def main():
 
         if removed_count > 0:
             print(
-                f"\n✅ Nettoyage terminé: {removed_count} fichiers Apple Double supprimés"
+                f"\n✅ Nettoyage terminé: {removed_count} fichiers Apple Double "
+                "supprimés"
             )
         else:
             print(f"\n✅ Aucun fichier Apple Double trouvé")
