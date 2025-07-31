@@ -61,7 +61,7 @@ class CodeGenetics:
         mutation_rate: float = 0.1,
     ) -> str:
         """
-        Fait évoluer les solutions sur plusieurs générations (croisement, 
+        Fait évoluer les solutions sur plusieurs générations (croisement,
         mutation, sélection).
         :param solutions: Liste initiale
         :param scorer: Fonction de scoring
