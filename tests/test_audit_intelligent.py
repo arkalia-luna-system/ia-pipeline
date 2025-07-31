@@ -10,7 +10,6 @@ import tempfile
 
 import pytest
 
-
 try:
     from athalia_core.audit import audit_project_intelligent
     from athalia_core.intelligent_auditor import IntelligentAuditor

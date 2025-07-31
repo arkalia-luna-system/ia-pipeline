@@ -10,7 +10,6 @@ import time
 import psutil
 import pytest
 
-
 # Désactiver la génération de fichiers .pyc pour tous les tests
 os.environ["PYTHONDONTWRITEBYTECODE"] = "1"
 

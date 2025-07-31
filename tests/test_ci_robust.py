@@ -18,7 +18,6 @@ import time
 import pytest
 import yaml  # type: ignore
 
-
 # Import sécurisé pour la validation des commandes
 try:
     from athalia_core.security_validator import SecurityError, validate_and_run
@@ -80,9 +79,9 @@ class TestCIRobust:
                 except Exception as e:
                     pytest.fail(f"Erreur lecture {config_file}: {e}")
 
-        assert (
-            found_configs >= 3
-        ), f"Seulement {found_configs} fichiers de config trouvés"
+        assert found_configs >= 3, (
+            f"Seulement {found_configs} fichiers de config trouvés"
+        )
 
     def test_test_suite_structure(self):
         """Vérifie la structure de la suite de tests"""
@@ -106,9 +105,9 @@ class TestCIRobust:
                     found_categories += 1
                     break
 
-        assert (
-            found_categories >= 3
-        ), f"Seulement {found_categories} catégories de tests trouvées"
+        assert found_categories >= 3, (
+            f"Seulement {found_categories} catégories de tests trouvées"
+        )
 
     def test_requirements_validation(self):
         """Valide les fichiers requirements"""
@@ -125,9 +124,9 @@ class TestCIRobust:
                         line = line.strip()
                         if line and not line.startswith("#"):
                             # Vérifie que c'est un package valide
-                            assert (
-                                ">=" in line or "==" in line or line.isalpha()
-                            ), f"Format invalide ligne {i}: {line}"
+                            assert ">=" in line or "==" in line or line.isalpha(), (
+                                f"Format invalide ligne {i}: {line}"
+                            )
 
                 except Exception as e:
                     pytest.fail(f"Erreur validation {req_file}: {e}")
@@ -157,12 +156,12 @@ class TestCIRobust:
         for dir_name in essential_dirs:
             if Path(dir_name).exists():
                 dir_path = Path(dir_name)
-                assert os.access(
-                    dir_path, os.R_OK
-                ), f"Pas de permission de lecture sur {dir_name}/"
-                assert os.access(
-                    dir_path, os.X_OK
-                ), f"Pas de permission d'exécution sur {dir_name}/"
+                assert os.access(dir_path, os.R_OK), (
+                    f"Pas de permission de lecture sur {dir_name}/"
+                )
+                assert os.access(dir_path, os.X_OK), (
+                    f"Pas de permission d'exécution sur {dir_name}/"
+                )
 
     def test_encoding_validation(self):
         """Valide l'encodage UTF-8 complet"""
@@ -245,9 +244,9 @@ class TestCIRobust:
         else:
             # En local, vérifie les variables de base
             assert os.getenv("PATH"), "PATH manquant"
-            assert os.getenv("HOME") or os.getenv(
-                "USERPROFILE"
-            ), "HOME/USERPROFILE manquant"
+            assert os.getenv("HOME") or os.getenv("USERPROFILE"), (
+                "HOME/USERPROFILE manquant"
+            )
 
     def test_error_handling(self):
         """Teste la gestion d'erreurs"""

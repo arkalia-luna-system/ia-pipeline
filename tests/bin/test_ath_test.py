@@ -2,7 +2,6 @@ import os
 import subprocess
 import sys
 
-
 # Correction pour les permissions des scripts
 
 # Import sécurisé pour la validation des commandes
