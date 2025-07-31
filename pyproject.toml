@@ -117,6 +117,7 @@ addopts = [
     "--cov-report=term-missing",
     "--cov-fail-under=60",
     "--cov-branch",
+    "--cov-context=test",
 ]
 markers = [
     "fast: marks tests as fast (deselect with '-m \"not fast\"')",
@@ -227,9 +228,11 @@ omit = [
     "*/backups/*",
     "*/logs/*",
     "*/htmlcov/*",
+    "*/templates/*",
 ]
 branch = true
 relative_files = true
+data_file = ".coverage"
 
 [tool.coverage.report]
 exclude_lines = [

@@ -6,9 +6,11 @@ Généré automatiquement pour améliorer la couverture de tests.
 import pytest
 import athalia_core.cache_manager as module
 
+
 def test_module_import():
     """Test que le module peut être importé."""
     assert module is not None
+
 
 def test_module_has_content():
     """Test que le module a du contenu."""
@@ -17,37 +19,38 @@ def test_module_has_content():
 
 def test_function_cache_function_exists():
     """Test que la fonction cache_function existe."""
-    assert hasattr(module, 'cache_function')
-    assert callable(getattr(module, 'cache_function'))
+    assert hasattr(module, "cache_function")
+    assert callable(getattr(module, "cache_function"))
 
 
 def test_function_clear_cache_exists():
     """Test que la fonction clear_cache existe."""
-    assert hasattr(module, 'clear_cache')
-    assert callable(getattr(module, 'clear_cache'))
+    assert hasattr(module, "clear_cache")
+    assert callable(getattr(module, "clear_cache"))
 
 
 def test_function_get_cache_stats_exists():
     """Test que la fonction get_cache_stats existe."""
-    assert hasattr(module, 'get_cache_stats')
-    assert callable(getattr(module, 'get_cache_stats'))
+    assert hasattr(module, "get_cache_stats")
+    assert callable(getattr(module, "get_cache_stats"))
 
 
 def test_function_wraps_exists():
     """Test que la fonction wraps existe."""
-    assert hasattr(module, 'wraps')
-    assert callable(getattr(module, 'wraps'))
+    assert hasattr(module, "wraps")
+    assert callable(getattr(module, "wraps"))
 
 
 def test_class_CacheManager_exists():
     """Test que la classe CacheManager existe."""
-    assert hasattr(module, 'CacheManager')
-    assert inspect.isclass(getattr(module, 'CacheManager'))
+    assert hasattr(module, "CacheManager")
+    assert inspect.isclass(getattr(module, "CacheManager"))
+
 
 def test_class_CacheManager_can_instantiate():
     """Test que la classe CacheManager peut être instanciée."""
     try:
-        cls = getattr(module, 'CacheManager')
+        cls = getattr(module, "CacheManager")
         # Essayer d'instancier avec des paramètres par défaut
         instance = cls()
         assert instance is not None
@@ -58,13 +61,14 @@ def test_class_CacheManager_can_instantiate():
 
 def test_class_Path_exists():
     """Test que la classe Path existe."""
-    assert hasattr(module, 'Path')
-    assert inspect.isclass(getattr(module, 'Path'))
+    assert hasattr(module, "Path")
+    assert inspect.isclass(getattr(module, "Path"))
+
 
 def test_class_Path_can_instantiate():
     """Test que la classe Path peut être instanciée."""
     try:
-        cls = getattr(module, 'Path')
+        cls = getattr(module, "Path")
         # Essayer d'instancier avec des paramètres par défaut
         instance = cls()
         assert instance is not None
@@ -79,8 +83,7 @@ def test_module_integration():
     try:
         # Essayer d'accéder aux attributs principaux
         for attr in dir(module):
-            if not attr.startswith('_'):
+            if not attr.startswith("_"):
                 getattr(module, attr)
     except Exception as e:
         pytest.skip(f"Erreur lors de l'accès aux attributs: {e}")
-
