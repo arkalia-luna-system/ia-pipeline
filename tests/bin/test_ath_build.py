@@ -1,7 +1,6 @@
 import os
 import subprocess
 
-
 # Import sécurisé pour la validation des commandes
 try:
     from athalia_core.security_validator import SecurityError, validate_and_run
@@ -25,9 +24,9 @@ def test_ath_build_runs():
         # Test d'import du module main
         import athalia_core.main
 
-        assert hasattr(athalia_core.main, "main"), (
-            "Module main n'a pas de fonction main"
-        )
+        assert hasattr(
+            athalia_core.main, "main"
+        ), "Module main n'a pas de fonction main"
         assert callable(athalia_core.main.main), "main n'est pas callable"
 
         # Test que le script est exécutable
