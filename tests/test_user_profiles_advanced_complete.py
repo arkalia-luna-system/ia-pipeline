@@ -147,7 +147,8 @@ class TestGestionnaireProfils(unittest.TestCase):
 
             # Vérification de la table projets_consultes
             cursor.execute(
-                "SELECT name FROM sqlite_master WHERE type='table' AND name='projets_consultes'"
+                "SELECT name FROM sqlite_master WHERE type='table' "
+                "AND name='projets_consultes'"
             )
             self.assertIsNotNone(cursor.fetchone())
 

@@ -206,7 +206,8 @@ class FinalValidator:
         logger.info(f"   - Fichiers corrigés: {validation_results['corrected_files']}")
         logger.info(f"   - Fichiers en erreur: {validation_results['error_files']}")
         logger.info(
-            f"   - Score de qualité moyen: {validation_results['average_quality_score']:.1f}%"
+            f"   - Score de qualité moyen: "
+            f"{validation_results['average_quality_score']:.1f}%"
         )
 
         return validation_results
