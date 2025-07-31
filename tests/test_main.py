@@ -7,7 +7,7 @@ Amélioration de la couverture de code de 10.05% à 80%+
 import signal
 from unittest.mock import MagicMock, patch
 
-from athalia_core.main import menu, safe_input, signal_handler, surveillance_mode
+from athalia_core.main import menu, safe_input, signal_handler, surveillance_mode, main
 import athalia_core.main
 
 
@@ -20,7 +20,7 @@ class TestSignalHandler:
         original_running = athalia_core.main.running
 
         # Test du signal handler
-        signal_handler(signal.SIGINT, None)
+        athalia_core.main.signal_handler(signal.SIGINT, None)
 
         # Vérifier que running est mis à False
         assert athalia_core.main.running is False
@@ -37,7 +37,7 @@ class TestMenu:
         """Test du menu avec entrée normale"""
         mock_input.return_value = "1"
 
-        result = menu()
+        result = athalia_core.main.menu()
 
         assert result == "1"
         mock_input.assert_called_once_with("Choix: ")
@@ -47,7 +47,7 @@ class TestMenu:
         """Test du menu avec erreur EOF"""
         mock_input.side_effect = EOFError()
 
-        result = menu()
+        result = athalia_core.main.menu()
 
         assert result == "q"
 
@@ -56,7 +56,7 @@ class TestMenu:
         """Test du menu avec interruption clavier"""
         mock_input.side_effect = KeyboardInterrupt()
 
-        result = menu()
+        result = athalia_core.main.menu()
 
         assert result == "q"
 
@@ -65,7 +65,7 @@ class TestMenu:
         """Test du menu avec espaces"""
         mock_input.return_value = "  2  "
 
-        result = menu()
+        result = athalia_core.main.menu()
 
         assert result == "2"
 
@@ -78,7 +78,7 @@ class TestSafeInput:
         """Test d'entrée sécurisée normale"""
         mock_input.return_value = "test input"
 
-        result = safe_input("Test prompt: ")
+        result = athalia_core.main.safe_input("Test prompt: ")
 
         assert result == "test input"
         mock_input.assert_called_once_with("Test prompt: ")
@@ -88,7 +88,7 @@ class TestSafeInput:
         """Test d'entrée sécurisée avec espaces"""
         mock_input.return_value = "  test input  "
 
-        result = safe_input("Test prompt: ")
+        result = athalia_core.main.safe_input("Test prompt: ")
 
         assert result == "test input"
 
@@ -97,7 +97,7 @@ class TestSafeInput:
         """Test d'entrée sécurisée avec erreur EOF"""
         mock_input.side_effect = EOFError()
 
-        result = safe_input("Test prompt: ")
+        result = athalia_core.main.safe_input("Test prompt: ")
 
         assert result == ""
 

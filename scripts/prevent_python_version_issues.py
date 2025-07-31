@@ -38,20 +38,22 @@ class PythonVersionPreventer:
                 for line_num, line in enumerate(lines, 1):
                     # Chercher spécifiquement les versions Python (pas les versions de dépendances)
                     # Pattern pour python-version: "3.1"
-                    python_version_matches = re.findall(r'python-version:\s*["\']?([3]\.[0-9]+)["\']?', line)
+                    python_version_matches = re.findall(
+                        r'python-version:\s*["\']?([3]\.[0-9]+)["\']?', line
+                    )
                     for version in python_version_matches:
                         if version in self.unsupported_versions:
                             issues.append((version, line_num, line.strip()))
-                    
+
                     # Pattern pour les matrices de versions Python [3.1, 3.2]
-                    if 'python-version' in line and '[' in line:
-                        matrix_version_matches = re.findall(r'([3]\.[0-9]+)', line)
+                    if "python-version" in line and "[" in line:
+                        matrix_version_matches = re.findall(r"([3]\.[0-9]+)", line)
                         for version in matrix_version_matches:
                             if version in self.unsupported_versions:
                                 issues.append((version, line_num, line.strip()))
-                    
+
                     # Pattern pour FROM python:3.1
-                    docker_matches = re.findall(r'FROM python:([3]\.[0-9]+)', line)
+                    docker_matches = re.findall(r"FROM python:([3]\.[0-9]+)", line)
                     for version in docker_matches:
                         if version in self.unsupported_versions:
                             issues.append((version, line_num, line.strip()))
@@ -189,13 +191,13 @@ class PythonVersionPreventer:
 echo "🔍 Vérification des versions Python..."
 
 # Vérifier les versions Python dans les fichiers modifiés
-python_files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(yaml|yml|toml|txt|Dockerfile)$')
+python_files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\\.(yaml|yml|toml|txt|Dockerfile)$')
 
 if [ -n "$python_files" ]; then
     echo "📋 Fichiers à vérifier: $python_files"
     
     # Vérifier les versions non supportées
-    unsupported_versions=$(grep -r "3\.[1-7]" $python_files 2>/dev/null || true)
+    unsupported_versions=$(grep -r "3\\.[1-7]" $python_files 2>/dev/null || true)
     
     if [ -n "$unsupported_versions" ]; then
         echo "❌ Versions Python non supportées détectées:"
