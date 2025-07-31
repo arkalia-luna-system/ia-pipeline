@@ -38,6 +38,7 @@ except ImportError:
         def audit_project_intelligent(project_path):
             return {"status": "audit_not_available"}
 
+
 # Configuration pour l'internationalisation (i18n) des messages CLI
 # Utilisation de gettext pour la traduction des messages utilisateur
 # Exemple: _("Message à traduire") pour les chaînes traduisibles
