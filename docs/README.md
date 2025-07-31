@@ -1,8 +1,8 @@
 # 📚 Documentation Athalia - Guide Complet
 
-**Version :** 11.0 (Structure Réorganisée)  
+**Version :** 11.0 (Structure Professionnelle)  
 **Date :** 31 juillet 2025  
-**Statut :** Documentation professionnelle et organisée ✅  
+**Statut :** Documentation complète et organisée ✅  
 
 ---
 
@@ -25,12 +25,12 @@ Bienvenue dans la documentation complète d'Athalia, un système d'intelligence 
 ### **Pour les nouveaux utilisateurs :**
 1. **[Installation](GETTING_STARTED/INSTALLATION.md)** - Configuration complète
 2. **[Guide d'utilisation](USER_GUIDES/USAGE.md)** - Utilisation des fonctionnalités
-3. **[Exemples](USER_GUIDES/EXAMPLES.md)** - Cas d'usage concrets
+3. **[FAQ](USER_GUIDES/FAQ.md)** - Questions fréquentes
 
 ### **Pour les développeurs :**
-1. **[Vue d'ensemble](DEVELOPER/OVERVIEW.md)** - Architecture et concepts
-2. **[API Reference](DEVELOPER/API_REFERENCE.md)** - Documentation technique
-3. **[Tests](DEVELOPER/TESTING.md)** - Guide des tests
+1. **[Vue d'ensemble](DEVELOPER/INDEX.md)** - Architecture et concepts
+2. **[API Reference](API/INDEX.md)** - Documentation technique
+3. **[Tests](DEVELOPER/GUIDES/TESTING.md)** - Guide des tests
 
 ---
 
@@ -39,23 +39,23 @@ Bienvenue dans la documentation complète d'Athalia, un système d'intelligence 
 ### **🚀 [GETTING_STARTED/](GETTING_STARTED/)**
 **Guides de démarrage et configuration**
 - **[Installation](GETTING_STARTED/INSTALLATION.md)** - Installation et configuration
-- **[Quick Start](GETTING_STARTED/QUICK_START.md)** - Démarrage rapide
-- **[Configuration](GETTING_STARTED/CONFIGURATION.md)** - Configuration avancée
 
 ### **👥 [USER_GUIDES/](USER_GUIDES/)**
 **Guides utilisateur et exemples**
+- **[Index](USER_GUIDES/INDEX.md)** - Vue d'ensemble des guides
 - **[Usage](USER_GUIDES/USAGE.md)** - Guide d'utilisation complet
-- **[CLI Reference](USER_GUIDES/CLI_REFERENCE.md)** - Référence des commandes
-- **[Examples](USER_GUIDES/EXAMPLES.md)** - Exemples d'utilisation
+- **[Quick Start](USER_GUIDES/QUICK_START.md)** - Démarrage rapide
+- **[FAQ](USER_GUIDES/FAQ.md)** - Questions fréquentes
+- **[Troubleshooting](USER_GUIDES/TROUBLESHOOTING.md)** - Résolution de problèmes
 
 ### **👨‍💻 [DEVELOPER/](DEVELOPER/)**
 **Documentation technique pour développeurs**
-- **[Overview](DEVELOPER/OVERVIEW.md)** - Vue d'ensemble technique
-- **[Architecture](DEVELOPER/ARCHITECTURE.md)** - Architecture du système
-- **[API Reference](DEVELOPER/API_REFERENCE.md)** - Référence API complète
-- **[Testing](DEVELOPER/TESTING.md)** - Guide des tests
-- **[Contributing](DEVELOPER/CONTRIBUTING.md)** - Guide de contribution
-- **[Deployment](DEVELOPER/DEPLOYMENT.md)** - Guide de déploiement
+- **[Index](DEVELOPER/INDEX.md)** - Vue d'ensemble technique
+- **[Guides](DEVELOPER/GUIDES/)** - Guides spécialisés
+- **[Plans](DEVELOPER/PLANS/)** - Plans d'action
+- **[Rapports](DEVELOPER/REPORTS/)** - Rapports techniques
+- **[Utilitaires](DEVELOPER/UTILITIES/)** - Outils et workflows
+- **[Maintenance](DEVELOPER/MAINTENANCE/)** - Guides de maintenance
 
 ### **📊 [REPORTS/](REPORTS/)**
 **Rapports d'audit et d'analyse**
@@ -66,13 +66,18 @@ Bienvenue dans la documentation complète d'Athalia, un système d'intelligence 
 
 ### **🔧 [SPECIALIZED/](SPECIALIZED/)**
 **Documentation spécialisée**
-- **[Robotics](SPECIALIZED/ROBOTICS/)** - Documentation robotique
+- **[Robotics](SPECIALIZED/robotics/)** - Documentation robotique
 - **[Dashboard](SPECIALIZED/DASHBOARD/)** - Documentation des dashboards
 - **[Templates](SPECIALIZED/TEMPLATES/)** - Templates et modèles
+- **[Prompts](SPECIALIZED/prompts/)** - Prompts pour l'IA
 
-### **📚 [ARCHIVE/](ARCHIVE/)**
-**Documentation archivée**
-- **[Old Reports](ARCHIVE/OLD_REPORTS/)** - Anciens rapports
+### **🏗️ [ARCHITECTURE/](ARCHITECTURE/)**
+**Architecture et structure du projet**
+- **[Index](ARCHITECTURE/INDEX.md)** - Vue d'ensemble de l'architecture
+
+### **🔌 [API/](API/)**
+**Documentation API**
+- **[Index](API/INDEX.md)** - Référence API complète
 
 ---
 
