@@ -5,11 +5,10 @@ et de configuration dans les workflows GitHub Actions
 """
 
 import json
-import subprocess
 import sys
 from pathlib import Path
 from datetime import datetime
-from typing import Dict, List, Any
+from typing import Dict, Any
 
 
 class CIDiagnostic:
@@ -26,9 +25,9 @@ class CIDiagnostic:
 
     def print_header(self, title: str):
         """Affiche un en-tête"""
-        print(f"\n{'='*60}")
+        print(f"\n{'=' * 60}")
         print(f"{title:^60}")
-        print(f"{'='*60}")
+        print(f"{'=' * 60}")
 
     def print_success(self, message: str):
         """Affiche un message de succès"""
@@ -265,7 +264,7 @@ class CIDiagnostic:
         print(f"🚨 Problèmes critiques: {summary['critical_issues']}")
 
         if summary["recommendations"]:
-            print(f"\n💡 Recommandations prioritaires:")
+            print("\n💡 Recommandations prioritaires:")
             for i, rec in enumerate(summary["recommendations"][:5], 1):
                 print(f"  {i}. {rec}")
 
