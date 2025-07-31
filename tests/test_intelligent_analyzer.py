@@ -94,7 +94,10 @@ class TestIntelligentAnalyzer:
         analyzer = IntelligentAnalyzer("/tmp/test_project")
 
         # Mock des résultats d'analyse
-        mock_ast.return_value = {"files_analyzed": 10, "complexity": 5.2}
+        mock_ast.return_value = {
+            "files_analyzed": 10,
+            "summary": {"average_complexity": 5.2, "total_functions": 15},
+        }
         mock_score.return_value = 85.5
         mock_recommendations.return_value = [
             "Optimiser les imports",
@@ -112,7 +115,11 @@ class TestIntelligentAnalyzer:
                 with patch.object(
                     analyzer.performance_analyzer, "analyze_project_performance"
                 ) as mock_perf:
-                    mock_pattern.return_value = {"patterns_found": 5, "duplicates": 2}
+                    mock_pattern.return_value = {
+                        "patterns_found": 5,
+                        "duplicates": [{"file1": "test1.py", "file2": "test2.py"}],
+                        "summary": {"total_duplicates": 1},
+                    }
                     mock_arch.return_value = {"modules": 3, "dependencies": 10}
                     mock_perf.return_value = {
                         "execution_time": 1.2,
@@ -158,8 +165,8 @@ class TestIntelligentAnalyzer:
         analyzer = IntelligentAnalyzer("/tmp/test_project")
 
         # Données de test
-        ast_analysis = {"files_analyzed": 10, "average_complexity": 5.2}
-        pattern_analysis = {"patterns_found": 5, "duplicates": 2}
+        ast_analysis = {"files_analyzed": 10, "summary": {"average_complexity": 5.2}}
+        pattern_analysis = {"patterns_found": 5, "duplicates": [{"file1": "test1.py"}]}
         architecture_analysis = {"modules": 3, "dependencies": 10}
         performance_analysis = {"execution_time": 1.2, "memory_usage": 50.5}
 
@@ -175,7 +182,7 @@ class TestIntelligentAnalyzer:
         analyzer = IntelligentAnalyzer("/tmp/test_project")
 
         # Données de test
-        pattern_analysis = {"patterns_found": 5, "duplicates": 2}
+        pattern_analysis = {"patterns_found": 5, "duplicates": [{"file1": "test1.py"}]}
         architecture_analysis = {"modules": 3, "dependencies": 10}
         performance_analysis = {"execution_time": 1.2, "memory_usage": 50.5}
 
@@ -191,7 +198,7 @@ class TestIntelligentAnalyzer:
         analyzer = IntelligentAnalyzer("/tmp/test_project")
 
         # Données de test
-        pattern_analysis = {"patterns_found": 5, "duplicates": 2}
+        pattern_analysis = {"patterns_found": 5, "duplicates": [{"file1": "test1.py"}]}
         architecture_analysis = {"modules": 3, "dependencies": 10}
         performance_analysis = {"execution_time": 1.2, "memory_usage": 50.5}
 
@@ -213,8 +220,8 @@ class TestIntelligentAnalyzer:
         analysis = ComprehensiveAnalysis(
             project_name="test_project",
             analysis_date=datetime.now(),
-            ast_analysis={"files_analyzed": 10},
-            pattern_analysis={"patterns_found": 5},
+            ast_analysis={"files_analyzed": 10, "summary": {"average_complexity": 5.2}},
+            pattern_analysis={"patterns_found": 5, "summary": {"total_duplicates": 1}},
             architecture_analysis={"modules": 3},
             performance_analysis={"execution_time": 1.2},
             overall_score=85.5,

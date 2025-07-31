@@ -10,6 +10,7 @@ import re
 import sys
 from typing import Any, Dict, List
 
+
 logger = logging.getLogger(__name__)
 
 """
@@ -761,7 +762,8 @@ class IntelligentAuditor:
    • Type: {self.audit_results['info']['type']}
    • Langages: {', '.join(self.audit_results['info']['languages'])}
    • Taille: {self.audit_results['info']['size']['total_files']} fichiers
-   • Dernière modification: {self.audit_results['info']['last_modified']}
+   • Dernière modification: "
+   f"{self.audit_results['info']['last_modified']}"
 
 🔒 SÉCURITÉ: {len(self.audit_results['security']['vulnerabilities'])} vulnérabilités détectées
 📚 DOCUMENTATION: {self.audit_results['documentation']['readme']['status']}
