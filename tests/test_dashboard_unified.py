@@ -97,12 +97,12 @@ class TestDashboardUnifieSimple:
         mock_conn.cursor.return_value = mock_cursor
 
         # Mock des données de métriques avec la vraie structure
-        mock_cursor.fetchone.return_value = [
-            10,
-            50,
-            85.5,
-            90.2,
-        ]  # projets, actions, qualite, securite
+        mock_cursor.fetchone.side_effect = [
+            [5],  # projets_analyses
+            [10],  # actions_effectuees
+            [85.5],  # score_qualite_moyen
+            [90.2],  # score_securite_moyen
+        ]
 
         dashboard = DashboardUnifieSimple("test_db.sqlite")
 
@@ -123,6 +123,12 @@ class TestDashboardUnifieSimple:
         mock_conn.cursor.return_value = mock_cursor
 
         # Mock des données pour le rapport avec la vraie structure
+        mock_cursor.fetchone.side_effect = [
+            [5],  # projets_analyses
+            [10],  # actions_effectuees
+            [85.5],  # score_qualite_moyen
+            [90.2],  # score_securite_moyen
+        ]
         mock_cursor.fetchall.side_effect = [
             [
                 (
@@ -168,6 +174,12 @@ class TestDashboardUnifieSimple:
         mock_conn.cursor.return_value = mock_cursor
 
         # Mock des données pour le dashboard avec la vraie structure
+        mock_cursor.fetchone.side_effect = [
+            [5],  # projets_analyses
+            [10],  # actions_effectuees
+            [85.5],  # score_qualite_moyen
+            [90.2],  # score_securite_moyen
+        ]
         mock_cursor.fetchall.side_effect = [
             [
                 (
@@ -286,7 +298,8 @@ class TestIntegration:
         # Test que les données sont cohérentes
         metriques = dashboard.obtenir_metriques_temps_reel()
 
-        assert "metriques" in metriques
-        assert "evenements" in metriques
-        assert "rapports" in metriques
-        assert "statistiques" in metriques
+        assert "projets_analyses" in metriques
+        assert "actions_effectuees" in metriques
+        assert "score_qualite_moyen" in metriques
+        assert "score_securite_moyen" in metriques
+        assert "derniere_mise_a_jour" in metriques
