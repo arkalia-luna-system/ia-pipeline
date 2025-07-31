@@ -38,13 +38,13 @@ print_info() {
 # Vérification de l'environnement
 check_environment() {
     print_info "Vérification de l'environnement..."
-    
+
     # Vérifier si on est dans le projet Athalia
     if [ ! -f "setup/alias.sh" ]; then
         print_error "Ce script doit être exécuté depuis la racine du projet Athalia"
         exit 1
     fi
-    
+
     # Vérifier les nouveaux scripts
     for script in bin/ath-prepare-commit bin/ath-push bin/ath-workflow; do
         if [ ! -f "$script" ]; then
@@ -52,14 +52,14 @@ check_environment() {
             exit 1
         fi
     done
-    
+
     print_success "Environnement vérifié"
 }
 
 # Détection du shell
 detect_shell() {
     print_info "Détection du shell..."
-    
+
     if [ -n "$ZSH_VERSION" ]; then
         SHELL_RC="$HOME/.zshrc"
         SHELL_NAME="Zsh"
@@ -71,20 +71,20 @@ detect_shell() {
         SHELL_RC="$HOME/.bashrc"
         SHELL_NAME="Bash"
     fi
-    
+
     print_success "Shell détecté: $SHELL_NAME ($SHELL_RC)"
 }
 
 # Installation des alias
 install_aliases() {
     print_info "Installation des alias..."
-    
+
     # Chemin absolu du projet
     PROJECT_ROOT="$(pwd)"
-    
+
     # Créer le fichier de configuration des alias
     ALIAS_FILE="$PROJECT_ROOT/setup/athalia-workflow-aliases.sh"
-    
+
     cat > "$ALIAS_FILE" << EOF
 # Alias de workflow Athalia - Généré automatiquement
 # Sourcez ce fichier dans votre .bashrc ou .zshrc
@@ -179,9 +179,9 @@ function ath-workflow-help() {
 echo "🚀 Alias de workflow Athalia chargés !"
 echo "💡 Tapez 'ath-workflow-help' pour voir toutes les commandes"
 EOF
-    
+
     print_success "Fichier d'alias créé: $ALIAS_FILE"
-    
+
     # Ajouter la source au fichier RC si pas déjà présent
     if ! grep -q "athalia-workflow-aliases.sh" "$SHELL_RC"; then
         echo "" >> "$SHELL_RC"
@@ -196,17 +196,17 @@ EOF
 # Test des alias
 test_aliases() {
     print_info "Test des nouveaux alias..."
-    
+
     # Source temporaire des alias
     source "$PROJECT_ROOT/setup/athalia-workflow-aliases.sh"
-    
+
     # Test de la fonction d'aide
     if command -v ath-workflow-help > /dev/null 2>&1; then
         print_success "Fonction d'aide installée"
     else
         print_warning "Fonction d'aide non disponible"
     fi
-    
+
     # Test d'un alias
     if command -v ath-prepare > /dev/null 2>&1; then
         print_success "Alias ath-prepare installé"
@@ -241,7 +241,7 @@ post_install_instructions() {
 # Fonction principale
 main() {
     print_header
-    
+
     check_environment
     detect_shell
     install_aliases
@@ -250,4 +250,4 @@ main() {
 }
 
 # Exécution
-main "$@" 
+main "$@"

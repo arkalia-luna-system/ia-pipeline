@@ -7,4 +7,4 @@ alias ath-clean-macos-exec='./bin/ath-clean-macos-temp --execute'
 
 echo "✅ Alias macOS cleanup créés:"
 echo "   ath-clean-macos     - Mode simulation"
-echo "   ath-clean-macos-exec - Mode exécution" 
+echo "   ath-clean-macos-exec - Mode exécution"

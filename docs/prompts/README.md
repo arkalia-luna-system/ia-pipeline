@@ -30,4 +30,4 @@ Les prompts sont au format YAML ou Markdown selon leur utilisation :
 
 ## Personnalisation
 
-Les prompts peuvent être personnalisés en modifiant les fichiers correspondants. Assurez-vous de respecter la structure attendue par les modules qui les utilisent. 
+Les prompts peuvent être personnalisés en modifiant les fichiers correspondants. Assurez-vous de respecter la structure attendue par les modules qui les utilisent.

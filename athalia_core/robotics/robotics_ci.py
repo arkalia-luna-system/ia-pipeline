@@ -10,12 +10,13 @@ Système CI/CD adapté aux projets Reachy/ROS2:
 - Déploiement automatisé
 """
 
+from dataclasses import dataclass
 import logging
+from pathlib import Path
 import subprocess
 import time
-from dataclasses import dataclass
-from pathlib import Path
 from typing import Dict, List, Tuple
+
 
 # Import du validateur de sécurité
 try:

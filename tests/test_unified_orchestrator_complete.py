@@ -4,8 +4,8 @@ Couverture: 100% des fonctionnalités d'orchestration unifiée
 Tests: 20 tests unitaires et d'intégration
 """
 
-import tempfile
 from pathlib import Path
+import tempfile
 from unittest.mock import Mock, patch
 
 import pytest

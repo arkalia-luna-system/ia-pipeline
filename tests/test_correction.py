@@ -6,6 +6,7 @@ Script de test pour la correction du projet EmotionSensingRoboticEyes
 import os
 import sys
 
+
 # Ajout des chemins
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "athalia_core"))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "modules"))
@@ -103,7 +104,8 @@ def main():
     print(f"🔍 Audit: {'✅ Réussi' if audit_result else '❌ Échec'}")
     print(f"🔧 Correction: {'✅ Réussi' if correction_result else '❌ Échec'}")
     print(
-        f"🚀 Amélioration génération: {'✅ Réussi' if generation_result else '❌ Échec'}"
+        "🚀 Amélioration génération:"
+        f" {'✅ Réussi' if generation_result else '❌ Échec'}"
     )
 
     if audit_result:

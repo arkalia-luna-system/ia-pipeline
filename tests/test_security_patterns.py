@@ -112,7 +112,7 @@ class TestSecurityPatterns:
         if len(filtered_injections) > 5:
             pytest.skip(
                 f"Trop de patterns SQL détectés ({len(filtered_injections)}), "
-                f"probablement des faux positifs"
+                "probablement des faux positifs"
             )
 
         if filtered_injections:
@@ -160,7 +160,7 @@ class TestSecurityPatterns:
         if len(filtered_usage) > 5:
             pytest.skip(
                 f"Trop de fonctions dangereuses détectées ({len(filtered_usage)}), "
-                f"probablement des faux positifs"
+                "probablement des faux positifs"
             )
 
         if filtered_usage:
@@ -201,7 +201,7 @@ class TestSecurityPatterns:
         if len(filtered_injections) > 20:
             pytest.skip(
                 f"Trop d'injections shell détectées ({len(filtered_injections)}), "
-                f"probablement des faux positifs"
+                "probablement des faux positifs"
             )
 
         if filtered_injections:
@@ -246,7 +246,8 @@ class TestSecurityPatterns:
         # Skip si trop de patterns trouvés (probablement des faux positifs)
         if len(filtered_debug) > 30:
             pytest.skip(
-                f"Trop de code de debug détecté ({len(filtered_debug)}), probablement des faux positifs"
+                f"Trop de code de debug détecté ({len(filtered_debug)}), probablement"
+                " des faux positifs"
             )
 
         if filtered_debug:
@@ -290,7 +291,8 @@ class TestSecurityPatterns:
         # Skip si trop de patterns trouvés (probablement des faux positifs)
         if len(filtered_urls) > 5:
             pytest.skip(
-                f"Trop d'URLs hardcodées détectées ({len(filtered_urls)}), probablement des faux positifs"
+                f"Trop d'URLs hardcodées détectées ({len(filtered_urls)}), probablement"
+                " des faux positifs"
             )
 
         if filtered_urls:
@@ -335,7 +337,8 @@ class TestSecurityPatterns:
         # Skip si trop de patterns trouvés (probablement des faux positifs)
         if len(filtered_crypto) > 5:
             pytest.skip(
-                f"Trop de crypto faible détectée ({len(filtered_crypto)}), probablement des faux positifs"
+                f"Trop de crypto faible détectée ({len(filtered_crypto)}), probablement"
+                " des faux positifs"
             )
 
         if filtered_crypto:

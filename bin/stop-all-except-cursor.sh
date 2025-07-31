@@ -56,7 +56,7 @@ print_protected() {
 # Configuration des processus à arrêter
 PROCESS_PATTERNS=(
     "athalia_core"
-    "athalia_unified" 
+    "athalia_unified"
     "python.*athalia"
     "pytest.*athalia"
     "validation_continue"
@@ -81,13 +81,13 @@ PROTECTED_PROCESSES=0
 # Fonction principale d'arrêt des processus
 stop_processes_except_cursor() {
     print_section "PHASE 1: DÉTECTION ET ARRÊT DES PROCESSUS"
-    
+
     for pattern in "${PROCESS_PATTERNS[@]}"; do
         print_info "Recherche de processus: ${BOLD}$pattern${NC}"
-        
+
         # Trouver les processus correspondants
         local processes=$(ps aux | grep -E "$pattern" | grep -v grep | grep -v "stop-all-except-cursor" | grep -v "cursor" 2>/dev/null || true)
-        
+
         if [ -n "$processes" ]; then
             local process_count=0
             echo "$processes" | while read line; do
@@ -96,15 +96,15 @@ stop_processes_except_cursor() {
                 local cpu=$(echo "$line" | awk '{print $3}')
                 local mem=$(echo "$line" | awk '{print $4}')
                 local cmd=$(echo "$line" | awk '{for(i=11;i<=NF;i++) printf "%s ", $i; print ""}')
-                
+
                 process_count=$((process_count + 1))
-                
+
                 # Vérifier que ce n'est pas Cursor
                 if [[ "$cmd" != *"cursor"* ]] && [[ "$cmd" != *"Cursor"* ]]; then
                     if [ -n "$pid" ] && [ "$pid" != "$$" ]; then
                         echo -e "${WHITE}  📊 PID: ${BOLD}$pid${NC} | CPU: ${BOLD}${cpu}%${NC} | MEM: ${BOLD}${mem}%${NC}"
                         echo -e "${WHITE}  📝 Commande: ${cmd:0:80}${NC}"
-                        
+
                         # Tentative d'arrêt propre
                         if kill -TERM "$pid" 2>/dev/null; then
                             print_success "Processus arrêté proprement: PID $pid"
@@ -130,9 +130,9 @@ stop_processes_except_cursor() {
 # Fonction d'arrêt forcé
 force_kill_remaining() {
     print_section "PHASE 2: ARRÊT FORCÉ DES PROCESSUS RÉCALCITRANTS"
-    
+
     local force_patterns=("athalia_core" "python.*athalia" "validation_continue")
-    
+
     for pattern in "${force_patterns[@]}"; do
         print_info "Arrêt forcé: $pattern"
         if pkill -f "$pattern" 2>/dev/null; then
@@ -146,17 +146,17 @@ force_kill_remaining() {
 # Fonction de rapport final
 show_final_report() {
     print_section "RAPPORT FINAL"
-    
+
     echo -e "${WHITE}📊 ${BOLD}Statistiques:${NC}"
     echo -e "${WHITE}   • Processus détectés: ${BOLD}$TOTAL_PROCESSES${NC}"
     echo -e "${WHITE}   • Processus arrêtés: ${BOLD}${GREEN}$KILLED_PROCESSES${NC}"
     echo -e "${WHITE}   • Processus protégés: ${BOLD}${PURPLE}$PROTECTED_PROCESSES${NC}"
     echo ""
-    
+
     print_info "Vérification des processus restants:"
     # Filtrer pour exclure les processus Cursor
     local remaining=$(ps aux | grep -E "(athalia_core|athalia_unified|python.*athalia|pytest.*athalia|validation_continue)" | grep -v grep | grep -v "stop-all-except-cursor" | grep -v "cursor" | grep -v "Cursor" 2>/dev/null || true)
-    
+
     if [ -n "$remaining" ]; then
         print_warning "Processus Athalia encore actifs:"
         echo "$remaining" | head -3
@@ -166,7 +166,7 @@ show_final_report() {
     else
         print_success "Aucun processus Athalia restant"
     fi
-    
+
     echo ""
     print_success "🎯 Cursor reste actif et protégé !"
     echo ""
@@ -194,4 +194,4 @@ sleep 3
 force_kill_remaining
 
 # Rapport final
-show_final_report 
+show_final_report

@@ -46,4 +46,4 @@ python3 scripts/validation_objective.py
 2. Suivre les conventions de nommage
 3. Ajouter la documentation
 4. Tester le script
-5. Mettre à jour ce README 
+5. Mettre à jour ce README

@@ -5,12 +5,13 @@ Tests de performance et d'optimisation pour Athalia.
 Tests professionnels pour la CI/CD.
 """
 
+from pathlib import Path
 import sys
 import tempfile
 import time
-from pathlib import Path
 
 import pytest
+
 
 # Import conditionnel de psutil
 try:

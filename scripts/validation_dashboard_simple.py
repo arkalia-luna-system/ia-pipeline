@@ -5,11 +5,11 @@ Dashboard de Validation Simple - Athalia/Arkalia
 Interface web pour visualiser les résultats de validation
 """
 
+from datetime import datetime
 import http.server
 import json
 import socketserver
 import subprocess
-from datetime import datetime
 
 
 class ValidationDashboardHandler(http.server.SimpleHTTPRequestHandler):

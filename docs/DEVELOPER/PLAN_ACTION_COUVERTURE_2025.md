@@ -1,8 +1,8 @@
 # 🚀 PLAN D'ACTION - COUVERTURE DE CODE & CI/CD ATHALIA 2025
 
-**Date de création :** Janvier 2025  
-**Objectif :** Atteindre 85%+ de couverture de code et CI/CD parfait  
-**Priorité :** CRITIQUE  
+**Date de création :** Janvier 2025
+**Objectif :** Atteindre 85%+ de couverture de code et CI/CD parfait
+**Priorité :** CRITIQUE
 
 ---
 
@@ -162,7 +162,7 @@ testpaths = tests
 python_files = test_*.py
 python_classes = Test*
 python_functions = test_*
-addopts = 
+addopts =
     --verbose
     --tb=short
     --strict-markers
@@ -225,35 +225,35 @@ jobs:
     strategy:
       matrix:
         python-version: [3.10, 3.11]
-    
+
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
-    
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install pytest pytest-cov pytest-benchmark
-    
+
     - name: Run tests with coverage
       run: |
         python -m pytest tests/ -v --cov=athalia_core --cov-report=xml --cov-fail-under=75
-    
+
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
       with:
         file: ./coverage.xml
         fail_ci_if_error: true
-    
+
     - name: Run security tests
       run: |
         python -m pytest tests/ -m security -v
-    
+
     - name: Run performance tests
       run: |
         python -m pytest tests/ -m performance -v
@@ -272,22 +272,22 @@ repos:
       - id: check-yaml
       - id: check-added-large-files
       - id: check-merge-conflict
-  
+
   - repo: https://github.com/psf/black
     rev: 23.3.0
     hooks:
       - id: black
-  
+
   - repo: https://github.com/pycqa/isort
     rev: 5.12.0
     hooks:
       - id: isort
-  
+
   - repo: https://github.com/pycqa/flake8
     rev: 6.0.0
     hooks:
       - id: flake8
-  
+
   - repo: local
     hooks:
       - id: pytest
@@ -473,4 +473,4 @@ pre-commit run --all-files
 
 ---
 
-**🚀 Athalia - Excellence en Tests et CI/CD !** 
+**🚀 Athalia - Excellence en Tests et CI/CD !**

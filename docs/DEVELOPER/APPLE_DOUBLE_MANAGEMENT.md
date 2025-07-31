@@ -115,4 +115,4 @@ Ajoutez le script à votre workflow de développement :
 Pour toute question ou problème lié à la gestion des fichiers AppleDouble, consultez :
 - La documentation du script `bin/ath-clean`
 - Les logs de nettoyage générés par le script
-- La configuration système macOS 
+- La configuration système macOS

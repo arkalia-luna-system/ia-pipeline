@@ -1,7 +1,7 @@
 # 🚀 ATHALIA CORE - Modules Principaux
 
-**Version :** 10.0 (FINAL - 100% TERMINÉE ✅)  
-**Date :** 30 Juillet 2025  
+**Version :** 10.0 (FINAL - 100% TERMINÉE ✅)
+**Date :** 30 Juillet 2025
 **Statut :** Modules principaux du système Athalia
 
 ## 🎯 **PRÉSENTATION**
@@ -74,13 +74,13 @@ Auditeur intelligent de projets générés.
 
 Modèles IA disponibles.
 
-**Méthodes :** 
+**Méthodes :**
 
 #### PromptContext
 
 Contextes de prompts.
 
-**Méthodes :** 
+**Méthodes :**
 
 ### Fonctions principales
 

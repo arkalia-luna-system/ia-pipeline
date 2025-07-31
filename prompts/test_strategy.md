@@ -5,4 +5,4 @@ Propose une stratégie de tests complète pour ce projet.
 - Outils/frameworks recommandés
 - Cas limites à couvrir
 
-Donne un plan d’action clair et priorisé. 
+Donne un plan d’action clair et priorisé.

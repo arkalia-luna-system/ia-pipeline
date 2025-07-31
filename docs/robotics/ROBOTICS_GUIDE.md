@@ -510,4 +510,4 @@ Ce module fait partie d'Athalia/Arkalia et suit la même licence que le projet p
 
 ---
 
-*Dernière mise à jour : 19/07/2025* 
+*Dernière mise à jour : 19/07/2025*

@@ -1,15 +1,24 @@
 # Requirements pour les modules robotiques Athalia
 # Installation: pip install -r config/requirements_robotics.txt
 
-# === DÉPENDANCES DE BASE ===
-# Parsing YAML pour les configurations ROS2 et Docker
-PyYAML>=6.0
+black>=23.0.0
 
-# Parsing TOML pour les projets Rust
-toml>=0.10.2
+# Linting
+flake8>=6.0.0
+
+# Pour la génération de rapports avancés
+jinja2>=3.1.0
 
 # Parsing XML pour les packages ROS2
 lxml>=4.9.0
+markdown>=3.4.0
+
+# === DÉPENDANCES OPTIONNELLES ===
+# Pour la simulation Gazebo (si installé)
+# gazebo-msgs>=0.1.0  # Décommenter si Gazebo est installé
+
+# Pour l'analyse de performance avancée
+psutil>=5.9.0
 
 # === DÉPENDANCES ROS2 ===
 # Interface Python pour ROS2 (optionnel, pour validation avancée)
@@ -32,24 +41,15 @@ PyGithub>=1.59.0
 pytest>=7.0.0
 pytest-cov>=4.0.0
 pytest-timeout>=2.1.0
+# === DÉPENDANCES DE BASE ===
+# Parsing YAML pour les configurations ROS2 et Docker
+PyYAML>=6.0
 
-# Linting
-flake8>=6.0.0
-black>=23.0.0
-
-# === DÉPENDANCES OPTIONNELLES ===
-# Pour la simulation Gazebo (si installé)
-# gazebo-msgs>=0.1.0  # Décommenter si Gazebo est installé
-
-# Pour l'analyse de performance avancée
-psutil>=5.9.0
-
-# Pour la génération de rapports avancés
-jinja2>=3.1.0
-markdown>=3.4.0
+# Parsing TOML pour les projets Rust
+toml>=0.10.2
 
 # === NOTES D'INSTALLATION ===
-# 
+#
 # 1. Installation de base (sans ROS2/Docker/Rust) :
 #    pip install -r config/requirements_robotics.txt
 #
@@ -67,4 +67,4 @@ markdown>=3.4.0
 # - Ubuntu 22.04+ (ROS2 Humble)
 # - macOS (Docker, Rust)
 # - Windows (Docker, Rust)
-# - Linux (Docker, Rust, ROS2) 
+# - Linux (Docker, Rust, ROS2)

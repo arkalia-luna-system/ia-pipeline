@@ -84,20 +84,24 @@ def test_specific_corrections_documentation():
                 "file": "tests/test_no_polluting_files.py",
                 "line": 100,
                 "before": (
-                    'pytest.fail(f"Fichiers d\'éditeur trouvés:\\n" + "\\n".join(editor_files))'
+                    'pytest.fail(f"Fichiers d\'éditeur trouvés:\\n" +'
+                    ' "\\n".join(editor_files))'
                 ),
                 "after": (
-                    'pytest.fail("Fichiers d\'éditeur trouvés:\\n" + "\\n".join(editor_files))'
+                    'pytest.fail("Fichiers d\'éditeur trouvés:\\n" +'
+                    ' "\\n".join(editor_files))'
                 ),
             },
             {
                 "file": "tests/test_no_polluting_files.py",
                 "line": 138,
                 "before": (
-                    'pytest.fail(f"Fichiers d\'archive trouvés:\\n" + "\\n".join(archive_files))'
+                    'pytest.fail(f"Fichiers d\'archive trouvés:\\n" +'
+                    ' "\\n".join(archive_files))'
                 ),
                 "after": (
-                    'pytest.fail("Fichiers d\'archive trouvés:\\n" + "\\n".join(archive_files))'
+                    'pytest.fail("Fichiers d\'archive trouvés:\\n" +'
+                    ' "\\n".join(archive_files))'
                 ),
             },
         ],

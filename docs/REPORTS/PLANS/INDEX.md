@@ -1,6 +1,6 @@
 # 📋 Index des Plans d'Amélioration - Athalia
 
-**Date :** 27 janvier 2025  
+**Date :** 27 janvier 2025
 **Statut :** Plans actualisés et organisés - PRIORISATION BRUTALE
 
 ---
@@ -128,6 +128,6 @@ Cette section contient tous les plans d'amélioration **actifs et pertinents** p
 
 ---
 
-*Index mis à jour le : 27 janvier 2025*  
-*Basé sur : Feedback expert critique*  
-*Responsable : Équipe de développement* 
+*Index mis à jour le : 27 janvier 2025*
+*Basé sur : Feedback expert critique*
+*Responsable : Équipe de développement*

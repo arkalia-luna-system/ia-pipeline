@@ -1,7 +1,7 @@
 # 🚀 GUIDE CI/CD PROFESSIONNEL ATHALIA
 
-**Date de création :** 30 juillet 2025  
-**Objectif :** Système CI/CD progressif de niveau professionnel  
+**Date de création :** 30 juillet 2025
+**Objectif :** Système CI/CD progressif de niveau professionnel
 **Branche :** `ci-cd-professional`
 
 ---
@@ -278,4 +278,4 @@ git merge develop
 
 Le système CI/CD professionnel d'Athalia offre une approche progressive et sécurisée pour atteindre un niveau industriel. Chaque niveau apporte des améliorations mesurables tout en préservant la stabilité du projet.
 
-**Objectif final : CI/CD de niveau professionnel complet !** 🏆 
+**Objectif final : CI/CD de niveau professionnel complet !** 🏆

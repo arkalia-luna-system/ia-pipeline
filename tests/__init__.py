@@ -38,13 +38,12 @@ def _protect_test_directory():
                 or filename.startswith("test_integration_")
                 or filename.startswith("test_performance_")
             ):
-
                 # Vérifier si c'est un de nos vrais tests
                 if not any(
                     pattern.replace("*", "") in filename for pattern in allowed_files
                 ):
                     print(
-                        f"🚫 BLOCAGE: Suppression du fichier de test automatique: "
+                        "🚫 BLOCAGE: Suppression du fichier de test automatique: "
                         f"{filename}"
                     )
                     try:

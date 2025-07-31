@@ -1,6 +1,6 @@
 # Guide de Tests - Athalia
 
-**Date :** 27 juillet 2025  
+**Date :** 27 juillet 2025
 **Objectif :** Stratégie complète de tests pour Athalia
 
 ---
@@ -109,7 +109,7 @@ testpaths = tests
 python_files = test_*.py
 python_classes = Test*
 python_functions = test_*
-addopts = 
+addopts =
     --verbose
     --tb=short
     --strict-markers
@@ -279,4 +279,4 @@ python3 -m pytest tests/ --timeout=30
 
 ---
 
-**🧪 Tests - Garant de la Qualité Athalia !** 
+**🧪 Tests - Garant de la Qualité Athalia !**

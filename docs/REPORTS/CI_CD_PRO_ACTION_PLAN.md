@@ -410,6 +410,6 @@ Un système CI/CD pro entièrement fonctionnel et professionnel, garantissant la
 
 ---
 
-**Date de création :** 30 Juillet 2025  
-**Objectif de finalisation :** 30 Août 2025  
-**Responsable :** Équipe de développement Athalia 
+**Date de création :** 30 Juillet 2025
+**Objectif de finalisation :** 30 Août 2025
+**Responsable :** Équipe de développement Athalia

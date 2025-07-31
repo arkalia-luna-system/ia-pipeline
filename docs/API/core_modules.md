@@ -1,6 +1,6 @@
 # 🛠️ Core Modules - Documentation API
 
-**Date :** 27 juillet 2025  
+**Date :** 27 juillet 2025
 **Statut :** Documentation exhaustive et conforme au code
 
 ## 🎯 Vue d'ensemble
@@ -134,4 +134,4 @@ Les modules principaux d'Athalia fournissent toutes les fonctionnalités de base
 
 ---
 
-*Documentation exhaustive et conforme au code réel, mise à jour le 27/07/2025.* 
+*Documentation exhaustive et conforme au code réel, mise à jour le 27/07/2025.*

@@ -41,6 +41,7 @@ from .security_auditor import SecurityAuditor
 # Imports principaux
 from .unified_orchestrator import UnifiedOrchestrator
 
+
 # Version
 __version__ = "2.0.0"
 __author__ = "Athalia Team"

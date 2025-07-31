@@ -6,8 +6,8 @@ Détecte et signale les imports circulaires dans le projet
 """
 
 import importlib
-import sys
 from pathlib import Path
+import sys
 from typing import Dict, List
 
 import pytest
@@ -112,7 +112,8 @@ class TestCircularImports:
         assert total_imports > 0, "Aucun import détecté dans athalia_core"
 
         print(
-            f"📊 Analyse des imports: {len(python_files)} fichiers, {total_imports} imports"
+            f"📊 Analyse des imports: {len(python_files)} fichiers,"
+            f" {total_imports} imports"
         )
 
     def test_simple_imports_work(self):

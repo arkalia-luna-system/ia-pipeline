@@ -25,4 +25,4 @@ for alias in "${ALIASES[@]}"; do
   fi
 done
 
-echo "\nTest manuel terminé. Vérifiez les sorties ci-dessus pour détecter d’éventuels problèmes." 
+echo "\nTest manuel terminé. Vérifiez les sorties ci-dessus pour détecter d’éventuels problèmes."

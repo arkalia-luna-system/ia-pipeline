@@ -405,7 +405,7 @@ Identifie les tests lents
 
 Args:
     threshold: Seuil en secondes pour considérer un test comme lent
-    
+
 Returns:
     Liste des tests lents
 
@@ -419,7 +419,7 @@ Identifie les tests rapides
 
 Args:
     threshold: Seuil en secondes pour considérer un test comme rapide
-    
+
 Returns:
     Liste des tests rapides
 
@@ -3238,7 +3238,7 @@ Test le comportement de la chaîne de fallback.
 ================================================
 Tests pour tous les modules d'analyse intelligente :
 - AST Analyzer
-- Pattern Detector  
+- Pattern Detector
 - Architecture Analyzer
 - Performance Analyzer
 - Intelligent Analyzer (orchestrateur)
@@ -39183,7 +39183,7 @@ zero or more directories and subdirectories.
 ##### escape
 
 Escape all special characters.
-    
+
 
 **Paramètres :**
 
@@ -50121,7 +50121,7 @@ one-offs in collections.abc such as Hashable.
 ##### _strip_annotations
 
 Strips the annotations from a given type.
-        
+
 
 **Paramètres :**
 
@@ -65764,7 +65764,7 @@ Quote a command line argument according to Windows parsing rules
 ##### is_python_script
 
 Is this text, as a whole, a Python script? (as opposed to shell/bat/etc.
-    
+
 
 **Paramètres :**
 
@@ -68494,7 +68494,7 @@ Return the content of the files concatenated using ``
     This function is sandboxed and won't reach anything outside ``root_dir``
 
     (By default ``root_dir`` is the current directory).
-    
+
 
 **Paramètres :**
 
@@ -68781,10 +68781,10 @@ The given `pyproject.toml` file is invalid and would be ignored.
 
     To prevent setuptools from considering `pyproject.toml` please
     DO NOT include the `[project]` or `[tool.setuptools]` tables in your file.
-    
+
 
 !!
-    
+
 
 **Méthodes :**
 
@@ -78592,7 +78592,7 @@ package name and returns a boolean.
 ##### check_install_conflicts
 
 For checking if the dependency graph would be consistent after     installing given requirements
-    
+
 
 **Paramètres :**
 
@@ -80162,7 +80162,7 @@ always OR all hashes together, even ones from URLs.
 
 ##### from_path
 
-Format a nice indicator to show where this "comes from" 
+Format a nice indicator to show where this "comes from"
 
 ##### ensure_build_location
 
@@ -80719,7 +80719,7 @@ for sub-dependencies
 ##### Resolver
 
 Resolves which packages need to be installed/uninstalled to perform     the requested operation without breaking the requirements of any package.
-    
+
 
 **Méthodes :**
 
@@ -80876,7 +80876,7 @@ contents due to file modification times.
 ##### _get_dist_for
 
 Takes a InstallRequirement and returns a single AbstractDist         representing a prepared variant of the same.
-        
+
 
 **Paramètres :**
 
@@ -93299,7 +93299,7 @@ second will have the same "age".
 ##### copy_file
 
 Copy a file respecting dry-run and force flags.
-        
+
 
 **Paramètres :**
 
@@ -109170,7 +109170,7 @@ Render objects in to a list of lines.
 
         Returns:
             List[List[Segment]]: A list of lines, where a line is a list of Segment objects.
-        
+
 
 **Paramètres :**
 
@@ -113936,7 +113936,7 @@ Set the shape of a list of lines (enclosing rectangle).
 
         Returns:
             List[List[Segment]]: New list of lines.
-        
+
 
 **Paramètres :**
 
@@ -113961,7 +113961,7 @@ Aligns lines to top (adds extra lines to bottom as required).
 
         Returns:
             List[List[Segment]]: New list of lines.
-        
+
 
 **Paramètres :**
 
@@ -113986,7 +113986,7 @@ Aligns render to bottom (adds extra lines above as required).
 
         Returns:
             List[List[Segment]]: New list of lines.
-        
+
 
 **Paramètres :**
 
@@ -114011,7 +114011,7 @@ Aligns lines to middle (adds extra lines to above and below as required).
 
         Returns:
             List[List[Segment]]: New list of lines.
-        
+
 
 **Paramètres :**
 
@@ -184565,7 +184565,7 @@ b = [ "I'm", "a", "list",]
 c = 2400
 '
         ```
-    
+
 
 **Paramètres :**
 
@@ -191197,7 +191197,7 @@ Keeps track of state around f-strings.
     by adding a STATE_IN_BRACES entry to the state stack. The stack is
     also used if there are nested f-strings.
 
-    
+
 
 **Méthodes :**
 
@@ -198830,7 +198830,7 @@ used to format text in the verbatim environment. ``arg`` is ignored.
 
 ##### _find_safe_escape_tokens
 
-find escape tokens that are not in strings or comments 
+find escape tokens that are not in strings or comments
 
 **Paramètres :**
 
@@ -198838,7 +198838,7 @@ find escape tokens that are not in strings or comments
 
 ##### _filter_to
 
-Keep only the tokens that match `pred`, merge the others together 
+Keep only the tokens that match `pred`, merge the others together
 
 **Paramètres :**
 
@@ -198847,7 +198847,7 @@ Keep only the tokens that match `pred`, merge the others together
 
 ##### _find_escape_tokens
 
-Find escape tokens within text, give token=None otherwise 
+Find escape tokens within text, give token=None otherwise
 
 **Paramètres :**
 
@@ -199057,7 +199057,7 @@ Additional options accepted:
 
 `lineno_fontsize`
     Font size for line numbers. Size is specified in half points
-    (default: `fontsize`). 
+    (default: `fontsize`).
 
     .. versionadded:: 2.18
 
@@ -199078,21 +199078,21 @@ Additional options accepted:
     .. versionadded:: 2.18
 
 `lineno_color`
-    Color for line numbers specified as a hex triplet, e.g. ``'5e5e5e'``. 
-    Defaults to the style's line number color if it is a hex triplet, 
+    Color for line numbers specified as a hex triplet, e.g. ``'5e5e5e'``.
+    Defaults to the style's line number color if it is a hex triplet,
     otherwise ansi bright black.
 
     .. versionadded:: 2.18
 
 `hl_lines`
     Specify a list of lines to be highlighted, as line numbers separated by
-    spaces, e.g. ``'3 7 8'``. The line numbers are relative to the input 
+    spaces, e.g. ``'3 7 8'``. The line numbers are relative to the input
     (i.e. the first line is line 1) unless `hl_linenostart` is set.
 
     .. versionadded:: 2.18
 
 `hl_color`
-    Color for highlighting the lines specified in `hl_lines`, specified as 
+    Color for highlighting the lines specified in `hl_lines`, specified as
     a hex triplet (default: style's `highlight_color`).
 
     .. versionadded:: 2.18
@@ -204344,12 +204344,12 @@ Lexers for JSX (React) and TSX (TypeScript flavor).
 ##### JsxLexer
 
 For JavaScript Syntax Extension (JSX).
-    
+
 
 ##### TsxLexer
 
 For TypeScript with embedded JSX
-    
+
 
 ---
 
@@ -204558,7 +204558,7 @@ Lexers for Kusto Query Language (KQL).
 ##### KustoLexer
 
 For Kusto Query Language source code.
-    
+
 
 ---
 
@@ -204770,7 +204770,7 @@ as the special forms that are particular to the Fennel compiler.
 ##### JanetLexer
 
 A lexer for the Janet programming language.
-    
+
 
 #### Fonctions
 
@@ -205484,7 +205484,7 @@ community example: https://www.mcbe-dev.net/addons/data-driven/manifest.html
 ##### SNBTLexer
 
 Lexer for stringified NBT, a data format used in Minecraft
-    
+
 
 ##### MCFunctionLexer
 
@@ -205494,7 +205494,7 @@ Modelled somewhat after the `GitHub mcfunction grammar <https://github.com/Arcen
 ##### MCSchemaLexer
 
 Lexer for Minecraft Add-ons data Schemas, an interface structure standard used in Minecraft
-    
+
 
 ---
 
@@ -206240,7 +206240,7 @@ Lexers for the OpenSCAD languages.
 ##### OpenScadLexer
 
 For openSCAD code.
-    
+
 
 ---
 
@@ -207661,7 +207661,7 @@ Lexer for resource definition files.
 ##### ResourceLexer
 
 Lexer for ICU Resource bundles.
-    
+
 
 **Méthodes :**
 
@@ -209537,7 +209537,7 @@ https://wiki.archlinux.org/title/.SRCINFO
 ##### SrcinfoLexer
 
 Lexer for .SRCINFO files used by Arch Linux Packages.
-    
+
 
 ---
 
@@ -211609,7 +211609,7 @@ Lexers for Visual Prolog & Grammar files.
 ##### VisualPrologLexer
 
 Lexer for VisualProlog
-    
+
 
 **Méthodes :**
 
@@ -211618,7 +211618,7 @@ Lexer for VisualProlog
 ##### VisualPrologGrammarLexer
 
 Lexer for VisualProlog grammar
-    
+
 
 **Méthodes :**
 
@@ -211663,7 +211663,7 @@ Lexer for the Vyper Smart Contract language.
 ##### VyperLexer
 
 For the Vyper smart contract language.
-    
+
 
 ---
 
@@ -211706,7 +211706,7 @@ and https://webassembly.github.io/spec/core/text/.
 ##### WatLexer
 
 Lexer for the WebAssembly text format.
-    
+
 
 ---
 
@@ -214430,7 +214430,7 @@ Check that cell does not already contain TransformerManager transformations,
 
     Due to the impossibility of safely roundtripping in such situations, cells
     containing transformed magics will be ignored.
-    
+
 
 **Paramètres :**
 
@@ -215574,7 +215574,7 @@ Converts unchanged lines to STANDALONE_COMMENT.
     normalized even when the lines aren't changed. This is fixable by moving
     more formatting to pass (1). However, it's hard to get it correct when
     incorrect indentations are used. So we defer this to future optimizations.
-    
+
 
 **Paramètres :**
 
@@ -222605,7 +222605,7 @@ Parse datetime `format_str` to interpret the `data`.
 
 ##### map_date_type
 
-Map column date type to pyarrow date type. 
+Map column date type to pyarrow date type.
 
 **Paramètres :**
 
@@ -227009,7 +227009,7 @@ read_message
 ##### make_random_buffer
 
 Return a host or device buffer with random data.
-    
+
 
 **Paramètres :**
 
@@ -227187,7 +227187,7 @@ Return a host or device buffer with random data.
 ##### make_random_buffer
 
 Return a host or device buffer with random data.
-    
+
 
 **Paramètres :**
 
@@ -230141,7 +230141,7 @@ A ServerMiddleware that transports incoming username and password.
 
 ##### HeaderAuthFlightServer
 
-A Flight server that tests with basic token authentication. 
+A Flight server that tests with basic token authentication.
 
 **Méthodes :**
 
@@ -239098,7 +239098,7 @@ wrap/unwrap calls
 ##### WrongTypeKmsClient
 
 This is not an implementation of KmsClient.
-        
+
 
 **Méthodes :**
 
@@ -239962,7 +239962,7 @@ Extract reference documentation from the NumPy source tree.
 
 A line-based string reader.
 
-    
+
 
 **Méthodes :**
 
@@ -274966,7 +274966,7 @@ Check FPU precision mode was not changed during the test.
 ##### warnings_errors_and_rng
 
 Filter out the wall of DeprecationWarnings.
-        
+
 
 **Paramètres :**
 
@@ -275591,7 +275591,7 @@ This mirrors the `contents` attribute of a normal ctypes pointer
 
 ##### _ctype_ndarray
 
-Create an ndarray of the given element type and shape 
+Create an ndarray of the given element type and shape
 
 **Paramètres :**
 
@@ -277996,7 +277996,7 @@ of n names as in njoin(['a','b']) is handled, or a mixture of such arguments.
 ##### get_mathlibs
 
 Return the MATHLIB line from numpyconfig.h
-    
+
 
 **Paramètres :**
 
@@ -278005,7 +278005,7 @@ Return the MATHLIB line from numpyconfig.h
 ##### minrelpath
 
 Resolve `..` and '.' from path.
-    
+
 
 **Paramètres :**
 
@@ -278031,7 +278031,7 @@ to allow extensions to have reproducible build results
 ##### gpaths
 
 Apply glob to paths and prepend local_path if needed.
-    
+
 
 **Paramètres :**
 
@@ -278122,7 +278122,7 @@ https://cygwin.com/cygwin-api/func-cygwin-conv-path.html
 ##### mingw32
 
 Return true when using mingw32 environment.
-    
+
 
 ##### msvc_runtime_version
 
@@ -278153,7 +278153,7 @@ given source file defines.
 
 ##### all_strings
 
-Return True if all items in lst are string objects. 
+Return True if all items in lst are string objects.
 
 **Paramètres :**
 
@@ -278179,7 +278179,7 @@ Return True if all items in lst are string objects.
 
 ##### get_language
 
-Determine language value (c,f77,f90) from sources 
+Determine language value (c,f77,f90) from sources
 
 **Paramètres :**
 
@@ -278187,7 +278187,7 @@ Determine language value (c,f77,f90) from sources
 
 ##### has_f_sources
 
-Return True if sources contains Fortran files 
+Return True if sources contains Fortran files
 
 **Paramètres :**
 
@@ -278195,7 +278195,7 @@ Return True if sources contains Fortran files
 
 ##### has_cxx_sources
 
-Return True if sources contains C++ files 
+Return True if sources contains C++ files
 
 **Paramètres :**
 
@@ -278243,7 +278243,7 @@ to be recompiled
 ##### is_local_src_dir
 
 Return true if directory is local directory.
-    
+
 
 **Paramètres :**
 
@@ -278317,7 +278317,7 @@ POSIX systems according to PEP 3149.
 ##### get_frame
 
 Return frame object from call stack with given level.
-    
+
 
 **Paramètres :**
 
@@ -279144,7 +279144,7 @@ True if a Fortran 90 compiler is available (because a simple Fortran
 ##### append_to
 
 Append libraries, include_dirs to extension or library item.
-        
+
 
 **Paramètres :**
 
@@ -279153,7 +279153,7 @@ Append libraries, include_dirs to extension or library item.
 ##### _get_svn_revision
 
 Return path's SVN revision number.
-        
+
 
 **Paramètres :**
 
@@ -279162,7 +279162,7 @@ Return path's SVN revision number.
 ##### _get_hg_revision
 
 Return path's Mercurial revision number.
-        
+
 
 **Paramètres :**
 
@@ -279751,7 +279751,7 @@ the UMFPACK environment variable.
 ##### system_info
 
 get_info() is the only public method. Don't use others.
-    
+
 
 **Méthodes :**
 
@@ -280607,7 +280607,7 @@ libraries : list of str or None
 
 ##### check_embedded_lapack
 
-libflame does not necessarily have a wrapper for fortran LAPACK, we need to check 
+libflame does not necessarily have a wrapper for fortran LAPACK, we need to check
 
 **Paramètres :**
 
@@ -281038,7 +281038,7 @@ Support code for building Python extensions on Windows.
 
 A modified MingW32 compiler compatible with an MSVC built Python.
 
-    
+
 
 **Méthodes :**
 
@@ -281095,7 +281095,7 @@ Check if an import library for the Python runtime already exists.
 ##### _build_import_library_x86
 
 Build the import libraries for Mingw32-gcc on Windows
-    
+
 
 ##### msvc_manifest_xml
 
@@ -281490,7 +281490,7 @@ The parsing behavior used by `subprocess.call("string", shell=True)` on Posix.
 
 ##### join
 
-Join a list of arguments into a command line string 
+Join a list of arguments into a command line string
 
 **Paramètres :**
 
@@ -281498,7 +281498,7 @@ Join a list of arguments into a command line string
 
 ##### split
 
-Split a command line string into a list of arguments 
+Split a command line string into a list of arguments
 
 **Paramètres :**
 
@@ -282849,7 +282849,7 @@ notfound_action:
 ##### have_compiler
 
 Return True if there appears to be an executable compiler
-    
+
 
 ##### test_distutils_parse_env_order
 
@@ -282867,7 +282867,7 @@ Return True if there appears to be an executable compiler
 
 ##### _check_libs
 
-Override _check_libs to return with all dirs 
+Override _check_libs to return with all dirs
 
 **Paramètres :**
 
@@ -282878,7 +282878,7 @@ Override _check_libs to return with all dirs
 
 ##### setup_method
 
-Create the libraries 
+Create the libraries
 
 ##### teardown_method
 
@@ -282922,7 +282922,7 @@ Create the libraries
 
 A hook to check the sanity of configured features
 -   before it called by the abstract class '_Feature'
-    
+
 
 **Méthodes :**
 
@@ -283247,7 +283247,7 @@ Context manager to redirect stderr for exec_command test.
 
 ##### emulate_nonposix
 
-Context manager to emulate os.name != 'posix' 
+Context manager to emulate os.name != 'posix'
 
 **Méthodes :**
 
@@ -283718,7 +283718,7 @@ Handle the different versions of GNU fortran compilers
 
 ##### _c_arch_flags
 
-Return detected arch flags from CFLAGS 
+Return detected arch flags from CFLAGS
 
 ##### get_flags_arch
 
@@ -286031,7 +286031,7 @@ A tuple of four things is returned: (args, varargs, varkw, locals).
 
 Recursively walk a sequence, stringifying each element.
 
-    
+
 
 **Paramètres :**
 
@@ -290012,7 +290012,7 @@ of the tags in exclude
 
 ##### test_empty_identity
 
-Empty input should put an identity matrix in u or vh 
+Empty input should put an identity matrix in u or vh
 
 ##### test_svdvals
 
@@ -292923,7 +292923,7 @@ Recursively produce a fill value for `dtype`, calling f on scalar dtypes
 
 ##### _get_dtype_of
 
-Convert the argument for *_fill_value into a dtype 
+Convert the argument for *_fill_value into a dtype
 
 **Paramètres :**
 
@@ -294642,7 +294642,7 @@ False
 
 ##### take
 
-    
+
 
 **Paramètres :**
 
@@ -296462,7 +296462,7 @@ Set the mask.
 
 ##### mask
 
-Current mask. 
+Current mask.
 
 ##### mask
 
@@ -296571,7 +296571,7 @@ sharedmask
 
 ##### sharedmask
 
-Share status of the mask (read-only). 
+Share status of the mask (read-only).
 
 ##### shrink_mask
 
@@ -296603,7 +296603,7 @@ False
 
 ##### baseclass
 
-Class of the underlying data (read-only). 
+Class of the underlying data (read-only).
 
 ##### _get_data
 
@@ -296622,7 +296622,7 @@ attribute.
 
 ##### flat
 
-Return a flat iterator, or set a flattened version of self to value. 
+Return a flat iterator, or set a flattened version of self to value.
 
 ##### flat
 
@@ -298609,7 +298609,7 @@ pickling purposes.  ``state`` is typically the output of the
 
 Return a 3-tuple for pickling a MaskedArray.
 
-        
+
 
 ##### __deepcopy__
 
@@ -298689,7 +298689,7 @@ Returns
 -------
 returned_tuple
     Tuple of fields
-    
+
 
 ##### __has_singleton
 
@@ -298730,7 +298730,7 @@ returned_tuple
 ##### __reduce__
 
 Override of MaskedArray's __reduce__.
-        
+
 
 ##### __iop__
 
@@ -298740,7 +298740,7 @@ Override of MaskedArray's __reduce__.
 
 ##### copy
 
-Copy is a no-op on the maskedconstant, as it is a scalar 
+Copy is a no-op on the maskedconstant, as it is a scalar
 
 ##### __copy__
 
@@ -300009,7 +300009,7 @@ Tests suite for MaskedArray & subclassing.
 
 ##### test_ufunc_with_out_varied
 
-Test that masked arrays are immune to gh-10459 
+Test that masked arrays are immune to gh-10459
 
 ##### test_astype_mask_ordering
 
@@ -300829,7 +300829,7 @@ Test deprecation and future warnings.
 
 ##### TestArgsort
 
-gh-8701 
+gh-8701
 
 **Méthodes :**
 
@@ -306126,7 +306126,7 @@ include_align : bool
 
 ##### _byte_order_str
 
-Normalize byteorder to '<' or '>' 
+Normalize byteorder to '<' or '>'
 
 **Paramètres :**
 
@@ -306563,7 +306563,7 @@ TypeError
 
 ##### _fix_names
 
-Replace names which are None with the next unused f%d name 
+Replace names which are None with the next unused f%d name
 
 **Paramètres :**
 
@@ -306602,7 +306602,7 @@ Calculate the greatest common divisor of a and b
 
 ##### array_ufunc_errmsg_formatter
 
-Format the error message for when __array_ufunc__ gives up. 
+Format the error message for when __array_ufunc__ gives up.
 
 **Paramètres :**
 
@@ -306612,7 +306612,7 @@ Format the error message for when __array_ufunc__ gives up.
 
 ##### array_function_errmsg_formatter
 
-Format the error message for when __array_ufunc__ gives up. 
+Format the error message for when __array_ufunc__ gives up.
 
 **Paramètres :**
 
@@ -308751,7 +308751,7 @@ dtype([('f0', '<f8'), ('f1', '<i4'), ('f2', 'S5')])
 ##### record
 
 A data-type scalar that allows field access as attribute lookup.
-    
+
 
 **Méthodes :**
 
@@ -309241,7 +309241,7 @@ array('def', dtype='<U3')
 
 ##### _parseFormats
 
-Parse the field formats 
+Parse the field formats
 
 **Paramètres :**
 
@@ -309251,7 +309251,7 @@ Parse the field formats
 ##### _setfieldnames
 
 convert input field names into a list and assign to the _names
-attribute 
+attribute
 
 **Paramètres :**
 
@@ -309859,7 +309859,7 @@ Machine limits for Float32 and Float64 and (long double) if available...
 
 ##### MachArLike
 
-Object to simulate MachAr instance 
+Object to simulate MachAr instance
 
 **Méthodes :**
 
@@ -313409,7 +313409,7 @@ The shape of the result consists of the non-contracted axes of the
 first tensor, followed by the non-contracted axes of the second.
 
 Examples
--------- 
+--------
 An example on integer_like:
 
 >>> a_0 = np.array([[1, 2], [3, 4]])
@@ -313440,7 +313440,7 @@ array([[4400., 4730.],
        [4664., 5018.],
        [4796., 5162.],
        [4928., 5306.]])
-       
+
 A slower but equivalent way of computing the same...
 
 >>> d = np.zeros((5,2))
@@ -316384,7 +316384,7 @@ users who silence the exceptions.
 
 ##### UFuncTypeError
 
-Base class for all ufunc exceptions 
+Base class for all ufunc exceptions
 
 **Méthodes :**
 
@@ -316392,7 +316392,7 @@ Base class for all ufunc exceptions
 
 ##### _UFuncNoLoopError
 
-Thrown when a ufunc loop cannot be found 
+Thrown when a ufunc loop cannot be found
 
 **Méthodes :**
 
@@ -316401,7 +316401,7 @@ Thrown when a ufunc loop cannot be found
 
 ##### _UFuncBinaryResolutionError
 
-Thrown when a binary resolution fails 
+Thrown when a binary resolution fails
 
 **Méthodes :**
 
@@ -316416,7 +316416,7 @@ Thrown when a binary resolution fails
 
 ##### _UFuncInputCastingError
 
-Thrown when a ufunc input cannot be casted 
+Thrown when a ufunc input cannot be casted
 
 **Méthodes :**
 
@@ -316425,7 +316425,7 @@ Thrown when a ufunc input cannot be casted
 
 ##### _UFuncOutputCastingError
 
-Thrown when a ufunc output cannot be casted 
+Thrown when a ufunc output cannot be casted
 
 **Méthodes :**
 
@@ -316533,7 +316533,7 @@ deprecation warning.
 
 ##### _size_to_string
 
-Convert a number of bytes into a binary size string 
+Convert a number of bytes into a binary size string
 
 **Paramètres :**
 
@@ -318410,7 +318410,7 @@ $Id: arrayprint.py,v 1.9 2005/09/13 13:58:44 teoliphant Exp $
 
 ##### FloatingFormat
 
-Formatter for subtypes of np.floating 
+Formatter for subtypes of np.floating
 
 **Méthodes :**
 
@@ -318434,7 +318434,7 @@ Formatter for subtypes of np.floating
 
 ##### ComplexFloatingFormat
 
-Formatter for subtypes of np.complexfloating 
+Formatter for subtypes of np.complexfloating
 
 **Méthodes :**
 
@@ -318795,7 +318795,7 @@ preserving subclasses.
 
 ##### _object_format
 
-Object arrays containing lists should be printed unambiguously 
+Object arrays containing lists should be printed unambiguously
 
 **Paramètres :**
 
@@ -320059,7 +320059,7 @@ Check access nested descriptors of a nested array (2nd level)
 
 ##### test_names_reflect_attributes
 
-Test that names correspond to where the type is under ``np.`` 
+Test that names correspond to where the type is under ``np.``
 
 **Paramètres :**
 
@@ -320067,7 +320067,7 @@ Test that names correspond to where the type is under ``np.``
 
 ##### test_names_are_undersood_by_dtype
 
-Test the dtype constructor maps names back to the type 
+Test the dtype constructor maps names back to the type
 
 **Paramètres :**
 
@@ -320645,7 +320645,7 @@ for adjustments here.
 
 ##### test_shift_all_bits
 
-Shifts where the shift amount is the width of the type or wider 
+Shifts where the shift amount is the width of the type or wider
 
 **Paramètres :**
 
@@ -322316,7 +322316,7 @@ Check inf/nan formatting of complex types.
 
 ##### test_float_type_print
 
-Check formatting when using print 
+Check formatting when using print
 
 **Paramètres :**
 
@@ -322324,7 +322324,7 @@ Check formatting when using print
 
 ##### test_complex_type_print
 
-Check formatting when using print 
+Check formatting when using print
 
 **Paramètres :**
 
@@ -322948,7 +322948,7 @@ equivalent to out[...] = operation(*args, out=out.copy())
 ##### test_r1array
 
 Test to make sure equivalent Travis O's r1array function
-        
+
 
 ##### test_0D_array
 
@@ -322961,7 +322961,7 @@ Test to make sure equivalent Travis O's r1array function
 ##### test_r2array
 
 Test to make sure equivalent Travis O's r2array function
-        
+
 
 ##### test_0D_array
 
@@ -323971,7 +323971,7 @@ is adopted in the main test suite.  A few may be moved elsewhere.
 
 ##### test_fromrecords_0len
 
-Verify fromrecords works with a 0-length input 
+Verify fromrecords works with a 0-length input
 
 ##### test_fromrecords_2d
 
@@ -324045,7 +324045,7 @@ Verify fromrecords works with a 0-length input
 
 ##### test_nested_fields_are_records
 
-Test that nested structured types are treated as records too 
+Test that nested structured types are treated as records too
 
 **Paramètres :**
 
@@ -324053,7 +324053,7 @@ Test that nested structured types are treated as records too
 
 ##### test_nested_dtype_padding
 
-test that trailing padding is preserved 
+test that trailing padding is preserved
 
 ##### assign_invalid_column
 
@@ -324854,7 +324854,7 @@ and ``a[0.5]``, or other functions like ``array.reshape(1., -1)``.
 
 Creating an index from array not 0-D is an error.
 
-    
+
 
 **Méthodes :**
 
@@ -324875,7 +324875,7 @@ an integer.
 
 An index can only have a single ellipsis.
 
-    
+
 
 **Méthodes :**
 
@@ -325132,7 +325132,7 @@ index : indexing object
 ##### _compare_index_result
 
 Compare mimicked result to indexing result.
-        
+
 
 **Paramètres :**
 
@@ -326803,11 +326803,11 @@ Reduceat should work with empty arrays
 
 ##### test_object_direct
 
-test direct implementation of these magic methods 
+test direct implementation of these magic methods
 
 ##### test_object_indirect
 
-test implementations via __float__ 
+test implementations via __float__
 
 ##### test_fraction
 
@@ -329356,7 +329356,7 @@ Verify that datetime dtype __setstate__ can handle bad arguments
 ##### test_isfinite_isinf_isnan_units
 
 check isfinite, isinf, isnan for all units of <M, >M, <m, >m dtypes
-        
+
 
 **Paramètres :**
 
@@ -329516,21 +329516,21 @@ Tests of the ._exceptions module. Primarily for exercising the __str__ methods.
 
 ##### test_pickling
 
-Test that _ArrayMemoryError can be pickled 
+Test that _ArrayMemoryError can be pickled
 
 ##### test_str
 
 ##### test__size_to_string
 
-Test e._size_to_string 
+Test e._size_to_string
 
 ##### test__total_size
 
-Test e._total_size 
+Test e._total_size
 
 ##### test_pickling
 
-Test that _UFuncNoLoopError can be pickled 
+Test that _UFuncNoLoopError can be pickled
 
 ##### test_attr
 
@@ -330528,7 +330528,7 @@ Tests for numpy/_core/src/multiarray/conversion_utils.c
 
 ##### TestByteorderConverter
 
-Tests of PyArray_ByteorderConverter 
+Tests of PyArray_ByteorderConverter
 
 **Méthodes :**
 
@@ -330536,7 +330536,7 @@ Tests of PyArray_ByteorderConverter
 
 ##### TestSortkindConverter
 
-Tests of PyArray_SortkindConverter 
+Tests of PyArray_SortkindConverter
 
 **Méthodes :**
 
@@ -330544,7 +330544,7 @@ Tests of PyArray_SortkindConverter
 
 ##### TestSelectkindConverter
 
-Tests of PyArray_SelectkindConverter 
+Tests of PyArray_SelectkindConverter
 
 **Méthodes :**
 
@@ -330552,7 +330552,7 @@ Tests of PyArray_SelectkindConverter
 
 ##### TestSearchsideConverter
 
-Tests of PyArray_SearchsideConverter 
+Tests of PyArray_SearchsideConverter
 
 **Méthodes :**
 
@@ -330560,7 +330560,7 @@ Tests of PyArray_SearchsideConverter
 
 ##### TestOrderConverter
 
-Tests of PyArray_OrderConverter 
+Tests of PyArray_OrderConverter
 
 **Méthodes :**
 
@@ -330569,7 +330569,7 @@ Tests of PyArray_OrderConverter
 
 ##### TestClipmodeConverter
 
-Tests of PyArray_ClipmodeConverter 
+Tests of PyArray_ClipmodeConverter
 
 **Méthodes :**
 
@@ -330577,7 +330577,7 @@ Tests of PyArray_ClipmodeConverter
 
 ##### TestCastingConverter
 
-Tests of PyArray_CastingConverter 
+Tests of PyArray_CastingConverter
 
 **Méthodes :**
 
@@ -330585,7 +330585,7 @@ Tests of PyArray_CastingConverter
 
 ##### TestIntpConverter
 
-Tests of PyArray_IntpConverter 
+Tests of PyArray_IntpConverter
 
 **Méthodes :**
 
@@ -330820,7 +330820,7 @@ These test cases exercise some behaviour changes
 ##### get_expected_stringlength
 
 Returns the string length when casting the basic dtypes to strings.
-    
+
 
 **Paramètres :**
 
@@ -333595,7 +333595,7 @@ Test the two-argument ufuncs match python builtin behavior.
 ##### test_accumulation
 
 Accumulation is odd for StringDType but tests dtypes with references.
-    
+
 
 **Paramètres :**
 
@@ -335518,7 +335518,7 @@ Test the scalar constructors, which also do type-coercion
 
 ##### TestArrayFromScalar
 
-gh-15467 and gh-19125 
+gh-15467 and gh-19125
 
 **Méthodes :**
 
@@ -335560,7 +335560,7 @@ gh-15467 and gh-19125
 
 ##### test_floating_overflow
 
-Strings containing an unrepresentable float overflow 
+Strings containing an unrepresentable float overflow
 
 ##### test_superclass
 
@@ -336256,7 +336256,7 @@ Test tofile, fromfile, tobytes, and fromstring
 
 Common tests for '@' operator and numpy.matmul.
 
-    
+
 
 **Méthodes :**
 
@@ -336382,7 +336382,7 @@ Common tests for '@' operator and numpy.matmul.
 
 ##### TestNewBufferProtocol
 
-Test PEP3118 buffers 
+Test PEP3118 buffers
 
 **Méthodes :**
 
@@ -336573,7 +336573,7 @@ issues, etc
 
 ##### TestArrayFinalize
 
-Tests __array_finalize__ 
+Tests __array_finalize__
 
 **Méthodes :**
 
@@ -338858,7 +338858,7 @@ may be deleted at any point.
 
 ##### test_round_trip
 
-Tests that GETITEM, SETITEM, and PyArray_Scalar roundtrip 
+Tests that GETITEM, SETITEM, and PyArray_Scalar roundtrip
 
 ##### test_assign_scalar
 
@@ -339032,7 +339032,7 @@ Tests that GETITEM, SETITEM, and PyArray_Scalar roundtrip
 
 ##### inject_str
 
-replace ndarray.__str__ temporarily 
+replace ndarray.__str__ temporarily
 
 **Paramètres :**
 
@@ -339963,7 +339963,7 @@ replace ndarray.__str__ temporarily
 ##### test_close_equivalent
 
 using a context amanger and using nditer.close are equivalent
-    
+
 
 ##### test_close_raises
 
@@ -342139,7 +342139,7 @@ all of these occurrences but should catch almost all.
 
 ##### TestAsCtypesType
 
-Test conversion from dtypes to ctypes types 
+Test conversion from dtypes to ctypes types
 
 **Méthodes :**
 
@@ -342171,11 +342171,11 @@ Test conversion from dtypes to ctypes types
 
 ##### test_arguments
 
-Test that arguments are coerced from arrays 
+Test that arguments are coerced from arrays
 
 ##### test_return
 
-Test that return values are coerced to arrays 
+Test that return values are coerced to arrays
 
 **Paramètres :**
 
@@ -342183,7 +342183,7 @@ Test that return values are coerced to arrays
 
 ##### test_vague_return_value
 
-Test that vague ndpointer return values do not promote to arrays 
+Test that vague ndpointer return values do not promote to arrays
 
 ##### test_array
 
@@ -344070,7 +344070,7 @@ keys, but parameter values and dimensions are not yet interpreted.
 
 ##### markinnerspaces
 
-The function replace all spaces in the input variable line which are 
+The function replace all spaces in the input variable line which are
 surrounded with quotation marks, with the triplet "@_@".
 
 For instance, for the input "a 'b c'" the function returns "a 'b@_@c'"
@@ -344207,7 +344207,7 @@ TODO:
 
 ##### myeval
 
-Like `eval` but returns only integers and floats 
+Like `eval` but returns only integers and floats
 
 **Paramètres :**
 
@@ -344978,7 +344978,7 @@ Expr instances are hashable and sortable.
 ##### normalize
 
 Normalize Expr and apply basic evaluation methods.
-    
+
 
 **Paramètres :**
 
@@ -344987,7 +344987,7 @@ Normalize Expr and apply basic evaluation methods.
 ##### as_expr
 
 Convert non-Expr objects to Expr objects.
-    
+
 
 **Paramètres :**
 
@@ -344996,7 +344996,7 @@ Convert non-Expr objects to Expr objects.
 ##### as_symbol
 
 Return object as SYMBOL expression (variable or unparsed expression).
-    
+
 
 **Paramètres :**
 
@@ -345005,7 +345005,7 @@ Return object as SYMBOL expression (variable or unparsed expression).
 ##### as_number
 
 Return object as INTEGER or REAL constant.
-    
+
 
 **Paramètres :**
 
@@ -345015,7 +345015,7 @@ Return object as INTEGER or REAL constant.
 ##### as_integer
 
 Return object as INTEGER constant.
-    
+
 
 **Paramètres :**
 
@@ -345025,7 +345025,7 @@ Return object as INTEGER constant.
 ##### as_real
 
 Return object as REAL constant.
-    
+
 
 **Paramètres :**
 
@@ -345035,7 +345035,7 @@ Return object as REAL constant.
 ##### as_string
 
 Return object as STRING expression (string literal constant).
-    
+
 
 **Paramètres :**
 
@@ -345045,7 +345045,7 @@ Return object as STRING expression (string literal constant).
 ##### as_array
 
 Return object as ARRAY expression (array constant).
-    
+
 
 **Paramètres :**
 
@@ -345054,7 +345054,7 @@ Return object as ARRAY expression (array constant).
 ##### as_complex
 
 Return object as COMPLEX expression (complex literal constant).
-    
+
 
 **Paramètres :**
 
@@ -345064,7 +345064,7 @@ Return object as COMPLEX expression (complex literal constant).
 ##### as_apply
 
 Return object as APPLY expression (function call, constructor, etc.)
-    
+
 
 **Paramètres :**
 
@@ -345073,7 +345073,7 @@ Return object as APPLY expression (function call, constructor, etc.)
 ##### as_ternary
 
 Return object as TERNARY expression (cond?expr1:expr2).
-    
+
 
 **Paramètres :**
 
@@ -345084,7 +345084,7 @@ Return object as TERNARY expression (cond?expr1:expr2).
 ##### as_ref
 
 Return object as referencing expression.
-    
+
 
 **Paramètres :**
 
@@ -345093,7 +345093,7 @@ Return object as referencing expression.
 ##### as_deref
 
 Return object as dereferencing expression.
-    
+
 
 **Paramètres :**
 
@@ -345144,7 +345144,7 @@ Return object as dereferencing expression.
 ##### as_terms
 
 Return expression as TERMS expression.
-    
+
 
 **Paramètres :**
 
@@ -345153,7 +345153,7 @@ Return expression as TERMS expression.
 ##### as_factors
 
 Return expression as FACTORS expression.
-    
+
 
 **Paramètres :**
 
@@ -345162,7 +345162,7 @@ Return expression as FACTORS expression.
 ##### as_term_coeff
 
 Return expression as term-coefficient pair.
-    
+
 
 **Paramètres :**
 
@@ -345171,7 +345171,7 @@ Return expression as term-coefficient pair.
 ##### as_numer_denom
 
 Return expression as numer-denom pair.
-    
+
 
 **Paramètres :**
 
@@ -345192,7 +345192,7 @@ Return a new string and a mapping of replacements.
 ##### insert_quotes
 
 Inverse of eliminate_quotes.
-    
+
 
 **Paramètres :**
 
@@ -345218,7 +345218,7 @@ Return a new string and a mapping of replacements.
 ##### unreplace_parenthesis
 
 Inverse of replace_parenthesis.
-    
+
 
 **Paramètres :**
 
@@ -345254,7 +345254,7 @@ resolved, non-arithmetic operations are treated as symbols.
 ##### parse
 
 Parse a Fortran expression to a Expr.
-        
+
 
 **Paramètres :**
 
@@ -345307,7 +345307,7 @@ Parse a Fortran expression to a Expr.
 ##### tostring
 
 Return a string representation of Expr.
-        
+
 
 **Paramètres :**
 
@@ -345420,7 +345420,7 @@ traverse-visit sub-expressions.
 ##### contains
 
 Check if self contains other.
-        
+
 
 **Paramètres :**
 
@@ -345429,12 +345429,12 @@ Check if self contains other.
 ##### symbols
 
 Return a set of symbols contained in self.
-        
+
 
 ##### polynomial_atoms
 
 Return a set of expressions used as atoms in polynomial self.
-        
+
 
 ##### linear_solve
 
@@ -349690,7 +349690,7 @@ actual ones.
 
 ##### TestAssertNoGcCycles
 
-Test assert_no_gc_cycles 
+Test assert_no_gc_cycles
 
 **Méthodes :**
 
@@ -349945,7 +349945,7 @@ Also check the message when input includes inf or nan (gh12200)
 
 ##### test_error_message_2
 
-Check the message is formatted correctly 
+Check the message is formatted correctly
 
 ##### test_subclass_that_cannot_be_bool
 
@@ -350288,7 +350288,7 @@ for compilation
 ##### _make_source
 
 Combines the code fragments into source code ready to be compiled
-    
+
 
 **Paramètres :**
 
@@ -352427,7 +352427,7 @@ wrapped : function
 
 ##### _delimited_splitter
 
-Chop off comments, strip, and split at delimiter. 
+Chop off comments, strip, and split at delimiter.
 
 **Paramètres :**
 
@@ -354956,7 +354956,7 @@ Examples
 
 ##### coeffs
 
-The polynomial coefficients 
+The polynomial coefficients
 
 ##### coeffs
 
@@ -354966,15 +354966,15 @@ The polynomial coefficients
 
 ##### variable
 
-The name of the polynomial variable 
+The name of the polynomial variable
 
 ##### order
 
-The order or degree of the polynomial 
+The order or degree of the polynomial
 
 ##### roots
 
-The roots of the polynomial, where self(x) == 0 
+The roots of the polynomial, where self(x) == 0
 
 ##### _coeffs
 
@@ -355681,7 +355681,7 @@ array([ 1,  2, -3,  5, 18])
 
 ##### _unpack_tuple
 
-Unpacks one-element tuples for use as return values 
+Unpacks one-element tuples for use as return values
 
 **Paramètres :**
 
@@ -359244,7 +359244,7 @@ array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 
 Convert to bytes on bytestream inputs.
 
-        
+
 
 **Méthodes :**
 
@@ -361966,7 +361966,7 @@ Create a DataSource with a local path at destpath.
 
 Test if the filename is a zip file by looking at the file extension.
 
-        
+
 
 **Paramètres :**
 
@@ -362507,7 +362507,7 @@ _hist_bin_fd, _hist_bin_sturges
 
 ##### _ravel_and_check_weights
 
-Check a and weights have matching shapes, and ravel both 
+Check a and weights have matching shapes, and ravel both
 
 **Paramètres :**
 
@@ -364550,7 +364550,7 @@ Basic functions for manipulating 2d arrays
 
 ##### _min_int
 
-get small int that fits the range 
+get small int that fits the range
 
 **Paramètres :**
 
@@ -372606,7 +372606,7 @@ Regression test for gh-16354.
 
 ##### test_poly_coeffs_mutable
 
-Coefficients should be modifiable 
+Coefficients should be modifiable
 
 ---
 
@@ -372866,7 +372866,7 @@ Testing flatten_dtype
 
 Only testing for integer splits.
 
-    
+
 
 **Méthodes :**
 
@@ -372879,7 +372879,7 @@ Only testing for integer splits.
 
 Only testing for integer splits.
 
-    
+
 
 **Méthodes :**
 
@@ -372941,7 +372941,7 @@ Only testing for integer splits.
 
 ##### _add_keepdims
 
-hack in keepdims behavior into a function taking an axis 
+hack in keepdims behavior into a function taking an axis
 
 **Paramètres :**
 
@@ -372965,29 +372965,29 @@ Compare lists of arrays.
 
 ##### test_argequivalent
 
-Test it translates from arg<func> to <func> 
+Test it translates from arg<func> to <func>
 
 ##### test_invalid
 
-Test it errors when indices has too few dimensions 
+Test it errors when indices has too few dimensions
 
 ##### test_empty
 
-Test everything is ok with empty results, even with inserted dims 
+Test everything is ok with empty results, even with inserted dims
 
 ##### test_broadcast
 
-Test that non-indexing dimensions are broadcast in both directions 
+Test that non-indexing dimensions are broadcast in both directions
 
 ##### test_replace_max
 
 ##### test_broadcast
 
-Test that non-indexing dimensions are broadcast in both directions 
+Test that non-indexing dimensions are broadcast in both directions
 
 ##### test_invalid
 
-Test invalid inputs 
+Test invalid inputs
 
 ##### test_simple
 
@@ -373050,7 +373050,7 @@ Test invalid inputs
 ##### test_integer_split_2D_default
 
 This will fail if we change default axis
-        
+
 
 ##### test_integer_split_2D_rows_greater_max_int32
 
@@ -373155,7 +373155,7 @@ This will fail if we change default axis
 
 ##### sum_to_0d
 
-Sum x, returning a 0d array of the same class 
+Sum x, returning a 0d array of the same class
 
 **Paramètres :**
 
@@ -375948,7 +375948,7 @@ values
 
 ##### sc
 
-scale function used by the below tests 
+scale function used by the below tests
 
 **Paramètres :**
 
@@ -375956,7 +375956,7 @@ scale function used by the below tests
 
 ##### test_non_finite_any_nan
 
-test that nans are propagated 
+test that nans are propagated
 
 **Paramètres :**
 
@@ -375964,7 +375964,7 @@ test that nans are propagated
 
 ##### test_non_finite_inf
 
-Test that interp between opposite infs gives nan 
+Test that interp between opposite infs gives nan
 
 **Paramètres :**
 
@@ -375972,7 +375972,7 @@ Test that interp between opposite infs gives nan
 
 ##### test_non_finite_half_inf_xf
 
-Test that interp where both axes have a bound at inf gives nan 
+Test that interp where both axes have a bound at inf gives nan
 
 **Paramètres :**
 
@@ -375980,7 +375980,7 @@ Test that interp where both axes have a bound at inf gives nan
 
 ##### test_non_finite_half_inf_x
 
-Test interp where the x axis has a bound at inf 
+Test interp where the x axis has a bound at inf
 
 **Paramètres :**
 
@@ -375988,7 +375988,7 @@ Test interp where the x axis has a bound at inf
 
 ##### test_non_finite_half_inf_f
 
-Test interp where the f axis has a bound at inf 
+Test interp where the f axis has a bound at inf
 
 **Paramètres :**
 
@@ -376712,7 +376712,7 @@ Ensure faulty usage is discovered.
 
 ##### test_same_prepend_append
 
-Test that appended and prepended values are equal 
+Test that appended and prepended values are equal
 
 **Paramètres :**
 
@@ -379175,11 +379175,11 @@ Check that weighted data raises a TypeError
 
 ##### test_equal_edges
 
-Test that adjacent entries in an edge array can be equal 
+Test that adjacent entries in an edge array can be equal
 
 ##### test_edge_dtype
 
-Test that if an edge array is input, its type is preserved 
+Test that if an edge array is input, its type is preserved
 
 ##### test_large_integers
 
@@ -381547,11 +381547,11 @@ Copied from fftpack.helper by Pearu Peterson, October 2005
 
 ##### test_uneven_dims
 
-Test 2D input, which has uneven dimension sizes 
+Test 2D input, which has uneven dimension sizes
 
 ##### test_equal_to_original
 
-Test that the new (>=v1.15) implementation (see #10073) is equal to the original (<=v1.14) 
+Test that the new (>=v1.15) implementation (see #10073) is equal to the original (<=v1.14)
 
 ##### test_definition
 
@@ -381570,7 +381570,7 @@ How fftshift was implemented in v1.14
 
 ##### original_ifftshift
 
-How ifftshift was implemented in v1.14 
+How ifftshift was implemented in v1.14
 
 **Paramètres :**
 
@@ -383525,7 +383525,7 @@ Ensures that the singleton bitgen is restored after a test
 ##### test_generator_spawning
 
 Test spawning new generators and bit_generators directly.
-    
+
 
 ##### test_non_spawnable
 
@@ -384644,7 +384644,7 @@ https://gist.github.com/imneme/540829265469e673d045
 ##### test_zero_padding
 
 Ensure that the implicit zero-padding does not cause problems.
-    
+
 
 ---
 
@@ -388303,7 +388303,7 @@ represent superscripts and subscripts, respectively.
 
 ##### _format_term
 
-Format a single term in the expansion 
+Format a single term in the expansion
 
 **Paramètres :**
 
@@ -389382,7 +389382,7 @@ c1, c2
 
 ##### _add
 
-Helper function used to implement the ``<type>add`` functions. 
+Helper function used to implement the ``<type>add`` functions.
 
 **Paramètres :**
 
@@ -389391,7 +389391,7 @@ Helper function used to implement the ``<type>add`` functions.
 
 ##### _sub
 
-Helper function used to implement the ``<type>sub`` functions. 
+Helper function used to implement the ``<type>sub`` functions.
 
 **Paramètres :**
 
@@ -436405,7 +436405,7 @@ Returns the resulting text with values substituted.
 ##### format_local_datetime
 
 Return a string with local timezone representing the date.
-    
+
 
 **Paramètres :**
 
@@ -439679,7 +439679,7 @@ The data looks like::
 ##### data_filename
 
 Return the path to an "htmlfiles" data file of ours.
-    
+
 
 **Paramètres :**
 
@@ -440084,7 +440084,7 @@ Return True if it handled the request, False if not.
 
 ##### do_signal_save
 
-Signal handler to save coverage report 
+Signal handler to save coverage report
 
 **Paramètres :**
 
@@ -461408,7 +461408,7 @@ Additionally, it supports the following keyword arguments:
     If given, it must be a boolean value specifying to enable or disable
     caching of results. If you will use the same rrule instance multiple
     times, enabling caching will improve the performance considerably.
- 
+
 
 **Méthodes :**
 
@@ -461440,7 +461440,7 @@ multiple rules, dates, exclusion rules, and exclusion dates. The type
 constructor takes the following keyword arguments:
 
 :param cache: If True, caching of results will be enabled, improving
-              performance of multiple queries considerably. 
+              performance of multiple queries considerably.
 
 **Méthodes :**
 
@@ -461567,13 +461567,13 @@ cached length.
 ##### count
 
 Returns the number of recurrences in this set. It will have go
-through the whole recurrence, if this hasn't been done before. 
+through the whole recurrence, if this hasn't been done before.
 
 ##### before
 
 Returns the last recurrence before the given datetime instance. The
 inc keyword defines what happens if dt is an occurrence. With
-inc=True, if dt itself is an occurrence, it will be returned. 
+inc=True, if dt itself is an occurrence, it will be returned.
 
 **Paramètres :**
 
@@ -461584,7 +461584,7 @@ inc=True, if dt itself is an occurrence, it will be returned.
 
 Returns the first recurrence after the given datetime instance. The
 inc keyword defines what happens if dt is an occurrence. With
-inc=True, if dt itself is an occurrence, it will be returned.  
+inc=True, if dt itself is an occurrence, it will be returned.
 
 **Paramètres :**
 
@@ -461620,7 +461620,7 @@ datetime instance, equivalent to `after`.
 Returns all the occurrences of the rrule between after and before.
 The inc keyword defines what happens if after and/or before are
 themselves occurrences. With inc=True, they will be included in the
-list, if they are found in the recurrence set. 
+list, if they are found in the recurrence set.
 
 **Paramètres :**
 
@@ -461807,7 +461807,7 @@ value in `byxxx` is found.
 ##### rrule
 
 Include the given :py:class:`rrule` instance in the recurrence set
-generation. 
+generation.
 
 **Paramètres :**
 
@@ -461816,7 +461816,7 @@ generation.
 ##### rdate
 
 Include the given :py:class:`datetime` instance in the recurrence
-set generation. 
+set generation.
 
 **Paramètres :**
 
@@ -461836,7 +461836,7 @@ be generated, even if some inclusive rrule or rdate matches them.
 
 Include the given datetime instance in the recurrence set
 exclusion list. Dates included that way will not be generated,
-even if some inclusive rrule or rdate matches them. 
+even if some inclusive rrule or rdate matches them.
 
 **Paramètres :**
 
@@ -462379,7 +462379,7 @@ demands that multiple tokens be parsed at once.
 
 ##### isword
 
-Whether or not the next character is part of a word 
+Whether or not the next character is part of a word
 
 **Paramètres :**
 
@@ -462388,7 +462388,7 @@ Whether or not the next character is part of a word
 
 ##### isnum
 
-Whether the next character is part of a number 
+Whether the next character is part of a number
 
 **Paramètres :**
 
@@ -462397,7 +462397,7 @@ Whether the next character is part of a number
 
 ##### isspace
 
-Whether the next character is whitespace 
+Whether the next character is whitespace
 
 **Paramètres :**
 
@@ -463286,7 +463286,7 @@ occurrence, chronologically, of the ambiguous datetime).
 
 ##### fromutc
 
-Given a datetime in UTC, return local time 
+Given a datetime in UTC, return local time
 
 **Paramètres :**
 
@@ -464214,7 +464214,7 @@ zone.
 
 ##### _set_tzdata
 
-Set the time zone data of this object from a _tzfile object 
+Set the time zone data of this object from a _tzfile object
 
 **Paramètres :**
 
@@ -464614,7 +464614,7 @@ this issue.
 
 ##### picknthweekday
 
-dayofweek == 0 means Sunday, whichweek 5 means last instance 
+dayofweek == 0 means Sunday, whichweek 5 means last instance
 
 **Paramètres :**
 
@@ -466044,7 +466044,7 @@ properties defined below.
 
 ##### tag
 
-html tag name, e.g. "p" 
+html tag name, e.g. "p"
 
 ##### attrs
 
@@ -466822,7 +466822,7 @@ Code block (4 spaces padded).
 
 ### heading
 
-Atex heading (#, ##, ...) 
+Atex heading (#, ##, ...)
 
 #### Fonctions
 
@@ -478049,7 +478049,7 @@ read a few kilobytes at least.
     hence we try to find a good tradeoff between allocation time and number of
     times we actually allocate. An own zlib implementation would be good here
     to better support streamed reading - it would only need to keep the mmap
-    and decompress it into chunks, that's all ... 
+    and decompress it into chunks, that's all ...
 
 **Méthodes :**
 
@@ -478528,7 +478528,7 @@ Return the integer representation of the byte string.  This supports Python
 
 A python2.4 workaround for the sha/hashlib module fiasco
 
-**Note** From the dulwich project 
+**Note** From the dulwich project
 
 **Paramètres :**
 
@@ -478635,7 +478635,7 @@ databases anyway, and they use it with the help of the ``flags`` parameter
 
 Whenever an attribute is requested that we do not know, we allow it
 to be created and set. Next time the same attribute is requested, it is simply
-returned from our dict/slots. 
+returned from our dict/slots.
 
 **Paramètres :**
 
@@ -478704,7 +478704,7 @@ closed, and the lock released.
 
 ##### _end_writing
 
-Handle the lock according to the write mode 
+Handle the lock according to the write mode
 
 **Paramètres :**
 
@@ -479004,7 +479004,7 @@ of the internal caching structures.
 
 :return: 20 byte binary sha1 from the given less-than-40 byte hexsha (bytes or str)
 :param partial_hexsha: hexsha with less than 40 byte
-:raise AmbiguousObjectName: 
+:raise AmbiguousObjectName:
 
 **Paramètres :**
 
@@ -479118,7 +479118,7 @@ A database which operates on loose object files
 :return: 20 byte binary sha1 string which matches the given name uniquely
 :param name: hexadecimal partial name (bytes or ascii string)
 :raise AmbiguousObjectName:
-:raise BadObject: 
+:raise BadObject:
 
 **Paramètres :**
 
@@ -479366,7 +479366,7 @@ and remove deleted ones. We keep the unchanged ones
     It is required as binary sha's cannot display whether the original hex sha
     had an odd or even number of characters
 :raise AmbiguousObjectName:
-:raise BadObject: 
+:raise BadObject:
 
 **Paramètres :**
 
@@ -483060,7 +483060,7 @@ Render objects in to a list of lines.
 
         Returns:
             List[List[Segment]]: A list of lines, where a line is a list of Segment objects.
-        
+
 
 **Paramètres :**
 
@@ -488458,7 +488458,7 @@ Set the shape of a list of lines (enclosing rectangle).
 
         Returns:
             List[List[Segment]]: New list of lines.
-        
+
 
 **Paramètres :**
 
@@ -488483,7 +488483,7 @@ Aligns lines to top (adds extra lines to bottom as required).
 
         Returns:
             List[List[Segment]]: New list of lines.
-        
+
 
 **Paramètres :**
 
@@ -488508,7 +488508,7 @@ Aligns render to bottom (adds extra lines above as required).
 
         Returns:
             List[List[Segment]]: New list of lines.
-        
+
 
 **Paramètres :**
 
@@ -488533,7 +488533,7 @@ Aligns lines to middle (adds extra lines to above and below as required).
 
         Returns:
             List[List[Segment]]: New list of lines.
-        
+
 
 **Paramètres :**
 
@@ -513570,7 +513570,7 @@ maybe_module : Optional[ModuleType]
 
 ### pyarrow
 
-support pyarrow compatibility across versions 
+support pyarrow compatibility across versions
 
 ---
 
@@ -532263,7 +532263,7 @@ otherwise delegate to the object.
 
 ### sorting
 
-miscellaneous sorting / groupby utilities 
+miscellaneous sorting / groupby utilities
 
 #### Fonctions
 
@@ -555442,7 +555442,7 @@ Categories (3, object): ['b', 'c', 'a']
 
 ### generic
 
-define generic base classes for pandas objects 
+define generic base classes for pandas objects
 
 #### Fonctions
 
@@ -558132,7 +558132,7 @@ Does not include numpy string dtypes.
 
 ### inference
 
-basic inference routines 
+basic inference routines
 
 #### Fonctions
 
@@ -569182,7 +569182,7 @@ ret : typ
 
 ### pytables
 
-manage PyTables query interface via Expressions 
+manage PyTables query interface via Expressions
 
 #### Classes
 
@@ -589580,7 +589580,7 @@ dtype: timedelta64[ns]
 
 ### interval
 
-define the IntervalIndex 
+define the IntervalIndex
 
 #### Classes
 
@@ -590115,7 +590115,7 @@ IntervalIndex
 
 ### timedeltas
 
-implement the TimedeltaIndex 
+implement the TimedeltaIndex
 
 #### Classes
 
@@ -600483,7 +600483,7 @@ def some_function(x):
     def my_dog(has='fleas'):
         "This docstring will have a copyright below"
         pass
-    
+
 
 **Méthodes :**
 
@@ -600948,7 +600948,7 @@ running: pytest...
 
 ### orc
 
-orc compat 
+orc compat
 
 #### Fonctions
 
@@ -601077,7 +601077,7 @@ Notes
 
 ### feather_format
 
-feather-format compat 
+feather-format compat
 
 #### Fonctions
 
@@ -601147,7 +601147,7 @@ Examples
 
 ### parquet
 
-parquet compat 
+parquet compat
 
 #### Classes
 
@@ -605739,7 +605739,7 @@ to Data Frame.
 
 ### clipboards
 
-io on the clipboard 
+io on the clipboard
 
 #### Fonctions
 
@@ -606382,7 +606382,7 @@ file not to be named something.zip, because that causes confusion (GH39465).
 
 ### pickle
 
-pickle compat 
+pickle compat
 
 #### Fonctions
 
@@ -609739,7 +609739,7 @@ the ascii range where the characters supported are a-z, A-Z, 0-9 and _.
 
 ### gbq
 
-Google BigQuery support 
+Google BigQuery support
 
 #### Fonctions
 
@@ -634096,7 +634096,7 @@ Include both python float NaN and np.float64; only np.float64 has a
 
 ### test_indexing
 
-test get/set & misc 
+test get/set & misc
 
 #### Classes
 
@@ -642762,7 +642762,7 @@ Examples
 
 ### test_to_datetime
 
-test to_datetime 
+test to_datetime
 
 #### Classes
 
@@ -656019,7 +656019,7 @@ b : object
 
 ### test_parquet
 
-test parquet compat 
+test parquet compat
 
 #### Classes
 
@@ -657671,7 +657671,7 @@ GH 26237, GH 29054, and GH 29570
 
 ### test_orc
 
-test orc compat 
+test orc compat
 
 #### Fonctions
 
@@ -661005,7 +661005,7 @@ Tests for the pandas custom headers in http(s) requests
 
 ### test_feather
 
-test feather-format compat 
+test feather-format compat
 
 #### Classes
 
@@ -706367,7 +706367,7 @@ test all other .agg behavior
 
 ### test_transform
 
-test with the .transform 
+test with the .transform
 
 #### Fonctions
 
@@ -708411,7 +708411,7 @@ Restore the plotting backend to matplotlib
 
 ### test_misc
 
-Test cases for misc plot functions 
+Test cases for misc plot functions
 
 #### Classes
 
@@ -708645,7 +708645,7 @@ For #15908
 
 ### test_boxplot_method
 
-Test cases for .boxplot method 
+Test cases for .boxplot method
 
 #### Classes
 
@@ -708998,7 +708998,7 @@ Test cases for .boxplot method
 
 ### test_datetimelike
 
-Test cases for time series specific (freq conversion, etc) 
+Test cases for time series specific (freq conversion, etc)
 
 #### Classes
 
@@ -709422,7 +709422,7 @@ Test cases for time series specific (freq conversion, etc)
 
 ### test_hist_method
 
-Test cases for .hist method 
+Test cases for .hist method
 
 #### Classes
 
@@ -710283,7 +710283,7 @@ Create plot on two subplots forcefully created.
 
 ### test_groupby
 
-Test cases for GroupBy.plot 
+Test cases for GroupBy.plot
 
 #### Classes
 
@@ -710352,7 +710352,7 @@ Test cases for GroupBy.plot
 
 ### test_series
 
-Test cases for Series.plot 
+Test cases for Series.plot
 
 #### Classes
 
@@ -710993,7 +710993,7 @@ Test timedelta converter
 
 ### test_frame_color
 
-Test cases for DataFrame.plot 
+Test cases for DataFrame.plot
 
 #### Classes
 
@@ -711277,7 +711277,7 @@ Test cases for DataFrame.plot
 
 ### test_frame
 
-Test cases for DataFrame.plot 
+Test cases for DataFrame.plot
 
 #### Classes
 
@@ -712150,7 +712150,7 @@ Check that every plot type gets properly collected.
 
 ### test_frame_subplots
 
-Test cases for DataFrame.plot 
+Test cases for DataFrame.plot
 
 #### Classes
 
@@ -712595,7 +712595,7 @@ This test will fail for:
 
 ### test_frame_groupby
 
-Test cases for DataFrame.plot 
+Test cases for DataFrame.plot
 
 #### Classes
 
@@ -728190,7 +728190,7 @@ Tests that the tslibs API is locked down
 
 ### test_iloc
 
-test positional based indexing with iloc 
+test positional based indexing with iloc
 
 #### Classes
 
@@ -728571,7 +728571,7 @@ Tests Independent Of Base Class
 
 ### test_loc
 
-test label based indexing with loc 
+test label based indexing with loc
 
 #### Classes
 
@@ -729636,7 +729636,7 @@ process go on not raise exception
 
 ### test_indexing
 
-test fancy indexing & misc 
+test fancy indexing & misc
 
 #### Classes
 
@@ -730188,7 +730188,7 @@ w.r.t. an integer index
 
 ### common
 
-common utilities 
+common utilities
 
 #### Fonctions
 
@@ -730670,7 +730670,7 @@ Object we will pass to `Series.replace`
 
 ### test_scalar
 
-test scalar indexing, including at and iat 
+test scalar indexing, including at and iat
 
 #### Classes
 
@@ -733366,7 +733366,7 @@ value that can be added to start to generate an endpoint
 
 ### test_timedelta
 
-test the scalar Timedelta 
+test the scalar Timedelta
 
 #### Classes
 
@@ -734939,7 +734939,7 @@ Tests for Timestamp timezone-related methods
 
 ### test_timestamp
 
-test the scalar Timestamp 
+test the scalar Timestamp
 
 #### Classes
 
@@ -737192,7 +737192,7 @@ Tests that can be parametrized over _any_ Index object.
 
 ### test_datetimelike
 
-generic datetimelike tests 
+generic datetimelike tests
 
 #### Classes
 
@@ -747873,7 +747873,7 @@ Tests for DatetimeIndex methods behaving like their Timestamp counterparts
 
 ### test_partial_slicing
 
-test partial slicing on Series/Frame 
+test partial slicing on Series/Frame
 
 #### Classes
 
@@ -910233,7 +910233,7 @@ Alias privé pour compatibilité avec les tests.
 
 ##### _get_dynamic_prompt
 
-Alias privé pour compatibilité avec les tests. 
+Alias privé pour compatibilité avec les tests.
 Accepte PromptContext ou str et fait un .format sur le template.
 
 **Paramètres :**
@@ -915848,4 +915848,3 @@ Génère un rapport objectif et détaillé
 - `temps_total`
 
 ---
-

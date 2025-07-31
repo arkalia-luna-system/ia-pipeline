@@ -27,4 +27,4 @@ find . -name "*.py" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./v
     fi
 done
 
-echo "✅ Nettoyage automatique terminé !" 
+echo "✅ Nettoyage automatique terminé !"

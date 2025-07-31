@@ -207,4 +207,4 @@ pytest --cov=athalia_core --cov-fail-under=80
 
 ---
 
-**🎉 Le projet Athalia dispose maintenant d'un système de sécurité et de qualité de niveau professionnel !** 
+**🎉 Le projet Athalia dispose maintenant d'un système de sécurité et de qualité de niveau professionnel !**

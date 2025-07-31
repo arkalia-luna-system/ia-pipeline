@@ -31,16 +31,16 @@ print_error() {
 # Fonction de nettoyage d'urgence
 cleanup_emergency() {
     print_warning "Nettoyage d'urgence en cours..."
-    
+
     # Arrêter les processus Athalia
     pkill -f "athalia_core.main" 2>/dev/null || true
     pkill -f "athalia_core.cli" 2>/dev/null || true
     pkill -f "ath-audit" 2>/dev/null || true
-    
+
     # Nettoyer les fichiers temporaires
     find . -name "athalia_*.tmp" -delete 2>/dev/null || true
     find . -name "athalia_*.log" -delete 2>/dev/null || true
-    
+
     print_success "Nettoyage d'urgence terminé"
 }
 
@@ -98,4 +98,4 @@ else
 fi
 echo "============================================================"
 
-exit $TEST_EXIT_CODE 
+exit $TEST_EXIT_CODE

@@ -51,4 +51,4 @@ Dashboard web pour visualiser l’activité du pipeline IA, la distillation, les
 ## Roadmap dashboard
 - Ajout visualisation distillation adaptative
 - Intégration multimodalité
-- Personnalisation avancée 
+- Personnalisation avancée

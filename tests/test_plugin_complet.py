@@ -6,11 +6,12 @@ Tests professionnels pour la CI/CD.
 """
 
 import json
+from pathlib import Path
 import subprocess
 import sys
-from pathlib import Path
 
 import requests
+
 
 # Import sécurisé pour la validation des commandes
 try:

@@ -70,10 +70,10 @@ case $COMMAND in
         show_step "🚀 Démarrage de l'environnement Athalia"
         ./bin/ath-quick-start
         ;;
-        
+
     "work")
         show_step "💼 Préparation au travail"
-        
+
         # Vérifier l'état Git
         show_info "Vérification de l'état Git..."
         if git status --porcelain | grep -q .; then
@@ -89,20 +89,20 @@ case $COMMAND in
         else
             show_success "Aucun changement en attente"
         fi
-        
+
         # Vérifier les tests
         show_info "Vérification des tests..."
         if [ -d "tests" ]; then
             TEST_COUNT=$(find tests -name "*.py" | wc -l)
             show_success "$TEST_COUNT tests disponibles"
-            
+
             read -p "Voulez-vous exécuter les tests? (o/n): " -r
             if [[ $REPLY =~ ^[Oo]$ ]]; then
                 show_info "Exécution des tests..."
                 python3 -m pytest tests/ -v --tb=short
             fi
         fi
-        
+
         # Vérifier le linting
         show_info "Vérification de la qualité du code..."
         read -p "Voulez-vous vérifier le linting? (o/n): " -r
@@ -110,37 +110,37 @@ case $COMMAND in
             show_info "Exécution du linting..."
             ./bin/ath-lint.py
         fi
-        
+
         show_success "Environnement de travail prêt !"
         ;;
-        
+
     "shutdown")
         show_step "🛑 Fermeture propre de l'environnement"
         ./bin/ath-clean-shutdown
         ;;
-        
+
     "full")
         show_step "🔄 Cycle complet de développement"
         echo ""
-        
+
         # Phase 1: Démarrage
         show_info "Phase 1: Démarrage"
         ./bin/ath-quick-start
         echo ""
-        
+
         # Phase 2: Travail
         show_info "Phase 2: Préparation au travail"
         echo -e "${YELLOW}💡 Vous pouvez maintenant travailler sur votre projet${NC}"
         echo -e "${YELLOW}💡 Utilisez 'ath-test' pour tester, 'ath-lint' pour vérifier la qualité${NC}"
         echo ""
-        
+
         read -p "Appuyez sur Entrée quand vous avez terminé votre travail..."
-        
+
         # Phase 3: Fermeture
         show_info "Phase 3: Fermeture propre"
         ./bin/ath-clean-shutdown
         ;;
-        
+
     "help")
         echo -e "${PURPLE}🔄 Workflow Complet Athalia - Aide${NC}"
         echo -e "${PURPLE}================================${NC}"
@@ -173,7 +173,7 @@ case $COMMAND in
         echo ""
         echo -e "${YELLOW}💡 Conseil: Utilisez 'full' pour un workflow automatisé complet${NC}"
         ;;
-        
+
     *)
         show_error "Commande inconnue: $COMMAND"
         echo -e "${YELLOW}Utilisez '$0 help' pour voir les commandes disponibles${NC}"
@@ -182,4 +182,4 @@ case $COMMAND in
 esac
 
 echo ""
-echo -e "${PURPLE}🎉 Workflow terminé avec succès !${NC}" 
+echo -e "${PURPLE}🎉 Workflow terminé avec succès !${NC}"

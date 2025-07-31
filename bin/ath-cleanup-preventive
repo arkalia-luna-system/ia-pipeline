@@ -172,4 +172,4 @@ echo "   - Utiliser des outils de linting pour détecter les problèmes"
 echo "   - Configurer l'IDE pour ignorer les fichiers temporaires"
 echo ""
 
-show_success "🛡️  Maintenance préventive terminée !" 
+show_success "🛡️  Maintenance préventive terminée !"

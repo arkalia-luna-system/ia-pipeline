@@ -8,6 +8,7 @@ import pprint
 import sys
 from typing import Any, Dict, List
 
+
 """
 Module dimport intelligent pour projets existants.
 Analyse, détection de type, audit qualité, génération de blueprint de correction.

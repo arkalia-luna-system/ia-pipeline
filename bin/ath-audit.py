@@ -2,6 +2,7 @@
 import argparse
 import sys
 
+
 try:
     from athalia_core.security_validator import validate_and_run
 except ImportError:

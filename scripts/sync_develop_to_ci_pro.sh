@@ -26,19 +26,19 @@ git pull origin develop
 # Vérifier si ci-cd-professional existe
 if git ls-remote --heads origin ci-cd-professional | grep -q ci-cd-professional; then
     echo "✅ Branche ci-cd-professional existe"
-    
+
     # Basculer sur ci-cd-professional
     echo "🔄 Basculement vers ci-cd-professional..."
     git checkout ci-cd-professional
-    
+
     # Mettre à jour la branche
     echo "📥 Mise à jour de ci-cd-professional..."
     git pull origin ci-cd-professional
-    
+
     # Fusionner develop
     echo "🔀 Fusion de develop dans ci-cd-professional..."
     git merge develop --no-edit
-    
+
 else
     echo "🆕 Création de la branche ci-cd-professional..."
     git checkout -b ci-cd-professional
@@ -67,4 +67,4 @@ echo ""
 echo "🚀 Prochaines étapes:"
 echo "   1. Vérifier les résultats des workflows CI/CD pro"
 echo "   2. Analyser les rapports de progression"
-echo "   3. Valider les améliorations" 
+echo "   3. Valider les améliorations"

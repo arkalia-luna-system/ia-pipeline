@@ -434,7 +434,7 @@ class AuditCompletDossiers:
             modules_sans_docs = [m for m in modules if not m.docstring]
             if modules_sans_docs:
                 recommandations.append(
-                    f"📚 Ajouter de la documentation pour "
+                    "📚 Ajouter de la documentation pour "
                     f"{len(modules_sans_docs)} modules"
                 )
 
@@ -451,13 +451,13 @@ class AuditCompletDossiers:
             if len(module.fonctions) > 10:
                 pepites.append(
                     f"🚀 Module {module.nom}: {len(module.fonctions)} fonctions "
-                    f"(très actif)"
+                    "(très actif)"
                 )
 
             if len(module.classes) > 5:
                 pepites.append(
                     f"🏗️ Module {module.nom}: {len(module.classes)} classes "
-                    f"(architecture complexe)"
+                    "(architecture complexe)"
                 )
 
             if module.integration_orchestrateur:
@@ -520,7 +520,10 @@ class AuditCompletDossiers:
 """
 
             if score_moyen < 5.0:
-                rapport += "🔴 **Action critique nécessaire** - Le projet nécessite une refonte majeure"
+                rapport += (
+                    "🔴 **Action critique nécessaire** - Le projet nécessite une"
+                    " refonte majeure"
+                )
             elif score_moyen < 7.0:
                 rapport += (
                     "🟡 **Amélioration recommandée** - Quelques ajustements nécessaires"

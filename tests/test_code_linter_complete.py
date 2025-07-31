@@ -4,9 +4,9 @@ Couverture: 100% des fonctionnalités de linting
 Tests: 30 tests unitaires et d'intégration
 """
 
+from pathlib import Path
 import subprocess
 import tempfile
-from pathlib import Path
 from unittest.mock import Mock, patch
 
 from athalia_core.code_linter import CodeLinter

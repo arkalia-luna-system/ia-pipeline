@@ -9,6 +9,7 @@ import sys
 
 import pytest
 
+
 # Ajouter le chemin du projet
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 

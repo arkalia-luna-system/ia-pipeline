@@ -10,6 +10,7 @@ import logging
 import os
 import sys
 
+
 # Configuration du logging
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
@@ -142,7 +143,6 @@ MODULES INTÉGRÉS:
                 # Version simplifiée pour les tests
 
                 class AthaliaOrchestrator:
-
                     def industrialize_project(self, project_path, config=None):
                         return {
                             "status": (

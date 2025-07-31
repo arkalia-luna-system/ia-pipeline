@@ -1,7 +1,7 @@
 # 🔧 RAPPORT DE CORRECTION D'ERREURS - PHASE 6
 
-**Date:** 30 juillet 2025  
-**Auteur:** Assistant IA  
+**Date:** 30 juillet 2025
+**Auteur:** Assistant IA
 **Objectif:** Correction automatique des erreurs E501 avec Black et Ruff
 
 ## 📊 RÉSUMÉ EXÉCUTIF
@@ -120,4 +120,4 @@ La Phase 6 a été un succès avec l'application de Black sur le fichier restant
 
 ---
 
-*Rapport généré automatiquement par l'Assistant IA Athalia* 
+*Rapport généré automatiquement par l'Assistant IA Athalia*

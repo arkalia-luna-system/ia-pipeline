@@ -3,6 +3,7 @@
 import logging
 from typing import Dict
 
+
 logger = logging.getLogger(__name__)
 
 
@@ -10,8 +11,7 @@ def get_artistic_templates() -> Dict[str, str]:
     """Retourne les templates de code pour projets artistiques."""
 
     return {
-        "animation/main.py": (
-            '''"""
+        "animation/main.py": '''"""
 Module d'animation pour projet artistique.
 Gère les animations et les mouvements.
 """
@@ -93,10 +93,8 @@ def main():
 
 if __name__ == "__main__":
     main()
-'''
-        ),
-        "audio/main.py": (
-            '''"""
+''',
+        "audio/main.py": '''"""
 Module audio pour projet artistique.
 Gère la musique et la synchronisation.
 """
@@ -161,10 +159,8 @@ def main():
 
 if __name__ == "__main__":
     main()
-'''
-        ),
-        "visualization/main.py": (
-            '''"""
+''',
+        "visualization/main.py": '''"""
 Module de visualisation pour projet artistique.
 Gère les effets visuels et particules.
 """
@@ -260,6 +256,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-'''
-        ),
+''',
     }

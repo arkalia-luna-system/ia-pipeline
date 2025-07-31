@@ -1,6 +1,6 @@
 # 🚀 Commandes Avancées - Athalia
 
-**Date :** 27 juillet 2025  
+**Date :** 27 juillet 2025
 **Statut :** Commandes avancées et options spéciales validées
 
 ## 🎯 Vue d'overview
@@ -296,4 +296,4 @@ python tools/maintenance/validation_documentation.py . --verbose
 
 ---
 
-*Guide des commandes avancées mis à jour le 27 juillet 2025 avec toutes les commandes validées* 
+*Guide des commandes avancées mis à jour le 27 juillet 2025 avec toutes les commandes validées*

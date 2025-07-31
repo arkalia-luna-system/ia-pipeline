@@ -111,7 +111,8 @@ class TestCacheSimple(unittest.TestCase):
         self.assertLess(time_with_cache, time_without_cache * 0.1)
 
         print(
-            f"Amélioration: {((time_without_cache - time_with_cache) / time_without_cache * 100):.1f}%"
+            "Amélioration:"
+            f" {((time_without_cache - time_with_cache) / time_without_cache * 100):.1f}%"
         )
 
 

@@ -5,9 +5,9 @@ Tests complets pour le module robotics_ci.
 Tests professionnels pour la CI/CD.
 """
 
+from pathlib import Path
 import subprocess
 import tempfile
-from pathlib import Path
 from unittest.mock import Mock, patch
 
 from athalia_core.robotics_ci import RoboticsCI, run_robotics_ci

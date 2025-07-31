@@ -1,6 +1,6 @@
 # 🚀 Guide d'Installation - Athalia
 
-**Version :** 10.0 (FINAL - 100% TERMINÉE ✅)  
+**Version :** 10.0 (FINAL - 100% TERMINÉE ✅)
 **Date :** 30 Juillet 2025
 
 ---

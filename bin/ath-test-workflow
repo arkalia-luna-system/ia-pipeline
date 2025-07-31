@@ -49,10 +49,10 @@ run_test() {
     local test_name="$1"
     local test_command="$2"
     local expected_exit="$3"
-    
+
     TOTAL_TESTS=$((TOTAL_TESTS + 1))
     print_info "Test: $test_name"
-    
+
     if eval "$test_command" > /dev/null 2>&1; then
         if [ "$expected_exit" = "0" ]; then
             print_success "✓ $test_name"
@@ -75,17 +75,17 @@ run_test() {
 # Test des scripts
 test_scripts() {
     print_section "Test des scripts"
-    
+
     # Test ath-prepare-commit
     run_test "Script ath-prepare-commit existe" "[ -f bin/ath-prepare-commit ]" "0"
     run_test "Script ath-prepare-commit exécutable" "[ -x bin/ath-prepare-commit ]" "0"
     run_test "Script ath-prepare-commit --help" "bin/ath-prepare-commit --help" "0"
-    
+
     # Test ath-push
     run_test "Script ath-push existe" "[ -f bin/ath-push ]" "0"
     run_test "Script ath-push exécutable" "[ -x bin/ath-push ]" "0"
     run_test "Script ath-push --help" "bin/ath-push --help" "0"
-    
+
     # Test ath-workflow
     run_test "Script ath-workflow existe" "[ -f bin/ath-workflow ]" "0"
     run_test "Script ath-workflow exécutable" "[ -x bin/ath-workflow ]" "0"
@@ -95,12 +95,12 @@ test_scripts() {
 # Test des alias
 test_aliases() {
     print_section "Test des alias"
-    
+
     # Source des alias si pas déjà fait
     if ! command -v ath-prepare > /dev/null 2>&1; then
         source setup/athalia-workflow-aliases.sh
     fi
-    
+
     # Test des alias principaux
     run_test "Alias ath-prepare" "command -v ath-prepare" "0"
     run_test "Alias ath-push-smart" "command -v ath-push-smart" "0"
@@ -110,7 +110,7 @@ test_aliases() {
     run_test "Alias ath-feature" "command -v ath-feature" "0"
     run_test "Alias ath-hotfix" "command -v ath-hotfix" "0"
     run_test "Alias ath-release" "command -v ath-release" "0"
-    
+
     # Test de la fonction d'aide
     run_test "Fonction ath-workflow-help" "command -v ath-workflow-help" "0"
 }
@@ -118,13 +118,13 @@ test_aliases() {
 # Test des modes dry-run
 test_dry_run() {
     print_section "Test des modes simulation"
-    
+
     # Test ath-prepare-commit --dry-run
     run_test "ath-prepare-commit --dry-run" "bin/ath-prepare-commit --dry-run" "0"
-    
+
     # Test ath-push --dry-run
     run_test "ath-push --dry-run" "bin/ath-push --dry-run" "0"
-    
+
     # Test ath-workflow --dry-run
     run_test "ath-workflow --dry-run" "bin/ath-workflow --mode develop --dry-run" "0"
 }
@@ -132,12 +132,12 @@ test_dry_run() {
 # Test des configurations
 test_configurations() {
     print_section "Test des configurations"
-    
+
     # Test des fichiers de configuration
     run_test "Fichier pre-commit-config.yaml" "[ -f config/pre-commit-config.yaml ]" "0"
     run_test "Fichier .flake8" "[ -f config/.flake8 ]" "0"
     run_test "Fichier pyproject.toml" "[ -f config/pyproject.toml ]" "0"
-    
+
     # Test du hook Git
     run_test "Hook pre-commit" "[ -f .git/hooks/pre-commit ]" "0"
     run_test "Hook pre-commit exécutable" "[ -x .git/hooks/pre-commit ]" "0"
@@ -146,12 +146,12 @@ test_configurations() {
 # Test des dépendances
 test_dependencies() {
     print_section "Test des dépendances"
-    
+
     # Test des outils Python
     run_test "flake8 disponible" "command -v flake8" "0"
     run_test "black disponible" "command -v black" "0"
     run_test "pytest disponible" "command -v pytest" "0"
-    
+
     # Test des modules Python
     run_test "Module athalia_core.audit" "python3 -c 'import athalia_core.audit'" "0"
     run_test "Module athalia_core.cleanup" "python3 -c 'import athalia_core.cleanup'" "0"
@@ -160,7 +160,7 @@ test_dependencies() {
 # Test des tests existants
 test_existing_tests() {
     print_section "Test des tests existants"
-    
+
     # Test des tests critiques
     run_test "Test imports" "python3 -m pytest tests/test_imports_all.py -q" "0"
     run_test "Test encoding" "python3 -m pytest tests/test_encoding_utf8.py -q" "0"
@@ -170,7 +170,7 @@ test_existing_tests() {
 # Test de l'environnement Git
 test_git_environment() {
     print_section "Test de l'environnement Git"
-    
+
     # Test Git
     run_test "Dépôt Git" "git rev-parse --git-dir" "0"
     run_test "Branche actuelle" "git branch --show-current" "0"
@@ -187,7 +187,7 @@ print_summary() {
         print_error "Tests échoués: $TESTS_FAILED"
     fi
     print_info "Total des tests: $TOTAL_TESTS"
-    
+
     local success_rate=$((TESTS_PASSED * 100 / TOTAL_TESTS))
     echo
     if [ $success_rate -eq 100 ]; then
@@ -199,7 +199,7 @@ print_summary() {
     else
         print_error "❌ Tests réussis: $success_rate%"
     fi
-    
+
     echo
     if [ $TESTS_FAILED -eq 0 ]; then
         print_success "🚀 Tous les outils de workflow sont prêts !"
@@ -217,7 +217,7 @@ print_summary() {
 # Fonction principale
 main() {
     print_header
-    
+
     test_scripts
     test_aliases
     test_dry_run
@@ -225,9 +225,9 @@ main() {
     test_dependencies
     test_existing_tests
     test_git_environment
-    
+
     print_summary
-    
+
     # Code de sortie
     if [ $TESTS_FAILED -eq 0 ]; then
         exit 0
@@ -237,4 +237,4 @@ main() {
 }
 
 # Exécution
-main "$@" 
+main "$@"

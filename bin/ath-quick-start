@@ -101,7 +101,7 @@ show_step "4. Vérification de l'environnement virtuel"
 
 if [ -d ".venv" ]; then
     show_success "Environnement virtuel détecté"
-    
+
     # Activer l'environnement virtuel
     if source .venv/bin/activate 2>/dev/null; then
         show_success "Environnement virtuel activé"
@@ -118,7 +118,7 @@ show_step "5. Vérification des dépendances"
 
 if [ -f "requirements.txt" ]; then
     show_success "Fichier requirements.txt trouvé"
-    
+
     # Vérifier si les dépendances sont installées
     if python3 -c "import athalia_core" 2>/dev/null; then
         show_success "Module athalia_core disponible"
@@ -211,4 +211,4 @@ echo -e "   - Espace disque: $DISK_USAGE%"
 echo -e "   - Processus actifs: $RUNNING_PROCESSES"
 echo ""
 echo -e "${YELLOW}💡 Conseil: Utilisez 'ath-help' pour voir toutes les commandes disponibles${NC}"
-echo "" 
+echo ""

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-07-31 13:31:53",
+  "timestamp": "2025-07-31 13:50:59",
   "levels": {
     "level1": {
       "status": "FONCTIONNEL",
@@ -41,12 +41,12 @@
     },
     "level4": {
       "status": "PARTIEL",
-      "coverage": 12.05,
+      "coverage": 12.04,
       "issues": [
-        "Couverture insuffisante : 12.1%"
+        "Couverture insuffisante : 12.0%"
       ],
       "recommendations": [
-        "Atteindre 80% de couverture (actuel: 12.1%)",
+        "Atteindre 80% de couverture (actuel: 12.0%)",
         "Cr\u00e9er des tests pour les modules sans couverture",
         "Prioriser les modules critiques",
         "Ajouter des tests param\u00e9triques"

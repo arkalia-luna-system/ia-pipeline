@@ -1,6 +1,6 @@
 # ❓ FAQ - Athalia
 
-**Date :** 27 juillet 2025  
+**Date :** 27 juillet 2025
 **Statut :** FAQ complète avec commandes validées
 
 ## 🎯 Questions Fréquentes
@@ -283,4 +283,4 @@ tail -n 100 logs/athalia.log >> bug_report.txt 2>/dev/null || echo "Pas de logs"
 
 ---
 
-*FAQ mise à jour le 27 juillet 2025 avec toutes les commandes validées* 
+*FAQ mise à jour le 27 juillet 2025 avec toutes les commandes validées*

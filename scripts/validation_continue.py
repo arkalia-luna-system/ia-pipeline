@@ -5,13 +5,14 @@ Validation Continue d'Athalia/Arkalia
 Surveillance en temps réel de la qualité et détection de régressions
 """
 
+from datetime import datetime
 import json
 import logging
 import os
 import subprocess
 import threading
 import time
-from datetime import datetime
+
 
 # Import du validateur de sécurité
 try:
@@ -135,7 +136,7 @@ class ValidationContinue:
                 f.write("x = 1\ny = 2\nprint(x + y + z)  # Erreur: z non défini")
 
             cmd = (
-                f"python scripts/athalia_unified.py "
+                "python scripts/athalia_unified.py "
                 f"{os.path.dirname(fichier_test)} --action fix"
             )
             result = validate_and_run(
@@ -191,7 +192,7 @@ class ValidationContinue:
 
                     if regression:
                         self.logger.warning(
-                            f"🚨 RÉGRESSION DÉTECTÉE: "
+                            "🚨 RÉGRESSION DÉTECTÉE: "
                             f"{regression['baisse']:.1f}% de baisse"
                         )
                         self.alerter_regression(validation, regression)
@@ -371,9 +372,15 @@ class ValidationContinue:
         elif evolution > 0:
             rapport += "✅ **Bien !** Légère amélioration détectée."
         elif evolution > -5:
-            rapport += "⚠️ **Attention !** Légère régression détectée. Surveille les prochains changements."
+            rapport += (
+                "⚠️ **Attention !** Légère régression détectée. Surveille les prochains"
+                " changements."
+            )
         else:
-            rapport += "🚨 **Problème !** Régression significative détectée. Action corrective nécessaire."
+            rapport += (
+                "🚨 **Problème !** Régression significative détectée. Action corrective"
+                " nécessaire."
+            )
 
         return rapport
 

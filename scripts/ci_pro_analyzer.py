@@ -4,12 +4,12 @@ Script d'analyse CI/CD Pro Athalia
 Analyse automatique des corrections nécessaires par niveau
 """
 
+from datetime import datetime
 import json
+from pathlib import Path
 import subprocess
 import sys
-from datetime import datetime
-from pathlib import Path
-from typing import Dict, Tuple, Any
+from typing import Any, Dict, Tuple
 
 
 # Couleurs pour l'affichage
@@ -158,10 +158,13 @@ class CIProAnalyzer:
                     results["status"] = "FONCTIONNEL"
                 else:
                     self.print_warning(
-                        f"Bandit : {results['vulnerabilities']['high']} HIGH, {results['vulnerabilities']['medium']} MEDIUM vulnérabilités"
+                        f"Bandit : {results['vulnerabilities']['high']} HIGH,"
+                        f" {results['vulnerabilities']['medium']} MEDIUM vulnérabilités"
                     )
                     results["issues"].append(
-                        f"Vulnérabilités Bandit : {results['vulnerabilities']['high']} HIGH, {results['vulnerabilities']['medium']} MEDIUM"
+                        "Vulnérabilités Bandit :"
+                        f" {results['vulnerabilities']['high']} HIGH,"
+                        f" {results['vulnerabilities']['medium']} MEDIUM"
                     )
             except Exception as e:
                 self.print_error(f"Erreur lecture rapport Bandit : {e}")
@@ -243,7 +246,8 @@ class CIProAnalyzer:
 
         # Mesure de couverture réelle
         returncode, stdout, stderr = self.run_command(
-            "python -m coverage run --source=athalia_core -m pytest tests/test_ai_robust_enhanced.py -q && python -m coverage report"
+            "python -m coverage run --source=athalia_core -m pytest"
+            " tests/test_ai_robust_enhanced.py -q && python -m coverage report"
         )
         if returncode == 0:
             # Extraire le pourcentage de couverture
@@ -418,7 +422,8 @@ def main():
 
         if has_critical_issues:
             print(
-                f"\n{Colors.RED}❌ Analyse terminée avec des problèmes critiques{Colors.NC}"
+                f"\n{Colors.RED}❌ Analyse terminée avec des problèmes"
+                f" critiques{Colors.NC}"
             )
             sys.exit(1)
         else:

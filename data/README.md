@@ -68,4 +68,4 @@ Les données sont automatiquement intégrées dans le dashboard :
 
 ---
 
-*Organisation mise à jour le 2025-07-18* 
+*Organisation mise à jour le 2025-07-18*

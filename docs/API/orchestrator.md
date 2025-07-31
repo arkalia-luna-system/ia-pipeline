@@ -1,7 +1,7 @@
 # 🎼 Orchestrateur - Documentation API
 
-**Date :** 26 juillet 2025  
-**Module :** Orchestrateur  
+**Date :** 26 juillet 2025
+**Module :** Orchestrateur
 **Statut :** Documentation complète
 
 ## 🎯 Vue d'ensemble
@@ -212,5 +212,3 @@ template_results = orchestrator._run_templates(project_path)
 ---
 
 **Généré automatiquement** - 26/07/2025
-
-

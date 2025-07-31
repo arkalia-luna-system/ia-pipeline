@@ -151,4 +151,4 @@ autopep8 --in-place --aggressive --aggressive --max-line-length=79 athalia_core/
 flake8 athalia_core/ --select=W293,E302,E305,E501,F841
 ```
 
-**Utilisez ces commandes au lieu de scripts automatisés pour garder le contrôle !** 
+**Utilisez ces commandes au lieu de scripts automatisés pour garder le contrôle !**

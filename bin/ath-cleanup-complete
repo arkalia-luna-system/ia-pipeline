@@ -238,4 +238,4 @@ else
 fi
 
 echo ""
-show_success "🧹 Nettoyage complet terminé ! Le projet est maintenant propre et organisé." 
+show_success "🧹 Nettoyage complet terminé ! Le projet est maintenant propre et organisé."

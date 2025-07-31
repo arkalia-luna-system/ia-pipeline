@@ -5,4 +5,4 @@ Analyse l’interface, l’expérience utilisateur et le design du projet.
 - Propose des améliorations visuelles et fonctionnelles
 - Donne des exemples concrets d’UI/UX réussies
 
-Sois critique mais constructif. 
+Sois critique mais constructif.

@@ -175,4 +175,4 @@ Brève description des changements
 
 ---
 
-**Merci de contribuer à Athalia ! 🚀** 
+**Merci de contribuer à Athalia ! 🚀**

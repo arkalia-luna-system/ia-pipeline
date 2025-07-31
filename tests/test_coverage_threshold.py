@@ -89,8 +89,8 @@ class TestCoverageThreshold:
 
         # Au moins 3 catégories doivent être présentes
         assert len(found_patterns) >= 3, (
-            f"Seulement {len(found_patterns)} catégories trouvées sur {len(test_patterns)} attendues. "
-            f"Trouvées: {found_patterns}"
+            f"Seulement {len(found_patterns)} catégories trouvées sur"
+            f" {len(test_patterns)} attendues. Trouvées: {found_patterns}"
         )
 
     def test_no_untested_critical_modules(self):
@@ -176,8 +176,8 @@ class TestCoverageThreshold:
 
         # Au moins 3 catégories doivent être présentes
         assert len(found_categories) >= 3, (
-            f"Seulement {len(found_categories)} catégories trouvées sur {len(test_categories)} attendues. "
-            f"Trouvées: {found_categories}"
+            f"Seulement {len(found_categories)} catégories trouvées sur"
+            f" {len(test_categories)} attendues. Trouvées: {found_categories}"
         )
 
 

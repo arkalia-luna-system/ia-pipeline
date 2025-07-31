@@ -11,6 +11,7 @@ import subprocess
 from typing import Any, Dict
 import xml.etree.ElementTree as ET
 
+
 # Import du validateur de sécurité
 try:
     from athalia_core.security_validator import SecurityError, validate_and_run

@@ -4,12 +4,13 @@
 Script de nettoyage des anciennes données d'analyse
 """
 
+from datetime import datetime, timedelta
 import hashlib
 import json
 import logging
-import shutil
-from datetime import datetime, timedelta
 from pathlib import Path
+import shutil
+
 
 logging.basicConfig(
     level=logging.INFO,

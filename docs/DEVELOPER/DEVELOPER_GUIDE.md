@@ -129,7 +129,7 @@ from athalia_core.athalia_orchestrator import AthaliaOrchestrator
 class TestOrchestratorIntegration:
     def setup_method(self):
         self.orch = AthaliaOrchestrator()
-    
+
     def test_distillation_integration(self):
         """Test d'intégration de la distillation"""
         result = self.orch.distill_ia_responses(
@@ -139,7 +139,7 @@ class TestOrchestratorIntegration:
         )
         assert isinstance(result, str)
         assert len(result) > 0
-    
+
     def test_adaptive_distillation(self):
         """Test de la distillation adaptative"""
         result = self.orch.distill_ia_responses(
@@ -171,12 +171,12 @@ from abc import ABC, abstractmethod
 
 class CustomDistiller(ABC):
     """Distiller personnalisé"""
-    
+
     @abstractmethod
     def distill(self, prompt: str, **kwargs) -> str:
         """Méthode principale de distillation"""
         pass
-    
+
     def validate_input(self, prompt: str) -> bool:
         """Validation des entrées"""
         return isinstance(prompt, str) and len(prompt) > 0
@@ -186,7 +186,7 @@ class MyCustomDistiller(CustomDistiller):
     def distill(self, prompt: str, **kwargs) -> str:
         if not self.validate_input(prompt):
             raise ValueError("Prompt invalide")
-        
+
         # Logique de distillation personnalisée
         return f"Résultat personnalisé: {prompt}"
 ```
@@ -198,11 +198,11 @@ from athalia_core.auto_base import AutoBase
 
 class AutoCustom(AutoBase):
     """Module automatique personnalisé"""
-    
+
     def __init__(self):
         super().__init__()
         self.name = "AutoCustom"
-    
+
     def process_project(self, project_path: str, config: dict = None) -> dict:
         """Traiter un projet"""
         result = {
@@ -210,12 +210,12 @@ class AutoCustom(AutoBase):
             "files_processed": 0,
             "custom_metric": 0
         }
-        
+
         # Logique personnalisée
         # ...
-        
+
         return result
-    
+
     def validate_config(self, config: dict) -> bool:
         """Valider la configuration"""
         return True
@@ -228,18 +228,18 @@ from athalia_core.plugins.base_plugin import BasePlugin
 
 class CustomPlugin(BasePlugin):
     """Plugin personnalisé"""
-    
+
     def __init__(self):
         super().__init__()
         self.name = "CustomPlugin"
         self.version = "1.0.0"
         self.description = "Plugin personnalisé pour Athalia"
-    
+
     def execute(self, context: dict) -> dict:
         """Exécuter le plugin"""
         # Logique du plugin
         return {"status": "success", "data": "custom_data"}
-    
+
     def validate(self, context: dict) -> bool:
         """Valider le contexte"""
         return True
@@ -334,26 +334,26 @@ CMD ["python", "athalia_core/dashboard.py"]
 ### Exemple de Documentation
 ```python
 def distill_ia_responses(
-    self, 
-    prompt: str, 
+    self,
+    prompt: str,
     models: List[str] = None,
     strategy: str = "voting"
 ) -> str:
     """
     Distille les réponses de plusieurs modèles IA.
-    
+
     Args:
         prompt: Le prompt à traiter
         models: Liste des modèles à utiliser (défaut: tous disponibles)
         strategy: Stratégie de distillation ('voting', 'stacking', etc.)
-    
+
     Returns:
         str: Réponse distillée
-    
+
     Raises:
         ValueError: Si le prompt est vide
         ModelNotFoundError: Si aucun modèle n'est disponible
-    
+
     Example:
         >>> orch = AthaliaOrchestrator()
         >>> result = orch.distill_ia_responses("Hello", strategy="voting")
@@ -410,4 +410,4 @@ debugger.breakpoint()
 
 ---
 
-*Guide développeur mis à jour le 2025-07-18* 
+*Guide développeur mis à jour le 2025-07-18*

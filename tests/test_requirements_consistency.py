@@ -141,7 +141,7 @@ class TestRequirementsConsistency:
                     if dep in req_content and dep not in pyproject_content:
                         pytest.fail(
                             f"Dépendance {dep} dans requirements.txt "
-                            f"mais pas dans pyproject.toml"
+                            "mais pas dans pyproject.toml"
                         )
 
             except Exception as e:

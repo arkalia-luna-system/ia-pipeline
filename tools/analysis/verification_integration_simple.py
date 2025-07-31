@@ -5,8 +5,8 @@
 Script simple pour vérifier l'intégration actuelle de l'orchestrateur unifié.
 """
 
-import re
 from pathlib import Path
+import re
 
 
 def main():

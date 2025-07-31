@@ -10,43 +10,43 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .header {
             text-align: center;
             color: white;
             margin-bottom: 30px;
         }
-        
+
         .header h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-        
+
         .header p {
             font-size: 1.2em;
             opacity: 0.9;
         }
-        
+
         .status-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             margin-bottom: 30px;
         }
-        
+
         .status-card {
             background: white;
             border-radius: 15px;
@@ -54,55 +54,55 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
         }
-        
+
         .status-card:hover {
             transform: translateY(-5px);
         }
-        
+
         .status-card h3 {
             color: #333;
             margin-bottom: 15px;
             font-size: 1.3em;
         }
-        
+
         .score {
             font-size: 3em;
             font-weight: bold;
             text-align: center;
             margin: 20px 0;
         }
-        
+
         .score.excellent { color: #28a745; }
         .score.good { color: #17a2b8; }
         .score.average { color: #ffc107; }
         .score.poor { color: #dc3545; }
-        
+
         .metrics {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
             margin-top: 20px;
         }
-        
+
         .metric {
             text-align: center;
             padding: 15px;
             background: #f8f9fa;
             border-radius: 10px;
         }
-        
+
         .metric-value {
             font-size: 1.5em;
             font-weight: bold;
             color: #333;
         }
-        
+
         .metric-label {
             font-size: 0.9em;
             color: #666;
             margin-top: 5px;
         }
-        
+
         .test-results {
             background: white;
             border-radius: 15px;
@@ -110,13 +110,13 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             margin-bottom: 30px;
         }
-        
+
         .test-results h3 {
             color: #333;
             margin-bottom: 20px;
             font-size: 1.3em;
         }
-        
+
         .test-item {
             display: flex;
             justify-content: space-between;
@@ -127,34 +127,34 @@
             border-radius: 10px;
             border-left: 4px solid #ddd;
         }
-        
+
         .test-item.success {
             border-left-color: #28a745;
             background: #d4edda;
         }
-        
+
         .test-item.failure {
             border-left-color: #dc3545;
             background: #f8d7da;
         }
-        
+
         .test-name {
             font-weight: 500;
             color: #333;
         }
-        
+
         .test-status {
             font-weight: bold;
         }
-        
+
         .test-status.success { color: #28a745; }
         .test-status.failure { color: #dc3545; }
-        
+
         .controls {
             text-align: center;
             margin-bottom: 30px;
         }
-        
+
         .btn {
             background: #007bff;
             color: white;
@@ -166,41 +166,41 @@
             margin: 0 10px;
             transition: all 0.3s ease;
         }
-        
+
         .btn:hover {
             background: #0056b3;
             transform: translateY(-2px);
         }
-        
+
         .btn.danger {
             background: #dc3545;
         }
-        
+
         .btn.danger:hover {
             background: #c82333;
         }
-        
+
         .btn.success {
             background: #28a745;
         }
-        
+
         .btn.success:hover {
             background: #218838;
         }
-        
+
         .history {
             background: white;
             border-radius: 15px;
             padding: 25px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-        
+
         .history h3 {
             color: #333;
             margin-bottom: 20px;
             font-size: 1.3em;
         }
-        
+
         .history-item {
             display: flex;
             justify-content: space-between;
@@ -211,23 +211,23 @@
             border-radius: 10px;
             border-left: 4px solid #007bff;
         }
-        
+
         .history-date {
             font-weight: 500;
             color: #333;
         }
-        
+
         .history-score {
             font-weight: bold;
             color: #007bff;
         }
-        
+
         .loading {
             text-align: center;
             padding: 40px;
             color: #666;
         }
-        
+
         .spinner {
             border: 4px solid #f3f3f3;
             border-top: 4px solid #007bff;
@@ -237,46 +237,46 @@
             animation: spin 1s linear infinite;
             margin: 0 auto 20px;
         }
-        
+
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        
+
         .alert {
             padding: 15px;
             margin: 20px 0;
             border-radius: 10px;
             border-left: 4px solid;
         }
-        
+
         .alert.success {
             background: #d4edda;
             border-color: #28a745;
             color: #155724;
         }
-        
+
         .alert.warning {
             background: #fff3cd;
             border-color: #ffc107;
             color: #856404;
         }
-        
+
         .alert.danger {
             background: #f8d7da;
             border-color: #dc3545;
             color: #721c24;
         }
-        
+
         @media (max-width: 768px) {
             .status-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .metrics {
                 grid-template-columns: 1fr;
             }
-            
+
             .header h1 {
                 font-size: 2em;
             }
@@ -289,16 +289,16 @@
             <h1>🎯 Dashboard Validation Athalia/Arkalia</h1>
             <p>Surveillance en temps réel de la qualité et fiabilité</p>
         </div>
-        
+
         <div class="controls">
             <button class="btn" onclick="runValidation()">🔍 Lancer Validation</button>
             <button class="btn success" onclick="startContinuousValidation()">🚀 Surveillance Continue</button>
             <button class="btn danger" onclick="stopContinuousValidation()">🛑 Arrêter Surveillance</button>
             <button class="btn" onclick="loadHistory()">📊 Charger Historique</button>
         </div>
-        
+
         <div id="alert-container"></div>
-        
+
         <div class="status-grid">
             <div class="status-card">
                 <h3>📊 Score Global</h3>
@@ -314,7 +314,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="status-card">
                 <h3>🛡️ Robustesse</h3>
                 <div id="robustness-score" class="score">--</div>
@@ -329,7 +329,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="status-card">
                 <h3>⚡ Performance</h3>
                 <div id="performance-score" class="score">--</div>
@@ -344,7 +344,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="status-card">
                 <h3>📈 Tendance</h3>
                 <div id="trend-score" class="score">--</div>
@@ -360,7 +360,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="test-results">
             <h3>🔍 Résultats des Tests</h3>
             <div id="test-results-container">
@@ -370,7 +370,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="history">
             <h3>📋 Historique des Validations</h3>
             <div id="history-container">
@@ -381,14 +381,14 @@
             </div>
         </div>
     </div>
-    
+
     <script>
         let continuousValidationInterval = null;
-        
+
         // Fonctions principales
         async function runValidation() {
             showAlert('info', 'Lancement de la validation...');
-            
+
             try {
                 const response = await fetch('http://localhost:5001/api/validate', {
                     method: 'POST',
@@ -397,7 +397,7 @@
                     },
                     body: JSON.stringify({ type: 'express' })
                 });
-                
+
                 if (response.ok) {
                     const data = await response.json();
                     if (data.success) {
@@ -412,12 +412,12 @@
             } catch (error) {
                 console.error('Erreur:', error);
                 showAlert('danger', 'Erreur lors de la validation: ' + error.message);
-                
+
                 // Fallback: simulation de données
                 simulateValidation();
             }
         }
-        
+
         function simulateValidation() {
             const mockData = {
                 global_score: Math.floor(Math.random() * 30) + 70, // 70-100
@@ -440,16 +440,16 @@
                     { name: 'Robustesse', status: 'success', details: 'Cas limites gérés' }
                 ]
             };
-            
+
             updateDashboard(mockData);
         }
-        
+
         function updateDashboardFromAPI(data) {
             // Score global
             const globalScore = document.getElementById('global-score');
             globalScore.textContent = data.score + '%';
             globalScore.className = 'score ' + getScoreClass(data.score);
-            
+
             // Métriques principales
             document.getElementById('success-rate').textContent = data.score + '%';
             document.getElementById('execution-time').textContent = data.execution_time + 's';
@@ -462,7 +462,7 @@
             document.getElementById('trend-score').textContent = data.score + '%';
             document.getElementById('last-24h').textContent = data.score + '%';
             document.getElementById('last-week').textContent = data.score + '%';
-            
+
             // Résultats des tests
             const tests = [
                 { name: 'Démarrage', status: 'success', details: 'OK' },
@@ -473,13 +473,13 @@
             ];
             updateTestResults(tests);
         }
-        
+
         function updateDashboard(data) {
             // Score global
             const globalScore = document.getElementById('global-score');
             globalScore.textContent = data.global_score + '%';
             globalScore.className = 'score ' + getScoreClass(data.global_score);
-            
+
             // Métriques principales
             document.getElementById('success-rate').textContent = data.success_rate + '%';
             document.getElementById('execution-time').textContent = data.execution_time + 's';
@@ -492,15 +492,15 @@
             document.getElementById('trend-score').textContent = data.trend_score + '%';
             document.getElementById('last-24h').textContent = data.last_24h + '%';
             document.getElementById('last-week').textContent = data.last_week + '%';
-            
+
             // Résultats des tests
             updateTestResults(data.tests);
         }
-        
+
         function updateTestResults(tests) {
             const container = document.getElementById('test-results-container');
             container.innerHTML = '';
-            
+
             tests.forEach(test => {
                 const testItem = document.createElement('div');
                 testItem.className = `test-item ${test.status}`;
@@ -513,26 +513,26 @@
                 container.appendChild(testItem);
             });
         }
-        
+
         function getScoreClass(score) {
             if (score >= 90) return 'excellent';
             if (score >= 75) return 'good';
             if (score >= 50) return 'average';
             return 'poor';
         }
-        
+
         function startContinuousValidation() {
             if (continuousValidationInterval) {
                 clearInterval(continuousValidationInterval);
             }
-            
+
             continuousValidationInterval = setInterval(() => {
                 runValidation();
             }, 300000); // Toutes les 5 minutes
-            
+
             showAlert('success', 'Surveillance continue activée (toutes les 5 minutes)');
         }
-        
+
         function stopContinuousValidation() {
             if (continuousValidationInterval) {
                 clearInterval(continuousValidationInterval);
@@ -540,11 +540,11 @@
                 showAlert('warning', 'Surveillance continue arrêtée');
             }
         }
-        
+
         async function loadHistory() {
             const container = document.getElementById('history-container');
             container.innerHTML = '<div class="loading"><div class="spinner"></div><p>Chargement...</p></div>';
-            
+
             try {
                 const response = await fetch('http://localhost:5001/api/history');
                 if (response.ok) {
@@ -578,7 +578,7 @@
                         { date: '2024-01-15 11:30', score: 91 },
                         { date: '2024-01-15 10:30', score: 89 }
                     ];
-                    
+
                     container.innerHTML = '';
                     mockHistory.forEach(item => {
                         const historyItem = document.createElement('div');
@@ -592,30 +592,30 @@
                 }, 1000);
             }
         }
-        
+
         function showAlert(type, message) {
             const container = document.getElementById('alert-container');
             const alert = document.createElement('div');
             alert.className = `alert ${type}`;
             alert.textContent = message;
-            
+
             container.appendChild(alert);
-            
+
             setTimeout(() => {
                 alert.remove();
             }, 5000);
         }
-        
+
         // Initialisation
         document.addEventListener('DOMContentLoaded', function() {
             // Lance une validation initiale
             setTimeout(() => {
                 simulateValidation();
             }, 1000);
-            
+
             // Charge l'historique
             loadHistory();
         });
     </script>
 </body>
-</html> 
+</html>

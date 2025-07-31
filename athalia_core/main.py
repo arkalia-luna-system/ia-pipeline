@@ -17,6 +17,7 @@ from athalia_core.onboarding import (
 )
 from athalia_core.security import security_audit_project
 
+
 # Import du système de logging avancé
 try:
     from athalia_core.logger_advanced import athalia_logger, log_main

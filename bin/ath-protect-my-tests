@@ -47,7 +47,7 @@ is_protected_test() {
 # Fonction pour surveiller les suppressions
 monitor_deletions() {
     echo "👀 Surveillance des suppressions de tests..."
-    
+
     # Utiliser fswatch si disponible
     if command -v fswatch >/dev/null 2>&1; then
         fswatch -o "$TESTS_DIR" | while read num; do
@@ -84,13 +84,13 @@ add_protected_test() {
         echo "❌ Usage: $0 add <nom_du_test.py>"
         exit 1
     fi
-    
+
     # Vérifier si le test existe
     if [[ ! -f "$TESTS_DIR/$test_file" ]]; then
         echo "❌ Test non trouvé: $test_file"
         exit 1
     fi
-    
+
     # Ajouter à la liste (nécessite modification manuelle du script)
     echo "📝 Pour ajouter $test_file à la protection:"
     echo "   1. Éditez ce script"
@@ -119,4 +119,4 @@ case "${1:-}" in
         echo ""
         list_protected_tests
         ;;
-esac 
+esac

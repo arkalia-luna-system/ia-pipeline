@@ -10,13 +10,14 @@ Tests plus approfondis pour validation de qualité
 
 import json
 import os
+from pathlib import Path
 import subprocess
 import sys
 import time
-from pathlib import Path
 
 import pytest
 import yaml  # type: ignore
+
 
 # Import sécurisé pour la validation des commandes
 try:

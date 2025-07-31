@@ -1,8 +1,8 @@
 # 🎯 PLAN D'ACTION FUTUR - CORRECTIONS ATHALIA
 
-**Date :** 29 Juillet 2025  
-**Version :** 1.0 (Plan d'Action)  
-**Statut :** PHASE 1 EN COURS (99%) 🔄  
+**Date :** 29 Juillet 2025
+**Version :** 1.0 (Plan d'Action)
+**Statut :** PHASE 1 EN COURS (99%) 🔄
 
 ---
 
@@ -29,7 +29,7 @@ Corriger systématiquement tous les problèmes futurs identifiés dans l'audit p
 
 #### **1.1 Subprocess sécurisés (25 fichiers)**
 
-**Priorité :** 🔴 CRITIQUE  
+**Priorité :** 🔴 CRITIQUE
 **Timeline :** Jours 1-3
 
 ##### **Scripts (10 fichiers)**
@@ -101,7 +101,7 @@ tests/bin/test_ath_audit.py
 
 #### **1.2 Gestion d'erreurs spécifiques (15 fichiers)**
 
-**Priorité :** 🔴 CRITIQUE  
+**Priorité :** 🔴 CRITIQUE
 **Timeline :** Jours 4-5
 
 ##### **Modules Core (8 fichiers)**
@@ -160,7 +160,7 @@ tests/bin/test_ath_build.py
 
 #### **1.3 Debug flags sécurisés (5 fichiers)**
 
-**Priorité :** 🟠 HAUTE  
+**Priorité :** 🟠 HAUTE
 **Timeline :** Jour 6
 
 ##### **Fichiers à corriger**
@@ -194,7 +194,7 @@ athalia_core/logger_advanced.py
 
 #### **2.1 Instructions print() (15 fichiers)**
 
-**Priorité :** 🟠 HAUTE  
+**Priorité :** 🟠 HAUTE
 **Timeline :** Semaine 2, Jours 1-3
 
 ##### **Scripts (15 fichiers)**
@@ -217,7 +217,7 @@ bin/ath-test.py
 
 #### **2.2 Ellipsis implémentées (20 fichiers)**
 
-**Priorité :** 🟠 HAUTE  
+**Priorité :** 🟠 HAUTE
 **Timeline :** Semaine 2, Jours 4-7
 
 ##### **Modules Core (16 fichiers)**
@@ -261,7 +261,7 @@ tests/test_correction.py
 
 #### **2.3 TODO/FIXME résolus (12 fichiers)**
 
-**Priorité :** 🟡 MOYENNE  
+**Priorité :** 🟡 MOYENNE
 **Timeline :** Semaine 3, Jours 1-3
 
 ##### **Fichiers prioritaires**
@@ -302,7 +302,7 @@ athalia_core/auto_tester.py
 
 #### **3.1 Fichiers temporaires**
 
-**Priorité :** 🟡 MOYENNE  
+**Priorité :** 🟡 MOYENNE
 **Timeline :** Semaine 4, Jours 1-2
 
 ##### **Actions :**
@@ -322,7 +322,7 @@ find . -name "*cache*" -type f
 
 #### **3.2 Incohérences de nommage**
 
-**Priorité :** 🟡 MOYENNE  
+**Priorité :** 🟡 MOYENNE
 **Timeline :** Semaine 4, Jours 3-4
 
 ##### **Actions :**
@@ -339,7 +339,7 @@ athalia_core/robotics_ci.py → athalia_core/robotics/robotics_ci.py
 
 #### **3.3 Imports optimisés**
 
-**Priorité :** 🟡 MOYENNE  
+**Priorité :** 🟡 MOYENNE
 **Timeline :** Semaine 4, Jours 5-6
 
 ##### **Actions :**
@@ -450,4 +450,4 @@ athalia_core/__init__.py
 
 ---
 
-**📅 Prochaine révision :** Après chaque phase complétée 
+**📅 Prochaine révision :** Après chaque phase complétée

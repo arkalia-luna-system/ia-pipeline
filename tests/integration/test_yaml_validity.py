@@ -5,12 +5,13 @@ Tests de validité YAML pour Athalia.
 Tests professionnels pour la CI/CD.
 """
 
+from pathlib import Path
 import sys
 import tempfile
-from pathlib import Path
 
 import pytest
 import yaml
+
 
 # Ajouter le répertoire parent au path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))

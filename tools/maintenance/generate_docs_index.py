@@ -7,10 +7,11 @@ Script pour générer automatiquement un index complet
 de la documentation du projet Athalia.
 """
 
-import logging
 from datetime import datetime
+import logging
 from pathlib import Path
 from typing import Dict, List
+
 
 # Configuration du logging
 logging.basicConfig(
@@ -212,7 +213,10 @@ class IndexGenerator:
         total_files = sum(len(items) for items in self.index_structure.values())
         content += "## 📈 Métriques\n\n"
         content += f"- **Total fichiers MD:** {total_files}\n"
-        content += f"- **Documentation principale:** {len(self.index_structure['main'])} fichiers\n"
+        content += (
+            "- **Documentation principale:**"
+            f" {len(self.index_structure['main'])} fichiers\n"
+        )
         content += f"- **API:** {len(self.index_structure['api'])} fichiers\n"
         content += f"- **Guides:** {len(self.index_structure['guides'])} fichiers\n"
         content += f"- **Rapports:** {len(self.index_structure['reports'])} fichiers\n"
@@ -274,7 +278,8 @@ def main():
 
     print(f"📋 Index généré avec succès: {index_path}")
     print(
-        f"📊 Fichiers indexés: {sum(len(items) for items in generator.index_structure.values())}"
+        "📊 Fichiers indexés:"
+        f" {sum(len(items) for items in generator.index_structure.values())}"
     )
 
 

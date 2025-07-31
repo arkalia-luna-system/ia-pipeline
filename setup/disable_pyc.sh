@@ -32,4 +32,4 @@ EOF
 fi
 
 echo "✅ Configuration terminée ! Les fichiers .pyc ne seront plus générés."
-echo "💡 Redémarrez votre terminal ou exécutez 'source ~/.zshrc' pour appliquer les changements." 
+echo "💡 Redémarrez votre terminal ou exécutez 'source ~/.zshrc' pour appliquer les changements."
