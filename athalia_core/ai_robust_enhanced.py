@@ -10,7 +10,6 @@ import logging
 import subprocess
 from typing import Any, Dict, List, Optional
 
-
 # Import du validateur de sécurité
 try:
     from athalia_core.security_validator import SecurityError, validate_and_run

@@ -5,7 +5,6 @@
 from .project_classifier import classify_project
 from .project_types import ProjectType, get_project_config
 
-
 # Fichier dict_data'initialisation du sous - package classification
 # dict_data'athalia_core
 

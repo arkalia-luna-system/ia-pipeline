@@ -42,12 +42,12 @@ class TestSecurityAudit:
         content = log.read_text()
 
         # Vérifier la détection des problèmes
-        assert any("Clé API trouvée" in line for line in content.splitlines()), (
-            "Les clés API doivent être détectées"
-        )
-        assert any("Mot de passe en clair" in line for line in content.splitlines()), (
-            "Les mots de passe en clair doivent être détectés"
-        )
+        assert any(
+            "Clé API trouvée" in line for line in content.splitlines()
+        ), "Les clés API doivent être détectées"
+        assert any(
+            "Mot de passe en clair" in line for line in content.splitlines()
+        ), "Les mots de passe en clair doivent être détectés"
 
     def test_security_audit_clean_project(self, tmp_path):
         """Test d'audit sur un projet propre."""
@@ -63,17 +63,17 @@ class TestSecurityAudit:
 
         # Vérifier que le rapport a été généré
         log = proj / "security_audit.txt"
-        assert log.exists(), (
-            "Le rapport d'audit de sécurité doit être généré même pour un projet propre"
-        )
+        assert (
+            log.exists()
+        ), "Le rapport d'audit de sécurité doit être généré même pour un projet propre"
 
         content = log.read_text()
 
         # Pour un projet propre, le rapport peut être vide ou contenir un message de succès
         # Le module retourne un score de 100 si aucun problème n'est détecté
-        assert len(content.strip()) == 0 or "0 problème" in content, (
-            "Un projet propre ne doit pas avoir de problèmes de sécurité"
-        )
+        assert (
+            len(content.strip()) == 0 or "0 problème" in content
+        ), "Un projet propre ne doit pas avoir de problèmes de sécurité"
 
     def test_security_audit_empty_project(self, tmp_path):
         """Test d'audit sur un projet vide."""
@@ -85,9 +85,9 @@ class TestSecurityAudit:
 
         # Vérifier que le rapport a été généré
         log = proj / "security_audit.txt"
-        assert log.exists(), (
-            "Le rapport d'audit de sécurité doit être généré même pour un projet vide"
-        )
+        assert (
+            log.exists()
+        ), "Le rapport d'audit de sécurité doit être généré même pour un projet vide"
 
     def test_security_audit_python_files_only(self, tmp_path):
         """Test d'audit sur des fichiers Python uniquement (comportement du module)."""
@@ -118,15 +118,15 @@ class TestSecurityAudit:
         assert "secrets.py" in content, "Les fichiers Python doivent être analysés"
         assert "config.py" in content, "Les fichiers Python doivent être analysés"
         # Les fichiers non-Python ne doivent pas apparaître dans le rapport
-        assert "secrets.env" not in content, (
-            "Les fichiers .env ne sont pas analysés par ce module"
-        )
-        assert "config.json" not in content, (
-            "Les fichiers JSON ne sont pas analysés par ce module"
-        )
-        assert "script.sh" not in content, (
-            "Les fichiers shell ne sont pas analysés par ce module"
-        )
+        assert (
+            "secrets.env" not in content
+        ), "Les fichiers .env ne sont pas analysés par ce module"
+        assert (
+            "config.json" not in content
+        ), "Les fichiers JSON ne sont pas analysés par ce module"
+        assert (
+            "script.sh" not in content
+        ), "Les fichiers shell ne sont pas analysés par ce module"
 
 
 @pytest.mark.skipif(not SECURITY_AVAILABLE, reason="Module security non disponible")
