@@ -117,7 +117,7 @@ is_important_file() {
         "*.ini"
         "requirements"
         "setup.py"
-        "pyproject.toml"
+        "config/pyproject.toml"
         "Cargo.toml"
         "package.json"
         "Makefile"

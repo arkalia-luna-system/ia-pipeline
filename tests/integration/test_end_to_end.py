@@ -100,9 +100,9 @@ class TestEndToEndIntegration:
         # Vérifier le contenu Python
         with open(main_py) as f:
             content = f.read()
-        assert (
-            "def" in content or "class" in content
-        ), "Aucune fonction ou classe trouvée dans main.py"
+        assert "def" in content or "class" in content, (
+            "Aucune fonction ou classe trouvée dans main.py"
+        )
 
     def test_generation_end_to_end_web(self):
         """Test de génération end-to-end pour un projet web."""
@@ -174,10 +174,10 @@ class TestEndToEndIntegration:
 
         # Vérifier setup.py ou pyproject.toml dans le répertoire racine du projet
         setup_py = outdir / "setup.py"
-        pyproject_toml = outdir / "pyproject.toml"
-        assert (
-            setup_py.exists() or pyproject_toml.exists()
-        ), "Fichier de configuration manquant"
+        pyproject_toml = outdir / "config" / "pyproject.toml"
+        assert setup_py.exists() or pyproject_toml.exists(), (
+            "Fichier de configuration manquant"
+        )
 
     def test_workflow_complete(self):
         """Test du workflow complet d'Athalia."""
@@ -304,9 +304,9 @@ def test_function():
             thread_id, result = results.get()
             if isinstance(result, Exception):
                 pytest.skip(f"Génération concurrente échouée: {result}")
-            assert isinstance(
-                result, dict
-            ), f"Résultat invalide pour le thread {thread_id}"
+            assert isinstance(result, dict), (
+                f"Résultat invalide pour le thread {thread_id}"
+            )
 
 
 def test_generation_end_to_end_simple(tmp_path):
@@ -357,9 +357,9 @@ def test_generation_end_to_end_simple(tmp_path):
     # Vérifier le contenu Python
     with open(main_py) as f:
         content = f.read()
-    assert (
-        "def" in content or "class" in content
-    ), "Aucune fonction ou classe trouvée dans main.py"
+    assert "def" in content or "class" in content, (
+        "Aucune fonction ou classe trouvée dans main.py"
+    )
 
 
 if __name__ == "__main__":

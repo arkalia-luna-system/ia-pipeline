@@ -117,15 +117,15 @@ class TestCoverageThreshold:
                 with open(coverage_report, "r", encoding="utf-8") as f:
                     content = f.read()
                     assert content.strip(), "Rapport de couverture vide"
-                    assert (
-                        "coverage" in content.lower()
-                    ), "Rapport de couverture invalide"
+                    assert "coverage" in content.lower(), (
+                        "Rapport de couverture invalide"
+                    )
             except Exception as e:
                 pytest.fail(f"Erreur lecture rapport couverture: {e}")
 
     def test_coverage_configuration(self):
         """Vérifie la configuration de couverture"""
-        coverage_config_files = [".coveragerc", "pyproject.toml", "setup.cfg"]
+        coverage_config_files = [".coveragerc", "config/pyproject.toml", "setup.cfg"]
 
         config_found = False
         for config_file in coverage_config_files:

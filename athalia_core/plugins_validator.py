@@ -121,7 +121,7 @@ class PluginValidator:
 
     def _check_dependencies(self, plugin_path: Path, results: Dict[str, Any]):
         """Vérifie les dépendances du plugin"""
-        requirements_files = ["requirements.txt", "setup.py", "pyproject.toml"]
+        requirements_files = ["requirements.txt", "setup.py", "config/pyproject.toml"]
 
         for req_file in requirements_files:
             req_path = plugin_path / req_file
