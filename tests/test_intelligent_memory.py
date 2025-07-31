@@ -19,10 +19,11 @@ try:
         Prediction,
     )
 except ImportError:
-    IntelligentMemory = None
-    CorrectionSuggestion = None
-    LearningEvent = None
-    Prediction = None
+    # Type: ignore pour éviter les erreurs de type quand le module n'est pas disponible
+    IntelligentMemory = None  # type: ignore
+    CorrectionSuggestion = None  # type: ignore
+    LearningEvent = None  # type: ignore
+    Prediction = None  # type: ignore
 
 
 class TestIntelligentMemory(unittest.TestCase):
@@ -84,7 +85,10 @@ class TestIntelligentMemory(unittest.TestCase):
     def test_learn_from_correction(self):
         """Test d'apprentissage d'une correction"""
         original_code = "def very_long_function():\n    # 100 lignes..."
-        corrected_code = "def short_function1():\n    # 30 lignes...\n\ndef short_function2():\n    # 30 lignes..."
+        corrected_code = (
+            "def short_function1():\n    # 30 lignes...\n"
+            "def short_function2():\n    # 30 lignes..."
+        )
         reason = "Division en fonctions plus petites"
         location = "test_file.py:10"
 
@@ -127,7 +131,9 @@ class TestIntelligentMemory(unittest.TestCase):
 
     def test_suggest_corrections(self):
         """Test de suggestions de corrections"""
-        problematic_code = "def bad_function():\n    print('Hello')\n    print('World')\n    print('Again')"
+        problematic_code = (
+            "def bad_function():\n    print('Hello')\n    print('World')\n    print('Again')"
+        )
         issue_description = "Fonction avec trop de prints"
 
         suggestions = self.memory.suggest_corrections(

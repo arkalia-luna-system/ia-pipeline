@@ -4,28 +4,33 @@ Ce dossier contient tous les scripts utilitaires organisés par catégorie.
 
 ## 📁 **Structure**
 
-### `robotics/` - Scripts Robotiques
-- `athalia_robotics_integration.py` - Intégration avec les robots
-- `demo_robotics.py` - Démonstrations robotiques
-
-### `debug/` - Scripts de Débogage
-- `debug_correction.py` - Outils de correction et débogage
+### Scripts Principaux
+- `monitor_processes.py` - Monitoring des processus
+- `quick_performance_test.py` - Tests de performance rapides
+- `test_athalia_performance.py` - Tests de performance complets
+- `validation_continue.py` - Validation continue
+- `validation_dashboard_simple.py` - Dashboard de validation
+- `validation_express.sh` - Validation express
+- `validation_objective.py` - Validation objective
 
 ## 🚀 **Utilisation**
 
-### Scripts Robotiques
+### Scripts de Performance
 ```bash
-# Intégration robotique
-python3 scripts/robotics/athalia_robotics_integration.py
+# Test de performance rapide
+python3 scripts/quick_performance_test.py
 
-# Démonstration
-python3 scripts/robotics/demo_robotics.py
+# Test de performance complet
+python3 scripts/test_athalia_performance.py
 ```
 
-### Scripts de Débogage
+### Scripts de Validation
 ```bash
-# Correction automatique
-python3 scripts/debug/debug_correction.py
+# Validation continue
+python3 scripts/validation_continue.py
+
+# Validation objective
+python3 scripts/validation_objective.py
 ```
 
 ## 📋 **Conventions**

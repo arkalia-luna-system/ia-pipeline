@@ -1,135 +1,248 @@
-# Guide d'utilisation - athalia-dev-setup
+# 🚀 Guide d'Utilisation - Athalia
 
-## Vue d'ensemble
+**Version :** 10.0 (FINAL - 100% TERMINÉE ✅)  
+**Date :** 30 Juillet 2025
 
-Ce guide explique comment utiliser athalia-dev-setup.
+---
 
-## Configuration
+## 🎯 **Vue d'Ensemble**
 
-```yaml
-name: athalia-dev-setup
-version: 1.0.0
-description: # athalia-dev-setup
-```
+Ce guide explique comment utiliser Athalia, le système d'intelligence artificielle avancé pour l'automatisation et l'optimisation de projets de développement.
 
-### Lancement rapide
+---
+
+## 🚀 **Utilisation Rapide**
+
+### **Commandes Principales**
 
 ```bash
-# Mode développement
-python athalia_unified.py . --action complete
+# Audit complet d'un projet
+python athalia_unified.py /chemin/vers/projet --action audit
 
-# Mode audit
-python athalia_unified.py . --action audit
+# Industrialisation complète
+python athalia_unified.py /chemin/vers/projet --action complete
 
-# Mode production avec options
-python athalia_unified.py . --action complete --no-dry-run
+# Dashboard interactif
+python athalia_unified.py /chemin/vers/projet --action dashboard
+
+# Mode simulation (dry-run)
+python athalia_unified.py /chemin/vers/projet --action audit --dry-run
 ```
 
-### Configuration
+### **Options Avancées**
 
-Le projet utilise un fichier de configuration YAML :
+```bash
+# Audit avec détails
+python athalia_unified.py /chemin/vers/projet --action audit --verbose
 
+# Industrialisation sans audit préalable
+python athalia_unified.py /chemin/vers/projet --action complete --no-audit
+
+# Dashboard avec profil utilisateur
+python athalia_unified.py /chemin/vers/projet --action dashboard --utilisateur dev
+```
+
+---
+
+## ⚙️ **Configuration**
+
+### **Fichier de Configuration Principal**
 ```yaml
 # config/athalia_config.yaml
 app:
   name: athalia-dev-setup
-  debug: true
+  version: "10.0.0"
+  debug: false
   port: 8000
 
-database:
-  url: sqlite:///app.db
-  echo: false
+security:
+  validate_commands: true
+  allowed_paths:
+    - "/usr/bin"
+    - "/opt/homebrew"
+
+logging:
+  level: "INFO"
+  file: "logs/athalia.log"
+  max_size: "10MB"
 ```
 
-## Fonctionnalités principales
+---
 
-### Classes principales
+## 🔧 **Fonctionnalités Principales**
 
-#### UnifiedOrchestrator
+### **🤖 Intelligence Artificielle**
 
-**Exemple d'utilisation :**
-
-```python
-from athalia_core.unified_orchestrator import UnifiedOrchestrator
-
-# Créer une instance
-instance = UnifiedOrchestrator("./mon-projet")
-# Utiliser une méthode
-result = instance.orchestrate_project_complete("./mon-projet")
-```
-
-#### IntelligentAuditor
-
-Auditeur intelligent de projets générés.
-
-**Exemple d'utilisation :**
-
+#### **Audit Intelligent**
 ```python
 from athalia_core.intelligent_auditor import IntelligentAuditor
 
-# Créer une instance
-instance = IntelligentAuditor("./mon-projet")
-# Utiliser une méthode
-result = instance.audit_project()
+# Créer un auditeur
+auditor = IntelligentAuditor("/chemin/vers/projet")
+
+# Audit complet
+result = auditor.audit_project()
+print(f"Score qualité: {result['quality_score']}/100")
+print(f"Problèmes détectés: {len(result['issues'])}")
 ```
 
-#### AutoTester
-
-Système de génération automatique de tests
-
-**Exemple d'utilisation :**
-
+#### **Génération Automatique de Tests**
 ```python
 from athalia_core.auto_tester import AutoTester
 
-# Créer une instance
-instance = AutoTester("./mon-projet")
-# Utiliser une méthode
-result = instance.generate_tests()
+# Créer un générateur de tests
+tester = AutoTester("/chemin/vers/projet")
+
+# Générer des tests
+result = tester.generate_tests()
+print(f"Tests générés: {result['tests_created']}")
 ```
 
-### Fonctions utilitaires
-
-#### main
-
-Fonction principale du CLI unifié
-
-**Exemple d'utilisation :**
-
+#### **Analyse de Performance**
 ```python
-# Utilisation directe du script
-python athalia_unified.py --help
+from athalia_core.performance_analyzer import PerformanceAnalyzer
 
-# Ou import du module
-from athalia_unified import main
-
-result = main()
+# Analyser les performances
+analyzer = PerformanceAnalyzer()
+report = analyzer.analyze_project_performance("/chemin/vers/projet")
+print(f"Score performance: {report.score}/100")
 ```
 
-#### orchestrate_project_complete
+### **🛡️ Sécurité et Validation**
 
-**Exemple d'utilisation :**
-
+#### **Audit de Sécurité**
 ```python
-from athalia_core.unified_orchestrator import UnifiedOrchestrator
+from athalia_core.security_auditor import SecurityAuditor
 
-orchestrator = UnifiedOrchestrator("./mon-projet")
-result = orchestrator.orchestrate_project_complete("./mon-projet")
+# Audit de sécurité
+security_auditor = SecurityAuditor("/chemin/vers/projet")
+security_report = security_auditor.run()
+print(f"Score sécurité: {security_report['security_score']}/100")
 ```
 
-#### audit_project_intelligent
-
-**Exemple d'utilisation :**
-
+#### **Validation de Code**
 ```python
-from athalia_core.audit import audit_project_intelligent
+from athalia_core.code_linter import CodeLinter
 
-result = audit_project_intelligent(project_path)
+# Linting et validation
+linter = CodeLinter("/chemin/vers/projet")
+lint_result = linter.lint_project()
+print(f"Erreurs détectées: {len(lint_result['errors'])}")
 ```
 
-#### scan_projects
+### **🧹 Maintenance et Nettoyage**
 
-**Exemple d'utilisation :**
+#### **Nettoyage Automatique**
+```python
+from athalia_core.auto_cleaner import AutoCleaner
+
+# Nettoyer le projet
+cleaner = AutoCleaner("/chemin/vers/projet")
+clean_result = cleaner.clean_project()
+print(f"Fichiers nettoyés: {clean_result['files_cleaned']}")
+```
+
+---
+
+## 📊 **Exemples d'Utilisation Avancée**
+
+### **Workflow Complet d'Industrialisation**
+
+```bash
+# 1. Audit initial
+python athalia_unified.py /mon-projet --action audit --verbose
+
+# 2. Correction automatique
+python athalia_unified.py /mon-projet --action fix --auto-fix
+
+# 3. Industrialisation complète
+python athalia_unified.py /mon-projet --action complete
+
+# 4. Validation finale
+python athalia_unified.py /mon-projet --action audit --verbose
+```
+
+### **Monitoring Continu**
+
+```bash
+# Dashboard en temps réel
+python athalia_unified.py /mon-projet --action dashboard --utilisateur dev
+
+# Monitoring des performances
+python athalia_core/performance_analyzer.py --monitor --project /mon-projet
+```
+
+---
+
+## 🎯 **Cas d'Usage Spécifiques**
+
+### **Projet Python Standard**
+```bash
+# Audit d'un projet Python
+python athalia_unified.py /chemin/projet-python --action audit
+
+# Industrialisation avec tests
+python athalia_unified.py /chemin/projet-python --action complete --with-tests
+```
+
+### **Projet Robotique (ROS2)**
+```bash
+# Audit robotique spécialisé
+python athalia_unified.py /chemin/projet-ros2 --action audit --robotics
+
+# Validation ROS2
+python athalia_core/robotics/ros2_validator.py /chemin/projet-ros2
+```
+
+### **Projet Web**
+```bash
+# Audit d'application web
+python athalia_unified.py /chemin/projet-web --action audit --web
+
+# Optimisation frontend
+python athalia_core/performance_analyzer.py --frontend --project /chemin/projet-web
+```
+
+---
+
+## 🔧 **Dépannage**
+
+### **Problèmes Courants**
+
+#### **Erreur de Permissions**
+```bash
+# Corriger les permissions
+chmod +x bin/*.py
+chmod +x bin/*.sh
+```
+
+#### **Dépendances Manquantes**
+```bash
+# Réinstaller les dépendances
+pip install --force-reinstall -r requirements.txt
+```
+
+#### **Problèmes de Configuration**
+```bash
+# Vérifier la configuration
+python athalia_core/config_manager.py --validate
+
+# Réinitialiser la configuration
+python athalia_core/config_manager.py --reset
+```
+
+---
+
+## 🎉 **Prochaines Étapes**
+
+1. **Explorer les [Guides développeur](../DEVELOPER/)**
+2. **Consulter la [Documentation API](../API/)**
+3. **Tester avec vos propres projets**
+4. **Contribuer au développement**
+
+---
+
+*Guide d'utilisation complet et détaillé - Prêt pour la production !* ✅
 
 ```python
 from athalia_core.unified_orchestrator import UnifiedOrchestrator

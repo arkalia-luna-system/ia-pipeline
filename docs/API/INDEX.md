@@ -15,25 +15,18 @@ Cette section contient toute la documentation API d'Athalia Dev Setup, organisé
 ## 📋 **Modules Principaux**
 
 ### **🧠 Cœur du Système**
-- [Orchestrateur Principal](CORE_MODULES.md) - `athalia_orchestrator.py`
-- [Gestion d'Erreurs](ERROR_HANDLING.md) - `error_handling.py` et `error_codes.py`
-- [Configuration](CONFIG_MANAGER.md) - `config_manager.py`
+- [Modules Core](core_modules.md) - Modules principaux du système
+- [Gestion d'Erreurs](ERROR_HANDLING.md) - Gestion des erreurs
+- [Orchestrateur](orchestrator.md) - Orchestrateur unifié
 
 ### **🤖 Intelligence Artificielle**
-- [IA Robuste](AI_ROBUST.md) - `ai_robust.py`
-- [Distillation](DISTILLATION.md) - Modules de distillation
-- [Agents](AGENTS.md) - Système d'agents
+- [Commandes](COMMANDES.md) - Commandes principales
+- [Commandes Avancées](COMMANDES_AVANCEES.md) - Commandes avancées
+- [Plugins](plugins.md) - Système de plugins
 
 ### **🏭 Industrialisation**
-- [Génération](GENERATION.md) - `generation.py`
-- [Tests Automatiques](AUTO_TESTER.md) - `auto_tester.py`
-- [Documentation Auto](AUTO_DOCUMENTER.md) - `auto_documenter.py`
-- [CI/CD Auto](AUTO_CICD.md) - `auto_cicd.py`
-
-### **🔧 Outils et Utilitaires**
-- [CLI](CLI.md) - Interface en ligne de commande
-- [Dashboard](DASHBOARD.md) - Interface web
-- [Plugins](PLUGINS.md) - Système de plugins
+- [Robotique](robotics.md) - Modules robotiques
+- [Référence](REFERENCE.md) - Référence complète de l'API
 
 ---
 
@@ -41,32 +34,32 @@ Cette section contient toute la documentation API d'Athalia Dev Setup, organisé
 
 ### **Import des Modules**
 ```python
-# Orchestrateur principal
-from athalia_core.athalia_orchestrator import AthaliaOrchestrator
-
-# Gestion d'erreurs
-from athalia_core.error_handling import AthaliaError, ErrorHandler
+# Modules principaux
+from athalia_core import ai_robust, analytics, audit
 
 # IA robuste
 from athalia_core.ai_robust import RobustAI
 
-# Génération
-from athalia_core.generation import generate_project
+# Analytics
+from athalia_core.analytics import analyze_project
+
+# Audit
+from athalia_core.audit import audit_project
 ```
 
 ### **Exemple d'Utilisation**
 ```python
-# Créer l'orchestrateur
-orch = AthaliaOrchestrator()
+# Analyser un projet
+from athalia_core.analytics import analyze_project
 
-# Générer un projet
-project_path = orch.generate_project(
-    blueprint={"project_name": "mon_projet"},
-    output_dir="./generated"
-)
+analysis = analyze_project("/chemin/vers/projet")
+print(f"Score qualité: {analysis['quality_score']}")
 
-# Analyser le projet
-analysis = orch.analyze_project(project_path)
+# Audit de sécurité
+from athalia_core.audit import audit_project
+
+audit_result = audit_project("/chemin/vers/projet")
+print(f"Score sécurité: {audit_result['security_score']}")
 ```
 
 ---

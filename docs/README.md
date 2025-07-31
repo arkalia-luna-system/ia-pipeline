@@ -24,7 +24,7 @@ Ce dossier contient toute la documentation du projet Athalia, un système d'inte
 ### **🚀 Guides Principaux**
 - **[Guide d'installation](INSTALLATION.md)** - Installation et configuration
 - **[Guide d'utilisation](USAGE.md)** - Utilisation des fonctionnalités
-- **[Documentation API](API.md)** - Référence complète de l'API
+- **[Documentation API](API/)** - Référence complète de l'API
 
 ### **🏗️ Architecture**
 - **[ARCHITECTURE/](ARCHITECTURE/)** - Structure et organisation du projet
@@ -71,7 +71,7 @@ Ce dossier contient toute la documentation du projet Athalia, un système d'inte
 1. **Installation** : Suivez le [Guide d'installation](INSTALLATION.md)
 2. **Utilisation** : Consultez le [Guide d'utilisation](USAGE.md)
 3. **Développement** : Explorez les [Guides développeur](DEVELOPER/)
-4. **API** : Référencez la [Documentation API](API.md)
+4. **API** : Référencez la [Documentation API](API/)
 
 ---
 
