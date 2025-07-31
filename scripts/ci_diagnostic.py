@@ -81,7 +81,8 @@ class CIDiagnostic:
 
                 if file_info["size"] > 10000:  # 10KB
                     results["issues"].append(
-                        f"{wf_file.name}: Fichier volumineux ({file_info['size']} bytes)"
+                        f"{wf_file.name}: Fichier volumineux "
+                        f"({file_info['size']} bytes)"
                     )
 
             except Exception as e:

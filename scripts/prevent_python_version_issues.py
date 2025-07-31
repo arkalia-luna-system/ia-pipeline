@@ -39,7 +39,8 @@ class PythonVersionPreventer:
                     # Chercher spécifiquement les versions Python (pas les versions de dépendances)
                     # Pattern pour python-version: "3.1"
                     python_version_matches = re.findall(
-                        r'python-version:\s*["\']?([3]\.[0-9]+)["\']?', line
+                        r'python-version:\s*["\']?([3]\.[0-9]+)["\']?',
+                        line,
                     )
                     for version in python_version_matches:
                         if version in self.unsupported_versions:
@@ -259,7 +260,8 @@ fi
         if hook_created:
             print("🔧 Hook de prévention installé")
             print(
-                "   Le hook vérifiera automatiquement les versions Python avant chaque commit"
+                "   Le hook vérifiera automatiquement les versions Python avant "
+                "chaque commit"
             )
 
         print("\n🎯 Recommandations:")

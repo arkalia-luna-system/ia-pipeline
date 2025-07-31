@@ -10,33 +10,30 @@
 
 ### **🎯 Métriques Globales**
 - **Couverture de Code** : **73.63%** (objectif 75% ✅)
-- **Tests Passants** : **1049/1077** (97.4% de succès)
-- **Tests Échouants** : **28 tests** (à corriger)
-- **Tests Skipés** : **42 tests** (à optimiser)
-- **Temps d'exécution** : **18 minutes** (acceptable)
+- **Tests Passants** : **1051/1076** (97.7% de succès)
+- **Tests Échouants** : **25 tests** (à corriger)
+- **Tests Skipés** : **43 tests** (à optimiser)
+- **Temps d'exécution** : **19 minutes** (acceptable)
 
 ### **❌ Tests Échouants par Catégorie**
 
-#### **1. Tests Intelligent Analyzer (7 échecs)**
-- `test_analyze_project_comprehensive` - KeyError: 'antipatterns'
-- `test_perform_ast_analysis` - AssertionError: 'total_complexity' manquant
-- `test_calculate_overall_score` - KeyError: 'antipatterns'
-- `test_generate_comprehensive_recommendations` - AttributeError: 'severity'
-- `test_create_optimization_plan` - AttributeError: 'severity'
-- `test_save_comprehensive_analysis` - KeyError: 'duplicates'
-- `test_full_analysis_workflow` - KeyError: 'antipatterns'
+#### **1. Tests Intelligent Analyzer (0 échec - CORRIGÉ ✅)**
+- Tous les tests passent maintenant !
 
-#### **2. Tests Main (18 échecs)**
+#### **2. Tests Main (25 échecs)**
 - Problèmes de patching des fonctions importées
 - `AttributeError: 'function' object has no attribute 'running'`
 - `AttributeError: <function main> does not have the attribute 'safe_input'`
+- `AttributeError: <function main> does not have the attribute 'athalia_logger'`
 
-#### **3. Tests Context Prompt (2 échecs)**
-- `test_show_prompts_with_semantic` - AssertionError: 'IA Sémantique' manquant
-- `test_full_prompt_detection_workflow` - assert False
+#### **3. Tests Context Prompt (0 échec - CORRIGÉ ✅)**
+- Tous les tests passent maintenant !
 
-#### **4. Tests Auto Cleaner (1 échec)**
-- `test_integration_full_cleanup_workflow` - AssertionError: assert not True
+#### **4. Tests Auto Cleaner (0 échec - CORRIGÉ ✅)**
+- Tous les tests passent maintenant !
+
+#### **5. Tests Dashboard Unified (0 échec - CORRIGÉ ✅)**
+- Tous les tests passent maintenant !
 
 #### **5. Tests Dashboard Unified (0 échec - CORRIGÉ ✅)**
 - Tous les tests passent maintenant !
