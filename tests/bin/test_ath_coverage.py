@@ -34,6 +34,15 @@ def cleanup_coverage_files():
         except Exception:
             pass
 
+    # Supprime le dossier htmlcov s'il existe
+    try:
+        import shutil
+
+        if os.path.exists("htmlcov"):
+            shutil.rmtree("htmlcov")
+    except Exception:
+        pass
+
 
 @pytest.mark.timeout(120)
 def test_ath_coverage_runs():
@@ -46,6 +55,10 @@ def test_ath_coverage_runs():
     env.pop("ATHALIA_COVERAGE_RUNNING", None)
     env.pop("COVERAGE_FILE", None)
     env.pop("COVERAGE_PROCESS_START", None)
+    env.pop("COVERAGE_CONTEXT", None)
+    env.pop("COVERAGE_DATA_FILE", None)
+    # Forcer un nouveau fichier de couverture
+    env["COVERAGE_FILE"] = ".coverage.test"
 
     # Utiliser l'environnement nettoyé
 

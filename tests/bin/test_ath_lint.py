@@ -30,10 +30,28 @@ def cleanup_coverage_files():
         except Exception:
             pass
 
+    # Supprime le dossier htmlcov s'il existe
+    try:
+        import shutil
+
+        if os.path.exists("htmlcov"):
+            shutil.rmtree("htmlcov")
+    except Exception:
+        pass
+
 
 def test_ath_lint_runs():
     # Nettoyer les fichiers de couverture avant le test
     cleanup_coverage_files()
+
+    # Supprimer les variables d'environnement de couverture pour éviter les conflits
+    env = os.environ.copy()
+    env.pop("COVERAGE_FILE", None)
+    env.pop("COVERAGE_PROCESS_START", None)
+    env.pop("COVERAGE_CONTEXT", None)
+    env.pop("COVERAGE_DATA_FILE", None)
+    # Forcer un nouveau fichier de couverture
+    env["COVERAGE_FILE"] = ".coverage.test"
 
     script = os.path.join(os.path.dirname(__file__), "../../bin/ath-lint.py")
 
@@ -46,7 +64,7 @@ def test_ath_lint_runs():
         pytest.skip(f"Script {script} n'a pas les permissions d'exécution")
 
     try:
-        result = validate_and_run([script], capture_output=True, text=True)
+        result = validate_and_run([script], capture_output=True, text=True, env=env)
         # 0 = succès, 1 = échec de linting, mais pas crash
         assert result.returncode in (0, 1), f"ath-lint.py a crashé: {result.stderr}"
     except PermissionError:
