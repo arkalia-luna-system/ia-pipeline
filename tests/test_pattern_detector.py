@@ -353,7 +353,7 @@ class TestPatternDetector:
         ]
 
         detector = PatternDetector("/tmp/test")
-        
+
         # Mock la fonction max pour éviter les erreurs de comparaison
         with patch("builtins.max", return_value=0.9):
             insights = detector.get_learning_insights()
