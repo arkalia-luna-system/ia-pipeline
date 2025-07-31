@@ -40,7 +40,8 @@ class TestCLIRobustesse:
             # Scripts CLI simples qui fonctionnent rapidement
             Path("bin/ath-lint.py"),
             Path("bin/ath-coverage.py"),
-            # Exclure ath-audit.py et ath-build.py car ils appellent des modules interactifs
+            # Exclure ath-audit.py et ath-build.py car ils appellent des modules
+            # interactifs
             # Path("bin/ath-audit.py"),
             # Path("bin/ath-build.py"),
             # Exclure athalia_core/main.py car c'est un script interactif

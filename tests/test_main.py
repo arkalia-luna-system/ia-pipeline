@@ -139,12 +139,13 @@ class TestSurveillanceMode:
 class TestMain:
     """Tests pour la fonction main"""
 
-    @patch("builtins.input")
+    @patch("athalia_core.main.menu")
+    @patch("athalia_core.main.safe_input")
     @patch("athalia_core.cleanup.clean_old_tests_and_caches")
-    def test_main_cleanup_choice(self, mock_cleanup, mock_input):
+    def test_main_cleanup_choice(self, mock_cleanup, mock_safe_input, mock_menu):
         """Test de la fonction main avec choix de nettoyage"""
-        # Simuler le menu et l'entrée utilisateur
-        mock_input.side_effect = ["2", "test_project"]
+        mock_menu.return_value = "2"
+        mock_safe_input.return_value = "test_project"
 
         # Mock pour éviter la boucle infinie
         with patch("athalia_core.main.running", False):
