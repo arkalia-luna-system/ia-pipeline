@@ -7,7 +7,8 @@ Amélioration de la couverture de code de 10.05% à 80%+
 import signal
 from unittest.mock import MagicMock, patch
 
-from athalia_core.main import main, menu, safe_input, signal_handler, surveillance_mode
+from athalia_core.main import menu, safe_input, signal_handler, surveillance_mode
+import athalia_core.main
 
 
 class TestSignalHandler:
@@ -16,18 +17,18 @@ class TestSignalHandler:
     def test_signal_handler(self):
         """Test du gestionnaire de signal"""
         # Sauvegarder l'état initial
-        import athalia_core.main
+        import athalia_core.main as main_module
 
-        original_running = athalia_core.main.running
+        original_running = main_module.running
 
         # Test du signal handler
         signal_handler(signal.SIGINT, None)
 
         # Vérifier que running est mis à False
-        assert athalia_core.main.running is False
+        assert main_module.running is False
 
         # Restaurer l'état
-        athalia_core.main.running = original_running
+        main_module.running = original_running
 
 
 class TestMenu:
