@@ -67,10 +67,10 @@ class AuditResult:
 class AuditCompletDossiers:
     """Auditeur complet des dossiers et sous-dossiers"""
 
-    def __init__(self, root_path: str = None):
+    def __init__(self, root_path: Optional[str] = None):
         self.root_path = Path(root_path or Path.cwd())
-        self.dossiers = []
-        self.results = []
+        self.dossiers: List[Path] = []
+        self.results: List[AuditResult] = []
 
     def analyser_tous_dossiers(self) -> List[AuditResult]:
         """Analyser tous les dossiers et sous-dossiers"""
@@ -491,13 +491,15 @@ class AuditCompletDossiers:
         modules_sans_docstring = [m for m in modules if not m.docstring]
         if modules_sans_docstring:
             recommandations.append(
-                f"📖 {len(modules_sans_docstring)} modules sans docstring - Ajouter de la documentation"
+                f"📖 {len(modules_sans_docstring)} modules sans docstring - "
+                f"Ajouter de la documentation"
             )
 
         modules_non_integres = [m for m in modules if not m.integration_orchestrateur]
         if modules_non_integres:
             recommandations.append(
-                f"🔗 {len(modules_non_integres)} modules non intégrés - Considérer l'intégration"
+                f"🔗 {len(modules_non_integres)} modules non intégrés - "
+                f"Considérer l'intégration"
             )
 
         return recommandations
@@ -613,7 +615,7 @@ class AuditCompletDossiers:
         return "\n".join(rapport)
 
 
-def main():
+def main() -> None:
     """Fonction principale"""
     print("🔍 AUDIT COMPLET DOSSIERS ET SOUS-DOSSIERS")
     print("=" * 50)
