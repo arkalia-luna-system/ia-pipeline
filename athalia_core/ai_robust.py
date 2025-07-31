@@ -288,7 +288,8 @@ class RobustAI:
             PromptContext.TESTING.value: (
                 "Crée une suite de tests complète pour le module {module_name} "
                 "avec les fonctionnalités suivantes: {features}. "
-                "Type de projet: {project_type}. Inclus tests unitaires et d'intégration."
+                "Type de projet: {project_type}. "
+                "Inclus tests unitaires et d'intégration."
             ),
             PromptContext.SECURITY.value: (
                 "Effectue un audit de sécurité du code suivant: {code}. "
