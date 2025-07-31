@@ -1,5 +1,6 @@
 import pytest
 
+
 # Vérification de la disponibilité de FastAPI
 try:
     from fastapi.testclient import TestClient

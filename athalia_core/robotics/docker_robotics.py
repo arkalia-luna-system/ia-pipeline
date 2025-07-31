@@ -18,6 +18,7 @@ from typing import Dict, List, Optional
 
 import yaml
 
+
 # Import du validateur de sécurité
 try:
     from athalia_core.security_validator import SecurityError, validate_and_run
@@ -381,8 +382,8 @@ htmlcov/
 # 🐳 Rapport Docker Robotique
 
 ## 📊 État de la Configuration
-- **Compose Valide**: {'✅' if result.compose_valid else '❌'}
-- **Prêt à Lancer**: {'✅' if result.ready_to_run else '❌'}
+- **Compose Valide**: {"✅" if result.compose_valid else "❌"}
+- **Prêt à Lancer**: {"✅" if result.ready_to_run else "❌"}
 - **Services**: {len(result.services)}
 
 ## 🔧 Services Détectés
@@ -395,7 +396,7 @@ htmlcov/
 - **Variables d'env**: {len(service.environment)}
 - **Volumes**: {len(service.volumes)}
 - **Ports**: {len(service.ports)}
-- **Network**: {service.network_mode or 'default'}
+- **Network**: {service.network_mode or "default"}
 """
 
         if result.issues:

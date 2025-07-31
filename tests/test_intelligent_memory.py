@@ -10,6 +10,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
+
 # Import du module à tester
 try:
     from athalia_core.intelligent_memory import (

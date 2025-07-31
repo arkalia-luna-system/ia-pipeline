@@ -10,6 +10,7 @@ from pathlib import Path
 import re
 from typing import Any, Dict, List, Tuple
 
+
 logger = logging.getLogger(__name__)
 
 
@@ -612,7 +613,7 @@ Rapport d'Auto-Correction
 ========================
 """
         rapport += f"\n📊 RAPPORT D'AUTO-CORRECTION - {self.project_path}\n"
-        rapport += f"{'='*60}\n\n"
+        rapport += f"{'=' * 60}\n\n"
 
         # Utiliser le dictionnaire 'resultats' pour générer le rapport
         corrections_appliquees = resultats.get("corrections_appliquees", [])

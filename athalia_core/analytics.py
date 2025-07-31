@@ -9,6 +9,7 @@ import logging
 from pathlib import Path
 from typing import Any, Dict
 
+
 logger = logging.getLogger(__name__)
 
 
@@ -308,9 +309,9 @@ def generate_analytics_html(project_path: str, output_path: str = None) -> str:
         <div class="metric">
             <h2>Recommandations</h2>
             <ul>
-                {''.join(
-                    f'<li>{rec}</li>' for rec in engine.generate_recommendations()
-                )}
+                {
+        "".join(f"<li>{rec}</li>" for rec in engine.generate_recommendations())
+    }
             </ul>
         </div>
     </body>

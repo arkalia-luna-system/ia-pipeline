@@ -10,6 +10,7 @@ import logging
 import sqlite3
 from typing import Any, Dict, List, Optional
 
+
 logger = logging.getLogger(__name__)
 
 
@@ -322,17 +323,17 @@ class GestionnaireProfils:
 
         rapport = f"""
 📊 RAPPORT PROFIL UTILISATEUR - {nom_profil}
-{'='*50}
+{"=" * 50}
 
 👤 INFORMATIONS GÉNÉRALES:
 • Email: {profil.email}
-• Date de création: {profil.date_creation.strftime('%d/%m/%Y %H:%M')}
-• Dernière connexion: {profil.derniere_connexion.strftime('%d/%m/%Y %H:%M')}
+• Date de création: {profil.date_creation.strftime("%d/%m/%Y %H:%M")}
+• Dernière connexion: {profil.derniere_connexion.strftime("%d/%m/%Y %H:%M")}
 
 📈 STATISTIQUES:
-• Actions totales: {stats['total_actions']}
-• Projets consultés: {stats['total_projets']}
-• Temps total: {stats['temps_total']} minutes
+• Actions totales: {stats["total_actions"]}
+• Projets consultés: {stats["total_projets"]}
+• Temps total: {stats["temps_total"]} minutes
 
 🔝 ACTIONS LES PLUS FRÉQUENTES:
 """

@@ -3,6 +3,7 @@
 """
 Tests pour le système de plugins dynamiques Athalia
 """
+
 import os
 import shutil
 import tempfile

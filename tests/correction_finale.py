@@ -10,6 +10,7 @@ from pathlib import Path
 import re
 from typing import Dict, List
 
+
 # Configuration du logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

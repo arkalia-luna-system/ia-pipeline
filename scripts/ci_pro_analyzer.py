@@ -33,9 +33,9 @@ class CIProAnalyzer:
 
     def print_header(self, title: str):
         """Affiche un en-tête coloré"""
-        print(f"\n{Colors.PURPLE}{'='*60}{Colors.NC}")
+        print(f"\n{Colors.PURPLE}{'=' * 60}{Colors.NC}")
         print(f"{Colors.PURPLE}{title:^60}{Colors.NC}")
-        print(f"{Colors.PURPLE}{'='*60}{Colors.NC}")
+        print(f"{Colors.PURPLE}{'=' * 60}{Colors.NC}")
 
     def print_section(self, title: str):
         """Affiche une section"""
@@ -246,8 +246,7 @@ class CIProAnalyzer:
 
         # Mesure de couverture réelle
         returncode, stdout, stderr = self.run_command(
-            "python -m coverage run --source=athalia_core -m pytest tests/ -q "
-            "--tb=no --maxfail=9999 && python -m coverage report"
+            "python -m coverage run --source=athalia_core -m pytest tests/ -q --tb=no --maxfail=9999; python -m coverage report"
         )
         if returncode == 0:
             # Extraire le pourcentage de couverture

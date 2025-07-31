@@ -18,6 +18,7 @@ import yaml
 
 from .ast_analyzer import ASTAnalyzer, FileAnalysis
 
+
 logger = logging.getLogger(__name__)
 
 

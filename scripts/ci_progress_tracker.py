@@ -99,20 +99,22 @@ class CIProgressTracker:
 ## 🎯 Niveau Actuel: {current_level}/5 - {level_name}
 
 ### 📈 Métriques:
-- **Status:** {self.metrics['status']}
-- **Tests passants:** {self.metrics['tests_passed']}
-- **Score sécurité:** {self.metrics['security_score']}/100
-- **Score performance:** {self.metrics['performance_score']}/100
-- **Couverture:** {self.metrics['coverage']}%
+- **Status:** {self.metrics["status"]}
+- **Tests passants:** {self.metrics["tests_passed"]}
+- **Score sécurité:** {self.metrics["security_score"]}/100
+- **Score performance:** {self.metrics["performance_score"]}/100
+- **Couverture:** {self.metrics["coverage"]}%
 
 ### 🚀 Prochaines étapes:
 - **Niveau {current_level + 1}:** {
-    self._get_next_level(current_level).title() if current_level < 5 else "Finalisation"
-}
+            self._get_next_level(current_level).title()
+            if current_level < 5
+            else "Finalisation"
+        }
 
-### 📅 Dernière mise à jour: {self.metrics['last_update']}
-### 🌿 Branche: {self.metrics['branch']}
-### 👤 Acteur: {self.metrics['actor']}
+### 📅 Dernière mise à jour: {self.metrics["last_update"]}
+### 🌿 Branche: {self.metrics["branch"]}
+### 👤 Acteur: {self.metrics["actor"]}
 
 ### 📋 Progression par niveau:
 """

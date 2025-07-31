@@ -6,6 +6,7 @@ import time
 
 import pytest
 
+
 # Correction pour les permissions des scripts
 
 # Import sécurisé pour la validation des commandes
@@ -62,6 +63,6 @@ def test_ath_coverage_runs():
             0,
             1,
         ), f"ath-coverage.py a crashé: {result.stderr.decode(errors='ignore')}"
-        assert (
-            time.time() - start
-        ) < 35, "ath-coverage.py a mis trop de temps à s'exécuter (>30s)"
+        assert (time.time() - start) < 35, (
+            "ath-coverage.py a mis trop de temps à s'exécuter (>30s)"
+        )

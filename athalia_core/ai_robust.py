@@ -12,6 +12,7 @@ from typing import Dict, List, Optional
 
 import requests
 
+
 # Import du validateur de sécurité
 try:
     from athalia_core.security_validator import SecurityError, validate_and_run

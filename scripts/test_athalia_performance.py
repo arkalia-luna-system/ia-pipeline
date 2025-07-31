@@ -116,7 +116,7 @@ def test_multiple_runs():
     times = []
 
     for i in range(3):
-        print(f"  Exécution {i+1}/3...")
+        print(f"  Exécution {i + 1}/3...")
         start_time = time.time()
 
         try:

@@ -3,6 +3,7 @@
 Module de distillation de corrections IA pour Athalia/Arkalia
 Fusionne, score et sélectionne la meilleure correction parmi plusieurs suggestions IA.
 """
+
 from typing import Any, Dict, List, Optional
 
 

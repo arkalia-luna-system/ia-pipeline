@@ -17,6 +17,7 @@ import subprocess
 import time
 from typing import Dict, List, Tuple
 
+
 # Import du validateur de sécurité
 try:
     from athalia_core.security_validator import SecurityError, validate_and_run
@@ -436,7 +437,7 @@ services:
 # 🤖 Rapport CI/CD Robotique
 
 ## 📊 Résumé
-- **Statut**: {'✅ Succès' if result.success else '❌ Échec'}
+- **Statut**: {"✅ Succès" if result.success else "❌ Échec"}
 - **Durée**: {result.duration:.2f}s
 - **Stages**: {len(result.stages)}
 - **Artifacts**: {len(result.artifacts)}

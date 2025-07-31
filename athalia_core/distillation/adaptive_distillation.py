@@ -4,6 +4,7 @@ Distillation adaptative pour Athalia/Arkalia
 - Pondération dynamique selon préférences et feedback utilisateur
 - Historique sauvegardé/chargé en JSON
 """
+
 import json
 from pathlib import Path
 from typing import Any, Dict, List, Optional

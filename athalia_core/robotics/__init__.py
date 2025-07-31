@@ -23,6 +23,7 @@ from .robotics_ci import RoboticsCI
 from .ros2_validator import ROS2Validator
 from .rust_analyzer import RustAnalyzer
 
+
 __all__ = [
     "ReachyAuditor",
     "ROS2Validator",

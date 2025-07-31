@@ -1,0 +1,256 @@
+#!/bin/bash
+# Script de vérification finale du formatage Athalia
+# Vérifie que tous les fichiers respectent les standards de formatage
+
+set -e
+
+# Couleurs
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+NC='\033[0m'
+
+# Variables
+VERBOSE=false
+AUTO_FIX=false
+
+# Fonctions d'affichage
+print_header() {
+    echo -e "${PURPLE}🔍 Vérification finale du formatage Athalia${NC}"
+    echo -e "${BLUE}📋 Vérification complète des standards de formatage${NC}"
+    echo
+}
+
+print_section() {
+    echo -e "${BLUE}📋 $1${NC}"
+}
+
+print_success() {
+    echo -e "${GREEN}✅ $1${NC}"
+}
+
+print_warning() {
+    echo -e "${YELLOW}⚠️  $1${NC}"
+}
+
+print_error() {
+    echo -e "${RED}❌ $1${NC}"
+}
+
+print_info() {
+    echo -e "${BLUE}ℹ️  $1${NC}"
+}
+
+# Parsing des arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --verbose|-v)
+            VERBOSE=true
+            shift
+            ;;
+        --auto-fix|-a)
+            AUTO_FIX=true
+            shift
+            ;;
+        --help|-h)
+            echo "Usage: ./bin/ath-verify-formatting [OPTIONS]"
+            echo ""
+            echo "Options:"
+            echo "  --verbose, -v     Affichage détaillé"
+            echo "  --auto-fix, -a    Correction automatique des problèmes"
+            echo "  --help, -h        Affiche cette aide"
+            echo ""
+            echo "Ce script vérifie que tous les fichiers respectent les standards de formatage"
+            exit 0
+            ;;
+        *)
+            print_error "Option inconnue: $1"
+            exit 1
+            ;;
+    esac
+done
+
+# Fonction principale
+main() {
+    print_header
+
+    # Étape 1: Vérification de l'environnement
+    print_section "Vérification de l'environnement"
+    
+    if ! command -v black > /dev/null 2>&1; then
+        print_error "Black n'est pas installé"
+        exit 1
+    fi
+    
+    if ! command -v isort > /dev/null 2>&1; then
+        print_error "isort n'est pas installé"
+        exit 1
+    fi
+    
+    if ! command -v ruff > /dev/null 2>&1; then
+        print_error "ruff n'est pas installé"
+        exit 1
+    fi
+    
+    print_success "Outils de formatage disponibles"
+
+    # Étape 2: Vérification Black
+    print_section "Vérification Black"
+    if [ "$VERBOSE" = true ]; then
+        if black . --check --diff; then
+            print_success "Formatage Black OK"
+        else
+            print_error "Problèmes de formatage Black détectés"
+            if [ "$AUTO_FIX" = true ]; then
+                print_info "Correction automatique Black..."
+                black .
+                print_success "Black corrigé"
+            else
+                exit 1
+            fi
+        fi
+    else
+        if black . --check > /dev/null 2>&1; then
+            print_success "Formatage Black OK"
+        else
+            print_error "Problèmes de formatage Black détectés"
+            if [ "$AUTO_FIX" = true ]; then
+                print_info "Correction automatique Black..."
+                black . > /dev/null 2>&1
+                print_success "Black corrigé"
+            else
+                exit 1
+            fi
+        fi
+    fi
+
+    # Étape 3: Vérification isort
+    print_section "Vérification isort"
+    if [ "$VERBOSE" = true ]; then
+        if isort . --check-only --diff; then
+            print_success "Organisation des imports OK"
+        else
+            print_error "Problèmes d'organisation des imports détectés"
+            if [ "$AUTO_FIX" = true ]; then
+                print_info "Correction automatique isort..."
+                isort .
+                print_success "isort corrigé"
+            else
+                exit 1
+            fi
+        fi
+    else
+        if isort . --check-only > /dev/null 2>&1; then
+            print_success "Organisation des imports OK"
+        else
+            print_error "Problèmes d'organisation des imports détectés"
+            if [ "$AUTO_FIX" = true ]; then
+                print_info "Correction automatique isort..."
+                isort . > /dev/null 2>&1
+                print_success "isort corrigé"
+            else
+                exit 1
+            fi
+        fi
+    fi
+
+    # Étape 4: Vérification ruff
+    print_section "Vérification ruff"
+    if [ "$VERBOSE" = true ]; then
+        if ruff check .; then
+            print_success "Linting ruff OK"
+        else
+            print_warning "Problèmes de linting ruff détectés"
+            if [ "$AUTO_FIX" = true ]; then
+                print_info "Correction automatique ruff..."
+                ruff check --fix .
+                print_success "ruff corrigé"
+            fi
+        fi
+    else
+        if ruff check . > /dev/null 2>&1; then
+            print_success "Linting ruff OK"
+        else
+            print_warning "Problèmes de linting ruff détectés"
+            if [ "$AUTO_FIX" = true ]; then
+                print_info "Correction automatique ruff..."
+                ruff check --fix . > /dev/null 2>&1
+                print_success "ruff corrigé"
+            fi
+        fi
+    fi
+
+    # Étape 5: Vérification ruff-format
+    print_section "Vérification ruff-format"
+    if [ "$VERBOSE" = true ]; then
+        if ruff format --check .; then
+            print_success "Formatage ruff OK"
+        else
+            print_error "Problèmes de formatage ruff détectés"
+            if [ "$AUTO_FIX" = true ]; then
+                print_info "Correction automatique ruff-format..."
+                ruff format .
+                print_success "ruff-format corrigé"
+            else
+                exit 1
+            fi
+        fi
+    else
+        if ruff format --check . > /dev/null 2>&1; then
+            print_success "Formatage ruff OK"
+        else
+            print_error "Problèmes de formatage ruff détectés"
+            if [ "$AUTO_FIX" = true ]; then
+                print_info "Correction automatique ruff-format..."
+                ruff format . > /dev/null 2>&1
+                print_success "ruff-format corrigé"
+            else
+                exit 1
+            fi
+        fi
+    fi
+
+    # Étape 6: Vérification finale
+    print_section "Vérification finale"
+    
+    # Vérifier s'il y a des fichiers modifiés
+    if [ -n "$(git diff --name-only)" ]; then
+        print_warning "Fichiers modifiés détectés:"
+        git diff --name-only | while read file; do
+            echo "  - $file"
+        done
+        
+        if [ "$AUTO_FIX" = true ]; then
+            print_info "Ajout automatique des fichiers modifiés..."
+            git add .
+            print_success "Fichiers ajoutés au staging"
+        fi
+    else
+        print_success "Aucun fichier modifié"
+    fi
+
+    # Étape 7: Résumé
+    echo
+    print_success "🎉 Vérification finale terminée !"
+    echo
+    print_info "📋 Résumé:"
+    print_info "  - Black: ✅"
+    print_info "  - isort: ✅"
+    print_info "  - ruff: ✅"
+    print_info "  - ruff-format: ✅"
+    echo
+    print_info "💡 Prochaines étapes:"
+    if [ "$AUTO_FIX" = true ] && [ -n "$(git diff --cached --name-only)" ]; then
+        print_info "  - git commit -m \"votre message\""
+        print_info "  - git push"
+    else
+        print_info "  - ./bin/ath-auto-format (si des corrections sont nécessaires)"
+        print_info "  - ./bin/ath-smart-commit -m \"votre message\" --push"
+    fi
+    echo
+}
+
+# Exécution
+main "$@" 

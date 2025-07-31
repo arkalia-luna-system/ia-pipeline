@@ -8,6 +8,7 @@ from typing import Any, Dict, List, Optional
 
 import yaml
 
+
 """
 Gestionnaire de configuration centralisé pour Athalia
 Lit le fichier YAML et les variables d'environnement

@@ -3,6 +3,7 @@
 Caching prédictif pour Athalia/Arkalia
 - Anticipation contextuelle, pré-génération, invalidation intelligente, stats
 """
+
 import time
 from typing import Any, Callable, Dict, Optional
 

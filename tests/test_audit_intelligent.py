@@ -3,11 +3,13 @@
 """
 Tests pour le système d'audit intelligent Athalia
 """
+
 import os
 import shutil
 import tempfile
 
 import pytest
+
 
 try:
     from athalia_core.audit import audit_project_intelligent

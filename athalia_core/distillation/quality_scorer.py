@@ -3,6 +3,7 @@
 Module de scoring de qualité pour Athalia/Arkalia
 Évalue la pertinence d'une solution IA ou d'une correction selon plusieurs critères.
 """
+
 from typing import Any, Dict, Optional
 
 

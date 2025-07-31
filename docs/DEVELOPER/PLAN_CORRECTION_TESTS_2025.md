@@ -26,21 +26,22 @@
 - `test_save_comprehensive_analysis` - KeyError: 'duplicates'
 - `test_full_analysis_workflow` - KeyError: 'antipatterns'
 
-#### **2. Tests Main (25 échecs)**
+#### **2. Tests Main (18 échecs)**
 - Problèmes de patching des fonctions importées
 - `AttributeError: 'function' object has no attribute 'running'`
 - `AttributeError: <function main> does not have the attribute 'safe_input'`
 
-#### **3. Tests Dashboard Unified (3 échecs)**
-- `test_generer_rapport_consolide` - TypeError: type str doesn't define __round__
-- `test_full_dashboard_workflow` - TypeError: type str doesn't define __round__
-- `test_dashboard_data_consistency` - AssertionError: 'metriques' manquant
-
-#### **4. Tests Context Prompt (2 échecs)**
+#### **3. Tests Context Prompt (2 échecs)**
 - `test_show_prompts_with_semantic` - AssertionError: 'IA Sémantique' manquant
 - `test_full_prompt_detection_workflow` - assert False
 
-#### **5. Tests Auto Cleaner (1 échec)**
+#### **4. Tests Auto Cleaner (1 échec)**
+- `test_integration_full_cleanup_workflow` - AssertionError: assert not True
+
+#### **5. Tests Dashboard Unified (0 échec - CORRIGÉ ✅)**
+- Tous les tests passent maintenant !
+
+#### **6. Tests Auto Cleaner (1 échec)**
 - `test_integration_full_cleanup_workflow` - AssertionError: assert not True
 
 ---
@@ -302,7 +303,7 @@ python -m pytest tests/ -v --cov=athalia_core --cov-report=term-missing
 4. **Documenter les corrections**
 
 ### **📅 Timeline**
-- **Total estimé** : 3-4 heures
+- **Total estimé** : 2-3 heures (progrès significatifs)
 - **Objectif** : Tout vert avant push sur develop
 - **Validation** : Tests complets + couverture
 

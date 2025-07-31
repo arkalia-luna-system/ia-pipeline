@@ -10,6 +10,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
+
 # Ajout du chemin du projet pour les imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 

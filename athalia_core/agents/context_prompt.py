@@ -10,6 +10,7 @@ import tempfile
 
 import yaml
 
+
 # Import du validateur de sécurité
 try:
     from athalia_core.security_validator import SecurityError, validate_and_run
@@ -118,7 +119,7 @@ LOG_DIR = os.path.join(os.path.dirname(__file__), "../logs")
 os.makedirs(LOG_DIR, exist_ok=True)
 LOG_FILE = os.path.join(
     LOG_DIR,
-    f'ath_context_prompt_{datetime.now().strftime("%Y%m%d_%H%M%S")}.log',
+    f"ath_context_prompt_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log",
 )
 logging.basicConfig(
     filename=LOG_FILE,

@@ -18,6 +18,7 @@ from typing import List, Optional, Tuple
 
 import yaml
 
+
 logger = logging.getLogger(__name__)
 
 
@@ -251,15 +252,15 @@ class ReachyAuditor:
     def generate_report(self, result: ReachyAuditResult) -> str:
         """Générer rapport d'audit"""
         report = f"""
-# 🔍 Rapport d'Audit Reachy - {result.timestamp.strftime('%Y-%m-%d %H:%M')}
+# 🔍 Rapport d'Audit Reachy - {result.timestamp.strftime("%Y-%m-%d %H:%M")}
 
 ## 📊 Score Global: {result.score:.1f}/100
 
 ### ✅ Validations
-- ROS2 Workspace: {'✅' if result.ros2_valid else '❌'}
-- Docker Setup: {'✅' if result.docker_valid else '❌'}
-- Rust/Cargo: {'✅' if result.rust_valid else '❌'}
-- Structure Projet: {'✅' if result.structure_valid else '❌'}
+- ROS2 Workspace: {"✅" if result.ros2_valid else "❌"}
+- Docker Setup: {"✅" if result.docker_valid else "❌"}
+- Rust/Cargo: {"✅" if result.rust_valid else "❌"}
+- Structure Projet: {"✅" if result.structure_valid else "❌"}
 
 ### 🚨 Problèmes Détectés
 """

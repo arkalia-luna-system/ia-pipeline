@@ -3,6 +3,7 @@
 Code Genetics pour Athalia/Arkalia
 - Croisement, mutation, sélection, évolution de solutions IA
 """
+
 import random
 from typing import Callable, List
 
@@ -34,7 +35,7 @@ class CodeGenetics:
         words = solution.split()
         for i in range(len(words)):
             if random.random() < mutation_rate:
-                words[i] = f"MUT_{random.randint(0,999)}"
+                words[i] = f"MUT_{random.randint(0, 999)}"
         return " ".join(words)
 
     def select(

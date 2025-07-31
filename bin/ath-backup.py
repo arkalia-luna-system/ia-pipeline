@@ -12,6 +12,7 @@ import shutil
 import sys
 from typing import Dict, List, Optional
 
+
 # Configuration du logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

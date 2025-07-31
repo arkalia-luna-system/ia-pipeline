@@ -10,6 +10,7 @@ import subprocess
 import tempfile
 import unittest
 
+
 # Import du module à tester
 try:
     from athalia_core.security_validator import (

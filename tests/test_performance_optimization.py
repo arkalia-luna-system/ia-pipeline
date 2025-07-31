@@ -12,6 +12,7 @@ import time
 
 import pytest
 
+
 # Import conditionnel de psutil
 try:
     import psutil

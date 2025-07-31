@@ -12,6 +12,7 @@ from typing import Any, Dict, List, Optional
 
 import yaml
 
+
 logger = logging.getLogger(__name__)
 
 
@@ -279,21 +280,21 @@ class Dashboard:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{dashboard_data.get('title', 'Dashboard Athalia')}</title>
+    <title>{dashboard_data.get("title", "Dashboard Athalia")}</title>
     <style>
         {self.generate_dashboard_css(theme)}
     </style>
 </head>
 <body class="theme-{theme}">
     <header class="dashboard-header">
-        <h1>{dashboard_data.get('title', 'Dashboard Athalia')}</h1>
+        <h1>{dashboard_data.get("title", "Dashboard Athalia")}</h1>
         <div class="dashboard-controls">
             <button id="refresh-btn">Actualiser</button>
             <select id="theme-selector">
-                <option value="light" {'selected' if theme == 'light' else ''}>
+                <option value="light" {"selected" if theme == "light" else ""}>
                     Clair
                 </option>
-                <option value="dark" {'selected' if theme == 'dark' else ''}>
+                <option value="dark" {"selected" if theme == "dark" else ""}>
                     Sombre
                 </option>
             </select>
@@ -306,8 +307,8 @@ class Dashboard:
 
         for widget in widgets:
             html_template += f"""
-            <div class="widget widget-{widget.get('type', 'default')}">
-                <h3>{widget.get('title', 'Widget')}</h3>
+            <div class="widget widget-{widget.get("type", "default")}">
+                <h3>{widget.get("title", "Widget")}</h3>
                 <div class="widget-content">
                     <pre>{json.dumps(widget, indent=2, ensure_ascii=False)}</pre>
                 </div>
@@ -319,7 +320,7 @@ class Dashboard:
     </main>
 
     <footer class="dashboard-footer">
-        <p>Généré le {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
+        <p>Généré le {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}</p>
     </footer>
 
     <script>
@@ -456,8 +457,8 @@ body {
 // Configuration du dashboard
 const dashboardConfig = {{
     refreshInterval: {refresh_interval} * 1000,
-    autoRefresh: {str(config.get('auto_refresh', True)).lower()},
-    showTimestamps: {str(config.get('show_timestamps', True)).lower()}
+    autoRefresh: {str(config.get("auto_refresh", True)).lower()},
+    showTimestamps: {str(config.get("show_timestamps", True)).lower()}
 }};
 
 // Fonction de rafraîchissement
