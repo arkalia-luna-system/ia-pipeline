@@ -13,7 +13,6 @@ import subprocess
 import threading
 import time
 
-
 # Import du validateur de sécurité
 try:
     from athalia_core.security_validator import validate_and_run
@@ -264,17 +263,17 @@ class ValidationContinue:
         rapport = f"""# 🚨 ALERTE RÉGRESSION - Athalia/Arkalia
 
 **Date:** {datetime.now().strftime("%d/%m/%Y %H:%M:%S")}
-**Gravité:** {alerte['gravite']}
-**Baisse détectée:** {regression['baisse']:.1f}%
+**Gravité:** {alerte["gravite"]}
+**Baisse détectée:** {regression["baisse"]:.1f}%
 
 ## 📊 Détails de la Régression
 
 | Métrique | Avant | Après | Baisse |
 |----------|-------|-------|--------|
-| Taux de succès | {regression['taux_avant']:.1f}% | {regression['taux_apres']:.1f}% | "
- f"{regression['baisse']:.1f}% |"
-| Temps total | - | {validation['temps_total']:.1f}s | - |
-| Erreurs critiques | - | {validation['erreurs_critiques']} | - |
+| Taux de succès | {regression["taux_avant"]:.1f}% | {regression["taux_apres"]:.1f}% | "
+ f"{regression["baisse"]:.1f}% |"
+| Temps total | - | {validation["temps_total"]:.1f}s | - |
+| Erreurs critiques | - | {validation["erreurs_critiques"]} | - |
 
 ## 🔍 Analyse des Résultats
 
@@ -365,11 +364,11 @@ class ValidationContinue:
 | Taux de succès | {taux_ancien:.1f}% | {taux_recent:.1f}% | "
  f"{evolution:+.1f}% |"
 | Temps moyen | "
- f"{sum(v['temps_total'] for v in anciennes)/len(anciennes):.1f}s | "
- f"{sum(v['temps_total'] for v in recentes)/len(recentes):.1f}s | - |"
+ f"{sum(v["temps_total"] for v in anciennes) / len(anciennes):.1f}s | "
+ f"{sum(v["temps_total"] for v in recentes) / len(recentes):.1f}s | - |"
 | Erreurs critiques | "
- f"{sum(v['erreurs_critiques'] for v in anciennes)/len(anciennes):.1f} | "
- f"{sum(v['erreurs_critiques'] for v in recentes)/len(recentes):.1f} | - |"
+ f"{sum(v["erreurs_critiques"] for v in anciennes) / len(anciennes):.1f} | "
+ f"{sum(v["erreurs_critiques"] for v in recentes) / len(recentes):.1f} | - |"
 
 ## 🎯 Recommandations
 

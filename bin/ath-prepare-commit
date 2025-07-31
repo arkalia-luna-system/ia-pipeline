@@ -138,30 +138,55 @@ main() {
         fi
     fi
 
-    # Étape 4: Linting et formatage
-    print_section "Vérification du linting"
+    # Étape 4: Linting et formatage automatique
+    print_section "Formatage et linting automatique"
     STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.py$' || true)
     UNSTAGED_FILES=$(git diff --name-only | grep '\.py$' || true)
     ALL_PY_FILES="$STAGED_FILES $UNSTAGED_FILES"
 
     if [ -n "$ALL_PY_FILES" ]; then
-        # Vérification flake8
-        if echo "$ALL_PY_FILES" | xargs -r flake8 --config=config/.flake8 2>/dev/null; then
-            print_success "Linting OK"
-        else
-            print_warning "Erreurs de linting détectées"
-            if [ "$AUTO_FIX" = true ] && [ "$DRY_RUN" = false ]; then
-                print_info "Correction automatique du linting..."
-                echo "$ALL_PY_FILES" | xargs -r autopep8 --in-place --aggressive --max-line-length=88
-                print_success "Linting corrigé"
-            fi
-        fi
-
-        # Formatage avec black
         if [ "$AUTO_FIX" = true ] && [ "$DRY_RUN" = false ]; then
-            print_info "Formatage avec black..."
-            echo "$ALL_PY_FILES" | xargs -r black --line-length=88 --preview
-            print_success "Formatage terminé"
+            print_info "Formatage automatique en cours..."
+
+            # Formatage avec isort (organisation des imports)
+            print_info "  - Organisation des imports (isort)..."
+            echo "$ALL_PY_FILES" | xargs -r isort --profile=black --line-length=88
+
+            # Formatage avec black
+            print_info "  - Formatage du code (black)..."
+            echo "$ALL_PY_FILES" | xargs -r black --line-length=88
+
+            # Formatage avec ruff
+            print_info "  - Formatage avancé (ruff)..."
+            echo "$ALL_PY_FILES" | xargs -r ruff format --line-length=88
+
+            # Linting avec ruff
+            print_info "  - Vérification du linting (ruff)..."
+            echo "$ALL_PY_FILES" | xargs -r ruff check --fix --exit-non-zero-on-fix || true
+
+            # Ajout automatique des fichiers modifiés
+            print_info "  - Ajout des fichiers modifiés..."
+            MODIFIED_FILES=$(git diff --name-only | grep '\.py$' || true)
+            if [ -n "$MODIFIED_FILES" ]; then
+                echo "$MODIFIED_FILES" | xargs -r git add
+                print_success "Fichiers formatés ajoutés au staging"
+            fi
+
+            print_success "Formatage automatique terminé"
+        else
+            # Vérification seulement
+            print_info "Vérification du formatage..."
+            if echo "$ALL_PY_FILES" | xargs -r black --check --line-length=88 2>/dev/null; then
+                print_success "Formatage Black OK"
+            else
+                print_warning "Problèmes de formatage Black détectés"
+            fi
+
+            if echo "$ALL_PY_FILES" | xargs -r isort --check-only --profile=black --line-length=88 2>/dev/null; then
+                print_success "Organisation des imports OK"
+            else
+                print_warning "Problèmes d'organisation des imports détectés"
+            fi
         fi
     else
         print_info "Aucun fichier Python modifié"
