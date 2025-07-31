@@ -111,7 +111,8 @@ class TestSecurityPatterns:
         # Skip si trop de patterns trouvés (probablement des faux positifs)
         if len(filtered_injections) > 5:
             pytest.skip(
-                f"Trop de patterns SQL détectés ({len(filtered_injections)}), probablement des faux positifs"
+                f"Trop de patterns SQL détectés ({len(filtered_injections)}), "
+                f"probablement des faux positifs"
             )
 
         if filtered_injections:
@@ -158,7 +159,8 @@ class TestSecurityPatterns:
         # Skip si trop de patterns trouvés (probablement des faux positifs)
         if len(filtered_usage) > 5:
             pytest.skip(
-                f"Trop de fonctions dangereuses détectées ({len(filtered_usage)}), probablement des faux positifs"
+                f"Trop de fonctions dangereuses détectées ({len(filtered_usage)}), "
+                f"probablement des faux positifs"
             )
 
         if filtered_usage:
@@ -198,7 +200,8 @@ class TestSecurityPatterns:
         # Skip si trop de patterns trouvés (probablement des faux positifs)
         if len(filtered_injections) > 20:
             pytest.skip(
-                f"Trop d'injections shell détectées ({len(filtered_injections)}), probablement des faux positifs"
+                f"Trop d'injections shell détectées ({len(filtered_injections)}), "
+                f"probablement des faux positifs"
             )
 
         if filtered_injections:

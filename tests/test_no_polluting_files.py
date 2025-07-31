@@ -314,6 +314,8 @@ class TestNoPollutingFiles:
             "requirements.txt",  # Peut exister dans différents dossiers
             "__init__.py",  # Normal dans différents packages
             ".gitignore",  # Peut exister dans différents dossiers
+            "pyproject.toml",  # Configuration de projet normal
+            ".gitkeep",  # Fichier Git normal pour maintenir les dossiers
             "audit_report.yaml",  # Peut être généré dans différents dossiers
             "analytics_dashboard.html",  # Peut être généré dans différents dossiers
             "activate_venv.sh",  # Script d'activation

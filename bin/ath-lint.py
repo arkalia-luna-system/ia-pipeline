@@ -7,13 +7,13 @@ try:
     from athalia_core.security_validator import SecurityError, validate_and_run
 except ImportError:
     # Fallback si le module n'est pas disponible
-    def validate_and_run(command, **kwargs):  # type: ignore
+    def validate_and_run(command, **kwargs) -> subprocess.CompletedProcess:  # type: ignore
         return subprocess.run(command, **kwargs)
 
     SecurityError = Exception  # type: ignore
 
 
-def main():
+def main() -> None:
     # Linting complet - vérifier tous les fichiers Python
     print("🔍 Exécution du linting complet...")
 
@@ -32,7 +32,8 @@ def main():
             if result.stderr:
                 print(result.stderr)
             print(
-                f"📊 Total: {result.stdout.strip().split()[-1] if result.stdout else 'N/A'} erreurs"
+                f"📊 Total: {result.stdout.strip().split()[-1] if result.stdout else 'N/A'} "
+                f"erreurs"
             )
             sys.exit(1)
         else:
@@ -57,7 +58,8 @@ def main():
             if result.stderr:
                 print(result.stderr)
             print(
-                f"📊 Total: {result.stdout.strip().split()[-1] if result.stdout else 'N/A'} erreurs"
+                f"📊 Total: {result.stdout.strip().split()[-1] if result.stdout else 'N/A'} "
+                f"erreurs"
             )
             sys.exit(1)
         else:
