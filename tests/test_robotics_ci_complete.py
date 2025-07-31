@@ -70,7 +70,10 @@ class TestRoboticsCI:
         """Test de vérification avec fichiers manquants"""
         self.ci._check_project_structure()
         # Doit avoir des erreurs ou un statut failed
-        assert len(self.ci.ci_results["errors"]) > 0 or self.ci.ci_results["build_status"] == "failed"
+        assert (
+            len(self.ci.ci_results["errors"]) > 0
+            or self.ci.ci_results["build_status"] == "failed"
+        )
 
     @patch("subprocess.run")
     def test_run_build_rust_success(self, mock_run):

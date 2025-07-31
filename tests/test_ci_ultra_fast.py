@@ -83,7 +83,9 @@ class TestCIUltraFast:
                 missing_vars.append(var)
 
         # Toutes les variables essentielles doivent être présentes
-        assert len(missing_vars) == 0, f"Variables d'environnement manquantes: {missing_vars}"
+        assert (
+            len(missing_vars) == 0
+        ), f"Variables d'environnement manquantes: {missing_vars}"
 
     def test_file_permissions(self):
         """Test des permissions de base sur les fichiers essentiels"""
@@ -92,4 +94,6 @@ class TestCIUltraFast:
         for file_path in essential_files:
             if os.path.exists(file_path):
                 # Vérifier que le fichier est lisible
-                assert os.access(file_path, os.R_OK), f"Fichier non lisible: {file_path}"
+                assert os.access(
+                    file_path, os.R_OK
+                ), f"Fichier non lisible: {file_path}"

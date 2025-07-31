@@ -231,6 +231,7 @@ def test_talker():
         """Test de vérification des dépendances réussie"""
         # Créer un mock qui simule subprocess.CompletedProcess
         from unittest.mock import Mock
+
         mock_result = Mock()
         mock_result.returncode = 0
         mock_result.stderr = ""

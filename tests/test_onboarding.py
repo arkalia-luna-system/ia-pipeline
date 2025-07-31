@@ -13,6 +13,7 @@ def test_onboarding_module_import():
     """Test d'import du module onboarding."""
     try:
         from athalia_core.onboarding import OnboardingManager
+
         assert OnboardingManager is not None
     except ImportError:
         pytest.skip("Module onboarding non disponible")
@@ -28,8 +29,8 @@ def test_onboarding_basic_functionality():
         assert onboarding is not None
 
         # Test de méthodes de base
-        assert hasattr(onboarding, 'setup_project')
-        assert hasattr(onboarding, 'validate_environment')
+        assert hasattr(onboarding, "setup_project")
+        assert hasattr(onboarding, "validate_environment")
 
     except ImportError:
         pytest.skip("Module onboarding non disponible")
@@ -53,6 +54,7 @@ def test_onboarding_project_setup():
         finally:
             # Nettoyage
             import shutil
+
             shutil.rmtree(test_project, ignore_errors=True)
 
     except ImportError:

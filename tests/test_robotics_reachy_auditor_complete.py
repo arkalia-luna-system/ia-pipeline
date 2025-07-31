@@ -668,7 +668,9 @@ dynamixel = "0.2"
         )
 
         # Mock la création de répertoire pour qu'elle échoue
-        with patch("pathlib.Path.mkdir", side_effect=PermissionError("Permission denied")):
+        with patch(
+            "pathlib.Path.mkdir", side_effect=PermissionError("Permission denied")
+        ):
             with pytest.raises(PermissionError):
                 self.auditor.save_report(result, "/tmp/test.md")
 
