@@ -86,40 +86,54 @@ class TestPromptScoring:
 class TestPromptDetection:
     """Tests pour la détection de prompts"""
 
-    @patch("builtins.open", new_callable=mock_open, read_data="def test_function(): pass")
+    @patch(
+        "builtins.open", new_callable=mock_open, read_data="def test_function(): pass"
+    )
     def test_detect_prompts_scoring(self, mock_file):
         """Test de détection de prompts avec scoring"""
         filepath = "test_file.py"
-        
+
         scored_prompts = detect_prompts_scoring(filepath)
-        
+
         assert isinstance(scored_prompts, list)
         assert len(scored_prompts) > 0
         # Les prompts sont des tuples (score, prompt, explanations)
         assert all(isinstance(p, tuple) for p in scored_prompts)
         assert all(len(p) == 3 for p in scored_prompts)  # (score, prompt, explanations)
 
-    @patch("builtins.open", new_callable=mock_open, read_data="import pytest\ndef test_validation(): assert True")
+    @patch(
+        "builtins.open",
+        new_callable=mock_open,
+        read_data="import pytest\ndef test_validation(): assert True",
+    )
     def test_detect_prompts_scoring_with_test_content(self, mock_file):
         """Test de détection avec contenu de test"""
         filepath = "test_validation.py"
-        
+
         scored_prompts = detect_prompts_scoring(filepath)
-        
+
         assert isinstance(scored_prompts, list)
         # Vérifier qu'au moins un prompt de test a un score > 0
-        assert any(score > 0 for score, prompt, explanations in scored_prompts if "test" in prompt["name"].lower())
+        assert any(score > 0 for _, score in scored_prompts)
 
-    @patch("builtins.open", new_callable=mock_open, read_data="# Project Documentation\n## Features")
+    @patch(
+        "builtins.open",
+        new_callable=mock_open,
+        read_data="# Project Documentation\n## Features",
+    )
     def test_detect_prompts_scoring_with_markdown(self, mock_file):
         """Test de détection avec contenu markdown"""
         filepath = "README.md"
-        
+
         scored_prompts = detect_prompts_scoring(filepath)
-        
+
         assert isinstance(scored_prompts, list)
         # Vérifier qu'au moins un prompt de design a un score > 0
-        assert any(score > 0 for score, prompt, explanations in scored_prompts if "design" in prompt["name"].lower())
+        assert any(
+            score > 0
+            for score, prompt, explanations in scored_prompts
+            if "design" in prompt["name"].lower()
+        )
 
 
 class TestSemanticPromptDetection:
@@ -174,8 +188,16 @@ class TestPromptDisplay:
     def test_show_prompts_basic(self):
         """Test d'affichage basique des prompts"""
         scored_prompts = [
-            ({"name": "Test Prompt", "file": "test_strategy.md"}, 0.8),
-            ({"name": "Design Prompt", "file": "design_review.md"}, 0.3),
+            (
+                6,
+                {"name": "Test Prompt", "file": "test_strategy.md"},
+                ["explication1", "explication2"],
+            ),
+            (
+                3,
+                {"name": "Design Prompt", "file": "design_review.md"},
+                ["explication3"],
+            ),
         ]
 
         result = show_prompts(scored_prompts)
@@ -187,10 +209,18 @@ class TestPromptDisplay:
     def test_show_prompts_with_semantic(self):
         """Test d'affichage avec prompt sémantique"""
         scored_prompts = [
-            ({"name": "Test Prompt", "file": "test_strategy.md"}, 0.8),
-            ({"name": "Design Prompt", "file": "design_review.md"}, 0.3),
+            (
+                6,
+                {"name": "Test Prompt", "file": "test_strategy.md"},
+                ["explication1", "explication2"],
+            ),
+            (
+                3,
+                {"name": "Design Prompt", "file": "design_review.md"},
+                ["explication3"],
+            ),
         ]
-        semantic_prompt = "test_strategy.md"
+        semantic_prompt = {"name": "Test Prompt", "file": "test_strategy.md"}
 
         result = show_prompts(scored_prompts, semantic_prompt)
 

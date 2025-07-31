@@ -10,7 +10,6 @@ import logging
 import os
 import sys
 
-
 # Configuration du logging
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"

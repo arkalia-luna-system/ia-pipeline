@@ -12,7 +12,6 @@ from pathlib import Path
 import subprocess
 import time
 
-
 # Import du validateur de sécurité
 try:
     from athalia_core.security_validator import SecurityError, validate_and_run
@@ -321,9 +320,7 @@ if __name__ == "__main__":
             "efficacite": (
                 "EXCELLENTE"
                 if gain_temps > 10
-                else "BONNE"
-                if gain_temps > 5
-                else "MOYENNE"
+                else "BONNE" if gain_temps > 5 else "MOYENNE"
             ),
         }
 
@@ -386,9 +383,7 @@ if __name__ == "__main__":
                         "qualite": (
                             "EXCELLENTE"
                             if score_pylint >= 9.0
-                            else "BONNE"
-                            if score_pylint >= 7.0
-                            else "MOYENNE"
+                            else "BONNE" if score_pylint >= 7.0 else "MOYENNE"
                         ),
                     }
                 except json.JSONDecodeError:

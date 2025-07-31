@@ -21,7 +21,6 @@ import re
 import sqlite3
 from typing import Any, Dict, List, Optional
 
-
 logger = logging.getLogger(__name__)
 
 

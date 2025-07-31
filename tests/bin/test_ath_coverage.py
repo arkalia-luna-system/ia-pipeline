@@ -6,7 +6,6 @@ import time
 
 import pytest
 
-
 # Correction pour les permissions des scripts
 
 # Import sécurisé pour la validation des commandes

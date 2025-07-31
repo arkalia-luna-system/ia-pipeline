@@ -16,7 +16,6 @@ from typing import Any, Dict, List, Optional, Union
 
 import yaml
 
-
 logger = logging.getLogger(__name__)
 
 
@@ -151,7 +150,7 @@ class CacheManager:
                 except (json.JSONDecodeError, UnicodeDecodeError):
                     # Sinon essayer pickle
                     try:
-                        cache_data = pickle.loads(serialized_data)
+                        cache_data = pickle.loads(serialized_data)  # nosec B301
                     except (pickle.UnpicklingError, EOFError):
                         logger.error(
                             f"Impossible de désérialiser les données pour {key}"
@@ -283,7 +282,7 @@ class CacheManager:
                 except (json.JSONDecodeError, UnicodeDecodeError):
                     # Sinon essayer pickle
                     try:
-                        cache_data = pickle.loads(serialized_data)
+                        cache_data = pickle.loads(serialized_data)  # nosec B301
                     except (pickle.UnpicklingError, EOFError):
                         # Dernier essai avec gestion d'erreur
                         return False

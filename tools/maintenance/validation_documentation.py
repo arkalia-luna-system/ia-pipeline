@@ -14,7 +14,6 @@ import re
 import sys
 from typing import Dict, List
 
-
 # Configuration du logging
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"

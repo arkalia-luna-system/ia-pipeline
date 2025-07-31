@@ -21,7 +21,6 @@ from .correction_optimizer import CorrectionOptimizer
 from .generation import generate_project
 from .security_auditor import SecurityAuditor
 
-
 logger = logging.getLogger(__name__)
 
 
