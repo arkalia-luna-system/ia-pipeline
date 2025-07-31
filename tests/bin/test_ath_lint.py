@@ -1,5 +1,6 @@
 import os
 import subprocess
+import glob
 
 import pytest
 
@@ -14,7 +15,26 @@ except ImportError:
     SecurityError = Exception
 
 
+def cleanup_coverage_files():
+    # Supprime tous les fichiers .coverage.* pour éviter les conflits
+    for f in glob.glob(".coverage*"):
+        try:
+            os.remove(f)
+        except Exception:
+            pass
+
+    # Supprime aussi les fichiers de couverture temporaires
+    for f in glob.glob(".coverage.*"):
+        try:
+            os.remove(f)
+        except Exception:
+            pass
+
+
 def test_ath_lint_runs():
+    # Nettoyer les fichiers de couverture avant le test
+    cleanup_coverage_files()
+
     script = os.path.join(os.path.dirname(__file__), "../../bin/ath-lint.py")
 
     # Vérifie que le script existe
