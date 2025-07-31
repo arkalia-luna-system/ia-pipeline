@@ -18,7 +18,6 @@ import subprocess
 from typing import Dict, List, Optional
 import xml.etree.ElementTree as ET
 
-
 logger = logging.getLogger(__name__)
 
 # Import du validateur de sécurité
