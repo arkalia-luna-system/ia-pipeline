@@ -38,7 +38,7 @@ class PredictiveCache:
 
     def pre_generate(self, context: Dict, generator: Callable[[Dict], Any]):
         """
-          Pré-génère une réponse pour un contexte donné (si non déjà en cache).
+            Pré-génère une réponse pour un contexte donné (si non déjà en cache).
         :param context: Contexte (dict)
         :param generator: Fonction qui génère la valeur à stocker
         """

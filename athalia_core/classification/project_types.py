@@ -28,7 +28,13 @@ def get_project_config(project_type: ProjectType) -> Dict[str, Any]:
         ProjectType.ARTISTIC: {
             "modules": ["core", "animation", "visual", "audio"],
             "dependencies": ["numpy", "opencv-python", "matplotlib", "pygame"],
-            "structure": ["src/", "assets/", "animations/", "audio/", "tests/"],
+            "structure": [
+                "src/",
+                "assets/",
+                "animations/",
+                "audio/",
+                "tests/",
+            ],
             "prompts": [
                 "artistic_animation.yaml",
                 "visual_effects.yaml",
@@ -39,9 +45,25 @@ def get_project_config(project_type: ProjectType) -> Dict[str, Any]:
         },
         ProjectType.API: {
             "modules": ["core", "api", "auth", "database"],
-            "dependencies": ["fastapi", "sqlalchemy", "pydantic", "python-jose"],
-            "structure": ["src/", "api/", "models/", "database/", "tests/", "docs/"],
-            "prompts": ["api_design.yaml", "security_audit.yaml", "performance.yaml"],
+            "dependencies": [
+                "fastapi",
+                "sqlalchemy",
+                "pydantic",
+                "python-jose",
+            ],
+            "structure": [
+                "src/",
+                "api/",
+                "models/",
+                "database/",
+                "tests/",
+                "docs/",
+            ],
+            "prompts": [
+                "api_design.yaml",
+                "security_audit.yaml",
+                "performance.yaml",
+            ],
             "booster_ia": ["api"],
             "description": "API REST avec authentification et sécurité",
         },
@@ -59,7 +81,12 @@ def get_project_config(project_type: ProjectType) -> Dict[str, Any]:
         },
         ProjectType.DATA: {
             "modules": ["core", "data", "ml", "viz"],
-            "dependencies": ["pandas", "scikit-learn", "matplotlib", "seaborn"],
+            "dependencies": [
+                "pandas",
+                "scikit-learn",
+                "matplotlib",
+                "seaborn",
+            ],
             "structure": ["src/", "data/", "models/", "notebooks/", "tests/"],
             "prompts": [
                 "ml_pipeline.yaml",
@@ -72,7 +99,13 @@ def get_project_config(project_type: ProjectType) -> Dict[str, Any]:
         ProjectType.WEB: {
             "modules": ["core", "web", "ui", "database"],
             "dependencies": ["flask", "jinja2", "sqlalchemy", "flask-cors"],
-            "structure": ["src/", "templates/", "static/", "database/", "tests/"],
+            "structure": [
+                "src/",
+                "templates/",
+                "static/",
+                "database/",
+                "tests/",
+            ],
             "prompts": [
                 "web_design.yaml",
                 "responsive_ui.yaml",
@@ -85,14 +118,24 @@ def get_project_config(project_type: ProjectType) -> Dict[str, Any]:
             "modules": ["core", "ui", "api", "storage"],
             "dependencies": ["kivy", "requests", "sqlite3", "plyer"],
             "structure": ["src/", "ui/", "api/", "storage/", "tests/"],
-            "prompts": ["mobile_ui.yaml", "offline_sync.yaml", "performance.yaml"],
+            "prompts": [
+                "mobile_ui.yaml",
+                "offline_sync.yaml",
+                "performance.yaml",
+            ],
             "booster_ia": ["mobile"],
             "description": "Application mobile cross-platform",
         },
         ProjectType.IOT: {
             "modules": ["core", "sensors", "communication", "data"],
             "dependencies": ["pyserial", "paho-mqtt", "numpy", "matplotlib"],
-            "structure": ["src/", "sensors/", "communication/", "data/", "tests/"],
+            "structure": [
+                "src/",
+                "sensors/",
+                "communication/",
+                "data/",
+                "tests/",
+            ],
             "prompts": [
                 "iot_architecture.yaml",
                 "sensor_integration.yaml",

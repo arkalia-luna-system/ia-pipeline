@@ -26,7 +26,12 @@ class CacheManager:
         self.cache_dir = Path(cache_dir)
         self.cache_dir.mkdir(exist_ok=True)
         self.cache_config = self.load_cache_config()
-        self.cache_stats = {"hits": 0, "misses": 0, "total_entries": 0, "total_size": 0}
+        self.cache_stats = {
+            "hits": 0,
+            "misses": 0,
+            "total_entries": 0,
+            "total_size": 0,
+        }
 
     def load_cache_config(self, config_path: Optional[str] = None) -> Dict[str, Any]:
         """Charge la configuration du cache"""
@@ -391,7 +396,11 @@ class CacheManager:
             for cache_file in self.cache_dir.glob("*.cache"):
                 stat = cache_file.stat()
                 cache_files.append(
-                    {"file": cache_file, "size": stat.st_size, "mtime": stat.st_mtime}
+                    {
+                        "file": cache_file,
+                        "size": stat.st_size,
+                        "mtime": stat.st_mtime,
+                    }
                 )
 
             # Trier par date de modification (plus ancien en premier)
@@ -468,7 +477,8 @@ class CacheManager:
         if data.startswith(b"\x80"):
             return False
 
-        # Si ce n'est ni JSON ni pickle ni compressé, c'est probablement chiffré
+        # Si ce n'est ni JSON ni pickle ni compressé, c'est probablement
+        # chiffré
         return True
 
     def _simple_encrypt(self, data: Union[str, bytes], key: str) -> bytes:

@@ -17,7 +17,7 @@ class ResponseDistiller:
         self, responses: List[str], context: Optional[Dict[str, Any]] = None
     ) -> str:
         """
-          Fusionne plusieurs réponses IA selon la stratégie choisie.
+             Fusionne plusieurs réponses IA selon la stratégie choisie.
         :param responses: Liste de réponses IA (str)
         :param context: Contexte optionnel (pour scoring avancé)
         :return: Réponse distillée (str)

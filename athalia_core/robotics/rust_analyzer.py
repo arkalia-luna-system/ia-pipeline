@@ -171,7 +171,10 @@ class RustAnalyzer:
                 # Version simple
                 dependencies.append(
                     CargoDependency(
-                        name=name, version=dep_info, features=[], optional=False
+                        name=name,
+                        version=dep_info,
+                        features=[],
+                        optional=False,
                     )
                 )
             elif isinstance(dep_info, dict):
@@ -230,7 +233,10 @@ class RustAnalyzer:
         try:
             # Utilisation du validateur de sécurité pour l'appel cargo
             result = validate_and_run(
-                ["cargo", "--version"], capture_output=True, text=True, timeout=5
+                ["cargo", "--version"],
+                capture_output=True,
+                text=True,
+                timeout=5,
             )
             return result.returncode == 0
         except (BaseException, SecurityError):

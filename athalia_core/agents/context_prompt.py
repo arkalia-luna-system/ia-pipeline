@@ -117,7 +117,8 @@ if os.path.exists(CUSTOM_PROMPTS_PATH):
 LOG_DIR = os.path.join(os.path.dirname(__file__), "../logs")
 os.makedirs(LOG_DIR, exist_ok=True)
 LOG_FILE = os.path.join(
-    LOG_DIR, f'ath_context_prompt_{datetime.now().strftime("%Y%m%d_%H%M%S")}.log'
+    LOG_DIR,
+    f'ath_context_prompt_{datetime.now().strftime("%Y%m%d_%H%M%S")}.log',
 )
 logging.basicConfig(
     filename=LOG_FILE,

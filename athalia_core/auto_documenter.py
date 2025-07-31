@@ -36,7 +36,13 @@ class AutoDocumenter:
             "include_examples": True,
             "template_engine": "jinja2",
             "output_directory": "docs",
-            "exclude_patterns": ["__pycache__", "*.pyc", ".git", "venv", ".venv"],
+            "exclude_patterns": [
+                "__pycache__",
+                "*.pyc",
+                ".git",
+                "venv",
+                ".venv",
+            ],
             "include_patterns": ["*.py", "*.md", "*.txt", "*.yaml", "*.yml"],
         }
 
@@ -74,7 +80,12 @@ class AutoDocumenter:
                             structure["python_files"].append(relative_path)
                     elif file_path.suffix in [".md", ".rst", ".txt"]:
                         structure["documentation_files"].append(relative_path)
-                    elif file_path.suffix in [".yaml", ".yml", ".json", ".toml"]:
+                    elif file_path.suffix in [
+                        ".yaml",
+                        ".yml",
+                        ".json",
+                        ".toml",
+                    ]:
                         structure["config_files"].append(relative_path)
                     else:
                         structure["other_files"].append(relative_path)
@@ -398,7 +409,8 @@ Merci de votre intérêt pour contribuer à ce projet !
 ## Comment Contribuer
 
 1. Fork le projet
-2. Créer une branche pour votre fonctionnalité (`git checkout -b feature/AmazingFeature`)
+2. Créer une branche pour votre fonctionnalité "
+    "(`git checkout -b feature/AmazingFeature`)"
 3. Commit vos changements (`git commit -m 'Add some AmazingFeature'`)
 4. Push vers la branche (`git push origin feature/AmazingFeature`)
 5. Ouvrir une Pull Request
@@ -455,7 +467,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
         else:
-            license_content = f"# {license_type} License\n\nLicence {license_type} pour {self.project_path.name}"
+            license_content = (
+                f"# {license_type} License\n\nLicence {license_type} "
+                f"pour {self.project_path.name}"
+            )
 
         return license_content
 
@@ -509,7 +524,8 @@ SOFTWARE.
             coverage = self.calculate_documentation_coverage()
             if coverage["coverage_percentage"] < 50:
                 validation["warnings"].append(
-                    f"Couverture de documentation faible: {coverage['coverage_percentage']}%"
+                    f"Couverture de documentation faible: "
+                    f"{coverage['coverage_percentage']}%"
                 )
 
             # Vérifier la qualité des docstrings
@@ -667,9 +683,8 @@ SOFTWARE.
             # Ajouter des recommandations
             if coverage.get("coverage_percentage", 0) < 80:
                 result["recommendations"].append(
-                    "Améliorer la couverture de documentation (actuellement {}%)".format(
-                        coverage.get("coverage_percentage", 0)
-                    )
+                    "Améliorer la couverture de documentation "
+                    "(actuellement {}%)".format(coverage.get("coverage_percentage", 0))
                 )
 
             if validation.get("issues", []):
@@ -817,7 +832,10 @@ Consultez la documentation complète dans le dossier `docs/`.
 
 """
             if func_info.get("args"):
-                api_docs += f"**{translations['parameters']}:** {', '.join(func_info['args'])}\n\n"
+                api_docs += (
+                    f"**{translations['parameters']}:** "
+                    f"{', '.join(func_info['args'])}\n\n"
+                )
 
         return api_docs
 

@@ -102,7 +102,9 @@ class ErrorHandler:
             # Convertir l'erreur en AthaliaError
             error_code = self._classify_error(error)
             athalia_error = AthaliaError(
-                error_code=error_code, message=str(error), context=context or {}
+                error_code=error_code,
+                message=str(error),
+                context=context or {},
             )
 
         # Log de l'erreur

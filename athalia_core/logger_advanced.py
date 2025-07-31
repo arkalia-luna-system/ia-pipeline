@@ -81,7 +81,10 @@ class AthaliaLogger:
 
         # Handler pour fichier avec rotation
         file_handler = logging.handlers.RotatingFileHandler(
-            log_file, maxBytes=10 * 1024 * 1024, backupCount=5, encoding="utf-8"  # 10MB
+            log_file,
+            maxBytes=10 * 1024 * 1024,
+            backupCount=5,
+            encoding="utf-8",  # 10MB
         )
 
         # Format personnalisé

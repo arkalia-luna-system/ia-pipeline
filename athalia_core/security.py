@@ -41,4 +41,9 @@ def security_audit_project(project_path):
 
     score = 100 if not issues else max(0, 100 - 20 * len(issues))
     is_secure = len(issues) == 0
-    return {"secure": is_secure, "f": is_secure, "issues": issues, "score": score}
+    return {
+        "secure": is_secure,
+        "f": is_secure,
+        "issues": issues,
+        "score": score,
+    }

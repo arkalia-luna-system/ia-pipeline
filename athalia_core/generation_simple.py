@@ -299,7 +299,11 @@ def merge_or_suffix_file(
             file.write_text(file.read_text() + f"\n{section_header}\n{content}")
             action = "merged"
             return str(file), action
-        elif file_type is not None and file_type in ["test", "prompt", "onboarding"]:
+        elif file_type is not None and file_type in [
+            "test",
+            "prompt",
+            "onboarding",
+        ]:
             file.write_text(file.read_text() + "\n" + content)
             action = f"merged-{file_type}"
             return str(file), action

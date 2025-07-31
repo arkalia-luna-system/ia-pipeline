@@ -186,7 +186,10 @@ class ROS2Validator:
         """Vérifier si le build system est configuré"""
         try:
             result = validate_and_run(
-                ["colcon", "--version"], capture_output=True, text=True, timeout=10
+                ["colcon", "--version"],
+                capture_output=True,
+                text=True,
+                timeout=10,
             )
             return result.returncode == 0
         except (BaseException, SecurityError):

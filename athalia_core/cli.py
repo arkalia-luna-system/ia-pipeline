@@ -223,7 +223,10 @@ def hello_world():
     return True
 """
         review = ai.review_code(
-            code=test_code, filename="test.py", project_type="python", current_score=50
+            code=test_code,
+            filename="test.py",
+            project_type="python",
+            current_score=50,
         )
 
         click.echo("✅ Revue générée:")

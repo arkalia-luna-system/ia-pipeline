@@ -28,8 +28,8 @@ class MultimodalDistiller:
         context: Optional[Dict[str, Any]] = None,
     ) -> str:
         """
-          Fusionne les réponses texte et image en utilisant LLaVA (Ollama) et
-          d'autres modèles si besoin.
+            Fusionne les réponses texte et image en utilisant LLaVA (Ollama) et
+            d'autres modèles si besoin.
         :param text_prompts: Liste de prompts texte
         :param image_paths: Liste de chemins d'images (un par prompt ou global)
         :param context: Contexte optionnel
@@ -55,7 +55,7 @@ class MultimodalDistiller:
 
     def call_llava(self, prompt: str, image_path: str) -> str:
         """
-          Appelle LLaVA via Ollama pour une analyse multimodale (texte + image).
+            Appelle LLaVA via Ollama pour une analyse multimodale (texte + image).
         :param prompt: Prompt texte
         :param image_path: Chemin de l'image à analyser
         :return: Réponse de LLaVA (str)
@@ -63,7 +63,14 @@ class MultimodalDistiller:
         # Ollama LLaVA supporte --image <path> en CLI
         try:
             result = validate_and_run(
-                ["ollama", "run", "llava:latest", "--image", image_path, prompt],
+                [
+                    "ollama",
+                    "run",
+                    "llava:latest",
+                    "--image",
+                    image_path,
+                    prompt,
+                ],
                 capture_output=True,
                 text=True,
                 timeout=60,

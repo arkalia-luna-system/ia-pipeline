@@ -226,7 +226,11 @@ class ReachyAuditor:
             recommendations.append("Ajouter .gitignore pour ROS2/Rust")
 
         # Vérifier structure typique Reachy
-        expected_dirs = ["reachy_controllers", "reachy_description", "reachy_gazebo"]
+        expected_dirs = [
+            "reachy_controllers",
+            "reachy_description",
+            "reachy_gazebo",
+        ]
         for dir_name in expected_dirs:
             if (self.project_path / dir_name).exists():
                 self.logger.info(f"✅ Module {dir_name} présent")
