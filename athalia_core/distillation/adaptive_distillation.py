@@ -26,7 +26,8 @@ class AdaptiveDistiller:
         self, responses: List[str], context: Optional[Dict[str, Any]] = None
     ) -> str:
         """
-            Fusionne les réponses IA en tenant compte des préférences et du feedback utilisateur.
+        Fusionne les réponses IA en tenant compte des préférences et du
+        feedback utilisateur.
         :param responses: Liste de réponses IA
         :param context: Contexte optionnel
         :return: Réponse distillée

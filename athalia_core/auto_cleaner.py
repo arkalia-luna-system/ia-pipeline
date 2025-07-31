@@ -21,6 +21,7 @@ from .performance_optimizer import (
     performance_monitor,
 )
 
+
 logger = logging.getLogger(__name__)
 
 
@@ -343,7 +344,7 @@ class AutoCleaner:
 
     def _calculate_file_hash(self, file_path: Path) -> str:
         """Calcule le hash d'un fichier"""
-        hash_md5 = hashlib.md5()
+        hash_md5 = hashlib.md5(usedforsecurity=False)
         try:
             with open(file_path, "rb") as f:
                 for chunk in iter(lambda: f.read(4096), b""):

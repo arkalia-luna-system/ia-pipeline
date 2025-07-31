@@ -16,6 +16,7 @@ from typing import Any, Dict, List, Optional, Union
 
 import yaml
 
+
 logger = logging.getLogger(__name__)
 
 
@@ -102,7 +103,7 @@ class CacheManager:
             # Chiffrer si demandé
             if encrypt:
                 # Chiffrement simple pour l'exemple
-                key_hash = hashlib.md5(key.encode()).hexdigest()
+                key_hash = hashlib.md5(key.encode(), usedforsecurity=False).hexdigest()
                 serialized_data = self._simple_encrypt(serialized_data, key_hash)
 
             # Sauvegarder dans le fichier
@@ -135,7 +136,7 @@ class CacheManager:
 
             # Déchiffrer si nécessaire
             if self._is_encrypted(serialized_data):
-                key_hash = hashlib.md5(key.encode()).hexdigest()
+                key_hash = hashlib.md5(key.encode(), usedforsecurity=False).hexdigest()
                 serialized_data = self._simple_decrypt(serialized_data, key_hash)
 
             # Décompresser si nécessaire
@@ -267,7 +268,7 @@ class CacheManager:
 
             # Déchiffrer si nécessaire
             if self._is_encrypted(serialized_data):
-                key_hash = hashlib.md5(key.encode()).hexdigest()
+                key_hash = hashlib.md5(key.encode(), usedforsecurity=False).hexdigest()
                 serialized_data = self._simple_decrypt(serialized_data, key_hash)
 
             # Décompresser si nécessaire
@@ -512,7 +513,9 @@ def cache_function(cache_dir: str = ".cache", ttl_seconds: Optional[int] = None)
             key_parts = [func.__name__]
             key_parts.extend([str(arg) for arg in args])
             key_parts.extend([f"{k}={v}" for k, v in sorted(kwargs.items())])
-            cache_key = hashlib.md5("|".join(key_parts).encode()).hexdigest()
+            cache_key = hashlib.md5(
+                "|".join(key_parts).encode(), usedforsecurity=False
+            ).hexdigest()
 
             # Essayer de récupérer du cache
             cached_result = cache_manager.get_cache(cache_key)
