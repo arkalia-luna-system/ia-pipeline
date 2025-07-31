@@ -12,7 +12,6 @@ import tempfile
 import pytest
 import yaml
 
-
 # Ajouter le répertoire parent au path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
@@ -81,14 +80,14 @@ class TestYAMLValidity:
 
             # Vérifier les clés essentielles
             if "general" in data:
-                assert isinstance(data["general"], dict), (
-                    "La section general doit être un dictionnaire"
-                )
+                assert isinstance(
+                    data["general"], dict
+                ), "La section general doit être un dictionnaire"
 
             if "modules" in data:
-                assert isinstance(data["modules"], dict), (
-                    "La section modules doit être un dictionnaire"
-                )
+                assert isinstance(
+                    data["modules"], dict
+                ), "La section modules doit être un dictionnaire"
 
         except yaml.YAMLError as e:
             pytest.fail(f"Configuration YAML invalide: {e}")
@@ -313,9 +312,9 @@ class TestYAMLValidity:
 
         # Les opérations ne devraient pas prendre plus de 1 seconde
         assert serialize_time < 1.0, f"Sérialisation trop lente: {serialize_time:.3f}s"
-        assert deserialize_time < 1.0, (
-            f"Désérialisation trop lente: {deserialize_time:.3f}s"
-        )
+        assert (
+            deserialize_time < 1.0
+        ), f"Désérialisation trop lente: {deserialize_time:.3f}s"
 
         # Vérifier l'intégrité des données
         assert loaded_data == complex_data
