@@ -10,7 +10,8 @@ def get_base_templates() -> Dict[str, str]:
     """Retourne les templates de base pour tous les projets."""
 
     return {
-        "api/main.py": '''"""
+        "api/main.py": (
+            '''"""
 API principale du projet.
 """
 
@@ -78,8 +79,10 @@ def internal_error(error):
 if __name__ == '__main__':
     logger.info("Démarrage de l'API {{ project_name }}")
     app.run(debug=os.getenv('DEBUG', 'false').lower() == 'true', host='0.0.0.0', port=int(os.getenv('PORT', 5000)))
-''',
-        "tts/tts.py": '''"""
+'''
+        ),
+        "tts/tts.py": (
+            '''"""
 Module de synthèse vocale.
 """
 
@@ -158,8 +161,10 @@ def main():
 
 if __name__ == "__main__":
     main()
-''',
-        "memory/memory.py": '''"""
+'''
+        ),
+        "memory/memory.py": (
+            '''"""
 Module de gestion mémoire et stockage.
 """
 
@@ -318,5 +323,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-''',
+'''
+        ),
     }

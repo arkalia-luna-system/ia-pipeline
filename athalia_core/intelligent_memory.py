@@ -516,7 +516,9 @@ class IntelligentMemory:
                 "prediction_type": "duplicate",
                 "confidence": 0.8,
                 "description": "Risque de duplication de code",
-                "suggested_action": "Vérifier s'il existe déjà une fonction/module similaire",
+                "suggested_action": (
+                    "Vérifier s'il existe déjà une fonction/module similaire"
+                ),
                 "estimated_impact": "Moyen",
                 "code_pattern": pattern_hash,
             }
@@ -525,7 +527,9 @@ class IntelligentMemory:
                 "prediction_type": "complexity",
                 "confidence": 0.7,
                 "description": "Code potentiellement trop complexe",
-                "suggested_action": "Considérer la refactorisation en fonctions plus petites",
+                "suggested_action": (
+                    "Considérer la refactorisation en fonctions plus petites"
+                ),
                 "estimated_impact": "Élevé",
                 "code_pattern": pattern_hash,
             }

@@ -99,8 +99,9 @@ if __name__ == "__main__":
             )
 
             return {
-                "succes": taux_compilation
-                >= self.seuils_critiques["taux_compilation_min"],
+                "succes": (
+                    taux_compilation >= self.seuils_critiques["taux_compilation_min"]
+                ),
                 "temps": temps_generation,
                 "fichiers_generes": len(fichiers_python),
                 "compilation_ok": compilation_ok,
