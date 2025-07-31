@@ -54,13 +54,33 @@ Ce guide décrit le système CI/CD professionnel progressif d'Athalia, conçu po
 
 ## 🛠️ **UTILISATION**
 
-### **1. Activation du Niveau 1**
+### **1. Activation Automatique (Recommandé)**
+```bash
+# Travailler sur develop
+git checkout develop
+
+# Développer tes améliorations
+# Commiter et pousser
+git add .
+git commit -m "feat: amélioration CI/CD"
+git push origin develop
+
+# 🎉 AUTOMATIQUE : La CI/CD pro se met à jour et se lance !
+```
+
+### **2. Activation Manuelle (Optionnel)**
 ```bash
 # Se placer sur la branche pro
 git checkout ci-cd-professional
 
 # Pousser pour déclencher le niveau 1
 git push origin ci-cd-professional
+```
+
+### **3. Synchronisation Manuelle**
+```bash
+# Depuis develop, synchroniser vers ci-cd-professional
+./scripts/sync_develop_to_ci_pro.sh
 ```
 
 ### **2. Suivi de Progression**
@@ -110,7 +130,22 @@ git push origin develop
 
 ## 🔄 **WORKFLOW DE DÉVELOPPEMENT**
 
-### **Phase 1 : Développement**
+### **Phase 1 : Développement (Automatique)**
+```bash
+# 1. Travailler sur develop
+git checkout develop
+
+# 2. Développer les améliorations
+# 3. Tester localement
+# 4. Commiter et pousser
+git add .
+git commit -m "feat: amélioration CI/CD niveau X"
+git push origin develop
+
+# 🎉 AUTOMATIQUE : Synchronisation vers ci-cd-professional + lancement CI/CD pro
+```
+
+### **Phase 1bis : Développement (Manuel)**
 ```bash
 # 1. Travailler sur la branche pro
 git checkout ci-cd-professional

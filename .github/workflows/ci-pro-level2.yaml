@@ -88,34 +88,34 @@ jobs:
         run: |
           cat > ci_pro_level2_report.md << EOF
           # 📊 CI Professional - Level 2 Report
-          
+
           ## 🎯 Niveau: 2/5 - Tests de Sécurité
-          
+
           ### 📅 Date: $(date)
           ### 🌿 Branche: ${{ github.ref_name }}
           ### 👤 Acteur: ${{ github.actor }}
-          
+
           ### ✅ Tests Exécutés:
           - Tests de base (hérités du Niveau 1)
           - Scan de sécurité avec Bandit
           - Vérification des dépendances avec Safety
           - Tests de sécurité spécifiques
-          
+
           ### 📈 Métriques:
           - **Status:** ${{ job.status }}
           - **Temps d'exécution:** ~8 minutes
           - **Complexité:** Moyenne
           - **Sécurité:** Niveau professionnel
-          
+
           ### 🚀 Prochain Niveau:
           - **Niveau 3:** Tests de performance
           - **Niveau 4:** Multi-environnement
           - **Niveau 5:** Déploiement continu
-          
+
           ### 📋 Actions Recommandées:
           - Si tous les tests passent → Passer au Niveau 3
           - Si vulnérabilités détectées → Corriger avant de continuer
-          
+
           EOF
 
       - name: Upload Level 2 Report
@@ -148,4 +148,4 @@ jobs:
         if: always()
         with:
           name: ci-pro-progress-tracker
-          path: ci_progress.json 
+          path: ci_progress.json

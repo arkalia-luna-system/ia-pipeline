@@ -2,9 +2,9 @@ name: CI Professional - Level 4
 
 on:
   push:
-    branches: [ci-cd-professional]
+    branches: [ci-cd-professional, develop]
   pull_request:
-    branches: [ci-cd-professional]
+    branches: [ci-cd-professional, develop]
 
 jobs:
   test-matrix:
@@ -146,33 +146,33 @@ jobs:
         run: |
           cat > ci_pro_level4_report.md << EOF
           # 📊 CI Professional - Level 4 Report
-          
+
           ## 🎯 Niveau: 4/5 - Multi-Environnement
-          
+
           ### 📅 Date: $(date)
           ### 🌿 Branche: ${{ github.ref_name }}
           ### 👤 Acteur: ${{ github.actor }}
-          
+
           ### ✅ Tests Exécutés:
           - Tests multi-environnement (Python 3.9, 3.10, 3.11)
           - Tests multi-OS (Ubuntu, macOS)
           - Tests de sécurité (hérités du Niveau 2)
           - Tests de performance (hérités du Niveau 3)
           - Tests de couverture de code
-          
+
           ### 📈 Métriques:
           - **Status:** ${{ job.status }}
           - **Temps d'exécution:** ~20 minutes
           - **Complexité:** Très élevée
           - **Compatibilité:** Multi-environnement
-          
+
           ### 🚀 Prochain Niveau:
           - **Niveau 5:** Déploiement continu
-          
+
           ### 📋 Actions Recommandées:
           - Si tous les tests passent → Passer au Niveau 5
           - Si incompatibilités détectées → Corriger avant de continuer
-          
+
           EOF
 
       - name: Upload Level 4 Report
@@ -205,4 +205,4 @@ jobs:
         if: always()
         with:
           name: ci-pro-progress-tracker
-          path: ci_progress.json 
+          path: ci_progress.json
