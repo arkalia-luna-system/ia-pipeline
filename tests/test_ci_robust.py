@@ -63,7 +63,7 @@ class TestCIRobust:
             "config/requirements-minimal.txt",
             "config/requirements.txt",
             ".github/workflows/ci.yaml",
-            "pytest.ini",
+            "config/pytest.ini",
             ".gitignore",
         ]
 

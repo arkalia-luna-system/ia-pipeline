@@ -429,7 +429,7 @@ markers = (
 )
 """
 
-        pytest_file = self.project_path / "pytest.ini"
+        pytest_file = self.project_path / "config" / "pytest.ini"
         with open(pytest_file, "w", encoding="utf-8") as file_handle:
             file_handle.write(pytest_config)
 
@@ -594,7 +594,7 @@ echo "✅ Tests terminés !"
 
     def _get_created_files(self) -> List[str]:
         """Retourne la liste des fichiers créés"""
-        files = ["pytest.ini", "scripts/run_tests.sh"] + self.generated_tests
+        files = ["config/pytest.ini", "scripts/run_tests.sh"] + self.generated_tests
         return [
             (
                 str(self.project_path / file_handle)
