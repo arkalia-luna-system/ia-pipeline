@@ -4,8 +4,7 @@ Tests pour le module pattern_detector.py
 Amélioration de la couverture de code de 0% à 80%+
 """
 
-import pytest
-from unittest.mock import patch, MagicMock, mock_open
+from unittest.mock import patch, MagicMock
 from pathlib import Path
 from datetime import datetime
 from athalia_core.pattern_detector import (
