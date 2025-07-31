@@ -103,7 +103,9 @@ class TTSManager:
         self.default_voice = 'fr'
         self.volume = 0.8
 
-    def synthesize_speech(self, text: str, voice: Optional[str] = None) -> Dict[str, Any]:
+    def synthesize_speech(
+        self, text: str, voice: Optional[str] = None
+    ) -> Dict[str, Any]:
         """
         Synthétise du texte en parole.
 
