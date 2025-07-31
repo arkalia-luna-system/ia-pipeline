@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/advanced_modules/user_profiles_advanced.py
 # Fichier: tests/test_advanced_modules_user_profiles_advanced.py
 
-import pytest
 import athalia_core.advanced_modules.user_profiles_advanced as module
 
 

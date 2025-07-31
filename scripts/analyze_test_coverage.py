@@ -182,7 +182,7 @@ def main():
     # Analyser les modules manquants
     untested_modules, zero_coverage_modules, tested_modules = analyze_missing_tests()
 
-    print(f"\n📊 STATISTIQUES:")
+    print("\n📊 STATISTIQUES:")
     print(f"   • Modules Python totaux: {len(get_python_files('athalia_core'))}")
     print(f"   • Modules testés: {len(tested_modules)}")
     print(f"   • Modules non testés: {len(untested_modules)}")
@@ -204,7 +204,7 @@ def main():
 
     # Générer des templates de tests
     if untested_modules:
-        print(f"\n📝 TEMPLATES DE TESTS GÉNÉRÉS:")
+        print("\n📝 TEMPLATES DE TESTS GÉNÉRÉS:")
         templates = generate_test_templates(untested_modules)
 
         for test_file_name, template in templates[:5]:  # Limiter à 5 templates
@@ -225,12 +225,12 @@ def main():
         print(f"\n💾 Templates sauvegardés dans: {templates_dir}")
 
     # Recommandations
-    print(f"\n🎯 RECOMMANDATIONS:")
-    print(f"   1. Créer des tests pour les modules non testés prioritaires")
-    print(f"   2. Améliorer la couverture des modules avec 0% de couverture")
-    print(f"   3. Utiliser les templates générés comme point de départ")
+    print("\n🎯 RECOMMANDATIONS:")
+    print("   1. Créer des tests pour les modules non testés prioritaires")
+    print("   2. Améliorer la couverture des modules avec 0% de couverture")
+    print("   3. Utiliser les templates générés comme point de départ")
     print(
-        f"   4. Exécuter: python -m pytest tests/ --cov=athalia_core --cov-report=html"
+        "   4. Exécuter: python -m pytest tests/ --cov=athalia_core --cov-report=html"
     )
 
     return len(untested_modules) + len(zero_coverage_modules)

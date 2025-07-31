@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/classification/__init__.py
 # Fichier: tests/test_classification___init__.py
 
-import pytest
 import athalia_core.classification.__init__ as module
 
 

@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/intelligent_auditor.py
 # Fichier: tests/test_intelligent_auditor.py
 
-import pytest
 import athalia_core.intelligent_auditor as module
 
 

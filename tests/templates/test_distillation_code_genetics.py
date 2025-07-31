@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/distillation/code_genetics.py
 # Fichier: tests/test_distillation_code_genetics.py
 
-import pytest
 import athalia_core.distillation.code_genetics as module
 
 

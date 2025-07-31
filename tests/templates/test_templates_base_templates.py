@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/templates/base_templates.py
 # Fichier: tests/test_templates_base_templates.py
 
-import pytest
 import athalia_core.templates.base_templates as module
 
 

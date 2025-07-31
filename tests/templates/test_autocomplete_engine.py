@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/autocomplete_engine.py
 # Fichier: tests/test_autocomplete_engine.py
 
-import pytest
 import athalia_core.autocomplete_engine as module
 
 

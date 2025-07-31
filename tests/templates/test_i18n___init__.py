@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/i18n/__init__.py
 # Fichier: tests/test_i18n___init__.py
 
-import pytest
 import athalia_core.i18n.__init__ as module
 
 

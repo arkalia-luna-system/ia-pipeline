@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/distillation/predictive_cache.py
 # Fichier: tests/test_distillation_predictive_cache.py
 
-import pytest
 import athalia_core.distillation.predictive_cache as module
 
 

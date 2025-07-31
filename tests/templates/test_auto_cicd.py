@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/auto_cicd.py
 # Fichier: tests/test_auto_cicd.py
 
-import pytest
 import athalia_core.auto_cicd as module
 
 

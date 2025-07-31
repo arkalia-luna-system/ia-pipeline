@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/classification/project_classifier.py
 # Fichier: tests/test_classification_project_classifier.py
 
-import pytest
 import athalia_core.classification.project_classifier as module
 
 

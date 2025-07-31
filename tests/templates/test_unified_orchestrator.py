@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/unified_orchestrator.py
 # Fichier: tests/test_unified_orchestrator.py
 
-import pytest
 import athalia_core.unified_orchestrator as module
 
 

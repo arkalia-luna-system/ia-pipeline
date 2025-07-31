@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/auto_documenter.py
 # Fichier: tests/test_auto_documenter.py
 
-import pytest
 import athalia_core.auto_documenter as module
 
 

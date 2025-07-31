@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/templates/artistic_templates.py
 # Fichier: tests/test_templates_artistic_templates.py
 
-import pytest
 import athalia_core.templates.artistic_templates as module
 
 

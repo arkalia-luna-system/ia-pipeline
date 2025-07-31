@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/templates/__init__.py
 # Fichier: tests/test_templates___init__.py
 
-import pytest
 import athalia_core.templates.__init__ as module
 
 

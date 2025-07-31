@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/advanced_modules/__init__.py
 # Fichier: tests/test_advanced_modules___init__.py
 
-import pytest
 import athalia_core.advanced_modules.__init__ as module
 
 

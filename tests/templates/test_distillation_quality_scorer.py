@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/distillation/quality_scorer.py
 # Fichier: tests/test_distillation_quality_scorer.py
 
-import pytest
 import athalia_core.distillation.quality_scorer as module
 
 

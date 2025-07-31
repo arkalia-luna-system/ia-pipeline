@@ -3,7 +3,6 @@
 Script pour améliorer la couverture de tests en créant des tests de base.
 """
 
-import os
 import sys
 import importlib
 import inspect
@@ -135,7 +134,7 @@ def test_class_{class_name}_can_instantiate():
 '''
 
     # Ajouter des tests d'intégration de base
-    test_content += f'''
+    test_content += '''
 def test_module_integration():
     """Test d'intégration de base du module."""
     # Test que le module peut être utilisé sans erreur
@@ -145,7 +144,7 @@ def test_module_integration():
             if not attr.startswith('_'):
                 getattr(module, attr)
     except Exception as e:
-        pytest.skip(f"Erreur lors de l'accès aux attributs: {{e}}")
+        pytest.skip(f"Erreur lors de l'accès aux attributs: {e}")
 
 '''
 
@@ -157,8 +156,8 @@ def create_basic_tests() -> List[str]:
     created_tests = []
     untested_modules = get_untested_modules()
 
-    print(f"🔧 CRÉATION DE TESTS DE BASE")
-    print(f"=" * 40)
+    print("🔧 CRÉATION DE TESTS DE BASE")
+    print("=" * 40)
     print(f"Modules à traiter: {len(untested_modules)}")
 
     for i, module_path in enumerate(untested_modules, 1):
@@ -195,8 +194,8 @@ def create_basic_tests() -> List[str]:
 
 def run_quick_tests() -> bool:
     """Exécute les nouveaux tests pour vérifier qu'ils passent."""
-    print(f"\n🧪 EXÉCUTION DES TESTS RAPIDES")
-    print(f"=" * 40)
+    print("\n🧪 EXÉCUTION DES TESTS RAPIDES")
+    print("=" * 40)
 
     try:
         # Exécuter les tests avec timeout
@@ -232,8 +231,8 @@ def run_quick_tests() -> bool:
 
 def check_coverage_improvement() -> Dict[str, float]:
     """Vérifie l'amélioration de la couverture."""
-    print(f"\n📊 VÉRIFICATION DE LA COUVERTURE")
-    print(f"=" * 40)
+    print("\n📊 VÉRIFICATION DE LA COUVERTURE")
+    print("=" * 40)
 
     try:
         import subprocess
@@ -310,13 +309,13 @@ def main():
             print("⚠️  Pas d'amélioration détectée")
 
     # Recommandations
-    print(f"\n🎯 PROCHAINES ÉTAPES:")
-    print(f"   1. Vérifier les tests créés dans le dossier tests/")
-    print(f"   2. Améliorer les tests en ajoutant des cas spécifiques")
+    print("\n🎯 PROCHAINES ÉTAPES:")
+    print("   1. Vérifier les tests créés dans le dossier tests/")
+    print("   2. Améliorer les tests en ajoutant des cas spécifiques")
     print(
-        f"   3. Exécuter: python -m pytest tests/ --cov=athalia_core --cov-report=html"
+        "   3. Exécuter: python -m pytest tests/ --cov=athalia_core --cov-report=html"
     )
-    print(f"   4. Corriger les tests qui échouent si nécessaire")
+    print("   4. Corriger les tests qui échouent si nécessaire")
 
     return 0
 

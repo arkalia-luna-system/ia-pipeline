@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/cli.py
 # Fichier: tests/test_cli.py
 
-import pytest
 import athalia_core.cli as module
 
 

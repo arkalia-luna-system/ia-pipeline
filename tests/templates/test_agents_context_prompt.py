@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/agents/context_prompt.py
 # Fichier: tests/test_agents_context_prompt.py
 
-import pytest
 import athalia_core.agents.context_prompt as module
 
 

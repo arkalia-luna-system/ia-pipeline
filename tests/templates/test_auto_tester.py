@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/auto_tester.py
 # Fichier: tests/test_auto_tester.py
 
-import pytest
 import athalia_core.auto_tester as module
 
 
