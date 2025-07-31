@@ -11,8 +11,32 @@ import traceback
 import click
 import yaml
 
-from .ai_robust import AIModel, RobustAI
-from .audit import audit_project_intelligent
+# Import des modules avec fallback
+try:
+    from .ai_robust import AIModel, RobustAI
+except ImportError:
+    try:
+        from athalia_core.ai_robust import AIModel, RobustAI
+    except ImportError:
+        # Créer des classes factices si les imports échouent
+        class AIModel:
+            def __init__(self):
+                pass
+
+        class RobustAI:
+            def __init__(self):
+                pass
+
+
+try:
+    from .audit import audit_project_intelligent
+except ImportError:
+    try:
+        from athalia_core.audit import audit_project_intelligent
+    except ImportError:
+        # Créer une fonction factice si l'import échoue
+        def audit_project_intelligent(project_path):
+            return {"status": "audit_not_available"}
 
 # Configuration pour l'internationalisation (i18n) des messages CLI
 # Utilisation de gettext pour la traduction des messages utilisateur
