@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import ast
+from datetime import datetime
 import logging
 import os
 import pprint
 import sys
-from datetime import datetime
 from typing import Any, Dict, List
+
 
 """
 Module dimport intelligent pour projets existants.

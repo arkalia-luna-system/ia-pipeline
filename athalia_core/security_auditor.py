@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 import json
 import logging
+from pathlib import Path
 import re
 import subprocess
-from pathlib import Path
 from typing import Any, Dict
+
 
 # Import du validateur de sécurité
 try:
@@ -105,8 +106,7 @@ class SecurityAuditor:
                 vulns = json.loads(result.stdout)
                 for vuln in vulns:
                     self.report["vulnerabilities"].append(
-                        f"Vulnérabilité: {vuln['package']} "
-                        f"{vuln['installed_version']}"
+                        f"Vulnérabilité: {vuln['package']} {vuln['installed_version']}"
                     )
 
         except (Exception, SecurityError) as e:
@@ -134,7 +134,8 @@ class SecurityAuditor:
                     for match in matches:
                         line_num = content[: match.start()].count("\n") + 1
                         self.report["vulnerabilities"].append(
-                            f"Pattern dangereux {pattern} dans {py_file.name}:{line_num}"
+                            f"Pattern dangereux {pattern} dans"
+                            f" {py_file.name}:{line_num}"
                         )
 
             except (
@@ -191,7 +192,8 @@ class SecurityAuditor:
                         )
                 except (OSError, PermissionError) as perm_error:
                     logger.debug(
-                        f"Erreur lors de la vérification des permissions {file_path}: {perm_error}"
+                        f"Erreur lors de la vérification des permissions {file_path}:"
+                        f" {perm_error}"
                     )
                     continue
 
@@ -226,7 +228,8 @@ class SecurityAuditor:
 
         if not has_encryption:
             self.report["recommendations"].append(
-                "Considérer lutilisation de modules de chiffrement pour les données sensibles."
+                "Considérer lutilisation de modules de chiffrement pour les données"
+                " sensibles."
             )
 
     def _calculate_score(self):

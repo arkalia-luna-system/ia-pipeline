@@ -7,17 +7,18 @@ détection des goulots d'étranglement et optimisation.
 """
 
 import cProfile
+from dataclasses import dataclass
+from datetime import datetime
 import io
 import logging
+from pathlib import Path
 import pstats
 import sqlite3
 import time
-from dataclasses import dataclass
-from datetime import datetime
-from pathlib import Path
 from typing import Any, Dict, List
 
 from .ast_analyzer import ASTAnalyzer, FileAnalysis
+
 
 logger = logging.getLogger(__name__)
 
@@ -172,7 +173,7 @@ class PerformanceAnalyzer:
                     all_issues.extend(file_issues)
             except Exception as e:
                 logger.warning(
-                    f"Erreur lors de l'analyse de performance de " f"{py_file}: {e}"
+                    f"Erreur lors de l'analyse de performance de {py_file}: {e}"
                 )
 
         # Calculer le score global
@@ -297,8 +298,9 @@ class PerformanceAnalyzer:
                 issue = PerformanceIssue(
                     issue_type="complex_function",
                     location=f"{file_analysis.file_path}:{func.line_number}",
-                    description=f"Fonction {func.name} très complexe: "
-                    f"{func.complexity}",
+                    description=(
+                        f"Fonction {func.name} très complexe: {func.complexity}"
+                    ),
                     impact="high",
                     suggestion="Diviser en sous-fonctions",
                     estimated_improvement=25.0,
@@ -323,8 +325,7 @@ class PerformanceAnalyzer:
                 issue = PerformanceIssue(
                     issue_type="complex_class",
                     location=f"{file_analysis.file_path}:{cls.line_number}",
-                    description=f"Classe {cls.name} très complexe: "
-                    f"{cls.complexity}",
+                    description=f"Classe {cls.name} très complexe: {cls.complexity}",
                     impact="high",
                     suggestion="Diviser en classes plus petites",
                     estimated_improvement=30.0,
@@ -563,7 +564,7 @@ class PerformanceAnalyzer:
             avg_complexity = cursor.fetchone()[0] or 0
 
             cursor.execute(
-                "SELECT COUNT(*) FROM performance_issues " "WHERE resolved_at IS NULL"
+                "SELECT COUNT(*) FROM performance_issues WHERE resolved_at IS NULL"
             )
             unresolved_issues = cursor.fetchone()[0]
 

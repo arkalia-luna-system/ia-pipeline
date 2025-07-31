@@ -5,11 +5,12 @@ Validation et vérification des packages ROS2
 """
 
 import logging
+from pathlib import Path
 import re
 import subprocess
-import xml.etree.ElementTree as ET
-from pathlib import Path
 from typing import Any, Dict
+import xml.etree.ElementTree as ET
+
 
 # Import du validateur de sécurité
 try:

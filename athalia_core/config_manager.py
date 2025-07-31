@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+from dataclasses import dataclass
 import logging
 import os
-from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 import yaml
+
 
 """
 Gestionnaire de configuration centralisé pour Athalia

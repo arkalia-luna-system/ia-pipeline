@@ -6,9 +6,10 @@ Correction intelligente de code, suggestions d'amélioration, refactoring automa
 
 import ast
 import logging
-import re
 from pathlib import Path
+import re
 from typing import Any, Dict, List, Tuple
+
 
 logger = logging.getLogger(__name__)
 
@@ -52,8 +53,7 @@ class AutoCorrectionAvancee:
             corrections_appliquees = []
         corrections_count = len(corrections_appliquees)
         logger.info(
-            f"✅ Auto-correction terminée: "
-            f"{corrections_count} corrections appliquées"
+            f"✅ Auto-correction terminée: {corrections_count} corrections appliquées"
         )
         retour = resultats.copy()
         retour["resultats"] = resultats
@@ -598,7 +598,7 @@ class AutoCorrectionAvancee:
                 fichiers_traites += 1
 
             except Exception as e:
-                logger.warning(f"Erreur lors de l'amélioration de {fichier}: " f"{e}")
+                logger.warning(f"Erreur lors de l'amélioration de {fichier}: {e}")
 
         return {
             "corrections_appliquees": ameliorations,

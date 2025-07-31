@@ -5,9 +5,10 @@ Intégration continue pour ROS2, Rust et projets robotics
 """
 
 import logging
-import subprocess
 from pathlib import Path
+import subprocess
 from typing import Any, Dict
+
 
 # Import sécurisé pour la validation des commandes
 try:

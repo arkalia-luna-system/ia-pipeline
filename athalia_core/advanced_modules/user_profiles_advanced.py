@@ -4,11 +4,12 @@ Module de gestion des profils utilisateur avancés pour Athalia
 Gestion des préférences, historique, statistiques et personnalisation
 """
 
+from datetime import datetime
 import json
 import logging
 import sqlite3
-from datetime import datetime
 from typing import Any, Dict, List, Optional
+
 
 logger = logging.getLogger(__name__)
 

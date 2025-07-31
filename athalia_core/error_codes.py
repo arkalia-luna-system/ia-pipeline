@@ -185,9 +185,7 @@ def format_error_message(
     description = get_error_description(error_code)
     severity = get_error_severity(error_code)
 
-    message = (
-        f"[{severity.name}] {error_code.name} ({error_code.value}): " f"{description}"
-    )
+    message = f"[{severity.name}] {error_code.name} ({error_code.value}): {description}"
 
     if details:
         message += f" - {details}"

@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+from datetime import datetime
 import logging
 import os
 import re
 import subprocess
 import sys
 import tempfile
-from datetime import datetime
 
 import yaml
+
 
 # Import du validateur de sécurité
 try:
@@ -195,7 +196,7 @@ def detect_prompt_semantic(filepath):
 def show_prompts(scored, semantic_prompt=None):
     if semantic_prompt:
         logging.info(
-            f"\nPrompt IA recommandé par analyse sémantique: "
+            "\nPrompt IA recommandé par analyse sémantique: "
             f"{semantic_prompt['name']} -> {semantic_prompt['file']}"
         )
         if os.path.exists(semantic_prompt["file"]):

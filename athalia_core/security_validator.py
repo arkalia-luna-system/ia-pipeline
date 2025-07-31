@@ -6,9 +6,10 @@ Protection contre les injections de commandes et exécution non autorisée
 """
 
 import logging
-import subprocess
 from pathlib import Path
+import subprocess
 from typing import Any, Dict, List
+
 
 logger = logging.getLogger(__name__)
 

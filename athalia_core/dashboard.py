@@ -4,13 +4,14 @@ Module dashboard pour Athalia
 Interface de visualisation et monitoring
 """
 
+from datetime import datetime
 import json
 import logging
-from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 import yaml
+
 
 logger = logging.getLogger(__name__)
 
@@ -67,17 +68,17 @@ class Dashboard:
         # Calculer des métriques agrégées
         if self.metrics:
             widget["summary"] = {
-                "total_files": (
-                    self.metrics.get("code_complexity", {}).get("files_analyzed", 0)
+                "total_files": self.metrics.get("code_complexity", {}).get(
+                    "files_analyzed", 0
                 ),
-                "security_score": (
-                    self.metrics.get("security", {}).get("security_score", 0)
+                "security_score": self.metrics.get("security", {}).get(
+                    "security_score", 0
                 ),
-                "test_coverage": (
-                    self.metrics.get("test_coverage", {}).get("test_files_count", 0)
+                "test_coverage": self.metrics.get("test_coverage", {}).get(
+                    "test_files_count", 0
                 ),
-                "dependencies": (
-                    self.metrics.get("dependencies", {}).get("total_dependencies", 0)
+                "dependencies": self.metrics.get("dependencies", {}).get(
+                    "total_dependencies", 0
                 ),
             }
 

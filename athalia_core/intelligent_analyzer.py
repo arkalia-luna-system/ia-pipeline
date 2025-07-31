@@ -9,10 +9,10 @@ Orchestrateur principal qui coordonne tous les modules d'analyse:
 - Performance Analyzer (analyse de performance)
 """
 
-import json
-import logging
 from dataclasses import asdict, dataclass
 from datetime import datetime
+import json
+import logging
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -20,6 +20,7 @@ from .architecture_analyzer import ArchitectureAnalyzer
 from .ast_analyzer import ASTAnalyzer
 from .pattern_detector import PatternDetector
 from .performance_analyzer import PerformanceAnalyzer
+
 
 # Import de l'orchestrateur unifié (optionnel)
 try:
@@ -230,7 +231,8 @@ class IntelligentAnalyzer:
             ]
             if high_severity_duplicates:
                 recommendations.append(
-                    f"🔧 {len(high_severity_duplicates)} doublons critiques - fusion prioritaire"
+                    f"🔧 {len(high_severity_duplicates)} doublons critiques - fusion"
+                    " prioritaire"
                 )
 
         if pattern_analysis["antipatterns"]:
@@ -242,14 +244,14 @@ class IntelligentAnalyzer:
             if high_impact_antipatterns:
                 recommendations.append(
                     f"⚠️ {len(high_impact_antipatterns)} anti-patterns critiques - "
-                    f"refactoring urgent"
+                    "refactoring urgent"
                 )
 
         # Recommandations d'architecture
         if architecture_analysis.performance_issues:
             recommendations.append(
                 f"🏗️ {len(architecture_analysis.performance_issues)} "
-                f"problèmes d'architecture détectés"
+                "problèmes d'architecture détectés"
             )
 
         # Recommandations de performance
@@ -261,7 +263,8 @@ class IntelligentAnalyzer:
             ]
             if high_impact_perf_issues:
                 recommendations.append(
-                    f"⚡ {len(high_impact_perf_issues)} problèmes de performance critiques"
+                    f"⚡ {len(high_impact_perf_issues)} problèmes de performance"
+                    " critiques"
                 )
 
         # Recommandations générales
@@ -319,7 +322,7 @@ class IntelligentAnalyzer:
                         "task": "fix_critical_performance_issues",
                         "description": (
                             f"Corriger {len(critical_perf_issues)} "
-                            f"problèmes de performance critiques"
+                            "problèmes de performance critiques"
                         ),
                         "effort": "high",
                         "impact": "high",
@@ -361,8 +364,9 @@ class IntelligentAnalyzer:
     def _save_comprehensive_analysis(self, analysis: ComprehensiveAnalysis):
         """Sauvegarder l'analyse complète"""
         output_file = (
-            self.root_path / "data" / f"comprehensive_analysis_{analysis.project_name}_"
-            f"{analysis.analysis_date.strftime('%Y%m%d_%H%M%S')}.json"
+            self.root_path
+            / "data"
+            / f"comprehensive_analysis_{analysis.project_name}_{analysis.analysis_date.strftime('%Y%m%d_%H%M%S')}.json"
         )
 
         # Convertir en dictionnaire pour la sérialisation JSON
@@ -420,7 +424,7 @@ class IntelligentAnalyzer:
             },
             "recommendations": [
                 "Utiliser l'analyse complète pour les projets complexes",
-                ("Activer l'orchestrateur unifié pour " "l'industrialisation complète"),
+                "Activer l'orchestrateur unifié pour l'industrialisation complète",
             ],
         }
 
@@ -464,7 +468,8 @@ def main():
     print("\n📊 RÉSUMÉ:")
     print(f"- Fichiers analysés: {analysis.ast_analysis['files_analyzed']}")
     print(
-        f"- Doublons détectés: {analysis.pattern_analysis['summary']['total_duplicates']}"
+        "- Doublons détectés:"
+        f" {analysis.pattern_analysis['summary']['total_duplicates']}"
     )
     print(
         f"- Anti-patterns: {analysis.pattern_analysis['summary']['total_antipatterns']}"

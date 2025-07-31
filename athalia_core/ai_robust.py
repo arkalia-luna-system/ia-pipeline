@@ -5,12 +5,13 @@ Module IA robuste pour Athalia - Version corrigée
 Gestion des modèles IA avec fallback intelligent
 """
 
+from enum import Enum
 import logging
 import subprocess
-from enum import Enum
 from typing import Dict, List, Optional
 
 import requests
+
 
 # Import du validateur de sécurité
 try:

@@ -5,14 +5,15 @@ Interface CLI pour Athalia avec IA robuste.
 
 import logging
 import os
-import traceback
 from pathlib import Path
+import traceback
 
 import click
 import yaml
 
 from .ai_robust import AIModel, RobustAI
 from .audit import audit_project_intelligent
+
 
 # Configuration pour l'internationalisation (i18n) des messages CLI
 # Utilisation de gettext pour la traduction des messages utilisateur

@@ -5,8 +5,8 @@ Module de génération simplifié pour Athalia
 Version simplifiée sans f-strings complexes
 """
 
-import re
 from pathlib import Path
+import re
 from typing import Optional
 
 

@@ -5,16 +5,16 @@ Système de logging avancé pour Athalia/Arkalia
 Logging intelligent avec rotation, compression et analyse automatique
 """
 
+from collections import defaultdict, deque
+from datetime import datetime, timedelta
 import gzip
 import json
 import logging
 import logging.handlers
+from pathlib import Path
 import shutil
 import threading
 import time
-from collections import defaultdict, deque
-from datetime import datetime, timedelta
-from pathlib import Path
 from typing import Any, Dict, Optional
 
 
@@ -130,7 +130,8 @@ class AthaliaLogger:
             self.metrics["validation"].popleft()
 
         logger.info(
-            f"VALIDATION | {test_name} | {result.get('succes', False)} | {duration:.2f}s | {result}"
+            f"VALIDATION | {test_name} | {result.get('succes', False)} |"
+            f" {duration:.2f}s | {result}"
         )
 
     def log_correction(
@@ -162,7 +163,8 @@ class AthaliaLogger:
             self.metrics["correction"].popleft()
 
         logger.info(
-            f"CORRECTION | {file_path} | {correction_type} | {success} | {duration:.2f}s"
+            f"CORRECTION | {file_path} | {correction_type} | {success} |"
+            f" {duration:.2f}s"
         )
 
         if not success:
@@ -196,7 +198,8 @@ class AthaliaLogger:
             self.metrics["performance"].popleft()
 
         logger.info(
-            f"PERFORMANCE | {operation} | {duration:.2f}s | {memory_mb}MB | {cpu_percent}%"
+            f"PERFORMANCE | {operation} | {duration:.2f}s | {memory_mb}MB |"
+            f" {cpu_percent}%"
         )
 
     def log_error(self, error: Exception, context: str = "", **kwargs):

@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 import argparse
 import ast
+from datetime import datetime
 import json
 import logging
-from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict
+
 
 logger = logging.getLogger(__name__)
 

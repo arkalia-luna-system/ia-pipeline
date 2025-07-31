@@ -4,11 +4,12 @@
 Analyseur de projets Rust pour Athalia Robotics
 """
 
-import logging
-import subprocess
 from dataclasses import dataclass
+import logging
 from pathlib import Path
+import subprocess
 from typing import Dict, List, Optional
+
 
 # Import du validateur de sécurité
 try:
@@ -77,7 +78,8 @@ class RustAnalyzer:
         if not self._check_rust_build_system():
             issues.append("Rust/Cargo n'est pas installé ou accessible")
             recommendations.append(
-                "Installer Rust: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
+                "Installer Rust: curl --proto '=https' --tlsv1.2 -sSf"
+                " https://sh.rustup.rs | sh"
             )
 
         # Trouver tous les Cargo.toml
@@ -286,21 +288,21 @@ class RustAnalyzer:
             if not project.has_robotics_deps:
                 recommendations.append(
                     f"Projet {project.name}: Ajouter des dépendances robotiques "
-                    f"(ex: ros2, dynamixel)"
+                    "(ex: ros2, dynamixel)"
                 )
 
             # Recommandations pour ROS2
             if not project.has_ros2_deps:
                 recommendations.append(
                     f"Projet {project.name}: Considérer l'ajout de ROS2 "
-                    f"pour l'interopérabilité robotique"
+                    "pour l'interopérabilité robotique"
                 )
 
             # Recommandations pour les tests
             if not project.dev_dependencies:
                 recommendations.append(
                     f"Projet {project.name}: Ajouter des tests avec "
-                    f"des dépendances de développement"
+                    "des dépendances de développement"
                 )
 
             # Recommandations pour la structure

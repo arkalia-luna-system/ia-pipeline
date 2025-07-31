@@ -6,16 +6,17 @@ Module spécialisé dans la détection de patterns de code,
 doublons et anti-patterns. Utilise l'analyseur AST de base.
 """
 
+from dataclasses import dataclass
+from datetime import datetime
 import difflib
 import json
 import logging
-import sqlite3
-from dataclasses import dataclass
-from datetime import datetime
 from pathlib import Path
+import sqlite3
 from typing import Any, Dict, List
 
 from .ast_analyzer import ASTAnalyzer, FileAnalysis
+
 
 logger = logging.getLogger(__name__)
 
@@ -367,7 +368,9 @@ class PatternDetector:
             ):  # Seuil plus bas
                 antipattern = AntiPattern(
                     pattern_name="high_complexity_function",
-                    description=f"Fonction trop complexe (complexité: {pattern.complexity})",
+                    description=(
+                        f"Fonction trop complexe (complexité: {pattern.complexity})"
+                    ),
                     locations=pattern.locations,
                     impact="medium" if pattern.complexity < 20 else "high",
                     suggestion="Refactoriser en sous-fonctions plus petites",
@@ -382,7 +385,9 @@ class PatternDetector:
             ):  # Seuil plus bas
                 antipattern = AntiPattern(
                     pattern_name="large_class",
-                    description=f"Classe trop grande (complexité: {pattern.complexity})",
+                    description=(
+                        f"Classe trop grande (complexité: {pattern.complexity})"
+                    ),
                     locations=pattern.locations,
                     impact="medium" if pattern.complexity < 25 else "high",
                     suggestion="Diviser en classes plus petites",
@@ -407,7 +412,8 @@ class PatternDetector:
                     antipattern = AntiPattern(
                         pattern_name="potential_duplicate",
                         description=(
-                            f"Pattern potentiellement dupliqué ({similar_count} similaires)"
+                            "Pattern potentiellement dupliqué"
+                            f" ({similar_count} similaires)"
                         ),
                         locations=pattern.locations,
                         impact="medium",
@@ -506,7 +512,7 @@ class PatternDetector:
         if high_severity_duplicates:
             recommendations.append(
                 f"🔧 {len(high_severity_duplicates)} doublons critiques - "
-                f"priorité à la fusion"
+                "priorité à la fusion"
             )
 
         # Recommandations pour les anti-patterns
@@ -516,7 +522,7 @@ class PatternDetector:
         if high_impact_antipatterns:
             recommendations.append(
                 f"⚠️ {len(high_impact_antipatterns)} anti-patterns critiques - "
-                f"refactoring urgent"
+                "refactoring urgent"
             )
 
         # Recommandations générales

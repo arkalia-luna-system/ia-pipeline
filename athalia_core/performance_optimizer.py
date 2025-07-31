@@ -1,23 +1,25 @@
 """
 Module d'optimisation des performances et de la sécurité pour Athalia Core.
 
-Ce module fournit des outils pour :
+Ce module fournit des outils pour:
 - Optimiser les performances des opérations de nettoyage
 - Améliorer la sécurité des opérations de fichiers
 - Gérer la mémoire de manière efficace
 - Prévenir les blocages et les fuites mémoire
 """
 
-import os
-import time
-import logging
-import threading
-from pathlib import Path
-from typing import Dict, List, Any, Callable
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from functools import wraps
-import psutil
 import gc
+import logging
+import os
+from pathlib import Path
+import threading
+import time
+from typing import Any, Callable, Dict, List
+
+import psutil
+
 
 logger = logging.getLogger(__name__)
 
@@ -122,7 +124,10 @@ class PerformanceOptimizer:
             return False
 
     def parallel_file_processing(
-        self, file_paths: List[Path], processor: Callable, chunk_size: int = 100
+        self,
+        file_paths: List[Path],
+        processor: Callable,
+        chunk_size: int = 100,
     ) -> List[Any]:
         """
         Traite des fichiers en parallèle de manière optimisée.

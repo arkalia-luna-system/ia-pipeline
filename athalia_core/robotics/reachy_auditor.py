@@ -10,13 +10,14 @@ Audit complet des projets robotiques Reachy:
 - Tests de connectivité
 """
 
-import logging
 from dataclasses import dataclass
 from datetime import datetime
+import logging
 from pathlib import Path
 from typing import List, Optional, Tuple
 
 import yaml
+
 
 logger = logging.getLogger(__name__)
 
@@ -73,9 +74,11 @@ class ReachyAuditor:
         recommendations.extend(rust_recommendations)
 
         # Audit structure
-        structure_valid, structure_issues, structure_recommendations = (
-            self._audit_structure()
-        )
+        (
+            structure_valid,
+            structure_issues,
+            structure_recommendations,
+        ) = self._audit_structure()
         if not structure_valid:
             score -= 25
             issues.extend(structure_issues)
@@ -289,7 +292,7 @@ class ReachyAuditor:
         """Sauvegarder le rapport"""
         if output_path is None:
             output_path = (
-                f"data/reports/audits/reachy_audit_"
+                "data/reports/audits/reachy_audit_"
                 f"{datetime.now().strftime('%Y%m%d_%H%M%S')}.md"
             )
 
