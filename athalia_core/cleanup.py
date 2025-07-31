@@ -9,8 +9,8 @@ import shutil
 
 def clean_old_tests_and_caches(outdir):
     """
-    Supprime les anciens fichiers de test non-suffixés et les caches Python 
-    dans le projet cible. Log chaque suppression pour audit. 
+    Supprime les anciens fichiers de test non-suffixés et les caches Python
+    dans le projet cible. Log chaque suppression pour audit.
     Retourne la liste des fichiers supprimés.
     """
     outdir = Path(outdir)
@@ -70,9 +70,9 @@ def clean_old_tests_and_caches(outdir):
 
 def clean_macos_files(directory: str):
     """
-    Supprime automatiquement les fichiers macOS parasites et temporaires dans tout le projet.
-    Inclut les fichiers système macOS spécifiques comme .!44956!*.clean
-    Retourne la liste des fichiers supprimés.
+    Supprime automatiquement les fichiers macOS parasites et temporaires dans
+    tout le projet. Inclut les fichiers système macOS spécifiques comme
+    .!44956!*.clean. Retourne la liste des fichiers supprimés.
     """
     cleaned_files = []
 

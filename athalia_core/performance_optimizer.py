@@ -20,7 +20,6 @@ from typing import Any, Callable, Dict, List
 
 import psutil
 
-
 logger = logging.getLogger(__name__)
 
 
