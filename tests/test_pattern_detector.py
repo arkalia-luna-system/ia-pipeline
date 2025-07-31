@@ -354,7 +354,7 @@ class TestPatternDetector:
         # Mock des données d'insights avec le bon format
         mock_cursor.fetchall.return_value = [
             ("function", 10),  # pattern_type, count
-            ("class", 5),      # pattern_type, count
+            ("class", 5),  # pattern_type, count
         ]
 
         # Test sans initialisation automatique
