@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/auto_cleaner.py
 # Fichier: tests/test_auto_cleaner.py
 
-import pytest
 import athalia_core.auto_cleaner as module
 
 

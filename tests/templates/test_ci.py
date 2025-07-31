@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/ci.py
 # Fichier: tests/test_ci.py
 
-import pytest
 import athalia_core.ci as module
 
 

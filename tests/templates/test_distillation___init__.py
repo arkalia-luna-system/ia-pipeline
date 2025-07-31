@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/distillation/__init__.py
 # Fichier: tests/test_distillation___init__.py
 
-import pytest
 import athalia_core.distillation.__init__ as module
 
 

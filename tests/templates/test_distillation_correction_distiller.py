@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/distillation/correction_distiller.py
 # Fichier: tests/test_distillation_correction_distiller.py
 
-import pytest
 import athalia_core.distillation.correction_distiller as module
 
 

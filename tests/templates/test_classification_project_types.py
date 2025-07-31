@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/classification/project_types.py
 # Fichier: tests/test_classification_project_types.py
 
-import pytest
 import athalia_core.classification.project_types as module
 
 

@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/robotics/rust_analyzer.py
 # Fichier: tests/test_robotics_rust_analyzer.py
 
-import pytest
 import athalia_core.robotics.rust_analyzer as module
 
 

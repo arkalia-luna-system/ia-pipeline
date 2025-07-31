@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/error_codes.py
 # Fichier: tests/test_error_codes.py
 
-import pytest
 import athalia_core.error_codes as module
 
 

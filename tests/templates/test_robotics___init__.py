@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/robotics/__init__.py
 # Fichier: tests/test_robotics___init__.py
 
-import pytest
 import athalia_core.robotics.__init__ as module
 
 

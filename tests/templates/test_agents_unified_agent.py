@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/agents/unified_agent.py
 # Fichier: tests/test_agents_unified_agent.py
 
-import pytest
 import athalia_core.agents.unified_agent as module
 
 

@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/ast_analyzer.py
 # Fichier: tests/test_ast_analyzer.py
 
-import pytest
 import athalia_core.ast_analyzer as module
 
 

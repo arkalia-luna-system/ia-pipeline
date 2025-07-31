@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/distillation/adaptive_distillation.py
 # Fichier: tests/test_distillation_adaptive_distillation.py
 
-import pytest
 import athalia_core.distillation.adaptive_distillation as module
 
 

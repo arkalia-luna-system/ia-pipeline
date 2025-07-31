@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/robotics/robotics_ci.py
 # Fichier: tests/test_robotics_robotics_ci.py
 
-import pytest
 import athalia_core.robotics.robotics_ci as module
 
 

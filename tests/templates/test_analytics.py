@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/analytics.py
 # Fichier: tests/test_analytics.py
 
-import pytest
 import athalia_core.analytics as module
 
 

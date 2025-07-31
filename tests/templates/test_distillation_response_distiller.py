@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/distillation/response_distiller.py
 # Fichier: tests/test_distillation_response_distiller.py
 
-import pytest
 import athalia_core.distillation.response_distiller as module
 
 

@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/i18n/fr.py
 # Fichier: tests/test_i18n_fr.py
 
-import pytest
 import athalia_core.i18n.fr as module
 
 

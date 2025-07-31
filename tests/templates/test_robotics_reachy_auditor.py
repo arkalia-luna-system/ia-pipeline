@@ -1,7 +1,6 @@
 # Template de test pour athalia_core/robotics/reachy_auditor.py
 # Fichier: tests/test_robotics_reachy_auditor.py
 
-import pytest
 import athalia_core.robotics.reachy_auditor as module
 
 
