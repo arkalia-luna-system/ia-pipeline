@@ -7,10 +7,9 @@ Analyse automatique des corrections nécessaires par niveau
 import json
 import subprocess
 import sys
-import os
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Tuple, Any
+from typing import Dict, Tuple, Any
 
 
 # Couleurs pour l'affichage
@@ -99,7 +98,7 @@ class CIProAnalyzer:
         if returncode == 0:
             self.print_success("Syntaxe Python : OK")
         else:
-            self.print_error(f"Syntaxe Python : Erreur dans main.py")
+            self.print_error("Syntaxe Python : Erreur dans main.py")
             results["status"] = "DÉFAILLANT"
             results["issues"].append("Erreur de syntaxe Python")
 
@@ -254,7 +253,7 @@ class CIProAnalyzer:
                         coverage_str = line.split()[-1].replace("%", "")
                         results["coverage"] = float(coverage_str)
                         break
-                    except:
+                    except (ValueError, IndexError):
                         pass
 
             if results["coverage"] >= 80:

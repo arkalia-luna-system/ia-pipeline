@@ -9,12 +9,11 @@ Ce module fournit des outils pour :
 """
 
 import os
-import sys
 import time
 import logging
 import threading
 from pathlib import Path
-from typing import Dict, List, Any, Optional, Callable
+from typing import Dict, List, Any, Callable
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from functools import wraps
 import psutil

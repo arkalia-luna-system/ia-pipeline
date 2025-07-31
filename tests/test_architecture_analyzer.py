@@ -4,7 +4,6 @@ Tests pour le module architecture_analyzer.py
 Amélioration de la couverture de code de 0% à 80%+
 """
 
-import pytest
 from unittest.mock import patch, MagicMock, mock_open
 from pathlib import Path
 from datetime import datetime
@@ -231,7 +230,7 @@ class TestArchitectureAnalyzer:
                     mock_stat.return_value.st_size = 1000
                     mock_stat.return_value.st_mtime = 1234567890
 
-                    result = analyzer._analyze_single_module(
+                    analyzer._analyze_single_module(
                         Path("/tmp/test.py"), "core"
                     )
 
