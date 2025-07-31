@@ -945,18 +945,18 @@ def generate_analytics_html(project_path: str = ".") -> str:
     <style>
         body {{ font-family: Arial, sans-serif; margin: 20px; }}
         .header {{ background: #f0f0f0; padding: 20px; border-radius: 5px; }}
-        .metric {{ 
-            margin: 10px 0; 
-            padding: 10px; 
-            border: 1px solid #ddd; 
-            border-radius: 3px; 
+        .metric {{
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
         }}
         .score {{ font-size: 24px; font-weight: bold; color: #007bff; }}
-        .recommendation {{ 
-            background: #fff3cd; 
-            padding: 10px; 
-            margin: 5px 0; 
-            border-radius: 3px; 
+        .recommendation {{
+            background: #fff3cd;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 3px;
         }}
     </style>
 </head>

@@ -155,7 +155,7 @@ class GestionnaireProfils:
                 cursor.execute(
                     """
                     SELECT action, COUNT(*) as count
-                    FROM actions 
+                    FROM actions
                     WHERE profil_id = (SELECT id FROM profils WHERE nom = ?)
                     GROUP BY action ORDER BY count DESC LIMIT 10
                 """,

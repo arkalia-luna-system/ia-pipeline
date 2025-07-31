@@ -238,11 +238,11 @@ class AdvancedAnalytics:
     <title>Dashboard Analytics - {self.project_path.name}</title>
     <style>
         body {{ font-family: Arial, sans-serif; margin: 20px; }}
-        .metric {{ 
-            background: #f5f5f5; 
-            padding: 15px; 
-            margin: 10px 0; 
-            border-radius: 5px; 
+        .metric {{
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
         }}
         .summary {{ background: #e8f5e8; padding: 20px; border-radius: 5px; }}
         .chart {{ text-align: center; margin: 20px 0; }}
