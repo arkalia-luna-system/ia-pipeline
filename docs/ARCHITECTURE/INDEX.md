@@ -1,7 +1,7 @@
 # 🏗️ Architecture - Athalia
 
 **Section :** Architecture et design
-**Date :** 27 janvier 2025
+**Date :** 31 juillet 2025
 
 ---
 
@@ -14,19 +14,12 @@ Cette section contient la documentation d'architecture et de design du système 
 ## 📋 **Documentation Disponible**
 
 ### **🏗️ Architecture Générale**
-- [Vue d'ensemble](OVERVIEW.md) - Architecture générale du système
-- [Structure du projet](STRUCTURE.md) - Organisation des dossiers
-- [Modules principaux](MODULES.md) - Description des modules core
+- [Structure du projet](STRUCTURE_PROJET_EXPLICATION.md) - Organisation des dossiers
+- [Organisation workspace](ORGANISATION_WORKSPACE.md) - Structure du workspace
 
 ### **🔧 Design Patterns**
-- [Patterns utilisés](PATTERNS.md) - Design patterns implémentés
-- [Flux de données](DATA_FLOW.md) - Flux de données dans le système
-- [Interfaces](INTERFACES.md) - Interfaces et contrats
-
-### **🚀 Déploiement**
-- [Architecture de déploiement](DEPLOYMENT.md) - Stratégies de déploiement
-- [Configuration](CONFIGURATION.md) - Configuration système
-- [Monitoring](MONITORING.md) - Surveillance et métriques
+- [Structure du projet](STRUCTURE_PROJET_EXPLICATION.md) - Architecture détaillée
+- [Organisation workspace](ORGANISATION_WORKSPACE.md) - Organisation des fichiers
 
 ---
 
@@ -53,7 +46,7 @@ Cette section contient la documentation d'architecture et de design du système 
 
 - [← Retour à l'index principal](../README.md)
 - [→ Documentation API](../API/)
-- [→ Modules spécialisés](../ROBOTICS/)
+- [→ Modules spécialisés](../SPECIALIZED/)
 
 ---
 
