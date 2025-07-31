@@ -105,7 +105,8 @@ class CIProAnalyzer:
 
         # Test des imports essentiels
         returncode, stdout, stderr = self.run_command(
-            "python -c 'import athalia_core.audit; import athalia_core.cleanup; print(\"OK\")'"
+            "python -c 'import athalia_core.audit; import athalia_core.cleanup; "
+            'print("OK")\''
         )
         if returncode == 0:
             self.print_success("Imports essentiels : OK")
