@@ -7,7 +7,7 @@
 alias ath-clean='$(git rev-parse --show-toplevel)/bin/ath-clean'
 
 # Nettoie les fichiers AppleDouble et configure la prévention
-alias ath-clean-appledouble='$(git rev-parse --show-toplevel)/bin/ath-clean-appledouble'
+alias ath-clean-appledouble='$(git rev-parse --show-toplevel)/bin/cleanup/ath-clean-appledouble'
 
 # Menu interactif de prompts IA (debug, UX, audit, test, refactor)
 alias ath-dev-boost='bash $(git rev-parse --show-toplevel)/setup/ath-dev-boost.sh'
@@ -247,14 +247,19 @@ function ath-user-context() {
 #     echo "Projet principal Athalia détecté"
 #     # Proposer des alias spécifiques ici
 #   fi
-# }# Docker down
-alias ath-docker-down='docker compose down'
-# Documentation API
-alias ath-doc-api='open $(git rev-parse --show-toplevel)/docs/API.md'
-# Sécurité
-alias ath-security='python3 $(git rev-parse --show-toplevel)/athalia_core/security_auditor.py'
+# }
+
 # Documentation Guide
 alias ath-doc-guide='open $(git rev-parse --show-toplevel)/docs/GUIDE.md'
+
+# Docker down
+alias ath-docker-down='docker compose down'
+
+# Documentation API
+alias ath-doc-api='open $(git rev-parse --show-toplevel)/docs/API.md'
+
+# Sécurité
+alias ath-security='python3 $(git rev-parse --show-toplevel)/athalia_core/security_auditor.py'
 
 # Arrêt des processus Athalia
 alias ath-kill='$(git rev-parse --show-toplevel)/bin/ath-clean --kill-processes'

@@ -1,49 +1,45 @@
-# Scripts Utilitaires Athalia
+# 📁 Scripts Athalia
 
-Ce dossier contient tous les scripts utilitaires organisés par catégorie.
+Ce dossier contient tous les scripts d'analyse, validation et monitoring du projet Athalia.
 
-## 📁 **Structure**
+## 📂 Structure
 
-### Scripts Principaux
+### **ci/** - Scripts CI/CD
+- `ci_diagnostic.py` - Diagnostic complet de la configuration CI/CD
+- `ci_pro_analyzer.py` - Analyse professionnelle des niveaux CI/CD
+- `ci_progress_tracker.py` - Suivi des progrès CI/CD
+
+### **validation/** - Scripts de validation
+- `validation_continue.py` - Validation continue du projet
+- `validation_dashboard_simple.py` - Dashboard de validation simple
+- `validation_objective.py` - Validation objective des métriques
+- `validation_express.sh` - Validation rapide en shell
+
+### **monitoring/** - Scripts de monitoring
 - `monitor_processes.py` - Monitoring des processus
+- `test_athalia_performance.py` - Tests de performance Athalia
 - `quick_performance_test.py` - Tests de performance rapides
-- `test_athalia_performance.py` - Tests de performance complets
-- `validation_continue.py` - Validation continue
-- `validation_dashboard_simple.py` - Dashboard de validation
-- `validation_express.sh` - Validation express
-- `validation_objective.py` - Validation objective
 
-## 🚀 **Utilisation**
+### **Scripts utilitaires**
+- `prevent_python_version_issues.py` - Prévention des problèmes de versions Python
+- `sync_develop_to_ci_pro.sh` - Synchronisation develop vers CI pro
+- `validate_ci_cd.sh` - Validation CI/CD en shell
 
-### Scripts de Performance
+## 🚀 Utilisation
+
 ```bash
-# Test de performance rapide
-python3 scripts/quick_performance_test.py
+# Diagnostic CI/CD
+python scripts/ci/ci_diagnostic.py
 
-# Test de performance complet
-python3 scripts/test_athalia_performance.py
-```
-
-### Scripts de Validation
-```bash
 # Validation continue
-python3 scripts/validation_continue.py
+python scripts/validation/validation_continue.py
 
-# Validation objective
-python3 scripts/validation_objective.py
+# Monitoring des performances
+python scripts/monitoring/test_athalia_performance.py
 ```
 
-## 📋 **Conventions**
+## 📋 Maintenance
 
-- **Nommage** : `[domaine]_[fonction].py`
-- **Documentation** : Chaque script doit avoir un docstring
-- **Tests** : Scripts testés avant intégration
-- **Logs** : Utilisation du système de logging centralisé
-
-## 🔧 **Ajout de Nouveaux Scripts**
-
-1. Créer le dossier approprié si nécessaire
-2. Suivre les conventions de nommage
-3. Ajouter la documentation
-4. Tester le script
-5. Mettre à jour ce README
+- Tous les scripts sont documentés et testés
+- Les scripts de validation génèrent des rapports dans `data/reports/`
+- Les scripts de monitoring peuvent être exécutés en continu
