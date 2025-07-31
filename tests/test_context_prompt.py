@@ -143,7 +143,7 @@ class TestSemanticPromptDetection:
     def test_detect_prompt_semantic(self, mock_validate):
         """Test de détection sémantique de prompt"""
         mock_result = MagicMock()
-        mock_result.stdout = "Test Strategy"
+        mock_result.stdout = "Stratégie de tests"
         mock_validate.return_value = mock_result
 
         filepath = "test_file.py"
@@ -152,11 +152,11 @@ class TestSemanticPromptDetection:
 
         assert isinstance(semantic_prompt, str)
         assert semantic_prompt in [
-            "test_strategy.md",
-            "code_refactor.yaml",
-            "design_review.md",
-            "ux_fun_boost.md",
-            "dev_debug.yaml",
+            "prompts/test_strategy.md",
+            "prompts/code_refactor.yaml",
+            "prompts/design_review.md",
+            "prompts/ux_fun_boost.md",
+            "prompts/dev_debug.yaml",
         ]
 
     @patch("athalia_core.agents.context_prompt.validate_and_run")
@@ -226,7 +226,7 @@ class TestPromptDisplay:
 
         assert isinstance(result, str)
         assert "Test Prompt" in result
-        assert "IA Sémantique" in result
+        assert "analyse sémantique" in result
 
     def test_show_prompts_empty(self):
         """Test d'affichage avec liste vide"""
@@ -282,7 +282,7 @@ class TestIntegration:
     def test_full_prompt_detection_workflow(self, mock_validate, mock_file):
         """Test du workflow complet de détection de prompts"""
         mock_result = MagicMock()
-        mock_result.stdout = "Test Strategy"
+        mock_result.stdout = "Stratégie de tests"
         mock_validate.return_value = mock_result
 
         filepath = "test_file.py"

@@ -316,7 +316,8 @@ class IntelligentMemory:
             cursor = conn.cursor()
             cursor.execute(
                 """
-                SELECT original_code, suggested_code, reason, confidence, based_on_corrections
+                SELECT original_code, suggested_code, reason, confidence, 
+                       based_on_corrections
                 FROM correction_suggestions
                 WHERE applied = 1 AND success = 1
                 ORDER BY confidence DESC
