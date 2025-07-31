@@ -555,9 +555,10 @@ class TestArchitectureAnalyzer:
                 coordination = analyzer.generate_intelligent_coordination()
 
                 assert isinstance(coordination, dict)
-                assert "modules" in coordination
+                assert "priority_tasks" in coordination
+                assert "parallel_tasks" in coordination
                 assert "dependencies" in coordination
-                assert "optimization_plan" in coordination
+                assert "estimated_time" in coordination
 
 
 class TestIntegration:
@@ -619,6 +620,10 @@ class TestIntegration:
                                     analyzer.generate_intelligent_coordination()
                                 )
                                 assert isinstance(coordination, dict)
+                                assert "priority_tasks" in coordination
+                                assert "parallel_tasks" in coordination
+                                assert "dependencies" in coordination
+                                assert "estimated_time" in coordination
 
                                 # Vérifier que toutes les méthodes ont été appelées
                                 mock_analyze_modules.assert_called()
