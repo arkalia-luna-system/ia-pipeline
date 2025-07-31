@@ -88,7 +88,7 @@ class TestCIUltraFast:
     def test_file_permissions(self):
         """Test des permissions de base sur les fichiers essentiels"""
         essential_files = ["README.md", "config/requirements.txt"]
-        
+
         for file_path in essential_files:
             if os.path.exists(file_path):
                 # Vérifier que le fichier est lisible

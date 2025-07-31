@@ -447,7 +447,7 @@ class TestGestionnaireProfilsIntegration(unittest.TestCase):
         # Vérifier que les statistiques existent
         self.assertIsNotNone(stats1)
         self.assertIsNotNone(stats2)
-        
+
         # Vérifier que les actions sont enregistrées (peut être 0 si problème de DB)
         self.assertIn("total_actions", stats1)
         self.assertIn("total_actions", stats2)

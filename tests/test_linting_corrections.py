@@ -17,7 +17,7 @@ except ImportError:
     def validate_and_run(command, **kwargs):
         return subprocess.run(command, **kwargs)
 
-    SecurityError = Exception
+    SecurityError = Exception  # type: ignore
 
 
 def test_linting_corrections_documentation():
@@ -27,7 +27,9 @@ def test_linting_corrections_documentation():
         "F601": {
             "description": "Dictionary key literal repeated",
             "files_corrected": ["tests/correction_finale.py"],
-            "correction": "Remplacement du dictionnaire avec clés répétées par une liste de tuples",
+            "correction": (
+                "Remplacement du dictionnaire avec clés répétées par une liste de tuples"
+            ),
             "before": """
             replacements = {
                 '"f"': '"success"',
@@ -46,7 +48,9 @@ def test_linting_corrections_documentation():
         "F541": {
             "description": "f-string without any placeholders",
             "files_corrected": ["tests/correction_finale.py"],
-            "correction": "Suppression du préfixe f inutile dans les f-strings sans placeholders",
+            "correction": (
+                "Suppression du préfixe f inutile dans les f-strings sans placeholders"
+            ),
             "before": 'logger.info(f"📊 Validation terminée:")',
             "after": 'logger.info("📊 Validation terminée:")',
         },
