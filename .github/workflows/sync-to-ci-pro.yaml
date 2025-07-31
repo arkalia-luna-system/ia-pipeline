@@ -1,0 +1,75 @@
+name: Sync Develop to CI Professional
+
+on:
+  push:
+    branches: [develop]
+
+jobs:
+  sync-to-ci-pro:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Sync to ci-cd-professional
+        run: |
+          echo "🔄 Synchronisation de develop vers ci-cd-professional..."
+
+          # Vérifier si la branche ci-cd-professional existe
+          if git ls-remote --heads origin ci-cd-professional | grep -q ci-cd-professional; then
+            echo "✅ Branche ci-cd-professional existe, mise à jour..."
+            git fetch origin ci-cd-professional
+            git checkout ci-cd-professional
+            git merge develop --no-edit
+          else
+            echo "🆕 Création de la branche ci-cd-professional..."
+            git checkout -b ci-cd-professional
+          fi
+
+          # Pousser les changements
+          git push origin ci-cd-professional
+
+          echo "✅ Synchronisation terminée !"
+
+      - name: Generate Sync Report
+        if: always()
+        run: |
+          cat > sync_report.md << EOF
+          # 🔄 RAPPORT DE SYNCHRONISATION
+
+          ## 📅 Date: $(date)
+          ## 🌿 Branche source: develop
+          ## 🎯 Branche cible: ci-cd-professional
+          ## 👤 Acteur: ${{ github.actor }}
+
+          ### ✅ Actions effectuées:
+          - Synchronisation automatique de develop vers ci-cd-professional
+          - Mise à jour de la branche CI/CD professionnelle
+          - Déclenchement automatique des workflows CI/CD pro
+
+          ### 📈 Impact:
+          - **CI/CD Pro mise à jour** avec les derniers changements
+          - **Tests automatiques** déclenchés sur ci-cd-professional
+          - **Progression visible** dans les métriques
+
+          ### 🚀 Prochaines étapes:
+          - Vérifier les résultats des workflows CI/CD pro
+          - Analyser les rapports de progression
+          - Valider les améliorations avant migration
+
+          EOF
+
+      - name: Upload Sync Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sync-report
+          path: sync_report.md

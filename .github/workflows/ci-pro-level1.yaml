@@ -2,9 +2,9 @@ name: CI Professional - Level 1
 
 on:
   push:
-    branches: [ci-cd-professional]
+    branches: [ci-cd-professional, develop]
   pull_request:
-    branches: [ci-cd-professional]
+    branches: [ci-cd-professional, develop]
 
 jobs:
   test-basic:
@@ -67,33 +67,33 @@ jobs:
         run: |
           cat > ci_pro_level1_report.md << EOF
           # 📊 CI Professional - Level 1 Report
-          
+
           ## 🎯 Niveau: 1/5 - Tests de Base
-          
+
           ### 📅 Date: $(date)
           ### 🌿 Branche: ${{ github.ref_name }}
           ### 👤 Acteur: ${{ github.actor }}
-          
+
           ### ✅ Tests Exécutés:
           - Tests de base (non-slow)
           - Linting (flake8, black, ruff)
           - Vérification des imports essentiels
-          
+
           ### 📈 Métriques:
           - **Status:** ${{ job.status }}
           - **Temps d'exécution:** ~5 minutes
           - **Complexité:** Basique
-          
+
           ### 🚀 Prochain Niveau:
           - **Niveau 2:** Tests de sécurité
           - **Niveau 3:** Tests de performance
           - **Niveau 4:** Multi-environnement
           - **Niveau 5:** Déploiement continu
-          
+
           ### 📋 Actions Recommandées:
           - Si tous les tests passent → Passer au Niveau 2
           - Si échec → Corriger et relancer
-          
+
           EOF
 
       - name: Upload Level 1 Report
@@ -126,4 +126,4 @@ jobs:
         if: always()
         with:
           name: ci-progress-tracker
-          path: ci_progress.json 
+          path: ci_progress.json

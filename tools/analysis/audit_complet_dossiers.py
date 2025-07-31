@@ -434,7 +434,8 @@ class AuditCompletDossiers:
             modules_sans_docs = [m for m in modules if not m.docstring]
             if modules_sans_docs:
                 recommandations.append(
-                    f"📚 Ajouter de la documentation pour {len(modules_sans_docs)} modules"
+                    f"📚 Ajouter de la documentation pour "
+                    f"{len(modules_sans_docs)} modules"
                 )
 
         return recommandations
@@ -449,12 +450,14 @@ class AuditCompletDossiers:
             # Chercher des patterns intéressants
             if len(module.fonctions) > 10:
                 pepites.append(
-                    f"🚀 Module {module.nom}: {len(module.fonctions)} fonctions (très actif)"
+                    f"🚀 Module {module.nom}: {len(module.fonctions)} fonctions "
+                    f"(très actif)"
                 )
 
             if len(module.classes) > 5:
                 pepites.append(
-                    f"🏗️ Module {module.nom}: {len(module.classes)} classes (architecture complexe)"
+                    f"🏗️ Module {module.nom}: {len(module.classes)} classes "
+                    f"(architecture complexe)"
                 )
 
             if module.integration_orchestrateur:

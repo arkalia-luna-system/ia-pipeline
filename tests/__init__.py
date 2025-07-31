@@ -44,7 +44,8 @@ def _protect_test_directory():
                     pattern.replace("*", "") in filename for pattern in allowed_files
                 ):
                     print(
-                        f"🚫 BLOCAGE: Suppression du fichier de test automatique: {filename}"
+                        f"🚫 BLOCAGE: Suppression du fichier de test automatique: "
+                        f"{filename}"
                     )
                     try:
                         file_path.unlink()
