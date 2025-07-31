@@ -71,10 +71,10 @@ pip install -r config/requirements-minimal.txt
 ### **4. Configuration**
 ```bash
 # Copier le fichier de configuration
-cp config.yml.example config.yml
+cp config.yml.example config/config.yml
 
 # Éditer la configuration selon vos besoins
-# nano config.yml
+# nano config/config.yml
 ```
 
 ---
@@ -83,7 +83,7 @@ cp config.yml.example config.yml
 
 ### **Fichier de Configuration Principal**
 ```yaml
-# config.yml
+# config/config.yml
 app:
   name: athalia
   version: "10.0"
@@ -207,7 +207,7 @@ chmod +x scripts/*.sh
 #### **Erreur de Configuration**
 ```bash
 # Solution : Vérifier le fichier config.yml
-python -c "import yaml; yaml.safe_load(open('config.yml'))"
+python -c "import yaml; yaml.safe_load(open('config/config.yml'))"
 ```
 
 ### **Logs et Debug**

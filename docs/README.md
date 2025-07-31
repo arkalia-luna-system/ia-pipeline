@@ -121,7 +121,7 @@ Bienvenue dans la documentation complète d'Athalia, un système d'intelligence 
 - **Nettoyage** : `./bin/ath-clean`
 
 ### **Configuration**
-- **Fichier principal** : `config.yml`
+- **Fichier principal** : `config/config.yml`
 - **Requirements** : `requirements.txt`
 - **PyProject** : `pyproject.toml`
 
