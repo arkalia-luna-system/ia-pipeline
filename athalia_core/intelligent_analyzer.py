@@ -366,7 +366,8 @@ class IntelligentAnalyzer:
                     {
                         "task": "refactor_medium_impact_antipatterns",
                         "description": (
-                            f"Refactoriser {len(medium_impact_antipatterns)} anti-patterns"
+                            f"Refactoriser {len(medium_impact_antipatterns)} "
+                            "anti-patterns"
                         ),
                         "effort": "medium",
                         "impact": "medium",
