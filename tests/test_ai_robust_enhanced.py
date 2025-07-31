@@ -24,15 +24,15 @@ class TestRobustAI:
         """Test d'initialisation de RobustAI"""
         ai = RobustAI()
         assert ai is not None
-        assert hasattr(ai, 'available_models')
-        assert hasattr(ai, 'fallback_chain')
-        assert hasattr(ai, 'prompt_templates')
+        assert hasattr(ai, "available_models")
+        assert hasattr(ai, "fallback_chain")
+        assert hasattr(ai, "prompt_templates")
 
     def test_generate_blueprint_api(self):
         """Test de génération de blueprint pour API"""
         ai = RobustAI()
         blueprint = ai.generate_blueprint("Créer une API REST avec FastAPI")
-        
+
         assert blueprint is not None
         assert blueprint.get("project_type") == "api"
         assert blueprint.get("docker") is True
@@ -42,7 +42,7 @@ class TestRobustAI:
         """Test de génération de blueprint pour robotique"""
         ai = RobustAI()
         blueprint = ai.generate_blueprint("Robot Reachy avec ROS2")
-        
+
         assert blueprint is not None
         assert blueprint.get("project_type") == "robotics"
 
@@ -50,7 +50,7 @@ class TestRobustAI:
         """Test de génération de blueprint pour web"""
         ai = RobustAI()
         blueprint = ai.generate_blueprint("Application web avec Flask")
-        
+
         assert blueprint is not None
         assert blueprint.get("project_type") == "web"
         assert blueprint.get("docker") is True
@@ -59,7 +59,7 @@ class TestRobustAI:
         """Test de génération de blueprint pour IA"""
         ai = RobustAI()
         blueprint = ai.generate_blueprint("Application IA avec machine learning")
-        
+
         assert blueprint is not None
         assert blueprint.get("project_type") == "ai_application"
 
@@ -67,7 +67,7 @@ class TestRobustAI:
         """Test de génération de blueprint générique"""
         ai = RobustAI()
         blueprint = ai.generate_blueprint("Projet simple")
-        
+
         assert blueprint is not None
         assert blueprint.get("project_type") == "generic"
 
@@ -75,9 +75,9 @@ class TestRobustAI:
         """Test de review de code"""
         ai = RobustAI()
         code = "def hello(): print('Hello World')"
-        
+
         review = ai.review_code(code, "test.py", "generic", 70)
-        
+
         assert review is not None
         assert "suggestions" in review
         assert "score" in review  # Changé de "improved_score" à "score"
@@ -86,7 +86,7 @@ class TestRobustAI:
         """Test de génération de documentation"""
         ai = RobustAI()
         doc = ai.generate_documentation("test_project", "api", ["core", "tests"])
-        
+
         assert doc is not None
         assert "test_project" in doc
         assert "api" in doc
@@ -94,28 +94,30 @@ class TestRobustAI:
     def test_classify_project_complexity(self):
         """Test de classification de complexité"""
         ai = RobustAI()
-        with patch('pathlib.Path.exists', return_value=True):
+        with patch("pathlib.Path.exists", return_value=True):
             complexity = ai.classify_project_complexity("/fake/path")
-            
+
             assert complexity is not None
-            assert "complexity" in complexity  # Changé de "complexity_level" à "complexity"
+            assert (
+                "complexity" in complexity
+            )  # Changé de "complexity_level" à "complexity"
 
     def test_get_dynamic_prompt(self):
         """Test de génération de prompt dynamique"""
         ai = RobustAI()
         prompt = ai.get_dynamic_prompt("blueprint", idea="test")
-        
+
         assert prompt is not None
         assert isinstance(prompt, str)
 
-    @patch('athalia_core.ai_robust_enhanced.subprocess.run')
+    @patch("athalia_core.ai_robust_enhanced.subprocess.run")
     def test_call_ollama(self, mock_run):
         """Test d'appel Ollama"""
         ai = RobustAI()
         mock_run.return_value = MagicMock(stdout=b"test response", returncode=0)
-        
+
         response = ai._call_ollama("mistral", "test prompt")
-        
+
         assert response is not None
         assert "test response" in response.decode()  # Ajout de .decode()
 
@@ -123,7 +125,7 @@ class TestRobustAI:
         """Test de réponse mock"""
         ai = RobustAI()
         response = ai._mock_response("test prompt")
-        
+
         assert response is not None
         assert isinstance(response, str)
         assert len(response) > 0
@@ -164,29 +166,29 @@ class TestFunctions:
 
     def test_fallback_ia(self):
         """Test de la fonction fallback_ia"""
-        with patch('athalia_core.ai_robust_enhanced.subprocess.run') as mock_run:
+        with patch("athalia_core.ai_robust_enhanced.subprocess.run") as mock_run:
             mock_run.return_value = MagicMock(stdout=b"fallback response", returncode=0)
-            
+
             response = fallback_ia("test prompt")
             assert response is not None
             # Test plus flexible pour la réponse
             assert isinstance(response, str)
 
-    @patch('athalia_core.ai_robust_enhanced.subprocess.run')
+    @patch("athalia_core.ai_robust_enhanced.subprocess.run")
     def test_query_qwen(self, mock_run):
         """Test de la fonction query_qwen"""
         mock_run.return_value = MagicMock(stdout=b"qwen response", returncode=0)
-        
+
         response = query_qwen("test prompt")
         assert response is not None
         # Test plus flexible pour la réponse
         assert isinstance(response, str)
 
-    @patch('athalia_core.ai_robust_enhanced.subprocess.run')
+    @patch("athalia_core.ai_robust_enhanced.subprocess.run")
     def test_query_mistral(self, mock_run):
         """Test de la fonction query_mistral"""
         mock_run.return_value = MagicMock(stdout=b"mistral response", returncode=0)
-        
+
         response = query_mistral("test prompt")
         assert response is not None
         # Test plus flexible pour la réponse
@@ -199,21 +201,21 @@ class TestErrorHandling:
     def test_generate_blueprint_error_handling(self):
         """Test de gestion d'erreur dans generate_blueprint"""
         ai = RobustAI()
-        
+
         # Test avec une idée qui pourrait causer une erreur
         blueprint = ai.generate_blueprint("")
-        
+
         assert blueprint is not None
         assert "project_name" in blueprint
 
-    @patch('athalia_core.ai_robust_enhanced.subprocess.run')
+    @patch("athalia_core.ai_robust_enhanced.subprocess.run")
     def test_call_ollama_error_handling(self, mock_run):
         """Test de gestion d'erreur dans _call_ollama"""
         ai = RobustAI()
         mock_run.side_effect = Exception("Ollama not available")
-        
+
         response = ai._call_ollama("mistral", "test prompt")
-        
+
         assert response is None
 
 
@@ -223,17 +225,17 @@ class TestIntegration:
     def test_full_workflow(self):
         """Test du workflow complet"""
         ai = RobustAI()
-        
+
         # 1. Générer un blueprint
         blueprint = ai.generate_blueprint("API REST avec FastAPI")
-        
+
         # 2. Review du code
         code = "from fastapi import FastAPI\napp = FastAPI()"
         review = ai.review_code(code, "main.py", "api", 80)
-        
+
         # 3. Générer de la documentation
         doc = ai.generate_documentation("test_api", "api", ["core"])
-        
+
         assert blueprint is not None
         assert review is not None
         assert doc is not None

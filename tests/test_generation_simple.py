@@ -31,7 +31,7 @@ class TestGenerateBlueprintMock:
     def test_generate_blueprint_mock_with_idea(self):
         """Test de génération de blueprint mock avec une idée"""
         blueprint = generate_blueprint_mock("API REST avec FastAPI")
-        
+
         assert blueprint is not None
         assert blueprint["project_name"] == "rest"  # Corrigé : "rest" au lieu de "api"
         assert blueprint["description"] == "API REST avec FastAPI"
@@ -42,7 +42,7 @@ class TestGenerateBlueprintMock:
     def test_generate_blueprint_mock_empty(self):
         """Test de génération de blueprint mock sans idée"""
         blueprint = generate_blueprint_mock()
-        
+
         assert blueprint is not None
         assert blueprint["project_name"] == "projet_ia"
         assert blueprint["description"] == "Projet de test"
@@ -91,7 +91,7 @@ class TestExtractProjectName:
 class TestGenerateProject:
     """Tests pour generate_project"""
 
-    @patch('pathlib.Path.mkdir')
+    @patch("pathlib.Path.mkdir")
     def test_generate_project(self, mock_mkdir):
         """Test de génération de projet"""
         blueprint = {
@@ -102,12 +102,16 @@ class TestGenerateProject:
             "structure": ["src/", "tests/", "README.md"],
             "dependencies": ["numpy", "pandas"],
         }
-        
-        with patch('athalia_core.generation_simple.generate_readme') as mock_readme:
-            with patch('athalia_core.generation_simple.generate_main_code') as mock_main:
-                with patch('athalia_core.generation_simple.generate_test_code') as mock_test:
+
+        with patch("athalia_core.generation_simple.generate_readme") as mock_readme:
+            with patch(
+                "athalia_core.generation_simple.generate_main_code"
+            ) as mock_main:
+                with patch(
+                    "athalia_core.generation_simple.generate_test_code"
+                ) as mock_test:
                     result = generate_project(blueprint, "/tmp")
-                    
+
                     assert result is not None
                     assert "test_project" in result
                     mock_readme.assert_called_once()
@@ -124,9 +128,9 @@ class TestGenerateReadme:
             "project_name": "test_project",
             "description": "Test project description",
         }
-        
+
         content = generate_readme(blueprint)
-        
+
         assert content is not None
         assert "test_project" in content
         assert "Test project description" in content
@@ -140,7 +144,7 @@ class TestGenerateReadme:
             "project_name": "test_project",
             "description": "Test project description",
         }
-        
+
         # Test sans création de fichier (juste le contenu)
         content = generate_readme(blueprint)
         assert content is not None
@@ -155,9 +159,9 @@ class TestGenerateMainCode:
             "project_name": "test_api",
             "project_type": "api",
         }
-        
+
         content = generate_main_code(blueprint)
-        
+
         assert content is not None
         assert "test_api" in content
         assert "FastAPI" in content
@@ -169,9 +173,9 @@ class TestGenerateMainCode:
             "project_name": "test_project",
             "project_type": "generic",
         }
-        
+
         content = generate_main_code(blueprint)
-        
+
         assert content is not None
         assert "test_project" in content
         assert "def main()" in content
@@ -186,12 +190,14 @@ class TestGenerateTestCode:
             "project_name": "test_project",
             "project_type": "generic",
         }
-        
+
         content = generate_test_code(blueprint)
-        
+
         assert content is not None
         assert "test_project" in content
-        assert "import unittest" in content  # Corrigé : utilise unittest au lieu de pytest
+        assert (
+            "import unittest" in content
+        )  # Corrigé : utilise unittest au lieu de pytest
         assert "def test_" in content
 
 
@@ -204,7 +210,7 @@ class TestSaveBlueprint:
             "project_name": "test_project",
             "description": "Test project",
         }
-        
+
         # Test que la fonction s'exécute sans erreur
         try:
             save_blueprint(blueprint, "/tmp")
@@ -220,9 +226,9 @@ class TestInjectBoosterIAElements:
 
     def test_inject_booster_ia_elements(self):
         """Test d'injection d'éléments booster IA"""
-        with patch('pathlib.Path.exists', return_value=False):
-            with patch('pathlib.Path.mkdir'):
-                with patch('builtins.open', new_callable=mock_open):
+        with patch("pathlib.Path.exists", return_value=False):
+            with patch("pathlib.Path.mkdir"):
+                with patch("builtins.open", new_callable=mock_open):
                     inject_booster_ia_elements("/tmp")
                     # Test que la fonction s'exécute sans erreur
 
@@ -232,11 +238,11 @@ class TestScanExistingProject:
 
     def test_scan_existing_project(self):
         """Test de scan de projet existant"""
-        with patch('pathlib.Path.exists', return_value=True):
-            with patch('pathlib.Path.iterdir') as mock_iterdir:
+        with patch("pathlib.Path.exists", return_value=True):
+            with patch("pathlib.Path.iterdir") as mock_iterdir:
                 mock_iterdir.return_value = []
                 result = scan_existing_project("/tmp")
-                
+
                 assert result is not None
 
 
@@ -290,9 +296,9 @@ class TestGenerateApiDocs:
             "project_name": "test_api",
             "description": "Test API",
         }
-        
+
         docs = generate_api_docs(blueprint)
-        
+
         assert docs is not None
         assert "test_api" in docs
         assert "API" in docs
@@ -307,9 +313,9 @@ class TestGenerateDockerfile:
             "project_name": "test_project",
             "project_type": "api",
         }
-        
+
         dockerfile = generate_dockerfile(blueprint)
-        
+
         assert dockerfile is not None
         assert "FROM python" in dockerfile
         assert "test_project" in dockerfile
@@ -324,9 +330,9 @@ class TestGenerateDockerCompose:
             "project_name": "test_project",
             "project_type": "api",
         }
-        
+
         compose = generate_docker_compose(blueprint)
-        
+
         assert compose is not None
         assert "version:" in compose
         assert "test_project" in compose
@@ -338,25 +344,25 @@ class TestIntegration:
     def test_full_generation_workflow(self):
         """Test du workflow complet de génération"""
         blueprint = generate_blueprint_mock("API REST avec FastAPI")
-        
+
         # Test que le blueprint est valide
         assert blueprint is not None
         assert "project_name" in blueprint
-        
+
         # Test de génération de contenu
         readme = generate_readme(blueprint)
         main_code = generate_main_code(blueprint)
         test_code = generate_test_code(blueprint)
-        
+
         assert readme is not None
         assert main_code is not None
         assert test_code is not None
-        
+
         # Test de génération de documentation
         api_docs = generate_api_docs(blueprint)
         dockerfile = generate_dockerfile(blueprint)
         compose = generate_docker_compose(blueprint)
-        
+
         assert api_docs is not None
         assert dockerfile is not None
-        assert compose is not None 
+        assert compose is not None

@@ -148,8 +148,8 @@ def main():
     # Afficher les statistiques
     stats = monitor.get_process_stats()
     print(
-        f"\n📊 Statistiques: {stats['count']} processus, {stats['total_cpu']:.1f}% CPU, "
-        f"{stats['total_memory']:.1f}MB RAM"
+        f"\n📊 Statistiques: {stats['count']} processus, "
+        f"{stats['total_cpu']:.1f}% CPU, {stats['total_memory']:.1f}MB RAM"
     )
 
 
