@@ -74,7 +74,7 @@ from athalia_core.error_handling import (
 error = AthaliaError(
     error_code=ErrorCode.FILE_NOT_FOUND,
     message="Configuration manquante",
-    details="config.yml",
+    details="config/config.yml",
     context={"path": "/app/config"}
 )
 
@@ -109,9 +109,9 @@ def process_data(data):
 
 #### **Context Manager**
 ```python
-with ErrorContext(ErrorCode.FILE_ACCESS_DENIED, {"file": "config.yml"}):
+with ErrorContext(ErrorCode.FILE_ACCESS_DENIED, {"file": "config/config.yml"}):
     # Code protégé
-    config = load_config("config.yml")
+    config = load_config("config/config.yml")
 ```
 
 #### **Callbacks personnalisés**
@@ -155,7 +155,7 @@ from athalia_core.error_handling import handle_error, ErrorContext
 
 def load_project_config(project_path):
     with ErrorContext(ErrorCode.FILE_NOT_FOUND, {"project": project_path}):
-        config_file = Path(project_path) / "config.yml"
+        config_file = Path(project_path) / "config" / "config.yml"
 
         if not config_file.exists():
             raise FileNotFoundError(f"Config introuvable: {config_file}")
