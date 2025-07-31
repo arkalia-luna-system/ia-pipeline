@@ -516,9 +516,11 @@ class TestArchitectureAnalyzer:
                 plan = analyzer.get_optimization_plan()
 
                 assert isinstance(plan, dict)
-                assert "recommendations" in plan
-                assert "performance_issues" in plan
-                assert "duplicates" in plan
+                assert "total_modules" in plan
+                assert "average_complexity" in plan
+                assert "average_performance" in plan
+                assert "problematic_modules" in plan
+                assert "optimization_score" in plan
 
     @patch("pathlib.Path.mkdir")
     @patch("sqlite3.connect")

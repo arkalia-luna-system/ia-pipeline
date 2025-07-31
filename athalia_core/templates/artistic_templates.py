@@ -41,8 +41,12 @@ class FlowerAnimation:
             wave_offset = math.sin(self.time + index * 0.5) * 20
 
             # Position du pétale avec mouvement de danse
-            petal_x = self.center[0] + math.cos(angle) * (self.petal_length + wave_offset)
-            petal_y = self.center[1] + math.sin(angle) * (self.petal_length + wave_offset)
+            petal_x = self.center[0] + math.cos(angle) * (
+                self.petal_length + wave_offset
+            )
+            petal_y = self.center[1] + math.sin(angle) * (
+                self.petal_length + wave_offset
+            )
 
             # Dessiner le pétale
             pygame.draw.circle(screen, flower_color, (int(petal_x), int(petal_y)), 15)
