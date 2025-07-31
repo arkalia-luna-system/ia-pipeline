@@ -4,6 +4,7 @@ Généré automatiquement pour améliorer la couverture de tests.
 """
 
 import pytest
+import inspect
 import athalia_core.__init__ as module
 
 
