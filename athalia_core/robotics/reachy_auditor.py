@@ -289,6 +289,10 @@ class ReachyAuditor:
                 f"{datetime.now().strftime('%Y%m%d_%H%M%S')}.md"
             )
 
+        # Créer le répertoire s'il n'existe pas
+        output_path_obj = Path(output_path)
+        output_path_obj.parent.mkdir(parents=True, exist_ok=True)
+
         report = self.generate_report(result)
 
         with open(output_path, "w", encoding="utf-8") as f:
