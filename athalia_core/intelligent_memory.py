@@ -495,7 +495,8 @@ class IntelligentMemory:
                 cursor.execute(
                     """
                     INSERT INTO learned_patterns
-                    (pattern_hash, pattern_type, occurrences, first_seen, last_seen, success_rate)
+                    (pattern_hash, pattern_type, occurrences, first_seen, 
+                     last_seen, success_rate)
                     VALUES (?, ?, ?, ?, ?, ?)
                 """,
                     (

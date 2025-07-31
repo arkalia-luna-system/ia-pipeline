@@ -195,18 +195,35 @@ def detect_prompt_semantic(filepath):
 def show_prompts(scored, semantic_prompt=None):
     result = []
     if semantic_prompt:
-        result.append(
-            f"\nPrompt IA recommandé par analyse sémantique: "
-            f"{semantic_prompt['name']} -> {semantic_prompt['file']}"
-        )
-        if os.path.exists(semantic_prompt["file"]):
-            with open(semantic_prompt["file"], "r", encoding="utf-8") as file_handle:
-                prompt_text = file_handle.read()
+        # Si semantic_prompt est une chaîne (nom de fichier), on la traite comme tel
+        if isinstance(semantic_prompt, str):
             result.append(
-                "  --- Prompt principal ---\n" + prompt_text + "\n" + "-" * 40
+                f"\nPrompt IA recommandé par analyse sémantique: {semantic_prompt}"
             )
-        result.append(f"Prompt sémantique recommandé: {semantic_prompt['name']}")
-        return "\n".join(result)
+            if os.path.exists(semantic_prompt):
+                with open(semantic_prompt, "r", encoding="utf-8") as file_handle:
+                    prompt_text = file_handle.read()
+                result.append(
+                    "  --- Prompt principal ---\n" + prompt_text + "\n" + "-" * 40
+                )
+            result.append(f"Prompt sémantique recommandé: {semantic_prompt}")
+            return "\n".join(result)
+        else:
+            # Si c'est un dictionnaire (format original)
+            result.append(
+                f"\nPrompt IA recommandé par analyse sémantique: "
+                f"{semantic_prompt['name']} -> {semantic_prompt['file']}"
+            )
+            if os.path.exists(semantic_prompt["file"]):
+                with open(
+                    semantic_prompt["file"], "r", encoding="utf-8"
+                ) as file_handle:
+                    prompt_text = file_handle.read()
+                result.append(
+                    "  --- Prompt principal ---\n" + prompt_text + "\n" + "-" * 40
+                )
+            result.append(f"Prompt sémantique recommandé: {semantic_prompt['name']}")
+            return "\n".join(result)
     if not scored:
         return "Aucun prompt IA pertinent détecté pour ce fichier."
     result.append("\nPrompts IA recommandés (par pertinence):\n" + "=" * 40)
