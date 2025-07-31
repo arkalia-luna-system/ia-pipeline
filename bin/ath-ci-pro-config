@@ -1,0 +1,287 @@
+#!/bin/bash
+# Script de configuration CI/CD Pro Athalia
+# Gère l'activation/désactivation des niveaux CI/CD pro
+
+set -e
+
+# Couleurs
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+NC='\033[0m'
+
+# Fichier de configuration
+CONFIG_FILE=".ci_pro_config"
+
+# Fonctions d'affichage
+print_header() {
+    echo -e "${PURPLE}🔒 CONFIGURATION CI/CD PROFESSIONNEL ATHALIA${NC}"
+    echo -e "${CYAN}📋 Gestion des niveaux de validation${NC}"
+    echo
+}
+
+print_section() {
+    echo -e "${BLUE}📋 $1${NC}"
+}
+
+print_success() {
+    echo -e "${GREEN}✅ $1${NC}"
+}
+
+print_warning() {
+    echo -e "${YELLOW}⚠️  $1${NC}"
+}
+
+print_error() {
+    echo -e "${RED}❌ $1${NC}"
+}
+
+print_info() {
+    echo -e "${BLUE}ℹ️  $1${NC}"
+}
+
+print_ci_pro() {
+    echo -e "${PURPLE}🔒 CI/CD Pro: $1${NC}"
+}
+
+# Fonction d'aide
+show_help() {
+    echo "Usage: ./bin/ath-ci-pro-config [COMMANDE] [OPTIONS]"
+    echo ""
+    echo "Commandes:"
+    echo "  status                    Affiche la configuration actuelle"
+    echo "  set-level <1-5>           Définit le niveau CI/CD pro"
+    echo "  enable <feature>          Active une fonctionnalité"
+    echo "  disable <feature>         Désactive une fonctionnalité"
+    echo "  reset                     Remet la configuration par défaut"
+    echo "  help                      Affiche cette aide"
+    echo ""
+    echo "Fonctionnalités:"
+    echo "  strict-mode               Mode strict (bloque tout)"
+    echo "  auto-fix                  Correction automatique"
+    echo "  security-checks           Vérifications de sécurité"
+    echo "  performance-checks        Vérifications de performance"
+    echo "  pre-commit-integration    Intégration dans pre-commit"
+    echo ""
+    echo "Niveaux CI/CD Pro:"
+    echo "  1: Tests de base (obligatoire)"
+    echo "  2: Tests de sécurité (obligatoire)"
+    echo "  3: Tests de performance (optionnel)"
+    echo "  4: Tests avancés (optionnel)"
+    echo "  5: Tests complets (optionnel)"
+    echo ""
+    echo "Exemples:"
+    echo "  ./bin/ath-ci-pro-config set-level 2"
+    echo "  ./bin/ath-ci-pro-config enable strict-mode"
+    echo "  ./bin/ath-ci-pro-config disable performance-checks"
+}
+
+# Fonction de chargement de la configuration
+load_config() {
+    if [ -f "$CONFIG_FILE" ]; then
+        source "$CONFIG_FILE"
+    else
+        # Configuration par défaut
+        CI_PRO_LEVEL=1
+        STRICT_MODE=false
+        AUTO_FIX=false
+        SECURITY_CHECKS=true
+        PERFORMANCE_CHECKS=false
+        PRE_COMMIT_INTEGRATION=true
+    fi
+}
+
+# Fonction de sauvegarde de la configuration
+save_config() {
+    cat > "$CONFIG_FILE" << EOF
+# Configuration CI/CD Pro Athalia
+# Généré automatiquement - Ne pas modifier manuellement
+
+CI_PRO_LEVEL=$CI_PRO_LEVEL
+STRICT_MODE=$STRICT_MODE
+AUTO_FIX=$AUTO_FIX
+SECURITY_CHECKS=$SECURITY_CHECKS
+PERFORMANCE_CHECKS=$PERFORMANCE_CHECKS
+PRE_COMMIT_INTEGRATION=$PRE_COMMIT_INTEGRATION
+EOF
+}
+
+# Fonction d'affichage du statut
+show_status() {
+    print_section "Configuration actuelle"
+    echo
+    echo -e "🔒 Niveau CI/CD Pro: ${CYAN}$CI_PRO_LEVEL/5${NC}"
+    echo -e "🔒 Mode strict: ${CYAN}$STRICT_MODE${NC}"
+    echo -e "🔒 Auto-fix: ${CYAN}$AUTO_FIX${NC}"
+    echo -e "🔒 Vérifications sécurité: ${CYAN}$SECURITY_CHECKS${NC}"
+    echo -e "🔒 Vérifications performance: ${CYAN}$PERFORMANCE_CHECKS${NC}"
+    echo -e "🔒 Intégration pre-commit: ${CYAN}$PRE_COMMIT_INTEGRATION${NC}"
+    echo
+    
+    print_section "Description des niveaux"
+    echo
+    case $CI_PRO_LEVEL in
+        1) echo -e "📊 Niveau 1: ${GREEN}Tests de base${NC} (linting, syntaxe, imports)" ;;
+        2) echo -e "📊 Niveau 2: ${GREEN}Tests de sécurité${NC} (bandit, patterns sécurité)" ;;
+        3) echo -e "📊 Niveau 3: ${GREEN}Tests de performance${NC} (benchmarks, optimisation)" ;;
+        4) echo -e "📊 Niveau 4: ${GREEN}Tests avancés${NC} (couverture, intégration)" ;;
+        5) echo -e "📊 Niveau 5: ${GREEN}Tests complets${NC} (tous les tests)" ;;
+    esac
+    echo
+}
+
+# Fonction de définition du niveau
+set_level() {
+    local level=$1
+    
+    if ! [[ "$level" =~ ^[1-5]$ ]]; then
+        print_error "Niveau invalide: $level (doit être 1-5)"
+        exit 1
+    fi
+    
+    CI_PRO_LEVEL=$level
+    save_config
+    
+    print_success "Niveau CI/CD Pro défini à $level"
+    echo
+    show_status
+}
+
+# Fonction d'activation
+enable_feature() {
+    local feature=$1
+    
+    case $feature in
+        strict-mode)
+            STRICT_MODE=true
+            print_success "Mode strict activé"
+            ;;
+        auto-fix)
+            AUTO_FIX=true
+            print_success "Auto-fix activé"
+            ;;
+        security-checks)
+            SECURITY_CHECKS=true
+            print_success "Vérifications de sécurité activées"
+            ;;
+        performance-checks)
+            PERFORMANCE_CHECKS=true
+            print_success "Vérifications de performance activées"
+            ;;
+        pre-commit-integration)
+            PRE_COMMIT_INTEGRATION=true
+            print_success "Intégration pre-commit activée"
+            ;;
+        *)
+            print_error "Fonctionnalité inconnue: $feature"
+            exit 1
+            ;;
+    esac
+    
+    save_config
+}
+
+# Fonction de désactivation
+disable_feature() {
+    local feature=$1
+    
+    case $feature in
+        strict-mode)
+            STRICT_MODE=false
+            print_success "Mode strict désactivé"
+            ;;
+        auto-fix)
+            AUTO_FIX=false
+            print_success "Auto-fix désactivé"
+            ;;
+        security-checks)
+            SECURITY_CHECKS=false
+            print_success "Vérifications de sécurité désactivées"
+            ;;
+        performance-checks)
+            PERFORMANCE_CHECKS=false
+            print_success "Vérifications de performance désactivées"
+            ;;
+        pre-commit-integration)
+            PRE_COMMIT_INTEGRATION=false
+            print_success "Intégration pre-commit désactivée"
+            ;;
+        *)
+            print_error "Fonctionnalité inconnue: $feature"
+            exit 1
+            ;;
+    esac
+    
+    save_config
+}
+
+# Fonction de reset
+reset_config() {
+    print_warning "Remise à zéro de la configuration CI/CD Pro..."
+    
+    CI_PRO_LEVEL=1
+    STRICT_MODE=false
+    AUTO_FIX=false
+    SECURITY_CHECKS=true
+    PERFORMANCE_CHECKS=false
+    PRE_COMMIT_INTEGRATION=true
+    
+    save_config
+    print_success "Configuration remise à zéro"
+    echo
+    show_status
+}
+
+# Fonction principale
+main() {
+    print_header
+    
+    # Charger la configuration
+    load_config
+    
+    # Parsing des arguments
+    case $1 in
+        status)
+            show_status
+            ;;
+        set-level)
+            if [ -z "$2" ]; then
+                print_error "Niveau requis"
+                exit 1
+            fi
+            set_level "$2"
+            ;;
+        enable)
+            if [ -z "$2" ]; then
+                print_error "Fonctionnalité requise"
+                exit 1
+            fi
+            enable_feature "$2"
+            ;;
+        disable)
+            if [ -z "$2" ]; then
+                print_error "Fonctionnalité requise"
+                exit 1
+            fi
+            disable_feature "$2"
+            ;;
+        reset)
+            reset_config
+            ;;
+        help|--help|-h)
+            show_help
+            ;;
+        *)
+            print_error "Commande inconnue: $1"
+            echo
+            show_help
+            exit 1
+            ;;
+    esac
+}
+
+# Exécution
+main "$@" 

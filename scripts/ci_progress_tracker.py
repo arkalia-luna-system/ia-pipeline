@@ -6,10 +6,8 @@ Gère les métriques et rapports de progression
 
 import json
 import os
-import sys
 from datetime import datetime
-from pathlib import Path
-from typing import Dict, Any, Optional
+from typing import Dict, Any
 
 
 class CIProgressTracker:

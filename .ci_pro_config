@@ -1,0 +1,9 @@
+# Configuration CI/CD Pro Athalia
+# Généré automatiquement - Ne pas modifier manuellement
+
+CI_PRO_LEVEL=2
+STRICT_MODE=true
+AUTO_FIX=false
+SECURITY_CHECKS=true
+PERFORMANCE_CHECKS=false
+PRE_COMMIT_INTEGRATION=true

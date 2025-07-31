@@ -4,7 +4,6 @@ Tests pour le module ai_robust_enhanced.py
 Amélioration de la couverture de code
 """
 
-import pytest
 from unittest.mock import patch, MagicMock
 from athalia_core.ai_robust_enhanced import (
     RobustAI,

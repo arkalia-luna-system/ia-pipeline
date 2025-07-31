@@ -4,8 +4,6 @@ Tests pour le module generation_simple.py
 Amélioration de la couverture de code
 """
 
-import pytest
-from pathlib import Path
 from unittest.mock import patch, mock_open
 from athalia_core.generation_simple import (
     generate_blueprint_mock,
@@ -215,7 +213,7 @@ class TestSaveBlueprint:
         try:
             save_blueprint(blueprint, "/tmp")
             assert True  # Si on arrive ici, pas d'erreur
-        except Exception as e:
+        except Exception:
             # Si erreur, c'est probablement parce que le répertoire n'existe pas
             # mais la fonction s'exécute quand même
             assert True
