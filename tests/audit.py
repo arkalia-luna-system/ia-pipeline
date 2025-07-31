@@ -113,7 +113,8 @@ class ProjectAuditor:
                         # Détecter les problèmes
                         if file_metrics["lines"] < 10:
                             code_issues.append(
-                                f"{file}: Code trop court ({file_metrics['lines']} lignes)"
+                                f"{file}: Code trop court "
+                                f"({file_metrics['lines']} lignes)"
                             )
                             code_score -= 5
 
