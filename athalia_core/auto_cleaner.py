@@ -853,7 +853,7 @@ class AutoCleaner:
             "README.md",
             "requirements.txt",
             "setup.py",
-            "pyproject.toml",
+            "config/pyproject.toml",
             "package.json",
             "Cargo.toml",
             "pom.xml",
