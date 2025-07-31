@@ -9,8 +9,10 @@
 ## Tests et Qualité
 
 - **[TESTING.md](TESTING.md)** - Guide complet des tests
-- **[TESTS_GUIDE.md](TESTS_GUIDE.md)** - Guide spécifique aux tests (Mise à jour 2025)
+- **[TESTS_GUIDE.md](TESTS_GUIDE.md)** - Guide spécifique aux tests (97.7% de succès - Mise à jour 2025)
 - **[PLAN_ACTION_COUVERTURE_2025.md](PLAN_ACTION_COUVERTURE_2025.md)** - Plan d'action couverture de code et CI/CD
+- **[PLAN_CORRECTION_TESTS_2025.md](PLAN_CORRECTION_TESTS_2025.md)** - Plan de correction des tests échouants
+- **[RAPPORT_PROGRES_FINAL_2025.md](RAPPORT_PROGRES_FINAL_2025.md)** - Progrès exceptionnels réalisés
 - **[RESUME_ANALYSE_TESTS_2025.md](RESUME_ANALYSE_TESTS_2025.md)** - Résumé de l'analyse expert des tests
 - **[PR_TEST.md](PR_TEST.md)** - Tests pour les Pull Requests
 

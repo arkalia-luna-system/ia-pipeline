@@ -47,7 +47,7 @@ def main():
                 "supprimés"
             )
         else:
-            print(f"\n✅ Aucun fichier Apple Double trouvé")
+            print("\n✅ Aucun fichier Apple Double trouvé")
 
     except Exception as e:
         print(f"❌ Erreur lors du nettoyage: {e}")

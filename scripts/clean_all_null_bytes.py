@@ -3,8 +3,6 @@
 Script pour nettoyer tous les caractères null de tous les fichiers Python
 """
 
-import os
-import sys
 from pathlib import Path
 
 

@@ -116,7 +116,7 @@ class PythonVersionPreventer:
             issues = self.check_file_for_unsupported_versions(workflow_file)
 
             if issues:
-                print(f"   ❌ Problèmes détectés:")
+                print("   ❌ Problèmes détectés:")
                 for version, line_num, line in issues:
                     print(f"      - Version {version} (ligne {line_num}): {line}")
 
@@ -161,7 +161,7 @@ class PythonVersionPreventer:
             issues = self.check_file_for_unsupported_versions(file_path)
 
             if issues:
-                print(f"      ❌ Problèmes détectés:")
+                print("      ❌ Problèmes détectés:")
                 for version, line_num, line in issues:
                     print(f"         - Version {version} (ligne {line_num}): {line}")
 
