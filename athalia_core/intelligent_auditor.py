@@ -761,10 +761,10 @@ class IntelligentAuditor:
    • Type: {self.audit_results['info']['type']}
    • Langages: {', '.join(self.audit_results['info']['languages'])}
    • Taille: {self.audit_results['info']['size']['total_files']} fichiers
-   • Dernière modification: "
-   f"{self.audit_results['info']['last_modified']}"
+   • Dernière modification: {self.audit_results['info']['last_modified']}
 
-🔒 SÉCURITÉ: {len(self.audit_results['security']['vulnerabilities'])} vulnérabilités détectées
+🔒 SÉCURITÉ: {len(self.audit_results['security']['vulnerabilities'])} "
+   "vulnérabilités détectées"
 📚 DOCUMENTATION: {self.audit_results['documentation']['readme']['status']}
 🧪 TESTS: {self.audit_results['testing']['coverage']['status']}
 ⚡ PERFORMANCE: {self.audit_results['performance']['file_sizes']['status']}

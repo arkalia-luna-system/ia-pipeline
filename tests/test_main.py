@@ -142,7 +142,7 @@ class TestMain:
 
     @patch("athalia_core.main.menu")
     @patch("athalia_core.main.safe_input")
-    @patch("athalia_core.main.clean_old_tests_and_caches")
+    @patch("athalia_core.cleanup.clean_old_tests_and_caches")
     def test_main_cleanup_choice(self, mock_cleanup, mock_safe_input, mock_menu):
         """Test de la fonction main avec choix de nettoyage"""
         mock_menu.return_value = "2"
@@ -156,8 +156,8 @@ class TestMain:
 
     @patch("athalia_core.main.menu")
     @patch("athalia_core.main.safe_input")
-    @patch("athalia_core.main.generate_github_ci_yaml")
-    @patch("athalia_core.main.add_coverage_badge")
+    @patch("athalia_core.ci.generate_github_ci_yaml")
+    @patch("athalia_core.ci.add_coverage_badge")
     def test_main_ci_choice(self, mock_badge, mock_ci, mock_safe_input, mock_menu):
         """Test de la fonction main avec choix de CI"""
         mock_menu.return_value = "3"
@@ -172,8 +172,8 @@ class TestMain:
 
     @patch("athalia_core.main.menu")
     @patch("athalia_core.main.safe_input")
-    @patch("athalia_core.main.generate_onboard_cli")
-    @patch("athalia_core.main.generate_onboarding_html_advanced")
+    @patch("athalia_core.onboarding.generate_onboard_cli")
+    @patch("athalia_core.onboarding.generate_onboarding_html_advanced")
     def test_main_onboarding_choice(
         self, mock_html, mock_cli, mock_safe_input, mock_menu
     ):
@@ -190,7 +190,7 @@ class TestMain:
 
     @patch("athalia_core.main.menu")
     @patch("athalia_core.main.safe_input")
-    @patch("athalia_core.main.security_audit_project")
+    @patch("athalia_core.security.security_audit_project")
     def test_main_security_choice(self, mock_security, mock_safe_input, mock_menu):
         """Test de la fonction main avec choix de sécurité"""
         mock_menu.return_value = "6"
@@ -406,9 +406,9 @@ class TestIntegration:
 
     @patch("athalia_core.main.menu")
     @patch("athalia_core.main.safe_input")
-    @patch("athalia_core.main.clean_old_tests_and_caches")
-    @patch("athalia_core.main.generate_github_ci_yaml")
-    @patch("athalia_core.main.add_coverage_badge")
+    @patch("athalia_core.cleanup.clean_old_tests_and_caches")
+    @patch("athalia_core.ci.generate_github_ci_yaml")
+    @patch("athalia_core.ci.add_coverage_badge")
     def test_main_multiple_choices(
         self, mock_badge, mock_ci, mock_cleanup, mock_safe_input, mock_menu
     ):

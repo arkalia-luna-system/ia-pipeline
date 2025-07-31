@@ -139,12 +139,12 @@ class TestPromptDetection:
 class TestSemanticPromptDetection:
     """Tests pour la détection sémantique de prompts"""
 
-    @patch("subprocess.run")
-    def test_detect_prompt_semantic(self, mock_run):
+    @patch("athalia_core.agents.context_prompt.validate_and_run")
+    def test_detect_prompt_semantic(self, mock_validate):
         """Test de détection sémantique de prompt"""
-        mock_run.return_value = MagicMock(
-            returncode=0, stdout=b"test_strategy.md", stderr=b""
-        )
+        mock_result = MagicMock()
+        mock_result.stdout = "Test Strategy"
+        mock_validate.return_value = mock_result
 
         filepath = "test_file.py"
 
@@ -159,10 +159,10 @@ class TestSemanticPromptDetection:
             "dev_debug.yaml",
         ]
 
-    @patch("subprocess.run")
-    def test_detect_prompt_semantic_error(self, mock_run):
+    @patch("athalia_core.agents.context_prompt.validate_and_run")
+    def test_detect_prompt_semantic_error(self, mock_validate):
         """Test de détection sémantique avec erreur"""
-        mock_run.return_value = MagicMock(returncode=1, stdout=b"", stderr=b"Error")
+        mock_validate.side_effect = Exception("Error")
 
         filepath = "test_file.py"
 
@@ -170,10 +170,10 @@ class TestSemanticPromptDetection:
 
         assert semantic_prompt is None
 
-    @patch("subprocess.run")
-    def test_detect_prompt_semantic_timeout(self, mock_run):
+    @patch("athalia_core.agents.context_prompt.validate_and_run")
+    def test_detect_prompt_semantic_timeout(self, mock_validate):
         """Test de détection sémantique avec timeout"""
-        mock_run.side_effect = TimeoutError("Timeout")
+        mock_validate.side_effect = TimeoutError("Timeout")
 
         filepath = "test_file.py"
 
@@ -278,12 +278,12 @@ class TestIntegration:
         new_callable=mock_open,
         read_data="import pytest\ndef test_function(): assert True",
     )
-    @patch("subprocess.run")
-    def test_full_prompt_detection_workflow(self, mock_run, mock_file):
+    @patch("athalia_core.agents.context_prompt.validate_and_run")
+    def test_full_prompt_detection_workflow(self, mock_validate, mock_file):
         """Test du workflow complet de détection de prompts"""
-        mock_run.return_value = MagicMock(
-            returncode=0, stdout=b"test_strategy.md", stderr=b""
-        )
+        mock_result = MagicMock()
+        mock_result.stdout = "Test Strategy"
+        mock_validate.return_value = mock_result
 
         filepath = "test_file.py"
 
@@ -314,7 +314,7 @@ class TestIntegration:
 
         # Vérifier qu'au moins un prompt de design est détecté
         assert len(scored_prompts) > 0
-        assert any(score > 0 for _, score in scored_prompts)
+        assert any(score > 0 for score, prompt, explanations in scored_prompts)
 
     @patch(
         "builtins.open",
@@ -329,4 +329,4 @@ class TestIntegration:
 
         # Vérifier qu'au moins un prompt de refactorisation est détecté
         assert len(scored_prompts) > 0
-        assert any(score > 0 for _, score in scored_prompts)
+        assert any(score > 0 for score, prompt, explanations in scored_prompts)
