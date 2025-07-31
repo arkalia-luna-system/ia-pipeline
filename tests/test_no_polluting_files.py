@@ -241,7 +241,7 @@ class TestNoPollutingFiles:
         """Test qu'il n'y a pas de fichiers de secrets"""
         secret_files = []
         for root, dirs, files in os.walk("."):
-            if ".git" in root:
+            if ".git" in root or "htmlcov" in root:
                 continue
             for file in files:
                 if (

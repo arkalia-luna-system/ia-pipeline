@@ -429,7 +429,11 @@ markers = (
 )
 """
 
-        pytest_file = self.project_path / "config" / "pytest.ini"
+        # Créer le dossier config s'il n'existe pas
+        config_dir = self.project_path / "config"
+        config_dir.mkdir(exist_ok=True)
+
+        pytest_file = config_dir / "pytest.ini"
         with open(pytest_file, "w", encoding="utf-8") as file_handle:
             file_handle.write(pytest_config)
 
@@ -594,7 +598,7 @@ echo "✅ Tests terminés !"
 
     def _get_created_files(self) -> List[str]:
         """Retourne la liste des fichiers créés"""
-        files = ["config/pytest.ini", "scripts/run_tests.sh"] + self.generated_tests
+        files = self.generated_tests
         return [
             (
                 str(self.project_path / file_handle)
