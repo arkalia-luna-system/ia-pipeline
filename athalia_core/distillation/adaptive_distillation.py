@@ -39,7 +39,8 @@ class AdaptiveDistiller:
         self, chosen_response: str, responses: List[str], success: bool = True
     ):
         """
-            Met à jour les préférences et le feedback selon la réponse choisie et le succès/échec.
+        Met à jour les préférences et le feedback selon la réponse choisie
+        et le succès/échec.
         :param chosen_response: Réponse sélectionnée
         :param responses: Liste des réponses proposées
         :param success: Succès (True) ou échec (False) de la réponse
