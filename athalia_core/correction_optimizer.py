@@ -102,7 +102,8 @@ class CorrectionOptimizer:
 
         except Exception:
             log_error(
-                Exception("Correction failed"), f"correction_optimizer_{file_path}"
+                Exception("Correction failed"),
+                f"correction_optimizer_{file_path}",
             )
             return CorrectionResult(
                 success=False,
@@ -433,7 +434,10 @@ class CorrectionOptimizer:
         if open_parens > close_parens:
             content += ")" * (open_parens - close_parens)
             corrections.append(
-                {"type": "missing_parentheses", "count": open_parens - close_parens}
+                {
+                    "type": "missing_parentheses",
+                    "count": open_parens - close_parens,
+                }
             )
 
         if open_braces > close_braces:
@@ -445,7 +449,10 @@ class CorrectionOptimizer:
         if open_brackets > close_brackets:
             content += "]" * (open_brackets - close_brackets)
             corrections.append(
-                {"type": "missing_brackets", "count": open_brackets - close_brackets}
+                {
+                    "type": "missing_brackets",
+                    "count": open_brackets - close_brackets,
+                }
             )
 
         # Correction spécifique pour les parenthèses dans les expressions

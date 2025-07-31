@@ -30,7 +30,13 @@ class Dashboard:
         default_config = {
             "theme": "light",
             "refresh_interval": 30,
-            "widgets": ["metrics", "charts", "alerts", "performance", "security"],
+            "widgets": [
+                "metrics",
+                "charts",
+                "alerts",
+                "performance",
+                "security",
+            ],
             "layout": "grid",
             "auto_refresh": True,
             "show_timestamps": True,

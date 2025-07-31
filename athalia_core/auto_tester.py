@@ -310,7 +310,11 @@ class TestPerformance(unittest.TestCase):
     def setUp(self):
         \"\"\"Configuration avant chaque test\"\"\"
         # Configuration de base pour les tests de performance
-        self.performance_thresholds = {{"import_time": 5.0, "memory_limit": 100, "execution_time": 1.0}}
+        self.performance_thresholds = {
+            "import_time": 5.0,
+            "memory_limit": 100,
+            "execution_time": 1.0
+        }
 
     def test_import_performance(self):
         \"\"\"Test de performance des imports\"\"\"
@@ -579,7 +583,8 @@ echo "✅ Tests terminés !"
             try:
                 self._cleanup_generated_tests()
             except Exception as cleanup_error:
-                # Log de l'erreur de nettoyage mais ne pas faire échouer le test
+                # Log de l'erreur de nettoyage mais ne pas faire échouer le
+                # test
                 logger.warning(f"Erreur lors du nettoyage: {cleanup_error}")
 
         return results
@@ -672,7 +677,9 @@ def main():
     parser = argparse.ArgumentParser(description="Génération automatique de tests")
     parser.add_argument("project_path", help="Chemin du projet à tester")
     parser.add_argument(
-        "--run", action="store_true", help="Exécuter les tests après génération"
+        "--run",
+        action="store_true",
+        help="Exécuter les tests après génération",
     )
 
     args = parser.parse_args()

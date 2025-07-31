@@ -276,7 +276,14 @@ class ArchitectureAnalyzer:
             elif imp.startswith("setup."):
                 dependencies.append(imp)
             # Ajouter les dépendances externes importantes
-            elif imp in ["ast", "json", "logging", "sqlite3", "yaml", "pathlib"]:
+            elif imp in [
+                "ast",
+                "json",
+                "logging",
+                "sqlite3",
+                "yaml",
+                "pathlib",
+            ]:
                 dependencies.append(imp)
 
         return dependencies
@@ -361,7 +368,8 @@ class ArchitectureAnalyzer:
                 issue = PerformanceIssue(
                     type="high_complexity",
                     location=module.path,
-                    description=f"Module {module_name} très complexe: {module.complexity:.1f}",
+                    description=f"Module {module_name} très complexe: "
+                    f"{module.complexity:.1f}",
                     impact="high",
                     suggestion="Diviser en modules plus petits",
                 )
@@ -393,7 +401,8 @@ class ArchitectureAnalyzer:
         large_modules = [m for m in modules.values() if m.size > 300]
         if large_modules:
             recommendations.append(
-                f"📦 {len(large_modules)} modules très grands détectés - considérer la division"
+                f"📦 {len(large_modules)} modules très grands détectés - "
+                f"considérer la division"
             )
 
         complex_modules = [m for m in modules.values() if m.complexity > 10]
@@ -405,7 +414,8 @@ class ArchitectureAnalyzer:
         # Recommandations basées sur les performances
         if performance_issues:
             recommendations.append(
-                f"⚡ {len(performance_issues)} problèmes de performance - optimisation nécessaire"
+                f"⚡ {len(performance_issues)} problèmes de performance - "
+                f"optimisation nécessaire"
             )
 
         # Recommandations générales

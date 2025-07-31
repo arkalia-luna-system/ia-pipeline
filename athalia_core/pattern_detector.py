@@ -492,7 +492,9 @@ class PatternDetector:
             conn.commit()
 
     def _generate_recommendations(
-        self, duplicates: List[DuplicateAnalysis], antipatterns: List[AntiPattern]
+        self,
+        duplicates: List[DuplicateAnalysis],
+        antipatterns: List[AntiPattern],
     ) -> List[str]:
         """Générer des recommandations basées sur l'analyse"""
         recommendations = []
@@ -562,6 +564,7 @@ class PatternDetector:
                 "unresolved_antipatterns": unresolved_antipatterns,
                 "pattern_distribution": pattern_distribution,
                 "learning_score": max(
-                    0, 100 - (unresolved_duplicates + unresolved_antipatterns) * 10
+                    0,
+                    100 - (unresolved_duplicates + unresolved_antipatterns) * 10,
                 ),
             }

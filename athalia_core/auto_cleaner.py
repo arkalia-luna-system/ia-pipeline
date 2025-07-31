@@ -13,6 +13,12 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 import yaml
+from .performance_optimizer import (
+    PerformanceOptimizer,
+    performance_monitor,
+    memory_efficient,
+    SecurityValidator,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -34,6 +40,10 @@ class AutoCleaner:
             "space_freed_mb": 0,
             "errors": 0,
         }
+
+        # Optimisations de performance et sécurité
+        self.optimizer = PerformanceOptimizer()
+        self.security_validator = SecurityValidator()
 
     def load_cleanup_config(self, config_path: Optional[str] = None) -> Dict[str, Any]:
         """Charge la configuration de nettoyage"""
@@ -86,6 +96,8 @@ class AutoCleaner:
 
         return default_config
 
+    @performance_monitor
+    @memory_efficient
     def scan_for_cleanup_candidates(self) -> Dict[str, Any]:
         """Scanne le projet pour les candidats de nettoyage"""
         candidates = {
@@ -152,6 +164,10 @@ class AutoCleaner:
 
     def _is_excluded(self, path: Path) -> bool:
         """Vérifie si un chemin est exclu du nettoyage"""
+        # Validation de sécurité
+        if not self.security_validator.validate_file_path(path):
+            return True
+
         path_str = str(path)
         for exclude_pattern in self.cleanup_config["exclude_patterns"]:
             if exclude_pattern in path_str:
@@ -179,9 +195,18 @@ class AutoCleaner:
 
     def cleanup_cache_directories(self) -> Dict[str, Any]:
         """Nettoie les répertoires cache"""
-        result = {"removed_directories": [], "total_size_freed": 0, "errors": []}
+        result = {
+            "removed_directories": [],
+            "total_size_freed": 0,
+            "errors": [],
+        }
 
-        cache_patterns = ["__pycache__", ".cache", ".pytest_cache", "node_modules"]
+        cache_patterns = [
+            "__pycache__",
+            ".cache",
+            ".pytest_cache",
+            "node_modules",
+        ]
 
         try:
             for pattern in cache_patterns:
@@ -334,7 +359,9 @@ class AutoCleaner:
         try:
             # Parcourir les répertoires de manière récursive
             for dir_path in sorted(
-                self.project_path.rglob("*"), key=lambda x: len(str(x)), reverse=True
+                self.project_path.rglob("*"),
+                key=lambda x: len(str(x)),
+                reverse=True,
             ):
                 if dir_path.is_dir() and not self._is_excluded(dir_path):
                     try:
@@ -381,7 +408,14 @@ class AutoCleaner:
             "errors": [],
         }
 
-        build_patterns = ["build", "dist", "*.egg-info", "target", "bin", "obj"]
+        build_patterns = [
+            "build",
+            "dist",
+            "*.egg-info",
+            "target",
+            "bin",
+            "obj",
+        ]
 
         try:
             for pattern in build_patterns:
@@ -891,7 +925,9 @@ class AutoCleaner:
             "files": self.cleaned_files,
             "dirs": self.cleaned_dirs,
             "summary": (
-                f"Nettoyage terminé: {self.stats['files_removed']} fichiers, {self.stats['dirs_removed']} répertoires, {self.stats['space_freed_mb']:.2f} MB libérés"
+                f"Nettoyage terminé: {self.stats['files_removed']} fichiers, "
+                f"{self.stats['dirs_removed']} répertoires, "
+                f"{self.stats['space_freed_mb']:.2f} MB libérés"
             ),
         }
 

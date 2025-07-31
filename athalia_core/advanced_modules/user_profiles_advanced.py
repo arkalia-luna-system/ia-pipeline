@@ -241,7 +241,12 @@ class GestionnaireProfils:
                     (profil_id, chemin_projet, date_consultation, duree_consultation)
                     VALUES (?, ?, ?, ?)
                 """,
-                    (profil_id[0], chemin_projet, datetime.now().isoformat(), duree),
+                    (
+                        profil_id[0],
+                        chemin_projet,
+                        datetime.now().isoformat(),
+                        duree,
+                    ),
                 )
                 conn.commit()
 

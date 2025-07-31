@@ -67,7 +67,14 @@ class RobustAI:
 
         # Détection du type de projet
         project_type = "generic"
-        api_keywords = ["fastapi", "swagger", "openapi", "api", "rest", "endpoint"]
+        api_keywords = [
+            "fastapi",
+            "swagger",
+            "openapi",
+            "api",
+            "rest",
+            "endpoint",
+        ]
         robotics_keywords = ["robot", "reachy", "ros", "opencv"]
         desktop_keywords = ["calculatrice", "calculator", "desktop", "tkinter"]
         web_keywords = [
@@ -109,7 +116,13 @@ class RobustAI:
             dependencies.extend(["scikit-learn", "tensorflow", "torch"])
 
         # Structure du projet
-        structure = ["src/", "tests/", "docs/", "requirements.txt", "README.md"]
+        structure = [
+            "src/",
+            "tests/",
+            "docs/",
+            "requirements.txt",
+            "README.md",
+        ]
 
         # Modules selon le type
         modules = ["core", "api", "ui", "tests", "docs"]

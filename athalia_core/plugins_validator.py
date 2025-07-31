@@ -32,7 +32,10 @@ class PluginValidator:
         plugin_path_obj = Path(plugin_path)
 
         if not plugin_path_obj.exists():
-            return {"valid": False, "errors": [f"Plugin {plugin_path} n'existe pas"]}
+            return {
+                "valid": False,
+                "errors": [f"Plugin {plugin_path} n'existe pas"],
+            }
 
         results = {"valid": True, "errors": [], "warnings": [], "metadata": {}}
 

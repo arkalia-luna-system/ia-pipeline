@@ -12,7 +12,7 @@ from typing import Any, Dict, List, Optional
 class AdaptiveDistiller:
     def __init__(self, history_path: Optional[str] = None):
         """
-          Initialise le distillateur adaptatif.
+            Initialise le distillateur adaptatif.
         :param history_path: Chemin du fichier JSON pour l'historique (optionnel)
         """
         self.preference_weights: Dict[str, float] = {}  # Pondération des réponses
@@ -26,7 +26,7 @@ class AdaptiveDistiller:
         self, responses: List[str], context: Optional[Dict[str, Any]] = None
     ) -> str:
         """
-          Fusionne les réponses IA en tenant compte des préférences et du feedback utilisateur.
+            Fusionne les réponses IA en tenant compte des préférences et du feedback utilisateur.
         :param responses: Liste de réponses IA
         :param context: Contexte optionnel
         :return: Réponse distillée
@@ -38,7 +38,7 @@ class AdaptiveDistiller:
         self, chosen_response: str, responses: List[str], success: bool = True
     ):
         """
-          Met à jour les préférences et le feedback selon la réponse choisie et le succès/échec.
+            Met à jour les préférences et le feedback selon la réponse choisie et le succès/échec.
         :param chosen_response: Réponse sélectionnée
         :param responses: Liste des réponses proposées
         :param success: Succès (True) ou échec (False) de la réponse
@@ -59,7 +59,7 @@ class AdaptiveDistiller:
 
     def apply_learned_weights(self, responses: List[str]) -> List[str]:
         """
-          Trie les réponses selon leur poids appris et taux de succès.
+            Trie les réponses selon leur poids appris et taux de succès.
         :param responses: Liste de réponses IA
         :return: Liste triée
         """
@@ -77,7 +77,7 @@ class AdaptiveDistiller:
         self, responses: List[str], context: Optional[Dict[str, Any]]
     ) -> str:
         """
-          Fusionne les réponses (majority voting par défaut).
+            Fusionne les réponses (majority voting par défaut).
         :param responses: Liste de réponses pondérées
         :param context: Contexte optionnel
         :return: Réponse fusionnée

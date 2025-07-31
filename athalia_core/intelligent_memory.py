@@ -461,7 +461,8 @@ class IntelligentMemory:
 
             # Vérifier si le pattern existe déjà
             cursor.execute(
-                "SELECT * FROM learned_patterns WHERE pattern_hash = ?", (pattern_hash,)
+                "SELECT * FROM learned_patterns WHERE pattern_hash = ?",
+                (pattern_hash,),
             )
             existing = cursor.fetchone()
 
@@ -674,7 +675,11 @@ class IntelligentMemory:
         return similarity
 
     def _save_correction_suggestion(
-        self, original_code: str, corrected_code: str, reason: str, success: bool
+        self,
+        original_code: str,
+        corrected_code: str,
+        reason: str,
+        success: bool,
     ):
         """Sauvegarder une suggestion de correction"""
         with sqlite3.connect(self.db_path) as conn:
@@ -691,7 +696,8 @@ class IntelligentMemory:
                     corrected_code,
                     reason,
                     0.8 if success else 0.3,
-                    json.dumps([]),  # Pour l'instant, pas de corrections basées
+                    json.dumps([]),
+                    # Pour l'instant, pas de corrections basées
                     datetime.now().isoformat(),
                     True,
                     success,

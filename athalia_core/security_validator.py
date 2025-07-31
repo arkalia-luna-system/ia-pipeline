@@ -338,7 +338,12 @@ class SecurityValidator:
             # Vérifier les chemins de fichiers
             for arg in command[1:]:
                 # Ignorer les arguments qui ne sont pas des chemins
-                if arg.startswith("-") or arg in ["test", "*.py", "*.pyc", "*.conf"]:
+                if arg.startswith("-") or arg in [
+                    "test",
+                    "*.py",
+                    "*.pyc",
+                    "*.conf",
+                ]:
                     continue
 
                 # Debug: afficher l'argument en cours de vérification
@@ -364,7 +369,8 @@ class SecurityValidator:
             path_obj = Path(path).resolve()
             path_str = str(path_obj)
 
-            # Vérifier d'abord les patterns autorisés qui peuvent contenir des patterns dangereux
+            # Vérifier d'abord les patterns autorisés qui peuvent contenir des
+            # patterns dangereux
             for allowed_pattern in self.allowed_dangerous_patterns:
                 if path_str.startswith(allowed_pattern):
                     return False

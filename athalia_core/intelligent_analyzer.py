@@ -90,7 +90,10 @@ class IntelligentAnalyzer:
 
         # Calculer le score global
         overall_score = self._calculate_overall_score(
-            ast_analysis, pattern_analysis, architecture_analysis, performance_analysis
+            ast_analysis,
+            pattern_analysis,
+            architecture_analysis,
+            performance_analysis,
         )
 
         # Générer les recommandations globales

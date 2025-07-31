@@ -273,7 +273,7 @@ class PerformanceAnalyzer:
                 issue_type="high_complexity",
                 location=str(file_analysis.file_path),
                 description=f"Complexité élevée: {file_analysis.complexity_score:.1f}",
-                impact="medium" if file_analysis.complexity_score < 15 else "high",
+                impact=("medium" if file_analysis.complexity_score < 15 else "high"),
                 suggestion="Refactoriser en modules plus petits",
                 estimated_improvement=20.0,
             )

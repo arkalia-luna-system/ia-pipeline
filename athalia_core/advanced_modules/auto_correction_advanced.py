@@ -331,7 +331,11 @@ class AutoCorrectionAvancee:
             nouveau = f"for {index_var}, item in enumerate({list_var}):"
             contenu = contenu.replace(match.group(0), nouveau)
             optimisations.append(
-                {"type": "optimisation", "ancien": match.group(0), "nouveau": nouveau}
+                {
+                    "type": "optimisation",
+                    "ancien": match.group(0),
+                    "nouveau": nouveau,
+                }
             )
 
         return contenu, optimisations
@@ -468,7 +472,11 @@ class AutoCorrectionAvancee:
             nouveau = f"if {condition}:"
             contenu = contenu.replace(match.group(0), nouveau)
             refactorings.append(
-                {"type": "refactoring", "ancien": match.group(0), "nouveau": nouveau}
+                {
+                    "type": "refactoring",
+                    "ancien": match.group(0),
+                    "nouveau": nouveau,
+                }
             )
 
         return contenu, refactorings
@@ -495,9 +503,17 @@ class AutoCorrectionAvancee:
 
                 # Anti-patterns à corriger
                 anti_patterns = [
-                    (r"except\s*:", "except Exception:", "Exception trop générique"),
+                    (
+                        r"except\s*:",
+                        "except Exception:",
+                        "Exception trop générique",
+                    ),
                     (r"print\s*\(", "logging.info(", "Utilisation de print()"),
-                    (r"os\.system\s*\(", "subprocess.run(", "Appel shell non sécurisé"),
+                    (
+                        r"os\.system\s*\(",
+                        "subprocess.run(",
+                        "Appel shell non sécurisé",
+                    ),
                     (r"import \*", "import spécifique", "Import wildcard"),
                 ]
 

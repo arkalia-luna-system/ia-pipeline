@@ -267,7 +267,8 @@ class ASTAnalyzer:
 
         for node in ast.walk(tree):
             if isinstance(
-                node, (ast.FunctionDef, ast.ClassDef, ast.If, ast.While, ast.For)
+                node,
+                (ast.FunctionDef, ast.ClassDef, ast.If, ast.While, ast.For),
             ):
                 total_complexity += self._calculate_node_complexity(node)
                 node_count += 1

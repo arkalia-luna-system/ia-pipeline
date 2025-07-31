@@ -14,7 +14,7 @@ class QualityScorer:
 
     def score(self, solution: Any, context: Optional[Dict[str, Any]] = None) -> float:
         """
-          Évalue la qualité d'une solution IA.
+            Évalue la qualité d'une solution IA.
         :param solution: Solution à scorer (str, dict, ...)
         :param context: Contexte optionnel
         :return: Score de qualité (float)
