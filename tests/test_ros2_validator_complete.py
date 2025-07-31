@@ -353,7 +353,8 @@ setup(
         launch_file = launch_dir / "real.launch.py"
         with open(launch_file, "w") as f:
             f.write(
-                "from launch import LaunchDescription\ndef generate_launch_description(): return LaunchDescription([])"
+                "from launch import LaunchDescription\n"
+                "def generate_launch_description(): return LaunchDescription([])"
             )
 
         test_dir = Path(self.temp_dir) / "test"

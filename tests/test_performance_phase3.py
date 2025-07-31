@@ -99,7 +99,8 @@ class TestPerformancePhase3:
         ), f"Trop peu de fichiers Python trouvés: {len(python_files)}"
 
         print(
-            f"✅ Scan fichiers: {metrics['duration']:.3f}s, {len(python_files)} fichiers"
+            f"✅ Scan fichiers: {metrics['duration']:.3f}s, "
+            f"{len(python_files)} fichiers"
         )
 
     def test_test_execution_performance(self):
