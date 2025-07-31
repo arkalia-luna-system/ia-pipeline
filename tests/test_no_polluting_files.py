@@ -374,6 +374,8 @@ class TestNoPollutingFiles:
         problematic_duplicates = []
         for duplicate in duplicate_files:
             file_name = os.path.basename(duplicate.split(" (")[0])
+            file_path = duplicate.split(" (")[0]
+            
             # Ignorer les fichiers Apple Double, les fichiers temporaires macOS et les fichiers de coverage
             if (
                 not file_name.startswith("._")
@@ -382,6 +384,13 @@ class TestNoPollutingFiles:
                 and not file_name.startswith(".coverage")
                 and file_name not in allowed_duplicates
             ):
+                # Ignorer spécifiquement la duplication intentionnelle de pyproject.toml
+                if (
+                    file_name == "pyproject.toml" 
+                    and ("config/pyproject.toml" in duplicate or "pyproject.toml (identique à" in duplicate)
+                ):
+                    continue
+                    
                 problematic_duplicates.append(duplicate)
 
         # Skip si trop de fichiers trouvés (probablement des faux positifs)
