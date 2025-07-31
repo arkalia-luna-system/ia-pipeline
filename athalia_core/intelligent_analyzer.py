@@ -268,7 +268,11 @@ class IntelligentAnalyzer:
         if hasattr(performance_analysis, "issues") and performance_analysis.issues:
             high_impact_perf_issues = [
                 i
-                for i in performance_analysis.issues
+                for i in (
+                    performance_analysis.issues
+                    if hasattr(performance_analysis, "issues")
+                    else performance_analysis.get("issues", [])
+                )
                 if i.impact in ["high", "critical"]
             ]
             if high_impact_perf_issues:
@@ -325,9 +329,15 @@ class IntelligentAnalyzer:
             # heures
             plan["estimated_effort"] += len(high_severity_duplicates) * 2
 
-        if performance_analysis.issues:
+        if hasattr(performance_analysis, "issues") and performance_analysis.issues:
             critical_perf_issues = [
-                i for i in performance_analysis.issues if i.impact == "critical"
+                i
+                for i in (
+                    performance_analysis.issues
+                    if hasattr(performance_analysis, "issues")
+                    else performance_analysis.get("issues", [])
+                )
+                if i.impact == "critical"
             ]
             if critical_perf_issues:
                 plan["priority_tasks"].append(
@@ -356,7 +366,8 @@ class IntelligentAnalyzer:
                     {
                         "task": "refactor_medium_impact_antipatterns",
                         "description": (
-                            f"Refactoriser {len(medium_impact_antipatterns)} anti-patterns"
+                            f"Refactoriser {len(medium_impact_antipatterns)} "
+                            "anti-patterns"
                         ),
                         "effort": "medium",
                         "impact": "medium",
@@ -369,7 +380,12 @@ class IntelligentAnalyzer:
         total_improvement = 0
         if hasattr(performance_analysis, "issues") and performance_analysis.issues:
             total_improvement += sum(
-                i.estimated_improvement for i in performance_analysis.issues
+                i.estimated_improvement
+                for i in (
+                    performance_analysis.issues
+                    if hasattr(performance_analysis, "issues")
+                    else performance_analysis.get("issues", [])
+                )
             )
 
         plan["expected_improvement"] = total_improvement
@@ -379,8 +395,9 @@ class IntelligentAnalyzer:
     def _save_comprehensive_analysis(self, analysis: ComprehensiveAnalysis):
         """Sauvegarder l'analyse complète"""
         output_file = (
-            self.root_path / "data" / f"comprehensive_analysis_{analysis.project_name}_"
-            f"{analysis.analysis_date.strftime('%Y%m%d_%H%M%S')}.json"
+            self.root_path
+            / "data"
+            / f"comprehensive_analysis_{analysis.project_name}_{analysis.analysis_date.strftime('%Y%m%d_%H%M%S')}.json"
         )
 
         # Convertir en dictionnaire pour la sérialisation JSON
