@@ -27,15 +27,27 @@ def cleanup_coverage_files():
         except Exception:
             pass
 
+    # Supprime aussi les fichiers de couverture temporaires
+    for f in glob.glob(".coverage.*"):
+        try:
+            os.remove(f)
+        except Exception:
+            pass
+
 
 @pytest.mark.timeout(120)
 def test_ath_coverage_runs():
     """Test que ath-coverage.py fonctionne sans récursivité"""
+    # Nettoyer les fichiers de couverture avant le test
     cleanup_coverage_files()
 
-    # Utiliser un environnement sans ATHALIA_COVERAGE_RUNNING pour éviter la récursivité
+    # Supprimer les variables d'environnement de couverture pour éviter les conflits
     env = os.environ.copy()
     env.pop("ATHALIA_COVERAGE_RUNNING", None)
+    env.pop("COVERAGE_FILE", None)
+    env.pop("COVERAGE_PROCESS_START", None)
+
+    # Utiliser l'environnement nettoyé
 
     start = time.time()
     result = None
@@ -45,6 +57,7 @@ def test_ath_coverage_runs():
             capture_output=True,
             text=True,
             timeout=120,
+            env=env,
         )
     except (subprocess.TimeoutExpired, SecurityError):
         cleanup_coverage_files()
