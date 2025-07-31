@@ -9,7 +9,6 @@ import tempfile
 
 import pytest
 
-
 # Import conditionnel du module analytics
 try:
     from athalia_core.analytics import (

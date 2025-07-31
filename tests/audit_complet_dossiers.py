@@ -12,7 +12,6 @@ from pathlib import Path
 import sys
 from typing import List, Optional
 
-
 # Ajouter le répertoire parent au path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 

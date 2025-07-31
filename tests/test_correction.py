@@ -6,7 +6,6 @@ Script de test pour la correction du projet EmotionSensingRoboticEyes
 import os
 import sys
 
-
 # Ajout des chemins
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "athalia_core"))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "modules"))

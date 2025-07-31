@@ -13,7 +13,6 @@ import subprocess
 import threading
 import time
 
-
 # Import du validateur de sécurité
 try:
     from athalia_core.security_validator import validate_and_run

@@ -16,7 +16,6 @@ import click
 import pytest
 import yaml  # type: ignore
 
-
 # Ajouter le répertoire parent au path pour les imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
