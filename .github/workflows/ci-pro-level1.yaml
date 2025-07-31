@@ -1,0 +1,129 @@
+name: CI Professional - Level 1
+
+on:
+  push:
+    branches: [ci-cd-professional]
+  pull_request:
+    branches: [ci-cd-professional]
+
+jobs:
+  test-basic:
+    runs-on: ubuntu-latest
+    env:
+      CI: true
+      PYTHONPATH: ${{ github.workspace }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r config/requirements-minimal.txt
+          pip install pytest-timeout pytest-xdist black ruff
+
+      - name: Run basic tests
+        run: |
+          echo "🧪 Running basic tests..."
+          python -m pytest tests/ -m "not slow" --tb=short -x --maxfail=3 --timeout=30
+
+      - name: Basic linting
+        run: |
+          echo "🔍 Running basic linting..."
+          flake8 --config=config/.flake8 .
+          black . --check --diff
+          ruff check .
+
+      - name: Check essential imports
+        run: |
+          echo "📦 Checking essential imports..."
+          python -c "
+          import sys
+          sys.path.insert(0, '.')
+          errors = []
+          modules = ['athalia_core.audit', 'athalia_core.cleanup', 'athalia_core.analytics']
+          for module in modules:
+              try:
+                  __import__(module)
+                  print(f'✅ {module} imported successfully')
+              except ImportError as e:
+                  errors.append(f'{module}: {e}')
+                  print(f'⚠️ {module} import failed: {e}')
+          if len(errors) > 1:
+              print('Too many import errors')
+              exit(1)
+          print('Essential imports check completed')
+          "
+
+      - name: Generate Level 1 Report
+        if: always()
+        run: |
+          cat > ci_pro_level1_report.md << EOF
+          # 📊 CI Professional - Level 1 Report
+          
+          ## 🎯 Niveau: 1/5 - Tests de Base
+          
+          ### 📅 Date: $(date)
+          ### 🌿 Branche: ${{ github.ref_name }}
+          ### 👤 Acteur: ${{ github.actor }}
+          
+          ### ✅ Tests Exécutés:
+          - Tests de base (non-slow)
+          - Linting (flake8, black, ruff)
+          - Vérification des imports essentiels
+          
+          ### 📈 Métriques:
+          - **Status:** ${{ job.status }}
+          - **Temps d'exécution:** ~5 minutes
+          - **Complexité:** Basique
+          
+          ### 🚀 Prochain Niveau:
+          - **Niveau 2:** Tests de sécurité
+          - **Niveau 3:** Tests de performance
+          - **Niveau 4:** Multi-environnement
+          - **Niveau 5:** Déploiement continu
+          
+          ### 📋 Actions Recommandées:
+          - Si tous les tests passent → Passer au Niveau 2
+          - Si échec → Corriger et relancer
+          
+          EOF
+
+      - name: Upload Level 1 Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ci-pro-level1-report
+          path: ci_pro_level1_report.md
+
+      - name: Update Progress Tracker
+        if: always()
+        run: |
+          cat > ci_progress.json << EOF
+          {
+            "level": 1,
+            "status": "${{ job.status }}",
+            "tests_passed": "basic",
+            "security_score": 0,
+            "performance_score": 0,
+            "coverage": 0,
+            "last_update": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "next_level": "security",
+            "branch": "${{ github.ref_name }}",
+            "actor": "${{ github.actor }}"
+          }
+          EOF
+
+      - name: Upload Progress Tracker
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ci-progress-tracker
+          path: ci_progress.json 
