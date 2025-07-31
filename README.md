@@ -149,3 +149,4 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de 
 - **Documentation complète** : Guides et références à jour
 
 **🎉 FÉLICITATIONS ! Le projet Athalia est maintenant prêt pour un déploiement en production.**
+# Trigger GitHub Actions
