@@ -1,0 +1,42 @@
+#!/bin/bash
+# Script de formatage simple Athalia
+# Formate les fichiers Python sans interférer avec pre-commit
+
+set -e
+
+# Couleurs
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+NC='\033[0m'
+
+echo -e "${BLUE}🎨 Formatage simple Athalia${NC}"
+
+# Vérifier si des fichiers Python sont modifiés
+PYTHON_FILES=$(git diff --name-only | grep '\.py$' || true)
+
+if [ -z "$PYTHON_FILES" ]; then
+    echo "Aucun fichier Python modifié"
+    exit 0
+fi
+
+echo "Fichiers Python à formater:"
+echo "$PYTHON_FILES"
+echo
+
+# Formatage avec black
+echo -e "${BLUE}📋 Formatage avec Black...${NC}"
+echo "$PYTHON_FILES" | xargs -r black --line-length=88
+
+# Organisation des imports avec isort
+echo -e "${BLUE}📋 Organisation des imports...${NC}"
+echo "$PYTHON_FILES" | xargs -r isort --profile=black --line-length=88
+
+# Formatage avec ruff
+echo -e "${BLUE}📋 Formatage avec Ruff...${NC}"
+echo "$PYTHON_FILES" | xargs -r ruff format --line-length=88
+
+echo -e "${GREEN}✅ Formatage terminé !${NC}"
+echo
+echo "Pour committer:"
+echo "  git add ."
+echo "  git commit -m \"votre message\"" 
