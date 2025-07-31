@@ -21,7 +21,6 @@ from .ast_analyzer import ASTAnalyzer
 from .pattern_detector import PatternDetector
 from .performance_analyzer import PerformanceAnalyzer
 
-
 # Import de l'orchestrateur unifié (optionnel)
 try:
     from .unified_orchestrator import UnifiedOrchestrator
@@ -303,7 +302,8 @@ class IntelligentAnalyzer:
                     {
                         "task": "merge_high_severity_duplicates",
                         "description": (
-                            f"Fusionner {len(high_severity_duplicates)} doublons critiques"
+                            f"Fusionner {len(high_severity_duplicates)} "
+                            "doublons critiques"
                         ),
                         "effort": "high",
                         "impact": "high",
@@ -341,7 +341,8 @@ class IntelligentAnalyzer:
                     {
                         "task": "refactor_medium_impact_antipatterns",
                         "description": (
-                            f"Refactoriser {len(medium_impact_antipatterns)} anti-patterns"
+                            f"Refactoriser {len(medium_impact_antipatterns)} "
+                            "anti-patterns"
                         ),
                         "effort": "medium",
                         "impact": "medium",

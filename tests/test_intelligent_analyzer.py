@@ -39,8 +39,8 @@ class TestComprehensiveAnalysis:
         analysis = ComprehensiveAnalysis(
             project_name="test_project",
             analysis_date=datetime.now(),
-            ast_analysis={"files_analyzed": 10},
-            pattern_analysis={"patterns_found": 5},
+            ast_analysis={"files_analyzed": 10, "summary": {"average_complexity": 5.2}},
+            pattern_analysis={"patterns_found": 5, "summary": {"total_duplicates": 1}},
             architecture_analysis={"modules": 3},
             performance_analysis={"execution_time": 1.2},
             overall_score=85.5,
@@ -241,9 +241,10 @@ class TestIntelligentAnalyzer:
         insights = analyzer.get_learning_insights()
 
         assert isinstance(insights, dict)
-        assert "learning_patterns" in insights
-        assert "improvement_areas" in insights
-        assert "best_practices" in insights
+        assert "ast_insights" in insights
+        assert "pattern_insights" in insights
+        assert "architecture_insights" in insights
+        assert "performance_insights" in insights
 
     def test_generate_intelligent_coordination(self):
         """Test de génération de coordination intelligente"""
@@ -252,10 +253,9 @@ class TestIntelligentAnalyzer:
         coordination = analyzer.generate_intelligent_coordination()
 
         assert isinstance(coordination, dict)
-        assert "priority_tasks" in coordination
-        assert "parallel_tasks" in coordination
-        assert "dependencies" in coordination
-        assert "estimated_time" in coordination
+        assert "timestamp" in coordination
+        assert "modules_available" in coordination
+        assert "recommendations" in coordination
 
     @patch("athalia_core.intelligent_analyzer.UNIFIED_ORCHESTRATOR_AVAILABLE", True)
     @patch("athalia_core.intelligent_analyzer.UnifiedOrchestrator")
@@ -263,7 +263,7 @@ class TestIntelligentAnalyzer:
         """Test d'orchestration avec l'orchestrateur unifié disponible"""
         mock_unified = MagicMock()
         mock_unified_class.return_value = mock_unified
-        mock_unified.run_unified_workflow.return_value = {
+        mock_unified.orchestrate_project_complete.return_value = {
             "status": "success",
             "score": 90,
         }
@@ -283,9 +283,8 @@ class TestIntelligentAnalyzer:
 
         result = analyzer.orchestrate_with_unified("/tmp/test_project")
 
-        assert isinstance(result, dict)
-        assert "error" in result
-        assert "Unified Orchestrator non disponible" in result["error"]
+        assert isinstance(result, ComprehensiveAnalysis)
+        assert result.project_name == "test_project"
 
 
 class TestIntegration:
@@ -310,7 +309,10 @@ class TestIntegration:
         analyzer = IntelligentAnalyzer("/tmp/test_project")
 
         # Mock des résultats d'analyse
-        mock_ast.return_value = {"files_analyzed": 10, "complexity": 5.2}
+        mock_ast.return_value = {
+            "files_analyzed": 10,
+            "summary": {"average_complexity": 5.2, "total_functions": 15},
+        }
         mock_score.return_value = 85.5
         mock_recommendations.return_value = ["Optimiser les imports"]
         mock_optimization.return_value = {"priority": "high", "estimated_time": "2h"}
@@ -325,7 +327,11 @@ class TestIntegration:
                 with patch.object(
                     analyzer.performance_analyzer, "analyze_project_performance"
                 ) as mock_perf:
-                    mock_pattern.return_value = {"patterns_found": 5, "duplicates": 2}
+                    mock_pattern.return_value = {
+                        "patterns_found": 5,
+                        "duplicates": [{"file1": "test1.py", "file2": "test2.py"}],
+                        "summary": {"total_duplicates": 1},
+                    }
                     mock_arch.return_value = {"modules": 3, "dependencies": 10}
                     mock_perf.return_value = {
                         "execution_time": 1.2,
