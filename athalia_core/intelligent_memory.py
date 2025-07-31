@@ -10,16 +10,17 @@ Système de mémoire qui:
 - Améliore la qualité du code continuellement
 """
 
+from dataclasses import dataclass
+from datetime import datetime
 import difflib
 import hashlib
 import json
 import logging
+from pathlib import Path
 import re
 import sqlite3
-from dataclasses import dataclass
-from datetime import datetime
-from pathlib import Path
 from typing import Any, Dict, List, Optional
+
 
 logger = logging.getLogger(__name__)
 
@@ -284,10 +285,12 @@ class IntelligentMemory:
                     prediction_type="error",
                     confidence=1.0 - pattern["success_rate"],
                     description=(
-                        f"Pattern similaire à un problème précédent "
+                        "Pattern similaire à un problème précédent "
                         f"(taux de succès: {pattern['success_rate']:.2f})"
                     ),
-                    suggested_action="Vérifier la logique et considérer une refactorisation",
+                    suggested_action=(
+                        "Vérifier la logique et considérer une refactorisation"
+                    ),
                     estimated_impact="Moyen",
                     code_pattern=pattern_hash,
                 )
@@ -653,9 +656,11 @@ class IntelligentMemory:
                 prediction = Prediction(
                     prediction_type="duplicate",
                     confidence=0.7,
-                    description=f"Pattern similaire détecté {pattern['occurrences']} fois",
+                    description=(
+                        f"Pattern similaire détecté {pattern['occurrences']} fois"
+                    ),
                     suggested_action=(
-                        "Considérer l'extraction en fonction/" "module commun"
+                        "Considérer l'extraction en fonction/module commun"
                     ),
                     estimated_impact="Moyen",
                     code_pattern=pattern_hash,

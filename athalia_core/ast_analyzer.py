@@ -7,12 +7,13 @@ des fichiers Python. Utilisé par les autres modules d'analyse.
 """
 
 import ast
-import logging
-import re
 from dataclasses import dataclass
 from datetime import datetime
+import logging
 from pathlib import Path
+import re
 from typing import List, Optional
+
 
 logger = logging.getLogger(__name__)
 

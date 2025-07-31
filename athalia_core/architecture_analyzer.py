@@ -6,17 +6,18 @@ Module d'analyse d'architecture pour comprendre la structure
 du projet, les dépendances et les relations entre modules.
 """
 
-import json
-import logging
-import sqlite3
 from dataclasses import dataclass
 from datetime import datetime
+import json
+import logging
 from pathlib import Path
+import sqlite3
 from typing import Any, Dict, List, Optional
 
 import yaml
 
 from .ast_analyzer import ASTAnalyzer, FileAnalysis
+
 
 logger = logging.getLogger(__name__)
 
@@ -368,8 +369,9 @@ class ArchitectureAnalyzer:
                 issue = PerformanceIssue(
                     type="high_complexity",
                     location=module.path,
-                    description=f"Module {module_name} très complexe: "
-                    f"{module.complexity:.1f}",
+                    description=(
+                        f"Module {module_name} très complexe: {module.complexity:.1f}"
+                    ),
                     impact="high",
                     suggestion="Diviser en modules plus petits",
                 )
@@ -402,7 +404,7 @@ class ArchitectureAnalyzer:
         if large_modules:
             recommendations.append(
                 f"📦 {len(large_modules)} modules très grands détectés - "
-                f"considérer la division"
+                "considérer la division"
             )
 
         complex_modules = [m for m in modules.values() if m.complexity > 10]
@@ -415,7 +417,7 @@ class ArchitectureAnalyzer:
         if performance_issues:
             recommendations.append(
                 f"⚡ {len(performance_issues)} problèmes de performance - "
-                f"optimisation nécessaire"
+                "optimisation nécessaire"
             )
 
         # Recommandations générales

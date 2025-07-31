@@ -5,8 +5,8 @@ Module sécurité, audit, scan de secrets, prompts sécurité.
 """
 
 import os
-import re
 from pathlib import Path
+import re
 
 
 def security_audit_project(project_path):

@@ -3,6 +3,7 @@
 import logging
 import os
 
+
 logger = logging.getLogger(__name__)
 
 """
@@ -20,7 +21,9 @@ def generate_github_ci_yaml(outdir):
     ci_file.write_text("# CI/CD config")
     logger.debug(f"Fichier généré: {ci_file} (exists: {ci_file.exists()})")
     readme_path = os.path.join(outdir, "README.md")
-    badge = "![CI](https://github.com /< user>/<repo >/ actions/workflows / ci.yaml / badge.svg)\n"
+    badge = (
+        "![CI](https://github.com/<user>/<repo>/actions/workflows/ci.yaml/badge.svg)\n"
+    )
     if os.path.exists(readme_path):
         with open(readme_path, "r+") as file_handle:
             content = file_handle.read()
@@ -34,7 +37,9 @@ def add_coverage_badge(outdir):
     for fname in os.listdir(outdir):
         if fname.startswith("README"):
             readme_path = os.path.join(outdir, fname)
-            badge = "![Coverage](https://img.shields.io / badge/coverage - 95%25-brightgreen)\n"
+            badge = (
+                "![Coverage](https://img.shields.io/badge/coverage-95%25-brightgreen)\n"
+            )
             if os.path.exists(readme_path):
                 with open(readme_path, "r+") as file_handle:
                     content = file_handle.read()

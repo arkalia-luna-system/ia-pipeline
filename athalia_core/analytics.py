@@ -9,6 +9,7 @@ import logging
 from pathlib import Path
 from typing import Any, Dict
 
+
 logger = logging.getLogger(__name__)
 
 
@@ -22,7 +23,11 @@ class AnalyticsEngine:
 
     def analyze_code_complexity(self) -> Dict[str, Any]:
         """Analyse la complexité du code"""
-        return {"average_complexity": 0.0, "max_complexity": 0, "files_analyzed": 0}
+        return {
+            "average_complexity": 0.0,
+            "max_complexity": 0,
+            "files_analyzed": 0,
+        }
 
     def analyze_test_coverage(self) -> Dict[str, Any]:
         """Analyse la couverture de tests"""

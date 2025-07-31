@@ -4,14 +4,15 @@ Tests pour le module architecture_analyzer.py
 Amélioration de la couverture de code de 0% à 80%+
 """
 
-from unittest.mock import patch, MagicMock, mock_open
-from pathlib import Path
 from datetime import datetime
+from pathlib import Path
+from unittest.mock import MagicMock, mock_open, patch
+
 from athalia_core.architecture_analyzer import (
     ArchitectureAnalyzer,
+    ArchitectureMapping,
     ModuleAnalysis,
     PerformanceIssue,
-    ArchitectureMapping,
 )
 
 
@@ -186,7 +187,6 @@ class TestArchitectureAnalyzer:
                                 with patch.object(
                                     analyzer, "_save_architecture_analysis"
                                 ) as mock_save:
-
                                     mock_analyze_modules.return_value = {}
                                     mock_detect_duplicates.return_value = []
                                     mock_analyze_performance.return_value = []
@@ -230,9 +230,7 @@ class TestArchitectureAnalyzer:
                     mock_stat.return_value.st_size = 1000
                     mock_stat.return_value.st_mtime = 1234567890
 
-                    analyzer._analyze_single_module(
-                        Path("/tmp/test.py"), "core"
-                    )
+                    analyzer._analyze_single_module(Path("/tmp/test.py"), "core")
 
                     # Test que la fonction s'exécute sans erreur
                     assert True
@@ -595,7 +593,6 @@ class TestIntegration:
                             with patch.object(
                                 analyzer, "_generate_recommendations"
                             ) as mock_generate_recs:
-
                                 mock_analyze_modules.return_value = {}
                                 mock_detect_duplicates.return_value = []
                                 mock_analyze_performance.return_value = []

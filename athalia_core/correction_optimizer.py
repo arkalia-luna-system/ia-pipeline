@@ -6,10 +6,10 @@ Améliore le taux de réussite de 80% à 95%+ en utilisant des techniques avanc�
 """
 
 import ast
-import re
-import time
 from collections import defaultdict
 from dataclasses import dataclass
+import re
+import time
 from typing import Any, Dict, List, Optional, Tuple
 
 from .logger_advanced import log_correction, log_error
@@ -71,9 +71,10 @@ class CorrectionOptimizer:
                 # Le code compile, pas besoin de corrections contextuelles
                 pass
             except SyntaxError:
-                corrected_content, context_corrections = (
-                    self._apply_contextual_corrections(corrected_content)
-                )
+                (
+                    corrected_content,
+                    context_corrections,
+                ) = self._apply_contextual_corrections(corrected_content)
                 corrections_applied.extend(context_corrections)
 
             # Pass 4: Validation finale
@@ -230,9 +231,10 @@ class CorrectionOptimizer:
             error_info = self._analyze_syntax_error(e, content)
 
             if error_info["type"] == "indentation":
-                corrected_content, indentation_corrections = (
-                    self._fix_indentation_error(content, error_info)
-                )
+                (
+                    corrected_content,
+                    indentation_corrections,
+                ) = self._fix_indentation_error(content, error_info)
                 corrections.extend(indentation_corrections)
                 return corrected_content, corrections
 

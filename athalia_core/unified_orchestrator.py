@@ -4,9 +4,9 @@ Orchestrateur unifié pour Athalia
 Coordination centralisée de tous les modules
 """
 
+from datetime import datetime
 import json
 import logging
-from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict
 
@@ -20,6 +20,7 @@ from .code_linter import CodeLinter
 from .correction_optimizer import CorrectionOptimizer
 from .generation import generate_project
 from .security_auditor import SecurityAuditor
+
 
 logger = logging.getLogger(__name__)
 

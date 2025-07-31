@@ -3,14 +3,15 @@
 import fnmatch
 import logging
 import os
-import shutil
 from pathlib import Path
+import shutil
 
 
 def clean_old_tests_and_caches(outdir):
     """
-    Supprime les anciens fichiers de test non-suffixés et les caches Python dans le projet cible.
-    Log chaque suppression pour audit. Retourne la liste des fichiers supprimés.
+    Supprime les anciens fichiers de test non-suffixés et les caches Python 
+    dans le projet cible. Log chaque suppression pour audit. 
+    Retourne la liste des fichiers supprimés.
     """
     outdir = Path(outdir)
     deleted_files = []

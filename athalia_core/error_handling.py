@@ -5,11 +5,11 @@ Gestion centralisée des erreurs pour Athalia
 Système unifié de gestion d'erreurs avec logging et reporting
 """
 
+from datetime import datetime
 import logging
+from pathlib import Path
 import sys
 import traceback
-from datetime import datetime
-from pathlib import Path
 from typing import Any, Callable, Dict, Optional
 
 from .error_codes import (

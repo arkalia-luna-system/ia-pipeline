@@ -5,13 +5,14 @@ Génération automatique de documentation
 """
 
 import ast
+from datetime import datetime
 import json
 import logging
-from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 import yaml
+
 
 logger = logging.getLogger(__name__)
 
@@ -524,7 +525,7 @@ SOFTWARE.
             coverage = self.calculate_documentation_coverage()
             if coverage["coverage_percentage"] < 50:
                 validation["warnings"].append(
-                    f"Couverture de documentation faible: "
+                    "Couverture de documentation faible: "
                     f"{coverage['coverage_percentage']}%"
                 )
 

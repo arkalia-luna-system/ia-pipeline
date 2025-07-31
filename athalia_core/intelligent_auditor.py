@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import ast
+from datetime import datetime
 import json
 import logging
 import os
+from pathlib import Path
 import re
 import sys
-from datetime import datetime
-from pathlib import Path
 from typing import Any, Dict, List
+
 
 logger = logging.getLogger(__name__)
 

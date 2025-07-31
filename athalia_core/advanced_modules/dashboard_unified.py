@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+from datetime import datetime, timedelta
 import json
 import logging
 import os
+from pathlib import Path
 import sqlite3
 import sys
-import webbrowser
-from datetime import datetime, timedelta
-from pathlib import Path
 from typing import Any, Dict, Optional
+import webbrowser
+
 
 # !/usr/bin/env python3
 """
@@ -270,8 +271,8 @@ class DashboardUnifieSimple:
                         "type": row[0],
                         "projet": row[1],
                         "utilisateur": row[2],
-                        "timestamp": (
-                            datetime.fromisoformat(row[3]).strftime("%d/%m/%Y %H:%f")
+                        "timestamp": datetime.fromisoformat(row[3]).strftime(
+                            "%d/%m/%Y %H:%f"
                         ),
                         "statut": row[4],
                     }

@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+from datetime import datetime
 import logging
 import os
 import shutil
 import signal
 import time
-from datetime import datetime
 
 from athalia_core.ci import add_coverage_badge, generate_github_ci_yaml
 from athalia_core.cleanup import clean_old_tests_and_caches
@@ -16,6 +16,7 @@ from athalia_core.onboarding import (
     generate_onboarding_html_advanced,
 )
 from athalia_core.security import security_audit_project
+
 
 # Import du système de logging avancé
 try:
