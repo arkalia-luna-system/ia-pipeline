@@ -173,7 +173,8 @@ def print_summary(results, multiple_results=None):
 
     if "with_cache" in results and "execution_time" in results["with_cache"]:
         print(
-            f"⚡ Temps avec cache: {results['with_cache']['execution_time']:.2f} secondes"
+            f"⚡ Temps avec cache: "
+            f"{results['with_cache']['execution_time']:.2f} secondes"
         )
 
     if "improvement" in results and "improvement_percent" in results["improvement"]:
@@ -191,7 +192,8 @@ def print_summary(results, multiple_results=None):
 
     if multiple_results and "improvement_percent" in multiple_results:
         print(
-            f"\n🔄 Test multiple: {multiple_results['improvement_percent']:.1f}% d'amélioration"
+            f"\n🔄 Test multiple: "
+            f"{multiple_results['improvement_percent']:.1f}% d'amélioration"
         )
 
     print("=" * 60)
