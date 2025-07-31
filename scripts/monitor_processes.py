@@ -82,7 +82,8 @@ class AthaliaProcessMonitor:
                 )
                 for proc in processes:
                     self.logger.info(
-                        f"   PID {proc['pid']}: {proc['cpu_percent']:.1f}% CPU, {proc['memory_mb']:.1f}MB RAM"
+                        f"   PID {proc['pid']}: {proc['cpu_percent']:.1f}% CPU, "
+                        f"{proc['memory_mb']:.1f}MB RAM"
                     )
 
                 killed = self.kill_duplicate_processes()
@@ -91,7 +92,8 @@ class AthaliaProcessMonitor:
             elif len(processes) == 1:
                 proc = processes[0]
                 self.logger.info(
-                    f"✅ 1 processus actif: PID {proc['pid']} ({proc['cpu_percent']:.1f}% CPU)"
+                    f"✅ 1 processus actif: PID {proc['pid']} "
+                    f"({proc['cpu_percent']:.1f}% CPU)"
                 )
             else:
                 self.logger.info("ℹ️ Aucun processus athalia_core.main actif")
@@ -132,7 +134,8 @@ def main():
         print(f"⚠️ {len(processes)} processus athalia_core.main détectés")
         for proc in processes:
             print(
-                f"   PID {proc['pid']}: {proc['cpu_percent']:.1f}% CPU, {proc['memory_mb']:.1f}MB RAM"
+                f"   PID {proc['pid']}: {proc['cpu_percent']:.1f}% CPU, "
+                f"{proc['memory_mb']:.1f}MB RAM"
             )
 
         response = input("Voulez-vous arrêter les processus en double ? (y/N): ")
@@ -145,7 +148,8 @@ def main():
     # Afficher les statistiques
     stats = monitor.get_process_stats()
     print(
-        f"\n📊 Statistiques: {stats['count']} processus, {stats['total_cpu']:.1f}% CPU, {stats['total_memory']:.1f}MB RAM"
+        f"\n📊 Statistiques: {stats['count']} processus, {stats['total_cpu']:.1f}% CPU, "
+        f"{stats['total_memory']:.1f}MB RAM"
     )
 
 

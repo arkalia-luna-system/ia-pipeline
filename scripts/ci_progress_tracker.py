@@ -27,7 +27,7 @@ class CIProgressTracker:
                     return json.load(f)
             except Exception as e:
                 print(f"⚠️ Erreur chargement métriques: {e}")
-        
+
         # Métriques par défaut
         default_metrics: Dict[str, Any] = {
             "level": 1,
@@ -39,25 +39,27 @@ class CIProgressTracker:
             "last_update": datetime.now().isoformat(),
             "next_level": "basic",
             "branch": "ci-cd-professional",
-            "actor": "unknown"
+            "actor": "unknown",
         }
         return default_metrics
 
     def update_metrics(self, level: int, results: Dict[str, Any]) -> None:
         """Met à jour les métriques après chaque niveau"""
-        self.metrics.update({
-            "level": level,
-            "status": results.get("status", "unknown"),
-            "tests_passed": results.get("tests_passed", "unknown"),
-            "security_score": results.get("security_score", 0),
-            "performance_score": results.get("performance_score", 0),
-            "coverage": results.get("coverage", 0),
-            "last_update": datetime.now().isoformat(),
-            "next_level": self._get_next_level(level),
-            "branch": results.get("branch", "ci-cd-professional"),
-            "actor": results.get("actor", "unknown")
-        })
-        
+        self.metrics.update(
+            {
+                "level": level,
+                "status": results.get("status", "unknown"),
+                "tests_passed": results.get("tests_passed", "unknown"),
+                "security_score": results.get("security_score", 0),
+                "performance_score": results.get("performance_score", 0),
+                "coverage": results.get("coverage", 0),
+                "last_update": datetime.now().isoformat(),
+                "next_level": self._get_next_level(level),
+                "branch": results.get("branch", "ci-cd-professional"),
+                "actor": results.get("actor", "unknown"),
+            }
+        )
+
         # Sauvegarder les métriques
         self._save_metrics()
 
@@ -65,10 +67,10 @@ class CIProgressTracker:
         """Détermine le prochain niveau"""
         levels = {
             1: "security",
-            2: "performance", 
+            2: "performance",
             3: "multi-env",
             4: "deployment",
-            5: "production"
+            5: "production",
         }
         return levels.get(current_level, "completed")
 
@@ -84,15 +86,15 @@ class CIProgressTracker:
         """Génère un rapport de progression"""
         level_names = {
             1: "Tests de Base",
-            2: "Tests de Sécurité", 
+            2: "Tests de Sécurité",
             3: "Tests de Performance",
             4: "Multi-Environnement",
-            5: "Déploiement Continu"
+            5: "Déploiement Continu",
         }
-        
+
         current_level = self.metrics["level"]
         level_name = level_names.get(current_level, "Inconnu")
-        
+
         report = f"""
 # 📊 RAPPORT DE PROGRESSION CI/CD PRO
 
@@ -106,7 +108,9 @@ class CIProgressTracker:
 - **Couverture:** {self.metrics['coverage']}%
 
 ### 🚀 Prochaines étapes:
-- **Niveau {current_level + 1}:** {self._get_next_level(current_level).title() if current_level < 5 else "Finalisation"}
+- **Niveau {current_level + 1}:** {
+    self._get_next_level(current_level).title() if current_level < 5 else "Finalisation"
+}
 
 ### 📅 Dernière mise à jour: {self.metrics['last_update']}
 ### 🌿 Branche: {self.metrics['branch']}
@@ -114,37 +118,30 @@ class CIProgressTracker:
 
 ### 📋 Progression par niveau:
 """
-        
+
         for level in range(1, 6):
             status = "✅" if level <= current_level else "⏳"
-            report += f"- **Niveau {level}:** {level_names.get(level, 'Inconnu')} {status}\n"
-        
+            report += (
+                f"- **Niveau {level}:** {level_names.get(level, 'Inconnu')} {status}\n"
+            )
+
         if current_level == 5:
             report += """
 ### 🏆 FÉLICITATIONS !
 Tu as atteint le niveau maximum de CI/CD professionnel !
 Prêt pour la migration vers develop/main.
 """
-        
+
         return report
 
     def get_level_status(self, level: int) -> Dict[str, Any]:
         """Obtient le statut d'un niveau spécifique"""
         if level > self.metrics["level"]:
-            return {
-                "status": "pending",
-                "message": f"Niveau {level} en attente"
-            }
+            return {"status": "pending", "message": f"Niveau {level} en attente"}
         elif level == self.metrics["level"]:
-            return {
-                "status": "current",
-                "message": f"Niveau {level} en cours"
-            }
+            return {"status": "current", "message": f"Niveau {level} en cours"}
         else:
-            return {
-                "status": "completed",
-                "message": f"Niveau {level} terminé"
-            }
+            return {"status": "completed", "message": f"Niveau {level} terminé"}
 
     def export_metrics(self, output_file: str) -> bool:
         """Exporte les métriques vers un fichier"""
@@ -160,28 +157,33 @@ Prêt pour la migration vers develop/main.
 def main() -> None:
     """Fonction principale"""
     import argparse
-    
-    parser = argparse.ArgumentParser(description="Suivi de progression CI/CD professionnelle")
+
+    parser = argparse.ArgumentParser(
+        description="Suivi de progression CI/CD professionnelle"
+    )
     parser.add_argument(
-        "action", choices=["report", "update", "status", "export"], 
-        help="Action à effectuer"
+        "action",
+        choices=["report", "update", "status", "export"],
+        help="Action à effectuer",
     )
     parser.add_argument("--level", type=int, help="Niveau pour l'action")
-    parser.add_argument("--file", default="ci_progress.json", help="Fichier de métriques")
+    parser.add_argument(
+        "--file", default="ci_progress.json", help="Fichier de métriques"
+    )
     parser.add_argument("--output", help="Fichier de sortie pour export")
-    
+
     args = parser.parse_args()
-    
+
     tracker = CIProgressTracker(args.file)
-    
+
     if args.action == "report":
         print(tracker.generate_report())
-    
+
     elif args.action == "update":
         if not args.level:
             print("❌ Niveau requis pour l'action update")
             return
-        
+
         # Simulation de mise à jour
         results = {
             "status": "success",
@@ -190,22 +192,27 @@ def main() -> None:
             "performance_score": 90 if args.level >= 3 else 0,
             "coverage": 75 if args.level >= 4 else 0,
             "branch": "ci-cd-professional",
-            "actor": "athalia"
+            "actor": "athalia",
         }
-        
+
         tracker.update_metrics(args.level, results)
         print(f"✅ Métriques mises à jour pour le niveau {args.level}")
-    
+
     elif args.action == "status":
         if not args.level:
             print("❌ Niveau requis pour l'action status")
             return
-        
+
         status = tracker.get_level_status(args.level)
-        print(f"📊 Statut niveau {args.level}: {status['message']} ({status['status']})")
-    
+        print(
+            f"📊 Statut niveau {args.level}: {status['message']} ({status['status']})"
+        )
+
     elif args.action == "export":
-        output_file = args.output or f"ci_progress_export_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        output_file = (
+            args.output
+            or f"ci_progress_export_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        )
         if tracker.export_metrics(output_file):
             print(f"✅ Métriques exportées vers {output_file}")
         else:
@@ -213,4 +220,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main() 
+    main()
