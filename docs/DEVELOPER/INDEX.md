@@ -9,7 +9,9 @@
 ## Tests et Qualité
 
 - **[TESTING.md](TESTING.md)** - Guide complet des tests
-- **[TESTS_GUIDE.md](TESTS_GUIDE.md)** - Guide spécifique aux tests
+- **[TESTS_GUIDE.md](TESTS_GUIDE.md)** - Guide spécifique aux tests (Mise à jour 2025)
+- **[PLAN_ACTION_COUVERTURE_2025.md](PLAN_ACTION_COUVERTURE_2025.md)** - Plan d'action couverture de code et CI/CD
+- **[RESUME_ANALYSE_TESTS_2025.md](RESUME_ANALYSE_TESTS_2025.md)** - Résumé de l'analyse expert des tests
 - **[PR_TEST.md](PR_TEST.md)** - Tests pour les Pull Requests
 
 ## Outils et Maintenance
@@ -39,7 +41,9 @@ Ce répertoire contient toute la documentation nécessaire pour les développeur
 2. Lisez les **[BEST_PRACTICES.md](BEST_PRACTICES.md)**
 3. Familiarisez-vous avec le **[GIT_WORKFLOW.md](GIT_WORKFLOW.md)**
 4. Consultez **[TESTING.md](TESTING.md)** pour les tests
-5. Référez-vous aux autres guides selon vos besoins
+5. **PRIORITÉ** : Lisez le **[RESUME_ANALYSE_TESTS_2025.md](RESUME_ANALYSE_TESTS_2025.md)** pour l'analyse expert
+6. **PRIORITÉ** : Suivez le **[PLAN_ACTION_COUVERTURE_2025.md](PLAN_ACTION_COUVERTURE_2025.md)** pour améliorer la couverture
+7. Référez-vous aux autres guides selon vos besoins
 
 ### Mise à jour
 

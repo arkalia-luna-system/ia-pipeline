@@ -134,7 +134,10 @@ class ValidationContinue:
             with open(fichier_test, "w") as f:
                 f.write("x = 1\ny = 2\nprint(x + y + z)  # Erreur: z non défini")
 
-            cmd = f"python scripts/athalia_unified.py {os.path.dirname(fichier_test)} --action fix"
+            cmd = (
+                f"python scripts/athalia_unified.py "
+                f"{os.path.dirname(fichier_test)} --action fix"
+            )
             result = validate_and_run(
                 cmd, shell=True, capture_output=True, text=True, timeout=30
             )
@@ -188,7 +191,8 @@ class ValidationContinue:
 
                     if regression:
                         self.logger.warning(
-                            f"🚨 RÉGRESSION DÉTECTÉE: {regression['baisse']:.1f}% de baisse"
+                            f"🚨 RÉGRESSION DÉTECTÉE: "
+                            f"{regression['baisse']:.1f}% de baisse"
                         )
                         self.alerter_regression(validation, regression)
 
