@@ -222,7 +222,8 @@ MODULES INTÉGRÉS:
                 logger.info(f"📁 Projets trouvés: {len(projects)}")
                 for project in projects:
                     logger.info(
-                        f"  - {project.get('name', 'N/A')} ({project.get('type', 'N/A')})"
+                        f"  - {project.get('name', 'N/A')} "
+                        f"({project.get('type', 'N/A')})"
                     )
             except Exception as e:
                 logger.error(f"❌ Erreur lors du scan: {e}")
