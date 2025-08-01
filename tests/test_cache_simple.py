@@ -110,10 +110,8 @@ class TestCacheSimple(unittest.TestCase):
         # Le cache doit être plus rapide
         self.assertLess(time_with_cache, time_without_cache * 0.1)
 
-        print(
-            "Amélioration:"
-            f" {((time_without_cache - time_with_cache) / time_without_cache * 100):.1f}%"
-        )
+        improvement = (time_without_cache - time_with_cache) / time_without_cache * 100
+        print(f"Amélioration: {improvement:.1f}%")
 
 
 if __name__ == "__main__":

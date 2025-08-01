@@ -2,7 +2,7 @@
 
 **Date :** 31 juillet 2025  
 **Auteur :** Assistant IA  
-**Version :** 1.0  
+**Version :** 11.0 (ACTIVE DEVELOPMENT)
 
 ---
 
