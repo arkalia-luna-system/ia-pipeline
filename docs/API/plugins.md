@@ -219,9 +219,9 @@ template_stats = orchestrator.get_template_statistics()
 ## 🔗 Navigation
 
 - [Documentation API principale](README.md)
-- [Core Modules](API/core_modules.md)
-- [Orchestrateur](API/orchestrator.md)
-- [Robotics](API/robotics.md)
+- [Core Modules](core_modules.md)
+- [Orchestrateur](orchestrator.md)
+- [Robotics](robotics.md)
 
 ---
 

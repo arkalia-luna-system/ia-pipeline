@@ -83,7 +83,7 @@ git push origin ci-cd-professional
 ./scripts/sync_develop_to_ci_pro.sh
 ```
 
-### **2. Suivi de Progression**
+### **4. Suivi de Progression**
 ```bash
 # Voir le rapport de progression
 python scripts/ci_progress_tracker.py report
@@ -95,7 +95,7 @@ python scripts/ci_progress_tracker.py status --level 2
 python scripts/ci_progress_tracker.py export --output metrics.json
 ```
 
-### **3. Migration vers Develop**
+### **5. Migration vers Develop**
 ```bash
 # Une fois le niveau validé
 git checkout develop
