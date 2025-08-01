@@ -105,12 +105,12 @@ jobs:
         if: github.actor != 'athalia'
         continue-on-error: true
         run: |
-          python -m pytest tests/unit/quality/coverage/test_coverage_threshold.py -v --no-cov
+          python -m pytest tests/unit/quality/test_coverage_threshold.py -v --no-cov
 
       # Tests CI - mode adaptatif pour le développement
       - name: Run ultra-fast CI tests
         run: |
-          python -m pytest tests/unit/modules/ci/test_ci_ultra_fast.py -v --tb=short --no-cov
+          python -m pytest tests/unit/modules/test_ci_ultra_fast.py -v --tb=short --no-cov
 
       - name: Run robust CI tests
         if: github.actor != 'athalia'
