@@ -444,6 +444,9 @@ class TestNoPollutingFiles:
             "./.benchmarks",  # Benchmarks normaux
             "./tests/.benchmarks",  # Benchmarks tests normaux
             "./tests/logs/archive",  # Archive logs tests normale
+            "./tests/fixtures/test_data",  # Données de test (peut être vide)
+            "./tests/fixtures/mock_objects",  # Objets mock (peut être vide)
+            "./tests/unit/__pycache__",  # Cache Python tests unit normaux
             "./.venv/include",  # Include venv normal
             "./athalia_core/logs",  # Logs athalia_core normaux
             "./athalia_core/__pycache__",  # Cache Python normal
