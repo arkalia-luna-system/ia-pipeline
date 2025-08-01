@@ -61,12 +61,12 @@ class TestNoPollutingFiles:
             "./tmp",  # Temp normal
             "./athalia_core/__pycache__",  # Cache Python normal dans athalia_core
             "./tests/__pycache__",  # Cache Python normal dans tests
-            "./tests/__pycache__/._test_no_polluting_files.cpython-310-pytest-8.4.1.pyc",  # Cache Python normal
-            "./tests/__pycache__/test_no_polluting_files.cpython-310-pytest-8.4.1.pyc",  # Cache Python normal
+            "./tests/__pycache__/._test_no_polluting_files.cpython-310-pytest-8.4.1.pyc",  # Cache Python
+            "./tests/__pycache__/test_no_polluting_files.cpython-310-pytest-8.4.1.pyc",  # Cache Python
             "./.venv",  # Environnement virtuel complet
-            "./.venv/lib/python3.10/site-packages/_distutils_hack/__pycache__",  # Cache Python dans venv
-            "./.venv/lib/python3.10/site-packages/_distutils_hack/__pycache__/.___init__.cpython-310.pyc",  # Cache Python dans venv
-            "./.venv/lib/python3.10/site-packages/_distutils_hack/__pycache__/__init__.cpython-310.pyc",  # Cache Python dans venv
+            "./.venv/lib/python3.10/site-packages/_distutils_hack/__pycache__",  # Cache Python
+            "./.venv/lib/python3.10/site-packages/_distutils_hack/__pycache__/.___init__.cpython-310.pyc",  # Cache Python
+            "./.venv/lib/python3.10/site-packages/_distutils_hack/__pycache__/__init__.cpython-310.pyc",  # Cache Python
         }
 
         # Filtrer les fichiers autorisés
@@ -376,7 +376,8 @@ class TestNoPollutingFiles:
             file_name = os.path.basename(duplicate.split(" (")[0])
             file_path = duplicate.split(" (")[0]
 
-            # Ignorer les fichiers Apple Double, les fichiers temporaires macOS et les fichiers de coverage
+            # Ignorer les fichiers Apple Double, les fichiers temporaires macOS
+            # et les fichiers de coverage
             if (
                 not file_name.startswith("._")
                 and not file_name.startswith(".!")
