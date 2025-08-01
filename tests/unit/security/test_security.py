@@ -68,7 +68,8 @@ class TestSecurityAudit:
 
         content = log.read_text()
 
-        # Pour un projet propre, le rapport peut être vide ou contenir un message de succès
+        # Pour un projet propre, le rapport peut être vide
+        # ou contenir un message de succès
         # Le module retourne un score de 100 si aucun problème n'est détecté
         assert (
             len(content.strip()) == 0 or "0 problème" in content

@@ -92,7 +92,8 @@ class TestSecurityValidator(unittest.TestCase):
                         f"Chemin dangereux {cmd} devrait être détecté",
                     )
                 else:
-                    # Pour find, on vérifie que la validation fonctionne (même si elle passe)
+                    # Pour find, on vérifie que la validation fonctionne
+                    # (même si elle passe)
                     self.assertIsInstance(validation["valid"], bool)
 
     def test_safe_paths(self):
