@@ -46,7 +46,7 @@ class TestNoPollutingFiles:
                 if dir_name == "__pycache__":
                     cache_files.append(os.path.join(root, dir_name))
 
-        # Fichiers cache autorisés (normaux dans un projet)
+        # Fichiers cache autorisés (normaux dans un projet) - OPTIMISÉ
         allowed_cache_files = {
             "./.pytest_cache",  # Cache pytest normal
             "./.mypy_cache",  # Cache mypy normal
@@ -61,12 +61,7 @@ class TestNoPollutingFiles:
             "./tmp",  # Temp normal
             "./athalia_core/__pycache__",  # Cache Python normal dans athalia_core
             "./tests/__pycache__",  # Cache Python normal dans tests
-            "./tests/__pycache__/._test_no_polluting_files.cpython-310-pytest-8.4.1.pyc",  # Cache Python
-            "./tests/__pycache__/test_no_polluting_files.cpython-310-pytest-8.4.1.pyc",  # Cache Python
             "./.venv",  # Environnement virtuel complet
-            "./.venv/lib/python3.10/site-packages/_distutils_hack/__pycache__",  # Cache Python
-            "./.venv/lib/python3.10/site-packages/_distutils_hack/__pycache__/.___init__.cpython-310.pyc",  # Cache Python
-            "./.venv/lib/python3.10/site-packages/_distutils_hack/__pycache__/__init__.cpython-310.pyc",  # Cache Python
         }
 
         # Filtrer les fichiers autorisés

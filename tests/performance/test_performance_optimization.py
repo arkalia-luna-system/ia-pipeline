@@ -133,7 +133,7 @@ def test_function():
 import time
 
 def slow_function():
-    time.sleep(1)  # Problème de performance
+            time.sleep(0.1)  # Optimisé: réduit de 1s à 0.1s
     return "slow"
 
 def inefficient_loop():
@@ -195,7 +195,7 @@ import time
 
 def bottleneck_function():
     # Goulot d'étranglement simulé
-    time.sleep(2)
+            time.sleep(0.2)  # Optimisé: réduit de 2s à 0.2s
     return "bottleneck"
 
 def normal_function():

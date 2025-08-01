@@ -54,7 +54,7 @@ def kill_athalia_processes():
 
             # Attendre un peu pour les processus qui se terminent proprement
             if killed_count > 0:
-                time.sleep(1)
+                time.sleep(0.1)  # Optimisé: réduit de 1s à 0.1s
 
         except Exception as e:
             print(f"⚠️ Erreur lors de l'arrêt des processus {pattern}: {e}")
@@ -180,7 +180,7 @@ def athalia_process_monitor():
                     proc = psutil.Process(pid)
                     if proc.is_running():
                         proc.terminate()
-                        time.sleep(0.5)
+                        time.sleep(0.05)  # Optimisé: réduit de 0.5s à 0.05s
                         if proc.is_running():
                             proc.kill()
                 except (psutil.NoSuchProcess, psutil.AccessDenied):
