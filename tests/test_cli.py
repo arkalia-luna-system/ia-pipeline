@@ -5,9 +5,7 @@ Tests appropriés pour l'interface CLI d'Athalia
 
 import pytest
 import tempfile
-import os
 from pathlib import Path
-from unittest.mock import patch, MagicMock
 
 # Import direct du module cli
 from athalia_core.cli import cli as cli_group
