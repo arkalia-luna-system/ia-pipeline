@@ -84,7 +84,7 @@ Ce rapport final documente l'ensemble complet des corrections apportées à la d
 
 #### **Correction appliquée :**
 ```diff
-- source venv/bin/activate
+- source .venv/bin/activate
 + source .venv/bin/activate
 ```
 
