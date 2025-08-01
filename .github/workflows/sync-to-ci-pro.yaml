@@ -1,8 +1,10 @@
 name: Sync Develop to CI Professional
 
 on:
-  push:
-    branches: [develop]
+  # Temporairement désactivé pour éviter les erreurs de permissions
+  # push:
+  #   branches: [develop]
+  workflow_dispatch: # Permet l'exécution manuelle uniquement
 
 jobs:
   sync-to-ci-pro:
