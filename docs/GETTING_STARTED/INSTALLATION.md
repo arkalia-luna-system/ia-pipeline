@@ -1,7 +1,7 @@
 # 🚀 Guide d'Installation - Athalia
 
-**Version :** 10.0 (FINAL - 100% TERMINÉE ✅)
-**Date :** 30 Juillet 2025
+**Version :** 11.0 (ACTIVE DEVELOPMENT)  
+**Date :** 31 Juillet 2025
 
 ---
 
@@ -11,9 +11,9 @@ Athalia est un système d'intelligence artificielle avancé pour l'automatisatio
 
 ### **🏆 ÉTAT ACTUEL**
 - **🛡️ Sécurité :** 100% sécurisé ✅
-- **🎯 Qualité :** Code professionnel ✅
-- **🧹 Maintenance :** Structure optimale ✅
-- **🧪 Tests :** Validation complète ✅
+- **🎯 Qualité :** Code professionnel en amélioration continue ✅
+- **🧹 Maintenance :** Structure optimale avec nettoyage automatique ✅
+- **🧪 Tests :** 1453 tests collectés (couverture en amélioration) ✅
 
 ---
 
@@ -21,7 +21,7 @@ Athalia est un système d'intelligence artificielle avancé pour l'automatisatio
 
 ### **Système**
 - **OS :** macOS, Linux, Windows
-- **Python :** 3.8+ (recommandé 3.10+)
+- **Python :** 3.10+ (recommandé 3.12)
 - **Git :** Version récente
 - **Espace disque :** 500MB minimum
 
@@ -38,7 +38,7 @@ Athalia est un système d'intelligence artificielle avancé pour l'automatisatio
 ```bash
 # Cloner le repository
 git clone https://github.com/arkalia-luna-system/ia-pipeline.git
-cd ia-pipeline
+cd athalia-dev-setup
 
 # Vérifier la branche
 git checkout develop
@@ -47,13 +47,13 @@ git checkout develop
 ### **2. Configuration de l'Environnement**
 ```bash
 # Créer l'environnement virtuel
-python -m venv venv
+python -m venv .venv
 
 # Activer l'environnement
 # Sur macOS/Linux :
-source venv/bin/activate
+source .venv/bin/activate
 # Sur Windows :
-# venv\Scripts\activate
+# .venv\Scripts\activate
 
 # Mettre à jour pip
 pip install --upgrade pip
@@ -86,7 +86,7 @@ cp config.yml.example config/config.yml
 # config/config.yml
 app:
   name: athalia
-  version: "10.0"
+  version: "11.0"
   debug: false
   environment: production
 
