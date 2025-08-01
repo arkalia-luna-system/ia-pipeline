@@ -1,8 +1,8 @@
 # 🚀 ATHALIA CORE - Modules Principaux
 
-**Version :** 10.0 (FINAL - 100% TERMINÉE ✅)
-**Date :** 30 Juillet 2025
-**Statut :** Modules principaux du système Athalia
+**Version :** 11.0 (ACTIVE DEVELOPMENT)  
+**Date :** 31 Juillet 2025  
+**Statut :** Modules principaux du système Athalia en développement actif
 
 ## 🎯 **PRÉSENTATION**
 
@@ -10,15 +10,15 @@
 
 ### **🏆 ÉTAT ACTUEL**
 - **🛡️ Sécurité :** 100% sécurisé ✅
-- **🎯 Qualité :** Code professionnel ✅
-- **🧹 Maintenance :** Structure optimale ✅
-- **🧪 Tests :** Validation complète ✅
+- **🎯 Qualité :** Code professionnel en amélioration continue ✅
+- **🧹 Maintenance :** Structure optimale avec nettoyage automatique ✅
+- **🧪 Tests :** 1453 tests collectés (couverture en amélioration) ✅
 - **📚 Documentation :** Complète et à jour ✅
 
 ### **📊 Statistiques**
-- **56 modules** dans athalia_core
-- **974 tests** fonctionnels
-- **CI/CD verte** sur toutes les branches
+- **57 modules** dans athalia_core
+- **1453 tests** collectés
+- **CI/CD professionnel** sur toutes les branches
 
 ## 📋 Table des matières
 
@@ -36,8 +36,11 @@
 
 ```bash
 # Cloner le repository
-git clone <repository - url>
-cd athalia_core
+git clone https://github.com/arkalia-luna-system/ia-pipeline.git
+cd athalia-dev-setup
+
+# Activer l'environnement virtuel
+source .venv/bin/activate
 
 # Installer les dépendances
 pip install -r requirements.txt
@@ -113,7 +116,7 @@ Supprime automatiquement les fichiers macOS parasites (.DS_Store, ._*) dans tout
 
 ```bash
 # Lancer les tests
-python -m pytest
+python -m pytest tests/ -v
 
 # Avec couverture
 python -m pytest --cov=athalia_core
@@ -122,14 +125,15 @@ python -m pytest --cov=athalia_core
 ## 🤝 Contribution
 
 1. Fork le projet
-2. Créer une branche feature (`git checkout -b feature / AmazingFeature`)
+2. Créer une branche feature depuis `develop` (`git checkout -b feature/AmazingFeature`)
 3. Commit les changements (`git commit -m 'Add some AmazingFeature'`)
-4. Push vers la branche (`git push origin feature / AmazingFeature`)
-5. Ouvrir une Pull Request
+4. Push vers la branche (`git push origin feature/AmazingFeature`)
+5. Ouvrir une Pull Request vers `develop`
 
 ## 📄 Licence
 
-Licence inconnue
+Licence MIT - Voir le fichier [LICENSE](../LICENSE) pour plus de détails.
 
 ---
-*Généré automatiquement par Athalia* - 2025-07-19
+
+*Généré automatiquement par Athalia* - 2025-07-31

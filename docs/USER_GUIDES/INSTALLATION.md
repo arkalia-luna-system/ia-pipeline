@@ -1,7 +1,7 @@
 # 🚀 Guide d'Installation - Athalia
 
-**Version :** 10.0 (FINAL - 100% TERMINÉE ✅)
-**Date :** 30 Juillet 2025
+**Version :** 11.0 (ACTIVE DEVELOPMENT)  
+**Date :** 31 Juillet 2025
 
 ---
 
@@ -14,7 +14,7 @@ Ce guide explique comment installer et configurer Athalia, le système d'intelli
 ## 📋 **Prérequis**
 
 ### **Système**
-- **Python :** 3.10+ (recommandé)
+- **Python :** 3.10+ (recommandé 3.12)
 - **Git :** Pour cloner le repository
 - **Pip :** Dernière version
 - **Espace disque :** 500MB minimum
@@ -29,7 +29,7 @@ Ce guide explique comment installer et configurer Athalia, le système d'intelli
 
 ### **1. Cloner le Repository**
 ```bash
-git clone https://github.com/arkalia-luna-system/athalia-dev-setup.git
+git clone https://github.com/arkalia-luna-system/ia-pipeline.git
 cd athalia-dev-setup
 ```
 
@@ -51,7 +51,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 
 # Ou installation minimale
-pip install -r requirements-minimal.txt
+pip install -r config/requirements-minimal.txt
 ```
 
 ### **4. Vérifier l'Installation**
@@ -72,7 +72,7 @@ python -m pytest tests/ -v --tb=short
 # config/athalia_config.yaml
 app:
   name: athalia-dev-setup
-  version: "10.0.0"
+  version: "11.0.0"
   debug: false
   port: 8000
 
