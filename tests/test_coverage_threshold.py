@@ -70,7 +70,7 @@ class TestCoverageThreshold:
             "test_imports_all",  # Correspond à test_imports_all.py
             "test_security_patterns",  # Correspond à test_security_patterns.py
             "test_encoding_utf8",  # Correspond à test_encoding_utf8.py
-            "test_requirements_consistency",  # Correspond à integration/test_requirements_consistency.py
+            "test_requirements_consistency",  # Correspond à integration/
         ]
 
         test_files = list(Path("tests").glob("test_*.py"))

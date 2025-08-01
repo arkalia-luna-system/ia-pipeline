@@ -85,7 +85,8 @@ class TestSecurityValidator(unittest.TestCase):
                 # que les commandes avec des chemins dangereux sont rejetées
                 # ou que le validateur fonctionne correctement
                 if cmd[0] in ["cat", "ls"]:
-                    # Ces commandes devraient être rejetées car elles accèdent à des chemins dangereux
+                    # Ces commandes devraient être rejetées
+                    # car elles accèdent à des chemins dangereux
                     self.assertFalse(
                         validation["valid"],
                         f"Chemin dangereux {cmd} devrait être détecté",
