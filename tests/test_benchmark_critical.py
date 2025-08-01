@@ -82,7 +82,6 @@ def test_global_coverage_threshold():
                 "-B",  # Ne pas écrire de fichiers .pyc
                 "-m",
                 "pytest",
-                "--cov=athalia_core",
                 "--cov-report=term-missing",
                 "--cov-fail-under=75",
                 "-q",
