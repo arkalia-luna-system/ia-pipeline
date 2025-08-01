@@ -1,0 +1,184 @@
+#!/bin/bash
+# ath-clean-cursor-memory
+# Script de nettoyage mémoire pour Cursor
+# Auteur : Athalia
+# Version : 1.0
+
+set -e
+
+echo "🧹 Nettoyage mémoire Cursor..."
+echo "================================"
+
+# Fonction de sauvegarde
+backup_cursor_data() {
+    echo "📦 Sauvegarde des données Cursor..."
+    BACKUP_DIR="$HOME/.cursor_backup_$(date +%Y%m%d_%H%M%S)"
+    mkdir -p "$BACKUP_DIR"
+    
+    if [ -d "$HOME/.cursor" ]; then
+        cp -r "$HOME/.cursor" "$BACKUP_DIR/"
+        echo "✅ Sauvegarde créée : $BACKUP_DIR"
+    fi
+}
+
+# Fonction de nettoyage des processus
+clean_cursor_processes() {
+    echo "🔄 Arrêt des processus Cursor..."
+    
+    # Arrêt propre des processus Cursor
+    pkill -f "Cursor Helper" || true
+    sleep 2
+    
+    # Vérification que tous les processus sont arrêtés
+    if pgrep -f "Cursor" > /dev/null; then
+        echo "⚠️  Certains processus Cursor sont encore actifs"
+        pkill -9 -f "Cursor" || true
+    fi
+    
+    echo "✅ Processus Cursor arrêtés"
+}
+
+# Fonction de nettoyage du cache
+clean_cursor_cache() {
+    echo "🗑️  Nettoyage du cache Cursor..."
+    
+    # Cache principal
+    if [ -d "$HOME/Library/Caches/Cursor" ]; then
+        rm -rf "$HOME/Library/Caches/Cursor"
+        echo "✅ Cache principal nettoyé"
+    fi
+    
+    # Cache Application Support
+    if [ -d "$HOME/Library/Application Support/Cursor/Cache" ]; then
+        rm -rf "$HOME/Library/Application Support/Cursor/Cache"
+        echo "✅ Cache Application Support nettoyé"
+    fi
+    
+    # Cache Code
+    if [ -d "$HOME/Library/Application Support/Cursor/CachedData" ]; then
+        rm -rf "$HOME/Library/Application Support/Cursor/CachedData"
+        echo "✅ Cache Code nettoyé"
+    fi
+}
+
+# Fonction de nettoyage des logs
+clean_cursor_logs() {
+    echo "📝 Nettoyage des logs Cursor..."
+    
+    if [ -d "$HOME/Library/Logs/Cursor" ]; then
+        find "$HOME/Library/Logs/Cursor" -name "*.log" -delete
+        echo "✅ Logs nettoyés"
+    fi
+}
+
+# Fonction de nettoyage des extensions inutilisées
+clean_unused_extensions() {
+    echo "🔌 Analyse des extensions..."
+    
+    EXTENSIONS_DIR="$HOME/.cursor/extensions"
+    if [ -d "$EXTENSIONS_DIR" ]; then
+        echo "Extensions installées :"
+        ls -la "$EXTENSIONS_DIR" | grep "^d" | wc -l
+        
+        # Extensions gourmandes à surveiller
+        HEAVY_EXTENSIONS=(
+            "continue.continue"
+            "anysphere.cursorpyright"
+            "github.vscode-github-actions"
+            "eamodio.gitlens"
+        )
+        
+        echo "⚠️  Extensions gourmandes détectées :"
+        for ext in "${HEAVY_EXTENSIONS[@]}"; do
+            if [ -d "$EXTENSIONS_DIR/$ext"* ]; then
+                echo "   - $ext"
+            fi
+        done
+    fi
+}
+
+# Fonction de redémarrage
+restart_cursor() {
+    echo "🚀 Redémarrage de Cursor..."
+    
+    # Attendre un peu avant de redémarrer
+    sleep 3
+    
+    # Redémarrer Cursor
+    open /Applications/Cursor.app
+    
+    echo "✅ Cursor redémarré"
+}
+
+# Fonction d'affichage des statistiques
+show_memory_stats() {
+    echo "📊 Statistiques mémoire :"
+    echo "=========================="
+    
+    # Mémoire système
+    echo "Mémoire système :"
+    vm_stat | head -10
+    
+    # Processus Cursor
+    echo ""
+    echo "Processus Cursor :"
+    ps aux | grep -i cursor | grep -v grep | awk '{print $6/1024 " MB - " $11}' | head -5
+}
+
+# Fonction principale
+main() {
+    echo "🎯 Début du nettoyage mémoire Cursor"
+    echo "====================================="
+    
+    # Sauvegarde
+    backup_cursor_data
+    
+    # Nettoyage
+    clean_cursor_processes
+    clean_cursor_cache
+    clean_cursor_logs
+    clean_unused_extensions
+    
+    # Statistiques avant redémarrage
+    show_memory_stats
+    
+    # Redémarrage
+    restart_cursor
+    
+    echo ""
+    echo "🎉 Nettoyage terminé avec succès !"
+    echo "=================================="
+    echo "💡 Conseils :"
+    echo "   - Surveillez l'utilisation mémoire"
+    echo "   - Désactivez les extensions inutilisées"
+    echo "   - Exécutez ce script régulièrement"
+    echo ""
+    echo "📁 Sauvegarde créée : $BACKUP_DIR"
+}
+
+# Gestion des arguments
+case "${1:-}" in
+    --help|-h)
+        echo "Usage: ath-clean-cursor-memory [OPTIONS]"
+        echo ""
+        echo "Options:"
+        echo "  --help, -h     Afficher cette aide"
+        echo "  --no-backup    Ne pas créer de sauvegarde"
+        echo "  --no-restart   Ne pas redémarrer Cursor"
+        echo ""
+        echo "Description:"
+        echo "  Nettoie la mémoire et le cache de Cursor pour améliorer les performances"
+        exit 0
+        ;;
+    --no-backup)
+        echo "⚠️  Mode sans sauvegarde"
+        backup_cursor_data() { echo "⏭️  Sauvegarde ignorée"; }
+        ;;
+    --no-restart)
+        echo "⚠️  Mode sans redémarrage"
+        restart_cursor() { echo "⏭️  Redémarrage ignoré"; }
+        ;;
+esac
+
+# Exécution
+main "$@" 

@@ -28,41 +28,38 @@ class OptimizationImpactMeasurer:
         process = psutil.Process()
         initial_memory = process.memory_info().rss / 1024 / 1024  # MB
         initial_cpu = process.cpu_percent()
-        
+
         start_time = time.time()
-        
+
         try:
             # Exécuter le test
             result = subprocess.run(
-                [
-                    "python", "-m", "pytest", test_path,
-                    "-v", "--tb=short", "--no-cov"
-                ],
+                ["python", "-m", "pytest", test_path, "-v", "--tb=short", "--no-cov"],
                 capture_output=True,
                 text=True,
                 timeout=60,
-                cwd=Path(__file__).parent.parent
+                cwd=Path(__file__).parent.parent,
             )
-            
+
             end_time = time.time()
             execution_time = end_time - start_time
-            
+
             # Mesurer l'utilisation finale
             final_memory = process.memory_info().rss / 1024 / 1024  # MB
             final_cpu = process.cpu_percent()
-            
+
             memory_used = final_memory - initial_memory
             cpu_used = final_cpu - initial_cpu
-            
+
             return {
                 "execution_time": execution_time,
                 "memory_used_mb": memory_used,
                 "cpu_used_percent": cpu_used,
                 "success": result.returncode == 0,
                 "output": result.stdout,
-                "error": result.stderr
+                "error": result.stderr,
             }
-            
+
         except subprocess.TimeoutExpired:
             return {
                 "execution_time": 60.0,
@@ -70,7 +67,7 @@ class OptimizationImpactMeasurer:
                 "cpu_used_percent": 0,
                 "success": False,
                 "output": "",
-                "error": "Timeout"
+                "error": "Timeout",
             }
         except Exception as e:
             return {
@@ -79,21 +76,21 @@ class OptimizationImpactMeasurer:
                 "cpu_used_percent": 0,
                 "success": False,
                 "output": "",
-                "error": str(e)
+                "error": str(e),
             }
 
     def run_measurements(self) -> Dict[str, Dict[str, float]]:
         """Exécute les mesures pour tous les tests."""
         print("🔍 Mesure de l'impact des optimisations...")
         print("=" * 60)
-        
+
         for test_file in self.test_files:
             print(f"\n📊 Test: {test_file}")
             print("-" * 40)
-            
+
             result = self.measure_test_performance(test_file)
             self.results[test_file] = result
-            
+
             if result["success"]:
                 print(f"✅ Succès")
                 print(f"⏱️  Temps d'exécution: {result['execution_time']:.2f}s")
@@ -101,7 +98,7 @@ class OptimizationImpactMeasurer:
                 print(f"🖥️  CPU utilisé: {result['cpu_used_percent']:.1f}%")
             else:
                 print(f"❌ Échec: {result['error']}")
-        
+
         return self.results
 
     def generate_report(self) -> str:
@@ -111,41 +108,53 @@ class OptimizationImpactMeasurer:
         report.append("")
         report.append("## Résumé des Performances")
         report.append("")
-        
+
         total_time = 0
         total_memory = 0
         successful_tests = 0
-        
+
         for test_file, result in self.results.items():
             if result["success"]:
                 successful_tests += 1
                 total_time += result["execution_time"]
                 total_memory += result["memory_used_mb"]
-                
+
                 report.append(f"### {test_file}")
-                report.append(f"- **Temps d'exécution**: {result['execution_time']:.2f}s")
-                report.append(f"- **Mémoire utilisée**: {result['memory_used_mb']:.1f}MB")
+                report.append(
+                    f"- **Temps d'exécution**: {result['execution_time']:.2f}s"
+                )
+                report.append(
+                    f"- **Mémoire utilisée**: {result['memory_used_mb']:.1f}MB"
+                )
                 report.append(f"- **CPU utilisé**: {result['cpu_used_percent']:.1f}%")
                 report.append("")
-        
+
         report.append("## Statistiques Globales")
         report.append("")
         report.append(f"- **Tests réussis**: {successful_tests}/{len(self.test_files)}")
         report.append(f"- **Temps total**: {total_time:.2f}s")
         report.append(f"- **Mémoire totale**: {total_memory:.1f}MB")
-        report.append(f"- **Temps moyen par test**: {total_time/successful_tests:.2f}s" if successful_tests > 0 else "- **Temps moyen par test**: N/A")
-        report.append(f"- **Mémoire moyenne par test**: {total_memory/successful_tests:.1f}MB" if successful_tests > 0 else "- **Mémoire moyenne par test**: N/A")
-        
+        report.append(
+            f"- **Temps moyen par test**: {total_time/successful_tests:.2f}s"
+            if successful_tests > 0
+            else "- **Temps moyen par test**: N/A"
+        )
+        report.append(
+            f"- **Mémoire moyenne par test**: {total_memory/successful_tests:.1f}MB"
+            if successful_tests > 0
+            else "- **Mémoire moyenne par test**: N/A"
+        )
+
         return "\n".join(report)
 
     def save_report(self, filename: str = "optimization_impact_report.md"):
         """Sauvegarde le rapport dans un fichier."""
         report = self.generate_report()
         report_path = Path(__file__).parent / filename
-        
+
         with open(report_path, "w", encoding="utf-8") as f:
             f.write(report)
-        
+
         print(f"\n📄 Rapport sauvegardé: {report_path}")
         return report_path
 
@@ -154,38 +163,40 @@ def main():
     """Fonction principale."""
     print("🚀 Démarrage de la mesure d'impact des optimisations")
     print("=" * 60)
-    
+
     # Vérifier que nous sommes dans l'environnement virtuel
     if not os.path.exists(".venv"):
         print("❌ Erreur: Environnement virtuel non trouvé")
         print("   Veuillez activer l'environnement virtuel: source .venv/bin/activate")
         return 1
-    
+
     measurer = OptimizationImpactMeasurer()
-    
+
     try:
         # Exécuter les mesures
         results = measurer.run_measurements()
-        
+
         # Générer et sauvegarder le rapport
         report_path = measurer.save_report()
-        
+
         print("\n" + "=" * 60)
         print("✅ Mesure d'impact terminée avec succès!")
         print(f"📊 Rapport disponible: {report_path}")
-        
+
         # Afficher un résumé
         successful_tests = sum(1 for r in results.values() if r["success"])
         total_time = sum(r["execution_time"] for r in results.values() if r["success"])
-        total_memory = sum(r["memory_used_mb"] for r in results.values() if r["success"])
-        
+        total_memory = sum(
+            r["memory_used_mb"] for r in results.values() if r["success"]
+        )
+
         print(f"\n📈 Résumé:")
         print(f"   Tests réussis: {successful_tests}/{len(results)}")
         print(f"   Temps total: {total_time:.2f}s")
         print(f"   Mémoire totale: {total_memory:.1f}MB")
-        
+
         return 0
-        
+
     except KeyboardInterrupt:
         print("\n⚠️  Mesure interrompue par l'utilisateur")
         return 1
@@ -195,4 +206,4 @@ def main():
 
 
 if __name__ == "__main__":
-    exit(main()) 
+    exit(main())
