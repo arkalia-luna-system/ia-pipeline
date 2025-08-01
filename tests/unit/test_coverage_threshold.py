@@ -291,16 +291,15 @@ class TestCoverageThreshold:
                         "def test_" in content or "class Test" in content
                     ), f"Fichier de test sans fonctions de test: {test_file}"
 
-                    # Vérifie qu'il y a des assertions ou pytest.fail (sauf pour les fichiers exclus)
-                    if test_file.name not in excluded_files:
-                        has_assertions = (
-                            "assert" in content
-                            or "pytest.fail" in content
-                            or "pytest.skip" in content
-                        )
-                        assert (
-                            has_assertions
-                        ), f"Fichier de test sans assertions: {test_file}"
+                    # Vérifie qu'il y a des assertions ou pytest.fail
+                    has_assertions = (
+                        "assert" in content
+                        or "pytest.fail" in content
+                        or "pytest.skip" in content
+                    )
+                    assert (
+                        has_assertions
+                    ), f"Fichier de test sans assertions: {test_file}"
 
             except Exception as e:
                 pytest.fail(f"Erreur lecture {test_file}: {e}")
