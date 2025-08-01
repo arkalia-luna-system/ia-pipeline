@@ -173,7 +173,8 @@ class TestCLIRobustesse:
         for cli_path in self.cli_paths:
             if cli_path.exists():
                 try:
-                    # Utiliser --version au lieu de --verbose car c'est un argument valide
+                    # Utiliser --version au lieu de --verbose
+                    # car c'est un argument valide
                     result = validate_and_run(
                         [sys.executable, str(cli_path), "--version"],
                         capture_output=True,
