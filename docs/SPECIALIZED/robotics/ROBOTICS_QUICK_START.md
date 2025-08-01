@@ -88,7 +88,7 @@ python3 athalia_robotics_integration.py . all
 
 ### **Utiliser avec l'Orchestrateur**
 ```python
-from athalia_core.athalia_orchestrator import AthaliaOrchestrator
+from athalia_core.unified_orchestrator import UnifiedOrchestrator
 
 # Configurer avec robotique activé
 config = {

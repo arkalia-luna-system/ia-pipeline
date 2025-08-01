@@ -37,10 +37,10 @@ cd athalia-dev-setup
 ### 2️⃣ **Activer l'Environnement Virtuel**
 ```bash
 # Créer l'environnement virtuel
-python -m venv venv
+python -m venv .venv
 
 # Activer (macOS/Linux)
-source venv/bin/activate
+source .venv/bin/activate
 
 # Activer (Windows)
 venv\Scripts\activate
