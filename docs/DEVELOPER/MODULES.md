@@ -144,9 +144,9 @@ Analyse, détection de type, audit qualité, génération de blueprint de correc
 
 ---
 
-#### athalia_orchestrator
+#### unified_orchestrator
 
-**Fichier :** `athalia_core/athalia_orchestrator.py`
+**Fichier :** `athalia_core/unified_orchestrator.py`
 
 **Description :** Module principal orchestration Athalia
 Coordonne tous les modules pour une industrialisation complète
@@ -162,11 +162,12 @@ Améliore le taux de réussite de 80% à 95%+ en utilisant des techniques avanc�
 
 ---
 
-#### ._auto_tester
+#### auto_tester
 
-**Fichier :** `athalia_core/._auto_tester.py`
+**Fichier :** `athalia_core/auto_tester.py`
 
-**Description :** Module sans description
+**Description :** Module de tests automatiques pour Athalia
+Génération automatique de tests unitaires et d'intégration
 
 ---
 
