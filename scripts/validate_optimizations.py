@@ -6,9 +6,8 @@ Vérifie que les optimisations sont robustes et n'ont pas cassé la fonctionnali
 
 import subprocess
 import time
-import sys
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict
 
 
 class OptimizationValidator:
@@ -283,7 +282,7 @@ def main():
         print(f"📊 Rapport disponible: {report_path}")
 
         # Afficher un résumé final
-        print(f"\n📈 Résumé de la validation:")
+        print("\n📈 Résumé de la validation:")
         print(f"   Temps total: {stats['total_execution_time']:.2f}s")
         print(f"   Tests totaux: {stats['total_tests']}")
         print(f"   Tests réussis: {stats['total_passed']}")

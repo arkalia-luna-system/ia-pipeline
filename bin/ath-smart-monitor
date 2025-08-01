@@ -1,0 +1,30 @@
+#!/bin/bash
+# ath-smart-monitor
+# Monitoring intelligent des performances
+
+# Seuils d'alerte
+CPU_THRESHOLD=200
+MEMORY_THRESHOLD=1000
+DISK_THRESHOLD=1000
+
+# Vérifier CPU
+cpu_usage=$(ps aux | awk '{print $3}' | tail -n +2 | awk '{sum+=$1} END {print sum}')
+if (( $(echo "$cpu_usage > $CPU_THRESHOLD" | bc -l) )); then
+    echo "🔴 CPU élevé: ${cpu_usage}%"
+    echo "   Actions: Fermer applications inutilisées"
+fi
+
+# Vérifier mémoire
+mem_free=$(vm_stat | grep "Pages free" | awk '{print $3}' | sed 's/\.//')
+mem_free_mb=$((mem_free * 16384 / 1024 / 1024))
+if [ $mem_free_mb -lt $MEMORY_THRESHOLD ]; then
+    echo "🔴 Mémoire faible: ${mem_free_mb} MB"
+    echo "   Actions: ./bin/ath-clean-cursor-memory"
+fi
+
+# Vérifier disque
+disk_tps=$(iostat -d 1 1 | tail -1 | awk '{print $3}')
+if (( $(echo "$disk_tps > $DISK_THRESHOLD" | bc -l) )); then
+    echo "🔴 Activité disque élevée: ${disk_tps} tps"
+    echo "   Actions: Attendre fin indexation Spotlight"
+fi

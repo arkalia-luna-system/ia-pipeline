@@ -9,7 +9,7 @@ import subprocess
 import psutil
 import os
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict
 
 
 class OptimizationImpactMeasurer:
@@ -92,7 +92,7 @@ class OptimizationImpactMeasurer:
             self.results[test_file] = result
 
             if result["success"]:
-                print(f"✅ Succès")
+                print("✅ Succès")
                 print(f"⏱️  Temps d'exécution: {result['execution_time']:.2f}s")
                 print(f"💾 Mémoire utilisée: {result['memory_used_mb']:.1f}MB")
                 print(f"🖥️  CPU utilisé: {result['cpu_used_percent']:.1f}%")
@@ -190,7 +190,7 @@ def main():
             r["memory_used_mb"] for r in results.values() if r["success"]
         )
 
-        print(f"\n📈 Résumé:")
+        print("\n📈 Résumé:")
         print(f"   Tests réussis: {successful_tests}/{len(results)}")
         print(f"   Temps total: {total_time:.2f}s")
         print(f"   Mémoire totale: {total_memory:.1f}MB")
