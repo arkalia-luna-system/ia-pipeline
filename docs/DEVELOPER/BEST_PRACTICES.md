@@ -8,13 +8,13 @@
 python3 athalia_core/performance_analyzer.py --project /chemin/projet
 
 # Monitorer les performances en temps réel
-python3 athalia_unified.py /chemin/projet --action dashboard --utilisateur nom
+python3 bin/athalia_unified.py /chemin/projet --action dashboard --utilisateur nom
 ```
 
 ### Dashboard et Feedback
 ```bash
 # Utiliser le dashboard pour monitorer les performances
-python3 athalia_unified.py /chemin/projet --action dashboard --utilisateur athalia
+python3 bin/athalia_unified.py /chemin/projet --action dashboard --utilisateur athalia
 
 # Collecter le feedback utilisateur
 python3 athalia_core/advanced_analytics.py --feedback --project /chemin/projet
@@ -55,7 +55,7 @@ python3 athalia_core/auto_documenter.py --api --output docs/API/
 python3 athalia_core/templates/feedback_template.py --project /chemin/projet
 
 # Améliorer l'UX avec les profils utilisateur
-python3 athalia_unified.py /chemin/projet --action dashboard --utilisateur nom
+python3 bin/athalia_unified.py /chemin/projet --action dashboard --utilisateur nom
 ```
 
 ## 🐳 Déploiement

@@ -71,7 +71,7 @@ Le workspace Athalia a été réorganisé pour une meilleure structure modulaire
 Le script principal d'Athalia maintient automatiquement l'organisation :
 
 ```bash
-python athalia_unified.py . --action fix --auto-fix
+python bin/athalia_unified.py . --action fix --auto-fix
 ```
 
 **Fonctionnalités :**
@@ -104,16 +104,16 @@ Le fichier `config/paths.yaml` centralise tous les chemins du projet pour une ma
 
 ```bash
 # Nettoyage automatique
-python athalia_unified.py . --action fix --auto-fix
+python bin/athalia_unified.py . --action fix --auto-fix
 
 # Exécution des tests
 python -m pytest tests/ -v
 
 # Audit du projet
-python athalia_unified.py . --action audit --dry-run
+python bin/athalia_unified.py . --action audit --dry-run
 
 # Script principal
-python athalia_unified.py . --action complete
+python bin/athalia_unified.py . --action complete
 ```
 
 ## Migration
