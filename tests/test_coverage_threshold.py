@@ -155,7 +155,7 @@ class TestCoverageThreshold:
             "encoding": ["test_encoding_utf8"],  # Correspond à test_encoding_utf8.py
             "requirements": [
                 "test_requirements_consistency"
-            ],  # Correspond à test_requirements_consistency.py
+            ],  # Correspond à integration/test_requirements_consistency.py
         }
 
         test_files = list(Path("tests").glob("test_*.py"))
