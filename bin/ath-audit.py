@@ -22,9 +22,13 @@ def main():
         help="Chemin du projet à auditer (défaut: .)",
     )
     args = parser.parse_args()
-    result = validate_and_run(
-        ["python3", "-m", "athalia_core.cli", "audit", args.project], check=False
-    )
+    try:
+        result = validate_and_run(
+            ["python3", "-m", "athalia_core.cli", "audit", args.project], check=False
+        )
+    except Exception as e:
+        print(f"Erreur lors de l'audit: {e}")
+        sys.exit(1)
     sys.exit(result.returncode)
 
 
