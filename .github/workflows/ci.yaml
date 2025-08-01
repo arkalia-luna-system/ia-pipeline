@@ -98,7 +98,7 @@ jobs:
         if: github.actor != 'athalia'
         continue-on-error: true
         run: |
-          python -m pytest tests/test_requirements_consistency.py -v --no-cov
+          python -m pytest tests/integration/test_requirements_consistency.py -v --no-cov
 
       - name: Coverage threshold
         if: github.actor != 'athalia'
