@@ -37,12 +37,14 @@ class TestEncodingUTF8:
         ), "Erreurs d'encodage UTF-8 trouvées:\n" + "\n".join(encoding_errors)
 
     def test_markdown_files_utf8(self):
-        """Vérifie que tous les fichiers Markdown sont en UTF-8"""
+        """Vérifie que tous les fichiers Markdown sont en UTF-8 - OPTIMISÉ"""
         markdown_files = list(Path(".").glob("**/*.md"))
         markdown_files = [
             f
             for f in markdown_files
-            if ".git" not in str(f) and not f.name.startswith("._")
+            if ".git" not in str(f)
+            and not f.name.startswith("._")
+            and "venv" not in str(f)  # Optimisé: exclure venv
         ]
 
         encoding_errors = []
@@ -61,13 +63,15 @@ class TestEncodingUTF8:
         )
 
     def test_yaml_files_utf8(self):
-        """Vérifie que tous les fichiers YAML sont en UTF-8"""
+        """Vérifie que tous les fichiers YAML sont en UTF-8 - OPTIMISÉ"""
         yaml_files = list(Path(".").glob("**/*.yaml"))
         yaml_files.extend(Path(".").glob("**/*.yml"))
         yaml_files = [
             f
             for f in yaml_files
-            if ".git" not in str(f) and not f.name.startswith("._")
+            if ".git" not in str(f)
+            and not f.name.startswith("._")
+            and "venv" not in str(f)  # Optimisé: exclure venv
         ]
 
         encoding_errors = []
@@ -86,10 +90,14 @@ class TestEncodingUTF8:
         )
 
     def test_txt_files_utf8(self):
-        """Vérifie que tous les fichiers TXT sont en UTF-8"""
+        """Vérifie que tous les fichiers TXT sont en UTF-8 - OPTIMISÉ"""
         txt_files = list(Path(".").glob("**/*.txt"))
         txt_files = [
-            f for f in txt_files if ".git" not in str(f) and not f.name.startswith("._")
+            f
+            for f in txt_files
+            if ".git" not in str(f)
+            and not f.name.startswith("._")
+            and "venv" not in str(f)  # Optimisé: exclure venv
         ]
 
         encoding_errors = []
@@ -134,7 +142,7 @@ class TestEncodingUTF8:
                     pytest.fail(f"Erreur d'encodage dans {config_file}: {e}")
 
     def test_no_bom_marker(self):
-        """Vérifie qu'il n'y a pas de marqueur BOM UTF-8"""
+        """Vérifie qu'il n'y a pas de marqueur BOM UTF-8 - OPTIMISÉ"""
         python_files = list(Path(".").glob("**/*.py"))
         python_files = [
             f
@@ -142,6 +150,7 @@ class TestEncodingUTF8:
             if ".git" not in str(f)
             and "__pycache__" not in str(f)
             and not f.name.startswith("._")
+            and "venv" not in str(f)  # Optimisé: exclure venv
         ]
 
         bom_files = []
@@ -162,7 +171,7 @@ class TestEncodingUTF8:
         )
 
     def test_consistent_line_endings(self):
-        """Test que tous les fichiers ont des fins de ligne cohérentes"""
+        """Test que tous les fichiers ont des fins de ligne cohérentes - OPTIMISÉ"""
         import os
 
         # Exclure les dossiers qui peuvent contenir des fichiers avec des fins de
