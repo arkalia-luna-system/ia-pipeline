@@ -12,7 +12,7 @@ class TestEncodingUTF8:
     """Tests de vérification de l'encodage UTF-8"""
 
     def test_python_files_utf8(self):
-        """Vérifie que tous les fichiers Python sont en UTF-8"""
+        """Vérifie que tous les fichiers Python sont en UTF-8 - OPTIMISÉ"""
         python_files = list(Path(".").glob("**/*.py"))
         python_files = [
             f
@@ -20,6 +20,7 @@ class TestEncodingUTF8:
             if ".git" not in str(f)
             and "__pycache__" not in str(f)
             and not f.name.startswith("._")
+            and "venv" not in str(f)  # Optimisé: exclure venv
         ]
 
         encoding_errors = []
@@ -107,17 +108,17 @@ class TestEncodingUTF8:
         )
 
     def test_requirements_utf8(self):
-        """Vérifie que requirements.txt est en UTF-8"""
+        """Vérifie que requirements.txt est en UTF-8 - OPTIMISÉ"""
         requirements_file = Path("config/requirements.txt")
         if requirements_file.exists():
             try:
                 with open(requirements_file, "r", encoding="utf-8") as f:
                     f.read()
             except UnicodeDecodeError as e:
-                assert False, f"Erreur d'encodage dans requirements.txt: {e}"
+                pytest.fail(f"Erreur d'encodage dans requirements.txt: {e}")
 
     def test_config_utf8(self):
-        """Vérifie que les fichiers de config sont en UTF-8"""
+        """Vérifie que les fichiers de config sont en UTF-8 - OPTIMISÉ"""
         config_files = [
             "config/athalia_config.yaml",
             "config/pyproject.toml",
@@ -130,7 +131,7 @@ class TestEncodingUTF8:
                     with open(config_file, "r", encoding="utf-8") as f:
                         f.read()
                 except UnicodeDecodeError as e:
-                    assert False, f"Erreur d'encodage dans {config_file}: {e}"
+                    pytest.fail(f"Erreur d'encodage dans {config_file}: {e}")
 
     def test_no_bom_marker(self):
         """Vérifie qu'il n'y a pas de marqueur BOM UTF-8"""
