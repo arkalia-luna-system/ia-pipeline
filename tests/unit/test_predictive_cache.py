@@ -45,10 +45,13 @@ class TestPredictiveCache(unittest.TestCase):
         self.assertEqual(stats["size"], 1)
 
     def test_ttl(self):
-        cache = PredictiveCache(ttl=1)
+        """Test TTL - OPTIMISÉ"""
+        # Optimisé: TTL très court pour test rapide
+        cache = PredictiveCache(ttl=0.001)  # 1ms au lieu de 1s
         cache.set("k", "v")
         self.assertEqual(cache.get("k"), "v")
-        time.sleep(1.1)
+        # Optimisé: attente réduite de 1.1s à 0.002s
+        time.sleep(0.002)  # 2ms au lieu de 1.1s
         self.assertIsNone(cache.get("k"))
 
 

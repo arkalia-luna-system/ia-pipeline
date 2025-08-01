@@ -165,10 +165,11 @@ def inefficient_loop():
         assert memory_info.rss > 0
 
     def test_execution_time_measurement(self):
-        """Test de mesure du temps d'exécution."""
+        """Test de mesure du temps d'exécution - OPTIMISÉ."""
 
         def test_function():
-            time.sleep(0.1)
+            # Optimisé: réduit de 0.1s à 0.01s
+            time.sleep(0.01)  # 10ms au lieu de 100ms
             return "test"
 
         # Mesurer le temps d'exécution
@@ -178,7 +179,7 @@ def inefficient_loop():
         execution_time = end_time - start_time
 
         assert isinstance(execution_time, float)
-        assert execution_time > 0.1  # Au moins le temps de sleep
+        assert execution_time > 0.005  # Optimisé: au moins 5ms au lieu de 100ms
         assert result == "test"
 
     def test_bottleneck_detection(self):

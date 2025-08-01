@@ -267,14 +267,15 @@ class TestCIRobust:
             pytest.skip(f"Erreur subprocess: {e}")
 
     def test_time_functionality(self):
-        """Teste la fonctionnalité time"""
+        """Teste la fonctionnalité time - OPTIMISÉ"""
         start_time = time.time()
-        time.sleep(0.1)  # Pause de 100ms
+        # Optimisé: réduit de 0.1s à 0.01s
+        time.sleep(0.01)  # Pause de 10ms au lieu de 100ms
         end_time = time.time()
 
         elapsed = end_time - start_time
-        assert elapsed >= 0.05, f"Temps écoulé incorrect: {elapsed}"
-        assert elapsed < 2.0, f"Temps écoulé trop long: {elapsed}"
+        assert elapsed >= 0.005, f"Temps écoulé incorrect: {elapsed}"
+        assert elapsed < 1.0, f"Temps écoulé trop long: {elapsed}"
 
     def test_pathlib_functionality(self):
         """Teste la fonctionnalité pathlib"""
