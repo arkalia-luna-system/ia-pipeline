@@ -1,11 +1,11 @@
-# Template de test pour athalia_core/cli.py
-# Fichier: tests/test_cli.py
+# Template de test pour athalia_core/cache_manager.py
+# Fichier: tests/test_cache_manager.py
 
-import athalia_core.cli as module
+import athalia_core.cache_manager as module
 
 
-class TestCli:
-    """Tests pour le module cli"""
+class TestCache_Manager:
+    """Tests pour le module cache_manager"""
 
     def test_module_import(self):
         """Test que le module peut être importé"""
