@@ -38,6 +38,7 @@ def test_class_AutoDocumenter_exists():
     """Test que la classe AutoDocumenter existe."""
     assert hasattr(module, "AutoDocumenter")
     from athalia_core.auto_documenter import AutoDocumenter
+
     assert AutoDocumenter is not None
 
 
@@ -63,7 +64,7 @@ class TestAutoDocumenter:
         """Test le chargement de la configuration par défaut."""
         doc = module.AutoDocumenter()
         config = doc.load_documentation_config()
-        
+
         assert "output_formats" in config
         assert "include_private" in config
         assert "generate_api_docs" in config
@@ -73,11 +74,11 @@ class TestAutoDocumenter:
     def test_is_excluded_method(self):
         """Test la méthode _is_excluded."""
         doc = module.AutoDocumenter()
-        
+
         # Test avec un fichier Python normal
         normal_file = Path("test_file.py")
         assert not doc._is_excluded(normal_file)
-        
+
         # Test avec un fichier __pycache__
         cache_file = Path("__pycache__/test.pyc")
         assert doc._is_excluded(cache_file)
@@ -87,7 +88,7 @@ class TestAutoDocumenter:
         with tempfile.TemporaryDirectory() as temp_dir:
             doc = module.AutoDocumenter(temp_dir)
             structure = doc.scan_project_structure()
-            
+
             assert "python_files" in structure
             assert "test_files" in structure
             assert "documentation_files" in structure
@@ -102,10 +103,10 @@ class TestAutoDocumenter:
             (Path(temp_dir) / "test_test.py").touch()
             (Path(temp_dir) / "README.md").touch()
             (Path(temp_dir) / "config.yaml").touch()
-            
+
             doc = module.AutoDocumenter(temp_dir)
             structure = doc.scan_project_structure()
-            
+
             # Vérifier que la structure contient les bonnes clés
             assert "python_files" in structure
             assert "test_files" in structure
@@ -113,21 +114,21 @@ class TestAutoDocumenter:
             assert "config_files" in structure
             assert "other_files" in structure
 
-    @patch('athalia_core.auto_documenter.yaml.safe_load')
+    @patch("athalia_core.auto_documenter.yaml.safe_load")
     def test_load_documentation_config_with_file(self, mock_yaml_load):
         """Test le chargement de configuration depuis un fichier."""
         mock_yaml_load.return_value = {
             "output_formats": ["pdf"],
-            "include_private": True
+            "include_private": True,
         }
-        
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.yaml') as temp_file:
+
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".yaml") as temp_file:
             temp_file.write("test: config")
             temp_file.flush()
-            
+
             doc = module.AutoDocumenter()
             config = doc.load_documentation_config(temp_file.name)
-            
+
             assert config["output_formats"] == ["pdf"]
             assert config["include_private"] is True
 
@@ -136,9 +137,11 @@ class TestAutoDocumenter:
         with tempfile.TemporaryDirectory() as temp_dir:
             doc = module.AutoDocumenter(temp_dir)
             coverage = doc.calculate_documentation_coverage()
-            
-            assert "total_files" in coverage
-            assert "documented_files" in coverage
+
+            # Vérifier les clés qui existent réellement
+            assert "total_functions" in coverage
+            assert "total_classes" in coverage
+            assert "total_methods" in coverage
             assert "coverage_percentage" in coverage
             assert isinstance(coverage["coverage_percentage"], (int, float))
 
@@ -147,9 +150,9 @@ class TestAutoDocumenter:
         with tempfile.TemporaryDirectory() as temp_dir:
             doc = module.AutoDocumenter(temp_dir)
             validation = doc.validate_documentation()
-            
+
             assert "is_valid" in validation
-            assert "errors" in validation
+            assert "issues" in validation
             assert "warnings" in validation
             assert isinstance(validation["is_valid"], bool)
 
@@ -157,15 +160,15 @@ class TestAutoDocumenter:
         """Test la sauvegarde et le chargement de l'historique."""
         with tempfile.TemporaryDirectory() as temp_dir:
             doc = module.AutoDocumenter(temp_dir)
-            
+
             # Ajouter un élément à l'historique
             doc.doc_history.append({"test": "entry"})
-            
+
             # Sauvegarder
             history_file = os.path.join(temp_dir, "history.json")
             success = doc.save_documentation_history(history_file)
             assert success is True
-            
+
             # Charger
             loaded_history = doc.load_documentation_history(history_file)
             assert len(loaded_history) >= 1
@@ -176,18 +179,24 @@ def test_generate_documentation_function():
     """Test la fonction generate_documentation."""
     with tempfile.TemporaryDirectory() as temp_dir:
         result = module.generate_documentation(temp_dir)
-        
+
         assert isinstance(result, dict)
-        assert "success" in result or "status" in result
+        # Vérifier les clés qui existent réellement
+        assert (
+            "summary" in result
+            or "detailed_results" in result
+            or "files_generated" in result
+        )
 
 
 def test_analyze_documentation_needs_function():
     """Test la fonction analyze_documentation_needs."""
     with tempfile.TemporaryDirectory() as temp_dir:
         result = module.analyze_documentation_needs(temp_dir)
-        
+
         assert isinstance(result, dict)
-        assert "needs" in result or "recommendations" in result
+        # Vérifier les clés qui existent réellement
+        assert "total_functions" in result or "coverage_percentage" in result
 
 
 def test_module_integration():

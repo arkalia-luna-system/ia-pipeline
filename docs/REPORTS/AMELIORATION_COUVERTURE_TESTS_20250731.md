@@ -10,7 +10,7 @@
 
 ### **Problème Identifié**
 - Couverture de tests très faible : **8.78%**
-- **64 modules non testés** sur 93 modules totaux
+- **64 modules non testés** sur 57 modules totaux
 - Beaucoup de modules avec 0% de couverture
 - Tests ne détectant pas tous les modules du projet
 
