@@ -179,9 +179,9 @@ class TestCIRobust:
                     found_elements = sum(
                         1 for elem in essential_elements if elem in content
                     )
-                    assert found_elements >= 2, (
-                        f"Seulement {found_elements} éléments essentiels trouvés dans {ci_file}"
-                    )
+                    assert (
+                        found_elements >= 2
+                    ), f"Seulement {found_elements} éléments essentiels trouvés dans {ci_file}"
 
                 except Exception as e:
                     pytest.fail(f"Erreur validation workflow CI {ci_file}: {e}")
