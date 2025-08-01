@@ -70,7 +70,7 @@ jobs:
 
       - name: Check polluting files
         run: |
-          python -m pytest tests/unit/quality/paths/test_no_polluting_files.py -v --no-cov
+          python -m pytest tests/unit/quality/test_no_polluting_files.py -v --no-cov
 
       - name: Check all imports
         run: |
