@@ -99,13 +99,13 @@ python -m pytest tests/unit/core/test_config_manager.py
 
 ```bash
 # Couverture complète
-python -m pytest tests/ --cov=athalia_core --cov-report=term-missing
+python -m pytest tests/ --cov-report=term-missing
 
 # Couverture HTML
-python -m pytest tests/ --cov=athalia_core --cov-report=html:htmlcov
+python -m pytest tests/ --cov-report=html:htmlcov
 
 # Couverture par module
-python -m pytest tests/unit/core/ --cov=athalia_core.main --cov=athalia_core.cli --cov=athalia_core.config_manager
+python -m pytest tests/unit/core/ --cov-report=term-missing
 ```
 
 ---
@@ -147,7 +147,7 @@ addopts = [
     "--strict-markers",
     "--disable-warnings",
     "--cache-clear",
-    "--cov=athalia_core",
+    
     "--cov-report=html:htmlcov",
     "--cov-report=term-missing",
     "--cov-branch",
