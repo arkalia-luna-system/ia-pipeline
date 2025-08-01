@@ -509,11 +509,13 @@ class AuditCompletDossiers:
         if results:
             scores_totaux = [r.score_total for r in results]
             score_moyen = sum(scores_totaux) / len(scores_totaux)
+            meilleur_dossier = max(results, key=lambda r: r.score_total).dossier.nom
+            pire_dossier = min(results, key=lambda r: r.score_total).dossier.nom
             rapport += f"""## 📊 Statistiques Globales
 
 **Score moyen:** {score_moyen:.1f}/10
-**Meilleur dossier:** {max(results, key=lambda r: r.score_total).dossier.nom} ({max(scores_totaux):.1f}/10)
-**Dossier à améliorer:** {min(results, key=lambda r: r.score_total).dossier.nom} ({min(scores_totaux):.1f}/10)
+**Meilleur dossier:** {meilleur_dossier} ({max(scores_totaux):.1f}/10)
+**Dossier à améliorer:** {pire_dossier} ({min(scores_totaux):.1f}/10)
 
 ## 🎯 Recommandations Globales
 
