@@ -168,10 +168,10 @@ Brève description des changements
 - **Tests** : @qa-team
 
 ### Ressources
-- [Documentation API](API.md)
+- [Documentation API](../API/README.md)
 - [Guide d'Installation](INSTALLATION.md)
-- [Best Practices](GUIDES/BEST_PRACTICES.md)
-- [Guide de Maintenance](GUIDES/DOCUMENTATION_MAINTENANCE.md)
+- [Best Practices](../DEVELOPER/BEST_PRACTICES.md)
+- [Guide de Maintenance](../DEVELOPER/DOCUMENTATION_MAINTENANCE.md)
 
 ---
 

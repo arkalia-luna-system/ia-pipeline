@@ -21,11 +21,14 @@ class TestDockerRoboticsComplete:
     """Tests unitaires complets pour DockerRoboticsManager"""
 
     def setup_method(self):
-        """Setup pour chaque test"""
+        """Setup pour chaque test - OPTIMISÉ"""
         self.temp_dir = tempfile.mkdtemp()
         self.manager = DockerRoboticsManager(self.temp_dir)
         self.docker_path = Path(self.temp_dir) / "docker"
         self.docker_path.mkdir(exist_ok=True)
+        
+        # Optimisé: Réduction de la consommation mémoire
+        self.manager.logger.setLevel("ERROR")  # Réduit les logs en mémoire
 
     def teardown_method(self):
         """Cleanup après chaque test"""

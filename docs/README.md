@@ -60,7 +60,7 @@ Bienvenue dans la documentation complète d'Athalia, un système d'intelligence 
 
 ### **📊 [REPORTS/](REPORTS/)**
 **Rapports d'audit et d'analyse**
-- **[Index](REPORTS/INDEX.md)** - Index des rapports
+- **[Index](REPORTS/README.md)** - Index des rapports
 - **[Corrections](REPORTS/CORRECTIONS/)** - Rapports de corrections
 - **[Audits](REPORTS/AUDITS/)** - Rapports d'audit
 - **[CI/CD](REPORTS/CI_CD/)** - Rapports CI/CD

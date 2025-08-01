@@ -205,9 +205,9 @@ template_results = orchestrator._run_templates(project_path)
 ## 🔗 Navigation
 
 - [Documentation API principale](README.md)
-- [Core Modules](API/core_modules.md)
-- [Plugins et Templates](API/plugins.md)
-- [Robotics](API/robotics.md)
+- [Core Modules](core_modules.md)
+- [Plugins et Templates](plugins.md)
+- [Robotics](robotics.md)
 
 ---
 
