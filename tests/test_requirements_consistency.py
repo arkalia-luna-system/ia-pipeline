@@ -108,12 +108,12 @@ class TestRequirementsConsistency:
 
     def test_pyproject_toml_exists(self):
         """Vérifie que pyproject.toml existe"""
-        pyproject_file = Path("config/pyproject.toml")
+        pyproject_file = Path("pyproject.toml")
         assert pyproject_file.exists(), "Fichier pyproject.toml manquant"
 
     def test_pyproject_toml_readable(self):
         """Vérifie que pyproject.toml est lisible"""
-        pyproject_file = Path("config/pyproject.toml")
+        pyproject_file = Path("pyproject.toml")
         try:
             with open(pyproject_file, "r", encoding="utf-8") as f:
                 content = f.read()
@@ -125,7 +125,7 @@ class TestRequirementsConsistency:
         """Vérifie la cohérence entre requirements.txt et pyproject.toml"""
         # Cette vérification est basique, on pourrait l'améliorer
         requirements_file = Path("config/requirements.txt")
-        pyproject_file = Path("config/pyproject.toml")
+        pyproject_file = Path("pyproject.toml")
 
         if requirements_file.exists() and pyproject_file.exists():
             try:
