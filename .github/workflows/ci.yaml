@@ -92,7 +92,7 @@ jobs:
         if: github.actor != 'athalia'
         continue-on-error: true
         run: |
-          python -m pytest tests/unit/quality/paths/test_hardcoded_paths.py -v --no-cov
+          python -m pytest tests/unit/quality/test_hardcoded_paths.py -v --no-cov
 
       # Tests de qualité - mode adaptatif
       - name: Check requirements consistency
