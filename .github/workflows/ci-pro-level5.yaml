@@ -130,7 +130,7 @@ jobs:
       - name: Run coverage tests
         run: |
           echo "📊 Running coverage tests..."
-          python -m pytest tests/ --cov=athalia_core --cov-report=xml --cov-report=html
+          python -m pytest tests/ --cov-report=xml --cov-report=html
 
   build-package:
     runs-on: ubuntu-latest
