@@ -51,7 +51,7 @@ Le workspace Athalia a été réorganisé pour une meilleure structure modulaire
 ## Scripts principaux
 
 ### 🚀 Scripts d'exécution
-- **`athalia_unified.py`** - Script principal unifié
+- **`bin/athalia_unified.py`** - Script principal unifié
 - **`athalia_unified_enhanced.py`** - Version améliorée
 - **`athalia_quick_start.py`** - Démarrage rapide interactif
 
