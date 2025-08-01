@@ -159,7 +159,7 @@ relative_files = true
 3. **Relancer les tests** pour vérifier la couverture réelle
 
 ### **Phase 18.2 - Amélioration Continue**
-1. **Créer des tests pour les modules restants** (64 modules)
+1. **Créer des tests pour les modules restants** (modules restants)
 2. **Améliorer la qualité des tests** existants
 3. **Atteindre l'objectif de 60%** de couverture
 
