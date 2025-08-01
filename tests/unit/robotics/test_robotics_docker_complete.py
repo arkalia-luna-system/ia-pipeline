@@ -26,15 +26,21 @@ class TestDockerRoboticsComplete:
         self.manager = DockerRoboticsManager(self.temp_dir)
         self.docker_path = Path(self.temp_dir) / "docker"
         self.docker_path.mkdir(exist_ok=True)
-        
+
         # Optimisé: Réduction de la consommation mémoire
         self.manager.logger.setLevel("ERROR")  # Réduit les logs en mémoire
 
     def teardown_method(self):
-        """Cleanup après chaque test"""
+        """Cleanup après chaque test - OPTIMISÉ"""
         import shutil
 
+        # Optimisé: Nettoyage plus agressif pour libérer la mémoire
         shutil.rmtree(self.temp_dir, ignore_errors=True)
+
+        # Optimisé: Forcer le garbage collector
+        import gc
+
+        gc.collect()
 
     def test_init(self):
         """Test initialisation"""

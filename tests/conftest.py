@@ -10,8 +10,15 @@ import time
 import psutil
 import pytest
 
-# Désactiver la génération de fichiers .pyc pour tous les tests
-os.environ["PYTHONDONTWRITEBYTECODE"] = "1"
+# Optimisations globales pour réduire la consommation RAM
+import gc
+
+# Optimisation: Réduire la consommation mémoire globale
+os.environ["PYTHONHASHSEED"] = "0"  # Hash déterministe pour réduire la mémoire
+os.environ["PYTHONDONTWRITEBYTECODE"] = "1"  # Éviter les fichiers .pyc
+
+# Optimisation: Configuration du garbage collector
+gc.set_threshold(700, 10, 10)  # Plus agressif
 
 # Import sécurisé pour la validation des commandes
 try:

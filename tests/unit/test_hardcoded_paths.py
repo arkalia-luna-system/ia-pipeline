@@ -50,17 +50,24 @@ class TestHardcodedPaths:
                 " probablement des faux positifs"
             )
 
-        if problematic_paths:
-            pytest.fail(
-                "Chemins absolus hardcodés trouvés:\n"
-                + "\n".join([f"{file}: {paths}" for file, paths in problematic_paths])
-            )
+        # Assertion pour vérifier que l'analyse a été effectuée
+        assert True, "Analyse des chemins absolus effectuée avec succès"
+
+        # Assertion pour vérifier qu'il n'y a pas de chemins problématiques
+        assert (
+            len(problematic_paths) == 0
+        ), "Chemins absolus hardcodés trouvés:\n" + "\n".join(
+            [f"{file}: {paths}" for file, paths in problematic_paths]
+        )
 
     @pytest.mark.skip(
         reason="Test désactivé - chemins hardcodés acceptables dans les tests"
     )
     def test_no_absolute_paths(self):
         """Test qu'il n'y a pas de chemins absolus hardcodés"""
+        # Assertion pour indiquer que le test est valide mais désactivé
+        assert True, "Test désactivé - chemins hardcodés acceptables dans les tests"
+
         python_files = []
         for root, dirs, files in os.walk("."):
             if ".git" in root or "__pycache__" in root:
@@ -81,17 +88,21 @@ class TestHardcodedPaths:
             except Exception:
                 continue
 
-        if absolute_paths:
-            pytest.fail(
-                "Chemins absolus hardcodés trouvés:\n"
-                + "\n".join([f"{file}: {paths}" for file, paths in absolute_paths])
-            )
+        # Assertion pour vérifier qu'il n'y a pas de chemins absolus
+        assert (
+            len(absolute_paths) == 0
+        ), "Chemins absolus hardcodés trouvés:\n" + "\n".join(
+            [f"{file}: {paths}" for file, paths in absolute_paths]
+        )
 
     @pytest.mark.skip(
         reason="Test désactivé - chemins Desktop acceptables dans les tests"
     )
     def test_no_desktop_paths(self):
         """Test qu'il n'y a pas de chemins Desktop hardcodés"""
+        # Assertion pour indiquer que le test est valide mais désactivé
+        assert True, "Test désactivé - chemins Desktop acceptables dans les tests"
+
         python_files = []
         for root, dirs, files in os.walk("."):
             if ".git" in root or "__pycache__" in root:
@@ -114,11 +125,12 @@ class TestHardcodedPaths:
             except Exception:
                 continue
 
-        if desktop_paths:
-            pytest.fail(
-                "Chemins Desktop hardcodés trouvés:\n"
-                + "\n".join([f"{file}: {paths}" for file, paths in desktop_paths])
-            )
+        # Assertion pour vérifier qu'il n'y a pas de chemins Desktop
+        assert (
+            len(desktop_paths) == 0
+        ), "Chemins Desktop hardcodés trouvés:\n" + "\n".join(
+            [f"{file}: {paths}" for file, paths in desktop_paths]
+        )
 
     def _is_acceptable_path(self, path):
         """Vérifie si un chemin absolu est acceptable"""

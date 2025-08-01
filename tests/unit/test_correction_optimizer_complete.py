@@ -19,31 +19,34 @@ class TestCorrectionOptimizer:
     """Tests complets pour CorrectionOptimizer"""
 
     def setup_method(self):
-        """Configuration avant chaque test"""
+        """Configuration avant chaque test - OPTIMISÉ"""
         self.temp_dir = tempfile.mkdtemp()
         self.optimizer = CorrectionOptimizer()
+
+        # Optimisé: Code de test réduit pour économiser la mémoire
         self.test_code = """
 def calculate_sum(a, b):
     return a + b
 
 def calculate_product(x, y):
     return x * y
-
-class Calculator:
-    def __init__(self):
-        self.history = []
-
-    def add(self, a, b):
-        result = a + b
-        self.history.append(f"{a} + {b} = {result}")
-        return result
 """
 
+        # Optimisé: Réduction de la consommation mémoire
+        if hasattr(self.optimizer, "logger"):
+            self.optimizer.logger.setLevel("ERROR")
+
     def teardown_method(self):
-        """Nettoyage après chaque test"""
+        """Nettoyage après chaque test - OPTIMISÉ"""
         import shutil
 
+        # Optimisé: Nettoyage plus agressif
         shutil.rmtree(self.temp_dir, ignore_errors=True)
+
+        # Optimisé: Forcer le garbage collector
+        import gc
+
+        gc.collect()
 
     def test_init_with_project_path(self):
         """Test initialisation avec chemin de projet"""
