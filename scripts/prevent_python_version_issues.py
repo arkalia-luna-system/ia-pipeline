@@ -36,7 +36,8 @@ class PythonVersionPreventer:
                 lines = content.split("\n")
 
                 for line_num, line in enumerate(lines, 1):
-                    # Chercher spécifiquement les versions Python (pas les versions de dépendances)
+                    # Chercher spécifiquement les versions Python
+                    # (pas les versions de dépendances)
                     # Pattern pour python-version: "3.1"
                     python_version_matches = re.findall(
                         r'python-version:\s*["\']?([3]\.[0-9]+)["\']?',
@@ -192,14 +193,15 @@ class PythonVersionPreventer:
 echo "🔍 Vérification des versions Python..."
 
 # Vérifier les versions Python dans les fichiers modifiés
-python_files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\\.(yaml|yml|toml|txt|Dockerfile)$')
+python_files=$(git diff --cached --name-only --diff-filter=ACM | \
+    grep -E '\\.(yaml|yml|toml|txt|Dockerfile)$')
 
 if [ -n "$python_files" ]; then
-    echo "📋 Fichiers à vérifier: $python_files"
-    
+        echo "📋 Fichiers à vérifier: $python_files"
+
     # Vérifier les versions non supportées (3.1 à 3.7, pas 3.10+)
     unsupported_versions=$(grep -r "3\\.[1-7][^0-9]" $python_files 2>/dev/null || true)
-    
+
     if [ -n "$unsupported_versions" ]; then
         echo "❌ Versions Python non supportées détectées:"
         echo "$unsupported_versions"

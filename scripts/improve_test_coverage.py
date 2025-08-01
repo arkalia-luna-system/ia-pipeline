@@ -184,9 +184,8 @@ def create_basic_tests() -> List[str]:
         module_info = analyze_module(module_path)
 
         if not module_info["success"]:
-            print(
-                f"   ⚠️  Impossible d'analyser: {module_info.get('error', 'Erreur inconnue')}"
-            )
+            error_msg = module_info.get("error", "Erreur inconnue")
+            print(f"   ⚠️  Impossible d'analyser: {error_msg}")
             continue
 
         # Générer le test

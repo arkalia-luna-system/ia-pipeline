@@ -176,7 +176,8 @@ class TestCLIComplete:
         # Appeler directement la fonction
         audit.callback(project_path=project_path)
 
-        # Vérifications - le mock peut ne pas être appelé si la fonction réelle est utilisée
+        # Vérifications - le mock peut ne pas être appelé
+        # si la fonction réelle est utilisée
         # Vérifions juste que des messages ont été affichés
         assert mock_echo.call_count >= 3, "Pas assez de messages affichés"
 

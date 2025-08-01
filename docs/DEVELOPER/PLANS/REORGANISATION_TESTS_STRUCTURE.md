@@ -1,5 +1,5 @@
 # 📋 PLAN DE RÉORGANISATION STRUCTURÉE DES TESTS
-**Version :** 1.0 (PLAN D'ACTION IMMÉDIAT)
+**Version :** 11.0 (ACTIVE DEVELOPMENT)
 
 ## 🎯 **OBJECTIF PRINCIPAL**
 Réorganiser la structure des tests pour atteindre **75% de couverture** (au lieu de 7%) en structurant comme les autres dossiers du projet.

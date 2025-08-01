@@ -158,16 +158,14 @@ class PythonVersionValidator:
 
         # Validation des workflows
         workflows_valid = self.validate_workflows()
-        report.append(
-            f"## Workflows GitHub Actions: {'✅ VALIDE' if workflows_valid else '❌ PROBLÈMES DÉTECTÉS'}"
-        )
+        status = "✅ VALIDE" if workflows_valid else "❌ PROBLÈMES DÉTECTÉS"
+        report.append(f"## Workflows GitHub Actions: {status}")
         report.append("")
 
         # Validation des configs
         configs_valid = self.validate_config_files()
-        report.append(
-            f"## Fichiers de Configuration: {'✅ VALIDE' if configs_valid else '❌ PROBLÈMES DÉTECTÉS'}"
-        )
+        status = "✅ VALIDE" if configs_valid else "❌ PROBLÈMES DÉTECTÉS"
+        report.append(f"## Fichiers de Configuration: {status}")
         report.append("")
 
         # Recommandations
@@ -179,9 +177,8 @@ class PythonVersionValidator:
         report.append("")
 
         overall_valid = workflows_valid and configs_valid
-        report.append(
-            f"## Résumé Global: {'✅ VALIDATION RÉUSSIE' if overall_valid else '❌ PROBLÈMES À CORRIGER'}"
-        )
+        status = "✅ VALIDATION RÉUSSIE" if overall_valid else "❌ PROBLÈMES À CORRIGER"
+        report.append(f"## Résumé Global: {status}")
 
         return "\n".join(report)
 
