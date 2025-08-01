@@ -4,6 +4,7 @@ Script pour améliorer la couverture de tests en créant des tests de base.
 """
 
 import sys
+import os
 import importlib
 import inspect
 from pathlib import Path
@@ -12,7 +13,7 @@ from typing import List, Dict, Any
 
 def get_untested_modules() -> List[str]:
     """Récupère la liste des modules non testés."""
-    # Modules prioritaires à tester en premier
+    # Modules prioritaires à tester en premier (structure mise à jour)
     priority_modules = [
         "athalia_core/__init__.py",
         "athalia_core/main.py",
@@ -72,16 +73,33 @@ def analyze_module(module_path: str) -> Dict[str, Any]:
         }
 
 
-def generate_basic_test(module_info: Dict[str, Any]) -> str:
+def generate_basic_test(module_info: Dict[str, Any]) -> tuple[str, str]:
     """Génère un test de base pour un module."""
     module_name = module_info["module_name"]
     functions = module_info["functions"]
     classes = module_info["classes"]
 
-    # Nom du fichier de test
-    test_file_name = (
-        f"test_{module_name.replace('athalia_core.', '').replace('.', '_')}.py"
-    )
+    # Nom du fichier de test (structure mise à jour)
+    module_short_name = module_name.replace("athalia_core.", "").replace(".", "_")
+
+    # Déterminer le dossier de destination selon le type de module
+    if module_short_name in ["main", "cli", "audit", "config_manager"]:
+        test_file_name = f"tests/unit/core/test_{module_short_name}.py"
+    elif module_short_name in [
+        "auto_cleaner",
+        "auto_documenter",
+        "auto_tester",
+        "cache_manager",
+        "error_handling",
+        "logger_advanced",
+    ]:
+        test_file_name = f"tests/unit/utils/test_{module_short_name}.py"
+    elif module_short_name in ["analytics"]:
+        test_file_name = f"tests/unit/analytics/test_{module_short_name}.py"
+    elif module_short_name in ["security", "security_auditor"]:
+        test_file_name = f"tests/unit/security/test_{module_short_name}.py"
+    else:
+        test_file_name = f"tests/test_{module_short_name}.py"
 
     # Générer le contenu du test
     test_content = f'''"""
@@ -175,15 +193,18 @@ def create_basic_tests() -> List[str]:
         # Générer le test
         test_file_name, test_content = generate_basic_test(module_info)
 
-        # Sauvegarder le test
-        test_path = Path("tests") / test_file_name
-
         # Vérifier si le fichier existe déjà
-        if test_path.exists():
+        if os.path.exists(test_file_name):
             print(f"   ⚠️  Fichier existant: {test_file_name}")
             continue
 
-        with open(test_path, "w", encoding="utf-8") as f:
+        # Créer le dossier si nécessaire
+        test_dir = os.path.dirname(test_file_name)
+        if test_dir:
+            os.makedirs(test_dir, exist_ok=True)
+
+        # Écrire le fichier de test
+        with open(test_file_name, "w", encoding="utf-8") as f:
             f.write(test_content)
 
         created_tests.append(test_file_name)
@@ -273,7 +294,7 @@ def check_coverage_improvement() -> Dict[str, float]:
         return {"total_coverage": 0.0, "success": False}
 
 
-def main():
+def main() -> int:
     """Fonction principale."""
     print("🚀 AMÉLIORATION DE LA COUVERTURE DE TESTS")
     print("=" * 50)
