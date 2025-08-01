@@ -48,7 +48,7 @@ cleanup_emergency() {
 trap cleanup_emergency SIGINT SIGTERM
 
 # Vérifier que nous sommes dans le bon répertoire
-if [ ! -f "pytest.ini" ]; then
+if [ ! -f "pyproject.toml" ]; then
     print_error "Ce script doit être exécuté depuis la racine du projet Athalia"
     exit 1
 fi

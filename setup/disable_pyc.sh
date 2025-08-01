@@ -18,17 +18,12 @@ if [ ! -f .env ]; then
     echo "✅ Fichier .env créé avec PYTHONDONTWRITEBYTECODE=1"
 fi
 
-# Configuration pour pytest
-if [ ! -f pytest.ini ]; then
-    cat > pytest.ini << EOF
-[pytest]
-addopts = --cache-clear
-testpaths = tests
-python_files = test_*.py
-python_classes = Test*
-python_functions = test_*
-EOF
-    echo "✅ Configuration pytest créée avec --cache-clear"
+# Configuration pour pytest (maintenant dans pyproject.toml)
+if [ ! -f pyproject.toml ]; then
+    echo "❌ pyproject.toml manquant - configuration pytest non trouvée"
+    exit 1
+else
+    echo "✅ Configuration pytest trouvée dans pyproject.toml"
 fi
 
 echo "✅ Configuration terminée ! Les fichiers .pyc ne seront plus générés."
