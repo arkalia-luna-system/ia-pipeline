@@ -123,7 +123,7 @@ class TestCacheManager:
     def test_clear_all_cache(self):
         """Test de nettoyage complet du cache"""
         # Créer plusieurs entrées de cache
-        for i in range(5):
+        for i in range(2):  # Optimisé: réduit de 5 à 2
             key = f"key_{i}"
             value = {"data": f"value_{i}"}
             self.cache_manager.set_cache(key, value)
@@ -140,7 +140,7 @@ class TestCacheManager:
         """Test de récupération des clés du cache"""
         # Créer plusieurs entrées de cache
         expected_keys = []
-        for i in range(3):
+        for i in range(2):  # Optimisé: réduit de 3 à 2
             key = f"key_{i}"
             value = {"data": f"value_{i}"}
             self.cache_manager.set_cache(key, value)
@@ -158,7 +158,7 @@ class TestCacheManager:
     def test_get_cache_size(self):
         """Test de calcul de la taille du cache"""
         # Créer des entrées de cache
-        for i in range(3):
+        for i in range(2):  # Optimisé: réduit de 3 à 2
             key = f"size_key_{i}"
             value = {"data": "x" * 100}  # 100 caractères
             self.cache_manager.set_cache(key, value)

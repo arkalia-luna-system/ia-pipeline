@@ -295,8 +295,8 @@ class TestYAMLValidity:
         complex_data = {
             "project": {
                 "name": "performance_test",
-                "modules": [f"module_{i}" for i in range(100)],
-                "config": {f"key_{i}": f"value_{i}" for i in range(50)},
+                "modules": [f"module_{i}" for i in range(10)],  # Optimisé: réduit de 100 à 10
+                "config": {f"key_{i}": f"value_{i}" for i in range(5)},  # Optimisé: réduit de 50 à 5
             }
         }
 

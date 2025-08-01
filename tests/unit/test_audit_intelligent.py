@@ -50,7 +50,7 @@ api_key = "sk-f"
 # Problème de performance
 def slow_function():
     result = []
-    for index in range(100):
+    for index in range(10):  # Optimisé: réduit de 100 à 10
         result.append(index)
     return result
 

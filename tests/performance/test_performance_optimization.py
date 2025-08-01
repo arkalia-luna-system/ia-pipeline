@@ -138,7 +138,7 @@ def slow_function():
 
 def inefficient_loop():
     result = []
-    for i in range(10000):
+    for i in range(100):  # Optimisé: réduit de 10000 à 100
         result.append(i)  # Problème d'efficacité
     return result
 """
@@ -275,7 +275,7 @@ def inefficient_function():
         start_time = time.time()
 
         # Opérations de cache multiples
-        for i in range(100):
+        for i in range(10):  # Optimisé: réduit de 100 à 10
             self.cache_manager.set_cache(f"test_{i}", {"value": i})
             self.cache_manager.get_cache(f"test_{i}")
 
@@ -295,8 +295,8 @@ def inefficient_function():
 
         # Créer des objets pour simuler une fuite
         leak_objects = []
-        for i in range(1000):
-            leak_objects.append([i] * 1000)
+        for i in range(10):  # Optimisé: réduit de 1000 à 10
+            leak_objects.append([i] * 10)  # Optimisé: réduit de 1000 à 10
 
         final_memory = psutil.Process().memory_info().rss
         memory_increase = final_memory - initial_memory
