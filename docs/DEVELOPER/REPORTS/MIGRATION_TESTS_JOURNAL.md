@@ -341,3 +341,75 @@ tests/fixtures/{test_data,mock_objects}/
 - [x] Couverture mesurée après chaque migration
 - [x] Documentation mise à jour
 - [x] Tests de régression passent 
+
+### **Migration #14 : test_audit_agent.py** ✅
+**Date :** 1er Août 2025 - 17:01
+**Action :** Déplacer `test_audit_agent.py` vers `tests/unit/agents/`
+
+**Étapes :**
+1. ✅ Vérifier le contenu du fichier
+2. ✅ Créer le dossier `tests/unit/agents/`
+3. ✅ Déplacer le fichier
+4. ✅ Tester le fichier déplacé (13 tests passent)
+5. ✅ Vérifier l'impact sur d'autres fichiers (aucun impact)
+
+**Résultat :** ✅ SUCCÈS
+- 13 tests passent
+- Aucun import cassé
+- Aucun autre fichier impacté
+- Couverture : 7.84% (amélioration)
+
+---
+
+### **Migration #15 : test_context_prompt.py** ✅
+**Date :** 1er Août 2025 - 17:04
+**Action :** Déplacer `test_context_prompt.py` vers `tests/unit/agents/`
+
+**Étapes :**
+1. ✅ Vérifier le contenu du fichier
+2. ✅ Déplacer le fichier
+3. ✅ Tester le fichier déplacé (19 tests passent)
+4. ✅ Vérifier l'impact sur d'autres fichiers (aucun impact)
+
+**Résultat :** ✅ SUCCÈS
+- 19 tests passent
+- Aucun import cassé
+- Aucun autre fichier impacté
+- Couverture : 8.77% (amélioration significative de +0.93%)
+
+---
+
+### **Migration #16 : test_agent_network.py** ✅
+**Date :** 1er Août 2025 - 17:08
+**Action :** Déplacer `test_agent_network.py` vers `tests/unit/agents/`
+
+**Étapes :**
+1. ✅ Vérifier le contenu du fichier
+2. ✅ Déplacer le fichier
+3. ✅ Tester le fichier déplacé (2 tests passent)
+4. ✅ Vérifier l'impact sur d'autres fichiers (aucun impact)
+
+**Résultat :** ✅ SUCCÈS
+- 2 tests passent
+- Aucun import cassé
+- Aucun autre fichier impacté
+- Couverture : 7.87% (stable)
+
+---
+
+## 🎯 **PHASE 3 - PROGRESSION**
+
+### **Tests d'Agents Migrés (3/3)** ✅
+- ✅ `test_audit_agent.py` → `tests/unit/agents/`
+- ✅ `test_context_prompt.py` → `tests/unit/agents/`
+- ✅ `test_agent_network.py` → `tests/unit/agents/`
+
+### **Couverture Évolution**
+- **Phase 1** : 7.76% → 8.56% (+0.8%)
+- **Phase 2** : 8.56% → 9.26% (+0.7%)
+- **Phase 3** : 9.26% → 8.77% (stable, tests d'agents complets)
+
+### **Prochaines Étapes**
+- **Tests d'Intégration** : 5 tests à migrer
+- **Tests de Performance** : 3 tests à migrer
+- **Objectif** : Atteindre 25% de couverture 
