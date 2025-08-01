@@ -29,7 +29,7 @@ def test_flake8_clean():
                 sys.executable,
                 "-m",
                 "flake8",
-                "tests/test_lint_flake8.py",
+                "tests/unit/quality/linting/test_lint_flake8.py",
                 "--max-line-length=120",
                 "--ignore=E501,W503,W291,W292,E302",
             ],

@@ -81,11 +81,12 @@ jobs:
           python -m pytest tests/unit/test_encoding_utf8.py -v --no-cov
 
       # Tests de sécurité - mode adaptatif pour le développement
-      - name: Check for dangerous patterns
+      - name: Run security tests
         if: github.actor != 'athalia'
         continue-on-error: true
         run: |
-          python -m pytest tests/unit/security/test_security_patterns.py -v --no-cov
+          chmod +x scripts/run_security_tests.sh
+          ./scripts/run_security_tests.sh
 
       - name: Check for hardcoded paths
         if: github.actor != 'athalia'
