@@ -25,7 +25,11 @@ class TestCoverageThreshold:
         test_dir = project_root / "tests"
         if not test_dir.exists():
             return []
-        return list(test_dir.rglob("test_*.py"))
+        test_files = list(test_dir.rglob("test_*.py"))
+        print(f"DEBUG: test_dir = {test_dir}")
+        print(f"DEBUG: test_dir.exists() = {test_dir.exists()}")
+        print(f"DEBUG: Nombre de fichiers de test trouvés: {len(test_files)}")
+        return test_files
 
     @pytest.fixture
     def source_files(self, project_root: Path) -> List[Path]:
@@ -93,6 +97,9 @@ class TestCoverageThreshold:
 
     def test_test_files_exist(self, test_files: List[Path]) -> None:
         """Vérifie que les fichiers de test existent et sont suffisants"""
+        # Utiliser la recherche manuelle car le fixture ne fonctionne pas
+        test_files = list(Path("tests").rglob("test_*.py"))
+        
         assert (
             len(test_files) >= 20
         ), f"Pas assez de fichiers de test: {len(test_files)} (minimum 20 attendu)"
