@@ -10,7 +10,7 @@ from pathlib import Path
 import subprocess
 import sys
 import tempfile
-from typing import Any, cast
+from typing import Any
 
 import pytest
 
@@ -22,7 +22,9 @@ try:
     from athalia_core.security_validator import SecurityError, validate_and_run
 except ImportError:
 
-    def validate_and_run(command: list[str], **kwargs: Any) -> subprocess.CompletedProcess:
+    def validate_and_run(
+        command: list[str], **kwargs: Any
+    ) -> subprocess.CompletedProcess:
         return subprocess.run(command, **kwargs)
 
     class SecurityErrorFallback(Exception):
