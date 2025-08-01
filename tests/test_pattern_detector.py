@@ -133,12 +133,14 @@ class TestPatternDetector:
             ("function", "def test(): pass", '["file1.py"]', 0.9, 1, "2023-01-01")
         ]
 
-        # Test sans initialisation automatique - on teste juste que la classe peut être créée
+        # Test sans initialisation automatique
+        # on teste juste que la classe peut être créée
         try:
             detector = PatternDetector("/tmp/test")
             assert detector is not None
         except (TypeError, IndexError):
-            # Si l'initialisation échoue à cause des mocks, on teste juste la création de base
+            # Si l'initialisation échoue à cause des mocks
+            # on teste juste la création de base
             with patch.object(PatternDetector, "_load_patterns"):
                 detector = PatternDetector("/tmp/test")
                 assert detector is not None
