@@ -115,14 +115,18 @@ class TestAutoDocumenter:
             assert "other_files" in structure
 
     @patch("athalia_core.auto_documenter.yaml.safe_load")
-    def test_load_documentation_config_with_file(self, mock_yaml_load):
+    def test_load_documentation_config_with_file(
+        self, mock_yaml_load
+    ):
         """Test le chargement de configuration depuis un fichier."""
         mock_yaml_load.return_value = {
             "output_formats": ["pdf"],
             "include_private": True,
         }
 
-        with tempfile.NamedTemporaryFile(mode="w", suffix=".yaml") as temp_file:
+        with tempfile.NamedTemporaryFile(
+            mode="w", suffix=".yaml"
+        ) as temp_file:
             temp_file.write("test: config")
             temp_file.flush()
 
