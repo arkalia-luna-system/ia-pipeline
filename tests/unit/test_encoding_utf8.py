@@ -30,10 +30,10 @@ class TestEncodingUTF8:
             except UnicodeDecodeError as e:
                 encoding_errors.append(f"{py_file}: {e}")
 
-        if encoding_errors:
-            pytest.fail(
-                "Erreurs d'encodage UTF-8 trouvées:\n" + "\n".join(encoding_errors)
-            )
+        # Assertion pour vérifier qu'il n'y a pas d'erreurs d'encodage
+        assert (
+            len(encoding_errors) == 0
+        ), "Erreurs d'encodage UTF-8 trouvées:\n" + "\n".join(encoding_errors)
 
     def test_markdown_files_utf8(self):
         """Vérifie que tous les fichiers Markdown sont en UTF-8"""
@@ -52,11 +52,12 @@ class TestEncodingUTF8:
             except UnicodeDecodeError as e:
                 encoding_errors.append(f"{md_file}: {e}")
 
-        if encoding_errors:
-            pytest.fail(
-                "Erreurs d'encodage UTF-8 dans les fichiers MD:\n"
-                + "\n".join(encoding_errors)
-            )
+        # Assertion pour vérifier qu'il n'y a pas d'erreurs d'encodage
+        assert (
+            len(encoding_errors) == 0
+        ), "Erreurs d'encodage UTF-8 dans les fichiers MD:\n" + "\n".join(
+            encoding_errors
+        )
 
     def test_yaml_files_utf8(self):
         """Vérifie que tous les fichiers YAML sont en UTF-8"""
@@ -76,11 +77,12 @@ class TestEncodingUTF8:
             except UnicodeDecodeError as e:
                 encoding_errors.append(f"{yaml_file}: {e}")
 
-        if encoding_errors:
-            pytest.fail(
-                "Erreurs d'encodage UTF-8 dans les fichiers YAML:\n"
-                + "\n".join(encoding_errors)
-            )
+        # Assertion pour vérifier qu'il n'y a pas d'erreurs d'encodage
+        assert (
+            len(encoding_errors) == 0
+        ), "Erreurs d'encodage UTF-8 dans les fichiers YAML:\n" + "\n".join(
+            encoding_errors
+        )
 
     def test_txt_files_utf8(self):
         """Vérifie que tous les fichiers TXT sont en UTF-8"""
@@ -97,11 +99,12 @@ class TestEncodingUTF8:
             except UnicodeDecodeError as e:
                 encoding_errors.append(f"{txt_file}: {e}")
 
-        if encoding_errors:
-            pytest.fail(
-                "Erreurs d'encodage UTF-8 dans les fichiers TXT:\n"
-                + "\n".join(encoding_errors)
-            )
+        # Assertion pour vérifier qu'il n'y a pas d'erreurs d'encodage
+        assert (
+            len(encoding_errors) == 0
+        ), "Erreurs d'encodage UTF-8 dans les fichiers TXT:\n" + "\n".join(
+            encoding_errors
+        )
 
     def test_requirements_utf8(self):
         """Vérifie que requirements.txt est en UTF-8"""
@@ -111,7 +114,7 @@ class TestEncodingUTF8:
                 with open(requirements_file, "r", encoding="utf-8") as f:
                     f.read()
             except UnicodeDecodeError as e:
-                pytest.fail(f"Erreur d'encodage dans requirements.txt: {e}")
+                assert False, f"Erreur d'encodage dans requirements.txt: {e}"
 
     def test_config_utf8(self):
         """Vérifie que les fichiers de config sont en UTF-8"""
@@ -127,7 +130,7 @@ class TestEncodingUTF8:
                     with open(config_file, "r", encoding="utf-8") as f:
                         f.read()
                 except UnicodeDecodeError as e:
-                    pytest.fail(f"Erreur d'encodage dans {config_file}: {e}")
+                    assert False, f"Erreur d'encodage dans {config_file}: {e}"
 
     def test_no_bom_marker(self):
         """Vérifie qu'il n'y a pas de marqueur BOM UTF-8"""
@@ -150,11 +153,12 @@ class TestEncodingUTF8:
             except Exception:
                 continue
 
-        if bom_files:
-            pytest.fail(
-                "Fichiers avec marqueur BOM UTF-8 trouvés:\n"
-                + "\n".join(str(f) for f in bom_files)
-            )
+        # Assertion pour vérifier qu'il n'y a pas de marqueurs BOM
+        assert (
+            len(bom_files) == 0
+        ), "Fichiers avec marqueur BOM UTF-8 trouvés:\n" + "\n".join(
+            str(f) for f in bom_files
+        )
 
     def test_consistent_line_endings(self):
         """Test que tous les fichiers ont des fins de ligne cohérentes"""
@@ -197,11 +201,12 @@ class TestEncodingUTF8:
                     except Exception:
                         continue
 
-        if files_with_mixed_endings:
-            pytest.fail(
-                "Fichiers avec fins de ligne mixtes trouvés:\n"
-                + "\n".join(files_with_mixed_endings)
-            )
+        # Assertion pour vérifier qu'il n'y a pas de fins de ligne mixtes
+        assert (
+            len(files_with_mixed_endings) == 0
+        ), "Fichiers avec fins de ligne mixtes trouvés:\n" + "\n".join(
+            files_with_mixed_endings
+        )
 
 
 if __name__ == "__main__":

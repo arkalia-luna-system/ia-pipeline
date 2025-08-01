@@ -24,8 +24,12 @@ class TestRobustAI:
     """Tests complets pour l'IA robuste."""
 
     def setup_method(self):
-        """Initialise l'IA robuste pour les tests."""
+        """Initialise l'IA robuste pour les tests - OPTIMISÉ."""
         self.ai = RobustAI()
+
+        # Optimisé: Réduction de la consommation mémoire
+        if hasattr(self.ai, "logger"):
+            self.ai.logger.setLevel("ERROR")
 
     def test_detect_available_models(self):
         """Test la détection des modèles disponibles."""

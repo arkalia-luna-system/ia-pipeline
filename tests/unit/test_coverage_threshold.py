@@ -146,8 +146,8 @@ class TestCoverageThreshold:
 
         # Au moins 4 patterns doivent être présents
         assert len(found_patterns) >= 4, (
-            f"Seulement {len(found_patterns)} patterns trouvés sur {len(expected_patterns)} attendus. "
-            f"Trouvés: {found_patterns}"
+            f"Seulement {len(found_patterns)} patterns trouvés sur "
+            f"{len(expected_patterns)} attendus. Trouvés: {found_patterns}"
         )
 
     def test_critical_modules_have_tests(

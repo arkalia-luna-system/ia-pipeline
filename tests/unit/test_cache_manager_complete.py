@@ -8,8 +8,6 @@ Optimisé pour performance et rapidité
 from pathlib import Path
 import tempfile
 import time
-from unittest.mock import Mock, patch
-import pytest
 
 from athalia_core.cache_manager import (
     CacheManager,
@@ -430,19 +428,12 @@ class TestCacheManagerIntegration:
 
     def test_cache_with_custom_config(self):
         """Test de cache avec configuration personnalisée - OPTIMISÉ"""
-        # Configuration personnalisée
-        custom_config = {
-            "max_size_mb": 50,
-            "ttl_hours": 12,
-            "compression": True,
-            "encryption": False,
-            "backup_enabled": False,
-        }
+        # Configuration personnalisée (optimisé: supprimé car non utilisé)
 
         # Créer un nouveau cache manager avec config personnalisée
         # Utiliser la méthode correcte pour charger la config
         custom_cache = CacheManager(cache_dir=self.temp_dir)
-        config = custom_cache.load_cache_config()
+        _ = custom_cache.load_cache_config()  # Optimisé: variable non utilisée
 
         # Tester avec la configuration personnalisée
         key = "custom_key"
