@@ -96,7 +96,7 @@ bin/
 ### 📜 **Scripts de Développement (`scripts/`)**
 ```
 scripts/
-├── athalia_unified.py         # Script unifié principal
+├── bin/athalia_unified.py         # Script unifié principal
 ├── validation_continue.py     # Validation continue
 ├── validation_objective.py    # Validation objective
 └── demo_*.py                  # Scripts de démonstration
