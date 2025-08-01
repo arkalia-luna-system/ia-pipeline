@@ -59,7 +59,7 @@ class TestCoverageThreshold:
 
     def test_test_files_exist(self):
         """Vérifie que les fichiers de test existent"""
-        test_files = list(Path("tests").glob("test_*.py"))
+        test_files = list(Path("tests").rglob("test_*.py"))
         assert len(test_files) > 10, f"Pas assez de fichiers de test: {len(test_files)}"
 
     def test_test_coverage_structure(self):
@@ -73,7 +73,7 @@ class TestCoverageThreshold:
             "test_requirements_consistency",  # Correspond à integration/
         ]
 
-        test_files = list(Path("tests").glob("test_*.py"))
+        test_files = list(Path("tests").rglob("test_*.py"))
         test_names = [f.name for f in test_files]
 
         # Si aucun test n'est trouvé, skip le test
@@ -106,7 +106,7 @@ class TestCoverageThreshold:
                 # Vérifie qu'il y a au moins un test correspondant
                 module_name = Path(module).stem
                 test_pattern = f"test_{module_name}"
-                test_files = list(Path("tests").glob(f"{test_pattern}*.py"))
+                test_files = list(Path("tests").rglob(f"{test_pattern}*.py"))
                 assert len(test_files) > 0, f"Aucun test trouvé pour {module}"
 
     def test_coverage_report_readable(self):
