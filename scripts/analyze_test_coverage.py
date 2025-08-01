@@ -54,7 +54,6 @@ def run_coverage_analysis() -> Dict[str, float]:
                 "-m",
                 "pytest",
                 "tests/",
-                "--cov=athalia_core",
                 "--cov-report=term-missing",
                 "--quiet",
             ],
@@ -229,9 +228,7 @@ def main():
     print("   1. Créer des tests pour les modules non testés prioritaires")
     print("   2. Améliorer la couverture des modules avec 0% de couverture")
     print("   3. Utiliser les templates générés comme point de départ")
-    print(
-        "   4. Exécuter: python -m pytest tests/ --cov=athalia_core --cov-report=html"
-    )
+    print("   4. Exécuter: python -m pytest tests/ --cov-report=html")
 
     return len(untested_modules) + len(zero_coverage_modules)
 

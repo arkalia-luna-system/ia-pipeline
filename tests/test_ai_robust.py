@@ -675,6 +675,4 @@ def test_main_block_execution():
 
 
 if __name__ == "__main__":
-    pytest.main(
-        [__file__, "-v", "--cov=athalia_core.ai_robust", "--cov-report=term-missing"]
-    )
+    pytest.main([__file__, "-v", "--cov-report=term-missing"])

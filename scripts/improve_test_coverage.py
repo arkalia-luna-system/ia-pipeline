@@ -243,7 +243,6 @@ def check_coverage_improvement() -> Dict[str, float]:
                 "-m",
                 "pytest",
                 "tests/",
-                "--cov=athalia_core",
                 "--cov-report=term-missing",
                 "--quiet",
             ],
@@ -312,9 +311,7 @@ def main():
     print("\n🎯 PROCHAINES ÉTAPES:")
     print("   1. Vérifier les tests créés dans le dossier tests/")
     print("   2. Améliorer les tests en ajoutant des cas spécifiques")
-    print(
-        "   3. Exécuter: python -m pytest tests/ --cov=athalia_core --cov-report=html"
-    )
+    print("   3. Exécuter: python -m pytest tests/ --cov-report=html")
     print("   4. Corriger les tests qui échouent si nécessaire")
 
     return 0
