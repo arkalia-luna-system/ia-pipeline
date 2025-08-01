@@ -25,7 +25,7 @@ python -m pytest tests/ -v --tb=short
 
 # Couverture de code
 echo "📊 Vérification couverture..."
-python -m pytest tests/ --cov=athalia_core --cov-report=term-missing --cov-fail-under=75
+python -m pytest tests/ --cov-report=term-missing --cov-fail-under=75
 
 # Tests de sécurité
 echo "🔒 Tests de sécurité..."
@@ -58,9 +58,9 @@ python -c "import athalia_core; print('✅ Imports valides')"
 
 # Génération du rapport de couverture HTML
 echo "📄 Génération rapport HTML..."
-python -m pytest tests/ --cov=athalia_core --cov-report=html --cov-report=term-missing
+python -m pytest tests/ --cov-report=html --cov-report=term-missing
 
 echo ""
 echo "🎉 Validation CI/CD terminée avec succès"
 echo "📊 Rapport de couverture disponible dans htmlcov/index.html"
-echo "📈 Couverture actuelle : $(python -m pytest tests/ --cov=athalia_core --cov-report=term | grep TOTAL | awk '{print $4}')"
+echo "📈 Couverture actuelle : $(python -m pytest tests/ --cov-report=term | grep TOTAL | awk '{print $4}')"

@@ -66,10 +66,10 @@ alias greset='git reset --hard HEAD'
 # Fonctionnalités principales du pipeline IA
 
 # Tests et Qualité
-alias ath-test='python3 -m pytest tests/ --cov=athalia_core --cov-report=term'
-alias ath-test-unit='python3 -m pytest tests/test_*_unit.py --cov=athalia_core --cov-report=term'
-alias ath-test-integration='python3 -m pytest tests/test_integration_*.py --cov=athalia_core --cov-report=term'
-alias ath-test-performance='python3 -m pytest tests/test_performance_*.py --cov=athalia_core --cov-report=term'
+alias ath-test='python3 -m pytest tests/ --cov-report=term'
+alias ath-test-unit='python3 -m pytest tests/test_*_unit.py --cov-report=term'
+alias ath-test-integration='python3 -m pytest tests/test_integration_*.py --cov-report=term'
+alias ath-test-performance='python3 -m pytest tests/test_performance_*.py --cov-report=term'
 alias ath-lint='python3 -m flake8 athalia_core/ tests/ --max-line-length=120'
 alias ath-coverage='python3 -m coverage run -m pytest tests/ && python3 -m coverage report'
 alias ath-coverage-html='python3 -m coverage run -m pytest tests/ && python3 -m coverage html && open htmlcov/index.html'

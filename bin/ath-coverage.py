@@ -24,7 +24,7 @@ def main():
         "--version", action="version", version="ath-coverage.py version 1.0.0"
     )
     args = parser.parse_args()
-    cmd = ["pytest", "--cov=athalia_core", "--ignore=tests/bin/"]
+    cmd = ["pytest", "--ignore=tests/bin/"]
     if args.html:
         cmd.append("--cov-report=html")
     else:
