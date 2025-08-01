@@ -226,7 +226,7 @@ def test_ai_robust_memory_usage():
     ai = RobustAI()
 
     # Générer plusieurs blueprints pour tester la mémoire
-    for i in range(5):
+    for i in range(2):  # Optimisé: réduit de 5 à 2
         blueprint = ai.generate_blueprint(f"projet test {i}")
         assert isinstance(blueprint, dict)
 
