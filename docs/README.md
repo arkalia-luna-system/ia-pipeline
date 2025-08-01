@@ -12,11 +12,12 @@ Bienvenue dans la documentation complète d'Athalia, un système d'intelligence 
 
 ### **🏆 ÉTAT ACTUEL**
 - **🛡️ Sécurité :** 100% sécurisé ✅
-- **🎯 Qualité :** Code professionnel ✅
-- **🧹 Maintenance :** Structure optimale ✅
-- **🧪 Tests :** 766 tests passent (3 échecs) ✅
+- **🎯 Qualité :** Code professionnel en amélioration continue ✅
+- **🧹 Maintenance :** Structure optimale avec nettoyage automatique ✅
+- **🧪 Tests :** 1453 tests collectés (couverture en amélioration) ✅
 - **🐍 Python :** Versions 3.10-3.12 supportées ✅
-- **🔄 CI/CD :** Fonctionnel et opérationnel ✅
+- **🔄 CI/CD :** Workflows professionnels opérationnels ✅
+- **📦 Modules :** 57 modules dans athalia_core/ ✅
 
 ---
 
@@ -99,7 +100,13 @@ Bienvenue dans la documentation complète d'Athalia, un système d'intelligence 
 - **Code robuste** et maintenable
 - **Logging approprié** et configurable
 - **Gestion d'erreurs** spécifique et informative
-- **Tests complets** et fiables (766 tests)
+- **Tests complets** et fiables (1453 tests)
+
+### **🧹 Maintenance Optimale**
+- **Nettoyage automatique** des fichiers système indésirables (AppleDouble, .DS_Store)
+- **Gestion des caches** Python et système
+- **Structure claire** et organisée
+- **Documentation complète** et à jour
 
 ---
 
@@ -124,6 +131,7 @@ Bienvenue dans la documentation complète d'Athalia, un système d'intelligence 
 - **Tests** : `./bin/ath-test.py`
 - **Audit** : `./bin/ath-audit.py`
 - **Nettoyage** : `./bin/ath-clean`
+- **Nettoyage AppleDouble** : `./bin/cleanup/ath-clean-appledouble`
 
 ### **Configuration**
 - **Fichier principal** : `config/config.yml`
@@ -139,6 +147,7 @@ La documentation est maintenue automatiquement et manuellement :
 - **Validation de cohérence** avec les tests
 - **Indexation automatique** des nouveaux fichiers
 - **Archivage** des anciennes versions
+- **Nettoyage automatique** des fichiers système indésirables
 
 ---
 
@@ -151,7 +160,7 @@ La documentation est maintenue automatiquement et manuellement :
 ---
 
 **📅 Dernière mise à jour :** 31 juillet 2025  
-**🎉 Projet prêt pour la production !**
+**🎉 Projet en développement actif avec améliorations continues !**
 
 ---
 
