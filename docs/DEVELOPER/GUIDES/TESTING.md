@@ -22,8 +22,8 @@
 # Lancer tous les tests unitaires
 python3 -m pytest tests/ --verbose
 
-# Tests avec couverture
-python3 -m pytest tests/ --cov=athalia_core --cov-report=html
+# Tests avec couverture (configuration automatique dans pyproject.toml)
+python3 -m pytest tests/
 
 # Tests spécifiques
 python3 -m pytest tests/test_intelligent_auditor.py -v
@@ -102,35 +102,45 @@ tests/
 ## 🔧 Outils de Test
 
 ### **Pytest Configuration**
-```ini
-# pytest.ini
-[tool:pytest]
-testpaths = tests
-python_files = test_*.py
-python_classes = Test*
-python_functions = test_*
-addopts =
-    --verbose
-    --tb=short
-    --strict-markers
-    --disable-warnings
-markers =
-    slow: marks tests as slow (deselect with '-m "not slow"')
-    integration: marks tests as integration tests
-    performance: marks tests as performance tests
-    security: marks tests as security tests
+```toml
+# pyproject.toml
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--verbose",
+    "--tb=short",
+    "--strict-markers",
+    "--disable-warnings",
+    "--cache-clear",
+    "--cov=athalia_core",
+    "--cov-report=html:htmlcov",
+    "--cov-report=term-missing",
+    "--cov-branch",
+    "--no-cov-on-fail",
+]
+markers = [
+    "fast: marks tests as fast (deselect with '-m \"not fast\"')",
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "performance: marks tests as performance tests",
+    "security: marks tests as security tests",
+]
 ```
 
 ### **Couverture de Code**
 ```bash
-# Générer rapport de couverture
-python3 -m pytest tests/ --cov=athalia_core --cov-report=html
+# Générer rapport de couverture (configuration automatique)
+python3 -m pytest tests/
 
 # Couverture en ligne de commande
-python3 -m pytest tests/ --cov=athalia_core --cov-report=term-missing
+python3 -m pytest tests/ --cov-report=term-missing
 
 # Couverture XML pour CI/CD
-python3 -m pytest tests/ --cov=athalia_core --cov-report=xml
+python3 -m pytest tests/ --cov-report=xml
 ```
 
 ### **Tests Automatisés**
@@ -144,6 +154,23 @@ python3 -m pytest tests/ --cov=athalia_core --cov-report=xml
 # Tests de régression
 ./scripts/regression_tests.sh
 ```
+
+---
+
+## 🔧 Résolution des Problèmes
+
+### **Erreur de Configuration Pytest**
+**Problème :** `unrecognized arguments: --cov=athalia_core --cov-report=html:htmlcov --cov-report=term-missing --cov-branch`
+
+**Cause :** Conflit entre `config/pytest.ini` et `pyproject.toml` avec des arguments obsolètes
+
+**Solution :** Configuration unifiée dans `pyproject.toml` avec arguments modernes
+
+**Actions effectuées :**
+- ✅ Suppression de `config/pytest.ini` 
+- ✅ Configuration unifiée dans `pyproject.toml`
+- ✅ Mise à jour des scripts et tests
+- ✅ Documentation mise à jour
 
 ---
 
