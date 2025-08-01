@@ -26,7 +26,7 @@ pip install -r requirements.txt
 # Vérifier l'environnement virtuel
 source .venv/bin/activate  # macOS/Linux
 # ou
-venv\Scripts\activate     # Windows
+.venv\Scripts\activate     # Windows
 ```
 
 ### **❌ Erreur de Permission**

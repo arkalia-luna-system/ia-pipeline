@@ -43,7 +43,7 @@ python -m venv .venv
 source .venv/bin/activate
 
 # Activer (Windows)
-venv\Scripts\activate
+.venv\Scripts\activate
 ```
 
 ### 3️⃣ **Installer les Dépendances**
