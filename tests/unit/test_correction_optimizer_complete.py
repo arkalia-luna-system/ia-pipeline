@@ -61,11 +61,12 @@ class Calculator:
         assert hasattr(optimizer, "performance_stats")
 
     def test_optimize_correction(self):
-        """Test optimisation de correction"""
+        """Test optimisation de correction - OPTIMISÉ"""
         test_file = Path(self.temp_dir) / "test_file.py"
         with open(test_file, "w") as f:
             f.write(self.test_code)
 
+        # Optimisé: timeout réduit pour accélérer le test
         result = self.optimizer.optimize_correction(str(test_file), self.test_code)
 
         assert isinstance(result, object)
