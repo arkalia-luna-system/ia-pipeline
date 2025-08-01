@@ -25,6 +25,8 @@ Ce dossier contient toute la documentation technique pour les développeurs d'At
 
 ### **📋 Plans et Stratégies**
 - **[PLANS/](PLANS/)** - Plans d'action et stratégies
+  - **[INDEX.md](PLANS/INDEX.md)** - Index des plans de développement
+  - **[REORGANISATION_TESTS_PLAN.md](PLANS/REORGANISATION_TESTS_PLAN.md)** - **CRITIQUE** - Réorganisation complète des tests
   - **[PLAN_ACTION_COUVERTURE_2025.md](PLANS/PLAN_ACTION_COUVERTURE_2025.md)** - Plan de couverture
   - **[PLAN_CORRECTION_TESTS_2025.md](PLANS/PLAN_CORRECTION_TESTS_2025.md)** - Plan de correction des tests
 
