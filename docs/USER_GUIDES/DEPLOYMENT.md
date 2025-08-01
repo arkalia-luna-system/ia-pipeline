@@ -11,7 +11,7 @@
 ### Installation Complète
 ```bash
 # 1. Cloner le repository
-git clone https://github.com/athalia/athalia-dev-setup.git
+git clone https://github.com/arkalia-luna-system/ia-pipeline.git
 cd athalia-dev-setup
 
 # 2. Créer l'environnement virtuel
@@ -32,7 +32,7 @@ python3 athalia_core/ready_check.py
 python3 athalia_core/main.py
 
 # Orchestrateur unifié
-python3 athalia_unified.py --help
+python3 bin/athalia_unified.py --help
 
 # Dashboard Streamlit
 streamlit run athalia_core/dashboard.py
@@ -98,7 +98,7 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y python3 python3-pip git docker.io
 
 # 2. Cloner et configurer
-git clone https://github.com/athalia/athalia-dev-setup.git
+git clone https://github.com/arkalia-luna-system/ia-pipeline.git
 cd athalia-dev-setup
 
 # 3. Configuration production

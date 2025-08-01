@@ -24,7 +24,7 @@ ModuleNotFoundError: No module named 'athalia_core'
 pip install -r requirements.txt
 
 # Vérifier l'environnement virtuel
-source venv/bin/activate  # macOS/Linux
+source .venv/bin/activate  # macOS/Linux
 # ou
 venv\Scripts\activate     # Windows
 ```

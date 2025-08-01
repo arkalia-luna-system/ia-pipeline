@@ -22,7 +22,7 @@ pip install -r requirements.txt
 ### Workflow de Contribution
 ```bash
 # 1. Forkez le repo et clonez votre fork
-git clone https://github.com/votre-username/athalia-dev-setup.git
+git clone https://github.com/arkalia-luna-system/ia-pipeline.git
 
 # 2. Créez une branche pour vos modifications
 git checkout -b feature/nouvelle-fonctionnalite

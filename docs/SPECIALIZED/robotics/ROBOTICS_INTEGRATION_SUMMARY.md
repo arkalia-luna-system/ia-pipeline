@@ -64,11 +64,11 @@ results = orchestrator.industrialize_project(project_path, config)
 #### **Tests Automatisés**
 ```bash
 # Tous les tests robotiques passent
-python3 -m pytest tests/test_athalia_orchestrator.py -k "robotics" -v
+python3 -m pytest tests/test_unified_orchestrator.py -k "robotics" -v
 # ✅ 5/5 tests passés
 
 # Tests complets de l'orchestrateur
-python3 -m pytest tests/test_athalia_orchestrator.py -v
+python3 -m pytest tests/test_unified_orchestrator.py -v
 # ✅ 20/20 tests passés
 ```
 

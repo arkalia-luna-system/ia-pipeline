@@ -6,7 +6,7 @@
 ```
 athalia_core/
 ├── ai_robust.py                    # IA robuste multi-modèles
-├── athalia_orchestrator.py         # Orchestrateur principal
+├── unified_orchestrator.py         # Orchestrateur principal
 ├── distillation/                   # Modules de distillation
 │   ├── __init__.py
 │   ├── response_distiller.py       # Fusion multi-IA
@@ -50,12 +50,12 @@ response = ai.call_with_fallback("Votre prompt")
 print(response)
 ```
 
-#### 2. Orchestrateur Principal (`athalia_orchestrator.py`)
+#### 2. Orchestrateur Principal (`unified_orchestrator.py`)
 ```python
-from athalia_core.athalia_orchestrator import AthaliaOrchestrator
+from athalia_core.unified_orchestrator import UnifiedOrchestrator
 
 # Créer l'orchestrateur
-orch = AthaliaOrchestrator()
+orch = UnifiedOrchestrator()
 
 # Distillation multi-IA
 result = orch.distill_ia_responses(
@@ -124,7 +124,7 @@ pytest tests/test_performance_*.py -v
 ### Exemple de Test d'Intégration
 ```python
 import pytest
-from athalia_core.athalia_orchestrator import AthaliaOrchestrator
+from athalia_core.unified_orchestrator import UnifiedOrchestrator
 
 class TestOrchestratorIntegration:
     def setup_method(self):
