@@ -60,6 +60,13 @@ class TestCoverageThreshold:
     def test_test_files_exist(self):
         """Vérifie que les fichiers de test existent"""
         test_files = list(Path("tests").rglob("test_*.py"))
+
+        # Debug: afficher le répertoire de travail et les fichiers trouvés
+        print(f"Répertoire de travail: {Path.cwd()}")
+        print(f"Nombre de fichiers de test trouvés: {len(test_files)}")
+        if len(test_files) < 5:
+            print(f"Fichiers trouvés: {[f.name for f in test_files]}")
+
         assert len(test_files) > 10, f"Pas assez de fichiers de test: {len(test_files)}"
 
     def test_test_coverage_structure(self):
@@ -107,6 +114,13 @@ class TestCoverageThreshold:
                 module_name = Path(module).stem
                 test_pattern = f"test_{module_name}"
                 test_files = list(Path("tests").rglob(f"{test_pattern}*.py"))
+
+                # Debug: afficher les informations de debug
+                print(f"Module: {module}, Pattern: {test_pattern}")
+                print(f"Tests trouvés pour {module}: {len(test_files)}")
+                if len(test_files) == 0:
+                    print(f"Aucun test trouvé avec le pattern: {test_pattern}")
+
                 assert len(test_files) > 0, f"Aucun test trouvé pour {module}"
 
     def test_coverage_report_readable(self):
