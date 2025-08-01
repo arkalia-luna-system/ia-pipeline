@@ -10,7 +10,7 @@ from pathlib import Path
 import subprocess
 import sys
 import tempfile
-from typing import Any
+from typing import Any, cast
 
 import pytest
 
@@ -22,9 +22,7 @@ try:
     from athalia_core.security_validator import SecurityError, validate_and_run
 except ImportError:
 
-    def validate_and_run(
-        command: list[str], **kwargs: Any
-    ) -> subprocess.CompletedProcess:
+    def validate_and_run(command: list[str], **kwargs: Any) -> subprocess.CompletedProcess:
         return subprocess.run(command, **kwargs)
 
     class SecurityErrorFallback(Exception):
@@ -48,7 +46,7 @@ class TestCLIRobustesse:
             Path("bin/ath-build.py"),
         ]
 
-    def teardown_method(self):
+    def teardown_method(self) -> None:
         """Nettoyage après chaque test."""
         import shutil
 
@@ -56,8 +54,31 @@ class TestCLIRobustesse:
             shutil.rmtree(self.test_dir)
 
     @pytest.mark.timeout(30)
-    def test_cli_help_command(self):
-        """Test de la commande d'aide."""
+    def test_cli_basic_execution(self) -> None:
+        """Test d'exécution de base des scripts CLI."""
+        for cli_path in self.cli_paths:
+            if cli_path.exists():
+                try:
+                    # Test d'exécution simple sans arguments
+                    result = validate_and_run(
+                        [sys.executable, str(cli_path)],
+                        capture_output=True,
+                        text=True,
+                        timeout=30,
+                    )
+
+                    # Vérifier que la commande s'exécute sans erreur critique
+                    # Les scripts peuvent retourner différents codes selon leur logique
+                    assert result.returncode in [0, 1, 2]
+
+                except (subprocess.TimeoutExpired, SecurityError):
+                    pytest.skip(f"CLI {cli_path} prend trop de temps à démarrer")
+                except Exception as e:
+                    pytest.skip(f"CLI {cli_path} non disponible: {e}")
+
+    @pytest.mark.timeout(30)
+    def test_cli_help_argument(self) -> None:
+        """Test de l'argument --help."""
         for cli_path in self.cli_paths:
             if cli_path.exists():
                 try:
@@ -68,13 +89,9 @@ class TestCLIRobustesse:
                         timeout=30,
                     )
 
-                    # Vérifier que la commande s'exécute sans erreur
+                    # Vérifier que la commande s'exécute
                     # Certains scripts peuvent ne pas avoir --help, c'est normal
-                    assert result.returncode in [
-                        0,
-                        1,
-                        2,
-                    ]  # 0 = succès, 1-2 = erreur d'argument
+                    assert result.returncode in [0, 1, 2]
 
                 except (subprocess.TimeoutExpired, SecurityError):
                     pytest.skip(f"CLI {cli_path} prend trop de temps à démarrer")
@@ -82,8 +99,8 @@ class TestCLIRobustesse:
                     pytest.skip(f"CLI {cli_path} non disponible: {e}")
 
     @pytest.mark.timeout(30)
-    def test_cli_version_command(self):
-        """Test de la commande de version."""
+    def test_cli_version_argument(self) -> None:
+        """Test de l'argument --version."""
         for cli_path in self.cli_paths:
             if cli_path.exists():
                 try:
@@ -103,7 +120,7 @@ class TestCLIRobustesse:
                     pytest.skip(f"CLI {cli_path} non disponible: {e}")
 
     @pytest.mark.timeout(30)
-    def test_cli_invalid_argument(self):
+    def test_cli_invalid_argument(self) -> None:
         """Test avec des arguments invalides."""
         for cli_path in self.cli_paths:
             if cli_path.exists():
@@ -117,27 +134,6 @@ class TestCLIRobustesse:
 
                     # Vérifier que la commande gère l'erreur correctement
                     assert result.returncode in [1, 2]  # Code d'erreur attendu
-
-                except (subprocess.TimeoutExpired, SecurityError):
-                    pytest.skip(f"CLI {cli_path} prend trop de temps à démarrer")
-                except Exception as e:
-                    pytest.skip(f"CLI {cli_path} non disponible: {e}")
-
-    @pytest.mark.timeout(30)
-    def test_cli_missing_argument(self):
-        """Test avec des arguments manquants."""
-        for cli_path in self.cli_paths:
-            if cli_path.exists():
-                try:
-                    result = validate_and_run(
-                        [sys.executable, str(cli_path)],
-                        capture_output=True,
-                        text=True,
-                        timeout=30,
-                    )
-
-                    # Vérifier que la commande gère l'absence d'arguments
-                    assert result.returncode in [0, 1, 2]
 
                 except (subprocess.TimeoutExpired, SecurityError):
                     pytest.skip(f"CLI {cli_path} prend trop de temps à démarrer")
@@ -166,7 +162,7 @@ class TestCLIRobustesse:
                 pytest.skip(f"CLI {cli_path} non disponible: {e}")
 
     @pytest.mark.timeout(30)
-    def test_cli_version_argument(self) -> None:
+    def test_cli_version_argument_specific(self) -> None:
         """Test de l'argument --version pour ath-coverage.py."""
         cli_path = Path("bin/ath-coverage.py")
         if cli_path.exists():
@@ -186,14 +182,14 @@ class TestCLIRobustesse:
             except Exception as e:
                 pytest.skip(f"CLI {cli_path} non disponible: {e}")
 
-    def test_cli_timeout_handling(self):
+    def test_cli_timeout_handling(self) -> None:
         """Test de la gestion des timeouts."""
         for cli_path in self.cli_paths:
             if cli_path.exists():
                 try:
                     # Test avec un timeout très court
                     _ = validate_and_run(
-                        [sys.executable, str(cli_path), "--help"],
+                        [sys.executable, str(cli_path)],
                         capture_output=True,
                         text=True,
                         timeout=1,  # Timeout très court
@@ -208,7 +204,7 @@ class TestCLIRobustesse:
                 except Exception as e:
                     pytest.skip(f"CLI {cli_path} non disponible: {e}")
 
-    def test_cli_error_handling(self):
+    def test_cli_error_handling(self) -> None:
         """Test de la gestion d'erreurs."""
         for cli_path in self.cli_paths:
             if cli_path.exists():
@@ -229,13 +225,13 @@ class TestCLIRobustesse:
                 except Exception as e:
                     pytest.skip(f"CLI {cli_path} non disponible: {e}")
 
-    def test_cli_output_format(self):
+    def test_cli_output_format(self) -> None:
         """Test du format de sortie."""
         for cli_path in self.cli_paths:
             if cli_path.exists():
                 try:
                     result = validate_and_run(
-                        [sys.executable, str(cli_path), "--help"],
+                        [sys.executable, str(cli_path)],
                         capture_output=True,
                         text=True,
                         timeout=15,  # Timeout réduit
@@ -252,7 +248,7 @@ class TestCLIRobustesse:
                 except Exception as e:
                     pytest.skip(f"CLI {cli_path} non disponible: {e}")
 
-    def test_cli_environment_variables(self):
+    def test_cli_environment_variables(self) -> None:
         """Test avec des variables d'environnement."""
         for cli_path in self.cli_paths:
             if cli_path.exists():
@@ -262,7 +258,7 @@ class TestCLIRobustesse:
                     env["ATHALIA_DEBUG"] = "1"
 
                     result = validate_and_run(
-                        [sys.executable, str(cli_path), "--help"],
+                        [sys.executable, str(cli_path)],
                         capture_output=True,
                         text=True,
                         timeout=15,  # Timeout réduit
@@ -277,7 +273,7 @@ class TestCLIRobustesse:
                 except Exception as e:
                     pytest.skip(f"CLI {cli_path} non disponible: {e}")
 
-    def test_cli_concurrent_execution(self):
+    def test_cli_concurrent_execution(self) -> None:
         """Test d'exécution concurrente."""
         for cli_path in self.cli_paths:
             if cli_path.exists():
@@ -286,8 +282,9 @@ class TestCLIRobustesse:
                     processes = []
                     for i in range(3):
                         process = subprocess.Popen(
-                            [sys.executable, str(cli_path), "--help"],
-                            capture_output=True,
+                            [sys.executable, str(cli_path)],
+                            stdout=subprocess.PIPE,
+                            stderr=subprocess.PIPE,
                             text=True,
                         )
                         processes.append(process)
@@ -303,7 +300,7 @@ class TestCLIRobustesse:
                     pytest.skip(f"CLI {cli_path} non disponible: {e}")
 
 
-def test_cli_basic_functionality():
+def test_cli_basic_functionality() -> None:
     """Test de fonctionnalité de base de la CLI."""
     # Test avec athalia_unified.py s'il existe
     cli_path = Path("athalia_unified.py")
@@ -326,7 +323,7 @@ def test_cli_basic_functionality():
         pytest.skip(f"CLI non disponible: {e}")
 
 
-def test_cli_integration_workflow():
+def test_cli_integration_workflow() -> None:
     """Test du workflow d'intégration CLI."""
     cli_path = Path("athalia_unified.py")
     if not cli_path.exists():
