@@ -2,9 +2,9 @@ name: CI Professional - Level 1
 
 on:
   push:
-    branches: [ci-cd-professional, develop]
+    branches: [ci-cd-professional, develop, reorganize-tests]
   pull_request:
-    branches: [ci-cd-professional, develop]
+    branches: [ci-cd-professional, develop, reorganize-tests]
 
 jobs:
   test-basic:

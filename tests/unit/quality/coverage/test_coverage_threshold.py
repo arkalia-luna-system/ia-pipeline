@@ -99,7 +99,7 @@ class TestCoverageThreshold:
         """Vérifie que les fichiers de test existent et sont suffisants"""
         # Utiliser la recherche manuelle car le fixture ne fonctionne pas
         test_files = list(Path("tests").rglob("test_*.py"))
-        
+
         assert (
             len(test_files) >= 20
         ), f"Pas assez de fichiers de test: {len(test_files)} (minimum 20 attendu)"
