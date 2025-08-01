@@ -247,7 +247,8 @@ def main():
     print(report)
 
     # Sauvegarde du rapport
-    report_file = f"logs/phase3_optimization_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    report_file = f"logs/phase3_optimization_report_{timestamp}.txt"
     os.makedirs("logs", exist_ok=True)
 
     with open(report_file, "w", encoding="utf-8") as f:
