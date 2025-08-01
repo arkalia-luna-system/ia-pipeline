@@ -117,7 +117,7 @@ class TestPerformancePhase3:
                 "python",
                 "-m",
                 "pytest",
-                "tests/test_ci_robust.py::TestCIRobust::test_python_environment",
+                "tests/unit/test_ci_robust.py::TestCIRobust::test_python_environment",
                 "-q",
             ],
             capture_output=True,

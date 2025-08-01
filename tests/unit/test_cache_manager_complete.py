@@ -140,7 +140,7 @@ class TestCacheManager:
         """Test de récupération des clés du cache"""
         # Créer plusieurs entrées de cache
         expected_keys = []
-        for i in range(2):  # Optimisé: réduit de 3 à 2
+        for i in range(3):  # Créer 3 clés pour satisfaire l'assertion
             key = f"key_{i}"
             value = {"data": f"value_{i}"}
             self.cache_manager.set_cache(key, value)
