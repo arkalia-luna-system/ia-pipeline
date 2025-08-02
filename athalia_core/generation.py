@@ -1088,7 +1088,7 @@ if __name__ == "__main__":
     try:
         from athalia_core.distillation.code_genetics import CodeGenetics
 
-        genetics = CodeGenetics()
+        # genetics = CodeGenetics()  # Variable non utilisée
 
         main_file = project_path / "src" / "main.py"
         if main_file.exists():
@@ -1155,7 +1155,7 @@ if __name__ == "__main__":
 
                 population = new_population[:5]  # Garder les 5 meilleurs
 
-            logger.info(f"✅ Évolution génétique appliquée (3 générations)")
+            logger.info("✅ Évolution génétique appliquée (3 générations)")
 
             # Validation du code généré
             def validate_code_local(code: str) -> bool:
@@ -1986,12 +1986,7 @@ services:
     return docker_compose
 
 
-import logging
-from pathlib import Path
-from typing import Optional
 
-# Configuration du logging
-logger = logging.getLogger(__name__)
 
 
 def detect_project_type(project_name: str, description: str) -> str:

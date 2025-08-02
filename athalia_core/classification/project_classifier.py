@@ -58,6 +58,10 @@ def classify_project(idea: str) -> ProjectType:
         "esthétique",
         "beauté",
         "harmonie",
+        "fractale",
+        "fractal",
+        "interactif",
+        "interactive",
     ]
 
     api_keywords = [
@@ -89,6 +93,10 @@ def classify_project(idea: str) -> ProjectType:
         "règles",
         "rules",
         "plateforme",
+        "platform",
+        "saut",
+        "jump",
+        "obstacle",
     ]
 
     data_keywords = [
@@ -106,6 +114,11 @@ def classify_project(idea: str) -> ProjectType:
         "prediction",
         "modèle",
         "model",
+        "visualisation",
+        "visualization",
+        "pandas",
+        "numpy",
+        "matplotlib",
     ]
 
     web_keywords = [
@@ -120,6 +133,28 @@ def classify_project(idea: str) -> ProjectType:
         "react",
         "vue",
         "angular",
+        "flask",
+        "django",
+    ]
+
+    robotics_keywords = [
+        "robot",
+        "robotics",
+        "controle",
+        "control",
+        "automation",
+        "capteur",
+        "sensor",
+        "rclpy",
+        "ros",
+        "opencv",
+        "arduino",
+        "raspberry",
+        "pi",
+        "électronique",
+        "electronic",
+        "hardware",
+        "matériel",
     ]
 
     mobile_keywords = [
@@ -157,17 +192,21 @@ def classify_project(idea: str) -> ProjectType:
         ProjectType.WEB: sum(1 for kw in web_keywords if kw in idea_lower),
         ProjectType.MOBILE: sum(1 for kw in mobile_keywords if kw in idea_lower),
         ProjectType.IOT: sum(1 for kw in iot_keywords if kw in idea_lower),
+        ProjectType.ROBOTICS: sum(1 for kw in robotics_keywords if kw in idea_lower),
     }
 
-    # Règles spéciales
+    # Règles spéciales pour des cas spécifiques
     if "fleure qui danse" in idea_lower or "fleur qui danse" in idea_lower:
         return ProjectType.ARTISTIC
 
-    if "api" in idea_lower and any(kw in idea_lower for kw in ["service", "backend"]):
-        return ProjectType.API
+    if "contrôleur de robot" in idea_lower or "interface graphique" in idea_lower:
+        return ProjectType.ROBOTICS
 
-    if any(word in idea_lower for word in ["jeu", "game", "play"]):
-        return ProjectType.GAME
+    if "fractale" in idea_lower or "interactif" in idea_lower:
+        return ProjectType.ARTISTIC
+
+    if "robot" in idea_lower and ("controle" in idea_lower or "capteur" in idea_lower):
+        return ProjectType.ROBOTICS
 
     # Retourner le type avec le score le plus élevé
     max_score = max(scores.values())
@@ -222,3 +261,41 @@ def get_project_name(idea: str, project_type: ProjectType) -> str:
         if len(words) >= 2:
             return f"{words[0]}_{words[1]}_project"
         return "ia_project"
+
+
+def classify_project_intelligent(idea: str) -> ProjectType:
+    """Détection intelligente du type de projet avec agents IA"""
+
+    try:
+        # Essayer d'utiliser l'agent contextuel
+        from athalia_core.agents.context_prompt import detect_prompts_scoring
+
+        # Analyser le contexte avec l'agent
+        context_score = detect_prompts_scoring(idea)
+
+        # Mapper les résultats vers les types de projet
+        if "test" in str(context_score).lower():
+            return ProjectType.DATA
+        elif (
+            "design" in str(context_score).lower() or "ui" in str(context_score).lower()
+        ):
+            return ProjectType.WEB
+        elif (
+            "game" in str(context_score).lower() or "fun" in str(context_score).lower()
+        ):
+            return ProjectType.GAME
+        elif "api" in str(context_score).lower():
+            return ProjectType.API
+        elif "robot" in str(context_score).lower():
+            return ProjectType.ROBOTICS
+        elif (
+            "art" in str(context_score).lower()
+            or "animation" in str(context_score).lower()
+        ):
+            return ProjectType.ARTISTIC
+
+    except ImportError:
+        pass
+
+    # Fallback vers la méthode classique
+    return classify_project(idea)

@@ -1086,6 +1086,72 @@ class AutoCleaner:
             "detailed_results": results,
         }
 
+    def clean_generated_project(self, project_path: str) -> Dict[str, Any]:
+        """Nettoie un projet généré par Athalia."""
+        project_dir = Path(project_path)
+        if not project_dir.exists():
+            return {"error": f"Projet {project_path} non trouvé"}
+
+        logger.info(f"Nettoyage du projet généré: {project_path}")
+
+        # Fichiers parasites à supprimer
+        parasite_patterns = [
+            "._*",  # Apple Double files
+            ".DS_Store",  # macOS
+            "Thumbs.db",  # Windows
+            "*.tmp",  # Fichiers temporaires
+            "*.bak",  # Sauvegardes
+            "*.log",  # Logs
+            "*.clean",  # Fichiers de nettoyage
+            "*.apdisk",  # macOS
+            "*.f(f",  # Fichiers corrompus
+        ]
+
+        files_removed = []
+        total_size_removed = 0
+
+        for pattern in parasite_patterns:
+            for file_path in project_dir.rglob(pattern):
+                try:
+                    if file_path.is_file():
+                        size = file_path.stat().st_size
+                        file_path.unlink()
+                        files_removed.append(str(file_path))
+                        total_size_removed += size
+                        logger.info(f"Supprimé: {file_path}")
+                except Exception as e:
+                    logger.warning(f"Impossible de supprimer {file_path}: {e}")
+
+        # Nettoyer les répertoires vides
+        empty_dirs_removed = []
+        for dir_path in sorted(
+            project_dir.rglob("*"), key=lambda x: len(x.parts), reverse=True
+        ):
+            if dir_path.is_dir() and not any(dir_path.iterdir()):
+                try:
+                    dir_path.rmdir()
+                    empty_dirs_removed.append(str(dir_path))
+                    logger.info(f"Répertoire vide supprimé: {dir_path}")
+                except Exception as e:
+                    logger.warning(
+                        f"Impossible de supprimer le répertoire {dir_path}: {e}"
+                    )
+
+        result = {
+            "project_path": str(project_path),
+            "files_removed": len(files_removed),
+            "empty_dirs_removed": len(empty_dirs_removed),
+            "total_size_removed": total_size_removed,
+            "files_removed_list": files_removed,
+            "empty_dirs_removed_list": empty_dirs_removed,
+            "status": "success",
+        }
+
+        logger.info(
+            f"Nettoyage terminé: {len(files_removed)} fichiers, {len(empty_dirs_removed)} répertoires vides supprimés"
+        )
+        return result
+
 
 def cleanup_project(project_path: str = ".") -> Dict[str, Any]:
     """Fonction utilitaire pour nettoyer un projet"""
