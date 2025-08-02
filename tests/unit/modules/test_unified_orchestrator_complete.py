@@ -339,6 +339,304 @@ class TestUnifiedOrchestrator:
         assert "metrics" in self.orchestrator.workflow_results
         assert "artifacts" in self.orchestrator.workflow_results
 
+    # NOUVEAUX TESTS POUR COUVRIR LES LIGNES MANQUANTES
+
+    @patch("athalia_core.unified_orchestrator.AI_MODULES_AVAILABLE", False)
+    def test_initialize_modules_without_ai(self):
+        """Test d'initialisation des modules sans IA"""
+        self.orchestrator.initialize_modules()
+
+        # Vérifier que les modules de base sont initialisés
+        assert self.orchestrator.workflow_results["status"] == "initialized"
+        assert self.orchestrator.robust_ai is not None
+        assert self.orchestrator.security_auditor is not None
+        assert self.orchestrator.code_linter is not None
+        assert self.orchestrator.correction_optimizer is not None
+        assert self.orchestrator.auto_tester is not None
+        assert self.orchestrator.auto_documenter is not None
+        assert self.orchestrator.auto_cleaner is not None
+        assert self.orchestrator.auto_cicd is not None
+
+        # Vérifier que les modules IA ne sont pas initialisés
+        assert self.orchestrator.unified_agent is None
+        assert self.orchestrator.context_agent is None
+        assert self.orchestrator.audit_agent is None
+        assert self.orchestrator.quality_scorer is None
+        assert self.orchestrator.response_distiller is None
+        assert self.orchestrator.code_genetics is None
+
+    def test_step_intelligent_classification_without_ai(self):
+        """Test de classification intelligente sans modules IA"""
+        # Simuler que les modules IA ne sont pas disponibles
+        self.orchestrator.context_agent = None
+
+        blueprint = {"project_name": "test_api", "description": "Une API REST moderne"}
+
+        self.orchestrator._step_intelligent_classification(blueprint)
+
+        assert (
+            "intelligent_classification"
+            in self.orchestrator.workflow_results["steps_completed"]
+        )
+        # Le type par défaut devrait être utilisé
+        assert (
+            self.orchestrator.workflow_results["artifacts"]["project_type"] == "generic"
+        )
+
+    def test_validate_code_valid(self):
+        """Test de validation de code valide"""
+        valid_code = "print('Hello, World!')"
+        assert self.orchestrator._validate_code(valid_code) is True
+
+    def test_validate_code_invalid(self):
+        """Test de validation de code invalide"""
+        invalid_code = "print('Hello, World!'"  # Parenthèse manquante
+        assert self.orchestrator._validate_code(invalid_code) is False
+
+    @patch("athalia_core.unified_orchestrator.AI_MODULES_AVAILABLE", True)
+    @patch("builtins.open", create=True)
+    def test_step_ai_enhancement_success(self, mock_open):
+        """Test d'amélioration IA réussie"""
+        # Mock les modules IA
+        mock_unified_agent = Mock()
+        mock_unified_agent.act.return_value = "print('Enhanced code')"
+        self.orchestrator.unified_agent = mock_unified_agent
+
+        mock_quality_scorer = Mock()
+        mock_quality_scorer.score_code.return_value = 95.0
+        self.orchestrator.quality_scorer = mock_quality_scorer
+
+        # Mock le fichier main.py
+        mock_file = Mock()
+        mock_file.read.return_value = "print('Original code')"
+        mock_open.return_value.__enter__.return_value = mock_file
+
+        # Créer un projet temporaire avec src/main.py
+        project_path = Path(self.temp_dir) / "test_project"
+        project_path.mkdir()
+        src_path = project_path / "src"
+        src_path.mkdir()
+        main_file = src_path / "main.py"
+        main_file.write_text("print('Original code')")
+
+        self.orchestrator.workflow_results["artifacts"]["project_path"] = str(
+            project_path
+        )
+
+        blueprint = {"project_type": "api", "description": "Test API"}
+
+        self.orchestrator._step_ai_enhancement(blueprint)
+
+        assert "ai_enhancement" in self.orchestrator.workflow_results["steps_completed"]
+        assert "ai_enhancement" in self.orchestrator.workflow_results["artifacts"]
+
+    @patch("athalia_core.unified_orchestrator.AI_MODULES_AVAILABLE", True)
+    def test_step_ai_enhancement_no_project_path(self):
+        """Test d'amélioration IA sans chemin de projet"""
+        # Mock les modules IA
+        mock_unified_agent = Mock()
+        self.orchestrator.unified_agent = mock_unified_agent
+
+        mock_quality_scorer = Mock()
+        self.orchestrator.quality_scorer = mock_quality_scorer
+
+        # Pas de project_path dans les artifacts
+        blueprint = {"project_type": "api", "description": "Test API"}
+
+        self.orchestrator._step_ai_enhancement(blueprint)
+
+        assert "ai_enhancement" in self.orchestrator.workflow_results["steps_completed"]
+        # Aucun appel aux modules IA car pas de project_path
+        mock_unified_agent.act.assert_not_called()
+
+    @patch("athalia_core.unified_orchestrator.AI_MODULES_AVAILABLE", True)
+    def test_step_ai_enhancement_file_not_exists(self):
+        """Test d'amélioration IA avec fichier main.py inexistant"""
+        # Mock les modules IA
+        mock_unified_agent = Mock()
+        self.orchestrator.unified_agent = mock_unified_agent
+
+        mock_quality_scorer = Mock()
+        self.orchestrator.quality_scorer = mock_quality_scorer
+
+        # Créer un projet temporaire sans src/main.py
+        project_path = Path(self.temp_dir) / "test_project"
+        project_path.mkdir()
+
+        self.orchestrator.workflow_results["artifacts"]["project_path"] = str(
+            project_path
+        )
+
+        blueprint = {"project_type": "api", "description": "Test API"}
+
+        self.orchestrator._step_ai_enhancement(blueprint)
+
+        assert "ai_enhancement" in self.orchestrator.workflow_results["steps_completed"]
+        # Aucun appel aux modules IA car fichier inexistant
+        mock_unified_agent.act.assert_not_called()
+
+    @patch("athalia_core.unified_orchestrator.AI_MODULES_AVAILABLE", True)
+    @patch("builtins.open", create=True)
+    def test_step_ai_enhancement_invalid_code(self, mock_open):
+        """Test d'amélioration IA avec code invalide"""
+        # Mock les modules IA
+        mock_unified_agent = Mock()
+        mock_unified_agent.act.return_value = "invalid python code"  # Code invalide
+        self.orchestrator.unified_agent = mock_unified_agent
+
+        mock_quality_scorer = Mock()
+        self.orchestrator.quality_scorer = mock_quality_scorer
+
+        # Mock le fichier main.py
+        mock_file = Mock()
+        mock_file.read.return_value = "print('Original code')"
+        mock_open.return_value.__enter__.return_value = mock_file
+
+        # Créer un projet temporaire avec src/main.py
+        project_path = Path(self.temp_dir) / "test_project"
+        project_path.mkdir()
+        src_path = project_path / "src"
+        src_path.mkdir()
+        main_file = src_path / "main.py"
+        main_file.write_text("print('Original code')")
+
+        self.orchestrator.workflow_results["artifacts"]["project_path"] = str(
+            project_path
+        )
+
+        blueprint = {"project_type": "api", "description": "Test API"}
+
+        self.orchestrator._step_ai_enhancement(blueprint)
+
+        assert "ai_enhancement" in self.orchestrator.workflow_results["steps_completed"]
+        # Le code original devrait être conservé car le code amélioré est invalide
+        mock_quality_scorer.score_code.assert_not_called()
+
+    @patch("athalia_core.unified_orchestrator.AI_MODULES_AVAILABLE", True)
+    @patch("builtins.open", create=True)
+    def test_step_ai_enhancement_ai_error(self, mock_open):
+        """Test d'amélioration IA avec erreur de l'agent IA"""
+        # Mock les modules IA avec erreur
+        mock_unified_agent = Mock()
+        mock_unified_agent.act.side_effect = Exception("AI enhancement error")
+        self.orchestrator.unified_agent = mock_unified_agent
+
+        mock_quality_scorer = Mock()
+        self.orchestrator.quality_scorer = mock_quality_scorer
+
+        # Mock le fichier main.py
+        mock_file = Mock()
+        mock_file.read.return_value = "print('Original code')"
+        mock_open.return_value.__enter__.return_value = mock_file
+
+        # Créer un projet temporaire avec src/main.py
+        project_path = Path(self.temp_dir) / "test_project"
+        project_path.mkdir()
+        src_path = project_path / "src"
+        src_path.mkdir()
+        main_file = src_path / "main.py"
+        main_file.write_text("print('Original code')")
+
+        self.orchestrator.workflow_results["artifacts"]["project_path"] = str(
+            project_path
+        )
+
+        blueprint = {"project_type": "api", "description": "Test API"}
+
+        self.orchestrator._step_ai_enhancement(blueprint)
+
+        assert "ai_enhancement" in self.orchestrator.workflow_results["steps_completed"]
+        # L'erreur devrait être gérée et le code original conservé
+        mock_quality_scorer.score_code.assert_not_called()
+
+    def test_step_security_audit_no_auditor(self):
+        """Test d'audit de sécurité sans auditeur"""
+        self.orchestrator.security_auditor = None
+
+        self.orchestrator._step_security_audit()
+
+        # L'étape ne devrait pas être marquée comme complétée sans auditeur
+        assert (
+            "security_audit"
+            not in self.orchestrator.workflow_results["steps_completed"]
+        )
+
+    def test_step_code_linting_no_linter(self):
+        """Test de linting sans linter"""
+        self.orchestrator.code_linter = None
+
+        self.orchestrator._step_code_linting()
+
+        # L'étape ne devrait pas être marquée comme complétée sans linter
+        assert (
+            "code_linting" not in self.orchestrator.workflow_results["steps_completed"]
+        )
+
+    def test_step_correction_optimization_no_optimizer(self):
+        """Test d'optimisation sans optimiseur"""
+        self.orchestrator.correction_optimizer = None
+
+        self.orchestrator._step_correction_optimization()
+
+        # L'étape ne devrait pas être marquée comme complétée sans optimiseur
+        assert (
+            "correction_optimization"
+            not in self.orchestrator.workflow_results["steps_completed"]
+        )
+
+    def test_step_auto_testing_no_tester(self):
+        """Test de tests automatiques sans testeur"""
+        self.orchestrator.auto_tester = None
+
+        self.orchestrator._step_auto_testing()
+
+        # L'étape ne devrait pas être marquée comme complétée sans testeur
+        assert (
+            "auto_testing" not in self.orchestrator.workflow_results["steps_completed"]
+        )
+
+    def test_step_auto_documentation_no_documenter(self):
+        """Test de documentation automatique sans documenteur"""
+        self.orchestrator.auto_documenter = None
+
+        self.orchestrator._step_auto_documentation()
+
+        # L'étape ne devrait pas être marquée comme complétée sans documenteur
+        assert (
+            "auto_documentation"
+            not in self.orchestrator.workflow_results["steps_completed"]
+        )
+
+    def test_step_auto_cleaning_no_cleaner(self):
+        """Test de nettoyage automatique sans nettoyeur"""
+        self.orchestrator.auto_cleaner = None
+
+        self.orchestrator._step_auto_cleaning()
+
+        # L'étape ne devrait pas être marquée comme complétée sans nettoyeur
+        assert (
+            "auto_cleaning" not in self.orchestrator.workflow_results["steps_completed"]
+        )
+
+    def test_step_auto_cicd_no_cicd(self):
+        """Test de CI/CD automatique sans module CI/CD"""
+        self.orchestrator.auto_cicd = None
+
+        self.orchestrator._step_auto_cicd()
+
+        # L'étape ne devrait pas être marquée comme complétée sans module CI/CD
+        assert "auto_cicd" not in self.orchestrator.workflow_results["steps_completed"]
+
+    @patch("builtins.open", create=True)
+    def test_save_workflow_results_error(self, mock_open):
+        """Test de sauvegarde des résultats avec erreur"""
+        mock_open.side_effect = Exception("File error")
+
+        self.orchestrator.workflow_results["status"] = "completed"
+        self.orchestrator.save_workflow_results("test_results.json")
+
+        # L'erreur devrait être gérée silencieusement (loggée mais pas levée)
+
 
 class TestUnifiedOrchestratorIntegration:
     """Tests d'intégration pour UnifiedOrchestrator"""

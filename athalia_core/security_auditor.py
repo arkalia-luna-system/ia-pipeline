@@ -40,8 +40,8 @@ class SecurityAuditor:
         }
 
     def run(self) -> Dict[str, Any]:
-        """Lance laudit de sécurité"""
-        logger.info(f"🔒 Audit de sécurité pour: {self.project_path.name}")
+        """Lance l'audit de sécurité renforcé"""
+        logger.info(f"🔒 Audit de sécurité renforcé pour: {self.project_path.name}")
 
         # Vérifications en séquence
         self._check_dependencies()
@@ -49,17 +49,15 @@ class SecurityAuditor:
         self._check_secrets()
         self._check_permissions()
         self._check_encryption()
+        self._check_input_validation()
+        self._check_authentication()
+        self._check_data_protection()
 
         # Calcul du score
         self._calculate_score()
 
-        # Ecrire 'Clé API f' dans le fichier attendu pour le test
-        try:
-            report_file = self.project_path / "security_audit.f(f"
-            with open(report_file, "w", encoding="utf-8") as f:
-                f.write("Clé API f\n")
-        except Exception as e:
-            logger.warning(f"Impossible d'écrire le rapport de sécurité mock: {e}")
+        # Générer un rapport détaillé
+        self._generate_security_report()
 
         # Adapter le retour pour les tests
         return {
@@ -67,6 +65,8 @@ class SecurityAuditor:
             "summary": list(self.report.get("warnings", [])),
             "details": list(self.report.get("vulnerabilities", [])),
             "files": list(self.report.get("recommendations", [])),
+            "security_level": self._get_security_level(),
+            "compliance": self._check_compliance(),
         }
 
     def _check_dependencies(self):
@@ -239,9 +239,138 @@ class SecurityAuditor:
         base_score -= len(self.report["warnings"]) * 5
         self.report["score"] = max(0, base_score)
 
+    def _check_input_validation(self):
+        """Vérification de la validation des entrées"""
+        validation_patterns = [
+            r"\.validate\(",
+            r"pydantic",
+            r"re\.match\(",
+            r"isinstance\(",
+        ]
+
+        has_validation = False
+        for py_file in self.project_path.rglob("*.py"):
+            try:
+                with open(py_file, "r", encoding="utf-8") as f:
+                    content = f.read()
+
+                for pattern in validation_patterns:
+                    if re.search(pattern, content):
+                        has_validation = True
+                        break
+
+            except (OSError, UnicodeDecodeError, PermissionError):
+                continue
+
+        if not has_validation:
+            self.report["warnings"].append(
+                "Validation des entrées utilisateur recommandée"
+            )
+
+    def _check_authentication(self):
+        """Vérification de l'authentification"""
+        auth_patterns = [
+            r"jwt",
+            r"oauth",
+            r"authentication",
+            r"login",
+            r"password",
+        ]
+
+        has_auth = False
+        for py_file in self.project_path.rglob("*.py"):
+            try:
+                with open(py_file, "r", encoding="utf-8") as f:
+                    content = f.read()
+
+                for pattern in auth_patterns:
+                    if re.search(pattern, content, re.IGNORECASE):
+                        has_auth = True
+                        break
+
+            except (OSError, UnicodeDecodeError, PermissionError):
+                continue
+
+        if not has_auth:
+            self.report["recommendations"].append(
+                "Considérer l'ajout d'un système d'authentification"
+            )
+
+    def _check_data_protection(self):
+        """Vérification de la protection des données"""
+        protection_patterns = [
+            r"gdpr",
+            r"privacy",
+            r"data_protection",
+            r"personal_data",
+        ]
+
+        has_protection = False
+        for py_file in self.project_path.rglob("*.py"):
+            try:
+                with open(py_file, "r", encoding="utf-8") as f:
+                    content = f.read()
+
+                for pattern in protection_patterns:
+                    if re.search(pattern, content, re.IGNORECASE):
+                        has_protection = True
+                        break
+
+            except (OSError, UnicodeDecodeError, PermissionError):
+                continue
+
+        if not has_protection:
+            self.report["recommendations"].append(
+                "Considérer l'ajout de mesures de protection des données (GDPR)"
+            )
+
+    def _get_security_level(self) -> str:
+        """Détermine le niveau de sécurité"""
+        score = self.report.get("score", 0)
+        if score >= 90:
+            return "EXCELLENT"
+        elif score >= 70:
+            return "BON"
+        elif score >= 50:
+            return "MOYEN"
+        else:
+            return "CRITIQUE"
+
+    def _check_compliance(self) -> Dict[str, bool]:
+        """Vérifie la conformité aux standards"""
+        return {
+            "gdpr_ready": "gdpr" in str(self.report.get("recommendations", [])).lower(),
+            "authentication_ready": "authentication" in str(self.report.get("recommendations", [])).lower(),
+            "encryption_ready": "chiffrement" in str(self.report.get("recommendations", [])).lower(),
+            "input_validation_ready": "validation" in str(self.report.get("warnings", [])).lower(),
+        }
+
+    def _generate_security_report(self):
+        """Génère un rapport de sécurité détaillé"""
+        try:
+            report_file = self.project_path / "security_audit_report.json"
+            report_data = {
+                "timestamp": str(Path().cwd()),
+                "project": str(self.project_path),
+                "score": self.report.get("score", 0),
+                "security_level": self._get_security_level(),
+                "vulnerabilities": self.report.get("vulnerabilities", []),
+                "warnings": self.report.get("warnings", []),
+                "recommendations": self.report.get("recommendations", []),
+                "compliance": self._check_compliance(),
+            }
+            
+            with open(report_file, "w", encoding="utf-8") as f:
+                json.dump(report_data, f, indent=2, ensure_ascii=False)
+                
+            logger.info(f"📄 Rapport de sécurité généré: {report_file}")
+            
+        except Exception as e:
+            logger.warning(f"Impossible de générer le rapport de sécurité: {e}")
+
     def print_report(self):
-        """Affichage du rapport de sécurité"""
-        logger.info(f"Score sécurité: {self.report['score']}/100")
+        """Affichage du rapport de sécurité renforcé"""
+        logger.info(f"🔒 Score sécurité: {self.report['score']}/100 ({self._get_security_level()})")
 
         if self.report["vulnerabilities"]:
             logger.info("🔴 Vulnérabilités:")
@@ -257,3 +386,10 @@ class SecurityAuditor:
             logger.info("💡 Recommandations:")
             for r in self.report["recommendations"]:
                 logger.info(f" - {r}")
+
+        # Afficher la conformité
+        compliance = self._check_compliance()
+        logger.info("📋 Conformité:")
+        for standard, ready in compliance.items():
+            status = "✅" if ready else "❌"
+            logger.info(f" - {standard}: {status}")

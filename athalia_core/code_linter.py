@@ -33,27 +33,33 @@ class CodeLinter:
         self.report = {"errors": [], "warnings": [], "fixes": [], "score": 0}
 
     def run(self) -> Dict[str, Any]:
-        """Lance lanalyse de qualité du projet"""
-        logger.info(f"📏 Analyse de qualité pour: {self.project_path.name}")
+        """Lance l'analyse de qualité renforcée du projet"""
+        logger.info(f"📏 Analyse de qualité renforcée pour: {self.project_path.name}")
 
         # Analyses en séquence
-        self._run_flake8()
+        self._run_ruff()
         self._run_black()
         self._run_isort()
         self._run_mypy()
         self._run_bandit()
+        self._run_complexity_analysis()
+        self._run_documentation_check()
+        self._run_test_coverage()
 
         # Calcul du score
         self._calculate_score()
 
+        # Générer un rapport détaillé
+        self._generate_quality_report()
+
         return self.report
 
-    def _run_flake8(self):
-        """Exécution de Flake8"""
+    def _run_ruff(self):
+        """Exécution de Ruff (remplace Flake8)"""
         try:
-            # Utilisation du validateur de sécurité pour l'appel flake8
+            # Utilisation du validateur de sécurité pour l'appel ruff
             result = validate_and_run(
-                ["flake8", str(self.project_path), "--max-line-length=120"],
+                ["ruff", "check", str(self.project_path), "--output-format=text"],
                 capture_output=True,
                 text=True,
                 timeout=30,
@@ -62,10 +68,10 @@ class CodeLinter:
             if result.stdout:
                 for line in result.stdout.split("\n"):
                     if line.strip():
-                        self.report["errors"].append(f"Flake8: {line}")
+                        self.report["errors"].append(f"Ruff: {line}")
 
         except (Exception, SecurityError) as e:
-            self.report["errors"].append(f"Flake8 non exécuté: {e}")
+            self.report["errors"].append(f"Ruff non exécuté: {e}")
 
     def _run_black(self):
         """Exécution de Black"""
@@ -147,9 +153,137 @@ class CodeLinter:
         base_score -= len(self.report["fixes"]) * 2
         self.report["score"] = max(0, base_score)
 
+    def _run_complexity_analysis(self):
+        """Analyse de la complexité cyclomatique"""
+        try:
+            result = validate_and_run(
+                ["radon", "cc", str(self.project_path), "-a"],
+                capture_output=True,
+                text=True,
+                timeout=30,
+            )
+
+            if result.stdout:
+                lines = result.stdout.split("\n")
+                complex_functions = []
+                for line in lines:
+                    if "F" in line and "(" in line:
+                        parts = line.split()
+                        if len(parts) >= 3:
+                            complexity = int(parts[1])
+                            if complexity > 10:
+                                complex_functions.append(f"{parts[0]} (complexité: {complexity})")
+                
+                if complex_functions:
+                    self.report["warnings"].append(f"Fonctions complexes détectées: {', '.join(complex_functions[:3])}")
+
+        except (Exception, SecurityError) as e:
+            self.report["warnings"].append(f"Analyse de complexité non exécutée: {e}")
+
+    def _run_documentation_check(self):
+        """Vérification de la documentation"""
+        doc_patterns = [
+            r'"""[^"]*"""',
+            r"'''[^']*'''",
+            r"#.*",
+        ]
+        
+        total_functions = 0
+        documented_functions = 0
+        
+        for py_file in self.project_path.rglob("*.py"):
+            try:
+                with open(py_file, "r", encoding="utf-8") as f:
+                    content = f.read()
+                
+                # Compter les fonctions
+                import re
+                functions = re.findall(r'def\s+\w+', content)
+                total_functions += len(functions)
+                
+                # Vérifier la documentation
+                for pattern in doc_patterns:
+                    if re.search(pattern, content):
+                        documented_functions += 1
+                        break
+                        
+            except (OSError, UnicodeDecodeError):
+                continue
+        
+        if total_functions > 0:
+            doc_coverage = (documented_functions / total_functions) * 100
+            if doc_coverage < 70:
+                self.report["warnings"].append(f"Couverture documentation faible: {doc_coverage:.1f}%")
+
+    def _run_test_coverage(self):
+        """Vérification de la couverture de tests"""
+        try:
+            result = validate_and_run(
+                ["coverage", "run", "-m", "pytest", str(self.project_path)],
+                capture_output=True,
+                text=True,
+                timeout=60,
+            )
+            
+            if result.returncode == 0:
+                result = validate_and_run(
+                    ["coverage", "report"],
+                    capture_output=True,
+                    text=True,
+                    timeout=30,
+                )
+                
+                if result.stdout:
+                    for line in result.stdout.split("\n"):
+                        if "TOTAL" in line:
+                            parts = line.split()
+                            if len(parts) >= 4:
+                                coverage = int(parts[3].replace("%", ""))
+                                if coverage < 80:
+                                    self.report["warnings"].append(f"Couverture de tests faible: {coverage}%")
+                                break
+
+        except (Exception, SecurityError) as e:
+            self.report["warnings"].append(f"Vérification couverture non exécutée: {e}")
+
+    def _generate_quality_report(self):
+        """Génère un rapport de qualité détaillé"""
+        try:
+            import json
+            report_file = self.project_path / "quality_report.json"
+            report_data = {
+                "timestamp": str(Path().cwd()),
+                "project": str(self.project_path),
+                "score": self.report.get("score", 0),
+                "errors": self.report.get("errors", []),
+                "warnings": self.report.get("warnings", []),
+                "fixes": self.report.get("fixes", []),
+                "quality_level": self._get_quality_level(),
+            }
+            
+            with open(report_file, "w", encoding="utf-8") as f:
+                json.dump(report_data, f, indent=2, ensure_ascii=False)
+                
+            logger.info(f"📄 Rapport de qualité généré: {report_file}")
+            
+        except Exception as e:
+            logger.warning(f"Impossible de générer le rapport de qualité: {e}")
+
+    def _get_quality_level(self) -> str:
+        """Détermine le niveau de qualité"""
+        score = self.report.get("score", 0)
+        if score >= 90:
+            return "EXCELLENT"
+        elif score >= 70:
+            return "BON"
+        elif score >= 50:
+            return "MOYEN"
+        else:
+            return "CRITIQUE"
+
     def print_report(self):
-        """Affichage du rapport de linting"""
-        logger.info(f"Score qualité: {self.report['score']}/100")
+        """Affichage du rapport de linting renforcé"""
+        logger.info(f"📏 Score qualité: {self.report['score']}/100 ({self._get_quality_level()})")
 
         if self.report["errors"]:
             logger.info("🔴 Erreurs:")
@@ -165,3 +299,6 @@ class CodeLinter:
             logger.info("🛠️ Corrections suggérées:")
             for fix in self.report["fixes"]:
                 logger.info(f" - {fix}")
+
+        # Afficher le niveau de qualité
+        logger.info(f"📊 Niveau de qualité: {self._get_quality_level()}")
