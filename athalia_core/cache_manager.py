@@ -38,7 +38,7 @@ class CacheManager:
             "project_type": blueprint.get("project_type", ""),
             "version": "1.0",  # Version du cache
         }
-        
+
         # Générer un hash SHA-256
         key_string = json.dumps(key_data, sort_keys=True)
         return hashlib.sha256(key_string.encode()).hexdigest()[:16]
@@ -46,17 +46,17 @@ class CacheManager:
     def get(self, blueprint: Dict[str, Any]) -> Optional[Dict[str, Any]]:
         """Récupère un résultat du cache"""
         self.stats["total_requests"] += 1
-        
+
         try:
             cache_key = self._generate_cache_key(blueprint)
             cache_file = self.cache_dir / f"{cache_key}.pkl"
-            
+
             if cache_file.exists():
                 # Vérifier l'âge du cache (max 24h)
                 if time.time() - cache_file.stat().st_mtime < 86400:
                     with open(cache_file, "rb") as f:
                         cached_result = pickle.load(f)
-                    
+
                     self.stats["hits"] += 1
                     logger.info(f"✅ Cache hit: {cache_key}")
                     return cached_result
@@ -64,11 +64,11 @@ class CacheManager:
                     # Cache expiré, le supprimer
                     cache_file.unlink()
                     logger.info(f"🗑️ Cache expiré supprimé: {cache_key}")
-            
+
             self.stats["misses"] += 1
             logger.info(f"❌ Cache miss: {cache_key}")
             return None
-            
+
         except Exception as e:
             logger.warning(f"⚠️ Erreur lors de la récupération du cache: {e}")
             self.stats["misses"] += 1
@@ -79,15 +79,15 @@ class CacheManager:
         try:
             cache_key = self._generate_cache_key(blueprint)
             cache_file = self.cache_dir / f"{cache_key}.pkl"
-            
+
             # Sauvegarder le résultat
             with open(cache_file, "wb") as f:
                 pickle.dump(result, f)
-            
+
             self.stats["saves"] += 1
             logger.info(f"💾 Cache sauvegardé: {cache_key}")
             return True
-            
+
         except Exception as e:
             logger.warning(f"⚠️ Erreur lors de la sauvegarde du cache: {e}")
             return False
@@ -97,20 +97,18 @@ class CacheManager:
         try:
             for cache_file in self.cache_dir.glob("*.pkl"):
                 cache_file.unlink()
-            
+
             logger.info("🧹 Cache vidé")
             return True
-            
+
         except Exception as e:
             logger.warning(f"⚠️ Erreur lors du vidage du cache: {e}")
             return False
 
     def get_stats(self) -> Dict[str, Any]:
         """Retourne les statistiques du cache"""
-        hit_rate = (
-            self.stats["hits"] / max(self.stats["total_requests"], 1) * 100
-        )
-        
+        hit_rate = self.stats["hits"] / max(self.stats["total_requests"], 1) * 100
+
         return {
             **self.stats,
             "hit_rate": round(hit_rate, 2),
@@ -123,17 +121,19 @@ class CacheManager:
         try:
             current_time = time.time()
             removed_count = 0
-            
+
             for cache_file in self.cache_dir.glob("*.pkl"):
                 if current_time - cache_file.stat().st_mtime > 86400:  # 24h
                     cache_file.unlink()
                     removed_count += 1
-            
+
             if removed_count > 0:
-                logger.info(f"🧹 Cache optimisé: {removed_count} entrées expirées supprimées")
-            
+                logger.info(
+                    f"🧹 Cache optimisé: {removed_count} entrées expirées supprimées"
+                )
+
             return True
-            
+
         except Exception as e:
             logger.warning(f"⚠️ Erreur lors de l'optimisation du cache: {e}")
             return False
