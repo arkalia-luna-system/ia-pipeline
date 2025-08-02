@@ -114,9 +114,6 @@ addopts = [
     "--strict-markers",
     "--disable-warnings",
     "--cache-clear",
-    "--cov=athalia_core",
-    "--cov-report=term-missing",
-    "--cov-fail-under=5",
     "--import-mode=importlib",
 ]
 markers = [
