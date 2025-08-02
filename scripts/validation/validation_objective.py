@@ -641,17 +641,15 @@ def main() -> int:
 
     try:
         resultats = validator.validation_complete()
-        rapport_file = validator.generer_rapport_objectif(
-            resultats, resultats["temps_total"]
-        )
-
+        validator.generer_rapport_objectif(resultats, resultats["temps_total"])
+        
         if resultats["validation_reussie"]:
             print("🎉 Validation objective RÉUSSIE !")
             return 0
         else:
             print("❌ Validation objective ÉCHOUÉE !")
             return 1
-
+            
     except Exception as e:
         print(f"💥 Erreur critique: {str(e)}")
         return 2
