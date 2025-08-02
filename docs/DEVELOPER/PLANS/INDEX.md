@@ -12,6 +12,9 @@
 - **[PLAN_ACTION_COUVERTURE_2025.md](PLAN_ACTION_COUVERTURE_2025.md)** - Plan d'amélioration de la couverture de tests
 - **[PLAN_CORRECTION_TESTS_2025.md](PLAN_CORRECTION_TESTS_2025.md)** - Plan de correction des tests existants
 
+### **🧹 Nettoyage et Optimisation**
+- **[NETTOYAGE_REPOSITORY_PLAN.md](NETTOYAGE_REPOSITORY_PLAN.md)** - **CRITIQUE** - Nettoyage complet du repository (11GB → 2-3GB)
+
 ### **⚡ Performance et Optimisation**
 - **[OPTIMISATION_TESTS_RAM_2025.md](OPTIMISATION_TESTS_RAM_2025.md)** - Optimisation de la RAM pour les tests
 - **[REORGANISATION_TESTS_STRUCTURE.md](REORGANISATION_TESTS_STRUCTURE.md)** - Structure optimisée des tests
@@ -21,7 +24,8 @@
 ## 📊 **PRIORITÉS**
 
 ### **🔥 CRITIQUE (À exécuter immédiatement)**
-1. **[REORGANISATION_TESTS_PLAN.md](REORGANISATION_TESTS_PLAN.md)** - Réorganisation complète des tests
+1. **[NETTOYAGE_REPOSITORY_PLAN.md](NETTOYAGE_REPOSITORY_PLAN.md)** - Nettoyage complet du repository
+2. **[REORGANISATION_TESTS_PLAN.md](REORGANISATION_TESTS_PLAN.md)** - Réorganisation complète des tests
 
 ### **⚡ HAUTE (À exécuter cette semaine)**
 2. **[PLAN_ACTION_COUVERTURE_2025.md](PLAN_ACTION_COUVERTURE_2025.md)** - Amélioration de la couverture
@@ -34,6 +38,10 @@
 ---
 
 ## 📈 **PROGRESSION GLOBALE**
+
+### **Nettoyage et Optimisation :** 20% ⚠️
+- ✅ Plan de nettoyage créé
+- 🔄 Nettoyage en attente d'exécution
 
 ### **Tests et Qualité :** 60% ✅
 - ✅ Plan de réorganisation créé
@@ -56,6 +64,8 @@
 ### **Q3 2025 :**
 - [x] Analyser l'état actuel des tests
 - [x] Créer les plans de réorganisation
+- [x] Créer le plan de nettoyage du repository
+- [ ] Exécuter le nettoyage complet du repository
 - [ ] Exécuter la réorganisation complète
 - [ ] Améliorer la couverture de tests
 
@@ -70,22 +80,25 @@
 ## 📝 **NOTES IMPORTANTES**
 
 ### **Dépendances :**
+- Le nettoyage du repository est **prérequis** pour toutes les optimisations
 - La réorganisation des tests est **prérequis** pour les autres optimisations
 - Tous les plans doivent être exécutés dans l'ordre de priorité
 - Tests fréquents requis pendant les migrations
 
 ### **Risques :**
+- Nettoyage complexe avec 11GB de données et 2,628 fichiers parasites
 - Migration complexe avec 181 fichiers de test
 - Risque de casser les tests pendant la réorganisation
 - Temps d'exécution des tests peut être modifié
 
 ### **Mitigations :**
 - Sauvegarde complète avant chaque migration
+- Branches de sécurité pour le nettoyage
 - Tests fréquents pendant les changements
 - Branches dédiées pour chaque plan
 - Documentation détaillée des changements
 
 ---
 
-**Dernière mise à jour :** 31 Juillet 2025  
-**Prochaine révision :** 7 Août 2025 
+**Dernière mise à jour :** 2 Août 2025  
+**Prochaine révision :** 9 Août 2025 
