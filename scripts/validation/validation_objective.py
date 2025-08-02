@@ -58,7 +58,7 @@ if __name__ == "__main__":
             )
 
         cmd = (
-            f"python scripts/athalia_unified.py {projet_test} --action complete"
+            f"python bin/athalia_unified.py {projet_test} --action complete"
             " --auto-fix"
         )
 
@@ -210,7 +210,7 @@ def fonction_syntaxe():
         # Test avec fichier inexistant
         cmd = [
             "python",
-            "scripts/athalia_unified.py",
+            "bin/athalia_unified.py",
             "--audit",
             "/fichier/inexistant/qui/n/existe/pas",
         ]
@@ -228,7 +228,7 @@ def fonction_syntaxe():
         with open(fichier_vide, "w") as f:
             f.write("")
 
-        cmd = ["python", "scripts/athalia_unified.py", "--audit", fichier_vide]
+        cmd = ["python", "bin/athalia_unified.py", "--audit", fichier_vide]
         result = validate_and_run(cmd)
         tests_robustesse.append(
             {
@@ -245,7 +245,7 @@ def fonction_syntaxe():
 
         cmd = [
             "python",
-            "scripts/athalia_unified.py",
+            "bin/athalia_unified.py",
             "--audit",
             fichier_syntaxe_invalide,
         ]
@@ -290,7 +290,7 @@ if __name__ == "__main__":
 
         cmd = [
             "python",
-            "scripts/athalia_unified.py",
+            "bin/athalia_unified.py",
             projet_benchmark,
             "--action",
             "complete",
@@ -343,7 +343,7 @@ if __name__ == "__main__":
 """
             )
 
-        cmd = f"python scripts/athalia_unified.py {projet_qualite} --action complete"
+        cmd = f"python bin/athalia_unified.py {projet_qualite} --action complete"
 
         result = subprocess.run(
             cmd, shell=True, capture_output=True, text=True, timeout=60
