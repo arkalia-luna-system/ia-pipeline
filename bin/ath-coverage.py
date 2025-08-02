@@ -24,11 +24,12 @@ def main():
         "--version", action="version", version="ath-coverage.py version 1.0.0"
     )
     args = parser.parse_args()
-    cmd = ["pytest", "--ignore=tests/bin/"]
+    cmd = ["pytest", "--ignore=tests/bin/", "--cov=athalia_core"]
     if args.html:
         cmd.append("--cov-report=html")
     else:
         cmd.append("--cov-report=term-missing")
+    cmd.append("--cov-fail-under=75")
     env = os.environ.copy()
     env["ATHALIA_COVERAGE_RUNNING"] = "1"
     result = validate_and_run(cmd, check=False, env=env)

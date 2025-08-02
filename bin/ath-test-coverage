@@ -28,9 +28,10 @@ rm -f .coverage* 2>/dev/null || true
 # Test de couverture avec timeout
 echo "🔍 Test de couverture en cours..."
 timeout 600 python -m pytest \
-    
+    --cov=athalia_core \
     --cov-report=term-missing \
     --cov-report=html:htmlcov \
+    --cov-fail-under=75 \
     --tb=no \
     -q \
     --no-cov-on-fail \
