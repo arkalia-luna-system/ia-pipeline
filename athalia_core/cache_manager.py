@@ -77,6 +77,9 @@ class CacheManager:
     def set(self, blueprint: Dict[str, Any], result: Dict[str, Any]) -> bool:
         """Sauvegarde un résultat dans le cache"""
         try:
+            # S'assurer que le répertoire existe
+            self.cache_dir.mkdir(exist_ok=True, parents=True)
+
             cache_key = self._generate_cache_key(blueprint)
             cache_file = self.cache_dir / f"{cache_key}.pkl"
 
@@ -147,7 +150,11 @@ def get_cache_manager() -> CacheManager:
     """Retourne l'instance globale du cache manager"""
     global _cache_manager
     if _cache_manager is None:
-        _cache_manager = CacheManager()
+        # Utiliser un chemin absolu pour le cache
+        import os
+
+        cache_dir = os.path.join(os.getcwd(), ".athalia_cache")
+        _cache_manager = CacheManager(cache_dir)
     return _cache_manager
 
 
