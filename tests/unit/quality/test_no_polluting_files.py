@@ -462,6 +462,15 @@ class TestNoPollutingFiles:
             "./blueprints_history",  # Historique des blueprints normal
             "./archive/performance_data",  # Données de performance normales
             "./athalia_core/docs",  # Documentation athalia_core (peut être vide)
+            # Répertoires des projets générés par Athalia (normaux)
+            "./app-visuelle/interface_web_graphique/docs",  # Docs projet généré
+            "./app-visuelle/labyrinthe_pygame/docs",  # Docs projet généré
+            "./app-visuelle/app-visuelle",  # Projet généré
+            "./app-visuelle/animé_pygame/docs",  # Docs projet généré
+            "./app-visuelle/projet_fleur/docs",  # Docs projet généré
+            "./athalia_showcase/logs/archive",  # Archive logs projet généré
+            "./athalia_showcase/api_ultra_test/docs",  # Docs projet généré
+            "./athalia_showcase/jeu_ultra_test/docs",  # Docs projet généré
         }
 
         # Filtrer les répertoires autorisés
