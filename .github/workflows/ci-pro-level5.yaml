@@ -102,7 +102,7 @@ jobs:
       - name: Memory profiling
         run: |
           echo "🧠 Running memory profiling..."
-          python -m pytest tests/performance/test_performance_optimization.py -v
+          python -m pytest tests/performance/test_performance_optimization.py -v --cov=athalia_core --cov-report=term-missing --cov-fail-under=5
 
       - name: Performance tests
         run: |

@@ -123,10 +123,10 @@ jobs:
         run: |
           python -m pytest tests/ --tb=short -x --maxfail=10 --timeout=60 --durations=10 --cov=athalia_core --cov-report=term-missing --cov-fail-under=5
 
-      - name: Run bin tests without coverage
+      - name: Run bin tests with coverage
         timeout-minutes: 10
         run: |
-          python -m pytest tests/bin/ -v --no-cov --tb=short
+          python -m pytest tests/bin/ -v --cov=athalia_core --cov-report=term-missing --cov-fail-under=5 --tb=short
 
       # Vérifications de base
       - name: Syntax check
