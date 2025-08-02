@@ -115,7 +115,6 @@ addopts = [
     "--cov=athalia_core",
     "--cov-report=term-missing",
     "--cov-fail-under=75",
-    "--timeout=60",
 ]
 markers = [
     "fast: marks tests as fast (deselect with '-m \"not fast\"')",
