@@ -26,6 +26,7 @@ logger = logging.getLogger(__name__)
 # Imports des modules avancés
 try:
     from .advanced_modules.auto_correction_advanced import AutoCorrectionAvancee
+
     ADVANCED_MODULES_AVAILABLE = True
 except ImportError:
     ADVANCED_MODULES_AVAILABLE = False
@@ -77,7 +78,7 @@ class UnifiedOrchestrator:
         self.quality_scorer = None
         self.response_distiller = None
         self.code_genetics = None
-        
+
         # Initialiser les modules avancés
         self.auto_correction_advanced = None
 
@@ -110,7 +111,9 @@ class UnifiedOrchestrator:
             # Modules avancés (si disponibles)
             if ADVANCED_MODULES_AVAILABLE:
                 try:
-                    self.auto_correction_advanced = AutoCorrectionAvancee(str(self.project_path))
+                    self.auto_correction_advanced = AutoCorrectionAvancee(
+                        str(self.project_path)
+                    )
                     logger.info("✅ Modules avancés initialisés")
                 except Exception as e:
                     logger.warning(f"⚠️ Erreur initialisation modules avancés: {e}")
@@ -305,38 +308,51 @@ class UnifiedOrchestrator:
         try:
             if ADVANCED_MODULES_AVAILABLE and self.auto_correction_advanced:
                 # Lancer l'auto-correction avancée
-                resultats = self.auto_correction_advanced.analyser_et_corriger(dry_run=False)
-                
+                resultats = self.auto_correction_advanced.analyser_et_corriger(
+                    dry_run=False
+                )
+
                 # Enregistrer les résultats
-                self.workflow_results["steps_completed"].append("advanced_auto_correction")
-                self.workflow_results["artifacts"]["auto_correction_results"] = resultats
-                
+                self.workflow_results["steps_completed"].append(
+                    "advanced_auto_correction"
+                )
+                self.workflow_results["artifacts"][
+                    "auto_correction_results"
+                ] = resultats
+
                 # Afficher les statistiques
                 corrections_count = len(resultats.get("corrections_appliquees", []))
                 suggestions_count = len(resultats.get("suggestions", []))
                 fichiers_traites = resultats.get("fichiers_traites", 0)
-                
+
                 logger.info(f"✅ Auto-correction avancée terminée:")
                 logger.info(f"  - Fichiers traités: {fichiers_traites}")
                 logger.info(f"  - Corrections appliquées: {corrections_count}")
                 logger.info(f"  - Suggestions: {suggestions_count}")
-                
+
                 # Générer un rapport détaillé
                 if resultats.get("corrections_appliquees"):
                     rapport_file = self.project_path / "auto_correction_report.json"
                     try:
                         import json
+
                         with open(rapport_file, "w", encoding="utf-8") as f:
                             json.dump(resultats, f, indent=2, ensure_ascii=False)
-                        logger.info(f"📄 Rapport d'auto-correction généré: {rapport_file}")
+                        logger.info(
+                            f"📄 Rapport d'auto-correction généré: {rapport_file}"
+                        )
                     except Exception as e:
                         logger.warning(f"Impossible de générer le rapport: {e}")
             else:
                 logger.info("⚠️ Module d'auto-correction avancée non disponible")
-                self.workflow_results["steps_completed"].append("advanced_auto_correction_skipped")
+                self.workflow_results["steps_completed"].append(
+                    "advanced_auto_correction_skipped"
+                )
 
         except Exception as e:
-            self.workflow_results["warnings"].append(f"Erreur auto-correction avancée: {e}")
+            self.workflow_results["warnings"].append(
+                f"Erreur auto-correction avancée: {e}"
+            )
             logger.warning(f"⚠️ Erreur auto-correction avancée: {e}")
 
     def _validate_code(self, code: str) -> bool:

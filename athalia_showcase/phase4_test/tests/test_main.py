@@ -1,18 +1,15 @@
-import sys
-import os
-
-
-import unittest
-            from main import main
-            import main
 #!/usr/bin/env python3
 """
 Tests pour phase4_test
 """
 
+import sys
+import os
+import unittest
 
 # Ajouter le répertoire src au path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
+
 
 class TestPhase4Test(unittest.TestCase):
     """Tests pour phase4_test"""
@@ -32,6 +29,8 @@ class TestPhase4Test(unittest.TestCase):
     def test_main_function(self):
         """Test de la fonction main"""
         try:
+            from main import main
+
             self.assertTrue(True)
         except ImportError as e:
             self.fail(f"Impossible d'importer le module main: {e}")
@@ -39,9 +38,12 @@ class TestPhase4Test(unittest.TestCase):
     def test_import(self):
         """Test d'import du module principal"""
         try:
+            import main
+
             self.assertTrue(True)
         except ImportError as e:
             self.fail(f"Impossible d'importer le module main: {e}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
