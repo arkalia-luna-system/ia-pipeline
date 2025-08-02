@@ -215,6 +215,9 @@ cache/
 .pytest_cache/
 .ruff_cache/
 
+# Showcase projects (temporarily ignored)
+athalia_showcase/
+
 # Large files
 athalia.f(f
 *.f(f
