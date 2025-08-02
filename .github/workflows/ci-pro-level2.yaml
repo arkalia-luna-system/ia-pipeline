@@ -71,8 +71,8 @@ jobs:
       - name: Security tests
         run: |
           echo "🧪 Running security tests..."
-          python -m pytest tests/test_security_patterns.py -v
-          python -m pytest tests/test_security_comprehensive.py -v
+          python -m pytest tests/unit/security/test_security_patterns.py -v
+          python -m pytest tests/unit/security/test_security_comprehensive.py -v
 
       - name: Upload security reports
         uses: actions/upload-artifact@v4
