@@ -9,7 +9,7 @@ Version 2.0.0
 from .advanced_analytics import AdvancedAnalytics
 
 # IA et génération
-from .ai_robust import RobustAI
+# from .ai_robust import RobustAI  # Import conditionnel pour éviter les dépendances
 from .auto_cicd import AutoCICD
 from .auto_cleaner import AutoCleaner
 from .auto_documenter import AutoDocumenter
@@ -60,7 +60,7 @@ __all__ = [
     "handle_error",
     "raise_athalia_error",
     # IA et génération
-    "RobustAI",
+    # "RobustAI",  # Import conditionnel
     "generate_project",
     "generate_blueprint_mock",
     # Modules automatiques
