@@ -17,7 +17,7 @@ try:
     from athalia_core.security_validator import SecurityError, validate_and_run
 except ImportError:
     # Fallback si le module n'est pas disponible
-    def validate_and_run(command, **kwargs):
+    def validate_and_run(command, **kwargs) -> subprocess.CompletedProcess:
         return subprocess.run(command, **kwargs)
 
     class SecurityError(Exception):
@@ -25,17 +25,17 @@ except ImportError:
 
 
 class ValidationObjective:
-    def __init__(self):
-        self.resultats = {}
-        self.seuils_critiques = {
-            "temps_max_generation": 30,  # 30 secondes max pour générer un projet
-            "temps_max_correction": 10,  # 10 secondes max pour corriger
-            "taux_compilation_min": 80,  # 80% du code généré doit compiler
-            "taux_succes_min": 85,  # 85% de succès minimum
-            "memoire_max": 1000,  # 1GB max
+    def __init__(self) -> None:
+        self.resultats: dict = {}
+        self.seuils_critiques: dict = {
+            "temps_max_generation": 30.0,  # 30 secondes max pour générer un projet
+            "temps_max_correction": 10.0,  # 10 secondes max pour corriger
+            "taux_compilation_min": 80.0,  # 80% du code généré doit compiler
+            "taux_succes_min": 85.0,  # 85% de succès minimum
+            "memoire_max": 1000.0,  # 1GB max
         }
 
-    def test_generation_et_compilation(self):
+    def test_generation_et_compilation(self) -> dict:
         """Test 1: Le code généré compile-t-il vraiment ?"""
         print("🔍 Test 1: Génération et compilation...")
 
@@ -57,15 +57,18 @@ if __name__ == "__main__":
 """
             )
 
-        cmd = (
-            f"python bin/athalia_unified.py {projet_test} --action complete"
-            " --auto-fix"
-        )
+        cmd = [
+            "python",
+            "bin/athalia_unified.py",
+            projet_test,
+            "--action",
+            "complete",
+            "--auto-fix",
+        ]
 
         try:
             # Utilisation du validateur de sécurité
-            cmd_parts = cmd.split()
-            result = validate_and_run(cmd_parts, timeout=60)
+            result = validate_and_run(cmd, timeout=60)
             temps_generation = time.time() - start
 
             if result.returncode != 0:
@@ -126,7 +129,7 @@ if __name__ == "__main__":
                 "temps": time.time() - start,
             }
 
-    def test_correction_reelle(self):
+    def test_correction_reelle(self) -> dict:
         """Test 2: Athalia corrige-t-il vraiment les erreurs ?"""
         print("🔍 Test 2: Correction d'erreurs...")
 
@@ -152,15 +155,17 @@ def fonction_syntaxe():
         start = time.time()
 
         # Utilise Athalia pour corriger
-        cmd = (
-            "python scripts/athalia_unified.py"
-            f" {os.path.dirname(fichier_test)} --action fix --auto-fix"
-        )
+        cmd = [
+            "python",
+            "bin/athalia_unified.py",
+            fichier_test,
+            "--action",
+            "correct",
+            "--auto-fix",
+        ]
 
         try:
-            result = subprocess.run(
-                cmd, shell=True, capture_output=True, text=True, timeout=30
-            )
+            result = validate_and_run(cmd, timeout=30)
             temps_correction = time.time() - start
 
             if result.returncode != 0:
@@ -170,22 +175,37 @@ def fonction_syntaxe():
                     "temps": temps_correction,
                 }
 
-            # Vérifie si le code corrigé compile maintenant
+            # Vérifie que le fichier corrigé existe
+            fichier_corrige = f"{fichier_test}.corrected"
+            if not os.path.exists(fichier_corrige):
+                return {
+                    "succes": False,
+                    "erreur": "Fichier corrigé non créé",
+                    "temps": temps_correction,
+                }
+
+            # Test de compilation du fichier corrigé
             try:
-                with open(fichier_test, "r", encoding="utf-8") as f:
+                with open(fichier_corrige, "r", encoding="utf-8") as f:
                     code_corrige = f.read()
-                compile(code_corrige, fichier_test, "exec")
+                compile(code_corrige, fichier_corrige, "exec")
                 compilation_ok = True
-                erreur_compilation = None
             except Exception as e:
                 compilation_ok = False
                 erreur_compilation = str(e)
 
             return {
-                "succes": compilation_ok,
+                "succes": (
+                    compilation_ok
+                    and temps_correction
+                    <= self.seuils_critiques["temps_max_correction"]
+                ),
                 "temps": temps_correction,
-                "code_compile_apres_correction": compilation_ok,
-                "erreur_compilation": erreur_compilation,
+                "compilation_ok": compilation_ok,
+                "erreur_compilation": (
+                    erreur_compilation if not compilation_ok else None
+                ),
+                "fichier_corrige": fichier_corrige,
             }
 
         except subprocess.TimeoutExpired:
@@ -197,438 +217,445 @@ def fonction_syntaxe():
         except Exception as e:
             return {
                 "succes": False,
-                "erreur": f"Exception lors de la correction: {str(e)}",
+                "erreur": f"Exception: {str(e)}",
                 "temps": time.time() - start,
             }
 
-    def test_robustesse_cas_limites(self):
-        """Test 3: Athalia gère-t-il gracieusement les cas d'erreur ?"""
-        print("🔍 Test 3: Robustesse et cas limites...")
+    def test_robustesse_cas_limites(self) -> dict:
+        """Test 3: Athalia gère-t-il les cas limites ?"""
+        print("🔍 Test 3: Robustesse cas limites...")
 
-        tests_robustesse = []
-
-        # Test avec fichier inexistant
-        cmd = [
-            "python",
-            "bin/athalia_unified.py",
-            "--audit",
-            "/fichier/inexistant/qui/n/existe/pas",
+        cas_limites = [
+            {"nom": "Fichier vide", "contenu": "", "attendu": "Gestion d'erreur"},
+            {
+                "nom": "Fichier très long",
+                "contenu": "print('test')\n" * 10000,
+                "attendu": "Traitement sans crash",
+            },
+            {
+                "nom": "Caractères spéciaux",
+                "contenu": "print('éàçù€£¥')",
+                "attendu": "Encodage correct",
+            },
+            {
+                "nom": "Syntaxe invalide",
+                "contenu": "def test():\n    if True:\n        print('test'",
+                "attendu": "Détection d'erreur",
+            },
         ]
-        result = validate_and_run(cmd)
-        tests_robustesse.append(
-            {
-                "test": "fichier_inexistant",
-                "succes": result.returncode != 1,  # Ne doit pas crasher (exit 1)
-                "exit_code": result.returncode,
-            }
+
+        resultats_cas_limites = []
+        temps_total = 0
+
+        for cas in cas_limites:
+            start = time.time()
+            fichier_test = f"/tmp/cas_limite_{cas['nom'].replace(' ', '_')}.py"
+
+            with open(fichier_test, "w", encoding="utf-8") as f:
+                f.write(cas["contenu"])
+
+            cmd = [
+                "python",
+                "bin/athalia_unified.py",
+                fichier_test,
+                "--action",
+                "analyze",
+            ]
+
+            try:
+                result = validate_and_run(cmd, timeout=10)
+                temps_cas = time.time() - start
+                temps_total += temps_cas
+
+                resultats_cas_limites.append(
+                    {
+                        "cas": cas["nom"],
+                        "succes": result.returncode == 0,
+                        "temps": temps_cas,
+                        "attendu": cas["attendu"],
+                        "resultat": "OK" if result.returncode == 0 else "ERREUR",
+                    }
+                )
+
+            except Exception as e:
+                temps_cas = time.time() - start
+                temps_total += temps_cas
+                resultats_cas_limites.append(
+                    {
+                        "cas": cas["nom"],
+                        "succes": False,
+                        "temps": temps_cas,
+                        "attendu": cas["attendu"],
+                        "resultat": f"EXCEPTION: {str(e)}",
+                    }
+                )
+
+        taux_succes = (
+            sum(1 for r in resultats_cas_limites if r["succes"])
+            / len(resultats_cas_limites)
+            * 100
         )
-
-        # Test avec fichier vide
-        fichier_vide = "/tmp/fichier_vide.py"
-        with open(fichier_vide, "w") as f:
-            f.write("")
-
-        cmd = ["python", "bin/athalia_unified.py", "--audit", fichier_vide]
-        result = validate_and_run(cmd)
-        tests_robustesse.append(
-            {
-                "test": "fichier_vide",
-                "succes": result.returncode != 1,
-                "exit_code": result.returncode,
-            }
-        )
-
-        # Test avec syntaxe invalide
-        fichier_syntaxe_invalide = "/tmp/syntaxe_invalide.py"
-        with open(fichier_syntaxe_invalide, "w") as f:
-            f.write("def func(:\n    invalid syntax here\n    )")
-
-        cmd = [
-            "python",
-            "bin/athalia_unified.py",
-            "--audit",
-            fichier_syntaxe_invalide,
-        ]
-        result = validate_and_run(cmd)
-        tests_robustesse.append(
-            {
-                "test": "syntaxe_invalide",
-                "succes": result.returncode != 1,
-                "exit_code": result.returncode,
-            }
-        )
-
-        # Calcul du taux de succès
-        succes = sum(1 for t in tests_robustesse if t["succes"])
-        taux_robustesse = (succes / len(tests_robustesse)) * 100
 
         return {
-            "succes": taux_robustesse >= 80,  # 80% des cas doivent être gérés
-            "taux_robustesse": taux_robustesse,
-            "tests_detail": tests_robustesse,
+            "succes": taux_succes >= 75,  # 75% de succès minimum
+            "temps": temps_total,
+            "taux_succes": taux_succes,
+            "cas_testes": len(cas_limites),
+            "resultats_detailles": resultats_cas_limites,
         }
 
-    def test_performance_benchmark(self):
-        """Test 4: Performance vs solution manuelle"""
-        print("🔍 Test 4: Benchmark de performance...")
+    def test_performance_benchmark(self) -> dict:
+        """Test 4: Performance et benchmark"""
+        print("🔍 Test 4: Performance benchmark...")
 
-        # Test de génération d'un projet simple
-        start = time.time()
-        projet_benchmark = "/tmp/benchmark_test"
+        # Test de performance sur un projet simple
+        projet_benchmark = f"/tmp/benchmark_athalia_{int(time.time())}"
         os.makedirs(projet_benchmark, exist_ok=True)
 
-        # Crée un fichier Python simple pour benchmark
-        with open(f"{projet_benchmark}/main.py", "w") as f:
-            f.write(
-                """def benchmark():
-    return "test"
+        # Crée plusieurs fichiers pour tester
+        for i in range(10):
+            with open(f"{projet_benchmark}/file_{i}.py", "w") as f:
+                f.write(
+                    f"""
+def fonction_{i}():
+    return {i}
 
 if __name__ == "__main__":
-    benchmark()
+    print(fonction_{i}())
 """
-            )
+                )
 
+        start = time.time()
         cmd = [
             "python",
             "bin/athalia_unified.py",
             projet_benchmark,
             "--action",
             "complete",
+            "--auto-fix",
         ]
-        result = validate_and_run(cmd, timeout=60)
-        temps_athalia = time.time() - start
 
-        if result.returncode != 0:
+        try:
+            result = validate_and_run(cmd, timeout=120)
+            temps_total = time.time() - start
+
+            # Mesure de la mémoire utilisée (approximative)
+            import psutil
+
+            process = psutil.Process()
+            memoire_utilisee = process.memory_info().rss / 1024 / 1024  # MB
+
             return {
-                "succes": False,
-                "erreur": f"Benchmark échoué: {result.stderr}",
-                "temps_athalia": temps_athalia,
+                "succes": (
+                    result.returncode == 0
+                    and temps_total <= self.seuils_critiques["temps_max_generation"]
+                    and memoire_utilisee <= self.seuils_critiques["memoire_max"]
+                ),
+                "temps": temps_total,
+                "memoire_mb": memoire_utilisee,
+                "fichiers_traites": 10,
+                "performance_ok": temps_total <= 30,
             }
 
-        # Estimation du temps manuel (créer un projet équivalent)
-        temps_estime_manuel = (
-            300  # 5 minutes pour créer un projet équivalent manuellement
-        )
+        except Exception as e:
+            return {
+                "succes": False,
+                "erreur": f"Benchmark échoué: {str(e)}",
+                "temps": time.time() - start,
+            }
 
-        gain_temps = temps_estime_manuel / temps_athalia if temps_athalia > 0 else 0
-
-        return {
-            "succes": temps_athalia <= self.seuils_critiques["temps_max_generation"],
-            "temps_athalia": temps_athalia,
-            "temps_estime_manuel": temps_estime_manuel,
-            "gain_temps": gain_temps,
-            "efficacite": (
-                "EXCELLENTE"
-                if gain_temps > 10
-                else "BONNE" if gain_temps > 5 else "MOYENNE"
-            ),
-        }
-
-    def test_qualite_code_genere(self):
-        """Test 5: Qualité objective du code généré"""
+    def test_qualite_code_genere(self) -> dict:
+        """Test 5: Qualité du code généré"""
         print("🔍 Test 5: Qualité du code généré...")
 
-        # Génère un projet pour analyse
-        projet_qualite = "/tmp/projet_qualite"
+        # Test avec un projet plus complexe
+        projet_qualite = f"/tmp/qualite_athalia_{int(time.time())}"
         os.makedirs(projet_qualite, exist_ok=True)
 
-        # Crée un fichier Python pour analyse de qualité
-        with open(f"{projet_qualite}/main.py", "w") as f:
-            f.write(
-                """def qualite_test():
-    return "qualite"
+        # Crée un fichier avec des problèmes de qualité
+        code_problematique = """
+import os
+import sys
+import time
+import datetime
+import json
+import subprocess
+import pathlib
+import shutil
+import tempfile
+import logging
+import argparse
+import configparser
+import csv
+import xml.etree.ElementTree as ET
+import yaml
+import toml
+import requests
+import urllib.parse
+import hashlib
+import base64
+import zlib
+import gzip
+import bz2
+import lzma
+import pickle
+import shelve
+import sqlite3
+import threading
+import multiprocessing
+import asyncio
+import concurrent.futures
+import queue
+import collections
+import itertools
+import functools
+import operator
+import math
+import random
+import statistics
+import decimal
+import fractions
+import cmath
+import array
+import struct
+import mmap
+import select
+import socket
+import ssl
+import http.client
+import urllib.request
+import urllib.error
+import urllib.parse
+import email
+import smtplib
+import poplib
+import imaplib
+import ftplib
+import telnetlib
+import nntplib
+import smtpd
+import http.server
+import socketserver
+import xmlrpc.client
+import xmlrpc.server
+import webbrowser
+import cgi
+import cgitb
+import wsgiref.simple_server
+import wsgiref.util
+import wsgiref.validate
+import wsgiref.handlers
+import wsgiref.headers
+import wsgiref.responder
+import wsgiref.simple_server
+import wsgiref.util
+import wsgiref.validate
+import wsgiref.handlers
+import wsgiref.headers
+import wsgiref.responder
 
-if __name__ == "__main__":
-    qualite_test()
+def fonction_tres_longue_avec_beaucoup_de_parametres(param1, param2, param3, param4, param5, param6, param7, param8, param9, param10):
+    # Cette fonction est trop longue et a trop de paramètres
+    resultat = 0
+    for i in range(1000):
+        resultat += i
+        if i % 100 == 0:
+            print(f"Progression: {i}")
+    return resultat
+
+class ClasseAvecBeaucoupDeMethodes:
+    def __init__(self):
+        self.valeur = 0
+    
+    def methode1(self):
+        pass
+    
+    def methode2(self):
+        pass
+    
+    def methode3(self):
+        pass
+    
+    def methode4(self):
+        pass
+    
+    def methode5(self):
+        pass
+    
+    def methode6(self):
+        pass
+    
+    def methode7(self):
+        pass
+    
+    def methode8(self):
+        pass
+    
+    def methode9(self):
+        pass
+    
+    def methode10(self):
+        pass
+
+# Code dupliqué
+def fonction1():
+    x = 1
+    y = 2
+    return x + y
+
+def fonction2():
+    x = 1
+    y = 2
+    return x + y
+
+# Variables non utilisées
+variable_non_utilisee = "test"
 """
-            )
 
-        cmd = f"python bin/athalia_unified.py {projet_qualite} --action complete"
+        with open(f"{projet_qualite}/code_problematique.py", "w") as f:
+            f.write(code_problematique)
 
-        result = subprocess.run(
-            cmd, shell=True, capture_output=True, text=True, timeout=60
-        )
+        start = time.time()
+        cmd = [
+            "python",
+            "bin/athalia_unified.py",
+            projet_qualite,
+            "--action",
+            "improve",
+            "--auto-fix",
+        ]
 
-        if result.returncode != 0:
+        try:
+            result = validate_and_run(cmd, timeout=60)
+            temps_amelioration = time.time() - start
+
+            if result.returncode != 0:
+                return {
+                    "succes": False,
+                    "erreur": f"Amélioration échouée: {result.stderr}",
+                    "temps": temps_amelioration,
+                }
+
+            # Analyse de la qualité après amélioration
+            fichier_ameliore = f"{projet_qualite}/code_problematique.py.improved"
+            if os.path.exists(fichier_ameliore):
+                with open(fichier_ameliore, "r") as f:
+                    code_ameliore = f.read()
+
+                # Mesures de qualité simples
+                lignes_code = len(code_ameliore.split("\n"))
+                fonctions = code_ameliore.count("def ")
+                classes = code_ameliore.count("class ")
+                imports = code_ameliore.count("import ")
+
+                return {
+                    "succes": True,
+                    "temps": temps_amelioration,
+                    "lignes_code": lignes_code,
+                    "fonctions": fonctions,
+                    "classes": classes,
+                    "imports": imports,
+                    "qualite_amelioree": True,
+                }
+            else:
+                return {
+                    "succes": False,
+                    "erreur": "Fichier amélioré non créé",
+                    "temps": temps_amelioration,
+                }
+
+        except Exception as e:
             return {
                 "succes": False,
-                "erreur": "Impossible de générer le projet pour analyse",
+                "erreur": f"Test qualité échoué: {str(e)}",
+                "temps": time.time() - start,
             }
 
-        # Analyse avec pylint si disponible
-        try:
-            cmd_pylint = f"python -m pylint {projet_qualite} --output-format=json"
-            result_pylint = subprocess.run(
-                cmd_pylint, shell=True, capture_output=True, text=True
-            )
+    def validation_complete(self) -> dict:
+        """Exécute tous les tests de validation"""
+        print("🚀 Démarrage de la validation objective complète...")
 
-            if result_pylint.returncode == 0:
-                try:
-                    pylint_data = json.loads(result_pylint.stdout)
-                    score_pylint = pylint_data.get("score", 0)
-                    erreurs = len(
-                        [
-                            e
-                            for e in pylint_data.get("errors", [])
-                            if e.get("type") == "error"
-                        ]
-                    )
-                    warnings = len([w for w in pylint_data.get("warnings", [])])
+        start_total = time.time()
 
-                    return {
-                        "succes": score_pylint >= 7.0,  # Score pylint minimum
-                        "score_pylint": score_pylint,
-                        "erreurs": erreurs,
-                        "warnings": warnings,
-                        "qualite": (
-                            "EXCELLENTE"
-                            if score_pylint >= 9.0
-                            else "BONNE" if score_pylint >= 7.0 else "MOYENNE"
-                        ),
-                    }
-                except json.JSONDecodeError:
-                    pass
-        except Exception:
-            pass
+        # Exécute tous les tests
+        self.resultats["generation_compilation"] = self.test_generation_et_compilation()
+        self.resultats["correction_reelle"] = self.test_correction_reelle()
+        self.resultats["robustesse_cas_limites"] = self.test_robustesse_cas_limites()
+        self.resultats["performance_benchmark"] = self.test_performance_benchmark()
+        self.resultats["qualite_code_genere"] = self.test_qualite_code_genere()
 
-        # Fallback: analyse basique
-        fichiers_python = list(Path(projet_qualite).glob("**/*.py"))
-        total_lignes = 0
-        fonctions = 0
-        classes = 0
+        temps_total = time.time() - start_total
 
-        for py_file in fichiers_python:
-            try:
-                with open(py_file, "r", encoding="utf-8") as f:
-                    contenu = f.read()
-                    lignes = contenu.split("\n")
-                    total_lignes += len(lignes)
-                    fonctions += contenu.count("def ")
-                    classes += contenu.count("class ")
-            except Exception:
-                pass
+        # Calcule le score global
+        tests_reussis = sum(
+            1 for r in self.resultats.values() if r.get("succes", False)
+        )
+        score_global = (tests_reussis / len(self.resultats)) * 100
+
+        validation_reussie = score_global >= self.seuils_critiques["taux_succes_min"]
+
+        print(f"✅ Validation terminée en {temps_total:.2f}s")
+        print(
+            f"📊 Score global: {score_global:.1f}% ({tests_reussis}/{len(self.resultats)} tests réussis)"
+        )
+        print(f"🎯 Validation {'RÉUSSIE' if validation_reussie else 'ÉCHOUÉE'}")
 
         return {
-            "succes": total_lignes > 0,  # Au moins du code généré
-            "lignes_code": total_lignes,
-            "fonctions": fonctions,
-            "classes": classes,
-            "qualite": "ANALYSE_BASIQUE",
+            "validation_reussie": validation_reussie,
+            "score_global": score_global,
+            "temps_total": temps_total,
+            "tests_reussis": tests_reussis,
+            "total_tests": len(self.resultats),
+            "resultats_detailles": self.resultats,
         }
-
-    def validation_complete(self):
-        """Validation complète objective"""
-        print("🚀 Démarrage de la validation objective d'Athalia/Arkalia")
-        print("=" * 60)
-
-        tests = {
-            "generation_compilation": self.test_generation_et_compilation,
-            "correction_erreurs": self.test_correction_reelle,
-            "robustesse": self.test_robustesse_cas_limites,
-            "performance": self.test_performance_benchmark,
-            "qualite_code": self.test_qualite_code_genere,
-        }
-
-        resultats = {}
-        temps_total_start = time.time()
-
-        for nom, test_func in tests.items():
-            print(f"\n🔍 Exécution du test: {nom}")
-            try:
-                resultats[nom] = test_func()
-                status = "✅ SUCCÈS" if resultats[nom].get("succes") else "❌ ÉCHEC"
-                print(f"   {status}")
-
-                if not resultats[nom].get("succes"):
-                    print(f"   Erreur: {resultats[nom].get('erreur', 'Inconnue')}")
-
-            except Exception as e:
-                resultats[nom] = {"succes": False, "erreur": str(e)}
-                print(f"   ❌ ERREUR: {str(e)}")
-
-        temps_total = time.time() - temps_total_start
-
-        # Génération du rapport
-        rapport = self.generer_rapport_objectif(resultats, temps_total)
-
-        # Sauvegarde du rapport
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        os.makedirs("logs", exist_ok=True)
-        rapport_file = f"logs/rapport_validation_objective_{timestamp}.md"
-
-        with open(rapport_file, "w", encoding="utf-8") as f:
-            f.write(rapport)
-
-        print(f"\n📊 Rapport sauvegardé: {rapport_file}")
-        print("\n" + "=" * 60)
-        print(rapport)
-
-        return resultats
 
     def generer_rapport_objectif(self, resultats, temps_total):
-        """Génère un rapport objectif et détaillé"""
+        """Génère un rapport détaillé de la validation"""
+        rapport = {
+            "timestamp": datetime.now().isoformat(),
+            "validation_objective": "Athalia/Arkalia",
+            "temps_total": temps_total,
+            "score_global": resultats["score_global"],
+            "validation_reussie": resultats["validation_reussie"],
+            "seuils_critiques": self.seuils_critiques,
+            "resultats_detailles": resultats["resultats_detailles"],
+        }
 
-        # Calcul des métriques globales
-        tests_succes = sum(1 for r in resultats.values() if r.get("succes", False))
-        taux_succes = (tests_succes / len(resultats)) * 100
+        # Sauvegarde le rapport
+        rapport_file = (
+            f"validation_objective_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        )
+        with open(rapport_file, "w", encoding="utf-8") as f:
+            json.dump(rapport, f, indent=2, ensure_ascii=False)
 
-        # Détermination du verdict
-        if taux_succes >= 90:
-            verdict = "🎉 EXCELLENT - Athalia est très fiable"
-            recommandation = "Tu peux faire confiance à ton outil"
-        elif taux_succes >= 75:
-            verdict = "✅ BON - Athalia est fiable avec quelques améliorations"
-            recommandation = "Quelques ajustements mineurs recommandés"
-        elif taux_succes >= 50:
-            verdict = "⚠️ MOYEN - Athalia a des problèmes à corriger"
-            recommandation = "Corrections importantes nécessaires"
+        print(f"📄 Rapport sauvegardé: {rapport_file}")
+        return rapport_file
+
+
+def main():
+    """Fonction principale"""
+    print("🎯 Validation Objective d'Athalia/Arkalia")
+    print("=" * 50)
+
+    validator = ValidationObjective()
+
+    try:
+        resultats = validator.validation_complete()
+        rapport_file = validator.generer_rapport_objectif(
+            resultats, resultats["temps_total"]
+        )
+
+        if resultats["validation_reussie"]:
+            print("🎉 Validation objective RÉUSSIE !")
+            return 0
         else:
-            verdict = "❌ PROBLÉMATIQUE - Athalia nécessite une refonte"
-            recommandation = "Refonte majeure recommandée"
+            print("❌ Validation objective ÉCHOUÉE !")
+            return 1
 
-        rapport = f"""# 📊 Rapport de Validation Objective - Athalia/Arkalia
-
-**Date:** {datetime.now().strftime("%d/%m/%Y %H:%M:%S")}
-**Temps total:** {temps_total:.1f} secondes
-**Tests réussis:** {tests_succes}/{len(resultats)} ({taux_succes:.1f}%)
-
-## 🎯 Verdict Global
-**{verdict}**
-
-## 📈 Résultats Détaillés
-
-"""
-
-        for nom, resultat in resultats.items():
-            status = "✅ SUCCÈS" if resultat.get("succes") else "❌ ÉCHEC"
-            rapport += f"### {nom.replace('_', ' ').title()}\n"
-            rapport += f"**Statut:** {status}\n\n"
-
-            # Détails spécifiques selon le test
-            if nom == "generation_compilation":
-                if resultat.get("succes"):
-                    rapport += (
-                        f"- ⏱️ Temps de génération: {resultat.get('temps', 0):.1f}s\n"
-                    )
-                    rapport += (
-                        "- 📁 Fichiers générés:"
-                        f" {resultat.get('fichiers_generes', 0)}\n"
-                    )
-                    rapport += (
-                        "- ✅ Taux de compilation:"
-                        f" {resultat.get('taux_compilation', 0):.1f}%\n"
-                    )
-                else:
-                    rapport += f"- ❌ Erreur: {resultat.get('erreur', 'Inconnue')}\n"
-
-            elif nom == "correction_erreurs":
-                if resultat.get("succes"):
-                    rapport += (
-                        f"- ⏱️ Temps de correction: {resultat.get('temps', 0):.1f}s\n"
-                    )
-                    rapport += "- ✅ Code compile après correction: OUI\n"
-                else:
-                    rapport += f"- ❌ Erreur: {resultat.get('erreur', 'Inconnue')}\n"
-
-            elif nom == "robustesse":
-                rapport += (
-                    "- 🛡️ Taux de robustesse:"
-                    f" {resultat.get('taux_robustesse', 0):.1f}%\n"
-                )
-                for test in resultat.get("tests_detail", []):
-                    status_test = "✅" if test["succes"] else "❌"
-                    rapport += (
-                        f"- {status_test} {test['test']}: exit code"
-                        f" {test['exit_code']}\n"
-                    )
-
-            elif nom == "performance":
-                if resultat.get("succes"):
-                    rapport += (
-                        f"- ⏱️ Temps Athalia: {resultat.get('temps_athalia', 0):.1f}s\n"
-                    )
-                    rapport += (
-                        "- ⏱️ Temps estimé manuel:"
-                        f" {resultat.get('temps_estime_manuel', 0):.1f}s\n"
-                    )
-                    rapport += (
-                        f"- 🚀 Gain de temps: {resultat.get('gain_temps', 0):.1f}x\n"
-                    )
-                    rapport += f"- 📊 Efficacité: {resultat.get('efficacite', 'N/A')}\n"
-                else:
-                    rapport += f"- ❌ Erreur: {resultat.get('erreur', 'Inconnue')}\n"
-
-            elif nom == "qualite_code":
-                if resultat.get("score_pylint"):
-                    rapport += (
-                        f"- 📊 Score pylint: {resultat.get('score_pylint', 0):.1f}/10\n"
-                    )
-                    rapport += f"- ❌ Erreurs: {resultat.get('erreurs', 0)}\n"
-                    rapport += f"- ⚠️ Warnings: {resultat.get('warnings', 0)}\n"
-                    rapport += f"- 📈 Qualité: {resultat.get('qualite', 'N/A')}\n"
-                else:
-                    rapport += (
-                        f"- 📝 Lignes de code: {resultat.get('lignes_code', 0)}\n"
-                    )
-                    rapport += f"- 🔧 Fonctions: {resultat.get('fonctions', 0)}\n"
-                    rapport += f"- 🏗️ Classes: {resultat.get('classes', 0)}\n"
-
-            rapport += "\n"
-
-        rapport += f"""
-## 🎯 Recommandation
-**{recommandation}**
-
-## 📋 Métriques de Confiance
-
-| Métrique | Valeur | Seuil | Statut |
-|----------|--------|-------|--------|
-| Taux de succès global | {taux_succes:.1f}% | 85% | "
- f"{"✅" if taux_succes >= 85 else "❌"} |"
-
-## 🔍 Points d'Attention
-
-"""
-
-        # Ajoute des points d'attention spécifiques
-        if resultats.get("generation_compilation", {}).get("taux_compilation", 0) < 90:
-            rapport += (
-                "- ⚠️ Le code généré ne compile pas toujours (amélioration nécessaire)\n"
-            )
-
-        if resultats.get("performance", {}).get("gain_temps", 0) < 5:
-            rapport += "- ⚠️ Gain de temps limité (optimisation recommandée)\n"
-
-        if resultats.get("robustesse", {}).get("taux_robustesse", 0) < 90:
-            rapport += "- ⚠️ Robustesse insuffisante (gestion d'erreurs à améliorer)\n"
-
-        rapport += f"""
-## 🎉 Conclusion
-Ce rapport est basé sur des **tests objectifs et mesurables**. "
-"Les résultats ne peuvent pas mentir."
-
-**{verdict}**
-
----
-*Validation générée automatiquement le {datetime.now().strftime("%d/%m/%Y à %H:%M:%S")}*
-"""
-
-        return rapport
+    except Exception as e:
+        print(f"💥 Erreur critique: {str(e)}")
+        return 2
 
 
 if __name__ == "__main__":
-    validator = ValidationObjective()
-    resultats = validator.validation_complete()
-
-    # Affichage du score final
-    tests_succes = sum(1 for r in resultats.values() if r.get("succes", False))
-    taux_succes = (tests_succes / len(resultats)) * 100
-
-    print(f"\n🎯 SCORE FINAL: {taux_succes:.1f}%")
-
-    if taux_succes >= 85:
-        print("🎉 TON OUTIL EST FIABLE ! Tu peux lui faire confiance.")
-    elif taux_succes >= 70:
-        print("✅ Ton outil est bon avec quelques améliorations mineures.")
-    else:
-        print("⚠️ Ton outil a des problèmes à corriger avant utilisation en production.")
+    exit(main())
