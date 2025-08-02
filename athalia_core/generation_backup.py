@@ -14,6 +14,7 @@ from typing import Optional
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 def validate_code(code: str) -> bool:
     """Valide la syntaxe du code Python"""
     try:
