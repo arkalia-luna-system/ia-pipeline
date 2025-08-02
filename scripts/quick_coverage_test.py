@@ -13,7 +13,9 @@ def main():
 
     # Test simple avec quelques tests
     cmd = [
-        "python", "-m", "pytest",
+        "python",
+        "-m",
+        "pytest",
         "tests/unit/core/test_cache_manager.py",
         "--cov=athalia_core",
         "--cov-report=term-missing",
