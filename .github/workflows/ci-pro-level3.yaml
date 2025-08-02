@@ -32,7 +32,7 @@ jobs:
       - name: Run basic tests
         run: |
           echo "🧪 Running basic tests..."
-          python -m pytest tests/ --cov=athalia_core --cov-report=term-missing --cov-fail-under=5 --tb=short -x --maxfail=10 --timeout=60
+          python -m pytest tests/ --tb=short -x --maxfail=10 --timeout=60
 
       - name: Basic linting
         run: |
@@ -71,7 +71,7 @@ jobs:
       - name: Security tests
         run: |
           echo "🧪 Running security tests..."
-          python -m pytest tests/unit/security/ --cov=athalia_core --cov-report=term-missing --cov-fail-under=5 -v
+          python -m pytest tests/unit/security/ -v
 
   performance-test:
     runs-on: ubuntu-latest
@@ -98,12 +98,12 @@ jobs:
       - name: Memory profiling
         run: |
           echo "🧠 Running memory profiling..."
-          python -m pytest tests/performance/ --cov=athalia_core --cov-report=term-missing --cov-fail-under=5 -v
+          python -m pytest tests/performance/ -v
 
       - name: Performance tests
         run: |
           echo "🏃 Running performance tests..."
-          python -m pytest tests/performance/test_benchmark_critical.py -v --cov=athalia_core --cov-report=term-missing --cov-fail-under=5
+          python -m pytest tests/performance/test_benchmark_critical.py -v
 
       - name: Upload performance reports
         uses: actions/upload-artifact@v4

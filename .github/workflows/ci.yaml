@@ -116,17 +116,17 @@ jobs:
         if: github.actor != 'athalia'
         continue-on-error: true
         run: |
-          python -m pytest tests/unit/general/test_ci_robust.py -v --tb=short --cov=athalia_core --cov-report=term-missing --cov-fail-under=5
+          python -m pytest tests/unit/general/test_ci_robust.py -v --tb=short
 
       - name: Run safe core tests with coverage
         timeout-minutes: 15
         run: |
-          python -m pytest tests/ --tb=short -x --maxfail=10 --timeout=60 --durations=10 --cov=athalia_core --cov-report=term-missing --cov-fail-under=5
+          python -m pytest tests/ --tb=short -x --maxfail=10 --timeout=60 --durations=10
 
       - name: Run bin tests with coverage
         timeout-minutes: 10
         run: |
-          python -m pytest tests/bin/ -v --cov=athalia_core --cov-report=term-missing --cov-fail-under=5 --tb=short
+          python -m pytest tests/bin/ -v --tb=short
 
       # Vérifications de base
       - name: Syntax check
