@@ -14,7 +14,6 @@ from athalia_core.cache_manager import (
     CacheManager,
     cache_result,
     get_cached_result,
-    clear_cache,
     get_cache_stats,
 )
 
@@ -145,21 +144,18 @@ class TestCacheManagerIntegration:
 
 def test_cache_functions():
     """Test des fonctions globales de cache"""
-    import tempfile
+    # Test des fonctions globales
+    blueprint = {"name": "global_test", "description": "Global test"}
+    value = {"data": "global_value"}
 
-    with tempfile.TemporaryDirectory() as temp_dir:
-        # Test des fonctions globales
-        blueprint = {"name": "global_test", "description": "Global test"}
-        value = {"data": "global_value"}
+    # Mettre en cache
+    result = cache_result(blueprint, value)
+    assert result is True
 
-        # Mettre en cache
-        result = cache_result(blueprint, value)
-        assert result is True
-
-        # Récupérer du cache
-        cached_value = get_cached_result(blueprint)
-        assert cached_value is not None
-        assert cached_value["data"] == value["data"]
+    # Récupérer du cache
+    cached_value = get_cached_result(blueprint)
+    assert cached_value is not None
+    assert cached_value["data"] == value["data"]
 
 
 def test_clear_cache():

@@ -11,7 +11,7 @@ import os
 import pickle
 import time
 from pathlib import Path
-from typing import Any, Dict, Optional, Tuple
+from typing import Any, Dict, Optional
 
 logger = logging.getLogger(__name__)
 
@@ -186,8 +186,6 @@ def get_cache_manager() -> CacheManager:
     global _cache_manager
     if _cache_manager is None:
         # Utiliser un chemin absolu pour le cache
-        import os
-
         cache_dir = os.path.join(os.getcwd(), ".athalia_cache")
         _cache_manager = CacheManager(cache_dir)
     return _cache_manager
