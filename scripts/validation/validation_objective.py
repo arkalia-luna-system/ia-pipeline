@@ -609,7 +609,7 @@ variable_non_utilisee = "test"
             "resultats_detailles": self.resultats,
         }
 
-    def generer_rapport_objectif(self, resultats, temps_total):
+    def generer_rapport_objectif(self, resultats: dict, temps_total: float) -> str:
         """Génère un rapport détaillé de la validation"""
         rapport = {
             "timestamp": datetime.now().isoformat(),
@@ -632,7 +632,7 @@ variable_non_utilisee = "test"
         return rapport_file
 
 
-def main():
+def main() -> int:
     """Fonction principale"""
     print("🎯 Validation Objective d'Athalia/Arkalia")
     print("=" * 50)
