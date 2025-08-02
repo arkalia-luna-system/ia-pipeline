@@ -340,9 +340,15 @@ class SecurityAuditor:
         """Vérifie la conformité aux standards"""
         return {
             "gdpr_ready": "gdpr" in str(self.report.get("recommendations", [])).lower(),
-            "authentication_ready": "authentication" in str(self.report.get("recommendations", [])).lower(),
-            "encryption_ready": "chiffrement" in str(self.report.get("recommendations", [])).lower(),
-            "input_validation_ready": "validation" in str(self.report.get("warnings", [])).lower(),
+            "authentication_ready": (
+                "authentication" in str(self.report.get("recommendations", [])).lower()
+            ),
+            "encryption_ready": (
+                "chiffrement" in str(self.report.get("recommendations", [])).lower()
+            ),
+            "input_validation_ready": (
+                "validation" in str(self.report.get("warnings", [])).lower()
+            ),
         }
 
     def _generate_security_report(self):
@@ -359,18 +365,20 @@ class SecurityAuditor:
                 "recommendations": self.report.get("recommendations", []),
                 "compliance": self._check_compliance(),
             }
-            
+
             with open(report_file, "w", encoding="utf-8") as f:
                 json.dump(report_data, f, indent=2, ensure_ascii=False)
-                
+
             logger.info(f"📄 Rapport de sécurité généré: {report_file}")
-            
+
         except Exception as e:
             logger.warning(f"Impossible de générer le rapport de sécurité: {e}")
 
     def print_report(self):
         """Affichage du rapport de sécurité renforcé"""
-        logger.info(f"🔒 Score sécurité: {self.report['score']}/100 ({self._get_security_level()})")
+        logger.info(
+            f"🔒 Score sécurité: {self.report['score']}/100 ({self._get_security_level()})"
+        )
 
         if self.report["vulnerabilities"]:
             logger.info("🔴 Vulnérabilités:")

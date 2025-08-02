@@ -172,10 +172,14 @@ class CodeLinter:
                         if len(parts) >= 3:
                             complexity = int(parts[1])
                             if complexity > 10:
-                                complex_functions.append(f"{parts[0]} (complexité: {complexity})")
-                
+                                complex_functions.append(
+                                    f"{parts[0]} (complexité: {complexity})"
+                                )
+
                 if complex_functions:
-                    self.report["warnings"].append(f"Fonctions complexes détectées: {', '.join(complex_functions[:3])}")
+                    self.report["warnings"].append(
+                        f"Fonctions complexes détectées: {', '.join(complex_functions[:3])}"
+                    )
 
         except (Exception, SecurityError) as e:
             self.report["warnings"].append(f"Analyse de complexité non exécutée: {e}")
@@ -187,33 +191,36 @@ class CodeLinter:
             r"'''[^']*'''",
             r"#.*",
         ]
-        
+
         total_functions = 0
         documented_functions = 0
-        
+
         for py_file in self.project_path.rglob("*.py"):
             try:
                 with open(py_file, "r", encoding="utf-8") as f:
                     content = f.read()
-                
+
                 # Compter les fonctions
                 import re
-                functions = re.findall(r'def\s+\w+', content)
+
+                functions = re.findall(r"def\s+\w+", content)
                 total_functions += len(functions)
-                
+
                 # Vérifier la documentation
                 for pattern in doc_patterns:
                     if re.search(pattern, content):
                         documented_functions += 1
                         break
-                        
+
             except (OSError, UnicodeDecodeError):
                 continue
-        
+
         if total_functions > 0:
             doc_coverage = (documented_functions / total_functions) * 100
             if doc_coverage < 70:
-                self.report["warnings"].append(f"Couverture documentation faible: {doc_coverage:.1f}%")
+                self.report["warnings"].append(
+                    f"Couverture documentation faible: {doc_coverage:.1f}%"
+                )
 
     def _run_test_coverage(self):
         """Vérification de la couverture de tests"""
@@ -224,7 +231,7 @@ class CodeLinter:
                 text=True,
                 timeout=60,
             )
-            
+
             if result.returncode == 0:
                 result = validate_and_run(
                     ["coverage", "report"],
@@ -232,7 +239,7 @@ class CodeLinter:
                     text=True,
                     timeout=30,
                 )
-                
+
                 if result.stdout:
                     for line in result.stdout.split("\n"):
                         if "TOTAL" in line:
@@ -240,7 +247,9 @@ class CodeLinter:
                             if len(parts) >= 4:
                                 coverage = int(parts[3].replace("%", ""))
                                 if coverage < 80:
-                                    self.report["warnings"].append(f"Couverture de tests faible: {coverage}%")
+                                    self.report["warnings"].append(
+                                        f"Couverture de tests faible: {coverage}%"
+                                    )
                                 break
 
         except (Exception, SecurityError) as e:
@@ -250,6 +259,7 @@ class CodeLinter:
         """Génère un rapport de qualité détaillé"""
         try:
             import json
+
             report_file = self.project_path / "quality_report.json"
             report_data = {
                 "timestamp": str(Path().cwd()),
@@ -260,12 +270,12 @@ class CodeLinter:
                 "fixes": self.report.get("fixes", []),
                 "quality_level": self._get_quality_level(),
             }
-            
+
             with open(report_file, "w", encoding="utf-8") as f:
                 json.dump(report_data, f, indent=2, ensure_ascii=False)
-                
+
             logger.info(f"📄 Rapport de qualité généré: {report_file}")
-            
+
         except Exception as e:
             logger.warning(f"Impossible de générer le rapport de qualité: {e}")
 
@@ -283,7 +293,9 @@ class CodeLinter:
 
     def print_report(self):
         """Affichage du rapport de linting renforcé"""
-        logger.info(f"📏 Score qualité: {self.report['score']}/100 ({self._get_quality_level()})")
+        logger.info(
+            f"📏 Score qualité: {self.report['score']}/100 ({self._get_quality_level()})"
+        )
 
         if self.report["errors"]:
             logger.info("🔴 Erreurs:")

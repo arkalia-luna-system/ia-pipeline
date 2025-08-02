@@ -7,16 +7,15 @@ import unittest
             import main
 #!/usr/bin/env python3
 """
-Tests pour api_test
+Tests pour phase4_test
 """
 
 
 # Ajouter le répertoire src au path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
-
-class TestApiTest(unittest.TestCase):
-    """Tests pour api_test"""
+class TestPhase4Test(unittest.TestCase):
+    """Tests pour phase4_test"""
 
     def setUp(self):
         """Configuration avant chaque test"""
@@ -33,7 +32,6 @@ class TestApiTest(unittest.TestCase):
     def test_main_function(self):
         """Test de la fonction main"""
         try:
-
             self.assertTrue(True)
         except ImportError as e:
             self.fail(f"Impossible d'importer le module main: {e}")
@@ -41,11 +39,9 @@ class TestApiTest(unittest.TestCase):
     def test_import(self):
         """Test d'import du module principal"""
         try:
-
             self.assertTrue(True)
         except ImportError as e:
             self.fail(f"Impossible d'importer le module main: {e}")
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()
