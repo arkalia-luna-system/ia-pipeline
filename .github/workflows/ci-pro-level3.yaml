@@ -71,7 +71,7 @@ jobs:
       - name: Security tests
         run: |
           echo "🧪 Running security tests..."
-          python -m pytest tests/unit/security/ --cov=athalia_core --cov-report=term-missing -v
+          python -m pytest tests/unit/security/ --cov=athalia_core --cov-report=term-missing --cov-fail-under=5 -v
 
   performance-test:
     runs-on: ubuntu-latest
@@ -98,7 +98,7 @@ jobs:
       - name: Memory profiling
         run: |
           echo "🧠 Running memory profiling..."
-          python -m pytest tests/performance/ --cov=athalia_core --cov-report=term-missing -v
+          python -m pytest tests/performance/ --cov=athalia_core --cov-report=term-missing --cov-fail-under=5 -v
 
       - name: Performance tests
         run: |
