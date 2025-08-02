@@ -17,7 +17,7 @@ try:
     from athalia_core.security_validator import SecurityError, validate_and_run
 except ImportError:
     # Fallback si le module n'est pas disponible
-    def validate_and_run(command, **kwargs) -> subprocess.CompletedProcess:
+    def validate_and_run(command: list[str], **kwargs) -> subprocess.CompletedProcess:
         return subprocess.run(command, **kwargs)
 
     class SecurityError(Exception):
@@ -245,7 +245,7 @@ def fonction_syntaxe():
         ]
 
         resultats_cas_limites = []
-        temps_total = 0
+        temps_total = 0.0
 
         for cas in cas_limites:
             start = time.time()
@@ -340,10 +340,10 @@ if __name__ == "__main__":
             temps_total = time.time() - start
 
             # Mesure de la mémoire utilisée (approximative)
-            import psutil
+            import psutil  # type: ignore
 
             process = psutil.Process()
-            memoire_utilisee = process.memory_info().rss / 1024 / 1024  # MB
+            memoire_utilisee = float(process.memory_info().rss) / 1024 / 1024  # MB
 
             return {
                 "succes": (
@@ -642,14 +642,14 @@ def main() -> int:
     try:
         resultats = validator.validation_complete()
         validator.generer_rapport_objectif(resultats, resultats["temps_total"])
-        
+
         if resultats["validation_reussie"]:
             print("🎉 Validation objective RÉUSSIE !")
             return 0
         else:
             print("❌ Validation objective ÉCHOUÉE !")
             return 1
-            
+
     except Exception as e:
         print(f"💥 Erreur critique: {str(e)}")
         return 2
