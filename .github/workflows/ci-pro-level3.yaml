@@ -32,7 +32,7 @@ jobs:
       - name: Run basic tests
         run: |
           echo "🧪 Running basic tests..."
-          python -m pytest tests/ -m "not slow" --tb=short -x --maxfail=3 --timeout=30
+          python -m pytest tests/ --cov=athalia_core --cov-report=term-missing --cov-fail-under=75 --tb=short -x --maxfail=10 --timeout=60
 
       - name: Basic linting
         run: |
@@ -71,8 +71,7 @@ jobs:
       - name: Security tests
         run: |
           echo "🧪 Running security tests..."
-          python -m pytest tests/unit/security/test_security_patterns.py -v
-          python -m pytest tests/unit/security/test_security_comprehensive.py -v
+          python -m pytest tests/unit/security/ --cov=athalia_core --cov-report=term-missing -v
 
   performance-test:
     runs-on: ubuntu-latest
@@ -99,7 +98,7 @@ jobs:
       - name: Memory profiling
         run: |
           echo "🧠 Running memory profiling..."
-          python -m pytest tests/performance/test_performance_optimization.py -v
+          python -m pytest tests/performance/ --cov=athalia_core --cov-report=term-missing -v
 
       - name: Performance tests
         run: |

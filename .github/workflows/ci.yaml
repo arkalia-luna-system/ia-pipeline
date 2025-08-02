@@ -118,10 +118,10 @@ jobs:
         run: |
           python -m pytest tests/unit/general/test_ci_robust.py -v --tb=short --no-cov
 
-      - name: Run safe core tests
+      - name: Run safe core tests with coverage
         timeout-minutes: 15
         run: |
-          python -m pytest tests/ -m "not slow and not skip_ci" --tb=short -x --maxfail=3 --timeout=30 --durations=10 --no-cov
+          python -m pytest tests/ -m "not slow and not skip_ci" --tb=short -x --maxfail=3 --timeout=30 --durations=10 --cov=athalia_core --cov-report=term-missing --cov-fail-under=75
 
       - name: Run bin tests without coverage
         timeout-minutes: 10
