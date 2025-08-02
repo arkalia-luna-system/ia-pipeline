@@ -23,6 +23,20 @@ from .security_auditor import SecurityAuditor
 
 logger = logging.getLogger(__name__)
 
+# Imports des nouveaux modules IA et distillation
+try:
+    from .agents.unified_agent import UnifiedAgent
+    from .agents.context_prompt import ContextPromptAgent
+    from .agents.audit_agent import AuditAgent
+    from .distillation.quality_scorer import QualityScorer
+    from .distillation.response_distiller import ResponseDistiller
+    from .distillation.code_genetics import CodeGenetics
+
+    AI_MODULES_AVAILABLE = True
+except ImportError:
+    AI_MODULES_AVAILABLE = False
+    logger.warning("⚠️ Modules IA non disponibles - mode fallback activé")
+
 
 class UnifiedOrchestrator:
     """Orchestrateur unifié pour Athalia"""
@@ -48,9 +62,18 @@ class UnifiedOrchestrator:
         self.auto_cleaner = None
         self.auto_cicd = None
 
+        # Initialiser les modules IA et distillation
+        self.unified_agent = None
+        self.context_agent = None
+        self.audit_agent = None
+        self.quality_scorer = None
+        self.response_distiller = None
+        self.code_genetics = None
+
     def initialize_modules(self):
         """Initialise tous les modules"""
         try:
+            # Modules de base
             self.robust_ai = RobustAI()
             self.security_auditor = SecurityAuditor(str(self.project_path))
             self.code_linter = CodeLinter(str(self.project_path))
@@ -58,7 +81,20 @@ class UnifiedOrchestrator:
             self.auto_tester = AutoTester(str(self.project_path))
             self.auto_documenter = AutoDocumenter(str(self.project_path))
             self.auto_cleaner = AutoCleaner(str(self.project_path))
-            self.auto_cicd = AutoCICD(str(self.project_path))
+            self.auto_cicd = AutoCICD()
+
+            # Modules IA et distillation (si disponibles)
+            if AI_MODULES_AVAILABLE:
+                try:
+                    self.unified_agent = UnifiedAgent()
+                    self.context_agent = ContextPromptAgent()
+                    self.audit_agent = AuditAgent()
+                    self.quality_scorer = QualityScorer()
+                    self.response_distiller = ResponseDistiller()
+                    self.code_genetics = CodeGenetics()
+                    logger.info("✅ Modules IA et distillation initialisés")
+                except Exception as e:
+                    logger.warning(f"⚠️ Erreur initialisation modules IA: {e}")
 
             self.workflow_results["status"] = "initialized"
             logger.info("✅ Tous les modules initialisés")
@@ -75,28 +111,34 @@ class UnifiedOrchestrator:
         self.workflow_results["status"] = "running"
 
         try:
-            # Étape 1: Génération du projet
+            # Étape 1: Classification intelligente du projet
+            self._step_intelligent_classification(blueprint)
+
+            # Étape 2: Génération du projet
             self._step_generate_project(blueprint)
 
-            # Étape 2: Audit de sécurité
+            # Étape 3: Amélioration IA intelligente
+            self._step_ai_enhancement(blueprint)
+
+            # Étape 4: Audit de sécurité
             self._step_security_audit()
 
-            # Étape 3: Linting du code
+            # Étape 5: Linting du code
             self._step_code_linting()
 
-            # Étape 4: Optimisation des corrections
+            # Étape 6: Optimisation des corrections
             self._step_correction_optimization()
 
-            # Étape 5: Tests automatiques
+            # Étape 7: Tests automatiques
             self._step_auto_testing()
 
-            # Étape 6: Documentation automatique
+            # Étape 8: Documentation automatique
             self._step_auto_documentation()
 
-            # Étape 7: Nettoyage automatique
+            # Étape 9: Nettoyage automatique
             self._step_auto_cleaning()
 
-            # Étape 8: CI/CD automatique
+            # Étape 10: CI/CD automatique
             self._step_auto_cicd()
 
             self.workflow_results["status"] = "completed"
@@ -109,8 +151,50 @@ class UnifiedOrchestrator:
 
         return self.workflow_results
 
+    def _step_intelligent_classification(self, blueprint: Dict[str, Any]):
+        """Étape 1: Classification intelligente du projet"""
+        logger.info("🧠 Classification intelligente du projet...")
+
+        try:
+            if AI_MODULES_AVAILABLE and self.context_agent:
+                # Utiliser l'agent de contexte pour classifier le projet
+                description = blueprint.get("description", "")
+                project_name = blueprint.get("project_name", "")
+
+                classification_prompt = f"""
+                Analyse ce projet et détermine son type :
+                Nom: {project_name}
+                Description: {description}
+                
+                Types possibles: api, web, game, artistic, robotics, data, mobile, iot, generic
+                
+                Retourne uniquement le type de projet.
+                """
+
+                try:
+                    project_type = self.context_agent.act(classification_prompt)
+                    if project_type and project_type.strip():
+                        blueprint["project_type"] = project_type.strip()
+                        logger.info(f"✅ Type détecté intelligemment: {project_type}")
+                    else:
+                        logger.warning(
+                            "⚠️ Classification IA échouée, utilisation du type par défaut"
+                        )
+                except Exception as e:
+                    logger.warning(f"⚠️ Erreur classification IA: {e}")
+
+            self.workflow_results["steps_completed"].append(
+                "intelligent_classification"
+            )
+            self.workflow_results["artifacts"]["project_type"] = blueprint.get(
+                "project_type", "generic"
+            )
+
+        except Exception as e:
+            self.workflow_results["warnings"].append(f"Erreur classification: {e}")
+
     def _step_generate_project(self, blueprint: Dict[str, Any]):
-        """Étape 1: Génération du projet"""
+        """Étape 2: Génération du projet"""
         logger.info("📁 Génération du projet...")
 
         try:
@@ -123,8 +207,85 @@ class UnifiedOrchestrator:
             self.workflow_results["errors"].append(f"Erreur génération projet: {e}")
             raise
 
+    def _step_ai_enhancement(self, blueprint: Dict[str, Any]):
+        """Étape 3: Amélioration IA intelligente"""
+        logger.info("🤖 Amélioration IA intelligente...")
+
+        try:
+            if AI_MODULES_AVAILABLE and self.unified_agent and self.quality_scorer:
+                project_path = self.workflow_results["artifacts"].get("project_path")
+                if project_path:
+                    main_file = Path(project_path) / "src" / "main.py"
+                    if main_file.exists():
+                        # Lire le code généré
+                        with open(main_file, "r", encoding="utf-8") as f:
+                            original_code = f.read()
+
+                        # Améliorer le code avec l'agent IA
+                        enhancement_prompt = f"""
+                        Améliore ce code Python pour le rendre ultra-avancé :
+                        
+                        Type de projet: {blueprint.get('project_type', 'generic')}
+                        Description: {blueprint.get('description', '')}
+                        
+                        Code actuel:
+                        {original_code}
+                        
+                        Améliore ce code avec :
+                        1. Fonctionnalités avancées spécifiques au type de projet
+                        2. Architecture moderne et scalable
+                        3. Gestion d'erreurs robuste
+                        4. Performance optimisée
+                        5. Code de production professionnel
+                        
+                        Retourne UNIQUEMENT le code Python amélioré.
+                        """
+
+                        try:
+                            enhanced_code = self.unified_agent.act(enhancement_prompt)
+                            if enhanced_code and self._validate_code(enhanced_code):
+                                # Sauvegarder et appliquer l'amélioration
+                                backup_file = main_file.with_suffix(".py.backup")
+                                with open(backup_file, "w", encoding="utf-8") as f:
+                                    f.write(original_code)
+
+                                with open(main_file, "w", encoding="utf-8") as f:
+                                    f.write(enhanced_code)
+
+                                # Évaluer la qualité
+                                quality_score = self.quality_scorer.score_code(
+                                    enhanced_code
+                                )
+                                logger.info(
+                                    f"✅ Code amélioré avec score qualité: {quality_score}"
+                                )
+
+                                self.workflow_results["artifacts"]["ai_enhancement"] = {
+                                    "quality_score": quality_score,
+                                    "backup_file": str(backup_file),
+                                }
+                            else:
+                                logger.warning(
+                                    "⚠️ Amélioration IA invalide, code original conservé"
+                                )
+                        except Exception as e:
+                            logger.warning(f"⚠️ Erreur amélioration IA: {e}")
+
+            self.workflow_results["steps_completed"].append("ai_enhancement")
+
+        except Exception as e:
+            self.workflow_results["warnings"].append(f"Erreur amélioration IA: {e}")
+
+    def _validate_code(self, code: str) -> bool:
+        """Valide la syntaxe du code Python"""
+        try:
+            compile(code, "<string>", "exec")
+            return True
+        except SyntaxError:
+            return False
+
     def _step_security_audit(self):
-        """Étape 2: Audit de sécurité"""
+        """Étape 4: Audit de sécurité"""
         logger.info("🔒 Audit de sécurité...")
 
         try:
@@ -138,7 +299,7 @@ class UnifiedOrchestrator:
             self.workflow_results["warnings"].append(f"Erreur audit sécurité: {e}")
 
     def _step_code_linting(self):
-        """Étape 3: Linting du code"""
+        """Étape 5: Linting du code"""
         logger.info("📏 Linting du code...")
 
         try:
@@ -152,7 +313,7 @@ class UnifiedOrchestrator:
             self.workflow_results["warnings"].append(f"Erreur linting: {e}")
 
     def _step_correction_optimization(self):
-        """Étape 4: Optimisation des corrections"""
+        """Étape 6: Optimisation des corrections"""
         logger.info("🔧 Optimisation des corrections...")
 
         try:
@@ -171,7 +332,7 @@ class UnifiedOrchestrator:
             self.workflow_results["warnings"].append(f"Erreur optimisation: {e}")
 
     def _step_auto_testing(self):
-        """Étape 5: Tests automatiques"""
+        """Étape 7: Tests automatiques"""
         logger.info("🧪 Tests automatiques...")
 
         try:
@@ -185,7 +346,7 @@ class UnifiedOrchestrator:
             self.workflow_results["warnings"].append(f"Erreur tests automatiques: {e}")
 
     def _step_auto_documentation(self):
-        """Étape 6: Documentation automatique"""
+        """Étape 8: Documentation automatique"""
         logger.info("📚 Documentation automatique...")
 
         try:
@@ -199,7 +360,7 @@ class UnifiedOrchestrator:
             self.workflow_results["warnings"].append(f"Erreur documentation: {e}")
 
     def _step_auto_cleaning(self):
-        """Étape 7: Nettoyage automatique"""
+        """Étape 9: Nettoyage automatique"""
         logger.info("🧹 Nettoyage automatique...")
 
         try:
@@ -213,7 +374,7 @@ class UnifiedOrchestrator:
             self.workflow_results["warnings"].append(f"Erreur nettoyage: {e}")
 
     def _step_auto_cicd(self):
-        """Étape 8: CI/CD automatique"""
+        """Étape 10: CI/CD automatique"""
         logger.info("🚀 Configuration CI/CD...")
 
         try:
