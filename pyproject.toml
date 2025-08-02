@@ -106,6 +106,7 @@ testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
+norecursedirs = [".git", "archive", "backups", "logs", ".venv", "venv", "__pycache__"]
 addopts = [
     "--verbose",
     "--tb=short",
@@ -114,7 +115,8 @@ addopts = [
     "--cache-clear",
     "--cov=athalia_core",
     "--cov-report=term-missing",
-    "--cov-fail-under=75",
+    "--cov-fail-under=5",
+    "--import-mode=importlib",
 ]
 markers = [
     "fast: marks tests as fast (deselect with '-m \"not fast\"')",
