@@ -116,7 +116,7 @@ jobs:
         if: github.actor != 'athalia'
         continue-on-error: true
         run: |
-          python -m pytest tests/unit/general/test_ci_robust.py -v --tb=short --no-cov
+          python -m pytest tests/unit/general/test_ci_robust.py -v --tb=short --cov=athalia_core --cov-report=term-missing --cov-fail-under=5
 
       - name: Run safe core tests with coverage
         timeout-minutes: 15
