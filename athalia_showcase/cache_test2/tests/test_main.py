@@ -5,21 +5,17 @@ import os
 import unittest
             from main import main
             import main
-
-
-
-
 #!/usr/bin/env python3
 """
-Tests pour cache_test
+Tests pour cache_test2
 """
 
 
 # Ajouter le répertoire src au path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
-class TestCacheTest(unittest.TestCase):
-    """Tests pour cache_test"""
+class TestCacheTest2(unittest.TestCase):
+    """Tests pour cache_test2"""
 
     def setUp(self):
         """Configuration avant chaque test"""

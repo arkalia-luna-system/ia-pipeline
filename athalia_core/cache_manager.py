@@ -21,7 +21,7 @@ class CacheManager:
 
     def __init__(self, cache_dir: str = ".athalia_cache"):
         self.cache_dir = Path(cache_dir)
-        self.cache_dir.mkdir(exist_ok=True)
+        self.cache_dir.mkdir(exist_ok=True, parents=True)
         self.stats = {
             "hits": 0,
             "misses": 0,
