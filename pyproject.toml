@@ -107,6 +107,7 @@ python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
 norecursedirs = [".git", "archive", "backups", "logs", ".venv", "venv", "__pycache__"]
+minversion = "6.0"
 addopts = [
     "--verbose",
     "--tb=short",
@@ -117,6 +118,7 @@ addopts = [
     "--cov-report=term-missing",
     "--cov-fail-under=5",
     "--import-mode=importlib",
+    "--maxfail=0",
 ]
 markers = [
     "fast: marks tests as fast (deselect with '-m \"not fast\"')",
