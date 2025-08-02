@@ -118,7 +118,6 @@ addopts = [
     "--cov-report=term-missing",
     "--cov-fail-under=5",
     "--import-mode=importlib",
-    "--maxfail=0",
 ]
 markers = [
     "fast: marks tests as fast (deselect with '-m \"not fast\"')",
