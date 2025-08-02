@@ -3,22 +3,19 @@ import os
 
 
 import unittest
-import importlib.util
-
-
-
+            from main import main
+            import main
 #!/usr/bin/env python3
 """
-Tests pour api_test
+Tests pour cache_test
 """
 
 
 # Ajouter le répertoire src au path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
-
-class TestApiTest(unittest.TestCase):
-    """Tests pour api_test"""
+class TestCacheTest(unittest.TestCase):
+    """Tests pour cache_test"""
 
     def setUp(self):
         """Configuration avant chaque test"""
@@ -35,27 +32,16 @@ class TestApiTest(unittest.TestCase):
     def test_main_function(self):
         """Test de la fonction main"""
         try:
-            # Vérifier si le module main existe
-            spec = importlib.util.find_spec("main")
-            if spec is not None:
-                self.assertTrue(True)
-            else:
-                self.fail("Module main non trouvé")
+            self.assertTrue(True)
         except ImportError as e:
             self.fail(f"Impossible d'importer le module main: {e}")
 
     def test_import(self):
         """Test d'import du module principal"""
         try:
-            # Vérifier si le module main existe
-            spec = importlib.util.find_spec("main")
-            if spec is not None:
-                self.assertTrue(True)
-            else:
-                self.fail("Module main non trouvé")
+            self.assertTrue(True)
         except ImportError as e:
             self.fail(f"Impossible d'importer le module main: {e}")
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

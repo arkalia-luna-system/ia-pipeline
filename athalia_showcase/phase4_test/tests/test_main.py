@@ -1,12 +1,14 @@
+import sys
+import os
+
+
+import unittest
+import importlib.util
 #!/usr/bin/env python3
 """
 Tests pour phase4_test
 """
 
-import sys
-import os
-import unittest
-import importlib.util
 
 # Ajouter le répertoire src au path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
