@@ -11,13 +11,16 @@ import os
 from pathlib import Path
 import subprocess
 import time
+from typing import Any, List
 
 # Import du validateur de sécurité
 try:
     from athalia_core.security_validator import validate_and_run
 except ImportError:
     # Fallback si le module n'est pas disponible
-    def validate_and_run(command: list[str], **kwargs) -> subprocess.CompletedProcess:
+    def validate_and_run(
+        command: List[str], **kwargs: Any
+    ) -> subprocess.CompletedProcess:
         return subprocess.run(command, **kwargs)
 
 
@@ -638,7 +641,10 @@ def main() -> int:
 
     try:
         resultats = validator.validation_complete()
-        validator.generer_rapport_objectif(resultats, resultats["temps_total"])
+        rapport_file = validator.generer_rapport_objectif(
+            resultats, resultats["temps_total"]
+        )
+        print(f"📄 Rapport objectif généré : {rapport_file}")
 
         if resultats["validation_reussie"]:
             print("🎉 Validation objective RÉUSSIE !")
