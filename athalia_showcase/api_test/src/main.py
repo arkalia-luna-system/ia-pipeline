@@ -1,5 +1,3 @@
-
-
 import asyncio
 import logging
 from fastapi import FastAPI
@@ -7,6 +5,7 @@ from pydantic import BaseModel
 from typing import List, Optional, Dict, Any
 from datetime import datetime
 import uvicorn
+
 #!/usr/bin/env python3
 """
 api_test - API REST Ultra-Avancée
