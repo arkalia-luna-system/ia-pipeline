@@ -7,11 +7,11 @@ Optimise les performances en mettant en cache les résultats de génération
 import hashlib
 import json
 import logging
-
+import os
 import pickle
 import time
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Tuple
 
 logger = logging.getLogger(__name__)
 
@@ -22,12 +22,34 @@ class CacheManager:
     def __init__(self, cache_dir: str = ".athalia_cache"):
         self.cache_dir = Path(cache_dir)
         self.cache_dir.mkdir(exist_ok=True, parents=True)
-        self.stats = {
+        self.stats_file = self.cache_dir / "cache_stats.json"
+        self.stats = self._load_stats()
+
+    def _load_stats(self) -> Dict[str, Any]:
+        """Charge les statistiques depuis le fichier"""
+        default_stats = {
             "hits": 0,
             "misses": 0,
             "saves": 0,
             "total_requests": 0,
         }
+
+        try:
+            if self.stats_file.exists():
+                with open(self.stats_file, "r", encoding="utf-8") as f:
+                    return json.load(f)
+        except Exception as e:
+            logger.warning(f"⚠️ Erreur lors du chargement des stats: {e}")
+
+        return default_stats
+
+    def _save_stats(self):
+        """Sauvegarde les statistiques dans le fichier"""
+        try:
+            with open(self.stats_file, "w", encoding="utf-8") as f:
+                json.dump(self.stats, f, indent=2)
+        except Exception as e:
+            logger.warning(f"⚠️ Erreur lors de la sauvegarde des stats: {e}")
 
     def _generate_cache_key(self, blueprint: Dict[str, Any]) -> str:
         """Génère une clé de cache unique basée sur le blueprint"""
@@ -58,6 +80,7 @@ class CacheManager:
                         cached_result = pickle.load(f)
 
                     self.stats["hits"] += 1
+                    self._save_stats()
                     logger.info(f"✅ Cache hit: {cache_key}")
                     return cached_result
                 else:
@@ -66,12 +89,14 @@ class CacheManager:
                     logger.info(f"🗑️ Cache expiré supprimé: {cache_key}")
 
             self.stats["misses"] += 1
+            self._save_stats()
             logger.info(f"❌ Cache miss: {cache_key}")
             return None
 
         except Exception as e:
             logger.warning(f"⚠️ Erreur lors de la récupération du cache: {e}")
             self.stats["misses"] += 1
+            self._save_stats()
             return None
 
     def set(self, blueprint: Dict[str, Any], result: Dict[str, Any]) -> bool:
@@ -88,6 +113,7 @@ class CacheManager:
                 pickle.dump(result, f)
 
             self.stats["saves"] += 1
+            self._save_stats()
             logger.info(f"💾 Cache sauvegardé: {cache_key}")
             return True
 
@@ -100,6 +126,15 @@ class CacheManager:
         try:
             for cache_file in self.cache_dir.glob("*.pkl"):
                 cache_file.unlink()
+
+            # Réinitialiser les statistiques
+            self.stats = {
+                "hits": 0,
+                "misses": 0,
+                "saves": 0,
+                "total_requests": 0,
+            }
+            self._save_stats()
 
             logger.info("🧹 Cache vidé")
             return True
