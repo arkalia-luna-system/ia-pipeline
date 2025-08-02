@@ -11,7 +11,11 @@ import logging
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-import yaml
+# Import conditionnel pour éviter les dépendances
+try:
+    import yaml
+except ImportError:
+    yaml = None
 
 logger = logging.getLogger(__name__)
 
@@ -48,9 +52,14 @@ class AutoDocumenter:
 
         if config_path:
             try:
-                with open(config_path, "r", encoding="utf-8") as f:
-                    user_config = yaml.safe_load(f)
-                    default_config.update(user_config)
+                if yaml is None:
+                    logger.warning(
+                        "Module yaml non disponible, utilisation de la configuration par défaut"
+                    )
+                else:
+                    with open(config_path, "r", encoding="utf-8") as f:
+                        user_config = yaml.safe_load(f)
+                        default_config.update(user_config)
             except Exception as e:
                 logger.warning(
                     f"Impossible de charger la configuration {config_path}: {e}"
