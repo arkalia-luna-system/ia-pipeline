@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Script de commande pour les tests de performance Athalia
+Usage: ath-performance-test [options]
+"""
+
+import sys
+import os
+from pathlib import Path
+
+# Ajouter le répertoire racine au path
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
+def main() -> int:
+    """Fonction principale"""
+    print("⚡ Tests de performance Athalia")
+    print("=" * 50)
+    
+    # Vérifier si le script de test existe
+    test_script = project_root / "scripts" / "run_performance_tests.py"
+    
+    if not test_script.exists():
+        print("❌ Script de test non trouvé")
+        return 1
+    
+    # Exécuter le script de test
+    try:
+        import subprocess
+        result = subprocess.run([
+            sys.executable, str(test_script)
+        ], check=True)
+        
+        print("\n🎉 Tests de performance terminés avec succès!")
+        return 0
+        
+    except subprocess.CalledProcessError as e:
+        print(f"\n❌ Erreur lors des tests: {e}")
+        return 1
+    except Exception as e:
+        print(f"\n❌ Erreur inattendue: {e}")
+        return 1
+
+if __name__ == "__main__":
+    sys.exit(main()) 
