@@ -2,7 +2,7 @@
   "corrections_appliquees": [
     {
       "type": "lisibilite",
-      "ligne": 35,
+      "ligne": 39,
       "description": "Fonction sans docstring"
     },
     {
@@ -17,188 +17,188 @@
     },
     {
       "type": "lisibilite",
-      "ligne": 60,
+      "ligne": 64,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 63,
+      "ligne": 67,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 66,
+      "ligne": 70,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 69,
+      "ligne": 73,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 77,
+      "ligne": 81,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 85,
+      "ligne": 89,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 101,
+      "ligne": 105,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 114,
+      "ligne": 118,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 120,
+      "ligne": 124,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 123,
+      "ligne": 127,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 130,
+      "ligne": 134,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 156,
+      "ligne": 160,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 177,
+      "ligne": 181,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 187,
+      "ligne": 191,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 207,
+      "ligne": 211,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 214,
+      "ligne": 218,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 229,
+      "ligne": 233,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 235,
+      "ligne": 239,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 240,
+      "ligne": 244,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 254,
+      "ligne": 258,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 260,
+      "ligne": 264,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 272,
+      "ligne": 276,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 299,
+      "ligne": 303,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 323,
+      "ligne": 327,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 344,
+      "ligne": 348,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 386,
+      "ligne": 390,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 406,
+      "ligne": 410,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 447,
+      "ligne": 451,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 453,
+      "ligne": 457,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 461,
+      "ligne": 465,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 476,
+      "ligne": 480,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 489,
+      "ligne": 493,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 520,
+      "ligne": 524,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 532,
+      "ligne": 536,
       "description": "Fonction sans docstring"
     },
     {
       "type": "lisibilite",
-      "ligne": 549,
+      "ligne": 553,
       "description": "Fonction sans docstring"
     }
   ],
   "suggestions": [],
-  "fichiers_traites": 15,
+  "fichiers_traites": 17,
   "erreurs_corrigees": 38,
   "resultats": {
     "corrections_appliquees": [
       {
         "type": "lisibilite",
-        "ligne": 35,
+        "ligne": 39,
         "description": "Fonction sans docstring"
       },
       {
@@ -213,182 +213,182 @@
       },
       {
         "type": "lisibilite",
-        "ligne": 60,
+        "ligne": 64,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 63,
+        "ligne": 67,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 66,
+        "ligne": 70,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 69,
+        "ligne": 73,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 77,
+        "ligne": 81,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 85,
+        "ligne": 89,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 101,
+        "ligne": 105,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 114,
+        "ligne": 118,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 120,
+        "ligne": 124,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 123,
+        "ligne": 127,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 130,
+        "ligne": 134,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 156,
+        "ligne": 160,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 177,
+        "ligne": 181,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 187,
+        "ligne": 191,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 207,
+        "ligne": 211,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 214,
+        "ligne": 218,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 229,
+        "ligne": 233,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 235,
+        "ligne": 239,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 240,
+        "ligne": 244,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 254,
+        "ligne": 258,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 260,
+        "ligne": 264,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 272,
+        "ligne": 276,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 299,
+        "ligne": 303,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 323,
+        "ligne": 327,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 344,
+        "ligne": 348,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 386,
+        "ligne": 390,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 406,
+        "ligne": 410,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 447,
+        "ligne": 451,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 453,
+        "ligne": 457,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 461,
+        "ligne": 465,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 476,
+        "ligne": 480,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 489,
+        "ligne": 493,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 520,
+        "ligne": 524,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 532,
+        "ligne": 536,
         "description": "Fonction sans docstring"
       },
       {
         "type": "lisibilite",
-        "ligne": 549,
+        "ligne": 553,
         "description": "Fonction sans docstring"
       }
     ],
     "suggestions": [],
-    "fichiers_traites": 15,
+    "fichiers_traites": 17,
     "erreurs_corrigees": 38
   }
 }
