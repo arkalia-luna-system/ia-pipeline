@@ -229,7 +229,6 @@ omit = [
     "*/backups/*",
     "*/logs/*",
     "*/htmlcov/*",
-    "*/templates/*",
 ]
 branch = true
 relative_files = true
