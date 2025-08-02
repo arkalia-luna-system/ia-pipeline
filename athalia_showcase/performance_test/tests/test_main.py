@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Tests pour test_ultra_avance
+Tests pour performance_test
 """
 
 import sys
@@ -12,8 +12,8 @@ import importlib.util
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 
 
-class TestUltraAvance(unittest.TestCase):
-    """Tests pour test_ultra_avance"""
+class TestPerformanceTest(unittest.TestCase):
+    """Tests pour performance_test"""
 
     def setUp(self):
         """Configuration avant chaque test"""

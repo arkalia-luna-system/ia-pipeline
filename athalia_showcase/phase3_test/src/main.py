@@ -1,7 +1,4 @@
-#!/usr/bin/env python3
-"""
-phase3_test - API REST Ultra-Avancée
-"""
+
 
 import asyncio
 import logging
@@ -10,6 +7,11 @@ from pydantic import BaseModel
 from typing import List, Optional, Dict, Any
 from datetime import datetime
 import uvicorn
+#!/usr/bin/env python3
+"""
+phase3_test - API REST Ultra-Avancée
+"""
+
 
 # Configuration logging
 logging.basicConfig(level=logging.INFO)

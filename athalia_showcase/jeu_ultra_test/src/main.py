@@ -1,8 +1,4 @@
-#!/usr/bin/env python3
-"""
-jeu_ultra_test - Jeu Ultra-Avancé
-Jeu de plateforme ultra-avancé avec physique réaliste, IA ennemie et effets visuels
-"""
+
 
 import pygame
 import random
@@ -12,6 +8,12 @@ import asyncio
 from typing import List, Tuple
 from dataclasses import dataclass
 from enum import Enum
+#!/usr/bin/env python3
+"""
+jeu_ultra_test - Jeu Ultra-Avancé
+Jeu de plateforme ultra-avancé avec physique réaliste, IA ennemie et effets visuels
+"""
+
 
 # Configuration avancée du logging
 logging.basicConfig(
@@ -256,7 +258,7 @@ class Particle:
 
     def draw(self, screen):
         if self.lifetime > 0:
-            alpha = int(255 * (self.lifetime / self.max_lifetime))
+
             pygame.draw.circle(
                 screen,
                 self.color,
@@ -276,7 +278,7 @@ class Game:
         # Objets du jeu
         self.player = Player(Vector2D(100, 100))
         self.enemies: List[Enemy] = []
-        self.platforms: List[Platform] = []
+        self.platforms: List(Platform) = []
         self.particles: List[Particle] = []
 
         # UI
@@ -295,14 +297,14 @@ class Game:
 
     def init_level(self):
         # Créer les plateformes
-        self.platforms = [
+        self.platforms = (
             Platform(0, SCREEN_HEIGHT - 40, SCREEN_WIDTH, 40),  # Sol
             Platform(200, 600, 200, 20),
             Platform(500, 500, 200, 20),
             Platform(800, 400, 200, 20),
             Platform(300, 300, 200, 20),
             Platform(600, 200, 200, 20),
-        ]
+        )
 
         # Créer les ennemis
         self.enemies = [
