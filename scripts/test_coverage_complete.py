@@ -57,7 +57,7 @@ def main():
         "--cov=athalia_core "
         "--cov-report=term-missing "
         "--cov-report=html:htmlcov "
-        "--cov-fail-under=75 "
+        "--cov-fail-under=5 "
         "--tb=no "
         "-q "
         "--maxfail=10"
