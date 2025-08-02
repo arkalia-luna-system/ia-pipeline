@@ -16,6 +16,7 @@ from .auto_cicd import AutoCICD
 from .auto_cleaner import AutoCleaner
 from .auto_documenter import AutoDocumenter
 from .auto_tester import AutoTester
+from .cache_manager import get_cached_result, cache_result, get_cache_stats
 from .code_linter import CodeLinter
 from .correction_optimizer import CorrectionOptimizer
 from .generation import generate_project
@@ -130,6 +131,15 @@ class UnifiedOrchestrator:
     def run_full_workflow(self, blueprint: Dict[str, Any]) -> Dict[str, Any]:
         """Exécute le workflow complet"""
         logger.info("🚀 Démarrage du workflow unifié")
+
+        # Vérifier le cache en premier
+        cached_result = get_cached_result(blueprint)
+        if cached_result:
+            logger.info("✅ Résultat trouvé dans le cache")
+            cached_result["cached"] = True
+            cached_result["cache_stats"] = get_cache_stats()
+            return cached_result
+
         self.workflow_results["status"] = "running"
 
         try:
@@ -168,6 +178,10 @@ class UnifiedOrchestrator:
 
             self.workflow_results["status"] = "completed"
             logger.info("✅ Workflow terminé avec succès")
+
+            # Sauvegarder dans le cache
+            cache_result(blueprint, self.workflow_results)
+            logger.info("💾 Résultat sauvegardé dans le cache")
 
         except Exception as e:
             self.workflow_results["status"] = "failed"
@@ -325,7 +339,7 @@ class UnifiedOrchestrator:
                 suggestions_count = len(resultats.get("suggestions", []))
                 fichiers_traites = resultats.get("fichiers_traites", 0)
 
-                logger.info(f"✅ Auto-correction avancée terminée:")
+                logger.info("✅ Auto-correction avancée terminée:")
                 logger.info(f"  - Fichiers traités: {fichiers_traites}")
                 logger.info(f"  - Corrections appliquées: {corrections_count}")
                 logger.info(f"  - Suggestions: {suggestions_count}")
