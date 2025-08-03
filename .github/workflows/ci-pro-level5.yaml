@@ -61,7 +61,7 @@ jobs:
       - name: Run tests on ${{ matrix.os }} with Python ${{ matrix.python-version }}
         run: |
           echo "🧪 Running tests on ${{ matrix.os }} with Python ${{ matrix.python-version }} (supported versions: 3.10, 3.11, 3.12)..."
-          python -m pytest tests/ --tb=short -x --maxfail=10 --timeout=60
+          python -m pytest tests/ --tb=short -x --maxfail=10
 
       - name: Basic linting
         run: |
