@@ -637,17 +637,28 @@ class UnifiedOrchestrator:
                             # Ne pas écraser le main.py existant, créer dans un sous-dossier
                             if template_path == "main.py":
                                 # Créer un dossier spécial pour les templates artistiques
-                                artistic_path = self.project_path / "src" / "artistic_templates" / template_path
+                                artistic_path = (
+                                    self.project_path
+                                    / "src"
+                                    / "artistic_templates"
+                                    / template_path
+                                )
                                 artistic_path.parent.mkdir(parents=True, exist_ok=True)
                                 with open(artistic_path, "w", encoding="utf-8") as f:
                                     f.write(template_content)
-                                templates_applied.append(f"src/artistic_templates/{template_path}")
-                                logger.info(f"✅ Template artistique appliqué: src/artistic_templates/{template_path}")
+                                templates_applied.append(
+                                    f"src/artistic_templates/{template_path}"
+                                )
+                                logger.info(
+                                    f"✅ Template artistique appliqué: src/artistic_templates/{template_path}"
+                                )
                             else:
                                 with open(full_path, "w", encoding="utf-8") as f:
                                     f.write(template_content)
                                 templates_applied.append(f"src/{template_path}")
-                                logger.info(f"✅ Template appliqué: src/{template_path}")
+                                logger.info(
+                                    f"✅ Template appliqué: src/{template_path}"
+                                )
                         except Exception as e:
                             logger.warning(
                                 f"⚠️ Erreur application template {template_path}: {e}"
