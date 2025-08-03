@@ -1,0 +1,152 @@
+name: CI/CD Dependencies Fix
+
+on:
+  push:
+    branches: [ main, develop, ci-cd-professional ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  install-dependencies:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        
+    - name: Cache pip dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ matrix.python-version }}-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-${{ matrix.python-version }}-
+          
+    - name: Upgrade pip
+      run: |
+        python -m pip install --upgrade pip
+        pip install --upgrade setuptools wheel
+        
+    - name: Install critical dependencies first
+      run: |
+        echo "🔧 Installation des dépendances critiques..."
+        pip install click>=8.1.0 pyyaml>=6.0.0 requests>=2.28.0 jinja2>=3.0.0 rich>=13.0.0 psutil>=5.9.0
+        pip install pytest>=7.0.0 pytest-cov>=4.0.0 pytest-mock>=3.10.0 python-dotenv>=1.0.0
+        pip install tqdm>=4.65.0 colorama>=0.4.6
+        
+    - name: Install project dependencies
+      run: |
+        echo "📦 Installation des dépendances du projet..."
+        pip install -r requirements.txt
+        
+    - name: Install project in development mode
+      run: |
+        echo "🔧 Installation du projet en mode développement..."
+        pip install -e .
+        
+    - name: Verify critical imports
+      run: |
+        echo "🔍 Vérification des imports critiques..."
+        python -c "
+        import sys
+        print(f'Python version: {sys.version}')
+        print(f'Python path: {sys.path}')
+        
+        critical_modules = ['click', 'yaml', 'requests', 'jinja2', 'rich', 'psutil', 'pytest']
+        
+        for module in critical_modules:
+            try:
+                __import__(module)
+                print(f'✅ {module} - Import réussi')
+            except ImportError as e:
+                print(f'❌ {module} - Import échoué: {e}')
+                sys.exit(1)
+                
+        try:
+            import athalia_core
+            print('✅ athalia_core - Import réussi')
+        except ImportError as e:
+            print(f'❌ athalia_core - Import échoué: {e}')
+            sys.exit(1)
+        "
+        
+    - name: Run dependency installation script
+      run: |
+        echo "🚀 Exécution du script d'installation des dépendances..."
+        python scripts/ci/install_dependencies.py
+        
+    - name: Run test diagnostic script
+      run: |
+        echo "🧪 Exécution du script de diagnostic des tests..."
+        python scripts/ci/test_runner.py
+        
+    - name: Run specific tests
+      run: |
+        echo "🧪 Exécution de tests spécifiques..."
+        python -m pytest tests/unit/agents/test_audit_agent.py::TestAuditAgent::test_act_method_error_handling -v
+        python -m pytest tests/unit/modules/test_unified_orchestrator_complete.py::TestUnifiedOrchestrator::test_step_generate_project_failure -v
+        
+    - name: Run performance tests
+      run: |
+        echo "⚡ Exécution des tests de performance..."
+        python -m pytest tests/performance/ -v --benchmark-only
+        
+    - name: Run linting
+      run: |
+        echo "🔍 Exécution du linting..."
+        pip install ruff black
+        ruff check . --quiet
+        black . --check --quiet
+        
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: test-results-${{ matrix.python-version }}
+        path: |
+          .pytest_cache/
+          logs/
+          *.log
+          
+  test-all:
+    needs: install-dependencies
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10"]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip setuptools wheel
+        pip install click>=8.1.0 pyyaml>=6.0.0 requests>=2.28.0 jinja2>=3.0.0 rich>=13.0.0 psutil>=5.9.0
+        pip install pytest>=7.0.0 pytest-cov>=4.0.0 pytest-mock>=3.10.0 python-dotenv>=1.0.0
+        pip install tqdm>=4.65.0 colorama>=0.4.6
+        pip install -r requirements.txt
+        pip install -e .
+        
+    - name: Run all tests
+      run: |
+        echo "🧪 Exécution de tous les tests..."
+        python -m pytest tests/ -v --tb=short --maxfail=10
+        
+    - name: Run benchmarks
+      run: |
+        echo "⚡ Exécution des benchmarks..."
+        python -m pytest tests/performance/ -v --benchmark-only --benchmark-skip 
