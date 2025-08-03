@@ -53,7 +53,9 @@ class TestAutoCorrectionAdvanced(unittest.TestCase):
         try:
             self.assertTrue(True, "Structure des modules avancés correcte")
         except ImportError as e:
-            raise AssertionError(f"Structure des modules avancés non disponible: {e}") from e
+            raise AssertionError(
+                f"Structure des modules avancés non disponible: {e}"
+            ) from e
 
 
 if __name__ == "__main__":
