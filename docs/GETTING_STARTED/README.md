@@ -78,7 +78,7 @@ python athalia_core/main.py --test-quick
 
 ### **✅ Fonctionnalités Disponibles**
 - **Installation automatique** : Scripts de configuration
-- **Tests complets** : 1453 tests collectés
+- **Tests complets** : **1372 tests collectés** ✅ **VÉRIFIÉ**
 - **Documentation complète** : Guides et exemples
 - **Support multi-plateforme** : macOS, Linux, Windows
 - **Performance optimisée** : Cache intelligent

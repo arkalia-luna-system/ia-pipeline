@@ -1,7 +1,7 @@
 # 🔧 Guide de Dépannage - Athalia
 
 **Date :** 27 janvier 2025
-**Version :** 1.0.0 (ACTIVE DEVELOPMENT)
+**Version :** 11.0 (ACTIVE DEVELOPMENT)
 
 ---
 

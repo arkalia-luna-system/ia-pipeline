@@ -103,7 +103,7 @@ cached = cache.get_or_compute("key", compute_func, ttl=3600)
 
 ### Lancer les Tests
 ```bash
-# Tous les tests (1453 tests)
+# Tous les tests (1372 tests) ✅ VÉRIFIÉ
 pytest
 
 # Avec couverture
