@@ -76,7 +76,6 @@ except ImportError:
 try:
     from athalia_core.classification.project_classifier import classify_project_type
     from athalia_core.classification.project_types import (
-        ProjectType,
         get_project_config,
     )
 
@@ -235,35 +234,35 @@ class UnifiedOrchestrator:
             # Étape 2: Génération du projet
             self._step_generate_project(blueprint)
 
-            # Étape 3: Amélioration IA intelligente
+            # Étape 3: Templates artistiques (si applicable)
+            self._step_artistic_templates(blueprint)
+
+            # Étape 4: Amélioration IA intelligente
             self._step_ai_enhancement(blueprint)
 
-            # Étape 4: Audit de sécurité
+            # Étape 5: Audit de sécurité
             self._step_security_audit()
 
-            # Étape 5: Linting du code
+            # Étape 6: Linting du code
             self._step_code_linting()
 
-            # Étape 6: Auto-correction avancée
+            # Étape 7: Auto-correction avancée
             self._step_advanced_auto_correction()
 
-            # Étape 7: Optimisation des corrections
+            # Étape 8: Optimisation des corrections
             self._step_correction_optimization()
 
-            # Étape 8: Tests automatiques
+            # Étape 9: Tests automatiques
             self._step_auto_testing()
 
-            # Étape 9: Documentation automatique
+            # Étape 10: Documentation automatique
             self._step_auto_documentation()
 
-            # Étape 10: Nettoyage automatique
+            # Étape 11: Nettoyage automatique
             self._step_auto_cleaning()
 
-            # Étape 11: Validation robotique (si applicable)
+            # Étape 12: Validation robotique (si applicable)
             self._step_robotics_validation(blueprint)
-
-            # Étape 12: Templates artistiques (si applicable)
-            self._step_artistic_templates(blueprint)
 
             # Étape 13: Classification avancée
             self._step_advanced_classification(blueprint)
@@ -625,21 +624,40 @@ class UnifiedOrchestrator:
 
                 # Appliquer les templates artistiques
                 if self.artistic_templates:
+                    templates_applied = []
                     for (
                         template_path,
                         template_content,
                     ) in self.artistic_templates.items():
-                        full_path = self.project_path / template_path
+                        # Créer le chemin complet dans le projet
+                        full_path = self.project_path / "src" / template_path
                         full_path.parent.mkdir(parents=True, exist_ok=True)
 
-                        with open(full_path, "w", encoding="utf-8") as f:
-                            f.write(template_content)
+                        try:
+                            # Ne pas écraser le main.py existant, créer dans un sous-dossier
+                            if template_path == "main.py":
+                                # Créer un dossier spécial pour les templates artistiques
+                                artistic_path = self.project_path / "src" / "artistic_templates" / template_path
+                                artistic_path.parent.mkdir(parents=True, exist_ok=True)
+                                with open(artistic_path, "w", encoding="utf-8") as f:
+                                    f.write(template_content)
+                                templates_applied.append(f"src/artistic_templates/{template_path}")
+                                logger.info(f"✅ Template artistique appliqué: src/artistic_templates/{template_path}")
+                            else:
+                                with open(full_path, "w", encoding="utf-8") as f:
+                                    f.write(template_content)
+                                templates_applied.append(f"src/{template_path}")
+                                logger.info(f"✅ Template appliqué: src/{template_path}")
+                        except Exception as e:
+                            logger.warning(
+                                f"⚠️ Erreur application template {template_path}: {e}"
+                            )
 
-                    self.workflow_results["artistic"]["templates_applied"] = list(
-                        self.artistic_templates.keys()
-                    )
+                    self.workflow_results["artistic"][
+                        "templates_applied"
+                    ] = templates_applied
                     logger.info(
-                        f"✅ {len(self.artistic_templates)} templates artistiques appliqués"
+                        f"✅ {len(templates_applied)} templates artistiques appliqués"
                     )
                 else:
                     logger.warning("⚠️ Templates artistiques non disponibles")
@@ -663,7 +681,6 @@ class UnifiedOrchestrator:
             # Classification avancée avec le module spécialisé
             if self.project_classifier:
                 project_description = blueprint.get("description", "")
-                project_name = blueprint.get("name", "")
 
                 # Classification intelligente
                 detected_type = self.project_classifier(project_description)
