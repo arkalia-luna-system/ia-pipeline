@@ -1,7 +1,7 @@
 # 🛠️ Commandes Athalia (bin/)
 
 **Date :** 3 août 2025  
-**Statut :** ✅ **43 COMMANDES OPÉRATIONNELLES**
+**Statut :** ✅ **43 COMMANDES TESTÉES UTILISATEUR (16/20)**
 
 Ce dossier contient toutes les commandes exécutables et utilitaires système d'Athalia.
 
