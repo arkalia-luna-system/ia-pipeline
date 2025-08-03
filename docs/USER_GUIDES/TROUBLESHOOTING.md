@@ -1,7 +1,7 @@
 # 🔧 Guide de Dépannage - Athalia
 
 **Date :** 27 janvier 2025
-**Version :** 11.0 (ACTIVE DEVELOPMENT)
+**Version :** 1.0.0 (ACTIVE DEVELOPMENT)
 
 ---
 
@@ -40,7 +40,7 @@ PermissionError: [Errno 13] Permission denied
 chmod +x athalia_unified.py
 
 # Ou exécuter avec sudo si nécessaire
-sudo python athalia_unified.py --help
+sudo python bin/athalia_unified.py --help
 ```
 
 ### **❌ Erreur de Configuration**
@@ -67,10 +67,10 @@ cp config/athalia_config.yaml.example config/athalia_config.yaml
 python -c "import athalia_core; print('✅ Import réussi')"
 
 # Vérifier la CLI
-python athalia_unified.py --help
+python bin/athalia_unified.py --help
 
 # Tester un audit rapide
-python athalia_unified.py . --action audit --dry-run
+python bin/athalia_unified.py . --action audit --dry-run
 ```
 
 ### **2. Vérification des Dépendances**
@@ -101,10 +101,10 @@ which python
 ### **Problème de Performance**
 ```bash
 # Mode verbose pour diagnostiquer
-python athalia_unified.py . --action audit --verbose
+python bin/athalia_unified.py . --action audit --verbose
 
 # Mode dry-run pour tester
-python athalia_unified.py . --action complete --dry-run
+python bin/athalia_unified.py . --action complete --dry-run
 ```
 
 ### **Problème de Tests**
@@ -120,7 +120,7 @@ python -m pytest tests/ -v
 ### **Problème de Documentation**
 ```bash
 # Régénérer la documentation
-python athalia_unified.py . --action complete --no-audit --no-clean
+python bin/athalia_unified.py . --action complete --no-audit --no-clean
 ```
 
 ---

@@ -2,6 +2,7 @@
 
 **Temps estimé :** 5 minutes
 **Niveau :** Débutant à Intermédiaire
+**Version :** 1.0.0
 
 ---
 
@@ -15,7 +16,7 @@ Ce guide vous permettra de **démarrer avec Athalia en 5 minutes** et de compren
 
 ### ✅ **Système Requis**
 - **OS :** macOS, Linux, Windows (WSL)
-- **Python :** 3.8+
+- **Python :** 3.10+
 - **Git :** 2.20+
 - **Espace disque :** 2GB minimum
 
@@ -53,7 +54,7 @@ pip install -r requirements.txt
 
 ### 4️⃣ **Vérifier l'Installation**
 ```bash
-python athalia_unified.py --help
+python bin/athalia_unified.py --help
 ```
 
 ---
@@ -63,25 +64,25 @@ python athalia_unified.py --help
 ### 🔍 **Audit Rapide de Votre Projet**
 ```bash
 # Analyser un projet existant
-python athalia_unified.py /chemin/vers/votre/projet --action audit
+python bin/athalia_unified.py /chemin/vers/votre/projet --action audit
 
 # Exemple
-python athalia_unified.py ./mon-projet --action audit
+python bin/athalia_unified.py ./mon-projet --action audit
 ```
 
 ### 🧪 **Industrialisation Complète**
 ```bash
 # Industrialisation complète
-python athalia_unified.py /chemin/vers/votre/projet
+python bin/athalia_unified.py /chemin/vers/votre/projet
 
 # Mode simulation (dry-run)
-python athalia_unified.py /chemin/vers/votre/projet --dry-run
+python bin/athalia_unified.py /chemin/vers/votre/projet --dry-run
 ```
 
 ### 📊 **Voir le Dashboard**
 ```bash
 # Lancer le dashboard
-python athalia_unified.py /chemin/vers/votre/projet --action dashboard
+python bin/athalia_unified.py /chemin/vers/votre/projet --action dashboard
 
 # Ouvrir dans le navigateur
 open http://localhost:8501
@@ -94,28 +95,28 @@ open http://localhost:8501
 ### 🔧 **Auto-Correction**
 ```bash
 # Correction automatique
-python athalia_unified.py /chemin/vers/votre/projet --action fix
+python bin/athalia_unified.py /chemin/vers/votre/projet --action fix
 
 # Correction avec mode simulation
-python athalia_unified.py /chemin/vers/votre/projet --action fix --dry-run
+python bin/athalia_unified.py /chemin/vers/votre/projet --action fix --dry-run
 ```
 
 ### 🔍 **Scan de Projets**
 ```bash
 # Scanner un répertoire
-python athalia_unified.py /chemin/repertoire --scan
+python bin/athalia_unified.py /chemin/repertoire --scan
 
 # Scan avec mode verbeux
-python athalia_unified.py /chemin/repertoire --scan --verbose
+python bin/athalia_unified.py /chemin/repertoire --scan --verbose
 ```
 
 ### 👤 **Profils Utilisateur**
 ```bash
 # Utiliser un profil spécifique
-python athalia_unified.py /chemin/projet --utilisateur monnom
+python bin/athalia_unified.py /chemin/projet --utilisateur monnom
 
 # Mode verbeux pour plus de détails
-python athalia_unified.py /chemin/projet --verbose
+python bin/athalia_unified.py /chemin/projet --verbose
 ```
 
 ---
@@ -125,25 +126,25 @@ python athalia_unified.py /chemin/projet --verbose
 ### ⚡ **Industrialisation avec Options**
 ```bash
 # Industrialisation complète
-python athalia_unified.py /chemin/projet --action complete
+python bin/athalia_unified.py /chemin/projet --action complete
 
 # Industrialisation sans audit
-python athalia_unified.py /chemin/projet --action complete --no-audit
+python bin/athalia_unified.py /chemin/projet --action complete --no-audit
 
 # Industrialisation sans nettoyage
-python athalia_unified.py /chemin/projet --action complete --no-clean
+python bin/athalia_unified.py /chemin/projet --action complete --no-clean
 ```
 
 ### 📊 **Mode Simulation et Auto-Correction**
 ```bash
 # Mode simulation (dry-run)
-python athalia_unified.py /chemin/projet --dry-run
+python bin/athalia_unified.py /chemin/projet --dry-run
 
 # Auto-correction
-python athalia_unified.py /chemin/projet --auto-fix
+python bin/athalia_unified.py /chemin/projet --auto-fix
 
 # Combiner les deux
-python athalia_unified.py /chemin/projet --dry-run --auto-fix
+python bin/athalia_unified.py /chemin/projet --dry-run --auto-fix
 ```
 
 ---
@@ -219,7 +220,7 @@ chmod +x athalia_unified.py
 lsof -ti:8501 | xargs kill -9
 
 # Relancer le dashboard
-python athalia_unified.py /chemin/projet --action dashboard
+python bin/athalia_unified.py /chemin/projet --action dashboard
 ```
 
 ### 📞 **Support**

@@ -1,6 +1,6 @@
 # 🚀 Guide d'Utilisation - Athalia
 
-**Version :** 11.0 (ACTIVE DEVELOPMENT)  
+**Version :** 1.0.0 (ACTIVE DEVELOPMENT)  
 **Date :** 31 Juillet 2025
 
 ---
@@ -17,29 +17,29 @@ Ce guide explique comment utiliser Athalia, le système d'intelligence artificie
 
 ```bash
 # Audit complet d'un projet
-python athalia_unified.py /chemin/vers/projet --action audit
+python bin/athalia_unified.py /chemin/vers/projet --action audit
 
 # Industrialisation complète
-python athalia_unified.py /chemin/vers/projet --action complete
+python bin/athalia_unified.py /chemin/vers/projet --action complete
 
 # Dashboard interactif
-python athalia_unified.py /chemin/vers/projet --action dashboard
+python bin/athalia_unified.py /chemin/vers/projet --action dashboard
 
 # Mode simulation (dry-run)
-python athalia_unified.py /chemin/vers/projet --action audit --dry-run
+python bin/athalia_unified.py /chemin/vers/projet --action audit --dry-run
 ```
 
 ### **Options Avancées**
 
 ```bash
 # Audit avec détails
-python athalia_unified.py /chemin/vers/projet --action audit --verbose
+python bin/athalia_unified.py /chemin/vers/projet --action audit --verbose
 
 # Industrialisation sans audit préalable
-python athalia_unified.py /chemin/vers/projet --action complete --no-audit
+python bin/athalia_unified.py /chemin/vers/projet --action complete --no-audit
 
 # Dashboard avec profil utilisateur
-python athalia_unified.py /chemin/vers/projet --action dashboard --utilisateur dev
+python bin/athalia_unified.py /chemin/vers/projet --action dashboard --utilisateur dev
 ```
 
 ---
@@ -49,22 +49,46 @@ python athalia_unified.py /chemin/vers/projet --action dashboard --utilisateur d
 ### **Fichier de Configuration Principal**
 ```yaml
 # config/athalia_config.yaml
-app:
-  name: athalia-dev-setup
-  version: "11.0.0"
-  debug: false
-  port: 8000
+general:
+  lang: fr
+  verbose: true
+  auto_fix: true
+  dry_run: false
+  log_level: INFO
+  log_file: logs/athalia.log
 
-security:
-  validate_commands: true
-  allowed_paths:
-    - "/usr/bin"
-    - "/opt/homebrew"
+modules:
+  audit: true
+  clean: true
+  document: false
+  test: true
+  cicd: false
+  correction: true
+  profiles: true
+  dashboard: false
+  security: true
+  analytics: false
+  linting: false
 
-logging:
-  level: "INFO"
-  file: "logs/athalia.log"
-  max_size: "10MB"
+ai:
+  models:
+    - ollama_mistral
+    - ollama_llama
+    - mock
+  timeout: 15
+  max_retries: 2
+  fallback_enabled: true
+
+testing:
+  auto_run: false
+  coverage: false
+  parallel: false
+  timeout: 60
+
+cicd:
+  github_actions: false
+  docker: false
+  deployment: false
 ```
 
 ---

@@ -1,6 +1,6 @@
 # 🚀 Guide d'Installation - Athalia
 
-**Version :** 11.0 (ACTIVE DEVELOPMENT)  
+**Version :** 1.0.0 (ACTIVE DEVELOPMENT)  
 **Date :** 31 Juillet 2025
 
 ---
@@ -50,8 +50,8 @@ source .venv/bin/activate
 # Installation complète
 pip install -r requirements.txt
 
-# Ou installation minimale
-pip install -r config/requirements-minimal.txt
+# Ou installation avec options de développement
+pip install -e .[dev]
 ```
 
 ### **4. Vérifier l'Installation**
@@ -61,6 +61,9 @@ python athalia_core/ready_check.py
 
 # Test des fonctionnalités principales
 python -m pytest tests/ -v --tb=short
+
+# Vérifier le CLI principal
+python bin/athalia_unified.py --help
 ```
 
 ---
@@ -70,22 +73,35 @@ python -m pytest tests/ -v --tb=short
 ### **Fichier de Configuration Principal**
 ```yaml
 # config/athalia_config.yaml
-app:
-  name: athalia-dev-setup
-  version: "11.0.0"
-  debug: false
-  port: 8000
+general:
+  lang: fr
+  verbose: true
+  auto_fix: true
+  dry_run: false
+  log_level: INFO
+  log_file: logs/athalia.log
 
-security:
-  validate_commands: true
-  allowed_paths:
-    - "/usr/bin"
-    - "/opt/homebrew"
+modules:
+  audit: true
+  clean: true
+  document: false
+  test: true
+  cicd: false
+  correction: true
+  profiles: true
+  dashboard: false
+  security: true
+  analytics: false
+  linting: false
 
-logging:
-  level: "INFO"
-  file: "logs/athalia.log"
-  max_size: "10MB"
+ai:
+  models:
+    - ollama_mistral
+    - ollama_llama
+    - mock
+  timeout: 15
+  max_retries: 2
+  fallback_enabled: true
 ```
 
 ### **Variables d'Environnement**
@@ -110,22 +126,22 @@ export OLLAMA_MODEL=qwen2.5:7b
 python -m pytest tests/ -v
 
 # Tests de sécurité
-python -m pytest tests/test_security_validator.py -v
+python -m pytest tests/security/ -v
 
 # Tests de performance
-python scripts/quick_performance_test.py
+python scripts/monitoring/quick_performance_test.py
 ```
 
 ### **Test Manuel**
 ```bash
 # Audit d'un projet
-python athalia_unified.py . --action audit --dry-run
+python bin/athalia_unified.py . --action audit --dry-run
 
 # Dashboard
 python athalia_core/dashboard.py
 
 # CLI principal
-python athalia_core/cli.py --help
+python bin/athalia_unified.py --help
 ```
 
 ---
