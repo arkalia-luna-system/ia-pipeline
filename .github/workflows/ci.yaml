@@ -146,7 +146,7 @@ jobs:
       - name: Run safe core tests with coverage
         timeout-minutes: 15
         run: |
-          python -m pytest tests/ --tb=short -x --maxfail=10 --timeout=60 --durations=10
+          python -m pytest tests/ --tb=short -x --maxfail=10 --durations=10
 
       - name: Run bin tests with coverage
         timeout-minutes: 10

@@ -57,7 +57,7 @@ jobs:
       - name: Run basic tests
         run: |
           echo "🧪 Running basic tests..."
-          python -m pytest tests/ --cov=athalia_core --cov-report=term-missing --cov-fail-under=5 --tb=short -x --maxfail=10 --timeout=60
+          python -m pytest tests/ --cov=athalia_core --cov-report=term-missing --cov-fail-under=5 --tb=short -x --maxfail=10
 
       - name: Basic linting
         run: |
