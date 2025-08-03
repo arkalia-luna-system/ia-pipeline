@@ -1,6 +1,8 @@
 # 🧪 Tests Unitaires
-**Dossier :** `tests/unit/`
-**Objectif :** Tests des composants individuels isolés (70% du total des tests)
+**Dossier :** `tests/unit/`  
+**Date :** 3 août 2025  
+**Fichiers :** **143 fichiers Python** ✅ **COMPTÉ**  
+**Objectif :** Tests des composants individuels isolés
 
 ## 📁 Structure
 
