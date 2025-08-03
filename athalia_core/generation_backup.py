@@ -160,56 +160,41 @@ def generate_main_code(blueprint: dict, project_path: Optional[Path] = None) -> 
     if project_type == "api":
         main_content = f"""#!/usr/bin/env python3
 \"\"\"
-{project_name} - API REST Ultra-Avancée
+{project_name} - API avec FastAPI
 \"\"\"
 
-import asyncio
-import logging
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from pydantic import BaseModel
-from typing import List, Optional, Dict, Any
-from datetime import datetime
-import uvicorn
+from typing import List, Optional
 
-# Configuration logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+app = FastAPI(title="{project_name}")
 
-app = FastAPI(title="{project_name}", version="2.0.0")
-
-class AdvancedItem(BaseModel):
+class Item(BaseModel):
     id: Optional[int] = None
     name: str
     description: Optional[str] = None
-    metadata: Dict[str, Any] = {{}}
-    version: str = "1.0.0"
 
 @app.get("/")
 async def root():
-    return {{"message": "Bienvenue sur {project_name} API Ultra-Avancée", "version": "2.0.0"}}
+    return {{"message": "Bienvenue sur {project_name} API"}}
 
-@app.get("/items/", response_model=List[AdvancedItem])
+@app.get("/items/", response_model=List[Item])
 async def get_items():
-    items = [AdvancedItem(id=1, name="Item Ultra-Avancé", description="Description avancée")]
-    return items
+    return [Item(id=1, name="Item 1", description="Description")]
 
-@app.post("/items/", response_model=AdvancedItem)
-async def create_item(item: AdvancedItem):
-    logger.info(f"Création d'un nouvel item: {{item.name}}")
+@app.post("/items/", response_model=Item)
+async def create_item(item: Item):
     return item
 
-@app.get("/health")
-async def health_check():
-    return {{"status": "healthy", "timestamp": datetime.now().isoformat()}}
+def main():
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
 
-async def main():
-    logger.info("🚀 Démarrage de l'API Ultra-Avancée")
-    config = uvicorn.Config(app, host="0.0.0.0", port=8000, log_level="info")
-    server = uvicorn.Server(config)
-    await server.serve()
+def run():
+    main()
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()
 """
     else:
         main_content = f"""#!/usr/bin/env python3

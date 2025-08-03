@@ -18,10 +18,16 @@ def test_module_has_content():
     assert len(dir(module)) > 0
 
 
-def test_function_cache_function_exists():
-    """Test que la fonction cache_function existe."""
-    assert hasattr(module, "cache_function")
-    assert callable(getattr(module, "cache_function"))
+def test_function_cache_result_exists():
+    """Test que la fonction cache_result existe."""
+    assert hasattr(module, "cache_result")
+    assert callable(getattr(module, "cache_result"))
+
+
+def test_function_get_cached_result_exists():
+    """Test que la fonction get_cached_result existe."""
+    assert hasattr(module, "get_cached_result")
+    assert callable(getattr(module, "get_cached_result"))
 
 
 def test_function_clear_cache_exists():
@@ -36,10 +42,10 @@ def test_function_get_cache_stats_exists():
     assert callable(getattr(module, "get_cache_stats"))
 
 
-def test_function_wraps_exists():
-    """Test que la fonction wraps existe."""
-    assert hasattr(module, "wraps")
-    assert callable(getattr(module, "wraps"))
+def test_function_get_cache_manager_exists():
+    """Test que la fonction get_cache_manager existe."""
+    assert hasattr(module, "get_cache_manager")
+    assert callable(getattr(module, "get_cache_manager"))
 
 
 def test_class_CacheManager_exists():
