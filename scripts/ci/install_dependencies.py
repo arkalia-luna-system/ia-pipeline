@@ -4,10 +4,9 @@ Script d'installation des dépendances pour l'environnement CI/CD.
 Corrige les problèmes d'importation manquantes.
 """
 
+import os
 import subprocess
 import sys
-import os
-from pathlib import Path
 
 
 def run_command(command, description):

@@ -3,10 +3,9 @@
 Script d'exécution des tests avec diagnostic des problèmes d'importation.
 """
 
+import os
 import subprocess
 import sys
-import os
-from pathlib import Path
 
 
 def run_command(command, description, capture_output=True):
