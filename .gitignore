@@ -219,6 +219,9 @@ cache/
 # Showcase projects (temporarily ignored)
 athalia_showcase/
 
+# Dashboard files (generated)
+dashboard/
+
 # Large files
 athalia.f(f
 *.f(f
