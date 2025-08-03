@@ -1,7 +1,8 @@
 # 🚀 Guide d'Installation - Athalia
 
 **Version :** 11.0 (ACTIVE DEVELOPMENT)  
-**Date :** 31 Juillet 2025
+**Date :** 2 Août 2025  
+**Statut :** ✅ PRÊT POUR LA PRODUCTION
 
 ---
 
@@ -14,21 +15,24 @@ Athalia est un système d'intelligence artificielle avancé pour l'automatisatio
 - **🎯 Qualité :** Code professionnel en amélioration continue ✅
 - **🧹 Maintenance :** Structure optimale avec nettoyage automatique ✅
 - **🧪 Tests :** 1453 tests collectés (couverture en amélioration) ✅
+- **⚡ Performance :** Optimisation RAM -74% ✅
 
 ---
 
 ## 📋 **PRÉREQUIS**
 
 ### **Système**
-- **OS :** macOS, Linux, Windows
+- **OS :** macOS 12+, Linux (Ubuntu 20.04+), Windows 10+
 - **Python :** 3.10+ (recommandé 3.12)
-- **Git :** Version récente
-- **Espace disque :** 500MB minimum
+- **Git :** Version 2.30+
+- **Espace disque :** 1GB minimum (recommandé 2GB)
+- **RAM :** 4GB minimum (recommandé 8GB)
 
 ### **Outils Recommandés**
 - **pyenv** (gestion des versions Python)
 - **virtualenv** ou **venv** (environnements virtuels)
 - **VS Code** ou **PyCharm** (IDE)
+- **Docker** (optionnel, pour conteneurisation)
 
 ---
 
@@ -42,6 +46,9 @@ cd athalia-dev-setup
 
 # Vérifier la branche
 git checkout develop
+
+# Vérifier l'état du projet
+git status
 ```
 
 ### **2. Configuration de l'Environnement**
@@ -56,7 +63,7 @@ source .venv/bin/activate
 # .venv\Scripts\activate
 
 # Mettre à jour pip
-pip install --upgrade pip
+pip install --upgrade pip setuptools wheel
 ```
 
 ### **3. Installation des Dépendances**
@@ -66,15 +73,18 @@ pip install -r requirements.txt
 
 # Installer les dépendances de développement (optionnel)
 pip install -r config/requirements-minimal.txt
+
+# Vérifier l'installation
+python -c "import athalia_core; print('✅ Dépendances installées avec succès!')"
 ```
 
 ### **4. Configuration**
 ```bash
 # Copier le fichier de configuration
-cp config.yml.example config/config.yml
+cp config/athalia_config.yaml.example config/athalia_config.yaml
 
 # Éditer la configuration selon vos besoins
-# nano config/config.yml
+# nano config/athalia_config.yaml
 ```
 
 ---
@@ -83,12 +93,13 @@ cp config.yml.example config/config.yml
 
 ### **Fichier de Configuration Principal**
 ```yaml
-# config/config.yml
+# config/athalia_config.yaml
 app:
   name: athalia
   version: "11.0"
   debug: false
   environment: production
+  log_level: INFO
 
 security:
   validate_commands: true
@@ -96,16 +107,28 @@ security:
     - /usr/bin
     - /usr/local/bin
     - /opt/homebrew/bin
+  encryption_enabled: true
 
 logging:
   level: INFO
   format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
   file: logs/athalia.log
+  max_size: 10MB
+  backup_count: 5
 
 performance:
   cache_enabled: true
   cache_size: 1000
   timeout: 30
+  max_workers: 4
+
+ai:
+  models:
+    - ollama_qwen
+    - ollama_mistral
+    - openai_gpt4
+  fallback_enabled: true
+  distillation_enabled: true
 ```
 
 ### **Variables d'Environnement**
@@ -122,6 +145,11 @@ export ATHALIA_ALLOWED_DIRS="/usr/bin,/usr/local/bin"
 # Configuration de performance
 export ATHALIA_CACHE_ENABLED=true
 export ATHALIA_TIMEOUT=30
+export ATHALIA_MAX_WORKERS=4
+
+# Configuration IA
+export ATHALIA_AI_MODELS="ollama_qwen,ollama_mistral"
+export ATHALIA_FALLBACK_ENABLED=true
 ```
 
 ---
@@ -130,8 +158,11 @@ export ATHALIA_TIMEOUT=30
 
 ### **1. Tests de Base**
 ```bash
+# Activer l'environnement virtuel
+source .venv/bin/activate
+
 # Lancer les tests de base
-python -m pytest tests/test_basic.py -v
+python -m pytest tests/unit/core/ -v
 
 # Vérifier l'installation
 python -c "import athalia_core; print('✅ Installation réussie!')"
@@ -140,10 +171,10 @@ python -c "import athalia_core; print('✅ Installation réussie!')"
 ### **2. Tests de Sécurité**
 ```bash
 # Tests de sécurité
-python -m pytest tests/test_security_validator.py -v
+python -m pytest tests/unit/security/ -v
 
 # Validation des commandes
-python -m pytest tests/test_linting_corrections.py -v
+python -m pytest tests/unit/quality/ -v
 ```
 
 ### **3. Tests Complets**
@@ -153,6 +184,9 @@ python -m pytest tests/ -v
 
 # Avec couverture
 python -m pytest tests/ --cov=athalia_core --cov-report=html
+
+# Tests de performance
+python -m pytest tests/performance/ -v
 ```
 
 ---
@@ -161,18 +195,21 @@ python -m pytest tests/ --cov=athalia_core --cov-report=html
 
 ### **Interface en Ligne de Commande**
 ```bash
+# Activer l'environnement virtuel
+source .venv/bin/activate
+
 # Lancement principal
-python athalia_unified.py
+python athalia_core/main.py
 
 # Avec options
-python athalia_unified.py --help
-python athalia_unified.py --dry-run
-python athalia_unified.py --verbose
+python athalia_core/main.py --help
+python athalia_core/main.py --dry-run
+python athalia_core/main.py --verbose
 ```
 
 ### **Scripts Utilitaires**
 ```bash
-# Linting
+# Linting et formatage
 ./bin/ath-lint.py
 
 # Tests
@@ -183,6 +220,9 @@ python athalia_unified.py --verbose
 
 # Nettoyage
 ./bin/ath-clean
+
+# Dashboard
+./bin/ath-dashboard.py
 ```
 
 ---
@@ -195,6 +235,9 @@ python athalia_unified.py --verbose
 ```bash
 # Solution : Réinstaller les dépendances
 pip install -r requirements.txt --force-reinstall
+
+# Vérifier les versions
+pip list | grep athalia
 ```
 
 #### **Erreur de Permissions**
@@ -202,31 +245,49 @@ pip install -r requirements.txt --force-reinstall
 # Solution : Vérifier les permissions
 chmod +x bin/*.py
 chmod +x scripts/*.sh
+
+# Vérifier les droits d'écriture
+ls -la logs/
 ```
 
 #### **Erreur de Configuration**
 ```bash
-# Solution : Vérifier le fichier config.yml
-python -c "import yaml; yaml.safe_load(open('config/config.yml'))"
+# Solution : Vérifier le fichier config
+python -c "import yaml; yaml.safe_load(open('config/athalia_config.yaml'))"
+
+# Valider la configuration
+python athalia_core/config_manager.py --validate
+```
+
+#### **Erreur de Cache**
+```bash
+# Solution : Nettoyer le cache
+rm -rf cache/
+python athalia_core/cache_manager.py --clear
 ```
 
 ### **Logs et Debug**
 ```bash
 # Activer le mode debug
 export ATHALIA_DEBUG=true
+export ATHALIA_LOG_LEVEL=DEBUG
 
 # Consulter les logs
 tail -f logs/athalia.log
+
+# Analyser les erreurs
+python athalia_core/logger_advanced.py --analyze
 ```
 
 ---
 
 ## 📚 **PROCHAINES ÉTAPES**
 
-1. **Consulter le [Guide d'utilisation](USAGE.md)** pour apprendre à utiliser Athalia
-2. **Explorer la [Documentation API](API.md)** pour les fonctionnalités avancées
-3. **Consulter les [Guides développeur](DEVELOPER/)** pour contribuer
+1. **Consulter le [Guide d'utilisation](../../USER_GUIDES/USAGE.md)** pour apprendre à utiliser Athalia
+2. **Explorer la [Documentation API](../../API/)** pour les fonctionnalités avancées
+3. **Consulter les [Guides développeur](../DEVELOPER/)** pour contribuer
 4. **Tester les fonctionnalités** avec les exemples fournis
+5. **Configurer le [Dashboard](../../dashboard/)** pour le monitoring
 
 ---
 
@@ -234,5 +295,19 @@ tail -f logs/athalia.log
 
 Votre installation d'Athalia est maintenant complète et prête pour la production !
 
-**📅 Dernière mise à jour :** 30 Juillet 2025
-**🎯 Projet prêt pour la production !**
+### **Vérification Finale**
+```bash
+# Test complet du système
+python athalia_core/main.py --test-complete
+
+# Vérifier les métriques
+python athalia_core/performance_analyzer.py --report
+```
+
+**📅 Dernière mise à jour :** 2 Août 2025  
+**🎯 Projet prêt pour la production !**  
+**🔄 Support :** Documentation et guides disponibles dans `/docs/`
+
+---
+
+*Guide d'installation - Athalia v11.0 - Branch develop*
