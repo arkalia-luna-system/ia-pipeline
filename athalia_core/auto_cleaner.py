@@ -74,6 +74,10 @@ class AutoCleaner:
                 "node_modules",
                 "venv",
                 ".venv",
+                "animation",
+                "audio",
+                "visualization",
+                "artistic_templates",
             ],
             "cleanup_directories": [
                 "__pycache__",
