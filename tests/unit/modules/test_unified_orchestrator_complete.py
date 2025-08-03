@@ -727,7 +727,7 @@ class TestUnifiedOrchestrator:
 
         # Vérifier que les fichiers ont été créés
         assert mock_open.call_count == 2
-        assert "artistic_templates" in self.orchestrator.workflow_results["artifacts"]
+        assert "artistic" in self.orchestrator.workflow_results["artifacts"]
 
     @patch("athalia_core.unified_orchestrator.ARTISTIC_MODULES_AVAILABLE", False)
     def test_step_artistic_templates_modules_unavailable(self):
@@ -763,7 +763,7 @@ class TestUnifiedOrchestrator:
 
         # Mock get_project_config
         with patch(
-            "athalia_core.unified_orchestrator.get_project_config"
+            "athalia_core.classification.project_types.get_project_config"
         ) as mock_get_config:
             mock_get_config.return_value = {
                 "modules": ["fastapi", "sqlalchemy"],
@@ -811,7 +811,7 @@ class TestUnifiedOrchestrator:
             in self.orchestrator.workflow_results["steps_completed"]
         )
         assert (
-            "advanced_correction_report"
+            "auto_correction_results"
             in self.orchestrator.workflow_results["artifacts"]
         )
 
