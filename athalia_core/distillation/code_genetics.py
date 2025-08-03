@@ -1,15 +1,14 @@
-# -*- coding: utf-8 -*-
 """
 Code Genetics pour Athalia/Arkalia
 - Croisement, mutation, sélection, évolution de solutions IA
 """
 
 import random
-from typing import Callable, List
+from collections.abc import Callable
 
 
 class CodeGenetics:
-    def crossover(self, solutions: List[str]) -> str:
+    def crossover(self, solutions: list[str]) -> str:
         """
             Croisement de solutions: mélange aléatoire de fragments de chaque solution.
         :param solutions: Liste de solutions (str)
@@ -40,10 +39,10 @@ class CodeGenetics:
 
     def select(
         self,
-        solutions: List[str],
+        solutions: list[str],
         scorer: Callable[[str], float],
         top_k: int = 2,
-    ) -> List[str]:
+    ) -> list[str]:
         """
             Sélectionne les meilleures solutions selon un score.
         :param solutions: Liste de solutions
@@ -56,7 +55,7 @@ class CodeGenetics:
 
     def evolve(
         self,
-        solutions: List[str],
+        solutions: list[str],
         scorer: Callable[[str], float],
         generations: int = 3,
         mutation_rate: float = 0.1,

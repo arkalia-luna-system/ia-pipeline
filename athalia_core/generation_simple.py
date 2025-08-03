@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Module de génération simplifié pour Athalia
 Version simplifiée sans f-strings complexes
 """
 
-from pathlib import Path
 import re
-from typing import Optional
+from pathlib import Path
 
 
 def generate_blueprint_mock(idea: str = "", *args, **kwargs):
@@ -281,8 +279,8 @@ def scan_existing_project(outdir):
 def merge_or_suffix_file(
     file_path: str,
     content: str,
-    file_type: Optional[str] = None,
-    section_header: Optional[str] = None,
+    file_type: str | None = None,
+    section_header: str | None = None,
 ):
     """Fusionne ou suffixe un fichier."""
     from pathlib import Path

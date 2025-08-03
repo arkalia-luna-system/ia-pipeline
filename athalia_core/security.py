@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Module sécurité, audit, scan de secrets, prompts sécurité.
 """
 
 import os
-from pathlib import Path
 import re
+from pathlib import Path
 
 
 def security_audit_project(project_path):
@@ -19,12 +18,12 @@ def security_audit_project(project_path):
         (r"os\.system\(", "Appel système potentiellement dangereux"),
     ]
 
-    for root, dirs, files in os.walk(project_path):
+    for root, _dirs, files in os.walk(project_path):
         for file in files:
             if file.endswith(".py") or file.endswith(".f(f"):
                 file_path = os.path.join(root, file)
                 try:
-                    with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
+                    with open(file_path, encoding="utf-8", errors="ignore") as f:
                         content = f.read()
                         for pattern, message in patterns:
                             if re.search(pattern, content, re.IGNORECASE):

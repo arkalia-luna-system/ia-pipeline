@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 🧪 Tests CI Robustes - Athalia/Arkalia
 =====================================
@@ -10,10 +9,10 @@ Tests plus approfondis pour validation de qualité
 
 import json
 import os
-from pathlib import Path
 import subprocess
 import sys
 import time
+from pathlib import Path
 
 import pytest
 import yaml  # type: ignore
@@ -76,7 +75,7 @@ class TestCIRobust:
                 found_configs += 1
                 # Vérifie que le fichier est lisible
                 try:
-                    with open(config_file, "r", encoding="utf-8") as f:
+                    with open(config_file, encoding="utf-8") as f:
                         content = f.read()
                         assert content.strip(), f"Fichier {config_file} vide"
                 except Exception as e:
@@ -104,7 +103,7 @@ class TestCIRobust:
         }
 
         found_categories = 0
-        for category, patterns in test_categories.items():
+        for _category, patterns in test_categories.items():
             for pattern in patterns:
                 matching_tests = [f for f in test_files if pattern in f.name]
                 if matching_tests:
@@ -129,7 +128,7 @@ class TestCIRobust:
             if Path(req_file).exists():
                 found_req_files += 1
                 try:
-                    with open(req_file, "r", encoding="utf-8") as f:
+                    with open(req_file, encoding="utf-8") as f:
                         lines = f.readlines()
 
                     # Vérifie le format des requirements (plus flexible)
@@ -171,7 +170,7 @@ class TestCIRobust:
             if ci_file.exists():
                 found_ci_file = True
                 try:
-                    with open(ci_file, "r", encoding="utf-8") as f:
+                    with open(ci_file, encoding="utf-8") as f:
                         content = f.read()
 
                     # Vérifie les éléments essentiels du workflow (plus flexible)

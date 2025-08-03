@@ -11,12 +11,11 @@ Validation complète des workspaces ROS2:
 """
 
 import ast
-from dataclasses import dataclass
 import logging
-from pathlib import Path
 import subprocess
-from typing import Dict, List, Optional
 import xml.etree.ElementTree as ET
+from dataclasses import dataclass
+from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
@@ -38,7 +37,7 @@ class ROS2PackageInfo:
     name: str
     path: Path
     package_type: str  # ament_cmake, ament_python, etc.
-    dependencies: List[str]
+    dependencies: list[str]
     has_launch: bool
     has_urdf: bool
     has_tests: bool
@@ -49,9 +48,9 @@ class ROS2ValidationResult:
     """Résultat de validation ROS2"""
 
     workspace_valid: bool
-    packages: List[ROS2PackageInfo]
-    issues: List[str]
-    recommendations: List[str]
+    packages: list[ROS2PackageInfo]
+    issues: list[str]
+    recommendations: list[str]
     build_ready: bool
 
 
@@ -123,7 +122,7 @@ class ROS2Validator:
             build_ready=build_ready,
         )
 
-    def _analyze_package(self, package_dir: Path) -> Optional[ROS2PackageInfo]:
+    def _analyze_package(self, package_dir: Path) -> ROS2PackageInfo | None:
         """Analyser un package ROS2"""
         package_xml = package_dir / "package.xml"
 
@@ -195,7 +194,7 @@ class ROS2Validator:
         except (BaseException, SecurityError):
             return False
 
-    def validate_launch_files(self) -> List[Dict]:
+    def validate_launch_files(self) -> list[dict]:
         """Valider les fichiers launch"""
         launch_files = list(self.workspace_path.rglob("*.launch.py"))
         results = []
@@ -203,11 +202,11 @@ class ROS2Validator:
         for launch_file in launch_files:
             try:
                 # Vérifier syntaxe Python
-                with open(launch_file, "r") as f:
+                with open(launch_file) as f:
                     ast.parse(f.read())
 
                 # Vérifier imports ROS2
-                with open(launch_file, "r") as f:
+                with open(launch_file) as f:
                     content = f.read()
                     has_launch_import = "from launch import" in content
                     has_launch_ros_import = "from launch_ros" in content
@@ -228,7 +227,7 @@ class ROS2Validator:
 
         return results
 
-    def validate_urdf_files(self) -> List[Dict]:
+    def validate_urdf_files(self) -> list[dict]:
         """Valider les fichiers URDF/XACRO"""
         urdf_files = list(self.workspace_path.rglob("*.urdf"))
         xacro_files = list(self.workspace_path.rglob("*.xacro"))
@@ -236,7 +235,7 @@ class ROS2Validator:
 
         for urdf_file in urdf_files + xacro_files:
             try:
-                with open(urdf_file, "r") as f:
+                with open(urdf_file) as f:
                     content = f.read()
 
                 # Vérifications basiques

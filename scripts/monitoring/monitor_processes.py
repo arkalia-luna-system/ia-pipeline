@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Moniteur de processus Athalia
 """
 
 import logging
 import time
-from typing import Any, Dict, List
+from typing import Any
 
 import psutil
 
@@ -17,7 +16,7 @@ class AthaliaProcessMonitor:
     def __init__(self):
         self.logger = logging.getLogger(__name__)
 
-    def find_athalia_processes(self) -> List[Dict[str, Any]]:
+    def find_athalia_processes(self) -> list[dict[str, Any]]:
         """Trouve tous les processus athalia_core.main"""
         processes = []
         for proc in psutil.process_iter(
@@ -100,7 +99,7 @@ class AthaliaProcessMonitor:
 
             time.sleep(interval)
 
-    def get_process_stats(self) -> Dict[str, Any]:
+    def get_process_stats(self) -> dict[str, Any]:
         """Retourne les statistiques des processus"""
         processes = self.find_athalia_processes()
 

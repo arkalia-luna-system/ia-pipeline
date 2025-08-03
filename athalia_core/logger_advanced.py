@@ -1,21 +1,20 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Système de logging avancé pour Athalia/Arkalia
 Logging intelligent avec rotation, compression et analyse automatique
 """
 
-from collections import defaultdict, deque
-from datetime import datetime, timedelta
 import gzip
 import json
 import logging
 import logging.handlers
-from pathlib import Path
 import shutil
 import threading
 import time
-from typing import Any, Dict, Optional
+from collections import defaultdict, deque
+from datetime import datetime, timedelta
+from pathlib import Path
+from typing import Any
 
 
 class AthaliaLogger:
@@ -110,7 +109,7 @@ class AthaliaLogger:
         extra_data = f" | {json.dumps(kwargs)}" if kwargs else ""
         getattr(logger, level.lower())(f"{message}{extra_data}")
 
-    def log_validation(self, test_name: str, result: Dict[str, Any], duration: float):
+    def log_validation(self, test_name: str, result: dict[str, Any], duration: float):
         """Log des résultats de validation"""
         logger = self.loggers["validation"]
 
@@ -174,8 +173,8 @@ class AthaliaLogger:
         self,
         operation: str,
         duration: float,
-        memory_mb: Optional[float] = None,
-        cpu_percent: Optional[float] = None,
+        memory_mb: float | None = None,
+        cpu_percent: float | None = None,
         **kwargs,
     ):
         """Log des métriques de performance"""
@@ -224,7 +223,7 @@ class AthaliaLogger:
             f"ERROR | {context} | {type(error).__name__} | {str(error)} | {kwargs}"
         )
 
-    def get_validation_stats(self, hours: int = 24) -> Dict[str, Any]:
+    def get_validation_stats(self, hours: int = 24) -> dict[str, Any]:
         """Récupère les statistiques de validation"""
         cutoff = datetime.now() - timedelta(hours=hours)
 
@@ -249,7 +248,7 @@ class AthaliaLogger:
             "recent_tests": recent_metrics[-10:],  # 10 derniers tests
         }
 
-    def get_correction_stats(self, hours: int = 24) -> Dict[str, Any]:
+    def get_correction_stats(self, hours: int = 24) -> dict[str, Any]:
         """Récupère les statistiques de correction"""
         cutoff = datetime.now() - timedelta(hours=hours)
 
@@ -289,7 +288,7 @@ class AthaliaLogger:
             "recent_corrections": recent_metrics[-10:],
         }
 
-    def get_performance_stats(self, hours: int = 24) -> Dict[str, Any]:
+    def get_performance_stats(self, hours: int = 24) -> dict[str, Any]:
         """Récupère les statistiques de performance"""
         cutoff = datetime.now() - timedelta(hours=hours)
 
@@ -327,7 +326,7 @@ class AthaliaLogger:
             "operation_stats": op_stats,
         }
 
-    def get_error_stats(self, hours: int = 24) -> Dict[str, Any]:
+    def get_error_stats(self, hours: int = 24) -> dict[str, Any]:
         """Récupère les statistiques d'erreurs"""
         cutoff = datetime.now() - timedelta(hours=hours)
 
@@ -413,7 +412,7 @@ class AthaliaLogger:
             except Exception as e:
                 self.log_error(e, f"compress_logs_{log_file.name}")
 
-    def export_metrics(self, output_file: Optional[str] = None) -> Dict[str, Any]:
+    def export_metrics(self, output_file: str | None = None) -> dict[str, Any]:
         """Exporte toutes les métriques"""
         if output_file is None:
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -445,7 +444,7 @@ def log_main(message: str, level: str = "INFO", **kwargs):
     athalia_logger.log_main(message, level, **kwargs)
 
 
-def log_validation(test_name: str, result: Dict[str, Any], duration: float):
+def log_validation(test_name: str, result: dict[str, Any], duration: float):
     """Log des résultats de validation"""
     athalia_logger.log_validation(test_name, result, duration)
 
@@ -467,8 +466,8 @@ def log_correction(
 def log_performance(
     operation: str,
     duration: float,
-    memory_mb: Optional[float] = None,
-    cpu_percent: Optional[float] = None,
+    memory_mb: float | None = None,
+    cpu_percent: float | None = None,
     **kwargs,
 ):
     """Log des métriques de performance"""

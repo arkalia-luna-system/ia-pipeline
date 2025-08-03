@@ -6,9 +6,9 @@ Correction intelligente de code, suggestions d'amélioration, refactoring automa
 
 import ast
 import logging
-from pathlib import Path
 import re
-from typing import Any, Dict, List, Tuple
+from pathlib import Path
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -18,10 +18,10 @@ class AutoCorrectionAvancee:
 
     def __init__(self, project_path: str):
         self.project_path = Path(project_path)
-        self.corrections_appliquees: List[Dict[str, Any]] = []
-        self.suggestions: List[str] = []
+        self.corrections_appliquees: list[dict[str, Any]] = []
+        self.suggestions: list[str] = []
 
-    def analyser_et_corriger(self, dry_run: bool = False) -> Dict[str, Any]:
+    def analyser_et_corriger(self, dry_run: bool = False) -> dict[str, Any]:
         """Analyse complète et correction automatique du code"""
         logger.info("🔧 Démarrage de l'auto-correction avancée")
 
@@ -58,7 +58,7 @@ class AutoCorrectionAvancee:
         retour["resultats"] = resultats
         return retour
 
-    def _corriger_syntaxe_avancee(self, dry_run: bool) -> Dict[str, Any]:
+    def _corriger_syntaxe_avancee(self, dry_run: bool) -> dict[str, Any]:
         """Correction syntaxique avancée avec analyse AST"""
         corrections = []
         fichiers_traites = 0
@@ -73,7 +73,7 @@ class AutoCorrectionAvancee:
                 continue
 
             try:
-                with open(fichier, "r", encoding="utf-8") as f:
+                with open(fichier, encoding="utf-8") as f:
                     contenu = f.read()
 
                 # Analyse AST pour détecter les erreurs
@@ -103,7 +103,7 @@ class AutoCorrectionAvancee:
 
     def _corriger_erreur_syntaxe(
         self, fichier: Path, contenu: str, erreur: SyntaxError
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """Correction intelligente d'erreur de syntaxe"""
         lignes = contenu.split("\n")
         ligne_erreur = (erreur.lineno or 1) - 1
@@ -134,7 +134,7 @@ class AutoCorrectionAvancee:
 
         return {}  # type: ignore
 
-    def _corriger_indentation(self, lignes: List[str], ligne_erreur: int) -> str:
+    def _corriger_indentation(self, lignes: list[str], ligne_erreur: int) -> str:
         """Correction automatique de l'indentation"""
         ligne = lignes[ligne_erreur]
 
@@ -152,7 +152,7 @@ class AutoCorrectionAvancee:
 
         return ""  # type: ignore
 
-    def _corriger_parentheses(self, lignes: List[str], ligne_erreur: int) -> str:
+    def _corriger_parentheses(self, lignes: list[str], ligne_erreur: int) -> str:
         """Correction automatique des parenthèses"""
         ligne = lignes[ligne_erreur]
 
@@ -167,7 +167,7 @@ class AutoCorrectionAvancee:
 
         return ""  # type: ignore
 
-    def _corriger_guillemets(self, lignes: List[str], ligne_erreur: int) -> str:
+    def _corriger_guillemets(self, lignes: list[str], ligne_erreur: int) -> str:
         """Correction automatique des guillemets"""
         ligne = lignes[ligne_erreur]
 
@@ -179,7 +179,7 @@ class AutoCorrectionAvancee:
 
         return ""  # type: ignore
 
-    def _corriger_virgules(self, lignes: List[str], ligne_erreur: int) -> str:
+    def _corriger_virgules(self, lignes: list[str], ligne_erreur: int) -> str:
         """Correction automatique des virgules manquantes"""
         ligne = lignes[ligne_erreur]
 
@@ -194,7 +194,7 @@ class AutoCorrectionAvancee:
 
         return ""  # type: ignore
 
-    def _optimiser_code(self, dry_run: bool) -> Dict[str, Any]:
+    def _optimiser_code(self, dry_run: bool) -> dict[str, Any]:
         """Optimisation automatique du code"""
         optimisations = []
         fichiers_traites = 0
@@ -209,7 +209,7 @@ class AutoCorrectionAvancee:
                 continue
 
             try:
-                with open(fichier, "r", encoding="utf-8") as f:
+                with open(fichier, encoding="utf-8") as f:
                     contenu = f.read()
 
                 nouveau_contenu = contenu
@@ -249,7 +249,7 @@ class AutoCorrectionAvancee:
             "erreurs_corrigees": erreurs_corrigees,
         }
 
-    def _optimiser_list_comprehensions(self, contenu: str) -> Tuple[str, List[Dict]]:
+    def _optimiser_list_comprehensions(self, contenu: str) -> tuple[str, list[dict]]:
         """Optimisation des list comprehensions"""
         optimisations = []
 
@@ -272,7 +272,7 @@ class AutoCorrectionAvancee:
 
         return contenu, optimisations
 
-    def _optimiser_imports(self, contenu: str) -> Tuple[str, List[Dict]]:
+    def _optimiser_imports(self, contenu: str) -> tuple[str, list[dict]]:
         """Optimisation des imports"""
         optimisations = []
 
@@ -316,7 +316,7 @@ class AutoCorrectionAvancee:
 
         return contenu, optimisations
 
-    def _optimiser_boucles(self, contenu: str) -> Tuple[str, List[Dict]]:
+    def _optimiser_boucles(self, contenu: str) -> tuple[str, list[dict]]:
         """Optimisation des boucles"""
         optimisations = []
 
@@ -339,7 +339,7 @@ class AutoCorrectionAvancee:
 
         return contenu, optimisations
 
-    def _refactoring_automatique(self, dry_run: bool) -> Dict[str, Any]:
+    def _refactoring_automatique(self, dry_run: bool) -> dict[str, Any]:
         """Refactoring automatique du code"""
         refactorings = []
         fichiers_traites = 0
@@ -354,7 +354,7 @@ class AutoCorrectionAvancee:
                 continue
 
             try:
-                with open(fichier, "r", encoding="utf-8") as f:
+                with open(fichier, encoding="utf-8") as f:
                     contenu = f.read()
 
                 nouveau_contenu = contenu
@@ -392,7 +392,7 @@ class AutoCorrectionAvancee:
             "erreurs_corrigees": erreurs_corrigees,
         }
 
-    def _extraire_methodes(self, contenu: str) -> Tuple[str, List[Dict]]:
+    def _extraire_methodes(self, contenu: str) -> tuple[str, list[dict]]:
         """Extraction automatique de méthodes"""
         refactorings = []
 
@@ -432,7 +432,7 @@ class AutoCorrectionAvancee:
 
         return contenu, refactorings
 
-    def _renommer_variables(self, contenu: str) -> Tuple[str, List[Dict]]:
+    def _renommer_variables(self, contenu: str) -> tuple[str, list[dict]]:
         """Renommage automatique de variables"""
         refactorings = []
 
@@ -458,7 +458,7 @@ class AutoCorrectionAvancee:
 
         return contenu, refactorings
 
-    def _simplifier_conditions(self, contenu: str) -> Tuple[str, List[Dict]]:
+    def _simplifier_conditions(self, contenu: str) -> tuple[str, list[dict]]:
         """Simplification automatique de conditions"""
         refactorings = []
 
@@ -480,7 +480,7 @@ class AutoCorrectionAvancee:
 
         return contenu, refactorings
 
-    def _corriger_anti_patterns(self, dry_run: bool) -> Dict[str, Any]:
+    def _corriger_anti_patterns(self, dry_run: bool) -> dict[str, Any]:
         """Correction des anti-patterns"""
         corrections = []
         fichiers_traites = 0
@@ -495,7 +495,7 @@ class AutoCorrectionAvancee:
                 continue
 
             try:
-                with open(fichier, "r", encoding="utf-8") as f:
+                with open(fichier, encoding="utf-8") as f:
                     contenu = f.read()
 
                 corrections_fichier = []
@@ -516,7 +516,7 @@ class AutoCorrectionAvancee:
                     (r"import \*", "import spécifique", "Import wildcard"),
                 ]
 
-                for pattern, replacement, description in anti_patterns:
+                for pattern, _replacement, description in anti_patterns:
                     if re.search(pattern, contenu):
                         corrections_fichier.append(
                             {
@@ -542,7 +542,7 @@ class AutoCorrectionAvancee:
             "erreurs_corrigees": erreurs_corrigees,
         }
 
-    def _ameliorer_lisibilite(self, dry_run: bool) -> Dict[str, Any]:
+    def _ameliorer_lisibilite(self, dry_run: bool) -> dict[str, Any]:
         """Amélioration de la lisibilité"""
         ameliorations = []
         fichiers_traites = 0
@@ -557,7 +557,7 @@ class AutoCorrectionAvancee:
                 continue
 
             try:
-                with open(fichier, "r", encoding="utf-8") as f:
+                with open(fichier, encoding="utf-8") as f:
                     contenu = f.read()
 
                 ameliorations_fichier = []
@@ -605,7 +605,7 @@ class AutoCorrectionAvancee:
             "erreurs_corrigees": erreurs_corrigees,
         }
 
-    def generer_rapport(self, resultats: Dict[str, Any]) -> str:
+    def generer_rapport(self, resultats: dict[str, Any]) -> str:
         """Génération d'un rapport détaillé"""
         rapport = """
 Rapport d'Auto-Correction

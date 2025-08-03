@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Tests pour détecter les fichiers polluants
 """
@@ -16,7 +15,7 @@ class TestNoPollutingFiles:
     def test_no_macos_hidden_files(self):
         """Test qu'il n'y a pas de fichiers cachés macOS"""
         hidden_files = []
-        for root, dirs, files in os.walk("."):
+        for root, _dirs, files in os.walk("."):
             if ".git" in root:
                 continue
             for file in files:
@@ -87,7 +86,7 @@ class TestNoPollutingFiles:
     def test_no_temp_files(self):
         """Test qu'il n'y a pas de fichiers temporaires"""
         temp_files = []
-        for root, dirs, files in os.walk("."):
+        for root, _dirs, files in os.walk("."):
             if ".git" in root:
                 continue
             for file in files:
@@ -149,13 +148,13 @@ class TestNoPollutingFiles:
     def test_no_corrupted_files(self):
         """Test qu'il n'y a pas de fichiers corrompus"""
         corrupted_files = []
-        for root, dirs, files in os.walk("."):
+        for root, _dirs, files in os.walk("."):
             if ".git" in root:
                 continue
             for file in files:
                 if file.endswith(".py"):
                     try:
-                        with open(os.path.join(root, file), "r", encoding="utf-8") as f:
+                        with open(os.path.join(root, file), encoding="utf-8") as f:
                             f.read()
                     except UnicodeDecodeError:
                         corrupted_files.append(os.path.join(root, file))
@@ -173,7 +172,7 @@ class TestNoPollutingFiles:
     def test_no_editor_files(self):
         """Test qu'il n'y a pas de fichiers d'éditeur"""
         editor_files = []
-        for root, dirs, files in os.walk("."):
+        for root, _dirs, files in os.walk("."):
             if ".git" in root:
                 continue
             for file in files:
@@ -235,7 +234,7 @@ class TestNoPollutingFiles:
     def test_no_secret_files(self):
         """Test qu'il n'y a pas de fichiers de secrets"""
         secret_files = []
-        for root, dirs, files in os.walk("."):
+        for root, _dirs, files in os.walk("."):
             if ".git" in root or "htmlcov" in root:
                 continue
             for file in files:
@@ -260,7 +259,7 @@ class TestNoPollutingFiles:
     def test_no_large_files(self):
         """Test qu'il n'y a pas de fichiers trop volumineux"""
         large_files = []
-        for root, dirs, files in os.walk("."):
+        for root, _dirs, files in os.walk("."):
             # Exclure les dépendances externes et archives
             if (
                 ".git" in root
@@ -299,7 +298,7 @@ class TestNoPollutingFiles:
         content_hashes = {}
         duplicate_files = []
 
-        for root, dirs, files in os.walk("."):
+        for root, _dirs, files in os.walk("."):
             if ".git" in root or ".venv" in root:
                 continue
             for file in files:
@@ -330,7 +329,7 @@ class TestNoPollutingFiles:
                     else:
                         content_hashes[content_hash] = file_path
 
-                except (IOError, OSError):
+                except OSError:
                     # Ignorer les fichiers non lisibles
                     continue
 
@@ -451,14 +450,14 @@ class TestNoPollutingFiles:
             "./.venv/lib/python3.10",  # Python venv normal
             "./.venv/lib/python3.10/site-packages",  # Site-packages venv normal
             "./test-improved-f",  # Répertoire de test normal
-            "./logs/archive",  # Archive des logs normale
-            "./logs/reports",  # Rapports de logs normaux
-            "./.multi_file_backups",  # Backups normaux
-            "./test-improved-f",  # Répertoire de test normal
-            "./.benchmarks",  # Benchmarks normaux
-            "./.venv/include",  # Include venv normal
-            "./.autocomplete",  # Cache autocomplétion normal
-            "./athalia_core/logs",  # Logs athalia_core normaux
+            # Archive des logs normale
+            # Rapports de logs normaux
+            # Backups normaux
+            # Répertoire de test normal
+            # Benchmarks normaux
+            # Include venv normal
+            # Cache autocomplétion normal
+            # Logs athalia_core normaux
             "./blueprints_history",  # Historique des blueprints normal
             "./archive/performance_data",  # Données de performance normales
             "./athalia_core/docs",  # Documentation athalia_core (peut être vide)

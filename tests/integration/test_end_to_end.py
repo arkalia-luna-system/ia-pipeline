@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Tests d'intégration end-to-end pour Athalia.
 Tests professionnels pour la CI/CD.
 """
 
-from pathlib import Path
 import subprocess
 import sys
 import tempfile
 import time
+from pathlib import Path
 
 import pytest
 import yaml
@@ -75,7 +74,7 @@ class TestEndToEndIntegration:
         # Vérifier openapi.yaml pour les projets API
         openapi = outdir / project_name / "openapi.yaml"
         if openapi.exists():
-            with open(openapi, "r") as f:
+            with open(openapi) as f:
                 data = yaml.safe_load(f)
             assert "openapi" in data, "Clé 'openapi' absente du openapi.yaml généré"
 
@@ -133,7 +132,7 @@ class TestEndToEndIntegration:
         # Vérifier package.json pour les projets web
         package_json = outdir / project_name / "package.json"
         if package_json.exists():
-            with open(package_json, "r") as f:
+            with open(package_json) as f:
                 data = yaml.safe_load(f)
             assert "name" in data, "Clé 'name' absente du package.json généré"
 

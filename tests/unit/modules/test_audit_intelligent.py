@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Tests pour le système d'audit intelligent Athalia
 """
@@ -144,7 +143,7 @@ def test_basic():
         assert "issues" in result
         assert "suggestions" in result
         assert "summary" in result
-        assert isinstance(result["global_score"], (int, float))
+        assert isinstance(result["global_score"], int | float)
         assert 0 <= result["global_score"] <= 100
         # Les issues et suggestions peuvent être vides selon le projet
         assert isinstance(result["issues"], list)
@@ -169,7 +168,7 @@ def test_basic():
             auditor = ProjectAuditor()
             auditor.audit_project("/chemin/inexistant")
             # Si on arrive ici, le test échoue
-            assert False, "L'audit d'un chemin inexistant devrait échouer"
+            raise AssertionError("L'audit d'un chemin inexistant devrait échouer")
         except (FileNotFoundError, OSError):
             # C'est le comportement attendu
             pass

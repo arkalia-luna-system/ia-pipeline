@@ -5,8 +5,8 @@
 Script simple pour vérifier l'intégration actuelle de l'orchestrateur unifié.
 """
 
-from pathlib import Path
 import re
+from pathlib import Path
 
 
 def main():
@@ -22,7 +22,7 @@ def main():
         return
 
     # Lire le contenu
-    with open(orchestrator_path, "r", encoding="utf-8") as f:
+    with open(orchestrator_path, encoding="utf-8") as f:
         content = f.read()
 
     # Chercher les imports relatifs

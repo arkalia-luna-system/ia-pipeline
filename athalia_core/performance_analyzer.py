@@ -7,15 +7,15 @@ détection des goulots d'étranglement et optimisation.
 """
 
 import cProfile
-from dataclasses import dataclass
-from datetime import datetime
 import io
 import logging
-from pathlib import Path
 import pstats
 import sqlite3
 import time
-from typing import Any, Dict, List
+from dataclasses import dataclass
+from datetime import datetime
+from pathlib import Path
+from typing import Any
 
 from .ast_analyzer import ASTAnalyzer, FileAnalysis
 
@@ -51,10 +51,10 @@ class PerformanceReport:
     """Rapport de performance complet"""
 
     overall_score: float
-    metrics: List[PerformanceMetric]
-    issues: List[PerformanceIssue]
-    recommendations: List[str]
-    optimization_opportunities: List[str]
+    metrics: list[PerformanceMetric]
+    issues: list[PerformanceIssue]
+    recommendations: list[str]
+    optimization_opportunities: list[str]
 
 
 class PerformanceAnalyzer:
@@ -202,7 +202,7 @@ class PerformanceAnalyzer:
 
     def _analyze_file_performance(
         self, file_analysis: FileAnalysis
-    ) -> List[PerformanceMetric]:
+    ) -> list[PerformanceMetric]:
         """Analyser les performances d'un fichier"""
         metrics = []
 
@@ -263,7 +263,7 @@ class PerformanceAnalyzer:
 
     def _detect_performance_issues(
         self, file_analysis: FileAnalysis
-    ) -> List[PerformanceIssue]:
+    ) -> list[PerformanceIssue]:
         """Détecter les problèmes de performance dans un fichier"""
         issues = []
 
@@ -352,7 +352,7 @@ class PerformanceAnalyzer:
             else:
                 return "good"
 
-    def _calculate_overall_score(self, metrics: List[PerformanceMetric]) -> float:
+    def _calculate_overall_score(self, metrics: list[PerformanceMetric]) -> float:
         """Calculer le score de performance global"""
         if not metrics:
             return 100.0
@@ -389,8 +389,8 @@ class PerformanceAnalyzer:
             return 30.0
 
     def _generate_performance_recommendations(
-        self, issues: List[PerformanceIssue]
-    ) -> List[str]:
+        self, issues: list[PerformanceIssue]
+    ) -> list[str]:
         """Générer des recommandations de performance"""
         recommendations = []
 
@@ -436,8 +436,8 @@ class PerformanceAnalyzer:
         return recommendations
 
     def _identify_optimization_opportunities(
-        self, issues: List[PerformanceIssue]
-    ) -> List[str]:
+        self, issues: list[PerformanceIssue]
+    ) -> list[str]:
         """Identifier les opportunités d'optimisation"""
         opportunities = []
 
@@ -512,7 +512,7 @@ class PerformanceAnalyzer:
 
     def profile_function(
         self, function_path: str, function_name: str, *args, **kwargs
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """Profiler une fonction spécifique"""
         try:
             # Importer et exécuter la fonction
@@ -550,7 +550,7 @@ class PerformanceAnalyzer:
             logger.error(f"Erreur lors du profilage de {function_name}: {e}")
             return None
 
-    def get_performance_insights(self) -> Dict[str, Any]:
+    def get_performance_insights(self) -> dict[str, Any]:
         """Obtenir des insights de performance"""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()

@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Test de performance simplifié pour Athalia
 Version qui fonctionne sans dépendances externes problématiques
 """
 
-import time
-import sys
 import os
+import sys
+import time
+from collections.abc import Callable
 from pathlib import Path
-from typing import Dict, Any, Callable
+from typing import Any
 
 # Ajouter le répertoire racine au path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
@@ -19,7 +19,7 @@ class PerformanceBenchmark:
     """Classe pour mesurer les performances des fonctions critiques"""
 
     def __init__(self):
-        self.results: Dict[str, float] = {}
+        self.results: dict[str, float] = {}
         self.iterations = 1000
 
     def measure_time(
@@ -37,7 +37,7 @@ class PerformanceBenchmark:
 
         return avg_time
 
-    def benchmark_string_operations(self) -> Dict[str, float]:
+    def benchmark_string_operations(self) -> dict[str, float]:
         """Benchmark des opérations sur les chaînes"""
         logger.info("🔍 Benchmark des opérations sur les chaînes...")
 
@@ -68,7 +68,7 @@ class PerformanceBenchmark:
         self.results.update(results)
         return results
 
-    def benchmark_file_operations(self) -> Dict[str, float]:
+    def benchmark_file_operations(self) -> dict[str, float]:
         """Benchmark des opérations sur les fichiers"""
         logger.info("📁 Benchmark des opérations sur les fichiers...")
 
@@ -104,7 +104,7 @@ class PerformanceBenchmark:
         self.results.update(results)
         return results
 
-    def benchmark_path_operations(self) -> Dict[str, float]:
+    def benchmark_path_operations(self) -> dict[str, float]:
         """Benchmark des opérations sur les chemins"""
         logger.info("🛤️ Benchmark des opérations sur les chemins...")
 
@@ -136,13 +136,13 @@ class PerformanceBenchmark:
         self.results.update(results)
         return results
 
-    def benchmark_memory_operations(self) -> Dict[str, float]:
+    def benchmark_memory_operations(self) -> dict[str, float]:
         """Benchmark des opérations mémoire"""
         logger.info("🧠 Benchmark des opérations mémoire...")
 
         # Test de création de liste
         def create_list():
-            return [i for i in range(1000)]
+            return list(range(1000))
 
         # Test de création de dictionnaire
         def create_dict():
@@ -150,7 +150,7 @@ class PerformanceBenchmark:
 
         # Test de création de set
         def create_set():
-            return {i for i in range(1000)}
+            return set(range(1000))
 
         results = {
             "create_list": self.measure_time(create_list),
@@ -161,7 +161,7 @@ class PerformanceBenchmark:
         self.results.update(results)
         return results
 
-    def run_all_benchmarks(self) -> Dict[str, Dict[str, float]]:
+    def run_all_benchmarks(self) -> dict[str, dict[str, float]]:
         """Exécute tous les benchmarks"""
         logger.info("🚀 Démarrage des benchmarks de performance...")
 
@@ -189,7 +189,7 @@ Résultats des benchmarks (temps moyen en secondes):
             if isinstance(results, dict):
                 for operation, time_taken in results.items():
                     report += f"  {operation}: {time_taken:.6f}s\n"
-            elif isinstance(results, (int, float)):
+            elif isinstance(results, int | float):
                 report += f"  {category}: {results:.6f}s\n"
 
         report += f"\nTotal des opérations testées: {len(self.results)}"
@@ -238,7 +238,7 @@ def test_performance_benchmarks():
                     assert (
                         time_taken < 1.0
                     ), f"Performance dégradée: {operation} prend {time_taken}s"
-            elif isinstance(category_results, (int, float)):
+            elif isinstance(category_results, int | float):
                 # Si c'est une valeur directe, vérifier qu'elle est raisonnable
                 assert (
                     category_results < 1.0

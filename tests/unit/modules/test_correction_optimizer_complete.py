@@ -5,8 +5,8 @@ Tests: 35 tests unitaires et d'intégration
 """
 
 import json
-from pathlib import Path
 import tempfile
+from pathlib import Path
 from unittest.mock import Mock, patch
 
 import pytest
@@ -212,7 +212,7 @@ def calculate_product(x, y):
         assert report_path.exists()
 
         # Vérifier le contenu
-        with open(report_path, "r") as f:
+        with open(report_path) as f:
             saved_report = json.load(f)
         assert saved_report["summary"] == "Test report"
 
@@ -228,7 +228,7 @@ def calculate_product(x, y):
         with open(report_path, "w") as f:
             json.dump(report_data, f)
 
-        with open(report_path, "r") as f:
+        with open(report_path) as f:
             loaded_report = json.load(f)
 
         assert loaded_report["summary"] == "Test report"

@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Tests pour le système de plugins dynamiques Athalia
 """
@@ -59,7 +58,7 @@ class TestPlugins(unittest.TestCase):
         # Vérifier que des résultats sont retournés
         self.assertGreater(len(results), 0, "Aucun plugin exécuté")
         # Vérifier que les résultats sont des dictionnaires
-        for plugin_name, result in results.items():
+        for _plugin_name, result in results.items():
             self.assertTrue(isinstance(result, dict) or isinstance(result, str))
 
     def test_export_docker_plugin(self):

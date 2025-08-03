@@ -1,30 +1,28 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 🧪 Test des imports circulaires - Athalia Project
 Détecte et signale les imports circulaires dans le projet
 """
 
 import importlib
-from pathlib import Path
 import sys
-from typing import Dict, List
+from pathlib import Path
 
 import pytest
 
 
-def get_python_files(directory: str) -> List[Path]:
+def get_python_files(directory: str) -> list[Path]:
     """Récupère tous les fichiers Python d'un répertoire"""
     path = Path(directory)
     return list(path.rglob("*.py"))
 
 
-def analyze_imports_in_file(file_path: Path) -> Dict[str, List[str]]:
+def analyze_imports_in_file(file_path: Path) -> dict[str, list[str]]:
     """Analyse les imports dans un fichier Python"""
-    imports: Dict[str, List[str]] = {"imports": [], "from_imports": []}
+    imports: dict[str, list[str]] = {"imports": [], "from_imports": []}
 
     try:
-        with open(file_path, "r", encoding="utf-8") as f:
+        with open(file_path, encoding="utf-8") as f:
             content = f.read()
 
         lines = content.split("\n")

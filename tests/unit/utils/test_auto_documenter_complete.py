@@ -4,10 +4,10 @@ Couverture: 100% des fonctionnalités d'auto_documenter
 Tests: 25 tests unitaires et d'intégration
 """
 
-from datetime import datetime
 import json
-from pathlib import Path
 import tempfile
+from datetime import datetime
+from pathlib import Path
 from unittest.mock import Mock, patch
 
 import yaml
@@ -392,7 +392,7 @@ def undocumented_function():
         assert result is True
         assert history_file.exists()
 
-        with open(history_file, "r") as f:
+        with open(history_file) as f:
             history = json.load(f)
             assert isinstance(history, list)
             assert len(history) > 0

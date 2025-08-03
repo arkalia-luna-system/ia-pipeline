@@ -4,9 +4,9 @@ Script de nettoyage des tests Athalia
 Nettoie les processus et fichiers temporaires
 """
 
-from pathlib import Path
 import subprocess
 import time
+from pathlib import Path
 
 import psutil
 

@@ -1,14 +1,12 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Outil de validation et correction finale pour Athalia
 Module de vérification de la qualité et de la conformité du code
 """
 
 import logging
-from pathlib import Path
 import re
-from typing import Dict, List
+from pathlib import Path
 
 # Configuration du logging
 logging.basicConfig(level=logging.INFO)
@@ -25,10 +23,10 @@ class FinalValidator:
         self.validation_errors = 0
         self.quality_score = 0
 
-    def validate_code_quality(self, file_path: Path) -> Dict[str, any]:
+    def validate_code_quality(self, file_path: Path) -> dict[str, any]:
         """Valide la qualité du code dans un fichier."""
         try:
-            with open(file_path, "r", encoding="utf-8") as f:
+            with open(file_path, encoding="utf-8") as f:
                 content = f.read()
 
             issues = {
@@ -83,7 +81,7 @@ class FinalValidator:
     def fix_common_issues(self, file_path: Path) -> bool:
         """Corrige les problèmes communs dans un fichier."""
         try:
-            with open(file_path, "r", encoding="utf-8") as f:
+            with open(file_path, encoding="utf-8") as f:
                 content = f.read()
             original_content = content
 
@@ -132,7 +130,7 @@ class FinalValidator:
             self.validation_errors += 1
             return False
 
-    def scan_project_files(self) -> List[Path]:
+    def scan_project_files(self) -> list[Path]:
         """Scanne le projet pour trouver les fichiers Python principaux."""
         main_files = []
 
@@ -148,7 +146,7 @@ class FinalValidator:
 
         return main_files
 
-    def run_final_validation(self) -> Dict[str, any]:
+    def run_final_validation(self) -> dict[str, any]:
         """Exécute la validation finale complète du projet."""
         logger.info("🔍 Début de la validation finale...")
 

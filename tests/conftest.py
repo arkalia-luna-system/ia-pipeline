@@ -3,15 +3,14 @@ Configuration pytest pour Athalia
 Gestion automatique du nettoyage des processus et ressources
 """
 
+# Optimisations globales pour réduire la consommation RAM
+import gc
 import os
 import subprocess
 import time
 
 import psutil
 import pytest
-
-# Optimisations globales pour réduire la consommation RAM
-import gc
 
 # Optimisation: Réduire la consommation mémoire globale
 os.environ["PYTHONHASHSEED"] = "0"  # Hash déterministe pour réduire la mémoire

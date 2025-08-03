@@ -4,11 +4,11 @@ Module de gestion des profils utilisateur avancés pour Athalia
 Gestion des préférences, historique, statistiques et personnalisation
 """
 
-from datetime import datetime
 import json
 import logging
 import sqlite3
-from typing import Any, Dict, List, Optional
+from datetime import datetime
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 class ProfilUtilisateur:
     """Profil utilisateur avec préférences et historique"""
 
-    def __init__(self, nom: str, email: str = "", preferences: Dict = None):
+    def __init__(self, nom: str, email: str = "", preferences: dict = None):
         self.nom = nom
         self.email = email
         self.preferences = preferences or {}
@@ -25,7 +25,7 @@ class ProfilUtilisateur:
         self.projets_consultes = []
         self.actions_frequentes = {}
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         """Conversion en dictionnaire"""
         return {
             "nom": self.nom,
@@ -38,7 +38,7 @@ class ProfilUtilisateur:
         }
 
     @classmethod
-    def from_dict(cls, data: Dict[str, Any]) -> "ProfilUtilisateur":
+    def from_dict(cls, data: dict[str, Any]) -> "ProfilUtilisateur":
         """Création depuis un dictionnaire"""
         profil = cls(data["nom"], data.get("email", ""))
         profil.preferences = data.get("preferences", {})
@@ -106,7 +106,7 @@ class GestionnaireProfils:
             conn.commit()
 
     def creer_profil(
-        self, nom: str, email: str = "", preferences: Dict = None
+        self, nom: str, email: str = "", preferences: dict = None
     ) -> ProfilUtilisateur:
         """Création d'un nouveau profil"""
         logger.info(f"Création du profil utilisateur: {nom}")
@@ -132,7 +132,7 @@ class GestionnaireProfils:
 
         return profil
 
-    def obtenir_profil(self, nom: str) -> Optional[ProfilUtilisateur]:
+    def obtenir_profil(self, nom: str) -> ProfilUtilisateur | None:
         """Récupération d'un profil par nom"""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
@@ -203,7 +203,7 @@ class GestionnaireProfils:
             )
             conn.commit()
 
-    def enregistrer_action(self, nom_profil: str, action: str, details: Dict = None):
+    def enregistrer_action(self, nom_profil: str, action: str, details: dict = None):
         """Enregistrement d'une action utilisateur"""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
@@ -250,7 +250,7 @@ class GestionnaireProfils:
                 )
                 conn.commit()
 
-    def obtenir_statistiques(self, nom_profil: str) -> Dict[str, Any]:
+    def obtenir_statistiques(self, nom_profil: str) -> dict[str, Any]:
         """Obtention des statistiques d'un profil"""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
@@ -356,7 +356,7 @@ class GestionnaireProfils:
 
         return rapport
 
-    def lister_profils(self) -> List[str]:
+    def lister_profils(self) -> list[str]:
         """Liste de tous les profils"""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
@@ -393,7 +393,7 @@ class GestionnaireProfils:
     def importer_profil(self, fichier_source: str) -> bool:
         """Import d'un profil depuis un fichier JSON"""
         try:
-            with open(fichier_source, "r", encoding="utf-8") as f:
+            with open(fichier_source, encoding="utf-8") as f:
                 data = json.load(f)
 
             profil = ProfilUtilisateur.from_dict(data)

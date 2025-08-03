@@ -4,11 +4,11 @@ Couverture: 100% des fonctionnalités d'auto_cleaner
 Tests: 30 tests unitaires et d'intégration
 """
 
-from datetime import datetime
 import json
-from pathlib import Path
 import shutil
 import tempfile
+from datetime import datetime
+from pathlib import Path
 from unittest.mock import Mock, patch
 
 from athalia_core.auto_cleaner import (
@@ -336,7 +336,7 @@ class TestAutoCleaner:
         assert result is True
         assert history_file.exists()
 
-        with open(history_file, "r") as f:
+        with open(history_file) as f:
             history = json.load(f)
             assert isinstance(history, list)
             assert len(history) > 0

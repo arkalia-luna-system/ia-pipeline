@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 🧹 Phase 3 Optimization - Athalia Project
 Script sécurisé pour l'optimisation de maintenance
@@ -13,12 +12,11 @@ Fonctionnalités:
 """
 
 import argparse
-from datetime import datetime
 import logging
 import os
-from pathlib import Path
 import shutil
-from typing import Dict
+from datetime import datetime
+from pathlib import Path
 
 # Configuration du logging
 logging.basicConfig(
@@ -32,7 +30,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-def analyze_cache_sizes() -> Dict[str, float]:
+def analyze_cache_sizes() -> dict[str, float]:
     """Analyse la taille des caches"""
     cache_dirs = {
         ".mypy_cache": "Cache MyPy",
@@ -68,8 +66,8 @@ def analyze_cache_sizes() -> Dict[str, float]:
 
 
 def clean_cache_intelligently(
-    cache_sizes: Dict[str, float], dry_run: bool = True
-) -> Dict[str, int]:
+    cache_sizes: dict[str, float], dry_run: bool = True
+) -> dict[str, int]:
     """Nettoie les caches de manière intelligente"""
     cleaned = {}
 
@@ -104,7 +102,7 @@ def clean_cache_intelligently(
     return cleaned
 
 
-def analyze_disk_usage() -> Dict[str, float]:
+def analyze_disk_usage() -> dict[str, float]:
     """Analyse l'utilisation du disque"""
     total_size = 0
     file_count = 0
@@ -127,7 +125,7 @@ def analyze_disk_usage() -> Dict[str, float]:
     }
 
 
-def optimize_python_files(dry_run: bool = True) -> Dict[str, int]:
+def optimize_python_files(dry_run: bool = True) -> dict[str, int]:
     """Optimise les fichiers Python"""
     optimized = {}
 
@@ -150,10 +148,10 @@ def optimize_python_files(dry_run: bool = True) -> Dict[str, int]:
 
 
 def generate_optimization_report(
-    cache_sizes: Dict[str, float],
-    disk_usage: Dict[str, float],
-    cleaned: Dict[str, int],
-    optimized: Dict[str, int],
+    cache_sizes: dict[str, float],
+    disk_usage: dict[str, float],
+    cleaned: dict[str, int],
+    optimized: dict[str, int],
 ) -> str:
     """Génère un rapport d'optimisation"""
     report = []

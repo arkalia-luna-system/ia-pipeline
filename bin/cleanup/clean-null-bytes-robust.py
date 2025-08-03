@@ -34,7 +34,7 @@ def clean_null_bytes_in_file(file_path):
 def remove_apple_double_files(directory):
     """Supprime les fichiers Apple Double (._*)"""
     removed_count = 0
-    for root, dirs, files in os.walk(directory):
+    for root, _dirs, files in os.walk(directory):
         for file in files:
             if file.startswith("._"):
                 file_path = os.path.join(root, file)

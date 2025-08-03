@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Module d'internationalisation (i18n) pour Athalia
 Gestion des traductions et localisation

@@ -1,19 +1,18 @@
-# -*- coding: utf-8 -*-
 """
 Module de scoring de qualité pour Athalia/Arkalia
 Évalue la pertinence d'une solution IA ou d'une correction selon plusieurs critères.
 """
 
-from typing import Any, Dict, Optional
+from typing import Any
 
 
 class QualityScorer:
-    def __init__(self, weights: Optional[Dict[str, float]] = None):
+    def __init__(self, weights: dict[str, float] | None = None):
         # Pondération des critères (ex: {'pertinence': 0.5, 'clarté': 0.3,
         # 'impact': 0.2})
         self.weights = weights or {}
 
-    def score(self, solution: Any, context: Optional[Dict[str, Any]] = None) -> float:
+    def score(self, solution: Any, context: dict[str, Any] | None = None) -> float:
         """
             Évalue la qualité d'une solution IA.
         :param solution: Solution à scorer (str, dict, ...)

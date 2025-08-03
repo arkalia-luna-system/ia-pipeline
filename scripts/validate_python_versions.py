@@ -7,7 +7,6 @@ Vérifie que toutes les versions Python utilisées sont supportées
 import re
 import sys
 from pathlib import Path
-from typing import List, Tuple
 
 
 class PythonVersionValidator:
@@ -19,7 +18,7 @@ class PythonVersionValidator:
         self.unsupported_versions = ["3.1", "3.2", "3.3", "3.4", "3.5", "3.6", "3.7"]
         self.workflow_dir = self.project_root / ".github" / "workflows"
 
-    def find_python_versions_in_file(self, file_path: Path) -> List[Tuple[str, int]]:
+    def find_python_versions_in_file(self, file_path: Path) -> list[tuple[str, int]]:
         """Trouve toutes les versions Python dans un fichier"""
         versions = []
 
@@ -28,7 +27,7 @@ class PythonVersionValidator:
             return versions
 
         try:
-            with open(file_path, "r", encoding="utf-8") as f:
+            with open(file_path, encoding="utf-8") as f:
                 for line_num, line in enumerate(f, 1):
                     # Chercher les patterns python-version spécifiques
                     matches = re.findall(

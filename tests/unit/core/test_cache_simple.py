@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Tests simples pour le cache.
 Optimisé pour performance et rapidité.
@@ -14,9 +13,9 @@ import unittest
 from athalia_core.cache_manager import (
     CacheManager,
     cache_result,
-    get_cached_result,
     clear_cache,
     get_cache_stats,
+    get_cached_result,
 )
 
 

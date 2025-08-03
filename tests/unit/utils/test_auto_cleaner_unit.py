@@ -1,6 +1,6 @@
-from pathlib import Path
 import tempfile
 import unittest
+from pathlib import Path
 
 from athalia_core.auto_cleaner import AutoCleaner
 

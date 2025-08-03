@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Validation Continue d'Athalia/Arkalia
 Surveillance en temps réel de la qualité et détection de régressions
 """
 
-from datetime import datetime
 import json
 import logging
 import os
 import subprocess
 import threading
 import time
+from datetime import datetime
 
 # Import du validateur de sécurité
 try:
@@ -241,7 +240,7 @@ class ValidationContinue:
 
         if os.path.exists(alertes_file):
             try:
-                with open(alertes_file, "r") as f:
+                with open(alertes_file) as f:
                     alertes = json.load(f)
             except Exception:
                 alertes = []
@@ -326,7 +325,7 @@ class ValidationContinue:
         """Charge l'historique des validations"""
         try:
             if os.path.exists("historique_validation.json"):
-                with open("historique_validation.json", "r") as f:
+                with open("historique_validation.json") as f:
                     self.historique = json.load(f)
         except Exception as e:
             self.logger.error(f"Erreur chargement historique: {str(e)}")

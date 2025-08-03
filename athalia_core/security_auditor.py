@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 import json
 import logging
-from pathlib import Path
 import re
 import subprocess
-from typing import Any, Dict
+from pathlib import Path
+from typing import Any
 
 # Import du validateur de sécurité
 try:
@@ -39,7 +39,7 @@ class SecurityAuditor:
             "recommendations": [],
         }
 
-    def run(self) -> Dict[str, Any]:
+    def run(self) -> dict[str, Any]:
         """Lance l'audit de sécurité renforcé"""
         logger.info(f"🔒 Audit de sécurité renforcé pour: {self.project_path.name}")
 
@@ -125,7 +125,7 @@ class SecurityAuditor:
 
         for py_file in self.project_path.rglob("*.py"):
             try:
-                with open(py_file, "r", encoding="utf-8") as f:
+                with open(py_file, encoding="utf-8") as f:
                     content = f.read()
 
                 for pattern in dangerous_patterns:
@@ -158,7 +158,7 @@ class SecurityAuditor:
 
         for py_file in self.project_path.rglob("*.py"):
             try:
-                with open(py_file, "r", encoding="utf-8") as f:
+                with open(py_file, encoding="utf-8") as f:
                     content = f.read()
 
                 for pattern in secret_patterns:
@@ -207,7 +207,7 @@ class SecurityAuditor:
         has_encryption = False
         for py_file in self.project_path.rglob("*.py"):
             try:
-                with open(py_file, "r", encoding="utf-8") as f:
+                with open(py_file, encoding="utf-8") as f:
                     content = f.read()
 
                 for pattern in encryption_patterns:
@@ -251,7 +251,7 @@ class SecurityAuditor:
         has_validation = False
         for py_file in self.project_path.rglob("*.py"):
             try:
-                with open(py_file, "r", encoding="utf-8") as f:
+                with open(py_file, encoding="utf-8") as f:
                     content = f.read()
 
                 for pattern in validation_patterns:
@@ -280,7 +280,7 @@ class SecurityAuditor:
         has_auth = False
         for py_file in self.project_path.rglob("*.py"):
             try:
-                with open(py_file, "r", encoding="utf-8") as f:
+                with open(py_file, encoding="utf-8") as f:
                     content = f.read()
 
                 for pattern in auth_patterns:
@@ -308,7 +308,7 @@ class SecurityAuditor:
         has_protection = False
         for py_file in self.project_path.rglob("*.py"):
             try:
-                with open(py_file, "r", encoding="utf-8") as f:
+                with open(py_file, encoding="utf-8") as f:
                     content = f.read()
 
                 for pattern in protection_patterns:
@@ -336,7 +336,7 @@ class SecurityAuditor:
         else:
             return "CRITIQUE"
 
-    def _check_compliance(self) -> Dict[str, bool]:
+    def _check_compliance(self) -> dict[str, bool]:
         """Vérifie la conformité aux standards"""
         return {
             "gdpr_ready": "gdpr" in str(self.report.get("recommendations", [])).lower(),

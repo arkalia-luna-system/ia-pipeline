@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Tests pour le module onboarding.
 Tests professionnels pour la CI/CD.
@@ -51,7 +50,7 @@ def test_onboarding_project_setup():
         try:
             # Test de validation d'environnement
             result = onboarding.validate_environment()
-            assert isinstance(result, (bool, dict))
+            assert isinstance(result, bool | dict)
         finally:
             # Nettoyage
             import shutil

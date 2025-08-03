@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Tests complets pour robotics/docker_robotics.py
 Couverture: 100% des fonctionnalités de docker_robotics
 Tests: 38 tests unitaires et d'intégration
 """
 
-from pathlib import Path
 import tempfile
+from pathlib import Path
 from unittest.mock import mock_open, patch
 
 from athalia_core.robotics.docker_robotics import (

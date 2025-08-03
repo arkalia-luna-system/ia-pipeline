@@ -26,7 +26,7 @@ class TestEncodingUTF8:
         encoding_errors = []
         for py_file in python_files:
             try:
-                with open(py_file, "r", encoding="utf-8") as f:
+                with open(py_file, encoding="utf-8") as f:
                     f.read()
             except UnicodeDecodeError as e:
                 encoding_errors.append(f"{py_file}: {e}")
@@ -50,7 +50,7 @@ class TestEncodingUTF8:
         encoding_errors = []
         for md_file in markdown_files:
             try:
-                with open(md_file, "r", encoding="utf-8") as f:
+                with open(md_file, encoding="utf-8") as f:
                     f.read()
             except UnicodeDecodeError as e:
                 encoding_errors.append(f"{md_file}: {e}")
@@ -77,7 +77,7 @@ class TestEncodingUTF8:
         encoding_errors = []
         for yaml_file in yaml_files:
             try:
-                with open(yaml_file, "r", encoding="utf-8") as f:
+                with open(yaml_file, encoding="utf-8") as f:
                     f.read()
             except UnicodeDecodeError as e:
                 encoding_errors.append(f"{yaml_file}: {e}")
@@ -103,7 +103,7 @@ class TestEncodingUTF8:
         encoding_errors = []
         for txt_file in txt_files:
             try:
-                with open(txt_file, "r", encoding="utf-8") as f:
+                with open(txt_file, encoding="utf-8") as f:
                     f.read()
             except UnicodeDecodeError as e:
                 encoding_errors.append(f"{txt_file}: {e}")
@@ -120,7 +120,7 @@ class TestEncodingUTF8:
         requirements_file = Path("config/requirements.txt")
         if requirements_file.exists():
             try:
-                with open(requirements_file, "r", encoding="utf-8") as f:
+                with open(requirements_file, encoding="utf-8") as f:
                     f.read()
             except UnicodeDecodeError as e:
                 pytest.fail(f"Erreur d'encodage dans requirements.txt: {e}")
@@ -136,7 +136,7 @@ class TestEncodingUTF8:
         for config_file in config_files:
             if Path(config_file).exists():
                 try:
-                    with open(config_file, "r", encoding="utf-8") as f:
+                    with open(config_file, encoding="utf-8") as f:
                         f.read()
                 except UnicodeDecodeError as e:
                     pytest.fail(f"Erreur d'encodage dans {config_file}: {e}")

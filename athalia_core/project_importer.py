@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 import ast
-from datetime import datetime
 import logging
 import os
 import pprint
 import sys
-from typing import Any, Dict, List
+from datetime import datetime
+from typing import Any
 
 """
 Module dimport intelligent pour projets existants.
@@ -29,7 +28,7 @@ class ProjectImporter:
             "iot": ["gpio", "sensor", "arduino", "iot"],
         }
 
-    def import_project(self, project_path: str) -> Dict[str, Any]:
+    def import_project(self, project_path: str) -> dict[str, Any]:
         """Importe et analyse un projet existant."""
         if not os.path.exists(project_path):
             raise FileNotFoundError(f"Projet introuvable: {project_path}")
@@ -59,9 +58,9 @@ class ProjectImporter:
             "import_timestamp": datetime.now().isoformat(),
         }
 
-    def _scan_structure(self, project_path: str) -> Dict[str, Any]:
+    def _scan_structure(self, project_path: str) -> dict[str, Any]:
         """Analyse la structure du projet."""
-        structure: Dict[str, Any] = {
+        structure: dict[str, Any] = {
             "files": [],
             "directories": [],
             "python_files": [],
@@ -89,14 +88,14 @@ class ProjectImporter:
 
         return structure
 
-    def _detect_project_type(self, project_path: str, structure: Dict[str, Any]) -> str:
+    def _detect_project_type(self, project_path: str, structure: dict[str, Any]) -> str:
         """Détecte automatiquement le type de projet."""
         # Analyser les fichiers Python pour détecter les imports
         imports = []
         for py_file in structure["python_files"]:
             full_path = os.path.join(project_path, py_file)
             try:
-                with open(full_path, "r", encoding="utf-8") as file_handle:
+                with open(full_path, encoding="utf-8") as file_handle:
                     content = file_handle.read()
                     tree = ast.parse(content)
                     for node in ast.walk(tree):
@@ -128,7 +127,7 @@ class ProjectImporter:
             return max(scores, key=scores.get)
         return "generic"
 
-    def _analyze_code_quality(self, project_path: str) -> Dict[str, Any]:
+    def _analyze_code_quality(self, project_path: str) -> dict[str, Any]:
         """Analyse la qualité du code."""
         analysis = {
             "has_tests": False,
@@ -151,7 +150,7 @@ class ProjectImporter:
         analysis["has_readme"] = "README.md" in files
 
         # Compter les fichiers Python
-        for root, dirs, files in os.walk(project_path):
+        for _root, _dirs, files in os.walk(project_path):
             analysis["python_files_count"] += len(
                 [file_handle for file_handle in files if file_handle.endswith(".py")]
             )
@@ -174,10 +173,10 @@ class ProjectImporter:
     def _generate_correction_blueprint(
         self,
         project_path: str,
-        structure: Dict[str, Any],
+        structure: dict[str, Any],
         project_type: str,
-        quality_analysis: Dict[str, Any],
-    ) -> Dict[str, Any]:
+        quality_analysis: dict[str, Any],
+    ) -> dict[str, Any]:
         """Génère un blueprint de correction pour le projet."""
         project_name = os.path.basename(project_path)
 
@@ -197,7 +196,7 @@ class ProjectImporter:
 
         return blueprint
 
-    def _suggest_modules(self, project_type: str) -> List[str]:
+    def _suggest_modules(self, project_type: str) -> list[str]:
         """Suggère des modules selon le type de projet."""
         suggestions = {
             "game": ["game_engine", "physics", "ui", "audio"],
@@ -210,7 +209,7 @@ class ProjectImporter:
         }
         return suggestions.get(project_type, ["api", "core", "utils"])
 
-    def _suggest_structure(self, structure: Dict[str, Any]) -> List[str]:
+    def _suggest_structure(self, structure: dict[str, Any]) -> list[str]:
         """Gère une structure améliorée."""
         base_structure = ["src/", "tests/", "docs/", "config/"]
 
@@ -229,7 +228,7 @@ class ProjectImporter:
 
         return base_structure
 
-    def _suggest_dependencies(self, project_type: str) -> List[str]:
+    def _suggest_dependencies(self, project_type: str) -> list[str]:
         """Suggère des dépendances selon le type de projet."""
         suggestions = {
             "game": ["pygame", "pymunk"],
@@ -242,7 +241,7 @@ class ProjectImporter:
         }
         return suggestions.get(project_type, ["flask", "requests"])
 
-    def _suggest_prompts(self, project_type: str) -> List[str]:
+    def _suggest_prompts(self, project_type: str) -> list[str]:
         """Suggère des prompts selon le type de projet."""
         suggestions = {
             "game": ["game_mechanics.md", "level_design.md"],
@@ -256,8 +255,8 @@ class ProjectImporter:
         return suggestions.get(project_type, ["prompt.md"])
 
     def _suggest_enhancements(
-        self, project_type: str, quality_analysis: Dict[str, Any]
-    ) -> List[str]:
+        self, project_type: str, quality_analysis: dict[str, Any]
+    ) -> list[str]:
         """Suggère des améliorations spécifiques."""
         enhancements = []
         if not quality_analysis["has_tests"]:

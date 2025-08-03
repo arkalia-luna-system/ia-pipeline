@@ -4,13 +4,12 @@ Script pour analyser la couverture de tests et identifier les modules non testé
 """
 
 import os
-import sys
 import subprocess
+import sys
 from pathlib import Path
-from typing import Dict, List, Tuple
 
 
-def get_python_files(directory: str) -> List[str]:
+def get_python_files(directory: str) -> list[str]:
     """Récupère tous les fichiers Python dans un répertoire."""
     python_files = []
     for root, dirs, files in os.walk(directory):
@@ -39,12 +38,12 @@ def get_python_files(directory: str) -> List[str]:
     return sorted(python_files)
 
 
-def get_test_files() -> List[str]:
+def get_test_files() -> list[str]:
     """Récupère tous les fichiers de test."""
     return get_python_files("tests")
 
 
-def run_coverage_analysis() -> Dict[str, float]:
+def run_coverage_analysis() -> dict[str, float]:
     """Exécute l'analyse de couverture et retourne les résultats."""
     try:
         # Exécuter pytest avec coverage
@@ -88,7 +87,7 @@ def run_coverage_analysis() -> Dict[str, float]:
         return {}
 
 
-def analyze_missing_tests() -> Tuple[List[str], List[str], List[str]]:
+def analyze_missing_tests() -> tuple[list[str], list[str], list[str]]:
     """Analyse les modules manquants de tests."""
     # Récupérer tous les fichiers Python du projet
     all_python_files = get_python_files("athalia_core")
@@ -126,7 +125,7 @@ def analyze_missing_tests() -> Tuple[List[str], List[str], List[str]]:
     return untested_modules, zero_coverage_modules, list(tested_modules)
 
 
-def generate_test_templates(untested_modules: List[str]) -> str:
+def generate_test_templates(untested_modules: list[str]) -> str:
     """Génère des templates de tests pour les modules non testés."""
     templates = []
 
@@ -206,7 +205,7 @@ def main():
         print("\n📝 TEMPLATES DE TESTS GÉNÉRÉS:")
         templates = generate_test_templates(untested_modules)
 
-        for test_file_name, template in templates[:5]:  # Limiter à 5 templates
+        for test_file_name, _template in templates[:5]:  # Limiter à 5 templates
             print(f"   • {test_file_name}")
 
         if len(templates) > 5:

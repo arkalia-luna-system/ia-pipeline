@@ -6,14 +6,14 @@ Module spécialisé dans la détection de patterns de code,
 doublons et anti-patterns. Utilise l'analyseur AST de base.
 """
 
-from dataclasses import dataclass
-from datetime import datetime
 import difflib
 import json
 import logging
-from pathlib import Path
 import sqlite3
-from typing import Any, Dict, List
+from dataclasses import dataclass
+from datetime import datetime
+from pathlib import Path
+from typing import Any
 
 from .ast_analyzer import ASTAnalyzer, FileAnalysis
 
@@ -26,11 +26,11 @@ class CodePattern:
 
     pattern_type: str  # 'function', 'class', 'logic', 'structure'
     signature: str  # Signature unique du pattern
-    locations: List[str]  # Fichiers où il apparaît
+    locations: list[str]  # Fichiers où il apparaît
     similarity_score: float  # Score de similarité (0-1)
     complexity: int  # Complexité du pattern
     last_seen: datetime
-    correction_history: List[str] = None
+    correction_history: list[str] = None
 
 
 @dataclass
@@ -38,8 +38,8 @@ class DuplicateAnalysis:
     """Analyse de doublons"""
 
     duplicate_type: str
-    items: List[str]
-    locations: List[str]
+    items: list[str]
+    locations: list[str]
     severity: str
     similarity_score: float
     suggested_action: str
@@ -52,10 +52,10 @@ class AntiPattern:
 
     pattern_name: str
     description: str
-    locations: List[str]
+    locations: list[str]
     impact: str  # 'low', 'medium', 'high', 'critical'
     suggestion: str
-    previous_corrections: List[str]
+    previous_corrections: list[str]
 
 
 class PatternDetector:
@@ -163,7 +163,7 @@ class PatternDetector:
                 )
                 self._pattern_cache[pattern.signature] = pattern
 
-    def analyze_project_patterns(self, project_path: str = None) -> Dict[str, Any]:
+    def analyze_project_patterns(self, project_path: str = None) -> dict[str, Any]:
         """Analyser les patterns d'un projet complet"""
         project_path = Path(project_path or self.root_path)
         logger.info(f"🔍 Analyse des patterns du projet: {project_path.name}")
@@ -224,7 +224,7 @@ class PatternDetector:
 
     def _extract_patterns_from_file(
         self, file_analysis: FileAnalysis
-    ) -> List[CodePattern]:
+    ) -> list[CodePattern]:
         """Extraire les patterns d'un fichier analysé"""
         patterns = []
 
@@ -283,8 +283,8 @@ class PatternDetector:
         return patterns
 
     def _detect_duplicates(
-        self, patterns: List[CodePattern]
-    ) -> List[DuplicateAnalysis]:
+        self, patterns: list[CodePattern]
+    ) -> list[DuplicateAnalysis]:
         """Détecter les doublons parmi les patterns"""
         duplicates = []
         processed = set()
@@ -297,14 +297,14 @@ class PatternDetector:
             patterns_by_type[pattern.pattern_type].append(pattern)
 
         # Détecter les doublons par type
-        for pattern_type, type_patterns in patterns_by_type.items():
+        for _pattern_type, type_patterns in patterns_by_type.items():
             for i, pattern1 in enumerate(type_patterns):
                 if pattern1.signature in processed:
                     continue
 
                 similar_patterns = [pattern1]
 
-                for j, pattern2 in enumerate(type_patterns[i + 1 :], i + 1):
+                for _j, pattern2 in enumerate(type_patterns[i + 1 :], i + 1):
                     if pattern2.signature in processed:
                         continue
 
@@ -334,7 +334,7 @@ class PatternDetector:
                         duplicate_type=pattern1.pattern_type,
                         items=[p.signature for p in similar_patterns],
                         locations=list(
-                            set([loc for p in similar_patterns for loc in p.locations])
+                            {loc for p in similar_patterns for loc in p.locations}
                         ),
                         severity=severity,
                         similarity_score=similarity,
@@ -356,7 +356,7 @@ class PatternDetector:
             None, pattern1.signature, pattern2.signature
         ).ratio()
 
-    def _detect_antipatterns(self, patterns: List[CodePattern]) -> List[AntiPattern]:
+    def _detect_antipatterns(self, patterns: list[CodePattern]) -> list[AntiPattern]:
         """Détecter les anti-patterns"""
         antipatterns = []
 
@@ -425,9 +425,9 @@ class PatternDetector:
 
     def _save_analysis_results(
         self,
-        patterns: List[CodePattern],
-        duplicates: List[DuplicateAnalysis],
-        antipatterns: List[AntiPattern],
+        patterns: list[CodePattern],
+        duplicates: list[DuplicateAnalysis],
+        antipatterns: list[AntiPattern],
     ):
         """Sauvegarder les résultats d'analyse"""
         with sqlite3.connect(self.db_path) as conn:
@@ -498,9 +498,9 @@ class PatternDetector:
 
     def _generate_recommendations(
         self,
-        duplicates: List[DuplicateAnalysis],
-        antipatterns: List[AntiPattern],
-    ) -> List[str]:
+        duplicates: list[DuplicateAnalysis],
+        antipatterns: list[AntiPattern],
+    ) -> list[str]:
         """Générer des recommandations basées sur l'analyse"""
         recommendations = []
 
@@ -535,7 +535,7 @@ class PatternDetector:
 
         return recommendations
 
-    def get_learning_insights(self) -> Dict[str, Any]:
+    def get_learning_insights(self) -> dict[str, Any]:
         """Obtenir des insights d'apprentissage"""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()

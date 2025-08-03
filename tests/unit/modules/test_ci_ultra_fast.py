@@ -51,7 +51,7 @@ class TestCIUltraFast:
         for file_path in main_files:
             if os.path.exists(file_path):
                 try:
-                    with open(file_path, "r", encoding="utf-8") as f:
+                    with open(file_path, encoding="utf-8") as f:
                         compile(f.read(), file_path, "exec")
                 except Exception as e:
                     syntax_errors.append(f"{file_path}: {e}")

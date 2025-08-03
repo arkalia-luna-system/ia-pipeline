@@ -5,8 +5,8 @@ Interface CLI pour Athalia avec IA robuste.
 
 import logging
 import os
-from pathlib import Path
 import traceback
+from pathlib import Path
 
 import click
 import yaml

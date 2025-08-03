@@ -7,7 +7,6 @@ Vérifie et corrige automatiquement les versions non supportées
 import re
 import sys
 from pathlib import Path
-from typing import List, Tuple
 
 
 class PythonVersionPreventer:
@@ -22,7 +21,7 @@ class PythonVersionPreventer:
 
     def check_file_for_unsupported_versions(
         self, file_path: Path
-    ) -> List[Tuple[str, int, str]]:
+    ) -> list[tuple[str, int, str]]:
         """Vérifie un fichier pour les versions non supportées"""
         issues = []
 
@@ -31,7 +30,7 @@ class PythonVersionPreventer:
             return issues
 
         try:
-            with open(file_path, "r", encoding="utf-8") as f:
+            with open(file_path, encoding="utf-8") as f:
                 content = f.read()
                 lines = content.split("\n")
 
@@ -67,7 +66,7 @@ class PythonVersionPreventer:
     def fix_unsupported_versions(self, file_path: Path) -> bool:
         """Corrige automatiquement les versions non supportées"""
         try:
-            with open(file_path, "r", encoding="utf-8") as f:
+            with open(file_path, encoding="utf-8") as f:
                 content = f.read()
 
             original_content = content

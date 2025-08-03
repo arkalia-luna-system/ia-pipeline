@@ -7,12 +7,11 @@ des fichiers Python. Utilisé par les autres modules d'analyse.
 """
 
 import ast
+import logging
+import re
 from dataclasses import dataclass
 from datetime import datetime
-import logging
 from pathlib import Path
-import re
-from typing import List, Optional
 
 logger = logging.getLogger(__name__)
 
@@ -34,11 +33,11 @@ class FileAnalysis:
     """Analyse complète d'un fichier Python"""
 
     file_path: Path
-    functions: List[ASTNodeInfo]
-    classes: List[ASTNodeInfo]
-    conditionals: List[ASTNodeInfo]
-    loops: List[ASTNodeInfo]
-    imports: List[str]
+    functions: list[ASTNodeInfo]
+    classes: list[ASTNodeInfo]
+    conditionals: list[ASTNodeInfo]
+    loops: list[ASTNodeInfo]
+    imports: list[str]
     total_lines: int
     complexity_score: float
     last_modified: datetime
@@ -50,14 +49,14 @@ class ASTAnalyzer:
     def __init__(self):
         self._cache = {}
 
-    def analyze_file(self, file_path: Path) -> Optional[FileAnalysis]:
+    def analyze_file(self, file_path: Path) -> FileAnalysis | None:
         """Analyser un fichier Python et extraire toutes les informations"""
         try:
             # Ignorer les fichiers cachés macOS
             if file_path.name.startswith("._"):
                 return None
 
-            with open(file_path, "r", encoding="utf-8") as f:
+            with open(file_path, encoding="utf-8") as f:
                 content = f.read()
 
             tree = ast.parse(content)
@@ -89,7 +88,7 @@ class ASTAnalyzer:
 
     def _extract_functions(
         self, tree: ast.AST, content: str, file_path: Path
-    ) -> List[ASTNodeInfo]:
+    ) -> list[ASTNodeInfo]:
         """Extraire toutes les fonctions du fichier"""
         functions = []
 
@@ -109,7 +108,7 @@ class ASTAnalyzer:
 
     def _extract_classes(
         self, tree: ast.AST, content: str, file_path: Path
-    ) -> List[ASTNodeInfo]:
+    ) -> list[ASTNodeInfo]:
         """Extraire toutes les classes du fichier"""
         classes = []
 
@@ -129,7 +128,7 @@ class ASTAnalyzer:
 
     def _extract_conditionals(
         self, tree: ast.AST, content: str, file_path: Path
-    ) -> List[ASTNodeInfo]:
+    ) -> list[ASTNodeInfo]:
         """Extraire toutes les structures conditionnelles"""
         conditionals = []
 
@@ -149,12 +148,12 @@ class ASTAnalyzer:
 
     def _extract_loops(
         self, tree: ast.AST, content: str, file_path: Path
-    ) -> List[ASTNodeInfo]:
+    ) -> list[ASTNodeInfo]:
         """Extraire toutes les boucles"""
         loops = []
 
         for node in ast.walk(tree):
-            if isinstance(node, (ast.For, ast.While)):
+            if isinstance(node, ast.For | ast.While):
                 loop_info = ASTNodeInfo(
                     node_type="loop",
                     name=f"{type(node).__name__.lower()}_{node.lineno}",
@@ -167,7 +166,7 @@ class ASTAnalyzer:
 
         return loops
 
-    def _extract_imports(self, tree: ast.AST) -> List[str]:
+    def _extract_imports(self, tree: ast.AST) -> list[str]:
         """Extraire tous les imports"""
         imports = []
 
@@ -253,7 +252,7 @@ class ASTAnalyzer:
         complexity = 1
 
         for child in ast.walk(node):
-            if isinstance(child, (ast.If, ast.While, ast.For, ast.ExceptHandler)):
+            if isinstance(child, ast.If | ast.While | ast.For | ast.ExceptHandler):
                 complexity += 1
             elif isinstance(child, ast.BoolOp):
                 complexity += len(child.values) - 1
@@ -268,7 +267,7 @@ class ASTAnalyzer:
         for node in ast.walk(tree):
             if isinstance(
                 node,
-                (ast.FunctionDef, ast.ClassDef, ast.If, ast.While, ast.For),
+                ast.FunctionDef | ast.ClassDef | ast.If | ast.While | ast.For,
             ):
                 total_complexity += self._calculate_node_complexity(node)
                 node_count += 1

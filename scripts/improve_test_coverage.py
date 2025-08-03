@@ -3,14 +3,14 @@
 Script pour améliorer la couverture de tests en créant des tests de base.
 """
 
-import sys
-import os
 import importlib
 import inspect
-from typing import List, Dict, Any
+import os
+import sys
+from typing import Any
 
 
-def get_untested_modules() -> List[str]:
+def get_untested_modules() -> list[str]:
     """Récupère la liste des modules non testés."""
     # Modules prioritaires à tester en premier (structure mise à jour)
     priority_modules = [
@@ -36,7 +36,7 @@ def get_untested_modules() -> List[str]:
     return priority_modules
 
 
-def analyze_module(module_path: str) -> Dict[str, Any]:
+def analyze_module(module_path: str) -> dict[str, Any]:
     """Analyse un module pour extraire ses fonctions et classes."""
     try:
         # Convertir le chemin en nom de module
@@ -72,7 +72,7 @@ def analyze_module(module_path: str) -> Dict[str, Any]:
         }
 
 
-def generate_basic_test(module_info: Dict[str, Any]) -> tuple[str, str]:
+def generate_basic_test(module_info: dict[str, Any]) -> tuple[str, str]:
     """Génère un test de base pour un module."""
     module_name = module_info["module_name"]
     functions = module_info["functions"]
@@ -168,7 +168,7 @@ def test_module_integration():
     return test_file_name, test_content
 
 
-def create_basic_tests() -> List[str]:
+def create_basic_tests() -> list[str]:
     """Crée des tests de base pour les modules non testés."""
     created_tests = []
     untested_modules = get_untested_modules()
@@ -248,7 +248,7 @@ def run_quick_tests() -> bool:
         return False
 
 
-def check_coverage_improvement() -> Dict[str, float]:
+def check_coverage_improvement() -> dict[str, float]:
     """Vérifie l'amélioration de la couverture."""
     print("\n📊 VÉRIFICATION DE LA COUVERTURE")
     print("=" * 40)

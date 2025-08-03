@@ -5,11 +5,11 @@ Validation et vérification des packages ROS2
 """
 
 import logging
-from pathlib import Path
 import re
 import subprocess
-from typing import Any, Dict
 import xml.etree.ElementTree as ET
+from pathlib import Path
+from typing import Any
 
 # Import du validateur de sécurité
 try:
@@ -40,7 +40,7 @@ class ROS2Validator:
             "test_files": [],
         }
 
-    def validate_package(self) -> Dict[str, Any]:
+    def validate_package(self) -> dict[str, Any]:
         """Valide un package ROS2 complet"""
         logger.info(f"🔍 Validation du package ROS2: {self.project_path.name}")
 
@@ -157,7 +157,7 @@ class ROS2Validator:
             return True
 
         try:
-            with open(setup_py_path, "r", encoding="utf-8") as f:
+            with open(setup_py_path, encoding="utf-8") as f:
                 content = f.read()
 
             # Vérifier les éléments requis
@@ -192,7 +192,7 @@ class ROS2Validator:
             return True
 
         try:
-            with open(cmake_path, "r", encoding="utf-8") as f:
+            with open(cmake_path, encoding="utf-8") as f:
                 content = f.read()
 
             # Vérifier les éléments requis
@@ -231,7 +231,7 @@ class ROS2Validator:
 
             for launch_file in launch_files:
                 try:
-                    with open(launch_file, "r", encoding="utf-8") as f:
+                    with open(launch_file, encoding="utf-8") as f:
                         content = f.read()
 
                     # Vérifier la syntaxe de base
@@ -256,7 +256,7 @@ class ROS2Validator:
 
             for test_file in test_files:
                 try:
-                    with open(test_file, "r", encoding="utf-8") as f:
+                    with open(test_file, encoding="utf-8") as f:
                         content = f.read()
 
                     # Vérifier si c'est un fichier de test
@@ -352,7 +352,7 @@ class ROS2Validator:
         return "\n".join(report)
 
 
-def validate_ros2_package(package_path: str = ".") -> Dict[str, Any]:
+def validate_ros2_package(package_path: str = ".") -> dict[str, Any]:
     """Fonction utilitaire pour valider un package ROS2"""
     validator = ROS2Validator(package_path)
     return validator.validate_package()

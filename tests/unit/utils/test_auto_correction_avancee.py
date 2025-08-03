@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Tests pour le module d'auto-correction avancée
 Corrigé après réorganisation des modules
 """
 
-from pathlib import Path
 import shutil
 import sys
 import tempfile
 import unittest
+from pathlib import Path
 
 # Ajouter le chemin du projet
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -33,7 +32,7 @@ class TestAutoCorrectionAdvanced(unittest.TestCase):
         try:
             self.assertTrue(True, "Import réussi")
         except ImportError as e:
-            assert False, f"Module auto-correction non disponible: {e}"
+            raise AssertionError(f"Module auto-correction non disponible: {e}")
 
     def test_import_dashboard_unified(self):
         """Test d'import du dashboard unifié"""
@@ -47,14 +46,14 @@ class TestAutoCorrectionAdvanced(unittest.TestCase):
         try:
             self.assertTrue(True, "Import réussi")
         except ImportError as e:
-            assert False, f"Module profils non disponible: {e}"
+            raise AssertionError(f"Module profils non disponible: {e}")
 
     def test_advanced_modules_structure(self):
         """Test de la structure des modules avancés"""
         try:
             self.assertTrue(True, "Structure des modules avancés correcte")
         except ImportError as e:
-            assert False, f"Structure des modules avancés non disponible: {e}"
+            raise AssertionError(f"Structure des modules avancés non disponible: {e}")
 
 
 if __name__ == "__main__":

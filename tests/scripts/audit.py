@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Module d'audit intelligent pour analyser la qualité des projets générés.
 Analyse le code, détecte la dette technique, et propose des améliorations.
@@ -10,7 +9,7 @@ import builtins
 import json
 import logging
 import os
-from typing import Any, Dict, List
+from typing import Any
 
 
 class ProjectAuditor:
@@ -18,12 +17,12 @@ class ProjectAuditor:
 
     def __init__(self, project_path: str):
         self.project_path = project_path
-        self.issues: List[str] = []
-        self.suggestions: List[str] = []
-        self.metrics: Dict[str, Any] = {}
+        self.issues: list[str] = []
+        self.suggestions: list[str] = []
+        self.metrics: dict[str, Any] = {}
         self.score = 0
 
-    def audit_project(self) -> Dict[str, Any]:
+    def audit_project(self) -> dict[str, Any]:
         """Audit complet du projet."""
         logging.info(f"🔍 Audit intelligent du projet: {self.project_path}")
 
@@ -94,12 +93,12 @@ class ProjectAuditor:
         total_functions = 0
         total_classes = 0
 
-        for root, dirs, files in os.walk(self.project_path):
+        for root, _dirs, files in os.walk(self.project_path):
             for file in files:
                 if file.endswith(".py"):
                     file_path = os.path.join(root, file)
                     try:
-                        with open(file_path, "r", encoding="utf-8") as f:
+                        with open(file_path, encoding="utf-8") as f:
                             content = f.read()
 
                         # Analyse AST
@@ -173,7 +172,7 @@ class ProjectAuditor:
         if total_classes < 1:
             self.suggestions.append("Utiliser des classes pour une meilleure structure")
 
-    def _analyze_python_file(self, tree: ast.AST, content: str) -> Dict[str, int]:
+    def _analyze_python_file(self, tree: ast.AST, content: str) -> dict[str, int]:
         """Analyse un fichier Python avec AST."""
         lines = len(content.split("\n"))
         functions = len(
@@ -191,7 +190,7 @@ class ProjectAuditor:
         test_score = 100
 
         test_files = []
-        for root, dirs, files in os.walk(self.project_path):
+        for _root, _dirs, files in os.walk(self.project_path):
             for file in files:
                 if file.startswith("test_") or file.endswith("_test.py"):
                     test_files.append(file)
@@ -206,7 +205,7 @@ class ProjectAuditor:
         # Vérifier la présence de pytest
         requirements_file = os.path.join(self.project_path, "requirements.txt")
         if os.path.exists(requirements_file):
-            with open(requirements_file, "r") as f:
+            with open(requirements_file) as f:
                 content = f.read()
                 if "pytest" not in content:
                     test_issues.append("pytest manquant dans requirements.txt")
@@ -238,7 +237,7 @@ class ProjectAuditor:
 
         # Vérifier les docstrings
         python_files = []
-        for root, dirs, files in os.walk(self.project_path):
+        for root, _dirs, files in os.walk(self.project_path):
             for file in files:
                 if file.endswith(".py"):
                     python_files.append(os.path.join(root, file))
@@ -246,7 +245,7 @@ class ProjectAuditor:
         files_without_docstrings = 0
         for py_file in python_files:
             try:
-                with open(py_file, "r", encoding="utf-8") as f:
+                with open(py_file, encoding="utf-8") as f:
                     content = f.read()
                 if '"""' not in content and "'''" not in content:
                     files_without_docstrings += 1
@@ -267,12 +266,12 @@ class ProjectAuditor:
         security_issues = []
         security_score = 100
 
-        for root, dirs, files in os.walk(self.project_path):
+        for root, _dirs, files in os.walk(self.project_path):
             for file in files:
                 if file.endswith(".py"):
                     file_path = os.path.join(root, file)
                     try:
-                        with open(file_path, "r", encoding="utf-8") as f:
+                        with open(file_path, encoding="utf-8") as f:
                             content = f.read()
 
                         # Détecter les vulnérabilités
@@ -329,7 +328,7 @@ class ProjectAuditor:
             + self.metrics.get("security_score", 0) * 0.1
         )
 
-    def _generate_report(self) -> Dict[str, Any]:
+    def _generate_report(self) -> dict[str, Any]:
         """Génère le rapport d'audit."""
         return {
             "issues": self.issues,
@@ -338,17 +337,17 @@ class ProjectAuditor:
             "score": round(self.score, 1),
         }
 
-    def _find_modules(self) -> List[str]:
+    def _find_modules(self) -> list[str]:
         """Trouve les modules Python dans le projet."""
         modules = []
-        for root, dirs, files in os.walk(self.project_path):
+        for _root, _dirs, files in os.walk(self.project_path):
             for file in files:
                 if file.endswith(".py") and not file.startswith("__"):
                     modules.append(file)
         return modules
 
 
-def audit_project_intelligent(project_path: str) -> Dict[str, Any]:
+def audit_project_intelligent(project_path: str) -> dict[str, Any]:
     """Fonction principale pour l'audit intelligent."""
     auditor = ProjectAuditor(project_path)
     return auditor.audit_project()

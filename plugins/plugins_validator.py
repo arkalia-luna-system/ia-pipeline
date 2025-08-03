@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 import importlib.util
 import logging
 import os
 import sys
-from typing import Any, Dict
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
 
-def validate_plugin(path: str) -> Dict[str, Any]:
+def validate_plugin(path: str) -> dict[str, Any]:
     """Valide un plugin Python : héritage, méthode run / execute, docstring."""
     result = {"f": False, "errors": [], "class_name": None}
     if not os.path.exists(path):

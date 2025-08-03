@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 import logging
-from typing import Dict
 
 logger = logging.getLogger(__name__)
 
 
-def get_artistic_templates() -> Dict[str, str]:
+def get_artistic_templates() -> dict[str, str]:
     """Retourne les templates de code pour projets artistiques."""
 
     return {

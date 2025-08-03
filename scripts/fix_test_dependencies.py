@@ -1,15 +1,13 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Script de correction des dépendances pour les tests de performance
 Corrige les erreurs d'import manquantes dans l'environnement CI/CD
 """
 
+import logging
+import os
 import subprocess
 import sys
-import os
-import logging
-from typing import Optional
 
 # Configuration du logging
 logging.basicConfig(
@@ -18,7 +16,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-def run_command(command: str, description: str = "") -> Optional[str]:
+def run_command(command: str, description: str = "") -> str | None:
     """Exécute une commande et gère les erreurs"""
     logger.info(f"Exécution: {description or command}")
     try:

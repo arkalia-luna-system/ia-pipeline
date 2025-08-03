@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Tests de performance et d'optimisation pour Athalia.
 Tests professionnels pour la CI/CD.
 """
 
-from pathlib import Path
 import sys
 import tempfile
 import time
+from pathlib import Path
 
 import pytest
 
@@ -379,7 +378,7 @@ def test_system_performance_monitoring():
     cpu_percent = process.cpu_percent()
     memory_info = process.memory_info()
 
-    assert isinstance(cpu_percent, (int, float))
+    assert isinstance(cpu_percent, int | float)
     assert isinstance(memory_info.rss, int)
     assert memory_info.rss > 0
 

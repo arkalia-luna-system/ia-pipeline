@@ -4,12 +4,12 @@ Script de mesure d'impact des optimisations de tests.
 Mesure les performances avant et après les optimisations.
 """
 
-import time
-import subprocess
-import psutil
 import os
+import subprocess
+import time
 from pathlib import Path
-from typing import Dict
+
+import psutil
 
 
 class OptimizationImpactMeasurer:
@@ -23,7 +23,7 @@ class OptimizationImpactMeasurer:
             "tests/unit/ai/test_ai_robust_integration.py::test_ai_robust_memory_usage",
         ]
 
-    def measure_test_performance(self, test_path: str) -> Dict[str, float]:
+    def measure_test_performance(self, test_path: str) -> dict[str, float]:
         """Mesure les performances d'un test spécifique."""
         process = psutil.Process()
         initial_memory = process.memory_info().rss / 1024 / 1024  # MB
@@ -79,7 +79,7 @@ class OptimizationImpactMeasurer:
                 "error": str(e),
             }
 
-    def run_measurements(self) -> Dict[str, Dict[str, float]]:
+    def run_measurements(self) -> dict[str, dict[str, float]]:
         """Exécute les mesures pour tous les tests."""
         print("🔍 Mesure de l'impact des optimisations...")
         print("=" * 60)

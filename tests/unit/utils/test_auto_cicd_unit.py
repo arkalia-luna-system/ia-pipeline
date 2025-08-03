@@ -1,6 +1,6 @@
-from pathlib import Path
 import tempfile
 import unittest
+from pathlib import Path
 
 from athalia_core.auto_cicd import AutoCICD, generate_github_ci_yaml
 

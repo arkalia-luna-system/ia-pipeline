@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 🧪 Test de performance Phase 3 - Athalia Project
 Tests pour optimiser les performances du projet
 """
 
-from pathlib import Path
 import time
-from typing import Dict
+from pathlib import Path
 
 import psutil  # type: ignore
 
@@ -25,7 +23,7 @@ class PerformanceMonitor:
         self.start_time = time.time()
         self.start_memory = psutil.Process().memory_info().rss
 
-    def stop(self) -> Dict[str, float]:
+    def stop(self) -> dict[str, float]:
         """Arrête le monitoring et retourne les métriques"""
         if self.start_time is None:
             return {}

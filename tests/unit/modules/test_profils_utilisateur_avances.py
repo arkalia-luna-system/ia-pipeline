@@ -1,18 +1,17 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Tests pour les profils utilisateur avancés.
 Tests professionnels pour la CI/CD.
 """
 
 import os
-from pathlib import Path
 import shutil
 
 # Ajouter le chemin du projet
 import sys
 import tempfile
 import unittest
+from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 

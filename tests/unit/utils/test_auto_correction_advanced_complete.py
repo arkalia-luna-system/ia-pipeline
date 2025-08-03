@@ -4,11 +4,11 @@ Tests complets pour le module auto_correction_advanced.py
 Tests unitaires et d'intégration pour AutoCorrectionAvancee
 """
 
-from pathlib import Path
 import shutil
 import sys
 import tempfile
 import unittest
+from pathlib import Path
 
 # Ajout du chemin du projet pour les imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -131,7 +131,7 @@ class TestAutoCorrectionAvancee(unittest.TestCase):
     def test_corriger_erreur_syntaxe(self):
         """Test de la correction d'erreur syntaxique"""
         fichier = Path(self.temp_dir) / "test_indentation.py"
-        with open(fichier, "r") as f:
+        with open(fichier) as f:
             contenu = f.read()
 
         # Création d'une erreur syntaxique simulée

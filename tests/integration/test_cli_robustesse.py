@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Tests d'intégration CLI robuste pour Athalia.
 Tests professionnels pour la CI/CD.
 """
 
 import os
-from pathlib import Path
 import subprocess
 import sys
 import tempfile
+from pathlib import Path
 from typing import Any
 
 import pytest
@@ -282,7 +281,7 @@ class TestCLIRobustesse:
                 try:
                     # Lancer plusieurs processus CLI simultanément
                     processes = []
-                    for i in range(3):
+                    for _i in range(3):
                         process = subprocess.Popen(
                             [sys.executable, str(cli_path)],
                             stdout=subprocess.PIPE,

@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Script de sauvegarde pour Athalia
 """
 
-from datetime import datetime
 import json
 import logging
-from pathlib import Path
 import shutil
 import sys
-from typing import Dict, List, Optional
+from datetime import datetime
+from pathlib import Path
 
 # Configuration du logging
 logging.basicConfig(level=logging.INFO)
@@ -25,7 +23,7 @@ class BackupManager:
         self.backup_dir = self.project_root / "backups" / "daily"
         self.backup_dir.mkdir(parents=True, exist_ok=True)
 
-    def create_backup(self, backup_name: Optional[str] = None) -> str:
+    def create_backup(self, backup_name: str | None = None) -> str:
         """Crée une nouvelle sauvegarde"""
         if not backup_name:
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -74,7 +72,7 @@ class BackupManager:
         logger.info(f"Sauvegarde terminée: {backup_path}")
         return str(backup_path)
 
-    def _copy_file(self, src: Path, dst_dir: Path, exclude_patterns: List[str]) -> None:
+    def _copy_file(self, src: Path, dst_dir: Path, exclude_patterns: list[str]) -> None:
         """Copie un fichier en respectant les exclusions"""
         if self._should_exclude(src, exclude_patterns):
             return
@@ -84,7 +82,7 @@ class BackupManager:
         shutil.copy2(src, dst_file)
 
     def _copy_directory(
-        self, src: Path, dst_dir: Path, exclude_patterns: List[str]
+        self, src: Path, dst_dir: Path, exclude_patterns: list[str]
     ) -> None:
         """Copie un répertoire en respectant les exclusions"""
         if self._should_exclude(src, exclude_patterns):
@@ -96,12 +94,12 @@ class BackupManager:
                 src, dst_path, ignore=shutil.ignore_patterns(*exclude_patterns)
             )
 
-    def _should_exclude(self, path: Path, exclude_patterns: List[str]) -> bool:
+    def _should_exclude(self, path: Path, exclude_patterns: list[str]) -> bool:
         """Vérifie si un chemin doit être exclu"""
         path_str = str(path)
         return any(pattern.replace("*", "") in path_str for pattern in exclude_patterns)
 
-    def list_backups(self) -> List[Dict]:
+    def list_backups(self) -> list[dict]:
         """Liste toutes les sauvegardes disponibles"""
         backups = []
         for backup_dir in self.backup_dir.iterdir():
@@ -113,9 +111,7 @@ class BackupManager:
                         backups.append(metadata)
         return sorted(backups, key=lambda x: x["timestamp"], reverse=True)
 
-    def restore_backup(
-        self, backup_name: str, target_dir: Optional[str] = None
-    ) -> bool:
+    def restore_backup(self, backup_name: str, target_dir: str | None = None) -> bool:
         """Restaure une sauvegarde"""
         backup_path = self.backup_dir / backup_name
         if not backup_path.exists():

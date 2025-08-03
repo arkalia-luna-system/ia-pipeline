@@ -7,7 +7,7 @@ Interface simple pour l'analyse de projets
 import json
 import logging
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -20,7 +20,7 @@ class AnalyticsEngine:
         self.metrics = {}
         self.reports = {}
 
-    def analyze_code_complexity(self) -> Dict[str, Any]:
+    def analyze_code_complexity(self) -> dict[str, Any]:
         """Analyse la complexité du code"""
         return {
             "average_complexity": 0.0,
@@ -28,11 +28,11 @@ class AnalyticsEngine:
             "files_analyzed": 0,
         }
 
-    def analyze_test_coverage(self) -> Dict[str, Any]:
+    def analyze_test_coverage(self) -> dict[str, Any]:
         """Analyse la couverture de tests"""
         return {"test_files_count": 0, "test_functions_count": 0}
 
-    def analyze_dependencies(self) -> Dict[str, Any]:
+    def analyze_dependencies(self) -> dict[str, Any]:
         """Analyse les dépendances"""
         return {
             "total_dependencies": 0,
@@ -40,11 +40,11 @@ class AnalyticsEngine:
             "indirect_dependencies": 0,
         }
 
-    def analyze_performance_metrics(self) -> Dict[str, Any]:
+    def analyze_performance_metrics(self) -> dict[str, Any]:
         """Analyse les métriques de performance"""
         return {"average_execution_time": 0.0, "memory_usage": 0.0, "cpu_usage": 0.0}
 
-    def analyze_security_metrics(self) -> Dict[str, Any]:
+    def analyze_security_metrics(self) -> dict[str, Any]:
         """Analyse les métriques de sécurité"""
         return {
             "security_score": 100,
@@ -52,7 +52,7 @@ class AnalyticsEngine:
             "high_severity_count": 0,
         }
 
-    def analyze_documentation_coverage(self) -> Dict[str, Any]:
+    def analyze_documentation_coverage(self) -> dict[str, Any]:
         """Analyse la couverture de documentation"""
         return {
             "documentation_files": 0,
@@ -60,7 +60,7 @@ class AnalyticsEngine:
             "api_docs_exists": False,
         }
 
-    def _get_git_metrics(self) -> Dict[str, Any]:
+    def _get_git_metrics(self) -> dict[str, Any]:
         """Récupère les métriques Git"""
         return {
             "commits_count": 0,
@@ -69,11 +69,11 @@ class AnalyticsEngine:
             "branch_count": 0,
         }
 
-    def analyze_git_metrics(self) -> Dict[str, Any]:
+    def analyze_git_metrics(self) -> dict[str, Any]:
         """Analyse les métriques Git"""
         return {"commits_count": 0, "contributors_count": 0, "last_commit_date": None}
 
-    def generate_comprehensive_report(self) -> Dict[str, Any]:
+    def generate_comprehensive_report(self) -> dict[str, Any]:
         """Génère un rapport complet"""
         return {
             "summary": {
@@ -94,7 +94,7 @@ class AnalyticsEngine:
             "timestamp": "2024-01-01T00:00:00Z",
         }
 
-    def calculate_project_score(self, metrics: Dict[str, Any] = None) -> Dict[str, Any]:
+    def calculate_project_score(self, metrics: dict[str, Any] = None) -> dict[str, Any]:
         """Calcule le score du projet"""
         if metrics is None:
             metrics = self.metrics
@@ -109,7 +109,7 @@ class AnalyticsEngine:
             },
         }
 
-    def generate_recommendations(self, metrics: Dict[str, Any] = None) -> list:
+    def generate_recommendations(self, metrics: dict[str, Any] = None) -> list:
         """Génère des recommandations"""
         if metrics is None:
             metrics = self.metrics
@@ -161,7 +161,7 @@ class AnalyticsEngine:
         except Exception:
             return False
 
-    def analyze_trends(self, historical_data: list = None) -> Dict[str, Any]:
+    def analyze_trends(self, historical_data: list = None) -> dict[str, Any]:
         """Analyse les tendances"""
         if historical_data is None:
             historical_data = []
@@ -175,8 +175,8 @@ class AnalyticsEngine:
         }
 
     def compare_with_baseline(
-        self, baseline: Dict[str, Any], current: Dict[str, Any]
-    ) -> Dict[str, Any]:
+        self, baseline: dict[str, Any], current: dict[str, Any]
+    ) -> dict[str, Any]:
         """Compare avec une baseline"""
         return {
             "improvements": ["test_coverage", "security"],
@@ -186,7 +186,7 @@ class AnalyticsEngine:
             "regression": 0.0,
         }
 
-    def generate_visualization_data(self) -> Dict[str, Any]:
+    def generate_visualization_data(self) -> dict[str, Any]:
         """Génère des données pour visualisation"""
         return {
             "charts": [],
@@ -204,7 +204,7 @@ class AnalyticsEngine:
         }
 
 
-def analyze_project_metrics(project_path: str) -> Dict[str, Any]:
+def analyze_project_metrics(project_path: str) -> dict[str, Any]:
     """Analyse les métriques d'un projet"""
     engine = AnalyticsEngine(project_path)
     return engine.generate_comprehensive_report()
@@ -212,7 +212,7 @@ def analyze_project_metrics(project_path: str) -> Dict[str, Any]:
 
 def generate_analytics_report(
     project_path: str, output_path: str = None
-) -> Dict[str, Any]:
+) -> dict[str, Any]:
     """Génère un rapport d'analytics"""
     engine = AnalyticsEngine(project_path)
     report = engine.generate_comprehensive_report()
@@ -224,7 +224,7 @@ def generate_analytics_report(
     return report
 
 
-def analyze_project(project_path: str) -> Dict[str, Any]:
+def analyze_project(project_path: str) -> dict[str, Any]:
     """Analyse complète d'un projet"""
     engine = AnalyticsEngine(project_path)
     project_name = Path(project_path).name
@@ -247,7 +247,7 @@ def analyze_project(project_path: str) -> Dict[str, Any]:
     }
 
 
-def generate_heatmap_data(project_path: str) -> Dict[str, Any]:
+def generate_heatmap_data(project_path: str) -> dict[str, Any]:
     """Génère des données pour heatmap"""
     engine = AnalyticsEngine(project_path)
     complexity_data = engine.analyze_code_complexity()
@@ -263,7 +263,7 @@ def generate_heatmap_data(project_path: str) -> Dict[str, Any]:
     }
 
 
-def generate_technical_debt_analysis(project_path: str) -> Dict[str, Any]:
+def generate_technical_debt_analysis(project_path: str) -> dict[str, Any]:
     """Génère une analyse de la dette technique"""
     engine = AnalyticsEngine(project_path)
     return {

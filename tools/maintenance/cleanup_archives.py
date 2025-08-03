@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 🧹 Nettoyeur d'Archives Documentation Athalia
 
@@ -7,11 +6,11 @@ Script pour nettoyer et organiser les archives de documentation
 afin de réduire les liens cassés et améliorer la structure.
 """
 
-from datetime import datetime
 import logging
-from pathlib import Path
 import shutil
-from typing import Any, Dict
+from datetime import datetime
+from pathlib import Path
+from typing import Any
 
 # Configuration du logging
 logging.basicConfig(
@@ -32,14 +31,14 @@ class ArchiveCleaner:
         self.root_path = Path(root_path)
         self.docs_path = self.root_path / "docs"
         self.archive_path = self.docs_path / "archive"
-        self.cleanup_results: Dict[str, Any] = {
+        self.cleanup_results: dict[str, Any] = {
             "moved_files": [],
             "deleted_files": [],
             "organized_dirs": [],
             "broken_links_fixed": 0,
         }
 
-    def cleanup_archives(self, dry_run: bool = True) -> Dict[str, Any]:
+    def cleanup_archives(self, dry_run: bool = True) -> dict[str, Any]:
         """Nettoie et organise les archives"""
         logger.info("🧹 Début du nettoyage des archives...")
 
@@ -87,7 +86,7 @@ class ArchiveCleaner:
 
         for md_file in self.archive_path.rglob("*.md"):
             try:
-                with open(md_file, "r", encoding="utf-8") as f:
+                with open(md_file, encoding="utf-8") as f:
                     content = f.read()
 
                 content_hash = hash(content)

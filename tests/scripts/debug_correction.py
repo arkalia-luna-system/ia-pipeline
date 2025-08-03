@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Script de débogage pour le système de correction
 """
 
-from pathlib import Path
 import sys
+from pathlib import Path
 
 from athalia_core.correction_optimizer import optimize_correction
 

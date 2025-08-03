@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Module d'édition/correction multi-fichiers pour Athalia/Arkalia.
 Permet d'appliquer des corrections/refactoring sur plusieurs fichiers en une
@@ -9,7 +8,8 @@ seule commande, avec logs et rollback.
 import logging
 import os
 import shutil
-from typing import Any, Callable, Dict, List, Tuple
+from collections.abc import Callable
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -18,8 +18,8 @@ class MultiFileEditor:
     def __init__(self, backup_dir: str = ".multi_file_backups"):
         self.backup_dir = backup_dir
         os.makedirs(self.backup_dir, exist_ok=True)
-        self.logs: List[str] = []
-        self.rollback_files: List[Tuple[str, str]] = []
+        self.logs: list[str] = []
+        self.rollback_files: list[tuple[str, str]] = []
 
     def backup_file(self, file_path: str):
         backup_path = os.path.join(self.backup_dir, os.path.basename(file_path))
@@ -28,8 +28,8 @@ class MultiFileEditor:
         self.logs.append(f"Backup: {file_path} -> {backup_path}")
 
     def apply_corrections(
-        self, files: List[str], correction_fn: Callable[[str], str]
-    ) -> Dict[str, Any]:
+        self, files: list[str], correction_fn: Callable[[str], str]
+    ) -> dict[str, Any]:
         """
             Applique la fonction de correction à chaque fichier.
         :param files: Liste des chemins de fichiers à corriger
@@ -37,11 +37,11 @@ class MultiFileEditor:
                                  retourne le contenu corrigé
         :return: Dictionnaire de résultats (succès, erreurs, logs)
         """
-        results: Dict[str, Any] = {"success": [], "errors": [], "logs": []}
+        results: dict[str, Any] = {"success": [], "errors": [], "logs": []}
         for file_path in files:
             try:
                 self.backup_file(file_path)
-                with open(file_path, "r", encoding="utf-8") as f:
+                with open(file_path, encoding="utf-8") as f:
                     content = f.read()
                 corrected = correction_fn(content)
                 with open(file_path, "w", encoding="utf-8") as f:

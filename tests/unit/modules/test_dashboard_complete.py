@@ -4,8 +4,8 @@ Couverture: 100% des fonctionnalités du dashboard
 Tests: 20 tests unitaires et d'intégration
 """
 
-from pathlib import Path
 import tempfile
+from pathlib import Path
 from unittest.mock import Mock, patch
 
 import yaml
@@ -298,7 +298,7 @@ class TestDashboard:
         assert result is True
         assert output_file.exists()
 
-        with open(output_file, "r") as f:
+        with open(output_file) as f:
             content = f.read()
             assert "Test Dashboard" in content
 

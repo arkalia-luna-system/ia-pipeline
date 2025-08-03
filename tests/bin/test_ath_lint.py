@@ -1,6 +1,6 @@
+import glob
 import os
 import subprocess
-import glob
 
 import pytest
 

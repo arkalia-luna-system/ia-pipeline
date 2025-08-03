@@ -9,12 +9,11 @@ Gestion spécialisée Docker pour projets Reachy/ROS2:
 - Images spécialisées
 """
 
-from dataclasses import dataclass
 import logging
 import os
-from pathlib import Path
 import subprocess
-from typing import Dict, List, Optional
+from dataclasses import dataclass
+from pathlib import Path
 
 import yaml
 
@@ -37,11 +36,11 @@ class DockerServiceConfig:
 
     name: str
     image: str
-    environment: Dict[str, str]
-    volumes: List[str]
-    ports: List[str]
-    depends_on: List[str]
-    network_mode: Optional[str] = None
+    environment: dict[str, str]
+    volumes: list[str]
+    ports: list[str]
+    depends_on: list[str]
+    network_mode: str | None = None
 
 
 @dataclass
@@ -49,9 +48,9 @@ class DockerValidationResult:
     """Résultat de validation Docker"""
 
     compose_valid: bool
-    services: List[DockerServiceConfig]
-    issues: List[str]
-    recommendations: List[str]
+    services: list[DockerServiceConfig]
+    issues: list[str]
+    recommendations: list[str]
     ready_to_run: bool
 
 
@@ -75,7 +74,7 @@ class DockerRoboticsManager:
         compose_file = self.docker_path / "compose.yaml"
         if compose_file.exists():
             try:
-                with open(compose_file, "r") as f:
+                with open(compose_file) as f:
                     compose_data = yaml.safe_load(f)
 
                 if "services" in compose_data:
@@ -131,8 +130,8 @@ class DockerRoboticsManager:
         )
 
     def _parse_service_config(
-        self, name: str, config: Dict
-    ) -> Optional[DockerServiceConfig]:
+        self, name: str, config: dict
+    ) -> DockerServiceConfig | None:
         """Parser la configuration d'un service"""
         try:
             return DockerServiceConfig(
@@ -151,8 +150,8 @@ class DockerRoboticsManager:
     def _validate_reachy_service(
         self,
         service: DockerServiceConfig,
-        issues: List[str],
-        recommendations: List[str],
+        issues: list[str],
+        recommendations: list[str],
     ):
         """Valider spécifiquement le service Reachy"""
 
@@ -348,7 +347,7 @@ htmlcov/
             self.logger.error(f"Erreur setup Docker: {e}")
             return False
 
-    def run_docker_compose(self, service: Optional[str] = None) -> bool:
+    def run_docker_compose(self, service: str | None = None) -> bool:
         """Lancer docker-compose"""
         try:
             compose_file = self.docker_path / "compose.yaml"

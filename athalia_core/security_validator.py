@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Module de validation sécurisée pour les commandes subprocess
 Protection contre les injections de commandes et exécution non autorisée
 """
 
 import logging
-from pathlib import Path
 import subprocess
-from typing import Any, Dict, List
+from pathlib import Path
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -288,7 +287,7 @@ class SecurityValidator:
             "/usr/local/bin/",  # Répertoire local
         ]
 
-    def validate_command(self, command: List[str]) -> Dict[str, Any]:
+    def validate_command(self, command: list[str]) -> dict[str, Any]:
         """Valide une commande subprocess."""
         try:
             # Vérifier si la commande est vide
@@ -402,7 +401,7 @@ class SecurityValidator:
             return True
 
     def run_safe_command(
-        self, command: List[str], **kwargs
+        self, command: list[str], **kwargs
     ) -> subprocess.CompletedProcess:
         """Exécute une commande de manière sécurisée."""
         validation = self.validate_command(command)
@@ -435,10 +434,10 @@ class SecurityValidator:
             return result
         except subprocess.TimeoutExpired:
             logger.error(f"Timeout lors de l'exécution: {' '.join(command)}")
-            raise SecurityError("Timeout lors de l'exécution de la commande")
+            raise SecurityError("Timeout lors de l'exécution de la commande") from None
         except Exception as e:
             logger.error(f"Erreur lors de l'exécution: {e}")
-            raise SecurityError(f"Erreur d'exécution: {e}")
+            raise SecurityError(f"Erreur d'exécution: {e}") from e
 
     def add_allowed_command(self, command: str) -> None:
         """Ajoute une commande à la liste des commandes autorisées."""
@@ -458,13 +457,13 @@ class SecurityValidator:
             self.safe_directories.append(safe_path)
             logger.info(f"Répertoire sûr ajouté: {safe_path}")
 
-    def get_security_report(self) -> Dict[str, Any]:
+    def get_security_report(self) -> dict[str, Any]:
         """Génère un rapport de sécurité."""
         return {
             "allowed_commands_count": len(self.allowed_commands),
             "forbidden_patterns_count": len(self.forbidden_patterns),
             "safe_directories_count": len(self.safe_directories),
-            "allowed_commands": sorted(list(self.allowed_commands)),
+            "allowed_commands": sorted(self.allowed_commands),
             "safe_directories": self.safe_directories,
         }
 
@@ -479,12 +478,12 @@ class SecurityError(Exception):
 security_validator = SecurityValidator()
 
 
-def validate_and_run(command: List[str], **kwargs) -> subprocess.CompletedProcess:
+def validate_and_run(command: list[str], **kwargs) -> subprocess.CompletedProcess:
     """Fonction utilitaire pour valider et exécuter une commande."""
     return security_validator.run_safe_command(command, **kwargs)
 
 
-def is_command_safe(command: List[str]) -> bool:
+def is_command_safe(command: list[str]) -> bool:
     """Vérifie si une commande est sûre."""
     validation = security_validator.validate_command(command)
     return validation["valid"]
