@@ -135,7 +135,7 @@ class TestAuditAgent(unittest.TestCase):
         mock_query_qwen.side_effect = Exception("Erreur de connexion")
 
         # Test
-        with self.assertRaises(Exception):
+        with self.assertRaises(Exception):  # noqa: B017
             self.agent.act("Test d'erreur")
 
     def test_agent_inheritance(self):
