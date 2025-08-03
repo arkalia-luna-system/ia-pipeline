@@ -151,9 +151,41 @@ extend-exclude = '''
   | archive
   | backups
   | logs
+  | athalia_showcase
 )/
 '''
 preview = true
+
+[tool.ruff]
+target-version = "py310"
+line-length = 88
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4", # flake8-comprehensions
+    "UP", # pyupgrade
+]
+ignore = [
+    "E501",  # line too long, handled by black
+    "B008",  # do not perform function calls in argument defaults
+    "C901",  # too complex
+]
+exclude = [
+    ".venv",
+    "venv",
+    "archive",
+    "backups", 
+    "logs",
+    "athalia_showcase",
+    "__pycache__",
+    ".git",
+    ".mypy_cache",
+    "build",
+    "dist",
+]
 
 [tool.mypy]
 python_version = "3.10"
@@ -180,6 +212,7 @@ exclude = [
     "archive/",
     "backups/",
     "logs/",
+    "athalia_showcase/",
     ".venv/",
     "venv/",
 ]
