@@ -211,6 +211,7 @@ data/*.json
 data/*.db
 backups/
 cache/
+.athalia_cache/
 .coverage
 .pytest_cache/
 .ruff_cache/
