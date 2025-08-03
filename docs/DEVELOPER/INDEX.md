@@ -278,8 +278,4 @@ Athalia est maintenant prête pour la **Phase 5 d'optimisation** avec une base s
 ---
 
 *Documentation mise à jour le 2 août 2025*  
-<<<<<<< HEAD
 *Version : 5.0 - Toutes les phases terminées*
-=======
-*Version : 4.0 - Toutes les phases terminées*
->>>>>>> reorganize-tests

@@ -394,8 +394,4 @@ L'orchestrateur unifié d'Athalia offre maintenant un pipeline complet de 15 ét
 ---
 
 *Documentation mise à jour le 2 août 2025*  
-<<<<<<< HEAD
 *Version : 5.0 - Toutes les phases terminées*
-=======
-*Version : 4.0 - Toutes les phases terminées*
->>>>>>> reorganize-tests
