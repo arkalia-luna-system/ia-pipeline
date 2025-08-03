@@ -110,14 +110,14 @@ def test_function():
             pytest.skip("CacheManager non disponible")
 
         # Test de mise en cache
-        key = "test_analysis"
+        blueprint = {"name": "test_analysis", "description": "Test analysis"}
         data = {"test": "data"}
 
-        success = self.cache_manager.set_cache(key, data)
+        success = self.cache_manager.set(blueprint, data)
         assert success is True
 
         # Test de récupération
-        retrieved = self.cache_manager.get_cache(key)
+        retrieved = self.cache_manager.get(blueprint)
         assert retrieved is not None
         assert retrieved == data
 
@@ -277,8 +277,9 @@ def inefficient_function():
 
         # Opérations de cache multiples
         for i in range(10):  # Optimisé: réduit de 100 à 10
-            self.cache_manager.set_cache(f"test_{i}", {"value": i})
-            self.cache_manager.get_cache(f"test_{i}")
+            blueprint = {"name": f"test_{i}", "description": f"Test {i}"}
+            self.cache_manager.set(blueprint, {"value": i})
+            self.cache_manager.get(blueprint)
 
         end_time = time.time()
         execution_time = end_time - start_time

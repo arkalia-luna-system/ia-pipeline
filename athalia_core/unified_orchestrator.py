@@ -47,6 +47,44 @@ except ImportError:
     AI_MODULES_AVAILABLE = False
     logger.warning("⚠️ Modules IA non disponibles - mode fallback activé")
 
+# Import des modules robotiques
+try:
+    from athalia_core.robotics import (
+        ReachyAuditor,
+        ROS2Validator,
+        DockerRoboticsManager,
+        RustAnalyzer,
+        RoboticsCI,
+    )
+
+    ROBOTICS_MODULES_AVAILABLE = True
+except ImportError:
+    ROBOTICS_MODULES_AVAILABLE = False
+    logger.warning("⚠️ Modules robotiques non disponibles - mode fallback activé")
+
+# Import des templates artistiques
+try:
+    from athalia_core.templates.artistic_templates import get_artistic_templates
+    from athalia_core.templates.base_templates import get_base_templates
+
+    ARTISTIC_MODULES_AVAILABLE = True
+except ImportError:
+    ARTISTIC_MODULES_AVAILABLE = False
+    logger.warning("⚠️ Modules artistiques non disponibles - mode fallback activé")
+
+# Import des modules de classification avancée
+try:
+    from athalia_core.classification.project_classifier import classify_project_type
+    from athalia_core.classification.project_types import (
+        ProjectType,
+        get_project_config,
+    )
+
+    CLASSIFICATION_MODULES_AVAILABLE = True
+except ImportError:
+    CLASSIFICATION_MODULES_AVAILABLE = False
+    logger.warning("⚠️ Modules de classification non disponibles - mode fallback activé")
+
 
 class UnifiedOrchestrator:
     """Orchestrateur unifié pour Athalia"""
@@ -79,6 +117,20 @@ class UnifiedOrchestrator:
         self.quality_scorer = None
         self.response_distiller = None
         self.code_genetics = None
+        
+        # Modules robotiques
+        self.reachy_auditor = None
+        self.ros2_validator = None
+        self.docker_robotics = None
+        self.rust_analyzer = None
+        self.robotics_ci = None
+        
+        # Modules artistiques
+        self.artistic_templates = None
+        self.base_templates = None
+        
+        # Modules de classification
+        self.project_classifier = None
 
         # Initialiser les modules avancés
         self.auto_correction_advanced = None
@@ -108,6 +160,35 @@ class UnifiedOrchestrator:
                     logger.info("✅ Modules IA et distillation initialisés")
                 except Exception as e:
                     logger.warning(f"⚠️ Erreur initialisation modules IA: {e}")
+                    
+            # Modules robotiques (si disponibles)
+            if ROBOTICS_MODULES_AVAILABLE:
+                try:
+                    self.reachy_auditor = ReachyAuditor(str(self.project_path))
+                    self.ros2_validator = ROS2Validator(str(self.project_path))
+                    self.docker_robotics = DockerRoboticsManager(str(self.project_path))
+                    self.rust_analyzer = RustAnalyzer(str(self.project_path))
+                    self.robotics_ci = RoboticsCI(str(self.project_path))
+                    logger.info("✅ Modules robotiques initialisés")
+                except Exception as e:
+                    logger.warning(f"⚠️ Erreur initialisation modules robotiques: {e}")
+                    
+            # Modules artistiques (si disponibles)
+            if ARTISTIC_MODULES_AVAILABLE:
+                try:
+                    self.artistic_templates = get_artistic_templates()
+                    self.base_templates = get_base_templates()
+                    logger.info("✅ Modules artistiques initialisés")
+                except Exception as e:
+                    logger.warning(f"⚠️ Erreur initialisation modules artistiques: {e}")
+                    
+            # Modules de classification (si disponibles)
+            if CLASSIFICATION_MODULES_AVAILABLE:
+                try:
+                    self.project_classifier = classify_project_type
+                    logger.info("✅ Modules de classification initialisés")
+                except Exception as e:
+                    logger.warning(f"⚠️ Erreur initialisation modules de classification: {e}")
 
             # Modules avancés (si disponibles)
             if ADVANCED_MODULES_AVAILABLE:
@@ -173,7 +254,16 @@ class UnifiedOrchestrator:
             # Étape 10: Nettoyage automatique
             self._step_auto_cleaning()
 
-            # Étape 11: CI/CD automatique
+            # Étape 11: Validation robotique (si applicable)
+            self._step_robotics_validation(blueprint)
+            
+            # Étape 12: Templates artistiques (si applicable)
+            self._step_artistic_templates(blueprint)
+            
+            # Étape 13: Classification avancée
+            self._step_advanced_classification(blueprint)
+            
+            # Étape 14: CI/CD automatique
             self._step_auto_cicd()
 
             self.workflow_results["status"] = "completed"
@@ -466,8 +556,113 @@ class UnifiedOrchestrator:
         except Exception as e:
             self.workflow_results["warnings"].append(f"Erreur nettoyage: {e}")
 
+    def _step_robotics_validation(self, blueprint: Dict[str, Any]):
+        """Étape 11: Validation robotique spécialisée"""
+        logger.info("🤖 Validation robotique...")
+        try:
+            if not ROBOTICS_MODULES_AVAILABLE:
+                logger.info("ℹ️ Modules robotiques non disponibles - étape ignorée")
+                return
+                
+            project_type = blueprint.get("project_type", "").lower()
+            if "robotics" in project_type or "ros" in project_type or "robot" in project_type:
+                logger.info("🔍 Validation spécialisée robotique détectée")
+                
+                # Validation ROS2
+                if self.ros2_validator:
+                    ros2_result = self.ros2_validator.validate_workspace()
+                    self.workflow_results["robotics"]["ros2_validation"] = {
+                        "workspace_valid": ros2_result.workspace_valid,
+                        "packages_count": len(ros2_result.packages),
+                        "issues": ros2_result.issues,
+                        "build_ready": ros2_result.build_ready
+                    }
+                
+                # Audit Reachy
+                if self.reachy_auditor:
+                    reachy_result = self.reachy_auditor.audit_reachy_project()
+                    self.workflow_results["robotics"]["reachy_audit"] = reachy_result
+                
+                # Validation Docker
+                if self.docker_robotics:
+                    docker_result = self.docker_robotics.validate_docker_setup()
+                    self.workflow_results["robotics"]["docker_validation"] = docker_result
+                
+                logger.info("✅ Validation robotique terminée")
+            else:
+                logger.info("ℹ️ Projet non-robotique - validation robotique ignorée")
+                
+        except Exception as e:
+            logger.warning(f"⚠️ Erreur validation robotique: {e}")
+            self.workflow_results["errors"].append(f"Erreur validation robotique: {e}")
+
+    def _step_artistic_templates(self, blueprint: Dict[str, Any]):
+        """Étape 12: Application des templates artistiques"""
+        logger.info("🎨 Application templates artistiques...")
+        try:
+            if not ARTISTIC_MODULES_AVAILABLE:
+                logger.info("ℹ️ Modules artistiques non disponibles - étape ignorée")
+                return
+                
+            project_type = blueprint.get("project_type", "").lower()
+            if "artistic" in project_type or "animation" in project_type or "visual" in project_type:
+                logger.info("🎨 Templates artistiques détectés")
+                
+                # Appliquer les templates artistiques
+                if self.artistic_templates:
+                    for template_path, template_content in self.artistic_templates.items():
+                        full_path = self.project_path / template_path
+                        full_path.parent.mkdir(parents=True, exist_ok=True)
+                        
+                        with open(full_path, "w", encoding="utf-8") as f:
+                            f.write(template_content)
+                    
+                    self.workflow_results["artistic"]["templates_applied"] = list(self.artistic_templates.keys())
+                    logger.info(f"✅ {len(self.artistic_templates)} templates artistiques appliqués")
+                else:
+                    logger.warning("⚠️ Templates artistiques non disponibles")
+            else:
+                logger.info("ℹ️ Projet non-artistique - templates artistiques ignorés")
+                
+        except Exception as e:
+            logger.warning(f"⚠️ Erreur templates artistiques: {e}")
+            self.workflow_results["errors"].append(f"Erreur templates artistiques: {e}")
+
+    def _step_advanced_classification(self, blueprint: Dict[str, Any]):
+        """Étape 13: Classification avancée du projet"""
+        logger.info("🧠 Classification avancée...")
+        try:
+            if not CLASSIFICATION_MODULES_AVAILABLE:
+                logger.info("ℹ️ Modules de classification non disponibles - étape ignorée")
+                return
+                
+            # Classification avancée avec le module spécialisé
+            if self.project_classifier:
+                project_description = blueprint.get("description", "")
+                project_name = blueprint.get("name", "")
+                
+                # Classification intelligente
+                detected_type = self.project_classifier(project_description)
+                project_config = get_project_config(detected_type)
+                
+                self.workflow_results["classification"] = {
+                    "detected_type": detected_type.value,
+                    "confidence": "high",
+                    "config": project_config,
+                    "modules_recommended": project_config.get("modules", []),
+                    "dependencies_recommended": project_config.get("dependencies", [])
+                }
+                
+                logger.info(f"✅ Classification avancée: {detected_type.value}")
+            else:
+                logger.warning("⚠️ Classificateur avancé non disponible")
+                
+        except Exception as e:
+            logger.warning(f"⚠️ Erreur classification avancée: {e}")
+            self.workflow_results["errors"].append(f"Erreur classification avancée: {e}")
+
     def _step_auto_cicd(self):
-        """Étape 11: CI/CD automatique"""
+        """Étape 14: Configuration CI/CD automatique"""
         logger.info("🚀 Configuration CI/CD...")
 
         try:

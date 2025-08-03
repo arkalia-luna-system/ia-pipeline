@@ -310,7 +310,24 @@ class TestUnifiedOrchestrator:
         assert "project_generation" in result["steps_completed"]
 
     @patch("athalia_core.unified_orchestrator.generate_project")
-    def test_run_full_workflow_failure(self, mock_generate):
+    @patch("athalia_core.unified_orchestrator.SecurityAuditor")
+    @patch("athalia_core.unified_orchestrator.CodeLinter")
+    @patch("athalia_core.unified_orchestrator.CorrectionOptimizer")
+    @patch("athalia_core.unified_orchestrator.AutoTester")
+    @patch("athalia_core.unified_orchestrator.AutoDocumenter")
+    @patch("athalia_core.unified_orchestrator.AutoCleaner")
+    @patch("athalia_core.unified_orchestrator.AutoCICD")
+    def test_run_full_workflow_failure(
+        self,
+        mock_cicd,
+        mock_cleaner,
+        mock_doc,
+        mock_tester,
+        mock_optimizer,
+        mock_linter,
+        mock_security,
+        mock_generate,
+    ):
         """Test du workflow complet échoué"""
         mock_generate.side_effect = Exception("Workflow error")
 
