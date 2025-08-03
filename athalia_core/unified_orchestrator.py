@@ -98,6 +98,9 @@ class UnifiedOrchestrator:
             "warnings": [],
             "metrics": {},
             "artifacts": {},
+            "robotics": {},
+            "artistic": {},
+            "classification": {},
         }
 
         # Initialiser les modules
@@ -117,18 +120,18 @@ class UnifiedOrchestrator:
         self.quality_scorer = None
         self.response_distiller = None
         self.code_genetics = None
-        
+
         # Modules robotiques
         self.reachy_auditor = None
         self.ros2_validator = None
         self.docker_robotics = None
         self.rust_analyzer = None
         self.robotics_ci = None
-        
+
         # Modules artistiques
         self.artistic_templates = None
         self.base_templates = None
-        
+
         # Modules de classification
         self.project_classifier = None
 
@@ -160,7 +163,7 @@ class UnifiedOrchestrator:
                     logger.info("✅ Modules IA et distillation initialisés")
                 except Exception as e:
                     logger.warning(f"⚠️ Erreur initialisation modules IA: {e}")
-                    
+
             # Modules robotiques (si disponibles)
             if ROBOTICS_MODULES_AVAILABLE:
                 try:
@@ -172,7 +175,7 @@ class UnifiedOrchestrator:
                     logger.info("✅ Modules robotiques initialisés")
                 except Exception as e:
                     logger.warning(f"⚠️ Erreur initialisation modules robotiques: {e}")
-                    
+
             # Modules artistiques (si disponibles)
             if ARTISTIC_MODULES_AVAILABLE:
                 try:
@@ -181,14 +184,16 @@ class UnifiedOrchestrator:
                     logger.info("✅ Modules artistiques initialisés")
                 except Exception as e:
                     logger.warning(f"⚠️ Erreur initialisation modules artistiques: {e}")
-                    
+
             # Modules de classification (si disponibles)
             if CLASSIFICATION_MODULES_AVAILABLE:
                 try:
                     self.project_classifier = classify_project_type
                     logger.info("✅ Modules de classification initialisés")
                 except Exception as e:
-                    logger.warning(f"⚠️ Erreur initialisation modules de classification: {e}")
+                    logger.warning(
+                        f"⚠️ Erreur initialisation modules de classification: {e}"
+                    )
 
             # Modules avancés (si disponibles)
             if ADVANCED_MODULES_AVAILABLE:
@@ -256,13 +261,13 @@ class UnifiedOrchestrator:
 
             # Étape 11: Validation robotique (si applicable)
             self._step_robotics_validation(blueprint)
-            
+
             # Étape 12: Templates artistiques (si applicable)
             self._step_artistic_templates(blueprint)
-            
+
             # Étape 13: Classification avancée
             self._step_advanced_classification(blueprint)
-            
+
             # Étape 14: CI/CD automatique
             self._step_auto_cicd()
 
@@ -563,11 +568,15 @@ class UnifiedOrchestrator:
             if not ROBOTICS_MODULES_AVAILABLE:
                 logger.info("ℹ️ Modules robotiques non disponibles - étape ignorée")
                 return
-                
+
             project_type = blueprint.get("project_type", "").lower()
-            if "robotics" in project_type or "ros" in project_type or "robot" in project_type:
+            if (
+                "robotics" in project_type
+                or "ros" in project_type
+                or "robot" in project_type
+            ):
                 logger.info("🔍 Validation spécialisée robotique détectée")
-                
+
                 # Validation ROS2
                 if self.ros2_validator:
                     ros2_result = self.ros2_validator.validate_workspace()
@@ -575,23 +584,25 @@ class UnifiedOrchestrator:
                         "workspace_valid": ros2_result.workspace_valid,
                         "packages_count": len(ros2_result.packages),
                         "issues": ros2_result.issues,
-                        "build_ready": ros2_result.build_ready
+                        "build_ready": ros2_result.build_ready,
                     }
-                
+
                 # Audit Reachy
                 if self.reachy_auditor:
                     reachy_result = self.reachy_auditor.audit_reachy_project()
                     self.workflow_results["robotics"]["reachy_audit"] = reachy_result
-                
+
                 # Validation Docker
                 if self.docker_robotics:
                     docker_result = self.docker_robotics.validate_docker_setup()
-                    self.workflow_results["robotics"]["docker_validation"] = docker_result
-                
+                    self.workflow_results["robotics"][
+                        "docker_validation"
+                    ] = docker_result
+
                 logger.info("✅ Validation robotique terminée")
             else:
                 logger.info("ℹ️ Projet non-robotique - validation robotique ignorée")
-                
+
         except Exception as e:
             logger.warning(f"⚠️ Erreur validation robotique: {e}")
             self.workflow_results["errors"].append(f"Erreur validation robotique: {e}")
@@ -603,27 +614,38 @@ class UnifiedOrchestrator:
             if not ARTISTIC_MODULES_AVAILABLE:
                 logger.info("ℹ️ Modules artistiques non disponibles - étape ignorée")
                 return
-                
+
             project_type = blueprint.get("project_type", "").lower()
-            if "artistic" in project_type or "animation" in project_type or "visual" in project_type:
+            if (
+                "artistic" in project_type
+                or "animation" in project_type
+                or "visual" in project_type
+            ):
                 logger.info("🎨 Templates artistiques détectés")
-                
+
                 # Appliquer les templates artistiques
                 if self.artistic_templates:
-                    for template_path, template_content in self.artistic_templates.items():
+                    for (
+                        template_path,
+                        template_content,
+                    ) in self.artistic_templates.items():
                         full_path = self.project_path / template_path
                         full_path.parent.mkdir(parents=True, exist_ok=True)
-                        
+
                         with open(full_path, "w", encoding="utf-8") as f:
                             f.write(template_content)
-                    
-                    self.workflow_results["artistic"]["templates_applied"] = list(self.artistic_templates.keys())
-                    logger.info(f"✅ {len(self.artistic_templates)} templates artistiques appliqués")
+
+                    self.workflow_results["artistic"]["templates_applied"] = list(
+                        self.artistic_templates.keys()
+                    )
+                    logger.info(
+                        f"✅ {len(self.artistic_templates)} templates artistiques appliqués"
+                    )
                 else:
                     logger.warning("⚠️ Templates artistiques non disponibles")
             else:
                 logger.info("ℹ️ Projet non-artistique - templates artistiques ignorés")
-                
+
         except Exception as e:
             logger.warning(f"⚠️ Erreur templates artistiques: {e}")
             self.workflow_results["errors"].append(f"Erreur templates artistiques: {e}")
@@ -633,33 +655,37 @@ class UnifiedOrchestrator:
         logger.info("🧠 Classification avancée...")
         try:
             if not CLASSIFICATION_MODULES_AVAILABLE:
-                logger.info("ℹ️ Modules de classification non disponibles - étape ignorée")
+                logger.info(
+                    "ℹ️ Modules de classification non disponibles - étape ignorée"
+                )
                 return
-                
+
             # Classification avancée avec le module spécialisé
             if self.project_classifier:
                 project_description = blueprint.get("description", "")
                 project_name = blueprint.get("name", "")
-                
+
                 # Classification intelligente
                 detected_type = self.project_classifier(project_description)
                 project_config = get_project_config(detected_type)
-                
+
                 self.workflow_results["classification"] = {
                     "detected_type": detected_type.value,
                     "confidence": "high",
                     "config": project_config,
                     "modules_recommended": project_config.get("modules", []),
-                    "dependencies_recommended": project_config.get("dependencies", [])
+                    "dependencies_recommended": project_config.get("dependencies", []),
                 }
-                
+
                 logger.info(f"✅ Classification avancée: {detected_type.value}")
             else:
                 logger.warning("⚠️ Classificateur avancé non disponible")
-                
+
         except Exception as e:
             logger.warning(f"⚠️ Erreur classification avancée: {e}")
-            self.workflow_results["errors"].append(f"Erreur classification avancée: {e}")
+            self.workflow_results["errors"].append(
+                f"Erreur classification avancée: {e}"
+            )
 
     def _step_auto_cicd(self):
         """Étape 14: Configuration CI/CD automatique"""
