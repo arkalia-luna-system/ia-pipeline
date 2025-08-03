@@ -255,20 +255,20 @@ class UnifiedOrchestrator:
             # Étape 10: Documentation automatique
             self._step_auto_documentation()
 
-            # Étape 11: Nettoyage automatique
-            self._step_auto_cleaning()
-
-            # Étape 12: Templates artistiques (si applicable)
+            # Étape 11: Templates artistiques (si applicable) - AVANT le nettoyage
             self._step_artistic_templates(blueprint)
 
-            # Étape 13: Validation robotique (si applicable)
+            # Étape 12: Validation robotique (si applicable)
             self._step_robotics_validation(blueprint)
 
-            # Étape 14: Classification avancée
+            # Étape 13: Classification avancée
             self._step_advanced_classification(blueprint)
 
-            # Étape 15: CI/CD automatique
+            # Étape 14: CI/CD automatique
             self._step_auto_cicd()
+
+            # Étape 15: Nettoyage automatique - APRÈS les templates
+            self._step_auto_cleaning()
 
             self.workflow_results["status"] = "completed"
             logger.info("✅ Workflow terminé avec succès")
@@ -716,7 +716,7 @@ class UnifiedOrchestrator:
             )
 
     def _step_auto_cicd(self):
-        """Étape 15: Configuration CI/CD automatique"""
+        """Étape 14: Configuration CI/CD automatique"""
         logger.info("🚀 Configuration CI/CD...")
 
         try:
