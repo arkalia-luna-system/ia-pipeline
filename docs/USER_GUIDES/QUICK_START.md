@@ -1,8 +1,8 @@
 # 🚀 Guide de Démarrage Rapide - Athalia
 
-**Temps estimé :** 5 minutes
-**Niveau :** Débutant à Intermédiaire
-**Version :** 1.0.0
+**Date :** 31 Juillet 2025  
+**Version :** 11.0  
+**Statut :** Opérationnel ✅
 
 ---
 
@@ -178,7 +178,7 @@ python bin/athalia_unified.py /chemin/projet --dry-run --auto-fix
 # config/athalia_config.yaml
 project:
   name: "mon-projet"
-  version: "1.0.0"
+  version: "11.0"
 
 performance:
   max_memory: "2GB"

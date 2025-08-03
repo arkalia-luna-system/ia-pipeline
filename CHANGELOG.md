@@ -37,9 +37,9 @@
 - **Nettoyage des fichiers AppleDouble** : Suppression de 110+ fichiers système indésirables
 - **Synchronisation des branches** : main, develop et backup-20250731 synchronisées
 - **Correction majeure de la documentation** : Synchronisation avec l'état réel du projet
-- **Mise à jour des statistiques** : 1453 tests collectés, 57 modules dans athalia_core
+- **Mise à jour des statistiques** : **1372 tests collectés**, **79 modules** dans athalia_core
 - **Nettoyage des branches obsolètes** : Suppression de fix-python-version-support, backup-20250730, ci-cd-professional
-- **1453 tests collectés** : Validation complète du système en amélioration continue
+- **1372 tests collectés** : Validation complète du système en amélioration continue
 
 ## [Unreleased]
 - Améliorations futures : personnalisation dashboard, feedback live, couverture >90%, nouveaux modèles IA, plugins avancés

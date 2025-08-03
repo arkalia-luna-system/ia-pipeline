@@ -1,6 +1,6 @@
 # 🚀 Guide d'Installation - Athalia
 
-**Version :** 1.0.0 (ACTIVE DEVELOPMENT)  
+**Version :** 11.0 (ACTIVE DEVELOPMENT)  
 **Date :** 31 Juillet 2025
 
 ---
