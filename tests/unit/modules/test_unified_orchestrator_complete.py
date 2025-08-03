@@ -764,7 +764,7 @@ class TestUnifiedOrchestrator:
         """Test de classification avancée réussie"""
         # Ce test vérifie que la méthode s'exécute sans erreur fatale
         blueprint = {"name": "test_api", "description": "API REST moderne"}
-        
+
         # Exécuter la méthode - elle ne doit pas lever d'exception
         try:
             self.orchestrator._step_advanced_classification(blueprint)
