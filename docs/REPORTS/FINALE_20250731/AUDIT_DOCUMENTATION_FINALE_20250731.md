@@ -78,7 +78,7 @@ docs/
 ✅ **Navigation fonctionnelle** testée  
 
 ### **3. Correspondance avec la Réalité**
-✅ **Statistiques de tests** mises à jour (1453 tests collectés)  
+✅ **Statistiques de tests** mises à jour (**1372 tests collectés** ✅ **VÉRIFIÉ 3 AOÛT**)  
 ✅ **Fichiers référencés** existent tous  
 ✅ **Structure du projet** correspond à la documentation
 
@@ -110,7 +110,7 @@ docs/
 
 ### **Modules Réels Documentés :**
 ✅ **athalia_core/** - 50+ modules documentés  
-✅ **Tests/** - 95 fichiers de tests (1453 tests collectés)  
+✅ **Tests/** - **169 fichiers de tests** (**1372 tests collectés** ✅ **VÉRIFIÉ 3 AOÛT**)  
 ✅ **Configuration/** - pyproject.toml, requirements.txt  
 ✅ **Scripts/** - bin/, scripts/  
 ✅ **Documentation/** - docs/ complète  
