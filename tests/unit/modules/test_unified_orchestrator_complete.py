@@ -719,9 +719,11 @@ class TestUnifiedOrchestrator:
         """Test d'application de templates artistiques pour un projet artistique"""
         # Mock les templates artistiques
         self.orchestrator.artistic_templates = {
-            "src/artistic.py": "print('Artistic code')",
+            "artistic.py": "print('Artistic code')",
             "templates/style.css": "body { color: red; }",
         }
+        # Initialiser la section artistic dans les artifacts
+        self.orchestrator.workflow_results["artifacts"]["artistic"] = {}
 
         blueprint = {
             "project_type": "artistic_animation",
@@ -767,7 +769,7 @@ class TestUnifiedOrchestrator:
 
         # Mock get_project_config
         with patch(
-            "athalia_core.classification.project_types.get_project_config"
+            "athalia_core.unified_orchestrator.get_project_config"
         ) as mock_get_config:
             mock_get_config.return_value = {
                 "modules": ["fastapi", "sqlalchemy"],
@@ -888,11 +890,11 @@ def complex_function():
             blueprint = {"project_type": "artistic_animation"}
             self.orchestrator._step_artistic_templates(blueprint)
 
-            # L'erreur devrait être capturée et ajoutée aux erreurs
-            assert len(self.orchestrator.workflow_results["errors"]) > 0
+            # L'erreur devrait être capturée et ajoutée aux warnings
+            assert len(self.orchestrator.workflow_results["warnings"]) > 0
             assert (
                 "Erreur templates artistiques"
-                in self.orchestrator.workflow_results["errors"][0]
+                in self.orchestrator.workflow_results["warnings"][0]
             )
 
     @patch("athalia_core.unified_orchestrator.CLASSIFICATION_MODULES_AVAILABLE", True)
@@ -925,11 +927,11 @@ def complex_function():
 
         self.orchestrator._step_advanced_auto_correction()
 
-        # L'erreur devrait être capturée et ajoutée aux erreurs
-        assert len(self.orchestrator.workflow_results["errors"]) > 0
+        # L'erreur devrait être capturée et ajoutée aux warnings
+        assert len(self.orchestrator.workflow_results["warnings"]) > 0
         assert (
             "Erreur correction avancée"
-            in self.orchestrator.workflow_results["errors"][0]
+            in self.orchestrator.workflow_results["warnings"][0]
         )
 
     # TESTS POUR LES MÉTHODES D'INITIALISATION MANQUANTES
@@ -966,9 +968,7 @@ def complex_function():
     @patch("athalia_core.unified_orchestrator.CLASSIFICATION_MODULES_AVAILABLE", True)
     def test_initialize_modules_with_classification(self):
         """Test d'initialisation des modules avec modules de classification"""
-        with patch(
-            "athalia_core.classification.project_classifier.classify_project_type"
-        ):
+        with patch("athalia_core.unified_orchestrator.classify_project_type"):
             self.orchestrator.initialize_modules()
 
             # Vérifier que le classificateur est initialisé
@@ -983,7 +983,7 @@ def complex_function():
             self.orchestrator.initialize_modules()
 
             # Vérifier que le module avancé est initialisé
-            assert self.orchestrator.advanced_auto_correction is not None
+            assert self.orchestrator.auto_correction_advanced is not None
 
     # TESTS POUR LES MÉTHODES DE WORKFLOW COMPLET
 

@@ -258,13 +258,16 @@ class UnifiedOrchestrator:
             # Étape 11: Nettoyage automatique
             self._step_auto_cleaning()
 
-            # Étape 12: Validation robotique (si applicable)
+            # Étape 12: Templates artistiques (si applicable)
+            self._step_artistic_templates(blueprint)
+
+            # Étape 13: Validation robotique (si applicable)
             self._step_robotics_validation(blueprint)
 
-            # Étape 13: Classification avancée
+            # Étape 14: Classification avancée
             self._step_advanced_classification(blueprint)
 
-            # Étape 14: CI/CD automatique
+            # Étape 15: CI/CD automatique
             self._step_auto_cicd()
 
             self.workflow_results["status"] = "completed"
@@ -632,10 +635,15 @@ class UnifiedOrchestrator:
 
                         try:
                             # Créer le dossier complet pour le template
-                            template_dir = template_path.split("/")[
-                                0
-                            ]  # "animation", "audio", etc.
-                            template_file = template_path.split("/")[1]  # "main.py"
+                            if "/" in template_path:
+                                template_dir = template_path.split("/")[
+                                    0
+                                ]  # "animation", "audio", etc.
+                                template_file = template_path.split("/")[1]  # "main.py"
+                            else:
+                                # Si pas de séparateur, utiliser le nom du fichier directement
+                                template_dir = "templates"
+                                template_file = template_path
 
                             # Créer le chemin complet dans le projet
                             template_full_path = (
@@ -645,8 +653,12 @@ class UnifiedOrchestrator:
 
                             with open(template_full_path, "w", encoding="utf-8") as f:
                                 f.write(template_content)
-                            templates_applied.append(f"src/{template_path}")
-                            logger.info(f"✅ Template appliqué: src/{template_path}")
+                            templates_applied.append(
+                                f"src/{template_dir}/{template_file}"
+                            )
+                            logger.info(
+                                f"✅ Template appliqué: src/{template_dir}/{template_file}"
+                            )
                         except Exception as e:
                             logger.warning(
                                 f"⚠️ Erreur application template {template_path}: {e}"
@@ -704,7 +716,7 @@ class UnifiedOrchestrator:
             )
 
     def _step_auto_cicd(self):
-        """Étape 14: Configuration CI/CD automatique"""
+        """Étape 15: Configuration CI/CD automatique"""
         logger.info("🚀 Configuration CI/CD...")
 
         try:
