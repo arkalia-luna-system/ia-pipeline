@@ -62,20 +62,20 @@ class TestClass:
             assert "fixes" in result
             assert "score" in result
 
-    def test_run_flake8_success(self):
-        """Test de l'exécution de flake8 avec succès"""
+    def test_run_ruff_success(self):
+        """Test de l'exécution de ruff avec succès"""
         with patch("athalia_core.code_linter.validate_and_run") as mock_run:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = ""
-            self.linter._run_flake8()
+            self.linter._run_ruff()
             # Aucune erreur ajoutée car stdout est vide
 
-    def test_run_flake8_with_errors(self):
-        """Test de l'exécution de flake8 avec des erreurs"""
+    def test_run_ruff_with_errors(self):
+        """Test de l'exécution de ruff avec des erreurs"""
         with patch("athalia_core.code_linter.validate_and_run") as mock_run:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = "test.py:1:1 E302 expected 2 blank lines"
-            self.linter._run_flake8()
+            self.linter._run_ruff()
             assert len(self.linter.report["errors"]) > 0
 
     def test_run_black_success(self):
@@ -194,13 +194,13 @@ class TestClass:
     def test_subprocess_exception_handling(self):
         """Test de la gestion des exceptions de subprocess"""
         with patch("subprocess.run", side_effect=Exception("Test exception")):
-            self.linter._run_flake8()
+            self.linter._run_ruff()
             assert len(self.linter.report["errors"]) > 0
 
     def test_subprocess_timeout_handling(self):
         """Test de la gestion des timeouts de subprocess"""
         with patch("subprocess.run", side_effect=subprocess.TimeoutExpired("cmd", 30)):
-            self.linter._run_flake8()
+            self.linter._run_ruff()
             assert len(self.linter.report["errors"]) > 0
 
     def test_score_calculation_with_many_issues(self):
@@ -226,7 +226,7 @@ class TestClass:
             mock_logger.return_value.info = Mock()
 
             # Exécuter une méthode qui utilise le logging
-            self.linter._run_flake8()
+            self.linter._run_ruff()
 
             # Le test peut passer même si info n'est pas appelé car le rapport peut
             # être vide
@@ -307,7 +307,7 @@ class TestClass:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = "Error 1\nError 2\nError 3"
 
-            self.linter._run_flake8()
+            self.linter._run_ruff()
 
             assert len(self.linter.report["errors"]) >= 0  # Au moins 0 erreur
 
@@ -327,7 +327,7 @@ class TestClass:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = ""
 
-            self.linter._run_flake8()
+            self.linter._run_ruff()
             self.linter._run_black()
             self.linter._run_isort()
             self.linter._run_mypy()
@@ -343,7 +343,7 @@ class TestClass:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = "Error 1\n\nError 2\n\n\nError 3"
 
-            self.linter._run_flake8()
+            self.linter._run_ruff()
 
             # Vérifier que les erreurs sont traitées (au moins 0)
             assert len(self.linter.report["errors"]) >= 0

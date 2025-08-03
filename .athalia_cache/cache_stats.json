@@ -1,6 +1,6 @@
 {
-  "hits": 9,
-  "misses": 2,
-  "saves": 15,
-  "total_requests": 11
+  "hits": 20,
+  "misses": 3,
+  "saves": 26,
+  "total_requests": 23
 }
