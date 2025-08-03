@@ -302,13 +302,15 @@ class TestNoPollutingFiles:
             if ".git" in root or ".venv" in root:
                 continue
             for file in files:
-                # Ignorer automatiquement les fichiers cache Python
+                # Ignorer automatiquement les fichiers cache Python et temporaires
                 if (
                     file.endswith(".pyc")
                     or file == "__pycache__"
                     or file.startswith(".__")
                     or file.endswith(".pyo")
                     or file.endswith(".pyd")
+                    or file.startswith("=")  # Fichiers temporaires créés par pip
+                    or file.startswith("!")  # Fichiers temporaires système
                 ):
                     continue
 
