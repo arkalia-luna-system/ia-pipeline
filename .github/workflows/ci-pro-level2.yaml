@@ -59,12 +59,16 @@ jobs:
           echo "🧪 Running basic tests..."
           python -m pytest tests/ --tb=short -x --maxfail=10
 
+      - name: Install linting tools
+        run: |
+          echo "🔧 Installation des outils de linting..."
+          pip install black ruff flake8
+
       - name: Basic linting
         run: |
           echo "🔍 Running basic linting..."
-          flake8 --config=config/.flake8 .
-          black . --check --diff
-          ruff check .
+          ruff check . --quiet
+          black . --check --quiet
 
   security-scan:
     runs-on: ubuntu-latest

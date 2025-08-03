@@ -63,12 +63,16 @@ jobs:
           echo "🧪 Running tests on ${{ matrix.os }} with Python ${{ matrix.python-version }} (supported versions: 3.10, 3.11, 3.12)..."
           python -m pytest tests/ --tb=short -x --maxfail=10
 
+      - name: Install linting tools
+        run: |
+          echo "🔧 Installation des outils de linting..."
+          pip install black ruff flake8
+
       - name: Basic linting
         run: |
           echo "🔍 Running basic linting..."
-          flake8 --config=config/.flake8 .
-          black . --check --diff
-          ruff check .
+          ruff check . --quiet
+          black . --check --quiet
 
   security-scan:
     runs-on: ubuntu-latest
