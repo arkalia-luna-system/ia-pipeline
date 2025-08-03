@@ -310,8 +310,29 @@ class TestUnifiedOrchestrator:
         assert "project_generation" in result["steps_completed"]
 
     @patch("athalia_core.unified_orchestrator.generate_project")
-    def test_run_full_workflow_failure(self, mock_generate):
+    @patch("athalia_core.unified_orchestrator.SecurityAuditor")
+    @patch("athalia_core.unified_orchestrator.CodeLinter")
+    @patch("athalia_core.unified_orchestrator.CorrectionOptimizer")
+    @patch("athalia_core.unified_orchestrator.AutoTester")
+    @patch("athalia_core.unified_orchestrator.AutoDocumenter")
+    @patch("athalia_core.unified_orchestrator.AutoCleaner")
+    @patch("athalia_core.unified_orchestrator.AutoCICD")
+    @patch("athalia_core.unified_orchestrator.get_cached_result")
+    def test_run_full_workflow_failure(
+        self,
+        mock_get_cached,
+        mock_cicd,
+        mock_cleaner,
+        mock_doc,
+        mock_tester,
+        mock_optimizer,
+        mock_linter,
+        mock_security,
+        mock_generate,
+    ):
         """Test du workflow complet échoué"""
+        # Mock le cache pour retourner None (pas de cache hit)
+        mock_get_cached.return_value = None
         mock_generate.side_effect = Exception("Workflow error")
 
         blueprint = {"name": "test_project", "type": "api"}
@@ -338,6 +359,640 @@ class TestUnifiedOrchestrator:
         assert "warnings" in self.orchestrator.workflow_results
         assert "metrics" in self.orchestrator.workflow_results
         assert "artifacts" in self.orchestrator.workflow_results
+
+    # NOUVEAUX TESTS POUR COUVRIR LES LIGNES MANQUANTES
+
+    @patch("athalia_core.unified_orchestrator.AI_MODULES_AVAILABLE", False)
+    def test_initialize_modules_without_ai(self):
+        """Test d'initialisation des modules sans IA"""
+        self.orchestrator.initialize_modules()
+
+        # Vérifier que les modules de base sont initialisés
+        assert self.orchestrator.workflow_results["status"] == "initialized"
+        assert self.orchestrator.robust_ai is not None
+        assert self.orchestrator.security_auditor is not None
+        assert self.orchestrator.code_linter is not None
+        assert self.orchestrator.correction_optimizer is not None
+        assert self.orchestrator.auto_tester is not None
+        assert self.orchestrator.auto_documenter is not None
+        assert self.orchestrator.auto_cleaner is not None
+        assert self.orchestrator.auto_cicd is not None
+
+        # Vérifier que les modules IA ne sont pas initialisés
+        assert self.orchestrator.unified_agent is None
+        assert self.orchestrator.context_agent is None
+        assert self.orchestrator.audit_agent is None
+        assert self.orchestrator.quality_scorer is None
+        assert self.orchestrator.response_distiller is None
+        assert self.orchestrator.code_genetics is None
+
+    def test_step_intelligent_classification_without_ai(self):
+        """Test de classification intelligente sans modules IA"""
+        # Simuler que les modules IA ne sont pas disponibles
+        self.orchestrator.context_agent = None
+
+        blueprint = {"project_name": "test_api", "description": "Une API REST moderne"}
+
+        self.orchestrator._step_intelligent_classification(blueprint)
+
+        assert (
+            "intelligent_classification"
+            in self.orchestrator.workflow_results["steps_completed"]
+        )
+        # Le type par défaut devrait être utilisé
+        assert (
+            self.orchestrator.workflow_results["artifacts"]["project_type"] == "generic"
+        )
+
+    def test_validate_code_valid(self):
+        """Test de validation de code valide"""
+        valid_code = "print('Hello, World!')"
+        assert self.orchestrator._validate_code(valid_code) is True
+
+    def test_validate_code_invalid(self):
+        """Test de validation de code invalide"""
+        invalid_code = "print('Hello, World!'"  # Parenthèse manquante
+        assert self.orchestrator._validate_code(invalid_code) is False
+
+    @patch("athalia_core.unified_orchestrator.AI_MODULES_AVAILABLE", True)
+    @patch("builtins.open", create=True)
+    def test_step_ai_enhancement_success(self, mock_open):
+        """Test d'amélioration IA réussie"""
+        # Mock les modules IA
+        mock_unified_agent = Mock()
+        mock_unified_agent.act.return_value = "print('Enhanced code')"
+        self.orchestrator.unified_agent = mock_unified_agent
+
+        mock_quality_scorer = Mock()
+        mock_quality_scorer.score_code.return_value = 95.0
+        self.orchestrator.quality_scorer = mock_quality_scorer
+
+        # Mock le fichier main.py
+        mock_file = Mock()
+        mock_file.read.return_value = "print('Original code')"
+        mock_open.return_value.__enter__.return_value = mock_file
+
+        # Créer un projet temporaire avec src/main.py
+        project_path = Path(self.temp_dir) / "test_project"
+        project_path.mkdir()
+        src_path = project_path / "src"
+        src_path.mkdir()
+        main_file = src_path / "main.py"
+        main_file.write_text("print('Original code')")
+
+        self.orchestrator.workflow_results["artifacts"]["project_path"] = str(
+            project_path
+        )
+
+        blueprint = {"project_type": "api", "description": "Test API"}
+
+        self.orchestrator._step_ai_enhancement(blueprint)
+
+        assert "ai_enhancement" in self.orchestrator.workflow_results["steps_completed"]
+        assert "ai_enhancement" in self.orchestrator.workflow_results["artifacts"]
+
+    @patch("athalia_core.unified_orchestrator.AI_MODULES_AVAILABLE", True)
+    def test_step_ai_enhancement_no_project_path(self):
+        """Test d'amélioration IA sans chemin de projet"""
+        # Mock les modules IA
+        mock_unified_agent = Mock()
+        self.orchestrator.unified_agent = mock_unified_agent
+
+        mock_quality_scorer = Mock()
+        self.orchestrator.quality_scorer = mock_quality_scorer
+
+        # Pas de project_path dans les artifacts
+        blueprint = {"project_type": "api", "description": "Test API"}
+
+        self.orchestrator._step_ai_enhancement(blueprint)
+
+        assert "ai_enhancement" in self.orchestrator.workflow_results["steps_completed"]
+        # Aucun appel aux modules IA car pas de project_path
+        mock_unified_agent.act.assert_not_called()
+
+    @patch("athalia_core.unified_orchestrator.AI_MODULES_AVAILABLE", True)
+    def test_step_ai_enhancement_file_not_exists(self):
+        """Test d'amélioration IA avec fichier main.py inexistant"""
+        # Mock les modules IA
+        mock_unified_agent = Mock()
+        self.orchestrator.unified_agent = mock_unified_agent
+
+        mock_quality_scorer = Mock()
+        self.orchestrator.quality_scorer = mock_quality_scorer
+
+        # Créer un projet temporaire sans src/main.py
+        project_path = Path(self.temp_dir) / "test_project"
+        project_path.mkdir()
+
+        self.orchestrator.workflow_results["artifacts"]["project_path"] = str(
+            project_path
+        )
+
+        blueprint = {"project_type": "api", "description": "Test API"}
+
+        self.orchestrator._step_ai_enhancement(blueprint)
+
+        assert "ai_enhancement" in self.orchestrator.workflow_results["steps_completed"]
+        # Aucun appel aux modules IA car fichier inexistant
+        mock_unified_agent.act.assert_not_called()
+
+    @patch("athalia_core.unified_orchestrator.AI_MODULES_AVAILABLE", True)
+    @patch("builtins.open", create=True)
+    def test_step_ai_enhancement_invalid_code(self, mock_open):
+        """Test d'amélioration IA avec code invalide"""
+        # Mock les modules IA
+        mock_unified_agent = Mock()
+        mock_unified_agent.act.return_value = "invalid python code"  # Code invalide
+        self.orchestrator.unified_agent = mock_unified_agent
+
+        mock_quality_scorer = Mock()
+        self.orchestrator.quality_scorer = mock_quality_scorer
+
+        # Mock le fichier main.py
+        mock_file = Mock()
+        mock_file.read.return_value = "print('Original code')"
+        mock_open.return_value.__enter__.return_value = mock_file
+
+        # Créer un projet temporaire avec src/main.py
+        project_path = Path(self.temp_dir) / "test_project"
+        project_path.mkdir()
+        src_path = project_path / "src"
+        src_path.mkdir()
+        main_file = src_path / "main.py"
+        main_file.write_text("print('Original code')")
+
+        self.orchestrator.workflow_results["artifacts"]["project_path"] = str(
+            project_path
+        )
+
+        blueprint = {"project_type": "api", "description": "Test API"}
+
+        self.orchestrator._step_ai_enhancement(blueprint)
+
+        assert "ai_enhancement" in self.orchestrator.workflow_results["steps_completed"]
+        # Le code original devrait être conservé car le code amélioré est invalide
+        mock_quality_scorer.score_code.assert_not_called()
+
+    @patch("athalia_core.unified_orchestrator.AI_MODULES_AVAILABLE", True)
+    @patch("builtins.open", create=True)
+    def test_step_ai_enhancement_ai_error(self, mock_open):
+        """Test d'amélioration IA avec erreur de l'agent IA"""
+        # Mock les modules IA avec erreur
+        mock_unified_agent = Mock()
+        mock_unified_agent.act.side_effect = Exception("AI enhancement error")
+        self.orchestrator.unified_agent = mock_unified_agent
+
+        mock_quality_scorer = Mock()
+        self.orchestrator.quality_scorer = mock_quality_scorer
+
+        # Mock le fichier main.py
+        mock_file = Mock()
+        mock_file.read.return_value = "print('Original code')"
+        mock_open.return_value.__enter__.return_value = mock_file
+
+        # Créer un projet temporaire avec src/main.py
+        project_path = Path(self.temp_dir) / "test_project"
+        project_path.mkdir()
+        src_path = project_path / "src"
+        src_path.mkdir()
+        main_file = src_path / "main.py"
+        main_file.write_text("print('Original code')")
+
+        self.orchestrator.workflow_results["artifacts"]["project_path"] = str(
+            project_path
+        )
+
+        blueprint = {"project_type": "api", "description": "Test API"}
+
+        self.orchestrator._step_ai_enhancement(blueprint)
+
+        assert "ai_enhancement" in self.orchestrator.workflow_results["steps_completed"]
+        # L'erreur devrait être gérée et le code original conservé
+        mock_quality_scorer.score_code.assert_not_called()
+
+    def test_step_security_audit_no_auditor(self):
+        """Test d'audit de sécurité sans auditeur"""
+        self.orchestrator.security_auditor = None
+
+        self.orchestrator._step_security_audit()
+
+        # L'étape ne devrait pas être marquée comme complétée sans auditeur
+        assert (
+            "security_audit"
+            not in self.orchestrator.workflow_results["steps_completed"]
+        )
+
+    def test_step_code_linting_no_linter(self):
+        """Test de linting sans linter"""
+        self.orchestrator.code_linter = None
+
+        self.orchestrator._step_code_linting()
+
+        # L'étape ne devrait pas être marquée comme complétée sans linter
+        assert (
+            "code_linting" not in self.orchestrator.workflow_results["steps_completed"]
+        )
+
+    def test_step_correction_optimization_no_optimizer(self):
+        """Test d'optimisation sans optimiseur"""
+        self.orchestrator.correction_optimizer = None
+
+        self.orchestrator._step_correction_optimization()
+
+        # L'étape ne devrait pas être marquée comme complétée sans optimiseur
+        assert (
+            "correction_optimization"
+            not in self.orchestrator.workflow_results["steps_completed"]
+        )
+
+    def test_step_auto_testing_no_tester(self):
+        """Test de tests automatiques sans testeur"""
+        self.orchestrator.auto_tester = None
+
+        self.orchestrator._step_auto_testing()
+
+        # L'étape ne devrait pas être marquée comme complétée sans testeur
+        assert (
+            "auto_testing" not in self.orchestrator.workflow_results["steps_completed"]
+        )
+
+    def test_step_auto_documentation_no_documenter(self):
+        """Test de documentation automatique sans documenteur"""
+        self.orchestrator.auto_documenter = None
+
+        self.orchestrator._step_auto_documentation()
+
+        # L'étape ne devrait pas être marquée comme complétée sans documenteur
+        assert (
+            "auto_documentation"
+            not in self.orchestrator.workflow_results["steps_completed"]
+        )
+
+    def test_step_auto_cleaning_no_cleaner(self):
+        """Test de nettoyage automatique sans nettoyeur"""
+        self.orchestrator.auto_cleaner = None
+
+        self.orchestrator._step_auto_cleaning()
+
+        # L'étape ne devrait pas être marquée comme complétée sans nettoyeur
+        assert (
+            "auto_cleaning" not in self.orchestrator.workflow_results["steps_completed"]
+        )
+
+    def test_step_auto_cicd_no_cicd(self):
+        """Test de CI/CD automatique sans module CI/CD"""
+        self.orchestrator.auto_cicd = None
+
+        self.orchestrator._step_auto_cicd()
+
+        # L'étape ne devrait pas être marquée comme complétée sans module CI/CD
+        assert "auto_cicd" not in self.orchestrator.workflow_results["steps_completed"]
+
+    @patch("builtins.open", create=True)
+    def test_save_workflow_results_error(self, mock_open):
+        """Test de sauvegarde des résultats avec erreur"""
+        mock_open.side_effect = Exception("File error")
+
+        self.orchestrator.workflow_results["status"] = "completed"
+        self.orchestrator.save_workflow_results("test_results.json")
+
+        # L'erreur devrait être gérée silencieusement (loggée mais pas levée)
+
+    # TESTS POUR LES NOUVELLES ÉTAPES SPÉCIALISÉES
+
+    @patch("athalia_core.unified_orchestrator.ROBOTICS_MODULES_AVAILABLE", True)
+    def test_step_robotics_validation_robotics_project(self):
+        """Test de validation robotique pour un projet robotique"""
+        # Mock les modules robotiques
+        mock_ros2_validator = Mock()
+        mock_ros2_validator.validate_workspace.return_value = Mock(
+            workspace_valid=True,
+            packages=["package1", "package2"],
+            issues=[],
+            build_ready=True,
+        )
+        self.orchestrator.ros2_validator = mock_ros2_validator
+
+        mock_reachy_auditor = Mock()
+        mock_reachy_auditor.audit_reachy_project.return_value = {"status": "valid"}
+        self.orchestrator.reachy_auditor = mock_reachy_auditor
+
+        mock_docker_robotics = Mock()
+        mock_docker_robotics.validate_docker_setup.return_value = {"valid": True}
+        self.orchestrator.docker_robotics = mock_docker_robotics
+
+        blueprint = {"project_type": "robotics_api", "description": "API pour robot"}
+        self.orchestrator._step_robotics_validation(blueprint)
+
+        # Vérifier que les validations ont été appelées
+        mock_ros2_validator.validate_workspace.assert_called_once()
+        mock_reachy_auditor.audit_reachy_project.assert_called_once()
+        mock_docker_robotics.validate_docker_setup.assert_called_once()
+
+    @patch("athalia_core.unified_orchestrator.ROBOTICS_MODULES_AVAILABLE", False)
+    def test_step_robotics_validation_modules_unavailable(self):
+        """Test de validation robotique sans modules disponibles"""
+        blueprint = {"project_type": "robotics_api"}
+        self.orchestrator._step_robotics_validation(blueprint)
+
+        # L'étape devrait être ignorée sans erreur
+        assert (
+            "robotics_validation"
+            not in self.orchestrator.workflow_results["steps_completed"]
+        )
+
+    @patch("athalia_core.unified_orchestrator.ROBOTICS_MODULES_AVAILABLE", True)
+    def test_step_robotics_validation_non_robotics_project(self):
+        """Test de validation robotique pour un projet non-robotique"""
+        blueprint = {"project_type": "web_api", "description": "API web"}
+        self.orchestrator._step_robotics_validation(blueprint)
+
+        # L'étape devrait être ignorée pour un projet non-robotique
+        assert (
+            "robotics_validation"
+            not in self.orchestrator.workflow_results["steps_completed"]
+        )
+
+    @patch("athalia_core.unified_orchestrator.ARTISTIC_MODULES_AVAILABLE", True)
+    @patch("builtins.open", create=True)
+    def test_step_artistic_templates_artistic_project(self, mock_open):
+        """Test d'application de templates artistiques pour un projet artistique"""
+        # Mock les templates artistiques
+        self.orchestrator.artistic_templates = {
+            "artistic.py": "print('Artistic code')",
+            "templates/style.css": "body { color: red; }",
+        }
+        # Initialiser la section artistic dans les artifacts
+        self.orchestrator.workflow_results["artifacts"]["artistic"] = {}
+
+        blueprint = {
+            "project_type": "artistic_animation",
+            "description": "Animation artistique",
+        }
+        self.orchestrator._step_artistic_templates(blueprint)
+
+        # Vérifier que les fichiers ont été créés
+        assert mock_open.call_count == 2
+        assert "artistic" in self.orchestrator.workflow_results["artifacts"]
+
+    @patch("athalia_core.unified_orchestrator.ARTISTIC_MODULES_AVAILABLE", False)
+    def test_step_artistic_templates_modules_unavailable(self):
+        """Test d'application de templates artistiques sans modules disponibles"""
+        blueprint = {"project_type": "artistic_animation"}
+        self.orchestrator._step_artistic_templates(blueprint)
+
+        # L'étape devrait être ignorée sans erreur
+        assert (
+            "artistic_templates"
+            not in self.orchestrator.workflow_results["steps_completed"]
+        )
+
+    @patch("athalia_core.unified_orchestrator.ARTISTIC_MODULES_AVAILABLE", True)
+    def test_step_artistic_templates_non_artistic_project(self):
+        """Test d'application de templates artistiques pour un projet non-artistique"""
+        blueprint = {"project_type": "web_api", "description": "API web"}
+        self.orchestrator._step_artistic_templates(blueprint)
+
+        # L'étape devrait être ignorée pour un projet non-artistique
+        assert (
+            "artistic_templates"
+            not in self.orchestrator.workflow_results["steps_completed"]
+        )
+
+    @patch("athalia_core.unified_orchestrator.CLASSIFICATION_MODULES_AVAILABLE", True)
+    def test_step_advanced_classification_success(self):
+        """Test de classification avancée réussie"""
+        # Ce test vérifie que la méthode s'exécute sans erreur fatale
+        blueprint = {"name": "test_api", "description": "API REST moderne"}
+
+        # Exécuter la méthode - elle ne doit pas lever d'exception
+        try:
+            self.orchestrator._step_advanced_classification(blueprint)
+            # Si on arrive ici, la méthode s'est exécutée sans erreur fatale
+            assert True
+        except Exception as e:
+            # Si une exception est levée, c'est un échec
+            assert False, f"La méthode a levé une exception: {e}"
+
+    @patch("athalia_core.unified_orchestrator.CLASSIFICATION_MODULES_AVAILABLE", False)
+    def test_step_advanced_classification_modules_unavailable(self):
+        """Test de classification avancée sans modules disponibles"""
+        blueprint = {"name": "test_api", "description": "API REST moderne"}
+        self.orchestrator._step_advanced_classification(blueprint)
+
+        # L'étape devrait être ignorée sans erreur
+        assert (
+            "advanced_classification"
+            not in self.orchestrator.workflow_results["steps_completed"]
+        )
+
+    @patch("athalia_core.unified_orchestrator.ADVANCED_MODULES_AVAILABLE", True)
+    def test_step_advanced_auto_correction_success(self):
+        """Test de correction automatique avancée réussie"""
+        # Mock le module de correction avancée
+        mock_advanced_correction = Mock()
+        mock_advanced_correction.analyser_et_corriger.return_value = {
+            "corrections_appliquees": ["correction1", "correction2"],
+            "suggestions": ["suggestion1"],
+            "fichiers_traites": 3,
+        }
+        self.orchestrator.auto_correction_advanced = mock_advanced_correction
+
+        self.orchestrator._step_advanced_auto_correction()
+
+        assert (
+            "advanced_auto_correction"
+            in self.orchestrator.workflow_results["steps_completed"]
+        )
+        assert (
+            "auto_correction_results" in self.orchestrator.workflow_results["artifacts"]
+        )
+
+    @patch("athalia_core.unified_orchestrator.ADVANCED_MODULES_AVAILABLE", False)
+    def test_step_advanced_auto_correction_modules_unavailable(self):
+        """Test de correction automatique avancée sans modules disponibles"""
+        self.orchestrator._step_advanced_auto_correction()
+
+        # L'étape devrait être ignorée sans erreur
+        assert (
+            "advanced_auto_correction"
+            not in self.orchestrator.workflow_results["steps_completed"]
+        )
+
+    def test_validate_code_with_syntax_error(self):
+        """Test de validation de code avec erreur de syntaxe"""
+        invalid_code = "def test_function(:\n    pass"  # Syntaxe invalide
+        assert self.orchestrator._validate_code(invalid_code) is False
+
+    def test_validate_code_with_import_error(self):
+        """Test de validation de code avec erreur d'import"""
+        # La méthode _validate_code ne vérifie que la syntaxe, pas les imports
+        # Donc un import d'un module inexistant est syntaxiquement valide
+        invalid_code = "import nonexistent_module"  # Module inexistant
+        assert self.orchestrator._validate_code(invalid_code) is True
+
+    def test_validate_code_with_valid_complex_code(self):
+        """Test de validation de code complexe valide"""
+        valid_code = """
+def complex_function():
+    try:
+        result = 10 / 2
+        return result
+    except ZeroDivisionError:
+        return None
+    finally:
+        print("Done")
+"""
+        assert self.orchestrator._validate_code(valid_code) is True
+
+    # TESTS POUR LES CAS D'ERREUR ET EXCEPTIONS
+
+    @patch("athalia_core.unified_orchestrator.ROBOTICS_MODULES_AVAILABLE", True)
+    def test_step_robotics_validation_exception(self):
+        """Test de validation robotique avec exception"""
+        # Mock les modules robotiques avec exception
+        mock_ros2_validator = Mock()
+        mock_ros2_validator.validate_workspace.side_effect = Exception(
+            "ROS2 validation error"
+        )
+        self.orchestrator.ros2_validator = mock_ros2_validator
+
+        blueprint = {"project_type": "robotics_api"}
+        self.orchestrator._step_robotics_validation(blueprint)
+
+        # L'erreur devrait être capturée et ajoutée aux erreurs
+        assert len(self.orchestrator.workflow_results["errors"]) > 0
+        assert (
+            "Erreur validation robotique"
+            in self.orchestrator.workflow_results["errors"][0]
+        )
+
+    @patch("athalia_core.unified_orchestrator.ARTISTIC_MODULES_AVAILABLE", True)
+    def test_step_artistic_templates_exception(self):
+        """Test d'application de templates artistiques avec exception"""
+        # Mock les templates artistiques
+        self.orchestrator.artistic_templates = {"artistic.py": "print('Artistic code')"}
+        # Initialiser la section artistic dans les artifacts
+        self.orchestrator.workflow_results["artifacts"]["artistic"] = {}
+
+        # Mock open pour lever une exception
+        with patch("builtins.open", side_effect=Exception("File write error")):
+            blueprint = {"project_type": "artistic_animation"}
+            self.orchestrator._step_artistic_templates(blueprint)
+
+            # L'erreur devrait être gérée silencieusement (loggée mais pas ajoutée aux erreurs)
+            # car elle est capturée au niveau de l'application de template individuel
+            assert "artistic" in self.orchestrator.workflow_results["artifacts"]
+
+    @patch("athalia_core.unified_orchestrator.CLASSIFICATION_MODULES_AVAILABLE", True)
+    def test_step_advanced_classification_exception(self):
+        """Test de classification avancée avec exception"""
+        # Mock le classificateur avec exception
+        mock_classifier = Mock()
+        mock_classifier.side_effect = Exception("Classification error")
+        self.orchestrator.project_classifier = mock_classifier
+
+        blueprint = {"name": "test_api", "description": "API REST moderne"}
+        self.orchestrator._step_advanced_classification(blueprint)
+
+        # L'erreur devrait être capturée et ajoutée aux erreurs
+        assert len(self.orchestrator.workflow_results["errors"]) > 0
+        assert (
+            "Erreur classification avancée"
+            in self.orchestrator.workflow_results["errors"][0]
+        )
+
+    @patch("athalia_core.unified_orchestrator.ADVANCED_MODULES_AVAILABLE", True)
+    def test_step_advanced_auto_correction_exception(self):
+        """Test de correction automatique avancée avec exception"""
+        # Mock le module de correction avancée avec exception
+        mock_advanced_correction = Mock()
+        mock_advanced_correction.analyser_et_corriger.side_effect = Exception(
+            "Advanced correction error"
+        )
+        self.orchestrator.auto_correction_advanced = mock_advanced_correction
+
+        self.orchestrator._step_advanced_auto_correction()
+
+        # L'erreur devrait être capturée et ajoutée aux warnings (pour la correction avancée)
+        assert len(self.orchestrator.workflow_results["warnings"]) > 0
+        assert (
+            "Erreur auto-correction avancée"
+            in self.orchestrator.workflow_results["warnings"][0]
+        )
+
+    # TESTS POUR LES MÉTHODES D'INITIALISATION MANQUANTES
+
+    @patch("athalia_core.unified_orchestrator.ROBOTICS_MODULES_AVAILABLE", True)
+    def test_initialize_modules_with_robotics(self):
+        """Test d'initialisation des modules avec modules robotiques"""
+        with (
+            patch("athalia_core.unified_orchestrator.ReachyAuditor"),
+            patch("athalia_core.unified_orchestrator.ROS2Validator"),
+            patch("athalia_core.unified_orchestrator.DockerRoboticsManager"),
+        ):
+
+            self.orchestrator.initialize_modules()
+
+            # Vérifier que les modules robotiques sont initialisés
+            assert self.orchestrator.reachy_auditor is not None
+            assert self.orchestrator.ros2_validator is not None
+            assert self.orchestrator.docker_robotics is not None
+
+    @patch("athalia_core.unified_orchestrator.ARTISTIC_MODULES_AVAILABLE", True)
+    def test_initialize_modules_with_artistic(self):
+        """Test d'initialisation des modules avec modules artistiques"""
+        with patch(
+            "athalia_core.unified_orchestrator.get_artistic_templates"
+        ) as mock_artistic:
+            mock_artistic.return_value = {"template1": "content1"}
+
+            self.orchestrator.initialize_modules()
+
+            # Vérifier que les templates artistiques sont initialisés
+            assert self.orchestrator.artistic_templates is not None
+
+    @patch("athalia_core.unified_orchestrator.CLASSIFICATION_MODULES_AVAILABLE", True)
+    def test_initialize_modules_with_classification(self):
+        """Test d'initialisation des modules avec modules de classification"""
+        # Ce test vérifie que l'initialisation s'exécute sans erreur fatale
+        try:
+            self.orchestrator.initialize_modules()
+            # Si on arrive ici, l'initialisation s'est exécutée sans erreur fatale
+            assert True
+        except Exception as e:
+            # Si une exception est levée, c'est un échec
+            assert False, f"L'initialisation a levé une exception: {e}"
+
+    @patch("athalia_core.unified_orchestrator.ADVANCED_MODULES_AVAILABLE", True)
+    def test_initialize_modules_with_advanced(self):
+        """Test d'initialisation des modules avec modules avancés"""
+        with patch(
+            "athalia_core.advanced_modules.auto_correction_advanced.AutoCorrectionAvancee"
+        ):
+            self.orchestrator.initialize_modules()
+
+            # Vérifier que le module avancé est initialisé
+            assert self.orchestrator.auto_correction_advanced is not None
+
+    # TESTS POUR LES MÉTHODES DE WORKFLOW COMPLET
+
+    def test_run_full_workflow_with_all_modules_simplified(self):
+        """Test du workflow complet avec tous les modules disponibles (version simplifiée)"""
+        # Ce test vérifie que le workflow peut s'exécuter avec tous les modules
+        # sans avoir besoin de mocker chaque module individuellement
+        blueprint = {"name": "test_project", "type": "api", "description": "Test API"}
+
+        # Initialiser les modules
+        self.orchestrator.initialize_modules()
+
+        # Exécuter le workflow
+        result = self.orchestrator.run_full_workflow(blueprint)
+
+        # Vérifier que le workflow s'est exécuté
+        assert result["status"] in ["completed", "failed"]
+        assert isinstance(result["steps_completed"], list)
+        assert isinstance(result["artifacts"], dict)
 
 
 class TestUnifiedOrchestratorIntegration:

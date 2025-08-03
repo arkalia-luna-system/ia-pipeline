@@ -40,6 +40,7 @@ Cette documentation couvre l'architecture, les modules et les améliorations d'A
 
 ### 🚀 **Rapports de Progression**
 - [**Rapport Complet des Améliorations**](REPORTS/RAPPORT_COMPLET_AMELIORATIONS_2025.md) - Vue d'ensemble complète
+- [**Progression Phases 1-4.3**](REPORTS/PROGRESSION_PHASES_1_2_20250802.md) - Détail des phases terminées
 - [**Analyse Complète des Modules**](REPORTS/ANALYSE_COMPLETE_MODULES_ATHALIA.md) - État des modules
 - [**Plan Phase 4 Modules Avancés**](REPORTS/PHASE_4_MODULES_AVANCES_PLAN.md) - Prochaines étapes
 
@@ -277,4 +278,8 @@ Athalia est maintenant prête pour la **Phase 5 d'optimisation** avec une base s
 ---
 
 *Documentation mise à jour le 2 août 2025*  
+<<<<<<< HEAD
 *Version : 5.0 - Toutes les phases terminées*
+=======
+*Version : 4.0 - Toutes les phases terminées*
+>>>>>>> reorganize-tests

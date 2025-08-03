@@ -18,6 +18,7 @@ class ProjectType(Enum):
     WEB = "web"  # Applications web
     MOBILE = "mobile"  # Applications mobiles
     IOT = "iot"  # Internet des objets
+    ROBOTICS = "robotics"  # Projets robotiques et contrôle
     GENERIC = "generic"  # Projet générique (fallback)
 
 
@@ -143,6 +144,24 @@ def get_project_config(project_type: ProjectType) -> Dict[str, Any]:
             ],
             "booster_ia": ["iot"],
             "description": "Projet IoT avec capteurs",
+        },
+        ProjectType.ROBOTICS: {
+            "modules": ["core", "control", "sensors", "interface"],
+            "dependencies": ["rclpy", "opencv-python", "numpy", "pyserial"],
+            "structure": [
+                "src/",
+                "control/",
+                "sensors/",
+                "interface/",
+                "tests/",
+            ],
+            "prompts": [
+                "robotics_control.yaml",
+                "sensor_integration.yaml",
+                "interface_design.yaml",
+            ],
+            "booster_ia": ["robotics"],
+            "description": "Projet robotique avec contrôle et capteurs",
         },
         ProjectType.GENERIC: {
             "modules": ["core", "utils", "tests"],
