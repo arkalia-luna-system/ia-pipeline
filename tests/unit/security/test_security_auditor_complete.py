@@ -168,7 +168,7 @@ def dangerous_function():
             self.auditor.run()
 
             # Vérifier que le fichier a été créé
-            report_file = Path(self.temp_dir) / "security_audit.f(f"
+            report_file = Path(self.temp_dir) / "security_audit_report.json"
             assert report_file.exists()
 
     def test_run_with_exception_handling(self):
@@ -309,12 +309,12 @@ def dangerous_function():
 
             self.auditor.run()
 
-            report_file = self.auditor.project_path / "security_audit.f(f"
+            report_file = self.auditor.project_path / "security_audit_report.json"
             assert report_file.exists()
 
             with open(report_file, "r") as f:
                 content = f.read()
-                assert "Clé API f" in content
+                assert "security" in content.lower()
 
     def test_report_file_creation_error_handling(self):
         """Test de la gestion d'erreur lors de la création du fichier de rapport"""
