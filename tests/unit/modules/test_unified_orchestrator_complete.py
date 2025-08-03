@@ -797,11 +797,12 @@ class TestUnifiedOrchestrator:
         """Test de correction automatique avancée réussie"""
         # Mock le module de correction avancée
         mock_advanced_correction = Mock()
-        mock_advanced_correction.run_advanced_correction.return_value = {
-            "corrections_applied": 5,
-            "quality_improvement": 15.5,
+        mock_advanced_correction.analyser_et_corriger.return_value = {
+            "corrections_appliquees": ["correction1", "correction2"],
+            "suggestions": ["suggestion1"],
+            "fichiers_traites": 3,
         }
-        self.orchestrator.advanced_auto_correction = mock_advanced_correction
+        self.orchestrator.auto_correction_advanced = mock_advanced_correction
 
         self.orchestrator._step_advanced_auto_correction()
 
@@ -1046,7 +1047,9 @@ def complex_function():
         with (
             patch("athalia_core.unified_orchestrator.ReachyAuditor") as _mock_reachy,
             patch("athalia_core.unified_orchestrator.ROS2Validator") as _mock_ros2,
-            patch("athalia_core.unified_orchestrator.DockerRoboticsManager") as _mock_docker,
+            patch(
+                "athalia_core.unified_orchestrator.DockerRoboticsManager"
+            ) as _mock_docker,
             patch(
                 "athalia_core.unified_orchestrator.get_artistic_templates"
             ) as mock_artistic_templates,
