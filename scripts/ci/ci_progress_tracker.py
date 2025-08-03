@@ -4,10 +4,10 @@ Script de suivi de progression CI/CD professionnelle
 Gère les métriques et rapports de progression
 """
 
-from datetime import datetime
 import json
 import os
-from typing import Any, Dict
+from datetime import datetime
+from typing import Any
 
 
 class CIProgressTracker:
@@ -17,17 +17,17 @@ class CIProgressTracker:
         self.progress_file = progress_file
         self.metrics = self._load_metrics()
 
-    def _load_metrics(self) -> Dict[str, Any]:
+    def _load_metrics(self) -> dict[str, Any]:
         """Charge les métriques existantes"""
         if os.path.exists(self.progress_file):
             try:
-                with open(self.progress_file, "r", encoding="utf-8") as f:
+                with open(self.progress_file, encoding="utf-8") as f:
                     return json.load(f)
             except Exception as e:
                 print(f"⚠️ Erreur chargement métriques: {e}")
 
         # Métriques par défaut
-        default_metrics: Dict[str, Any] = {
+        default_metrics: dict[str, Any] = {
             "level": 1,
             "status": "not_started",
             "tests_passed": "none",
@@ -41,7 +41,7 @@ class CIProgressTracker:
         }
         return default_metrics
 
-    def update_metrics(self, level: int, results: Dict[str, Any]) -> None:
+    def update_metrics(self, level: int, results: dict[str, Any]) -> None:
         """Met à jour les métriques après chaque niveau"""
         self.metrics.update(
             {
@@ -134,7 +134,7 @@ Prêt pour la migration vers develop/main.
 
         return report
 
-    def get_level_status(self, level: int) -> Dict[str, Any]:
+    def get_level_status(self, level: int) -> dict[str, Any]:
         """Obtient le statut d'un niveau spécifique"""
         if level > self.metrics["level"]:
             return {"status": "pending", "message": f"Niveau {level} en attente"}

@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Tests de validité YAML pour Athalia.
 Tests professionnels pour la CI/CD.
 """
 
-from pathlib import Path
 import sys
 import tempfile
+from pathlib import Path
 
 import pytest
 import yaml
@@ -73,7 +72,7 @@ class TestYAMLValidity:
             pytest.skip("Fichier de configuration non trouvé")
 
         try:
-            with open(config_path, "r", encoding="utf-8") as f:
+            with open(config_path, encoding="utf-8") as f:
                 data = yaml.safe_load(f)
 
             assert isinstance(data, dict), "La configuration doit être un dictionnaire"
@@ -222,7 +221,7 @@ class TestYAMLValidity:
             yaml.dump(original_data, f, default_flow_style=False)
 
         # Relire et comparer
-        with open(yaml_file, "r", encoding="utf-8") as f:
+        with open(yaml_file, encoding="utf-8") as f:
             loaded_data = yaml.safe_load(f)
 
         assert loaded_data == original_data
@@ -367,7 +366,7 @@ def test_yaml_file_operations():
             yaml.dump(test_data, f)
 
         # Lire le fichier
-        with open(yaml_file, "r") as f:
+        with open(yaml_file) as f:
             loaded_data = yaml.safe_load(f)
 
         assert loaded_data == test_data

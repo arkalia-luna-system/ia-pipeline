@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 import ast
-from datetime import datetime
 import json
 import logging
 import os
-from pathlib import Path
 import re
 import sys
-from typing import Any, Dict, List
+from datetime import datetime
+from pathlib import Path
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -26,13 +25,13 @@ class IntelligentAuditor:
         self.audit_results = {}
         self.recommendations = []
 
-    def run(self) -> Dict[str, Any]:
+    def run(self) -> dict[str, Any]:
         """Méthode run() pour lorchestrateur - exécute laudit"""
         if not self.project_path:
             raise ValueError("project_path doit être défini")
         return self.audit_project(str(self.project_path))
 
-    def audit_project(self, project_path: str) -> Dict[str, Any]:
+    def audit_project(self, project_path: str) -> dict[str, Any]:
         """Audit complet dun projet"""
         self.project_path = Path(project_path)
         self.audit_results = {
@@ -96,7 +95,7 @@ class IntelligentAuditor:
         else:
             return "Multi-langage/Autre"
 
-    def _calculate_project_size(self) -> Dict[str, int]:
+    def _calculate_project_size(self) -> dict[str, int]:
         """Calcul de la taille du projet"""
         total_files = 0
         total_lines = 0
@@ -105,7 +104,7 @@ class IntelligentAuditor:
             if file_path.is_file():
                 total_files += 1
                 try:
-                    with open(file_path, "r", encoding="utf-8") as file_handle:
+                    with open(file_path, encoding="utf-8") as file_handle:
                         lines = len(file_handle.readlines())
                         total_lines += lines
                         if self._is_code_file(file_path):
@@ -141,7 +140,7 @@ class IntelligentAuditor:
         }
         return file_path.suffix.lower() in code_extensions
 
-    def _detect_languages(self) -> List[str]:
+    def _detect_languages(self) -> list[str]:
         """Détection des langages du projet"""
         languages = set()
         for file_path in self.project_path.rglob("*"):
@@ -165,14 +164,14 @@ class IntelligentAuditor:
                     languages.add("Ruby")
         return list(languages)
 
-    def _detect_dependencies(self) -> Dict[str, List[str]]:
+    def _detect_dependencies(self) -> dict[str, list[str]]:
         """Détection des dépendances du projet"""
         dependencies = {}
         # Python
         req_file = self.project_path / "requirements.txt"
         if req_file.exists():
             try:
-                with open(req_file, "r") as file_handle:
+                with open(req_file) as file_handle:
                     deps = [
                         line.strip()
                         for line in file_handle
@@ -185,7 +184,7 @@ class IntelligentAuditor:
         package_file = self.project_path / "package.json"
         if package_file.exists():
             try:
-                with open(package_file, "r") as file_handle:
+                with open(package_file) as file_handle:
                     data = json.load(file_handle)
                     deps = list(data.get("dependencies", {}).keys())
                     dev_deps = list(data.get("devDependencies", {}).keys())
@@ -214,13 +213,13 @@ class IntelligentAuditor:
         }
         self.audit_results["code_quality"] = quality
 
-    def _analyze_complexity(self) -> Dict[str, Any]:
+    def _analyze_complexity(self) -> dict[str, Any]:
         """Analyse de la complexité du code"""
         complexity_scores = []
 
         for file_path in self.project_path.rglob("*.py"):
             try:
-                with open(file_path, "r", encoding="utf-8") as file_handle:
+                with open(file_path, encoding="utf-8") as file_handle:
                     tree = ast.parse(file_handle.read())
                     complexity = self._calculate_cyclomatic_complexity(tree)
                     complexity_scores.append(complexity)
@@ -244,7 +243,7 @@ class IntelligentAuditor:
         complexity = 1  # Base complexity
 
         for node in ast.walk(tree):
-            if isinstance(node, (ast.If, ast.While, ast.For, ast.AsyncFor)):
+            if isinstance(node, ast.If | ast.While | ast.For | ast.AsyncFor):
                 complexity += 1
             elif isinstance(node, ast.ExceptHandler):
                 complexity += 1
@@ -253,13 +252,13 @@ class IntelligentAuditor:
 
         return complexity
 
-    def _analyze_style(self) -> Dict[str, Any]:
+    def _analyze_style(self) -> dict[str, Any]:
         """Analyse du style du code"""
         style_issues = []
 
         for file_path in self.project_path.rglob("*.py"):
             try:
-                with open(file_path, "r", encoding="utf-8") as file_handle:
+                with open(file_path, encoding="utf-8") as file_handle:
                     lines = file_handle.readlines()
                     for index, line in enumerate(lines, 1):
                         if len(line.rstrip()) > 120:
@@ -288,14 +287,14 @@ class IntelligentAuditor:
             "status": "✅" if len(style_issues) < 10 else "⚠️",
         }
 
-    def _analyze_code_documentation(self) -> Dict[str, Any]:
+    def _analyze_code_documentation(self) -> dict[str, Any]:
         """Analyse de la documentation du code"""
         documented_functions = 0
         total_functions = 0
 
         for file_path in self.project_path.rglob("*.py"):
             try:
-                with open(file_path, "r", encoding="utf-8") as file_handle:
+                with open(file_path, encoding="utf-8") as file_handle:
                     tree = ast.parse(file_handle.read())
                     for node in ast.walk(tree):
                         if isinstance(node, ast.FunctionDef):
@@ -316,13 +315,13 @@ class IntelligentAuditor:
             "status": "✅" if coverage > 80 else "⚠️" if coverage < 50 else "✅",
         }
 
-    def _analyze_naming_conventions(self) -> Dict[str, Any]:
+    def _analyze_naming_conventions(self) -> dict[str, Any]:
         """Analyse des conventions de nommage"""
         issues = []
 
         for file_path in self.project_path.rglob("*.py"):
             try:
-                with open(file_path, "r", encoding="utf-8") as file_handle:
+                with open(file_path, encoding="utf-8") as file_handle:
                     tree = ast.parse(file_handle.read())
                     for node in ast.walk(tree):
                         if isinstance(node, ast.FunctionDef):
@@ -349,7 +348,7 @@ class IntelligentAuditor:
         }
         self.audit_results["security"] = security
 
-    def _detect_security_vulnerabilities(self) -> List[str]:
+    def _detect_security_vulnerabilities(self) -> list[str]:
         """Détection des vulnérabilités de sécurité"""
         vulnerabilities = []
 
@@ -365,7 +364,7 @@ class IntelligentAuditor:
 
         for file_path in self.project_path.rglob("*.py"):
             try:
-                with open(file_path, "r", encoding="utf-8") as file_handle:
+                with open(file_path, encoding="utf-8") as file_handle:
                     content = file_handle.read()
                     for pattern, description in dangerous_patterns:
                         if re.search(pattern, content):
@@ -375,7 +374,7 @@ class IntelligentAuditor:
 
         return vulnerabilities
 
-    def _detect_secrets(self) -> List[str]:
+    def _detect_secrets(self) -> list[str]:
         """Détection de secrets"""
         secrets = []
 
@@ -388,7 +387,7 @@ class IntelligentAuditor:
         for file_path in self.project_path.rglob("*"):
             if file_path.is_file():
                 try:
-                    with open(file_path, "r", encoding="utf-8") as file_handle:
+                    with open(file_path, encoding="utf-8") as file_handle:
                         content = file_handle.read()
                         for pattern in secret_patterns:
                             if re.search(pattern, content):
@@ -399,7 +398,7 @@ class IntelligentAuditor:
 
         return secrets
 
-    def _analyze_permissions(self) -> Dict[str, Any]:
+    def _analyze_permissions(self) -> dict[str, Any]:
         """Analyse des permissions des fichiers"""
         sensitive_files = []
 
@@ -426,7 +425,7 @@ class IntelligentAuditor:
         }
         self.audit_results["performance"] = performance
 
-    def _analyze_file_sizes(self) -> Dict[str, Any]:
+    def _analyze_file_sizes(self) -> dict[str, Any]:
         """Analyse de la taille des fichiers"""
         large_files = []
         total_size = 0
@@ -444,13 +443,13 @@ class IntelligentAuditor:
             "status": "✅" if len(large_files) < 5 else "⚠️",
         }
 
-    def _analyze_imports(self) -> Dict[str, Any]:
+    def _analyze_imports(self) -> dict[str, Any]:
         """Analyse des imports"""
         imports = []
 
         for file_path in self.project_path.rglob("*.py"):
             try:
-                with open(file_path, "r", encoding="utf-8") as file_handle:
+                with open(file_path, encoding="utf-8") as file_handle:
                     tree = ast.parse(file_handle.read())
                     for node in ast.walk(tree):
                         if isinstance(node, ast.Import):
@@ -468,7 +467,7 @@ class IntelligentAuditor:
             "status": "✅" if len(imports) < 100 else "⚠️",
         }
 
-    def _estimate_memory_usage(self) -> Dict[str, Any]:
+    def _estimate_memory_usage(self) -> dict[str, Any]:
         """Estimation de la list_datausage"""
         # Estimation basique basée sur la taille du code
         code_size = 0
@@ -493,14 +492,14 @@ class IntelligentAuditor:
         }
         self.audit_results["documentation"] = docs
 
-    def _check_readme(self) -> Dict[str, Any]:
+    def _check_readme(self) -> dict[str, Any]:
         """Vérification du README"""
         readme_files = list(self.project_path.glob("README*"))
 
         if readme_files:
             readme = readme_files[0]
             try:
-                with open(readme, "r", encoding="utf-8") as file_handle:
+                with open(readme, encoding="utf-8") as file_handle:
                     content = file_handle.read()
                     has_installation = "installation" in content.lower()
                     has_usage = (
@@ -520,7 +519,7 @@ class IntelligentAuditor:
 
         return {"exists": False, "score": 0, "status": "❌"}
 
-    def _check_api_documentation(self) -> Dict[str, Any]:
+    def _check_api_documentation(self) -> dict[str, Any]:
         """Vérification de la documentation API"""
         api_docs = []
 
@@ -532,7 +531,7 @@ class IntelligentAuditor:
             "status": "✅" if api_docs else "❌",
         }
 
-    def _check_guides(self) -> Dict[str, Any]:
+    def _check_guides(self) -> dict[str, Any]:
         """Vérification des guides"""
         guides = []
 
@@ -558,7 +557,7 @@ class IntelligentAuditor:
         }
         self.audit_results["testing"] = testing
 
-    def _analyze_test_coverage(self) -> Dict[str, Any]:
+    def _analyze_test_coverage(self) -> dict[str, Any]:
         """Analyse de la couverture de tests"""
         test_files = list(self.project_path.rglob("*test*.py"))
         source_files = list(self.project_path.rglob("*.py"))
@@ -581,7 +580,7 @@ class IntelligentAuditor:
             ),
         }
 
-    def _find_test_files(self) -> List[str]:
+    def _find_test_files(self) -> list[str]:
         """Trouve les fichiers de tests"""
         test_files = []
 
@@ -590,13 +589,13 @@ class IntelligentAuditor:
 
         return [str(file_handle) for file_handle in test_files]
 
-    def _analyze_test_quality(self) -> Dict[str, Any]:
+    def _analyze_test_quality(self) -> dict[str, Any]:
         """Analyse de la qualité des tests"""
         quality_issues = []
 
         for file_path in self.project_path.rglob("*test*.py"):
             try:
-                with open(file_path, "r", encoding="utf-8") as file_handle:
+                with open(file_path, encoding="utf-8") as file_handle:
                     content = file_handle.read()
                     if "assert" not in content and "self." not in content:
                         quality_issues.append(f"Pas dassertions: {file_path.name}")
@@ -621,7 +620,7 @@ class IntelligentAuditor:
         }
         self.audit_results["structure"] = structure
 
-    def _analyze_organization(self) -> Dict[str, Any]:
+    def _analyze_organization(self) -> dict[str, Any]:
         """Analyse de lorganisation des dossiers"""
         directories = [
             dict_data for dict_data in self.project_path.iterdir() if dict_data.is_dir()
@@ -640,7 +639,7 @@ class IntelligentAuditor:
             "status": "✅ Bien" if organization_score > 3 else "⚠️ À",
         }
 
-    def _analyze_structure_naming(self) -> Dict[str, Any]:
+    def _analyze_structure_naming(self) -> dict[str, Any]:
         """Analyse du nommage des fichiers et dossiers"""
         issues = []
 
@@ -654,7 +653,7 @@ class IntelligentAuditor:
 
         return {"issues": issues, "status": "✅" if len(issues) < 5 else "⚠️"}
 
-    def _analyze_modularity(self) -> Dict[str, Any]:
+    def _analyze_modularity(self) -> dict[str, Any]:
         """Analyse de la modularité"""
         modules = []
 

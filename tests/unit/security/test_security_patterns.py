@@ -41,14 +41,14 @@ class TestSecurityPatterns:
         ]
 
         hardcoded_passwords = []
-        for root, dirs, files in os.walk("."):
+        for root, _dirs, files in os.walk("."):
             if should_skip_directory(root):
                 continue
             for file in files:
                 if file.endswith(".py"):
                     file_path = os.path.join(root, file)
                     try:
-                        with open(file_path, "r", encoding="utf-8") as f:
+                        with open(file_path, encoding="utf-8") as f:
                             content = f.read()
                             for pattern in password_patterns:
                                 matches = re.findall(pattern, content, re.IGNORECASE)
@@ -75,14 +75,14 @@ class TestSecurityPatterns:
         """Test de détection des patterns d'injection SQL"""
         sql_injections = []
 
-        for root, dirs, files in os.walk("."):
+        for root, _dirs, files in os.walk("."):
             if ".git" in root or ".venv" in root:
                 continue
             for file in files:
                 if file.endswith(".py"):
                     file_path = os.path.join(root, file)
                     try:
-                        with open(file_path, "r", encoding="utf-8") as f:
+                        with open(file_path, encoding="utf-8") as f:
                             content = f.read()
                             if any(
                                 pattern in content.lower()
@@ -124,14 +124,14 @@ class TestSecurityPatterns:
         """Test de détection de l'utilisation de fonctions dangereuses"""
         dangerous_usage = []
 
-        for root, dirs, files in os.walk("."):
+        for root, _dirs, files in os.walk("."):
             if ".git" in root or ".venv" in root:
                 continue
             for file in files:
                 if file.endswith(".py"):
                     file_path = os.path.join(root, file)
                     try:
-                        with open(file_path, "r", encoding="utf-8") as f:
+                        with open(file_path, encoding="utf-8") as f:
                             content = f.read()
                             if any(
                                 pattern in content.lower()
@@ -173,14 +173,14 @@ class TestSecurityPatterns:
         """Test de détection des patterns d'injection shell"""
         filtered_injections = []
 
-        for root, dirs, files in os.walk("."):
+        for root, _dirs, files in os.walk("."):
             if ".git" in root or ".venv" in root:
                 continue
             for file in files:
                 if file.endswith(".py"):
                     file_path = os.path.join(root, file)
                     try:
-                        with open(file_path, "r", encoding="utf-8") as f:
+                        with open(file_path, encoding="utf-8") as f:
                             content = f.read()
                             if any(
                                 pattern in content.lower()
@@ -211,14 +211,14 @@ class TestSecurityPatterns:
         """Test de détection du code de debug"""
         debug_code = []
 
-        for root, dirs, files in os.walk("."):
+        for root, _dirs, files in os.walk("."):
             if ".git" in root or ".venv" in root:
                 continue
             for file in files:
                 if file.endswith(".py"):
                     file_path = os.path.join(root, file)
                     try:
-                        with open(file_path, "r", encoding="utf-8") as f:
+                        with open(file_path, encoding="utf-8") as f:
                             content = f.read()
                             if any(
                                 pattern in content.lower()
@@ -257,14 +257,14 @@ class TestSecurityPatterns:
         """Test de détection des URLs hardcodées"""
         hardcoded_urls = []
 
-        for root, dirs, files in os.walk("."):
+        for root, _dirs, files in os.walk("."):
             if ".git" in root or ".venv" in root:
                 continue
             for file in files:
                 if file.endswith(".py"):
                     file_path = os.path.join(root, file)
                     try:
-                        with open(file_path, "r", encoding="utf-8") as f:
+                        with open(file_path, encoding="utf-8") as f:
                             content = f.read()
                             if any(
                                 pattern in content.lower()
@@ -302,14 +302,14 @@ class TestSecurityPatterns:
         """Test de détection de crypto faible"""
         weak_crypto = []
 
-        for root, dirs, files in os.walk("."):
+        for root, _dirs, files in os.walk("."):
             if should_skip_directory(root):
                 continue
             for file in files:
                 if file.endswith(".py"):
                     file_path = os.path.join(root, file)
                     try:
-                        with open(file_path, "r", encoding="utf-8") as f:
+                        with open(file_path, encoding="utf-8") as f:
                             content = f.read()
                             # Vérifier les patterns de crypto faible
                             if (

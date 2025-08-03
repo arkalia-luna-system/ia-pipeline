@@ -7,7 +7,6 @@ Vérifie que les optimisations sont robustes et n'ont pas cassé la fonctionnali
 import subprocess
 import time
 from pathlib import Path
-from typing import Dict
 
 
 class OptimizationValidator:
@@ -43,7 +42,7 @@ class OptimizationValidator:
             },
         ]
 
-    def run_test_suite(self, suite: Dict) -> Dict:
+    def run_test_suite(self, suite: dict) -> dict:
         """Exécute une suite de tests et mesure ses performances."""
         print(f"\n🔍 Validation: {suite['name']}")
         print("-" * 50)
@@ -125,7 +124,7 @@ class OptimizationValidator:
                 "return_code": -1,
             }
 
-    def validate_optimizations(self) -> Dict:
+    def validate_optimizations(self) -> dict:
         """Valide toutes les optimisations."""
         print("🚀 Démarrage de la validation des optimisations")
         print("=" * 60)

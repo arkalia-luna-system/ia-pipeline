@@ -6,7 +6,6 @@ Vérifie que la couverture de code est suffisante et que les tests sont bien str
 import subprocess
 import sys
 from pathlib import Path
-from typing import List
 
 import pytest
 
@@ -20,7 +19,7 @@ class TestCoverageThreshold:
         return Path(__file__).parent.parent.parent
 
     @pytest.fixture
-    def test_files(self, project_root: Path) -> List[Path]:
+    def test_files(self, project_root: Path) -> list[Path]:
         """Retourne la liste des fichiers de test"""
         test_dir = project_root / "tests"
         if not test_dir.exists():
@@ -32,14 +31,14 @@ class TestCoverageThreshold:
         return test_files
 
     @pytest.fixture
-    def source_files(self, project_root: Path) -> List[Path]:
+    def source_files(self, project_root: Path) -> list[Path]:
         """Retourne la liste des fichiers source Python"""
         source_dirs = [
             project_root / "athalia_core",
             project_root / "plugins",
             project_root / "scripts",
         ]
-        source_files: List[Path] = []
+        source_files: list[Path] = []
         for source_dir in source_dirs:
             if source_dir.exists():
                 source_files.extend(source_dir.rglob("*.py"))
@@ -85,7 +84,7 @@ class TestCoverageThreshold:
             module_file = project_root / module_path
             if module_file.exists():
                 try:
-                    with open(module_file, "r", encoding="utf-8") as f:
+                    with open(module_file, encoding="utf-8") as f:
                         content = f.read()
                         assert content.strip(), f"Module {module_path} vide"
                         # Vérifie qu'il y a du code Python valide
@@ -95,7 +94,7 @@ class TestCoverageThreshold:
                 except Exception as e:
                     pytest.fail(f"Erreur lecture {module_path}: {e}")
 
-    def test_test_files_exist(self, test_files: List[Path]) -> None:
+    def test_test_files_exist(self, test_files: list[Path]) -> None:
         """Vérifie que les fichiers de test existent et sont suffisants"""
         # Utiliser la recherche manuelle car le fixture ne fonctionne pas
         test_files = list(Path("tests").rglob("test_*.py"))
@@ -127,7 +126,7 @@ class TestCoverageThreshold:
             test_structure["unit"] >= 10
         ), f"Pas assez de tests unitaires: {test_structure['unit']}"
 
-    def test_test_coverage_structure(self, test_files: List[Path]) -> None:
+    def test_test_coverage_structure(self, test_files: list[Path]) -> None:
         """Vérifie la structure de couverture des tests"""
         if not test_files:
             pytest.skip("Aucun fichier de test trouvé")
@@ -158,7 +157,7 @@ class TestCoverageThreshold:
         )
 
     def test_critical_modules_have_tests(
-        self, project_root: Path, test_files: List[Path]
+        self, project_root: Path, test_files: list[Path]
     ) -> None:
         """Vérifie que les modules critiques ont des tests correspondants"""
         critical_modules = [
@@ -194,7 +193,7 @@ class TestCoverageThreshold:
         coverage_report = project_root / "htmlcov" / "index.html"
         if coverage_report.exists():
             try:
-                with open(coverage_report, "r", encoding="utf-8") as f:
+                with open(coverage_report, encoding="utf-8") as f:
                     content = f.read()
                     assert content.strip(), "Rapport de couverture vide"
                     assert (
@@ -237,7 +236,7 @@ class TestCoverageThreshold:
         except Exception as e:
             pytest.fail(f"Erreur lors de la vérification de pytest: {e}")
 
-    def test_coverage_quality_metrics(self, test_files: List[Path]) -> None:
+    def test_coverage_quality_metrics(self, test_files: list[Path]) -> None:
         """Vérifie les métriques de qualité de la couverture"""
         if not test_files:
             pytest.skip("Aucun fichier de test trouvé")
@@ -269,7 +268,7 @@ class TestCoverageThreshold:
             f"{len(test_categories)} attendues. Trouvées: {found_categories}"
         )
 
-    def test_test_file_quality(self, test_files: List[Path]) -> None:
+    def test_test_file_quality(self, test_files: list[Path]) -> None:
         """Vérifie la qualité des fichiers de test"""
         if not test_files:
             pytest.skip("Aucun fichier de test trouvé")
@@ -287,7 +286,7 @@ class TestCoverageThreshold:
                 if test_file.name in excluded_files:
                     continue
 
-                with open(test_file, "r", encoding="utf-8") as f:
+                with open(test_file, encoding="utf-8") as f:
                     content = f.read()
 
                     # Vérifie que le fichier n'est pas vide
@@ -312,7 +311,7 @@ class TestCoverageThreshold:
                 pytest.fail(f"Erreur lecture {test_file}: {e}")
 
     def test_source_to_test_ratio(
-        self, source_files: List[Path], test_files: List[Path]
+        self, source_files: list[Path], test_files: list[Path]
     ) -> None:
         """Vérifie le ratio source/tests"""
         if not source_files:
@@ -336,7 +335,7 @@ class TestCoverageThreshold:
             f"({len(test_files)} tests pour {len(filtered_source_files)} sources)"
         )
 
-    def test_test_imports(self, test_files: List[Path]) -> None:
+    def test_test_imports(self, test_files: list[Path]) -> None:
         """Vérifie que les tests peuvent être importés"""
         if not test_files:
             pytest.skip("Aucun fichier de test trouvé")

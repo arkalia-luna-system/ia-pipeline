@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Distillation adaptative pour Athalia/Arkalia
 - Pondération dynamique selon préférences et feedback utilisateur
@@ -7,24 +6,24 @@ Distillation adaptative pour Athalia/Arkalia
 
 import json
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 
 class AdaptiveDistiller:
-    def __init__(self, history_path: Optional[str] = None):
+    def __init__(self, history_path: str | None = None):
         """
             Initialise le distillateur adaptatif.
         :param history_path: Chemin du fichier JSON pour l'historique (optionnel)
         """
-        self.preference_weights: Dict[str, float] = {}  # Pondération des réponses
-        self.success_history: List[str] = []  # Historique des succès
+        self.preference_weights: dict[str, float] = {}  # Pondération des réponses
+        self.success_history: list[str] = []  # Historique des succès
         # {réponse: [succès, échecs]}
-        self.feedback: Dict[str, List[int]] = {}
+        self.feedback: dict[str, list[int]] = {}
         self.history_path = history_path or "adaptive_distillation_history.json"
         self.load_history()
 
     def distill_responses(
-        self, responses: List[str], context: Optional[Dict[str, Any]] = None
+        self, responses: list[str], context: dict[str, Any] | None = None
     ) -> str:
         """
         Fusionne les réponses IA en tenant compte des préférences et du
@@ -37,7 +36,7 @@ class AdaptiveDistiller:
         return self.ensemble_fusion(weighted_responses, context)
 
     def update_preferences(
-        self, chosen_response: str, responses: List[str], success: bool = True
+        self, chosen_response: str, responses: list[str], success: bool = True
     ):
         """
         Met à jour les préférences et le feedback selon la réponse choisie
@@ -60,7 +59,7 @@ class AdaptiveDistiller:
             self.feedback[chosen_response][1] += 1
         self.save_history()
 
-    def apply_learned_weights(self, responses: List[str]) -> List[str]:
+    def apply_learned_weights(self, responses: list[str]) -> list[str]:
         """
             Trie les réponses selon leur poids appris et taux de succès.
         :param responses: Liste de réponses IA
@@ -77,7 +76,7 @@ class AdaptiveDistiller:
         return sorted(responses, key=score, reverse=True)
 
     def ensemble_fusion(
-        self, responses: List[str], context: Optional[Dict[str, Any]]
+        self, responses: list[str], context: dict[str, Any] | None
     ) -> str:
         """
             Fusionne les réponses (majority voting par défaut).
@@ -110,7 +109,7 @@ class AdaptiveDistiller:
         path = Path(self.history_path)
         if path.exists():
             try:
-                with open(path, "r", encoding="utf-8") as f:
+                with open(path, encoding="utf-8") as f:
                     data = json.load(f)
                 self.preference_weights = data.get("preference_weights", {})
                 self.success_history = data.get("success_history", [])

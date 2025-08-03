@@ -1,14 +1,12 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Analyseur de projets Rust pour Athalia Robotics
 """
 
-from dataclasses import dataclass
 import logging
-from pathlib import Path
 import subprocess
-from typing import Dict, List, Optional
+from dataclasses import dataclass
+from pathlib import Path
 
 # Import du validateur de sécurité
 try:
@@ -30,7 +28,7 @@ class CargoDependency:
 
     name: str
     version: str
-    features: List[str]
+    features: list[str]
     optional: bool
 
 
@@ -41,21 +39,21 @@ class RustProjectInfo:
     name: str
     path: Path
     version: str
-    dependencies: List[CargoDependency]
-    dev_dependencies: List[CargoDependency]
-    build_dependencies: List[CargoDependency]
+    dependencies: list[CargoDependency]
+    dev_dependencies: list[CargoDependency]
+    build_dependencies: list[CargoDependency]
     has_ros2_deps: bool
     has_robotics_deps: bool
-    build_targets: List[str]
+    build_targets: list[str]
 
 
 @dataclass
 class RustAnalysisResult:
     """Résultat d'analyse Rust"""
 
-    projects: List[RustProjectInfo]
-    issues: List[str]
-    recommendations: List[str]
+    projects: list[RustProjectInfo]
+    issues: list[str]
+    recommendations: list[str]
     build_ready: bool
     optimization_score: float  # 0-100
 
@@ -118,7 +116,7 @@ class RustAnalyzer:
             optimization_score=optimization_score,
         )
 
-    def _analyze_cargo_project(self, cargo_file: Path) -> Optional[RustProjectInfo]:
+    def _analyze_cargo_project(self, cargo_file: Path) -> RustProjectInfo | None:
         """Analyse un projet Cargo spécifique"""
         try:
             project_path = cargo_file.parent
@@ -163,7 +161,7 @@ class RustAnalyzer:
             self.logger.error(f"Erreur analyse {cargo_file}: {e}")
             return None
 
-    def _parse_dependencies(self, deps_dict: Dict) -> List[CargoDependency]:
+    def _parse_dependencies(self, deps_dict: dict) -> list[CargoDependency]:
         """Parser les dépendances Cargo"""
         dependencies = []
 
@@ -210,7 +208,7 @@ class RustAnalyzer:
 
         return any(keyword in dep.name.lower() for keyword in robotics_keywords)
 
-    def _analyze_build_targets(self, project_path: Path) -> List[str]:
+    def _analyze_build_targets(self, project_path: Path) -> list[str]:
         """Analyser les targets de build"""
         targets = []
 
@@ -243,7 +241,7 @@ class RustAnalyzer:
         except (BaseException, SecurityError):
             return False
 
-    def _calculate_optimization_score(self, projects: List[RustProjectInfo]) -> float:
+    def _calculate_optimization_score(self, projects: list[RustProjectInfo]) -> float:
         """Calculer le score d'optimisation"""
         if not projects:
             return 0.0
@@ -274,9 +272,9 @@ class RustAnalyzer:
 
     def _generate_recommendations(
         self,
-        projects: List[RustProjectInfo],
-        issues: List[str],
-        recommendations: List[str],
+        projects: list[RustProjectInfo],
+        issues: list[str],
+        recommendations: list[str],
     ):
         """Générer des recommandations basées sur l'analyse"""
         if not projects:
@@ -310,10 +308,10 @@ class RustAnalyzer:
                     f"Projet {project.name}: Créer src/main.rs ou src/lib.rs"
                 )
 
-    def validate_cargo_toml(self, cargo_file: Path) -> Dict:
+    def validate_cargo_toml(self, cargo_file: Path) -> dict:
         """Valider et parser un fichier Cargo.toml"""
         try:
-            with open(cargo_file, "r", encoding="utf-8") as f:
+            with open(cargo_file, encoding="utf-8") as f:
                 content = f.read()
 
             # Parser le TOML (version simplifiée)

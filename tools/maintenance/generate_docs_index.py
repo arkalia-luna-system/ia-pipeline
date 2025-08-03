@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 📋 Générateur d'Index Documentation Athalia
 
@@ -7,10 +6,9 @@ Script pour générer automatiquement un index complet
 de la documentation du projet Athalia.
 """
 
-from datetime import datetime
 import logging
+from datetime import datetime
 from pathlib import Path
-from typing import Dict, List
 
 # Configuration du logging
 logging.basicConfig(
@@ -30,7 +28,7 @@ class IndexGenerator:
     def __init__(self, root_path: str = "."):
         self.root_path = Path(root_path)
         self.docs_path = self.root_path / "docs"
-        self.index_structure: Dict[str, List[Dict[str, str]]] = {
+        self.index_structure: dict[str, list[dict[str, str]]] = {
             "main": [],
             "api": [],
             "guides": [],
@@ -139,7 +137,7 @@ class IndexGenerator:
     def _extract_title(self, file_path: Path) -> str:
         """Extrait le titre d'un fichier Markdown"""
         try:
-            with open(file_path, "r", encoding="utf-8") as f:
+            with open(file_path, encoding="utf-8") as f:
                 first_line = f.readline().strip()
                 if first_line.startswith("# "):
                     return first_line[2:]

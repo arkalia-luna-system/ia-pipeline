@@ -1,14 +1,12 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Module de génération ULTRA-AVANCÉE pour Athalia
 Version avec fallback intelligent et agents IA
 """
 
 import logging
-from pathlib import Path
 import re
-from typing import Optional
+from pathlib import Path
 
 # Configuration du logging
 logging.basicConfig(level=logging.INFO)
@@ -114,7 +112,7 @@ Fichiers qui seraient créés:
     return str(project_path)
 
 
-def generate_readme(blueprint: dict, project_path: Optional[Path] = None) -> str:
+def generate_readme(blueprint: dict, project_path: Path | None = None) -> str:
     """Génère un README basique."""
     project_name = blueprint.get("project_name", "projet_ia")
     description = blueprint.get("description", "Projet généré par Athalia")
@@ -152,7 +150,7 @@ python -m pytest tests/
     return readme_content
 
 
-def generate_main_code(blueprint: dict, project_path: Optional[Path] = None) -> str:
+def generate_main_code(blueprint: dict, project_path: Path | None = None) -> str:
     """Génère le code principal."""
     project_name = blueprint.get("project_name", "projet_ia")
     project_type = blueprint.get("project_type", "generic")
@@ -221,7 +219,7 @@ if __name__ == "__main__":
     return main_content
 
 
-def generate_test_code(blueprint: dict, project_path: Optional[Path] = None) -> str:
+def generate_test_code(blueprint: dict, project_path: Path | None = None) -> str:
     """Génère le code de test."""
     project_name = blueprint.get("project_name", "projet_ia")
 
@@ -280,7 +278,7 @@ if __name__ == '__main__':
     return test_content
 
 
-def generate_requirements(blueprint: dict, project_path: Optional[Path] = None) -> str:
+def generate_requirements(blueprint: dict, project_path: Path | None = None) -> str:
     """Génère un fichier requirements.txt basique."""
     if project_path is None:
         project_path = Path(".")
@@ -359,8 +357,8 @@ def scan_existing_project(outdir):
 def merge_or_suffix_file(
     file_path: str,
     content: str,
-    file_type: Optional[str] = None,
-    section_header: Optional[str] = None,
+    file_type: str | None = None,
+    section_header: str | None = None,
 ):
     """Fusionne ou suffixe un fichier."""
     from pathlib import Path

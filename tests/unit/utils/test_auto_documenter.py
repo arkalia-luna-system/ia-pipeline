@@ -3,11 +3,12 @@ Tests pour le module athalia_core.auto_documenter
 Tests appropriés pour la génération automatique de documentation
 """
 
-import pytest
-import tempfile
 import os
+import tempfile
 from pathlib import Path
 from unittest.mock import patch
+
+import pytest
 
 import athalia_core.auto_documenter as module
 
@@ -25,13 +26,13 @@ def test_module_has_content():
 def test_function_generate_documentation_exists():
     """Test que la fonction generate_documentation existe."""
     assert hasattr(module, "generate_documentation")
-    assert callable(getattr(module, "generate_documentation"))
+    assert callable(module.generate_documentation)
 
 
 def test_function_analyze_documentation_needs_exists():
     """Test que la fonction analyze_documentation_needs existe."""
     assert hasattr(module, "analyze_documentation_needs")
-    assert callable(getattr(module, "analyze_documentation_needs"))
+    assert callable(module.analyze_documentation_needs)
 
 
 def test_class_AutoDocumenter_exists():
@@ -143,7 +144,7 @@ class TestAutoDocumenter:
             assert "total_classes" in coverage
             assert "total_methods" in coverage
             assert "coverage_percentage" in coverage
-            assert isinstance(coverage["coverage_percentage"], (int, float))
+            assert isinstance(coverage["coverage_percentage"], int | float)
 
     def test_validate_documentation(self):
         """Test la validation de documentation."""

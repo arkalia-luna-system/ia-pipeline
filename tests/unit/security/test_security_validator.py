@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Tests pour le module security_validator.
 Tests professionnels pour la CI/CD.
 """
 
-from pathlib import Path
 import subprocess
 import tempfile
 import unittest
+from pathlib import Path
 
 # Import du module à tester
 try:

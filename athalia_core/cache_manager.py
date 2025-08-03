@@ -11,7 +11,7 @@ import os
 import pickle
 import time
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -25,7 +25,7 @@ class CacheManager:
         self.stats_file = self.cache_dir / "cache_stats.json"
         self.stats = self._load_stats()
 
-    def _load_stats(self) -> Dict[str, Any]:
+    def _load_stats(self) -> dict[str, Any]:
         """Charge les statistiques depuis le fichier"""
         default_stats = {
             "hits": 0,
@@ -36,7 +36,7 @@ class CacheManager:
 
         try:
             if self.stats_file.exists():
-                with open(self.stats_file, "r", encoding="utf-8") as f:
+                with open(self.stats_file, encoding="utf-8") as f:
                     return json.load(f)
         except Exception as e:
             logger.warning(f"⚠️ Erreur lors du chargement des stats: {e}")
@@ -51,7 +51,7 @@ class CacheManager:
         except Exception as e:
             logger.warning(f"⚠️ Erreur lors de la sauvegarde des stats: {e}")
 
-    def _generate_cache_key(self, blueprint: Dict[str, Any]) -> str:
+    def _generate_cache_key(self, blueprint: dict[str, Any]) -> str:
         """Génère une clé de cache unique basée sur le blueprint"""
         # Créer une version simplifiée du blueprint pour la clé
         key_data = {
@@ -65,7 +65,7 @@ class CacheManager:
         key_string = json.dumps(key_data, sort_keys=True)
         return hashlib.sha256(key_string.encode()).hexdigest()[:16]
 
-    def get(self, blueprint: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    def get(self, blueprint: dict[str, Any]) -> dict[str, Any] | None:
         """Récupère un résultat du cache"""
         self.stats["total_requests"] += 1
 
@@ -99,7 +99,7 @@ class CacheManager:
             self._save_stats()
             return None
 
-    def set(self, blueprint: Dict[str, Any], result: Dict[str, Any]) -> bool:
+    def set(self, blueprint: dict[str, Any], result: dict[str, Any]) -> bool:
         """Sauvegarde un résultat dans le cache"""
         try:
             # S'assurer que le répertoire existe
@@ -143,7 +143,7 @@ class CacheManager:
             logger.warning(f"⚠️ Erreur lors du vidage du cache: {e}")
             return False
 
-    def get_stats(self) -> Dict[str, Any]:
+    def get_stats(self) -> dict[str, Any]:
         """Retourne les statistiques du cache"""
         hit_rate = self.stats["hits"] / max(self.stats["total_requests"], 1) * 100
 
@@ -191,17 +191,17 @@ def get_cache_manager() -> CacheManager:
     return _cache_manager
 
 
-def cache_result(blueprint: Dict[str, Any], result: Dict[str, Any]) -> bool:
+def cache_result(blueprint: dict[str, Any], result: dict[str, Any]) -> bool:
     """Sauvegarde un résultat dans le cache global"""
     return get_cache_manager().set(blueprint, result)
 
 
-def get_cached_result(blueprint: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+def get_cached_result(blueprint: dict[str, Any]) -> dict[str, Any] | None:
     """Récupère un résultat du cache global"""
     return get_cache_manager().get(blueprint)
 
 
-def get_cache_stats() -> Dict[str, Any]:
+def get_cache_stats() -> dict[str, Any]:
     """Retourne les statistiques du cache global"""
     return get_cache_manager().get_stats()
 

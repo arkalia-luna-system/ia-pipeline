@@ -1,11 +1,11 @@
-# -*- coding: utf-8 -*-
 """
 Caching prédictif pour Athalia/Arkalia
 - Anticipation contextuelle, pré-génération, invalidation intelligente, stats
 """
 
 import time
-from typing import Any, Callable, Dict, Optional
+from collections.abc import Callable
+from typing import Any
 
 
 class PredictiveCache:
@@ -13,12 +13,12 @@ class PredictiveCache:
         """
         :param ttl: Durée de vie (en secondes) d'une entrée (0 = infini)
         """
-        self.cache: Dict[str, Dict[str, Any]] = {}
+        self.cache: dict[str, dict[str, Any]] = {}
         self.ttl = ttl
         self.hits = 0
         self.misses = 0
 
-    def get(self, key: str) -> Optional[Any]:
+    def get(self, key: str) -> Any | None:
         entry = self.cache.get(key)
         if entry:
             if self.ttl and time.time() - entry["time"] > self.ttl:
@@ -33,11 +33,11 @@ class PredictiveCache:
     def set(self, key: str, value: Any):
         self.cache[key] = {"value": value, "time": time.time()}
 
-    def predict_key(self, context: Dict) -> str:
+    def predict_key(self, context: dict) -> str:
         # Hash du contexte pour générer une clé unique
         return str(hash(str(context)))
 
-    def pre_generate(self, context: Dict, generator: Callable[[Dict], Any]):
+    def pre_generate(self, context: dict, generator: Callable[[dict], Any]):
         """
             Pré-génère une réponse pour un contexte donné (si non déjà en cache).
         :param context: Contexte (dict)
@@ -53,7 +53,7 @@ class PredictiveCache:
         if key in self.cache:
             del self.cache[key]
 
-    def get_stats(self) -> Dict[str, Any]:
+    def get_stats(self) -> dict[str, Any]:
         """Retourne les statistiques d'utilisation du cache."""
         total = self.hits + self.misses
         hit_rate = self.hits / total if total else 0

@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Script de nettoyage des anciennes données d'analyse
 """
 
-from datetime import datetime, timedelta
 import hashlib
 import json
 import logging
-from pathlib import Path
 import shutil
+from datetime import datetime, timedelta
+from pathlib import Path
 
 logging.basicConfig(
     level=logging.INFO,
@@ -83,7 +82,7 @@ class DataCleaner:
         """Archive les fichiers importants"""
         archived_count = 0
 
-        for file_path, mtime, file_hash in files:
+        for file_path, mtime, _file_hash in files:
             # Déterminer si le fichier est important
             is_important = self.is_file_important(file_path, mtime)
 
@@ -125,7 +124,7 @@ class DataCleaner:
         """Supprime les fichiers en double"""
         removed_count = 0
 
-        for file_path, mtime, file_hash in duplicates:
+        for file_path, _mtime, _file_hash in duplicates:
             try:
                 file_path.unlink()
                 logger.info(f"🗑️ Doublon supprimé: {file_path.name}")
@@ -139,7 +138,7 @@ class DataCleaner:
         """Supprime les anciens fichiers non importants"""
         removed_count = 0
 
-        for file_path, mtime, file_hash in old_files:
+        for file_path, mtime, _file_hash in old_files:
             # Vérifier si le fichier est important
             is_important = self.is_file_important(file_path, mtime)
 

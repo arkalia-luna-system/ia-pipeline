@@ -6,8 +6,8 @@ TEMPORAIREMENT DÉSACTIVÉ - Interface en cours de développement
 """
 
 import json
-from pathlib import Path
 import tempfile
+from pathlib import Path
 from unittest.mock import Mock, patch
 
 import yaml
@@ -262,7 +262,7 @@ def test_another_function():
         assert result is True
         assert output_file.exists()
 
-        with open(output_file, "r") as f:
+        with open(output_file) as f:
             data = json.load(f)
             assert "code_complexity" in data
             assert "test_coverage" in data
@@ -280,7 +280,7 @@ def test_another_function():
         assert result is True
         assert output_file.exists()
 
-        with open(output_file, "r") as f:
+        with open(output_file) as f:
             data = yaml.safe_load(f)
             assert "code_complexity" in data
             assert "test_coverage" in data
@@ -447,7 +447,7 @@ class TestAnalyticsIntegration:
         assert json_file.exists()
 
         # Vérifier le contenu
-        with open(json_file, "r") as f:
+        with open(json_file) as f:
             data = json.load(f)
             assert data["code_complexity"]["average_complexity"] == 3.5
 

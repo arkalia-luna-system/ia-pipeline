@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Validation Objective d'Athalia/Arkalia
 Tests qui ne peuvent pas mentir - Mesures concrètes et indépendantes
 """
 
-from datetime import datetime
 import json
 import os
-from pathlib import Path
 import subprocess
 import time
-from typing import Any, List
+from datetime import datetime
+from pathlib import Path
+from typing import Any
 
 # Import du validateur de sécurité
 try:
@@ -19,7 +18,7 @@ try:
 except ImportError:
     # Fallback si le module n'est pas disponible
     def validate_and_run(
-        command: List[str], **kwargs: Any
+        command: list[str], **kwargs: Any
     ) -> subprocess.CompletedProcess:
         return subprocess.run(command, **kwargs)
 
@@ -93,7 +92,7 @@ if __name__ == "__main__":
 
             for py_file in fichiers_python:
                 try:
-                    with open(py_file, "r", encoding="utf-8") as f:
+                    with open(py_file, encoding="utf-8") as f:
                         code = f.read()
                     compile(code, str(py_file), "exec")
                     compilation_ok += 1
@@ -186,7 +185,7 @@ def fonction_syntaxe():
 
             # Test de compilation du fichier corrigé
             try:
-                with open(fichier_corrige, "r", encoding="utf-8") as f:
+                with open(fichier_corrige, encoding="utf-8") as f:
                     code_corrige = f.read()
                 compile(code_corrige, fichier_corrige, "exec")
                 compilation_ok = True
@@ -466,34 +465,34 @@ def fonction_tres_longue_avec_beaucoup_de_parametres(param1, param2, param3, par
 class ClasseAvecBeaucoupDeMethodes:
     def __init__(self):
         self.valeur = 0
-    
+
     def methode1(self):
         pass
-    
+
     def methode2(self):
         pass
-    
+
     def methode3(self):
         pass
-    
+
     def methode4(self):
         pass
-    
+
     def methode5(self):
         pass
-    
+
     def methode6(self):
         pass
-    
+
     def methode7(self):
         pass
-    
+
     def methode8(self):
         pass
-    
+
     def methode9(self):
         pass
-    
+
     def methode10(self):
         pass
 
@@ -539,7 +538,7 @@ variable_non_utilisee = "test"
             # Analyse de la qualité après amélioration
             fichier_ameliore = f"{projet_qualite}/code_problematique.py.improved"
             if os.path.exists(fichier_ameliore):
-                with open(fichier_ameliore, "r") as f:
+                with open(fichier_ameliore) as f:
                     code_ameliore = f.read()
 
                 # Mesures de qualité simples

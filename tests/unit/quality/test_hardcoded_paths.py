@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Tests pour détecter les chemins hardcodés
 """
@@ -17,7 +16,7 @@ class TestHardcodedPaths:
         """Test qu'il n'y a pas de chemins absolus dans le code source (sauf tests)"""
         # Exclure les fichiers de test
         source_files = []
-        for root, dirs, files in os.walk("."):
+        for root, _dirs, files in os.walk("."):
             if ".git" in root or "__pycache__" in root or "tests" in root:
                 continue
             for file in files:
@@ -27,7 +26,7 @@ class TestHardcodedPaths:
         absolute_paths = []
         for file_path in source_files:
             try:
-                with open(file_path, "r", encoding="utf-8") as f:
+                with open(file_path, encoding="utf-8") as f:
                     content = f.read()
                     # Chercher les chemins absolus
                     matches = re.findall(r'["\'](/[^"\']*?)["\']', content)
@@ -69,7 +68,7 @@ class TestHardcodedPaths:
         assert True, "Test désactivé - chemins hardcodés acceptables dans les tests"
 
         python_files = []
-        for root, dirs, files in os.walk("."):
+        for root, _dirs, files in os.walk("."):
             if ".git" in root or "__pycache__" in root:
                 continue
             for file in files:
@@ -79,7 +78,7 @@ class TestHardcodedPaths:
         absolute_paths = []
         for py_file in python_files:
             try:
-                with open(py_file, "r", encoding="utf-8") as f:
+                with open(py_file, encoding="utf-8") as f:
                     content = f.read()
                     # Chercher les chemins absolus
                     matches = re.findall(r'["\'](/[^"\']*?)["\']', content)
@@ -104,7 +103,7 @@ class TestHardcodedPaths:
         assert True, "Test désactivé - chemins Desktop acceptables dans les tests"
 
         python_files = []
-        for root, dirs, files in os.walk("."):
+        for root, _dirs, files in os.walk("."):
             if ".git" in root or "__pycache__" in root:
                 continue
             for file in files:
@@ -114,7 +113,7 @@ class TestHardcodedPaths:
         desktop_paths = []
         for py_file in python_files:
             try:
-                with open(py_file, "r", encoding="utf-8") as f:
+                with open(py_file, encoding="utf-8") as f:
                     content = f.read()
                     # Chercher les chemins Desktop
                     matches = re.findall(

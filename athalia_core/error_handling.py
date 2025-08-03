@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Gestion centralisée des erreurs pour Athalia
 Système unifié de gestion d'erreurs avec logging et reporting
 """
 
-from datetime import datetime
 import logging
-from pathlib import Path
 import sys
 import traceback
-from typing import Any, Callable, Dict, Optional
+from collections.abc import Callable
+from datetime import datetime
+from pathlib import Path
+from typing import Any
 
 from .error_codes import (
     ErrorCode,
@@ -28,7 +28,7 @@ class AthaliaError(Exception):
         error_code: ErrorCode,
         message: str = "",
         details: str = "",
-        context: Dict[str, Any] = None,
+        context: dict[str, Any] = None,
     ):
         self.error_code = error_code
         self.message = message
@@ -44,7 +44,7 @@ class AthaliaError(Exception):
 
         super().__init__(full_message)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         """Convertit l'erreur en dictionnaire pour sérialisation."""
         return {
             "error_code": self.error_code.name,
@@ -61,11 +61,11 @@ class AthaliaError(Exception):
 class ErrorHandler:
     """Gestionnaire centralisé des erreurs."""
 
-    def __init__(self, log_file: Optional[str] = None):
+    def __init__(self, log_file: str | None = None):
         self.log_file = log_file
         self.error_count = 0
         self.critical_errors = []
-        self.error_callbacks: Dict[ErrorCode, Callable] = {}
+        self.error_callbacks: dict[ErrorCode, Callable] = {}
 
         # Configuration du logging
         self._setup_logging()
@@ -93,7 +93,7 @@ class ErrorHandler:
         self.logger = logging.getLogger("athalia.error_handler")
 
     def handle_error(
-        self, error: Exception, context: Dict[str, Any] = None
+        self, error: Exception, context: dict[str, Any] = None
     ) -> AthaliaError:
         """Gère une erreur et la convertit en AthaliaError."""
         if isinstance(error, AthaliaError):
@@ -165,7 +165,7 @@ class ErrorHandler:
         """Enregistre un callback pour un type d'erreur spécifique."""
         self.error_callbacks[error_code] = callback
 
-    def get_error_summary(self) -> Dict[str, Any]:
+    def get_error_summary(self) -> dict[str, Any]:
         """Retourne un résumé des erreurs."""
         return {
             "total_errors": self.error_count,
@@ -183,7 +183,7 @@ class ErrorHandler:
 
 
 # Instance globale du gestionnaire d'erreurs
-_global_error_handler: Optional[ErrorHandler] = None
+_global_error_handler: ErrorHandler | None = None
 
 
 def get_error_handler() -> ErrorHandler:
@@ -196,7 +196,7 @@ def get_error_handler() -> ErrorHandler:
     return _global_error_handler
 
 
-def handle_error(error: Exception, context: Dict[str, Any] = None) -> AthaliaError:
+def handle_error(error: Exception, context: dict[str, Any] = None) -> AthaliaError:
     """Fonction utilitaire pour gérer une erreur."""
     return get_error_handler().handle_error(error, context)
 
@@ -205,7 +205,7 @@ def raise_athalia_error(
     error_code: ErrorCode,
     message: str = "",
     details: str = "",
-    context: Dict[str, Any] = None,
+    context: dict[str, Any] = None,
 ):
     """Lève une AthaliaError avec gestion automatique."""
     error = AthaliaError(error_code, message, details, context)
@@ -241,7 +241,7 @@ class ErrorContext:
     def __init__(
         self,
         error_code: ErrorCode = ErrorCode.UNKNOWN_ERROR,
-        context: Dict[str, Any] = None,
+        context: dict[str, Any] = None,
     ):
         self.error_code = error_code
         self.context = context or {}

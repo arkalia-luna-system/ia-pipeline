@@ -1,13 +1,12 @@
-# -*- coding: utf-8 -*-
 """
 Module de distillation de réponses IA pour Athalia/Arkalia
 Permet de fusionner plusieurs réponses IA en une solution optimale
 (voting, stacking, bagging, consensus scoring...)
 """
 
-from collections import Counter
 import random
-from typing import Any, Dict, List, Optional
+from collections import Counter
+from typing import Any
 
 
 class ResponseDistiller:
@@ -15,7 +14,7 @@ class ResponseDistiller:
         self.strategy = strategy
 
     def distill(
-        self, responses: List[str], context: Optional[Dict[str, Any]] = None
+        self, responses: list[str], context: dict[str, Any] | None = None
     ) -> str:
         """
                Fusionne plusieurs réponses IA selon la stratégie choisie.
@@ -35,7 +34,7 @@ class ResponseDistiller:
             return self.creative_fusion(responses)
         return responses[0] if responses else ""  # fallback
 
-    def majority_voting(self, responses: List[str]) -> str:
+    def majority_voting(self, responses: list[str]) -> str:
         """Retourne la réponse la plus fréquente (majorité)."""
         if not responses:
             return ""
@@ -43,7 +42,7 @@ class ResponseDistiller:
         return counter.most_common(1)[0][0]
 
     def stacking(
-        self, responses: List[str], context: Optional[Dict[str, Any]] = None
+        self, responses: list[str], context: dict[str, Any] | None = None
     ) -> str:
         """Concatène les parties communes, puis les parties uniques."""
         if not responses:
@@ -53,7 +52,7 @@ class ResponseDistiller:
         unique = set.union(*words) - common
         return " ".join(sorted(common)) + " | " + " ".join(sorted(unique))
 
-    def bagging(self, responses: List[str]) -> str:
+    def bagging(self, responses: list[str]) -> str:
         """Retourne une réponse aléatoire parmi les plus fréquentes (bagging)."""
         if not responses:
             return ""
@@ -62,7 +61,7 @@ class ResponseDistiller:
         top_responses = [resp for resp, count in counter.items() if count == top_count]
         return random.choice(top_responses)
 
-    def consensus_scoring(self, responses: List[str]) -> str:
+    def consensus_scoring(self, responses: list[str]) -> str:
         """Retourne la plus longue sous-chaîne commune ET les parties divergentes."""
         if not responses:
             return ""
@@ -86,7 +85,7 @@ class ResponseDistiller:
             )
         return self.majority_voting(responses)
 
-    def creative_fusion(self, responses: List[str]) -> str:
+    def creative_fusion(self, responses: list[str]) -> str:
         """
         Fusion créative: mélange de fragments, ajout d'un tag IA, et concat unique.
         """
@@ -100,7 +99,7 @@ class ResponseDistiller:
 
 
 def distill_responses(
-    responses: list, strategy: str = "voting", context: Optional[dict] = None
+    responses: list, strategy: str = "voting", context: dict | None = None
 ) -> str:
     """Fonction utilitaire pour distiller une liste de réponses IA."""
     distiller = ResponseDistiller(strategy=strategy)

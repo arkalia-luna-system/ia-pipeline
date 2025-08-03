@@ -6,9 +6,9 @@ et de configuration dans les workflows GitHub Actions
 
 import json
 import sys
-from pathlib import Path
 from datetime import datetime
-from typing import Dict, Any
+from pathlib import Path
+from typing import Any
 
 
 class CIDiagnostic:
@@ -41,7 +41,7 @@ class CIDiagnostic:
         """Affiche un message d'erreur"""
         print(f"❌ {message}")
 
-    def check_workflow_files(self) -> Dict[str, Any]:
+    def check_workflow_files(self) -> dict[str, Any]:
         """Vérifie les fichiers de workflow"""
         self.print_header("VÉRIFICATION DES WORKFLOWS")
 
@@ -63,7 +63,7 @@ class CIDiagnostic:
 
         for wf_file in workflow_files:
             try:
-                with open(wf_file, "r") as f:
+                with open(wf_file) as f:
                     content = f.read()
 
                 file_info = {
@@ -90,7 +90,7 @@ class CIDiagnostic:
 
         return results
 
-    def check_dependencies(self) -> Dict[str, Any]:
+    def check_dependencies(self) -> dict[str, Any]:
         """Vérifie les dépendances"""
         self.print_header("VÉRIFICATION DES DÉPENDANCES")
 
@@ -100,7 +100,7 @@ class CIDiagnostic:
         req_file = self.project_root / "requirements.txt"
         if req_file.exists():
             try:
-                with open(req_file, "r") as f:
+                with open(req_file) as f:
                     lines = f.readlines()
 
                 deps = [
@@ -123,7 +123,7 @@ class CIDiagnostic:
 
         return results
 
-    def check_test_performance(self) -> Dict[str, Any]:
+    def check_test_performance(self) -> dict[str, Any]:
         """Vérifie la performance des tests"""
         self.print_header("VÉRIFICATION PERFORMANCE TESTS")
 
@@ -146,7 +146,7 @@ class CIDiagnostic:
         slow_tests = []
         for test_file in test_files:
             try:
-                with open(test_file, "r") as f:
+                with open(test_file) as f:
                     content = f.read()
 
                 if "@pytest.mark.slow" in content or "time.sleep" in content:
@@ -162,7 +162,7 @@ class CIDiagnostic:
 
         return results
 
-    def check_ci_configuration(self) -> Dict[str, Any]:
+    def check_ci_configuration(self) -> dict[str, Any]:
         """Vérifie la configuration CI"""
         self.print_header("VÉRIFICATION CONFIGURATION CI")
 
@@ -172,7 +172,7 @@ class CIDiagnostic:
         ci_file = self.project_root / ".github" / "workflows" / "ci.yaml"
         if ci_file.exists():
             try:
-                with open(ci_file, "r") as f:
+                with open(ci_file) as f:
                     content = f.read()
 
                 # Vérifications importantes
@@ -211,7 +211,7 @@ class CIDiagnostic:
 
         return results
 
-    def generate_report(self) -> Dict[str, Any]:
+    def generate_report(self) -> dict[str, Any]:
         """Génère le rapport complet"""
         self.print_header("DIAGNOSTIC CI/CD ATHALIA")
 
@@ -254,7 +254,7 @@ class CIDiagnostic:
 
         return report
 
-    def print_summary(self, report: Dict[str, Any]):
+    def print_summary(self, report: dict[str, Any]):
         """Affiche le résumé"""
         self.print_header("RÉSUMÉ DU DIAGNOSTIC")
 
@@ -279,7 +279,7 @@ class CIDiagnostic:
             self.print_success("✅ Diagnostic excellent - configuration CI optimale")
             return True
 
-    def save_report(self, report: Dict[str, Any], filename: str = None):
+    def save_report(self, report: dict[str, Any], filename: str = None):
         """Sauvegarde le rapport"""
         if filename is None:
             filename = f"ci_diagnostic_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"

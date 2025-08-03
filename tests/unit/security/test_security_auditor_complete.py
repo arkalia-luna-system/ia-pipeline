@@ -5,10 +5,10 @@ Tests: 32 tests unitaires et d'intégration
 """
 
 import os
-from pathlib import Path
 import re
 import subprocess
 import tempfile
+from pathlib import Path
 from unittest.mock import Mock, patch
 
 from athalia_core.security_auditor import SecurityAuditor
@@ -312,7 +312,7 @@ def dangerous_function():
             report_file = self.auditor.project_path / "security_audit_report.json"
             assert report_file.exists()
 
-            with open(report_file, "r") as f:
+            with open(report_file) as f:
                 content = f.read()
                 assert "security" in content.lower()
 

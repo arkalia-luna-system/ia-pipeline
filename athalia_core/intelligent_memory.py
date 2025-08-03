@@ -10,16 +10,16 @@ Système de mémoire qui:
 - Améliore la qualité du code continuellement
 """
 
-from dataclasses import dataclass
-from datetime import datetime
 import difflib
 import hashlib
 import json
 import logging
-from pathlib import Path
 import re
 import sqlite3
-from typing import Any, Dict, List, Optional
+from dataclasses import dataclass
+from datetime import datetime
+from pathlib import Path
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -34,9 +34,9 @@ class LearningEvent:
     location: str
     timestamp: datetime
     severity: str  # 'low', 'medium', 'high', 'critical'
-    resolution: Optional[str] = None
+    resolution: str | None = None
     success: bool = True
-    context: Dict[str, Any] = None
+    context: dict[str, Any] = None
 
 
 @dataclass
@@ -59,7 +59,7 @@ class CorrectionSuggestion:
     suggested_code: str
     reason: str
     confidence: float
-    based_on_previous_corrections: List[str]
+    based_on_previous_corrections: list[str]
 
 
 class IntelligentMemory:
@@ -180,7 +180,7 @@ class IntelligentMemory:
         code_snippet: str,
         location: str,
         severity: str = "medium",
-        context: Dict[str, Any] = None,
+        context: dict[str, Any] = None,
     ) -> str:
         """Apprendre d'une erreur"""
         event_id = self._record_learning_event(
@@ -212,7 +212,7 @@ class IntelligentMemory:
         reason: str,
         location: str,
         success: bool = True,
-        context: Dict[str, Any] = None,
+        context: dict[str, Any] = None,
     ) -> str:
         """Apprendre d'une correction"""
         event_id = self._record_learning_event(
@@ -242,10 +242,10 @@ class IntelligentMemory:
 
     def learn_from_duplicate(
         self,
-        duplicate_items: List[str],
-        locations: List[str],
+        duplicate_items: list[str],
+        locations: list[str],
         similarity_score: float,
-        context: Dict[str, Any] = None,
+        context: dict[str, Any] = None,
     ) -> str:
         """Apprendre d'un doublon détecté"""
         event_id = self._record_learning_event(
@@ -267,8 +267,8 @@ class IntelligentMemory:
         return event_id
 
     def predict_issues(
-        self, code_snippet: str, context: Dict[str, Any] = None
-    ) -> List[Prediction]:
+        self, code_snippet: str, context: dict[str, Any] = None
+    ) -> list[Prediction]:
         """Prédire les problèmes potentiels"""
         predictions = []
 
@@ -307,7 +307,7 @@ class IntelligentMemory:
 
     def suggest_corrections(
         self, problematic_code: str, issue_description: str
-    ) -> List[CorrectionSuggestion]:
+    ) -> list[CorrectionSuggestion]:
         """Suggérer des corrections basées sur l'apprentissage"""
         suggestions = []
 
@@ -347,7 +347,7 @@ class IntelligentMemory:
 
         return suggestions
 
-    def get_learning_insights(self) -> Dict[str, Any]:
+    def get_learning_insights(self) -> dict[str, Any]:
         """Obtenir des insights d'apprentissage"""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
@@ -397,7 +397,7 @@ class IntelligentMemory:
         severity: str,
         success: bool = True,
         resolution: str = None,
-        context: Dict[str, Any] = None,
+        context: dict[str, Any] = None,
     ) -> str:
         """Enregistrer un événement d'apprentissage"""
         pattern_hash = self._analyze_code_pattern(code_snippet)
@@ -570,7 +570,7 @@ class IntelligentMemory:
             )
             conn.commit()
 
-    def _find_similar_patterns(self, pattern_hash: str) -> List[Dict[str, Any]]:
+    def _find_similar_patterns(self, pattern_hash: str) -> list[dict[str, Any]]:
         """Trouver des patterns similaires"""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
@@ -597,7 +597,7 @@ class IntelligentMemory:
                 for row in rows
             ]
 
-    def _check_antipatterns(self, code_snippet: str) -> List[Prediction]:
+    def _check_antipatterns(self, code_snippet: str) -> list[Prediction]:
         """Vérifier les anti-patterns connus"""
         predictions = []
 
@@ -644,7 +644,7 @@ class IntelligentMemory:
 
         return predictions
 
-    def _check_potential_duplicates(self, code_snippet: str) -> List[Prediction]:
+    def _check_potential_duplicates(self, code_snippet: str) -> list[Prediction]:
         """Vérifier les doublons potentiels"""
         predictions = []
 

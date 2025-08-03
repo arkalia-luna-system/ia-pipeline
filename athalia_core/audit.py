@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Fichier de compatibilité pour laudit
 Redirige vers intelligent_auditor.py pour maintenir la compatibilité

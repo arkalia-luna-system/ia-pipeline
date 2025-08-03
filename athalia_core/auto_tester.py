@@ -2,10 +2,10 @@ import argparse
 import ast
 import logging
 import os
-from pathlib import Path
 import re
 import subprocess
-from typing import Any, Dict, List
+from pathlib import Path
+from typing import Any
 
 # Import du validateur de sécurité
 try:
@@ -32,13 +32,13 @@ class AutoTester:
         self.test_results = {}
         self.generated_tests = []
 
-    def run(self) -> Dict[str, Any]:
+    def run(self) -> dict[str, Any]:
         """Méthode run() pour lorchestrateur - exécute les tests"""
         if not self.project_path:
             raise ValueError("project_path doit être défini")
         return self.generate_tests(str(self.project_path))
 
-    def generate_tests(self, project_path: str) -> Dict[str, Any]:
+    def generate_tests(self, project_path: str) -> dict[str, Any]:
         """Génération complète de tests pour un projet"""
         self.project_path = Path(project_path)
 
@@ -66,7 +66,7 @@ class AutoTester:
             "files_created": self._get_created_files(),
         }
 
-    def _analyze_modules(self) -> List[Dict[str, Any]]:
+    def _analyze_modules(self) -> list[dict[str, Any]]:
         """Analyse les modules Python du projet"""
         modules = []
 
@@ -77,7 +77,7 @@ class AutoTester:
 
             if py_file.name != "__init__.py" and "test" not in py_file.name.lower():
                 try:
-                    with open(py_file, "r", encoding="utf-8") as file_handle:
+                    with open(py_file, encoding="utf-8") as file_handle:
                         content = file_handle.read()
 
                     tree = ast.parse(content)
@@ -105,7 +105,7 @@ class AutoTester:
                             for decorator in (item.decorator_list or [])
                         ):
                             module_info["functions"].append(item.name)
-                        elif isinstance(item, (ast.Import, ast.ImportFrom)):
+                        elif isinstance(item, ast.Import | ast.ImportFrom):
                             if isinstance(item, ast.Import):
                                 for alias in item.names:
                                     module_info["imports"].append(alias.name)
@@ -120,7 +120,7 @@ class AutoTester:
 
         return modules
 
-    def _generate_unit_tests(self, modules: List[Dict[str, Any]]) -> List[str]:
+    def _generate_unit_tests(self, modules: list[dict[str, Any]]) -> list[str]:
         """Génère les tests f"""
         unit_tests = []
 
@@ -131,7 +131,7 @@ class AutoTester:
 
         return unit_tests
 
-    def _generate_module_unit_tests(self, module: Dict[str, Any]) -> str:
+    def _generate_module_unit_tests(self, module: dict[str, Any]) -> str:
         """Génère les tests unitaires pour un module"""
         test_content = """#!/usr/bin/env python3"
 import unittest
@@ -227,7 +227,7 @@ if __name__ == "__main__":
 
         return test_content
 
-    def _generate_integration_tests(self, modules: List[Dict[str, Any]]) -> List[str]:
+    def _generate_integration_tests(self, modules: list[dict[str, Any]]) -> list[str]:
         """Génère les tests dintégration"""
         integration_tests = []
 
@@ -290,7 +290,7 @@ if __name__ == '__main__':
 
         return integration_tests
 
-    def _generate_performance_tests(self, modules: List[Dict[str, Any]]) -> List[str]:
+    def _generate_performance_tests(self, modules: list[dict[str, Any]]) -> list[str]:
         """Génère les tests de performance"""
         performance_tests = []
 
@@ -381,9 +381,9 @@ if __name__ == '__main__':
 
     def _save_tests(
         self,
-        unit_tests: List[str],
-        integration_tests: List[str],
-        performance_tests: List[str],
+        unit_tests: list[str],
+        integration_tests: list[str],
+        performance_tests: list[str],
     ):
         """Sauvegarde les tests f"""
         tests_dir = self.project_path / "tests"
@@ -501,7 +501,7 @@ echo "✅ Tests terminés !"
             except Exception as e:
                 logger.warning(f"Impossible de supprimer {test_file}: {e}")
 
-    def _run_tests(self) -> Dict[str, Any]:
+    def _run_tests(self) -> dict[str, Any]:
         """Exécute les tests générés et collecte les résultats"""
         results = {
             "unit_tests": {"passed": 0, "failed": 0, "errors": []},
@@ -596,7 +596,7 @@ echo "✅ Tests terminés !"
 
         return results
 
-    def _get_created_files(self) -> List[str]:
+    def _get_created_files(self) -> list[str]:
         """Retourne la liste des fichiers créés"""
         files = self.generated_tests
         return [

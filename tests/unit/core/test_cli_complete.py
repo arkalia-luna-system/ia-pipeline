@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Tests complets pour athalia_core.cli
 Couverture maximale avec tests professionnels
 """
 
 import os
-from pathlib import Path
 import shutil
 import sys
 import tempfile
+from pathlib import Path
 from unittest.mock import Mock, patch
 
 import click
@@ -364,7 +363,7 @@ class TestCLIComplete:
 
         # Vérifier le contenu du rapport
         try:
-            with open(report_path, "r") as f:
+            with open(report_path) as f:
                 report_content = yaml.safe_load(f)
                 if report_content is not None:
                     assert "score" in report_content

@@ -6,13 +6,13 @@ Module d'analyse d'architecture pour comprendre la structure
 du projet, les dépendances et les relations entre modules.
 """
 
-from dataclasses import dataclass
-from datetime import datetime
 import json
 import logging
-from pathlib import Path
 import sqlite3
-from typing import Any, Dict, List, Optional
+from dataclasses import dataclass
+from datetime import datetime
+from pathlib import Path
+from typing import Any
 
 import yaml
 
@@ -29,12 +29,12 @@ class ModuleAnalysis:
     path: str
     type: str
     size: int
-    functions: List[str]
-    classes: List[str]
-    imports: List[str]
-    dependencies: List[str]
+    functions: list[str]
+    classes: list[str]
+    imports: list[str]
+    dependencies: list[str]
     complexity: float
-    issues: List[str]
+    issues: list[str]
     performance_score: float
     last_modified: datetime
 
@@ -54,11 +54,11 @@ class PerformanceIssue:
 class ArchitectureMapping:
     """Mapping de l'architecture complète"""
 
-    modules: Dict[str, ModuleAnalysis]
-    dependencies: Dict[str, List[str]]
-    duplicates: List[Any]  # DuplicateAnalysis
-    performance_issues: List[PerformanceIssue]
-    recommendations: List[str]
+    modules: dict[str, ModuleAnalysis]
+    dependencies: dict[str, list[str]]
+    duplicates: list[Any]  # DuplicateAnalysis
+    performance_issues: list[PerformanceIssue]
+    recommendations: list[str]
 
 
 class ArchitectureAnalyzer:
@@ -142,10 +142,10 @@ class ArchitectureAnalyzer:
 
             conn.commit()
 
-    def _load_config(self) -> Dict[str, Any]:
+    def _load_config(self) -> dict[str, Any]:
         """Charger la configuration"""
         if self.config_path.exists():
-            with open(self.config_path, "r", encoding="utf-8") as f:
+            with open(self.config_path, encoding="utf-8") as f:
                 return yaml.safe_load(f)
         return {}
 
@@ -184,7 +184,7 @@ class ArchitectureAnalyzer:
 
         return architecture
 
-    def _analyze_all_modules(self) -> Dict[str, ModuleAnalysis]:
+    def _analyze_all_modules(self) -> dict[str, ModuleAnalysis]:
         """Analyser tous les modules du projet"""
         modules = {}
 
@@ -221,7 +221,7 @@ class ArchitectureAnalyzer:
 
     def _analyze_single_module(
         self, file_path: Path, module_type: str
-    ) -> Optional[ModuleAnalysis]:
+    ) -> ModuleAnalysis | None:
         """Analyser un module individuel"""
         try:
             # Analyser le fichier avec l'analyseur AST
@@ -263,7 +263,7 @@ class ArchitectureAnalyzer:
             logger.error(f"Erreur lors de l'analyse du module {file_path}: {e}")
             return None
 
-    def _extract_dependencies(self, imports: List[str], module_type: str) -> List[str]:
+    def _extract_dependencies(self, imports: list[str], module_type: str) -> list[str]:
         """Extraire les dépendances d'un module"""
         dependencies = []
 
@@ -288,7 +288,7 @@ class ArchitectureAnalyzer:
 
         return dependencies
 
-    def _detect_module_issues(self, file_analysis: FileAnalysis) -> List[str]:
+    def _detect_module_issues(self, file_analysis: FileAnalysis) -> list[str]:
         """Détecter les problèmes dans un module"""
         issues = []
 
@@ -336,15 +336,15 @@ class ArchitectureAnalyzer:
 
         return max(0.0, score)
 
-    def _detect_duplicates(self, modules: Dict[str, ModuleAnalysis]) -> List[Any]:
+    def _detect_duplicates(self, modules: dict[str, ModuleAnalysis]) -> list[Any]:
         """Détecter les doublons entre modules"""
         # Cette fonction sera implémentée en utilisant le PatternDetector
         # Pour l'instant, retourner une liste vide
         return []
 
     def _analyze_performance(
-        self, modules: Dict[str, ModuleAnalysis]
-    ) -> List[PerformanceIssue]:
+        self, modules: dict[str, ModuleAnalysis]
+    ) -> list[PerformanceIssue]:
         """Analyser les problèmes de performance"""
         issues = []
 
@@ -379,8 +379,8 @@ class ArchitectureAnalyzer:
         return issues
 
     def _build_dependency_graph(
-        self, modules: Dict[str, ModuleAnalysis]
-    ) -> Dict[str, List[str]]:
+        self, modules: dict[str, ModuleAnalysis]
+    ) -> dict[str, list[str]]:
         """Construire le graphe de dépendances"""
         dependencies = {}
 
@@ -391,10 +391,10 @@ class ArchitectureAnalyzer:
 
     def _generate_recommendations(
         self,
-        modules: Dict[str, ModuleAnalysis],
-        duplicates: List[Any],
-        performance_issues: List[PerformanceIssue],
-    ) -> List[str]:
+        modules: dict[str, ModuleAnalysis],
+        duplicates: list[Any],
+        performance_issues: list[PerformanceIssue],
+    ) -> list[str]:
         """Générer des recommandations d'architecture"""
         recommendations = []
 
@@ -433,7 +433,7 @@ class ArchitectureAnalyzer:
             cursor = conn.cursor()
 
             # Sauvegarder les modules
-            for module_name, module in architecture.modules.items():
+            for _module_name, module in architecture.modules.items():
                 cursor.execute(
                     """
                     INSERT OR REPLACE INTO modules
@@ -478,7 +478,7 @@ class ArchitectureAnalyzer:
 
             conn.commit()
 
-    def get_optimization_plan(self) -> Dict[str, Any]:
+    def get_optimization_plan(self) -> dict[str, Any]:
         """Obtenir un plan d'optimisation basé sur l'analyse"""
         # Charger les données d'analyse
         with sqlite3.connect(self.db_path) as conn:
@@ -511,7 +511,7 @@ class ArchitectureAnalyzer:
             ),
         }
 
-    def generate_intelligent_coordination(self) -> Dict[str, Any]:
+    def generate_intelligent_coordination(self) -> dict[str, Any]:
         """Générer des recommandations de coordination intelligente"""
         optimization_plan = self.get_optimization_plan()
 

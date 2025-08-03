@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Script de Validation Documentation - Athalia
 Vérifie la cohérence entre la documentation et le code réel
@@ -9,10 +8,9 @@ import argparse
 import ast
 import json
 import logging
-from pathlib import Path
 import re
 import sys
-from typing import Dict, List
+from pathlib import Path
 
 # Configuration du logging
 logging.basicConfig(
@@ -42,7 +40,7 @@ class DocumentationValidator:
             "score": 0,
         }
 
-    def validate_all(self) -> Dict:
+    def validate_all(self) -> dict:
         """Validation complète de la documentation"""
         logger.info("🔍 Début de la validation complète de la documentation...")
 
@@ -94,7 +92,7 @@ class DocumentationValidator:
     def _analyze_python_file(self, file_path: Path):
         """Analyser un fichier Python pour extraire les fonctions et classes"""
         try:
-            with open(file_path, "r", encoding="utf-8") as f:
+            with open(file_path, encoding="utf-8") as f:
                 content = f.read()
 
             # Parser le code Python
@@ -165,7 +163,7 @@ class DocumentationValidator:
     def _analyze_markdown_file(self, file_path: Path):
         """Analyser un fichier Markdown"""
         try:
-            with open(file_path, "r", encoding="utf-8") as f:
+            with open(file_path, encoding="utf-8") as f:
                 content = f.read()
 
             # Extraire les commandes documentées
@@ -291,7 +289,7 @@ class DocumentationValidator:
         else:
             self.validation_results["score"] = 0
 
-    def _generate_report(self) -> Dict:
+    def _generate_report(self) -> dict:
         """Générer le rapport de validation"""
         logger.info("📊 Génération du rapport de validation...")
 
@@ -310,7 +308,7 @@ class DocumentationValidator:
 
         return report
 
-    def _generate_recommendations(self) -> List[str]:
+    def _generate_recommendations(self) -> list[str]:
         """Générer des recommandations d'amélioration"""
         recommendations = []
 

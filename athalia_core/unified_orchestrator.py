@@ -4,11 +4,11 @@ Orchestrateur unifié pour Athalia
 Coordination centralisée de tous les modules
 """
 
-from datetime import datetime
 import json
 import logging
+from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any
 
 # Imports des modules Athalia
 from .ai_robust import RobustAI
@@ -16,7 +16,7 @@ from .auto_cicd import AutoCICD
 from .auto_cleaner import AutoCleaner
 from .auto_documenter import AutoDocumenter
 from .auto_tester import AutoTester
-from .cache_manager import get_cached_result, cache_result, get_cache_stats
+from .cache_manager import cache_result, get_cache_stats, get_cached_result
 from .code_linter import CodeLinter
 from .correction_optimizer import CorrectionOptimizer
 from .generation import generate_project
@@ -35,12 +35,12 @@ except ImportError:
 
 # Imports des nouveaux modules IA et distillation
 try:
-    from .agents.unified_agent import UnifiedAgent
-    from .agents.context_prompt import ContextPromptAgent
     from .agents.audit_agent import AuditAgent
+    from .agents.context_prompt import ContextPromptAgent
+    from .agents.unified_agent import UnifiedAgent
+    from .distillation.code_genetics import CodeGenetics
     from .distillation.quality_scorer import QualityScorer
     from .distillation.response_distiller import ResponseDistiller
-    from .distillation.code_genetics import CodeGenetics
 
     AI_MODULES_AVAILABLE = True
 except ImportError:
@@ -50,11 +50,11 @@ except ImportError:
 # Import des modules robotiques
 try:
     from athalia_core.robotics import (
-        ReachyAuditor,
-        ROS2Validator,
         DockerRoboticsManager,
-        RustAnalyzer,
+        ReachyAuditor,
         RoboticsCI,
+        ROS2Validator,
+        RustAnalyzer,
     )
 
     ROBOTICS_MODULES_AVAILABLE = True
@@ -213,7 +213,7 @@ class UnifiedOrchestrator:
             )
             logger.error(f"❌ Erreur initialisation: {e}")
 
-    def run_full_workflow(self, blueprint: Dict[str, Any]) -> Dict[str, Any]:
+    def run_full_workflow(self, blueprint: dict[str, Any]) -> dict[str, Any]:
         """Exécute le workflow complet"""
         logger.info("🚀 Démarrage du workflow unifié")
 
@@ -284,7 +284,7 @@ class UnifiedOrchestrator:
 
         return self.workflow_results
 
-    def _step_intelligent_classification(self, blueprint: Dict[str, Any]):
+    def _step_intelligent_classification(self, blueprint: dict[str, Any]):
         """Étape 1: Classification intelligente du projet"""
         logger.info("🧠 Classification intelligente du projet...")
 
@@ -298,9 +298,9 @@ class UnifiedOrchestrator:
                 Analyse ce projet et détermine son type :
                 Nom: {project_name}
                 Description: {description}
-                
+
                 Types possibles: api, web, game, artistic, robotics, data, mobile, iot, generic
-                
+
                 Retourne uniquement le type de projet.
                 """
 
@@ -326,7 +326,7 @@ class UnifiedOrchestrator:
         except Exception as e:
             self.workflow_results["warnings"].append(f"Erreur classification: {e}")
 
-    def _step_generate_project(self, blueprint: Dict[str, Any]):
+    def _step_generate_project(self, blueprint: dict[str, Any]):
         """Étape 2: Génération du projet"""
         logger.info("📁 Génération du projet...")
 
@@ -340,7 +340,7 @@ class UnifiedOrchestrator:
             self.workflow_results["errors"].append(f"Erreur génération projet: {e}")
             raise
 
-    def _step_ai_enhancement(self, blueprint: Dict[str, Any]):
+    def _step_ai_enhancement(self, blueprint: dict[str, Any]):
         """Étape 3: Amélioration IA intelligente"""
         logger.info("🤖 Amélioration IA intelligente...")
 
@@ -351,26 +351,26 @@ class UnifiedOrchestrator:
                     main_file = Path(project_path) / "src" / "main.py"
                     if main_file.exists():
                         # Lire le code généré
-                        with open(main_file, "r", encoding="utf-8") as f:
+                        with open(main_file, encoding="utf-8") as f:
                             original_code = f.read()
 
                         # Améliorer le code avec l'agent IA
                         enhancement_prompt = f"""
                         Améliore ce code Python pour le rendre ultra-avancé :
-                        
+
                         Type de projet: {blueprint.get('project_type', 'generic')}
                         Description: {blueprint.get('description', '')}
-                        
+
                         Code actuel:
                         {original_code}
-                        
+
                         Améliore ce code avec :
                         1. Fonctionnalités avancées spécifiques au type de projet
                         2. Architecture moderne et scalable
                         3. Gestion d'erreurs robuste
                         4. Performance optimisée
                         5. Code de production professionnel
-                        
+
                         Retourne UNIQUEMENT le code Python amélioré.
                         """
 
@@ -560,7 +560,7 @@ class UnifiedOrchestrator:
         except Exception as e:
             self.workflow_results["warnings"].append(f"Erreur nettoyage: {e}")
 
-    def _step_robotics_validation(self, blueprint: Dict[str, Any]):
+    def _step_robotics_validation(self, blueprint: dict[str, Any]):
         """Étape 11: Validation robotique spécialisée"""
         logger.info("🤖 Validation robotique...")
         try:
@@ -606,7 +606,7 @@ class UnifiedOrchestrator:
             logger.warning(f"⚠️ Erreur validation robotique: {e}")
             self.workflow_results["errors"].append(f"Erreur validation robotique: {e}")
 
-    def _step_artistic_templates(self, blueprint: Dict[str, Any]):
+    def _step_artistic_templates(self, blueprint: dict[str, Any]):
         """Étape 12: Application des templates artistiques"""
         logger.info("🎨 Application templates artistiques...")
         try:
@@ -679,7 +679,7 @@ class UnifiedOrchestrator:
             logger.warning(f"⚠️ Erreur templates artistiques: {e}")
             self.workflow_results["errors"].append(f"Erreur templates artistiques: {e}")
 
-    def _step_advanced_classification(self, blueprint: Dict[str, Any]):
+    def _step_advanced_classification(self, blueprint: dict[str, Any]):
         """Étape 13: Classification avancée du projet"""
         logger.info("🧠 Classification avancée...")
         try:
@@ -780,8 +780,8 @@ class UnifiedOrchestrator:
 
 
 def run_unified_workflow(
-    blueprint: Dict[str, Any], project_path: str = "."
-) -> Dict[str, Any]:
+    blueprint: dict[str, Any], project_path: str = "."
+) -> dict[str, Any]:
     """Fonction utilitaire pour exécuter le workflow unifié"""
     orchestrator = UnifiedOrchestrator(project_path)
     orchestrator.initialize_modules()

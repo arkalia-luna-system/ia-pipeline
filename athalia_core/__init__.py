@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Athalia Dev Setup - Système d'industrialisation et d'intelligence pour projets IA
 Version 2.0.0

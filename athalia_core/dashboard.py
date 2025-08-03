@@ -4,11 +4,11 @@ Module dashboard pour Athalia
 Interface de visualisation et monitoring
 """
 
-from datetime import datetime
 import json
 import logging
+from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 import yaml
 
@@ -23,9 +23,7 @@ class Dashboard:
         self.metrics = {}
         self.config = self.load_dashboard_config()
 
-    def load_dashboard_config(
-        self, config_path: Optional[str] = None
-    ) -> Dict[str, Any]:
+    def load_dashboard_config(self, config_path: str | None = None) -> dict[str, Any]:
         """Charge la configuration du dashboard"""
         default_config = {
             "theme": "light",
@@ -44,7 +42,7 @@ class Dashboard:
 
         if config_path:
             try:
-                with open(config_path, "r", encoding="utf-8") as f:
+                with open(config_path, encoding="utf-8") as f:
                     user_config = yaml.safe_load(f)
                     default_config.update(user_config)
             except Exception as e:
@@ -54,7 +52,7 @@ class Dashboard:
 
         return default_config
 
-    def generate_metrics_widget(self) -> Dict[str, Any]:
+    def generate_metrics_widget(self) -> dict[str, Any]:
         """Génère le widget métriques"""
         widget = {
             "type": "metrics",
@@ -83,7 +81,7 @@ class Dashboard:
 
         return widget
 
-    def generate_charts_widget(self, chart_data: Dict[str, Any]) -> Dict[str, Any]:
+    def generate_charts_widget(self, chart_data: dict[str, Any]) -> dict[str, Any]:
         """Génère le widget graphiques"""
         widget = {
             "type": "charts",
@@ -95,7 +93,7 @@ class Dashboard:
 
         return widget
 
-    def generate_alerts_widget(self, alerts: List[Dict[str, Any]]) -> Dict[str, Any]:
+    def generate_alerts_widget(self, alerts: list[dict[str, Any]]) -> dict[str, Any]:
         """Génère le widget alertes"""
         widget = {
             "type": "alerts",
@@ -113,8 +111,8 @@ class Dashboard:
         return widget
 
     def generate_performance_widget(
-        self, performance_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+        self, performance_data: dict[str, Any]
+    ) -> dict[str, Any]:
         """Génère le widget performance"""
         widget = {
             "type": "performance",
@@ -134,7 +132,7 @@ class Dashboard:
 
         return widget
 
-    def generate_security_widget(self, security_data: Dict[str, Any]) -> Dict[str, Any]:
+    def generate_security_widget(self, security_data: dict[str, Any]) -> dict[str, Any]:
         """Génère le widget sécurité"""
         widget = {
             "type": "security",
@@ -154,8 +152,8 @@ class Dashboard:
         return widget
 
     def generate_test_coverage_widget(
-        self, coverage_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+        self, coverage_data: dict[str, Any]
+    ) -> dict[str, Any]:
         """Génère le widget couverture de tests"""
         widget = {
             "type": "test_coverage",
@@ -175,8 +173,8 @@ class Dashboard:
         return widget
 
     def generate_dependency_widget(
-        self, dependency_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+        self, dependency_data: dict[str, Any]
+    ) -> dict[str, Any]:
         """Génère le widget dépendances"""
         widget = {
             "type": "dependencies",
@@ -197,7 +195,7 @@ class Dashboard:
 
         return widget
 
-    def generate_documentation_widget(self, doc_data: Dict[str, Any]) -> Dict[str, Any]:
+    def generate_documentation_widget(self, doc_data: dict[str, Any]) -> dict[str, Any]:
         """Génère le widget documentation"""
         widget = {
             "type": "documentation",
@@ -216,7 +214,7 @@ class Dashboard:
 
         return widget
 
-    def generate_git_widget(self, git_data: Dict[str, Any]) -> Dict[str, Any]:
+    def generate_git_widget(self, git_data: dict[str, Any]) -> dict[str, Any]:
         """Génère le widget Git"""
         widget = {
             "type": "git",
@@ -236,8 +234,8 @@ class Dashboard:
         return widget
 
     def generate_dashboard_layout(
-        self, widgets: List[Dict[str, Any]], layout_type: str = "grid"
-    ) -> Dict[str, Any]:
+        self, widgets: list[dict[str, Any]], layout_type: str = "grid"
+    ) -> dict[str, Any]:
         """Génère la mise en page du dashboard"""
         layout = {
             "layout_type": layout_type,
@@ -268,7 +266,7 @@ class Dashboard:
 
         return layout
 
-    def generate_dashboard_html(self, dashboard_data: Dict[str, Any]) -> str:
+    def generate_dashboard_html(self, dashboard_data: dict[str, Any]) -> str:
         """Génère le HTML du dashboard"""
         theme = dashboard_data.get("theme", "light")
         widgets = dashboard_data.get("widgets", [])
@@ -448,7 +446,7 @@ body {
 }
 """
 
-    def generate_dashboard_js(self, config: Dict[str, Any]) -> str:
+    def generate_dashboard_js(self, config: dict[str, Any]) -> str:
         """Génère le JavaScript du dashboard"""
         refresh_interval = config.get("refresh_interval", 30)
 
@@ -514,7 +512,7 @@ document.addEventListener('DOMContentLoaded', function() {{
             logger.error(f"Erreur sauvegarde dashboard: {e}")
             return False
 
-    def generate_dashboard_report(self) -> Dict[str, Any]:
+    def generate_dashboard_report(self) -> dict[str, Any]:
         """Génère un rapport complet du dashboard"""
         # Préparer les données du dashboard
         dashboard_data = {
@@ -571,7 +569,7 @@ def generate_dashboard_html(project_path: str = ".") -> str:
     return report["html_content"]
 
 
-def create_dashboard_report(project_path: str = ".") -> Dict[str, Any]:
+def create_dashboard_report(project_path: str = ".") -> dict[str, Any]:
     """Fonction utilitaire pour créer un rapport de dashboard"""
     dashboard = Dashboard(project_path)
     return dashboard.generate_dashboard_report()

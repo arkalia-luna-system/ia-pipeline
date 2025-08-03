@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 import os
 
 from athalia_core import generation
@@ -45,7 +44,7 @@ def test_generate_project_dry_run(tmp_path):
     assert "[DRY-RUN]" in content
     # Aucun fichier artefact ne doit avoir été créé (sauf le rapport)
     files = list(outdir.iterdir())
-    assert set(file.name for file in files) == {"dry_run_report.txt"}
+    assert {file.name for file in files} == {"dry_run_report.txt"}
 
 
 def test_merge_or_suffix_file(tmp_path):

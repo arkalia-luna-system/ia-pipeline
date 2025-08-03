@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Script d'optimisation des performances des tests
 Version: 1.0
@@ -9,12 +8,11 @@ Auteur: Athalia Team
 # Standard library imports
 import argparse
 import os
-from pathlib import Path
 import subprocess
 import sys
 import tempfile
 import time
-from typing import Dict, List
+from pathlib import Path
 
 # Import sécurisé pour la validation des commandes
 try:
@@ -42,7 +40,7 @@ class TestPerformanceOptimizer:
         self.slow_tests = []
         self.fast_tests = []
 
-    def analyze_test_performance(self) -> Dict[str, float]:
+    def analyze_test_performance(self) -> dict[str, float]:
         """Analyse les performances de tous les tests
 
         Returns:
@@ -114,7 +112,7 @@ class TestPerformanceOptimizer:
             pass
         return 0.0
 
-    def identify_slow_tests(self, threshold: float = 1.0) -> List[str]:
+    def identify_slow_tests(self, threshold: float = 1.0) -> list[str]:
         """Identifie les tests lents
 
         Args:
@@ -130,7 +128,7 @@ class TestPerformanceOptimizer:
         print(f"🐌 {len(self.slow_tests)} tests lents identifiés (> {threshold}s)")
         return self.slow_tests
 
-    def identify_fast_tests(self, threshold: float = 0.1) -> List[str]:
+    def identify_fast_tests(self, threshold: float = 0.1) -> list[str]:
         """Identifie les tests rapides
 
         Args:

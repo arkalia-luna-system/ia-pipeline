@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Module IA robuste pour Athalia
 Gestion des modèles IA avec fallback intelligent et gestion d'erreurs avancée
 """
 
-from enum import Enum
 import logging
 import subprocess
-from typing import Any, Dict, List, Optional
+from enum import Enum
+from typing import Any
 
 # Import du validateur de sécurité
 try:
@@ -60,7 +59,7 @@ class RobustAI:
             "modèles disponibles"
         )
 
-    def generate_blueprint(self, idea: str, **kwargs) -> Dict[str, Any]:
+    def generate_blueprint(self, idea: str, **kwargs) -> dict[str, Any]:
         """Génère un blueprint de projet à partir d'une idée."""
         try:
             # Analyse intelligente de l'idée
@@ -157,7 +156,7 @@ class RobustAI:
 
         return "projet_ia"
 
-    def _get_dependencies_for_type(self, project_type: str) -> List[str]:
+    def _get_dependencies_for_type(self, project_type: str) -> list[str]:
         """Retourne les dépendances appropriées selon le type de projet."""
         base_deps = ["numpy", "pandas"]
 
@@ -182,7 +181,7 @@ class RobustAI:
 
         return base_deps
 
-    def _get_structure_for_type(self, project_type: str) -> List[str]:
+    def _get_structure_for_type(self, project_type: str) -> list[str]:
         """Retourne la structure appropriée selon le type de projet."""
         base_structure = ["src/", "tests/", "docs/", "README.md"]
 
@@ -195,7 +194,7 @@ class RobustAI:
 
         return base_structure
 
-    def _generate_fallback_blueprint(self, idea: str) -> Dict[str, Any]:
+    def _generate_fallback_blueprint(self, idea: str) -> dict[str, Any]:
         """Génère un blueprint de fallback en cas d'erreur."""
         return {
             "project_name": "projet_ia",
@@ -214,7 +213,7 @@ class RobustAI:
 
     def review_code(
         self, code: str, filename: str, project_type: str, current_score: int
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """Analyse et révise du code."""
         try:
             # Analyse de base du code
@@ -237,7 +236,7 @@ class RobustAI:
             logger.error(f"Erreur lors de la révision du code: {e}")
             return {"error": str(e), "score": current_score}
 
-    def _analyze_code_quality(self, code: str) -> List[Dict[str, Any]]:
+    def _analyze_code_quality(self, code: str) -> list[dict[str, Any]]:
         """Analyse la qualité du code."""
         issues = []
 
@@ -271,7 +270,7 @@ class RobustAI:
 
         return issues
 
-    def _generate_code_suggestions(self, code: str, project_type: str) -> List[str]:
+    def _generate_code_suggestions(self, code: str, project_type: str) -> list[str]:
         """Génère des suggestions d'amélioration du code."""
         suggestions = []
 
@@ -287,14 +286,14 @@ class RobustAI:
         return suggestions
 
     def _calculate_improved_score(
-        self, current_score: int, issues: List[Dict[str, Any]]
+        self, current_score: int, issues: list[dict[str, Any]]
     ) -> int:
         """Calcule le score amélioré basé sur les problèmes identifiés."""
         penalty = len([issue for issue in issues if issue["type"] == "warning"]) * 5
         return max(0, current_score - penalty)
 
     def generate_documentation(
-        self, project_name: str, project_type: str, modules: List[str]
+        self, project_name: str, project_type: str, modules: list[str]
     ) -> str:
         """Génère de la documentation pour le projet."""
         try:
@@ -311,7 +310,7 @@ class RobustAI:
                 "Documentation générée automatiquement."
             )
 
-    def classify_project_complexity(self, codebase_path: str) -> Dict[str, Any]:
+    def classify_project_complexity(self, codebase_path: str) -> dict[str, Any]:
         """Classifie la complexité d'un projet."""
         try:
             # Analyse basique de la complexité
@@ -334,7 +333,7 @@ class RobustAI:
             logger.error(f"Erreur lors de la génération du prompt: {e}")
             return f"Prompt pour {context}"
 
-    def _detect_available_models(self) -> List[AIModel]:
+    def _detect_available_models(self) -> list[AIModel]:
         """Détecte les modèles IA disponibles."""
         available_models = [AIModel.MOCK]  # Toujours disponible
 
@@ -358,7 +357,7 @@ class RobustAI:
 
         return available_models
 
-    def _build_fallback_chain(self) -> List[AIModel]:
+    def _build_fallback_chain(self) -> list[AIModel]:
         """Construit la chaîne de fallback des modèles."""
         fallback_chain = []
 
@@ -377,7 +376,7 @@ class RobustAI:
 
         return fallback_chain
 
-    def _load_prompt_templates(self) -> Dict[str, str]:
+    def _load_prompt_templates(self) -> dict[str, str]:
         """Charge les templates de prompts."""
         return {
             "blueprint": (
@@ -415,7 +414,7 @@ Type: {project_type}
 
     def generate_response(
         self, context: PromptContext, distillation: bool = False, **kwargs
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """Génère une réponse IA avec fallback."""
         try:
             prompt = self.get_dynamic_prompt(context.value, **kwargs)
@@ -450,7 +449,7 @@ Type: {project_type}
                 "fallback_response": "Erreur de génération",
             }
 
-    def _call_model(self, model: AIModel, prompt: str) -> Optional[str]:
+    def _call_model(self, model: AIModel, prompt: str) -> str | None:
         """Appelle un modèle IA spécifique."""
         if model == AIModel.MOCK:
             return self._mock_response(prompt)
@@ -462,7 +461,7 @@ Type: {project_type}
 
     def _call_ollama(
         self, model_name: str, prompt: str, timeout: int = 30
-    ) -> Optional[str]:
+    ) -> str | None:
         """Appelle un modèle Ollama."""
         try:
             # Utilisation du validateur de sécurité pour l'appel ollama
@@ -507,7 +506,7 @@ def robust_ai() -> RobustAI:
     return RobustAI()
 
 
-def fallback_ia(prompt: str, models: Optional[List[str]] = None) -> str:
+def fallback_ia(prompt: str, models: list[str] | None = None) -> str:
     """Fonction de fallback pour l'IA."""
     try:
         ai = RobustAI()

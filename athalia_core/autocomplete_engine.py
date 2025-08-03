@@ -7,9 +7,8 @@ Moteur de complétion automatique intelligent
 import ast
 import json
 import logging
-from pathlib import Path
 import re
-from typing import Dict, List, Optional
+from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
@@ -24,8 +23,8 @@ class AutocompleteEngine:
         self.context = {}
 
     def load_suggestions(
-        self, suggestions_path: Optional[str] = None
-    ) -> Dict[str, List[str]]:
+        self, suggestions_path: str | None = None
+    ) -> dict[str, list[str]]:
         """Charge les suggestions depuis un fichier"""
         default_suggestions = {
             "python": [
@@ -139,7 +138,7 @@ class AutocompleteEngine:
 
         if suggestions_path:
             try:
-                with open(suggestions_path, "r", encoding="utf-8") as f:
+                with open(suggestions_path, encoding="utf-8") as f:
                     user_suggestions = json.load(f)
                     default_suggestions.update(user_suggestions)
             except Exception as e:
@@ -149,7 +148,7 @@ class AutocompleteEngine:
 
         return default_suggestions
 
-    def get_suggestions_for_context(self, context: str, partial: str) -> List[str]:
+    def get_suggestions_for_context(self, context: str, partial: str) -> list[str]:
         """Récupère les suggestions pour un contexte donné"""
         try:
             if not context or context not in self.suggestions:
@@ -165,7 +164,7 @@ class AutocompleteEngine:
             logger.error(f"Erreur récupération suggestions: {e}")
             return []
 
-    def filter_suggestions(self, suggestions: List[str], partial: str) -> List[str]:
+    def filter_suggestions(self, suggestions: list[str], partial: str) -> list[str]:
         """Filtre les suggestions basées sur le texte partiel"""
         try:
             if not partial:
@@ -184,7 +183,7 @@ class AutocompleteEngine:
             logger.error(f"Erreur filtrage suggestions: {e}")
             return []
 
-    def rank_suggestions(self, suggestions: List[str], partial: str) -> List[str]:
+    def rank_suggestions(self, suggestions: list[str], partial: str) -> list[str]:
         """Classe les suggestions par pertinence"""
         try:
             if not partial:
@@ -241,7 +240,7 @@ class AutocompleteEngine:
             logger.error(f"Erreur suppression suggestion: {e}")
             return False
 
-    def save_suggestions(self, suggestions_path: Optional[str] = None) -> bool:
+    def save_suggestions(self, suggestions_path: str | None = None) -> bool:
         """Sauvegarde les suggestions dans un fichier"""
         try:
             if not suggestions_path:
@@ -303,7 +302,7 @@ class AutocompleteEngine:
             logger.error(f"Erreur entraînement répertoire {directory_path}: {e}")
             return False
 
-    def get_context_suggestions(self) -> List[str]:
+    def get_context_suggestions(self) -> list[str]:
         """Récupère les suggestions basées sur le contexte actuel"""
         try:
             if not self.context:
@@ -352,7 +351,7 @@ class AutocompleteEngine:
 
     def _extract_suggestions_from_file(
         self, file_path: Path, language: str
-    ) -> List[str]:
+    ) -> list[str]:
         """Extrait les suggestions d'un fichier"""
         try:
             suggestions = []
@@ -375,12 +374,12 @@ class AutocompleteEngine:
             logger.error(f"Erreur extraction suggestions {file_path}: {e}")
             return []
 
-    def _extract_python_suggestions(self, file_path: Path) -> List[str]:
+    def _extract_python_suggestions(self, file_path: Path) -> list[str]:
         """Extrait les suggestions d'un fichier Python"""
         try:
             suggestions = []
 
-            with open(file_path, "r", encoding="utf-8") as f:
+            with open(file_path, encoding="utf-8") as f:
                 content = f.read()
 
             # Analyser l'AST pour extraire les définitions
@@ -414,12 +413,12 @@ class AutocompleteEngine:
             logger.error(f"Erreur extraction Python {file_path}: {e}")
             return []
 
-    def _extract_javascript_suggestions(self, file_path: Path) -> List[str]:
+    def _extract_javascript_suggestions(self, file_path: Path) -> list[str]:
         """Extrait les suggestions d'un fichier JavaScript"""
         try:
             suggestions = []
 
-            with open(file_path, "r", encoding="utf-8") as f:
+            with open(file_path, encoding="utf-8") as f:
                 content = f.read()
 
             # Extraire les fonctions et variables
@@ -435,12 +434,12 @@ class AutocompleteEngine:
             logger.error(f"Erreur extraction JavaScript {file_path}: {e}")
             return []
 
-    def _extract_html_suggestions(self, file_path: Path) -> List[str]:
+    def _extract_html_suggestions(self, file_path: Path) -> list[str]:
         """Extrait les suggestions d'un fichier HTML"""
         try:
             suggestions = []
 
-            with open(file_path, "r", encoding="utf-8") as f:
+            with open(file_path, encoding="utf-8") as f:
                 content = f.read()
 
             # Extraire les balises HTML
@@ -452,12 +451,12 @@ class AutocompleteEngine:
             logger.error(f"Erreur extraction HTML {file_path}: {e}")
             return []
 
-    def _extract_css_suggestions(self, file_path: Path) -> List[str]:
+    def _extract_css_suggestions(self, file_path: Path) -> list[str]:
         """Extrait les suggestions d'un fichier CSS"""
         try:
             suggestions = []
 
-            with open(file_path, "r", encoding="utf-8") as f:
+            with open(file_path, encoding="utf-8") as f:
                 content = f.read()
 
             # Extraire les propriétés CSS
@@ -469,12 +468,12 @@ class AutocompleteEngine:
             logger.error(f"Erreur extraction CSS {file_path}: {e}")
             return []
 
-    def _extract_generic_suggestions(self, file_path: Path) -> List[str]:
+    def _extract_generic_suggestions(self, file_path: Path) -> list[str]:
         """Extrait les suggestions génériques d'un fichier"""
         try:
             suggestions = []
 
-            with open(file_path, "r", encoding="utf-8") as f:
+            with open(file_path, encoding="utf-8") as f:
                 content = f.read()
 
             # Extraire les mots qui ressemblent à des identifiants
@@ -487,7 +486,7 @@ class AutocompleteEngine:
             logger.error(f"Erreur extraction générique {file_path}: {e}")
             return []
 
-    def _extract_with_regex(self, content: str, pattern: str) -> List[str]:
+    def _extract_with_regex(self, content: str, pattern: str) -> list[str]:
         """Extrait des suggestions avec une regex"""
         try:
             matches = re.findall(pattern, content)
@@ -498,7 +497,7 @@ class AutocompleteEngine:
             return []
 
 
-def get_suggestions(data_dir: str, context: str, partial: str) -> List[str]:
+def get_suggestions(data_dir: str, context: str, partial: str) -> list[str]:
     """Fonction utilitaire pour obtenir des suggestions"""
     engine = AutocompleteEngine(data_dir)
     return engine.get_suggestions_for_context(context, partial)

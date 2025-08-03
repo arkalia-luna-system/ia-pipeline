@@ -10,11 +10,10 @@ Audit complet des projets robotiques Reachy:
 - Tests de connectivité
 """
 
+import logging
 from dataclasses import dataclass
 from datetime import datetime
-import logging
 from pathlib import Path
-from typing import List, Optional, Tuple
 
 import yaml
 
@@ -31,8 +30,8 @@ class ReachyAuditResult:
     docker_valid: bool
     rust_valid: bool
     structure_valid: bool
-    issues: List[str]
-    recommendations: List[str]
+    issues: list[str]
+    recommendations: list[str]
     score: float  # 0-100
 
 
@@ -98,7 +97,7 @@ class ReachyAuditor:
         self.logger.info(f"✅ Audit terminé - Score: {score:.1f}/100")
         return result
 
-    def _audit_ros2(self) -> Tuple[bool, List[str], List[str]]:
+    def _audit_ros2(self) -> tuple[bool, list[str], list[str]]:
         """Audit spécifique ROS2"""
         issues = []
         recommendations = []
@@ -132,7 +131,7 @@ class ReachyAuditor:
 
         return len(issues) == 0, issues, recommendations
 
-    def _audit_docker(self) -> Tuple[bool, List[str], List[str]]:
+    def _audit_docker(self) -> tuple[bool, list[str], list[str]]:
         """Audit Docker/Containers"""
         issues = []
         recommendations = []
@@ -141,7 +140,7 @@ class ReachyAuditor:
         compose_file = self.project_path / "docker" / "compose.yaml"
         if compose_file.exists():
             try:
-                with open(compose_file, "r") as f:
+                with open(compose_file) as f:
                     compose_data = yaml.safe_load(f)
 
                 # Vérifier service reachy_2023
@@ -179,7 +178,7 @@ class ReachyAuditor:
 
         return len(issues) == 0, issues, recommendations
 
-    def _audit_rust(self) -> Tuple[bool, List[str], List[str]]:
+    def _audit_rust(self) -> tuple[bool, list[str], list[str]]:
         """Audit Rust/Cargo"""
         issues = []
         recommendations = []
@@ -192,7 +191,7 @@ class ReachyAuditor:
             for cargo_file in cargo_files:
                 try:
                     # Vérifier dépendances critiques
-                    with open(cargo_file, "r") as f:
+                    with open(cargo_file) as f:
                         content = f.read()
 
                     if "ros2" in content.lower():
@@ -210,7 +209,7 @@ class ReachyAuditor:
 
         return len(issues) == 0, issues, recommendations
 
-    def _audit_structure(self) -> Tuple[bool, List[str], List[str]]:
+    def _audit_structure(self) -> tuple[bool, list[str], list[str]]:
         """Audit structure générale du projet"""
         issues = []
         recommendations = []
@@ -286,7 +285,7 @@ class ReachyAuditor:
         return report
 
     def save_report(
-        self, result: ReachyAuditResult, output_path: Optional[str] = None
+        self, result: ReachyAuditResult, output_path: str | None = None
     ) -> str:
         """Sauvegarder le rapport"""
         if output_path is None:

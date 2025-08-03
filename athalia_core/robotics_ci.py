@@ -5,9 +5,9 @@ Intégration continue pour ROS2, Rust et projets robotics
 """
 
 import logging
-from pathlib import Path
 import subprocess
-from typing import Any, Dict
+from pathlib import Path
+from typing import Any
 
 # Import sécurisé pour la validation des commandes
 try:
@@ -39,7 +39,7 @@ class RoboticsCI:
             "metrics": {},
         }
 
-    def run_full_pipeline(self) -> Dict[str, Any]:
+    def run_full_pipeline(self) -> dict[str, Any]:
         """Exécute le pipeline CI/CD complet"""
         logger.info(f"🚀 Démarrage du pipeline CI/CD pour {self.project_path.name}")
 
@@ -379,7 +379,7 @@ class RoboticsCI:
         return "\n".join(report)
 
 
-def run_robotics_ci(project_path: str = ".") -> Dict[str, Any]:
+def run_robotics_ci(project_path: str = ".") -> dict[str, Any]:
     """Fonction utilitaire pour exécuter la CI/CD robotics"""
     ci = RoboticsCI(project_path)
     return ci.run_full_pipeline()

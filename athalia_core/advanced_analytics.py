@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 import argparse
 import ast
-from datetime import datetime
 import json
 import logging
+from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -28,7 +28,7 @@ class AdvancedAnalytics:
             "evolution": {},
         }
 
-    def run(self) -> Dict[str, Any]:
+    def run(self) -> dict[str, Any]:
         """Lance lanalyse complète du projet"""
         logger.info(f"📊 Analytics avancée pour: {self.project_path.name}")
 
@@ -56,7 +56,7 @@ class AdvancedAnalytics:
 
         for py_file in self.project_path.rglob("*.py"):
             try:
-                with open(py_file, "r", encoding="utf-8") as f:
+                with open(py_file) as f:
                     tree = ast.parse(f.read())
 
                 complexity = self._calculate_complexity(tree)
@@ -79,7 +79,7 @@ class AdvancedAnalytics:
         complexity = 1  # Base complexity
 
         for node in ast.walk(tree):
-            if isinstance(node, (ast.If, ast.While, ast.For, ast.AsyncFor)):
+            if isinstance(node, ast.If | ast.While | ast.For | ast.AsyncFor):
                 complexity += 1
             elif isinstance(node, ast.ExceptHandler):
                 complexity += 1
@@ -100,7 +100,7 @@ class AdvancedAnalytics:
 
         for py_file in self.project_path.rglob("*.py"):
             try:
-                with open(py_file, "r", encoding="utf-8") as f:
+                with open(py_file) as f:
                     content = f.read()
                     lines = content.splitlines()
                     tree = ast.parse(content)
@@ -152,7 +152,7 @@ class AdvancedAnalytics:
         req_file = self.project_path / "requirements.txt"
         if req_file.exists():
             try:
-                with open(req_file, "r") as f:
+                with open(req_file) as f:
                     deps = [
                         line.strip()
                         for line in f
@@ -175,7 +175,7 @@ class AdvancedAnalytics:
 
         for py_file in self.project_path.rglob("*.py"):
             try:
-                with open(py_file, "r", encoding="utf-8") as f:
+                with open(py_file) as f:
                     lines = f.readlines()
 
                 quality_data["total_lines"] += len(lines)

@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Tests complets pour le module IA robuste.
 Couverture étendue avec tests d'intégration et de robustesse.

@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Tests complets pour la sécurité.
 Tests professionnels pour la CI/CD.
 """
 
-from pathlib import Path
 import tempfile
+from pathlib import Path
 from unittest.mock import patch
 
 import pytest

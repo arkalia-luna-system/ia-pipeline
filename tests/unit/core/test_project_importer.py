@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 import os
 import tempfile
 
@@ -21,7 +20,7 @@ def test_project_import_concept():
         assert os.path.exists(os.path.join(temp_dir, "requirements.txt"))
         assert os.path.exists(os.path.join(temp_dir, "README.md"))
         # Vérifier le contenu
-        with open(os.path.join(temp_dir, "main.py"), "r") as file_handle:
+        with open(os.path.join(temp_dir, "main.py")) as file_handle:
             content = file_handle.read()
             assert "flask" in content
 

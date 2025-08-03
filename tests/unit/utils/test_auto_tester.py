@@ -3,8 +3,10 @@ Tests de base pour le module athalia_core.auto_tester
 Généré automatiquement pour améliorer la couverture de tests.
 """
 
-import pytest
 import inspect
+
+import pytest
+
 import athalia_core.auto_tester as module
 
 
@@ -21,25 +23,25 @@ def test_module_has_content():
 def test_function_main_exists():
     """Test que la fonction main existe."""
     assert hasattr(module, "main")
-    assert callable(getattr(module, "main"))
+    assert callable(module.main)
 
 
 def test_function_validate_and_run_exists():
     """Test que la fonction validate_and_run existe."""
     assert hasattr(module, "validate_and_run")
-    assert callable(getattr(module, "validate_and_run"))
+    assert callable(module.validate_and_run)
 
 
 def test_class_AutoTester_exists():
     """Test que la classe AutoTester existe."""
     assert hasattr(module, "AutoTester")
-    assert inspect.isclass(getattr(module, "AutoTester"))
+    assert inspect.isclass(module.AutoTester)
 
 
 def test_class_AutoTester_can_instantiate():
     """Test que la classe AutoTester peut être instanciée."""
     try:
-        cls = getattr(module, "AutoTester")
+        cls = module.AutoTester
         # Essayer d'instancier avec des paramètres par défaut
         instance = cls()
         assert instance is not None
@@ -51,13 +53,13 @@ def test_class_AutoTester_can_instantiate():
 def test_class_Path_exists():
     """Test que la classe Path existe."""
     assert hasattr(module, "Path")
-    assert inspect.isclass(getattr(module, "Path"))
+    assert inspect.isclass(module.Path)
 
 
 def test_class_Path_can_instantiate():
     """Test que la classe Path peut être instanciée."""
     try:
-        cls = getattr(module, "Path")
+        cls = module.Path
         # Essayer d'instancier avec des paramètres par défaut
         instance = cls()
         assert instance is not None
@@ -69,13 +71,13 @@ def test_class_Path_can_instantiate():
 def test_class_SecurityError_exists():
     """Test que la classe SecurityError existe."""
     assert hasattr(module, "SecurityError")
-    assert inspect.isclass(getattr(module, "SecurityError"))
+    assert inspect.isclass(module.SecurityError)
 
 
 def test_class_SecurityError_can_instantiate():
     """Test que la classe SecurityError peut être instanciée."""
     try:
-        cls = getattr(module, "SecurityError")
+        cls = module.SecurityError
         # Essayer d'instancier avec des paramètres par défaut
         instance = cls()
         assert instance is not None

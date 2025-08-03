@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 import fnmatch
 import logging
 import os
-from pathlib import Path
 import shutil
+from pathlib import Path
 
 
 def clean_old_tests_and_caches(outdir):
@@ -16,7 +15,7 @@ def clean_old_tests_and_caches(outdir):
     outdir = Path(outdir)
     deleted_files = []
     # Renommer récursivement dans tous les sous-dossiers
-    for dirpath, dirs, files in os.walk(outdir):
+    for dirpath, _dirs, files in os.walk(outdir):
         for file_handle in files:
             if file_handle == "test_booster_ia_proj.ff":
                 file_path = os.path.join(dirpath, file_handle)
@@ -28,7 +27,7 @@ def clean_old_tests_and_caches(outdir):
                 deleted_files.append(file_path)
     # Suppression des fichiers de test .ff, .pyff, etc. (hors
     # test_booster_ia_proj.pyff)
-    for dirpath, dirs, files in os.walk(outdir):
+    for dirpath, _dirs, files in os.walk(outdir):
         for file_handle in files:
             file_path = os.path.join(dirpath, file_handle)
             # On ne supprime jamais test_booster_ia_proj.pyff
@@ -54,7 +53,7 @@ def clean_old_tests_and_caches(outdir):
                 logging.info(f"Fichier protégé non supprimé: {file_path}")
     # Suppression des dossiers __pycache__ et de tous les sous-dossiers, mais
     # jamais le dossier racine
-    for dirpath, dirs, files in os.walk(outdir):
+    for dirpath, dirs, _files in os.walk(outdir):
         for dict_data in list(dirs):
             dir_path = os.path.join(dirpath, dict_data)
             # Ne jamais supprimer le dossier racine passé à la fonction

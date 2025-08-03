@@ -3,7 +3,7 @@ import builtins
 import json
 import logging
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -20,7 +20,7 @@ class AutoCICD:
         self.project_info = {}
         self.cicd_config = {}
 
-    def setup_cicd(self, project_path: str) -> Dict[str, Any]:
+    def setup_cicd(self, project_path: str) -> dict[str, Any]:
         """Configuration complète CI / CD pour un projet"""
         self.project_path = Path(project_path)
         logger.info(f"🚀 Configuration CI / CD pour: {self.project_path.name}")
@@ -66,7 +66,7 @@ class AutoCICD:
         else:
             return "unknown"
 
-    def _detect_languages(self) -> List[str]:
+    def _detect_languages(self) -> list[str]:
         """Détection des langages du projet"""
         languages = set()
         for file_path in self.project_path.rglob("*"):
@@ -84,14 +84,14 @@ class AutoCICD:
                     languages.add("go")
         return list(languages)
 
-    def _extract_dependencies(self) -> Dict[str, List[str]]:
+    def _extract_dependencies(self) -> dict[str, list[str]]:
         """Extraction des dépendances du projet"""
         dependencies = {}
         # Python
         req_file = self.project_path / "requirements.txt"
         if req_file.exists():
             try:
-                with open(req_file, "r") as file_handle:
+                with open(req_file) as file_handle:
                     deps = [
                         line.strip()
                         for line in file_handle
@@ -104,7 +104,7 @@ class AutoCICD:
         package_file = self.project_path / "package.json"
         if package_file.exists():
             try:
-                with open(package_file, "r") as file_handle:
+                with open(package_file) as file_handle:
                     data = json.load(file_handle)
                     deps = list(data.get("dependencies", {}).keys())
                     dev_deps = list(data.get("devDependencies", {}).keys())
@@ -113,7 +113,7 @@ class AutoCICD:
                 pass
         return dependencies
 
-    def _find_entry_points(self) -> List[str]:
+    def _find_entry_points(self) -> list[str]:
         """Trouve les points dentrée du projet"""
         entry_points = []
         main_patterns = ["main.py", "app.py", "run.py", "server.py", "cli.py"]
@@ -139,7 +139,7 @@ class AutoCICD:
                 return True
         return False
 
-    def _generate_github_actions(self) -> Dict[str, str]:
+    def _generate_github_actions(self) -> dict[str, str]:
         """Génère les workflows GitHub Actions"""
         workflows = {}
         workflows["main"] = "# main workflow yaml content"
@@ -148,7 +148,7 @@ class AutoCICD:
             workflows["test"] = "# test workflow yaml content"
         return workflows
 
-    def _generate_docker_config(self) -> Dict[str, str]:
+    def _generate_docker_config(self) -> dict[str, str]:
         """Génère la configuration Docker"""
         configs = {}
         configs["Dockerfile"] = "# Dockerfile content"
@@ -156,7 +156,7 @@ class AutoCICD:
         configs[".dockerignore"] = "# dockerignore content"
         return configs
 
-    def _generate_deployment_config(self) -> Dict[str, str]:
+    def _generate_deployment_config(self) -> dict[str, str]:
         """Génère la configuration de déploiement"""
         configs = {}
         configs["k8s-deployment.yaml"] = "# k8s deployment content"
@@ -170,7 +170,7 @@ class AutoCICD:
         ci_dir.mkdir(parents=True, exist_ok=True)
         (ci_dir / "ci.f(f").write_text("# CI/CD config")
 
-    def _get_created_files(self) -> List[str]:
+    def _get_created_files(self) -> list[str]:
         # Retourne le chemin du fichier ci.f(f) pour les tests
         ci_file = self.project_path / ".f" / "f" / "ci.f(f"
         return [str(ci_file)] if ci_file.exists() else []

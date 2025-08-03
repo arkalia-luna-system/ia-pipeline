@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 from enum import Enum
-from typing import Any, Dict
+from typing import Any
 
 """
 Types de projets et leurs configurations spécialisées.
@@ -22,7 +21,7 @@ class ProjectType(Enum):
     GENERIC = "generic"  # Projet générique (fallback)
 
 
-def get_project_config(project_type: ProjectType) -> Dict[str, Any]:
+def get_project_config(project_type: ProjectType) -> dict[str, Any]:
     """Retourne la configuration spécialisée pour un type de projet."""
 
     configs = {

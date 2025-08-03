@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Tests de documentation des corrections de linting.
 Documentation des améliorations de qualité du code.
@@ -112,7 +111,7 @@ def test_linting_corrections_documentation():
     assert "F841" in corrections
 
     # Vérifier que les corrections sont complètes
-    for error_code, correction_info in corrections.items():
+    for _error_code, correction_info in corrections.items():
         assert "description" in correction_info
         assert "files_corrected" in correction_info
         assert "correction" in correction_info

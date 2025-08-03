@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Athalia Unified - Pipeline d'industrialisation IA complet
 Interface unifiée pour tous les modules Athalia

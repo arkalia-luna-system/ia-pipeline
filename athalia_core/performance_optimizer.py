@@ -8,15 +8,16 @@ Ce module fournit des outils pour:
 - Prévenir les blocages et les fuites mémoire
 """
 
-from concurrent.futures import ThreadPoolExecutor, as_completed
-from functools import wraps
 import gc
 import logging
 import os
-from pathlib import Path
 import threading
 import time
-from typing import Any, Callable, Dict, List
+from collections.abc import Callable
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from functools import wraps
+from pathlib import Path
+from typing import Any
 
 import psutil
 
@@ -50,7 +51,7 @@ class PerformanceOptimizer:
         if hasattr(self, "executor"):
             self.executor.shutdown(wait=True)
 
-    def monitor_memory(self) -> Dict[str, float]:
+    def monitor_memory(self) -> dict[str, float]:
         """Surveille l'utilisation mémoire du processus."""
         process = psutil.Process()
         memory_info = process.memory_info()
@@ -124,10 +125,10 @@ class PerformanceOptimizer:
 
     def parallel_file_processing(
         self,
-        file_paths: List[Path],
+        file_paths: list[Path],
         processor: Callable,
         chunk_size: int = 100,
-    ) -> List[Any]:
+    ) -> list[Any]:
         """
         Traite des fichiers en parallèle de manière optimisée.
 
@@ -171,9 +172,9 @@ class PerformanceOptimizer:
     def optimize_file_scanning(
         self,
         root_path: Path,
-        patterns: List[str] = None,
-        exclude_patterns: List[str] = None,
-    ) -> List[Path]:
+        patterns: list[str] = None,
+        exclude_patterns: list[str] = None,
+    ) -> list[Path]:
         """
         Optimise le scan de fichiers avec gestion mémoire.
 

@@ -132,7 +132,7 @@ class TestImportsAll:
     def test_all_python_files_importable(self):
         """Test que tous les fichiers Python peuvent être importés"""
         python_files = []
-        for root, dirs, files in os.walk("."):
+        for root, _dirs, files in os.walk("."):
             if ".git" in root or "__pycache__" in root or "venv" in root:
                 continue
             for file in files:

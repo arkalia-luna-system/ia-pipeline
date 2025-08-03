@@ -1,14 +1,12 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Module IA robuste pour Athalia - Version corrigée
 Gestion des modèles IA avec fallback intelligent
 """
 
-from enum import Enum
 import logging
 import subprocess
-from typing import Dict, List, Optional
+from enum import Enum
 
 import requests
 
@@ -236,7 +234,7 @@ class RobustAI:
 
         return BlueprintProxy(self)
 
-    def _detect_available_models(self) -> List[AIModel]:
+    def _detect_available_models(self) -> list[AIModel]:
         """Détecte les modèles IA disponibles."""
         available = []
         try:
@@ -263,7 +261,7 @@ class RobustAI:
         logging.info(f"Modèles IA disponibles: {[m.value for m in available]}")
         return available
 
-    def _build_fallback_chain(self) -> List[AIModel]:
+    def _build_fallback_chain(self) -> list[AIModel]:
         """Construit la chaîne de fallback."""
         chain = []
         # Priorité: Qwen > Mistral > LLaVA > Llama > Codegen > Mock
@@ -280,7 +278,7 @@ class RobustAI:
                 chain.append(model)
         return chain
 
-    def _load_prompt_templates(self) -> Dict[str, str]:
+    def _load_prompt_templates(self) -> dict[str, str]:
         """Charge les templates de prompts dynamiques."""
         return {
             PromptContext.BLUEPRINT.value: (
@@ -341,7 +339,7 @@ class RobustAI:
             "error": "Tous les modèles ont échoué",
         }
 
-    def _call_model(self, model: AIModel, prompt: str) -> Optional[str]:
+    def _call_model(self, model: AIModel, prompt: str) -> str | None:
         """Appelle un modèle IA spécifique."""
         if model == AIModel.MOCK:
             return self._mock_response(prompt)
@@ -354,7 +352,7 @@ class RobustAI:
 
     def _call_ollama(
         self, model_name: str, prompt: str, timeout: int = 30
-    ) -> Optional[str]:
+    ) -> str | None:
         """Appelle Ollama avec un modèle spécifique."""
         try:
             # Utilisation du validateur de sécurité pour l'appel ollama
@@ -406,7 +404,7 @@ def robust_ai() -> RobustAI:
     return RobustAI()
 
 
-def fallback_ia(prompt: str, models: Optional[List[str]] = None) -> str:
+def fallback_ia(prompt: str, models: list[str] | None = None) -> str:
     """Fallback IA multi-modèles (Qwen, Mistral, Ollama, Claude, GPT, Mock...)."""
     models = models or ["qwen", "mistral", "ollama", "claude", "gpt", "mock"]
     for model in models:

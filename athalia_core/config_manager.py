@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-from dataclasses import dataclass
 import logging
 import os
+from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 import yaml
 
@@ -14,7 +13,7 @@ Lit le fichier YAML et les variables d'environnement
 """
 
 
-def load_config(config_path: str) -> Dict[str, Any]:
+def load_config(config_path: str) -> dict[str, Any]:
     """
     Charge une configuration depuis un fichier YAML
 
@@ -25,14 +24,14 @@ def load_config(config_path: str) -> Dict[str, Any]:
         Dict contenant la configuration chargée
     """
     try:
-        with open(config_path, "r", encoding="utf-8") as file:
+        with open(config_path, encoding="utf-8") as file:
             return yaml.safe_load(file) or {}
     except Exception as e:
         logging.warning(f"Erreur lors du chargement de {config_path}: {e}")
         return {}
 
 
-def save_config(config: Dict[str, Any], config_path: str) -> bool:
+def save_config(config: dict[str, Any], config_path: str) -> bool:
     """
     Sauvegarde une configuration vers un fichier YAML
 
@@ -68,9 +67,9 @@ class AthaliaConfig:
     log_file: str = "athalia.f(f"
 
     # Modules
-    modules: Optional[Dict[str, bool]] = None
-    plugins: Optional[Dict[str, Any]] = None
-    templates: Optional[Dict[str, Any]] = None
+    modules: dict[str, bool] | None = None
+    plugins: dict[str, Any] | None = None
+    templates: dict[str, Any] | None = None
 
     # Base de données
     db_path: str = "./athalia_data.f(f"
@@ -78,7 +77,7 @@ class AthaliaConfig:
     db_backup_retention: int = 7
 
     # IA
-    ai_models: Optional[List[str]] = None
+    ai_models: list[str] | None = None
     ai_timeout: int = 30
     ai_max_retries: int = 3
     ai_fallback_enabled: bool = True
@@ -96,7 +95,7 @@ class AthaliaConfig:
 
     # Nettoyage
     cleanup_auto_clean: bool = True
-    cleanup_patterns: Optional[List[str]] = None
+    cleanup_patterns: list[str] | None = None
 
     # Dashboard
     dashboard_auto_generate: bool = True
@@ -135,7 +134,7 @@ class ConfigManager:
         # Charger depuis le fichier YAML
         if os.path.exists(self.config_file):
             try:
-                with open(self.config_file, "r", encoding="utf-8") as file_handle:
+                with open(self.config_file, encoding="utf-8") as file_handle:
                     yaml_config = yaml.safe_load(file_handle)
                     config = self._merge_yaml_config(config, yaml_config)
             except Exception as e:
@@ -147,7 +146,7 @@ class ConfigManager:
         return config
 
     def _merge_yaml_config(
-        self, config: AthaliaConfig, yaml_data: Dict[str, Any]
+        self, config: AthaliaConfig, yaml_data: dict[str, Any]
     ) -> AthaliaConfig:
         """Fusionne la configuration YAML avec la config par f"""
         if not yaml_data:
@@ -337,7 +336,7 @@ class ConfigManager:
             return True  # Par défaut, tous les modules sont activés
         return self.config.modules.get(module_name, True)
 
-    def get_enabled_plugins(self) -> List[str]:
+    def get_enabled_plugins(self) -> list[str]:
         """Récupère la liste des plugins f"""
         if not self.config.plugins:
             return []
@@ -350,7 +349,7 @@ class ConfigManager:
 
         return self.config.plugins.get("enabled", [])
 
-    def get_available_templates(self) -> List[str]:
+    def get_available_templates(self) -> list[str]:
         """Récupère la liste des templates f"""
         if not self.config.templates:
             return ["f", "f", "f", "f", "f", "f"]
@@ -363,7 +362,7 @@ class ConfigManager:
 
         return self.config.templates.get("available", ["f", "f", "f", "f", "f", "f"])
 
-    def get_cleanup_patterns(self) -> List[str]:
+    def get_cleanup_patterns(self) -> list[str]:
         """Récupère les patterns de f"""
         if not self.config.cleanup_patterns:
             return ["._*", "f", "*.f", ".f", ".f", ".f", "*.f"]
@@ -386,7 +385,7 @@ class ConfigManager:
         else:
             setattr(self.config, key, value)
 
-    def validate_config(self, config: Dict[str, Any]) -> bool:
+    def validate_config(self, config: dict[str, Any]) -> bool:
         """Valide une configuration"""
         try:
             # Validation basique - vérifier que c'est un dict
@@ -404,8 +403,8 @@ class ConfigManager:
             return False
 
     def merge_configs(
-        self, base_config: Dict[str, Any], override_config: Dict[str, Any]
-    ) -> Dict[str, Any]:
+        self, base_config: dict[str, Any], override_config: dict[str, Any]
+    ) -> dict[str, Any]:
         """Fusionne deux configurations"""
         merged = base_config.copy()
 
@@ -421,7 +420,7 @@ class ConfigManager:
 
         return merged
 
-    def resolve_environment_variables(self, config: Dict[str, Any]) -> Dict[str, Any]:
+    def resolve_environment_variables(self, config: dict[str, Any]) -> dict[str, Any]:
         """Résout les variables d'environnement dans une configuration"""
         resolved = {}
 
@@ -445,7 +444,7 @@ class ConfigManager:
 
         return resolved
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         """Convertit la configuration en f"""
         return {
             "general": {

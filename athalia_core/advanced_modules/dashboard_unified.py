@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-from datetime import datetime, timedelta
 import json
 import logging
 import os
-from pathlib import Path
 import sqlite3
 import sys
-from typing import Any, Dict, Optional
 import webbrowser
+from datetime import datetime, timedelta
+from pathlib import Path
+from typing import Any
 
 # !/usr/bin/env python3
 """
@@ -83,8 +82,8 @@ class DashboardUnifieSimple:
         self,
         type_metrique: str,
         valeur: float,
-        projet: Optional[str] = None,
-        details: Optional[Dict] = None,
+        projet: str | None = None,
+        details: dict | None = None,
     ):
         """Enregistrement une métrique"""
         with sqlite3.connect(self.db_path) as conn:
@@ -107,11 +106,11 @@ class DashboardUnifieSimple:
     def enregistrer_evenement(
         self,
         type_evenement: str,
-        projet: Optional[str] = None,
-        utilisateur: Optional[str] = None,
+        projet: str | None = None,
+        utilisateur: str | None = None,
         duree: int = 0,
         statut: str = "succes",
-        details: Optional[Dict] = None,
+        details: dict | None = None,
     ):
         """Enregistrement un événement"""
         with sqlite3.connect(self.db_path) as conn:
@@ -162,7 +161,7 @@ class DashboardUnifieSimple:
             )
             conn.commit()
 
-    def obtenir_metriques_temps_reel(self) -> Dict[str, Any]:
+    def obtenir_metriques_temps_reel(self) -> dict[str, Any]:
         """Obtention des métriques en temps réel"""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()

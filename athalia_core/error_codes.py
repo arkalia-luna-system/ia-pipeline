@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Codes d'erreur standardisés pour Athalia
 Centralisation des codes d'erreur pour une gestion cohérente
 """
 
 from enum import Enum, auto
-from typing import Any, Dict
+from typing import Any
 
 
 class ErrorCode(Enum):
@@ -80,7 +79,7 @@ class ErrorSeverity(Enum):
 
 
 # Mapping des codes d'erreur vers leurs descriptions
-ERROR_DESCRIPTIONS: Dict[ErrorCode, str] = {
+ERROR_DESCRIPTIONS: dict[ErrorCode, str] = {
     ErrorCode.UNKNOWN_ERROR: "Erreur inconnue",
     ErrorCode.INVALID_INPUT: "Données d'entrée invalides",
     ErrorCode.MISSING_REQUIRED_PARAMETER: "Paramètre requis manquant",
@@ -179,7 +178,7 @@ def get_error_severity(error_code: ErrorCode) -> ErrorSeverity:
 
 
 def format_error_message(
-    error_code: ErrorCode, details: str = "", context: Dict[str, Any] = None
+    error_code: ErrorCode, details: str = "", context: dict[str, Any] = None
 ) -> str:
     """Formate un message d'erreur complet."""
     description = get_error_description(error_code)

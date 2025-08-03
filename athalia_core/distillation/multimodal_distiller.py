@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Distillation multimodale pour Athalia/Arkalia
 - Fusionne réponses texte et image (LLaVA)
@@ -6,7 +5,7 @@ Distillation multimodale pour Athalia/Arkalia
 """
 
 import subprocess
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 from athalia_core.ai_robust import AIModel, RobustAI
 
@@ -24,9 +23,9 @@ except ImportError:
 class MultimodalDistiller:
     def distill(
         self,
-        text_prompts: List[str],
-        image_paths: List[str],
-        context: Optional[Dict[str, Any]] = None,
+        text_prompts: list[str],
+        image_paths: list[str],
+        context: dict[str, Any] | None = None,
     ) -> str:
         """
             Fusionne les réponses texte et image en utilisant LLaVA (Ollama) et
@@ -45,7 +44,7 @@ class MultimodalDistiller:
             if res:
                 text_responses.append(res)
         # Appel image+texte (LLaVA)
-        for prompt, image_path in zip(text_prompts, image_paths):
+        for prompt, image_path in zip(text_prompts, image_paths, strict=False):
             llava_response = self.call_llava(prompt, image_path)
             if llava_response:
                 image_responses.append(llava_response)

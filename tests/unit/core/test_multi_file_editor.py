@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Tests pour le module multi_file_editor.
 Tests professionnels pour la CI/CD.
@@ -29,15 +28,15 @@ def test_apply_corrections_and_rollback():
         result = mfe.apply_corrections([file1, file2], corr_fn)
         assert file1 in result["success"]
         assert file2 in result["success"]
-        with open(file1, "r", encoding="utf-8") as f:
+        with open(file1, encoding="utf-8") as f:
             assert f.read() == "bar bar"
-        with open(file2, "r", encoding="utf-8") as f:
+        with open(file2, encoding="utf-8") as f:
             assert f.read() == "bar baz"
         # Rollback
         mfe.rollback()
-        with open(file1, "r", encoding="utf-8") as f:
+        with open(file1, encoding="utf-8") as f:
             assert f.read() == "foo bar"
-        with open(file2, "r", encoding="utf-8") as f:
+        with open(file2, encoding="utf-8") as f:
             assert f.read() == "foo baz"
 
 

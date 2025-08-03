@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Tests complets pour le validateur de plugins.
 Tests professionnels pour la CI/CD.
 """
 
 import json
-from pathlib import Path
 import tempfile
+from pathlib import Path
 from unittest.mock import patch
 
 import yaml
@@ -405,7 +404,7 @@ class TestPluginValidatorIntegration:
             ("syntax_error_plugin", False, "def test( return"),  # Syntaxe invalide
         ]
 
-        for name, should_be_valid, code in plugins:
+        for name, _should_be_valid, code in plugins:
             plugin_dir = Path(self.temp_dir) / name
             plugin_dir.mkdir()
 

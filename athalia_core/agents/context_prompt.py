@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-from datetime import datetime
 import logging
 import os
 import re
 import subprocess
 import sys
 import tempfile
+from datetime import datetime
 
 import yaml
 
@@ -106,7 +105,7 @@ PROMPTS = [
 
 CUSTOM_PROMPTS_PATH = "prompts/custom_prompts.yaml"
 if os.path.exists(CUSTOM_PROMPTS_PATH):
-    with open(CUSTOM_PROMPTS_PATH, "r", encoding="utf-8") as file_handle:
+    with open(CUSTOM_PROMPTS_PATH, encoding="utf-8") as file_handle:
         try:
             custom_prompts = yaml.safe_load(file_handle)
             if isinstance(custom_prompts, list):
@@ -144,7 +143,7 @@ def score_prompt(prompt, filename, content):
 def detect_prompts_scoring(filepath):
     filename = os.path.basename(filepath)
     try:
-        with open(filepath, "r", encoding="utf-8", errors="ignore") as file_handle:
+        with open(filepath, encoding="utf-8", errors="ignore") as file_handle:
             content = file_handle.read()
     except Exception:
         content = ""
@@ -160,7 +159,7 @@ def detect_prompts_scoring(filepath):
 def detect_prompt_semantic(filepath):
     # Utilise Ollama / Mistral pour choisir le prompt le plus pertinent
     try:
-        with open(filepath, "r", encoding="utf-8", errors="ignore") as file_handle:
+        with open(filepath, encoding="utf-8", errors="ignore") as file_handle:
             content = file_handle.read()
     except Exception:
         content = ""
@@ -201,7 +200,7 @@ def show_prompts(scored, semantic_prompt=None):
                 f"\nPrompt IA recommandé par analyse sémantique: {semantic_prompt}"
             )
             if os.path.exists(semantic_prompt):
-                with open(semantic_prompt, "r", encoding="utf-8") as file_handle:
+                with open(semantic_prompt, encoding="utf-8") as file_handle:
                     prompt_text = file_handle.read()
                 result.append(
                     "  --- Prompt principal ---\n" + prompt_text + "\n" + "-" * 40
@@ -215,9 +214,7 @@ def show_prompts(scored, semantic_prompt=None):
                 f"{semantic_prompt['name']} -> {semantic_prompt['file']}"
             )
             if os.path.exists(semantic_prompt["file"]):
-                with open(
-                    semantic_prompt["file"], "r", encoding="utf-8"
-                ) as file_handle:
+                with open(semantic_prompt["file"], encoding="utf-8") as file_handle:
                     prompt_text = file_handle.read()
                 result.append(
                     "  --- Prompt principal ---\n" + prompt_text + "\n" + "-" * 40
@@ -233,7 +230,7 @@ def show_prompts(scored, semantic_prompt=None):
         if index == 1:
             # Affiche le prompt principal
             if os.path.exists(prompt["file"]):
-                with open(prompt["file"], "r", encoding="utf-8") as file_handle:
+                with open(prompt["file"], encoding="utf-8") as file_handle:
                     prompt_text = file_handle.read()
                 result.append(
                     "  --- Prompt principal ---\n" + prompt_text + "\n" + "-" * 40
@@ -254,7 +251,7 @@ def main():
             logging.info(f"Fichier introuvable: {filepath}")
             sys.exit(1)
         try:
-            with open(filepath, "r", encoding="utf-8", errors="ignore") as file_handle:
+            with open(filepath, encoding="utf-8", errors="ignore") as file_handle:
                 all_content += (
                     f"\n# Fichier: {os.path.basename(filepath)}\n" + file_handle.read()
                 )

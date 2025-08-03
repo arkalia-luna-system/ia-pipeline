@@ -10,12 +10,11 @@ Système CI/CD adapté aux projets Reachy/ROS2:
 - Déploiement automatisé
 """
 
-from dataclasses import dataclass
 import logging
-from pathlib import Path
 import subprocess
 import time
-from typing import Dict, List, Tuple
+from dataclasses import dataclass
+from pathlib import Path
 
 # Import du validateur de sécurité
 try:
@@ -40,7 +39,7 @@ class CIConfig:
     rust_enabled: bool
     test_enabled: bool
     deploy_enabled: bool
-    platforms: List[str]  # ubuntu, docker, etc.
+    platforms: list[str]  # ubuntu, docker, etc.
 
 
 @dataclass
@@ -48,9 +47,9 @@ class CIResult:
     """Résultat d'exécution CI/CD"""
 
     success: bool
-    stages: Dict[str, bool]
-    logs: Dict[str, str]
-    artifacts: List[str]
+    stages: dict[str, bool]
+    logs: dict[str, str]
+    artifacts: list[str]
     duration: float
 
 
@@ -279,7 +278,7 @@ services:
             duration=duration,
         )
 
-    def _run_ros2_validation(self) -> Tuple[bool, str]:
+    def _run_ros2_validation(self) -> tuple[bool, str]:
         """Exécuter validation ROS2"""
         try:
             # Vérifier structure workspace
@@ -309,7 +308,7 @@ services:
         except Exception as e:
             return False, f"Erreur validation ROS2: {e}"
 
-    def _run_docker_build(self) -> Tuple[bool, str]:
+    def _run_docker_build(self) -> tuple[bool, str]:
         """Exécuter build Docker"""
         try:
             dockerfile = self.project_path / "docker" / "Dockerfile"
@@ -340,7 +339,7 @@ services:
         except Exception as e:
             return False, f"Erreur build Docker: {e}"
 
-    def _run_rust_build(self) -> Tuple[bool, str]:
+    def _run_rust_build(self) -> tuple[bool, str]:
         """Exécuter build Rust"""
         try:
             cargo_files = list(self.project_path.rglob("Cargo.toml"))
@@ -368,7 +367,7 @@ services:
         except Exception as e:
             return False, f"Erreur build Rust: {e}"
 
-    def _run_tests(self) -> Tuple[bool, str]:
+    def _run_tests(self) -> tuple[bool, str]:
         """Exécuter tests"""
         try:
             # Tests ROS2
@@ -402,7 +401,7 @@ services:
         except Exception as e:
             return False, f"Erreur tests: {e}"
 
-    def _run_deployment(self) -> Tuple[bool, str]:
+    def _run_deployment(self) -> tuple[bool, str]:
         """Exécuter déploiement"""
         try:
             # Placeholder pour déploiement
@@ -412,7 +411,7 @@ services:
         except Exception as e:
             return False, f"Erreur déploiement: {e}"
 
-    def _collect_artifacts(self) -> List[str]:
+    def _collect_artifacts(self) -> list[str]:
         """Collecter artifacts"""
         artifacts = []
 

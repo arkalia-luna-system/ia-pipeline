@@ -21,7 +21,7 @@ class TestRequirementsConsistency:
         """Vérifie que requirements.txt est lisible"""
         requirements_file = Path("config/requirements.txt")
         try:
-            with open(requirements_file, "r", encoding="utf-8") as f:
+            with open(requirements_file, encoding="utf-8") as f:
                 content = f.read()
                 assert content.strip(), "requirements.txt vide"
         except Exception as e:
@@ -31,7 +31,7 @@ class TestRequirementsConsistency:
         """Vérifie le format de requirements.txt"""
         requirements_file = Path("config/requirements.txt")
         try:
-            with open(requirements_file, "r", encoding="utf-8") as f:
+            with open(requirements_file, encoding="utf-8") as f:
                 lines = f.readlines()
 
             for i, line in enumerate(lines, 1):
@@ -52,7 +52,7 @@ class TestRequirementsConsistency:
         """Vérifie que les dépendances essentielles sont présentes"""
         requirements_file = Path("config/requirements.txt")
         try:
-            with open(requirements_file, "r", encoding="utf-8") as f:
+            with open(requirements_file, encoding="utf-8") as f:
                 content = f.read().lower()
 
             essential_deps = ["pytest", "yaml", "requests", "jinja2", "click", "rich"]
@@ -77,7 +77,7 @@ class TestRequirementsConsistency:
         if not os.path.exists(requirements_path):
             pytest.skip("Fichier requirements.txt non trouvé")
 
-        with open(requirements_path, "r", encoding="utf-8") as f:
+        with open(requirements_path, encoding="utf-8") as f:
             content = f.read()
 
         # Extraire les noms des packages
@@ -115,7 +115,7 @@ class TestRequirementsConsistency:
         """Vérifie que pyproject.toml est lisible"""
         pyproject_file = Path("pyproject.toml")
         try:
-            with open(pyproject_file, "r", encoding="utf-8") as f:
+            with open(pyproject_file, encoding="utf-8") as f:
                 content = f.read()
                 assert content.strip(), "pyproject.toml vide"
         except Exception as e:
@@ -129,10 +129,10 @@ class TestRequirementsConsistency:
 
         if requirements_file.exists() and pyproject_file.exists():
             try:
-                with open(requirements_file, "r", encoding="utf-8") as f:
+                with open(requirements_file, encoding="utf-8") as f:
                     req_content = f.read().lower()
 
-                with open(pyproject_file, "r", encoding="utf-8") as f:
+                with open(pyproject_file, encoding="utf-8") as f:
                     pyproject_content = f.read().lower()
 
                 # Vérifie que les dépendances principales sont dans les deux
@@ -151,7 +151,7 @@ class TestRequirementsConsistency:
         """Vérifie qu'il n'y a pas de versions conflictuelles"""
         requirements_file = Path("config/requirements.txt")
         try:
-            with open(requirements_file, "r", encoding="utf-8") as f:
+            with open(requirements_file, encoding="utf-8") as f:
                 lines = f.readlines()
 
             package_versions = {}
@@ -185,7 +185,7 @@ class TestRequirementsConsistency:
 
         requirements_file = Path("config/requirements.txt")
         try:
-            with open(requirements_file, "r", encoding="utf-8") as f:
+            with open(requirements_file, encoding="utf-8") as f:
                 lines = f.readlines()
 
             found_obsolete = []
@@ -217,7 +217,7 @@ class TestRequirementsConsistency:
         """Vérifie que requirements.txt est installable"""
         requirements_file = Path("config/requirements.txt")
         try:
-            with open(requirements_file, "r", encoding="utf-8") as f:
+            with open(requirements_file, encoding="utf-8") as f:
                 lines = f.readlines()
 
             for i, line in enumerate(lines, 1):

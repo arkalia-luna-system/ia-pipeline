@@ -5,11 +5,11 @@ Génération automatique de documentation
 """
 
 import ast
-from datetime import datetime
 import json
 import logging
+from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 # Import conditionnel pour éviter les dépendances
 try:
@@ -30,8 +30,8 @@ class AutoDocumenter:
         self.doc_history = []
 
     def load_documentation_config(
-        self, config_path: Optional[str] = None
-    ) -> Dict[str, Any]:
+        self, config_path: str | None = None
+    ) -> dict[str, Any]:
         """Charge la configuration de documentation"""
         default_config = {
             "output_formats": ["md", "html"],
@@ -57,7 +57,7 @@ class AutoDocumenter:
                         "Module yaml non disponible, utilisation de la configuration par défaut"
                     )
                 else:
-                    with open(config_path, "r", encoding="utf-8") as f:
+                    with open(config_path, encoding="utf-8") as f:
                         user_config = yaml.safe_load(f)
                         default_config.update(user_config)
             except Exception as e:
@@ -67,7 +67,7 @@ class AutoDocumenter:
 
         return default_config
 
-    def scan_project_structure(self) -> Dict[str, Any]:
+    def scan_project_structure(self) -> dict[str, Any]:
         """Scanne la structure du projet"""
         structure = {
             "python_files": [],
@@ -111,7 +111,7 @@ class AutoDocumenter:
                 return True
         return False
 
-    def analyze_python_files(self) -> Dict[str, Any]:
+    def analyze_python_files(self) -> dict[str, Any]:
         """Analyse les fichiers Python"""
         analysis = {
             "total_files": 0,
@@ -129,7 +129,7 @@ class AutoDocumenter:
                     analysis["total_files"] += 1
 
                     try:
-                        with open(py_file, "r", encoding="utf-8") as f:
+                        with open(py_file, encoding="utf-8") as f:
                             content = f.read()
 
                         tree = ast.parse(content)
@@ -159,18 +159,18 @@ class AutoDocumenter:
 
         return analysis
 
-    def extract_docstrings(self, file_path: str) -> List[Dict[str, Any]]:
+    def extract_docstrings(self, file_path: str) -> list[dict[str, Any]]:
         """Extrait les docstrings d'un fichier Python"""
         docstrings = []
 
         try:
-            with open(file_path, "r", encoding="utf-8") as f:
+            with open(file_path, encoding="utf-8") as f:
                 content = f.read()
 
             tree = ast.parse(content)
 
             for node in ast.walk(tree):
-                if isinstance(node, (ast.FunctionDef, ast.ClassDef, ast.Module)):
+                if isinstance(node, ast.FunctionDef | ast.ClassDef | ast.Module):
                     docstring = ast.get_docstring(node)
                     if docstring:
                         docstrings.append(
@@ -231,7 +231,7 @@ MIT License
 
         return readme_content
 
-    def generate_api_documentation(self) -> Dict[str, Any]:
+    def generate_api_documentation(self) -> dict[str, Any]:
         """Génère la documentation API"""
         api_docs = {"functions": [], "classes": [], "modules": []}
 
@@ -262,7 +262,7 @@ MIT License
 
         return api_docs
 
-    def generate_function_documentation(self, function_info: Dict[str, Any]) -> str:
+    def generate_function_documentation(self, function_info: dict[str, Any]) -> str:
         """Génère la documentation d'une fonction"""
         doc = f"""## {function_info["name"]}
 
@@ -281,7 +281,7 @@ MIT License
 
         return doc
 
-    def generate_class_documentation(self, class_info: Dict[str, Any]) -> str:
+    def generate_class_documentation(self, class_info: dict[str, Any]) -> str:
         """Génère la documentation d'une classe"""
         doc = f"""## {class_info["name"]}
 
@@ -516,7 +516,7 @@ SOFTWARE.
 
         return index
 
-    def validate_documentation(self) -> Dict[str, Any]:
+    def validate_documentation(self) -> dict[str, Any]:
         """Valide la documentation"""
         validation = {"is_valid": True, "issues": [], "warnings": []}
 
@@ -554,7 +554,7 @@ SOFTWARE.
 
         return validation
 
-    def calculate_documentation_coverage(self) -> Dict[str, Any]:
+    def calculate_documentation_coverage(self) -> dict[str, Any]:
         """Calcule la couverture de documentation"""
         analysis = self.analyze_python_files()
 
@@ -585,7 +585,7 @@ SOFTWARE.
             "coverage_percentage": round(coverage_percentage, 2),
         }
 
-    def generate_documentation_report(self) -> Dict[str, Any]:
+    def generate_documentation_report(self) -> dict[str, Any]:
         """Génère un rapport de documentation"""
         coverage = self.calculate_documentation_coverage()
         validation = self.validate_documentation()
@@ -630,10 +630,10 @@ SOFTWARE.
             logger.error(f"Erreur sauvegarde historique: {e}")
             return False
 
-    def load_documentation_history(self, history_path: str) -> List[Dict[str, Any]]:
+    def load_documentation_history(self, history_path: str) -> list[dict[str, Any]]:
         """Charge l'historique de documentation"""
         try:
-            with open(history_path, "r", encoding="utf-8") as f:
+            with open(history_path, encoding="utf-8") as f:
                 history = json.load(f)
                 self.doc_history = history
                 return history
@@ -641,7 +641,7 @@ SOFTWARE.
             logger.warning(f"Impossible de charger l'historique {history_path}: {e}")
             return []
 
-    def perform_full_documentation(self) -> Dict[str, Any]:
+    def perform_full_documentation(self) -> dict[str, Any]:
         """Effectue une documentation complète du projet"""
         start_time = datetime.now()
 
@@ -720,7 +720,7 @@ SOFTWARE.
 
         return result
 
-    def document_project(self, project_path: str) -> Dict[str, Any]:
+    def document_project(self, project_path: str) -> dict[str, Any]:
         """Documente un projet complet"""
         self.project_path = Path(project_path)
 
@@ -748,7 +748,7 @@ SOFTWARE.
 
         return result
 
-    def _load_translations(self, lang: str) -> Dict[str, str]:
+    def _load_translations(self, lang: str) -> dict[str, str]:
         """Charge les traductions pour la langue spécifiée"""
         translations = {
             "fr": {
@@ -920,18 +920,18 @@ main(config)
 """
         return usage_guide
 
-    def _get_created_files(self) -> List[str]:
+    def _get_created_files(self) -> list[str]:
         """Retourne la liste des fichiers créés"""
         return ["README.md", "docs/api.md", "docs/setup.md", "docs/usage.md"]
 
 
-def generate_documentation(project_path: str = ".") -> Dict[str, Any]:
+def generate_documentation(project_path: str = ".") -> dict[str, Any]:
     """Fonction utilitaire pour générer la documentation"""
     documenter = AutoDocumenter(project_path)
     return documenter.perform_full_documentation()
 
 
-def analyze_documentation_needs(project_path: str = ".") -> Dict[str, Any]:
+def analyze_documentation_needs(project_path: str = ".") -> dict[str, Any]:
     """Fonction utilitaire pour analyser les besoins de documentation"""
     documenter = AutoDocumenter(project_path)
     return documenter.calculate_documentation_coverage()

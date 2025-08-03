@@ -4,13 +4,13 @@ Module auto_cleaner pour Athalia
 Nettoyage automatique des projets
 """
 
-from datetime import datetime, timedelta
 import hashlib
 import json
 import logging
-from pathlib import Path
 import shutil
-from typing import Any, Dict, List, Optional
+from datetime import datetime, timedelta
+from pathlib import Path
+from typing import Any
 
 # Import conditionnel pour éviter les dépendances
 try:
@@ -50,7 +50,7 @@ class AutoCleaner:
         self.optimizer = PerformanceOptimizer()
         self.security_validator = SecurityValidator()
 
-    def load_cleanup_config(self, config_path: Optional[str] = None) -> Dict[str, Any]:
+    def load_cleanup_config(self, config_path: str | None = None) -> dict[str, Any]:
         """Charge la configuration de nettoyage"""
         default_config = {
             "patterns_to_remove": [
@@ -100,7 +100,7 @@ class AutoCleaner:
                         "Module yaml non disponible, utilisation de la configuration par défaut"
                     )
                 else:
-                    with open(config_path, "r", encoding="utf-8") as f:
+                    with open(config_path, encoding="utf-8") as f:
                         user_config = yaml.safe_load(f)
                         default_config.update(user_config)
             except Exception as e:
@@ -112,7 +112,7 @@ class AutoCleaner:
 
     @performance_monitor
     @memory_efficient
-    def scan_for_cleanup_candidates(self) -> Dict[str, Any]:
+    def scan_for_cleanup_candidates(self) -> dict[str, Any]:
         """Scanne le projet pour les candidats de nettoyage"""
         candidates = {
             "files_to_remove": [],
@@ -188,7 +188,7 @@ class AutoCleaner:
                 return True
         return False
 
-    def cleanup_pyc_files(self) -> Dict[str, Any]:
+    def cleanup_pyc_files(self) -> dict[str, Any]:
         """Nettoie les fichiers .pyc"""
         result = {"removed_files": [], "total_size_freed": 0, "errors": []}
 
@@ -207,7 +207,7 @@ class AutoCleaner:
 
         return result
 
-    def cleanup_cache_directories(self) -> Dict[str, Any]:
+    def cleanup_cache_directories(self) -> dict[str, Any]:
         """Nettoie les répertoires cache"""
         result = {
             "removed_directories": [],
@@ -251,7 +251,7 @@ class AutoCleaner:
             logger.warning(f"Erreur calcul taille {directory}: {e}")
         return total_size
 
-    def cleanup_log_files(self) -> Dict[str, Any]:
+    def cleanup_log_files(self) -> dict[str, Any]:
         """Nettoie les fichiers de log"""
         result = {"removed_files": [], "total_size_freed": 0, "errors": []}
 
@@ -270,9 +270,7 @@ class AutoCleaner:
 
         return result
 
-    def cleanup_large_files(
-        self, max_size_mb: Optional[float] = None
-    ) -> Dict[str, Any]:
+    def cleanup_large_files(self, max_size_mb: float | None = None) -> dict[str, Any]:
         """Nettoie les gros fichiers"""
         result = {"removed_files": [], "total_size_freed": 0, "errors": []}
 
@@ -299,7 +297,7 @@ class AutoCleaner:
 
         return result
 
-    def cleanup_old_files(self, days_old: Optional[int] = None) -> Dict[str, Any]:
+    def cleanup_old_files(self, days_old: int | None = None) -> dict[str, Any]:
         """Nettoie les anciens fichiers"""
         result = {"removed_files": [], "total_size_freed": 0, "errors": []}
 
@@ -327,7 +325,7 @@ class AutoCleaner:
 
         return result
 
-    def cleanup_duplicate_files(self) -> Dict[str, Any]:
+    def cleanup_duplicate_files(self) -> dict[str, Any]:
         """Nettoie les fichiers dupliqués"""
         result = {"removed_files": [], "total_size_freed": 0, "errors": []}
 
@@ -366,7 +364,7 @@ class AutoCleaner:
             return ""
         return hash_md5.hexdigest()
 
-    def cleanup_empty_directories(self) -> Dict[str, Any]:
+    def cleanup_empty_directories(self) -> dict[str, Any]:
         """Nettoie les répertoires vides"""
         result = {"removed_directories": [], "errors": []}
 
@@ -389,7 +387,7 @@ class AutoCleaner:
 
         return result
 
-    def cleanup_temporary_files(self) -> Dict[str, Any]:
+    def cleanup_temporary_files(self) -> dict[str, Any]:
         """Nettoie les fichiers temporaires"""
         result = {"removed_files": [], "total_size_freed": 0, "errors": []}
 
@@ -413,7 +411,7 @@ class AutoCleaner:
 
         return result
 
-    def cleanup_build_artifacts(self) -> Dict[str, Any]:
+    def cleanup_build_artifacts(self) -> dict[str, Any]:
         """Nettoie les artefacts de build"""
         result = {
             "removed_files": [],
@@ -476,7 +474,7 @@ class AutoCleaner:
 
         return result
 
-    def cleanup_test_artifacts(self) -> Dict[str, Any]:
+    def cleanup_test_artifacts(self) -> dict[str, Any]:
         """Nettoie les artefacts de test"""
         result = {
             "removed_files": [],
@@ -536,7 +534,7 @@ class AutoCleaner:
 
         return result
 
-    def cleanup_ide_files(self) -> Dict[str, Any]:
+    def cleanup_ide_files(self) -> dict[str, Any]:
         """Nettoie les fichiers d'IDE"""
         cleaned_files = []
         cleaned_directories = []
@@ -621,7 +619,7 @@ class AutoCleaner:
 
         return result
 
-    def _clean_backup_files(self, path: Optional[Path] = None) -> Dict[str, Any]:
+    def _clean_backup_files(self, path: Path | None = None) -> dict[str, Any]:
         """Nettoie les fichiers de sauvegarde"""
         cleaned_files = []
         total_size_freed = 0
@@ -670,7 +668,7 @@ class AutoCleaner:
 
         return result
 
-    def _clean_cache_files(self, path: Optional[Path] = None) -> Dict[str, Any]:
+    def _clean_cache_files(self, path: Path | None = None) -> dict[str, Any]:
         """Nettoie les fichiers de cache"""
         cleaned_files = []
         total_size_freed = 0
@@ -736,7 +734,7 @@ class AutoCleaner:
 
         return result
 
-    def _clean_duplicate_files(self, path: Optional[Path] = None) -> Dict[str, Any]:
+    def _clean_duplicate_files(self, path: Path | None = None) -> dict[str, Any]:
         """Nettoie les fichiers en double"""
         # Cette méthode utilise la logique existante de cleanup_duplicate_files
         # mais avec un path optionnel
@@ -750,7 +748,7 @@ class AutoCleaner:
         else:
             return self.cleanup_duplicate_files()
 
-    def _clean_empty_directories(self, path: Optional[Path] = None) -> Dict[str, Any]:
+    def _clean_empty_directories(self, path: Path | None = None) -> dict[str, Any]:
         """Nettoie les répertoires vides"""
         cleaned_dirs = []
         target_path = path if path else self.project_path
@@ -778,7 +776,7 @@ class AutoCleaner:
 
         return result
 
-    def _clean_system_files(self, path: Optional[Path] = None) -> Dict[str, Any]:
+    def _clean_system_files(self, path: Path | None = None) -> dict[str, Any]:
         """Nettoie les fichiers système"""
         cleaned_files = []
         total_size_freed = 0
@@ -809,7 +807,7 @@ class AutoCleaner:
 
         return result
 
-    def _clean_temp_files(self, path: Optional[Path] = None) -> Dict[str, Any]:
+    def _clean_temp_files(self, path: Path | None = None) -> dict[str, Any]:
         """Nettoie les fichiers temporaires"""
         cleaned_files = []
         total_size_freed = 0
@@ -885,7 +883,7 @@ class AutoCleaner:
         except Exception:
             return False
 
-    def clean_project(self, dry_run: bool = False) -> Dict[str, Any]:
+    def clean_project(self, dry_run: bool = False) -> dict[str, Any]:
         """Nettoie le projet complet"""
         self.dry_run = dry_run
         self.cleaned_files = []
@@ -932,7 +930,7 @@ class AutoCleaner:
 
         return {"stats": self.stats, "results": results, "dry_run": dry_run}
 
-    def _generate_cleanup_report(self) -> Dict[str, Any]:
+    def _generate_cleanup_report(self) -> dict[str, Any]:
         """Génère un rapport de nettoyage"""
         return {
             "stats": self.stats,
@@ -945,7 +943,7 @@ class AutoCleaner:
             ),
         }
 
-    def optimize_project_structure(self, project_path: str) -> Dict[str, Any]:
+    def optimize_project_structure(self, project_path: str) -> dict[str, Any]:
         """Optimise la structure du projet"""
         # Cette méthode simule une optimisation de structure
         return {
@@ -962,7 +960,7 @@ class AutoCleaner:
             "dry_run": getattr(self, "dry_run", False),
         }
 
-    def calculate_cleanup_impact(self) -> Dict[str, Any]:
+    def calculate_cleanup_impact(self) -> dict[str, Any]:
         """Calcule l'impact du nettoyage"""
         candidates = self.scan_for_cleanup_candidates()
 
@@ -988,7 +986,7 @@ class AutoCleaner:
             "duplicate_files": len(candidates["duplicate_files"]),
         }
 
-    def generate_cleanup_report(self) -> Dict[str, Any]:
+    def generate_cleanup_report(self) -> dict[str, Any]:
         """Génère un rapport de nettoyage"""
         impact = self.calculate_cleanup_impact()
 
@@ -1033,10 +1031,10 @@ class AutoCleaner:
             logger.error(f"Erreur sauvegarde historique: {e}")
             return False
 
-    def load_cleanup_history(self, history_path: str) -> List[Dict[str, Any]]:
+    def load_cleanup_history(self, history_path: str) -> list[dict[str, Any]]:
         """Charge l'historique de nettoyage"""
         try:
-            with open(history_path, "r", encoding="utf-8") as f:
+            with open(history_path, encoding="utf-8") as f:
                 history = json.load(f)
                 self.cleanup_history = history
                 return history
@@ -1044,7 +1042,7 @@ class AutoCleaner:
             logger.warning(f"Impossible de charger l'historique {history_path}: {e}")
             return []
 
-    def perform_full_cleanup(self) -> Dict[str, Any]:
+    def perform_full_cleanup(self) -> dict[str, Any]:
         """Effectue un nettoyage complet"""
         start_time = datetime.now()
 
@@ -1090,7 +1088,7 @@ class AutoCleaner:
             "detailed_results": results,
         }
 
-    def clean_generated_project(self, project_path: str) -> Dict[str, Any]:
+    def clean_generated_project(self, project_path: str) -> dict[str, Any]:
         """Nettoie un projet généré par Athalia."""
         project_dir = Path(project_path)
         if not project_dir.exists():
@@ -1157,13 +1155,13 @@ class AutoCleaner:
         return result
 
 
-def cleanup_project(project_path: str = ".") -> Dict[str, Any]:
+def cleanup_project(project_path: str = ".") -> dict[str, Any]:
     """Fonction utilitaire pour nettoyer un projet"""
     cleaner = AutoCleaner(project_path)
     return cleaner.perform_full_cleanup()
 
 
-def analyze_cleanup_needs(project_path: str = ".") -> Dict[str, Any]:
+def analyze_cleanup_needs(project_path: str = ".") -> dict[str, Any]:
     """Fonction utilitaire pour analyser les besoins de nettoyage"""
     cleaner = AutoCleaner(project_path)
     return cleaner.calculate_cleanup_impact()

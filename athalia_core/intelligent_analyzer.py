@@ -9,12 +9,12 @@ Orchestrateur principal qui coordonne tous les modules d'analyse:
 - Performance Analyzer (analyse de performance)
 """
 
-from dataclasses import asdict, dataclass
-from datetime import datetime
 import json
 import logging
+from dataclasses import asdict, dataclass
+from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 from .architecture_analyzer import ArchitectureAnalyzer
 from .ast_analyzer import ASTAnalyzer
@@ -38,13 +38,13 @@ class ComprehensiveAnalysis:
 
     project_name: str
     analysis_date: datetime
-    ast_analysis: Dict[str, Any]
-    pattern_analysis: Dict[str, Any]
-    architecture_analysis: Dict[str, Any]
-    performance_analysis: Dict[str, Any]
+    ast_analysis: dict[str, Any]
+    pattern_analysis: dict[str, Any]
+    architecture_analysis: dict[str, Any]
+    performance_analysis: dict[str, Any]
     overall_score: float
-    recommendations: List[str]
-    optimization_plan: Dict[str, Any]
+    recommendations: list[str]
+    optimization_plan: dict[str, Any]
 
 
 class IntelligentAnalyzer:
@@ -128,7 +128,7 @@ class IntelligentAnalyzer:
 
         return comprehensive_analysis
 
-    def _perform_ast_analysis(self, project_path: Path) -> Dict[str, Any]:
+    def _perform_ast_analysis(self, project_path: Path) -> dict[str, Any]:
         """Effectuer l'analyse AST de base"""
         python_files = list(project_path.rglob("*.py"))
         file_analyses = []
@@ -167,8 +167,8 @@ class IntelligentAnalyzer:
 
     def _calculate_overall_score(
         self,
-        ast_analysis: Dict[str, Any],
-        pattern_analysis: Dict[str, Any],
+        ast_analysis: dict[str, Any],
+        pattern_analysis: dict[str, Any],
         architecture_analysis: Any,
         performance_analysis: Any,
     ) -> float:
@@ -214,17 +214,19 @@ class IntelligentAnalyzer:
         weights.append(3.5)
 
         # Calculer la moyenne pondérée
-        total_score = sum(score * weight for score, weight in zip(scores, weights))
+        total_score = sum(
+            score * weight for score, weight in zip(scores, weights, strict=False)
+        )
         total_weight = sum(weights)
 
         return total_score / total_weight if total_weight > 0 else 100.0
 
     def _generate_comprehensive_recommendations(
         self,
-        pattern_analysis: Dict[str, Any],
+        pattern_analysis: dict[str, Any],
         architecture_analysis: Any,
         performance_analysis: Any,
-    ) -> List[str]:
+    ) -> list[str]:
         """Générer des recommandations globales"""
         recommendations = []
 
@@ -294,10 +296,10 @@ class IntelligentAnalyzer:
 
     def _create_optimization_plan(
         self,
-        pattern_analysis: Dict[str, Any],
+        pattern_analysis: dict[str, Any],
         architecture_analysis: Any,
         performance_analysis: Any,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """Créer un plan d'optimisation global"""
         plan = {
             "priority_tasks": [],
@@ -446,7 +448,7 @@ class IntelligentAnalyzer:
 
         logger.info(f"💾 Analyse sauvegardée dans {output_file}")
 
-    def get_learning_insights(self) -> Dict[str, Any]:
+    def get_learning_insights(self) -> dict[str, Any]:
         """Obtenir des insights d'apprentissage de tous les modules"""
         return {
             "ast_insights": "Analyse AST de base disponible",
@@ -457,7 +459,7 @@ class IntelligentAnalyzer:
             ),
         }
 
-    def generate_intelligent_coordination(self) -> Dict[str, Any]:
+    def generate_intelligent_coordination(self) -> dict[str, Any]:
         """Générer une coordination intelligente"""
         return {
             "timestamp": datetime.now().isoformat(),
@@ -475,8 +477,8 @@ class IntelligentAnalyzer:
         }
 
     def orchestrate_with_unified(
-        self, project_path: str = None, config: Optional[Dict[str, Any]] = None
-    ) -> Dict[str, Any]:
+        self, project_path: str = None, config: dict[str, Any] | None = None
+    ) -> dict[str, Any]:
         """Utiliser l'orchestrateur unifié pour une orchestration complète"""
         if not UNIFIED_ORCHESTRATOR_AVAILABLE:
             logger.warning(

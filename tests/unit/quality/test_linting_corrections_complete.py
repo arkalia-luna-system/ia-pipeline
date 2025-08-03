@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Documentation complète des corrections de linting.
 Résumé de toutes les améliorations de qualité du code apportées.

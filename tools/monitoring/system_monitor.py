@@ -4,10 +4,10 @@ Script de monitoring système pour Athalia
 Surveille les performances, l'espace disque, et l'état des processus
 """
 
-from datetime import datetime
 import json
 import logging
 import os
+from datetime import datetime
 from pathlib import Path
 
 import psutil
@@ -42,7 +42,7 @@ class SystemMonitor:
             "backup_files": 0,
         }
 
-        for root, dirs, files in os.walk(self.project_path):
+        for root, _dirs, files in os.walk(self.project_path):
             for file in files:
                 stats["total_files"] += 1
                 if file.endswith(".py"):

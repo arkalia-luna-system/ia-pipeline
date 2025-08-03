@@ -13,8 +13,8 @@ from pathlib import Path
 from athalia_core.cache_manager import (
     CacheManager,
     cache_result,
-    get_cached_result,
     get_cache_stats,
+    get_cached_result,
 )
 
 

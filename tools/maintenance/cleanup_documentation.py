@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Script de nettoyage et d'organisation de la documentation
 """
 
-from datetime import datetime
 import json
 import logging
+from datetime import datetime
 from pathlib import Path
 
 logging.basicConfig(
@@ -136,7 +135,7 @@ class DocumentationCleaner:
             try:
                 # Copier vers l'archive
                 archive_path = self.archive_dir / file_path.name
-                with open(file_path, "r", encoding="utf-8") as src:
+                with open(file_path, encoding="utf-8") as src:
                     with open(archive_path, "w", encoding="utf-8") as dst:
                         dst.write(src.read())
 

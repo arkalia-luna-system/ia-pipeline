@@ -8,7 +8,7 @@ import ast
 import json
 import logging
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any
 
 import yaml
 
@@ -27,7 +27,7 @@ class PluginValidator:
             "errors": [],
         }
 
-    def validate_plugin(self, plugin_path: str) -> Dict[str, Any]:
+    def validate_plugin(self, plugin_path: str) -> dict[str, Any]:
         """Valide un plugin spécifique"""
         plugin_path_obj = Path(plugin_path)
 
@@ -56,7 +56,7 @@ class PluginValidator:
         return results
 
     def _check_plugin_structure(
-        self, plugin_path: Path, results: Dict[str, Any]
+        self, plugin_path: Path, results: dict[str, Any]
     ) -> bool:
         """Vérifie la structure du plugin"""
         required_files = ["__init__.py"]
@@ -68,13 +68,13 @@ class PluginValidator:
 
         return True
 
-    def _check_python_syntax(self, plugin_path: Path, results: Dict[str, Any]) -> bool:
+    def _check_python_syntax(self, plugin_path: Path, results: dict[str, Any]) -> bool:
         """Vérifie la syntaxe Python du plugin"""
         python_files = list(plugin_path.rglob("*.py"))
 
         for py_file in python_files:
             try:
-                with open(py_file, "r", encoding="utf-8") as f:
+                with open(py_file, encoding="utf-8") as f:
                     content = f.read()
 
                 # Vérifier la syntaxe avec ast
@@ -88,7 +88,7 @@ class PluginValidator:
 
         return True
 
-    def _check_metadata(self, plugin_path: Path, results: Dict[str, Any]):
+    def _check_metadata(self, plugin_path: Path, results: dict[str, Any]):
         """Vérifie les métadonnées du plugin"""
         metadata_files = ["plugin.yaml", "plugin.yml", "plugin.json"]
 
@@ -97,10 +97,10 @@ class PluginValidator:
             if metadata_path.exists():
                 try:
                     if metadata_file.endswith(".json"):
-                        with open(metadata_path, "r") as f:
+                        with open(metadata_path) as f:
                             metadata = json.load(f)
                     else:
-                        with open(metadata_path, "r") as f:
+                        with open(metadata_path) as f:
                             metadata = yaml.safe_load(f)
 
                     results["metadata"] = metadata
@@ -119,7 +119,7 @@ class PluginValidator:
                         f"Impossible de lire {metadata_file}: {e}"
                     )
 
-    def _check_dependencies(self, plugin_path: Path, results: Dict[str, Any]):
+    def _check_dependencies(self, plugin_path: Path, results: dict[str, Any]):
         """Vérifie les dépendances du plugin"""
         requirements_files = ["requirements.txt", "setup.py", "config/pyproject.toml"]
 
@@ -128,7 +128,7 @@ class PluginValidator:
             if req_path.exists():
                 try:
                     if req_file == "requirements.txt":
-                        with open(req_path, "r") as f:
+                        with open(req_path) as f:
                             deps = [
                                 line.strip()
                                 for line in f
@@ -139,7 +139,7 @@ class PluginValidator:
                 except Exception as e:
                     results["warnings"].append(f"Impossible de lire {req_file}: {e}")
 
-    def validate_all_plugins(self) -> Dict[str, Any]:
+    def validate_all_plugins(self) -> dict[str, Any]:
         """Valide tous les plugins dans le répertoire"""
         if not self.plugins_dir.exists():
             return {
@@ -207,13 +207,13 @@ class PluginValidator:
         return "\n".join(report)
 
 
-def validate_plugin(plugin_path: str) -> Dict[str, Any]:
+def validate_plugin(plugin_path: str) -> dict[str, Any]:
     """Fonction utilitaire pour valider un plugin"""
     validator = PluginValidator()
     return validator.validate_plugin(plugin_path)
 
 
-def validate_all_plugins(plugins_dir: str = "plugins") -> Dict[str, Any]:
+def validate_all_plugins(plugins_dir: str = "plugins") -> dict[str, Any]:
     """Fonction utilitaire pour valider tous les plugins"""
     validator = PluginValidator(plugins_dir)
     return validator.validate_all_plugins()

@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Test de performance d'Athalia avec cache
 """
 
-from datetime import datetime
 import json
 import subprocess
 import time
+from datetime import datetime
 
 
 def test_athalia_performance():

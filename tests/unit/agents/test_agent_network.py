@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Tests pour les agents unifiés
 Corrigé après consolidation des agents

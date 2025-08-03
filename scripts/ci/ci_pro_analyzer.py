@@ -4,12 +4,12 @@ Script d'analyse CI/CD Pro Athalia
 Analyse automatique des corrections nécessaires par niveau
 """
 
-from datetime import datetime
 import json
-from pathlib import Path
 import subprocess
 import sys
-from typing import Any, Dict, Tuple
+from datetime import datetime
+from pathlib import Path
+from typing import Any
 
 
 # Couleurs pour l'affichage
@@ -59,7 +59,7 @@ class CIProAnalyzer:
 
     def run_command(
         self, command: str, capture_output: bool = True
-    ) -> Tuple[int, str, str]:
+    ) -> tuple[int, str, str]:
         """Exécute une commande et retourne le résultat"""
         try:
             if capture_output:
@@ -75,7 +75,7 @@ class CIProAnalyzer:
         except Exception as e:
             return -1, "", str(e)
 
-    def analyze_level1_basic(self) -> Dict[str, Any]:
+    def analyze_level1_basic(self) -> dict[str, Any]:
         """Analyse le niveau 1 - Tests de base"""
         self.print_section("Niveau 1 - Tests de Base")
 
@@ -125,7 +125,7 @@ class CIProAnalyzer:
 
         return results
 
-    def analyze_level2_security(self) -> Dict[str, Any]:
+    def analyze_level2_security(self) -> dict[str, Any]:
         """Analyse le niveau 2 - Tests de sécurité"""
         self.print_section("Niveau 2 - Tests de Sécurité")
 
@@ -142,7 +142,7 @@ class CIProAnalyzer:
         )
         if returncode == 0:
             try:
-                with open("/tmp/bandit_analysis.json", "r") as f:
+                with open("/tmp/bandit_analysis.json") as f:
                     bandit_data = json.load(f)
 
                 metrics = bandit_data.get("metrics", {}).get("_totals", {})
@@ -194,7 +194,7 @@ class CIProAnalyzer:
 
         return results
 
-    def analyze_level3_performance(self) -> Dict[str, Any]:
+    def analyze_level3_performance(self) -> dict[str, Any]:
         """Analyse le niveau 3 - Tests de performance"""
         self.print_section("Niveau 3 - Tests de Performance")
 
@@ -223,7 +223,7 @@ class CIProAnalyzer:
 
         return results
 
-    def analyze_level4_advanced(self) -> Dict[str, Any]:
+    def analyze_level4_advanced(self) -> dict[str, Any]:
         """Analyse le niveau 4 - Tests avancés"""
         self.print_section("Niveau 4 - Tests Avancés")
 
@@ -286,7 +286,7 @@ class CIProAnalyzer:
 
         return results
 
-    def analyze_level5_complete(self) -> Dict[str, Any]:
+    def analyze_level5_complete(self) -> dict[str, Any]:
         """Analyse le niveau 5 - Tests complets"""
         self.print_section("Niveau 5 - Tests Complets")
 
@@ -338,7 +338,7 @@ class CIProAnalyzer:
 
         return results
 
-    def generate_report(self) -> Dict[str, Any]:
+    def generate_report(self) -> dict[str, Any]:
         """Génère le rapport complet"""
         self.print_header("ANALYSE CI/CD PRO ATHALIA")
 
@@ -353,7 +353,7 @@ class CIProAnalyzer:
 
         return report
 
-    def print_summary(self, report: Dict[str, Any]):
+    def print_summary(self, report: dict[str, Any]):
         """Affiche le résumé de l'analyse"""
         self.print_header("RÉSUMÉ DE L'ANALYSE")
 
@@ -381,14 +381,14 @@ class CIProAnalyzer:
         self.print_section("Recommandations Prioritaires")
 
         priority_recommendations = []
-        for level_name, level_data in report["levels"].items():
+        for _level_name, level_data in report["levels"].items():
             if level_data["status"] != "FONCTIONNEL":
                 priority_recommendations.extend(level_data["recommendations"][:2])
 
         for i, rec in enumerate(priority_recommendations[:5], 1):
             print(f"{Colors.CYAN}{i}. {rec}{Colors.NC}")
 
-    def save_report(self, report: Dict[str, Any], filename: str = None):
+    def save_report(self, report: dict[str, Any], filename: str = None):
         """Sauvegarde le rapport"""
         if filename is None:
             filename = (

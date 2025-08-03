@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Script de lancement des tests de performance Athalia
 Gère automatiquement les dépendances manquantes
 """
 
+import logging
+import os
 import subprocess
 import sys
-import os
 from pathlib import Path
-import logging
 
 # Configuration du logging
 logging.basicConfig(

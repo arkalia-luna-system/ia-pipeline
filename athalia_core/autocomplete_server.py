@@ -1,5 +1,3 @@
-from typing import List
-
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
@@ -14,7 +12,7 @@ class AutocompleteRequest(BaseModel):
 
 
 class AutocompleteResponse(BaseModel):
-    suggestions: List[str]
+    suggestions: list[str]
 
 
 def get_engine():

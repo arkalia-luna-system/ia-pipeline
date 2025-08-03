@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Test de présence des modèles dans la config Continue
 """
@@ -14,7 +13,7 @@ def test_models_presence():
     config_path = os.path.expanduser("~/.continue/config.yaml")
     if not os.path.exists(config_path):
         pytest.skip(f"Fichier de config introuvable: {config_path}")
-    with open(config_path, "r") as file_handle:
+    with open(config_path) as file_handle:
         content = file_handle.read()
     assert (
         "claude-3-sonnet-20240229" in content or "claude" in content.lower()

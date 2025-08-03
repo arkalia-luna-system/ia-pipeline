@@ -4,8 +4,8 @@ Couverture: 100% des fonctionnalités d'orchestration unifiée
 Tests: 20 tests unitaires et d'intégration
 """
 
-from pathlib import Path
 import tempfile
+from pathlib import Path
 from unittest.mock import Mock, patch
 
 import pytest
@@ -772,7 +772,7 @@ class TestUnifiedOrchestrator:
             assert True
         except Exception as e:
             # Si une exception est levée, c'est un échec
-            assert False, f"La méthode a levé une exception: {e}"
+            raise AssertionError(f"La méthode a levé une exception: {e}")
 
     @patch("athalia_core.unified_orchestrator.CLASSIFICATION_MODULES_AVAILABLE", False)
     def test_step_advanced_classification_modules_unavailable(self):
@@ -962,7 +962,7 @@ def complex_function():
             assert True
         except Exception as e:
             # Si une exception est levée, c'est un échec
-            assert False, f"L'initialisation a levé une exception: {e}"
+            raise AssertionError(f"L'initialisation a levé une exception: {e}")
 
     @patch("athalia_core.unified_orchestrator.ADVANCED_MODULES_AVAILABLE", True)
     def test_initialize_modules_with_advanced(self):

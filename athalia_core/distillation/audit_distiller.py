@@ -1,19 +1,18 @@
-# -*- coding: utf-8 -*-
 """
 Module de distillation d'audits pour Athalia/Arkalia
 Fusionne et pondère plusieurs audits (sécurité, qualité, performance...)
 """
 
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 
 class AuditDistiller:
-    def __init__(self, weights: Optional[Dict[str, float]] = None):
+    def __init__(self, weights: dict[str, float] | None = None):
         # Pondération par type d'audit (ex: {'securite': 0.3, 'qualite': 0.4,
         # ...})
         self.weights = weights or {}
 
-    def distill(self, audits: List[Dict[str, Any]]) -> Dict[str, Any]:
+    def distill(self, audits: list[dict[str, Any]]) -> dict[str, Any]:
         """
         Fusionne plusieurs audits en un score global et des recommandations
         synthétiques.

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import logging
-from pathlib import Path
 import subprocess
-from typing import Any, Dict
+from pathlib import Path
+from typing import Any
 
 # Import du validateur de sécurité
 try:
@@ -32,7 +32,7 @@ class CodeLinter:
         self.auto_fix = auto_fix
         self.report = {"errors": [], "warnings": [], "fixes": [], "score": 0}
 
-    def run(self) -> Dict[str, Any]:
+    def run(self) -> dict[str, Any]:
         """Lance l'analyse de qualité renforcée du projet"""
         logger.info(f"📏 Analyse de qualité renforcée pour: {self.project_path.name}")
 
@@ -197,7 +197,7 @@ class CodeLinter:
 
         for py_file in self.project_path.rglob("*.py"):
             try:
-                with open(py_file, "r", encoding="utf-8") as f:
+                with open(py_file, encoding="utf-8") as f:
                     content = f.read()
 
                 # Compter les fonctions

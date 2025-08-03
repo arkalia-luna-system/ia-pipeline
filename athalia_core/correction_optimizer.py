@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Système d'optimisation de la correction automatique pour Athalia/Arkalia
 Améliore le taux de réussite de 80% à 95%+ en utilisant des techniques avancées
 """
 
 import ast
-from collections import defaultdict
-from dataclasses import dataclass
 import re
 import time
-from typing import Any, Dict, List, Optional, Tuple
+from collections import defaultdict
+from dataclasses import dataclass
+from typing import Any
 
 from .logger_advanced import log_correction, log_error
 
@@ -22,9 +21,9 @@ class CorrectionResult:
     success: bool
     original_content: str
     corrected_content: str
-    corrections_applied: List[Dict[str, Any]]
+    corrections_applied: list[dict[str, Any]]
     duration: float
-    error_message: Optional[str] = None
+    error_message: str | None = None
 
 
 class CorrectionOptimizer:
@@ -117,7 +116,7 @@ class CorrectionOptimizer:
 
     def _apply_basic_corrections(
         self, content: str
-    ) -> Tuple[str, List[Dict[str, Any]]]:
+    ) -> tuple[str, list[dict[str, Any]]]:
         """Applique les corrections basiques"""
         corrections = []
         lines = content.split("\n")
@@ -218,9 +217,9 @@ class CorrectionOptimizer:
 
         return "\n".join(lines), corrections
 
-    def _apply_ast_corrections(self, content: str) -> Tuple[str, List[Dict[str, Any]]]:
+    def _apply_ast_corrections(self, content: str) -> tuple[str, list[dict[str, Any]]]:
         """Corrections basées sur l'analyse AST"""
-        corrections: List[Dict[str, Any]] = []
+        corrections: list[dict[str, Any]] = []
 
         try:
             # Essayer de parser le code
@@ -276,7 +275,7 @@ class CorrectionOptimizer:
 
     def _apply_contextual_corrections(
         self, content: str
-    ) -> Tuple[str, List[Dict[str, Any]]]:
+    ) -> tuple[str, list[dict[str, Any]]]:
         """Corrections contextuelles basées sur l'analyse du code"""
         corrections = []
         lines = content.split("\n")
@@ -361,7 +360,7 @@ class CorrectionOptimizer:
 
         return "\n".join(lines), corrections
 
-    def _analyze_syntax_error(self, error: SyntaxError, content: str) -> Dict[str, Any]:
+    def _analyze_syntax_error(self, error: SyntaxError, content: str) -> dict[str, Any]:
         """Analyse une erreur de syntaxe pour déterminer le type de correction"""
         lines = content.split("\n")
         line_num = error.lineno - 1 if error.lineno else 0
@@ -387,8 +386,8 @@ class CorrectionOptimizer:
         return error_info
 
     def _fix_indentation_error(
-        self, content: str, error_info: Dict[str, Any]
-    ) -> Tuple[str, List[Dict[str, Any]]]:
+        self, content: str, error_info: dict[str, Any]
+    ) -> tuple[str, list[dict[str, Any]]]:
         """Corrige les erreurs d'indentation"""
         corrections = []
         lines = content.split("\n")
@@ -419,8 +418,8 @@ class CorrectionOptimizer:
         return "\n".join(lines), corrections
 
     def _fix_bracket_balance(
-        self, content: str, error_info: Dict[str, Any]
-    ) -> Tuple[str, List[Dict[str, Any]]]:
+        self, content: str, error_info: dict[str, Any]
+    ) -> tuple[str, list[dict[str, Any]]]:
         """Corrige les problèmes de parenthèses/accolades"""
         corrections = []
 
@@ -481,8 +480,8 @@ class CorrectionOptimizer:
         return "\n".join(lines), corrections
 
     def _fix_string_issues(
-        self, content: str, error_info: Dict[str, Any]
-    ) -> Tuple[str, List[Dict[str, Any]]]:
+        self, content: str, error_info: dict[str, Any]
+    ) -> tuple[str, list[dict[str, Any]]]:
         """Corrige les problèmes de chaînes de caractères"""
         corrections = []
 
@@ -509,9 +508,9 @@ class CorrectionOptimizer:
 
         return "\n".join(lines), corrections
 
-    def _analyze_context(self, lines: List[str]) -> Dict[str, Any]:
+    def _analyze_context(self, lines: list[str]) -> dict[str, Any]:
         """Analyse le contexte du code pour les corrections contextuelles"""
-        context: Dict[str, Any] = {
+        context: dict[str, Any] = {
             "missing_imports": set(),
             "undefined_variables": set(),
             "defined_variables": set(),
@@ -637,7 +636,7 @@ class CorrectionOptimizer:
                 -100:
             ]
 
-    def _extract_patterns(self, original: str, corrected: str) -> List[str]:
+    def _extract_patterns(self, original: str, corrected: str) -> list[str]:
         """Extrait des patterns de correction"""
         patterns = []
 
@@ -656,7 +655,7 @@ class CorrectionOptimizer:
 
         return patterns
 
-    def get_correction_stats(self) -> Dict[str, Any]:
+    def get_correction_stats(self) -> dict[str, Any]:
         """Récupère les statistiques de correction"""
         total_corrections = sum(
             len(history) for history in self.correction_history.values()
@@ -692,7 +691,7 @@ def optimize_correction(file_path: str, content: str) -> CorrectionResult:
     return optimizer.optimize_correction(file_path, content)
 
 
-def get_correction_stats() -> Dict[str, Any]:
+def get_correction_stats() -> dict[str, Any]:
     """Fonction utilitaire pour obtenir les statistiques de correction"""
     optimizer = CorrectionOptimizer()
     return optimizer.get_correction_stats()

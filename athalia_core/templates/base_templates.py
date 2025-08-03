@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 import logging
-from typing import Dict
 
 logger = logging.getLogger(__name__)
 
 
-def get_base_templates() -> Dict[str, str]:
+def get_base_templates() -> dict[str, str]:
     """Retourne les templates de base pour tous les projets."""
 
     return {

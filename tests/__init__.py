@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Protection contre la création automatique de fichiers de tests
 ⚠️ DÉSACTIVÉE TEMPORAIREMENT pour éviter la suppression de tests légitimes
