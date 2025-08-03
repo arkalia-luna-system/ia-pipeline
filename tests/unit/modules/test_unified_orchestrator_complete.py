@@ -97,7 +97,7 @@ class TestUnifiedOrchestrator:
 
         blueprint = {"name": "test_project", "type": "api"}
 
-        with pytest.raises(Exception):
+        with pytest.raises(Exception):  # noqa: B017
             self.orchestrator._step_generate_project(blueprint)
 
         assert len(self.orchestrator.workflow_results["errors"]) > 0
