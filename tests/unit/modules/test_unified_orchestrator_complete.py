@@ -97,7 +97,7 @@ class TestUnifiedOrchestrator:
 
         blueprint = {"name": "test_project", "type": "api"}
 
-        with pytest.raises(Exception):
+        with pytest.raises(RuntimeError):
             self.orchestrator._step_generate_project(blueprint)
 
         assert len(self.orchestrator.workflow_results["errors"]) > 0
@@ -772,7 +772,7 @@ class TestUnifiedOrchestrator:
             assert True
         except Exception as e:
             # Si une exception est levée, c'est un échec
-            raise AssertionError(f"La méthode a levé une exception: {e}")
+            raise AssertionError(f"La méthode a levé une exception: {e}") from e
 
     @patch("athalia_core.unified_orchestrator.CLASSIFICATION_MODULES_AVAILABLE", False)
     def test_step_advanced_classification_modules_unavailable(self):
@@ -962,7 +962,7 @@ def complex_function():
             assert True
         except Exception as e:
             # Si une exception est levée, c'est un échec
-            raise AssertionError(f"L'initialisation a levé une exception: {e}")
+            raise AssertionError(f"L'initialisation a levé une exception: {e}") from e
 
     @patch("athalia_core.unified_orchestrator.ADVANCED_MODULES_AVAILABLE", True)
     def test_initialize_modules_with_advanced(self):

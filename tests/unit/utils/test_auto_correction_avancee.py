@@ -32,7 +32,7 @@ class TestAutoCorrectionAdvanced(unittest.TestCase):
         try:
             self.assertTrue(True, "Import réussi")
         except ImportError as e:
-            raise AssertionError(f"Module auto-correction non disponible: {e}")
+            raise AssertionError(f"Module auto-correction non disponible: {e}") from e
 
     def test_import_dashboard_unified(self):
         """Test d'import du dashboard unifié"""
@@ -46,14 +46,14 @@ class TestAutoCorrectionAdvanced(unittest.TestCase):
         try:
             self.assertTrue(True, "Import réussi")
         except ImportError as e:
-            raise AssertionError(f"Module profils non disponible: {e}")
+            raise AssertionError(f"Module profils non disponible: {e}") from e
 
     def test_advanced_modules_structure(self):
         """Test de la structure des modules avancés"""
         try:
             self.assertTrue(True, "Structure des modules avancés correcte")
         except ImportError as e:
-            raise AssertionError(f"Structure des modules avancés non disponible: {e}")
+            raise AssertionError(f"Structure des modules avancés non disponible: {e}") from e
 
 
 if __name__ == "__main__":
