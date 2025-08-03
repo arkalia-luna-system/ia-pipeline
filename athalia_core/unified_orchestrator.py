@@ -234,9 +234,6 @@ class UnifiedOrchestrator:
             # Étape 2: Génération du projet
             self._step_generate_project(blueprint)
 
-            # Étape 3: Templates artistiques (si applicable)
-            self._step_artistic_templates(blueprint)
-
             # Étape 4: Amélioration IA intelligente
             self._step_ai_enhancement(blueprint)
 
@@ -634,31 +631,22 @@ class UnifiedOrchestrator:
                         full_path.parent.mkdir(parents=True, exist_ok=True)
 
                         try:
-                            # Ne pas écraser le main.py existant, créer dans un sous-dossier
-                            if template_path == "main.py":
-                                # Créer un dossier spécial pour les templates artistiques
-                                artistic_path = (
-                                    self.project_path
-                                    / "src"
-                                    / "artistic_templates"
-                                    / template_path
-                                )
-                                artistic_path.parent.mkdir(parents=True, exist_ok=True)
-                                with open(artistic_path, "w", encoding="utf-8") as f:
-                                    f.write(template_content)
-                                templates_applied.append(
-                                    f"src/artistic_templates/{template_path}"
-                                )
-                                logger.info(
-                                    f"✅ Template artistique appliqué: src/artistic_templates/{template_path}"
-                                )
-                            else:
-                                with open(full_path, "w", encoding="utf-8") as f:
-                                    f.write(template_content)
-                                templates_applied.append(f"src/{template_path}")
-                                logger.info(
-                                    f"✅ Template appliqué: src/{template_path}"
-                                )
+                            # Créer le dossier complet pour le template
+                            template_dir = template_path.split("/")[
+                                0
+                            ]  # "animation", "audio", etc.
+                            template_file = template_path.split("/")[1]  # "main.py"
+
+                            # Créer le chemin complet dans le projet
+                            template_full_path = (
+                                self.project_path / "src" / template_dir / template_file
+                            )
+                            template_full_path.parent.mkdir(parents=True, exist_ok=True)
+
+                            with open(template_full_path, "w", encoding="utf-8") as f:
+                                f.write(template_content)
+                            templates_applied.append(f"src/{template_path}")
+                            logger.info(f"✅ Template appliqué: src/{template_path}")
                         except Exception as e:
                             logger.warning(
                                 f"⚠️ Erreur application template {template_path}: {e}"
