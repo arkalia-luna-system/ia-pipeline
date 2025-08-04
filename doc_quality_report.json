@@ -1,0 +1,4305 @@
+{
+  "timestamp": "2025-08-04T22:21:16.301381",
+  "stats": {
+    "total_files": 130,
+    "files_with_diagrams": 13,
+    "files_with_code": 89,
+    "files_with_badges": 13,
+    "broken_links": 89,
+    "missing_headers": 0,
+    "quality_score": 0
+  },
+  "issues": [
+    {
+      "file": "docs/README.md",
+      "type": "broken_link",
+      "message": "Broken link: SPECIALIZED/SECURITY/audit.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/README.md",
+      "type": "missing_navigation_links",
+      "message": "Missing navigation links",
+      "severity": "low"
+    },
+    {
+      "file": "docs/NAVIGATION_GLOBALE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 460: ### \ud83d\udcc5 **Update Schedule**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/NAVIGATION_GLOBALE.md",
+      "type": "broken_link",
+      "message": "Broken link: DEVELOPER/TESTING.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/NAVIGATION_GLOBALE.md",
+      "type": "broken_link",
+      "message": "Broken link: DEVELOPER/CONTRIBUTING.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/NAVIGATION_GLOBALE.md",
+      "type": "broken_link",
+      "message": "Broken link: ../LICENSE.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/NAVIGATION_GLOBALE.md",
+      "type": "broken_link",
+      "message": "Broken link: USER_GUIDES/CONFIGURATION.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/NAVIGATION_GLOBALE.md",
+      "type": "broken_link",
+      "message": "Broken link: DEVELOPER/TESTING.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/NAVIGATION_GLOBALE.md",
+      "type": "broken_link",
+      "message": "Broken link: DEVELOPER/CONTRIBUTING.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/NAVIGATION_GLOBALE.md",
+      "type": "broken_link",
+      "message": "Broken link: ARCHITECTURE/DATA_FLOW.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/NAVIGATION_GLOBALE.md",
+      "type": "broken_link",
+      "message": "Broken link: API/EXAMPLES.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/NAVIGATION_GLOBALE.md",
+      "type": "broken_link",
+      "message": "Broken link: API/ai_modules.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/NAVIGATION_GLOBALE.md",
+      "type": "broken_link",
+      "message": "Broken link: API/AI_EXAMPLES.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/NAVIGATION_GLOBALE.md",
+      "type": "broken_link",
+      "message": "Broken link: API/SECURITY_API.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/NAVIGATION_GLOBALE.md",
+      "type": "broken_link",
+      "message": "Broken link: API/SEC_EXAMPLES.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/NAVIGATION_GLOBALE.md",
+      "type": "broken_link",
+      "message": "Broken link: API/utility_modules.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/NAVIGATION_GLOBALE.md",
+      "type": "broken_link",
+      "message": "Broken link: API/UTIL_EXAMPLES.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/ARCHITECTURE/INDEX.md",
+      "type": "missing_navigation_links",
+      "message": "Missing navigation links",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/MODULES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 386: ### Exemple d'utilisation",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/BEST_PRACTICES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 29: ### **Dashboard et Feedback**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/BEST_PRACTICES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 41: ### **Mise \u00e0 Jour et Maintenance**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/BEST_PRACTICES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 75: ### **Documentation**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/BEST_PRACTICES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 90: ### **Templates et UX**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/BEST_PRACTICES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 122: ### **S\u00e9curit\u00e9 et Monitoring**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/BEST_PRACTICES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 156: ### **Feedback et Am\u00e9lioration Continue**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/BEST_PRACTICES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 168: ### **Documentation \u00e0 Jour**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/BEST_PRACTICES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 227: ### **Chiffrement et Protection**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/BEST_PRACTICES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 258: ### **M\u00e9triques de Performance**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/BEST_PRACTICES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 284: ### **Monitoring et Alertes**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/INDEX.md",
+      "type": "broken_link",
+      "message": "Broken link: REPORTS/PROGRESSION_PHASES_1_2_20250802.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/DEVELOPER/INDEX.md",
+      "type": "broken_link",
+      "message": "Broken link: REPORTS/CORRECTIONS/CORRECTIONS_PROGRESS.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/DEVELOPER/INDEX.md",
+      "type": "broken_link",
+      "message": "Broken link: REPORTS/CORRECTIONS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/DEVELOPER/INDEX.md",
+      "type": "broken_link",
+      "message": "Broken link: REPORTS/CORRECTIONS/CORRECTION_PYTEST_COVERAGE_2025.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/DEVELOPER/INDEX.md",
+      "type": "missing_centered_div",
+      "message": "Missing centered layouts",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 95: ### **2. Mise \u00e0 Jour de Documentation Existante**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 112: ### **3. Archivage de Documentation**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 169: ### **Recherche de Doublons**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 181: ### **G\u00e9n\u00e9ration d'Index**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/COMMANDES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 36: ### \ud83d\udd27 **Correction**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/COMMANDES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 58: ### \ud83d\udcca **Dashboard**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/COMMANDES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 76: ### \ud83d\udd04 **Industrialisation**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/COMMANDES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 219: ### \ud83d\ude80 **Workflow de D\u00e9veloppement**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/COMMANDES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 234: ### \ud83d\udd27 **Workflow de Maintenance**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/COMMANDES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 271: ### \ud83d\udc33 **Docker Integration**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/plugins.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 30: #### Chargement des Plugins",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/plugins.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 42: ### **Plugins Disponibles**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/plugins.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 88: ### **Templates Disponibles**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/plugins.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 171: ### **Templates Conditionnels**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/plugins.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 181: ### **Variables d'Environnement**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/plugins.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 205: ### **Statistiques des Templates**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/plugins.md",
+      "type": "broken_link",
+      "message": "Broken link: README.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/core_modules.md",
+      "type": "broken_link",
+      "message": "Broken link: README.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 93064: ##### ensure_slash",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 129238: ##### start",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 166026: ##### Semaphore",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 190680: ##### finish_off",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 279650: #### Classes",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 282232: ##### feature_implies_c",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 282270: ##### feature_untied",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 282296: ##### feature_get_til",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 282420: ##### __init__",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 305831: ##### _var_dispatcher",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 306020: ### _add_newdocs",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 315279: ##### _optimal_path",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 315472: ##### _parse_einsum_input",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 317783: ##### rstrip",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 317869: ##### upper",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 351562: ##### _integer_repr",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 359478: ##### _savez_dispatcher",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 399572: #### Classes",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 399728: #### Fonctions",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 430891: ##### TextMessage",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 438677: ##### _prevent_sub_process_measurement",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 522573: ##### __delitem__",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 600467: ##### Appender",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 613230: ##### export",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 616225: ##### __init__",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 754222: ##### _remove_labels_from_axis",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 776190: ##### _validate_composables",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 867067: ##### model_schema",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 867472: ##### multi_host_url_schema",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 867497: ##### definitions_schema",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 871904: ##### __init__",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 872219: ##### WrapSerializer",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 872346: ##### model_serializer",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 872405: ##### __get_pydantic_core_schema__",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 872649: ##### ModelWrapValidatorHandler",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 872857: ##### model_validator",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 872909: ##### __get_pydantic_core_schema__",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 876342: ##### AnyWebsocketUrl",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 876434: ##### CockroachDsn",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 876572: ##### EmailStr",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 876600: ##### IPvAnyAddress",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 876637: ##### IPvAnyInterface",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 877927: ##### _SecretField",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 877995: ##### SecretBytes",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 878023: ##### PaymentCardBrand",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 878087: ##### EncoderProtocol",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 878179: ##### EncodedStr",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 878241: ##### GetPydanticSchema",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 878266: ##### Tag",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 878463: ##### ImportString",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 878551: ##### Json",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 878632: ##### PastDate",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 878758: ##### confloat",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 878829: ##### conbytes",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 878900: ##### conset",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 879025: ##### _serialize_secret",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 883923: ##### annotated_type",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 883940: ##### is_callable",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 883953: ##### is_classvar_annotation",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 883975: ##### is_none_type",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 883989: ##### is_namedtuple",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 884335: ##### sequence_like",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 900490: #### Fonctions",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 900581: ##### get",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 900601: ##### put",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 900626: ##### post",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 900651: ##### delete",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 900671: ##### options",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 900691: ##### head",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 900711: ##### patch",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 900736: ##### trace",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 900756: ##### websocket_route",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 900809: ##### exception_handler",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 900843: ##### decorator",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 900911: #### Fonctions",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 900983: ##### DefaultPlaceholder",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 901170: ##### WebSocketException",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 901215: ##### FastAPIError",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 901678: #### Fonctions",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 901811: ##### websocket_route",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 901846: ##### get",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 901869: ##### put",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 901897: ##### post",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 901925: ##### delete",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 901948: ##### options",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 901971: ##### head",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 901999: ##### patch",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 902027: ##### trace",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 902055: ##### on_event",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 902603: ##### APIKeyHeader",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 902638: ##### APIKeyCookie",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 902673: #### Fonctions",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 902773: ##### HTTPBearer",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 902808: ##### HTTPDigest",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 902843: #### Fonctions",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 902907: ##### OAuth2PasswordRequestFormStrict",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 902974: ##### OAuth2",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 903314: ##### Request",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 909576: #### Fonctions",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 909825: #### Classes",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "unclosed_code_block",
+      "message": "Code blocks not properly closed",
+      "severity": "high"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "broken_link",
+      "message": "Broken link: ../concepts/null_handling.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "broken_link",
+      "message": "Broken link: ../concepts/order_dependence.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "broken_link",
+      "message": "Broken link: ../concepts/order_dependence.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "broken_link",
+      "message": "Broken link: ../concepts/order_dependence.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "broken_link",
+      "message": "Broken link: ../concepts/order_dependence.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "broken_link",
+      "message": "Broken link: ../concepts/order_dependence.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "broken_link",
+      "message": "Broken link: ../concepts/order_dependence.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "broken_link",
+      "message": "Broken link: ../concepts/order_dependence.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "broken_link",
+      "message": "Broken link: ../concepts/order_dependence.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "broken_link",
+      "message": "Broken link: ../concepts/order_dependence.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "broken_link",
+      "message": "Broken link: ../concepts/order_dependence.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "broken_link",
+      "message": "Broken link: ../concepts/order_dependence.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "broken_link",
+      "message": "Broken link: ../concepts/order_dependence.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "broken_link",
+      "message": "Broken link: ../concepts/order_dependence.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "broken_link",
+      "message": "Broken link: ../concepts/order_dependence.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "broken_link",
+      "message": "Broken link: ../concepts/order_dependence.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "broken_link",
+      "message": "Broken link: ../usage/types/extra_types/color_types.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "broken_link",
+      "message": "Broken link: config.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "broken_link",
+      "message": "Broken link: ../concepts/dataclasses.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "broken_link",
+      "message": "Broken link: ../concepts/fields.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "broken_link",
+      "message": "Broken link: ../concepts/strict_mode.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "broken_link",
+      "message": "Broken link: ../concepts/json_schema.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "broken_link",
+      "message": "Broken link: ../concepts/models.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "broken_link",
+      "message": "Broken link: ../concepts/type_adapter.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/REFERENCE.md",
+      "type": "broken_link",
+      "message": "Broken link: ../concepts/validation_decorator.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/ERROR_HANDLING.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 59: ### **\ud83c\udf9b\ufe0f Gestionnaire d'Erreurs**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/ERROR_HANDLING.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 102: #### **D\u00e9corateur de gestion d'erreurs**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/ERROR_HANDLING.md",
+      "type": "broken_link",
+      "message": "Broken link: CORE_MODULES.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/ERROR_HANDLING.md",
+      "type": "broken_link",
+      "message": "Broken link: CONFIG_MANAGER.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/COMMANDES_AVANCEES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 26: ### \ud83c\udf10 **Options de Langue**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/COMMANDES_AVANCEES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 35: ### \ud83d\udcca **Options d'Analytics**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/COMMANDES_AVANCEES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 44: ### \ud83e\udd16 **Options Robotiques**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/COMMANDES_AVANCEES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 53: ### \ud83c\udfae **Options de Contr\u00f4le**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/COMMANDES_AVANCEES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 62: ### \ud83e\uddea **Options de Test**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/COMMANDES_AVANCEES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 71: ### \ud83d\udcda **Options de Documentation**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/COMMANDES_AVANCEES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 80: ### \ud83d\udd12 **Options de S\u00e9curit\u00e9**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/COMMANDES_AVANCEES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 89: ### \ud83d\udd04 **Options CI/CD**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/COMMANDES_AVANCEES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 98: ### \ud83e\uddf9 **Options de Nettoyage**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/COMMANDES_AVANCEES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 107: ### \ud83d\udd0d **Options d'Audit**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/COMMANDES_AVANCEES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 119: ### \ud83d\udcac **Options de Communication**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/COMMANDES_AVANCEES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 128: ### \ud83d\ude80 **Options de D\u00e9veloppement**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/COMMANDES_AVANCEES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 199: ### \ud83d\udd27 **Workflow de Maintenance Avanc\u00e9**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/COMMANDES_AVANCEES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 214: ### \ud83d\ude80 **Workflow de Production Avanc\u00e9**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/COMMANDES_AVANCEES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 251: ### \ud83d\udc33 **Docker Integration Avanc\u00e9e**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/COMMANDES_AVANCEES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 268: ### \ud83d\udd0d **Audit Analytics**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/orchestrator.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 28: #### Configuration",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/orchestrator.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 59: ### **\u00c9tape 2 : G\u00e9n\u00e9ration du projet**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/orchestrator.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 66: ### **\u00c9tape 3 : Am\u00e9lioration IA intelligente**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/orchestrator.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 73: ### **\u00c9tape 4 : Audit de s\u00e9curit\u00e9**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/orchestrator.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 80: ### **\u00c9tape 5 : Linting du code**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/orchestrator.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 87: ### **\u00c9tape 6 : Auto-correction avanc\u00e9e**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/orchestrator.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 94: ### **\u00c9tape 7 : Optimisation des corrections**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/orchestrator.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 101: ### **\u00c9tape 8 : Tests automatiques**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/orchestrator.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 108: ### **\u00c9tape 9 : Documentation automatique**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/orchestrator.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 115: ### **\u00c9tape 10 : Templates artistiques**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/orchestrator.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 122: ### **\u00c9tape 11 : Validation robotique**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/orchestrator.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 129: ### **\u00c9tape 12 : Classification avanc\u00e9e**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/orchestrator.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 136: ### **\u00c9tape 13 : CI/CD automatique**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/orchestrator.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 143: ### **\u00c9tape 14 : Nettoyage automatique**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/orchestrator.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 150: ### **\u00c9tape 15 : Cache intelligent**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/orchestrator.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 171: ### **Modules de Distillation**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/orchestrator.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 183: ### **Modules de Classification**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/orchestrator.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 259: ### **Analyse de Qualit\u00e9**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/orchestrator.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 360: ### **R\u00e9sultat Attendu**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/INDEX.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 182: ### \ud83c\udfd7\ufe0f **Project Generation API**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/INDEX.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 212: ### \ud83d\udee1\ufe0f **Security Validation API**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/INDEX.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 252: ### \ud83e\uddf9 **Auto Cleanup API**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/INDEX.md",
+      "type": "broken_link",
+      "message": "Broken link: EXAMPLES.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/INDEX.md",
+      "type": "broken_link",
+      "message": "Broken link: ai_modules.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/INDEX.md",
+      "type": "broken_link",
+      "message": "Broken link: AI_EXAMPLES.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/INDEX.md",
+      "type": "broken_link",
+      "message": "Broken link: SECURITY_API.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/INDEX.md",
+      "type": "broken_link",
+      "message": "Broken link: SEC_EXAMPLES.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/INDEX.md",
+      "type": "broken_link",
+      "message": "Broken link: PERF_API.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/INDEX.md",
+      "type": "broken_link",
+      "message": "Broken link: PERF_EXAMPLES.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/API/INDEX.md",
+      "type": "missing_navigation_links",
+      "message": "Missing navigation links",
+      "severity": "low"
+    },
+    {
+      "file": "docs/API/robotics.md",
+      "type": "broken_link",
+      "message": "Broken link: README.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/USER_GUIDES/DEPLOYMENT.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 29: ### Lancement des Services",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/DEPLOYMENT.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 58: ### Lancement du Container",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/DEPLOYMENT.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 74: ### Configuration Docker Compose",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/DEPLOYMENT.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 113: ### Cas d'Usage 2 : Kubernetes",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/DEPLOYMENT.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 147: ### Cas d'Usage 3 : AWS ECS",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/DEPLOYMENT.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 199: ### Monitoring",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/DEPLOYMENT.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 211: ### Sauvegarde",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/DEPLOYMENT.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 241: ### Configuration Fichier",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/DEPLOYMENT.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 285: #### 2. Probl\u00e8mes de m\u00e9moire",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/DEPLOYMENT.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 296: #### 3. Probl\u00e8mes de permissions",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/DEPLOYMENT.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 303: ### Logs et Debug",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/CONTRIBUTING.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 22: ### Workflow de Contribution",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/CONTRIBUTING.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 52: ### Tests d'Int\u00e9gration",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/CONTRIBUTING.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 61: ### Tests de Performance",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/CONTRIBUTING.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 70: ### Validation de Qualit\u00e9",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/CONTRIBUTING.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 117: ### Validation Avant Commit",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/CONTRIBUTING.md",
+      "type": "broken_link",
+      "message": "Broken link: ../API/README.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/USER_GUIDES/TROUBLESHOOTING.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 32: ### **\u274c Erreur de Permission**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/TROUBLESHOOTING.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 46: ### **\u274c Erreur de Configuration**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/TROUBLESHOOTING.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 76: ### **2. V\u00e9rification des D\u00e9pendances**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/TROUBLESHOOTING.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 85: ### **3. V\u00e9rification de l'Environnement**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/TROUBLESHOOTING.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 110: ### **Probl\u00e8me de Tests**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/TROUBLESHOOTING.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 120: ### **Probl\u00e8me de Documentation**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/TROUBLESHOOTING.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 139: ### **Contact**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/TROUBLESHOOTING.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 154: ### **Restauration Compl\u00e8te**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/QUICK_START.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 68: ### Setup Virtual Environment",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/QUICK_START.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 83: ### Install Dependencies",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/QUICK_START.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 128: ### Run the Test",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/QUICK_START.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 185: ### Run Security Test",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/QUICK_START.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 257: ### Run Cleanup Test",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/QUICK_START.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 311: ### Full Test Suite (Optional)",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/QUICK_START.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 378: ### Common File Locations",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/QUICK_START.md",
+      "type": "missing_mermaid_theme",
+      "message": "Mermaid diagrams missing theme configuration",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/INDEX.md",
+      "type": "missing_centered_div",
+      "message": "Missing centered layouts",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/INDEX.md",
+      "type": "missing_structured_tables",
+      "message": "No structured tables found",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/INDEX.md",
+      "type": "missing_navigation_links",
+      "message": "Missing navigation links",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/USAGE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 32: ### **Options Avanc\u00e9es**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/USAGE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 113: #### **G\u00e9n\u00e9ration Automatique de Tests**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/USAGE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 144: ### Gestion des erreurs",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/INSTALLATION.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 142: ### \ud83d\udc0d **Step 2: Python Environment**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/INSTALLATION.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 180: ### \ud83d\udce6 **Step 3: Dependencies Installation**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/INSTALLATION.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 323: ### \ud83d\udcca **Expected Validation Results**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/INSTALLATION.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 445: ### \ud83c\udfaf **Feature Verification**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/FAQ.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 24: ### Q: Comment changer la langue d'Athalia ?",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/FAQ.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 51: ### Q: Comment corriger automatiquement les probl\u00e8",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/FAQ.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 78: ### Q: Le dashboard ne d\u00e9marre pas, que faire ?",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/FAQ.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 105: ### Q: Comment scanner mon projet ?",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/FAQ.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 123: ### Q: Comment voir les logs ?",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/FAQ.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 133: ### Q: Comment r\u00e9parer l'installation ?",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/FAQ.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 182: ### Q: Comment restaurer une sauvegarde ?",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/FAQ.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 223: ### Q: Comment exporter les m\u00e9triques ?",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/FAQ.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 249: ### Q: Comment mettre \u00e0 jour Athalia ?",
+      "severity": "low"
+    },
+    {
+      "file": "docs/USER_GUIDES/FAQ.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 273: ### Q: Comment signaler un bug ?",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/README.md",
+      "type": "broken_link",
+      "message": "Broken link: FINALE_20250731/README.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/REPORTS/README.md",
+      "type": "broken_link",
+      "message": "Broken link: FINALE_20250731/AUDIT_DOCUMENTATION_FINALE_20250731.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/REPORTS/README.md",
+      "type": "broken_link",
+      "message": "Broken link: FINALE_20250731/REORGANISATION_FINALE_20250731.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/REPORTS/README.md",
+      "type": "broken_link",
+      "message": "Broken link: FINALE_20250731/CORRECTION_TESTS_FINALE_20250731.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/REPORTS/README.md",
+      "type": "missing_centered_div",
+      "message": "Missing centered layouts",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/README.md",
+      "type": "missing_structured_tables",
+      "message": "No structured tables found",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/README.md",
+      "type": "missing_navigation_links",
+      "message": "Missing navigation links",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/README.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 158: ### **Exemple d'Utilisation**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/README.md",
+      "type": "missing_centered_div",
+      "message": "Missing centered layouts",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/README.md",
+      "type": "missing_navigation_links",
+      "message": "Missing navigation links",
+      "severity": "low"
+    },
+    {
+      "file": "docs/GETTING_STARTED/README.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 105: #### **Erreur de Permissions**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/GETTING_STARTED/README.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 111: #### **Erreur de Configuration**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/GETTING_STARTED/README.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 117: ### **Support**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/GETTING_STARTED/README.md",
+      "type": "broken_link",
+      "message": "Broken link: ../../USER_GUIDES/USAGE.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/GETTING_STARTED/README.md",
+      "type": "broken_link",
+      "message": "Broken link: ../../USER_GUIDES/QUICK_START.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/GETTING_STARTED/README.md",
+      "type": "broken_link",
+      "message": "Broken link: ../../USER_GUIDES/FAQ.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/GETTING_STARTED/README.md",
+      "type": "broken_link",
+      "message": "Broken link: ../../DEVELOPER/GUIDES/DEVELOPER_GUIDE.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/GETTING_STARTED/README.md",
+      "type": "broken_link",
+      "message": "Broken link: ../../DEVELOPER/BEST_PRACTICES.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/GETTING_STARTED/README.md",
+      "type": "broken_link",
+      "message": "Broken link: ../../DEVELOPER/GUIDES/TESTS_GUIDE.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/GETTING_STARTED/README.md",
+      "type": "broken_link",
+      "message": "Broken link: ../../USER_GUIDES/CONTRIBUTING.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/GETTING_STARTED/README.md",
+      "type": "broken_link",
+      "message": "Broken link: ../../DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/GETTING_STARTED/README.md",
+      "type": "broken_link",
+      "message": "Broken link: ../../DEVELOPER/UTILITIES/GIT_WORKFLOW.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/GETTING_STARTED/README.md",
+      "type": "broken_link",
+      "message": "Broken link: ../../USER_GUIDES/FAQ.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/GETTING_STARTED/README.md",
+      "type": "broken_link",
+      "message": "Broken link: ../../USER_GUIDES/TROUBLESHOOTING.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/GETTING_STARTED/README.md",
+      "type": "broken_link",
+      "message": "Broken link: ../../USER_GUIDES/USAGE.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/GETTING_STARTED/README.md",
+      "type": "broken_link",
+      "message": "Broken link: ../../USER_GUIDES/FAQ.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/GETTING_STARTED/README.md",
+      "type": "broken_link",
+      "message": "Broken link: ../../USER_GUIDES/TROUBLESHOOTING.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/GETTING_STARTED/README.md",
+      "type": "broken_link",
+      "message": "Broken link: ../../USER_GUIDES/CONTRIBUTING.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/GETTING_STARTED/README.md",
+      "type": "missing_centered_div",
+      "message": "Missing centered layouts",
+      "severity": "low"
+    },
+    {
+      "file": "docs/GETTING_STARTED/README.md",
+      "type": "missing_structured_tables",
+      "message": "No structured tables found",
+      "severity": "low"
+    },
+    {
+      "file": "docs/GETTING_STARTED/INSTALLATION.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 55: ### **2. Configuration de l'Environnement**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/GETTING_STARTED/INSTALLATION.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 70: ### **3. Installation des D\u00e9pendances**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/GETTING_STARTED/INSTALLATION.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 82: ### **4. Configuration**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/GETTING_STARTED/INSTALLATION.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 135: ### **Variables d'Environnement**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/GETTING_STARTED/INSTALLATION.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 172: ### **2. Tests de S\u00e9curit\u00e9**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/GETTING_STARTED/INSTALLATION.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 181: ### **3. Tests Complets**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/GETTING_STARTED/INSTALLATION.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 211: ### **Scripts Utilitaires**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/GETTING_STARTED/INSTALLATION.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 244: #### **Erreur de Permissions**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/GETTING_STARTED/INSTALLATION.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 254: #### **Erreur de Configuration**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/GETTING_STARTED/INSTALLATION.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 263: #### **Erreur de Cache**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/GETTING_STARTED/INSTALLATION.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 270: ### **Logs et Debug**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/GETTING_STARTED/INSTALLATION.md",
+      "type": "broken_link",
+      "message": "Broken link: ../../USER_GUIDES/USAGE.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/SPECIALIZED/TEMPLATES/README.md",
+      "type": "missing_centered_div",
+      "message": "Missing centered layouts",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/TEMPLATES/README.md",
+      "type": "missing_structured_tables",
+      "message": "No structured tables found",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/TEMPLATES/README.md",
+      "type": "missing_navigation_links",
+      "message": "Missing navigation links",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/DISTILLATION/README.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 145: ### **\u00c9valuation de Qualit\u00e9**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/DISTILLATION/README.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 162: ### **Distillation de R\u00e9ponses**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/DISTILLATION/README.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 175: ### **\u00c9volution G\u00e9n\u00e9tique du Code**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/DISTILLATION/README.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 192: ### **Cache Pr\u00e9dictif**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/DISTILLATION/README.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 207: ### **Distillation Adaptative**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/DISTILLATION/README.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 304: ### **Validation des Modules**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/DISTILLATION/README.md",
+      "type": "missing_centered_div",
+      "message": "Missing centered layouts",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/DISTILLATION/README.md",
+      "type": "missing_navigation_links",
+      "message": "Missing navigation links",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/INTERNATIONALISATION/README.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 74: ### **Traduction Simple**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/INTERNATIONALISATION/README.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 85: ### **Traduction avec Variables**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/INTERNATIONALISATION/README.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 97: ### **R\u00e9cup\u00e9ration des Traductions**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/INTERNATIONALISATION/README.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 148: ### **Configuration Personnalis\u00e9e**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/INTERNATIONALISATION/README.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 160: ### **Gestion des Erreurs**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/INTERNATIONALISATION/README.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 219: ### **Validation des Traductions**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/INTERNATIONALISATION/README.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 252: ### **Traductions Dynamiques**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/INTERNATIONALISATION/README.md",
+      "type": "missing_centered_div",
+      "message": "Missing centered layouts",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/INTERNATIONALISATION/README.md",
+      "type": "missing_navigation_links",
+      "message": "Missing navigation links",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/REACHY_SETUP_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 31: #### **macOS**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/REACHY_SETUP_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 40: ### **\u00c9tape 2 : Installation de ROS2 Humble**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/REACHY_SETUP_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 60: #### **macOS (simulation limit\u00e9e)**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/REACHY_SETUP_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 70: ### **\u00c9tape 3 : Installation de Docker**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/REACHY_SETUP_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 85: #### **macOS**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/REACHY_SETUP_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 92: ### **\u00c9tape 4 : Installation de Rust**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/REACHY_SETUP_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 104: ### **\u00c9tape 5 : Installation d'Athalia avec module",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/REACHY_SETUP_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 138: ### **2. Configuration de l'environnement ROS2**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/REACHY_SETUP_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 150: ### **3. Test avec Athalia**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/REACHY_SETUP_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 174: ### **Test 2 : Docker**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/REACHY_SETUP_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 181: ### **Test 3 : Rust**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/REACHY_SETUP_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 188: ### **Test 4 : Athalia Robotique**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/REACHY_SETUP_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 217: ### **2. Cr\u00e9ation d'une Pull Request**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/REACHY_SETUP_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 233: ### **Probl\u00e8me : Docker non accessible**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/REACHY_SETUP_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 240: ### **Probl\u00e8me : Rust non trouv\u00e9**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/REACHY_SETUP_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 246: ### **Probl\u00e8me : Athalia ne fonctionne pas**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/ROBOTICS_QUICK_START.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 14: ### 2. **Validation ROS2**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/ROBOTICS_QUICK_START.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 20: ### 3. **Gestion Docker**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/ROBOTICS_QUICK_START.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 26: ### 4. **Analyse Rust**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/ROBOTICS_QUICK_START.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 32: ### 5. **CI/CD Robotique**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/ROBOTICS_QUICK_START.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 38: ### 6. **Tout en Une Fois**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/ROBOTICS_QUICK_START.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 114: ### **Utiliser les Modules Individuellement**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/ROBOTICS_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 122: ### D\u00e9monstration Interactive",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/ROBOTICS_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 307: ### Int\u00e9gration CLI",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/ROBOTICS_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 345: ### Validation Continue",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/ROBOTICS_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 367: ### Configuration CI/CD",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/ROBOTICS_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 417: ### 2. Setup Automatique d'un Nouveau Projet",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/ROBOTICS_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 434: ### 3. Validation Continue",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/ROBOTICS_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 498: ### Documentation",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 50: #### **Int\u00e9gration Orchestrateur**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 64: #### **Tests Automatis\u00e9s**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 75: ### **\ud83d\ude80 UTILISATION PRATIQUE :**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 89: #### **Pour Ton Propre Projet Robotique**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 101: ### **\ud83d\udcca M\u00c9TRIQUES DE QUALIT\u00c9 :**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/OPTIMISATION/RESUME_OPTIMISATION_CURSOR.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 110: ### Maintenance hebdomadaire",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/OPTIMISATION/RESUME_OPTIMISATION_CURSOR.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 119: ### Optimisation compl\u00e8te",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/OPTIMISATION/README.md",
+      "type": "missing_centered_div",
+      "message": "Missing centered layouts",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/OPTIMISATION/README.md",
+      "type": "missing_structured_tables",
+      "message": "No structured tables found",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/OPTIMISATION/README.md",
+      "type": "missing_navigation_links",
+      "message": "Missing navigation links",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/OPTIMISATION/OPTIMISATION_CURSOR_RAM.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 90: ### 4. **Workflow d'optimisation recommand\u00e9**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/OPTIMISATION/OPTIMISATION_CURSOR_RAM.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 135: ### Commandes manuelles :",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/OPTIMISATION/OPTIMISATION_CURSOR_RAM.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 151: ### Alias disponibles (apr\u00e8s optimisation) :",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/MODULES_AVANC\u00c9S/README.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 89: ### **Auto-Correction de Projet**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/MODULES_AVANC\u00c9S/README.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 105: ### **Dashboard Interactif**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/MODULES_AVANC\u00c9S/README.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 122: ### **Gestion des Profils**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/MODULES_AVANC\u00c9S/README.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 216: ### **Validation Automatique**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/MODULES_AVANC\u00c9S/README.md",
+      "type": "missing_centered_div",
+      "message": "Missing centered layouts",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/MODULES_AVANC\u00c9S/README.md",
+      "type": "missing_navigation_links",
+      "message": "Missing navigation links",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/prompts/README.md",
+      "type": "missing_centered_div",
+      "message": "Missing centered layouts",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/prompts/README.md",
+      "type": "missing_structured_tables",
+      "message": "No structured tables found",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/prompts/README.md",
+      "type": "missing_emoji_headers",
+      "message": "Missing emoji in headers",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/prompts/README.md",
+      "type": "missing_emphasis_text",
+      "message": "Missing bold emphasis",
+      "severity": "low"
+    },
+    {
+      "file": "docs/SPECIALIZED/prompts/README.md",
+      "type": "missing_navigation_links",
+      "message": "Missing navigation links",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/ETAT_PROJET_FINAL_20250802.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 143: ### **2. Gestion des variables d'environnement**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/ETAT_PROJET_FINAL_20250802.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 150: ### **3. Nettoyage des fichiers parasites**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 44: ### **\ud83d\udcc8 Am\u00e9liorations Recommand\u00e9es**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 54: #### **2. V\u00e9rification des Types (Optionnel)**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 60: #### **3. V\u00e9rification des Docstrings**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 91: ### **\ud83d\udcc8 Am\u00e9liorations Recommand\u00e9es**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 99: #### **2. Scan Semgrep**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 125: #### **2. M\u00e9triques de Performance**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 134: ### **\ud83d\udcc8 Am\u00e9liorations Recommand\u00e9es**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 142: #### **2. Monitoring en Temps R\u00e9el**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 181: #### **2. Tests Manquants**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 191: ### **\ud83d\udd27 Corrections Sp\u00e9cifiques**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 206: #### **2. Tests d'Int\u00e9gration**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 214: ### **\ud83d\udcc8 Am\u00e9liorations Recommand\u00e9es**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 224: #### **2. Tests de Mutation**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 255: #### **2. Tests End-to-End**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 263: ### **\ud83d\udd27 Corrections Sp\u00e9cifiques**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 274: #### **2. Tests de Sc\u00e9narios R\u00e9els**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 283: ### **\ud83d\udcc8 Am\u00e9liorations Recommand\u00e9es**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 293: #### **2. Tests de Compatibilit\u00e9**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 315: #### **2. Couverture de Code (Niveau 4)**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 322: #### **3. Tests d'Int\u00e9gration (Niveau 5)**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 329: ### **\u26a1 PRIORIT\u00c9 HAUTE (\u00c0 faire cette semaine)**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 338: #### **2. Optimisation des Performances**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 345: ### **\ud83d\udcc8 PRIORIT\u00c9 MOYENNE (\u00c0 faire ce mois)**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 354: #### **2. Documentation et Monitoring**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 402: ### **2. M\u00e9triques de Suivi**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 411: ### **3. Automatisation**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ACTION_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 32: ### **\u2705 2. Correction des Vuln\u00e9rabilit\u00e9s de S\u00e9curi",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ACTION_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 45: ### **\u2705 3. Am\u00e9lioration des Tests d'Int\u00e9gration (N",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ACTION_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 66: ### **2. Am\u00e9lioration de la Couverture de Code (Ni",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ACTION_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 91: ##### **Priorit\u00e9 2 - Modules Critiques (0% \u2192 60%)*",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ACTION_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 104: #### **Actions :**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ACTION_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 157: ### **5. Am\u00e9lioration des Tests de S\u00e9curit\u00e9 (Nivea",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ACTION_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 212: ### **7. Tests Avanc\u00e9s (Niveau 4)**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ACTION_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 255: ### **Semaine 2 : Tests et Int\u00e9gration**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ACTION_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 265: ### **Semaine 3 : Optimisation**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ACTION_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 277: ### **Semaine 4 : Finalisation**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ACTION_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 366: ### **Tests et Validation**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_ACTION_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 380: ### **Monitoring**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PROFESSIONAL_SETUP_COMPLETE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 119: ### **Phase 2 : Validation**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PROFESSIONAL_SETUP_COMPLETE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 129: ### **Phase 3 : Migration**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_PROGRESS_REPORT_20250731.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 50: #### **Vuln\u00e9rabilit\u00e9s de Permissions (MEDIUM)**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_PROGRESS_REPORT_20250731.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 63: #### **Vuln\u00e9rabilit\u00e9s Pickle (MEDIUM)**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_PROGRESS_REPORT_20250731.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 75: #### **Vuln\u00e9rabilit\u00e9s XML (MEDIUM)**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_PROGRESS_REPORT_20250731.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 88: ### **2. Correction des Erreurs de Linting**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_PRE_COMMIT_IMPLEMENTATION.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 134: ### **Standards Coh\u00e9rents**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_PRE_COMMIT_IMPLEMENTATION.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 151: ### **2. Workflow de D\u00e9veloppement**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CI_CD/CI_CD_PRO_PRE_COMMIT_IMPLEMENTATION.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 165: ### **3. Gestion des Erreurs**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CORRECTIONS/AMELIORATION_TESTS_UNIFIED_ORCHESTRATOR_20250802.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 33: ### 2. Tests pour Modules IA Optionnels",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CORRECTIONS/CORRECTION_PYTHON_3_1_PHASE17_20250731.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 45: #### **Commentaires mis \u00e0 jour :**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CORRECTIONS/CORRECTION_PYTHON_3_1_PHASE17_20250731.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 86: #### **Tests corrig\u00e9s :**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CORRECTIONS/CORRECTION_MASSIVE_DOCUMENTATION_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 102: ### **\u00c9tape 2 : Validation des Donn\u00e9es R\u00e9elles**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CORRECTIONS/CORRECTION_MASSIVE_DOCUMENTATION_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 115: ### **\u00c9tape 3 : Correction Syst\u00e9matique**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CORRECTIONS/CORRECTION_MASSIVE_DOCUMENTATION_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 189: ### **2. Standards de Documentation**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CORRECTIONS/MISE_A_JOUR_DOCUMENTATION_COMPLETE_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 80: #### **2. Mesure de la Couverture**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CORRECTIONS/MISE_A_JOUR_DOCUMENTATION_COMPLETE_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 86: #### **3. Couverture Unified Orchestrator**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CORRECTIONS/MISE_A_JOUR_DOCUMENTATION_COMPLETE_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 92: #### **4. Comptage des Modules**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CORRECTIONS/MISE_A_JOUR_DOCUMENTATION_COMPLETE_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 98: #### **5. V\u00e9rification des Fichiers Parasites**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/CORRECTIONS/MISE_A_JOUR_DOCUMENTATION_COMPLETE_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 104: #### **6. Tests CI Ultra-Rapides**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/PLANS/INDEX.md",
+      "type": "broken_link",
+      "message": "Broken link: ARCHIVE/INDEX.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/REPORTS/PLANS/INDEX.md",
+      "type": "broken_link",
+      "message": "Broken link: PLAN_PRIORISATION_BRUTALE_20250127.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/REPORTS/PLANS/INDEX.md",
+      "type": "broken_link",
+      "message": "Broken link: PLAN_VALIDATION_TERRAIN_20250127.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/REPORTS/PLANS/INDEX.md",
+      "type": "broken_link",
+      "message": "Broken link: PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/REPORTS/PLANS/INDEX.md",
+      "type": "broken_link",
+      "message": "Broken link: PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/REPORTS/PLANS/INDEX.md",
+      "type": "broken_link",
+      "message": "Broken link: PLAN_INTERFACE_UTILISATEUR_20250127.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/REPORTS/PLANS/INDEX.md",
+      "type": "broken_link",
+      "message": "Broken link: PLAN_CICD_AUTOMATISE_20250127.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/REPORTS/PLANS/INDEX.md",
+      "type": "missing_centered_div",
+      "message": "Missing centered layouts",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/PLANS/INDEX.md",
+      "type": "missing_structured_tables",
+      "message": "No structured tables found",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/PLANS/EXECUTION_PERFORMANCE_SEMAINE1.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 50: ### **\u00c9tape 1.2 : Mesure M\u00e9moire**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/PLANS/EXECUTION_PERFORMANCE_SEMAINE1.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 62: ### **\u00c9tape 1.3 : Benchmark des Modules**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/PLANS/EXECUTION_PERFORMANCE_SEMAINE1.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 101: ### **\u00c9tape 2.2 : Identification des Optimisations",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/PLANS/EXECUTION_PERFORMANCE_SEMAINE1.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 123: ### **\u00c9tape 2.3 : Planification des Am\u00e9liorations*",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/PLANS/EXECUTION_PERFORMANCE_SEMAINE1.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 178: ### **\u00c9tape 3.2 : Optimisation des Imports**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/PLANS/EXECUTION_PERFORMANCE_SEMAINE1.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 197: ### **\u00c9tape 3.3 : Parall\u00e9lisation**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/PLANS/EXECUTION_PERFORMANCE_SEMAINE1.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 260: ### **Benchmark**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/PLANS/EXECUTION_PERFORMANCE_SEMAINE1.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 269: ### **Monitoring**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/REPORTS/PLANS/EXECUTION_PERFORMANCE_SEMAINE1.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 299: ### **Tests de R\u00e9gression**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/TESTS_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 84: #### **1.2 Modules robotiques (3 modules)**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/TESTS_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 98: #### **1.3 Modules de configuration (2 modules)**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/TESTS_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 111: ### **\ud83c\udfaf PHASE 2 : MODULES \u00c0 AM\u00c9LIORER (Priorit\u00e9 MO",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/TESTS_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 127: #### **2.2 Modules de base (5 modules)**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/TESTS_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 143: ### **\ud83c\udfaf PHASE 3 : OPTIMISATION (Priorit\u00e9 BASSE)**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/TESTS_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 177: #### **1.2 Tests skip\u00e9s \u00e0 corriger (44 tests)**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/TESTS_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 217: #### **2.2 Scripts de validation**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/TESTS_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 249: ### **\ud83c\udfaf PHASE 3 : AUTOMATISATION (Priorit\u00e9 MOYENNE",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/TESTS_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 297: #### **3.2 Pre-commit hooks**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/TEST_CLEANUP_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 105: ### **M\u00e9thode 2 : Wrapper Bash**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/TEST_CLEANUP_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 114: ### **M\u00e9thode 3 : pytest Direct**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/TEST_CLEANUP_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 120: ### **M\u00e9thode 4 : Nettoyage Manuel**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/TEST_CLEANUP_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 217: ### **Logs de Nettoyage**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/CLEANUP_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 85: ### Nettoyage Mensuel",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/CLEANUP_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 91: ### Nettoyage Avant Commit",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/CLEANUP_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 180: ### Automatisation",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/PLUGINS_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 93: ### Plugin avec validation",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/PLUGINS_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 164: ### Plugin avec configuration",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/PLUGINS_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 267: ### Security Audit Plugin",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/PLUGINS_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 366: ### Via la CLI",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/PLUGINS_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 413: ### Tests d'int\u00e9gration",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/PLUGINS_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 579: ### Installation",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/CLEAN_SHUTDOWN_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 48: ### Commandes Disponibles",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/CLEAN_SHUTDOWN_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 89: ### 4. **Nettoyage macOS**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/CLEAN_SHUTDOWN_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 265: ### Logs",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 11: ### Installation manuelle",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 31: ### Nouvelle feature",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 46: ### Release",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 104: ### Mode verbose",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 111: ### Mode force",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 139: ### Sc\u00e9nario 2 : Nouvelle feature",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 153: ### Sc\u00e9nario 3 : Hotfix urgent",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 184: ### Mode debug",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 53: ### Outils Individuels",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 70: #### Analyse Statique",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 82: #### S\u00e9curit\u00e9",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 145: ### Gestion des erreurs",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 243: ### Erreurs de Types",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 253: ### Erreurs de S\u00e9curit\u00e9",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 264: ### Complexit\u00e9 \u00c9lev\u00e9e",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 38: ### **2. Configuration Avanc\u00e9e**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 67: ### **2. V\u00e9rification Manuelle**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 85: ### **3. Options Avanc\u00e9es**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 141: ### **2. Erreurs de S\u00e9curit\u00e9**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 150: ### **3. Erreurs de Performance**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 174: ### **Progression Coh\u00e9rente**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 191: ### **2. Workflow de D\u00e9veloppement**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 205: ### **3. Gestion des Exceptions**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 226: #### **2. Erreurs de S\u00e9curit\u00e9**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 232: #### **3. Erreurs de Performance**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 238: ### **Logs et Debugging**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/DEVELOPER_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 53: #### 2. Orchestrateur Principal (`unified_orchestr",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/DEVELOPER_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 74: #### 3. Distillation Avanc\u00e9e",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/DEVELOPER_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 124: ### Exemple de Test d'Int\u00e9gration",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/DEVELOPER_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 194: ### Cr\u00e9er un Nouveau Module Auto",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/DEVELOPER_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 224: ### Cr\u00e9er un Plugin",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/DEVELOPER_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 270: ### Logs et Debugging",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/DEVELOPER_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 311: ### Docker",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/DEVELOPER_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 383: ### Probl\u00e8mes Courants",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 71: ### **2. Activation Manuelle (Optionnel)**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 80: ### **3. Synchronisation Manuelle**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 86: ### **4. Suivi de Progression**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 98: ### **5. Migration vers Develop**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 148: ### **Phase 1bis : D\u00e9veloppement (Manuel)**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 161: ### **Phase 2 : Validation**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 171: ### **Phase 3 : Migration**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/LINTING_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 15: ### **2. Correction par Type d'Erreur**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/LINTING_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 26: #### **E302/E305 - Espaces entre fonctions/classes",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/LINTING_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 35: #### **E501 - Lignes trop longues**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/LINTING_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 44: #### **F841 - Variables inutilis\u00e9es**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/LINTING_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 52: ### **3. Workflow de Correction Recommand\u00e9**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/LINTING_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 70: ### **4. Commandes Utiles**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/LINTING_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 106: ### **6. Alias Utiles**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/LINTING_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 121: ### **7. Pr\u00e9vention**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/TESTING.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 33: ### **2. Tests d'Int\u00e9gration**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/TESTING.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 45: ### **3. Tests de Performance**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/TESTING.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 57: ### **4. Tests de S\u00e9curit\u00e9**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/TESTING.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 134: ### **Couverture de Code**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/TESTING.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 146: ### **Tests Automatis\u00e9s**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/TESTING.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 226: ### **Tests Automatis\u00e9s**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/TESTING.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 254: ### **Probl\u00e8mes Courants**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 66: ### Option 2: Workflow Complet",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 73: ### Option 3: Workflow Modulaire",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 98: ### 2. V\u00e9rifier l'Installation",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 105: ### 3. Configuration Automatique",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 251: #### Processus qui ne s'arr\u00eatent pas",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 260: #### Fichiers temporaires persistants",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 269: ### Logs et Debugging",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 296: #### Ajouter des V\u00e9rifications",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 306: #### Personnaliser les Messages",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 312: ### Int\u00e9gration CI/CD",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 321: #### Hook Post-merge",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/MAINTENANCE/APPLE_DOUBLE_MANAGEMENT.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 42: ### Options disponibles",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/MAINTENANCE/MACOS_TEMP_CLEANUP.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 29: ### Alias Disponibles",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/REORGANISATION_TESTS_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 251: ### **Tests Sp\u00e9cialis\u00e9s :**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/REORGANISATION_TESTS_STRUCTURE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 206: ### **Monitoring Continu**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/PLAN_ACTION_COUVERTURE_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 43: #### **Actions**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/PLAN_ACTION_COUVERTURE_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 101: ### **2.2 Modules de Configuration (Priorit\u00e9 HAUTE",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/PLAN_ACTION_COUVERTURE_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 215: ### **4.3 GitHub Actions**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/PLAN_ACTION_COUVERTURE_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 382: ### **Validation Compl\u00e8te**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/PLAN_ACTION_COUVERTURE_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 391: ### **Validation Pre-commit**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/INDEX.md",
+      "type": "missing_centered_div",
+      "message": "Missing centered layouts",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/INDEX.md",
+      "type": "missing_structured_tables",
+      "message": "No structured tables found",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/NETTOYAGE_REPOSITORY_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 57: #### **1.2 V\u00e9rification de l'\u00c9tat**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/NETTOYAGE_REPOSITORY_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 74: ### **Phase 2 : Nettoyage des Fichiers Parasites**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/NETTOYAGE_REPOSITORY_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 88: #### **2.2 Nettoyage des Caches Python**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/NETTOYAGE_REPOSITORY_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 98: #### **2.3 Nettoyage des Fichiers Temporaires**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/NETTOYAGE_REPOSITORY_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 116: ### **Phase 3 : Gestion du Fichier Massif** \ud83d\udce6",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/NETTOYAGE_REPOSITORY_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 129: #### **3.2 Options de Gestion**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/NETTOYAGE_REPOSITORY_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 167: ### **Phase 4 : Simplification de l'Architecture**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/NETTOYAGE_REPOSITORY_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 188: #### **4.2 Plan de Consolidation**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/NETTOYAGE_REPOSITORY_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 209: #### **4.3 Simplification des Sous-modules**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/NETTOYAGE_REPOSITORY_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 374: ### **\u00c9tape 2 : Consolidation S\u00e9curit\u00e9**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/NETTOYAGE_REPOSITORY_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 383: ### **\u00c9tape 3 : Consolidation Utilitaires**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/NETTOYAGE_REPOSITORY_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 393: ### **\u00c9tape 4 : Simplification Structurelle**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/NETTOYAGE_REPOSITORY_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 463: ### **2. Simplification Progressive**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/NETTOYAGE_REPOSITORY_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 469: ### **3. Validation et Finalisation**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/OPTIMISATION_TESTS_RAM_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 47: #### Probl\u00e8me : Tests de fuites m\u00e9moire",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/OPTIMISATION_TESTS_RAM_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 60: ### 2. Optimisation des Tests YAML",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/OPTIMISATION_TESTS_RAM_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 77: ### 3. Optimisation des Tests d'IA",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/OPTIMISATION_TESTS_RAM_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 90: ### 4. Optimisation des Tests de Cache",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/OPTIMISATION_TESTS_RAM_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 103: ### 5. Optimisation des Tests d'Audit",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/PLAN_CORRECTION_TESTS_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 65: #### **Correction des mocks ast_analysis**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/PLAN_CORRECTION_TESTS_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 78: ### **1.3 Actions**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/PLAN_CORRECTION_TESTS_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 104: #### **Correction du patching des variables global",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/PLAN_CORRECTION_TESTS_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 113: ### **2.3 Actions**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/PLAN_CORRECTION_TESTS_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 140: #### **Correction des assertions**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/PLAN_CORRECTION_TESTS_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 149: ### **3.3 Actions**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/PLAN_CORRECTION_TESTS_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 174: ### **4.3 Actions**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/PLAN_CORRECTION_TESTS_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 198: ### **5.3 Actions**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/PLAN_CORRECTION_TESTS_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 270: ### **2. Test Global**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/PLANS/PLAN_CORRECTION_TESTS_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 276: ### **3. Validation CI/CD**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/CORRECTION_PYTEST_COVERAGE_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 94: ### **3. Mise \u00e0 Jour du Workflow CI**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/CORRECTION_PYTEST_COVERAGE_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 181: ### **Configuration Pytest :**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/RAPPORT_COMPLET_AMELIORATIONS_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 71: #### 1.2 Validation syntaxique \u2705",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/RAPPORT_COMPLET_AMELIORATIONS_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 336: #### 4.3.2 Templates Artistiques \u2705 **D\u00c9J\u00c0 100% FON",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/RAPPORT_COMPLET_AMELIORATIONS_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 352: #### 4.3.3 Classification Avanc\u00e9e \u2705 **D\u00c9J\u00c0 80% FON",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/RAPPORT_COMPLET_AMELIORATIONS_2025.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 368: ### \ud83d\udcca **M\u00e9triques Phase 4.3**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/RAPPORT_COMPLET_AMELIORATIONS_2025.md",
+      "type": "missing_mermaid_theme",
+      "message": "Mermaid diagrams missing theme configuration",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 37: ### 2. Script de pr\u00e9paration au commit",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 62: ### 3. Script de push intelligent",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 90: ### 4. Workflow complet orchestr\u00e9",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 115: ### 5. Configuration pre-commit",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 152: ### D\u00e9veloppement de feature",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 164: ### Release",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 207: ### Personnalisation",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
+      "type": "broken_link",
+      "message": "Broken link: INSTALLATION.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
+      "type": "broken_link",
+      "message": "Broken link: BEST_PRACTICES.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
+      "type": "broken_link",
+      "message": "Broken link: CONFIGURATION.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
+      "type": "broken_link",
+      "message": "Broken link: TROUBLESHOOTING.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/PHASE_4_MODULES_AVANCES_PLAN.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 64: ### \u2705 **Succ\u00e8s majeurs Phase 4.2**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 153: ### 2. **Correction des Erreurs de Types**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 159: ### 3. **Am\u00e9lioration de la Couverture**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 165: ### 4. **Int\u00e9gration CI/CD**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
+      "type": "broken_link",
+      "message": "Broken link: docs/DEVELOPER/SECURITY_LINTING_GUIDE.md",
+      "severity": "medium"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/ANALYSE_COMPLETE_MODULES_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 175: #### Dans `unified_orchestrator.py` (orchestrateur",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/ANALYSE_COMPLETE_MODULES_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 189: ### \ud83c\udfaf **Points de d\u00e9faillance identifi\u00e9s**",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/REPORTS/ANALYSE_COMPLETE_MODULES_ATHALIA.md",
+      "type": "missing_mermaid_theme",
+      "message": "Mermaid diagrams missing theme configuration",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/UTILITIES/FORMATAGE_AUTOMATIQUE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 30: ### 2. `./bin/ath-smart-commit`",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/UTILITIES/FORMATAGE_AUTOMATIQUE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 51: ### 3. `./bin/ath-prepare-commit`",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/UTILITIES/FORMATAGE_AUTOMATIQUE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 86: ### Workflow avanc\u00e9",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/UTILITIES/GIT_WORKFLOW.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 33: ### 2. Cr\u00e9er une branche pour une nouvelle fonctio",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/UTILITIES/GIT_WORKFLOW.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 42: ### 3. D\u00e9veloppement",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/UTILITIES/GIT_WORKFLOW.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 62: ### 4. Pousser la branche",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/UTILITIES/GIT_WORKFLOW.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 68: ### 5. Cr\u00e9er une Pull Request",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/UTILITIES/GIT_WORKFLOW.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 130: ### 2. Merge vers main et develop",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/UTILITIES/GIT_WORKFLOW.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 172: ### Gestion des commits",
+      "severity": "low"
+    },
+    {
+      "file": "docs/DEVELOPER/UTILITIES/GIT_WORKFLOW.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 187: ### Gestion des conflits",
+      "severity": "low"
+    },
+    {
+      "file": "PLAN_NETTOYAGE_MD_ATHALIA_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 98: ### **\u00c9tape 2 : Suppression des Obsol\u00e8tes**",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_TEST_UTILISATEUR_COMPLET_ATHALIA_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 60: #### **\u26a0\ufe0f AVERTISSEMENTS OBSERV\u00c9S**",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_TEST_UTILISATEUR_COMPLET_ATHALIA_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 91: #### **\ud83d\udd0d DIFF\u00c9RENCES DOC VS R\u00c9ALIT\u00c9**",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_TEST_UTILISATEUR_COMPLET_ATHALIA_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 120: #### **\ud83d\udcca M\u00c9TRIQUES V\u00c9RIFI\u00c9ES**",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_TEST_UTILISATEUR_COMPLET_ATHALIA_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 138: #### **\ud83d\udcca COMPARAISON DOC VS R\u00c9ALIT\u00c9**",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_TEST_UTILISATEUR_COMPLET_ATHALIA_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 166: #### **\ud83d\udcca V\u00c9RIFICATION DOCUMENTATION**",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_TEST_UTILISATEUR_COMPLET_ATHALIA_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 191: #### **\ud83d\udcca M\u00c9TRIQUES R\u00c9ELLES**",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_TEST_UTILISATEUR_COMPLET_ATHALIA_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 215: #### **\ud83d\udcca M\u00c9TRIQUES V\u00c9RIFI\u00c9ES**",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_TEST_UTILISATEUR_COMPLET_ATHALIA_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 238: #### **\u2705 TEST BASE DE DONN\u00c9ES**",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_TEST_UTILISATEUR_COMPLET_ATHALIA_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 246: #### **\ud83c\udfaf NOTE : 19/20**",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_TEST_UTILISATEUR_COMPLET_ATHALIA_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 262: #### **\u26a0\ufe0f LIMITATIONS OBSERV\u00c9ES**",
+      "severity": "low"
+    },
+    {
+      "file": "DOCUMENTATION_PROFESSIONNELLE_FINALE_ATHALIA.md",
+      "type": "missing_mermaid_theme",
+      "message": "Mermaid diagrams missing theme configuration",
+      "severity": "low"
+    },
+    {
+      "file": "VERIFICATION_COMPLETE_REELLE_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 24: ### \u2705 **TEST 2 : G\u00c9N\u00c9RATION DE PROJETS**",
+      "severity": "low"
+    },
+    {
+      "file": "VERIFICATION_COMPLETE_REELLE_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 35: ### \u2705 **TEST 3 : S\u00c9CURIT\u00c9**",
+      "severity": "low"
+    },
+    {
+      "file": "VERIFICATION_COMPLETE_REELLE_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 45: ### \u2705 **TEST 4 : AUTO-CLEANER**",
+      "severity": "low"
+    },
+    {
+      "file": "VERIFICATION_COMPLETE_REELLE_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 57: ### \u2705 **TEST 5 : M\u00c9TRIQUES R\u00c9ELLES**",
+      "severity": "low"
+    },
+    {
+      "file": "VERIFICATION_COMPLETE_REELLE_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 74: ### \u274c **TEST 6 : INT\u00c9GRATIONS IA/LLM**",
+      "severity": "low"
+    },
+    {
+      "file": "VERIFICATION_COMPLETE_REELLE_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 84: ### \u2705 **TEST 7 : DASHBOARDS**",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_FINAL_CORRECTION_COMPLETE_TOUS_MD_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 79: ### **4. Corrections Syst\u00e9matiques et V\u00e9rifi\u00e9es**",
+      "severity": "low"
+    },
+    {
+      "file": "SYNTHESE_FINALE_TODO_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 92: #### **2. \u26a1 Optimisation Vitesse G\u00e9n\u00e9ration**",
+      "severity": "low"
+    },
+    {
+      "file": "PLAN_AMELIORATION_CV_ATHALIA_PAR_PHASES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 83: #### **1.2 Noms de Projets Intelligents**",
+      "severity": "low"
+    },
+    {
+      "file": "PLAN_AMELIORATION_CV_ATHALIA_PAR_PHASES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 105: #### **1.3 \u00c9liminer Warnings IA**",
+      "severity": "low"
+    },
+    {
+      "file": "PLAN_AMELIORATION_CV_ATHALIA_PAR_PHASES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 127: ### **\ud83c\udfa8 PHASE 2 : INTERFACE PROFESSIONNELLE (2-3 s",
+      "severity": "low"
+    },
+    {
+      "file": "PLAN_AMELIORATION_CV_ATHALIA_PAR_PHASES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 177: #### **2.2 Interface React Simple**",
+      "severity": "low"
+    },
+    {
+      "file": "PLAN_AMELIORATION_CV_ATHALIA_PAR_PHASES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 256: #### **3.2 Plugin VSCode**",
+      "severity": "low"
+    },
+    {
+      "file": "PLAN_AMELIORATION_CV_ATHALIA_PAR_PHASES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 300: ### **\ud83d\udcca PHASE 4 : M\u00c9TRIQUES ET ANALYTICS (2 semain",
+      "severity": "low"
+    },
+    {
+      "file": "PLAN_AMELIORATION_CV_ATHALIA_PAR_PHASES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 351: #### **4.2 Rapports Automatiques**",
+      "severity": "low"
+    },
+    {
+      "file": "PLAN_AMELIORATION_CV_ATHALIA_PAR_PHASES.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 402: #### **5.2 Vid\u00e9o de D\u00e9monstration**",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_AMELIORATION_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 49: #### **Apr\u00e8s :**",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_AMELIORATION_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 56: #### **Fonctionnalit\u00e9s Ajout\u00e9es :**",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_AMELIORATION_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 105: #### **Code Web Moderne :**",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_AMELIORATION_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 120: #### **Code Data Science :**",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_AMELIORATION_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 141: ### **4. D\u00e9pendances Intelligentes**",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_AMELIORATION_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 358: ### **Gestion d'Erreurs Robuste**",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_AMELIORATION_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 371: ### **Logging et Documentation**",
+      "severity": "low"
+    },
+    {
+      "file": "README.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 100: ### \ud83e\uddea **First Test** (2 minutes)",
+      "severity": "low"
+    },
+    {
+      "file": "README.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 238: ### \ud83c\udfd7\ufe0f **Project Generation**",
+      "severity": "low"
+    },
+    {
+      "file": "README.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 259: ### \ud83e\uddf9 **Automated Cleanup**",
+      "severity": "low"
+    },
+    {
+      "file": "README.md",
+      "type": "missing_navigation_links",
+      "message": "Missing navigation links",
+      "severity": "low"
+    },
+    {
+      "file": "AUDIT_COMPLET_DOCUMENTATION_ATHALIA.md",
+      "type": "missing_mermaid_theme",
+      "message": "Mermaid diagrams missing theme configuration",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_VERIFICATION_OUTILS_QUALITE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 202: #### **\ud83d\udcc8 Niveau 2 - CI/CD Integration**",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_VERIFICATION_OUTILS_QUALITE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 212: #### **\ud83d\udcc8 Niveau 3 - Pre-commit Hooks**",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_VERIFICATION_OUTILS_QUALITE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 248: ### \ud83d\udd27 **Commandes Maintenance**",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_VERIFICATION_OUTILS_QUALITE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 257: #### **V\u00e9rification Compl\u00e8te**",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_VERIFICATION_OUTILS_QUALITE.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 265: #### **Auto-fix**",
+      "severity": "low"
+    },
+    {
+      "file": "GUIDE_CORRECTION_PROBLEMES_ATHALIA_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 34: ### **\ud83d\udcc1 Fichiers \u00e0 Corriger**",
+      "severity": "low"
+    },
+    {
+      "file": "GUIDE_CORRECTION_PROBLEMES_ATHALIA_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 67: #### **2. `athalia_core/generation.py`**",
+      "severity": "low"
+    },
+    {
+      "file": "GUIDE_CORRECTION_PROBLEMES_ATHALIA_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 97: ### **\ud83e\uddea Test de Validation**",
+      "severity": "low"
+    },
+    {
+      "file": "GUIDE_CORRECTION_PROBLEMES_ATHALIA_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 147: #### **2. Cr\u00e9er `athalia_core/ai_advanced.py`**",
+      "severity": "low"
+    },
+    {
+      "file": "GUIDE_CORRECTION_PROBLEMES_ATHALIA_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 177: ### **\ud83e\uddea Test de Validation**",
+      "severity": "low"
+    },
+    {
+      "file": "GUIDE_CORRECTION_PROBLEMES_ATHALIA_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 204: ### **\ud83d\udcc1 Fichiers \u00e0 Corriger**",
+      "severity": "low"
+    },
+    {
+      "file": "GUIDE_CORRECTION_PROBLEMES_ATHALIA_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 226: #### **2. `athalia_core/intelligent_auditor.py`**",
+      "severity": "low"
+    },
+    {
+      "file": "GUIDE_CORRECTION_PROBLEMES_ATHALIA_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 247: ### **\ud83e\uddea Test de Validation**",
+      "severity": "low"
+    },
+    {
+      "file": "GUIDE_CORRECTION_PROBLEMES_ATHALIA_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 278: ### **\ud83d\udcc1 Fichiers \u00e0 Corriger**",
+      "severity": "low"
+    },
+    {
+      "file": "GUIDE_CORRECTION_PROBLEMES_ATHALIA_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 304: ### **\ud83e\uddea Test de Validation**",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_CORRECTION_MASSIVE_TOUS_MD_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 63: ### **3. Corrections Massives** \u2705 **EFFECTU\u00c9ES**",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_CORRECTION_MASSIVE_TOUS_MD_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 206: ### **2. Standards Qualit\u00e9**",
+      "severity": "low"
+    },
+    {
+      "file": "GUIDE_UTILISATION_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 31: ### **2. G\u00e9n\u00e9ration de Projet Simple**",
+      "severity": "low"
+    },
+    {
+      "file": "GUIDE_UTILISATION_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 54: ### **\ud83c\udf10 Application Web**",
+      "severity": "low"
+    },
+    {
+      "file": "GUIDE_UTILISATION_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 60: ### **\ud83d\udcca Traitement de Donn\u00e9es**",
+      "severity": "low"
+    },
+    {
+      "file": "GUIDE_UTILISATION_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 66: ### **\ud83e\udde0 Intelligence Artificielle**",
+      "severity": "low"
+    },
+    {
+      "file": "GUIDE_UTILISATION_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 72: ### **\ud83e\udd16 Robotique**",
+      "severity": "low"
+    },
+    {
+      "file": "GUIDE_UTILISATION_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 92: ### **2. D\u00e9tection Automatique du Type**",
+      "severity": "low"
+    },
+    {
+      "file": "GUIDE_UTILISATION_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 122: ### **4. Code Intelligent**",
+      "severity": "low"
+    },
+    {
+      "file": "GUIDE_UTILISATION_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 147: ### **Nettoyage Automatique**",
+      "severity": "low"
+    },
+    {
+      "file": "GUIDE_UTILISATION_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 182: ### **Exemple 2: Application Web Moderne**",
+      "severity": "low"
+    },
+    {
+      "file": "GUIDE_UTILISATION_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 201: ### **Exemple 3: Traitement de Donn\u00e9es**",
+      "severity": "low"
+    },
+    {
+      "file": "GUIDE_UTILISATION_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 247: ### **Analyse de Structure**",
+      "severity": "low"
+    },
+    {
+      "file": "GUIDE_UTILISATION_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 401: #### **2. Fichiers Parasites**",
+      "severity": "low"
+    },
+    {
+      "file": "GUIDE_UTILISATION_ATHALIA.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 410: #### **3. D\u00e9pendances Manquantes**",
+      "severity": "low"
+    },
+    {
+      "file": "RAPPORT_MISE_A_JOUR_FINALE_MD_20250803.md",
+      "type": "header_hierarchy",
+      "message": "Header hierarchy skip at line 161: ### **\ud83d\udcca M\u00e9triques de Qualit\u00e9**",
+      "severity": "low"
+    }
+  ],
+  "recommendations": [
+    "\ud83d\udd34 Add more Mermaid diagrams (target: 30%+ of files)",
+    "\ud83d\udfe1 Add professional badges to key documents",
+    "\ud83d\udd34 Fix 89 broken internal links",
+    "\ud83d\udd34 Resolve 1 high-severity issues",
+    "\ud83d\udfe1 Overall quality below 80% - review all recommendations"
+  ]
+}
