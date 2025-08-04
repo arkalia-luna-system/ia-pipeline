@@ -1,13 +1,13 @@
 # 🚀 Guide d'Utilisation - Athalia
 
-**Version :** 1.0.0 (ACTIVE DEVELOPMENT)  
+**Version :** 11.0 (ACTIVE DEVELOPMENT)  
 **Date :** 31 Juillet 2025
 
 ---
 
 ## 🎯 **Vue d'Ensemble**
 
-Ce guide explique comment utiliser Athalia, le système d'intelligence artificielle avancé pour l'automatisation et l'optimisation de projets de développement.
+Ce guide explique comment utiliser Athalia, le plateforme d'automatisation DevOps avancé pour l'automatisation et l'optimisation de projets de développement.
 
 ---
 

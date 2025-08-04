@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "athalia-ai"
-version = "1.0.0"
+version = "11.0.0"
 description = "Pipeline d'industrialisation IA pour génération automatique de projets"
 readme = "README.md"
 license = {text = "MIT"}

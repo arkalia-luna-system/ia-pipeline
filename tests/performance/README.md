@@ -1,6 +1,8 @@
 # ⚡ Tests de Performance
-**Dossier :** `tests/performance/`
-**Objectif :** Tests de performance et benchmarks (5% du total des tests)
+**Dossier :** `tests/performance/`  
+**Date :** 3 août 2025  
+**Fichiers :** **5 fichiers Python** ✅ **COMPTÉ**  
+**Objectif :** Tests de performance et benchmarks
 
 ## 📁 Structure
 
