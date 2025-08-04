@@ -7,7 +7,7 @@
 
 ## 🎯 **Vue d'Ensemble**
 
-Ce guide explique comment installer et configurer Athalia, le système d'intelligence artificielle avancé pour l'automatisation de projets.
+Ce guide explique comment installer et configurer Athalia, la plateforme d'automatisation DevOps pour l'automatisation de projets.
 
 ---
 

@@ -2,7 +2,7 @@
 
 ## 🎯 **PRÉSENTATION**
 
-Athalia est un système d'intelligence artificielle avancé pour la génération automatique de projets de développement. Ce guide vous accompagne dans l'utilisation optimale d'Athalia.
+Athalia est une plateforme d'automatisation DevOps pour la génération automatique de projets de développement via templates. Ce guide vous accompagne dans l'utilisation optimale d'Athalia.
 
 ### **🏆 VALIDATION UTILISATEUR (3 AOÛT 2025)**
 - ✅ **Test utilisateur complet réalisé** - Note globale : **17.6/20**
