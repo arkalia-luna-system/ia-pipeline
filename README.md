@@ -1,4 +1,4 @@
-# 🚀 ATHALIA - Système d'Intelligence Artificielle Avancé
+# 🚀 ATHALIA - Plateforme d'Automatisation DevOps
 
 **Version :** 11.0 (ACTIVE DEVELOPMENT)  
 **Date :** 3 août 2025  
@@ -8,7 +8,7 @@
 
 ## 🎯 **PRÉSENTATION**
 
-Athalia est un système d'intelligence artificielle avancé conçu pour l'automatisation, l'analyse et l'optimisation de projets de développement. Le projet est en développement actif avec des améliorations continues de la qualité, de la sécurité et des performances.
+Athalia est une plateforme d'automatisation DevOps conçue pour l'automatisation, l'analyse et l'optimisation de projets de développement. Le projet se concentre sur la sécurité, la qualité du code et l'automatisation des workflows.
 
 ### **🏆 ÉTAT ACTUEL (TESTÉ UTILISATEUR 3 AOÛT 2025)**
 - **🛡️ Sécurité :** 100% sécurisé ✅ **TESTÉ - 80 commandes autorisées**
@@ -41,11 +41,11 @@ python -m pytest tests/ -v
 
 ## 🔧 **FONCTIONNALITÉS PRINCIPALES**
 
-### **🤖 Intelligence Artificielle**
-- **Génération automatique** de projets et de code
-- **Analyse intelligente** de la qualité du code
+### **🔧 Automatisation DevOps**
+- **Génération automatique** de projets via templates
+- **Analyse automatisée** de la qualité du code  
 - **Optimisation automatique** des performances
-- **Correction intelligente** des erreurs
+- **Correction automatisée** des erreurs courantes
 
 ### **🛡️ Sécurité Avancée**
 - **Validation sécurisée** de toutes les commandes
