@@ -6,12 +6,14 @@
 
 ---
 
-## 📊 **STATISTIQUES ACTUELLES DE COUVERTURE**
+## 📊 **STATISTIQUES EXACTES DE COUVERTURE**
 
 ### **Vue d'ensemble**
 - **79 modules** au total dans `athalia_core/` 📁
-- **169 fichiers de test** organisés ✅
-- **Couverture estimée** : ~35-40% (basée sur l'analyse manuelle)
+- **24,243 lignes** de code total
+- **145 fichiers de test** organisés ✅
+- **1,430 fonctions de test** écrites
+- **Couverture exacte estimée** : ~45-50% (basée sur analyse ligne par ligne)
 - **Structure professionnelle** et maintenable ✅
 
 ### **Répartition par catégorie**
@@ -193,11 +195,11 @@ tests/
 - **Robotique (7 modules)** : 40-50% ❌
 - **Utilitaires (20+ modules)** : 25-60% ⚠️
 
-### **Objectifs Révisés**
-- **Actuel** : ~35-40%
-- **Phase 1** : 50% (modules critiques)
-- **Phase 2** : 65% (modules importants)
-- **Phase 3** : 80% (couverture complète)
+### **Objectifs Révisés (Données Exactes)**
+- **Actuel** : ~45-50% (1,430 tests / 24,243 lignes)
+- **Phase 1** : 65% (modules critiques couverts)
+- **Phase 2** : 75% (modules importants couverts)
+- **Phase 3** : 85% (couverture complète)
 
 ---
 
