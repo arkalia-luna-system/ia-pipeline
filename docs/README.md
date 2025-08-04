@@ -8,7 +8,7 @@
 
 ## 🎯 **PRÉSENTATION**
 
-Bienvenue dans la documentation complète d'Athalia, un système d'intelligence artificielle avancé pour l'automatisation et l'optimisation de projets de développement.
+Bienvenue dans la documentation complète d'Athalia, un plateforme d'automatisation DevOps avancé pour l'automatisation et l'optimisation de projets de développement.
 
 ### **🏆 ÉTAT ACTUEL (VÉRIFIÉ 3 AOÛT 2025)**
 - **🛡️ Sécurité :** 100% sécurisé ✅ **VALIDÉ**
