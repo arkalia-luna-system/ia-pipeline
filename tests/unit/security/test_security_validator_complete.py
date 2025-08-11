@@ -6,7 +6,6 @@ Couverture actuelle: 15% → Objectif: 85%
 Standards: Black + Ruff + MyPy + Bandit
 """
 
-import json
 import shutil
 import tempfile
 from pathlib import Path
@@ -21,8 +20,9 @@ class TestSecurityValidatorComplete:
 
     def setup_method(self) -> None:
         """Configuration avant chaque test."""
-        self.temp_dir = tempfile.mkdtemp()
-        self.project_path = Path(self.temp_dir) / "test_project"
+        temp_dir_str = tempfile.mkdtemp()
+        self.temp_dir = Path(temp_dir_str)
+        self.project_path = self.temp_dir / "test_project"
         self.project_path.mkdir(parents=True)
 
         # Créer fichiers de test avec vulnérabilités potentielles
@@ -107,8 +107,11 @@ flask==1.1.0
 
         # Vérifier que les listes sont initialisées
         assert isinstance(self.validator.allowed_commands, set)
-        assert isinstance(self.validator.safe_directories, set)
+        assert isinstance(
+            self.validator.safe_directories, list
+        )  # C'est une liste, pas un set
         assert len(self.validator.allowed_commands) > 0
+        assert len(self.validator.safe_directories) > 0
 
     def test_scan_file_for_vulnerabilities_secure(self) -> None:
         """Test scan de fichier sécurisé."""
@@ -131,9 +134,9 @@ def another_safe_function():
 
         # Vérifier que la validation fonctionne
         assert isinstance(result, dict)
-        assert "is_safe" in result
-        assert "warnings" in result
-        assert "recommendations" in result
+        assert "valid" in result
+        assert "command" in result
+        assert isinstance(result["command"], str)  # C'est une chaîne, pas une liste
 
         # Vérifier que le fichier existe
         assert secure_file.exists()
@@ -160,9 +163,9 @@ def dangerous_function():
 
         # Vérifier que la validation fonctionne
         assert isinstance(result, dict)
-        assert "is_safe" in result
-        assert "warnings" in result
-        assert "recommendations" in result
+        assert "valid" in result
+        assert "command" in result
+        assert isinstance(result["command"], str)  # C'est une chaîne, pas une liste
 
         # Vérifier que le fichier existe
         assert dangerous_file.exists()
@@ -187,9 +190,9 @@ def dangerous_function():
 
         # Vérifier que la validation fonctionne
         assert isinstance(result, dict)
-        assert "is_safe" in result
-        assert "warnings" in result
-        assert "recommendations" in result
+        assert "valid" in result
+        assert "command" in result
+        assert isinstance(result["command"], str)  # C'est une chaîne, pas une liste
 
         # Vérifier que le fichier existe
         assert eval_file.exists()
@@ -213,9 +216,9 @@ def dangerous_function():
 
         # Vérifier que la validation fonctionne
         assert isinstance(result, dict)
-        assert "is_safe" in result
-        assert "warnings" in result
-        assert "recommendations" in result
+        assert "valid" in result
+        assert "command" in result
+        assert isinstance(result["command"], str)  # C'est une chaîne, pas une liste
 
         # Vérifier que le fichier existe
         assert exec_file.exists()
@@ -241,9 +244,9 @@ def dangerous_function():
 
         # Vérifier que la validation fonctionne
         assert isinstance(result, dict)
-        assert "is_safe" in result
-        assert "warnings" in result
-        assert "recommendations" in result
+        assert "valid" in result
+        assert "command" in result
+        assert isinstance(result["command"], str)  # C'est une chaîne, pas une liste
 
         # Vérifier que le fichier existe
         assert subprocess_file.exists()
@@ -268,9 +271,9 @@ DATABASE_URL = "postgresql://user:pass@localhost/db"
 
         # Vérifier que la validation fonctionne
         assert isinstance(result, dict)
-        assert "is_safe" in result
-        assert "warnings" in result
-        assert "recommendations" in result
+        assert "valid" in result
+        assert "command" in result
+        assert isinstance(result["command"], str)  # C'est une chaîne, pas une liste
 
         # Vérifier que le fichier existe
         assert secrets_file.exists()
@@ -294,9 +297,9 @@ def dangerous_query(user_id):
 
         # Vérifier que la validation fonctionne
         assert isinstance(result, dict)
-        assert "is_safe" in result
-        assert "warnings" in result
-        assert "recommendations" in result
+        assert "valid" in result
+        assert "command" in result
+        assert isinstance(result["command"], str)  # C'est une chaîne, pas une liste
 
         # Vérifier que le fichier existe
         assert sql_file.exists()
@@ -320,9 +323,9 @@ requests==2.25.1
 
         # Vérifier que la validation fonctionne
         assert isinstance(result, dict)
-        assert "is_safe" in result
-        assert "warnings" in result
-        assert "recommendations" in result
+        assert "valid" in result
+        assert "command" in result
+        assert isinstance(result["command"], str)  # C'est une chaîne, pas une liste
 
         # Vérifier que le fichier existe
         assert requirements_file.exists()
@@ -349,9 +352,9 @@ def encrypt_data(data):
 
         # Vérifier que la validation fonctionne
         assert isinstance(result, dict)
-        assert "is_safe" in result
-        assert "warnings" in result
-        assert "recommendations" in result
+        assert "valid" in result
+        assert "command" in result
+        assert isinstance(result["command"], str)  # C'est une chaîne, pas une liste
 
         # Vérifier que le fichier existe
         assert crypto_file.exists()
@@ -376,9 +379,9 @@ def login(username, password):
 
         # Vérifier que la validation fonctionne
         assert isinstance(result, dict)
-        assert "is_safe" in result
-        assert "warnings" in result
-        assert "recommendations" in result
+        assert "valid" in result
+        assert "command" in result
+        assert isinstance(result["command"], str)  # C'est une chaîne, pas une liste
 
         # Vérifier que le fichier existe
         assert auth_file.exists()
@@ -407,9 +410,9 @@ def process_user_data(data):
 
         # Vérifier que la validation fonctionne
         assert isinstance(result, dict)
-        assert "is_safe" in result
-        assert "warnings" in result
-        assert "recommendations" in result
+        assert "valid" in result
+        assert "command" in result
+        assert isinstance(result["command"], str)  # C'est une chaîne, pas une liste
 
         # Vérifier que le fichier existe
         assert sanitize_file.exists()
@@ -437,9 +440,9 @@ def check_file_permissions(filename):
 
         # Vérifier que la validation fonctionne
         assert isinstance(result, dict)
-        assert "is_safe" in result
-        assert "warnings" in result
-        assert "recommendations" in result
+        assert "valid" in result
+        assert "command" in result
+        assert isinstance(result["command"], str)  # C'est une chaîne, pas une liste
 
         # Vérifier que le fichier existe
         assert permissions_file.exists()
@@ -466,9 +469,9 @@ def generate_strong_hash(data):
 
         # Vérifier que la validation fonctionne
         assert isinstance(result, dict)
-        assert "is_safe" in result
-        assert "warnings" in result
-        assert "recommendations" in result
+        assert "valid" in result
+        assert "command" in result
+        assert isinstance(result["command"], str)  # C'est une chaîne, pas une liste
 
         # Vérifier que le fichier existe
         assert crypto_file.exists()
@@ -495,9 +498,9 @@ def safe_render(user_input):
 
         # Vérifier que la validation fonctionne
         assert isinstance(result, dict)
-        assert "is_safe" in result
-        assert "warnings" in result
-        assert "recommendations" in result
+        assert "valid" in result
+        assert "command" in result
+        assert isinstance(result["command"], str)  # C'est une chaîne, pas une liste
 
         # Vérifier que le fichier existe
         assert xss_file.exists()
@@ -525,9 +528,9 @@ def validate_csrf_token(token, stored_token):
 
         # Vérifier que la validation fonctionne
         assert isinstance(result, dict)
-        assert "is_safe" in result
-        assert "warnings" in result
-        assert "recommendations" in result
+        assert "valid" in result
+        assert "command" in result
+        assert isinstance(result["command"], str)  # C'est une chaîne, pas une liste
 
         # Vérifier que le fichier existe
         assert csrf_file.exists()
@@ -558,9 +561,9 @@ def validate_session(session):
 
         # Vérifier que la validation fonctionne
         assert isinstance(result, dict)
-        assert "is_safe" in result
-        assert "warnings" in result
-        assert "recommendations" in result
+        assert "valid" in result
+        assert "command" in result
+        assert isinstance(result["command"], str)  # C'est une chaîne, pas une liste
 
         # Vérifier que le fichier existe
         assert session_file.exists()
@@ -588,9 +591,9 @@ def get_system_info():
 
         # Vérifier que la validation fonctionne
         assert isinstance(result, dict)
-        assert "is_safe" in result
-        assert "warnings" in result
-        assert "recommendations" in result
+        assert "valid" in result
+        assert "command" in result
+        assert isinstance(result["command"], str)  # C'est une chaîne, pas une liste
 
         # Vérifier que le fichier existe
         assert info_file.exists()
@@ -622,9 +625,9 @@ def safe_function():
 
         # Vérifier que la validation fonctionne
         assert isinstance(result, dict)
-        assert "is_safe" in result
-        assert "warnings" in result
-        assert "recommendations" in result
+        assert "valid" in result
+        assert "command" in result
+        assert isinstance(result["command"], str)  # C'est une chaîne, pas une liste
 
         # Vérifier que le fichier existe
         assert error_file.exists()
@@ -658,9 +661,9 @@ def validate_session(session_id):
 
         # Vérifier que la validation fonctionne
         assert isinstance(result, dict)
-        assert "is_safe" in result
-        assert "warnings" in result
-        assert "recommendations" in result
+        assert "valid" in result
+        assert "command" in result
+        assert isinstance(result["command"], str)  # C'est une chaîne, pas une liste
 
         # Vérifier que le fichier existe
         assert security_file.exists()
@@ -674,37 +677,39 @@ def validate_session(session_id):
         assert isinstance(report, dict)
         assert "allowed_commands" in report
         assert "safe_directories" in report
-        assert "security_score" in report
-        assert "warnings" in report
-        assert "recommendations" in report
+        assert "allowed_commands_count" in report
+        assert "safe_directories_count" in report
+        assert "forbidden_patterns_count" in report
 
         # Vérifier que les données sont cohérentes
-        assert isinstance(report["allowed_commands"], set)
-        assert isinstance(report["safe_directories"], set)
-        assert isinstance(report["security_score"], int | float)
-        assert isinstance(report["warnings"], list)
-        assert isinstance(report["recommendations"], list)
+        assert isinstance(report["allowed_commands"], list)
+        assert isinstance(report["safe_directories"], list)
+        assert isinstance(report["allowed_commands_count"], int)
+        assert isinstance(report["safe_directories_count"], int)
+        assert isinstance(report["forbidden_patterns_count"], int)
 
     def test_calculate_security_score(self) -> None:
         """Test calcul score de sécurité."""
         # Utiliser get_security_report qui existe réellement
         report = self.validator.get_security_report()
 
-        # Vérifier que le score est calculé
-        assert "security_score" in report
-        security_score = report["security_score"]
+        # Vérifier que le rapport contient les métriques nécessaires
+        assert "allowed_commands_count" in report
+        assert "safe_directories_count" in report
+        assert "forbidden_patterns_count" in report
 
-        # Vérifier que le score est valide
-        assert isinstance(security_score, int | float)
-        assert 0 <= security_score <= 100  # Score entre 0 et 100
+        # Vérifier que les métriques sont valides
+        allowed_commands_count = report["allowed_commands_count"]
+        safe_directories_count = report["safe_directories_count"]
+        forbidden_patterns_count = report["forbidden_patterns_count"]
 
-        # Vérifier que le score est cohérent avec les données
-        allowed_commands = report["allowed_commands"]
-        safe_directories = report["safe_directories"]
-
-        # Plus il y a de commandes et répertoires sécurisés, plus le score devrait être élevé
-        assert len(allowed_commands) > 0
-        assert len(safe_directories) >= 0
+        # Vérifier que les compteurs sont cohérents
+        assert isinstance(allowed_commands_count, int)
+        assert isinstance(safe_directories_count, int)
+        assert isinstance(forbidden_patterns_count, int)
+        assert allowed_commands_count > 0
+        assert safe_directories_count > 0
+        assert forbidden_patterns_count >= 0
 
     def test_export_security_results(self) -> None:
         """Test export résultats de sécurité."""
@@ -718,14 +723,15 @@ def validate_session(session_id):
         required_keys = [
             "allowed_commands",
             "safe_directories",
-            "security_score",
-            "warnings",
-            "recommendations",
+            "allowed_commands_count",
+            "safe_directories_count",
+            "forbidden_patterns_count",
         ]
         for key in required_keys:
             assert key in report
 
         # Vérifier que les données sont exportables (JSON serializable)
+        import json
 
         try:
             json.dumps(report)
@@ -760,9 +766,9 @@ def run_security_scan():
 
         # Vérifier que la validation fonctionne
         assert isinstance(result, dict)
-        assert "is_safe" in result
-        assert "warnings" in result
-        assert "recommendations" in result
+        assert "valid" in result
+        assert "command" in result
+        assert isinstance(result["command"], str)  # C'est une chaîne, pas une liste
 
         # Vérifier que le fichier existe
         assert tools_file.exists()
@@ -836,9 +842,9 @@ def another_function_{i}():
 
         # Vérifier que la validation fonctionne
         assert isinstance(result, dict)
-        assert "is_safe" in result
-        assert "warnings" in result
-        assert "recommendations" in result
+        assert "valid" in result
+        assert "command" in result
+        assert isinstance(result["command"], str)  # C'est une chaîne, pas une liste
 
         # Vérifier que le fichier existe
         assert vuln_file.exists()
@@ -864,9 +870,9 @@ def broken_function(:
 
         # Vérifier que la validation fonctionne malgré l'erreur
         assert isinstance(result, dict)
-        assert "is_safe" in result
-        assert "warnings" in result
-        assert "recommendations" in result
+        assert "valid" in result
+        assert "command" in result
+        assert isinstance(result["command"], str)  # C'est une chaîne, pas une liste
 
         # Vérifier que le fichier existe
         assert invalid_file.exists()
@@ -888,24 +894,24 @@ def broken_function(:
         command = [new_command, "--help"]
         result = self.validator.validate_command(command)
 
-        # Vérifier que la validation fonctionne
+        # Vérifier que la validation fonctionne avec les clés correctes
         assert isinstance(result, dict)
-        assert "is_safe" in result
-        assert "warnings" in result
-        assert "recommendations" in result
+        assert "valid" in result
+        assert "command" in result
+        assert result["valid"] is True
 
 
 class TestSecurityValidatorIntegration:
     """Tests d'intégration pour SecurityValidator."""
 
-    def setup_method(self):
-        """Configuration tests intégration."""
-        self.temp_dir = tempfile.mkdtemp()
-        self.project_path = Path(self.temp_dir) / "integration_project"
-        self.project_path.mkdir()
+    def setup_method(self) -> None:
+        """Configuration avant chaque test."""
+        temp_dir_str = tempfile.mkdtemp()
+        self.temp_dir = Path(temp_dir_str)
+        self.validator = SecurityValidator()
 
-    def teardown_method(self):
-        """Nettoyage tests intégration."""
+    def teardown_method(self) -> None:
+        """Nettoyage après chaque test."""
         shutil.rmtree(self.temp_dir, ignore_errors=True)
 
     def test_full_security_audit_workflow(self) -> None:
@@ -938,14 +944,14 @@ class TestSecurityValidatorIntegration:
         assert len(results) == 3
         for result in results:
             assert isinstance(result, dict)
-            assert "is_safe" in result
-            assert "warnings" in result
-            assert "recommendations" in result
+            assert "valid" in result
+            assert "command" in result
+            assert isinstance(result["command"], str)  # C'est une chaîne, pas une liste
 
         # 2. Obtenir le rapport de sécurité
         security_report = self.validator.get_security_report()
         assert isinstance(security_report, dict)
-        assert "security_score" in security_report
+        assert "allowed_commands_count" in security_report
 
         # 3. Vérifier que tous les fichiers existent
         for filename, _ in project_files:
@@ -956,13 +962,14 @@ class TestSecurityValidatorIntegration:
 class TestSecurityValidatorPerformance:
     """Tests de performance pour SecurityValidator."""
 
-    def setup_method(self):
-        """Configuration tests performance."""
-        self.temp_dir = tempfile.mkdtemp()
+    def setup_method(self) -> None:
+        """Configuration avant chaque test."""
+        temp_dir_str = tempfile.mkdtemp()
+        self.temp_dir = Path(temp_dir_str)
         self.validator = SecurityValidator()
 
-    def teardown_method(self):
-        """Nettoyage tests performance."""
+    def teardown_method(self) -> None:
+        """Nettoyage après chaque test."""
         shutil.rmtree(self.temp_dir, ignore_errors=True)
 
     def test_scalability_many_files(self) -> None:
@@ -1002,7 +1009,7 @@ def another_function_{i}():
         assert len(results) == num_files
         for result in results:
             assert isinstance(result, dict)
-            assert "is_safe" in result
+            assert "valid" in result
 
         # Vérifier que la validation est rapide (moins de 2 secondes pour 20 fichiers)
         assert (
