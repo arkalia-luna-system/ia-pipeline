@@ -473,6 +473,15 @@ class SecurityValidator:
             return {
                 "valid": False,
                 "reason": "Commande vide",
+                "error": "Commande vide",
+                "command": " ".join(command),
+            }
+
+        # Vérifier les commandes dangereuses avec arguments EN PREMIER
+        if self._is_dangerous_command_with_args(command):
+            return {
+                "valid": False,
+                "reason": "Commande dangereuse détectée",
                 "command": " ".join(command),
             }
 
@@ -553,6 +562,38 @@ class SecurityValidator:
             "command": " ".join(command),
         }
 
+    def _is_dangerous_command_with_args(self, command: list[str]) -> bool:
+        """Vérifie si une commande avec arguments est dangereuse."""
+        if len(command) < 2:
+            return False
+
+        base_cmd = command[0].lower()
+        args = " ".join(command[1:]).lower()
+
+        # Détecter les commandes dangereuses avec des arguments spécifiques
+        dangerous_patterns = [
+            # Accès aux fichiers système sensibles
+            (["cat", "ls", "find"], ["/etc/passwd", "/root", "/etc/"]),
+            # Commandes de suppression dangereuses
+            (["rm", "rmdir"], ["-rf", "/", "/etc", "/root"]),
+            # Commandes d'installation système
+            (["apt-get", "yum", "dnf"], ["update", "install", "remove"]),
+            # Commandes de privilèges
+            (["sudo", "su"], ["rm", "chmod", "chown", "apt-get"]),
+            # Commandes Python dangereuses
+            (["python", "python3"], ["-c", "import os; os.system('rm -rf /')"]),
+            # Patterns d'écho dangereux
+            (["echo", "printf"], ["'rm -rf /'", "'sudo apt-get update'"]),
+        ]
+
+        for dangerous_cmds, dangerous_args in dangerous_patterns:
+            if base_cmd in dangerous_cmds:
+                for arg in dangerous_args:
+                    if arg in args:
+                        return True
+
+        return False
+
     def _is_dangerous_path(self, path: str) -> bool:
         """Vérifie si un chemin est dangereux."""
         dangerous_paths: set[str] = {
@@ -590,8 +631,17 @@ class SecurityValidator:
             raise SecurityError(f"Commande non autorisée: {validation['reason']}")
 
         try:
+            # Gérer les paramètres en conflit avec capture_output
+            safe_kwargs = kwargs.copy()
+            if "capture_output" in safe_kwargs:
+                del safe_kwargs["capture_output"]
+            if "stdout" in safe_kwargs:
+                del safe_kwargs["stdout"]
+            if "stderr" in safe_kwargs:
+                del safe_kwargs["stderr"]
+
             result = subprocess.run(
-                command, capture_output=True, text=True, check=False, **kwargs
+                command, capture_output=True, text=True, check=False, **safe_kwargs
             )
             return result
         except subprocess.SubprocessError as e:
@@ -607,8 +657,9 @@ class SecurityValidator:
 
     def add_safe_directory(self, directory: str) -> None:
         """Ajoute un répertoire sûr."""
-        # Cette méthode peut être étendue pour gérer les répertoires sûrs
-        pass
+        resolved_path = str(Path(directory).resolve())
+        if resolved_path not in self.safe_directories:
+            self.safe_directories.append(resolved_path)
 
     def get_security_report(self) -> dict[str, Any]:
         """Génère un rapport de sécurité."""
