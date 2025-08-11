@@ -43,13 +43,28 @@ class TestEndToEndIntegration:
 
     def test_generation_end_to_end_api(self):
         """Test de génération end-to-end pour un projet API."""
+        # CORRECTION ARCHI PROPRE : Vérification dynamique des modules
         try:
             from athalia_core.generation import (
                 generate_blueprint_mock,
                 generate_project,
             )
+
+            print("✅ Modules de génération détectés dans athalia_core")
         except ImportError:
-            pytest.skip("Modules de génération non disponibles")
+            # Vérifier si les modules existent dans athalia_core
+            try:
+                import importlib.util
+
+                spec = importlib.util.find_spec("athalia_core.generation")
+                if spec:
+                    print(
+                        "⚠️  Module generation trouvé mais imports spécifiques échouent"
+                    )
+                    pytest.skip("Modules de génération partiellement disponibles")
+            except ImportError:
+                print("❌ Module generation non trouvé dans athalia_core")
+                pytest.skip("Modules de génération non disponibles")
 
         # Générer un projet API complet
         try:
@@ -107,13 +122,28 @@ class TestEndToEndIntegration:
 
     def test_generation_end_to_end_web(self):
         """Test de génération end-to-end pour un projet web."""
+        # CORRECTION ARCHI PROPRE : Vérification dynamique des modules
         try:
             from athalia_core.generation import (
                 generate_blueprint_mock,
                 generate_project,
             )
+
+            print("✅ Modules de génération détectés dans athalia_core")
         except ImportError:
-            pytest.skip("Modules de génération non disponibles")
+            # Vérifier si les modules existent dans athalia_core
+            try:
+                import importlib.util
+
+                spec = importlib.util.find_spec("athalia_core.generation")
+                if spec:
+                    print(
+                        "⚠️  Module generation trouvé mais imports spécifiques échouent"
+                    )
+                    pytest.skip("Modules de génération partiellement disponibles")
+            except ImportError:
+                print("❌ Module generation non trouvé dans athalia_core")
+                pytest.skip("Modules de génération non disponibles")
 
         # Générer un projet web
         try:
@@ -275,6 +305,7 @@ def test_function():
         # La génération de blueprint ne devrait pas prendre plus de 5 secondes
         assert execution_time < 5.0, f"Génération trop lente: {execution_time:.2f}s"
 
+    @pytest.mark.timeout(3)  # Timeout global de 3 secondes
     def test_concurrent_generation(self):
         """Test de génération concurrente."""
         try:
@@ -288,7 +319,9 @@ def test_function():
         results = queue.Queue()
 
         def generate_blueprint_thread(thread_id):
+            """Fonction de thread optimisée pour les tests."""
             try:
+                # Génération instantanée du blueprint
                 blueprint = generate_blueprint_mock(f"concurrent test {thread_id}")
                 results.put((thread_id, blueprint))
             except Exception as e:
@@ -301,18 +334,28 @@ def test_function():
             threads.append(thread)
             thread.start()
 
-        # Attendre que tous les threads se terminent
+        # Attendre que tous les threads se terminent avec timeout court
+        start_time = time.time()
         for thread in threads:
-            thread.join(timeout=10)
+            thread.join(timeout=0.5)  # Timeout très court car fonction instantanée
+
+        # Vérifier que le test n'a pas pris trop de temps
+        total_time = time.time() - start_time
+        assert total_time < 2.0, f"Test trop lent: {total_time:.2f}s"
 
         # Vérifier les résultats
+        results_count = 0
         while not results.empty():
             thread_id, result = results.get()
+            results_count += 1
             if isinstance(result, Exception):
                 pytest.skip(f"Génération concurrente échouée: {result}")
             assert isinstance(
                 result, dict
             ), f"Résultat invalide pour le thread {thread_id}"
+
+        # Vérifier que tous les threads ont terminé
+        assert results_count == 3, f"Seulement {results_count}/3 threads ont terminé"
 
 
 def test_generation_end_to_end_simple(tmp_path):
