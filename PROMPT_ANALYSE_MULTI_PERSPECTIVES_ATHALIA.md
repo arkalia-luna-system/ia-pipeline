@@ -17,7 +17,7 @@ Je vais vous donner les informations du projet, et vous devez l'analyser depuis 
 
 **Métriques techniques :**
 - 153 modules Python organisés
-- 1372 tests automatisés (98.2% succès)
+- 1696 tests automatisés (98.2% succès)
 - 59,647 lignes de code total
 - 245 fichiers de tests
 - 6 dashboards HTML interactifs

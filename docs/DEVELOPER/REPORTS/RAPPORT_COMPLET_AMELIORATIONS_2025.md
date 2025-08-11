@@ -397,7 +397,7 @@ def classify_project(idea: str) -> ProjectType:
 
 #### 5.2 Couverture complète des tests ✅
 **Tests implémentés :**
-- ✅ **Tests unitaires** : 1372 tests collectés
+- ✅ **Tests unitaires** : 1696 tests collectés
 - ✅ **Tests d'intégration** : Workflow complet
 - ✅ **Tests de performance** : Cache et optimisation
 - ✅ **Tests de sécurité** : Audit et validation

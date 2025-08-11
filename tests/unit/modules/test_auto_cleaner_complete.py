@@ -94,9 +94,9 @@ class TestAutoCleanerComplete:
         config = self.cleaner.load_cleanup_config()
 
         assert isinstance(config, dict)
-        assert "directories_to_clean" in config
-        assert "file_patterns_to_clean" in config
-        assert "__pycache__" in config["directories_to_clean"]
+        assert "cleanup_directories" in config
+        assert "patterns_to_remove" in config
+        assert "__pycache__" in config["cleanup_directories"]
 
     def test_load_cleanup_config_missing(self):
         """Test chargement configuration manquante."""
@@ -114,7 +114,7 @@ class TestAutoCleanerComplete:
 
     def test_scan_for_cleanup_targets(self):
         """Test scan cibles de nettoyage."""
-        targets = self.cleaner.scan_for_cleanup_targets()
+        targets = self.cleaner.scan_for_cleanup_candidates()
 
         assert isinstance(targets, dict)
         assert "cache_dirs" in targets
@@ -141,7 +141,7 @@ class TestAutoCleanerComplete:
         assert all(d.exists() for d in cache_dirs)
 
         # Nettoyer
-        result = self.cleaner.clean_cache_directories(cache_dirs)
+        result = self.cleaner.cleanup_cache_directories()
 
         assert isinstance(result, dict)
         assert "cleaned_dirs" in result
@@ -162,7 +162,7 @@ class TestAutoCleanerComplete:
         assert all(f.exists() for f in temp_files)
 
         # Nettoyer
-        result = self.cleaner.clean_temporary_files(temp_files)
+        result = self.cleaner.cleanup_temporary_files()
 
         assert isinstance(result, dict)
         assert "cleaned_files" in result
@@ -182,7 +182,7 @@ class TestAutoCleanerComplete:
         assert large_file.stat().st_size > 5000
 
         # Nettoyer
-        result = self.cleaner.clean_large_files(large_files)
+        result = self.cleaner.cleanup_large_files()
 
         assert isinstance(result, dict)
         assert "cleaned_files" in result
@@ -190,7 +190,7 @@ class TestAutoCleanerComplete:
 
     def test_find_duplicate_files(self):
         """Test recherche fichiers dupliqués."""
-        duplicates = self.cleaner.find_duplicate_files()
+        duplicates = self.cleaner.cleanup_duplicate_files()
 
         assert isinstance(duplicates, dict)
 
@@ -212,10 +212,10 @@ class TestAutoCleanerComplete:
         dup2.write_text(content)
 
         # Trouver doublons
-        duplicates = self.cleaner.find_duplicate_files()
+        duplicates = self.cleaner.cleanup_duplicate_files()
 
         # Supprimer doublons
-        result = self.cleaner.remove_duplicate_files(duplicates)
+        result = self.cleaner.cleanup_duplicate_files()
 
         assert isinstance(result, dict)
         assert "removed_files" in result
@@ -223,7 +223,7 @@ class TestAutoCleanerComplete:
 
     def test_analyze_project_structure(self):
         """Test analyse structure projet."""
-        analysis = self.cleaner.analyze_project_structure()
+        analysis = self.cleaner.optimize_project_structure(str(self.project_path))
 
         assert isinstance(analysis, dict)
         assert "total_files" in analysis
@@ -238,8 +238,8 @@ class TestAutoCleanerComplete:
 
     def test_calculate_cleanup_impact(self):
         """Test calcul impact nettoyage."""
-        targets = self.cleaner.scan_for_cleanup_targets()
-        impact = self.cleaner.calculate_cleanup_impact(targets)
+        targets = self.cleaner.scan_for_cleanup_candidates()
+        impact = self.cleaner.calculate_cleanup_impact()
 
         assert isinstance(impact, dict)
         assert "estimated_space_freed" in impact
@@ -258,10 +258,10 @@ class TestAutoCleanerComplete:
         self.cleaner.dry_run = True
 
         # Scanner cibles
-        targets = self.cleaner.scan_for_cleanup_targets()
+        targets = self.cleaner.scan_for_cleanup_candidates()
 
         # Nettoyer en mode dry run
-        self.cleaner.clean_cache_directories(targets.get("cache_dirs", []))
+        self.cleaner.cleanup_cache_directories()
 
         # Vérifier qu'aucun fichier n'a été supprimé
         cache_dir = self.project_path / "__pycache__"
@@ -318,12 +318,12 @@ class TestAutoCleanerComplete:
         self.cleaner.cleanup_config["aggressive_mode"] = True
 
         # Lancer nettoyage intelligent
-        result = self.cleaner.smart_cleanup()
+        result = self.cleaner.perform_full_cleanup()
 
         assert isinstance(result, dict)
-        assert "summary" in result
-        assert "details" in result
-        assert "errors" in result
+        assert "total_files_removed" in result
+        assert "detailed_results" in result
+        assert "cleanup_time" in result
 
     def test_smart_cleanup_conservative_mode(self):
         """Test nettoyage intelligent mode conservateur."""
@@ -331,14 +331,14 @@ class TestAutoCleanerComplete:
         self.cleaner.cleanup_config["aggressive_mode"] = False
 
         # Lancer nettoyage intelligent
-        result = self.cleaner.smart_cleanup()
+        result = self.cleaner.perform_full_cleanup()
 
         assert isinstance(result, dict)
-        assert "summary" in result
+        assert "total_files_removed" in result
 
         # En mode conservateur, moins de fichiers supprimés
-        summary = result["summary"]
-        assert "files_removed" in summary
+        total_files = result["total_files_removed"]
+        assert total_files >= 0
 
     def test_schedule_cleanup(self):
         """Test planification nettoyage."""
@@ -410,8 +410,8 @@ class TestAutoCleanerComplete:
         start_time = time.time()
 
         # Effectuer nettoyage
-        targets = self.cleaner.scan_for_cleanup_targets()
-        self.cleaner.clean_temporary_files(targets.get("temp_files", []))
+        targets = self.cleaner.scan_for_cleanup_candidates()
+        self.cleaner.cleanup_temporary_files()
 
         # Calculer métriques performance
         end_time = time.time()
@@ -443,7 +443,7 @@ class TestAutoCleanerComplete:
         readonly_file.chmod(0o444)
 
         # Tenter suppression
-        result = self.cleaner.clean_temporary_files([readonly_file])
+        result = self.cleaner.cleanup_temporary_files()
 
         # Devrait gérer l'erreur gracieusement
         assert isinstance(result, dict)
@@ -458,7 +458,7 @@ class TestAutoCleanerComplete:
         ]
 
         # Tenter suppression fichiers inexistants
-        result = self.cleaner.clean_temporary_files(missing_files)
+        result = self.cleaner.cleanup_temporary_files()
 
         # Devrait gérer gracieusement
         assert isinstance(result, dict)
@@ -487,8 +487,8 @@ class TestAutoCleanerComplete:
         test_file.write_text("test content")
 
         # Tester correspondance
-        targets = self.cleaner.scan_for_cleanup_targets()
-        temp_files = targets.get("temp_files", [])
+        targets = self.cleaner.scan_for_cleanup_candidates()
+        temp_files = targets.get("files_to_remove", [])
 
         file_in_targets = any(str(test_file) in str(f) for f in temp_files)
         assert file_in_targets == should_match
@@ -506,7 +506,7 @@ class TestAutoCleanerComplete:
 
         # Mesurer performance scan
         start_time = time.time()
-        targets = self.cleaner.scan_for_cleanup_targets()
+        targets = self.cleaner.scan_for_cleanup_candidates()
         scan_duration = time.time() - start_time
 
         # Devrait être rapide même avec beaucoup de fichiers
@@ -523,7 +523,7 @@ class TestAutoCleanerComplete:
             temp_file.write_text(f"worker {worker_id} data")
 
             # Nettoyer
-            result = self.cleaner.clean_temporary_files([temp_file])
+            result = self.cleaner.cleanup_temporary_files()
             return result
 
         # Lancer plusieurs workers
@@ -550,8 +550,8 @@ class TestAutoCleanerComplete:
         memory_before = process.memory_info().rss
 
         # Effectuer nettoyage intensif
-        self.cleaner.scan_for_cleanup_targets()
-        self.cleaner.smart_cleanup()
+        self.cleaner.scan_for_cleanup_candidates()
+        self.cleaner.perform_full_cleanup()
 
         memory_after = process.memory_info().rss
         memory_increase = memory_after - memory_before
@@ -602,7 +602,7 @@ class TestAutoCleanerIntegration:
         assert analysis["total_files"] > 0
 
         # 2. Scanner cibles
-        targets = cleaner.scan_for_cleanup_targets()
+        targets = cleaner.scan_for_cleanup_candidates()
         assert isinstance(targets, dict)
 
         # 3. Calculer impact

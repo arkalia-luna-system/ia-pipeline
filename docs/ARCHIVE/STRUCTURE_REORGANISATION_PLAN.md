@@ -132,4 +132,4 @@ docs/
 
 ---
 
-*Plan généré automatiquement par Athalia - 31 juillet 2025* 
+*Plan généré automatiquement par Athalia - 11 août 2025* 

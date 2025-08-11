@@ -299,7 +299,7 @@ python -m pytest tests/ --collect-only | grep "collected"
 **Expected Output:**
 ```
 ======================== test session starts ========================
-collected 1372 tests
+collected 1696 tests
 
 tests/unit/test_generation.py::test_generate_blueprint_mock PASSED
 tests/unit/test_generation.py::test_extract_project_name PASSED

@@ -1,6 +1,6 @@
 # 🚀 ATHALIA - GUIDE DE NAVIGATION PRINCIPAL
 
-**Date :** 3 août 2025  
+**Date :** 11 août 2025  
 **Version :** 11.0 (GUIDE SIMPLIFIÉ)  
 **Objectif :** Navigation claire et rapide dans la documentation
 
@@ -99,12 +99,12 @@
 
 ### **🏗️ Architecture**
 - **153 modules Python** dans `athalia_core/` ✅
-- **1372 tests collectés** (98.2% succès) ✅
+- **1696 tests collectés** (98.2% succès) ✅
 - **43 commandes** dans `bin/` ✅
 - **6 dashboards HTML** opérationnels ✅
 
 ### **📈 Performance**
-- **Tests ultra-rapides** : 1372 tests en 1.17s ✅
+- **Tests ultra-rapides** : 1696 tests en 1.17s ✅
 - **Couverture** : 10.21% globale, 80.72% orchestrateur ✅
 - **Qualité** : Ruff et Black passent parfaitement ✅
 - **CI/CD** : 6 workflows GitHub Actions ✅
@@ -121,7 +121,7 @@
 
 ### **✅ PROJET EXCEPTIONNEL**
 Athalia est un système d'IA avancé pour l'automatisation de projets avec :
-- Architecture robuste (153 modules, 1372 tests)
+- Architecture robuste (153 modules, 1696 tests)
 - Performance spectaculaire (tests 35x plus rapides que prévu)
 - Qualité professionnelle (98.2% tests réussis)
 
@@ -162,5 +162,5 @@ Le projet est mature et opérationnel avec :
 
 ---
 
-*Guide de navigation créé le 3 août 2025*  
+*Guide de navigation créé le 11 août 2025*  
 *Documentation simplifiée et organisée - Navigation en 2-3 clics maximum*

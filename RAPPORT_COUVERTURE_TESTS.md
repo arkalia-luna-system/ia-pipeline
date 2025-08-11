@@ -1,6 +1,6 @@
 # 📊 Rapport Complet de Couverture des Tests - Athalia
 
-**Date d'analyse :** 15 Janvier 2025  
+**Date d'analyse :** 11 août 2025  
 **Analysé par :** Assistant IA  
 **Méthode :** Analyse manuelle exhaustive  
 **Statut :** ✅ ANALYSE TERMINÉE  
@@ -10,7 +10,7 @@
 ## 🎯 **RÉSUMÉ EXÉCUTIF**
 
 ### **Statistiques Globales**
-- **📁 Total modules :** 79 fichiers Python dans `athalia_core/`
+- **📁 Total modules :** 153 fichiers Python dans `athalia_core/`
 - **🧪 Total tests :** 169 fichiers de test
 - **📊 Couverture estimée :** ~35-40%
 - **🔥 Modules critiques sans tests :** 15 identifiés

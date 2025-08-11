@@ -80,7 +80,7 @@ result = tm.generate_template(
     context={
         "project_name": "mon-projet",
         "author": "Alice Developer",
-        "version": "1.0.0",
+        "version": "11.0.0",
         "project_description": "Description du projet"
     }
 )
@@ -104,7 +104,7 @@ Tous les templates ont accès aux variables suivantes :
 context = {
     "project_name": "mon-api",
     "author": "Alice Developer",
-    "version": "1.0.0",
+    "version": "11.0.0",
     "project_description": "API REST pour gestion des utilisateurs"
 }
 ```

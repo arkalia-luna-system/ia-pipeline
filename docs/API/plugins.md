@@ -21,7 +21,7 @@ def hello_plugin():
     """Plugin de démonstration"""
     return {
         "name": "Hello Plugin",
-        "version": "1.0.0",
+        "version": "11.0.0",
         "description": "Plugin de démonstration",
         "result": "Hello World!"
     }

@@ -1,6 +1,6 @@
 # 🛠️ Commandes Athalia (bin/)
 
-**Date :** 3 août 2025  
+**Date :** 11 août 2025  
 **Statut :** ✅ **43 COMMANDES TESTÉES UTILISATEUR (16/20)**
 
 Ce dossier contient toutes les commandes exécutables et utilitaires système d'Athalia.
@@ -108,4 +108,4 @@ python bin/cleanup/clean-null-bytes-robust.py
 - ✅ **Les commandes shell** ont un shebang `#!/bin/bash`
 - ✅ **Documentation complète** dans chaque script
 
-*Documentation mise à jour avec 43 commandes réelles - 3 août 2025* 
+*Documentation mise à jour avec 43 commandes réelles - 11 août 2025* 

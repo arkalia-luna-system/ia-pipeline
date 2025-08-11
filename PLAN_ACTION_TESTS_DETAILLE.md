@@ -1,6 +1,6 @@
 # 🎯 Plan d'Action Détaillé - Tests Athalia
 
-**Date :** 15 Janvier 2025  
+**Date :** 11 août 2025  
 **Objectif :** Passer de 45% à 85% de couverture  
 **Délai :** 6 semaines  
 **Standards :** Code propre (Black, Ruff, MyPy)  

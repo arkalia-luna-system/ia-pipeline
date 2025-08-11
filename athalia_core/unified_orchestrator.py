@@ -36,7 +36,7 @@ except ImportError:
 # Imports des nouveaux modules IA et distillation
 try:
     from .agents.audit_agent import AuditAgent
-    from .agents.context_prompt import ContextPromptAgent
+    from .agents.context_prompt import detect_prompts_scoring, show_prompts
     from .agents.unified_agent import UnifiedAgent
     from .distillation.code_genetics import CodeGenetics
     from .distillation.quality_scorer import QualityScorer
@@ -74,7 +74,7 @@ except ImportError:
 
 # Import des modules de classification avancée
 try:
-    from athalia_core.classification.project_classifier import classify_project_type
+    from athalia_core.classification.project_classifier import classify_project
     from athalia_core.classification.project_types import (
         get_project_config,
     )
@@ -154,7 +154,7 @@ class UnifiedOrchestrator:
             if AI_MODULES_AVAILABLE:
                 try:
                     self.unified_agent = UnifiedAgent()
-                    self.context_agent = ContextPromptAgent()
+                    self.context_agent = detect_prompts_scoring  # Fonction au lieu de classe
                     self.audit_agent = AuditAgent()
                     self.quality_scorer = QualityScorer()
                     self.response_distiller = ResponseDistiller()
@@ -187,7 +187,7 @@ class UnifiedOrchestrator:
             # Modules de classification (si disponibles)
             if CLASSIFICATION_MODULES_AVAILABLE:
                 try:
-                    self.project_classifier = classify_project_type
+                    self.project_classifier = classify_project
                     logger.info("✅ Modules de classification initialisés")
                 except Exception as e:
                     logger.warning(

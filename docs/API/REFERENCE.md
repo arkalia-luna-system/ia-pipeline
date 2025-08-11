@@ -97875,21 +97875,21 @@ The version of this specifier.
 
 A representation of the Specifier that shows all internal state.
 
->>> Specifier('>=1.0.0')
-<Specifier('>=1.0.0')>
->>> Specifier('>=1.0.0', prereleases=False)
-<Specifier('>=1.0.0', prereleases=False)>
->>> Specifier('>=1.0.0', prereleases=True)
-<Specifier('>=1.0.0', prereleases=True)>
+>>> Specifier('>=11.0.0')
+<Specifier('>=11.0.0')>
+>>> Specifier('>=11.0.0', prereleases=False)
+<Specifier('>=11.0.0', prereleases=False)>
+>>> Specifier('>=11.0.0', prereleases=True)
+<Specifier('>=11.0.0', prereleases=True)>
 
 ##### __str__
 
 A string representation of the Specifier that can be round-tripped.
 
->>> str(Specifier('>=1.0.0'))
-'>=1.0.0'
->>> str(Specifier('>=1.0.0', prereleases=False))
-'>=1.0.0'
+>>> str(Specifier('>=11.0.0'))
+'>=11.0.0'
+>>> str(Specifier('>=11.0.0', prereleases=False))
+'>=11.0.0'
 
 ##### _canonical_spec
 
@@ -97994,7 +97994,7 @@ This is used for the ``in`` operator and behaves the same as
 True
 >>> Version("1.2.3") in Specifier(">=1.2.3")
 True
->>> "1.0.0" in Specifier(">=1.2.3")
+>>> "11.0.0" in Specifier(">=1.2.3")
 False
 >>> "1.3.0a1" in Specifier(">=1.2.3")
 False
@@ -98021,7 +98021,7 @@ Return whether or not the item is contained in this specifier.
 True
 >>> Specifier(">=1.2.3").contains(Version("1.2.3"))
 True
->>> Specifier(">=1.2.3").contains("1.0.0")
+>>> Specifier(">=1.2.3").contains("11.0.0")
 False
 >>> Specifier(">=1.2.3").contains("1.3.0a1")
 False
@@ -98106,12 +98106,12 @@ A representation of the specifier set that shows all internal state.
 Note that the ordering of the individual specifiers within the set may not
 match the input string.
 
->>> SpecifierSet('>=1.0.0,!=2.0.0')
-<SpecifierSet('!=2.0.0,>=1.0.0')>
->>> SpecifierSet('>=1.0.0,!=2.0.0', prereleases=False)
-<SpecifierSet('!=2.0.0,>=1.0.0', prereleases=False)>
->>> SpecifierSet('>=1.0.0,!=2.0.0', prereleases=True)
-<SpecifierSet('!=2.0.0,>=1.0.0', prereleases=True)>
+>>> SpecifierSet('>=11.0.0,!=2.0.0')
+<SpecifierSet('!=2.0.0,>=11.0.0')>
+>>> SpecifierSet('>=11.0.0,!=2.0.0', prereleases=False)
+<SpecifierSet('!=2.0.0,>=11.0.0', prereleases=False)>
+>>> SpecifierSet('>=11.0.0,!=2.0.0', prereleases=True)
+<SpecifierSet('!=2.0.0,>=11.0.0', prereleases=True)>
 
 ##### __str__
 
@@ -98120,10 +98120,10 @@ A string representation of the specifier set that can be round-tripped.
 Note that the ordering of the individual specifiers within the set may not
 match the input string.
 
->>> str(SpecifierSet(">=1.0.0,!=1.0.1"))
-'!=1.0.1,>=1.0.0'
->>> str(SpecifierSet(">=1.0.0,!=1.0.1", prereleases=False))
-'!=1.0.1,>=1.0.0'
+>>> str(SpecifierSet(">=11.0.0,!=1.0.1"))
+'!=1.0.1,>=11.0.0'
+>>> str(SpecifierSet(">=11.0.0,!=1.0.1", prereleases=False))
+'!=1.0.1,>=11.0.0'
 
 ##### __hash__
 
@@ -98133,10 +98133,10 @@ Return a SpecifierSet which is a combination of the two sets.
 
 :param other: The other object to combine with.
 
->>> SpecifierSet(">=1.0.0,!=1.0.1") & '<=2.0.0,!=2.0.1'
-<SpecifierSet('!=1.0.1,!=2.0.1,<=2.0.0,>=1.0.0')>
->>> SpecifierSet(">=1.0.0,!=1.0.1") & SpecifierSet('<=2.0.0,!=2.0.1')
-<SpecifierSet('!=1.0.1,!=2.0.1,<=2.0.0,>=1.0.0')>
+>>> SpecifierSet(">=11.0.0,!=1.0.1") & '<=2.0.0,!=2.0.1'
+<SpecifierSet('!=1.0.1,!=2.0.1,<=2.0.0,>=11.0.0')>
+>>> SpecifierSet(">=11.0.0,!=1.0.1") & SpecifierSet('<=2.0.0,!=2.0.1')
+<SpecifierSet('!=1.0.1,!=2.0.1,<=2.0.0,>=11.0.0')>
 
 **Paramètres :**
 
@@ -98150,16 +98150,16 @@ Whether or not the two SpecifierSet-like objects are equal.
 
 The value of :attr:`prereleases` is ignored.
 
->>> SpecifierSet(">=1.0.0,!=1.0.1") == SpecifierSet(">=1.0.0,!=1.0.1")
+>>> SpecifierSet(">=11.0.0,!=1.0.1") == SpecifierSet(">=11.0.0,!=1.0.1")
 True
->>> (SpecifierSet(">=1.0.0,!=1.0.1", prereleases=False) ==
-...  SpecifierSet(">=1.0.0,!=1.0.1", prereleases=True))
+>>> (SpecifierSet(">=11.0.0,!=1.0.1", prereleases=False) ==
+...  SpecifierSet(">=11.0.0,!=1.0.1", prereleases=True))
 True
->>> SpecifierSet(">=1.0.0,!=1.0.1") == ">=1.0.0,!=1.0.1"
+>>> SpecifierSet(">=11.0.0,!=1.0.1") == ">=11.0.0,!=1.0.1"
 True
->>> SpecifierSet(">=1.0.0,!=1.0.1") == SpecifierSet(">=1.0.0")
+>>> SpecifierSet(">=11.0.0,!=1.0.1") == SpecifierSet(">=11.0.0")
 False
->>> SpecifierSet(">=1.0.0,!=1.0.1") == SpecifierSet(">=1.0.0,!=1.0.2")
+>>> SpecifierSet(">=11.0.0,!=1.0.1") == SpecifierSet(">=11.0.0,!=1.0.2")
 False
 
 **Paramètres :**
@@ -98175,8 +98175,8 @@ Returns the number of specifiers in this specifier set.
 Returns an iterator over all the underlying :class:`Specifier` instances
 in this specifier set.
 
->>> sorted(SpecifierSet(">=1.0.0,!=1.0.1"), key=str)
-[<Specifier('!=1.0.1')>, <Specifier('>=1.0.0')>]
+>>> sorted(SpecifierSet(">=11.0.0,!=1.0.1"), key=str)
+[<Specifier('!=1.0.1')>, <Specifier('>=11.0.0')>]
 
 ##### __contains__
 
@@ -98187,15 +98187,15 @@ Return whether or not the item is contained in this specifier.
 This is used for the ``in`` operator and behaves the same as
 :meth:`contains` with no ``prereleases`` argument passed.
 
->>> "1.2.3" in SpecifierSet(">=1.0.0,!=1.0.1")
+>>> "1.2.3" in SpecifierSet(">=11.0.0,!=1.0.1")
 True
->>> Version("1.2.3") in SpecifierSet(">=1.0.0,!=1.0.1")
+>>> Version("1.2.3") in SpecifierSet(">=11.0.0,!=1.0.1")
 True
->>> "1.0.1" in SpecifierSet(">=1.0.0,!=1.0.1")
+>>> "1.0.1" in SpecifierSet(">=11.0.0,!=1.0.1")
 False
->>> "1.3.0a1" in SpecifierSet(">=1.0.0,!=1.0.1")
+>>> "1.3.0a1" in SpecifierSet(">=11.0.0,!=1.0.1")
 False
->>> "1.3.0a1" in SpecifierSet(">=1.0.0,!=1.0.1", prereleases=True)
+>>> "1.3.0a1" in SpecifierSet(">=11.0.0,!=1.0.1", prereleases=True)
 True
 
 **Paramètres :**
@@ -98214,17 +98214,17 @@ Return whether or not the item is contained in this SpecifierSet.
     ``None`` (the default), it uses :attr:`prereleases` to determine
     whether or not prereleases are allowed.
 
->>> SpecifierSet(">=1.0.0,!=1.0.1").contains("1.2.3")
+>>> SpecifierSet(">=11.0.0,!=1.0.1").contains("1.2.3")
 True
->>> SpecifierSet(">=1.0.0,!=1.0.1").contains(Version("1.2.3"))
+>>> SpecifierSet(">=11.0.0,!=1.0.1").contains(Version("1.2.3"))
 True
->>> SpecifierSet(">=1.0.0,!=1.0.1").contains("1.0.1")
+>>> SpecifierSet(">=11.0.0,!=1.0.1").contains("1.0.1")
 False
->>> SpecifierSet(">=1.0.0,!=1.0.1").contains("1.3.0a1")
+>>> SpecifierSet(">=11.0.0,!=1.0.1").contains("1.3.0a1")
 False
->>> SpecifierSet(">=1.0.0,!=1.0.1", prereleases=True).contains("1.3.0a1")
+>>> SpecifierSet(">=11.0.0,!=1.0.1", prereleases=True).contains("1.3.0a1")
 True
->>> SpecifierSet(">=1.0.0,!=1.0.1").contains("1.3.0a1", prereleases=True)
+>>> SpecifierSet(">=11.0.0,!=1.0.1").contains("1.3.0a1", prereleases=True)
 True
 
 **Paramètres :**
@@ -98590,10 +98590,10 @@ Return a canonical form of a version as a string.
 Per PEP 625, versions may have multiple canonical forms, differing
 only by trailing zeros.
 
->>> canonicalize_version('1.0.0')
+>>> canonicalize_version('11.0.0')
 '1'
->>> canonicalize_version('1.0.0', strip_trailing_zero=False)
-'1.0.0'
+>>> canonicalize_version('11.0.0', strip_trailing_zero=False)
+'11.0.0'
 
 Invalid versions are returned unaltered.
 
@@ -98804,8 +98804,8 @@ Initialize a Version object.
 
 A representation of the Version that shows all internal state.
 
->>> Version('1.0.0')
-<Version('1.0.0')>
+>>> Version('11.0.0')
+<Version('11.0.0')>
 
 ##### __str__
 
@@ -98964,7 +98964,7 @@ The third item of :attr:`release` or ``0`` if unavailable.
 
 Release segment without any trailing zeros.
 
->>> _TrimmedRelease('1.0.0').release
+>>> _TrimmedRelease('11.0.0').release
 (1,)
 >>> _TrimmedRelease('0.0').release
 (0,)
@@ -104401,9 +104401,9 @@ merge breaks Session hooks entirely.
 
 Returns a :class:`Session` for context-management.
 
-.. deprecated:: 1.0.0
+.. deprecated:: 11.0.0
 
-    This method has been deprecated since version 1.0.0 and is only kept for
+    This method has been deprecated since version 11.0.0 and is only kept for
     backwards compatibility. New code should use :class:`~requests.sessions.Session`
     to create a session. This may be removed at a future date.
 
@@ -203183,7 +203183,7 @@ Lexer for the Gleam programming language.
 
 ##### GleamLexer
 
-Lexer for the Gleam programming language (version 1.0.0).
+Lexer for the Gleam programming language (version 11.0.0).
 
 ---
 
@@ -255102,7 +255102,7 @@ code, with all dependencies automatically handled.
 
 Args:
     python_packages (Sequence[str], optional): Python packages required by the function.
-        Can include version specifications (e.g., ["pandas>=1.0.0"]). Defaults to [].
+        Can include version specifications (e.g., ["pandas>=11.0.0"]). Defaults to [].
     global_imports (Sequence[Import], optional): Import statements required by the function.
         Can be strings ("numpy"), ImportFromModule objects, or Alias objects. Defaults to [].
 
@@ -271746,21 +271746,21 @@ The version of this specifier.
 
 A representation of the Specifier that shows all internal state.
 
->>> Specifier('>=1.0.0')
-<Specifier('>=1.0.0')>
->>> Specifier('>=1.0.0', prereleases=False)
-<Specifier('>=1.0.0', prereleases=False)>
->>> Specifier('>=1.0.0', prereleases=True)
-<Specifier('>=1.0.0', prereleases=True)>
+>>> Specifier('>=11.0.0')
+<Specifier('>=11.0.0')>
+>>> Specifier('>=11.0.0', prereleases=False)
+<Specifier('>=11.0.0', prereleases=False)>
+>>> Specifier('>=11.0.0', prereleases=True)
+<Specifier('>=11.0.0', prereleases=True)>
 
 ##### __str__
 
 A string representation of the Specifier that can be round-tripped.
 
->>> str(Specifier('>=1.0.0'))
-'>=1.0.0'
->>> str(Specifier('>=1.0.0', prereleases=False))
-'>=1.0.0'
+>>> str(Specifier('>=11.0.0'))
+'>=11.0.0'
+>>> str(Specifier('>=11.0.0', prereleases=False))
+'>=11.0.0'
 
 ##### _canonical_spec
 
@@ -271865,7 +271865,7 @@ This is used for the ``in`` operator and behaves the same as
 True
 >>> Version("1.2.3") in Specifier(">=1.2.3")
 True
->>> "1.0.0" in Specifier(">=1.2.3")
+>>> "11.0.0" in Specifier(">=1.2.3")
 False
 >>> "1.3.0a1" in Specifier(">=1.2.3")
 False
@@ -271892,7 +271892,7 @@ Return whether or not the item is contained in this specifier.
 True
 >>> Specifier(">=1.2.3").contains(Version("1.2.3"))
 True
->>> Specifier(">=1.2.3").contains("1.0.0")
+>>> Specifier(">=1.2.3").contains("11.0.0")
 False
 >>> Specifier(">=1.2.3").contains("1.3.0a1")
 False
@@ -271977,12 +271977,12 @@ A representation of the specifier set that shows all internal state.
 Note that the ordering of the individual specifiers within the set may not
 match the input string.
 
->>> SpecifierSet('>=1.0.0,!=2.0.0')
-<SpecifierSet('!=2.0.0,>=1.0.0')>
->>> SpecifierSet('>=1.0.0,!=2.0.0', prereleases=False)
-<SpecifierSet('!=2.0.0,>=1.0.0', prereleases=False)>
->>> SpecifierSet('>=1.0.0,!=2.0.0', prereleases=True)
-<SpecifierSet('!=2.0.0,>=1.0.0', prereleases=True)>
+>>> SpecifierSet('>=11.0.0,!=2.0.0')
+<SpecifierSet('!=2.0.0,>=11.0.0')>
+>>> SpecifierSet('>=11.0.0,!=2.0.0', prereleases=False)
+<SpecifierSet('!=2.0.0,>=11.0.0', prereleases=False)>
+>>> SpecifierSet('>=11.0.0,!=2.0.0', prereleases=True)
+<SpecifierSet('!=2.0.0,>=11.0.0', prereleases=True)>
 
 ##### __str__
 
@@ -271991,10 +271991,10 @@ A string representation of the specifier set that can be round-tripped.
 Note that the ordering of the individual specifiers within the set may not
 match the input string.
 
->>> str(SpecifierSet(">=1.0.0,!=1.0.1"))
-'!=1.0.1,>=1.0.0'
->>> str(SpecifierSet(">=1.0.0,!=1.0.1", prereleases=False))
-'!=1.0.1,>=1.0.0'
+>>> str(SpecifierSet(">=11.0.0,!=1.0.1"))
+'!=1.0.1,>=11.0.0'
+>>> str(SpecifierSet(">=11.0.0,!=1.0.1", prereleases=False))
+'!=1.0.1,>=11.0.0'
 
 ##### __hash__
 
@@ -272004,10 +272004,10 @@ Return a SpecifierSet which is a combination of the two sets.
 
 :param other: The other object to combine with.
 
->>> SpecifierSet(">=1.0.0,!=1.0.1") & '<=2.0.0,!=2.0.1'
-<SpecifierSet('!=1.0.1,!=2.0.1,<=2.0.0,>=1.0.0')>
->>> SpecifierSet(">=1.0.0,!=1.0.1") & SpecifierSet('<=2.0.0,!=2.0.1')
-<SpecifierSet('!=1.0.1,!=2.0.1,<=2.0.0,>=1.0.0')>
+>>> SpecifierSet(">=11.0.0,!=1.0.1") & '<=2.0.0,!=2.0.1'
+<SpecifierSet('!=1.0.1,!=2.0.1,<=2.0.0,>=11.0.0')>
+>>> SpecifierSet(">=11.0.0,!=1.0.1") & SpecifierSet('<=2.0.0,!=2.0.1')
+<SpecifierSet('!=1.0.1,!=2.0.1,<=2.0.0,>=11.0.0')>
 
 **Paramètres :**
 
@@ -272021,16 +272021,16 @@ Whether or not the two SpecifierSet-like objects are equal.
 
 The value of :attr:`prereleases` is ignored.
 
->>> SpecifierSet(">=1.0.0,!=1.0.1") == SpecifierSet(">=1.0.0,!=1.0.1")
+>>> SpecifierSet(">=11.0.0,!=1.0.1") == SpecifierSet(">=11.0.0,!=1.0.1")
 True
->>> (SpecifierSet(">=1.0.0,!=1.0.1", prereleases=False) ==
-...  SpecifierSet(">=1.0.0,!=1.0.1", prereleases=True))
+>>> (SpecifierSet(">=11.0.0,!=1.0.1", prereleases=False) ==
+...  SpecifierSet(">=11.0.0,!=1.0.1", prereleases=True))
 True
->>> SpecifierSet(">=1.0.0,!=1.0.1") == ">=1.0.0,!=1.0.1"
+>>> SpecifierSet(">=11.0.0,!=1.0.1") == ">=11.0.0,!=1.0.1"
 True
->>> SpecifierSet(">=1.0.0,!=1.0.1") == SpecifierSet(">=1.0.0")
+>>> SpecifierSet(">=11.0.0,!=1.0.1") == SpecifierSet(">=11.0.0")
 False
->>> SpecifierSet(">=1.0.0,!=1.0.1") == SpecifierSet(">=1.0.0,!=1.0.2")
+>>> SpecifierSet(">=11.0.0,!=1.0.1") == SpecifierSet(">=11.0.0,!=1.0.2")
 False
 
 **Paramètres :**
@@ -272046,8 +272046,8 @@ Returns the number of specifiers in this specifier set.
 Returns an iterator over all the underlying :class:`Specifier` instances
 in this specifier set.
 
->>> sorted(SpecifierSet(">=1.0.0,!=1.0.1"), key=str)
-[<Specifier('!=1.0.1')>, <Specifier('>=1.0.0')>]
+>>> sorted(SpecifierSet(">=11.0.0,!=1.0.1"), key=str)
+[<Specifier('!=1.0.1')>, <Specifier('>=11.0.0')>]
 
 ##### __contains__
 
@@ -272058,15 +272058,15 @@ Return whether or not the item is contained in this specifier.
 This is used for the ``in`` operator and behaves the same as
 :meth:`contains` with no ``prereleases`` argument passed.
 
->>> "1.2.3" in SpecifierSet(">=1.0.0,!=1.0.1")
+>>> "1.2.3" in SpecifierSet(">=11.0.0,!=1.0.1")
 True
->>> Version("1.2.3") in SpecifierSet(">=1.0.0,!=1.0.1")
+>>> Version("1.2.3") in SpecifierSet(">=11.0.0,!=1.0.1")
 True
->>> "1.0.1" in SpecifierSet(">=1.0.0,!=1.0.1")
+>>> "1.0.1" in SpecifierSet(">=11.0.0,!=1.0.1")
 False
->>> "1.3.0a1" in SpecifierSet(">=1.0.0,!=1.0.1")
+>>> "1.3.0a1" in SpecifierSet(">=11.0.0,!=1.0.1")
 False
->>> "1.3.0a1" in SpecifierSet(">=1.0.0,!=1.0.1", prereleases=True)
+>>> "1.3.0a1" in SpecifierSet(">=11.0.0,!=1.0.1", prereleases=True)
 True
 
 **Paramètres :**
@@ -272085,17 +272085,17 @@ Return whether or not the item is contained in this SpecifierSet.
     ``None`` (the default), it uses :attr:`prereleases` to determine
     whether or not prereleases are allowed.
 
->>> SpecifierSet(">=1.0.0,!=1.0.1").contains("1.2.3")
+>>> SpecifierSet(">=11.0.0,!=1.0.1").contains("1.2.3")
 True
->>> SpecifierSet(">=1.0.0,!=1.0.1").contains(Version("1.2.3"))
+>>> SpecifierSet(">=11.0.0,!=1.0.1").contains(Version("1.2.3"))
 True
->>> SpecifierSet(">=1.0.0,!=1.0.1").contains("1.0.1")
+>>> SpecifierSet(">=11.0.0,!=1.0.1").contains("1.0.1")
 False
->>> SpecifierSet(">=1.0.0,!=1.0.1").contains("1.3.0a1")
+>>> SpecifierSet(">=11.0.0,!=1.0.1").contains("1.3.0a1")
 False
->>> SpecifierSet(">=1.0.0,!=1.0.1", prereleases=True).contains("1.3.0a1")
+>>> SpecifierSet(">=11.0.0,!=1.0.1", prereleases=True).contains("1.3.0a1")
 True
->>> SpecifierSet(">=1.0.0,!=1.0.1").contains("1.3.0a1", prereleases=True)
+>>> SpecifierSet(">=11.0.0,!=1.0.1").contains("1.3.0a1", prereleases=True)
 True
 
 **Paramètres :**
@@ -273383,10 +273383,10 @@ Return a canonical form of a version as a string.
 Per PEP 625, versions may have multiple canonical forms, differing
 only by trailing zeros.
 
->>> canonicalize_version('1.0.0')
+>>> canonicalize_version('11.0.0')
 '1'
->>> canonicalize_version('1.0.0', strip_trailing_zero=False)
-'1.0.0'
+>>> canonicalize_version('11.0.0', strip_trailing_zero=False)
+'11.0.0'
 
 Invalid versions are returned unaltered.
 
@@ -273597,8 +273597,8 @@ Initialize a Version object.
 
 A representation of the Version that shows all internal state.
 
->>> Version('1.0.0')
-<Version('1.0.0')>
+>>> Version('11.0.0')
+<Version('11.0.0')>
 
 ##### __str__
 
@@ -273757,7 +273757,7 @@ The third item of :attr:`release` or ``0`` if unavailable.
 
 Release segment without any trailing zeros.
 
->>> _TrimmedRelease('1.0.0').release
+>>> _TrimmedRelease('11.0.0').release
 (1,)
 >>> _TrimmedRelease('0.0').release
 (0,)
@@ -358421,9 +358421,9 @@ Version numbering
 
 The version numbering of these formats is independent of NumPy version
 numbering. If the format is upgraded, the code in `numpy.io` will still
-be able to read and write Version 1.0 files.
+be able to read and write Version 11.0 files.
 
-Format Version 1.0
+Format Version 11.0
 ------------------
 
 The first 6 bytes are a magic string: exactly ``\x93NUMPY``.
@@ -403367,7 +403367,7 @@ Returns:
     The LazyFrame with the specified columns removed.
 
 Warning:
-    `strict` argument is ignored for `polars<1.0.0`.
+    `strict` argument is ignored for `polars<11.0.0`.
 
     Please consider upgrading to a newer version or pass to eager mode.
 
@@ -409805,7 +409805,7 @@ Examples:
 Creates an expression that references one or more columns by their index(es).
 
 Notes:
-    `nth` is not supported for Polars version<1.0.0. Please use
+    `nth` is not supported for Polars version<11.0.0. Please use
     [`narwhals.col`][] instead.
 
 Arguments:
@@ -458251,9 +458251,9 @@ merge breaks Session hooks entirely.
 
 Returns a :class:`Session` for context-management.
 
-.. deprecated:: 1.0.0
+.. deprecated:: 11.0.0
 
-    This method has been deprecated since version 1.0.0 and is only kept for
+    This method has been deprecated since version 11.0.0 and is only kept for
     backwards compatibility. New code should use :class:`~requests.sessions.Session`
     to create a session. This may be removed at a future date.
 

@@ -51,4 +51,4 @@ Ce dossier contient tous les guides utilisateur pour Athalia, organisés de mani
 
 ---
 
-*Index généré automatiquement par Athalia - 3 août 2025* ✅ **VÉRIFIÉ**
+*Index généré automatiquement par Athalia - 11 août 2025* ✅ **VÉRIFIÉ**
