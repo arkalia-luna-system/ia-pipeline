@@ -130,10 +130,18 @@ class TestRoboticsCI:
     @patch("subprocess.run")
     def test_run_build_python_success(self, mock_run):
         """Test de build Python réussi"""
+        # Créer un fichier Python pour que le projet soit détecté comme Python
+        python_file = Path(self.temp_dir) / "main.py"
+        with open(python_file, "w") as f:
+            f.write("print('Hello World')")
+
+        # Configurer le mock pour tous les appels
         mock_run.return_value.returncode = 0
+        mock_run.return_value.stdout = ""
         mock_run.return_value.stderr = ""
 
-        self.ci._run_build()
+        # Appeler run_full_pipeline au lieu de _run_build directement
+        self.ci.run_full_pipeline()
         assert self.ci.ci_results["build_status"] == "success"
 
     @patch("athalia_core.robotics_ci.validate_and_run")
@@ -192,7 +200,7 @@ class TestRoboticsCI:
         python_file = Path(self.temp_dir) / "main.py"
         with open(python_file, "w") as f:
             f.write("print('Hello World')")
-        
+
         # Configurer le mock pour tous les appels
         mock_run.return_value.returncode = 0
         mock_run.return_value.stdout = ""
