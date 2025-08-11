@@ -255,6 +255,8 @@ class TestAutoCleanerComplete:
 
         # Vérifier qu'aucun fichier n'a été supprimé
         cache_dir = self.project_path / "__pycache__"
+        # En mode dry run, le dossier doit encore exister
+        # Note: cleanup_cache_directories() peut ne pas exister, utiliser une méthode existante
         assert cache_dir.exists()  # Doit encore exister en dry run
 
     def test_backup_before_cleanup(self):
