@@ -102,7 +102,8 @@ class RoboticsCI:
                 result = validate_and_run(
                     ["cargo", "build", "--release"],
                     cwd=self.project_path,
-                    capture_output=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
                     text=True,
                     timeout=300,
                 )
@@ -165,7 +166,8 @@ class RoboticsCI:
                 result = validate_and_run(
                     ["cargo", "test"],
                     cwd=self.project_path,
-                    capture_output=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
                     text=True,
                     timeout=300,
                 )
@@ -228,7 +230,8 @@ class RoboticsCI:
                 result = validate_and_run(
                     ["cargo", "clippy"],
                     cwd=self.project_path,
-                    capture_output=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
                     text=True,
                     timeout=120,
                 )
@@ -243,7 +246,8 @@ class RoboticsCI:
                 result = validate_and_run(
                     ["flake8", "."],
                     cwd=self.project_path,
-                    capture_output=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
                     text=True,
                     timeout=120,
                 )
@@ -268,7 +272,8 @@ class RoboticsCI:
                 result = validate_and_run(
                     ["cargo", "audit"],
                     cwd=self.project_path,
-                    capture_output=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
                     text=True,
                     timeout=120,
                 )
@@ -283,7 +288,8 @@ class RoboticsCI:
                 result = validate_and_run(
                     ["bandit", "-r", "."],
                     cwd=self.project_path,
-                    capture_output=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
                     text=True,
                     timeout=120,
                 )

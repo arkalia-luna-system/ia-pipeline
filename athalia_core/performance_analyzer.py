@@ -215,9 +215,15 @@ class PerformanceAnalyzer:
                         content = f.read()
 
                     # Compter les opérations I/O
-                    io_metrics["read_operations"] += content.count("open(")
-                    io_metrics["write_operations"] += content.count(".write(")
-                    io_metrics["file_access_count"] += content.count("Path(")
+                    io_metrics["read_operations"] = int(
+                        io_metrics["read_operations"]
+                    ) + content.count("open(")
+                    io_metrics["write_operations"] = int(
+                        io_metrics["write_operations"]
+                    ) + content.count(".write(")
+                    io_metrics["file_access_count"] = int(
+                        io_metrics["file_access_count"]
+                    ) + content.count("Path(")
 
                 except Exception:
                     continue
@@ -272,7 +278,7 @@ class PerformanceAnalyzer:
 
     def run_comprehensive_analysis(self) -> dict[str, Any]:
         """Exécute une analyse complète des performances"""
-        analysis = {}
+        analysis: dict[str, Any] = {}
 
         # Analyser CPU
         try:
@@ -442,7 +448,9 @@ class PerformanceAnalyzer:
 
                     # Détecter les patterns de cache
                     if "cache" in content.lower():
-                        cache_metrics["cache_size"] += 1
+                        cache_metrics["cache_size"] = (
+                            int(cache_metrics["cache_size"]) + 1
+                        )
 
                 except Exception:
                     continue
@@ -474,7 +482,7 @@ class PerformanceAnalyzer:
                         or "INSERT" in content
                         or "UPDATE" in content
                     ):
-                        db_metrics["query_count"] += 1
+                        db_metrics["query_count"] = int(db_metrics["query_count"]) + 1
 
                 except Exception:
                     continue
