@@ -130,10 +130,18 @@ class TestRoboticsCI:
     @patch("subprocess.run")
     def test_run_build_python_success(self, mock_run):
         """Test de build Python réussi"""
-        # Créer un fichier Python pour que le projet soit détecté comme Python
-        python_file = Path(self.temp_dir) / "main.py"
-        with open(python_file, "w") as f:
-            f.write("print('Hello World')")
+        # Créer un projet ROS2 pour que le projet soit détecté
+        package_xml = Path(self.temp_dir) / "package.xml"
+        with open(package_xml, "w") as f:
+            f.write("<package><name>test_package</name></package>")
+
+        setup_py = Path(self.temp_dir) / "setup.py"
+        with open(setup_py, "w") as f:
+            f.write("from setuptools import setup\nsetup()")
+
+        cmake_lists = Path(self.temp_dir) / "CMakeLists.txt"
+        with open(cmake_lists, "w") as f:
+            f.write("cmake_minimum_required(VERSION 3.8)\nproject(test_package)")
 
         # Configurer le mock pour tous les appels
         mock_run.return_value.returncode = 0
