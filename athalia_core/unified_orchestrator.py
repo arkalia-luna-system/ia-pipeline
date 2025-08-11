@@ -154,7 +154,9 @@ class UnifiedOrchestrator:
             if AI_MODULES_AVAILABLE:
                 try:
                     self.unified_agent = UnifiedAgent()
-                    self.context_agent = detect_prompts_scoring  # Fonction au lieu de classe
+                    self.context_agent = (
+                        detect_prompts_scoring  # Fonction au lieu de classe
+                    )
                     self.audit_agent = AuditAgent()
                     self.quality_scorer = QualityScorer()
                     self.response_distiller = ResponseDistiller()

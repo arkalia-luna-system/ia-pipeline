@@ -8,7 +8,8 @@ import sys
 import os
 
 # Ajouter le répertoire src au path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
+
 
 class TestTest(unittest.TestCase):
     """Tests pour test"""
@@ -29,6 +30,7 @@ class TestTest(unittest.TestCase):
         """Test de la fonction main"""
         try:
             from main import main
+
             self.assertTrue(True)
         except ImportError as e:
             self.fail(f"Impossible d'importer le module main: {e}")
@@ -37,9 +39,11 @@ class TestTest(unittest.TestCase):
         """Test d'import du module principal"""
         try:
             import main
+
             self.assertTrue(True)
         except ImportError as e:
             self.fail(f"Impossible d'importer le module main: {e}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
