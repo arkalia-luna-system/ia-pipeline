@@ -119,7 +119,8 @@ class RoboticsCI:
                 result = validate_and_run(
                     ["colcon", "build"],
                     cwd=self.project_path,
-                    capture_output=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
                     text=True,
                     timeout=300,
                 )
@@ -136,7 +137,8 @@ class RoboticsCI:
                 result = validate_and_run(
                     ["python", "-m", "pip", "install", "-e", "."],
                     cwd=self.project_path,
-                    capture_output=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
                     text=True,
                     timeout=300,
                 )
@@ -180,7 +182,8 @@ class RoboticsCI:
                 result = validate_and_run(
                     ["colcon", "test"],
                     cwd=self.project_path,
-                    capture_output=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
                     text=True,
                     timeout=300,
                 )
@@ -197,7 +200,8 @@ class RoboticsCI:
                 result = validate_and_run(
                     ["python", "-m", "pytest"],
                     cwd=self.project_path,
-                    capture_output=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
                     text=True,
                     timeout=300,
                 )
