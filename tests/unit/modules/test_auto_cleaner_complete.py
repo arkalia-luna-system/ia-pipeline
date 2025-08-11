@@ -13,7 +13,6 @@ import tempfile
 import time
 from pathlib import Path
 
-
 import pytest
 
 from athalia_core.auto_cleaner import AutoCleaner
@@ -209,9 +208,6 @@ class TestAutoCleanerComplete:
         dup1.write_text(content)
         dup2.write_text(content)
 
-        # Trouver doublons
-        duplicates = self.cleaner.cleanup_duplicate_files()
-
         # Supprimer doublons
         result = self.cleaner.cleanup_duplicate_files()
 
@@ -236,7 +232,6 @@ class TestAutoCleanerComplete:
 
     def test_calculate_cleanup_impact(self):
         """Test calcul impact nettoyage."""
-        targets = self.cleaner.scan_for_cleanup_candidates()
         impact = self.cleaner.calculate_cleanup_impact()
 
         assert isinstance(impact, dict)
@@ -254,9 +249,6 @@ class TestAutoCleanerComplete:
         """Test mode simulation (dry run)."""
         # Activer dry run
         self.cleaner.dry_run = True
-
-        # Scanner cibles
-        targets = self.cleaner.scan_for_cleanup_candidates()
 
         # Nettoyer en mode dry run
         self.cleaner.cleanup_cache_directories()
@@ -332,9 +324,6 @@ class TestAutoCleanerComplete:
 
     def test_schedule_cleanup(self):
         """Test planification nettoyage."""
-        # Planifier nettoyage quotidien
-        schedule_config = {"frequency": "daily", "time": "02:00", "enabled": True}
-
         # Cette méthode n'existe pas, utiliser perform_full_cleanup à la place
         result = self.cleaner.perform_full_cleanup()
 
@@ -381,12 +370,6 @@ class TestAutoCleanerComplete:
 
     def test_validate_cleanup_safety(self):
         """Test validation sécurité nettoyage."""
-        # Fichiers à supprimer
-        files_to_remove = [
-            self.project_path / "temp.tmp",
-            self.project_path / "old_backup.bak",
-        ]
-
         # Utiliser une méthode qui existe pour tester la fonctionnalité
         result = self.cleaner.cleanup_temporary_files()
 
@@ -400,7 +383,6 @@ class TestAutoCleanerComplete:
         start_time = time.time()
 
         # Effectuer nettoyage
-        targets = self.cleaner.scan_for_cleanup_candidates()
         self.cleaner.cleanup_temporary_files()
 
         # Calculer métriques performance
@@ -412,13 +394,6 @@ class TestAutoCleanerComplete:
 
     def test_integrate_with_ci_cd(self):
         """Test intégration CI/CD."""
-        # Configuration CI/CD
-        ci_config = {
-            "auto_cleanup_on_build": True,
-            "cleanup_before_deploy": True,
-            "generate_cleanup_report": True,
-        }
-
         # Utiliser une méthode qui existe pour tester la fonctionnalité
         result = self.cleaner.perform_full_cleanup()
 
@@ -443,11 +418,6 @@ class TestAutoCleanerComplete:
 
     def test_error_handling_missing_files(self):
         """Test gestion erreurs fichiers manquants."""
-        missing_files = [
-            self.project_path / "does_not_exist.txt",
-            self.project_path / "also_missing.tmp",
-        ]
-
         # Tenter suppression fichiers inexistants
         result = self.cleaner.cleanup_temporary_files()
 
