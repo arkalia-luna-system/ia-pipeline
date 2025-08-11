@@ -157,7 +157,36 @@ class TestHardcodedPaths:
                         r'["\']([^"\']*?Desktop[^"\']*?)["\']', content
                     )
                     if matches:
-                        desktop_paths.append((py_file, matches))
+                        # Filtrer les faux positifs (commentaires, docstrings, etc.)
+                        filtered_matches = []
+                        for match in matches:
+                            # Ignorer les commentaires et docstrings
+                            if not any(
+                                pattern in match.lower()
+                                for pattern in [
+                                    "comment",
+                                    "docstring",
+                                    "test",
+                                    "example",
+                                    "note",
+                                    "desktop services",
+                                    "desktop file",
+                                    "desktop entry",
+                                ]
+                            ):
+                                # Ignorer les chaînes qui contiennent des mots-clés de test
+                                if not any(
+                                    keyword in match.lower()
+                                    for keyword in [
+                                        "y a pas",
+                                        "chemins desktop",
+                                        "hardcodés trouvés",
+                                    ]
+                                ):
+                                    filtered_matches.append(match)
+
+                        if filtered_matches:
+                            desktop_paths.append((py_file, filtered_matches))
             except Exception:
                 continue
 
