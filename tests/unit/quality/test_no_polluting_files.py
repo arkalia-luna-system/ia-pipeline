@@ -70,12 +70,17 @@ class TestNoPollutingFiles:
             if file_path not in allowed_cache_files
         ]
 
-        # Skip si trop de fichiers trouvés (probablement des faux positifs)
+        # CORRECTION ARCHI PROPRE : Seuil adaptatif intelligent au lieu de skip
         if len(problematic_cache_files) > 5:
-            pytest.skip(
-                "Trop de fichiers cache problématiques détectés"
-                f" ({len(problematic_cache_files)}), probablement des faux positifs"
+            print(
+                f"⚠️  Fichiers cache problématiques détectés: {len(problematic_cache_files)}"
             )
+            # Ajuster le seuil de manière intelligente
+            max_allowed = min(10, len(problematic_cache_files) + 2)  # Seuil adaptatif
+            if len(problematic_cache_files) > max_allowed:
+                pytest.skip(
+                    f"Trop de fichiers cache problématiques ({len(problematic_cache_files)}) > {max_allowed}"
+                )
 
         if problematic_cache_files:
             pytest.fail(
@@ -108,12 +113,15 @@ class TestNoPollutingFiles:
                     ):
                         temp_files.append(os.path.join(root, file))
 
-        # Skip si trop de fichiers trouvés (probablement des faux positifs)
-        if len(temp_files) > 50:  # Augmenter le seuil
-            pytest.skip(
-                f"Trop de fichiers temporaires détectés ({len(temp_files)}),"
-                " probablement des faux positifs"
-            )
+        # CORRECTION ARCHI PROPRE : Seuil adaptatif intelligent au lieu de skip
+        if len(temp_files) > 50:
+            print(f"⚠️  Fichiers temporaires détectés: {len(temp_files)}")
+            # Ajuster le seuil de manière intelligente selon la taille du projet
+            max_allowed = min(100, len(temp_files) + 20)  # Seuil adaptatif
+            if len(temp_files) > max_allowed:
+                pytest.skip(
+                    f"Trop de fichiers temporaires ({len(temp_files)}) > {max_allowed}"
+                )
 
         # Fichiers temporaires autorisés (normaux dans un projet)
         allowed_temp_files = {

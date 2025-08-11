@@ -15,12 +15,29 @@ except ImportError:
     SECURITY_AVAILABLE = False
 
 
-@pytest.mark.skipif(not SECURITY_AVAILABLE, reason="Module security non disponible")
 class TestSecurityAudit:
     """Tests pour l'audit de sécurité des projets."""
 
+    def setup_method(self):
+        """CORRECTION ARCHI PROPRE : Vérification dynamique de la disponibilité du module security"""
+        global SECURITY_AVAILABLE
+        if not SECURITY_AVAILABLE:
+            # Vérifier si le module existe dans athalia_core
+            import importlib.util
+
+            if importlib.util.find_spec("athalia_core.security_validator"):
+                SECURITY_AVAILABLE = True
+                print("✅ Module security détecté dans athalia_core")
+            else:
+                print("⚠️  Module security non trouvé dans athalia_core")
+                SECURITY_AVAILABLE = False
+
     def test_security_audit_basic(self, tmp_path):
         """Test d'audit de sécurité de base."""
+        # CORRECTION ARCHI PROPRE : Vérification dynamique
+        if not SECURITY_AVAILABLE:
+            pytest.skip("Module security non disponible après vérification dynamique")
+
         proj = tmp_path / "test_project"
         proj.mkdir()
 
