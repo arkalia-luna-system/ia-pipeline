@@ -341,7 +341,11 @@ class RobustAI:
         try:
             # Utilisation du validateur de sécurité pour l'appel ollama
             result = validate_and_run(
-                ["ollama", "list"], capture_output=True, text=True, timeout=10
+                ["ollama", "list"],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True,
+                timeout=10,
             )
             if result.returncode == 0:
                 if "mistral" in result.stdout.lower():
@@ -467,7 +471,8 @@ Type: {project_type}
             # Utilisation du validateur de sécurité pour l'appel ollama
             result = validate_and_run(
                 ["ollama", "run", model_name, prompt],
-                capture_output=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
                 text=True,
                 timeout=timeout,
             )

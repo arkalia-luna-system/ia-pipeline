@@ -66,7 +66,8 @@ class RoboticsCI:
             required_files = ["package.xml", "setup.py", "CMakeLists.txt"]
         elif (self.project_path / "Cargo.toml").exists():
             # Projet Rust
-            required_files = ["Cargo.toml", "src/"]
+            required_files = ["Cargo.toml"]
+            required_dirs = ["src"]
         elif (self.project_path / "package.json").exists():
             # Projet Node.js
             required_files = ["package.json"]
@@ -78,12 +79,14 @@ class RoboticsCI:
 
         missing_files = []
         for file in required_files:
-            if isinstance(file, str):
-                if not (self.project_path / file).exists():
-                    missing_files.append(file)
-            else:  # Directory
-                if not (self.project_path / str(file)).is_dir():
-                    missing_files.append(str(file))
+            if not (self.project_path / file).exists():
+                missing_files.append(file)
+
+        # Vérifier les dossiers requis
+        if "required_dirs" in locals():
+            for dir_name in required_dirs:
+                if not (self.project_path / dir_name).is_dir():
+                    missing_files.append(f"dossier {dir_name}")
 
         if missing_files:
             self.ci_results["errors"].append(

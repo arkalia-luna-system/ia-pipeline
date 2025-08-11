@@ -110,16 +110,20 @@ class TestRobustAI:
         assert prompt is not None
         assert isinstance(prompt, str)
 
-    @patch("athalia_core.ai_robust_enhanced.subprocess.run")
-    def test_call_ollama(self, mock_run):
+    @patch("athalia_core.ai_robust_enhanced.validate_and_run")
+    def test_call_ollama(self, mock_validate_and_run):
         """Test d'appel Ollama"""
         ai = RobustAI()
-        mock_run.return_value = MagicMock(stdout=b"test response", returncode=0)
+        # Créer un mock qui simule le comportement de validate_and_run
+        mock_result = MagicMock()
+        mock_result.stdout = "test response"  # String au lieu de bytes
+        mock_result.returncode = 0
+        mock_validate_and_run.return_value = mock_result
 
         response = ai._call_ollama("mistral", "test prompt")
 
         assert response is not None
-        assert "test response" in response.decode()  # Ajout de .decode()
+        assert "test response" in response  # Plus besoin de .decode()
 
     def test_mock_response(self):
         """Test de réponse mock"""
@@ -166,28 +170,36 @@ class TestFunctions:
 
     def test_fallback_ia(self):
         """Test de la fonction fallback_ia"""
-        with patch("athalia_core.ai_robust_enhanced.subprocess.run") as mock_run:
-            mock_run.return_value = MagicMock(stdout=b"fallback response", returncode=0)
+        with patch(
+            "athalia_core.ai_robust_enhanced.validate_and_run"
+        ) as mock_validate_and_run:
+            mock_validate_and_run.return_value = MagicMock(
+                stdout="fallback response", returncode=0
+            )
 
             response = fallback_ia("test prompt")
             assert response is not None
             # Test plus flexible pour la réponse
             assert isinstance(response, str)
 
-    @patch("athalia_core.ai_robust_enhanced.subprocess.run")
-    def test_query_qwen(self, mock_run):
+    @patch("athalia_core.ai_robust_enhanced.validate_and_run")
+    def test_query_qwen(self, mock_validate_and_run):
         """Test de la fonction query_qwen"""
-        mock_run.return_value = MagicMock(stdout=b"qwen response", returncode=0)
+        mock_validate_and_run.return_value = MagicMock(
+            stdout="qwen response", returncode=0
+        )
 
         response = query_qwen("test prompt")
         assert response is not None
         # Test plus flexible pour la réponse
         assert isinstance(response, str)
 
-    @patch("athalia_core.ai_robust_enhanced.subprocess.run")
-    def test_query_mistral(self, mock_run):
+    @patch("athalia_core.ai_robust_enhanced.validate_and_run")
+    def test_query_mistral(self, mock_validate_and_run):
         """Test de la fonction query_mistral"""
-        mock_run.return_value = MagicMock(stdout=b"mistral response", returncode=0)
+        mock_validate_and_run.return_value = MagicMock(
+            stdout="mistral response", returncode=0
+        )
 
         response = query_mistral("test prompt")
         assert response is not None

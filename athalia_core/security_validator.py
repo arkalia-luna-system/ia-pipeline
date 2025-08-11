@@ -621,7 +621,7 @@ class SecurityValidator:
             "safe_directories": self.safe_directories,
             "forbidden_patterns_count": 0,  # Pour compatibilité avec les tests
             "security_level": "high",
-            "last_scan": None
+            "last_scan": None,
         }
 
 
