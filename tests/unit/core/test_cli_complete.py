@@ -204,7 +204,7 @@ class TestCLIComplete:
 
         # Vérifier que le message d'erreur est affiché
         error_calls = [
-            call for call in mock_echo.call_args_list if "❌ Erreur" in str(call)
+            call for call in mock_echo.call_args_list if "❌ Erreur:" in str(call)
         ]
         assert len(error_calls) > 0, "Message d'erreur non trouvé"
 

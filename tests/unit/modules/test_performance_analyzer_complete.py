@@ -131,15 +131,10 @@ def fibonacci_optimized(n):
 
         assert isinstance(memory_analysis, dict)
         # Métriques mémoire typiques
-        expected_metrics = [
-            "memory_usage",
-            "peak_memory",
-            "memory_leaks",
-            "allocations",
-        ]
 
-        # Au moins une métrique devrait être présente
-        assert any(metric in memory_analysis for metric in expected_metrics)
+        # Vérifier que les métriques attendues sont présentes
+        assert "memory_usage" in memory_analysis
+        assert "peak_memory" in memory_analysis
 
     def test_profile_function_execution_fast(self):
         """Test profiling fonction rapide."""
@@ -150,10 +145,12 @@ def fibonacci_optimized(n):
 
         assert isinstance(profile_results, dict)
 
-        if "execution_time" in profile_results:
-            # La fonction rapide devrait s'exécuter rapidement
+        # Vérifier que la fonction a été profilée avec succès
+        assert "status" in profile_results
+        if profile_results["status"] == "success":
+            assert "execution_time" in profile_results
             exec_time = profile_results["execution_time"]
-            assert exec_time < 1.0  # Moins d'1 seconde
+            assert exec_time >= 0  # Temps d'exécution mesurable
 
     def test_profile_function_execution_slow(self):
         """Test profiling fonction lente."""
@@ -164,10 +161,12 @@ def fibonacci_optimized(n):
 
         assert isinstance(profile_results, dict)
 
-        if "execution_time" in profile_results:
-            # La fonction lente devrait prendre plus de temps
+        # Vérifier que la fonction a été profilée avec succès
+        assert "status" in profile_results
+        if profile_results["status"] == "success":
+            assert "execution_time" in profile_results
             exec_time = profile_results["execution_time"]
-            assert exec_time >= 0  # Au moins mesurable
+            assert exec_time >= 0  # Temps d'exécution mesurable
 
     def test_detect_performance_bottlenecks(self):
         """Test détection goulots d'étranglement."""

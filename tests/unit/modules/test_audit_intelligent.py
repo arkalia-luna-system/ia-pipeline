@@ -155,10 +155,10 @@ def test_basic():
         auditor = ProjectAuditor()
         auditor.audit_project(self.test_dir)
         report = auditor.generate_report()
-        assert "RAPPORT D'AUDIT INTELLIGENT" in report
-        assert "SCORE GLOBAL" in report
-        assert "INFORMATIONS PROJET" in report
-        assert "RECOMMANDATIONS" in report
+        assert "Rapport d'Audit Intelligent" in report
+        assert "Score Global" in report
+        assert "Informations du Projet" in report
+        assert "Recommandations" in report
 
     def test_audit_project_not_found(self):
         if ProjectAuditor is None:
