@@ -148,6 +148,9 @@ class TestRoboticsCI:
         mock_run.return_value.stdout = ""
         mock_run.return_value.stderr = ""
 
+        # Configurer le mock pour qu'il accepte tous les arguments
+        mock_run.side_effect = lambda *args, **kwargs: mock_run.return_value
+
         # Appeler run_full_pipeline au lieu de _run_build directement
         self.ci.run_full_pipeline()
         assert self.ci.ci_results["build_status"] == "success"
