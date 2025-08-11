@@ -7,7 +7,7 @@ Tests professionnels pour la CI/CD.
 import subprocess
 import tempfile
 from pathlib import Path
-from unittest.mock import Mock, patch
+from unittest.mock import Mock, patch, MagicMock
 
 from athalia_core.robotics_ci import RoboticsCI, run_robotics_ci
 
@@ -143,13 +143,14 @@ class TestRoboticsCI:
         with open(cmake_lists, "w") as f:
             f.write("cmake_minimum_required(VERSION 3.8)\nproject(test_package)")
 
-        # Configurer le mock pour tous les appels
-        mock_run.return_value.returncode = 0
-        mock_run.return_value.stdout = ""
-        mock_run.return_value.stderr = ""
+        # Créer un mock qui simule le comportement de validate_and_run
+        mock_result = MagicMock()
+        mock_result.returncode = 0
+        mock_result.stdout = ""
+        mock_result.stderr = ""
 
-        # Configurer le mock pour qu'il accepte tous les arguments
-        mock_run.side_effect = lambda *args, **kwargs: mock_run.return_value
+        # Configurer le mock pour qu'il retourne le même objet à chaque appel
+        mock_run.return_value = mock_result
 
         # Appeler run_full_pipeline au lieu de _run_build directement
         self.ci.run_full_pipeline()
