@@ -261,7 +261,7 @@ class TestAutoCleanerComplete:
         targets = self.cleaner.scan_for_cleanup_targets()
 
         # Nettoyer en mode dry run
-        result = self.cleaner.clean_cache_directories(targets.get("cache_dirs", []))
+        self.cleaner.clean_cache_directories(targets.get("cache_dirs", []))
 
         # Vérifier qu'aucun fichier n'a été supprimé
         cache_dir = self.project_path / "__pycache__"
@@ -276,7 +276,7 @@ class TestAutoCleanerComplete:
         # Créer sauvegarde
         backup_path = self.cleaner.backup_before_cleanup([important_file])
 
-        assert isinstance(backup_path, (str, Path))
+        assert isinstance(backup_path, str | Path)
         if backup_path:
             backup_path = Path(backup_path)
             assert backup_path.exists()
@@ -353,8 +353,8 @@ class TestAutoCleanerComplete:
     def test_generate_cleanup_report(self):
         """Test génération rapport nettoyage."""
         # Effectuer un nettoyage d'abord
-        targets = self.cleaner.scan_for_cleanup_targets()
-        cleanup_result = self.cleaner.smart_cleanup()
+        self.cleaner.scan_for_cleanup_targets()
+        self.cleaner.smart_cleanup()
 
         # Générer rapport
         report = self.cleaner.generate_cleanup_report()
@@ -550,7 +550,7 @@ class TestAutoCleanerComplete:
         memory_before = process.memory_info().rss
 
         # Effectuer nettoyage intensif
-        targets = self.cleaner.scan_for_cleanup_targets()
+        self.cleaner.scan_for_cleanup_targets()
         self.cleaner.smart_cleanup()
 
         memory_after = process.memory_info().rss
