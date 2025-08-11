@@ -23,10 +23,10 @@
 
 | **Composant** | **Valeur Exacte** | **Méthode Vérification** | **Status** |
 |:-------------:|:-----------------:|:----------------------:|:----------:|
-| **📝 Lignes Code** | `18,446 lines` | `wc -l athalia_core/*.py` | ✅ **CONFIRMÉ** |
-| **🐍 Modules Python** | `79 modules` | `find athalia_core/ -name "*.py"` | ✅ **COMPTÉ** |
+| **📝 Lignes Code** | `24,243 lines` | `wc -l athalia_core/*.py` | ✅ **CONFIRMÉ** |
+| **🐍 Modules Python** | `153 modules` | `find athalia_core/ -name "*.py"` | ✅ **COMPTÉ** |
 | **📊 Dashboards HTML** | `6 dashboards` | `find dashboard/ -name "*.html"` | ✅ **LISTÉ** |
-| **🔧 Scripts Python** | `9 scripts` | `find bin/ -name "*.py"` | ✅ **VÉRIFIÉ** |
+| **🔧 Scripts Python** | `43 scripts` | `find bin/ -name "*.py"` | ✅ **VÉRIFIÉ** |
 | **📚 Fichiers MD** | `147 files` | `find . -name "*.md"` | ✅ **INVENTORIÉ** |
 | **🛡️ Commandes Sécurisées** | `80 commands` | Test SecurityValidator | ✅ **TESTÉ** |
 
@@ -167,7 +167,7 @@ radar
 ```markdown
 | **Component** | **Value** | **Status** | **Verified** |
 |:-------------:|:---------:|:----------:|:------------:|
-| **🐍 Python Files** | `79 modules` | ![Active](https://img.shields.io/badge/status-active-brightgreen) | ✅ **COUNTED** |
+| **🐍 Python Files** | `153 modules` | ![Active](https://img.shields.io/badge/status-active-brightgreen) | ✅ **COUNTED** |
 ```
 
 #### **Tableaux Comparatifs**
@@ -399,8 +399,8 @@ gantt
 6. **Maintenance framework** établi et documenté ✅
 
 #### **💎 Valeur Créée**
-- **18,446 lignes de code** méritent documentation à la hauteur
-- **79 modules professionnels** avec référence API complète
+- **24,243 lignes de code** méritent documentation à la hauteur
+- **153 modules professionnels** avec référence API complète
 - **147 fichiers documentation** organisés et maintenus
 - **Standards enterprise** implémentés et vérifiés
 

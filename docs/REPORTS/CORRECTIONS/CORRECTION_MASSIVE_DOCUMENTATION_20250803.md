@@ -26,7 +26,7 @@ Suite à la demande de vérification et correction COMPLÈTE de tous les fichier
 | Métrique | Valeur Incorrecte | Valeur Corrigée | Fichiers Touchés |
 |----------|------------------|-----------------|-------------------|
 | **Tests collectés** | 1453 tests | **1372 tests** ✅ | 25+ fichiers |
-| **Modules Python** | 57 modules | **79 modules** ✅ | 15+ fichiers |
+| **Modules Python** | 57 modules | **153 modules** ✅ | 15+ fichiers |
 | **Couverture globale** | 9.38% | **10.21%** ✅ | 8+ fichiers |
 | **Couverture orchestrator** | 83.97% | **80.72%** ✅ | 3+ fichiers |
 | **Date dernière MAJ** | 31 juillet | **3 août 2025** ✅ | 30+ fichiers |
@@ -106,7 +106,7 @@ python3 -m pytest tests/ --collect-only | grep "collected"
 # Résultat : 1372 tests collected ✅
 
 find athalia_core/ -name "*.py" | wc -l
-# Résultat : 79 modules ✅
+# Résultat : 153 modules ✅
 
 python3 -m pytest tests/unit/modules/test_ci_ultra_fast.py --cov=athalia_core
 # Résultat : 10.21% coverage ✅
@@ -144,7 +144,7 @@ python3 -m pytest tests/unit/modules/test_ci_ultra_fast.py --cov=athalia_core
 
 ### **Métriques Finales Vérifiées**
 - ✅ **1372 tests collectés** (vérifié par pytest)
-- ✅ **79 modules Python** (compté automatiquement)
+- ✅ **153 modules Python** (compté automatiquement)
 - ✅ **10.21% couverture globale** (mesurée)
 - ✅ **80.72% couverture unified_orchestrator** (testée)
 - ✅ **0 fichier parasite** (système de nettoyage opérationnel)

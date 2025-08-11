@@ -298,7 +298,7 @@ blueprint = generate_blueprint_mock("Système d'analyse de données pour traitem
 
 ### **Tests et Qualité**
 - **Tests collectés** : **1372 tests** ✅ **VÉRIFIÉ par pytest**
-- **Modules Python** : **79 modules** ✅ **VÉRIFIÉ par count**
+- **Modules Python** : **153 modules** ✅ **VÉRIFIÉ par count**
 - **Couverture globale** : **10.21%** ✅ **VÉRIFIÉ par pytest-cov**
 - **Couverture unified_orchestrator** : **80.72%** ✅ **VÉRIFIÉ**
 
@@ -428,7 +428,7 @@ Les améliorations apportées à Athalia ont transformé un système de généra
 - ✅ **Code généré** : 100% d'adaptation au type **VÉRIFIÉ**
 - ✅ **Dépendances** : +200% de pertinence **VÉRIFIÉ**
 - ✅ **Nettoyage** : 100% automatique **0 fichiers parasites**
-- ✅ **Qualité** : Niveau professionnel **1372 tests, 79 modules**
+- ✅ **Qualité** : Niveau professionnel **1372 tests, 153 modules**
 - ✅ **Tests** : 1372 tests collectés **VÉRIFIÉ par pytest**
 - ✅ **Couverture** : 10.21% globale, 80.72% orchestrateur **MESURÉ**
 

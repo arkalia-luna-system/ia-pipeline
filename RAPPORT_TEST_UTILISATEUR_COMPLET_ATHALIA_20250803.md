@@ -65,7 +65,7 @@ WARNING - ⚠️ Modules de classification non disponibles - mode fallback activ
 **Note** : Ces avertissements sont normaux et n'empêchent pas le fonctionnement
 
 #### **📊 MÉTRIQUES VÉRIFIÉES**
-- ✅ **79 modules Python** dans `athalia_core/` : **CONFIRMÉ**
+- ✅ **153 modules Python** dans `athalia_core/` : **CONFIRMÉ**
 - ✅ **1372 tests collectés** : **EXACTEMENT VÉRIFIÉS**
 - ✅ **Dépendances installées** : Aucun problème de dépendance cassée
 
@@ -301,7 +301,7 @@ result = auditor.audit_project('.')
 6. **🛠️ Installation** : Process fluide, aucune dépendance cassée
 
 ### **🎯 Cohérence Documentation/Réalité**
-- ✅ **Métriques exactes** : 1372 tests, 79 modules, 43 commandes
+- ✅ **Métriques exactes** : 1372 tests, 153 modules, 43 commandes
 - ✅ **Architecture cohérente** : Structure comme décrite
 - ✅ **Fonctionnalités présentes** : Tout ce qui est documenté existe
 

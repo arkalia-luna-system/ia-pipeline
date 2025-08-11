@@ -11,8 +11,8 @@
 ### **🏗️ ARCHITECTURE IMPRESSIONNANTE DÉJÀ EN PLACE**
 
 #### **📋 Structure Analysée :**
-- **79 modules Python** dans `athalia_core/` ✅
-- **169 fichiers de tests** ✅ 
+- **153 modules Python** dans `athalia_core/` ✅
+- **245 fichiers de tests** ✅ 
 - **1372 tests collectés** ✅
 - **59,647 lignes de code** au total ✅
 - **Architecture modulaire** avec 7 sous-dossiers ✅
@@ -392,7 +392,7 @@ class AutoReporter:
 [Voir la démo interactive](https://athalia-demo.com)
 
 ## 📊 Métriques
-- **79 modules** Python organisés
+- **153 modules** Python organisés
 - **1372 tests** automatisés 
 - **6 dashboards** HTML interactifs
 - **43 commandes** utilitaires
@@ -433,7 +433,7 @@ class AutoReporter:
 🎯 PROJET PRINCIPAL: Athalia - Système d'IA de Génération de Projets
 
 Technologies: Python, FastAPI, React, SQLite, Docker, GitHub Actions
-Métriques: 79 modules, 1372 tests, 6 dashboards, 43 commandes
+Métriques: 153 modules, 1372 tests, 6 dashboards, 43 commandes
 
 Réalisations:
 ✅ Architecture microservices avec orchestrateur intelligent

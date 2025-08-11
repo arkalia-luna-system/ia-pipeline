@@ -26,7 +26,7 @@ Après fouille complète des fichiers et tests du code réel, de nombreuses docu
 
 #### **✅ VRAIES FORCES À METTRE EN AVANT :**
 1. **Sécurité Enterprise** - SecurityValidator 490 lignes (unique)
-2. **Architecture Modulaire** - 18,446 lignes Python bien organisées
+2. **Architecture Modulaire** - 24,243 lignes Python bien organisées
 3. **Automatisation DevOps** - auto_cleaner, auto_tester, auto_documenter
 4. **Infrastructure CI/CD** - Workflows GitHub Actions professionnels
 5. **Qualité Code** - Niveau senior confirmé
@@ -48,7 +48,7 @@ Après fouille complète des fichiers et tests du code réel, de nombreuses docu
 
 ### **🔍 MÉTRIQUES À VÉRIFIER**
 - **"1372 tests collectés"** → Compter réellement
-- **"79 modules principaux"** → Confirmé (athalia_core/)
+- **"153 modules principaux"** → Confirmé (athalia_core/)
 - **"Couverture 10.21%"** → Mesurer précisément  
 - **"Performance spectaculaire"** → Benchmarks réels
 

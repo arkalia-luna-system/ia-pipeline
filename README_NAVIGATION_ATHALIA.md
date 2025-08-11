@@ -98,7 +98,7 @@
 ## 📊 **MÉTRIQUES DU PROJET (VÉRIFIÉES)**
 
 ### **🏗️ Architecture**
-- **79 modules Python** dans `athalia_core/` ✅
+- **153 modules Python** dans `athalia_core/` ✅
 - **1372 tests collectés** (98.2% succès) ✅
 - **43 commandes** dans `bin/` ✅
 - **6 dashboards HTML** opérationnels ✅
@@ -121,7 +121,7 @@
 
 ### **✅ PROJET EXCEPTIONNEL**
 Athalia est un système d'IA avancé pour l'automatisation de projets avec :
-- Architecture robuste (79 modules, 1372 tests)
+- Architecture robuste (153 modules, 1372 tests)
 - Performance spectaculaire (tests 35x plus rapides que prévu)
 - Qualité professionnelle (98.2% tests réussis)
 

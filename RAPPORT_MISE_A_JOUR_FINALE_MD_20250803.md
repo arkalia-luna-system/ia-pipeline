@@ -179,7 +179,7 @@ All done! ✨ 🍰 ✨
 
 #### **✅ Informations intégrées :**
 - **Notes précises** par fonctionnalité
-- **Métriques vérifiées** (1372 tests, 79 modules, 43 commandes)
+- **Métriques vérifiées** (1372 tests, 153 modules, 43 commandes)
 - **Points forts** (nettoyage spectaculaire, dashboards)
 - **Points d'amélioration** (classification, IA avancée)
 - **Plan de correction** détaillé

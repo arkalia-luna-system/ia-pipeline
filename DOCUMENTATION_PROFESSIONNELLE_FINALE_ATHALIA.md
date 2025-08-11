@@ -39,7 +39,7 @@
 - ✅ **Badges professionnels** avec métriques réelles
 - ✅ **Architecture Mermaid** visualisant les composants
 - ✅ **Exemples code** testés et fonctionnels
-- ✅ **Métriques précises** (18,446 lignes, 79 modules, 1372 tests)
+- ✅ **Métriques précises** (24,243 lignes, 153 modules, 1372 tests)
 - ✅ **Limitations honnêtes** clairement documentées
 
 ### **📚 docs/README.md**
@@ -119,7 +119,7 @@ graph TB
 ### **✅ CE QUI EST VRAIMENT DOCUMENTÉ**
 1. **Sécurité Enterprise** - SecurityValidator (490 lignes, 80 commandes)
 2. **Automatisation DevOps** - Auto-cleaner, auto-tester, auto-documenter
-3. **Architecture Modulaire** - 18,446 lignes Python, 79 modules
+3. **Architecture Modulaire** - 24,243 lignes Python, 153 modules
 4. **Tests Professionnels** - 1,372 tests automatisés
 5. **Infrastructure CI/CD** - Workflows GitHub Actions complets
 
@@ -205,7 +205,7 @@ graph TB
 ### **✅ Couverture Fonctionnelle**
 ```
 Core Modules: 100% documentés
-API Reference: Complète pour 79 modules
+API Reference: Complète pour 153 modules
 User Guides: Comprehensive avec exemples
 Security Docs: Couverture audit complète
 Architecture: Design système détaillé
@@ -293,8 +293,8 @@ Architecture: Design système détaillé
 
 **Transformation réussie : Documentation amateur → Documentation entreprise**
 
-- **18,446 lignes de code** méritent une documentation à la hauteur ✅
-- **79 modules professionnels** nécessitent guides techniques ✅  
+- **24,243 lignes de code** méritent une documentation à la hauteur ✅
+- **153 modules professionnels** nécessitent guides techniques ✅  
 - **1,372 tests** prouvent la maturité du projet ✅
 - **Sécurité enterprise** différencie sur le marché ✅
 

@@ -219,7 +219,7 @@ graph LR
 %%{init: {'theme':'base', 'themeVariables': { 'primaryColor': '#6f42c1', 'primaryTextColor': '#fff', 'primaryBorderColor': '#5a32a3'}}}%%
 graph TB
     subgraph "👨‍💻 DEVELOPER DOCS"
-        API[API Reference<br/>79 modules]
+        API[API Reference<br/>153 modules]
         ARCH[Architecture<br/>System design]
         TEST[Testing<br/>Quality assurance]
         CONTRIB[Contributing<br/>Development workflow]

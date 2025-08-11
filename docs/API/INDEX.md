@@ -9,7 +9,7 @@
 [![Examples](https://img.shields.io/badge/examples-tested-green.svg?style=flat-square)](.)
 [![Version](https://img.shields.io/badge/version-11.0-blue.svg?style=flat-square)](.)
 
-**Complete API reference for Athalia DevOps Platform - 79 modules documented**
+**Complete API reference for Athalia DevOps Platform - 153 modules documented**
 
 </div>
 
@@ -799,6 +799,6 @@ graph TB
 [![AI API](https://img.shields.io/badge/🤖-AI%20API-yellow?style=for-the-badge&logo=brain)](ai_modules.md)
 [![Security API](https://img.shields.io/badge/🛡️-Security%20API-red?style=for-the-badge&logo=shield)](SECURITY_API.md)
 
-**79 Modules Documented** | **All APIs Tested** | **Enterprise Ready**
+**153 Modules Documented** | **All APIs Tested** | **Enterprise Ready**
 
 </div>
