@@ -114,8 +114,6 @@ class TestMainModule:
 
     def test_running_flag_initialization(self) -> None:
         """Test initialisation du flag running."""
-        global running
-
         # Le flag devrait être initialisé à True
         assert running is True
 
@@ -260,7 +258,6 @@ class TestMainModule:
         def worker() -> None:
             try:
                 # Appeler des fonctions du module main
-                global running
                 current_running = running
                 results.append(current_running)
                 time.sleep(0.001)

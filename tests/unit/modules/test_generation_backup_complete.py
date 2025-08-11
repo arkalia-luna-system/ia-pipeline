@@ -7,28 +7,28 @@ Couverture: 0% → Objectif: 85%
 Standards: Black + Ruff + MyPy + Bandit
 """
 
-import pytest
-import tempfile
 import shutil
+import tempfile
 from pathlib import Path
-from unittest.mock import Mock, patch
+from unittest.mock import patch
+
+import pytest
 
 from athalia_core.generation_backup import (
-    validate_code,
-    generate_blueprint_mock,
-    extract_project_name,
-    generate_project,
-    scan_existing_project,
-    save_blueprint,
     backup_file,
-    merge_or_suffix_file,
-    inject_booster_ia_elements,
-    generate_main_code,
-    generate_test_code,
-    generate_readme,
-    generate_dockerfile,
-    generate_docker_compose,
+    extract_project_name,
     generate_api_docs,
+    generate_blueprint_mock,
+    generate_docker_compose,
+    generate_dockerfile,
+    generate_main_code,
+    generate_readme,
+    generate_test_code,
+    inject_booster_ia_elements,
+    merge_or_suffix_file,
+    save_blueprint,
+    scan_existing_project,
+    validate_code,
 )
 
 
@@ -118,7 +118,7 @@ class TestClass:
     def test_generate_blueprint_mock_kwargs(self):
         """Test génération blueprint avec kwargs."""
         blueprint = generate_blueprint_mock("test", docker=True, ci_cd=True)
-        
+
         # Le blueprint généré doit avoir la structure attendue
         assert "project_name" in blueprint
         assert "dependencies" in blueprint
@@ -133,9 +133,9 @@ class TestClass:
         # Créer des fichiers test
         (self.project_path / "main.py").write_text("print('hello')")
         (self.project_path / "README.md").write_text("# Test")
-        
+
         files = scan_existing_project(str(self.project_path))
-        
+
         assert len(files) == 2
         file_names = [f.name for f in files]
         assert "main.py" in file_names
@@ -151,7 +151,7 @@ class TestClass:
         """Test sauvegarde blueprint réussie."""
         blueprint = {"project_name": "test", "description": "Test project"}
         result = save_blueprint(blueprint, str(self.project_path))
-        
+
         assert result is True
         blueprint_file = self.project_path / "blueprint.json"
         assert blueprint_file.exists()
@@ -166,10 +166,10 @@ class TestClass:
         """Test backup fichier existant."""
         test_file = self.project_path / "test.py"
         test_file.write_text("print('test')")
-        
+
         result = backup_file(str(test_file))
         assert result is True
-        
+
         backup_file_path = self.project_path / "test.py.backup"
         assert backup_file_path.exists()
 
@@ -177,9 +177,9 @@ class TestClass:
         """Test merge ou suffix pour nouveau fichier."""
         target_file = self.project_path / "new_file.py"
         content = "print('new content')"
-        
+
         result = merge_or_suffix_file(str(target_file), content)
-        
+
         assert result is True
         assert target_file.exists()
         assert target_file.read_text() == content
@@ -189,9 +189,9 @@ class TestClass:
         target_file = self.project_path / "existing.py"
         target_file.write_text("original content")
         new_content = "new content"
-        
+
         result = merge_or_suffix_file(str(target_file), new_content)
-        
+
         assert result is True
         # Le fichier original doit être sauvegardé
         backup_file = self.project_path / "existing.py.backup"
@@ -201,7 +201,7 @@ class TestClass:
         """Test injection éléments booster IA dans dict."""
         data = {"key1": "value1"}
         result = inject_booster_ia_elements(data)
-        
+
         assert isinstance(result, dict)
         assert "booster_ia_integration" in result
         assert result["booster_ia_integration"] is True
@@ -210,7 +210,7 @@ class TestClass:
         """Test injection éléments booster IA dans string."""
         code = "def hello():\n    return 'world'"
         result = inject_booster_ia_elements(code)
-        
+
         assert isinstance(result, str)
         assert "# Booster IA Integration" in result
         assert "athalia_booster" in result
@@ -220,11 +220,11 @@ class TestClass:
         blueprint = {
             "project_name": "test_project",
             "description": "Test description",
-            "modules": ["core"]
+            "modules": ["core"],
         }
-        
+
         code = generate_main_code(blueprint)
-        
+
         assert isinstance(code, str)
         assert "def main()" in code
         assert "test_project" in code
@@ -234,7 +234,7 @@ class TestClass:
         """Test génération code de test basique."""
         module_name = "test_module"
         code = generate_test_code(module_name)
-        
+
         assert isinstance(code, str)
         assert "import pytest" in code
         assert f"test_{module_name}" in code.lower()
@@ -245,11 +245,11 @@ class TestClass:
         blueprint = {
             "project_name": "awesome_project",
             "description": "Un projet génial",
-            "dependencies": ["numpy", "pandas"]
+            "dependencies": ["numpy", "pandas"],
         }
-        
+
         readme = generate_readme(blueprint)
-        
+
         assert isinstance(readme, str)
         assert "awesome_project" in readme
         assert "Un projet génial" in readme
@@ -260,7 +260,7 @@ class TestClass:
         """Test génération Dockerfile basique."""
         blueprint = {"project_name": "test_app"}
         dockerfile = generate_dockerfile(blueprint)
-        
+
         assert isinstance(dockerfile, str)
         assert "FROM python:" in dockerfile
         assert "COPY requirements.txt" in dockerfile
@@ -270,7 +270,7 @@ class TestClass:
         """Test génération docker-compose basique."""
         blueprint = {"project_name": "test_service"}
         compose = generate_docker_compose(blueprint)
-        
+
         assert isinstance(compose, str)
         assert "version:" in compose
         assert "services:" in compose
@@ -280,23 +280,23 @@ class TestClass:
         """Test génération documentation API basique."""
         blueprint = {
             "project_name": "api_project",
-            "description": "API documentation test"
+            "description": "API documentation test",
         }
-        
+
         docs = generate_api_docs(blueprint)
-        
+
         assert isinstance(docs, str)
         assert "api_project" in docs
         assert "API Documentation" in docs
 
-    @patch('athalia_core.generation_backup.Path')
+    @patch("athalia_core.generation_backup.Path")
     def test_generate_project_mocked_path(self, mock_path):
         """Test génération projet avec Path mocké."""
         mock_path.return_value.mkdir.return_value = None
         mock_path.return_value.exists.return_value = False
-        
+
         blueprint = generate_blueprint_mock("test project")
-        
+
         # Le test vérifie que la fonction peut être appelée
         # sans erreur même avec des paths mockés
         assert blueprint is not None
@@ -304,18 +304,21 @@ class TestClass:
     def test_error_handling_invalid_paths(self):
         """Test gestion erreurs chemins invalides."""
         invalid_path = "/invalid/path/that/does/not/exist"
-        
+
         # La fonction doit gérer gracieusement les chemins invalides
         result = scan_existing_project(invalid_path)
         assert result == []
 
-    @pytest.mark.parametrize("idea,expected_name", [
-        ("API REST", "rest"),
-        ("robot mobile", "mobile"), 
-        ("calculatrice simple", "simple"),
-        ("application web", "web"),
-        ("", "projet_ia"),
-    ])
+    @pytest.mark.parametrize(
+        "idea,expected_name",
+        [
+            ("API REST", "rest"),
+            ("robot mobile", "mobile"),
+            ("calculatrice simple", "simple"),
+            ("application web", "web"),
+            ("", "projet_ia"),
+        ],
+    )
     def test_extract_project_name_parametrized(self, idea, expected_name):
         """Test extraction nom projet avec paramètres."""
         result = extract_project_name(idea)
@@ -325,15 +328,15 @@ class TestClass:
         """Test workflow complet d'intégration."""
         # 1. Générer blueprint
         blueprint = generate_blueprint_mock("API REST moderne")
-        
-        # 2. Sauvegarder blueprint  
+
+        # 2. Sauvegarder blueprint
         save_result = save_blueprint(blueprint, str(self.project_path))
         assert save_result is True
-        
+
         # 3. Générer code principal
         main_code = generate_main_code(blueprint)
         assert len(main_code) > 0
-        
+
         # 4. Générer README
         readme = generate_readme(blueprint)
         assert "API REST moderne" in readme
@@ -341,15 +344,15 @@ class TestClass:
     def test_performance_large_project(self):
         """Test performance avec gros projet."""
         import time
-        
+
         # Créer beaucoup de fichiers
         for i in range(50):
             (self.project_path / f"file_{i}.py").write_text(f"# File {i}")
-        
+
         start_time = time.time()
         files = scan_existing_project(str(self.project_path))
         duration = time.time() - start_time
-        
+
         assert len(files) == 50
         assert duration < 1.0  # Doit être rapide
 
@@ -368,28 +371,28 @@ class TestGenerationBackupIntegration:
     def test_complete_project_generation_workflow(self):
         """Test workflow complet génération projet."""
         project_path = Path(self.temp_dir) / "new_project"
-        
+
         # 1. Générer blueprint
         blueprint = generate_blueprint_mock("Application web Django")
-        
+
         # 2. Créer structure projet
         project_path.mkdir()
-        
+
         # 3. Sauvegarder blueprint
         save_blueprint(blueprint, str(project_path))
-        
+
         # 4. Générer fichiers principaux
         main_code = generate_main_code(blueprint)
         (project_path / "main.py").write_text(main_code)
-        
+
         readme = generate_readme(blueprint)
         (project_path / "README.md").write_text(readme)
-        
+
         # 5. Vérifier structure finale
         assert (project_path / "blueprint.json").exists()
         assert (project_path / "main.py").exists()
         assert (project_path / "README.md").exists()
-        
+
         # 6. Scanner projet généré
         files = scan_existing_project(str(project_path))
         assert len(files) >= 3
