@@ -4,6 +4,7 @@ Tests complets pour le module IA robuste.
 Couverture étendue avec tests d'intégration et de robustesse.
 """
 
+import subprocess
 from unittest.mock import Mock, patch
 
 import pytest
@@ -641,7 +642,9 @@ def test_validate_and_run_fallback():
     assert callable(validate_and_run)
 
     # Test avec une commande simple
-    result = validate_and_run(["echo", "test"], capture_output=True, text=True)
+    result = validate_and_run(
+        ["echo", "test"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
+    )
     assert result.returncode == 0
     assert "test" in result.stdout
 

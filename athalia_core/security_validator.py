@@ -639,6 +639,8 @@ class SecurityValidator:
                 del safe_kwargs["stdout"]
             if "stderr" in safe_kwargs:
                 del safe_kwargs["stderr"]
+            if "text" in safe_kwargs:
+                del safe_kwargs["text"]
 
             result = subprocess.run(
                 command, capture_output=True, text=True, check=False, **safe_kwargs

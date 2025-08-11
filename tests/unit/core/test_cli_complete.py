@@ -188,13 +188,13 @@ class TestCLIComplete:
         ]
         assert len(success_calls) > 0, "Aucun message de succès trouvé"
 
-    @patch("athalia_core.audit.audit_project_intelligent")
+    @patch(
+        "athalia_core.audit.audit_project_intelligent",
+        side_effect=Exception("Audit error"),
+    )
     @patch("click.echo")
     def test_audit_command_exception(self, mock_echo, mock_audit):
         """Test la commande audit avec exception"""
-        # Mock de l'audit qui lève une exception
-        mock_audit.side_effect = Exception("Audit error")
-
         # Test de la commande
         project_path = str(self.test_dir / "test_project")
         os.makedirs(project_path, exist_ok=True)

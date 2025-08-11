@@ -87,7 +87,9 @@ class TestEndToEndIntegration:
         # Tester l'exécution
         try:
             result = validate_and_run(
-                [sys.executable, str(main_py)], capture_output=True
+                [sys.executable, str(main_py)],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
             )
             assert result.returncode in [
                 0,
@@ -218,7 +220,11 @@ def test_function():
         # Test avec git
         try:
             result = validate_and_run(
-                ["git", "--version"], capture_output=True, text=True, timeout=10
+                ["git", "--version"],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True,
+                timeout=10,
             )
             assert result.returncode == 0, "Git non disponible"
         except (subprocess.TimeoutExpired, FileNotFoundError):
@@ -228,7 +234,8 @@ def test_function():
         try:
             result = validate_and_run(
                 ["python3", "--version"],
-                capture_output=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
                 text=True,
                 timeout=10,
             )
@@ -343,7 +350,9 @@ def test_generation_end_to_end_simple(tmp_path):
 
     # Tester l'exécution
     try:
-        result = validate_and_run(["python3", str(main_py)], capture_output=True)
+        result = validate_and_run(
+            ["python3", str(main_py)], stdout=subprocess.PIPE, stderr=subprocess.PIPE
+        )
         assert result.returncode in [
             0,
             1,

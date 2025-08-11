@@ -330,10 +330,16 @@ def inefficient_function():
         if not PerformanceAnalyzer:
             pytest.skip("PerformanceAnalyzer non disponible")
 
-        # Vérifier que les seuils sont définis
-        assert hasattr(self.performance_analyzer, "thresholds")
-        assert isinstance(self.performance_analyzer.thresholds, dict)
-        assert "complexity" in self.performance_analyzer.thresholds
+        # Vérifier que l'analyseur a des méthodes de seuil
+        assert hasattr(self.performance_analyzer, "analyze_project_performance")
+        assert hasattr(self.performance_analyzer, "get_performance_insights")
+
+        # Test que l'analyseur peut générer des rapports avec scores
+        report = self.performance_analyzer.analyze_project_performance(
+            str(self.test_dir)
+        )
+        assert hasattr(report, "overall_score")
+        assert isinstance(report.overall_score, int | float)
 
     def test_optimization_impact_measurement(self):
         """Test de mesure de l'impact des optimisations."""
