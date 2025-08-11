@@ -21,7 +21,7 @@ from athalia_core.performance_analyzer import PerformanceAnalyzer
 class TestPerformanceAnalyzerComplete:
     """Tests complets pour PerformanceAnalyzer."""
 
-    def setup_method(self):
+    def setup_method(self) -> None:
         """Configuration avant chaque test."""
         self.temp_dir = tempfile.mkdtemp()
         self.project_path = Path(self.temp_dir) / "test_project"
@@ -93,11 +93,11 @@ def fibonacci_optimized(n):
 
         self.analyzer = PerformanceAnalyzer(str(self.project_path))
 
-    def teardown_method(self):
+    def teardown_method(self) -> None:
         """Nettoyage après chaque test."""
         shutil.rmtree(self.temp_dir, ignore_errors=True)
 
-    def test_analyzer_initialization(self):
+    def test_analyzer_initialization(self) -> None:
         """Test initialisation de l'analyseur."""
         assert self.analyzer.project_path == str(self.project_path)
         assert hasattr(self.analyzer, "analysis_results")
@@ -173,7 +173,7 @@ def fibonacci_optimized(n):
         """Test détection goulots d'étranglement."""
         bottlenecks = self.analyzer.detect_performance_bottlenecks()
 
-        assert isinstance(bottlenecks, (dict, list))
+        assert isinstance(bottlenecks, dict | list)
 
         if isinstance(bottlenecks, dict):
             assert "bottlenecks" in bottlenecks or "issues" in bottlenecks
@@ -191,7 +191,7 @@ def fibonacci_optimized(n):
         # Devrait détecter la complexité O(n²) de inefficient_algorithm
         if "complexity_analysis" in complexity:
             analysis = complexity["complexity_analysis"]
-            assert isinstance(analysis, (dict, list))
+            assert isinstance(analysis, dict | list)
 
     def test_memory_profiling_intensive_function(self):
         """Test profiling mémoire fonction intensive."""
@@ -218,7 +218,7 @@ def file_operations():
     with open('/tmp/test_file.txt', 'w') as f:
         for i in range(1000):
             f.write(f"Line {i}\\n")
-    
+
     with open('/tmp/test_file.txt', 'r') as f:
         return len(f.readlines())
 """
@@ -263,7 +263,7 @@ def file_operations():
         # Devrait montrer que la version optimisée est plus rapide
         if "performance_comparison" in comparison:
             comp_data = comparison["performance_comparison"]
-            assert isinstance(comp_data, (dict, list))
+            assert isinstance(comp_data, dict | list)
 
     def test_generate_performance_report(self):
         """Test génération rapport performance."""
@@ -272,7 +272,7 @@ def file_operations():
 
         report = self.analyzer.generate_performance_report()
 
-        assert isinstance(report, (dict, str))
+        assert isinstance(report, dict | str)
 
         if isinstance(report, str):
             # Rapport texte
@@ -289,9 +289,9 @@ def file_operations():
 
         score = self.analyzer.calculate_performance_score()
 
-        assert isinstance(score, (int, float, dict))
+        assert isinstance(score, int | float | dict)
 
-        if isinstance(score, (int, float)):
+        if isinstance(score, int | float):
             assert 0 <= score <= 100
         else:
             assert "score" in score or "rating" in score
@@ -300,7 +300,7 @@ def file_operations():
         """Test identification opportunités optimisation."""
         optimizations = self.analyzer.identify_optimization_opportunities()
 
-        assert isinstance(optimizations, (dict, list))
+        assert isinstance(optimizations, dict | list)
 
         if isinstance(optimizations, list):
             # Liste d'optimisations
@@ -329,7 +329,7 @@ def file_operations():
         """Test analyse points chauds du code."""
         hotspots = self.analyzer.analyze_code_hotspots()
 
-        assert isinstance(hotspots, (dict, list))
+        assert isinstance(hotspots, dict | list)
 
         # Devrait identifier les sections de code coûteuses
         if isinstance(hotspots, dict):
@@ -472,7 +472,7 @@ def optimized_query():
             historical_data, current_results
         )
 
-        assert isinstance(regressions, (dict, list))
+        assert isinstance(regressions, dict | list)
 
     def test_performance_trends_analysis(self):
         """Test analyse tendances performance."""
@@ -514,7 +514,7 @@ def algorithm():
 
         pattern = self.analyzer.recognize_complexity_pattern(test_code)
 
-        assert isinstance(pattern, (str, dict))
+        assert isinstance(pattern, str | dict)
         # Devrait reconnaître le pattern de complexité
         if isinstance(pattern, str):
             assert expected_pattern in pattern.lower() or complexity_type in pattern
@@ -534,7 +534,7 @@ def algorithm():
         # Devrait montrer comment la performance évolue avec la taille
         if "scaling_analysis" in performance_scaling:
             scaling = performance_scaling["scaling_analysis"]
-            assert isinstance(scaling, (dict, list))
+            assert isinstance(scaling, dict | list)
 
     def test_concurrent_performance_analysis(self):
         """Test analyse performance concurrente."""
@@ -561,18 +561,18 @@ def parallel_processing():
     '''Traitement parallèle.'''
     threads = []
     results = []
-    
+
     def worker():
         results.append(concurrent_task())
-    
+
     for i in range(10):
         thread = threading.Thread(target=worker)
         threads.append(thread)
         thread.start()
-    
+
     for thread in threads:
         thread.join()
-    
+
     return results
 """
         )
@@ -591,7 +591,7 @@ def parallel_processing():
         # Démarrer monitoring
         monitoring_data = self.analyzer.start_performance_monitoring()
 
-        assert isinstance(monitoring_data, (dict, bool))
+        assert isinstance(monitoring_data, dict | bool)
 
         # Simuler activité
         time.sleep(0.1)
@@ -672,15 +672,15 @@ def nested_loops_example():
 
         # Générer rapport
         report = analyzer.generate_performance_report()
-        assert isinstance(report, (dict, str))
+        assert isinstance(report, dict | str)
 
         # Calculer score
         score = analyzer.calculate_performance_score()
-        assert isinstance(score, (int, float, dict))
+        assert isinstance(score, int | float | dict)
 
         # Identifier optimisations
         optimizations = analyzer.identify_optimization_opportunities()
-        assert isinstance(optimizations, (dict, list))
+        assert isinstance(optimizations, dict | list)
 
         # Export
         export_file = self.project_path / "performance_audit.json"
@@ -732,7 +732,7 @@ class DataProcessor{i}:
     '''Classe de traitement données {i}.'''
     def __init__(self):
         self.data = list(range(1000))
-    
+
     def process(self):
         return [x * {i} for x in self.data if x % 2 == 0]
 """

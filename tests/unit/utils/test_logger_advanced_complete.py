@@ -240,7 +240,6 @@ class TestAthaliaLoggerComplete:
             main_logger.info(f"Large message {i}: {large_message}")
 
         # Vérifier si rotation s'est produite
-        log_files = list(self.log_dir.glob("*.log*"))
         # Le nombre exact dépend de la configuration de rotation
 
     def test_structured_logging_json(self):
@@ -272,7 +271,6 @@ class TestAthaliaLoggerComplete:
         # Simulation opération
         time.sleep(0.05)
 
-        end_time = time.time()
         self.logger.log_performance(
             operation_name, start_time, {"query": "SELECT * FROM users"}
         )
@@ -300,7 +298,7 @@ class TestAthaliaLoggerComplete:
             initial_memory = self.logger.monitor_memory()
 
             # Allouer de la mémoire
-            large_data = [i for i in range(10000)]
+            list(range(10000))
 
             final_memory = self.logger.monitor_memory()
 

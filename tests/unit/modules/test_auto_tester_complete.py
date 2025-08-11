@@ -20,7 +20,7 @@ from athalia_core.auto_tester import AutoTester
 class TestAutoTesterComplete:
     """Tests complets pour AutoTester."""
 
-    def setup_method(self):
+    def setup_method(self) -> None:
         """Configuration avant chaque test."""
         self.temp_dir = tempfile.mkdtemp()
         self.project_path = Path(self.temp_dir) / "test_project"
@@ -38,22 +38,22 @@ class TestAutoTesterComplete:
 
 class Calculator:
     """Calculatrice basique."""
-    
+
     def __init__(self):
         self.history = []
-    
+
     def add(self, a, b):
         """Addition de deux nombres."""
         result = a + b
         self.history.append(f"{a} + {b} = {result}")
         return result
-    
+
     def multiply(self, a, b):
         """Multiplication de deux nombres."""
         result = a * b
         self.history.append(f"{a} * {b} = {result}")
         return result
-    
+
     def get_history(self):
         """Retourne l'historique des calculs."""
         return self.history.copy()
@@ -84,37 +84,37 @@ def is_prime(n):
 
 class DataProcessor:
     """Processeur de données."""
-    
+
     def __init__(self, data_source=None):
         self.data_source = data_source
         self.processed_data = []
-    
+
     def load_data(self, source):
         """Charge les données depuis une source."""
         self.data_source = source
         # Simulation chargement
         return True
-    
+
     def process_data(self, data):
         """Traite les données."""
         if not isinstance(data, list):
             raise TypeError("Data must be a list")
-        
+
         processed = []
         for item in data:
             if isinstance(item, (int, float)):
                 processed.append(item * 2)
             else:
                 processed.append(str(item).upper())
-        
+
         self.processed_data = processed
         return processed
-    
+
     def save_data(self, filename):
         """Sauvegarde les données traitées."""
         if not self.processed_data:
             raise ValueError("No processed data to save")
-        
+
         # Simulation sauvegarde
         return len(self.processed_data)
 
@@ -149,7 +149,7 @@ def undefined_variable():
 
 class BuggyClass:
     """Classe avec méthodes bugguées."""
-    
+
     def method_with_syntax_error(self):
         """Méthode avec erreur de syntaxe potentielle."""
         # Cette méthode pourrait causer des problèmes
@@ -445,7 +445,7 @@ class TestCalculator:
         calc = Calculator()
         result = calc.add(2, 3)
         assert result == 5
-    
+
     def test_add_negative_numbers(self):
         calc = Calculator()
         result = calc.add(-2, -3)
@@ -606,7 +606,7 @@ def test_function_{i}():
 
 class Class{i}:
     """Classe {i}."""
-    
+
     def method_{i}(self, x):
         """Méthode {i}."""
         return x + {i}
@@ -686,21 +686,21 @@ class TestAutoTesterIntegration:
 
 class UserManager:
     """Gestionnaire utilisateurs."""
-    
+
     def __init__(self):
         self.users = {}
-    
+
     def add_user(self, username, email):
         """Ajoute un utilisateur."""
         if username in self.users:
             raise ValueError("User already exists")
         self.users[username] = {"email": email}
         return True
-    
+
     def get_user(self, username):
         """Récupère un utilisateur."""
         return self.users.get(username)
-    
+
     def delete_user(self, username):
         """Supprime un utilisateur."""
         if username not in self.users:
@@ -733,17 +733,17 @@ def calculate_age(birth_year, current_year=2024):
 
 class ConfigManager:
     """Gestionnaire configuration."""
-    
+
     def __init__(self, config_file=None):
         self.config_file = config_file
         self.config = {}
-    
+
     def load_config(self):
         """Charge la configuration."""
         # Simulation chargement
         self.config = {"debug": True, "version": "1.0"}
         return self.config
-    
+
     def get_setting(self, key, default=None):
         """Récupère un paramètre."""
         return self.config.get(key, default)
@@ -815,14 +815,14 @@ class TestAutoTesterPerformance:
 
 class Component{i}_{j}:
     """Composant {i}_{j}."""
-    
+
     def __init__(self, value={i}):
         self.value = value
-    
+
     def process(self, data):
         """Traite les données."""
         return data + self.value
-    
+
     def validate(self, input_data):
         """Valide les données."""
         return isinstance(input_data, (int, float))

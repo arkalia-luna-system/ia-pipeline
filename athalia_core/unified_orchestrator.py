@@ -36,7 +36,7 @@ except ImportError:
 # Imports des nouveaux modules IA et distillation
 try:
     from .agents.audit_agent import AuditAgent
-    from .agents.context_prompt import detect_prompts_scoring, show_prompts
+    from .agents.context_prompt import detect_prompts_scoring
     from .agents.unified_agent import UnifiedAgent
     from .distillation.code_genetics import CodeGenetics
     from .distillation.quality_scorer import QualityScorer

@@ -21,7 +21,7 @@ from athalia_core.intelligent_auditor import IntelligentAuditor
 class TestIntelligentAuditorComplete:
     """Tests complets pour IntelligentAuditor."""
 
-    def setup_method(self):
+    def setup_method(self) -> None:
         """Configuration avant chaque test."""
         self.temp_dir = tempfile.mkdtemp()
         self.project_path = Path(self.temp_dir) / "test_project"
@@ -56,17 +56,17 @@ requests==2.28.0
 
         self.auditor = IntelligentAuditor(str(self.project_path))
 
-    def teardown_method(self):
+    def teardown_method(self) -> None:
         """Nettoyage après chaque test."""
         shutil.rmtree(self.temp_dir, ignore_errors=True)
 
-    def test_auditor_initialization(self):
+    def test_auditor_initialization(self) -> None:
         """Test initialisation de l'auditeur."""
         assert self.auditor.project_path == str(self.project_path)
         assert hasattr(self.auditor, "audit_results")
         assert hasattr(self.auditor, "metrics")
 
-    def test_auditor_initialization_nonexistent_path(self):
+    def test_auditor_initialization_nonexistent_path(self) -> None:
         """Test initialisation avec chemin inexistant."""
         nonexistent_path = "/path/that/does/not/exist"
 
@@ -78,7 +78,7 @@ requests==2.28.0
             # Exception attendue pour chemin invalide
             assert "not found" in str(e).lower() or "does not exist" in str(e).lower()
 
-    def test_analyze_project_structure(self):
+    def test_analyze_project_structure(self) -> None:
         """Test analyse structure du projet."""
         structure_analysis = self.auditor.analyze_project_structure()
 
@@ -92,7 +92,7 @@ requests==2.28.0
         assert any("src" in str(d) for d in directories)
         assert any("tests" in str(d) for d in directories)
 
-    def test_analyze_code_quality(self):
+    def test_analyze_code_quality(self) -> None:
         """Test analyse qualité du code."""
         quality_analysis = self.auditor.analyze_code_quality()
 
@@ -103,7 +103,7 @@ requests==2.28.0
         # Au moins une métrique devrait être présente
         assert any(metric in quality_analysis for metric in expected_metrics)
 
-    def test_analyze_dependencies(self):
+    def test_analyze_dependencies(self) -> None:
         """Test analyse des dépendances."""
         deps_analysis = self.auditor.analyze_dependencies()
 
@@ -119,14 +119,14 @@ requests==2.28.0
                 deps_analysis
             )
 
-    def test_analyze_security_vulnerabilities(self):
+    def test_analyze_security_vulnerabilities(self) -> None:
         """Test analyse vulnérabilités sécurité."""
         security_analysis = self.auditor.analyze_security_vulnerabilities()
 
         assert isinstance(security_analysis, dict)
         assert "vulnerabilities" in security_analysis or "issues" in security_analysis
 
-    def test_analyze_performance_bottlenecks(self):
+    def test_analyze_performance_bottlenecks(self) -> None:
         """Test analyse goulots d'étranglement performance."""
         perf_analysis = self.auditor.analyze_performance_bottlenecks()
 
@@ -137,11 +137,11 @@ requests==2.28.0
         # Au moins une clé devrait être présente
         assert any(key in perf_analysis for key in expected_keys)
 
-    def test_calculate_technical_debt(self):
+    def test_calculate_technical_debt(self) -> None:
         """Test calcul de la dette technique."""
         tech_debt = self.auditor.calculate_technical_debt()
 
-        assert isinstance(tech_debt, (dict, float, int))
+        assert isinstance(tech_debt, dict | float | int)
 
         if isinstance(tech_debt, dict):
             assert "score" in tech_debt or "debt_ratio" in tech_debt
@@ -149,11 +149,11 @@ requests==2.28.0
             # Score numérique
             assert tech_debt >= 0
 
-    def test_generate_recommendations(self):
+    def test_generate_recommendations(self) -> None:
         """Test génération de recommandations."""
         recommendations = self.auditor.generate_recommendations()
 
-        assert isinstance(recommendations, (dict, list))
+        assert isinstance(recommendations, dict | list)
 
         if isinstance(recommendations, list):
             assert len(recommendations) >= 0
@@ -162,7 +162,7 @@ requests==2.28.0
                 "recommendations" in recommendations or "suggestions" in recommendations
             )
 
-    def test_audit_code_complexity_simple_file(self):
+    def test_audit_code_complexity_simple_file(self) -> None:
         """Test audit complexité code fichier simple."""
         simple_file = self.project_path / "simple.py"
         simple_file.write_text(
@@ -177,11 +177,11 @@ def multiply(a, b):
 
         complexity = self.auditor.audit_code_complexity(str(simple_file))
 
-        assert isinstance(complexity, (dict, int, float))
+        assert isinstance(complexity, dict | int | float)
         if isinstance(complexity, dict):
             assert "complexity_score" in complexity or "cyclomatic" in complexity
 
-    def test_audit_code_complexity_complex_file(self):
+    def test_audit_code_complexity_complex_file(self) -> None:
         """Test audit complexité code fichier complexe."""
         complex_file = self.project_path / "complex.py"
         complex_file.write_text(
@@ -209,14 +209,14 @@ def complex_function(x, y, z):
 
         complexity = self.auditor.audit_code_complexity(str(complex_file))
 
-        assert isinstance(complexity, (dict, int, float))
+        assert isinstance(complexity, dict | int | float)
         # Le fichier complexe devrait avoir une complexité plus élevée
-        if isinstance(complexity, (int, float)):
+        if isinstance(complexity, int | float):
             assert complexity > 1
         elif isinstance(complexity, dict) and "complexity_score" in complexity:
             assert complexity["complexity_score"] > 1
 
-    def test_audit_test_coverage(self):
+    def test_audit_test_coverage(self) -> None:
         """Test audit couverture des tests."""
         # Créer fichier de test
         test_file = self.project_path / "tests" / "test_main.py"
@@ -237,7 +237,7 @@ class TestMain(unittest.TestCase):
         assert isinstance(coverage, dict)
         assert "coverage_percentage" in coverage or "coverage" in coverage
 
-    def test_audit_documentation_quality(self):
+    def test_audit_documentation_quality(self) -> None:
         """Test audit qualité documentation."""
         # Ajouter documentation
         (self.project_path / "docs" / "api.md").write_text("# API Documentation")
@@ -247,7 +247,7 @@ class TestMain(unittest.TestCase):
         assert isinstance(doc_quality, dict)
         assert "documentation_score" in doc_quality or "quality" in doc_quality
 
-    def test_detect_code_smells(self):
+    def test_detect_code_smells(self) -> None:
         """Test détection code smells."""
         # Créer fichier avec code smells
         smelly_file = self.project_path / "smelly.py"
@@ -260,7 +260,7 @@ def bad_function(a, b, c, d, e, f, g, h, i, j):
         print("a is positive")
         print("processing a")
     if b > 0:
-        print("b is positive") 
+        print("b is positive")
         print("processing b")
     # Long if-else chain
     if c == 1:
@@ -280,14 +280,14 @@ def bad_function(a, b, c, d, e, f, g, h, i, j):
 
         code_smells = self.auditor.detect_code_smells()
 
-        assert isinstance(code_smells, (dict, list))
+        assert isinstance(code_smells, dict | list)
         # Devrait détecter au moins quelques code smells
         if isinstance(code_smells, list):
             assert len(code_smells) >= 0
         else:
             assert "smells" in code_smells or "issues" in code_smells
 
-    def test_analyze_architecture_patterns(self):
+    def test_analyze_architecture_patterns(self) -> None:
         """Test analyse patterns architecturaux."""
         # Créer structure MVC basique
         (self.project_path / "models").mkdir()
@@ -307,7 +307,7 @@ def bad_function(a, b, c, d, e, f, g, h, i, j):
         assert isinstance(arch_analysis, dict)
         assert "patterns" in arch_analysis or "architecture" in arch_analysis
 
-    def test_audit_naming_conventions(self):
+    def test_audit_naming_conventions(self) -> None:
         """Test audit conventions de nommage."""
         # Créer fichier avec mauvaises conventions
         bad_naming_file = self.project_path / "BadNaming.py"
@@ -328,7 +328,7 @@ def bad_function():
         assert isinstance(naming_audit, dict)
         assert "violations" in naming_audit or "issues" in naming_audit
 
-    def test_analyze_cyclomatic_complexity(self):
+    def test_analyze_cyclomatic_complexity(self) -> None:
         """Test analyse complexité cyclomatique."""
         # Créer fonction avec haute complexité cyclomatique
         complex_file = self.project_path / "cyclomatic.py"
@@ -359,7 +359,7 @@ def high_complexity(x):
         assert isinstance(cyclomatic, dict)
         assert "average_complexity" in cyclomatic or "complexity" in cyclomatic
 
-    def test_full_audit_execution(self):
+    def test_full_audit_execution(self) -> None:
         """Test exécution audit complet."""
         audit_results = self.auditor.run_full_audit()
 
@@ -382,11 +382,11 @@ def high_complexity(x):
         )
         assert present_sections >= len(expected_sections) // 2
 
-    def test_generate_audit_report(self):
+    def test_generate_audit_report(self) -> None:
         """Test génération rapport d'audit."""
         report = self.auditor.generate_audit_report()
 
-        assert isinstance(report, (dict, str))
+        assert isinstance(report, dict | str)
 
         if isinstance(report, str):
             # Rapport formaté en texte
@@ -396,7 +396,7 @@ def high_complexity(x):
             # Rapport structuré
             assert "summary" in report or "results" in report
 
-    def test_export_audit_results_json(self):
+    def test_export_audit_results_json(self) -> None:
         """Test export résultats audit en JSON."""
         # Exécuter audit d'abord
         self.auditor.run_full_audit()
@@ -412,7 +412,7 @@ def high_complexity(x):
                 data = json.load(f)
                 assert isinstance(data, dict)
 
-    def test_compare_audits(self):
+    def test_compare_audits(self) -> None:
         """Test comparaison d'audits."""
         # Exécuter premier audit
         audit1 = self.auditor.run_full_audit()
@@ -440,9 +440,9 @@ def high_complexity(x):
         # Test avec mock pour éviter dépendances externes
         result = self.auditor.run_external_linter()
 
-        assert isinstance(result, (dict, str, bool))
+        assert isinstance(result, dict | str | bool)
 
-    def test_performance_benchmark(self):
+    def test_performance_benchmark(self) -> None:
         """Test benchmark performance audit."""
         import time
 
@@ -467,7 +467,7 @@ class Class{i}:
         # L'audit ne devrait pas prendre trop de temps
         assert audit_duration < 10.0  # Moins de 10 secondes
 
-    def test_memory_usage_monitoring(self):
+    def test_memory_usage_monitoring(self) -> None:
         """Test monitoring utilisation mémoire."""
         import os
 
@@ -511,7 +511,7 @@ class Class{i}:
         structure = self.auditor.analyze_project_structure()
         assert isinstance(structure, dict)
 
-    def test_error_handling_corrupted_files(self):
+    def test_error_handling_corrupted_files(self) -> None:
         """Test gestion erreurs fichiers corrompus."""
         # Créer fichier avec contenu invalide
         corrupted_file = self.project_path / "corrupted.py"
@@ -525,7 +525,7 @@ class Class{i}:
             # Exception acceptable pour fichier corrompu
             assert "corrupt" in str(e).lower() or "invalid" in str(e).lower()
 
-    def test_large_project_handling(self):
+    def test_large_project_handling(self) -> None:
         """Test gestion grands projets."""
         # Créer beaucoup de fichiers
         large_dir = self.project_path / "large_module"
@@ -570,7 +570,7 @@ class TestIntelligentAuditorIntegration:
 class Application:
     def __init__(self):
         self.name = "Test App"
-    
+
     def run(self):
         return "Running..."
 """
@@ -617,7 +617,7 @@ setup(
 
         # Générer rapport
         report = auditor.generate_audit_report()
-        assert isinstance(report, (dict, str))
+        assert isinstance(report, dict | str)
 
         # Export résultats
         json_file = self.project_path / "integration_audit.json"

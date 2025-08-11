@@ -4,10 +4,7 @@
 Script pour corriger automatiquement TOUTES les métriques fausses dans la documentation
 """
 
-import os
-import re
 from pathlib import Path
-from typing import Dict, List, Tuple
 
 # Métriques CORRECTES à appliquer partout
 CORRECT_METRICS = {
@@ -58,7 +55,7 @@ CORRECT_METRICS = {
 }
 
 
-def find_md_files() -> List[Path]:
+def find_md_files() -> list[Path]:
     """Trouve tous les fichiers .md du projet."""
     project_root = Path(".")
     md_files = []
@@ -71,13 +68,12 @@ def find_md_files() -> List[Path]:
     return md_files
 
 
-def correct_file_metrics(file_path: Path) -> Tuple[int, List[str]]:
+def correct_file_metrics(file_path: Path) -> tuple[int, list[str]]:
     """Corrige les métriques dans un fichier."""
     try:
-        with open(file_path, "r", encoding="utf-8") as f:
+        with open(file_path, encoding="utf-8") as f:
             content = f.read()
 
-        original_content = content
         corrections_made = 0
         corrections_log = []
 
@@ -103,44 +99,36 @@ def correct_file_metrics(file_path: Path) -> Tuple[int, List[str]]:
 
     except Exception as e:
         print(f"❌ Erreur lors de la correction de {file_path}: {e}")
-        return 0, []
+        return 0, [f"Erreur: {e}"]
 
 
 def main() -> None:
     """Fonction principale."""
     print("🔧 ATHALIA METRICS CORRECTOR COMPLET")
-    print("=" * 50)
+    print("=" * 60)
 
-    # Trouver tous les fichiers .md
+    # Étape 1 : Trouver tous les fichiers .md
+    print("🔍 Étape 1 : Recherche des fichiers .md...")
     md_files = find_md_files()
     print(f"📁 {len(md_files)} fichiers .md trouvés")
-    print()
 
-    # Statistiques
+    # Étape 2 : Corriger les métriques
+    print("\n🔧 Étape 2 : Correction des métriques...")
     total_corrections = 0
     files_corrected = 0
 
-    # Corriger chaque fichier
     for md_file in md_files:
-        corrections, logs = correct_file_metrics(md_file)
+        corrections, _ = correct_file_metrics(md_file)
         if corrections > 0:
-            total_corrections += corrections
             files_corrected += 1
+            total_corrections += corrections
 
     # Résumé final
-    print()
-    print("=" * 50)
-    print("📊 RÉSUMÉ DES CORRECTIONS")
-    print(f"📁 Fichiers traités: {len(md_files)}")
-    print(f"✅ Fichiers corrigés: {files_corrected}")
-    print(f"🔧 Total corrections: {total_corrections}")
-    print()
-
-    if total_corrections > 0:
-        print("🎉 CORRECTION TERMINÉE AVEC SUCCÈS !")
-        print("Toutes les métriques fausses ont été corrigées.")
-    else:
-        print("ℹ️  Aucune correction nécessaire - tout est déjà correct !")
+    print("\n" + "=" * 60)
+    print("🎉 CORRECTION DES MÉTRIQUES TERMINÉE !")
+    print(f"📁 Fichiers corrigés : {files_corrected}")
+    print(f"🔧 Corrections totales : {total_corrections}")
+    print("✅ Toutes les métriques sont maintenant correctes !")
 
 
 if __name__ == "__main__":

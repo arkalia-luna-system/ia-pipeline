@@ -20,7 +20,7 @@ from athalia_core.security_validator import SecurityValidator
 class TestSecurityValidatorComplete:
     """Tests complets pour SecurityValidator."""
 
-    def setup_method(self):
+    def setup_method(self) -> None:
         """Configuration avant chaque test."""
         self.temp_dir = tempfile.mkdtemp()
         self.project_path = Path(self.temp_dir) / "test_project"
@@ -87,11 +87,11 @@ flask==1.1.0
 
         self.validator = SecurityValidator()
 
-    def teardown_method(self):
+    def teardown_method(self) -> None:
         """Nettoyage après chaque test."""
         shutil.rmtree(self.temp_dir, ignore_errors=True)
 
-    def test_validator_initialization(self):
+    def test_validator_initialization(self) -> None:
         """Test initialisation du validateur."""
         assert isinstance(self.validator, SecurityValidator)
         assert hasattr(self.validator, "scan_results")
@@ -128,7 +128,7 @@ flask==1.1.0
         code_with_eval = "result = eval(user_input)"
         detection = self.validator.detect_dangerous_functions(code_with_eval)
 
-        assert isinstance(detection, (dict, list))
+        assert isinstance(detection, dict | list)
         if isinstance(detection, dict):
             assert "eval" in str(detection).lower()
         else:
@@ -139,7 +139,7 @@ flask==1.1.0
         code_with_exec = "exec(user_code)"
         detection = self.validator.detect_dangerous_functions(code_with_exec)
 
-        assert isinstance(detection, (dict, list))
+        assert isinstance(detection, dict | list)
         # exec() devrait être détecté comme dangereux
         assert len(detection) > 0
 
@@ -148,7 +148,7 @@ flask==1.1.0
         code_with_shell = "subprocess.call(cmd, shell=True)"
         detection = self.validator.detect_command_injection(code_with_shell)
 
-        assert isinstance(detection, (dict, list))
+        assert isinstance(detection, dict | list)
         # shell=True devrait être détecté comme risqué
         assert len(detection) > 0
 
@@ -157,7 +157,7 @@ flask==1.1.0
         vulnerable_file = self.project_path / "vulnerable_file.py"
         secrets = self.validator.detect_hardcoded_secrets(str(vulnerable_file))
 
-        assert isinstance(secrets, (dict, list))
+        assert isinstance(secrets, dict | list)
         # Devrait détecter password et api_key hardcodés
         secrets_found = str(secrets).lower()
         assert "password" in secrets_found or "secret" in secrets_found
@@ -167,7 +167,7 @@ flask==1.1.0
         sql_code = 'query = f"SELECT * FROM users WHERE id = {user_id}"'
         detection = self.validator.check_sql_injection_patterns(sql_code)
 
-        assert isinstance(detection, (dict, list, bool))
+        assert isinstance(detection, dict | list | bool)
         # Devrait détecter le pattern SQL injection
         if isinstance(detection, bool):
             assert detection is True
@@ -268,7 +268,7 @@ def render_user_content(user_input):
 
         xss_detection = self.validator.detect_xss_vulnerabilities(xss_code)
 
-        assert isinstance(xss_detection, (dict, list))
+        assert isinstance(xss_detection, dict | list)
         # Devrait détecter le risque XSS
         assert len(xss_detection) > 0
 
@@ -314,7 +314,7 @@ def debug_info():
 
         disclosure = self.validator.scan_for_information_disclosure(disclosure_code)
 
-        assert isinstance(disclosure, (dict, list))
+        assert isinstance(disclosure, dict | list)
         # Devrait détecter les divulgations d'informations
         assert len(disclosure) > 0
 
@@ -363,7 +363,7 @@ except Exception as e:
 
         report = self.validator.generate_security_report()
 
-        assert isinstance(report, (dict, str))
+        assert isinstance(report, dict | str)
 
         if isinstance(report, str):
             # Rapport texte
@@ -380,9 +380,9 @@ except Exception as e:
 
         score = self.validator.calculate_security_score()
 
-        assert isinstance(score, (int, float, dict))
+        assert isinstance(score, int | float | dict)
 
-        if isinstance(score, (int, float)):
+        if isinstance(score, int | float):
             assert 0 <= score <= 100
         else:
             assert "score" in score
@@ -412,7 +412,7 @@ except Exception as e:
         # Test avec mock pour éviter dépendances externes
         result = self.validator.run_external_security_scan(str(self.project_path))
 
-        assert isinstance(result, (dict, str, bool))
+        assert isinstance(result, dict | str | bool)
 
     def test_performance_large_codebase(self):
         """Test performance sur grande base de code."""
@@ -450,7 +450,7 @@ def function_{i}():
         detection = self.validator.detect_vulnerability_by_type(vuln_type, code_sample)
 
         # Devrait détecter la vulnérabilité correspondante
-        assert isinstance(detection, (dict, list, bool))
+        assert isinstance(detection, dict | list | bool)
         if isinstance(detection, bool):
             assert detection is True
         else:
@@ -487,7 +487,7 @@ def safe_eval(expression):
         detection = self.validator.detect_dangerous_functions(safe_code)
 
         # Ne devrait pas détecter ast.literal_eval comme dangereux
-        assert isinstance(detection, (dict, list))
+        assert isinstance(detection, dict | list)
 
 
 class TestSecurityValidatorIntegration:
@@ -532,7 +532,7 @@ def secure_process(data):
     # Code sécurisé
     if not isinstance(data, str):
         raise ValueError("Invalid input")
-    
+
     hashed = hashlib.sha256(data.encode()).hexdigest()
     return json.loads(data) if data.startswith('{') else data
 """
@@ -557,11 +557,11 @@ flask==0.12.0
 
         # Générer rapport
         report = validator.generate_security_report()
-        assert isinstance(report, (dict, str))
+        assert isinstance(report, dict | str)
 
         # Calculer score
         score = validator.calculate_security_score()
-        assert isinstance(score, (int, float, dict))
+        assert isinstance(score, int | float | dict)
 
         # Export
         export_file = self.project_path / "security_audit.json"

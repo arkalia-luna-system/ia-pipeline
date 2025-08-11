@@ -6,9 +6,8 @@ Script pour nettoyer, organiser et corriger TOUTE la documentation
 
 import os
 import shutil
+from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Tuple, Set
-import re
 
 # Configuration du nettoyage
 PROJECT_ROOT = Path(".")
@@ -101,83 +100,90 @@ ESSENTIAL_FILES = {
 }
 
 
-def find_all_md_files() -> List[Path]:
-    """Trouve tous les fichiers .md du projet."""
+def find_all_md_files() -> list[Path]:
+    """Trouve tous les fichiers .md dans le projet"""
     md_files = []
-    for md_file in PROJECT_ROOT.rglob("*.md"):
-        if ".venv" not in str(md_file) and ".git" not in str(md_file):
-            md_files.append(md_file)
+    for root, _dirs, files in os.walk(PROJECT_ROOT):
+        for file in files:
+            if file.endswith(".md"):
+                md_files.append(Path(root) / file)
     return md_files
 
 
-def identify_problems(md_files: List[Path]) -> Dict[str, List[Path]]:
-    """Identifie tous les problèmes dans la documentation."""
-    problems = {
+def identify_problems(md_files: list[Path]) -> dict[str, list[Path]]:
+    """Identifie les problèmes dans les fichiers MD"""
+    problems: dict[str, list[Path]] = {
         "duplicates": [],
         "obsolete": [],
-        "apple_double": [],
-        "inconsistent": [],
-        "empty": [],
-        "broken_links": [],
+        "archivable": [],
+        "essential": [],
     }
 
-    # Identifier les fichiers Apple Double
     for md_file in md_files:
-        if md_file.name.startswith("._"):
-            problems["apple_double"].append(md_file)
+        file_name = md_file.name
+        relative_path = str(md_file.relative_to(PROJECT_ROOT))
 
-    # Identifier les doublons de README
-    readme_files = [f for f in md_files if f.name == "README.md"]
-    if len(readme_files) > 1:
-        problems["duplicates"].extend(readme_files[1:])  # Garder le premier
+        # Vérifier si c'est un fichier essentiel
+        if relative_path in ESSENTIAL_FILES:
+            problems["essential"].append(md_file)
+            continue
 
-    # Identifier les fichiers obsolètes
-    for md_file in md_files:
-        if md_file.name in FILES_TO_DELETE:
-            problems["obsolete"].append(md_file)
-
-    # Identifier les fichiers vides ou très petits
-    for md_file in md_files:
-        try:
-            if md_file.stat().st_size < 100:  # Moins de 100 bytes
-                problems["empty"].append(md_file)
-        except:
-            pass
+        # Vérifier si c'est un fichier à supprimer
+        for pattern in FILES_TO_DELETE:
+            if pattern.startswith("*"):
+                if file_name.endswith(pattern[1:]):
+                    problems["obsolete"].append(md_file)
+                    break
+            elif pattern.startswith("._"):
+                if file_name.startswith("._"):
+                    problems["obsolete"].append(md_file)
+                    break
+            elif file_name == pattern:
+                problems["obsolete"].append(md_file)
+                break
+        else:
+            # Vérifier si c'est un fichier à archiver
+            if relative_path in FILES_TO_ARCHIVE:
+                problems["archivable"].append(md_file)
+            else:
+                # Fichier non classé - potentiellement dupliqué
+                problems["duplicates"].append(md_file)
 
     return problems
 
 
-def create_cleanup_plan(problems: Dict[str, List[Path]]) -> Dict[str, List[str]]:
-    """Crée un plan de nettoyage détaillé."""
-    plan = {"delete": [], "archive": [], "keep": [], "consolidate": []}
+def create_cleanup_plan(problems: dict[str, list[Path]]) -> dict[str, list[str]]:
+    """Crée un plan de nettoyage basé sur les problèmes identifiés"""
+    plan: dict[str, list[str]] = {
+        "delete": [],
+        "archive": [],
+        "keep": [],
+    }
 
     # Fichiers à supprimer
     for file_list in [
-        problems["apple_double"],
         problems["obsolete"],
-        problems["empty"],
+        problems["duplicates"],
     ]:
         for file_path in file_list:
             plan["delete"].append(str(file_path))
 
     # Fichiers à archiver
-    for file_path in problems["duplicates"]:
-        if str(file_path) not in plan["delete"]:
-            plan["archive"].append(str(file_path))
+    for file_path in problems["archivable"]:
+        plan["archive"].append(str(file_path))
 
-    # Fichiers à consolider (README multiples)
-    readme_files = [f for f in problems["duplicates"] if f.name == "README.md"]
-    if len(readme_files) > 1:
-        plan["consolidate"].extend([str(f) for f in readme_files[1:]])
+    # Fichiers à conserver
+    for file_path in problems["essential"]:
+        plan["keep"].append(str(file_path))
 
     return plan
 
 
-def execute_cleanup(plan: Dict[str, List[str]]) -> Dict[str, int]:
-    """Exécute le plan de nettoyage."""
-    results = {"deleted": 0, "archived": 0, "consolidated": 0, "errors": 0}
+def execute_cleanup(plan: dict[str, list[str]]) -> dict[str, int]:
+    """Exécute le plan de nettoyage"""
+    results = {"deleted": 0, "archived": 0, "errors": 0}
 
-    # Créer les répertoires de nettoyage
+    # Créer les dossiers nécessaires
     ARCHIVE_DIR.mkdir(parents=True, exist_ok=True)
     TEMP_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -186,7 +192,7 @@ def execute_cleanup(plan: Dict[str, List[str]]) -> Dict[str, int]:
         try:
             Path(file_path).unlink()
             results["deleted"] += 1
-            print(f"🗑️  Supprimé: {file_path}")
+            print(f"🗑️ Supprimé: {file_path}")
         except Exception as e:
             print(f"❌ Erreur suppression {file_path}: {e}")
             results["errors"] += 1
@@ -195,153 +201,115 @@ def execute_cleanup(plan: Dict[str, List[str]]) -> Dict[str, int]:
     for file_path in plan["archive"]:
         try:
             source = Path(file_path)
-            dest = ARCHIVE_DIR / source.name
-            if dest.exists():
-                # Ajouter un suffixe si le fichier existe déjà
-                counter = 1
-                while dest.exists():
-                    dest = ARCHIVE_DIR / f"{source.stem}_{counter}{source.suffix}"
-                    counter += 1
-            shutil.move(str(source), str(dest))
-            results["archived"] += 1
-            print(f"📦 Archivé: {file_path} → {dest}")
+            if source.exists():
+                archive_path = ARCHIVE_DIR / source.name
+                shutil.copy2(source, archive_path)
+                source.unlink()
+                results["archived"] += 1
+                print(f"📦 Archivé: {file_path}")
         except Exception as e:
             print(f"❌ Erreur archivage {file_path}: {e}")
-            results["errors"] += 1
-
-    # Consolider les README multiples
-    for file_path in plan["consolidate"]:
-        try:
-            source = Path(file_path)
-            dest = TEMP_DIR / f"consolidated_{source.name}"
-            shutil.move(str(source), str(dest))
-            results["consolidated"] += 1
-            print(f"🔧 Consolidé: {file_path} → {dest}")
-        except Exception as e:
-            print(f"❌ Erreur consolidation {file_path}: {e}")
             results["errors"] += 1
 
     return results
 
 
 def generate_cleanup_report(
-    problems: Dict[str, List[Path]], plan: Dict[str, List[str]], results: Dict[str, int]
+    problems: dict[str, list[Path]], plan: dict[str, list[str]], results: dict[str, int]
 ) -> str:
-    """Génère un rapport de nettoyage complet."""
-    report = f"""# 🧹 RAPPORT DE NETTOYAGE COMPLET - DOCUMENTATION ATHALIA
+    """Génère un rapport de nettoyage"""
+    report = "# 🧹 RAPPORT DE NETTOYAGE DOCUMENTATION ATHALIA\n\n"
+    report += f"**Date:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n"
 
-**Date d'exécution :** 11 août 2025  
-**Mission :** Nettoyage complet et organisation de la documentation  
-**Statut :** ✅ **TERMINÉ**
+    # Résumé des problèmes
+    report += "## 📊 RÉSUMÉ DES PROBLÈMES IDENTIFIÉS\n\n"
+    report += f"- **Fichiers obsolètes:** {len(problems['obsolete'])}\n"
+    report += f"- **Fichiers dupliqués:** {len(problems['duplicates'])}\n"
+    report += f"- **Fichiers à archiver:** {len(problems['archivable'])}\n"
+    report += f"- **Fichiers essentiels:** {len(problems['essential'])}\n\n"
 
----
+    # Plan de nettoyage
+    report += "## 📋 PLAN DE NETTOYAGE\n\n"
+    report += f"- **À supprimer:** {len(plan['delete'])}\n"
+    report += f"- **À archiver:** {len(plan['archive'])}\n"
+    report += f"- **À conserver:** {len(plan['keep'])}\n\n"
 
-## 📊 **ANALYSE INITIALE**
+    # Résultats
+    report += "## ✅ RÉSULTATS DU NETTOYAGE\n\n"
+    report += f"- **Supprimés:** {results['deleted']}\n"
+    report += f"- **Archivés:** {results['archived']}\n"
+    report += f"- **Erreurs:** {results['errors']}\n\n"
 
-### **Fichiers .md identifiés :** {len(problems.get("duplicates", [])) + len(problems.get("obsolete", [])) + len(problems.get("apple_double", [])) + len(problems.get("empty", []))}
+    # Détails des actions
+    if plan["delete"]:
+        report += "### 🗑️ Fichiers supprimés\n\n"
+        for file_path in plan["delete"]:
+            report += f"- `{file_path}`\n"
+        report += "\n"
 
-### **Problèmes identifiés :**
-- **Fichiers Apple Double :** {len(problems.get("apple_double", []))}
-- **Doublons :** {len(problems.get("duplicates", []))}
-- **Obsolètes :** {len(problems.get("obsolete", []))}
-- **Vides :** {len(problems.get("empty", []))}
+    if plan["archive"]:
+        report += "### 📦 Fichiers archivés\n\n"
+        for file_path in plan["archive"]:
+            report += f"- `{file_path}` → `{ARCHIVE_DIR}`\n"
+        report += "\n"
 
----
+    if plan["keep"]:
+        report += "### 💾 Fichiers conservés\n\n"
+        for file_path in plan["keep"]:
+            report += f"- `{file_path}`\n"
+        report += "\n"
 
-## 🎯 **PLAN DE NETTOYAGE EXÉCUTÉ**
-
-### **Fichiers supprimés :** {len(plan.get("delete", []))}
-{chr(10).join([f"- {f}" for f in plan.get("delete", [])])}
-
-### **Fichiers archivés :** {len(plan.get("archive", []))}
-{chr(10).join([f"- {f}" for f in plan.get("archive", [])])}
-
-### **Fichiers consolidés :** {len(plan.get("consolidate", []))}
-{chr(10).join([f"- {f}" for f in plan.get("consolidate", [])])}
-
----
-
-## 📈 **RÉSULTATS DU NETTOYAGE**
-
-- **🗑️ Supprimés :** {results.get("deleted", 0)}
-- **📦 Archivés :** {results.get("archived", 0)}
-- **🔧 Consolidés :** {results.get("consolidated", 0)}
-- **❌ Erreurs :** {results.get("errors", 0)}
-
----
-
-## 🎉 **RÉSULTAT FINAL**
-
-**Documentation nettoyée et organisée !**
-
-- ✅ **Fichiers obsolètes supprimés**
-- ✅ **Doublons éliminés**
-- ✅ **Structure clarifiée**
-- ✅ **Maintenance facilitée**
-
----
-
-**📅 Date :** 11 août 2025  
-**✍️ Auteur :** Script de nettoyage automatique  
-**🎯 Objectif :** Documentation Athalia propre et organisée  
-**📊 Statut :** ✅ **MISSION ACCOMPLIE**
-"""
     return report
 
 
 def main() -> None:
-    """Fonction principale."""
-    print("🧹 ATHALIA DOCUMENTATION COMPLETE CLEANUP")
-    print("=" * 60)
+    """Fonction principale"""
+    print("🧹 Démarrage du nettoyage de la documentation Athalia...")
 
-    # Étape 1 : Trouver tous les fichiers .md
-    print("🔍 Étape 1 : Analyse de tous les fichiers .md...")
+    # Trouver tous les fichiers MD
+    print("🔍 Recherche des fichiers .md...")
     md_files = find_all_md_files()
     print(f"📁 {len(md_files)} fichiers .md trouvés")
 
-    # Étape 2 : Identifier les problèmes
-    print("\n🔍 Étape 2 : Identification des problèmes...")
+    # Identifier les problèmes
+    print("🔍 Analyse des problèmes...")
     problems = identify_problems(md_files)
 
-    print(f"   🍎 Apple Double : {len(problems['apple_double'])}")
-    print(f"   🔄 Doublons : {len(problems['duplicates'])}")
-    print(f"   🗑️ Obsolètes : {len(problems['obsolete'])}")
-    print(f"   📄 Vides : {len(problems['empty'])}")
-
-    # Étape 3 : Créer le plan de nettoyage
-    print("\n📋 Étape 3 : Création du plan de nettoyage...")
+    # Créer le plan de nettoyage
+    print("📋 Création du plan de nettoyage...")
     plan = create_cleanup_plan(problems)
 
-    print(f"   🗑️ À supprimer : {len(plan['delete'])}")
-    print(f"   📦 À archiver : {len(plan['archive'])}")
-    print(f"   🔧 À consolider : {len(plan['consolidate'])}")
+    # Afficher le plan
+    print("\n📋 PLAN DE NETTOYAGE:")
+    print(f"🗑️ À supprimer: {len(plan['delete'])}")
+    print(f"📦 À archiver: {len(plan['archive'])}")
+    print(f"💾 À conserver: {len(plan['keep'])}")
 
-    # Étape 4 : Exécuter le nettoyage
-    print("\n🚀 Étape 4 : Exécution du nettoyage...")
+    # Demander confirmation
+    response = input("\n❓ Continuer le nettoyage? (y/N): ")
+    if response.lower() != "y":
+        print("❌ Nettoyage annulé")
+        return
+
+    # Exécuter le nettoyage
+    print("🚀 Exécution du nettoyage...")
     results = execute_cleanup(plan)
 
-    # Étape 5 : Générer le rapport
-    print("\n📊 Étape 5 : Génération du rapport...")
+    # Générer le rapport
+    print("📊 Génération du rapport...")
     report = generate_cleanup_report(problems, plan, results)
 
     # Sauvegarder le rapport
-    report_file = PROJECT_ROOT / "RAPPORT_NETTOYAGE_COMPLET_DOCUMENTATION_ATHALIA.md"
-    with open(report_file, "w", encoding="utf-8") as f:
+    report_path = PROJECT_ROOT / "RAPPORT_NETTOYAGE_DOCUMENTATION.md"
+    with open(report_path, "w", encoding="utf-8") as f:
         f.write(report)
 
-    # Résumé final
-    print("\n" + "=" * 60)
-    print("🎉 NETTOYAGE TERMINÉ AVEC SUCCÈS !")
-    print(f"📁 Fichiers supprimés : {results['deleted']}")
-    print(f"📦 Fichiers archivés : {results['archived']}")
-    print(f"🔧 Fichiers consolidés : {results['consolidated']}")
-    print(f"❌ Erreurs : {results['errors']}")
-    print(f"📊 Rapport sauvegardé : {report_file}")
+    print(f"✅ Rapport sauvegardé: {report_path}")
+    print("🎉 Nettoyage terminé!")
 
-    # Nettoyer les répertoires temporaires
+    # Nettoyer le dossier temporaire
     if TEMP_DIR.exists():
         shutil.rmtree(TEMP_DIR)
-        print("🧹 Répertoire temporaire nettoyé")
 
 
 if __name__ == "__main__":

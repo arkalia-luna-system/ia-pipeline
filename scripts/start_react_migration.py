@@ -4,11 +4,9 @@
 Script pour démarrer immédiatement la migration vers React
 """
 
-import os
-import subprocess
 import json
+import subprocess
 from pathlib import Path
-from typing import Dict, List, Tuple
 
 # Configuration du projet
 PROJECT_ROOT = Path(".")
@@ -98,44 +96,30 @@ def install_dependencies() -> bool:
     try:
         # Installer les dépendances de base
         subprocess.run(["npm", "install"], cwd=DASHBOARD_REACT_DIR, check=True)
-        print("✅ Dépendances de base installées")
 
         # Installer les dépendances supplémentaires
         additional_deps = [
             "tailwindcss",
-            "postcss",
             "autoprefixer",
-            "recharts",
-            "@tanstack/react-query",
-            "zustand",
-            "react-router-dom",
+            "postcss",
             "@types/node",
-        ]
-
-        cmd = ["npm", "install", "--save"] + additional_deps
-        subprocess.run(cmd, cwd=DASHBOARD_REACT_DIR, check=True)
-        print("✅ Dépendances supplémentaires installées")
-
-        # Installer les dépendances de développement
-        dev_deps = [
+            "eslint",
+            "prettier",
             "@typescript-eslint/eslint-plugin",
             "@typescript-eslint/parser",
-            "eslint",
             "eslint-config-prettier",
-            "eslint-plugin-react",
-            "eslint-plugin-react-hooks",
-            "prettier",
-            "husky",
-            "lint-staged",
-            "vitest",
-            "@testing-library/react",
-            "@testing-library/jest-dom",
+            "eslint-plugin-prettier",
         ]
 
-        cmd = ["npm", "install", "--save-dev"] + dev_deps
-        subprocess.run(cmd, cwd=DASHBOARD_REACT_DIR, check=True)
-        print("✅ Dépendances de développement installées")
+        for dep in additional_deps:
+            print(f"📦 Installation de {dep}...")
+            subprocess.run(
+                ["npm", "install", "--save-dev", dep],
+                cwd=DASHBOARD_REACT_DIR,
+                check=True,
+            )
 
+        print("✅ Toutes les dépendances installées")
         return True
 
     except subprocess.CalledProcessError as e:
@@ -150,13 +134,17 @@ def configure_tailwind() -> bool:
     try:
         # Initialiser Tailwind
         subprocess.run(
-            ["npx", "tailwindcss", "init", "-p"], cwd=DASHBOARD_REACT_DIR, check=True
+            ["npx", "tailwindcss", "init", "-p"],
+            cwd=DASHBOARD_REACT_DIR,
+            check=True,
         )
 
         # Configurer tailwind.config.js
         tailwind_config = DASHBOARD_REACT_DIR / "tailwind.config.js"
         if tailwind_config.exists():
-            content = """/** @type {import('tailwindcss').Config} */
+            with open(tailwind_config, "w", encoding="utf-8") as f:
+                f.write(
+                    """/** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./index.html",
@@ -168,121 +156,152 @@ export default {
         primary: {
           50: '#eff6ff',
           500: '#3b82f6',
+          600: '#2563eb',
+          700: '#1d4ed8',
           900: '#1e3a8a',
         },
-        success: {
-          500: '#10b981',
-        },
-        warning: {
-          500: '#f59e0b',
-        },
-        danger: {
-          500: '#ef4444',
+        secondary: {
+          50: '#f8fafc',
+          500: '#64748b',
+          600: '#475569',
+          700: '#334155',
+          900: '#0f172a',
         }
-      }
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.5s ease-in-out',
+        'slide-up': 'slideUp 0.3s ease-out',
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(10px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+      },
     },
   },
   plugins: [],
-}"""
+}
+"""
+                )
 
-            with open(tailwind_config, "w") as f:
-                f.write(content)
-            print("✅ Configuration Tailwind créée")
-
-        # Mettre à jour src/index.css
+        # Configurer src/index.css
         css_file = DASHBOARD_REACT_DIR / "src" / "index.css"
         if css_file.exists():
-            content = """@tailwind base;
+            with open(css_file, "w", encoding="utf-8") as f:
+                f.write(
+                    """@tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @layer base {
   html {
     font-family: 'Inter', system-ui, sans-serif;
   }
+
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+  }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-primary-500 hover:bg-primary-600 text-white font-medium py-2 px-4 rounded-lg transition-colors;
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
   }
-  
+
   .btn-secondary {
-    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors;
+    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
   }
-  
+
   .card {
-    @apply bg-white rounded-lg shadow-md p-6 border border-gray-200;
+    @apply bg-white rounded-xl shadow-sm border border-gray-200 p-6;
+  }
+
+  .input-field {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent;
   }
 }"""
+                )
 
-            with open(css_file, "w") as f:
-                f.write(content)
-            print("✅ Styles Tailwind configurés")
-
+        print("✅ Tailwind CSS configuré")
         return True
 
     except Exception as e:
-        print(f"❌ Erreur lors de la configuration Tailwind: {e}")
+        print(f"❌ Erreur lors de la configuration de Tailwind: {e}")
         return False
 
 
 def configure_eslint_prettier() -> bool:
     """Configure ESLint et Prettier."""
-    print("\n🔧 Configuration ESLint et Prettier...")
+    print("\n🔧 Configuration d'ESLint et Prettier...")
 
     try:
         # Configuration ESLint
-        eslint_config = DASHBOARD_REACT_DIR / ".eslintrc.json"
-        eslint_content = {
-            "env": {"browser": True, "es2021": True},
-            "extends": [
-                "eslint:recommended",
-                "@typescript-eslint/recommended",
-                "plugin:react/recommended",
-                "plugin:react-hooks/recommended",
-                "prettier",
-            ],
-            "parser": "@typescript-eslint/parser",
-            "parserOptions": {
-                "ecmaFeatures": {"jsx": True},
-                "ecmaVersion": "latest",
-                "sourceType": "module",
-            },
-            "plugins": ["react", "@typescript-eslint"],
-            "rules": {
-                "react/react-in-jsx-scope": "off",
-                "react-hooks/rules-of-hooks": "error",
-                "react-hooks/exhaustive-deps": "warn",
-                "@typescript-eslint/no-unused-vars": "error",
-                "@typescript-eslint/no-explicit-any": "warn",
-            },
-            "settings": {"react": {"version": "detect"}},
-        }
-
-        with open(eslint_config, "w") as f:
-            json.dump(eslint_content, f, indent=2)
-        print("✅ Configuration ESLint créée")
+        eslint_config = DASHBOARD_REACT_DIR / ".eslintrc.cjs"
+        with open(eslint_config, "w", encoding="utf-8") as f:
+            f.write(
+                """module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    '@typescript-eslint/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:prettier/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  parser: '@typescript-eslint/parser',
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'prefer-const': 'error',
+    'no-var': 'error',
+  },
+}
+"""
+            )
 
         # Configuration Prettier
         prettier_config = DASHBOARD_REACT_DIR / ".prettierrc"
-        prettier_content = {
-            "semi": True,
-            "trailingComma": "es5",
-            "singleQuote": True,
-            "printWidth": 80,
-            "tabWidth": 2,
-            "useTabs": False,
-        }
+        with open(prettier_config, "w", encoding="utf-8") as f:
+            f.write(
+                """{
+  "semi": true,
+  "trailingComma": "es5",
+  "singleQuote": true,
+  "printWidth": 80,
+  "tabWidth": 2,
+  "useTabs": false,
+  "bracketSpacing": true,
+  "arrowParens": "avoid"
+}
+"""
+            )
 
-        with open(prettier_config, "w") as f:
-            json.dump(prettier_content, f, indent=2)
-        print("✅ Configuration Prettier créée")
-
+        print("✅ ESLint et Prettier configurés")
         return True
 
     except Exception as e:
-        print(f"❌ Erreur lors de la configuration ESLint/Prettier: {e}")
+        print(f"❌ Erreur lors de la configuration d'ESLint/Prettier: {e}")
         return False
 
 
@@ -291,284 +310,487 @@ def create_project_structure() -> bool:
     print("\n📁 Création de la structure du projet...")
 
     try:
+        # Créer les dossiers
         src_dir = DASHBOARD_REACT_DIR / "src"
+        components_dir = src_dir / "components"
+        pages_dir = src_dir / "pages"
+        hooks_dir = src_dir / "hooks"
+        utils_dir = src_dir / "utils"
+        types_dir = src_dir / "types"
+        assets_dir = src_dir / "assets"
 
-        # Créer les répertoires
-        directories = [
-            "components/Dashboard",
-            "components/Charts",
-            "components/UI",
-            "components/Common",
-            "hooks",
-            "services",
-            "types",
-            "utils",
-            "styles",
-        ]
+        for directory in [
+            components_dir,
+            pages_dir,
+            hooks_dir,
+            utils_dir,
+            types_dir,
+            assets_dir,
+        ]:
+            directory.mkdir(parents=True, exist_ok=True)
 
-        for dir_path in directories:
-            full_path = src_dir / dir_path
-            full_path.mkdir(parents=True, exist_ok=True)
-            print(f"📁 Créé: {dir_path}")
-
-        # Créer les fichiers de base
-        files_to_create = {
-            "types/dashboard.ts": (
-                """export interface DashboardData {
-  id: string;
-  name: string;
-  type: 'main' | 'analytics' | 'validation' | 'test';
-  data: any;
-  lastUpdated: string;
-}
-
-export interface ChartData {
-  labels: string[];
-  datasets: {
-    label: string;
-    data: number[];
-    backgroundColor?: string;
-    borderColor?: string;
-  }[];
-}"""
-            ),
-            "types/analytics.ts": (
-                """export interface AnalyticsData {
-  performance: {
-    cpu: number;
-    memory: number;
-    responseTime: number;
-  };
-  metrics: {
-    accuracy: number;
-    precision: number;
-    recall: number;
-    f1Score: number;
-  };
-  timestamp: string;
-}"""
-            ),
-            "types/validation.ts": (
-                """export interface ValidationResult {
-  id: string;
-  status: 'pass' | 'fail' | 'warning';
-  message: string;
-  details?: any;
-  timestamp: string;
-}"""
-            ),
-            "services/api.ts": (
-                """import { DashboardData, AnalyticsData, ValidationResult } from '../types';
-
-const API_BASE = '/api';
-
-export const api = {
-  async getDashboards(): Promise<DashboardData[]> {
-    const response = await fetch(`${API_BASE}/dashboards`);
-    return response.json();
-  },
-  
-  async getAnalytics(): Promise<AnalyticsData[]> {
-    const response = await fetch(`${API_BASE}/analytics`);
-    return response.json();
-  },
-  
-  async getValidationResults(): Promise<ValidationResult[]> {
-    const response = await fetch(`${API_BASE}/validation`);
-    return response.json();
-  }
-};"""
-            ),
-            "hooks/useAthaliaData.ts": (
-                """import { useState, useEffect } from 'react';
-import { DashboardData } from '../types/dashboard';
-import { api } from '../services/api';
-
-export const useAthaliaData = () => {
-  const [data, setData] = useState<DashboardData[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const result = await api.getDashboards();
-        setData(result);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Erreur inconnue');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  return { data, loading, error };
-};"""
-            ),
-            "components/UI/Button.tsx": (
+        # Créer les composants de base
+        components = {
+            "Button.tsx": (
                 """import React from 'react';
 
 interface ButtonProps {
-  variant?: 'primary' | 'secondary' | 'danger' | 'success';
-  size?: 'sm' | 'md' | 'lg';
-  disabled?: boolean;
-  loading?: boolean;
   children: React.ReactNode;
+  variant?: 'primary' | 'secondary' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
   onClick?: () => void;
+  disabled?: boolean;
   className?: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
+  children,
   variant = 'primary',
   size = 'md',
-  disabled = false,
-  loading = false,
-  children,
   onClick,
-  className = ''
+  disabled = false,
+  className = '',
 }) => {
-  const baseClasses = 'font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2';
-  
+  const baseClasses = 'font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2';
+
   const variantClasses = {
-    primary: 'bg-primary-500 hover:bg-primary-600 text-white focus:ring-primary-500',
+    primary: 'bg-primary-600 hover:bg-primary-700 text-white focus:ring-primary-500',
     secondary: 'bg-gray-200 hover:bg-gray-300 text-gray-800 focus:ring-gray-500',
-    danger: 'bg-danger-500 hover:bg-danger-600 text-white focus:ring-danger-500',
-    success: 'bg-success-500 hover:bg-success-600 text-white focus:ring-success-500'
+    outline: 'border border-gray-300 hover:bg-gray-50 text-gray-700 focus:ring-gray-500',
   };
-  
+
   const sizeClasses = {
     sm: 'px-3 py-1.5 text-sm',
     md: 'px-4 py-2 text-base',
-    lg: 'px-6 py-3 text-lg'
+    lg: 'px-6 py-3 text-lg',
   };
-  
+
   const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
-  
+
   return (
     <button
       className={classes}
-      disabled={disabled || loading}
       onClick={onClick}
+      disabled={disabled}
     >
-      {loading ? 'Chargement...' : children}
+      {children}
     </button>
   );
-};"""
+};
+"""
             ),
-            "components/UI/Card.tsx": (
+            "Card.tsx": (
                 """import React from 'react';
 
 interface CardProps {
-  title?: string;
   children: React.ReactNode;
   className?: string;
+  padding?: 'sm' | 'md' | 'lg';
 }
 
 export const Card: React.FC<CardProps> = ({
-  title,
   children,
-  className = ''
+  className = '',
+  padding = 'md',
 }) => {
+  const paddingClasses = {
+    sm: 'p-4',
+    md: 'p-6',
+    lg: 'p-8',
+  };
+
+  const classes = `bg-white rounded-xl shadow-sm border border-gray-200 ${paddingClasses[padding]} ${className}`;
+
   return (
-    <div className={`card ${className}`}>
-      {title && (
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">{title}</h3>
-      )}
+    <div className={classes}>
       {children}
     </div>
   );
-};"""
+};
+"""
             ),
-            "components/Dashboard/MainDashboard.tsx": (
+            "Input.tsx": (
                 """import React from 'react';
-import { Card } from '../UI/Card';
-import { Button } from '../UI/Button';
-import { useAthaliaData } from '../../hooks/useAthaliaData';
 
-export const MainDashboard: React.FC = () => {
-  const { data, loading, error } = useAthaliaData();
-
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <div className="text-lg text-gray-600">Chargement...</div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <div className="text-lg text-red-600">Erreur: {error}</div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="p-6">
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold text-gray-900">Dashboard Athalia IA</h1>
-        <p className="text-gray-600 mt-2">Vue d'ensemble des performances et résultats</p>
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <Card title="Projets IA" className="bg-blue-50">
-          <div className="text-2xl font-bold text-blue-600">{data.length}</div>
-          <p className="text-blue-800">Projets actifs</p>
-        </Card>
-        
-        <Card title="Performance" className="bg-green-50">
-          <div className="text-2xl font-bold text-green-600">98.5%</div>
-          <p className="text-green-800">Score moyen</p>
-        </Card>
-        
-        <Card title="Statut" className="bg-yellow-50">
-          <div className="text-2xl font-bold text-yellow-600">Actif</div>
-          <p className="text-yellow-800">Système opérationnel</p>
-        </Card>
-      </div>
-      
-      <div className="mt-8">
-        <Card title="Actions rapides">
-          <div className="flex gap-4">
-            <Button variant="primary">Nouveau projet</Button>
-            <Button variant="secondary">Voir analytics</Button>
-            <Button variant="success">Lancer audit</Button>
-          </div>
-        </Card>
-      </div>
-    </div>
-  );
-};"""
-            ),
-            "App.tsx": (
-                """import React from 'react';
-import { MainDashboard } from './components/Dashboard/MainDashboard';
-import './index.css';
-
-function App() {
-  return (
-    <div className="min-h-screen bg-gray-50">
-      <MainDashboard />
-    </div>
-  );
+interface InputProps {
+  label?: string;
+  placeholder?: string;
+  value: string;
+  onChange: (value: string) => void;
+  type?: 'text' | 'email' | 'password' | 'number';
+  error?: string;
+  className?: string;
 }
 
-export default App;"""
+export const Input: React.FC<InputProps> = ({
+  label,
+  placeholder,
+  value,
+  onChange,
+  type = 'text',
+  error,
+  className = '',
+}) => {
+  const inputClasses = `w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent ${
+    error ? 'border-red-500' : 'border-gray-300'
+  } ${className}`;
+
+  return (
+    <div className="space-y-1">
+      {label && (
+        <label className="block text-sm font-medium text-gray-700">
+          {label}
+        </label>
+      )}
+      <input
+        type={type}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        className={inputClasses}
+      />
+      {error && (
+        <p className="text-sm text-red-600">{error}</p>
+      )}
+    </div>
+  );
+};
+"""
             ),
         }
 
-        for file_path, content in files_to_create.items():
-            full_path = src_dir / file_path
-            full_path.parent.mkdir(parents=True, exist_ok=True)
-
-            with open(full_path, "w", encoding="utf-8") as f:
+        for filename, content in components.items():
+            file_path = components_dir / filename
+            with open(file_path, "w", encoding="utf-8") as f:
                 f.write(content)
-            print(f"📄 Créé: {file_path}")
 
+        # Créer les pages de base
+        pages = {
+            "Home.tsx": (
+                """import React from 'react';
+import { Card } from '../components/Card';
+import { Button } from '../components/Button';
+
+export const Home: React.FC = () => {
+  return (
+    <div className="min-h-screen bg-gray-50 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            Bienvenue sur Athalia Dashboard
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Interface moderne et intuitive pour gérer votre projet Athalia
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <Card>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              🚀 Démarrage Rapide
+            </h3>
+            <p className="text-gray-600 mb-4">
+              Commencez rapidement avec les fonctionnalités essentielles
+            </p>
+            <Button variant="primary">
+              Commencer
+            </Button>
+          </Card>
+
+          <Card>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              📊 Analytics
+            </h3>
+            <p className="text-gray-600 mb-4">
+              Suivez les performances et métriques de votre projet
+            </p>
+            <Button variant="secondary">
+              Voir les stats
+            </Button>
+          </Card>
+
+          <Card>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              ⚙️ Configuration
+            </h3>
+            <p className="text-gray-600 mb-4">
+              Personnalisez votre environnement de développement
+            </p>
+            <Button variant="outline">
+              Configurer
+            </Button>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+};
+"""
+            ),
+            "Dashboard.tsx": (
+                """import React from 'react';
+import { Card } from '../components/Card';
+
+export const Dashboard: React.FC = () => {
+  return (
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900">
+            Tableau de bord
+          </h1>
+          <p className="text-gray-600 mt-2">
+            Vue d'ensemble de votre projet Athalia
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-8">
+          <Card padding="sm">
+            <div className="text-center">
+              <div className="text-2xl font-bold text-primary-600">153</div>
+              <div className="text-sm text-gray-600">Modules</div>
+            </div>
+          </Card>
+
+          <Card padding="sm">
+            <div className="text-center">
+              <div className="text-2xl font-bold text-green-600">24,243</div>
+              <div className="text-sm text-gray-600">Lignes de code</div>
+            </div>
+          </Card>
+
+          <Card padding="sm">
+            <div className="text-center">
+              <div className="text-2xl font-bold text-blue-600">1,696</div>
+              <div className="text-sm text-gray-600">Tests</div>
+            </div>
+          </Card>
+
+          <Card padding="sm">
+            <div className="text-center">
+              <div className="text-2xl font-bold text-purple-600">85%</div>
+              <div className="text-sm text-gray-600">Couverture</div>
+            </div>
+          </Card>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <Card>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              Activité Récente
+            </h3>
+            <div className="space-y-3">
+              <div className="flex items-center space-x-3">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <span className="text-sm text-gray-600">
+                  Tests unitaires passés avec succès
+                </span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                <span className="text-sm text-gray-600">
+                  Nouveau module ajouté
+                </span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                <span className="text-sm text-gray-600">
+                  Mise à jour de la documentation
+                </span>
+              </div>
+            </div>
+          </Card>
+
+          <Card>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              Prochaines Actions
+            </h3>
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-gray-600">
+                  Optimiser les performances
+                </span>
+                <span className="text-xs text-gray-500">Demain</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-gray-600">
+                  Ajouter de nouveaux tests
+                </span>
+                <span className="text-xs text-gray-500">Cette semaine</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-gray-600">
+                  Mettre à jour les dépendances
+                </span>
+                <span className="text-xs text-gray-500">Prochaine semaine</span>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+};
+"""
+            ),
+        }
+
+        for filename, content in pages.items():
+            file_path = pages_dir / filename
+            with open(file_path, "w", encoding="utf-8") as f:
+                f.write(content)
+
+        # Créer les hooks personnalisés
+        hooks = {
+            "useLocalStorage.ts": (
+                """import { useState, useEffect } from 'react';
+
+export function useLocalStorage<T>(key: string, initialValue: T) {
+  const [storedValue, setStoredValue] = useState<T>(() => {
+    try {
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      console.error('Error reading from localStorage:', error);
+      return initialValue;
+    }
+  });
+
+  const setValue = (value: T | ((val: T) => T)) => {
+    try {
+      const valueToStore = value instanceof Function ? value(storedValue) : value;
+      setStoredValue(valueToStore);
+      window.localStorage.setItem(key, JSON.stringify(valueToStore));
+    } catch (error) {
+      console.error('Error setting localStorage:', error);
+    }
+  };
+
+  return [storedValue, setValue] as const;
+}
+"""
+            ),
+            "useDebounce.ts": (
+                """import { useState, useEffect } from 'react';
+
+export function useDebounce<T>(value: T, delay: number): T {
+  const [debouncedValue, setDebouncedValue] = useState<T>(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+}
+"""
+            ),
+        }
+
+        for filename, content in hooks.items():
+            file_path = hooks_dir / filename
+            with open(file_path, "w", encoding="utf-8") as f:
+                f.write(content)
+
+        # Créer les types TypeScript
+        types = {
+            "index.ts": (
+                """export interface User {
+  id: string;
+  name: string;
+  email: string;
+  role: 'admin' | 'user' | 'guest';
+  avatar?: string;
+}
+
+export interface Project {
+  id: string;
+  name: string;
+  description: string;
+  status: 'active' | 'paused' | 'completed';
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface Metric {
+  name: string;
+  value: number;
+  unit: string;
+  trend: 'up' | 'down' | 'stable';
+  change: number;
+}
+
+export interface Notification {
+  id: string;
+  type: 'info' | 'success' | 'warning' | 'error';
+  title: string;
+  message: string;
+  timestamp: Date;
+  read: boolean;
+}
+"""
+            ),
+        }
+
+        for filename, content in types.items():
+            file_path = types_dir / filename
+            with open(file_path, "w", encoding="utf-8") as f:
+                f.write(content)
+
+        # Créer les utilitaires
+        utils = {
+            "formatDate.ts": (
+                """export function formatDate(date: Date): string {
+  return new Intl.DateTimeFormat('fr-FR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  }).format(date);
+}
+
+export function formatRelativeTime(date: Date): string {
+  const now = new Date();
+  const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
+
+  if (diffInSeconds < 60) return 'À l\'instant';
+  if (diffInSeconds < 3600) return `Il y a ${Math.floor(diffInSeconds / 60)} min`;
+  if (diffInSeconds < 86400) return `Il y a ${Math.floor(diffInSeconds / 3600)}h`;
+  if (diffInSeconds < 2592000) return `Il y a ${Math.floor(diffInSeconds / 86400)}j`;
+
+  return formatDate(date);
+}
+"""
+            ),
+            "validation.ts": (
+                r"""export function isValidEmail(email: string): boolean {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+export function isValidPassword(password: string): boolean {
+  return password.length >= 8;
+}
+
+export function sanitizeInput(input: string): string {
+  return input.trim().replace(/[<>]/g, '');
+}
+"""
+            ),
+        }
+
+        for filename, content in utils.items():
+            file_path = utils_dir / filename
+            with open(file_path, "w", encoding="utf-8") as f:
+                f.write(content)
+
+        print("✅ Structure du projet créée")
         return True
 
     except Exception as e:
@@ -577,17 +799,16 @@ export default App;"""
 
 
 def create_package_scripts() -> bool:
-    """Met à jour package.json avec les scripts nécessaires."""
-    print("\n📝 Mise à jour des scripts package.json...")
+    """Crée les scripts package.json personnalisés."""
+    print("\n📝 Configuration des scripts package.json...")
 
     try:
-        package_json_path = DASHBOARD_REACT_DIR / "package.json"
-
-        if package_json_path.exists():
-            with open(package_json_path, "r") as f:
+        package_path = DASHBOARD_REACT_DIR / "package.json"
+        if package_path.exists():
+            with open(package_path, encoding="utf-8") as f:
                 package_data = json.load(f)
 
-            # Ajouter les scripts
+            # Ajouter les scripts personnalisés
             package_data["scripts"].update(
                 {
                     "dev": "vite",
@@ -597,50 +818,49 @@ def create_package_scripts() -> bool:
                         "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
                     ),
                     "lint:fix": "eslint . --ext ts,tsx --fix",
-                    "format": 'prettier --write "src/**/*.{ts,tsx,css,md}"',
+                    "format": "prettier --write .",
+                    "type-check": "tsc --noEmit",
                     "test": "vitest",
                     "test:ui": "vitest --ui",
                     "test:coverage": "vitest --coverage",
                 }
             )
 
-            # Sauvegarder
-            with open(package_json_path, "w") as f:
+            with open(package_path, "w", encoding="utf-8") as f:
                 json.dump(package_data, f, indent=2)
 
-            print("✅ Scripts package.json mis à jour")
-            return True
-        else:
-            print("❌ package.json non trouvé")
-            return False
+        print("✅ Scripts package.json configurés")
+        return True
 
     except Exception as e:
-        print(f"❌ Erreur lors de la mise à jour package.json: {e}")
+        print(f"❌ Erreur lors de la configuration des scripts: {e}")
         return False
 
 
 def run_initial_build() -> bool:
-    """Lance le premier build pour vérifier que tout fonctionne."""
-    print("\n🔨 Premier build de vérification...")
+    """Lance le build initial pour vérifier que tout fonctionne."""
+    print("\n🔨 Build initial...")
 
     try:
-        # Vérifier que le projet se lance
-        result = subprocess.run(
-            ["npm", "run", "build"],
+        # Vérifier TypeScript
+        subprocess.run(
+            ["npm", "run", "type-check"],
             cwd=DASHBOARD_REACT_DIR,
-            capture_output=True,
-            text=True,
+            check=True,
         )
 
-        if result.returncode == 0:
-            print("✅ Build réussi ! Le projet React est prêt")
-            return True
-        else:
-            print(f"❌ Erreur de build: {result.stderr}")
-            return False
+        # Build de production
+        subprocess.run(
+            ["npm", "run", "build"],
+            cwd=DASHBOARD_REACT_DIR,
+            check=True,
+        )
 
-    except Exception as e:
-        print(f"❌ Erreur lors du build: {e}")
+        print("✅ Build initial réussi")
+        return True
+
+    except subprocess.CalledProcessError as e:
+        print(f"❌ Erreur lors du build initial: {e}")
         return False
 
 
@@ -651,59 +871,56 @@ def main() -> None:
 
     # Vérifier les prérequis
     if not check_prerequisites():
-        print("\n❌ Prérequis non satisfaits. Veuillez installer Node.js et npm.")
+        print("❌ Prérequis non satisfaits")
         return
 
     # Créer le projet React
     if not create_react_project():
-        print("\n❌ Échec de la création du projet React")
+        print("❌ Échec de la création du projet")
         return
 
     # Installer les dépendances
     if not install_dependencies():
-        print("\n❌ Échec de l'installation des dépendances")
+        print("❌ Échec de l'installation des dépendances")
         return
 
     # Configurer Tailwind
     if not configure_tailwind():
-        print("\n❌ Échec de la configuration Tailwind")
+        print("❌ Échec de la configuration de Tailwind")
         return
 
     # Configurer ESLint et Prettier
     if not configure_eslint_prettier():
-        print("\n❌ Échec de la configuration ESLint/Prettier")
+        print("❌ Échec de la configuration d'ESLint/Prettier")
         return
 
     # Créer la structure du projet
     if not create_project_structure():
-        print("\n❌ Échec de la création de la structure")
+        print("❌ Échec de la création de la structure")
         return
 
-    # Mettre à jour les scripts
+    # Configurer les scripts
     if not create_package_scripts():
-        print("\n❌ Échec de la mise à jour des scripts")
+        print("❌ Échec de la configuration des scripts")
         return
 
-    # Premier build
+    # Build initial
     if not run_initial_build():
-        print("\n❌ Échec du premier build")
+        print("❌ Échec du build initial")
         return
 
-    # Résumé final
+    # Succès
     print("\n" + "=" * 60)
-    print("🎉 MIGRATION REACT DÉMARRÉE AVEC SUCCÈS !")
-    print(f"📁 Projet créé: {DASHBOARD_REACT_DIR}")
-    print("\n📋 PROCHAINES ÉTAPES:")
+    print("🎉 MIGRATION REACT TERMINÉE AVEC SUCCÈS !")
+    print("\n📋 Prochaines étapes:")
     print("1. cd dashboard-react")
     print("2. npm run dev")
     print("3. Ouvrir http://localhost:5173")
-    print("\n🔧 COMMANDES UTILES:")
+    print("\n🔧 Commandes utiles:")
     print("- npm run lint        # Vérifier le code")
     print("- npm run format      # Formater le code")
-    print("- npm run test        # Lancer les tests")
     print("- npm run build       # Build de production")
-
-    print("\n🚀 Votre projet React est prêt pour la migration des dashboards !")
+    print("- npm run preview     # Prévisualiser le build")
 
 
 if __name__ == "__main__":

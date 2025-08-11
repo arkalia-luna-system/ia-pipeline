@@ -20,7 +20,7 @@ from athalia_core.auto_documenter import AutoDocumenter
 class TestAutoDocumenterComplete:
     """Tests complets pour AutoDocumenter."""
 
-    def setup_method(self):
+    def setup_method(self) -> None:
         """Configuration avant chaque test."""
         self.temp_dir = tempfile.mkdtemp()
         self.project_path = Path(self.temp_dir) / "test_project"
@@ -42,41 +42,41 @@ class TestAutoDocumenterComplete:
 
 class Calculator:
     """Calculatrice basique.
-    
+
     Cette classe fournit des opérations mathématiques de base.
-    
+
     Attributes:
         precision (int): Nombre de décimales pour les résultats.
-        
+
     Example:
         >>> calc = Calculator(precision=2)
         >>> calc.add(1, 2)
         3.0
     """
-    
+
     def __init__(self, precision: int = 2):
         """Initialise la calculatrice.
-        
+
         Args:
             precision: Nombre de décimales (défaut: 2).
         """
         self.precision = precision
-    
+
     def add(self, a: float, b: float) -> float:
         """Addition de deux nombres.
-        
+
         Args:
             a: Premier nombre.
             b: Deuxième nombre.
-            
+
         Returns:
             La somme des deux nombres.
-            
+
         Raises:
             TypeError: Si les arguments ne sont pas numériques.
         """
         return round(a + b, self.precision)
-    
+
     def _private_method(self):
         """Méthode privée non documentée publiquement."""
         return "private"
@@ -131,11 +131,11 @@ result = calc.add(1, 2)
 
         self.documenter = AutoDocumenter(str(self.project_path), lang="en")
 
-    def teardown_method(self):
+    def teardown_method(self) -> None:
         """Nettoyage après chaque test."""
         shutil.rmtree(self.temp_dir, ignore_errors=True)
 
-    def test_documenter_initialization(self):
+    def test_documenter_initialization(self) -> None:
         """Test initialisation du documenteur."""
         assert self.documenter.project_path == self.project_path
         assert self.documenter.lang == "en"
@@ -143,12 +143,12 @@ result = calc.add(1, 2)
         assert hasattr(self.documenter, "doc_history")
         assert isinstance(self.documenter.doc_config, dict)
 
-    def test_documenter_initialization_french(self):
+    def test_documenter_initialization_french(self) -> None:
         """Test initialisation avec langue française."""
         french_documenter = AutoDocumenter(str(self.project_path), lang="fr")
         assert french_documenter.lang == "fr"
 
-    def test_load_documentation_config_existing(self):
+    def test_load_documentation_config_existing(self) -> None:
         """Test chargement configuration existante."""
         config = self.documenter.load_documentation_config()
 
@@ -158,7 +158,7 @@ result = calc.add(1, 2)
         assert config["include_private"] is False
         assert "md" in config["output_formats"]
 
-    def test_load_documentation_config_missing(self):
+    def test_load_documentation_config_missing(self) -> None:
         """Test chargement configuration manquante."""
         # Supprimer fichier config
         config_file = self.project_path / ".doc_config.json"
@@ -173,7 +173,7 @@ result = calc.add(1, 2)
         assert "output_formats" in config
         assert len(config) > 0
 
-    def test_scan_project_files(self):
+    def test_scan_project_files(self) -> None:
         """Test scan fichiers du projet."""
         files = self.documenter.scan_project_files()
 
@@ -188,7 +188,7 @@ result = calc.add(1, 2)
         cache_files = [f for f in files if "__pycache__" in str(f)]
         assert len(cache_files) == 0
 
-    def test_analyze_python_file_documented(self):
+    def test_analyze_python_file_documented(self) -> None:
         """Test analyse fichier Python bien documenté."""
         calc_file = self.project_path / "src" / "calculator.py"
         analysis = self.documenter.analyze_python_file(calc_file)
@@ -350,7 +350,7 @@ result = calc.add(1, 2)
         assert isinstance(templates, dict)
         assert "markdown" in templates or "html" in templates
 
-        for template_name, template_content in templates.items():
+        for _template_name, template_content in templates.items():
             assert isinstance(template_content, str)
             assert len(template_content) > 0
 
@@ -564,7 +564,7 @@ result = calc.add(1, 2)
 
 class Class{i}:
     """Class {i} documentation."""
-    
+
     def method_{i}(self):
         """Method {i} documentation."""
         return {i}
@@ -654,25 +654,25 @@ Ce module contient la logique principale de l'application.
 
 class MainApp:
     """Application principale.
-    
+
     Attributes:
         version (str): Version de l'application.
         debug (bool): Mode debug activé.
     """
-    
+
     def __init__(self, version: str = "1.0", debug: bool = False):
         """Initialise l'application.
-        
+
         Args:
             version: Version de l'application.
             debug: Active le mode debug.
         """
         self.version = version
         self.debug = debug
-    
+
     def run(self):
         """Lance l'application.
-        
+
         Returns:
             bool: True si succès, False sinon.
         """
@@ -693,7 +693,7 @@ def helper_function(data):
 
 class UtilityClass:
     """Classe utilitaire."""
-    
+
     def process(self, item):
         return item * 2
 '''
@@ -770,17 +770,17 @@ class TestAutoDocumenterPerformance:
 
 class Class{i}_{j}:
     """Class {i}_{j} documentation."""
-    
+
     def __init__(self):
         """Initialisation."""
         self.value = {i} * {j}
-    
+
     def method_{j}(self, param):
         """Method {j} documentation.
-        
+
         Args:
             param: Parameter description.
-            
+
         Returns:
             Processed value.
         """
