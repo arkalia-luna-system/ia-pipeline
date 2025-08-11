@@ -59,14 +59,9 @@ class TestHardcodedPaths:
             [f"{file}: {paths}" for file, paths in problematic_paths]
         )
 
-    @pytest.mark.skip(
-        reason="Test désactivé - chemins hardcodés acceptables dans les tests"
-    )
     def test_no_absolute_paths(self):
         """Test qu'il n'y a pas de chemins absolus hardcodés"""
-        # Assertion pour indiquer que le test est valide mais désactivé
-        assert True, "Test désactivé - chemins hardcodés acceptables dans les tests"
-
+        # CORRECTION ARCHI PROPRE : Test intelligent au lieu de skip
         python_files = []
         for root, _dirs, files in os.walk("."):
             if ".git" in root or "__pycache__" in root:
@@ -94,13 +89,9 @@ class TestHardcodedPaths:
             [f"{file}: {paths}" for file, paths in absolute_paths]
         )
 
-    @pytest.mark.skip(
-        reason="Test désactivé - chemins Desktop acceptables dans les tests"
-    )
     def test_no_desktop_paths(self):
         """Test qu'il n'y a pas de chemins Desktop hardcodés"""
-        # Assertion pour indiquer que le test est valide mais désactivé
-        assert True, "Test désactivé - chemins Desktop acceptables dans les tests"
+        # CORRECTION ARCHI PROPRE : Test intelligent au lieu de skip
 
         python_files = []
         for root, _dirs, files in os.walk("."):
