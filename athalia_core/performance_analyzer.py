@@ -10,11 +10,9 @@ import cProfile
 import io
 import logging
 import pstats
-import sqlite3
 import time
 from collections.abc import Callable
 from dataclasses import dataclass
-from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -200,7 +198,7 @@ class PerformanceAnalyzer:
 
     def analyze_io_performance(self) -> dict[str, Any]:
         """Analyse les performances I/O"""
-        io_metrics = {
+        io_metrics: dict[str, Any] = {
             "read_operations": 0,
             "write_operations": 0,
             "file_access_count": 0,
@@ -260,12 +258,12 @@ class PerformanceAnalyzer:
         """Compare les performances de deux fonctions"""
         # Profiler la première fonction
         start_time = time.time()
-        result1 = func1(*args, **kwargs)
+        func1(*args, **kwargs)
         time1 = time.time() - start_time
 
         # Profiler la deuxième fonction
         start_time = time.time()
-        result2 = func2(*args, **kwargs)
+        func2(*args, **kwargs)
         time2 = time.time() - start_time
 
         return {
@@ -432,7 +430,7 @@ class PerformanceAnalyzer:
 
     def analyze_cache_performance(self) -> dict[str, Any]:
         """Analyse les performances du cache"""
-        cache_metrics = {
+        cache_metrics: dict[str, Any] = {
             "cache_hits": 0,
             "cache_misses": 0,
             "cache_size": 0,
@@ -462,7 +460,7 @@ class PerformanceAnalyzer:
 
     def analyze_database_performance(self) -> dict[str, Any]:
         """Analyse les performances de base de données"""
-        db_metrics = {
+        db_metrics: dict[str, Any] = {
             "query_count": 0,
             "slow_queries": 0,
             "connection_pool_size": 0,
@@ -493,9 +491,6 @@ class PerformanceAnalyzer:
         self, func: Callable, *args: Any, **kwargs: Any
     ) -> dict[str, Any]:
         """Profile une fonction avec cProfile"""
-        import cProfile
-        import pstats
-        import io
 
         # Créer un profiler
         pr = cProfile.Profile()
@@ -541,7 +536,7 @@ class PerformanceAnalyzer:
         self, file_path: str, function_name: str, input_sizes: list[int]
     ) -> dict[str, Any]:
         """Analyse la mise à l'échelle des performances"""
-        scaling_data = {}
+        scaling_data: dict[str, Any] = {}
 
         for size in input_sizes:
             # Simulation de l'analyse de mise à l'échelle
@@ -555,7 +550,7 @@ class PerformanceAnalyzer:
 
     def analyze_concurrency_performance(self) -> dict[str, Any]:
         """Analyse les performances de concurrence"""
-        concurrency_metrics = {
+        concurrency_metrics: dict[str, Any] = {
             "thread_count": 0,
             "process_count": 0,
             "async_functions": 0,
@@ -571,11 +566,17 @@ class PerformanceAnalyzer:
 
                     # Détecter les patterns de concurrence
                     if "threading" in content:
-                        concurrency_metrics["thread_count"] += 1
+                        concurrency_metrics["thread_count"] = (
+                            int(concurrency_metrics["thread_count"]) + 1
+                        )
                     if "multiprocessing" in content:
-                        concurrency_metrics["process_count"] += 1
+                        concurrency_metrics["process_count"] = (
+                            int(concurrency_metrics["process_count"]) + 1
+                        )
                     if "async def" in content:
-                        concurrency_metrics["async_functions"] += 1
+                        concurrency_metrics["async_functions"] = (
+                            int(concurrency_metrics["async_functions"]) + 1
+                        )
 
                 except Exception:
                     continue
@@ -606,49 +607,60 @@ class PerformanceAnalyzer:
             "monitoring_results": getattr(self, "monitoring_data", []),
         }
 
-    def _calculate_overall_performance_score(self, results: dict[str, Any]) -> float:
-        """Calcule un score de performance global."""
-        scores: list[float] = []
-
-        # Score CPU (0-100)
-        if "cpu_analysis" in results:
-            cpu_score = 100 - (results["cpu_analysis"].get("cpu_usage", 0) * 2)
-            scores.append(max(0, min(100, cpu_score)))
-
-        # Score mémoire (0-100)
-        if "memory_analysis" in results:
-            memory_score = 100 - (results["memory_analysis"].get("memory_usage", 0) * 2)
-            scores.append(max(0, min(100, memory_score)))
-
-        # Score I/O (0-100)
-        if "io_analysis" in results:
-            io_score = 100 - (results["io_analysis"].get("io_wait", 0) * 10)
-            scores.append(max(0, min(100, io_score)))
-
-        # Score des goulots d'étranglement (0-100)
-        if "bottlenecks" in results:
-            bottleneck_count = len(results["bottlenecks"])
-            bottleneck_score = max(0, 100 - (bottleneck_count * 20))
-            scores.append(bottleneck_score)
-
-        return sum(scores) / len(scores) if scores else 0.0
-
     def _get_memory_usage(self) -> float:
         """Obtient l'usage mémoire actuel"""
         try:
-            import psutil
+            import psutil  # type: ignore
 
             process = psutil.Process()
-            return process.memory_info().rss / 1024 / 1024  # MB
+            return float(process.memory_info().rss / 1024 / 1024)  # MB
         except ImportError:
             return 0.0
 
+    def _calculate_overall_performance_score(self, results: dict[str, Any]) -> float:
+        """Calcule le score global de performance basé sur les résultats d'analyse"""
+        try:
+            # Extraire les scores des différentes analyses
+            scores: list[float] = []
+
+            # Score CPU
+            if "cpu_analysis" in results and isinstance(results["cpu_analysis"], dict):
+                cpu_score = results["cpu_analysis"].get("score", 0)
+                if isinstance(cpu_score, int | float):
+                    scores.append(float(cpu_score))
+
+            # Score mémoire
+            if "memory_analysis" in results and isinstance(
+                results["memory_analysis"], dict
+            ):
+                memory_score = results["memory_analysis"].get("score", 0)
+                if isinstance(memory_score, int | float):
+                    scores.append(float(memory_score))
+
+            # Score I/O
+            if "io_analysis" in results and isinstance(results["io_analysis"], dict):
+                io_score = results["io_analysis"].get("score", 0)
+                if isinstance(io_score, int | float):
+                    scores.append(float(io_score))
+
+            # Calculer la moyenne
+            if scores:
+                return sum(scores) / len(scores)
+            else:
+                return 0.0
+
+        except Exception:
+            return 0.0
+
     def _init_database(self) -> None:
-        """Initialiser la base de données de performance"""
-        with sqlite3.connect(self.db_path) as conn:
+        """Initialise la base de données SQLite"""
+        try:
+            import sqlite3
+
+            conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
 
-            # Table des métriques de performance
+            # Créer la table des métriques de performance
             cursor.execute(
                 """
                 CREATE TABLE IF NOT EXISTS performance_metrics (
@@ -659,12 +671,13 @@ class PerformanceAnalyzer:
                     location TEXT NOT NULL,
                     threshold REAL NOT NULL,
                     status TEXT NOT NULL,
-                    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+                    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    report_data TEXT
                 )
                 """
             )
 
-            # Table des problèmes de performance
+            # Créer la table des problèmes de performance
             cursor.execute(
                 """
                 CREATE TABLE IF NOT EXISTS performance_issues (
@@ -675,84 +688,86 @@ class PerformanceAnalyzer:
                     impact TEXT NOT NULL,
                     suggestion TEXT NOT NULL,
                     estimated_improvement REAL NOT NULL,
-                    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+                    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    report_data TEXT
                 )
                 """
             )
 
-            # Table des rapports de performance
+            # Créer la table des rapports de performance
             cursor.execute(
                 """
                 CREATE TABLE IF NOT EXISTS performance_reports (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     overall_score REAL NOT NULL,
+                    metrics_count INTEGER NOT NULL,
+                    issues_count INTEGER NOT NULL,
                     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    report_data TEXT NOT NULL
+                    report_data TEXT
                 )
                 """
             )
 
             conn.commit()
+            conn.close()
+
+        except Exception as e:
+            logging.error(f"Erreur lors de l'initialisation de la base de données: {e}")
 
     def analyze_project_performance(
         self, project_path: str | None = None
     ) -> PerformanceReport:
-        """Analyse les performances d'un projet complet"""
+        """Analyse complète des performances d'un projet"""
         if project_path:
             self.root_path = Path(project_path)
 
-        logger.info(f"🔍 Analyse des performances du projet: {self.root_path}")
+        # Initialiser l'analyseur AST
+        from .ast_analyzer import ASTAnalyzer
 
-        all_metrics = []
-        all_issues = []
-        all_recommendations = []
-        all_optimization_opportunities = []
+        ast_analyzer = ASTAnalyzer()
+        all_metrics: list[PerformanceMetric] = []
+        all_issues: list[PerformanceIssue] = []
 
-        # Analyser tous les fichiers Python du projet
+        # Analyser tous les fichiers Python
         for py_file in self.root_path.rglob("*.py"):
             if py_file.is_file():
                 try:
                     # Analyser le fichier avec l'analyseur AST
-                    file_analysis = self.ast_analyzer.analyze_file(str(py_file))
+                    file_analysis = ast_analyzer.analyze_file(py_file)
+                    if file_analysis:
+                        # Générer les métriques de performance
+                        file_metrics = self._analyze_file_performance(file_analysis)
+                        all_metrics.extend(file_metrics)
 
-                    # Analyser les performances du fichier
-                    file_metrics = self._analyze_file_performance(file_analysis)
-                    all_metrics.extend(file_metrics)
-
-                    # Détecter les problèmes de performance
-                    file_issues = self._detect_performance_issues(file_analysis)
-                    all_issues.extend(file_issues)
+                        # Détecter les problèmes de performance
+                        file_issues = self._detect_performance_issues(file_analysis)
+                        all_issues.extend(file_issues)
 
                 except Exception as e:
-                    logger.warning(f"Erreur lors de l'analyse de {py_file}: {e}")
-                    continue
-
-        # Générer les recommandations
-        all_recommendations = self._generate_performance_recommendations(all_issues)
-
-        # Identifier les opportunités d'optimisation
-        all_optimization_opportunities = self._identify_optimization_opportunities(
-            all_issues
-        )
+                    logging.warning(f"Erreur lors de l'analyse de {py_file}: {e}")
 
         # Calculer le score global
         overall_score = self._calculate_overall_score(all_metrics)
 
-        # Créer le rapport
+        # Générer les recommandations
+        recommendations = self._generate_performance_recommendations(all_issues)
+
+        # Identifier les opportunités d'optimisation
+        optimization_opportunities = self._identify_optimization_opportunities(
+            all_issues
+        )
+
+        # Créer le rapport de performance
         report = PerformanceReport(
             overall_score=overall_score,
             metrics=all_metrics,
             issues=all_issues,
-            recommendations=all_recommendations,
-            optimization_opportunities=all_optimization_opportunities,
+            recommendations=recommendations,
+            optimization_opportunities=optimization_opportunities,
         )
 
         # Sauvegarder le rapport
         self._save_performance_report(report)
-
-        logger.info(
-            f"✅ Analyse des performances terminée. Score: {overall_score:.2f}/100"
-        )
 
         return report
 
@@ -762,57 +777,51 @@ class PerformanceAnalyzer:
         """Analyse les performances d'un fichier spécifique"""
         metrics = []
 
-        # Métrique de complexité cyclomatique
+        # Métrique de complexité
         complexity_metric = PerformanceMetric(
             metric_type="complexity",
-            value=file_analysis.complexity,
-            unit="complexity_score",
-            location=file_analysis.file_path,
-            threshold=self.thresholds["complexity"],
+            value=float(file_analysis.complexity_score),
+            unit="score",
+            location=str(file_analysis.file_path),
+            threshold=5.0,
             status=self._get_metric_status(
-                file_analysis.complexity, self.thresholds["complexity"]
+                file_analysis.complexity_score, 5.0, reverse=True
             ),
         )
         metrics.append(complexity_metric)
 
-        # Métrique de taille des fonctions
-        for func in file_analysis.functions:
-            if func.line_count > self.thresholds["function_size"]:
-                func_metric = PerformanceMetric(
-                    metric_type="function_size",
-                    value=func.line_count,
-                    unit="lines",
-                    location=f"{file_analysis.file_path}:{func.name}",
-                    threshold=self.thresholds["function_size"],
-                    status="warning",
-                )
-                metrics.append(func_metric)
+        # Métrique de taille de fonction
+        if (
+            hasattr(file_analysis, "function_count")
+            and file_analysis.function_count > 0
+        ):
+            avg_function_size = (
+                getattr(file_analysis, "line_count", 100) / file_analysis.function_count
+            )
+            function_size_metric = PerformanceMetric(
+                metric_type="function_size",
+                value=avg_function_size,
+                unit="lines",
+                location=str(file_analysis.file_path),
+                threshold=20.0,
+                status=self._get_metric_status(avg_function_size, 20.0),
+            )
+            metrics.append(function_size_metric)
 
-        # Métrique de taille des classes
-        for cls in file_analysis.classes:
-            if cls.line_count > self.thresholds["class_size"]:
-                class_metric = PerformanceMetric(
-                    metric_type="class_size",
-                    value=cls.line_count,
-                    unit="lines",
-                    location=f"{file_analysis.file_path}:{cls.name}",
-                    threshold=self.thresholds["class_size"],
-                    status="warning",
-                )
-                metrics.append(class_metric)
-
-        # Métrique du nombre d'imports
-        import_metric = PerformanceMetric(
-            metric_type="imports",
-            value=len(file_analysis.imports),
-            unit="imports",
-            location=file_analysis.file_path,
-            threshold=self.thresholds["imports"],
-            status=self._get_metric_status(
-                len(file_analysis.imports), self.thresholds["imports"]
-            ),
-        )
-        metrics.append(import_metric)
+        # Métrique de taille de classe
+        if hasattr(file_analysis, "class_count") and file_analysis.class_count > 0:
+            avg_class_size = (
+                getattr(file_analysis, "line_count", 100) / file_analysis.class_count
+            )
+            class_size_metric = PerformanceMetric(
+                metric_type="class_size",
+                value=avg_class_size,
+                unit="lines",
+                location=str(file_analysis.file_path),
+                threshold=50.0,
+                status=self._get_metric_status(avg_class_size, 50.0),
+            )
+            metrics.append(class_size_metric)
 
         return metrics
 
@@ -823,54 +832,51 @@ class PerformanceAnalyzer:
         issues = []
 
         # Problème de complexité élevée
-        if file_analysis.complexity > self.thresholds["complexity"]:
+        if file_analysis.complexity_score < 5.0:
             complexity_issue = PerformanceIssue(
                 issue_type="high_complexity",
-                location=file_analysis.file_path,
-                description=f"Complexité cyclomatique élevée: {file_analysis.complexity}",
+                location=str(file_analysis.file_path),
+                description=f"Complexité cyclomatique élevée: {file_analysis.complexity_score}",
                 impact="medium",
                 suggestion="Refactoriser le code pour réduire la complexité",
-                estimated_improvement=20.0,
+                estimated_improvement=15.0,
             )
             issues.append(complexity_issue)
 
-        # Problème de fonctions trop longues
-        for func in file_analysis.functions:
-            if func.line_count > self.thresholds["function_size"]:
-                func_issue = PerformanceIssue(
+        # Problème de fonction trop longue
+        if (
+            hasattr(file_analysis, "function_count")
+            and file_analysis.function_count > 0
+        ):
+            avg_function_size = (
+                getattr(file_analysis, "line_count", 100) / file_analysis.function_count
+            )
+            if avg_function_size > 20.0:
+                long_function_issue = PerformanceIssue(
                     issue_type="long_function",
-                    location=f"{file_analysis.file_path}:{func.name}",
-                    description=f"Fonction trop longue: {func.line_count} lignes",
+                    location=str(file_analysis.file_path),
+                    description=f"Fonctions trop longues en moyenne: {avg_function_size:.1f} lignes",
                     impact="low",
-                    suggestion="Diviser la fonction en fonctions plus petites",
-                    estimated_improvement=15.0,
-                )
-                issues.append(func_issue)
-
-        # Problème de classes trop longues
-        for cls in file_analysis.classes:
-            if cls.line_count > self.thresholds["class_size"]:
-                class_issue = PerformanceIssue(
-                    issue_type="long_class",
-                    location=f"{file_analysis.file_path}:{cls.name}",
-                    description=f"Classe trop longue: {cls.line_count} lignes",
-                    impact="low",
-                    suggestion="Diviser la classe en classes plus petites",
+                    suggestion="Diviser les fonctions longues en fonctions plus petites",
                     estimated_improvement=10.0,
                 )
-                issues.append(class_issue)
+                issues.append(long_function_issue)
 
-        # Problème de trop d'imports
-        if len(file_analysis.imports) > self.thresholds["imports"]:
-            import_issue = PerformanceIssue(
-                issue_type="too_many_imports",
-                location=file_analysis.file_path,
-                description=f"Trop d'imports: {len(file_analysis.imports)}",
-                impact="low",
-                suggestion="Consolider les imports et supprimer les inutilisés",
-                estimated_improvement=5.0,
+        # Problème de classe trop longue
+        if hasattr(file_analysis, "class_count") and file_analysis.class_count > 0:
+            avg_class_size = (
+                getattr(file_analysis, "line_count", 100) / file_analysis.class_count
             )
-            issues.append(import_issue)
+            if avg_class_size > 50.0:
+                long_class_issue = PerformanceIssue(
+                    issue_type="long_class",
+                    location=str(file_analysis.file_path),
+                    description=f"Classes trop longues en moyenne: {avg_class_size:.1f} lignes",
+                    impact="low",
+                    suggestion="Diviser les classes longues en classes plus petites",
+                    estimated_improvement=10.0,
+                )
+                issues.append(long_class_issue)
 
         return issues
 
@@ -879,24 +885,24 @@ class PerformanceAnalyzer:
     ) -> str:
         """Détermine le statut d'une métrique basé sur sa valeur et son seuil"""
         if reverse:
-            if value < threshold * 0.7:
+            if value >= threshold:
                 return "good"
-            elif value < threshold:
+            elif value >= threshold * 0.8:
                 return "warning"
             else:
                 return "critical"
         else:
-            if value < threshold * 0.7:
+            if value <= threshold:
                 return "good"
-            elif value < threshold:
+            elif value <= threshold * 1.2:
                 return "warning"
             else:
                 return "critical"
 
     def _calculate_overall_score(self, metrics: list[PerformanceMetric]) -> float:
-        """Calcule le score global de performance"""
+        """Calcule le score global basé sur toutes les métriques"""
         if not metrics:
-            return 100.0
+            return 0.0
 
         total_score = 0.0
         total_weight = 0.0
@@ -908,94 +914,55 @@ class PerformanceAnalyzer:
             total_weight += weight
 
         if total_weight == 0:
-            return 100.0
+            return 0.0
 
-        return round(total_score / total_weight, 2)
+        return total_score / total_weight
 
     def _get_metric_weight(self, metric_type: str) -> float:
         """Retourne le poids d'une métrique pour le calcul du score global"""
         weights = {
-            "complexity": 3.0,
-            "function_size": 2.0,
-            "class_size": 2.0,
-            "imports": 1.0,
-            "nested_depth": 2.0,
-            "loop_complexity": 2.0,
+            "complexity": 0.3,
+            "function_size": 0.2,
+            "class_size": 0.2,
+            "imports": 0.1,
+            "other": 0.2,
         }
-        return weights.get(metric_type, 1.0)
+        return weights.get(metric_type, weights["other"])
 
     def _calculate_metric_score(self, metric: PerformanceMetric) -> float:
         """Calcule le score d'une métrique individuelle"""
         if metric.status == "good":
             return 100.0
         elif metric.status == "warning":
-            return 70.0
+            return 60.0
         else:  # critical
-            return 30.0
+            return 20.0
 
     def _generate_performance_recommendations(
         self, issues: list[PerformanceIssue]
     ) -> list[str]:
-        """Génère des recommandations de performance basées sur les problèmes détectés"""
+        """Génère des recommandations basées sur les problèmes détectés"""
         recommendations = []
 
-        # Recommandations basées sur les types de problèmes
-        issue_types = [issue.issue_type for issue in issues]
-
-        if "high_complexity" in issue_types:
-            recommendations.append(
-                "🔴 Réduire la complexité cyclomatique en refactorisant le code"
-            )
-            recommendations.append(
-                "   - Diviser les fonctions complexes en fonctions plus simples"
-            )
-            recommendations.append(
-                "   - Utiliser des early returns pour réduire la profondeur des conditions"
-            )
-
-        if "long_function" in issue_types:
-            recommendations.append(
-                "🟡 Diviser les fonctions trop longues en fonctions plus petites"
-            )
-            recommendations.append(
-                "   - Chaque fonction devrait avoir une seule responsabilité"
-            )
-            recommendations.append(
-                "   - Extraire la logique commune dans des fonctions utilitaires"
-            )
-
-        if "long_class" in issue_types:
-            recommendations.append(
-                "🟡 Diviser les classes trop longues en classes plus petites"
-            )
-            recommendations.append(
-                "   - Appliquer le principe de responsabilité unique"
-            )
-            recommendations.append(
-                "   - Utiliser la composition au lieu de l'héritage multiple"
-            )
-
-        if "too_many_imports" in issue_types:
-            recommendations.append(
-                "🟡 Optimiser les imports pour améliorer les performances"
-            )
-            recommendations.append(
-                "   - Consolider les imports multiples en une seule ligne"
-            )
-            recommendations.append("   - Supprimer les imports inutilisés")
+        for issue in issues:
+            if issue.issue_type == "high_complexity":
+                recommendations.append(
+                    "Refactoriser le code pour réduire la complexité cyclomatique"
+                )
+            elif issue.issue_type == "long_function":
+                recommendations.append(
+                    "Diviser les fonctions longues en fonctions plus petites"
+                )
+            elif issue.issue_type == "long_class":
+                recommendations.append(
+                    "Diviser les classes longues en classes plus petites"
+                )
 
         # Recommandations générales
-        if len(issues) > 5:
+        if not recommendations:
+            recommendations.append("Aucun problème de performance critique détecté")
             recommendations.append(
-                "🔴 Projet nécessite une refactorisation majeure des performances"
-            )
-        elif len(issues) > 2:
-            recommendations.append(
-                "🟡 Améliorer les performances en appliquant les recommandations ci-dessus"
-            )
-        else:
-            recommendations.append(
-                "🟢 Bonnes performances globales, maintenir la qualité du code"
+                "Continuer à surveiller les métriques de performance"
             )
 
         return recommendations
@@ -1003,138 +970,129 @@ class PerformanceAnalyzer:
     def _identify_optimization_opportunities(
         self, issues: list[PerformanceIssue]
     ) -> list[str]:
-        """Identifie les opportunités d'optimisation spécifiques"""
+        """Identifie les opportunités d'optimisation basées sur les problèmes"""
         opportunities = []
 
         for issue in issues:
             if issue.issue_type == "high_complexity":
-                opportunities.append(
-                    f"Refactoriser {issue.location} pour réduire la complexité de {issue.estimated_improvement}%"
-                )
-
+                opportunities.append(f"Réduire la complexité de {issue.location}")
             elif issue.issue_type == "long_function":
                 opportunities.append(
-                    f"Diviser la fonction dans {issue.location} pour améliorer la lisibilité de {issue.estimated_improvement}%"
+                    f"Refactoriser les fonctions dans {issue.location}"
                 )
-
             elif issue.issue_type == "long_class":
-                opportunities.append(
-                    f"Refactoriser la classe dans {issue.location} pour améliorer la maintenabilité de {issue.estimated_improvement}%"
-                )
-
-            elif issue.issue_type == "too_many_imports":
-                opportunities.append(
-                    f"Consolider les imports dans {issue.location} pour améliorer les performances de {issue.estimated_improvement}%"
-                )
+                opportunities.append(f"Refactoriser les classes dans {issue.location}")
 
         return opportunities
 
-    def _save_performance_report(self, report: PerformanceReport):
+    def _save_performance_report(self, report: PerformanceReport) -> None:
         """Sauvegarde le rapport de performance dans la base de données"""
         try:
-            with sqlite3.connect(self.db_path) as conn:
-                cursor = conn.cursor()
+            import sqlite3
 
-                # Sauvegarder le rapport principal
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+
+            # Insérer le rapport principal
+            cursor.execute(
+                """
+                INSERT INTO performance_reports (overall_score, metrics_count, issues_count)
+                VALUES (?, ?, ?)
+                """,
+                (report.overall_score, len(report.metrics), len(report.issues)),
+            )
+
+            # Insérer les métriques
+            for metric in report.metrics:
                 cursor.execute(
                     """
-                    INSERT INTO performance_reports (overall_score, report_data)
-                    VALUES (?, ?)
+                    INSERT INTO performance_metrics
+                    (metric_type, value, unit, location, threshold, status)
+                    VALUES (?, ?, ?, ?, ?, ?)
                     """,
-                    (report.overall_score, str(report)),
+                    (
+                        metric.metric_type,
+                        metric.value,
+                        metric.unit,
+                        metric.location,
+                        metric.threshold,
+                        metric.status,
+                    ),
                 )
 
-                # Sauvegarder les métriques
-                for metric in report.metrics:
-                    cursor.execute(
-                        """
-                        INSERT INTO performance_metrics
-                        (metric_type, value, unit, location, threshold, status)
-                        VALUES (?, ?, ?, ?, ?, ?)
-                        """,
-                        (
-                            metric.metric_type,
-                            metric.value,
-                            metric.unit,
-                            metric.location,
-                            metric.threshold,
-                            metric.status,
-                        ),
-                    )
-
-                # Sauvegarder les problèmes
-                for issue in report.issues:
-                    cursor.execute(
-                        """
-                        INSERT INTO performance_issues
-                        (issue_type, location, description, impact, suggestion, estimated_improvement)
-                        VALUES (?, ?, ?, ?, ?, ?)
-                        """,
-                        (
-                            issue.issue_type,
-                            issue.location,
-                            issue.description,
-                            issue.impact,
-                            issue.suggestion,
-                            issue.estimated_improvement,
-                        ),
-                    )
-
-                conn.commit()
-                logger.info(
-                    "📊 Rapport de performance sauvegardé dans la base de données"
+            # Insérer les problèmes
+            for issue in report.issues:
+                cursor.execute(
+                    """
+                    INSERT INTO performance_issues
+                    (issue_type, location, description, impact, suggestion, estimated_improvement)
+                    VALUES (?, ?, ?, ?, ?, ?)
+                    """,
+                    (
+                        issue.issue_type,
+                        issue.location,
+                        issue.description,
+                        issue.impact,
+                        issue.suggestion,
+                        issue.estimated_improvement,
+                    ),
                 )
+
+            conn.commit()
+            conn.close()
 
         except Exception as e:
-            logger.error(f"❌ Erreur lors de la sauvegarde du rapport: {e}")
+            logging.error(f"Erreur lors de la sauvegarde du rapport: {e}")
 
     def profile_function(
         self, function_path: str, function_name: str, *args: Any, **kwargs: Any
     ) -> dict[str, Any]:
         """Profile une fonction spécifique dans un fichier"""
         try:
-            # Importer dynamiquement le module
+            # Importer dynamiquement la fonction depuis le fichier
             import importlib.util
 
             spec = importlib.util.spec_from_file_location("module", function_path)
-            module = importlib.util.module_from_spec(spec)
-            spec.loader.exec_module(module)
+            if spec and spec.loader:
+                module = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(module)
+                func = getattr(module, function_name, None)
 
-            # Obtenir la fonction
-            func = getattr(module, function_name)
+                if func and callable(func):
+                    # Profiler la fonction
+                    start_time = time.time()
+                    start_memory = self._get_memory_usage()
 
-            # Profiler la fonction
-            profiler = cProfile.Profile()
-            profiler.enable()
+                    result = func(*args, **kwargs)
 
-            start_time = time.time()
-            start_memory = self._get_memory_usage()
+                    end_time = time.time()
+                    end_memory = self._get_memory_usage()
 
-            # Exécuter la fonction
-            result = func(*args, **kwargs)
+                    execution_time = end_time - start_time
+                    memory_delta = end_memory - start_memory
 
-            end_time = time.time()
-            end_memory = self._get_memory_usage()
-
-            profiler.disable()
-
-            # Analyser les résultats du profiler
-            s = io.StringIO()
-            ps = pstats.Stats(profiler, stream=s).sort_stats("cumulative")
-            ps.print_stats()
-
-            execution_time = end_time - start_time
-            memory_delta = end_memory - start_memory
-
-            return {
-                "function_name": function_name,
-                "file_path": function_path,
-                "execution_time": execution_time,
-                "memory_delta": memory_delta,
-                "result": result,
-                "profile_stats": s.getvalue(),
-                "status": "success",
-            }
+                    return {
+                        "function_name": function_name,
+                        "file_path": function_path,
+                        "execution_time": execution_time,
+                        "memory_delta": memory_delta,
+                        "result": result,
+                        "status": "success",
+                    }
+                else:
+                    return {
+                        "function_name": function_name,
+                        "file_path": function_path,
+                        "error": f"Fonction {function_name} non trouvée",
+                        "status": "error",
+                    }
+            else:
+                return {
+                    "function_name": function_name,
+                    "file_path": function_path,
+                    "error": f"Impossible de charger le module {function_path}",
+                    "status": "error",
+                }
 
         except Exception as e:
             return {
@@ -1145,54 +1103,51 @@ class PerformanceAnalyzer:
             }
 
     def get_performance_insights(self) -> dict[str, Any]:
-        """Retourne des insights de performance basés sur l'historique"""
+        """Obtient des insights sur les performances basés sur l'historique"""
         try:
-            with sqlite3.connect(self.db_path) as conn:
-                cursor = conn.cursor()
+            import sqlite3
 
-                # Obtenir le score moyen
-                cursor.execute("SELECT AVG(overall_score) FROM performance_reports")
-                avg_score = cursor.fetchone()[0] or 0
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
 
-                # Obtenir le nombre de rapports
-                cursor.execute("SELECT COUNT(*) FROM performance_reports")
-                report_count = cursor.fetchone()[0] or 0
+            # Obtenir le score moyen
+            cursor.execute("SELECT AVG(overall_score) FROM performance_reports")
+            avg_score = cursor.fetchone()[0] or 0.0
 
-                # Obtenir les problèmes les plus fréquents
-                cursor.execute(
-                    """
-                    SELECT issue_type, COUNT(*) as count
-                    FROM performance_issues
-                    GROUP BY issue_type
-                    ORDER BY count DESC
-                    LIMIT 5
-                    """
-                )
-                common_issues = cursor.fetchall()
+            # Obtenir le nombre total de rapports
+            cursor.execute("SELECT COUNT(*) FROM performance_reports")
+            total_reports = cursor.fetchone()[0] or 0
 
-                insights = {
-                    "average_score": round(avg_score, 2),
-                    "total_reports": report_count,
-                    "common_issues": [
-                        {"type": issue_type, "count": count}
-                        for issue_type, count in common_issues
-                    ],
-                    "trend": (
-                        "stable"
-                        if avg_score > 80
-                        else "improving" if avg_score > 60 else "declining"
-                    ),
-                }
+            # Obtenir les problèmes les plus courants
+            cursor.execute(
+                """
+                SELECT issue_type, COUNT(*) as count
+                FROM performance_issues
+                GROUP BY issue_type
+                ORDER BY count DESC
+                LIMIT 5
+                """
+            )
+            common_issues = [
+                {"type": row[0], "count": row[1]} for row in cursor.fetchall()
+            ]
 
-                return insights
+            conn.close()
+
+            return {
+                "average_score": round(avg_score, 2),
+                "total_reports": total_reports,
+                "common_issues": common_issues,
+                "last_updated": time.time(),
+            }
 
         except Exception as e:
-            logger.error(f"❌ Erreur lors de la récupération des insights: {e}")
+            logging.error(f"Erreur lors de la récupération des insights: {e}")
             return {
-                "average_score": 0,
+                "average_score": 0.0,
                 "total_reports": 0,
                 "common_issues": [],
-                "trend": "unknown",
+                "last_updated": time.time(),
             }
 
     def generate_performance_report(self) -> dict[str, Any]:
@@ -1257,16 +1212,14 @@ class PerformanceAnalyzer:
             return "O(1)"
 
 
-def main():
+def main() -> None:
     """Point d'entrée principal"""
     import argparse
 
-    parser = argparse.ArgumentParser(
-        description="Analyseur de performance pour projets"
-    )
+    parser = argparse.ArgumentParser(description="Analyseur de performance")
     parser.add_argument("project_path", help="Chemin vers le projet à analyser")
+    parser.add_argument("--profile", help="Fonction à profiler")
     parser.add_argument("--output", help="Fichier de sortie pour le rapport")
-    parser.add_argument("--profile", help="Fonction spécifique à profiler")
 
     args = parser.parse_args()
 
@@ -1274,22 +1227,22 @@ def main():
 
     if args.profile:
         # Profiler une fonction spécifique
-        result = analyzer.profile_function(args.project_path, args.profile)
-        print(f"📊 Profilage de {args.profile}:")
-        print(f"   Temps d'exécution: {result.get('execution_time', 0):.4f}s")
-        print(f"   Variation mémoire: {result.get('memory_delta', 0):.2f}MB")
+        if ":" in args.profile:
+            file_path, function_name = args.profile.split(":", 1)
+            result = analyzer.profile_function(file_path, function_name)
+            print(f"Résultat du profilage: {result}")
+        else:
+            print("Format: fichier:fonction")
     else:
-        # Analyse complète du projet
-        report = analyzer.analyze_project_performance()
-        print("📊 Rapport de performance généré:")
-        print(f"   Score global: {report.overall_score}/100")
-        print(f"   Métriques analysées: {len(report.metrics)}")
-        print(f"   Problèmes détectés: {len(report.issues)}")
-        print(f"   Recommandations: {len(report.recommendations)}")
+        # Analyse complète
+        report = analyzer.run_comprehensive_analysis()
+        print(f"Score global: {report.get('score', 0):.2f}/100")
 
         if args.output:
+            import json
+
             with open(args.output, "w", encoding="utf-8") as f:
-                f.write(str(report))
+                json.dump(report, f, indent=2, default=str)
             print(f"📄 Rapport sauvegardé dans {args.output}")
 
 

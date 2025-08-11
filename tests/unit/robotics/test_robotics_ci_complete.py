@@ -7,7 +7,7 @@ Tests professionnels pour la CI/CD.
 import subprocess
 import tempfile
 from pathlib import Path
-from unittest.mock import Mock, patch, MagicMock
+from unittest.mock import MagicMock, Mock, patch
 
 from athalia_core.robotics_ci import RoboticsCI, run_robotics_ci
 
@@ -151,6 +151,12 @@ class TestRoboticsCI:
 
         # Configurer le mock pour qu'il retourne le même objet à chaque appel
         mock_run.return_value = mock_result
+
+        # Configurer le mock pour qu'il accepte tous les arguments et retourne le même résultat
+        def mock_side_effect(*args, **kwargs):
+            return mock_result
+
+        mock_run.side_effect = mock_side_effect
 
         # Appeler run_full_pipeline au lieu de _run_build directement
         self.ci.run_full_pipeline()
