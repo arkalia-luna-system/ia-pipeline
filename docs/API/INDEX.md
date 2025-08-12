@@ -792,7 +792,7 @@ graph TB
 
 *Complete module documentation for Athalia DevOps Platform*
 
-[![Core API](https://img.shields.io/badge/🧠-Core%20API-blue?style=for-the-badge&logo=cpu)](core_modules.md)
+**🧠 Core API** - [Documentation complète](core_modules.md)
 **🤖 AI API** - AI modules documentation
 **🛡️ Security API** - Security modules documentation
 

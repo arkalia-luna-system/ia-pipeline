@@ -1,12 +1,12 @@
 {
-  "test_date": "2025-08-12T20:12:28.309708",
+  "test_date": "2025-08-12T20:15:41.531074",
   "global_stats": {
-    "total_files": 136,
-    "total_links": 555,
-    "broken_links": 51,
+    "total_files": 137,
+    "total_links": 531,
+    "broken_links": 45,
     "critical_broken_links": 0,
-    "average_navigation_score": 85.17156862745097,
-    "link_success_rate": 90.81081081081082
+    "average_navigation_score": 84.52554744525547,
+    "link_success_rate": 91.52542372881356
   },
   "file_results": {
     "._INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
@@ -1421,12 +1421,12 @@
     },
     "ARCHITECTURE/INDEX.md": {
       "file_path": "ARCHITECTURE/INDEX.md",
-      "total_links": 16,
-      "valid_links": 13,
+      "total_links": 15,
+      "valid_links": 12,
       "broken_links": 3,
       "critical_links": 12,
       "critical_broken_links": 0,
-      "navigation_score": 70.0,
+      "navigation_score": 60.0,
       "links": [
         {
           "link": {
@@ -1466,19 +1466,6 @@
           "error_type": null,
           "suggested_fix": null,
           "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "⚡ Performance Optimization",
-            "url": "../DEVELOPER/UTILITIES/optimisation/",
-            "line": 420
-          },
-          "source_file": "docs/ARCHITECTURE/INDEX.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": false
         },
         {
           "link": {
@@ -1741,12 +1728,12 @@
     },
     "DEVELOPER/BEST_PRACTICES.md": {
       "file_path": "DEVELOPER/BEST_PRACTICES.md",
-      "total_links": 12,
-      "valid_links": 12,
+      "total_links": 8,
+      "valid_links": 8,
       "broken_links": 0,
       "critical_links": 8,
       "critical_broken_links": 0,
-      "navigation_score": 100.0,
+      "navigation_score": 60.0,
       "links": [
         {
           "link": {
@@ -1799,58 +1786,6 @@
           "error_type": null,
           "suggested_fix": null,
           "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Dashboard",
-            "url": "../../dashboard/",
-            "line": 307
-          },
-          "source_file": "docs/DEVELOPER/BEST_PRACTICES.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Tests",
-            "url": "../../tests/",
-            "line": 308
-          },
-          "source_file": "docs/DEVELOPER/BEST_PRACTICES.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "API",
-            "url": "../API/",
-            "line": 309
-          },
-          "source_file": "docs/DEVELOPER/BEST_PRACTICES.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Rapports",
-            "url": "REPORTS/",
-            "line": 310
-          },
-          "source_file": "docs/DEVELOPER/BEST_PRACTICES.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": false
         },
         {
           "link": {
@@ -2339,26 +2274,13 @@
     },
     "DEVELOPER/DOCUMENTATION_MAINTENANCE.md": {
       "file_path": "DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "total_links": 12,
-      "valid_links": 8,
+      "total_links": 10,
+      "valid_links": 6,
       "broken_links": 4,
       "critical_links": 6,
       "critical_broken_links": 0,
-      "navigation_score": 73.33333333333333,
+      "navigation_score": 60.0,
       "links": [
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Section",
-            "url": "#nom-de-la-section",
-            "line": 75
-          },
-          "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": false
-        },
         {
           "link": {
             "type": "markdown",
@@ -2370,19 +2292,6 @@
           "is_valid": false,
           "error_type": "file_not_found",
           "suggested_fix": "Vérifier le chemin: https://example.com",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Section",
-            "url": "#nom-de-la-section",
-            "line": 75
-          },
-          "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
           "is_critical": false
         },
         {
@@ -3474,9 +3383,9 @@
     },
     "DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md": {
       "file_path": "DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
-      "total_links": 8,
+      "total_links": 4,
       "valid_links": 4,
-      "broken_links": 4,
+      "broken_links": 0,
       "critical_links": 4,
       "critical_broken_links": 0,
       "navigation_score": 60.0,
@@ -3506,58 +3415,6 @@
           "error_type": null,
           "suggested_fix": null,
           "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Configuration Flake8",
-            "url": "../../config/.flake8",
-            "line": 203
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../config/.flake8",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Configuration Bandit",
-            "url": "../../config/.bandit",
-            "line": 204
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../config/.bandit",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Script de Linting",
-            "url": "../../bin/ath-lint-secure",
-            "line": 205
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../bin/ath-lint-secure",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Script d'Installation",
-            "url": "../../bin/install-security-tools",
-            "line": 206
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../bin/install-security-tools",
-          "is_critical": false
         },
         {
           "link": {
@@ -3767,131 +3624,13 @@
     },
     "DEVELOPER/REPORTS/ANALYSE_COMPLETE_MODULES_ATHALIA.md": {
       "file_path": "DEVELOPER/REPORTS/ANALYSE_COMPLETE_MODULES_ATHALIA.md",
-      "total_links": 9,
-      "valid_links": 9,
+      "total_links": 0,
+      "valid_links": 0,
       "broken_links": 0,
       "critical_links": 0,
       "critical_broken_links": 0,
-      "navigation_score": 100.0,
-      "links": [
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Vue d'ensemble de l'architecture",
-            "url": "#vue-densemble",
-            "line": 12
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/ANALYSE_COMPLETE_MODULES_ATHALIA.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Cartographie détaillée des modules",
-            "url": "#cartographie-détaillée",
-            "line": 13
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/ANALYSE_COMPLETE_MODULES_ATHALIA.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Analyse d'usage et intégration",
-            "url": "#analyse-dusage",
-            "line": 14
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/ANALYSE_COMPLETE_MODULES_ATHALIA.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Modules critiques et prioritaires",
-            "url": "#modules-critiques",
-            "line": 15
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/ANALYSE_COMPLETE_MODULES_ATHALIA.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Modules orphelins et sous-utilisés",
-            "url": "#modules-orphelins",
-            "line": 16
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/ANALYSE_COMPLETE_MODULES_ATHALIA.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Potentiel d'évolution",
-            "url": "#potentiel-évolution",
-            "line": 17
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/ANALYSE_COMPLETE_MODULES_ATHALIA.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Risques identifiés",
-            "url": "#risques-identifiés",
-            "line": 18
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/ANALYSE_COMPLETE_MODULES_ATHALIA.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Plan d'action détaillé",
-            "url": "#plan-daction",
-            "line": 19
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/ANALYSE_COMPLETE_MODULES_ATHALIA.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Recommandations stratégiques",
-            "url": "#recommandations",
-            "line": 20
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/ANALYSE_COMPLETE_MODULES_ATHALIA.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": false
-        }
-      ]
+      "navigation_score": 100,
+      "links": []
     },
     "DEVELOPER/REPORTS/PHASE_4_MODULES_AVANCES_PLAN.md": {
       "file_path": "DEVELOPER/REPORTS/PHASE_4_MODULES_AVANCES_PLAN.md",
@@ -3905,6 +3644,16 @@
     },
     "DEVELOPER/REPORTS/._OPTIMISATION_TESTS_RAM_FINALE_2025.md": {
       "file_path": "DEVELOPER/REPORTS/._OPTIMISATION_TESTS_RAM_FINALE_2025.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "DEVELOPER/REPORTS/._ANALYSE_COMPLETE_MODULES_ATHALIA.md": {
+      "file_path": "DEVELOPER/REPORTS/._ANALYSE_COMPLETE_MODULES_ATHALIA.md",
       "total_links": 0,
       "valid_links": 0,
       "broken_links": 0,
@@ -4154,12 +3903,12 @@
     },
     "GETTING_STARTED/INSTALLATION.md": {
       "file_path": "GETTING_STARTED/INSTALLATION.md",
-      "total_links": 6,
-      "valid_links": 6,
+      "total_links": 4,
+      "valid_links": 4,
       "broken_links": 0,
       "critical_links": 4,
       "critical_broken_links": 0,
-      "navigation_score": 100.0,
+      "navigation_score": 60.0,
       "links": [
         {
           "link": {
@@ -4186,32 +3935,6 @@
           "error_type": null,
           "suggested_fix": null,
           "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Guides développeur",
-            "url": "../DEVELOPER/",
-            "line": 289
-          },
-          "source_file": "docs/GETTING_STARTED/INSTALLATION.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Dashboard",
-            "url": "../../dashboard/",
-            "line": 291
-          },
-          "source_file": "docs/GETTING_STARTED/INSTALLATION.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": false
         },
         {
           "link": {
@@ -7240,9 +6963,9 @@
     },
     "USER_GUIDES/INSTALLATION.md": {
       "file_path": "USER_GUIDES/INSTALLATION.md",
-      "total_links": 18,
+      "total_links": 17,
       "valid_links": 14,
-      "broken_links": 4,
+      "broken_links": 3,
       "critical_links": 14,
       "critical_broken_links": 0,
       "navigation_score": 60.0,
@@ -7272,19 +6995,6 @@
           "error_type": null,
           "suggested_fix": null,
           "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Dashboard Guide",
-            "url": "../SPECIALIZED/DASHBOARD/",
-            "line": 487
-          },
-          "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../SPECIALIZED/DASHBOARD/",
-          "is_critical": false
         },
         {
           "link": {
@@ -7558,40 +7268,13 @@
     },
     "USER_GUIDES/TROUBLESHOOTING.md": {
       "file_path": "USER_GUIDES/TROUBLESHOOTING.md",
-      "total_links": 2,
-      "valid_links": 2,
+      "total_links": 0,
+      "valid_links": 0,
       "broken_links": 0,
       "critical_links": 0,
       "critical_broken_links": 0,
-      "navigation_score": 100.0,
-      "links": [
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Guides",
-            "url": "../DEVELOPER/GUIDES/",
-            "line": 140
-          },
-          "source_file": "docs/USER_GUIDES/TROUBLESHOOTING.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Référence API",
-            "url": "../API/",
-            "line": 141
-          },
-          "source_file": "docs/USER_GUIDES/TROUBLESHOOTING.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": false
-        }
-      ]
+      "navigation_score": 100,
+      "links": []
     },
     "USER_GUIDES/._CONTRIBUTING.md": {
       "file_path": "USER_GUIDES/._CONTRIBUTING.md",
@@ -8091,10 +7774,10 @@
     },
     "API/INDEX.md": {
       "file_path": "API/INDEX.md",
-      "total_links": 7,
-      "valid_links": 6,
-      "broken_links": 1,
-      "critical_links": 6,
+      "total_links": 8,
+      "valid_links": 8,
+      "broken_links": 0,
+      "critical_links": 8,
       "critical_broken_links": 0,
       "navigation_score": 60.0,
       "links": [
@@ -8140,15 +7823,15 @@
         {
           "link": {
             "type": "markdown",
-            "text": "![Core API",
-            "url": "https://img.shields.io/badge/🧠-Core%20API-blue?style=for-the-badge&logo=cpu",
+            "text": "Documentation complète",
+            "url": "core_modules.md",
             "line": 795
           },
           "source_file": "docs/API/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/🧠-Core%20API-blue?style=for-the-badge&logo=cpu",
-          "is_critical": false
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
         },
         {
           "link": {
@@ -8182,6 +7865,19 @@
             "text": "Core API",
             "url": "core_modules.md",
             "line": 780
+          },
+          "source_file": "docs/API/INDEX.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "Documentation complète",
+            "url": "core_modules.md",
+            "line": 795
           },
           "source_file": "docs/API/INDEX.md",
           "is_valid": true,
@@ -8859,58 +8555,6 @@
     {
       "link": {
         "type": "markdown",
-        "text": "Configuration Flake8",
-        "url": "../../config/.flake8",
-        "line": 203
-      },
-      "source_file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../config/.flake8",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Configuration Bandit",
-        "url": "../../config/.bandit",
-        "line": 204
-      },
-      "source_file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../config/.bandit",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Script de Linting",
-        "url": "../../bin/ath-lint-secure",
-        "line": 205
-      },
-      "source_file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../bin/ath-lint-secure",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Script d'Installation",
-        "url": "../../bin/install-security-tools",
-        "line": 206
-      },
-      "source_file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../bin/install-security-tools",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "pre-commit",
         "url": "https://pre-commit.com/",
         "line": 266
@@ -9010,19 +8654,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: https://education.github.com/git-cheat-sheet-education.pdf",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Dashboard Guide",
-        "url": "../SPECIALIZED/DASHBOARD/",
-        "line": 487
-      },
-      "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../SPECIALIZED/DASHBOARD/",
       "is_critical": false
     },
     {
@@ -9283,19 +8914,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: https://github.com/rust-robotics",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Core API",
-        "url": "https://img.shields.io/badge/🧠-Core%20API-blue?style=for-the-badge&logo=cpu",
-        "line": 795
-      },
-      "source_file": "docs/API/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/🧠-Core%20API-blue?style=for-the-badge&logo=cpu",
       "is_critical": false
     },
     {
@@ -9522,58 +9140,6 @@
     {
       "link": {
         "type": "markdown",
-        "text": "Configuration Flake8",
-        "url": "../../config/.flake8",
-        "line": 203
-      },
-      "source_file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../config/.flake8",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Configuration Bandit",
-        "url": "../../config/.bandit",
-        "line": 204
-      },
-      "source_file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../config/.bandit",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Script de Linting",
-        "url": "../../bin/ath-lint-secure",
-        "line": 205
-      },
-      "source_file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../bin/ath-lint-secure",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Script d'Installation",
-        "url": "../../bin/install-security-tools",
-        "line": 206
-      },
-      "source_file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../bin/install-security-tools",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "pre-commit",
         "url": "https://pre-commit.com/",
         "line": 266
@@ -9673,19 +9239,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: https://education.github.com/git-cheat-sheet-education.pdf",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Dashboard Guide",
-        "url": "../SPECIALIZED/DASHBOARD/",
-        "line": 487
-      },
-      "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../SPECIALIZED/DASHBOARD/",
       "is_critical": false
     },
     {
@@ -9946,19 +9499,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: https://github.com/rust-robotics",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Core API",
-        "url": "https://img.shields.io/badge/🧠-Core%20API-blue?style=for-the-badge&logo=cpu",
-        "line": 795
-      },
-      "source_file": "docs/API/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/🧠-Core%20API-blue?style=for-the-badge&logo=cpu",
       "is_critical": false
     }
   ],

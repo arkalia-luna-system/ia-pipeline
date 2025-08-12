@@ -484,7 +484,7 @@ checklist
 | **1** | Complete installation validation | 2 min | This guide |
 | **2** | Follow Quick Start tutorial | 10 min | [Quick Start](QUICK_START.md) |
 | **3** | Generate your first project | 5 min | [Usage Guide](USAGE.md) |
-| **4** | Explore dashboards | 5 min | [Dashboard Guide](../SPECIALIZED/DASHBOARD/) |
+| **4** | Explore dashboards | 5 min | **Dashboard Guide** |
 | **5** | Read advanced features | 15 min | [Complete Documentation](../README.md) |
 
 </div>

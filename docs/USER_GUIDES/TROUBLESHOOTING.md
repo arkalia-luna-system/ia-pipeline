@@ -137,8 +137,8 @@ tail -f logs/errors.log
 ```
 
 ### **Contact**
-- **Documentation :** [Guides](../DEVELOPER/GUIDES/)
-- **API :** [Référence API](../API/)
+- **Documentation :** **Guides**
+- **API :** **Référence API**
 - **Issues :** GitHub Issues
 
 ---

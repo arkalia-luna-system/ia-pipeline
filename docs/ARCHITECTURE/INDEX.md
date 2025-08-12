@@ -417,7 +417,7 @@ graph TB
 - **[🏢 Workspace Organization](ORGANISATION_WORKSPACE.md)** - Development environment setup
 - **[🔌 API Architecture](../API/INDEX.md)** - Interface design patterns
 - ****🛡️ Security Design**** - Security implementation details
-- **[⚡ Performance Optimization](../DEVELOPER/UTILITIES/optimisation/)** - Performance tuning guides
+- ****⚡ Performance Optimization**** - Performance tuning guides
 
 ### 🎯 **Quick Navigation**
 

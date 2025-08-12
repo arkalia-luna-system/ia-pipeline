@@ -200,10 +200,10 @@ pytest --cov=athalia_core --cov-fail-under=80
 ## 🔗 Ressources
 
 - [Guide de Linting et Sécurité](../GUIDES/SECURITY_LINTING_GUIDE.md)
-- [Configuration Flake8](../../config/.flake8)
-- [Configuration Bandit](../../config/.bandit)
-- [Script de Linting](../../bin/ath-lint-secure)
-- [Script d'Installation](../../bin/install-security-tools)
+- **Configuration Flake8**: Intégrée dans `pyproject.toml`
+- **Configuration Bandit**: Intégrée dans `pyproject.toml`
+- **Script de Linting**: Utiliser `ruff check .` et `black .`
+- **Script d'Installation**: Utiliser `pip install -r requirements.txt`
 
 ---
 

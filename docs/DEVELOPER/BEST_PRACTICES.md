@@ -304,10 +304,10 @@ python3 athalia_core/advanced_analytics.py --generate-reports
 - [Guide de Sécurité](GUIDES/SECURITY_LINTING_GUIDE.md)
 
 ### **Outils**
-- [Dashboard](../../dashboard/)
-- [Tests](../../tests/)
-- [API](../API/)
-- [Rapports](REPORTS/)
+- **Dashboard**
+- **Tests**
+- **API**
+- **Rapports**
 
 ---
 

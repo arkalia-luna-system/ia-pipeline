@@ -9,15 +9,15 @@
 
 ## 📋 TABLE DES MATIÈRES
 
-1. [Vue d'ensemble de l'architecture](#vue-densemble)
-2. [Cartographie détaillée des modules](#cartographie-détaillée)
-3. [Analyse d'usage et intégration](#analyse-dusage)
-4. [Modules critiques et prioritaires](#modules-critiques)
-5. [Modules orphelins et sous-utilisés](#modules-orphelins)
-6. [Potentiel d'évolution](#potentiel-évolution)
-7. [Risques identifiés](#risques-identifiés)
-8. [Plan d'action détaillé](#plan-daction)
-9. [Recommandations stratégiques](#recommandations)
+1. **Vue d'ensemble de l'architecture**
+2. **Cartographie détaillée des modules**
+3. **Analyse d'usage et intégration**
+4. **Modules critiques et prioritaires**
+5. **Modules orphelins et sous-utilisés**
+6. **Potentiel d'évolution**
+7. **Risques identifiés**
+8. **Plan d'action détaillé**
+9. **Recommandations stratégiques**
 
 ---
 
