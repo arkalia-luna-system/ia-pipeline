@@ -1,12 +1,12 @@
 {
-  "test_date": "2025-08-12T18:12:14.473507",
+  "test_date": "2025-08-12T18:15:55.748146",
   "global_stats": {
-    "total_files": 107,
-    "total_links": 569,
-    "broken_links": 73,
-    "critical_broken_links": 3,
-    "average_navigation_score": 79.51401869158879,
-    "link_success_rate": 87.17047451669596
+    "total_files": 109,
+    "total_links": 570,
+    "broken_links": 70,
+    "critical_broken_links": 0,
+    "average_navigation_score": 80.8256880733945,
+    "link_success_rate": 87.71929824561403
   },
   "file_results": {
     "._INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
@@ -5185,12 +5185,12 @@
     },
     "REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md": {
       "file_path": "REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "total_links": 5,
+      "total_links": 4,
       "valid_links": 4,
-      "broken_links": 1,
-      "critical_links": 5,
-      "critical_broken_links": 1,
-      "navigation_score": 48.0,
+      "broken_links": 0,
+      "critical_links": 4,
+      "critical_broken_links": 0,
+      "navigation_score": 60.0,
       "links": [
         {
           "link": {
@@ -5216,19 +5216,6 @@
           "is_valid": true,
           "error_type": null,
           "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "NAVIGATION_GLOBALE.md",
-            "url": "NAVIGATION_GLOBALE.md",
-            "line": 39
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: NAVIGATION_GLOBALE.md",
           "is_critical": true
         },
         {
@@ -7821,24 +7808,37 @@
     },
     "USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md": {
       "file_path": "USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
-      "total_links": 2,
-      "valid_links": 1,
-      "broken_links": 1,
-      "critical_links": 2,
-      "critical_broken_links": 1,
-      "navigation_score": 30.0,
+      "total_links": 3,
+      "valid_links": 3,
+      "broken_links": 0,
+      "critical_links": 3,
+      "critical_broken_links": 0,
+      "navigation_score": 60.0,
       "links": [
         {
           "link": {
-            "type": "file_reference",
-            "text": "docs/ROBOTICS_GUIDE.md",
-            "url": "docs/ROBOTICS_GUIDE.md",
+            "type": "markdown",
+            "text": "ROBOTICS_GUIDE.md",
+            "url": "ROBOTICS_GUIDE.md",
             "line": 32
           },
           "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: docs/ROBOTICS_GUIDE.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "ROBOTICS_GUIDE.md",
+            "url": "ROBOTICS_GUIDE.md",
+            "line": 32
+          },
+          "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         },
         {
@@ -7858,24 +7858,37 @@
     },
     "USER_GUIDES/robotics/ROBOTICS_QUICK_START.md": {
       "file_path": "USER_GUIDES/robotics/ROBOTICS_QUICK_START.md",
-      "total_links": 1,
-      "valid_links": 0,
-      "broken_links": 1,
-      "critical_links": 1,
-      "critical_broken_links": 1,
-      "navigation_score": 0.0,
+      "total_links": 2,
+      "valid_links": 2,
+      "broken_links": 0,
+      "critical_links": 2,
+      "critical_broken_links": 0,
+      "navigation_score": 60.0,
       "links": [
         {
           "link": {
-            "type": "file_reference",
-            "text": "docs/ROBOTICS_GUIDE.md",
-            "url": "docs/ROBOTICS_GUIDE.md",
+            "type": "markdown",
+            "text": "ROBOTICS_GUIDE.md",
+            "url": "ROBOTICS_GUIDE.md",
             "line": 194
           },
           "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_QUICK_START.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: docs/ROBOTICS_GUIDE.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "ROBOTICS_GUIDE.md",
+            "url": "ROBOTICS_GUIDE.md",
+            "line": 194
+          },
+          "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_QUICK_START.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         }
       ]
@@ -7955,6 +7968,26 @@
           "is_critical": true
         }
       ]
+    },
+    "USER_GUIDES/robotics/._ROBOTICS_INTEGRATION_SUMMARY.md": {
+      "file_path": "USER_GUIDES/robotics/._ROBOTICS_INTEGRATION_SUMMARY.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "USER_GUIDES/robotics/._ROBOTICS_QUICK_START.md": {
+      "file_path": "USER_GUIDES/robotics/._ROBOTICS_QUICK_START.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
     },
     "USER_GUIDES/robotics/audits/reachy_audit_20250729_162938.md": {
       "file_path": "USER_GUIDES/robotics/audits/reachy_audit_20250729_162938.md",
@@ -9010,19 +9043,6 @@
     },
     {
       "link": {
-        "type": "file_reference",
-        "text": "NAVIGATION_GLOBALE.md",
-        "url": "NAVIGATION_GLOBALE.md",
-        "line": 39
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: NAVIGATION_GLOBALE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
         "type": "markdown",
         "text": "Installation",
         "url": "https://img.shields.io/badge/Installation-5%20Minutes-green?style=for-the-badge&logo=download",
@@ -9371,32 +9391,6 @@
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: https://github.com/rust-robotics",
       "is_critical": false
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/ROBOTICS_GUIDE.md",
-        "url": "docs/ROBOTICS_GUIDE.md",
-        "line": 32
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/ROBOTICS_GUIDE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/ROBOTICS_GUIDE.md",
-        "url": "docs/ROBOTICS_GUIDE.md",
-        "line": 194
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_QUICK_START.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/ROBOTICS_GUIDE.md",
-      "is_critical": true
     },
     {
       "link": {
@@ -9959,19 +9953,6 @@
     },
     {
       "link": {
-        "type": "file_reference",
-        "text": "NAVIGATION_GLOBALE.md",
-        "url": "NAVIGATION_GLOBALE.md",
-        "line": 39
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: NAVIGATION_GLOBALE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
         "type": "markdown",
         "text": "Installation",
         "url": "https://img.shields.io/badge/Installation-5%20Minutes-green?style=for-the-badge&logo=download",
@@ -10323,32 +10304,6 @@
     },
     {
       "link": {
-        "type": "file_reference",
-        "text": "docs/ROBOTICS_GUIDE.md",
-        "url": "docs/ROBOTICS_GUIDE.md",
-        "line": 32
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/ROBOTICS_GUIDE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/ROBOTICS_GUIDE.md",
-        "url": "docs/ROBOTICS_GUIDE.md",
-        "line": 194
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_QUICK_START.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/ROBOTICS_GUIDE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
         "type": "markdown",
         "text": "API Reference",
         "url": "https://img.shields.io/badge/API%20Reference-Enterprise%20Grade-blue?style=for-the-badge&logo=api",
@@ -10426,84 +10381,5 @@
       "is_critical": false
     }
   ],
-  "critical_broken_links": [
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "NAVIGATION_GLOBALE.md",
-        "url": "NAVIGATION_GLOBALE.md",
-        "line": 39
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: NAVIGATION_GLOBALE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/ROBOTICS_GUIDE.md",
-        "url": "docs/ROBOTICS_GUIDE.md",
-        "line": 32
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/ROBOTICS_GUIDE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/ROBOTICS_GUIDE.md",
-        "url": "docs/ROBOTICS_GUIDE.md",
-        "line": 194
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_QUICK_START.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/ROBOTICS_GUIDE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "NAVIGATION_GLOBALE.md",
-        "url": "NAVIGATION_GLOBALE.md",
-        "line": 39
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: NAVIGATION_GLOBALE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/ROBOTICS_GUIDE.md",
-        "url": "docs/ROBOTICS_GUIDE.md",
-        "line": 32
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/ROBOTICS_GUIDE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/ROBOTICS_GUIDE.md",
-        "url": "docs/ROBOTICS_GUIDE.md",
-        "line": 194
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_QUICK_START.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/ROBOTICS_GUIDE.md",
-      "is_critical": true
-    }
-  ]
+  "critical_broken_links": []
 }

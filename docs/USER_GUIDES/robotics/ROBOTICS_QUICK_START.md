@@ -191,7 +191,7 @@ print(f"CI/CD succès: {result.success}")
 - **ROS2 non configuré** : Installer ROS2 Humble
 
 ### **Support**
-- **Documentation complète** : `docs/ROBOTICS_GUIDE.md`
+- **Documentation complète** : [ROBOTICS_GUIDE.md](ROBOTICS_GUIDE.md)
 - **Tests** : `python3 -m pytest tests/robotics/ -v`
 - **Démonstration** : `python3 demo_robotics.py`
 

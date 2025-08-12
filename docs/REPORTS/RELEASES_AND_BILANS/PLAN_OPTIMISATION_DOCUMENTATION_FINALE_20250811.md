@@ -36,7 +36,7 @@
 4. **README_16.md** - Références obsolètes (fichier d'archive)
 
 #### **🔧 Actions :**
-- **Fichier `NAVIGATION_GLOBALE.md` déjà supprimé** (doublon avec l'index principal)
+- **Fichier NAVIGATION_GLOBALE.md déjà supprimé** (doublon avec l'index principal)
 - **Mettre à jour** les références dans l'index d'architecture principal
 - **Archiver** ou **mettre à jour** les fichiers d'archive
 
