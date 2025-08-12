@@ -552,9 +552,7 @@ echo $VIRTUAL_ENV || echo "Virtual environment not activated"
 
 *Professional setup for Athalia DevOps Platform*
 
-[![Quick Start](https://img.shields.io/badge/⚡-Quick%20Start-green?style=for-the-badge&logo=rocket)](QUICK_START.md)
-[![Usage Guide](https://img.shields.io/badge/📚-Usage%20Guide-blue?style=for-the-badge&logo=book)](USAGE.md)
-[![Troubleshooting](https://img.shields.io/badge/🔧-Troubleshooting-orange?style=for-the-badge&logo=wrench)](TROUBLESHOOTING.md)
+**⚡ Quick Start** - [Guide complet](QUICK_START.md) | **📚 Usage Guide** - [Documentation](USAGE.md) | **🔧 Troubleshooting** - [Dépannage](TROUBLESHOOTING.md)
 
 **Average Setup Time:** 5 minutes | **Success Rate:** 98% | **Support Available**
 
