@@ -95,7 +95,7 @@
 - **Liens vers la documentation** connexe
 - **Standards de qualité** appliqués
 
-### **⚡ Guide de Démarrage Rapide ([USER_GUIDES/QUICK_START.md](../../../../USER_GUIDES/QUICK_START.md))**
+### **⚡ Guide de Démarrage Rapide ([USER_GUIDES/QUICK_START.md](../../USER_GUIDES/QUICK_START.md))**
 - **Traduction complète** en français
 - **Structure standardisée** avec nos emojis
 - **FAQ interactive** avec sections dépliables
