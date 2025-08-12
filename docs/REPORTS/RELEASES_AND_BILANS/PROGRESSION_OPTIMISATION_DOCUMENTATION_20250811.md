@@ -28,9 +28,9 @@
 
 ### **✅ Phase 2 : Nettoyage et Standardisation**
 - **Fichier doublon** `NAVIGATION_GLOBALE.md` supprimé
-- **Guide de maintenance** `DOCUMENTATION_MAINTENANCE.md` amélioré
-- **Template standardisé** `TEMPLATE_STANDARD_MARKDOWN.md` créé
-- **Dashboard** `dashboard.md` optimisé et restructuré
+- **Guide de maintenance** [DOCUMENTATION_MAINTENANCE.md](../../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md) amélioré
+- **Template standardisé** [TEMPLATE_STANDARD_MARKDOWN.md](../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md) créé
+- **Dashboard** [dashboard.md](../../../ARCHITECTURE/dashboard/dashboard.md) optimisé et restructuré
 
 ### **✅ Phase 3 : Standards et Outils**
 - **Standards de qualité** définis et documentés
@@ -74,21 +74,21 @@
 - **Roadmap détaillée** avec versions futures
 - **Best practices** et conseils de déploiement
 
-### **📚 Guide de Maintenance (DEVELOPER/DOCUMENTATION_MAINTENANCE.md)**
+### **📚 Guide de Maintenance ([DEVELOPER/DOCUMENTATION_MAINTENANCE.md](../../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md))**
 - **Standards de qualité** obligatoires définis
 - **Guide de style** complet avec emojis
 - **Processus de maintenance** standardisé
 - **Outils et scripts** documentés
 - **Métriques de qualité** définies
 
-### **📋 Template Standardisé (DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md)**
+### **📋 Template Standardisé ([DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md](../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md))**
 - **Structure complète** pour tous les fichiers
 - **Métadonnées standardisées** obligatoires
 - **Sections organisées** avec emojis cohérents
 - **Checklist de qualité** intégrée
 - **Exemples pratiques** inclus
 
-### **🗂️ Organisation du Workspace (ARCHITECTURE/ORGANISATION_WORKSPACE.md)**
+### **🗂️ Organisation du Workspace ([ARCHITECTURE/ORGANISATION_WORKSPACE.md](../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md))**
 - **Métadonnées** standardisées et à jour
 - **Structure des sections** harmonisée
 - **Navigation interne** améliorée

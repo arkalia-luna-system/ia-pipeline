@@ -30,13 +30,13 @@
 ### **Phase 1 : Nettoyage des Références Obsolètes (Priorité HAUTE)**
 
 #### **🗑️ Fichiers avec Références Obsolètes :**
-1. **`NAVIGATION_GLOBALE.md`** - Doublon avec l'index principal
-2. **`ARCHITECTURE/INDEX.md`** - Références à l'ancienne structure
-3. **`ARCHIVE/REORGANISATION_SYNTHESE_20250731.md`** - Références obsolètes
-4. **`ARCHIVE/STRUCTURE_REORGANISATION_PLAN.md`** - Références obsolètes
+1. **NAVIGATION_GLOBALE.md** - Doublon avec l'index principal (fichier supprimé, remplacé par INDEX_FINAL_DOCUMENTATION_ATHALIA.md)
+2. **[Index architecture](../../ARCHITECTURE/INDEX.md)** - Références à l'ancienne structure
+3. **README_9.md** - Références obsolètes (fichier d'archive)
+4. **README_16.md** - Références obsolètes (fichier d'archive)
 
 #### **🔧 Actions :**
-- **Supprimer** `NAVIGATION_GLOBALE.md` (doublon)
+- **Fichier `NAVIGATION_GLOBALE.md` déjà supprimé** (doublon)
 - **Mettre à jour** les références dans `ARCHITECTURE/INDEX.md`
 - **Archiver** ou **mettre à jour** les fichiers d'archive
 
@@ -81,12 +81,10 @@
 
 ### **Étape 1 : Nettoyage Immédiat (15 minutes)**
 ```bash
-# Suppression du fichier doublon
-rm docs/NAVIGATION_GLOBALE.md
-
+# Fichier NAVIGATION_GLOBALE.md déjà supprimé
 # Mise à jour des références
 git add .
-git commit -m "🗑️ Suppression du fichier doublon NAVIGATION_GLOBALE.md"
+git commit -m "🔧 Mise à jour des références après suppression NAVIGATION_GLOBALE.md"
 ```
 
 ### **Étape 2 : Correction des Liens (30 minutes)**

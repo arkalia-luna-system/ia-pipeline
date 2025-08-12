@@ -160,11 +160,9 @@ top -l 1 -o mem | grep -i cursor
 ## 📁 **Fichiers créés**
 
 - Guide complet d'optimisation Cursor - Guide complet
-- `bin/ath-clean-cursor-memory` - Script de nettoyage
-- `bin/ath-monitor-cursor-memory` - Script de monitoring
-- `bin/ath-optimize-cursor` - Script d'optimisation
-- `~/.cursor/User/settings.json` - Configuration optimisée
-- Rapports d'optimisation - Rapport d'optimisation
+- Scripts de nettoyage et monitoring - Scripts d'optimisation
+- Configuration optimisée - Paramètres de performance
+- Rapports d'optimisation - Suivi des améliorations
 
 ## 🎉 **Conclusion**
 

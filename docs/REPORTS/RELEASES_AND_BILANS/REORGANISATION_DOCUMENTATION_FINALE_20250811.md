@@ -28,21 +28,21 @@
 ### **✅ Phase 2 : Réorganisation des composants**
 
 #### **🤖 ROBOTICS → USER_GUIDES/robotics/**
-- **`REACHY_SETUP_GUIDE.md`** - Guide de configuration Reachy
-- **`ROBOTICS_GUIDE.md`** - Guide robotique principal
-- **`ROBOTICS_INTEGRATION_SUMMARY.md`** - Résumé intégration robotique
-- **`ROBOTICS_QUICK_START.md`** - Démarrage rapide robotique
-- **`audits/reachy_audit_20250729_162938.md`** - Audit Reachy
+- **[Guide de configuration Reachy](../../USER_GUIDES/robotics/REACHY_SETUP_GUIDE.md)** - Configuration complète du robot Reachy
+- **[Guide robotique principal](../../USER_GUIDES/robotics/ROBOTICS_GUIDE.md)** - Guide complet de la robotique
+- **[Résumé intégration robotique](../../USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md)** - Vue d'ensemble de l'intégration
+- **[Démarrage rapide robotique](../../USER_GUIDES/robotics/ROBOTICS_QUICK_START.md)** - Guide de démarrage rapide
+- **[Audit Reachy](../../USER_GUIDES/robotics/audits/reachy_audit_20250729_162938.md)** - Rapport d'audit du robot
 
 #### **📊 DASHBOARD → ARCHITECTURE/dashboard/**
-- **`dashboard.md`** - Documentation des dashboards
-- **`README.md`** - Index des dashboards
+- **[Documentation des dashboards](../../ARCHITECTURE/dashboard/dashboard.md)** - Guide complet des dashboards
+- **[Index des dashboards](../../ARCHITECTURE/dashboard/README.md)** - Vue d'ensemble des dashboards
 
 #### **⚡ OPTIMISATION → DEVELOPER/UTILITIES/optimisation/**
-- **`OPTIMISATION_CURSOR_RAM.md`** - Optimisation Cursor RAM
-- **`RESUME_OPTIMISATION_CURSOR.md`** - Résumé optimisation Cursor
-- **`RESUME_OPTIMISATION_MAC.md`** - Résumé optimisation Mac
-- **`README.md`** - Index de l'optimisation
+- **[Optimisation Cursor RAM](../../DEVELOPER/UTILITIES/optimisation/OPTIMISATION_CURSOR_RAM.md)** - Guide d'optimisation mémoire
+- **[Résumé optimisation Cursor](../../DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_CURSOR.md)** - Synthèse des optimisations
+- **[Résumé optimisation Mac](../../DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_MAC.md)** - Optimisations système Mac
+- **[Index de l'optimisation](../../DEVELOPER/UTILITIES/optimisation/README.md)** - Vue d'ensemble des optimisations
 
 ### **✅ Phase 3 : Création d'index appropriés**
 - **Index dashboard** dans ARCHITECTURE

@@ -27,9 +27,9 @@
 - **API REST** : Communication backend
 
 #### **📝 Prompts UX Existants**
-- **`ux_fun_boost.md`** - Amélioration UX/ergonomie
-- **`design_review.md`** - Revues de design
-- **`test_strategy.md`** - Stratégies de tests
+- **Amélioration UX/ergonomie** - Prompts pour l'amélioration de l'expérience utilisateur
+- **Revues de design** - Prompts pour l'évaluation des designs
+- **Stratégies de tests** - Prompts pour la planification des tests
 
 ---
 

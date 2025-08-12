@@ -107,6 +107,6 @@ Ce dossier centralise tous les rapports liés aux releases, validations, bilans 
 **Version actuelle :** 2.0  
 **Statut :** ✅ **ACTIF ET MAINTENU**  
 **Mainteneur :** Équipe Athalia/Arkalia  
-**Documentation :** [Guide de maintenance](../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md)
+**Documentation :** [Guide de maintenance](../../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md)
 
 **🎯 Ce dossier centralise tous les rapports de qualité et de release d'Athalia v1.0.0 ! 🚀** 
