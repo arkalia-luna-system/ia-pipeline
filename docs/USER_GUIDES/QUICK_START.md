@@ -277,7 +277,7 @@ sudo pip install -r requirements.txt
 
 ## 📚 **RESSOURCES ET RÉFÉRENCES**
 
-### **🔗 Documentation Connexe**
+### **📚 Ressources Complémentaires**
 - **Guide d'installation complet :** [INSTALLATION.md](INSTALLATION.md)
 - **Guide d'utilisation détaillé :** [USAGE.md](USAGE.md)
 - **Guide de dépannage :** [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
