@@ -1,0 +1,2429 @@
+{
+  "analysis_date": "2025-08-12T15:19:03.463584",
+  "total_files": 113,
+  "analysis_results": {
+    "INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
+      "file_path": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+      "total_lines": 286,
+      "non_empty_lines": 225,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 60,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "NAVIGATION_GLOBALE.md": {
+      "file_path": "docs/NAVIGATION_GLOBALE.md",
+      "total_lines": 588,
+      "non_empty_lines": 465,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": true,
+      "has_images": true,
+      "quality_score": 100,
+      "issues": [
+        "Références obsolètes",
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": true,
+      "has_broken_links": true
+    },
+    "ARCHITECTURE/ORGANISATION_WORKSPACE.md": {
+      "file_path": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+      "total_lines": 134,
+      "non_empty_lines": 102,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "ARCHITECTURE/INDEX.md": {
+      "file_path": "docs/ARCHITECTURE/INDEX.md",
+      "total_lines": 452,
+      "non_empty_lines": 346,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": true,
+      "has_images": true,
+      "quality_score": 100,
+      "issues": [
+        "Références obsolètes",
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": true,
+      "has_broken_links": true
+    },
+    "ARCHITECTURE/STRUCTURE_PROJET_EXPLICATION.md": {
+      "file_path": "docs/ARCHITECTURE/STRUCTURE_PROJET_EXPLICATION.md",
+      "total_lines": 401,
+      "non_empty_lines": 313,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "ARCHITECTURE/dashboard/dashboard.md": {
+      "file_path": "docs/ARCHITECTURE/dashboard/dashboard.md",
+      "total_lines": 55,
+      "non_empty_lines": 45,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 60,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "ARCHITECTURE/dashboard/README.md": {
+      "file_path": "docs/ARCHITECTURE/dashboard/README.md",
+      "total_lines": 31,
+      "non_empty_lines": 21,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 60,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "ARCHIVE/FICHE_PRESENTATION_EXPERT.md": {
+      "file_path": "docs/ARCHIVE/FICHE_PRESENTATION_EXPERT.md",
+      "total_lines": 161,
+      "non_empty_lines": 126,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "ARCHIVE/REORGANISATION_SYNTHESE_20250731.md": {
+      "file_path": "docs/ARCHIVE/REORGANISATION_SYNTHESE_20250731.md",
+      "total_lines": 204,
+      "non_empty_lines": 158,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [
+        "Références obsolètes"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": true,
+      "has_broken_links": false
+    },
+    "ARCHIVE/STRUCTURE_REORGANISATION_PLAN.md": {
+      "file_path": "docs/ARCHIVE/STRUCTURE_REORGANISATION_PLAN.md",
+      "total_lines": 135,
+      "non_empty_lines": 109,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [
+        "Références obsolètes"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": true,
+      "has_broken_links": false
+    },
+    "DEVELOPER/BEST_PRACTICES.md": {
+      "file_path": "docs/DEVELOPER/BEST_PRACTICES.md",
+      "total_lines": 323,
+      "non_empty_lines": 231,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": true,
+      "has_images": false,
+      "quality_score": 90,
+      "issues": [
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": true
+    },
+    "DEVELOPER/MODULES.md": {
+      "file_path": "docs/DEVELOPER/MODULES.md",
+      "total_lines": 408,
+      "non_empty_lines": 220,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/INDEX.md": {
+      "file_path": "docs/DEVELOPER/INDEX.md",
+      "total_lines": 282,
+      "non_empty_lines": 216,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": true,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": true
+    },
+    "DEVELOPER/DOCUMENTATION_MAINTENANCE.md": {
+      "file_path": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+      "total_lines": 323,
+      "non_empty_lines": 250,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": true,
+      "has_images": false,
+      "quality_score": 90,
+      "issues": [
+        "Références obsolètes",
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": true,
+      "has_broken_links": true
+    },
+    "DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md": {
+      "file_path": "docs/DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md",
+      "total_lines": 245,
+      "non_empty_lines": 189,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/GUIDES/DEVELOPER_GUIDE.md": {
+      "file_path": "docs/DEVELOPER/GUIDES/DEVELOPER_GUIDE.md",
+      "total_lines": 414,
+      "non_empty_lines": 327,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md": {
+      "file_path": "docs/DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
+      "total_lines": 282,
+      "non_empty_lines": 215,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md": {
+      "file_path": "docs/DEVELOPER/GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md",
+      "total_lines": 283,
+      "non_empty_lines": 217,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/GUIDES/TESTING.md": {
+      "file_path": "docs/DEVELOPER/GUIDES/TESTING.md",
+      "total_lines": 310,
+      "non_empty_lines": 241,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/GUIDES/CLEANUP_GUIDE.md": {
+      "file_path": "docs/DEVELOPER/GUIDES/CLEANUP_GUIDE.md",
+      "total_lines": 196,
+      "non_empty_lines": 147,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/GUIDES/TESTS_GUIDE.md": {
+      "file_path": "docs/DEVELOPER/GUIDES/TESTS_GUIDE.md",
+      "total_lines": 391,
+      "non_empty_lines": 319,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/GUIDES/CLEAN_SHUTDOWN_GUIDE.md": {
+      "file_path": "docs/DEVELOPER/GUIDES/CLEAN_SHUTDOWN_GUIDE.md",
+      "total_lines": 285,
+      "non_empty_lines": 211,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/GUIDES/PLUGINS_GUIDE.md": {
+      "file_path": "docs/DEVELOPER/GUIDES/PLUGINS_GUIDE.md",
+      "total_lines": 658,
+      "non_empty_lines": 504,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/GUIDES/LINTING_GUIDE.md": {
+      "file_path": "docs/DEVELOPER/GUIDES/LINTING_GUIDE.md",
+      "total_lines": 155,
+      "non_empty_lines": 114,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md": {
+      "file_path": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
+      "total_lines": 302,
+      "non_empty_lines": 244,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": true,
+      "has_images": false,
+      "quality_score": 90,
+      "issues": [
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": true
+    },
+    "DEVELOPER/GUIDES/TEST_CLEANUP_GUIDE.md": {
+      "file_path": "docs/DEVELOPER/GUIDES/TEST_CLEANUP_GUIDE.md",
+      "total_lines": 240,
+      "non_empty_lines": 193,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md": {
+      "file_path": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
+      "total_lines": 423,
+      "non_empty_lines": 321,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/MAINTENANCE/APPLE_DOUBLE_MANAGEMENT.md": {
+      "file_path": "docs/DEVELOPER/MAINTENANCE/APPLE_DOUBLE_MANAGEMENT.md",
+      "total_lines": 119,
+      "non_empty_lines": 79,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/MAINTENANCE/BIN_CLEANUP_REPORT.md": {
+      "file_path": "docs/DEVELOPER/MAINTENANCE/BIN_CLEANUP_REPORT.md",
+      "total_lines": 182,
+      "non_empty_lines": 140,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 60,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/MAINTENANCE/MACOS_TEMP_CLEANUP.md": {
+      "file_path": "docs/DEVELOPER/MAINTENANCE/MACOS_TEMP_CLEANUP.md",
+      "total_lines": 81,
+      "non_empty_lines": 54,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/PLANS/PLAN_ACTION_COUVERTURE_2025.md": {
+      "file_path": "docs/DEVELOPER/PLANS/PLAN_ACTION_COUVERTURE_2025.md",
+      "total_lines": 477,
+      "non_empty_lines": 368,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/PLANS/OPTIMISATION_TESTS_RAM_2025.md": {
+      "file_path": "docs/DEVELOPER/PLANS/OPTIMISATION_TESTS_RAM_2025.md",
+      "total_lines": 206,
+      "non_empty_lines": 155,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/PLANS/PLAN_CORRECTION_TESTS_2025.md": {
+      "file_path": "docs/DEVELOPER/PLANS/PLAN_CORRECTION_TESTS_2025.md",
+      "total_lines": 306,
+      "non_empty_lines": 227,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [
+        "Dates obsolètes",
+        "Références obsolètes"
+      ],
+      "has_old_dates": true,
+      "has_obsolete_refs": true,
+      "has_broken_links": false
+    },
+    "DEVELOPER/PLANS/INDEX.md": {
+      "file_path": "docs/DEVELOPER/PLANS/INDEX.md",
+      "total_lines": 104,
+      "non_empty_lines": 76,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": true,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": true
+    },
+    "DEVELOPER/PLANS/REORGANISATION_TESTS_STRUCTURE.md": {
+      "file_path": "docs/DEVELOPER/PLANS/REORGANISATION_TESTS_STRUCTURE.md",
+      "total_lines": 258,
+      "non_empty_lines": 210,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/PLANS/REORGANISATION_TESTS_PLAN.md": {
+      "file_path": "docs/DEVELOPER/PLANS/REORGANISATION_TESTS_PLAN.md",
+      "total_lines": 335,
+      "non_empty_lines": 289,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/PLANS/NETTOYAGE_REPOSITORY_PLAN.md": {
+      "file_path": "docs/DEVELOPER/PLANS/NETTOYAGE_REPOSITORY_PLAN.md",
+      "total_lines": 591,
+      "non_empty_lines": 461,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/PLANS/PLAN_ACTION_MODULARISATION_ATHALIA.md": {
+      "file_path": "docs/DEVELOPER/PLANS/PLAN_ACTION_MODULARISATION_ATHALIA.md",
+      "total_lines": 514,
+      "non_empty_lines": 382,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 60,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/REPORTS/CORRECTIONS_PROGRESS.md": {
+      "file_path": "docs/DEVELOPER/REPORTS/CORRECTIONS_PROGRESS.md",
+      "total_lines": 125,
+      "non_empty_lines": 92,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 60,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/REPORTS/RESUME_ANALYSE_TESTS_2025.md": {
+      "file_path": "docs/DEVELOPER/REPORTS/RESUME_ANALYSE_TESTS_2025.md",
+      "total_lines": 175,
+      "non_empty_lines": 135,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 60,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/REPORTS/RAPPORT_PROGRES_2025.md": {
+      "file_path": "docs/DEVELOPER/REPORTS/RAPPORT_PROGRES_2025.md",
+      "total_lines": 131,
+      "non_empty_lines": 93,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 60,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/REPORTS/RAPPORT_PROGRES_FINAL_2025.md": {
+      "file_path": "docs/DEVELOPER/REPORTS/RAPPORT_PROGRES_FINAL_2025.md",
+      "total_lines": 133,
+      "non_empty_lines": 95,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 60,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/REPORTS/CORRECTION_PYTEST_COVERAGE_2025.md": {
+      "file_path": "docs/DEVELOPER/REPORTS/CORRECTION_PYTEST_COVERAGE_2025.md",
+      "total_lines": 218,
+      "non_empty_lines": 168,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md": {
+      "file_path": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
+      "total_lines": 211,
+      "non_empty_lines": 166,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": true,
+      "has_images": false,
+      "quality_score": 90,
+      "issues": [
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": true
+    },
+    "DEVELOPER/REPORTS/OPTIMISATION_TESTS_RAM_FINALE_2025.md": {
+      "file_path": "docs/DEVELOPER/REPORTS/OPTIMISATION_TESTS_RAM_FINALE_2025.md",
+      "total_lines": 158,
+      "non_empty_lines": 115,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 60,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md": {
+      "file_path": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
+      "total_lines": 289,
+      "non_empty_lines": 220,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": true,
+      "has_images": false,
+      "quality_score": 90,
+      "issues": [
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": true
+    },
+    "DEVELOPER/REPORTS/ANALYSE_COMPLETE_MODULES_ATHALIA.md": {
+      "file_path": "docs/DEVELOPER/REPORTS/ANALYSE_COMPLETE_MODULES_ATHALIA.md",
+      "total_lines": 540,
+      "non_empty_lines": 412,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": true,
+      "has_images": false,
+      "quality_score": 90,
+      "issues": [
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": true
+    },
+    "DEVELOPER/REPORTS/PHASE_4_MODULES_AVANCES_PLAN.md": {
+      "file_path": "docs/DEVELOPER/REPORTS/PHASE_4_MODULES_AVANCES_PLAN.md",
+      "total_lines": 500,
+      "non_empty_lines": 380,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/REPORTS/RAPPORT_COMPLET_AMELIORATIONS_2025.md": {
+      "file_path": "docs/DEVELOPER/REPORTS/RAPPORT_COMPLET_AMELIORATIONS_2025.md",
+      "total_lines": 546,
+      "non_empty_lines": 447,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/REPORTS/AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md": {
+      "file_path": "docs/DEVELOPER/REPORTS/AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md",
+      "total_lines": 245,
+      "non_empty_lines": 190,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 60,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/UTILITIES/FORMATAGE_AUTOMATIQUE.md": {
+      "file_path": "docs/DEVELOPER/UTILITIES/FORMATAGE_AUTOMATIQUE.md",
+      "total_lines": 187,
+      "non_empty_lines": 141,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/UTILITIES/GIT_WORKFLOW.md": {
+      "file_path": "docs/DEVELOPER/UTILITIES/GIT_WORKFLOW.md",
+      "total_lines": 244,
+      "non_empty_lines": 187,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": true,
+      "has_images": false,
+      "quality_score": 90,
+      "issues": [
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": true
+    },
+    "DEVELOPER/UTILITIES/optimisation/OPTIMISATION_CURSOR_RAM.md": {
+      "file_path": "docs/DEVELOPER/UTILITIES/optimisation/OPTIMISATION_CURSOR_RAM.md",
+      "total_lines": 164,
+      "non_empty_lines": 127,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_CURSOR.md": {
+      "file_path": "docs/DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_CURSOR.md",
+      "total_lines": 178,
+      "non_empty_lines": 140,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_MAC.md": {
+      "file_path": "docs/DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_MAC.md",
+      "total_lines": 163,
+      "non_empty_lines": 128,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "DEVELOPER/UTILITIES/optimisation/README.md": {
+      "file_path": "docs/DEVELOPER/UTILITIES/optimisation/README.md",
+      "total_lines": 33,
+      "non_empty_lines": 23,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 60,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "GETTING_STARTED/INSTALLATION.md": {
+      "file_path": "docs/GETTING_STARTED/INSTALLATION.md",
+      "total_lines": 315,
+      "non_empty_lines": 237,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": true,
+      "has_images": false,
+      "quality_score": 90,
+      "issues": [
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": true
+    },
+    "REPORTS/AMELIORATION_COUVERTURE_TESTS_20250731.md": {
+      "file_path": "docs/REPORTS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
+      "total_lines": 224,
+      "non_empty_lines": 182,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/RELEASES_AND_BILANS/BACKUP_v1.0.0_FINAL_20250811.md": {
+      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/BACKUP_v1.0.0_FINAL_20250811.md",
+      "total_lines": 123,
+      "non_empty_lines": 97,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/RELEASES_AND_BILANS/BILAN_COMPLET_BRANCHES_ATHALIA_20250811.md": {
+      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/BILAN_COMPLET_BRANCHES_ATHALIA_20250811.md",
+      "total_lines": 180,
+      "non_empty_lines": 138,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 60,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/RELEASES_AND_BILANS/BILAN_COMPLET_DEFINITIF_ATHALIA_2025.md": {
+      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/BILAN_COMPLET_DEFINITIF_ATHALIA_2025.md",
+      "total_lines": 300,
+      "non_empty_lines": 221,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/RELEASES_AND_BILANS/PLAN_ACTION_AMELIORATIONS_FUTURES_ATHALIA_2025.md": {
+      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/PLAN_ACTION_AMELIORATIONS_FUTURES_ATHALIA_2025.md",
+      "total_lines": 413,
+      "non_empty_lines": 339,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md": {
+      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+      "total_lines": 167,
+      "non_empty_lines": 137,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [
+        "Références obsolètes"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": true,
+      "has_broken_links": false
+    },
+    "REPORTS/RELEASES_AND_BILANS/PLAN_VERSION_FINALE_ATHALIA_v1.0.0.md": {
+      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/PLAN_VERSION_FINALE_ATHALIA_v1.0.0.md",
+      "total_lines": 212,
+      "non_empty_lines": 166,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/RELEASES_AND_BILANS/RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md": {
+      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md",
+      "total_lines": 289,
+      "non_empty_lines": 221,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/RELEASES_AND_BILANS/RAPPORT_NETTOYAGE_COMPLET_DOCUMENTATION_ATHALIA.md": {
+      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_NETTOYAGE_COMPLET_DOCUMENTATION_ATHALIA.md",
+      "total_lines": 138,
+      "non_empty_lines": 118,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 60,
+      "issues": [
+        "Références obsolètes"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": true,
+      "has_broken_links": false
+    },
+    "REPORTS/RELEASES_AND_BILANS/README.md": {
+      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
+      "total_lines": 72,
+      "non_empty_lines": 53,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 60,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/RELEASES_AND_BILANS/RELEASE_FINALE_v1.0.0_SUCCES.md": {
+      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/RELEASE_FINALE_v1.0.0_SUCCES.md",
+      "total_lines": 165,
+      "non_empty_lines": 129,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 60,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/RELEASES_AND_BILANS/VALIDATION_RELEASE_v1.0.0.md": {
+      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/VALIDATION_RELEASE_v1.0.0.md",
+      "total_lines": 145,
+      "non_empty_lines": 112,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/RELEASES_AND_BILANS/doc_quality_report.md": {
+      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/doc_quality_report.md",
+      "total_lines": 41,
+      "non_empty_lines": 29,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 60,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/VALIDATION/VALIDATION_GENERATION_BACKUP_20250811.md": {
+      "file_path": "docs/REPORTS/VALIDATION/VALIDATION_GENERATION_BACKUP_20250811.md",
+      "total_lines": 116,
+      "non_empty_lines": 90,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/AUDITS/AUDIT_SECURITY_QUALITY_REPORT.md": {
+      "file_path": "docs/REPORTS/AUDITS/AUDIT_SECURITY_QUALITY_REPORT.md",
+      "total_lines": 202,
+      "non_empty_lines": 152,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 60,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/CI_CD/CI_CD_PROFESSIONAL_SETUP_COMPLETE.md": {
+      "file_path": "docs/REPORTS/CI_CD/CI_CD_PROFESSIONAL_SETUP_COMPLETE.md",
+      "total_lines": 235,
+      "non_empty_lines": 177,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/CI_CD/ETAT_PROJET_FINAL_20250802.md": {
+      "file_path": "docs/REPORTS/CI_CD/ETAT_PROJET_FINAL_20250802.md",
+      "total_lines": 202,
+      "non_empty_lines": 152,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/CI_CD/CI_CD_PRO_ACTION_PLAN.md": {
+      "file_path": "docs/REPORTS/CI_CD/CI_CD_PRO_ACTION_PLAN.md",
+      "total_lines": 408,
+      "non_empty_lines": 320,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md": {
+      "file_path": "docs/REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+      "total_lines": 425,
+      "non_empty_lines": 338,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/CI_CD/CI_CD_PRO_PRE_COMMIT_IMPLEMENTATION.md": {
+      "file_path": "docs/REPORTS/CI_CD/CI_CD_PRO_PRE_COMMIT_IMPLEMENTATION.md",
+      "total_lines": 249,
+      "non_empty_lines": 196,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/CI_CD/CI_CD_PRO_PROGRESS_REPORT_20250731.md": {
+      "file_path": "docs/REPORTS/CI_CD/CI_CD_PRO_PROGRESS_REPORT_20250731.md",
+      "total_lines": 160,
+      "non_empty_lines": 120,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/CORRECTIONS/CORRECTION_PYTHON_3_1_PHASE17_20250731.md": {
+      "file_path": "docs/REPORTS/CORRECTIONS/CORRECTION_PYTHON_3_1_PHASE17_20250731.md",
+      "total_lines": 200,
+      "non_empty_lines": 152,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/CORRECTIONS/CORRECTION_CI_LEVEL1_20250811.md": {
+      "file_path": "docs/REPORTS/CORRECTIONS/CORRECTION_CI_LEVEL1_20250811.md",
+      "total_lines": 137,
+      "non_empty_lines": 99,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/CORRECTIONS/PHASE_14_16_SUMMARY.md": {
+      "file_path": "docs/REPORTS/CORRECTIONS/PHASE_14_16_SUMMARY.md",
+      "total_lines": 182,
+      "non_empty_lines": 135,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 60,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/CORRECTIONS/CORRECTION_TESTS_PERFORMANCE_20250802.md": {
+      "file_path": "docs/REPORTS/CORRECTIONS/CORRECTION_TESTS_PERFORMANCE_20250802.md",
+      "total_lines": 164,
+      "non_empty_lines": 125,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/CORRECTIONS/CORRECTION_MASSIVE_DOCUMENTATION_20250803.md": {
+      "file_path": "docs/REPORTS/CORRECTIONS/CORRECTION_MASSIVE_DOCUMENTATION_20250803.md",
+      "total_lines": 247,
+      "non_empty_lines": 183,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/CORRECTIONS/AMELIORATION_TESTS_UNIFIED_ORCHESTRATOR_20250802.md": {
+      "file_path": "docs/REPORTS/CORRECTIONS/AMELIORATION_TESTS_UNIFIED_ORCHESTRATOR_20250802.md",
+      "total_lines": 141,
+      "non_empty_lines": 107,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/CORRECTIONS/CORRECTION_TESTS_PERFORMANCE_SECURITY_20250811.md": {
+      "file_path": "docs/REPORTS/CORRECTIONS/CORRECTION_TESTS_PERFORMANCE_SECURITY_20250811.md",
+      "total_lines": 196,
+      "non_empty_lines": 155,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/CORRECTIONS/MISE_A_JOUR_DOCUMENTATION_COMPLETE_20250803.md": {
+      "file_path": "docs/REPORTS/CORRECTIONS/MISE_A_JOUR_DOCUMENTATION_COMPLETE_20250803.md",
+      "total_lines": 236,
+      "non_empty_lines": 178,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/PLANS/EXECUTION_PERFORMANCE_SEMAINE1.md": {
+      "file_path": "docs/REPORTS/PLANS/EXECUTION_PERFORMANCE_SEMAINE1.md",
+      "total_lines": 340,
+      "non_empty_lines": 270,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/PLANS/INDEX.md": {
+      "file_path": "docs/REPORTS/PLANS/INDEX.md",
+      "total_lines": 134,
+      "non_empty_lines": 100,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": true,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": true
+    },
+    "USER_GUIDES/CONTRIBUTING.md": {
+      "file_path": "docs/USER_GUIDES/CONTRIBUTING.md",
+      "total_lines": 179,
+      "non_empty_lines": 136,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": true,
+      "has_images": false,
+      "quality_score": 90,
+      "issues": [
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": true
+    },
+    "USER_GUIDES/INDEX.md": {
+      "file_path": "docs/USER_GUIDES/INDEX.md",
+      "total_lines": 55,
+      "non_empty_lines": 36,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": true,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": true
+    },
+    "USER_GUIDES/DEPLOYMENT.md": {
+      "file_path": "docs/USER_GUIDES/DEPLOYMENT.md",
+      "total_lines": 341,
+      "non_empty_lines": 282,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "USER_GUIDES/USAGE.md": {
+      "file_path": "docs/USER_GUIDES/USAGE.md",
+      "total_lines": 170,
+      "non_empty_lines": 125,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "USER_GUIDES/FAQ.md": {
+      "file_path": "docs/USER_GUIDES/FAQ.md",
+      "total_lines": 287,
+      "non_empty_lines": 212,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "USER_GUIDES/INSTALLATION.md": {
+      "file_path": "docs/USER_GUIDES/INSTALLATION.md",
+      "total_lines": 565,
+      "non_empty_lines": 435,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": true,
+      "has_images": true,
+      "quality_score": 100,
+      "issues": [
+        "Références obsolètes",
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": true,
+      "has_broken_links": true
+    },
+    "USER_GUIDES/QUICK_START.md": {
+      "file_path": "docs/USER_GUIDES/QUICK_START.md",
+      "total_lines": 442,
+      "non_empty_lines": 340,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": true,
+      "has_images": true,
+      "quality_score": 100,
+      "issues": [
+        "Références obsolètes",
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": true,
+      "has_broken_links": true
+    },
+    "USER_GUIDES/GUIDE_UTILISATION_ATHALIA.md": {
+      "file_path": "docs/USER_GUIDES/GUIDE_UTILISATION_ATHALIA.md",
+      "total_lines": 428,
+      "non_empty_lines": 317,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "USER_GUIDES/TROUBLESHOOTING.md": {
+      "file_path": "docs/USER_GUIDES/TROUBLESHOOTING.md",
+      "total_lines": 167,
+      "non_empty_lines": 122,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": true,
+      "has_images": false,
+      "quality_score": 90,
+      "issues": [
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": true
+    },
+    "USER_GUIDES/README_AMELIORATIONS_FUTURES.md": {
+      "file_path": "docs/USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
+      "total_lines": 426,
+      "non_empty_lines": 325,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": true,
+      "has_images": false,
+      "quality_score": 90,
+      "issues": [
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": true
+    },
+    "USER_GUIDES/robotics/REACHY_SETUP_GUIDE.md": {
+      "file_path": "docs/USER_GUIDES/robotics/REACHY_SETUP_GUIDE.md",
+      "total_lines": 298,
+      "non_empty_lines": 230,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [
+        "Dates obsolètes"
+      ],
+      "has_old_dates": true,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "USER_GUIDES/robotics/ROBOTICS_GUIDE.md": {
+      "file_path": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
+      "total_lines": 514,
+      "non_empty_lines": 376,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": true,
+      "has_images": false,
+      "quality_score": 90,
+      "issues": [
+        "Dates obsolètes",
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": true,
+      "has_obsolete_refs": false,
+      "has_broken_links": true
+    },
+    "USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md": {
+      "file_path": "docs/USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
+      "total_lines": 178,
+      "non_empty_lines": 137,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [
+        "Dates obsolètes"
+      ],
+      "has_old_dates": true,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "USER_GUIDES/robotics/ROBOTICS_QUICK_START.md": {
+      "file_path": "docs/USER_GUIDES/robotics/ROBOTICS_QUICK_START.md",
+      "total_lines": 201,
+      "non_empty_lines": 160,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [
+        "Dates obsolètes"
+      ],
+      "has_old_dates": true,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "USER_GUIDES/robotics/README.md": {
+      "file_path": "docs/USER_GUIDES/robotics/README.md",
+      "total_lines": 37,
+      "non_empty_lines": 26,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 60,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "USER_GUIDES/robotics/audits/reachy_audit_20250729_162938.md": {
+      "file_path": "docs/USER_GUIDES/robotics/audits/reachy_audit_20250729_162938.md",
+      "total_lines": 26,
+      "non_empty_lines": 18,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 60,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "API/INDEX.md": {
+      "file_path": "docs/API/INDEX.md",
+      "total_lines": 805,
+      "non_empty_lines": 616,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": true,
+      "has_images": true,
+      "quality_score": 100,
+      "issues": [
+        "Références obsolètes",
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": true,
+      "has_broken_links": true
+    },
+    "API/COMMANDES.md": {
+      "file_path": "docs/API/COMMANDES.md",
+      "total_lines": 304,
+      "non_empty_lines": 239,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "API/core_modules.md": {
+      "file_path": "docs/API/core_modules.md",
+      "total_lines": 138,
+      "non_empty_lines": 108,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": true,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": true
+    },
+    "API/ERROR_HANDLING.md": {
+      "file_path": "docs/API/ERROR_HANDLING.md",
+      "total_lines": 193,
+      "non_empty_lines": 146,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": true,
+      "has_images": false,
+      "quality_score": 90,
+      "issues": [
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": true
+    },
+    "API/orchestrator.md": {
+      "file_path": "docs/API/orchestrator.md",
+      "total_lines": 398,
+      "non_empty_lines": 324,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "API/robotics.md": {
+      "file_path": "docs/API/robotics.md",
+      "total_lines": 64,
+      "non_empty_lines": 48,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": true,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": true
+    },
+    "API/plugins.md": {
+      "file_path": "docs/API/plugins.md",
+      "total_lines": 229,
+      "non_empty_lines": 181,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": true,
+      "has_images": false,
+      "quality_score": 90,
+      "issues": [
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": true
+    },
+    "API/COMMANDES_AVANCEES.md": {
+      "file_path": "docs/API/COMMANDES_AVANCEES.md",
+      "total_lines": 300,
+      "non_empty_lines": 226,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "API/REFERENCE.md": {
+      "file_path": "docs/API/REFERENCE.md",
+      "total_lines": 915851,
+      "non_empty_lines": 591182,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": true,
+      "has_images": false,
+      "quality_score": 90,
+      "issues": [
+        "Dates obsolètes",
+        "Références obsolètes",
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": true,
+      "has_obsolete_refs": true,
+      "has_broken_links": true
+    }
+  },
+  "recommendations": {
+    "keep": [],
+    "improve": [
+      {
+        "file": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "reason": "Qualité correcte mais améliorable (score: 60)",
+        "issues": []
+      },
+      {
+        "file": "NAVIGATION_GLOBALE.md",
+        "reason": "Qualité correcte mais améliorable (score: 100)",
+        "issues": [
+          "Références obsolètes",
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
+        "file": "ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "ARCHITECTURE/INDEX.md",
+        "reason": "Qualité correcte mais améliorable (score: 100)",
+        "issues": [
+          "Références obsolètes",
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
+        "file": "ARCHITECTURE/STRUCTURE_PROJET_EXPLICATION.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "ARCHITECTURE/dashboard/dashboard.md",
+        "reason": "Qualité correcte mais améliorable (score: 60)",
+        "issues": []
+      },
+      {
+        "file": "ARCHITECTURE/dashboard/README.md",
+        "reason": "Qualité correcte mais améliorable (score: 60)",
+        "issues": []
+      },
+      {
+        "file": "ARCHIVE/FICHE_PRESENTATION_EXPERT.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "ARCHIVE/REORGANISATION_SYNTHESE_20250731.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": [
+          "Références obsolètes"
+        ]
+      },
+      {
+        "file": "ARCHIVE/STRUCTURE_REORGANISATION_PLAN.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": [
+          "Références obsolètes"
+        ]
+      },
+      {
+        "file": "DEVELOPER/BEST_PRACTICES.md",
+        "reason": "Qualité correcte mais améliorable (score: 90)",
+        "issues": [
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
+        "file": "DEVELOPER/MODULES.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/INDEX.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": [
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
+        "file": "DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+        "reason": "Qualité correcte mais améliorable (score: 90)",
+        "issues": [
+          "Références obsolètes",
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
+        "file": "DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/GUIDES/DEVELOPER_GUIDE.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/GUIDES/TESTING.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/GUIDES/CLEANUP_GUIDE.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/GUIDES/TESTS_GUIDE.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/GUIDES/CLEAN_SHUTDOWN_GUIDE.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/GUIDES/PLUGINS_GUIDE.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/GUIDES/LINTING_GUIDE.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
+        "reason": "Qualité correcte mais améliorable (score: 90)",
+        "issues": [
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
+        "file": "DEVELOPER/GUIDES/TEST_CLEANUP_GUIDE.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/MAINTENANCE/APPLE_DOUBLE_MANAGEMENT.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/MAINTENANCE/BIN_CLEANUP_REPORT.md",
+        "reason": "Qualité correcte mais améliorable (score: 60)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/MAINTENANCE/MACOS_TEMP_CLEANUP.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/PLANS/PLAN_ACTION_COUVERTURE_2025.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/PLANS/OPTIMISATION_TESTS_RAM_2025.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/PLANS/PLAN_CORRECTION_TESTS_2025.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": [
+          "Dates obsolètes",
+          "Références obsolètes"
+        ]
+      },
+      {
+        "file": "DEVELOPER/PLANS/INDEX.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": [
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
+        "file": "DEVELOPER/PLANS/REORGANISATION_TESTS_STRUCTURE.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/PLANS/REORGANISATION_TESTS_PLAN.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/PLANS/NETTOYAGE_REPOSITORY_PLAN.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/PLANS/PLAN_ACTION_MODULARISATION_ATHALIA.md",
+        "reason": "Qualité correcte mais améliorable (score: 60)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/REPORTS/CORRECTIONS_PROGRESS.md",
+        "reason": "Qualité correcte mais améliorable (score: 60)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/REPORTS/RESUME_ANALYSE_TESTS_2025.md",
+        "reason": "Qualité correcte mais améliorable (score: 60)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/REPORTS/RAPPORT_PROGRES_2025.md",
+        "reason": "Qualité correcte mais améliorable (score: 60)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/REPORTS/RAPPORT_PROGRES_FINAL_2025.md",
+        "reason": "Qualité correcte mais améliorable (score: 60)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/REPORTS/CORRECTION_PYTEST_COVERAGE_2025.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
+        "reason": "Qualité correcte mais améliorable (score: 90)",
+        "issues": [
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
+        "file": "DEVELOPER/REPORTS/OPTIMISATION_TESTS_RAM_FINALE_2025.md",
+        "reason": "Qualité correcte mais améliorable (score: 60)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
+        "reason": "Qualité correcte mais améliorable (score: 90)",
+        "issues": [
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
+        "file": "DEVELOPER/REPORTS/ANALYSE_COMPLETE_MODULES_ATHALIA.md",
+        "reason": "Qualité correcte mais améliorable (score: 90)",
+        "issues": [
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
+        "file": "DEVELOPER/REPORTS/PHASE_4_MODULES_AVANCES_PLAN.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/REPORTS/RAPPORT_COMPLET_AMELIORATIONS_2025.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/REPORTS/AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md",
+        "reason": "Qualité correcte mais améliorable (score: 60)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/UTILITIES/FORMATAGE_AUTOMATIQUE.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/UTILITIES/GIT_WORKFLOW.md",
+        "reason": "Qualité correcte mais améliorable (score: 90)",
+        "issues": [
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
+        "file": "DEVELOPER/UTILITIES/optimisation/OPTIMISATION_CURSOR_RAM.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_CURSOR.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_MAC.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "DEVELOPER/UTILITIES/optimisation/README.md",
+        "reason": "Qualité correcte mais améliorable (score: 60)",
+        "issues": []
+      },
+      {
+        "file": "GETTING_STARTED/INSTALLATION.md",
+        "reason": "Qualité correcte mais améliorable (score: 90)",
+        "issues": [
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
+        "file": "REPORTS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/RELEASES_AND_BILANS/BACKUP_v1.0.0_FINAL_20250811.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/RELEASES_AND_BILANS/BILAN_COMPLET_BRANCHES_ATHALIA_20250811.md",
+        "reason": "Qualité correcte mais améliorable (score: 60)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/RELEASES_AND_BILANS/BILAN_COMPLET_DEFINITIF_ATHALIA_2025.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/RELEASES_AND_BILANS/PLAN_ACTION_AMELIORATIONS_FUTURES_ATHALIA_2025.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": [
+          "Références obsolètes"
+        ]
+      },
+      {
+        "file": "REPORTS/RELEASES_AND_BILANS/PLAN_VERSION_FINALE_ATHALIA_v1.0.0.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/RELEASES_AND_BILANS/RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/RELEASES_AND_BILANS/RAPPORT_NETTOYAGE_COMPLET_DOCUMENTATION_ATHALIA.md",
+        "reason": "Qualité correcte mais améliorable (score: 60)",
+        "issues": [
+          "Références obsolètes"
+        ]
+      },
+      {
+        "file": "REPORTS/RELEASES_AND_BILANS/README.md",
+        "reason": "Qualité correcte mais améliorable (score: 60)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/RELEASES_AND_BILANS/RELEASE_FINALE_v1.0.0_SUCCES.md",
+        "reason": "Qualité correcte mais améliorable (score: 60)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/RELEASES_AND_BILANS/VALIDATION_RELEASE_v1.0.0.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/RELEASES_AND_BILANS/doc_quality_report.md",
+        "reason": "Qualité correcte mais améliorable (score: 60)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/VALIDATION/VALIDATION_GENERATION_BACKUP_20250811.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/AUDITS/AUDIT_SECURITY_QUALITY_REPORT.md",
+        "reason": "Qualité correcte mais améliorable (score: 60)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/CI_CD/CI_CD_PROFESSIONAL_SETUP_COMPLETE.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/CI_CD/ETAT_PROJET_FINAL_20250802.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/CI_CD/CI_CD_PRO_ACTION_PLAN.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/CI_CD/CI_CD_PRO_PRE_COMMIT_IMPLEMENTATION.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/CI_CD/CI_CD_PRO_PROGRESS_REPORT_20250731.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/CORRECTIONS/CORRECTION_PYTHON_3_1_PHASE17_20250731.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/CORRECTIONS/CORRECTION_CI_LEVEL1_20250811.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/CORRECTIONS/PHASE_14_16_SUMMARY.md",
+        "reason": "Qualité correcte mais améliorable (score: 60)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/CORRECTIONS/CORRECTION_TESTS_PERFORMANCE_20250802.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/CORRECTIONS/CORRECTION_MASSIVE_DOCUMENTATION_20250803.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/CORRECTIONS/AMELIORATION_TESTS_UNIFIED_ORCHESTRATOR_20250802.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/CORRECTIONS/CORRECTION_TESTS_PERFORMANCE_SECURITY_20250811.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/CORRECTIONS/MISE_A_JOUR_DOCUMENTATION_COMPLETE_20250803.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/PLANS/EXECUTION_PERFORMANCE_SEMAINE1.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/PLANS/INDEX.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": [
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
+        "file": "USER_GUIDES/CONTRIBUTING.md",
+        "reason": "Qualité correcte mais améliorable (score: 90)",
+        "issues": [
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
+        "file": "USER_GUIDES/INDEX.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": [
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
+        "file": "USER_GUIDES/DEPLOYMENT.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "USER_GUIDES/USAGE.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "USER_GUIDES/FAQ.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "USER_GUIDES/INSTALLATION.md",
+        "reason": "Qualité correcte mais améliorable (score: 100)",
+        "issues": [
+          "Références obsolètes",
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
+        "file": "USER_GUIDES/QUICK_START.md",
+        "reason": "Qualité correcte mais améliorable (score: 100)",
+        "issues": [
+          "Références obsolètes",
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
+        "file": "USER_GUIDES/GUIDE_UTILISATION_ATHALIA.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "USER_GUIDES/TROUBLESHOOTING.md",
+        "reason": "Qualité correcte mais améliorable (score: 90)",
+        "issues": [
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
+        "file": "USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
+        "reason": "Qualité correcte mais améliorable (score: 90)",
+        "issues": [
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
+        "file": "USER_GUIDES/robotics/REACHY_SETUP_GUIDE.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": [
+          "Dates obsolètes"
+        ]
+      },
+      {
+        "file": "USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
+        "reason": "Qualité correcte mais améliorable (score: 90)",
+        "issues": [
+          "Dates obsolètes",
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
+        "file": "USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": [
+          "Dates obsolètes"
+        ]
+      },
+      {
+        "file": "USER_GUIDES/robotics/ROBOTICS_QUICK_START.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": [
+          "Dates obsolètes"
+        ]
+      },
+      {
+        "file": "USER_GUIDES/robotics/README.md",
+        "reason": "Qualité correcte mais améliorable (score: 60)",
+        "issues": []
+      },
+      {
+        "file": "USER_GUIDES/robotics/audits/reachy_audit_20250729_162938.md",
+        "reason": "Qualité correcte mais améliorable (score: 60)",
+        "issues": []
+      },
+      {
+        "file": "API/INDEX.md",
+        "reason": "Qualité correcte mais améliorable (score: 100)",
+        "issues": [
+          "Références obsolètes",
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
+        "file": "API/COMMANDES.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "API/core_modules.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": [
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
+        "file": "API/ERROR_HANDLING.md",
+        "reason": "Qualité correcte mais améliorable (score: 90)",
+        "issues": [
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
+        "file": "API/orchestrator.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "API/robotics.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": [
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
+        "file": "API/plugins.md",
+        "reason": "Qualité correcte mais améliorable (score: 90)",
+        "issues": [
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
+        "file": "API/COMMANDES_AVANCEES.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "API/REFERENCE.md",
+        "reason": "Qualité correcte mais améliorable (score: 90)",
+        "issues": [
+          "Dates obsolètes",
+          "Références obsolètes",
+          "Liens potentiellement cassés"
+        ]
+      }
+    ],
+    "delete": [],
+    "consolidate": []
+  }
+}

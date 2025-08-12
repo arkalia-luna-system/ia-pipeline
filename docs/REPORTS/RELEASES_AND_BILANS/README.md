@@ -19,6 +19,8 @@
 - **`RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md`** - Rapport de correction technique IA
 - **`RAPPORT_NETTOYAGE_COMPLET_DOCUMENTATION_ATHALIA.md`** - Rapport de nettoyage documentation
 - **`REORGANISATION_DOCUMENTATION_FINALE_20250811.md`** - Réorganisation finale de la documentation
+- **`PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md`** - Plan d'optimisation finale de la documentation
+- **`SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md`** - Synthèse finale de l'analyse de la documentation
 
 ### **📈 RAPPORTS DE QUALITÉ**
 - **`doc_quality_report.json`** - Rapport de qualité de la documentation (JSON)
