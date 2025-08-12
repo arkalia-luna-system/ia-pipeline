@@ -61,7 +61,7 @@ Le système CI/CD professionnel progressif d'Athalia a été **entièrement impl
 ## 🛠️ **OUTILS CRÉÉS**
 
 ### **1. Script de Suivi de Progression**
-- **Fichier :** `../../scripts/ci/ci_progress_tracker.py`
+- **Fichier :** `scripts/ci/ci_progress_tracker.py`
 - **Fonctionnalités :**
   - Suivi des métriques en temps réel
   - Génération de rapports détaillés
@@ -69,7 +69,7 @@ Le système CI/CD professionnel progressif d'Athalia a été **entièrement impl
   - Interface CLI complète
 
 ### **2. Guide Utilisateur Complet**
-- **Fichier :** `../../../DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md`
+- **Fichier :** `../../DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md`
 - **Contenu :**
   - Instructions d'utilisation
   - Workflow de développement

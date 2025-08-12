@@ -69,7 +69,7 @@
 ## 🚨 **PROBLÈMES IDENTIFIÉS ET SOLUTIONS**
 
 ### **1. Fichier Doublon Supprimé ✅**
-- **`NAVIGATION_GLOBALE.md`** - Supprimé (doublon avec index principal)
+- **NAVIGATION_GLOBALE.md** - Supprimé (doublon avec index principal)
 - **Problème résolu** - Plus de confusion de navigation
 
 ### **2. Références Obsolètes ✅**
