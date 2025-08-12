@@ -4,11 +4,9 @@ Script de correction automatique des liens cassés dans la documentation Athalia
 Corrige tous les liens cassés identifiés par le test de navigation
 """
 
-import os
-import re
 import json
+import re
 from pathlib import Path
-from typing import Dict, List, Tuple
 
 
 class BrokenLinksFixer:
@@ -19,10 +17,10 @@ class BrokenLinksFixer:
 
     def load_navigation_results(
         self, results_file: str = "navigation_test_smart_results.json"
-    ) -> Dict:
+    ) -> dict:
         """Charge les résultats du test de navigation"""
         try:
-            with open(results_file, "r", encoding="utf-8") as f:
+            with open(results_file, encoding="utf-8") as f:
                 return json.load(f)
         except FileNotFoundError:
             print(
@@ -30,7 +28,7 @@ class BrokenLinksFixer:
             )
             return {}
 
-    def fix_file_links(self, file_path: str, broken_links: List[Dict]) -> bool:
+    def fix_file_links(self, file_path: str, broken_links: list[dict]) -> bool:
         """Corrige les liens cassés dans un fichier"""
         full_path = self.docs_path / file_path
 
@@ -39,10 +37,9 @@ class BrokenLinksFixer:
             return False
 
         try:
-            with open(full_path, "r", encoding="utf-8") as f:
+            with open(full_path, encoding="utf-8") as f:
                 content = f.read()
 
-            original_content = content
             fixes_applied = 0
 
             for broken_link in broken_links:
@@ -117,7 +114,7 @@ class BrokenLinksFixer:
 
         return content
 
-    def fix_all_broken_links(self) -> Dict:
+    def fix_all_broken_links(self) -> dict:
         """Corrige tous les liens cassés identifiés"""
         print("🔧 Correction automatique des liens cassés en cours...")
 
@@ -154,7 +151,7 @@ class BrokenLinksFixer:
                 files_fixed += 1
                 total_fixes += len(broken_links)
 
-        print(f"\n📊 RÉSUMÉ DE LA CORRECTION :")
+        print("\n📊 RÉSUMÉ DE LA CORRECTION :")
         print(f"✅ Fichiers corrigés : {files_fixed}")
         print(f"🔗 Liens corrigés : {total_fixes}")
         print(f"📝 Corrections appliquées : {len(self.fixes_applied)}")
