@@ -2,12 +2,9 @@
 
 <div align="center">
 
-![API Reference](https://img.shields.io/badge/API%20Reference-Enterprise%20Grade-blue?style=for-the-badge&logo=api)
+**🔌 API Reference Enterprise Grade**
 
-[![Modules](https://img.shields.io/badge/modules-79-orange.svg?style=flat-square)](.)
-[![Coverage](https://img.shields.io/badge/coverage-complete-brightgreen.svg?style=flat-square)](.)
-[![Examples](https://img.shields.io/badge/examples-tested-green.svg?style=flat-square)](.)
-[![Version](https://img.shields.io/badge/version-11.0-blue.svg?style=flat-square)](.)
+**📦 Modules: 79+ | 📊 Couverture: Complète | 🧪 Exemples: Testés | 🚀 Version: 11.0**
 
 **Complete API reference for Athalia DevOps Platform - 153 modules documented**
 

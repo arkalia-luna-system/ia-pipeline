@@ -176,9 +176,9 @@ pytest --cov=athalia_core --cov-fail-under=80
 - **Résumé des Améliorations**: Ce document
 
 ### Configurations
-- **Flake8**: `config/.flake8`
-- **Bandit**: `config/.bandit`
-- **isort**: `config/.isort.cfg`
+- **Flake8**: Configuration dans `pyproject.toml`
+- **Bandit**: Configuration dans `pyproject.toml`
+- **isort**: Configuration dans `pyproject.toml`
 - **pyproject.toml**: Configuration complète
 
 ## 🏆 Résultats

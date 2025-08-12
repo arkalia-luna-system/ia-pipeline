@@ -2,12 +2,9 @@
 
 <div align="center">
 
-![Installation](https://img.shields.io/badge/Installation-5%20Minutes-green?style=for-the-badge&logo=download)
+**⚙️ Installation: 5 Minutes**
 
-[![Difficulty](https://img.shields.io/badge/difficulty-beginner-brightgreen.svg?style=flat-square)](.)
-[![Platform](https://img.shields.io/badge/platform-cross--platform-blue.svg?style=flat-square)](.)
-[![Python](https://img.shields.io/badge/python-3.10+-yellow.svg?style=flat-square)](.)
-[![Status](https://img.shields.io/badge/status-production%20ready-orange.svg?style=flat-square)](.)
+**🎯 Difficulté: Débutant | 🌐 Plateforme: Cross-platform | 🐍 Python: 3.10+ | 🚀 Statut: Production Ready**
 
 **Professional installation guide for Athalia DevOps Platform**
 

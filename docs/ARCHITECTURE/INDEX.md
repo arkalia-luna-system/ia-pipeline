@@ -2,11 +2,9 @@
 
 <div align="center">
 
-![Architecture](https://img.shields.io/badge/Architecture-Enterprise%20Grade-blue?style=for-the-badge&logo=blueprint)
+**🏗️ Architecture Enterprise Grade**
 
-[![Modules](https://img.shields.io/badge/modules-79-orange.svg?style=flat-square)](.)
-[![Lines](https://img.shields.io/badge/lines-24,243-green.svg?style=flat-square)](.)
-[![Coverage](https://img.shields.io/badge/coverage-enterprise-purple.svg?style=flat-square)](.)
+**📦 Modules: 79+ | 📏 Lignes: 24,243+ | 📊 Couverture: Enterprise**
 
 **Professional system architecture documentation for Athalia DevOps Platform**
 
@@ -418,8 +416,8 @@ graph TB
 - **[📁 Project Structure](STRUCTURE_PROJET_EXPLICATION.md)** - Detailed directory organization
 - **[🏢 Workspace Organization](ORGANISATION_WORKSPACE.md)** - Development environment setup
 - **[🔌 API Architecture](../API/INDEX.md)** - Interface design patterns
-- **[🛡️ Security Design](../SPECIALIZED/SECURITY/)** - Security implementation details
-- **[⚡ Performance Optimization](../SPECIALIZED/OPTIMISATION/)** - Performance tuning guides
+- ****🛡️ Security Design**** - Security implementation details
+- **[⚡ Performance Optimization](../DEVELOPER/UTILITIES/optimisation/)** - Performance tuning guides
 
 ### 🎯 **Quick Navigation**
 
@@ -430,7 +428,7 @@ graph TB
 | **👤 New Users** | [Quick Start Guide](../USER_GUIDES/QUICK_START.md) | Installation & basic usage |
 | **👨‍💻 Developers** | [API Reference](../API/INDEX.md) | Module documentation |
 | **🔧 DevOps** | [Deployment Guide](../USER_GUIDES/DEPLOYMENT.md) | Production deployment |
-| **🛡️ Security** | [Security Documentation](../SPECIALIZED/SECURITY/) | Security implementation |
+| **🛡️ Security** | **Security Documentation** | Security implementation |
 
 </div>
 
@@ -444,7 +442,7 @@ graph TB
 
 [![Architecture](https://img.shields.io/badge/🏗️-System%20Design-blue?style=for-the-badge&logo=blueprint)](.)
 [![Documentation](https://img.shields.io/badge/📚-Complete%20Reference-green?style=for-the-badge&logo=book)](../README.md)
-[![Security](https://img.shields.io/badge/🛡️-Enterprise%20Grade-red?style=for-the-badge&logo=shield)](../SPECIALIZED/SECURITY/)
+[![Security](https://img.shields.io/badge/🛡️-Enterprise%20Grade-red?style=for-the-badge&logo=shield)](../DEVELOPER/SECURITY_LINTING_GUIDE.md)
 
 **Last Updated:** August 4, 2025 | **Version:** 11.0 | **Status:** Production Ready
 

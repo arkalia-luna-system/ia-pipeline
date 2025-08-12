@@ -221,6 +221,6 @@ La documentation Athalia v1.0.0 est maintenant **100% propre, professionnelle et
 **Version actuelle :** 5.0  
 **Statut :** ✅ **100% ACTIF, MAINTENU ET VALIDÉ - ZÉRO ERREUR ABSOLU**  
 **Mainteneur :** Équipe Athalia/Arkalia  
-**Documentation :** [Guide de maintenance](docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md)
+**Documentation :** [Guide de maintenance](DEVELOPER/DOCUMENTATION_MAINTENANCE.md)
 
 **🎯 La documentation Athalia v1.0.0 est maintenant parfaitement organisée, standardisée et prête pour la production - ZÉRO ERREUR ABSOLU ! 🚀** 

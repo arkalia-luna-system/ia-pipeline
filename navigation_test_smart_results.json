@@ -1,12 +1,12 @@
 {
-  "test_date": "2025-08-12T20:01:39.247729",
+  "test_date": "2025-08-12T20:12:28.309708",
   "global_stats": {
-    "total_files": 109,
-    "total_links": 570,
-    "broken_links": 70,
+    "total_files": 136,
+    "total_links": 555,
+    "broken_links": 51,
     "critical_broken_links": 0,
-    "average_navigation_score": 80.8256880733945,
-    "link_success_rate": 87.71929824561403
+    "average_navigation_score": 85.17156862745097,
+    "link_success_rate": 90.81081081081082
   },
   "file_results": {
     "._INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
@@ -32,7 +32,7 @@
           "link": {
             "type": "markdown",
             "text": "Guide de maintenance",
-            "url": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "url": "DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
             "line": 224
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
@@ -45,7 +45,7 @@
           "link": {
             "type": "local_file",
             "text": "Guide de maintenance",
-            "url": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "url": "DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
             "line": 224
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
@@ -1421,71 +1421,19 @@
     },
     "ARCHITECTURE/INDEX.md": {
       "file_path": "ARCHITECTURE/INDEX.md",
-      "total_links": 22,
-      "valid_links": 12,
-      "broken_links": 10,
+      "total_links": 16,
+      "valid_links": 13,
+      "broken_links": 3,
       "critical_links": 12,
       "critical_broken_links": 0,
-      "navigation_score": 60.0,
+      "navigation_score": 70.0,
       "links": [
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Architecture",
-            "url": "https://img.shields.io/badge/Architecture-Enterprise%20Grade-blue?style=for-the-badge&logo=blueprint",
-            "line": 5
-          },
-          "source_file": "docs/ARCHITECTURE/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/Architecture-Enterprise%20Grade-blue?style=for-the-badge&logo=blueprint",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "![Modules",
-            "url": "https://img.shields.io/badge/modules-79-orange.svg?style=flat-square",
-            "line": 7
-          },
-          "source_file": "docs/ARCHITECTURE/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/modules-79-orange.svg?style=flat-square",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "![Lines",
-            "url": "https://img.shields.io/badge/lines-24,243-green.svg?style=flat-square",
-            "line": 8
-          },
-          "source_file": "docs/ARCHITECTURE/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/lines-24,243-green.svg?style=flat-square",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "![Coverage",
-            "url": "https://img.shields.io/badge/coverage-enterprise-purple.svg?style=flat-square",
-            "line": 9
-          },
-          "source_file": "docs/ARCHITECTURE/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/coverage-enterprise-purple.svg?style=flat-square",
-          "is_critical": false
-        },
         {
           "link": {
             "type": "markdown",
             "text": "📁 Project Structure",
             "url": "STRUCTURE_PROJET_EXPLICATION.md",
-            "line": 418
+            "line": 416
           },
           "source_file": "docs/ARCHITECTURE/INDEX.md",
           "is_valid": true,
@@ -1498,7 +1446,7 @@
             "type": "markdown",
             "text": "🏢 Workspace Organization",
             "url": "ORGANISATION_WORKSPACE.md",
-            "line": 419
+            "line": 417
           },
           "source_file": "docs/ARCHITECTURE/INDEX.md",
           "is_valid": true,
@@ -1511,7 +1459,7 @@
             "type": "markdown",
             "text": "🔌 API Architecture",
             "url": "../API/INDEX.md",
-            "line": 420
+            "line": 418
           },
           "source_file": "docs/ARCHITECTURE/INDEX.md",
           "is_valid": true,
@@ -1522,27 +1470,14 @@
         {
           "link": {
             "type": "markdown",
-            "text": "🛡️ Security Design",
-            "url": "../SPECIALIZED/SECURITY/",
-            "line": 421
-          },
-          "source_file": "docs/ARCHITECTURE/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../SPECIALIZED/SECURITY/",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
             "text": "⚡ Performance Optimization",
-            "url": "../SPECIALIZED/OPTIMISATION/",
-            "line": 422
+            "url": "../DEVELOPER/UTILITIES/optimisation/",
+            "line": 420
           },
           "source_file": "docs/ARCHITECTURE/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../SPECIALIZED/OPTIMISATION/",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": false
         },
         {
@@ -1550,7 +1485,7 @@
             "type": "markdown",
             "text": "Quick Start Guide",
             "url": "../USER_GUIDES/QUICK_START.md",
-            "line": 430
+            "line": 428
           },
           "source_file": "docs/ARCHITECTURE/INDEX.md",
           "is_valid": true,
@@ -1563,7 +1498,7 @@
             "type": "markdown",
             "text": "API Reference",
             "url": "../API/INDEX.md",
-            "line": 431
+            "line": 429
           },
           "source_file": "docs/ARCHITECTURE/INDEX.md",
           "is_valid": true,
@@ -1576,7 +1511,7 @@
             "type": "markdown",
             "text": "Deployment Guide",
             "url": "../USER_GUIDES/DEPLOYMENT.md",
-            "line": 432
+            "line": 430
           },
           "source_file": "docs/ARCHITECTURE/INDEX.md",
           "is_valid": true,
@@ -1587,22 +1522,9 @@
         {
           "link": {
             "type": "markdown",
-            "text": "Security Documentation",
-            "url": "../SPECIALIZED/SECURITY/",
-            "line": 433
-          },
-          "source_file": "docs/ARCHITECTURE/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../SPECIALIZED/SECURITY/",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
             "text": "![Architecture",
             "url": "https://img.shields.io/badge/🏗️-System%20Design-blue?style=for-the-badge&logo=blueprint",
-            "line": 445
+            "line": 443
           },
           "source_file": "docs/ARCHITECTURE/INDEX.md",
           "is_valid": false,
@@ -1615,7 +1537,7 @@
             "type": "markdown",
             "text": "![Documentation",
             "url": "https://img.shields.io/badge/📚-Complete%20Reference-green?style=for-the-badge&logo=book",
-            "line": 446
+            "line": 444
           },
           "source_file": "docs/ARCHITECTURE/INDEX.md",
           "is_valid": false,
@@ -1628,7 +1550,7 @@
             "type": "markdown",
             "text": "![Security",
             "url": "https://img.shields.io/badge/🛡️-Enterprise%20Grade-red?style=for-the-badge&logo=shield",
-            "line": 447
+            "line": 445
           },
           "source_file": "docs/ARCHITECTURE/INDEX.md",
           "is_valid": false,
@@ -1641,7 +1563,7 @@
             "type": "local_file",
             "text": "📁 Project Structure",
             "url": "STRUCTURE_PROJET_EXPLICATION.md",
-            "line": 418
+            "line": 416
           },
           "source_file": "docs/ARCHITECTURE/INDEX.md",
           "is_valid": true,
@@ -1654,7 +1576,7 @@
             "type": "local_file",
             "text": "🏢 Workspace Organization",
             "url": "ORGANISATION_WORKSPACE.md",
-            "line": 419
+            "line": 417
           },
           "source_file": "docs/ARCHITECTURE/INDEX.md",
           "is_valid": true,
@@ -1667,7 +1589,7 @@
             "type": "local_file",
             "text": "🔌 API Architecture",
             "url": "../API/INDEX.md",
-            "line": 420
+            "line": 418
           },
           "source_file": "docs/ARCHITECTURE/INDEX.md",
           "is_valid": true,
@@ -1680,7 +1602,7 @@
             "type": "local_file",
             "text": "Quick Start Guide",
             "url": "../USER_GUIDES/QUICK_START.md",
-            "line": 430
+            "line": 428
           },
           "source_file": "docs/ARCHITECTURE/INDEX.md",
           "is_valid": true,
@@ -1693,7 +1615,7 @@
             "type": "local_file",
             "text": "API Reference",
             "url": "../API/INDEX.md",
-            "line": 431
+            "line": 429
           },
           "source_file": "docs/ARCHITECTURE/INDEX.md",
           "is_valid": true,
@@ -1706,7 +1628,7 @@
             "type": "local_file",
             "text": "Deployment Guide",
             "url": "../USER_GUIDES/DEPLOYMENT.md",
-            "line": 432
+            "line": 430
           },
           "source_file": "docs/ARCHITECTURE/INDEX.md",
           "is_valid": true,
@@ -1718,6 +1640,26 @@
     },
     "ARCHITECTURE/STRUCTURE_PROJET_EXPLICATION.md": {
       "file_path": "ARCHITECTURE/STRUCTURE_PROJET_EXPLICATION.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "ARCHITECTURE/._INDEX.md": {
+      "file_path": "ARCHITECTURE/._INDEX.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "ARCHITECTURE/._ORGANISATION_WORKSPACE.md": {
+      "file_path": "ARCHITECTURE/._ORGANISATION_WORKSPACE.md",
       "total_links": 0,
       "valid_links": 0,
       "broken_links": 0,
@@ -1739,7 +1681,7 @@
           "link": {
             "type": "markdown",
             "text": "Dashboard Guide",
-            "url": "../README.md",
+            "url": "README.md",
             "line": 198
           },
           "source_file": "docs/ARCHITECTURE/dashboard/dashboard.md",
@@ -1752,7 +1694,7 @@
           "link": {
             "type": "local_file",
             "text": "Dashboard Guide",
-            "url": "../README.md",
+            "url": "README.md",
             "line": 198
           },
           "source_file": "docs/ARCHITECTURE/dashboard/dashboard.md",
@@ -1786,6 +1728,16 @@
           "is_critical": true
         }
       ]
+    },
+    "ARCHITECTURE/dashboard/._dashboard.md": {
+      "file_path": "ARCHITECTURE/dashboard/._dashboard.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
     },
     "DEVELOPER/BEST_PRACTICES.md": {
       "file_path": "DEVELOPER/BEST_PRACTICES.md",
@@ -2365,6 +2317,26 @@
         }
       ]
     },
+    "DEVELOPER/._INDEX.md": {
+      "file_path": "DEVELOPER/._INDEX.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "DEVELOPER/._BEST_PRACTICES.md": {
+      "file_path": "DEVELOPER/._BEST_PRACTICES.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "DEVELOPER/DOCUMENTATION_MAINTENANCE.md": {
       "file_path": "DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "total_links": 12,
@@ -2659,6 +2631,26 @@
           "is_critical": true
         }
       ]
+    },
+    "DEVELOPER/._DOCUMENTATION_MAINTENANCE.md": {
+      "file_path": "DEVELOPER/._DOCUMENTATION_MAINTENANCE.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "DEVELOPER/._TEMPLATE_STANDARD_MARKDOWN.md": {
+      "file_path": "DEVELOPER/._TEMPLATE_STANDARD_MARKDOWN.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
     },
     "DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md": {
       "file_path": "DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md",
@@ -3370,6 +3362,16 @@
       "navigation_score": 100,
       "links": []
     },
+    "DEVELOPER/PLANS/._INDEX.md": {
+      "file_path": "DEVELOPER/PLANS/._INDEX.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "DEVELOPER/PLANS/REORGANISATION_TESTS_PLAN.md": {
       "file_path": "DEVELOPER/PLANS/REORGANISATION_TESTS_PLAN.md",
       "total_links": 0,
@@ -3430,6 +3432,16 @@
       "navigation_score": 100,
       "links": []
     },
+    "DEVELOPER/REPORTS/._WORKFLOW_AMELIORATIONS.md": {
+      "file_path": "DEVELOPER/REPORTS/._WORKFLOW_AMELIORATIONS.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "DEVELOPER/REPORTS/RAPPORT_PROGRES_FINAL_2025.md": {
       "file_path": "DEVELOPER/REPORTS/RAPPORT_PROGRES_FINAL_2025.md",
       "total_links": 0,
@@ -3442,6 +3454,16 @@
     },
     "DEVELOPER/REPORTS/CORRECTION_PYTEST_COVERAGE_2025.md": {
       "file_path": "DEVELOPER/REPORTS/CORRECTION_PYTEST_COVERAGE_2025.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "DEVELOPER/REPORTS/._SECURITY_IMPROVEMENTS_SUMMARY.md": {
+      "file_path": "DEVELOPER/REPORTS/._SECURITY_IMPROVEMENTS_SUMMARY.md",
       "total_links": 0,
       "valid_links": 0,
       "broken_links": 0,
@@ -3881,6 +3903,16 @@
       "navigation_score": 100,
       "links": []
     },
+    "DEVELOPER/REPORTS/._OPTIMISATION_TESTS_RAM_FINALE_2025.md": {
+      "file_path": "DEVELOPER/REPORTS/._OPTIMISATION_TESTS_RAM_FINALE_2025.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "DEVELOPER/REPORTS/RAPPORT_COMPLET_AMELIORATIONS_2025.md": {
       "file_path": "DEVELOPER/REPORTS/RAPPORT_COMPLET_AMELIORATIONS_2025.md",
       "total_links": 0,
@@ -4122,12 +4154,12 @@
     },
     "GETTING_STARTED/INSTALLATION.md": {
       "file_path": "GETTING_STARTED/INSTALLATION.md",
-      "total_links": 5,
-      "valid_links": 4,
-      "broken_links": 1,
-      "critical_links": 2,
+      "total_links": 6,
+      "valid_links": 6,
+      "broken_links": 0,
+      "critical_links": 4,
       "critical_broken_links": 0,
-      "navigation_score": 86.66666666666666,
+      "navigation_score": 100.0,
       "links": [
         {
           "link": {
@@ -4146,14 +4178,14 @@
           "link": {
             "type": "markdown",
             "text": "Documentation API",
-            "url": "../../API/",
+            "url": "../API/INDEX.md",
             "line": 288
           },
           "source_file": "docs/GETTING_STARTED/INSTALLATION.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../API/",
-          "is_critical": false
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
         },
         {
           "link": {
@@ -4193,8 +4225,31 @@
           "error_type": null,
           "suggested_fix": null,
           "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "Documentation API",
+            "url": "../API/INDEX.md",
+            "line": 288
+          },
+          "source_file": "docs/GETTING_STARTED/INSTALLATION.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
         }
       ]
+    },
+    "GETTING_STARTED/._INSTALLATION.md": {
+      "file_path": "GETTING_STARTED/._INSTALLATION.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
     },
     "REPORTS/AMELIORATION_COUVERTURE_TESTS_20250731.md": {
       "file_path": "REPORTS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
@@ -4317,6 +4372,16 @@
           "is_critical": true
         }
       ]
+    },
+    "REPORTS/RELEASES_AND_BILANS/._RAPPORT_OPTIMISATION_NAVIGATION_20250812.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/._RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
     },
     "REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md": {
       "file_path": "REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
@@ -5163,6 +5228,16 @@
       "navigation_score": 100,
       "links": []
     },
+    "REPORTS/RELEASES_AND_BILANS/._RAPPORT_OPTIMISATION_FINALE_20250812.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/._RAPPORT_OPTIMISATION_FINALE_20250812.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "REPORTS/RELEASES_AND_BILANS/RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md": {
       "file_path": "REPORTS/RELEASES_AND_BILANS/RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md",
       "total_links": 0,
@@ -5412,6 +5487,36 @@
           "is_critical": true
         }
       ]
+    },
+    "REPORTS/RELEASES_AND_BILANS/._REORGANISATION_DOCUMENTATION_FINALE_20250811.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/._REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "REPORTS/RELEASES_AND_BILANS/._RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/._RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "REPORTS/RELEASES_AND_BILANS/._PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/._PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
     },
     "REPORTS/RELEASES_AND_BILANS/doc_quality_report.md": {
       "file_path": "REPORTS/RELEASES_AND_BILANS/doc_quality_report.md",
@@ -6401,6 +6506,16 @@
       "navigation_score": 100,
       "links": []
     },
+    "REPORTS/CI_CD/._CI_CD_PRO_PRE_COMMIT_IMPLEMENTATION.md": {
+      "file_path": "REPORTS/CI_CD/._CI_CD_PRO_PRE_COMMIT_IMPLEMENTATION.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "REPORTS/CI_CD/CI_CD_PRO_PRE_COMMIT_IMPLEMENTATION.md": {
       "file_path": "REPORTS/CI_CD/CI_CD_PRO_PRE_COMMIT_IMPLEMENTATION.md",
       "total_links": 4,
@@ -7125,9 +7240,9 @@
     },
     "USER_GUIDES/INSTALLATION.md": {
       "file_path": "USER_GUIDES/INSTALLATION.md",
-      "total_links": 23,
+      "total_links": 18,
       "valid_links": 14,
-      "broken_links": 9,
+      "broken_links": 4,
       "critical_links": 14,
       "critical_broken_links": 0,
       "navigation_score": 60.0,
@@ -7135,74 +7250,9 @@
         {
           "link": {
             "type": "markdown",
-            "text": "Installation",
-            "url": "https://img.shields.io/badge/Installation-5%20Minutes-green?style=for-the-badge&logo=download",
-            "line": 5
-          },
-          "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/Installation-5%20Minutes-green?style=for-the-badge&logo=download",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "![Difficulty",
-            "url": "https://img.shields.io/badge/difficulty-beginner-brightgreen.svg?style=flat-square",
-            "line": 7
-          },
-          "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/difficulty-beginner-brightgreen.svg?style=flat-square",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "![Platform",
-            "url": "https://img.shields.io/badge/platform-cross--platform-blue.svg?style=flat-square",
-            "line": 8
-          },
-          "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/platform-cross--platform-blue.svg?style=flat-square",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "![Python",
-            "url": "https://img.shields.io/badge/python-3.10+-yellow.svg?style=flat-square",
-            "line": 9
-          },
-          "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/python-3.10+-yellow.svg?style=flat-square",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "![Status",
-            "url": "https://img.shields.io/badge/status-production%20ready-orange.svg?style=flat-square",
-            "line": 10
-          },
-          "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/status-production%20ready-orange.svg?style=flat-square",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
             "text": "Quick Start",
             "url": "QUICK_START.md",
-            "line": 488
+            "line": 485
           },
           "source_file": "docs/USER_GUIDES/INSTALLATION.md",
           "is_valid": true,
@@ -7215,7 +7265,7 @@
             "type": "markdown",
             "text": "Usage Guide",
             "url": "USAGE.md",
-            "line": 489
+            "line": 486
           },
           "source_file": "docs/USER_GUIDES/INSTALLATION.md",
           "is_valid": true,
@@ -7228,7 +7278,7 @@
             "type": "markdown",
             "text": "Dashboard Guide",
             "url": "../SPECIALIZED/DASHBOARD/",
-            "line": 490
+            "line": 487
           },
           "source_file": "docs/USER_GUIDES/INSTALLATION.md",
           "is_valid": false,
@@ -7241,7 +7291,7 @@
             "type": "markdown",
             "text": "Complete Documentation",
             "url": "../README.md",
-            "line": 491
+            "line": 488
           },
           "source_file": "docs/USER_GUIDES/INSTALLATION.md",
           "is_valid": true,
@@ -7254,7 +7304,7 @@
             "type": "markdown",
             "text": "⚡ Quick Start Guide",
             "url": "QUICK_START.md",
-            "line": 497
+            "line": 494
           },
           "source_file": "docs/USER_GUIDES/INSTALLATION.md",
           "is_valid": true,
@@ -7267,7 +7317,7 @@
             "type": "markdown",
             "text": "📚 Usage Guide",
             "url": "USAGE.md",
-            "line": 498
+            "line": 495
           },
           "source_file": "docs/USER_GUIDES/INSTALLATION.md",
           "is_valid": true,
@@ -7280,7 +7330,7 @@
             "type": "markdown",
             "text": "🔧 Troubleshooting",
             "url": "TROUBLESHOOTING.md",
-            "line": 499
+            "line": 496
           },
           "source_file": "docs/USER_GUIDES/INSTALLATION.md",
           "is_valid": true,
@@ -7293,7 +7343,7 @@
             "type": "markdown",
             "text": "🚀 Deployment Guide",
             "url": "DEPLOYMENT.md",
-            "line": 500
+            "line": 497
           },
           "source_file": "docs/USER_GUIDES/INSTALLATION.md",
           "is_valid": true,
@@ -7306,7 +7356,7 @@
             "type": "markdown",
             "text": "![Quick Start",
             "url": "https://img.shields.io/badge/⚡-Quick%20Start-green?style=for-the-badge&logo=rocket",
-            "line": 558
+            "line": 555
           },
           "source_file": "docs/USER_GUIDES/INSTALLATION.md",
           "is_valid": false,
@@ -7319,7 +7369,7 @@
             "type": "markdown",
             "text": "![Usage Guide",
             "url": "https://img.shields.io/badge/📚-Usage%20Guide-blue?style=for-the-badge&logo=book",
-            "line": 559
+            "line": 556
           },
           "source_file": "docs/USER_GUIDES/INSTALLATION.md",
           "is_valid": false,
@@ -7332,7 +7382,7 @@
             "type": "markdown",
             "text": "![Troubleshooting",
             "url": "https://img.shields.io/badge/🔧-Troubleshooting-orange?style=for-the-badge&logo=wrench",
-            "line": 560
+            "line": 557
           },
           "source_file": "docs/USER_GUIDES/INSTALLATION.md",
           "is_valid": false,
@@ -7345,7 +7395,7 @@
             "type": "local_file",
             "text": "Quick Start",
             "url": "QUICK_START.md",
-            "line": 488
+            "line": 485
           },
           "source_file": "docs/USER_GUIDES/INSTALLATION.md",
           "is_valid": true,
@@ -7358,7 +7408,7 @@
             "type": "local_file",
             "text": "Usage Guide",
             "url": "USAGE.md",
-            "line": 489
+            "line": 486
           },
           "source_file": "docs/USER_GUIDES/INSTALLATION.md",
           "is_valid": true,
@@ -7371,7 +7421,7 @@
             "type": "local_file",
             "text": "Complete Documentation",
             "url": "../README.md",
-            "line": 491
+            "line": 488
           },
           "source_file": "docs/USER_GUIDES/INSTALLATION.md",
           "is_valid": true,
@@ -7384,7 +7434,7 @@
             "type": "local_file",
             "text": "⚡ Quick Start Guide",
             "url": "QUICK_START.md",
-            "line": 497
+            "line": 494
           },
           "source_file": "docs/USER_GUIDES/INSTALLATION.md",
           "is_valid": true,
@@ -7397,7 +7447,7 @@
             "type": "local_file",
             "text": "📚 Usage Guide",
             "url": "USAGE.md",
-            "line": 498
+            "line": 495
           },
           "source_file": "docs/USER_GUIDES/INSTALLATION.md",
           "is_valid": true,
@@ -7410,7 +7460,7 @@
             "type": "local_file",
             "text": "🔧 Troubleshooting",
             "url": "TROUBLESHOOTING.md",
-            "line": 499
+            "line": 496
           },
           "source_file": "docs/USER_GUIDES/INSTALLATION.md",
           "is_valid": true,
@@ -7423,7 +7473,7 @@
             "type": "local_file",
             "text": "🚀 Deployment Guide",
             "url": "DEPLOYMENT.md",
-            "line": 500
+            "line": 497
           },
           "source_file": "docs/USER_GUIDES/INSTALLATION.md",
           "is_valid": true,
@@ -7509,23 +7559,23 @@
     "USER_GUIDES/TROUBLESHOOTING.md": {
       "file_path": "USER_GUIDES/TROUBLESHOOTING.md",
       "total_links": 2,
-      "valid_links": 1,
-      "broken_links": 1,
+      "valid_links": 2,
+      "broken_links": 0,
       "critical_links": 0,
       "critical_broken_links": 0,
-      "navigation_score": 50.0,
+      "navigation_score": 100.0,
       "links": [
         {
           "link": {
             "type": "markdown",
             "text": "Guides",
-            "url": "../GUIDES/",
+            "url": "../DEVELOPER/GUIDES/",
             "line": 140
           },
           "source_file": "docs/USER_GUIDES/TROUBLESHOOTING.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../GUIDES/",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": false
         },
         {
@@ -7654,6 +7704,46 @@
           "is_critical": false
         }
       ]
+    },
+    "USER_GUIDES/._INSTALLATION.md": {
+      "file_path": "USER_GUIDES/._INSTALLATION.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "USER_GUIDES/._INDEX.md": {
+      "file_path": "USER_GUIDES/._INDEX.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "USER_GUIDES/._QUICK_START.md": {
+      "file_path": "USER_GUIDES/._QUICK_START.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "USER_GUIDES/._TROUBLESHOOTING.md": {
+      "file_path": "USER_GUIDES/._TROUBLESHOOTING.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
     },
     "USER_GUIDES/robotics/REACHY_SETUP_GUIDE.md": {
       "file_path": "USER_GUIDES/robotics/REACHY_SETUP_GUIDE.md",
@@ -8001,9 +8091,9 @@
     },
     "API/INDEX.md": {
       "file_path": "API/INDEX.md",
-      "total_links": 12,
+      "total_links": 7,
       "valid_links": 6,
-      "broken_links": 6,
+      "broken_links": 1,
       "critical_links": 6,
       "critical_broken_links": 0,
       "navigation_score": 60.0,
@@ -8011,74 +8101,9 @@
         {
           "link": {
             "type": "markdown",
-            "text": "API Reference",
-            "url": "https://img.shields.io/badge/API%20Reference-Enterprise%20Grade-blue?style=for-the-badge&logo=api",
-            "line": 5
-          },
-          "source_file": "docs/API/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/API%20Reference-Enterprise%20Grade-blue?style=for-the-badge&logo=api",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "![Modules",
-            "url": "https://img.shields.io/badge/modules-79-orange.svg?style=flat-square",
-            "line": 7
-          },
-          "source_file": "docs/API/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/modules-79-orange.svg?style=flat-square",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "![Coverage",
-            "url": "https://img.shields.io/badge/coverage-complete-brightgreen.svg?style=flat-square",
-            "line": 8
-          },
-          "source_file": "docs/API/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/coverage-complete-brightgreen.svg?style=flat-square",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "![Examples",
-            "url": "https://img.shields.io/badge/examples-tested-green.svg?style=flat-square",
-            "line": 9
-          },
-          "source_file": "docs/API/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/examples-tested-green.svg?style=flat-square",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "![Version",
-            "url": "https://img.shields.io/badge/version-11.0-blue.svg?style=flat-square",
-            "line": 10
-          },
-          "source_file": "docs/API/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/version-11.0-blue.svg?style=flat-square",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
             "text": "🏗️ Architecture Guide",
             "url": "../ARCHITECTURE/INDEX.md",
-            "line": 772
+            "line": 769
           },
           "source_file": "docs/API/INDEX.md",
           "is_valid": true,
@@ -8091,7 +8116,7 @@
             "type": "markdown",
             "text": "⚡ Quick Start",
             "url": "../USER_GUIDES/QUICK_START.md",
-            "line": 773
+            "line": 770
           },
           "source_file": "docs/API/INDEX.md",
           "is_valid": true,
@@ -8104,7 +8129,7 @@
             "type": "markdown",
             "text": "Core API",
             "url": "core_modules.md",
-            "line": 783
+            "line": 780
           },
           "source_file": "docs/API/INDEX.md",
           "is_valid": true,
@@ -8117,7 +8142,7 @@
             "type": "markdown",
             "text": "![Core API",
             "url": "https://img.shields.io/badge/🧠-Core%20API-blue?style=for-the-badge&logo=cpu",
-            "line": 798
+            "line": 795
           },
           "source_file": "docs/API/INDEX.md",
           "is_valid": false,
@@ -8130,7 +8155,7 @@
             "type": "local_file",
             "text": "🏗️ Architecture Guide",
             "url": "../ARCHITECTURE/INDEX.md",
-            "line": 772
+            "line": 769
           },
           "source_file": "docs/API/INDEX.md",
           "is_valid": true,
@@ -8143,7 +8168,7 @@
             "type": "local_file",
             "text": "⚡ Quick Start",
             "url": "../USER_GUIDES/QUICK_START.md",
-            "line": 773
+            "line": 770
           },
           "source_file": "docs/API/INDEX.md",
           "is_valid": true,
@@ -8156,7 +8181,7 @@
             "type": "local_file",
             "text": "Core API",
             "url": "core_modules.md",
-            "line": 783
+            "line": 780
           },
           "source_file": "docs/API/INDEX.md",
           "is_valid": true,
@@ -8165,6 +8190,16 @@
           "is_critical": true
         }
       ]
+    },
+    "API/._INDEX.md": {
+      "file_path": "API/._INDEX.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
     },
     "API/core_modules.md": {
       "file_path": "API/core_modules.md",
@@ -8557,106 +8592,55 @@
           "is_critical": true
         }
       ]
+    },
+    "API/._core_modules.md": {
+      "file_path": "API/._core_modules.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "API/._ERROR_HANDLING.md": {
+      "file_path": "API/._ERROR_HANDLING.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "API/._robotics.md": {
+      "file_path": "API/._robotics.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "API/._plugins.md": {
+      "file_path": "API/._plugins.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
     }
   },
   "broken_links": [
     {
       "link": {
         "type": "markdown",
-        "text": "Architecture",
-        "url": "https://img.shields.io/badge/Architecture-Enterprise%20Grade-blue?style=for-the-badge&logo=blueprint",
-        "line": 5
-      },
-      "source_file": "docs/ARCHITECTURE/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/Architecture-Enterprise%20Grade-blue?style=for-the-badge&logo=blueprint",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Modules",
-        "url": "https://img.shields.io/badge/modules-79-orange.svg?style=flat-square",
-        "line": 7
-      },
-      "source_file": "docs/ARCHITECTURE/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/modules-79-orange.svg?style=flat-square",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Lines",
-        "url": "https://img.shields.io/badge/lines-24,243-green.svg?style=flat-square",
-        "line": 8
-      },
-      "source_file": "docs/ARCHITECTURE/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/lines-24,243-green.svg?style=flat-square",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Coverage",
-        "url": "https://img.shields.io/badge/coverage-enterprise-purple.svg?style=flat-square",
-        "line": 9
-      },
-      "source_file": "docs/ARCHITECTURE/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/coverage-enterprise-purple.svg?style=flat-square",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "🛡️ Security Design",
-        "url": "../SPECIALIZED/SECURITY/",
-        "line": 421
-      },
-      "source_file": "docs/ARCHITECTURE/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../SPECIALIZED/SECURITY/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "⚡ Performance Optimization",
-        "url": "../SPECIALIZED/OPTIMISATION/",
-        "line": 422
-      },
-      "source_file": "docs/ARCHITECTURE/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../SPECIALIZED/OPTIMISATION/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Security Documentation",
-        "url": "../SPECIALIZED/SECURITY/",
-        "line": 433
-      },
-      "source_file": "docs/ARCHITECTURE/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../SPECIALIZED/SECURITY/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "![Architecture",
         "url": "https://img.shields.io/badge/🏗️-System%20Design-blue?style=for-the-badge&logo=blueprint",
-        "line": 445
+        "line": 443
       },
       "source_file": "docs/ARCHITECTURE/INDEX.md",
       "is_valid": false,
@@ -8669,7 +8653,7 @@
         "type": "markdown",
         "text": "![Documentation",
         "url": "https://img.shields.io/badge/📚-Complete%20Reference-green?style=for-the-badge&logo=book",
-        "line": 446
+        "line": 444
       },
       "source_file": "docs/ARCHITECTURE/INDEX.md",
       "is_valid": false,
@@ -8682,7 +8666,7 @@
         "type": "markdown",
         "text": "![Security",
         "url": "https://img.shields.io/badge/🛡️-Enterprise%20Grade-red?style=for-the-badge&logo=shield",
-        "line": 447
+        "line": 445
       },
       "source_file": "docs/ARCHITECTURE/INDEX.md",
       "is_valid": false,
@@ -9031,87 +9015,9 @@
     {
       "link": {
         "type": "markdown",
-        "text": "Documentation API",
-        "url": "../../API/",
-        "line": 288
-      },
-      "source_file": "docs/GETTING_STARTED/INSTALLATION.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../API/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Installation",
-        "url": "https://img.shields.io/badge/Installation-5%20Minutes-green?style=for-the-badge&logo=download",
-        "line": 5
-      },
-      "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/Installation-5%20Minutes-green?style=for-the-badge&logo=download",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Difficulty",
-        "url": "https://img.shields.io/badge/difficulty-beginner-brightgreen.svg?style=flat-square",
-        "line": 7
-      },
-      "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/difficulty-beginner-brightgreen.svg?style=flat-square",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Platform",
-        "url": "https://img.shields.io/badge/platform-cross--platform-blue.svg?style=flat-square",
-        "line": 8
-      },
-      "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/platform-cross--platform-blue.svg?style=flat-square",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Python",
-        "url": "https://img.shields.io/badge/python-3.10+-yellow.svg?style=flat-square",
-        "line": 9
-      },
-      "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/python-3.10+-yellow.svg?style=flat-square",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Status",
-        "url": "https://img.shields.io/badge/status-production%20ready-orange.svg?style=flat-square",
-        "line": 10
-      },
-      "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/status-production%20ready-orange.svg?style=flat-square",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "Dashboard Guide",
         "url": "../SPECIALIZED/DASHBOARD/",
-        "line": 490
+        "line": 487
       },
       "source_file": "docs/USER_GUIDES/INSTALLATION.md",
       "is_valid": false,
@@ -9124,7 +9030,7 @@
         "type": "markdown",
         "text": "![Quick Start",
         "url": "https://img.shields.io/badge/⚡-Quick%20Start-green?style=for-the-badge&logo=rocket",
-        "line": 558
+        "line": 555
       },
       "source_file": "docs/USER_GUIDES/INSTALLATION.md",
       "is_valid": false,
@@ -9137,7 +9043,7 @@
         "type": "markdown",
         "text": "![Usage Guide",
         "url": "https://img.shields.io/badge/📚-Usage%20Guide-blue?style=for-the-badge&logo=book",
-        "line": 559
+        "line": 556
       },
       "source_file": "docs/USER_GUIDES/INSTALLATION.md",
       "is_valid": false,
@@ -9150,25 +9056,12 @@
         "type": "markdown",
         "text": "![Troubleshooting",
         "url": "https://img.shields.io/badge/🔧-Troubleshooting-orange?style=for-the-badge&logo=wrench",
-        "line": 560
+        "line": 557
       },
       "source_file": "docs/USER_GUIDES/INSTALLATION.md",
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/🔧-Troubleshooting-orange?style=for-the-badge&logo=wrench",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Guides",
-        "url": "../GUIDES/",
-        "line": 140
-      },
-      "source_file": "docs/USER_GUIDES/TROUBLESHOOTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../GUIDES/",
       "is_critical": false
     },
     {
@@ -9395,74 +9288,9 @@
     {
       "link": {
         "type": "markdown",
-        "text": "API Reference",
-        "url": "https://img.shields.io/badge/API%20Reference-Enterprise%20Grade-blue?style=for-the-badge&logo=api",
-        "line": 5
-      },
-      "source_file": "docs/API/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/API%20Reference-Enterprise%20Grade-blue?style=for-the-badge&logo=api",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Modules",
-        "url": "https://img.shields.io/badge/modules-79-orange.svg?style=flat-square",
-        "line": 7
-      },
-      "source_file": "docs/API/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/modules-79-orange.svg?style=flat-square",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Coverage",
-        "url": "https://img.shields.io/badge/coverage-complete-brightgreen.svg?style=flat-square",
-        "line": 8
-      },
-      "source_file": "docs/API/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/coverage-complete-brightgreen.svg?style=flat-square",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Examples",
-        "url": "https://img.shields.io/badge/examples-tested-green.svg?style=flat-square",
-        "line": 9
-      },
-      "source_file": "docs/API/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/examples-tested-green.svg?style=flat-square",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Version",
-        "url": "https://img.shields.io/badge/version-11.0-blue.svg?style=flat-square",
-        "line": 10
-      },
-      "source_file": "docs/API/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/version-11.0-blue.svg?style=flat-square",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "![Core API",
         "url": "https://img.shields.io/badge/🧠-Core%20API-blue?style=for-the-badge&logo=cpu",
-        "line": 798
+        "line": 795
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
@@ -9473,100 +9301,9 @@
     {
       "link": {
         "type": "markdown",
-        "text": "Architecture",
-        "url": "https://img.shields.io/badge/Architecture-Enterprise%20Grade-blue?style=for-the-badge&logo=blueprint",
-        "line": 5
-      },
-      "source_file": "docs/ARCHITECTURE/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/Architecture-Enterprise%20Grade-blue?style=for-the-badge&logo=blueprint",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Modules",
-        "url": "https://img.shields.io/badge/modules-79-orange.svg?style=flat-square",
-        "line": 7
-      },
-      "source_file": "docs/ARCHITECTURE/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/modules-79-orange.svg?style=flat-square",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Lines",
-        "url": "https://img.shields.io/badge/lines-24,243-green.svg?style=flat-square",
-        "line": 8
-      },
-      "source_file": "docs/ARCHITECTURE/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/lines-24,243-green.svg?style=flat-square",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Coverage",
-        "url": "https://img.shields.io/badge/coverage-enterprise-purple.svg?style=flat-square",
-        "line": 9
-      },
-      "source_file": "docs/ARCHITECTURE/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/coverage-enterprise-purple.svg?style=flat-square",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "🛡️ Security Design",
-        "url": "../SPECIALIZED/SECURITY/",
-        "line": 421
-      },
-      "source_file": "docs/ARCHITECTURE/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../SPECIALIZED/SECURITY/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "⚡ Performance Optimization",
-        "url": "../SPECIALIZED/OPTIMISATION/",
-        "line": 422
-      },
-      "source_file": "docs/ARCHITECTURE/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../SPECIALIZED/OPTIMISATION/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Security Documentation",
-        "url": "../SPECIALIZED/SECURITY/",
-        "line": 433
-      },
-      "source_file": "docs/ARCHITECTURE/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../SPECIALIZED/SECURITY/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "![Architecture",
         "url": "https://img.shields.io/badge/🏗️-System%20Design-blue?style=for-the-badge&logo=blueprint",
-        "line": 445
+        "line": 443
       },
       "source_file": "docs/ARCHITECTURE/INDEX.md",
       "is_valid": false,
@@ -9579,7 +9316,7 @@
         "type": "markdown",
         "text": "![Documentation",
         "url": "https://img.shields.io/badge/📚-Complete%20Reference-green?style=for-the-badge&logo=book",
-        "line": 446
+        "line": 444
       },
       "source_file": "docs/ARCHITECTURE/INDEX.md",
       "is_valid": false,
@@ -9592,7 +9329,7 @@
         "type": "markdown",
         "text": "![Security",
         "url": "https://img.shields.io/badge/🛡️-Enterprise%20Grade-red?style=for-the-badge&logo=shield",
-        "line": 447
+        "line": 445
       },
       "source_file": "docs/ARCHITECTURE/INDEX.md",
       "is_valid": false,
@@ -9941,87 +9678,9 @@
     {
       "link": {
         "type": "markdown",
-        "text": "Documentation API",
-        "url": "../../API/",
-        "line": 288
-      },
-      "source_file": "docs/GETTING_STARTED/INSTALLATION.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../API/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Installation",
-        "url": "https://img.shields.io/badge/Installation-5%20Minutes-green?style=for-the-badge&logo=download",
-        "line": 5
-      },
-      "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/Installation-5%20Minutes-green?style=for-the-badge&logo=download",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Difficulty",
-        "url": "https://img.shields.io/badge/difficulty-beginner-brightgreen.svg?style=flat-square",
-        "line": 7
-      },
-      "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/difficulty-beginner-brightgreen.svg?style=flat-square",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Platform",
-        "url": "https://img.shields.io/badge/platform-cross--platform-blue.svg?style=flat-square",
-        "line": 8
-      },
-      "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/platform-cross--platform-blue.svg?style=flat-square",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Python",
-        "url": "https://img.shields.io/badge/python-3.10+-yellow.svg?style=flat-square",
-        "line": 9
-      },
-      "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/python-3.10+-yellow.svg?style=flat-square",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Status",
-        "url": "https://img.shields.io/badge/status-production%20ready-orange.svg?style=flat-square",
-        "line": 10
-      },
-      "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/status-production%20ready-orange.svg?style=flat-square",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "Dashboard Guide",
         "url": "../SPECIALIZED/DASHBOARD/",
-        "line": 490
+        "line": 487
       },
       "source_file": "docs/USER_GUIDES/INSTALLATION.md",
       "is_valid": false,
@@ -10034,7 +9693,7 @@
         "type": "markdown",
         "text": "![Quick Start",
         "url": "https://img.shields.io/badge/⚡-Quick%20Start-green?style=for-the-badge&logo=rocket",
-        "line": 558
+        "line": 555
       },
       "source_file": "docs/USER_GUIDES/INSTALLATION.md",
       "is_valid": false,
@@ -10047,7 +9706,7 @@
         "type": "markdown",
         "text": "![Usage Guide",
         "url": "https://img.shields.io/badge/📚-Usage%20Guide-blue?style=for-the-badge&logo=book",
-        "line": 559
+        "line": 556
       },
       "source_file": "docs/USER_GUIDES/INSTALLATION.md",
       "is_valid": false,
@@ -10060,25 +9719,12 @@
         "type": "markdown",
         "text": "![Troubleshooting",
         "url": "https://img.shields.io/badge/🔧-Troubleshooting-orange?style=for-the-badge&logo=wrench",
-        "line": 560
+        "line": 557
       },
       "source_file": "docs/USER_GUIDES/INSTALLATION.md",
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/🔧-Troubleshooting-orange?style=for-the-badge&logo=wrench",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Guides",
-        "url": "../GUIDES/",
-        "line": 140
-      },
-      "source_file": "docs/USER_GUIDES/TROUBLESHOOTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../GUIDES/",
       "is_critical": false
     },
     {
@@ -10305,74 +9951,9 @@
     {
       "link": {
         "type": "markdown",
-        "text": "API Reference",
-        "url": "https://img.shields.io/badge/API%20Reference-Enterprise%20Grade-blue?style=for-the-badge&logo=api",
-        "line": 5
-      },
-      "source_file": "docs/API/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/API%20Reference-Enterprise%20Grade-blue?style=for-the-badge&logo=api",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Modules",
-        "url": "https://img.shields.io/badge/modules-79-orange.svg?style=flat-square",
-        "line": 7
-      },
-      "source_file": "docs/API/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/modules-79-orange.svg?style=flat-square",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Coverage",
-        "url": "https://img.shields.io/badge/coverage-complete-brightgreen.svg?style=flat-square",
-        "line": 8
-      },
-      "source_file": "docs/API/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/coverage-complete-brightgreen.svg?style=flat-square",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Examples",
-        "url": "https://img.shields.io/badge/examples-tested-green.svg?style=flat-square",
-        "line": 9
-      },
-      "source_file": "docs/API/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/examples-tested-green.svg?style=flat-square",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Version",
-        "url": "https://img.shields.io/badge/version-11.0-blue.svg?style=flat-square",
-        "line": 10
-      },
-      "source_file": "docs/API/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/version-11.0-blue.svg?style=flat-square",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "![Core API",
         "url": "https://img.shields.io/badge/🧠-Core%20API-blue?style=for-the-badge&logo=cpu",
-        "line": 798
+        "line": 795
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
