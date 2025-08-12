@@ -32,6 +32,10 @@
 - **`ORGANISATION_WORKSPACE.md`** - Organisation de l'espace de travail
 - **`STRUCTURE_PROJET_EXPLICATION.md`** - Explication de la structure du projet
 
+#### **📊 DASHBOARD (`docs/ARCHITECTURE/dashboard/`)**
+- **`README.md`** - Index des dashboards
+- **`dashboard.md`** - Documentation des dashboards
+
 ### **🔌 API (`docs/API/`)**
 - **`INDEX.md`** - Index de l'API
 - **`COMMANDES.md`** - Commandes de base
@@ -105,6 +109,12 @@
 - **`FORMATAGE_AUTOMATIQUE.md`** - Formatage automatique du code
 - **`GIT_WORKFLOW.md`** - Workflow Git
 
+##### **⚡ OPTIMISATION (`docs/DEVELOPER/UTILITIES/optimisation/`)**
+- **`README.md`** - Index de l'optimisation
+- **`OPTIMISATION_CURSOR_RAM.md`** - Optimisation Cursor RAM
+- **`RESUME_OPTIMISATION_CURSOR.md`** - Résumé optimisation Cursor
+- **`RESUME_OPTIMISATION_MAC.md`** - Résumé optimisation Mac
+
 ### **🚀 GETTING STARTED (`docs/GETTING_STARTED/`)**
 - **`INSTALLATION.md`** - Guide d'installation
 - **`README.md`** - Introduction et démarrage
@@ -135,38 +145,22 @@
 - **`EXECUTION_PERFORMANCE_SEMAINE1.md`** - Exécution performance semaine 1
 - **`INDEX.md`** - Index des plans
 
-### **🎨 SPÉCIALISÉ (`docs/SPECIALIZED/`)**
-- **`README.md`** - Index spécialisé
-
-#### **📊 DASHBOARD (`docs/SPECIALIZED/DASHBOARD/`)**
+### **📊 DASHBOARD (`docs/ARCHITECTURE/dashboard/`)**
+- **`README.md`** - Index des dashboards
 - **`dashboard.md`** - Documentation des dashboards
 
-#### **🔬 DISTILLATION (`docs/SPECIALIZED/DISTILLATION/`)**
-- **`README.md`** - Documentation de la distillation
-
-#### **🌍 INTERNATIONALISATION (`docs/SPECIALIZED/INTERNATIONALISATION/`)**
-- **`README.md`** - Documentation de l'internationalisation
-
-#### **🚀 MODULES AVANCÉS (`docs/SPECIALIZED/MODULES_AVANCÉS/`)**
-- **`README.md`** - Documentation des modules avancés
-
-#### **⚡ OPTIMISATION (`docs/SPECIALIZED/OPTIMISATION/`)**
+### **⚡ OPTIMISATION (`docs/DEVELOPER/UTILITIES/optimisation/`)**
+- **`README.md`** - Index de l'optimisation
 - **`OPTIMISATION_CURSOR_RAM.md`** - Optimisation Cursor RAM
-- **`README.md`** - Documentation de l'optimisation
 - **`RESUME_OPTIMISATION_CURSOR.md`** - Résumé optimisation Cursor
 - **`RESUME_OPTIMISATION_MAC.md`** - Résumé optimisation Mac
 
-#### **🤖 ROBOTICS (`docs/SPECIALIZED/robotics/`)**
+### **🤖 ROBOTICS (`docs/USER_GUIDES/robotics/`)**
+- **`README.md`** - Index de la robotique
 - **`REACHY_SETUP_GUIDE.md`** - Guide de configuration Reachy
 - **`ROBOTICS_GUIDE.md`** - Guide robotique principal
 - **`ROBOTICS_INTEGRATION_SUMMARY.md`** - Résumé intégration robotique
 - **`ROBOTICS_QUICK_START.md`** - Démarrage rapide robotique
-
-#### **📝 PROMPTS (`docs/SPECIALIZED/prompts/`)**
-- **`README.md`** - Documentation des prompts
-
-#### **🎭 TEMPLATES (`docs/SPECIALIZED/TEMPLATES/`)**
-- **`README.md`** - Documentation des templates
 
 ### **👥 GUIDES UTILISATEUR (`docs/USER_GUIDES/`)**
 - **`CONTRIBUTING.md`** - Guide de contribution
@@ -177,6 +171,13 @@
 - **`QUICK_START.md`** - Démarrage rapide
 - **`TROUBLESHOOTING.md`** - Résolution de problèmes
 - **`USAGE.md`** - Guide d'utilisation
+
+#### **🤖 ROBOTICS (`docs/USER_GUIDES/robotics/`)**
+- **`README.md`** - Index de la robotique
+- **`REACHY_SETUP_GUIDE.md`** - Guide de configuration Reachy
+- **`ROBOTICS_GUIDE.md`** - Guide robotique principal
+- **`ROBOTICS_INTEGRATION_SUMMARY.md`** - Résumé intégration robotique
+- **`ROBOTICS_QUICK_START.md`** - Démarrage rapide robotique
 
 ---
 
