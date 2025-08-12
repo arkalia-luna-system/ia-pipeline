@@ -1,12 +1,12 @@
 {
-  "test_date": "2025-08-12T17:52:42.364453",
+  "test_date": "2025-08-12T17:53:44.714516",
   "global_stats": {
     "total_files": 162,
-    "total_links": 916,
-    "broken_links": 346,
-    "critical_broken_links": 97,
-    "average_navigation_score": 82.14197530864197,
-    "link_success_rate": 62.227074235807855
+    "total_links": 912,
+    "broken_links": 344,
+    "critical_broken_links": 95,
+    "average_navigation_score": 82.26543209876543,
+    "link_success_rate": 62.28070175438597
   },
   "file_results": {
     "._INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
@@ -10187,12 +10187,12 @@
     },
     "API/ERROR_HANDLING.md": {
       "file_path": "API/ERROR_HANDLING.md",
-      "total_links": 6,
-      "valid_links": 4,
-      "broken_links": 2,
-      "critical_links": 6,
-      "critical_broken_links": 2,
-      "navigation_score": 40.0,
+      "total_links": 2,
+      "valid_links": 2,
+      "broken_links": 0,
+      "critical_links": 2,
+      "critical_broken_links": 0,
+      "navigation_score": 60.0,
       "links": [
         {
           "link": {
@@ -10209,32 +10209,6 @@
         },
         {
           "link": {
-            "type": "markdown",
-            "text": "→ Modules principaux",
-            "url": "CORE_MODULES.md",
-            "line": 187
-          },
-          "source_file": "docs/API/ERROR_HANDLING.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "→ Configuration",
-            "url": "../CONFIG_MANAGER.md",
-            "line": 188
-          },
-          "source_file": "docs/API/ERROR_HANDLING.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../CONFIG_MANAGER.md",
-          "is_critical": true
-        },
-        {
-          "link": {
             "type": "local_file",
             "text": "← Retour à l'index API",
             "url": "INDEX.md",
@@ -10244,32 +10218,6 @@
           "is_valid": true,
           "error_type": null,
           "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "→ Modules principaux",
-            "url": "CORE_MODULES.md",
-            "line": 187
-          },
-          "source_file": "docs/API/ERROR_HANDLING.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "→ Configuration",
-            "url": "../CONFIG_MANAGER.md",
-            "line": 188
-          },
-          "source_file": "docs/API/ERROR_HANDLING.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../CONFIG_MANAGER.md",
           "is_critical": true
         }
       ]
@@ -15042,32 +14990,6 @@
     },
     {
       "link": {
-        "type": "markdown",
-        "text": "→ Configuration",
-        "url": "../CONFIG_MANAGER.md",
-        "line": 188
-      },
-      "source_file": "docs/API/ERROR_HANDLING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../CONFIG_MANAGER.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "→ Configuration",
-        "url": "../CONFIG_MANAGER.md",
-        "line": 188
-      },
-      "source_file": "docs/API/ERROR_HANDLING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../CONFIG_MANAGER.md",
-      "is_critical": true
-    },
-    {
-      "link": {
         "type": "file_reference",
         "text": "docs/API/COMMANDES.md",
         "url": "docs/API/COMMANDES.md",
@@ -19540,32 +19462,6 @@
     },
     {
       "link": {
-        "type": "markdown",
-        "text": "→ Configuration",
-        "url": "../CONFIG_MANAGER.md",
-        "line": 188
-      },
-      "source_file": "docs/API/ERROR_HANDLING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../CONFIG_MANAGER.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "→ Configuration",
-        "url": "../CONFIG_MANAGER.md",
-        "line": 188
-      },
-      "source_file": "docs/API/ERROR_HANDLING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../CONFIG_MANAGER.md",
-      "is_critical": true
-    },
-    {
-      "link": {
         "type": "file_reference",
         "text": "docs/API/COMMANDES.md",
         "url": "docs/API/COMMANDES.md",
@@ -23130,32 +23026,6 @@
     },
     {
       "link": {
-        "type": "markdown",
-        "text": "→ Configuration",
-        "url": "../CONFIG_MANAGER.md",
-        "line": 188
-      },
-      "source_file": "docs/API/ERROR_HANDLING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../CONFIG_MANAGER.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "→ Configuration",
-        "url": "../CONFIG_MANAGER.md",
-        "line": 188
-      },
-      "source_file": "docs/API/ERROR_HANDLING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../CONFIG_MANAGER.md",
-      "is_critical": true
-    },
-    {
-      "link": {
         "type": "file_reference",
         "text": "docs/API/COMMANDES.md",
         "url": "docs/API/COMMANDES.md",
@@ -24387,32 +24257,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: docs/API/COMMANDES_AVANCEES.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "→ Configuration",
-        "url": "../CONFIG_MANAGER.md",
-        "line": 188
-      },
-      "source_file": "docs/API/ERROR_HANDLING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../CONFIG_MANAGER.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "→ Configuration",
-        "url": "../CONFIG_MANAGER.md",
-        "line": 188
-      },
-      "source_file": "docs/API/ERROR_HANDLING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../CONFIG_MANAGER.md",
       "is_critical": true
     },
     {
