@@ -158,10 +158,10 @@ La navigation de la documentation est **100% analysée, comprise et documentée*
 - **`RAPPORT_OPTIMISATION_FINALE_20250812.md`** - Rapport final (ce document) ✅
 
 ### **🔧 Guides et Standards :**
-- **`DOCUMENTATION_MAINTENANCE.md`** - Guide de maintenance complet ✅
-- **`TEMPLATE_STANDARD_MARKDOWN.md`** - Template standardisé ✅
-- **`ORGANISATION_WORKSPACE.md`** - Organisation optimisée ✅
-- **`QUICK_START.md`** - Guide restructuré en français ✅
+- **`../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md`** - Guide de maintenance complet ✅
+- **`../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md`** - Template standardisé ✅
+- **`../../ARCHITECTURE/ORGANISATION_WORKSPACE.md`** - Organisation optimisée ✅
+- **`../../USER_GUIDES/QUICK_START.md`** - Guide restructuré en français ✅
 
 ### **📋 Index et Organisation :**
 - **`INDEX_FINAL_DOCUMENTATION_ATHALIA.md`** - Index principal 100% corrigé ✅
