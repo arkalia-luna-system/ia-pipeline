@@ -1,11 +1,11 @@
 {
-  "test_date": "2025-08-12T15:41:10.875390",
+  "test_date": "2025-08-12T15:46:56.164068",
   "global_stats": {
-    "total_files": 114,
-    "total_links": 801,
-    "broken_links": 451,
-    "average_navigation_score": 71.5707441796789,
-    "link_success_rate": 43.69538077403246
+    "total_files": 115,
+    "total_links": 811,
+    "broken_links": 453,
+    "average_navigation_score": 71.69356914389515,
+    "link_success_rate": 44.14303329223181
   },
   "file_results": {
     "._INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
@@ -18,17 +18,17 @@
     },
     "INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
       "file_path": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "total_links": 103,
+      "total_links": 104,
       "valid_links": 2,
-      "broken_links": 101,
-      "navigation_score": 1.9417475728155338,
+      "broken_links": 102,
+      "navigation_score": 1.9230769230769231,
       "links": [
         {
           "link": {
             "type": "markdown",
             "text": "Guide de maintenance",
             "url": "DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-            "line": 213
+            "line": 229
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": true,
@@ -40,7 +40,7 @@
             "type": "local_file",
             "text": "Guide de maintenance",
             "url": "DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-            "line": 213
+            "line": 229
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": true,
@@ -52,7 +52,7 @@
             "type": "file_reference",
             "text": "README.md",
             "url": "README.md",
-            "line": 15
+            "line": 16
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -64,7 +64,7 @@
             "type": "file_reference",
             "text": "CHANGELOG.md",
             "url": "CHANGELOG.md",
-            "line": 16
+            "line": 17
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -76,7 +76,7 @@
             "type": "file_reference",
             "text": "INVENTAIRE_COMPLET.md",
             "url": "INVENTAIRE_COMPLET.md",
-            "line": 17
+            "line": 18
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -88,7 +88,7 @@
             "type": "file_reference",
             "text": "RAPPORT_FINAL.md",
             "url": "RAPPORT_FINAL.md",
-            "line": 18
+            "line": 19
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -100,7 +100,7 @@
             "type": "file_reference",
             "text": "FINAL_SUMMARY.md",
             "url": "FINAL_SUMMARY.md",
-            "line": 19
+            "line": 20
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -112,7 +112,7 @@
             "type": "file_reference",
             "text": "GENESIS.md",
             "url": "GENESIS.md",
-            "line": 20
+            "line": 21
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -124,7 +124,7 @@
             "type": "file_reference",
             "text": "CLEANUP_REPORT.md",
             "url": "CLEANUP_REPORT.md",
-            "line": 21
+            "line": 22
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -136,7 +136,7 @@
             "type": "file_reference",
             "text": "FAQ.md",
             "url": "FAQ.md",
-            "line": 22
+            "line": 23
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -148,7 +148,7 @@
             "type": "file_reference",
             "text": "INSTALL.md",
             "url": "INSTALL.md",
-            "line": 23
+            "line": 24
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -160,7 +160,7 @@
             "type": "file_reference",
             "text": "INDEX.md",
             "url": "INDEX.md",
-            "line": 36
+            "line": 37
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -172,7 +172,7 @@
             "type": "file_reference",
             "text": "ORGANISATION_WORKSPACE.md",
             "url": "ORGANISATION_WORKSPACE.md",
-            "line": 37
+            "line": 38
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -184,7 +184,7 @@
             "type": "file_reference",
             "text": "STRUCTURE_PROJET_EXPLICATION.md",
             "url": "STRUCTURE_PROJET_EXPLICATION.md",
-            "line": 38
+            "line": 39
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -196,7 +196,7 @@
             "type": "file_reference",
             "text": "README.md",
             "url": "README.md",
-            "line": 15
+            "line": 16
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -208,7 +208,7 @@
             "type": "file_reference",
             "text": "dashboard.md",
             "url": "dashboard.md",
-            "line": 42
+            "line": 43
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -220,7 +220,7 @@
             "type": "file_reference",
             "text": "INDEX.md",
             "url": "INDEX.md",
-            "line": 36
+            "line": 37
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -232,7 +232,7 @@
             "type": "file_reference",
             "text": "COMMANDES.md",
             "url": "COMMANDES.md",
-            "line": 46
+            "line": 47
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -244,7 +244,7 @@
             "type": "file_reference",
             "text": "COMMANDES_AVANCEES.md",
             "url": "COMMANDES_AVANCEES.md",
-            "line": 47
+            "line": 48
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -256,7 +256,7 @@
             "type": "file_reference",
             "text": "core_modules.md",
             "url": "core_modules.md",
-            "line": 48
+            "line": 49
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -268,7 +268,7 @@
             "type": "file_reference",
             "text": "ERROR_HANDLING.md",
             "url": "ERROR_HANDLING.md",
-            "line": 49
+            "line": 50
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -280,7 +280,7 @@
             "type": "file_reference",
             "text": "orchestrator.md",
             "url": "orchestrator.md",
-            "line": 50
+            "line": 51
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -292,7 +292,7 @@
             "type": "file_reference",
             "text": "plugins.md",
             "url": "plugins.md",
-            "line": 51
+            "line": 52
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -304,7 +304,7 @@
             "type": "file_reference",
             "text": "REFERENCE.md",
             "url": "REFERENCE.md",
-            "line": 52
+            "line": 53
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -316,7 +316,7 @@
             "type": "file_reference",
             "text": "robotics.md",
             "url": "robotics.md",
-            "line": 53
+            "line": 54
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -328,7 +328,7 @@
             "type": "file_reference",
             "text": "INDEX.md",
             "url": "INDEX.md",
-            "line": 36
+            "line": 37
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -340,7 +340,7 @@
             "type": "file_reference",
             "text": "BEST_PRACTICES.md",
             "url": "BEST_PRACTICES.md",
-            "line": 57
+            "line": 58
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -352,7 +352,7 @@
             "type": "file_reference",
             "text": "DOCUMENTATION_MAINTENANCE.md",
             "url": "DOCUMENTATION_MAINTENANCE.md",
-            "line": 58
+            "line": 59
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -364,7 +364,7 @@
             "type": "file_reference",
             "text": "MODULES.md",
             "url": "MODULES.md",
-            "line": 59
+            "line": 60
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -376,7 +376,7 @@
             "type": "file_reference",
             "text": "TEMPLATE_STANDARD_MARKDOWN.md",
             "url": "TEMPLATE_STANDARD_MARKDOWN.md",
-            "line": 60
+            "line": 61
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -388,7 +388,7 @@
             "type": "file_reference",
             "text": "ALIAS_WORKFLOW_QUICK_GUIDE.md",
             "url": "ALIAS_WORKFLOW_QUICK_GUIDE.md",
-            "line": 63
+            "line": 64
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -400,7 +400,7 @@
             "type": "file_reference",
             "text": "CI_CD_PRO_PRE_COMMIT_GUIDE.md",
             "url": "CI_CD_PRO_PRE_COMMIT_GUIDE.md",
-            "line": 64
+            "line": 65
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -412,7 +412,7 @@
             "type": "file_reference",
             "text": "CI_CD_PROFESSIONAL_GUIDE.md",
             "url": "CI_CD_PROFESSIONAL_GUIDE.md",
-            "line": 65
+            "line": 66
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -424,7 +424,7 @@
             "type": "file_reference",
             "text": "CLEAN_SHUTDOWN_GUIDE.md",
             "url": "CLEAN_SHUTDOWN_GUIDE.md",
-            "line": 66
+            "line": 67
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -436,7 +436,7 @@
             "type": "file_reference",
             "text": "CLEANUP_GUIDE.md",
             "url": "CLEANUP_GUIDE.md",
-            "line": 67
+            "line": 68
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -448,7 +448,7 @@
             "type": "file_reference",
             "text": "DEVELOPER_GUIDE.md",
             "url": "DEVELOPER_GUIDE.md",
-            "line": 68
+            "line": 69
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -460,7 +460,7 @@
             "type": "file_reference",
             "text": "LINTING_GUIDE.md",
             "url": "LINTING_GUIDE.md",
-            "line": 69
+            "line": 70
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -472,7 +472,7 @@
             "type": "file_reference",
             "text": "PLUGINS_GUIDE.md",
             "url": "PLUGINS_GUIDE.md",
-            "line": 70
+            "line": 71
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -484,7 +484,7 @@
             "type": "file_reference",
             "text": "SECURITY_LINTING_GUIDE.md",
             "url": "SECURITY_LINTING_GUIDE.md",
-            "line": 71
+            "line": 72
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -496,7 +496,7 @@
             "type": "file_reference",
             "text": "TEST_CLEANUP_GUIDE.md",
             "url": "TEST_CLEANUP_GUIDE.md",
-            "line": 72
+            "line": 73
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -508,7 +508,7 @@
             "type": "file_reference",
             "text": "TESTING.md",
             "url": "TESTING.md",
-            "line": 73
+            "line": 74
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -520,7 +520,7 @@
             "type": "file_reference",
             "text": "TESTS_GUIDE.md",
             "url": "TESTS_GUIDE.md",
-            "line": 74
+            "line": 75
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -532,7 +532,7 @@
             "type": "file_reference",
             "text": "WORKFLOW_COMPLETE_GUIDE.md",
             "url": "WORKFLOW_COMPLETE_GUIDE.md",
-            "line": 75
+            "line": 76
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -544,7 +544,7 @@
             "type": "file_reference",
             "text": "APPLE_DOUBLE_MANAGEMENT.md",
             "url": "APPLE_DOUBLE_MANAGEMENT.md",
-            "line": 78
+            "line": 79
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -556,7 +556,7 @@
             "type": "file_reference",
             "text": "BIN_CLEANUP_REPORT.md",
             "url": "BIN_CLEANUP_REPORT.md",
-            "line": 79
+            "line": 80
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -568,7 +568,7 @@
             "type": "file_reference",
             "text": "MACOS_TEMP_CLEANUP.md",
             "url": "MACOS_TEMP_CLEANUP.md",
-            "line": 80
+            "line": 81
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -580,7 +580,7 @@
             "type": "file_reference",
             "text": "INDEX.md",
             "url": "INDEX.md",
-            "line": 36
+            "line": 37
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -592,7 +592,7 @@
             "type": "file_reference",
             "text": "NETTOYAGE_REPOSITORY_PLAN.md",
             "url": "NETTOYAGE_REPOSITORY_PLAN.md",
-            "line": 84
+            "line": 85
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -604,7 +604,7 @@
             "type": "file_reference",
             "text": "OPTIMISATION_TESTS_RAM_2025.md",
             "url": "OPTIMISATION_TESTS_RAM_2025.md",
-            "line": 85
+            "line": 86
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -616,7 +616,7 @@
             "type": "file_reference",
             "text": "PLAN_ACTION_COUVERTURE_2025.md",
             "url": "PLAN_ACTION_COUVERTURE_2025.md",
-            "line": 86
+            "line": 87
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -628,7 +628,7 @@
             "type": "file_reference",
             "text": "PLAN_ACTION_MODULARISATION_ATHALIA.md",
             "url": "PLAN_ACTION_MODULARISATION_ATHALIA.md",
-            "line": 87
+            "line": 88
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -640,7 +640,7 @@
             "type": "file_reference",
             "text": "PLAN_CORRECTION_TESTS_2025.md",
             "url": "PLAN_CORRECTION_TESTS_2025.md",
-            "line": 88
+            "line": 89
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -652,7 +652,7 @@
             "type": "file_reference",
             "text": "REORGANISATION_TESTS_PLAN.md",
             "url": "REORGANISATION_TESTS_PLAN.md",
-            "line": 89
+            "line": 90
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -664,7 +664,7 @@
             "type": "file_reference",
             "text": "REORGANISATION_TESTS_STRUCTURE.md",
             "url": "REORGANISATION_TESTS_STRUCTURE.md",
-            "line": 90
+            "line": 91
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -676,7 +676,7 @@
             "type": "file_reference",
             "text": "AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md",
             "url": "AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md",
-            "line": 93
+            "line": 94
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -688,7 +688,7 @@
             "type": "file_reference",
             "text": "ANALYSE_COMPLETE_MODULES_ATHALIA.md",
             "url": "ANALYSE_COMPLETE_MODULES_ATHALIA.md",
-            "line": 94
+            "line": 95
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -700,7 +700,7 @@
             "type": "file_reference",
             "text": "CORRECTION_PYTEST_COVERAGE_2025.md",
             "url": "CORRECTION_PYTEST_COVERAGE_2025.md",
-            "line": 95
+            "line": 96
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -712,7 +712,7 @@
             "type": "file_reference",
             "text": "CORRECTIONS_PROGRESS.md",
             "url": "CORRECTIONS_PROGRESS.md",
-            "line": 96
+            "line": 97
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -724,7 +724,7 @@
             "type": "file_reference",
             "text": "OPTIMISATION_TESTS_RAM_FINALE_2025.md",
             "url": "OPTIMISATION_TESTS_RAM_FINALE_2025.md",
-            "line": 97
+            "line": 98
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -736,7 +736,7 @@
             "type": "file_reference",
             "text": "PHASE_4_MODULES_AVANCES_PLAN.md",
             "url": "PHASE_4_MODULES_AVANCES_PLAN.md",
-            "line": 98
+            "line": 99
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -748,7 +748,7 @@
             "type": "file_reference",
             "text": "RAPPORT_COMPLET_AMELIORATIONS_2025.md",
             "url": "RAPPORT_COMPLET_AMELIORATIONS_2025.md",
-            "line": 99
+            "line": 100
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -760,7 +760,7 @@
             "type": "file_reference",
             "text": "RAPPORT_PROGRES_2025.md",
             "url": "RAPPORT_PROGRES_2025.md",
-            "line": 100
+            "line": 101
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -772,7 +772,7 @@
             "type": "file_reference",
             "text": "RAPPORT_PROGRES_FINAL_2025.md",
             "url": "RAPPORT_PROGRES_FINAL_2025.md",
-            "line": 101
+            "line": 102
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -784,7 +784,7 @@
             "type": "file_reference",
             "text": "RESUME_ANALYSE_TESTS_2025.md",
             "url": "RESUME_ANALYSE_TESTS_2025.md",
-            "line": 102
+            "line": 103
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -796,7 +796,7 @@
             "type": "file_reference",
             "text": "SECURITY_IMPROVEMENTS_SUMMARY.md",
             "url": "SECURITY_IMPROVEMENTS_SUMMARY.md",
-            "line": 103
+            "line": 104
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -808,7 +808,7 @@
             "type": "file_reference",
             "text": "WORKFLOW_AMELIORATIONS.md",
             "url": "WORKFLOW_AMELIORATIONS.md",
-            "line": 104
+            "line": 105
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -820,7 +820,7 @@
             "type": "file_reference",
             "text": "README.md",
             "url": "README.md",
-            "line": 15
+            "line": 16
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -832,7 +832,7 @@
             "type": "file_reference",
             "text": "BILAN_COMPLET_DEFINITIF_ATHALIA_2025.md",
             "url": "BILAN_COMPLET_DEFINITIF_ATHALIA_2025.md",
-            "line": 108
+            "line": 109
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -844,7 +844,7 @@
             "type": "file_reference",
             "text": "PLAN_ACTION_AMELIORATIONS_FUTURES_ATHALIA_2025.md",
             "url": "PLAN_ACTION_AMELIORATIONS_FUTURES_ATHALIA_2025.md",
-            "line": 109
+            "line": 110
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -856,7 +856,7 @@
             "type": "file_reference",
             "text": "RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md",
             "url": "RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md",
-            "line": 110
+            "line": 111
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -868,7 +868,7 @@
             "type": "file_reference",
             "text": "RAPPORT_NETTOYAGE_COMPLET_DOCUMENTATION_ATHALIA.md",
             "url": "RAPPORT_NETTOYAGE_COMPLET_DOCUMENTATION_ATHALIA.md",
-            "line": 111
+            "line": 112
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -880,7 +880,7 @@
             "type": "file_reference",
             "text": "REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
             "url": "REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-            "line": 112
+            "line": 113
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -892,7 +892,7 @@
             "type": "file_reference",
             "text": "PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
             "url": "PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-            "line": 113
+            "line": 114
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -904,7 +904,7 @@
             "type": "file_reference",
             "text": "SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
             "url": "SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
-            "line": 114
+            "line": 115
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -916,7 +916,7 @@
             "type": "file_reference",
             "text": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
             "url": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-            "line": 115
+            "line": 116
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -926,9 +926,21 @@
         {
           "link": {
             "type": "file_reference",
+            "text": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+            "url": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+            "line": 117
+          },
+          "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+          "is_valid": false,
+          "error_type": "file_not_found",
+          "suggested_fix": "Vérifier le chemin: docs/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md"
+        },
+        {
+          "link": {
+            "type": "file_reference",
             "text": "CORRECTION_CI_LEVEL1_20250811.md",
             "url": "CORRECTION_CI_LEVEL1_20250811.md",
-            "line": 118
+            "line": 120
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -940,7 +952,7 @@
             "type": "file_reference",
             "text": "CI_CD_LEVEL1_20250811.md",
             "url": "CI_CD_LEVEL1_20250811.md",
-            "line": 121
+            "line": 123
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -952,7 +964,7 @@
             "type": "file_reference",
             "text": "CI_CD_LEVEL2_20250811.md",
             "url": "CI_CD_LEVEL2_20250811.md",
-            "line": 122
+            "line": 124
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -964,7 +976,7 @@
             "type": "file_reference",
             "text": "CI_CD_LEVEL3_20250811.md",
             "url": "CI_CD_LEVEL3_20250811.md",
-            "line": 123
+            "line": 125
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -976,7 +988,7 @@
             "type": "file_reference",
             "text": "CI_CD_LEVEL4_20250811.md",
             "url": "CI_CD_LEVEL4_20250811.md",
-            "line": 124
+            "line": 126
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -988,7 +1000,7 @@
             "type": "file_reference",
             "text": "CI_CD_LEVEL5_20250811.md",
             "url": "CI_CD_LEVEL5_20250811.md",
-            "line": 125
+            "line": 127
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -1000,7 +1012,7 @@
             "type": "file_reference",
             "text": "AUDIT_SECURITE_ATHALIA_20250811.md",
             "url": "AUDIT_SECURITE_ATHALIA_20250811.md",
-            "line": 128
+            "line": 130
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -1012,7 +1024,7 @@
             "type": "file_reference",
             "text": "INDEX.md",
             "url": "INDEX.md",
-            "line": 36
+            "line": 37
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -1024,7 +1036,7 @@
             "type": "file_reference",
             "text": "CONTRIBUTING.md",
             "url": "CONTRIBUTING.md",
-            "line": 132
+            "line": 134
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -1036,7 +1048,7 @@
             "type": "file_reference",
             "text": "DEPLOYMENT.md",
             "url": "DEPLOYMENT.md",
-            "line": 133
+            "line": 135
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -1048,7 +1060,7 @@
             "type": "file_reference",
             "text": "FAQ.md",
             "url": "FAQ.md",
-            "line": 22
+            "line": 23
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -1060,7 +1072,7 @@
             "type": "file_reference",
             "text": "INSTALLATION.md",
             "url": "INSTALLATION.md",
-            "line": 135
+            "line": 137
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -1072,7 +1084,7 @@
             "type": "file_reference",
             "text": "QUICK_START.md",
             "url": "QUICK_START.md",
-            "line": 136
+            "line": 138
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -1084,7 +1096,7 @@
             "type": "file_reference",
             "text": "TROUBLESHOOTING.md",
             "url": "TROUBLESHOOTING.md",
-            "line": 137
+            "line": 139
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -1096,7 +1108,7 @@
             "type": "file_reference",
             "text": "USAGE.md",
             "url": "USAGE.md",
-            "line": 138
+            "line": 140
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -1108,7 +1120,7 @@
             "type": "file_reference",
             "text": "README.md",
             "url": "README.md",
-            "line": 15
+            "line": 16
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -1120,7 +1132,7 @@
             "type": "file_reference",
             "text": "REACHY_SETUP_GUIDE.md",
             "url": "REACHY_SETUP_GUIDE.md",
-            "line": 142
+            "line": 144
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -1132,7 +1144,7 @@
             "type": "file_reference",
             "text": "ROBOTICS_GUIDE.md",
             "url": "ROBOTICS_GUIDE.md",
-            "line": 143
+            "line": 145
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -1144,7 +1156,7 @@
             "type": "file_reference",
             "text": "ROBOTICS_INTEGRATION_SUMMARY.md",
             "url": "ROBOTICS_INTEGRATION_SUMMARY.md",
-            "line": 144
+            "line": 146
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -1156,7 +1168,7 @@
             "type": "file_reference",
             "text": "ROBOTICS_QUICK_START.md",
             "url": "ROBOTICS_QUICK_START.md",
-            "line": 145
+            "line": 147
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -1168,7 +1180,7 @@
             "type": "file_reference",
             "text": "FORMATAGE_AUTOMATIQUE.md",
             "url": "FORMATAGE_AUTOMATIQUE.md",
-            "line": 148
+            "line": 150
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -1180,7 +1192,7 @@
             "type": "file_reference",
             "text": "GIT_WORKFLOW.md",
             "url": "GIT_WORKFLOW.md",
-            "line": 149
+            "line": 151
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -1192,7 +1204,7 @@
             "type": "file_reference",
             "text": "README.md",
             "url": "README.md",
-            "line": 15
+            "line": 16
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -1204,7 +1216,7 @@
             "type": "file_reference",
             "text": "OPTIMISATION_CURSOR_RAM.md",
             "url": "OPTIMISATION_CURSOR_RAM.md",
-            "line": 153
+            "line": 155
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -1216,7 +1228,7 @@
             "type": "file_reference",
             "text": "RESUME_OPTIMISATION_CURSOR.md",
             "url": "RESUME_OPTIMISATION_CURSOR.md",
-            "line": 154
+            "line": 156
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -1228,7 +1240,7 @@
             "type": "file_reference",
             "text": "RESUME_OPTIMISATION_MAC.md",
             "url": "RESUME_OPTIMISATION_MAC.md",
-            "line": 155
+            "line": 157
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -1240,7 +1252,7 @@
             "type": "file_reference",
             "text": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
             "url": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-            "line": 202
+            "line": 204
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -1252,7 +1264,7 @@
             "type": "file_reference",
             "text": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
             "url": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-            "line": 203
+            "line": 205
           },
           "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_valid": false,
@@ -4186,6 +4198,99 @@
       "navigation_score": 100,
       "links": []
     },
+    "REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+      "total_links": 7,
+      "valid_links": 6,
+      "broken_links": 1,
+      "navigation_score": 85.71428571428571,
+      "links": [
+        {
+          "link": {
+            "type": "markdown",
+            "text": "DOCUMENTATION_MAINTENANCE.md",
+            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "line": 183
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+            "line": 184
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "line": 185
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "DOCUMENTATION_MAINTENANCE.md",
+            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "line": 183
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+            "line": 184
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "line": 185
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "url": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "line": 39
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+          "is_valid": false,
+          "error_type": "file_not_found",
+          "suggested_fix": "Vérifier le chemin: docs/REPORTS/RELEASES_AND_BILANS/INDEX_FINAL_DOCUMENTATION_ATHALIA.md"
+        }
+      ]
+    },
     "REPORTS/RELEASES_AND_BILANS/BILAN_COMPLET_BRANCHES_ATHALIA_20250811.md": {
       "file_path": "REPORTS/RELEASES_AND_BILANS/BILAN_COMPLET_BRANCHES_ATHALIA_20250811.md",
       "total_links": 0,
@@ -4519,17 +4624,41 @@
     },
     "REPORTS/RELEASES_AND_BILANS/README.md": {
       "file_path": "REPORTS/RELEASES_AND_BILANS/README.md",
-      "total_links": 14,
-      "valid_links": 14,
+      "total_links": 16,
+      "valid_links": 16,
       "broken_links": 0,
       "navigation_score": 100.0,
       "links": [
         {
           "link": {
+            "type": "markdown",
+            "text": "Guide de maintenance",
+            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "line": 108
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "Guide de maintenance",
+            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "line": 108
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null
+        },
+        {
+          "link": {
             "type": "file_reference",
             "text": "VALIDATION_RELEASE_v1.0.0.md",
             "url": "VALIDATION_RELEASE_v1.0.0.md",
-            "line": 9
+            "line": 16
           },
           "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
           "is_valid": true,
@@ -4541,7 +4670,7 @@
             "type": "file_reference",
             "text": "RELEASE_FINALE_v1.0.0_SUCCES.md",
             "url": "RELEASE_FINALE_v1.0.0_SUCCES.md",
-            "line": 10
+            "line": 17
           },
           "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
           "is_valid": true,
@@ -4553,7 +4682,7 @@
             "type": "file_reference",
             "text": "PLAN_VERSION_FINALE_ATHALIA_v1.0.0.md",
             "url": "PLAN_VERSION_FINALE_ATHALIA_v1.0.0.md",
-            "line": 11
+            "line": 18
           },
           "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
           "is_valid": true,
@@ -4565,7 +4694,7 @@
             "type": "file_reference",
             "text": "BILAN_COMPLET_BRANCHES_ATHALIA_20250811.md",
             "url": "BILAN_COMPLET_BRANCHES_ATHALIA_20250811.md",
-            "line": 14
+            "line": 21
           },
           "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
           "is_valid": true,
@@ -4577,103 +4706,7 @@
             "type": "file_reference",
             "text": "BILAN_COMPLET_DEFINITIF_ATHALIA_2025.md",
             "url": "BILAN_COMPLET_DEFINITIF_ATHALIA_2025.md",
-            "line": 15
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null
-        },
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "PLAN_ACTION_AMELIORATIONS_FUTURES_ATHALIA_2025.md",
-            "url": "PLAN_ACTION_AMELIORATIONS_FUTURES_ATHALIA_2025.md",
-            "line": 16
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null
-        },
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md",
-            "url": "RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md",
-            "line": 19
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null
-        },
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "RAPPORT_NETTOYAGE_COMPLET_DOCUMENTATION_ATHALIA.md",
-            "url": "RAPPORT_NETTOYAGE_COMPLET_DOCUMENTATION_ATHALIA.md",
-            "line": 20
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null
-        },
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-            "url": "REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-            "line": 21
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null
-        },
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-            "url": "PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
             "line": 22
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null
-        },
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
-            "url": "SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
-            "line": 23
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null
-        },
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-            "url": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-            "line": 24
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null
-        },
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "doc_quality_report.md",
-            "url": "doc_quality_report.md",
-            "line": 28
           },
           "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
           "is_valid": true,
@@ -4685,7 +4718,103 @@
             "type": "file_reference",
             "text": "BACKUP_v1.0.0_FINAL_20250811.md",
             "url": "BACKUP_v1.0.0_FINAL_20250811.md",
-            "line": 35
+            "line": 23
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md",
+            "url": "RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md",
+            "line": 26
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "RAPPORT_NETTOYAGE_COMPLET_DOCUMENTATION_ATHALIA.md",
+            "url": "RAPPORT_NETTOYAGE_COMPLET_DOCUMENTATION_ATHALIA.md",
+            "line": 27
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+            "url": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+            "line": 28
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+            "url": "REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+            "line": 31
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+            "url": "PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+            "line": 32
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
+            "url": "SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
+            "line": 33
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+            "url": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+            "line": 34
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "doc_quality_report.md",
+            "url": "doc_quality_report.md",
+            "line": 40
           },
           "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
           "is_valid": true,
@@ -10594,7 +10723,7 @@
         "type": "file_reference",
         "text": "README.md",
         "url": "README.md",
-        "line": 15
+        "line": 16
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10606,7 +10735,7 @@
         "type": "file_reference",
         "text": "CHANGELOG.md",
         "url": "CHANGELOG.md",
-        "line": 16
+        "line": 17
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10618,7 +10747,7 @@
         "type": "file_reference",
         "text": "INVENTAIRE_COMPLET.md",
         "url": "INVENTAIRE_COMPLET.md",
-        "line": 17
+        "line": 18
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10630,7 +10759,7 @@
         "type": "file_reference",
         "text": "RAPPORT_FINAL.md",
         "url": "RAPPORT_FINAL.md",
-        "line": 18
+        "line": 19
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10642,7 +10771,7 @@
         "type": "file_reference",
         "text": "FINAL_SUMMARY.md",
         "url": "FINAL_SUMMARY.md",
-        "line": 19
+        "line": 20
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10654,7 +10783,7 @@
         "type": "file_reference",
         "text": "GENESIS.md",
         "url": "GENESIS.md",
-        "line": 20
+        "line": 21
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10666,7 +10795,7 @@
         "type": "file_reference",
         "text": "CLEANUP_REPORT.md",
         "url": "CLEANUP_REPORT.md",
-        "line": 21
+        "line": 22
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10678,7 +10807,7 @@
         "type": "file_reference",
         "text": "FAQ.md",
         "url": "FAQ.md",
-        "line": 22
+        "line": 23
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10690,7 +10819,7 @@
         "type": "file_reference",
         "text": "INSTALL.md",
         "url": "INSTALL.md",
-        "line": 23
+        "line": 24
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10702,7 +10831,7 @@
         "type": "file_reference",
         "text": "INDEX.md",
         "url": "INDEX.md",
-        "line": 36
+        "line": 37
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10714,7 +10843,7 @@
         "type": "file_reference",
         "text": "ORGANISATION_WORKSPACE.md",
         "url": "ORGANISATION_WORKSPACE.md",
-        "line": 37
+        "line": 38
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10726,7 +10855,7 @@
         "type": "file_reference",
         "text": "STRUCTURE_PROJET_EXPLICATION.md",
         "url": "STRUCTURE_PROJET_EXPLICATION.md",
-        "line": 38
+        "line": 39
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10738,7 +10867,7 @@
         "type": "file_reference",
         "text": "README.md",
         "url": "README.md",
-        "line": 15
+        "line": 16
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10750,7 +10879,7 @@
         "type": "file_reference",
         "text": "dashboard.md",
         "url": "dashboard.md",
-        "line": 42
+        "line": 43
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10762,7 +10891,7 @@
         "type": "file_reference",
         "text": "INDEX.md",
         "url": "INDEX.md",
-        "line": 36
+        "line": 37
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10774,7 +10903,7 @@
         "type": "file_reference",
         "text": "COMMANDES.md",
         "url": "COMMANDES.md",
-        "line": 46
+        "line": 47
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10786,7 +10915,7 @@
         "type": "file_reference",
         "text": "COMMANDES_AVANCEES.md",
         "url": "COMMANDES_AVANCEES.md",
-        "line": 47
+        "line": 48
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10798,7 +10927,7 @@
         "type": "file_reference",
         "text": "core_modules.md",
         "url": "core_modules.md",
-        "line": 48
+        "line": 49
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10810,7 +10939,7 @@
         "type": "file_reference",
         "text": "ERROR_HANDLING.md",
         "url": "ERROR_HANDLING.md",
-        "line": 49
+        "line": 50
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10822,7 +10951,7 @@
         "type": "file_reference",
         "text": "orchestrator.md",
         "url": "orchestrator.md",
-        "line": 50
+        "line": 51
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10834,7 +10963,7 @@
         "type": "file_reference",
         "text": "plugins.md",
         "url": "plugins.md",
-        "line": 51
+        "line": 52
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10846,7 +10975,7 @@
         "type": "file_reference",
         "text": "REFERENCE.md",
         "url": "REFERENCE.md",
-        "line": 52
+        "line": 53
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10858,7 +10987,7 @@
         "type": "file_reference",
         "text": "robotics.md",
         "url": "robotics.md",
-        "line": 53
+        "line": 54
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10870,7 +10999,7 @@
         "type": "file_reference",
         "text": "INDEX.md",
         "url": "INDEX.md",
-        "line": 36
+        "line": 37
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10882,7 +11011,7 @@
         "type": "file_reference",
         "text": "BEST_PRACTICES.md",
         "url": "BEST_PRACTICES.md",
-        "line": 57
+        "line": 58
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10894,7 +11023,7 @@
         "type": "file_reference",
         "text": "DOCUMENTATION_MAINTENANCE.md",
         "url": "DOCUMENTATION_MAINTENANCE.md",
-        "line": 58
+        "line": 59
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10906,7 +11035,7 @@
         "type": "file_reference",
         "text": "MODULES.md",
         "url": "MODULES.md",
-        "line": 59
+        "line": 60
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10918,7 +11047,7 @@
         "type": "file_reference",
         "text": "TEMPLATE_STANDARD_MARKDOWN.md",
         "url": "TEMPLATE_STANDARD_MARKDOWN.md",
-        "line": 60
+        "line": 61
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10930,7 +11059,7 @@
         "type": "file_reference",
         "text": "ALIAS_WORKFLOW_QUICK_GUIDE.md",
         "url": "ALIAS_WORKFLOW_QUICK_GUIDE.md",
-        "line": 63
+        "line": 64
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10942,7 +11071,7 @@
         "type": "file_reference",
         "text": "CI_CD_PRO_PRE_COMMIT_GUIDE.md",
         "url": "CI_CD_PRO_PRE_COMMIT_GUIDE.md",
-        "line": 64
+        "line": 65
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10954,7 +11083,7 @@
         "type": "file_reference",
         "text": "CI_CD_PROFESSIONAL_GUIDE.md",
         "url": "CI_CD_PROFESSIONAL_GUIDE.md",
-        "line": 65
+        "line": 66
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10966,7 +11095,7 @@
         "type": "file_reference",
         "text": "CLEAN_SHUTDOWN_GUIDE.md",
         "url": "CLEAN_SHUTDOWN_GUIDE.md",
-        "line": 66
+        "line": 67
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10978,7 +11107,7 @@
         "type": "file_reference",
         "text": "CLEANUP_GUIDE.md",
         "url": "CLEANUP_GUIDE.md",
-        "line": 67
+        "line": 68
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -10990,7 +11119,7 @@
         "type": "file_reference",
         "text": "DEVELOPER_GUIDE.md",
         "url": "DEVELOPER_GUIDE.md",
-        "line": 68
+        "line": 69
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11002,7 +11131,7 @@
         "type": "file_reference",
         "text": "LINTING_GUIDE.md",
         "url": "LINTING_GUIDE.md",
-        "line": 69
+        "line": 70
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11014,7 +11143,7 @@
         "type": "file_reference",
         "text": "PLUGINS_GUIDE.md",
         "url": "PLUGINS_GUIDE.md",
-        "line": 70
+        "line": 71
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11026,7 +11155,7 @@
         "type": "file_reference",
         "text": "SECURITY_LINTING_GUIDE.md",
         "url": "SECURITY_LINTING_GUIDE.md",
-        "line": 71
+        "line": 72
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11038,7 +11167,7 @@
         "type": "file_reference",
         "text": "TEST_CLEANUP_GUIDE.md",
         "url": "TEST_CLEANUP_GUIDE.md",
-        "line": 72
+        "line": 73
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11050,7 +11179,7 @@
         "type": "file_reference",
         "text": "TESTING.md",
         "url": "TESTING.md",
-        "line": 73
+        "line": 74
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11062,7 +11191,7 @@
         "type": "file_reference",
         "text": "TESTS_GUIDE.md",
         "url": "TESTS_GUIDE.md",
-        "line": 74
+        "line": 75
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11074,7 +11203,7 @@
         "type": "file_reference",
         "text": "WORKFLOW_COMPLETE_GUIDE.md",
         "url": "WORKFLOW_COMPLETE_GUIDE.md",
-        "line": 75
+        "line": 76
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11086,7 +11215,7 @@
         "type": "file_reference",
         "text": "APPLE_DOUBLE_MANAGEMENT.md",
         "url": "APPLE_DOUBLE_MANAGEMENT.md",
-        "line": 78
+        "line": 79
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11098,7 +11227,7 @@
         "type": "file_reference",
         "text": "BIN_CLEANUP_REPORT.md",
         "url": "BIN_CLEANUP_REPORT.md",
-        "line": 79
+        "line": 80
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11110,7 +11239,7 @@
         "type": "file_reference",
         "text": "MACOS_TEMP_CLEANUP.md",
         "url": "MACOS_TEMP_CLEANUP.md",
-        "line": 80
+        "line": 81
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11122,7 +11251,7 @@
         "type": "file_reference",
         "text": "INDEX.md",
         "url": "INDEX.md",
-        "line": 36
+        "line": 37
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11134,7 +11263,7 @@
         "type": "file_reference",
         "text": "NETTOYAGE_REPOSITORY_PLAN.md",
         "url": "NETTOYAGE_REPOSITORY_PLAN.md",
-        "line": 84
+        "line": 85
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11146,7 +11275,7 @@
         "type": "file_reference",
         "text": "OPTIMISATION_TESTS_RAM_2025.md",
         "url": "OPTIMISATION_TESTS_RAM_2025.md",
-        "line": 85
+        "line": 86
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11158,7 +11287,7 @@
         "type": "file_reference",
         "text": "PLAN_ACTION_COUVERTURE_2025.md",
         "url": "PLAN_ACTION_COUVERTURE_2025.md",
-        "line": 86
+        "line": 87
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11170,7 +11299,7 @@
         "type": "file_reference",
         "text": "PLAN_ACTION_MODULARISATION_ATHALIA.md",
         "url": "PLAN_ACTION_MODULARISATION_ATHALIA.md",
-        "line": 87
+        "line": 88
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11182,7 +11311,7 @@
         "type": "file_reference",
         "text": "PLAN_CORRECTION_TESTS_2025.md",
         "url": "PLAN_CORRECTION_TESTS_2025.md",
-        "line": 88
+        "line": 89
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11194,7 +11323,7 @@
         "type": "file_reference",
         "text": "REORGANISATION_TESTS_PLAN.md",
         "url": "REORGANISATION_TESTS_PLAN.md",
-        "line": 89
+        "line": 90
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11206,7 +11335,7 @@
         "type": "file_reference",
         "text": "REORGANISATION_TESTS_STRUCTURE.md",
         "url": "REORGANISATION_TESTS_STRUCTURE.md",
-        "line": 90
+        "line": 91
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11218,7 +11347,7 @@
         "type": "file_reference",
         "text": "AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md",
         "url": "AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md",
-        "line": 93
+        "line": 94
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11230,7 +11359,7 @@
         "type": "file_reference",
         "text": "ANALYSE_COMPLETE_MODULES_ATHALIA.md",
         "url": "ANALYSE_COMPLETE_MODULES_ATHALIA.md",
-        "line": 94
+        "line": 95
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11242,7 +11371,7 @@
         "type": "file_reference",
         "text": "CORRECTION_PYTEST_COVERAGE_2025.md",
         "url": "CORRECTION_PYTEST_COVERAGE_2025.md",
-        "line": 95
+        "line": 96
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11254,7 +11383,7 @@
         "type": "file_reference",
         "text": "CORRECTIONS_PROGRESS.md",
         "url": "CORRECTIONS_PROGRESS.md",
-        "line": 96
+        "line": 97
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11266,7 +11395,7 @@
         "type": "file_reference",
         "text": "OPTIMISATION_TESTS_RAM_FINALE_2025.md",
         "url": "OPTIMISATION_TESTS_RAM_FINALE_2025.md",
-        "line": 97
+        "line": 98
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11278,7 +11407,7 @@
         "type": "file_reference",
         "text": "PHASE_4_MODULES_AVANCES_PLAN.md",
         "url": "PHASE_4_MODULES_AVANCES_PLAN.md",
-        "line": 98
+        "line": 99
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11290,7 +11419,7 @@
         "type": "file_reference",
         "text": "RAPPORT_COMPLET_AMELIORATIONS_2025.md",
         "url": "RAPPORT_COMPLET_AMELIORATIONS_2025.md",
-        "line": 99
+        "line": 100
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11302,7 +11431,7 @@
         "type": "file_reference",
         "text": "RAPPORT_PROGRES_2025.md",
         "url": "RAPPORT_PROGRES_2025.md",
-        "line": 100
+        "line": 101
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11314,7 +11443,7 @@
         "type": "file_reference",
         "text": "RAPPORT_PROGRES_FINAL_2025.md",
         "url": "RAPPORT_PROGRES_FINAL_2025.md",
-        "line": 101
+        "line": 102
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11326,7 +11455,7 @@
         "type": "file_reference",
         "text": "RESUME_ANALYSE_TESTS_2025.md",
         "url": "RESUME_ANALYSE_TESTS_2025.md",
-        "line": 102
+        "line": 103
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11338,7 +11467,7 @@
         "type": "file_reference",
         "text": "SECURITY_IMPROVEMENTS_SUMMARY.md",
         "url": "SECURITY_IMPROVEMENTS_SUMMARY.md",
-        "line": 103
+        "line": 104
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11350,7 +11479,7 @@
         "type": "file_reference",
         "text": "WORKFLOW_AMELIORATIONS.md",
         "url": "WORKFLOW_AMELIORATIONS.md",
-        "line": 104
+        "line": 105
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11362,7 +11491,7 @@
         "type": "file_reference",
         "text": "README.md",
         "url": "README.md",
-        "line": 15
+        "line": 16
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11374,7 +11503,7 @@
         "type": "file_reference",
         "text": "BILAN_COMPLET_DEFINITIF_ATHALIA_2025.md",
         "url": "BILAN_COMPLET_DEFINITIF_ATHALIA_2025.md",
-        "line": 108
+        "line": 109
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11386,7 +11515,7 @@
         "type": "file_reference",
         "text": "PLAN_ACTION_AMELIORATIONS_FUTURES_ATHALIA_2025.md",
         "url": "PLAN_ACTION_AMELIORATIONS_FUTURES_ATHALIA_2025.md",
-        "line": 109
+        "line": 110
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11398,7 +11527,7 @@
         "type": "file_reference",
         "text": "RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md",
         "url": "RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md",
-        "line": 110
+        "line": 111
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11410,7 +11539,7 @@
         "type": "file_reference",
         "text": "RAPPORT_NETTOYAGE_COMPLET_DOCUMENTATION_ATHALIA.md",
         "url": "RAPPORT_NETTOYAGE_COMPLET_DOCUMENTATION_ATHALIA.md",
-        "line": 111
+        "line": 112
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11422,7 +11551,7 @@
         "type": "file_reference",
         "text": "REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
         "url": "REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-        "line": 112
+        "line": 113
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11434,7 +11563,7 @@
         "type": "file_reference",
         "text": "PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "url": "PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "line": 113
+        "line": 114
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11446,7 +11575,7 @@
         "type": "file_reference",
         "text": "SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
         "url": "SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
-        "line": 114
+        "line": 115
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11458,7 +11587,7 @@
         "type": "file_reference",
         "text": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
         "url": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-        "line": 115
+        "line": 116
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11468,9 +11597,21 @@
     {
       "link": {
         "type": "file_reference",
+        "text": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+        "url": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+        "line": 117
+      },
+      "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: docs/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md"
+    },
+    {
+      "link": {
+        "type": "file_reference",
         "text": "CORRECTION_CI_LEVEL1_20250811.md",
         "url": "CORRECTION_CI_LEVEL1_20250811.md",
-        "line": 118
+        "line": 120
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11482,7 +11623,7 @@
         "type": "file_reference",
         "text": "CI_CD_LEVEL1_20250811.md",
         "url": "CI_CD_LEVEL1_20250811.md",
-        "line": 121
+        "line": 123
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11494,7 +11635,7 @@
         "type": "file_reference",
         "text": "CI_CD_LEVEL2_20250811.md",
         "url": "CI_CD_LEVEL2_20250811.md",
-        "line": 122
+        "line": 124
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11506,7 +11647,7 @@
         "type": "file_reference",
         "text": "CI_CD_LEVEL3_20250811.md",
         "url": "CI_CD_LEVEL3_20250811.md",
-        "line": 123
+        "line": 125
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11518,7 +11659,7 @@
         "type": "file_reference",
         "text": "CI_CD_LEVEL4_20250811.md",
         "url": "CI_CD_LEVEL4_20250811.md",
-        "line": 124
+        "line": 126
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11530,7 +11671,7 @@
         "type": "file_reference",
         "text": "CI_CD_LEVEL5_20250811.md",
         "url": "CI_CD_LEVEL5_20250811.md",
-        "line": 125
+        "line": 127
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11542,7 +11683,7 @@
         "type": "file_reference",
         "text": "AUDIT_SECURITE_ATHALIA_20250811.md",
         "url": "AUDIT_SECURITE_ATHALIA_20250811.md",
-        "line": 128
+        "line": 130
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11554,7 +11695,7 @@
         "type": "file_reference",
         "text": "INDEX.md",
         "url": "INDEX.md",
-        "line": 36
+        "line": 37
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11566,7 +11707,7 @@
         "type": "file_reference",
         "text": "CONTRIBUTING.md",
         "url": "CONTRIBUTING.md",
-        "line": 132
+        "line": 134
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11578,7 +11719,7 @@
         "type": "file_reference",
         "text": "DEPLOYMENT.md",
         "url": "DEPLOYMENT.md",
-        "line": 133
+        "line": 135
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11590,7 +11731,7 @@
         "type": "file_reference",
         "text": "FAQ.md",
         "url": "FAQ.md",
-        "line": 22
+        "line": 23
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11602,7 +11743,7 @@
         "type": "file_reference",
         "text": "INSTALLATION.md",
         "url": "INSTALLATION.md",
-        "line": 135
+        "line": 137
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11614,7 +11755,7 @@
         "type": "file_reference",
         "text": "QUICK_START.md",
         "url": "QUICK_START.md",
-        "line": 136
+        "line": 138
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11626,7 +11767,7 @@
         "type": "file_reference",
         "text": "TROUBLESHOOTING.md",
         "url": "TROUBLESHOOTING.md",
-        "line": 137
+        "line": 139
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11638,7 +11779,7 @@
         "type": "file_reference",
         "text": "USAGE.md",
         "url": "USAGE.md",
-        "line": 138
+        "line": 140
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11650,7 +11791,7 @@
         "type": "file_reference",
         "text": "README.md",
         "url": "README.md",
-        "line": 15
+        "line": 16
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11662,7 +11803,7 @@
         "type": "file_reference",
         "text": "REACHY_SETUP_GUIDE.md",
         "url": "REACHY_SETUP_GUIDE.md",
-        "line": 142
+        "line": 144
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11674,7 +11815,7 @@
         "type": "file_reference",
         "text": "ROBOTICS_GUIDE.md",
         "url": "ROBOTICS_GUIDE.md",
-        "line": 143
+        "line": 145
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11686,7 +11827,7 @@
         "type": "file_reference",
         "text": "ROBOTICS_INTEGRATION_SUMMARY.md",
         "url": "ROBOTICS_INTEGRATION_SUMMARY.md",
-        "line": 144
+        "line": 146
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11698,7 +11839,7 @@
         "type": "file_reference",
         "text": "ROBOTICS_QUICK_START.md",
         "url": "ROBOTICS_QUICK_START.md",
-        "line": 145
+        "line": 147
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11710,7 +11851,7 @@
         "type": "file_reference",
         "text": "FORMATAGE_AUTOMATIQUE.md",
         "url": "FORMATAGE_AUTOMATIQUE.md",
-        "line": 148
+        "line": 150
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11722,7 +11863,7 @@
         "type": "file_reference",
         "text": "GIT_WORKFLOW.md",
         "url": "GIT_WORKFLOW.md",
-        "line": 149
+        "line": 151
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11734,7 +11875,7 @@
         "type": "file_reference",
         "text": "README.md",
         "url": "README.md",
-        "line": 15
+        "line": 16
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11746,7 +11887,7 @@
         "type": "file_reference",
         "text": "OPTIMISATION_CURSOR_RAM.md",
         "url": "OPTIMISATION_CURSOR_RAM.md",
-        "line": 153
+        "line": 155
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11758,7 +11899,7 @@
         "type": "file_reference",
         "text": "RESUME_OPTIMISATION_CURSOR.md",
         "url": "RESUME_OPTIMISATION_CURSOR.md",
-        "line": 154
+        "line": 156
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11770,7 +11911,7 @@
         "type": "file_reference",
         "text": "RESUME_OPTIMISATION_MAC.md",
         "url": "RESUME_OPTIMISATION_MAC.md",
-        "line": 155
+        "line": 157
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11782,7 +11923,7 @@
         "type": "file_reference",
         "text": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
         "url": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-        "line": 202
+        "line": 204
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -11794,7 +11935,7 @@
         "type": "file_reference",
         "text": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
         "url": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-        "line": 203
+        "line": 205
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -12772,6 +12913,18 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: docs/GETTING_STARTED/../../USER_GUIDES/USAGE.md"
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "url": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "line": 39
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: docs/REPORTS/RELEASES_AND_BILANS/INDEX_FINAL_DOCUMENTATION_ATHALIA.md"
     },
     {
       "link": {
@@ -16006,7 +16159,7 @@
         "type": "file_reference",
         "text": "README.md",
         "url": "README.md",
-        "line": 15
+        "line": 16
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16018,7 +16171,7 @@
         "type": "file_reference",
         "text": "CHANGELOG.md",
         "url": "CHANGELOG.md",
-        "line": 16
+        "line": 17
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16030,7 +16183,7 @@
         "type": "file_reference",
         "text": "INVENTAIRE_COMPLET.md",
         "url": "INVENTAIRE_COMPLET.md",
-        "line": 17
+        "line": 18
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16042,7 +16195,7 @@
         "type": "file_reference",
         "text": "RAPPORT_FINAL.md",
         "url": "RAPPORT_FINAL.md",
-        "line": 18
+        "line": 19
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16054,7 +16207,7 @@
         "type": "file_reference",
         "text": "FINAL_SUMMARY.md",
         "url": "FINAL_SUMMARY.md",
-        "line": 19
+        "line": 20
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16066,7 +16219,7 @@
         "type": "file_reference",
         "text": "GENESIS.md",
         "url": "GENESIS.md",
-        "line": 20
+        "line": 21
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16078,7 +16231,7 @@
         "type": "file_reference",
         "text": "CLEANUP_REPORT.md",
         "url": "CLEANUP_REPORT.md",
-        "line": 21
+        "line": 22
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16090,7 +16243,7 @@
         "type": "file_reference",
         "text": "FAQ.md",
         "url": "FAQ.md",
-        "line": 22
+        "line": 23
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16102,7 +16255,7 @@
         "type": "file_reference",
         "text": "INSTALL.md",
         "url": "INSTALL.md",
-        "line": 23
+        "line": 24
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16114,7 +16267,7 @@
         "type": "file_reference",
         "text": "INDEX.md",
         "url": "INDEX.md",
-        "line": 36
+        "line": 37
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16126,7 +16279,7 @@
         "type": "file_reference",
         "text": "ORGANISATION_WORKSPACE.md",
         "url": "ORGANISATION_WORKSPACE.md",
-        "line": 37
+        "line": 38
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16138,7 +16291,7 @@
         "type": "file_reference",
         "text": "STRUCTURE_PROJET_EXPLICATION.md",
         "url": "STRUCTURE_PROJET_EXPLICATION.md",
-        "line": 38
+        "line": 39
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16150,7 +16303,7 @@
         "type": "file_reference",
         "text": "README.md",
         "url": "README.md",
-        "line": 15
+        "line": 16
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16162,7 +16315,7 @@
         "type": "file_reference",
         "text": "dashboard.md",
         "url": "dashboard.md",
-        "line": 42
+        "line": 43
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16174,7 +16327,7 @@
         "type": "file_reference",
         "text": "INDEX.md",
         "url": "INDEX.md",
-        "line": 36
+        "line": 37
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16186,7 +16339,7 @@
         "type": "file_reference",
         "text": "COMMANDES.md",
         "url": "COMMANDES.md",
-        "line": 46
+        "line": 47
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16198,7 +16351,7 @@
         "type": "file_reference",
         "text": "COMMANDES_AVANCEES.md",
         "url": "COMMANDES_AVANCEES.md",
-        "line": 47
+        "line": 48
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16210,7 +16363,7 @@
         "type": "file_reference",
         "text": "core_modules.md",
         "url": "core_modules.md",
-        "line": 48
+        "line": 49
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16222,7 +16375,7 @@
         "type": "file_reference",
         "text": "ERROR_HANDLING.md",
         "url": "ERROR_HANDLING.md",
-        "line": 49
+        "line": 50
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16234,7 +16387,7 @@
         "type": "file_reference",
         "text": "orchestrator.md",
         "url": "orchestrator.md",
-        "line": 50
+        "line": 51
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16246,7 +16399,7 @@
         "type": "file_reference",
         "text": "plugins.md",
         "url": "plugins.md",
-        "line": 51
+        "line": 52
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16258,7 +16411,7 @@
         "type": "file_reference",
         "text": "REFERENCE.md",
         "url": "REFERENCE.md",
-        "line": 52
+        "line": 53
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16270,7 +16423,7 @@
         "type": "file_reference",
         "text": "robotics.md",
         "url": "robotics.md",
-        "line": 53
+        "line": 54
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16282,7 +16435,7 @@
         "type": "file_reference",
         "text": "INDEX.md",
         "url": "INDEX.md",
-        "line": 36
+        "line": 37
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16294,7 +16447,7 @@
         "type": "file_reference",
         "text": "BEST_PRACTICES.md",
         "url": "BEST_PRACTICES.md",
-        "line": 57
+        "line": 58
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16306,7 +16459,7 @@
         "type": "file_reference",
         "text": "DOCUMENTATION_MAINTENANCE.md",
         "url": "DOCUMENTATION_MAINTENANCE.md",
-        "line": 58
+        "line": 59
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16318,7 +16471,7 @@
         "type": "file_reference",
         "text": "MODULES.md",
         "url": "MODULES.md",
-        "line": 59
+        "line": 60
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16330,7 +16483,7 @@
         "type": "file_reference",
         "text": "TEMPLATE_STANDARD_MARKDOWN.md",
         "url": "TEMPLATE_STANDARD_MARKDOWN.md",
-        "line": 60
+        "line": 61
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16342,7 +16495,7 @@
         "type": "file_reference",
         "text": "ALIAS_WORKFLOW_QUICK_GUIDE.md",
         "url": "ALIAS_WORKFLOW_QUICK_GUIDE.md",
-        "line": 63
+        "line": 64
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16354,7 +16507,7 @@
         "type": "file_reference",
         "text": "CI_CD_PRO_PRE_COMMIT_GUIDE.md",
         "url": "CI_CD_PRO_PRE_COMMIT_GUIDE.md",
-        "line": 64
+        "line": 65
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16366,7 +16519,7 @@
         "type": "file_reference",
         "text": "CI_CD_PROFESSIONAL_GUIDE.md",
         "url": "CI_CD_PROFESSIONAL_GUIDE.md",
-        "line": 65
+        "line": 66
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16378,7 +16531,7 @@
         "type": "file_reference",
         "text": "CLEAN_SHUTDOWN_GUIDE.md",
         "url": "CLEAN_SHUTDOWN_GUIDE.md",
-        "line": 66
+        "line": 67
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16390,7 +16543,7 @@
         "type": "file_reference",
         "text": "CLEANUP_GUIDE.md",
         "url": "CLEANUP_GUIDE.md",
-        "line": 67
+        "line": 68
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16402,7 +16555,7 @@
         "type": "file_reference",
         "text": "DEVELOPER_GUIDE.md",
         "url": "DEVELOPER_GUIDE.md",
-        "line": 68
+        "line": 69
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16414,7 +16567,7 @@
         "type": "file_reference",
         "text": "LINTING_GUIDE.md",
         "url": "LINTING_GUIDE.md",
-        "line": 69
+        "line": 70
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16426,7 +16579,7 @@
         "type": "file_reference",
         "text": "PLUGINS_GUIDE.md",
         "url": "PLUGINS_GUIDE.md",
-        "line": 70
+        "line": 71
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16438,7 +16591,7 @@
         "type": "file_reference",
         "text": "SECURITY_LINTING_GUIDE.md",
         "url": "SECURITY_LINTING_GUIDE.md",
-        "line": 71
+        "line": 72
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16450,7 +16603,7 @@
         "type": "file_reference",
         "text": "TEST_CLEANUP_GUIDE.md",
         "url": "TEST_CLEANUP_GUIDE.md",
-        "line": 72
+        "line": 73
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16462,7 +16615,7 @@
         "type": "file_reference",
         "text": "TESTING.md",
         "url": "TESTING.md",
-        "line": 73
+        "line": 74
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16474,7 +16627,7 @@
         "type": "file_reference",
         "text": "TESTS_GUIDE.md",
         "url": "TESTS_GUIDE.md",
-        "line": 74
+        "line": 75
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16486,7 +16639,7 @@
         "type": "file_reference",
         "text": "WORKFLOW_COMPLETE_GUIDE.md",
         "url": "WORKFLOW_COMPLETE_GUIDE.md",
-        "line": 75
+        "line": 76
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16498,7 +16651,7 @@
         "type": "file_reference",
         "text": "APPLE_DOUBLE_MANAGEMENT.md",
         "url": "APPLE_DOUBLE_MANAGEMENT.md",
-        "line": 78
+        "line": 79
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16510,7 +16663,7 @@
         "type": "file_reference",
         "text": "BIN_CLEANUP_REPORT.md",
         "url": "BIN_CLEANUP_REPORT.md",
-        "line": 79
+        "line": 80
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16522,7 +16675,7 @@
         "type": "file_reference",
         "text": "MACOS_TEMP_CLEANUP.md",
         "url": "MACOS_TEMP_CLEANUP.md",
-        "line": 80
+        "line": 81
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16534,7 +16687,7 @@
         "type": "file_reference",
         "text": "INDEX.md",
         "url": "INDEX.md",
-        "line": 36
+        "line": 37
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16546,7 +16699,7 @@
         "type": "file_reference",
         "text": "NETTOYAGE_REPOSITORY_PLAN.md",
         "url": "NETTOYAGE_REPOSITORY_PLAN.md",
-        "line": 84
+        "line": 85
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16558,7 +16711,7 @@
         "type": "file_reference",
         "text": "OPTIMISATION_TESTS_RAM_2025.md",
         "url": "OPTIMISATION_TESTS_RAM_2025.md",
-        "line": 85
+        "line": 86
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16570,7 +16723,7 @@
         "type": "file_reference",
         "text": "PLAN_ACTION_COUVERTURE_2025.md",
         "url": "PLAN_ACTION_COUVERTURE_2025.md",
-        "line": 86
+        "line": 87
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16582,7 +16735,7 @@
         "type": "file_reference",
         "text": "PLAN_ACTION_MODULARISATION_ATHALIA.md",
         "url": "PLAN_ACTION_MODULARISATION_ATHALIA.md",
-        "line": 87
+        "line": 88
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16594,7 +16747,7 @@
         "type": "file_reference",
         "text": "PLAN_CORRECTION_TESTS_2025.md",
         "url": "PLAN_CORRECTION_TESTS_2025.md",
-        "line": 88
+        "line": 89
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16606,7 +16759,7 @@
         "type": "file_reference",
         "text": "REORGANISATION_TESTS_PLAN.md",
         "url": "REORGANISATION_TESTS_PLAN.md",
-        "line": 89
+        "line": 90
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16618,7 +16771,7 @@
         "type": "file_reference",
         "text": "REORGANISATION_TESTS_STRUCTURE.md",
         "url": "REORGANISATION_TESTS_STRUCTURE.md",
-        "line": 90
+        "line": 91
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16630,7 +16783,7 @@
         "type": "file_reference",
         "text": "AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md",
         "url": "AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md",
-        "line": 93
+        "line": 94
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16642,7 +16795,7 @@
         "type": "file_reference",
         "text": "ANALYSE_COMPLETE_MODULES_ATHALIA.md",
         "url": "ANALYSE_COMPLETE_MODULES_ATHALIA.md",
-        "line": 94
+        "line": 95
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16654,7 +16807,7 @@
         "type": "file_reference",
         "text": "CORRECTION_PYTEST_COVERAGE_2025.md",
         "url": "CORRECTION_PYTEST_COVERAGE_2025.md",
-        "line": 95
+        "line": 96
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16666,7 +16819,7 @@
         "type": "file_reference",
         "text": "CORRECTIONS_PROGRESS.md",
         "url": "CORRECTIONS_PROGRESS.md",
-        "line": 96
+        "line": 97
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16678,7 +16831,7 @@
         "type": "file_reference",
         "text": "OPTIMISATION_TESTS_RAM_FINALE_2025.md",
         "url": "OPTIMISATION_TESTS_RAM_FINALE_2025.md",
-        "line": 97
+        "line": 98
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16690,7 +16843,7 @@
         "type": "file_reference",
         "text": "PHASE_4_MODULES_AVANCES_PLAN.md",
         "url": "PHASE_4_MODULES_AVANCES_PLAN.md",
-        "line": 98
+        "line": 99
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16702,7 +16855,7 @@
         "type": "file_reference",
         "text": "RAPPORT_COMPLET_AMELIORATIONS_2025.md",
         "url": "RAPPORT_COMPLET_AMELIORATIONS_2025.md",
-        "line": 99
+        "line": 100
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16714,7 +16867,7 @@
         "type": "file_reference",
         "text": "RAPPORT_PROGRES_2025.md",
         "url": "RAPPORT_PROGRES_2025.md",
-        "line": 100
+        "line": 101
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16726,7 +16879,7 @@
         "type": "file_reference",
         "text": "RAPPORT_PROGRES_FINAL_2025.md",
         "url": "RAPPORT_PROGRES_FINAL_2025.md",
-        "line": 101
+        "line": 102
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16738,7 +16891,7 @@
         "type": "file_reference",
         "text": "RESUME_ANALYSE_TESTS_2025.md",
         "url": "RESUME_ANALYSE_TESTS_2025.md",
-        "line": 102
+        "line": 103
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16750,7 +16903,7 @@
         "type": "file_reference",
         "text": "SECURITY_IMPROVEMENTS_SUMMARY.md",
         "url": "SECURITY_IMPROVEMENTS_SUMMARY.md",
-        "line": 103
+        "line": 104
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16762,7 +16915,7 @@
         "type": "file_reference",
         "text": "WORKFLOW_AMELIORATIONS.md",
         "url": "WORKFLOW_AMELIORATIONS.md",
-        "line": 104
+        "line": 105
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16774,7 +16927,7 @@
         "type": "file_reference",
         "text": "README.md",
         "url": "README.md",
-        "line": 15
+        "line": 16
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16786,7 +16939,7 @@
         "type": "file_reference",
         "text": "BILAN_COMPLET_DEFINITIF_ATHALIA_2025.md",
         "url": "BILAN_COMPLET_DEFINITIF_ATHALIA_2025.md",
-        "line": 108
+        "line": 109
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16798,7 +16951,7 @@
         "type": "file_reference",
         "text": "PLAN_ACTION_AMELIORATIONS_FUTURES_ATHALIA_2025.md",
         "url": "PLAN_ACTION_AMELIORATIONS_FUTURES_ATHALIA_2025.md",
-        "line": 109
+        "line": 110
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16810,7 +16963,7 @@
         "type": "file_reference",
         "text": "RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md",
         "url": "RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md",
-        "line": 110
+        "line": 111
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16822,7 +16975,7 @@
         "type": "file_reference",
         "text": "RAPPORT_NETTOYAGE_COMPLET_DOCUMENTATION_ATHALIA.md",
         "url": "RAPPORT_NETTOYAGE_COMPLET_DOCUMENTATION_ATHALIA.md",
-        "line": 111
+        "line": 112
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16834,7 +16987,7 @@
         "type": "file_reference",
         "text": "REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
         "url": "REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-        "line": 112
+        "line": 113
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16846,7 +16999,7 @@
         "type": "file_reference",
         "text": "PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "url": "PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "line": 113
+        "line": 114
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16858,7 +17011,7 @@
         "type": "file_reference",
         "text": "SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
         "url": "SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
-        "line": 114
+        "line": 115
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16870,7 +17023,7 @@
         "type": "file_reference",
         "text": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
         "url": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-        "line": 115
+        "line": 116
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16880,9 +17033,21 @@
     {
       "link": {
         "type": "file_reference",
+        "text": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+        "url": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+        "line": 117
+      },
+      "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: docs/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md"
+    },
+    {
+      "link": {
+        "type": "file_reference",
         "text": "CORRECTION_CI_LEVEL1_20250811.md",
         "url": "CORRECTION_CI_LEVEL1_20250811.md",
-        "line": 118
+        "line": 120
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16894,7 +17059,7 @@
         "type": "file_reference",
         "text": "CI_CD_LEVEL1_20250811.md",
         "url": "CI_CD_LEVEL1_20250811.md",
-        "line": 121
+        "line": 123
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16906,7 +17071,7 @@
         "type": "file_reference",
         "text": "CI_CD_LEVEL2_20250811.md",
         "url": "CI_CD_LEVEL2_20250811.md",
-        "line": 122
+        "line": 124
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16918,7 +17083,7 @@
         "type": "file_reference",
         "text": "CI_CD_LEVEL3_20250811.md",
         "url": "CI_CD_LEVEL3_20250811.md",
-        "line": 123
+        "line": 125
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16930,7 +17095,7 @@
         "type": "file_reference",
         "text": "CI_CD_LEVEL4_20250811.md",
         "url": "CI_CD_LEVEL4_20250811.md",
-        "line": 124
+        "line": 126
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16942,7 +17107,7 @@
         "type": "file_reference",
         "text": "CI_CD_LEVEL5_20250811.md",
         "url": "CI_CD_LEVEL5_20250811.md",
-        "line": 125
+        "line": 127
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16954,7 +17119,7 @@
         "type": "file_reference",
         "text": "AUDIT_SECURITE_ATHALIA_20250811.md",
         "url": "AUDIT_SECURITE_ATHALIA_20250811.md",
-        "line": 128
+        "line": 130
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16966,7 +17131,7 @@
         "type": "file_reference",
         "text": "INDEX.md",
         "url": "INDEX.md",
-        "line": 36
+        "line": 37
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16978,7 +17143,7 @@
         "type": "file_reference",
         "text": "CONTRIBUTING.md",
         "url": "CONTRIBUTING.md",
-        "line": 132
+        "line": 134
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -16990,7 +17155,7 @@
         "type": "file_reference",
         "text": "DEPLOYMENT.md",
         "url": "DEPLOYMENT.md",
-        "line": 133
+        "line": 135
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -17002,7 +17167,7 @@
         "type": "file_reference",
         "text": "FAQ.md",
         "url": "FAQ.md",
-        "line": 22
+        "line": 23
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -17014,7 +17179,7 @@
         "type": "file_reference",
         "text": "INSTALLATION.md",
         "url": "INSTALLATION.md",
-        "line": 135
+        "line": 137
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -17026,7 +17191,7 @@
         "type": "file_reference",
         "text": "QUICK_START.md",
         "url": "QUICK_START.md",
-        "line": 136
+        "line": 138
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -17038,7 +17203,7 @@
         "type": "file_reference",
         "text": "TROUBLESHOOTING.md",
         "url": "TROUBLESHOOTING.md",
-        "line": 137
+        "line": 139
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -17050,7 +17215,7 @@
         "type": "file_reference",
         "text": "USAGE.md",
         "url": "USAGE.md",
-        "line": 138
+        "line": 140
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -17062,7 +17227,7 @@
         "type": "file_reference",
         "text": "README.md",
         "url": "README.md",
-        "line": 15
+        "line": 16
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -17074,7 +17239,7 @@
         "type": "file_reference",
         "text": "REACHY_SETUP_GUIDE.md",
         "url": "REACHY_SETUP_GUIDE.md",
-        "line": 142
+        "line": 144
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -17086,7 +17251,7 @@
         "type": "file_reference",
         "text": "ROBOTICS_GUIDE.md",
         "url": "ROBOTICS_GUIDE.md",
-        "line": 143
+        "line": 145
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -17098,7 +17263,7 @@
         "type": "file_reference",
         "text": "ROBOTICS_INTEGRATION_SUMMARY.md",
         "url": "ROBOTICS_INTEGRATION_SUMMARY.md",
-        "line": 144
+        "line": 146
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -17110,7 +17275,7 @@
         "type": "file_reference",
         "text": "ROBOTICS_QUICK_START.md",
         "url": "ROBOTICS_QUICK_START.md",
-        "line": 145
+        "line": 147
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -17122,7 +17287,7 @@
         "type": "file_reference",
         "text": "FORMATAGE_AUTOMATIQUE.md",
         "url": "FORMATAGE_AUTOMATIQUE.md",
-        "line": 148
+        "line": 150
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -17134,7 +17299,7 @@
         "type": "file_reference",
         "text": "GIT_WORKFLOW.md",
         "url": "GIT_WORKFLOW.md",
-        "line": 149
+        "line": 151
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -17146,7 +17311,7 @@
         "type": "file_reference",
         "text": "README.md",
         "url": "README.md",
-        "line": 15
+        "line": 16
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -17158,7 +17323,7 @@
         "type": "file_reference",
         "text": "OPTIMISATION_CURSOR_RAM.md",
         "url": "OPTIMISATION_CURSOR_RAM.md",
-        "line": 153
+        "line": 155
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -17170,7 +17335,7 @@
         "type": "file_reference",
         "text": "RESUME_OPTIMISATION_CURSOR.md",
         "url": "RESUME_OPTIMISATION_CURSOR.md",
-        "line": 154
+        "line": 156
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -17182,7 +17347,7 @@
         "type": "file_reference",
         "text": "RESUME_OPTIMISATION_MAC.md",
         "url": "RESUME_OPTIMISATION_MAC.md",
-        "line": 155
+        "line": 157
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -17194,7 +17359,7 @@
         "type": "file_reference",
         "text": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
         "url": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-        "line": 202
+        "line": 204
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -17206,7 +17371,7 @@
         "type": "file_reference",
         "text": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
         "url": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-        "line": 203
+        "line": 205
       },
       "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_valid": false,
@@ -18184,6 +18349,18 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: docs/GETTING_STARTED/../../USER_GUIDES/USAGE.md"
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "url": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "line": 39
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: docs/REPORTS/RELEASES_AND_BILANS/INDEX_FINAL_DOCUMENTATION_ATHALIA.md"
     },
     {
       "link": {
