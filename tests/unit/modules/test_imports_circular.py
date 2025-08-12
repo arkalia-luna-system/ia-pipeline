@@ -69,9 +69,26 @@ class TestCircularImports:
 
     def test_no_self_imports(self):
         """Test qu'aucun module ne s'importe lui-même"""
+        # CORRECTION ARCHI PROPRE : Vérification intelligente du répertoire athalia_core
         core_path = Path("athalia_core")
         if not core_path.exists():
-            pytest.skip("athalia_core non trouvé")
+            # CORRECTION ARCHI PROPRE : Vérifier si on est dans le bon répertoire
+            current_dir = Path.cwd()
+            possible_paths = [
+                current_dir / "athalia_core",
+                current_dir.parent / "athalia_core",
+                current_dir.parent.parent / "athalia_core",
+            ]
+
+            for path in possible_paths:
+                if path.exists():
+                    core_path = path
+                    print(f"✅ Répertoire athalia_core trouvé: {path}")
+                    break
+            else:
+                pytest.skip(
+                    "Répertoire athalia_core non trouvé dans les emplacements possibles"
+                )
 
         python_files = get_python_files("athalia_core")
 
@@ -90,9 +107,26 @@ class TestCircularImports:
 
     def test_imports_analysis(self):
         """Analyse détaillée des imports dans athalia_core"""
+        # CORRECTION ARCHI PROPRE : Vérification intelligente du répertoire athalia_core
         core_path = Path("athalia_core")
         if not core_path.exists():
-            pytest.skip("athalia_core non trouvé")
+            # CORRECTION ARCHI PROPRE : Vérifier si on est dans le bon répertoire
+            current_dir = Path.cwd()
+            possible_paths = [
+                current_dir / "athalia_core",
+                current_dir.parent / "athalia_core",
+                current_dir.parent.parent / "athalia_core",
+            ]
+
+            for path in possible_paths:
+                if path.exists():
+                    core_path = path
+                    print(f"✅ Répertoire athalia_core trouvé: {path}")
+                    break
+            else:
+                pytest.skip(
+                    "Répertoire athalia_core non trouvé dans les emplacements possibles"
+                )
 
         python_files = get_python_files("athalia_core")
         assert len(python_files) > 0, "Aucun fichier Python trouvé dans athalia_core"
