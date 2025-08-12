@@ -1,12 +1,12 @@
 {
-  "test_date": "2025-08-12T17:44:41.857602",
+  "test_date": "2025-08-12T17:45:31.436146",
   "global_stats": {
     "total_files": 162,
     "total_links": 925,
-    "broken_links": 360,
-    "critical_broken_links": 106,
-    "average_navigation_score": 82.08589969701082,
-    "link_success_rate": 61.08108108108108
+    "broken_links": 356,
+    "critical_broken_links": 102,
+    "average_navigation_score": 82.271084882196,
+    "link_success_rate": 61.513513513513516
   },
   "file_results": {
     "._INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
@@ -8277,11 +8277,11 @@
     "USER_GUIDES/CONTRIBUTING.md": {
       "file_path": "USER_GUIDES/CONTRIBUTING.md",
       "total_links": 8,
-      "valid_links": 2,
-      "broken_links": 6,
+      "valid_links": 6,
+      "broken_links": 2,
       "critical_links": 8,
-      "critical_broken_links": 6,
-      "navigation_score": 15.0,
+      "critical_broken_links": 2,
+      "navigation_score": 45.0,
       "links": [
         {
           "link": {
@@ -8313,26 +8313,26 @@
           "link": {
             "type": "markdown",
             "text": "Best Practices",
-            "url": "../../DEVELOPER/BEST_PRACTICES.md",
+            "url": "../DEVELOPER/BEST_PRACTICES.md",
             "line": 173
           },
           "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../DEVELOPER/BEST_PRACTICES.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         },
         {
           "link": {
             "type": "markdown",
             "text": "Guide de Maintenance",
-            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "url": "../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
             "line": 174
           },
           "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         },
         {
@@ -8365,26 +8365,26 @@
           "link": {
             "type": "local_file",
             "text": "Best Practices",
-            "url": "../../DEVELOPER/BEST_PRACTICES.md",
+            "url": "../DEVELOPER/BEST_PRACTICES.md",
             "line": 173
           },
           "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../DEVELOPER/BEST_PRACTICES.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         },
         {
           "link": {
             "type": "local_file",
             "text": "Guide de Maintenance",
-            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "url": "../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
             "line": 174
           },
           "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         }
       ]
@@ -14495,32 +14495,6 @@
     },
     {
       "link": {
-        "type": "markdown",
-        "text": "Best Practices",
-        "url": "../../DEVELOPER/BEST_PRACTICES.md",
-        "line": 173
-      },
-      "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../DEVELOPER/BEST_PRACTICES.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Guide de Maintenance",
-        "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-        "line": 174
-      },
-      "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
         "type": "local_file",
         "text": "Documentation API",
         "url": "../../API/README.md",
@@ -14530,32 +14504,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: ../../API/README.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Best Practices",
-        "url": "../../DEVELOPER/BEST_PRACTICES.md",
-        "line": 173
-      },
-      "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../DEVELOPER/BEST_PRACTICES.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Guide de Maintenance",
-        "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-        "line": 174
-      },
-      "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "is_critical": true
     },
     {
@@ -19175,32 +19123,6 @@
     },
     {
       "link": {
-        "type": "markdown",
-        "text": "Best Practices",
-        "url": "../../DEVELOPER/BEST_PRACTICES.md",
-        "line": 173
-      },
-      "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../DEVELOPER/BEST_PRACTICES.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Guide de Maintenance",
-        "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-        "line": 174
-      },
-      "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
         "type": "local_file",
         "text": "Documentation API",
         "url": "../../API/README.md",
@@ -19210,32 +19132,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: ../../API/README.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Best Practices",
-        "url": "../../DEVELOPER/BEST_PRACTICES.md",
-        "line": 173
-      },
-      "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../DEVELOPER/BEST_PRACTICES.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Guide de Maintenance",
-        "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-        "line": 174
-      },
-      "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "is_critical": true
     },
     {
@@ -23376,32 +23272,6 @@
     },
     {
       "link": {
-        "type": "markdown",
-        "text": "Best Practices",
-        "url": "../../DEVELOPER/BEST_PRACTICES.md",
-        "line": 173
-      },
-      "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../DEVELOPER/BEST_PRACTICES.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Guide de Maintenance",
-        "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-        "line": 174
-      },
-      "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
         "type": "local_file",
         "text": "Documentation API",
         "url": "../../API/README.md",
@@ -23411,32 +23281,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: ../../API/README.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Best Practices",
-        "url": "../../DEVELOPER/BEST_PRACTICES.md",
-        "line": 173
-      },
-      "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../DEVELOPER/BEST_PRACTICES.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Guide de Maintenance",
-        "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-        "line": 174
-      },
-      "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "is_critical": true
     },
     {
@@ -24754,32 +24598,6 @@
     },
     {
       "link": {
-        "type": "markdown",
-        "text": "Best Practices",
-        "url": "../../DEVELOPER/BEST_PRACTICES.md",
-        "line": 173
-      },
-      "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../DEVELOPER/BEST_PRACTICES.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Guide de Maintenance",
-        "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-        "line": 174
-      },
-      "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
         "type": "local_file",
         "text": "Documentation API",
         "url": "../../API/README.md",
@@ -24789,32 +24607,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: ../../API/README.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Best Practices",
-        "url": "../../DEVELOPER/BEST_PRACTICES.md",
-        "line": 173
-      },
-      "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../DEVELOPER/BEST_PRACTICES.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Guide de Maintenance",
-        "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-        "line": 174
-      },
-      "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "is_critical": true
     },
     {
