@@ -167,9 +167,9 @@ class TestPerformancePhase3:
         # Convertir en MB
         total_size_mb = total_size / 1024 / 1024
 
-        # Vérifier que la taille est raisonnable (< 1GB)
+        # Vérifier que la taille est raisonnable (< 2GB pour les projets avec archives)
         assert (
-            total_size_mb < 1024
+            total_size_mb < 2048
         ), f"Taille du projet excessive: {total_size_mb:.1f}MB"
 
         print(f"✅ Taille projet: {total_size_mb:.1f}MB, {file_count} fichiers")
