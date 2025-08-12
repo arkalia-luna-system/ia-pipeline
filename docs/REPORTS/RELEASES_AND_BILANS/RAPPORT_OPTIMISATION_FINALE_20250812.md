@@ -41,9 +41,9 @@ Ce rapport final documente l'optimisation complète de la documentation Athalia 
 
 ### **✅ Phase 2 : Nettoyage et Standardisation**
 - **Fichiers parasites** (Apple Double) 100% éliminés ✅
-- **Guide de maintenance** `DOCUMENTATION_MAINTENANCE.md` créé ✅
-- **Template standardisé** `TEMPLATE_STANDARD_MARKDOWN.md` créé ✅
-- **Dashboard** `dashboard.md` optimisé et restructuré ✅
+- **Guide de maintenance** `../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md` créé ✅
+- **Template standardisé** `../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md` créé ✅
+- **Dashboard** `../../ARCHITECTURE/dashboard/dashboard.md` optimisé et restructuré ✅
 
 ### **✅ Phase 3 : Standards et Outils**
 - **Standards de qualité** définis et documentés ✅
@@ -101,8 +101,8 @@ Ce rapport final documente l'optimisation complète de la documentation Athalia 
 - **`scripts/test_navigation_quality_smart.py`** - Test intelligent de navigation ✅
 
 ### **📚 Standards et Templates :**
-- **`docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md`** - Template standardisé ✅
-- **`docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md`** - Guide de maintenance ✅
+- **`../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md`** - Template standardisé ✅
+- **`../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md`** - Guide de maintenance ✅
 
 ### **📊 Rapports et Documentation :**
 - **`PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md`** - Progression Phase 4 ✅
