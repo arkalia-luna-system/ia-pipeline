@@ -39,8 +39,8 @@
 - **Templates de qualité** créés
 
 ### **🔄 Phase 4 : Application des Standards (En cours)**
-- **Organisation du workspace** [ORGANISATION_WORKSPACE.md](../../ARCHITECTURE/ORGANISATION_WORKSPACE.md) optimisé
-- **Guide de démarrage rapide** [QUICK_START.md](../../USER_GUIDES/QUICK_START.md) restructuré
+- **Organisation du workspace** [ORGANISATION_WORKSPACE.md](../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md) optimisé
+- **Guide de démarrage rapide** [QUICK_START.md](../../../../USER_GUIDES/QUICK_START.md) restructuré
 - **Standards appliqués** à 6 fichiers principaux
 - **Qualité en progression** constante
 
