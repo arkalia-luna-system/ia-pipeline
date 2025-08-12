@@ -109,8 +109,8 @@ git push origin develop
 
 ### **Fichiers de Suivi**
 - `ci_progress.json` : Métriques en temps réel
-- `ci_pro_level*_report.md` : Rapports détaillés par niveau
-- `ci_pro_final_summary.md` : Résumé final (niveau 5)
+- Rapports détaillés par niveau (générés automatiquement)
+- Résumé final (niveau 5) (généré automatiquement)
 
 ### **Métriques Clés**
 - **Niveau actuel** : 1-5

@@ -1,12 +1,12 @@
 {
-  "test_date": "2025-08-12T16:35:26.761126",
+  "test_date": "2025-08-12T16:38:10.826359",
   "global_stats": {
-    "total_files": 132,
-    "total_links": 842,
-    "broken_links": 465,
-    "critical_broken_links": 211,
-    "average_navigation_score": 69.26567367634563,
-    "link_success_rate": 44.77434679334917
+    "total_files": 135,
+    "total_links": 840,
+    "broken_links": 461,
+    "critical_broken_links": 207,
+    "average_navigation_score": 70.24495500205647,
+    "link_success_rate": 45.11904761904762
   },
   "file_results": {
     "._INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
@@ -2814,39 +2814,13 @@
     },
     "DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md": {
       "file_path": "DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
-      "total_links": 3,
+      "total_links": 1,
       "valid_links": 0,
-      "broken_links": 3,
-      "critical_links": 3,
-      "critical_broken_links": 3,
+      "broken_links": 1,
+      "critical_links": 1,
+      "critical_broken_links": 1,
       "navigation_score": 0.0,
       "links": [
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "ci_pro_level*_report.md",
-            "url": "ci_pro_level*_report.md",
-            "line": 112
-          },
-          "source_file": "docs/DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ci_pro_level*_report.md",
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "ci_pro_final_summary.md",
-            "url": "ci_pro_final_summary.md",
-            "line": 113
-          },
-          "source_file": "docs/DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ci_pro_final_summary.md",
-          "is_critical": true
-        },
         {
           "link": {
             "type": "file_reference",
@@ -2969,8 +2943,28 @@
       "navigation_score": 100,
       "links": []
     },
+    "DEVELOPER/GUIDES/._CI_CD_PROFESSIONAL_GUIDE.md": {
+      "file_path": "DEVELOPER/GUIDES/._CI_CD_PROFESSIONAL_GUIDE.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "DEVELOPER/GUIDES/LINTING_GUIDE.md": {
       "file_path": "DEVELOPER/GUIDES/LINTING_GUIDE.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "DEVELOPER/GUIDES/._WORKFLOW_COMPLETE_GUIDE.md": {
+      "file_path": "DEVELOPER/GUIDES/._WORKFLOW_COMPLETE_GUIDE.md",
       "total_links": 0,
       "valid_links": 0,
       "broken_links": 0,
@@ -3094,49 +3088,49 @@
     "DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md": {
       "file_path": "DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
       "total_links": 3,
-      "valid_links": 0,
-      "broken_links": 3,
+      "valid_links": 2,
+      "broken_links": 1,
       "critical_links": 3,
-      "critical_broken_links": 3,
-      "navigation_score": 0.0,
+      "critical_broken_links": 1,
+      "navigation_score": 40.0,
       "links": [
         {
           "link": {
             "type": "file_reference",
-            "text": "docs/DEVELOPER/CLEAN_SHUTDOWN_GUIDE.md",
-            "url": "docs/DEVELOPER/CLEAN_SHUTDOWN_GUIDE.md",
+            "text": "../CLEAN_SHUTDOWN_GUIDE.md",
+            "url": "../CLEAN_SHUTDOWN_GUIDE.md",
             "line": 400
           },
           "source_file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/CLEAN_SHUTDOWN_GUIDE.md",
+          "suggested_fix": "Vérifier le chemin: ../CLEAN_SHUTDOWN_GUIDE.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "file_reference",
-            "text": "docs/DEVELOPER/MACOS_TEMP_CLEANUP.md",
-            "url": "docs/DEVELOPER/MACOS_TEMP_CLEANUP.md",
+            "text": "../MAINTENANCE/MACOS_TEMP_CLEANUP.md",
+            "url": "../MAINTENANCE/MACOS_TEMP_CLEANUP.md",
             "line": 401
           },
           "source_file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/MACOS_TEMP_CLEANUP.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         },
         {
           "link": {
             "type": "file_reference",
-            "text": "docs/DEVELOPER/INDEX.md",
-            "url": "docs/DEVELOPER/INDEX.md",
+            "text": "../INDEX.md",
+            "url": "../INDEX.md",
             "line": 402
           },
           "source_file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/INDEX.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         }
       ]
@@ -3536,40 +3530,40 @@
         {
           "link": {
             "type": "file_reference",
-            "text": "docs/DEVELOPER/GUIDES/TEST_STRUCTURE_GUIDE.md",
-            "url": "docs/DEVELOPER/GUIDES/TEST_STRUCTURE_GUIDE.md",
+            "text": "../GUIDES/TEST_STRUCTURE_GUIDE.md",
+            "url": "../GUIDES/TEST_STRUCTURE_GUIDE.md",
             "line": 219
           },
           "source_file": "docs/DEVELOPER/PLANS/REORGANISATION_TESTS_STRUCTURE.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/GUIDES/TEST_STRUCTURE_GUIDE.md",
+          "suggested_fix": "Vérifier le chemin: ../GUIDES/TEST_STRUCTURE_GUIDE.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "file_reference",
-            "text": "docs/DEVELOPER/PLANS/COUVERTURE_IMPROVEMENT_PLAN.md",
-            "url": "docs/DEVELOPER/PLANS/COUVERTURE_IMPROVEMENT_PLAN.md",
+            "text": "COUVERTURE_IMPROVEMENT_PLAN.md",
+            "url": "COUVERTURE_IMPROVEMENT_PLAN.md",
             "line": 224
           },
           "source_file": "docs/DEVELOPER/PLANS/REORGANISATION_TESTS_STRUCTURE.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/PLANS/COUVERTURE_IMPROVEMENT_PLAN.md",
+          "suggested_fix": "Vérifier le chemin: COUVERTURE_IMPROVEMENT_PLAN.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "file_reference",
-            "text": "tests/README.md",
-            "url": "tests/README.md",
+            "text": "../../tests/README.md",
+            "url": "../../tests/README.md",
             "line": 229
           },
           "source_file": "docs/DEVELOPER/PLANS/REORGANISATION_TESTS_STRUCTURE.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: tests/README.md",
+          "suggested_fix": "Vérifier le chemin: ../../tests/README.md",
           "is_critical": true
         }
       ]
@@ -3596,6 +3590,16 @@
     },
     "DEVELOPER/PLANS/PLAN_ACTION_MODULARISATION_ATHALIA.md": {
       "file_path": "DEVELOPER/PLANS/PLAN_ACTION_MODULARISATION_ATHALIA.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "DEVELOPER/PLANS/._REORGANISATION_TESTS_STRUCTURE.md": {
+      "file_path": "DEVELOPER/PLANS/._REORGANISATION_TESTS_STRUCTURE.md",
       "total_links": 0,
       "valid_links": 0,
       "broken_links": 0,
@@ -12663,32 +12667,6 @@
     {
       "link": {
         "type": "file_reference",
-        "text": "ci_pro_level*_report.md",
-        "url": "ci_pro_level*_report.md",
-        "line": 112
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ci_pro_level*_report.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "ci_pro_final_summary.md",
-        "url": "ci_pro_final_summary.md",
-        "line": 113
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ci_pro_final_summary.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
         "text": "docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
         "url": "docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
         "line": 266
@@ -12793,79 +12771,53 @@
     {
       "link": {
         "type": "file_reference",
-        "text": "docs/DEVELOPER/CLEAN_SHUTDOWN_GUIDE.md",
-        "url": "docs/DEVELOPER/CLEAN_SHUTDOWN_GUIDE.md",
+        "text": "../CLEAN_SHUTDOWN_GUIDE.md",
+        "url": "../CLEAN_SHUTDOWN_GUIDE.md",
         "line": 400
       },
       "source_file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/CLEAN_SHUTDOWN_GUIDE.md",
+      "suggested_fix": "Vérifier le chemin: ../CLEAN_SHUTDOWN_GUIDE.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "file_reference",
-        "text": "docs/DEVELOPER/MACOS_TEMP_CLEANUP.md",
-        "url": "docs/DEVELOPER/MACOS_TEMP_CLEANUP.md",
-        "line": 401
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/MACOS_TEMP_CLEANUP.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/DEVELOPER/INDEX.md",
-        "url": "docs/DEVELOPER/INDEX.md",
-        "line": 402
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/INDEX.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/DEVELOPER/GUIDES/TEST_STRUCTURE_GUIDE.md",
-        "url": "docs/DEVELOPER/GUIDES/TEST_STRUCTURE_GUIDE.md",
+        "text": "../GUIDES/TEST_STRUCTURE_GUIDE.md",
+        "url": "../GUIDES/TEST_STRUCTURE_GUIDE.md",
         "line": 219
       },
       "source_file": "docs/DEVELOPER/PLANS/REORGANISATION_TESTS_STRUCTURE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/GUIDES/TEST_STRUCTURE_GUIDE.md",
+      "suggested_fix": "Vérifier le chemin: ../GUIDES/TEST_STRUCTURE_GUIDE.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "file_reference",
-        "text": "docs/DEVELOPER/PLANS/COUVERTURE_IMPROVEMENT_PLAN.md",
-        "url": "docs/DEVELOPER/PLANS/COUVERTURE_IMPROVEMENT_PLAN.md",
+        "text": "COUVERTURE_IMPROVEMENT_PLAN.md",
+        "url": "COUVERTURE_IMPROVEMENT_PLAN.md",
         "line": 224
       },
       "source_file": "docs/DEVELOPER/PLANS/REORGANISATION_TESTS_STRUCTURE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/PLANS/COUVERTURE_IMPROVEMENT_PLAN.md",
+      "suggested_fix": "Vérifier le chemin: COUVERTURE_IMPROVEMENT_PLAN.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "file_reference",
-        "text": "tests/README.md",
-        "url": "tests/README.md",
+        "text": "../../tests/README.md",
+        "url": "../../tests/README.md",
         "line": 229
       },
       "source_file": "docs/DEVELOPER/PLANS/REORGANISATION_TESTS_STRUCTURE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: tests/README.md",
+      "suggested_fix": "Vérifier le chemin: ../../tests/README.md",
       "is_critical": true
     },
     {
@@ -18708,32 +18660,6 @@
     {
       "link": {
         "type": "file_reference",
-        "text": "ci_pro_level*_report.md",
-        "url": "ci_pro_level*_report.md",
-        "line": 112
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ci_pro_level*_report.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "ci_pro_final_summary.md",
-        "url": "ci_pro_final_summary.md",
-        "line": 113
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ci_pro_final_summary.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
         "text": "docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
         "url": "docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
         "line": 266
@@ -18838,79 +18764,53 @@
     {
       "link": {
         "type": "file_reference",
-        "text": "docs/DEVELOPER/CLEAN_SHUTDOWN_GUIDE.md",
-        "url": "docs/DEVELOPER/CLEAN_SHUTDOWN_GUIDE.md",
+        "text": "../CLEAN_SHUTDOWN_GUIDE.md",
+        "url": "../CLEAN_SHUTDOWN_GUIDE.md",
         "line": 400
       },
       "source_file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/CLEAN_SHUTDOWN_GUIDE.md",
+      "suggested_fix": "Vérifier le chemin: ../CLEAN_SHUTDOWN_GUIDE.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "file_reference",
-        "text": "docs/DEVELOPER/MACOS_TEMP_CLEANUP.md",
-        "url": "docs/DEVELOPER/MACOS_TEMP_CLEANUP.md",
-        "line": 401
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/MACOS_TEMP_CLEANUP.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/DEVELOPER/INDEX.md",
-        "url": "docs/DEVELOPER/INDEX.md",
-        "line": 402
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/INDEX.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/DEVELOPER/GUIDES/TEST_STRUCTURE_GUIDE.md",
-        "url": "docs/DEVELOPER/GUIDES/TEST_STRUCTURE_GUIDE.md",
+        "text": "../GUIDES/TEST_STRUCTURE_GUIDE.md",
+        "url": "../GUIDES/TEST_STRUCTURE_GUIDE.md",
         "line": 219
       },
       "source_file": "docs/DEVELOPER/PLANS/REORGANISATION_TESTS_STRUCTURE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/GUIDES/TEST_STRUCTURE_GUIDE.md",
+      "suggested_fix": "Vérifier le chemin: ../GUIDES/TEST_STRUCTURE_GUIDE.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "file_reference",
-        "text": "docs/DEVELOPER/PLANS/COUVERTURE_IMPROVEMENT_PLAN.md",
-        "url": "docs/DEVELOPER/PLANS/COUVERTURE_IMPROVEMENT_PLAN.md",
+        "text": "COUVERTURE_IMPROVEMENT_PLAN.md",
+        "url": "COUVERTURE_IMPROVEMENT_PLAN.md",
         "line": 224
       },
       "source_file": "docs/DEVELOPER/PLANS/REORGANISATION_TESTS_STRUCTURE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/PLANS/COUVERTURE_IMPROVEMENT_PLAN.md",
+      "suggested_fix": "Vérifier le chemin: COUVERTURE_IMPROVEMENT_PLAN.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "file_reference",
-        "text": "tests/README.md",
-        "url": "tests/README.md",
+        "text": "../../tests/README.md",
+        "url": "../../tests/README.md",
         "line": 229
       },
       "source_file": "docs/DEVELOPER/PLANS/REORGANISATION_TESTS_STRUCTURE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: tests/README.md",
+      "suggested_fix": "Vérifier le chemin: ../../tests/README.md",
       "is_critical": true
     },
     {
@@ -24534,32 +24434,6 @@
     {
       "link": {
         "type": "file_reference",
-        "text": "ci_pro_level*_report.md",
-        "url": "ci_pro_level*_report.md",
-        "line": 112
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ci_pro_level*_report.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "ci_pro_final_summary.md",
-        "url": "ci_pro_final_summary.md",
-        "line": 113
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ci_pro_final_summary.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
         "text": "docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
         "url": "docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
         "line": 266
@@ -24573,79 +24447,53 @@
     {
       "link": {
         "type": "file_reference",
-        "text": "docs/DEVELOPER/CLEAN_SHUTDOWN_GUIDE.md",
-        "url": "docs/DEVELOPER/CLEAN_SHUTDOWN_GUIDE.md",
+        "text": "../CLEAN_SHUTDOWN_GUIDE.md",
+        "url": "../CLEAN_SHUTDOWN_GUIDE.md",
         "line": 400
       },
       "source_file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/CLEAN_SHUTDOWN_GUIDE.md",
+      "suggested_fix": "Vérifier le chemin: ../CLEAN_SHUTDOWN_GUIDE.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "file_reference",
-        "text": "docs/DEVELOPER/MACOS_TEMP_CLEANUP.md",
-        "url": "docs/DEVELOPER/MACOS_TEMP_CLEANUP.md",
-        "line": 401
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/MACOS_TEMP_CLEANUP.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/DEVELOPER/INDEX.md",
-        "url": "docs/DEVELOPER/INDEX.md",
-        "line": 402
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/INDEX.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/DEVELOPER/GUIDES/TEST_STRUCTURE_GUIDE.md",
-        "url": "docs/DEVELOPER/GUIDES/TEST_STRUCTURE_GUIDE.md",
+        "text": "../GUIDES/TEST_STRUCTURE_GUIDE.md",
+        "url": "../GUIDES/TEST_STRUCTURE_GUIDE.md",
         "line": 219
       },
       "source_file": "docs/DEVELOPER/PLANS/REORGANISATION_TESTS_STRUCTURE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/GUIDES/TEST_STRUCTURE_GUIDE.md",
+      "suggested_fix": "Vérifier le chemin: ../GUIDES/TEST_STRUCTURE_GUIDE.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "file_reference",
-        "text": "docs/DEVELOPER/PLANS/COUVERTURE_IMPROVEMENT_PLAN.md",
-        "url": "docs/DEVELOPER/PLANS/COUVERTURE_IMPROVEMENT_PLAN.md",
+        "text": "COUVERTURE_IMPROVEMENT_PLAN.md",
+        "url": "COUVERTURE_IMPROVEMENT_PLAN.md",
         "line": 224
       },
       "source_file": "docs/DEVELOPER/PLANS/REORGANISATION_TESTS_STRUCTURE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/PLANS/COUVERTURE_IMPROVEMENT_PLAN.md",
+      "suggested_fix": "Vérifier le chemin: COUVERTURE_IMPROVEMENT_PLAN.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "file_reference",
-        "text": "tests/README.md",
-        "url": "tests/README.md",
+        "text": "../../tests/README.md",
+        "url": "../../tests/README.md",
         "line": 229
       },
       "source_file": "docs/DEVELOPER/PLANS/REORGANISATION_TESTS_STRUCTURE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: tests/README.md",
+      "suggested_fix": "Vérifier le chemin: ../../tests/README.md",
       "is_critical": true
     },
     {
@@ -27277,32 +27125,6 @@
     {
       "link": {
         "type": "file_reference",
-        "text": "ci_pro_level*_report.md",
-        "url": "ci_pro_level*_report.md",
-        "line": 112
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ci_pro_level*_report.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "ci_pro_final_summary.md",
-        "url": "ci_pro_final_summary.md",
-        "line": 113
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ci_pro_final_summary.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
         "text": "docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
         "url": "docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
         "line": 266
@@ -27316,79 +27138,53 @@
     {
       "link": {
         "type": "file_reference",
-        "text": "docs/DEVELOPER/CLEAN_SHUTDOWN_GUIDE.md",
-        "url": "docs/DEVELOPER/CLEAN_SHUTDOWN_GUIDE.md",
+        "text": "../CLEAN_SHUTDOWN_GUIDE.md",
+        "url": "../CLEAN_SHUTDOWN_GUIDE.md",
         "line": 400
       },
       "source_file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/CLEAN_SHUTDOWN_GUIDE.md",
+      "suggested_fix": "Vérifier le chemin: ../CLEAN_SHUTDOWN_GUIDE.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "file_reference",
-        "text": "docs/DEVELOPER/MACOS_TEMP_CLEANUP.md",
-        "url": "docs/DEVELOPER/MACOS_TEMP_CLEANUP.md",
-        "line": 401
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/MACOS_TEMP_CLEANUP.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/DEVELOPER/INDEX.md",
-        "url": "docs/DEVELOPER/INDEX.md",
-        "line": 402
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/INDEX.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/DEVELOPER/GUIDES/TEST_STRUCTURE_GUIDE.md",
-        "url": "docs/DEVELOPER/GUIDES/TEST_STRUCTURE_GUIDE.md",
+        "text": "../GUIDES/TEST_STRUCTURE_GUIDE.md",
+        "url": "../GUIDES/TEST_STRUCTURE_GUIDE.md",
         "line": 219
       },
       "source_file": "docs/DEVELOPER/PLANS/REORGANISATION_TESTS_STRUCTURE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/GUIDES/TEST_STRUCTURE_GUIDE.md",
+      "suggested_fix": "Vérifier le chemin: ../GUIDES/TEST_STRUCTURE_GUIDE.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "file_reference",
-        "text": "docs/DEVELOPER/PLANS/COUVERTURE_IMPROVEMENT_PLAN.md",
-        "url": "docs/DEVELOPER/PLANS/COUVERTURE_IMPROVEMENT_PLAN.md",
+        "text": "COUVERTURE_IMPROVEMENT_PLAN.md",
+        "url": "COUVERTURE_IMPROVEMENT_PLAN.md",
         "line": 224
       },
       "source_file": "docs/DEVELOPER/PLANS/REORGANISATION_TESTS_STRUCTURE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/PLANS/COUVERTURE_IMPROVEMENT_PLAN.md",
+      "suggested_fix": "Vérifier le chemin: COUVERTURE_IMPROVEMENT_PLAN.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "file_reference",
-        "text": "tests/README.md",
-        "url": "tests/README.md",
+        "text": "../../tests/README.md",
+        "url": "../../tests/README.md",
         "line": 229
       },
       "source_file": "docs/DEVELOPER/PLANS/REORGANISATION_TESTS_STRUCTURE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: tests/README.md",
+      "suggested_fix": "Vérifier le chemin: ../../tests/README.md",
       "is_critical": true
     },
     {

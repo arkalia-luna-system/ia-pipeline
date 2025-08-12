@@ -397,9 +397,9 @@ ath-shutdown
 ## 📞 Support
 
 ### Documentation
-- `docs/DEVELOPER/CLEAN_SHUTDOWN_GUIDE.md` - Guide de fermeture
-- `docs/DEVELOPER/MACOS_TEMP_CLEANUP.md` - Nettoyage macOS
-- `docs/DEVELOPER/INDEX.md` - Index complet
+- `../GUIDES/CLEAN_SHUTDOWN_GUIDE.md` - Guide de fermeture
+- `../MAINTENANCE/MACOS_TEMP_CLEANUP.md` - Nettoyage macOS
+- `../INDEX.md` - Index complet
 
 ### Commandes d'Aide
 ```bash

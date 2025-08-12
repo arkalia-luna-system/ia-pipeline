@@ -216,17 +216,17 @@ python -m pytest tests/ --cov=athalia_core --cov-report=term-missing
 
 ## 📝 **DOCUMENTATION À CRÉER**
 
-1. **`docs/DEVELOPER/GUIDES/TEST_STRUCTURE_GUIDE.md`**
+1. **`../GUIDES/TEST_STRUCTURE_GUIDE.md`**
    - Guide de la nouvelle structure
    - Conventions de nommage
    - Standards de qualité
 
-2. **`docs/DEVELOPER/PLANS/COUVERTURE_IMPROVEMENT_PLAN.md`**
+2. **`COUVERTURE_IMPROVEMENT_PLAN.md`**
    - Plan d'amélioration continue
    - Métriques de suivi
    - Actions correctives
 
-3. **`tests/README.md`**
+3. **`../../tests/README.md`**
    - Documentation de la structure
    - Guide d'utilisation
    - Exemples de tests
