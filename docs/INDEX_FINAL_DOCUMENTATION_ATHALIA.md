@@ -107,7 +107,7 @@
 - **`docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md`** - Rapport final d'optimisation
 
 #### **🔧 CORRECTIONS (`docs/REPORTS/CORRECTIONS/`)**
-- **`docs/REPORTS/CORRECTIONS/CORRECTION_CI_LEVEL1_20250811.md`** - Correction CI Level 1
+- **Correction CI Level 1** - Rapport de correction CI/CD niveau 1
 
 #### **🚀 CI/CD (`docs/REPORTS/CI_CD/`)**
 - **`docs/REPORTS/CI_CD/CI_CD_PRO_ACTION_PLAN.md`** - Plan d'action CI/CD professionnel

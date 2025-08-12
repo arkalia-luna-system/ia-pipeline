@@ -29,7 +29,7 @@
 - **Alias shell** pour utilisation facile
 
 #### **5. Documentation Complète**
-- **`docs/ROBOTICS_GUIDE.md`** : Guide détaillé
+- **[ROBOTICS_GUIDE.md](ROBOTICS_GUIDE.md)** : Guide détaillé
 - **`ROBOTICS_QUICK_START.md`** : Guide d'utilisation rapide
 - **Exemples d'utilisation** et cas d'usage
 

@@ -30,7 +30,7 @@
 
 ### **🔌 API (Score Global : 90/100)**
 - **[Index API](../../API/INDEX.md)** - Exceptionnel, très professionnel ✅
-- **[Commandes API](../../API/COMMANDES.md)** - Bon, documentation complète ✅
+- **Commandes API** - Documentation des commandes API ✅
 - **[Core modules](../../API/core_modules.md)** - Bon, références à jour ✅
 - **Autres fichiers** - Qualité satisfaisante ✅
 

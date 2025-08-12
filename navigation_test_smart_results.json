@@ -1,12 +1,12 @@
 {
-  "test_date": "2025-08-12T18:10:00.747137",
+  "test_date": "2025-08-12T18:12:14.473507",
   "global_stats": {
-    "total_files": 106,
-    "total_links": 574,
-    "broken_links": 78,
-    "critical_broken_links": 8,
-    "average_navigation_score": 79.07894736842105,
-    "link_success_rate": 86.41114982578398
+    "total_files": 107,
+    "total_links": 569,
+    "broken_links": 73,
+    "critical_broken_links": 3,
+    "average_navigation_score": 79.51401869158879,
+    "link_success_rate": 87.17047451669596
   },
   "file_results": {
     "._INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
@@ -21,12 +21,12 @@
     },
     "INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
       "file_path": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "total_links": 95,
+      "total_links": 94,
       "valid_links": 94,
-      "broken_links": 1,
-      "critical_links": 95,
-      "critical_broken_links": 1,
-      "navigation_score": 59.368421052631575,
+      "broken_links": 0,
+      "critical_links": 94,
+      "critical_broken_links": 0,
+      "navigation_score": 60.0,
       "links": [
         {
           "link": {
@@ -884,19 +884,6 @@
           "is_valid": true,
           "error_type": null,
           "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "docs/REPORTS/CORRECTIONS/CORRECTION_CI_LEVEL1_20250811.md",
-            "url": "docs/REPORTS/CORRECTIONS/CORRECTION_CI_LEVEL1_20250811.md",
-            "line": 110
-          },
-          "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: docs/REPORTS/CORRECTIONS/CORRECTION_CI_LEVEL1_20250811.md",
           "is_critical": true
         },
         {
@@ -5166,6 +5153,16 @@
         }
       ]
     },
+    "REPORTS/RELEASES_AND_BILANS/._SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/._SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "REPORTS/RELEASES_AND_BILANS/RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md": {
       "file_path": "REPORTS/RELEASES_AND_BILANS/RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md",
       "total_links": 0,
@@ -5959,12 +5956,12 @@
     },
     "REPORTS/RELEASES_AND_BILANS/SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md": {
       "file_path": "REPORTS/RELEASES_AND_BILANS/SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
-      "total_links": 12,
+      "total_links": 10,
       "valid_links": 10,
-      "broken_links": 2,
-      "critical_links": 12,
-      "critical_broken_links": 2,
-      "navigation_score": 50.0,
+      "broken_links": 0,
+      "critical_links": 10,
+      "critical_broken_links": 0,
+      "navigation_score": 60.0,
       "links": [
         {
           "link": {
@@ -6016,19 +6013,6 @@
           "is_valid": true,
           "error_type": null,
           "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Commandes API",
-            "url": "../../API/COMMANDES.md",
-            "line": 33
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../API/COMMANDES.md",
           "is_critical": true
         },
         {
@@ -6094,19 +6078,6 @@
           "is_valid": true,
           "error_type": null,
           "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "Commandes API",
-            "url": "../../API/COMMANDES.md",
-            "line": 33
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../API/COMMANDES.md",
           "is_critical": true
         },
         {
@@ -6536,16 +6507,6 @@
       "navigation_score": 100,
       "links": []
     },
-    "REPORTS/CORRECTIONS/CORRECTION_TESTS_PERFORMANCE_SECURITY_20250811.md": {
-      "file_path": "REPORTS/CORRECTIONS/CORRECTION_TESTS_PERFORMANCE_SECURITY_20250811.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
     "REPORTS/CORRECTIONS/MISE_A_JOUR_DOCUMENTATION_COMPLETE_20250803.md": {
       "file_path": "REPORTS/CORRECTIONS/MISE_A_JOUR_DOCUMENTATION_COMPLETE_20250803.md",
       "total_links": 0,
@@ -6735,26 +6696,13 @@
     },
     "USER_GUIDES/CONTRIBUTING.md": {
       "file_path": "USER_GUIDES/CONTRIBUTING.md",
-      "total_links": 8,
+      "total_links": 6,
       "valid_links": 6,
-      "broken_links": 2,
-      "critical_links": 8,
-      "critical_broken_links": 2,
-      "navigation_score": 45.0,
+      "broken_links": 0,
+      "critical_links": 6,
+      "critical_broken_links": 0,
+      "navigation_score": 60.0,
       "links": [
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Documentation API",
-            "url": "../../API/README.md",
-            "line": 171
-          },
-          "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../API/README.md",
-          "is_critical": true
-        },
         {
           "link": {
             "type": "markdown",
@@ -6792,19 +6740,6 @@
           "is_valid": true,
           "error_type": null,
           "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "Documentation API",
-            "url": "../../API/README.md",
-            "line": 171
-          },
-          "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../API/README.md",
           "is_critical": true
         },
         {
@@ -7620,6 +7555,16 @@
           "is_critical": false
         }
       ]
+    },
+    "USER_GUIDES/._CONTRIBUTING.md": {
+      "file_path": "USER_GUIDES/._CONTRIBUTING.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
     },
     "USER_GUIDES/README_AMELIORATIONS_FUTURES.md": {
       "file_path": "USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
@@ -8584,19 +8529,6 @@
   "broken_links": [
     {
       "link": {
-        "type": "file_reference",
-        "text": "docs/REPORTS/CORRECTIONS/CORRECTION_CI_LEVEL1_20250811.md",
-        "url": "docs/REPORTS/CORRECTIONS/CORRECTION_CI_LEVEL1_20250811.md",
-        "line": 110
-      },
-      "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/REPORTS/CORRECTIONS/CORRECTION_CI_LEVEL1_20250811.md",
-      "is_critical": true
-    },
-    {
-      "link": {
         "type": "markdown",
         "text": "Architecture",
         "url": "https://img.shields.io/badge/Architecture-Enterprise%20Grade-blue?style=for-the-badge&logo=blueprint",
@@ -9087,58 +9019,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: NAVIGATION_GLOBALE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Commandes API",
-        "url": "../../API/COMMANDES.md",
-        "line": 33
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../API/COMMANDES.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Commandes API",
-        "url": "../../API/COMMANDES.md",
-        "line": 33
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../API/COMMANDES.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Documentation API",
-        "url": "../../API/README.md",
-        "line": 171
-      },
-      "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../API/README.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Documentation API",
-        "url": "../../API/README.md",
-        "line": 171
-      },
-      "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../API/README.md",
       "is_critical": true
     },
     {
@@ -9598,19 +9478,6 @@
     },
     {
       "link": {
-        "type": "file_reference",
-        "text": "docs/REPORTS/CORRECTIONS/CORRECTION_CI_LEVEL1_20250811.md",
-        "url": "docs/REPORTS/CORRECTIONS/CORRECTION_CI_LEVEL1_20250811.md",
-        "line": 110
-      },
-      "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/REPORTS/CORRECTIONS/CORRECTION_CI_LEVEL1_20250811.md",
-      "is_critical": true
-    },
-    {
-      "link": {
         "type": "markdown",
         "text": "Architecture",
         "url": "https://img.shields.io/badge/Architecture-Enterprise%20Grade-blue?style=for-the-badge&logo=blueprint",
@@ -10101,58 +9968,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: NAVIGATION_GLOBALE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Commandes API",
-        "url": "../../API/COMMANDES.md",
-        "line": 33
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../API/COMMANDES.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Commandes API",
-        "url": "../../API/COMMANDES.md",
-        "line": 33
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../API/COMMANDES.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Documentation API",
-        "url": "../../API/README.md",
-        "line": 171
-      },
-      "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../API/README.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Documentation API",
-        "url": "../../API/README.md",
-        "line": 171
-      },
-      "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../API/README.md",
       "is_critical": true
     },
     {
@@ -10615,19 +10430,6 @@
     {
       "link": {
         "type": "file_reference",
-        "text": "docs/REPORTS/CORRECTIONS/CORRECTION_CI_LEVEL1_20250811.md",
-        "url": "docs/REPORTS/CORRECTIONS/CORRECTION_CI_LEVEL1_20250811.md",
-        "line": 110
-      },
-      "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/REPORTS/CORRECTIONS/CORRECTION_CI_LEVEL1_20250811.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
         "text": "NAVIGATION_GLOBALE.md",
         "url": "NAVIGATION_GLOBALE.md",
         "line": 39
@@ -10636,58 +10438,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: NAVIGATION_GLOBALE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Commandes API",
-        "url": "../../API/COMMANDES.md",
-        "line": 33
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../API/COMMANDES.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Commandes API",
-        "url": "../../API/COMMANDES.md",
-        "line": 33
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../API/COMMANDES.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Documentation API",
-        "url": "../../API/README.md",
-        "line": 171
-      },
-      "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../API/README.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Documentation API",
-        "url": "../../API/README.md",
-        "line": 171
-      },
-      "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../API/README.md",
       "is_critical": true
     },
     {
@@ -10719,19 +10469,6 @@
     {
       "link": {
         "type": "file_reference",
-        "text": "docs/REPORTS/CORRECTIONS/CORRECTION_CI_LEVEL1_20250811.md",
-        "url": "docs/REPORTS/CORRECTIONS/CORRECTION_CI_LEVEL1_20250811.md",
-        "line": 110
-      },
-      "source_file": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/REPORTS/CORRECTIONS/CORRECTION_CI_LEVEL1_20250811.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
         "text": "NAVIGATION_GLOBALE.md",
         "url": "NAVIGATION_GLOBALE.md",
         "line": 39
@@ -10740,58 +10477,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: NAVIGATION_GLOBALE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Commandes API",
-        "url": "../../API/COMMANDES.md",
-        "line": 33
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../API/COMMANDES.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Commandes API",
-        "url": "../../API/COMMANDES.md",
-        "line": 33
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../API/COMMANDES.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Documentation API",
-        "url": "../../API/README.md",
-        "line": 171
-      },
-      "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../API/README.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Documentation API",
-        "url": "../../API/README.md",
-        "line": 171
-      },
-      "source_file": "docs/USER_GUIDES/CONTRIBUTING.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../API/README.md",
       "is_critical": true
     },
     {

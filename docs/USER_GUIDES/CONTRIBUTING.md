@@ -168,7 +168,7 @@ Brève description des changements
 - **Tests** : @qa-team
 
 ### **📚 Ressources Utiles**
-- [Documentation API](../../API/README.md)
+- **Documentation API** - Guide de l'API Athalia
 - [Guide d'Installation](INSTALLATION.md)
 - [Best Practices](../DEVELOPER/BEST_PRACTICES.md)
 - [Guide de Maintenance](../DEVELOPER/DOCUMENTATION_MAINTENANCE.md)
