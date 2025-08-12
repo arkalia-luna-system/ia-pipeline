@@ -4,12 +4,10 @@ Script de test intelligent de la qualité de navigation de la documentation Atha
 Comprend la structure du projet et valide correctement les liens
 """
 
-import os
-import re
 import json
-from pathlib import Path
+import re
 from datetime import datetime
-from typing import Dict, List, Tuple
+from pathlib import Path
 
 
 class SmartNavigationQualityTester:
@@ -91,13 +89,13 @@ class SmartNavigationQualityTester:
 
             return False
 
-        except Exception as e:
+        except Exception:
             return False
 
-    def extract_links_from_file(self, file_path: Path) -> List[Dict]:
+    def extract_links_from_file(self, file_path: Path) -> list[dict]:
         """Extrait tous les liens d'un fichier Markdown"""
         try:
-            with open(file_path, "r", encoding="utf-8") as f:
+            with open(file_path, encoding="utf-8") as f:
                 content = f.read()
 
             links = []
@@ -146,10 +144,10 @@ class SmartNavigationQualityTester:
 
             return links
 
-        except Exception as e:
+        except Exception:
             return []
 
-    def validate_link_smart(self, link: Dict, source_file: Path) -> Dict:
+    def validate_link_smart(self, link: dict, source_file: Path) -> dict:
         """Valide un lien de manière intelligente"""
         url = link["url"]
         validation_result = {
@@ -174,7 +172,7 @@ class SmartNavigationQualityTester:
 
         return validation_result
 
-    def test_file_navigation_smart(self, file_path: Path) -> Dict:
+    def test_file_navigation_smart(self, file_path: Path) -> dict:
         """Teste la navigation d'un fichier de manière intelligente"""
         relative_path = file_path.relative_to(self.docs_path)
 
@@ -239,7 +237,7 @@ class SmartNavigationQualityTester:
             "links": validated_links,
         }
 
-    def test_all_files_smart(self) -> Dict:
+    def test_all_files_smart(self) -> dict:
         """Teste la navigation de tous les fichiers de manière intelligente"""
         print("🔍 Test intelligent de la qualité de navigation en cours...")
 
@@ -407,7 +405,7 @@ def main():
 
     # Statistiques rapides
     global_stats = tester.test_all_files_smart()
-    print(f"\n📊 RÉSUMÉ RAPIDE :")
+    print("\n📊 RÉSUMÉ RAPIDE :")
     print(f"✅ Navigation moyenne : {global_stats['average_navigation_score']:.1f}/100")
     print(f"🔗 Taux de succès des liens : {global_stats['link_success_rate']:.1f}%")
     print(f"🚨 Liens cassés totaux : {global_stats['broken_links']}")

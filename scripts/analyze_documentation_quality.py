@@ -4,12 +4,10 @@ Script d'analyse de la qualité de la documentation Athalia
 Analyse tous les fichiers Markdown et propose des actions
 """
 
-import os
-import re
 import json
-from pathlib import Path
+import re
 from datetime import datetime
-from typing import Dict, List, Tuple
+from pathlib import Path
 
 
 class DocumentationAnalyzer:
@@ -18,10 +16,10 @@ class DocumentationAnalyzer:
         self.analysis_results = {}
         self.recommendations = {}
 
-    def analyze_file(self, file_path: Path) -> Dict:
+    def analyze_file(self, file_path: Path) -> dict:
         """Analyse un fichier Markdown individuel"""
         try:
-            with open(file_path, "r", encoding="utf-8") as f:
+            with open(file_path, encoding="utf-8") as f:
                 content = f.read()
 
             # Métriques de base
@@ -88,7 +86,7 @@ class DocumentationAnalyzer:
         except Exception as e:
             return {"file_path": str(file_path), "error": str(e), "quality_score": 0}
 
-    def analyze_all_files(self) -> Dict:
+    def analyze_all_files(self) -> dict:
         """Analyse tous les fichiers Markdown"""
         print("🔍 Analyse de la documentation en cours...")
 
@@ -101,7 +99,7 @@ class DocumentationAnalyzer:
 
         return self.analysis_results
 
-    def generate_recommendations(self) -> Dict:
+    def generate_recommendations(self) -> dict:
         """Génère des recommandations basées sur l'analyse"""
         recommendations = {"keep": [], "improve": [], "delete": [], "consolidate": []}
 
@@ -263,7 +261,7 @@ def main():
 
     # Statistiques rapides
     recommendations = analyzer.generate_recommendations()
-    print(f"\n📊 RÉSUMÉ DES RECOMMANDATIONS :")
+    print("\n📊 RÉSUMÉ DES RECOMMANDATIONS :")
     print(f"✅ À garder : {len(recommendations['keep'])} fichiers")
     print(f"🔧 À améliorer : {len(recommendations['improve'])} fichiers")
     print(f"🗑️ À supprimer : {len(recommendations['delete'])} fichiers")
