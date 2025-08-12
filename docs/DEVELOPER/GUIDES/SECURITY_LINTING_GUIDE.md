@@ -292,10 +292,10 @@ pytest --cov=athalia_core --cov-report=html
 
 ## 🔗 Ressources
 
-- [Documentation Black](https://black.readthedocs.io/)
-- [Documentation Flake8](https://flake8.pycqa.org/)
-- [Documentation MyPy](https://mypy.readthedocs.io/)
-- [Documentation Bandit](https://bandit.readthedocs.io/)
-- [Documentation Pre-commit](https://pre-commit.com/)
-- [PEP 8](https://www.python.org/dev/peps/pep-0008/)
-- [PEP 484](https://www.python.org/dev/peps/pep-0484/)
+- **Documentation Black** - Formateur de code Python
+- **Documentation Flake8** - Linter de style Python
+- **Documentation MyPy** - Vérificateur de types statiques
+- **Documentation Bandit** - Analyseur de sécurité Python
+- **Documentation Pre-commit** - Hooks Git de pré-validation
+- **PEP 8** - Guide de style Python officiel
+- **PEP 484** - Annotations de types Python

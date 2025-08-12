@@ -453,10 +453,10 @@ print(f"Rust: {rust_result.optimization_score:.1f}/100")
 ## 📚 Ressources et Références
 
 ### Documentation Officielle
-- [ROS2 Documentation](https://docs.ros.org/)
-- [Reachy Documentation](https://docs.pollen-robotics.com/)
-- [Docker Documentation](https://docs.docker.com/)
-- [Rust Documentation](https://doc.rust-lang.org/)
+- **ROS2 Documentation** - Documentation officielle du système d'exploitation robotique
+- **Reachy Documentation** - Documentation officielle du robot Reachy
+- **Docker Documentation** - Documentation officielle de Docker
+- **Rust Documentation** - Documentation officielle du langage Rust
 
 ### Projets de Référence
 - [Reachy 2023](https://github.com/pollen-robotics/reachy_2023)

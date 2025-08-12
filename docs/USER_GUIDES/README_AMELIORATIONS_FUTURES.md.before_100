@@ -389,15 +389,15 @@ npm run lint
 ## 📚 **RESSOURCES UTILES**
 
 ### **🔗 Documentation Officielle**
-- **React Documentation** - Framework JavaScript moderne
-- **TypeScript Handbook** - Guide complet TypeScript
-- **Tailwind CSS** - Framework CSS utilitaire
-- **Vite Guide** - Outil de build rapide
+- [React Documentation](https://react.dev/)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
+- [Tailwind CSS](https://tailwindcss.com/docs)
+- [Vite Guide](https://vitejs.dev/guide/)
 
 ### **📖 Tutoriels Recommandés**
-- **React + TypeScript** - Guide d'intégration
-- **Tailwind CSS Components** - Composants prêts à l'emploi
-- **Recharts Examples** - Exemples de graphiques React
+- [React + TypeScript](https://react-typescript-cheatsheet.netlify.app/)
+- [Tailwind CSS Components](https://tailwindui.com/)
+- [Recharts Examples](https://recharts.org/en/examples)
 
 ---
 

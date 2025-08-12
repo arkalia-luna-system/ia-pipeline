@@ -1,12 +1,12 @@
 {
-  "test_date": "2025-08-12T20:22:29.163281",
+  "test_date": "2025-08-12T20:27:22.068677",
   "global_stats": {
-    "total_files": 137,
-    "total_links": 519,
-    "broken_links": 25,
+    "total_files": 139,
+    "total_links": 511,
+    "broken_links": 17,
     "critical_broken_links": 0,
-    "average_navigation_score": 85.25547445255475,
-    "link_success_rate": 95.18304431599229
+    "average_navigation_score": 86.18705035971223,
+    "link_success_rate": 96.67318982387475
   },
   "file_results": {
     "INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
@@ -2251,26 +2251,13 @@
     },
     "DEVELOPER/DOCUMENTATION_MAINTENANCE.md": {
       "file_path": "DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "total_links": 7,
+      "total_links": 6,
       "valid_links": 6,
-      "broken_links": 1,
+      "broken_links": 0,
       "critical_links": 6,
       "critical_broken_links": 0,
       "navigation_score": 60.0,
       "links": [
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Nom du site",
-            "url": "https://example.com",
-            "line": 76
-          },
-          "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://example.com",
-          "is_critical": false
-        },
         {
           "link": {
             "type": "markdown",
@@ -2518,6 +2505,16 @@
         }
       ]
     },
+    "DEVELOPER/GUIDES/._SECURITY_LINTING_GUIDE.md": {
+      "file_path": "DEVELOPER/GUIDES/._SECURITY_LINTING_GUIDE.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "DEVELOPER/GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md": {
       "file_path": "DEVELOPER/GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md",
       "total_links": 0,
@@ -2617,105 +2614,13 @@
     },
     "DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md": {
       "file_path": "DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
-      "total_links": 7,
+      "total_links": 0,
       "valid_links": 0,
-      "broken_links": 7,
+      "broken_links": 0,
       "critical_links": 0,
       "critical_broken_links": 0,
-      "navigation_score": 0.0,
-      "links": [
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Documentation Black",
-            "url": "https://black.readthedocs.io/",
-            "line": 295
-          },
-          "source_file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://black.readthedocs.io/",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Documentation Flake8",
-            "url": "https://flake8.pycqa.org/",
-            "line": 296
-          },
-          "source_file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://flake8.pycqa.org/",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Documentation MyPy",
-            "url": "https://mypy.readthedocs.io/",
-            "line": 297
-          },
-          "source_file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://mypy.readthedocs.io/",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Documentation Bandit",
-            "url": "https://bandit.readthedocs.io/",
-            "line": 298
-          },
-          "source_file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://bandit.readthedocs.io/",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Documentation Pre-commit",
-            "url": "https://pre-commit.com/",
-            "line": 299
-          },
-          "source_file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://pre-commit.com/",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "PEP 8",
-            "url": "https://www.python.org/dev/peps/pep-0008/",
-            "line": 300
-          },
-          "source_file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://www.python.org/dev/peps/pep-0008/",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "PEP 484",
-            "url": "https://www.python.org/dev/peps/pep-0484/",
-            "line": 301
-          },
-          "source_file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://www.python.org/dev/peps/pep-0484/",
-          "is_critical": false
-        }
-      ]
+      "navigation_score": 100,
+      "links": []
     },
     "DEVELOPER/GUIDES/TEST_CLEANUP_GUIDE.md": {
       "file_path": "DEVELOPER/GUIDES/TEST_CLEANUP_GUIDE.md",
@@ -7271,6 +7176,16 @@
       "navigation_score": 100,
       "links": []
     },
+    "USER_GUIDES/._README_AMELIORATIONS_FUTURES.md": {
+      "file_path": "USER_GUIDES/._README_AMELIORATIONS_FUTURES.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "USER_GUIDES/robotics/REACHY_SETUP_GUIDE.md": {
       "file_path": "USER_GUIDES/robotics/REACHY_SETUP_GUIDE.md",
       "total_links": 0,
@@ -8177,110 +8092,6 @@
     {
       "link": {
         "type": "markdown",
-        "text": "Nom du site",
-        "url": "https://example.com",
-        "line": 76
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://example.com",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Documentation Black",
-        "url": "https://black.readthedocs.io/",
-        "line": 295
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://black.readthedocs.io/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Documentation Flake8",
-        "url": "https://flake8.pycqa.org/",
-        "line": 296
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://flake8.pycqa.org/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Documentation MyPy",
-        "url": "https://mypy.readthedocs.io/",
-        "line": 297
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://mypy.readthedocs.io/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Documentation Bandit",
-        "url": "https://bandit.readthedocs.io/",
-        "line": 298
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://bandit.readthedocs.io/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Documentation Pre-commit",
-        "url": "https://pre-commit.com/",
-        "line": 299
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://pre-commit.com/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "PEP 8",
-        "url": "https://www.python.org/dev/peps/pep-0008/",
-        "line": 300
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://www.python.org/dev/peps/pep-0008/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "PEP 484",
-        "url": "https://www.python.org/dev/peps/pep-0484/",
-        "line": 301
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://www.python.org/dev/peps/pep-0484/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "React Documentation",
         "url": "https://react.dev/",
         "line": 392
@@ -8497,110 +8308,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: https://github.com/rust-robotics",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Nom du site",
-        "url": "https://example.com",
-        "line": 76
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://example.com",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Documentation Black",
-        "url": "https://black.readthedocs.io/",
-        "line": 295
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://black.readthedocs.io/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Documentation Flake8",
-        "url": "https://flake8.pycqa.org/",
-        "line": 296
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://flake8.pycqa.org/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Documentation MyPy",
-        "url": "https://mypy.readthedocs.io/",
-        "line": 297
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://mypy.readthedocs.io/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Documentation Bandit",
-        "url": "https://bandit.readthedocs.io/",
-        "line": 298
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://bandit.readthedocs.io/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Documentation Pre-commit",
-        "url": "https://pre-commit.com/",
-        "line": 299
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://pre-commit.com/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "PEP 8",
-        "url": "https://www.python.org/dev/peps/pep-0008/",
-        "line": 300
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://www.python.org/dev/peps/pep-0008/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "PEP 484",
-        "url": "https://www.python.org/dev/peps/pep-0484/",
-        "line": 301
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://www.python.org/dev/peps/pep-0484/",
       "is_critical": false
     },
     {

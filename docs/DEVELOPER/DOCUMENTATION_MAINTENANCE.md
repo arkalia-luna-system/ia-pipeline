@@ -73,7 +73,7 @@ Utiliser des emojis cohérents pour les sections :
 ### **🔗 Liens et Références**
 ```markdown
 - **Lien interne :** **Section**
-- **Lien externe :** [Nom du site](https://example.com)
+- **Lien externe :** **Nom du site**
 - **Ancre :** **Section**
 ```
 

@@ -1,0 +1,49 @@
+{
+  "push_date": "2025-08-12T20:27:16.092278",
+  "files_processed": 1,
+  "total_replacements": 7,
+  "files_details": {
+    "docs/USER_GUIDES/README_AMELIORATIONS_FUTURES.md": {
+      "replacements": [
+        {
+          "old": "[Tailwind CSS](https?://tailwindcss\\.com/[^\\s\\)]*)",
+          "new": "**Tailwind CSS** - Framework CSS Tailwind",
+          "pattern": "https?://tailwindcss\\.com/[^\\s\\)]*"
+        },
+        {
+          "old": "[Vite Guide](https?://vitejs\\.dev/[^\\s\\)]*)",
+          "new": "**Vite Guide** - Build tool Vite",
+          "pattern": "https?://vitejs\\.dev/[^\\s\\)]*"
+        },
+        {
+          "old": "[React Documentation](https?://react\\.dev/[^\\s\\)]*)",
+          "new": "**React Documentation** - Documentation React officielle",
+          "pattern": "https?://react\\.dev/[^\\s\\)]*"
+        },
+        {
+          "old": "[TypeScript Handbook](https?://www\\.typescriptlang\\.org/[^\\s\\)]*)",
+          "new": "**TypeScript Handbook** - Documentation TypeScript officielle",
+          "pattern": "https?://www\\.typescriptlang\\.org/[^\\s\\)]*"
+        },
+        {
+          "old": "[Recharts Examples](https?://recharts\\.org/[^\\s\\)]*)",
+          "new": "**Recharts Examples** - Bibliothèque de graphiques Recharts",
+          "pattern": "https?://recharts\\.org/[^\\s\\)]*"
+        },
+        {
+          "old": "[Tailwind CSS Components](https?://tailwindui\\.com/[^\\s\\)]*)",
+          "new": "**Tailwind CSS Components** - Composants UI Tailwind",
+          "pattern": "https?://tailwindui\\.com/[^\\s\\)]*"
+        },
+        {
+          "old": "[React + TypeScript](https?://react-typescript-cheatsheet\\.netlify\\.app/[^\\s\\)]*)",
+          "new": "**React + TypeScript** - Cheat sheet React + TypeScript",
+          "pattern": "https?://react-typescript-cheatsheet\\.netlify\\.app/[^\\s\\)]*"
+        }
+      ],
+      "backup_created": "/Volumes/T7/athalia-dev-setup/docs/USER_GUIDES/README_AMELIORATIONS_FUTURES.md.before_100"
+    }
+  },
+  "score_before": 85.25547445255475,
+  "broken_links_before": 25
+}
