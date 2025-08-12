@@ -78,10 +78,10 @@ La correction systématique des liens cassés dans la documentation Athalia a é
 ## 📚 **DOCUMENTATION CRÉÉE**
 
 ### **📋 Rapports de Phase**
-- **Phase 1** : `CORRECTION_LIENS_CASSES_PHASE_1_20250812.md`
-- **Phase 2** : `CORRECTION_LIENS_CASSES_PHASE_2_20250812.md`
-- **Phase 3** : `CORRECTION_LIENS_CASSES_PHASE_3_20250812.md`
-- **Phase 4** : `CORRECTION_LIENS_CASSES_PHASE_4_20250812.md`
+- **Phase 4** : [Rapport de correction Phase 4](CORRECTION_LIENS_CASSES_PHASE_4_20250812.md)
+- **Phase 5** : [Rapport de correction Phase 5](CORRECTION_LIENS_CASSES_PHASE_5_20250812.md)
+- **Phase 6** : [Rapport de correction Phase 6](CORRECTION_LIENS_CASSES_PHASE_6_20250812.md)
+- **Session complète** : [Résumé de la session](SESSION_CORRECTION_LIENS_20250812.md)
 
 ### **📊 Métriques et Suivi**
 - **Suivi de progression** : 4 phases documentées

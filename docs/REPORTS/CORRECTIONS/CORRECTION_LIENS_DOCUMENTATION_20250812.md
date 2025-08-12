@@ -40,20 +40,20 @@ Ce rapport documente les corrections manuelles effectuées sur les liens cassés
 ### **2. DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md**
 - **Lignes 125-126** : Correction des liens vers les guides
   - **Avant :** `../DOCUMENTATION_MAINTENANCE.md` et `../BEST_PRACTICES.md`
-  - **Après :** `DOCUMENTATION_MAINTENANCE.md` et `BEST_PRACTICES.md`
-  - **Impact :** Navigation correcte dans le dossier DEVELOPER
+  - **Après :** `../../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md` et `../../../DEVELOPER/BEST_PRACTICES.md`
+  - **Impact :** Navigation correcte vers le dossier DEVELOPER
 
 ### **3. DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md**
 - **Ligne 266** : Correction du lien auto-référentiel
   - **Avant :** `../CI_CD_PROFESSIONAL_GUIDE.md`
-  - **Après :** `CI_CD_PROFESSIONAL_GUIDE.md`
-  - **Impact :** Suppression de la référence circulaire
+  - **Après :** `../../../DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md`
+  - **Impact :** Navigation correcte vers le guide CI/CD
 
 ### **4. DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md**
 - **Ligne 400** : Correction du lien vers le guide de fermeture
   - **Avant :** `../GUIDES/CLEAN_SHUTDOWN_GUIDE.md`
-  - **Après :** `CLEAN_SHUTDOWN_GUIDE.md`
-  - **Impact :** Navigation correcte dans le dossier GUIDES
+  - **Après :** `../../../DEVELOPER/GUIDES/CLEAN_SHUTDOWN_GUIDE.md`
+  - **Impact :** Navigation correcte vers le guide de fermeture
 
 ### **5. DEVELOPER/PLANS/REORGANISATION_TESTS_STRUCTURE.md**
 - **Lignes 219, 224, 229** : Correction des liens vers les guides et plans
@@ -64,14 +64,14 @@ Ce rapport documente les corrections manuelles effectuées sur les liens cassés
 ### **6. DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md**
 - **Lignes 175-176, 202** : Correction des liens vers les guides
   - **Avant :** `docs/DEVELOPER/SECURITY_LINTING_GUIDE.md`
-  - **Après :** `../GUIDES/SECURITY_LINTING_GUIDE.md`
+  - **Après :** `../../../DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md`
   - **Impact :** Navigation correcte vers les guides
 
 ### **7. DEVELOPER/REPORTS/OPTIMISATION_TESTS_RAM_FINALE_2025.md**
 - **Ligne 146** : Correction du lien vers le plan d'optimisation
   - **Avant :** `docs/DEVELOPER/PLANS/OPTIMISATION_TESTS_RAM_2025.md`
-  - **Après :** Description textuelle appropriée
-  - **Impact :** Suppression du lien cassé
+  - **Après :** `../../../DEVELOPER/PLANS/OPTIMISATION_TESTS_RAM_2025.md`
+  - **Impact :** Navigation correcte vers le plan d'optimisation
 
 ### **8. DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md**
 - **Lignes 261, 263** : Correction des liens vers les guides

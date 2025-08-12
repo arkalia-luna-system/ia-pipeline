@@ -771,8 +771,8 @@ graph TB
 
 - **[🏗️ Architecture Guide](../ARCHITECTURE/INDEX.md)** - System design overview
 - **[⚡ Quick Start](../USER_GUIDES/QUICK_START.md)** - Getting started with APIs
-- **[🛡️ Security Documentation](../SPECIALIZED/SECURITY/)** - Security API details
-- **[📊 Performance Guide](../SPECIALIZED/OPTIMISATION/)** - Performance optimization APIs
+- **🛡️ Security Documentation** - Security API details
+- **📊 Performance Guide** - Performance optimization APIs
 
 ### 🎯 **Module-Specific References**
 
@@ -780,10 +780,10 @@ graph TB
 
 | **Module Category** | **Documentation** | **Examples** | **Tests** |
 |:-------------------|:------------------|:-------------|:----------|
-| **🧠 Core Modules** | [Core API](core_modules.md) | [Examples](../EXAMPLES.md) | [Tests](../../tests/unit/) |
-| **🤖 AI Modules** | [AI API](../ai_modules.md) | [AI Examples](../AI_EXAMPLES.md) | [AI Tests](../../tests/ai/) |
-| **🛡️ Security** | [Security API](../SECURITY_API.md) | [Security Examples](../SEC_EXAMPLES.md) | [Security Tests](../../tests/security/) |
-| **⚡ Performance** | [Performance API](../PERF_API.md) | [Perf Examples](../PERF_EXAMPLES.md) | [Perf Tests](../../tests/performance/) |
+| **🧠 Core Modules** | [Core API](core_modules.md) | **Examples** | **Tests** |
+| **🤖 AI Modules** | **AI API** | **AI Examples** | **Tests** |
+| **🛡️ Security** | **Security API** | **Security Examples** | **Tests** |
+| **⚡ Performance** | **Performance API** | **Perf Examples** | **Tests** |
 
 </div>
 
@@ -796,8 +796,8 @@ graph TB
 *Complete module documentation for Athalia DevOps Platform*
 
 [![Core API](https://img.shields.io/badge/🧠-Core%20API-blue?style=for-the-badge&logo=cpu)](core_modules.md)
-[![AI API](https://img.shields.io/badge/🤖-AI%20API-yellow?style=for-the-badge&logo=brain)](ai_modules.md)
-[![Security API](https://img.shields.io/badge/🛡️-Security%20API-red?style=for-the-badge&logo=shield)](SECURITY_API.md)
+**🤖 AI API** - AI modules documentation
+**🛡️ Security API** - Security modules documentation
 
 **153 Modules Documented** | **All APIs Tested** | **Enterprise Ready**
 

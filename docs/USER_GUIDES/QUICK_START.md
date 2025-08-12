@@ -279,9 +279,9 @@ sudo pip install -r requirements.txt
 
 ### **📚 Ressources Complémentaires**
 - **Guide d'installation complet :** [INSTALLATION.md](INSTALLATION.md)
-- **Guide d'utilisation détaillé :** [USAGE.md](USAGE.md)
-- **Guide de dépannage :** [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
-- **Documentation principale :** [INDEX_FINAL_DOCUMENTATION_ATHALIA.md](../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md)
+- **Guide d'utilisation détaillé :** Guide d'utilisation du projet
+- **Guide de dépannage :** Guide de dépannage du projet
+- **Documentation principale :** [INDEX_FINAL_DOCUMENTATION_ATHALIA.md](../INDEX_FINAL_DOCUMENTATION_ATHALIA.md)
 
 ### **🛠️ Outils Utiles**
 - **Script principal :** `bin/athalia_unified.py`
@@ -296,6 +296,6 @@ sudo pip install -r requirements.txt
 **Version actuelle :** 2.0  
 **Statut :** ✅ **ACTIF ET MAINTENU**  
 **Mainteneur :** Équipe Athalia/Arkalia  
-**Documentation :** [Guide complet d'utilisation](USAGE.md)
+**Documentation :** Guide complet d'utilisation du projet
 
 **🎯 Démarrez rapidement avec Athalia et créez vos premiers projets IA en quelques minutes ! 🚀**

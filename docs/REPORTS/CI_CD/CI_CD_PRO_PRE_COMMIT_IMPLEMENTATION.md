@@ -177,12 +177,12 @@ git commit --no-verify
 ## 📚 **Documentation Créée**
 
 ### **1. Guide Utilisateur**
-- **Fichier :** Guide complet d'utilisation du système pre-commit
+- **Fichier :** [Guide complet d'utilisation du système pre-commit](../../DEVELOPER/GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md)
 - **Contenu :** Instructions détaillées et exemples pratiques
 - **Audience :** Développeurs
 
 ### **2. Guide CI/CD Pro**
-- **Fichier :** Guide du système CI/CD professionnel
+- **Fichier :** [Guide du système CI/CD professionnel](../../DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md)
 - **Contenu :** Configuration et administration du système
 - **Audience :** Administrateurs
 

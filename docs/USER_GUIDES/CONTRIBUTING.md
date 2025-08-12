@@ -61,7 +61,7 @@ python3 -m pytest tests/integration/test_end_to_end.py -v
 ### Tests de Performance
 ```bash
 # Benchmarks de performance
-python3 athalia_core/performance_analyzer.py --benchmark
+python3 -m pytest tests/performance/ --benchmark
 
 # Tests de charge
 python3 -m pytest tests/performance/ --verbose
@@ -75,7 +75,7 @@ black athalia_core/ --check
 isort athalia_core/ --check
 
 # Vérification de la documentation
-python3 athalia_core/auto_documenter.py --validate
+python3 scripts/analyze_documentation_quality.py
 ```
 
 ## 📋 Bonnes pratiques
@@ -111,7 +111,7 @@ python3 athalia_core/audit.py --project /chemin/projet
 python3 athalia_core/auto_cleaner.py --project /chemin/projet
 
 # Documentation automatique
-python3 athalia_core/auto_documenter.py --module votre_module
+python3 scripts/analyze_documentation_quality.py --module votre_module
 ```
 
 ### Validation Avant Commit
@@ -122,7 +122,7 @@ python3 athalia_core/auto_documenter.py --module votre_module
 # Ou validation manuelle
 python3 -m pytest tests/ --cov=athalia_core
 flake8 athalia_core/
-python3 athalia_core/auto_documenter.py --validate
+python3 scripts/analyze_documentation_quality.py
 ```
 
 ## 📝 Pull Request Guidelines
@@ -167,7 +167,7 @@ Brève description des changements
 - **Documentation** : @docs-team
 - **Tests** : @qa-team
 
-### Ressources
+### **📚 Ressources Utiles**
 - [Documentation API](../../API/README.md)
 - [Guide d'Installation](INSTALLATION.md)
 - [Best Practices](../DEVELOPER/BEST_PRACTICES.md)

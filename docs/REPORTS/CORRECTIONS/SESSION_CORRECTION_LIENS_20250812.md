@@ -78,7 +78,7 @@ Corriger manuellement tous les liens cassés critiques de la documentation Athal
 
 ### **Fichiers Créés (3)**
 1. `CORRECTION_LIENS_DOCUMENTATION_20250812.md` - Rapport détaillé
-2. `RESUME_CORRECTIONS_LIENS_20250812.md` - Résumé exécutif
+2. Résumé exécutif des corrections
 3. `SESSION_CORRECTION_LIENS_20250812.md` - Ce rapport de session
 
 ---

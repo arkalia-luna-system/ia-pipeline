@@ -88,9 +88,9 @@ Le système CI/CD professionnel progressif d'Athalia a été **entièrement impl
 - **Status** : success/failure/pending
 
 ### **Rapports Automatiques**
-- **Rapports par niveau** : Rapports générés automatiquement par niveau (ex: ci_pro_level1_report.md, ci_pro_level2_report.md, etc.)
-- **Métriques de progression** : Métriques de progression en temps réel (ci_progress.json)
-- **Résumé final** : Résumé final de la progression (ci_pro_final_summary.md)
+- **Rapports par niveau** : Rapports générés automatiquement par niveau
+- **Métriques de progression** : Métriques de progression en temps réel
+- **Résumé final** : Résumé final de la progression
 
 ### **Artifacts GitHub Actions**
 - `ci-pro-level*-report` : Rapports détaillés
