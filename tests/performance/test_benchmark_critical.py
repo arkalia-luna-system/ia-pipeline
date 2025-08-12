@@ -43,10 +43,28 @@ def import_critical_function(module_name, func_name):
         return None
 
 
-@pytest.mark.skipif(not BENCHMARK_AVAILABLE, reason="pytest-benchmark non disponible")
 @pytest.mark.benchmark(group="critical_functions")
 @pytest.mark.parametrize("module_name,func_name,needs_path", CRITICAL_FUNCTIONS)
 def test_critical_function_benchmark(benchmark, module_name, func_name, needs_path):
+    # CORRECTION ARCHI PROPRE : Vérification intelligente au lieu de skip
+    if not BENCHMARK_AVAILABLE:
+        # Test alternatif sans benchmark si pytest-benchmark n'est pas disponible
+        print(
+            f"⚠️  pytest-benchmark non disponible, test alternatif pour {module_name}.{func_name}"
+        )
+
+        func = import_critical_function(module_name, func_name)
+        if func is None:
+            pytest.skip(f"{module_name}.{func_name} non disponible")
+
+        # Test simple sans benchmark
+        if needs_path:
+            result = func(os.getcwd())
+        else:
+            result = func()
+        assert result is not None
+        return
+
     func = import_critical_function(module_name, func_name)
     if func is None:
         pytest.skip(f"{module_name}.{func_name} non disponible")

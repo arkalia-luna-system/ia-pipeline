@@ -104,18 +104,30 @@ Fichiers qui seraient créés:
     (project_path / "docs").mkdir(exist_ok=True)
 
     # Générer les fichiers de base
-    generate_readme(blueprint, project_path)
-    generate_main_code(blueprint, project_path)
-    generate_test_code(blueprint, project_path)
-    generate_requirements(blueprint, project_path)
+    readme_content = generate_readme(blueprint, project_path)
+    (project_path / "README.md").write_text(readme_content, encoding="utf-8")
+
+    main_content = generate_main_code(blueprint, project_path)
+    (project_path / "src" / "main.py").write_text(main_content, encoding="utf-8")
+
+    test_content = generate_test_code(blueprint, project_path)
+    (project_path / "tests" / "test_main.py").write_text(test_content, encoding="utf-8")
+
+    requirements_content = generate_requirements(blueprint, project_path)
+    (project_path / "requirements.txt").write_text(
+        requirements_content, encoding="utf-8"
+    )
+
+    # Sauvegarder le blueprint
+    save_blueprint(blueprint, project_path)
 
     return str(project_path)
 
 
 def generate_readme(blueprint: dict, project_path: Path | None = None) -> str:
-    """Génère un README basique."""
+    """Génère un README.md basique."""
     project_name = blueprint.get("project_name", "projet_ia")
-    description = blueprint.get("description", "Projet généré par Athalia")
+    description = blueprint.get("description", "Un projet génial")
 
     readme_content = f"""# {project_name}
 
@@ -139,8 +151,18 @@ python src/main.py
 python -m pytest tests/
 ```
 
----
-*Généré automatiquement par Athalia*
+## Structure
+
+```
+{project_name}/
+├── src/
+│   └── main.py
+├── tests/
+│   └── test_main.py
+├── docs/
+├── README.md
+└── requirements.txt
+```
 """
 
     if project_path:
@@ -151,61 +173,43 @@ python -m pytest tests/
 
 
 def generate_main_code(blueprint: dict, project_path: Path | None = None) -> str:
-    """Génère le code principal."""
+    """Génère le code principal du projet."""
     project_name = blueprint.get("project_name", "projet_ia")
-    project_type = blueprint.get("project_type", "generic")
+    description = blueprint.get("description", "Un projet génial")
 
-    if project_type == "api":
-        main_content = f"""#!/usr/bin/env python3
+    main_content = f"""#!/usr/bin/env python3
 \"\"\"
-{project_name} - API avec FastAPI
+{project_name} - {description}
 \"\"\"
 
-from fastapi import FastAPI
-from pydantic import BaseModel
-from typing import List, Optional
+import logging
+from pathlib import Path
 
-app = FastAPI(title="{project_name}")
+# Configuration du logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
-class Item(BaseModel):
-    id: Optional[int] = None
-    name: str
-    description: Optional[str] = None
-
-@app.get("/")
-async def root():
-    return {{"message": "Bienvenue sur {project_name} API"}}
-
-@app.get("/items/", response_model=List[Item])
-async def get_items():
-    return [Item(id=1, name="Item 1", description="Description")]
-
-@app.post("/items/", response_model=Item)
-async def create_item(item: Item):
-    return item
 
 def main():
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    \"\"\"Fonction principale du projet.\"\"\"
+    logger.info(f"Démarrage de {project_name}")
 
-def run():
-    main()
+    # Logique principale du projet
+    print(f"Bienvenue dans {project_name}!")
+    print(f"Description: {description}")
 
-if __name__ == "__main__":
-    main()
-"""
-    else:
-        main_content = f"""#!/usr/bin/env python3
-\"\"\"
-{project_name} - Application principale
-\"\"\"
+    # Exemple de fonctionnalité
+    result = process_data()
+    logger.info(f"Résultat du traitement: {{result}}")
 
-def main():
-    print("Application {project_name} démarrée")
-    print("Fonctionnalité principale")
+    return result
 
-def run():
-    main()
+
+def process_data():
+    \"\"\"Traite les données du projet.\"\"\"
+    # Logique de traitement des données
+    return "Données traitées avec succès"
+
 
 if __name__ == "__main__":
     main()
@@ -228,46 +232,42 @@ def generate_test_code(blueprint: dict, project_path: Path | None = None) -> str
 Tests pour {project_name}
 \"\"\"
 
-import unittest
+import pytest
+from pathlib import Path
 import sys
-import os
 
 # Ajouter le répertoire src au path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
+sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
-class Test{project_name.title().replace("_", "")}(unittest.TestCase):
-    \"\"\"Tests pour {project_name}\"\"\"
+def test_{project_name.lower().replace("_", "")}_import():
+    \"\"\"Test d'import du module principal\"\"\"
+    try:
+        import main
+        assert main is not None
+    except ImportError:
+        pytest.skip("Module main non disponible")
 
-    def setUp(self):
-        \"\"\"Configuration avant chaque test\"\"\"
-        # Configuration de base pour les tests
-        self.test_data = {{}}
-        self.test_config = {{"debug": False}}
+def test_{project_name.lower().replace("_", "")}_main_function():
+    \"\"\"Test de la fonction main\"\"\"
+    try:
+        from main import main as main_func
+        result = main_func()
+        assert result is not None
+    except ImportError:
+        pytest.skip("Fonction main non disponible")
 
-    def tearDown(self):
-        \"\"\"Nettoyage après chaque test\"\"\"
-        # Nettoyage des données de test
-        self.test_data.clear()
-        self.test_config.clear()
+def test_{project_name.lower().replace("_", "")}_process_data():
+    \"\"\"Test de la fonction process_data\"\"\"
+    try:
+        from main import process_data
+        result = process_data()
+        assert isinstance(result, str)
+        assert len(result) > 0
+    except ImportError:
+        pytest.skip("Fonction process_data non disponible")
 
-    def test_main_function(self):
-        \"\"\"Test de la fonction main\"\"\"
-        try:
-            from main import main
-            self.assertTrue(True)
-        except ImportError as e:
-            self.fail(f"Impossible d'importer le module main: {{e}}")
-
-    def test_import(self):
-        \"\"\"Test d'import du module principal\"\"\"
-        try:
-            import main
-            self.assertTrue(True)
-        except ImportError as e:
-            self.fail(f"Impossible d'importer le module main: {{e}}")
-
-if __name__ == '__main__':
-    unittest.main()
+if __name__ == "__main__":
+    pytest.main([__file__])
 """
 
     if project_path:
@@ -321,7 +321,7 @@ def save_blueprint(blueprint: dict, outdir):
 
     blueprint_file = outdir / "blueprint.yaml"
     with open(blueprint_file, "w", encoding="utf-8") as f:
-        yaml.dump(blueprint, f, allow_unicode=True)
+        yaml.dump(blueprint, f, default_flow_style=False, allow_unicode=True)
 
     return str(blueprint_file)
 
@@ -331,12 +331,41 @@ def inject_booster_ia_elements(outdir):
     from pathlib import Path
 
     outdir = Path(outdir)
-    (outdir / "booster_ia.txt").write_text("Booster IA injecté")
+
+    # Si outdir est un chemin de fichier, créer le répertoire parent
+    if outdir.is_file():
+        outdir = outdir.parent
+    elif not outdir.exists():
+        outdir.mkdir(parents=True, exist_ok=True)
+
+    # Créer le fichier booster_ia.txt
+    booster_file = outdir / "booster_ia.txt"
+    booster_content = """# Booster IA Integration
+# Fichier généré automatiquement par Athalia
+
+import athalia_booster
+from athalia_core import AthaliaCore
+
+def setup_booster():
+    \"\"\"Configure le booster IA pour le projet.\"\"\"
+    core = AthaliaCore()
+    booster = athalia_booster.Booster(core)
+    return booster
+
+def run_booster_analysis():
+    \"\"\"Exécute l'analyse avec le booster IA.\"\"\"
+    booster = setup_booster()
+    results = booster.analyze()
+    return results
+"""
+    booster_file.write_text(booster_content, encoding="utf-8")
+
+    # Créer les répertoires
     (outdir / "prompts").mkdir(exist_ok=True)
     (outdir / "setup").mkdir(exist_ok=True)
     (outdir / "agents").mkdir(exist_ok=True)
 
-    return str(outdir / "booster_ia.txt")
+    return str(booster_file)
 
 
 def scan_existing_project(outdir):
@@ -344,13 +373,20 @@ def scan_existing_project(outdir):
     from pathlib import Path
 
     outdir = Path(outdir)
-    files = {
-        f.name: True
-        for f in outdir.iterdir()
-        if f.is_file()
-        and f.name in ["README.md", "test_module.py", "onboarding.md", "script.py"]
-    }
-    files["Modules trouvés: test_module.py"] = True
+
+    if not outdir.exists():
+        return []
+
+    files = []
+    for f in outdir.iterdir():
+        if f.is_file() and f.name in [
+            "README.md",
+            "test_module.py",
+            "onboarding.md",
+            "script.py",
+        ]:
+            files.append(f.name)
+
     return files
 
 
@@ -398,6 +434,9 @@ def backup_file(file_path: str):
     from pathlib import Path
 
     file = Path(file_path)
+    if not file.exists():
+        raise FileNotFoundError(f"Fichier non trouvé: {file_path}")
+
     backup = file.with_suffix(file.suffix + ".backup")
     backup.write_text(file.read_text())
     return str(backup)
@@ -436,54 +475,54 @@ import requests
 response = requests.get('http://localhost:8000/')
 print(response.json())
 ```
-
-## Développement
-
-Pour lancer l'API en mode développement:
-
-```bash
-uvicorn src.main:app --reload
-```
-
-L'API sera disponible sur http://localhost:8000
-La documentation interactive sera sur http://localhost:8000/docs
 """
 
 
 def generate_dockerfile(blueprint: dict) -> str:
-    """Génère un Dockerfile."""
+    """Génère un Dockerfile basique."""
     project_name = blueprint.get("project_name", "projet_ia")
 
-    return f"""# Dockerfile pour {project_name}
-FROM python:3.9-slim
+    dockerfile_content = f"""# Dockerfile pour {project_name}
+FROM python:3.11-slim
 
 WORKDIR /app
 
+# Copier les dépendances
 COPY requirements.txt .
-RUN pip install -r requirements.txt
 
+# Installer les dépendances
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copier le code source
 COPY . .
 
-EXPOSE ${{PORT:-8000}}
+# Exposer le port (si nécessaire)
+EXPOSE 8000
 
+# Commande par défaut
 CMD ["python", "src/main.py"]
 """
 
+    return dockerfile_content
+
 
 def generate_docker_compose(blueprint: dict) -> str:
-    """Génère un docker-compose.yml."""
+    """Génère un docker-compose.yml basique."""
     project_name = blueprint.get("project_name", "projet_ia")
 
-    docker_compose = f"""version: '3.8'
+    compose_content = f"""# docker-compose.yml pour {project_name}
+version: '3.8'
 
 services:
   {project_name}:
     build: .
     ports:
-      - "${{PORT:-8000}}:${{PORT:-8000}}"
+      - "8000:8000"
     volumes:
       - .:/app
     environment:
-      - DEBUG=${{DEBUG:-false}}
+      - PYTHONPATH=/app
+    restart: unless-stopped
 """
-    return docker_compose
+
+    return compose_content

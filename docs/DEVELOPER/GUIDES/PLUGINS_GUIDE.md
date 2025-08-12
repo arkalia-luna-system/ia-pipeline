@@ -563,12 +563,12 @@ from setuptools import setup, find_packages
 
 setup(
     name="athalia-docker-plugin,
-    version="1.0.0,
+    version="11.0.0,
     description="Plugin Docker pour Athalia/Arkalia",
     author="Votre Nom",
     packages=find_packages(),
     install_requires=
-        athalia-ai>=1.0.0,
+        athalia-ai>=11.0.0,
       docker>=6.0.0
     ],
     entry_points=[object Object]       athalia.plugins: [         docker_export = athalia_docker_plugin.plugin:DockerExportPlugin        ]

@@ -188,23 +188,18 @@ class TestCLIComplete:
         ]
         assert len(success_calls) > 0, "Aucun message de succès trouvé"
 
-    @patch("athalia_core.audit.audit_project_intelligent")
     @patch("click.echo")
-    def test_audit_command_exception(self, mock_echo, mock_audit):
+    def test_audit_command_exception(self, mock_echo):
         """Test la commande audit avec exception"""
-        # Mock de l'audit qui lève une exception
-        mock_audit.side_effect = Exception("Audit error")
-
-        # Test de la commande
-        project_path = str(self.test_dir / "test_project")
-        os.makedirs(project_path, exist_ok=True)
+        # Test de la commande avec un chemin invalide qui devrait causer une erreur
+        project_path = "/invalid/path/that/does/not/exist"
 
         # Appeler directement la fonction
         audit.callback(project_path=project_path)
 
         # Vérifier que le message d'erreur est affiché
         error_calls = [
-            call for call in mock_echo.call_args_list if "❌ Erreur" in str(call)
+            call for call in mock_echo.call_args_list if "❌ Erreur:" in str(call)
         ]
         assert len(error_calls) > 0, "Message d'erreur non trouvé"
 

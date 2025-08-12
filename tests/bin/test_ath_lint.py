@@ -65,7 +65,9 @@ def test_ath_lint_runs():
         pytest.skip(f"Script {script} n'a pas les permissions d'exécution")
 
     try:
-        result = validate_and_run([script], capture_output=True, text=True, env=env)
+        result = validate_and_run(
+            [script], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, env=env
+        )
         # 0 = succès, 1 = échec de linting, mais pas crash
         assert result.returncode in (0, 1), f"ath-lint.py a crashé: {result.stderr}"
     except PermissionError:

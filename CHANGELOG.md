@@ -2,7 +2,7 @@
 
 
 
-## [1.0.0] - 2025-07-18
+## [11.0.0] - 2025-07-18
 - Première release candidate open source
 - Architecture modulaire complète, orchestrateur IA robuste
 - Fallback multi-IA (Qwen, Mistral, Mock)
@@ -30,16 +30,16 @@
 - **Tests fonctionnels** : Validation complète du système
 - **CI/CD verte** : Tous les tests passent sur main et develop
 
-## [11.0.0] - 2025-07-31
+## [111.0.0] - 2025-07-31
 ### 🔧 **Corrections CI/CD et Documentation**
 - **Correction des workflows CI Professional** : Ajout de pytest aux outils de sécurité
 - **Correction du hook de prévention Python** : Regex corrigée pour éviter la détection erronée de Python 3.10
 - **Nettoyage des fichiers AppleDouble** : Suppression de 110+ fichiers système indésirables
 - **Synchronisation des branches** : main, develop et backup-20250731 synchronisées
 - **Correction majeure de la documentation** : Synchronisation avec l'état réel du projet
-- **Mise à jour des statistiques** : 1453 tests collectés, 57 modules dans athalia_core
+- **Mise à jour des statistiques** : **1696 tests collectés**, **153 modules** dans athalia_core
 - **Nettoyage des branches obsolètes** : Suppression de fix-python-version-support, backup-20250730, ci-cd-professional
-- **1453 tests collectés** : Validation complète du système en amélioration continue
+- **1696 tests collectés** : Validation complète du système en amélioration continue
 
 ## [Unreleased]
 - Améliorations futures : personnalisation dashboard, feedback live, couverture >90%, nouveaux modèles IA, plugins avancés

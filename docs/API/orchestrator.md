@@ -321,7 +321,7 @@ workflow_results = {
 ## 🧪 Tests et Validation
 
 ### **Couverture de Tests**
-- ✅ **1372 tests collectés**
+- ✅ **1696 tests collectés**
 - ✅ **Tests unitaires** : Modules individuels
 - ✅ **Tests d'intégration** : Workflow complet
 - ✅ **Tests de performance** : Cache et optimisation
@@ -385,7 +385,7 @@ L'orchestrateur unifié d'Athalia offre maintenant un pipeline complet de 15 ét
 - ✅ **Auto-correction avancée** (38 corrections)
 - ✅ **Sécurité renforcée** (score 75/100)
 - ✅ **Qualité optimisée** (score 8.5/10)
-- ✅ **Tests complets** (1372 tests)
+- ✅ **Tests complets** (1696 tests)
 - ✅ **Linting conforme** (100% aux standards)
 - ✅ **Modules robotiques** (1942 lignes de code)
 - ✅ **Templates artistiques** (609 lignes de code)

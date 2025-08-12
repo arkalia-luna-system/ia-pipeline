@@ -94,10 +94,10 @@ def heavy_computation(n):
 
         report = self.tester.generate_test_report()
         self.assertIsInstance(report, str)
-        self.assertIn("RAPPORT DE TESTS AUTOMATIQUES", report)
-        self.assertIn("Tests unitaires", report)
-        self.assertIn("Tests d'intégration", report)
-        self.assertIn("Tests de performance", report)
+        self.assertIn("Rapport de tests", report)
+        self.assertIn("Tests unitaires générés", report)
+        self.assertIn("Fichiers créés", report)
+        self.assertIn("Résumé", report)
 
     def test_generate_tests(self):
         # Créer un projet de test

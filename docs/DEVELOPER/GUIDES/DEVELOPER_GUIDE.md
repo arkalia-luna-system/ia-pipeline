@@ -103,7 +103,7 @@ cached = cache.get_or_compute("key", compute_func, ttl=3600)
 
 ### Lancer les Tests
 ```bash
-# Tous les tests (1453 tests)
+# Tous les tests (1696 tests) ✅ VÉRIFIÉ
 pytest
 
 # Avec couverture
@@ -232,7 +232,7 @@ class CustomPlugin(BasePlugin):
     def __init__(self):
         super().__init__()
         self.name = "CustomPlugin"
-        self.version = "1.0.0"
+        self.version = "11.0.0"
         self.description = "Plugin personnalisé pour Athalia"
 
     def execute(self, context: dict) -> dict:

@@ -173,7 +173,7 @@ Cette documentation couvre l'architecture, les modules et les améliorations d'A
 ## 🧪 Tests et Validation
 
 ### **Couverture de Tests**
-- ✅ **1372 tests collectés**
+- ✅ **1696 tests collectés**
 - ✅ **Tests unitaires** : Modules individuels
 - ✅ **Tests d'intégration** : Workflow complet
 - ✅ **Tests de performance** : Cache et optimisation

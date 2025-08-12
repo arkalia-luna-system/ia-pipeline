@@ -35,8 +35,12 @@ def security_audit_project(project_path):
                     issues.append(f"Erreur lecture {file}: {e}")
 
     with open(audit_path, "w", encoding="utf-8") as f:
-        for issue in issues:
-            f.write(issue + "\n")
+        if not issues:
+            f.write("Audit de sécurité - Aucun problème détecté\n")
+        else:
+            f.write("Audit de sécurité - Problèmes détectés:\n")
+            for issue in issues:
+                f.write(f"- {issue}\n")
 
     score = 100 if not issues else max(0, 100 - 20 * len(issues))
     is_secure = len(issues) == 0

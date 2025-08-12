@@ -8,9 +8,16 @@ import pytest
 
 def test_clean_old_tests_and_caches(tmp_path):
     """Test de nettoyage des anciens tests et caches"""
+    # CORRECTION ARCHI PROPRE : Test intelligent avec vérification de l'existence
     try:
         from athalia_core.cleanup import clean_old_tests_and_caches
-    except ImportError:
+
+        assert callable(
+            clean_old_tests_and_caches
+        ), "Fonction clean_old_tests_and_caches doit être callable"
+        print("✅ Module cleanup importé avec succès")
+    except ImportError as e:
+        print(f"⚠️  Erreur d'import cleanup: {e}")
         pytest.skip("Module cleanup non disponible")
 
     racine = tmp_path / "racine"
@@ -43,11 +50,20 @@ def test_clean_old_tests_and_caches(tmp_path):
 
 def test_cleanup_module_import():
     """Test d'import du module cleanup"""
+    # CORRECTION ARCHI PROPRE : Test intelligent avec vérification de l'existence
     try:
         from athalia_core import cleanup
 
         assert cleanup is not None
-    except ImportError:
+        assert hasattr(
+            cleanup, "clean_old_tests_and_caches"
+        ), "Module cleanup doit avoir clean_old_tests_and_caches"
+        assert hasattr(
+            cleanup, "clean_macos_files"
+        ), "Module cleanup doit avoir clean_macos_files"
+        print("✅ Module cleanup importé avec succès")
+    except ImportError as e:
+        print(f"⚠️  Erreur d'import cleanup: {e}")
         pytest.skip("Module cleanup non disponible")
 
 

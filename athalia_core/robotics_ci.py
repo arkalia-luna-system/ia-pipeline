@@ -66,7 +66,8 @@ class RoboticsCI:
             required_files = ["package.xml", "setup.py", "CMakeLists.txt"]
         elif (self.project_path / "Cargo.toml").exists():
             # Projet Rust
-            required_files = ["Cargo.toml", "src/"]
+            required_files = ["Cargo.toml"]
+            required_dirs = ["src"]
         elif (self.project_path / "package.json").exists():
             # Projet Node.js
             required_files = ["package.json"]
@@ -78,12 +79,14 @@ class RoboticsCI:
 
         missing_files = []
         for file in required_files:
-            if isinstance(file, str):
-                if not (self.project_path / file).exists():
-                    missing_files.append(file)
-            else:  # Directory
-                if not (self.project_path / str(file)).is_dir():
-                    missing_files.append(str(file))
+            if not (self.project_path / file).exists():
+                missing_files.append(file)
+
+        # Vérifier les dossiers requis
+        if "required_dirs" in locals():
+            for dir_name in required_dirs:
+                if not (self.project_path / dir_name).is_dir():
+                    missing_files.append(f"dossier {dir_name}")
 
         if missing_files:
             self.ci_results["errors"].append(
@@ -99,7 +102,8 @@ class RoboticsCI:
                 result = validate_and_run(
                     ["cargo", "build", "--release"],
                     cwd=self.project_path,
-                    capture_output=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
                     text=True,
                     timeout=300,
                 )
@@ -116,7 +120,8 @@ class RoboticsCI:
                 result = validate_and_run(
                     ["colcon", "build"],
                     cwd=self.project_path,
-                    capture_output=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
                     text=True,
                     timeout=300,
                 )
@@ -133,7 +138,8 @@ class RoboticsCI:
                 result = validate_and_run(
                     ["python", "-m", "pip", "install", "-e", "."],
                     cwd=self.project_path,
-                    capture_output=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
                     text=True,
                     timeout=300,
                 )
@@ -160,7 +166,8 @@ class RoboticsCI:
                 result = validate_and_run(
                     ["cargo", "test"],
                     cwd=self.project_path,
-                    capture_output=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
                     text=True,
                     timeout=300,
                 )
@@ -177,7 +184,8 @@ class RoboticsCI:
                 result = validate_and_run(
                     ["colcon", "test"],
                     cwd=self.project_path,
-                    capture_output=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
                     text=True,
                     timeout=300,
                 )
@@ -194,7 +202,8 @@ class RoboticsCI:
                 result = validate_and_run(
                     ["python", "-m", "pytest"],
                     cwd=self.project_path,
-                    capture_output=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
                     text=True,
                     timeout=300,
                 )
@@ -221,7 +230,8 @@ class RoboticsCI:
                 result = validate_and_run(
                     ["cargo", "clippy"],
                     cwd=self.project_path,
-                    capture_output=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
                     text=True,
                     timeout=120,
                 )
@@ -236,7 +246,8 @@ class RoboticsCI:
                 result = validate_and_run(
                     ["flake8", "."],
                     cwd=self.project_path,
-                    capture_output=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
                     text=True,
                     timeout=120,
                 )
@@ -261,7 +272,8 @@ class RoboticsCI:
                 result = validate_and_run(
                     ["cargo", "audit"],
                     cwd=self.project_path,
-                    capture_output=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
                     text=True,
                     timeout=120,
                 )
@@ -276,7 +288,8 @@ class RoboticsCI:
                 result = validate_and_run(
                     ["bandit", "-r", "."],
                     cwd=self.project_path,
-                    capture_output=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
                     text=True,
                     timeout=120,
                 )
