@@ -124,7 +124,7 @@ class BrokenLinksFixer:
             return {}
 
         # Extraire les liens critiques cassés
-        critical_broken = results.get("critical_broken_links", [])
+        critical_broken = results.get("broken_links", [])
 
         if not critical_broken:
             print("✅ Aucun lien critique cassé à corriger")

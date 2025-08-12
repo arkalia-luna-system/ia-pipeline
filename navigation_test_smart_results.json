@@ -1,12 +1,12 @@
 {
-  "test_date": "2025-08-12T16:20:18.723454",
+  "test_date": "2025-08-12T16:23:20.758131",
   "global_stats": {
     "total_files": 130,
     "total_links": 842,
-    "broken_links": 471,
-    "critical_broken_links": 217,
-    "average_navigation_score": 67.86976096367401,
-    "link_success_rate": 44.06175771971497
+    "broken_links": 469,
+    "critical_broken_links": 215,
+    "average_navigation_score": 67.94668404059709,
+    "link_success_rate": 44.29928741092636
   },
   "file_results": {
     "._INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
@@ -1320,11 +1320,11 @@
     "ARCHITECTURE/ORGANISATION_WORKSPACE.md": {
       "file_path": "ARCHITECTURE/ORGANISATION_WORKSPACE.md",
       "total_links": 12,
-      "valid_links": 10,
-      "broken_links": 2,
+      "valid_links": 12,
+      "broken_links": 0,
       "critical_links": 12,
-      "critical_broken_links": 2,
-      "navigation_score": 50.0,
+      "critical_broken_links": 0,
+      "navigation_score": 60.0,
       "links": [
         {
           "link": {
@@ -1355,14 +1355,14 @@
         {
           "link": {
             "type": "markdown",
-            "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-            "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "text": "../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "url": "../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
             "line": 131
           },
           "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         },
         {
@@ -1420,14 +1420,14 @@
         {
           "link": {
             "type": "local_file",
-            "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-            "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "text": "../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "url": "../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
             "line": 131
           },
           "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         },
         {
@@ -12318,32 +12318,6 @@
     {
       "link": {
         "type": "markdown",
-        "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 131
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 131
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "Architecture",
         "url": "https://img.shields.io/badge/Architecture-Enterprise%20Grade-blue?style=for-the-badge&logo=blueprint",
         "line": 5
@@ -18436,32 +18410,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: ../concepts/validation_decorator.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 131
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 131
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_critical": true
     },
     {
@@ -24566,32 +24514,6 @@
     {
       "link": {
         "type": "markdown",
-        "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 131
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 131
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "Nom du fichier",
         "url": "../chemin/vers/fichier.md",
         "line": 75
@@ -27382,32 +27304,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: ../concepts/validation_decorator.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 131
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 131
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_critical": true
     },
     {

@@ -128,7 +128,7 @@ Le fichier `config/paths.yaml` centralise tous les chemins du projet pour une ma
 ### **🔗 Documentation Connexe**
 - **Structure du projet :** [STRUCTURE_PROJET_EXPLICATION.md](STRUCTURE_PROJET_EXPLICATION.md)
 - **Dashboard :** [dashboard/README.md](dashboard/README.md)
-- **Guide principal :** [docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md](../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md)
+- **Guide principal :** [../INDEX_FINAL_DOCUMENTATION_ATHALIA.md](../INDEX_FINAL_DOCUMENTATION_ATHALIA.md)
 
 ### **🛠️ Outils de Maintenance**
 - **Script de nettoyage :** `bin/athalia_unified.py`
