@@ -193,7 +193,7 @@ def test_main_scan_choice(self):
 - `scripts/cleanup_apple_double.py`
 
 ### **Documentation :**
-- `docs/REPORTS/CORRECTION_ERREURS_PHASE14_20250731.md`
+- Rapport de correction des erreurs Phase 14
 
 ---
 
