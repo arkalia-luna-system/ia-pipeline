@@ -1,12 +1,12 @@
 {
-  "test_date": "2025-08-12T16:38:10.826359",
+  "test_date": "2025-08-12T16:39:17.886390",
   "global_stats": {
     "total_files": 135,
     "total_links": 840,
-    "broken_links": 461,
-    "critical_broken_links": 207,
-    "average_navigation_score": 70.24495500205647,
-    "link_success_rate": 45.11904761904762
+    "broken_links": 460,
+    "critical_broken_links": 206,
+    "average_navigation_score": 70.39310315020461,
+    "link_success_rate": 45.23809523809524
   },
   "file_results": {
     "._INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
@@ -3088,23 +3088,23 @@
     "DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md": {
       "file_path": "DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
       "total_links": 3,
-      "valid_links": 2,
-      "broken_links": 1,
+      "valid_links": 3,
+      "broken_links": 0,
       "critical_links": 3,
-      "critical_broken_links": 1,
-      "navigation_score": 40.0,
+      "critical_broken_links": 0,
+      "navigation_score": 60.0,
       "links": [
         {
           "link": {
             "type": "file_reference",
-            "text": "../CLEAN_SHUTDOWN_GUIDE.md",
-            "url": "../CLEAN_SHUTDOWN_GUIDE.md",
+            "text": "../GUIDES/CLEAN_SHUTDOWN_GUIDE.md",
+            "url": "../GUIDES/CLEAN_SHUTDOWN_GUIDE.md",
             "line": 400
           },
           "source_file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../CLEAN_SHUTDOWN_GUIDE.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         },
         {
@@ -12771,19 +12771,6 @@
     {
       "link": {
         "type": "file_reference",
-        "text": "../CLEAN_SHUTDOWN_GUIDE.md",
-        "url": "../CLEAN_SHUTDOWN_GUIDE.md",
-        "line": 400
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../CLEAN_SHUTDOWN_GUIDE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
         "text": "../GUIDES/TEST_STRUCTURE_GUIDE.md",
         "url": "../GUIDES/TEST_STRUCTURE_GUIDE.md",
         "line": 219
@@ -18764,19 +18751,6 @@
     {
       "link": {
         "type": "file_reference",
-        "text": "../CLEAN_SHUTDOWN_GUIDE.md",
-        "url": "../CLEAN_SHUTDOWN_GUIDE.md",
-        "line": 400
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../CLEAN_SHUTDOWN_GUIDE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
         "text": "../GUIDES/TEST_STRUCTURE_GUIDE.md",
         "url": "../GUIDES/TEST_STRUCTURE_GUIDE.md",
         "line": 219
@@ -24447,19 +24421,6 @@
     {
       "link": {
         "type": "file_reference",
-        "text": "../CLEAN_SHUTDOWN_GUIDE.md",
-        "url": "../CLEAN_SHUTDOWN_GUIDE.md",
-        "line": 400
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../CLEAN_SHUTDOWN_GUIDE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
         "text": "../GUIDES/TEST_STRUCTURE_GUIDE.md",
         "url": "../GUIDES/TEST_STRUCTURE_GUIDE.md",
         "line": 219
@@ -27133,19 +27094,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "../CLEAN_SHUTDOWN_GUIDE.md",
-        "url": "../CLEAN_SHUTDOWN_GUIDE.md",
-        "line": 400
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../CLEAN_SHUTDOWN_GUIDE.md",
       "is_critical": true
     },
     {
