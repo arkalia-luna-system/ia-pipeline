@@ -122,9 +122,9 @@ graph TD
 - **Exemples pratiques :** [Lien](URL)
 
 ### **📖 Documentation Interne**
-- **Fichier connexe 1 :** [Nom du fichier](chemin/vers/fichier.md)
-- **Fichier connexe 2 :** [Nom du fichier](chemin/vers/fichier.md)
-- **Guide principal :** [INDEX_FINAL_DOCUMENTATION_ATHALIA.md](../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md)
+- **Fichier connexe 1 :** [Nom du fichier](../chemin/vers/fichier.md)
+- **Fichier connexe 2 :** [Nom du fichier](../chemin/vers/fichier.md)
+- **Guide principal :** [docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md](../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md)
 
 ---
 

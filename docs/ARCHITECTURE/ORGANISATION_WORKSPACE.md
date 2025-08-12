@@ -62,13 +62,7 @@ Ce document décrit la structure officielle et à jour du workspace Athalia/Arka
 
 ### **📄 Fichiers de Documentation Principaux**
 - **`README.md`** - Documentation principale du projet
-- **`INVENTAIRE_COMPLET.md`** - Inventaire des fonctionnalités
-- **`RAPPORT_FINAL.md`** - Rapport final du projet
-- **`FINAL_SUMMARY.md`** - Résumé final
-- **`GENESIS.md`** - Historique de développement
-- **`CLEANUP_REPORT.md`** - Rapport de nettoyage
-- **`FAQ.md`** - Guide de dépannage
-- **`INSTALL.md`** - Guide d'installation
+- **`CHANGELOG.md`** - Historique des versions et changements
 
 ---
 
@@ -134,7 +128,7 @@ Le fichier `config/paths.yaml` centralise tous les chemins du projet pour une ma
 ### **🔗 Documentation Connexe**
 - **Structure du projet :** [STRUCTURE_PROJET_EXPLICATION.md](STRUCTURE_PROJET_EXPLICATION.md)
 - **Dashboard :** [dashboard/README.md](dashboard/README.md)
-- **Guide principal :** [INDEX_FINAL_DOCUMENTATION_ATHALIA.md](../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md)
+- **Guide principal :** [docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md](../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md)
 
 ### **🛠️ Outils de Maintenance**
 - **Script de nettoyage :** `bin/athalia_unified.py`

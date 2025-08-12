@@ -202,9 +202,9 @@ find docs -name "*.md" -exec grep -l "\[.*\]\([^)]*\)" {} \;
 - **Mermaid :** [Documentation Mermaid](https://mermaid-js.github.io/mermaid/)
 
 ### **📖 Documentation Interne**
-- **Index principal :** [INDEX_FINAL_DOCUMENTATION_ATHALIA.md](../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md)
+- **Index principal :** [docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md](../INDEX_FINAL_DOCUMENTATION_ATHALIA.md)
 - **Guide de style :** Ce document
-- **Standards de qualité :** [PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md](../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md)
+- **Standards de qualité :** [docs/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md](../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md)
 
 ---
 

@@ -40,7 +40,6 @@ Cette documentation couvre l'architecture, les modules et les améliorations d'A
 
 ### 🚀 **Rapports de Progression**
 - [**Rapport Complet des Améliorations**](REPORTS/RAPPORT_COMPLET_AMELIORATIONS_2025.md) - Vue d'ensemble complète
-- [**Progression Phases 1-4.3**](REPORTS/PROGRESSION_PHASES_1_2_20250802.md) - Détail des phases terminées
 - [**Analyse Complète des Modules**](REPORTS/ANALYSE_COMPLETE_MODULES_ATHALIA.md) - État des modules
 - [**Plan Phase 4 Modules Avancés**](REPORTS/PHASE_4_MODULES_AVANCES_PLAN.md) - Prochaines étapes
 
@@ -50,9 +49,8 @@ Cette documentation couvre l'architecture, les modules et les améliorations d'A
 - [**Index des Plans**](PLANS/INDEX.md) - Tous les plans disponibles
 
 ### 🧪 **Tests et Qualité**
-- [**Corrections Progress**](REPORTS/CORRECTIONS/CORRECTIONS_PROGRESS.md) - Progression des corrections
-- [**Amélioration Couverture Tests**](REPORTS/CORRECTIONS/AMELIORATION_COUVERTURE_TESTS_20250731.md) - Optimisation des tests
-- [**Correction Pytest Coverage**](REPORTS/CORRECTIONS/CORRECTION_PYTEST_COVERAGE_2025.md) - Couverture des tests
+- [**Corrections Progress**](REPORTS/CORRECTIONS_PROGRESS.md) - Progression des corrections
+- [**Correction Pytest Coverage**](REPORTS/CORRECTION_PYTEST_COVERAGE_2025.md) - Couverture des tests
 
 ### 🔧 **Maintenance et Utilitaires**
 - [**Documentation Maintenance**](DOCUMENTATION_MAINTENANCE.md) - Guide de maintenance

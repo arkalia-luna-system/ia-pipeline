@@ -1,12 +1,12 @@
 {
-  "test_date": "2025-08-12T16:05:43.713713",
+  "test_date": "2025-08-12T16:18:07.779639",
   "global_stats": {
-    "total_files": 116,
-    "total_links": 830,
-    "broken_links": 483,
-    "critical_broken_links": 229,
-    "average_navigation_score": 64.02568835902905,
-    "link_success_rate": 41.807228915662655
+    "total_files": 123,
+    "total_links": 846,
+    "broken_links": 475,
+    "critical_broken_links": 221,
+    "average_navigation_score": 65.97152436346498,
+    "link_success_rate": 43.85342789598109
   },
   "file_results": {
     "._INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
@@ -1319,19 +1319,19 @@
     },
     "ARCHITECTURE/ORGANISATION_WORKSPACE.md": {
       "file_path": "ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "total_links": 18,
-      "valid_links": 9,
-      "broken_links": 9,
-      "critical_links": 18,
-      "critical_broken_links": 9,
-      "navigation_score": 30.0,
+      "total_links": 12,
+      "valid_links": 10,
+      "broken_links": 2,
+      "critical_links": 12,
+      "critical_broken_links": 2,
+      "navigation_score": 50.0,
       "links": [
         {
           "link": {
             "type": "markdown",
             "text": "STRUCTURE_PROJET_EXPLICATION.md",
             "url": "STRUCTURE_PROJET_EXPLICATION.md",
-            "line": 135
+            "line": 129
           },
           "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
           "is_valid": true,
@@ -1344,7 +1344,7 @@
             "type": "markdown",
             "text": "dashboard/README.md",
             "url": "dashboard/README.md",
-            "line": 136
+            "line": 130
           },
           "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
           "is_valid": true,
@@ -1355,9 +1355,9 @@
         {
           "link": {
             "type": "markdown",
-            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
             "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-            "line": 137
+            "line": 131
           },
           "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
           "is_valid": false,
@@ -1370,7 +1370,7 @@
             "type": "markdown",
             "text": "DOCUMENTATION_MAINTENANCE.md",
             "url": "../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-            "line": 142
+            "line": 136
           },
           "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
           "is_valid": true,
@@ -1383,7 +1383,7 @@
             "type": "markdown",
             "text": "Guide de maintenance",
             "url": "../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-            "line": 152
+            "line": 146
           },
           "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
           "is_valid": true,
@@ -1396,7 +1396,7 @@
             "type": "local_file",
             "text": "STRUCTURE_PROJET_EXPLICATION.md",
             "url": "STRUCTURE_PROJET_EXPLICATION.md",
-            "line": 135
+            "line": 129
           },
           "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
           "is_valid": true,
@@ -1409,7 +1409,7 @@
             "type": "local_file",
             "text": "dashboard/README.md",
             "url": "dashboard/README.md",
-            "line": 136
+            "line": 130
           },
           "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
           "is_valid": true,
@@ -1420,9 +1420,9 @@
         {
           "link": {
             "type": "local_file",
-            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
             "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-            "line": 137
+            "line": 131
           },
           "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
           "is_valid": false,
@@ -1435,7 +1435,7 @@
             "type": "local_file",
             "text": "DOCUMENTATION_MAINTENANCE.md",
             "url": "../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-            "line": 142
+            "line": 136
           },
           "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
           "is_valid": true,
@@ -1448,7 +1448,7 @@
             "type": "local_file",
             "text": "Guide de maintenance",
             "url": "../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-            "line": 152
+            "line": 146
           },
           "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
           "is_valid": true,
@@ -1472,92 +1472,14 @@
         {
           "link": {
             "type": "file_reference",
-            "text": "INVENTAIRE_COMPLET.md",
-            "url": "INVENTAIRE_COMPLET.md",
+            "text": "CHANGELOG.md",
+            "url": "CHANGELOG.md",
             "line": 65
           },
           "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: INVENTAIRE_COMPLET.md",
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "RAPPORT_FINAL.md",
-            "url": "RAPPORT_FINAL.md",
-            "line": 66
-          },
-          "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: RAPPORT_FINAL.md",
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "FINAL_SUMMARY.md",
-            "url": "FINAL_SUMMARY.md",
-            "line": 67
-          },
-          "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: FINAL_SUMMARY.md",
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "GENESIS.md",
-            "url": "GENESIS.md",
-            "line": 68
-          },
-          "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: GENESIS.md",
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "CLEANUP_REPORT.md",
-            "url": "CLEANUP_REPORT.md",
-            "line": 69
-          },
-          "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: CLEANUP_REPORT.md",
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "FAQ.md",
-            "url": "FAQ.md",
-            "line": 70
-          },
-          "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: FAQ.md",
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "INSTALL.md",
-            "url": "INSTALL.md",
-            "line": 71
-          },
-          "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: INSTALL.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         }
       ]
@@ -1869,6 +1791,16 @@
       "navigation_score": 100,
       "links": []
     },
+    "ARCHITECTURE/._ORGANISATION_WORKSPACE.md": {
+      "file_path": "ARCHITECTURE/._ORGANISATION_WORKSPACE.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "ARCHITECTURE/dashboard/dashboard.md": {
       "file_path": "ARCHITECTURE/dashboard/dashboard.md",
       "total_links": 2,
@@ -2109,12 +2041,12 @@
     },
     "DEVELOPER/INDEX.md": {
       "file_path": "DEVELOPER/INDEX.md",
-      "total_links": 34,
-      "valid_links": 26,
-      "broken_links": 8,
-      "critical_links": 34,
-      "critical_broken_links": 8,
-      "navigation_score": 45.882352941176464,
+      "total_links": 30,
+      "valid_links": 30,
+      "broken_links": 0,
+      "critical_links": 30,
+      "critical_broken_links": 0,
+      "navigation_score": 60.0,
       "links": [
         {
           "link": {
@@ -2132,22 +2064,9 @@
         {
           "link": {
             "type": "markdown",
-            "text": "**Progression Phases 1-4.3**",
-            "url": "REPORTS/PROGRESSION_PHASES_1_2_20250802.md",
-            "line": 43
-          },
-          "source_file": "docs/DEVELOPER/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: REPORTS/PROGRESSION_PHASES_1_2_20250802.md",
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
             "text": "**Analyse Complète des Modules**",
             "url": "REPORTS/ANALYSE_COMPLETE_MODULES_ATHALIA.md",
-            "line": 44
+            "line": 43
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
           "is_valid": true,
@@ -2160,7 +2079,7 @@
             "type": "markdown",
             "text": "**Plan Phase 4 Modules Avancés**",
             "url": "REPORTS/PHASE_4_MODULES_AVANCES_PLAN.md",
-            "line": 45
+            "line": 44
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
           "is_valid": true,
@@ -2173,7 +2092,7 @@
             "type": "markdown",
             "text": "**Plan d'Action Modularisation**",
             "url": "PLANS/PLAN_ACTION_MODULARISATION_ATHALIA.md",
-            "line": 48
+            "line": 47
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
           "is_valid": true,
@@ -2186,7 +2105,7 @@
             "type": "markdown",
             "text": "**Plan Optimisation Tests RAM**",
             "url": "PLANS/OPTIMISATION_TESTS_RAM_2025.md",
-            "line": 49
+            "line": 48
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
           "is_valid": true,
@@ -2199,7 +2118,7 @@
             "type": "markdown",
             "text": "**Index des Plans**",
             "url": "PLANS/INDEX.md",
-            "line": 50
+            "line": 49
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
           "is_valid": true,
@@ -2211,39 +2130,26 @@
           "link": {
             "type": "markdown",
             "text": "**Corrections Progress**",
-            "url": "REPORTS/CORRECTIONS/CORRECTIONS_PROGRESS.md",
-            "line": 53
+            "url": "REPORTS/CORRECTIONS_PROGRESS.md",
+            "line": 52
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/CORRECTIONS_PROGRESS.md",
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "**Amélioration Couverture Tests**",
-            "url": "REPORTS/CORRECTIONS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
-            "line": 54
-          },
-          "source_file": "docs/DEVELOPER/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         },
         {
           "link": {
             "type": "markdown",
             "text": "**Correction Pytest Coverage**",
-            "url": "REPORTS/CORRECTIONS/CORRECTION_PYTEST_COVERAGE_2025.md",
-            "line": 55
+            "url": "REPORTS/CORRECTION_PYTEST_COVERAGE_2025.md",
+            "line": 53
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/CORRECTION_PYTEST_COVERAGE_2025.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         },
         {
@@ -2251,7 +2157,7 @@
             "type": "markdown",
             "text": "**Documentation Maintenance**",
             "url": "DOCUMENTATION_MAINTENANCE.md",
-            "line": 58
+            "line": 56
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
           "is_valid": true,
@@ -2264,7 +2170,7 @@
             "type": "markdown",
             "text": "**Best Practices**",
             "url": "BEST_PRACTICES.md",
-            "line": 59
+            "line": 57
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
           "is_valid": true,
@@ -2277,7 +2183,7 @@
             "type": "markdown",
             "text": "**Git Workflow**",
             "url": "UTILITIES/GIT_WORKFLOW.md",
-            "line": 60
+            "line": 58
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
           "is_valid": true,
@@ -2290,7 +2196,7 @@
             "type": "markdown",
             "text": "**Formatage Automatique**",
             "url": "UTILITIES/FORMATAGE_AUTOMATIQUE.md",
-            "line": 61
+            "line": 59
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
           "is_valid": true,
@@ -2303,7 +2209,7 @@
             "type": "markdown",
             "text": "**CI/CD Pro Guide**",
             "url": "GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
-            "line": 64
+            "line": 62
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
           "is_valid": true,
@@ -2316,7 +2222,7 @@
             "type": "markdown",
             "text": "**CI/CD Pro Pre-commit**",
             "url": "GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md",
-            "line": 65
+            "line": 63
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
           "is_valid": true,
@@ -2329,7 +2235,7 @@
             "type": "markdown",
             "text": "**Alias Workflow Quick Guide**",
             "url": "GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md",
-            "line": 66
+            "line": 64
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
           "is_valid": true,
@@ -2353,22 +2259,9 @@
         {
           "link": {
             "type": "local_file",
-            "text": "**Progression Phases 1-4.3**",
-            "url": "REPORTS/PROGRESSION_PHASES_1_2_20250802.md",
-            "line": 43
-          },
-          "source_file": "docs/DEVELOPER/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: REPORTS/PROGRESSION_PHASES_1_2_20250802.md",
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
             "text": "**Analyse Complète des Modules**",
             "url": "REPORTS/ANALYSE_COMPLETE_MODULES_ATHALIA.md",
-            "line": 44
+            "line": 43
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
           "is_valid": true,
@@ -2381,7 +2274,7 @@
             "type": "local_file",
             "text": "**Plan Phase 4 Modules Avancés**",
             "url": "REPORTS/PHASE_4_MODULES_AVANCES_PLAN.md",
-            "line": 45
+            "line": 44
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
           "is_valid": true,
@@ -2394,7 +2287,7 @@
             "type": "local_file",
             "text": "**Plan d'Action Modularisation**",
             "url": "PLANS/PLAN_ACTION_MODULARISATION_ATHALIA.md",
-            "line": 48
+            "line": 47
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
           "is_valid": true,
@@ -2407,7 +2300,7 @@
             "type": "local_file",
             "text": "**Plan Optimisation Tests RAM**",
             "url": "PLANS/OPTIMISATION_TESTS_RAM_2025.md",
-            "line": 49
+            "line": 48
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
           "is_valid": true,
@@ -2420,7 +2313,7 @@
             "type": "local_file",
             "text": "**Index des Plans**",
             "url": "PLANS/INDEX.md",
-            "line": 50
+            "line": 49
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
           "is_valid": true,
@@ -2432,39 +2325,26 @@
           "link": {
             "type": "local_file",
             "text": "**Corrections Progress**",
-            "url": "REPORTS/CORRECTIONS/CORRECTIONS_PROGRESS.md",
-            "line": 53
+            "url": "REPORTS/CORRECTIONS_PROGRESS.md",
+            "line": 52
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/CORRECTIONS_PROGRESS.md",
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "**Amélioration Couverture Tests**",
-            "url": "REPORTS/CORRECTIONS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
-            "line": 54
-          },
-          "source_file": "docs/DEVELOPER/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         },
         {
           "link": {
             "type": "local_file",
             "text": "**Correction Pytest Coverage**",
-            "url": "REPORTS/CORRECTIONS/CORRECTION_PYTEST_COVERAGE_2025.md",
-            "line": 55
+            "url": "REPORTS/CORRECTION_PYTEST_COVERAGE_2025.md",
+            "line": 53
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/CORRECTION_PYTEST_COVERAGE_2025.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         },
         {
@@ -2472,7 +2352,7 @@
             "type": "local_file",
             "text": "**Documentation Maintenance**",
             "url": "DOCUMENTATION_MAINTENANCE.md",
-            "line": 58
+            "line": 56
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
           "is_valid": true,
@@ -2485,7 +2365,7 @@
             "type": "local_file",
             "text": "**Best Practices**",
             "url": "BEST_PRACTICES.md",
-            "line": 59
+            "line": 57
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
           "is_valid": true,
@@ -2498,7 +2378,7 @@
             "type": "local_file",
             "text": "**Git Workflow**",
             "url": "UTILITIES/GIT_WORKFLOW.md",
-            "line": 60
+            "line": 58
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
           "is_valid": true,
@@ -2511,7 +2391,7 @@
             "type": "local_file",
             "text": "**Formatage Automatique**",
             "url": "UTILITIES/FORMATAGE_AUTOMATIQUE.md",
-            "line": 61
+            "line": 59
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
           "is_valid": true,
@@ -2524,7 +2404,7 @@
             "type": "local_file",
             "text": "**CI/CD Pro Guide**",
             "url": "GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
-            "line": 64
+            "line": 62
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
           "is_valid": true,
@@ -2537,7 +2417,7 @@
             "type": "local_file",
             "text": "**CI/CD Pro Pre-commit**",
             "url": "GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md",
-            "line": 65
+            "line": 63
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
           "is_valid": true,
@@ -2550,7 +2430,7 @@
             "type": "local_file",
             "text": "**Alias Workflow Quick Guide**",
             "url": "GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md",
-            "line": 66
+            "line": 64
           },
           "source_file": "docs/DEVELOPER/INDEX.md",
           "is_valid": true,
@@ -2560,14 +2440,34 @@
         }
       ]
     },
+    "DEVELOPER/._INDEX.md": {
+      "file_path": "DEVELOPER/._INDEX.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "DEVELOPER/._DOCUMENTATION_MAINTENANCE.md": {
+      "file_path": "DEVELOPER/._DOCUMENTATION_MAINTENANCE.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "DEVELOPER/DOCUMENTATION_MAINTENANCE.md": {
       "file_path": "DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "total_links": 13,
-      "valid_links": 3,
-      "broken_links": 10,
+      "valid_links": 5,
+      "broken_links": 8,
       "critical_links": 8,
-      "critical_broken_links": 6,
-      "navigation_score": 23.0,
+      "critical_broken_links": 4,
+      "navigation_score": 38.0,
       "links": [
         {
           "link": {
@@ -2650,20 +2550,20 @@
         {
           "link": {
             "type": "markdown",
-            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-            "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "url": "../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
             "line": 205
           },
           "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         },
         {
           "link": {
             "type": "markdown",
-            "text": "PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+            "text": "docs/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
             "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
             "line": 207
           },
@@ -2702,20 +2602,20 @@
         {
           "link": {
             "type": "local_file",
-            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-            "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "url": "../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
             "line": 205
           },
           "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         },
         {
           "link": {
             "type": "local_file",
-            "text": "PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+            "text": "docs/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
             "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
             "line": 207
           },
@@ -2792,32 +2692,32 @@
           "link": {
             "type": "markdown",
             "text": "Nom du fichier",
-            "url": "chemin/vers/fichier.md",
+            "url": "../chemin/vers/fichier.md",
             "line": 125
           },
           "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+          "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "markdown",
             "text": "Nom du fichier",
-            "url": "chemin/vers/fichier.md",
+            "url": "../chemin/vers/fichier.md",
             "line": 125
           },
           "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+          "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "markdown",
-            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
             "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
             "line": 127
           },
@@ -2831,32 +2731,32 @@
           "link": {
             "type": "local_file",
             "text": "Nom du fichier",
-            "url": "chemin/vers/fichier.md",
+            "url": "../chemin/vers/fichier.md",
             "line": 125
           },
           "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+          "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "local_file",
             "text": "Nom du fichier",
-            "url": "chemin/vers/fichier.md",
+            "url": "../chemin/vers/fichier.md",
             "line": 125
           },
           "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+          "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "local_file",
-            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
             "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
             "line": 127
           },
@@ -2867,6 +2767,16 @@
           "is_critical": true
         }
       ]
+    },
+    "DEVELOPER/._TEMPLATE_STANDARD_MARKDOWN.md": {
+      "file_path": "DEVELOPER/._TEMPLATE_STANDARD_MARKDOWN.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
     },
     "DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md": {
       "file_path": "DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md",
@@ -4989,6 +4899,16 @@
       "navigation_score": 100,
       "links": []
     },
+    "REPORTS/RELEASES_AND_BILANS/._README.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/._README.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "REPORTS/RELEASES_AND_BILANS/PLAN_ACTION_AMELIORATIONS_FUTURES_ATHALIA_2025.md": {
       "file_path": "REPORTS/RELEASES_AND_BILANS/PLAN_ACTION_AMELIORATIONS_FUTURES_ATHALIA_2025.md",
       "total_links": 3,
@@ -5340,10 +5260,10 @@
     },
     "REPORTS/RELEASES_AND_BILANS/README.md": {
       "file_path": "REPORTS/RELEASES_AND_BILANS/README.md",
-      "total_links": 17,
-      "valid_links": 17,
+      "total_links": 18,
+      "valid_links": 18,
       "broken_links": 0,
-      "critical_links": 17,
+      "critical_links": 18,
       "critical_broken_links": 0,
       "navigation_score": 60.0,
       "links": [
@@ -5352,7 +5272,7 @@
             "type": "markdown",
             "text": "Guide de maintenance",
             "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-            "line": 109
+            "line": 110
           },
           "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
           "is_valid": true,
@@ -5365,7 +5285,7 @@
             "type": "local_file",
             "text": "Guide de maintenance",
             "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-            "line": 109
+            "line": 110
           },
           "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
           "is_valid": true,
@@ -5506,9 +5426,22 @@
         {
           "link": {
             "type": "file_reference",
+            "text": "RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+            "url": "RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+            "line": 30
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
             "text": "REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
             "url": "REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-            "line": 32
+            "line": 33
           },
           "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
           "is_valid": true,
@@ -5521,7 +5454,7 @@
             "type": "file_reference",
             "text": "PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
             "url": "PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-            "line": 33
+            "line": 34
           },
           "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
           "is_valid": true,
@@ -5534,7 +5467,7 @@
             "type": "file_reference",
             "text": "SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
             "url": "SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
-            "line": 34
+            "line": 35
           },
           "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
           "is_valid": true,
@@ -5547,7 +5480,7 @@
             "type": "file_reference",
             "text": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
             "url": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-            "line": 35
+            "line": 36
           },
           "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
           "is_valid": true,
@@ -5560,7 +5493,7 @@
             "type": "file_reference",
             "text": "doc_quality_report.md",
             "url": "doc_quality_report.md",
-            "line": 41
+            "line": 42
           },
           "source_file": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
           "is_valid": true,
@@ -5599,6 +5532,342 @@
       "critical_broken_links": 0,
       "navigation_score": 100,
       "links": []
+    },
+    "REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "total_links": 25,
+      "valid_links": 16,
+      "broken_links": 9,
+      "critical_links": 25,
+      "critical_broken_links": 9,
+      "navigation_score": 38.4,
+      "links": [
+        {
+          "link": {
+            "type": "markdown",
+            "text": "DOCUMENTATION_MAINTENANCE.md",
+            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "line": 269
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+            "line": 270
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "line": 271
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "DOCUMENTATION_MAINTENANCE.md",
+            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "line": 269
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+            "line": 270
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "line": 271
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "DOCUMENTATION_MAINTENANCE.md",
+            "url": "DOCUMENTATION_MAINTENANCE.md",
+            "line": 44
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+          "is_valid": false,
+          "error_type": "file_not_found",
+          "suggested_fix": "Vérifier le chemin: DOCUMENTATION_MAINTENANCE.md",
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+            "url": "TEMPLATE_STANDARD_MARKDOWN.md",
+            "line": 45
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+          "is_valid": false,
+          "error_type": "file_not_found",
+          "suggested_fix": "Vérifier le chemin: TEMPLATE_STANDARD_MARKDOWN.md",
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "dashboard.md",
+            "url": "dashboard.md",
+            "line": 46
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+          "is_valid": false,
+          "error_type": "file_not_found",
+          "suggested_fix": "Vérifier le chemin: dashboard.md",
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+            "url": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+            "line": 116
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+          "is_valid": false,
+          "error_type": "file_not_found",
+          "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "url": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "line": 117
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+          "is_valid": false,
+          "error_type": "file_not_found",
+          "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+            "url": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+            "line": 120
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+            "url": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+            "line": 121
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "RAPPORT_OPTIMISATION_FINALE_20250812.md",
+            "url": "RAPPORT_OPTIMISATION_FINALE_20250812.md",
+            "line": 122
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+            "url": "RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+            "line": 123
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+            "url": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+            "line": 120
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+            "url": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+            "line": 121
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "RAPPORT_OPTIMISATION_FINALE_20250812.md",
+            "url": "RAPPORT_OPTIMISATION_FINALE_20250812.md",
+            "line": 122
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+            "url": "RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+            "line": 123
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "DOCUMENTATION_MAINTENANCE.md",
+            "url": "DOCUMENTATION_MAINTENANCE.md",
+            "line": 44
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+          "is_valid": false,
+          "error_type": "file_not_found",
+          "suggested_fix": "Vérifier le chemin: DOCUMENTATION_MAINTENANCE.md",
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+            "url": "TEMPLATE_STANDARD_MARKDOWN.md",
+            "line": 45
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+          "is_valid": false,
+          "error_type": "file_not_found",
+          "suggested_fix": "Vérifier le chemin: TEMPLATE_STANDARD_MARKDOWN.md",
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "ORGANISATION_WORKSPACE.md",
+            "url": "ORGANISATION_WORKSPACE.md",
+            "line": 178
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+          "is_valid": false,
+          "error_type": "file_not_found",
+          "suggested_fix": "Vérifier le chemin: ORGANISATION_WORKSPACE.md",
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "QUICK_START.md",
+            "url": "QUICK_START.md",
+            "line": 179
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+          "is_valid": false,
+          "error_type": "file_not_found",
+          "suggested_fix": "Vérifier le chemin: QUICK_START.md",
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "url": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "line": 182
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "README.md",
+            "url": "README.md",
+            "line": 183
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        }
+      ]
     },
     "REPORTS/RELEASES_AND_BILANS/SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md": {
       "file_path": "REPORTS/RELEASES_AND_BILANS/SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
@@ -5740,6 +6009,16 @@
           "is_critical": true
         }
       ]
+    },
+    "REPORTS/RELEASES_AND_BILANS/._RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/._RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
     },
     "REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md": {
       "file_path": "REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
@@ -12021,9 +12300,9 @@
     {
       "link": {
         "type": "markdown",
-        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 137
+        "line": 131
       },
       "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
       "is_valid": false,
@@ -12034,105 +12313,14 @@
     {
       "link": {
         "type": "local_file",
-        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 137
+        "line": 131
       },
       "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: ../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "INVENTAIRE_COMPLET.md",
-        "url": "INVENTAIRE_COMPLET.md",
-        "line": 65
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: INVENTAIRE_COMPLET.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "RAPPORT_FINAL.md",
-        "url": "RAPPORT_FINAL.md",
-        "line": 66
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: RAPPORT_FINAL.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "FINAL_SUMMARY.md",
-        "url": "FINAL_SUMMARY.md",
-        "line": 67
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: FINAL_SUMMARY.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "GENESIS.md",
-        "url": "GENESIS.md",
-        "line": 68
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: GENESIS.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "CLEANUP_REPORT.md",
-        "url": "CLEANUP_REPORT.md",
-        "line": 69
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: CLEANUP_REPORT.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "FAQ.md",
-        "url": "FAQ.md",
-        "line": 70
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: FAQ.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "INSTALL.md",
-        "url": "INSTALL.md",
-        "line": 71
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: INSTALL.md",
       "is_critical": true
     },
     {
@@ -12268,110 +12456,6 @@
     {
       "link": {
         "type": "markdown",
-        "text": "**Progression Phases 1-4.3**",
-        "url": "REPORTS/PROGRESSION_PHASES_1_2_20250802.md",
-        "line": 43
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/PROGRESSION_PHASES_1_2_20250802.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "**Corrections Progress**",
-        "url": "REPORTS/CORRECTIONS/CORRECTIONS_PROGRESS.md",
-        "line": 53
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/CORRECTIONS_PROGRESS.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "**Amélioration Couverture Tests**",
-        "url": "REPORTS/CORRECTIONS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
-        "line": 54
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "**Correction Pytest Coverage**",
-        "url": "REPORTS/CORRECTIONS/CORRECTION_PYTEST_COVERAGE_2025.md",
-        "line": 55
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/CORRECTION_PYTEST_COVERAGE_2025.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "**Progression Phases 1-4.3**",
-        "url": "REPORTS/PROGRESSION_PHASES_1_2_20250802.md",
-        "line": 43
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/PROGRESSION_PHASES_1_2_20250802.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "**Corrections Progress**",
-        "url": "REPORTS/CORRECTIONS/CORRECTIONS_PROGRESS.md",
-        "line": 53
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/CORRECTIONS_PROGRESS.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "**Amélioration Couverture Tests**",
-        "url": "REPORTS/CORRECTIONS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
-        "line": 54
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "**Correction Pytest Coverage**",
-        "url": "REPORTS/CORRECTIONS/CORRECTION_PYTEST_COVERAGE_2025.md",
-        "line": 55
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/CORRECTION_PYTEST_COVERAGE_2025.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "Nom du fichier",
         "url": "chemin/vers/fichier.md",
         "line": 75
@@ -12437,20 +12521,7 @@
     {
       "link": {
         "type": "markdown",
-        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 205
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "text": "docs/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "line": 207
       },
@@ -12476,20 +12547,7 @@
     {
       "link": {
         "type": "local_file",
-        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 205
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "text": "docs/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "line": 207
       },
@@ -12542,32 +12600,32 @@
       "link": {
         "type": "markdown",
         "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "url": "../chemin/vers/fichier.md",
         "line": 125
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "url": "../chemin/vers/fichier.md",
         "line": 125
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
-        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "line": 127
       },
@@ -12581,32 +12639,32 @@
       "link": {
         "type": "local_file",
         "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "url": "../chemin/vers/fichier.md",
         "line": 125
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "url": "../chemin/vers/fichier.md",
         "line": 125
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
-        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "line": 127
       },
@@ -13628,6 +13686,123 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: NAVIGATION_GLOBALE.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "DOCUMENTATION_MAINTENANCE.md",
+        "url": "DOCUMENTATION_MAINTENANCE.md",
+        "line": 44
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: DOCUMENTATION_MAINTENANCE.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+        "url": "TEMPLATE_STANDARD_MARKDOWN.md",
+        "line": 45
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: TEMPLATE_STANDARD_MARKDOWN.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "dashboard.md",
+        "url": "dashboard.md",
+        "line": 46
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: dashboard.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+        "url": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+        "line": 116
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+        "url": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+        "line": 117
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "DOCUMENTATION_MAINTENANCE.md",
+        "url": "DOCUMENTATION_MAINTENANCE.md",
+        "line": 44
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: DOCUMENTATION_MAINTENANCE.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+        "url": "TEMPLATE_STANDARD_MARKDOWN.md",
+        "line": 45
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: TEMPLATE_STANDARD_MARKDOWN.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "ORGANISATION_WORKSPACE.md",
+        "url": "ORGANISATION_WORKSPACE.md",
+        "line": 178
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: ORGANISATION_WORKSPACE.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "QUICK_START.md",
+        "url": "QUICK_START.md",
+        "line": 179
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: QUICK_START.md",
       "is_critical": true
     },
     {
@@ -18300,9 +18475,9 @@
     {
       "link": {
         "type": "markdown",
-        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 137
+        "line": 131
       },
       "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
       "is_valid": false,
@@ -18313,105 +18488,14 @@
     {
       "link": {
         "type": "local_file",
-        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 137
+        "line": 131
       },
       "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: ../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "INVENTAIRE_COMPLET.md",
-        "url": "INVENTAIRE_COMPLET.md",
-        "line": 65
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: INVENTAIRE_COMPLET.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "RAPPORT_FINAL.md",
-        "url": "RAPPORT_FINAL.md",
-        "line": 66
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: RAPPORT_FINAL.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "FINAL_SUMMARY.md",
-        "url": "FINAL_SUMMARY.md",
-        "line": 67
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: FINAL_SUMMARY.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "GENESIS.md",
-        "url": "GENESIS.md",
-        "line": 68
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: GENESIS.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "CLEANUP_REPORT.md",
-        "url": "CLEANUP_REPORT.md",
-        "line": 69
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: CLEANUP_REPORT.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "FAQ.md",
-        "url": "FAQ.md",
-        "line": 70
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: FAQ.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "INSTALL.md",
-        "url": "INSTALL.md",
-        "line": 71
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: INSTALL.md",
       "is_critical": true
     },
     {
@@ -18547,110 +18631,6 @@
     {
       "link": {
         "type": "markdown",
-        "text": "**Progression Phases 1-4.3**",
-        "url": "REPORTS/PROGRESSION_PHASES_1_2_20250802.md",
-        "line": 43
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/PROGRESSION_PHASES_1_2_20250802.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "**Corrections Progress**",
-        "url": "REPORTS/CORRECTIONS/CORRECTIONS_PROGRESS.md",
-        "line": 53
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/CORRECTIONS_PROGRESS.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "**Amélioration Couverture Tests**",
-        "url": "REPORTS/CORRECTIONS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
-        "line": 54
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "**Correction Pytest Coverage**",
-        "url": "REPORTS/CORRECTIONS/CORRECTION_PYTEST_COVERAGE_2025.md",
-        "line": 55
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/CORRECTION_PYTEST_COVERAGE_2025.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "**Progression Phases 1-4.3**",
-        "url": "REPORTS/PROGRESSION_PHASES_1_2_20250802.md",
-        "line": 43
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/PROGRESSION_PHASES_1_2_20250802.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "**Corrections Progress**",
-        "url": "REPORTS/CORRECTIONS/CORRECTIONS_PROGRESS.md",
-        "line": 53
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/CORRECTIONS_PROGRESS.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "**Amélioration Couverture Tests**",
-        "url": "REPORTS/CORRECTIONS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
-        "line": 54
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "**Correction Pytest Coverage**",
-        "url": "REPORTS/CORRECTIONS/CORRECTION_PYTEST_COVERAGE_2025.md",
-        "line": 55
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/CORRECTION_PYTEST_COVERAGE_2025.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "Nom du fichier",
         "url": "chemin/vers/fichier.md",
         "line": 75
@@ -18716,20 +18696,7 @@
     {
       "link": {
         "type": "markdown",
-        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 205
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "text": "docs/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "line": 207
       },
@@ -18755,20 +18722,7 @@
     {
       "link": {
         "type": "local_file",
-        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 205
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "text": "docs/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "line": 207
       },
@@ -18821,32 +18775,32 @@
       "link": {
         "type": "markdown",
         "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "url": "../chemin/vers/fichier.md",
         "line": 125
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "url": "../chemin/vers/fichier.md",
         "line": 125
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
-        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "line": 127
       },
@@ -18860,32 +18814,32 @@
       "link": {
         "type": "local_file",
         "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "url": "../chemin/vers/fichier.md",
         "line": 125
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "url": "../chemin/vers/fichier.md",
         "line": 125
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
-        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "line": 127
       },
@@ -19907,6 +19861,123 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: NAVIGATION_GLOBALE.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "DOCUMENTATION_MAINTENANCE.md",
+        "url": "DOCUMENTATION_MAINTENANCE.md",
+        "line": 44
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: DOCUMENTATION_MAINTENANCE.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+        "url": "TEMPLATE_STANDARD_MARKDOWN.md",
+        "line": 45
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: TEMPLATE_STANDARD_MARKDOWN.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "dashboard.md",
+        "url": "dashboard.md",
+        "line": 46
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: dashboard.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+        "url": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+        "line": 116
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+        "url": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+        "line": 117
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "DOCUMENTATION_MAINTENANCE.md",
+        "url": "DOCUMENTATION_MAINTENANCE.md",
+        "line": 44
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: DOCUMENTATION_MAINTENANCE.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+        "url": "TEMPLATE_STANDARD_MARKDOWN.md",
+        "line": 45
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: TEMPLATE_STANDARD_MARKDOWN.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "ORGANISATION_WORKSPACE.md",
+        "url": "ORGANISATION_WORKSPACE.md",
+        "line": 178
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: ORGANISATION_WORKSPACE.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "QUICK_START.md",
+        "url": "QUICK_START.md",
+        "line": 179
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: QUICK_START.md",
       "is_critical": true
     },
     {
@@ -24581,9 +24652,9 @@
     {
       "link": {
         "type": "markdown",
-        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 137
+        "line": 131
       },
       "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
       "is_valid": false,
@@ -24594,209 +24665,14 @@
     {
       "link": {
         "type": "local_file",
-        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 137
+        "line": 131
       },
       "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: ../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "INVENTAIRE_COMPLET.md",
-        "url": "INVENTAIRE_COMPLET.md",
-        "line": 65
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: INVENTAIRE_COMPLET.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "RAPPORT_FINAL.md",
-        "url": "RAPPORT_FINAL.md",
-        "line": 66
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: RAPPORT_FINAL.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "FINAL_SUMMARY.md",
-        "url": "FINAL_SUMMARY.md",
-        "line": 67
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: FINAL_SUMMARY.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "GENESIS.md",
-        "url": "GENESIS.md",
-        "line": 68
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: GENESIS.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "CLEANUP_REPORT.md",
-        "url": "CLEANUP_REPORT.md",
-        "line": 69
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: CLEANUP_REPORT.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "FAQ.md",
-        "url": "FAQ.md",
-        "line": 70
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: FAQ.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "INSTALL.md",
-        "url": "INSTALL.md",
-        "line": 71
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: INSTALL.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "**Progression Phases 1-4.3**",
-        "url": "REPORTS/PROGRESSION_PHASES_1_2_20250802.md",
-        "line": 43
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/PROGRESSION_PHASES_1_2_20250802.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "**Corrections Progress**",
-        "url": "REPORTS/CORRECTIONS/CORRECTIONS_PROGRESS.md",
-        "line": 53
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/CORRECTIONS_PROGRESS.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "**Amélioration Couverture Tests**",
-        "url": "REPORTS/CORRECTIONS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
-        "line": 54
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "**Correction Pytest Coverage**",
-        "url": "REPORTS/CORRECTIONS/CORRECTION_PYTEST_COVERAGE_2025.md",
-        "line": 55
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/CORRECTION_PYTEST_COVERAGE_2025.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "**Progression Phases 1-4.3**",
-        "url": "REPORTS/PROGRESSION_PHASES_1_2_20250802.md",
-        "line": 43
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/PROGRESSION_PHASES_1_2_20250802.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "**Corrections Progress**",
-        "url": "REPORTS/CORRECTIONS/CORRECTIONS_PROGRESS.md",
-        "line": 53
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/CORRECTIONS_PROGRESS.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "**Amélioration Couverture Tests**",
-        "url": "REPORTS/CORRECTIONS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
-        "line": 54
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "**Correction Pytest Coverage**",
-        "url": "REPORTS/CORRECTIONS/CORRECTION_PYTEST_COVERAGE_2025.md",
-        "line": 55
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/CORRECTION_PYTEST_COVERAGE_2025.md",
       "is_critical": true
     },
     {
@@ -24815,20 +24691,7 @@
     {
       "link": {
         "type": "markdown",
-        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 205
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "text": "docs/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "line": 207
       },
@@ -24854,20 +24717,7 @@
     {
       "link": {
         "type": "local_file",
-        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 205
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "text": "docs/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "line": 207
       },
@@ -24881,32 +24731,32 @@
       "link": {
         "type": "markdown",
         "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "url": "../chemin/vers/fichier.md",
         "line": 125
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "url": "../chemin/vers/fichier.md",
         "line": 125
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
-        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "line": 127
       },
@@ -24920,32 +24770,32 @@
       "link": {
         "type": "local_file",
         "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "url": "../chemin/vers/fichier.md",
         "line": 125
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "url": "../chemin/vers/fichier.md",
         "line": 125
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
-        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "line": 127
       },
@@ -25707,6 +25557,123 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: NAVIGATION_GLOBALE.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "DOCUMENTATION_MAINTENANCE.md",
+        "url": "DOCUMENTATION_MAINTENANCE.md",
+        "line": 44
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: DOCUMENTATION_MAINTENANCE.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+        "url": "TEMPLATE_STANDARD_MARKDOWN.md",
+        "line": 45
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: TEMPLATE_STANDARD_MARKDOWN.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "dashboard.md",
+        "url": "dashboard.md",
+        "line": 46
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: dashboard.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+        "url": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+        "line": 116
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+        "url": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+        "line": 117
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "DOCUMENTATION_MAINTENANCE.md",
+        "url": "DOCUMENTATION_MAINTENANCE.md",
+        "line": 44
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: DOCUMENTATION_MAINTENANCE.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+        "url": "TEMPLATE_STANDARD_MARKDOWN.md",
+        "line": 45
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: TEMPLATE_STANDARD_MARKDOWN.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "ORGANISATION_WORKSPACE.md",
+        "url": "ORGANISATION_WORKSPACE.md",
+        "line": 178
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: ORGANISATION_WORKSPACE.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "QUICK_START.md",
+        "url": "QUICK_START.md",
+        "line": 179
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: QUICK_START.md",
       "is_critical": true
     },
     {
@@ -27558,9 +27525,9 @@
     {
       "link": {
         "type": "markdown",
-        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 137
+        "line": 131
       },
       "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
       "is_valid": false,
@@ -27571,209 +27538,14 @@
     {
       "link": {
         "type": "local_file",
-        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 137
+        "line": 131
       },
       "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: ../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "INVENTAIRE_COMPLET.md",
-        "url": "INVENTAIRE_COMPLET.md",
-        "line": 65
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: INVENTAIRE_COMPLET.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "RAPPORT_FINAL.md",
-        "url": "RAPPORT_FINAL.md",
-        "line": 66
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: RAPPORT_FINAL.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "FINAL_SUMMARY.md",
-        "url": "FINAL_SUMMARY.md",
-        "line": 67
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: FINAL_SUMMARY.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "GENESIS.md",
-        "url": "GENESIS.md",
-        "line": 68
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: GENESIS.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "CLEANUP_REPORT.md",
-        "url": "CLEANUP_REPORT.md",
-        "line": 69
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: CLEANUP_REPORT.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "FAQ.md",
-        "url": "FAQ.md",
-        "line": 70
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: FAQ.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "INSTALL.md",
-        "url": "INSTALL.md",
-        "line": 71
-      },
-      "source_file": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: INSTALL.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "**Progression Phases 1-4.3**",
-        "url": "REPORTS/PROGRESSION_PHASES_1_2_20250802.md",
-        "line": 43
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/PROGRESSION_PHASES_1_2_20250802.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "**Corrections Progress**",
-        "url": "REPORTS/CORRECTIONS/CORRECTIONS_PROGRESS.md",
-        "line": 53
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/CORRECTIONS_PROGRESS.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "**Amélioration Couverture Tests**",
-        "url": "REPORTS/CORRECTIONS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
-        "line": 54
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "**Correction Pytest Coverage**",
-        "url": "REPORTS/CORRECTIONS/CORRECTION_PYTEST_COVERAGE_2025.md",
-        "line": 55
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/CORRECTION_PYTEST_COVERAGE_2025.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "**Progression Phases 1-4.3**",
-        "url": "REPORTS/PROGRESSION_PHASES_1_2_20250802.md",
-        "line": 43
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/PROGRESSION_PHASES_1_2_20250802.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "**Corrections Progress**",
-        "url": "REPORTS/CORRECTIONS/CORRECTIONS_PROGRESS.md",
-        "line": 53
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/CORRECTIONS_PROGRESS.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "**Amélioration Couverture Tests**",
-        "url": "REPORTS/CORRECTIONS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
-        "line": 54
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "**Correction Pytest Coverage**",
-        "url": "REPORTS/CORRECTIONS/CORRECTION_PYTEST_COVERAGE_2025.md",
-        "line": 55
-      },
-      "source_file": "docs/DEVELOPER/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: REPORTS/CORRECTIONS/CORRECTION_PYTEST_COVERAGE_2025.md",
       "is_critical": true
     },
     {
@@ -27792,20 +27564,7 @@
     {
       "link": {
         "type": "markdown",
-        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 205
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "text": "docs/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "line": 207
       },
@@ -27831,20 +27590,7 @@
     {
       "link": {
         "type": "local_file",
-        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 205
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "text": "docs/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "line": 207
       },
@@ -27858,32 +27604,32 @@
       "link": {
         "type": "markdown",
         "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "url": "../chemin/vers/fichier.md",
         "line": 125
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "url": "../chemin/vers/fichier.md",
         "line": 125
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
-        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "line": 127
       },
@@ -27897,32 +27643,32 @@
       "link": {
         "type": "local_file",
         "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "url": "../chemin/vers/fichier.md",
         "line": 125
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "url": "../chemin/vers/fichier.md",
         "line": 125
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
-        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "line": 127
       },
@@ -28684,6 +28430,123 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: NAVIGATION_GLOBALE.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "DOCUMENTATION_MAINTENANCE.md",
+        "url": "DOCUMENTATION_MAINTENANCE.md",
+        "line": 44
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: DOCUMENTATION_MAINTENANCE.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+        "url": "TEMPLATE_STANDARD_MARKDOWN.md",
+        "line": 45
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: TEMPLATE_STANDARD_MARKDOWN.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "dashboard.md",
+        "url": "dashboard.md",
+        "line": 46
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: dashboard.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+        "url": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+        "line": 116
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+        "url": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+        "line": 117
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "DOCUMENTATION_MAINTENANCE.md",
+        "url": "DOCUMENTATION_MAINTENANCE.md",
+        "line": 44
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: DOCUMENTATION_MAINTENANCE.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+        "url": "TEMPLATE_STANDARD_MARKDOWN.md",
+        "line": 45
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: TEMPLATE_STANDARD_MARKDOWN.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "ORGANISATION_WORKSPACE.md",
+        "url": "ORGANISATION_WORKSPACE.md",
+        "line": 178
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: ORGANISATION_WORKSPACE.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "QUICK_START.md",
+        "url": "QUICK_START.md",
+        "line": 179
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: QUICK_START.md",
       "is_critical": true
     },
     {
