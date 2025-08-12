@@ -93,6 +93,14 @@
 - **`SECURITY_IMPROVEMENTS_SUMMARY.md`** - Résumé améliorations sécurité
 - **`WORKFLOW_AMELIORATIONS.md`** - Améliorations workflow
 
+#### **🚀 RELEASES ET BILANS (`docs/REPORTS/RELEASES_AND_BILANS/`)**
+- **`README.md`** - Index des releases et bilans
+- **`VALIDATION_RELEASE_v1.0.0.md`** - Validation de la release v1.0.0
+- **`RELEASE_FINALE_v1.0.0_SUCCES.md`** - Rapport de succès de la release v1.0.0
+- **`PLAN_VERSION_FINALE_ATHALIA_v1.0.0.md`** - Plan de la version finale v1.0.0
+- **`BILAN_COMPLET_BRANCHES_ATHALIA_20250811.md`** - Bilan complet des branches
+- **`BACKUP_v1.0.0_FINAL_20250811.md`** - Sauvegarde finale v1.0.0
+
 #### **🛠️ UTILITAIRES (`docs/DEVELOPER/UTILITIES/`)**
 - **`FORMATAGE_AUTOMATIQUE.md`** - Formatage automatique du code
 - **`GIT_WORKFLOW.md`** - Workflow Git
