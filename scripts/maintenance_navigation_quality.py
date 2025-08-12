@@ -59,12 +59,15 @@ class NavigationQualityMaintainer:
             with open(self.workspace / "navigation_test_smart_results.json") as f:
                 data = json.load(f)
 
+            # Nouvelle structure du fichier JSON
+            global_stats = data.get("global_stats", {})
+            
             return {
-                "score": data.get("navigation_score", 0),
-                "critical_links": data.get("critical_broken_links", 0),
-                "total_links": data.get("total_broken_links", 0),
-                "files_tested": data.get("files_tested", 0),
-                "success_rate": data.get("link_success_rate", 0),
+                "score": global_stats.get("average_navigation_score", 0),
+                "critical_links": global_stats.get("critical_broken_links", 0),
+                "total_links": global_stats.get("broken_links", 0),
+                "files_tested": global_stats.get("total_files", 0),
+                "success_rate": global_stats.get("link_success_rate", 0)
             }
         except Exception as e:
             self.log_maintenance(f"Erreur lors du parsing des résultats: {e}", "ERROR")
