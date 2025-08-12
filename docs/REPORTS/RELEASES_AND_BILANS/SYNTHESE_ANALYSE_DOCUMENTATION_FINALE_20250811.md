@@ -21,17 +21,17 @@
 ## 🔍 **ANALYSE DÉTAILLÉE PAR CATÉGORIE**
 
 ### **🏗️ ARCHITECTURE (Score Global : 85/100)**
-- **`INDEX.md`** - Excellent, références à jour ✅
-- **`ORGANISATION_WORKSPACE.md`** - Bon, structure claire ✅
-- **`STRUCTURE_PROJET_EXPLICATION.md`** - Bon, contenu pertinent ✅
+- **[Index architecture](../../ARCHITECTURE/INDEX.md)** - Excellent, références à jour ✅
+- **[Organisation workspace](../../ARCHITECTURE/ORGANISATION_WORKSPACE.md)** - Bon, structure claire ✅
+- **[Structure projet explication](../../ARCHITECTURE/STRUCTURE_PROJET_EXPLICATION.md)** - Bon, contenu pertinent ✅
 - **`dashboard/`** - Nouveau, bien organisé ✅
 
 **Recommandation :** ✅ **GARDER - Qualité excellente**
 
 ### **🔌 API (Score Global : 90/100)**
-- **`INDEX.md`** - Exceptionnel, très professionnel ✅
-- **`COMMANDES.md`** - Bon, documentation complète ✅
-- **`core_modules.md`** - Bon, références à jour ✅
+- **[Index API](../../API/INDEX.md)** - Exceptionnel, très professionnel ✅
+- **[Commandes API](../../API/COMMANDES.md)** - Bon, documentation complète ✅
+- **[Core modules](../../API/core_modules.md)** - Bon, références à jour ✅
 - **Autres fichiers** - Qualité satisfaisante ✅
 
 **Recommandation :** ✅ **GARDER - Qualité exceptionnelle**
@@ -60,9 +60,9 @@
 **Recommandation :** ✅ **GARDER - Qualité bonne**
 
 ### **📚 ARCHIVE (Score Global : 70/100)**
-- **`REORGANISATION_SYNTHESE_20250731.md`** - Bon, rapport récent ✅
-- **`STRUCTURE_REORGANISATION_PLAN.md`** - Bon, plan utile ✅
-- **`FICHE_PRESENTATION_EXPERT.md`** - Bon, contenu pertinent ✅
+- **Rapport de réorganisation** - Bon, rapport récent ✅
+- **Plan de réorganisation** - Bon, plan utile ✅
+- **Fiche présentation expert** - Bon, contenu pertinent ✅
 
 **Recommandation :** ✅ **GARDER - Contenu historique utile**
 

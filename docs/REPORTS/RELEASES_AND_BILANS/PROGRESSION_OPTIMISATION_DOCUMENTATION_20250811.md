@@ -88,14 +88,14 @@
 - **Checklist de qualité** intégrée
 - **Exemples pratiques** inclus
 
-### **🗂️ Organisation du Workspace ([ARCHITECTURE/ORGANISATION_WORKSPACE.md](../../ARCHITECTURE/ORGANISATION_WORKSPACE.md))**
+### **🗂️ Organisation du Workspace ([ARCHITECTURE/ORGANISATION_WORKSPACE.md](../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md))**
 - **Métadonnées** standardisées et à jour
 - **Structure des sections** harmonisée
 - **Navigation interne** améliorée
 - **Liens vers la documentation** connexe
 - **Standards de qualité** appliqués
 
-### **⚡ Guide de Démarrage Rapide ([USER_GUIDES/QUICK_START.md](../../USER_GUIDES/QUICK_START.md))**
+### **⚡ Guide de Démarrage Rapide ([USER_GUIDES/QUICK_START.md](../../../../USER_GUIDES/QUICK_START.md))**
 - **Traduction complète** en français
 - **Structure standardisée** avec nos emojis
 - **FAQ interactive** avec sections dépliables
