@@ -258,7 +258,7 @@ Les scripts peuvent être personnalisés en modifiant :
 ## 📚 Ressources
 
 ### Documentation
-- [Guide d'installation](../../GETTING_STARTED/INSTALLATION.md)
+- [Guide d'installation](../../USER_GUIDES/INSTALLATION.md)
 - [Meilleures pratiques](../BEST_PRACTICES.md)
 - [Guide de dépannage](../../USER_GUIDES/TROUBLESHOOTING.md)
 

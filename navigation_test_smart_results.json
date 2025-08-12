@@ -1,12 +1,12 @@
 {
-  "test_date": "2025-08-12T16:46:26.611481",
+  "test_date": "2025-08-12T16:47:20.580168",
   "global_stats": {
     "total_files": 140,
     "total_links": 831,
-    "broken_links": 428,
-    "critical_broken_links": 174,
-    "average_navigation_score": 76.45287327579254,
-    "link_success_rate": 48.49578820697955
+    "broken_links": 426,
+    "critical_broken_links": 172,
+    "average_navigation_score": 76.59573041864968,
+    "link_success_rate": 48.73646209386281
   },
   "file_results": {
     "._INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
@@ -2463,11 +2463,11 @@
     "DEVELOPER/DOCUMENTATION_MAINTENANCE.md": {
       "file_path": "DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "total_links": 12,
-      "valid_links": 6,
-      "broken_links": 6,
+      "valid_links": 8,
+      "broken_links": 4,
       "critical_links": 6,
-      "critical_broken_links": 2,
-      "navigation_score": 53.33333333333333,
+      "critical_broken_links": 0,
+      "navigation_score": 73.33333333333333,
       "links": [
         {
           "link": {
@@ -2564,13 +2564,13 @@
           "link": {
             "type": "markdown",
             "text": "Plan d'optimisation documentation",
-            "url": "../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+            "url": "../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
             "line": 207
           },
           "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         },
         {
@@ -2603,13 +2603,13 @@
           "link": {
             "type": "local_file",
             "text": "Plan d'optimisation documentation",
-            "url": "../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+            "url": "../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
             "line": 207
           },
           "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         },
         {
@@ -3790,7 +3790,7 @@
           "link": {
             "type": "markdown",
             "text": "Guide d'installation",
-            "url": "../../GETTING_STARTED/INSTALLATION.md",
+            "url": "../../USER_GUIDES/INSTALLATION.md",
             "line": 261
           },
           "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
@@ -3881,7 +3881,7 @@
           "link": {
             "type": "local_file",
             "text": "Guide d'installation",
-            "url": "../../GETTING_STARTED/INSTALLATION.md",
+            "url": "../../USER_GUIDES/INSTALLATION.md",
             "line": 261
           },
           "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
@@ -12454,32 +12454,6 @@
     {
       "link": {
         "type": "markdown",
-        "text": "Plan d'optimisation documentation",
-        "url": "../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "line": 207
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Plan d'optimisation documentation",
-        "url": "../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "line": 207
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "Documentation GitHub",
         "url": "https://docs.github.com",
         "line": 120
@@ -18018,32 +17992,6 @@
     {
       "link": {
         "type": "markdown",
-        "text": "Plan d'optimisation documentation",
-        "url": "../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "line": 207
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Plan d'optimisation documentation",
-        "url": "../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "line": 207
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "Documentation GitHub",
         "url": "https://docs.github.com",
         "line": 120
@@ -23401,32 +23349,6 @@
   "critical_broken_links": [
     {
       "link": {
-        "type": "markdown",
-        "text": "Plan d'optimisation documentation",
-        "url": "../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "line": 207
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Plan d'optimisation documentation",
-        "url": "../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "line": 207
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "is_critical": true
-    },
-    {
-      "link": {
         "type": "file_reference",
         "text": "DOCUMENTATION_MAINTENANCE.md",
         "url": "DOCUMENTATION_MAINTENANCE.md",
@@ -25659,32 +25581,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: ../concepts/validation_decorator.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Plan d'optimisation documentation",
-        "url": "../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "line": 207
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Plan d'optimisation documentation",
-        "url": "../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "line": 207
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
       "is_critical": true
     },
     {

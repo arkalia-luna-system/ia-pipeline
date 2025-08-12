@@ -204,7 +204,7 @@ find docs -name "*.md" -exec grep -l "\[.*\]\([^)]*\)" {} \;
 ### **📖 Documentation Interne**
 - **Index principal :** [docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md](../INDEX_FINAL_DOCUMENTATION_ATHALIA.md)
 - **Guide de style :** Ce document
-- **Standards de qualité :** [Plan d'optimisation documentation](../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md)
+- **Standards de qualité :** [Plan d'optimisation documentation](../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md)
 
 ---
 
