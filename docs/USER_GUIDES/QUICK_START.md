@@ -1,441 +1,301 @@
-# ⚡ Quick Start Guide
+# ⚡ GUIDE DE DÉMARRAGE RAPIDE ATHALIA
 
-**Get up and running with Athalia in under 10 minutes**
+**Dernière mise à jour :** 11 Août 2025  
+**Version :** 2.0  
+**Statut :** ✅ **ACTIF ET MAINTENU**  
+**Catégorie :** Guide Utilisateur
 
-![Quick Start](https://img.shields.io/badge/time-10%20minutes-green.svg)
-![Difficulty](https://img.shields.io/badge/difficulty-beginner-brightgreen.svg)
+## 🎯 **RÉSUMÉ EXÉCUTIF**
 
----
-
-## 🎯 What You'll Accomplish
-
-By the end of this guide, you'll have:
-- ✅ Installed Athalia on your system
-- ✅ Generated your first project template
-- ✅ Validated security configuration
-- ✅ Run automated cleanup
-- ✅ Executed the test suite
+**Démarrez avec Athalia en moins de 10 minutes !** Ce guide vous accompagne étape par étape pour installer, configurer et utiliser Athalia pour votre premier projet IA.
 
 ---
 
-## 📋 Prerequisites
+## 🎯 **CE QUE VOUS ACCOMPLIREZ**
 
+À la fin de ce guide, vous aurez :
+- ✅ **Installé Athalia** sur votre système
+- ✅ **Généré votre premier projet** avec un template
+- ✅ **Validé la configuration** de sécurité
+- ✅ **Exécuté le nettoyage automatique**
+- ✅ **Lancé la suite de tests** complète
+
+---
+
+## 📋 **PRÉREQUIS SYSTÈME**
+
+### **🔧 Configuration Minimale**
 ```mermaid
 graph LR
-    A[Python 3.10+] --> B[Git Installed]
-    B --> C[Terminal Access]
-    C --> D[500MB Free Space]
-    D --> E[Ready to Start!]
+    A[Python 3.10+] --> B[Git Installé]
+    B --> C[Accès Terminal]
+    C --> D[500MB Espace Libre]
+    D --> E[Prêt à Démarrer !]
 ```
 
-**System Requirements:**
-- Python 3.10 or higher
-- Git version control
-- Command line access
-- 500MB free disk space
+**Exigences Système :**
+- **Python 3.10** ou supérieur
+- **Git** pour le contrôle de version
+- **Accès ligne de commande** (Terminal)
+- **500MB d'espace disque** libre
 
-### Quick Check
+### **✅ Vérification Rapide**
 ```bash
-# Verify prerequisites
-python --version    # Should show 3.10+
-git --version      # Should show git installed
+# Vérifier les prérequis
+python --version    # Doit afficher 3.10+
+git --version      # Doit afficher git installé
 ```
 
 ---
 
-## 🚀 Step 1: Installation
+## 🚀 **ÉTAPE 1 : INSTALLATION**
 
-### Clone the Repository
+### **📥 Cloner le Repository**
 ```bash
-# Clone Athalia
+# Cloner Athalia
 git clone https://github.com/arkalia-luna-system/ia-pipeline.git
 cd athalia-dev-setup
 
-# Verify structure
+# Vérifier la structure
 ls -la
 ```
 
-**Expected Output:**
+**Structure Attendue :**
 ```
-drwxr-xr-x  athalia_core/
-drwxr-xr-x  tests/
-drwxr-xr-x  docs/
-drwxr-xr-x  scripts/
--rw-r--r--  requirements.txt
--rw-r--r--  README.md
+drwxr-xr-x  athalia_core/      # Modules principaux
+drwxr-xr-x  tests/             # Tests automatisés
+drwxr-xr-x  docs/              # Documentation complète
+drwxr-xr-x  scripts/           # Scripts utilitaires
+-rw-r--r--  requirements.txt    # Dépendances Python
+-rw-r--r--  README.md          # Documentation principale
 ```
 
-### Setup Virtual Environment
+### **🐍 Configuration de l'Environnement Virtuel**
 ```bash
-# Create virtual environment
+# Créer l'environnement virtuel
 python -m venv .venv
 
-# Activate (Linux/Mac)
+# Activer (Linux/Mac)
 source .venv/bin/activate
 
-# Activate (Windows)
+# Activer (Windows)
 # .venv\Scripts\activate
 
-# Verify activation
-which python  # Should point to .venv/bin/python
+# Vérifier l'activation
+which python  # Doit pointer vers .venv/bin/python
 ```
 
-### Install Dependencies
+### **📦 Installation des Dépendances**
 ```bash
-# Install core dependencies
+# Installer les dépendances principales
 pip install -r requirements.txt
 
-# Verify installation
-python -c "from athalia_core import UnifiedOrchestrator; print('✅ Installation successful')"
+# Vérifier l'installation
+python -c "from athalia_core import UnifiedOrchestrator; print('✅ Installation réussie')"
 ```
 
-**Expected Output:**
+**Sortie Attendue :**
 ```
 ⚠️ Modules IA non disponibles - mode fallback activé
 ⚠️ Modules de classification non disponibles - mode fallback activé
-✅ Installation successful
+✅ Installation réussie
 ```
 
-> **Note:** The warnings are normal - they indicate AI modules are in fallback mode.
+> **Note :** Les avertissements sont normaux - ils indiquent que les modules IA sont en mode fallback.
 
 ---
 
-## 🔧 Step 2: Generate Your First Project
+## 🚀 **ÉTAPE 2 : PREMIÈRE UTILISATION**
 
-### Basic Project Generation
-```python
-# Create a new file: test_generation.py
-from athalia_core.generation import generate_blueprint_mock, generate_project
-import tempfile
-import os
-
-# Generate a REST API project
-blueprint = generate_blueprint_mock("REST API for task management")
-
-print("📋 Generated Blueprint:")
-print(f"  Project Name: {blueprint['project_name']}")
-print(f"  Project Type: {blueprint['project_type']}")
-print(f"  Dependencies: {blueprint['dependencies']}")
-print(f"  Modules: {blueprint['modules']}")
-
-# Generate project in temp directory
-with tempfile.TemporaryDirectory() as temp_dir:
-    project_path = generate_project(blueprint, temp_dir, dry_run=True)
-    print(f"\n✅ Project generation successful!")
-    print(f"📁 Would be created at: {temp_dir}/{blueprint['project_name']}")
-```
-
-### Run the Test
+### **🔍 Vérification de l'Installation**
 ```bash
-python test_generation.py
+# Vérifier que tout fonctionne
+python -m athalia_core.main --help
+
+# Lancer un audit rapide
+python -m athalia_core.main --action audit --quick
 ```
 
-**Expected Output:**
-```
-📋 Generated Blueprint:
-  Project Name: rest
-  Project Type: generic
-  Dependencies: ['numpy', 'pandas']
-  Modules: ['core', 'tests']
-
-✅ Project generation successful!
-📁 Would be created at: /tmp/tmp_xyz/rest
-```
-
----
-
-## 🛡️ Step 3: Test Security Features
-
-### Security Validation
-```python
-# Create: test_security.py
-from athalia_core.security_validator import SecurityValidator
-
-# Initialize security validator
-validator = SecurityValidator()
-
-print("🛡️ Security System Status:")
-print(f"  Allowed Commands: {len(validator.allowed_commands)}")
-print(f"  First Command: {list(validator.allowed_commands)[0]}")
-
-# Test command validation
-safe_commands = [
-    ["python", "--version"],
-    ["git", "status"],
-    ["ls", "-la"]
-]
-
-unsafe_commands = [
-    ["rm", "-rf", "/"],
-    ["curl", "malicious-site.com"],
-    ["eval", "dangerous_code()"]
-]
-
-print("\n✅ Testing Safe Commands:")
-for cmd in safe_commands:
-    is_safe = validator.is_command_safe(cmd)
-    print(f"  {' '.join(cmd)}: {'✅ SAFE' if is_safe else '❌ BLOCKED'}")
-
-print("\n🚫 Testing Unsafe Commands:")
-for cmd in unsafe_commands:
-    is_safe = validator.is_command_safe(cmd)
-    print(f"  {' '.join(cmd)}: {'✅ SAFE' if is_safe else '❌ BLOCKED'}")
-```
-
-### Run Security Test
+### **🏗️ Génération de Votre Premier Projet**
 ```bash
-python test_security.py
+# Générer un projet Python basique
+python -m athalia_core.main --action generate --template python-basic --name mon-projet
+
+# Vérifier la génération
+ls -la mon-projet/
 ```
 
-**Expected Output:**
+**Structure du Projet Généré :**
 ```
-🛡️ Security System Status:
-  Allowed Commands: 80
-  First Command: ath-test.py
-
-✅ Testing Safe Commands:
-  python --version: ✅ SAFE
-  git status: ✅ SAFE
-  ls -la: ✅ SAFE
-
-🚫 Testing Unsafe Commands:
-  rm -rf /: ❌ BLOCKED
-  curl malicious-site.com: ❌ BLOCKED
-  eval dangerous_code(): ❌ BLOCKED
+mon-projet/
+├── src/                    # Code source
+├── tests/                  # Tests unitaires
+├── docs/                   # Documentation
+├── requirements.txt        # Dépendances
+├── README.md              # Guide du projet
+└── .gitignore            # Fichiers ignorés
 ```
 
 ---
 
-## 🧹 Step 4: Test Cleanup Features
+## 🔒 **ÉTAPE 3 : VALIDATION DE SÉCURITÉ**
 
-### Automated Cleanup
-```python
-# Create: test_cleanup.py
-from athalia_core.auto_cleaner import AutoCleaner
-import tempfile
-import os
-
-# Create test directory with "parasite" files
-with tempfile.TemporaryDirectory() as temp_dir:
-    print(f"📁 Testing cleanup in: {temp_dir}")
-    
-    # Create some files to clean
-    test_files = {
-        ".DS_Store": "mac_system_file",
-        "._hidden_file": "apple_double",
-        "Thumbs.db": "windows_cache",
-        "test.log": "log_file",
-        "cache.tmp": "temp_file"
-    }
-    
-    print("\n📝 Creating test files:")
-    for filename, content in test_files.items():
-        filepath = os.path.join(temp_dir, filename)
-        with open(filepath, 'w') as f:
-            f.write(content)
-        print(f"  Created: {filename}")
-    
-    # Initialize cleaner and run cleanup
-    cleaner = AutoCleaner(temp_dir)
-    result = cleaner.perform_full_cleanup()
-    
-    print(f"\n🧹 Cleanup Results:")
-    print(f"  Files Removed: {result['total_files_removed']}")
-    print(f"  Directories Removed: {result['total_directories_removed']}")
-    print(f"  Space Freed: {result['total_space_freed']} bytes")
-    print(f"  Cleanup Time: {result['cleanup_time']:.3f}s")
-    
-    print("\n📋 Remaining files:")
-    remaining_files = os.listdir(temp_dir)
-    if remaining_files:
-        for f in remaining_files:
-            print(f"  {f}")
-    else:
-        print("  (all files cleaned)")
-```
-
-### Run Cleanup Test
+### **🛡️ Audit de Sécurité Automatique**
 ```bash
-python test_cleanup.py
+# Audit complet de sécurité
+python -m athalia_core.main --action security --audit
+
+# Validation des chemins sécurisés
+python -m athalia_core.main --action security --validate-paths
 ```
 
-**Expected Output:**
-```
-📁 Testing cleanup in: /tmp/tmp_abc123
-
-📝 Creating test files:
-  Created: .DS_Store
-  Created: ._hidden_file
-  Created: Thumbs.db
-  Created: test.log
-  Created: cache.tmp
-
-🧹 Cleanup Results:
-  Files Removed: 5
-  Directories Removed: 0
-  Space Freed: 45 bytes
-  Cleanup Time: 0.002s
-
-📋 Remaining files:
-  (all files cleaned)
-```
+### **✅ Vérification des Bonnes Pratiques**
+- **Permissions de fichiers** correctes
+- **Chemins sécurisés** validés
+- **Configuration** sécurisée
+- **Tests de sécurité** passés
 
 ---
 
-## 🧪 Step 5: Run the Test Suite
+## 🧹 **ÉTAPE 4 : NETTOYAGE AUTOMATIQUE**
 
-### Quick Test Run
+### **🧹 Nettoyage du Workspace**
 ```bash
-# Run a subset of tests (fast)
-python -m pytest tests/unit/test_generation.py -v
+# Nettoyage automatique complet
+python -m athalia_core.main --action cleanup --auto
 
-# Run security tests
-python -m pytest tests/security/ -v
-
-# Get test count
-python -m pytest tests/ --collect-only | grep "collected"
+# Nettoyage ciblé
+python -m athalia_core.main --action cleanup --target cache --force
 ```
 
-**Expected Output:**
-```
-======================== test session starts ========================
-collected 1696 tests
+### **📊 Rapport de Nettoyage**
+Le système génère automatiquement un rapport détaillé :
+- **Fichiers supprimés** et leur taille
+- **Espace libéré** sur le disque
+- **Temps d'exécution** du nettoyage
+- **Recommandations** d'optimisation
 
-tests/unit/test_generation.py::test_generate_blueprint_mock PASSED
-tests/unit/test_generation.py::test_extract_project_name PASSED
-tests/security/test_security_validator.py::test_command_validation PASSED
+---
 
-======================== 3 passed in 0.15s ========================
-```
+## 🧪 **ÉTAPE 5 : EXÉCUTION DES TESTS**
 
-### Full Test Suite (Optional)
+### **⚡ Tests Rapides**
 ```bash
-# Run all tests (takes ~30 seconds)
-python -m pytest tests/ -v --tb=short
+# Tests de base (rapides)
+python -m pytest tests/unit/ --tb=short -x --maxfail=5
+
+# Tests de sécurité
+python -m pytest tests/unit/security/ -v
 ```
 
----
-
-## 📊 Step 6: Explore Dashboards
-
-### View HTML Dashboards
+### **📊 Tests Complets**
 ```bash
-# List available dashboards
-ls dashboard/*.html
+# Suite de tests complète
+python -m pytest tests/ --cov=athalia_core --cov-report=html
 
-# Open main dashboard (Mac)
-open dashboard/dashboard.html
-
-# Open main dashboard (Linux)
-xdg-open dashboard/dashboard.html
-
-# Open main dashboard (Windows)
-start dashboard/dashboard.html
+# Rapport de couverture
+open htmlcov/index.html  # Ouvrir dans le navigateur
 ```
-
-**Available Dashboards:**
-- `dashboard.html` - Main project dashboard
-- `analytics_dashboard_optimized.html` - Performance analytics
-- `dashboard_validation.html` - Validation results
-- `test_dashboard_simple.html` - Test results summary
 
 ---
 
-## 🎯 Quick Reference
+## 🎯 **VALIDATION FINALE**
 
-### Project Structure
-```mermaid
-graph TD
-    A[athalia_core/] --> B[unified_orchestrator.py]
-    A --> C[security_validator.py]
-    A --> D[generation.py]
-    A --> E[auto_cleaner.py]
-    
-    F[tests/] --> G[unit/]
-    F --> H[security/]
-    F --> I[integration/]
-    
-    J[docs/] --> K[USER_GUIDES/]
-    J --> L[API/]
-    J --> M[DEVELOPER/]
-```
+### **✅ Checklist de Validation**
+- [ ] **Installation** réussie sans erreurs
+- [ ] **Premier projet** généré correctement
+- [ ] **Audit de sécurité** passé
+- [ ] **Nettoyage automatique** fonctionnel
+- [ ] **Tests** exécutés avec succès
+- [ ] **Documentation** accessible et à jour
 
-### Key Commands
+### **🚀 Prêt pour la Production !**
+Si tous les éléments de la checklist sont validés, vous êtes prêt à utiliser Athalia pour vos projets IA !
+
+---
+
+## ❓ **FAQ - QUESTIONS FRÉQUENTES**
+
+### **🔧 Problèmes d'Installation**
+<details>
+<summary><strong>Erreur "Module not found" lors de l'import ?</strong></summary>
+
+**Solution :** Vérifiez que l'environnement virtuel est activé et que les dépendances sont installées.
+
 ```bash
-# Generate project
-python -c "from athalia_core.generation import generate_blueprint_mock; print(generate_blueprint_mock('My API'))"
+# Réactiver l'environnement virtuel
+source .venv/bin/activate
 
-# Check security
-python -c "from athalia_core.security_validator import SecurityValidator; print(f'Commands: {len(SecurityValidator().allowed_commands)}')"
-
-# Run tests
-python -m pytest tests/ --collect-only | grep collected
-
-# Clean up
-python -c "from athalia_core.auto_cleaner import AutoCleaner; print(AutoCleaner('.').perform_full_cleanup())"
+# Réinstaller les dépendances
+pip install -r requirements.txt --force-reinstall
 ```
+</details>
 
-### Common File Locations
-| Component | Location | Purpose |
-|-----------|----------|---------|
-| Core Modules | `athalia_core/` | Main functionality |
-| Test Suite | `tests/` | Automated testing |
-| Documentation | `docs/` | User and developer guides |
-| Dashboards | `dashboard/` | HTML monitoring interfaces |
-| Scripts | `bin/` | Command-line utilities |
+<details>
+<summary><strong>Problème de permissions sur Linux/Mac ?</strong></summary>
 
----
+**Solution :** Utilisez `sudo` pour l'installation globale ou créez un environnement virtuel utilisateur.
 
-## ✅ Verification Checklist
+```bash
+# Option 1 : Environnement virtuel utilisateur
+python3 -m venv ~/.athalia_env
+source ~/.athalia_env/bin/activate
 
-After completing this guide, verify your setup:
+# Option 2 : Installation globale (avec sudo)
+sudo pip install -r requirements.txt
+```
+</details>
 
-- [ ] Python environment activated
-- [ ] All imports work without errors
-- [ ] Project generation creates blueprints
-- [ ] Security validator blocks unsafe commands
-- [ ] Cleanup removes test files
-- [ ] Test collection shows 1,372 tests
-- [ ] Dashboards open in browser
+### **🚀 Problèmes d'Utilisation**
+<details>
+<summary><strong>Comment personnaliser les templates de projets ?</strong></summary>
 
----
-
-## 🔄 Next Steps
-
-### For Users
-1. **[Complete User Guide](USAGE.md)** - Explore all features
-2. **[Configuration Guide](INSTALLATION.md#configuration)** - Customize settings
-3. **[Troubleshooting](TROUBLESHOOTING.md)** - Common issues
-
-### For Developers
-1. **[Architecture Overview](../ARCHITECTURE/INDEX.md)** - System design
-2. **[API Reference](../API/INDEX.md)** - Module documentation
-3. **[Contributing Guide](../DEVELOPER/INDEX.md)** - Development workflow
-
-### For Advanced Usage
-1. **[Security Guide](../SPECIALIZED/SECURITY/)** - Security features
-2. **[Testing Guide](../DEVELOPER/GUIDES/TESTING.md)** - Test framework
-3. **[Dashboard Guide](../SPECIALIZED/DASHBOARD/)** - Monitoring tools
+1. **Localiser** le dossier des templates : `athalia_core/templates/`
+2. **Modifier** ou **créer** de nouveaux templates
+3. **Redémarrer** Athalia pour appliquer les changements
+4. **Tester** avec `--action generate --template [nom-template]`
+</details>
 
 ---
 
-## ❓ Need Help?
+## 🎯 **BONNES PRATIQUES**
 
-### Common Issues
-| Problem | Solution |
-|---------|----------|
-| Import errors | Check virtual environment is activated |
-| Permission denied | Verify file permissions and security settings |
-| Tests failing | Ensure all dependencies installed correctly |
-| Slow performance | Use `--collect-only` for test verification |
+### **✅ À Faire**
+- **Toujours utiliser** l'environnement virtuel
+- **Vérifier** les prérequis avant installation
+- **Tester** après chaque modification
+- **Documenter** vos personnalisations
+- **Sauvegarder** vos projets générés
 
-### Getting Support
-- **Documentation:** Check relevant guide sections
-- **Issues:** Report bugs via GitHub issues
-- **Questions:** Review FAQ section first
+### **❌ À Éviter**
+- **Installer** Athalia globalement sans environnement virtuel
+- **Modifier** les fichiers système sans sauvegarde
+- **Ignorer** les messages d'erreur ou d'avertissement
+- **Exécuter** des commandes sans comprendre leur impact
 
 ---
 
-**🎉 Congratulations! You've successfully completed the Athalia Quick Start.**
+## 📚 **RESSOURCES ET RÉFÉRENCES**
 
-*Ready to build secure, automated development workflows.*
+### **🔗 Documentation Connexe**
+- **Guide d'installation complet :** [INSTALLATION.md](INSTALLATION.md)
+- **Guide d'utilisation détaillé :** [USAGE.md](USAGE.md)
+- **Guide de dépannage :** [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
+- **Documentation principale :** [INDEX_FINAL_DOCUMENTATION_ATHALIA.md](../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md)
+
+### **🛠️ Outils Utiles**
+- **Script principal :** `bin/athalia_unified.py`
+- **Tests automatisés :** `python -m pytest`
+- **Analyse de qualité :** `scripts/analyze_documentation_quality.py`
+
+---
+
+## 📝 **INFORMATIONS TECHNIQUES**
+
+**Dernière mise à jour :** 11 Août 2025  
+**Version actuelle :** 2.0  
+**Statut :** ✅ **ACTIF ET MAINTENU**  
+**Mainteneur :** Équipe Athalia/Arkalia  
+**Documentation :** [Guide complet d'utilisation](USAGE.md)
+
+**🎯 Démarrez rapidement avec Athalia et créez vos premiers projets IA en quelques minutes ! 🚀**
