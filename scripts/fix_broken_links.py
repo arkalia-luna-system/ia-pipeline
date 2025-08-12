@@ -123,18 +123,28 @@ class BrokenLinksFixer:
         if not results:
             return {}
 
-        # Extraire les liens critiques cassés
-        critical_broken = results.get("broken_links", [])
+        # Extraire les liens cassés (filtrage des liens externes)
+        all_broken = results.get("broken_links", [])
+        
+        # Filtrer uniquement les liens internes cassés (fichiers .md)
+        internal_broken = []
+        for broken_link in all_broken:
+            link_url = broken_link.get("link", {}).get("url", "")
+            # Ignorer les liens externes (http, https, badges, etc.)
+            if (link_url.endswith(".md") or 
+                (not link_url.startswith(("http", "https", "mailto", "ftp")) and 
+                 not "img.shields.io" in link_url)):
+                internal_broken.append(broken_link)
 
-        if not critical_broken:
-            print("✅ Aucun lien critique cassé à corriger")
+        if not internal_broken:
+            print("✅ Aucun lien interne cassé à corriger")
             return results
 
-        print(f"📊 {len(critical_broken)} liens critiques cassés identifiés")
+        print(f"📊 {len(internal_broken)} liens internes cassés identifiés (sur {len(all_broken)} total)")
 
         # Grouper les liens cassés par fichier
         broken_by_file = {}
-        for broken_link in critical_broken:
+        for broken_link in internal_broken:
             source_file = broken_link["source_file"]
             if source_file.startswith("docs/"):
                 relative_path = source_file[5:]  # Enlever 'docs/'
