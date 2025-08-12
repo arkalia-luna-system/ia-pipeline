@@ -1,6 +1,6 @@
 {
-  "analysis_date": "2025-08-12T15:44:44.080225",
-  "total_files": 117,
+  "analysis_date": "2025-08-12T16:01:59.415111",
+  "total_files": 118,
   "analysis_results": {
     "._INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
       "file_path": "docs/._INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
@@ -9,8 +9,8 @@
     },
     "INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
       "file_path": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "total_lines": 215,
-      "non_empty_lines": 176,
+      "total_lines": 227,
+      "non_empty_lines": 183,
       "has_title": true,
       "has_toc": true,
       "has_code_blocks": false,
@@ -913,10 +913,22 @@
       "has_obsolete_refs": false,
       "has_broken_links": false
     },
-    "REPORTS/RELEASES_AND_BILANS/._RAPPORT_OPTIMISATION_NAVIGATION_20250812.md": {
-      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/._RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
-      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
-      "quality_score": 0
+    "REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md": {
+      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+      "total_lines": 267,
+      "non_empty_lines": 202,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": true,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": true
     },
     "REPORTS/RELEASES_AND_BILANS/BILAN_COMPLET_DEFINITIF_ATHALIA_2025.md": {
       "file_path": "docs/REPORTS/RELEASES_AND_BILANS/BILAN_COMPLET_DEFINITIF_ATHALIA_2025.md",
@@ -933,8 +945,8 @@
       "has_obsolete_refs": false,
       "has_broken_links": false
     },
-    "REPORTS/RELEASES_AND_BILANS/._README.md": {
-      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/._README.md",
+    "REPORTS/RELEASES_AND_BILANS/._RAPPORT_OPTIMISATION_FINALE_20250812.md": {
+      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/._RAPPORT_OPTIMISATION_FINALE_20250812.md",
       "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
       "quality_score": 0
     },
@@ -984,6 +996,11 @@
       "has_old_dates": false,
       "has_obsolete_refs": false,
       "has_broken_links": false
+    },
+    "REPORTS/RELEASES_AND_BILANS/._README.md": {
+      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/._README.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
     },
     "REPORTS/RELEASES_AND_BILANS/RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md": {
       "file_path": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md",
@@ -1036,8 +1053,8 @@
     },
     "REPORTS/RELEASES_AND_BILANS/README.md": {
       "file_path": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
-      "total_lines": 110,
-      "non_empty_lines": 83,
+      "total_lines": 111,
+      "non_empty_lines": 84,
       "has_title": true,
       "has_toc": true,
       "has_code_blocks": false,
@@ -2141,6 +2158,13 @@
         "issues": []
       },
       {
+        "file": "REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": [
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
         "file": "REPORTS/RELEASES_AND_BILANS/BILAN_COMPLET_DEFINITIF_ATHALIA_2025.md",
         "reason": "Qualité correcte mais améliorable (score: 75)",
         "issues": []
@@ -2474,7 +2498,7 @@
         "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
       },
       {
-        "file": "REPORTS/RELEASES_AND_BILANS/._RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+        "file": "REPORTS/RELEASES_AND_BILANS/._RAPPORT_OPTIMISATION_FINALE_20250812.md",
         "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
       },
       {
