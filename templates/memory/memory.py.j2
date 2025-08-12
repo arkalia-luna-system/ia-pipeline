@@ -1,1 +1,284 @@
-{{project_name}} Memory starter
+"""
+Template pour le module de gestion mémoire - {{ project_name }}
+
+Ce fichier est généré automatiquement par Athalia.
+Modifiez-le selon vos besoins spécifiques.
+"""
+
+import json
+import os
+import time
+from typing import Dict, Any, Optional, List
+from datetime import datetime, timedelta
+from pathlib import Path
+import logging
+
+# Configuration du logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+class MemoryManager:
+    """
+    Gestionnaire de mémoire intelligent pour {{ project_name }}.
+    
+    Gère le stockage, la récupération et l'optimisation des données en mémoire.
+    """
+    
+    def __init__(self, storage_path: str = "memory", max_size: int = 1000):
+        """
+        Initialise le gestionnaire de mémoire.
+        
+        Args:
+            storage_path: Chemin de stockage des données
+            max_size: Taille maximale du cache en mémoire
+        """
+        self.storage_path = Path(storage_path)
+        self.max_size = max_size
+        self.memory_cache: Dict[str, Any] = {}
+        self.access_times: Dict[str, float] = {}
+        self.storage_file = self.storage_path / "memory_data.json"
+        
+        # Création du dossier de stockage
+        self.storage_path.mkdir(exist_ok=True)
+        
+        # Chargement des données existantes
+        self._load_from_storage()
+        
+        logger.info(f"MemoryManager initialisé pour {storage_path}")
+    
+    def store(self, key: str, value: Any, ttl: Optional[int] = None) -> bool:
+        """
+        Stocke une valeur en mémoire.
+        
+        Args:
+            key: Clé d'identification
+            value: Valeur à stocker
+            ttl: Time-to-live en secondes (None = pas d'expiration)
+            
+        Returns:
+            True si stockage réussi, False sinon
+        """
+        try:
+            # Vérification de la taille du cache
+            if len(self.memory_cache) >= self.max_size:
+                self._cleanup_oldest()
+            
+            # Stockage avec métadonnées
+            self.memory_cache[key] = {
+                "value": value,
+                "timestamp": time.time(),
+                "ttl": ttl,
+                "access_count": 0
+            }
+            
+            self.access_times[key] = time.time()
+            
+            # Sauvegarde automatique
+            self._save_to_storage()
+            
+            logger.debug(f"Valeur stockée: {key}")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Erreur lors du stockage de {key}: {e}")
+            return False
+    
+    def retrieve(self, key: str) -> Optional[Any]:
+        """
+        Récupère une valeur depuis la mémoire.
+        
+        Args:
+            key: Clé d'identification
+            
+        Returns:
+            Valeur stockée ou None si non trouvée/expirée
+        """
+        try:
+            if key not in self.memory_cache:
+                return None
+            
+            memory_item = self.memory_cache[key]
+            
+            # Vérification de l'expiration
+            if memory_item["ttl"] is not None:
+                if time.time() - memory_item["timestamp"] > memory_item["ttl"]:
+                    self.delete(key)
+                    return None
+            
+            # Mise à jour des statistiques
+            memory_item["access_count"] += 1
+            self.access_times[key] = time.time()
+            
+            return memory_item["value"]
+            
+        except Exception as e:
+            logger.error(f"Erreur lors de la récupération de {key}: {e}")
+            return None
+    
+    def delete(self, key: str) -> bool:
+        """
+        Supprime une valeur de la mémoire.
+        
+        Args:
+            key: Clé d'identification
+            
+        Returns:
+            True si suppression réussie, False sinon
+        """
+        try:
+            if key in self.memory_cache:
+                del self.memory_cache[key]
+                del self.access_times[key]
+                self._save_to_storage()
+                logger.debug(f"Valeur supprimée: {key}")
+                return True
+            return False
+            
+        except Exception as e:
+            logger.error(f"Erreur lors de la suppression de {key}: {e}")
+            return False
+    
+    def exists(self, key: str) -> bool:
+        """
+        Vérifie si une clé existe et n'est pas expirée.
+        
+        Args:
+            key: Clé d'identification
+            
+        Returns:
+            True si la clé existe et est valide
+        """
+        if key not in self.memory_cache:
+            return False
+        
+        memory_item = self.memory_cache[key]
+        if memory_item["ttl"] is not None:
+            if time.time() - memory_item["timestamp"] > memory_item["ttl"]:
+                self.delete(key)
+                return False
+        
+        return True
+    
+    def get_stats(self) -> Dict[str, Any]:
+        """
+        Retourne les statistiques de la mémoire.
+        
+        Returns:
+            Dictionnaire des statistiques
+        """
+        current_time = time.time()
+        expired_keys = []
+        
+        # Vérification des clés expirées
+        for key, memory_item in self.memory_cache.items():
+            if memory_item["ttl"] is not None:
+                if current_time - memory_item["timestamp"] > memory_item["ttl"]:
+                    expired_keys.append(key)
+        
+        # Suppression des clés expirées
+        for key in expired_keys:
+            self.delete(key)
+        
+        return {
+            "total_items": len(self.memory_cache),
+            "max_size": self.max_size,
+            "usage_percent": (len(self.memory_cache) / self.max_size) * 100,
+            "storage_path": str(self.storage_path),
+            "last_cleanup": getattr(self, '_last_cleanup', 'Jamais')
+        }
+    
+    def clear(self) -> bool:
+        """
+        Vide complètement la mémoire.
+        
+        Returns:
+            True si nettoyage réussi, False sinon
+        """
+        try:
+            self.memory_cache.clear()
+            self.access_times.clear()
+            self._save_to_storage()
+            logger.info("Mémoire vidée avec succès")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Erreur lors du nettoyage: {e}")
+            return False
+    
+    def _cleanup_oldest(self) -> None:
+        """Nettoie les éléments les plus anciens du cache."""
+        if not self.memory_cache:
+            return
+        
+        # Tri par temps d'accès
+        sorted_keys = sorted(
+            self.access_times.keys(),
+            key=lambda k: self.access_times[k]
+        )
+        
+        # Suppression des 10% les plus anciens
+        to_remove = max(1, len(sorted_keys) // 10)
+        for key in sorted_keys[:to_remove]:
+            self.delete(key)
+        
+        self._last_cleanup = datetime.now().isoformat()
+        logger.info(f"Nettoyage automatique: {to_remove} éléments supprimés")
+    
+    def _save_to_storage(self) -> None:
+        """Sauvegarde les données sur disque."""
+        try:
+            data = {
+                "memory_cache": self.memory_cache,
+                "access_times": self.access_times,
+                "metadata": {
+                    "last_save": datetime.now().isoformat(),
+                    "version": "1.0.0"
+                }
+            }
+            
+            with open(self.storage_file, 'w', encoding='utf-8') as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+                
+        except Exception as e:
+            logger.error(f"Erreur lors de la sauvegarde: {e}")
+    
+    def _load_from_storage(self) -> None:
+        """Charge les données depuis le disque."""
+        try:
+            if self.storage_file.exists():
+                with open(self.storage_file, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                
+                self.memory_cache = data.get("memory_cache", {})
+                self.access_times = data.get("access_times", {})
+                
+                logger.info(f"Données chargées: {len(self.memory_cache)} éléments")
+                
+        except Exception as e:
+            logger.warning(f"Impossible de charger les données: {e}")
+
+# Instance globale pour utilisation simple
+memory = MemoryManager()
+
+# Fonctions utilitaires
+def quick_store(key: str, value: Any, ttl: Optional[int] = None) -> bool:
+    """Stockage rapide d'une valeur."""
+    return memory.store(key, value, ttl)
+
+def quick_retrieve(key: str) -> Optional[Any]:
+    """Récupération rapide d'une valeur."""
+    return memory.retrieve(key)
+
+def quick_delete(key: str) -> bool:
+    """Suppression rapide d'une valeur."""
+    return memory.delete(key)
+
+if __name__ == "__main__":
+    # Exemple d'utilisation
+    print("🧠 MemoryManager - Template Athalia")
+    print("=" * 40)
+    
+    # Test des fonctionnalités
+    memory.store("test_key", "test_value", ttl=60)
+    print(f"Valeur stockée: {memory.retrieve('test_key')}")
+    print(f"Statistiques: {memory.get_stats()}")
