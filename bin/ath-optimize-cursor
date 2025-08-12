@@ -49,14 +49,32 @@ optimize_extensions() {
         "eamodio.gitlens"
     )
     
+    local auto_mode=false
+    if [ "${1:-}" = "--auto" ]; then
+        auto_mode=true
+    fi
+    
     for ext in "${heavy_extensions[@]}"; do
         if [ -d "$extensions_dir/$ext"* ]; then
             echo -e "${YELLOW}⚠️  Extension gourmande détectée: $ext${NC}"
-            read -p "Désactiver cette extension ? (y/N): " -n 1 -r
-            echo
-            if [[ $REPLY =~ ^[Yy]$ ]]; then
-                disabled_extensions+=("$ext")
-                echo -e "${GREEN}✅ $ext sera désactivée${NC}"
+            
+            if [ "$auto_mode" = true ]; then
+                # Mode automatique : désactiver automatiquement les extensions très gourmandes
+                if [ "$ext" = "continue.continue" ] || [ "$ext" = "github.vscode-github-actions" ]; then
+                    echo -e "${CYAN}🤖 Désactivation automatique de $ext (très gourmande)${NC}"
+                    disabled_extensions+=("$ext")
+                    echo -e "${GREEN}✅ $ext sera désactivée automatiquement${NC}"
+                else
+                    echo -e "${CYAN}🤖 Maintien de $ext (modérément gourmande)${NC}"
+                fi
+            else
+                # Mode interactif
+                read -p "Désactiver cette extension ? (y/N): " -n 1 -r
+                echo
+                if [[ $REPLY =~ ^[Yy]$ ]]; then
+                    disabled_extensions+=("$ext")
+                    echo -e "${GREEN}✅ $ext sera désactivée${NC}"
+                fi
             fi
         fi
     done
@@ -176,6 +194,121 @@ clean_cache() {
     done
 }
 
+# Fonction de nettoyage des processus Python gourmands
+clean_python_processes() {
+    echo ""
+    echo "🐍 Nettoyage des processus Python gourmands..."
+    
+    # Vérifier d'abord si Cursor est en cours d'exécution
+    if ! pgrep -f "Cursor" > /dev/null; then
+        echo -e "${YELLOW}⚠️  Cursor n'est pas en cours d'exécution - skip du nettoyage LSP${NC}"
+        return
+    fi
+    
+    # Arrêter UNIQUEMENT les processus Python LSP non essentiels et gourmands
+    local python_processes=(
+        "black-formatter.*lsp_server"
+        "isort.*lsp_server"
+        "ruff.*lsp_server"
+    )
+    
+    local total_memory_saved=0
+    
+    for pattern in "${python_processes[@]}"; do
+        local pids=$(pgrep -f "$pattern" 2>/dev/null || true)
+        if [ -n "$pids" ]; then
+            # Vérifier la mémoire utilisée avant d'arrêter
+            local memory_used=$(ps -o rss= -p $pids 2>/dev/null | awk '{sum+=$1} END {print sum/1024}')
+            if [ -n "$memory_used" ] && [ "$memory_used" != "0" ]; then
+                echo -e "${YELLOW}⚠️  Processus LSP gourmand: $pattern (${memory_used%.*} MB)${NC}"
+                
+                local auto_mode=false
+                if [ "${1:-}" = "--auto" ]; then
+                    auto_mode=true
+                fi
+                
+                if [ "$auto_mode" = true ]; then
+                    # Mode automatique : arrêter automatiquement les processus LSP gourmands
+                    if (( $(echo "$memory_used > 50" | bc -l) )); then
+                        echo -e "${CYAN}🤖 Arrêt automatique de $pattern (très gourmand: ${memory_used%.*} MB)${NC}"
+                        echo "$pids" | xargs kill -9 2>/dev/null || true
+                        echo -e "${GREEN}✅ Processus arrêté: $pattern (économie: ${memory_used%.*} MB)${NC}"
+                        total_memory_saved=$(echo "$total_memory_saved + $memory_used" | bc -l)
+                    else
+                        echo -e "${CYAN}🤖 Maintien de $pattern (modérément gourmand: ${memory_used%.*} MB)${NC}"
+                    fi
+                else
+                    # Mode interactif
+                    read -p "Arrêter ce processus LSP ? (y/N): " -n 1 -r
+                    echo
+                    if [[ $REPLY =~ ^[Yy]$ ]]; then
+                        echo "$pids" | xargs kill -9 2>/dev/null || true
+                        echo -e "${GREEN}✅ Processus arrêté: $pattern (économie: ${memory_used%.*} MB)${NC}"
+                        total_memory_saved=$(echo "$total_memory_saved + $memory_used" | bc -l)
+                    else
+                        echo -e "${YELLOW}⏭️  Processus maintenu: $pattern${NC}"
+                    fi
+                fi
+            else
+                echo -e "${CYAN}💡 Processus LSP léger: $pattern - maintenu${NC}"
+            fi
+        fi
+    done
+    
+    if [ "$total_memory_saved" != "0" ]; then
+        echo -e "${GREEN}✅ Économie totale de RAM: ${total_memory_saved%.*} MB${NC}"
+    fi
+    
+    echo -e "${GREEN}✅ Nettoyage des processus Python terminé${NC}"
+}
+
+# Fonction d'optimisation des services système
+optimize_system_services() {
+    echo ""
+    echo "⚙️  Optimisation des services système..."
+    
+    # Vérifier et optimiser Redis
+    if brew services list | grep -q "redis.*started"; then
+        echo -e "${YELLOW}⚠️  Service Redis actif détecté${NC}"
+        read -p "Arrêter Redis pour économiser la RAM ? (y/N): " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            brew services stop redis
+            echo -e "${GREEN}✅ Redis arrêté${NC}"
+        else
+            echo -e "${YELLOW}⏭️  Redis maintenu actif${NC}"
+        fi
+    fi
+    
+    # Vérifier et optimiser Supervisor
+    if brew services list | grep -q "supervisor.*started"; then
+        echo -e "${YELLOW}⚠️  Service Supervisor actif détecté${NC}"
+        read -p "Arrêter Supervisor pour économiser la RAM ? (y/N): " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            brew services stop supervisor
+            echo -e "${GREEN}✅ Supervisor arrêté${NC}"
+        else
+            echo -e "${YELLOW}⏭️  Supervisor maintenu actif${NC}"
+        fi
+    fi
+    
+    # Vérifier et optimiser Fail2ban
+    if pgrep -f "fail2ban-server" > /dev/null; then
+        echo -e "${YELLOW}⚠️  Service Fail2ban actif détecté${NC}"
+        read -p "Arrêter Fail2ban pour économiser la RAM ? (y/N): " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            sudo pkill -f "fail2ban-server" 2>/dev/null || true
+            echo -e "${GREEN}✅ Fail2ban arrêté${NC}"
+        else
+            echo -e "${YELLOW}⏭️  Fail2ban maintenu actif${NC}"
+        fi
+    fi
+    
+    echo -e "${GREEN}✅ Optimisation des services système terminée${NC}"
+}
+
 # Fonction de création des alias
 create_aliases() {
     echo ""
@@ -251,7 +384,15 @@ Date: $(date)
 - Cache Application Support: ~/Library/Application Support/Cursor/Cache
 - Cache Code: ~/Library/Application Support/Cursor/CachedData
 
-### 4. Alias créés
+### 4. Processus Python optimisés
+- Processus LSP non essentiels arrêtés (black, isort, ruff)
+- Économie de RAM estimée: 100-200 MB
+
+### 5. Services système optimisés
+- Services Redis, Supervisor, Fail2ban analysés et optimisés
+- Économie de RAM estimée: 200-500 MB
+
+### 6. Alias créés
 - cursor-clean: Nettoyage mémoire
 - cursor-monitor: Monitoring mémoire
 - cursor-optimize: Optimisation complète
@@ -303,12 +444,17 @@ main() {
         --quick)
             echo "⚡ Mode optimisation rapide"
             ;;
+        --auto)
+            echo "🤖 Mode optimisation automatique intelligente"
+            ;;
     esac
     
     check_prerequisites
-    optimize_extensions
+    optimize_extensions "$1"
     optimize_configuration
     clean_cache
+    clean_python_processes "$1"
+    optimize_system_services
     create_aliases
     test_performance
     generate_report

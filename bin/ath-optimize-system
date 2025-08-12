@@ -93,6 +93,133 @@ EOF
     echo -e "${GREEN}✅ Configuration Spotlight optimisée${NC}"
 }
 
+# Fonction d'optimisation des services système
+optimize_system_services() {
+    echo ""
+    echo -e "${CYAN}⚙️  Optimisation des Services Système${NC}"
+    echo "----------------------------------------"
+    
+    echo "🔍 Analyse des services actifs..."
+    
+    # Vérifier les services Homebrew
+    local brew_services=$(brew services list | grep "started" || true)
+    if [ -n "$brew_services" ]; then
+        echo -e "${YELLOW}⚠️  Services Homebrew actifs détectés:${NC}"
+        echo "$brew_services"
+        
+        # Services à optimiser
+        local services_to_optimize=("redis" "supervisor" "postgresql" "mysql" "nginx")
+        
+        for service in "${services_to_optimize[@]}"; do
+            if echo "$brew_services" | grep -q "$service.*started"; then
+                echo ""
+                echo -e "${YELLOW}Service $service détecté${NC}"
+                            local auto_mode=false
+            if [ "${1:-}" = "--auto" ]; then
+                auto_mode=true
+            fi
+            
+            if [ "$auto_mode" = true ]; then
+                # Mode automatique : arrêter automatiquement les services non critiques
+                if [ "$service" = "redis" ] || [ "$service" = "supervisor" ]; then
+                    echo -e "${CYAN}🤖 Arrêt automatique de $service (non critique)${NC}"
+                    brew services stop "$service"
+                    echo -e "${GREEN}✅ $service arrêté${NC}"
+                else
+                    echo -e "${CYAN}🤖 Maintien de $service (potentiellement critique)${NC}"
+                fi
+            else
+                # Mode interactif
+                read -p "Arrêter $service pour économiser la RAM ? (y/N): " -n 1 -r
+                echo
+                if [[ $REPLY =~ ^[Yy]$ ]]; then
+                    brew services stop "$service"
+                    echo -e "${GREEN}✅ $service arrêté${NC}"
+                else
+                    echo -e "${YELLOW}⏭️  $service maintenu actif${NC}"
+                fi
+            fi
+            fi
+        done
+    else
+        echo -e "${GREEN}✅ Aucun service Homebrew actif${NC}"
+    fi
+    
+    # Vérifier les processus système gourmands
+    echo ""
+    echo "🔍 Analyse des processus système..."
+    
+    local system_processes=(
+        "fail2ban-server"
+        "docker"
+        "postgres"
+        "mysql"
+        "nginx"
+        "apache"
+    )
+    
+    for process in "${system_processes[@]}"; do
+        if pgrep -f "$process" > /dev/null; then
+            echo -e "${YELLOW}⚠️  Processus $process actif détecté${NC}"
+            
+            # Logique spéciale pour Docker
+            if [ "$process" = "docker" ]; then
+                # Vérifier s'il y a des conteneurs en cours d'exécution
+                local running_containers=$(docker ps --format "table {{.Names}}" 2>/dev/null | grep -v "NAMES" | wc -l)
+                
+                if [ "$running_containers" -gt 0 ]; then
+                    echo -e "${YELLOW}⚠️  $running_containers conteneur(s) actif(s) - Docker maintenu${NC}"
+                    continue
+                else
+                    echo -e "${CYAN}💡 Aucun conteneur actif - Docker peut être arrêté en toute sécurité${NC}"
+                fi
+            fi
+            
+            local auto_mode=false
+            if [ "${1:-}" = "--auto" ]; then
+                auto_mode=true
+            fi
+            
+            if [ "$auto_mode" = true ]; then
+                # Mode automatique : arrêter automatiquement les processus non critiques
+                if [ "$process" = "fail2ban-server" ]; then
+                    echo -e "${CYAN}🤖 Arrêt automatique de $process (non critique)${NC}"
+                    sudo pkill -f "$process" 2>/dev/null || true
+                    echo -e "${GREEN}✅ $process arrêté${NC}"
+                elif [ "$process" = "docker" ]; then
+                    # Docker : vérifier s'il y a des conteneurs actifs
+                    local running_containers=$(docker ps --format "table {{.Names}}" 2>/dev/null | grep -v "NAMES" | wc -l)
+                    if [ "$running_containers" -eq 0 ]; then
+                        echo -e "${CYAN}🤖 Arrêt automatique de $process (aucun conteneur actif)${NC}"
+                        pkill -f "$process" 2>/dev/null || true
+                        echo -e "${GREEN}✅ $process arrêté${NC}"
+                    else
+                        echo -e "${CYAN}🤖 Maintien de $process ($running_containers conteneur(s) actif(s))${NC}"
+                    fi
+                else
+                    echo -e "${CYAN}🤖 Maintien de $process (potentiellement critique)${NC}"
+                fi
+            else
+                # Mode interactif
+                read -p "Arrêter $process pour économiser la RAM ? (y/N): " -n 1 -r
+                echo
+                if [[ $REPLY =~ ^[Yy]$ ]]; then
+                    if [ "$process" = "fail2ban-server" ]; then
+                        sudo pkill -f "$process" 2>/dev/null || true
+                    else
+                        pkill -f "$process" 2>/dev/null || true
+                    fi
+                    echo -e "${GREEN}✅ $process arrêté${NC}"
+                else
+                    echo -e "${YELLOW}⏭️  $process maintenu actif${NC}"
+                fi
+            fi
+        fi
+    done
+    
+    echo -e "${GREEN}✅ Optimisation des services système terminée${NC}"
+}
+
 # Fonction d'optimisation Cursor avancée
 optimize_cursor_advanced() {
     echo ""
@@ -471,15 +598,20 @@ main() {
             echo ""
             echo "Options:"
             echo "  --help, -h     Afficher cette aide"
+            echo "  --auto         Mode automatique intelligent"
             echo ""
             echo "Description:"
             echo "  Optimise intelligemment le système sans désactiver les services essentiels"
             exit 0
             ;;
+        --auto)
+            echo "🤖 Mode automatique intelligent"
+            ;;
     esac
     
     optimize_spotlight
     optimize_cursor_advanced
+    optimize_system_services "$1"
     optimize_system
     optimize_processes
     create_optimized_aliases
