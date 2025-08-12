@@ -235,8 +235,8 @@ Ce rapport détaille la quatrième phase de correction des liens cassés dans la
 ## 📝 **DOCUMENTATION DES CHANGEMENTS**
 
 ### **Fichiers Modifiés**
-- **[DOCUMENTATION_MAINTENANCE.md](../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md)** : 2 liens corrigés
-- **[TEMPLATE_STANDARD_MARKDOWN.md](../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md)** : 4 liens corrigés
+- **[DOCUMENTATION_MAINTENANCE.md](../../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md)** : 2 liens corrigés
+- **[TEMPLATE_STANDARD_MARKDOWN.md](../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md)** : 4 liens corrigés
 - **Guide CI/CD professionnel** : 1 lien corrigé
 - **Plan de réorganisation des tests** : 3 liens corrigés
 - **Résumé des améliorations de sécurité** : 4 liens corrigés
