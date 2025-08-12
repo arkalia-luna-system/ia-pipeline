@@ -107,7 +107,7 @@ find . -name "*.log" -not -path "./logs/*" -delete
 
 ### 7. **Vérifications de Qualité**
 - Présence de `README.md`
-- Présence de `docs/DEVELOPER/INDEX.md`
+- Présence de `../INDEX.md`
 - Présence de fichiers de test
 - Structure du projet correcte
 

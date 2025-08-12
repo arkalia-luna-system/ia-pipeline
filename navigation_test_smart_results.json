@@ -1,12 +1,12 @@
 {
-  "test_date": "2025-08-12T16:32:14.720851",
+  "test_date": "2025-08-12T16:35:26.761126",
   "global_stats": {
-    "total_files": 130,
+    "total_files": 132,
     "total_links": 842,
-    "broken_links": 467,
-    "critical_broken_links": 213,
-    "average_navigation_score": 68.10053019444325,
-    "link_success_rate": 44.53681710213777
+    "broken_links": 465,
+    "critical_broken_links": 211,
+    "average_navigation_score": 69.26567367634563,
+    "link_success_rate": 44.77434679334917
   },
   "file_results": {
     "._INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
@@ -2563,14 +2563,14 @@
         {
           "link": {
             "type": "markdown",
-            "text": "docs/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-            "url": "../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+            "text": "RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+            "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
             "line": 207
           },
           "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+          "suggested_fix": "Vérifier le chemin: ../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
           "is_critical": true
         },
         {
@@ -2615,14 +2615,14 @@
         {
           "link": {
             "type": "local_file",
-            "text": "docs/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-            "url": "../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+            "text": "RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+            "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
             "line": 207
           },
           "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+          "suggested_fix": "Vérifier le chemin: ../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
           "is_critical": true
         },
         {
@@ -2781,23 +2781,23 @@
     "DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md": {
       "file_path": "DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md",
       "total_links": 1,
-      "valid_links": 0,
-      "broken_links": 1,
+      "valid_links": 1,
+      "broken_links": 0,
       "critical_links": 1,
-      "critical_broken_links": 1,
-      "navigation_score": 0.0,
+      "critical_broken_links": 0,
+      "navigation_score": 60.0,
       "links": [
         {
           "link": {
             "type": "file_reference",
-            "text": "docs/DEVELOPER/WORKFLOW_AMELIORATIONS.md",
-            "url": "docs/DEVELOPER/WORKFLOW_AMELIORATIONS.md",
+            "text": "../REPORTS/WORKFLOW_AMELIORATIONS.md",
+            "url": "../REPORTS/WORKFLOW_AMELIORATIONS.md",
             "line": 217
           },
           "source_file": "docs/DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/WORKFLOW_AMELIORATIONS.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         }
       ]
@@ -2862,6 +2862,16 @@
         }
       ]
     },
+    "DEVELOPER/GUIDES/._ALIAS_WORKFLOW_QUICK_GUIDE.md": {
+      "file_path": "DEVELOPER/GUIDES/._ALIAS_WORKFLOW_QUICK_GUIDE.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "DEVELOPER/GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md": {
       "file_path": "DEVELOPER/GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md",
       "total_links": 0,
@@ -2905,11 +2915,11 @@
     "DEVELOPER/GUIDES/CLEAN_SHUTDOWN_GUIDE.md": {
       "file_path": "DEVELOPER/GUIDES/CLEAN_SHUTDOWN_GUIDE.md",
       "total_links": 2,
-      "valid_links": 1,
-      "broken_links": 1,
+      "valid_links": 2,
+      "broken_links": 0,
       "critical_links": 2,
-      "critical_broken_links": 1,
-      "navigation_score": 30.0,
+      "critical_broken_links": 0,
+      "navigation_score": 60.0,
       "links": [
         {
           "link": {
@@ -2927,20 +2937,30 @@
         {
           "link": {
             "type": "file_reference",
-            "text": "docs/DEVELOPER/INDEX.md",
-            "url": "docs/DEVELOPER/INDEX.md",
+            "text": "../INDEX.md",
+            "url": "../INDEX.md",
             "line": 110
           },
           "source_file": "docs/DEVELOPER/GUIDES/CLEAN_SHUTDOWN_GUIDE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/INDEX.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         }
       ]
     },
     "DEVELOPER/GUIDES/PLUGINS_GUIDE.md": {
       "file_path": "DEVELOPER/GUIDES/PLUGINS_GUIDE.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "DEVELOPER/GUIDES/._CLEAN_SHUTDOWN_GUIDE.md": {
+      "file_path": "DEVELOPER/GUIDES/._CLEAN_SHUTDOWN_GUIDE.md",
       "total_links": 0,
       "valid_links": 0,
       "broken_links": 0,
@@ -12513,14 +12533,14 @@
     {
       "link": {
         "type": "markdown",
-        "text": "docs/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "url": "../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "text": "RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "line": 207
       },
       "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+      "suggested_fix": "Vérifier le chemin: ../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
       "is_critical": true
     },
     {
@@ -12539,14 +12559,14 @@
     {
       "link": {
         "type": "local_file",
-        "text": "docs/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "url": "../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "text": "RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "line": 207
       },
       "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+      "suggested_fix": "Vérifier le chemin: ../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
       "is_critical": true
     },
     {
@@ -12638,19 +12658,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/DEVELOPER/WORKFLOW_AMELIORATIONS.md",
-        "url": "docs/DEVELOPER/WORKFLOW_AMELIORATIONS.md",
-        "line": 217
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/WORKFLOW_AMELIORATIONS.md",
       "is_critical": true
     },
     {
@@ -12690,19 +12697,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/DEVELOPER/INDEX.md",
-        "url": "docs/DEVELOPER/INDEX.md",
-        "line": 110
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/CLEAN_SHUTDOWN_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/INDEX.md",
       "is_critical": true
     },
     {
@@ -18584,14 +18578,14 @@
     {
       "link": {
         "type": "markdown",
-        "text": "docs/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "url": "../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "text": "RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "line": 207
       },
       "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+      "suggested_fix": "Vérifier le chemin: ../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
       "is_critical": true
     },
     {
@@ -18610,14 +18604,14 @@
     {
       "link": {
         "type": "local_file",
-        "text": "docs/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "url": "../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "text": "RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "line": 207
       },
       "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+      "suggested_fix": "Vérifier le chemin: ../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
       "is_critical": true
     },
     {
@@ -18709,19 +18703,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/DEVELOPER/WORKFLOW_AMELIORATIONS.md",
-        "url": "docs/DEVELOPER/WORKFLOW_AMELIORATIONS.md",
-        "line": 217
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/WORKFLOW_AMELIORATIONS.md",
       "is_critical": true
     },
     {
@@ -18761,19 +18742,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/DEVELOPER/INDEX.md",
-        "url": "docs/DEVELOPER/INDEX.md",
-        "line": 110
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/CLEAN_SHUTDOWN_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/INDEX.md",
       "is_critical": true
     },
     {
@@ -24475,14 +24443,14 @@
     {
       "link": {
         "type": "markdown",
-        "text": "docs/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "url": "../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "text": "RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "line": 207
       },
       "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+      "suggested_fix": "Vérifier le chemin: ../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
       "is_critical": true
     },
     {
@@ -24501,14 +24469,14 @@
     {
       "link": {
         "type": "local_file",
-        "text": "docs/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "url": "../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "text": "RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "line": 207
       },
       "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+      "suggested_fix": "Vérifier le chemin: ../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
       "is_critical": true
     },
     {
@@ -24561,19 +24529,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/DEVELOPER/WORKFLOW_AMELIORATIONS.md",
-        "url": "docs/DEVELOPER/WORKFLOW_AMELIORATIONS.md",
-        "line": 217
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/WORKFLOW_AMELIORATIONS.md",
       "is_critical": true
     },
     {
@@ -24613,19 +24568,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/DEVELOPER/INDEX.md",
-        "url": "docs/DEVELOPER/INDEX.md",
-        "line": 110
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/CLEAN_SHUTDOWN_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/INDEX.md",
       "is_critical": true
     },
     {
@@ -27244,14 +27186,14 @@
     {
       "link": {
         "type": "markdown",
-        "text": "docs/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "url": "../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "text": "RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "line": 207
       },
       "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+      "suggested_fix": "Vérifier le chemin: ../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
       "is_critical": true
     },
     {
@@ -27270,14 +27212,14 @@
     {
       "link": {
         "type": "local_file",
-        "text": "docs/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "url": "../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "text": "RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
         "line": 207
       },
       "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+      "suggested_fix": "Vérifier le chemin: ../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
       "is_critical": true
     },
     {
@@ -27330,19 +27272,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/DEVELOPER/WORKFLOW_AMELIORATIONS.md",
-        "url": "docs/DEVELOPER/WORKFLOW_AMELIORATIONS.md",
-        "line": 217
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/WORKFLOW_AMELIORATIONS.md",
       "is_critical": true
     },
     {
@@ -27382,19 +27311,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/DEVELOPER/INDEX.md",
-        "url": "docs/DEVELOPER/INDEX.md",
-        "line": 110
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/CLEAN_SHUTDOWN_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/INDEX.md",
       "is_critical": true
     },
     {

@@ -214,7 +214,7 @@ git commit --no-verify -m "message urgent"
 
 ## 🔗 Liens Utiles
 
-- **Documentation complète** : `docs/DEVELOPER/WORKFLOW_AMELIORATIONS.md`
+- **Documentation complète** : `../REPORTS/WORKFLOW_AMELIORATIONS.md`
 - **Aide en ligne** : `ath-workflow-help`
 - **Configuration** : `setup/athalia-workflow-aliases.sh`
 
