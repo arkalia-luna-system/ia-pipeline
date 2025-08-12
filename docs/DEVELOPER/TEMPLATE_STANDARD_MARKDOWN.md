@@ -117,13 +117,13 @@ graph TD
 ## 📚 **RESSOURCES ET RÉFÉRENCES**
 
 ### **🔗 Liens Utiles**
-- **Documentation officielle :** [Lien](URL)
-- **Guide utilisateur :** [Lien](URL)
-- **Exemples pratiques :** [Lien](URL)
+- **Documentation officielle :** [Documentation GitHub](https://docs.github.com)
+- **Guide utilisateur :** [Guide Markdown](https://www.markdownguide.org)
+- **Exemples pratiques :** [Exemples Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 ### **📖 Documentation Interne**
-- **Fichier connexe 1 :** [Documentation maintenance](../DOCUMENTATION_MAINTENANCE.md)
-- **Fichier connexe 2 :** [Guide des bonnes pratiques](../BEST_PRACTICES.md)
+- **Fichier connexe 1 :** [Documentation maintenance](DOCUMENTATION_MAINTENANCE.md)
+- **Fichier connexe 2 :** [Guide des bonnes pratiques](BEST_PRACTICES.md)
 - **Guide principal :** [docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md](../INDEX_FINAL_DOCUMENTATION_ATHALIA.md)
 
 ---

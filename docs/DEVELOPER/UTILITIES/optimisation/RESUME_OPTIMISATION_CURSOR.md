@@ -159,12 +159,12 @@ top -l 1 -o mem | grep -i cursor
 
 ## 📁 **Fichiers créés**
 
-- `docs/OPTIMISATION_CURSOR_RAM.md` - Guide complet
+- Guide complet d'optimisation Cursor - Guide complet
 - `bin/ath-clean-cursor-memory` - Script de nettoyage
 - `bin/ath-monitor-cursor-memory` - Script de monitoring
 - `bin/ath-optimize-cursor` - Script d'optimisation
 - `~/.cursor/User/settings.json` - Configuration optimisée
-- `~/cursor_optimization_report_*.md` - Rapport d'optimisation
+- Rapports d'optimisation - Rapport d'optimisation
 
 ## 🎉 **Conclusion**
 

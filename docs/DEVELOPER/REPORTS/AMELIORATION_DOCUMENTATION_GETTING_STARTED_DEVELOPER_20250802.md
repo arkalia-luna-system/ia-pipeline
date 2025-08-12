@@ -228,11 +228,11 @@ Ce rapport détaille les améliorations apportées aux dossiers `GETTING_STARTED
 ## 📝 **DOCUMENTATION DES CHANGEMENTS**
 
 ### **Fichiers Modifiés**
-- `docs/GETTING_STARTED/INSTALLATION.md` : Amélioration complète
-- `docs/GETTING_STARTED/README.md` : Nouveau fichier
-- `docs/DEVELOPER/INDEX.md` : Restructuration
-- `docs/DEVELOPER/BEST_PRACTICES.md` : Enrichissement
-- `docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md` : Amélioration
+- `../../GETTING_STARTED/INSTALLATION.md` : Amélioration complète
+- `../../GETTING_STARTED/INSTALLATION.md` : Amélioration complète
+- `../INDEX.md` : Restructuration
+- `../BEST_PRACTICES.md` : Enrichissement
+- `../DOCUMENTATION_MAINTENANCE.md` : Amélioration
 
 ### **Commits Effectués**
 - **Hash :** b8025ae5

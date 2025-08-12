@@ -143,7 +143,7 @@ Ces optimisations rendent l'environnement de développement plus efficace et plu
 4. `tests/unit/test_cache_manager_complete.py`
 5. `tests/unit/test_audit_intelligent.py`
 6. `scripts/optimization_impact_measurement.py` (nouveau)
-7. `docs/DEVELOPER/PLANS/OPTIMISATION_TESTS_RAM_2025.md` (nouveau)
+7. [Plan d'optimisation des tests RAM](../PLANS/OPTIMISATION_TESTS_RAM_2025.md) (nouveau)
 
 ## Métriques de Succès Atteintes
 

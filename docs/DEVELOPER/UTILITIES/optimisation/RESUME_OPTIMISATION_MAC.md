@@ -148,8 +148,8 @@ cursor-monitor --continuous    # Monitoring Cursor continu
 
 - `~/.cursor/User/settings.json` - Configuration Cursor optimisée
 - `~/.spotlight_exclusions.txt` - Exclusions Spotlight
-- `~/system_optimization_report_*.md` - Rapport d'optimisation
-- `~/performance_diagnostic_*.md` - Rapport de diagnostic
+- Rapports d'optimisation système - Rapport d'optimisation
+- Rapports de diagnostic de performance - Rapport de diagnostic
 
 ## 🎉 **Conclusion :**
 

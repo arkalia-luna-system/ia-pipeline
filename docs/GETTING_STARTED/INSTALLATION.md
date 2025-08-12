@@ -284,7 +284,7 @@ python athalia_core/logger_advanced.py --analyze
 
 ## 📚 **PROCHAINES ÉTAPES**
 
-1. **Consulter le [Guide d'utilisation](../../USER_GUIDES/USAGE.md)** pour apprendre à utiliser Athalia
+1. **Consulter le [Guide principal](../../docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md)** pour apprendre à utiliser Athalia
 2. **Explorer la [Documentation API](../../API/)** pour les fonctionnalités avancées
 3. **Consulter les [Guides développeur](../DEVELOPER/)** pour contribuer
 4. **Tester les fonctionnalités** avec les exemples fournis

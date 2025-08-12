@@ -172,8 +172,8 @@ pytest --cov=athalia_core --cov-fail-under=80
 ## 📚 Documentation Créée
 
 ### Guides Utilisateur
-- **Guide de Linting et Sécurité**: `docs/DEVELOPER/SECURITY_LINTING_GUIDE.md`
-- **Résumé des Améliorations**: `docs/DEVELOPER/SECURITY_IMPROVEMENTS_SUMMARY.md`
+- **Guide de Linting et Sécurité**: [Guide de Linting et Sécurité](../GUIDES/SECURITY_LINTING_GUIDE.md)
+- **Résumé des Améliorations**: Ce document
 
 ### Configurations
 - **Flake8**: `config/.flake8`
@@ -199,11 +199,11 @@ pytest --cov=athalia_core --cov-fail-under=80
 
 ## 🔗 Ressources
 
-- [Guide de Linting et Sécurité](../DEVELOPER/SECURITY_LINTING_GUIDE.md)
-- [Configuration Flake8](config/.flake8)
-- [Configuration Bandit](config/.bandit)
-- [Script de Linting](bin/ath-lint-secure)
-- [Script d'Installation](bin/install-security-tools)
+- [Guide de Linting et Sécurité](../GUIDES/SECURITY_LINTING_GUIDE.md)
+- [Configuration Flake8](../../config/.flake8)
+- [Configuration Bandit](../../config/.bandit)
+- [Script de Linting](../../bin/ath-lint-secure)
+- [Script d'Installation](../../bin/install-security-tools)
 
 ---
 
