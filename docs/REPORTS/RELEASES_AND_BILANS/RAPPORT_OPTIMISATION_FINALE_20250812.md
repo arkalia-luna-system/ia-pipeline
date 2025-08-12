@@ -160,7 +160,7 @@ La navigation de la documentation est **100% analysée, comprise et documentée*
 ### **🔧 Guides et Standards :**
 - **[DOCUMENTATION_MAINTENANCE.md](../../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md)** - Guide de maintenance complet ✅
 - **[TEMPLATE_STANDARD_MARKDOWN.md](../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md)** - Template standardisé ✅
-- **[ORGANISATION_WORKSPACE.md](../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md)** - Organisation optimisée ✅
+- **[ORGANISATION_WORKSPACE.md](../../ARCHITECTURE/ORGANISATION_WORKSPACE.md)** - Organisation optimisée ✅
 - **[QUICK_START.md](../../../../USER_GUIDES/QUICK_START.md)** - Guide restructuré en français ✅
 
 ### **📋 Index et Organisation :**

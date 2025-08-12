@@ -69,7 +69,7 @@ Le système CI/CD professionnel progressif d'Athalia a été **entièrement impl
   - Interface CLI complète
 
 ### **2. Guide Utilisateur Complet**
-- **Fichier :** `../../DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md`
+- **Fichier :** `../../../DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md`
 - **Contenu :**
   - Instructions d'utilisation
   - Workflow de développement

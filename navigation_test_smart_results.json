@@ -1,12 +1,12 @@
 {
-  "test_date": "2025-08-12T17:28:12.488951",
+  "test_date": "2025-08-12T17:29:02.998819",
   "global_stats": {
     "total_files": 158,
-    "total_links": 957,
-    "broken_links": 466,
-    "critical_broken_links": 212,
-    "average_navigation_score": 77.81259136155873,
-    "link_success_rate": 51.306165099268554
+    "total_links": 958,
+    "broken_links": 464,
+    "critical_broken_links": 210,
+    "average_navigation_score": 77.94276099206147,
+    "link_success_rate": 51.56576200417536
   },
   "file_results": {
     "._INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
@@ -4555,12 +4555,12 @@
     },
     "REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md": {
       "file_path": "REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-      "total_links": 38,
-      "valid_links": 24,
+      "total_links": 39,
+      "valid_links": 25,
       "broken_links": 14,
-      "critical_links": 38,
+      "critical_links": 39,
       "critical_broken_links": 14,
-      "navigation_score": 37.89473684210526,
+      "navigation_score": 38.46153846153847,
       "links": [
         {
           "link": {
@@ -4735,13 +4735,13 @@
           "link": {
             "type": "markdown",
             "text": "ORGANISATION_WORKSPACE.md",
-            "url": "../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+            "url": "../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
             "line": 163
           },
           "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         },
         {
@@ -4755,6 +4755,19 @@
           "is_valid": false,
           "error_type": "file_not_found",
           "suggested_fix": "Vérifier le chemin: ../../../../USER_GUIDES/QUICK_START.md",
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "url": "../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "line": 167
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": false,
+          "error_type": "file_not_found",
+          "suggested_fix": "Vérifier le chemin: ../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_critical": true
         },
         {
@@ -4788,7 +4801,7 @@
             "type": "markdown",
             "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
             "url": "../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-            "line": 248
+            "line": 167
           },
           "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
           "is_valid": false,
@@ -4969,13 +4982,13 @@
           "link": {
             "type": "local_file",
             "text": "ORGANISATION_WORKSPACE.md",
-            "url": "../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+            "url": "../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
             "line": 163
           },
           "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         },
         {
@@ -4989,6 +5002,19 @@
           "is_valid": false,
           "error_type": "file_not_found",
           "suggested_fix": "Vérifier le chemin: ../../../../USER_GUIDES/QUICK_START.md",
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "url": "../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "line": 167
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": false,
+          "error_type": "file_not_found",
+          "suggested_fix": "Vérifier le chemin: ../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
           "is_critical": true
         },
         {
@@ -5022,25 +5048,12 @@
             "type": "local_file",
             "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
             "url": "../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-            "line": 248
+            "line": 167
           },
           "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
           "is_valid": false,
           "error_type": "file_not_found",
           "suggested_fix": "Vérifier le chemin: ../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-            "url": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-            "line": 167
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
           "is_critical": true
         },
         {
@@ -5428,36 +5441,36 @@
     "REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md": {
       "file_path": "REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
       "total_links": 6,
-      "valid_links": 3,
-      "broken_links": 3,
+      "valid_links": 5,
+      "broken_links": 1,
       "critical_links": 6,
-      "critical_broken_links": 3,
-      "navigation_score": 30.0,
+      "critical_broken_links": 1,
+      "navigation_score": 50.0,
       "links": [
         {
           "link": {
             "type": "markdown",
             "text": "Index architecture",
-            "url": "../../../ARCHITECTURE/INDEX.md",
+            "url": "../../ARCHITECTURE/INDEX.md",
             "line": 34
           },
           "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../../ARCHITECTURE/INDEX.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         },
         {
           "link": {
             "type": "local_file",
             "text": "Index architecture",
-            "url": "../../../ARCHITECTURE/INDEX.md",
+            "url": "../../ARCHITECTURE/INDEX.md",
             "line": 34
           },
           "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../../ARCHITECTURE/INDEX.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         },
         {
@@ -6484,26 +6497,26 @@
           "link": {
             "type": "markdown",
             "text": "DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-            "url": "../../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+            "url": "../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
             "line": 84
           },
           "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+          "suggested_fix": "Vérifier le chemin: ../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "markdown",
             "text": "ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-            "url": "../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+            "url": "../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
             "line": 91
           },
           "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+          "suggested_fix": "Vérifier le chemin: ../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
           "is_critical": true
         },
         {
@@ -6562,26 +6575,26 @@
           "link": {
             "type": "local_file",
             "text": "DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-            "url": "../../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+            "url": "../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
             "line": 84
           },
           "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+          "suggested_fix": "Vérifier le chemin: ../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "local_file",
             "text": "ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-            "url": "../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+            "url": "../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
             "line": 91
           },
           "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+          "suggested_fix": "Vérifier le chemin: ../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
           "is_critical": true
         },
         {
@@ -14602,27 +14615,27 @@
     {
       "link": {
         "type": "markdown",
-        "text": "ORGANISATION_WORKSPACE.md",
-        "url": "../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-        "line": 163
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "QUICK_START.md",
-        "url": "../../../USER_GUIDES/QUICK_START.md",
+        "url": "../../../../USER_GUIDES/QUICK_START.md",
         "line": 164
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../USER_GUIDES/QUICK_START.md",
+      "suggested_fix": "Vérifier le chemin: ../../../../USER_GUIDES/QUICK_START.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "markdown",
+        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "url": "../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "line": 167
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: ../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_critical": true
     },
     {
@@ -14656,7 +14669,7 @@
         "type": "markdown",
         "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 248
+        "line": 167
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
       "is_valid": false,
@@ -14693,27 +14706,27 @@
     {
       "link": {
         "type": "local_file",
-        "text": "ORGANISATION_WORKSPACE.md",
-        "url": "../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-        "line": 163
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
         "text": "QUICK_START.md",
-        "url": "../../../USER_GUIDES/QUICK_START.md",
+        "url": "../../../../USER_GUIDES/QUICK_START.md",
         "line": 164
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../USER_GUIDES/QUICK_START.md",
+      "suggested_fix": "Vérifier le chemin: ../../../../USER_GUIDES/QUICK_START.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "local_file",
+        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "url": "../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "line": 167
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: ../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_critical": true
     },
     {
@@ -14747,38 +14760,12 @@
         "type": "local_file",
         "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 248
+        "line": 167
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: ../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Index architecture",
-        "url": "../../../ARCHITECTURE/INDEX.md",
-        "line": 34
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../ARCHITECTURE/INDEX.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Index architecture",
-        "url": "../../../ARCHITECTURE/INDEX.md",
-        "line": 34
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../ARCHITECTURE/INDEX.md",
       "is_critical": true
     },
     {
@@ -15162,26 +15149,26 @@
       "link": {
         "type": "markdown",
         "text": "DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-        "url": "../../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+        "url": "../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
         "line": 84
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+      "suggested_fix": "Vérifier le chemin: ../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-        "url": "../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+        "url": "../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
         "line": 91
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+      "suggested_fix": "Vérifier le chemin: ../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
       "is_critical": true
     },
     {
@@ -15240,26 +15227,26 @@
       "link": {
         "type": "local_file",
         "text": "DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-        "url": "../../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+        "url": "../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
         "line": 84
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+      "suggested_fix": "Vérifier le chemin: ../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-        "url": "../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+        "url": "../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
         "line": 91
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+      "suggested_fix": "Vérifier le chemin: ../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
       "is_critical": true
     },
     {
@@ -20660,19 +20647,6 @@
     {
       "link": {
         "type": "markdown",
-        "text": "ORGANISATION_WORKSPACE.md",
-        "url": "../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-        "line": 163
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "QUICK_START.md",
         "url": "../../../../USER_GUIDES/QUICK_START.md",
         "line": 164
@@ -20681,6 +20655,19 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: ../../../../USER_GUIDES/QUICK_START.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "markdown",
+        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "url": "../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "line": 167
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: ../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_critical": true
     },
     {
@@ -20714,7 +20701,7 @@
         "type": "markdown",
         "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 248
+        "line": 167
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
       "is_valid": false,
@@ -20751,19 +20738,6 @@
     {
       "link": {
         "type": "local_file",
-        "text": "ORGANISATION_WORKSPACE.md",
-        "url": "../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-        "line": 163
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
         "text": "QUICK_START.md",
         "url": "../../../../USER_GUIDES/QUICK_START.md",
         "line": 164
@@ -20772,6 +20746,19 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: ../../../../USER_GUIDES/QUICK_START.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "local_file",
+        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "url": "../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "line": 167
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: ../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_critical": true
     },
     {
@@ -20805,38 +20792,12 @@
         "type": "local_file",
         "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 248
+        "line": 167
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: ../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Index architecture",
-        "url": "../../../ARCHITECTURE/INDEX.md",
-        "line": 34
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../ARCHITECTURE/INDEX.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Index architecture",
-        "url": "../../../ARCHITECTURE/INDEX.md",
-        "line": 34
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../ARCHITECTURE/INDEX.md",
       "is_critical": true
     },
     {
@@ -21220,26 +21181,26 @@
       "link": {
         "type": "markdown",
         "text": "DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-        "url": "../../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+        "url": "../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
         "line": 84
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+      "suggested_fix": "Vérifier le chemin: ../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-        "url": "../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+        "url": "../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
         "line": 91
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+      "suggested_fix": "Vérifier le chemin: ../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
       "is_critical": true
     },
     {
@@ -21298,26 +21259,26 @@
       "link": {
         "type": "local_file",
         "text": "DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-        "url": "../../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+        "url": "../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
         "line": 84
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+      "suggested_fix": "Vérifier le chemin: ../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-        "url": "../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+        "url": "../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
         "line": 91
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+      "suggested_fix": "Vérifier le chemin: ../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
       "is_critical": true
     },
     {
@@ -26239,27 +26200,27 @@
     {
       "link": {
         "type": "markdown",
-        "text": "ORGANISATION_WORKSPACE.md",
-        "url": "../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-        "line": 163
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "QUICK_START.md",
-        "url": "../../../USER_GUIDES/QUICK_START.md",
+        "url": "../../../../USER_GUIDES/QUICK_START.md",
         "line": 164
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../USER_GUIDES/QUICK_START.md",
+      "suggested_fix": "Vérifier le chemin: ../../../../USER_GUIDES/QUICK_START.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "markdown",
+        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "url": "../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "line": 167
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: ../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_critical": true
     },
     {
@@ -26293,7 +26254,7 @@
         "type": "markdown",
         "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 248
+        "line": 167
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
       "is_valid": false,
@@ -26330,27 +26291,27 @@
     {
       "link": {
         "type": "local_file",
-        "text": "ORGANISATION_WORKSPACE.md",
-        "url": "../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-        "line": 163
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
         "text": "QUICK_START.md",
-        "url": "../../../USER_GUIDES/QUICK_START.md",
+        "url": "../../../../USER_GUIDES/QUICK_START.md",
         "line": 164
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../USER_GUIDES/QUICK_START.md",
+      "suggested_fix": "Vérifier le chemin: ../../../../USER_GUIDES/QUICK_START.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "local_file",
+        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "url": "../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "line": 167
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: ../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_critical": true
     },
     {
@@ -26384,38 +26345,12 @@
         "type": "local_file",
         "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 248
+        "line": 167
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: ../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Index architecture",
-        "url": "../../../ARCHITECTURE/INDEX.md",
-        "line": 34
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../ARCHITECTURE/INDEX.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Index architecture",
-        "url": "../../../ARCHITECTURE/INDEX.md",
-        "line": 34
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../ARCHITECTURE/INDEX.md",
       "is_critical": true
     },
     {
@@ -26799,26 +26734,26 @@
       "link": {
         "type": "markdown",
         "text": "DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-        "url": "../../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+        "url": "../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
         "line": 84
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+      "suggested_fix": "Vérifier le chemin: ../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-        "url": "../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+        "url": "../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
         "line": 91
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+      "suggested_fix": "Vérifier le chemin: ../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
       "is_critical": true
     },
     {
@@ -26877,26 +26812,26 @@
       "link": {
         "type": "local_file",
         "text": "DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-        "url": "../../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+        "url": "../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
         "line": 84
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+      "suggested_fix": "Vérifier le chemin: ../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-        "url": "../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+        "url": "../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
         "line": 91
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+      "suggested_fix": "Vérifier le chemin: ../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
       "is_critical": true
     },
     {
@@ -28995,19 +28930,6 @@
     {
       "link": {
         "type": "markdown",
-        "text": "ORGANISATION_WORKSPACE.md",
-        "url": "../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-        "line": 163
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "QUICK_START.md",
         "url": "../../../../USER_GUIDES/QUICK_START.md",
         "line": 164
@@ -29016,6 +28938,19 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: ../../../../USER_GUIDES/QUICK_START.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "markdown",
+        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "url": "../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "line": 167
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: ../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_critical": true
     },
     {
@@ -29049,7 +28984,7 @@
         "type": "markdown",
         "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 248
+        "line": 167
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
       "is_valid": false,
@@ -29086,19 +29021,6 @@
     {
       "link": {
         "type": "local_file",
-        "text": "ORGANISATION_WORKSPACE.md",
-        "url": "../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-        "line": 163
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
         "text": "QUICK_START.md",
         "url": "../../../../USER_GUIDES/QUICK_START.md",
         "line": 164
@@ -29107,6 +29029,19 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: ../../../../USER_GUIDES/QUICK_START.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "local_file",
+        "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "url": "../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+        "line": 167
+      },
+      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: ../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "is_critical": true
     },
     {
@@ -29140,38 +29075,12 @@
         "type": "local_file",
         "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-        "line": 248
+        "line": 167
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: ../../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Index architecture",
-        "url": "../../../ARCHITECTURE/INDEX.md",
-        "line": 34
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../ARCHITECTURE/INDEX.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Index architecture",
-        "url": "../../../ARCHITECTURE/INDEX.md",
-        "line": 34
-      },
-      "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../ARCHITECTURE/INDEX.md",
       "is_critical": true
     },
     {
@@ -29555,26 +29464,26 @@
       "link": {
         "type": "markdown",
         "text": "DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-        "url": "../../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+        "url": "../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
         "line": 84
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+      "suggested_fix": "Vérifier le chemin: ../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-        "url": "../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+        "url": "../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
         "line": 91
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+      "suggested_fix": "Vérifier le chemin: ../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
       "is_critical": true
     },
     {
@@ -29633,26 +29542,26 @@
       "link": {
         "type": "local_file",
         "text": "DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-        "url": "../../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+        "url": "../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
         "line": 84
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+      "suggested_fix": "Vérifier le chemin: ../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-        "url": "../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+        "url": "../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
         "line": 91
       },
       "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+      "suggested_fix": "Vérifier le chemin: ../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
       "is_critical": true
     },
     {

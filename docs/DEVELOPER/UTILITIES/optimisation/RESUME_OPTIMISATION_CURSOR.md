@@ -159,7 +159,7 @@ top -l 1 -o mem | grep -i cursor
 
 ## 📁 **Fichiers créés**
 
-- Guide complet d'optimisation Cursor - Guide complet
+- Guide d'optimisation Cursor - Guide complet
 - Scripts de nettoyage et monitoring - Scripts d'optimisation
 - Configuration optimisée - Paramètres de performance
 - Rapports d'optimisation - Suivi des améliorations

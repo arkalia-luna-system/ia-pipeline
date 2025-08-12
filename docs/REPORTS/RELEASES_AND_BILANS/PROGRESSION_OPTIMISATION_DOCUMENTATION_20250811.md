@@ -88,7 +88,7 @@
 - **Checklist de qualité** intégrée
 - **Exemples pratiques** inclus
 
-### **🗂️ Organisation du Workspace ([ARCHITECTURE/ORGANISATION_WORKSPACE.md](../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md))**
+### **🗂️ Organisation du Workspace ([ARCHITECTURE/ORGANISATION_WORKSPACE.md](../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md))**
 - **Métadonnées** standardisées et à jour
 - **Structure des sections** harmonisée
 - **Navigation interne** améliorée
