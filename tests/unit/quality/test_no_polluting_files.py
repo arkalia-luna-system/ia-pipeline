@@ -461,6 +461,7 @@ class TestNoPollutingFiles:
             "dashboard.md",  # Documentation qui peut être copiée
             "audit_complet_dossiers.py",  # Script qui peut être copié
             "athalia.f(f",  # Fichier spécial du projet
+            "navigation_test_smart_results.json",  # Fichier de test normal
             "CACHEDIR.TAG",  # Fichier de cache normal
             "athalia.log",  # Fichier de log normal
             "validation.log",  # Fichier de log normal
