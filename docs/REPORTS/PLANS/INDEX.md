@@ -107,13 +107,13 @@ Cette section contient tous les plans d'amélioration **actifs et pertinents** p
 
 ## 🔗 **Navigation**
 
-- [📁 Archive des plans terminés](ARCHIVE/INDEX.md)
-- [🎯 Plan de priorisation brutale](PLAN_PRIORISATION_BRUTALE_20250127.md)
-- [🧪 Plan de validation terrain](PLAN_VALIDATION_TERRAIN_20250127.md)
-- [🚀 Plan d'amélioration global actualisé](PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md)
-- [⚡ Plan d'optimisation des performances](PLAN_PERFORMANCE_OPTIMISATION_20250127.md)
-- [🎨 Plan d'amélioration de l'interface](PLAN_INTERFACE_UTILISATEUR_20250127.md)
-- [🚀 Plan CI/CD automatisé](PLAN_CICD_AUTOMATISE_20250127.md)
+- [📁 Archive des plans terminés](../ARCHIVE/INDEX.md)
+- [🎯 Plan de priorisation brutale](../PLAN_PRIORISATION_BRUTALE_20250127.md)
+- [🧪 Plan de validation terrain](../PLAN_VALIDATION_TERRAIN_20250127.md)
+- [🚀 Plan d'amélioration global actualisé](../PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md)
+- [⚡ Plan d'optimisation des performances](../PLAN_PERFORMANCE_OPTIMISATION_20250127.md)
+- [🎨 Plan d'amélioration de l'interface](../PLAN_INTERFACE_UTILISATEUR_20250127.md)
+- [🚀 Plan CI/CD automatisé](../PLAN_CICD_AUTOMATISE_20250127.md)
 
 ---
 

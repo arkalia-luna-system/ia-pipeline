@@ -1,12 +1,12 @@
 {
-  "test_date": "2025-08-12T16:18:07.779639",
+  "test_date": "2025-08-12T16:20:18.723454",
   "global_stats": {
-    "total_files": 123,
-    "total_links": 846,
-    "broken_links": 475,
-    "critical_broken_links": 221,
-    "average_navigation_score": 65.97152436346498,
-    "link_success_rate": 43.85342789598109
+    "total_files": 130,
+    "total_links": 842,
+    "broken_links": 471,
+    "critical_broken_links": 217,
+    "average_navigation_score": 67.86976096367401,
+    "link_success_rate": 44.06175771971497
   },
   "file_results": {
     "._INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
@@ -2473,13 +2473,13 @@
           "link": {
             "type": "markdown",
             "text": "Nom du fichier",
-            "url": "chemin/vers/fichier.md",
+            "url": "../chemin/vers/fichier.md",
             "line": 75
           },
           "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+          "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
           "is_critical": true
         },
         {
@@ -2590,13 +2590,13 @@
           "link": {
             "type": "local_file",
             "text": "Nom du fichier",
-            "url": "chemin/vers/fichier.md",
+            "url": "../chemin/vers/fichier.md",
             "line": 75
           },
           "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+          "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
           "is_critical": true
         },
         {
@@ -3614,6 +3614,16 @@
       "navigation_score": 100,
       "links": []
     },
+    "DEVELOPER/REPORTS/._WORKFLOW_AMELIORATIONS.md": {
+      "file_path": "DEVELOPER/REPORTS/._WORKFLOW_AMELIORATIONS.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "DEVELOPER/REPORTS/RAPPORT_PROGRES_FINAL_2025.md": {
       "file_path": "DEVELOPER/REPORTS/RAPPORT_PROGRES_FINAL_2025.md",
       "total_links": 0,
@@ -3626,6 +3636,16 @@
     },
     "DEVELOPER/REPORTS/CORRECTION_PYTEST_COVERAGE_2025.md": {
       "file_path": "DEVELOPER/REPORTS/CORRECTION_PYTEST_COVERAGE_2025.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "DEVELOPER/REPORTS/._SECURITY_IMPROVEMENTS_SUMMARY.md": {
+      "file_path": "DEVELOPER/REPORTS/._SECURITY_IMPROVEMENTS_SUMMARY.md",
       "total_links": 0,
       "valid_links": 0,
       "broken_links": 0,
@@ -3647,13 +3667,13 @@
           "link": {
             "type": "markdown",
             "text": "Guide de Linting et Sécurité",
-            "url": "docs/DEVELOPER/SECURITY_LINTING_GUIDE.md",
+            "url": "../DEVELOPER/SECURITY_LINTING_GUIDE.md",
             "line": 202
           },
           "source_file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/SECURITY_LINTING_GUIDE.md",
+          "suggested_fix": "Vérifier le chemin: ../DEVELOPER/SECURITY_LINTING_GUIDE.md",
           "is_critical": true
         },
         {
@@ -3712,13 +3732,13 @@
           "link": {
             "type": "local_file",
             "text": "Guide de Linting et Sécurité",
-            "url": "docs/DEVELOPER/SECURITY_LINTING_GUIDE.md",
+            "url": "../DEVELOPER/SECURITY_LINTING_GUIDE.md",
             "line": 202
           },
           "source_file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/SECURITY_LINTING_GUIDE.md",
+          "suggested_fix": "Vérifier le chemin: ../DEVELOPER/SECURITY_LINTING_GUIDE.md",
           "is_critical": true
         },
         {
@@ -3786,13 +3806,13 @@
           "link": {
             "type": "markdown",
             "text": "Guide d'installation",
-            "url": "INSTALLATION.md",
+            "url": "../INSTALLATION.md",
             "line": 261
           },
           "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: INSTALLATION.md",
+          "suggested_fix": "Vérifier le chemin: ../INSTALLATION.md",
           "is_critical": true
         },
         {
@@ -3812,26 +3832,26 @@
           "link": {
             "type": "markdown",
             "text": "Configuration avancée",
-            "url": "CONFIGURATION.md",
+            "url": "../CONFIGURATION.md",
             "line": 263
           },
           "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: CONFIGURATION.md",
+          "suggested_fix": "Vérifier le chemin: ../CONFIGURATION.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "markdown",
             "text": "Dépannage",
-            "url": "TROUBLESHOOTING.md",
+            "url": "../TROUBLESHOOTING.md",
             "line": 264
           },
           "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: TROUBLESHOOTING.md",
+          "suggested_fix": "Vérifier le chemin: ../TROUBLESHOOTING.md",
           "is_critical": true
         },
         {
@@ -3890,13 +3910,13 @@
           "link": {
             "type": "local_file",
             "text": "Guide d'installation",
-            "url": "INSTALLATION.md",
+            "url": "../INSTALLATION.md",
             "line": 261
           },
           "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: INSTALLATION.md",
+          "suggested_fix": "Vérifier le chemin: ../INSTALLATION.md",
           "is_critical": true
         },
         {
@@ -3916,26 +3936,26 @@
           "link": {
             "type": "local_file",
             "text": "Configuration avancée",
-            "url": "CONFIGURATION.md",
+            "url": "../CONFIGURATION.md",
             "line": 263
           },
           "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: CONFIGURATION.md",
+          "suggested_fix": "Vérifier le chemin: ../CONFIGURATION.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "local_file",
             "text": "Dépannage",
-            "url": "TROUBLESHOOTING.md",
+            "url": "../TROUBLESHOOTING.md",
             "line": 264
           },
           "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: TROUBLESHOOTING.md",
+          "suggested_fix": "Vérifier le chemin: ../TROUBLESHOOTING.md",
           "is_critical": true
         }
       ]
@@ -6582,182 +6602,182 @@
           "link": {
             "type": "markdown",
             "text": "📁 Archive des plans terminés",
-            "url": "ARCHIVE/INDEX.md",
+            "url": "../ARCHIVE/INDEX.md",
             "line": 110
           },
           "source_file": "docs/REPORTS/PLANS/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ARCHIVE/INDEX.md",
+          "suggested_fix": "Vérifier le chemin: ../ARCHIVE/INDEX.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "markdown",
             "text": "🎯 Plan de priorisation brutale",
-            "url": "PLAN_PRIORISATION_BRUTALE_20250127.md",
+            "url": "../PLAN_PRIORISATION_BRUTALE_20250127.md",
             "line": 111
           },
           "source_file": "docs/REPORTS/PLANS/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: PLAN_PRIORISATION_BRUTALE_20250127.md",
+          "suggested_fix": "Vérifier le chemin: ../PLAN_PRIORISATION_BRUTALE_20250127.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "markdown",
             "text": "🧪 Plan de validation terrain",
-            "url": "PLAN_VALIDATION_TERRAIN_20250127.md",
+            "url": "../PLAN_VALIDATION_TERRAIN_20250127.md",
             "line": 112
           },
           "source_file": "docs/REPORTS/PLANS/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: PLAN_VALIDATION_TERRAIN_20250127.md",
+          "suggested_fix": "Vérifier le chemin: ../PLAN_VALIDATION_TERRAIN_20250127.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "markdown",
             "text": "🚀 Plan d'amélioration global actualisé",
-            "url": "PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
+            "url": "../PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
             "line": 113
           },
           "source_file": "docs/REPORTS/PLANS/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
+          "suggested_fix": "Vérifier le chemin: ../PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "markdown",
             "text": "⚡ Plan d'optimisation des performances",
-            "url": "PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
+            "url": "../PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
             "line": 114
           },
           "source_file": "docs/REPORTS/PLANS/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
+          "suggested_fix": "Vérifier le chemin: ../PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "markdown",
             "text": "🎨 Plan d'amélioration de l'interface",
-            "url": "PLAN_INTERFACE_UTILISATEUR_20250127.md",
+            "url": "../PLAN_INTERFACE_UTILISATEUR_20250127.md",
             "line": 115
           },
           "source_file": "docs/REPORTS/PLANS/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: PLAN_INTERFACE_UTILISATEUR_20250127.md",
+          "suggested_fix": "Vérifier le chemin: ../PLAN_INTERFACE_UTILISATEUR_20250127.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "markdown",
             "text": "🚀 Plan CI/CD automatisé",
-            "url": "PLAN_CICD_AUTOMATISE_20250127.md",
+            "url": "../PLAN_CICD_AUTOMATISE_20250127.md",
             "line": 116
           },
           "source_file": "docs/REPORTS/PLANS/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: PLAN_CICD_AUTOMATISE_20250127.md",
+          "suggested_fix": "Vérifier le chemin: ../PLAN_CICD_AUTOMATISE_20250127.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "local_file",
             "text": "📁 Archive des plans terminés",
-            "url": "ARCHIVE/INDEX.md",
+            "url": "../ARCHIVE/INDEX.md",
             "line": 110
           },
           "source_file": "docs/REPORTS/PLANS/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ARCHIVE/INDEX.md",
+          "suggested_fix": "Vérifier le chemin: ../ARCHIVE/INDEX.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "local_file",
             "text": "🎯 Plan de priorisation brutale",
-            "url": "PLAN_PRIORISATION_BRUTALE_20250127.md",
+            "url": "../PLAN_PRIORISATION_BRUTALE_20250127.md",
             "line": 111
           },
           "source_file": "docs/REPORTS/PLANS/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: PLAN_PRIORISATION_BRUTALE_20250127.md",
+          "suggested_fix": "Vérifier le chemin: ../PLAN_PRIORISATION_BRUTALE_20250127.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "local_file",
             "text": "🧪 Plan de validation terrain",
-            "url": "PLAN_VALIDATION_TERRAIN_20250127.md",
+            "url": "../PLAN_VALIDATION_TERRAIN_20250127.md",
             "line": 112
           },
           "source_file": "docs/REPORTS/PLANS/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: PLAN_VALIDATION_TERRAIN_20250127.md",
+          "suggested_fix": "Vérifier le chemin: ../PLAN_VALIDATION_TERRAIN_20250127.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "local_file",
             "text": "🚀 Plan d'amélioration global actualisé",
-            "url": "PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
+            "url": "../PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
             "line": 113
           },
           "source_file": "docs/REPORTS/PLANS/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
+          "suggested_fix": "Vérifier le chemin: ../PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "local_file",
             "text": "⚡ Plan d'optimisation des performances",
-            "url": "PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
+            "url": "../PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
             "line": 114
           },
           "source_file": "docs/REPORTS/PLANS/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
+          "suggested_fix": "Vérifier le chemin: ../PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "local_file",
             "text": "🎨 Plan d'amélioration de l'interface",
-            "url": "PLAN_INTERFACE_UTILISATEUR_20250127.md",
+            "url": "../PLAN_INTERFACE_UTILISATEUR_20250127.md",
             "line": 115
           },
           "source_file": "docs/REPORTS/PLANS/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: PLAN_INTERFACE_UTILISATEUR_20250127.md",
+          "suggested_fix": "Vérifier le chemin: ../PLAN_INTERFACE_UTILISATEUR_20250127.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "local_file",
             "text": "🚀 Plan CI/CD automatisé",
-            "url": "PLAN_CICD_AUTOMATISE_20250127.md",
+            "url": "../PLAN_CICD_AUTOMATISE_20250127.md",
             "line": 116
           },
           "source_file": "docs/REPORTS/PLANS/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: PLAN_CICD_AUTOMATISE_20250127.md",
+          "suggested_fix": "Vérifier le chemin: ../PLAN_CICD_AUTOMATISE_20250127.md",
           "is_critical": true
         },
         {
@@ -6865,6 +6885,16 @@
           "is_critical": true
         }
       ]
+    },
+    "REPORTS/PLANS/._INDEX.md": {
+      "file_path": "REPORTS/PLANS/._INDEX.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
     },
     "USER_GUIDES/CONTRIBUTING.md": {
       "file_path": "USER_GUIDES/CONTRIBUTING.md",
@@ -6983,12 +7013,12 @@
     },
     "USER_GUIDES/INDEX.md": {
       "file_path": "USER_GUIDES/INDEX.md",
-      "total_links": 28,
+      "total_links": 24,
       "valid_links": 24,
-      "broken_links": 4,
-      "critical_links": 28,
-      "critical_broken_links": 4,
-      "navigation_score": 51.42857142857142,
+      "broken_links": 0,
+      "critical_links": 24,
+      "critical_broken_links": 0,
+      "navigation_score": 60.0,
       "links": [
         {
           "link": {
@@ -7045,19 +7075,6 @@
         {
           "link": {
             "type": "markdown",
-            "text": "FAQ",
-            "url": "FAQ.md",
-            "line": 20
-          },
-          "source_file": "docs/USER_GUIDES/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: FAQ.md",
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
             "text": "Troubleshooting",
             "url": "TROUBLESHOOTING.md",
             "line": 21
@@ -7131,19 +7148,6 @@
           "is_valid": true,
           "error_type": null,
           "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "FAQ",
-            "url": "FAQ.md",
-            "line": 20
-          },
-          "source_file": "docs/USER_GUIDES/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: FAQ.md",
           "is_critical": true
         },
         {
@@ -7227,19 +7231,6 @@
         {
           "link": {
             "type": "local_file",
-            "text": "FAQ",
-            "url": "FAQ.md",
-            "line": 20
-          },
-          "source_file": "docs/USER_GUIDES/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: FAQ.md",
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
             "text": "Troubleshooting",
             "url": "TROUBLESHOOTING.md",
             "line": 21
@@ -7313,19 +7304,6 @@
           "is_valid": true,
           "error_type": null,
           "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "FAQ",
-            "url": "FAQ.md",
-            "line": 20
-          },
-          "source_file": "docs/USER_GUIDES/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: FAQ.md",
           "is_critical": true
         },
         {
@@ -7884,6 +7862,16 @@
         }
       ]
     },
+    "USER_GUIDES/._INDEX.md": {
+      "file_path": "USER_GUIDES/._INDEX.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "USER_GUIDES/README_AMELIORATIONS_FUTURES.md": {
       "file_path": "USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
       "total_links": 7,
@@ -8427,13 +8415,13 @@
           "link": {
             "type": "markdown",
             "text": "Examples",
-            "url": "EXAMPLES.md",
+            "url": "../EXAMPLES.md",
             "line": 783
           },
           "source_file": "docs/API/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: EXAMPLES.md",
+          "suggested_fix": "Vérifier le chemin: ../EXAMPLES.md",
           "is_critical": true
         },
         {
@@ -8453,26 +8441,26 @@
           "link": {
             "type": "markdown",
             "text": "AI API",
-            "url": "ai_modules.md",
+            "url": "../ai_modules.md",
             "line": 784
           },
           "source_file": "docs/API/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ai_modules.md",
+          "suggested_fix": "Vérifier le chemin: ../ai_modules.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "markdown",
             "text": "AI Examples",
-            "url": "AI_EXAMPLES.md",
+            "url": "../AI_EXAMPLES.md",
             "line": 784
           },
           "source_file": "docs/API/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: AI_EXAMPLES.md",
+          "suggested_fix": "Vérifier le chemin: ../AI_EXAMPLES.md",
           "is_critical": true
         },
         {
@@ -8492,26 +8480,26 @@
           "link": {
             "type": "markdown",
             "text": "Security API",
-            "url": "SECURITY_API.md",
+            "url": "../SECURITY_API.md",
             "line": 785
           },
           "source_file": "docs/API/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: SECURITY_API.md",
+          "suggested_fix": "Vérifier le chemin: ../SECURITY_API.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "markdown",
             "text": "Security Examples",
-            "url": "SEC_EXAMPLES.md",
+            "url": "../SEC_EXAMPLES.md",
             "line": 785
           },
           "source_file": "docs/API/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: SEC_EXAMPLES.md",
+          "suggested_fix": "Vérifier le chemin: ../SEC_EXAMPLES.md",
           "is_critical": true
         },
         {
@@ -8531,26 +8519,26 @@
           "link": {
             "type": "markdown",
             "text": "Performance API",
-            "url": "PERF_API.md",
+            "url": "../PERF_API.md",
             "line": 786
           },
           "source_file": "docs/API/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: PERF_API.md",
+          "suggested_fix": "Vérifier le chemin: ../PERF_API.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "markdown",
             "text": "Perf Examples",
-            "url": "PERF_EXAMPLES.md",
+            "url": "../PERF_EXAMPLES.md",
             "line": 786
           },
           "source_file": "docs/API/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: PERF_EXAMPLES.md",
+          "suggested_fix": "Vérifier le chemin: ../PERF_EXAMPLES.md",
           "is_critical": true
         },
         {
@@ -8648,91 +8636,91 @@
           "link": {
             "type": "local_file",
             "text": "Examples",
-            "url": "EXAMPLES.md",
+            "url": "../EXAMPLES.md",
             "line": 783
           },
           "source_file": "docs/API/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: EXAMPLES.md",
+          "suggested_fix": "Vérifier le chemin: ../EXAMPLES.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "local_file",
             "text": "AI API",
-            "url": "ai_modules.md",
+            "url": "../ai_modules.md",
             "line": 784
           },
           "source_file": "docs/API/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ai_modules.md",
+          "suggested_fix": "Vérifier le chemin: ../ai_modules.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "local_file",
             "text": "AI Examples",
-            "url": "AI_EXAMPLES.md",
+            "url": "../AI_EXAMPLES.md",
             "line": 784
           },
           "source_file": "docs/API/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: AI_EXAMPLES.md",
+          "suggested_fix": "Vérifier le chemin: ../AI_EXAMPLES.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "local_file",
             "text": "Security API",
-            "url": "SECURITY_API.md",
+            "url": "../SECURITY_API.md",
             "line": 785
           },
           "source_file": "docs/API/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: SECURITY_API.md",
+          "suggested_fix": "Vérifier le chemin: ../SECURITY_API.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "local_file",
             "text": "Security Examples",
-            "url": "SEC_EXAMPLES.md",
+            "url": "../SEC_EXAMPLES.md",
             "line": 785
           },
           "source_file": "docs/API/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: SEC_EXAMPLES.md",
+          "suggested_fix": "Vérifier le chemin: ../SEC_EXAMPLES.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "local_file",
             "text": "Performance API",
-            "url": "PERF_API.md",
+            "url": "../PERF_API.md",
             "line": 786
           },
           "source_file": "docs/API/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: PERF_API.md",
+          "suggested_fix": "Vérifier le chemin: ../PERF_API.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "local_file",
             "text": "Perf Examples",
-            "url": "PERF_EXAMPLES.md",
+            "url": "../PERF_EXAMPLES.md",
             "line": 786
           },
           "source_file": "docs/API/INDEX.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: PERF_EXAMPLES.md",
+          "suggested_fix": "Vérifier le chemin: ../PERF_EXAMPLES.md",
           "is_critical": true
         }
       ]
@@ -8954,13 +8942,13 @@
           "link": {
             "type": "markdown",
             "text": "→ Configuration",
-            "url": "CONFIG_MANAGER.md",
+            "url": "../CONFIG_MANAGER.md",
             "line": 188
           },
           "source_file": "docs/API/ERROR_HANDLING.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: CONFIG_MANAGER.md",
+          "suggested_fix": "Vérifier le chemin: ../CONFIG_MANAGER.md",
           "is_critical": true
         },
         {
@@ -8993,13 +8981,13 @@
           "link": {
             "type": "local_file",
             "text": "→ Configuration",
-            "url": "CONFIG_MANAGER.md",
+            "url": "../CONFIG_MANAGER.md",
             "line": 188
           },
           "source_file": "docs/API/ERROR_HANDLING.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: CONFIG_MANAGER.md",
+          "suggested_fix": "Vérifier le chemin: ../CONFIG_MANAGER.md",
           "is_critical": true
         }
       ]
@@ -9243,6 +9231,16 @@
           "is_critical": true
         }
       ]
+    },
+    "API/._INDEX.md": {
+      "file_path": "API/._INDEX.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
     },
     "API/COMMANDES_AVANCEES.md": {
       "file_path": "API/COMMANDES_AVANCEES.md",
@@ -10672,13 +10670,13 @@
           "link": {
             "type": "markdown",
             "text": "Pydantic configuration",
-            "url": "config.md",
+            "url": "../config.md",
             "line": 871176
           },
           "source_file": "docs/API/REFERENCE.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: config.md",
+          "suggested_fix": "Vérifier le chemin: ../config.md",
           "is_critical": true
         },
         {
@@ -12193,13 +12191,13 @@
           "link": {
             "type": "local_file",
             "text": "Pydantic configuration",
-            "url": "config.md",
+            "url": "../config.md",
             "line": 871176
           },
           "source_file": "docs/API/REFERENCE.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: config.md",
+          "suggested_fix": "Vérifier le chemin: ../config.md",
           "is_critical": true
         },
         {
@@ -12294,6 +12292,26 @@
           "is_critical": true
         }
       ]
+    },
+    "API/._ERROR_HANDLING.md": {
+      "file_path": "API/._ERROR_HANDLING.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "API/._REFERENCE.md": {
+      "file_path": "API/._REFERENCE.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
     }
   },
   "broken_links": [
@@ -12457,13 +12475,13 @@
       "link": {
         "type": "markdown",
         "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "url": "../chemin/vers/fichier.md",
         "line": 75
       },
       "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
       "is_critical": true
     },
     {
@@ -12535,13 +12553,13 @@
       "link": {
         "type": "local_file",
         "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "url": "../chemin/vers/fichier.md",
         "line": 75
       },
       "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
       "is_critical": true
     },
     {
@@ -12912,13 +12930,13 @@
       "link": {
         "type": "markdown",
         "text": "Guide de Linting et Sécurité",
-        "url": "docs/DEVELOPER/SECURITY_LINTING_GUIDE.md",
+        "url": "../DEVELOPER/SECURITY_LINTING_GUIDE.md",
         "line": 202
       },
       "source_file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/SECURITY_LINTING_GUIDE.md",
+      "suggested_fix": "Vérifier le chemin: ../DEVELOPER/SECURITY_LINTING_GUIDE.md",
       "is_critical": true
     },
     {
@@ -12977,13 +12995,13 @@
       "link": {
         "type": "local_file",
         "text": "Guide de Linting et Sécurité",
-        "url": "docs/DEVELOPER/SECURITY_LINTING_GUIDE.md",
+        "url": "../DEVELOPER/SECURITY_LINTING_GUIDE.md",
         "line": 202
       },
       "source_file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/SECURITY_LINTING_GUIDE.md",
+      "suggested_fix": "Vérifier le chemin: ../DEVELOPER/SECURITY_LINTING_GUIDE.md",
       "is_critical": true
     },
     {
@@ -13029,39 +13047,39 @@
       "link": {
         "type": "markdown",
         "text": "Guide d'installation",
-        "url": "INSTALLATION.md",
+        "url": "../INSTALLATION.md",
         "line": 261
       },
       "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: INSTALLATION.md",
+      "suggested_fix": "Vérifier le chemin: ../INSTALLATION.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Configuration avancée",
-        "url": "CONFIGURATION.md",
+        "url": "../CONFIGURATION.md",
         "line": 263
       },
       "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: CONFIGURATION.md",
+      "suggested_fix": "Vérifier le chemin: ../CONFIGURATION.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Dépannage",
-        "url": "TROUBLESHOOTING.md",
+        "url": "../TROUBLESHOOTING.md",
         "line": 264
       },
       "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: TROUBLESHOOTING.md",
+      "suggested_fix": "Vérifier le chemin: ../TROUBLESHOOTING.md",
       "is_critical": true
     },
     {
@@ -13120,39 +13138,39 @@
       "link": {
         "type": "local_file",
         "text": "Guide d'installation",
-        "url": "INSTALLATION.md",
+        "url": "../INSTALLATION.md",
         "line": 261
       },
       "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: INSTALLATION.md",
+      "suggested_fix": "Vérifier le chemin: ../INSTALLATION.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Configuration avancée",
-        "url": "CONFIGURATION.md",
+        "url": "../CONFIGURATION.md",
         "line": 263
       },
       "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: CONFIGURATION.md",
+      "suggested_fix": "Vérifier le chemin: ../CONFIGURATION.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Dépannage",
-        "url": "TROUBLESHOOTING.md",
+        "url": "../TROUBLESHOOTING.md",
         "line": 264
       },
       "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: TROUBLESHOOTING.md",
+      "suggested_fix": "Vérifier le chemin: ../TROUBLESHOOTING.md",
       "is_critical": true
     },
     {
@@ -14277,182 +14295,182 @@
       "link": {
         "type": "markdown",
         "text": "📁 Archive des plans terminés",
-        "url": "ARCHIVE/INDEX.md",
+        "url": "../ARCHIVE/INDEX.md",
         "line": 110
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ARCHIVE/INDEX.md",
+      "suggested_fix": "Vérifier le chemin: ../ARCHIVE/INDEX.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "🎯 Plan de priorisation brutale",
-        "url": "PLAN_PRIORISATION_BRUTALE_20250127.md",
+        "url": "../PLAN_PRIORISATION_BRUTALE_20250127.md",
         "line": 111
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_PRIORISATION_BRUTALE_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_PRIORISATION_BRUTALE_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "🧪 Plan de validation terrain",
-        "url": "PLAN_VALIDATION_TERRAIN_20250127.md",
+        "url": "../PLAN_VALIDATION_TERRAIN_20250127.md",
         "line": 112
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_VALIDATION_TERRAIN_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_VALIDATION_TERRAIN_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "🚀 Plan d'amélioration global actualisé",
-        "url": "PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
+        "url": "../PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
         "line": 113
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "⚡ Plan d'optimisation des performances",
-        "url": "PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
+        "url": "../PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
         "line": 114
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "🎨 Plan d'amélioration de l'interface",
-        "url": "PLAN_INTERFACE_UTILISATEUR_20250127.md",
+        "url": "../PLAN_INTERFACE_UTILISATEUR_20250127.md",
         "line": 115
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_INTERFACE_UTILISATEUR_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_INTERFACE_UTILISATEUR_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "🚀 Plan CI/CD automatisé",
-        "url": "PLAN_CICD_AUTOMATISE_20250127.md",
+        "url": "../PLAN_CICD_AUTOMATISE_20250127.md",
         "line": 116
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_CICD_AUTOMATISE_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_CICD_AUTOMATISE_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "📁 Archive des plans terminés",
-        "url": "ARCHIVE/INDEX.md",
+        "url": "../ARCHIVE/INDEX.md",
         "line": 110
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ARCHIVE/INDEX.md",
+      "suggested_fix": "Vérifier le chemin: ../ARCHIVE/INDEX.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "🎯 Plan de priorisation brutale",
-        "url": "PLAN_PRIORISATION_BRUTALE_20250127.md",
+        "url": "../PLAN_PRIORISATION_BRUTALE_20250127.md",
         "line": 111
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_PRIORISATION_BRUTALE_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_PRIORISATION_BRUTALE_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "🧪 Plan de validation terrain",
-        "url": "PLAN_VALIDATION_TERRAIN_20250127.md",
+        "url": "../PLAN_VALIDATION_TERRAIN_20250127.md",
         "line": 112
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_VALIDATION_TERRAIN_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_VALIDATION_TERRAIN_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "🚀 Plan d'amélioration global actualisé",
-        "url": "PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
+        "url": "../PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
         "line": 113
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "⚡ Plan d'optimisation des performances",
-        "url": "PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
+        "url": "../PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
         "line": 114
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "🎨 Plan d'amélioration de l'interface",
-        "url": "PLAN_INTERFACE_UTILISATEUR_20250127.md",
+        "url": "../PLAN_INTERFACE_UTILISATEUR_20250127.md",
         "line": 115
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_INTERFACE_UTILISATEUR_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_INTERFACE_UTILISATEUR_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "🚀 Plan CI/CD automatisé",
-        "url": "PLAN_CICD_AUTOMATISE_20250127.md",
+        "url": "../PLAN_CICD_AUTOMATISE_20250127.md",
         "line": 116
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_CICD_AUTOMATISE_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_CICD_AUTOMATISE_20250127.md",
       "is_critical": true
     },
     {
@@ -14583,58 +14601,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: ../API/README.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "FAQ",
-        "url": "FAQ.md",
-        "line": 20
-      },
-      "source_file": "docs/USER_GUIDES/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: FAQ.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "FAQ",
-        "url": "FAQ.md",
-        "line": 20
-      },
-      "source_file": "docs/USER_GUIDES/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: FAQ.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "FAQ",
-        "url": "FAQ.md",
-        "line": 20
-      },
-      "source_file": "docs/USER_GUIDES/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: FAQ.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "FAQ",
-        "url": "FAQ.md",
-        "line": 20
-      },
-      "source_file": "docs/USER_GUIDES/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: FAQ.md",
       "is_critical": true
     },
     {
@@ -15135,39 +15101,39 @@
       "link": {
         "type": "markdown",
         "text": "Examples",
-        "url": "EXAMPLES.md",
+        "url": "../EXAMPLES.md",
         "line": 783
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../EXAMPLES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "AI API",
-        "url": "ai_modules.md",
+        "url": "../ai_modules.md",
         "line": 784
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ai_modules.md",
+      "suggested_fix": "Vérifier le chemin: ../ai_modules.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "AI Examples",
-        "url": "AI_EXAMPLES.md",
+        "url": "../AI_EXAMPLES.md",
         "line": 784
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: AI_EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../AI_EXAMPLES.md",
       "is_critical": true
     },
     {
@@ -15187,52 +15153,52 @@
       "link": {
         "type": "markdown",
         "text": "Security API",
-        "url": "SECURITY_API.md",
+        "url": "../SECURITY_API.md",
         "line": 785
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: SECURITY_API.md",
+      "suggested_fix": "Vérifier le chemin: ../SECURITY_API.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Security Examples",
-        "url": "SEC_EXAMPLES.md",
+        "url": "../SEC_EXAMPLES.md",
         "line": 785
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: SEC_EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../SEC_EXAMPLES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Performance API",
-        "url": "PERF_API.md",
+        "url": "../PERF_API.md",
         "line": 786
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PERF_API.md",
+      "suggested_fix": "Vérifier le chemin: ../PERF_API.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Perf Examples",
-        "url": "PERF_EXAMPLES.md",
+        "url": "../PERF_EXAMPLES.md",
         "line": 786
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PERF_EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../PERF_EXAMPLES.md",
       "is_critical": true
     },
     {
@@ -15278,91 +15244,91 @@
       "link": {
         "type": "local_file",
         "text": "Examples",
-        "url": "EXAMPLES.md",
+        "url": "../EXAMPLES.md",
         "line": 783
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../EXAMPLES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "AI API",
-        "url": "ai_modules.md",
+        "url": "../ai_modules.md",
         "line": 784
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ai_modules.md",
+      "suggested_fix": "Vérifier le chemin: ../ai_modules.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "AI Examples",
-        "url": "AI_EXAMPLES.md",
+        "url": "../AI_EXAMPLES.md",
         "line": 784
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: AI_EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../AI_EXAMPLES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Security API",
-        "url": "SECURITY_API.md",
+        "url": "../SECURITY_API.md",
         "line": 785
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: SECURITY_API.md",
+      "suggested_fix": "Vérifier le chemin: ../SECURITY_API.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Security Examples",
-        "url": "SEC_EXAMPLES.md",
+        "url": "../SEC_EXAMPLES.md",
         "line": 785
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: SEC_EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../SEC_EXAMPLES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Performance API",
-        "url": "PERF_API.md",
+        "url": "../PERF_API.md",
         "line": 786
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PERF_API.md",
+      "suggested_fix": "Vérifier le chemin: ../PERF_API.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Perf Examples",
-        "url": "PERF_EXAMPLES.md",
+        "url": "../PERF_EXAMPLES.md",
         "line": 786
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PERF_EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../PERF_EXAMPLES.md",
       "is_critical": true
     },
     {
@@ -15421,26 +15387,26 @@
       "link": {
         "type": "markdown",
         "text": "→ Configuration",
-        "url": "CONFIG_MANAGER.md",
+        "url": "../CONFIG_MANAGER.md",
         "line": 188
       },
       "source_file": "docs/API/ERROR_HANDLING.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: CONFIG_MANAGER.md",
+      "suggested_fix": "Vérifier le chemin: ../CONFIG_MANAGER.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "→ Configuration",
-        "url": "CONFIG_MANAGER.md",
+        "url": "../CONFIG_MANAGER.md",
         "line": 188
       },
       "source_file": "docs/API/ERROR_HANDLING.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: CONFIG_MANAGER.md",
+      "suggested_fix": "Vérifier le chemin: ../CONFIG_MANAGER.md",
       "is_critical": true
     },
     {
@@ -16851,13 +16817,13 @@
       "link": {
         "type": "markdown",
         "text": "Pydantic configuration",
-        "url": "config.md",
+        "url": "../config.md",
         "line": 871176
       },
       "source_file": "docs/API/REFERENCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: config.md",
+      "suggested_fix": "Vérifier le chemin: ../config.md",
       "is_critical": true
     },
     {
@@ -18372,13 +18338,13 @@
       "link": {
         "type": "local_file",
         "text": "Pydantic configuration",
-        "url": "config.md",
+        "url": "../config.md",
         "line": 871176
       },
       "source_file": "docs/API/REFERENCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: config.md",
+      "suggested_fix": "Vérifier le chemin: ../config.md",
       "is_critical": true
     },
     {
@@ -18632,13 +18598,13 @@
       "link": {
         "type": "markdown",
         "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "url": "../chemin/vers/fichier.md",
         "line": 75
       },
       "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
       "is_critical": true
     },
     {
@@ -18710,13 +18676,13 @@
       "link": {
         "type": "local_file",
         "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "url": "../chemin/vers/fichier.md",
         "line": 75
       },
       "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
       "is_critical": true
     },
     {
@@ -19087,13 +19053,13 @@
       "link": {
         "type": "markdown",
         "text": "Guide de Linting et Sécurité",
-        "url": "docs/DEVELOPER/SECURITY_LINTING_GUIDE.md",
+        "url": "../DEVELOPER/SECURITY_LINTING_GUIDE.md",
         "line": 202
       },
       "source_file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/SECURITY_LINTING_GUIDE.md",
+      "suggested_fix": "Vérifier le chemin: ../DEVELOPER/SECURITY_LINTING_GUIDE.md",
       "is_critical": true
     },
     {
@@ -19152,13 +19118,13 @@
       "link": {
         "type": "local_file",
         "text": "Guide de Linting et Sécurité",
-        "url": "docs/DEVELOPER/SECURITY_LINTING_GUIDE.md",
+        "url": "../DEVELOPER/SECURITY_LINTING_GUIDE.md",
         "line": 202
       },
       "source_file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/SECURITY_LINTING_GUIDE.md",
+      "suggested_fix": "Vérifier le chemin: ../DEVELOPER/SECURITY_LINTING_GUIDE.md",
       "is_critical": true
     },
     {
@@ -19204,39 +19170,39 @@
       "link": {
         "type": "markdown",
         "text": "Guide d'installation",
-        "url": "INSTALLATION.md",
+        "url": "../INSTALLATION.md",
         "line": 261
       },
       "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: INSTALLATION.md",
+      "suggested_fix": "Vérifier le chemin: ../INSTALLATION.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Configuration avancée",
-        "url": "CONFIGURATION.md",
+        "url": "../CONFIGURATION.md",
         "line": 263
       },
       "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: CONFIGURATION.md",
+      "suggested_fix": "Vérifier le chemin: ../CONFIGURATION.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Dépannage",
-        "url": "TROUBLESHOOTING.md",
+        "url": "../TROUBLESHOOTING.md",
         "line": 264
       },
       "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: TROUBLESHOOTING.md",
+      "suggested_fix": "Vérifier le chemin: ../TROUBLESHOOTING.md",
       "is_critical": true
     },
     {
@@ -19295,39 +19261,39 @@
       "link": {
         "type": "local_file",
         "text": "Guide d'installation",
-        "url": "INSTALLATION.md",
+        "url": "../INSTALLATION.md",
         "line": 261
       },
       "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: INSTALLATION.md",
+      "suggested_fix": "Vérifier le chemin: ../INSTALLATION.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Configuration avancée",
-        "url": "CONFIGURATION.md",
+        "url": "../CONFIGURATION.md",
         "line": 263
       },
       "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: CONFIGURATION.md",
+      "suggested_fix": "Vérifier le chemin: ../CONFIGURATION.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Dépannage",
-        "url": "TROUBLESHOOTING.md",
+        "url": "../TROUBLESHOOTING.md",
         "line": 264
       },
       "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: TROUBLESHOOTING.md",
+      "suggested_fix": "Vérifier le chemin: ../TROUBLESHOOTING.md",
       "is_critical": true
     },
     {
@@ -20452,182 +20418,182 @@
       "link": {
         "type": "markdown",
         "text": "📁 Archive des plans terminés",
-        "url": "ARCHIVE/INDEX.md",
+        "url": "../ARCHIVE/INDEX.md",
         "line": 110
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ARCHIVE/INDEX.md",
+      "suggested_fix": "Vérifier le chemin: ../ARCHIVE/INDEX.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "🎯 Plan de priorisation brutale",
-        "url": "PLAN_PRIORISATION_BRUTALE_20250127.md",
+        "url": "../PLAN_PRIORISATION_BRUTALE_20250127.md",
         "line": 111
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_PRIORISATION_BRUTALE_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_PRIORISATION_BRUTALE_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "🧪 Plan de validation terrain",
-        "url": "PLAN_VALIDATION_TERRAIN_20250127.md",
+        "url": "../PLAN_VALIDATION_TERRAIN_20250127.md",
         "line": 112
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_VALIDATION_TERRAIN_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_VALIDATION_TERRAIN_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "🚀 Plan d'amélioration global actualisé",
-        "url": "PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
+        "url": "../PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
         "line": 113
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "⚡ Plan d'optimisation des performances",
-        "url": "PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
+        "url": "../PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
         "line": 114
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "🎨 Plan d'amélioration de l'interface",
-        "url": "PLAN_INTERFACE_UTILISATEUR_20250127.md",
+        "url": "../PLAN_INTERFACE_UTILISATEUR_20250127.md",
         "line": 115
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_INTERFACE_UTILISATEUR_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_INTERFACE_UTILISATEUR_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "🚀 Plan CI/CD automatisé",
-        "url": "PLAN_CICD_AUTOMATISE_20250127.md",
+        "url": "../PLAN_CICD_AUTOMATISE_20250127.md",
         "line": 116
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_CICD_AUTOMATISE_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_CICD_AUTOMATISE_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "📁 Archive des plans terminés",
-        "url": "ARCHIVE/INDEX.md",
+        "url": "../ARCHIVE/INDEX.md",
         "line": 110
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ARCHIVE/INDEX.md",
+      "suggested_fix": "Vérifier le chemin: ../ARCHIVE/INDEX.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "🎯 Plan de priorisation brutale",
-        "url": "PLAN_PRIORISATION_BRUTALE_20250127.md",
+        "url": "../PLAN_PRIORISATION_BRUTALE_20250127.md",
         "line": 111
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_PRIORISATION_BRUTALE_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_PRIORISATION_BRUTALE_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "🧪 Plan de validation terrain",
-        "url": "PLAN_VALIDATION_TERRAIN_20250127.md",
+        "url": "../PLAN_VALIDATION_TERRAIN_20250127.md",
         "line": 112
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_VALIDATION_TERRAIN_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_VALIDATION_TERRAIN_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "🚀 Plan d'amélioration global actualisé",
-        "url": "PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
+        "url": "../PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
         "line": 113
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "⚡ Plan d'optimisation des performances",
-        "url": "PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
+        "url": "../PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
         "line": 114
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "🎨 Plan d'amélioration de l'interface",
-        "url": "PLAN_INTERFACE_UTILISATEUR_20250127.md",
+        "url": "../PLAN_INTERFACE_UTILISATEUR_20250127.md",
         "line": 115
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_INTERFACE_UTILISATEUR_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_INTERFACE_UTILISATEUR_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "🚀 Plan CI/CD automatisé",
-        "url": "PLAN_CICD_AUTOMATISE_20250127.md",
+        "url": "../PLAN_CICD_AUTOMATISE_20250127.md",
         "line": 116
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_CICD_AUTOMATISE_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_CICD_AUTOMATISE_20250127.md",
       "is_critical": true
     },
     {
@@ -20758,58 +20724,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: ../API/README.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "FAQ",
-        "url": "FAQ.md",
-        "line": 20
-      },
-      "source_file": "docs/USER_GUIDES/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: FAQ.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "FAQ",
-        "url": "FAQ.md",
-        "line": 20
-      },
-      "source_file": "docs/USER_GUIDES/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: FAQ.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "FAQ",
-        "url": "FAQ.md",
-        "line": 20
-      },
-      "source_file": "docs/USER_GUIDES/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: FAQ.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "FAQ",
-        "url": "FAQ.md",
-        "line": 20
-      },
-      "source_file": "docs/USER_GUIDES/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: FAQ.md",
       "is_critical": true
     },
     {
@@ -21310,39 +21224,39 @@
       "link": {
         "type": "markdown",
         "text": "Examples",
-        "url": "EXAMPLES.md",
+        "url": "../EXAMPLES.md",
         "line": 783
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../EXAMPLES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "AI API",
-        "url": "ai_modules.md",
+        "url": "../ai_modules.md",
         "line": 784
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ai_modules.md",
+      "suggested_fix": "Vérifier le chemin: ../ai_modules.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "AI Examples",
-        "url": "AI_EXAMPLES.md",
+        "url": "../AI_EXAMPLES.md",
         "line": 784
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: AI_EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../AI_EXAMPLES.md",
       "is_critical": true
     },
     {
@@ -21362,52 +21276,52 @@
       "link": {
         "type": "markdown",
         "text": "Security API",
-        "url": "SECURITY_API.md",
+        "url": "../SECURITY_API.md",
         "line": 785
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: SECURITY_API.md",
+      "suggested_fix": "Vérifier le chemin: ../SECURITY_API.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Security Examples",
-        "url": "SEC_EXAMPLES.md",
+        "url": "../SEC_EXAMPLES.md",
         "line": 785
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: SEC_EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../SEC_EXAMPLES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Performance API",
-        "url": "PERF_API.md",
+        "url": "../PERF_API.md",
         "line": 786
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PERF_API.md",
+      "suggested_fix": "Vérifier le chemin: ../PERF_API.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Perf Examples",
-        "url": "PERF_EXAMPLES.md",
+        "url": "../PERF_EXAMPLES.md",
         "line": 786
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PERF_EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../PERF_EXAMPLES.md",
       "is_critical": true
     },
     {
@@ -21453,91 +21367,91 @@
       "link": {
         "type": "local_file",
         "text": "Examples",
-        "url": "EXAMPLES.md",
+        "url": "../EXAMPLES.md",
         "line": 783
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../EXAMPLES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "AI API",
-        "url": "ai_modules.md",
+        "url": "../ai_modules.md",
         "line": 784
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ai_modules.md",
+      "suggested_fix": "Vérifier le chemin: ../ai_modules.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "AI Examples",
-        "url": "AI_EXAMPLES.md",
+        "url": "../AI_EXAMPLES.md",
         "line": 784
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: AI_EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../AI_EXAMPLES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Security API",
-        "url": "SECURITY_API.md",
+        "url": "../SECURITY_API.md",
         "line": 785
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: SECURITY_API.md",
+      "suggested_fix": "Vérifier le chemin: ../SECURITY_API.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Security Examples",
-        "url": "SEC_EXAMPLES.md",
+        "url": "../SEC_EXAMPLES.md",
         "line": 785
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: SEC_EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../SEC_EXAMPLES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Performance API",
-        "url": "PERF_API.md",
+        "url": "../PERF_API.md",
         "line": 786
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PERF_API.md",
+      "suggested_fix": "Vérifier le chemin: ../PERF_API.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Perf Examples",
-        "url": "PERF_EXAMPLES.md",
+        "url": "../PERF_EXAMPLES.md",
         "line": 786
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PERF_EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../PERF_EXAMPLES.md",
       "is_critical": true
     },
     {
@@ -21596,26 +21510,26 @@
       "link": {
         "type": "markdown",
         "text": "→ Configuration",
-        "url": "CONFIG_MANAGER.md",
+        "url": "../CONFIG_MANAGER.md",
         "line": 188
       },
       "source_file": "docs/API/ERROR_HANDLING.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: CONFIG_MANAGER.md",
+      "suggested_fix": "Vérifier le chemin: ../CONFIG_MANAGER.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "→ Configuration",
-        "url": "CONFIG_MANAGER.md",
+        "url": "../CONFIG_MANAGER.md",
         "line": 188
       },
       "source_file": "docs/API/ERROR_HANDLING.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: CONFIG_MANAGER.md",
+      "suggested_fix": "Vérifier le chemin: ../CONFIG_MANAGER.md",
       "is_critical": true
     },
     {
@@ -23026,13 +22940,13 @@
       "link": {
         "type": "markdown",
         "text": "Pydantic configuration",
-        "url": "config.md",
+        "url": "../config.md",
         "line": 871176
       },
       "source_file": "docs/API/REFERENCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: config.md",
+      "suggested_fix": "Vérifier le chemin: ../config.md",
       "is_critical": true
     },
     {
@@ -24547,13 +24461,13 @@
       "link": {
         "type": "local_file",
         "text": "Pydantic configuration",
-        "url": "config.md",
+        "url": "../config.md",
         "line": 871176
       },
       "source_file": "docs/API/REFERENCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: config.md",
+      "suggested_fix": "Vérifier le chemin: ../config.md",
       "is_critical": true
     },
     {
@@ -24679,13 +24593,13 @@
       "link": {
         "type": "markdown",
         "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "url": "../chemin/vers/fichier.md",
         "line": 75
       },
       "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
       "is_critical": true
     },
     {
@@ -24705,13 +24619,13 @@
       "link": {
         "type": "local_file",
         "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "url": "../chemin/vers/fichier.md",
         "line": 75
       },
       "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
       "is_critical": true
     },
     {
@@ -24952,26 +24866,26 @@
       "link": {
         "type": "markdown",
         "text": "Guide de Linting et Sécurité",
-        "url": "docs/DEVELOPER/SECURITY_LINTING_GUIDE.md",
+        "url": "../DEVELOPER/SECURITY_LINTING_GUIDE.md",
         "line": 202
       },
       "source_file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/SECURITY_LINTING_GUIDE.md",
+      "suggested_fix": "Vérifier le chemin: ../DEVELOPER/SECURITY_LINTING_GUIDE.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Guide de Linting et Sécurité",
-        "url": "docs/DEVELOPER/SECURITY_LINTING_GUIDE.md",
+        "url": "../DEVELOPER/SECURITY_LINTING_GUIDE.md",
         "line": 202
       },
       "source_file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/SECURITY_LINTING_GUIDE.md",
+      "suggested_fix": "Vérifier le chemin: ../DEVELOPER/SECURITY_LINTING_GUIDE.md",
       "is_critical": true
     },
     {
@@ -25017,78 +24931,78 @@
       "link": {
         "type": "markdown",
         "text": "Guide d'installation",
-        "url": "INSTALLATION.md",
+        "url": "../INSTALLATION.md",
         "line": 261
       },
       "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: INSTALLATION.md",
+      "suggested_fix": "Vérifier le chemin: ../INSTALLATION.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Configuration avancée",
-        "url": "CONFIGURATION.md",
+        "url": "../CONFIGURATION.md",
         "line": 263
       },
       "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: CONFIGURATION.md",
+      "suggested_fix": "Vérifier le chemin: ../CONFIGURATION.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Dépannage",
-        "url": "TROUBLESHOOTING.md",
+        "url": "../TROUBLESHOOTING.md",
         "line": 264
       },
       "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: TROUBLESHOOTING.md",
+      "suggested_fix": "Vérifier le chemin: ../TROUBLESHOOTING.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Guide d'installation",
-        "url": "INSTALLATION.md",
+        "url": "../INSTALLATION.md",
         "line": 261
       },
       "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: INSTALLATION.md",
+      "suggested_fix": "Vérifier le chemin: ../INSTALLATION.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Configuration avancée",
-        "url": "CONFIGURATION.md",
+        "url": "../CONFIGURATION.md",
         "line": 263
       },
       "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: CONFIGURATION.md",
+      "suggested_fix": "Vérifier le chemin: ../CONFIGURATION.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Dépannage",
-        "url": "TROUBLESHOOTING.md",
+        "url": "../TROUBLESHOOTING.md",
         "line": 264
       },
       "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: TROUBLESHOOTING.md",
+      "suggested_fix": "Vérifier le chemin: ../TROUBLESHOOTING.md",
       "is_critical": true
     },
     {
@@ -26148,182 +26062,182 @@
       "link": {
         "type": "markdown",
         "text": "📁 Archive des plans terminés",
-        "url": "ARCHIVE/INDEX.md",
+        "url": "../ARCHIVE/INDEX.md",
         "line": 110
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ARCHIVE/INDEX.md",
+      "suggested_fix": "Vérifier le chemin: ../ARCHIVE/INDEX.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "🎯 Plan de priorisation brutale",
-        "url": "PLAN_PRIORISATION_BRUTALE_20250127.md",
+        "url": "../PLAN_PRIORISATION_BRUTALE_20250127.md",
         "line": 111
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_PRIORISATION_BRUTALE_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_PRIORISATION_BRUTALE_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "🧪 Plan de validation terrain",
-        "url": "PLAN_VALIDATION_TERRAIN_20250127.md",
+        "url": "../PLAN_VALIDATION_TERRAIN_20250127.md",
         "line": 112
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_VALIDATION_TERRAIN_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_VALIDATION_TERRAIN_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "🚀 Plan d'amélioration global actualisé",
-        "url": "PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
+        "url": "../PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
         "line": 113
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "⚡ Plan d'optimisation des performances",
-        "url": "PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
+        "url": "../PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
         "line": 114
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "🎨 Plan d'amélioration de l'interface",
-        "url": "PLAN_INTERFACE_UTILISATEUR_20250127.md",
+        "url": "../PLAN_INTERFACE_UTILISATEUR_20250127.md",
         "line": 115
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_INTERFACE_UTILISATEUR_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_INTERFACE_UTILISATEUR_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "🚀 Plan CI/CD automatisé",
-        "url": "PLAN_CICD_AUTOMATISE_20250127.md",
+        "url": "../PLAN_CICD_AUTOMATISE_20250127.md",
         "line": 116
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_CICD_AUTOMATISE_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_CICD_AUTOMATISE_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "📁 Archive des plans terminés",
-        "url": "ARCHIVE/INDEX.md",
+        "url": "../ARCHIVE/INDEX.md",
         "line": 110
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ARCHIVE/INDEX.md",
+      "suggested_fix": "Vérifier le chemin: ../ARCHIVE/INDEX.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "🎯 Plan de priorisation brutale",
-        "url": "PLAN_PRIORISATION_BRUTALE_20250127.md",
+        "url": "../PLAN_PRIORISATION_BRUTALE_20250127.md",
         "line": 111
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_PRIORISATION_BRUTALE_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_PRIORISATION_BRUTALE_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "🧪 Plan de validation terrain",
-        "url": "PLAN_VALIDATION_TERRAIN_20250127.md",
+        "url": "../PLAN_VALIDATION_TERRAIN_20250127.md",
         "line": 112
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_VALIDATION_TERRAIN_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_VALIDATION_TERRAIN_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "🚀 Plan d'amélioration global actualisé",
-        "url": "PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
+        "url": "../PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
         "line": 113
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "⚡ Plan d'optimisation des performances",
-        "url": "PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
+        "url": "../PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
         "line": 114
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "🎨 Plan d'amélioration de l'interface",
-        "url": "PLAN_INTERFACE_UTILISATEUR_20250127.md",
+        "url": "../PLAN_INTERFACE_UTILISATEUR_20250127.md",
         "line": 115
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_INTERFACE_UTILISATEUR_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_INTERFACE_UTILISATEUR_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "🚀 Plan CI/CD automatisé",
-        "url": "PLAN_CICD_AUTOMATISE_20250127.md",
+        "url": "../PLAN_CICD_AUTOMATISE_20250127.md",
         "line": 116
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_CICD_AUTOMATISE_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_CICD_AUTOMATISE_20250127.md",
       "is_critical": true
     },
     {
@@ -26459,58 +26373,6 @@
     {
       "link": {
         "type": "markdown",
-        "text": "FAQ",
-        "url": "FAQ.md",
-        "line": 20
-      },
-      "source_file": "docs/USER_GUIDES/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: FAQ.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "FAQ",
-        "url": "FAQ.md",
-        "line": 20
-      },
-      "source_file": "docs/USER_GUIDES/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: FAQ.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "FAQ",
-        "url": "FAQ.md",
-        "line": 20
-      },
-      "source_file": "docs/USER_GUIDES/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: FAQ.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "FAQ",
-        "url": "FAQ.md",
-        "line": 20
-      },
-      "source_file": "docs/USER_GUIDES/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: FAQ.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "line": 284
@@ -26564,182 +26426,182 @@
       "link": {
         "type": "markdown",
         "text": "Examples",
-        "url": "EXAMPLES.md",
+        "url": "../EXAMPLES.md",
         "line": 783
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../EXAMPLES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "AI API",
-        "url": "ai_modules.md",
+        "url": "../ai_modules.md",
         "line": 784
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ai_modules.md",
+      "suggested_fix": "Vérifier le chemin: ../ai_modules.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "AI Examples",
-        "url": "AI_EXAMPLES.md",
+        "url": "../AI_EXAMPLES.md",
         "line": 784
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: AI_EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../AI_EXAMPLES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Security API",
-        "url": "SECURITY_API.md",
+        "url": "../SECURITY_API.md",
         "line": 785
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: SECURITY_API.md",
+      "suggested_fix": "Vérifier le chemin: ../SECURITY_API.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Security Examples",
-        "url": "SEC_EXAMPLES.md",
+        "url": "../SEC_EXAMPLES.md",
         "line": 785
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: SEC_EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../SEC_EXAMPLES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Performance API",
-        "url": "PERF_API.md",
+        "url": "../PERF_API.md",
         "line": 786
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PERF_API.md",
+      "suggested_fix": "Vérifier le chemin: ../PERF_API.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Perf Examples",
-        "url": "PERF_EXAMPLES.md",
+        "url": "../PERF_EXAMPLES.md",
         "line": 786
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PERF_EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../PERF_EXAMPLES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Examples",
-        "url": "EXAMPLES.md",
+        "url": "../EXAMPLES.md",
         "line": 783
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../EXAMPLES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "AI API",
-        "url": "ai_modules.md",
+        "url": "../ai_modules.md",
         "line": 784
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ai_modules.md",
+      "suggested_fix": "Vérifier le chemin: ../ai_modules.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "AI Examples",
-        "url": "AI_EXAMPLES.md",
+        "url": "../AI_EXAMPLES.md",
         "line": 784
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: AI_EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../AI_EXAMPLES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Security API",
-        "url": "SECURITY_API.md",
+        "url": "../SECURITY_API.md",
         "line": 785
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: SECURITY_API.md",
+      "suggested_fix": "Vérifier le chemin: ../SECURITY_API.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Security Examples",
-        "url": "SEC_EXAMPLES.md",
+        "url": "../SEC_EXAMPLES.md",
         "line": 785
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: SEC_EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../SEC_EXAMPLES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Performance API",
-        "url": "PERF_API.md",
+        "url": "../PERF_API.md",
         "line": 786
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PERF_API.md",
+      "suggested_fix": "Vérifier le chemin: ../PERF_API.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Perf Examples",
-        "url": "PERF_EXAMPLES.md",
+        "url": "../PERF_EXAMPLES.md",
         "line": 786
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PERF_EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../PERF_EXAMPLES.md",
       "is_critical": true
     },
     {
@@ -26798,26 +26660,26 @@
       "link": {
         "type": "markdown",
         "text": "→ Configuration",
-        "url": "CONFIG_MANAGER.md",
+        "url": "../CONFIG_MANAGER.md",
         "line": 188
       },
       "source_file": "docs/API/ERROR_HANDLING.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: CONFIG_MANAGER.md",
+      "suggested_fix": "Vérifier le chemin: ../CONFIG_MANAGER.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "→ Configuration",
-        "url": "CONFIG_MANAGER.md",
+        "url": "../CONFIG_MANAGER.md",
         "line": 188
       },
       "source_file": "docs/API/ERROR_HANDLING.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: CONFIG_MANAGER.md",
+      "suggested_fix": "Vérifier le chemin: ../CONFIG_MANAGER.md",
       "is_critical": true
     },
     {
@@ -27097,13 +26959,13 @@
       "link": {
         "type": "markdown",
         "text": "Pydantic configuration",
-        "url": "config.md",
+        "url": "../config.md",
         "line": 871176
       },
       "source_file": "docs/API/REFERENCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: config.md",
+      "suggested_fix": "Vérifier le chemin: ../config.md",
       "is_critical": true
     },
     {
@@ -27422,13 +27284,13 @@
       "link": {
         "type": "local_file",
         "text": "Pydantic configuration",
-        "url": "config.md",
+        "url": "../config.md",
         "line": 871176
       },
       "source_file": "docs/API/REFERENCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: config.md",
+      "suggested_fix": "Vérifier le chemin: ../config.md",
       "is_critical": true
     },
     {
@@ -27552,13 +27414,13 @@
       "link": {
         "type": "markdown",
         "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "url": "../chemin/vers/fichier.md",
         "line": 75
       },
       "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
       "is_critical": true
     },
     {
@@ -27578,13 +27440,13 @@
       "link": {
         "type": "local_file",
         "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "url": "../chemin/vers/fichier.md",
         "line": 75
       },
       "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../chemin/vers/fichier.md",
       "is_critical": true
     },
     {
@@ -27825,26 +27687,26 @@
       "link": {
         "type": "markdown",
         "text": "Guide de Linting et Sécurité",
-        "url": "docs/DEVELOPER/SECURITY_LINTING_GUIDE.md",
+        "url": "../DEVELOPER/SECURITY_LINTING_GUIDE.md",
         "line": 202
       },
       "source_file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/SECURITY_LINTING_GUIDE.md",
+      "suggested_fix": "Vérifier le chemin: ../DEVELOPER/SECURITY_LINTING_GUIDE.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Guide de Linting et Sécurité",
-        "url": "docs/DEVELOPER/SECURITY_LINTING_GUIDE.md",
+        "url": "../DEVELOPER/SECURITY_LINTING_GUIDE.md",
         "line": 202
       },
       "source_file": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/SECURITY_LINTING_GUIDE.md",
+      "suggested_fix": "Vérifier le chemin: ../DEVELOPER/SECURITY_LINTING_GUIDE.md",
       "is_critical": true
     },
     {
@@ -27890,78 +27752,78 @@
       "link": {
         "type": "markdown",
         "text": "Guide d'installation",
-        "url": "INSTALLATION.md",
+        "url": "../INSTALLATION.md",
         "line": 261
       },
       "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: INSTALLATION.md",
+      "suggested_fix": "Vérifier le chemin: ../INSTALLATION.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Configuration avancée",
-        "url": "CONFIGURATION.md",
+        "url": "../CONFIGURATION.md",
         "line": 263
       },
       "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: CONFIGURATION.md",
+      "suggested_fix": "Vérifier le chemin: ../CONFIGURATION.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Dépannage",
-        "url": "TROUBLESHOOTING.md",
+        "url": "../TROUBLESHOOTING.md",
         "line": 264
       },
       "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: TROUBLESHOOTING.md",
+      "suggested_fix": "Vérifier le chemin: ../TROUBLESHOOTING.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Guide d'installation",
-        "url": "INSTALLATION.md",
+        "url": "../INSTALLATION.md",
         "line": 261
       },
       "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: INSTALLATION.md",
+      "suggested_fix": "Vérifier le chemin: ../INSTALLATION.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Configuration avancée",
-        "url": "CONFIGURATION.md",
+        "url": "../CONFIGURATION.md",
         "line": 263
       },
       "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: CONFIGURATION.md",
+      "suggested_fix": "Vérifier le chemin: ../CONFIGURATION.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Dépannage",
-        "url": "TROUBLESHOOTING.md",
+        "url": "../TROUBLESHOOTING.md",
         "line": 264
       },
       "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: TROUBLESHOOTING.md",
+      "suggested_fix": "Vérifier le chemin: ../TROUBLESHOOTING.md",
       "is_critical": true
     },
     {
@@ -29021,182 +28883,182 @@
       "link": {
         "type": "markdown",
         "text": "📁 Archive des plans terminés",
-        "url": "ARCHIVE/INDEX.md",
+        "url": "../ARCHIVE/INDEX.md",
         "line": 110
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ARCHIVE/INDEX.md",
+      "suggested_fix": "Vérifier le chemin: ../ARCHIVE/INDEX.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "🎯 Plan de priorisation brutale",
-        "url": "PLAN_PRIORISATION_BRUTALE_20250127.md",
+        "url": "../PLAN_PRIORISATION_BRUTALE_20250127.md",
         "line": 111
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_PRIORISATION_BRUTALE_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_PRIORISATION_BRUTALE_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "🧪 Plan de validation terrain",
-        "url": "PLAN_VALIDATION_TERRAIN_20250127.md",
+        "url": "../PLAN_VALIDATION_TERRAIN_20250127.md",
         "line": 112
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_VALIDATION_TERRAIN_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_VALIDATION_TERRAIN_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "🚀 Plan d'amélioration global actualisé",
-        "url": "PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
+        "url": "../PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
         "line": 113
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "⚡ Plan d'optimisation des performances",
-        "url": "PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
+        "url": "../PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
         "line": 114
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "🎨 Plan d'amélioration de l'interface",
-        "url": "PLAN_INTERFACE_UTILISATEUR_20250127.md",
+        "url": "../PLAN_INTERFACE_UTILISATEUR_20250127.md",
         "line": 115
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_INTERFACE_UTILISATEUR_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_INTERFACE_UTILISATEUR_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "🚀 Plan CI/CD automatisé",
-        "url": "PLAN_CICD_AUTOMATISE_20250127.md",
+        "url": "../PLAN_CICD_AUTOMATISE_20250127.md",
         "line": 116
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_CICD_AUTOMATISE_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_CICD_AUTOMATISE_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "📁 Archive des plans terminés",
-        "url": "ARCHIVE/INDEX.md",
+        "url": "../ARCHIVE/INDEX.md",
         "line": 110
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ARCHIVE/INDEX.md",
+      "suggested_fix": "Vérifier le chemin: ../ARCHIVE/INDEX.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "🎯 Plan de priorisation brutale",
-        "url": "PLAN_PRIORISATION_BRUTALE_20250127.md",
+        "url": "../PLAN_PRIORISATION_BRUTALE_20250127.md",
         "line": 111
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_PRIORISATION_BRUTALE_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_PRIORISATION_BRUTALE_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "🧪 Plan de validation terrain",
-        "url": "PLAN_VALIDATION_TERRAIN_20250127.md",
+        "url": "../PLAN_VALIDATION_TERRAIN_20250127.md",
         "line": 112
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_VALIDATION_TERRAIN_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_VALIDATION_TERRAIN_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "🚀 Plan d'amélioration global actualisé",
-        "url": "PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
+        "url": "../PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
         "line": 113
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "⚡ Plan d'optimisation des performances",
-        "url": "PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
+        "url": "../PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
         "line": 114
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_PERFORMANCE_OPTIMISATION_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "🎨 Plan d'amélioration de l'interface",
-        "url": "PLAN_INTERFACE_UTILISATEUR_20250127.md",
+        "url": "../PLAN_INTERFACE_UTILISATEUR_20250127.md",
         "line": 115
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_INTERFACE_UTILISATEUR_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_INTERFACE_UTILISATEUR_20250127.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "🚀 Plan CI/CD automatisé",
-        "url": "PLAN_CICD_AUTOMATISE_20250127.md",
+        "url": "../PLAN_CICD_AUTOMATISE_20250127.md",
         "line": 116
       },
       "source_file": "docs/REPORTS/PLANS/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PLAN_CICD_AUTOMATISE_20250127.md",
+      "suggested_fix": "Vérifier le chemin: ../PLAN_CICD_AUTOMATISE_20250127.md",
       "is_critical": true
     },
     {
@@ -29332,58 +29194,6 @@
     {
       "link": {
         "type": "markdown",
-        "text": "FAQ",
-        "url": "FAQ.md",
-        "line": 20
-      },
-      "source_file": "docs/USER_GUIDES/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: FAQ.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "FAQ",
-        "url": "FAQ.md",
-        "line": 20
-      },
-      "source_file": "docs/USER_GUIDES/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: FAQ.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "FAQ",
-        "url": "FAQ.md",
-        "line": 20
-      },
-      "source_file": "docs/USER_GUIDES/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: FAQ.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "FAQ",
-        "url": "FAQ.md",
-        "line": 20
-      },
-      "source_file": "docs/USER_GUIDES/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: FAQ.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
         "line": 284
@@ -29437,182 +29247,182 @@
       "link": {
         "type": "markdown",
         "text": "Examples",
-        "url": "EXAMPLES.md",
+        "url": "../EXAMPLES.md",
         "line": 783
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../EXAMPLES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "AI API",
-        "url": "ai_modules.md",
+        "url": "../ai_modules.md",
         "line": 784
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ai_modules.md",
+      "suggested_fix": "Vérifier le chemin: ../ai_modules.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "AI Examples",
-        "url": "AI_EXAMPLES.md",
+        "url": "../AI_EXAMPLES.md",
         "line": 784
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: AI_EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../AI_EXAMPLES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Security API",
-        "url": "SECURITY_API.md",
+        "url": "../SECURITY_API.md",
         "line": 785
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: SECURITY_API.md",
+      "suggested_fix": "Vérifier le chemin: ../SECURITY_API.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Security Examples",
-        "url": "SEC_EXAMPLES.md",
+        "url": "../SEC_EXAMPLES.md",
         "line": 785
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: SEC_EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../SEC_EXAMPLES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Performance API",
-        "url": "PERF_API.md",
+        "url": "../PERF_API.md",
         "line": 786
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PERF_API.md",
+      "suggested_fix": "Vérifier le chemin: ../PERF_API.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
         "text": "Perf Examples",
-        "url": "PERF_EXAMPLES.md",
+        "url": "../PERF_EXAMPLES.md",
         "line": 786
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PERF_EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../PERF_EXAMPLES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Examples",
-        "url": "EXAMPLES.md",
+        "url": "../EXAMPLES.md",
         "line": 783
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../EXAMPLES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "AI API",
-        "url": "ai_modules.md",
+        "url": "../ai_modules.md",
         "line": 784
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ai_modules.md",
+      "suggested_fix": "Vérifier le chemin: ../ai_modules.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "AI Examples",
-        "url": "AI_EXAMPLES.md",
+        "url": "../AI_EXAMPLES.md",
         "line": 784
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: AI_EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../AI_EXAMPLES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Security API",
-        "url": "SECURITY_API.md",
+        "url": "../SECURITY_API.md",
         "line": 785
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: SECURITY_API.md",
+      "suggested_fix": "Vérifier le chemin: ../SECURITY_API.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Security Examples",
-        "url": "SEC_EXAMPLES.md",
+        "url": "../SEC_EXAMPLES.md",
         "line": 785
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: SEC_EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../SEC_EXAMPLES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Performance API",
-        "url": "PERF_API.md",
+        "url": "../PERF_API.md",
         "line": 786
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PERF_API.md",
+      "suggested_fix": "Vérifier le chemin: ../PERF_API.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "Perf Examples",
-        "url": "PERF_EXAMPLES.md",
+        "url": "../PERF_EXAMPLES.md",
         "line": 786
       },
       "source_file": "docs/API/INDEX.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: PERF_EXAMPLES.md",
+      "suggested_fix": "Vérifier le chemin: ../PERF_EXAMPLES.md",
       "is_critical": true
     },
     {
@@ -29671,26 +29481,26 @@
       "link": {
         "type": "markdown",
         "text": "→ Configuration",
-        "url": "CONFIG_MANAGER.md",
+        "url": "../CONFIG_MANAGER.md",
         "line": 188
       },
       "source_file": "docs/API/ERROR_HANDLING.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: CONFIG_MANAGER.md",
+      "suggested_fix": "Vérifier le chemin: ../CONFIG_MANAGER.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
         "text": "→ Configuration",
-        "url": "CONFIG_MANAGER.md",
+        "url": "../CONFIG_MANAGER.md",
         "line": 188
       },
       "source_file": "docs/API/ERROR_HANDLING.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: CONFIG_MANAGER.md",
+      "suggested_fix": "Vérifier le chemin: ../CONFIG_MANAGER.md",
       "is_critical": true
     },
     {
@@ -29970,13 +29780,13 @@
       "link": {
         "type": "markdown",
         "text": "Pydantic configuration",
-        "url": "config.md",
+        "url": "../config.md",
         "line": 871176
       },
       "source_file": "docs/API/REFERENCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: config.md",
+      "suggested_fix": "Vérifier le chemin: ../config.md",
       "is_critical": true
     },
     {
@@ -30295,13 +30105,13 @@
       "link": {
         "type": "local_file",
         "text": "Pydantic configuration",
-        "url": "config.md",
+        "url": "../config.md",
         "line": 871176
       },
       "source_file": "docs/API/REFERENCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: config.md",
+      "suggested_fix": "Vérifier le chemin: ../config.md",
       "is_critical": true
     },
     {

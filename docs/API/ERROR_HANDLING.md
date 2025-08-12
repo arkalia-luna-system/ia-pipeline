@@ -185,7 +185,7 @@ def generate_error_report():
 
 - [← Retour à l'index API](INDEX.md)
 - [→ Modules principaux](CORE_MODULES.md)
-- [→ Configuration](CONFIG_MANAGER.md)
+- [→ Configuration](../CONFIG_MANAGER.md)
 
 ---
 

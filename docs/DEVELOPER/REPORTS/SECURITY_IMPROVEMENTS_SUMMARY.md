@@ -199,7 +199,7 @@ pytest --cov=athalia_core --cov-fail-under=80
 
 ## 🔗 Ressources
 
-- [Guide de Linting et Sécurité](docs/DEVELOPER/SECURITY_LINTING_GUIDE.md)
+- [Guide de Linting et Sécurité](../DEVELOPER/SECURITY_LINTING_GUIDE.md)
 - [Configuration Flake8](config/.flake8)
 - [Configuration Bandit](config/.bandit)
 - [Script de Linting](bin/ath-lint-secure)

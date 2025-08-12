@@ -871173,7 +871173,7 @@ A TypedDict for configuring Pydantic behaviour.
 !!! abstract "Usage Documentation"
     [Configuration with other types](../concepts/config.md#configuration-on-other-supported-types)
 
-A convenience decorator to set a [Pydantic configuration](config.md) on a `TypedDict` or a `dataclass` from the standard library.
+A convenience decorator to set a [Pydantic configuration](../config.md) on a `TypedDict` or a `dataclass` from the standard library.
 
 Although the configuration can be set using the `__pydantic_config__` attribute, it does not play well with type checkers,
 especially with `TypedDict`.

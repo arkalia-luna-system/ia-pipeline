@@ -258,10 +258,10 @@ Les scripts peuvent être personnalisés en modifiant :
 ## 📚 Ressources
 
 ### Documentation
-- [Guide d'installation](INSTALLATION.md)
+- [Guide d'installation](../INSTALLATION.md)
 - [Meilleures pratiques](BEST_PRACTICES.md)
-- [Configuration avancée](CONFIGURATION.md)
-- [Dépannage](TROUBLESHOOTING.md)
+- [Configuration avancée](../CONFIGURATION.md)
+- [Dépannage](../TROUBLESHOOTING.md)
 
 ### Outils externes
 - [pre-commit](https://pre-commit.com/)

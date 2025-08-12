@@ -17,7 +17,7 @@ Ce dossier contient tous les guides utilisateur pour Athalia, organisés de mani
 - **[Deployment](DEPLOYMENT.md)** - Guide de déploiement
 
 ### **📚 Référence et Aide**
-- **[FAQ](FAQ.md)** - Questions fréquentes
+- **~~FAQ~~ *(fichier supprimé)*** - Questions fréquentes
 - **[Troubleshooting](TROUBLESHOOTING.md)** - Résolution de problèmes
 
 ### **👨‍💻 Contribution**
@@ -34,7 +34,7 @@ Ce dossier contient tous les guides utilisateur pour Athalia, organisés de mani
 
 ### **Pour les utilisateurs avancés :**
 1. **[Deployment](DEPLOYMENT.md)** - Déploiement en production
-2. **[FAQ](FAQ.md)** - Questions fréquentes
+2. **~~FAQ~~ *(fichier supprimé)*** - Questions fréquentes
 
 ### **Pour les contributeurs :**
 1. **[Contributing](CONTRIBUTING.md)** - Guide de contribution

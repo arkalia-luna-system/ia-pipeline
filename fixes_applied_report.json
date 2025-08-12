@@ -1,0 +1,137 @@
+{
+  "fixes_applied": [
+    {
+      "file": "DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+      "line": 75,
+      "old_link": "[Nom du fichier](chemin/vers/fichier.md)",
+      "fix_type": "automatic"
+    },
+    {
+      "file": "DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
+      "line": 202,
+      "old_link": "[Guide de Linting et Sécurité](docs/DEVELOPER/SECURITY_LINTING_GUIDE.md)",
+      "fix_type": "automatic"
+    },
+    {
+      "file": "DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
+      "line": 261,
+      "old_link": "[Guide d'installation](INSTALLATION.md)",
+      "fix_type": "automatic"
+    },
+    {
+      "file": "DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
+      "line": 263,
+      "old_link": "[Configuration avancée](CONFIGURATION.md)",
+      "fix_type": "automatic"
+    },
+    {
+      "file": "DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
+      "line": 264,
+      "old_link": "[Dépannage](TROUBLESHOOTING.md)",
+      "fix_type": "automatic"
+    },
+    {
+      "file": "REPORTS/PLANS/INDEX.md",
+      "line": 110,
+      "old_link": "[📁 Archive des plans terminés](ARCHIVE/INDEX.md)",
+      "fix_type": "automatic"
+    },
+    {
+      "file": "REPORTS/PLANS/INDEX.md",
+      "line": 111,
+      "old_link": "[🎯 Plan de priorisation brutale](PLAN_PRIORISATION_BRUTALE_20250127.md)",
+      "fix_type": "automatic"
+    },
+    {
+      "file": "REPORTS/PLANS/INDEX.md",
+      "line": 112,
+      "old_link": "[🧪 Plan de validation terrain](PLAN_VALIDATION_TERRAIN_20250127.md)",
+      "fix_type": "automatic"
+    },
+    {
+      "file": "REPORTS/PLANS/INDEX.md",
+      "line": 113,
+      "old_link": "[🚀 Plan d'amélioration global actualisé](PLAN_AMELIORATION_GLOBALE_ACTUALISE_20250127.md)",
+      "fix_type": "automatic"
+    },
+    {
+      "file": "REPORTS/PLANS/INDEX.md",
+      "line": 114,
+      "old_link": "[⚡ Plan d'optimisation des performances](PLAN_PERFORMANCE_OPTIMISATION_20250127.md)",
+      "fix_type": "automatic"
+    },
+    {
+      "file": "REPORTS/PLANS/INDEX.md",
+      "line": 115,
+      "old_link": "[🎨 Plan d'amélioration de l'interface](PLAN_INTERFACE_UTILISATEUR_20250127.md)",
+      "fix_type": "automatic"
+    },
+    {
+      "file": "REPORTS/PLANS/INDEX.md",
+      "line": 116,
+      "old_link": "[🚀 Plan CI/CD automatisé](PLAN_CICD_AUTOMATISE_20250127.md)",
+      "fix_type": "automatic"
+    },
+    {
+      "file": "USER_GUIDES/INDEX.md",
+      "line": 20,
+      "old_link": "[FAQ](FAQ.md)",
+      "fix_type": "automatic"
+    },
+    {
+      "file": "API/INDEX.md",
+      "line": 783,
+      "old_link": "[Examples](EXAMPLES.md)",
+      "fix_type": "automatic"
+    },
+    {
+      "file": "API/INDEX.md",
+      "line": 784,
+      "old_link": "[AI API](ai_modules.md)",
+      "fix_type": "automatic"
+    },
+    {
+      "file": "API/INDEX.md",
+      "line": 784,
+      "old_link": "[AI Examples](AI_EXAMPLES.md)",
+      "fix_type": "automatic"
+    },
+    {
+      "file": "API/INDEX.md",
+      "line": 785,
+      "old_link": "[Security API](SECURITY_API.md)",
+      "fix_type": "automatic"
+    },
+    {
+      "file": "API/INDEX.md",
+      "line": 785,
+      "old_link": "[Security Examples](SEC_EXAMPLES.md)",
+      "fix_type": "automatic"
+    },
+    {
+      "file": "API/INDEX.md",
+      "line": 786,
+      "old_link": "[Performance API](PERF_API.md)",
+      "fix_type": "automatic"
+    },
+    {
+      "file": "API/INDEX.md",
+      "line": 786,
+      "old_link": "[Perf Examples](PERF_EXAMPLES.md)",
+      "fix_type": "automatic"
+    },
+    {
+      "file": "API/ERROR_HANDLING.md",
+      "line": 188,
+      "old_link": "[→ Configuration](CONFIG_MANAGER.md)",
+      "fix_type": "automatic"
+    },
+    {
+      "file": "API/REFERENCE.md",
+      "line": 871176,
+      "old_link": "[Pydantic configuration](config.md)",
+      "fix_type": "automatic"
+    }
+  ],
+  "total_fixes": 22
+}

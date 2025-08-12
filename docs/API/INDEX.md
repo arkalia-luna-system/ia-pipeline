@@ -780,10 +780,10 @@ graph TB
 
 | **Module Category** | **Documentation** | **Examples** | **Tests** |
 |:-------------------|:------------------|:-------------|:----------|
-| **🧠 Core Modules** | [Core API](core_modules.md) | [Examples](EXAMPLES.md) | [Tests](../../tests/unit/) |
-| **🤖 AI Modules** | [AI API](ai_modules.md) | [AI Examples](AI_EXAMPLES.md) | [AI Tests](../../tests/ai/) |
-| **🛡️ Security** | [Security API](SECURITY_API.md) | [Security Examples](SEC_EXAMPLES.md) | [Security Tests](../../tests/security/) |
-| **⚡ Performance** | [Performance API](PERF_API.md) | [Perf Examples](PERF_EXAMPLES.md) | [Perf Tests](../../tests/performance/) |
+| **🧠 Core Modules** | [Core API](core_modules.md) | [Examples](../EXAMPLES.md) | [Tests](../../tests/unit/) |
+| **🤖 AI Modules** | [AI API](../ai_modules.md) | [AI Examples](../AI_EXAMPLES.md) | [AI Tests](../../tests/ai/) |
+| **🛡️ Security** | [Security API](../SECURITY_API.md) | [Security Examples](../SEC_EXAMPLES.md) | [Security Tests](../../tests/security/) |
+| **⚡ Performance** | [Performance API](../PERF_API.md) | [Perf Examples](../PERF_EXAMPLES.md) | [Perf Tests](../../tests/performance/) |
 
 </div>
 
