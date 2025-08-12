@@ -263,7 +263,7 @@ git merge develop
 - `config/requirements-minimal.txt` : Dépendances
 
 ### **Documentation**
-- `docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md` : Ce guide
+- `CI_CD_PROFESSIONAL_GUIDE.md` : Ce guide
 - Rapports automatiques par niveau
 - Métriques de progression
 

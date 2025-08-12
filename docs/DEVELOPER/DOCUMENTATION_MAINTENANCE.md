@@ -72,7 +72,7 @@ Utiliser des emojis cohérents pour les sections :
 
 ### **🔗 Liens et Références**
 ```markdown
-- **Lien interne :** [Nom du fichier](chemin/vers/fichier.md)
+- **Lien interne :** [Section](#nom-de-la-section)
 - **Lien externe :** [Nom du site](https://example.com)
 - **Ancre :** [Section](#nom-de-la-section)
 ```
@@ -204,7 +204,7 @@ find docs -name "*.md" -exec grep -l "\[.*\]\([^)]*\)" {} \;
 ### **📖 Documentation Interne**
 - **Index principal :** [docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md](../INDEX_FINAL_DOCUMENTATION_ATHALIA.md)
 - **Guide de style :** Ce document
-- **Standards de qualité :** [RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md](../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md)
+- **Standards de qualité :** [Plan d'optimisation documentation](../../REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md)
 
 ---
 

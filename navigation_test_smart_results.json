@@ -1,12 +1,12 @@
 {
-  "test_date": "2025-08-12T16:39:17.886390",
+  "test_date": "2025-08-12T16:41:41.578219",
   "global_stats": {
     "total_files": 135,
-    "total_links": 840,
-    "broken_links": 460,
-    "critical_broken_links": 206,
-    "average_navigation_score": 70.39310315020461,
-    "link_success_rate": 45.23809523809524
+    "total_links": 838,
+    "broken_links": 456,
+    "critical_broken_links": 201,
+    "average_navigation_score": 71.0851666422681,
+    "link_success_rate": 45.58472553699284
   },
   "file_results": {
     "._INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
@@ -2462,25 +2462,25 @@
     },
     "DEVELOPER/DOCUMENTATION_MAINTENANCE.md": {
       "file_path": "DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "total_links": 13,
-      "valid_links": 5,
-      "broken_links": 8,
-      "critical_links": 8,
-      "critical_broken_links": 4,
-      "navigation_score": 38.0,
+      "total_links": 11,
+      "valid_links": 6,
+      "broken_links": 5,
+      "critical_links": 4,
+      "critical_broken_links": 0,
+      "navigation_score": 71.42857142857143,
       "links": [
         {
           "link": {
             "type": "markdown",
             "text": "Nom du fichier",
-            "url": "chemin/vers/fichier.md",
+            "url": "#nom-de-la-section",
             "line": 75
           },
           "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
-          "is_critical": true
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": false
         },
         {
           "link": {
@@ -2563,15 +2563,15 @@
         {
           "link": {
             "type": "markdown",
-            "text": "RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-            "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+            "text": "Plan d'optimisation documentation",
+            "url": "../../REPORTS/RELEASES_AND_BILANS/",
             "line": 207
           },
           "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_critical": true
+          "suggested_fix": "Vérifier le chemin: ../../REPORTS/RELEASES_AND_BILANS/",
+          "is_critical": false
         },
         {
           "link": {
@@ -2589,19 +2589,6 @@
         {
           "link": {
             "type": "local_file",
-            "text": "Nom du fichier",
-            "url": "chemin/vers/fichier.md",
-            "line": 75
-          },
-          "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
             "text": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
             "url": "../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
             "line": 205
@@ -2610,19 +2597,6 @@
           "is_valid": true,
           "error_type": null,
           "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-            "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-            "line": 207
-          },
-          "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: ../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
           "is_critical": true
         },
         {
@@ -2691,27 +2665,27 @@
         {
           "link": {
             "type": "markdown",
-            "text": "Nom du fichier",
-            "url": "chemin/vers/fichier.md",
+            "text": "Documentation maintenance",
+            "url": "../DOCUMENTATION_MAINTENANCE.md",
             "line": 125
           },
           "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+          "suggested_fix": "Vérifier le chemin: ../DOCUMENTATION_MAINTENANCE.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "markdown",
-            "text": "Nom du fichier",
-            "url": "chemin/vers/fichier.md",
-            "line": 125
+            "text": "Guide des bonnes pratiques",
+            "url": "../BEST_PRACTICES.md",
+            "line": 126
           },
           "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+          "suggested_fix": "Vérifier le chemin: ../BEST_PRACTICES.md",
           "is_critical": true
         },
         {
@@ -2730,27 +2704,27 @@
         {
           "link": {
             "type": "local_file",
-            "text": "Nom du fichier",
-            "url": "chemin/vers/fichier.md",
+            "text": "Documentation maintenance",
+            "url": "../DOCUMENTATION_MAINTENANCE.md",
             "line": 125
           },
           "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+          "suggested_fix": "Vérifier le chemin: ../DOCUMENTATION_MAINTENANCE.md",
           "is_critical": true
         },
         {
           "link": {
             "type": "local_file",
-            "text": "Nom du fichier",
-            "url": "chemin/vers/fichier.md",
-            "line": 125
+            "text": "Guide des bonnes pratiques",
+            "url": "../BEST_PRACTICES.md",
+            "line": 126
           },
           "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
           "is_valid": false,
           "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+          "suggested_fix": "Vérifier le chemin: ../BEST_PRACTICES.md",
           "is_critical": true
         },
         {
@@ -2815,23 +2789,23 @@
     "DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md": {
       "file_path": "DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
       "total_links": 1,
-      "valid_links": 0,
-      "broken_links": 1,
+      "valid_links": 1,
+      "broken_links": 0,
       "critical_links": 1,
-      "critical_broken_links": 1,
-      "navigation_score": 0.0,
+      "critical_broken_links": 0,
+      "navigation_score": 60.0,
       "links": [
         {
           "link": {
             "type": "file_reference",
-            "text": "docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
-            "url": "docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
+            "text": "CI_CD_PROFESSIONAL_GUIDE.md",
+            "url": "CI_CD_PROFESSIONAL_GUIDE.md",
             "line": 266
           },
           "source_file": "docs/DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
           "is_critical": true
         }
       ]
@@ -12472,19 +12446,6 @@
     {
       "link": {
         "type": "markdown",
-        "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
-        "line": 75
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "Nom du site",
         "url": "https://example.com",
         "line": 76
@@ -12537,41 +12498,15 @@
     {
       "link": {
         "type": "markdown",
-        "text": "RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "text": "Plan d'optimisation documentation",
+        "url": "../../REPORTS/RELEASES_AND_BILANS/",
         "line": 207
       },
       "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
-        "line": 75
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "line": 207
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "is_critical": true
+      "suggested_fix": "Vérifier le chemin: ../../REPORTS/RELEASES_AND_BILANS/",
+      "is_critical": false
     },
     {
       "link": {
@@ -12615,66 +12550,53 @@
     {
       "link": {
         "type": "markdown",
-        "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "text": "Documentation maintenance",
+        "url": "../DOCUMENTATION_MAINTENANCE.md",
         "line": 125
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../DOCUMENTATION_MAINTENANCE.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
-        "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
-        "line": 125
+        "text": "Guide des bonnes pratiques",
+        "url": "../BEST_PRACTICES.md",
+        "line": 126
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../BEST_PRACTICES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
-        "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "text": "Documentation maintenance",
+        "url": "../DOCUMENTATION_MAINTENANCE.md",
         "line": 125
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../DOCUMENTATION_MAINTENANCE.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
-        "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
-        "line": 125
+        "text": "Guide des bonnes pratiques",
+        "url": "../BEST_PRACTICES.md",
+        "line": 126
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
-        "url": "docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
-        "line": 266
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
+      "suggested_fix": "Vérifier le chemin: ../BEST_PRACTICES.md",
       "is_critical": true
     },
     {
@@ -18452,19 +18374,6 @@
     {
       "link": {
         "type": "markdown",
-        "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
-        "line": 75
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "Nom du site",
         "url": "https://example.com",
         "line": 76
@@ -18517,41 +18426,15 @@
     {
       "link": {
         "type": "markdown",
-        "text": "RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "text": "Plan d'optimisation documentation",
+        "url": "../../REPORTS/RELEASES_AND_BILANS/",
         "line": 207
       },
       "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
-        "line": 75
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "line": 207
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "is_critical": true
+      "suggested_fix": "Vérifier le chemin: ../../REPORTS/RELEASES_AND_BILANS/",
+      "is_critical": false
     },
     {
       "link": {
@@ -18595,66 +18478,53 @@
     {
       "link": {
         "type": "markdown",
-        "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "text": "Documentation maintenance",
+        "url": "../DOCUMENTATION_MAINTENANCE.md",
         "line": 125
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../DOCUMENTATION_MAINTENANCE.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
-        "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
-        "line": 125
+        "text": "Guide des bonnes pratiques",
+        "url": "../BEST_PRACTICES.md",
+        "line": 126
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../BEST_PRACTICES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
-        "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
+        "text": "Documentation maintenance",
+        "url": "../DOCUMENTATION_MAINTENANCE.md",
         "line": 125
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../DOCUMENTATION_MAINTENANCE.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
-        "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
-        "line": 125
+        "text": "Guide des bonnes pratiques",
+        "url": "../BEST_PRACTICES.md",
+        "line": 126
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
-        "url": "docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
-        "line": 266
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
+      "suggested_fix": "Vérifier le chemin: ../BEST_PRACTICES.md",
       "is_critical": true
     },
     {
@@ -24304,118 +24174,53 @@
     {
       "link": {
         "type": "markdown",
-        "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
-        "line": 75
+        "text": "Documentation maintenance",
+        "url": "../DOCUMENTATION_MAINTENANCE.md",
+        "line": 125
       },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+      "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../DOCUMENTATION_MAINTENANCE.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
-        "text": "RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "line": 207
+        "text": "Guide des bonnes pratiques",
+        "url": "../BEST_PRACTICES.md",
+        "line": 126
       },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+      "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+      "suggested_fix": "Vérifier le chemin: ../BEST_PRACTICES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
-        "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
-        "line": 75
+        "text": "Documentation maintenance",
+        "url": "../DOCUMENTATION_MAINTENANCE.md",
+        "line": 125
       },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+      "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../DOCUMENTATION_MAINTENANCE.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
-        "text": "RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "line": 207
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
-        "line": 125
+        "text": "Guide des bonnes pratiques",
+        "url": "../BEST_PRACTICES.md",
+        "line": 126
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
-        "line": 125
-      },
-      "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
-        "line": 125
-      },
-      "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
-        "line": 125
-      },
-      "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
-        "url": "docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
-        "line": 266
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
+      "suggested_fix": "Vérifier le chemin: ../BEST_PRACTICES.md",
       "is_critical": true
     },
     {
@@ -26982,118 +26787,53 @@
     {
       "link": {
         "type": "markdown",
-        "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
-        "line": 75
+        "text": "Documentation maintenance",
+        "url": "../DOCUMENTATION_MAINTENANCE.md",
+        "line": 125
       },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+      "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../DOCUMENTATION_MAINTENANCE.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "markdown",
-        "text": "RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "line": 207
+        "text": "Guide des bonnes pratiques",
+        "url": "../BEST_PRACTICES.md",
+        "line": 126
       },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+      "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+      "suggested_fix": "Vérifier le chemin: ../BEST_PRACTICES.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
-        "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
-        "line": 75
+        "text": "Documentation maintenance",
+        "url": "../DOCUMENTATION_MAINTENANCE.md",
+        "line": 125
       },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+      "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
+      "suggested_fix": "Vérifier le chemin: ../DOCUMENTATION_MAINTENANCE.md",
       "is_critical": true
     },
     {
       "link": {
         "type": "local_file",
-        "text": "RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "url": "../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "line": 207
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: ../RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
-        "line": 125
+        "text": "Guide des bonnes pratiques",
+        "url": "../BEST_PRACTICES.md",
+        "line": 126
       },
       "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
       "is_valid": false,
       "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
-        "line": 125
-      },
-      "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
-        "line": 125
-      },
-      "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "local_file",
-        "text": "Nom du fichier",
-        "url": "chemin/vers/fichier.md",
-        "line": 125
-      },
-      "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: chemin/vers/fichier.md",
-      "is_critical": true
-    },
-    {
-      "link": {
-        "type": "file_reference",
-        "text": "docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
-        "url": "docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
-        "line": 266
-      },
-      "source_file": "docs/DEVELOPER/GUIDES/CI_CD_PROFESSIONAL_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/CI_CD_PROFESSIONAL_GUIDE.md",
+      "suggested_fix": "Vérifier le chemin: ../BEST_PRACTICES.md",
       "is_critical": true
     },
     {

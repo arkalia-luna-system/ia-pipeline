@@ -122,8 +122,8 @@ graph TD
 - **Exemples pratiques :** [Lien](URL)
 
 ### **📖 Documentation Interne**
-- **Fichier connexe 1 :** [Nom du fichier](chemin/vers/fichier.md)
-- **Fichier connexe 2 :** [Nom du fichier](chemin/vers/fichier.md)
+- **Fichier connexe 1 :** [Documentation maintenance](../DOCUMENTATION_MAINTENANCE.md)
+- **Fichier connexe 2 :** [Guide des bonnes pratiques](../BEST_PRACTICES.md)
 - **Guide principal :** [docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md](../INDEX_FINAL_DOCUMENTATION_ATHALIA.md)
 
 ---
