@@ -459,14 +459,14 @@ print(f"Rust: {rust_result.optimization_score:.1f}/100")
 - **Rust Documentation** - Documentation officielle du langage Rust
 
 ### Projets de Référence
-- [Reachy 2023](https://github.com/pollen-robotics/reachy_2023)
-- [Reachy SDK](https://github.com/pollen-robotics/reachy-sdk)
-- [ROS2 Rust](https://github.com/ros2-rust/ros2_rust)
+- **Reachy 2023** - Projet officiel Reachy 2023 sur GitHub
+- **Reachy SDK** - SDK officiel Reachy sur GitHub
+- **ROS2 Rust** - Projet ROS2 Rust sur GitHub
 
 ### Communauté
-- [ROS2 Community](https://discourse.ros.org/)
-- [Pollen Robotics Discord](https://discord.gg/pollen-robotics)
-- [Rust Robotics](https://github.com/rust-robotics)
+- **ROS2 Community** - Forum officiel ROS2
+- **Pollen Robotics Discord** - Communauté Discord Pollen
+- **Rust Robotics** - Projets Rust pour la robotique
 
 ## 🤝 Contribution
 

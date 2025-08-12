@@ -1,12 +1,12 @@
 {
-  "test_date": "2025-08-12T20:27:22.068677",
+  "test_date": "2025-08-12T20:29:40.714942",
   "global_stats": {
-    "total_files": 139,
-    "total_links": 511,
-    "broken_links": 17,
+    "total_files": 102,
+    "total_links": 494,
+    "broken_links": 0,
     "critical_broken_links": 0,
-    "average_navigation_score": 86.18705035971223,
-    "link_success_rate": 96.67318982387475
+    "average_navigation_score": 83.13725490196079,
+    "link_success_rate": 100.0
   },
   "file_results": {
     "INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
@@ -1612,26 +1612,6 @@
       "navigation_score": 100,
       "links": []
     },
-    "ARCHITECTURE/._INDEX.md": {
-      "file_path": "ARCHITECTURE/._INDEX.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
-    "ARCHITECTURE/._ORGANISATION_WORKSPACE.md": {
-      "file_path": "ARCHITECTURE/._ORGANISATION_WORKSPACE.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
     "ARCHITECTURE/dashboard/dashboard.md": {
       "file_path": "ARCHITECTURE/dashboard/dashboard.md",
       "total_links": 2,
@@ -1692,16 +1672,6 @@
           "is_critical": true
         }
       ]
-    },
-    "ARCHITECTURE/dashboard/._dashboard.md": {
-      "file_path": "ARCHITECTURE/dashboard/._dashboard.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
     },
     "DEVELOPER/BEST_PRACTICES.md": {
       "file_path": "DEVELOPER/BEST_PRACTICES.md",
@@ -2229,26 +2199,6 @@
         }
       ]
     },
-    "DEVELOPER/._INDEX.md": {
-      "file_path": "DEVELOPER/._INDEX.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
-    "DEVELOPER/._BEST_PRACTICES.md": {
-      "file_path": "DEVELOPER/._BEST_PRACTICES.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
     "DEVELOPER/DOCUMENTATION_MAINTENANCE.md": {
       "file_path": "DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "total_links": 6,
@@ -2427,26 +2377,6 @@
         }
       ]
     },
-    "DEVELOPER/._DOCUMENTATION_MAINTENANCE.md": {
-      "file_path": "DEVELOPER/._DOCUMENTATION_MAINTENANCE.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
-    "DEVELOPER/._TEMPLATE_STANDARD_MARKDOWN.md": {
-      "file_path": "DEVELOPER/._TEMPLATE_STANDARD_MARKDOWN.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
     "DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md": {
       "file_path": "DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md",
       "total_links": 1,
@@ -2504,16 +2434,6 @@
           "is_critical": true
         }
       ]
-    },
-    "DEVELOPER/GUIDES/._SECURITY_LINTING_GUIDE.md": {
-      "file_path": "DEVELOPER/GUIDES/._SECURITY_LINTING_GUIDE.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
     },
     "DEVELOPER/GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md": {
       "file_path": "DEVELOPER/GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md",
@@ -3075,16 +2995,6 @@
       "navigation_score": 100,
       "links": []
     },
-    "DEVELOPER/PLANS/._INDEX.md": {
-      "file_path": "DEVELOPER/PLANS/._INDEX.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
     "DEVELOPER/PLANS/REORGANISATION_TESTS_PLAN.md": {
       "file_path": "DEVELOPER/PLANS/REORGANISATION_TESTS_PLAN.md",
       "total_links": 0,
@@ -3145,16 +3055,6 @@
       "navigation_score": 100,
       "links": []
     },
-    "DEVELOPER/REPORTS/._WORKFLOW_AMELIORATIONS.md": {
-      "file_path": "DEVELOPER/REPORTS/._WORKFLOW_AMELIORATIONS.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
     "DEVELOPER/REPORTS/RAPPORT_PROGRES_FINAL_2025.md": {
       "file_path": "DEVELOPER/REPORTS/RAPPORT_PROGRES_FINAL_2025.md",
       "total_links": 0,
@@ -3167,16 +3067,6 @@
     },
     "DEVELOPER/REPORTS/CORRECTION_PYTEST_COVERAGE_2025.md": {
       "file_path": "DEVELOPER/REPORTS/CORRECTION_PYTEST_COVERAGE_2025.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
-    "DEVELOPER/REPORTS/._SECURITY_IMPROVEMENTS_SUMMARY.md": {
-      "file_path": "DEVELOPER/REPORTS/._SECURITY_IMPROVEMENTS_SUMMARY.md",
       "total_links": 0,
       "valid_links": 0,
       "broken_links": 0,
@@ -3394,26 +3284,6 @@
       "navigation_score": 100,
       "links": []
     },
-    "DEVELOPER/REPORTS/._OPTIMISATION_TESTS_RAM_FINALE_2025.md": {
-      "file_path": "DEVELOPER/REPORTS/._OPTIMISATION_TESTS_RAM_FINALE_2025.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
-    "DEVELOPER/REPORTS/._ANALYSE_COMPLETE_MODULES_ATHALIA.md": {
-      "file_path": "DEVELOPER/REPORTS/._ANALYSE_COMPLETE_MODULES_ATHALIA.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
     "DEVELOPER/REPORTS/RAPPORT_COMPLET_AMELIORATIONS_2025.md": {
       "file_path": "DEVELOPER/REPORTS/RAPPORT_COMPLET_AMELIORATIONS_2025.md",
       "total_links": 0,
@@ -3512,16 +3382,6 @@
     },
     "DEVELOPER/UTILITIES/GIT_WORKFLOW.md": {
       "file_path": "DEVELOPER/UTILITIES/GIT_WORKFLOW.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
-    "DEVELOPER/UTILITIES/._GIT_WORKFLOW.md": {
-      "file_path": "DEVELOPER/UTILITIES/._GIT_WORKFLOW.md",
       "total_links": 0,
       "valid_links": 0,
       "broken_links": 0,
@@ -3673,28 +3533,8 @@
         }
       ]
     },
-    "GETTING_STARTED/._INSTALLATION.md": {
-      "file_path": "GETTING_STARTED/._INSTALLATION.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
     "REPORTS/AMELIORATION_COUVERTURE_TESTS_20250731.md": {
       "file_path": "REPORTS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
-    "REPORTS/RELEASES_AND_BILANS/._README.md": {
-      "file_path": "REPORTS/RELEASES_AND_BILANS/._README.md",
       "total_links": 0,
       "valid_links": 0,
       "broken_links": 0,
@@ -3804,16 +3644,6 @@
           "is_critical": true
         }
       ]
-    },
-    "REPORTS/RELEASES_AND_BILANS/._RAPPORT_OPTIMISATION_NAVIGATION_20250812.md": {
-      "file_path": "REPORTS/RELEASES_AND_BILANS/._RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
     },
     "REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md": {
       "file_path": "REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
@@ -4333,16 +4163,6 @@
         }
       ]
     },
-    "REPORTS/RELEASES_AND_BILANS/._PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md": {
-      "file_path": "REPORTS/RELEASES_AND_BILANS/._PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
     "REPORTS/RELEASES_AND_BILANS/PLAN_ACTION_AMELIORATIONS_FUTURES_ATHALIA_2025.md": {
       "file_path": "REPORTS/RELEASES_AND_BILANS/PLAN_ACTION_AMELIORATIONS_FUTURES_ATHALIA_2025.md",
       "total_links": 0,
@@ -4650,26 +4470,6 @@
         }
       ]
     },
-    "REPORTS/RELEASES_AND_BILANS/._SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md": {
-      "file_path": "REPORTS/RELEASES_AND_BILANS/._SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
-    "REPORTS/RELEASES_AND_BILANS/._RAPPORT_OPTIMISATION_FINALE_20250812.md": {
-      "file_path": "REPORTS/RELEASES_AND_BILANS/._RAPPORT_OPTIMISATION_FINALE_20250812.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
     "REPORTS/RELEASES_AND_BILANS/RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md": {
       "file_path": "REPORTS/RELEASES_AND_BILANS/RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md",
       "total_links": 0,
@@ -4919,36 +4719,6 @@
           "is_critical": true
         }
       ]
-    },
-    "REPORTS/RELEASES_AND_BILANS/._REORGANISATION_DOCUMENTATION_FINALE_20250811.md": {
-      "file_path": "REPORTS/RELEASES_AND_BILANS/._REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
-    "REPORTS/RELEASES_AND_BILANS/._RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md": {
-      "file_path": "REPORTS/RELEASES_AND_BILANS/._RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
-    "REPORTS/RELEASES_AND_BILANS/._PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md": {
-      "file_path": "REPORTS/RELEASES_AND_BILANS/._PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
     },
     "REPORTS/RELEASES_AND_BILANS/doc_quality_report.md": {
       "file_path": "REPORTS/RELEASES_AND_BILANS/doc_quality_report.md",
@@ -5930,16 +5700,6 @@
     },
     "REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md": {
       "file_path": "REPORTS/CI_CD/CI_CD_PRO_ANALYSIS_BY_LEVEL.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
-    "REPORTS/CI_CD/._CI_CD_PRO_PRE_COMMIT_IMPLEMENTATION.md": {
-      "file_path": "REPORTS/CI_CD/._CI_CD_PRO_PRE_COMMIT_IMPLEMENTATION.md",
       "total_links": 0,
       "valid_links": 0,
       "broken_links": 0,
@@ -7024,160 +6784,8 @@
       "navigation_score": 100,
       "links": []
     },
-    "USER_GUIDES/._CONTRIBUTING.md": {
-      "file_path": "USER_GUIDES/._CONTRIBUTING.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
     "USER_GUIDES/README_AMELIORATIONS_FUTURES.md": {
       "file_path": "USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
-      "total_links": 7,
-      "valid_links": 0,
-      "broken_links": 7,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 0.0,
-      "links": [
-        {
-          "link": {
-            "type": "markdown",
-            "text": "React Documentation",
-            "url": "https://react.dev/",
-            "line": 392
-          },
-          "source_file": "docs/USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://react.dev/",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "TypeScript Handbook",
-            "url": "https://www.typescriptlang.org/docs/",
-            "line": 393
-          },
-          "source_file": "docs/USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://www.typescriptlang.org/docs/",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Tailwind CSS",
-            "url": "https://tailwindcss.com/docs",
-            "line": 394
-          },
-          "source_file": "docs/USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://tailwindcss.com/docs",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Vite Guide",
-            "url": "https://vitejs.dev/guide/",
-            "line": 395
-          },
-          "source_file": "docs/USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://vitejs.dev/guide/",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "React + TypeScript",
-            "url": "https://react-typescript-cheatsheet.netlify.app/",
-            "line": 398
-          },
-          "source_file": "docs/USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://react-typescript-cheatsheet.netlify.app/",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Tailwind CSS Components",
-            "url": "https://tailwindui.com/",
-            "line": 399
-          },
-          "source_file": "docs/USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://tailwindui.com/",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Recharts Examples",
-            "url": "https://recharts.org/en/examples",
-            "line": 400
-          },
-          "source_file": "docs/USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://recharts.org/en/examples",
-          "is_critical": false
-        }
-      ]
-    },
-    "USER_GUIDES/._INSTALLATION.md": {
-      "file_path": "USER_GUIDES/._INSTALLATION.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
-    "USER_GUIDES/._INDEX.md": {
-      "file_path": "USER_GUIDES/._INDEX.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
-    "USER_GUIDES/._QUICK_START.md": {
-      "file_path": "USER_GUIDES/._QUICK_START.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
-    "USER_GUIDES/._TROUBLESHOOTING.md": {
-      "file_path": "USER_GUIDES/._TROUBLESHOOTING.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
-    "USER_GUIDES/._README_AMELIORATIONS_FUTURES.md": {
-      "file_path": "USER_GUIDES/._README_AMELIORATIONS_FUTURES.md",
       "total_links": 0,
       "valid_links": 0,
       "broken_links": 0,
@@ -7198,144 +6806,13 @@
     },
     "USER_GUIDES/robotics/ROBOTICS_GUIDE.md": {
       "file_path": "USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-      "total_links": 10,
+      "total_links": 0,
       "valid_links": 0,
-      "broken_links": 10,
+      "broken_links": 0,
       "critical_links": 0,
       "critical_broken_links": 0,
-      "navigation_score": 0.0,
-      "links": [
-        {
-          "link": {
-            "type": "markdown",
-            "text": "ROS2 Documentation",
-            "url": "https://docs.ros.org/",
-            "line": 456
-          },
-          "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://docs.ros.org/",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Reachy Documentation",
-            "url": "https://docs.pollen-robotics.com/",
-            "line": 457
-          },
-          "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://docs.pollen-robotics.com/",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Docker Documentation",
-            "url": "https://docs.docker.com/",
-            "line": 458
-          },
-          "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://docs.docker.com/",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Rust Documentation",
-            "url": "https://doc.rust-lang.org/",
-            "line": 459
-          },
-          "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://doc.rust-lang.org/",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Reachy 2023",
-            "url": "https://github.com/pollen-robotics/reachy_2023",
-            "line": 462
-          },
-          "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://github.com/pollen-robotics/reachy_2023",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Reachy SDK",
-            "url": "https://github.com/pollen-robotics/reachy-sdk",
-            "line": 463
-          },
-          "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://github.com/pollen-robotics/reachy-sdk",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "ROS2 Rust",
-            "url": "https://github.com/ros2-rust/ros2_rust",
-            "line": 464
-          },
-          "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://github.com/ros2-rust/ros2_rust",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "ROS2 Community",
-            "url": "https://discourse.ros.org/",
-            "line": 467
-          },
-          "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://discourse.ros.org/",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Pollen Robotics Discord",
-            "url": "https://discord.gg/pollen-robotics",
-            "line": 468
-          },
-          "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://discord.gg/pollen-robotics",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Rust Robotics",
-            "url": "https://github.com/rust-robotics",
-            "line": 469
-          },
-          "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://github.com/rust-robotics",
-          "is_critical": false
-        }
-      ]
+      "navigation_score": 100,
+      "links": []
     },
     "USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md": {
       "file_path": "USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
@@ -7500,26 +6977,6 @@
         }
       ]
     },
-    "USER_GUIDES/robotics/._ROBOTICS_INTEGRATION_SUMMARY.md": {
-      "file_path": "USER_GUIDES/robotics/._ROBOTICS_INTEGRATION_SUMMARY.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
-    "USER_GUIDES/robotics/._ROBOTICS_QUICK_START.md": {
-      "file_path": "USER_GUIDES/robotics/._ROBOTICS_QUICK_START.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
     "USER_GUIDES/robotics/audits/reachy_audit_20250729_162938.md": {
       "file_path": "USER_GUIDES/robotics/audits/reachy_audit_20250729_162938.md",
       "total_links": 0,
@@ -7644,16 +7101,6 @@
           "is_critical": true
         }
       ]
-    },
-    "API/._INDEX.md": {
-      "file_path": "API/._INDEX.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
     },
     "API/core_modules.md": {
       "file_path": "API/core_modules.md",
@@ -8046,491 +7493,8 @@
           "is_critical": true
         }
       ]
-    },
-    "API/._core_modules.md": {
-      "file_path": "API/._core_modules.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
-    "API/._ERROR_HANDLING.md": {
-      "file_path": "API/._ERROR_HANDLING.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
-    "API/._robotics.md": {
-      "file_path": "API/._robotics.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
-    "API/._plugins.md": {
-      "file_path": "API/._plugins.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
     }
   },
-  "broken_links": [
-    {
-      "link": {
-        "type": "markdown",
-        "text": "React Documentation",
-        "url": "https://react.dev/",
-        "line": 392
-      },
-      "source_file": "docs/USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://react.dev/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "TypeScript Handbook",
-        "url": "https://www.typescriptlang.org/docs/",
-        "line": 393
-      },
-      "source_file": "docs/USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://www.typescriptlang.org/docs/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Tailwind CSS",
-        "url": "https://tailwindcss.com/docs",
-        "line": 394
-      },
-      "source_file": "docs/USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://tailwindcss.com/docs",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Vite Guide",
-        "url": "https://vitejs.dev/guide/",
-        "line": 395
-      },
-      "source_file": "docs/USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://vitejs.dev/guide/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "React + TypeScript",
-        "url": "https://react-typescript-cheatsheet.netlify.app/",
-        "line": 398
-      },
-      "source_file": "docs/USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://react-typescript-cheatsheet.netlify.app/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Tailwind CSS Components",
-        "url": "https://tailwindui.com/",
-        "line": 399
-      },
-      "source_file": "docs/USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://tailwindui.com/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Recharts Examples",
-        "url": "https://recharts.org/en/examples",
-        "line": 400
-      },
-      "source_file": "docs/USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://recharts.org/en/examples",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "ROS2 Documentation",
-        "url": "https://docs.ros.org/",
-        "line": 456
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://docs.ros.org/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Reachy Documentation",
-        "url": "https://docs.pollen-robotics.com/",
-        "line": 457
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://docs.pollen-robotics.com/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Docker Documentation",
-        "url": "https://docs.docker.com/",
-        "line": 458
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://docs.docker.com/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Rust Documentation",
-        "url": "https://doc.rust-lang.org/",
-        "line": 459
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://doc.rust-lang.org/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Reachy 2023",
-        "url": "https://github.com/pollen-robotics/reachy_2023",
-        "line": 462
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://github.com/pollen-robotics/reachy_2023",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Reachy SDK",
-        "url": "https://github.com/pollen-robotics/reachy-sdk",
-        "line": 463
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://github.com/pollen-robotics/reachy-sdk",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "ROS2 Rust",
-        "url": "https://github.com/ros2-rust/ros2_rust",
-        "line": 464
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://github.com/ros2-rust/ros2_rust",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "ROS2 Community",
-        "url": "https://discourse.ros.org/",
-        "line": 467
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://discourse.ros.org/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Pollen Robotics Discord",
-        "url": "https://discord.gg/pollen-robotics",
-        "line": 468
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://discord.gg/pollen-robotics",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Rust Robotics",
-        "url": "https://github.com/rust-robotics",
-        "line": 469
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://github.com/rust-robotics",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "React Documentation",
-        "url": "https://react.dev/",
-        "line": 392
-      },
-      "source_file": "docs/USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://react.dev/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "TypeScript Handbook",
-        "url": "https://www.typescriptlang.org/docs/",
-        "line": 393
-      },
-      "source_file": "docs/USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://www.typescriptlang.org/docs/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Tailwind CSS",
-        "url": "https://tailwindcss.com/docs",
-        "line": 394
-      },
-      "source_file": "docs/USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://tailwindcss.com/docs",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Vite Guide",
-        "url": "https://vitejs.dev/guide/",
-        "line": 395
-      },
-      "source_file": "docs/USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://vitejs.dev/guide/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "React + TypeScript",
-        "url": "https://react-typescript-cheatsheet.netlify.app/",
-        "line": 398
-      },
-      "source_file": "docs/USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://react-typescript-cheatsheet.netlify.app/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Tailwind CSS Components",
-        "url": "https://tailwindui.com/",
-        "line": 399
-      },
-      "source_file": "docs/USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://tailwindui.com/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Recharts Examples",
-        "url": "https://recharts.org/en/examples",
-        "line": 400
-      },
-      "source_file": "docs/USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://recharts.org/en/examples",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "ROS2 Documentation",
-        "url": "https://docs.ros.org/",
-        "line": 456
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://docs.ros.org/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Reachy Documentation",
-        "url": "https://docs.pollen-robotics.com/",
-        "line": 457
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://docs.pollen-robotics.com/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Docker Documentation",
-        "url": "https://docs.docker.com/",
-        "line": 458
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://docs.docker.com/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Rust Documentation",
-        "url": "https://doc.rust-lang.org/",
-        "line": 459
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://doc.rust-lang.org/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Reachy 2023",
-        "url": "https://github.com/pollen-robotics/reachy_2023",
-        "line": 462
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://github.com/pollen-robotics/reachy_2023",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Reachy SDK",
-        "url": "https://github.com/pollen-robotics/reachy-sdk",
-        "line": 463
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://github.com/pollen-robotics/reachy-sdk",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "ROS2 Rust",
-        "url": "https://github.com/ros2-rust/ros2_rust",
-        "line": 464
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://github.com/ros2-rust/ros2_rust",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "ROS2 Community",
-        "url": "https://discourse.ros.org/",
-        "line": 467
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://discourse.ros.org/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Pollen Robotics Discord",
-        "url": "https://discord.gg/pollen-robotics",
-        "line": 468
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://discord.gg/pollen-robotics",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Rust Robotics",
-        "url": "https://github.com/rust-robotics",
-        "line": 469
-      },
-      "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://github.com/rust-robotics",
-      "is_critical": false
-    }
-  ],
+  "broken_links": [],
   "critical_broken_links": []
 }
