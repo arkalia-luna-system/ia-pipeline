@@ -1,12 +1,12 @@
 {
-  "test_date": "2025-08-12T20:15:41.531074",
+  "test_date": "2025-08-12T20:16:30.480159",
   "global_stats": {
     "total_files": 137,
-    "total_links": 531,
-    "broken_links": 45,
+    "total_links": 534,
+    "broken_links": 42,
     "critical_broken_links": 0,
     "average_navigation_score": 84.52554744525547,
-    "link_success_rate": 91.52542372881356
+    "link_success_rate": 92.13483146067416
   },
   "file_results": {
     "._INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
@@ -6963,10 +6963,10 @@
     },
     "USER_GUIDES/INSTALLATION.md": {
       "file_path": "USER_GUIDES/INSTALLATION.md",
-      "total_links": 17,
-      "valid_links": 14,
-      "broken_links": 3,
-      "critical_links": 14,
+      "total_links": 20,
+      "valid_links": 20,
+      "broken_links": 0,
+      "critical_links": 20,
       "critical_broken_links": 0,
       "navigation_score": 60.0,
       "links": [
@@ -7064,41 +7064,41 @@
         {
           "link": {
             "type": "markdown",
-            "text": "![Quick Start",
-            "url": "https://img.shields.io/badge/⚡-Quick%20Start-green?style=for-the-badge&logo=rocket",
+            "text": "Guide complet",
+            "url": "QUICK_START.md",
             "line": 555
           },
           "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/⚡-Quick%20Start-green?style=for-the-badge&logo=rocket",
-          "is_critical": false
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
         },
         {
           "link": {
             "type": "markdown",
-            "text": "![Usage Guide",
-            "url": "https://img.shields.io/badge/📚-Usage%20Guide-blue?style=for-the-badge&logo=book",
-            "line": 556
+            "text": "Documentation",
+            "url": "USAGE.md",
+            "line": 555
           },
           "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/📚-Usage%20Guide-blue?style=for-the-badge&logo=book",
-          "is_critical": false
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
         },
         {
           "link": {
             "type": "markdown",
-            "text": "![Troubleshooting",
-            "url": "https://img.shields.io/badge/🔧-Troubleshooting-orange?style=for-the-badge&logo=wrench",
-            "line": 557
+            "text": "Dépannage",
+            "url": "TROUBLESHOOTING.md",
+            "line": 555
           },
           "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/🔧-Troubleshooting-orange?style=for-the-badge&logo=wrench",
-          "is_critical": false
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
         },
         {
           "link": {
@@ -7184,6 +7184,45 @@
             "text": "🚀 Deployment Guide",
             "url": "DEPLOYMENT.md",
             "line": 497
+          },
+          "source_file": "docs/USER_GUIDES/INSTALLATION.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "Guide complet",
+            "url": "QUICK_START.md",
+            "line": 555
+          },
+          "source_file": "docs/USER_GUIDES/INSTALLATION.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "Documentation",
+            "url": "USAGE.md",
+            "line": 555
+          },
+          "source_file": "docs/USER_GUIDES/INSTALLATION.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "Dépannage",
+            "url": "TROUBLESHOOTING.md",
+            "line": 555
           },
           "source_file": "docs/USER_GUIDES/INSTALLATION.md",
           "is_valid": true,
@@ -8659,45 +8698,6 @@
     {
       "link": {
         "type": "markdown",
-        "text": "![Quick Start",
-        "url": "https://img.shields.io/badge/⚡-Quick%20Start-green?style=for-the-badge&logo=rocket",
-        "line": 555
-      },
-      "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/⚡-Quick%20Start-green?style=for-the-badge&logo=rocket",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Usage Guide",
-        "url": "https://img.shields.io/badge/📚-Usage%20Guide-blue?style=for-the-badge&logo=book",
-        "line": 556
-      },
-      "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/📚-Usage%20Guide-blue?style=for-the-badge&logo=book",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Troubleshooting",
-        "url": "https://img.shields.io/badge/🔧-Troubleshooting-orange?style=for-the-badge&logo=wrench",
-        "line": 557
-      },
-      "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/🔧-Troubleshooting-orange?style=for-the-badge&logo=wrench",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "React Documentation",
         "url": "https://react.dev/",
         "line": 392
@@ -9239,45 +9239,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: https://education.github.com/git-cheat-sheet-education.pdf",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Quick Start",
-        "url": "https://img.shields.io/badge/⚡-Quick%20Start-green?style=for-the-badge&logo=rocket",
-        "line": 555
-      },
-      "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/⚡-Quick%20Start-green?style=for-the-badge&logo=rocket",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Usage Guide",
-        "url": "https://img.shields.io/badge/📚-Usage%20Guide-blue?style=for-the-badge&logo=book",
-        "line": 556
-      },
-      "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/📚-Usage%20Guide-blue?style=for-the-badge&logo=book",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Troubleshooting",
-        "url": "https://img.shields.io/badge/🔧-Troubleshooting-orange?style=for-the-badge&logo=wrench",
-        "line": 557
-      },
-      "source_file": "docs/USER_GUIDES/INSTALLATION.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/🔧-Troubleshooting-orange?style=for-the-badge&logo=wrench",
       "is_critical": false
     },
     {
