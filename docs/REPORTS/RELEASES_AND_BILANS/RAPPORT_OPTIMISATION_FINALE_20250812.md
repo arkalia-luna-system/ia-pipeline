@@ -41,9 +41,9 @@ Ce rapport final documente l'optimisation complète de la documentation Athalia 
 
 ### **✅ Phase 2 : Nettoyage et Standardisation**
 - **Fichiers parasites** (Apple Double) 100% éliminés ✅
-- **Guide de maintenance** [DOCUMENTATION_MAINTENANCE.md](../../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md) créé ✅
-- **Template standardisé** [TEMPLATE_STANDARD_MARKDOWN.md](../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md) créé ✅
-- **Dashboard** [dashboard.md](../../../ARCHITECTURE/dashboard/dashboard.md) optimisé et restructuré ✅
+- **Guide de maintenance** [DOCUMENTATION_MAINTENANCE.md](../../../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md) créé ✅
+- **Template standardisé** [TEMPLATE_STANDARD_MARKDOWN.md](../../../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md) créé ✅
+- **Dashboard** [dashboard.md](../../../../ARCHITECTURE/dashboard/dashboard.md) optimisé et restructuré ✅
 
 ### **✅ Phase 3 : Standards et Outils**
 - **Standards de qualité** définis et documentés ✅
@@ -243,9 +243,9 @@ La documentation Athalia v1.0.0 est maintenant **parfaitement optimisée, profes
 ## 📚 **RESSOURCES ET RÉFÉRENCES**
 
 ### **🔗 Documentation Connexe :**
-- **Guide de maintenance :** [DOCUMENTATION_MAINTENANCE.md](../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md)
-- **Template standardisé :** [TEMPLATE_STANDARD_MARKDOWN.md](../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md)
-- **Index principal :** [INDEX_FINAL_DOCUMENTATION_ATHALIA.md](../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md)
+- **Guide de maintenance :** `../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md`
+- **Template standardisé :** `../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md`
+- **Index principal :** `../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md`
 
 ### **🛠️ Outils Disponibles :**
 - **Analyse de qualité :** `scripts/analyze_documentation_quality.py`

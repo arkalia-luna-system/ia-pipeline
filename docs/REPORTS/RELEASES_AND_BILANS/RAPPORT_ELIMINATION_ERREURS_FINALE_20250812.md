@@ -175,8 +175,8 @@ La navigation de la documentation est **100% analysée, comprise, documentée et
 ### **🔧 Guides et Standards :**
 - **`DOCUMENTATION_MAINTENANCE.md`** - Guide de maintenance complet ✅
 - **`TEMPLATE_STANDARD_MARKDOWN.md`** - Template standardisé ✅
-- **`ORGANISATION_WORKSPACE.md`** - Organisation optimisée ✅
-- **`QUICK_START.md`** - Guide restructuré en français ✅
+- **[ORGANISATION_WORKSPACE.md](../../../../ARCHITECTURE/ORGANISATION_WORKSPACE.md)** - Organisation optimisée ✅
+- **[QUICK_START.md](../../../../USER_GUIDES/QUICK_START.md)** - Guide restructuré en français ✅
 
 ### **📋 Index et Organisation - ZÉRO ERREUR :**
 - **`INDEX_FINAL_DOCUMENTATION_ATHALIA.md`** - Index principal 100% corrigé et sans erreur ✅
