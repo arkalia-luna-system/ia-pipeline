@@ -13,21 +13,13 @@ Ce dossier centralise tous les rapports liés aux releases, validations, bilans 
 ## 📋 **CONTENU DU DOSSIER**
 
 ### **🚀 RELEASES**
-- **`VALIDATION_RELEASE_v1.0.0.md`** - Validation de la release v1.0.0
-- **`RELEASE_FINALE_v1.0.0_SUCCES.md`** - Rapport de succès de la release v1.0.0
-- **`PLAN_VERSION_FINALE_ATHALIA_v1.0.0.md`** - Plan de la version finale v1.0.0
-
-### **📊 BILANS**
-- **`BILAN_COMPLET_BRANCHES_ATHALIA_20250811.md`** - Bilan complet des branches
-- **`BILAN_COMPLET_DEFINITIF_ATHALIA_2025.md`** - Bilan complet définitif
-- **`BACKUP_v1.0.0_FINAL_20250811.md`** - Sauvegarde finale v1.0.0
-
-### **🔧 RAPPORTS TECHNIQUES**
-- **`RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md`** - Rapport correction technique IA
-- **`RAPPORT_NETTOYAGE_COMPLET_DOCUMENTATION_ATHALIA.md`** - Rapport de nettoyage documentation
 - **`RAPPORT_OPTIMISATION_NAVIGATION_20250812.md`** - Rapport d'optimisation de la navigation
 - **`RAPPORT_OPTIMISATION_FINALE_20250812.md`** - Rapport final d'optimisation documentation
 - **`RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md`** - Rapport final d'élimination des erreurs
+
+### **📊 BILANS**
+- **`RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md`** - Rapport correction technique IA
+- **`RAPPORT_NETTOYAGE_COMPLET_DOCUMENTATION_ATHALIA.md`** - Rapport de nettoyage documentation
 
 ### **📈 RAPPORTS DE QUALITÉ**
 - **`REORGANISATION_DOCUMENTATION_FINALE_20250811.md`** - Réorganisation finale de la documentation

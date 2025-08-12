@@ -37,13 +37,10 @@
 
 ### **🔌 API (`docs/API/`)**
 - **`docs/API/INDEX.md`** - Index de l'API
-- **`docs/API/COMMANDES.md`** - Commandes de base
-- **`docs/API/COMMANDES_AVANCEES.md`** - Commandes avancées
 - **`docs/API/core_modules.md`** - Modules du core
 - **`docs/API/ERROR_HANDLING.md`** - Gestion des erreurs
 - **`docs/API/orchestrator.md`** - Documentation de l'orchestrateur
 - **`docs/API/plugins.md`** - Système de plugins
-- **`docs/API/REFERENCE.md`** - Référence complète de l'API
 - **`docs/API/robotics.md`** - API robotique
 
 ### **👨‍💻 DÉVELOPPEUR (`docs/DEVELOPER/`)**
@@ -99,7 +96,6 @@
 
 #### **🚀 RELEASES ET BILANS (`docs/REPORTS/RELEASES_AND_BILANS/`)**
 - **`docs/REPORTS/RELEASES_AND_BILANS/README.md`** - Index des releases et bilans
-- **`docs/REPORTS/RELEASES_AND_BILANS/BILAN_COMPLET_DEFINITIF_ATHALIA_2025.md`** - Bilan complet définitif
 - **`docs/REPORTS/RELEASES_AND_BILANS/PLAN_ACTION_AMELIORATIONS_FUTURES_ATHALIA_2025.md`** - Plan d'action améliorations futures
 - **`docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md`** - Rapport correction technique IA
 - **`docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_NETTOYAGE_COMPLET_DOCUMENTATION_ATHALIA.md`** - Rapport nettoyage documentation

@@ -1,6 +1,6 @@
 {
-  "analysis_date": "2025-08-12T16:01:59.415111",
-  "total_files": 118,
+  "analysis_date": "2025-08-12T18:01:04.792697",
+  "total_files": 154,
   "analysis_results": {
     "._INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
       "file_path": "docs/._INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
@@ -9,8 +9,8 @@
     },
     "INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
       "file_path": "docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "total_lines": 227,
-      "non_empty_lines": 183,
+      "total_lines": 230,
+      "non_empty_lines": 186,
       "has_title": true,
       "has_toc": true,
       "has_code_blocks": false,
@@ -26,8 +26,8 @@
     },
     "ARCHITECTURE/ORGANISATION_WORKSPACE.md": {
       "file_path": "docs/ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-      "total_lines": 155,
-      "non_empty_lines": 118,
+      "total_lines": 149,
+      "non_empty_lines": 112,
       "has_title": true,
       "has_toc": true,
       "has_code_blocks": true,
@@ -73,6 +73,11 @@
       "has_old_dates": false,
       "has_obsolete_refs": false,
       "has_broken_links": false
+    },
+    "ARCHITECTURE/._ORGANISATION_WORKSPACE.md": {
+      "file_path": "docs/ARCHITECTURE/._ORGANISATION_WORKSPACE.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
     },
     "ARCHITECTURE/dashboard/dashboard.md": {
       "file_path": "docs/ARCHITECTURE/dashboard/dashboard.md",
@@ -140,8 +145,8 @@
     },
     "DEVELOPER/INDEX.md": {
       "file_path": "docs/DEVELOPER/INDEX.md",
-      "total_lines": 282,
-      "non_empty_lines": 216,
+      "total_lines": 280,
+      "non_empty_lines": 214,
       "has_title": true,
       "has_toc": true,
       "has_code_blocks": false,
@@ -154,6 +159,16 @@
       "has_old_dates": false,
       "has_obsolete_refs": false,
       "has_broken_links": true
+    },
+    "DEVELOPER/._INDEX.md": {
+      "file_path": "docs/DEVELOPER/._INDEX.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
+    },
+    "DEVELOPER/._DOCUMENTATION_MAINTENANCE.md": {
+      "file_path": "docs/DEVELOPER/._DOCUMENTATION_MAINTENANCE.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
     },
     "DEVELOPER/DOCUMENTATION_MAINTENANCE.md": {
       "file_path": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
@@ -188,6 +203,11 @@
       "has_old_dates": false,
       "has_obsolete_refs": false,
       "has_broken_links": true
+    },
+    "DEVELOPER/._TEMPLATE_STANDARD_MARKDOWN.md": {
+      "file_path": "docs/DEVELOPER/._TEMPLATE_STANDARD_MARKDOWN.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
     },
     "DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md": {
       "file_path": "docs/DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md",
@@ -233,6 +253,11 @@
       "has_old_dates": false,
       "has_obsolete_refs": false,
       "has_broken_links": false
+    },
+    "DEVELOPER/GUIDES/._ALIAS_WORKFLOW_QUICK_GUIDE.md": {
+      "file_path": "docs/DEVELOPER/GUIDES/._ALIAS_WORKFLOW_QUICK_GUIDE.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
     },
     "DEVELOPER/GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md": {
       "file_path": "docs/DEVELOPER/GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md",
@@ -324,6 +349,16 @@
       "has_obsolete_refs": false,
       "has_broken_links": false
     },
+    "DEVELOPER/GUIDES/._CLEAN_SHUTDOWN_GUIDE.md": {
+      "file_path": "docs/DEVELOPER/GUIDES/._CLEAN_SHUTDOWN_GUIDE.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
+    },
+    "DEVELOPER/GUIDES/._CI_CD_PROFESSIONAL_GUIDE.md": {
+      "file_path": "docs/DEVELOPER/GUIDES/._CI_CD_PROFESSIONAL_GUIDE.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
+    },
     "DEVELOPER/GUIDES/LINTING_GUIDE.md": {
       "file_path": "docs/DEVELOPER/GUIDES/LINTING_GUIDE.md",
       "total_lines": 155,
@@ -338,6 +373,11 @@
       "has_old_dates": false,
       "has_obsolete_refs": false,
       "has_broken_links": false
+    },
+    "DEVELOPER/GUIDES/._WORKFLOW_COMPLETE_GUIDE.md": {
+      "file_path": "docs/DEVELOPER/GUIDES/._WORKFLOW_COMPLETE_GUIDE.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
     },
     "DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md": {
       "file_path": "docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md",
@@ -556,6 +596,11 @@
       "has_obsolete_refs": false,
       "has_broken_links": false
     },
+    "DEVELOPER/PLANS/._REORGANISATION_TESTS_STRUCTURE.md": {
+      "file_path": "docs/DEVELOPER/PLANS/._REORGANISATION_TESTS_STRUCTURE.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
+    },
     "DEVELOPER/REPORTS/CORRECTIONS_PROGRESS.md": {
       "file_path": "docs/DEVELOPER/REPORTS/CORRECTIONS_PROGRESS.md",
       "total_lines": 125,
@@ -601,6 +646,11 @@
       "has_obsolete_refs": false,
       "has_broken_links": false
     },
+    "DEVELOPER/REPORTS/._WORKFLOW_AMELIORATIONS.md": {
+      "file_path": "docs/DEVELOPER/REPORTS/._WORKFLOW_AMELIORATIONS.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
+    },
     "DEVELOPER/REPORTS/RAPPORT_PROGRES_FINAL_2025.md": {
       "file_path": "docs/DEVELOPER/REPORTS/RAPPORT_PROGRES_FINAL_2025.md",
       "total_lines": 133,
@@ -631,6 +681,11 @@
       "has_obsolete_refs": false,
       "has_broken_links": false
     },
+    "DEVELOPER/REPORTS/._SECURITY_IMPROVEMENTS_SUMMARY.md": {
+      "file_path": "docs/DEVELOPER/REPORTS/._SECURITY_IMPROVEMENTS_SUMMARY.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
+    },
     "DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md": {
       "file_path": "docs/DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
       "total_lines": 211,
@@ -655,18 +710,20 @@
       "has_title": true,
       "has_toc": true,
       "has_code_blocks": false,
-      "has_links": false,
+      "has_links": true,
       "has_images": false,
-      "quality_score": 60,
-      "issues": [],
+      "quality_score": 75,
+      "issues": [
+        "Liens potentiellement cassés"
+      ],
       "has_old_dates": false,
       "has_obsolete_refs": false,
-      "has_broken_links": false
+      "has_broken_links": true
     },
     "DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md": {
       "file_path": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
-      "total_lines": 289,
-      "non_empty_lines": 220,
+      "total_lines": 288,
+      "non_empty_lines": 219,
       "has_title": true,
       "has_toc": true,
       "has_code_blocks": true,
@@ -712,6 +769,11 @@
       "has_obsolete_refs": false,
       "has_broken_links": false
     },
+    "DEVELOPER/REPORTS/._OPTIMISATION_TESTS_RAM_FINALE_2025.md": {
+      "file_path": "docs/DEVELOPER/REPORTS/._OPTIMISATION_TESTS_RAM_FINALE_2025.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
+    },
     "DEVELOPER/REPORTS/RAPPORT_COMPLET_AMELIORATIONS_2025.md": {
       "file_path": "docs/DEVELOPER/REPORTS/RAPPORT_COMPLET_AMELIORATIONS_2025.md",
       "total_lines": 546,
@@ -726,6 +788,11 @@
       "has_old_dates": false,
       "has_obsolete_refs": false,
       "has_broken_links": false
+    },
+    "DEVELOPER/REPORTS/._AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md": {
+      "file_path": "docs/DEVELOPER/REPORTS/._AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
     },
     "DEVELOPER/REPORTS/AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md": {
       "file_path": "docs/DEVELOPER/REPORTS/AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md",
@@ -791,8 +858,8 @@
     },
     "DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_CURSOR.md": {
       "file_path": "docs/DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_CURSOR.md",
-      "total_lines": 178,
-      "non_empty_lines": 140,
+      "total_lines": 176,
+      "non_empty_lines": 138,
       "has_title": true,
       "has_toc": true,
       "has_code_blocks": true,
@@ -834,6 +901,16 @@
       "has_obsolete_refs": false,
       "has_broken_links": false
     },
+    "DEVELOPER/UTILITIES/optimisation/._RESUME_OPTIMISATION_CURSOR.md": {
+      "file_path": "docs/DEVELOPER/UTILITIES/optimisation/._RESUME_OPTIMISATION_CURSOR.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
+    },
+    "DEVELOPER/UTILITIES/optimisation/._RESUME_OPTIMISATION_MAC.md": {
+      "file_path": "docs/DEVELOPER/UTILITIES/optimisation/._RESUME_OPTIMISATION_MAC.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
+    },
     "GETTING_STARTED/INSTALLATION.md": {
       "file_path": "docs/GETTING_STARTED/INSTALLATION.md",
       "total_lines": 315,
@@ -850,6 +927,11 @@
       "has_old_dates": false,
       "has_obsolete_refs": false,
       "has_broken_links": true
+    },
+    "GETTING_STARTED/._INSTALLATION.md": {
+      "file_path": "docs/GETTING_STARTED/._INSTALLATION.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
     },
     "REPORTS/AMELIORATION_COUVERTURE_TESTS_20250731.md": {
       "file_path": "docs/REPORTS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
@@ -915,8 +997,8 @@
     },
     "REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md": {
       "file_path": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-      "total_lines": 267,
-      "non_empty_lines": 202,
+      "total_lines": 252,
+      "non_empty_lines": 191,
       "has_title": true,
       "has_toc": true,
       "has_code_blocks": false,
@@ -945,8 +1027,8 @@
       "has_obsolete_refs": false,
       "has_broken_links": false
     },
-    "REPORTS/RELEASES_AND_BILANS/._RAPPORT_OPTIMISATION_FINALE_20250812.md": {
-      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/._RAPPORT_OPTIMISATION_FINALE_20250812.md",
+    "REPORTS/RELEASES_AND_BILANS/._README.md": {
+      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/._README.md",
       "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
       "quality_score": 0
     },
@@ -972,15 +1054,16 @@
       "has_title": true,
       "has_toc": true,
       "has_code_blocks": true,
-      "has_links": false,
+      "has_links": true,
       "has_images": false,
-      "quality_score": 75,
+      "quality_score": 90,
       "issues": [
-        "Références obsolètes"
+        "Références obsolètes",
+        "Liens potentiellement cassés"
       ],
       "has_old_dates": false,
       "has_obsolete_refs": true,
-      "has_broken_links": false
+      "has_broken_links": true
     },
     "REPORTS/RELEASES_AND_BILANS/PLAN_VERSION_FINALE_ATHALIA_v1.0.0.md": {
       "file_path": "docs/REPORTS/RELEASES_AND_BILANS/PLAN_VERSION_FINALE_ATHALIA_v1.0.0.md",
@@ -997,8 +1080,8 @@
       "has_obsolete_refs": false,
       "has_broken_links": false
     },
-    "REPORTS/RELEASES_AND_BILANS/._README.md": {
-      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/._README.md",
+    "REPORTS/RELEASES_AND_BILANS/._RAPPORT_OPTIMISATION_FINALE_20250812.md": {
+      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/._RAPPORT_OPTIMISATION_FINALE_20250812.md",
       "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
       "quality_score": 0
     },
@@ -1036,25 +1119,26 @@
     },
     "REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md": {
       "file_path": "docs/REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-      "total_lines": 168,
-      "non_empty_lines": 130,
+      "total_lines": 166,
+      "non_empty_lines": 129,
       "has_title": true,
       "has_toc": true,
       "has_code_blocks": true,
-      "has_links": false,
+      "has_links": true,
       "has_images": false,
-      "quality_score": 75,
+      "quality_score": 90,
       "issues": [
-        "Dates obsolètes"
+        "Dates obsolètes",
+        "Liens potentiellement cassés"
       ],
       "has_old_dates": true,
       "has_obsolete_refs": false,
-      "has_broken_links": false
+      "has_broken_links": true
     },
     "REPORTS/RELEASES_AND_BILANS/README.md": {
       "file_path": "docs/REPORTS/RELEASES_AND_BILANS/README.md",
-      "total_lines": 111,
-      "non_empty_lines": 84,
+      "total_lines": 112,
+      "non_empty_lines": 85,
       "has_title": true,
       "has_toc": true,
       "has_code_blocks": false,
@@ -1113,6 +1197,23 @@
       "has_obsolete_refs": false,
       "has_broken_links": false
     },
+    "REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md": {
+      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "total_lines": 291,
+      "non_empty_lines": 224,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": true,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": true
+    },
     "REPORTS/RELEASES_AND_BILANS/SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md": {
       "file_path": "docs/REPORTS/RELEASES_AND_BILANS/SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
       "total_lines": 159,
@@ -1120,13 +1221,20 @@
       "has_title": true,
       "has_toc": true,
       "has_code_blocks": false,
-      "has_links": false,
+      "has_links": true,
       "has_images": false,
-      "quality_score": 60,
-      "issues": [],
+      "quality_score": 75,
+      "issues": [
+        "Liens potentiellement cassés"
+      ],
       "has_old_dates": false,
       "has_obsolete_refs": false,
-      "has_broken_links": false
+      "has_broken_links": true
+    },
+    "REPORTS/RELEASES_AND_BILANS/._RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md": {
+      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/._RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
     },
     "REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md": {
       "file_path": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
@@ -1135,13 +1243,40 @@
       "has_title": true,
       "has_toc": true,
       "has_code_blocks": true,
-      "has_links": false,
+      "has_links": true,
       "has_images": false,
-      "quality_score": 75,
-      "issues": [],
+      "quality_score": 90,
+      "issues": [
+        "Liens potentiellement cassés"
+      ],
       "has_old_dates": false,
       "has_obsolete_refs": false,
-      "has_broken_links": false
+      "has_broken_links": true
+    },
+    "REPORTS/RELEASES_AND_BILANS/._REORGANISATION_DOCUMENTATION_FINALE_20250811.md": {
+      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/._REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
+    },
+    "REPORTS/RELEASES_AND_BILANS/._PLAN_ACTION_AMELIORATIONS_FUTURES_ATHALIA_2025.md": {
+      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/._PLAN_ACTION_AMELIORATIONS_FUTURES_ATHALIA_2025.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
+    },
+    "REPORTS/RELEASES_AND_BILANS/._PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md": {
+      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/._PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
+    },
+    "REPORTS/RELEASES_AND_BILANS/._PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md": {
+      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/._PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
+    },
+    "REPORTS/RELEASES_AND_BILANS/._SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md": {
+      "file_path": "docs/REPORTS/RELEASES_AND_BILANS/._SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
     },
     "REPORTS/VALIDATION/VALIDATION_GENERATION_BACKUP_20250811.md": {
       "file_path": "docs/REPORTS/VALIDATION/VALIDATION_GENERATION_BACKUP_20250811.md",
@@ -1233,6 +1368,11 @@
       "has_obsolete_refs": false,
       "has_broken_links": false
     },
+    "REPORTS/CI_CD/._CI_CD_PROFESSIONAL_SETUP_COMPLETE.md": {
+      "file_path": "docs/REPORTS/CI_CD/._CI_CD_PROFESSIONAL_SETUP_COMPLETE.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
+    },
     "REPORTS/CI_CD/CI_CD_PRO_PRE_COMMIT_IMPLEMENTATION.md": {
       "file_path": "docs/REPORTS/CI_CD/CI_CD_PRO_PRE_COMMIT_IMPLEMENTATION.md",
       "total_lines": 249,
@@ -1240,13 +1380,20 @@
       "has_title": true,
       "has_toc": true,
       "has_code_blocks": true,
-      "has_links": false,
+      "has_links": true,
       "has_images": false,
-      "quality_score": 75,
-      "issues": [],
+      "quality_score": 90,
+      "issues": [
+        "Liens potentiellement cassés"
+      ],
       "has_old_dates": false,
       "has_obsolete_refs": false,
-      "has_broken_links": false
+      "has_broken_links": true
+    },
+    "REPORTS/CI_CD/._CI_CD_PRO_PRE_COMMIT_IMPLEMENTATION.md": {
+      "file_path": "docs/REPORTS/CI_CD/._CI_CD_PRO_PRE_COMMIT_IMPLEMENTATION.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
     },
     "REPORTS/CI_CD/CI_CD_PRO_PROGRESS_REPORT_20250731.md": {
       "file_path": "docs/REPORTS/CI_CD/CI_CD_PRO_PROGRESS_REPORT_20250731.md",
@@ -1323,21 +1470,6 @@
       "has_obsolete_refs": false,
       "has_broken_links": false
     },
-    "REPORTS/CORRECTIONS/CORRECTION_MASSIVE_DOCUMENTATION_20250803.md": {
-      "file_path": "docs/REPORTS/CORRECTIONS/CORRECTION_MASSIVE_DOCUMENTATION_20250803.md",
-      "total_lines": 247,
-      "non_empty_lines": 183,
-      "has_title": true,
-      "has_toc": true,
-      "has_code_blocks": true,
-      "has_links": false,
-      "has_images": false,
-      "quality_score": 75,
-      "issues": [],
-      "has_old_dates": false,
-      "has_obsolete_refs": false,
-      "has_broken_links": false
-    },
     "REPORTS/CORRECTIONS/AMELIORATION_TESTS_UNIFIED_ORCHESTRATOR_20250802.md": {
       "file_path": "docs/REPORTS/CORRECTIONS/AMELIORATION_TESTS_UNIFIED_ORCHESTRATOR_20250802.md",
       "total_lines": 141,
@@ -1383,6 +1515,73 @@
       "has_obsolete_refs": false,
       "has_broken_links": false
     },
+    "REPORTS/CORRECTIONS/RESUME_CORRECTION_LIENS_CASSES_20250812.md": {
+      "file_path": "docs/REPORTS/CORRECTIONS/RESUME_CORRECTION_LIENS_CASSES_20250812.md",
+      "total_lines": 166,
+      "non_empty_lines": 124,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": true,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [
+        "Liens potentiellement cassés"
+      ],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": true
+    },
+    "REPORTS/CORRECTIONS/._RESUME_CORRECTION_LIENS_CASSES_20250812.md": {
+      "file_path": "docs/REPORTS/CORRECTIONS/._RESUME_CORRECTION_LIENS_CASSES_20250812.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
+    },
+    "REPORTS/CORRECTIONS/SESSION_CORRECTION_LIENS_20250812.md": {
+      "file_path": "docs/REPORTS/CORRECTIONS/SESSION_CORRECTION_LIENS_20250812.md",
+      "total_lines": 199,
+      "non_empty_lines": 152,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": true,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 75,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/CORRECTIONS/._SESSION_CORRECTION_LIENS_20250812.md": {
+      "file_path": "docs/REPORTS/CORRECTIONS/._SESSION_CORRECTION_LIENS_20250812.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
+    },
+    "REPORTS/CORRECTIONS/ACCOMPLISSEMENT_FINAL_20250812.md": {
+      "file_path": "docs/REPORTS/CORRECTIONS/ACCOMPLISSEMENT_FINAL_20250812.md",
+      "total_lines": 222,
+      "non_empty_lines": 169,
+      "has_title": true,
+      "has_toc": true,
+      "has_code_blocks": false,
+      "has_links": false,
+      "has_images": false,
+      "quality_score": 60,
+      "issues": [],
+      "has_old_dates": false,
+      "has_obsolete_refs": false,
+      "has_broken_links": false
+    },
+    "REPORTS/CORRECTIONS/._ACCOMPLISSEMENT_FINAL_20250812.md": {
+      "file_path": "docs/REPORTS/CORRECTIONS/._ACCOMPLISSEMENT_FINAL_20250812.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
+    },
+    "REPORTS/CORRECTIONS/._CORRECTION_PYTHON_3_1_PHASE17_20250731.md": {
+      "file_path": "docs/REPORTS/CORRECTIONS/._CORRECTION_PYTHON_3_1_PHASE17_20250731.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
+    },
     "REPORTS/PLANS/EXECUTION_PERFORMANCE_SEMAINE1.md": {
       "file_path": "docs/REPORTS/PLANS/EXECUTION_PERFORMANCE_SEMAINE1.md",
       "total_lines": 340,
@@ -1397,23 +1596,6 @@
       "has_old_dates": false,
       "has_obsolete_refs": false,
       "has_broken_links": false
-    },
-    "REPORTS/PLANS/INDEX.md": {
-      "file_path": "docs/REPORTS/PLANS/INDEX.md",
-      "total_lines": 134,
-      "non_empty_lines": 100,
-      "has_title": true,
-      "has_toc": true,
-      "has_code_blocks": false,
-      "has_links": true,
-      "has_images": false,
-      "quality_score": 75,
-      "issues": [
-        "Liens potentiellement cassés"
-      ],
-      "has_old_dates": false,
-      "has_obsolete_refs": false,
-      "has_broken_links": true
     },
     "USER_GUIDES/CONTRIBUTING.md": {
       "file_path": "docs/USER_GUIDES/CONTRIBUTING.md",
@@ -1561,6 +1743,11 @@
       "has_obsolete_refs": false,
       "has_broken_links": true
     },
+    "USER_GUIDES/._INDEX.md": {
+      "file_path": "docs/USER_GUIDES/._INDEX.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
+    },
     "USER_GUIDES/README_AMELIORATIONS_FUTURES.md": {
       "file_path": "docs/USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
       "total_lines": 426,
@@ -1577,6 +1764,16 @@
       "has_old_dates": false,
       "has_obsolete_refs": false,
       "has_broken_links": true
+    },
+    "USER_GUIDES/._CONTRIBUTING.md": {
+      "file_path": "docs/USER_GUIDES/._CONTRIBUTING.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
+    },
+    "USER_GUIDES/._QUICK_START.md": {
+      "file_path": "docs/USER_GUIDES/._QUICK_START.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
     },
     "USER_GUIDES/robotics/REACHY_SETUP_GUIDE.md": {
       "file_path": "docs/USER_GUIDES/robotics/REACHY_SETUP_GUIDE.md",
@@ -1688,11 +1885,10 @@
       "has_images": true,
       "quality_score": 100,
       "issues": [
-        "Références obsolètes",
         "Liens potentiellement cassés"
       ],
       "has_old_dates": false,
-      "has_obsolete_refs": true,
+      "has_obsolete_refs": false,
       "has_broken_links": true
     },
     "API/COMMANDES.md": {
@@ -1793,6 +1989,11 @@
       "has_obsolete_refs": false,
       "has_broken_links": true
     },
+    "API/._INDEX.md": {
+      "file_path": "docs/API/._INDEX.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
+    },
     "API/COMMANDES_AVANCEES.md": {
       "file_path": "docs/API/COMMANDES_AVANCEES.md",
       "total_lines": 300,
@@ -1826,6 +2027,16 @@
       "has_old_dates": true,
       "has_obsolete_refs": true,
       "has_broken_links": true
+    },
+    "API/._ERROR_HANDLING.md": {
+      "file_path": "docs/API/._ERROR_HANDLING.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
+    },
+    "API/._REFERENCE.md": {
+      "file_path": "docs/API/._REFERENCE.md",
+      "error": "'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte",
+      "quality_score": 0
     }
   },
   "recommendations": {
@@ -2064,8 +2275,10 @@
       },
       {
         "file": "DEVELOPER/REPORTS/OPTIMISATION_TESTS_RAM_FINALE_2025.md",
-        "reason": "Qualité correcte mais améliorable (score: 60)",
-        "issues": []
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": [
+          "Liens potentiellement cassés"
+        ]
       },
       {
         "file": "DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
@@ -2176,9 +2389,10 @@
       },
       {
         "file": "REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "reason": "Qualité correcte mais améliorable (score: 90)",
         "issues": [
-          "Références obsolètes"
+          "Références obsolètes",
+          "Liens potentiellement cassés"
         ]
       },
       {
@@ -2200,9 +2414,10 @@
       },
       {
         "file": "REPORTS/RELEASES_AND_BILANS/PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
-        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "reason": "Qualité correcte mais améliorable (score: 90)",
         "issues": [
-          "Dates obsolètes"
+          "Dates obsolètes",
+          "Liens potentiellement cassés"
         ]
       },
       {
@@ -2228,14 +2443,25 @@
         "issues": []
       },
       {
+        "file": "REPORTS/RELEASES_AND_BILANS/RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": [
+          "Liens potentiellement cassés"
+        ]
+      },
+      {
         "file": "REPORTS/RELEASES_AND_BILANS/SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
-        "reason": "Qualité correcte mais améliorable (score: 60)",
-        "issues": []
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": [
+          "Liens potentiellement cassés"
+        ]
       },
       {
         "file": "REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-        "reason": "Qualité correcte mais améliorable (score: 75)",
-        "issues": []
+        "reason": "Qualité correcte mais améliorable (score: 90)",
+        "issues": [
+          "Liens potentiellement cassés"
+        ]
       },
       {
         "file": "REPORTS/VALIDATION/VALIDATION_GENERATION_BACKUP_20250811.md",
@@ -2269,8 +2495,10 @@
       },
       {
         "file": "REPORTS/CI_CD/CI_CD_PRO_PRE_COMMIT_IMPLEMENTATION.md",
-        "reason": "Qualité correcte mais améliorable (score: 75)",
-        "issues": []
+        "reason": "Qualité correcte mais améliorable (score: 90)",
+        "issues": [
+          "Liens potentiellement cassés"
+        ]
       },
       {
         "file": "REPORTS/CI_CD/CI_CD_PRO_PROGRESS_REPORT_20250731.md",
@@ -2298,11 +2526,6 @@
         "issues": []
       },
       {
-        "file": "REPORTS/CORRECTIONS/CORRECTION_MASSIVE_DOCUMENTATION_20250803.md",
-        "reason": "Qualité correcte mais améliorable (score: 75)",
-        "issues": []
-      },
-      {
         "file": "REPORTS/CORRECTIONS/AMELIORATION_TESTS_UNIFIED_ORCHESTRATOR_20250802.md",
         "reason": "Qualité correcte mais améliorable (score: 75)",
         "issues": []
@@ -2318,16 +2541,26 @@
         "issues": []
       },
       {
-        "file": "REPORTS/PLANS/EXECUTION_PERFORMANCE_SEMAINE1.md",
-        "reason": "Qualité correcte mais améliorable (score: 75)",
-        "issues": []
-      },
-      {
-        "file": "REPORTS/PLANS/INDEX.md",
+        "file": "REPORTS/CORRECTIONS/RESUME_CORRECTION_LIENS_CASSES_20250812.md",
         "reason": "Qualité correcte mais améliorable (score: 75)",
         "issues": [
           "Liens potentiellement cassés"
         ]
+      },
+      {
+        "file": "REPORTS/CORRECTIONS/SESSION_CORRECTION_LIENS_20250812.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/CORRECTIONS/ACCOMPLISSEMENT_FINAL_20250812.md",
+        "reason": "Qualité correcte mais améliorable (score: 60)",
+        "issues": []
+      },
+      {
+        "file": "REPORTS/PLANS/EXECUTION_PERFORMANCE_SEMAINE1.md",
+        "reason": "Qualité correcte mais améliorable (score: 75)",
+        "issues": []
       },
       {
         "file": "USER_GUIDES/CONTRIBUTING.md",
@@ -2435,7 +2668,6 @@
         "file": "API/INDEX.md",
         "reason": "Qualité correcte mais améliorable (score: 100)",
         "issues": [
-          "Références obsolètes",
           "Liens potentiellement cassés"
         ]
       },
@@ -2498,11 +2730,147 @@
         "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
       },
       {
-        "file": "REPORTS/RELEASES_AND_BILANS/._RAPPORT_OPTIMISATION_FINALE_20250812.md",
+        "file": "ARCHITECTURE/._ORGANISATION_WORKSPACE.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "DEVELOPER/._INDEX.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "DEVELOPER/._DOCUMENTATION_MAINTENANCE.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "DEVELOPER/._TEMPLATE_STANDARD_MARKDOWN.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "DEVELOPER/GUIDES/._ALIAS_WORKFLOW_QUICK_GUIDE.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "DEVELOPER/GUIDES/._CLEAN_SHUTDOWN_GUIDE.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "DEVELOPER/GUIDES/._CI_CD_PROFESSIONAL_GUIDE.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "DEVELOPER/GUIDES/._WORKFLOW_COMPLETE_GUIDE.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "DEVELOPER/PLANS/._REORGANISATION_TESTS_STRUCTURE.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "DEVELOPER/REPORTS/._WORKFLOW_AMELIORATIONS.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "DEVELOPER/REPORTS/._SECURITY_IMPROVEMENTS_SUMMARY.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "DEVELOPER/REPORTS/._OPTIMISATION_TESTS_RAM_FINALE_2025.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "DEVELOPER/REPORTS/._AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "DEVELOPER/UTILITIES/optimisation/._RESUME_OPTIMISATION_CURSOR.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "DEVELOPER/UTILITIES/optimisation/._RESUME_OPTIMISATION_MAC.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "GETTING_STARTED/._INSTALLATION.md",
         "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
       },
       {
         "file": "REPORTS/RELEASES_AND_BILANS/._README.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "REPORTS/RELEASES_AND_BILANS/._RAPPORT_OPTIMISATION_FINALE_20250812.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "REPORTS/RELEASES_AND_BILANS/._RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "REPORTS/RELEASES_AND_BILANS/._REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "REPORTS/RELEASES_AND_BILANS/._PLAN_ACTION_AMELIORATIONS_FUTURES_ATHALIA_2025.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "REPORTS/RELEASES_AND_BILANS/._PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "REPORTS/RELEASES_AND_BILANS/._PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "REPORTS/RELEASES_AND_BILANS/._SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "REPORTS/CI_CD/._CI_CD_PROFESSIONAL_SETUP_COMPLETE.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "REPORTS/CI_CD/._CI_CD_PRO_PRE_COMMIT_IMPLEMENTATION.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "REPORTS/CORRECTIONS/._RESUME_CORRECTION_LIENS_CASSES_20250812.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "REPORTS/CORRECTIONS/._SESSION_CORRECTION_LIENS_20250812.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "REPORTS/CORRECTIONS/._ACCOMPLISSEMENT_FINAL_20250812.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "REPORTS/CORRECTIONS/._CORRECTION_PYTHON_3_1_PHASE17_20250731.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "USER_GUIDES/._INDEX.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "USER_GUIDES/._CONTRIBUTING.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "USER_GUIDES/._QUICK_START.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "API/._INDEX.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "API/._ERROR_HANDLING.md",
+        "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
+      },
+      {
+        "file": "API/._REFERENCE.md",
         "reason": "Erreur de lecture: 'utf-8' codec can't decode byte 0xb0 in position 37: invalid start byte"
       }
     ],

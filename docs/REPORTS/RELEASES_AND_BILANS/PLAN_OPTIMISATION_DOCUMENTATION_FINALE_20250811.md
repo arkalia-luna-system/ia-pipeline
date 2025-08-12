@@ -37,7 +37,7 @@
 
 #### **🔧 Actions :**
 - **Fichier `NAVIGATION_GLOBALE.md` déjà supprimé** (doublon avec l'index principal)
-- **Mettre à jour** les références dans `../../../ARCHITECTURE/INDEX.md`
+- **Mettre à jour** les références dans l'index d'architecture principal
 - **Archiver** ou **mettre à jour** les fichiers d'archive
 
 ### **Phase 2 : Correction des Liens Cassés (Priorité HAUTE)**
