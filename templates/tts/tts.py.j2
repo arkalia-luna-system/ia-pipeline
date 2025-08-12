@@ -1,1 +1,334 @@
-{{project_name}} TTS starter
+"""
+Template pour le module Text-to-Speech (TTS) - {{ project_name }}
+
+Ce fichier est généré automatiquement par Athalia.
+Modifiez-le selon vos besoins spécifiques.
+"""
+
+import os
+import time
+import json
+import logging
+from typing import Dict, Any, Optional, List, Union
+from pathlib import Path
+from datetime import datetime
+import threading
+import queue
+
+# Configuration du logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+class TTSManager:
+    """
+    Gestionnaire Text-to-Speech intelligent pour {{ project_name }}.
+    
+    Gère la synthèse vocale avec support multi-voix et cache intelligent.
+    """
+    
+    def __init__(self, 
+                 output_dir: str = "tts_output",
+                 cache_size: int = 100,
+                 default_voice: str = "default"):
+        """
+        Initialise le gestionnaire TTS.
+        
+        Args:
+            output_dir: Dossier de sortie des fichiers audio
+            cache_size: Taille du cache des synthèses
+            default_voice: Voix par défaut
+        """
+        self.output_dir = Path(output_dir)
+        self.cache_size = cache_size
+        self.default_voice = default_voice
+        
+        # Cache des synthèses
+        self.synthesis_cache: Dict[str, Dict[str, Any]] = {}
+        self.voice_cache: Dict[str, Dict[str, Any]] = {}
+        
+        # File d'attente pour le traitement asynchrone
+        self.synthesis_queue = queue.Queue()
+        self.processing_thread = None
+        self.is_running = False
+        
+        # Configuration des voix disponibles
+        self.available_voices = {
+            "default": {
+                "name": "Voix par défaut",
+                "language": "fr-FR",
+                "speed": 1.0,
+                "pitch": 1.0,
+                "volume": 1.0
+            },
+            "fast": {
+                "name": "Voix rapide",
+                "language": "fr-FR",
+                "speed": 1.5,
+                "pitch": 1.0,
+                "volume": 1.0
+            },
+            "slow": {
+                "name": "Voix lente",
+                "language": "fr-FR",
+                "speed": 0.8,
+                "pitch": 1.0,
+                "volume": 1.0
+            }
+        }
+        
+        # Création du dossier de sortie
+        self.output_dir.mkdir(exist_ok=True)
+        
+        # Démarrage du thread de traitement
+        self._start_processing_thread()
+        
+        logger.info(f"TTSManager initialisé pour {output_dir}")
+    
+    def synthesize(self, 
+                   text: str, 
+                   voice: Optional[str] = None,
+                   output_filename: Optional[str] = None,
+                   async_mode: bool = False) -> Union[str, bool]:
+        """
+        Synthétise du texte en parole.
+        
+        Args:
+            text: Texte à synthétiser
+            voice: Voix à utiliser (None = voix par défaut)
+            output_filename: Nom du fichier de sortie (None = auto-généré)
+            async_mode: Mode asynchrone (True = ajoute à la queue)
+            
+        Returns:
+            Chemin du fichier audio ou True si mode asynchrone
+        """
+        try:
+            # Validation du texte
+            if not text or not text.strip():
+                raise ValueError("Le texte ne peut pas être vide")
+            
+            # Sélection de la voix
+            voice_name = voice or self.default_voice
+            if voice_name not in self.available_voices:
+                voice_name = self.default_voice
+                logger.warning(f"Voix {voice} non disponible, utilisation de {voice_name}")
+            
+            # Génération du nom de fichier
+            if not output_filename:
+                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                safe_text = "".join(c for c in text[:20] if c.isalnum() or c.isspace()).rstrip()
+                safe_text = safe_text.replace(" ", "_")
+                output_filename = f"tts_{safe_text}_{timestamp}.wav"
+            
+            # Vérification du cache
+            cache_key = f"{text}_{voice_name}"
+            if cache_key in self.synthesis_cache:
+                cached_item = self.synthesis_cache[cache_key]
+                if self._is_cache_valid(cached_item):
+                    logger.info(f"Synthèse récupérée depuis le cache: {cached_item['file_path']}")
+                    return str(cached_item['file_path'])
+            
+            # Mode asynchrone
+            if async_mode:
+                self.synthesis_queue.put({
+                    "text": text,
+                    "voice": voice_name,
+                    "output_filename": output_filename,
+                    "timestamp": time.time()
+                })
+                return True
+            
+            # Mode synchrone
+            return self._process_synthesis(text, voice_name, output_filename)
+            
+        except Exception as e:
+            logger.error(f"Erreur lors de la synthèse: {e}")
+            return False
+    
+    def _process_synthesis(self, text: str, voice: str, output_filename: str) -> str:
+        """Traite la synthèse vocale."""
+        try:
+            # Configuration de la voix
+            voice_config = self.available_voices[voice]
+            
+            # Simulation de la synthèse (remplacer par votre moteur TTS)
+            output_path = self.output_dir / output_filename
+            
+            # Création d'un fichier audio factice (remplacer par votre logique)
+            self._create_dummy_audio(output_path, text, voice_config)
+            
+            # Mise en cache
+            cache_key = f"{text}_{voice}"
+            self.synthesis_cache[cache_key] = {
+                "file_path": output_path,
+                "voice": voice,
+                "timestamp": time.time(),
+                "text_length": len(text),
+                "file_size": output_path.stat().st_size if output_path.exists() else 0
+            }
+            
+            # Nettoyage du cache si nécessaire
+            if len(self.synthesis_cache) > self.cache_size:
+                self._cleanup_cache()
+            
+            logger.info(f"Synthèse terminée: {output_path}")
+            return str(output_path)
+            
+        except Exception as e:
+            logger.error(f"Erreur lors du traitement de la synthèse: {e}")
+            raise
+    
+    def _create_dummy_audio(self, output_path: Path, text: str, voice_config: Dict[str, Any]) -> None:
+        """Crée un fichier audio factice pour la démonstration."""
+        # Simulation de création d'audio
+        # Dans un vrai projet, utilisez gTTS, pyttsx3, ou autre moteur TTS
+        
+        # Création d'un fichier de métadonnées pour la démonstration
+        metadata = {
+            "text": text,
+            "voice": voice_config,
+            "generated_at": datetime.now().isoformat(),
+            "duration_estimate": len(text) * 0.1,  # Estimation basique
+            "file_type": "wav",
+            "sample_rate": 22050,
+            "channels": 1
+        }
+        
+        # Sauvegarde des métadonnées
+        metadata_path = output_path.with_suffix('.json')
+        with open(metadata_path, 'w', encoding='utf-8') as f:
+            json.dump(metadata, f, indent=2, ensure_ascii=False)
+        
+        # Création d'un fichier audio factice (1 seconde de silence)
+        # Dans un vrai projet, générez l'audio réel ici
+        logger.info(f"Fichier audio factice créé: {output_path}")
+    
+    def _is_cache_valid(self, cached_item: Dict[str, Any]) -> bool:
+        """Vérifie si un élément du cache est encore valide."""
+        # Cache valide pendant 1 heure
+        cache_lifetime = 3600  # 1 heure en secondes
+        return (time.time() - cached_item["timestamp"]) < cache_lifetime
+    
+    def _cleanup_cache(self) -> None:
+        """Nettoie le cache en supprimant les éléments les plus anciens."""
+        if len(self.synthesis_cache) <= self.cache_size:
+            return
+        
+        # Tri par timestamp
+        sorted_items = sorted(
+            self.synthesis_cache.items(),
+            key=lambda x: x[1]["timestamp"]
+        )
+        
+        # Suppression des éléments les plus anciens
+        to_remove = len(sorted_items) - self.cache_size
+        for i in range(to_remove):
+            key, item = sorted_items[i]
+            del self.synthesis_cache[key]
+            
+            # Suppression du fichier audio si il existe
+            try:
+                if Path(item["file_path"]).exists():
+                    Path(item["file_path"]).unlink()
+            except Exception as e:
+                logger.warning(f"Impossible de supprimer {item['file_path']}: {e}")
+        
+        logger.info(f"Cache nettoyé: {to_remove} éléments supprimés")
+    
+    def _start_processing_thread(self) -> None:
+        """Démarre le thread de traitement asynchrone."""
+        if self.processing_thread and self.processing_thread.is_alive():
+            return
+        
+        self.is_running = True
+        self.processing_thread = threading.Thread(target=self._processing_worker, daemon=True)
+        self.processing_thread.start()
+        logger.info("Thread de traitement TTS démarré")
+    
+    def _processing_worker(self) -> None:
+        """Worker thread pour le traitement asynchrone."""
+        while self.is_running:
+            try:
+                # Attente d'un élément dans la queue
+                synthesis_request = self.synthesis_queue.get(timeout=1)
+                
+                # Traitement de la synthèse
+                self._process_synthesis(
+                    synthesis_request["text"],
+                    synthesis_request["voice"],
+                    synthesis_request["output_filename"]
+                )
+                
+                # Marquage de la tâche comme terminée
+                self.synthesis_queue.task_done()
+                
+            except queue.Empty:
+                continue
+            except Exception as e:
+                logger.error(f"Erreur dans le worker TTS: {e}")
+    
+    def get_available_voices(self) -> Dict[str, Dict[str, Any]]:
+        """Retourne la liste des voix disponibles."""
+        return self.available_voices.copy()
+    
+    def add_voice(self, voice_id: str, voice_config: Dict[str, Any]) -> bool:
+        """Ajoute une nouvelle voix."""
+        try:
+            if voice_id in self.available_voices:
+                logger.warning(f"La voix {voice_id} existe déjà, mise à jour")
+            
+            self.available_voices[voice_id] = voice_config
+            logger.info(f"Voix {voice_id} ajoutée/mise à jour")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Erreur lors de l'ajout de la voix {voice_id}: {e}")
+            return False
+    
+    def get_stats(self) -> Dict[str, Any]:
+        """Retourne les statistiques du TTS."""
+        return {
+            "cache_size": len(self.synthesis_cache),
+            "max_cache_size": self.cache_size,
+            "available_voices": len(self.available_voices),
+            "queue_size": self.synthesis_queue.qsize(),
+            "processing_thread_active": self.processing_thread.is_alive() if self.processing_thread else False,
+            "output_directory": str(self.output_dir),
+            "total_synthesized": len(self.synthesis_cache)
+        }
+    
+    def stop(self) -> None:
+        """Arrête le gestionnaire TTS."""
+        self.is_running = False
+        if self.processing_thread and self.processing_thread.is_alive():
+            self.processing_thread.join(timeout=5)
+        logger.info("TTSManager arrêté")
+
+# Instance globale pour utilisation simple
+tts = TTSManager()
+
+# Fonctions utilitaires
+def quick_synthesize(text: str, voice: Optional[str] = None) -> str:
+    """Synthèse rapide de texte."""
+    return tts.synthesize(text, voice)
+
+def async_synthesize(text: str, voice: Optional[str] = None) -> bool:
+    """Synthèse asynchrone de texte."""
+    return tts.synthesize(text, voice, async_mode=True)
+
+if __name__ == "__main__":
+    # Exemple d'utilisation
+    print("🎤 TTSManager - Template Athalia")
+    print("=" * 40)
+    
+    # Test des fonctionnalités
+    result = tts.synthesize("Bonjour, ceci est un test de synthèse vocale.")
+    print(f"Synthèse terminée: {result}")
+    print(f"Statistiques: {tts.get_stats()}")
+    
+    # Test asynchrone
+    tts.synthesize("Test asynchrone", async_mode=True)
+    print("Synthèse asynchrone ajoutée à la queue")
+    
+    # Attente de fin
+    time.sleep(2)
+    print(f"Statistiques finales: {tts.get_stats()}")
