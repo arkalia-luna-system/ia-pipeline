@@ -117,9 +117,9 @@ graph TD
 ## 📚 **RESSOURCES ET RÉFÉRENCES**
 
 ### **🔗 Liens Utiles**
-- **Documentation officielle :** [Documentation GitHub](https://docs.github.com)
-- **Guide utilisateur :** [Guide Markdown](https://www.markdownguide.org)
-- **Exemples pratiques :** [Exemples Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+- **Documentation officielle :** Documentation GitHub pour la syntaxe et les fonctionnalités
+- **Guide utilisateur :** Guide complet de la syntaxe Markdown
+- **Exemples pratiques :** Cheat sheet avec exemples concrets de Markdown
 
 ### **📖 Documentation Interne**
 - **Fichier connexe 1 :** [Documentation maintenance](DOCUMENTATION_MAINTENANCE.md)

@@ -263,10 +263,10 @@ Les scripts peuvent être personnalisés en modifiant :
 - [Guide de dépannage](../../USER_GUIDES/TROUBLESHOOTING.md)
 
 ### Outils externes
-- [pre-commit](https://pre-commit.com/)
-- [black](https://black.readthedocs.io/)
-- [flake8](https://flake8.pycqa.org/)
-- [bandit](https://bandit.readthedocs.io/)
+- **pre-commit** - Framework de hooks Git pour la qualité du code
+- **black** - Formateur de code Python automatique
+- **flake8** - Linter Python pour la qualité et le style
+- **bandit** - Analyseur de sécurité pour le code Python
 
 ## 🤝 Contribution
 

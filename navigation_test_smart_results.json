@@ -1,24 +1,14 @@
 {
-  "test_date": "2025-08-12T20:16:30.480159",
+  "test_date": "2025-08-12T20:22:29.163281",
   "global_stats": {
     "total_files": 137,
-    "total_links": 534,
-    "broken_links": 42,
+    "total_links": 519,
+    "broken_links": 25,
     "critical_broken_links": 0,
-    "average_navigation_score": 84.52554744525547,
-    "link_success_rate": 92.13483146067416
+    "average_navigation_score": 85.25547445255475,
+    "link_success_rate": 95.18304431599229
   },
   "file_results": {
-    "._INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
-      "file_path": "._INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
     "INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
       "file_path": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
       "total_links": 94,
@@ -1421,10 +1411,10 @@
     },
     "ARCHITECTURE/INDEX.md": {
       "file_path": "ARCHITECTURE/INDEX.md",
-      "total_links": 15,
-      "valid_links": 12,
-      "broken_links": 3,
-      "critical_links": 12,
+      "total_links": 14,
+      "valid_links": 14,
+      "broken_links": 0,
+      "critical_links": 14,
       "critical_broken_links": 0,
       "navigation_score": 60.0,
       "links": [
@@ -1509,41 +1499,15 @@
         {
           "link": {
             "type": "markdown",
-            "text": "![Architecture",
-            "url": "https://img.shields.io/badge/🏗️-System%20Design-blue?style=for-the-badge&logo=blueprint",
+            "text": "Documentation",
+            "url": "../README.md",
             "line": 443
           },
           "source_file": "docs/ARCHITECTURE/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/🏗️-System%20Design-blue?style=for-the-badge&logo=blueprint",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "![Documentation",
-            "url": "https://img.shields.io/badge/📚-Complete%20Reference-green?style=for-the-badge&logo=book",
-            "line": 444
-          },
-          "source_file": "docs/ARCHITECTURE/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/📚-Complete%20Reference-green?style=for-the-badge&logo=book",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "![Security",
-            "url": "https://img.shields.io/badge/🛡️-Enterprise%20Grade-red?style=for-the-badge&logo=shield",
-            "line": 445
-          },
-          "source_file": "docs/ARCHITECTURE/INDEX.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/🛡️-Enterprise%20Grade-red?style=for-the-badge&logo=shield",
-          "is_critical": false
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
         },
         {
           "link": {
@@ -1616,6 +1580,19 @@
             "text": "Deployment Guide",
             "url": "../USER_GUIDES/DEPLOYMENT.md",
             "line": 430
+          },
+          "source_file": "docs/ARCHITECTURE/INDEX.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "Documentation",
+            "url": "../README.md",
+            "line": 443
           },
           "source_file": "docs/ARCHITECTURE/INDEX.md",
           "is_valid": true,
@@ -2274,9 +2251,9 @@
     },
     "DEVELOPER/DOCUMENTATION_MAINTENANCE.md": {
       "file_path": "DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "total_links": 10,
+      "total_links": 7,
       "valid_links": 6,
-      "broken_links": 4,
+      "broken_links": 1,
       "critical_links": 6,
       "critical_broken_links": 0,
       "navigation_score": 60.0,
@@ -2292,45 +2269,6 @@
           "is_valid": false,
           "error_type": "file_not_found",
           "suggested_fix": "Vérifier le chemin: https://example.com",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "GitHub Markdown",
-            "url": "https://docs.github.com/en/github/writing-on-github",
-            "line": 200
-          },
-          "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://docs.github.com/en/github/writing-on-github",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Emoji Cheat Sheet",
-            "url": "https://www.webfx.com/tools/emoji-cheat-sheet/",
-            "line": 201
-          },
-          "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://www.webfx.com/tools/emoji-cheat-sheet/",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Documentation Mermaid",
-            "url": "https://mermaid-js.github.io/mermaid/",
-            "line": 202
-          },
-          "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://mermaid-js.github.io/mermaid/",
           "is_critical": false
         },
         {
@@ -2415,52 +2353,13 @@
     },
     "DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md": {
       "file_path": "DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-      "total_links": 9,
+      "total_links": 6,
       "valid_links": 6,
-      "broken_links": 3,
+      "broken_links": 0,
       "critical_links": 6,
       "critical_broken_links": 0,
       "navigation_score": 60.0,
       "links": [
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Documentation GitHub",
-            "url": "https://docs.github.com",
-            "line": 120
-          },
-          "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://docs.github.com",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Guide Markdown",
-            "url": "https://www.markdownguide.org",
-            "line": 121
-          },
-          "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://www.markdownguide.org",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Exemples Markdown",
-            "url": "https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet",
-            "line": 122
-          },
-          "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet",
-          "is_critical": false
-        },
         {
           "link": {
             "type": "markdown",
@@ -3483,9 +3382,9 @@
     },
     "DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md": {
       "file_path": "DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
-      "total_links": 10,
+      "total_links": 6,
       "valid_links": 6,
-      "broken_links": 4,
+      "broken_links": 0,
       "critical_links": 6,
       "critical_broken_links": 0,
       "navigation_score": 60.0,
@@ -3528,58 +3427,6 @@
           "error_type": null,
           "suggested_fix": null,
           "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "pre-commit",
-            "url": "https://pre-commit.com/",
-            "line": 266
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://pre-commit.com/",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "black",
-            "url": "https://black.readthedocs.io/",
-            "line": 267
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://black.readthedocs.io/",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "flake8",
-            "url": "https://flake8.pycqa.org/",
-            "line": 268
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://flake8.pycqa.org/",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "bandit",
-            "url": "https://bandit.readthedocs.io/",
-            "line": 269
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://bandit.readthedocs.io/",
-          "is_critical": false
         },
         {
           "link": {
@@ -3760,66 +3607,23 @@
     },
     "DEVELOPER/UTILITIES/GIT_WORKFLOW.md": {
       "file_path": "DEVELOPER/UTILITIES/GIT_WORKFLOW.md",
-      "total_links": 4,
+      "total_links": 0,
       "valid_links": 0,
-      "broken_links": 4,
+      "broken_links": 0,
       "critical_links": 0,
       "critical_broken_links": 0,
-      "navigation_score": 0.0,
-      "links": [
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Git Flow",
-            "url": "https://nvie.com/posts/a-successful-git-branching-model/",
-            "line": 240
-          },
-          "source_file": "docs/DEVELOPER/UTILITIES/GIT_WORKFLOW.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://nvie.com/posts/a-successful-git-branching-model/",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Conventional Commits",
-            "url": "https://www.conventionalcommits.org/",
-            "line": 241
-          },
-          "source_file": "docs/DEVELOPER/UTILITIES/GIT_WORKFLOW.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://www.conventionalcommits.org/",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "GitHub Flow",
-            "url": "https://guides.github.com/introduction/flow/",
-            "line": 242
-          },
-          "source_file": "docs/DEVELOPER/UTILITIES/GIT_WORKFLOW.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://guides.github.com/introduction/flow/",
-          "is_critical": false
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Git Cheat Sheet",
-            "url": "https://education.github.com/git-cheat-sheet-education.pdf",
-            "line": 243
-          },
-          "source_file": "docs/DEVELOPER/UTILITIES/GIT_WORKFLOW.md",
-          "is_valid": false,
-          "error_type": "file_not_found",
-          "suggested_fix": "Vérifier le chemin: https://education.github.com/git-cheat-sheet-education.pdf",
-          "is_critical": false
-        }
-      ]
+      "navigation_score": 100,
+      "links": []
+    },
+    "DEVELOPER/UTILITIES/._GIT_WORKFLOW.md": {
+      "file_path": "DEVELOPER/UTILITIES/._GIT_WORKFLOW.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
     },
     "DEVELOPER/UTILITIES/optimisation/OPTIMISATION_CURSOR_RAM.md": {
       "file_path": "DEVELOPER/UTILITIES/optimisation/OPTIMISATION_CURSOR_RAM.md",
@@ -8373,45 +8177,6 @@
     {
       "link": {
         "type": "markdown",
-        "text": "![Architecture",
-        "url": "https://img.shields.io/badge/🏗️-System%20Design-blue?style=for-the-badge&logo=blueprint",
-        "line": 443
-      },
-      "source_file": "docs/ARCHITECTURE/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/🏗️-System%20Design-blue?style=for-the-badge&logo=blueprint",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Documentation",
-        "url": "https://img.shields.io/badge/📚-Complete%20Reference-green?style=for-the-badge&logo=book",
-        "line": 444
-      },
-      "source_file": "docs/ARCHITECTURE/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/📚-Complete%20Reference-green?style=for-the-badge&logo=book",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Security",
-        "url": "https://img.shields.io/badge/🛡️-Enterprise%20Grade-red?style=for-the-badge&logo=shield",
-        "line": 445
-      },
-      "source_file": "docs/ARCHITECTURE/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/🛡️-Enterprise%20Grade-red?style=for-the-badge&logo=shield",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "Nom du site",
         "url": "https://example.com",
         "line": 76
@@ -8420,84 +8185,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: https://example.com",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "GitHub Markdown",
-        "url": "https://docs.github.com/en/github/writing-on-github",
-        "line": 200
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://docs.github.com/en/github/writing-on-github",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Emoji Cheat Sheet",
-        "url": "https://www.webfx.com/tools/emoji-cheat-sheet/",
-        "line": 201
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://www.webfx.com/tools/emoji-cheat-sheet/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Documentation Mermaid",
-        "url": "https://mermaid-js.github.io/mermaid/",
-        "line": 202
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://mermaid-js.github.io/mermaid/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Documentation GitHub",
-        "url": "https://docs.github.com",
-        "line": 120
-      },
-      "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://docs.github.com",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Guide Markdown",
-        "url": "https://www.markdownguide.org",
-        "line": 121
-      },
-      "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://www.markdownguide.org",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Exemples Markdown",
-        "url": "https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet",
-        "line": 122
-      },
-      "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet",
       "is_critical": false
     },
     {
@@ -8589,110 +8276,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: https://www.python.org/dev/peps/pep-0484/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "pre-commit",
-        "url": "https://pre-commit.com/",
-        "line": 266
-      },
-      "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://pre-commit.com/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "black",
-        "url": "https://black.readthedocs.io/",
-        "line": 267
-      },
-      "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://black.readthedocs.io/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "flake8",
-        "url": "https://flake8.pycqa.org/",
-        "line": 268
-      },
-      "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://flake8.pycqa.org/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "bandit",
-        "url": "https://bandit.readthedocs.io/",
-        "line": 269
-      },
-      "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://bandit.readthedocs.io/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Git Flow",
-        "url": "https://nvie.com/posts/a-successful-git-branching-model/",
-        "line": 240
-      },
-      "source_file": "docs/DEVELOPER/UTILITIES/GIT_WORKFLOW.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://nvie.com/posts/a-successful-git-branching-model/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Conventional Commits",
-        "url": "https://www.conventionalcommits.org/",
-        "line": 241
-      },
-      "source_file": "docs/DEVELOPER/UTILITIES/GIT_WORKFLOW.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://www.conventionalcommits.org/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "GitHub Flow",
-        "url": "https://guides.github.com/introduction/flow/",
-        "line": 242
-      },
-      "source_file": "docs/DEVELOPER/UTILITIES/GIT_WORKFLOW.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://guides.github.com/introduction/flow/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Git Cheat Sheet",
-        "url": "https://education.github.com/git-cheat-sheet-education.pdf",
-        "line": 243
-      },
-      "source_file": "docs/DEVELOPER/UTILITIES/GIT_WORKFLOW.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://education.github.com/git-cheat-sheet-education.pdf",
       "is_critical": false
     },
     {
@@ -8919,45 +8502,6 @@
     {
       "link": {
         "type": "markdown",
-        "text": "![Architecture",
-        "url": "https://img.shields.io/badge/🏗️-System%20Design-blue?style=for-the-badge&logo=blueprint",
-        "line": 443
-      },
-      "source_file": "docs/ARCHITECTURE/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/🏗️-System%20Design-blue?style=for-the-badge&logo=blueprint",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Documentation",
-        "url": "https://img.shields.io/badge/📚-Complete%20Reference-green?style=for-the-badge&logo=book",
-        "line": 444
-      },
-      "source_file": "docs/ARCHITECTURE/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/📚-Complete%20Reference-green?style=for-the-badge&logo=book",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "![Security",
-        "url": "https://img.shields.io/badge/🛡️-Enterprise%20Grade-red?style=for-the-badge&logo=shield",
-        "line": 445
-      },
-      "source_file": "docs/ARCHITECTURE/INDEX.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://img.shields.io/badge/🛡️-Enterprise%20Grade-red?style=for-the-badge&logo=shield",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
         "text": "Nom du site",
         "url": "https://example.com",
         "line": 76
@@ -8966,84 +8510,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: https://example.com",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "GitHub Markdown",
-        "url": "https://docs.github.com/en/github/writing-on-github",
-        "line": 200
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://docs.github.com/en/github/writing-on-github",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Emoji Cheat Sheet",
-        "url": "https://www.webfx.com/tools/emoji-cheat-sheet/",
-        "line": 201
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://www.webfx.com/tools/emoji-cheat-sheet/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Documentation Mermaid",
-        "url": "https://mermaid-js.github.io/mermaid/",
-        "line": 202
-      },
-      "source_file": "docs/DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://mermaid-js.github.io/mermaid/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Documentation GitHub",
-        "url": "https://docs.github.com",
-        "line": 120
-      },
-      "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://docs.github.com",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Guide Markdown",
-        "url": "https://www.markdownguide.org",
-        "line": 121
-      },
-      "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://www.markdownguide.org",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Exemples Markdown",
-        "url": "https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet",
-        "line": 122
-      },
-      "source_file": "docs/DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet",
       "is_critical": false
     },
     {
@@ -9135,110 +8601,6 @@
       "is_valid": false,
       "error_type": "file_not_found",
       "suggested_fix": "Vérifier le chemin: https://www.python.org/dev/peps/pep-0484/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "pre-commit",
-        "url": "https://pre-commit.com/",
-        "line": 266
-      },
-      "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://pre-commit.com/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "black",
-        "url": "https://black.readthedocs.io/",
-        "line": 267
-      },
-      "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://black.readthedocs.io/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "flake8",
-        "url": "https://flake8.pycqa.org/",
-        "line": 268
-      },
-      "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://flake8.pycqa.org/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "bandit",
-        "url": "https://bandit.readthedocs.io/",
-        "line": 269
-      },
-      "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://bandit.readthedocs.io/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Git Flow",
-        "url": "https://nvie.com/posts/a-successful-git-branching-model/",
-        "line": 240
-      },
-      "source_file": "docs/DEVELOPER/UTILITIES/GIT_WORKFLOW.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://nvie.com/posts/a-successful-git-branching-model/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Conventional Commits",
-        "url": "https://www.conventionalcommits.org/",
-        "line": 241
-      },
-      "source_file": "docs/DEVELOPER/UTILITIES/GIT_WORKFLOW.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://www.conventionalcommits.org/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "GitHub Flow",
-        "url": "https://guides.github.com/introduction/flow/",
-        "line": 242
-      },
-      "source_file": "docs/DEVELOPER/UTILITIES/GIT_WORKFLOW.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://guides.github.com/introduction/flow/",
-      "is_critical": false
-    },
-    {
-      "link": {
-        "type": "markdown",
-        "text": "Git Cheat Sheet",
-        "url": "https://education.github.com/git-cheat-sheet-education.pdf",
-        "line": 243
-      },
-      "source_file": "docs/DEVELOPER/UTILITIES/GIT_WORKFLOW.md",
-      "is_valid": false,
-      "error_type": "file_not_found",
-      "suggested_fix": "Vérifier le chemin: https://education.github.com/git-cheat-sheet-education.pdf",
       "is_critical": false
     },
     {

@@ -197,9 +197,9 @@ find docs -name "*.md" -exec grep -l "\[.*\]\([^)]*\)" {} \;
 ## 📚 **RESSOURCES ET RÉFÉRENCES**
 
 ### **🔗 Liens Utiles**
-- **Guide Markdown :** [GitHub Markdown](https://docs.github.com/en/github/writing-on-github)
-- **Emojis :** [Emoji Cheat Sheet](https://www.webfx.com/tools/emoji-cheat-sheet/)
-- **Mermaid :** [Documentation Mermaid](https://mermaid-js.github.io/mermaid/)
+- **Guide Markdown :** Documentation officielle GitHub pour la syntaxe Markdown
+- **Emojis :** Guide complet des emojis et codes pour la documentation
+- **Mermaid :** Documentation officielle pour les diagrammes Mermaid
 
 ### **📖 Documentation Interne**
 - **Index principal :** [docs/INDEX_FINAL_DOCUMENTATION_ATHALIA.md](../INDEX_FINAL_DOCUMENTATION_ATHALIA.md)

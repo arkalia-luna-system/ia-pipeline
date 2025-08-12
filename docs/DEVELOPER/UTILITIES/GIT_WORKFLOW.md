@@ -237,7 +237,7 @@ git commit
 
 ## 📚 Ressources
 
-- [Git Flow](https://nvie.com/posts/a-successful-git-branching-model/)
-- [Conventional Commits](https://www.conventionalcommits.org/)
-- [GitHub Flow](https://guides.github.com/introduction/flow/)
-- [Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
+- **Git Flow** - Modèle de branchement Git réussi par Vincent Driessen
+- **Conventional Commits** - Standard pour les messages de commit
+- **GitHub Flow** - Workflow de développement GitHub recommandé
+- **Git Cheat Sheet** - Guide de référence rapide pour Git

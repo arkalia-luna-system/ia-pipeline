@@ -440,9 +440,7 @@ graph TB
 
 *Professional system design for enterprise-grade DevOps automation*
 
-[![Architecture](https://img.shields.io/badge/🏗️-System%20Design-blue?style=for-the-badge&logo=blueprint)](.)
-[![Documentation](https://img.shields.io/badge/📚-Complete%20Reference-green?style=for-the-badge&logo=book)](../README.md)
-[![Security](https://img.shields.io/badge/🛡️-Enterprise%20Grade-red?style=for-the-badge&logo=shield)](../DEVELOPER/SECURITY_LINTING_GUIDE.md)
+**🏗️ System Design** | **📚 Complete Reference** - [Documentation](../README.md) | **🛡️ Enterprise Grade** - Security Implementation
 
 **Last Updated:** August 4, 2025 | **Version:** 11.0 | **Status:** Production Ready
 
