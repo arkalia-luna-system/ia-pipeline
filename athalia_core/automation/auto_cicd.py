@@ -98,7 +98,7 @@ class AutoCICD:
                         if line.strip() and not line.startswith("#")
                     ]
                     dependencies["python"] = deps
-            except Exception:
+            except (OSError, UnicodeDecodeError):
                 pass
         # Node.js
         package_file = self.project_path / "package.json"
@@ -109,7 +109,7 @@ class AutoCICD:
                     deps = list(data.get("dependencies", {}).keys())
                     dev_deps = list(data.get("devDependencies", {}).keys())
                     dependencies["nodejs"] = deps + dev_deps
-            except Exception:
+            except (OSError, UnicodeDecodeError, json.JSONDecodeError):
                 pass
         return dependencies
 
@@ -166,13 +166,13 @@ class AutoCICD:
     def _save_cicd_configs(self, github_actions, docker_config, deployment_config):
         from pathlib import Path
 
-        ci_dir = Path(self.project_path) / ".f" / "f"
+        ci_dir = Path(self.project_path) / ".ci" / "configs"
         ci_dir.mkdir(parents=True, exist_ok=True)
-        (ci_dir / "ci.f(f").write_text("# CI/CD config")
+        (ci_dir / "ci_config.yaml").write_text("# CI/CD config")
 
     def _get_created_files(self) -> list[str]:
-        # Retourne le chemin du fichier ci.f(f) pour les tests
-        ci_file = self.project_path / ".f" / "f" / "ci.f(f"
+        # Retourne le chemin du fichier ci_config.yaml pour les tests
+        ci_file = self.project_path / ".ci" / "configs" / "ci_config.yaml"
         return [str(ci_file)] if ci_file.exists() else []
 
 
@@ -180,10 +180,10 @@ def generate_github_ci_yaml(outdir):
     from pathlib import Path
 
     outdir = Path(str(outdir))  # Force la conversion
-    ci_dir = outdir / ".f" / "f"
+    ci_dir = outdir / ".ci" / "configs"
     ci_dir.mkdir(parents=True, exist_ok=True)
-    (ci_dir / "ci.f(f").write_text("# CI/CD config")
-    logger.debug(f"Fichier généré: {ci_dir / 'ci.f(f'}")
+    (ci_dir / "ci_config.yaml").write_text("# CI/CD config")
+    logger.debug(f"Fichier généré: {ci_dir / 'ci_config.yaml'}")
 
 
 __all__ = ["AutoCICD", "generate_github_ci_yaml"]

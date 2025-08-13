@@ -1,14 +1,16 @@
 """
 Tests complets pour ros2_validator.py
 Couverture: 100% des fonctionnalités de ros2_validator
-Tests: 20 tests unitaires et d'intégration
+Tests: 15 tests unitaires et d'intégration
 """
 
 import tempfile
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
-from athalia_core.ros2_validator import ROS2Validator, validate_ros2_package
+import pytest
+
+from athalia_core.robotics.ros2_validator import ROS2Validator, validate_ros2_package
 
 
 class TestROS2Validator:
@@ -226,12 +228,10 @@ def test_talker():
         self.validator._check_test_files()
         assert len(self.validator.validation_results["test_files"]) == 1
 
-    @patch("athalia_core.ros2_validator.validate_and_run")
+    @patch("athalia_core.robotics.ros2_validator.validate_and_run")
     def test_check_dependencies_success(self, mock_run):
         """Test de vérification des dépendances réussie"""
         # Créer un mock qui simule subprocess.CompletedProcess
-        from unittest.mock import Mock
-
         mock_result = Mock()
         mock_result.returncode = 0
         mock_result.stderr = ""

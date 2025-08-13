@@ -232,7 +232,11 @@ def main(test_mode=False):
                     continue
                 report_file = os.path.join(outdir, "integration_report.log")
                 if os.path.exists(report_file):
-                    logger.info(open(report_file).read())
+                    try:
+                        with open(report_file, encoding="utf-8") as f:
+                            logger.info(f.read())
+                    except (OSError, UnicodeDecodeError) as e:
+                        logger.error(f"Erreur lecture rapport: {e}")
                 else:
                     logger.info("Aucun rapport dintégration trouvé.")
             elif choix == "10":
@@ -279,7 +283,11 @@ def main(test_mode=False):
                     continue
                 log_file = os.path.join(outdir, "integration_report.log")
                 if os.path.exists(log_file):
-                    logger.info(open(log_file).read())
+                    try:
+                        with open(log_file, encoding="utf-8") as f:
+                            logger.info(f.read())
+                    except (OSError, UnicodeDecodeError) as e:
+                        logger.error(f"Erreur lecture log: {e}")
                 else:
                     logger.info("Aucun log dintégration trouvé.")
             elif choix == "12":
@@ -298,7 +306,7 @@ def main(test_mode=False):
                     logger.info(
                         f"\nRapport détaillé sauvegardé dans {outdir}/audit_report.json"
                     )
-                except Exception as e:
+                except (OSError, ValueError) as e:
                     logger.info(f"Erreur audit intelligent: {e}")
             elif choix == "13":
                 logger.info("Au revoir !")
@@ -314,7 +322,7 @@ def main(test_mode=False):
             logger.info("\n🛑 Arrêt demandé par lutilisateur...")
             running = False
             break
-        except Exception as e:
+        except (OSError, ValueError, RuntimeError) as e:
             logger.error(f"Erreur inattendue: {e}")
             if test_mode:
                 break

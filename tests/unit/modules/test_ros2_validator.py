@@ -1,7 +1,7 @@
-# Template de test pour athalia_core/ros2_validator.py
-# Fichier: tests/test_ros2_validator.py
+# Template de test pour athalia_core/robotics/ros2_validator.py
+# Fichier: tests/test_robotics_ros2_validator.py
 
-import athalia_core.ros2_validator as module
+import athalia_core.robotics.ros2_validator as module
 
 
 class TestRos2_Validator:

@@ -180,6 +180,11 @@ except ImportError:
     response_distiller = None
 
 try:
+    from .robotics.ros2_validator import ROS2Validator
+except ImportError:
+    ROS2Validator = None
+
+try:
     from .analytics import advanced_analytics, analytics
 except ImportError:
     analytics = None
@@ -307,3 +312,6 @@ if quality_scorer is not None:
     __all__.append("quality_scorer")
 if response_distiller is not None:
     __all__.append("response_distiller")
+
+if ROS2Validator is not None:
+    __all__.append("ROS2Validator")

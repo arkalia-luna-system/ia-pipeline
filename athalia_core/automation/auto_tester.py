@@ -144,8 +144,9 @@ try:
                     globals()[attr_name] = attr
 except ImportError:
     pass  # Pour les tests
-except Exception:
-    pass  # Gestion des erreurs de sécurité
+except (AttributeError, TypeError, ValueError):
+    # Gestion spécifique des erreurs de sécurité et d'accès aux attributs
+    pass
 
 """
         # Tests pour les classes

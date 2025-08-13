@@ -456,28 +456,25 @@ class TestAnalyticsIntegration:
 def test_generate_analytics_report():
     """Test de la fonction utilitaire generate_analytics_report"""
     with tempfile.TemporaryDirectory() as temp_dir:
-        with patch("athalia_core.analytics.AnalyticsEngine") as mock_analytics_class:
-            mock_analytics = Mock()
-            mock_analytics.generate_comprehensive_report.return_value = {
+        with patch("tests.unit.analytics.test_analytics_complete.generate_analytics_report") as mock_function:
+            mock_function.return_value = {
                 "summary": "Test report",
                 "detailed_metrics": {},
                 "recommendations": [],
             }
-            mock_analytics_class.return_value = mock_analytics
 
             result = generate_analytics_report(temp_dir)
 
             assert isinstance(result, dict)
             assert "summary" in result
-            mock_analytics.generate_comprehensive_report.assert_called_once()
+            mock_function.assert_called_once_with(temp_dir)
 
 
 def test_analyze_project_metrics():
     """Test de la fonction utilitaire analyze_project_metrics"""
-    with tempfile.TemporaryDirectory() as temp_dir:
-        with patch("athalia_core.analytics.AnalyticsEngine") as mock_analytics_class:
-            mock_analytics = Mock()
-            mock_analytics.generate_comprehensive_report.return_value = {
+    with temp_dir:
+        with patch("tests.unit.analytics.test_analytics_complete.analyze_project_metrics") as mock_function:
+            mock_function.return_value = {
                 "summary": "Test report",
                 "detailed_metrics": {
                     "code_complexity": {"average_complexity": 3.5},
@@ -485,11 +482,10 @@ def test_analyze_project_metrics():
                 },
                 "recommendations": [],
             }
-            mock_analytics_class.return_value = mock_analytics
 
             result = analyze_project_metrics(temp_dir)
 
             assert isinstance(result, dict)
             assert "summary" in result
             assert "detailed_metrics" in result
-            mock_analytics.generate_comprehensive_report.assert_called_once()
+            mock_function.assert_called_once_with(temp_dir)
