@@ -16,22 +16,22 @@ except ImportError:
     AdvancedAnalytics = None
 
 try:
-    from .auto_cicd import AutoCICD
+    from .automation.auto_cicd import AutoCICD
 except ImportError:
     AutoCICD = None
 
 try:
-    from .auto_cleaner import AutoCleaner
+    from .automation.auto_cleaner import AutoCleaner
 except ImportError:
     AutoCleaner = None
 
 try:
-    from .auto_documenter import AutoDocumenter
+    from .automation.auto_documenter import AutoDocumenter
 except ImportError:
     AutoDocumenter = None
 
 try:
-    from .auto_tester import AutoTester
+    from .automation.auto_tester import AutoTester
 except ImportError:
     AutoTester = None
 

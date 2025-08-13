@@ -456,7 +456,9 @@ class TestAnalyticsIntegration:
 def test_generate_analytics_report():
     """Test de la fonction utilitaire generate_analytics_report"""
     with tempfile.TemporaryDirectory() as temp_dir:
-        with patch("athalia_core.analytics.AnalyticsEngine") as mock_analytics_class:
+        with patch(
+            "athalia_core.analytics.analytics.AnalyticsEngine"
+        ) as mock_analytics_class:
             mock_analytics = Mock()
             mock_analytics.generate_comprehensive_report.return_value = {
                 "summary": "Test report",
@@ -475,7 +477,9 @@ def test_generate_analytics_report():
 def test_analyze_project_metrics():
     """Test de la fonction utilitaire analyze_project_metrics"""
     with tempfile.TemporaryDirectory() as temp_dir:
-        with patch("athalia_core.analytics.AnalyticsEngine") as mock_analytics_class:
+        with patch(
+            "athalia_core.analytics.analytics.AnalyticsEngine"
+        ) as mock_analytics_class:
             mock_analytics = Mock()
             mock_analytics.generate_comprehensive_report.return_value = {
                 "summary": "Test report",
