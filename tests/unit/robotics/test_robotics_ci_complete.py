@@ -143,7 +143,7 @@ class TestRoboticsCI:
         with open(cmake_lists, "w") as f:
             f.write("cmake_minimum_required(VERSION 3.8)\nproject(test_package)")
 
-        # Créer un mock qui simule le comportement de validateand_run
+        # Créer un mock qui simule le comportement de validate_and_run
         mock_result = MagicMock()
         mock_result.returncode = 0
         mock_result.stdout = ""
@@ -211,7 +211,7 @@ class TestRoboticsCI:
         self.ci._run_linting()
         assert self.ci.ci_results["lint_status"] == "success"
 
-    @patch("athalia_core.automation.robotics_ci.validateand_run")
+    @patch("athalia_core.automation.robotics_ci.validate_and_run")
     def test_run_linting_python_success(self, mock_run):
         """Test de linting Python réussi"""
         # Créer un fichier Python pour que le projet soit détecté comme Python
@@ -241,7 +241,7 @@ class TestRoboticsCI:
         self.ci._run_security_scan()
         assert self.ci.ci_results["security_status"] == "success"
 
-    @patch("athalia_core.automation.robotics_ci.validateand_run")
+    @patch("athalia_core.automation.robotics_ci.validate_and_run")
     def test_run_security_scan_python_success(self, mock_run):
         """Test de scan sécurité Python réussi"""
         mock_run.return_value.returncode = 0
@@ -342,7 +342,7 @@ class TestRoboticsCIIntegration:
 
         shutil.rmtree(self.temp_dir, ignore_errors=True)
 
-    @patch("athalia_core.automation.robotics_ci.validateand_run")
+    @patch("athalia_core.automation.robotics_ci.validate_and_run")
     def test_full_ci_workflow(self, mock_run):
         """Test du workflow CI complet"""
         # Créer un projet Rust simple
