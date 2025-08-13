@@ -16,7 +16,7 @@ except ImportError:
 
 # Test activé - problème d'import résolu
 def test_ath_audit_runs():
-    script = os.path.join(os.path.dirname(__file__), "../../bin/ath-audit.py")
+    script = os.path.join(os.path.dirname(__file__), "../../bin/core/ath-audit.py")
 
     # Vérifie que le script existe
     if not os.path.exists(script):

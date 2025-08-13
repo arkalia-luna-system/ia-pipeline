@@ -14,7 +14,7 @@ except ImportError:
 
 def test_ath_build_runs():
     """Test que ath-build.py peut être exécuté sans se bloquer"""
-    script = os.path.join(os.path.dirname(__file__), "../../bin/ath-build.py")
+    script = os.path.join(os.path.dirname(__file__), "../../bin/core/ath-build.py")
 
     # Vérifier que le script existe
     assert os.path.exists(script), f"Script {script} n'existe pas"

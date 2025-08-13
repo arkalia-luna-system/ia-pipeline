@@ -67,7 +67,7 @@ def test_ath_coverage_runs():
     result = None
     try:
         result = validate_and_run(
-            [sys.executable, "bin/ath-coverage.py", "--help"],
+            [sys.executable, "bin/core/ath-coverage.py", "--help"],
             capture_output=True,
             text=True,
             timeout=120,

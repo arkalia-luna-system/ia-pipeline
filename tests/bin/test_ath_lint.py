@@ -54,7 +54,7 @@ def test_ath_lint_runs():
     # Forcer un nouveau fichier de couverture
     env["COVERAGE_FILE"] = ".coverage.test"
 
-    script = os.path.join(os.path.dirname(__file__), "../../bin/ath-lint.py")
+    script = os.path.join(os.path.dirname(__file__), "../../bin/core/ath-lint.py")
 
     # Vérifie que le script existe
     if not os.path.exists(script):

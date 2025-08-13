@@ -17,7 +17,7 @@ except ImportError:
 
 def test_ath_test_runs():
     """Test que ath-test.py fonctionne sans récursivité"""
-    script = os.path.join(os.path.dirname(__file__), "../../bin/ath-test.py")
+    script = os.path.join(os.path.dirname(__file__), "../../bin/testing/ath-test.py")
 
     # Utiliser un environnement sans ATHALIA_TEST_RUNNING pour éviter la récursivité
     env = os.environ.copy()

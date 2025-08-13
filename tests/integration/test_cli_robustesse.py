@@ -40,11 +40,11 @@ class TestCLIRobustesse:
         self.test_dir = Path(tempfile.mkdtemp())
         self.cli_paths = [
             # Scripts CLI qui existent et fonctionnent
-            Path("bin/ath-lint.py"),
-            Path("bin/ath-coverage.py"),
-            Path("bin/ath-test.py"),
-            Path("bin/ath-audit.py"),
-            Path("bin/ath-build.py"),
+            Path("bin/core/ath-lint.py"),
+            Path("bin/core/ath-coverage.py"),
+            Path("bin/testing/ath-test.py"),
+            Path("bin/core/ath-audit.py"),
+            Path("bin/core/ath-build.py"),
         ]
 
     def teardown_method(self) -> None:
