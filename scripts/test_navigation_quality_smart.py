@@ -1,1 +1,0 @@
-testing/test_navigation_quality_smart.py
