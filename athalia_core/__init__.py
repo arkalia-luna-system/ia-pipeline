@@ -185,6 +185,19 @@ except ImportError:
     ROS2Validator = None
 
 try:
+    from .plugins import (
+        ExportDockerPlugin,
+        HelloPlugin,
+        PluginsManager,
+        PluginsValidator,
+    )
+except ImportError:
+    ExportDockerPlugin = None
+    HelloPlugin = None
+    PluginsManager = None
+    PluginsValidator = None
+
+try:
     from .analytics import advanced_analytics, analytics
 except ImportError:
     analytics = None

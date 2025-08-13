@@ -8,8 +8,6 @@ import tempfile
 from pathlib import Path
 from unittest.mock import Mock, patch
 
-import pytest
-
 from athalia_core.robotics.ros2_validator import ROS2Validator, validate_ros2_package
 
 

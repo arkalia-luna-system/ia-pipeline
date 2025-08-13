@@ -8,7 +8,7 @@ TEMPORAIREMENT DÉSACTIVÉ - Interface en cours de développement
 import json
 import tempfile
 from pathlib import Path
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 
 import yaml
 
@@ -456,7 +456,9 @@ class TestAnalyticsIntegration:
 def test_generate_analytics_report():
     """Test de la fonction utilitaire generate_analytics_report"""
     with tempfile.TemporaryDirectory() as temp_dir:
-        with patch("tests.unit.analytics.test_analytics_complete.generate_analytics_report") as mock_function:
+        with patch(
+            "tests.unit.analytics.test_analytics_complete.generate_analytics_report"
+        ) as mock_function:
             mock_function.return_value = {
                 "summary": "Test report",
                 "detailed_metrics": {},
@@ -472,8 +474,10 @@ def test_generate_analytics_report():
 
 def test_analyze_project_metrics():
     """Test de la fonction utilitaire analyze_project_metrics"""
-    with temp_dir:
-        with patch("tests.unit.analytics.test_analytics_complete.analyze_project_metrics") as mock_function:
+    with tempfile.TemporaryDirectory() as temp_dir:
+        with patch(
+            "tests.unit.analytics.test_analytics_complete.analyze_project_metrics"
+        ) as mock_function:
             mock_function.return_value = {
                 "summary": "Test report",
                 "detailed_metrics": {

@@ -25,7 +25,7 @@ except ImportError:
 
 __all__ = [
     "ExportDockerPlugin",
-    "HelloPlugin", 
+    "HelloPlugin",
     "PluginsManager",
     "PluginsValidator",
-] 
+]
