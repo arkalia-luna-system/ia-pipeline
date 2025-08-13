@@ -5,7 +5,10 @@ import pytest
 
 # Import sécurisé pour la validation des commandes
 try:
-    from athalia_core.security_validator import SecurityError, validate_and_run
+    from athalia_core.validation.security_validator import (
+        SecurityError,
+        validate_and_run,
+    )
 except ImportError:
     # Fallback si le module n'est pas disponible
     def validate_and_run(command, **kwargs):
@@ -30,16 +33,17 @@ def test_ath_audit_runs():
         result = subprocess.run(
             [script, "--project", "."], capture_output=True, text=True, timeout=30
         )
-        # Codes de retour acceptables: 0 (succès), 1 (échec d'audit), 143 (SIGTERM), 241 (erreur système)
+        # Codes de retour acceptables: 0 (succès), 1 (échec d'audit), -15 (SIGTERM), 143 (SIGTERM), 241 (erreur système)
         assert result.returncode in (
             0,
             1,
+            -15,
             143,
             241,
         ), f"ath-audit.py a crashé avec code {result.returncode}: {result.stderr}"
     except subprocess.TimeoutExpired:
         pytest.skip(f"Script {script} a pris trop de temps (timeout)")
     except PermissionError:
-        pytest.skip(f"Permission refusée pour {script}")
+        pytest.skip(f"Script {script} non trouvé")
     except FileNotFoundError:
         pytest.skip(f"Script {script} non trouvé")

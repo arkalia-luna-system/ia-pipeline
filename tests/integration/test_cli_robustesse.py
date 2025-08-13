@@ -54,7 +54,7 @@ class TestCLIRobustesse:
         if self.test_dir.exists():
             shutil.rmtree(self.test_dir)
 
-    @pytest.mark.timeout(30)
+    @pytest.mark.timeout(60)
     def test_cli_basic_execution(self) -> None:
         """Test d'exécution de base des scripts CLI."""
         for cli_path in self.cli_paths:

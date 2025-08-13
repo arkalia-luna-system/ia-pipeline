@@ -55,7 +55,7 @@ class TestCircularImports:
         critical_modules = [
             "athalia_core.cli",
             "athalia_core.core.main",
-            "athalia_core.security_validator",
+            "athalia_core.validation.security_validator",
             "athalia_core.audit",
         ]
 

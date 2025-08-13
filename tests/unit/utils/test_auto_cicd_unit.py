@@ -132,19 +132,19 @@ class TestAutoCICD(unittest.TestCase):
         project_dir.mkdir()
         self.cicd.project_path = project_dir
 
-        # Créer le fichier ci.f(f
-        ci_dir = project_dir / ".f" / "f"
+        # Créer le fichier ci_config.yaml
+        ci_dir = project_dir / ".ci" / "configs"
         ci_dir.mkdir(parents=True, exist_ok=True)
-        (ci_dir / "ci.f(f").write_text("# CI/CD config")
+        (ci_dir / "ci_config.yaml").write_text("# CI/CD config")
 
         files = self.cicd._get_created_files()
-        self.assertIn(str(ci_dir / "ci.f(f"), files)
+        self.assertIn(str(ci_dir / "ci_config.yaml"), files)
 
 
 def test_generate_github_ci_yaml():
     with tempfile.TemporaryDirectory() as temp_dir:
         generate_github_ci_yaml(temp_dir)
-        ci_file = Path(temp_dir) / ".f" / "f" / "ci.f(f"
+        ci_file = Path(temp_dir) / ".ci" / "configs" / "ci_config.yaml"
         assert ci_file.exists()
         assert ci_file.read_text() == "# CI/CD config"
 
