@@ -198,6 +198,14 @@ except ImportError:
     PluginsValidator = None
 
 try:
+    from .validation import PluginsValidator as ValidationPluginsValidator
+    from .validation import SecurityManager, SecurityValidator
+except ImportError:
+    ValidationPluginsValidator = None
+    SecurityValidator = None
+    SecurityManager = None
+
+try:
     from .analytics import advanced_analytics, analytics
 except ImportError:
     analytics = None
@@ -300,6 +308,16 @@ if dashboard_unified is not None:
 if user_profiles_advanced is not None:
     __all__.append("user_profiles_advanced")
 
+if PluginsValidator is not None:
+    __all__.append("PluginsValidator")
+
+if ValidationPluginsValidator is not None:
+    __all__.append("ValidationPluginsValidator")
+if SecurityValidator is not None:
+    __all__.append("SecurityValidator")
+if SecurityManager is not None:
+    __all__.append("SecurityManager")
+
 if ath_context_prompt is not None:
     __all__.append("ath_context_prompt")
 if audit_agent is not None:
@@ -328,3 +346,12 @@ if response_distiller is not None:
 
 if ROS2Validator is not None:
     __all__.append("ROS2Validator")
+
+if ExportDockerPlugin is not None:
+    __all__.append("ExportDockerPlugin")
+if HelloPlugin is not None:
+    __all__.append("HelloPlugin")
+if PluginsManager is not None:
+    __all__.append("PluginsManager")
+if PluginsValidator is not None:
+    __all__.append("PluginsValidator")

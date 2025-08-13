@@ -11,7 +11,7 @@ from unittest.mock import patch
 
 import yaml
 
-from athalia_core.plugins_validator import (
+from athalia_core.validation.plugins_validator import (
     PluginValidator,
     validate_all_plugins,
     validate_plugin,

@@ -15,7 +15,7 @@ from athalia_core.onboarding import (
     generate_onboard_cli,
     generate_onboarding_html_advanced,
 )
-from athalia_core.security import security_audit_project
+from athalia_core.validation.security import security_audit_project
 
 # Import du système de logging avancé
 try:
