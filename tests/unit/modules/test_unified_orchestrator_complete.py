@@ -35,14 +35,14 @@ class TestUnifiedOrchestrator:
         assert "errors" in self.orchestrator.workflow_results
         assert "warnings" in self.orchestrator.workflow_results
 
-    @patch("athalia_core.unified_orchestrator.RobustAI")
-    @patch("athalia_core.unified_orchestrator.SecurityAuditor")
-    @patch("athalia_core.unified_orchestrator.CodeLinter")
-    @patch("athalia_core.unified_orchestrator.CorrectionOptimizer")
-    @patch("athalia_core.unified_orchestrator.AutoTester")
-    @patch("athalia_core.unified_orchestrator.AutoDocumenter")
-    @patch("athalia_core.unified_orchestrator.AutoCleaner")
-    @patch("athalia_core.unified_orchestrator.AutoCICD")
+    @patch("athalia_core.core.unified_orchestrator.RobustAI")
+    @patch("athalia_core.core.unified_orchestrator.SecurityAuditor")
+    @patch("athalia_core.core.unified_orchestrator.CodeLinter")
+    @patch("athalia_core.core.unified_orchestrator.CorrectionOptimizer")
+    @patch("athalia_core.core.unified_orchestrator.AutoTester")
+    @patch("athalia_core.core.unified_orchestrator.AutoDocumenter")
+    @patch("athalia_core.core.unified_orchestrator.AutoCleaner")
+    @patch("athalia_core.core.unified_orchestrator.AutoCICD")
     def test_initialize_modules_success(
         self,
         mock_cicd,
@@ -67,7 +67,7 @@ class TestUnifiedOrchestrator:
         assert self.orchestrator.auto_cleaner is not None
         assert self.orchestrator.auto_cicd is not None
 
-    @patch("athalia_core.unified_orchestrator.RobustAI")
+    @patch("athalia_core.core.unified_orchestrator.RobustAI")
     def test_initialize_modules_failure(self, mock_ai):
         """Test d'initialisation des modules échouée"""
         mock_ai.side_effect = Exception("Initialization error")
@@ -76,7 +76,7 @@ class TestUnifiedOrchestrator:
 
         assert len(self.orchestrator.workflow_results["errors"]) > 0
 
-    @patch("athalia_core.unified_orchestrator.generate_project")
+    @patch("athalia_core.core.unified_orchestrator.generate_project")
     def test_step_generate_project_success(self, mock_generate):
         """Test de l'étape de génération de projet réussie"""
         mock_generate.return_value = "/test/project/path"
@@ -93,7 +93,7 @@ class TestUnifiedOrchestrator:
             == "/test/project/path"
         )
 
-    @patch("athalia_core.unified_orchestrator.generate_project")
+    @patch("athalia_core.core.unified_orchestrator.generate_project")
     def test_step_generate_project_failure(self, mock_generate):
         """Test de l'étape de génération de projet échouée"""
         mock_generate.side_effect = Exception("Generation error")
@@ -105,7 +105,7 @@ class TestUnifiedOrchestrator:
 
         assert len(self.orchestrator.workflow_results["errors"]) > 0
 
-    @patch("athalia_core.unified_orchestrator.SecurityAuditor")
+    @patch("athalia_core.core.unified_orchestrator.SecurityAuditor")
     def test_step_security_audit_success(self, mock_security_class):
         """Test de l'étape d'audit de sécurité réussie"""
         mock_security = Mock()
@@ -118,7 +118,7 @@ class TestUnifiedOrchestrator:
         assert "security_audit" in self.orchestrator.workflow_results["steps_completed"]
         assert "security_report" in self.orchestrator.workflow_results["artifacts"]
 
-    @patch("athalia_core.unified_orchestrator.SecurityAuditor")
+    @patch("athalia_core.core.unified_orchestrator.SecurityAuditor")
     def test_step_security_audit_failure(self, mock_security_class):
         """Test de l'étape d'audit de sécurité échouée"""
         mock_security = Mock()
@@ -130,7 +130,7 @@ class TestUnifiedOrchestrator:
 
         assert len(self.orchestrator.workflow_results["warnings"]) > 0
 
-    @patch("athalia_core.unified_orchestrator.CodeLinter")
+    @patch("athalia_core.core.unified_orchestrator.CodeLinter")
     def test_step_code_linting_success(self, mock_linter_class):
         """Test de l'étape de linting réussie"""
         mock_linter = Mock()
@@ -143,7 +143,7 @@ class TestUnifiedOrchestrator:
         assert "code_linting" in self.orchestrator.workflow_results["steps_completed"]
         assert "lint_report" in self.orchestrator.workflow_results["artifacts"]
 
-    @patch("athalia_core.unified_orchestrator.CorrectionOptimizer")
+    @patch("athalia_core.core.unified_orchestrator.CorrectionOptimizer")
     def test_step_correction_optimization_success(self, mock_optimizer_class):
         """Test de l'étape d'optimisation des corrections réussie"""
         mock_optimizer = Mock()
@@ -159,7 +159,7 @@ class TestUnifiedOrchestrator:
         )
         assert "optimization_stats" in self.orchestrator.workflow_results["artifacts"]
 
-    @patch("athalia_core.unified_orchestrator.AutoTester")
+    @patch("athalia_core.core.unified_orchestrator.AutoTester")
     def test_step_auto_testing_success(self, mock_tester_class):
         """Test de l'étape de tests automatiques réussie"""
         mock_tester = Mock()
@@ -172,7 +172,7 @@ class TestUnifiedOrchestrator:
         assert "auto_testing" in self.orchestrator.workflow_results["steps_completed"]
         assert "test_results" in self.orchestrator.workflow_results["artifacts"]
 
-    @patch("athalia_core.unified_orchestrator.AutoDocumenter")
+    @patch("athalia_core.core.unified_orchestrator.AutoDocumenter")
     def test_step_auto_documentation_success(self, mock_doc_class):
         """Test de l'étape de documentation automatique réussie"""
         mock_doc = Mock()
@@ -188,7 +188,7 @@ class TestUnifiedOrchestrator:
         )
         assert "documentation" in self.orchestrator.workflow_results["artifacts"]
 
-    @patch("athalia_core.unified_orchestrator.AutoCleaner")
+    @patch("athalia_core.core.unified_orchestrator.AutoCleaner")
     def test_step_auto_cleaning_success(self, mock_cleaner_class):
         """Test de l'étape de nettoyage automatique réussie"""
         mock_cleaner = Mock()
@@ -201,7 +201,7 @@ class TestUnifiedOrchestrator:
         assert "auto_cleaning" in self.orchestrator.workflow_results["steps_completed"]
         assert "cleaning_report" in self.orchestrator.workflow_results["artifacts"]
 
-    @patch("athalia_core.unified_orchestrator.AutoCICD")
+    @patch("athalia_core.core.unified_orchestrator.AutoCICD")
     def test_step_auto_cicd_success(self, mock_cicd_class):
         """Test de l'étape de CI/CD automatique réussie"""
         mock_cicd = Mock()
@@ -254,14 +254,14 @@ class TestUnifiedOrchestrator:
         content = "".join([call[0][0] for call in write_calls])
         assert "completed" in content
 
-    @patch("athalia_core.unified_orchestrator.generate_project")
-    @patch("athalia_core.unified_orchestrator.SecurityAuditor")
-    @patch("athalia_core.unified_orchestrator.CodeLinter")
-    @patch("athalia_core.unified_orchestrator.CorrectionOptimizer")
-    @patch("athalia_core.unified_orchestrator.AutoTester")
-    @patch("athalia_core.unified_orchestrator.AutoDocumenter")
-    @patch("athalia_core.unified_orchestrator.AutoCleaner")
-    @patch("athalia_core.unified_orchestrator.AutoCICD")
+    @patch("athalia_core.core.unified_orchestrator.generate_project")
+    @patch("athalia_core.core.unified_orchestrator.SecurityAuditor")
+    @patch("athalia_core.core.unified_orchestrator.CodeLinter")
+    @patch("athalia_core.core.unified_orchestrator.CorrectionOptimizer")
+    @patch("athalia_core.core.unified_orchestrator.AutoTester")
+    @patch("athalia_core.core.unified_orchestrator.AutoDocumenter")
+    @patch("athalia_core.core.unified_orchestrator.AutoCleaner")
+    @patch("athalia_core.core.unified_orchestrator.AutoCICD")
     def test_run_full_workflow_success(
         self,
         mock_cicd,
@@ -312,15 +312,15 @@ class TestUnifiedOrchestrator:
         assert len(result["steps_completed"]) > 0
         assert "project_generation" in result["steps_completed"]
 
-    @patch("athalia_core.unified_orchestrator.generate_project")
-    @patch("athalia_core.unified_orchestrator.SecurityAuditor")
-    @patch("athalia_core.unified_orchestrator.CodeLinter")
-    @patch("athalia_core.unified_orchestrator.CorrectionOptimizer")
-    @patch("athalia_core.unified_orchestrator.AutoTester")
-    @patch("athalia_core.unified_orchestrator.AutoDocumenter")
-    @patch("athalia_core.unified_orchestrator.AutoCleaner")
-    @patch("athalia_core.unified_orchestrator.AutoCICD")
-    @patch("athalia_core.unified_orchestrator.get_cached_result")
+    @patch("athalia_core.core.unified_orchestrator.generate_project")
+    @patch("athalia_core.core.unified_orchestrator.SecurityAuditor")
+    @patch("athalia_core.core.unified_orchestrator.CodeLinter")
+    @patch("athalia_core.core.unified_orchestrator.CorrectionOptimizer")
+    @patch("athalia_core.core.unified_orchestrator.AutoTester")
+    @patch("athalia_core.core.unified_orchestrator.AutoDocumenter")
+    @patch("athalia_core.core.unified_orchestrator.AutoCleaner")
+    @patch("athalia_core.core.unified_orchestrator.AutoCICD")
+    @patch("athalia_core.core.unified_orchestrator.get_cached_result")
     def test_run_full_workflow_failure(
         self,
         mock_get_cached,
@@ -347,7 +347,7 @@ class TestUnifiedOrchestrator:
     def test_error_handling_module_initialization(self):
         """Test de gestion des erreurs d'initialisation de modules"""
         with patch(
-            "athalia_core.unified_orchestrator.RobustAI",
+            "athalia_core.core.unified_orchestrator.RobustAI",
             side_effect=Exception("AI error"),
         ):
             self.orchestrator.initialize_modules()
@@ -365,7 +365,7 @@ class TestUnifiedOrchestrator:
 
     # NOUVEAUX TESTS POUR COUVRIR LES LIGNES MANQUANTES
 
-    @patch("athalia_core.unified_orchestrator.AI_MODULES_AVAILABLE", False)
+    @patch("athalia_core.core.unified_orchestrator.AI_MODULES_AVAILABLE", False)
     def test_initialize_modules_without_ai(self):
         """Test d'initialisation des modules sans IA"""
         self.orchestrator.initialize_modules()
@@ -417,7 +417,7 @@ class TestUnifiedOrchestrator:
         invalid_code = "print('Hello, World!'"  # Parenthèse manquante
         assert self.orchestrator._validate_code(invalid_code) is False
 
-    @patch("athalia_core.unified_orchestrator.AI_MODULES_AVAILABLE", True)
+    @patch("athalia_core.core.unified_orchestrator.AI_MODULES_AVAILABLE", True)
     @patch("builtins.open", create=True)
     def test_step_ai_enhancement_success(self, mock_open):
         """Test d'amélioration IA réussie"""
@@ -454,7 +454,7 @@ class TestUnifiedOrchestrator:
         assert "ai_enhancement" in self.orchestrator.workflow_results["steps_completed"]
         assert "ai_enhancement" in self.orchestrator.workflow_results["artifacts"]
 
-    @patch("athalia_core.unified_orchestrator.AI_MODULES_AVAILABLE", True)
+    @patch("athalia_core.core.unified_orchestrator.AI_MODULES_AVAILABLE", True)
     def test_step_ai_enhancement_no_project_path(self):
         """Test d'amélioration IA sans chemin de projet"""
         # Mock les modules IA
@@ -473,7 +473,7 @@ class TestUnifiedOrchestrator:
         # Aucun appel aux modules IA car pas de project_path
         mock_unified_agent.act.assert_not_called()
 
-    @patch("athalia_core.unified_orchestrator.AI_MODULES_AVAILABLE", True)
+    @patch("athalia_core.core.unified_orchestrator.AI_MODULES_AVAILABLE", True)
     def test_step_ai_enhancement_file_not_exists(self):
         """Test d'amélioration IA avec fichier main.py inexistant"""
         # Mock les modules IA
@@ -499,7 +499,7 @@ class TestUnifiedOrchestrator:
         # Aucun appel aux modules IA car fichier inexistant
         mock_unified_agent.act.assert_not_called()
 
-    @patch("athalia_core.unified_orchestrator.AI_MODULES_AVAILABLE", True)
+    @patch("athalia_core.core.unified_orchestrator.AI_MODULES_AVAILABLE", True)
     @patch("builtins.open", create=True)
     def test_step_ai_enhancement_invalid_code(self, mock_open):
         """Test d'amélioration IA avec code invalide"""
@@ -536,7 +536,7 @@ class TestUnifiedOrchestrator:
         # Le code original devrait être conservé car le code amélioré est invalide
         mock_quality_scorer.score_code.assert_not_called()
 
-    @patch("athalia_core.unified_orchestrator.AI_MODULES_AVAILABLE", True)
+    @patch("athalia_core.core.unified_orchestrator.AI_MODULES_AVAILABLE", True)
     @patch("builtins.open", create=True)
     def test_step_ai_enhancement_ai_error(self, mock_open):
         """Test d'amélioration IA avec erreur de l'agent IA"""
@@ -663,7 +663,7 @@ class TestUnifiedOrchestrator:
 
     # TESTS POUR LES NOUVELLES ÉTAPES SPÉCIALISÉES
 
-    @patch("athalia_core.unified_orchestrator.ROBOTICS_MODULES_AVAILABLE", True)
+    @patch("athalia_core.core.unified_orchestrator.ROBOTICS_MODULES_AVAILABLE", True)
     def test_step_robotics_validation_robotics_project(self):
         """Test de validation robotique pour un projet robotique"""
         # Mock les modules robotiques
@@ -692,7 +692,7 @@ class TestUnifiedOrchestrator:
         mock_reachy_auditor.audit_reachy_project.assert_called_once()
         mock_docker_robotics.validate_docker_setup.assert_called_once()
 
-    @patch("athalia_core.unified_orchestrator.ROBOTICS_MODULES_AVAILABLE", False)
+    @patch("athalia_core.core.unified_orchestrator.ROBOTICS_MODULES_AVAILABLE", False)
     def test_step_robotics_validation_modules_unavailable(self):
         """Test de validation robotique sans modules disponibles"""
         blueprint = {"project_type": "robotics_api"}
@@ -704,7 +704,7 @@ class TestUnifiedOrchestrator:
             not in self.orchestrator.workflow_results["steps_completed"]
         )
 
-    @patch("athalia_core.unified_orchestrator.ROBOTICS_MODULES_AVAILABLE", True)
+    @patch("athalia_core.core.unified_orchestrator.ROBOTICS_MODULES_AVAILABLE", True)
     def test_step_robotics_validation_non_robotics_project(self):
         """Test de validation robotique pour un projet non-robotique"""
         blueprint = {"project_type": "web_api", "description": "API web"}
@@ -716,7 +716,7 @@ class TestUnifiedOrchestrator:
             not in self.orchestrator.workflow_results["steps_completed"]
         )
 
-    @patch("athalia_core.unified_orchestrator.ARTISTIC_MODULES_AVAILABLE", True)
+    @patch("athalia_core.core.unified_orchestrator.ARTISTIC_MODULES_AVAILABLE", True)
     @patch("builtins.open", create=True)
     def test_step_artistic_templates_artistic_project(self, mock_open):
         """Test d'application de templates artistiques pour un projet artistique"""
@@ -738,7 +738,7 @@ class TestUnifiedOrchestrator:
         assert mock_open.call_count == 2
         assert "artistic" in self.orchestrator.workflow_results["artifacts"]
 
-    @patch("athalia_core.unified_orchestrator.ARTISTIC_MODULES_AVAILABLE", False)
+    @patch("athalia_core.core.unified_orchestrator.ARTISTIC_MODULES_AVAILABLE", False)
     def test_step_artistic_templates_modules_unavailable(self):
         """Test d'application de templates artistiques sans modules disponibles"""
         blueprint = {"project_type": "artistic_animation"}
@@ -750,7 +750,7 @@ class TestUnifiedOrchestrator:
             not in self.orchestrator.workflow_results["steps_completed"]
         )
 
-    @patch("athalia_core.unified_orchestrator.ARTISTIC_MODULES_AVAILABLE", True)
+    @patch("athalia_core.core.unified_orchestrator.ARTISTIC_MODULES_AVAILABLE", True)
     def test_step_artistic_templates_non_artistic_project(self):
         """Test d'application de templates artistiques pour un projet non-artistique"""
         blueprint = {"project_type": "web_api", "description": "API web"}
@@ -762,7 +762,9 @@ class TestUnifiedOrchestrator:
             not in self.orchestrator.workflow_results["steps_completed"]
         )
 
-    @patch("athalia_core.unified_orchestrator.CLASSIFICATION_MODULES_AVAILABLE", True)
+    @patch(
+        "athalia_core.core.unified_orchestrator.CLASSIFICATION_MODULES_AVAILABLE", True
+    )
     def test_step_advanced_classification_success(self):
         """Test de classification avancée réussie"""
         # Ce test vérifie que la méthode s'exécute sans erreur fatale
@@ -777,7 +779,9 @@ class TestUnifiedOrchestrator:
             # Si une exception est levée, c'est un échec
             raise AssertionError(f"La méthode a levé une exception: {e}") from e
 
-    @patch("athalia_core.unified_orchestrator.CLASSIFICATION_MODULES_AVAILABLE", False)
+    @patch(
+        "athalia_core.core.unified_orchestrator.CLASSIFICATION_MODULES_AVAILABLE", False
+    )
     def test_step_advanced_classification_modules_unavailable(self):
         """Test de classification avancée sans modules disponibles"""
         blueprint = {"name": "test_api", "description": "API REST moderne"}
@@ -789,7 +793,7 @@ class TestUnifiedOrchestrator:
             not in self.orchestrator.workflow_results["steps_completed"]
         )
 
-    @patch("athalia_core.unified_orchestrator.ADVANCED_MODULES_AVAILABLE", True)
+    @patch("athalia_core.core.unified_orchestrator.ADVANCED_MODULES_AVAILABLE", True)
     def test_step_advanced_auto_correction_success(self):
         """Test de correction automatique avancée réussie"""
         # Mock le module de correction avancée
@@ -811,7 +815,7 @@ class TestUnifiedOrchestrator:
             "auto_correction_results" in self.orchestrator.workflow_results["artifacts"]
         )
 
-    @patch("athalia_core.unified_orchestrator.ADVANCED_MODULES_AVAILABLE", False)
+    @patch("athalia_core.core.unified_orchestrator.ADVANCED_MODULES_AVAILABLE", False)
     def test_step_advanced_auto_correction_modules_unavailable(self):
         """Test de correction automatique avancée sans modules disponibles"""
         self.orchestrator._step_advanced_auto_correction()
@@ -850,7 +854,7 @@ def complex_function():
 
     # TESTS POUR LES CAS D'ERREUR ET EXCEPTIONS
 
-    @patch("athalia_core.unified_orchestrator.ROBOTICS_MODULES_AVAILABLE", True)
+    @patch("athalia_core.core.unified_orchestrator.ROBOTICS_MODULES_AVAILABLE", True)
     def test_step_robotics_validation_exception(self):
         """Test de validation robotique avec exception"""
         # Mock les modules robotiques avec exception
@@ -870,7 +874,7 @@ def complex_function():
             in self.orchestrator.workflow_results["errors"][0]
         )
 
-    @patch("athalia_core.unified_orchestrator.ARTISTIC_MODULES_AVAILABLE", True)
+    @patch("athalia_core.core.unified_orchestrator.ARTISTIC_MODULES_AVAILABLE", True)
     def test_step_artistic_templates_exception(self):
         """Test d'application de templates artistiques avec exception"""
         # Mock les templates artistiques
@@ -887,7 +891,9 @@ def complex_function():
             # car elle est capturée au niveau de l'application de template individuel
             assert "artistic" in self.orchestrator.workflow_results["artifacts"]
 
-    @patch("athalia_core.unified_orchestrator.CLASSIFICATION_MODULES_AVAILABLE", True)
+    @patch(
+        "athalia_core.core.unified_orchestrator.CLASSIFICATION_MODULES_AVAILABLE", True
+    )
     def test_step_advanced_classification_exception(self):
         """Test de classification avancée avec exception"""
         # Mock le classificateur avec exception
@@ -905,7 +911,7 @@ def complex_function():
             in self.orchestrator.workflow_results["errors"][0]
         )
 
-    @patch("athalia_core.unified_orchestrator.ADVANCED_MODULES_AVAILABLE", True)
+    @patch("athalia_core.core.unified_orchestrator.ADVANCED_MODULES_AVAILABLE", True)
     def test_step_advanced_auto_correction_exception(self):
         """Test de correction automatique avancée avec exception"""
         # Mock le module de correction avancée avec exception
@@ -926,13 +932,13 @@ def complex_function():
 
     # TESTS POUR LES MÉTHODES D'INITIALISATION MANQUANTES
 
-    @patch("athalia_core.unified_orchestrator.ROBOTICS_MODULES_AVAILABLE", True)
+    @patch("athalia_core.core.unified_orchestrator.ROBOTICS_MODULES_AVAILABLE", True)
     def test_initialize_modules_with_robotics(self):
         """Test d'initialisation des modules avec modules robotiques"""
         with (
-            patch("athalia_core.unified_orchestrator.ReachyAuditor"),
-            patch("athalia_core.unified_orchestrator.ROS2Validator"),
-            patch("athalia_core.unified_orchestrator.DockerRoboticsManager"),
+            patch("athalia_core.core.unified_orchestrator.ReachyAuditor"),
+            patch("athalia_core.core.unified_orchestrator.ROS2Validator"),
+            patch("athalia_core.core.unified_orchestrator.DockerRoboticsManager"),
         ):
 
             self.orchestrator.initialize_modules()
@@ -942,11 +948,11 @@ def complex_function():
             assert self.orchestrator.ros2_validator is not None
             assert self.orchestrator.docker_robotics is not None
 
-    @patch("athalia_core.unified_orchestrator.ARTISTIC_MODULES_AVAILABLE", True)
+    @patch("athalia_core.core.unified_orchestrator.ARTISTIC_MODULES_AVAILABLE", True)
     def test_initialize_modules_with_artistic(self):
         """Test d'initialisation des modules avec modules artistiques"""
         with patch(
-            "athalia_core.unified_orchestrator.get_artistic_templates"
+            "athalia_core.core.unified_orchestrator.get_artistic_templates"
         ) as mock_artistic:
             mock_artistic.return_value = {"template1": "content1"}
 
@@ -955,7 +961,9 @@ def complex_function():
             # Vérifier que les templates artistiques sont initialisés
             assert self.orchestrator.artistic_templates is not None
 
-    @patch("athalia_core.unified_orchestrator.CLASSIFICATION_MODULES_AVAILABLE", True)
+    @patch(
+        "athalia_core.core.unified_orchestrator.CLASSIFICATION_MODULES_AVAILABLE", True
+    )
     def test_initialize_modules_with_classification(self):
         """Test d'initialisation des modules avec modules de classification"""
         # Ce test vérifie que l'initialisation s'exécute sans erreur fatale
@@ -967,7 +975,7 @@ def complex_function():
             # Si une exception est levée, c'est un échec
             raise AssertionError(f"L'initialisation a levé une exception: {e}") from e
 
-    @patch("athalia_core.unified_orchestrator.ADVANCED_MODULES_AVAILABLE", True)
+    @patch("athalia_core.core.unified_orchestrator.ADVANCED_MODULES_AVAILABLE", True)
     def test_initialize_modules_with_advanced(self):
         """Test d'initialisation des modules avec modules avancés"""
         with patch(
@@ -1009,14 +1017,14 @@ class TestUnifiedOrchestratorIntegration:
 
         shutil.rmtree(self.temp_dir, ignore_errors=True)
 
-    @patch("athalia_core.unified_orchestrator.generate_project")
-    @patch("athalia_core.unified_orchestrator.SecurityAuditor")
-    @patch("athalia_core.unified_orchestrator.CodeLinter")
-    @patch("athalia_core.unified_orchestrator.CorrectionOptimizer")
-    @patch("athalia_core.unified_orchestrator.AutoTester")
-    @patch("athalia_core.unified_orchestrator.AutoDocumenter")
-    @patch("athalia_core.unified_orchestrator.AutoCleaner")
-    @patch("athalia_core.unified_orchestrator.AutoCICD")
+    @patch("athalia_core.core.unified_orchestrator.generate_project")
+    @patch("athalia_core.core.unified_orchestrator.SecurityAuditor")
+    @patch("athalia_core.core.unified_orchestrator.CodeLinter")
+    @patch("athalia_core.core.unified_orchestrator.CorrectionOptimizer")
+    @patch("athalia_core.core.unified_orchestrator.AutoTester")
+    @patch("athalia_core.core.unified_orchestrator.AutoDocumenter")
+    @patch("athalia_core.core.unified_orchestrator.AutoCleaner")
+    @patch("athalia_core.core.unified_orchestrator.AutoCICD")
     def test_full_integration_workflow(
         self,
         mock_cicd,
@@ -1076,7 +1084,7 @@ def test_run_unified_workflow_function():
     """Test de la fonction utilitaire run_unified_workflow"""
     with tempfile.TemporaryDirectory() as temp_dir:
         with patch(
-            "athalia_core.unified_orchestrator.UnifiedOrchestrator"
+            "athalia_core.core.unified_orchestrator.UnifiedOrchestrator"
         ) as mock_orchestrator_class:
             mock_orchestrator = Mock()
             mock_orchestrator.run_full_workflow.return_value = {"status": "completed"}

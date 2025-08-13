@@ -528,7 +528,9 @@ class TestAutoCleanerIntegration:
 def test_cleanup_project():
     """Test de la fonction utilitaire cleanup_project"""
     with tempfile.TemporaryDirectory() as temp_dir:
-        with patch("athalia_core.auto_cleaner.AutoCleaner") as mock_cleaner_class:
+        with patch(
+            "athalia_core.automation.auto_cleaner.AutoCleaner"
+        ) as mock_cleaner_class:
             mock_cleaner = Mock()
             mock_cleaner.perform_full_cleanup.return_value = {
                 "total_files_removed": 5,
@@ -546,7 +548,9 @@ def test_cleanup_project():
 def test_analyze_cleanup_needs():
     """Test de la fonction utilitaire analyze_cleanup_needs"""
     with tempfile.TemporaryDirectory() as temp_dir:
-        with patch("athalia_core.auto_cleaner.AutoCleaner") as mock_cleaner_class:
+        with patch(
+            "athalia_core.automation.auto_cleaner.AutoCleaner"
+        ) as mock_cleaner_class:
             mock_cleaner = Mock()
             mock_cleaner.calculate_cleanup_impact.return_value = {
                 "estimated_space_saved": 2048,

@@ -561,7 +561,7 @@ def test_generate_documentation():
     """Test de la fonction utilitaire generate_documentation"""
     with tempfile.TemporaryDirectory() as temp_dir:
         with patch(
-            "athalia_core.auto_documenter.AutoDocumenter"
+            "athalia_core.automation.auto_documenter.AutoDocumenter"
         ) as mock_documenter_class:
             mock_documenter = Mock()
             mock_documenter.perform_full_documentation.return_value = {
@@ -581,12 +581,12 @@ def test_analyze_documentation_needs():
     """Test de la fonction utilitaire analyze_documentation_needs"""
     with tempfile.TemporaryDirectory() as temp_dir:
         with patch(
-            "athalia_core.auto_documenter.AutoDocumenter"
+            "athalia_core.automation.auto_documenter.AutoDocumenter"
         ) as mock_documenter_class:
             mock_documenter = Mock()
             mock_documenter.calculate_documentation_coverage.return_value = {
                 "coverage_percentage": 60.0,
-                "total_functions": 10,
+                "total_functions": 80.0,
             }
             mock_documenter_class.return_value = mock_documenter
 

@@ -54,7 +54,7 @@ class TestCircularImports:
         """Test que les modules critiques sont importables"""
         critical_modules = [
             "athalia_core.cli",
-            "athalia_core.main",
+            "athalia_core.core.main",
             "athalia_core.security_validator",
             "athalia_core.audit",
         ]

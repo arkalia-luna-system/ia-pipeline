@@ -1,12 +1,12 @@
 """
-Tests pour le module athalia_core.main
+Tests pour le module athalia_core.core.main
 Tests appropriés pour le module principal d'Athalia
 """
 
 import pytest
 
 # Import du module main
-from athalia_core import main
+from athalia_core.core.main import main
 
 
 def test_main_function_exists():
@@ -42,7 +42,7 @@ def test_main_function_integration():
     """Test d'intégration de la fonction main."""
     try:
         # Test que la fonction peut être importée et appelée
-        from athalia_core.main import main as main_func
+        from athalia_core.core.main import main as main_func
 
         assert main_func is not None
         assert callable(main_func)
@@ -53,7 +53,7 @@ def test_main_function_integration():
 def test_main_module_import():
     """Test que le module peut être importé."""
     try:
-        import athalia_core.main as module
+        import athalia_core.core.main as module
 
         assert module is not None
     except Exception as e:
@@ -88,7 +88,7 @@ def test_main_function_name():
 
 def test_main_function_module():
     """Test que la fonction main vient du bon module."""
-    assert main.__module__ == "athalia_core.main"
+    assert main.__module__ == "athalia_core.core.main"
 
 
 def test_module_integration():

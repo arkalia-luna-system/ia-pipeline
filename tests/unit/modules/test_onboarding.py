@@ -67,7 +67,12 @@ def test_onboarding_project_setup():
 
             # Vérifier que le fichier a été créé
             assert Path(result).exists()
-            assert "ONBOARDING.f(f" in result
+
+            # Vérifier le contenu du fichier
+            with open(result) as f:
+                content = f.read()
+                assert "Onboarding" in content
+                assert "test_project" in content
 
             print("✅ Génération de fichier onboarding testée avec succès")
 
