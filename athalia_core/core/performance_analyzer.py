@@ -16,7 +16,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from .ast_analyzer import ASTAnalyzer, FileAnalysis
+from athalia_core.ast_analyzer import ASTAnalyzer, FileAnalysis
 
 logger = logging.getLogger(__name__)
 

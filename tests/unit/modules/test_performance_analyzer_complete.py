@@ -14,7 +14,7 @@ from pathlib import Path
 
 import pytest
 
-from athalia_core.performance_analyzer import PerformanceAnalyzer
+from athalia_core.core.performance_analyzer import PerformanceAnalyzer
 
 
 class TestPerformanceAnalyzerComplete:

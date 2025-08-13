@@ -10,7 +10,7 @@ from unittest.mock import patch
 
 import pytest
 
-import athalia_core.auto_documenter as module
+import athalia_core.automation.auto_documenter as module
 
 
 def test_module_import():
@@ -38,7 +38,7 @@ def test_function_analyze_documentation_needs_exists():
 def test_class_AutoDocumenter_exists():
     """Test que la classe AutoDocumenter existe."""
     assert hasattr(module, "AutoDocumenter")
-    from athalia_core.auto_documenter import AutoDocumenter
+    from athalia_core.automation.auto_documenter import AutoDocumenter
 
     assert AutoDocumenter is not None
 
@@ -115,7 +115,7 @@ class TestAutoDocumenter:
             assert "config_files" in structure
             assert "other_files" in structure
 
-    @patch("athalia_core.auto_documenter.yaml.safe_load")
+    @patch("athalia_core.automation.auto_documenter.yaml.safe_load")
     def test_load_documentation_config_with_file(self, mock_yaml_load):
         """Test le chargement de configuration depuis un fichier."""
         mock_yaml_load.return_value = {

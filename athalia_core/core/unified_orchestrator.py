@@ -11,22 +11,28 @@ from pathlib import Path
 from typing import Any
 
 # Imports des modules Athalia
-from .ai.ai_robust import RobustAI
-from .audit.security_auditor import SecurityAuditor
-from .auto_cicd import AutoCICD
-from .auto_cleaner import AutoCleaner
-from .auto_documenter import AutoDocumenter
-from .auto_tester import AutoTester
-from .cache_manager import cache_result, get_cache_stats, get_cached_result
-from .code_linter import CodeLinter
-from .correction_optimizer import CorrectionOptimizer
-from .generation import generate_project
+from athalia_core.ai.ai_robust import RobustAI
+from athalia_core.audit.security_auditor import SecurityAuditor
+from athalia_core.automation.auto_cicd import AutoCICD
+from athalia_core.automation.auto_cleaner import AutoCleaner
+from athalia_core.automation.auto_documenter import AutoDocumenter
+from athalia_core.automation.auto_tester import AutoTester
+from athalia_core.code_linter import CodeLinter
+from athalia_core.core.cache_manager import (
+    cache_result,
+    get_cache_stats,
+    get_cached_result,
+)
+from athalia_core.core.generation import generate_project
+from athalia_core.correction_optimizer import CorrectionOptimizer
 
 logger = logging.getLogger(__name__)
 
 # Imports des modules avancés
 try:
-    from .advanced_modules.auto_correction_advanced import AutoCorrectionAvancee
+    from athalia_core.advanced_modules.auto_correction_advanced import (
+        AutoCorrectionAvancee,
+    )
 
     ADVANCED_MODULES_AVAILABLE = True
 except ImportError:
@@ -35,12 +41,12 @@ except ImportError:
 
 # Imports des nouveaux modules IA et distillation
 try:
-    from .agents.audit_agent import AuditAgent
-    from .agents.context_prompt import detect_prompts_scoring
-    from .agents.unified_agent import UnifiedAgent
-    from .distillation.code_genetics import CodeGenetics
-    from .distillation.quality_scorer import QualityScorer
-    from .distillation.response_distiller import ResponseDistiller
+    from athalia_core.agents.audit_agent import AuditAgent
+    from athalia_core.agents.context_prompt import detect_prompts_scoring
+    from athalia_core.agents.unified_agent import UnifiedAgent
+    from athalia_core.distillation.code_genetics import CodeGenetics
+    from athalia_core.distillation.quality_scorer import QualityScorer
+    from athalia_core.distillation.response_distiller import ResponseDistiller
 
     AI_MODULES_AVAILABLE = True
 except ImportError:

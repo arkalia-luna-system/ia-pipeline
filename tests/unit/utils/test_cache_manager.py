@@ -7,7 +7,7 @@ import inspect
 
 import pytest
 
-import athalia_core.cache_manager as module
+import athalia_core.core.cache_manager as module
 
 
 def test_module_import():

@@ -13,9 +13,9 @@ def generate_github_ci_yaml(outdir):
     from pathlib import Path
 
     outdir = Path(str(outdir))
-    ci_dir = outdir / ".f" / "f"
+    ci_dir = outdir / ".github" / "workflows"
     ci_dir.mkdir(parents=True, exist_ok=True)
-    ci_file = ci_dir / "ci.f(f"
+    ci_file = ci_dir / "ci.yaml"
     ci_file.write_text("# CI/CD config")
     logger.debug(f"Fichier généré: {ci_file} (exists: {ci_file.exists()})")
     readme_path = os.path.join(outdir, "README.md")

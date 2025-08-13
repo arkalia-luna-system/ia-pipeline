@@ -10,7 +10,7 @@ import tempfile
 import time
 from pathlib import Path
 
-from athalia_core.cache_manager import (
+from athalia_core.core.cache_manager import (
     CacheManager,
     cache_result,
     get_cache_stats,

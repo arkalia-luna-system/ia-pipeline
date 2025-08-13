@@ -16,14 +16,15 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
+from athalia_core.core.performance_analyzer import PerformanceAnalyzer
+
 from .architecture_analyzer import ArchitectureAnalyzer
 from .ast_analyzer import ASTAnalyzer
 from .pattern_detector import PatternDetector
-from .performance_analyzer import PerformanceAnalyzer
 
 # Import de l'orchestrateur unifié (optionnel)
 try:
-    from .unified_orchestrator import UnifiedOrchestrator
+    from athalia_core.core.unified_orchestrator import UnifiedOrchestrator
 
     UNIFIED_ORCHESTRATOR_AVAILABLE = True
 except ImportError:

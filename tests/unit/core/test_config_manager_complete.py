@@ -13,7 +13,7 @@ from pathlib import Path
 
 import yaml
 
-from athalia_core.config_manager import (
+from athalia_core.core.config_manager import (
     ConfigManager,
     load_config,
     save_config,

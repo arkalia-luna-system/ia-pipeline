@@ -14,7 +14,7 @@ from pathlib import Path
 
 import pytest
 
-from athalia_core.auto_documenter import AutoDocumenter
+from athalia_core.automation.auto_documenter import AutoDocumenter
 
 
 class TestAutoDocumenterComplete:

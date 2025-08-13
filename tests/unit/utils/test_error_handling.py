@@ -7,7 +7,7 @@ import inspect
 
 import pytest
 
-import athalia_core.error_handling as module
+import athalia_core.core.error_handling as module
 
 
 def test_module_import():

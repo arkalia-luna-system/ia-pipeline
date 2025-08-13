@@ -7,7 +7,7 @@ import inspect
 
 import pytest
 
-import athalia_core.auto_tester as module
+import athalia_core.automation.auto_tester as module
 
 
 def test_module_import():

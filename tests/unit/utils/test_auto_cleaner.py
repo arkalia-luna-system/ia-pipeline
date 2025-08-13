@@ -7,7 +7,7 @@ import inspect
 
 import pytest
 
-import athalia_core.auto_cleaner as module
+import athalia_core.automation.auto_cleaner as module
 
 
 def test_module_import():

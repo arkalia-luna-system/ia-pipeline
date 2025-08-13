@@ -15,7 +15,7 @@ from pathlib import Path
 
 import pytest
 
-from athalia_core.auto_cleaner import AutoCleaner
+from athalia_core.automation.auto_cleaner import AutoCleaner
 
 
 class TestAutoCleanerComplete:

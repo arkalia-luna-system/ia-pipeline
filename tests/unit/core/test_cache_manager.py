@@ -1,7 +1,7 @@
 # Template de test pour athalia_core/cache_manager.py
 # Fichier: tests/test_cache_manager.py
 
-import athalia_core.cache_manager as module
+import athalia_core.core.cache_manager as module
 
 
 class TestCache_Manager:

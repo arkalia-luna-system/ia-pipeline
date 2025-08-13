@@ -1,7 +1,7 @@
 # Template de test pour athalia_core/ci.py
 # Fichier: tests/test_ci.py
 
-import athalia_core.ci as module
+import athalia_core.automation.ci as module
 
 
 class TestCi:

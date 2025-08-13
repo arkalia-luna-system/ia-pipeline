@@ -1,7 +1,7 @@
 # Template de test pour athalia_core/error_codes.py
 # Fichier: tests/test_error_codes.py
 
-import athalia_core.error_codes as module
+import athalia_core.core.error_codes as module
 
 
 class TestError_Codes:

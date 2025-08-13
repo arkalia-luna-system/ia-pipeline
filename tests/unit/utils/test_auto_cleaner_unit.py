@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from athalia_core.auto_cleaner import AutoCleaner
+from athalia_core.automation.auto_cleaner import AutoCleaner
 
 
 class TestAutoCleaner(unittest.TestCase):

@@ -1,7 +1,7 @@
 # Template de test pour athalia_core/config_manager.py
 # Fichier: tests/test_config_manager.py
 
-import athalia_core.config_manager as module
+import athalia_core.core.config_manager as module
 
 
 class TestConfig_Manager:

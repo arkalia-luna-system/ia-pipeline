@@ -14,7 +14,7 @@ from unittest.mock import Mock, patch
 
 import pytest
 
-from athalia_core.auto_tester import AutoTester
+from athalia_core.automation.auto_tester import AutoTester
 
 
 class TestAutoTesterComplete:

@@ -10,7 +10,7 @@ def test_clean_old_tests_and_caches(tmp_path):
     """Test de nettoyage des anciens tests et caches"""
     # CORRECTION ARCHI PROPRE : Test intelligent avec vérification de l'existence
     try:
-        from athalia_core.cleanup import clean_old_tests_and_caches
+        from athalia_core.automation.cleanup import clean_old_tests_and_caches
 
         assert callable(
             clean_old_tests_and_caches

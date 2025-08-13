@@ -15,7 +15,7 @@ import time
 from pathlib import Path
 from unittest.mock import patch
 
-from athalia_core.main import (
+from athalia_core import (
     log_main,
     main,
     menu,
@@ -173,7 +173,7 @@ class TestMainModule:
     def test_import_stability(self) -> None:
         """Test stabilité des imports."""
         # Vérifier que tous les imports sont stables
-        from athalia_core.main import main, menu, running, signal_handler
+        from athalia_core import main, menu, running, signal_handler
 
         assert main is not None
         assert menu is not None

@@ -1,7 +1,7 @@
 # Template de test pour athalia_core/performance_optimizer.py
 # Fichier: tests/test_performance_optimizer.py
 
-import athalia_core.performance_optimizer as module
+import athalia_core.core.performance_optimizer as module
 
 
 class TestPerformance_Optimizer:

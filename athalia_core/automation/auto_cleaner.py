@@ -18,7 +18,7 @@ try:
 except ImportError:
     yaml = None
 
-from .performance_optimizer import (
+from athalia_core.core.performance_optimizer import (
     PerformanceOptimizer,
     SecurityValidator,
     memory_efficient,

@@ -10,7 +10,7 @@ import tempfile
 import time
 import unittest
 
-from athalia_core.cache_manager import (
+from athalia_core.core.cache_manager import (
     CacheManager,
     cache_result,
     clear_cache,

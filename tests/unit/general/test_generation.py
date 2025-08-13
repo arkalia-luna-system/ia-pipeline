@@ -7,7 +7,7 @@ import inspect
 
 import pytest
 
-import athalia_core.generation as module
+import athalia_core.core.generation as module
 
 
 def test_module_import():

@@ -9,7 +9,7 @@ import tempfile
 from pathlib import Path
 from unittest.mock import MagicMock, Mock, patch
 
-from athalia_core.robotics_ci import RoboticsCI, run_robotics_ci
+from athalia_core.automation.robotics_ci import RoboticsCI, run_robotics_ci
 
 
 class TestRoboticsCI:
@@ -74,7 +74,7 @@ class TestRoboticsCI:
             or self.ci.ci_results["build_status"] == "failed"
         )
 
-    @patch("athalia_core.robotics_ci.validate_and_run")
+    @patch("athalia_core.automation.robotics_ci.validate_and_run")
     def test_run_build_rust_success(self, mock_run):
         """Test de build Rust réussi"""
         # Créer Cargo.toml
@@ -95,7 +95,7 @@ class TestRoboticsCI:
         self.ci.run_full_pipeline()
         assert self.ci.ci_results["build_status"] == "success"
 
-    @patch("athalia_core.robotics_ci.validate_and_run")
+    @patch("athalia_core.automation.robotics_ci.validate_and_run")
     def test_run_build_rust_failure(self, mock_run):
         """Test de build Rust échoué"""
         # Créer Cargo.toml
@@ -114,7 +114,7 @@ class TestRoboticsCI:
         assert self.ci.ci_results["build_status"] == "failed"
         assert len(self.ci.ci_results["errors"]) > 0
 
-    @patch("athalia_core.robotics_ci.validate_and_run")
+    @patch("athalia_core.automation.robotics_ci.validate_and_run")
     def test_run_build_ros2_success(self, mock_run):
         """Test de build ROS2 réussi"""
         package_xml = Path(self.temp_dir) / "package.xml"
@@ -143,7 +143,7 @@ class TestRoboticsCI:
         with open(cmake_lists, "w") as f:
             f.write("cmake_minimum_required(VERSION 3.8)\nproject(test_package)")
 
-        # Créer un mock qui simule le comportement de validate_and_run
+        # Créer un mock qui simule le comportement de validateand_run
         mock_result = MagicMock()
         mock_result.returncode = 0
         mock_result.stdout = ""
@@ -162,7 +162,7 @@ class TestRoboticsCI:
         self.ci.run_full_pipeline()
         assert self.ci.ci_results["build_status"] == "success"
 
-    @patch("athalia_core.robotics_ci.validate_and_run")
+    @patch("athalia_core.automation.robotics_ci.validate_and_run")
     def test_run_tests_rust_success(self, mock_run):
         """Test de tests Rust réussi"""
         # Créer Cargo.toml
@@ -180,7 +180,7 @@ class TestRoboticsCI:
         self.ci._run_tests()
         assert self.ci.ci_results["test_status"] == "success"
 
-    @patch("athalia_core.robotics_ci.validate_and_run")
+    @patch("athalia_core.automation.robotics_ci.validate_and_run")
     def test_run_tests_ros2_success(self, mock_run):
         """Test de tests ROS2 réussi"""
         package_xml = Path(self.temp_dir) / "package.xml"
@@ -193,7 +193,7 @@ class TestRoboticsCI:
         self.ci._run_tests()
         assert self.ci.ci_results["test_status"] == "success"
 
-    @patch("athalia_core.robotics_ci.validate_and_run")
+    @patch("athalia_core.automation.robotics_ci.validate_and_run")
     def test_run_linting_rust_success(self, mock_run):
         """Test de linting Rust réussi"""
         # Créer Cargo.toml
@@ -211,7 +211,7 @@ class TestRoboticsCI:
         self.ci._run_linting()
         assert self.ci.ci_results["lint_status"] == "success"
 
-    @patch("athalia_core.robotics_ci.validate_and_run")
+    @patch("athalia_core.automation.robotics_ci.validateand_run")
     def test_run_linting_python_success(self, mock_run):
         """Test de linting Python réussi"""
         # Créer un fichier Python pour que le projet soit détecté comme Python
@@ -241,7 +241,7 @@ class TestRoboticsCI:
         self.ci._run_security_scan()
         assert self.ci.ci_results["security_status"] == "success"
 
-    @patch("athalia_core.robotics_ci.validate_and_run")
+    @patch("athalia_core.automation.robotics_ci.validateand_run")
     def test_run_security_scan_python_success(self, mock_run):
         """Test de scan sécurité Python réussi"""
         mock_run.return_value.returncode = 0
@@ -342,7 +342,7 @@ class TestRoboticsCIIntegration:
 
         shutil.rmtree(self.temp_dir, ignore_errors=True)
 
-    @patch("athalia_core.robotics_ci.validate_and_run")
+    @patch("athalia_core.automation.robotics_ci.validateand_run")
     def test_full_ci_workflow(self, mock_run):
         """Test du workflow CI complet"""
         # Créer un projet Rust simple
@@ -376,7 +376,7 @@ class TestRoboticsCIIntegration:
 def test_run_robotics_ci_function():
     """Test de la fonction utilitaire run_robotics_ci"""
     with tempfile.TemporaryDirectory() as temp_dir:
-        with patch("athalia_core.robotics_ci.RoboticsCI") as mock_ci_class:
+        with patch("athalia_core.automation.robotics_ci.RoboticsCI") as mock_ci_class:
             mock_ci = Mock()
             mock_ci.run_full_pipeline.return_value = {"status": "success"}
             mock_ci_class.return_value = mock_ci

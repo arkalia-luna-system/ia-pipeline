@@ -1,7 +1,7 @@
 # Template de test pour athalia_core/performance_analyzer.py
 # Fichier: tests/test_performance_analyzer.py
 
-import athalia_core.performance_analyzer as module
+import athalia_core.core.performance_analyzer as module
 
 
 class TestPerformance_Analyzer:

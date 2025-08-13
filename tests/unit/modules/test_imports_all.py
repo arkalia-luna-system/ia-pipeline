@@ -17,16 +17,16 @@ class TestImportsAll:
         core_modules = [
             "athalia_core",
             "athalia_core.audit",
-            "athalia_core.cleanup",
+            "athalia_core.automation.cleanup",
             "athalia_core.analytics",
             "athalia_core.cli",
-            "athalia_core.config_manager",
-            "athalia_core.auto_cleaner",
-            "athalia_core.auto_tester",
-            "athalia_core.auto_documenter",
-            "athalia_core.auto_cicd",
+            "athalia_core.core.config_manager",
+            "athalia_core.automation.auto_cleaner",
+            "athalia_core.automation.auto_tester",
+            "athalia_core.automation.auto_documenter",
+            "athalia_core.automation.auto_cicd",
             "athalia_core.ai.ai_robust",
-            "athalia_core.unified_orchestrator",
+            "athalia_core.core.unified_orchestrator",
             "athalia_core.analytics.advanced_analytics",
         ]
 
@@ -178,7 +178,7 @@ class TestImportsAll:
         # Test des modules principaux pour les imports circulaires
         main_modules = [
             "athalia_core.audit",
-            "athalia_core.cleanup",
+            "athalia_core.automation.cleanup",
             "athalia_core.analytics",
             "athalia_core.cli",
         ]

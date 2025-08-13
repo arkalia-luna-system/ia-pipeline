@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import os
 
-from athalia_core import generation
+from athalia_core.core import generation
 
 
 def test_save_and_inject(tmp_path):
