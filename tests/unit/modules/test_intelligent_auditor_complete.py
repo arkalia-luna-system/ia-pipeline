@@ -1,19 +1,16 @@
 #!/usr/bin/env python3
 """
-Tests complets pour intelligent_auditor.py (810 lignes)
-LE PLUS GROS FICHIER SOUS-TESTÉ - PRIORITÉ MAXIMALE
-
-Couverture actuelle: 15% → Objectif: 85%
-Standards: Black + Ruff + MyPy + Bandit
+Tests complets pour IntelligentAuditor
 """
 
+import os
 import shutil
 import tempfile
 from pathlib import Path
 
 import pytest
 
-from athalia_core.intelligent_auditor import IntelligentAuditor
+from athalia_core.audit.intelligent_auditor import IntelligentAuditor
 
 
 class TestIntelligentAuditorComplete:
@@ -501,7 +498,6 @@ class Class{i}:
 
     def test_memory_usage_monitoring(self) -> None:
         """Test monitoring utilisation mémoire."""
-        import os
 
         import psutil
 

@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from athalia_core.advanced_analytics import AdvancedAnalytics
+from athalia_core.analytics.advanced_analytics import AdvancedAnalytics
 
 
 class TestAdvancedAnalytics(unittest.TestCase):

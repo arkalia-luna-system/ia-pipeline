@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 
-from athalia_core.ai_robust import RobustAI
+from athalia_core.ai.ai_robust import RobustAI
 from athalia_core.distillation.multimodal_distiller import MultimodalDistiller
 
 

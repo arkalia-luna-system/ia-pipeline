@@ -6,7 +6,7 @@ Amélioration de la couverture de code
 
 from unittest.mock import MagicMock, patch
 
-from athalia_core.ai_robust_enhanced import (
+from athalia_core.ai.ai_robust_enhanced import (
     AIModel,
     PromptContext,
     RobustAI,
@@ -110,7 +110,7 @@ class TestRobustAI:
         assert prompt is not None
         assert isinstance(prompt, str)
 
-    @patch("athalia_core.ai_robust_enhanced.validate_and_run")
+    @patch("athalia_core.ai.ai_robust_enhanced.validate_and_run")
     def test_call_ollama(self, mock_validate_and_run):
         """Test d'appel Ollama"""
         ai = RobustAI()
@@ -171,7 +171,7 @@ class TestFunctions:
     def test_fallback_ia(self):
         """Test de la fonction fallback_ia"""
         with patch(
-            "athalia_core.ai_robust_enhanced.validate_and_run"
+            "athalia_core.ai.ai_robust_enhanced.validate_and_run"
         ) as mock_validate_and_run:
             mock_validate_and_run.return_value = MagicMock(
                 stdout="fallback response", returncode=0
@@ -182,7 +182,7 @@ class TestFunctions:
             # Test plus flexible pour la réponse
             assert isinstance(response, str)
 
-    @patch("athalia_core.ai_robust_enhanced.validate_and_run")
+    @patch("athalia_core.ai.ai_robust_enhanced.validate_and_run")
     def test_query_qwen(self, mock_validate_and_run):
         """Test de la fonction query_qwen"""
         mock_validate_and_run.return_value = MagicMock(
@@ -194,7 +194,7 @@ class TestFunctions:
         # Test plus flexible pour la réponse
         assert isinstance(response, str)
 
-    @patch("athalia_core.ai_robust_enhanced.validate_and_run")
+    @patch("athalia_core.ai.ai_robust_enhanced.validate_and_run")
     def test_query_mistral(self, mock_validate_and_run):
         """Test de la fonction query_mistral"""
         mock_validate_and_run.return_value = MagicMock(
@@ -220,7 +220,7 @@ class TestErrorHandling:
         assert blueprint is not None
         assert "project_name" in blueprint
 
-    @patch("athalia_core.ai_robust_enhanced.subprocess.run")
+    @patch("athalia_core.ai.ai_robust_enhanced.subprocess.run")
     def test_call_ollama_error_handling(self, mock_run):
         """Test de gestion d'erreur dans _call_ollama"""
         ai = RobustAI()

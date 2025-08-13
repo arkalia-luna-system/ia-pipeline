@@ -53,7 +53,7 @@ class TestCLIComplete:
                 cli.callback(verbose=True)
                 mock_logging.assert_called_with(level=20)  # INFO
 
-    @patch("athalia_core.ai_robust.RobustAI")
+    @patch("athalia_core.ai.ai_robust.RobustAI")
     @patch("click.echo")
     def test_generate_command_success(self, mock_echo, mock_robust_ai):
         """Test la commande generate avec succès - OPTIMISÉ"""
@@ -89,7 +89,7 @@ class TestCLIComplete:
         ]
         assert len(success_calls) > 0, "Aucun message de succès trouvé"
 
-    @patch("athalia_core.ai_robust.RobustAI")
+    @patch("athalia_core.ai.ai_robust.RobustAI")
     @patch("click.echo")
     def test_generate_command_dry_run(self, mock_echo, mock_robust_ai):
         """Test la commande generate en mode dry-run"""
@@ -117,7 +117,7 @@ class TestCLIComplete:
         ]
         assert len(simulation_calls) > 0, "Message de simulation non trouvé"
 
-    @patch("athalia_core.ai_robust.RobustAI")
+    @patch("athalia_core.ai.ai_robust.RobustAI")
     @patch("click.echo")
     def test_generate_command_no_blueprint(self, mock_echo, mock_robust_ai):
         """Test la commande generate sans blueprint"""
@@ -137,7 +137,7 @@ class TestCLIComplete:
         # Vérifier que des messages ont été affichés (même si c'est une erreur)
         assert mock_echo.call_count > 0, "Aucun message affiché"
 
-    @patch("athalia_core.ai_robust.RobustAI")
+    @patch("athalia_core.ai.ai_robust.RobustAI")
     @patch("click.echo")
     def test_generate_command_exception(self, mock_echo, mock_robust_ai):
         """Test la commande generate avec exception"""
@@ -203,7 +203,7 @@ class TestCLIComplete:
         ]
         assert len(error_calls) > 0, "Message d'erreur non trouvé"
 
-    @patch("athalia_core.ai_robust.RobustAI")
+    @patch("athalia_core.ai.ai_robust.RobustAI")
     @patch("click.echo")
     def test_ai_status_command_success(self, mock_echo, mock_robust_ai):
         """Test la commande ai_status avec succès"""
@@ -224,7 +224,7 @@ class TestCLIComplete:
         ]
         assert len(status_calls) > 0, "Message de statut non trouvé"
 
-    @patch("athalia_core.ai_robust.RobustAI")
+    @patch("athalia_core.ai.ai_robust.RobustAI")
     @patch("click.echo")
     def test_ai_status_command_import_error(self, mock_echo, mock_robust_ai):
         """Test la commande ai_status avec erreur d'import"""
@@ -237,7 +237,7 @@ class TestCLIComplete:
         # Vérifier que des messages ont été affichés (même si c'est une erreur)
         assert mock_echo.call_count > 0, "Aucun message affiché"
 
-    @patch("athalia_core.ai_robust.RobustAI")
+    @patch("athalia_core.ai.ai_robust.RobustAI")
     @patch("click.echo")
     def test_ai_status_command_exception(self, mock_echo, mock_robust_ai):
         """Test la commande ai_status avec exception"""
@@ -250,7 +250,7 @@ class TestCLIComplete:
         # Vérifier que des messages ont été affichés (même si c'est une erreur)
         assert mock_echo.call_count > 0, "Aucun message affiché"
 
-    @patch("athalia_core.ai_robust.RobustAI")
+    @patch("athalia_core.ai.ai_robust.RobustAI")
     @patch("click.echo")
     def test_test_ai_command_success(self, mock_echo, mock_robust_ai):
         """Test la commande test_ai avec succès"""
@@ -284,7 +284,7 @@ class TestCLIComplete:
         ]
         assert len(success_calls) > 0, "Message de succès non trouvé"
 
-    @patch("athalia_core.ai_robust.RobustAI")
+    @patch("athalia_core.ai.ai_robust.RobustAI")
     @patch("click.echo")
     def test_test_ai_command_import_error(self, mock_echo, mock_robust_ai):
         """Test la commande test_ai avec erreur d'import"""
@@ -297,7 +297,7 @@ class TestCLIComplete:
         # Vérifier que des messages ont été affichés (même si c'est une erreur)
         assert mock_echo.call_count > 0, "Aucun message affiché"
 
-    @patch("athalia_core.ai_robust.RobustAI")
+    @patch("athalia_core.ai.ai_robust.RobustAI")
     @patch("click.echo")
     def test_test_ai_command_exception(self, mock_echo, mock_robust_ai):
         """Test la commande test_ai avec exception"""
@@ -313,7 +313,7 @@ class TestCLIComplete:
     def test_generate_command_output_directory_creation(self):
         """Test la création du répertoire de sortie"""
         # Test simple - vérifier que la fonction s'exécute sans erreur
-        with patch("athalia_core.ai_robust.RobustAI") as mock_robust_ai:
+        with patch("athalia_core.ai.ai_robust.RobustAI") as mock_robust_ai:
             with patch("click.echo"):
                 # Mock de l'IA robuste
                 mock_ai = Mock()
@@ -378,7 +378,7 @@ class TestCLIComplete:
     def test_generate_command_default_output(self):
         """Test la commande generate avec sortie par défaut"""
         # Test simple - vérifier que la fonction s'exécute sans erreur
-        with patch("athalia_core.ai_robust.RobustAI") as mock_robust_ai:
+        with patch("athalia_core.ai.ai_robust.RobustAI") as mock_robust_ai:
             with patch("click.echo"):
                 # Mock de l'IA robuste
                 mock_ai = Mock()
@@ -399,7 +399,7 @@ class TestCLIComplete:
                 # Vérifier que la fonction s'exécute sans erreur
                 assert True
 
-    @patch("athalia_core.ai_robust.RobustAI")
+    @patch("athalia_core.ai.ai_robust.RobustAI")
     @patch("click.echo")
     def test_test_ai_command_review_code_parameters(self, mock_echo, mock_robust_ai):
         """Test les paramètres de revue de code dans test_ai"""
@@ -423,7 +423,7 @@ class TestCLIComplete:
         # Vérifier que la fonction s'exécute sans erreur
         assert mock_echo.call_count > 0, "Aucun message affiché"
 
-    @patch("athalia_core.ai_robust.RobustAI")
+    @patch("athalia_core.ai.ai_robust.RobustAI")
     @patch("click.echo")
     def test_test_ai_command_documentation_parameters(self, mock_echo, mock_robust_ai):
         """Test les paramètres de génération de documentation dans test_ai"""
@@ -462,7 +462,7 @@ class TestCLIIntegration:
         os.chdir(self.original_cwd)
         shutil.rmtree(self.test_dir, ignore_errors=True)
 
-    @patch("athalia_core.ai_robust.RobustAI")
+    @patch("athalia_core.ai.ai_robust.RobustAI")
     @patch("athalia_core.audit.audit_project_intelligent")
     def test_cli_workflow_complete(self, mock_audit, mock_robust_ai):
         """Test un workflow complet CLI"""

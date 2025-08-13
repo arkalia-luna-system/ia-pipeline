@@ -5,7 +5,7 @@ Redirige vers intelligent_auditor.py pour maintenir la compatibilité
 """
 
 # Import des classes et fonctions depuis intelligent_auditor
-from athalia_core.intelligent_auditor import IntelligentAuditor
+from .intelligent_auditor import IntelligentAuditor
 
 # Alias pour compatibilité
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Tests pour le système d'audit intelligent Athalia
+Tests pour audit_project_intelligent
 """
 
 import os
@@ -9,16 +9,11 @@ import tempfile
 
 import pytest
 
-try:
-    from athalia_core.audit import audit_project_intelligent
-    from athalia_core.intelligent_auditor import IntelligentAuditor
+from athalia_core.audit.audit import audit_project_intelligent
+from athalia_core.audit.intelligent_auditor import IntelligentAuditor
 
-    ProjectAuditor = IntelligentAuditor  # Alias pour compatibilité
-    generate_audit_report = None
-except ImportError:
-    ProjectAuditor = None
-    audit_project_intelligent = None
-    generate_audit_report = None
+ProjectAuditor = IntelligentAuditor  # Alias pour compatibilité
+generate_audit_report = None
 
 
 class TestAuditIntelligent:

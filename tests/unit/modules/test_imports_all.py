@@ -25,7 +25,7 @@ class TestImportsAll:
             "athalia_core.auto_tester",
             "athalia_core.auto_documenter",
             "athalia_core.auto_cicd",
-            "athalia_core.ai_robust",
+            "athalia_core.ai.ai_robust",
             "athalia_core.unified_orchestrator",
             "athalia_core.advanced_analytics",
         ]

@@ -1,7 +1,8 @@
 # Template de test pour athalia_core/security_auditor.py
 # Fichier: tests/test_security_auditor.py
 
-import athalia_core.security_auditor as module
+
+import athalia_core.audit.security_auditor as module
 
 
 class TestSecurity_Auditor:

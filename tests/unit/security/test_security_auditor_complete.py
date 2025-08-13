@@ -1,7 +1,5 @@
 """
-Tests complets pour security_auditor.py
-Couverture: 100% des fonctionnalités de security_auditor
-Tests: 32 tests unitaires et d'intégration
+Tests complets pour SecurityAuditor
 """
 
 import os
@@ -11,7 +9,7 @@ import tempfile
 from pathlib import Path
 from unittest.mock import Mock, patch
 
-from athalia_core.security_auditor import SecurityAuditor
+from athalia_core.audit.security_auditor import SecurityAuditor
 
 
 class TestSecurityAuditor:

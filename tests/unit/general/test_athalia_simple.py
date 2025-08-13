@@ -11,7 +11,9 @@ import pytest
 def test_athalia_core_import():
     """Test d'import du module core"""
     try:
-        from athalia_core import analytics, audit, cleanup
+        from athalia_core import cleanup
+        from athalia_core.analytics import analytics
+        from athalia_core.audit import audit
 
         assert audit is not None
         assert cleanup is not None

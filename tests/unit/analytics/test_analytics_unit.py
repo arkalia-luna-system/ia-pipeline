@@ -1,6 +1,6 @@
 import unittest
 
-from athalia_core import analytics
+from athalia_core.analytics import analytics
 
 
 class TestAnalytics(unittest.TestCase):

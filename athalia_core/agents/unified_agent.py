@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
-Agent unifié pour Athalia - Combine les fonctionnalités de
-network_agent et qwen_agent
+Agent unifié pour Athalia/Arkalia
+- Gère les interactions avec l'utilisateur
+- Coordonne les différents agents spécialisés
 """
 
-from athalia_core.ai_robust import query_qwen
+from athalia_core.ai.ai_robust import query_qwen
 
 
 class UnifiedAgent:

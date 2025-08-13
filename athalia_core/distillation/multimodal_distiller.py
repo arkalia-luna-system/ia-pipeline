@@ -7,7 +7,7 @@ Distillation multimodale pour Athalia/Arkalia
 import subprocess
 from typing import Any
 
-from athalia_core.ai_robust import AIModel, RobustAI
+from athalia_core.ai.ai_robust import AIModel, RobustAI
 
 # Import du validateur de sécurité
 try:

@@ -16,7 +16,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 class TestAgentUnified(unittest.TestCase):
     """Tests pour les agents unifiés (corrigé)"""
 
-    @patch("athalia_core.ai_robust.query_qwen", return_value="Réponse mockée")
+    @patch("athalia_core.ai.ai_robust.query_qwen", return_value="Réponse mockée")
     def test_agent_unified_basic(self, mock_qwen):
         """Test basique des agents unifiés"""
         try:

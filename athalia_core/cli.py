@@ -13,10 +13,10 @@ import yaml
 
 # Import des modules avec fallback
 try:
-    from .ai_robust import AIModel, RobustAI
+    from .ai.ai_robust import AIModel, RobustAI
 except ImportError:
     try:
-        from athalia_core.ai_robust import AIModel, RobustAI
+        from athalia_core.ai.ai_robust import AIModel, RobustAI
     except ImportError:
         # Créer des classes factices si les imports échouent
         class AIModel:
@@ -29,10 +29,10 @@ except ImportError:
 
 
 try:
-    from .audit import audit_project_intelligent
+    from .audit.audit import audit_project_intelligent
 except ImportError:
     try:
-        from athalia_core.audit import audit_project_intelligent
+        from athalia_core.audit.audit import audit_project_intelligent
     except ImportError:
         # Créer une fonction factice si l'import échoue
         def audit_project_intelligent(project_path):

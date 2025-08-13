@@ -1,4 +1,4 @@
-from athalia_core.ai_robust import query_qwen
+from athalia_core.ai.ai_robust import query_qwen
 
 
 class AuditAgent:

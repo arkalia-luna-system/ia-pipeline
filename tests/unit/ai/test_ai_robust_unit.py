@@ -1,6 +1,6 @@
 import unittest
 
-from athalia_core import ai_robust
+from athalia_core.ai import ai_robust
 
 
 class TestAiRobust(unittest.TestCase):

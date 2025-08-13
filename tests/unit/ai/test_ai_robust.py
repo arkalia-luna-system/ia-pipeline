@@ -9,7 +9,7 @@ from unittest.mock import Mock, patch
 
 import pytest
 
-from athalia_core.ai_robust import (
+from athalia_core.ai.ai_robust import (
     AIModel,
     PromptContext,
     RobustAI,
@@ -222,14 +222,14 @@ def test_function():
 
     def test_detect_available_models_with_ollama_error(self):
         """Test la détection avec erreur Ollama."""
-        with patch("athalia_core.ai_robust.validate_and_run") as mock_validate:
+        with patch("athalia_core.ai.ai_robust.validate_and_run") as mock_validate:
             mock_validate.side_effect = Exception("Ollama error")
             ai = RobustAI()
             assert AIModel.MOCK in ai.available_models
 
     def test_detect_available_models_with_ollama_failure(self):
         """Test la détection avec échec Ollama."""
-        with patch("athalia_core.ai_robust.validate_and_run") as mock_validate:
+        with patch("athalia_core.ai.ai_robust.validate_and_run") as mock_validate:
             mock_result = Mock()
             mock_result.returncode = 1
             mock_validate.return_value = mock_result
@@ -238,7 +238,7 @@ def test_function():
 
     def test_detect_available_models_with_ollama_success(self):
         """Test la détection avec succès Ollama."""
-        with patch("athalia_core.ai_robust.validate_and_run") as mock_validate:
+        with patch("athalia_core.ai.ai_robust.validate_and_run") as mock_validate:
             mock_result = Mock()
             mock_result.returncode = 0
             mock_result.stdout = "qwen mistral llava llama codegen"
@@ -249,7 +249,7 @@ def test_function():
 
     def test_call_ollama_success(self):
         """Test l'appel Ollama réussi."""
-        with patch("athalia_core.ai_robust.validate_and_run") as mock_validate:
+        with patch("athalia_core.ai.ai_robust.validate_and_run") as mock_validate:
             mock_result = Mock()
             mock_result.returncode = 0
             mock_result.stdout = "Réponse Ollama"
@@ -260,7 +260,7 @@ def test_function():
 
     def test_call_ollama_failure(self):
         """Test l'appel Ollama échoué."""
-        with patch("athalia_core.ai_robust.validate_and_run") as mock_validate:
+        with patch("athalia_core.ai.ai_robust.validate_and_run") as mock_validate:
             mock_result = Mock()
             mock_result.returncode = 1
             mock_result.stderr = "Erreur Ollama"
@@ -271,7 +271,7 @@ def test_function():
 
     def test_call_ollama_exception(self):
         """Test l'appel Ollama avec exception."""
-        with patch("athalia_core.ai_robust.validate_and_run") as mock_validate:
+        with patch("athalia_core.ai.ai_robust.validate_and_run") as mock_validate:
             mock_validate.side_effect = Exception("Erreur système")
 
             result = self.ai._call_ollama("mistral", "test prompt")
@@ -428,7 +428,7 @@ def test_fallback_and_distillation_qwen_mistral():
 
 def test_fallback_ia_qwen_mistral(monkeypatch):
     """Test de la fonction fallback_ia avec Qwen et Mistral."""
-    from athalia_core.ai_robust import fallback_ia
+    from athalia_core.ai.ai_robust import fallback_ia
 
     # Mock les requêtes pour Qwen et Mistral
     def mock_query_qwen(prompt):
@@ -437,7 +437,7 @@ def test_fallback_ia_qwen_mistral(monkeypatch):
     def mock_query_mistral(prompt):
         return "Réponse Mistral"
 
-    import athalia_core.ai_robust as ai_robust
+    import athalia_core.ai.ai_robust as ai_robust
 
     ai_robust.query_qwen = mock_query_qwen
     ai_robust.query_mistral = mock_query_mistral
@@ -455,7 +455,7 @@ def test_robust_ai_factory():
 
 def test_fallback_ia_default_models():
     """Test de fallback_ia avec les modèles par défaut."""
-    with patch("athalia_core.ai_robust.query_qwen") as mock_qwen:
+    with patch("athalia_core.ai.ai_robust.query_qwen") as mock_qwen:
         mock_qwen.return_value = "Réponse Qwen"
         result = fallback_ia("Test prompt")
         assert result == "Réponse Qwen"
@@ -463,7 +463,7 @@ def test_fallback_ia_default_models():
 
 def test_fallback_ia_no_response():
     """Test de fallback_ia sans réponse."""
-    with patch("athalia_core.ai_robust.query_qwen") as mock_qwen:
+    with patch("athalia_core.ai.ai_robust.query_qwen") as mock_qwen:
         mock_qwen.return_value = ""
         result = fallback_ia("Test prompt", models=["qwen", "mock"])
         assert result == "Réponse mock générée."
@@ -471,7 +471,7 @@ def test_fallback_ia_no_response():
 
 def test_fallback_ia_all_fail():
     """Test de fallback_ia avec tous les modèles qui échouent."""
-    with patch("athalia_core.ai_robust.query_qwen") as mock_qwen:
+    with patch("athalia_core.ai.ai_robust.query_qwen") as mock_qwen:
         mock_qwen.return_value = ""
         result = fallback_ia("Test prompt", models=["qwen"])
         assert result == "[Aucune réponse IA]"
@@ -606,16 +606,16 @@ def test_security_validator_import_fallback():
         # Recharger le module pour tester le fallback
         import importlib
 
-        import athalia_core.ai_robust
+        import athalia_core.ai.ai_robust
 
-        importlib.reload(athalia_core.ai_robust)
+        importlib.reload(athalia_core.ai.ai_robust)
 
         # Vérifier que les fonctions de fallback sont disponibles
-        assert hasattr(athalia_core.ai_robust, "validate_and_run")
-        assert hasattr(athalia_core.ai_robust, "SecurityError")
+        assert hasattr(athalia_core.ai.ai_robust, "validate_and_run")
+        assert hasattr(athalia_core.ai.ai_robust, "SecurityError")
 
         # Test que SecurityError est une exception
-        assert issubclass(athalia_core.ai_robust.SecurityError, Exception)
+        assert issubclass(athalia_core.ai.ai_robust.SecurityError, Exception)
 
     finally:
         # Restaurer les modules originaux
@@ -625,7 +625,7 @@ def test_security_validator_import_fallback():
 
 def test_security_error_handling():
     """Test de la gestion des erreurs de sécurité."""
-    from athalia_core.ai_robust import SecurityError
+    from athalia_core.ai.ai_robust import SecurityError
 
     # Test que SecurityError peut être levée et attrapée
     try:
@@ -636,7 +636,7 @@ def test_security_error_handling():
 
 def test_validate_and_run_fallback():
     """Test de la fonction validate_and_run de fallback."""
-    from athalia_core.ai_robust import validate_and_run
+    from athalia_core.ai.ai_robust import validate_and_run
 
     # Test que la fonction existe et peut être appelée
     assert callable(validate_and_run)
