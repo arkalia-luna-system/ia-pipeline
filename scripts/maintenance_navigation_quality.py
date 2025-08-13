@@ -104,25 +104,29 @@ class NavigationQualityMaintainer:
         """Exécute le nettoyage automatique sécurisé si nécessaire"""
         try:
             self.log_maintenance("Exécution du nettoyage automatique sécurisé...")
-            
+
             # Nettoyage sécurisé des fichiers système
             cleaned_files = self.secure_cleanup_system_files()
-            
+
             if cleaned_files:
-                self.log_maintenance(f"Nettoyage sécurisé terminé: {len(cleaned_files)} fichiers nettoyés")
+                self.log_maintenance(
+                    f"Nettoyage sécurisé terminé: {len(cleaned_files)} fichiers nettoyés"
+                )
                 return True
             else:
                 self.log_maintenance("Aucun fichier à nettoyer")
                 return True
-                
+
         except Exception as e:
-            self.log_maintenance(f"Erreur lors du nettoyage automatique sécurisé: {e}", "ERROR")
+            self.log_maintenance(
+                f"Erreur lors du nettoyage automatique sécurisé: {e}", "ERROR"
+            )
             return False
-    
+
     def secure_cleanup_system_files(self):
         """Nettoyage sécurisé des fichiers système uniquement"""
         cleaned_files = []
-        
+
         try:
             # 1. Fichiers Apple Double (.DS_Store, ._*)
             apple_double_patterns = [".DS_Store", "._*"]
@@ -133,11 +137,17 @@ class NavigationQualityMaintainer:
                             # Vérification que c'est bien un fichier système
                             if self.is_safe_to_delete(file_path):
                                 file_path.unlink()
-                                cleaned_files.append(str(file_path.relative_to(self.workspace)))
-                                self.log_maintenance(f"Fichier système supprimé: {file_path.name}")
+                                cleaned_files.append(
+                                    str(file_path.relative_to(self.workspace))
+                                )
+                                self.log_maintenance(
+                                    f"Fichier système supprimé: {file_path.name}"
+                                )
                         except Exception as e:
-                            self.log_maintenance(f"Impossible de supprimer {file_path}: {e}", "WARNING")
-            
+                            self.log_maintenance(
+                                f"Impossible de supprimer {file_path}: {e}", "WARNING"
+                            )
+
             # 2. Fichiers de cache Python
             cache_patterns = ["__pycache__", "*.pyc", "*.pyo"]
             for pattern in cache_patterns:
@@ -146,22 +156,37 @@ class NavigationQualityMaintainer:
                         if cache_dir.is_dir():
                             try:
                                 import shutil
+
                                 shutil.rmtree(cache_dir)
-                                cleaned_files.append(str(cache_dir.relative_to(self.workspace)))
-                                self.log_maintenance(f"Dossier cache supprimé: {cache_dir.name}")
+                                cleaned_files.append(
+                                    str(cache_dir.relative_to(self.workspace))
+                                )
+                                self.log_maintenance(
+                                    f"Dossier cache supprimé: {cache_dir.name}"
+                                )
                             except Exception as e:
-                                self.log_maintenance(f"Impossible de supprimer {cache_dir}: {e}", "WARNING")
+                                self.log_maintenance(
+                                    f"Impossible de supprimer {cache_dir}: {e}",
+                                    "WARNING",
+                                )
                 else:
                     for cache_file in self.workspace.rglob(pattern):
                         if cache_file.is_file():
                             try:
                                 if self.is_safe_to_delete(cache_file):
                                     cache_file.unlink()
-                                    cleaned_files.append(str(cache_file.relative_to(self.workspace)))
-                                    self.log_maintenance(f"Fichier cache supprimé: {cache_file.name}")
+                                    cleaned_files.append(
+                                        str(cache_file.relative_to(self.workspace))
+                                    )
+                                    self.log_maintenance(
+                                        f"Fichier cache supprimé: {cache_file.name}"
+                                    )
                             except Exception as e:
-                                self.log_maintenance(f"Impossible de supprimer {cache_file}: {e}", "WARNING")
-            
+                                self.log_maintenance(
+                                    f"Impossible de supprimer {cache_file}: {e}",
+                                    "WARNING",
+                                )
+
             # 3. Fichiers temporaires de navigation
             temp_files = ["navigation_test_*.json", "maintenance_report_*.json"]
             for pattern in temp_files:
@@ -172,46 +197,65 @@ class NavigationQualityMaintainer:
                             if self.is_old_temp_file(temp_file, days=7):
                                 if self.is_safe_to_delete(temp_file):
                                     temp_file.unlink()
-                                    cleaned_files.append(str(temp_file.relative_to(self.workspace)))
-                                    self.log_maintenance(f"Fichier temporaire supprimé: {temp_file.name}")
+                                    cleaned_files.append(
+                                        str(temp_file.relative_to(self.workspace))
+                                    )
+                                    self.log_maintenance(
+                                        f"Fichier temporaire supprimé: {temp_file.name}"
+                                    )
                         except Exception as e:
-                            self.log_maintenance(f"Impossible de supprimer {temp_file}: {e}", "WARNING")
-            
+                            self.log_maintenance(
+                                f"Impossible de supprimer {temp_file}: {e}", "WARNING"
+                            )
+
         except Exception as e:
             self.log_maintenance(f"Erreur lors du nettoyage sécurisé: {e}", "ERROR")
-        
+
         return cleaned_files
-    
+
     def is_safe_to_delete(self, file_path):
         """Vérifie si un fichier peut être supprimé en toute sécurité"""
         try:
             # Ne jamais supprimer de fichiers dans docs/ ou athalia_core/
             if "docs" in str(file_path) or "athalia_core" in str(file_path):
                 return False
-            
+
             # Ne jamais supprimer de fichiers de configuration
-            if file_path.name in [".gitignore", "requirements.txt", "setup.py", "pyproject.toml"]:
+            if file_path.name in [
+                ".gitignore",
+                "requirements.txt",
+                "setup.py",
+                "pyproject.toml",
+            ]:
                 return False
-            
+
             # Ne jamais supprimer de fichiers Python source
             if file_path.suffix == ".py" and "test" not in file_path.name.lower():
                 return False
-            
+
             # Ne jamais supprimer de fichiers de documentation
             if file_path.suffix in [".md", ".rst", ".txt"]:
                 return False
-            
+
             # Vérifier que c'est bien un fichier système ou cache
-            safe_patterns = [".DS_Store", "._", "__pycache__", ".pyc", ".pyo", "Thumbs.db"]
+            safe_patterns = [
+                ".DS_Store",
+                "._",
+                "__pycache__",
+                ".pyc",
+                ".pyo",
+                "Thumbs.db",
+            ]
             return any(pattern in file_path.name for pattern in safe_patterns)
-            
+
         except Exception:
             return False
-    
+
     def is_old_temp_file(self, file_path, days=7):
         """Vérifie si un fichier temporaire est ancien"""
         try:
             import time
+
             current_time = time.time()
             file_time = file_path.stat().st_mtime
             days_old = (current_time - file_time) / (24 * 3600)
