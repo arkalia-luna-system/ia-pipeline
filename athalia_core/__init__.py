@@ -115,6 +115,47 @@ try:
 except ImportError:
     UnifiedOrchestrator = None
 
+try:
+    from .i18n import en, fr
+except ImportError:
+    en = None
+    fr = None
+
+try:
+    from .templates import artistic_templates, base_templates
+except ImportError:
+    artistic_templates = None
+    base_templates = None
+
+try:
+    from .classification import project_classifier, project_types
+except ImportError:
+    project_classifier = None
+    project_types = None
+
+try:
+    from .ai import ai_robust, ai_robust_enhanced
+except ImportError:
+    ai_robust = None
+    ai_robust_enhanced = None
+
+try:
+    from .advanced_modules import (
+        auto_correction_advanced,
+        dashboard_unified,
+        user_profiles_advanced,
+    )
+except ImportError:
+    auto_correction_advanced = None
+    dashboard_unified = None
+    user_profiles_advanced = None
+
+try:
+    from .analytics import advanced_analytics, analytics
+except ImportError:
+    analytics = None
+    advanced_analytics = None
+
 # Exports principaux - seulement les modules qui existent
 __all__ = [
     "__version__",
@@ -179,3 +220,35 @@ if performance_analyzer is not None:
     __all__.append("performance_analyzer")
 if UnifiedOrchestrator is not None:
     __all__.append("UnifiedOrchestrator")
+
+if en is not None:
+    __all__.append("en")
+if fr is not None:
+    __all__.append("fr")
+
+if artistic_templates is not None:
+    __all__.append("artistic_templates")
+if base_templates is not None:
+    __all__.append("base_templates")
+
+if project_classifier is not None:
+    __all__.append("project_classifier")
+if project_types is not None:
+    __all__.append("project_types")
+
+if ai_robust is not None:
+    __all__.append("ai_robust")
+if ai_robust_enhanced is not None:
+    __all__.append("ai_robust_enhanced")
+
+if analytics is not None:
+    __all__.append("analytics")
+if advanced_analytics is not None:
+    __all__.append("advanced_analytics")
+
+if auto_correction_advanced is not None:
+    __all__.append("auto_correction_advanced")
+if dashboard_unified is not None:
+    __all__.append("dashboard_unified")
+if user_profiles_advanced is not None:
+    __all__.append("user_profiles_advanced")
