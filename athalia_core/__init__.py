@@ -206,6 +206,12 @@ except ImportError:
     SecurityManager = None
 
 try:
+    from .autocomplete import AutocompleteEngine, AutocompleteServer
+except ImportError:
+    AutocompleteEngine = None
+    AutocompleteServer = None
+
+try:
     from .analytics import advanced_analytics, analytics
 except ImportError:
     analytics = None
