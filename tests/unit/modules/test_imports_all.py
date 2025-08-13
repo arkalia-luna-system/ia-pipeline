@@ -27,7 +27,7 @@ class TestImportsAll:
             "athalia_core.auto_cicd",
             "athalia_core.ai.ai_robust",
             "athalia_core.unified_orchestrator",
-            "athalia_core.advanced_analytics",
+            "athalia_core.analytics.advanced_analytics",
         ]
 
         for module in core_modules:

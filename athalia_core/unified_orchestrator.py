@@ -11,7 +11,8 @@ from pathlib import Path
 from typing import Any
 
 # Imports des modules Athalia
-from .ai_robust import RobustAI
+from .ai.ai_robust import RobustAI
+from .audit.security_auditor import SecurityAuditor
 from .auto_cicd import AutoCICD
 from .auto_cleaner import AutoCleaner
 from .auto_documenter import AutoDocumenter
@@ -20,7 +21,6 @@ from .cache_manager import cache_result, get_cache_stats, get_cached_result
 from .code_linter import CodeLinter
 from .correction_optimizer import CorrectionOptimizer
 from .generation import generate_project
-from .security_auditor import SecurityAuditor
 
 logger = logging.getLogger(__name__)
 
