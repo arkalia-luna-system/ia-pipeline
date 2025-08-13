@@ -12,7 +12,7 @@ Ce module contient les composants d'intelligence artificielle :
 
 # Imports des modules AI
 from .ai_robust import RobustAI
-from .ai_robust_enhanced import RobustAIEnhanced
+from .ai_robust_enhanced import RobustAI as RobustAIEnhanced
 
 # Exports publics
 __all__ = [
