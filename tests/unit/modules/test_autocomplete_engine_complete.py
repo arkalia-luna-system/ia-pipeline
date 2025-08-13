@@ -9,7 +9,7 @@ import tempfile
 from pathlib import Path
 from unittest.mock import Mock, patch
 
-from athalia_core.autocomplete_engine import (
+from athalia_core.autocomplete.autocomplete_engine import (
     AutocompleteEngine,
     get_suggestions,
     train_model,
@@ -300,7 +300,7 @@ def test_get_suggestions():
     """Test de la fonction utilitaire get_suggestions"""
     with tempfile.TemporaryDirectory() as temp_dir:
         with patch(
-            "athalia_core.autocomplete_engine.AutocompleteEngine"
+            "athalia_core.autocomplete.AutocompleteEngine"
         ) as mock_engine_class:
             mock_engine = Mock()
             mock_engine.get_suggestions_for_context.return_value = ["def", "class"]
@@ -319,7 +319,7 @@ def test_train_model():
     """Test de la fonction utilitaire train_model"""
     with tempfile.TemporaryDirectory() as temp_dir:
         with patch(
-            "athalia_core.autocomplete_engine.AutocompleteEngine"
+            "athalia_core.autocomplete.AutocompleteEngine"
         ) as mock_engine_class:
             mock_engine = Mock()
             mock_engine.train_on_file.return_value = True

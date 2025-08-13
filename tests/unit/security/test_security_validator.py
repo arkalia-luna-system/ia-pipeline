@@ -11,7 +11,7 @@ from pathlib import Path
 
 # Import du module à tester
 try:
-    from athalia_core.security_validator import (
+    from athalia_core.validation.security_validator import (
         SecurityError,
         SecurityValidator,
         is_command_safe,

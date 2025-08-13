@@ -8,7 +8,7 @@ import pytest
 
 # Import conditionnel du module security
 try:
-    from athalia_core.security_validator import SecurityValidator
+    from athalia_core.validation.security_validator import SecurityValidator
 
     SECURITY_AVAILABLE = True
     # CORRECTION ARCHI PROPRE : Créer une fonction de test si le module n'a pas security_audit_project
@@ -180,7 +180,7 @@ class TestSecurityAudit:
 @pytest.mark.skipif(not SECURITY_AVAILABLE, reason="Module security non disponible")
 def test_security_module_import():
     """Test d'import du module security."""
-    from athalia_core.security import security_audit_project
+    from athalia_core.validation.security import security_audit_project
 
     assert security_audit_project is not None
     assert callable(security_audit_project)

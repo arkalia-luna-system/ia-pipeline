@@ -324,6 +324,11 @@ if SecurityValidator is not None:
 if SecurityManager is not None:
     __all__.append("SecurityManager")
 
+if AutocompleteEngine is not None:
+    __all__.append("AutocompleteEngine")
+if AutocompleteServer is not None:
+    __all__.append("AutocompleteServer")
+
 if ath_context_prompt is not None:
     __all__.append("ath_context_prompt")
 if audit_agent is not None:
