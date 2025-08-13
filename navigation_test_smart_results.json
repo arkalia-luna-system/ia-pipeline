@@ -1,12 +1,12 @@
 {
-  "test_date": "2025-08-12T20:29:48.754198",
+  "test_date": "2025-08-13T15:04:26.459254",
   "global_stats": {
-    "total_files": 102,
-    "total_links": 494,
-    "broken_links": 0,
-    "critical_broken_links": 0,
-    "average_navigation_score": 83.13725490196079,
-    "link_success_rate": 100.0
+    "total_files": 158,
+    "total_links": 498,
+    "broken_links": 1,
+    "critical_broken_links": 1,
+    "average_navigation_score": 88.22784810126582,
+    "link_success_rate": 99.79919678714859
   },
   "file_results": {
     "INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
@@ -1242,6 +1242,16 @@
         }
       ]
     },
+    "._INDEX_FINAL_DOCUMENTATION_ATHALIA.md": {
+      "file_path": "._INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "ARCHITECTURE/ORGANISATION_WORKSPACE.md": {
       "file_path": "ARCHITECTURE/ORGANISATION_WORKSPACE.md",
       "total_links": 12,
@@ -1604,6 +1614,26 @@
     },
     "ARCHITECTURE/STRUCTURE_PROJET_EXPLICATION.md": {
       "file_path": "ARCHITECTURE/STRUCTURE_PROJET_EXPLICATION.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "ARCHITECTURE/._INDEX.md": {
+      "file_path": "ARCHITECTURE/._INDEX.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "ARCHITECTURE/._ORGANISATION_WORKSPACE.md": {
+      "file_path": "ARCHITECTURE/._ORGANISATION_WORKSPACE.md",
       "total_links": 0,
       "valid_links": 0,
       "broken_links": 0,
@@ -2199,6 +2229,26 @@
         }
       ]
     },
+    "DEVELOPER/._INDEX.md": {
+      "file_path": "DEVELOPER/._INDEX.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "DEVELOPER/._BEST_PRACTICES.md": {
+      "file_path": "DEVELOPER/._BEST_PRACTICES.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "DEVELOPER/DOCUMENTATION_MAINTENANCE.md": {
       "file_path": "DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
       "total_links": 6,
@@ -2287,6 +2337,16 @@
           "is_critical": true
         }
       ]
+    },
+    "DEVELOPER/._DOCUMENTATION_MAINTENANCE.md": {
+      "file_path": "DEVELOPER/._DOCUMENTATION_MAINTENANCE.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
     },
     "DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md": {
       "file_path": "DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
@@ -2377,6 +2437,16 @@
         }
       ]
     },
+    "DEVELOPER/._TEMPLATE_STANDARD_MARKDOWN.md": {
+      "file_path": "DEVELOPER/._TEMPLATE_STANDARD_MARKDOWN.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md": {
       "file_path": "DEVELOPER/GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md",
       "total_links": 1,
@@ -2434,6 +2504,16 @@
           "is_critical": true
         }
       ]
+    },
+    "DEVELOPER/GUIDES/._ALIAS_WORKFLOW_QUICK_GUIDE.md": {
+      "file_path": "DEVELOPER/GUIDES/._ALIAS_WORKFLOW_QUICK_GUIDE.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
     },
     "DEVELOPER/GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md": {
       "file_path": "DEVELOPER/GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md",
@@ -2522,6 +2602,26 @@
       "navigation_score": 100,
       "links": []
     },
+    "DEVELOPER/GUIDES/._CI_CD_PROFESSIONAL_GUIDE.md": {
+      "file_path": "DEVELOPER/GUIDES/._CI_CD_PROFESSIONAL_GUIDE.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "DEVELOPER/GUIDES/._CLEAN_SHUTDOWN_GUIDE.md": {
+      "file_path": "DEVELOPER/GUIDES/._CLEAN_SHUTDOWN_GUIDE.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "DEVELOPER/GUIDES/LINTING_GUIDE.md": {
       "file_path": "DEVELOPER/GUIDES/LINTING_GUIDE.md",
       "total_links": 0,
@@ -2542,8 +2642,8 @@
       "navigation_score": 100,
       "links": []
     },
-    "DEVELOPER/GUIDES/TEST_CLEANUP_GUIDE.md": {
-      "file_path": "DEVELOPER/GUIDES/TEST_CLEANUP_GUIDE.md",
+    "DEVELOPER/GUIDES/._SECURITY_LINTING_GUIDE.md": {
+      "file_path": "DEVELOPER/GUIDES/._SECURITY_LINTING_GUIDE.md",
       "total_links": 0,
       "valid_links": 0,
       "broken_links": 0,
@@ -2601,6 +2701,26 @@
           "is_critical": true
         }
       ]
+    },
+    "DEVELOPER/GUIDES/._WORKFLOW_COMPLETE_GUIDE.md": {
+      "file_path": "DEVELOPER/GUIDES/._WORKFLOW_COMPLETE_GUIDE.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "DEVELOPER/GUIDES/TEST_CLEANUP_GUIDE.md": {
+      "file_path": "DEVELOPER/GUIDES/TEST_CLEANUP_GUIDE.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
     },
     "DEVELOPER/MAINTENANCE/APPLE_DOUBLE_MANAGEMENT.md": {
       "file_path": "DEVELOPER/MAINTENANCE/APPLE_DOUBLE_MANAGEMENT.md",
@@ -2995,6 +3115,16 @@
       "navigation_score": 100,
       "links": []
     },
+    "DEVELOPER/PLANS/._REORGANISATION_TESTS_STRUCTURE.md": {
+      "file_path": "DEVELOPER/PLANS/._REORGANISATION_TESTS_STRUCTURE.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "DEVELOPER/PLANS/REORGANISATION_TESTS_PLAN.md": {
       "file_path": "DEVELOPER/PLANS/REORGANISATION_TESTS_PLAN.md",
       "total_links": 0,
@@ -3055,6 +3185,95 @@
       "navigation_score": 100,
       "links": []
     },
+    "DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md": {
+      "file_path": "DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
+      "total_links": 6,
+      "valid_links": 6,
+      "broken_links": 0,
+      "critical_links": 6,
+      "critical_broken_links": 0,
+      "navigation_score": 60.0,
+      "links": [
+        {
+          "link": {
+            "type": "markdown",
+            "text": "Guide d'installation",
+            "url": "../../USER_GUIDES/INSTALLATION.md",
+            "line": 261
+          },
+          "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "Meilleures pratiques",
+            "url": "../BEST_PRACTICES.md",
+            "line": 262
+          },
+          "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "Guide de dépannage",
+            "url": "../../USER_GUIDES/TROUBLESHOOTING.md",
+            "line": 263
+          },
+          "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "Guide d'installation",
+            "url": "../../USER_GUIDES/INSTALLATION.md",
+            "line": 261
+          },
+          "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "Meilleures pratiques",
+            "url": "../BEST_PRACTICES.md",
+            "line": 262
+          },
+          "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "Guide de dépannage",
+            "url": "../../USER_GUIDES/TROUBLESHOOTING.md",
+            "line": 263
+          },
+          "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        }
+      ]
+    },
     "DEVELOPER/REPORTS/RAPPORT_PROGRES_FINAL_2025.md": {
       "file_path": "DEVELOPER/REPORTS/RAPPORT_PROGRES_FINAL_2025.md",
       "total_links": 0,
@@ -3074,6 +3293,82 @@
       "critical_broken_links": 0,
       "navigation_score": 100,
       "links": []
+    },
+    "DEVELOPER/REPORTS/AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md": {
+      "file_path": "DEVELOPER/REPORTS/AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md",
+      "total_links": 5,
+      "valid_links": 5,
+      "broken_links": 0,
+      "critical_links": 5,
+      "critical_broken_links": 0,
+      "navigation_score": 60.0,
+      "links": [
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "../../GETTING_STARTED/INSTALLATION.md",
+            "url": "../../GETTING_STARTED/INSTALLATION.md",
+            "line": 231
+          },
+          "source_file": "docs/DEVELOPER/REPORTS/AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "../../GETTING_STARTED/INSTALLATION.md",
+            "url": "../../GETTING_STARTED/INSTALLATION.md",
+            "line": 231
+          },
+          "source_file": "docs/DEVELOPER/REPORTS/AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "../INDEX.md",
+            "url": "../INDEX.md",
+            "line": 233
+          },
+          "source_file": "docs/DEVELOPER/REPORTS/AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "../BEST_PRACTICES.md",
+            "url": "../BEST_PRACTICES.md",
+            "line": 234
+          },
+          "source_file": "docs/DEVELOPER/REPORTS/AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "../DOCUMENTATION_MAINTENANCE.md",
+            "url": "../DOCUMENTATION_MAINTENANCE.md",
+            "line": 235
+          },
+          "source_file": "docs/DEVELOPER/REPORTS/AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        }
+      ]
     },
     "DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md": {
       "file_path": "DEVELOPER/REPORTS/SECURITY_IMPROVEMENTS_SUMMARY.md",
@@ -3175,94 +3470,15 @@
         }
       ]
     },
-    "DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md": {
-      "file_path": "DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
-      "total_links": 6,
-      "valid_links": 6,
+    "DEVELOPER/REPORTS/._WORKFLOW_AMELIORATIONS.md": {
+      "file_path": "DEVELOPER/REPORTS/._WORKFLOW_AMELIORATIONS.md",
+      "total_links": 0,
+      "valid_links": 0,
       "broken_links": 0,
-      "critical_links": 6,
+      "critical_links": 0,
       "critical_broken_links": 0,
-      "navigation_score": 60.0,
-      "links": [
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Guide d'installation",
-            "url": "../../USER_GUIDES/INSTALLATION.md",
-            "line": 261
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Meilleures pratiques",
-            "url": "../BEST_PRACTICES.md",
-            "line": 262
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Guide de dépannage",
-            "url": "../../USER_GUIDES/TROUBLESHOOTING.md",
-            "line": 263
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "Guide d'installation",
-            "url": "../../USER_GUIDES/INSTALLATION.md",
-            "line": 261
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "Meilleures pratiques",
-            "url": "../BEST_PRACTICES.md",
-            "line": 262
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "Guide de dépannage",
-            "url": "../../USER_GUIDES/TROUBLESHOOTING.md",
-            "line": 263
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/WORKFLOW_AMELIORATIONS.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        }
-      ]
+      "navigation_score": 100,
+      "links": []
     },
     "DEVELOPER/REPORTS/ANALYSE_COMPLETE_MODULES_ATHALIA.md": {
       "file_path": "DEVELOPER/REPORTS/ANALYSE_COMPLETE_MODULES_ATHALIA.md",
@@ -3284,6 +3500,16 @@
       "navigation_score": 100,
       "links": []
     },
+    "DEVELOPER/REPORTS/._AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md": {
+      "file_path": "DEVELOPER/REPORTS/._AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "DEVELOPER/REPORTS/RAPPORT_COMPLET_AMELIORATIONS_2025.md": {
       "file_path": "DEVELOPER/REPORTS/RAPPORT_COMPLET_AMELIORATIONS_2025.md",
       "total_links": 0,
@@ -3294,81 +3520,89 @@
       "navigation_score": 100,
       "links": []
     },
-    "DEVELOPER/REPORTS/AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md": {
-      "file_path": "DEVELOPER/REPORTS/AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md",
-      "total_links": 5,
-      "valid_links": 5,
+    "DEVELOPER/REPORTS/._ANALYSE_COMPLETE_MODULES_ATHALIA.md": {
+      "file_path": "DEVELOPER/REPORTS/._ANALYSE_COMPLETE_MODULES_ATHALIA.md",
+      "total_links": 0,
+      "valid_links": 0,
       "broken_links": 0,
-      "critical_links": 5,
+      "critical_links": 0,
       "critical_broken_links": 0,
-      "navigation_score": 60.0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "DEVELOPER/REPORTS/._OPTIMISATION_TESTS_RAM_FINALE_2025.md": {
+      "file_path": "DEVELOPER/REPORTS/._OPTIMISATION_TESTS_RAM_FINALE_2025.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "DEVELOPER/REPORTS/._SECURITY_IMPROVEMENTS_SUMMARY.md": {
+      "file_path": "DEVELOPER/REPORTS/._SECURITY_IMPROVEMENTS_SUMMARY.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "DEVELOPER/REPORTS/CORRECTION_LINTING_OPTIMISATION_20250812.md": {
+      "file_path": "DEVELOPER/REPORTS/CORRECTION_LINTING_OPTIMISATION_20250812.md",
+      "total_links": 1,
+      "valid_links": 0,
+      "broken_links": 1,
+      "critical_links": 1,
+      "critical_broken_links": 1,
+      "navigation_score": 0.0,
       "links": [
         {
           "link": {
             "type": "file_reference",
-            "text": "../../GETTING_STARTED/INSTALLATION.md",
-            "url": "../../GETTING_STARTED/INSTALLATION.md",
-            "line": 231
+            "text": "docs/DEVELOPER/UTILITIES/OPTIMISATION_SCRIPTS_SUMMARY.md",
+            "url": "docs/DEVELOPER/UTILITIES/OPTIMISATION_SCRIPTS_SUMMARY.md",
+            "line": 144
           },
-          "source_file": "docs/DEVELOPER/REPORTS/AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "../../GETTING_STARTED/INSTALLATION.md",
-            "url": "../../GETTING_STARTED/INSTALLATION.md",
-            "line": 231
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "../INDEX.md",
-            "url": "../INDEX.md",
-            "line": 233
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "../BEST_PRACTICES.md",
-            "url": "../BEST_PRACTICES.md",
-            "line": 234
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "../DOCUMENTATION_MAINTENANCE.md",
-            "url": "../DOCUMENTATION_MAINTENANCE.md",
-            "line": 235
-          },
-          "source_file": "docs/DEVELOPER/REPORTS/AMELIORATION_DOCUMENTATION_GETTING_STARTED_DEVELOPER_20250802.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
+          "source_file": "docs/DEVELOPER/REPORTS/CORRECTION_LINTING_OPTIMISATION_20250812.md",
+          "is_valid": false,
+          "error_type": "file_not_found",
+          "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/UTILITIES/OPTIMISATION_SCRIPTS_SUMMARY.md",
           "is_critical": true
         }
       ]
+    },
+    "DEVELOPER/REPORTS/._CORRECTION_LINTING_OPTIMISATION_20250812.md": {
+      "file_path": "DEVELOPER/REPORTS/._CORRECTION_LINTING_OPTIMISATION_20250812.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "DEVELOPER/REPORTS/CORRECTION_REFERENCES_SCRIPTS_SUPPRIMES_20250812.md": {
+      "file_path": "DEVELOPER/REPORTS/CORRECTION_REFERENCES_SCRIPTS_SUPPRIMES_20250812.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "DEVELOPER/REPORTS/._CORRECTION_REFERENCES_SCRIPTS_SUPPRIMES_20250812.md": {
+      "file_path": "DEVELOPER/REPORTS/._CORRECTION_REFERENCES_SCRIPTS_SUPPRIMES_20250812.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
     },
     "DEVELOPER/UTILITIES/FORMATAGE_AUTOMATIQUE.md": {
       "file_path": "DEVELOPER/UTILITIES/FORMATAGE_AUTOMATIQUE.md",
@@ -3390,6 +3624,76 @@
       "navigation_score": 100,
       "links": []
     },
+    "DEVELOPER/UTILITIES/._GIT_WORKFLOW.md": {
+      "file_path": "DEVELOPER/UTILITIES/._GIT_WORKFLOW.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "DEVELOPER/UTILITIES/OPTIMISATION_SCRIPTS_SUMMARY.md": {
+      "file_path": "DEVELOPER/UTILITIES/OPTIMISATION_SCRIPTS_SUMMARY.md",
+      "total_links": 3,
+      "valid_links": 3,
+      "broken_links": 0,
+      "critical_links": 3,
+      "critical_broken_links": 0,
+      "navigation_score": 60.0,
+      "links": [
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "optimisation/OPTIMISATION_CURSOR_RAM.md",
+            "url": "optimisation/OPTIMISATION_CURSOR_RAM.md",
+            "line": 192
+          },
+          "source_file": "docs/DEVELOPER/UTILITIES/OPTIMISATION_SCRIPTS_SUMMARY.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "optimisation/RESUME_OPTIMISATION_MAC.md",
+            "url": "optimisation/RESUME_OPTIMISATION_MAC.md",
+            "line": 193
+          },
+          "source_file": "docs/DEVELOPER/UTILITIES/OPTIMISATION_SCRIPTS_SUMMARY.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "optimisation/RESUME_OPTIMISATION_CURSOR.md",
+            "url": "optimisation/RESUME_OPTIMISATION_CURSOR.md",
+            "line": 194
+          },
+          "source_file": "docs/DEVELOPER/UTILITIES/OPTIMISATION_SCRIPTS_SUMMARY.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        }
+      ]
+    },
+    "DEVELOPER/UTILITIES/._OPTIMISATION_SCRIPTS_SUMMARY.md": {
+      "file_path": "DEVELOPER/UTILITIES/._OPTIMISATION_SCRIPTS_SUMMARY.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "DEVELOPER/UTILITIES/optimisation/OPTIMISATION_CURSOR_RAM.md": {
       "file_path": "DEVELOPER/UTILITIES/optimisation/OPTIMISATION_CURSOR_RAM.md",
       "total_links": 0,
@@ -3400,18 +3704,8 @@
       "navigation_score": 100,
       "links": []
     },
-    "DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_CURSOR.md": {
-      "file_path": "DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_CURSOR.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
-    "DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_MAC.md": {
-      "file_path": "DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_MAC.md",
+    "DEVELOPER/UTILITIES/optimisation/._OPTIMISATION_CURSOR_RAM.md": {
+      "file_path": "DEVELOPER/UTILITIES/optimisation/._OPTIMISATION_CURSOR_RAM.md",
       "total_links": 0,
       "valid_links": 0,
       "broken_links": 0,
@@ -3469,6 +3763,56 @@
           "is_critical": true
         }
       ]
+    },
+    "DEVELOPER/UTILITIES/optimisation/._README.md": {
+      "file_path": "DEVELOPER/UTILITIES/optimisation/._README.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_CURSOR.md": {
+      "file_path": "DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_CURSOR.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "DEVELOPER/UTILITIES/optimisation/._RESUME_OPTIMISATION_CURSOR.md": {
+      "file_path": "DEVELOPER/UTILITIES/optimisation/._RESUME_OPTIMISATION_CURSOR.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_MAC.md": {
+      "file_path": "DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_MAC.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "DEVELOPER/UTILITIES/optimisation/._RESUME_OPTIMISATION_MAC.md": {
+      "file_path": "DEVELOPER/UTILITIES/optimisation/._RESUME_OPTIMISATION_MAC.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
     },
     "GETTING_STARTED/INSTALLATION.md": {
       "file_path": "GETTING_STARTED/INSTALLATION.md",
@@ -3533,6 +3877,16 @@
         }
       ]
     },
+    "GETTING_STARTED/._INSTALLATION.md": {
+      "file_path": "GETTING_STARTED/._INSTALLATION.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "REPORTS/AMELIORATION_COUVERTURE_TESTS_20250731.md": {
       "file_path": "REPORTS/AMELIORATION_COUVERTURE_TESTS_20250731.md",
       "total_links": 0,
@@ -3542,626 +3896,6 @@
       "critical_broken_links": 0,
       "navigation_score": 100,
       "links": []
-    },
-    "REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md": {
-      "file_path": "REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
-      "total_links": 7,
-      "valid_links": 7,
-      "broken_links": 0,
-      "critical_links": 7,
-      "critical_broken_links": 0,
-      "navigation_score": 60.0,
-      "links": [
-        {
-          "link": {
-            "type": "markdown",
-            "text": "DOCUMENTATION_MAINTENANCE.md",
-            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-            "line": 183
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
-            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-            "line": 184
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-            "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-            "line": 185
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "DOCUMENTATION_MAINTENANCE.md",
-            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-            "line": 183
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
-            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-            "line": 184
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-            "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-            "line": 185
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-            "url": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-            "line": 39
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        }
-      ]
-    },
-    "REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md": {
-      "file_path": "REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-      "total_links": 39,
-      "valid_links": 39,
-      "broken_links": 0,
-      "critical_links": 39,
-      "critical_broken_links": 0,
-      "navigation_score": 60.0,
-      "links": [
-        {
-          "link": {
-            "type": "markdown",
-            "text": "DOCUMENTATION_MAINTENANCE.md",
-            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-            "line": 44
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
-            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-            "line": 45
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "dashboard.md",
-            "url": "../../ARCHITECTURE/dashboard/dashboard.md",
-            "line": 46
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
-            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-            "line": 45
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "DOCUMENTATION_MAINTENANCE.md",
-            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-            "line": 44
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-            "url": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-            "line": 108
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
-            "url": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
-            "line": 109
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "RAPPORT_OPTIMISATION_FINALE_20250812.md",
-            "url": "RAPPORT_OPTIMISATION_FINALE_20250812.md",
-            "line": 110
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-            "url": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-            "line": 108
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
-            "url": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
-            "line": 109
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "RAPPORT_OPTIMISATION_FINALE_20250812.md",
-            "url": "RAPPORT_OPTIMISATION_FINALE_20250812.md",
-            "line": 110
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "DOCUMENTATION_MAINTENANCE.md",
-            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-            "line": 44
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
-            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-            "line": 45
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "ORGANISATION_WORKSPACE.md",
-            "url": "../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-            "line": 163
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "QUICK_START.md",
-            "url": "../../USER_GUIDES/QUICK_START.md",
-            "line": 164
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-            "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-            "line": 167
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "DOCUMENTATION_MAINTENANCE.md",
-            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-            "line": 44
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
-            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-            "line": 45
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-            "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-            "line": 167
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "DOCUMENTATION_MAINTENANCE.md",
-            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-            "line": 44
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
-            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-            "line": 45
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "dashboard.md",
-            "url": "../../ARCHITECTURE/dashboard/dashboard.md",
-            "line": 46
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
-            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-            "line": 45
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "DOCUMENTATION_MAINTENANCE.md",
-            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-            "line": 44
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-            "url": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-            "line": 108
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
-            "url": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
-            "line": 109
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "RAPPORT_OPTIMISATION_FINALE_20250812.md",
-            "url": "RAPPORT_OPTIMISATION_FINALE_20250812.md",
-            "line": 110
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-            "url": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-            "line": 108
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
-            "url": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
-            "line": 109
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "RAPPORT_OPTIMISATION_FINALE_20250812.md",
-            "url": "RAPPORT_OPTIMISATION_FINALE_20250812.md",
-            "line": 110
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "DOCUMENTATION_MAINTENANCE.md",
-            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-            "line": 44
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
-            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-            "line": 45
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "ORGANISATION_WORKSPACE.md",
-            "url": "../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-            "line": 163
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "QUICK_START.md",
-            "url": "../../USER_GUIDES/QUICK_START.md",
-            "line": 164
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-            "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-            "line": 167
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "DOCUMENTATION_MAINTENANCE.md",
-            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-            "line": 44
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
-            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-            "line": 45
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-            "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
-            "line": 167
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "README.md",
-            "url": "README.md",
-            "line": 168
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        }
-      ]
     },
     "REPORTS/RELEASES_AND_BILANS/PLAN_ACTION_AMELIORATIONS_FUTURES_ATHALIA_2025.md": {
       "file_path": "REPORTS/RELEASES_AND_BILANS/PLAN_ACTION_AMELIORATIONS_FUTURES_ATHALIA_2025.md",
@@ -4173,315 +3907,8 @@
       "navigation_score": 100,
       "links": []
     },
-    "REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md": {
-      "file_path": "REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-      "total_links": 22,
-      "valid_links": 22,
-      "broken_links": 0,
-      "critical_links": 22,
-      "critical_broken_links": 0,
-      "navigation_score": 60.0,
-      "links": [
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Guide de configuration Reachy",
-            "url": "../../USER_GUIDES/robotics/REACHY_SETUP_GUIDE.md",
-            "line": 31
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Guide robotique principal",
-            "url": "../../USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-            "line": 32
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Résumé intégration robotique",
-            "url": "../../USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
-            "line": 33
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Démarrage rapide robotique",
-            "url": "../../USER_GUIDES/robotics/ROBOTICS_QUICK_START.md",
-            "line": 34
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Audit Reachy",
-            "url": "../../USER_GUIDES/robotics/audits/reachy_audit_20250729_162938.md",
-            "line": 35
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Documentation des dashboards",
-            "url": "../../ARCHITECTURE/dashboard/dashboard.md",
-            "line": 38
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Index des dashboards",
-            "url": "../../ARCHITECTURE/dashboard/README.md",
-            "line": 39
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Optimisation Cursor RAM",
-            "url": "../../DEVELOPER/UTILITIES/optimisation/OPTIMISATION_CURSOR_RAM.md",
-            "line": 42
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Résumé optimisation Cursor",
-            "url": "../../DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_CURSOR.md",
-            "line": 43
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Résumé optimisation Mac",
-            "url": "../../DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_MAC.md",
-            "line": 44
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "Index de l'optimisation",
-            "url": "../../DEVELOPER/UTILITIES/optimisation/README.md",
-            "line": 45
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "Guide de configuration Reachy",
-            "url": "../../USER_GUIDES/robotics/REACHY_SETUP_GUIDE.md",
-            "line": 31
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "Guide robotique principal",
-            "url": "../../USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
-            "line": 32
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "Résumé intégration robotique",
-            "url": "../../USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
-            "line": 33
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "Démarrage rapide robotique",
-            "url": "../../USER_GUIDES/robotics/ROBOTICS_QUICK_START.md",
-            "line": 34
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "Audit Reachy",
-            "url": "../../USER_GUIDES/robotics/audits/reachy_audit_20250729_162938.md",
-            "line": 35
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "Documentation des dashboards",
-            "url": "../../ARCHITECTURE/dashboard/dashboard.md",
-            "line": 38
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "Index des dashboards",
-            "url": "../../ARCHITECTURE/dashboard/README.md",
-            "line": 39
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "Optimisation Cursor RAM",
-            "url": "../../DEVELOPER/UTILITIES/optimisation/OPTIMISATION_CURSOR_RAM.md",
-            "line": 42
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "Résumé optimisation Cursor",
-            "url": "../../DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_CURSOR.md",
-            "line": 43
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "Résumé optimisation Mac",
-            "url": "../../DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_MAC.md",
-            "line": 44
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "Index de l'optimisation",
-            "url": "../../DEVELOPER/UTILITIES/optimisation/README.md",
-            "line": 45
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        }
-      ]
-    },
-    "REPORTS/RELEASES_AND_BILANS/RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md": {
-      "file_path": "REPORTS/RELEASES_AND_BILANS/RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
-    "REPORTS/RELEASES_AND_BILANS/RAPPORT_NETTOYAGE_COMPLET_DOCUMENTATION_ATHALIA.md": {
-      "file_path": "REPORTS/RELEASES_AND_BILANS/RAPPORT_NETTOYAGE_COMPLET_DOCUMENTATION_ATHALIA.md",
+    "REPORTS/RELEASES_AND_BILANS/._PLAN_ACTION_AMELIORATIONS_FUTURES_ATHALIA_2025.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/._PLAN_ACTION_AMELIORATIONS_FUTURES_ATHALIA_2025.md",
       "total_links": 0,
       "valid_links": 0,
       "broken_links": 0,
@@ -4552,6 +3979,16 @@
           "is_critical": true
         }
       ]
+    },
+    "REPORTS/RELEASES_AND_BILANS/._PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/._PLAN_OPTIMISATION_DOCUMENTATION_FINALE_20250811.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
     },
     "REPORTS/RELEASES_AND_BILANS/README.md": {
       "file_path": "REPORTS/RELEASES_AND_BILANS/README.md",
@@ -4720,8 +4157,263 @@
         }
       ]
     },
-    "REPORTS/RELEASES_AND_BILANS/doc_quality_report.md": {
-      "file_path": "REPORTS/RELEASES_AND_BILANS/doc_quality_report.md",
+    "REPORTS/RELEASES_AND_BILANS/._README.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/._README.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+      "total_links": 18,
+      "valid_links": 18,
+      "broken_links": 0,
+      "critical_links": 18,
+      "critical_broken_links": 0,
+      "navigation_score": 60.0,
+      "links": [
+        {
+          "link": {
+            "type": "markdown",
+            "text": "DOCUMENTATION_MAINTENANCE.md",
+            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "line": 31
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+            "line": 32
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "dashboard.md",
+            "url": "../../ARCHITECTURE/dashboard/dashboard.md",
+            "line": 33
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "ORGANISATION_WORKSPACE.md",
+            "url": "../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+            "line": 42
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "QUICK_START.md",
+            "url": "../../USER_GUIDES/QUICK_START.md",
+            "line": 43
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "line": 77
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+            "line": 84
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+            "url": "../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+            "line": 91
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "USER_GUIDES/QUICK_START.md",
+            "url": "../../USER_GUIDES/QUICK_START.md",
+            "line": 98
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "DOCUMENTATION_MAINTENANCE.md",
+            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "line": 31
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+            "line": 32
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "dashboard.md",
+            "url": "../../ARCHITECTURE/dashboard/dashboard.md",
+            "line": 33
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "ORGANISATION_WORKSPACE.md",
+            "url": "../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+            "line": 42
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "QUICK_START.md",
+            "url": "../../USER_GUIDES/QUICK_START.md",
+            "line": 43
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "line": 77
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+            "line": 84
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+            "url": "../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+            "line": 91
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "USER_GUIDES/QUICK_START.md",
+            "url": "../../USER_GUIDES/QUICK_START.md",
+            "line": 98
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        }
+      ]
+    },
+    "REPORTS/RELEASES_AND_BILANS/._PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/._PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
       "total_links": 0,
       "valid_links": 0,
       "broken_links": 0,
@@ -5248,6 +4940,993 @@
         }
       ]
     },
+    "REPORTS/RELEASES_AND_BILANS/RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/RAPPORT_CORRECTION_TECHNIQUE_IA_ATHALIA.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+      "total_links": 39,
+      "valid_links": 39,
+      "broken_links": 0,
+      "critical_links": 39,
+      "critical_broken_links": 0,
+      "navigation_score": 60.0,
+      "links": [
+        {
+          "link": {
+            "type": "markdown",
+            "text": "DOCUMENTATION_MAINTENANCE.md",
+            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "line": 44
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+            "line": 45
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "dashboard.md",
+            "url": "../../ARCHITECTURE/dashboard/dashboard.md",
+            "line": 46
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+            "line": 45
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "DOCUMENTATION_MAINTENANCE.md",
+            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "line": 44
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+            "url": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+            "line": 108
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+            "url": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+            "line": 109
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "RAPPORT_OPTIMISATION_FINALE_20250812.md",
+            "url": "RAPPORT_OPTIMISATION_FINALE_20250812.md",
+            "line": 110
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+            "url": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+            "line": 108
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+            "url": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+            "line": 109
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "RAPPORT_OPTIMISATION_FINALE_20250812.md",
+            "url": "RAPPORT_OPTIMISATION_FINALE_20250812.md",
+            "line": 110
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "DOCUMENTATION_MAINTENANCE.md",
+            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "line": 44
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+            "line": 45
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "ORGANISATION_WORKSPACE.md",
+            "url": "../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+            "line": 163
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "QUICK_START.md",
+            "url": "../../USER_GUIDES/QUICK_START.md",
+            "line": 164
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "line": 167
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "DOCUMENTATION_MAINTENANCE.md",
+            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "line": 44
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+            "line": 45
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "line": 167
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "DOCUMENTATION_MAINTENANCE.md",
+            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "line": 44
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+            "line": 45
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "dashboard.md",
+            "url": "../../ARCHITECTURE/dashboard/dashboard.md",
+            "line": 46
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+            "line": 45
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "DOCUMENTATION_MAINTENANCE.md",
+            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "line": 44
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+            "url": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+            "line": 108
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+            "url": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+            "line": 109
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "RAPPORT_OPTIMISATION_FINALE_20250812.md",
+            "url": "RAPPORT_OPTIMISATION_FINALE_20250812.md",
+            "line": 110
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+            "url": "PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
+            "line": 108
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+            "url": "RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+            "line": 109
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "RAPPORT_OPTIMISATION_FINALE_20250812.md",
+            "url": "RAPPORT_OPTIMISATION_FINALE_20250812.md",
+            "line": 110
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "DOCUMENTATION_MAINTENANCE.md",
+            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "line": 44
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+            "line": 45
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "ORGANISATION_WORKSPACE.md",
+            "url": "../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
+            "line": 163
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "QUICK_START.md",
+            "url": "../../USER_GUIDES/QUICK_START.md",
+            "line": 164
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "line": 167
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "DOCUMENTATION_MAINTENANCE.md",
+            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "line": 44
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+            "line": 45
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "line": 167
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "README.md",
+            "url": "README.md",
+            "line": 168
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_FINALE_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        }
+      ]
+    },
+    "REPORTS/RELEASES_AND_BILANS/RAPPORT_NETTOYAGE_COMPLET_DOCUMENTATION_ATHALIA.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/RAPPORT_NETTOYAGE_COMPLET_DOCUMENTATION_ATHALIA.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "REPORTS/RELEASES_AND_BILANS/._RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/._RAPPORT_ELIMINATION_ERREURS_FINALE_20250812.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "REPORTS/RELEASES_AND_BILANS/._RAPPORT_OPTIMISATION_FINALE_20250812.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/._RAPPORT_OPTIMISATION_FINALE_20250812.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+      "total_links": 7,
+      "valid_links": 7,
+      "broken_links": 0,
+      "critical_links": 7,
+      "critical_broken_links": 0,
+      "navigation_score": 60.0,
+      "links": [
+        {
+          "link": {
+            "type": "markdown",
+            "text": "DOCUMENTATION_MAINTENANCE.md",
+            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "line": 183
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+            "line": 184
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "line": 185
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "DOCUMENTATION_MAINTENANCE.md",
+            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
+            "line": 183
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
+            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
+            "line": 184
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "url": "../../INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "line": 185
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "url": "INDEX_FINAL_DOCUMENTATION_ATHALIA.md",
+            "line": 39
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        }
+      ]
+    },
+    "REPORTS/RELEASES_AND_BILANS/._RAPPORT_OPTIMISATION_NAVIGATION_20250812.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/._RAPPORT_OPTIMISATION_NAVIGATION_20250812.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+      "total_links": 22,
+      "valid_links": 22,
+      "broken_links": 0,
+      "critical_links": 22,
+      "critical_broken_links": 0,
+      "navigation_score": 60.0,
+      "links": [
+        {
+          "link": {
+            "type": "markdown",
+            "text": "Guide de configuration Reachy",
+            "url": "../../USER_GUIDES/robotics/REACHY_SETUP_GUIDE.md",
+            "line": 31
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "Guide robotique principal",
+            "url": "../../USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
+            "line": 32
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "Résumé intégration robotique",
+            "url": "../../USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
+            "line": 33
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "Démarrage rapide robotique",
+            "url": "../../USER_GUIDES/robotics/ROBOTICS_QUICK_START.md",
+            "line": 34
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "Audit Reachy",
+            "url": "../../USER_GUIDES/robotics/audits/reachy_audit_20250729_162938.md",
+            "line": 35
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "Documentation des dashboards",
+            "url": "../../ARCHITECTURE/dashboard/dashboard.md",
+            "line": 38
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "Index des dashboards",
+            "url": "../../ARCHITECTURE/dashboard/README.md",
+            "line": 39
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "Optimisation Cursor RAM",
+            "url": "../../DEVELOPER/UTILITIES/optimisation/OPTIMISATION_CURSOR_RAM.md",
+            "line": 42
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "Résumé optimisation Cursor",
+            "url": "../../DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_CURSOR.md",
+            "line": 43
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "Résumé optimisation Mac",
+            "url": "../../DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_MAC.md",
+            "line": 44
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "markdown",
+            "text": "Index de l'optimisation",
+            "url": "../../DEVELOPER/UTILITIES/optimisation/README.md",
+            "line": 45
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "Guide de configuration Reachy",
+            "url": "../../USER_GUIDES/robotics/REACHY_SETUP_GUIDE.md",
+            "line": 31
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "Guide robotique principal",
+            "url": "../../USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
+            "line": 32
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "Résumé intégration robotique",
+            "url": "../../USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
+            "line": 33
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "Démarrage rapide robotique",
+            "url": "../../USER_GUIDES/robotics/ROBOTICS_QUICK_START.md",
+            "line": 34
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "Audit Reachy",
+            "url": "../../USER_GUIDES/robotics/audits/reachy_audit_20250729_162938.md",
+            "line": 35
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "Documentation des dashboards",
+            "url": "../../ARCHITECTURE/dashboard/dashboard.md",
+            "line": 38
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "Index des dashboards",
+            "url": "../../ARCHITECTURE/dashboard/README.md",
+            "line": 39
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "Optimisation Cursor RAM",
+            "url": "../../DEVELOPER/UTILITIES/optimisation/OPTIMISATION_CURSOR_RAM.md",
+            "line": 42
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "Résumé optimisation Cursor",
+            "url": "../../DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_CURSOR.md",
+            "line": 43
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "Résumé optimisation Mac",
+            "url": "../../DEVELOPER/UTILITIES/optimisation/RESUME_OPTIMISATION_MAC.md",
+            "line": 44
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "Index de l'optimisation",
+            "url": "../../DEVELOPER/UTILITIES/optimisation/README.md",
+            "line": 45
+          },
+          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        }
+      ]
+    },
+    "REPORTS/RELEASES_AND_BILANS/doc_quality_report.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/doc_quality_report.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "REPORTS/RELEASES_AND_BILANS/._REORGANISATION_DOCUMENTATION_FINALE_20250811.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/._REORGANISATION_DOCUMENTATION_FINALE_20250811.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "REPORTS/RELEASES_AND_BILANS/SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md": {
       "file_path": "REPORTS/RELEASES_AND_BILANS/SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
       "total_links": 10,
@@ -5389,250 +6068,15 @@
         }
       ]
     },
-    "REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md": {
-      "file_path": "REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-      "total_links": 18,
-      "valid_links": 18,
+    "REPORTS/RELEASES_AND_BILANS/._SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md": {
+      "file_path": "REPORTS/RELEASES_AND_BILANS/._SYNTHESE_ANALYSE_DOCUMENTATION_FINALE_20250811.md",
+      "total_links": 0,
+      "valid_links": 0,
       "broken_links": 0,
-      "critical_links": 18,
+      "critical_links": 0,
       "critical_broken_links": 0,
-      "navigation_score": 60.0,
-      "links": [
-        {
-          "link": {
-            "type": "markdown",
-            "text": "DOCUMENTATION_MAINTENANCE.md",
-            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-            "line": 31
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
-            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-            "line": 32
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "dashboard.md",
-            "url": "../../ARCHITECTURE/dashboard/dashboard.md",
-            "line": 33
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "ORGANISATION_WORKSPACE.md",
-            "url": "../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-            "line": 42
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "QUICK_START.md",
-            "url": "../../USER_GUIDES/QUICK_START.md",
-            "line": 43
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-            "line": 77
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-            "line": 84
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-            "url": "../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-            "line": 91
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "markdown",
-            "text": "USER_GUIDES/QUICK_START.md",
-            "url": "../../USER_GUIDES/QUICK_START.md",
-            "line": 98
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "DOCUMENTATION_MAINTENANCE.md",
-            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-            "line": 31
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "TEMPLATE_STANDARD_MARKDOWN.md",
-            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-            "line": 32
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "dashboard.md",
-            "url": "../../ARCHITECTURE/dashboard/dashboard.md",
-            "line": 33
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "ORGANISATION_WORKSPACE.md",
-            "url": "../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-            "line": 42
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "QUICK_START.md",
-            "url": "../../USER_GUIDES/QUICK_START.md",
-            "line": 43
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-            "url": "../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md",
-            "line": 77
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-            "url": "../../DEVELOPER/TEMPLATE_STANDARD_MARKDOWN.md",
-            "line": 84
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-            "url": "../../ARCHITECTURE/ORGANISATION_WORKSPACE.md",
-            "line": 91
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "USER_GUIDES/QUICK_START.md",
-            "url": "../../USER_GUIDES/QUICK_START.md",
-            "line": 98
-          },
-          "source_file": "docs/REPORTS/RELEASES_AND_BILANS/PROGRESSION_OPTIMISATION_DOCUMENTATION_20250811.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        }
-      ]
+      "navigation_score": 100,
+      "links": []
     },
     "REPORTS/VALIDATION/VALIDATION_GENERATION_BACKUP_20250811.md": {
       "file_path": "REPORTS/VALIDATION/VALIDATION_GENERATION_BACKUP_20250811.md",
@@ -5708,6 +6152,16 @@
       "navigation_score": 100,
       "links": []
     },
+    "REPORTS/CI_CD/._CI_CD_PROFESSIONAL_SETUP_COMPLETE.md": {
+      "file_path": "REPORTS/CI_CD/._CI_CD_PROFESSIONAL_SETUP_COMPLETE.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "REPORTS/CI_CD/CI_CD_PRO_PRE_COMMIT_IMPLEMENTATION.md": {
       "file_path": "REPORTS/CI_CD/CI_CD_PRO_PRE_COMMIT_IMPLEMENTATION.md",
       "total_links": 4,
@@ -5771,38 +6225,18 @@
         }
       ]
     },
+    "REPORTS/CI_CD/._CI_CD_PRO_PRE_COMMIT_IMPLEMENTATION.md": {
+      "file_path": "REPORTS/CI_CD/._CI_CD_PRO_PRE_COMMIT_IMPLEMENTATION.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "REPORTS/CI_CD/CI_CD_PRO_PROGRESS_REPORT_20250731.md": {
       "file_path": "REPORTS/CI_CD/CI_CD_PRO_PROGRESS_REPORT_20250731.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
-    "REPORTS/CORRECTIONS/PHASE_14_16_SUMMARY.md": {
-      "file_path": "REPORTS/CORRECTIONS/PHASE_14_16_SUMMARY.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
-    "REPORTS/CORRECTIONS/AMELIORATION_TESTS_UNIFIED_ORCHESTRATOR_20250802.md": {
-      "file_path": "REPORTS/CORRECTIONS/AMELIORATION_TESTS_UNIFIED_ORCHESTRATOR_20250802.md",
-      "total_links": 0,
-      "valid_links": 0,
-      "broken_links": 0,
-      "critical_links": 0,
-      "critical_broken_links": 0,
-      "navigation_score": 100,
-      "links": []
-    },
-    "REPORTS/CORRECTIONS/MISE_A_JOUR_DOCUMENTATION_COMPLETE_20250803.md": {
-      "file_path": "REPORTS/CORRECTIONS/MISE_A_JOUR_DOCUMENTATION_COMPLETE_20250803.md",
       "total_links": 0,
       "valid_links": 0,
       "broken_links": 0,
@@ -5977,6 +6411,46 @@
           "is_critical": true
         }
       ]
+    },
+    "REPORTS/CORRECTIONS/._ACCOMPLISSEMENT_FINAL_20250812.md": {
+      "file_path": "REPORTS/CORRECTIONS/._ACCOMPLISSEMENT_FINAL_20250812.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "REPORTS/CORRECTIONS/PHASE_14_16_SUMMARY.md": {
+      "file_path": "REPORTS/CORRECTIONS/PHASE_14_16_SUMMARY.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "REPORTS/CORRECTIONS/AMELIORATION_TESTS_UNIFIED_ORCHESTRATOR_20250802.md": {
+      "file_path": "REPORTS/CORRECTIONS/AMELIORATION_TESTS_UNIFIED_ORCHESTRATOR_20250802.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "REPORTS/CORRECTIONS/MISE_A_JOUR_DOCUMENTATION_COMPLETE_20250803.md": {
+      "file_path": "REPORTS/CORRECTIONS/MISE_A_JOUR_DOCUMENTATION_COMPLETE_20250803.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
     },
     "REPORTS/PLANS/EXECUTION_PERFORMANCE_SEMAINE1.md": {
       "file_path": "REPORTS/PLANS/EXECUTION_PERFORMANCE_SEMAINE1.md",
@@ -6701,6 +7175,16 @@
         }
       ]
     },
+    "USER_GUIDES/._INDEX.md": {
+      "file_path": "USER_GUIDES/._INDEX.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "USER_GUIDES/QUICK_START.md": {
       "file_path": "USER_GUIDES/QUICK_START.md",
       "total_links": 4,
@@ -6784,8 +7268,58 @@
       "navigation_score": 100,
       "links": []
     },
+    "USER_GUIDES/._CONTRIBUTING.md": {
+      "file_path": "USER_GUIDES/._CONTRIBUTING.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "USER_GUIDES/README_AMELIORATIONS_FUTURES.md": {
       "file_path": "USER_GUIDES/README_AMELIORATIONS_FUTURES.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "USER_GUIDES/._INSTALLATION.md": {
+      "file_path": "USER_GUIDES/._INSTALLATION.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "USER_GUIDES/._QUICK_START.md": {
+      "file_path": "USER_GUIDES/._QUICK_START.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "USER_GUIDES/._README_AMELIORATIONS_FUTURES.md": {
+      "file_path": "USER_GUIDES/._README_AMELIORATIONS_FUTURES.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "USER_GUIDES/._TROUBLESHOOTING.md": {
+      "file_path": "USER_GUIDES/._TROUBLESHOOTING.md",
       "total_links": 0,
       "valid_links": 0,
       "broken_links": 0,
@@ -6804,8 +7338,8 @@
       "navigation_score": 100,
       "links": []
     },
-    "USER_GUIDES/robotics/ROBOTICS_GUIDE.md": {
-      "file_path": "USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
+    "USER_GUIDES/robotics/._REACHY_SETUP_GUIDE.md": {
+      "file_path": "USER_GUIDES/robotics/._REACHY_SETUP_GUIDE.md",
       "total_links": 0,
       "valid_links": 0,
       "broken_links": 0,
@@ -6813,93 +7347,6 @@
       "critical_broken_links": 0,
       "navigation_score": 100,
       "links": []
-    },
-    "USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md": {
-      "file_path": "USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
-      "total_links": 3,
-      "valid_links": 3,
-      "broken_links": 0,
-      "critical_links": 3,
-      "critical_broken_links": 0,
-      "navigation_score": 60.0,
-      "links": [
-        {
-          "link": {
-            "type": "markdown",
-            "text": "ROBOTICS_GUIDE.md",
-            "url": "ROBOTICS_GUIDE.md",
-            "line": 32
-          },
-          "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "ROBOTICS_GUIDE.md",
-            "url": "ROBOTICS_GUIDE.md",
-            "line": 32
-          },
-          "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "file_reference",
-            "text": "ROBOTICS_QUICK_START.md",
-            "url": "ROBOTICS_QUICK_START.md",
-            "line": 33
-          },
-          "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        }
-      ]
-    },
-    "USER_GUIDES/robotics/ROBOTICS_QUICK_START.md": {
-      "file_path": "USER_GUIDES/robotics/ROBOTICS_QUICK_START.md",
-      "total_links": 2,
-      "valid_links": 2,
-      "broken_links": 0,
-      "critical_links": 2,
-      "critical_broken_links": 0,
-      "navigation_score": 60.0,
-      "links": [
-        {
-          "link": {
-            "type": "markdown",
-            "text": "ROBOTICS_GUIDE.md",
-            "url": "ROBOTICS_GUIDE.md",
-            "line": 194
-          },
-          "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_QUICK_START.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        },
-        {
-          "link": {
-            "type": "local_file",
-            "text": "ROBOTICS_GUIDE.md",
-            "url": "ROBOTICS_GUIDE.md",
-            "line": 194
-          },
-          "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_QUICK_START.md",
-          "is_valid": true,
-          "error_type": null,
-          "suggested_fix": null,
-          "is_critical": true
-        }
-      ]
     },
     "USER_GUIDES/robotics/README.md": {
       "file_path": "USER_GUIDES/robotics/README.md",
@@ -6977,8 +7424,155 @@
         }
       ]
     },
+    "USER_GUIDES/robotics/._README.md": {
+      "file_path": "USER_GUIDES/robotics/._README.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "USER_GUIDES/robotics/ROBOTICS_GUIDE.md": {
+      "file_path": "USER_GUIDES/robotics/ROBOTICS_GUIDE.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "USER_GUIDES/robotics/._ROBOTICS_GUIDE.md": {
+      "file_path": "USER_GUIDES/robotics/._ROBOTICS_GUIDE.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md": {
+      "file_path": "USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
+      "total_links": 3,
+      "valid_links": 3,
+      "broken_links": 0,
+      "critical_links": 3,
+      "critical_broken_links": 0,
+      "navigation_score": 60.0,
+      "links": [
+        {
+          "link": {
+            "type": "markdown",
+            "text": "ROBOTICS_GUIDE.md",
+            "url": "ROBOTICS_GUIDE.md",
+            "line": 32
+          },
+          "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "ROBOTICS_GUIDE.md",
+            "url": "ROBOTICS_GUIDE.md",
+            "line": 32
+          },
+          "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "file_reference",
+            "text": "ROBOTICS_QUICK_START.md",
+            "url": "ROBOTICS_QUICK_START.md",
+            "line": 33
+          },
+          "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_INTEGRATION_SUMMARY.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        }
+      ]
+    },
+    "USER_GUIDES/robotics/._ROBOTICS_INTEGRATION_SUMMARY.md": {
+      "file_path": "USER_GUIDES/robotics/._ROBOTICS_INTEGRATION_SUMMARY.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "USER_GUIDES/robotics/ROBOTICS_QUICK_START.md": {
+      "file_path": "USER_GUIDES/robotics/ROBOTICS_QUICK_START.md",
+      "total_links": 2,
+      "valid_links": 2,
+      "broken_links": 0,
+      "critical_links": 2,
+      "critical_broken_links": 0,
+      "navigation_score": 60.0,
+      "links": [
+        {
+          "link": {
+            "type": "markdown",
+            "text": "ROBOTICS_GUIDE.md",
+            "url": "ROBOTICS_GUIDE.md",
+            "line": 194
+          },
+          "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_QUICK_START.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        },
+        {
+          "link": {
+            "type": "local_file",
+            "text": "ROBOTICS_GUIDE.md",
+            "url": "ROBOTICS_GUIDE.md",
+            "line": 194
+          },
+          "source_file": "docs/USER_GUIDES/robotics/ROBOTICS_QUICK_START.md",
+          "is_valid": true,
+          "error_type": null,
+          "suggested_fix": null,
+          "is_critical": true
+        }
+      ]
+    },
+    "USER_GUIDES/robotics/._ROBOTICS_QUICK_START.md": {
+      "file_path": "USER_GUIDES/robotics/._ROBOTICS_QUICK_START.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
     "USER_GUIDES/robotics/audits/reachy_audit_20250729_162938.md": {
       "file_path": "USER_GUIDES/robotics/audits/reachy_audit_20250729_162938.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
+    },
+    "USER_GUIDES/robotics/audits/._reachy_audit_20250729_162938.md": {
+      "file_path": "USER_GUIDES/robotics/audits/._reachy_audit_20250729_162938.md",
       "total_links": 0,
       "valid_links": 0,
       "broken_links": 0,
@@ -7101,6 +7695,16 @@
           "is_critical": true
         }
       ]
+    },
+    "API/._INDEX.md": {
+      "file_path": "API/._INDEX.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
     },
     "API/core_modules.md": {
       "file_path": "API/core_modules.md",
@@ -7493,8 +8097,72 @@
           "is_critical": true
         }
       ]
+    },
+    "API/._ERROR_HANDLING.md": {
+      "file_path": "API/._ERROR_HANDLING.md",
+      "total_links": 0,
+      "valid_links": 0,
+      "broken_links": 0,
+      "critical_links": 0,
+      "critical_broken_links": 0,
+      "navigation_score": 100,
+      "links": []
     }
   },
-  "broken_links": [],
-  "critical_broken_links": []
+  "broken_links": [
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "docs/DEVELOPER/UTILITIES/OPTIMISATION_SCRIPTS_SUMMARY.md",
+        "url": "docs/DEVELOPER/UTILITIES/OPTIMISATION_SCRIPTS_SUMMARY.md",
+        "line": 144
+      },
+      "source_file": "docs/DEVELOPER/REPORTS/CORRECTION_LINTING_OPTIMISATION_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/UTILITIES/OPTIMISATION_SCRIPTS_SUMMARY.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "docs/DEVELOPER/UTILITIES/OPTIMISATION_SCRIPTS_SUMMARY.md",
+        "url": "docs/DEVELOPER/UTILITIES/OPTIMISATION_SCRIPTS_SUMMARY.md",
+        "line": 144
+      },
+      "source_file": "docs/DEVELOPER/REPORTS/CORRECTION_LINTING_OPTIMISATION_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/UTILITIES/OPTIMISATION_SCRIPTS_SUMMARY.md",
+      "is_critical": true
+    }
+  ],
+  "critical_broken_links": [
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "docs/DEVELOPER/UTILITIES/OPTIMISATION_SCRIPTS_SUMMARY.md",
+        "url": "docs/DEVELOPER/UTILITIES/OPTIMISATION_SCRIPTS_SUMMARY.md",
+        "line": 144
+      },
+      "source_file": "docs/DEVELOPER/REPORTS/CORRECTION_LINTING_OPTIMISATION_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/UTILITIES/OPTIMISATION_SCRIPTS_SUMMARY.md",
+      "is_critical": true
+    },
+    {
+      "link": {
+        "type": "file_reference",
+        "text": "docs/DEVELOPER/UTILITIES/OPTIMISATION_SCRIPTS_SUMMARY.md",
+        "url": "docs/DEVELOPER/UTILITIES/OPTIMISATION_SCRIPTS_SUMMARY.md",
+        "line": 144
+      },
+      "source_file": "docs/DEVELOPER/REPORTS/CORRECTION_LINTING_OPTIMISATION_20250812.md",
+      "is_valid": false,
+      "error_type": "file_not_found",
+      "suggested_fix": "Vérifier le chemin: docs/DEVELOPER/UTILITIES/OPTIMISATION_SCRIPTS_SUMMARY.md",
+      "is_critical": true
+    }
+  ]
 }

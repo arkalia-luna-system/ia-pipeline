@@ -189,9 +189,9 @@ Après utilisation de ces scripts, vous devriez constater :
 3. **Erreurs de permissions:** Utiliser `sudo` si nécessaire
 
 ### Logs et rapports
-- **Rapports Cursor:** `~/cursor_optimization_report_*.md`
-- **Rapports système:** `~/system_optimization_report_*.md`
-- **Rapports diagnostic:** `~/performance_diagnostic_*.md`
+- **Rapports Cursor:** `optimisation/OPTIMISATION_CURSOR_RAM.md`
+- **Rapports système:** `optimisation/RESUME_OPTIMISATION_MAC.md`
+- **Rapports diagnostic:** `optimisation/RESUME_OPTIMISATION_CURSOR.md`
 
 ---
 
