@@ -11,7 +11,7 @@ from unittest.mock import patch
 import pytest
 
 # Import du module à tester
-from athalia_core.security import security_audit_project
+from athalia_core.validation.security import security_audit_project
 
 
 class TestSecurityComprehensive:

@@ -12,7 +12,7 @@ from pathlib import Path
 
 import pytest
 
-from athalia_core.security_validator import SecurityValidator
+from athalia_core.validation.security_validator import SecurityValidator
 
 
 class TestSecurityValidatorComplete:
