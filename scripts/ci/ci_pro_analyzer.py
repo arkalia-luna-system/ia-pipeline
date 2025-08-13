@@ -57,19 +57,72 @@ class CIProAnalyzer:
         """Affiche un message d'information"""
         print(f"{Colors.CYAN}ℹ️  {message}{Colors.NC}")
 
+    def _is_safe_command(self, command: str) -> bool:
+        """Vérifie si une commande est sécurisée pour l'exécution avec shell=True"""
+        dangerous_patterns = [
+            "rm -rf",
+            "rm -r",
+            "rm -f",
+            "rm -",  # Suppression récursive
+            "dd if=",
+            "dd of=",  # Écriture directe sur disque
+            "mkfs",
+            "fdisk",
+            "parted",  # Partitionnement
+            "chmod 777",
+            "chmod +x",  # Permissions dangereuses
+            "sudo",
+            "su",  # Élévation de privilèges
+            "wget",
+            "curl",  # Téléchargements
+            "nc",
+            "netcat",  # Outils réseau
+            "python -c",
+            "python3 -c",  # Exécution de code Python
+            "eval",
+            "exec",  # Évaluation de code
+        ]
+
+        command_lower = command.lower()
+        return not any(pattern in command_lower for pattern in dangerous_patterns)
+
     def run_command(
         self, command: str, capture_output: bool = True
     ) -> tuple[int, str, str]:
         """Exécute une commande et retourne le résultat"""
         try:
-            if capture_output:
-                result = subprocess.run(
-                    command, shell=True, capture_output=True, text=True, timeout=300
-                )
-                return result.returncode, result.stdout, result.stderr
+            # Sécurisation : éviter shell=True pour les commandes complexes
+            if isinstance(command, str) and " " in command:
+                # Commande complexe avec espaces - utiliser shell=True mais avec validation
+                if self._is_safe_command(command):
+                    if capture_output:
+                        result = subprocess.run(
+                            command,
+                            shell=True,
+                            capture_output=True,
+                            text=True,
+                            timeout=300,
+                        )
+                        return result.returncode, result.stdout, result.stderr
+                    else:
+                        result = subprocess.run(command, shell=True, timeout=300)
+                        return result.returncode, "", ""
+                else:
+                    return -1, "", f"Commande non autorisée : {command}"
             else:
-                result = subprocess.run(command, shell=True, timeout=300)
-                return result.returncode, "", ""
+                # Commande simple - utiliser shell=False pour la sécurité
+                if capture_output:
+                    result = subprocess.run(
+                        command,
+                        shell=False,
+                        capture_output=True,
+                        text=True,
+                        timeout=300,
+                    )
+                    return result.returncode, result.stdout, result.stderr
+                else:
+                    result = subprocess.run(command, shell=False, timeout=300)
+                    return result.returncode, "", ""
         except subprocess.TimeoutExpired:
             return -1, "", "Timeout"
         except Exception as e:

@@ -151,6 +151,35 @@ except ImportError:
     user_profiles_advanced = None
 
 try:
+    from .agents import ath_context_prompt, audit_agent, context_prompt, unified_agent
+except ImportError:
+    ath_context_prompt = None
+    audit_agent = None
+    context_prompt = None
+    unified_agent = None
+
+try:
+    from .distillation import (
+        adaptive_distillation,
+        audit_distiller,
+        code_genetics,
+        correction_distiller,
+        multimodal_distiller,
+        predictive_cache,
+        quality_scorer,
+        response_distiller,
+    )
+except ImportError:
+    adaptive_distillation = None
+    audit_distiller = None
+    code_genetics = None
+    correction_distiller = None
+    multimodal_distiller = None
+    predictive_cache = None
+    quality_scorer = None
+    response_distiller = None
+
+try:
     from .analytics import advanced_analytics, analytics
 except ImportError:
     analytics = None
@@ -252,3 +281,29 @@ if dashboard_unified is not None:
     __all__.append("dashboard_unified")
 if user_profiles_advanced is not None:
     __all__.append("user_profiles_advanced")
+
+if ath_context_prompt is not None:
+    __all__.append("ath_context_prompt")
+if audit_agent is not None:
+    __all__.append("audit_agent")
+if context_prompt is not None:
+    __all__.append("context_prompt")
+if unified_agent is not None:
+    __all__.append("unified_agent")
+
+if adaptive_distillation is not None:
+    __all__.append("adaptive_distillation")
+if audit_distiller is not None:
+    __all__.append("audit_distiller")
+if code_genetics is not None:
+    __all__.append("code_genetics")
+if correction_distiller is not None:
+    __all__.append("correction_distiller")
+if multimodal_distiller is not None:
+    __all__.append("multimodal_distiller")
+if predictive_cache is not None:
+    __all__.append("predictive_cache")
+if quality_scorer is not None:
+    __all__.append("quality_scorer")
+if response_distiller is not None:
+    __all__.append("response_distiller")

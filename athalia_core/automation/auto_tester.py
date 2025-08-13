@@ -125,11 +125,27 @@ class AutoTester:
 import pytest
 from unittest.mock import Mock, patch
 
-# Import du module à tester
+# Import sécurisé du module à tester
 try:
-    from {module['name']} import *
+    # Import sélectif des éléments principaux
+    module_obj = __import__({repr(module['name'])}, fromlist=['*'])
+    # Vérification de sécurité avant import
+    if hasattr(module_obj, '__all__'):
+        # Import contrôlé via __all__
+        for item in module_obj.__all__:
+            if hasattr(module_obj, item):
+                globals()[item] = getattr(module_obj, item)
+    else:
+        # Import manuel des éléments principaux (classes et fonctions)
+        for attr_name in dir(module_obj):
+            if not attr_name.startswith('_'):
+                attr = getattr(module_obj, attr_name)
+                if callable(attr) or isinstance(attr, type):
+                    globals()[attr_name] = attr
 except ImportError:
     pass  # Pour les tests
+except Exception:
+    pass  # Gestion des erreurs de sécurité
 
 """
         # Tests pour les classes

@@ -385,9 +385,19 @@ class NavigationQualityMaintainer:
         self.log_maintenance("🔄 Démarrage de la maintenance planifiée...")
 
         try:
-            while True:
+            max_iterations = 10080  # Maximum 1 semaine (7 jours * 24h * 60min)
+            iteration = 0
+
+            while iteration < max_iterations:
                 schedule.run_pending()
                 time.sleep(60)  # Vérifier toutes les minutes
+                iteration += 1
+
+                # Log de progression toutes les heures
+                if iteration % 60 == 0:
+                    self.log_maintenance(
+                        f"🔄 Maintenance planifiée en cours... (itération {iteration})"
+                    )
 
         except KeyboardInterrupt:
             self.log_maintenance(
@@ -397,6 +407,8 @@ class NavigationQualityMaintainer:
             self.log_maintenance(
                 f"❌ Erreur lors de la maintenance planifiée: {e}", "ERROR"
             )
+        finally:
+            self.log_maintenance("🏁 Maintenance planifiée terminée")
 
 
 def main():
