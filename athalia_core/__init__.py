@@ -9,6 +9,12 @@ __version__ = "2.0.0"
 __author__ = "Athalia Team"
 __description__ = "Système d'industrialisation et d'intelligence pour projets IA"
 
+# Import du module core
+try:
+    from . import core
+except ImportError:
+    core = None
+
 # Imports conditionnels - seulement les modules qui existent
 try:
     from .analytics.advanced_analytics import AdvancedAnalytics
@@ -36,9 +42,9 @@ except ImportError:
     AutoTester = None
 
 try:
-    from .cli import cli
+    from .utilities.cli import CLI
 except ImportError:
-    cli = None
+    CLI = None
 
 try:
     from .code_linter import CodeLinter
@@ -227,6 +233,29 @@ except ImportError:
     PatternDetector = None
 
 try:
+    from .utilities import (
+        CLI,
+        Dashboard,
+        GenerationBackup,
+        GenerationSimple,
+        LoggerAdvanced,
+        MultiFileEditor,
+        Onboarding,
+        ProjectImporter,
+        ReadyCheck,
+    )
+except ImportError:
+    CLI = None
+    Dashboard = None
+    GenerationBackup = None
+    GenerationSimple = None
+    LoggerAdvanced = None
+    MultiFileEditor = None
+    Onboarding = None
+    ProjectImporter = None
+    ReadyCheck = None
+
+try:
     from .analytics import advanced_analytics, analytics
 except ImportError:
     analytics = None
@@ -240,6 +269,9 @@ __all__ = [
 ]
 
 # Ajouter dynamiquement les modules qui existent
+if core is not None:
+    __all__.append("core")
+
 if AdvancedAnalytics is not None:
     __all__.append("AdvancedAnalytics")
 if AutoCICD is not None:
@@ -250,8 +282,8 @@ if AutoDocumenter is not None:
     __all__.append("AutoDocumenter")
 if AutoTester is not None:
     __all__.append("AutoTester")
-if cli is not None:
-    __all__.append("cli")
+if CLI is not None:
+    __all__.append("CLI")
 if CodeLinter is not None:
     __all__.append("CodeLinter")
 if ConfigManager is not None:
@@ -354,6 +386,25 @@ if IntelligentMemory is not None:
     __all__.append("IntelligentMemory")
 if PatternDetector is not None:
     __all__.append("PatternDetector")
+
+if CLI is not None:
+    __all__.append("CLI")
+if Dashboard is not None:
+    __all__.append("Dashboard")
+if GenerationBackup is not None:
+    __all__.append("GenerationBackup")
+if GenerationSimple is not None:
+    __all__.append("GenerationSimple")
+if LoggerAdvanced is not None:
+    __all__.append("LoggerAdvanced")
+if MultiFileEditor is not None:
+    __all__.append("MultiFileEditor")
+if Onboarding is not None:
+    __all__.append("Onboarding")
+if ProjectImporter is not None:
+    __all__.append("ProjectImporter")
+if ReadyCheck is not None:
+    __all__.append("ReadyCheck")
 
 if ath_context_prompt is not None:
     __all__.append("ath_context_prompt")

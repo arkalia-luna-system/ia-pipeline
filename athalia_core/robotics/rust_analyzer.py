@@ -10,7 +10,10 @@ from pathlib import Path
 
 # Import du validateur de sécurité
 try:
-    from athalia_core.security_validator import SecurityError, validate_and_run
+    from athalia_core.validation.security_validator import (
+        SecurityError,
+        validate_and_run,
+    )
 except ImportError:
     # Fallback pour les tests
     def validate_and_run(command, **kwargs):

@@ -11,7 +11,10 @@ from athalia_core.ai.ai_robust import AIModel, RobustAI
 
 # Import du validateur de sécurité
 try:
-    from athalia_core.security_validator import SecurityError, validate_and_run
+    from athalia_core.validation.security_validator import (
+        SecurityError,
+        validate_and_run,
+    )
 except ImportError:
 
     def validate_and_run(command, **kwargs):

@@ -1,12 +1,7 @@
+#!/usr/bin/env python3
 """
-Docker Robotics Manager - Gestion Docker pour projets robotiques
-===============================================================
-
-Gestion spécialisée Docker pour projets Reachy/ROS2:
-- Configuration Docker Compose
-- Variables d'environnement ROS
-- Volumes et networking
-- Images spécialisées
+Module de gestion Docker pour la robotique Athalia
+Configuration et validation des conteneurs Docker pour projets robotiques
 """
 
 import logging
@@ -19,13 +14,14 @@ import yaml
 
 # Import du validateur de sécurité
 try:
-    from athalia_core.security_validator import SecurityError, validate_and_run
+    from athalia_core.validation.security_validator import (
+        SecurityError,
+        validate_and_run,
+    )
 except ImportError:
-
-    def validate_and_run(command, **kwargs):
-        return subprocess.run(command, **kwargs)
-
+    # Fallback pour les tests
     SecurityError = Exception
+    validate_and_run = subprocess.run
 
 logger = logging.getLogger(__name__)
 

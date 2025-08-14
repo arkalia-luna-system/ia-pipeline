@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Module de validation ROS2 pour Athalia
-Validation et vérification des packages ROS2
+Validateur ROS2 pour Athalia
+Vérification de la configuration et de la structure des projets ROS2
 """
 
 import logging
@@ -13,14 +13,14 @@ from typing import Any
 
 # Import du validateur de sécurité
 try:
-    from athalia_core.security_validator import SecurityError, validate_and_run
+    from athalia_core.validation.security_validator import (
+        SecurityError,
+        validate_and_run,
+    )
 except ImportError:
-
-    def validate_and_run(command, **kwargs):
-        return subprocess.run(command, **kwargs)
-
+    # Fallback pour les tests
     SecurityError = Exception
-
+    validate_and_run = subprocess.run
 
 logger = logging.getLogger(__name__)
 

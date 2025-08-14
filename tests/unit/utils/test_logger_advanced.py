@@ -1,7 +1,7 @@
-# Template de test pour athalia_core/logger_advanced.py
+# Template de test pour athalia_core/utilities/logger_advanced.py
 # Fichier: tests/test_logger_advanced.py
 
-import athalia_core.logger_advanced as module
+import athalia_core.utilities.logger_advanced as module
 
 
 class TestLogger_Advanced:

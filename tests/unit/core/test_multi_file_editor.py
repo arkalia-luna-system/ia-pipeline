@@ -7,7 +7,7 @@ Tests professionnels pour la CI/CD.
 import os
 import tempfile
 
-from athalia_core.multi_file_editor import MultiFileEditor
+from athalia_core.utilities.multi_file_editor import MultiFileEditor
 
 
 def test_apply_corrections_and_rollback():

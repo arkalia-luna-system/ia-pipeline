@@ -14,9 +14,10 @@ except ImportError:
     ASTAnalyzer = None
 
 try:
-    from .intelligent_analyzer import IntelligentAnalyzer
+    from .intelligent_analyzer import ComprehensiveAnalysis, IntelligentAnalyzer
 except ImportError:
     IntelligentAnalyzer = None
+    ComprehensiveAnalysis = None
 
 try:
     from .intelligent_memory import IntelligentMemory
@@ -32,6 +33,7 @@ __all__ = [
     "ArchitectureAnalyzer",
     "ASTAnalyzer",
     "IntelligentAnalyzer",
+    "ComprehensiveAnalysis",
     "IntelligentMemory",
     "PatternDetector",
 ]

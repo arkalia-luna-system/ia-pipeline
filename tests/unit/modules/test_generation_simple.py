@@ -6,7 +6,7 @@ Amélioration de la couverture de code
 
 from unittest.mock import mock_open, patch
 
-from athalia_core.generation_simple import (
+from athalia_core.utilities.generation_simple import (
     backup_file,
     extract_project_name,
     generate_api_docs,

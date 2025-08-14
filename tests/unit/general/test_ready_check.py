@@ -1,11 +1,11 @@
 """
-Tests de base pour le module athalia_core.ready_check
+Tests de base pour le module athalia_core.utilities.ready_check
 Généré automatiquement pour améliorer la couverture de tests.
 """
 
 import pytest
 
-import athalia_core.ready_check as module
+import athalia_core.utilities.ready_check as module
 
 
 def test_module_import():

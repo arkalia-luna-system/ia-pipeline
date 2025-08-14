@@ -9,7 +9,7 @@ from datetime import datetime
 from pathlib import Path
 from unittest.mock import MagicMock, mock_open, patch
 
-from athalia_core.analysis.intelligent_analyzer import (
+from athalia_core.analysis import (
     ComprehensiveAnalysis,
     IntelligentAnalyzer,
 )
@@ -310,8 +310,11 @@ class TestIntelligentAnalyzer:
         assert "modules_available" in coordination
         assert "recommendations" in coordination
 
-    @patch("athalia_core.intelligent_analyzer.UNIFIED_ORCHESTRATOR_AVAILABLE", True)
-    @patch("athalia_core.intelligent_analyzer.UnifiedOrchestrator")
+    @patch(
+        "athalia_core.analysis.intelligent_analyzer.UNIFIED_ORCHESTRATOR_AVAILABLE",
+        True,
+    )
+    @patch("athalia_core.analysis.intelligent_analyzer.UnifiedOrchestrator")
     def test_orchestrate_with_unified_available(self, mock_unified_class):
         """Test d'orchestration avec l'orchestrateur unifié disponible"""
         mock_unified = MagicMock()
@@ -329,7 +332,10 @@ class TestIntelligentAnalyzer:
         assert result["status"] == "success"
         assert result["score"] == 90
 
-    @patch("athalia_core.intelligent_analyzer.UNIFIED_ORCHESTRATOR_AVAILABLE", False)
+    @patch(
+        "athalia_core.analysis.intelligent_analyzer.UNIFIED_ORCHESTRATOR_AVAILABLE",
+        False,
+    )
     def test_orchestrate_with_unified_unavailable(self):
         """Test d'orchestration avec l'orchestrateur unifié non disponible"""
         analyzer = IntelligentAnalyzer("/tmp/test_project")

@@ -1,11 +1,11 @@
 """
-Tests de base pour le module athalia_core.onboarding
+Tests de base pour le module athalia_core.utilities.onboarding
 Généré automatiquement pour améliorer la couverture de tests.
 """
 
 import pytest
 
-import athalia_core.onboarding as module
+import athalia_core.utilities.onboarding as module
 
 
 def test_module_import():

@@ -11,7 +11,7 @@ from athalia_core.automation.cleanup import clean_old_tests_and_caches
 
 # from athalia_core.dashboard import generate_dashboard_html,
 # generate_multi_project_mermaid
-from athalia_core.onboarding import (
+from athalia_core.utilities.onboarding import (
     generate_onboard_cli,
     generate_onboarding_html_advanced,
 )
@@ -19,7 +19,7 @@ from athalia_core.validation.security import security_audit_project
 
 # Import du système de logging avancé
 try:
-    from athalia_core.logger_advanced import athalia_logger, log_main
+    from athalia_core.utilities.logger_advanced import athalia_logger, log_main
 except ImportError:
     # Fallback vers le logging standard si le module avancé n'est pas'
     # disponible

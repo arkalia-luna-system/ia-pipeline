@@ -14,7 +14,7 @@ from unittest.mock import patch
 
 import pytest
 
-from athalia_core.generation_backup import (
+from athalia_core.utilities.generation_backup import (
     backup_file,
     extract_project_name,
     generate_api_docs,

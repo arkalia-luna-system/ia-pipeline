@@ -11,7 +11,7 @@ from pathlib import Path
 
 # Import du module à tester
 try:
-    from athalia_core.intelligent_memory import (
+    from athalia_core.analysis import (
         CorrectionSuggestion,
         IntelligentMemory,
         LearningEvent,

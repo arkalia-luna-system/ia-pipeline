@@ -1,7 +1,7 @@
 # Template de test pour athalia_core/dashboard.py
 # Fichier: tests/test_dashboard.py
 
-import athalia_core.dashboard as module
+import athalia_core.utilities.dashboard as module
 
 
 class TestDashboard:

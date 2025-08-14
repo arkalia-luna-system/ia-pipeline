@@ -2,7 +2,7 @@
 import os
 import tempfile
 
-from athalia_core.project_importer import ProjectImporter
+from athalia_core.utilities.project_importer import ProjectImporter
 
 
 def test_project_import_concept():
