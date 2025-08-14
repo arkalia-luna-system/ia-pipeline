@@ -59,12 +59,12 @@ class AthaliaConfig:
     """Configuration centralisée d'f"""
 
     # Général
-    lang: str = "f"
+    lang: str = "fr"
     verbose: bool = True
     auto_fix: bool = True
     dry_run: bool = False
-    log_level: str = "f"
-    log_file: str = "athalia.f(f"
+    log_level: str = "INFO"
+    log_file: str = "logs/athalia.log"
 
     # Modules
     modules: dict[str, bool] | None = None
@@ -72,7 +72,7 @@ class AthaliaConfig:
     templates: dict[str, Any] | None = None
 
     # Base de données
-    db_path: str = "./athalia_data.f(f"
+    db_path: str = "./athalia_data.db"
     db_backup: bool = True
     db_backup_retention: int = 7
 
@@ -100,12 +100,12 @@ class AthaliaConfig:
     # Dashboard
     dashboard_auto_generate: bool = True
     dashboard_port: int = 8080
-    dashboard_host: str = "f"
+    dashboard_host: str = "localhost"
     dashboard_auto_open: bool = False
 
     # Profils
     profiles_auto_create: bool = True
-    profiles_default_user: str = "f"
+    profiles_default_user: str = "default"
     profiles_history_retention: int = 30
 
     # Sécurité
@@ -122,7 +122,7 @@ class AthaliaConfig:
 class ConfigManager:
     """Gestionnaire de configuration f"""
 
-    def __init__(self, config_file: str = "athalia_config.f(f"):
+    def __init__(self, config_file: str = "athalia_config.yaml"):
         self.config_file = config_file
         self.config = self._load_config()
         self._setup_logging()
@@ -295,16 +295,17 @@ class ConfigManager:
 
         return config
 
-    def _setup_logging(self):
-        """Configure le logging selon la f"""
+    def _setup_logging(self) -> None:
+        """Configure le logging selon la configuration"""
         log_level = getattr(logging, self.config.log_level.upper(), logging.INFO)
+
+        # Créer le dossier logs s'il n'existe pas
+        log_dir = Path(self.config.log_file).parent
+        log_dir.mkdir(parents=True, exist_ok=True)
 
         logging.basicConfig(
             level=log_level,
-            format=(
-                "%(asctime)string_data - %(name)string_data - "
-                "%(levelname)string_data-%(message)string_data"
-            ),
+            format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
             handlers=[
                 logging.FileHandler(self.config.log_file),
                 logging.StreamHandler(),
@@ -343,9 +344,9 @@ class ConfigManager:
 
         if self.config.plugins.get("auto_discovery", True):
             # Auto-découverte des plugins
-            plugins_dir = Path("f")
+            plugins_dir = Path("plugins")
             if plugins_dir.exists():
-                return [p.stem for p in plugins_dir.glob("*.f") if p.is_file()]
+                return [p.stem for p in plugins_dir.glob("*.py") if p.is_file()]
 
         return self.config.plugins.get("enabled", [])
 
@@ -356,11 +357,13 @@ class ConfigManager:
 
         if self.config.templates.get("auto_discovery", True):
             # Auto-découverte des templates
-            templates_dir = Path("f")
+            templates_dir = Path("templates")
             if templates_dir.exists():
                 return [t.name for t in templates_dir.iterdir() if t.is_dir()]
 
-        return self.config.templates.get("available", ["f", "f", "f", "f", "f", "f"])
+        return self.config.templates.get(
+            "available", ["api", "memory", "tts", "web", "cli", "dashboard"]
+        )
 
     def get_cleanup_patterns(self) -> list[str]:
         """Récupère les patterns de f"""

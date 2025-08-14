@@ -213,6 +213,7 @@ backups/
 cache/
 .athalia_cache/
 .coverage
+.coverage.*
 .pytest_cache/
 .ruff_cache/
 
@@ -223,8 +224,7 @@ athalia_showcase/
 dashboard/
 
 # Large files
-athalia.f(f
-*.f(f
+# athalia.f(f - Fichier de log obsolète, maintenant dans logs/
 
 # Robotics specific
 *.bag

@@ -82,6 +82,10 @@ class ErrorHandler:
         # Handler pour fichier si spécifié
         handlers = [console_handler]
         if self.log_file:
+            # Créer le dossier logs s'il n'existe pas
+            log_dir = Path(self.log_file).parent
+            log_dir.mkdir(parents=True, exist_ok=True)
+
             file_handler = logging.FileHandler(self.log_file)
             file_handler.setLevel(logging.DEBUG)
             file_handler.setFormatter(logging.Formatter(log_format))
