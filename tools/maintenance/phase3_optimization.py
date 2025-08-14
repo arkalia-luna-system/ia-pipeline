@@ -23,7 +23,9 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s",
     handlers=[
-        logging.FileHandler("logs/maintenance/phase3_optimization.log", mode="a", encoding="utf-8"),
+        logging.FileHandler(
+            "logs/maintenance/phase3_optimization.log", mode="a", encoding="utf-8"
+        ),
         logging.StreamHandler(),
     ],
 )
@@ -246,7 +248,7 @@ def main():
 
     # Sauvegarde du rapport
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    report_file = f"logs/phase3_optimization_report_{timestamp}.txt"
+    report_file = f"logs/reports/phase3_optimization_report_{timestamp}.txt"
     os.makedirs("logs", exist_ok=True)
 
     with open(report_file, "w", encoding="utf-8") as f:

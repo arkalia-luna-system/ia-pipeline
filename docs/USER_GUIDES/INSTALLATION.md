@@ -1,5 +1,9 @@
 # ⚙️ **INSTALLATION GUIDE** - Professional Setup
 
+**Dernière mise à jour :** 14 Août 2025  
+**Version :** v3.0  
+**Statut :** ✅ ACTIF ET MAINTENU - INSTALLATION AUTOMATISÉE
+
 <div align="center">
 
 **⚙️ Installation: 5 Minutes**

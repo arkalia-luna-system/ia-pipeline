@@ -1,4 +1,8 @@
-# Contribuer à Athalia/Arkalia
+# 🚀 Contribuer à Athalia/Arkalia
+
+**Dernière mise à jour :** 14 Août 2025  
+**Version :** v2.0  
+**Statut :** ✅ ACTIF ET MAINTENU - CONTRIBUTION OUVERTE
 
 Merci de contribuer à ce projet open source !
 

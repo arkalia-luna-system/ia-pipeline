@@ -29,48 +29,129 @@
 
 ## 🧠 Cœur du Système - `athalia_core/`
 
-### 🎯 **Philosophie : Module Central Intelligent**
+### 🎯 **Philosophie : Architecture Modulaire Intelligente**
 
 ```
 athalia_core/
-├── __init__.py                 # Point d'entrée du module
-├── unified_orchestrator.py     # 🧠 CERVEAU - Orchestrateur principal
-├── main.py                     # Point d'entrée CLI
-├── config_manager.py           # Gestion de configuration
-├── error_handling.py           # Gestion d'erreurs centralisée
-├── error_codes.py              # Codes d'erreur standardisés
-└── [modules spécialisés]       # Modules métier
+├── __init__.py                 # Point d'entrée du module avec imports conditionnels
+├── core/                       # 🎯 Modules de base
+│   ├── unified_orchestrator.py # 🧠 CERVEAU - Orchestrateur principal
+│   ├── main.py                 # Point d'entrée CLI
+│   ├── config_manager.py       # Gestion de configuration
+│   ├── cache_manager.py        # Gestionnaire de cache intelligent
+│   ├── performance_analyzer.py # Analyseur de performance
+│   ├── error_handling.py       # Gestion d'erreurs centralisée
+│   └── error_codes.py          # Codes d'erreur standardisés
+├── quality/                    # 🔧 Modules de qualité (NOUVEAU)
+│   ├── code_linter.py          # Analyseur de code et qualité
+│   ├── correction_optimizer.py # Optimiseur de corrections ML
+│   └── __init__.py             # Interface d'export
+├── utilities/                  # 🚀 Utilitaires système
+│   ├── cli.py                  # Interface en ligne de commande
+│   ├── dashboard.py            # Tableau de bord unifié
+│   ├── generation.py           # Générateur de projets
+│   └── __init__.py             # Interface d'export
+├── analysis/                   # 🔍 Modules d'analyse IA
+│   ├── intelligent_analyzer.py # Analyseur intelligent
+│   ├── intelligent_memory.py   # Mémoire d'apprentissage
+│   ├── ast_analyzer.py         # Analyseur AST
+│   └── __init__.py             # Interface d'export
+├── ai/                         # 🤖 Modules d'intelligence artificielle
+│   ├── ai_robust.py            # IA robuste de base
+│   ├── ai_robust_enhanced.py   # IA robuste avancée
+│   └── __init__.py             # Interface d'export
+├── validation/                 # 🛡️ Validation et sécurité
+│   ├── security_validator.py   # Validateur de sécurité
+│   ├── plugins_validator.py    # Validateur de plugins
+│   └── __init__.py             # Interface d'export
+├── automation/                 # 🧹 Modules d'automatisation
+│   ├── auto_cicd.py            # CI/CD automatique
+│   ├── auto_cleaner.py         # Nettoyage automatique
+│   ├── auto_documenter.py      # Documentation automatique
+│   ├── auto_tester.py          # Tests automatiques
+│   └── __init__.py             # Interface d'export
+├── robotics/                   # 🤖 Modules robotiques
+│   ├── reachy_auditor.py       # Auditeur Reachy
+│   ├── ros2_validator.py       # Validateur ROS2
+│   ├── docker_robotics.py      # Gestionnaire Docker Robotics
+│   ├── rust_analyzer.py        # Analyseur Rust
+│   ├── robotics_ci.py          # CI/CD robotique
+│   └── __init__.py             # Interface d'export
+├── agents/                     # 🧠 Agents intelligents
+│   ├── audit_agent.py          # Agent d'audit
+│   ├── context_prompt.py       # Agent de contexte
+│   └── __init__.py             # Interface d'export
+├── distillation/               # ⚡ Distillation et optimisation
+│   ├── adaptive_distillation.py # Distillation adaptative
+│   ├── audit_distiller.py      # Distillateur d'audit
+│   └── __init__.py             # Interface d'export
+├── classification/             # 🏷️ Classification de projets
+│   ├── project_classifier.py   # Classificateur de projets
+│   ├── project_types.py        # Types de projets
+│   └── __init__.py             # Interface d'export
+├── templates/                  # 🎨 Templates et rendus
+│   ├── artistic_templates.py   # Templates artistiques
+│   ├── base_templates.py       # Templates de base
+│   └── __init__.py             # Interface d'export
+├── autocomplete/               # ⌨️ Autocomplétion intelligente
+│   ├── autocomplete_engine.py  # Moteur d'autocomplétion
+│   ├── autocomplete_server.py  # Serveur d'autocomplétion
+│   └── __init__.py             # Interface d'export
+├── analytics/                  # 📊 Analytics et métriques
+│   ├── analytics.py            # Analytics de base
+│   ├── advanced_analytics.py   # Analytics avancés
+│   └── __init__.py             # Interface d'export
+├── audit/                      # 🔍 Audit et sécurité
+│   ├── audit.py                # Audit de base
+│   ├── security_auditor.py     # Auditeur de sécurité
+│   ├── intelligent_auditor.py  # Auditeur intelligent
+│   └── __init__.py             # Interface d'export
+├── i18n/                       # 🌐 Internationalisation
+│   ├── en.py                   # Anglais
+│   ├── fr.py                   # Français
+│   └── __init__.py             # Interface d'export
+├── plugins/                    # 🔌 Système de plugins
+│   └── __init__.py             # Interface des plugins
+├── advanced_modules/           # 🚀 Modules avancés
+│   ├── auto_correction_advanced.py # Auto-correction avancée
+│   ├── dashboard_unified.py    # Dashboard unifié
+│   ├── user_profiles_advanced.py   # Profils utilisateurs avancés
+│   └── __init__.py             # Interface d'export
+└── logs/                       # 📝 Gestion des logs
 ```
 
-**Pourquoi cette organisation ?**
-- **Unified Orchestrator** : Point central qui coordonne tous les modules
-- **Séparation des responsabilités** : Chaque module a un rôle précis
-- **Évolutivité** : Facile d'ajouter de nouveaux modules
-- **Maintenabilité** : Code organisé et documenté
+**Pourquoi cette organisation modulaire ?**
+- **Séparation des responsabilités** : Chaque module a un rôle précis et spécialisé
+- **Imports conditionnels** : Gestion robuste des dépendances avec fallback intelligent
+- **Évolutivité** : Facile d'ajouter de nouveaux modules sans casser l'existant
+- **Maintenabilité** : Code organisé, documenté et testé modulairement
+- **Interface unifiée** : Export centralisé via `__init__.py` pour chaque module
 
-### 🔧 **Modules Spécialisés**
+### 🔧 **Modules Spécialisés par Catégorie**
 
-#### **Industrialisation**
-- `auto_cicd.py` - CI/CD automatique
-- `auto_cleaner.py` - Nettoyage automatique
-- `auto_documenter.py` - Documentation automatique
-- `auto_tester.py` - Tests automatiques
+#### **🔧 Qualité et Linting (NOUVEAU)**
+- `quality/code_linter.py` - Analyseur de code et qualité
+- `quality/correction_optimizer.py` - Optimiseur de corrections ML
 
-#### **Intelligence**
-- `intelligent_analyzer.py` - Analyse intelligente
-- `intelligent_auditor.py` - Audit intelligent
-- `intelligent_memory.py` - Mémoire intelligente
-- `pattern_detector.py` - Détection de patterns
+#### **🚀 Utilitaires Système**
+- `utilities/cli.py` - Interface en ligne de commande
+- `utilities/dashboard.py` - Tableau de bord unifié
+- `utilities/generation.py` - Générateur de projets
 
-#### **Analytics & Performance**
-- `analytics.py` - Analytics de base
-- `advanced_analytics.py` - Analytics avancées
-- `performance_analyzer.py` - Analyse de performance
+#### **🔍 Analyse et IA**
+- `analysis/intelligent_analyzer.py` - Analyse intelligente
+- `analysis/intelligent_memory.py` - Mémoire d'apprentissage
+- `ai/ai_robust.py` - IA robuste de base
+- `ai/ai_robust_enhanced.py` - IA robuste avancée
 
-#### **Sécurité & Qualité**
-- `security_auditor.py` - Audit de sécurité
-- `code_linter.py` - Linting de code
-- `correction_optimizer.py` - Optimisation de corrections
+#### **🛡️ Sécurité et Validation**
+- `validation/security_validator.py` - Audit de sécurité
+- `audit/security_auditor.py` - Auditeur de sécurité
+
+#### **🤖 Robotique et Automatisation**
+- `robotics/reachy_auditor.py` - Auditeur Reachy
+- `robotics/ros2_validator.py` - Validateur ROS2
+- `robotics/docker_robotics.py` - Gestionnaire Docker Robotics
 
 ---
 
@@ -171,8 +252,15 @@ docs/
 ### 🎯 **Organisation par Type**
 ```
 tests/
-├── test_*.py                  # Tests unitaires
+├── unit/                      # Tests unitaires
+│   ├── modules/               # Tests des modules
+│   ├── quality/               # Tests de qualité (NOUVEAU)
+│   ├── core/                  # Tests des modules de base
+│   ├── utils/                 # Tests des utilitaires
+│   └── general/               # Tests généraux
 ├── integration/               # Tests d'intégration
+├── performance/               # Tests de performance
+├── security/                  # Tests de sécurité
 ├── bin/                       # Tests des outils bin/
 └── [tests spécialisés]        # Tests métier
 ```
@@ -181,6 +269,7 @@ tests/
 - **Séparation des préoccupations** : Tests unitaires vs intégration
 - **Facilité de maintenance** : Chaque type de test a sa place
 - **Performance** : Possibilité de lancer des tests spécifiques
+- **Modules de qualité** : Tests spécialisés pour les nouveaux modules
 
 ---
 
@@ -343,15 +432,16 @@ blueprints_history/
 ## 🎯 Philosophie d'Organisation
 
 ### **1. Séparation des Responsabilités**
-- **Code** : Logique métier
+- **Code** : Logique métier organisée en modules spécialisés
 - **Données** : Informations et résultats
 - **Configuration** : Paramètres
 - **Documentation** : Explications et guides
 
-### **2. Évolutivité**
+### **2. Évolutivité Modulaire**
 - **Modularité** : Chaque composant peut évoluer indépendamment
 - **Extensibilité** : Facile d'ajouter de nouveaux modules
 - **Maintenabilité** : Code organisé et documenté
+- **Imports conditionnels** : Gestion robuste des dépendances
 
 ### **3. Professionnalisme**
 - **Standards** : Respect des conventions de l'industrie
@@ -371,16 +461,19 @@ blueprints_history/
 - ✅ **Navigation intuitive** : Structure logique et prévisible
 - ✅ **Maintenance facile** : Code organisé et documenté
 - ✅ **Collaboration efficace** : Standards partagés
+- ✅ **Modules spécialisés** : Chaque module a sa responsabilité
 
 ### **Pour les Utilisateurs**
 - ✅ **Interface claire** : Outils bien organisés
 - ✅ **Documentation complète** : Guides et exemples
 - ✅ **Fiabilité** : Tests et monitoring
+- ✅ **Qualité** : Modules de qualité intégrés
 
 ### **Pour le Projet**
 - ✅ **Évolutivité** : Facile d'ajouter de nouvelles fonctionnalités
 - ✅ **Qualité** : Standards élevés maintenus
 - ✅ **Durabilité** : Architecture pérenne
+- ✅ **Modularité** : Structure claire et organisée
 
 ---
 
@@ -392,9 +485,10 @@ Cette structure reflète une **approche professionnelle et méthodique** du dév
 - **Évolutivité** : Facile d'ajouter de nouvelles fonctionnalités
 - **Maintenabilité** : Code organisé et documenté
 - **Intelligence** : Système qui s'améliore avec l'usage
+- **Qualité** : Modules de qualité intégrés et testés
 
-**Athalia Dev Setup** n'est pas juste un projet, c'est un **écosystème complet** pour l'industrialisation et l'intelligence des projets IA.
+**Athalia Dev Setup** n'est pas juste un projet, c'est un **écosystème complet** pour l'industrialisation et l'intelligence des projets IA, avec une architecture modulaire moderne et évolutive.
 
 ---
 
-*Document généré le 26 Juillet 2025 - Structure Athalia Dev Setup v2.0*
+*Document généré le 14 Août 2025 - Structure Athalia Dev Setup v6.1 - Architecture Modulaire Complète*
