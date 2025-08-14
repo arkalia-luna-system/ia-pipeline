@@ -1,7 +1,7 @@
 # Template de test pour athalia_core/code_linter.py
 # Fichier: tests/test_code_linter.py
 
-import athalia_core.code_linter as module
+import athalia_core.quality.code_linter as module
 
 
 class TestCode_Linter:

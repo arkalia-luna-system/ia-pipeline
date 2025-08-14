@@ -11,7 +11,7 @@ from collections import defaultdict
 from dataclasses import dataclass
 from typing import Any
 
-from .utilities.logger_advanced import log_correction, log_error
+from athalia_core.utilities.logger_advanced import log_correction, log_error
 
 
 @dataclass

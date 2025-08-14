@@ -47,12 +47,12 @@ except ImportError:
     CLI = None
 
 try:
-    from .code_linter import CodeLinter
+    from .quality.code_linter import CodeLinter
 except ImportError:
     CodeLinter = None
 
 try:
-    from .correction_optimizer import CorrectionOptimizer
+    from .quality.correction_optimizer import CorrectionOptimizer
 except ImportError:
     CorrectionOptimizer = None
 
@@ -244,7 +244,6 @@ try:
         ProjectImporter,
         ReadyCheck,
     )
-    from .utilities.cli import cli
 except ImportError:
     CLI = None
     Dashboard = None
@@ -255,7 +254,12 @@ except ImportError:
     Onboarding = None
     ProjectImporter = None
     ReadyCheck = None
-    cli = None
+
+try:
+    from .quality import CodeLinter, CorrectionOptimizer
+except ImportError:
+    CodeLinter = None
+    CorrectionOptimizer = None
 
 try:
     from .analytics import advanced_analytics, analytics
@@ -286,8 +290,6 @@ if AutoTester is not None:
     __all__.append("AutoTester")
 if CLI is not None:
     __all__.append("CLI")
-if cli is not None:
-    __all__.append("cli")
 if CodeLinter is not None:
     __all__.append("CodeLinter")
 if ConfigManager is not None:

@@ -17,14 +17,14 @@ from athalia_core.automation.auto_cicd import AutoCICD
 from athalia_core.automation.auto_cleaner import AutoCleaner
 from athalia_core.automation.auto_documenter import AutoDocumenter
 from athalia_core.automation.auto_tester import AutoTester
-from athalia_core.code_linter import CodeLinter
 from athalia_core.core.cache_manager import (
     cache_result,
     get_cache_stats,
     get_cached_result,
 )
 from athalia_core.core.generation import generate_project
-from athalia_core.correction_optimizer import CorrectionOptimizer
+from athalia_core.quality.code_linter import CodeLinter
+from athalia_core.quality.correction_optimizer import CorrectionOptimizer
 
 logger = logging.getLogger(__name__)
 

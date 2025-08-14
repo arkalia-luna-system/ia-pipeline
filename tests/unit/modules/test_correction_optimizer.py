@@ -1,7 +1,7 @@
-# Template de test pour athalia_core/correction_optimizer.py
+# Template de test pour athalia_core/quality/correction_optimizer.py
 # Fichier: tests/test_correction_optimizer.py
 
-import athalia_core.correction_optimizer as module
+import athalia_core.quality.correction_optimizer as module
 
 
 class TestCorrection_Optimizer:

@@ -12,7 +12,7 @@ from unittest.mock import Mock, patch
 import pytest
 
 # Import du module à tester
-from athalia_core.correction_optimizer import CorrectionOptimizer
+from athalia_core.quality.correction_optimizer import CorrectionOptimizer
 
 
 class TestCorrectionOptimizer:
