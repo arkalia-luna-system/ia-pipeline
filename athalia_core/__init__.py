@@ -286,6 +286,8 @@ if AutoTester is not None:
     __all__.append("AutoTester")
 if CLI is not None:
     __all__.append("CLI")
+if cli is not None:
+    __all__.append("cli")
 if CodeLinter is not None:
     __all__.append("CodeLinter")
 if ConfigManager is not None:

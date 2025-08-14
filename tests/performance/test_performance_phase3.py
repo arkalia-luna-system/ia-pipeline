@@ -55,8 +55,8 @@ class TestPerformancePhase3:
 
         # Test d'import des modules principaux
         import athalia_core as ath_core  # noqa: F401
-        import athalia_core.utilities.cli as ath_cli  # noqa: F401
         import athalia_core.core.main as ath_main  # noqa: F401
+        import athalia_core.utilities.cli as ath_cli  # noqa: F401
         import athalia_core.validation.security_validator as ath_sec  # noqa: F401
 
         metrics = monitor.stop()
