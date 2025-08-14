@@ -1,4 +1,8 @@
-# Nettoyage des Fichiers Temporaires macOS
+# 🧹 Nettoyage des Fichiers Temporaires macOS
+
+**Dernière mise à jour :** 14 Août 2025  
+**Version :** v2.0  
+**Statut :** ✅ ACTIF ET MAINTENU - NETTOYAGE AUTOMATISÉ
 
 ## Problème
 

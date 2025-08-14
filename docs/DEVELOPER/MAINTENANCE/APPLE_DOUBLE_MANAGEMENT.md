@@ -1,4 +1,8 @@
-# Gestion des Fichiers AppleDouble dans Athalia
+# 🍎 Gestion des Fichiers AppleDouble dans Athalia
+
+**Dernière mise à jour :** 14 Août 2025  
+**Version :** v2.0  
+**Statut :** ✅ ACTIF ET MAINTENU - GESTION AUTOMATISÉE
 
 ## Qu'est-ce qu'un fichier AppleDouble ?
 

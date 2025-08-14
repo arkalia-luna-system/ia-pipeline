@@ -1,5 +1,9 @@
 # 🎨 Système de Formatage Automatique Athalia
 
+**Dernière mise à jour :** 14 Août 2025  
+**Version :** v2.0  
+**Statut :** ✅ ACTIF ET MAINTENU - FORMATAGE AUTOMATISÉ
+
 ## Vue d'ensemble
 
 Le système de formatage automatique Athalia résout le problème des hooks pre-commit qui modifient les fichiers sans les ajouter automatiquement au staging, créant ainsi un cycle infini de corrections.
