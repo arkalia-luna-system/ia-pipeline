@@ -19,7 +19,7 @@ class TestImportsAll:
             "athalia_core.audit",
             "athalia_core.automation.cleanup",
             "athalia_core.analytics",
-            "athalia_core.cli",
+            "athalia_core.utilities.cli",
             "athalia_core.core.config_manager",
             "athalia_core.automation.auto_cleaner",
             "athalia_core.automation.auto_tester",
@@ -180,7 +180,7 @@ class TestImportsAll:
             "athalia_core.audit",
             "athalia_core.automation.cleanup",
             "athalia_core.analytics",
-            "athalia_core.cli",
+            "athalia_core.utilities.cli",
         ]
 
         for module in main_modules:

@@ -244,6 +244,7 @@ try:
         ProjectImporter,
         ReadyCheck,
     )
+    from .utilities.cli import cli
 except ImportError:
     CLI = None
     Dashboard = None
@@ -254,6 +255,7 @@ except ImportError:
     Onboarding = None
     ProjectImporter = None
     ReadyCheck = None
+    cli = None
 
 try:
     from .quality import CodeLinter, CorrectionOptimizer
@@ -290,6 +292,8 @@ if AutoTester is not None:
     __all__.append("AutoTester")
 if CLI is not None:
     __all__.append("CLI")
+if cli is not None:
+    __all__.append("cli")
 if CodeLinter is not None:
     __all__.append("CodeLinter")
 if ConfigManager is not None:
@@ -395,6 +399,8 @@ if PatternDetector is not None:
 
 if CLI is not None:
     __all__.append("CLI")
+if cli is not None:
+    __all__.append("cli")
 if Dashboard is not None:
     __all__.append("Dashboard")
 if GenerationBackup is not None:
