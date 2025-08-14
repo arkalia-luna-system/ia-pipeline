@@ -428,7 +428,9 @@ class TestDashboardIntegration:
 def test_generate_dashboard_html():
     """Test de la fonction utilitaire generate_dashboard_html"""
     with tempfile.TemporaryDirectory() as temp_dir:
-        with patch("athalia_core.dashboard.Dashboard") as mock_dashboard_class:
+        with patch(
+            "athalia_core.utilities.dashboard.Dashboard"
+        ) as mock_dashboard_class:
             mock_dashboard = Mock()
             mock_report = {"html_content": "<html>Test</html>"}
             mock_dashboard.generate_dashboard_report.return_value = mock_report
@@ -444,7 +446,9 @@ def test_generate_dashboard_html():
 def test_create_dashboard_report():
     """Test de la fonction utilitaire create_dashboard_report"""
     with tempfile.TemporaryDirectory() as temp_dir:
-        with patch("athalia_core.dashboard.Dashboard") as mock_dashboard_class:
+        with patch(
+            "athalia_core.utilities.dashboard.Dashboard"
+        ) as mock_dashboard_class:
             mock_dashboard = Mock()
             mock_dashboard.generate_dashboard_report.return_value = {
                 "dashboard_data": {},
