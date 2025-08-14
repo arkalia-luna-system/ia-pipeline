@@ -1,8 +1,8 @@
 # 🚀 Best Practices Athalia
 
-**Date :** 2 Août 2025  
-**Version :** v4.0  
-**Statut :** ✅ ACTIF ET MAINTENU
+**Date :** 15 Janvier 2025  
+**Version :** v5.0  
+**Statut :** ✅ ACTIF ET MAINTENU - ARCHITECTURE MODULAIRE
 
 ---
 
@@ -17,13 +17,13 @@ Ce guide présente les meilleures pratiques pour le développement, le déploiem
 ### **Benchmarks et Performance**
 ```bash
 # Lancer les benchmarks sur une machine dédiée
-python3 athalia_core/performance_analyzer.py --project /chemin/projet
+python3 athalia_core/core/performance_analyzer.py --project /chemin/projet
 
 # Monitorer les performances en temps réel
 python3 bin/athalia_unified.py /chemin/projet --action dashboard --utilisateur nom
 
 # Analyse de performance complète
-python3 athalia_core/performance_analyzer.py --full-analysis --output performance_report.json
+python3 athalia_core/core/performance_analyzer.py --full-analysis --output performance_report.json
 ```
 
 ### **Dashboard et Feedback**
