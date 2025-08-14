@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Module de CI/CD pour projets robotics
-Intégration continue pour ROS2, Rust et projets robotics
+Module de CI/CD pour la robotique Athalia
+Intégration continue et déploiement automatique
 """
 
 import logging
@@ -9,16 +9,16 @@ import subprocess
 from pathlib import Path
 from typing import Any
 
-# Import sécurisé pour la validation des commandes
+# Import du validateur de sécurité
 try:
-    from athalia_core.security_validator import SecurityError, validate_and_run
+    from athalia_core.validation.security_validator import (
+        SecurityError,
+        validate_and_run,
+    )
 except ImportError:
-    # Fallback si le module n'est pas disponible
-    def validate_and_run(command, **kwargs):
-        return subprocess.run(command, **kwargs)
-
+    # Fallback pour les tests
     SecurityError = Exception
-
+    validate_and_run = subprocess.run
 
 logger = logging.getLogger(__name__)
 

@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
+"""
+Module de gestion des prompts de contexte pour Athalia
+Génération et validation des prompts contextuels
+"""
+
 import logging
 import os
 import re
-import subprocess
 import sys
 import tempfile
 from datetime import datetime
@@ -11,14 +15,17 @@ import yaml
 
 # Import du validateur de sécurité
 try:
-    from athalia_core.security_validator import SecurityError, validate_and_run
+    from athalia_core.validation.security import SecurityError, validate_and_run
 except ImportError:
     # Fallback pour les tests
-    def validate_and_run(command, **kwargs):
-        return subprocess.run(command, **kwargs)
+    SecurityError = Exception
 
-    class SecurityError(Exception):
-        pass
+    def validate_and_run(*args, **kwargs):
+        """Fonction de fallback pour les tests"""
+        return None
+
+
+logger = logging.getLogger(__name__)
 
 
 try:

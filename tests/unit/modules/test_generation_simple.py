@@ -102,12 +102,14 @@ class TestGenerateProject:
             "dependencies": ["numpy", "pandas"],
         }
 
-        with patch("athalia_core.generation_simple.generate_readme") as mock_readme:
+        with patch(
+            "athalia_core.utilities.generation_simple.generate_readme"
+        ) as mock_readme:
             with patch(
-                "athalia_core.generation_simple.generate_main_code"
+                "athalia_core.utilities.generation_simple.generate_main_code"
             ) as mock_main:
                 with patch(
-                    "athalia_core.generation_simple.generate_test_code"
+                    "athalia_core.utilities.generation_simple.generate_test_code"
                 ) as mock_test:
                     result = generate_project(blueprint, "/tmp")
 

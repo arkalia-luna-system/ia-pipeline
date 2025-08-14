@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Module IA robuste pour Athalia
-Gestion des modèles IA avec fallback intelligent et gestion d'erreurs avancée
+Module AI robuste amélioré pour Athalia
+Gestion avancée des modèles d'IA avec fallbacks intelligents
 """
 
 import logging
@@ -11,17 +11,15 @@ from typing import Any
 
 # Import du validateur de sécurité
 try:
-    from athalia_core.security_validator import SecurityError, validate_and_run
+    from athalia_core.validation.security_validator import (
+        SecurityError,
+        validate_and_run,
+    )
 except ImportError:
     # Fallback pour les tests
-    def validate_and_run(command, **kwargs):
-        return subprocess.run(command, **kwargs)
+    SecurityError = Exception
+    validate_and_run = subprocess.run
 
-    class SecurityError(Exception):
-        pass
-
-
-# Configuration du logging
 logger = logging.getLogger(__name__)
 
 

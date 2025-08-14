@@ -16,8 +16,6 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-from athalia_core.core.performance_analyzer import PerformanceAnalyzer
-
 from .architecture_analyzer import ArchitectureAnalyzer
 from .ast_analyzer import ASTAnalyzer
 from .pattern_detector import PatternDetector
@@ -58,7 +56,17 @@ class IntelligentAnalyzer:
         self.ast_analyzer = ASTAnalyzer()
         self.pattern_detector = PatternDetector(self.root_path)
         self.architecture_analyzer = ArchitectureAnalyzer(self.root_path)
-        self.performance_analyzer = PerformanceAnalyzer(self.root_path)
+
+        # Import local pour éviter l'import circulaire
+        try:
+            from athalia_core.core.performance_analyzer import PerformanceAnalyzer
+
+            self.performance_analyzer = PerformanceAnalyzer(self.root_path)
+        except ImportError:
+            logger.warning(
+                "PerformanceAnalyzer non disponible - fonctionnalités de performance limitées"
+            )
+            self.performance_analyzer = None
 
         logger.info(f"🧠 Intelligent Analyzer initialisé dans {self.root_path}")
 
@@ -85,9 +93,12 @@ class IntelligentAnalyzer:
 
         # 4. Analyse de performance
         logger.info("⚡ Étape 4/4: Analyse de performance...")
-        performance_analysis = self.performance_analyzer.analyze_project_performance(
-            project_path
-        )
+        if self.performance_analyzer:
+            performance_analysis = self.performance_analyzer.analyze_project_performance(
+                project_path
+            )
+        else:
+            performance_analysis = {"status": "unavailable", "message": "PerformanceAnalyzer non disponible"}
 
         # Calculer le score global
         overall_score = self._calculate_overall_score(
@@ -456,7 +467,9 @@ class IntelligentAnalyzer:
             "pattern_insights": self.pattern_detector.get_learning_insights(),
             "architecture_insights": self.architecture_analyzer.get_optimization_plan(),
             "performance_insights": (
-                self.performance_analyzer.get_performance_insights()
+                (self.performance_analyzer.get_performance_insights())
+                if self.performance_analyzer
+                else "PerformanceAnalyzer non disponible"
             ),
         }
 
@@ -468,7 +481,7 @@ class IntelligentAnalyzer:
                 "ast_analyzer": True,
                 "pattern_detector": True,
                 "architecture_analyzer": True,
-                "performance_analyzer": True,
+                "performance_analyzer": True if self.performance_analyzer else False,
                 "unified_orchestrator": UNIFIED_ORCHESTRATOR_AVAILABLE,
             },
             "recommendations": [

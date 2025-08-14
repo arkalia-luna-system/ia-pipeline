@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+"""
+Module d'audit de sécurité pour Athalia
+Analyse et validation de la sécurité du code
+"""
+
 import json
 import logging
 import re
@@ -8,23 +13,16 @@ from typing import Any
 
 # Import du validateur de sécurité
 try:
-    from athalia_core.security_validator import SecurityError, validate_and_run
+    from athalia_core.validation.security_validator import (
+        SecurityError,
+        validate_and_run,
+    )
 except ImportError:
     # Fallback pour les tests
-    def validate_and_run(command, **kwargs):
-        return subprocess.run(command, **kwargs)
-
-    class SecurityError(Exception):
-        pass
-
+    SecurityError = Exception
+    validate_and_run = subprocess.run
 
 logger = logging.getLogger(__name__)
-
-
-"""
-Module d'audit de sécurité pour Athalia
-Détection automatique de vulnérabilités et bonnes pratiques
-"""
 
 
 class SecurityAuditor:

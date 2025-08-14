@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Tests pour le module intelligent_memory.
-Tests professionnels pour la CI/CD.
+Tests pour le module intelligent_memory.py
+Tests complets du système de mémoire intelligente
 """
 
 import tempfile
@@ -9,20 +9,12 @@ import unittest
 from datetime import datetime
 from pathlib import Path
 
-# Import du module à tester
-try:
-    from athalia_core.analysis import (
-        CorrectionSuggestion,
-        IntelligentMemory,
-        LearningEvent,
-        Prediction,
-    )
-except ImportError:
-    # Type: ignore pour éviter les erreurs de type quand le module n'est pas disponible
-    IntelligentMemory = None  # type: ignore
-    CorrectionSuggestion = None  # type: ignore
-    LearningEvent = None  # type: ignore
-    Prediction = None  # type: ignore
+from athalia_core.analysis import (
+    CorrectionSuggestion,
+    IntelligentMemory,
+    LearningEvent,
+    Prediction,
+)
 
 
 class TestIntelligentMemory(unittest.TestCase):

@@ -13,7 +13,7 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-from athalia_core.logger_advanced import (
+from athalia_core.utilities.logger_advanced import (
     AthaliaLogger,
     athalia_logger,
     log_correction,

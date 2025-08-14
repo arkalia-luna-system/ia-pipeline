@@ -322,7 +322,7 @@ class TestClass:
         assert "api_project" in docs
         assert "Documentation API" in docs
 
-    @patch("athalia_core.generation_backup.Path")
+    @patch("athalia_core.utilities.generation_backup.Path")
     def test_generate_project_mocked_path(self, mock_path):
         """Test génération projet avec Path mocké."""
         mock_path.return_value.mkdir.return_value = None

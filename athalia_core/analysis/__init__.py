@@ -20,9 +20,17 @@ except ImportError:
     ComprehensiveAnalysis = None
 
 try:
-    from .intelligent_memory import IntelligentMemory
+    from .intelligent_memory import (
+        CorrectionSuggestion,
+        IntelligentMemory,
+        LearningEvent,
+        Prediction,
+    )
 except ImportError:
     IntelligentMemory = None
+    CorrectionSuggestion = None
+    LearningEvent = None
+    Prediction = None
 
 try:
     from .pattern_detector import PatternDetector
@@ -35,5 +43,8 @@ __all__ = [
     "IntelligentAnalyzer",
     "ComprehensiveAnalysis",
     "IntelligentMemory",
+    "CorrectionSuggestion",
+    "LearningEvent",
+    "Prediction",
     "PatternDetector",
 ]
