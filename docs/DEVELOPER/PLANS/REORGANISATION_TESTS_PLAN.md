@@ -1,5 +1,8 @@
 # 🧪 Plan de Réorganisation Complète des Tests Athalia
 
+**Dernière mise à jour :** 14 Août 2025  
+**Version :** v12.0  
+**Statut :** ✅ ACTIF ET MAINTENU - PLAN DE RÉORGANISATION  
 **Date :** 31 Juillet 2025  
 **Version :** 11.0 (ACTIVE DEVELOPMENT) ✅  
 **Priorité :** CRITIQUE  

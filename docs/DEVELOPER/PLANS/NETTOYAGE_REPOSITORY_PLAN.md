@@ -1,5 +1,8 @@
 # 🧹 Plan de Nettoyage du Repository Athalia
 
+**Dernière mise à jour :** 14 Août 2025  
+**Version :** v12.0  
+**Statut :** ✅ ACTIF ET MAINTENU - PLAN DE NETTOYAGE  
 **Date :** 2 Août 2025  
 **Version :** 11.0 (ACTIVE DEVELOPMENT) ✅  
 **Statut :** PRÊT À EXÉCUTER 🚀  
