@@ -283,7 +283,7 @@ python3 athalia_core/core/performance_analyzer.py --benchmark --modules all
 ### **Scripts de Maintenance**
 ```bash
 # Nettoyage automatique
-./bin/ath-clean
+./bin/cleanup/ath-clean
 
 # Validation complète
 ./bin/ath-validate
@@ -293,6 +293,10 @@ python3 athalia_core/core/performance_analyzer.py --benchmark --modules all
 
 # Audit complet
 ./bin/ath-audit
+
+# Linting et formatage
+ruff check . --fix
+black .
 ```
 
 ### **Monitoring et Alertes**

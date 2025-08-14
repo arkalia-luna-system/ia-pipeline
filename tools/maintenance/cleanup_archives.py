@@ -17,7 +17,9 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s",
     handlers=[
-        logging.FileHandler("logs/archive_cleanup.log", mode="a", encoding="utf-8"),
+        logging.FileHandler(
+            "logs/maintenance/archive_cleanup.log", mode="a", encoding="utf-8"
+        ),
         logging.StreamHandler(),
     ],
 )
