@@ -1,5 +1,9 @@
 # 🚀 Workflow Git Professionnel - Athalia
 
+**Dernière mise à jour :** 14 Août 2025  
+**Version :** v2.0  
+**Statut :** ✅ ACTIF ET MAINTENU
+
 ## 📋 Vue d'ensemble
 
 Ce guide décrit le workflow Git professionnel pour le projet Athalia, basé sur le modèle **Git Flow** adapté pour un projet IA/ML.

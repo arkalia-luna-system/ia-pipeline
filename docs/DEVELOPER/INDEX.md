@@ -1,7 +1,7 @@
 # 📚 Documentation Développeur Athalia
 
-*Date : 15 janvier 2025*  
-*Version : Documentation v6.0*  
+*Date : 14 août 2025*  
+*Version : Documentation v6.1*  
 *Statut : ✅ ARCHITECTURE MODULAIRE COMPLÈTE - SYSTÈME OPÉRATIONNEL*
 
 ---
@@ -13,17 +13,17 @@ Cette documentation couvre l'architecture, les modules et les améliorations d'A
 ## 📊 État Actuel du Projet
 
 ### ✅ **Réalisations Majeures**
-- **Architecture Modulaire** : Structure complète avec 20+ modules spécialisés
+- **Architecture Modulaire** : Structure complète avec 22+ modules spécialisés
 - **Système d'Import Conditionnel** : Gestion robuste des dépendances avec fallback intelligent
-- **Modules de Qualité** : Code linter et correction optimizer intégrés
-- **Système d'Utilitaires** : CLI, dashboard, génération et logging avancés
-- **Modules IA** : Analyse intelligente et agents contextuels
-- **Validation et Sécurité** : Validateurs de plugins et sécurité renforcée
+- **Modules de Qualité** : Code linter et correction optimizer intégrés dans `athalia_core/quality/`
+- **Système d'Utilitaires** : CLI, dashboard, génération et logging avancés dans `athalia_core/utilities/`
+- **Modules IA** : Analyse intelligente et agents contextuels dans `athalia_core/ai/` et `athalia_core/analysis/`
+- **Validation et Sécurité** : Validateurs de plugins et sécurité renforcée dans `athalia_core/validation/`
 - **Tests Complets** : Couverture étendue avec optimisation des performances
 - **Linting et Formatage** : 100% conforme aux standards Python
 
 ### 📈 **Métriques de Succès**
-- **Modules intégrés** : 20+ modules spécialisés → **100%** ✅
+- **Modules intégrés** : 22+ modules spécialisés → **100%** ✅
 - **Architecture modulaire** : Structure complète et organisée → **100%** ✅
 - **Système d'imports** : Gestion robuste des dépendances → **100%** ✅
 - **Tests de qualité** : Couverture étendue et optimisée → **100%** ✅
@@ -60,6 +60,77 @@ Cette documentation couvre l'architecture, les modules et les améliorations d'A
 - [**CI/CD Pro Guide**](GUIDES/CI_CD_PROFESSIONAL_GUIDE.md) - Pipeline CI/CD professionnel
 - [**CI/CD Pro Pre-commit**](GUIDES/CI_CD_PRO_PRE_COMMIT_GUIDE.md) - Hooks pre-commit
 - [**Alias Workflow Quick Guide**](GUIDES/ALIAS_WORKFLOW_QUICK_GUIDE.md) - Guide rapide des alias
+
+---
+
+## 🏗️ Architecture Modulaire Actuelle
+
+### **Structure des Modules athalia_core/**
+```
+athalia_core/
+├── quality/                    # Modules de qualité et linting
+│   ├── code_linter.py         # Analyseur de code et qualité
+│   ├── correction_optimizer.py # Optimiseur de corrections
+│   └── __init__.py            # Interface d'export
+├── utilities/                  # Utilitaires système
+│   ├── cli.py                 # Interface en ligne de commande
+│   ├── dashboard.py           # Tableau de bord unifié
+│   └── generation.py          # Générateur de projets
+├── analysis/                   # Modules d'analyse IA
+│   ├── intelligent_analyzer.py # Analyseur intelligent
+│   ├── intelligent_memory.py  # Mémoire d'apprentissage
+│   └── ast_analyzer.py        # Analyseur AST
+├── ai/                        # Modules d'intelligence artificielle
+│   ├── ai_robust.py           # IA robuste de base
+│   └── ai_robust_enhanced.py  # IA robuste avancée
+├── validation/                 # Validation et sécurité
+│   ├── security_validator.py  # Validateur de sécurité
+│   └── plugins_validator.py   # Validateur de plugins
+├── automation/                 # Automatisation
+│   ├── auto_cicd.py           # CI/CD automatique
+│   ├── auto_tester.py         # Tests automatiques
+│   └── auto_documenter.py     # Documentation automatique
+├── robotics/                   # Modules robotiques
+│   ├── reachy_auditor.py      # Auditeur Reachy
+│   ├── ros2_validator.py      # Validateur ROS2
+│   └── docker_robotics.py     # Gestionnaire Docker
+├── agents/                     # Agents intelligents
+│   ├── audit_agent.py         # Agent d'audit
+│   └── context_prompt.py      # Agent de contexte
+├── distillation/               # Distillation et optimisation
+│   ├── adaptive_distillation.py # Distillation adaptative
+│   └── audit_distiller.py     # Distillateur d'audit
+├── classification/             # Classification de projets
+│   ├── project_classifier.py  # Classificateur de projets
+│   └── project_types.py       # Types de projets
+├── templates/                  # Templates et rendus
+│   ├── artistic_templates.py  # Templates artistiques
+│   └── base_templates.py      # Templates de base
+├── autocomplete/               # Autocomplétion intelligente
+│   ├── autocomplete_engine.py # Moteur d'autocomplétion
+│   └── autocomplete_server.py # Serveur d'autocomplétion
+├── core/                       # Modules de base
+│   ├── cache_manager.py       # Gestionnaire de cache
+│   ├── config_manager.py      # Gestionnaire de configuration
+│   └── performance_analyzer.py # Analyseur de performance
+├── analytics/                  # Analytics et métriques
+│   ├── analytics.py           # Analytics de base
+│   └── advanced_analytics.py  # Analytics avancés
+├── audit/                      # Audit et sécurité
+│   ├── audit.py               # Audit de base
+│   ├── security_auditor.py    # Auditeur de sécurité
+│   └── intelligent_auditor.py # Auditeur intelligent
+├── i18n/                       # Internationalisation
+│   ├── en.py                  # Anglais
+│   └── fr.py                  # Français
+├── plugins/                    # Système de plugins
+│   └── __init__.py            # Interface des plugins
+├── advanced_modules/           # Modules avancés
+│   ├── auto_correction_advanced.py # Auto-correction avancée
+│   ├── dashboard_unified.py   # Dashboard unifié
+│   └── user_profiles_advanced.py # Profils utilisateurs avancés
+└── logs/                       # Gestion des logs
+```
 
 ---
 
@@ -169,7 +240,7 @@ Cette documentation couvre l'architecture, les modules et les améliorations d'A
 ## 🧪 Tests et Validation
 
 ### **Couverture de Tests**
-- ✅ **1696 tests collectés**
+- ✅ **172 tests collectés** (tests de qualité inclus)
 - ✅ **Tests unitaires** : Modules individuels
 - ✅ **Tests d'intégration** : Workflow complet
 - ✅ **Tests de performance** : Cache et optimisation
@@ -203,7 +274,7 @@ Cette documentation couvre l'architecture, les modules et les améliorations d'A
 
 ## 🎯 Prochaines Étapes
 
-### 🚀 **Phase 5 : Optimisation et Perfectionnement (Prêt à commencer)**
+### 🚀 **Phase 5 : Optimisation et Perfectionnement (En cours)**
 
 **Objectifs :**
 - 🎯 Améliorer la précision de classification (80% → 95%)
@@ -273,5 +344,5 @@ Athalia est maintenant prête pour la **Phase 5 d'optimisation** avec une base s
 
 ---
 
-*Documentation mise à jour le 2 août 2025*  
-*Version : 5.0 - Toutes les phases terminées*
+*Documentation mise à jour le 14 août 2025*  
+*Version : 6.1 - Architecture modulaire complète et opérationnelle*
