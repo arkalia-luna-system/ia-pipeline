@@ -9,7 +9,10 @@ from datetime import datetime
 from pathlib import Path
 from unittest.mock import MagicMock, mock_open, patch
 
-from athalia_core.intelligent_analyzer import ComprehensiveAnalysis, IntelligentAnalyzer
+from athalia_core.analysis.intelligent_analyzer import (
+    ComprehensiveAnalysis,
+    IntelligentAnalyzer,
+)
 
 
 class TestComprehensiveAnalysis:

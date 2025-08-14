@@ -8,7 +8,7 @@ from datetime import datetime
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
-from athalia_core.pattern_detector import (
+from athalia_core.analysis.pattern_detector import (
     AntiPattern,
     CodePattern,
     DuplicateAnalysis,

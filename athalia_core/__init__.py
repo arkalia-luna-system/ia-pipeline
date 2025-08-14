@@ -212,6 +212,21 @@ except ImportError:
     AutocompleteServer = None
 
 try:
+    from .analysis import (
+        ArchitectureAnalyzer,
+        ASTAnalyzer,
+        IntelligentAnalyzer,
+        IntelligentMemory,
+        PatternDetector,
+    )
+except ImportError:
+    ArchitectureAnalyzer = None
+    ASTAnalyzer = None
+    IntelligentAnalyzer = None
+    IntelligentMemory = None
+    PatternDetector = None
+
+try:
     from .analytics import advanced_analytics, analytics
 except ImportError:
     analytics = None
@@ -328,6 +343,17 @@ if AutocompleteEngine is not None:
     __all__.append("AutocompleteEngine")
 if AutocompleteServer is not None:
     __all__.append("AutocompleteServer")
+
+if ArchitectureAnalyzer is not None:
+    __all__.append("ArchitectureAnalyzer")
+if ASTAnalyzer is not None:
+    __all__.append("ASTAnalyzer")
+if IntelligentAnalyzer is not None:
+    __all__.append("IntelligentAnalyzer")
+if IntelligentMemory is not None:
+    __all__.append("IntelligentMemory")
+if PatternDetector is not None:
+    __all__.append("PatternDetector")
 
 if ath_context_prompt is not None:
     __all__.append("ath_context_prompt")

@@ -8,7 +8,7 @@ from datetime import datetime
 from pathlib import Path
 from unittest.mock import MagicMock, mock_open, patch
 
-from athalia_core.architecture_analyzer import (
+from athalia_core.analysis.architecture_analyzer import (
     ArchitectureAnalyzer,
     ArchitectureMapping,
     ModuleAnalysis,
