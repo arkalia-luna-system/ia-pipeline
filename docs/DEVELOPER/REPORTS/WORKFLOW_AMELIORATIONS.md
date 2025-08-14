@@ -1,5 +1,9 @@
 # 🚀 Améliorations du Workflow Athalia
 
+**Dernière mise à jour :** 14 Août 2025  
+**Version :** v2.0  
+**Statut :** ✅ ACTIF ET MAINTENU - WORKFLOW OPTIMISÉ
+
 ## 📋 Vue d'ensemble
 
 Ce document décrit les améliorations apportées au workflow de développement Athalia pour faciliter la vie des développeurs et améliorer la qualité du code avant les commits et pushs.
