@@ -1,8 +1,12 @@
 # 🧪 GUIDE DES TESTS ATHALIA - MISE À JOUR 2025
 
+**Dernière mise à jour :** 14 Août 2025  
+**Version :** v3.0  
+**Statut :** ✅ ACTIF ET MAINTENU - ARCHITECTURE MODULAIRE
+
 ## 📊 **STATISTIQUES ACTUELLES - ANALYSE EXPERT**
 
-### **🎯 MÉTRIQUES GLOBALES (Janvier 2025)**
+### **🎯 MÉTRIQUES GLOBALES (Août 2025)**
 - **Couverture de Code** : **73.63%** (objectif 75% ✅)
 - **Tests Exécutés** : **1051 tests PASSED** (97.7% de succès)
 - **Tests Échoués** : **25 tests** (réduction de 13 tests)
@@ -28,16 +32,16 @@
 ## 🎯 **ANALYSE DE COUVERTURE PAR MODULE**
 
 ### **✅ MODULES EXCELLENTS (80+ de couverture)**
-- `error_codes.py` : **100%** ✅
-- `error_handling.py` : **93%** ✅
-- `generation.py` : **92%** ✅
-- `unified_orchestrator.py` : **92%** ✅
-- `robotics/docker_robotics.py` : **95%** ✅
-- `robotics/reachy_auditor.py` : **93%** ✅
-- `plugins_validator.py` : **97%** ✅
-- `security_validator.py` : **89%** ✅
-- `intelligent_memory.py` : **87%** ✅
-- `auto_documenter.py` : **89%** ✅
+- `athalia_core/core/error_codes.py` : **100%** ✅
+- `athalia_core/core/error_handling.py` : **93%** ✅
+- `athalia_core/core/generation.py` : **92%** ✅
+- `athalia_core/core/unified_orchestrator.py` : **92%** ✅
+- `athalia_core/robotics/docker_robotics.py` : **95%** ✅
+- `athalia_core/robotics/reachy_auditor.py` : **93%** ✅
+- `athalia_core/validation/plugins_validator.py` : **97%** ✅
+- `athalia_core/validation/security_validator.py` : **89%** ✅
+- `athalia_core/analysis/intelligent_memory.py` : **87%** ✅
+- `athalia_core/automation/auto_documenter.py` : **89%** ✅
 
 ### **⚠️ MODULES À AMÉLIORER (50-80% de couverture)**
 - `analytics.py` : **72%** (objectif : 85%)

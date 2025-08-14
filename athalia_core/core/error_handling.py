@@ -190,7 +190,7 @@ def get_error_handler() -> ErrorHandler:
     """Récupère l'instance globale du gestionnaire d'erreurs."""
     global _global_error_handler
     if _global_error_handler is None:
-        log_file = Path("logs/athalia_errors.log")
+        log_file = Path("logs/current/athalia_errors.log")
         log_file.parent.mkdir(exist_ok=True)
         _global_error_handler = ErrorHandler(str(log_file))
     return _global_error_handler
