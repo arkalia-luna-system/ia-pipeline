@@ -1,8 +1,9 @@
 # 🎼 Orchestrateur - Documentation API
 
-**Date :** 2 août 2025
+**Dernière mise à jour :** 14 Août 2025  
+**Version :** v6.0  
+**Statut :** ✅ ACTIF ET MAINTENU - ORCHESTRATION MODULAIRE  
 **Module :** Orchestrateur
-**Statut :** Documentation complète v5.0
 
 ## 🎯 Vue d'ensemble
 
