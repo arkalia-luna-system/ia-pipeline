@@ -33,15 +33,15 @@
 
 @layer components {
   .cyber-card {
-    @apply bg-card-bg border-2 border-border rounded-2xl p-6 relative overflow-hidden transition-all duration-300 animate-slideIn;
+    @apply bg-gray-800 border-2 border-gray-600 rounded-2xl p-6 relative overflow-hidden transition-all duration-300 animate-slideIn;
   }
   
   .cyber-button {
-    @apply bg-neon-blue hover:bg-neon-purple text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-neon-blue/50;
+    @apply bg-blue-500 hover:bg-purple-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/50;
   }
   
   .neon-text {
-    @apply bg-gradient-to-r from-neon-blue via-neon-purple to-neon-green bg-clip-text text-transparent animate-glow;
+    @apply bg-gradient-to-r from-blue-500 via-purple-600 to-green-500 bg-clip-text text-transparent animate-glow;
   }
   
   .status-indicator {
@@ -49,11 +49,11 @@
   }
   
   .status-indicator.online {
-    @apply bg-neon-green border-neon-green shadow-lg shadow-neon-green/50;
+    @apply bg-green-500 border-green-500 shadow-lg shadow-green-500/50;
   }
   
   .status-indicator.warning {
-    @apply bg-neon-orange border-neon-orange shadow-lg shadow-neon-orange/50;
+    @apply bg-orange-500 border-orange-500 shadow-lg shadow-orange-500/50;
   }
   
   .status-indicator.error {

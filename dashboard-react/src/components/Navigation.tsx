@@ -15,7 +15,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeTab, onTabChange }) => {
   ]
 
   return (
-    <nav className="bg-card-bg border-b border-border mb-8">
+    <nav className="bg-gray-800 border-b border-gray-600 mb-8">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex space-x-1 overflow-x-auto">
           {tabs.map((tab) => (
@@ -24,8 +24,8 @@ const Navigation: React.FC<NavigationProps> = ({ activeTab, onTabChange }) => {
               onClick={() => onTabChange(tab.id)}
               className={`flex items-center space-x-2 px-4 py-3 text-sm font-medium rounded-t-lg transition-all duration-200 whitespace-nowrap ${
                 activeTab === tab.id
-                  ? 'bg-neon-blue text-black border-b-2 border-neon-blue'
-                  : 'text-gray-400 hover:text-white hover:bg-gray-800'
+                  ? 'bg-blue-500 text-black border-b-2 border-blue-500'
+                  : 'text-gray-400 hover:text-white hover:bg-gray-700'
               }`}
             >
               <span className="text-lg">{tab.icon}</span>

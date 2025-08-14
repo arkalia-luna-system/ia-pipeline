@@ -15,6 +15,13 @@ export default {
         'card-bg': '#1a1a1a',
         'border': '#333',
       },
+      backgroundColor: {
+        'card-bg': '#1a1a1a',
+        'dark-bg': '#0a0a0a',
+      },
+      borderColor: {
+        'border': '#333',
+      },
       animation: {
         'glow': 'glow 2s ease-in-out infinite alternate',
         'slideIn': 'slideIn 0.8s ease-out',
