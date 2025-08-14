@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
+import Navigation from './components/Navigation'
 import PerformanceChart from './components/PerformanceChart'
 import RealTimeMetrics from './components/RealTimeMetrics'
+import SystemHealth from './components/SystemHealth'
+import LogViewer from './components/LogViewer'
 
 function App() {
-  const [systemStatus, setSystemStatus] = useState({
+  const [activeTab, setActiveTab] = useState('overview')
+  
+  const [systemStatus] = useState({
     athalia: 'online',
     ai: 'online',
     tests: 'online',
@@ -18,7 +23,7 @@ function App() {
     performance: 99.2
   })
 
-  const [aiModels, setAiModels] = useState([
+  const [aiModels] = useState([
     { name: 'Ollama Qwen', status: 'online', performance: 95.8 },
     { name: 'Ollama Mistral', status: 'online', performance: 97.2 },
     { name: 'Ollama LLaVA', status: 'online', performance: 93.4 },
@@ -45,29 +50,8 @@ function App() {
     return () => clearInterval(interval)
   }, [])
 
-  return (
-    <div className="min-h-screen bg-dark-bg text-white overflow-hidden">
-      {/* Header Cyberpunk */}
-      <header className="text-center py-12 relative">
-        <h1 className="text-6xl font-bold neon-text mb-4 animate-float">
-          🚀 ATHALIA CORE
-        </h1>
-        <p className="text-2xl text-neon-blue mb-8 animate-pulse">
-          Intelligence Artificielle Ultra-Moderne
-        </p>
-        
-        {/* Status Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-          {Object.entries(systemStatus).map(([key, status]) => (
-            <div key={key} className="cyber-card text-center">
-              <div className={`status-indicator ${status} mx-auto mb-3`}></div>
-              <h3 className="text-neon-blue font-bold capitalize">{key}</h3>
-              <p className="text-sm text-gray-400">{status}</p>
-            </div>
-          ))}
-        </div>
-      </header>
-
+  const renderOverviewTab = () => (
+    <>
       {/* Metrics Dashboard */}
       <section className="max-w-7xl mx-auto px-6 mb-12">
         <h2 className="text-4xl font-bold text-center mb-8 neon-text">
@@ -97,57 +81,6 @@ function App() {
         </div>
       </section>
 
-      {/* Performance Charts and Real-time Metrics */}
-      <section className="max-w-7xl mx-auto px-6 mb-12">
-        <h2 className="text-4xl font-bold text-center mb-8 neon-text">
-          📈 ANALYTICS AVANCÉS
-        </h2>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <PerformanceChart data={performanceData} title="🎯 PERFORMANCE TESTS" />
-          <RealTimeMetrics />
-        </div>
-      </section>
-
-      {/* AI Models Status */}
-      <section className="max-w-7xl mx-auto px-6 mb-12">
-        <h2 className="text-4xl font-bold text-center mb-8 neon-text">
-          🧠 MODÈLES IA
-        </h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {aiModels.map((model, index) => (
-            <div key={model.name} className="cyber-card">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xl font-bold text-neon-blue">{model.name}</h3>
-                <div className={`status-indicator ${model.status}`}></div>
-              </div>
-              
-              <div className="space-y-3">
-                <div className="flex justify-between">
-                  <span className="text-gray-400">Performance:</span>
-                  <span className="text-neon-green font-bold">{model.performance}%</span>
-                </div>
-                
-                <div className="w-full bg-gray-700 rounded-full h-2">
-                  <div 
-                    className="h-2 rounded-full transition-all duration-500"
-                    style={{ width: `${model.performance}%` }}
-                  >
-                    <div className="h-full w-full bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"></div>
-                  </div>
-                </div>
-                
-                <div className="flex justify-between text-sm text-gray-400">
-                  <span>Status: {model.status}</span>
-                  <span>ID: {index + 1}</span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Action Buttons */}
       <section className="max-w-4xl mx-auto px-6 mb-12 text-center">
         <h2 className="text-3xl font-bold mb-8 neon-text">
@@ -172,6 +105,132 @@ function App() {
           </button>
         </div>
       </section>
+    </>
+  )
+
+  const renderAnalyticsTab = () => (
+    <section className="max-w-7xl mx-auto px-6 mb-12">
+      <h2 className="text-4xl font-bold text-center mb-8 neon-text">
+        📈 ANALYTICS AVANCÉS
+      </h2>
+      
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <PerformanceChart data={performanceData} title="🎯 PERFORMANCE TESTS" />
+        <RealTimeMetrics />
+      </div>
+    </section>
+  )
+
+  const renderSystemTab = () => (
+    <section className="max-w-7xl mx-auto px-6 mb-12">
+      <h2 className="text-4xl font-bold text-center mb-8 neon-text">
+        🏥 SURVEILLANCE SYSTÈME
+      </h2>
+      
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <SystemHealth />
+        <LogViewer />
+      </div>
+    </section>
+  )
+
+  const renderAITab = () => (
+    <section className="max-w-7xl mx-auto px-6 mb-12">
+      <h2 className="text-4xl font-bold text-center mb-8 neon-text">
+        🧠 MODÈLES IA
+      </h2>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {aiModels.map((model, index) => (
+          <div key={model.name} className="cyber-card">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-xl font-bold text-neon-blue">{model.name}</h3>
+              <div className={`status-indicator ${model.status}`}></div>
+            </div>
+            
+            <div className="space-y-3">
+              <div className="flex justify-between">
+                <span className="text-gray-400">Performance:</span>
+                <span className="text-neon-green font-bold">{model.performance}%</span>
+              </div>
+              
+              <div className="w-full bg-gray-700 rounded-full h-2">
+                <div 
+                  className="h-2 rounded-full transition-all duration-500"
+                  style={{ width: `${model.performance}%` }}
+                >
+                  <div className="h-full w-full bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"></div>
+                </div>
+              </div>
+              
+              <div className="flex justify-between text-sm text-gray-400">
+                <span>Status: {model.status}</span>
+                <span>ID: {index + 1}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+
+  const renderLogsTab = () => (
+    <section className="max-w-7xl mx-auto px-6 mb-12">
+      <h2 className="text-4xl font-bold text-center mb-8 neon-text">
+        📋 LOGS SYSTÈME
+      </h2>
+      
+      <div className="grid grid-cols-1 gap-8">
+        <LogViewer />
+      </div>
+    </section>
+  )
+
+  const renderActiveTab = () => {
+    switch (activeTab) {
+      case 'overview':
+        return renderOverviewTab()
+      case 'analytics':
+        return renderAnalyticsTab()
+      case 'system':
+        return renderSystemTab()
+      case 'ai':
+        return renderAITab()
+      case 'logs':
+        return renderLogsTab()
+      default:
+        return renderOverviewTab()
+    }
+  }
+
+  return (
+    <div className="min-h-screen bg-dark-bg text-white overflow-hidden">
+      {/* Header Cyberpunk */}
+      <header className="text-center py-12 relative">
+        <h1 className="text-6xl font-bold neon-text mb-4 animate-float">
+          🚀 ATHALIA CORE
+        </h1>
+        <p className="text-2xl text-neon-blue mb-8 animate-pulse">
+          Intelligence Artificielle Ultra-Moderne
+        </p>
+        
+        {/* Status Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          {Object.entries(systemStatus).map(([key, status]) => (
+            <div key={key} className="cyber-card text-center">
+              <div className={`status-indicator ${status} mx-auto mb-3`}></div>
+              <h3 className="text-neon-blue font-bold capitalize">{key}</h3>
+              <p className="text-sm text-gray-400">{status}</p>
+            </div>
+          ))}
+        </div>
+      </header>
+
+      {/* Navigation */}
+      <Navigation activeTab={activeTab} onTabChange={setActiveTab} />
+
+      {/* Content based on active tab */}
+      {renderActiveTab()}
 
       {/* Footer */}
       <footer className="text-center py-8 border-t border-border">
