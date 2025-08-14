@@ -53,7 +53,7 @@ class TestCircularImports:
     def test_critical_modules_importable(self):
         """Test que les modules critiques sont importables"""
         critical_modules = [
-            "athalia_core.cli",
+            "athalia_core.utilities.cli",
             "athalia_core.core.main",
             "athalia_core.validation.security_validator",
             "athalia_core.audit",
@@ -158,7 +158,7 @@ class TestCircularImports:
             pytest.fail(f"❌ Erreur import athalia_core: {e}")
 
         try:
-            from athalia_core import cli  # noqa: F401 - Test d'import
+            from athalia_core.utilities import cli  # noqa: F401 - Test d'import
 
             print("✅ Import athalia_core.cli réussi")
         except ImportError as e:

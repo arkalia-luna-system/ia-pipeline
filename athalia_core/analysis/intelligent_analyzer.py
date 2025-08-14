@@ -94,11 +94,14 @@ class IntelligentAnalyzer:
         # 4. Analyse de performance
         logger.info("⚡ Étape 4/4: Analyse de performance...")
         if self.performance_analyzer:
-            performance_analysis = self.performance_analyzer.analyze_project_performance(
-                project_path
+            performance_analysis = (
+                self.performance_analyzer.analyze_project_performance(project_path)
             )
         else:
-            performance_analysis = {"status": "unavailable", "message": "PerformanceAnalyzer non disponible"}
+            performance_analysis = {
+                "status": "unavailable",
+                "message": "PerformanceAnalyzer non disponible",
+            }
 
         # Calculer le score global
         overall_score = self._calculate_overall_score(

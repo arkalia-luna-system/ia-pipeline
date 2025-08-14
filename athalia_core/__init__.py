@@ -244,6 +244,7 @@ try:
         ProjectImporter,
         ReadyCheck,
     )
+    from .utilities.cli import cli
 except ImportError:
     CLI = None
     Dashboard = None
@@ -254,6 +255,7 @@ except ImportError:
     Onboarding = None
     ProjectImporter = None
     ReadyCheck = None
+    cli = None
 
 try:
     from .analytics import advanced_analytics, analytics
