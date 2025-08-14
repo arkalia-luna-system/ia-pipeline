@@ -38,8 +38,8 @@ const SystemHealth: React.FC = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'healthy': return 'text-neon-green'
-      case 'warning': return 'text-neon-orange'
+      case 'healthy': return 'text-green-500'
+      case 'warning': return 'text-orange-500'
       case 'critical': return 'text-red-500'
       default: return 'text-gray-400'
     }
@@ -56,8 +56,8 @@ const SystemHealth: React.FC = () => {
 
   const getProgressColor = (status: string) => {
     switch (status) {
-      case 'healthy': return 'bg-neon-green'
-      case 'warning': return 'bg-neon-orange'
+      case 'healthy': return 'bg-green-500'
+      case 'warning': return 'bg-orange-500'
       case 'critical': return 'bg-red-500'
       default: return 'bg-gray-500'
     }
@@ -65,9 +65,9 @@ const SystemHealth: React.FC = () => {
 
   return (
     <div className="cyber-card">
-      <h3 className="text-xl font-bold text-neon-blue mb-6 flex items-center">
+      <h3 className="text-xl font-bold text-blue-500 mb-6 flex items-center">
         🏥 SANTÉ SYSTÈME
-        <span className="ml-2 w-3 h-3 bg-neon-green rounded-full animate-pulse"></span>
+        <span className="ml-2 w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
       </h3>
       
       <div className="space-y-4">
@@ -103,8 +103,8 @@ const SystemHealth: React.FC = () => {
         ))}
       </div>
       
-      <div className="mt-6 pt-4 border-t border-border text-center">
-        <p className="text-sm text-neon-blue animate-pulse">
+      <div className="mt-6 pt-4 border-t border-gray-600 text-center">
+        <p className="text-sm text-blue-500 animate-pulse">
           🔄 Surveillance continue - Mise à jour toutes les 4 secondes
         </p>
       </div>

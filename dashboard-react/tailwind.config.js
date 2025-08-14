@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -13,13 +13,6 @@ export default {
         'neon-orange': '#ff6b00',
         'dark-bg': '#0a0a0a',
         'card-bg': '#1a1a1a',
-        'border': '#333',
-      },
-      backgroundColor: {
-        'card-bg': '#1a1a1a',
-        'dark-bg': '#0a0a0a',
-      },
-      borderColor: {
         'border': '#333',
       },
       animation: {

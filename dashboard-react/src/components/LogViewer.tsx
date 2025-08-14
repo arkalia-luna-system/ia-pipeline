@@ -58,10 +58,10 @@ const LogViewer: React.FC = () => {
 
   const getLevelColor = (level: string) => {
     switch (level) {
-      case 'info': return 'text-neon-blue'
-      case 'warning': return 'text-neon-orange'
+      case 'info': return 'text-blue-500'
+      case 'warning': return 'text-orange-500'
       case 'error': return 'text-red-500'
-      case 'success': return 'text-neon-green'
+      case 'success': return 'text-green-500'
       default: return 'text-gray-400'
     }
   }
@@ -81,16 +81,16 @@ const LogViewer: React.FC = () => {
   return (
     <div className="cyber-card">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-xl font-bold text-neon-blue flex items-center">
+        <h3 className="text-xl font-bold text-blue-500 flex items-center">
           📋 LOGS SYSTÈME
-          <span className="ml-2 w-2 h-2 bg-neon-green rounded-full animate-pulse"></span>
+          <span className="ml-2 w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
         </h3>
         
         <div className="flex items-center space-x-2">
           <select 
             value={filter} 
             onChange={(e) => setFilter(e.target.value as 'all' | 'info' | 'warning' | 'error' | 'success')}
-            className="bg-gray-800 border border-border text-white text-sm rounded px-2 py-1"
+            className="bg-gray-800 border border-gray-600 text-white text-sm rounded px-2 py-1"
           >
             <option value="all">Tous</option>
             <option value="info">Info</option>
@@ -102,7 +102,7 @@ const LogViewer: React.FC = () => {
           <button
             onClick={() => setAutoScroll(!autoScroll)}
             className={`px-3 py-1 text-xs rounded transition-colors ${
-              autoScroll ? 'bg-neon-green text-black' : 'bg-gray-700 text-white'
+              autoScroll ? 'bg-green-500 text-black' : 'bg-gray-700 text-white'
             }`}
           >
             {autoScroll ? 'Auto' : 'Manuel'}
@@ -115,14 +115,14 @@ const LogViewer: React.FC = () => {
           <p className="text-gray-500 text-center py-8">Aucun log à afficher</p>
         ) : (
           filteredLogs.map((log) => (
-            <div key={log.id} className="mb-2 p-2 bg-gray-800/50 rounded border-l-2 border-border">
+            <div key={log.id} className="mb-2 p-2 bg-gray-800/50 rounded border-l-2 border-gray-600">
               <div className="flex items-start space-x-2">
                 <span className="text-lg">{getLevelIcon(log.level)}</span>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center space-x-2 text-xs text-gray-400 mb-1">
                     <span className={getLevelColor(log.level)}>[{log.level.toUpperCase()}]</span>
                     <span>{log.timestamp}</span>
-                    <span className="text-neon-purple">[{log.source}]</span>
+                    <span className="text-purple-500">[{log.source}]</span>
                   </div>
                   <p className="text-white">{log.message}</p>
                 </div>
@@ -133,7 +133,7 @@ const LogViewer: React.FC = () => {
         <div ref={logEndRef} />
       </div>
       
-      <div className="mt-4 pt-3 border-t border-border text-center">
+      <div className="mt-4 pt-3 border-t border-gray-600 text-center">
         <p className="text-xs text-gray-500">
           {filteredLogs.length} logs affichés • Filtre: {filter} • Auto-scroll: {autoScroll ? 'ON' : 'OFF'}
         </p>

@@ -14,14 +14,14 @@ const PerformanceChart: React.FC<PerformanceChartProps> = ({ data, title }) => {
   
   return (
     <div className="cyber-card">
-      <h3 className="text-xl font-bold text-neon-blue mb-4">{title}</h3>
+      <h3 className="text-xl font-bold text-blue-500 mb-4">{title}</h3>
       
       <div className="space-y-3">
         {data.map((item, index) => (
           <div key={index} className="space-y-2">
             <div className="flex justify-between text-sm">
               <span className="text-gray-300">{item.label}</span>
-              <span className="text-neon-green font-bold">{item.value}%</span>
+              <span className="text-green-500 font-bold">{item.value}%</span>
             </div>
             
             <div className="w-full bg-gray-700 rounded-full h-3 relative overflow-hidden">
@@ -39,7 +39,7 @@ const PerformanceChart: React.FC<PerformanceChartProps> = ({ data, title }) => {
         ))}
       </div>
       
-      <div className="mt-6 pt-4 border-t border-border">
+      <div className="mt-6 pt-4 border-t border-gray-600">
         <div className="flex justify-between text-sm text-gray-400">
           <span>Min: {Math.min(...data.map(d => d.value))}%</span>
           <span>Max: {Math.max(...data.map(d => d.value))}%</span>
