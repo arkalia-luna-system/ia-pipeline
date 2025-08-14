@@ -1,8 +1,4 @@
-# ⚙️ **INSTALLATION GUIDE** - Professional Setup
-
-**Dernière mise à jour :** 14 Août 2025  
-**Version :** v3.0  
-**Statut :** ✅ ACTIF ET MAINTENU - INSTALLATION AUTOMATISÉE
+# ⚙️ **GUIDE D'INSTALLATION ATHALIA** - Installation Professionnelle
 
 <div align="center">
 
@@ -10,57 +6,57 @@
 
 **🎯 Difficulté: Débutant | 🌐 Plateforme: Cross-platform | 🐍 Python: 3.10+ | 🚀 Statut: Production Ready**
 
-**Professional installation guide for Athalia DevOps Platform**
+**Guide d'installation professionnel pour la plateforme Athalia DevOps avec architecture modulaire**
 
 </div>
 
 ---
 
-## 🎯 **Installation Overview**
+## 🎯 **Vue d'Ensemble de l'Installation**
 
 ```mermaid
 %%{init: {'theme':'base', 'themeVariables': { 'primaryColor': '#28a745', 'primaryTextColor': '#fff', 'primaryBorderColor': '#20c997', 'lineColor': '#007bff', 'secondaryColor': '#ffc107', 'tertiaryColor': '#fff'}}}%%
 journey
-    title Installation Journey (5 minutes)
-    section Prerequisites
-      Check Python version    : 5: User
-      Verify Git installation : 4: User
-      Confirm disk space     : 5: User
-    section Setup
-      Clone repository       : 4: User
-      Create virtual env     : 3: User
-      Install dependencies   : 3: User
+    title Parcours d'Installation (5 minutes)
+    section Prérequis
+      Vérifier Python 3.10+    : 5: Utilisateur
+      Vérifier Git             : 4: Utilisateur
+      Confirmer espace disque  : 5: Utilisateur
+    section Configuration
+      Cloner repository        : 4: Utilisateur
+      Créer environnement virtuel : 3: Utilisateur
+      Installer dépendances    : 3: Utilisateur
     section Validation
-      Run health check       : 5: User
-      Test core features     : 4: User
-      Verify installation    : 5: User
+      Exécuter vérification    : 5: Utilisateur
+      Tester fonctionnalités   : 4: Utilisateur
+      Valider installation     : 5: Utilisateur
 ```
 
 ---
 
-## 📋 **Prerequisites Check**
+## 📋 **Vérification des Prérequis**
 
-### 🔍 **System Requirements**
+### 🔍 **Exigences Système**
 
 ```mermaid
 %%{init: {'theme':'base', 'themeVariables': { 'primaryColor': '#17a2b8', 'primaryTextColor': '#fff', 'primaryBorderColor': '#138496'}}}%%
 graph LR
-    subgraph "💻 SYSTEM"
-        OS[Operating System<br/>Windows/macOS/Linux]
-        SPACE[Disk Space<br/>500MB minimum]
-        RAM[Memory<br/>2GB recommended]
+    subgraph "💻 SYSTÈME"
+        OS[Système d'exploitation<br/>Windows/macOS/Linux]
+        SPACE[Espace disque<br/>500MB minimum]
+        RAM[Mémoire<br/>2GB recommandé]
     end
     
     subgraph "🐍 PYTHON"
-        PY[Python 3.10+<br/>Recommended 3.12]
-        PIP[Pip Package Manager<br/>Latest version]
-        VENV[Virtual Environment<br/>Built-in venv]
+        PY[Python 3.10+<br/>Recommandé 3.12]
+        PIP[Gestionnaire Pip<br/>Dernière version]
+        VENV[Environnement virtuel<br/>venv intégré]
     end
     
-    subgraph "🔧 TOOLS"
-        GIT[Git<br/>Version control]
-        TERM[Terminal/Command Line<br/>Shell access]
-        EDITOR[Code Editor<br/>Optional: VS Code]
+    subgraph "🔧 OUTILS"
+        GIT[Git<br/>Contrôle de version]
+        TERM[Terminal/Ligne de commande<br/>Accès shell]
+        EDITOR[Éditeur de code<br/>Optionnel: VS Code]
     end
     
     OS --> PY
@@ -72,59 +68,59 @@ graph LR
     style SPACE fill:#ffc107
 ```
 
-### ✅ **Quick Prerequisites Check**
+### ✅ **Vérification Rapide des Prérequis**
 
 ```bash
-# 🔍 Run this quick check before installation
-echo "🔍 ATHALIA PREREQUISITES CHECK"
-echo "================================"
+# 🔍 Exécuter cette vérification rapide avant l'installation
+echo "🔍 VÉRIFICATION DES PRÉREQUIS ATHALIA"
+echo "====================================="
 
-# Check Python version
-python3 --version 2>/dev/null || echo "❌ Python 3.10+ required"
+# Vérifier la version Python
+python3 --version 2>/dev/null || echo "❌ Python 3.10+ requis"
 
-# Check Git
-git --version 2>/dev/null || echo "❌ Git required"
+# Vérifier Git
+git --version 2>/dev/null || echo "❌ Git requis"
 
-# Check pip
-pip3 --version 2>/dev/null || echo "❌ Pip required"
+# Vérifier pip
+pip3 --version 2>/dev/null || echo "❌ Pip requis"
 
-# Check disk space (approximate)
-df -h . 2>/dev/null | tail -1 | awk '{print "💾 Available space: " $4}' || echo "💾 Check disk space manually"
+# Vérifier l'espace disque (approximatif)
+df -h . 2>/dev/null | tail -1 | awk '{print "💾 Espace disponible: " $4}' || echo "💾 Vérifier l'espace disque manuellement"
 
-echo "✅ Prerequisites check complete!"
+echo "✅ Vérification des prérequis terminée !"
 ```
 
 <div align="center">
 
-**Expected Output:**
+**Sortie Attendue:**
 ```
-🔍 ATHALIA PREREQUISITES CHECK
-================================
+🔍 VÉRIFICATION DES PRÉREQUIS ATHALIA
+=====================================
 Python 3.12.0
 git version 2.34.1
 pip 23.2.1 from /usr/lib/python3/dist-packages/pip (python 3.12)
-💾 Available space: 15G
-✅ Prerequisites check complete!
+💾 Espace disponible: 15G
+✅ Vérification des prérequis terminée !
 ```
 
 </div>
 
 ---
 
-## 🚀 **Installation Process**
+## 🚀 **Processus d'Installation**
 
-### 📥 **Step 1: Repository Clone**
+### 📥 **Étape 1: Clonage du Repository**
 
 ```mermaid
 %%{init: {'theme':'base', 'themeVariables': { 'primaryColor': '#6f42c1', 'primaryTextColor': '#fff', 'primaryBorderColor': '#5a32a3'}}}%%
 flowchart TD
-    START[🚀 Start Installation] --> CLONE{📥 Clone Repository}
-    CLONE -->|Success| CHECK[✅ Verify Clone]
-    CLONE -->|Failed| ERROR1[❌ Network/Git Error]
-    CHECK --> CD[📁 Change Directory]
-    ERROR1 --> RETRY1[🔄 Retry Clone]
+    START[🚀 Démarrer Installation] --> CLONE{📥 Cloner Repository}
+    CLONE -->|Succès| CHECK[✅ Vérifier Clone]
+    CLONE -->|Échec| ERROR1[❌ Erreur Réseau/Git]
+    CHECK --> CD[📁 Changer Répertoire]
+    ERROR1 --> RETRY1[🔄 Réessayer Clone]
     RETRY1 --> CLONE
-    CD --> NEXT[➡️ Step 2]
+    CD --> NEXT[➡️ Étape 2]
     
     style START fill:#6f42c1
     style CHECK fill:#28a745
@@ -132,39 +128,39 @@ flowchart TD
 ```
 
 ```bash
-# 📥 Clone the repository
+# 📥 Cloner le repository
 git clone https://github.com/arkalia-luna-system/ia-pipeline.git
 cd athalia-dev-setup
 
-# ✅ Verify successful clone
-ls -la | grep -E "(athalia_core|docs|tests)" && echo "✅ Repository cloned successfully" || echo "❌ Clone verification failed"
+# ✅ Vérifier le clonage réussi
+ls -la | grep -E "(athalia_core|docs|tests)" && echo "✅ Repository cloné avec succès" || echo "❌ Échec de vérification du clone"
 ```
 
-### 🐍 **Step 2: Python Environment**
+### 🐍 **Étape 2: Environnement Python**
 
 ```mermaid
 %%{init: {'theme':'base', 'themeVariables': { 'primaryColor': '#fd7e14', 'primaryTextColor': '#fff', 'primaryBorderColor': '#e55a4e'}}}%%
 sequenceDiagram
-    participant U as User
-    participant S as System
-    participant V as Virtual Environment
+    participant U as Utilisateur
+    participant S as Système
+    participant V as Environnement Virtuel
     participant P as Python
     
-    U->>S: Create virtual environment
-    S->>V: Initialize .venv
-    V->>U: Environment created
-    U->>V: Activate environment
-    V->>P: Switch Python context
-    P->>U: Ready for packages
+    U->>S: Créer environnement virtuel
+    S->>V: Initialiser .venv
+    V->>U: Environnement créé
+    U->>V: Activer environnement
+    V->>P: Changer contexte Python
+    P->>U: Prêt pour packages
     
-    Note over V: Isolated environment<br/>Prevents conflicts
+    Note over V: Environnement isolé<br/>Évite les conflits
 ```
 
 ```bash
-# 🐍 Create virtual environment
+# 🐍 Créer l'environnement virtuel
 python3 -m venv .venv
 
-# 🔓 Activate environment
+# 🔓 Activer l'environnement
 ## Linux/macOS:
 source .venv/bin/activate
 
@@ -174,29 +170,29 @@ source .venv/bin/activate
 ## Windows (PowerShell):
 # .venv\Scripts\Activate.ps1
 
-# ✅ Verify activation
-which python3 && echo "✅ Virtual environment activated" || echo "❌ Activation failed"
+# ✅ Vérifier l'activation
+which python3 && echo "✅ Environnement virtuel activé" || echo "❌ Échec d'activation"
 ```
 
-### 📦 **Step 3: Dependencies Installation**
+### 📦 **Étape 3: Installation des Dépendances**
 
 ```mermaid
 %%{init: {'theme':'base', 'themeVariables': { 'primaryColor': '#e83e8c', 'primaryTextColor': '#fff', 'primaryBorderColor': '#d91a72'}}}%%
 graph TD
-    START[📦 Start Installation] --> READ[📋 Read requirements.txt]
-    READ --> DOWNLOAD[⬇️ Download Packages]
-    DOWNLOAD --> INSTALL[🔧 Install Dependencies]
-    INSTALL --> VERIFY[✅ Verify Installation]
+    START[📦 Démarrer Installation] --> READ[📋 Lire requirements.txt]
+    READ --> DOWNLOAD[⬇️ Télécharger Packages]
+    DOWNLOAD --> INSTALL[🔧 Installer Dépendances]
+    INSTALL --> VERIFY[✅ Vérifier Installation]
     
-    DOWNLOAD --> CACHE{💾 Cache Check}
-    CACHE -->|Hit| FAST[⚡ Fast Install]
-    CACHE -->|Miss| SLOW[🐌 Download Install]
+    DOWNLOAD --> CACHE{💾 Vérifier Cache}
+    CACHE -->|Hit| FAST[⚡ Installation Rapide]
+    CACHE -->|Miss| SLOW[🐌 Téléchargement Installation]
     FAST --> VERIFY
     SLOW --> VERIFY
     
-    VERIFY --> SUCCESS[🎉 Success]
-    VERIFY --> ERROR[❌ Error]
-    ERROR --> RETRY[🔄 Retry]
+    VERIFY --> SUCCESS[🎉 Succès]
+    VERIFY --> ERROR[❌ Erreur]
+    ERROR --> RETRY[🔄 Réessayer]
     RETRY --> DOWNLOAD
     
     style START fill:#e83e8c
@@ -205,53 +201,53 @@ graph TD
 ```
 
 ```bash
-# 📦 Install all dependencies
+# 📦 Installer toutes les dépendances
 pip install -r requirements.txt
 
-# 📊 Monitor installation progress
-echo "📊 Installation Progress:"
-pip list | grep -E "(black|ruff|pytest)" && echo "✅ Quality tools installed"
-pip list | grep -E "(numpy|pandas)" && echo "✅ Data tools installed" 
-pip list | grep -E "(requests|aiohttp)" && echo "✅ Network tools installed"
+# 📊 Surveiller le progrès de l'installation
+echo "📊 Progrès de l'Installation:"
+pip list | grep -E "(black|ruff|pytest)" && echo "✅ Outils de qualité installés"
+pip list | grep -E "(numpy|pandas)" && echo "✅ Outils de données installés" 
+pip list | grep -E "(requests|aiohttp)" && echo "✅ Outils réseau installés"
 
-# 🎯 Alternative: Development installation
-# pip install -e .[dev]  # Include development dependencies
+# 🎯 Alternative: Installation de développement
+# pip install -e .[dev]  # Inclure les dépendances de développement
 ```
 
-**Expected Output:**
+**Sortie Attendue:**
 ```
-📊 Installation Progress:
-✅ Quality tools installed
-✅ Data tools installed
-✅ Network tools installed
+📊 Progrès de l'Installation:
+✅ Outils de qualité installés
+✅ Outils de données installés
+✅ Outils réseau installés
 Successfully installed 84 packages
 ```
 
 ---
 
-## ✅ **Installation Validation**
+## ✅ **Validation de l'Installation**
 
-### 🧪 **Health Check Suite**
+### 🧪 **Suite de Vérification de Santé**
 
 ```mermaid
 %%{init: {'theme':'base', 'themeVariables': { 'primaryColor': '#20c997', 'primaryTextColor': '#fff', 'primaryBorderColor': '#17a2b8'}}}%%
 graph LR
-    subgraph "🔍 BASIC CHECKS"
-        IMPORT[Import Test<br/>Core modules]
-        CMD[Command Test<br/>CLI interface]
-        CONFIG[Config Test<br/>Settings load]
+    subgraph "🔍 VÉRIFICATIONS DE BASE"
+        IMPORT[Test d'Import<br/>Modules de base]
+        CMD[Test de Commande<br/>Interface CLI]
+        CONFIG[Test de Config<br/>Chargement paramètres]
     end
     
-    subgraph "🧪 FUNCTIONAL TESTS"
-        GEN[Generation Test<br/>Project creation]
-        SEC[Security Test<br/>Command validation]
-        CLEAN[Cleanup Test<br/>File operations]
+    subgraph "🧪 TESTS FONCTIONNELS"
+        GEN[Test de Génération<br/>Création de projet]
+        SEC[Test de Sécurité<br/>Validation de commande]
+        CLEAN[Test de Nettoyage<br/>Opérations fichiers]
     end
     
-    subgraph "📊 SYSTEM TESTS"
-        PERF[Performance Test<br/>Response times]
-        MEM[Memory Test<br/>Resource usage]
-        DASH[Dashboard Test<br/>HTML rendering]
+    subgraph "📊 TESTS SYSTÈME"
+        PERF[Test de Performance<br/>Temps de réponse]
+        MEM[Test de Mémoire<br/>Utilisation ressources]
+        DASH[Test de Dashboard<br/>Rendu HTML]
     end
     
     IMPORT --> GEN
@@ -267,26 +263,26 @@ graph LR
     style PERF fill:#6f42c1
 ```
 
-### 🔧 **Quick Validation Script**
+### 🔧 **Script de Validation Rapide**
 
 ```bash
-# 🧪 Run comprehensive health check
-echo "🧪 ATHALIA HEALTH CHECK"
-echo "======================="
+# 🧪 Exécuter la vérification de santé complète
+echo "🧪 VÉRIFICATION DE SANTÉ ATHALIA"
+echo "================================="
 
-# Test 1: Core module import
+# Test 1: Import des modules de base
 python3 -c "
 try:
-    from athalia_core.unified_orchestrator import UnifiedOrchestrator
-    print('✅ Core modules: OK')
+    from athalia_core.core.unified_orchestrator import UnifiedOrchestrator
+    print('✅ Modules de base: OK')
 except ImportError as e:
-    print(f'❌ Core modules: FAILED - {e}')
+    print(f'❌ Modules de base: ÉCHEC - {e}')
 "
 
-# Test 2: CLI interface
-python3 bin/athalia_unified.py --help >/dev/null 2>&1 && echo "✅ CLI interface: OK" || echo "❌ CLI interface: FAILED"
+# Test 2: Interface CLI
+python3 bin/athalia_unified.py --help >/dev/null 2>&1 && echo "✅ Interface CLI: OK" || echo "❌ Interface CLI: ÉCHEC"
 
-# Test 3: Configuration loading
+# Test 3: Chargement de la configuration
 python3 -c "
 try:
     import yaml
@@ -294,230 +290,259 @@ try:
         config = yaml.safe_load(f)
     print('✅ Configuration: OK')
 except Exception as e:
-    print(f'❌ Configuration: FAILED - {e}')
-" 2>/dev/null || echo "⚠️ Configuration: Default (acceptable)"
+    print(f'❌ Configuration: ÉCHEC - {e}')
+" 2>/dev/null || echo "⚠️ Configuration: Par défaut (acceptable)"
 
-# Test 4: Project generation
+# Test 4: Génération de projet
 python3 -c "
 try:
-    from athalia_core.generation import generate_blueprint_mock
+    from athalia_core.utilities.generation import generate_blueprint_mock
     blueprint = generate_blueprint_mock('Test API')
-    print('✅ Project generation: OK')
+    print('✅ Génération de projet: OK')
 except Exception as e:
-    print(f'❌ Project generation: FAILED - {e}')
+    print(f'❌ Génération de projet: ÉCHEC - {e}')
 "
 
-# Test 5: Security validation
+# Test 5: Validation de sécurité
 python3 -c "
 try:
-    from athalia_core.security_validator import SecurityValidator
+    from athalia_core.validation.security_validator import SecurityValidator
     validator = SecurityValidator()
-    print(f'✅ Security validation: OK ({len(validator.allowed_commands)} commands)')
+    print(f'✅ Validation de sécurité: OK ({len(validator.allowed_commands)} commandes)')
 except Exception as e:
-    print(f'❌ Security validation: FAILED - {e}')
+    print(f'❌ Validation de sécurité: ÉCHEC - {e}')
 "
 
-echo "======================="
-echo "🎉 Health check complete!"
+# Test 6: Modules de qualité (NOUVEAU)
+python3 -c "
+try:
+    from athalia_core.quality.code_linter import CodeLinter
+    from athalia_core.quality.correction_optimizer import CorrectionOptimizer
+    print('✅ Modules de qualité: OK')
+except Exception as e:
+    print(f'❌ Modules de qualité: ÉCHEC - {e}')
+"
+
+echo "================================="
+echo "🎉 Vérification de santé terminée !"
 ```
 
-### 📊 **Expected Validation Results**
+### 📊 **Résultats de Validation Attendus**
 
 <div align="center">
 
-| **Component** | **Test** | **Expected Result** | **Action if Failed** |
-|:--------------|:---------|:-------------------|:---------------------|
-| **🧠 Core Modules** | Import test | ✅ OK | Check Python path |
-| **💻 CLI Interface** | Help command | ✅ OK | Verify script permissions |
-| **⚙️ Configuration** | YAML loading | ✅ OK / ⚠️ Default | Create config file |
-| **🏗️ Project Generation** | Blueprint creation | ✅ OK | Check dependencies |
-| **🛡️ Security Validation** | Command whitelist | ✅ OK (80 commands) | Review security setup |
+| **Composant** | **Test** | **Résultat Attendu** | **Action si Échec** |
+|:--------------|:---------|:---------------------|:---------------------|
+| **🧠 Modules de Base** | Test d'import | ✅ OK | Vérifier le chemin Python |
+| **💻 Interface CLI** | Commande d'aide | ✅ OK | Vérifier les permissions du script |
+| **⚙️ Configuration** | Chargement YAML | ✅ OK / ⚠️ Par défaut | Créer fichier de config |
+| **🏗️ Génération de Projet** | Création blueprint | ✅ OK | Vérifier les dépendances |
+| **🛡️ Validation de Sécurité** | Liste blanche commandes | ✅ OK (80 commandes) | Réviser la configuration de sécurité |
+| **🔧 Modules de Qualité** | Import linting | ✅ OK | Vérifier l'installation des modules |
 
 </div>
 
 ---
 
-## ⚙️ **Configuration Setup**
+## ⚙️ **Configuration de la Configuration**
 
-### 📄 **Configuration File Structure**
+### 📄 **Structure des Fichiers de Configuration**
 
 ```mermaid
 %%{init: {'theme':'base', 'themeVariables': { 'primaryColor': '#6c757d', 'primaryTextColor': '#fff', 'primaryBorderColor': '#495057'}}}%%
 graph TB
-    subgraph "📁 CONFIG STRUCTURE"
-        MAIN[athalia_config.yaml<br/>Main configuration]
-        ENV[.env<br/>Environment variables]
-        LOCAL[local_config.yaml<br/>User overrides]
+    subgraph "📁 STRUCTURE DE CONFIG"
+        MAIN[athalia_config.yaml<br/>Configuration principale]
+        ENV[.env<br/>Variables d'environnement]
+        LOCAL[local_config.yaml<br/>Surcharges utilisateur]
     end
     
-    subgraph "⚙️ CONFIG SECTIONS"
-        GENERAL[General Settings<br/>Language, logging]
-        MODULES[Module Configuration<br/>Enable/disable features]
-        AI[AI Configuration<br/>Model settings]
-        PATHS[Path Configuration<br/>Directories]
+    subgraph "⚙️ SECTIONS DE CONFIG"
+        GENERAL[Paramètres Généraux<br/>Langue, logging]
+        MODULES[Configuration des Modules<br/>Activer/désactiver fonctionnalités]
+        AI[Configuration IA<br/>Paramètres modèles]
+        PATHS[Configuration des Chemins<br/>Répertoires]
+        QUALITY[Configuration Qualité<br/>Linting et correction]
     end
     
     MAIN --> GENERAL
     MAIN --> MODULES
     MAIN --> AI
     MAIN --> PATHS
+    MAIN --> QUALITY
     
-    ENV -.->|Override| MAIN
-    LOCAL -.->|Override| MAIN
+    ENV -.->|Surcharge| MAIN
+    LOCAL -.->|Surcharge| MAIN
     
     style MAIN fill:#6c757d
     style GENERAL fill:#28a745
+    style QUALITY fill:#17a2b8
 ```
 
-### 📝 **Sample Configuration**
+### 📝 **Exemple de Configuration**
 
 ```yaml
-# config/athalia_config.yaml - Main Configuration
+# config/athalia_config.yaml - Configuration Principale
 general:
-  lang: en                          # Language: en/fr
-  verbose: true                     # Detailed output
-  auto_fix: true                    # Auto-correction enabled
-  dry_run: false                    # Execute operations
-  log_level: INFO                   # Logging level
-  log_file: logs/athalia.log        # Log file path
+  lang: en                          # Langue: en/fr
+  verbose: true                     # Sortie détaillée
+  auto_fix: true                    # Auto-correction activée
+  dry_run: false                    # Exécuter opérations
+  log_level: INFO                   # Niveau de logging
+  log_file: logs/athalia.log        # Chemin fichier log
 
 modules:
-  audit: true                       # Enable auditing
-  clean: true                       # Enable cleanup
-  document: false                   # Documentation generation
-  test: true                        # Enable testing
-  cicd: false                       # CI/CD integration
+  audit: true                       # Activer l'audit
+  clean: true                       # Activer le nettoyage
+  document: false                   # Génération documentation
+  test: true                        # Activer les tests
+  cicd: false                       # Intégration CI/CD
   correction: true                  # Auto-correction
-  profiles: true                    # User profiles
-  dashboard: false                  # Web dashboard
-  security: true                    # Security validation
-  analytics: false                  # Analytics collection
-  linting: false                    # Code linting
+  profiles: true                    # Profils utilisateur
+  dashboard: false                  # Dashboard web
+  security: true                    # Validation sécurité
+  analytics: false                  # Collecte analytics
+  linting: true                     # Linting de code (NOUVEAU)
+  quality: true                     # Modules de qualité (NOUVEAU)
 
 ai:
   models:
-    - ollama_mistral                # Local AI models
+    - ollama_mistral                # Modèles IA locaux
     - ollama_llama
-  fallback_mode: true               # Enable fallback
-  timeout: 30                       # Request timeout (seconds)
+  fallback_mode: true               # Activer mode fallback
+  timeout: 30                       # Timeout requête (secondes)
 
 paths:
-  workspace: "./workspace"          # Working directory
-  templates: "./templates"          # Project templates
-  cache: "./.cache"                 # Cache directory
-  logs: "./logs"                    # Log directory
+  workspace: "./workspace"          # Répertoire de travail
+  templates: "./templates"          # Templates de projet
+  cache: "./.cache"                 # Répertoire cache
+  logs: "./logs"                    # Répertoire logs
+
+quality:                            # Configuration qualité (NOUVEAU)
+  linting:
+    enabled: true                   # Activer linting
+    tools: ["ruff", "black", "mypy"] # Outils de linting
+    auto_fix: true                  # Correction automatique
+  correction:
+    enabled: true                   # Activer auto-correction
+    ml_models: true                 # Utiliser modèles ML
+    learning: true                  # Apprentissage automatique
 ```
 
 ---
 
-## 🧪 **Advanced Testing**
+## 🧪 **Tests Avancés**
 
-### 📊 **Complete Test Suite**
+### 📊 **Suite de Tests Complète**
 
 ```bash
-# 🧪 Run comprehensive test suite
-echo "🧪 RUNNING COMPLETE TEST SUITE"
-echo "==============================="
+# 🧪 Exécuter la suite de tests complète
+echo "🧪 EXÉCUTION DE LA SUITE DE TESTS COMPLÈTE"
+echo "==========================================="
 
-# Run unit tests
+# Exécuter les tests unitaires
 python -m pytest tests/unit/ -v --tb=short | head -10
 
-# Run integration tests  
+# Exécuter les tests d'intégration  
 python -m pytest tests/integration/ -v --tb=short | head -5
 
-# Run security tests
+# Exécuter les tests de sécurité
 python -m pytest tests/security/ -v --tb=short | head -5
 
-# Quick performance test
+# Exécuter les tests de qualité (NOUVEAU)
+python -m pytest tests/unit/quality/ -v --tb=short | head -5
+
+# Test de performance rapide
 time python -c "
-from athalia_core.generation import generate_blueprint_mock
+from athalia_core.utilities.generation import generate_blueprint_mock
 import time
 start = time.time()
 for i in range(10):
-    generate_blueprint_mock(f'Test project {i}')
+    generate_blueprint_mock(f'Projet test {i}')
 duration = time.time() - start
-print(f'⚡ Performance: {duration:.3f}s for 10 generations ({duration/10:.3f}s avg)')
+print(f'⚡ Performance: {duration:.3f}s pour 10 générations ({duration/10:.3f}s moy)')
 "
 
-echo "==============================="
-echo "📊 Test suite complete!"
+echo "==========================================="
+echo "📊 Suite de tests terminée !"
 ```
 
-### 🎯 **Feature Verification**
+### 🎯 **Vérification des Fonctionnalités**
 
 ```mermaid
 %%{init: {'theme':'base', 'themeVariables': { 'primaryColor': '#343a40', 'primaryTextColor': '#fff', 'primaryBorderColor': '#495057'}}}%%
 checklist
-    title Installation Verification Checklist
+    title Checklist de Vérification de l'Installation
     
-    Prerequisites ✓
-        Python 3.10+ installed
-        Git available
-        500MB+ disk space
-        Virtual environment created
+    Prérequis ✓
+        Python 3.10+ installé
+        Git disponible
+        500MB+ espace disque
+        Environnement virtuel créé
     
-    Core Installation ✓
-        Repository cloned
-        Dependencies installed
-        Configuration loaded
+    Installation de Base ✓
+        Repository cloné
+        Dépendances installées
+        Configuration chargée
         CLI accessible
     
-    Functionality ✓
-        Project generation works
-        Security validation active
-        Auto cleanup functional
-        Dashboards accessible
+    Fonctionnalités ✓
+        Génération de projet fonctionne
+        Validation de sécurité active
+        Auto-nettoyage fonctionnel
+        Dashboards accessibles
+        Modules de qualité opérationnels
     
     Performance ✓
-        Generation < 500ms
-        Security check < 100ms
-        Import time < 2s
-        Memory usage < 100MB
+        Génération < 500ms
+        Vérification sécurité < 100ms
+        Temps d'import < 2s
+        Utilisation mémoire < 100MB
 ```
 
 ---
 
-## 🚀 **Next Steps**
+## 🚀 **Prochaines Étapes**
 
-### 🎯 **Quick Start Path**
+### 🎯 **Chemin de Démarrage Rapide**
 
 <div align="center">
 
-| **Step** | **Action** | **Time** | **Document** |
+| **Étape** | **Action** | **Temps** | **Document** |
 |:---------|:-----------|:--------:|:-------------|
-| **1** | Complete installation validation | 2 min | This guide |
-| **2** | Follow Quick Start tutorial | 10 min | [Quick Start](QUICK_START.md) |
-| **3** | Generate your first project | 5 min | [Usage Guide](USAGE.md) |
-| **4** | Explore dashboards | 5 min | **Dashboard Guide** |
-| **5** | Read advanced features | 15 min | [Complete Documentation](../README.md) |
+| **1** | Compléter validation installation | 2 min | Ce guide |
+| **2** | Suivre tutoriel démarrage rapide | 10 min | [Démarrage Rapide](QUICK_START.md) |
+| **3** | Générer votre premier projet | 5 min | [Guide d'Utilisation](USAGE.md) |
+| **4** | Explorer les dashboards | 5 min | **Guide Dashboard** |
+| **5** | Lire fonctionnalités avancées | 15 min | [Documentation Complète](../README.md) |
 
 </div>
 
-### 🔗 **Related Documentation**
+### 🔗 **Documentation Associée**
 
-- **[⚡ Quick Start Guide](QUICK_START.md)** - First steps with Athalia
-- **[📚 Usage Guide](USAGE.md)** - Complete feature overview
-- **[🔧 Troubleshooting](TROUBLESHOOTING.md)** - Problem resolution
-- **[🚀 Deployment Guide](DEPLOYMENT.md)** - Production setup
+- **[⚡ Guide de Démarrage Rapide](QUICK_START.md)** - Premiers pas avec Athalia
+- **[📚 Guide d'Utilisation](USAGE.md)** - Aperçu complet des fonctionnalités
+- **[🔧 Guide de Dépannage](TROUBLESHOOTING.md)** - Résolution des problèmes
+- **[🚀 Guide de Déploiement](DEPLOYMENT.md)** - Configuration production
 
 ---
 
-## 🆘 **Troubleshooting**
+## 🆘 **Dépannage**
 
-### ❌ **Common Issues & Solutions**
+### ❌ **Problèmes Courants & Solutions**
 
 ```mermaid
 %%{init: {'theme':'base', 'themeVariables': { 'primaryColor': '#dc3545', 'primaryTextColor': '#fff', 'primaryBorderColor': '#c82333'}}}%%
 graph TD
-    ISSUE{🔍 Installation Issue}
+    ISSUE{🔍 Problème d'Installation}
     
-    ISSUE -->|Python Error| PY_FIX[🐍 Check Python 3.10+<br/>Verify PATH variable]
-    ISSUE -->|Git Error| GIT_FIX[🔧 Install Git<br/>Check repository access]
-    ISSUE -->|Permission Error| PERM_FIX[🔒 Check file permissions<br/>Run as appropriate user]
-    ISSUE -->|Network Error| NET_FIX[🌐 Check internet connection<br/>Configure proxy if needed]
-    ISSUE -->|Dependency Error| DEP_FIX[📦 Update pip<br/>Clear cache: pip cache purge]
+    ISSUE -->|Erreur Python| PY_FIX[🐍 Vérifier Python 3.10+<br/>Vérifier variable PATH]
+    ISSUE -->|Erreur Git| GIT_FIX[🔧 Installer Git<br/>Vérifier accès repository]
+    ISSUE -->|Erreur Permission| PERM_FIX[🔒 Vérifier permissions fichiers<br/>Exécuter comme utilisateur approprié]
+    ISSUE -->|Erreur Réseau| NET_FIX[🌐 Vérifier connexion internet<br/>Configurer proxy si nécessaire]
+    ISSUE -->|Erreur Dépendance| DEP_FIX[📦 Mettre à jour pip<br/>Vider cache: pip cache purge]
     
-    PY_FIX --> RETRY[🔄 Retry Installation]
+    PY_FIX --> RETRY[🔄 Réessayer Installation]
     GIT_FIX --> RETRY
     PERM_FIX --> RETRY
     NET_FIX --> RETRY
@@ -527,37 +552,42 @@ graph TD
     style RETRY fill:#28a745
 ```
 
-### 🔧 **Quick Fixes**
+### 🔧 **Corrections Rapides**
 
 ```bash
-# 🔧 Common quick fixes
+# 🔧 Corrections courantes rapides
 
-# Fix 1: Update pip and tools
+# Correction 1: Mettre à jour pip et outils
 python -m pip install --upgrade pip setuptools wheel
 
-# Fix 2: Clear package cache
+# Correction 2: Vider le cache des packages
 pip cache purge
 
-# Fix 3: Reinstall with no-cache
+# Correction 3: Réinstaller sans cache
 pip install --no-cache-dir -r requirements.txt
 
-# Fix 4: Check Python path
+# Correction 4: Vérifier le chemin Python
 which python3 && python3 --version
 
-# Fix 5: Verify virtual environment
-echo $VIRTUAL_ENV || echo "Virtual environment not activated"
+# Correction 5: Vérifier l'environnement virtuel
+echo $VIRTUAL_ENV || echo "Environnement virtuel non activé"
+
+# Correction 6: Vérifier les modules de qualité (NOUVEAU)
+python3 -c "from athalia_core.quality import code_linter, correction_optimizer; print('✅ Modules de qualité disponibles')" || echo "❌ Modules de qualité non disponibles"
 ```
 
 ---
 
 <div align="center">
 
-**⚙️ Installation Guide Complete**
+**⚙️ Guide d'Installation Terminé**
 
-*Professional setup for Athalia DevOps Platform*
+*Installation professionnelle pour la plateforme Athalia DevOps*
 
-**⚡ Quick Start** - [Guide complet](QUICK_START.md) | **📚 Usage Guide** - [Documentation](USAGE.md) | **🔧 Troubleshooting** - [Dépannage](TROUBLESHOOTING.md)
+**⚡ Démarrage Rapide** - [Guide complet](QUICK_START.md) | **📚 Guide d'Utilisation** - [Documentation](USAGE.md) | **🔧 Dépannage** - [Guide de dépannage](TROUBLESHOOTING.md)
 
-**Average Setup Time:** 5 minutes | **Success Rate:** 98% | **Support Available**
+**Temps de Configuration Moyen:** 5 minutes | **Taux de Succès:** 98% | **Support Disponible**
+
+**🏗️ Architecture Modulaire • 🔧 Qualité Automatique • 🤖 IA Intelligente**
 
 </div>
