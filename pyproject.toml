@@ -82,9 +82,9 @@ dashboard = [
 ]
 
 [project.scripts]
-athalia = "athalia_core.main:main"
-athalia-cli = "athalia_core.cli:cli"
-athalia-dashboard = "athalia_core.dashboard:main"
+athalia = "athalia_core.core.main:main"
+athalia-cli = "athalia_core.utilities.cli:cli"
+athalia-dashboard = "athalia_core.utilities.dashboard:Dashboard"
 
 [project.urls]
 Homepage = "https://github.com/arkalia-luna-system/ia-pipeline"
