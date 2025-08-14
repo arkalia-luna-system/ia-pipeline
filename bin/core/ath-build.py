@@ -1,21 +1,26 @@
 #!/usr/bin/env python3
-import subprocess
+import os
 import sys
 
-# Import sécurisé pour la validation des commandes
-try:
-    from athalia_core.security_validator import SecurityError, validate_and_run
-except ImportError:
-    # Fallback si le module n'est pas disponible
-    def validate_and_run(command, **kwargs):
-        return subprocess.run(command, **kwargs)
+# Ajouter le répertoire parent au path pour les imports
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
-    SecurityError = Exception
+try:
+    from athalia_core.core.main import main as athalia_main
+except ImportError as e:
+    print(f"Erreur d'import: {e}")
+    print("Vérifiez que athalia_core est installé et accessible")
+    sys.exit(1)
 
 
 def main():
-    result = validate_and_run(["python3", "-m", "athalia_core.main"], check=False)
-    sys.exit(result.returncode)
+    try:
+        print("🔨 Lancement du build ATHALIA...")
+        athalia_main()
+        print("✅ Build terminé avec succès")
+    except Exception as e:
+        print(f"❌ Erreur lors du build: {e}")
+        sys.exit(1)
 
 
 if __name__ == "__main__":

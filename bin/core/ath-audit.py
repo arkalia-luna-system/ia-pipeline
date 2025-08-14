@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 import argparse
+import os
 import sys
 
-try:
-    from athalia_core.security_validator import validate_and_run
-except ImportError:
-    import subprocess
+# Ajouter le répertoire parent au path pour les imports
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
-    def validate_and_run(command, **kwargs):
-        return subprocess.run(command, **kwargs)
+try:
+    from athalia_core.core.main import main as athalia_main
+except ImportError as e:
+    print(f"Erreur d'import: {e}")
+    print("Vérifiez que athalia_core est installé et accessible")
+    sys.exit(1)
 
 
 def main():
@@ -21,15 +24,29 @@ def main():
         default=".",
         help="Chemin du projet à auditer (défaut: .)",
     )
+    parser.add_argument(
+        "--mode",
+        type=str,
+        choices=["audit", "scan", "security"],
+        default="audit",
+        help="Mode d'audit (défaut: audit)",
+    )
+
     args = parser.parse_args()
+
     try:
-        result = validate_and_run(
-            ["python3", "-m", "athalia_core.cli", "audit", args.project], check=False
-        )
+        print(f"🔍 Lancement de l'audit ATHALIA sur: {args.project}")
+        print(f"📊 Mode: {args.mode}")
+
+        # Lancer l'interface principale d'ATHALIA
+        athalia_main()
+
     except Exception as e:
-        print(f"Erreur lors de l'audit: {e}")
+        print(f"❌ Erreur lors de l'audit: {e}")
         sys.exit(1)
-    sys.exit(result.returncode)
+
+    print("✅ Audit terminé avec succès")
+    sys.exit(0)
 
 
 if __name__ == "__main__":
