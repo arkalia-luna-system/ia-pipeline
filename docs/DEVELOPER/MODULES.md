@@ -168,6 +168,12 @@ athalia_core/
 
 ---
 
+#### **pattern_detector**
+**Fichier :** `athalia_core/analysis/pattern_detector.py`  
+**Description :** Détecteur de patterns dans le code avec identification automatique des anti-patterns et suggestions d'amélioration.
+
+---
+
 ### 🤖 **AI - Modules d'Intelligence Artificielle**
 
 #### **ai_robust**
@@ -480,9 +486,9 @@ security_report = validator.validate_project("./mon-projet")
 
 ### **Couverture des Modules**
 - **Modules Core :** 6 modules - Gestion des fonctionnalités principales
-- **Modules de Qualité :** 2 modules - Linting et optimisation (NOUVEAU)
-- **Modules d'Utilitaires :** 3 modules - Interface et génération
-- **Modules d'Analyse :** 3 modules - IA et apprentissage
+- **Modules de Qualité :** 2 modules - Linting et optimisation ✅
+- **Modules d'Utilitaires :** 10 modules - Interface, génération, logging, édition ✅
+- **Modules d'Analyse :** 4 modules - IA, apprentissage et détection de patterns ✅
 - **Modules d'IA :** 2 modules - Intelligence artificielle
 - **Modules de Validation :** 2 modules - Sécurité et plugins
 - **Modules d'Automatisation :** 4 modules - CI/CD et maintenance
