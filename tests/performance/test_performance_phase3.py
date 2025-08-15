@@ -128,13 +128,13 @@ class TestPerformancePhase3:
         # Vérifier que les tests passent
         assert result.returncode == 0, f"Tests échoués: {result.stderr}"
 
-        # Vérifier que l'exécution est rapide (< 10 secondes)
+        # Vérifier que l'exécution est raisonnable (< 15 secondes pour 1600+ tests)
         assert (
-            metrics["duration"] < 10.0
-        ), f"Exécution des tests trop lente: {metrics['duration']:.3f}s"
+            metrics["duration"] < 15.0
+        ), f"Exécution des tests trop lente: {metrics['duration']:.3f}s (limite: 15s pour 1600+ tests)"
 
         print(
-            f"✅ Tests: {metrics['duration']:.3f}s, {metrics['memory_used_mb']:.1f}MB"
+            f"✅ Tests: {metrics['duration']:.3f}s, {metrics['memory_used_mb']:.1f}MB (limite: 15s)"
         )
 
     def test_memory_usage_analysis(self):
