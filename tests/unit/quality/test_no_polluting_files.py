@@ -108,6 +108,7 @@ class TestNoPollutingFiles:
                     if not (
                         root.startswith("./logs")
                         or root.startswith("./tests/logs")
+                        or root.startswith("./tests/unit/modules/logs")
                         or root.startswith("./athalia_showcase/logs")
                         or root.startswith("./athalia_core/logs")
                     ):
@@ -316,6 +317,7 @@ class TestNoPollutingFiles:
         # Fichiers d'archive autorisés (normaux dans ce projet)
         allowed_archive_files = {
             "./logs/phase3_maintenance.log.gz",  # Log compressé normal
+            "./logs/archives/phase3_maintenance.log.gz",  # Log compressé dans archives
         }
 
         archive_files = []
@@ -382,6 +384,9 @@ class TestNoPollutingFiles:
                     "./docs/API/REFERENCE.md",
                     "docs/API/REFERENCE.md",
                     "./athalia.f(f",  # Fichier spécial du projet
+                    "./logs/athalia.log",  # Fichier de log principal (peut être volumineux)
+                    "./logs/athalia.log.1",  # Fichier de log rotation (peut être volumineux)
+                    "./logs/athalia.log.2",  # Fichier de log rotation (peut être volumineux)
                 ]:
                     continue
                 try:
@@ -546,12 +551,16 @@ class TestNoPollutingFiles:
             "./docs/archive",  # Archive documentation normale
             "./logs",  # Logs normaux
             "./logs/archive",  # Archive des logs normale
+            "./logs/archives",  # Archives des logs normale
+            "./logs/maintenance",  # Maintenance des logs normale
             "./logs/reports",  # Rapports de logs normaux
             "./temp",  # Temp normal
             "./tmp",  # Temp normal
             "./.benchmarks",  # Benchmarks normaux
             "./tests/.benchmarks",  # Benchmarks tests normaux
             "./tests/logs/archive",  # Archive logs tests normale
+            "./tests/unit/modules/logs/archive",  # Archive logs modules tests normale
+            "./tests/unit/modules/.benchmarks",  # Benchmarks modules tests normaux
             "./tests/fixtures/test_data",  # Données de test (peut être vide)
             "./tests/fixtures/mock_objects",  # Objets mock (peut être vide)
             "./tests/unit/__pycache__",  # Cache Python tests unit normaux
