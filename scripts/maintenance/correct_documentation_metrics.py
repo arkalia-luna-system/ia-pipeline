@@ -14,7 +14,7 @@ CORRECT_METRICS = {
     "147 files": "256 files",
     "153 Modules": "93 Modules",
     "24,243 Lines": "72,626 Lines",
-    "6 Dashboards": "99 Dashboards"
+    "6 Dashboards": "99 Dashboards",
 }
 
 
