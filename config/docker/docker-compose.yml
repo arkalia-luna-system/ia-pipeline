@@ -1,0 +1,133 @@
+# Docker Compose Ultra-Professionnel pour Athalia
+# Démo complète en 1 commande
+
+version: "3.8"
+
+services:
+  # ========================================
+  # 🚀 ATHALIA - Service Principal
+  # ========================================
+  athalia:
+    build:
+      context: ../..
+      dockerfile: config/docker/Dockerfile
+      target: runtime
+    container_name: athalia-demo
+    restart: unless-stopped
+    ports:
+      - "8000:8000" # API/CLI
+      - "8501:8501" # Streamlit Dashboard
+    environment:
+      - ATHALIA_ENV=docker
+      - PYTHONPATH=/app
+      - LOG_LEVEL=INFO
+    volumes:
+      - ../../:/app # Code source en temps réel
+      - athalia_data:/app/data
+      - athalia_logs:/app/logs
+    networks:
+      - athalia-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    command: ["--demo", "--interactive"]
+
+  # ========================================
+  # 📊 REDIS - Cache & Sessions
+  # ========================================
+  redis:
+    image: redis:7-alpine
+    container_name: athalia-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - athalia-network
+    command: redis-server --appendonly yes
+
+  # ========================================
+  # 🗄️ POSTGRESQL - Base de données
+  # ========================================
+  postgres:
+    image: postgres:15-alpine
+    container_name: athalia-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: athalia
+      POSTGRES_USER: athalia
+      POSTGRES_PASSWORD: athalia123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - athalia-network
+
+  # ========================================
+  # 📈 PROMETHEUS - Monitoring
+  # ========================================
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: athalia-prometheus
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ../../config/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    networks:
+      - athalia-network
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--web.console.libraries=/etc/prometheus/console_libraries"
+      - "--web.console.templates=/etc/prometheus/consoles"
+
+  # ========================================
+  # 📊 GRAFANA - Visualisation
+  # ========================================
+  grafana:
+    image: grafana/grafana:latest
+    container_name: athalia-grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: athalia123
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ../../config/monitoring/grafana:/etc/grafana/provisioning
+    networks:
+      - athalia-network
+
+# ========================================
+# 🌐 RÉSEAUX
+# ========================================
+networks:
+  athalia-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+# ========================================
+# 💾 VOLUMES
+# ========================================
+volumes:
+  athalia_data:
+    driver: local
+  athalia_logs:
+    driver: local
+  redis_data:
+    driver: local
+  postgres_data:
+    driver: local
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
