@@ -387,6 +387,9 @@ class TestNoPollutingFiles:
                     "./logs/athalia.log",  # Fichier de log principal (peut être volumineux)
                     "./logs/athalia.log.1",  # Fichier de log rotation (peut être volumineux)
                     "./logs/athalia.log.2",  # Fichier de log rotation (peut être volumineux)
+                    "./logs/athalia.log.3",  # Fichier de log rotation (peut être volumineux)
+                    "./logs/athalia.log.4",  # Fichier de log rotation (peut être volumineux)
+                    "./logs/athalia.log.5",  # Fichier de log rotation (peut être volumineux)
                 ]:
                     continue
                 try:
