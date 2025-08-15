@@ -296,20 +296,35 @@ class ConfigManager:
         return config
 
     def _setup_logging(self) -> None:
-        """Configure le logging selon la configuration"""
+        """Configure le système de logging"""
         log_level = getattr(logging, self.config.log_level.upper(), logging.INFO)
 
         # Créer le dossier logs s'il n'existe pas
         log_dir = Path(self.config.log_file).parent
         log_dir.mkdir(parents=True, exist_ok=True)
 
+        # Utiliser RotatingFileHandler au lieu de FileHandler pour éviter l'accumulation
+        from logging.handlers import RotatingFileHandler
+
+        file_handler = RotatingFileHandler(
+            self.config.log_file,
+            maxBytes=10 * 1024 * 1024,  # 10MB max par fichier
+            backupCount=3,  # Garder seulement 3 fichiers de backup
+            encoding="utf-8",
+        )
+
+        console_handler = logging.StreamHandler()
+
+        # Format personnalisé
+        formatter = logging.Formatter(
+            "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+        )
+        file_handler.setFormatter(formatter)
+        console_handler.setFormatter(formatter)
+
         logging.basicConfig(
             level=log_level,
-            format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-            handlers=[
-                logging.FileHandler(self.config.log_file),
-                logging.StreamHandler(),
-            ],
+            handlers=[file_handler, console_handler],
         )
 
     def get(self, key: str, default: Any = None) -> Any:
