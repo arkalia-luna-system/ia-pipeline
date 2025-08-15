@@ -15,13 +15,11 @@ def generate_github_ci_yaml(outdir):
     outdir = Path(str(outdir))
     ci_dir = outdir / ".github" / "workflows"
     ci_dir.mkdir(parents=True, exist_ok=True)
-    ci_file = ci_dir / "ci.yaml"
-    ci_file.write_text("# CI/CD config")
+    ci_file = ci_dir / "ci-matrix.yml"
+    ci_file.write_text("# CI/CD Matrix config")
     logger.debug(f"Fichier généré: {ci_file} (exists: {ci_file.exists()})")
     readme_path = os.path.join(outdir, "README.md")
-    badge = (
-        "![CI](https://github.com/<user>/<repo>/actions/workflows/ci.yaml/badge.svg)\n"
-    )
+    badge = "![CI](https://github.com/<user>/<repo>/actions/workflows/ci-matrix.yml/badge.svg)\n"
     if os.path.exists(readme_path):
         with open(readme_path, "r+") as file_handle:
             content = file_handle.read()

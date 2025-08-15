@@ -64,7 +64,7 @@ class TestCIRobust:
         config_files = [
             "config/requirements-minimal.txt",
             "config/requirements.txt",
-            ".github/workflows/ci.yaml",
+            ".github/workflows/ci-matrix.yml",
             "pyproject.toml",
             ".gitignore",
         ]
@@ -158,10 +158,8 @@ class TestCIRobust:
     def test_ci_workflow_validation(self):
         """Valide le workflow CI"""
         ci_files = [
-            ".github/workflows/ci.yaml",
-            ".github/workflows/ci.yml",
-            ".github/workflows/test.yaml",
-            ".github/workflows/test.yml",
+            ".github/workflows/ci-matrix.yml",
+            ".github/workflows/release.yml",
         ]
 
         found_ci_file = False

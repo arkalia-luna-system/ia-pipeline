@@ -169,7 +169,7 @@ class CIDiagnostic:
         results = {"status": "OK", "issues": [], "recommendations": []}
 
         # Vérifier le fichier principal CI
-        ci_file = self.project_root / ".github" / "workflows" / "ci.yaml"
+        ci_file = self.project_root / ".github" / "workflows" / "ci-matrix.yml"
         if ci_file.exists():
             try:
                 with open(ci_file) as f:
@@ -203,10 +203,10 @@ class CIDiagnostic:
                     )
 
             except Exception as e:
-                self.print_error(f"Erreur lecture ci.yaml: {e}")
-                results["issues"].append("Erreur lecture ci.yaml")
+                self.print_error(f"Erreur lecture ci-matrix.yml: {e}")
+                results["issues"].append("Erreur lecture ci-matrix.yml")
         else:
-            results["issues"].append("Fichier ci.yaml manquant")
+            results["issues"].append("Fichier ci-matrix.yml manquant")
             results["status"] = "ERROR"
 
         return results
