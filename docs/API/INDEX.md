@@ -10,7 +10,7 @@
 
 **📦 Modules: 79+ | 📊 Couverture: Complète | 🧪 Exemples: Testés | 🚀 Version: 11.0**
 
-**Complete API reference for Athalia DevOps Platform - 153 modules documented**
+**Complete API reference for Athalia DevOps Platform - 93 modules documented**
 
 </div>
 
@@ -800,6 +800,6 @@ graph TB
 **🤖 AI API** - AI modules documentation
 **🛡️ Security API** - Security modules documentation
 
-**153 Modules Documented** | **All APIs Tested** | **Enterprise Ready**
+**93 Modules Documented** | **All APIs Tested** | **Enterprise Ready**
 
 </div>

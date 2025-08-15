@@ -35,7 +35,7 @@ Suite à une demande de vérification et de correction complète de la documenta
 
 #### **Nouvelles Données Vérifiées :**
 - **Tests collectés** : **1696 tests** ✅ **VÉRIFIÉ par pytest**
-- **Modules Python** : **153 modules** ✅ **VÉRIFIÉ par count**
+- **Modules Python** : **93 modules** ✅ **VÉRIFIÉ par count**
 - **Couverture globale** : **10.21%** ✅ **VÉRIFIÉ par pytest-cov**
 - **Couverture unified_orchestrator** : **80.72%** ✅ **VÉRIFIÉ**
 - **Fichiers parasites** : **0 fichiers** ✅ **VÉRIFIÉ - projets propres**
@@ -52,7 +52,7 @@ Suite à une demande de vérification et de correction complète de la documenta
 #### **Métriques Corrigées :**
 - **Couverture** : 9.38% → **10.21%** (DÉPASSÉ)
 - **Tests** : 152 → **1696 tests** (+900% d'amélioration)
-- **Modules** : 57 estimés → **153 modules** réels (+38%)
+- **Modules** : 57 estimés → **93 modules** réels (+38%)
 - **Fichiers parasites** : **0 trouvé** (système de nettoyage opérationnel)
 
 ### **3. README.md**
@@ -60,7 +60,7 @@ Suite à une demande de vérification et de correction complète de la documenta
 #### **Corrections d'État :**
 - **Date** : 31 juillet → **11 août 2025**
 - **Tests** : 1453 → **1696 tests collectés**
-- **Modules** : 57 → **153 modules principaux**
+- **Modules** : 57 → **93 modules principaux**
 - **Validation** : Ajout de marqueurs ✅ **VALIDÉ**, ✅ **MESURÉ**, etc.
 
 #### **Améliorations de Précision :**
@@ -95,7 +95,7 @@ python3 -m pytest tests/unit/modules/test_unified_orchestrator_complete.py --cov
 #### **4. Comptage des Modules**
 ```bash
 find athalia_core/ -name "*.py" | wc -l
-# Résultat : 153 modules ✅ COMPTÉ
+# Résultat : 93 modules ✅ COMPTÉ
 ```
 
 #### **5. Vérification des Fichiers Parasites**
@@ -166,7 +166,7 @@ python3 -m pytest tests/unit/modules/test_ci_ultra_fast.py -v
 - **Tests fonctionnels** : 6/6 tests CI ultra-rapides passent
 - **Tests de collecte** : 1696 tests collectés sans erreur
 - **Tests de couverture** : Mesures précises obtenues
-- **Tests de structure** : 153 modules comptés
+- **Tests de structure** : 93 modules comptés
 - **Tests de propreté** : 0 fichier parasite trouvé
 - **Tests d'importation** : Modules s'importent correctement
 

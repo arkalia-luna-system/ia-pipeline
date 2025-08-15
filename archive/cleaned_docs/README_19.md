@@ -73,7 +73,7 @@ reports_dir = Path("data/reports/")
 ```
 
 ### **Dashboard Integration**
-Les données sont automatiquement intégrées dans les 6 dashboards HTML :
+Les données sont automatiquement intégrées dans les 99 dashboards HTML :
 - **Onglet "Benchmarks"** → `data/benchmarks.csv` ✅
 - **Onglet "Analytics"** → Bases de données .db ✅  
 - **Onglet "Performance"** → Fichiers performance_test_*.json ✅

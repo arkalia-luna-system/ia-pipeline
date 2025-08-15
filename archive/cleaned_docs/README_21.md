@@ -19,7 +19,7 @@ Les modules principaux d'Athalia, conçus pour l'automatisation intelligente et 
 - **🔄 CI/CD :** Workflows professionnels opérationnels ✅
 
 ### **📊 ARCHITECTURE**
-- **153 modules** dans athalia_core/ ✅ **COMPTÉ**
+- **93 modules** dans athalia_core/ ✅ **COMPTÉ**
 - **1696 tests** collectés ✅ **MESURÉ**
 
 ## 📋 Table des matières
