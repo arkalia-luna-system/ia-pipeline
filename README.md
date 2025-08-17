@@ -512,3 +512,4 @@ This project is released under the MIT License, allowing for both commercial and
 
 </div>
 # Test workflow CI/CD - Sun Aug 17 15:45:45 CEST 2025
+# Test déclenchement workflow
