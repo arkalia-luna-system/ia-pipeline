@@ -233,7 +233,11 @@ MIT License
 
     def generate_api_documentation(self) -> dict[str, Any]:
         """Génère la documentation API"""
-        api_docs: dict[str, list[dict[str, Any]]] = {"functions": [], "classes": [], "modules": []}
+        api_docs: dict[str, list[dict[str, Any]]] = {
+            "functions": [],
+            "classes": [],
+            "modules": [],
+        }
 
         try:
             for py_file in self.project_path.rglob("*.py"):
@@ -613,7 +617,9 @@ SOFTWARE.
         # Générer des recommandations
         if coverage["coverage_percentage"] < 50:
             if isinstance(report["recommendations"], list):
-                report["recommendations"].append("Améliorer la couverture de documentation")
+                report["recommendations"].append(
+                    "Améliorer la couverture de documentation"
+                )
 
         if validation["issues"]:
             if isinstance(report["recommendations"], list):
@@ -705,7 +711,9 @@ SOFTWARE.
                 if isinstance(result["recommendations"], list):
                     result["recommendations"].append(
                         "Améliorer la couverture de documentation "
-                        "(actuellement {}%)".format(coverage.get("coverage_percentage", 0))
+                        "(actuellement {}%)".format(
+                            coverage.get("coverage_percentage", 0)
+                        )
                     )
 
             if validation.get("issues", []):

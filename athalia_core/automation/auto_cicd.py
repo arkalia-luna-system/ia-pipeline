@@ -181,7 +181,12 @@ class AutoCICD:
         configs["k8s-service.yaml"] = "# k8s service content"
         return configs
 
-    def _save_cicd_configs(self, github_actions: dict[str, str], docker_config: dict[str, str], deployment_config: dict[str, str]) -> None:
+    def _save_cicd_configs(
+        self,
+        github_actions: dict[str, str],
+        docker_config: dict[str, str],
+        deployment_config: dict[str, str],
+    ) -> None:
         """Sauvegarde les configurations CI/CD"""
         if self.project_path is None:
             return

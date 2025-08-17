@@ -329,7 +329,10 @@ class SecurityAuditor:
         print(f"Score: {score}/100 ({level})")
         print()
 
-        if isinstance(self.report["vulnerabilities"], list) and self.report["vulnerabilities"]:
+        if (
+            isinstance(self.report["vulnerabilities"], list)
+            and self.report["vulnerabilities"]
+        ):
             print("❌ Vulnérabilités détectées:")
             for v in self.report["vulnerabilities"]:
                 print(f"  - {v}")
@@ -341,7 +344,10 @@ class SecurityAuditor:
                 print(f"  - {w}")
             print()
 
-        if isinstance(self.report["recommendations"], list) and self.report["recommendations"]:
+        if (
+            isinstance(self.report["recommendations"], list)
+            and self.report["recommendations"]
+        ):
             print("💡 Recommandations:")
             for r in self.report["recommendations"]:
                 print(f"  - {r}")
@@ -363,6 +369,7 @@ def main() -> None:
     if args.output:
         with open(args.output, "w", encoding="utf-8") as f:
             import json
+
             json.dump(results, f, indent=2)
         print(f"📄 Rapport sauvegardé dans {args.output}")
     else:

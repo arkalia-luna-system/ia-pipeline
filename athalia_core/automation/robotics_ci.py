@@ -79,7 +79,9 @@ class RoboticsCI:
         else:
             # Aucun type de projet détecté
             if isinstance(self.ci_results["errors"], list):
-                self.ci_results["errors"].append("Aucun type de projet robotics détecté")
+                self.ci_results["errors"].append(
+                    "Aucun type de projet robotics détecté"
+                )
             self.ci_results["build_status"] = "failed"
             return
 
@@ -248,7 +250,9 @@ class RoboticsCI:
                 )
                 if result.returncode != 0:
                     if isinstance(self.ci_results["warnings"], list):
-                        self.ci_results["warnings"].append(f"Lint Rust: {result.stderr}")
+                        self.ci_results["warnings"].append(
+                            f"Lint Rust: {result.stderr}"
+                        )
 
             elif (self.project_path / "package.json").exists():
                 # Lint Node.js
@@ -262,7 +266,9 @@ class RoboticsCI:
                 )
                 if result.returncode != 0:
                     if isinstance(self.ci_results["warnings"], list):
-                        self.ci_results["warnings"].append(f"Lint Node.js: {result.stderr}")
+                        self.ci_results["warnings"].append(
+                            f"Lint Node.js: {result.stderr}"
+                        )
 
         except subprocess.TimeoutExpired:
             if isinstance(self.ci_results["warnings"], list):
@@ -286,7 +292,9 @@ class RoboticsCI:
                 )
                 if result.returncode != 0:
                     if isinstance(self.ci_results["warnings"], list):
-                        self.ci_results["warnings"].append(f"Audit Rust: {result.stderr}")
+                        self.ci_results["warnings"].append(
+                            f"Audit Rust: {result.stderr}"
+                        )
 
             elif (self.project_path / "package.json").exists():
                 # Audit npm
@@ -336,7 +344,9 @@ class RoboticsCI:
 
         except Exception as e:
             if isinstance(self.ci_results["errors"], list):
-                self.ci_results["errors"].append(f"Erreur vérification déploiement: {e}")
+                self.ci_results["errors"].append(
+                    f"Erreur vérification déploiement: {e}"
+                )
 
     def _calculate_ci_score(self) -> None:
         """Calcule le score global du CI/CD"""
@@ -390,7 +400,10 @@ class RoboticsCI:
             report += "\n"
 
         # Avertissements
-        if isinstance(self.ci_results["warnings"], list) and self.ci_results["warnings"]:
+        if (
+            isinstance(self.ci_results["warnings"], list)
+            and self.ci_results["warnings"]
+        ):
             report += "## ⚠️ Avertissements\n"
             for warning in self.ci_results["warnings"]:
                 report += f"- {warning}\n"

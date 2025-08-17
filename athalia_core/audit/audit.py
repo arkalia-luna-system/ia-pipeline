@@ -68,6 +68,6 @@ class Audit:
             "recommendations": [
                 "Vérifier la couverture de tests",
                 "Améliorer la documentation",
-                "Optimiser les performances"
-            ]
+                "Optimiser les performances",
+            ],
         }

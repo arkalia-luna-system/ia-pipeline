@@ -292,7 +292,9 @@ class IntelligentAuditor:
                     with open(package_json, encoding="utf-8") as f:
                         data = json.load(f)
                         if "dependencies" in data:
-                            dependencies["direct"].extend(list(data["dependencies"].keys()))
+                            dependencies["direct"].extend(
+                                list(data["dependencies"].keys())
+                            )
                         if "devDependencies" in data:
                             dependencies["direct"].extend(
                                 list(data["devDependencies"].keys())
@@ -393,7 +395,9 @@ class IntelligentAuditor:
 
                         for i, line in enumerate(lines, 1):
                             if len(line.rstrip()) > 79:
-                                style_issues.append(f"{py_file}:{i} - Ligne trop longue")
+                                style_issues.append(
+                                    f"{py_file}:{i} - Ligne trop longue"
+                                )
                             if line.endswith(" \n"):
                                 style_issues.append(
                                     f"{py_file}:{i} - Espace en fin de ligne"
@@ -529,7 +533,10 @@ class IntelligentAuditor:
                         dangerous_patterns = [
                             (r"eval\s*\(", "Utilisation de eval()"),
                             (r"exec\s*\(", "Utilisation de exec()"),
-                            (r"subprocess\.call.*shell=True", "Subprocess avec shell=True"),
+                            (
+                                r"subprocess\.call.*shell=True",
+                                "Subprocess avec shell=True",
+                            ),
                             (r"pickle\.loads", "Utilisation de pickle.loads"),
                             (r"yaml\.load\(", "Utilisation de yaml.load()"),
                         ]

@@ -59,7 +59,9 @@ class AutoTester:
         # Calculer la couverture de tests
         if analysis["total_functions"] > 0:
             existing_tests = len(list(self.test_dir.rglob("test_*.py")))
-            analysis["test_coverage"] = (existing_tests / analysis["total_functions"]) * 100
+            analysis["test_coverage"] = (
+                existing_tests / analysis["total_functions"]
+            ) * 100
 
         return analysis
 
@@ -85,7 +87,9 @@ class AutoTester:
                     class_info = {
                         "name": node.name,
                         "methods": [],
-                        "bases": [base.id for base in node.bases if hasattr(base, "id")],
+                        "bases": [
+                            base.id for base in node.bases if hasattr(base, "id")
+                        ],
                     }
                     for item in node.body:
                         if isinstance(item, ast.FunctionDef):
@@ -110,7 +114,8 @@ class AutoTester:
 
         if target_module:
             modules_to_test = [
-                m for m in self.analyze_project()["modules"]
+                m
+                for m in self.analyze_project()["modules"]
                 if m["name"] == target_module
             ]
         else:
@@ -200,15 +205,13 @@ class Test{class_info['name']}:
             assert callable(getattr(cls, method_name))
 '''
 
-        content += '''
+        content += """
 if __name__ == "__main__":
     pytest.main([__file__])
-'''
+"""
         return content
 
-    def _save_tests(
-        self, tests: dict[str, Any], output_dir: str = None
-    ) -> bool:
+    def _save_tests(self, tests: dict[str, Any], output_dir: str = None) -> bool:
         """Sauvegarde les tests générés"""
         try:
             if output_dir:
@@ -298,8 +301,12 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Générateur automatique de tests")
     parser.add_argument("project_path", help="Chemin vers le projet")
     parser.add_argument("--module", help="Module spécifique à tester")
-    parser.add_argument("--run-tests", action="store_true", help="Exécuter les tests générés")
-    parser.add_argument("--cleanup", action="store_true", help="Nettoyer les tests générés")
+    parser.add_argument(
+        "--run-tests", action="store_true", help="Exécuter les tests générés"
+    )
+    parser.add_argument(
+        "--cleanup", action="store_true", help="Nettoyer les tests générés"
+    )
     parser.add_argument("--output", help="Répertoire de sortie pour les tests")
 
     args = parser.parse_args()
@@ -309,7 +316,9 @@ def main() -> None:
     try:
         # Analyser le projet
         analysis = auto_tester.analyze_project()
-        print(f"📊 Analyse terminée: {analysis['total_functions']} fonctions, {analysis['total_classes']} classes")
+        print(
+            f"📊 Analyse terminée: {analysis['total_functions']} fonctions, {analysis['total_classes']} classes"
+        )
 
         # Générer les tests
         if args.module:
@@ -317,7 +326,9 @@ def main() -> None:
         else:
             tests = auto_tester.generate_tests()
 
-        print(f"🧪 Tests générés: {tests['generated_tests']}/{tests['total_modules']} modules")
+        print(
+            f"🧪 Tests générés: {tests['generated_tests']}/{tests['total_modules']} modules"
+        )
 
         # Sauvegarder les tests
         if args.output:
@@ -326,7 +337,9 @@ def main() -> None:
         # Exécuter les tests si demandé
         if args.run_tests:
             results = auto_tester.run_generated_tests()
-            print(f"🚀 Résultats: {results['passed']}/{results['total_tests']} tests réussis")
+            print(
+                f"🚀 Résultats: {results['passed']}/{results['total_tests']} tests réussis"
+            )
 
         # Nettoyer si demandé
         if args.cleanup:

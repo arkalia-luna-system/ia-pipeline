@@ -4,13 +4,11 @@ Détecteur de patterns de code pour Athalia
 Analyse la qualité et la cohérence du code
 """
 
-import ast
 import logging
-import re
-from collections import defaultdict
+import sqlite3
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Dict, List, Set, Tuple
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -32,14 +30,14 @@ class CodePattern:
 class PatternDetector:
     """Détecteur de patterns de code intelligent"""
 
-    def __init__(self, root_path: Optional[str] = None):
+    def __init__(self, root_path: str | None = None):
         self.root_path = Path(root_path) if root_path else Path(".")
         self.db_path = self.root_path / "patterns.db"
 
         # Initialiser les caches
-        self._pattern_cache: Dict[str, Any] = {}
-        self._duplicate_cache: Dict[str, Any] = {}
-        self._antipattern_cache: Dict[str, Any] = {}
+        self._pattern_cache: dict[str, Any] = {}
+        self._duplicate_cache: dict[str, Any] = {}
+        self._antipattern_cache: dict[str, Any] = {}
 
         # Initialiser la base de données
         self._init_database()
@@ -51,7 +49,8 @@ class PatternDetector:
             cursor = conn.cursor()
 
             # Table des patterns détectés
-            cursor.execute("""
+            cursor.execute(
+                """
                 CREATE TABLE IF NOT EXISTS patterns (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     name TEXT NOT NULL,
@@ -63,10 +62,12 @@ class PatternDetector:
                     suggestion TEXT,
                     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
                 )
-            """)
+            """
+            )
 
             # Table des duplications
-            cursor.execute("""
+            cursor.execute(
+                """
                 CREATE TABLE IF NOT EXISTS duplications (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     file1 TEXT NOT NULL,
@@ -76,10 +77,12 @@ class PatternDetector:
                     lines2 TEXT,
                     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
                 )
-            """)
+            """
+            )
 
             # Table des anti-patterns
-            cursor.execute("""
+            cursor.execute(
+                """
                 CREATE TABLE IF NOT EXISTS antipatterns (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     name TEXT NOT NULL,
@@ -90,7 +93,8 @@ class PatternDetector:
                     fix_suggestion TEXT,
                     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
                 )
-            """)
+            """
+            )
 
             conn.commit()
             conn.close()
@@ -157,7 +161,9 @@ class PatternDetector:
         except Exception as e:
             logger.warning(f"Impossible de charger les patterns: {e}")
 
-    def analyze_project_patterns(self, project_path: str | None = None) -> dict[str, Any]:
+    def analyze_project_patterns(
+        self, project_path: str | None = None
+    ) -> dict[str, Any]:
         """Analyse les patterns du projet"""
         if project_path is None:
             project_path = self.root_path
@@ -186,7 +192,9 @@ class PatternDetector:
 
         return analysis_results
 
-    def detect_code_duplication(self, min_similarity: float = 0.8) -> list[dict[str, Any]]:
+    def detect_code_duplication(
+        self, min_similarity: float = 0.8
+    ) -> list[dict[str, Any]]:
         """Détecte la duplication de code"""
         logger.info("🔍 Détection de duplication de code")
 
@@ -194,17 +202,19 @@ class PatternDetector:
         python_files = list(self.root_path.rglob("*.py"))
 
         for i, file1 in enumerate(python_files):
-            for file2 in python_files[i+1:]:
+            for file2 in python_files[i + 1 :]:
                 try:
                     similarity = self._calculate_file_similarity(file1, file2)
                     if similarity >= min_similarity:
-                        duplications.append({
-                            "file1": str(file1),
-                            "file2": str(file2),
-                            "similarity": similarity,
-                            "lines1": self._extract_common_lines(file1),
-                            "lines2": self._extract_common_lines(file2),
-                        })
+                        duplications.append(
+                            {
+                                "file1": str(file1),
+                                "file2": str(file2),
+                                "similarity": similarity,
+                                "lines1": self._extract_common_lines(file1),
+                                "lines2": self._extract_common_lines(file2),
+                            }
+                        )
                 except Exception as e:
                     logger.debug(f"Erreur comparaison {file1} vs {file2}: {e}")
                     continue
@@ -268,7 +278,9 @@ class PatternDetector:
 
         return antipatterns
 
-    def _analyze_file_antipatterns(self, file_path: Path, content: str) -> list[dict[str, Any]]:
+    def _analyze_file_antipatterns(
+        self, file_path: Path, content: str
+    ) -> list[dict[str, Any]]:
         """Analyse un fichier pour détecter les anti-patterns"""
         antipatterns = []
         lines = content.split("\n")
@@ -278,34 +290,40 @@ class PatternDetector:
 
             # Anti-patterns courants
             if "import *" in line:
-                antipatterns.append({
-                    "name": "Import wildcard",
-                    "description": "Import de tous les modules avec *",
-                    "location": str(file_path),
-                    "line_number": line_num,
-                    "impact": "Pollution du namespace",
-                    "fix_suggestion": "Importer uniquement les modules nécessaires",
-                })
+                antipatterns.append(
+                    {
+                        "name": "Import wildcard",
+                        "description": "Import de tous les modules avec *",
+                        "location": str(file_path),
+                        "line_number": line_num,
+                        "impact": "Pollution du namespace",
+                        "fix_suggestion": "Importer uniquement les modules nécessaires",
+                    }
+                )
 
             elif "global " in line and "=" in line:
-                antipatterns.append({
-                    "name": "Variable globale modifiée",
-                    "description": "Modification d'une variable globale",
-                    "location": str(file_path),
-                    "line_number": line_num,
-                    "impact": "Difficulté de débogage",
-                    "fix_suggestion": "Passer la variable en paramètre",
-                })
+                antipatterns.append(
+                    {
+                        "name": "Variable globale modifiée",
+                        "description": "Modification d'une variable globale",
+                        "location": str(file_path),
+                        "line_number": line_num,
+                        "impact": "Difficulté de débogage",
+                        "fix_suggestion": "Passer la variable en paramètre",
+                    }
+                )
 
             elif "except:" in line:
-                antipatterns.append({
-                    "name": "Exception trop large",
-                    "description": "Capture de toutes les exceptions",
-                    "location": str(file_path),
-                    "line_number": line_num,
-                    "impact": "Masquage d'erreurs importantes",
-                    "fix_suggestion": "Spécifier les types d'exceptions",
-                })
+                antipatterns.append(
+                    {
+                        "name": "Exception trop large",
+                        "description": "Capture de toutes les exceptions",
+                        "location": str(file_path),
+                        "line_number": line_num,
+                        "impact": "Masquage d'erreurs importantes",
+                        "fix_suggestion": "Spécifier les types d'exceptions",
+                    }
+                )
 
         return antipatterns
 
@@ -351,18 +369,21 @@ class PatternDetector:
             cursor = conn.cursor()
 
             for pattern in patterns:
-                cursor.execute("""
+                cursor.execute(
+                    """
                     INSERT INTO patterns (name, description, category, severity, location, line_number, suggestion)
                     VALUES (?, ?, ?, ?, ?, ?, ?)
-                """, (
-                    pattern.get("name", ""),
-                    pattern.get("description", ""),
-                    pattern.get("category", ""),
-                    pattern.get("severity", ""),
-                    pattern.get("location", ""),
-                    pattern.get("line_number", 0),
-                    pattern.get("suggestion", ""),
-                ))
+                """,
+                    (
+                        pattern.get("name", ""),
+                        pattern.get("description", ""),
+                        pattern.get("category", ""),
+                        pattern.get("severity", ""),
+                        pattern.get("location", ""),
+                        pattern.get("line_number", 0),
+                        pattern.get("suggestion", ""),
+                    ),
+                )
 
             conn.commit()
             conn.close()
@@ -380,7 +401,12 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Détecteur de patterns de code")
     parser.add_argument("project_path", help="Chemin vers le projet à analyser")
     parser.add_argument("--output", help="Fichier de sortie pour le rapport")
-    parser.add_argument("--min-similarity", type=float, default=0.8, help="Similarité minimale pour les duplications")
+    parser.add_argument(
+        "--min-similarity",
+        type=float,
+        default=0.8,
+        help="Similarité minimale pour les duplications",
+    )
 
     args = parser.parse_args()
 
