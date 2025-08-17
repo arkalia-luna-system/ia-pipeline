@@ -30,7 +30,7 @@ class AdvancedAnalytics:
 
     def run(self) -> dict[str, Any]:
         """Lance lanalyse complète du projet"""
-        logger.info(f"📊 Analytics avancée pour: {self.project_path.name}")
+        logger.info(f" Analytics avancée pour: {self.project_path.name}")
 
         # Calcul des métriques
         self._analyze_complexity()
@@ -194,9 +194,12 @@ class AdvancedAnalytics:
 
         self.metrics["quality"] = quality_data
 
-    def _analyze_evolution(self):
+    def _analyze_evolution(self) -> None:
         """Analyse lévolution du projet"""
-        evolution_data = {"last_modified": None, "total_files": 0}
+        evolution_data: dict[str, int | float | None] = {
+            "last_modified": None,
+            "total_files": 0,
+        }
 
         # Compter les fichiers
         for py_file in self.project_path.rglob("*.py"):
@@ -249,7 +252,7 @@ class AdvancedAnalytics:
     </style>
 </head>
 <body>
-    <h1>📊 Dashboard Analytics-{self.project_path.name}</h1>
+    <h1> Dashboard Analytics-{self.project_path.name}</h1>
     <p>Généré le {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}</p>
 
     <div class="summary">
@@ -263,7 +266,7 @@ class AdvancedAnalytics:
     </div>
 
     <div class="metric">
-        <h3>🎯 Métriques de qualité</h3>
+        <h3> Métriques de qualité</h3>
         <p>Docstrings: {docstrings}</p>
         <p>Commentaires: {comments}</p>
         <p>Lignes vides: {empty_lines}</p>
@@ -310,9 +313,9 @@ class AdvancedAnalytics:
         perf_file_sizes = performance.get("file_sizes", {})
 
         summary = f"""
-📊 ANALYTICS AVANCÉE-{self.project_path.name}
+ ANALYTICS AVANCÉE-{self.project_path.name}
 
-🎯 MÉTRIQUES PRINCIPALES:
+ MÉTRIQUES PRINCIPALES:
 • Complexité moyenne: {average:.2f}
 • Fichiers analysés: {total_files}
 • Lignes de code: {total_lines}
@@ -329,20 +332,25 @@ class AdvancedAnalytics:
 • Dépendances: {perf_dependencies}
 • Fichiers Python: {len(perf_file_sizes)}
 
-📊 FICHIERS GÉNÉRÉS:
+ FICHIERS GÉNÉRÉS:
         • Dashboard HTML: dashboard/html/analytics_dashboard.html
 """
         return summary
 
-    def print_report(self):
+    def print_report(self) -> None:
         """Affiche le rapport danalyse"""
         logger.info(self._generate_summary())
 
 
-def enrich_genesis_md(outdir, infos, perf_log=None, test_log=None):
+def enrich_genesis_md(
+    outdir: str,
+    infos: dict[str, Any],
+    perf_log: str | None = None,
+    test_log: str | None = None,
+) -> str:
     from pathlib import Path
 
-    genesis = Path(outdir) / "GENESIS.f(f"
+    genesis = Path(outdir) / "GENESIS.md"
     content = genesis.read_text() if genesis.exists() else ""
     if "Audit IA" not in content:
         content += "\nAudit IA\n"
