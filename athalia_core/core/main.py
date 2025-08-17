@@ -59,7 +59,7 @@ def menu():
     logger.info("9. Voir rapport dintégration")
     logger.info("10. Rollback automatique (restauration .backups)")
     logger.info("11. Logs détaillés dintégration")
-    logger.info("12. 🔍 Audit intelligent (nouveau)")
+    logger.info("12.  Audit intelligent (nouveau)")
     logger.info("13. Quitter")
     logger.info("14. Mode surveillance (nouveau)")
     try:
@@ -80,7 +80,7 @@ def safe_input(prompt: str) -> str:
 
 def surveillance_mode():
     """Mode surveillance avec arrêt automatique"""
-    logger.info("🔍 Mode surveillance activé (Ctrl+C pour arrêter)")
+    logger.info(" Mode surveillance activé (Ctrl+C pour arrêter)")
     try:
         while running:
             logger.info("⏰ Surveillance en cours... (Ctrl+C pour arrêter)")
@@ -110,7 +110,7 @@ def main(test_mode=False):
 
     if athalia_processes:
         logger.warning(
-            f"⚠️ {len(athalia_processes)} autre(s) instance(s) d'athalia_core.main "
+            f" {len(athalia_processes)} autre(s) instance(s) d'athalia_core.main "
             f"détectée(s): {athalia_processes}"
         )
         if not test_mode:
@@ -128,11 +128,11 @@ def main(test_mode=False):
 
     # Configuration du logging avancé ou standard
     if athalia_logger:
-        log_main("🚀 Athalia Pipeline démarré avec logging avancé", "INFO")
+        log_main(" Athalia Pipeline démarré avec logging avancé", "INFO")
         log_main("💡 Conseil: Utilisez Ctrl+C pour un arrêt propre", "INFO")
     else:
         logging.basicConfig(level=logging.INFO)
-        logger.info("🚀 Athalia Pipeline démarré")
+        logger.info(" Athalia Pipeline démarré")
         logger.info("💡 Conseil: Utilisez Ctrl+C pour un arrêt propre")
 
     while running:
@@ -299,7 +299,7 @@ def main(test_mode=False):
                     # report = generate_audit_report(outdir) # This line was
                     # removed as per the edit hint.
                     logger.info("\n" + "=" * 50)
-                    logger.info("🔍 RAPPORT DAUDIT")
+                    logger.info(" RAPPORT DAUDIT")
                     logger.info("=" * 50)
                     # logger.info(report) # This line was removed as per the
                     # edit hint.

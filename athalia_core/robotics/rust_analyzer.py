@@ -350,7 +350,7 @@ class RustAnalyzer:
 ## Résumé
 - **Projets analysés**: {len(result.projects)}
 - **Score d'optimisation**: {result.optimization_score:.1f}/100
-- **Build prêt**: {"✅" if result.build_ready else "❌"}
+- **Build prêt**: {"" if result.build_ready else ""}
 
 ## Projets Rust
 """
@@ -359,15 +359,15 @@ class RustAnalyzer:
 ### {project.name} (v{project.version})
 - **Chemin**: {project.path}
 - **Dépendances**: {len(project.dependencies)}
-- **Dépendances robotiques**: {"✅" if project.has_robotics_deps else "❌"}
-- **ROS2**: {"✅" if project.has_ros2_deps else "❌"}
+- **Dépendances robotiques**: {"" if project.has_robotics_deps else ""}
+- **ROS2**: {"" if project.has_ros2_deps else ""}
 - **Targets**: {", ".join(project.build_targets) if project.build_targets else "Aucun"}
 """
 
         if result.issues:
             report += "\n## Problèmes détectés\n"
             for issue in result.issues:
-                report += f"- ❌ {issue}\n"
+                report += f"-  {issue}\n"
 
         if result.recommendations:
             report += "\n## Recommandations\n"

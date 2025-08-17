@@ -23,11 +23,11 @@ logger = logging.getLogger(__name__)
 class AutoDocumenter:
     """Générateur automatique de documentation"""
 
-    def __init__(self, project_path: str = ".", lang: str = "en"):
+    def __init__(self, project_path: str = ".", lang: str = "en") -> None:
         self.project_path = Path(project_path)
         self.lang = lang
         self.doc_config = self.load_documentation_config()
-        self.doc_history = []
+        self.doc_history: list[dict[str, Any]] = []
 
     def load_documentation_config(
         self, config_path: str | None = None
@@ -69,7 +69,7 @@ class AutoDocumenter:
 
     def scan_project_structure(self) -> dict[str, Any]:
         """Scanne la structure du projet"""
-        structure = {
+        structure: dict[str, list[str]] = {
             "python_files": [],
             "test_files": [],
             "documentation_files": [],
@@ -147,7 +147,7 @@ class AutoDocumenter:
                                 for child in ast.walk(node):
                                     if (
                                         isinstance(child, ast.FunctionDef)
-                                        and child != node
+                                        and child is not node
                                     ):
                                         analysis["total_methods"] += 1
                                         if ast.get_docstring(child):
@@ -233,7 +233,7 @@ MIT License
 
     def generate_api_documentation(self) -> dict[str, Any]:
         """Génère la documentation API"""
-        api_docs = {"functions": [], "classes": [], "modules": []}
+        api_docs: dict[str, list[dict[str, Any]]] = {"functions": [], "classes": [], "modules": []}
 
         try:
             for py_file in self.project_path.rglob("*.py"):
@@ -518,7 +518,7 @@ SOFTWARE.
 
     def validate_documentation(self) -> dict[str, Any]:
         """Valide la documentation"""
-        validation = {"is_valid": True, "issues": [], "warnings": []}
+        validation: dict[str, Any] = {"is_valid": True, "issues": [], "warnings": []}
 
         try:
             # Vérifier la présence de fichiers essentiels
@@ -526,16 +526,18 @@ SOFTWARE.
             for file_name in essential_files:
                 file_path = self.project_path / file_name
                 if not file_path.exists():
-                    validation["issues"].append(f"Fichier manquant: {file_name}")
+                    if isinstance(validation["issues"], list):
+                        validation["issues"].append(f"Fichier manquant: {file_name}")
                     validation["is_valid"] = False
 
             # Vérifier la couverture de documentation
             coverage = self.calculate_documentation_coverage()
             if coverage["coverage_percentage"] < 50:
-                validation["warnings"].append(
-                    "Couverture de documentation faible: "
-                    f"{coverage['coverage_percentage']}%"
-                )
+                if isinstance(validation["warnings"], list):
+                    validation["warnings"].append(
+                        "Couverture de documentation faible: "
+                        f"{coverage['coverage_percentage']}%"
+                    )
 
             # Vérifier la qualité des docstrings
             for py_file in self.project_path.rglob("*.py"):
@@ -543,14 +545,16 @@ SOFTWARE.
                     docstrings = self.extract_docstrings(str(py_file))
                     for doc in docstrings:
                         if len(doc["docstring"]) < 10:
-                            validation["warnings"].append(
-                                f"Docstring trop courte dans {py_file}: {doc['name']}"
-                            )
+                            if isinstance(validation["warnings"], list):
+                                validation["warnings"].append(
+                                    f"Docstring trop courte dans {py_file}: {doc['name']}"
+                                )
 
         except Exception as e:
             logger.error(f"Erreur validation documentation: {e}")
             validation["is_valid"] = False
-            validation["issues"].append(f"Erreur de validation: {e}")
+            if isinstance(validation["issues"], list):
+                validation["issues"].append(f"Erreur de validation: {e}")
 
         return validation
 
@@ -591,7 +595,7 @@ SOFTWARE.
         validation = self.validate_documentation()
         structure = self.scan_project_structure()
 
-        report = {
+        report: dict[str, Any] = {
             "summary": {
                 "project_path": str(self.project_path),
                 "analysis_date": datetime.now().isoformat(),
@@ -608,15 +612,18 @@ SOFTWARE.
 
         # Générer des recommandations
         if coverage["coverage_percentage"] < 50:
-            report["recommendations"].append("Améliorer la couverture de documentation")
+            if isinstance(report["recommendations"], list):
+                report["recommendations"].append("Améliorer la couverture de documentation")
 
         if validation["issues"]:
-            report["recommendations"].append("Corriger les problèmes de validation")
+            if isinstance(report["recommendations"], list):
+                report["recommendations"].append("Corriger les problèmes de validation")
 
         if len(structure["documentation_files"]) < 3:
-            report["recommendations"].append(
-                "Ajouter plus de fichiers de documentation"
-            )
+            if isinstance(report["recommendations"], list):
+                report["recommendations"].append(
+                    "Ajouter plus de fichiers de documentation"
+                )
 
         return report
 
@@ -634,7 +641,7 @@ SOFTWARE.
         """Charge l'historique de documentation"""
         try:
             with open(history_path, encoding="utf-8") as f:
-                history = json.load(f)
+                history: list[dict[str, Any]] = json.load(f)
                 self.doc_history = history
                 return history
         except Exception as e:
@@ -645,7 +652,7 @@ SOFTWARE.
         """Effectue une documentation complète du projet"""
         start_time = datetime.now()
 
-        result = {
+        result: dict[str, Any] = {
             "summary": "",
             "detailed_results": {},
             "recommendations": [],
@@ -658,20 +665,24 @@ SOFTWARE.
         try:
             # Analyser la structure du projet
             structure = self.scan_project_structure()
-            result["detailed_results"]["structure"] = structure
+            if isinstance(result["detailed_results"], dict):
+                result["detailed_results"]["structure"] = structure
 
             # Analyser les fichiers Python
             python_analysis = self.analyze_python_files()
-            result["detailed_results"]["python_analysis"] = python_analysis
+            if isinstance(result["detailed_results"], dict):
+                result["detailed_results"]["python_analysis"] = python_analysis
 
             # Calculer la couverture de documentation
             coverage = self.calculate_documentation_coverage()
-            result["detailed_results"]["coverage"] = coverage
+            if isinstance(result["detailed_results"], dict):
+                result["detailed_results"]["coverage"] = coverage
             result["coverage"] = coverage.get("coverage_percentage", 0)
 
             # Valider la documentation existante
             validation = self.validate_documentation()
-            result["detailed_results"]["validation"] = validation
+            if isinstance(result["detailed_results"], dict):
+                result["detailed_results"]["validation"] = validation
 
             # Générer le rapport
             report = self.generate_documentation_report()
@@ -691,20 +702,23 @@ SOFTWARE.
 
             # Ajouter des recommandations
             if coverage.get("coverage_percentage", 0) < 80:
-                result["recommendations"].append(
-                    "Améliorer la couverture de documentation "
-                    "(actuellement {}%)".format(coverage.get("coverage_percentage", 0))
-                )
+                if isinstance(result["recommendations"], list):
+                    result["recommendations"].append(
+                        "Améliorer la couverture de documentation "
+                        "(actuellement {}%)".format(coverage.get("coverage_percentage", 0))
+                    )
 
             if validation.get("issues", []):
-                result["recommendations"].append(
-                    "Corriger {} problèmes de documentation identifiés".format(
-                        len(validation.get("issues", []))
+                if isinstance(result["recommendations"], list):
+                    result["recommendations"].append(
+                        "Corriger {} problèmes de documentation identifiés".format(
+                            len(validation.get("issues", []))
+                        )
                     )
-                )
 
         except Exception as e:
-            result["errors"].append(f"Erreur documentation complète: {e}")
+            if isinstance(result["errors"], list):
+                result["errors"].append(f"Erreur documentation complète: {e}")
             logger.error(f"Erreur documentation complète: {e}")
 
         # Calculer le temps d'exécution
@@ -819,32 +833,34 @@ Consultez la documentation complète dans le dossier `docs/`.
 """
 
         for class_info in self.project_info.get("classes", []):
-            api_docs += f"""### {class_info["name"]}
+            if isinstance(class_info, dict):
+                api_docs += f"""### {class_info.get("name", "Unknown")}
 
 {class_info.get("docstring", "Aucune description")}
 
 #### {translations["methods"]}
 
 """
-            for method in class_info.get("methods", []):
-                api_docs += f"- `{method}()`\n"
-            api_docs += "\n"
+                for method in class_info.get("methods", []):
+                    api_docs += f"- `{method}()`\n"
+                api_docs += "\n"
 
         api_docs += f"""## {translations["functions"]}
 
 """
 
         for func_info in self.project_info.get("functions", []):
-            api_docs += f"""### {func_info["name"]}
+            if isinstance(func_info, dict):
+                api_docs += f"""### {func_info.get("name", "Unknown")}
 
 {func_info.get("docstring", "Aucune description")}
 
 """
-            if func_info.get("args"):
-                api_docs += (
-                    f"**{translations['parameters']}:** "
-                    f"{', '.join(func_info['args'])}\n\n"
-                )
+                if func_info.get("args"):
+                    api_docs += (
+                        f"**{translations['parameters']}:** "
+                        f"{', '.join(func_info['args'])}\n\n"
+                    )
 
         return api_docs
 

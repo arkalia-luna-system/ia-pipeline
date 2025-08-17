@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-🔍 ANALYSEUR AST DE BASE
+ ANALYSEUR AST DE BASE
 ========================
 Module d'analyse AST pour extraire les informations de base
 des fichiers Python. Utilisé par les autres modules d'analyse.

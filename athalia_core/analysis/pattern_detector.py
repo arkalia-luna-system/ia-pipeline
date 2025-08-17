@@ -1,577 +1,410 @@
 #!/usr/bin/env python3
 """
- DÉTECTEUR DE PATTERNS ET DOUBLONS
-====================================
-Module spécialisé dans la détection de patterns de code,
-doublons et anti-patterns. Utilise l'analyseur AST de base.
+Détecteur de patterns de code pour Athalia
+Analyse la qualité et la cohérence du code
 """
 
-import difflib
-import json
+import ast
 import logging
-import sqlite3
+import re
+from collections import defaultdict
 from dataclasses import dataclass
-from datetime import datetime
 from pathlib import Path
-from typing import Any
-
-from .ast_analyzer import ASTAnalyzer, FileAnalysis
+from typing import Any, Dict, List, Set, Tuple
 
 logger = logging.getLogger(__name__)
 
 
 @dataclass
 class CodePattern:
-    """Pattern de code détecté"""
+    """Représente un pattern de code détecté"""
 
-    pattern_type: str  # 'function', 'class', 'logic', 'structure'
-    signature: str  # Signature unique du pattern
-    locations: list[str]  # Fichiers où il apparaît
-    similarity_score: float  # Score de similarité (0-1)
-    complexity: int  # Complexité du pattern
-    last_seen: datetime
-    correction_history: list[str] = None
-
-
-@dataclass
-class DuplicateAnalysis:
-    """Analyse de doublons"""
-
-    duplicate_type: str
-    items: list[str]
-    locations: list[str]
-    severity: str
-    similarity_score: float
-    suggested_action: str
-    estimated_effort: str
-
-
-@dataclass
-class AntiPattern:
-    """Anti-pattern détecté"""
-
-    pattern_name: str
+    name: str
     description: str
-    locations: list[str]
-    impact: str  # 'low', 'medium', 'high', 'critical'
+    category: str
+    severity: str
+    location: str
+    line_number: int
     suggestion: str
-    previous_corrections: list[str]
+    correction_history: list[str] | None = None
 
 
 class PatternDetector:
-    """Détecteur de patterns et doublons"""
+    """Détecteur de patterns de code intelligent"""
 
-    def __init__(self, root_path: str = None):
-        self.root_path = Path(root_path or Path.cwd())
-        self.db_path = self.root_path / "data" / "pattern_analysis.db"
+    def __init__(self, root_path: str | None = None):
+        self.root_path = Path(root_path) if root_path else Path(".")
+        self.db_path = self.root_path / "patterns.db"
 
-        # Créer les dossiers nécessaires
-        self.db_path.parent.mkdir(parents=True, exist_ok=True)
+        # Initialiser les caches
+        self._pattern_cache: dict[str, Any] = {}
+        self._duplicate_cache: dict[str, Any] = {}
+        self._antipattern_cache: dict[str, Any] = {}
 
         # Initialiser la base de données
         self._init_database()
 
-        # Analyseur AST
-        self.ast_analyzer = ASTAnalyzer()
+    def _init_database(self) -> None:
+        """Initialise la base de données SQLite pour les patterns"""
+        try:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
 
-        # Cache pour les analyses
-        self._pattern_cache = {}
-        self._duplicate_cache = {}
-        self._antipattern_cache = {}
+            # Table des patterns détectés
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS patterns (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    name TEXT NOT NULL,
+                    description TEXT,
+                    category TEXT,
+                    severity TEXT,
+                    location TEXT,
+                    line_number INTEGER,
+                    suggestion TEXT,
+                    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+                )
+            """)
+
+            # Table des duplications
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS duplications (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    file1 TEXT NOT NULL,
+                    file2 TEXT NOT NULL,
+                    similarity REAL,
+                    lines1 TEXT,
+                    lines2 TEXT,
+                    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+                )
+            """)
+
+            # Table des anti-patterns
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS antipatterns (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    name TEXT NOT NULL,
+                    description TEXT,
+                    location TEXT,
+                    line_number INTEGER,
+                    impact TEXT,
+                    fix_suggestion TEXT,
+                    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+                )
+            """)
+
+            conn.commit()
+            conn.close()
+
+        except Exception as e:
+            logger.warning(f"Impossible d'initialiser la base de données: {e}")
+
+    def _load_patterns(self) -> None:
+        """Charge les patterns depuis la base de données"""
+        try:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+
+            # Charger les patterns
+            cursor.execute("SELECT * FROM patterns ORDER BY timestamp DESC")
+            patterns = cursor.fetchall()
+
+            for pattern in patterns:
+                pattern_id = pattern[0]
+                self._pattern_cache[str(pattern_id)] = {
+                    "name": pattern[1],
+                    "description": pattern[2],
+                    "category": pattern[3],
+                    "severity": pattern[4],
+                    "location": pattern[5],
+                    "line_number": pattern[6],
+                    "suggestion": pattern[7],
+                    "timestamp": pattern[8],
+                }
+
+            # Charger les duplications
+            cursor.execute("SELECT * FROM duplications ORDER BY timestamp DESC")
+            duplications = cursor.fetchall()
+
+            for dup in duplications:
+                dup_id = dup[0]
+                self._duplicate_cache[str(dup_id)] = {
+                    "file1": dup[1],
+                    "file2": dup[2],
+                    "similarity": dup[3],
+                    "lines1": dup[4],
+                    "lines2": dup[5],
+                    "timestamp": dup[6],
+                }
+
+            # Charger les anti-patterns
+            cursor.execute("SELECT * FROM antipatterns ORDER BY timestamp DESC")
+            antipatterns = cursor.fetchall()
+
+            for anti in antipatterns:
+                anti_id = anti[0]
+                self._antipattern_cache[str(anti_id)] = {
+                    "name": anti[1],
+                    "description": anti[2],
+                    "location": anti[3],
+                    "line_number": anti[4],
+                    "impact": anti[5],
+                    "fix_suggestion": anti[6],
+                    "timestamp": anti[7],
+                }
+
+            conn.close()
+
+        except Exception as e:
+            logger.warning(f"Impossible de charger les patterns: {e}")
+
+    def analyze_project_patterns(self, project_path: str | None = None) -> dict[str, Any]:
+        """Analyse les patterns du projet"""
+        if project_path is None:
+            project_path = self.root_path
+        else:
+            project_path = Path(project_path)
+
+        project_name = project_path.name
+        logger.info(f"🔍 Analyse des patterns pour: {project_name}")
 
         # Charger les patterns existants
         self._load_patterns()
 
-        logger.info(f" Pattern Detector initialisé dans {self.root_path}")
+        # Analyser les fichiers Python
+        python_files = list(project_path.rglob("*.py"))
 
-    def _init_database(self):
-        """Initialiser la base de données"""
-        with sqlite3.connect(self.db_path) as conn:
-            cursor = conn.cursor()
+        analysis_results = {
+            "project": str(project_path),
+            "total_files": len(python_files),
+            "patterns_detected": len(self._pattern_cache),
+            "duplications_found": len(self._duplicate_cache),
+            "antipatterns_detected": len(self._antipattern_cache),
+            "patterns": list(self._pattern_cache.values()),
+            "duplications": list(self._duplicate_cache.values()),
+            "antipatterns": list(self._antipattern_cache.values()),
+        }
 
-            # Table des patterns de code
-            cursor.execute(
-                """
-                CREATE TABLE IF NOT EXISTS code_patterns (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    pattern_type TEXT NOT NULL,
-                    signature TEXT UNIQUE NOT NULL,
-                    locations TEXT NOT NULL,
-                    similarity_score REAL DEFAULT 1.0,
-                    complexity INTEGER DEFAULT 1,
-                    last_seen TEXT NOT NULL,
-                    correction_history TEXT,
-                    usage_count INTEGER DEFAULT 1
-                )
-            """
-            )
+        return analysis_results
 
-            # Table des doublons détectés
-            cursor.execute(
-                """
-                CREATE TABLE IF NOT EXISTS duplicates (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    duplicate_type TEXT NOT NULL,
-                    items TEXT NOT NULL,
-                    locations TEXT NOT NULL,
-                    severity TEXT NOT NULL,
-                    similarity_score REAL NOT NULL,
-                    suggested_action TEXT,
-                    estimated_effort TEXT,
-                    detected_at TEXT NOT NULL,
-                    resolved_at TEXT,
-                    resolution_method TEXT
-                )
-            """
-            )
+    def detect_code_duplication(self, min_similarity: float = 0.8) -> list[dict[str, Any]]:
+        """Détecte la duplication de code"""
+        logger.info("🔍 Détection de duplication de code")
 
-            # Table des anti-patterns
-            cursor.execute(
-                """
-                CREATE TABLE IF NOT EXISTS antipatterns (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    pattern_name TEXT NOT NULL,
-                    description TEXT NOT NULL,
-                    locations TEXT NOT NULL,
-                    impact TEXT NOT NULL,
-                    suggestion TEXT NOT NULL,
-                    previous_corrections TEXT,
-                    detected_at TEXT NOT NULL,
-                    resolved_at TEXT
-                )
-            """
-            )
+        duplications = []
+        python_files = list(self.root_path.rglob("*.py"))
 
-            conn.commit()
+        for i, file1 in enumerate(python_files):
+            for file2 in python_files[i+1:]:
+                try:
+                    similarity = self._calculate_file_similarity(file1, file2)
+                    if similarity >= min_similarity:
+                        duplications.append({
+                            "file1": str(file1),
+                            "file2": str(file2),
+                            "similarity": similarity,
+                            "lines1": self._extract_common_lines(file1),
+                            "lines2": self._extract_common_lines(file2),
+                        })
+                except Exception as e:
+                    logger.debug(f"Erreur comparaison {file1} vs {file2}: {e}")
+                    continue
 
-    def _load_patterns(self):
-        """Charger les patterns depuis la base de données"""
-        with sqlite3.connect(self.db_path) as conn:
-            cursor = conn.cursor()
-            cursor.execute("SELECT * FROM code_patterns")
-            rows = cursor.fetchall()
+        return duplications
 
-            for row in rows:
-                pattern = CodePattern(
-                    pattern_type=row[1],
-                    signature=row[2],
-                    locations=json.loads(row[3]),
-                    similarity_score=row[4],
-                    complexity=row[5],
-                    last_seen=datetime.fromisoformat(row[6]),
-                    correction_history=json.loads(row[7]) if row[7] else [],
-                )
-                self._pattern_cache[pattern.signature] = pattern
+    def _calculate_file_similarity(self, file1: Path, file2: Path) -> float:
+        """Calcule la similarité entre deux fichiers"""
+        try:
+            with open(file1, encoding="utf-8") as f1:
+                content1 = f1.read()
 
-    def analyze_project_patterns(
-        self, project_path: str | None = None
-    ) -> dict[str, Any]:
-        """Analyser les patterns d'un projet complet"""
-        project_path = Path(project_path or self.root_path)
-        logger.info(f"Analyse des patterns du projet: {project_path.name}")
+            with open(file2, encoding="utf-8") as f2:
+                content2 = f2.read()
 
-        # Analyser tous les fichiers Python (ignorer les fichiers cachés)
-        python_files = [
-            f for f in project_path.rglob("*.py") if not f.name.startswith("._")
-        ]
-        logger.info(f" {len(python_files)} fichiers Python trouvés")
+            # Calcul simple de similarité basé sur les lignes communes
+            lines1 = set(content1.split("\n"))
+            lines2 = set(content2.split("\n"))
 
-        # Limiter le nombre de fichiers pour les tests
-        if len(python_files) > 50:
-            python_files = python_files[:50]
-            logger.info(" Limitation à 50 fichiers pour les performances")
+            if not lines1 or not lines2:
+                return 0.0
 
-        # Analyser chaque fichier
-        all_patterns = []
-        all_duplicates = []
-        all_antipatterns = []
+            intersection = len(lines1.intersection(lines2))
+            union = len(lines1.union(lines2))
+
+            return intersection / union if union > 0 else 0.0
+
+        except Exception:
+            return 0.0
+
+    def _extract_common_lines(self, file_path: Path) -> str:
+        """Extrait les lignes communes d'un fichier"""
+        try:
+            with open(file_path, encoding="utf-8") as f:
+                lines = f.readlines()
+
+            # Retourner les premières lignes comme exemple
+            return "".join(lines[:10])
+        except Exception:
+            return ""
+
+    def detect_antipatterns(self) -> list[dict[str, Any]]:
+        """Détecte les anti-patterns dans le code"""
+        logger.info("🔍 Détection d'anti-patterns")
+
+        antipatterns = []
+        python_files = list(self.root_path.rglob("*.py"))
 
         for py_file in python_files:
             try:
-                file_analysis = self.ast_analyzer.analyze_file(py_file)
-                if file_analysis:
-                    file_patterns = self._extract_patterns_from_file(file_analysis)
-                    all_patterns.extend(file_patterns)
+                with open(py_file, encoding="utf-8") as f:
+                    content = f.read()
+
+                # Détecter les anti-patterns courants
+                file_antipatterns = self._analyze_file_antipatterns(py_file, content)
+                antipatterns.extend(file_antipatterns)
+
             except Exception as e:
-                logger.warning(f"Erreur lors de l'analyse de {py_file}: {e}")
-
-        # Détecter les doublons
-        duplicates = self._detect_duplicates(all_patterns)
-        all_duplicates.extend(duplicates)
-
-        # Détecter les anti-patterns
-        antipatterns = self._detect_antipatterns(all_patterns)
-        all_antipatterns.extend(antipatterns)
-
-        # Sauvegarder les résultats
-        self._save_analysis_results(all_patterns, all_duplicates, all_antipatterns)
-
-        # Générer les recommandations
-        recommendations = self._generate_recommendations(
-            all_duplicates, all_antipatterns
-        )
-
-        return {
-            "patterns": all_patterns,
-            "duplicates": all_duplicates,
-            "antipatterns": all_antipatterns,
-            "recommendations": recommendations,
-            "summary": {
-                "total_patterns": len(all_patterns),
-                "total_duplicates": len(all_duplicates),
-                "total_antipatterns": len(all_antipatterns),
-                "files_analyzed": len(python_files),
-            },
-        }
-
-    def _extract_patterns_from_file(
-        self, file_analysis: FileAnalysis
-    ) -> list[CodePattern]:
-        """Extraire les patterns d'un fichier analysé"""
-        patterns = []
-
-        # Patterns de fonctions
-        for func in file_analysis.functions:
-            pattern = CodePattern(
-                pattern_type="function",
-                signature=func.signature,
-                locations=[str(file_analysis.file_path)],
-                similarity_score=1.0,
-                complexity=func.complexity,
-                last_seen=file_analysis.last_modified,
-                correction_history=[],
-            )
-            patterns.append(pattern)
-
-        # Patterns de classes
-        for cls in file_analysis.classes:
-            pattern = CodePattern(
-                pattern_type="class",
-                signature=cls.signature,
-                locations=[str(file_analysis.file_path)],
-                similarity_score=1.0,
-                complexity=cls.complexity,
-                last_seen=file_analysis.last_modified,
-                correction_history=[],
-            )
-            patterns.append(pattern)
-
-        # Patterns de conditions
-        for cond in file_analysis.conditionals:
-            pattern = CodePattern(
-                pattern_type="conditional",
-                signature=cond.signature,
-                locations=[str(file_analysis.file_path)],
-                similarity_score=1.0,
-                complexity=cond.complexity,
-                last_seen=file_analysis.last_modified,
-                correction_history=[],
-            )
-            patterns.append(pattern)
-
-        # Patterns de boucles
-        for loop in file_analysis.loops:
-            pattern = CodePattern(
-                pattern_type="loop",
-                signature=loop.signature,
-                locations=[str(file_analysis.file_path)],
-                similarity_score=1.0,
-                complexity=loop.complexity,
-                last_seen=file_analysis.last_modified,
-                correction_history=[],
-            )
-            patterns.append(pattern)
-
-        return patterns
-
-    def _detect_duplicates(
-        self, patterns: list[CodePattern]
-    ) -> list[DuplicateAnalysis]:
-        """Détecter les doublons parmi les patterns"""
-        duplicates = []
-        processed = set()
-
-        # Grouper les patterns par type pour une comparaison plus efficace
-        patterns_by_type = {}
-        for pattern in patterns:
-            if pattern.pattern_type not in patterns_by_type:
-                patterns_by_type[pattern.pattern_type] = []
-            patterns_by_type[pattern.pattern_type].append(pattern)
-
-        # Détecter les doublons par type
-        for _pattern_type, type_patterns in patterns_by_type.items():
-            for i, pattern1 in enumerate(type_patterns):
-                if pattern1.signature in processed:
-                    continue
-
-                similar_patterns = [pattern1]
-
-                for _j, pattern2 in enumerate(type_patterns[i + 1 :], i + 1):
-                    if pattern2.signature in processed:
-                        continue
-
-                    similarity = self._calculate_similarity(pattern1, pattern2)
-                    if similarity > 0.7:  # Seuil de similarité plus bas
-                        similar_patterns.append(pattern2)
-                        processed.add(pattern2.signature)
-
-                if len(similar_patterns) > 1:
-                    processed.add(pattern1.signature)
-
-                    # Calculer la sévérité
-                    severity = "low"
-                    if len(similar_patterns) > 3:
-                        severity = "high"
-                    elif len(similar_patterns) > 2:
-                        severity = "medium"
-
-                    # Calculer l'effort estimé
-                    effort = "low"
-                    if pattern1.complexity > 10:
-                        effort = "high"
-                    elif pattern1.complexity > 5:
-                        effort = "medium"
-
-                    duplicate = DuplicateAnalysis(
-                        duplicate_type=pattern1.pattern_type,
-                        items=[p.signature for p in similar_patterns],
-                        locations=list(
-                            {loc for p in similar_patterns for loc in p.locations}
-                        ),
-                        severity=severity,
-                        similarity_score=similarity,
-                        suggested_action=(
-                            "merge" if severity in ["medium", "high"] else "review"
-                        ),
-                        estimated_effort=effort,
-                    )
-                    duplicates.append(duplicate)
-
-        return duplicates
-
-    def _calculate_similarity(
-        self, pattern1: CodePattern, pattern2: CodePattern
-    ) -> float:
-        """Calculer la similarité entre deux patterns"""
-        # Comparer les signatures
-        return difflib.SequenceMatcher(
-            None, pattern1.signature, pattern2.signature
-        ).ratio()
-
-    def _detect_antipatterns(self, patterns: list[CodePattern]) -> list[AntiPattern]:
-        """Détecter les anti-patterns"""
-        antipatterns = []
-
-        # Anti-pattern: fonctions trop complexes
-        for pattern in patterns:
-            if (
-                pattern.pattern_type == "function" and pattern.complexity > 10
-            ):  # Seuil plus bas
-                antipattern = AntiPattern(
-                    pattern_name="high_complexity_function",
-                    description=(
-                        f"Fonction trop complexe (complexité: {pattern.complexity})"
-                    ),
-                    locations=pattern.locations,
-                    impact="medium" if pattern.complexity < 20 else "high",
-                    suggestion="Refactoriser en sous-fonctions plus petites",
-                    previous_corrections=[],
-                )
-                antipatterns.append(antipattern)
-
-        # Anti-pattern: classes trop grandes
-        for pattern in patterns:
-            if (
-                pattern.pattern_type == "class" and pattern.complexity > 15
-            ):  # Seuil plus bas
-                antipattern = AntiPattern(
-                    pattern_name="large_class",
-                    description=(
-                        f"Classe trop grande (complexité: {pattern.complexity})"
-                    ),
-                    locations=pattern.locations,
-                    impact="medium" if pattern.complexity < 25 else "high",
-                    suggestion="Diviser en classes plus petites",
-                    previous_corrections=[],
-                )
-                antipatterns.append(antipattern)
-
-        # Anti-pattern: patterns trop similaires (doublons potentiels)
-        for pattern in patterns:
-            if pattern.pattern_type in ["function", "class"] and pattern.complexity > 5:
-                # Chercher des patterns similaires
-                similar_count = 0
-                for other_pattern in patterns:
-                    if (
-                        other_pattern != pattern
-                        and other_pattern.pattern_type == pattern.pattern_type
-                        and self._calculate_similarity(pattern, other_pattern) > 0.6
-                    ):
-                        similar_count += 1
-
-                if similar_count >= 2:
-                    antipattern = AntiPattern(
-                        pattern_name="potential_duplicate",
-                        description=(
-                            "Pattern potentiellement dupliqué"
-                            f" ({similar_count} similaires)"
-                        ),
-                        locations=pattern.locations,
-                        impact="medium",
-                        suggestion="Considérer la fusion ou l'abstraction",
-                        previous_corrections=[],
-                    )
-                    antipatterns.append(antipattern)
+                logger.debug(f"Erreur analyse {py_file}: {e}")
+                continue
 
         return antipatterns
 
-    def _save_analysis_results(
-        self,
-        patterns: list[CodePattern],
-        duplicates: list[DuplicateAnalysis],
-        antipatterns: list[AntiPattern],
-    ):
-        """Sauvegarder les résultats d'analyse"""
-        with sqlite3.connect(self.db_path) as conn:
+    def _analyze_file_antipatterns(self, file_path: Path, content: str) -> list[dict[str, Any]]:
+        """Analyse un fichier pour détecter les anti-patterns"""
+        antipatterns = []
+        lines = content.split("\n")
+
+        for line_num, line in enumerate(lines, 1):
+            line = line.strip()
+
+            # Anti-patterns courants
+            if "import *" in line:
+                antipatterns.append({
+                    "name": "Import wildcard",
+                    "description": "Import de tous les modules avec *",
+                    "location": str(file_path),
+                    "line_number": line_num,
+                    "impact": "Pollution du namespace",
+                    "fix_suggestion": "Importer uniquement les modules nécessaires",
+                })
+
+            elif "global " in line and "=" in line:
+                antipatterns.append({
+                    "name": "Variable globale modifiée",
+                    "description": "Modification d'une variable globale",
+                    "location": str(file_path),
+                    "line_number": line_num,
+                    "impact": "Difficulté de débogage",
+                    "fix_suggestion": "Passer la variable en paramètre",
+                })
+
+            elif "except:" in line:
+                antipatterns.append({
+                    "name": "Exception trop large",
+                    "description": "Capture de toutes les exceptions",
+                    "location": str(file_path),
+                    "line_number": line_num,
+                    "impact": "Masquage d'erreurs importantes",
+                    "fix_suggestion": "Spécifier les types d'exceptions",
+                })
+
+        return antipatterns
+
+    def generate_pattern_report(self) -> str:
+        """Génère un rapport des patterns détectés"""
+        analysis = self.analyze_project_patterns()
+
+        report = f"""# Rapport d'analyse des patterns - {analysis['project']}
+
+## Résumé
+- **Fichiers analysés**: {analysis['total_files']}
+- **Patterns détectés**: {analysis['patterns_detected']}
+- **Duplications trouvées**: {analysis['duplications_found']}
+- **Anti-patterns détectés**: {analysis['antipatterns_detected']}
+
+## Patterns détectés
+"""
+
+        for pattern in analysis["patterns"]:
+            report += f"- **{pattern['name']}** ({pattern['severity']}): {pattern['description']}\n"
+            report += f"  - Fichier: {pattern['location']}:{pattern['line_number']}\n"
+            report += f"  - Suggestion: {pattern['suggestion']}\n\n"
+
+        if analysis["duplications"]:
+            report += "## Duplications de code\n"
+            for dup in analysis["duplications"]:
+                report += f"- **{dup['file1']}** ↔ **{dup['file2']}** (similarité: {dup['similarity']:.2%})\n"
+
+        if analysis["antipatterns"]:
+            report += "\n## Anti-patterns détectés\n"
+            for anti in analysis["antipatterns"]:
+                report += f"- **{anti['name']}**: {anti['description']}\n"
+                report += f"  - Fichier: {anti['location']}:{anti['line_number']}\n"
+                report += f"  - Impact: {anti['impact']}\n"
+                report += f"  - Correction: {anti['fix_suggestion']}\n\n"
+
+        return report
+
+    def save_patterns_to_database(self, patterns: list[dict[str, Any]]) -> bool:
+        """Sauvegarde les patterns détectés en base de données"""
+        try:
+            conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
 
-            # Sauvegarder les patterns
             for pattern in patterns:
-                cursor.execute(
-                    """
-                    INSERT OR REPLACE INTO code_patterns
-                    (pattern_type, signature, locations, similarity_score,
-                     complexity, last_seen, correction_history)
+                cursor.execute("""
+                    INSERT INTO patterns (name, description, category, severity, location, line_number, suggestion)
                     VALUES (?, ?, ?, ?, ?, ?, ?)
-                """,
-                    (
-                        pattern.pattern_type,
-                        pattern.signature,
-                        json.dumps(pattern.locations),
-                        pattern.similarity_score,
-                        pattern.complexity,
-                        pattern.last_seen.isoformat(),
-                        json.dumps(pattern.correction_history or []),
-                    ),
-                )
-
-            # Sauvegarder les doublons
-            for duplicate in duplicates:
-                cursor.execute(
-                    """
-                    INSERT INTO duplicates
-                    (duplicate_type, items, locations, severity,
-                     similarity_score, suggested_action, estimated_effort, detected_at)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-                """,
-                    (
-                        duplicate.duplicate_type,
-                        json.dumps(duplicate.items),
-                        json.dumps(duplicate.locations),
-                        duplicate.severity,
-                        duplicate.similarity_score,
-                        duplicate.suggested_action,
-                        duplicate.estimated_effort,
-                        datetime.now().isoformat(),
-                    ),
-                )
-
-            # Sauvegarder les anti-patterns
-            for antipattern in antipatterns:
-                cursor.execute(
-                    """
-                    INSERT INTO antipatterns
-                    (pattern_name, description, locations, impact,
-                     suggestion, previous_corrections, detected_at)
-                    VALUES (?, ?, ?, ?, ?, ?, ?)
-                """,
-                    (
-                        antipattern.pattern_name,
-                        antipattern.description,
-                        json.dumps(antipattern.locations),
-                        antipattern.impact,
-                        antipattern.suggestion,
-                        json.dumps(antipattern.previous_corrections or []),
-                        datetime.now().isoformat(),
-                    ),
-                )
+                """, (
+                    pattern.get("name", ""),
+                    pattern.get("description", ""),
+                    pattern.get("category", ""),
+                    pattern.get("severity", ""),
+                    pattern.get("location", ""),
+                    pattern.get("line_number", 0),
+                    pattern.get("suggestion", ""),
+                ))
 
             conn.commit()
+            conn.close()
+            return True
 
-    def _generate_recommendations(
-        self,
-        duplicates: list[DuplicateAnalysis],
-        antipatterns: list[AntiPattern],
-    ) -> list[str]:
-        """Générer des recommandations basées sur l'analyse"""
-        recommendations = []
+        except Exception as e:
+            logger.error(f"Erreur sauvegarde patterns: {e}")
+            return False
 
-        # Recommandations pour les doublons
-        high_severity_duplicates = [
-            d for d in duplicates if d.severity in ["high", "medium"]
-        ]
-        if high_severity_duplicates:
-            recommendations.append(
-                f"{len(high_severity_duplicates)} doublons critiques - "
-                "priorité à la fusion"
-            )
 
-        # Recommandations pour les anti-patterns
-        high_impact_antipatterns = [
-            a for a in antipatterns if a.impact in ["high", "critical"]
-        ]
-        if high_impact_antipatterns:
-            recommendations.append(
-                f" {len(high_impact_antipatterns)} anti-patterns critiques - "
-                "refactoring urgent"
-            )
+def main() -> None:
+    """Point d'entrée principal"""
+    import argparse
 
-        # Recommandations générales
-        if duplicates:
-            recommendations.append(
-                " Créer un module utilitaire pour les patterns communs"
-            )
+    parser = argparse.ArgumentParser(description="Détecteur de patterns de code")
+    parser.add_argument("project_path", help="Chemin vers le projet à analyser")
+    parser.add_argument("--output", help="Fichier de sortie pour le rapport")
+    parser.add_argument("--min-similarity", type=float, default=0.8, help="Similarité minimale pour les duplications")
 
-        if antipatterns:
-            recommendations.append("📚 Revoir les bonnes pratiques de complexité")
+    args = parser.parse_args()
 
-        return recommendations
+    detector = PatternDetector(args.project_path)
 
-    def get_learning_insights(self) -> dict[str, Any]:
-        """Obtenir des insights d'apprentissage"""
-        with sqlite3.connect(self.db_path) as conn:
-            cursor = conn.cursor()
+    # Analyser les patterns
+    analysis = detector.analyze_project_patterns()
 
-            # Statistiques des patterns
-            cursor.execute("SELECT COUNT(*) FROM code_patterns")
-            total_patterns = cursor.fetchone()[0]
+    # Détecter les duplications
+    duplications = detector.detect_code_duplication(args.min_similarity)
 
-            cursor.execute("SELECT COUNT(*) FROM duplicates WHERE resolved_at IS NULL")
-            unresolved_duplicates = cursor.fetchone()[0]
+    # Détecter les anti-patterns
+    antipatterns = detector.detect_antipatterns()
 
-            cursor.execute(
-                "SELECT COUNT(*) FROM antipatterns WHERE resolved_at IS NULL"
-            )
-            unresolved_antipatterns = cursor.fetchone()[0]
+    # Générer le rapport
+    report = detector.generate_pattern_report()
 
-            # Patterns les plus utilisés
-            cursor.execute(
-                """
-                SELECT pattern_type, COUNT(*) as count
-                FROM code_patterns
-                GROUP BY pattern_type
-                ORDER BY count DESC
-            """
-            )
-            pattern_distribution = dict(cursor.fetchall())
+    if args.output:
+        with open(args.output, "w", encoding="utf-8") as f:
+            f.write(report)
+        print(f"📄 Rapport sauvegardé dans {args.output}")
+    else:
+        print(report)
 
-            return {
-                "total_patterns": total_patterns,
-                "unresolved_duplicates": unresolved_duplicates,
-                "unresolved_antipatterns": unresolved_antipatterns,
-                "pattern_distribution": pattern_distribution,
-                "learning_score": max(
-                    0,
-                    100 - (unresolved_duplicates + unresolved_antipatterns) * 10,
-                ),
-            }
+
+if __name__ == "__main__":
+    main()

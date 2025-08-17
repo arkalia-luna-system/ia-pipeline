@@ -80,15 +80,15 @@ class IntelligentAnalyzer:
         logger.info(f"🧠 Analyse complète du projet: {project_name}")
 
         # 1. Analyse AST de base
-        logger.info("📊 Étape 1/4: Analyse AST de base...")
+        logger.info(" Étape 1/4: Analyse AST de base...")
         ast_analysis = self._perform_ast_analysis(project_path)
 
         # 2. Analyse des patterns et doublons
-        logger.info("🔍 Étape 2/4: Analyse des patterns et doublons...")
+        logger.info(" Étape 2/4: Analyse des patterns et doublons...")
         pattern_analysis = self.pattern_detector.analyze_project_patterns(project_path)
 
         # 3. Analyse d'architecture
-        logger.info("🏗️ Étape 3/4: Analyse d'architecture...")
+        logger.info("🏗 Étape 3/4: Analyse d'architecture...")
         architecture_analysis = self.architecture_analyzer.analyze_entire_architecture()
 
         # 4. Analyse de performance
@@ -138,7 +138,7 @@ class IntelligentAnalyzer:
         self._save_comprehensive_analysis(comprehensive_analysis)
 
         logger.info(
-            f"✅ Analyse complète terminée - Score global: {overall_score:.1f}/100"
+            f" Analyse complète terminée - Score global: {overall_score:.1f}/100"
         )
 
         return comprehensive_analysis
@@ -255,7 +255,7 @@ class IntelligentAnalyzer:
             ]
         if high_severity_duplicates:
             recommendations.append(
-                f"🔧 {len(high_severity_duplicates)} doublons critiques - fusion"
+                f" {len(high_severity_duplicates)} doublons critiques - fusion"
                 " prioritaire"
             )
 
@@ -267,7 +267,7 @@ class IntelligentAnalyzer:
             ]
             if high_impact_antipatterns:
                 recommendations.append(
-                    f"⚠️ {len(high_impact_antipatterns)} anti-patterns critiques - "
+                    f" {len(high_impact_antipatterns)} anti-patterns critiques - "
                     "refactoring urgent"
                 )
 
@@ -277,7 +277,7 @@ class IntelligentAnalyzer:
             and architecture_analysis.performance_issues
         ):
             recommendations.append(
-                f"🏗️ {len(architecture_analysis.performance_issues)} "
+                f"🏗 {len(architecture_analysis.performance_issues)} "
                 "problèmes d'architecture détectés"
             )
 
@@ -301,7 +301,7 @@ class IntelligentAnalyzer:
         # Recommandations générales
         if recommendations:
             recommendations.append(
-                "📊 Considérer l'implémentation d'un système de métriques continues"
+                " Considérer l'implémentation d'un système de métriques continues"
             )
             recommendations.append(
                 "🔄 Planifier des sessions de refactoring régulières"
@@ -503,7 +503,7 @@ class IntelligentAnalyzer:
             )
             return self.analyze_project_comprehensive(project_path)
 
-        logger.info("🎯 Utilisation de l'orchestrateur unifié")
+        logger.info(" Utilisation de l'orchestrateur unifié")
         unified_orchestrator = UnifiedOrchestrator(self.root_path)
         return unified_orchestrator.orchestrate_project_complete(project_path, config)
 
@@ -530,7 +530,7 @@ def main():
     print(f"Score global: {analysis.overall_score:.1f}/100")
     print(f"Date d'analyse: {analysis.analysis_date}")
 
-    print("\n📊 RÉSUMÉ:")
+    print("\n RÉSUMÉ:")
     print(f"- Fichiers analysés: {analysis.ast_analysis['files_analyzed']}")
     print(
         "- Doublons détectés:"
@@ -545,7 +545,7 @@ def main():
     for i, rec in enumerate(analysis.recommendations, 1):
         print(f"{i}. {rec}")
 
-    print("\n🚀 PLAN D'OPTIMISATION:")
+    print("\n PLAN D'OPTIMISATION:")
     plan = analysis.optimization_plan
     print(f"- Effort estimé: {plan['estimated_effort']:.1f} heures")
     print(f"- Amélioration attendue: {plan['expected_improvement']:.1f}%")

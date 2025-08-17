@@ -196,13 +196,13 @@ class PluginValidator:
         for plugin in self.validation_results["invalid_plugins"]:
             report.append(f"- {plugin['path']}")
             for error in plugin["errors"]:
-                report.append(f"  - ❌ {error}")
+                report.append(f"  -  {error}")
 
         if self.validation_results["warnings"]:
             report.append("")
             report.append("## Avertissements")
             for warning in self.validation_results["warnings"]:
-                report.append(f"- ⚠️ {warning}")
+                report.append(f"-  {warning}")
 
         return "\n".join(report)
 

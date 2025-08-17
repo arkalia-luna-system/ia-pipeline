@@ -210,16 +210,16 @@ services:
         logs = {}
         artifacts = []
 
-        self.logger.info("🚀 Démarrage pipeline CI robotique")
+        self.logger.info(" Démarrage pipeline CI robotique")
 
         # Stage 1: Validation ROS2
         if config.ros2_enabled:
-            self.logger.info("🔧 Stage 1: Validation ROS2")
+            self.logger.info(" Stage 1: Validation ROS2")
             success, log = self._run_ros2_validation()
             stages["ros2_validation"] = success
             logs["ros2_validation"] = log
             if not success:
-                self.logger.error("❌ Échec validation ROS2")
+                self.logger.error(" Échec validation ROS2")
                 return CIResult(
                     success=False,
                     stages=stages,
@@ -235,16 +235,16 @@ services:
             stages["docker_build"] = success
             logs["docker_build"] = log
             if not success:
-                self.logger.error("❌ Échec build Docker")
+                self.logger.error(" Échec build Docker")
 
         # Stage 3: Build Rust
         if config.rust_enabled:
-            self.logger.info("🔧 Stage 3: Build Rust")
+            self.logger.info(" Stage 3: Build Rust")
             success, log = self._run_rust_build()
             stages["rust_build"] = success
             logs["rust_build"] = log
             if not success:
-                self.logger.error("❌ Échec build Rust")
+                self.logger.error(" Échec build Rust")
 
         # Stage 4: Tests
         if config.test_enabled:
@@ -253,16 +253,16 @@ services:
             stages["tests"] = success
             logs["tests"] = log
             if not success:
-                self.logger.error("❌ Échec tests")
+                self.logger.error(" Échec tests")
 
         # Stage 5: Déploiement
         if config.deploy_enabled:
-            self.logger.info("🚀 Stage 5: Déploiement")
+            self.logger.info(" Stage 5: Déploiement")
             success, log = self._run_deployment()
             stages["deployment"] = success
             logs["deployment"] = log
             if not success:
-                self.logger.error("❌ Échec déploiement")
+                self.logger.error(" Échec déploiement")
 
         # Collecter artifacts
         artifacts = self._collect_artifacts()
@@ -271,7 +271,7 @@ services:
         overall_success = all(stages.values()) if stages else True
 
         duration = time.time() - start_time
-        self.logger.info(f"✅ Pipeline CI terminé en {duration:.2f}s")
+        self.logger.info(f" Pipeline CI terminé en {duration:.2f}s")
 
         return CIResult(
             success=overall_success,
@@ -437,21 +437,21 @@ services:
         report = f"""
 # 🤖 Rapport CI/CD Robotique
 
-## 📊 Résumé
-- **Statut**: {"✅ Succès" if result.success else "❌ Échec"}
+##  Résumé
+- **Statut**: {" Succès" if result.success else " Échec"}
 - **Durée**: {result.duration:.2f}s
 - **Stages**: {len(result.stages)}
 - **Artifacts**: {len(result.artifacts)}
 
-## 🔧 Stages Exécutés
+##  Stages Exécutés
 """
 
         for stage_name, success in result.stages.items():
-            status = "✅" if success else "❌"
+            status = "" if success else ""
             report += f"- {status} {stage_name}\n"
 
         if result.logs:
-            report += "\n## 📝 Logs\n"
+            report += "\n##  Logs\n"
             for stage_name, log in result.logs.items():
                 report += f"\n### {stage_name}\n```\n{log[:500]}...\n```\n"
 
@@ -479,9 +479,9 @@ services:
             with open(compose_file, "w") as f:
                 f.write(self.create_docker_compose_ci())
 
-            self.logger.info("✅ Environnement CI configuré")
+            self.logger.info(" Environnement CI configuré")
             return True
 
         except Exception as e:
-            self.logger.error(f"❌ Erreur configuration CI: {e}")
+            self.logger.error(f" Erreur configuration CI: {e}")
             return False

@@ -9,6 +9,7 @@ import json
 import logging
 import re
 from pathlib import Path
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -20,7 +21,7 @@ class AutocompleteEngine:
         self.data_dir = Path(data_dir)
         self.data_dir.mkdir(exist_ok=True)
         self.suggestions = self.load_suggestions()
-        self.context = {}
+        self.context: dict[str, Any] = {}
 
     def load_suggestions(
         self, suggestions_path: str | None = None
@@ -248,7 +249,7 @@ class AutocompleteEngine:
             else:
                 suggestions_path = Path(suggestions_path)
 
-            with open(suggestions_path, "w", encoding="utf-8") as f:
+            with open(str(suggestions_path), "w", encoding="utf-8") as f:
                 json.dump(self.suggestions, f, indent=2, ensure_ascii=False)
 
             return True
@@ -260,17 +261,17 @@ class AutocompleteEngine:
     def train_on_file(self, file_path: str) -> bool:
         """Entraîne le moteur sur un fichier"""
         try:
-            file_path = Path(file_path)
+            file_path_path = Path(file_path)
 
-            if not file_path.exists():
-                logger.error(f"Fichier non trouvé: {file_path}")
+            if not file_path_path.exists():
+                logger.error(f"Fichier non trouvé: {file_path_path}")
                 return False
 
             # Détecter le langage basé sur l'extension
-            language = self._detect_language(file_path)
+            language = self._detect_language(file_path_path)
 
             # Extraire les suggestions du fichier
-            suggestions = self._extract_suggestions_from_file(file_path, language)
+            suggestions = self._extract_suggestions_from_file(file_path_path, language)
 
             # Ajouter les suggestions
             for suggestion in suggestions:
@@ -285,14 +286,14 @@ class AutocompleteEngine:
     def train_on_directory(self, directory_path: str) -> bool:
         """Entraîne le moteur sur un répertoire"""
         try:
-            directory_path = Path(directory_path)
+            directory_path_path = Path(directory_path)
 
-            if not directory_path.exists() or not directory_path.is_dir():
-                logger.error(f"Répertoire non trouvé: {directory_path}")
+            if not directory_path_path.exists() or not directory_path_path.is_dir():
+                logger.error(f"Répertoire non trouvé: {directory_path_path}")
                 return False
 
             # Parcourir tous les fichiers
-            for file_path in directory_path.rglob("*"):
+            for file_path in directory_path_path.rglob("*"):
                 if file_path.is_file():
                     self.train_on_file(str(file_path))
 

@@ -42,7 +42,7 @@ class ROS2Validator:
 
     def validate_package(self) -> dict[str, Any]:
         """Valide un package ROS2 complet"""
-        logger.info(f"🔍 Validation du package ROS2: {self.project_path.name}")
+        logger.info(f" Validation du package ROS2: {self.project_path.name}")
 
         # Vérifier la structure de base
         if not self._check_package_structure():
@@ -309,7 +309,7 @@ class ROS2Validator:
         report.append("# Rapport de Validation ROS2")
         report.append("")
 
-        status = "✅ VALIDE" if self.validation_results["valid"] else "❌ INVALIDE"
+        status = " VALIDE" if self.validation_results["valid"] else " INVALIDE"
         report.append(f"## Statut: {status}")
         report.append("")
 
@@ -340,13 +340,13 @@ class ROS2Validator:
         if self.validation_results["errors"]:
             report.append("## Erreurs")
             for error in self.validation_results["errors"]:
-                report.append(f"- ❌ {error}")
+                report.append(f"-  {error}")
             report.append("")
 
         if self.validation_results["warnings"]:
             report.append("## Avertissements")
             for warning in self.validation_results["warnings"]:
-                report.append(f"- ⚠️ {warning}")
+                report.append(f"-  {warning}")
             report.append("")
 
         return "\n".join(report)

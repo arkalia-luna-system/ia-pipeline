@@ -15,12 +15,12 @@ from typing import Any
 try:
     from athalia_core.validation.security_validator import (
         SecurityError,
-        validate_and_run,
+        validateand_run,
     )
 except ImportError:
     # Fallback pour les tests
     SecurityError = Exception
-    validate_and_run = subprocess.run
+    validateand_run = subprocess.run
 
 logger = logging.getLogger(__name__)
 
@@ -29,371 +29,316 @@ logger = logging.getLogger(__name__)
 
 
 class AutoTester:
-    """Générateur de tests pour Athalia"""
+    """Générateur automatique de tests"""
 
-    def __init__(self, project_path: str | None = None):
-        self.project_path: Path = Path(project_path) if project_path else Path(".")
-        self.test_results: dict[str, Any] = {}
+    def __init__(self, project_path: str = "."):
+        self.project_path = Path(project_path)
+        self.test_dir = self.project_path / "tests"
         self.generated_tests: list[str] = []
 
-    def run(self) -> dict[str, Any]:
-        """Méthode run() pour lorchestrateur - exécute les tests"""
-        if not self.project_path:
-            raise ValueError("project_path doit être défini")
-        return self.generate_tests(str(self.project_path))
+    def analyze_project(self) -> dict[str, Any]:
+        """Analyse le projet pour identifier les modules à tester"""
+        logger.info(f"🔍 Analyse du projet: {self.project_path.name}")
 
-    def generate_tests(self, project_path: str) -> dict[str, Any]:
-        """Génération complète de tests pour un projet"""
-        self.project_path = Path(project_path)
-
-        logger.info(f"🧪 Génération de tests pour: {self.project_path.name}")
-
-        # Analyse du projet
-        modules = self._analyze_modules()
-
-        # Génération des tests
-        unit_tests = self._generate_unit_tests(modules)
-        integration_tests = self._generate_integration_tests(modules)
-        performance_tests = self._generate_performance_tests(modules)
-
-        # Sauvegarde des tests
-        self._save_tests(unit_tests, integration_tests, performance_tests)
-
-        # Exécution des tests
-        test_results = self._run_tests()
-
-        return {
-            "unit_tests": unit_tests,
-            "integration_tests": integration_tests,
-            "performance_tests": performance_tests,
-            "test_results": test_results,
-            "files_created": self._get_created_files(),
-            "modules_analyzed": len(modules),
+        analysis = {
+            "modules": [],
+            "total_functions": 0,
+            "total_classes": 0,
+            "test_coverage": 0.0,
         }
 
-    def _analyze_modules(self) -> list[dict[str, Any]]:
-        """Analyse les modules Python du projet"""
-        modules = []
-
+        # Analyser chaque fichier Python
         for py_file in self.project_path.rglob("*.py"):
-            # Ignorer les fichiers macOS ._*
-            if py_file.name.startswith("._"):
-                continue
+            if "test" not in py_file.name and "tests" not in str(py_file):
+                module_info = self._analyze_module(py_file)
+                if module_info:
+                    analysis["modules"].append(module_info)
+                    analysis["total_functions"] += len(module_info["functions"])
+                    analysis["total_classes"] += len(module_info["classes"])
 
-            if py_file.name != "__init__.py" and "test" not in py_file.name.lower():
-                try:
-                    with open(py_file, encoding="utf-8") as file_handle:
-                        content = file_handle.read()
+        # Calculer la couverture de tests
+        if analysis["total_functions"] > 0:
+            existing_tests = len(list(self.test_dir.rglob("test_*.py")))
+            analysis["test_coverage"] = (existing_tests / analysis["total_functions"]) * 100
 
-                    tree = ast.parse(content)
-                    module_info = {
-                        "name": py_file.stem,
-                        "path": str(py_file),
-                        "classes": [],
-                        "functions": [],
-                        "imports": [],
+        return analysis
+
+    def _analyze_module(self, file_path: Path) -> dict[str, Any]:
+        """Analyse un module Python individuel"""
+        try:
+            with open(file_path, encoding="utf-8") as f:
+                content = f.read()
+
+            tree = ast.parse(content)
+            module_info = {
+                "name": file_path.stem,
+                "path": str(file_path),
+                "functions": [],
+                "classes": [],
+                "imports": [],
+            }
+
+            for node in ast.walk(tree):
+                if isinstance(node, ast.FunctionDef):
+                    module_info["functions"].append(node.name)
+                elif isinstance(node, ast.ClassDef):
+                    class_info = {
+                        "name": node.name,
+                        "methods": [],
+                        "bases": [base.id for base in node.bases if hasattr(base, "id")],
                     }
+                    for item in node.body:
+                        if isinstance(item, ast.FunctionDef):
+                            class_info["methods"].append(item.name)
+                    module_info["classes"].append(class_info)
+                elif isinstance(node, ast.Import):
+                    for alias in node.names:
+                        module_info["imports"].append(alias.name)
+                elif isinstance(node, ast.ImportFrom):
+                    if node.module:
+                        module_info["imports"].append(node.module)
 
-                    for item in tree.body:
-                        if isinstance(item, ast.ClassDef):
-                            class_info = {"name": item.name, "methods": []}
-                            for node in item.body:
-                                if isinstance(node, ast.FunctionDef):
-                                    class_info["methods"].append(node.name)
-                            module_info["classes"].append(class_info)
-                        elif isinstance(item, ast.FunctionDef) and not any(
-                            parent in str(item) for parent in ["class", "test"]
-                        ):
-                            module_info["functions"].append(item.name)
+            return module_info
 
-                    modules.append(module_info)
+        except Exception as e:
+            logger.warning(f"Erreur analyse {file_path}: {e}")
+            return {}
 
-                except Exception as e:
-                    logger.warning(f"Erreur analyse {py_file}: {e}")
+    def generate_tests(self, target_module: str = None) -> dict[str, Any]:
+        """Génère des tests pour le projet ou un module spécifique"""
+        logger.info(f"🧪 Génération de tests pour: {target_module or 'tout le projet'}")
 
-        return modules
+        if target_module:
+            modules_to_test = [
+                m for m in self.analyze_project()["modules"]
+                if m["name"] == target_module
+            ]
+        else:
+            modules_to_test = self.analyze_project()["modules"]
 
-    def _analyze_module(self, module_path: str) -> dict[str, Any]:
-        """Analyse un module spécifique"""
-        return self._analyze_modules()[0] if self._analyze_modules() else {}
+        generated_count = 0
+        for module in modules_to_test:
+            if self._generate_module_tests(module):
+                generated_count += 1
 
-    def _generate_unit_tests(self, modules: list[dict[str, Any]]) -> list[str]:
-        """Génère les tests unitaires pour tous les modules"""
-        unit_tests = []
-        for module in modules:
-            test_content = self._generate_module_unit_tests(module)
-            unit_tests.append(test_content)
-        return unit_tests
+        return {
+            "generated_tests": generated_count,
+            "total_modules": len(modules_to_test),
+            "test_files": self.generated_tests,
+        }
 
-    def _generate_module_unit_tests(self, module: dict[str, Any]) -> str:
-        """Génère les tests unitaires pour un module spécifique"""
-        test_content = f"""# Tests unitaires pour {module['name']}
+    def _generate_module_tests(self, module: dict[str, Any]) -> bool:
+        """Génère des tests pour un module spécifique"""
+        try:
+            # Créer le répertoire de tests si nécessaire
+            test_file = self.test_dir / f"test_{module['name']}.py"
+            test_file.parent.mkdir(parents=True, exist_ok=True)
+
+            # Générer le contenu des tests
+            test_content = self._generate_test_content(module)
+
+            # Sauvegarder le fichier de test
+            with open(test_file, "w", encoding="utf-8") as f:
+                f.write(test_content)
+
+            self.generated_tests.append(str(test_file))
+            logger.info(f"✅ Tests générés pour {module['name']}: {test_file}")
+            return True
+
+        except Exception as e:
+            logger.error(f"❌ Erreur génération tests {module['name']}: {e}")
+            return False
+
+    def _generate_test_content(self, module: dict[str, Any]) -> str:
+        """Génère le contenu des tests pour un module"""
+        content = f'''"""
+Tests générés automatiquement pour {module['name']}
+Fichier: {module['path']}
+"""
+
 import pytest
-from unittest.mock import Mock, patch
+from pathlib import Path
+import sys
 
-# Import sécurisé du module à tester
+# Ajouter le chemin du projet au PYTHONPATH
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
 try:
-    # Import sélectif des éléments principaux
-    module_obj = __import__({repr(module['name'])}, fromlist=['*'])
-    # Vérification de sécurité avant import
-    if hasattr(module_obj, '__all__'):
-        # Import contrôlé via __all__
-        for item in module_obj.__all__:
-            if hasattr(module_obj, item):
-                globals()[item] = getattr(module_obj, item)
-    else:
-        # Import manuel des éléments principaux (classes et fonctions)
-        for attr_name in dir(module_obj):
-            if not attr_name.startswith('_'):
-                attr = getattr(module_obj, attr_name)
-                if callable(attr) or isinstance(attr, type):
-                    globals()[attr_name] = attr
+    import {module['name']}
 except ImportError:
-    pass  # Pour les tests
-except (AttributeError, TypeError, ValueError):
-    # Gestion spécifique des erreurs de sécurité et d'accès aux attributs
-    pass
+    pytest.skip(f"Module {module['name']} non importable")
 
-"""
-        # Tests pour les classes
-        for class_info in module.get("classes", []):
-            test_content += f"""
-class Test{class_info['name']}:
-    def test_initialization(self):
-        # Test d'initialisation
-        pass
-
-    def test_methods(self):
-        # Test des méthodes
-        pass
-"""
+'''
 
         # Tests pour les fonctions
-        for func_name in module.get("functions", []):
-            test_content += f"""
-def test_{func_name}_normal_case():
-    # Test cas normal
-    pass
+        for func_name in module["functions"]:
+            content += f'''
+def test_{func_name}():
+    """Test de la fonction {func_name}"""
+    # TODO: Implémenter les tests spécifiques
+    assert hasattr({module['name']}, '{func_name}')
+    assert callable(getattr({module['name']}, '{func_name}'))
+'''
 
-def test_{func_name}_edge_case():
-    # Test cas limite
-    pass
-"""
+        # Tests pour les classes
+        for class_info in module["classes"]:
+            content += f'''
+class Test{class_info['name']}:
+    """Tests pour la classe {class_info['name']}"""
+    
+    def test_class_exists(self):
+        """Vérifie que la classe existe"""
+        assert hasattr({module['name']}, '{class_info['name']}')
+        assert isinstance(getattr({module['name']}, '{class_info['name']}'), type)
+    
+    def test_class_methods(self):
+        """Vérifie les méthodes de la classe"""
+        cls = getattr({module['name']}, '{class_info['name']}')
+        for method_name in {class_info['methods']}:
+            assert hasattr(cls, method_name)
+            assert callable(getattr(cls, method_name))
+'''
 
-        return test_content
-
-    def _generate_integration_tests(self, modules: list[dict[str, Any]]) -> list[str]:
-        """Génère les tests d'intégration"""
-        integration_tests = []
-
-        for module in modules:
-            test_content = f"""# Tests d'intégration pour {module['name']}
-import pytest
-
-def test_{module['name']}_integration():
-    # Test d'intégration du module
-    pass
-
-def test_{module['name']}_with_external_dependencies():
-    # Test avec dépendances externes
-    pass
-"""
-            integration_tests.append(test_content)
-
-        return integration_tests
-
-    def _generate_performance_tests(self, modules: list[dict[str, Any]]) -> list[str]:
-        """Génère les tests de performance"""
-        performance_tests = []
-
-        for module in modules:
-            test_content = f"""# Tests de performance pour {module['name']}
-import pytest
-import time
-
-def test_{module['name']}_performance():
-    # Test de performance
-    start_time = time.time()
-    # Exécution du code à tester
-    execution_time = time.time() - start_time
-    assert execution_time < 1.0  # Moins d'1 seconde
-"""
-            performance_tests.append(test_content)
-
-        return performance_tests
+        content += '''
+if __name__ == "__main__":
+    pytest.main([__file__])
+'''
+        return content
 
     def _save_tests(
-        self,
-        unit_tests: list[str],
-        integration_tests: list[str],
-        performance_tests: list[str],
-    ):
-        """Sauvegarde les tests générés sur disque"""
-        test_dir = self.project_path / "tests"
-        test_dir.mkdir(exist_ok=True)
-
-        # Sauvegarde tests unitaires
-        for i, test_content in enumerate(unit_tests):
-            test_file = test_dir / f"test_unit_{i}.py"
-            test_file.write_text(test_content, encoding="utf-8")
-
-        # Sauvegarde tests d'intégration
-        for i, test_content in enumerate(integration_tests):
-            test_file = test_dir / f"test_integration_{i}.py"
-            test_file.write_text(test_content, encoding="utf-8")
-
-        # Sauvegarde tests de performance
-        for i, test_content in enumerate(performance_tests):
-            test_file = test_dir / f"test_performance_{i}.py"
-            test_file.write_text(test_content, encoding="utf-8")
-
-    def _cleanup_generated_tests(self):
-        """Nettoie les tests générés temporairement"""
-        test_dir = self.project_path / "tests"
-        if test_dir.exists():
-            for test_file in test_dir.glob("test_*.py"):
-                if test_file.name.startswith(
-                    ("test_unit_", "test_integration_", "test_performance_")
-                ):
-                    test_file.unlink()
-
-    def _run_tests(self) -> dict[str, Any]:
-        """Exécute les tests générés"""
+        self, tests: dict[str, Any], output_dir: str = None
+    ) -> bool:
+        """Sauvegarde les tests générés"""
         try:
-            # Utiliser pytest pour exécuter les tests
-            result = subprocess.run(
-                ["python", "-m", "pytest", "tests/", "-v"],
-                cwd=self.project_path,
-                capture_output=True,
-                text=True,
-                timeout=60,
-            )
+            if output_dir:
+                output_path = Path(output_dir)
+            else:
+                output_path = self.test_dir
 
-            return {
-                "return_code": result.returncode,
-                "stdout": result.stdout,
-                "stderr": result.stderr,
-                "success": result.returncode == 0,
-            }
+            output_path.mkdir(parents=True, exist_ok=True)
+
+            # Sauvegarder le rapport de génération
+            report_file = output_path / "test_generation_report.txt"
+            with open(report_file, "w", encoding="utf-8") as f:
+                f.write("Rapport de génération de tests\n")
+                f.write("=============================\n\n")
+                f.write(f"Tests générés: {tests['generated_tests']}\n")
+                f.write(f"Modules analysés: {tests['total_modules']}\n")
+                f.write(f"Fichiers créés: {len(tests['test_files'])}\n\n")
+                f.write("Fichiers de tests:\n")
+                for test_file in tests["test_files"]:
+                    f.write(f"- {test_file}\n")
+
+            logger.info(f"📄 Rapport sauvegardé: {report_file}")
+            return True
+
         except Exception as e:
-            return {"return_code": -1, "stdout": "", "stderr": str(e), "success": False}
+            logger.error(f"❌ Erreur sauvegarde: {e}")
+            return False
 
-    def _get_created_files(self) -> list[str]:
-        """Retourne la liste des fichiers créés"""
-        test_dir = self.project_path / "tests"
-        if not test_dir.exists():
-            return []
+    def _cleanup_generated_tests(self) -> None:
+        """Nettoie les tests générés automatiquement"""
+        try:
+            for test_file in self.generated_tests:
+                if Path(test_file).exists():
+                    Path(test_file).unlink()
+                    logger.info(f"🗑️ Test supprimé: {test_file}")
 
-        created_files = []
-        for test_file in test_dir.glob("test_*.py"):
-            if test_file.name.startswith(
-                ("test_unit_", "test_integration_", "test_performance_")
-            ):
-                created_files.append(str(test_file))
+            self.generated_tests.clear()
 
-        return created_files
+        except Exception as e:
+            logger.warning(f"⚠️ Erreur nettoyage: {e}")
 
-    def generate_test_report(self) -> str:
-        """Génère un rapport des tests"""
-        report = f"""# Rapport de tests - {self.project_path.name}
+    def run_generated_tests(self) -> dict[str, Any]:
+        """Exécute les tests générés automatiquement"""
+        logger.info("🚀 Exécution des tests générés")
 
-## Résumé
-- Tests unitaires générés: {len(self.generated_tests)}
-- Fichiers créés: {len(self._get_created_files())}
-
-## Détails
-"""
-        return report
-
-    # Méthodes supplémentaires pour les tests
-    def _write_test_file(self, content: str, filename: str) -> str:
-        """Écrit un fichier de test sur disque"""
-        test_dir = self.project_path / "tests"
-        test_dir.mkdir(exist_ok=True)
-        test_file = test_dir / filename
-        test_file.write_text(content, encoding="utf-8")
-        return str(test_file)
-
-    def _analyze_coverage(self) -> dict[str, Any]:
-        """Analyse la couverture de code"""
-        return {"total_lines": 100, "covered_lines": 85, "coverage_percentage": 85.0}
-
-    def _validate_test_quality(self) -> dict[str, Any]:
-        """Valide la qualité des tests générés"""
-        return {
-            "quality_score": 8.5,
-            "issues_found": 2,
-            "recommendations": [
-                "Ajouter plus de cas de test",
-                "Améliorer la documentation",
-            ],
+        results = {
+            "total_tests": 0,
+            "passed": 0,
+            "failed": 0,
+            "errors": [],
         }
 
-    def _optimize_test_suite(self) -> dict[str, Any]:
-        """Optimise la suite de tests"""
-        return {
-            "optimizations_applied": 3,
-            "performance_improvement": "15%",
-            "redundant_tests_removed": 1,
-        }
+        for test_file in self.generated_tests:
+            if Path(test_file).exists():
+                try:
+                    # Exécuter pytest sur le fichier
+                    result = validateand_run(
+                        ["python", "-m", "pytest", test_file, "-v"],
+                        capture_output=True,
+                        text=True,
+                        timeout=60,
+                    )
 
-    def _batch_generate_tests(self, modules: list[str]) -> list[str]:
-        """Génère des tests en lot pour plusieurs modules"""
-        results = []
-        for module in modules:
-            test_content = (
-                f"# Test généré pour {module}\ndef test_{module}():\n    pass\n"
-            )
-            results.append(test_content)
+                    if result.returncode == 0:
+                        results["passed"] += 1
+                        logger.info(f"✅ {test_file}: Tests réussis")
+                    else:
+                        results["failed"] += 1
+                        results["errors"].append(f"{test_file}: {result.stderr}")
+
+                    results["total_tests"] += 1
+
+                except Exception as e:
+                    results["failed"] += 1
+                    results["errors"].append(f"{test_file}: {e}")
+
         return results
 
-    def _generate_tests_by_type(
-        self, module_type: str, module_info: dict[str, Any]
-    ) -> list[str]:
-        """Génère des tests selon le type de module"""
-        if module_type == "class":
-            return ["test_initialization", "test_methods"]
-        elif module_type == "function":
-            return ["test_normal_case", "test_edge_case"]
-        elif module_type == "module":
-            return ["test_imports", "test_integration"]
-        return []
-
-    def _integrate_ci_cd(self) -> dict[str, Any]:
-        """Intègre les tests avec CI/CD"""
-        return {
-            "ci_integration": True,
-            "pipeline_updated": True,
-            "deployment_ready": True,
-        }
-
-    def detect_potential_bugs(self, module_path: str) -> list[str]:
-        """Détecte les bugs potentiels dans un module"""
-        return ["Bug potentiel 1", "Bug potentiel 2"]
-
-    def suggest_test_improvements(self, test_file: str) -> list[str]:
-        """Suggère des améliorations pour les tests"""
-        return ["Ajouter plus de cas de test", "Améliorer la documentation"]
+    def cleanup(self) -> None:
+        """Nettoie les ressources"""
+        self._cleanup_generated_tests()
 
 
-def main():
+def main() -> None:
     """Point d'entrée principal"""
-    parser = argparse.ArgumentParser(description="Générateur de tests automatiques")
-    parser.add_argument("project_path", help="Chemin vers le projet à tester")
-    parser.add_argument(
-        "--cleanup", action="store_true", help="Nettoyer les tests générés"
-    )
+
+    parser = argparse.ArgumentParser(description="Générateur automatique de tests")
+    parser.add_argument("project_path", help="Chemin vers le projet")
+    parser.add_argument("--module", help="Module spécifique à tester")
+    parser.add_argument("--run-tests", action="store_true", help="Exécuter les tests générés")
+    parser.add_argument("--cleanup", action="store_true", help="Nettoyer les tests générés")
+    parser.add_argument("--output", help="Répertoire de sortie pour les tests")
 
     args = parser.parse_args()
 
-    tester = AutoTester(args.project_path)
+    auto_tester = AutoTester(args.project_path)
 
-    if args.cleanup:
-        tester._cleanup_generated_tests()
-        print("🧹 Tests générés nettoyés")
-    else:
-        results = tester.generate_tests(args.project_path)
-        print(f"✅ Tests générés: {len(results['files_created'])} fichiers créés")
+    try:
+        # Analyser le projet
+        analysis = auto_tester.analyze_project()
+        print(f"📊 Analyse terminée: {analysis['total_functions']} fonctions, {analysis['total_classes']} classes")
+
+        # Générer les tests
+        if args.module:
+            tests = auto_tester.generate_tests(args.module)
+        else:
+            tests = auto_tester.generate_tests()
+
+        print(f"🧪 Tests générés: {tests['generated_tests']}/{tests['total_modules']} modules")
+
+        # Sauvegarder les tests
+        if args.output:
+            auto_tester._save_tests(tests, args.output)
+
+        # Exécuter les tests si demandé
+        if args.run_tests:
+            results = auto_tester.run_generated_tests()
+            print(f"🚀 Résultats: {results['passed']}/{results['total_tests']} tests réussis")
+
+        # Nettoyer si demandé
+        if args.cleanup:
+            auto_tester.cleanup()
+            print("🗑️ Tests générés supprimés")
+
+    except KeyboardInterrupt:
+        print("\n⏹️ Interrompu par l'utilisateur")
+    except Exception as e:
+        print(f"❌ Erreur: {e}")
+    finally:
+        auto_tester.cleanup()
 
 
 if __name__ == "__main__":

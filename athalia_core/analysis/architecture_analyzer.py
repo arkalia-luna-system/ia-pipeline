@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-🏗️ ANALYSEUR D'ARCHITECTURE
+🏗 ANALYSEUR D'ARCHITECTURE
 ============================
 Module d'analyse d'architecture pour comprendre la structure
 du projet, les dépendances et les relations entre modules.
@@ -81,7 +81,7 @@ class ArchitectureAnalyzer:
         # Charger la configuration
         self.config = self._load_config()
 
-        logger.info(f"🏗️ Architecture Analyzer initialisé dans {self.root_path}")
+        logger.info(f"🏗 Architecture Analyzer initialisé dans {self.root_path}")
 
     def _init_database(self):
         """Initialiser la base de données d'architecture"""
@@ -151,7 +151,7 @@ class ArchitectureAnalyzer:
 
     def analyze_entire_architecture(self) -> ArchitectureMapping:
         """Analyser l'architecture complète du projet"""
-        logger.info("🏗️ Analyse de l'architecture complète...")
+        logger.info("🏗 Analyse de l'architecture complète...")
 
         # Analyser tous les modules
         modules = self._analyze_all_modules()
@@ -216,7 +216,7 @@ class ArchitectureAnalyzer:
                     if module_analysis:
                         modules[module_analysis.name] = module_analysis
 
-        logger.info(f"📊 {len(modules)} modules analysés")
+        logger.info(f" {len(modules)} modules analysés")
         return modules
 
     def _analyze_single_module(
@@ -422,7 +422,7 @@ class ArchitectureAnalyzer:
         # Recommandations générales
         if len(modules) > 20:
             recommendations.append(
-                "🏗️ Architecture complexe - documenter les dépendances"
+                "🏗 Architecture complexe - documenter les dépendances"
             )
 
         return recommendations

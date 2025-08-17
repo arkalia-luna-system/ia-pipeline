@@ -44,7 +44,7 @@ class ReachyAuditor:
 
     def audit_complete(self) -> ReachyAuditResult:
         """Audit complet du projet Reachy"""
-        self.logger.info(f"🔍 Début audit Reachy: {self.project_path}")
+        self.logger.info(f" Début audit Reachy: {self.project_path}")
 
         issues = []
         recommendations = []
@@ -94,7 +94,7 @@ class ReachyAuditor:
             score=max(0, score),
         )
 
-        self.logger.info(f"✅ Audit terminé - Score: {score:.1f}/100")
+        self.logger.info(f" Audit terminé - Score: {score:.1f}/100")
         return result
 
     def _audit_ros2(self) -> tuple[bool, list[str], list[str]]:
@@ -154,7 +154,7 @@ class ReachyAuditor:
                     if "environment" in service:
                         env_vars = service["environment"]
                         if any("ROS_DOMAIN_ID" in str(var) for var in env_vars):
-                            self.logger.info("✅ ROS_DOMAIN_ID configuré")
+                            self.logger.info(" ROS_DOMAIN_ID configuré")
                         else:
                             recommendations.append(
                                 "Ajouter ROS_DOMAIN_ID dans docker-compose"
@@ -162,7 +162,7 @@ class ReachyAuditor:
 
                     # Vérifier volumes
                     if "volumes" in service:
-                        self.logger.info("✅ Volumes Docker configurés")
+                        self.logger.info(" Volumes Docker configurés")
                     else:
                         recommendations.append("Configurer les volumes Docker")
 
@@ -186,7 +186,7 @@ class ReachyAuditor:
         # Vérifier Cargo.toml
         cargo_files = list(self.project_path.rglob("Cargo.toml"))
         if cargo_files:
-            self.logger.info(f"🔧 {len(cargo_files)} projets Rust détectés")
+            self.logger.info(f" {len(cargo_files)} projets Rust détectés")
 
             for cargo_file in cargo_files:
                 try:
@@ -195,10 +195,10 @@ class ReachyAuditor:
                         content = f.read()
 
                     if "ros2" in content.lower():
-                        self.logger.info("✅ Dépendances ROS2 Rust détectées")
+                        self.logger.info(" Dépendances ROS2 Rust détectées")
 
                     if "dynamixel" in content.lower():
-                        self.logger.info("✅ Support Dynamixel détecté")
+                        self.logger.info(" Support Dynamixel détecté")
 
                 except Exception as e:
                     issues.append(f"Erreur lecture {cargo_file}: {e}")
@@ -219,7 +219,7 @@ class ReachyAuditor:
         if not readme_files:
             issues.append("README manquant")
         else:
-            self.logger.info("✅ Documentation README présente")
+            self.logger.info(" Documentation README présente")
 
         # Vérifier .gitignore
         gitignore = self.project_path / ".gitignore"
@@ -234,7 +234,7 @@ class ReachyAuditor:
         ]
         for dir_name in expected_dirs:
             if (self.project_path / dir_name).exists():
-                self.logger.info(f"✅ Module {dir_name} présent")
+                self.logger.info(f" Module {dir_name} présent")
             else:
                 recommendations.append(f"Considérer l'ajout du module {dir_name}")
 
@@ -250,15 +250,15 @@ class ReachyAuditor:
     def generate_report(self, result: ReachyAuditResult) -> str:
         """Générer rapport d'audit"""
         report = f"""
-# 🔍 Rapport d'Audit Reachy - {result.timestamp.strftime("%Y-%m-%d %H:%M")}
+#  Rapport d'Audit Reachy - {result.timestamp.strftime("%Y-%m-%d %H:%M")}
 
-## 📊 Score Global: {result.score:.1f}/100
+##  Score Global: {result.score:.1f}/100
 
-### ✅ Validations
-- ROS2 Workspace: {"✅" if result.ros2_valid else "❌"}
-- Docker Setup: {"✅" if result.docker_valid else "❌"}
-- Rust/Cargo: {"✅" if result.rust_valid else "❌"}
-- Structure Projet: {"✅" if result.structure_valid else "❌"}
+###  Validations
+- ROS2 Workspace: {"" if result.ros2_valid else ""}
+- Docker Setup: {"" if result.docker_valid else ""}
+- Rust/Cargo: {"" if result.rust_valid else ""}
+- Structure Projet: {"" if result.structure_valid else ""}
 
 ### 🚨 Problèmes Détectés
 """
@@ -274,7 +274,7 @@ class ReachyAuditor:
             report += f"- {rec}\n"
 
         report += f"""
-### 📁 Projet Analysé
+###  Projet Analysé
 - Chemin: {result.project_path}
 - Timestamp: {result.timestamp}
 

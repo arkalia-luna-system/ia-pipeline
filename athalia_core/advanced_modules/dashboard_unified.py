@@ -277,13 +277,13 @@ class DashboardUnifieSimple:
                 )
 
         rapport = []
-        rapport.append("# 📊 Dashboard Unifié")
+        rapport.append("#  Dashboard Unifié")
         rapport.append("")
         rapport.append(f"*Généré le {datetime.now().strftime('%d/%m/%Y à %H:%M')}*")
         rapport.append("")
 
         # Métriques temps réel
-        rapport.append("## 🚀 Métriques en Temps Réel")
+        rapport.append("##  Métriques en Temps Réel")
         rapport.append("")
         rapport.append(f"- **Projets analysés (24h)**: {metriques['projets_analyses']}")
         rapport.append(
@@ -317,7 +317,7 @@ class DashboardUnifieSimple:
             rapport.append("| Type | Projet | Utilisateur | Date | Statut |")
             rapport.append("|------|--------|-------------|------|--------|")
             for event in evenements_recents[:10]:
-                statut_emoji = "✅" if event["statut"] == "succes" else "❌"
+                statut_emoji = "" if event["statut"] == "succes" else ""
                 rapport.append(
                     f"| {event['type']} | {event['projet'] or '-'} | "
                     f"{event['utilisateur'] or '-'} | {event['timestamp']} | "
@@ -442,7 +442,7 @@ class DashboardUnifieSimple:
 <body>
     <div class="container">
         <div class="header">
-            <h1>🚀 Dashboard Athalia</h1>
+            <h1> Dashboard Athalia</h1>
             <p>Analytics et métriques en temps réel</p>
         </div>
         <div class="metrics-grid">
@@ -464,7 +464,7 @@ class DashboardUnifieSimple:
             </div>
         </div>
         <div class="content-section">
-            <h2>📊 Statistiques Détaillées</h2>
+            <h2> Statistiques Détaillées</h2>
         logger.info("Usage: python dashboard_unifie_simple.py <action> [options]")
         </div>
         <div class="footer">
@@ -504,7 +504,7 @@ def main():
 
     if action == "metrics":
         metriques = dashboard.obtenir_metriques_temps_reel()
-        logger.info("📊 Métriques en temps réel:")
+        logger.info(" Métriques en temps réel:")
         for key, value in metriques.items():
             logger.info(f"  {key}: {value}")
 
@@ -514,14 +514,14 @@ def main():
 
     elif action == "html":
         html_file = dashboard.generer_dashboard_html()
-        logger.info(f"✅ Dashboard HTML généré: {html_file}")
+        logger.info(f" Dashboard HTML généré: {html_file}")
 
     elif action == "f":
         dashboard.ouvrir_dashboard()
-        logger.info("🌐 Dashboard ouvert dans le f")
+        logger.info(" Dashboard ouvert dans le f")
 
     else:
-        logger.info("❌ Action non f")
+        logger.info(" Action non f")
 
 
 if __name__ == "__main__":

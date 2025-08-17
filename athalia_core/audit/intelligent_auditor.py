@@ -44,7 +44,7 @@ class IntelligentAuditor:
             "score": 0,
         }
 
-        logger.info(f"🔍 Audit intelligent en cours pour: {self.project_path.name}")
+        logger.info(f" Audit intelligent en cours pour: {self.project_path.name}")
 
         # Analyses parallèles
         self._analyze_project_info()
@@ -160,20 +160,24 @@ class IntelligentAuditor:
         """Génère un rapport d'audit"""
         return self.generate_report()
 
-    def _analyze_project_info(self):
+    def _analyze_project_info(self) -> None:
         """Analyse des informations du projet"""
-        info = {
-            "name": self.project_path.name,
-            "type": self._detect_project_type(),
-            "size": self._calculate_project_size(),
-            "languages": self._detect_languages(),
-            "dependencies": self._detect_dependencies(),
-            "last_modified": self._get_last_modified(),
-        }
-        self.audit_results["info"] = info
+        if self.project_path is not None:
+            info = {
+                "name": self.project_path.name,
+                "type": self._detect_project_type(),
+                "size": self._calculate_project_size(),
+                "languages": self._detect_languages(),
+                "dependencies": self._detect_dependencies(),
+                "last_modified": self._get_last_modified(),
+            }
+            self.audit_results["info"] = info
 
     def _detect_project_type(self) -> str:
         """Détection automatique du type de projet"""
+        if self.project_path is None:
+            return "Unknown"
+
         files = list(self.project_path.rglob("*"))
         if any(file_handle.name == "package.json" for file_handle in files):
             return "Node.js / JS"
@@ -196,22 +200,23 @@ class IntelligentAuditor:
         total_lines = 0
         total_size = 0
 
-        for file_path in self.project_path.rglob("*"):
-            if file_path.is_file():
-                total_files += 1
-                try:
-                    total_size += file_path.stat().st_size
-                    if self._is_code_file(file_path):
-                        with open(file_path, encoding="utf-8") as f:
-                            total_lines += len(f.readlines())
-                except (OSError, UnicodeDecodeError):
-                    continue
+        if self.project_path is not None:
+            for file_path in self.project_path.rglob("*"):
+                if file_path.is_file():
+                    total_files += 1
+                    try:
+                        total_size += file_path.stat().st_size
+                        if self._is_code_file(file_path):
+                            with open(file_path, encoding="utf-8") as f:
+                                total_lines += len(f.readlines())
+                    except (OSError, UnicodeDecodeError):
+                        continue
 
         return {
             "files": total_files,
             "lines": total_lines,
             "size_bytes": total_size,
-            "size_mb": round(total_size / (1024 * 1024), 2),
+            "size_mb": int(round(total_size / (1024 * 1024), 0)),
         }
 
     def _is_code_file(self, file_path: Path) -> bool:
@@ -239,71 +244,74 @@ class IntelligentAuditor:
     def _detect_languages(self) -> list[str]:
         """Détecte les langages utilisés dans le projet"""
         languages = set()
-        for file_path in self.project_path.rglob("*"):
-            if file_path.is_file():
-                ext = file_path.suffix.lower()
-                if ext == ".py":
-                    languages.add("Python")
-                elif ext in [".js", ".ts", ".jsx", ".tsx"]:
-                    languages.add("JavaScript/TypeScript")
-                elif ext in [".java", ".class"]:
-                    languages.add("Java")
-                elif ext in [".cpp", ".c", ".h", ".hpp"]:
-                    languages.add("C/C++")
-                elif ext == ".rs":
-                    languages.add("Rust")
-                elif ext == ".go":
-                    languages.add("Go")
-                elif ext == ".php":
-                    languages.add("PHP")
-                elif ext == ".rb":
-                    languages.add("Ruby")
+        if self.project_path is not None:
+            for file_path in self.project_path.rglob("*"):
+                if file_path.is_file():
+                    ext = file_path.suffix.lower()
+                    if ext == ".py":
+                        languages.add("Python")
+                    elif ext in [".js", ".ts", ".jsx", ".tsx"]:
+                        languages.add("JavaScript/TypeScript")
+                    elif ext in [".java", ".class"]:
+                        languages.add("Java")
+                    elif ext in [".cpp", ".c", ".h", ".hpp"]:
+                        languages.add("C/C++")
+                    elif ext == ".rs":
+                        languages.add("Rust")
+                    elif ext == ".go":
+                        languages.add("Go")
+                    elif ext == ".php":
+                        languages.add("PHP")
+                    elif ext == ".rb":
+                        languages.add("Ruby")
 
         return list(languages)
 
     def _detect_dependencies(self) -> dict[str, list[str]]:
         """Détecte les dépendances du projet"""
-        dependencies = {"direct": [], "indirect": []}
+        dependencies: dict[str, list[str]] = {"direct": [], "indirect": []}
 
-        # Python
-        requirements_file = self.project_path / "requirements.txt"
-        if requirements_file.exists():
-            try:
-                with open(requirements_file, encoding="utf-8") as f:
-                    for line in f:
-                        line = line.strip()
-                        if line and not line.startswith("#"):
-                            dep = line.split("==")[0].split(">=")[0].split("<=")[0]
-                            dependencies["direct"].append(dep)
-            except Exception:
-                pass
+        if self.project_path is not None:
+            # Python
+            requirements_file = self.project_path / "requirements.txt"
+            if requirements_file.exists():
+                try:
+                    with open(requirements_file, encoding="utf-8") as f:
+                        for line in f:
+                            line = line.strip()
+                            if line and not line.startswith("#"):
+                                dep = line.split("==")[0].split(">=")[0].split("<=")[0]
+                                dependencies["direct"].append(dep)
+                except Exception:
+                    pass
 
-        # Node.js
-        package_json = self.project_path / "package.json"
-        if package_json.exists():
-            try:
-                with open(package_json, encoding="utf-8") as f:
-                    data = json.load(f)
-                    if "dependencies" in data:
-                        dependencies["direct"].extend(list(data["dependencies"].keys()))
-                    if "devDependencies" in data:
-                        dependencies["direct"].extend(
-                            list(data["devDependencies"].keys())
-                        )
-            except Exception:
-                pass
+            # Node.js
+            package_json = self.project_path / "package.json"
+            if package_json.exists():
+                try:
+                    with open(package_json, encoding="utf-8") as f:
+                        data = json.load(f)
+                        if "dependencies" in data:
+                            dependencies["direct"].extend(list(data["dependencies"].keys()))
+                        if "devDependencies" in data:
+                            dependencies["direct"].extend(
+                                list(data["devDependencies"].keys())
+                            )
+                except Exception:
+                    pass
 
         return dependencies
 
     def _get_last_modified(self) -> str:
         """Obtient la date de dernière modification"""
         try:
-            latest_time = 0
-            for file_path in self.project_path.rglob("*"):
-                if file_path.is_file():
-                    mtime = file_path.stat().st_mtime
-                    if mtime > latest_time:
-                        latest_time = mtime
+            latest_time: float = 0.0
+            if self.project_path is not None:
+                for file_path in self.project_path.rglob("*"):
+                    if file_path.is_file():
+                        mtime = file_path.stat().st_mtime
+                        if mtime > latest_time:
+                            latest_time = mtime
             return datetime.fromtimestamp(latest_time).isoformat()
         except Exception:
             return "Inconnu"
@@ -323,22 +331,23 @@ class IntelligentAuditor:
         complexity_scores = []
         total_files = 0
 
-        for py_file in self.project_path.rglob("*.py"):
-            if py_file.is_file() and "test" not in py_file.name.lower():
-                total_files += 1
-                try:
-                    with open(py_file, encoding="utf-8") as f:
-                        content = f.read()
-                    tree = ast.parse(content)
-                    score = self._calculate_cyclomatic_complexity(tree)
-                    complexity_scores.append(score)
-                except Exception:
-                    complexity_scores.append(0)
+        if self.project_path is not None:
+            for py_file in self.project_path.rglob("*.py"):
+                if py_file.is_file() and "test" not in py_file.name.lower():
+                    total_files += 1
+                    try:
+                        with open(py_file, encoding="utf-8") as f:
+                            content = f.read()
+                        tree = ast.parse(content)
+                        score = self._calculate_cyclomatic_complexity(tree)
+                        complexity_scores.append(score)
+                    except Exception:
+                        complexity_scores.append(0)
 
         if complexity_scores:
             avg_complexity = sum(complexity_scores) / len(complexity_scores)
             max_complexity = max(complexity_scores)
-            score = max(0, 10 - (avg_complexity / 2))
+            score = int(max(0, 10 - (avg_complexity / 2)))
         else:
             avg_complexity = 0
             max_complexity = 0
@@ -374,27 +383,28 @@ class IntelligentAuditor:
         style_issues = []
         total_files = 0
 
-        for py_file in self.project_path.rglob("*.py"):
-            if py_file.is_file():
-                total_files += 1
-                try:
-                    with open(py_file, encoding="utf-8") as f:
-                        lines = f.readlines()
+        if self.project_path is not None:
+            for py_file in self.project_path.rglob("*.py"):
+                if py_file.is_file():
+                    total_files += 1
+                    try:
+                        with open(py_file, encoding="utf-8") as f:
+                            lines = f.readlines()
 
-                    for i, line in enumerate(lines, 1):
-                        if len(line.rstrip()) > 79:
-                            style_issues.append(f"{py_file}:{i} - Ligne trop longue")
-                        if line.endswith(" \n"):
-                            style_issues.append(
-                                f"{py_file}:{i} - Espace en fin de ligne"
-                            )
-                        if line.startswith("import ") and "," in line:
-                            style_issues.append(
-                                f"{py_file}:{i} - Import multiple sur une ligne"
-                            )
+                        for i, line in enumerate(lines, 1):
+                            if len(line.rstrip()) > 79:
+                                style_issues.append(f"{py_file}:{i} - Ligne trop longue")
+                            if line.endswith(" \n"):
+                                style_issues.append(
+                                    f"{py_file}:{i} - Espace en fin de ligne"
+                                )
+                            if line.startswith("import ") and "," in line:
+                                style_issues.append(
+                                    f"{py_file}:{i} - Import multiple sur une ligne"
+                                )
 
-                except Exception:
-                    continue
+                    except Exception:
+                        continue
 
         score = max(0, 10 - len(style_issues))
         return {
@@ -409,25 +419,26 @@ class IntelligentAuditor:
         total_functions = 0
         documented_functions = 0
 
-        for py_file in self.project_path.rglob("*.py"):
-            if py_file.is_file():
-                try:
-                    with open(py_file, encoding="utf-8") as f:
-                        content = f.read()
-                    tree = ast.parse(content)
+        if self.project_path is not None:
+            for py_file in self.project_path.rglob("*.py"):
+                if py_file.is_file():
+                    try:
+                        with open(py_file, encoding="utf-8") as f:
+                            content = f.read()
+                        tree = ast.parse(content)
 
-                    for node in ast.walk(tree):
-                        if isinstance(node, ast.FunctionDef | ast.AsyncFunctionDef):
-                            total_functions += 1
-                            if ast.get_docstring(node):
-                                documented_functions += 1
-                            else:
-                                doc_issues.append(
-                                    f"{py_file}:{node.lineno} - Fonction sans docstring"
-                                )
+                        for node in ast.walk(tree):
+                            if isinstance(node, ast.FunctionDef | ast.AsyncFunctionDef):
+                                total_functions += 1
+                                if ast.get_docstring(node):
+                                    documented_functions += 1
+                                else:
+                                    doc_issues.append(
+                                        f"{py_file}:{node.lineno} - Fonction sans docstring"
+                                    )
 
-                except Exception:
-                    continue
+                    except Exception:
+                        continue
 
         if total_functions > 0:
             doc_coverage = (documented_functions / total_functions) * 100
@@ -450,33 +461,34 @@ class IntelligentAuditor:
         total_names = 0
         compliant_names = 0
 
-        for py_file in self.project_path.rglob("*.py"):
-            if py_file.is_file():
-                try:
-                    with open(py_file, encoding="utf-8") as f:
-                        content = f.read()
-                    tree = ast.parse(content)
+        if self.project_path is not None:
+            for py_file in self.project_path.rglob("*.py"):
+                if py_file.is_file():
+                    try:
+                        with open(py_file, encoding="utf-8") as f:
+                            content = f.read()
+                        tree = ast.parse(content)
 
-                    for node in ast.walk(tree):
-                        if isinstance(node, ast.FunctionDef):
-                            total_names += 1
-                            if node.name.replace("_", "").islower():
-                                compliant_names += 1
-                            else:
-                                naming_issues.append(
-                                    f"{py_file}:{node.lineno} - Nom de fonction non conforme: {node.name}"
-                                )
-                        elif isinstance(node, ast.ClassDef):
-                            total_names += 1
-                            if node.name[0].isupper():
-                                compliant_names += 1
-                            else:
-                                naming_issues.append(
-                                    f"{py_file}:{node.lineno} - Nom de classe non conforme: {node.name}"
-                                )
+                        for node in ast.walk(tree):
+                            if isinstance(node, ast.FunctionDef):
+                                total_names += 1
+                                if node.name.replace("_", "").islower():
+                                    compliant_names += 1
+                                else:
+                                    naming_issues.append(
+                                        f"{py_file}:{node.lineno} - Nom de fonction non conforme: {node.name}"
+                                    )
+                            elif isinstance(node, ast.ClassDef):
+                                total_names += 1
+                                if node.name[0].isupper():
+                                    compliant_names += 1
+                                else:
+                                    naming_issues.append(
+                                        f"{py_file}:{node.lineno} - Nom de classe non conforme: {node.name}"
+                                    )
 
-                except Exception:
-                    continue
+                    except Exception:
+                        continue
 
         if total_names > 0:
             compliance_rate = (compliant_names / total_names) * 100
@@ -506,27 +518,28 @@ class IntelligentAuditor:
         """Détecte les vulnérabilités de sécurité"""
         vulnerabilities = []
 
-        for py_file in self.project_path.rglob("*.py"):
-            if py_file.is_file():
-                try:
-                    with open(py_file, encoding="utf-8") as f:
-                        content = f.read()
+        if self.project_path is not None:
+            for py_file in self.project_path.rglob("*.py"):
+                if py_file.is_file():
+                    try:
+                        with open(py_file, encoding="utf-8") as f:
+                            content = f.read()
 
-                    # Détection de patterns dangereux
-                    dangerous_patterns = [
-                        (r"eval\s*\(", "Utilisation de eval()"),
-                        (r"exec\s*\(", "Utilisation de exec()"),
-                        (r"subprocess\.call.*shell=True", "Subprocess avec shell=True"),
-                        (r"pickle\.loads", "Utilisation de pickle.loads"),
-                        (r"yaml\.load\(", "Utilisation de yaml.load()"),
-                    ]
+                        # Détection de patterns dangereux
+                        dangerous_patterns = [
+                            (r"eval\s*\(", "Utilisation de eval()"),
+                            (r"exec\s*\(", "Utilisation de exec()"),
+                            (r"subprocess\.call.*shell=True", "Subprocess avec shell=True"),
+                            (r"pickle\.loads", "Utilisation de pickle.loads"),
+                            (r"yaml\.load\(", "Utilisation de yaml.load()"),
+                        ]
 
-                    for pattern, description in dangerous_patterns:
-                        if re.search(pattern, content):
-                            vulnerabilities.append(f"{py_file}: {description}")
+                        for pattern, description in dangerous_patterns:
+                            if re.search(pattern, content):
+                                vulnerabilities.append(f"{py_file}: {description}")
 
-                except Exception:
-                    continue
+                    except Exception:
+                        continue
 
         return vulnerabilities
 
@@ -534,32 +547,33 @@ class IntelligentAuditor:
         """Détecte les secrets exposés"""
         secrets = []
 
-        for file_path in self.project_path.rglob("*"):
-            if file_path.is_file() and file_path.suffix in [
-                ".py",
-                ".env",
-                ".txt",
-                ".md",
-            ]:
-                try:
-                    with open(file_path, encoding="utf-8") as f:
-                        content = f.read()
+        if self.project_path is not None:
+            for file_path in self.project_path.rglob("*"):
+                if file_path.is_file() and file_path.suffix in [
+                    ".py",
+                    ".env",
+                    ".txt",
+                    ".md",
+                ]:
+                    try:
+                        with open(file_path, encoding="utf-8") as f:
+                            content = f.read()
 
-                    # Patterns de secrets
-                    secret_patterns = [
-                        r"password\s*=\s*['\"][^'\"]+['\"]",
-                        r"secret\s*=\s*['\"][^'\"]+['\"]",
-                        r"api_key\s*=\s*['\"][^'\"]+['\"]",
-                        r"token\s*=\s*['\"][^'\"]+['\"]",
-                    ]
+                        # Patterns de secrets
+                        secret_patterns = [
+                            r"password\s*=\s*['\"][^'\"]+['\"]",
+                            r"secret\s*=\s*['\"][^'\"]+['\"]",
+                            r"api_key\s*=\s*['\"][^'\"]+['\"]",
+                            r"token\s*=\s*['\"][^'\"]+['\"]",
+                        ]
 
-                    for pattern in secret_patterns:
-                        if re.search(pattern, content, re.IGNORECASE):
-                            secrets.append(f"{file_path}: Secret potentiel détecté")
-                            break
+                        for pattern in secret_patterns:
+                            if re.search(pattern, content, re.IGNORECASE):
+                                secrets.append(f"{file_path}: Secret potentiel détecté")
+                                break
 
-                except Exception:
-                    continue
+                    except Exception:
+                        continue
 
         return secrets
 
@@ -567,25 +581,26 @@ class IntelligentAuditor:
         """Analyse des permissions de fichiers"""
         permission_issues = []
 
-        for file_path in self.project_path.rglob("*"):
-            if file_path.is_file():
-                try:
-                    stat = file_path.stat()
-                    mode = stat.st_mode & 0o777
+        if self.project_path is not None:
+            for file_path in self.project_path.rglob("*"):
+                if file_path.is_file():
+                    try:
+                        stat = file_path.stat()
+                        mode = stat.st_mode & 0o777
 
-                    if mode & 0o777 == 0o777:  # Permissions trop ouvertes
-                        permission_issues.append(
-                            f"{file_path}: Permissions trop ouvertes (777)"
-                        )
-                    elif (
-                        mode & 0o200 == 0o200 and mode & 0o020 == 0o020
-                    ):  # Écriture groupe et autres
-                        permission_issues.append(
-                            f"{file_path}: Permissions d'écriture trop ouvertes"
-                        )
+                        if mode & 0o777 == 0o777:  # Permissions trop ouvertes
+                            permission_issues.append(
+                                f"{file_path}: Permissions trop ouvertes (777)"
+                            )
+                        elif (
+                            mode & 0o200 == 0o200 and mode & 0o020 == 0o020
+                        ):  # Écriture groupe et autres
+                            permission_issues.append(
+                                f"{file_path}: Permissions d'écriture trop ouvertes"
+                            )
 
-                except Exception:
-                    continue
+                    except Exception:
+                        continue
 
         return {
             "issues": permission_issues,
@@ -605,13 +620,14 @@ class IntelligentAuditor:
         """Analyse de la taille des fichiers"""
         file_sizes = []
 
-        for file_path in self.project_path.rglob("*"):
-            if file_path.is_file() and self._is_code_file(file_path):
-                try:
-                    size = file_path.stat().st_size
-                    file_sizes.append(size)
-                except Exception:
-                    continue
+        if self.project_path is not None:
+            for file_path in self.project_path.rglob("*"):
+                if file_path.is_file() and self._is_code_file(file_path):
+                    try:
+                        size = file_path.stat().st_size
+                        file_sizes.append(size)
+                    except Exception:
+                        continue
 
         if file_sizes:
             avg_size = sum(file_sizes) / len(file_sizes)
@@ -635,30 +651,31 @@ class IntelligentAuditor:
         import_issues = []
         total_imports = 0
 
-        for py_file in self.project_path.rglob("*.py"):
-            if py_file.is_file():
-                try:
-                    with open(py_file, encoding="utf-8") as f:
-                        content = f.read()
-                    tree = ast.parse(content)
+        if self.project_path is not None:
+            for py_file in self.project_path.rglob("*.py"):
+                if py_file.is_file():
+                    try:
+                        with open(py_file, encoding="utf-8") as f:
+                            content = f.read()
+                        tree = ast.parse(content)
 
-                    for node in ast.walk(tree):
-                        if isinstance(node, ast.Import):
-                            total_imports += len(node.names)
-                            for alias in node.names:
-                                if alias.name.startswith("_"):
+                        for node in ast.walk(tree):
+                            if isinstance(node, ast.Import):
+                                total_imports += len(node.names)
+                                for alias in node.names:
+                                    if alias.name.startswith("_"):
+                                        import_issues.append(
+                                            f"{py_file}: Import de module privé: {alias.name}"
+                                        )
+                            elif isinstance(node, ast.ImportFrom):
+                                total_imports += 1
+                                if node.module and node.module.startswith("_"):
                                     import_issues.append(
-                                        f"{py_file}: Import de module privé: {alias.name}"
+                                        f"{py_file}: Import de module privé: {node.module}"
                                     )
-                        elif isinstance(node, ast.ImportFrom):
-                            total_imports += 1
-                            if node.module and node.module.startswith("_"):
-                                import_issues.append(
-                                    f"{py_file}: Import de module privé: {node.module}"
-                                )
 
-                except Exception:
-                    continue
+                    except Exception:
+                        continue
 
         return {
             "total_imports": total_imports,
@@ -670,13 +687,14 @@ class IntelligentAuditor:
         """Estime l'usage mémoire"""
         total_lines = 0
 
-        for py_file in self.project_path.rglob("*.py"):
-            if py_file.is_file():
-                try:
-                    with open(py_file, encoding="utf-8") as f:
-                        total_lines += len(f.readlines())
-                except Exception:
-                    continue
+        if self.project_path is not None:
+            for py_file in self.project_path.rglob("*.py"):
+                if py_file.is_file():
+                    try:
+                        with open(py_file, encoding="utf-8") as f:
+                            total_lines += len(f.readlines())
+                    except Exception:
+                        continue
 
         # Estimation: ~1KB par 100 lignes
         estimated_memory = total_lines / 100
@@ -790,9 +808,10 @@ class IntelligentAuditor:
     def _find_test_files(self) -> list[str]:
         """Trouve les fichiers de test"""
         test_files = []
-        for file_path in self.project_path.rglob("*test*.py"):
-            if file_path.is_file():
-                test_files.append(str(file_path))
+        if self.project_path is not None:
+            for file_path in self.project_path.rglob("*test*.py"):
+                if file_path.is_file():
+                    test_files.append(str(file_path))
         return test_files
 
     def _analyze_test_quality(self) -> dict[str, Any]:
@@ -800,23 +819,24 @@ class IntelligentAuditor:
         test_files = self._find_test_files()
         quality_score = 0
 
-        for test_file in test_files:
-            try:
-                with open(test_file, encoding="utf-8") as f:
-                    content = f.read()
+        if self.project_path is not None:
+            for test_file in test_files:
+                try:
+                    with open(test_file, encoding="utf-8") as f:
+                        content = f.read()
 
-                # Vérifications de qualité
-                if "def test_" in content:
-                    quality_score += 1
-                if "import pytest" in content:
-                    quality_score += 1
-                if "assert" in content:
-                    quality_score += 1
-                if "setup_method" in content or "teardown_method" in content:
-                    quality_score += 1
+                    # Vérifications de qualité
+                    if "def test_" in content:
+                        quality_score += 1
+                    if "import pytest" in content:
+                        quality_score += 1
+                    if "assert" in content:
+                        quality_score += 1
+                    if "setup_method" in content or "teardown_method" in content:
+                        quality_score += 1
 
-            except Exception:
-                continue
+                except Exception:
+                    continue
 
         if test_files:
             avg_quality = quality_score / len(test_files)
@@ -845,11 +865,12 @@ class IntelligentAuditor:
 
         # Vérifier la présence de dossiers standards
         standard_dirs = ["src", "tests", "docs", "config"]
-        for dir_name in standard_dirs:
-            if (self.project_path / dir_name).exists():
-                score += 1
-            else:
-                issues.append(f"Dossier {dir_name} manquant")
+        if self.project_path is not None:
+            for dir_name in standard_dirs:
+                if (self.project_path / dir_name).exists():
+                    score += 1
+                else:
+                    issues.append(f"Dossier {dir_name} manquant")
 
         return {
             "score": min(10, score),
@@ -861,15 +882,16 @@ class IntelligentAuditor:
         score = 5
         issues = []
 
-        for item in self.project_path.iterdir():
-            if item.is_dir():
-                name = item.name
-                if name.startswith("."):
-                    issues.append(f"Dossier caché: {name}")
-                elif " " in name:
-                    issues.append(f"Nom avec espaces: {name}")
-                elif name.lower() != name and name.upper() != name:
-                    issues.append(f"Nom mixte: {name}")
+        if self.project_path is not None:
+            for item in self.project_path.iterdir():
+                if item.is_dir():
+                    name = item.name
+                    if name.startswith("."):
+                        issues.append(f"Dossier caché: {name}")
+                    elif " " in name:
+                        issues.append(f"Nom avec espaces: {name}")
+                    elif name.lower() != name and name.upper() != name:
+                        issues.append(f"Nom mixte: {name}")
 
         score = max(0, score - len(issues))
         return {

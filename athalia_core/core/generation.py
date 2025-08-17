@@ -201,7 +201,7 @@ async def health_check():
     return {{"status": "healthy", "timestamp": datetime.now().isoformat()}}
 
 async def main():
-    logger.info("🚀 Démarrage de l'API Ultra-Avancée")
+    logger.info(" Démarrage de l'API Ultra-Avancée")
     config = uvicorn.Config(app, host="0.0.0.0", port=8000, log_level="info")
     server = uvicorn.Server(config)
     await server.serve()

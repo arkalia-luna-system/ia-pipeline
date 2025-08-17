@@ -316,12 +316,12 @@ class GestionnaireProfils:
         """Génération d'un rapport détaillé pour un profil"""
         profil = self.obtenir_profil(nom_profil)
         if not profil:
-            return f"❌ Profil '{nom_profil}' non trouvé"
+            return f" Profil '{nom_profil}' non trouvé"
 
         stats = self.obtenir_statistiques(nom_profil)
 
         rapport = f"""
-📊 RAPPORT PROFIL UTILISATEUR - {nom_profil}
+ RAPPORT PROFIL UTILISATEUR - {nom_profil}
 {"=" * 50}
 
 👤 INFORMATIONS GÉNÉRALES:
@@ -341,14 +341,14 @@ class GestionnaireProfils:
             rapport += f"• {action}: {count} fois\n"
 
         rapport += """
-📁 PROJETS LES PLUS CONSULTÉS:
+ PROJETS LES PLUS CONSULTÉS:
 """
 
         for projet, count in list(stats["projets_frequents"].items())[:5]:
             rapport += f"• {projet}: {count} consultations\n"
 
         rapport += """
-⚙️ PRÉFÉRENCES:
+⚙ PRÉFÉRENCES:
 """
 
         for pref, valeur in profil.preferences.items():
@@ -423,20 +423,20 @@ def main():
 
     if args.action == "creer":
         if not args.nom:
-            print("❌ Nom du profil requis")
+            print(" Nom du profil requis")
             return
         profil = gestionnaire.creer_profil(args.nom, args.email or "")
-        print(f"✅ Profil '{profil.nom}' créé avec succès")
+        print(f" Profil '{profil.nom}' créé avec succès")
 
     elif args.action == "obtenir":
         if not args.nom:
-            print("❌ Nom du profil requis")
+            print(" Nom du profil requis")
             return
         profil = gestionnaire.obtenir_profil(args.nom)
         if profil:
-            print(f"✅ Profil trouvé: {profil.nom} ({profil.email})")
+            print(f" Profil trouvé: {profil.nom} ({profil.email})")
         else:
-            print(f"❌ Profil '{args.nom}' non trouvé")
+            print(f" Profil '{args.nom}' non trouvé")
 
     elif args.action == "lister":
         profils = gestionnaire.lister_profils()
@@ -446,7 +446,7 @@ def main():
 
     elif args.action == "rapport":
         if not args.nom:
-            print("❌ Nom du profil requis")
+            print(" Nom du profil requis")
             return
         rapport = gestionnaire.generer_rapport_profil(args.nom)
         print(rapport)

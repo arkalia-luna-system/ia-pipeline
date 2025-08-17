@@ -751,7 +751,7 @@ def main():
 
     # Obtenir les insights
     insights = memory.get_learning_insights()
-    print("\n📊 Insights d'apprentissage:")
+    print("\n Insights d'apprentissage:")
     print(f"  • Événements totaux: {insights['total_events']}")
     print(f"  • Taux d'erreur: {insights['error_rate']:.2f}")
     print(f"  • Patterns appris: {insights['total_patterns']}")

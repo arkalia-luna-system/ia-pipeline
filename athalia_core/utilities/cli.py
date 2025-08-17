@@ -48,7 +48,7 @@ def generate_project(blueprint, output_path, dry_run=False):
     """Génère un projet à partir d'un blueprint"""
     try:
         if dry_run:
-            click.echo("🔍 Mode simulation - Aucun fichier créé")
+            click.echo(" Mode simulation - Aucun fichier créé")
             return True
 
         # Créer la structure du projet
@@ -106,7 +106,7 @@ if __name__ == "__main__":
         return True
 
     except Exception as e:
-        click.echo(f"❌ Erreur lors de la génération: {e}")
+        click.echo(f" Erreur lors de la génération: {e}")
         return False
 
 
@@ -127,10 +127,10 @@ def cli(verbose):
 def generate(idea, output, dry_run):
     """Génère un projet complet à partir dune idée."""
     try:
-        click.echo(f"🚀 Génération du projet: {idea}")
+        click.echo(f" Génération du projet: {idea}")
 
         if dry_run:
-            click.echo("🔍 Mode simulation activé")
+            click.echo(" Mode simulation activé")
 
         # 1. Générer le blueprint avec lIA robuste
         click.echo("🤖 Génération du blueprint avec IA robuste...")
@@ -138,10 +138,10 @@ def generate(idea, output, dry_run):
         blueprint = ai.generate_blueprint(idea)
 
         if not blueprint:
-            click.echo("❌ Impossible de générer le blueprint")
+            click.echo(" Impossible de générer le blueprint")
             return
 
-        click.echo(f"✅ Blueprint généré: {blueprint.get('project_type', 'Projet')}")
+        click.echo(f" Blueprint généré: {blueprint.get('project_type', 'Projet')}")
 
         # 2. Générer le projet complet
 
@@ -153,15 +153,15 @@ def generate(idea, output, dry_run):
 
         if result:
             if not dry_run:
-                click.echo(f"✅ Projet généré dans: {output}")
+                click.echo(f" Projet généré dans: {output}")
             else:
-                click.echo("✅ Simulation terminée")
+                click.echo(" Simulation terminée")
         else:
-            click.echo("❌ Erreur lors de la génération du projet")
+            click.echo(" Erreur lors de la génération du projet")
 
     except Exception as e:
-        click.echo(f"❌ Erreur: {e}")
-        click.echo(f"🔍 Détails: {traceback.format_exc()}")
+        click.echo(f" Erreur: {e}")
+        click.echo(f" Détails: {traceback.format_exc()}")
 
 
 @cli.command()
@@ -169,13 +169,13 @@ def generate(idea, output, dry_run):
 def audit(project_path):
     """Audit intelligent dun projet existant."""
     try:
-        click.echo(f"🔍 Audit du projet: {project_path}")
+        click.echo(f" Audit du projet: {project_path}")
 
         results = audit_project_intelligent(project_path)
 
-        click.echo(f"📊 Score global: {results.get('global_score', 0)}/100")
-        click.echo(f"📁 Fichiers analysés: {len(results.get('files', []))}")
-        click.echo(f"⚠️  Problèmes détectés: {len(results.get('issues', []))}")
+        click.echo(f" Score global: {results.get('global_score', 0)}/100")
+        click.echo(f" Fichiers analysés: {len(results.get('files', []))}")
+        click.echo(f"  Problèmes détectés: {len(results.get('issues', []))}")
         click.echo(f"💡 Suggestions: {len(results.get('suggestions', []))}")
 
         # Sauvegarder le rapport
@@ -186,7 +186,7 @@ def audit(project_path):
         click.echo(f"📄 Rapport sauvegardé: {report_path}")
 
     except Exception as e:
-        click.echo(f"❌ Erreur: {e}")
+        click.echo(f" Erreur: {e}")
 
 
 @cli.command()
@@ -200,7 +200,7 @@ def ai_status():
         # Modèles disponibles
         click.echo(f"📋 Modèles détectés: {len(ai.available_models)}")
         for model in ai.available_models:
-            status = "✅" if model != AIModel.MOCK else "🔄"
+            status = "" if model != AIModel.MOCK else "🔄"
             click.echo(f"  {status} {model.value}")
 
         # Chaîne de fallback
@@ -209,16 +209,16 @@ def ai_status():
             click.echo(f"  {index}. {model.value}")
 
         # Templates de prompts
-        click.echo(f"\n📝 Templates de prompts: {len(ai.prompt_templates)}")
+        click.echo(f"\n Templates de prompts: {len(ai.prompt_templates)}")
         for context in ai.prompt_templates.keys():
             click.echo(f"  • {context}")
 
         click.echo("\n✨ IA robuste prête à lemploi!")
 
     except ImportError:
-        click.echo("❌ Module ai_robust non disponible")
+        click.echo(" Module ai_robust non disponible")
     except Exception as e:
-        click.echo(f"❌ Erreur: {e}")
+        click.echo(f" Erreur: {e}")
 
 
 @cli.command()
@@ -234,14 +234,14 @@ def test_ai(idea):
         click.echo("📋 Génération de blueprint...")
         blueprint = ai.generate_blueprint(idea)
 
-        click.echo("✅ Blueprint généré:")
+        click.echo(" Blueprint généré:")
         click.echo(f"  • Nom: {blueprint.get('project_name', 'N/A')}")
         click.echo(f"  • Type: {blueprint.get('project_type', 'N/A')}")
         click.echo(f"  • Modules: {len(blueprint.get('modules', []))}")
         click.echo(f"  • Dépendances: {len(blueprint.get('dependencies', []))}")
 
         # Test de revue de code
-        click.echo("\n🔍 Test de revue de code...")
+        click.echo("\n Test de revue de code...")
         test_code = """
 def hello_world():
     print("Hello World")
@@ -254,7 +254,7 @@ def hello_world():
             current_score=50,
         )
 
-        click.echo("✅ Revue générée:")
+        click.echo(" Revue générée:")
         click.echo(f"  • Score: {review.get('score', 'N/A')}")
         click.echo(f"  • Problèmes: {len(review.get('issues', []))}")
         click.echo(f"  • Suggestions: {len(review.get('suggestions', []))}")
@@ -265,14 +265,14 @@ def hello_world():
             project_name="test", project_type="python", modules=["api", "web"]
         )
 
-        click.echo(f"✅ Documentation générée ({len(doc)} caractères)")
+        click.echo(f" Documentation générée ({len(doc)} caractères)")
 
         click.echo("\n🎉 Tous les tests IA robuste réussis!")
 
     except ImportError:
-        click.echo("❌ Module ai_robust non disponible")
+        click.echo(" Module ai_robust non disponible")
     except Exception as e:
-        click.echo(f"❌ Erreur: {e}")
+        click.echo(f" Erreur: {e}")
 
 
 if __name__ == "__main__":

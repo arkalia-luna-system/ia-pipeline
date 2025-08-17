@@ -285,35 +285,35 @@ class CodeLinter:
     def _get_quality_level(self) -> str:
         """Détermine le niveau de qualité"""
         score = self.report.get("score", 0)
-        if score >= 90:
+        if isinstance(score, (int, float)) and score >= 90:
             return "EXCELLENT"
-        elif score >= 70:
+        elif isinstance(score, (int, float)) and score >= 70:
             return "BON"
-        elif score >= 50:
+        elif isinstance(score, (int, float)) and score >= 50:
             return "MOYEN"
         else:
             return "CRITIQUE"
 
-    def print_report(self):
+    def print_report(self) -> None:
         """Affichage du rapport de linting renforcé"""
         logger.info(
             f"📏 Score qualité: {self.report['score']}/100 ({self._get_quality_level()})"
         )
 
-        if self.report["errors"]:
+        if isinstance(self.report["errors"], list):
             logger.info("🔴 Erreurs:")
             for err in self.report["errors"]:
                 logger.info(f" - {err}")
 
-        if self.report["warnings"]:
+        if isinstance(self.report["warnings"], list):
             logger.info("🟡 Avertissements:")
             for warn in self.report["warnings"]:
                 logger.info(f" - {warn}")
 
-        if self.report["fixes"]:
-            logger.info("🛠️ Corrections suggérées:")
+        if isinstance(self.report["fixes"], list):
+            logger.info("🛠 Corrections suggérées:")
             for fix in self.report["fixes"]:
                 logger.info(f" - {fix}")
 
         # Afficher le niveau de qualité
-        logger.info(f"📊 Niveau de qualité: {self._get_quality_level()}")
+        logger.info(f" Niveau de qualité: {self._get_quality_level()}")

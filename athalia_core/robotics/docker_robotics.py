@@ -285,7 +285,7 @@ export ROS_DOMAIN_ID=${ROS_DOMAIN_ID:-0}
 export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
 # Démarrer le service principal
-echo "🚀 Démarrage Reachy 2023..."
+echo " Démarrage Reachy 2023..."
 ros2 launch reachy_bringup reachy_bringup.launch.py
 """
         return template
@@ -301,14 +301,14 @@ ros2 launch reachy_bringup reachy_bringup.launch.py
             if not compose_file.exists():
                 with open(compose_file, "w") as f:
                     f.write(self.create_reachy_compose_template())
-                self.logger.info("✅ docker-compose.yaml créé")
+                self.logger.info(" docker-compose.yaml créé")
 
             # Créer Dockerfile
             dockerfile = self.docker_path / "Dockerfile"
             if not dockerfile.exists():
                 with open(dockerfile, "w") as f:
                     f.write(self.create_dockerfile_template())
-                self.logger.info("✅ Dockerfile créé")
+                self.logger.info(" Dockerfile créé")
 
             # Créer script de démarrage
             start_script = self.docker_path / "start.sh"
@@ -316,7 +316,7 @@ ros2 launch reachy_bringup reachy_bringup.launch.py
                 with open(start_script, "w") as f:
                     f.write(self.create_start_script_template())
                 os.chmod(start_script, 0o755)  # nosec B103
-                self.logger.info("✅ start.sh créé")
+                self.logger.info(" start.sh créé")
 
             # Créer .dockerignore
             dockerignore = self.project_path / ".dockerignore"
@@ -335,7 +335,7 @@ htmlcov/
 .pytest_cache/
 """
                     )
-                self.logger.info("✅ .dockerignore créé")
+                self.logger.info(" .dockerignore créé")
 
             return True
 
@@ -360,7 +360,7 @@ htmlcov/
             )
 
             if result.returncode == 0:
-                self.logger.info("✅ Docker Compose lancé avec succès")
+                self.logger.info(" Docker Compose lancé avec succès")
                 return True
             else:
                 self.logger.error(f"Erreur Docker Compose: {result.stderr}")
@@ -375,12 +375,12 @@ htmlcov/
         report = f"""
 # 🐳 Rapport Docker Robotique
 
-## 📊 État de la Configuration
-- **Compose Valide**: {"✅" if result.compose_valid else "❌"}
-- **Prêt à Lancer**: {"✅" if result.ready_to_run else "❌"}
+##  État de la Configuration
+- **Compose Valide**: {"" if result.compose_valid else ""}
+- **Prêt à Lancer**: {"" if result.ready_to_run else ""}
 - **Services**: {len(result.services)}
 
-## 🔧 Services Détectés
+##  Services Détectés
 """
 
         for service in result.services:

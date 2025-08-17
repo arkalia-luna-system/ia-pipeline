@@ -660,7 +660,8 @@ class PerformanceAnalyzer:
 
     def stop_performance_monitoring(self) -> dict[str, Any]:
         """Arrête le monitoring de performance."""
-        if not hasattr(self, "monitoring_active") or not self.monitoring_active:
+        monitoring_active = getattr(self, "monitoring_active", False)
+        if not monitoring_active:
             return {"error": "Monitoring non actif"}
 
         self.monitoring_active = False
@@ -677,7 +678,7 @@ class PerformanceAnalyzer:
     def _get_memory_usage(self) -> float:
         """Obtient l'usage mémoire actuel"""
         try:
-            import psutil  # type: ignore
+            import psutil
 
             process = psutil.Process()
             return float(process.memory_info().rss / 1024 / 1024)  # MB
@@ -1233,7 +1234,10 @@ class PerformanceAnalyzer:
     def calculate_performance_score(self) -> float:
         """Calcule le score de performance global"""
         analysis = self.run_comprehensive_analysis()
-        return analysis.get("score", 0.0)
+        score = analysis.get("score", 0.0)
+        if isinstance(score, (int, float)):
+            return float(score)
+        return 0.0
 
     def export_performance_results(self, export_path: str) -> bool:
         """Exporte les résultats de performance"""

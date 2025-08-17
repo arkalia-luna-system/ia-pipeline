@@ -23,7 +23,7 @@ class AutoCorrectionAvancee:
 
     def analyser_et_corriger(self, dry_run: bool = False) -> dict[str, Any]:
         """Analyse complète et correction automatique du code"""
-        logger.info("🔧 Démarrage de l'auto-correction avancée")
+        logger.info(" Démarrage de l'auto-correction avancée")
 
         resultats = {
             "corrections_appliquees": [],
@@ -52,7 +52,7 @@ class AutoCorrectionAvancee:
             corrections_appliquees = []
         corrections_count = len(corrections_appliquees)
         logger.info(
-            f"✅ Auto-correction terminée: {corrections_count} corrections appliquées"
+            f" Auto-correction terminée: {corrections_count} corrections appliquées"
         )
         retour = resultats.copy()
         retour["resultats"] = resultats
@@ -611,7 +611,7 @@ class AutoCorrectionAvancee:
 Rapport d'Auto-Correction
 ========================
 """
-        rapport += f"\n📊 RAPPORT D'AUTO-CORRECTION - {self.project_path}\n"
+        rapport += f"\n RAPPORT D'AUTO-CORRECTION - {self.project_path}\n"
         rapport += f"{'=' * 60}\n\n"
 
         # Utiliser le dictionnaire 'resultats' pour générer le rapport
@@ -620,7 +620,7 @@ Rapport d'Auto-Correction
         fichiers_traites = resultats.get("fichiers_traites", 0)
         erreurs_corrigees = resultats.get("erreurs_corrigees", 0)
 
-        rapport += "🔧 CORRECTIONS APPLIQUÉES:\n"
+        rapport += " CORRECTIONS APPLIQUÉES:\n"
         if corrections_appliquees:
             for i, correction in enumerate(corrections_appliquees, 1):
                 rapport += (

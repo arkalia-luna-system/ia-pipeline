@@ -39,7 +39,7 @@ class CacheManager:
                 with open(self.stats_file, encoding="utf-8") as f:
                     return json.load(f)
         except Exception as e:
-            logger.warning(f"⚠️ Erreur lors du chargement des stats: {e}")
+            logger.warning(f" Erreur lors du chargement des stats: {e}")
 
         return default_stats
 
@@ -49,7 +49,7 @@ class CacheManager:
             with open(self.stats_file, "w", encoding="utf-8") as f:
                 json.dump(self.stats, f, indent=2)
         except Exception as e:
-            logger.warning(f"⚠️ Erreur lors de la sauvegarde des stats: {e}")
+            logger.warning(f" Erreur lors de la sauvegarde des stats: {e}")
 
     def _generate_cache_key(self, blueprint: dict[str, Any]) -> str:
         """Génère une clé de cache unique basée sur le blueprint"""
@@ -81,20 +81,20 @@ class CacheManager:
 
                     self.stats["hits"] += 1
                     self._save_stats()
-                    logger.info(f"✅ Cache hit: {cache_key}")
+                    logger.info(f" Cache hit: {cache_key}")
                     return cached_result
                 else:
                     # Cache expiré, le supprimer
                     cache_file.unlink()
-                    logger.info(f"🗑️ Cache expiré supprimé: {cache_key}")
+                    logger.info(f"🗑 Cache expiré supprimé: {cache_key}")
 
             self.stats["misses"] += 1
             self._save_stats()
-            logger.info(f"❌ Cache miss: {cache_key}")
+            logger.info(f" Cache miss: {cache_key}")
             return None
 
         except Exception as e:
-            logger.warning(f"⚠️ Erreur lors de la récupération du cache: {e}")
+            logger.warning(f" Erreur lors de la récupération du cache: {e}")
             self.stats["misses"] += 1
             self._save_stats()
             return None
@@ -118,7 +118,7 @@ class CacheManager:
             return True
 
         except Exception as e:
-            logger.warning(f"⚠️ Erreur lors de la sauvegarde du cache: {e}")
+            logger.warning(f" Erreur lors de la sauvegarde du cache: {e}")
             return False
 
     def clear(self) -> bool:
@@ -140,7 +140,7 @@ class CacheManager:
             return True
 
         except Exception as e:
-            logger.warning(f"⚠️ Erreur lors du vidage du cache: {e}")
+            logger.warning(f" Erreur lors du vidage du cache: {e}")
             return False
 
     def get_stats(self) -> dict[str, Any]:
@@ -173,7 +173,7 @@ class CacheManager:
             return True
 
         except Exception as e:
-            logger.warning(f"⚠️ Erreur lors de l'optimisation du cache: {e}")
+            logger.warning(f" Erreur lors de l'optimisation du cache: {e}")
             return False
 
 

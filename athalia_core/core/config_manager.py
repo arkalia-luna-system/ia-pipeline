@@ -5,7 +5,10 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-import yaml
+try:
+    import yaml
+except ImportError:
+    yaml = None
 
 """
 Gestionnaire de configuration centralisé pour Athalia
@@ -363,7 +366,10 @@ class ConfigManager:
             if plugins_dir.exists():
                 return [p.stem for p in plugins_dir.glob("*.py") if p.is_file()]
 
-        return self.config.plugins.get("enabled", [])
+        enabled_plugins = self.config.plugins.get("enabled", [])
+        if isinstance(enabled_plugins, list):
+            return enabled_plugins
+        return []
 
     def get_available_templates(self) -> list[str]:
         """Récupère la liste des templates f"""
@@ -376,9 +382,12 @@ class ConfigManager:
             if templates_dir.exists():
                 return [t.name for t in templates_dir.iterdir() if t.is_dir()]
 
-        return self.config.templates.get(
+        available_templates = self.config.templates.get(
             "available", ["api", "memory", "tts", "web", "cli", "dashboard"]
         )
+        if isinstance(available_templates, list):
+            return available_templates
+        return ["api", "memory", "tts", "web", "cli", "dashboard"]
 
     def get_cleanup_patterns(self) -> list[str]:
         """Récupère les patterns de f"""

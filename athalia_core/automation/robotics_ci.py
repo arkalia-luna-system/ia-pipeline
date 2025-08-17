@@ -22,13 +22,17 @@ except ImportError:
 
 logger = logging.getLogger(__name__)
 
+"""
+Système de CI/CD pour projets robotics
+"""
+
 
 class RoboticsCI:
     """Système de CI/CD pour projets robotics"""
 
-    def __init__(self, project_path: str = "."):
+    def __init__(self, project_path: str = ".") -> None:
         self.project_path = Path(project_path)
-        self.ci_results = {
+        self.ci_results: dict[str, Any] = {
             "build_status": "unknown",
             "test_status": "unknown",
             "lint_status": "unknown",
@@ -56,9 +60,10 @@ class RoboticsCI:
 
         return self.ci_results
 
-    def _check_project_structure(self):
+    def _check_project_structure(self) -> None:
         """Vérifie la structure du projet robotics"""
-        required_files = []
+        required_files: list[str] = []
+        required_dirs: list[str] = []
 
         # Détecter le type de projet
         if (self.project_path / "package.xml").exists():
@@ -73,28 +78,28 @@ class RoboticsCI:
             required_files = ["package.json"]
         else:
             # Aucun type de projet détecté
-            self.ci_results["errors"].append("Aucun type de projet robotics détecté")
+            if isinstance(self.ci_results["errors"], list):
+                self.ci_results["errors"].append("Aucun type de projet robotics détecté")
             self.ci_results["build_status"] = "failed"
             return
 
-        missing_files = []
+        missing_files: list[str] = []
         for file in required_files:
             if not (self.project_path / file).exists():
                 missing_files.append(file)
 
         # Vérifier les dossiers requis
-        if "required_dirs" in locals():
-            for dir_name in required_dirs:
-                if not (self.project_path / dir_name).is_dir():
-                    missing_files.append(f"dossier {dir_name}")
+        for dir_name in required_dirs:
+            if not (self.project_path / dir_name).is_dir():
+                missing_files.append(f"dossier {dir_name}")
 
         if missing_files:
-            self.ci_results["errors"].append(
-                f"Fichiers requis manquants: {missing_files}"
-            )
-            self.ci_results["build_status"] = "failed"
+            if isinstance(self.ci_results["errors"], list):
+                self.ci_results["errors"].append(
+                    f"Fichiers requis manquants: {missing_files}"
+                )
 
-    def _run_build(self):
+    def _run_build(self) -> None:
         """Exécute la compilation du projet"""
         try:
             if (self.project_path / "Cargo.toml").exists():
@@ -111,9 +116,10 @@ class RoboticsCI:
                     self.ci_results["build_status"] = "success"
                 else:
                     self.ci_results["build_status"] = "failed"
-                    self.ci_results["errors"].append(
-                        f"Build Rust échoué: {result.stderr}"
-                    )
+                    if isinstance(self.ci_results["errors"], list):
+                        self.ci_results["errors"].append(
+                            f"Build Rust échoué: {result.stderr}"
+                        )
 
             elif (self.project_path / "package.xml").exists():
                 # Build ROS2
@@ -129,14 +135,15 @@ class RoboticsCI:
                     self.ci_results["build_status"] = "success"
                 else:
                     self.ci_results["build_status"] = "failed"
-                    self.ci_results["errors"].append(
-                        f"Build ROS2 échoué: {result.stderr}"
-                    )
+                    if isinstance(self.ci_results["errors"], list):
+                        self.ci_results["errors"].append(
+                            f"Build ROS2 échoué: {result.stderr}"
+                        )
 
-            else:
-                # Build Python standard
+            elif (self.project_path / "package.json").exists():
+                # Build Node.js
                 result = validate_and_run(
-                    ["python", "-m", "pip", "install", "-e", "."],
+                    ["npm", "run", "build"],
                     cwd=self.project_path,
                     stdout=subprocess.PIPE,
                     stderr=subprocess.PIPE,
@@ -147,19 +154,20 @@ class RoboticsCI:
                     self.ci_results["build_status"] = "success"
                 else:
                     self.ci_results["build_status"] = "failed"
-                    self.ci_results["errors"].append(
-                        f"Build Python échoué: {result.stderr}"
-                    )
+                    if isinstance(self.ci_results["errors"], list):
+                        self.ci_results["errors"].append(
+                            f"Build Node.js échoué: {result.stderr}"
+                        )
 
         except subprocess.TimeoutExpired:
-            self.ci_results["build_status"] = "failed"
-            self.ci_results["errors"].append("Build timeout")
+            if isinstance(self.ci_results["errors"], list):
+                self.ci_results["errors"].append("Build timeout")
         except Exception as e:
-            self.ci_results["build_status"] = "failed"
-            self.ci_results["errors"].append(f"Erreur build: {e}")
+            if isinstance(self.ci_results["errors"], list):
+                self.ci_results["errors"].append(f"Erreur build: {e}")
 
-    def _run_tests(self):
-        """Exécute les tests"""
+    def _run_tests(self) -> None:
+        """Exécute les tests du projet"""
         try:
             if (self.project_path / "Cargo.toml").exists():
                 # Tests Rust
@@ -175,9 +183,10 @@ class RoboticsCI:
                     self.ci_results["test_status"] = "success"
                 else:
                     self.ci_results["test_status"] = "failed"
-                    self.ci_results["errors"].append(
-                        f"Tests Rust échoués: {result.stderr}"
-                    )
+                    if isinstance(self.ci_results["errors"], list):
+                        self.ci_results["errors"].append(
+                            f"Tests Rust échoués: {result.stderr}"
+                        )
 
             elif (self.project_path / "package.xml").exists():
                 # Tests ROS2
@@ -193,14 +202,15 @@ class RoboticsCI:
                     self.ci_results["test_status"] = "success"
                 else:
                     self.ci_results["test_status"] = "failed"
-                    self.ci_results["errors"].append(
-                        f"Tests ROS2 échoués: {result.stderr}"
-                    )
+                    if isinstance(self.ci_results["errors"], list):
+                        self.ci_results["errors"].append(
+                            f"Tests ROS2 échoués: {result.stderr}"
+                        )
 
-            else:
-                # Tests Python
+            elif (self.project_path / "package.json").exists():
+                # Tests Node.js
                 result = validate_and_run(
-                    ["python", "-m", "pytest"],
+                    ["npm", "test"],
                     cwd=self.project_path,
                     stdout=subprocess.PIPE,
                     stderr=subprocess.PIPE,
@@ -211,19 +221,20 @@ class RoboticsCI:
                     self.ci_results["test_status"] = "success"
                 else:
                     self.ci_results["test_status"] = "failed"
-                    self.ci_results["errors"].append(
-                        f"Tests Python échoués: {result.stderr}"
-                    )
+                    if isinstance(self.ci_results["errors"], list):
+                        self.ci_results["errors"].append(
+                            f"Tests Node.js échoués: {result.stderr}"
+                        )
 
         except subprocess.TimeoutExpired:
-            self.ci_results["test_status"] = "failed"
-            self.ci_results["errors"].append("Tests timeout")
+            if isinstance(self.ci_results["errors"], list):
+                self.ci_results["errors"].append("Tests timeout")
         except Exception as e:
-            self.ci_results["test_status"] = "failed"
-            self.ci_results["errors"].append(f"Erreur tests: {e}")
+            if isinstance(self.ci_results["errors"], list):
+                self.ci_results["errors"].append(f"Erreur tests: {e}")
 
-    def _run_linting(self):
-        """Exécute le linting"""
+    def _run_linting(self) -> None:
+        """Exécute le linting du projet"""
         try:
             if (self.project_path / "Cargo.toml").exists():
                 # Lint Rust
@@ -235,36 +246,32 @@ class RoboticsCI:
                     text=True,
                     timeout=120,
                 )
-                if result.returncode == 0:
-                    self.ci_results["lint_status"] = "success"
-                else:
-                    self.ci_results["lint_status"] = "failed"
-                    self.ci_results["warnings"].append(f"Lint Rust: {result.stderr}")
+                if result.returncode != 0:
+                    if isinstance(self.ci_results["warnings"], list):
+                        self.ci_results["warnings"].append(f"Lint Rust: {result.stderr}")
 
-            else:
-                # Lint Python
+            elif (self.project_path / "package.json").exists():
+                # Lint Node.js
                 result = validate_and_run(
-                    ["flake8", "."],
+                    ["npm", "run", "lint"],
                     cwd=self.project_path,
                     stdout=subprocess.PIPE,
                     stderr=subprocess.PIPE,
                     text=True,
                     timeout=120,
                 )
-                if result.returncode == 0:
-                    self.ci_results["lint_status"] = "success"
-                else:
-                    self.ci_results["lint_status"] = "failed"
-                    self.ci_results["warnings"].append(f"Lint Python: {result.stdout}")
+                if result.returncode != 0:
+                    if isinstance(self.ci_results["warnings"], list):
+                        self.ci_results["warnings"].append(f"Lint Node.js: {result.stderr}")
 
         except subprocess.TimeoutExpired:
-            self.ci_results["lint_status"] = "failed"
-            self.ci_results["warnings"].append("Lint timeout")
+            if isinstance(self.ci_results["warnings"], list):
+                self.ci_results["warnings"].append("Lint timeout")
         except Exception as e:
-            self.ci_results["lint_status"] = "failed"
-            self.ci_results["warnings"].append(f"Erreur lint: {e}")
+            if isinstance(self.ci_results["warnings"], list):
+                self.ci_results["warnings"].append(f"Erreur lint: {e}")
 
-    def _run_security_scan(self):
+    def _run_security_scan(self) -> None:
         """Exécute le scan de sécurité"""
         try:
             if (self.project_path / "Cargo.toml").exists():
@@ -277,122 +284,151 @@ class RoboticsCI:
                     text=True,
                     timeout=120,
                 )
-                if result.returncode == 0:
-                    self.ci_results["security_status"] = "success"
-                else:
-                    self.ci_results["security_status"] = "failed"
-                    self.ci_results["warnings"].append(f"Audit Rust: {result.stderr}")
+                if result.returncode != 0:
+                    if isinstance(self.ci_results["warnings"], list):
+                        self.ci_results["warnings"].append(f"Audit Rust: {result.stderr}")
 
-            else:
-                # Scan Python
+            elif (self.project_path / "package.json").exists():
+                # Audit npm
                 result = validate_and_run(
-                    ["bandit", "-r", "."],
+                    ["npm", "audit"],
                     cwd=self.project_path,
                     stdout=subprocess.PIPE,
                     stderr=subprocess.PIPE,
                     text=True,
                     timeout=120,
                 )
-                if result.returncode == 0:
-                    self.ci_results["security_status"] = "success"
-                else:
-                    self.ci_results["security_status"] = "failed"
-                    self.ci_results["warnings"].append(
-                        f"Scan sécurité: {result.stdout}"
-                    )
+                if result.returncode != 0:
+                    if isinstance(self.ci_results["warnings"], list):
+                        self.ci_results["warnings"].append(
+                            f"Audit npm: {result.stderr}"
+                        )
 
         except subprocess.TimeoutExpired:
-            self.ci_results["security_status"] = "failed"
-            self.ci_results["warnings"].append("Scan sécurité timeout")
+            if isinstance(self.ci_results["warnings"], list):
+                self.ci_results["warnings"].append("Scan sécurité timeout")
         except Exception as e:
-            self.ci_results["security_status"] = "failed"
-            self.ci_results["warnings"].append(f"Erreur scan sécurité: {e}")
+            if isinstance(self.ci_results["warnings"], list):
+                self.ci_results["warnings"].append(f"Erreur scan sécurité: {e}")
 
-    def _run_deployment_check(self):
-        """Vérifie la préparation au déploiement"""
+    def _run_deployment_check(self) -> None:
+        """Vérifie la configuration de déploiement"""
         try:
             # Vérifier les fichiers de configuration
-            config_files = ["docker-compose.yml", "Dockerfile", "deploy.yaml"]
-            found_configs = []
+            config_files = []
+            if (self.project_path / "docker-compose.yml").exists():
+                config_files.append("docker-compose.yml")
+            if (self.project_path / "Dockerfile").exists():
+                config_files.append("Dockerfile")
+            if (self.project_path / ".github").exists():
+                config_files.append(".github")
 
-            for config_file in config_files:
-                if (self.project_path / config_file).exists():
-                    found_configs.append(config_file)
-
-            if found_configs:
+            if config_files:
+                if isinstance(self.ci_results["metrics"], dict):
+                    self.ci_results["metrics"]["config_files"] = config_files
                 self.ci_results["deployment_status"] = "ready"
-                self.ci_results["metrics"]["config_files"] = found_configs
             else:
+                if isinstance(self.ci_results["warnings"], list):
+                    self.ci_results["warnings"].append(
+                        "Aucun fichier de déploiement trouvé"
+                    )
                 self.ci_results["deployment_status"] = "not_ready"
-                self.ci_results["warnings"].append(
-                    "Aucun fichier de déploiement trouvé"
-                )
 
         except Exception as e:
-            self.ci_results["deployment_status"] = "failed"
-            self.ci_results["errors"].append(f"Erreur vérification déploiement: {e}")
+            if isinstance(self.ci_results["errors"], list):
+                self.ci_results["errors"].append(f"Erreur vérification déploiement: {e}")
 
-    def _calculate_ci_score(self):
-        """Calcule le score global de CI/CD"""
+    def _calculate_ci_score(self) -> None:
+        """Calcule le score global du CI/CD"""
         score = 100
 
         # Pénalités par statut
-        status_penalties = {"failed": 25, "unknown": 10, "not_ready": 5}
+        status_penalties = {
+            "failed": 50,
+            "unknown": 25,
+            "not_ready": 10,
+        }
 
+        # Appliquer les pénalités
         for status in [
             self.ci_results["build_status"],
             self.ci_results["test_status"],
             self.ci_results["lint_status"],
             self.ci_results["security_status"],
+            self.ci_results["deployment_status"],
         ]:
-            score -= status_penalties.get(status, 0)
+            if isinstance(status_penalties, dict):
+                score -= status_penalties.get(status, 0)
 
-        # Pénalités pour erreurs et avertissements
-        score -= len(self.ci_results["errors"]) * 5
-        score -= len(self.ci_results["warnings"]) * 2
-
-        self.ci_results["metrics"]["ci_score"] = max(0, score)
+        # Sauvegarder le score
+        if isinstance(self.ci_results["metrics"], dict):
+            self.ci_results["metrics"]["ci_score"] = max(0, score)
 
     def generate_ci_report(self) -> str:
-        """Génère un rapport de CI/CD"""
-        report = []
-        report.append("# Rapport CI/CD Robotics")
-        report.append("")
+        """Génère un rapport CI/CD en Markdown"""
+        report = f"""# Rapport CI/CD - {self.project_path.name}
 
-        report.append("## Statuts")
-        report.append(f"- 🏗️ Build: {self.ci_results['build_status']}")
-        report.append(f"- 🧪 Tests: {self.ci_results['test_status']}")
-        report.append(f"- 📏 Lint: {self.ci_results['lint_status']}")
-        report.append(f"- 🔒 Sécurité: {self.ci_results['security_status']}")
-        report.append(f"- 🚀 Déploiement: {self.ci_results['deployment_status']}")
-        report.append("")
+## Résumé
+- **Build**: {self.ci_results['build_status']}
+- **Tests**: {self.ci_results['test_status']}
+- **Lint**: {self.ci_results['lint_status']}
+- **Sécurité**: {self.ci_results['security_status']}
+- **Déploiement**: {self.ci_results['deployment_status']}
 
-        report.append(
-            f"## Score CI/CD: {self.ci_results['metrics'].get('ci_score', 0)}/100"
-        )
-        report.append("")
+## Score
+"""
 
-        if self.ci_results["errors"]:
-            report.append("## Erreurs")
+        if isinstance(self.ci_results["metrics"], dict):
+            score = self.ci_results["metrics"].get("ci_score", 0)
+            report += f"**Score CI/CD**: {score}/100\n\n"
+
+        # Erreurs
+        if isinstance(self.ci_results["errors"], list) and self.ci_results["errors"]:
+            report += "## ❌ Erreurs\n"
             for error in self.ci_results["errors"]:
-                report.append(f"- ❌ {error}")
-            report.append("")
+                report += f"- {error}\n"
+            report += "\n"
 
-        if self.ci_results["warnings"]:
-            report.append("## Avertissements")
+        # Avertissements
+        if isinstance(self.ci_results["warnings"], list) and self.ci_results["warnings"]:
+            report += "## ⚠️ Avertissements\n"
             for warning in self.ci_results["warnings"]:
-                report.append(f"- ⚠️ {warning}")
-            report.append("")
+                report += f"- {warning}\n"
+            report += "\n"
 
-        if self.ci_results["metrics"]:
-            report.append("## Métriques")
+        # Métriques
+        if isinstance(self.ci_results["metrics"], dict) and self.ci_results["metrics"]:
+            report += "## 📊 Métriques\n"
             for key, value in self.ci_results["metrics"].items():
-                report.append(f"- {key}: {value}")
+                report += f"- **{key}**: {value}\n"
 
-        return "\n".join(report)
+        return report
+
+    def print_report(self) -> None:
+        """Affiche le rapport CI/CD"""
+        print(self.generate_ci_report())
 
 
-def run_robotics_ci(project_path: str = ".") -> dict[str, Any]:
-    """Fonction utilitaire pour exécuter la CI/CD robotics"""
-    ci = RoboticsCI(project_path)
-    return ci.run_full_pipeline()
+def main() -> None:
+    """Point d'entrée principal"""
+    import argparse
+
+    parser = argparse.ArgumentParser(description="CI/CD pour projets robotics")
+    parser.add_argument("project_path", help="Chemin vers le projet")
+    parser.add_argument("--output", help="Fichier de sortie pour le rapport")
+
+    args = parser.parse_args()
+
+    ci = RoboticsCI(args.project_path)
+    results = ci.run_full_pipeline()
+
+    if args.output:
+        with open(args.output, "w", encoding="utf-8") as f:
+            f.write(ci.generate_ci_report())
+        print(f"📄 Rapport sauvegardé dans {args.output}")
+    else:
+        ci.print_report()
+
+
+if __name__ == "__main__":
+    main()

@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
 """
-Module d'audit de sécurité pour Athalia
-Analyse et validation de la sécurité du code
+Auditeur de sécurité pour Athalia
+Vérifications de sécurité automatisées
 """
 
-import json
 import logging
-import re
 import subprocess
 from pathlib import Path
 from typing import Any
@@ -15,31 +13,31 @@ from typing import Any
 try:
     from athalia_core.validation.security_validator import (
         SecurityError,
-        validate_and_run,
+        validateand_run,
     )
 except ImportError:
     # Fallback pour les tests
     SecurityError = Exception
-    validate_and_run = subprocess.run
+    validateand_run = subprocess.run
 
 logger = logging.getLogger(__name__)
 
 
 class SecurityAuditor:
-    """Auditeur de sécurité pour Athalia"""
+    """Auditeur de sécurité pour projets Python"""
 
-    def __init__(self, project_path: str):
+    def __init__(self, project_path: str = "."):
         self.project_path = Path(project_path)
-        self.report = {
+        self.report: dict[str, Any] = {
             "score": 0,
-            "vulnerabilities": [],
             "warnings": [],
+            "vulnerabilities": [],
             "recommendations": [],
         }
 
     def run(self) -> dict[str, Any]:
-        """Lance l'audit de sécurité renforcé"""
-        logger.info(f"🔒 Audit de sécurité renforcé pour: {self.project_path.name}")
+        """Lance l'audit de sécurité complet"""
+        logger.info(f"🔒 Audit de sécurité pour: {self.project_path.name}")
 
         # Vérifications en séquence
         self._check_dependencies()
@@ -49,319 +47,269 @@ class SecurityAuditor:
         self._check_encryption()
         self._check_input_validation()
         self._check_authentication()
-        self._check_data_protection()
 
-        # Calcul du score
+        # Calcul du score et génération du rapport
         self._calculate_score()
-
-        # Générer un rapport détaillé
         self._generate_security_report()
 
-        # Adapter le retour pour les tests
         return {
             "global_score": int(self.report.get("score", 0)),
             "summary": list(self.report.get("warnings", [])),
             "details": list(self.report.get("vulnerabilities", [])),
             "files": list(self.report.get("recommendations", [])),
-            "security_level": self._get_security_level(),
-            "compliance": self._check_compliance(),
         }
 
-    def _check_dependencies(self):
-        """Vérification des dépendances"""
+    def _check_dependencies(self) -> None:
+        """Vérifie les dépendances pour les vulnérabilités connues"""
         try:
-            # Utiliser bandit pour lanalyse de sécurité
-            result = validate_and_run(
+            # Vérifier avec bandit
+            result = validateand_run(
                 ["bandit", "-r", str(self.project_path), "-f", "json"],
                 capture_output=True,
                 text=True,
-                timeout=30,
-            )
-
-            if result.returncode == 0:
-                self.report["vulnerabilities"].append(
-                    "Aucune vulnérabilité détectée par Bandit"
-                )
-            else:
-                self.report["vulnerabilities"].append(
-                    f"Vulnérabilités Bandit détectées: {result.stdout}"
-                )
-
-        except (Exception, SecurityError) as e:
-            self.report["warnings"].append(f"Bandit non exécuté: {e}")
-
-        # Vérifier avec safety si disponible
-        try:
-            result = validate_and_run(
-                ["safety", "check", "--json"],
-                capture_output=True,
-                text=True,
-                timeout=30,
+                timeout=120,
             )
 
             if result.returncode != 0:
-                vulns = json.loads(result.stdout)
-                for vuln in vulns:
+                if isinstance(self.report["vulnerabilities"], list):
                     self.report["vulnerabilities"].append(
-                        f"Vulnérabilité: {vuln['package']} {vuln['installed_version']}"
+                        f"Bandit a détecté des problèmes: {result.stderr}"
                     )
 
-        except (Exception, SecurityError) as e:
-            self.report["warnings"].append(f"Safety non exécuté: {e}")
+        except Exception as e:
+            if isinstance(self.report["warnings"], list):
+                self.report["warnings"].append(f"Bandit non exécuté: {e}")
 
-    def _check_code_vulnerabilities(self):
-        """Vérification des vulnérabilités dans le code"""
-        dangerous_patterns = [
-            r"eval\(",
-            r"exec\(",
-            r"subprocess\.call\(",
-            r"os\.system\(",
-            r"pickle\.loads\(",
-            r"yaml\.load\(",
-            r"input\(",
-        ]
+        try:
+            # Vérifier avec safety
+            result = validateand_run(
+                ["safety", "check", "--json"],
+                capture_output=True,
+                text=True,
+                timeout=60,
+            )
 
-        for py_file in self.project_path.rglob("*.py"):
-            try:
-                with open(py_file, encoding="utf-8") as f:
-                    content = f.read()
+            if result.returncode != 0:
+                if isinstance(self.report["vulnerabilities"], list):
+                    self.report["vulnerabilities"].append(
+                        f"Safety a détecté des vulnérabilités: {result.stdout}"
+                    )
 
-                for pattern in dangerous_patterns:
-                    matches = re.finditer(pattern, content)
-                    for match in matches:
-                        line_num = content[: match.start()].count("\n") + 1
-                        self.report["vulnerabilities"].append(
-                            f"Pattern dangereux {pattern} dans"
-                            f" {py_file.name}:{line_num}"
-                        )
+        except Exception as e:
+            if isinstance(self.report["warnings"], list):
+                self.report["warnings"].append(f"Safety non exécuté: {e}")
 
-            except (
-                OSError,
-                UnicodeDecodeError,
-                PermissionError,
-            ) as file_error:
-                logger.debug(
-                    f"Erreur lors de l'analyse du fichier {py_file}: {file_error}"
-                )
-                continue
+    def _check_code_vulnerabilities(self) -> None:
+        """Vérifie le code source pour les vulnérabilités"""
+        try:
+            # Rechercher des patterns dangereux
+            dangerous_patterns = [
+                "eval(",
+                "exec(",
+                "os.system(",
+                "subprocess.call(",
+                "pickle.loads(",
+                "yaml.load(",
+                "input(",
+            ]
 
-    def _check_secrets(self):
-        """Vérification des secrets"""
-        secret_patterns = [
-            r"password\s*=\s*\"[^\"]+\"",
-            r"api_key\s*=\s*\"[^\"]+\"",
-            r"secret\s*=\s*\"[^\"]+\"",
-            r"token\s*=\s*\"[^\"]+\"",
-        ]
-
-        for py_file in self.project_path.rglob("*.py"):
-            try:
-                with open(py_file, encoding="utf-8") as f:
-                    content = f.read()
-
-                for pattern in secret_patterns:
-                    matches = re.finditer(pattern, content)
-                    for match in matches:
-                        line_num = content[: match.start()].count("\n") + 1
-                        self.report["vulnerabilities"].append(
-                            f"Secret potentiel dans {py_file.name}:{line_num}"
-                        )
-
-            except (
-                OSError,
-                UnicodeDecodeError,
-                PermissionError,
-            ) as file_error:
-                logger.debug(
-                    f"Erreur lors de l'analyse du fichier {py_file}: {file_error}"
-                )
-                continue
-
-    def _check_permissions(self):
-        """Vérification des permissions des fichiers"""
-        for file_path in self.project_path.rglob("*"):
-            if file_path.is_file():
+            for py_file in self.project_path.rglob("*.py"):
                 try:
-                    stat = file_path.stat()
-                    if stat.st_mode & 0o777 == 0o777:
-                        self.report["warnings"].append(
-                            f"Permissions trop ouvertes: {file_path}"
-                        )
-                except (OSError, PermissionError) as perm_error:
-                    logger.debug(
-                        f"Erreur lors de la vérification des permissions {file_path}:"
-                        f" {perm_error}"
-                    )
+                    with open(py_file, encoding="utf-8") as f:
+                        content = f.read()
+
+                    for pattern in dangerous_patterns:
+                        if pattern in content:
+                            if isinstance(self.report["vulnerabilities"], list):
+                                self.report["vulnerabilities"].append(
+                                    f"Pattern dangereux '{pattern}' dans {py_file}"
+                                )
+
+                except Exception:
                     continue
 
-    def _check_encryption(self):
-        """Vérification de lutilisation du chiffrement"""
-        encryption_patterns = [
-            r"from cryptography",
-            r"import hashlib",
-            r"import secrets",
-        ]
+        except Exception as e:
+            logger.warning(f"Erreur vérification code: {e}")
 
-        has_encryption = False
-        for py_file in self.project_path.rglob("*.py"):
-            try:
-                with open(py_file, encoding="utf-8") as f:
-                    content = f.read()
+    def _check_secrets(self) -> None:
+        """Vérifie la présence de secrets exposés"""
+        try:
+            # Patterns de secrets
+            secret_patterns = [
+                r"password\s*=\s*['\"][^'\"]+['\"]",
+                r"api_key\s*=\s*['\"][^'\"]+['\"]",
+                r"secret\s*=\s*['\"][^'\"]+['\"]",
+                r"token\s*=\s*['\"][^'\"]+['\"]",
+            ]
 
-                for pattern in encryption_patterns:
-                    if re.search(pattern, content):
-                        has_encryption = True
-                        break
+            import re
 
-            except (
-                OSError,
-                UnicodeDecodeError,
-                PermissionError,
-            ) as file_error:
-                logger.debug(
-                    f"Erreur lors de l'analyse du fichier {py_file}: {file_error}"
-                )
-                continue
+            for py_file in self.project_path.rglob("*.py"):
+                try:
+                    with open(py_file, encoding="utf-8") as f:
+                        content = f.read()
 
-        if not has_encryption:
-            self.report["recommendations"].append(
-                "Considérer lutilisation de modules de chiffrement pour les données"
-                " sensibles."
-            )
+                    for pattern in secret_patterns:
+                        matches = re.findall(pattern, content, re.IGNORECASE)
+                        if matches:
+                            if isinstance(self.report["vulnerabilities"], list):
+                                self.report["vulnerabilities"].append(
+                                    f"Secret potentiel dans {py_file}: {matches[0]}"
+                                )
 
-    def _calculate_score(self):
-        """Calcul du score de sécurité"""
+                except Exception:
+                    continue
+
+        except Exception as e:
+            logger.warning(f"Erreur vérification secrets: {e}")
+
+    def _check_permissions(self) -> None:
+        """Vérifie les permissions des fichiers"""
+        try:
+            for py_file in self.project_path.rglob("*.py"):
+                try:
+                    stat = py_file.stat()
+                    if stat.st_mode & 0o777 != 0o644:
+                        if isinstance(self.report["warnings"], list):
+                            self.report["warnings"].append(
+                                f"Permissions inhabituelles pour {py_file}: {oct(stat.st_mode)[-3:]}"
+                            )
+
+                except Exception:
+                    continue
+
+        except Exception as e:
+            logger.warning(f"Erreur vérification permissions: {e}")
+
+    def _check_encryption(self) -> None:
+        """Vérifie l'utilisation de l'encryption"""
+        try:
+            # Rechercher des patterns d'encryption
+            encryption_patterns = [
+                "hashlib.md5(",
+                "hashlib.sha1(",
+                "base64.b64encode(",
+                "base64.b64decode(",
+            ]
+
+            for py_file in self.project_path.rglob("*.py"):
+                try:
+                    with open(py_file, encoding="utf-8") as f:
+                        content = f.read()
+
+                    for pattern in encryption_patterns:
+                        if pattern in content:
+                            if isinstance(self.report["recommendations"], list):
+                                self.report["recommendations"].append(
+                                    f"Vérifier l'utilisation de '{pattern}' dans {py_file}"
+                                )
+
+                except Exception:
+                    continue
+
+        except Exception as e:
+            logger.warning(f"Erreur vérification encryption: {e}")
+
+    def _calculate_score(self) -> None:
+        """Calcule le score de sécurité"""
         base_score = 100
-        # Pénalités
-        base_score -= len(self.report["vulnerabilities"]) * 20
-        base_score -= len(self.report["warnings"]) * 5
+
+        # Pénalités pour vulnérabilités
+        if isinstance(self.report["vulnerabilities"], list):
+            base_score -= len(self.report["vulnerabilities"]) * 20
+
+        # Pénalités pour avertissements
+        if isinstance(self.report["warnings"], list):
+            base_score -= len(self.report["warnings"]) * 5
+
         self.report["score"] = max(0, base_score)
 
-    def _check_input_validation(self):
-        """Vérification de la validation des entrées"""
-        validation_patterns = [
-            r"\.validate\(",
-            r"pydantic",
-            r"re\.match\(",
-            r"isinstance\(",
-        ]
+    def _check_input_validation(self) -> None:
+        """Vérifie la validation des entrées"""
+        try:
+            # Rechercher des patterns de validation
+            validation_patterns = [
+                "input(",
+                "raw_input(",
+                "sys.argv[",
+                "request.args[",
+                "request.form[",
+            ]
 
-        has_validation = False
-        for py_file in self.project_path.rglob("*.py"):
-            try:
-                with open(py_file, encoding="utf-8") as f:
-                    content = f.read()
+            for py_file in self.project_path.rglob("*.py"):
+                try:
+                    with open(py_file, encoding="utf-8") as f:
+                        content = f.read()
 
-                for pattern in validation_patterns:
-                    if re.search(pattern, content):
-                        has_validation = True
-                        break
+                    for pattern in validation_patterns:
+                        if pattern in content:
+                            if isinstance(self.report["warnings"], list):
+                                self.report["warnings"].append(
+                                    f"Vérifier la validation des entrées '{pattern}' dans {py_file}"
+                                )
 
-            except (OSError, UnicodeDecodeError, PermissionError):
-                continue
+                except Exception:
+                    continue
 
-        if not has_validation:
-            self.report["warnings"].append(
-                "Validation des entrées utilisateur recommandée"
-            )
+        except Exception as e:
+            logger.warning(f"Erreur vérification validation: {e}")
 
-    def _check_authentication(self):
-        """Vérification de l'authentification"""
-        auth_patterns = [
-            r"jwt",
-            r"oauth",
-            r"authentication",
-            r"login",
-            r"password",
-        ]
+    def _check_authentication(self) -> None:
+        """Vérifie l'authentification et l'autorisation"""
+        try:
+            # Rechercher des patterns d'authentification
+            auth_patterns = [
+                "login",
+                "authenticate",
+                "authorize",
+                "session",
+                "jwt",
+                "oauth",
+            ]
 
-        has_auth = False
-        for py_file in self.project_path.rglob("*.py"):
-            try:
-                with open(py_file, encoding="utf-8") as f:
-                    content = f.read()
+            for py_file in self.project_path.rglob("*.py"):
+                try:
+                    with open(py_file, encoding="utf-8") as f:
+                        content = f.read()
 
-                for pattern in auth_patterns:
-                    if re.search(pattern, content, re.IGNORECASE):
-                        has_auth = True
-                        break
+                    for pattern in auth_patterns:
+                        if pattern in content:
+                            if isinstance(self.report["recommendations"], list):
+                                self.report["recommendations"].append(
+                                    f"Vérifier l'implémentation de '{pattern}' dans {py_file}"
+                                )
 
-            except (OSError, UnicodeDecodeError, PermissionError):
-                continue
+                except Exception:
+                    continue
 
-        if not has_auth:
-            self.report["recommendations"].append(
-                "Considérer l'ajout d'un système d'authentification"
-            )
+        except Exception as e:
+            logger.warning(f"Erreur vérification authentification: {e}")
 
-    def _check_data_protection(self):
-        """Vérification de la protection des données"""
-        protection_patterns = [
-            r"gdpr",
-            r"privacy",
-            r"data_protection",
-            r"personal_data",
-        ]
-
-        has_protection = False
-        for py_file in self.project_path.rglob("*.py"):
-            try:
-                with open(py_file, encoding="utf-8") as f:
-                    content = f.read()
-
-                for pattern in protection_patterns:
-                    if re.search(pattern, content, re.IGNORECASE):
-                        has_protection = True
-                        break
-
-            except (OSError, UnicodeDecodeError, PermissionError):
-                continue
-
-        if not has_protection:
-            self.report["recommendations"].append(
-                "Considérer l'ajout de mesures de protection des données (GDPR)"
-            )
-
-    def _get_security_level(self) -> str:
+    def _get_security_level(self, score: int) -> str:
         """Détermine le niveau de sécurité"""
-        score = self.report.get("score", 0)
-        if score >= 90:
+        if isinstance(score, (int, float)) and score >= 90:
             return "EXCELLENT"
-        elif score >= 70:
+        elif isinstance(score, (int, float)) and score >= 70:
             return "BON"
-        elif score >= 50:
+        elif isinstance(score, (int, float)) and score >= 50:
             return "MOYEN"
         else:
             return "CRITIQUE"
 
-    def _check_compliance(self) -> dict[str, bool]:
-        """Vérifie la conformité aux standards"""
-        return {
-            "gdpr_ready": "gdpr" in str(self.report.get("recommendations", [])).lower(),
-            "authentication_ready": (
-                "authentication" in str(self.report.get("recommendations", [])).lower()
-            ),
-            "encryption_ready": (
-                "chiffrement" in str(self.report.get("recommendations", [])).lower()
-            ),
-            "input_validation_ready": (
-                "validation" in str(self.report.get("warnings", [])).lower()
-            ),
-        }
-
-    def _generate_security_report(self):
+    def _generate_security_report(self) -> None:
         """Génère un rapport de sécurité détaillé"""
         try:
-            report_file = self.project_path / "security_audit_report.json"
+            import json
+
+            report_file = self.project_path / "security_report.json"
             report_data = {
                 "timestamp": str(Path().cwd()),
                 "project": str(self.project_path),
                 "score": self.report.get("score", 0),
-                "security_level": self._get_security_level(),
+                "level": self._get_security_level(self.report.get("score", 0)),
                 "vulnerabilities": self.report.get("vulnerabilities", []),
                 "warnings": self.report.get("warnings", []),
                 "recommendations": self.report.get("recommendations", []),
-                "compliance": self._check_compliance(),
             }
 
             with open(report_file, "w", encoding="utf-8") as f:
@@ -372,30 +320,54 @@ class SecurityAuditor:
         except Exception as e:
             logger.warning(f"Impossible de générer le rapport de sécurité: {e}")
 
-    def print_report(self):
-        """Affichage du rapport de sécurité renforcé"""
-        logger.info(
-            f"🔒 Score sécurité: {self.report['score']}/100 ({self._get_security_level()})"
-        )
+    def print_report(self) -> None:
+        """Affiche le rapport de sécurité"""
+        score = self.report.get("score", 0)
+        level = self._get_security_level(score)
 
-        if self.report["vulnerabilities"]:
-            logger.info("🔴 Vulnérabilités:")
+        print(f"🔒 Rapport de sécurité - {self.project_path.name}")
+        print(f"Score: {score}/100 ({level})")
+        print()
+
+        if isinstance(self.report["vulnerabilities"], list) and self.report["vulnerabilities"]:
+            print("❌ Vulnérabilités détectées:")
             for v in self.report["vulnerabilities"]:
-                logger.info(f" - {v}")
+                print(f"  - {v}")
+            print()
 
-        if self.report["warnings"]:
-            logger.info("🟡 Avertissements:")
+        if isinstance(self.report["warnings"], list) and self.report["warnings"]:
+            print("⚠️ Avertissements:")
             for w in self.report["warnings"]:
-                logger.info(f" - {w}")
+                print(f"  - {w}")
+            print()
 
-        if self.report["recommendations"]:
-            logger.info("💡 Recommandations:")
+        if isinstance(self.report["recommendations"], list) and self.report["recommendations"]:
+            print("💡 Recommandations:")
             for r in self.report["recommendations"]:
-                logger.info(f" - {r}")
+                print(f"  - {r}")
 
-        # Afficher la conformité
-        compliance = self._check_compliance()
-        logger.info("📋 Conformité:")
-        for standard, ready in compliance.items():
-            status = "✅" if ready else "❌"
-            logger.info(f" - {standard}: {status}")
+
+def main() -> None:
+    """Point d'entrée principal"""
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Auditeur de sécurité")
+    parser.add_argument("project_path", help="Chemin vers le projet")
+    parser.add_argument("--output", help="Fichier de sortie pour le rapport")
+
+    args = parser.parse_args()
+
+    auditor = SecurityAuditor(args.project_path)
+    results = auditor.run()
+
+    if args.output:
+        with open(args.output, "w", encoding="utf-8") as f:
+            import json
+            json.dump(results, f, indent=2)
+        print(f"📄 Rapport sauvegardé dans {args.output}")
+    else:
+        auditor.print_report()
+
+
+if __name__ == "__main__":
+    main()
