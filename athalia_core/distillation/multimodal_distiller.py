@@ -5,7 +5,7 @@ Distillation multimodale pour Athalia/Arkalia
 """
 
 import subprocess
-from typing import Any
+from typing import Any, Dict, List, Optional
 
 from athalia_core.ai.ai_robust import AIModel, RobustAI
 
@@ -26,9 +26,9 @@ except ImportError:
 class MultimodalDistiller:
     def distill(
         self,
-        text_prompts: list[str],
-        image_paths: list[str],
-        context: dict[str, Any] | None = None,
+        text_prompts: List[str],
+        image_paths: List[str],
+        context: Optional[Dict[str, Any]] = None,
     ) -> str:
         """
             Fusionne les réponses texte et image en utilisant LLaVA (Ollama) et

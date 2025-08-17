@@ -176,29 +176,29 @@ logger = logging.getLogger(__name__)
 app = FastAPI(title="{project_name}", version="2.0.0")
 
 class AdvancedItem(BaseModel):
-    id: int | None = None
+    id: Optional[int] = None
     name: str
-    description: str | None = None
-    metadata: dict[str, Any] = {}
+    description: Optional[str] = None
+    metadata: Dict[str, Any] = {}
     version: str = "1.0.0"
 
 @app.get("/")
 async def root():
-    return {{"message": "Bienvenue sur {project_name} API Ultra-Avancée", "version": "2.0.0"}}
+    return {"message": "Bienvenue sur {project_name} API Ultra-Avancée", "version": "2.0.0"}
 
-@app.get("/items/", response_model=list[AdvancedItem])
+@app.get("/items/", response_model=List[AdvancedItem])
 async def get_items():
     items = [AdvancedItem(id=1, name="Item Ultra-Avancé", description="Description avancée")]
     return items
 
 @app.post("/items/", response_model=AdvancedItem)
 async def create_item(item: AdvancedItem):
-    logger.info(f"Création d'un nouvel item: {{item.name}}")
+    logger.info(f"Création d'un nouvel item: {item.name}")
     return item
 
 @app.get("/health")
 async def health_check():
-    return {{"status": "healthy", "timestamp": datetime.now().isoformat()}}
+    return {"status": "healthy", "timestamp": datetime.now().isoformat()}
 
 async def main():
     logger.info(" Démarrage de l'API Ultra-Avancée")

@@ -98,9 +98,7 @@ class ResponseDistiller:
 
 
 def distill_responses(
-    responses: list[str],
-    strategy: str = "voting",
-    context: dict[str, Any] | None = None,
+    responses: list[str], strategy: str = "voting", context: dict[str, Any] | None = None
 ) -> str:
     """Fonction utilitaire pour distiller une liste de réponses IA."""
     distiller = ResponseDistiller(strategy=strategy)
