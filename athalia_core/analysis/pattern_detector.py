@@ -32,14 +32,14 @@ class CodePattern:
 class PatternDetector:
     """Détecteur de patterns de code intelligent"""
 
-    def __init__(self, root_path: str | None = None):
+    def __init__(self, root_path: Optional[str] = None):
         self.root_path = Path(root_path) if root_path else Path(".")
         self.db_path = self.root_path / "patterns.db"
 
         # Initialiser les caches
-        self._pattern_cache: dict[str, Any] = {}
-        self._duplicate_cache: dict[str, Any] = {}
-        self._antipattern_cache: dict[str, Any] = {}
+        self._pattern_cache: Dict[str, Any] = {}
+        self._duplicate_cache: Dict[str, Any] = {}
+        self._antipattern_cache: Dict[str, Any] = {}
 
         # Initialiser la base de données
         self._init_database()
