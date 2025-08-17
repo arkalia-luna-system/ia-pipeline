@@ -1,22 +1,29 @@
+#!/usr/bin/env python3
 """
 Distillation adaptative pour Athalia/Arkalia
-- Pondération dynamique selon préférences et feedback utilisateur
-- Historique sauvegardé/chargé en JSON
+- Apprentissage des préférences utilisateur
+- Feedback et historique des succès/échecs
+- Pondération dynamique des réponses IA
 """
 
 import json
 from pathlib import Path
 from typing import Any
 
+from athalia_core.distillation.response_distiller import ResponseDistiller
 
-class AdaptiveDistiller:
-    def __init__(self, history_path: str | None = None):
-        """
-            Initialise le distillateur adaptatif.
-        :param history_path: Chemin du fichier JSON pour l'historique (optionnel)
-        """
-        self.preference_weights: dict[str, float] = {}  # Pondération des réponses
-        self.success_history: list[str] = []  # Historique des succès
+
+class AdaptiveDistiller(ResponseDistiller):
+    def __init__(
+        self,
+        strategy: str = "adaptive",
+        history_path: str | None = None,
+    ):
+        super().__init__(strategy)
+        # Poids des préférences utilisateur {réponse: poids}
+        self.preference_weights: dict[str, float] = {}
+        # Historique des succès
+        self.success_history: list[str] = []
         # {réponse: [succès, échecs]}
         self.feedback: dict[str, list[int]] = {}
         self.history_path = history_path or "adaptive_distillation_history.json"

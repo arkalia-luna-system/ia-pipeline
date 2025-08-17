@@ -294,7 +294,7 @@ class SecurityAuditor:
         elif isinstance(score, int | float) and score >= 50:
             return "MOYEN"
         else:
-            return "CRITIQUE"
+            return "FAIBLE"
 
     def _generate_security_report(self) -> None:
         """Génère un rapport de sécurité détaillé"""

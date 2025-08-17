@@ -176,17 +176,17 @@ logger = logging.getLogger(__name__)
 app = FastAPI(title="{project_name}", version="2.0.0")
 
 class AdvancedItem(BaseModel):
-    id: Optional[int] = None
+    id: int | None = None
     name: str
-    description: Optional[str] = None
-    metadata: Dict[str, Any] = {{}}
+    description: str | None = None
+    metadata: dict[str, Any] = {}
     version: str = "1.0.0"
 
 @app.get("/")
 async def root():
     return {{"message": "Bienvenue sur {project_name} API Ultra-Avancée", "version": "2.0.0"}}
 
-@app.get("/items/", response_model=List[AdvancedItem])
+@app.get("/items/", response_model=list[AdvancedItem])
 async def get_items():
     items = [AdvancedItem(id=1, name="Item Ultra-Avancé", description="Description avancée")]
     return items
