@@ -1,0 +1,14 @@
+# Configuration GitHub Pages pour Athalia
+# Désactive Jekyll et utilise MkDocs
+
+# Désactiver Jekyll
+# Désactiver le thème par défaut
+# Utiliser MkDocs pour la documentation
+
+# Configuration pour MkDocs
+docs_dir: docs
+site_dir: site
+use_directory_urls: true
+
+# Désactiver Jekyll
+jekyll: false
