@@ -96,7 +96,7 @@ class UnifiedOrchestrator:
 
     def __init__(self, project_path: str = "."):
         self.project_path = Path(project_path)
-        self.workflow_results = {
+        self.workflow_results: dict[str, Any] = {
             "status": "idle",
             "steps_completed": [],
             "errors": [],
@@ -143,7 +143,7 @@ class UnifiedOrchestrator:
         # Initialiser les modules avancés
         self.auto_correction_advanced = None
 
-    def initialize_modules(self):
+    def initialize_modules(self) -> None:
         """Initialise tous les modules"""
         try:
             # Modules de base
@@ -417,7 +417,7 @@ class UnifiedOrchestrator:
         except Exception as e:
             self.workflow_results["warnings"].append(f"Erreur amélioration IA: {e}")
 
-    def _step_advanced_auto_correction(self):
+    def _step_advanced_auto_correction(self) -> None:
         """Étape 6: Auto-correction avancée"""
         logger.info("🔧 Auto-correction avancée...")
 
@@ -479,7 +479,7 @@ class UnifiedOrchestrator:
         except SyntaxError:
             return False
 
-    def _step_security_audit(self):
+    def _step_security_audit(self) -> None:
         """Étape 4: Audit de sécurité"""
         logger.info("🔒 Audit de sécurité...")
 
@@ -493,7 +493,7 @@ class UnifiedOrchestrator:
         except Exception as e:
             self.workflow_results["warnings"].append(f"Erreur audit sécurité: {e}")
 
-    def _step_code_linting(self):
+    def _step_code_linting(self) -> None:
         """Étape 5: Linting du code"""
         logger.info("📏 Linting du code...")
 
@@ -507,7 +507,7 @@ class UnifiedOrchestrator:
         except Exception as e:
             self.workflow_results["warnings"].append(f"Erreur linting: {e}")
 
-    def _step_correction_optimization(self):
+    def _step_correction_optimization(self) -> None:
         """Étape 7: Optimisation des corrections"""
         logger.info("🔧 Optimisation des corrections...")
 
@@ -526,7 +526,7 @@ class UnifiedOrchestrator:
         except Exception as e:
             self.workflow_results["warnings"].append(f"Erreur optimisation: {e}")
 
-    def _step_auto_testing(self):
+    def _step_auto_testing(self) -> None:
         """Étape 8: Tests automatiques"""
         logger.info("🧪 Tests automatiques...")
 
@@ -540,7 +540,7 @@ class UnifiedOrchestrator:
         except Exception as e:
             self.workflow_results["warnings"].append(f"Erreur tests automatiques: {e}")
 
-    def _step_auto_documentation(self):
+    def _step_auto_documentation(self) -> None:
         """Étape 9: Documentation automatique"""
         logger.info("📚 Documentation automatique...")
 
@@ -554,7 +554,7 @@ class UnifiedOrchestrator:
         except Exception as e:
             self.workflow_results["warnings"].append(f"Erreur documentation: {e}")
 
-    def _step_auto_cleaning(self):
+    def _step_auto_cleaning(self) -> None:
         """Étape 10: Nettoyage automatique"""
         logger.info("🧹 Nettoyage automatique...")
 
@@ -723,7 +723,7 @@ class UnifiedOrchestrator:
                 f"Erreur classification avancée: {e}"
             )
 
-    def _step_auto_cicd(self):
+    def _step_auto_cicd(self) -> None:
         """Étape 14: Configuration CI/CD automatique"""
         logger.info("🚀 Configuration CI/CD...")
 
