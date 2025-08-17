@@ -6,6 +6,7 @@ Coordination centralisée de tous les modules
 
 import json
 import logging
+from collections.abc import Callable
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -37,7 +38,7 @@ try:
     ADVANCED_MODULES_AVAILABLE = True
 except ImportError:
     ADVANCED_MODULES_AVAILABLE = False
-    logger.warning("⚠️ Modules avancés non disponibles - mode fallback activé")
+    logger.warning("Modules avancés non disponibles - mode fallback activé")
 
 # Imports des nouveaux modules IA et distillation
 try:
@@ -51,7 +52,7 @@ try:
     AI_MODULES_AVAILABLE = True
 except ImportError:
     AI_MODULES_AVAILABLE = False
-    logger.warning("⚠️ Modules IA non disponibles - mode fallback activé")
+    logger.warning("Modules IA non disponibles - mode fallback activé")
 
 # Import des modules robotiques
 try:
@@ -66,7 +67,7 @@ try:
     ROBOTICS_MODULES_AVAILABLE = True
 except ImportError:
     ROBOTICS_MODULES_AVAILABLE = False
-    logger.warning("⚠️ Modules robotiques non disponibles - mode fallback activé")
+    logger.warning("Modules robotiques non disponibles - mode fallback activé")
 
 # Import des templates artistiques
 try:
@@ -76,7 +77,7 @@ try:
     ARTISTIC_MODULES_AVAILABLE = True
 except ImportError:
     ARTISTIC_MODULES_AVAILABLE = False
-    logger.warning("⚠️ Modules artistiques non disponibles - mode fallback activé")
+    logger.warning("Modules artistiques non disponibles - mode fallback activé")
 
 # Import des modules de classification avancée
 try:
@@ -88,13 +89,13 @@ try:
     CLASSIFICATION_MODULES_AVAILABLE = True
 except ImportError:
     CLASSIFICATION_MODULES_AVAILABLE = False
-    logger.warning("⚠️ Modules de classification non disponibles - mode fallback activé")
+    logger.warning("Modules de classification non disponibles - mode fallback activé")
 
 
 class UnifiedOrchestrator:
     """Orchestrateur unifié pour Athalia"""
 
-    def __init__(self, project_path: str = "."):
+    def __init__(self, project_path: str = ".") -> None:
         self.project_path = Path(project_path)
         self.workflow_results: dict[str, Any] = {
             "status": "idle",
@@ -109,39 +110,39 @@ class UnifiedOrchestrator:
         }
 
         # Initialiser les modules
-        self.robust_ai = None
-        self.security_auditor = None
-        self.code_linter = None
-        self.correction_optimizer = None
-        self.auto_tester = None
-        self.auto_documenter = None
-        self.auto_cleaner = None
-        self.auto_cicd = None
+        self.robust_ai: RobustAI | None = None
+        self.security_auditor: SecurityAuditor | None = None
+        self.code_linter: CodeLinter | None = None
+        self.correction_optimizer: CorrectionOptimizer | None = None
+        self.auto_tester: AutoTester | None = None
+        self.auto_documenter: AutoDocumenter | None = None
+        self.auto_cleaner: AutoCleaner | None = None
+        self.auto_cicd: AutoCICD | None = None
 
         # Initialiser les modules IA et distillation
-        self.unified_agent = None
-        self.context_agent = None
-        self.audit_agent = None
-        self.quality_scorer = None
-        self.response_distiller = None
-        self.code_genetics = None
+        self.unified_agent: UnifiedAgent | None = None
+        self.context_agent: Callable | None = None
+        self.audit_agent: AuditAgent | None = None
+        self.quality_scorer: QualityScorer | None = None
+        self.response_distiller: ResponseDistiller | None = None
+        self.code_genetics: CodeGenetics | None = None
 
         # Modules robotiques
-        self.reachy_auditor = None
-        self.ros2_validator = None
-        self.docker_robotics = None
-        self.rust_analyzer = None
-        self.robotics_ci = None
+        self.reachy_auditor: ReachyAuditor | None = None
+        self.ros2_validator: ROS2Validator | None = None
+        self.docker_robotics: DockerRoboticsManager | None = None
+        self.rust_analyzer: RustAnalyzer | None = None
+        self.robotics_ci: RoboticsCI | None = None
 
         # Modules artistiques
-        self.artistic_templates = None
-        self.base_templates = None
+        self.artistic_templates: dict[str, str] | None = None
+        self.base_templates: dict[str, str] | None = None
 
         # Modules de classification
-        self.project_classifier = None
+        self.project_classifier: Callable | None = None
 
         # Initialiser les modules avancés
-        self.auto_correction_advanced = None
+        self.auto_correction_advanced: AutoCorrectionAvancee | None = None
 
     def initialize_modules(self) -> None:
         """Initialise tous les modules"""
@@ -160,16 +161,14 @@ class UnifiedOrchestrator:
             if AI_MODULES_AVAILABLE:
                 try:
                     self.unified_agent = UnifiedAgent()
-                    self.context_agent = (
-                        detect_prompts_scoring  # Fonction au lieu de classe
-                    )
+                    self.context_agent = detect_prompts_scoring
                     self.audit_agent = AuditAgent()
                     self.quality_scorer = QualityScorer()
                     self.response_distiller = ResponseDistiller()
                     self.code_genetics = CodeGenetics()
-                    logger.info("✅ Modules IA et distillation initialisés")
+                    logger.info(" Modules IA et distillation initialisés")
                 except Exception as e:
-                    logger.warning(f"⚠️ Erreur initialisation modules IA: {e}")
+                    logger.warning(f" Erreur initialisation modules IA: {e}")
 
             # Modules robotiques (si disponibles)
             if ROBOTICS_MODULES_AVAILABLE:
@@ -179,27 +178,27 @@ class UnifiedOrchestrator:
                     self.docker_robotics = DockerRoboticsManager(str(self.project_path))
                     self.rust_analyzer = RustAnalyzer(str(self.project_path))
                     self.robotics_ci = RoboticsCI(str(self.project_path))
-                    logger.info("✅ Modules robotiques initialisés")
+                    logger.info(" Modules robotiques initialisés")
                 except Exception as e:
-                    logger.warning(f"⚠️ Erreur initialisation modules robotiques: {e}")
+                    logger.warning(f" Erreur initialisation modules robotiques: {e}")
 
             # Modules artistiques (si disponibles)
             if ARTISTIC_MODULES_AVAILABLE:
                 try:
                     self.artistic_templates = get_artistic_templates()
                     self.base_templates = get_base_templates()
-                    logger.info("✅ Modules artistiques initialisés")
+                    logger.info(" Modules artistiques initialisés")
                 except Exception as e:
-                    logger.warning(f"⚠️ Erreur initialisation modules artistiques: {e}")
+                    logger.warning(f" Erreur initialisation modules artistiques: {e}")
 
             # Modules de classification (si disponibles)
             if CLASSIFICATION_MODULES_AVAILABLE:
                 try:
                     self.project_classifier = classify_project
-                    logger.info("✅ Modules de classification initialisés")
+                    logger.info(" Modules de classification initialisés")
                 except Exception as e:
                     logger.warning(
-                        f"⚠️ Erreur initialisation modules de classification: {e}"
+                        f" Erreur initialisation modules de classification: {e}"
                     )
 
             # Modules avancés (si disponibles)
@@ -208,27 +207,28 @@ class UnifiedOrchestrator:
                     self.auto_correction_advanced = AutoCorrectionAvancee(
                         str(self.project_path)
                     )
-                    logger.info("✅ Modules avancés initialisés")
+                    logger.info(" Modules avancés initialisés")
                 except Exception as e:
-                    logger.warning(f"⚠️ Erreur initialisation modules avancés: {e}")
+                    logger.warning(f" Erreur initialisation modules avancés: {e}")
 
             self.workflow_results["status"] = "initialized"
-            logger.info("✅ Tous les modules initialisés")
+            logger.info(" Tous les modules initialisés")
 
         except Exception as e:
-            self.workflow_results["errors"].append(
-                f"Erreur initialisation modules: {e}"
-            )
-            logger.error(f"❌ Erreur initialisation: {e}")
+            if isinstance(self.workflow_results["errors"], list):
+                self.workflow_results["errors"].append(
+                    f"Erreur initialisation modules: {e}"
+                )
+            logger.error(f" Erreur initialisation: {e}")
 
     def run_full_workflow(self, blueprint: dict[str, Any]) -> dict[str, Any]:
         """Exécute le workflow complet"""
-        logger.info("🚀 Démarrage du workflow unifié")
+        logger.info(" Démarrage du workflow unifié")
 
         # Vérifier le cache en premier
         cached_result = get_cached_result(blueprint)
         if cached_result:
-            logger.info("✅ Résultat trouvé dans le cache")
+            logger.info(" Résultat trouvé dans le cache")
             cached_result["cached"] = True
             cached_result["cache_stats"] = get_cache_stats()
             return cached_result
@@ -279,7 +279,7 @@ class UnifiedOrchestrator:
             self._step_auto_cleaning()
 
             self.workflow_results["status"] = "completed"
-            logger.info("✅ Workflow terminé avec succès")
+            logger.info(" Workflow terminé avec succès")
 
             # Sauvegarder dans le cache
             cache_result(blueprint, self.workflow_results)
@@ -288,11 +288,11 @@ class UnifiedOrchestrator:
         except Exception as e:
             self.workflow_results["status"] = "failed"
             self.workflow_results["errors"].append(f"Erreur workflow: {e}")
-            logger.error(f"❌ Erreur workflow: {e}")
+            logger.error(f" Erreur workflow: {e}")
 
         return self.workflow_results
 
-    def _step_intelligent_classification(self, blueprint: dict[str, Any]):
+    def _step_intelligent_classification(self, blueprint: dict[str, Any]) -> None:
         """Étape 1: Classification intelligente du projet"""
         logger.info("🧠 Classification intelligente du projet...")
 
@@ -313,104 +313,118 @@ class UnifiedOrchestrator:
                 """
 
                 try:
-                    project_type = self.context_agent.act(classification_prompt)
-                    if project_type and project_type.strip():
-                        blueprint["project_type"] = project_type.strip()
-                        logger.info(f"✅ Type détecté intelligemment: {project_type}")
-                    else:
-                        logger.warning(
-                            "⚠️ Classification IA échouée, utilisation du type par défaut"
-                        )
+                    if hasattr(self.context_agent, "act"):
+                        project_type = self.context_agent.act(classification_prompt)
+                        if project_type and project_type.strip():
+                            blueprint["project_type"] = project_type.strip()
+                            logger.info(f" Type détecté intelligemment: {project_type}")
+                        else:
+                            logger.warning(
+                                " Classification IA échouée, utilisation du type par défaut"
+                            )
                 except Exception as e:
-                    logger.warning(f"⚠️ Erreur classification IA: {e}")
+                    logger.warning(f" Erreur classification IA: {e}")
 
-            self.workflow_results["steps_completed"].append(
-                "intelligent_classification"
-            )
-            self.workflow_results["artifacts"]["project_type"] = blueprint.get(
-                "project_type", "generic"
-            )
+            if isinstance(self.workflow_results["steps_completed"], list):
+                self.workflow_results["steps_completed"].append(
+                    "intelligent_classification"
+                )
+            if isinstance(self.workflow_results["artifacts"], dict):
+                self.workflow_results["artifacts"]["project_type"] = blueprint.get(
+                    "project_type", "generic"
+                )
 
         except Exception as e:
-            self.workflow_results["warnings"].append(f"Erreur classification: {e}")
+            if isinstance(self.workflow_results["warnings"], list):
+                self.workflow_results["warnings"].append(f"Erreur classification: {e}")
 
-    def _step_generate_project(self, blueprint: dict[str, Any]):
+    def _step_generate_project(self, blueprint: dict[str, Any]) -> None:
         """Étape 2: Génération du projet"""
-        logger.info("📁 Génération du projet...")
+        logger.info(" Génération du projet...")
 
         try:
             project_path = generate_project(blueprint, self.project_path)
-            self.workflow_results["steps_completed"].append("project_generation")
-            self.workflow_results["artifacts"]["project_path"] = project_path
-            logger.info(f"✅ Projet généré: {project_path}")
+            if isinstance(self.workflow_results["steps_completed"], list):
+                self.workflow_results["steps_completed"].append("project_generation")
+            if isinstance(self.workflow_results["artifacts"], dict):
+                self.workflow_results["artifacts"]["project_path"] = project_path
+            logger.info(f" Projet généré: {project_path}")
 
         except Exception as e:
-            self.workflow_results["errors"].append(f"Erreur génération projet: {e}")
+            if isinstance(self.workflow_results["errors"], list):
+                self.workflow_results["errors"].append(f"Erreur génération projet: {e}")
             raise
 
-    def _step_ai_enhancement(self, blueprint: dict[str, Any]):
+    def _step_ai_enhancement(self, blueprint: dict[str, Any]) -> None:
         """Étape 3: Amélioration IA intelligente"""
         logger.info("🤖 Amélioration IA intelligente...")
 
         try:
             if AI_MODULES_AVAILABLE and self.unified_agent and self.quality_scorer:
-                project_path = self.workflow_results["artifacts"].get("project_path")
-                if project_path:
-                    main_file = Path(project_path) / "src" / "main.py"
-                    if main_file.exists():
-                        # Lire le code généré
-                        with open(main_file, encoding="utf-8") as f:
-                            original_code = f.read()
+                if isinstance(self.workflow_results["artifacts"], dict):
+                    project_path = self.workflow_results["artifacts"].get(
+                        "project_path"
+                    )
+                    if project_path:
+                        main_file = Path(project_path) / "src" / "main.py"
+                        if main_file.exists():
+                            # Lire le code généré
+                            with open(main_file, encoding="utf-8") as f:
+                                original_code = f.read()
 
-                        # Améliorer le code avec l'agent IA
-                        enhancement_prompt = f"""
-                        Améliore ce code Python pour le rendre ultra-avancé :
+                            # Améliorer le code avec l'agent IA
+                            enhancement_prompt = f"""
+                            Améliore ce code Python pour le rendre ultra-avancé :
 
-                        Type de projet: {blueprint.get('project_type', 'generic')}
-                        Description: {blueprint.get('description', '')}
+                            Type de projet: {blueprint.get('project_type', 'generic')}
+                            Description: {blueprint.get('description', '')}
 
-                        Code actuel:
-                        {original_code}
+                            Code actuel:
+                            {original_code}
 
-                        Améliore ce code avec :
-                        1. Fonctionnalités avancées spécifiques au type de projet
-                        2. Architecture moderne et scalable
-                        3. Gestion d'erreurs robuste
-                        4. Performance optimisée
-                        5. Code de production professionnel
+                            Améliore ce code avec :
+                            1. Fonctionnalités avancées spécifiques au type de projet
+                            2. Architecture moderne et scalable
+                            3. Gestion d'erreurs robuste
+                            4. Performance optimisée
+                            5. Code de production professionnel
 
-                        Retourne UNIQUEMENT le code Python amélioré.
-                        """
+                            Retourne UNIQUEMENT le code Python amélioré.
+                            """
 
-                        try:
-                            enhanced_code = self.unified_agent.act(enhancement_prompt)
-                            if enhanced_code and self._validate_code(enhanced_code):
-                                # Sauvegarder et appliquer l'amélioration
-                                backup_file = main_file.with_suffix(".py.backup")
-                                with open(backup_file, "w", encoding="utf-8") as f:
-                                    f.write(original_code)
-
-                                with open(main_file, "w", encoding="utf-8") as f:
-                                    f.write(enhanced_code)
-
-                                # Évaluer la qualité
-                                quality_score = self.quality_scorer.score_code(
-                                    enhanced_code
+                            try:
+                                enhanced_code = self.unified_agent.act(
+                                    enhancement_prompt
                                 )
-                                logger.info(
-                                    f"✅ Code amélioré avec score qualité: {quality_score}"
-                                )
+                                if enhanced_code and self._validate_code(enhanced_code):
+                                    # Sauvegarder et appliquer l'amélioration
+                                    backup_file = main_file.with_suffix(".py.backup")
+                                    with open(backup_file, "w", encoding="utf-8") as f:
+                                        f.write(original_code)
 
-                                self.workflow_results["artifacts"]["ai_enhancement"] = {
-                                    "quality_score": quality_score,
-                                    "backup_file": str(backup_file),
-                                }
-                            else:
-                                logger.warning(
-                                    "⚠️ Amélioration IA invalide, code original conservé"
-                                )
-                        except Exception as e:
-                            logger.warning(f"⚠️ Erreur amélioration IA: {e}")
+                                    with open(main_file, "w", encoding="utf-8") as f:
+                                        f.write(enhanced_code)
+
+                                    # Évaluer la qualité
+                                    quality_score = self.quality_scorer.score_code(
+                                        enhanced_code
+                                    )
+                                    logger.info(
+                                        f" Code amélioré avec score qualité: {quality_score}"
+                                    )
+
+                                    self.workflow_results["artifacts"][
+                                        "ai_enhancement"
+                                    ] = {
+                                        "quality_score": quality_score,
+                                        "backup_file": str(backup_file),
+                                    }
+                                else:
+                                    logger.warning(
+                                        " Amélioration IA invalide, code original conservé"
+                                    )
+                            except Exception as e:
+                                logger.warning(f" Erreur amélioration IA: {e}")
 
             self.workflow_results["steps_completed"].append("ai_enhancement")
 
@@ -419,7 +433,7 @@ class UnifiedOrchestrator:
 
     def _step_advanced_auto_correction(self) -> None:
         """Étape 6: Auto-correction avancée"""
-        logger.info("🔧 Auto-correction avancée...")
+        logger.info(" Auto-correction avancée...")
 
         try:
             if ADVANCED_MODULES_AVAILABLE and self.auto_correction_advanced:
@@ -429,19 +443,21 @@ class UnifiedOrchestrator:
                 )
 
                 # Enregistrer les résultats
-                self.workflow_results["steps_completed"].append(
-                    "advanced_auto_correction"
-                )
-                self.workflow_results["artifacts"][
-                    "auto_correction_results"
-                ] = resultats
+                if isinstance(self.workflow_results["steps_completed"], list):
+                    self.workflow_results["steps_completed"].append(
+                        "advanced_auto_correction"
+                    )
+                if isinstance(self.workflow_results["artifacts"], dict):
+                    self.workflow_results["artifacts"][
+                        "auto_correction_results"
+                    ] = resultats
 
                 # Afficher les statistiques
                 corrections_count = len(resultats.get("corrections_appliquees", []))
                 suggestions_count = len(resultats.get("suggestions", []))
                 fichiers_traites = resultats.get("fichiers_traites", 0)
 
-                logger.info("✅ Auto-correction avancée terminée:")
+                logger.info(" Auto-correction avancée terminée:")
                 logger.info(f"  - Fichiers traités: {fichiers_traites}")
                 logger.info(f"  - Corrections appliquées: {corrections_count}")
                 logger.info(f"  - Suggestions: {suggestions_count}")
@@ -460,16 +476,18 @@ class UnifiedOrchestrator:
                     except Exception as e:
                         logger.warning(f"Impossible de générer le rapport: {e}")
             else:
-                logger.info("⚠️ Module d'auto-correction avancée non disponible")
-                self.workflow_results["steps_completed"].append(
-                    "advanced_auto_correction_skipped"
-                )
+                logger.info(" Module d'auto-correction avancée non disponible")
+                if isinstance(self.workflow_results["steps_completed"], list):
+                    self.workflow_results["steps_completed"].append(
+                        "advanced_auto_correction_skipped"
+                    )
 
         except Exception as e:
-            self.workflow_results["warnings"].append(
-                f"Erreur auto-correction avancée: {e}"
-            )
-            logger.warning(f"⚠️ Erreur auto-correction avancée: {e}")
+            if isinstance(self.workflow_results["warnings"], list):
+                self.workflow_results["warnings"].append(
+                    f"Erreur auto-correction avancée: {e}"
+                )
+            logger.warning(f" Erreur auto-correction avancée: {e}")
 
     def _validate_code(self, code: str) -> bool:
         """Valide la syntaxe du code Python"""
@@ -486,12 +504,17 @@ class UnifiedOrchestrator:
         try:
             if self.security_auditor:
                 security_results = self.security_auditor.run()
-                self.workflow_results["steps_completed"].append("security_audit")
-                self.workflow_results["artifacts"]["security_report"] = security_results
-                logger.info("✅ Audit de sécurité terminé")
+                if isinstance(self.workflow_results["steps_completed"], list):
+                    self.workflow_results["steps_completed"].append("security_audit")
+                if isinstance(self.workflow_results["artifacts"], dict):
+                    self.workflow_results["artifacts"][
+                        "security_report"
+                    ] = security_results
+                logger.info(" Audit de sécurité terminé")
 
         except Exception as e:
-            self.workflow_results["warnings"].append(f"Erreur audit sécurité: {e}")
+            if isinstance(self.workflow_results["warnings"], list):
+                self.workflow_results["warnings"].append(f"Erreur audit sécurité: {e}")
 
     def _step_code_linting(self) -> None:
         """Étape 5: Linting du code"""
@@ -500,31 +523,37 @@ class UnifiedOrchestrator:
         try:
             if self.code_linter:
                 lint_results = self.code_linter.run()
-                self.workflow_results["steps_completed"].append("code_linting")
-                self.workflow_results["artifacts"]["lint_report"] = lint_results
-                logger.info("✅ Linting terminé")
+                if isinstance(self.workflow_results["steps_completed"], list):
+                    self.workflow_results["steps_completed"].append("code_linting")
+                if isinstance(self.workflow_results["artifacts"], dict):
+                    self.workflow_results["artifacts"]["lint_report"] = lint_results
+                logger.info(" Linting terminé")
 
         except Exception as e:
-            self.workflow_results["warnings"].append(f"Erreur linting: {e}")
+            if isinstance(self.workflow_results["warnings"], list):
+                self.workflow_results["warnings"].append(f"Erreur linting: {e}")
 
     def _step_correction_optimization(self) -> None:
         """Étape 7: Optimisation des corrections"""
-        logger.info("🔧 Optimisation des corrections...")
+        logger.info(" Optimisation des corrections...")
 
         try:
             if self.correction_optimizer:
                 # Optimiser les corrections basées sur les rapports précédents
                 optimization_results = self.correction_optimizer.get_correction_stats()
-                self.workflow_results["steps_completed"].append(
-                    "correction_optimization"
-                )
-                self.workflow_results["artifacts"][
-                    "optimization_stats"
-                ] = optimization_results
-                logger.info("✅ Optimisation terminée")
+                if isinstance(self.workflow_results["steps_completed"], list):
+                    self.workflow_results["steps_completed"].append(
+                        "correction_optimization"
+                    )
+                if isinstance(self.workflow_results["artifacts"], dict):
+                    self.workflow_results["artifacts"][
+                        "optimization_stats"
+                    ] = optimization_results
+                logger.info(" Optimisation terminée")
 
         except Exception as e:
-            self.workflow_results["warnings"].append(f"Erreur optimisation: {e}")
+            if isinstance(self.workflow_results["warnings"], list):
+                self.workflow_results["warnings"].append(f"Erreur optimisation: {e}")
 
     def _step_auto_testing(self) -> None:
         """Étape 8: Tests automatiques"""
@@ -533,12 +562,17 @@ class UnifiedOrchestrator:
         try:
             if self.auto_tester:
                 test_results = self.auto_tester.run_tests()
-                self.workflow_results["steps_completed"].append("auto_testing")
-                self.workflow_results["artifacts"]["test_results"] = test_results
-                logger.info("✅ Tests automatiques terminés")
+                if isinstance(self.workflow_results["steps_completed"], list):
+                    self.workflow_results["steps_completed"].append("auto_testing")
+                if isinstance(self.workflow_results["artifacts"], dict):
+                    self.workflow_results["artifacts"]["test_results"] = test_results
+                logger.info(" Tests automatiques terminés")
 
         except Exception as e:
-            self.workflow_results["warnings"].append(f"Erreur tests automatiques: {e}")
+            if isinstance(self.workflow_results["warnings"], list):
+                self.workflow_results["warnings"].append(
+                    f"Erreur tests automatiques: {e}"
+                )
 
     def _step_auto_documentation(self) -> None:
         """Étape 9: Documentation automatique"""
@@ -547,12 +581,17 @@ class UnifiedOrchestrator:
         try:
             if self.auto_documenter:
                 doc_results = self.auto_documenter.generate_documentation()
-                self.workflow_results["steps_completed"].append("auto_documentation")
-                self.workflow_results["artifacts"]["documentation"] = doc_results
-                logger.info("✅ Documentation générée")
+                if isinstance(self.workflow_results["steps_completed"], list):
+                    self.workflow_results["steps_completed"].append(
+                        "auto_documentation"
+                    )
+                if isinstance(self.workflow_results["artifacts"], dict):
+                    self.workflow_results["artifacts"]["documentation"] = doc_results
+                logger.info(" Documentation générée")
 
         except Exception as e:
-            self.workflow_results["warnings"].append(f"Erreur documentation: {e}")
+            if isinstance(self.workflow_results["warnings"], list):
+                self.workflow_results["warnings"].append(f"Erreur documentation: {e}")
 
     def _step_auto_cleaning(self) -> None:
         """Étape 10: Nettoyage automatique"""
@@ -561,19 +600,24 @@ class UnifiedOrchestrator:
         try:
             if self.auto_cleaner:
                 clean_results = self.auto_cleaner.clean_project()
-                self.workflow_results["steps_completed"].append("auto_cleaning")
-                self.workflow_results["artifacts"]["cleaning_report"] = clean_results
-                logger.info("✅ Nettoyage terminé")
+                if isinstance(self.workflow_results["steps_completed"], list):
+                    self.workflow_results["steps_completed"].append("auto_cleaning")
+                if isinstance(self.workflow_results["artifacts"], dict):
+                    self.workflow_results["artifacts"][
+                        "cleaning_report"
+                    ] = clean_results
+                logger.info(" Nettoyage terminé")
 
         except Exception as e:
-            self.workflow_results["warnings"].append(f"Erreur nettoyage: {e}")
+            if isinstance(self.workflow_results["warnings"], list):
+                self.workflow_results["warnings"].append(f"Erreur nettoyage: {e}")
 
-    def _step_robotics_validation(self, blueprint: dict[str, Any]):
+    def _step_robotics_validation(self, blueprint: dict[str, Any]) -> None:
         """Étape 11: Validation robotique spécialisée"""
         logger.info("🤖 Validation robotique...")
         try:
             if not ROBOTICS_MODULES_AVAILABLE:
-                logger.info("ℹ️ Modules robotiques non disponibles - étape ignorée")
+                logger.info("ℹ Modules robotiques non disponibles - étape ignorée")
                 return
 
             project_type = blueprint.get("project_type", "").lower()
@@ -582,7 +626,7 @@ class UnifiedOrchestrator:
                 or "ros" in project_type
                 or "robot" in project_type
             ):
-                logger.info("🔍 Validation spécialisée robotique détectée")
+                logger.info(" Validation spécialisée robotique détectée")
 
                 # Validation ROS2
                 if self.ros2_validator:
@@ -606,94 +650,72 @@ class UnifiedOrchestrator:
                         "docker_validation"
                     ] = docker_result
 
-                logger.info("✅ Validation robotique terminée")
+                logger.info(" Validation robotique terminée")
             else:
-                logger.info("ℹ️ Projet non-robotique - validation robotique ignorée")
+                logger.info("ℹ Projet non-robotique - validation robotique ignorée")
 
         except Exception as e:
-            logger.warning(f"⚠️ Erreur validation robotique: {e}")
+            logger.warning(f" Erreur validation robotique: {e}")
             self.workflow_results["errors"].append(f"Erreur validation robotique: {e}")
 
-    def _step_artistic_templates(self, blueprint: dict[str, Any]):
+    def _step_artistic_templates(self, blueprint: dict[str, Any]) -> None:
         """Étape 12: Application des templates artistiques"""
         logger.info("🎨 Application templates artistiques...")
         try:
             if not ARTISTIC_MODULES_AVAILABLE:
-                logger.info("ℹ️ Modules artistiques non disponibles - étape ignorée")
+                logger.info("ℹ Templates artistiques non disponibles - étape ignorée")
                 return
 
             project_type = blueprint.get("project_type", "").lower()
-            if (
-                "artistic" in project_type
-                or "animation" in project_type
-                or "visual" in project_type
-            ):
-                logger.info("🎨 Templates artistiques détectés")
-
-                # Appliquer les templates artistiques
-                if self.artistic_templates:
+            if "artistic" in project_type or "game" in project_type:
+                if self.artistic_templates and self.base_templates:
                     templates_applied = []
+
+                    # Appliquer les templates artistiques appropriés
                     for (
-                        template_path,
+                        template_name,
                         template_content,
                     ) in self.artistic_templates.items():
-                        # Créer le chemin complet dans le projet
-                        full_path = self.project_path / "src" / template_path
-                        full_path.parent.mkdir(parents=True, exist_ok=True)
-
-                        try:
-                            # Créer le dossier complet pour le template
-                            if "/" in template_path:
-                                template_dir = template_path.split("/")[
-                                    0
-                                ]  # "animation", "audio", etc.
-                                template_file = template_path.split("/")[1]  # "main.py"
-                            else:
-                                # Si pas de séparateur, utiliser le nom du fichier directement
-                                template_dir = "templates"
-                                template_file = template_path
-
-                            # Créer le chemin complet dans le projet
-                            template_full_path = (
-                                self.project_path / "src" / template_dir / template_file
+                        if template_name.lower() in project_type:
+                            template_path = (
+                                self.project_path / f"{template_name}_template.py"
                             )
-                            template_full_path.parent.mkdir(parents=True, exist_ok=True)
+                            try:
+                                with open(template_path, "w", encoding="utf-8") as f:
+                                    f.write(template_content)
+                                templates_applied.append(template_name)
+                                logger.info(f" Template {template_name} appliqué")
+                            except Exception as e:
+                                logger.warning(
+                                    f" Erreur application template {template_path}: {e}"
+                                )
 
-                            with open(template_full_path, "w", encoding="utf-8") as f:
-                                f.write(template_content)
-                            templates_applied.append(
-                                f"src/{template_dir}/{template_file}"
-                            )
-                            logger.info(
-                                f"✅ Template appliqué: src/{template_dir}/{template_file}"
-                            )
-                        except Exception as e:
-                            logger.warning(
-                                f"⚠️ Erreur application template {template_path}: {e}"
-                            )
-
-                    self.workflow_results["artistic"][
-                        "templates_applied"
-                    ] = templates_applied
+                    if isinstance(self.workflow_results["artistic"], dict):
+                        self.workflow_results["artistic"][
+                            "templates_applied"
+                        ] = templates_applied
                     logger.info(
-                        f"✅ {len(templates_applied)} templates artistiques appliqués"
+                        f" {len(templates_applied)} templates artistiques appliqués"
                     )
                 else:
-                    logger.warning("⚠️ Templates artistiques non disponibles")
+                    logger.warning(" Templates artistiques non disponibles")
             else:
-                logger.info("ℹ️ Projet non-artistique - templates artistiques ignorés")
+                logger.info("ℹ Projet non-artistique - templates artistiques ignorés")
 
         except Exception as e:
-            logger.warning(f"⚠️ Erreur templates artistiques: {e}")
-            self.workflow_results["errors"].append(f"Erreur templates artistiques: {e}")
+            logger.warning(f" Erreur templates artistiques: {e}")
+            if isinstance(self.workflow_results["errors"], list):
+                self.workflow_results["errors"].append(
+                    f"Erreur templates artistiques: {e}"
+                )
 
-    def _step_advanced_classification(self, blueprint: dict[str, Any]):
+    def _step_advanced_classification(self, blueprint: dict[str, Any]) -> None:
         """Étape 13: Classification avancée du projet"""
         logger.info("🧠 Classification avancée...")
         try:
             if not CLASSIFICATION_MODULES_AVAILABLE:
                 logger.info(
-                    "ℹ️ Modules de classification non disponibles - étape ignorée"
+                    "ℹ Modules de classification non disponibles - étape ignorée"
                 )
                 return
 
@@ -705,37 +727,44 @@ class UnifiedOrchestrator:
                 detected_type = self.project_classifier(project_description)
                 project_config = get_project_config(detected_type)
 
-                self.workflow_results["classification"] = {
-                    "detected_type": detected_type.value,
-                    "confidence": "high",
-                    "config": project_config,
-                    "modules_recommended": project_config.get("modules", []),
-                    "dependencies_recommended": project_config.get("dependencies", []),
-                }
+                if isinstance(self.workflow_results["classification"], dict):
+                    self.workflow_results["classification"] = {
+                        "detected_type": detected_type.value,
+                        "confidence": "high",
+                        "config": project_config,
+                        "modules_recommended": project_config.get("modules", []),
+                        "dependencies_recommended": project_config.get(
+                            "dependencies", []
+                        ),
+                    }
 
-                logger.info(f"✅ Classification avancée: {detected_type.value}")
+                logger.info(f" Classification avancée: {detected_type.value}")
             else:
-                logger.warning("⚠️ Classificateur avancé non disponible")
+                logger.warning(" Classificateur avancé non disponible")
 
         except Exception as e:
-            logger.warning(f"⚠️ Erreur classification avancée: {e}")
-            self.workflow_results["errors"].append(
-                f"Erreur classification avancée: {e}"
-            )
+            logger.warning(f" Erreur classification avancée: {e}")
+            if isinstance(self.workflow_results["errors"], list):
+                self.workflow_results["errors"].append(
+                    f"Erreur classification avancée: {e}"
+                )
 
     def _step_auto_cicd(self) -> None:
         """Étape 14: Configuration CI/CD automatique"""
-        logger.info("🚀 Configuration CI/CD...")
+        logger.info(" Configuration CI/CD...")
 
         try:
             if self.auto_cicd:
                 cicd_results = self.auto_cicd.setup_cicd()
-                self.workflow_results["steps_completed"].append("auto_cicd")
-                self.workflow_results["artifacts"]["cicd_config"] = cicd_results
-                logger.info("✅ CI/CD configuré")
+                if isinstance(self.workflow_results["steps_completed"], list):
+                    self.workflow_results["steps_completed"].append("auto_cicd")
+                if isinstance(self.workflow_results["artifacts"], dict):
+                    self.workflow_results["artifacts"]["cicd_config"] = cicd_results
+                logger.info(" CI/CD configuré")
 
         except Exception as e:
-            self.workflow_results["warnings"].append(f"Erreur CI/CD: {e}")
+            if isinstance(self.workflow_results["warnings"], list):
+                self.workflow_results["warnings"].append(f"Erreur CI/CD: {e}")
 
     def generate_workflow_report(self) -> str:
         """Génère un rapport du workflow"""
@@ -749,7 +778,7 @@ class UnifiedOrchestrator:
 
         report.append("## Étapes Complétées")
         for step in self.workflow_results["steps_completed"]:
-            report.append(f"- ✅ {step}")
+            report.append(f"-  {step}")
         report.append("")
 
         if self.workflow_results["artifacts"]:
@@ -761,13 +790,13 @@ class UnifiedOrchestrator:
         if self.workflow_results["errors"]:
             report.append("## Erreurs")
             for error in self.workflow_results["errors"]:
-                report.append(f"- ❌ {error}")
+                report.append(f"-  {error}")
             report.append("")
 
         if self.workflow_results["warnings"]:
             report.append("## Avertissements")
             for warning in self.workflow_results["warnings"]:
-                report.append(f"- ⚠️ {warning}")
+                report.append(f"-  {warning}")
             report.append("")
 
         if self.workflow_results["metrics"]:
@@ -782,9 +811,9 @@ class UnifiedOrchestrator:
         try:
             with open(output_path, "w", encoding="utf-8") as f:
                 json.dump(self.workflow_results, f, indent=2, default=str)
-            logger.info(f"✅ Résultats sauvegardés: {output_path}")
+            logger.info(f" Résultats sauvegardés: {output_path}")
         except Exception as e:
-            logger.error(f"❌ Erreur sauvegarde: {e}")
+            logger.error(f" Erreur sauvegarde: {e}")
 
 
 def run_unified_workflow(

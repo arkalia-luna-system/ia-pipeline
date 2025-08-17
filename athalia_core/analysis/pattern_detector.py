@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-🔍 DÉTECTEUR DE PATTERNS ET DOUBLONS
+ DÉTECTEUR DE PATTERNS ET DOUBLONS
 ====================================
 Module spécialisé dans la détection de patterns de code,
 doublons et anti-patterns. Utilise l'analyseur AST de base.
@@ -82,7 +82,7 @@ class PatternDetector:
         # Charger les patterns existants
         self._load_patterns()
 
-        logger.info(f"🔍 Pattern Detector initialisé dans {self.root_path}")
+        logger.info(f" Pattern Detector initialisé dans {self.root_path}")
 
     def _init_database(self):
         """Initialiser la base de données"""
@@ -163,21 +163,23 @@ class PatternDetector:
                 )
                 self._pattern_cache[pattern.signature] = pattern
 
-    def analyze_project_patterns(self, project_path: str = None) -> dict[str, Any]:
+    def analyze_project_patterns(
+        self, project_path: str | None = None
+    ) -> dict[str, Any]:
         """Analyser les patterns d'un projet complet"""
         project_path = Path(project_path or self.root_path)
-        logger.info(f"🔍 Analyse des patterns du projet: {project_path.name}")
+        logger.info(f"Analyse des patterns du projet: {project_path.name}")
 
         # Analyser tous les fichiers Python (ignorer les fichiers cachés)
         python_files = [
             f for f in project_path.rglob("*.py") if not f.name.startswith("._")
         ]
-        logger.info(f"📁 {len(python_files)} fichiers Python trouvés")
+        logger.info(f" {len(python_files)} fichiers Python trouvés")
 
         # Limiter le nombre de fichiers pour les tests
         if len(python_files) > 50:
             python_files = python_files[:50]
-            logger.info("📁 Limitation à 50 fichiers pour les performances")
+            logger.info(" Limitation à 50 fichiers pour les performances")
 
         # Analyser chaque fichier
         all_patterns = []
@@ -510,7 +512,7 @@ class PatternDetector:
         ]
         if high_severity_duplicates:
             recommendations.append(
-                f"🔧 {len(high_severity_duplicates)} doublons critiques - "
+                f"{len(high_severity_duplicates)} doublons critiques - "
                 "priorité à la fusion"
             )
 
@@ -520,14 +522,14 @@ class PatternDetector:
         ]
         if high_impact_antipatterns:
             recommendations.append(
-                f"⚠️ {len(high_impact_antipatterns)} anti-patterns critiques - "
+                f" {len(high_impact_antipatterns)} anti-patterns critiques - "
                 "refactoring urgent"
             )
 
         # Recommandations générales
         if duplicates:
             recommendations.append(
-                "📊 Créer un module utilitaire pour les patterns communs"
+                " Créer un module utilitaire pour les patterns communs"
             )
 
         if antipatterns:
