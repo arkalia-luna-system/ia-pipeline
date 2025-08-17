@@ -285,11 +285,11 @@ class CodeLinter:
     def _get_quality_level(self) -> str:
         """Détermine le niveau de qualité"""
         score = self.report.get("score", 0)
-        if isinstance(score, (int, float)) and score >= 90:
+        if isinstance(score, int | float) and score >= 90:
             return "EXCELLENT"
-        elif isinstance(score, (int, float)) and score >= 70:
+        elif isinstance(score, int | float) and score >= 70:
             return "BON"
-        elif isinstance(score, (int, float)) and score >= 50:
+        elif isinstance(score, int | float) and score >= 50:
             return "MOYEN"
         else:
             return "CRITIQUE"

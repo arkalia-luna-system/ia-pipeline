@@ -62,7 +62,7 @@ class PatternDetector:
                     suggestion TEXT,
                     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
                 )
-            """
+                """
             )
 
             # Table des duplications
@@ -77,7 +77,7 @@ class PatternDetector:
                     lines2 TEXT,
                     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
                 )
-            """
+                """
             )
 
             # Table des anti-patterns
@@ -93,7 +93,7 @@ class PatternDetector:
                     fix_suggestion TEXT,
                     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
                 )
-            """
+                """
             )
 
             conn.commit()
@@ -171,7 +171,7 @@ class PatternDetector:
             project_path = Path(project_path)
 
         project_name = project_path.name
-        logger.info(f"🔍 Analyse des patterns pour: {project_name}")
+        logger.info(f"Analyse des patterns pour: {project_name}")
 
         # Charger les patterns existants
         self._load_patterns()
@@ -196,7 +196,7 @@ class PatternDetector:
         self, min_similarity: float = 0.8
     ) -> list[dict[str, Any]]:
         """Détecte la duplication de code"""
-        logger.info("🔍 Détection de duplication de code")
+        logger.info("Détection de duplication de code")
 
         duplications = []
         python_files = list(self.root_path.rglob("*.py"))
@@ -258,7 +258,7 @@ class PatternDetector:
 
     def detect_antipatterns(self) -> list[dict[str, Any]]:
         """Détecte les anti-patterns dans le code"""
-        logger.info("🔍 Détection d'anti-patterns")
+        logger.info("Détection d'anti-patterns")
 
         antipatterns = []
         python_files = list(self.root_path.rglob("*.py"))
@@ -373,7 +373,7 @@ class PatternDetector:
                     """
                     INSERT INTO patterns (name, description, category, severity, location, line_number, suggestion)
                     VALUES (?, ?, ?, ?, ?, ?, ?)
-                """,
+                    """,
                     (
                         pattern.get("name", ""),
                         pattern.get("description", ""),
@@ -411,15 +411,6 @@ def main() -> None:
     args = parser.parse_args()
 
     detector = PatternDetector(args.project_path)
-
-    # Analyser les patterns
-    analysis = detector.analyze_project_patterns()
-
-    # Détecter les duplications
-    duplications = detector.detect_code_duplication(args.min_similarity)
-
-    # Détecter les anti-patterns
-    antipatterns = detector.detect_antipatterns()
 
     # Générer le rapport
     report = detector.generate_pattern_report()

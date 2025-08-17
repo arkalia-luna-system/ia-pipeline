@@ -191,12 +191,12 @@ def test_{func_name}():
             content += f'''
 class Test{class_info['name']}:
     """Tests pour la classe {class_info['name']}"""
-    
+
     def test_class_exists(self):
         """Vérifie que la classe existe"""
         assert hasattr({module['name']}, '{class_info['name']}')
         assert isinstance(getattr({module['name']}, '{class_info['name']}'), type)
-    
+
     def test_class_methods(self):
         """Vérifie les méthodes de la classe"""
         cls = getattr({module['name']}, '{class_info['name']}')

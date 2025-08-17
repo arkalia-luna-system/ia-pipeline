@@ -1,7 +1,6 @@
+#!/usr/bin/env python3
 """
-Module de distillation de réponses IA pour Athalia/Arkalia
-Permet de fusionner plusieurs réponses IA en une solution optimale
-(voting, stacking, bagging, consensus scoring...)
+Distilleur de réponses IA - Fusionne plusieurs réponses selon différentes stratégies
 """
 
 import random
@@ -99,7 +98,9 @@ class ResponseDistiller:
 
 
 def distill_responses(
-    responses: list, strategy: str = "voting", context: dict | None = None
+    responses: list[str],
+    strategy: str = "voting",
+    context: dict[str, Any] | None = None,
 ) -> str:
     """Fonction utilitaire pour distiller une liste de réponses IA."""
     distiller = ResponseDistiller(strategy=strategy)

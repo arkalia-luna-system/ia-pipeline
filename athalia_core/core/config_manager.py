@@ -27,8 +27,12 @@ def load_config(config_path: str) -> dict[str, Any]:
         Dict contenant la configuration chargée
     """
     try:
-        with open(config_path, encoding="utf-8") as file:
-            return yaml.safe_load(file) or {}
+        if yaml is not None:
+            with open(config_path, encoding="utf-8") as file:
+                return yaml.safe_load(file) or {}
+        else:
+            logging.warning("Module yaml non disponible")
+            return {}
     except Exception as e:
         logging.warning(f"Erreur lors du chargement de {config_path}: {e}")
         return {}
@@ -46,6 +50,10 @@ def save_config(config: dict[str, Any], config_path: str) -> bool:
         True si la sauvegarde a réussi, False sinon
     """
     try:
+        if yaml is None:
+            logging.error("Module yaml non disponible")
+            return False
+
         # Créer le répertoire parent si nécessaire
         os.makedirs(os.path.dirname(config_path), exist_ok=True)
 
@@ -59,7 +67,7 @@ def save_config(config: dict[str, Any], config_path: str) -> bool:
 
 @dataclass
 class AthaliaConfig:
-    """Configuration centralisée d'f"""
+    """Configuration centralisée d'Athalia"""
 
     # Général
     lang: str = "fr"

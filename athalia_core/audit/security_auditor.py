@@ -287,11 +287,11 @@ class SecurityAuditor:
 
     def _get_security_level(self, score: int) -> str:
         """Détermine le niveau de sécurité"""
-        if isinstance(score, (int, float)) and score >= 90:
+        if isinstance(score, int | float) and score >= 90:
             return "EXCELLENT"
-        elif isinstance(score, (int, float)) and score >= 70:
+        elif isinstance(score, int | float) and score >= 70:
             return "BON"
-        elif isinstance(score, (int, float)) and score >= 50:
+        elif isinstance(score, int | float) and score >= 50:
             return "MOYEN"
         else:
             return "CRITIQUE"

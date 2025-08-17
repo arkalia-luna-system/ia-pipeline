@@ -3,7 +3,7 @@ Module de distillation de corrections IA pour Athalia/Arkalia
 Fusionne, score et sélectionne la meilleure correction parmi plusieurs suggestions IA.
 """
 
-from typing import Any
+from typing import Any, Dict, List, Optional
 
 
 class CorrectionDistiller:
@@ -12,9 +12,9 @@ class CorrectionDistiller:
 
     def distill(
         self,
-        corrections: list[str],
-        scores: list[float] | None = None,
-        context: dict[str, Any] | None = None,
+        corrections: List[str],
+        scores: Optional[List[float]] = None,
+        context: Optional[Dict[str, Any]] = None,
     ) -> str:
         """
             Sélectionne ou fusionne la meilleure correction IA.

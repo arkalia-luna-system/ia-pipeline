@@ -433,7 +433,7 @@ def main() -> None:
     args = parser.parse_args()
 
     ci = RoboticsCI(args.project_path)
-    results = ci.run_full_pipeline()
+    ci.run_full_pipeline()
 
     if args.output:
         with open(args.output, "w", encoding="utf-8") as f:

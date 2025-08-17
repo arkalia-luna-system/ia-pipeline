@@ -1235,7 +1235,7 @@ class PerformanceAnalyzer:
         """Calcule le score de performance global"""
         analysis = self.run_comprehensive_analysis()
         score = analysis.get("score", 0.0)
-        if isinstance(score, (int, float)):
+        if isinstance(score, int | float):
             return float(score)
         return 0.0
 

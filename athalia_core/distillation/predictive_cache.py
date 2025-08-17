@@ -33,11 +33,13 @@ class PredictiveCache:
     def set(self, key: str, value: Any):
         self.cache[key] = {"value": value, "time": time.time()}
 
-    def predict_key(self, context: dict) -> str:
+    def predict_key(self, context: dict[str, Any]) -> str:
         # Hash du contexte pour générer une clé unique
         return str(hash(str(context)))
 
-    def pre_generate(self, context: dict, generator: Callable[[dict], Any]):
+    def pre_generate(
+        self, context: dict[str, Any], generator: Callable[[dict[str, Any]], Any]
+    ):
         """
             Pré-génère une réponse pour un contexte donné (si non déjà en cache).
         :param context: Contexte (dict)
