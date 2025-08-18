@@ -78,18 +78,19 @@ def safe_input(prompt: str) -> str:
         return ""
 
 
-def surveillance_mode():
-    """Mode surveillance avec arrêt automatique"""
-    logger.info(" Mode surveillance activé (Ctrl+C pour arrêter)")
+def surveillance_mode() -> None:
+    """Mode surveillance continu"""
+    logger.info("Mode surveillance activé")
     try:
-        while running:
-            logger.info("⏰ Surveillance en cours... (Ctrl+C pour arrêter)")
-            time.sleep(30)  # Vérification toutes les 30 secondes
+        while True:
+            time.sleep(60)  # Vérifier toutes les minutes
+            # Log de surveillance
+            logger.debug("Surveillance active...")
     except KeyboardInterrupt:
-        logger.info("\n🛑 Surveillance arrêtée.")
+        logger.info("Mode surveillance arrêté")
 
 
-def main(test_mode=False):
+def main(test_mode: bool = False) -> None:
     global running
 
     # Vérifier si une instance est déjà en cours

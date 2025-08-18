@@ -1,7 +1,6 @@
-"""
-Module d'utilitaires pour Athalia
-CLI, dashboard, logging, édition multi-fichiers, onboarding et gestion de projets
-"""
+"""Module utilities pour Athalia"""
+
+from typing import Any
 
 try:
     from .cli import CLI
@@ -11,7 +10,7 @@ except ImportError:
 try:
     from .dashboard import Dashboard
 except ImportError:
-    Dashboard = None
+    Dashboard: Any = None
 
 try:
     from .generation_backup import GenerationBackup
@@ -31,7 +30,7 @@ except ImportError:
 try:
     from .multi_file_editor import MultiFileEditor
 except ImportError:
-    MultiFileEditor = None
+    MultiFileEditor: Any = None
 
 try:
     from .onboarding import Onboarding
@@ -41,7 +40,7 @@ except ImportError:
 try:
     from .project_importer import ProjectImporter
 except ImportError:
-    ProjectImporter = None
+    ProjectImporter: Any = None
 
 try:
     from .ready_check import ReadyCheck

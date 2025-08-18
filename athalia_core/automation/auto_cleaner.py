@@ -32,13 +32,16 @@ class AutoCleaner:
     """Nettoyeur automatique de projets"""
 
     def __init__(self, project_path: str = "."):
+        """Initialise le nettoyeur automatique"""
         self.project_path = Path(project_path)
-        self.cleanup_config = self.load_cleanup_config()
-        self.cleanup_history = []
+        self.cleanup_config = self._load_cleanup_config()
+
+        # Initialiser les listes avec des types appropriés
+        self.cleanup_history: list[dict[str, Any]] = []
+        self.cleaned_files: list[str] = []
+        self.cleaned_dirs: list[str] = []
+        self.errors: list[str] = []
         self.dry_run = False
-        self.cleaned_files = []
-        self.cleaned_dirs = []
-        self.errors = []
         self.stats = {
             "files_removed": 0,
             "dirs_removed": 0,
@@ -50,7 +53,7 @@ class AutoCleaner:
         self.optimizer = PerformanceOptimizer()
         self.security_validator = SecurityValidator()
 
-    def load_cleanup_config(self, config_path: str | None = None) -> dict[str, Any]:
+    def _load_cleanup_config(self, config_path: str | None = None) -> dict[str, Any]:
         """Charge la configuration de nettoyage"""
         default_config = {
             "patterns_to_remove": [
@@ -112,14 +115,18 @@ class AutoCleaner:
 
     @performance_monitor
     @memory_efficient
-    def scan_for_cleanup_candidates(self) -> dict[str, Any]:
-        """Scanne le projet pour les candidats de nettoyage"""
-        candidates = {
-            "files_to_remove": [],
-            "directories_to_remove": [],
+    def scan_for_cleanup_candidates(self) -> dict[str, list[Path]]:
+        """Scanne le projet pour identifier les candidats au nettoyage"""
+        candidates: dict[str, list[Path]] = {
+            "pyc_files": [],
+            "cache_dirs": [],
+            "log_files": [],
+            "temp_files": [],
+            "build_artifacts": [],
+            "test_artifacts": [],
+            "duplicate_files": [],
             "large_files": [],
             "old_files": [],
-            "duplicate_files": [],
         }
 
         try:

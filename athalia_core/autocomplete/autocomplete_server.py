@@ -15,12 +15,12 @@ class AutocompleteResponse(BaseModel):
     suggestions: list[str]
 
 
-def get_engine():
+def get_engine() -> AutocompleteEngine:
     return AutocompleteEngine()
 
 
 @app.post("/autocomplete", response_model=AutocompleteResponse)
-def autocomplete(request: AutocompleteRequest):
+def autocomplete(request: AutocompleteRequest) -> AutocompleteResponse:
     if not request.prompt:
         raise HTTPException(status_code=400, detail="Le prompt ne peut pas être vide.")
     engine = get_engine()

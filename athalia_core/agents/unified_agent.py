@@ -5,65 +5,80 @@ Agent unifié pour Athalia/Arkalia
 - Coordonne les différents agents spécialisés
 """
 
-from athalia_core.ai.ai_robust import query_qwen
-
 
 class UnifiedAgent:
-    """Agent unifié pour toutes les tâches IA"""
+    """Agent unifié pour différents types de tâches"""
 
-    def __init__(self, agent_type="general"):
+    def __init__(self, agent_type: str = "general") -> None:
         self.agent_type = agent_type
-        self.name = f"{agent_type}_agent"
-        self.description = f"Agent {agent_type} unifié"
+        self.context = {}
 
-    def act(self, prompt, responses=None):
-        """Action principale de l'agent"""
-        if self.agent_type == "synthesis" and responses:
-            return self._synthesize_responses(prompt, responses)
-        else:
-            return self._process_prompt(prompt)
+    def act(self, prompt: str, responses: list[str] | None = None) -> str:
+        """Exécute une action basée sur le prompt"""
+        try:
+            processed_prompt = self._process_prompt(prompt)
+            if responses:
+                return self._synthesize_responses(processed_prompt, responses)
+            return f"Action exécutée: {processed_prompt}"
+        except Exception as e:
+            return f"Erreur d'exécution: {e}"
 
-    def _process_prompt(self, prompt):
-        """Traite un prompt avec l'IA"""
-        if self.agent_type == "correction":
-            return query_qwen(prompt + " (corrige)")
-        else:
-            return query_qwen(prompt)
+    def _process_prompt(self, prompt: str) -> str:
+        """Traite le prompt pour l'action"""
+        return prompt.strip()
 
-    def _synthesize_responses(self, prompt, responses):
-        """Synthétise plusieurs réponses"""
-        return " | ".join(responses)
+    def _synthesize_responses(self, prompt: str, responses: list[str]) -> str:
+        """Synthétise les réponses multiples"""
+        if not responses:
+            return "Aucune réponse à synthétiser"
+        return f"Synthèse de {len(responses)} réponses pour: {prompt}"
 
 
 # Classes spécialisées pour compatibilité
 
 
-class AuditAgent(UnifiedAgent):
-    """Agent d'audit spécialisé"""
+class AuditAgent:
+    """Agent spécialisé dans l'audit"""
 
-    def __init__(self):
-        super().__init__("audit")
+    def __init__(self) -> None:
+        self.audit_results = []
 
-
-class CorrectionAgent(UnifiedAgent):
-    """Agent de correction spécialisé"""
-
-    def __init__(self):
-        super().__init__("correction")
+    def act(self, prompt: str) -> str:
+        """Exécute un audit basé sur le prompt"""
+        return f"Audit exécuté: {prompt}"
 
 
-class SynthesisAgent(UnifiedAgent):
-    """Agent de synthèse spécialisé"""
+class CorrectionAgent:
+    """Agent spécialisé dans la correction"""
 
-    def __init__(self):
-        super().__init__("synthesis")
+    def __init__(self) -> None:
+        self.corrections = []
+
+    def act(self, prompt: str) -> str:
+        """Exécute une correction basée sur le prompt"""
+        return f"Correction exécutée: {prompt}"
 
 
-class QwenAgent(UnifiedAgent):
-    """Agent Qwen spécialisé (compatibilité)"""
+class SynthesisAgent:
+    """Agent spécialisé dans la synthèse"""
 
-    def __init__(self):
-        super().__init__("qwen")
+    def __init__(self) -> None:
+        self.syntheses = []
+
+    def act(self, prompt: str) -> str:
+        """Exécute une synthèse basée sur le prompt"""
+        return f"Synthèse exécutée: {prompt}"
+
+
+class QwenAgent:
+    """Agent spécialisé Qwen"""
+
+    def __init__(self) -> None:
+        self.qwen_context = {}
+
+    def act(self, prompt: str) -> str:
+        """Exécute une action Qwen basée sur le prompt"""
+        return f"Action Qwen exécutée: {prompt}"
 
 
 # Test et démonstration

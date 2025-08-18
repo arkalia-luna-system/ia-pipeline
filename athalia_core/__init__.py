@@ -4,6 +4,8 @@ Athalia Dev Setup - Système d'industrialisation et d'intelligence pour projets 
 Version 2.0.0
 """
 
+from typing import Any
+
 # Version
 __version__ = "2.0.0"
 __author__ = "Athalia Team"
@@ -13,64 +15,64 @@ __description__ = "Système d'industrialisation et d'intelligence pour projets I
 try:
     from . import core
 except ImportError:
-    core = None
+    core: Any = None
 
 # Imports conditionnels - seulement les modules qui existent
 try:
     from .analytics.advanced_analytics import AdvancedAnalytics
 except ImportError:
-    AdvancedAnalytics = None
+    AdvancedAnalytics: Any = None
 
 try:
     from .automation.auto_cicd import AutoCICD
 except ImportError:
-    AutoCICD = None
+    AutoCICD: Any = None
 
 try:
     from .automation.auto_cleaner import AutoCleaner
 except ImportError:
-    AutoCleaner = None
+    AutoCleaner: Any = None
 
 try:
     from .automation.auto_documenter import AutoDocumenter
 except ImportError:
-    AutoDocumenter = None
+    AutoDocumenter: Any = None
 
 try:
     from .automation.auto_tester import AutoTester
 except ImportError:
-    AutoTester = None
+    AutoTester: Any = None
 
 try:
     from .utilities.cli import CLI
 except ImportError:
-    CLI = None
+    CLI: Any = None
 
 try:
     from .quality.code_linter import CodeLinter
 except ImportError:
-    CodeLinter = None
+    CodeLinter: Any = None
 
 try:
     from .quality.correction_optimizer import CorrectionOptimizer
 except ImportError:
-    CorrectionOptimizer = None
+    CorrectionOptimizer: Any = None
 
 try:
     from .core.config_manager import ConfigManager
 except ImportError:
-    ConfigManager = None
+    ConfigManager: Any = None
 
 try:
     from .core.cache_manager import CacheManager
 except ImportError:
-    CacheManager = None
+    CacheManager: Any = None
 
 try:
     from .core.error_codes import ErrorCode, ErrorSeverity
 except ImportError:
-    ErrorCode = None
-    ErrorSeverity = None
+    ErrorCode: Any = None
+    ErrorSeverity: Any = None
 
 try:
     from .core.error_handling import (
@@ -80,17 +82,16 @@ try:
         raise_athalia_error,
     )
 except ImportError:
-    AthaliaError = None
-    ErrorHandler = None
-    handle_error = None
-    raise_athalia_error = None
+    AthaliaError: Any = None
+    ErrorHandler: Any = None
+    handle_error: Any = None
+    raise_athalia_error: Any = None
 
 try:
-    from .core.generation import generate_blueprint_mock, generate_project, generation
+    from .core.generation import generate_blueprint_mock, generate_project
 except ImportError:
-    generate_blueprint_mock = None
-    generate_project = None
-    generation = None
+    generate_blueprint_mock: Any = None
+    generate_project: Any = None
 
 try:
     from .core.main import (
@@ -102,48 +103,48 @@ try:
         signal_handler,
     )
 except ImportError:
-    main = None
-    menu = None
-    running = None
-    security_audit_project = None
-    signal_handler = None
-    log_main = None
+    main: Any = None
+    menu: Any = None
+    running: Any = None
+    security_audit_project: Any = None
+    signal_handler: Any = None
+    log_main: Any = None
 
 try:
     from .core import performance_analyzer
     from .core.performance_analyzer import PerformanceAnalyzer
 except ImportError:
-    PerformanceAnalyzer = None
-    performance_analyzer = None
+    PerformanceAnalyzer: Any = None
+    performance_analyzer: Any = None
 
 try:
     from .core.unified_orchestrator import UnifiedOrchestrator
 except ImportError:
-    UnifiedOrchestrator = None
+    UnifiedOrchestrator: Any = None
 
 try:
     from .i18n import en, fr
 except ImportError:
-    en = None
-    fr = None
+    en: Any = None
+    fr: Any = None
 
 try:
     from .templates import artistic_templates, base_templates
 except ImportError:
-    artistic_templates = None
-    base_templates = None
+    artistic_templates: Any = None
+    base_templates: Any = None
 
 try:
     from .classification import project_classifier, project_types
 except ImportError:
-    project_classifier = None
-    project_types = None
+    project_classifier: Any = None
+    project_types: Any = None
 
 try:
     from .ai import ai_robust, ai_robust_enhanced
 except ImportError:
-    ai_robust = None
-    ai_robust_enhanced = None
+    ai_robust: Any = None
+    ai_robust_enhanced: Any = None
 
 try:
     from .advanced_modules import (
@@ -152,17 +153,17 @@ try:
         user_profiles_advanced,
     )
 except ImportError:
-    auto_correction_advanced = None
-    dashboard_unified = None
-    user_profiles_advanced = None
+    auto_correction_advanced: Any = None
+    dashboard_unified: Any = None
+    user_profiles_advanced: Any = None
 
 try:
     from .agents import ath_context_prompt, audit_agent, context_prompt, unified_agent
 except ImportError:
-    ath_context_prompt = None
-    audit_agent = None
-    context_prompt = None
-    unified_agent = None
+    ath_context_prompt: Any = None
+    audit_agent: Any = None
+    context_prompt: Any = None
+    unified_agent: Any = None
 
 try:
     from .distillation import (
@@ -176,19 +177,19 @@ try:
         response_distiller,
     )
 except ImportError:
-    adaptive_distillation = None
-    audit_distiller = None
-    code_genetics = None
-    correction_distiller = None
-    multimodal_distiller = None
-    predictive_cache = None
-    quality_scorer = None
-    response_distiller = None
+    adaptive_distillation: Any = None
+    audit_distiller: Any = None
+    code_genetics: Any = None
+    correction_distiller: Any = None
+    multimodal_distiller: Any = None
+    predictive_cache: Any = None
+    quality_scorer: Any = None
+    response_distiller: Any = None
 
 try:
     from .robotics.ros2_validator import ROS2Validator
 except ImportError:
-    ROS2Validator = None
+    ROS2Validator: Any = None
 
 try:
     from .plugins import (
@@ -198,24 +199,24 @@ try:
         PluginsValidator,
     )
 except ImportError:
-    ExportDockerPlugin = None
-    HelloPlugin = None
-    PluginsManager = None
-    PluginsValidator = None
+    ExportDockerPlugin: Any = None
+    HelloPlugin: Any = None
+    PluginsManager: Any = None
+    PluginsValidator: Any = None
 
 try:
     from .validation import PluginsValidator as ValidationPluginsValidator
     from .validation import SecurityManager, SecurityValidator
 except ImportError:
-    ValidationPluginsValidator = None
-    SecurityValidator = None
-    SecurityManager = None
+    ValidationPluginsValidator: Any = None
+    SecurityValidator: Any = None
+    SecurityManager: Any = None
 
 try:
     from .autocomplete import AutocompleteEngine, AutocompleteServer
 except ImportError:
-    AutocompleteEngine = None
-    AutocompleteServer = None
+    AutocompleteEngine: Any = None
+    AutocompleteServer: Any = None
 
 try:
     from .analysis import (
@@ -226,11 +227,11 @@ try:
         PatternDetector,
     )
 except ImportError:
-    ArchitectureAnalyzer = None
-    ASTAnalyzer = None
-    IntelligentAnalyzer = None
-    IntelligentMemory = None
-    PatternDetector = None
+    ArchitectureAnalyzer: Any = None
+    ASTAnalyzer: Any = None
+    IntelligentAnalyzer: Any = None
+    IntelligentMemory: Any = None
+    PatternDetector: Any = None
 
 try:
     from .utilities import (
@@ -246,28 +247,28 @@ try:
     )
     from .utilities.cli import cli
 except ImportError:
-    CLI = None
-    Dashboard = None
-    GenerationBackup = None
-    GenerationSimple = None
-    LoggerAdvanced = None
-    MultiFileEditor = None
-    Onboarding = None
-    ProjectImporter = None
-    ReadyCheck = None
-    cli = None
+    CLI: Any = None
+    Dashboard: Any = None
+    GenerationBackup: Any = None
+    GenerationSimple: Any = None
+    LoggerAdvanced: Any = None
+    MultiFileEditor: Any = None
+    Onboarding: Any = None
+    ProjectImporter: Any = None
+    ReadyCheck: Any = None
+    cli: Any = None
 
 try:
     from .quality import CodeLinter, CorrectionOptimizer
 except ImportError:
-    CodeLinter = None
-    CorrectionOptimizer = None
+    CodeLinter: Any = None
+    CorrectionOptimizer: Any = None
 
 try:
     from .analytics import advanced_analytics, analytics
 except ImportError:
-    analytics = None
-    advanced_analytics = None
+    analytics: Any = None
+    advanced_analytics: Any = None
 
 # Exports principaux - seulement les modules qui existent
 __all__ = [
@@ -318,8 +319,7 @@ if generate_project is not None:
     __all__.append("generate_project")
 if generate_blueprint_mock is not None:
     __all__.append("generate_blueprint_mock")
-if generation is not None:
-    __all__.append("generation")
+
 if main is not None:
     __all__.append("main")
 if menu is not None:

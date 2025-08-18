@@ -3,21 +3,23 @@ Module d'analyse de code et d'architecture pour Athalia
 Analyse AST, patterns, architecture et intelligence
 """
 
+from typing import Any
+
 try:
     from .architecture_analyzer import ArchitectureAnalyzer
 except ImportError:
-    ArchitectureAnalyzer = None
+    ArchitectureAnalyzer: Any = None
 
 try:
     from .ast_analyzer import ASTAnalyzer
 except ImportError:
-    ASTAnalyzer = None
+    ASTAnalyzer: Any = None
 
 try:
     from .intelligent_analyzer import ComprehensiveAnalysis, IntelligentAnalyzer
 except ImportError:
-    IntelligentAnalyzer = None
-    ComprehensiveAnalysis = None
+    IntelligentAnalyzer: Any = None
+    ComprehensiveAnalysis: Any = None
 
 try:
     from .intelligent_memory import (
@@ -27,15 +29,15 @@ try:
         Prediction,
     )
 except ImportError:
-    IntelligentMemory = None
-    CorrectionSuggestion = None
-    LearningEvent = None
-    Prediction = None
+    IntelligentMemory: Any = None
+    CorrectionSuggestion: Any = None
+    LearningEvent: Any = None
+    Prediction: Any = None
 
 try:
     from .pattern_detector import PatternDetector
 except ImportError:
-    PatternDetector = None
+    PatternDetector: Any = None
 
 __all__ = [
     "ArchitectureAnalyzer",

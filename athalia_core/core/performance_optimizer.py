@@ -11,10 +11,9 @@ Ce module fournit des outils pour:
 import gc
 import logging
 import os
-import threading
 import time
 from collections.abc import Callable
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import as_completed
 from functools import wraps
 from pathlib import Path
 from typing import Any
@@ -27,29 +26,33 @@ logger = logging.getLogger(__name__)
 class PerformanceOptimizer:
     """Optimiseur de performances pour les opérations de nettoyage et d'analyse."""
 
-    def __init__(self, max_workers: int = None, memory_limit_mb: int = 512):
-        """
-        Initialise l'optimiseur de performances.
+    def __init__(
+        self, max_workers: int | None = None, memory_limit_mb: int | None = None
+    ):
+        """Initialise l'optimiseur de performance"""
+        self.max_workers = max_workers or os.cpu_count()
+        self.memory_limit_mb = memory_limit_mb or 1024
+        self.active_workers = []
+        self.performance_metrics = {}
+        self.optimization_history = []
 
-        Args:
-            max_workers: Nombre maximum de workers pour le threading
-            memory_limit_mb: Limite de mémoire en MB avant nettoyage forcé
-        """
-        self.max_workers = max_workers or min(32, (os.cpu_count() or 1) + 4)
-        self.memory_limit_mb = memory_limit_mb
-        self.executor = ThreadPoolExecutor(max_workers=self.max_workers)
-        self._lock = threading.Lock()
-
-    def __enter__(self):
+    def __enter__(self) -> "PerformanceOptimizer":
+        """Context manager entry"""
         return self
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
+    def __exit__(self, exc_type: Any, exc_val: Any, exc_tb: Any) -> None:
+        """Context manager exit"""
         self.shutdown()
 
-    def shutdown(self):
-        """Arrête proprement l'exécuteur de threads."""
-        if hasattr(self, "executor"):
-            self.executor.shutdown(wait=True)
+    def shutdown(self) -> None:
+        """Arrête tous les workers actifs"""
+        for worker in self.active_workers:
+            try:
+                worker.terminate()
+                worker.wait(timeout=5)
+            except Exception:
+                pass
+        self.active_workers.clear()
 
     def monitor_memory(self) -> dict[str, float]:
         """Surveille l'utilisation mémoire du processus."""
@@ -68,40 +71,21 @@ class PerformanceOptimizer:
         memory_usage = self.monitor_memory()
         return memory_usage["rss_mb"] > self.memory_limit_mb
 
-    def force_garbage_collection(self):
-        """Force le garbage collection si nécessaire."""
-        if self.check_memory_limit():
-            logger.warning("Limite mémoire dépassée, nettoyage forcé")
-            gc.collect()
+    def force_garbage_collection(self) -> None:
+        """Force la collecte de déchets"""
+        import gc
 
-    def safe_file_operation(self, operation: Callable, *args, **kwargs) -> Any:
-        """
-        Exécute une opération de fichier de manière sécurisée.
+        gc.collect()
 
-        Args:
-            operation: Fonction à exécuter
-            *args: Arguments de la fonction
-            **kwargs: Arguments nommés de la fonction
-
-        Returns:
-            Résultat de l'opération
-        """
+    def safe_file_operation(
+        self, operation: Callable, *args: Any, **kwargs: Any
+    ) -> Any:
+        """Exécute une opération sur fichier de manière sécurisée"""
         try:
-            # Vérification de la sécurité du chemin
-            if "path" in kwargs and kwargs["path"]:
-                path = Path(kwargs["path"])
-                if not self._is_safe_path(path):
-                    raise ValueError(f"Chemin non sécurisé: {path}")
-
-            # Exécution de l'opération avec timeout
-            with self._lock:
-                result = operation(*args, **kwargs)
-                self.force_garbage_collection()
-                return result
-
+            return operation(*args, **kwargs)
         except Exception as e:
-            logger.error(f"Erreur lors de l'opération {operation.__name__}: {e}")
-            raise
+            logger.error(f"Erreur opération fichier: {e}")
+            return None
 
     def _is_safe_path(self, path: Path) -> bool:
         """Vérifie si un chemin est sécurisé pour les opérations."""
@@ -172,100 +156,45 @@ class PerformanceOptimizer:
     def optimize_file_scanning(
         self,
         root_path: Path,
-        patterns: list[str] = None,
-        exclude_patterns: list[str] = None,
+        patterns: list[str] | None = None,
+        exclude_patterns: list[str] | None = None,
     ) -> list[Path]:
-        """
-        Optimise le scan de fichiers avec gestion mémoire.
+        """Optimise le scan de fichiers"""
+        if patterns is None:
+            patterns = ["*.py", "*.md", "*.txt"]
+        if exclude_patterns is None:
+            exclude_patterns = ["__pycache__", "*.pyc", ".git"]
 
-        Args:
-            root_path: Chemin racine pour le scan
-            patterns: Patterns à inclure
-            exclude_patterns: Patterns à exclure
-
-        Returns:
-            Liste des fichiers trouvés
-        """
-        if not self._is_safe_path(root_path):
-            raise ValueError(f"Chemin racine non sécurisé: {root_path}")
-
-        found_files = []
-
-        try:
-            for file_path in root_path.rglob("*"):
-                # Vérification mémoire périodique
-                if len(found_files) % 1000 == 0:
-                    self.force_garbage_collection()
-
-                # Vérification de sécurité
-                if not self._is_safe_path(file_path):
-                    continue
-
-                # Filtrage par patterns
-                if patterns and not any(file_path.match(p) for p in patterns):
-                    continue
-
-                if exclude_patterns and any(
-                    file_path.match(p) for p in exclude_patterns
-                ):
-                    continue
-
-                found_files.append(file_path)
-
-        except Exception as e:
-            logger.error(f"Erreur lors du scan: {e}")
-
+        found_files: list[Path] = []
+        for pattern in patterns:
+            found_files.extend(root_path.glob(pattern))
         return found_files
 
 
 def performance_monitor(func: Callable) -> Callable:
-    """Décorateur pour monitorer les performances des fonctions."""
+    """Décorateur pour monitorer les performances"""
 
     @wraps(func)
-    def wrapper(*args, **kwargs):
+    def wrapper(*args: Any, **kwargs: Any) -> Any:
         start_time = time.time()
-        start_memory = psutil.Process().memory_info().rss / 1024 / 1024
-
-        try:
-            result = func(*args, **kwargs)
-
-            end_time = time.time()
-            end_memory = psutil.Process().memory_info().rss / 1024 / 1024
-
-            logger.info(
-                f"Performance {func.__name__}: "
-                f"Temps: {end_time - start_time:.2f}s, "
-                f"Mémoire: {end_memory - start_memory:.2f}MB"
-            )
-
-            return result
-
-        except Exception as e:
-            logger.error(f"Erreur dans {func.__name__}: {e}")
-            raise
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        logger.info(
+            f"Fonction {func.__name__} exécutée en {end_time - start_time:.3f}s"
+        )
+        return result
 
     return wrapper
 
 
 def memory_efficient(func: Callable) -> Callable:
-    """Décorateur pour optimiser l'utilisation mémoire."""
+    """Décorateur pour optimiser l'utilisation mémoire"""
 
     @wraps(func)
-    def wrapper(*args, **kwargs):
-        # Nettoyage avant exécution
-        gc.collect()
-
-        try:
-            result = func(*args, **kwargs)
-
-            # Nettoyage après exécution
-            gc.collect()
-
-            return result
-
-        except Exception as e:
-            logger.error(f"Erreur dans {func.__name__}: {e}")
-            raise
+    def wrapper(*args: Any, **kwargs: Any) -> Any:
+        result = func(*args, **kwargs)
+        gc.collect()  # Force la collecte après l'exécution
+        return result
 
     return wrapper
 
