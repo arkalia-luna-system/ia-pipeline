@@ -44,11 +44,6 @@ except ImportError:
     AutoTester: Any = None
 
 try:
-    from .utilities.cli import CLI
-except ImportError:
-    CLI: Any = None
-
-try:
     from .quality.code_linter import CodeLinter
 except ImportError:
     CodeLinter: Any = None
@@ -205,6 +200,7 @@ except ImportError:
     PluginsValidator: Any = None
 
 try:
+    # Renommer pour éviter le conflit avec PluginsValidator
     from .validation import PluginsValidator as ValidationPluginsValidator
     from .validation import SecurityManager, SecurityValidator
 except ImportError:
@@ -235,7 +231,6 @@ except ImportError:
 
 try:
     from .utilities import (
-        CLI,
         Dashboard,
         GenerationBackup,
         GenerationSimple,
@@ -245,9 +240,12 @@ try:
         ProjectImporter,
         ReadyCheck,
     )
+
+    # Importer CLI séparément pour éviter le conflit
+    from .utilities.cli import CLI as CLIUtility
     from .utilities.cli import cli
 except ImportError:
-    CLI: Any = None
+    CLIUtility: Any = None
     Dashboard: Any = None
     GenerationBackup: Any = None
     GenerationSimple: Any = None
@@ -259,16 +257,11 @@ except ImportError:
     cli: Any = None
 
 try:
-    from .quality import CodeLinter, CorrectionOptimizer
+    from .analytics import advanced_analytics as advanced_analytics_module
+    from .analytics import analytics as analytics_module
 except ImportError:
-    CodeLinter: Any = None
-    CorrectionOptimizer: Any = None
-
-try:
-    from .analytics import advanced_analytics, analytics
-except ImportError:
-    analytics: Any = None
-    advanced_analytics: Any = None
+    analytics_module: Any = None
+    advanced_analytics_module: Any = None
 
 # Exports principaux - seulement les modules qui existent
 __all__ = [
@@ -291,7 +284,7 @@ if AutoDocumenter is not None:
     __all__.append("AutoDocumenter")
 if AutoTester is not None:
     __all__.append("AutoTester")
-if CLI is not None:
+if CLIUtility is not None:
     __all__.append("CLI")
 if cli is not None:
     __all__.append("cli")
@@ -359,9 +352,9 @@ if ai_robust is not None:
 if ai_robust_enhanced is not None:
     __all__.append("ai_robust_enhanced")
 
-if analytics is not None:
+if analytics_module is not None:
     __all__.append("analytics")
-if advanced_analytics is not None:
+if advanced_analytics_module is not None:
     __all__.append("advanced_analytics")
 
 if auto_correction_advanced is not None:
@@ -397,10 +390,6 @@ if IntelligentMemory is not None:
 if PatternDetector is not None:
     __all__.append("PatternDetector")
 
-if CLI is not None:
-    __all__.append("CLI")
-if cli is not None:
-    __all__.append("cli")
 if Dashboard is not None:
     __all__.append("Dashboard")
 if GenerationBackup is not None:
