@@ -127,8 +127,12 @@ class IntelligentAnalyzer:
             analysis_date=datetime.now(),
             ast_analysis=ast_analysis,
             pattern_analysis=pattern_analysis,
-                            architecture_analysis=architecture_analysis.to_dict() if hasattr(architecture_analysis, 'to_dict') else architecture_analysis,
-                performance_analysis=performance_analysis,
+            architecture_analysis=(
+                architecture_analysis.to_dict()
+                if hasattr(architecture_analysis, "to_dict")
+                else architecture_analysis
+            ),
+            performance_analysis=performance_analysis,
             overall_score=overall_score,
             recommendations=recommendations,
             optimization_plan=optimization_plan,
