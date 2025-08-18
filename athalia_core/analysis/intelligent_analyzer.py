@@ -147,7 +147,7 @@ class IntelligentAnalyzer:
 
         return comprehensive_analysis
 
-    def _perform_ast_analysis(self, project_path: Path) -> dict[str, Any]:
+    def _perform_ast_analysis(self, project_path: str) -> dict[str, Any]:
         """Effectuer l'analyse AST de base"""
         python_files = list(project_path.rglob("*.py"))
         file_analyses = []

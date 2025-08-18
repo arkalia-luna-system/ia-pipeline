@@ -632,10 +632,10 @@ class UnifiedOrchestrator:
                 if self.ros2_validator:
                     ros2_result = self.ros2_validator.validate_package()
                     self.workflow_results["robotics"]["ros2_validation"] = {
-                        "workspace_valid": ros2_result.workspace_valid,
-                        "packages_count": len(ros2_result.packages),
-                        "issues": ros2_result.issues,
-                        "build_ready": ros2_result.build_ready,
+                        "valid": ros2_result.get("valid", False),
+                        "packages_count": len(ros2_result.get("dependencies", [])),
+                        "issues": ros2_result.get("errors", []),
+                        "build_ready": ros2_result.get("valid", False),
                     }
 
                 # Audit Reachy
