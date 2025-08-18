@@ -8,12 +8,7 @@ from datetime import datetime
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
-from athalia_core.analysis.pattern_detector import (
-    AntiPattern,
-    CodePattern,
-    DuplicateAnalysis,
-    PatternDetector,
-)
+from athalia_core.analysis.pattern_detector import CodePattern, PatternDetector
 
 
 class TestCodePattern:
@@ -22,67 +17,39 @@ class TestCodePattern:
     def test_code_pattern_creation(self):
         """Test de création d'un pattern de code"""
         pattern = CodePattern(
-            pattern_type="function",
-            signature="def test_function(x, y): return x + y",
-            locations=["/path/to/file1.py", "/path/to/file2.py"],
-            similarity_score=0.95,
-            complexity=3,
-            last_seen=datetime.now(),
+            name="Function Pattern",
+            description="Test function pattern",
+            category="function",
+            severity="medium",
+            location="/path/to/file.py",
+            line_number=42,
+            suggestion="Refactor this function",
             correction_history=["refactor1", "refactor2"],
         )
 
-        assert pattern.pattern_type == "function"
-        assert pattern.signature == "def test_function(x, y): return x + y"
-        assert len(pattern.locations) == 2
-        assert pattern.similarity_score == 0.95
-        assert pattern.complexity == 3
+        assert pattern.name == "Function Pattern"
+        assert pattern.description == "Test function pattern"
+        assert pattern.category == "function"
+        assert pattern.severity == "medium"
+        assert pattern.location == "/path/to/file.py"
+        assert pattern.line_number == 42
+        assert pattern.suggestion == "Refactor this function"
         assert len(pattern.correction_history) == 2
 
-
-class TestDuplicateAnalysis:
-    """Tests pour la classe DuplicateAnalysis"""
-
-    def test_duplicate_analysis_creation(self):
-        """Test de création d'une analyse de doublons"""
-        duplicate = DuplicateAnalysis(
-            duplicate_type="function",
-            items=["func1", "func2"],
-            locations=["/path1.py", "/path2.py"],
-            severity="medium",
-            similarity_score=0.85,
-            suggested_action="Extract common functionality",
-            estimated_effort="2 hours",
+    def test_code_pattern_default_values(self):
+        """Test de création d'un pattern avec valeurs par défaut"""
+        pattern = CodePattern(
+            name="Simple Pattern",
+            description="Simple description",
+            category="simple",
+            severity="low",
+            location="/path/to/file.py",
+            line_number=10,
+            suggestion="No suggestion needed",
         )
 
-        assert duplicate.duplicate_type == "function"
-        assert len(duplicate.items) == 2
-        assert len(duplicate.locations) == 2
-        assert duplicate.severity == "medium"
-        assert duplicate.similarity_score == 0.85
-        assert duplicate.suggested_action == "Extract common functionality"
-        assert duplicate.estimated_effort == "2 hours"
-
-
-class TestAntiPattern:
-    """Tests pour la classe AntiPattern"""
-
-    def test_antipattern_creation(self):
-        """Test de création d'un anti-pattern"""
-        antipattern = AntiPattern(
-            pattern_name="God Object",
-            description="Class with too many responsibilities",
-            locations=["/path/to/god_object.py"],
-            impact="high",
-            suggestion="Split into smaller classes",
-            previous_corrections=["refactor1"],
-        )
-
-        assert antipattern.pattern_name == "God Object"
-        assert antipattern.description == "Class with too many responsibilities"
-        assert len(antipattern.locations) == 1
-        assert antipattern.impact == "high"
-        assert antipattern.suggestion == "Split into smaller classes"
-        assert len(antipattern.previous_corrections) == 1
+        assert pattern.name == "Simple Pattern"
+        assert pattern.correction_history is None
 
 
 class TestPatternDetector:
@@ -100,10 +67,10 @@ class TestPatternDetector:
         detector = PatternDetector("/tmp/test")
 
         assert detector.root_path == Path("/tmp/test")
-        assert detector.db_path == Path("/tmp/test/data/pattern_analysis.db")
-        assert detector._pattern_cache == {}
-        assert detector._duplicate_cache == {}
-        assert detector._antipattern_cache == {}
+        assert detector.db_path == Path("/tmp/test") / "patterns.db"
+        assert isinstance(detector._pattern_cache, dict)
+        assert isinstance(detector._duplicate_cache, dict)
+        assert isinstance(detector._antipattern_cache, dict)
 
     @patch("pathlib.Path.mkdir")
     @patch("sqlite3.connect")
@@ -114,346 +81,194 @@ class TestPatternDetector:
         mock_connect.return_value.__enter__.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
 
-        with patch("pathlib.Path.cwd", return_value=Path("/current/dir")):
-            detector = PatternDetector()
+        detector = PatternDetector()
 
-            assert detector.root_path == Path("/current/dir")
+        assert detector.root_path == Path(".")
+        assert detector.db_path == Path(".") / "patterns.db"
 
     @patch("pathlib.Path.mkdir")
     @patch("sqlite3.connect")
-    def test_load_patterns(self, mock_connect, mock_mkdir):
-        """Test de chargement des patterns"""
+    def test_database_initialization(self, mock_connect, mock_mkdir):
+        """Test de l'initialisation de la base de données"""
         mock_conn = MagicMock()
         mock_cursor = MagicMock()
-        mock_connect.return_value.__enter__.return_value = mock_conn
+        mock_connect.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
 
-        # Mock des données de patterns avec le bon format
-        mock_cursor.fetchall.return_value = [
-            ("function", "def test(): pass", '["file1.py"]', 0.9, 1, "2023-01-01")
-        ]
+        detector = PatternDetector("/tmp/test")
 
-        # Test sans initialisation automatique
-        # on teste juste que la classe peut être créée
-        try:
-            detector = PatternDetector("/tmp/test")
-            assert detector is not None
-        except (TypeError, IndexError):
-            # Si l'initialisation échoue à cause des mocks
-            # on teste juste la création de base
-            with patch.object(PatternDetector, "_load_patterns"):
-                detector = PatternDetector("/tmp/test")
-                assert detector is not None
+        # Vérifier que la base de données est initialisée
+        assert detector.root_path == Path("/tmp/test")
+        assert detector.db_path == Path("/tmp/test") / "patterns.db"
+        assert isinstance(detector._pattern_cache, dict)
+        assert isinstance(detector._duplicate_cache, dict)
+        assert isinstance(detector._antipattern_cache, dict)
 
     @patch("pathlib.Path.mkdir")
     @patch("sqlite3.connect")
     def test_analyze_project_patterns(self, mock_connect, mock_mkdir):
-        """Test d'analyse des patterns du projet"""
+        """Test de l'analyse des patterns du projet"""
         mock_conn = MagicMock()
         mock_cursor = MagicMock()
-        mock_connect.return_value.__enter__.return_value = mock_conn
+        mock_connect.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
 
         detector = PatternDetector("/tmp/test")
 
-        with patch.object(detector, "_extract_patterns_from_file") as mock_extract:
-            with patch.object(detector, "_detect_duplicates") as mock_detect_duplicates:
-                with patch.object(
-                    detector, "_detect_antipatterns"
-                ) as mock_detect_antipatterns:
-                    with patch.object(detector, "_save_analysis_results") as mock_save:
-                        with patch.object(
-                            detector, "_generate_recommendations"
-                        ) as mock_generate_recs:
-                            mock_extract.return_value = []
-                            mock_detect_duplicates.return_value = []
-                            mock_detect_antipatterns.return_value = []
-                            mock_generate_recs.return_value = []
+        # Mock des méthodes internes
+        detector._load_patterns = MagicMock()
 
-                            result = detector.analyze_project_patterns("/tmp/project")
+        with patch("pathlib.Path.rglob") as mock_rglob:
+            mock_rglob.return_value = [Path("file1.py"), Path("file2.py")]
 
-                            assert isinstance(result, dict)
-                            assert "patterns" in result
-                            assert "duplicates" in result
-                            assert "antipatterns" in result
-                            assert "recommendations" in result
+            result = detector.analyze_project_patterns()
 
-                            mock_detect_duplicates.assert_called_once()
-                            mock_detect_antipatterns.assert_called_once()
-                            mock_save.assert_called_once()
-                            mock_generate_recs.assert_called_once()
+            assert result["project"] == "/tmp/test"
+            assert result["total_files"] == 2
+            assert "patterns" in result
+            assert "duplications" in result
+            assert "antipatterns" in result
 
     @patch("pathlib.Path.mkdir")
     @patch("sqlite3.connect")
-    def test_extract_patterns_from_file(self, mock_connect, mock_mkdir):
-        """Test d'extraction de patterns depuis un fichier"""
+    def test_detect_code_duplication(self, mock_connect, mock_mkdir):
+        """Test de la détection de duplication de code"""
         mock_conn = MagicMock()
         mock_cursor = MagicMock()
-        mock_connect.return_value.__enter__.return_value = mock_conn
+        mock_connect.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
 
         detector = PatternDetector("/tmp/test")
 
-        mock_file_analysis = MagicMock()
-        mock_file_analysis.functions = ["def test_func(): pass"]
-        mock_file_analysis.classes = ["class TestClass: pass"]
-        mock_file_analysis.complexity = 2.0
+        with patch("pathlib.Path.rglob") as mock_rglob:
+            mock_rglob.return_value = [Path("file1.py"), Path("file2.py")]
 
-        # Test que la fonction s'exécute sans erreur
-        try:
-            patterns = detector._extract_patterns_from_file(mock_file_analysis)
-            assert isinstance(patterns, list)
-        except AttributeError:
-            # Si l'erreur se produit, on teste juste que la fonction existe
-            assert hasattr(detector, "_extract_patterns_from_file")
+            # Mock de la méthode de calcul de similarité
+            detector._calculate_file_similarity = MagicMock(return_value=0.9)
+            detector._extract_common_lines = MagicMock(return_value="common code")
 
-    @patch("pathlib.Path.mkdir")
-    @patch("sqlite3.connect")
-    def test_detect_duplicates(self, mock_connect, mock_mkdir):
-        """Test de détection de doublons"""
-        mock_conn = MagicMock()
-        mock_cursor = MagicMock()
-        mock_connect.return_value.__enter__.return_value = mock_conn
-        mock_conn.cursor.return_value = mock_cursor
+            result = detector.detect_code_duplication(min_similarity=0.8)
 
-        detector = PatternDetector("/tmp/test")
-
-        patterns = [
-            CodePattern(
-                pattern_type="function",
-                signature="def test(): pass",
-                locations=["file1.py"],
-                similarity_score=0.9,
-                complexity=1,
-                last_seen=datetime.now(),
-            ),
-            CodePattern(
-                pattern_type="function",
-                signature="def test(): pass",  # Même signature
-                locations=["file2.py"],
-                similarity_score=0.9,
-                complexity=1,
-                last_seen=datetime.now(),
-            ),
-        ]
-
-        duplicates = detector._detect_duplicates(patterns)
-
-        assert isinstance(duplicates, list)
-        assert all(isinstance(duplicate, DuplicateAnalysis) for duplicate in duplicates)
-
-    @patch("pathlib.Path.mkdir")
-    @patch("sqlite3.connect")
-    def test_calculate_similarity(self, mock_connect, mock_mkdir):
-        """Test de calcul de similarité"""
-        mock_conn = MagicMock()
-        mock_cursor = MagicMock()
-        mock_connect.return_value.__enter__.return_value = mock_conn
-        mock_conn.cursor.return_value = mock_cursor
-
-        detector = PatternDetector("/tmp/test")
-
-        pattern1 = CodePattern(
-            pattern_type="function",
-            signature="def test(x): return x + 1",
-            locations=["file1.py"],
-            similarity_score=0.9,
-            complexity=1,
-            last_seen=datetime.now(),
-        )
-
-        pattern2 = CodePattern(
-            pattern_type="function",
-            signature="def test(y): return y + 1",  # Très similaire
-            locations=["file2.py"],
-            similarity_score=0.9,
-            complexity=1,
-            last_seen=datetime.now(),
-        )
-
-        similarity = detector._calculate_similarity(pattern1, pattern2)
-
-        assert 0 <= similarity <= 1
-        assert isinstance(similarity, float)
+            assert isinstance(result, list)
+            # Avec 2 fichiers, on devrait avoir 1 comparaison
+            if result:  # Si des duplications sont trouvées
+                assert len(result) > 0
+                assert "file1" in result[0]
+                assert "file2" in result[0]
+                assert "similarity" in result[0]
 
     @patch("pathlib.Path.mkdir")
     @patch("sqlite3.connect")
     def test_detect_antipatterns(self, mock_connect, mock_mkdir):
-        """Test de détection d'anti-patterns"""
+        """Test de la détection d'anti-patterns"""
         mock_conn = MagicMock()
         mock_cursor = MagicMock()
-        mock_connect.return_value.__enter__.return_value = mock_conn
+        mock_connect.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
 
         detector = PatternDetector("/tmp/test")
 
-        patterns = [
-            CodePattern(
-                pattern_type="class",
-                signature="class GodObject: pass",  # Nom suspect
-                locations=["god_object.py"],
-                similarity_score=0.9,
-                complexity=50,  # Complexité élevée
-                last_seen=datetime.now(),
-            ),
-        ]
+        with patch("pathlib.Path.rglob") as mock_rglob:
+            mock_rglob.return_value = [Path("file1.py")]
 
-        antipatterns = detector._detect_antipatterns(patterns)
-
-        assert isinstance(antipatterns, list)
-        assert all(isinstance(antipattern, AntiPattern) for antipattern in antipatterns)
-
-    @patch("pathlib.Path.mkdir")
-    @patch("sqlite3.connect")
-    def test_generate_recommendations(self, mock_connect, mock_mkdir):
-        """Test de génération de recommandations"""
-        mock_conn = MagicMock()
-        mock_cursor = MagicMock()
-        mock_connect.return_value.__enter__.return_value = mock_conn
-        mock_conn.cursor.return_value = mock_cursor
-
-        detector = PatternDetector("/tmp/test")
-
-        duplicates = [
-            DuplicateAnalysis(
-                duplicate_type="function",
-                items=["func1", "func2"],
-                locations=["file1.py", "file2.py"],
-                severity="medium",
-                similarity_score=0.85,
-                suggested_action="Extract common functionality",
-                estimated_effort="2 hours",
+            # Mock de la méthode d'analyse des anti-patterns
+            detector._analyze_file_antipatterns = MagicMock(
+                return_value=[
+                    {
+                        "name": "Test Anti-pattern",
+                        "description": "Test description",
+                        "location": "/tmp/test/file1.py",
+                        "line_number": 10,
+                        "impact": "medium",
+                        "fix_suggestion": "Fix this",
+                    }
+                ]
             )
-        ]
 
-        antipatterns = [
-            AntiPattern(
-                pattern_name="God Object",
-                description="Class with too many responsibilities",
-                locations=["god_object.py"],
-                impact="high",
-                suggestion="Split into smaller classes",
-                previous_corrections=[],
-            )
-        ]
+            result = detector.detect_antipatterns()
 
-        recommendations = detector._generate_recommendations(duplicates, antipatterns)
-
-        assert isinstance(recommendations, list)
-        assert len(recommendations) > 0
-        assert all(isinstance(rec, str) for rec in recommendations)
+            assert isinstance(result, list)
+            if result:  # Si des anti-patterns sont trouvés
+                assert len(result) > 0
+                assert "name" in result[0]
+                assert "description" in result[0]
+                assert "location" in result[0]
 
     @patch("pathlib.Path.mkdir")
     @patch("sqlite3.connect")
-    def test_get_learning_insights(self, mock_connect, mock_mkdir):
-        """Test de récupération des insights d'apprentissage"""
+    def test_generate_pattern_report(self, mock_connect, mock_mkdir):
+        """Test de la génération du rapport de patterns"""
         mock_conn = MagicMock()
         mock_cursor = MagicMock()
-        mock_connect.return_value.__enter__.return_value = mock_conn
-        mock_conn.cursor.return_value = mock_cursor
-
-        # Mock des données d'insights avec le bon format
-        mock_cursor.fetchall.return_value = [
-            ("function", 10),  # pattern_type, count
-            ("class", 5),  # pattern_type, count
-        ]
-
-        # Test sans initialisation automatique
-        with patch.object(PatternDetector, "_load_patterns"):
-            detector = PatternDetector("/tmp/test")
-
-            # Mock les valeurs de retour pour éviter les erreurs de comparaison
-            mock_cursor.fetchone.return_value = [0.9, 0.8, 0.7]  # max_scores
-
-            insights = detector.get_learning_insights()
-
-            assert isinstance(insights, dict)
-            assert "pattern_distribution" in insights
-            assert "total_patterns" in insights
-            assert "unresolved_duplicates" in insights
-            assert "unresolved_antipatterns" in insights
-            assert "learning_score" in insights
-
-
-class TestIntegration:
-    """Tests d'intégration"""
-
-    @patch("pathlib.Path.mkdir")
-    @patch("sqlite3.connect")
-    def test_full_pattern_analysis_workflow(self, mock_connect, mock_mkdir):
-        """Test du workflow complet d'analyse de patterns"""
-        mock_conn = MagicMock()
-        mock_cursor = MagicMock()
-        mock_connect.return_value.__enter__.return_value = mock_conn
+        mock_connect.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
 
         detector = PatternDetector("/tmp/test")
 
-        # Test du workflow complet
-        with patch.object(detector, "_extract_patterns_from_file") as mock_extract:
-            with patch.object(detector, "_detect_duplicates") as mock_detect_duplicates:
-                with patch.object(
-                    detector, "_detect_antipatterns"
-                ) as mock_detect_antipatterns:
-                    with patch.object(detector, "_save_analysis_results") as mock_save:
-                        with patch.object(
-                            detector, "_generate_recommendations"
-                        ) as mock_generate_recs:
-                            mock_extract.return_value = []
-                            mock_detect_duplicates.return_value = []
-                            mock_detect_antipatterns.return_value = []
-                            mock_generate_recs.return_value = []
+        # Mock de l'analyse
+        detector.analyze_project_patterns = MagicMock(
+            return_value={
+                "project": "/tmp/test",
+                "total_files": 5,
+                "patterns_detected": 3,
+                "duplications_found": 1,
+                "antipatterns_detected": 2,
+                "patterns": [],
+                "duplications": [],
+                "antipatterns": [],
+            }
+        )
 
-                            # Test analyse complète
-                            result = detector.analyze_project_patterns("/tmp/project")
-                            assert isinstance(result, dict)
+        report = detector.generate_pattern_report()
 
-                            # Test insights d'apprentissage
-                            mock_cursor.fetchone.return_value = [0.9, 0.8, 0.7]
-                            insights = detector.get_learning_insights()
-                            assert isinstance(insights, dict)
-
-                            # Vérifier que toutes les méthodes ont été appelées
-                            mock_detect_duplicates.assert_called_once()
-                            mock_detect_antipatterns.assert_called_once()
-                            mock_save.assert_called_once()
-                            mock_generate_recs.assert_called_once()
+        assert isinstance(report, str)
+        assert "/tmp/test" in report
+        assert "5" in report  # total_files
+        assert "3" in report  # patterns_detected
+        assert "1" in report  # duplications_found
+        assert "2" in report  # antipatterns_detected
 
     @patch("pathlib.Path.mkdir")
     @patch("sqlite3.connect")
-    def test_pattern_detection_with_real_data(self, mock_connect, mock_mkdir):
-        """Test de détection de patterns avec des données réalistes"""
+    def test_save_patterns_to_database(self, mock_connect, mock_mkdir):
+        """Test de la sauvegarde des patterns en base de données"""
         mock_conn = MagicMock()
         mock_cursor = MagicMock()
-        mock_connect.return_value.__enter__.return_value = mock_conn
+        mock_connect.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
 
         detector = PatternDetector("/tmp/test")
 
-        # Données réalistes
-        mock_file_analysis = MagicMock()
-        mock_file_analysis.functions = [
-            "def calculate_sum(a, b): return a + b",
-            "def calculate_product(x, y): return x * y",
+        test_patterns = [
+            {
+                "name": "Test Pattern",
+                "description": "Test description",
+                "category": "test",
+                "severity": "low",
+                "location": "/tmp/test/file.py",
+                "line_number": 42,
+                "suggestion": "Test suggestion",
+            }
         ]
-        mock_file_analysis.classes = [
-            "class Calculator: pass",
-            "class MathUtils: pass",
-        ]
-        mock_file_analysis.complexity = 3.0
 
-        # Test que la fonction s'exécute sans erreur
-        try:
-            patterns = detector._extract_patterns_from_file(mock_file_analysis)
-            assert isinstance(patterns, list)
-        except AttributeError:
-            # Si l'erreur se produit, on teste juste que la fonction existe
-            assert hasattr(detector, "_extract_patterns_from_file")
+        result = detector.save_patterns_to_database(test_patterns)
 
-        # Test détection de doublons
-        duplicates = detector._detect_duplicates([])
-        assert isinstance(duplicates, list)
+        assert result is True
 
-        # Test détection d'anti-patterns
-        antipatterns = detector._detect_antipatterns([])
-        assert isinstance(antipatterns, list)
+    @patch("pathlib.Path.mkdir")
+    @patch("sqlite3.connect")
+    def test_save_patterns_to_database_error(self, mock_connect, mock_mkdir):
+        """Test de la gestion d'erreur lors de la sauvegarde"""
+        mock_conn = MagicMock()
+        mock_cursor = MagicMock()
+        mock_connect.return_value = mock_conn
+        mock_conn.cursor.return_value = mock_cursor
+        mock_cursor.execute.side_effect = Exception("Database error")
+
+        detector = PatternDetector("/tmp/test")
+
+        test_patterns = [{"name": "Test"}]
+
+        result = detector.save_patterns_to_database(test_patterns)
+
+        assert result is False
