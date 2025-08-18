@@ -4,6 +4,8 @@ Athalia Dev Setup - Système d'industrialisation et d'intelligence pour projets 
 Version 2.0.0
 """
 
+from typing import Any, Optional
+
 # Version
 __version__ = "2.0.0"
 __author__ = "Athalia Team"
@@ -30,7 +32,7 @@ try:
 
     __all__.append("AdvancedAnalytics")
 except ImportError:
-    AdvancedAnalytics = None
+    pass
 
 # Automation
 try:
@@ -38,28 +40,28 @@ try:
 
     __all__.append("AutoCICD")
 except ImportError:
-    AutoCICD = None
+    pass
 
 try:
     from .automation.auto_cleaner import AutoCleaner
 
     __all__.append("AutoCleaner")
 except ImportError:
-    AutoCleaner = None
+    pass
 
 try:
     from .automation.auto_documenter import AutoDocumenter
 
     __all__.append("AutoDocumenter")
 except ImportError:
-    AutoDocumenter = None
+    pass
 
 try:
     from .automation.auto_tester import AutoTester
 
     __all__.append("AutoTester")
 except ImportError:
-    AutoTester = None
+    pass
 
 # Quality
 try:
@@ -67,14 +69,14 @@ try:
 
     __all__.append("CodeLinter")
 except ImportError:
-    CodeLinter = None
+    pass
 
 try:
     from .quality.correction_optimizer import CorrectionOptimizer
 
     __all__.append("CorrectionOptimizer")
 except ImportError:
-    CorrectionOptimizer = None
+    pass
 
 # Core
 try:
@@ -82,22 +84,21 @@ try:
 
     __all__.append("ConfigManager")
 except ImportError:
-    ConfigManager = None
+    pass
 
 try:
     from .core.cache_manager import CacheManager
 
     __all__.append("CacheManager")
 except ImportError:
-    CacheManager = None
+    pass
 
 try:
     from .core.error_codes import ErrorCode, ErrorSeverity
 
     __all__.extend(["ErrorCode", "ErrorSeverity"])
 except ImportError:
-    ErrorCode = None
-    ErrorSeverity = None
+    pass
 
 try:
     from .core.error_handling import (
@@ -111,18 +112,14 @@ try:
         ["AthaliaError", "ErrorHandler", "handle_error", "raise_athalia_error"]
     )
 except ImportError:
-    AthaliaError = None
-    ErrorHandler = None
-    handle_error = None
-    raise_athalia_error = None
+    pass
 
 try:
     from .core.generation import generate_blueprint_mock, generate_project
 
     __all__.extend(["generate_blueprint_mock", "generate_project"])
 except ImportError:
-    generate_blueprint_mock = None
-    generate_project = None
+    pass
 
 try:
     from .core.main import (
@@ -136,35 +133,30 @@ try:
 
     __all__.extend(
         [
-            "log_main",
             "main",
             "menu",
             "running",
             "security_audit_project",
             "signal_handler",
+            "log_main",
         ]
     )
 except ImportError:
-    log_main = None
-    main = None
-    menu = None
-    running = None
-    security_audit_project = None
-    signal_handler = None
+    pass
 
 try:
     from .core.performance_analyzer import PerformanceAnalyzer
 
     __all__.append("PerformanceAnalyzer")
 except ImportError:
-    PerformanceAnalyzer = None
+    pass
 
 try:
     from .core.unified_orchestrator import UnifiedOrchestrator
 
     __all__.append("UnifiedOrchestrator")
 except ImportError:
-    UnifiedOrchestrator = None
+    pass
 
 # I18n
 try:
@@ -172,8 +164,7 @@ try:
 
     __all__.extend(["en", "fr"])
 except ImportError:
-    en = None
-    fr = None
+    pass
 
 # Templates
 try:
@@ -181,8 +172,7 @@ try:
 
     __all__.extend(["artistic_templates", "base_templates"])
 except ImportError:
-    artistic_templates = None
-    base_templates = None
+    pass
 
 # Classification
 try:
@@ -190,8 +180,7 @@ try:
 
     __all__.extend(["project_classifier", "project_types"])
 except ImportError:
-    project_classifier = None
-    project_types = None
+    pass
 
 # AI
 try:
@@ -199,8 +188,7 @@ try:
 
     __all__.extend(["ai_robust", "ai_robust_enhanced"])
 except ImportError:
-    ai_robust = None
-    ai_robust_enhanced = None
+    pass
 
 # Advanced modules
 try:
@@ -214,22 +202,22 @@ try:
         ["auto_correction_advanced", "dashboard_unified", "user_profiles_advanced"]
     )
 except ImportError:
-    auto_correction_advanced = None
-    dashboard_unified = None
-    user_profiles_advanced = None
+    pass
 
 # Agents
 try:
-    from .agents import ath_context_prompt, audit_agent, context_prompt, unified_agent
+    from .agents import (
+        ath_context_prompt,
+        audit_agent,
+        context_prompt,
+        unified_agent,
+    )
 
     __all__.extend(
         ["ath_context_prompt", "audit_agent", "context_prompt", "unified_agent"]
     )
 except ImportError:
-    ath_context_prompt = None
-    audit_agent = None
-    context_prompt = None
-    unified_agent = None
+    pass
 
 # Distillation
 try:
@@ -257,14 +245,7 @@ try:
         ]
     )
 except ImportError:
-    adaptive_distillation = None
-    audit_distiller = None
-    code_genetics = None
-    correction_distiller = None
-    multimodal_distiller = None
-    predictive_cache = None
-    quality_scorer = None
-    response_distiller = None
+    pass
 
 # Robotics
 try:
@@ -272,49 +253,51 @@ try:
 
     __all__.append("ROS2Validator")
 except ImportError:
-    ROS2Validator = None
+    pass
 
 # Plugins
 try:
     from .plugins import (
-        ExportDockerPlugin,
-        HelloPlugin,
-        PluginsManager,
-        PluginsValidator,
+        docker_info,
+        docker_run,
+        hello_info,
+        hello_run,
+        list_plugins,
+        load_plugin,
+        run_all_plugins,
+        validate_plugin,
     )
 
     __all__.extend(
-        ["ExportDockerPlugin", "HelloPlugin", "PluginsManager", "PluginsValidator"]
+        [
+            "docker_run",
+            "docker_info",
+            "hello_run",
+            "hello_info",
+            "list_plugins",
+            "load_plugin",
+            "run_all_plugins",
+            "validate_plugin",
+        ]
     )
 except ImportError:
-    ExportDockerPlugin = None
-    HelloPlugin = None
-    PluginsManager = None
-    PluginsValidator = None
+    pass
 
 # Validation
 try:
-    from .validation import SecurityValidator
+    from .validation import SecurityManager, SecurityValidator
 
-    __all__.append("SecurityValidator")
+    __all__.extend(["SecurityValidator", "SecurityManager"])
 except ImportError:
-    SecurityValidator = None
-
-try:
-    from .validation.security_validator import SecurityManager
-
-    __all__.append("SecurityManager")
-except ImportError:
-    SecurityManager = None
+    pass
 
 # Autocomplete
 try:
-    from .autocomplete import AutocompleteEngine, AutocompleteServer
+    from .autocomplete import AutocompleteEngine, autocomplete_app
 
-    __all__.extend(["AutocompleteEngine", "AutocompleteServer"])
+    __all__.extend(["AutocompleteEngine", "autocomplete_app"])
 except ImportError:
-    AutocompleteEngine = None
-    AutocompleteServer = None
+    pass
 
 # Analysis
 try:
@@ -336,11 +319,7 @@ try:
         ]
     )
 except ImportError:
-    ArchitectureAnalyzer = None
-    ASTAnalyzer = None
-    IntelligentAnalyzer = None
-    IntelligentMemory = None
-    PatternDetector = None
+    pass
 
 # Utilities
 try:
@@ -368,21 +347,14 @@ try:
         ]
     )
 except ImportError:
-    Dashboard = None
-    GenerationBackup = None
-    GenerationSimple = None
-    LoggerAdvanced = None
-    MultiFileEditor = None
-    Onboarding = None
-    ProjectImporter = None
-    ReadyCheck = None
+    pass
 
 try:
-    from .utilities.cli import CLI
+    from .utilities.cli import cli
 
     __all__.append("CLI")
 except ImportError:
-    CLI = None
+    pass
 
 # Analytics
 try:
@@ -390,5 +362,4 @@ try:
 
     __all__.extend(["analytics", "advanced_analytics"])
 except ImportError:
-    advanced_analytics = None
-    analytics = None
+    pass

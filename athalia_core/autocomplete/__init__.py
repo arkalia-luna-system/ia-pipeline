@@ -9,11 +9,11 @@ except ImportError:
     AutocompleteEngine = None
 
 try:
-    from .autocomplete_server import app as AutocompleteServer
+    from .autocomplete_server import app as autocomplete_app
 except ImportError:
-    AutocompleteServer = None
+    autocomplete_app = None
 
 __all__ = [
     "AutocompleteEngine",
-    "AutocompleteServer",
+    "autocomplete_app",
 ]
