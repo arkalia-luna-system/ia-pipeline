@@ -312,9 +312,8 @@ def generate_requirements(blueprint: dict, project_path: Path | None = None) -> 
 
 def save_blueprint(blueprint: dict, outdir):
     """Sauvegarde un blueprint dans un fichier YAML."""
+    import yaml  # type: ignore
     from pathlib import Path
-
-    import yaml
 
     outdir = Path(outdir)
     outdir.mkdir(parents=True, exist_ok=True)

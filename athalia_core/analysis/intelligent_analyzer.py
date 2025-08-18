@@ -66,7 +66,7 @@ class IntelligentAnalyzer:
             logger.warning(
                 "PerformanceAnalyzer non disponible - fonctionnalités de performance limitées"
             )
-            self.performance_analyzer = None
+            self.performance_analyzer: Any = None
 
         logger.info(f"🧠 Intelligent Analyzer initialisé dans {self.root_path}")
 
@@ -74,8 +74,8 @@ class IntelligentAnalyzer:
         self, project_path: str = None
     ) -> ComprehensiveAnalysis:
         """Analyser un projet de manière complète avec tous les modules"""
-        project_path = Path(project_path or str(self.root_path))
-        project_name = project_path.name
+        project_path_obj = Path(project_path or str(self.root_path))
+        project_name = project_path_obj.name
 
         logger.info(f"🧠 Analyse complète du projet: {project_name}")
 
@@ -85,7 +85,7 @@ class IntelligentAnalyzer:
 
         # 2. Analyse des patterns et doublons
         logger.info(" Étape 2/4: Analyse des patterns et doublons...")
-        pattern_analysis = self.pattern_detector.analyze_project_patterns(project_path)
+        pattern_analysis = self.pattern_detector.analyze_project_patterns(str(project_path_obj))
 
         # 3. Analyse d'architecture
         logger.info("🏗 Étape 3/4: Analyse d'architecture...")
@@ -95,7 +95,7 @@ class IntelligentAnalyzer:
         logger.info("⚡ Étape 4/4: Analyse de performance...")
         if self.performance_analyzer:
             performance_analysis = (
-                self.performance_analyzer.analyze_project_performance(str(project_path))
+                self.performance_analyzer.analyze_project_performance(str(project_path_obj))
             )
         else:
             performance_analysis = {
@@ -149,7 +149,8 @@ class IntelligentAnalyzer:
 
     def _perform_ast_analysis(self, project_path: str) -> dict[str, Any]:
         """Effectuer l'analyse AST de base"""
-        python_files = list(project_path.rglob("*.py"))
+        project_path_obj = Path(project_path)
+        python_files = list(project_path_obj.rglob("*.py"))
         file_analyses = []
 
         for py_file in python_files:
@@ -320,7 +321,7 @@ class IntelligentAnalyzer:
         performance_analysis: Any,
     ) -> dict[str, Any]:
         """Créer un plan d'optimisation global"""
-        plan = {
+        plan: dict[str, Any] = {
             "priority_tasks": [],
             "medium_priority_tasks": [],
             "low_priority_tasks": [],

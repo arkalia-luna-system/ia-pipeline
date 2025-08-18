@@ -7,6 +7,7 @@ Gestion des modèles IA avec fallback intelligent et gestion d'erreurs avancée
 import logging
 import subprocess
 from enum import Enum
+from typing import Any
 
 import requests
 
@@ -18,8 +19,8 @@ try:
     )
 except ImportError:
     # Fallback pour les tests
-    SecurityError = Exception
-    validate_and_run = subprocess.run
+    SecurityError: type[Exception] = Exception  # type: ignore
+    validateand_run: Any = subprocess.run  # type: ignore
 
 logger = logging.getLogger(__name__)
 

@@ -515,7 +515,7 @@ class ArchitectureAnalyzer:
         """Générer des recommandations de coordination intelligente"""
         optimization_plan = self.get_optimization_plan()
 
-        coordination_plan = {
+        coordination_plan: dict[str, Any] = {
             "priority_tasks": [],
             "parallel_tasks": [],
             "dependencies": [],
