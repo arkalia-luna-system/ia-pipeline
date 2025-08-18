@@ -20,7 +20,7 @@ class PluginValidator:
 
     def __init__(self, plugins_dir: str = "plugins"):
         self.plugins_dir = Path(plugins_dir)
-        self.validation_results: dict[str, list[str]] = {
+        self.validation_results: dict[str, Any] = {
             "valid_plugins": [],
             "invalid_plugins": [],
             "warnings": [],

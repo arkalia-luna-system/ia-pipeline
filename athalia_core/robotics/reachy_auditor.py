@@ -15,7 +15,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 
-import yaml
+import yaml  # type: ignore
 
 logger = logging.getLogger(__name__)
 

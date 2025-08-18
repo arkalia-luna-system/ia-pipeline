@@ -11,7 +11,7 @@ try:
     from .export_docker_plugin import run as docker_run
 
     ExportDockerPlugin: type[Any] = type(
-        "ExportDockerPlugin",
+        "ExportDockerPluginMain",
         (),
         {"run": staticmethod(docker_run), "get_info": staticmethod(docker_info)},
     )
@@ -23,7 +23,7 @@ try:
     from .hello_plugin import run as hello_run
 
     HelloPlugin: type[Any] = type(
-        "HelloPlugin",
+        "HelloPluginMain",
         (),
         {"run": staticmethod(hello_run), "get_info": staticmethod(hello_info)},
     )

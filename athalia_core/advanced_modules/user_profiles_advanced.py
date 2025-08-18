@@ -22,8 +22,8 @@ class ProfilUtilisateur:
         self.preferences = preferences or {}
         self.date_creation = datetime.now()
         self.derniere_connexion = datetime.now()
-        self.projets_consultes = []
-        self.actions_frequentes = {}
+        self.projets_consultes: list[str] = []
+        self.actions_frequentes: dict[str, int] = {}
 
     def to_dict(self) -> dict[str, Any]:
         """Conversion en dictionnaire"""

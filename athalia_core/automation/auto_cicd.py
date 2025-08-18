@@ -71,7 +71,7 @@ class AutoCICD:
 
     def _detect_languages(self) -> list[str]:
         """Détection des langages du projet"""
-        languages = set()
+        languages: set[str] = set()
         if self.project_path is None:
             return list(languages)
 
@@ -124,7 +124,7 @@ class AutoCICD:
 
     def _find_entry_points(self) -> list[str]:
         """Trouve les points dentrée du projet"""
-        entry_points = []
+        entry_points: list[str] = []
         if self.project_path is None:
             return entry_points
 

@@ -64,7 +64,7 @@ class ErrorHandler:
     def __init__(self, log_file: str | None = None):
         self.log_file = log_file
         self.error_count = 0
-        self.critical_errors = []
+        self.critical_errors: list[Any] = []
         self.error_callbacks: dict[ErrorCode, Callable] = {}
 
         # Configuration du logging
@@ -80,7 +80,7 @@ class ErrorHandler:
         console_handler.setFormatter(logging.Formatter(log_format))
 
         # Handler pour fichier si spécifié
-        handlers = [console_handler]
+        handlers: list[Any] = [console_handler]
         if self.log_file:
             # Créer le dossier logs s'il n'existe pas
             log_dir = Path(self.log_file).parent

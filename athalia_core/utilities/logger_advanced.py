@@ -29,9 +29,9 @@ class AthaliaLogger:
         self.archive_dir.mkdir(exist_ok=True)
 
         # Configuration des loggers
-        self.loggers = {}
-        self.metrics = defaultdict(deque)
-        self.performance_data = {}
+        self.loggers: dict[str, logging.Logger] = {}
+        self.metrics: defaultdict[str, deque] = defaultdict(deque)
+        self.performance_data: dict[str, Any] = {}
 
         # Initialiser les loggers
         self._setup_loggers()

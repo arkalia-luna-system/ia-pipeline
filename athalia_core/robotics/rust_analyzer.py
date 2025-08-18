@@ -20,7 +20,7 @@ except ImportError:
     def validateand_run(command: list[str], **kwargs: Any) -> Any:
         return subprocess.run(command, **kwargs)
 
-    class SecurityError(Exception):
+    class SecurityErrorFallback(Exception):
         pass
 
 

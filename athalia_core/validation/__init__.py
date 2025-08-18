@@ -3,23 +3,25 @@ Module de validation et sécurité pour Athalia
 Validation des plugins, sécurité et audit
 """
 
+from typing import Any
+
 try:
-    from .plugins_validator import PluginsValidator
+    from .plugins_validator import PluginValidator
 except ImportError:
-    PluginsValidator = None
+    PluginValidator: type[Any] = type("PluginValidator", (), {})
 
 try:
     from .security_validator import SecurityValidator
 except ImportError:
-    SecurityValidator = None
+    SecurityValidator: type[Any] = type("SecurityValidator", (), {})
 
 try:
-    from .security import SecurityManager
+    from .security_validator import SecurityManager
 except ImportError:
-    SecurityManager = None
+    SecurityManager: type[Any] = type("SecurityManager", (), {})
 
 __all__ = [
-    "PluginsValidator",
+    "PluginValidator",
     "SecurityValidator",
     "SecurityManager",
 ]

@@ -13,7 +13,7 @@ from typing import Any
 
 # Import conditionnel pour éviter les dépendances
 try:
-    import yaml
+    import yaml  # type: ignore
 except ImportError:
     yaml = None
 
@@ -852,6 +852,12 @@ Consultez la documentation complète dans le dossier `docs/`.
                 for method in class_info.get("methods", []):
                     api_docs += f"- `{method}()`\n"
                 api_docs += "\n"
+            elif isinstance(class_info, str):
+                api_docs += f"""### {class_info}
+
+Aucune description disponible
+
+"""
 
         api_docs += f"""## {translations["functions"]}
 
@@ -869,6 +875,12 @@ Consultez la documentation complète dans le dossier `docs/`.
                         f"**{translations['parameters']}:** "
                         f"{', '.join(func_info['args'])}\n\n"
                     )
+            elif isinstance(func_info, str):
+                api_docs += f"""### {func_info}
+
+Aucune description disponible
+
+"""
 
         return api_docs
 

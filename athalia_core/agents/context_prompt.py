@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Module de gestion des prompts de contexte pour Athalia
-Génération et validation des prompts contextuels
+Module de gestion des prompts contextuels pour Athalia
+Analyse sémantique et génération de prompts adaptés
 """
 
 import logging
@@ -10,17 +10,25 @@ import re
 import sys
 import tempfile
 from datetime import datetime
+from typing import Any
 
-import yaml
+try:
+    import yaml  # type: ignore
+except ImportError:
+    yaml = None
 
 # Import du validateur de sécurité
 try:
-    from athalia_core.validation.security import SecurityError, validate_and_run
+    from athalia_core.validation.security_validator import (
+        SecurityError,
+        validateand_run,
+    )
 except ImportError:
     # Fallback pour les tests
-    SecurityError = Exception
+    class SecurityError(Exception):
+        pass
 
-    def validate_and_run(*args, **kwargs):
+    def validateand_run(*args: Any, **kwargs: Any) -> Any:
         """Fonction de fallback pour les tests"""
         return None
 
@@ -186,9 +194,7 @@ def detect_prompt_semantic(filepath):
             "mistral",
             f"[INST] {system_prompt} \n\nContenu:\n{content}\n[/INST]",
         ]
-        result = validate_and_run(
-            ollama_cmd, capture_output=True, text=True, timeout=20
-        )
+        result = validateand_run(ollama_cmd, capture_output=True, text=True, timeout=20)
         answer = result.stdout.strip().split("\n")[-1].strip()
         for p in PROMPTS:
             if p["name"].lower() in answer.lower():
