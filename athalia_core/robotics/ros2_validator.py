@@ -15,12 +15,16 @@ from typing import Any
 try:
     from athalia_core.validation.security_validator import (
         SecurityError,
-        validate_and_run,
+        validateand_run,
     )
 except ImportError:
     # Fallback pour les tests
-    SecurityError = Exception
-    validate_and_run = subprocess.run
+    class SecurityError(Exception):
+        pass
+
+    def validateand_run(command: list[str], **kwargs: Any) -> Any:
+        return subprocess.run(command, **kwargs)
+
 
 logger = logging.getLogger(__name__)
 
@@ -30,7 +34,7 @@ class ROS2Validator:
 
     def __init__(self, project_path: str = "."):
         self.project_path = Path(project_path)
-        self.validation_results = {
+        self.validation_results: dict[str, Any] = {
             "valid": True,
             "errors": [],
             "warnings": [],
@@ -82,9 +86,9 @@ class ROS2Validator:
                 missing_required.append(file)
 
         if missing_required:
-            self.validation_results["errors"].append(
-                f"Fichiers requis manquants: {missing_required}"
-            )
+            errors = self.validation_results.get("errors", [])
+            if isinstance(errors, list):
+                errors.append(f"Fichiers requis manquants: {missing_required}")
             return False
 
         return True
@@ -112,40 +116,48 @@ class ROS2Validator:
                     missing_elements.append(element)
 
             if missing_elements:
-                self.validation_results["errors"].append(
-                    f"Éléments requis manquants dans package.xml: {missing_elements}"
-                )
+                errors = self.validation_results.get("errors", [])
+                if isinstance(errors, list):
+                    errors.append(
+                        f"Éléments requis manquants dans package.xml: {missing_elements}"
+                    )
                 return False
 
             # Extraire les métadonnées
-            self.validation_results["metadata"] = {
-                "name": root.find("name").text,
-                "version": root.find("version").text,
-                "description": root.find("description").text,
-                "maintainer": root.find("maintainer").text,
-                "license": root.find("license").text,
-            }
+            name_elem = root.find("name")
+            version_elem = root.find("version")
+            description_elem = root.find("description")
+            maintainer_elem = root.find("maintainer")
+            license_elem = root.find("license")
 
-            # Extraire les dépendances
-            dependencies = []
-            for dep in root.findall(".//depend"):
-                dependencies.append(dep.text)
-            for dep in root.findall(".//build_depend"):
-                dependencies.append(dep.text)
-            for dep in root.findall(".//exec_depend"):
-                dependencies.append(dep.text)
-
-            self.validation_results["dependencies"] = list(set(dependencies))
+            if all(
+                [
+                    name_elem,
+                    version_elem,
+                    description_elem,
+                    maintainer_elem,
+                    license_elem,
+                ]
+            ):
+                self.validation_results["metadata"] = {
+                    "name": name_elem.text or "",
+                    "version": version_elem.text or "",
+                    "description": description_elem.text or "",
+                    "maintainer": maintainer_elem.text or "",
+                    "license": license_elem.text or "",
+                }
 
             return True
 
         except ET.ParseError as e:
-            self.validation_results["errors"].append(f"Erreur parsing package.xml: {e}")
+            errors = self.validation_results.get("errors", [])
+            if isinstance(errors, list):
+                errors.append(f"Erreur parsing package.xml: {e}")
             return False
         except Exception as e:
-            self.validation_results["errors"].append(
-                f"Erreur validation package.xml: {e}"
-            )
+            errors = self.validation_results.get("errors", [])
+            if isinstance(errors, list):
+                errors.append(f"Erreur validation package.xml: {e}")
             return False
 
     def _validate_setup_py(self) -> bool:
@@ -276,7 +288,7 @@ class ROS2Validator:
         """Vérifie les dépendances du package"""
         try:
             # Vérifier avec rosdep
-            result = validate_and_run(
+            result = validateand_run(
                 [
                     "rosdep",
                     "check",

@@ -457,7 +457,7 @@ class ConfigManager:
 
     def resolve_environment_variables(self, config: dict[str, Any]) -> dict[str, Any]:
         """Résout les variables d'environnement dans une configuration"""
-        resolved = {}
+        resolved: dict[str, Any] = {}
 
         for key, value in config.items():
             if isinstance(value, str) and "${" in value and "}" in value:

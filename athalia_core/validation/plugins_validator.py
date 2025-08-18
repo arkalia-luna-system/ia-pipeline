@@ -10,7 +10,7 @@ import logging
 from pathlib import Path
 from typing import Any
 
-import yaml
+import yaml  # type: ignore
 
 logger = logging.getLogger(__name__)
 
@@ -20,7 +20,7 @@ class PluginValidator:
 
     def __init__(self, plugins_dir: str = "plugins"):
         self.plugins_dir = Path(plugins_dir)
-        self.validation_results = {
+        self.validation_results: dict[str, list[str]] = {
             "valid_plugins": [],
             "invalid_plugins": [],
             "warnings": [],

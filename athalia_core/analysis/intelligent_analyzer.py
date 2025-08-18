@@ -85,7 +85,9 @@ class IntelligentAnalyzer:
 
         # 2. Analyse des patterns et doublons
         logger.info(" Étape 2/4: Analyse des patterns et doublons...")
-        pattern_analysis = self.pattern_detector.analyze_project_patterns(str(project_path_obj))
+        pattern_analysis = self.pattern_detector.analyze_project_patterns(
+            str(project_path_obj)
+        )
 
         # 3. Analyse d'architecture
         logger.info("🏗 Étape 3/4: Analyse d'architecture...")
@@ -95,7 +97,9 @@ class IntelligentAnalyzer:
         logger.info("⚡ Étape 4/4: Analyse de performance...")
         if self.performance_analyzer:
             performance_analysis = (
-                self.performance_analyzer.analyze_project_performance(str(project_path_obj))
+                self.performance_analyzer.analyze_project_performance(
+                    str(project_path_obj)
+                )
             )
         else:
             performance_analysis = {

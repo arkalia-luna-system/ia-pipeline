@@ -279,7 +279,7 @@ if __name__ == "__main__":
         """Exécute les tests générés automatiquement"""
         logger.info("🚀 Exécution des tests générés")
 
-        results = {
+        results: dict[str, Any] = {
             "total_tests": 0,
             "passed": 0,
             "failed": 0,

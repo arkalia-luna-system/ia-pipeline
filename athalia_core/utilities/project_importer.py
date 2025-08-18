@@ -124,12 +124,12 @@ class ProjectImporter:
 
         # Retourner le type avec le score le plus élevé
         if scores and any(v > 0 for v in scores.values()):
-            return max(scores, key=scores.get)
+            return max(scores, key=lambda k: scores[k])
         return "generic"
 
     def _analyze_code_quality(self, project_path: str) -> dict[str, Any]:
         """Analyse la qualité du code."""
-        analysis = {
+        analysis: dict[str, Any] = {
             "has_tests": False,
             "has_docs": False,
             "has_requirements": False,

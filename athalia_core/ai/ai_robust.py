@@ -19,8 +19,12 @@ try:
     )
 except ImportError:
     # Fallback pour les tests
-    SecurityError: type[Exception] = Exception  # type: ignore
-    validateand_run: Any = subprocess.run  # type: ignore
+    class SecurityError(Exception):
+        pass
+
+    def validateand_run(command: list[str], **kwargs: Any) -> Any:
+        return subprocess.run(command, **kwargs)
+
 
 logger = logging.getLogger(__name__)
 

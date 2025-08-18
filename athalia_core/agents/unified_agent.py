@@ -5,13 +5,15 @@ Agent unifié pour Athalia/Arkalia
 - Coordonne les différents agents spécialisés
 """
 
+from typing import Any
+
 
 class UnifiedAgent:
     """Agent unifié pour différents types de tâches"""
 
     def __init__(self, agent_type: str = "general") -> None:
         self.agent_type = agent_type
-        self.context = {}
+        self.context: dict[str, Any] = {}
 
     def act(self, prompt: str, responses: list[str] | None = None) -> str:
         """Exécute une action basée sur le prompt"""
@@ -41,7 +43,7 @@ class AuditAgent:
     """Agent spécialisé dans l'audit"""
 
     def __init__(self) -> None:
-        self.audit_results = []
+        self.audit_results: list[Any] = []
 
     def act(self, prompt: str) -> str:
         """Exécute un audit basé sur le prompt"""
@@ -52,7 +54,7 @@ class CorrectionAgent:
     """Agent spécialisé dans la correction"""
 
     def __init__(self) -> None:
-        self.corrections = []
+        self.corrections: list[Any] = []
 
     def act(self, prompt: str) -> str:
         """Exécute une correction basée sur le prompt"""
@@ -63,7 +65,7 @@ class SynthesisAgent:
     """Agent spécialisé dans la synthèse"""
 
     def __init__(self) -> None:
-        self.syntheses = []
+        self.syntheses: list[Any] = []
 
     def act(self, prompt: str) -> str:
         """Exécute une synthèse basée sur le prompt"""
@@ -74,7 +76,7 @@ class QwenAgent:
     """Agent spécialisé Qwen"""
 
     def __init__(self) -> None:
-        self.qwen_context = {}
+        self.qwen_context: dict[str, Any] = {}
 
     def act(self, prompt: str) -> str:
         """Exécute une action Qwen basée sur le prompt"""
@@ -95,4 +97,4 @@ if __name__ == "__main__":
     print(f"Audit: {audit.act(prompt)}")
     print(f"Correction: {correction.act(prompt)}")
     print(f"Qwen: {qwen.act(prompt)}")
-    print(f"Synthèse: {synth.act(prompt, ['Réponse 1', 'Réponse 2'])}")
+    print(f"Synthèse: {synth.act(prompt)}")

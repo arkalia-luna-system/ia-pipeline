@@ -12,7 +12,7 @@ try:
     )
 except ImportError:
     # Fallback pour les tests
-    def validateand_run(command, **kwargs):
+    def validateand_run(command: list[str], **kwargs: Any) -> Any:
         return subprocess.run(command, **kwargs)
 
     class SecurityError(Exception):

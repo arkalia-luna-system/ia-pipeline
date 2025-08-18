@@ -14,7 +14,10 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-import yaml
+try:
+    import yaml  # type: ignore
+except ImportError:
+    yaml = None
 
 from .ast_analyzer import ASTAnalyzer, FileAnalysis
 

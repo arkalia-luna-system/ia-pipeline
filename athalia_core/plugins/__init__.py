@@ -16,7 +16,7 @@ try:
         {"run": staticmethod(docker_run), "get_info": staticmethod(docker_info)},
     )
 except ImportError:
-    ExportDockerPlugin: type[Any] = type("ExportDockerPlugin", (), {})
+    ExportDockerPlugin: type[Any] = type("ExportDockerPluginFallback", (), {})
 
 try:
     from .hello_plugin import get_info as hello_info
@@ -28,7 +28,7 @@ try:
         {"run": staticmethod(hello_run), "get_info": staticmethod(hello_info)},
     )
 except ImportError:
-    HelloPlugin: type[Any] = type("HelloPlugin", (), {})
+    HelloPlugin: type[Any] = type("HelloPluginFallback", (), {})
 
 try:
     from .plugins_manager import list_plugins, load_plugin, run_all_plugins
@@ -43,7 +43,7 @@ try:
         },
     )
 except ImportError:
-    PluginsManager: type[Any] = type("PluginsManager", (), {})
+    PluginsManager: type[Any] = type("PluginsManagerFallback", (), {})
 
 try:
     from .plugins_validator import validate_plugin
@@ -52,7 +52,7 @@ try:
         "PluginsValidator", (), {"validate_plugin": staticmethod(validate_plugin)}
     )
 except ImportError:
-    PluginsValidator: type[Any] = type("PluginsValidator", (), {})
+    PluginsValidator: type[Any] = type("PluginsValidatorFallback", (), {})
 
 __all__ = [
     "ExportDockerPlugin",

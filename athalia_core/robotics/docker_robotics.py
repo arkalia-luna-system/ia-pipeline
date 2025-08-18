@@ -9,19 +9,27 @@ import os
 import subprocess
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
-import yaml
+try:
+    import yaml  # type: ignore
+except ImportError:
+    yaml = None
 
 # Import du validateur de sécurité
 try:
     from athalia_core.validation.security_validator import (
         SecurityError,
-        validate_and_run,
+        validateand_run,
     )
 except ImportError:
     # Fallback pour les tests
-    SecurityError = Exception
-    validate_and_run = subprocess.run
+    class SecurityError(Exception):
+        pass
+
+    def validateand_run(command: list[str], **kwargs: Any) -> Any:
+        return subprocess.run(command, **kwargs)
+
 
 logger = logging.getLogger(__name__)
 
@@ -355,7 +363,7 @@ htmlcov/
             if service:
                 cmd.append(service)
 
-            result = validate_and_run(
+            result = validateand_run(
                 cmd, cwd=self.project_path, capture_output=True, text=True
             )
 

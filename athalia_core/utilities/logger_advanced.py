@@ -37,6 +37,7 @@ class AthaliaLogger:
         self._setup_loggers()
 
         # Thread de nettoyage automatique
+        self._cleanup_active = True
         self.cleanup_thread = threading.Thread(target=self._cleanup_worker, daemon=True)
         self.cleanup_thread.start()
 
