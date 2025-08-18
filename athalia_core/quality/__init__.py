@@ -1,16 +1,14 @@
 """Module quality pour Athalia"""
 
-from typing import Any
-
 try:
     from .code_linter import CodeLinter
 except ImportError:
-    CodeLinter: type[Any] = type("CodeLinterFallback", (), {})
+    CodeLinter = None
 
 try:
     from .correction_optimizer import CorrectionOptimizer
 except ImportError:
-    CorrectionOptimizer: type[Any] = type("CorrectionOptimizerFallback", (), {})
+    CorrectionOptimizer = None
 
 __all__ = [
     "CodeLinter",

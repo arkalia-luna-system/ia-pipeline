@@ -3,17 +3,15 @@ Module d'autocomplétion pour Athalia
 Moteur et serveur d'autocomplétion intelligente
 """
 
-from typing import Any
-
 try:
     from .autocomplete_engine import AutocompleteEngine
 except ImportError:
-    AutocompleteEngine: type[Any] = type("AutocompleteEngineFallback", (), {})
+    AutocompleteEngine = None
 
 try:
     from .autocomplete_server import app as AutocompleteServer
 except ImportError:
-    AutocompleteServer: type[Any] = type("AutocompleteServerFallback", (), {})
+    AutocompleteServer = None
 
 __all__ = [
     "AutocompleteEngine",
