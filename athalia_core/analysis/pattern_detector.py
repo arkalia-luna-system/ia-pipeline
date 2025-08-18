@@ -24,20 +24,20 @@ class CodePattern:
     location: str
     line_number: int
     suggestion: str
-    correction_history: Optional[List[str]] = None
+    correction_history: list[str] | None = None
 
 
 class PatternDetector:
     """Détecteur de patterns de code intelligent"""
 
-    def __init__(self, root_path: Optional[str] = None):
+    def __init__(self, root_path: str | None = None):
         self.root_path = Path(root_path) if root_path else Path(".")
         self.db_path = self.root_path / "patterns.db"
 
         # Initialiser les caches
-        self._pattern_cache: Dict[str, Any] = {}
-        self._duplicate_cache: Dict[str, Any] = {}
-        self._antipattern_cache: Dict[str, Any] = {}
+        self._pattern_cache: dict[str, Any] = {}
+        self._duplicate_cache: dict[str, Any] = {}
+        self._antipattern_cache: dict[str, Any] = {}
 
         # Initialiser la base de données
         self._init_database()
@@ -162,8 +162,8 @@ class PatternDetector:
             logger.warning(f"Impossible de charger les patterns: {e}")
 
     def analyze_project_patterns(
-        self, project_path: Optional[str] = None
-    ) -> Dict[str, Any]:
+        self, project_path: str | None = None
+    ) -> dict[str, Any]:
         """Analyse les patterns du projet"""
         if project_path is None:
             project_path = self.root_path
@@ -194,7 +194,7 @@ class PatternDetector:
 
     def detect_code_duplication(
         self, min_similarity: float = 0.8
-    ) -> List[Dict[str, Any]]:
+    ) -> list[dict[str, Any]]:
         """Détecte la duplication de code"""
         logger.info("Détection de duplication de code")
 
@@ -256,7 +256,7 @@ class PatternDetector:
         except Exception:
             return ""
 
-    def detect_antipatterns(self) -> List[Dict[str, Any]]:
+    def detect_antipatterns(self) -> list[dict[str, Any]]:
         """Détecte les anti-patterns dans le code"""
         logger.info("Détection d'anti-patterns")
 
@@ -280,7 +280,7 @@ class PatternDetector:
 
     def _analyze_file_antipatterns(
         self, file_path: Path, content: str
-    ) -> List[Dict[str, Any]]:
+    ) -> list[dict[str, Any]]:
         """Analyse un fichier pour détecter les anti-patterns"""
         antipatterns = []
         lines = content.split("\n")
@@ -362,7 +362,7 @@ class PatternDetector:
 
         return report
 
-    def save_patterns_to_database(self, patterns: List[Dict[str, Any]]) -> bool:
+    def save_patterns_to_database(self, patterns: list[dict[str, Any]]) -> bool:
         """Sauvegarde les patterns détectés en base de données"""
         try:
             conn = sqlite3.connect(self.db_path)

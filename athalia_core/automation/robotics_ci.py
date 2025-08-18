@@ -443,5 +443,11 @@ def main() -> None:
         ci.print_report()
 
 
+def run_robotics_ci(project_path: str = ".") -> dict[str, Any]:
+    """Fonction utilitaire pour exécuter le CI/CD robotics"""
+    ci = RoboticsCI(project_path)
+    return ci.run_full_pipeline()
+
+
 if __name__ == "__main__":
     main()
