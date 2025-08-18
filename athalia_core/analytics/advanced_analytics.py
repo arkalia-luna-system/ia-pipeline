@@ -60,9 +60,9 @@ class AdvancedAnalytics:
                     tree = ast.parse(f.read())
 
                 complexity = self._calculate_complexity(tree)
-                complexity_data["complexity"][
-                    str(py_file.relative_to(self.project_path))
-                ] = complexity
+                file_key = str(py_file.relative_to(self.project_path))
+                if isinstance(complexity_data.get("complexity"), dict):
+                    complexity_data["complexity"][file_key] = complexity
                 total_complexity += complexity
                 file_count += 1
             except Exception:
@@ -142,9 +142,9 @@ class AdvancedAnalytics:
         for py_file in self.project_path.rglob("*.py"):
             try:
                 size = py_file.stat().st_size
-                performance_data["file_sizes"][
-                    str(py_file.relative_to(self.project_path))
-                ] = size
+                file_key = str(py_file.relative_to(self.project_path))
+                if isinstance(performance_data.get("file_sizes"), dict):
+                    performance_data["file_sizes"][file_key] = size
             except Exception:
                 continue
 

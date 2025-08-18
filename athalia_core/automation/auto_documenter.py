@@ -13,7 +13,7 @@ from typing import Any
 
 # Import conditionnel pour éviter les dépendances
 try:
-    import yaml  # type: ignore
+    import yaml
 except ImportError:
     yaml = None
 
@@ -748,7 +748,7 @@ SOFTWARE.
 
         # Initialiser les informations du projet si pas déjà fait
         if not hasattr(self, "project_info"):
-            self.project_info = {
+            self.project_info: dict[str, Any] = {
                 "name": self.project_path.name,
                 "description": "Projet documenté automatiquement",
                 "version": "1.0.0",

@@ -692,6 +692,11 @@ def validate_and_run(
     return validator.run_safe_command(command, **kwargs)
 
 
+# Compatibilité rétroactive: certains modules importent `validateand_run`
+# Fournir un alias pointant vers la fonction normalisée `validate_and_run`.
+validateand_run = validate_and_run
+
+
 def is_command_safe(command: list[str]) -> bool:
     """Vérifie si une commande est sûre."""
     validator = SecurityValidator()

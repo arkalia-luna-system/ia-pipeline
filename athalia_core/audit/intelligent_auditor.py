@@ -722,6 +722,13 @@ class IntelligentAuditor:
 
     def _check_readme(self) -> dict[str, Any]:
         """Vérifie la qualité du README"""
+        if self.project_path is None:
+            return {
+                "exists": False,
+                "score": 0,
+                "issues": ["Chemin de projet non défini"],
+            }
+
         readme_files = list(self.project_path.glob("README*"))
 
         if not readme_files:
@@ -764,6 +771,9 @@ class IntelligentAuditor:
 
     def _check_api_documentation(self) -> dict[str, Any]:
         """Vérifie la documentation API"""
+        if self.project_path is None:
+            return {"exists": False, "score": 0}
+
         api_docs = list(self.project_path.rglob("*api*"))
         api_docs.extend(list(self.project_path.rglob("*docs*")))
 
@@ -774,6 +784,9 @@ class IntelligentAuditor:
 
     def _check_guides(self) -> dict[str, Any]:
         """Vérifie les guides de développement"""
+        if self.project_path is None:
+            return {"exists": False, "score": 0}
+
         guides = list(self.project_path.rglob("*guide*"))
         guides.extend(list(self.project_path.rglob("*tutorial*")))
 
@@ -793,6 +806,9 @@ class IntelligentAuditor:
 
     def _analyze_test_coverage(self) -> dict[str, Any]:
         """Analyse de la couverture de tests"""
+        if self.project_path is None:
+            return {"coverage": 0, "score": 0, "test_files": 0, "source_files": 0}
+
         test_files = list(self.project_path.rglob("*test*.py"))
         test_files.extend(list(self.project_path.rglob("tests/*.py")))
 
@@ -908,6 +924,9 @@ class IntelligentAuditor:
 
     def _analyze_modularity(self) -> dict[str, Any]:
         """Analyse de la modularité"""
+        if self.project_path is None:
+            return {"score": 0, "issues": ["Chemin de projet non défini"]}
+
         py_files = list(self.project_path.rglob("*.py"))
         init_files = [f for f in py_files if f.name == "__init__.py"]
 
@@ -972,7 +991,12 @@ class IntelligentAuditor:
         """Génère un rapport d'audit complet"""
         score = self.audit_results.get("score", 0)
 
-        report = f"""# Rapport d'Audit Intelligent - {self.project_path.name}
+        if self.project_path is None:
+            project_name = "Projet inconnu"
+        else:
+            project_name = self.project_path.name
+
+        report = f"""# Rapport d'Audit Intelligent - {project_name}
 
 ## Score Global: {score}/10
 

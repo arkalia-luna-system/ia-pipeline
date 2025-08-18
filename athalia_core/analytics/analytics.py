@@ -17,8 +17,8 @@ class AnalyticsEngine:
 
     def __init__(self, project_path: str):
         self.project_path = Path(project_path)
-        self.metrics = {}
-        self.reports = {}
+        self.metrics: dict[str, Any] = {}
+        self.reports: dict[str, Any] = {}
 
     def analyze_code_complexity(self) -> dict[str, Any]:
         """Analyse la complexité du code"""
@@ -153,7 +153,10 @@ class AnalyticsEngine:
     def export_metrics_to_yaml(self, filepath: str) -> bool:
         """Exporte les métriques en YAML"""
         try:
-            import yaml
+            try:
+                import yaml  # type: ignore
+            except ImportError:
+                yaml = None
 
             with open(filepath, "w") as f:
                 yaml.dump(self.metrics, f, default_flow_style=False)

@@ -245,11 +245,11 @@ class AutocompleteEngine:
         """Sauvegarde les suggestions dans un fichier"""
         try:
             if not suggestions_path:
-                suggestions_path = self.data_dir / "suggestions.json"
+                file_path = self.data_dir / "suggestions.json"
             else:
-                suggestions_path = Path(suggestions_path)
+                file_path = Path(suggestions_path)
 
-            with open(str(suggestions_path), "w", encoding="utf-8") as f:
+            with open(str(file_path), "w", encoding="utf-8") as f:
                 json.dump(self.suggestions, f, indent=2, ensure_ascii=False)
 
             return True

@@ -236,7 +236,7 @@ def save_blueprint(blueprint: dict, outdir):
     """Sauvegarde un blueprint dans un fichier YAML."""
     from pathlib import Path
 
-    import yaml  # type: ignore
+    import yaml
 
     outdir = Path(outdir)
     outdir.mkdir(parents=True, exist_ok=True)
