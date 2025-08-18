@@ -12,7 +12,7 @@ from typing import Any
 import click
 
 try:
-    import yaml
+    import yaml  # type: ignore
 except ImportError:
     yaml = None
 

@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 class AnalyticsEngine:
     """Moteur d'analyse pour les projets"""
 
-    def __init__(self, project_path: str):
+    def __init__(self, project_path: str = "."):
         self.project_path = Path(project_path)
         self.metrics: dict[str, Any] = {}
         self.reports: dict[str, Any] = {}
@@ -154,7 +154,7 @@ class AnalyticsEngine:
         """Exporte les métriques en YAML"""
         try:
             try:
-                import yaml  # type: ignore
+                import yaml
             except ImportError:
                 yaml = None
 

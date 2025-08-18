@@ -22,7 +22,9 @@ except ImportError:
     class SecurityErrorFallback(Exception):
         pass
 
-    validateand_run = subprocess.run
+    def validateand_run(command: list[str], **kwargs: Any) -> Any:
+        return subprocess.run(command, **kwargs)
+
 
 logger = logging.getLogger(__name__)
 

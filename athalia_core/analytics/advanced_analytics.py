@@ -49,8 +49,12 @@ class AdvancedAnalytics:
         }
 
     def _analyze_complexity(self):
-        """Analyse la complexité du projet"""
-        complexity_data = {"complexity": {}, "average": 0, "total_files": 0}
+        """Analyse la complexité cyclomatique du projet"""
+        complexity_data: dict[str, Any] = {
+            "complexity": {},
+            "average": 0,
+            "total_files": 0,
+        }
         total_complexity = 0
         file_count = 0
 
@@ -61,8 +65,7 @@ class AdvancedAnalytics:
 
                 complexity = self._calculate_complexity(tree)
                 file_key = str(py_file.relative_to(self.project_path))
-                if isinstance(complexity_data.get("complexity"), dict):
-                    complexity_data["complexity"][file_key] = complexity
+                complexity_data["complexity"][file_key] = complexity
                 total_complexity += complexity
                 file_count += 1
             except Exception:
@@ -136,15 +139,14 @@ class AdvancedAnalytics:
 
     def _analyze_performance(self):
         """Analyse les métriques de performance du projet"""
-        performance_data = {"file_sizes": {}, "dependencies": 0}
+        performance_data: dict[str, Any] = {"file_sizes": {}, "dependencies": 0}
 
         # Analyser les tailles de fichiers
         for py_file in self.project_path.rglob("*.py"):
             try:
                 size = py_file.stat().st_size
                 file_key = str(py_file.relative_to(self.project_path))
-                if isinstance(performance_data.get("file_sizes"), dict):
-                    performance_data["file_sizes"][file_key] = size
+                performance_data["file_sizes"][file_key] = size
             except Exception:
                 continue
 

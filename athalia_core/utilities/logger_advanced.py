@@ -341,7 +341,7 @@ class AthaliaLogger:
             return {"total": 0, "error_types": {}}
 
         # Statistiques par type d'erreur
-        error_types = defaultdict(int)
+        error_types: dict[str, int] = defaultdict(int)
         for error in recent_errors:
             error_types[error["error_type"]] += 1
 

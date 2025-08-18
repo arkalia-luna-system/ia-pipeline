@@ -321,7 +321,7 @@ class RustAnalyzer:
 
             # Parser le TOML (version simplifiée)
             # En production, utiliser toml library
-            cargo_data = {}
+            cargo_data: dict[str, Any] = {}
             current_section = None
 
             for line in content.split("\n"):

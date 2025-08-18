@@ -9,7 +9,10 @@ import subprocess
 from enum import Enum
 from typing import Any
 
-import requests
+try:
+    import requests  # type: ignore
+except ImportError:
+    requests = None
 
 # Import du validateur de sécurité
 try:

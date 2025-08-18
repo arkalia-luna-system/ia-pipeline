@@ -211,7 +211,7 @@ services:
         start_time = time.time()
         stages = {}
         logs = {}
-        artifacts = []
+        artifacts: list[str] = []
 
         self.logger.info(" Démarrage pipeline CI robotique")
 

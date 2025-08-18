@@ -166,9 +166,14 @@ class PatternDetector:
     ) -> dict[str, Any]:
         """Analyse les patterns du projet"""
         if project_path is None:
+            if self.root_path is None:
+                return {"error": "Chemin de projet non défini"}
             project_path = self.root_path
         else:
             project_path = Path(project_path)
+
+        if project_path is None:
+            return {"error": "Chemin de projet non défini"}
 
         project_name = project_path.name
         logger.info(f"Analyse des patterns pour: {project_name}")

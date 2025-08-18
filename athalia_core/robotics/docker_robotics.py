@@ -24,7 +24,7 @@ try:
     )
 except ImportError:
     # Fallback pour les tests
-    class SecurityErrorFallback(Exception):
+    class SecurityError(Exception):
         pass
 
     def validateand_run(command: list[str], **kwargs: Any) -> Any:
@@ -70,8 +70,8 @@ class DockerRoboticsManager:
         """Valider la configuration Docker"""
         self.logger.info(f"🐳 Validation Docker: {self.project_path}")
 
-        issues = []
-        recommendations = []
+        issues: list[str] = []
+        recommendations: list[str] = []
         services = []
 
         # Vérifier docker-compose.yaml

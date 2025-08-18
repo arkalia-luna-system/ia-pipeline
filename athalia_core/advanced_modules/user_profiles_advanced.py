@@ -433,7 +433,7 @@ def main():
             print(" Nom du profil requis")
             return
         profil = gestionnaire.obtenir_profil(args.nom)
-        if profil:
+        if profil is not None:
             print(f" Profil trouvé: {profil.nom} ({profil.email})")
         else:
             print(f" Profil '{args.nom}' non trouvé")
@@ -441,8 +441,8 @@ def main():
     elif args.action == "lister":
         profils = gestionnaire.lister_profils()
         print("📋 Profils disponibles:")
-        for profil in profils:
-            print(f"• {profil}")
+        for nom_profil in profils:
+            print(f"• {nom_profil}")
 
     elif args.action == "rapport":
         if not args.nom:

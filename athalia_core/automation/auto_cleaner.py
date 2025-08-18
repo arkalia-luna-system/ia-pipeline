@@ -14,7 +14,7 @@ from typing import Any
 
 # Import conditionnel pour éviter les dépendances
 try:
-    import yaml  # type: ignore
+    import yaml
 except ImportError:
     yaml = None
 

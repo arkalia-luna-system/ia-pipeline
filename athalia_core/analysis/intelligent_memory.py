@@ -36,7 +36,7 @@ class LearningEvent:
     severity: str  # 'low', 'medium', 'high', 'critical'
     resolution: str | None = None
     success: bool = True
-    context: dict[str, Any] = None
+    context: dict[str, Any] | None = None
 
 
 @dataclass
@@ -77,9 +77,9 @@ class IntelligentMemory:
         self._init_database()
 
         # Cache pour les performances
-        self._pattern_cache = {}
-        self._prediction_cache = {}
-        self._correction_cache = {}
+        self._pattern_cache: dict[str, Any] = {}
+        self._prediction_cache: dict[str, Any] = {}
+        self._correction_cache: dict[str, Any] = {}
 
         logger.info(f"🧠 Intelligent Memory initialisé dans {self.root_path}")
 

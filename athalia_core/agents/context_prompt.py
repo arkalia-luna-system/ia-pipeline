@@ -197,8 +197,9 @@ def detect_prompt_semantic(filepath):
         result = validateand_run(ollama_cmd, capture_output=True, text=True, timeout=20)
         answer = result.stdout.strip().split("\n")[-1].strip()
         for p in PROMPTS:
-            if p["name"].lower() in answer.lower():
-                return p["file"]
+            if isinstance(p, dict) and "name" in p:
+                if p["name"].lower() in answer.lower():
+                    return p["file"]
     except Exception as e:
         logging.warning(f"Analyse sémantique Ollama / Mistral échouée: {e}")
     return None

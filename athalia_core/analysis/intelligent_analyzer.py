@@ -102,7 +102,7 @@ class IntelligentAnalyzer:
                 )
             )
         else:
-            performance_analysis = {
+            performance_analysis: dict[str, str] = {
                 "status": "unavailable",
                 "message": "PerformanceAnalyzer non disponible",
             }

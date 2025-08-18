@@ -197,25 +197,27 @@ try:
         PluginsValidator,
     )
 except ImportError:
-    ExportDockerPlugin: Any = None
-    HelloPlugin: Any = None
-    PluginsManager: Any = None
-    PluginsValidator: Any = None
+    ExportDockerPlugin: type[Any] = type("ExportDockerPluginFallback", (), {})
+    HelloPlugin: type[Any] = type("HelloPluginFallback", (), {})
+    PluginsManager: type[Any] = type("PluginsManagerFallback", (), {})
+    PluginsValidator: type[Any] = type("PluginsValidatorFallback", (), {})
 
 try:
     # Renommer pour éviter le conflit avec PluginsValidator
     from .validation import PluginsValidator as ValidationPluginsValidator
     from .validation import SecurityManager, SecurityValidator
 except ImportError:
-    ValidationPluginsValidator: Any = None
-    SecurityValidator: Any = None
-    SecurityManager: Any = None
+    ValidationPluginsValidator: type[Any] = type(
+        "ValidationPluginsValidatorFallback", (), {}
+    )
+    SecurityValidator: type[Any] = type("SecurityValidatorFallback", (), {})
+    SecurityManager: type[Any] = type("SecurityManagerFallback", (), {})
 
 try:
     from .autocomplete import AutocompleteEngine, AutocompleteServer
 except ImportError:
-    AutocompleteEngine: Any = None
-    AutocompleteServer: Any = None
+    AutocompleteEngine: type[Any] = type("AutocompleteEngineFallback", (), {})
+    AutocompleteServer: type[Any] = type("AutocompleteServerFallback", (), {})
 
 try:
     from .analysis import (
@@ -226,11 +228,11 @@ try:
         PatternDetector,
     )
 except ImportError:
-    ArchitectureAnalyzer: Any = None
-    ASTAnalyzer: Any = None
-    IntelligentAnalyzer: Any = None
-    IntelligentMemory: Any = None
-    PatternDetector: Any = None
+    ArchitectureAnalyzer: type[Any] = type("ArchitectureAnalyzerFallback", (), {})
+    ASTAnalyzer: type[Any] = type("ASTAnalyzerFallback", (), {})
+    IntelligentAnalyzer: type[Any] = type("IntelligentAnalyzerFallback", (), {})
+    IntelligentMemory: type[Any] = type("IntelligentMemoryFallback", (), {})
+    PatternDetector: type[Any] = type("PatternDetectorFallback", (), {})
 
 try:
     from .utilities import (
@@ -261,22 +263,24 @@ try:
     # Importer CLI séparément pour éviter le conflit
     from .utilities.cli import cli as CLIUtility
 except ImportError:
-    CLIUtility: Any = None
-    DashboardUtility: Any = None
-    GenerationBackupUtility: Any = None
-    GenerationSimpleUtility: Any = None
-    LoggerAdvancedUtility: Any = None
-    MultiFileEditorUtility: Any = None
-    OnboardingUtility: Any = None
-    ProjectImporterUtility: Any = None
-    ReadyCheckUtility: Any = None
+    CLIUtility: type[Any] = type("CLIUtilityFallback", (), {})
+    DashboardUtility: type[Any] = type("DashboardUtilityFallback", (), {})
+    GenerationBackupUtility: type[Any] = type("GenerationBackupUtilityFallback", (), {})
+    GenerationSimpleUtility: type[Any] = type("GenerationSimpleUtilityFallback", (), {})
+    LoggerAdvancedUtility: type[Any] = type("LoggerAdvancedUtilityFallback", (), {})
+    MultiFileEditorUtility: type[Any] = type("MultiFileEditorUtilityFallback", (), {})
+    OnboardingUtility: type[Any] = type("OnboardingUtilityFallback", (), {})
+    ProjectImporterUtility: type[Any] = type("ProjectImporterUtilityFallback", (), {})
+    ReadyCheckUtility: type[Any] = type("ReadyCheckUtilityFallback", (), {})
 
 try:
     from .analytics import advanced_analytics as advanced_analytics_module
     from .analytics import analytics as analytics_module
 except ImportError:
-    analytics_module: Any = None
-    advanced_analytics_module: Any = None
+    analytics_module: type[Any] = type("analytics_moduleFallback", (), {})
+    advanced_analytics_module: type[Any] = type(
+        "advanced_analytics_moduleFallback", (), {}
+    )
 
 # Exports principaux - seulement les modules qui existent
 __all__ = [

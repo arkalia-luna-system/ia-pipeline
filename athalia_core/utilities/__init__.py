@@ -5,22 +5,22 @@ from typing import Any
 try:
     from .cli import cli as CLI
 except ImportError:
-    CLI: Any = None
+    CLI: type[Any] = type("CLIFallback", (), {})
 
 try:
     from .dashboard import Dashboard
 except ImportError:
-    Dashboard: Any = None
+    Dashboard: type[Any] = type("DashboardFallback", (), {})
 
 try:
     from .generation_backup import generate_project as GenerationBackup
 except ImportError:
-    GenerationBackup: Any = None
+    GenerationBackup: type[Any] = type("GenerationBackupFallback", (), {})
 
 try:
     from .generation_simple import generate_project as GenerationSimple
 except ImportError:
-    GenerationSimple: Any = None
+    GenerationSimple: type[Any] = type("GenerationSimpleFallback", (), {})
 
 try:
     from .logger_advanced import AthaliaLogger as LoggerAdvanced
@@ -35,7 +35,7 @@ except ImportError:
 try:
     from .onboarding import generate_onboarding_md as Onboarding
 except ImportError:
-    Onboarding: Any = None
+    Onboarding: type[Any] = type("OnboardingFallback", (), {})
 
 try:
     from .project_importer import ProjectImporter
@@ -45,7 +45,7 @@ except ImportError:
 try:
     from .ready_check import check_ready as ReadyCheck
 except ImportError:
-    ReadyCheck: Any = None
+    ReadyCheck: type[Any] = type("ReadyCheckFallback", (), {})
 
 __all__ = [
     "CLI",
