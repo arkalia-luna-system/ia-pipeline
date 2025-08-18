@@ -3,10 +3,10 @@ import logging
 import os
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, Union
 
 try:
-    import yaml
+    import yaml  # type: ignore
 except ImportError:
     yaml = None
 
@@ -131,7 +131,7 @@ class AthaliaConfig:
 
 
 class ConfigManager:
-    """Gestionnaire de configuration f"""
+    """Gestionnaire de configuration centralisé"""
 
     def __init__(self, config_file: str = "athalia_config.yaml"):
         self.config_file = config_file
@@ -139,7 +139,7 @@ class ConfigManager:
         self._setup_logging()
 
     def _load_config(self) -> AthaliaConfig:
-        """Charge la configuration depuis le fichier YAML et les variables d'f"""
+        """Charge la configuration depuis le fichier YAML et les variables d'environnement"""
         config = AthaliaConfig()
 
         # Charger depuis le fichier YAML
@@ -159,7 +159,7 @@ class ConfigManager:
     def _merge_yaml_config(
         self, config: AthaliaConfig, yaml_data: dict[str, Any]
     ) -> AthaliaConfig:
-        """Fusionne la configuration YAML avec la config par f"""
+        """Fusionne la configuration YAML avec la config par défaut"""
         if not yaml_data:
             return config
 

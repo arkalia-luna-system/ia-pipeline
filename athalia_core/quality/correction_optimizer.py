@@ -269,8 +269,6 @@ class CorrectionOptimizer:
                 )
                 corrections.extend(string_corrections)
 
-                return corrected_content, corrections
-
         return content, corrections
 
     def _apply_contextual_corrections(

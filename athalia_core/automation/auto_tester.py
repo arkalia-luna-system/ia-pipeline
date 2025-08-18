@@ -9,7 +9,7 @@ import ast
 import logging
 import subprocess
 from pathlib import Path
-from typing import Any
+from typing import Any, Union
 
 # Import du validateur de sécurité
 try:
@@ -40,7 +40,7 @@ class AutoTester:
         """Analyse le projet pour identifier les modules à tester"""
         logger.info(f"🔍 Analyse du projet: {self.project_path.name}")
 
-        analysis = {
+        analysis: dict[str, Any] = {
             "modules": [],
             "total_functions": 0,
             "total_classes": 0,
@@ -52,16 +52,27 @@ class AutoTester:
             if "test" not in py_file.name and "tests" not in str(py_file):
                 module_info = self._analyze_module(py_file)
                 if module_info:
-                    analysis["modules"].append(module_info)
-                    analysis["total_functions"] += len(module_info["functions"])
-                    analysis["total_classes"] += len(module_info["classes"])
+                    modules = analysis.get("modules", [])
+                    if isinstance(modules, list):
+                        modules.append(module_info)
+
+                    total_functions = analysis.get("total_functions", 0)
+                    if isinstance(total_functions, int | float):
+                        analysis["total_functions"] = total_functions + len(
+                            module_info.get("functions", [])
+                        )
+
+                    total_classes = analysis.get("total_classes", 0)
+                    if isinstance(total_classes, int | float):
+                        analysis["total_classes"] = total_classes + len(
+                            module_info.get("classes", [])
+                        )
 
         # Calculer la couverture de tests
-        if analysis["total_functions"] > 0:
+        total_functions = analysis.get("total_functions", 0)
+        if isinstance(total_functions, int | float) and total_functions > 0:
             existing_tests = len(list(self.test_dir.rglob("test_*.py")))
-            analysis["test_coverage"] = (
-                existing_tests / analysis["total_functions"]
-            ) * 100
+            analysis["test_coverage"] = (existing_tests / total_functions) * 100
 
         return analysis
 
@@ -72,7 +83,7 @@ class AutoTester:
                 content = f.read()
 
             tree = ast.parse(content)
-            module_info = {
+            module_info: dict[str, Any] = {
                 "name": file_path.stem,
                 "path": str(file_path),
                 "functions": [],
@@ -82,7 +93,9 @@ class AutoTester:
 
             for node in ast.walk(tree):
                 if isinstance(node, ast.FunctionDef):
-                    module_info["functions"].append(node.name)
+                    functions = module_info.get("functions", [])
+                    if isinstance(functions, list):
+                        functions.append(node.name)
                 elif isinstance(node, ast.ClassDef):
                     class_info = {
                         "name": node.name,
@@ -93,14 +106,23 @@ class AutoTester:
                     }
                     for item in node.body:
                         if isinstance(item, ast.FunctionDef):
-                            class_info["methods"].append(item.name)
-                    module_info["classes"].append(class_info)
+                            methods = class_info.get("methods", [])
+                            if isinstance(methods, list):
+                                methods.append(item.name)
+
+                    classes = module_info.get("classes", [])
+                    if isinstance(classes, list):
+                        classes.append(class_info)
                 elif isinstance(node, ast.Import):
                     for alias in node.names:
-                        module_info["imports"].append(alias.name)
+                        imports = module_info.get("imports", [])
+                        if isinstance(imports, list):
+                            imports.append(alias.name)
                 elif isinstance(node, ast.ImportFrom):
                     if node.module:
-                        module_info["imports"].append(node.module)
+                        imports = module_info.get("imports", [])
+                        if isinstance(imports, list):
+                            imports.append(node.module)
 
             return module_info
 
