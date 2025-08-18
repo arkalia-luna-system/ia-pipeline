@@ -11,7 +11,7 @@ except ImportError:
     AutocompleteEngine: Any = None
 
 try:
-    from .autocomplete_server import AutocompleteServer
+    from .autocomplete_server import app as AutocompleteServer
 except ImportError:
     AutocompleteServer: Any = None
 

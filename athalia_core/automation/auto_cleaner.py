@@ -14,7 +14,7 @@ from typing import Any
 
 # Import conditionnel pour éviter les dépendances
 try:
-    import yaml
+    import yaml  # type: ignore
 except ImportError:
     yaml = None
 
@@ -127,6 +127,8 @@ class AutoCleaner:
             "duplicate_files": [],
             "large_files": [],
             "old_files": [],
+            "files_to_remove": [],
+            "directories_to_remove": [],
         }
 
         try:
@@ -136,22 +138,22 @@ class AutoCleaner:
                     # Pattern avec wildcard
                     for file_path in self.project_path.rglob(pattern):
                         if file_path.is_file() and not self._is_excluded(file_path):
-                            candidates["files_to_remove"].append(str(file_path))
+                            candidates["files_to_remove"].append(file_path)
                 else:
                     # Pattern exact
                     exact_path = self.project_path / pattern
                     if exact_path.exists() and not self._is_excluded(exact_path):
                         if exact_path.is_file():
-                            candidates["files_to_remove"].append(str(exact_path))
+                            candidates["files_to_remove"].append(exact_path)
                         elif exact_path.is_dir():
-                            candidates["directories_to_remove"].append(str(exact_path))
+                            candidates["directories_to_remove"].append(exact_path)
 
             # Scanner les répertoires de nettoyage
             for dir_pattern in self.cleanup_config["cleanup_directories"]:
                 if "*" in dir_pattern:
                     for dir_path in self.project_path.rglob(dir_pattern):
                         if dir_path.is_dir() and not self._is_excluded(dir_path):
-                            candidates["directories_to_remove"].append(str(dir_path))
+                            candidates["directories_to_remove"].append(dir_path)
                 else:
                     exact_dir = self.project_path / dir_pattern
                     if (
@@ -159,14 +161,14 @@ class AutoCleaner:
                         and exact_dir.is_dir()
                         and not self._is_excluded(exact_dir)
                     ):
-                        candidates["directories_to_remove"].append(str(exact_dir))
+                        candidates["directories_to_remove"].append(exact_dir)
 
             # Scanner les gros fichiers
             max_size = self.cleanup_config["max_file_size_mb"] * 1024 * 1024
             for file_path in self.project_path.rglob("*"):
                 if file_path.is_file() and not self._is_excluded(file_path):
                     if file_path.stat().st_size > max_size:
-                        candidates["large_files"].append(str(file_path))
+                        candidates["large_files"].append(file_path)
 
             # Scanner les anciens fichiers
             cutoff_date = datetime.now() - timedelta(
@@ -176,7 +178,7 @@ class AutoCleaner:
                 if file_path.is_file() and not self._is_excluded(file_path):
                     mtime = datetime.fromtimestamp(file_path.stat().st_mtime)
                     if mtime < cutoff_date:
-                        candidates["old_files"].append(str(file_path))
+                        candidates["old_files"].append(file_path)
 
         except Exception as e:
             logger.error(f"Erreur scan candidats: {e}")

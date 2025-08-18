@@ -231,30 +231,42 @@ except ImportError:
 
 try:
     from .utilities import (
-        Dashboard,
-        GenerationBackup,
-        GenerationSimple,
-        LoggerAdvanced,
-        MultiFileEditor,
-        Onboarding,
-        ProjectImporter,
-        ReadyCheck,
+        Dashboard as DashboardUtility,
+    )
+    from .utilities import (
+        GenerationBackup as GenerationBackupUtility,
+    )
+    from .utilities import (
+        GenerationSimple as GenerationSimpleUtility,
+    )
+    from .utilities import (
+        LoggerAdvanced as LoggerAdvancedUtility,
+    )
+    from .utilities import (
+        MultiFileEditor as MultiFileEditorUtility,
+    )
+    from .utilities import (
+        Onboarding as OnboardingUtility,
+    )
+    from .utilities import (
+        ProjectImporter as ProjectImporterUtility,
+    )
+    from .utilities import (
+        ReadyCheck as ReadyCheckUtility,
     )
 
     # Importer CLI séparément pour éviter le conflit
-    from .utilities.cli import CLI as CLIUtility
-    from .utilities.cli import cli
+    from .utilities.cli import cli as CLIUtility
 except ImportError:
     CLIUtility: Any = None
-    Dashboard: Any = None
-    GenerationBackup: Any = None
-    GenerationSimple: Any = None
-    LoggerAdvanced: Any = None
-    MultiFileEditor: Any = None
-    Onboarding: Any = None
-    ProjectImporter: Any = None
-    ReadyCheck: Any = None
-    cli: Any = None
+    DashboardUtility: Any = None
+    GenerationBackupUtility: Any = None
+    GenerationSimpleUtility: Any = None
+    LoggerAdvancedUtility: Any = None
+    MultiFileEditorUtility: Any = None
+    OnboardingUtility: Any = None
+    ProjectImporterUtility: Any = None
+    ReadyCheckUtility: Any = None
 
 try:
     from .analytics import advanced_analytics as advanced_analytics_module
@@ -286,8 +298,7 @@ if AutoTester is not None:
     __all__.append("AutoTester")
 if CLIUtility is not None:
     __all__.append("CLI")
-if cli is not None:
-    __all__.append("cli")
+
 if CodeLinter is not None:
     __all__.append("CodeLinter")
 if ConfigManager is not None:
@@ -390,21 +401,21 @@ if IntelligentMemory is not None:
 if PatternDetector is not None:
     __all__.append("PatternDetector")
 
-if Dashboard is not None:
+if DashboardUtility is not None:
     __all__.append("Dashboard")
-if GenerationBackup is not None:
+if GenerationBackupUtility is not None:
     __all__.append("GenerationBackup")
-if GenerationSimple is not None:
+if GenerationSimpleUtility is not None:
     __all__.append("GenerationSimple")
-if LoggerAdvanced is not None:
+if LoggerAdvancedUtility is not None:
     __all__.append("LoggerAdvanced")
-if MultiFileEditor is not None:
+if MultiFileEditorUtility is not None:
     __all__.append("MultiFileEditor")
-if Onboarding is not None:
+if OnboardingUtility is not None:
     __all__.append("Onboarding")
-if ProjectImporter is not None:
+if ProjectImporterUtility is not None:
     __all__.append("ProjectImporter")
-if ReadyCheck is not None:
+if ReadyCheckUtility is not None:
     __all__.append("ReadyCheck")
 
 if ath_context_prompt is not None:

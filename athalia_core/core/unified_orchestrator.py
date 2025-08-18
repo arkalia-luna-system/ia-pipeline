@@ -406,7 +406,7 @@ class UnifiedOrchestrator:
                                         f.write(enhanced_code)
 
                                     # Évaluer la qualité
-                                    quality_score = self.quality_scorer.score_code(
+                                    quality_score = self.quality_scorer.score(
                                         enhanced_code
                                     )
                                     logger.info(
@@ -561,7 +561,7 @@ class UnifiedOrchestrator:
 
         try:
             if self.auto_tester:
-                test_results = self.auto_tester.run_tests()
+                test_results = self.auto_tester.run_generated_tests()
                 if isinstance(self.workflow_results["steps_completed"], list):
                     self.workflow_results["steps_completed"].append("auto_testing")
                 if isinstance(self.workflow_results["artifacts"], dict):
@@ -580,7 +580,7 @@ class UnifiedOrchestrator:
 
         try:
             if self.auto_documenter:
-                doc_results = self.auto_documenter.generate_documentation()
+                doc_results = self.auto_documenter.generate_documentation_report()
                 if isinstance(self.workflow_results["steps_completed"], list):
                     self.workflow_results["steps_completed"].append(
                         "auto_documentation"
@@ -630,7 +630,7 @@ class UnifiedOrchestrator:
 
                 # Validation ROS2
                 if self.ros2_validator:
-                    ros2_result = self.ros2_validator.validate_workspace()
+                    ros2_result = self.ros2_validator.validate_package()
                     self.workflow_results["robotics"]["ros2_validation"] = {
                         "workspace_valid": ros2_result.workspace_valid,
                         "packages_count": len(ros2_result.packages),
@@ -640,7 +640,7 @@ class UnifiedOrchestrator:
 
                 # Audit Reachy
                 if self.reachy_auditor:
-                    reachy_result = self.reachy_auditor.audit_reachy_project()
+                    reachy_result = self.reachy_auditor.audit_complete()
                     self.workflow_results["robotics"]["reachy_audit"] = reachy_result
 
                 # Validation Docker
@@ -755,7 +755,7 @@ class UnifiedOrchestrator:
 
         try:
             if self.auto_cicd:
-                cicd_results = self.auto_cicd.setup_cicd()
+                cicd_results = self.auto_cicd.setup_cicd(str(self.project_path))
                 if isinstance(self.workflow_results["steps_completed"], list):
                     self.workflow_results["steps_completed"].append("auto_cicd")
                 if isinstance(self.workflow_results["artifacts"], dict):

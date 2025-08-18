@@ -3,7 +3,7 @@
 from typing import Any
 
 try:
-    from .cli import CLI
+    from .cli import cli as CLI
 except ImportError:
     CLI = None
 
@@ -13,17 +13,17 @@ except ImportError:
     Dashboard: Any = None
 
 try:
-    from .generation_backup import GenerationBackup
+    from .generation_backup import generate_project as GenerationBackup
 except ImportError:
     GenerationBackup = None
 
 try:
-    from .generation_simple import GenerationSimple
+    from .generation_simple import generate_project as GenerationSimple
 except ImportError:
     GenerationSimple = None
 
 try:
-    from .logger_advanced import LoggerAdvanced
+    from .logger_advanced import AthaliaLogger as LoggerAdvanced
 except ImportError:
     LoggerAdvanced = None
 
@@ -33,7 +33,7 @@ except ImportError:
     MultiFileEditor: Any = None
 
 try:
-    from .onboarding import Onboarding
+    from .onboarding import generate_onboarding_md as Onboarding
 except ImportError:
     Onboarding = None
 
@@ -43,7 +43,7 @@ except ImportError:
     ProjectImporter: Any = None
 
 try:
-    from .ready_check import ReadyCheck
+    from .ready_check import check_ready as ReadyCheck
 except ImportError:
     ReadyCheck = None
 
