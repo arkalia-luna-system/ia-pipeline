@@ -24,7 +24,7 @@ try:
 except ImportError:
     # Fallback vers le logging standard si le module avancé n'est pas'
     # disponible
-    athalia_logger: Any = None
+    athalia_logger_fallback: Any = None
 
     def log_main(message: str, level: str = "INFO", **kwargs):
         logging.getLogger(__name__).info(message)

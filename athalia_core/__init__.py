@@ -15,59 +15,59 @@ __description__ = "Système d'industrialisation et d'intelligence pour projets I
 try:
     from . import core
 except ImportError:
-    core: Any = None
+    core_module: Any = None
 
 # Imports conditionnels - seulement les modules qui existent
 try:
     from .analytics.advanced_analytics import AdvancedAnalytics
 except ImportError:
-    AdvancedAnalytics: Any = None
+    AdvancedAnalytics: type[Any] = type("AdvancedAnalyticsFallback", (), {})
 
 try:
     from .automation.auto_cicd import AutoCICD
 except ImportError:
-    AutoCICD: Any = None
+    AutoCICD: type[Any] = type("AutoCICDFallback", (), {})
 
 try:
     from .automation.auto_cleaner import AutoCleaner
 except ImportError:
-    AutoCleaner: Any = None
+    AutoCleaner: type[Any] = type("AutoCleanerFallback", (), {})
 
 try:
     from .automation.auto_documenter import AutoDocumenter
 except ImportError:
-    AutoDocumenter: Any = None
+    AutoDocumenter: type[Any] = type("AutoDocumenterFallback", (), {})
 
 try:
     from .automation.auto_tester import AutoTester
 except ImportError:
-    AutoTester: Any = None
+    AutoTester: type[Any] = type("AutoTesterFallback", (), {})
 
 try:
     from .quality.code_linter import CodeLinter
 except ImportError:
-    CodeLinter: Any = None
+    CodeLinter: type[Any] = type("CodeLinterFallback", (), {})
 
 try:
     from .quality.correction_optimizer import CorrectionOptimizer
 except ImportError:
-    CorrectionOptimizer: Any = None
+    CorrectionOptimizer: type[Any] = type("CorrectionOptimizerFallback", (), {})
 
 try:
     from .core.config_manager import ConfigManager
 except ImportError:
-    ConfigManager: Any = None
+    ConfigManager: type[Any] = type("ConfigManagerFallback", (), {})
 
 try:
     from .core.cache_manager import CacheManager
 except ImportError:
-    CacheManager: Any = None
+    CacheManager: type[Any] = type("CacheManagerFallback", (), {})
 
 try:
     from .core.error_codes import ErrorCode, ErrorSeverity
 except ImportError:
-    ErrorCode: Any = None
-    ErrorSeverity: Any = None
+    ErrorCode: type[Any] = type("ErrorCodeFallback", (), {})
+    ErrorSeverity: type[Any] = type("ErrorSeverityFallback", (), {})
 
 try:
     from .core.error_handling import (
@@ -77,16 +77,18 @@ try:
         raise_athalia_error,
     )
 except ImportError:
-    AthaliaError: Any = None
-    ErrorHandler: Any = None
-    handle_error: Any = None
-    raise_athalia_error: Any = None
+    AthaliaError: type[Any] = type("AthaliaErrorFallback", (), {})
+    ErrorHandler: type[Any] = type("ErrorHandlerFallback", (), {})
+    handle_error: type[Any] = type("handle_error_fallback", (), {})
+    raise_athalia_error: type[Any] = type("raise_athalia_error_fallback", (), {})
 
 try:
     from .core.generation import generate_blueprint_mock, generate_project
 except ImportError:
-    generate_blueprint_mock: Any = None
-    generate_project: Any = None
+    generate_blueprint_mock: type[Any] = type(
+        "generate_blueprint_mock_fallback", (), {}
+    )
+    generate_project: type[Any] = type("generate_project_fallback", (), {})
 
 try:
     # Import log_main séparément pour éviter le conflit
@@ -99,20 +101,19 @@ try:
         signal_handler,
     )
 except ImportError:
-    main: Any = None
-    menu: Any = None
-    running: Any = None
-    security_audit_project: Any = None
-    signal_handler: Any = None
-    log_main: Any = None
+    main: type[Any] = type("main_fallback", (), {})
+    menu: type[Any] = type("menu_fallback", (), {})
+    running: type[Any] = type("running_fallback", (), {})
+    security_audit_project: type[Any] = type("security_audit_project_fallback", (), {})
+    signal_handler: type[Any] = type("signal_handler_fallback", (), {})
+    log_main: type[Any] = type("log_main_fallback", (), {})
 
 try:
     # Import du module complet avec un alias différent
     from .core import performance_analyzer as perf_analyzer_module
     from .core.performance_analyzer import PerformanceAnalyzer
 except ImportError:
-    PerformanceAnalyzer: Any = None
-    perf_analyzer_module: Any = None
+    PerformanceAnalyzer: type[Any] = type("PerformanceAnalyzerFallback", (), {})
 
 try:
     from .core.unified_orchestrator import UnifiedOrchestrator
@@ -285,7 +286,7 @@ __all__ = [
 ]
 
 # Ajouter dynamiquement les modules qui existent
-if core is not None:
+if core_module is not None:
     __all__.append("core")
 
 if AdvancedAnalytics is not None:

@@ -66,7 +66,7 @@ class IntelligentAnalyzer:
             logger.warning(
                 "PerformanceAnalyzer non disponible - fonctionnalités de performance limitées"
             )
-            self.performance_analyzer: Any = None
+            # self.performance_analyzer est déjà initialisé à None
 
         logger.info(f"🧠 Intelligent Analyzer initialisé dans {self.root_path}")
 

@@ -26,11 +26,11 @@ except ImportError:
         from athalia_core.ai.ai_robust import RobustAI as CoreRobustAI
     except ImportError:
         # Créer des classes factices si les imports échouent
-        class CoreAIModel:
+        class CoreAIModelFallback:
             def __init__(self):
                 pass
 
-        class CoreRobustAI:
+        class CoreRobustAIFallback:
             def __init__(self):
                 pass
 

@@ -8,12 +8,12 @@ from typing import Any
 try:
     from .autocomplete_engine import AutocompleteEngine
 except ImportError:
-    AutocompleteEngine: Any = None
+    AutocompleteEngine: type[Any] = type("AutocompleteEngineFallback", (), {})
 
 try:
     from .autocomplete_server import app as AutocompleteServer
 except ImportError:
-    AutocompleteServer: Any = None
+    AutocompleteServer: type[Any] = type("AutocompleteServerFallback", (), {})
 
 __all__ = [
     "AutocompleteEngine",

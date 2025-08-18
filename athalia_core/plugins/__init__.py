@@ -34,7 +34,7 @@ try:
     from .plugins_manager import list_plugins, load_plugin, run_all_plugins
 
     PluginsManager: type[Any] = type(
-        "PluginsManager",
+        "PluginsManagerMain",
         (),
         {
             "list_plugins": staticmethod(list_plugins),
@@ -49,7 +49,7 @@ try:
     from .plugins_validator import validate_plugin
 
     PluginsValidator: type[Any] = type(
-        "PluginsValidator", (), {"validate_plugin": staticmethod(validate_plugin)}
+        "PluginsValidatorMain", (), {"validate_plugin": staticmethod(validate_plugin)}
     )
 except ImportError:
     PluginsValidator: type[Any] = type("PluginsValidatorFallback", (), {})

@@ -17,7 +17,7 @@ try:
     )
 except ImportError:
     # Fallback pour les tests
-    class SecurityError(Exception):
+    class SecurityErrorFallback(Exception):
         pass
 
     def validateand_run(command: list[str], **kwargs: Any) -> Any:

@@ -8,18 +8,18 @@ from typing import Any
 try:
     from .architecture_analyzer import ArchitectureAnalyzer
 except ImportError:
-    ArchitectureAnalyzer: Any = None
+    ArchitectureAnalyzer: type[Any] = type("ArchitectureAnalyzerFallback", (), {})
 
 try:
     from .ast_analyzer import ASTAnalyzer
 except ImportError:
-    ASTAnalyzer: Any = None
+    ASTAnalyzer: type[Any] = type("ASTAnalyzerFallback", (), {})
 
 try:
     from .intelligent_analyzer import ComprehensiveAnalysis, IntelligentAnalyzer
 except ImportError:
-    IntelligentAnalyzer: Any = None
-    ComprehensiveAnalysis: Any = None
+    IntelligentAnalyzer: type[Any] = type("IntelligentAnalyzerFallback", (), {})
+    ComprehensiveAnalysis: type[Any] = type("ComprehensiveAnalysisFallback", (), {})
 
 try:
     from .intelligent_memory import (
@@ -29,15 +29,15 @@ try:
         Prediction,
     )
 except ImportError:
-    IntelligentMemory: Any = None
-    CorrectionSuggestion: Any = None
-    LearningEvent: Any = None
-    Prediction: Any = None
+    IntelligentMemory: type[Any] = type("IntelligentMemoryFallback", (), {})
+    CorrectionSuggestion: type[Any] = type("CorrectionSuggestionFallback", (), {})
+    LearningEvent: type[Any] = type("LearningEventFallback", (), {})
+    Prediction: type[Any] = type("PredictionFallback", (), {})
 
 try:
     from .pattern_detector import PatternDetector
 except ImportError:
-    PatternDetector: Any = None
+    PatternDetector: type[Any] = type("PatternDetectorFallback", (), {})
 
 __all__ = [
     "ArchitectureAnalyzer",

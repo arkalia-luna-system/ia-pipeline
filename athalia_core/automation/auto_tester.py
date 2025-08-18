@@ -19,7 +19,9 @@ try:
     )
 except ImportError:
     # Fallback pour les tests
-    SecurityError = Exception
+    class SecurityErrorFallback(Exception):
+        pass
+
     validateand_run = subprocess.run
 
 logger = logging.getLogger(__name__)

@@ -5,12 +5,12 @@ from typing import Any
 try:
     from .code_linter import CodeLinter
 except ImportError:
-    CodeLinter: Any = None
+    CodeLinter: type[Any] = type("CodeLinterFallback", (), {})
 
 try:
     from .correction_optimizer import CorrectionOptimizer
 except ImportError:
-    CorrectionOptimizer: Any = None
+    CorrectionOptimizer: type[Any] = type("CorrectionOptimizerFallback", (), {})
 
 __all__ = [
     "CodeLinter",
