@@ -197,53 +197,41 @@ class AutoCleaner:
 
     def cleanup_pyc_files(self) -> dict[str, Any]:
         """Nettoie les fichiers .pyc"""
-        result = {"removed_files": [], "total_size_freed": 0, "errors": []}
+        result: dict[str, Any] = {
+            "removed_files": [],
+            "total_size_freed": 0,
+            "errors": [],
+        }
 
-        try:
-            for pyc_file in self.project_path.rglob("*.pyc"):
-                if not self._is_excluded(pyc_file):
-                    try:
-                        size = pyc_file.stat().st_size
-                        pyc_file.unlink()
-                        result["removed_files"].append(str(pyc_file))
-                        result["total_size_freed"] += size
-                    except Exception as e:
-                        result["errors"].append(f"Erreur suppression {pyc_file}: {e}")
-        except Exception as e:
-            logger.error(f"Erreur nettoyage .pyc: {e}")
+        for pyc_file in self.scan_for_cleanup_candidates()["pyc_files"]:
+            try:
+                size = pyc_file.stat().st_size
+                pyc_file.unlink()
+                result["removed_files"].append(str(pyc_file))
+                result["total_size_freed"] += size
+            except Exception as e:
+                result["errors"].append(f"Erreur suppression {pyc_file}: {e}")
 
         return result
 
     def cleanup_cache_directories(self) -> dict[str, Any]:
-        """Nettoie les répertoires cache"""
-        result = {
+        """Nettoie les répertoires de cache"""
+        result: dict[str, Any] = {
             "removed_directories": [],
             "total_size_freed": 0,
             "errors": [],
         }
 
-        cache_patterns = [
-            "__pycache__",
-            ".cache",
-            ".pytest_cache",
-            "node_modules",
-        ]
-
-        try:
-            for pattern in cache_patterns:
-                for cache_dir in self.project_path.rglob(pattern):
-                    if cache_dir.is_dir() and not self._is_excluded(cache_dir):
-                        try:
-                            size = self._get_directory_size(cache_dir)
-                            shutil.rmtree(cache_dir)
-                            result["removed_directories"].append(str(cache_dir))
-                            result["total_size_freed"] += size
-                        except Exception as e:
-                            result["errors"].append(
-                                f"Erreur suppression {cache_dir}: {e}"
-                            )
-        except Exception as e:
-            logger.error(f"Erreur nettoyage cache: {e}")
+        for cache_dir in self.scan_for_cleanup_candidates()["cache_dirs"]:
+            try:
+                size = self._get_directory_size(cache_dir)
+                shutil.rmtree(cache_dir)
+                result["removed_directories"].append(str(cache_dir))
+                result["total_size_freed"] += size
+            except Exception as e:
+                result["errors"].append(
+                    f"Erreur suppression répertoire {cache_dir}: {e}"
+                )
 
         return result
 
@@ -260,102 +248,79 @@ class AutoCleaner:
 
     def cleanup_log_files(self) -> dict[str, Any]:
         """Nettoie les fichiers de log"""
-        result = {"removed_files": [], "total_size_freed": 0, "errors": []}
+        result: dict[str, Any] = {
+            "removed_files": [],
+            "total_size_freed": 0,
+            "errors": [],
+        }
 
-        try:
-            for log_file in self.project_path.rglob("*.log"):
-                if not self._is_excluded(log_file):
-                    try:
-                        size = log_file.stat().st_size
-                        log_file.unlink()
-                        result["removed_files"].append(str(log_file))
-                        result["total_size_freed"] += size
-                    except Exception as e:
-                        result["errors"].append(f"Erreur suppression {log_file}: {e}")
-        except Exception as e:
-            logger.error(f"Erreur nettoyage logs: {e}")
-
-        return result
-
-    def cleanup_large_files(self, max_size_mb: float | None = None) -> dict[str, Any]:
-        """Nettoie les gros fichiers"""
-        result = {"removed_files": [], "total_size_freed": 0, "errors": []}
-
-        if max_size_mb is None:
-            max_size_mb = self.cleanup_config["max_file_size_mb"]
-
-        max_size = max_size_mb * 1024 * 1024
-
-        try:
-            for file_path in self.project_path.rglob("*"):
-                if file_path.is_file() and not self._is_excluded(file_path):
-                    if file_path.stat().st_size > max_size:
-                        try:
-                            size = file_path.stat().st_size
-                            file_path.unlink()
-                            result["removed_files"].append(str(file_path))
-                            result["total_size_freed"] += size
-                        except Exception as e:
-                            result["errors"].append(
-                                f"Erreur suppression {file_path}: {e}"
-                            )
-        except Exception as e:
-            logger.error(f"Erreur nettoyage gros fichiers: {e}")
+        for log_file in self.scan_for_cleanup_candidates()["log_files"]:
+            try:
+                size = log_file.stat().st_size
+                log_file.unlink()
+                result["removed_files"].append(str(log_file))
+                result["total_size_freed"] += size
+            except Exception as e:
+                result["errors"].append(f"Erreur suppression {log_file}: {e}")
 
         return result
 
-    def cleanup_old_files(self, days_old: int | None = None) -> dict[str, Any]:
+    def cleanup_large_files(self) -> dict[str, Any]:
+        """Nettoie les fichiers volumineux"""
+        result: dict[str, Any] = {
+            "removed_files": [],
+            "total_size_freed": 0,
+            "errors": [],
+        }
+
+        for file_path in self.scan_for_cleanup_candidates()["large_files"]:
+            try:
+                size = file_path.stat().st_size
+                file_path.unlink()
+                result["removed_files"].append(str(file_path))
+                result["total_size_freed"] += size
+            except Exception as e:
+                result["errors"].append(
+                    f"Erreur suppression fichier volumineux {file_path}: {e}"
+                )
+
+        return result
+
+    def cleanup_old_files(self) -> dict[str, Any]:
         """Nettoie les anciens fichiers"""
-        result = {"removed_files": [], "total_size_freed": 0, "errors": []}
+        result: dict[str, Any] = {
+            "removed_files": [],
+            "total_size_freed": 0,
+            "errors": [],
+        }
 
-        if days_old is None:
-            days_old = self.cleanup_config["keep_recent_days"]
-
-        cutoff_date = datetime.now() - timedelta(days=days_old)
-
-        try:
-            for file_path in self.project_path.rglob("*"):
-                if file_path.is_file() and not self._is_excluded(file_path):
-                    mtime = datetime.fromtimestamp(file_path.stat().st_mtime)
-                    if mtime < cutoff_date:
-                        try:
-                            size = file_path.stat().st_size
-                            file_path.unlink()
-                            result["removed_files"].append(str(file_path))
-                            result["total_size_freed"] += size
-                        except Exception as e:
-                            result["errors"].append(
-                                f"Erreur suppression {file_path}: {e}"
-                            )
-        except Exception as e:
-            logger.error(f"Erreur nettoyage anciens fichiers: {e}")
+        for file_path in self.scan_for_cleanup_candidates()["old_files"]:
+            try:
+                size = file_path.stat().st_size
+                file_path.unlink()
+                result["removed_files"].append(str(file_path))
+                result["total_size_freed"] += size
+            except Exception as e:
+                result["errors"].append(f"Erreur suppression {file_path}: {e}")
 
         return result
 
     def cleanup_duplicate_files(self) -> dict[str, Any]:
         """Nettoie les fichiers dupliqués"""
-        result = {"removed_files": [], "total_size_freed": 0, "errors": []}
+        result: dict[str, Any] = {
+            "removed_files": [],
+            "total_size_freed": 0,
+            "errors": [],
+        }
 
-        try:
-            # Calculer les hashes des fichiers
-            file_hashes = {}
-            for file_path in self.project_path.rglob("*"):
-                if file_path.is_file() and not self._is_excluded(file_path):
-                    try:
-                        file_hash = self._calculate_file_hash(file_path)
-                        if file_hash in file_hashes:
-                            # Fichier dupliqué trouvé
-                            size = file_path.stat().st_size
-                            if not getattr(self, "dry_run", False):
-                                file_path.unlink()
-                            result["removed_files"].append(str(file_path))
-                            result["total_size_freed"] += size
-                        else:
-                            file_hashes[file_hash] = file_path
-                    except Exception as e:
-                        result["errors"].append(f"Erreur traitement {file_path}: {e}")
-        except Exception as e:
-            logger.error(f"Erreur nettoyage dupliqués: {e}")
+        for file_path in self.scan_for_cleanup_candidates()["duplicate_files"]:
+            try:
+                size = file_path.stat().st_size
+                file_path.unlink()
+                result["removed_files"].append(str(file_path))
+                result["total_size_freed"] += size
+            except Exception as e:
+                result["errors"].append(f"Erreur traitement {file_path}: {e}")
 
         return result
 
@@ -373,171 +338,90 @@ class AutoCleaner:
 
     def cleanup_empty_directories(self) -> dict[str, Any]:
         """Nettoie les répertoires vides"""
-        result = {"removed_directories": [], "errors": []}
+        result: dict[str, Any] = {"removed_directories": [], "errors": []}
 
-        try:
-            # Parcourir les répertoires de manière récursive
-            for dir_path in sorted(
-                self.project_path.rglob("*"),
-                key=lambda x: len(str(x)),
-                reverse=True,
-            ):
-                if dir_path.is_dir() and not self._is_excluded(dir_path):
-                    try:
-                        if not any(dir_path.iterdir()):
-                            dir_path.rmdir()
-                            result["removed_directories"].append(str(dir_path))
-                    except Exception as e:
-                        result["errors"].append(f"Erreur suppression {dir_path}: {e}")
-        except Exception as e:
-            logger.error(f"Erreur nettoyage répertoires vides: {e}")
+        for directory in self.scan_for_cleanup_candidates()["cache_dirs"]:
+            try:
+                if directory.is_dir() and not any(directory.iterdir()):
+                    directory.rmdir()
+                    result["removed_directories"].append(str(directory))
+            except Exception as e:
+                result["errors"].append(f"Erreur suppression {directory}: {e}")
 
         return result
 
     def cleanup_temporary_files(self) -> dict[str, Any]:
         """Nettoie les fichiers temporaires"""
-        result = {"removed_files": [], "total_size_freed": 0, "errors": []}
+        result: dict[str, Any] = {
+            "removed_files": [],
+            "total_size_freed": 0,
+            "errors": [],
+        }
 
-        temp_patterns = ["*.tmp", "*.temp", "~*", ".#*", "*.swp", "*.swo"]
-
-        try:
-            for pattern in temp_patterns:
-                for temp_file in self.project_path.rglob(pattern):
-                    if temp_file.is_file() and not self._is_excluded(temp_file):
-                        try:
-                            size = temp_file.stat().st_size
-                            temp_file.unlink()
-                            result["removed_files"].append(str(temp_file))
-                            result["total_size_freed"] += size
-                        except Exception as e:
-                            result["errors"].append(
-                                f"Erreur suppression {temp_file}: {e}"
-                            )
-        except Exception as e:
-            logger.error(f"Erreur nettoyage fichiers temporaires: {e}")
+        for temp_file in self.scan_for_cleanup_candidates()["temp_files"]:
+            try:
+                size = temp_file.stat().st_size
+                temp_file.unlink()
+                result["removed_files"].append(str(temp_file))
+                result["total_size_freed"] += size
+            except Exception as e:
+                result["errors"].append(
+                    f"Erreur suppression fichier temporaire {temp_file}: {e}"
+                )
 
         return result
 
     def cleanup_build_artifacts(self) -> dict[str, Any]:
         """Nettoie les artefacts de build"""
-        result = {
+        result: dict[str, Any] = {
             "removed_files": [],
             "removed_directories": [],
             "total_size_freed": 0,
             "errors": [],
         }
 
-        build_patterns = [
-            "build",
-            "dist",
-            "*.egg-info",
-            "target",
-            "bin",
-            "obj",
-        ]
-
-        try:
-            for pattern in build_patterns:
-                if "*" in pattern:
-                    for build_item in self.project_path.rglob(pattern):
-                        if not self._is_excluded(build_item):
-                            try:
-                                if build_item.is_file():
-                                    size = build_item.stat().st_size
-                                    build_item.unlink()
-                                    result["removed_files"].append(str(build_item))
-                                    result["total_size_freed"] += size
-                                elif build_item.is_dir():
-                                    size = self._get_directory_size(build_item)
-                                    shutil.rmtree(build_item)
-                                    result["removed_directories"].append(
-                                        str(build_item)
-                                    )
-                                    result["total_size_freed"] += size
-                            except Exception as e:
-                                result["errors"].append(
-                                    f"Erreur suppression {build_item}: {e}"
-                                )
-                else:
-                    build_path = self.project_path / pattern
-                    if build_path.exists() and not self._is_excluded(build_path):
-                        try:
-                            if build_path.is_file():
-                                size = build_path.stat().st_size
-                                build_path.unlink()
-                                result["removed_files"].append(str(build_path))
-                                result["total_size_freed"] += size
-                            elif build_path.is_dir():
-                                size = self._get_directory_size(build_path)
-                                shutil.rmtree(build_path)
-                                result["removed_directories"].append(str(build_path))
-                                result["total_size_freed"] += size
-                        except Exception as e:
-                            result["errors"].append(
-                                f"Erreur suppression {build_path}: {e}"
-                            )
-        except Exception as e:
-            logger.error(f"Erreur nettoyage artefacts build: {e}")
+        for artifact in self.scan_for_cleanup_candidates()["build_artifacts"]:
+            try:
+                if artifact.is_file():
+                    size = artifact.stat().st_size
+                    artifact.unlink()
+                    result["removed_files"].append(str(artifact))
+                    result["total_size_freed"] += size
+                elif artifact.is_dir():
+                    size = self._get_directory_size(artifact)
+                    shutil.rmtree(artifact)
+                    result["removed_directories"].append(str(artifact))
+                    result["total_size_freed"] += size
+            except Exception as e:
+                result["errors"].append(f"Erreur suppression artefact {artifact}: {e}")
 
         return result
 
     def cleanup_test_artifacts(self) -> dict[str, Any]:
         """Nettoie les artefacts de test"""
-        result = {
+        result: dict[str, Any] = {
             "removed_files": [],
             "removed_directories": [],
             "total_size_freed": 0,
             "errors": [],
         }
 
-        test_patterns = [
-            ".pytest_cache",
-            ".coverage",
-            "htmlcov",
-            "test_results.xml",
-            "junit.xml",
-        ]
-
-        try:
-            for pattern in test_patterns:
-                if "*" in pattern:
-                    for test_item in self.project_path.rglob(pattern):
-                        if not self._is_excluded(test_item):
-                            try:
-                                if test_item.is_file():
-                                    size = test_item.stat().st_size
-                                    test_item.unlink()
-                                    result["removed_files"].append(str(test_item))
-                                    result["total_size_freed"] += size
-                                elif test_item.is_dir():
-                                    size = self._get_directory_size(test_item)
-                                    shutil.rmtree(test_item)
-                                    result["removed_directories"].append(str(test_item))
-                                    result["total_size_freed"] += size
-                            except Exception as e:
-                                result["errors"].append(
-                                    f"Erreur suppression {test_item}: {e}"
-                                )
-                else:
-                    test_path = self.project_path / pattern
-                    if test_path.exists() and not self._is_excluded(test_path):
-                        try:
-                            if test_path.is_file():
-                                size = test_path.stat().st_size
-                                test_path.unlink()
-                                result["removed_files"].append(str(test_path))
-                                result["total_size_freed"] += size
-                            elif test_path.is_dir():
-                                size = self._get_directory_size(test_path)
-                                shutil.rmtree(test_path)
-                                result["removed_directories"].append(str(test_path))
-                                result["total_size_freed"] += size
-                        except Exception as e:
-                            result["errors"].append(
-                                f"Erreur suppression {test_path}: {e}"
-                            )
-        except Exception as e:
-            logger.error(f"Erreur nettoyage artefacts test: {e}")
+        for artifact in self.scan_for_cleanup_candidates()["test_artifacts"]:
+            try:
+                if artifact.is_file():
+                    size = artifact.stat().st_size
+                    artifact.unlink()
+                    result["removed_files"].append(str(artifact))
+                    result["total_size_freed"] += size
+                elif artifact.is_dir():
+                    size = self._get_directory_size(artifact)
+                    shutil.rmtree(artifact)
+                    result["removed_directories"].append(str(artifact))
+                    result["total_size_freed"] += size
+            except Exception as e:
+                result["errors"].append(
+                    f"Erreur suppression artefact de test {artifact}: {e}"
+                )
 
         return result
 
@@ -994,60 +878,48 @@ class AutoCleaner:
         }
 
     def generate_cleanup_report(self) -> dict[str, Any]:
-        """Génère un rapport de nettoyage"""
-        impact = self.calculate_cleanup_impact()
-
-        report = {
+        """Génère un rapport de nettoyage complet"""
+        report: dict[str, Any] = {
             "summary": {
-                "project_path": str(self.project_path),
-                "analysis_date": datetime.now().isoformat(),
-                "estimated_space_saved_mb": round(
-                    impact["estimated_space_saved"] / (1024 * 1024), 2
-                ),
+                "total_files_removed": len(self.cleaned_files),
+                "total_directories_removed": len(self.cleaned_dirs),
+                "total_errors": len(self.errors),
             },
-            "detailed_results": impact,
             "recommendations": [],
         }
 
-        # Générer des recommandations
-        if impact["files_to_remove"] > 0:
+        # Ajouter des recommandations basées sur les résultats
+        if len(self.cleaned_files) > 100:
             report["recommendations"].append(
-                "Supprimer les fichiers temporaires et cache"
+                "Beaucoup de fichiers nettoyés - considérer un nettoyage automatique"
             )
-
-        if impact["large_files"] > 0:
+        if len(self.errors) > 10:
             report["recommendations"].append(
-                "Vérifier et supprimer les gros fichiers inutiles"
+                "Nombreuses erreurs - vérifier les permissions et exclusions"
             )
-
-        if impact["old_files"] > 0:
-            report["recommendations"].append("Nettoyer les anciens fichiers")
-
-        if impact["duplicate_files"] > 0:
-            report["recommendations"].append("Supprimer les fichiers dupliqués")
+        if len(self.cleaned_files) == 0:
+            report["recommendations"].append(
+                "Aucun fichier nettoyé - projet déjà propre"
+            )
+        if len(self.cleaned_dirs) > 20:
+            report["recommendations"].append(
+                "Supprimer les anciens répertoires de build"
+            )
 
         return report
 
-    def save_cleanup_history(self, output_path: str) -> bool:
-        """Sauvegarde l'historique de nettoyage"""
-        try:
-            with open(output_path, "w", encoding="utf-8") as f:
-                json.dump(self.cleanup_history, f, indent=2, default=str)
-            return True
-        except Exception as e:
-            logger.error(f"Erreur sauvegarde historique: {e}")
-            return False
-
-    def load_cleanup_history(self, history_path: str) -> list[dict[str, Any]]:
-        """Charge l'historique de nettoyage"""
-        try:
-            with open(history_path, encoding="utf-8") as f:
-                history = json.load(f)
-                self.cleanup_history = history
-                return history
-        except Exception as e:
-            logger.warning(f"Impossible de charger l'historique {history_path}: {e}")
-            return []
+    def load_cleanup_history(self) -> list[dict[str, Any]]:
+        """Charge l'historique des nettoyages"""
+        history_file = self.project_path / ".cleanup_history.json"
+        if history_file.exists():
+            try:
+                with open(history_file, encoding="utf-8") as f:
+                    history = json.load(f)
+                    if isinstance(history, list):
+                        return history
+            except Exception as e:
+                logger.error(f"Erreur chargement historique: {e}")
+        return []
 
     def perform_full_cleanup(self) -> dict[str, Any]:
         """Effectue un nettoyage complet"""
