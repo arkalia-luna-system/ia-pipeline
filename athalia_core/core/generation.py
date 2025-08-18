@@ -184,7 +184,7 @@ class AdvancedItem(BaseModel):
 
 @app.get("/")
 async def root():
-    return {{"message": "Bienvenue sur {project_name} API version 2.0.0"}}
+    return {{"message": f"Bienvenue sur {project_name} API version 2.0.0"}}
 
 @app.get("/items/", response_model=List[AdvancedItem])
 async def get_items():
@@ -193,7 +193,7 @@ async def get_items():
 
 @app.post("/items/", response_model=AdvancedItem)
 async def create_item(item: AdvancedItem):
-    logger.info("Création d'un nouvel item: {{item.name}}")
+    logger.info(f"Création d'un nouvel item: {{item.name}}")
     return item
 
 @app.get("/health")

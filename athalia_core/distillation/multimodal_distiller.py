@@ -17,10 +17,12 @@ try:
     )
 except ImportError:
 
-    def validate_and_run(command, **kwargs):
+    def validate_and_run(
+        command: list[str], **kwargs: Any
+    ) -> subprocess.CompletedProcess:
         return subprocess.run(command, **kwargs)
 
-    SecurityError = Exception
+    SecurityError = Exception  # type: ignore
 
 
 class MultimodalDistiller:
