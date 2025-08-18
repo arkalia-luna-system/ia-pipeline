@@ -89,6 +89,7 @@ except ImportError:
     generate_project: Any = None
 
 try:
+    # Import log_main séparément pour éviter le conflit
     from .core.main import (
         log_main,
         main,
@@ -106,11 +107,12 @@ except ImportError:
     log_main: Any = None
 
 try:
-    from .core import performance_analyzer
+    # Import du module complet avec un alias différent
+    from .core import performance_analyzer as perf_analyzer_module
     from .core.performance_analyzer import PerformanceAnalyzer
 except ImportError:
     PerformanceAnalyzer: Any = None
-    performance_analyzer: Any = None
+    perf_analyzer_module: Any = None
 
 try:
     from .core.unified_orchestrator import UnifiedOrchestrator
@@ -338,7 +340,7 @@ if log_main is not None:
     __all__.append("log_main")
 if PerformanceAnalyzer is not None:
     __all__.append("PerformanceAnalyzer")
-if performance_analyzer is not None:
+if perf_analyzer_module is not None:
     __all__.append("performance_analyzer")
 if UnifiedOrchestrator is not None:
     __all__.append("UnifiedOrchestrator")
