@@ -54,14 +54,14 @@ class IntelligentAnalyzer:
 
         # Initialiser tous les analyseurs spécialisés
         self.ast_analyzer = ASTAnalyzer()
-        self.pattern_detector = PatternDetector(self.root_path)
-        self.architecture_analyzer = ArchitectureAnalyzer(self.root_path)
+        self.pattern_detector = PatternDetector(str(self.root_path))
+        self.architecture_analyzer = ArchitectureAnalyzer(str(self.root_path))
 
         # Import local pour éviter l'import circulaire
         try:
             from athalia_core.core.performance_analyzer import PerformanceAnalyzer
 
-            self.performance_analyzer = PerformanceAnalyzer(self.root_path)
+            self.performance_analyzer = PerformanceAnalyzer(str(self.root_path))
         except ImportError:
             logger.warning(
                 "PerformanceAnalyzer non disponible - fonctionnalités de performance limitées"
@@ -74,14 +74,14 @@ class IntelligentAnalyzer:
         self, project_path: str = None
     ) -> ComprehensiveAnalysis:
         """Analyser un projet de manière complète avec tous les modules"""
-        project_path = Path(project_path or self.root_path)
+        project_path = Path(project_path or str(self.root_path))
         project_name = project_path.name
 
         logger.info(f"🧠 Analyse complète du projet: {project_name}")
 
         # 1. Analyse AST de base
-        logger.info(" Étape 1/4: Analyse AST de base...")
-        ast_analysis = self._perform_ast_analysis(project_path)
+        logger.info("🔍 Étape 1/4: Analyse AST de base...")
+        ast_analysis = self._perform_ast_analysis(str(project_path))
 
         # 2. Analyse des patterns et doublons
         logger.info(" Étape 2/4: Analyse des patterns et doublons...")
@@ -95,7 +95,7 @@ class IntelligentAnalyzer:
         logger.info("⚡ Étape 4/4: Analyse de performance...")
         if self.performance_analyzer:
             performance_analysis = (
-                self.performance_analyzer.analyze_project_performance(project_path)
+                self.performance_analyzer.analyze_project_performance(str(project_path))
             )
         else:
             performance_analysis = {
@@ -127,8 +127,8 @@ class IntelligentAnalyzer:
             analysis_date=datetime.now(),
             ast_analysis=ast_analysis,
             pattern_analysis=pattern_analysis,
-            architecture_analysis=architecture_analysis,
-            performance_analysis=performance_analysis,
+                            architecture_analysis=architecture_analysis.to_dict() if hasattr(architecture_analysis, 'to_dict') else architecture_analysis,
+                performance_analysis=performance_analysis,
             overall_score=overall_score,
             recommendations=recommendations,
             optimization_plan=optimization_plan,
