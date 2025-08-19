@@ -252,8 +252,10 @@ class TestPromptConstants:
     def test_prompts_weights(self):
         """Test des poids des prompts"""
         for prompt in PROMPTS:
-            assert prompt["weight"] > 0
-            assert prompt["weight"] <= 10  # Poids raisonnable
+            weight = prompt["weight"]
+            assert isinstance(weight, int)
+            assert weight > 0
+            assert weight <= 10  # Poids raisonnable
 
 
 class TestIntegration:
