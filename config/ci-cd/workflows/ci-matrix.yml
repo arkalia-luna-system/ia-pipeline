@@ -195,16 +195,8 @@ jobs:
           echo "🧪 LANCEMENT DES TESTS (ASSOUPLIE)"
           echo "==================================="
           
-          # Tests avec couverture plus flexible
-          pytest --cov=athalia_core \
-                 --cov-report=term \
-                 --cov-report=xml \
-                 --cov-report=html \
-                 --cov-fail-under=60 \
-                 --maxfail=10 \
-                 --durations=10 \
-                 --tb=short \
-                 -v || echo "⚠️  Certains tests ont échoué (non bloquant)"
+          # Tests avec couverture plus flexible (syntaxe compatible multi-OS)
+          pytest --cov=athalia_core --cov-report=term --cov-report=xml --cov-report=html --cov-fail-under=60 --maxfail=10 --durations=10 --tb=short -v || echo "⚠️  Certains tests ont échoué (non bloquant)"
       
       - name: "📊 Upload Coverage to Codecov"
         uses: codecov/codecov-action@v5

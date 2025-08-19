@@ -170,16 +170,8 @@ jobs:
           echo "🧪 LANCEMENT DES TESTS"
           echo "======================"
 
-          # Tests avec couverture
-          pytest --cov=athalia_core \
-                 --cov-report=term \
-                 --cov-report=xml \
-                 --cov-report=html \
-                 --cov-fail-under=80 \
-                 --maxfail=5 \
-                 --durations=10 \
-                 --tb=short \
-                 -v
+          # Tests avec couverture (syntaxe compatible multi-OS)
+          pytest --cov=athalia_core --cov-report=term --cov-report=xml --cov-report=html --cov-fail-under=80 --maxfail=5 --durations=10 --tb=short -v
 
       - name: "📊 Upload Coverage to Codecov"
         uses: codecov/codecov-action@v5
