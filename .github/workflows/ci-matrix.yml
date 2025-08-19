@@ -308,16 +308,22 @@ jobs:
 
           # Tests rapides de compatibilité (uniquement tests de base, exclure les tests complexes)
           echo "🧪 Lancement des tests de compatibilité..."
-          pytest tests/unit/core/ tests/unit/analytics/ \
-            --junitxml=test-results/pytest-compat-${{ matrix.os }}-${{ matrix.python }}.xml \
-            --cov=athalia_core \
-            --cov-report=term-missing \
-            --cov-report=xml:coverage/coverage-compat-${{ matrix.os }}-${{ matrix.python }}.xml \
-            --maxfail=3 --tb=short -v || {
-              echo "⚠️  Tests de compatibilité partiellement échoués (non critique pour cross-platform)"
-              echo "✅ Continuation du pipeline CI/CD"
-              true
-            }
+          if [[ "${{ matrix.os }}" == "windows-2025" ]]; then
+            # Commande PowerShell compatible Windows
+            pytest tests/unit/core/ tests/unit/analytics/ --junitxml=test-results/pytest-compat-${{ matrix.os }}-${{ matrix.python }}.xml --cov=athalia_core --cov-report=term-missing --cov-report=xml:coverage/coverage-compat-${{ matrix.os }}-${{ matrix.python }}.xml --maxfail=3 --tb=short -v || echo "⚠️  Tests de compatibilité partiellement échoués (non critique pour cross-platform)"
+          else
+            # Commande Unix/Linux/macOS
+            pytest tests/unit/core/ tests/unit/analytics/ \
+              --junitxml=test-results/pytest-compat-${{ matrix.os }}-${{ matrix.python }}.xml \
+              --cov=athalia_core \
+              --cov-report=term-missing \
+              --cov-report=xml:coverage/coverage-compat-${{ matrix.os }}-${{ matrix.python }}.xml \
+              --maxfail=3 --tb=short -v || {
+                echo "⚠️  Tests de compatibilité partiellement échoués (non critique pour cross-platform)"
+                echo "✅ Continuation du pipeline CI/CD"
+                true
+              }
+          fi
 
       - name: "📊 Upload Rapport Compatibilité"
         uses: actions/upload-artifact@v4

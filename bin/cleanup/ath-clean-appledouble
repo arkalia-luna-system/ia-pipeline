@@ -84,17 +84,40 @@ clean_macos_files() {
 
     # Compter avant nettoyage
     local count_before=$(find . -name "._*" -type f 2>/dev/null | wc -l)
-    print_status "Trouvé $count_before fichiers AppleDouble"
+    local count_ds_store=$(find . -name ".DS_Store" -type f 2>/dev/null | wc -l)
+    local count_thumbs=$(find . -name "Thumbs.db" -type f 2>/dev/null | wc -l)
+    local total_before=$((count_before + count_ds_store + count_thumbs))
+    
+    print_status "Trouvé $count_before fichiers AppleDouble, $count_ds_store .DS_Store, $count_thumbs Thumbs.db"
+    print_status "Total : $total_before fichiers macOS à nettoyer"
 
-    # Fichiers cachés macOS
-    find . -name "._*" -delete 2>/dev/null || true
-    find . -name ".DS_Store" -delete 2>/dev/null || true
-    find . -name "Thumbs.db" -delete 2>/dev/null || true
+    # Fichiers cachés macOS - nettoyage plus agressif
+    find . -name "._*" -type f -delete 2>/dev/null || true
+    find . -name ".DS_Store" -type f -delete 2>/dev/null || true
+    find . -name "Thumbs.db" -type f -delete 2>/dev/null || true
+    
+    # Nettoyer aussi les fichiers Python corrompus et autres variantes
+    find . -name ".___init__.*" -type f -delete 2>/dev/null || true
+    find . -name ".__pycache__" -type d -exec rm -rf {} + 2>/dev/null || true
+    find . -name "._*.pyc" -type f -delete 2>/dev/null || true
+    find . -name "._*.pyo" -type f -delete 2>/dev/null || true
+    find . -name "._*.pyd" -type f -delete 2>/dev/null || true
+    
+    # Nettoyer les fichiers doubles créés pendant l'exécution
+    find . -name "._*.log" -type f -delete 2>/dev/null || true
+    find . -name "._*.txt" -type f -delete 2>/dev/null || true
+    find . -name "._*.yaml" -type f -delete 2>/dev/null || true
+    find . -name "._*.yml" -type f -delete 2>/dev/null || true
+    find . -name "._*.toml" -type f -delete 2>/dev/null || true
 
     # Compter après nettoyage
     local count_after=$(find . -name "._*" -type f 2>/dev/null | wc -l)
-    local deleted=$((count_before - count_after))
-    print_success "Fichiers macOS nettoyés : $deleted supprimés, $count_after restants"
+    local count_ds_store_after=$(find . -name ".DS_Store" -type f 2>/dev/null | wc -l)
+    local count_thumbs_after=$(find . -name "Thumbs.db" -type f 2>/dev/null | wc -l)
+    local total_after=$((count_after + count_ds_store_after + count_thumbs_after))
+    local deleted=$((total_before - total_after))
+    
+    print_success "Fichiers macOS nettoyés : $deleted supprimés, $total_after restants"
 }
 
 # Fonction de nettoyage des artefacts de build
@@ -218,6 +241,19 @@ clean_aggressive
 
 # Restauration des fichiers importants
 restore_important_files
+
+# Nettoyage final des fichiers doubles créés pendant l'exécution
+print_status "🧹 Nettoyage final des fichiers doubles..."
+find . -name "._*" -type f -delete 2>/dev/null || true
+find . -name ".__pycache__" -type d -exec rm -rf {} + 2>/dev/null || true
+
+# Vérification finale
+local final_count=$(find . -name "._*" -type f 2>/dev/null | wc -l)
+if [ $final_count -eq 0 ]; then
+    print_success "🎯 Tous les fichiers doubles ont été supprimés !"
+else
+    print_warning "⚠️  Il reste $final_count fichiers doubles (probablement protégés)"
+fi
 
 # Calcul de la durée
 END_TIME=$(date +%s)
