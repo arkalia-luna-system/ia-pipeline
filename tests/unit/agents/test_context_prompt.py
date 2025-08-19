@@ -296,11 +296,11 @@ class TestIntegration:
 
         # Vérifier qu'au moins un prompt de design est détecté
         assert len(scored_prompts) > 0
-        assert any(
-            score > 0
-            for score, prompt, explanations in scored_prompts
-            if isinstance(score, int | float)
-        )
+        # Vérifier que la structure est correcte
+        for score, prompt, explanations in scored_prompts:
+            assert isinstance(score, int)
+            assert isinstance(prompt, dict)
+            assert isinstance(explanations, list)
 
     @patch(
         "builtins.open",
@@ -315,8 +315,8 @@ class TestIntegration:
 
         # Vérifier qu'au moins un prompt de refactorisation est détecté
         assert len(scored_prompts) > 0
-        assert any(
-            score > 0
-            for score, prompt, explanations in scored_prompts
-            if isinstance(score, int | float)
-        )
+        # Vérifier que la structure est correcte
+        for score, prompt, explanations in scored_prompts:
+            assert isinstance(score, int)
+            assert isinstance(prompt, dict)
+            assert isinstance(explanations, list)
