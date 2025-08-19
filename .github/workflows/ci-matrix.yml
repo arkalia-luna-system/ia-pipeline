@@ -93,19 +93,19 @@ jobs:
         run: |
           echo "MÉTRIQUES ATHALIA"
           echo "===================="
-          echo "Python files: $(find . -name '*.py' | wc -l | tr -d ' ')"
-          echo "Test files: $(find tests/ -name '*.py' | wc -l | tr -d ' ')"
-          echo "Doc files: $(find docs/ -name '*.md' | wc -l | tr -d ' ')"
-          echo "Config files: $(find config/ -name '*.yml' -o -name '*.yaml' | wc -l | tr -d ' ')"
+          echo "Python files: $(find . -name '*.py' 2>/dev/null | wc -l | tr -d ' ' || echo '0')"
+          echo "Test files: $(find tests/ -name '*.py' 2>/dev/null | wc -l | tr -d ' ' || echo '0')"
+          echo "Doc files: $(find docs/ -name '*.md' 2>/dev/null | wc -l | tr -d ' ' || echo '0')"
+          echo "Config files: $(find config/ -name '*.yml' -o -name '*.yaml' 2>/dev/null | wc -l | tr -d ' ' || echo '0')"
           echo "Package: $(pip show athalia-ai 2>/dev/null | grep Version | cut -d' ' -f2 || echo 'Non installé')"
 
           # Métriques détaillées
           echo ""
           echo "ANALYSE DÉTAILLÉE:"
-          echo "Dossiers Python: $(find . -name '*.py' -exec dirname {} \; | sort | uniq | wc -l | tr -d ' ')"
-          echo "Taille totale: $(du -sh . | cut -f1)"
-          echo "Lignes de code: $(find . -name '*.py' -exec wc -l {} + | tail -1 | awk '{print $1}')"
-          echo "Couverture tests: $(find tests/ -name '*.py' | wc -l | tr -d ' ') / $(find . -name '*.py' | wc -l | tr -d ' ') modules"
+          echo "Dossiers Python: $(find . -name '*.py' -exec dirname {} \; 2>/dev/null | sort | uniq | wc -l | tr -d ' ' || echo '0')"
+          echo "Taille totale: $(du -sh . 2>/dev/null | cut -f1 || echo 'Non disponible')"
+          echo "Lignes de code: $(find . -name '*.py' -exec wc -l {} + | tail -1 | awk '{print $1}' 2>/dev/null || echo 'Non disponible')"
+          echo "Couverture tests: $(find tests/ -name '*.py' 2>/dev/null | wc -l | tr -d ' ' || echo '0') / $(find . -name '*.py' 2>/dev/null | wc -l | tr -d ' ' || echo '0') modules"
 
           # Vérification des imports critiques
           echo ""
@@ -517,10 +517,10 @@ jobs:
           # Supprimer les fichiers Jekyll potentiels
           find . -name "_config.yml" -type f -delete 2>/dev/null || echo "SUCCESS Aucun _config.yml Jekyll trouvé"
           find . -name "Gemfile*" -type f -delete 2>/dev/null || echo "SUCCESS Aucun Gemfile Jekyll trouvé"
-          find . -name "_layouts" -type d -exec rm -rf {} + 2>/dev/null || echo "SUCCESS Aucun _layouts Jekyll trouvé"
-          find . -name "_includes" -type d -exec rm -rf {} + 2>/dev/null || echo "SUCCESS Aucun _includes Jekyll trouvé"
-          find . -name "_sass" -type d -exec rm -rf {} + 2>/dev/null || echo "SUCCESS Aucun _sass Jekyll trouvé"
-          find . -name "_posts" -type d -exec rm -rf {} + 2>/dev/null || echo "SUCCESS Aucun _posts Jekyll trouvé"
+          find . -name "_layouts" -type d -exec rm -rf {} \; 2>/dev/null || echo "SUCCESS Aucun _layouts Jekyll trouvé"
+          find . -name "_includes" -type d -exec rm -rf {} \; 2>/dev/null || echo "SUCCESS Aucun _includes Jekyll trouvé"
+          find . -name "_sass" -type d -exec rm -rf {} \; 2>/dev/null || echo "SUCCESS Aucun _sass Jekyll trouvé"
+          find . -name "_posts" -type d -exec rm -rf {} \; 2>/dev/null || echo "SUCCESS Aucun _posts Jekyll trouvé"
 
           echo "NETTOYAGE ANTI-JEKYLL COMPLET TERMINÉ !"
 
@@ -541,7 +541,7 @@ jobs:
             find . -name "._*" -type f -delete 2>/dev/null || true
             find . -name ".DS_Store" -type f -delete 2>/dev/null || true
             find . -name "*.pyc" -type f -delete 2>/dev/null || true
-            find . -name "__pycache__" -type d -exec rm -rf {} + 2>/dev/null || true
+            find . -name "__pycache__" -type d -exec rm -rf {} \; 2>/dev/null || true
 
           # Tentative de build documentation avec gestion d'erreur robuste et nettoyage post-génération
           echo "Construction de la documentation MkDocs..."
@@ -561,9 +561,9 @@ jobs:
             echo "SUCCESS" > doc_result.txt
 
             # Vérification de la génération
-            if [ -d "site" ] && [ "$(ls -A site)" ]; then
+            if [ -d "site" ] && [ "$(ls -A site 2>/dev/null || echo '')" ]; then
               echo "SUCCESS Site MkDocs généré et non vide"
-              echo "Total fichiers HTML: $(find site/ -name '*.html' | wc -l | tr -d ' ')"
+              echo "Total fichiers HTML: $(find site/ -name '*.html' 2>/dev/null | wc -l | tr -d ' ' || echo '0')"
             else
               echo "WARNING  Site généré mais vide"
               echo "WARNING" > doc_result.txt
@@ -644,11 +644,11 @@ jobs:
 
             # Vérification COMPLÈTE de la structure du site
             echo "STRUCTURE DU SITE MKDOCS GÉNÉRÉE:"
-            echo "Fichiers HTML: $(find site/ -name '*.html' | wc -l | tr -d ' ')"
-            echo "Fichiers CSS: $(find site/ -name '*.css' | wc -l | tr -d ' ')"
-            echo "Fichiers JS: $(find site/ -name '*.js' | wc -l | tr -d ' ')"
-            echo "Total fichiers: $(find site/ -type f | wc -l | tr -d ' ')"
-            echo "Taille totale: $(du -sh site/ | awk '{print $1}')"
+            echo "Fichiers HTML: $(find site/ -name '*.html' 2>/dev/null | wc -l | tr -d ' ' || echo '0')"
+            echo "Fichiers CSS: $(find site/ -name '*.css' 2>/dev/null | wc -l | tr -d ' ' || echo '0')"
+            echo "Fichiers JS: $(find site/ -name '*.js' 2>/dev/null | wc -l | tr -d ' ' || echo '0')"
+            echo "Total fichiers: $(find site/ -type f 2>/dev/null | wc -l | tr -d ' ' || echo '0')"
+            echo "Taille totale: $(du -sh site/ 2>/dev/null | awk '{print $1}' || echo 'Non disponible')"
             
             # Vérifier les fichiers critiques
             if [ -f "site/index.html" ]; then
