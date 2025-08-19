@@ -11,13 +11,16 @@ Ce module contient les composants d'intelligence artificielle :
 """
 
 # Imports des modules AI
-from .ai_robust import RobustAI
+from .ai_robust import RobustAI, SecurityError, query_qwen, validate_and_run
 from .ai_robust_enhanced import RobustAI as RobustAIEnhanced
 
 # Exports publics
 __all__ = [
     "RobustAI",
     "RobustAIEnhanced",
+    "SecurityError",
+    "validate_and_run",
+    "query_qwen",
 ]
 
 __version__ = "2.0.0"

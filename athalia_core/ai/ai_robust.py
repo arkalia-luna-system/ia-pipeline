@@ -13,7 +13,7 @@ from typing import Any, Optional
 import requests
 import yaml
 
-from ..validation.security_validator import validateand_run
+from ..validation.security_validator import validate_and_run
 
 logger = logging.getLogger(__name__)
 
@@ -229,7 +229,9 @@ class RobustAI:
         available = []
         try:
             # Utilisation du validateur de sécurité pour l'appel ollama
-            result = validateand_run(["ollama", "list"], capture_output=True, text=True)
+            result = validate_and_run(
+                ["ollama", "list"], capture_output=True, text=True
+            )
             if result.returncode == 0:
                 output = result.stdout.lower()
                 if "qwen" in output:
@@ -344,7 +346,7 @@ class RobustAI:
         """Appelle Ollama avec un modèle spécifique."""
         try:
             # Utilisation du validateur de sécurité pour l'appel ollama
-            result = validateand_run(
+            result = validate_and_run(
                 ["ollama", "run", model_name, prompt],
                 capture_output=True,
                 text=True,
@@ -385,6 +387,15 @@ suggestions:
 """
         else:
             return "Réponse mock générée pour ce contexte."
+
+
+class SecurityError(Exception):
+    """Exception de sécurité pour les opérations IA."""
+
+    def __init__(self, message: str, context: str = "general"):
+        self.message = message
+        self.context = context
+        super().__init__(self.message)
 
 
 def robust_ai() -> RobustAI:
