@@ -221,7 +221,7 @@ class TestPromptDisplay:
         result = show_prompts(scored_prompts)
 
         assert isinstance(result, str)
-        assert "Aucun prompt" in result or result == ""
+        assert "Aucun prompt" in result or result == "" or len(result) == 0
 
 
 class TestPromptConstants:
