@@ -177,6 +177,7 @@ jobs:
   upload-pypi:
     name: "🚀 Upload PyPI"
     needs: [validate, build]
+    if: needs.validate.result == 'success' && needs.build.result == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -221,6 +222,7 @@ jobs:
   create-release:
     name: "🏷️ GitHub Release"
     needs: [validate, build, build-docs, upload-pypi]
+    if: needs.validate.result == 'success' && needs.build.result == 'success' && needs.upload-pypi.result == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 10
 

@@ -311,7 +311,7 @@ jobs:
   build-package:
     name: "🚀 Build & Package"
     needs: [validate, test-main]
-    if: always() && needs.validate.outputs.should-continue == 'true'
+    if: needs.validate.outputs.should-continue == 'true' && needs.test-main.result == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -349,7 +349,7 @@ jobs:
   build-docs:
     name: "📚 Build Documentation"
     needs: [validate, test-main]
-    if: always() && needs.validate.outputs.should-continue == 'true'
+    if: needs.validate.outputs.should-continue == 'true' && needs.test-main.result == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 12
 
@@ -454,4 +454,28 @@ jobs:
             echo "✅ Documentation: SUCCÈS"
           else
             echo "❌ Documentation: ÉCHEC"
+          fi
+
+          # Évaluation globale
+          echo ""
+          echo "🎯 ÉVALUATION GLOBALE:"
+          success_count=0
+          total_jobs=6
+
+          [[ "${{ needs.validate.result }}" == "success" ]] && ((success_count++))
+          [[ "${{ needs.test-main.result }}" == "success" ]] && ((success_count++))
+          [[ "${{ needs.test-cross-platform.result }}" == "success" ]] && ((success_count++))
+          [[ "${{ needs.security-audit.result }}" == "success" ]] && ((success_count++))
+          [[ "${{ needs.build-package.result }}" == "success" ]] && ((success_count++))
+          [[ "${{ needs.build-docs.result }}" == "success" ]] && ((success_count++))
+
+          success_rate=$((success_count * 100 / total_jobs))
+          echo "📊 Taux de succès: $success_count/$total_jobs ($success_rate%)"
+
+          if [[ $success_rate -ge 80 ]]; then
+            echo "🎉 EXCELLENT - Pipeline CI/CD réussi !"
+          elif [[ $success_rate -ge 60 ]]; then
+            echo "✅ BON - Pipeline CI/CD acceptable"
+          else
+            echo "⚠️  ATTENTION - Pipeline CI/CD problématique"
           fi
