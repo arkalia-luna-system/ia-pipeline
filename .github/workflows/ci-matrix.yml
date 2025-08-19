@@ -183,8 +183,8 @@ jobs:
           echo "======================"
 
           # Création des dossiers compatibles multi-OS
-          # Création des dossiers compatible Windows/Unix
-          mkdir test-results 2>$null; mkdir coverage 2>$null || mkdir -p test-results coverage
+          # Création des dossiers compatible multi-OS
+          mkdir -p test-results coverage 2>/dev/null || true
 
           # Tests avec couverture (+ JUnit)
           pytest \
@@ -307,8 +307,8 @@ jobs:
           echo "==============================="
 
           # Création des dossiers compatibles multi-OS
-          # Création des dossiers compatible Windows/Unix
-          mkdir test-results 2>$null; mkdir coverage 2>$null || mkdir -p test-results coverage
+          # Création des dossiers compatible multi-OS
+          mkdir -p test-results coverage 2>/dev/null || true
 
           # Tests rapides de compatibilité (uniquement tests de base, exclure les tests complexes)
           echo "Lancement des tests de compatibilité..."
