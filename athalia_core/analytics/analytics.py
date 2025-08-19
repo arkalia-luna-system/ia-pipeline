@@ -15,10 +15,10 @@ logger = logging.getLogger(__name__)
 class AnalyticsEngine:
     """Moteur d'analyse pour les projets"""
 
-    def __init__(self, project_path: str):
+    def __init__(self, project_path: str = "."):
         self.project_path = Path(project_path)
-        self.metrics = {}
-        self.reports = {}
+        self.metrics: dict[str, Any] = {}
+        self.reports: dict[str, Any] = {}
 
     def analyze_code_complexity(self) -> dict[str, Any]:
         """Analyse la complexité du code"""

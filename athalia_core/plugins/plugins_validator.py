@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 def validate_plugin(path: str) -> dict[str, Any]:
     """Valide un plugin Python : héritage, méthode run / execute, docstring."""
-    result = {"f": False, "errors": [], "class_name": None}
+    result: dict[str, Any] = {"f": False, "errors": [], "class_name": None}
     if not os.path.exists(path):
         result["errors"].append("Fichier introuvable")
         return result

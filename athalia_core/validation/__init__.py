@@ -4,22 +4,16 @@ Validation des plugins, sécurité et audit
 """
 
 try:
-    from .plugins_validator import PluginsValidator
+    from .plugins_validator import PluginValidator
 except ImportError:
-    PluginsValidator = None
+    pass
 
 try:
     from .security_validator import SecurityValidator
 except ImportError:
-    SecurityValidator = None
-
-try:
-    from .security import SecurityManager
-except ImportError:
-    SecurityManager = None
+    pass
 
 __all__ = [
-    "PluginsValidator",
+    "PluginValidator",
     "SecurityValidator",
-    "SecurityManager",
 ]

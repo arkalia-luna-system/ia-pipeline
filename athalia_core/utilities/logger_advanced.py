@@ -29,14 +29,15 @@ class AthaliaLogger:
         self.archive_dir.mkdir(exist_ok=True)
 
         # Configuration des loggers
-        self.loggers = {}
-        self.metrics = defaultdict(deque)
-        self.performance_data = {}
+        self.loggers: dict[str, logging.Logger] = {}
+        self.metrics: defaultdict[str, deque] = defaultdict(deque)
+        self.performance_data: dict[str, Any] = {}
 
         # Initialiser les loggers
         self._setup_loggers()
 
         # Thread de nettoyage automatique
+        self._cleanup_active = True
         self.cleanup_thread = threading.Thread(target=self._cleanup_worker, daemon=True)
         self.cleanup_thread.start()
 
@@ -340,7 +341,7 @@ class AthaliaLogger:
             return {"total": 0, "error_types": {}}
 
         # Statistiques par type d'erreur
-        error_types = defaultdict(int)
+        error_types: dict[str, int] = defaultdict(int)
         for error in recent_errors:
             error_types[error["error_type"]] += 1
 

@@ -20,7 +20,7 @@ class Dashboard:
 
     def __init__(self, project_path: str = "."):
         self.project_path = Path(project_path)
-        self.metrics = {}
+        self.metrics: dict[str, Any] = {}
         self.config = self.load_dashboard_config()
 
     def load_dashboard_config(self, config_path: str | None = None) -> dict[str, Any]:

@@ -166,21 +166,21 @@ class PatternDetector:
     ) -> dict[str, Any]:
         """Analyse les patterns du projet"""
         if project_path is None:
-            project_path = self.root_path
+            project_path_obj = self.root_path
         else:
-            project_path = Path(project_path)
+            project_path_obj = Path(project_path)
 
-        project_name = project_path.name
+        project_name = project_path_obj.name
         logger.info(f"Analyse des patterns pour: {project_name}")
 
         # Charger les patterns existants
         self._load_patterns()
 
         # Analyser les fichiers Python
-        python_files = list(project_path.rglob("*.py"))
+        python_files = list(project_path_obj.rglob("*.py"))
 
         analysis_results = {
-            "project": str(project_path),
+            "project": str(project_path_obj),
             "total_files": len(python_files),
             "patterns_detected": len(self._pattern_cache),
             "duplications_found": len(self._duplicate_cache),

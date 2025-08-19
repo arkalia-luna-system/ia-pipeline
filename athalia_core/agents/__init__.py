@@ -12,5 +12,13 @@ __version__ = "1.0.0"
 __author__ = "Athalia/Arkalia Team"
 __description__ = "Agents IA spécialisés pour Athalia/Arkalia"
 
+# Import de la fonction query_qwen depuis audit_agent
+from .audit_agent import query_qwen
+
+# Exports publics
+__all__ = [
+    "query_qwen",
+]
+
 # Pas d'import automatique pour éviter les erreurs de dépendances
 # Les agents peuvent être importés individuellement selon les besoins

@@ -8,14 +8,14 @@ from typing import Any
 try:
     from athalia_core.validation.security_validator import (
         SecurityError,
-        validate_and_run,
+        validateand_run,
     )
 except ImportError:
     # Fallback pour les tests
-    def validate_and_run(command, **kwargs):
+    def validateand_run(command: list[str], **kwargs: Any) -> Any:
         return subprocess.run(command, **kwargs)
 
-    class SecurityError(Exception):
+    class SecurityErrorFallback(Exception):
         pass
 
 
@@ -33,7 +33,12 @@ class CodeLinter:
     def __init__(self, project_path: str, auto_fix: bool = False):
         self.project_path = Path(project_path)
         self.auto_fix = auto_fix
-        self.report = {"errors": [], "warnings": [], "fixes": [], "score": 0}
+        self.report: dict[str, Any] = {
+            "errors": [],
+            "warnings": [],
+            "fixes": [],
+            "score": 0,
+        }
 
     def run(self) -> dict[str, Any]:
         """Lance l'analyse de qualité renforcée du projet"""
@@ -61,7 +66,7 @@ class CodeLinter:
         """Exécution de Ruff (remplace Flake8)"""
         try:
             # Utilisation du validateur de sécurité pour l'appel ruff
-            result = validate_and_run(
+            result = validateand_run(
                 ["ruff", "check", str(self.project_path), "--output-format=text"],
                 capture_output=True,
                 text=True,
@@ -73,14 +78,14 @@ class CodeLinter:
                     if line.strip():
                         self.report["errors"].append(f"Ruff: {line}")
 
-        except (Exception, SecurityError) as e:
+        except (Exception, SecurityErrorFallback) as e:
             self.report["errors"].append(f"Ruff non exécuté: {e}")
 
     def _run_black(self):
         """Exécution de Black"""
         try:
             # Utilisation du validateur de sécurité pour l'appel black
-            result = validate_and_run(
+            result = validateand_run(
                 ["black", str(self.project_path), "--check"],
                 capture_output=True,
                 text=True,
@@ -90,14 +95,14 @@ class CodeLinter:
             if result.returncode != 0:
                 self.report["warnings"].append("Formatage Black à corriger")
 
-        except (Exception, SecurityError) as e:
+        except (Exception, SecurityErrorFallback) as e:
             self.report["warnings"].append(f"Black non exécuté: {e}")
 
     def _run_isort(self):
         """Exécution de isort"""
         try:
             # Utilisation du validateur de sécurité pour l'appel isort
-            result = validate_and_run(
+            result = validateand_run(
                 ["isort", str(self.project_path), "--check-only"],
                 capture_output=True,
                 text=True,
@@ -105,7 +110,7 @@ class CodeLinter:
             )
 
             if result.returncode != 0:
-                self.report["warnings"].append("Tri des imports à corriger")
+                self.report["warnings"].append("Tri des imports isort à corriger")
 
         except (Exception, SecurityError) as e:
             self.report["warnings"].append(f"isort non exécuté: {e}")
@@ -114,35 +119,35 @@ class CodeLinter:
         """Exécution de MyPy"""
         try:
             # Utilisation du validateur de sécurité pour l'appel mypy
-            result = validate_and_run(
-                ["mypy", str(self.project_path)],
+            result = validateand_run(
+                ["mypy", str(self.project_path), "--ignore-missing-imports"],
                 capture_output=True,
                 text=True,
-                timeout=30,
+                timeout=60,
             )
 
             if result.stdout:
                 for line in result.stdout.split("\n"):
-                    if line.strip():
-                        self.report["warnings"].append(f"MyPy: {line}")
+                    if line.strip() and "error:" in line:
+                        self.report["errors"].append(f"MyPy: {line}")
 
         except (Exception, SecurityError) as e:
-            self.report["warnings"].append(f"Mypy non exécuté: {e}")
+            self.report["warnings"].append(f"MyPy non exécuté: {e}")
 
     def _run_bandit(self):
-        """Exécution de Bandit pour la sécurité"""
+        """Exécution de Bandit (sécurité)"""
         try:
             # Utilisation du validateur de sécurité pour l'appel bandit
-            result = validate_and_run(
+            result = validateand_run(
                 ["bandit", "-r", str(self.project_path), "-f", "txt"],
                 capture_output=True,
                 text=True,
-                timeout=30,
+                timeout=45,
             )
 
             if result.stdout:
                 for line in result.stdout.split("\n"):
-                    if line.strip():
+                    if line.strip() and "Issue:" in line:
                         self.report["warnings"].append(f"Bandit: {line}")
 
         except (Exception, SecurityError) as e:
@@ -151,15 +156,23 @@ class CodeLinter:
     def _calculate_score(self):
         """Calcul du score de qualité"""
         base_score = 100
-        base_score -= len(self.report["errors"]) * 10
-        base_score -= len(self.report["warnings"]) * 3
-        base_score -= len(self.report["fixes"]) * 2
+        errors = self.report.get("errors", [])
+        warnings = self.report.get("warnings", [])
+        fixes = self.report.get("fixes", [])
+
+        if isinstance(errors, list):
+            base_score -= len(errors) * 10
+        if isinstance(warnings, list):
+            base_score -= len(warnings) * 3
+        if isinstance(fixes, list):
+            base_score -= len(fixes) * 2
+
         self.report["score"] = max(0, base_score)
 
     def _run_complexity_analysis(self):
         """Analyse de la complexité cyclomatique"""
         try:
-            result = validate_and_run(
+            result = validateand_run(
                 ["radon", "cc", str(self.project_path), "-a"],
                 capture_output=True,
                 text=True,
@@ -180,12 +193,16 @@ class CodeLinter:
                                 )
 
                 if complex_functions:
-                    self.report["warnings"].append(
-                        f"Fonctions complexes détectées: {', '.join(complex_functions[:3])}"
-                    )
+                    warnings = self.report.get("warnings", [])
+                    if isinstance(warnings, list):
+                        warnings.append(
+                            f"Fonctions complexes détectées: {', '.join(complex_functions[:3])}"
+                        )
 
         except (Exception, SecurityError) as e:
-            self.report["warnings"].append(f"Analyse de complexité non exécutée: {e}")
+            warnings = self.report.get("warnings", [])
+            if isinstance(warnings, list):
+                warnings.append(f"Analyse de complexité non exécutée: {e}")
 
     def _run_documentation_check(self):
         """Vérification de la documentation"""
@@ -221,14 +238,16 @@ class CodeLinter:
         if total_functions > 0:
             doc_coverage = (documented_functions / total_functions) * 100
             if doc_coverage < 70:
-                self.report["warnings"].append(
-                    f"Couverture documentation faible: {doc_coverage:.1f}%"
-                )
+                warnings = self.report.get("warnings", [])
+                if isinstance(warnings, list):
+                    warnings.append(
+                        f"Couverture documentation faible: {doc_coverage:.1f}%"
+                    )
 
     def _run_test_coverage(self):
         """Vérification de la couverture de tests"""
         try:
-            result = validate_and_run(
+            result = validateand_run(
                 ["coverage", "run", "-m", "pytest", str(self.project_path)],
                 capture_output=True,
                 text=True,
@@ -236,7 +255,7 @@ class CodeLinter:
             )
 
             if result.returncode == 0:
-                result = validate_and_run(
+                result = validateand_run(
                     ["coverage", "report"],
                     capture_output=True,
                     text=True,
@@ -248,15 +267,21 @@ class CodeLinter:
                         if "TOTAL" in line:
                             parts = line.split()
                             if len(parts) >= 4:
-                                coverage = int(parts[3].replace("%", ""))
-                                if coverage < 80:
-                                    self.report["warnings"].append(
-                                        f"Couverture de tests faible: {coverage}%"
-                                    )
-                                break
+                                try:
+                                    coverage = float(parts[-1].replace("%", ""))
+                                    if coverage < 80:
+                                        warnings = self.report.get("warnings", [])
+                                        if isinstance(warnings, list):
+                                            warnings.append(
+                                                f"Couverture de tests faible: {coverage:.1f}%"
+                                            )
+                                except ValueError:
+                                    pass
 
         except (Exception, SecurityError) as e:
-            self.report["warnings"].append(f"Vérification couverture non exécutée: {e}")
+            warnings = self.report.get("warnings", [])
+            if isinstance(warnings, list):
+                warnings.append(f"Vérification couverture non exécutée: {e}")
 
     def _generate_quality_report(self):
         """Génère un rapport de qualité détaillé"""

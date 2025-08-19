@@ -132,7 +132,7 @@ class AutoCorrectionAvancee:
             except Exception:
                 continue
 
-        return {}  # type: ignore
+        return {}
 
     def _corriger_indentation(self, lignes: list[str], ligne_erreur: int) -> str:
         """Correction automatique de l'indentation"""
@@ -150,7 +150,7 @@ class AutoCorrectionAvancee:
                 ) or ligne_precedente.strip().startswith("class "):
                     return "    " + ligne
 
-        return ""  # type: ignore
+        return ""
 
     def _corriger_parentheses(self, lignes: list[str], ligne_erreur: int) -> str:
         """Correction automatique des parenthèses"""
@@ -165,7 +165,7 @@ class AutoCorrectionAvancee:
         elif fermantes > ouvrantes:
             return "(" * (fermantes - ouvrantes) + ligne
 
-        return ""  # type: ignore
+        return ""
 
     def _corriger_guillemets(self, lignes: list[str], ligne_erreur: int) -> str:
         """Correction automatique des guillemets"""
@@ -177,7 +177,7 @@ class AutoCorrectionAvancee:
         elif ligne.count("'") % 2 == 1:
             return ligne + "'"
 
-        return ""  # type: ignore
+        return ""
 
     def _corriger_virgules(self, lignes: list[str], ligne_erreur: int) -> str:
         """Correction automatique des virgules manquantes"""
@@ -192,7 +192,7 @@ class AutoCorrectionAvancee:
                 ) or ligne_suivante.strip().startswith("{"):
                     return ligne.rstrip() + ","
 
-        return ""  # type: ignore
+        return ""
 
     def _optimiser_code(self, dry_run: bool) -> dict[str, Any]:
         """Optimisation automatique du code"""

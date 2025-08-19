@@ -7,19 +7,13 @@ Gestion des modèles IA avec fallback intelligent et gestion d'erreurs avancée
 import logging
 import subprocess
 from enum import Enum
+from pathlib import Path
+from typing import Any, Optional
 
 import requests
+import yaml
 
-# Import du validateur de sécurité
-try:
-    from athalia_core.validation.security_validator import (
-        SecurityError,
-        validate_and_run,
-    )
-except ImportError:
-    # Fallback pour les tests
-    SecurityError = Exception
-    validate_and_run = subprocess.run
+from ..validation.security_validator import validate_and_run
 
 logger = logging.getLogger(__name__)
 
@@ -250,7 +244,7 @@ class RobustAI:
                     available.append(AIModel.OLLAMA_LLAMA)
                 if "codegen" in output:
                     available.append(AIModel.OLLAMA_CODEGEN)
-        except (Exception, SecurityError) as e:
+        except Exception as e:
             logging.warning(f"Ollama non détecté: {e}")
 
         available.append(AIModel.MOCK)
@@ -363,7 +357,7 @@ class RobustAI:
             else:
                 logging.error(f"Ollama erreur: {result.stderr}")
                 return None
-        except (Exception, SecurityError) as e:
+        except Exception as e:
             logging.error(f"Erreur Ollama: {e}")
             return None
 
@@ -393,6 +387,15 @@ suggestions:
 """
         else:
             return "Réponse mock générée pour ce contexte."
+
+
+class SecurityError(Exception):
+    """Exception de sécurité pour les opérations IA."""
+
+    def __init__(self, message: str, context: str = "general"):
+        self.message = message
+        self.context = context
+        super().__init__(self.message)
 
 
 def robust_ai() -> RobustAI:

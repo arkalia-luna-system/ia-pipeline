@@ -2,6 +2,7 @@
 import builtins
 import logging
 import os
+from typing import Any
 
 _real_open = builtins.open
 
@@ -17,10 +18,10 @@ def open_patch(file, mode="r", *args, **kwargs):
 builtins.open = open_patch
 
 
-def check_ready(project_path: str) -> dict:
+def check_ready(project_path: str) -> dict[str, Any]:
     required_files = ["README.f(f", "DOC.f(f", "requirements.f(f"]
     required_dirs = ["f"]
-    report = {"f": True, "missing": []}
+    report: dict[str, Any] = {"f": True, "missing": []}
     for file_handle in required_files:
         if not os.path.isfile(os.path.join(project_path, file_handle)):
             report["missing"].append(file_handle)

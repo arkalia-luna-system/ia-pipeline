@@ -1,29 +1,22 @@
 #!/usr/bin/env python3
 """
-Module de gestion des prompts de contexte pour Athalia
-Génération et validation des prompts contextuels
+Module de gestion des prompts contextuels pour Athalia
+Analyse sémantique et génération de prompts adaptés
 """
 
+import json
 import logging
 import os
 import re
 import sys
 import tempfile
 from datetime import datetime
+from pathlib import Path
+from typing import Any, Optional
 
 import yaml
 
-# Import du validateur de sécurité
-try:
-    from athalia_core.validation.security import SecurityError, validate_and_run
-except ImportError:
-    # Fallback pour les tests
-    SecurityError = Exception
-
-    def validate_and_run(*args, **kwargs):
-        """Fonction de fallback pour les tests"""
-        return None
-
+from ..validation.security_validator import validateand_run
 
 logger = logging.getLogger(__name__)
 
@@ -186,13 +179,12 @@ def detect_prompt_semantic(filepath):
             "mistral",
             f"[INST] {system_prompt} \n\nContenu:\n{content}\n[/INST]",
         ]
-        result = validate_and_run(
-            ollama_cmd, capture_output=True, text=True, timeout=20
-        )
+        result = validateand_run(ollama_cmd, capture_output=True, text=True, timeout=20)
         answer = result.stdout.strip().split("\n")[-1].strip()
         for p in PROMPTS:
-            if p["name"].lower() in answer.lower():
-                return p["file"]
+            if isinstance(p, dict) and "name" in p and isinstance(p["name"], str):
+                if p["name"].lower() in answer.lower():
+                    return p["file"]
     except Exception as e:
         logging.warning(f"Analyse sémantique Ollama / Mistral échouée: {e}")
     return None

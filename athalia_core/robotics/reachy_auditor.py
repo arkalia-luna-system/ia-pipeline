@@ -47,7 +47,7 @@ class ReachyAuditor:
         self.logger.info(f" Début audit Reachy: {self.project_path}")
 
         issues = []
-        recommendations = []
+        recommendations: list[str] = []
         score = 100.0
 
         # Audit ROS2
@@ -100,7 +100,7 @@ class ReachyAuditor:
     def _audit_ros2(self) -> tuple[bool, list[str], list[str]]:
         """Audit spécifique ROS2"""
         issues = []
-        recommendations = []
+        recommendations: list[str] = []
 
         # Vérifier structure workspace
         src_path = self.project_path / "src"
@@ -134,7 +134,7 @@ class ReachyAuditor:
     def _audit_docker(self) -> tuple[bool, list[str], list[str]]:
         """Audit Docker/Containers"""
         issues = []
-        recommendations = []
+        recommendations: list[str] = []
 
         # Vérifier docker-compose.yaml
         compose_file = self.project_path / "docker" / "compose.yaml"
@@ -181,7 +181,7 @@ class ReachyAuditor:
     def _audit_rust(self) -> tuple[bool, list[str], list[str]]:
         """Audit Rust/Cargo"""
         issues = []
-        recommendations = []
+        recommendations: list[str] = []
 
         # Vérifier Cargo.toml
         cargo_files = list(self.project_path.rglob("Cargo.toml"))
@@ -212,7 +212,7 @@ class ReachyAuditor:
     def _audit_structure(self) -> tuple[bool, list[str], list[str]]:
         """Audit structure générale du projet"""
         issues = []
-        recommendations = []
+        recommendations: list[str] = []
 
         # Vérifier README
         readme_files = list(self.project_path.glob("README*"))

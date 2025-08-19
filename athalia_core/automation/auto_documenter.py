@@ -7,15 +7,17 @@ Génération automatique de documentation
 import ast
 import json
 import logging
+import os
 from datetime import datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional
 
-# Import conditionnel pour éviter les dépendances
-try:
-    import yaml
-except ImportError:
-    yaml = None
+import yaml
+
+from ..core.error_handling import AthaliaError
+from ..core.generation import generate_project
+from ..quality.code_linter import CodeLinter
+from ..utilities.logger_advanced import AthaliaLogger
 
 logger = logging.getLogger(__name__)
 
@@ -52,14 +54,9 @@ class AutoDocumenter:
 
         if config_path:
             try:
-                if yaml is None:
-                    logger.warning(
-                        "Module yaml non disponible, utilisation de la configuration par défaut"
-                    )
-                else:
-                    with open(config_path, encoding="utf-8") as f:
-                        user_config = yaml.safe_load(f)
-                        default_config.update(user_config)
+                with open(config_path, encoding="utf-8") as f:
+                    user_config = yaml.safe_load(f)
+                    default_config.update(user_config)
             except Exception as e:
                 logger.warning(
                     f"Impossible de charger la configuration {config_path}: {e}"
@@ -748,7 +745,7 @@ SOFTWARE.
 
         # Initialiser les informations du projet si pas déjà fait
         if not hasattr(self, "project_info"):
-            self.project_info = {
+            self.project_info: dict[str, Any] = {
                 "name": self.project_path.name,
                 "description": "Projet documenté automatiquement",
                 "version": "1.0.0",
@@ -852,6 +849,12 @@ Consultez la documentation complète dans le dossier `docs/`.
                 for method in class_info.get("methods", []):
                     api_docs += f"- `{method}()`\n"
                 api_docs += "\n"
+            elif isinstance(class_info, str):
+                api_docs += f"""### {class_info}
+
+Aucune description disponible
+
+"""
 
         api_docs += f"""## {translations["functions"]}
 
@@ -869,6 +872,12 @@ Consultez la documentation complète dans le dossier `docs/`.
                         f"**{translations['parameters']}:** "
                         f"{', '.join(func_info['args'])}\n\n"
                     )
+            elif isinstance(func_info, str):
+                api_docs += f"""### {func_info}
+
+Aucune description disponible
+
+"""
 
         return api_docs
 

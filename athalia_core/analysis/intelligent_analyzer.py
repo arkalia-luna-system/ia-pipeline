@@ -54,19 +54,19 @@ class IntelligentAnalyzer:
 
         # Initialiser tous les analyseurs spécialisés
         self.ast_analyzer = ASTAnalyzer()
-        self.pattern_detector = PatternDetector(self.root_path)
-        self.architecture_analyzer = ArchitectureAnalyzer(self.root_path)
+        self.pattern_detector = PatternDetector(str(self.root_path))
+        self.architecture_analyzer = ArchitectureAnalyzer(str(self.root_path))
 
         # Import local pour éviter l'import circulaire
         try:
             from athalia_core.core.performance_analyzer import PerformanceAnalyzer
 
-            self.performance_analyzer = PerformanceAnalyzer(self.root_path)
+            self.performance_analyzer = PerformanceAnalyzer(str(self.root_path))
         except ImportError:
             logger.warning(
                 "PerformanceAnalyzer non disponible - fonctionnalités de performance limitées"
             )
-            self.performance_analyzer = None
+            # self.performance_analyzer est déjà initialisé à None
 
         logger.info(f"🧠 Intelligent Analyzer initialisé dans {self.root_path}")
 
@@ -74,18 +74,20 @@ class IntelligentAnalyzer:
         self, project_path: str = None
     ) -> ComprehensiveAnalysis:
         """Analyser un projet de manière complète avec tous les modules"""
-        project_path = Path(project_path or self.root_path)
-        project_name = project_path.name
+        project_path_obj = Path(project_path or str(self.root_path))
+        project_name = project_path_obj.name
 
         logger.info(f"🧠 Analyse complète du projet: {project_name}")
 
         # 1. Analyse AST de base
-        logger.info(" Étape 1/4: Analyse AST de base...")
-        ast_analysis = self._perform_ast_analysis(project_path)
+        logger.info("🔍 Étape 1/4: Analyse AST de base...")
+        ast_analysis = self._perform_ast_analysis(str(project_path))
 
         # 2. Analyse des patterns et doublons
         logger.info(" Étape 2/4: Analyse des patterns et doublons...")
-        pattern_analysis = self.pattern_detector.analyze_project_patterns(project_path)
+        pattern_analysis = self.pattern_detector.analyze_project_patterns(
+            str(project_path_obj)
+        )
 
         # 3. Analyse d'architecture
         logger.info("🏗 Étape 3/4: Analyse d'architecture...")
@@ -94,11 +96,20 @@ class IntelligentAnalyzer:
         # 4. Analyse de performance
         logger.info("⚡ Étape 4/4: Analyse de performance...")
         if self.performance_analyzer:
-            performance_analysis = (
-                self.performance_analyzer.analyze_project_performance(project_path)
+            report_obj = self.performance_analyzer.analyze_project_performance(
+                str(project_path_obj)
+            )
+            performance_dict = (
+                asdict(report_obj)
+                if hasattr(report_obj, "__dataclass_fields__")
+                else (
+                    report_obj.to_dict()
+                    if hasattr(report_obj, "to_dict")
+                    else getattr(report_obj, "__dict__", {})
+                )
             )
         else:
-            performance_analysis = {
+            performance_dict = {
                 "status": "unavailable",
                 "message": "PerformanceAnalyzer non disponible",
             }
@@ -108,18 +119,26 @@ class IntelligentAnalyzer:
             ast_analysis,
             pattern_analysis,
             architecture_analysis,
-            performance_analysis,
+            performance_dict,
         )
 
         # Générer les recommandations globales
         recommendations = self._generate_comprehensive_recommendations(
-            pattern_analysis, architecture_analysis, performance_analysis
+            pattern_analysis, architecture_analysis, performance_dict
         )
 
         # Créer le plan d'optimisation
         optimization_plan = self._create_optimization_plan(
-            pattern_analysis, architecture_analysis, performance_analysis
+            pattern_analysis, architecture_analysis, performance_dict
         )
+
+        # Normaliser l'analyse d'architecture en dict
+        if hasattr(architecture_analysis, "to_dict"):
+            architecture_dict: dict[str, Any] = architecture_analysis.to_dict()
+        elif hasattr(architecture_analysis, "__dict__"):
+            architecture_dict = dict(architecture_analysis.__dict__)
+        else:
+            architecture_dict = {}
 
         # Créer l'analyse complète
         comprehensive_analysis = ComprehensiveAnalysis(
@@ -127,8 +146,8 @@ class IntelligentAnalyzer:
             analysis_date=datetime.now(),
             ast_analysis=ast_analysis,
             pattern_analysis=pattern_analysis,
-            architecture_analysis=architecture_analysis,
-            performance_analysis=performance_analysis,
+            architecture_analysis=architecture_dict,
+            performance_analysis=performance_dict,
             overall_score=overall_score,
             recommendations=recommendations,
             optimization_plan=optimization_plan,
@@ -143,9 +162,10 @@ class IntelligentAnalyzer:
 
         return comprehensive_analysis
 
-    def _perform_ast_analysis(self, project_path: Path) -> dict[str, Any]:
+    def _perform_ast_analysis(self, project_path: str) -> dict[str, Any]:
         """Effectuer l'analyse AST de base"""
-        python_files = list(project_path.rglob("*.py"))
+        project_path_obj = Path(project_path)
+        python_files = list(project_path_obj.rglob("*.py"))
         file_analyses = []
 
         for py_file in python_files:
@@ -164,6 +184,18 @@ class IntelligentAnalyzer:
             except Exception as e:
                 logger.warning(f"Erreur lors de l'analyse AST de {py_file}: {e}")
 
+        def _to_float(value: Any) -> float:
+            try:
+                return float(value)
+            except Exception:
+                return 0.0
+
+        complexities: list[float] = [
+            _to_float(item.get("complexity_score")) for item in file_analyses
+        ]
+        avg_complexity = (
+            sum(complexities) / float(len(complexities)) if complexities else 0.0
+        )
         return {
             "files_analyzed": len(file_analyses),
             "total_files": len(python_files),
@@ -171,12 +203,7 @@ class IntelligentAnalyzer:
             "summary": {
                 "total_functions": sum(f["functions_count"] for f in file_analyses),
                 "total_classes": sum(f["classes_count"] for f in file_analyses),
-                "average_complexity": (
-                    sum(f["complexity_score"] for f in file_analyses)
-                    / len(file_analyses)
-                    if file_analyses
-                    else 0
-                ),
+                "average_complexity": avg_complexity,
             },
         }
 
@@ -200,8 +227,8 @@ class IntelligentAnalyzer:
 
         # Score Patterns (qualité du code)
         pattern_score = 100
-        if pattern_analysis["duplicates"]:
-            pattern_score -= len(pattern_analysis["duplicates"]) * 5
+        if pattern_analysis["duplications"]:
+            pattern_score -= len(pattern_analysis["duplications"]) * 5
         if pattern_analysis["antipatterns"]:
             pattern_score -= len(pattern_analysis["antipatterns"]) * 3
         pattern_score = max(0, pattern_score)
@@ -247,10 +274,10 @@ class IntelligentAnalyzer:
 
         # Recommandations des patterns
         high_severity_duplicates = []
-        if pattern_analysis["duplicates"]:
+        if pattern_analysis["duplications"]:
             high_severity_duplicates = [
                 d
-                for d in pattern_analysis["duplicates"]
+                for d in pattern_analysis["duplications"]
                 if isinstance(d, dict) and d.get("severity") in ["high", "medium"]
             ]
         if high_severity_duplicates:
@@ -316,7 +343,7 @@ class IntelligentAnalyzer:
         performance_analysis: Any,
     ) -> dict[str, Any]:
         """Créer un plan d'optimisation global"""
-        plan = {
+        plan: dict[str, Any] = {
             "priority_tasks": [],
             "medium_priority_tasks": [],
             "low_priority_tasks": [],
@@ -326,10 +353,10 @@ class IntelligentAnalyzer:
 
         # Tâches prioritaires (impact élevé)
         high_severity_duplicates = []
-        if pattern_analysis["duplicates"]:
+        if pattern_analysis["duplications"]:
             high_severity_duplicates = [
                 d
-                for d in pattern_analysis["duplicates"]
+                for d in pattern_analysis["duplications"]
                 if isinstance(d, dict) and d.get("severity") == "high"
             ]
         if high_severity_duplicates:
@@ -425,9 +452,13 @@ class IntelligentAnalyzer:
             "optimization_plan": analysis.optimization_plan,
             "ast_analysis": analysis.ast_analysis,
             "pattern_analysis": {
-                "summary": analysis.pattern_analysis["summary"],
-                "duplicates_count": len(analysis.pattern_analysis["duplicates"]),
-                "antipatterns_count": len(analysis.pattern_analysis["antipatterns"]),
+                "summary": analysis.pattern_analysis.get("summary", {}),
+                "duplicates_count": len(
+                    analysis.pattern_analysis.get("duplications", [])
+                ),
+                "antipatterns_count": len(
+                    analysis.pattern_analysis.get("antipatterns", [])
+                ),
             },
             "architecture_analysis": {
                 "modules_count": (
@@ -467,7 +498,7 @@ class IntelligentAnalyzer:
         """Obtenir des insights d'apprentissage de tous les modules"""
         return {
             "ast_insights": "Analyse AST de base disponible",
-            "pattern_insights": self.pattern_detector.get_learning_insights(),
+            "pattern_insights": "Analyse de patterns disponible",
             "architecture_insights": self.architecture_analyzer.get_optimization_plan(),
             "performance_insights": (
                 (self.performance_analyzer.get_performance_insights())
@@ -501,11 +532,26 @@ class IntelligentAnalyzer:
             logger.warning(
                 "Orchestrateur unifié non disponible, utilisation de l'analyse standard"
             )
-            return self.analyze_project_comprehensive(project_path)
+            analysis = self.analyze_project_comprehensive(project_path)
+            return (
+                analysis.to_dict()
+                if hasattr(analysis, "to_dict")
+                else {
+                    "project_name": analysis.project_name,
+                }
+            )
 
         logger.info(" Utilisation de l'orchestrateur unifié")
-        unified_orchestrator = UnifiedOrchestrator(self.root_path)
-        return unified_orchestrator.orchestrate_project_complete(project_path, config)
+        if self.root_path:
+            unified_orchestrator = UnifiedOrchestrator(str(self.root_path))
+            result = getattr(
+                unified_orchestrator,
+                "orchestrate_project_complete",
+                lambda p, c: {"error": "Unified orchestrator method missing"},
+            )(project_path, config)
+            return result if isinstance(result, dict) else {"result": result}
+        else:
+            return {"error": "Chemin racine non défini"}
 
 
 def main():

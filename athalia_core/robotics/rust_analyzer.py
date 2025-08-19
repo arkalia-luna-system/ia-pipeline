@@ -7,6 +7,7 @@ import logging
 import subprocess
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
 # Import du validateur de sécurité
 try:
@@ -16,10 +17,11 @@ try:
     )
 except ImportError:
     # Fallback pour les tests
-    def validate_and_run(command, **kwargs):
+    def validateand_run(command: list[str], **kwargs: Any) -> Any:
         return subprocess.run(command, **kwargs)
 
-    SecurityError = Exception
+    class SecurityErrorFallback(Exception):
+        pass
 
 
 logger = logging.getLogger(__name__)
@@ -319,7 +321,7 @@ class RustAnalyzer:
 
             # Parser le TOML (version simplifiée)
             # En production, utiliser toml library
-            cargo_data = {}
+            cargo_data: dict[str, Any] = {}
             current_section = None
 
             for line in content.split("\n"):

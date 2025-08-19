@@ -22,8 +22,8 @@ class ProfilUtilisateur:
         self.preferences = preferences or {}
         self.date_creation = datetime.now()
         self.derniere_connexion = datetime.now()
-        self.projets_consultes = []
-        self.actions_frequentes = {}
+        self.projets_consultes: list[str] = []
+        self.actions_frequentes: dict[str, int] = {}
 
     def to_dict(self) -> dict[str, Any]:
         """Conversion en dictionnaire"""
@@ -425,15 +425,15 @@ def main():
         if not args.nom:
             print(" Nom du profil requis")
             return
-        profil = gestionnaire.creer_profil(args.nom, args.email or "")
-        print(f" Profil '{profil.nom}' créé avec succès")
+        profil_creer = gestionnaire.creer_profil(args.nom, args.email or "")
+        print(f" Profil '{profil_creer.nom}' créé avec succès")
 
     elif args.action == "obtenir":
         if not args.nom:
             print(" Nom du profil requis")
             return
-        profil = gestionnaire.obtenir_profil(args.nom)
-        if profil:
+        profil: ProfilUtilisateur | None = gestionnaire.obtenir_profil(args.nom)
+        if profil is not None:
             print(f" Profil trouvé: {profil.nom} ({profil.email})")
         else:
             print(f" Profil '{args.nom}' non trouvé")
@@ -441,8 +441,8 @@ def main():
     elif args.action == "lister":
         profils = gestionnaire.lister_profils()
         print("📋 Profils disponibles:")
-        for profil in profils:
-            print(f"• {profil}")
+        for nom_profil in profils:
+            print(f"• {nom_profil}")
 
     elif args.action == "rapport":
         if not args.nom:

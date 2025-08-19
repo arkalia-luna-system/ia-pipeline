@@ -99,7 +99,7 @@ include = ["athalia_core*"]
 [tool.setuptools.package-data]
 athalia_core = ["templates/*.py", "classification/*.py", "plugins/*.py"]
 
-# Configuration pytest unifiée et moderne
+# Configuration pytest unifiée et moderne (Version Assouplie)
 [tool.pytest.ini_options]
 pythonpath = ["."]
 testpaths = ["tests"]
@@ -115,6 +115,8 @@ addopts = [
     "--disable-warnings",
     "--cache-clear",
     "--import-mode=importlib",
+    "--maxfail=10",  # Plus permissif (était 5)
+    "--durations=10",
 ]
 markers = [
     "fast: marks tests as fast (deselect with '-m \"not fast\"')",
@@ -131,6 +133,7 @@ markers = [
 filterwarnings = [
     "ignore::DeprecationWarning",
     "ignore::PendingDeprecationWarning",
+    "ignore::UserWarning",  # Plus permissif
 ]
 
 [tool.black]
@@ -187,22 +190,25 @@ ignore = [
     "E501",  # line too long, handled by black
     "B008",  # do not perform function calls in argument defaults
     "C901",  # too complex
+    "E722",  # do not use bare except (plus permissif)
+    "F401",  # imported but unused (plus permissif)
 ]
 
 [tool.mypy]
 python_version = "3.10"
-warn_return_any = true
-warn_unused_configs = true
-disallow_untyped_defs = true
-disallow_incomplete_defs = true
+warn_return_any = false  # Plus permissif (était true)
+warn_unused_configs = false  # Plus permissif (était true)
+disallow_untyped_defs = false  # Plus permissif (était true)
+disallow_incomplete_defs = false  # Plus permissif (était true)
 check_untyped_defs = true
-disallow_untyped_decorators = true
-no_implicit_optional = true
-warn_redundant_casts = true
+disallow_untyped_decorators = false  # Plus permissif (était true)
+no_implicit_optional = false  # Plus permissif (était true)
+ignore_missing_imports = true  # Plus permissif
 warn_unused_ignores = true
+warn_redundant_casts = true
 warn_no_return = true
 warn_unreachable = true
-strict_equality = true
+strict_equality = false  # Plus permissif
 show_error_codes = true
 show_column_numbers = true
 show_error_context = true

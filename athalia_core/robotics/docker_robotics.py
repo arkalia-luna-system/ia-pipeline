@@ -9,19 +9,11 @@ import os
 import subprocess
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
 import yaml
 
-# Import du validateur de sécurité
-try:
-    from athalia_core.validation.security_validator import (
-        SecurityError,
-        validate_and_run,
-    )
-except ImportError:
-    # Fallback pour les tests
-    SecurityError = Exception
-    validate_and_run = subprocess.run
+from ..validation.security_validator import validateand_run
 
 logger = logging.getLogger(__name__)
 
@@ -62,8 +54,8 @@ class DockerRoboticsManager:
         """Valider la configuration Docker"""
         self.logger.info(f"🐳 Validation Docker: {self.project_path}")
 
-        issues = []
-        recommendations = []
+        issues: list[str] = []
+        recommendations: list[str] = []
         services = []
 
         # Vérifier docker-compose.yaml
@@ -160,10 +152,15 @@ class DockerRoboticsManager:
             )
 
         # Vérifier variables d'environnement ROS
-        if isinstance(service.environment, list):
-            env_vars = [str(v) for v in service.environment]
-        else:
-            env_vars = [str(v) for v in service.environment.values()]
+        env_vars = []
+        if hasattr(service, "environment") and service.environment:
+            env_data: Any = service.environment
+            if isinstance(env_data, list):
+                env_vars = [str(v) for v in env_data]
+            elif isinstance(env_data, dict):
+                env_vars = [str(v) for v in env_data.values()]
+            else:
+                env_vars = [str(env_data)]
 
         if not any("ROS_DOMAIN_ID" in var for var in env_vars):
             recommendations.append(
@@ -355,7 +352,7 @@ htmlcov/
             if service:
                 cmd.append(service)
 
-            result = validate_and_run(
+            result = validateand_run(
                 cmd, cwd=self.project_path, capture_output=True, text=True
             )
 

@@ -7,23 +7,26 @@ import logging
 import os
 import traceback
 from pathlib import Path
+from typing import Any
 
 import click
 import yaml
 
 # Import des modules avec fallback
 try:
-    from .ai.ai_robust import AIModel, RobustAI
+    from .ai.ai_robust import AIModel as CoreAIModel
+    from .ai.ai_robust import RobustAI as CoreRobustAI
 except ImportError:
     try:
-        from athalia_core.ai.ai_robust import AIModel, RobustAI
+        from athalia_core.ai.ai_robust import AIModel as CoreAIModel
+        from athalia_core.ai.ai_robust import RobustAI as CoreRobustAI
     except ImportError:
         # Créer des classes factices si les imports échouent
-        class AIModel:
+        class CoreAIModelFallback:
             def __init__(self):
                 pass
 
-        class RobustAI:
+        class CoreRobustAIFallback:
             def __init__(self):
                 pass
 
@@ -44,7 +47,9 @@ except ImportError:
 # Exemple: _("Message à traduire") pour les chaînes traduisibles
 
 
-def generate_project(blueprint, output_path, dry_run=False):
+def generate_project(
+    blueprint: dict[str, Any], output_path: str, dry_run: bool = False
+) -> bool:
     """Génère un projet à partir d'un blueprint"""
     try:
         if dry_run:
@@ -134,7 +139,7 @@ def generate(idea, output, dry_run):
 
         # 1. Générer le blueprint avec lIA robuste
         click.echo("🤖 Génération du blueprint avec IA robuste...")
-        ai = RobustAI()
+        ai = CoreRobustAI()
         blueprint = ai.generate_blueprint(idea)
 
         if not blueprint:
@@ -193,14 +198,14 @@ def audit(project_path):
 def ai_status():
     """Affiche le statut de lIA robuste."""
     try:
-        ai = RobustAI()
+        ai = CoreRobustAI()
         click.echo("🤖 Statut de lIA robuste")
         click.echo("=" * 40)
 
         # Modèles disponibles
         click.echo(f"📋 Modèles détectés: {len(ai.available_models)}")
         for model in ai.available_models:
-            status = "" if model != AIModel.MOCK else "🔄"
+            status = "" if model != CoreAIModel.MOCK else "🔄"
             click.echo(f"  {status} {model.value}")
 
         # Chaîne de fallback
@@ -226,7 +231,7 @@ def ai_status():
 def test_ai(idea):
     """Teste lIA robuste avec une idée de projet."""
     try:
-        ai = RobustAI()
+        ai = CoreRobustAI()
         click.echo(f"🧪 Test IA robuste: {idea}")
         click.echo("=" * 50)
 

@@ -5,6 +5,7 @@ import shutil
 import signal
 import time
 from datetime import datetime
+from typing import Any
 
 from athalia_core.automation.ci import add_coverage_badge, generate_github_ci_yaml
 from athalia_core.automation.cleanup import clean_old_tests_and_caches
@@ -23,10 +24,10 @@ try:
 except ImportError:
     # Fallback vers le logging standard si le module avancé n'est pas'
     # disponible
-    athalia_logger = None
+    athalia_logger_fallback: Any = None
 
-    def log_main(msg, level="INFO", **kwargs):
-        logging.getLogger(__name__).info(msg)
+    def log_main(message: str, level: str = "INFO", **kwargs):
+        logging.getLogger(__name__).info(message)
 
 
 """

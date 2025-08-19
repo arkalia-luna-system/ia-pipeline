@@ -32,9 +32,10 @@ class PerformanceOptimizer:
         """Initialise l'optimiseur de performance"""
         self.max_workers = max_workers or os.cpu_count()
         self.memory_limit_mb = memory_limit_mb or 1024
-        self.active_workers = []
-        self.performance_metrics = {}
-        self.optimization_history = []
+        self.active_workers: list[Any] = []
+        self.performance_metrics: dict[str, Any] = {}
+        self.optimization_history: list[Any] = []
+        self.executor: Any = None
 
     def __enter__(self) -> "PerformanceOptimizer":
         """Context manager entry"""
