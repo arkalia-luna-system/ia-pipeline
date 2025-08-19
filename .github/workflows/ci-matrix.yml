@@ -97,7 +97,7 @@ jobs:
           echo "Test files: $(find tests/ -name '*.py' | wc -l | tr -d ' ')"
           echo "Doc files: $(find docs/ -name '*.md' | wc -l | tr -d ' ')"
           echo "Config files: $(find config/ -name '*.yml' -o -name '*.yaml' | wc -l | tr -d ' ')"
-          echo "Package: $(pip show athalia-ai 2>$null | grep Version | cut -d' ' -f2 || echo 'Non installé')"
+          echo "Package: $(pip show athalia-ai 2>/dev/null | grep Version | cut -d' ' -f2 || echo 'Non installé')"
 
           # Métriques détaillées
           echo ""
@@ -110,13 +110,13 @@ jobs:
           # Vérification des imports critiques
           echo ""
           echo "VÉRIFICATION IMPORTS:"
-          if python -c "import athalia_core" 2>$null; then
+          if python -c "import athalia_core" 2>/dev/null; then
             echo "SUCCESS athalia_core - Importable"
           else
             echo "ERROR athalia_core - Non importable"
           fi
 
-          if python -c "import pytest" 2>$null; then
+          if python -c "import pytest" 2>/dev/null; then
             echo "SUCCESS pytest - Disponible"
           else
             echo "ERROR pytest - Non disponible"
@@ -183,9 +183,8 @@ jobs:
           echo "LANCEMENT DES TESTS"
           echo "======================"
 
-          # Création des dossiers compatibles multi-OS (solution Windows)
-          New-Item -ItemType Directory -Path "test-results" -Force -ErrorAction SilentlyContinue
-          New-Item -ItemType Directory -Path "coverage" -Force -ErrorAction SilentlyContinue
+          # Création des dossiers compatibles multi-OS (universel)
+          mkdir -p test-results coverage 2>/dev/null || true
 
           # Tests avec couverture (+ JUnit)
           pytest \
@@ -201,14 +200,14 @@ jobs:
           # Vérification de la génération des rapports
           echo ""
           echo "VÉRIFICATION RAPPORTS TESTS/COUVERTURE:"
-          if ls test-results/*.xml 1>$null 2>&1; then
+          if ls test-results/*.xml 1>/dev/null 2>&1; then
             echo "SUCCESS JUnit généré dans test-results/"
             ls -la test-results | head -5
           else
             echo "ERROR JUnit manquant dans test-results/"
           fi
 
-          if ls coverage/*.xml 1>$null 2>&1; then
+          if ls coverage/*.xml 1>/dev/null 2>&1; then
             echo "SUCCESS Coverage XML généré dans coverage/"
             ls -la coverage | head -5
           else
@@ -308,9 +307,8 @@ jobs:
           echo "==============================="
 
           # Création des dossiers compatibles multi-OS
-          # Création des dossiers compatible multi-OS (solution Windows)
-          New-Item -ItemType Directory -Path "test-results" -Force -ErrorAction SilentlyContinue
-          New-Item -ItemType Directory -Path "coverage" -Force -ErrorAction SilentlyContinue
+          # Création des dossiers compatibles multi-OS (universel)
+          mkdir -p test-results coverage 2>/dev/null || true
 
           # Tests rapides de compatibilité (uniquement tests de base, exclure les tests complexes)
           echo "Lancement des tests de compatibilité..."
@@ -415,8 +413,8 @@ jobs:
           echo "Recherche et suppression des fichiers AppleDouble..."
 
           # Supprimer tous les fichiers AppleDouble
-          Get-ChildItem -Path . -Name "._*" -File -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue; if ($?) { echo "SUCCESS Aucun fichier AppleDouble trouvé" } else { echo "SUCCESS Fichiers AppleDouble supprimés" }
-          Get-ChildItem -Path . -Name ".DS_Store" -File -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue; if ($?) { echo "SUCCESS Aucun .DS_Store trouvé" } else { echo "SUCCESS .DS_Store supprimés" }
+          find . -name "._*" -type f -delete 2>/dev/null || echo "SUCCESS Aucun fichier AppleDouble trouvé"
+          find . -name ".DS_Store" -type f -delete 2>/dev/null || echo "SUCCESS Aucun .DS_Store trouvé"
 
           echo "Nettoyage terminé !"
 
@@ -434,9 +432,9 @@ jobs:
             echo "Tentative de nettoyage et rebuild..."
 
             # Nettoyage agressif
-            Get-ChildItem -Path . -Name "._*" -File -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue
-            Get-ChildItem -Path . -Name ".DS_Store" -File -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue
-            Remove-Item -Path "build", "dist", "*.egg-info" -Recurse -Force -ErrorAction SilentlyContinue
+            find . -name "._*" -type f -delete 2>/dev/null || true
+            find . -name ".DS_Store" -type f -delete 2>/dev/null || true
+            rm -rf build dist *.egg-info 2>/dev/null || true
 
             # Deuxième tentative
             if python -m build --sdist --wheel; then
@@ -506,16 +504,16 @@ jobs:
           echo "Suppression MASSIVE des fichiers problématiques Jekyll..."
 
           # Supprimer TOUS les fichiers AppleDouble
-          Get-ChildItem -Path . -Name "._*" -File -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue; if ($?) { echo "SUCCESS Aucun fichier AppleDouble trouvé" } else { echo "SUCCESS Fichiers AppleDouble supprimés" }
-          Get-ChildItem -Path . -Name ".DS_Store" -File -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue; if ($?) { echo "SUCCESS Aucun .DS_Store trouvé" } else { echo "SUCCESS .DS_Store supprimés" }
+          find . -name "._*" -type f -delete 2>/dev/null || echo "SUCCESS Aucun fichier AppleDouble trouvé"
+          find . -name ".DS_Store" -type f -delete 2>/dev/null || echo "SUCCESS Aucun .DS_Store trouvé"
 
           # Supprimer les fichiers Jekyll potentiels
-          Get-ChildItem -Path . -Name "_config.yml" -File -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue; if ($?) { echo "SUCCESS Aucun _config.yml Jekyll trouvé" } else { echo "SUCCESS _config.yml Jekyll supprimé" }
-          Get-ChildItem -Path . -Name "Gemfile*" -File -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue; if ($?) { echo "SUCCESS Aucun Gemfile Jekyll trouvé" } else { echo "SUCCESS Gemfile Jekyll supprimé" }
-          Get-ChildItem -Path . -Name "_layouts" -Directory -Recurse | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue; if ($?) { echo "SUCCESS Aucun _layouts Jekyll trouvé" } else { echo "SUCCESS _layouts Jekyll supprimé" }
-          Get-ChildItem -Path . -Name "_includes" -Directory -Recurse | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue; if ($?) { echo "SUCCESS Aucun _includes Jekyll trouvé" } else { echo "SUCCESS _includes Jekyll supprimé" }
-          Get-ChildItem -Path . -Name "_sass" -Directory -Recurse | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue; if ($?) { echo "SUCCESS Aucun _sass Jekyll trouvé" } else { echo "SUCCESS _sass Jekyll supprimé" }
-          Get-ChildItem -Path . -Name "_posts" -Directory -Recurse | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue; if ($?) { echo "SUCCESS Aucun _posts Jekyll trouvé" } else { echo "SUCCESS _posts Jekyll supprimé" }
+          find . -name "_config.yml" -type f -delete 2>/dev/null || echo "SUCCESS Aucun _config.yml Jekyll trouvé"
+          find . -name "Gemfile*" -type f -delete 2>/dev/null || echo "SUCCESS Aucun Gemfile Jekyll trouvé"
+          find . -name "_layouts" -type d -exec rm -rf {} + 2>/dev/null || echo "SUCCESS Aucun _layouts Jekyll trouvé"
+          find . -name "_includes" -type d -exec rm -rf {} + 2>/dev/null || echo "SUCCESS Aucun _includes Jekyll trouvé"
+          find . -name "_sass" -type d -exec rm -rf {} + 2>/dev/null || echo "SUCCESS Aucun _sass Jekyll trouvé"
+          find . -name "_posts" -type d -exec rm -rf {} + 2>/dev/null || echo "SUCCESS Aucun _posts Jekyll trouvé"
 
           echo "NETTOYAGE ANTI-JEKYLL COMPLET TERMINÉ !"
 
@@ -531,12 +529,12 @@ jobs:
             exit 1
           fi
 
-          # Nettoyage préventif des fichiers problématiques
-          echo "Nettoyage des fichiers problématiques..."
-                      Get-ChildItem -Path . -Name "._*" -File -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue
-            Get-ChildItem -Path . -Name ".DS_Store" -File -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue
-            Get-ChildItem -Path . -Name "*.pyc" -File -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue
-            Get-ChildItem -Path . -Name "__pycache__" -Directory -Recurse | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
+                      # Nettoyage préventif des fichiers problématiques
+            echo "Nettoyage des fichiers problématiques..."
+            find . -name "._*" -type f -delete 2>/dev/null || true
+            find . -name ".DS_Store" -type f -delete 2>/dev/null || true
+            find . -name "*.pyc" -type f -delete 2>/dev/null || true
+            find . -name "__pycache__" -type d -exec rm -rf {} + 2>/dev/null || true
 
           # Tentative de build documentation avec gestion d'erreur robuste et nettoyage post-génération
           echo "Construction de la documentation MkDocs..."
@@ -545,8 +543,8 @@ jobs:
             
             # NETTOYAGE POST-GÉNÉRATION ANTI-JEKYLL
             echo "NETTOYAGE POST-GÉNÉRATION du site..."
-            Get-ChildItem -Path "site" -Name "._*" -File -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue; if ($?) { echo "SUCCESS Aucun AppleDouble dans site/" } else { echo "SUCCESS AppleDouble supprimés dans site/" }
-            Get-ChildItem -Path "site" -Name ".DS_Store" -File -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue; if ($?) { echo "SUCCESS Aucun .DS_Store dans site/" } else { echo "SUCCESS .DS_Store supprimés dans site/" }
+            find site/ -name "._*" -type f -delete 2>/dev/null || echo "SUCCESS Aucun AppleDouble dans site/"
+            find site/ -name ".DS_Store" -type f -delete 2>/dev/null || echo "SUCCESS Aucun .DS_Store dans site/"
             
             # Forcer la création du fichier .nojekyll dans site/
             echo "# FORCE GitHub Pages à NE PAS utiliser Jekyll" > site/.nojekyll
@@ -567,9 +565,9 @@ jobs:
             echo "WARNING  Documentation échouée - Tentative de nettoyage et rebuild..."
 
             # Nettoyage agressif et reconstruction
-            Remove-Item -Path "site" -Recurse -Force -ErrorAction SilentlyContinue
-            Get-ChildItem -Path . -Name "._*" -File -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue
-            Get-ChildItem -Path . -Name ".DS_Store" -File -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue
+            rm -rf site/ 2>/dev/null || true
+            find . -name "._*" -type f -delete 2>/dev/null || true
+            find . -name ".DS_Store" -type f -delete 2>/dev/null || true
 
             # Deuxième tentative avec plus de verbosité
             echo "Deuxième tentative de construction..."
@@ -583,9 +581,9 @@ jobs:
               # Diagnostic des erreurs
               echo "Diagnostic des erreurs..."
               echo "Contenu du répertoire docs:"
-              Get-ChildItem -Path "docs" -ErrorAction SilentlyContinue | Select-Object -First 5; if ($?) { echo "Dossier docs accessible" } else { echo "Dossier docs non accessible" }
+              ls -la docs/ 2>/dev/null || echo "Dossier docs non accessible"
               echo "Contenu du répertoire config/mkdocs:"
-              Get-ChildItem -Path "config/mkdocs" -ErrorAction SilentlyContinue | Select-Object -First 5; if ($?) { echo "Dossier config/mkdocs accessible" } else { echo "Dossier config/mkdocs non accessible" }
+              ls -la config/mkdocs/ 2>/dev/null || echo "Dossier config/mkdocs non accessible"
             fi
           fi
 
@@ -630,8 +628,8 @@ jobs:
             echo "SUCCESS Fichier .nojekyll TRIPLE-FORCÉ"
 
             # NETTOYAGE FINAL du site
-            Get-ChildItem -Path "site" -Name "._*" -File -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue; if ($?) { echo "SUCCESS Site déjà propre (AppleDouble)" } else { echo "SUCCESS AppleDouble supprimés du site" }
-            Get-ChildItem -Path "site" -Name ".DS_Store" -File -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue; if ($?) { echo "SUCCESS Site déjà propre (.DS_Store)" } else { echo "SUCCESS .DS_Store supprimés du site" }
+            find site/ -name "._*" -type f -delete 2>/dev/null || echo "SUCCESS Site déjà propre (AppleDouble)"
+            find site/ -name ".DS_Store" -type f -delete 2>/dev/null || echo "SUCCESS Site déjà propre (.DS_Store)"
             
             # Créer un fichier CNAME pour le domaine personnalisé (si configuré)
             echo "INFO Configuration CNAME pour GitHub Pages"
