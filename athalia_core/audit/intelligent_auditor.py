@@ -964,8 +964,11 @@ class IntelligentAuditor:
 
         if scores:
             self.audit_results["score"] = round(sum(scores) / len(scores), 2)
+            # Ajouter global_score pour la compatibilité avec les tests
+            self.audit_results["global_score"] = self.audit_results["score"]
         else:
             self.audit_results["score"] = 0
+            self.audit_results["global_score"] = 0
 
     def _generate_recommendations(self):
         """Génère des recommandations d'amélioration"""

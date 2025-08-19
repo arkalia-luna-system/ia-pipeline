@@ -99,17 +99,17 @@ class TestAutoCleanerComplete:
 
     def test_load_cleanup_config_missing(self):
         """Test chargement configuration manquante."""
-        # Supprimer le fichier de config
+        # Supprimer le fichier de configuration
         config_file = self.project_path / ".cleanup_config.json"
-        config_file.unlink()
+        if config_file.exists():
+            config_file.unlink()
 
-        # Créer nouveau cleaner
-        cleaner = AutoCleaner(str(self.project_path))
-        config = cleaner.load_cleanup_config()
+        # Charger la configuration par défaut
+        config = self.cleaner.load_cleanup_config()
 
-        # Devrait charger config par défaut
         assert isinstance(config, dict)
-        assert len(config) > 0
+        assert "cleanup_directories" in config
+        assert "patterns_to_remove" in config
 
     def test_scan_for_cleanup_targets(self):
         """Test scan cibles de nettoyage."""
@@ -351,27 +351,24 @@ class TestAutoCleanerComplete:
         assert "summary" in report
 
     def test_export_cleanup_history(self):
-        """Test export historique nettoyage."""
-        # Ajouter quelques entrées à l'historique
-        self.cleaner.cleanup_history.extend(
-            [
-                {"timestamp": "2023-01-01", "action": "clean_cache"},
-                {"timestamp": "2023-01-02", "action": "remove_duplicates"},
-            ]
-        )
+        """Test export de l'historique de nettoyage."""
+        # Ajouter des entrées à l'historique
+        self.cleaner.cleanup_history = [
+            {"timestamp": "2024-01-01", "action": "cleanup", "files_removed": 5},
+            {"timestamp": "2024-01-02", "action": "cleanup", "files_removed": 3},
+        ]
 
-        # Utiliser la méthode save_cleanup_history qui existe
+        # Exporter l'historique
         export_file = self.project_path / "cleanup_history.json"
         result = self.cleaner.save_cleanup_history(str(export_file))
 
-        if result:
-            assert export_file.exists()
+        assert result == str(export_file)
+        assert export_file.exists()
 
-            # Vérifier contenu export
-            with open(export_file) as f:
-                history_data = json.load(f)
-                assert isinstance(history_data, list)
-                assert len(history_data) >= 2
+        # Vérifier le contenu
+        with open(export_file) as f:
+            exported_data = json.load(f)
+        assert len(exported_data) == 2
 
     def test_validate_cleanup_safety(self):
         """Test validation sécurité nettoyage."""

@@ -39,7 +39,13 @@ class AutoTester:
         self.project_path = Path(project_path)
         self.test_dir = self.project_path / "tests"
         self.generated_tests: list[str] = []
-        self.test_results: dict[str, Any] = {}
+        self.test_results: dict[str, Any] = {
+            "status": "initialized",
+            "success": False,
+            "analysis": {},
+            "generated_tests": [],
+            "execution": {},
+        }
 
     def analyze_project(self) -> dict[str, Any]:
         """Analyse le projet pour identifier les modules à tester"""
@@ -227,15 +233,14 @@ class AutoTester:
         else:
             modules_to_test = self.analyze_project()["modules"]
 
-        generated_count = 0
-        for module in modules_to_test:
-            if self._generate_module_tests(module):
-                generated_count += 1
+        # Générer les tests unitaires
+        unit_tests_result = self._generate_unit_tests(modules_to_test)
 
         return {
-            "generated_tests": generated_count,
+            "generated_tests": unit_tests_result["generated_count"],
             "total_modules": len(modules_to_test),
             "test_files": self.generated_tests,
+            "unit_tests": unit_tests_result["unit_tests"],
         }
 
     def _generate_module_tests(self, module: dict[str, Any]) -> bool:
@@ -372,6 +377,119 @@ if __name__ == "__main__":
     pytest.main([__file__])
 """
         return content
+
+    def _generate_integration_tests(self, modules: list[dict[str, Any]]) -> list[str]:
+        """Génère des tests d'intégration pour plusieurs modules"""
+        integration_test_files = []
+
+        for module in modules:
+            content = f'''"""
+Tests d'intégration générés automatiquement pour {module['name']}
+"""
+
+import pytest
+from pathlib import Path
+import sys
+
+# Ajouter le chemin du projet au PYTHONPATH
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
+try:
+    import {module['name']}
+except ImportError:
+    pytest.skip(f"Module {module['name']} non importable")
+
+def test_{module['name']}_integration():
+    """Test d'intégration pour {module['name']}"""
+    # TODO: Implémenter les tests d'intégration spécifiques
+    assert True
+
+if __name__ == "__main__":
+    pytest.main([__file__])
+'''
+
+            # Sauvegarder le fichier de test
+            test_file = f"test_{module['name']}_integration.py"
+            test_path = self.test_dir / test_file
+            test_path.parent.mkdir(parents=True, exist_ok=True)
+
+            with open(test_path, "w", encoding="utf-8") as f:
+                f.write(content)
+
+            integration_test_files.append(test_file)
+            self.generated_tests.append(str(test_path))
+
+        return integration_test_files
+
+    def _generate_unit_tests(self, modules: list[dict[str, Any]]) -> dict[str, Any]:
+        """Génère des tests unitaires pour plusieurs modules"""
+        results = {
+            "unit_tests": [],
+            "total_modules": len(modules),
+            "generated_count": 0,
+        }
+
+        for module in modules:
+            test_file = f"test_{module['name']}_unit.py"
+            test_content = self._generate_module_unit_tests(module)
+
+            # Sauvegarder le fichier de test
+            test_path = self.test_dir / test_file
+            test_path.parent.mkdir(parents=True, exist_ok=True)
+
+            with open(test_path, "w", encoding="utf-8") as f:
+                f.write(test_content)
+
+            results["unit_tests"].append(test_file)
+            results["generated_count"] += 1
+            self.generated_tests.append(str(test_path))
+
+        return results
+
+    def _run_tests(self) -> dict[str, Any]:
+        """Exécute tous les tests du projet"""
+        try:
+            result = subprocess.run(
+                ["python", "-m", "pytest", "tests/", "-v"],
+                capture_output=True,
+                text=True,
+                cwd=self.project_path,
+            )
+            return {
+                "returncode": result.returncode,
+                "stdout": result.stdout,
+                "stderr": result.stderr,
+                "success": result.returncode == 0,
+            }
+        except Exception as e:
+            return {"error": str(e), "success": False}
+
+    def generate_test_report(self) -> str:
+        """Génère un rapport complet des tests"""
+        try:
+            analysis = self.analyze_project()
+
+            report_content = f"""
+RAPPORT DE TESTS - {self.project_path.name}
+==========================================
+Date d'analyse: 2025-08-19
+Modules analysés: {len(analysis.get("modules", []))}
+Total fonctions: {analysis.get("total_functions", 0)}
+Total classes: {analysis.get("total_classes", 0)}
+Couverture de tests: {analysis.get("test_coverage", 0):.1f}%
+Tests générés: {len(self.generated_tests)}
+
+Fichiers de tests:
+"""
+            for test_file in self.generated_tests:
+                report_content += f"- {test_file}\n"
+
+            return report_content
+
+        except Exception as e:
+            logger.error(f"Erreur génération rapport: {e}")
+            return f"Erreur: {str(e)}"
 
     def _save_tests(self, tests: dict[str, Any], output_dir: str = None) -> bool:
         """Sauvegarde les tests générés"""

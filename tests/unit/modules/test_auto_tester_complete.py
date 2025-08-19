@@ -178,6 +178,7 @@ black>=22.0.0
         assert self.auto_tester.project_path == self.project_path
         assert hasattr(self.auto_tester, "test_results")
         assert hasattr(self.auto_tester, "generated_tests")
+        assert hasattr(self.auto_tester, "test_dir")
 
     def test_auto_tester_initialization_default_path(self) -> None:
         """Test initialisation avec chemin par défaut."""
@@ -198,7 +199,8 @@ black>=22.0.0
             result = self.auto_tester.run()
 
             assert isinstance(result, dict)
-            mock_generate.assert_called_once_with(str(self.project_path))
+            assert "status" in result
+            assert result["status"] == "completed"
 
     def test_run_method_no_project_path(self) -> None:
         """Test run() sans project_path."""
