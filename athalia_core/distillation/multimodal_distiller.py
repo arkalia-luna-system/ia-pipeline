@@ -24,6 +24,7 @@ except ImportError:
 
     class SecurityErrorFallback(Exception):
         """Classe de fallback pour SecurityError"""
+
         pass
 
 
