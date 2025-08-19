@@ -34,7 +34,6 @@ nav:
 # Plugins
 plugins:
   - search
-  - minify
 
 # Extensions Markdown
 markdown_extensions:
@@ -48,15 +47,3 @@ markdown_extensions:
 docs_dir: ../../docs
 site_dir: ../../site
 use_directory_urls: true
-
-# Exclusions
-exclude:
-  - .git/
-  - .github/
-  - .venv/
-  - __pycache__/
-  - logs/
-  - cache/
-  - tests/
-  - scripts/
-  - athalia_core/

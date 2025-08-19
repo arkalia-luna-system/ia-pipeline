@@ -95,9 +95,13 @@ Repository = "https://github.com/arkalia-luna-system/ia-pipeline"
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["athalia_core*"]
+exclude = ["*._*", "*.DS_Store", "._*"]
 
 [tool.setuptools.package-data]
 athalia_core = ["templates/*.py", "classification/*.py", "plugins/*.py"]
+
+[tool.setuptools.exclude-package-data]
+"*" = ["*._*", "*.DS_Store", "._*"]
 
 # Configuration pytest unifiée et moderne (Version Assouplie)
 [tool.pytest.ini_options]
