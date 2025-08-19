@@ -668,12 +668,12 @@ class TestUnifiedOrchestrator:
         """Test de validation robotique pour un projet robotique"""
         # Mock les modules robotiques
         mock_ros2_validator = Mock()
-        mock_ros2_validator.validate_workspace.return_value = Mock(
-            workspace_valid=True,
-            packages=["package1", "package2"],
-            issues=[],
-            build_ready=True,
-        )
+        mock_ros2_validator.validate_package.return_value = {
+            "valid": True,
+            "dependencies": ["package1", "package2"],
+            "errors": [],
+            "build_ready": True,
+        }
         self.orchestrator.ros2_validator = mock_ros2_validator
 
         mock_reachy_auditor = Mock()
@@ -722,10 +722,13 @@ class TestUnifiedOrchestrator:
     @patch("builtins.open", create=True)
     def test_step_artistic_templates_artistic_project(self, mock_open):
         """Test d'application de templates artistiques pour un projet artistique"""
-        # Mock les templates artistiques
+        # Mock les templates artistiques et base
         self.orchestrator.artistic_templates = {
-            "artistic.py": "print('Artistic code')",
-            "templates/style.css": "body { color: red; }",
+            "animation": "print('Animation code')",
+            "artistic": "print('Artistic code')",
+        }
+        self.orchestrator.base_templates = {
+            "base": "print('Base template')",
         }
         # Initialiser la section artistic dans les artifacts
         self.orchestrator.workflow_results["artifacts"]["artistic"] = {}
@@ -864,7 +867,7 @@ def complex_function():
         """Test de validation robotique avec exception"""
         # Mock les modules robotiques avec exception
         mock_ros2_validator = Mock()
-        mock_ros2_validator.validate_workspace.side_effect = Exception(
+        mock_ros2_validator.validate_package.side_effect = Exception(
             "ROS2 validation error"
         )
         self.orchestrator.ros2_validator = mock_ros2_validator
