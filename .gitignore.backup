@@ -242,6 +242,77 @@ dashboard/
 *.db-shm
 *.db-wal
 
+# Fichiers AppleDouble et macOS
+._*
+.DS_Store
 
 # Cache mypy
 .mypy_cache/
+
+# Fichiers AppleDouble et macOS
+._*
+.DS_Store
+
+# Fichiers AppleDouble et macOS
+._*
+.DS_Store
+
+# Fichiers AppleDouble et macOS
+._*
+.DS_Store
+
+# Fichiers AppleDouble et macOS
+._*
+.DS_Store
+
+# Fichiers AppleDouble et macOS
+._*
+.DS_Store
+
+# Fichiers AppleDouble et macOS
+._*
+.DS_Store
+
+# Fichiers AppleDouble et macOS
+._*
+.DS_Store
+
+# Fichiers AppleDouble et macOS
+._*
+.DS_Store
+
+# Fichiers AppleDouble et macOS
+._*
+.DS_Store
+
+# Fichiers AppleDouble et macOS
+._*
+.DS_Store
+
+# Fichiers AppleDouble et macOS
+._*
+.DS_Store
+
+# Fichiers AppleDouble et macOS
+._*
+.DS_Store
+
+# Fichiers AppleDouble et macOS
+._*
+.DS_Store
+
+# Fichiers AppleDouble et macOS
+._*
+.DS_Store
+
+# Fichiers AppleDouble et macOS
+._*
+.DS_Store
+
+# Fichiers AppleDouble et macOS
+._*
+.DS_Store
+
+# Fichiers AppleDouble et macOS
+._*
+.DS_Store
