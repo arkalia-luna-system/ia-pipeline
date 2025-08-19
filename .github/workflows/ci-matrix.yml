@@ -2,7 +2,7 @@
 # Teste sur Windows, macOS, Linux + Python 3.10, 3.11, 3.12
 # Avec tests, couverture, sécurité et qualité
 
-name: 🚀 CI/CD Matrix Ultra-Pro
+name: CI_CD_Matrix_Ultra_Pro
 
 on:
   push:
@@ -27,34 +27,34 @@ env:
 
 jobs:
   # ========================================
-  # 🔍 VALIDATION PRÉLIMINAIRE
+  # VALIDATION PRELIMINAIRE
   # ========================================
   validate:
-    name: "🔍 Validation & Structure"
+    name: "Validation & Structure"
     runs-on: ubuntu-latest
     timeout-minutes: 3
     outputs:
       should-continue: ${{ steps.validate.outputs.should-continue }}
 
     steps:
-      - name: "📥 Checkout Code"
+      - name: "Checkout Code"
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: "🔍 Validation Structure"
+      - name: "Validation Structure"
         run: |
-          echo "🔍 VALIDATION DE LA STRUCTURE ATHALIA"
+          echo "Validation VALIDATION DE LA STRUCTURE ATHALIA"
           echo "====================================="
 
           # Vérification des dossiers critiques
           required_dirs=("athalia_core" "tests" "docs" "config")
           for dir in "${required_dirs[@]}"; do
             if [ -d "$dir" ]; then
-              echo "✅ $dir - Présent"
+              echo "SUCCESS $dir - Présent"
             else
-              echo "❌ $dir - MANQUANT"
+              echo "ERROR $dir - MANQUANT"
               exit 1
             fi
           done
@@ -63,69 +63,69 @@ jobs:
           required_files=("pyproject.toml" "requirements.txt" "README.md")
           for file in "${required_files[@]}"; do
             if [ -f "$file" ]; then
-              echo "✅ $file - Présent"
+              echo "SUCCESS $file - Présent"
             else
-              echo "❌ $file - MANQUANT"
+              echo "ERROR $file - MANQUANT"
               exit 1
             fi
           done
 
           # Vérification de la configuration
           if [ -f "config/makefile/Makefile" ]; then
-            echo "✅ Makefile configuré"
+            echo "SUCCESS Makefile configuré"
           else
-            echo "❌ Makefile non configuré"
+            echo "ERROR Makefile non configuré"
             exit 1
           fi
 
           if [ -f "config/mkdocs/mkdocs.yml" ]; then
-            echo "✅ MkDocs configuré"
+            echo "SUCCESS MkDocs configuré"
           else
-            echo "❌ MkDocs non configuré"
+            echo "ERROR MkDocs non configuré"
             exit 1
           fi
 
-          echo "🎉 Structure validée - Tests autorisés"
+          echo "SUCCESS Structure validée - Tests autorisés"
           echo "should-continue=true" >> $GITHUB_OUTPUT
 
-      - name: "📊 Métriques Projet"
+      - name: "Metriques Projet"
         run: |
-          echo "📊 MÉTRIQUES ATHALIA"
+          echo "Metriques MÉTRIQUES ATHALIA"
           echo "===================="
-          echo "🐍 Python files: $(find . -name '*.py' | wc -l | tr -d ' ')"
-          echo "🧪 Test files: $(find tests/ -name '*.py' | wc -l | tr -d ' ')"
-          echo "📚 Doc files: $(find docs/ -name '*.md' | wc -l | tr -d ' ')"
-          echo "🔧 Config files: $(find config/ -name '*.yml' -o -name '*.yaml' | wc -l | tr -d ' ')"
-          echo "📦 Package: $(pip show athalia-ai 2>/dev/null | grep Version | cut -d' ' -f2 || echo 'Non installé')"
+          echo "Python files: $(find . -name '*.py' | wc -l | tr -d ' ')"
+          echo "Test files: $(find tests/ -name '*.py' | wc -l | tr -d ' ')"
+          echo "Doc files: $(find docs/ -name '*.md' | wc -l | tr -d ' ')"
+          echo "Config files: $(find config/ -name '*.yml' -o -name '*.yaml' | wc -l | tr -d ' ')"
+          echo "Package: $(pip show athalia-ai 2>/dev/null | grep Version | cut -d' ' -f2 || echo 'Non installé')"
 
           # Métriques détaillées
           echo ""
-          echo "🔍 ANALYSE DÉTAILLÉE:"
-          echo "📁 Dossiers Python: $(find . -name '*.py' -exec dirname {} \; | sort | uniq | wc -l | tr -d ' ')"
-          echo "📊 Taille totale: $(du -sh . | cut -f1)"
+          echo "Validation ANALYSE DÉTAILLÉE:"
+          echo "Dossiers Dossiers Python: $(find . -name '*.py' -exec dirname {} \; | sort | uniq | wc -l | tr -d ' ')"
+          echo "Metriques Taille totale: $(du -sh . | cut -f1)"
           echo "📈 Lignes de code: $(find . -name '*.py' -exec wc -l {} + | tail -1 | awk '{print $1}')"
-          echo "🧪 Couverture tests: $(find tests/ -name '*.py' | wc -l | tr -d ' ') / $(find . -name '*.py' | wc -l | tr -d ' ') modules"
+          echo "Tests Couverture tests: $(find tests/ -name '*.py' | wc -l | tr -d ' ') / $(find . -name '*.py' | wc -l | tr -d ' ') modules"
 
           # Vérification des imports critiques
           echo ""
           echo "🔗 VÉRIFICATION IMPORTS:"
           if python -c "import athalia_core" 2>/dev/null; then
-            echo "✅ athalia_core - Importable"
+            echo "SUCCESS athalia_core - Importable"
           else
-            echo "❌ athalia_core - Non importable"
+            echo "ERROR athalia_core - Non importable"
           fi
 
           if python -c "import pytest" 2>/dev/null; then
-            echo "✅ pytest - Disponible"
+            echo "SUCCESS pytest - Disponible"
           else
-            echo "❌ pytest - Non disponible"
+            echo "ERROR pytest - Non disponible"
           fi
 
   # ========================================
-  # 🧪 TESTS PRINCIPAUX (UNIQUEMENT)
+  # Tests TESTS PRINCIPAUX (UNIQUEMENT)
   # ========================================
   test-main:
-    name: "🧪 Tests Principaux (Python ${{ matrix.python }})"
+    name: "Tests Tests Principaux (Python ${{ matrix.python }})"
     needs: validate
     runs-on: ubuntu-latest
     strategy:
@@ -136,13 +136,13 @@ jobs:
     timeout-minutes: 15
 
     steps:
-      - name: "📥 Checkout Code"
+      - name: "Checkout Code"
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: "🐍 Setup Python ${{ matrix.python }}"
+      - name: "Python Setup Python ${{ matrix.python }}"
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
@@ -151,7 +151,7 @@ jobs:
             requirements.txt
             pyproject.toml
 
-      - name: "📦 Upgrade pip & Install Dependencies"
+      - name: "Upload Upgrade pip & Install Dependencies"
         run: |
           python -m pip install --upgrade pip setuptools wheel
           pip install -r requirements.txt
@@ -160,26 +160,26 @@ jobs:
           # Stubs pour MyPy (modules non typés)
           pip install types-PyYAML types-requests
 
-      - name: "🔍 Lint & Format Check"
+      - name: "Validation Lint & Format Check"
         run: |
-          echo "🔍 VÉRIFICATION QUALITÉ CODE"
+          echo "Validation VÉRIFICATION QUALITÉ CODE"
           echo "============================"
 
           # Ruff linting
           echo "📝 Ruff linting..."
-          ruff check . --output-format=github || echo "⚠️  Ruff a trouvé des problèmes (non bloquant)"
+          ruff check . --output-format=github || echo "WARNING  Ruff a trouvé des problèmes (non bloquant)"
 
           # Black format check
           echo "🎨 Black format check..."
-          black --check --diff . || echo "⚠️  Black a trouvé des problèmes de format (non bloquant)"
+          black --check --diff . || echo "WARNING  Black a trouvé des problèmes de format (non bloquant)"
 
           # MyPy type checking
-          echo "🔍 MyPy type checking..."
-          mypy athalia_core/ --ignore-missing-imports --no-error-summary --warn-unused-ignores || echo "⚠️  MyPy a trouvé des problèmes de type (non bloquant)"
+          echo "Validation MyPy type checking..."
+          mypy athalia_core/ --ignore-missing-imports --no-error-summary --warn-unused-ignores || echo "WARNING  MyPy a trouvé des problèmes de type (non bloquant)"
 
-      - name: "🧪 Tests avec Couverture"
+      - name: "Tests Tests avec Couverture"
         run: |
-          echo "🧪 LANCEMENT DES TESTS"
+          echo "Tests LANCEMENT DES TESTS"
           echo "======================"
 
           mkdir -p test-results coverage
@@ -193,48 +193,48 @@ jobs:
             --cov-report=html \
             --cov-fail-under=80 \
             --maxfail=5 --durations=10 --tb=short -v \
-            || echo "⚠️  Certains tests ont échoué (vérification manuelle recommandée)"
+            || echo "WARNING  Certains tests ont échoué (vérification manuelle recommandée)"
 
           # Vérification de la génération des rapports
           echo ""
-          echo "📊 VÉRIFICATION RAPPORTS TESTS/COUVERTURE:"
+          echo "Metriques VÉRIFICATION RAPPORTS TESTS/COUVERTURE:"
           if ls test-results/*.xml 1>/dev/null 2>&1; then
-            echo "✅ JUnit généré dans test-results/"
+            echo "SUCCESS JUnit généré dans test-results/"
             ls -la test-results | head -5
           else
-            echo "❌ JUnit manquant dans test-results/"
+            echo "ERROR JUnit manquant dans test-results/"
           fi
 
           if ls coverage/*.xml 1>/dev/null 2>&1; then
-            echo "✅ Coverage XML généré dans coverage/"
+            echo "SUCCESS Coverage XML généré dans coverage/"
             ls -la coverage | head -5
           else
-            echo "❌ Coverage XML manquant dans coverage/"
+            echo "ERROR Coverage XML manquant dans coverage/"
           fi
 
           if [ -d "htmlcov" ]; then
-            echo "✅ htmlcov/ généré"
+            echo "SUCCESS htmlcov/ généré"
             ls -la htmlcov/ | head -5
-            echo "📁 Total fichiers: $(find htmlcov/ -type f | wc -l)"
+            echo "Dossiers Total fichiers: $(find htmlcov/ -type f | wc -l)"
           else
-            echo "❌ htmlcov/ manquant"
+            echo "ERROR htmlcov/ manquant"
           fi
 
           if [ -f ".coverage" ]; then
-            echo "✅ .coverage généré"
+            echo "SUCCESS .coverage généré"
             ls -la .coverage
           else
-            echo "❌ .coverage manquant"
+            echo "ERROR .coverage manquant"
           fi
 
           # Fallback: génération manuelle des rapports si pytest-cov échoue
           if [ ! -f "coverage/coverage-${{ matrix.python }}-${{ runner.os }}.xml" ] && [ -f ".coverage" ]; then
             echo "🔄 Génération manuelle des rapports de couverture..."
-            python -m coverage xml -o coverage/coverage-${{ matrix.python }}-${{ runner.os }}.xml || echo "⚠️  Échec de la génération XML"
-            python -m coverage html -d htmlcov || echo "⚠️  Échec de la génération HTML"
+            python -m coverage xml -o coverage/coverage-${{ matrix.python }}-${{ runner.os }}.xml || echo "WARNING  Échec de la génération XML"
+            python -m coverage html -d htmlcov || echo "WARNING  Échec de la génération HTML"
           fi
 
-      - name: "📦 Upload Test Results"
+      - name: "Upload Upload Test Results"
         uses: actions/upload-artifact@v4
         with:
           name: test-results-${{ matrix.python }}-${{ runner.os }}
@@ -244,7 +244,7 @@ jobs:
           if-no-files-found: error
           retention-days: 14
 
-      - name: "📊 Upload Coverage to Codecov"
+      - name: "Metriques Upload Coverage to Codecov"
         uses: codecov/codecov-action@v5
         with:
           files: coverage/*.xml
@@ -253,7 +253,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
         if: hashFiles('coverage/*.xml') != ''
 
-      - name: "📦 Upload Coverage HTML"
+      - name: "Upload Upload Coverage HTML"
         uses: actions/upload-artifact@v4
         with:
           name: coverage-html-python-${{ matrix.python }}
@@ -262,10 +262,10 @@ jobs:
         if: hashFiles('htmlcov/**') != ''
 
   # ========================================
-  # 🖥️ TESTS COMPATIBILITÉ CROISÉE
+  # Compatibilite TESTS COMPATIBILITÉ CROISÉE
   # ========================================
   test-cross-platform:
-    name: "🖥️ Tests Compatibilité (${{ matrix.os }})"
+    name: "Compatibilite Tests Compatibilité (${{ matrix.os }})"
     needs: validate
     runs-on: ${{ matrix.os }}
     strategy:
@@ -277,55 +277,51 @@ jobs:
     timeout-minutes: 12
 
     steps:
-      - name: "📥 Checkout Code"
+      - name: "Checkout Code"
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: "🐍 Setup Python ${{ matrix.python }}"
+      - name: "Python Setup Python ${{ matrix.python }}"
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
           cache: pip
 
-      - name: "📦 Install Dependencies"
+      - name: "Upload Install Dependencies"
         run: |
           python -m pip install --upgrade pip setuptools wheel
           pip install -r requirements.txt
           pip install -e .
           pip install pytest pytest-cov
 
-      - name: "🧪 Tests de Compatibilité"
+      - name: "Tests Tests de Compatibilité"
         env:
           PYTHONIOENCODING: utf-8
           PYTHONUTF8: 1
         run: |
-          echo "🖥️ TESTS COMPATIBILITÉ ${{ matrix.os }}"
+          echo "Compatibilite TESTS COMPATIBILITÉ ${{ matrix.os }}"
           echo "==============================="
 
           mkdir -p test-results coverage
 
           # Tests rapides de compatibilité (uniquement tests de base, exclure les tests complexes)
-          echo "🧪 Lancement des tests de compatibilité..."
-          if [[ "${{ matrix.os }}" == "windows-2025" ]]; then
-            # Commande PowerShell compatible Windows
-            pytest tests/unit/core/ tests/unit/analytics/ --junitxml=test-results/pytest-compat-${{ matrix.os }}-${{ matrix.python }}.xml --cov=athalia_core --cov-report=term-missing --cov-report=xml:coverage/coverage-compat-${{ matrix.os }}-${{ matrix.python }}.xml --maxfail=3 --tb=short -v || echo "⚠️  Tests de compatibilité partiellement échoués (non critique pour cross-platform)"
-          else
-            # Commande Unix/Linux/macOS
-            pytest tests/unit/core/ tests/unit/analytics/ \
-              --junitxml=test-results/pytest-compat-${{ matrix.os }}-${{ matrix.python }}.xml \
-              --cov=athalia_core \
-              --cov-report=term-missing \
-              --cov-report=xml:coverage/coverage-compat-${{ matrix.os }}-${{ matrix.python }}.xml \
-              --maxfail=3 --tb=short -v || {
-                echo "⚠️  Tests de compatibilité partiellement échoués (non critique pour cross-platform)"
-                echo "✅ Continuation du pipeline CI/CD"
-                true
-              }
-          fi
+          echo "Tests Lancement des tests de compatibilité..."
 
-      - name: "📊 Upload Rapport Compatibilité"
+          # Commande compatible multi-OS (evite les problemes de syntaxe PowerShell)
+          pytest tests/unit/core/ tests/unit/analytics/ \
+            --junitxml=test-results/pytest-compat-${{ matrix.os }}-${{ matrix.python }}.xml \
+            --cov=athalia_core \
+            --cov-report=term-missing \
+            --cov-report=xml:coverage/coverage-compat-${{ matrix.os }}-${{ matrix.python }}.xml \
+            --maxfail=3 --tb=short -v || {
+              echo "WARNING: Tests de compatibilite partiellement echoues (non critique pour cross-platform)"
+              echo "SUCCESS: Continuation du pipeline CI/CD"
+              true
+            }
+
+      - name: "Metriques Upload Rapport Compatibilité"
         uses: actions/upload-artifact@v4
         with:
           name: compatibility-${{ matrix.os }}-${{ matrix.python }}
@@ -337,25 +333,25 @@ jobs:
         if: hashFiles('test-results/*.xml') != '' || hashFiles('coverage/*.xml') != ''
 
   # ========================================
-  # 🛡️ SÉCURITÉ & QUALITÉ
+  # Securite SÉCURITÉ & QUALITÉ
   # ========================================
   security-audit:
-    name: "🛡️ Audit Sécurité & Qualité"
+    name: "Securite Audit Sécurité & Qualité"
     needs: validate
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
     steps:
-      - name: "📥 Checkout Code"
+      - name: "Checkout Code"
         uses: actions/checkout@v4
 
-      - name: "🐍 Setup Python"
+      - name: "Python Setup Python"
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: pip
 
-      - name: "📦 Install Security Tools"
+      - name: "Upload Install Security Tools"
         run: |
           pip install bandit safety pip-audit
 
@@ -363,24 +359,24 @@ jobs:
         run: |
           echo "🔒 SCAN SÉCURITÉ BANDIT"
           echo "========================"
-          bandit -r athalia_core/ -f json -o bandit-report.json || echo "⚠️  Bandit scan échoué - Rapport non généré"
-          bandit -r athalia_core/ -f txt -o bandit-report.txt || echo "⚠️  Bandit scan échoué - Rapport non généré"
+          bandit -r athalia_core/ -f json -o bandit-report.json || echo "WARNING  Bandit scan échoué - Rapport non généré"
+          bandit -r athalia_core/ -f txt -o bandit-report.txt || echo "WARNING  Bandit scan échoué - Rapport non généré"
 
-      - name: "📦 Pip Audit"
+      - name: "Upload Pip Audit"
         run: |
-          echo "📦 AUDIT DÉPENDANCES PIP"
+          echo "Upload AUDIT DÉPENDANCES PIP"
           echo "========================"
-          pip-audit -r requirements.txt --format json --output pip-audit.json || echo "⚠️  Pip audit échoué - Rapport non généré"
-          pip-audit -r requirements.txt --format text --output pip-audit.txt || echo "⚠️  Pip audit échoué - Rapport non généré"
+          pip-audit -r requirements.txt --format json --output pip-audit.json || echo "WARNING  Pip audit échoué - Rapport non généré"
+          pip-audit -r requirements.txt --format text --output pip-audit.txt || echo "WARNING  Pip audit échoué - Rapport non généré"
 
-      - name: "🛡️ Safety Check"
+      - name: "Securite Safety Check"
         run: |
-          echo "🛡️ VÉRIFICATION SAFETY"
+          echo "Securite VÉRIFICATION SAFETY"
           echo "======================="
-          safety check -r requirements.txt --json --output safety-report.json || echo "⚠️  Safety check échoué - Rapport non généré"
-          safety check -r requirements.txt --text --output safety-report.txt || echo "⚠️  Safety check échoué - Rapport non généré"
+          safety check -r requirements.txt --json --output safety-report.json || echo "WARNING  Safety check échoué - Rapport non généré"
+          safety check -r requirements.txt --text --output safety-report.txt || echo "WARNING  Safety check échoué - Rapport non généré"
 
-      - name: "📊 Upload Security Reports"
+      - name: "Metriques Upload Security Reports"
         uses: actions/upload-artifact@v4
         with:
           name: security-reports
@@ -391,10 +387,10 @@ jobs:
         if: hashFiles('*-report.json') != '' || hashFiles('*-report.txt') != ''
 
   # ========================================
-  # 🚀 BUILD & PACKAGE
+  # BUILD & PACKAGE
   # ========================================
   build-package:
-    name: "🚀 Build & Package"
+    name: "Build & Package"
     needs: [validate, test-main]
     if: needs.validate.outputs.should-continue == 'true' && (needs.test-main.result == 'success' || needs.test-main.result == 'failure')
     runs-on: ubuntu-latest
@@ -402,16 +398,16 @@ jobs:
     continue-on-error: true # Continuer même en cas d'échec
 
     steps:
-      - name: "📥 Checkout Code"
+      - name: "Checkout Code"
         uses: actions/checkout@v4
 
-      - name: "🐍 Setup Python"
+      - name: "Python Setup Python"
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: pip
 
-      - name: "📦 Install Build Tools"
+      - name: "Upload Install Build Tools"
         run: |
           pip install build wheel setuptools
 
@@ -419,11 +415,11 @@ jobs:
         run: |
           echo "🧹 NETTOYAGE PRÉVENTIF DES FICHIERS MACOS"
           echo "============================================="
-          echo "🔍 Recherche et suppression des fichiers AppleDouble..."
+          echo "Validation Recherche et suppression des fichiers AppleDouble..."
 
           # Supprimer tous les fichiers AppleDouble
-          find . -name "._*" -type f -delete 2>/dev/null || echo "✅ Aucun fichier AppleDouble trouvé"
-          find . -name ".DS_Store" -type f -delete 2>/dev/null || echo "✅ Aucun .DS_Store trouvé"
+          find . -name "._*" -type f -delete 2>/dev/null || echo "SUCCESS Aucun fichier AppleDouble trouvé"
+          find . -name ".DS_Store" -type f -delete 2>/dev/null || echo "SUCCESS Aucun .DS_Store trouvé"
 
           echo "🧹 Nettoyage terminé !"
 
@@ -434,44 +430,44 @@ jobs:
 
           # Tentative de build
           if python -m build --sdist --wheel; then
-            echo "✅ Build réussi !"
+            echo "SUCCESS Build réussi !"
             echo "SUCCESS" > build_result.txt
           else
-            echo "⚠️  Build échoué - Problème de fichiers AppleDouble détecté"
+            echo "WARNING  Build échoué - Problème de fichiers AppleDouble détecté"
             echo "🔄 Tentative de nettoyage et rebuild..."
-            
+
             # Nettoyage agressif
             find . -name "._*" -type f -delete 2>/dev/null
             find . -name ".DS_Store" -type f -delete 2>/dev/null
             rm -rf build dist *.egg-info 2>/dev/null
-            
+
             # Deuxième tentative
             if python -m build --sdist --wheel; then
-              echo "✅ Build réussi après nettoyage !"
+              echo "SUCCESS Build réussi après nettoyage !"
               echo "SUCCESS" > build_result.txt
             else
-              echo "❌ Build échoué définitivement"
+              echo "ERROR Build échoué définitivement"
               echo "FAILURE" > build_result.txt
             fi
           fi
 
-      - name: "📊 Résultat Final Build"
+      - name: "Metriques Résultat Final Build"
         run: |
           if [ -f build_result.txt ]; then
             RESULT=$(cat build_result.txt)
             if [ "$RESULT" = "SUCCESS" ]; then
-              echo "🎉 BUILD RÉUSSI"
-              echo "✅ Package créé avec succès"
+              echo "SUCCESS BUILD RÉUSSI"
+              echo "SUCCESS Package créé avec succès"
             else
-              echo "⚠️  BUILD ÉCHOUÉ - Problème AppleDouble persistant"
+              echo "WARNING  BUILD ÉCHOUÉ - Problème AppleDouble persistant"
               echo "🔄 Ce problème est spécifique à macOS et n'affecte pas la fonctionnalité"
-              echo "✅ Le job continue pour permettre la documentation"
+              echo "SUCCESS Le job continue pour permettre la documentation"
             fi
           else
             echo "❓ Résultat du build non déterminé"
           fi
 
-      - name: "📦 Upload Artifacts (si succès)"
+      - name: "Upload Upload Artifacts (si succès)"
         if: success()
         uses: actions/upload-artifact@v4
         with:
@@ -482,10 +478,10 @@ jobs:
           retention-days: 30
 
   # ========================================
-  # 📚 DOCUMENTATION
+  # Documentation DOCUMENTATION
   # ========================================
   documentation:
-    name: "📚 Documentation"
+    name: "Documentation Documentation"
     needs: [validate, test-main]
     if: needs.validate.outputs.should-continue == 'true' && (needs.test-main.result == 'success' || needs.test-main.result == 'failure')
     runs-on: ubuntu-latest
@@ -493,16 +489,16 @@ jobs:
     continue-on-error: true # Continuer même en cas d'échec
 
     steps:
-      - name: "📥 Checkout Code"
+      - name: "Checkout Code"
         uses: actions/checkout@v4
 
-      - name: "🐍 Setup Python"
+      - name: "Python Setup Python"
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: pip
 
-      - name: "📦 Install MkDocs"
+      - name: "Upload Install MkDocs"
         run: |
           pip install mkdocs mkdocs-material
 
@@ -510,22 +506,22 @@ jobs:
         run: |
           echo "🧹 NETTOYAGE PRÉVENTIF DES FICHIERS MACOS"
           echo "============================================="
-          echo "🔍 Recherche et suppression des fichiers AppleDouble..."
+          echo "Validation Recherche et suppression des fichiers AppleDouble..."
 
           # Supprimer tous les fichiers AppleDouble
-          find . -name "._*" -type f -delete 2>/dev/null || echo "✅ Aucun fichier AppleDouble trouvé"
-          find . -name ".DS_Store" -type f -delete 2>/dev/null || echo "✅ Aucun .DS_Store trouvé"
+          find . -name "._*" -type f -delete 2>/dev/null || echo "SUCCESS Aucun fichier AppleDouble trouvé"
+          find . -name ".DS_Store" -type f -delete 2>/dev/null || echo "SUCCESS Aucun .DS_Store trouvé"
 
           echo "🧹 Nettoyage terminé !"
 
-      - name: "📚 Build Documentation"
+      - name: "Documentation Build Documentation"
         run: |
-          echo "📚 CONSTRUCTION DE LA DOCUMENTATION"
+          echo "Documentation CONSTRUCTION DE LA DOCUMENTATION"
           echo "==================================="
 
           # Vérification de la configuration MkDocs
           if [ ! -f "config/mkdocs/mkdocs.yml" ]; then
-            echo "❌ Configuration MkDocs manquante"
+            echo "ERROR Configuration MkDocs manquante"
             echo "FAILURE" > doc_result.txt
             exit 1
           fi
@@ -540,58 +536,58 @@ jobs:
           # Tentative de build documentation avec gestion d'erreur robuste
           echo "🔨 Construction de la documentation..."
           if mkdocs build -f config/mkdocs/mkdocs.yml --strict 2>&1; then
-            echo "✅ Documentation construite avec succès !"
+            echo "SUCCESS Documentation construite avec succès !"
             echo "SUCCESS" > doc_result.txt
-            
+
             # Vérification de la génération
             if [ -d "site" ] && [ "$(ls -A site)" ]; then
-              echo "✅ Site généré et non vide"
+              echo "SUCCESS Site généré et non vide"
             else
-              echo "⚠️  Site généré mais vide"
+              echo "WARNING  Site généré mais vide"
               echo "WARNING" > doc_result.txt
             fi
           else
-            echo "⚠️  Documentation échouée - Tentative de nettoyage et rebuild..."
-            
+            echo "WARNING  Documentation échouée - Tentative de nettoyage et rebuild..."
+
             # Nettoyage agressif et reconstruction
             rm -rf site/ 2>/dev/null || true
             find . -name "._*" -type f -delete 2>/dev/null || true
             find . -name ".DS_Store" -type f -delete 2>/dev/null || true
-            
+
             # Deuxième tentative avec plus de verbosité
             echo "🔄 Deuxième tentative de construction..."
             if mkdocs build -f config/mkdocs/mkdocs.yml --verbose 2>&1; then
-              echo "✅ Documentation construite après nettoyage !"
+              echo "SUCCESS Documentation construite après nettoyage !"
               echo "SUCCESS" > doc_result.txt
             else
-              echo "❌ Documentation échouée définitivement"
+              echo "ERROR Documentation échouée définitivement"
               echo "FAILURE" > doc_result.txt
-              
+
               # Diagnostic des erreurs
-              echo "🔍 Diagnostic des erreurs..."
-              echo "📁 Contenu du répertoire docs:"
+              echo "Validation Diagnostic des erreurs..."
+              echo "Dossiers Contenu du répertoire docs:"
               ls -la docs/ 2>/dev/null || echo "Dossier docs non accessible"
-              echo "📁 Contenu du répertoire config/mkdocs:"
+              echo "Dossiers Contenu du répertoire config/mkdocs:"
               ls -la config/mkdocs/ 2>/dev/null || echo "Dossier config/mkdocs non accessible"
             fi
           fi
 
-      - name: "📊 Résultat Final Documentation"
+      - name: "Metriques Résultat Final Documentation"
         run: |
           if [ -f doc_result.txt ]; then
             RESULT=$(cat doc_result.txt)
             if [ "$RESULT" = "SUCCESS" ]; then
-              echo "🎉 DOCUMENTATION RÉUSSIE"
-              echo "✅ Site généré avec succès"
+              echo "SUCCESS DOCUMENTATION RÉUSSIE"
+              echo "SUCCESS Site généré avec succès"
             else
-              echo "⚠️  DOCUMENTATION ÉCHOUÉE - Problème AppleDouble persistant"
+              echo "WARNING  DOCUMENTATION ÉCHOUÉE - Problème AppleDouble persistant"
               echo "🔄 Ce problème est spécifique à macOS et n'affecte pas la fonctionnalité"
             fi
           else
             echo "❓ Résultat de la documentation non déterminé"
           fi
 
-      - name: "📦 Upload Artifacts (si succès)"
+      - name: "Upload Upload Artifacts (si succès)"
         if: success()
         uses: actions/upload-artifact@v4
         with:
@@ -609,23 +605,23 @@ jobs:
           # Créer un fichier .nojekyll pour désactiver Jekyll
           if [ -d "site" ]; then
             touch site/.nojekyll
-            echo "✅ Fichier .nojekyll créé pour désactiver Jekyll"
-            
+            echo "SUCCESS Fichier .nojekyll créé pour désactiver Jekyll"
+
             # Créer un fichier CNAME si nécessaire
             if [ -n "${{ vars.CUSTOM_DOMAIN }}" ]; then
               echo "${{ vars.CUSTOM_DOMAIN }}" > site/CNAME
-              echo "✅ CNAME configuré pour ${{ vars.CUSTOM_DOMAIN }}"
+              echo "SUCCESS CNAME configuré pour ${{ vars.CUSTOM_DOMAIN }}"
             fi
-            
+
             # Vérifier la structure du site
-            echo "📁 Structure du site généré:"
+            echo "Dossiers Structure du site généré:"
             find site/ -type f -name "*.html" | head -10
-            echo "📊 Total fichiers HTML: $(find site/ -type f -name '*.html' | wc -l)"
+            echo "Metriques Total fichiers HTML: $(find site/ -type f -name '*.html' | wc -l)"
           else
-            echo "⚠️  Dossier site non trouvé"
+            echo "WARNING  Dossier site non trouvé"
           fi
 
-      - name: "🚀 Déploiement GitHub Pages"
+      - name: "Deploiement GitHub Pages"
         if: success() && github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -644,22 +640,22 @@ jobs:
           # Créer le fichier .nojekyll dans le dossier site/
           if [ -d "site" ]; then
             touch site/.nojekyll
-            echo "✅ Fichier .nojekyll créé dans site/"
-            
+            echo "SUCCESS Fichier .nojekyll créé dans site/"
+
             # Copier la configuration depuis config/github-pages/
             if [ -f "config/github-pages/github-pages-config.yml" ]; then
               cp config/github-pages/github-pages-config.yml site/
-              echo "✅ Configuration GitHub Pages copiée"
+              echo "SUCCESS Configuration GitHub Pages copiée"
             else
-              echo "⚠️  Configuration GitHub Pages non trouvée"
+              echo "WARNING  Configuration GitHub Pages non trouvée"
             fi
-            
+
             # Vérifier la structure finale
-            echo "📁 Structure finale du site:"
+            echo "Dossiers Structure finale du site:"
             ls -la site/ | head -10
-            echo "📊 Total fichiers: $(find site/ -type f | wc -l)"
+            echo "Metriques Total fichiers: $(find site/ -type f | wc -l)"
           else
-            echo "❌ Dossier site non trouvé"
+            echo "ERROR Dossier site non trouvé"
           fi
 
   # ========================================
@@ -681,84 +677,84 @@ jobs:
     timeout-minutes: 8
 
     steps:
-      - name: "📥 Checkout Code"
+      - name: "Checkout Code"
         uses: actions/checkout@v4
 
-      - name: "📥 Download all artifacts"
+      - name: "Checkout Download all artifacts"
         uses: actions/download-artifact@v4
         with:
           path: artifacts
           merge-multiple: true
 
-      - name: "📂 Lister artefacts"
+      - name: " Lister artefacts"
         run: |
-          echo "📦 Fichiers d'artefacts téléchargés:" 
+          echo "Upload Fichiers d'artefacts téléchargés:"
           find artifacts -maxdepth 3 -type f -print || true
 
-      - name: "🧾 Générer résumé Markdown"
+      - name: " Générer résumé Markdown"
         run: |
           python3 -c 'import glob,sys; junit=glob.glob("artifacts/test-results/*.xml"); cov=glob.glob("artifacts/coverage/*.xml"); ok=bool(junit) and bool(cov); print(f"JUnit: {len(junit)} fichiers, Coverage: {len(cov)} fichiers"); open("REPORT.md","w",encoding="utf-8").write("# Rapport CI\n\n"+f"- JUnit: {len(junit)} fichiers\n"+f"- Coverage: {len(cov)} fichiers\n"); sys.exit(0 if ok else 1)'
 
-      - name: "📤 Publier rapport final"
+      - name: " Publier rapport final"
         uses: actions/upload-artifact@v4
         with:
           name: CI-REPORT
           path: REPORT.md
 
-      - name: "📊 Génération Rapport Final"
+      - name: "Metriques Génération Rapport Final"
         run: |
           echo "🎯 RAPPORT FINAL CI/CD ATHALIA"
           echo "==============================="
-          echo "✅ Validation: ${{ needs.validate.result }}"
-          echo "🧪 Tests Principaux: ${{ needs.test-main.result }}"
-          echo "🖥️ Compatibilité: ${{ needs.test-cross-platform.result }}"
-          echo "🛡️ Sécurité: ${{ needs.security-audit.result }}"
-          echo "🚀 Build: ${{ needs.build-package.result }}"
-          echo "📚 Documentation: ${{ needs.documentation.result }}"
+          echo "SUCCESS Validation: ${{ needs.validate.result }}"
+          echo "Tests Tests Principaux: ${{ needs.test-main.result }}"
+          echo "Compatibilite Compatibilité: ${{ needs.test-cross-platform.result }}"
+          echo "Securite Sécurité: ${{ needs.security-audit.result }}"
+          echo "Build: ${{ needs.build-package.result }}"
+          echo "Documentation Documentation: ${{ needs.documentation.result }}"
           echo ""
           echo "🌐 Résultats disponibles dans les artifacts"
-          echo "📊 Coverage: Codecov + HTML reports"
-          echo "🛡️ Sécurité: Bandit + Safety + Pip-audit"
-          echo "📦 Package: Wheel + Source distribution"
-          echo "📚 Site: Documentation statique"
+          echo "Metriques Coverage: Codecov + HTML reports"
+          echo "Securite Sécurité: Bandit + Safety + Pip-audit"
+          echo "Package: Wheel + Source distribution"
+          echo "Documentation Site: Documentation statique"
 
           # Résumé des résultats
           echo ""
           echo "📋 RÉSUMÉ EXÉCUTION:"
           if [[ "${{ needs.validate.result }}" == "success" ]]; then
-            echo "✅ Validation: SUCCÈS"
+            echo "SUCCESS Validation: SUCCÈS"
           else
-            echo "❌ Validation: ÉCHEC"
+            echo "ERROR Validation: ÉCHEC"
           fi
 
           if [[ "${{ needs.test-main.result }}" == "success" ]]; then
-            echo "✅ Tests Principaux: SUCCÈS"
+            echo "SUCCESS Tests Principaux: SUCCÈS"
           else
-            echo "❌ Tests Principaux: ÉCHEC"
+            echo "ERROR Tests Principaux: ÉCHEC"
           fi
 
           if [[ "${{ needs.test-cross-platform.result }}" == "success" ]]; then
-            echo "✅ Compatibilité: SUCCÈS"
+            echo "SUCCESS Compatibilité: SUCCÈS"
           else
-            echo "❌ Compatibilité: ÉCHEC"
+            echo "ERROR Compatibilité: ÉCHEC"
           fi
 
           if [[ "${{ needs.security-audit.result }}" == "success" ]]; then
-            echo "✅ Sécurité: SUCCÈS"
+            echo "SUCCESS Sécurité: SUCCÈS"
           else
-            echo "❌ Sécurité: ÉCHEC"
+            echo "ERROR Sécurité: ÉCHEC"
           fi
 
           if [[ "${{ needs.build-package.result }}" == "success" ]]; then
-            echo "✅ Build: SUCCÈS"
+            echo "SUCCESS Build: SUCCÈS"
           else
-            echo "❌ Build: ÉCHEC"
+            echo "ERROR Build: ÉCHEC"
           fi
 
           if [[ "${{ needs.documentation.result }}" == "success" ]]; then
-            echo "✅ Documentation: SUCCÈS"
+            echo "SUCCESS Documentation: SUCCÈS"
           else
-            echo "❌ Documentation: ÉCHEC"
+            echo "ERROR Documentation: ÉCHEC"
           fi
 
           # Évaluation globale
@@ -775,12 +771,12 @@ jobs:
           [[ "${{ needs.documentation.result }}" == "success" ]] && ((success_count++))
 
           success_rate=$((success_count * 100 / total_jobs))
-          echo "📊 Taux de succès: $success_count/$total_jobs ($success_rate%)"
+          echo "Metriques Taux de succès: $success_count/$total_jobs ($success_rate%)"
 
           if [[ $success_rate -ge 80 ]]; then
-            echo "🎉 EXCELLENT - Pipeline CI/CD réussi !"
+            echo "SUCCESS EXCELLENT - Pipeline CI/CD réussi !"
           elif [[ $success_rate -ge 60 ]]; then
-            echo "✅ BON - Pipeline CI/CD acceptable"
+            echo "SUCCESS BON - Pipeline CI/CD acceptable"
           else
-            echo "⚠️  ATTENTION - Pipeline CI/CD problématique"
+            echo "WARNING  ATTENTION - Pipeline CI/CD problématique"
           fi
