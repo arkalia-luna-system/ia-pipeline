@@ -10,9 +10,12 @@ try:
         SecurityError,
         validateand_run,
     )
+
+    # Définir SecurityErrorFallback comme alias de SecurityError
+    SecurityErrorFallback = SecurityError
 except ImportError:
     # Fallback pour les tests
-    def validateand_run(command: list[str], **kwargs: Any) -> Any:
+    def validate_and_run(command: list[str], **kwargs: Any) -> Any:
         return subprocess.run(command, **kwargs)
 
     class SecurityErrorFallback(Exception):

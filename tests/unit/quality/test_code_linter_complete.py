@@ -52,7 +52,10 @@ class TestClass:
 
     def test_run_returns_dict(self):
         """Test que run() retourne un dictionnaire"""
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+        # Importer la fonction directement pour le patch
+        from athalia_core.quality.code_linter import validateand_run
+
+        with patch("athalia_core.quality.code_linter.validateand_run") as mock_run:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = ""
             result = self.linter.run()
@@ -64,7 +67,7 @@ class TestClass:
 
     def test_run_ruff_success(self):
         """Test de l'exécution de ruff avec succès"""
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+        with patch("subprocess.run") as mock_run:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = ""
             self.linter._run_ruff()
@@ -72,7 +75,7 @@ class TestClass:
 
     def test_run_ruff_with_errors(self):
         """Test de l'exécution de ruff avec des erreurs"""
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+        with patch("subprocess.run") as mock_run:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = "test.py:1:1 E302 expected 2 blank lines"
             self.linter._run_ruff()
@@ -80,7 +83,7 @@ class TestClass:
 
     def test_run_black_success(self):
         """Test de l'exécution de black avec succès"""
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+        with patch("subprocess.run") as mock_run:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = ""
             self.linter._run_black()
@@ -88,7 +91,7 @@ class TestClass:
 
     def test_run_black_with_issues(self):
         """Test de l'exécution de black avec des problèmes"""
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+        with patch("subprocess.run") as mock_run:
             mock_run.return_value.returncode = 1
             mock_run.return_value.stdout = "would reformat"
             self.linter._run_black()
