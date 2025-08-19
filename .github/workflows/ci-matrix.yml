@@ -182,17 +182,34 @@ jobs:
           echo "🧪 LANCEMENT DES TESTS"
           echo "======================"
 
-          # Tests avec couverture (syntaxe compatible multi-OS)
-          pytest --cov=athalia_core --cov-report=term --cov-report=xml --cov-report=html --cov-fail-under=80 --maxfail=5 --durations=10 --tb=short -v || echo "⚠️  Certains tests ont échoué (vérification manuelle recommandée)"
+          mkdir -p test-results coverage
+
+          # Tests avec couverture (+ JUnit)
+          pytest \
+            --junitxml=test-results/pytest-${{ matrix.python }}-${{ runner.os }}.xml \
+            --cov=athalia_core \
+            --cov-report=term-missing \
+            --cov-report=xml:coverage/coverage-${{ matrix.python }}-${{ runner.os }}.xml \
+            --cov-report=html \
+            --cov-fail-under=80 \
+            --maxfail=5 --durations=10 --tb=short -v \
+            || echo "⚠️  Certains tests ont échoué (vérification manuelle recommandée)"
 
           # Vérification de la génération des rapports
           echo ""
-          echo "📊 VÉRIFICATION RAPPORTS COUVERTURE:"
-          if [ -f "coverage.xml" ]; then
-            echo "✅ coverage.xml généré"
-            ls -la coverage.xml
+          echo "📊 VÉRIFICATION RAPPORTS TESTS/COUVERTURE:"
+          if ls test-results/*.xml 1>/dev/null 2>&1; then
+            echo "✅ JUnit généré dans test-results/"
+            ls -la test-results | head -5
           else
-            echo "❌ coverage.xml manquant"
+            echo "❌ JUnit manquant dans test-results/"
+          fi
+
+          if ls coverage/*.xml 1>/dev/null 2>&1; then
+            echo "✅ Coverage XML généré dans coverage/"
+            ls -la coverage | head -5
+          else
+            echo "❌ Coverage XML manquant dans coverage/"
           fi
 
           if [ -d "htmlcov" ]; then
@@ -211,20 +228,30 @@ jobs:
           fi
 
           # Fallback: génération manuelle des rapports si pytest-cov échoue
-          if [ ! -f "coverage.xml" ] && [ -f ".coverage" ]; then
+          if [ ! -f "coverage/coverage-${{ matrix.python }}-${{ runner.os }}.xml" ] && [ -f ".coverage" ]; then
             echo "🔄 Génération manuelle des rapports de couverture..."
-            python -m coverage xml -o coverage.xml || echo "⚠️  Échec de la génération XML"
+            python -m coverage xml -o coverage/coverage-${{ matrix.python }}-${{ runner.os }}.xml || echo "⚠️  Échec de la génération XML"
             python -m coverage html -d htmlcov || echo "⚠️  Échec de la génération HTML"
           fi
+
+      - name: "📦 Upload Test Results"
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-${{ matrix.python }}-${{ runner.os }}
+          path: |
+            test-results/*.xml
+            coverage/*.xml
+          if-no-files-found: error
+          retention-days: 14
 
       - name: "📊 Upload Coverage to Codecov"
         uses: codecov/codecov-action@v5
         with:
-          files: ./coverage.xml
+          files: coverage/*.xml
           fail_ci_if_error: false
           verbose: true
           token: ${{ secrets.CODECOV_TOKEN }}
-        if: hashFiles('coverage.xml') != ''
+        if: hashFiles('coverage/*.xml') != ''
 
       - name: "📦 Upload Coverage HTML"
         uses: actions/upload-artifact@v4
@@ -244,7 +271,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-latest, windows-latest]
+        os: [macos-15, windows-2025]
         python: ["3.11"]
 
     timeout-minutes: 12
@@ -277,23 +304,31 @@ jobs:
           echo "🖥️ TESTS COMPATIBILITÉ ${{ matrix.os }}"
           echo "==============================="
 
+          mkdir -p test-results coverage
+
           # Tests rapides de compatibilité (uniquement tests de base, exclure les tests complexes)
           echo "🧪 Lancement des tests de compatibilité..."
-          pytest tests/unit/core/ tests/unit/analytics/ --maxfail=3 --tb=short -v || {
-            echo "⚠️  Tests de compatibilité partiellement échoués (non critique pour cross-platform)"
-            echo "✅ Continuation du pipeline CI/CD"
-            exit 0  # Force le succès pour éviter l'échec du job
-          }
+          pytest tests/unit/core/ tests/unit/analytics/ \
+            --junitxml=test-results/pytest-compat-${{ matrix.os }}-${{ matrix.python }}.xml \
+            --cov=athalia_core \
+            --cov-report=term-missing \
+            --cov-report=xml:coverage/coverage-compat-${{ matrix.os }}-${{ matrix.python }}.xml \
+            --maxfail=3 --tb=short -v || {
+              echo "⚠️  Tests de compatibilité partiellement échoués (non critique pour cross-platform)"
+              echo "✅ Continuation du pipeline CI/CD"
+              true
+            }
 
       - name: "📊 Upload Rapport Compatibilité"
         uses: actions/upload-artifact@v4
         with:
           name: compatibility-${{ matrix.os }}-${{ matrix.python }}
           path: |
-            .pytest_cache/
-            test-results/
+            test-results/*.xml
+            coverage/*.xml
           retention-days: 7
-        if: hashFiles('.pytest_cache/**') != '' || hashFiles('test-results/**') != ''
+          if-no-files-found: warn
+        if: hashFiles('test-results/*.xml') != '' || hashFiles('coverage/*.xml') != ''
 
   # ========================================
   # 🛡️ SÉCURITÉ & QUALITÉ
@@ -640,6 +675,41 @@ jobs:
     timeout-minutes: 8
 
     steps:
+      - name: "📥 Checkout Code"
+        uses: actions/checkout@v4
+
+      - name: "📥 Download all artifacts"
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+
+      - name: "📂 Lister artefacts"
+        run: |
+          echo "📦 Fichiers d'artefacts téléchargés:" 
+          find artifacts -maxdepth 3 -type f -print || true
+
+      - name: "🧾 Générer résumé Markdown"
+        run: |
+          python - <<'PY'
+import glob, sys
+junit = glob.glob("artifacts/test-results/*.xml")
+cov   = glob.glob("artifacts/coverage/*.xml")
+ok = len(junit) > 0 and len(cov) > 0
+print(f"JUnit: {len(junit)} fichiers, Coverage: {len(cov)} fichiers")
+with open("REPORT.md","w", encoding="utf-8") as f:
+    f.write("# Rapport CI\n\n")
+    f.write(f"- JUnit: {len(junit)} fichiers\n")
+    f.write(f"- Coverage: {len(cov)} fichiers\n")
+sys.exit(0 if ok else 1)
+PY
+
+      - name: "📤 Publier rapport final"
+        uses: actions/upload-artifact@v4
+        with:
+          name: CI-REPORT
+          path: REPORT.md
+
       - name: "📊 Génération Rapport Final"
         run: |
           echo "🎯 RAPPORT FINAL CI/CD ATHALIA"
