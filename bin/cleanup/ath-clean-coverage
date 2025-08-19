@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Script de nettoyage rapide de la couverture et des caches
+# Usage: ./bin/cleanup/ath-clean-coverage
+
+echo "🧹 Nettoyage de la couverture et des caches..."
+
+# Supprimer les fichiers de couverture
+find . -name ".coverage*" -delete 2>/dev/null || true
+
+# Supprimer les caches
+rm -rf .pytest_cache .mypy_cache .ruff_cache 2>/dev/null || true
+
+echo "✅ Couverture et caches nettoyés !"
