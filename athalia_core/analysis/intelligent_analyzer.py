@@ -96,10 +96,8 @@ class IntelligentAnalyzer:
         # 4. Analyse de performance
         logger.info("⚡ Étape 4/4: Analyse de performance...")
         if self.performance_analyzer:
-            performance_report = (
-                self.performance_analyzer.analyze_project_performance(
-                    str(project_path_obj)
-                )
+            performance_report = self.performance_analyzer.analyze_project_performance(
+                str(project_path_obj)
             )
         else:
             performance_report = {
@@ -107,22 +105,28 @@ class IntelligentAnalyzer:
                 "message": "PerformanceAnalyzer non disponible",
             }
 
+        # Convert performance report to dict when needed
+        if not isinstance(performance_report, dict):
+            performance_dict = getattr(performance_report, "__dict__", {})
+        else:
+            performance_dict = performance_report
+
         # Calculer le score global
         overall_score = self._calculate_overall_score(
             ast_analysis,
             pattern_analysis,
             architecture_analysis,
-            performance_report,
+            performance_dict,
         )
 
         # Générer les recommandations globales
         recommendations = self._generate_comprehensive_recommendations(
-            pattern_analysis, architecture_analysis, performance_report
+            pattern_analysis, architecture_analysis, performance_dict
         )
 
         # Créer le plan d'optimisation
         optimization_plan = self._create_optimization_plan(
-            pattern_analysis, architecture_analysis, performance_report
+            pattern_analysis, architecture_analysis, performance_dict
         )
 
         # Normaliser l'analyse d'architecture en dict
@@ -140,11 +144,7 @@ class IntelligentAnalyzer:
             ast_analysis=ast_analysis,
             pattern_analysis=pattern_analysis,
             architecture_analysis=architecture_dict,
-            performance_analysis=(
-                performance_report
-                if isinstance(performance_report, dict)
-                else getattr(performance_report, "to_dict", lambda: {} )()
-            ),
+            performance_analysis=performance_dict,
             overall_score=overall_score,
             recommendations=recommendations,
             optimization_plan=optimization_plan,
@@ -181,11 +181,19 @@ class IntelligentAnalyzer:
             except Exception as e:
                 logger.warning(f"Erreur lors de l'analyse AST de {py_file}: {e}")
 
-        avg_complexity = (
-            sum(float(f.get("complexity_score") or 0.0) for f in file_analyses) / len(file_analyses)
-            if file_analyses
-            else 0.0
-        )
+                avg_complexity = (
+                    (
+                        sum(
+                            (
+                                float(f.get("complexity_score") or 0.0)
+                                for f in file_analyses
+                            )
+                        )
+                        / float(len(file_analyses))
+                    )
+                    if file_analyses
+                    else 0.0
+                )
         return {
             "files_analyzed": len(file_analyses),
             "total_files": len(python_files),
@@ -519,9 +527,13 @@ class IntelligentAnalyzer:
                 "Orchestrateur unifié non disponible, utilisation de l'analyse standard"
             )
             analysis = self.analyze_project_comprehensive(project_path)
-            return analysis.to_dict() if hasattr(analysis, "to_dict") else {
-                "project_name": analysis.project_name,
-            }
+            return (
+                analysis.to_dict()
+                if hasattr(analysis, "to_dict")
+                else {
+                    "project_name": analysis.project_name,
+                }
+            )
 
         logger.info(" Utilisation de l'orchestrateur unifié")
         if self.root_path:
