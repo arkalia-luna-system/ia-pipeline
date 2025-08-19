@@ -249,3 +249,6 @@ dashboard/
 # Fichiers AppleDouble et macOS
 ._*
 .DS_Store
+
+# Dossiers de backup automatiques
+backup/cleanup_*/
