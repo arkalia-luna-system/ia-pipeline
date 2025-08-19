@@ -306,9 +306,12 @@ jobs:
           echo "TESTS COMPATIBILITÉ ${{ matrix.os }}"
           echo "==============================="
 
-          # Création des dossiers compatibles multi-OS
-          # Création des dossiers compatibles multi-OS (universel)
-          mkdir -p test-results coverage 2>/dev/null || true
+          # Création des dossiers compatibles multi-OS (vraiment universel)
+          if [ "$RUNNER_OS" = "Windows" ]; then
+            mkdir test-results 2>$null; mkdir coverage 2>$null
+          else
+            mkdir -p test-results coverage 2>/dev/null || true
+          fi
 
           # Tests rapides de compatibilité (uniquement tests de base, exclure les tests complexes)
           echo "Lancement des tests de compatibilité..."
