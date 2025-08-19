@@ -199,6 +199,7 @@ jobs:
           name: coverage-html-python-${{ matrix.python }}
           path: htmlcov/
           retention-days: 30
+        if: hashFiles('htmlcov/**') != ''
 
   # ========================================
   # 🖥️ TESTS COMPATIBILITÉ CROISÉE
@@ -259,6 +260,7 @@ jobs:
             .pytest_cache/
             test-results/
           retention-days: 7
+        if: hashFiles('.pytest_cache/**') != '' || hashFiles('test-results/**') != ''
 
   # ========================================
   # 🛡️ SÉCURITÉ & QUALITÉ
@@ -312,6 +314,7 @@ jobs:
             *-report.json
             *-report.txt
           retention-days: 90
+        if: hashFiles('*-report.json') != '' || hashFiles('*-report.txt') != ''
 
   # ========================================
   # 🚀 BUILD & PACKAGE
@@ -336,6 +339,35 @@ jobs:
       - name: "📦 Install Build Tools"
         run: |
           pip install build twine
+
+      - name: "🧹 Nettoyage Automatique (AppleDouble)"
+        run: |
+          echo "🧹 NETTOYAGE AUTOMATIQUE DES FICHIERS MACOS"
+          echo "============================================="
+          echo "🔍 Recherche des fichiers AppleDouble..."
+
+          # Compter les fichiers avant nettoyage
+          COUNT_BEFORE=$(find . -name "._*" -type f 2>/dev/null | wc -l)
+          echo "📊 Trouvé $COUNT_BEFORE fichiers AppleDouble"
+
+          if [ $COUNT_BEFORE -gt 0 ]; then
+            echo "🗑️  Suppression de tous les fichiers AppleDouble..."
+            find . -name "._*" -type f -delete 2>/dev/null
+            
+            # Compter après suppression
+            COUNT_AFTER=$(find . -name "._*" -type f 2>/dev/null | wc -l)
+            DELETED=$((COUNT_BEFORE - COUNT_AFTER))
+            echo "✅ $DELETED fichiers AppleDouble supprimés"
+            echo "📊 Restent $COUNT_AFTER fichiers AppleDouble"
+          else
+            echo "✅ Aucun fichier AppleDouble trouvé"
+          fi
+
+          # Nettoyer aussi les .DS_Store
+          echo "🗑️  Suppression des fichiers .DS_Store..."
+          find . -name ".DS_Store" -type f -delete 2>/dev/null || echo "✅ Aucun .DS_Store trouvé"
+
+          echo "🧹 Nettoyage terminé !"
 
       - name: "🔨 Build Package"
         run: |
@@ -371,6 +403,7 @@ jobs:
           name: build-artifacts
           path: dist/
           retention-days: 30
+        if: hashFiles('dist/**') != ''
 
   # ========================================
   # 📚 DOCUMENTATION & PAGES
@@ -396,6 +429,35 @@ jobs:
         run: |
           pip install mkdocs mkdocs-material
 
+      - name: "🧹 Nettoyage Automatique (Documentation)"
+        run: |
+          echo "🧹 NETTOYAGE AUTOMATIQUE POUR DOCUMENTATION"
+          echo "============================================="
+          echo "🔍 Recherche des fichiers AppleDouble..."
+
+          # Compter les fichiers avant nettoyage
+          COUNT_BEFORE=$(find . -name "._*" -type f 2>/dev/null | wc -l)
+          echo "📊 Trouvé $COUNT_BEFORE fichiers AppleDouble"
+
+          if [ $COUNT_BEFORE -gt 0 ]; then
+            echo "🗑️  Suppression de tous les fichiers AppleDouble..."
+            find . -name "._*" -type f -delete 2>/dev/null
+            
+            # Compter après suppression
+            COUNT_AFTER=$(find . -name "._*" -type f 2>/dev/null | wc -l)
+            DELETED=$((COUNT_BEFORE - COUNT_AFTER))
+            echo "✅ $DELETED fichiers AppleDouble supprimés"
+            echo "📊 Restent $COUNT_AFTER fichiers AppleDouble"
+          else
+            echo "✅ Aucun fichier AppleDouble trouvé"
+          fi
+
+          # Nettoyer aussi les .DS_Store
+          echo "🗑️  Suppression des fichiers .DS_Store..."
+          find . -name ".DS_Store" -type f -delete 2>/dev/null || echo "✅ Aucun .DS_Store trouvé"
+
+          echo "🧹 Nettoyage terminé !"
+
       - name: "📚 Build Documentation"
         run: |
           echo "📚 CONSTRUCTION DOCUMENTATION"
@@ -420,6 +482,7 @@ jobs:
           name: documentation-site
           path: site/
           retention-days: 30
+        if: hashFiles('site/**') != ''
 
   # ========================================
   # 🎯 RAPPORT FINAL

@@ -32,30 +32,173 @@ print_error() {
     echo -e "${RED}❌ $1${NC}"
 }
 
+# Fonction pour nettoyer automatiquement avant le build
+clean_before_build() {
+    print_info "🔧 Nettoyage automatique avant build..."
+    
+    # Supprimer le dossier egg-info s'il existe
+    if [ -d "athalia_ai.egg-info" ]; then
+        print_info "🗑️  Suppression du dossier athalia_ai.egg-info"
+        rm -rf athalia_ai.egg-info
+    fi
+    
+    # Supprimer les dossiers de build
+    if [ -d "build" ]; then
+        print_info "🗑️  Suppression du dossier build"
+        rm -rf build
+    fi
+    
+    if [ -d "dist" ]; then
+        print_info "🗑️  Suppression du dossier dist"
+        rm -rf dist
+    fi
+    
+    # Nettoyer TOUS les fichiers AppleDouble
+    clean_apple_double_files true
+    
+    # Nettoyer les .DS_Store
+    clean_ds_store_files
+    
+    print_info "✅ Nettoyage avant build terminé !"
+}
+
 # Fonction pour nettoyer les fichiers AppleDouble
 clean_apple_double_files() {
-    print_info "Recherche et suppression des fichiers AppleDouble..."
-
-    # Compter les fichiers avant suppression
-    local count_before=$(find . -name "._*" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" 2>/dev/null | wc -l)
-
-    if [ $count_before -gt 0 ]; then
-        print_info "Trouvé $count_before fichiers AppleDouble à supprimer"
-
-        # Supprimer les fichiers AppleDouble
-        find . -name "._*" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" -delete 2>/dev/null
-
-        # Compter après suppression
-        local count_after=$(find . -name "._*" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" 2>/dev/null | wc -l)
-
-        local deleted=$((count_before - count_after))
-        print_success "$deleted fichiers AppleDouble supprimés"
-
-        if [ $count_after -gt 0 ]; then
-            print_warning "$count_after fichiers AppleDouble restent (peuvent se recréer automatiquement)"
+    local clean_all="${1:-false}"
+    
+    if [ "$clean_all" = "true" ]; then
+        print_info "Recherche et suppression de TOUS les fichiers AppleDouble (mode complet sécurisé)..."
+        
+        # Compter TOUS les fichiers avant suppression (ABSOLUMENT TOUT)
+        local count_before=$(find . -name "._*" -type f 2>/dev/null | wc -l | tr -d ' ')
+        
+        if [ $count_before -gt 0 ]; then
+            print_info "Trouvé $count_before fichiers AppleDouble à supprimer (ABSOLUMENT TOUT)"
+            
+            # Supprimer TOUS les fichiers AppleDouble (ABSOLUMENT TOUT)
+            find . -name "._*" -type f -delete 2>/dev/null
+            
+            # Compter après suppression
+            local count_after=$(find . -name "._*" -type f 2>/dev/null | wc -l | tr -d ' ')
+            local deleted=$((count_before - count_after))
+            
+            print_info "✅ $deleted fichiers AppleDouble supprimés (ABSOLUMENT TOUT)"
+            print_info "📊 Restent $count_after fichiers AppleDouble"
+            
+            if [ $count_after -gt 0 ]; then
+                print_warning "⚠️  Il reste encore $count_after fichiers AppleDouble"
+                print_info "🔍 Vérification des fichiers restants..."
+                find . -name "._*" -type f 2>/dev/null | head -10
+                
+                # Nettoyage supplémentaire - essayer avec des chemins différents
+                print_info "🧹 Nettoyage supplémentaire avec chemins alternatifs..."
+                
+                # Essayer avec le répertoire courant
+                find "$(pwd)" -name "._*" -type f -delete 2>/dev/null
+                
+                # Essayer avec le répertoire parent si on est dans un sous-dossier
+                if [ -f "../._.gitignore" ]; then
+                    print_info "🗑️  Suppression du fichier ._.gitignore parent..."
+                    rm -f "../._.gitignore"
+                fi
+                
+                # Suppression forcée du fichier ._.gitignore problématique
+                if [ -f "./._.gitignore" ]; then
+                    print_info "🗑️  Suppression forcée du fichier ._.gitignore..."
+                    rm -f "./._.gitignore" 2>/dev/null || {
+                        print_warning "⚠️  Impossible de supprimer ._.gitignore normalement, tentative avec sudo..."
+                        sudo rm -f "./._.gitignore" 2>/dev/null || print_warning "⚠️  Échec de la suppression avec sudo"
+                    }
+                fi
+                
+                # Suppression avec chmod si nécessaire
+                if [ -f "./._.gitignore" ]; then
+                    print_info "🔓 Tentative de changement de permissions pour ._.gitignore..."
+                    chmod 644 "./._.gitignore" 2>/dev/null || sudo chmod 644 "./._.gitignore" 2>/dev/null
+                    rm -f "./._.gitignore" 2>/dev/null || sudo rm -f "./._.gitignore" 2>/dev/null
+                fi
+                
+                # Nettoyage final agressif - supprimer TOUS les fichiers ._* restants
+                print_info "🧹 Nettoyage final agressif..."
+                find . -name "._*" -type f -exec rm -f {} \; 2>/dev/null
+                
+                # Nettoyage final avec ls et rm pour les fichiers cachés
+                print_info "🧹 Nettoyage final avec ls pour fichiers cachés..."
+                ls -la | grep "^\.._" | awk '{print $9}' | xargs -I {} rm -f "{}" 2>/dev/null || true
+                
+                # Nettoyage final avec find et rm pour TOUS les fichiers ._*
+                print_info "🧹 Nettoyage final avec find pour TOUS les fichiers ._*..."
+                find . -name "._*" -type f -exec rm -f {} \; 2>/dev/null
+                
+                # Nettoyage des dossiers de cache Python problématiques
+                print_info "🧹 Nettoyage des dossiers de cache Python..."
+                if [ -d ".ruff_cache" ]; then
+                    print_info "🗑️  Suppression du dossier .ruff_cache..."
+                    rm -rf .ruff_cache
+                fi
+                if [ -d ".mypy_cache" ]; then
+                    print_info "🗑️  Suppression du dossier .mypy_cache..."
+                    rm -rf .mypy_cache
+                fi
+                if [ -d "__pycache__" ]; then
+                    print_info "🗑️  Suppression du dossier __pycache__..."
+                    find . -name "__pycache__" -type d -exec rm -rf {} \; 2>/dev/null
+                fi
+                
+                # Nettoyage final ultime - supprimer TOUS les fichiers ._* restants
+                print_info "🧹 Nettoyage final ultime..."
+                find . -name "._*" -type f -delete 2>/dev/null
+                
+                # Suppression forcée du fichier ._.gitignore problématique
+                if [ -f "./._.gitignore" ]; then
+                    print_info "🗑️  Suppression forcée du fichier ._.gitignore..."
+                    rm -f "./._.gitignore" 2>/dev/null || {
+                        print_warning "⚠️  Impossible de supprimer ._.gitignore normalement, tentative avec sudo..."
+                        sudo rm -f "./._.gitignore" 2>/dev/null || print_warning "⚠️  Échec de la suppression avec sudo"
+                    }
+                fi
+                
+                # Suppression avec chmod si nécessaire
+                if [ -f "./._.gitignore" ]; then
+                    print_info "🔓 Tentative de changement de permissions pour ._.gitignore..."
+                    chmod 644 "./._.gitignore" 2>/dev/null || sudo chmod 644 "./._.gitignore" 2>/dev/null
+                    rm -f "./._.gitignore" 2>/dev/null || sudo rm -f "./._.gitignore" 2>/dev/null
+                fi
+                
+                # Vérification finale
+                local final_count=$(find . -name "._*" -type f 2>/dev/null | wc -l | tr -d ' ')
+                print_info "📊 Après nettoyage supplémentaire : $final_count fichiers AppleDouble restants"
+            fi
+        else
+            print_info "✅ Aucun fichier AppleDouble trouvé"
         fi
     else
-        print_info "Aucun fichier AppleDouble trouvé"
+        print_info "Recherche et suppression des fichiers AppleDouble (mode sécurisé)..."
+        
+        # Compter les fichiers avant suppression (en excluant les dossiers critiques)
+        local count_before=$(find . -name "._*" -type f -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" 2>/dev/null | wc -l | tr -d ' ')
+        
+        if [ $count_before -gt 0 ]; then
+            print_info "Trouvé $count_before fichiers AppleDouble à supprimer (mode sécurisé)"
+            
+            # Supprimer les fichiers AppleDouble (en excluant les dossiers critiques)
+            find . -name "._*" -type f -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" -delete 2>/dev/null
+            
+            # Compter après suppression
+            local count_after=$(find . -name "._*" -type f -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" 2>/dev/null | wc -l | tr -d ' ')
+            local deleted=$((count_before - count_after))
+            
+            print_info "✅ $deleted fichiers AppleDouble supprimés (mode sécurisé)"
+            print_info "📊 Restent $count_after fichiers AppleDouble"
+            
+            if [ $count_after -gt 0 ]; then
+                print_warning "⚠️  Il reste encore $count_after fichiers AppleDouble"
+                print_info "🔍 Vérification des fichiers restants..."
+                find . -name "._*" -type f -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" 2>/dev/null | head -10
+            fi
+        else
+            print_info "✅ Aucun fichier AppleDouble trouvé"
+        fi
     fi
 }
 
@@ -63,14 +206,14 @@ clean_apple_double_files() {
 clean_ds_store_files() {
     print_info "Recherche et suppression des fichiers .DS_Store..."
 
-    local count_before=$(find . -name ".DS_Store" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" 2>/dev/null | wc -l)
+    local count_before=$(find . -name ".DS_Store" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" 2>/dev/null | wc -l | tr -d ' ')
 
     if [ $count_before -gt 0 ]; then
         print_info "Trouvé $count_before fichiers .DS_Store à supprimer"
 
         find . -name ".DS_Store" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" -delete 2>/dev/null
 
-        local count_after=$(find . -name ".DS_Store" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" 2>/dev/null | wc -l)
+        local count_after=$(find . -name ".DS_Store" -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -not -path "./archive/*" -not -path "./node_modules/*" 2>/dev/null | wc -l | tr -d ' ')
 
         local deleted=$((count_before - count_after))
         print_success "$deleted fichiers .DS_Store supprimés"
@@ -158,8 +301,110 @@ main() {
             show_prevention_commands
             ;;
         "all")
-            clean_apple_double_files
+            clean_apple_double_files true
             clean_ds_store_files
+            setup_prevention
+            show_prevention_commands
+            ;;
+        "complete")
+            clean_apple_double_files true
+            clean_ds_store_files
+            setup_prevention
+            show_prevention_commands
+            ;;
+        "force")
+            print_info "⚠️  MODE FORCE : Suppression de TOUS les fichiers AppleDouble (y compris .venv)"
+            print_info "⚠️  ATTENTION : Cette commande nettoie ABSOLUMENT TOUT !"
+            
+            # Compter TOUS les fichiers avant suppression (ABSOLUMENT TOUT)
+            local count_before=$(find . -name "._*" -type f 2>/dev/null | wc -l | tr -d ' ')
+            
+            if [ $count_before -gt 0 ]; then
+                print_info "Trouvé $count_before fichiers AppleDouble à supprimer (ABSOLUMENT TOUT)"
+                
+                # Supprimer TOUS les fichiers AppleDouble (ABSOLUMENT TOUT)
+                find . -name "._*" -type f -delete 2>/dev/null
+                
+                # Compter après suppression
+                local count_after=$(find . -name "._*" -type f 2>/dev/null | wc -l | tr -d ' ')
+                local deleted=$((count_before - count_after))
+                
+                print_info "✅ $deleted fichiers AppleDouble supprimés (ABSOLUMENT TOUT)"
+                print_info "📊 Restent $count_after fichiers AppleDouble"
+                
+                if [ $count_after -gt 0 ]; then
+                    print_warning "⚠️  Il reste encore $count_after fichiers AppleDouble"
+                    print_info "🔍 Vérification des fichiers restants..."
+                    find . -name "._*" -type f 2>/dev/null | head -10
+                fi
+            else
+                print_info "✅ Aucun fichier AppleDouble trouvé"
+            fi
+            
+            # Nettoyer aussi les .DS_Store
+            clean_ds_store_files
+            
+            print_info "✅ Nettoyage FORCE terminé !"
+            ;;
+        "build")
+            clean_before_build
+            print_info "🚀 Prêt pour le build !"
+            ;;
+        "ultra")
+            print_info "🚀 MODE ULTRA : Nettoyage COMPLET et DÉFINITIF"
+            print_info "⚠️  ATTENTION : Cette commande nettoie ABSOLUMENT TOUT !"
+            
+            # Nettoyage complet et définitif
+            clean_apple_double_files true
+            clean_ds_store_files
+            
+            # Suppression des dossiers de cache Python
+            print_info "🧹 Suppression des dossiers de cache Python..."
+            rm -rf .ruff_cache .mypy_cache __pycache__ 2>/dev/null || true
+            find . -name "__pycache__" -type d -exec rm -rf {} \; 2>/dev/null || true
+            
+            # Nettoyage final ultime
+            print_info "🧹 Nettoyage final ultime..."
+            find . -name "._*" -type f -delete 2>/dev/null
+            
+            # Nettoyage en boucle jusqu'à ce qu'il n'y en ait plus
+            print_info "🔄 Nettoyage en boucle jusqu'à élimination complète..."
+            local loop_count=0
+            local max_loops=10
+            
+            while [ $loop_count -lt $max_loops ]; do
+                local current_count=$(find . -name "._*" -type f 2>/dev/null | wc -l)
+                if [ $current_count -eq 0 ]; then
+                    print_info "✅ Nettoyage complet après $loop_count itérations !"
+                    break
+                fi
+                
+                print_info "🔄 Itération $((loop_count + 1)) : $current_count fichiers restants"
+                find . -name "._*" -type f -delete 2>/dev/null
+                
+                # Suppression forcée du fichier ._.gitignore problématique
+                if [ -f "./._.gitignore" ]; then
+                    print_info "🗑️  Suppression forcée du fichier ._.gitignore..."
+                    rm -f "./._.gitignore" 2>/dev/null || {
+                        print_warning "⚠️  Impossible de supprimer ._.gitignore normalement, tentative avec sudo..."
+                        sudo rm -f "./._.gitignore" 2>/dev/null || print_warning "⚠️  Échec de la suppression avec sudo"
+                    }
+                fi
+                
+                loop_count=$((loop_count + 1))
+                sleep 1
+            done
+            
+            # Vérification finale
+            local final_count=$(find . -name "._*" -type f 2>/dev/null | wc -l)
+            print_info "📊 Après nettoyage ULTRA : $final_count fichiers AppleDouble restants"
+            
+            if [ $final_count -eq 0 ]; then
+                print_info "✅ SUCCÈS : TOUS les fichiers AppleDouble ont été supprimés !"
+            else
+                print_warning "⚠️  Il reste encore $final_count fichiers AppleDouble"
+            fi
+            
             setup_prevention
             show_prevention_commands
             ;;
@@ -167,15 +412,23 @@ main() {
             echo "Usage: $0 [COMMANDE]"
             echo
             echo "Commandes :"
-            echo "  clean     - Nettoyer les fichiers AppleDouble existants"
+            echo "  clean     - Nettoyer les fichiers AppleDouble existants (sécurisé)"
             echo "  prevent   - Configurer la prévention"
-            echo "  all       - Nettoyer ET configurer la prévention"
+            echo "  all       - Nettoyer ET configurer la prévention (sécurisé)"
+            echo "  complete  - Nettoyer TOUS les fichiers AppleDouble (mode complet SÉCURISÉ)"
+            echo "  force     - Nettoyer TOUS les fichiers AppleDouble (mode FORCE, ABSOLUMENT TOUT)"
+            echo "  build     - Nettoyer automatiquement avant le build"
+            echo "  ultra     - Nettoyer TOUS les fichiers AppleDouble (mode ULTRA, ABSOLUMENT TOUT)"
             echo "  help      - Afficher cette aide"
             echo
             echo "Exemples :"
-            echo "  $0 clean      # Nettoyer seulement"
+            echo "  $0 clean      # Nettoyer seulement (sécurisé)"
             echo "  $0 prevent    # Configurer la prévention"
-            echo "  $0 all        # Nettoyer et configurer"
+            echo "  $0 all        # Nettoyer et configurer (sécurisé)"
+            echo "  $0 complete   # Nettoyer TOUT (sécurisé, pour CI/CD)"
+            echo "  $0 force      # Nettoyer TOUT (mode FORCE, ABSOLUMENT TOUT)"
+            echo "  $0 build      # Nettoyer automatiquement avant le build"
+            echo "  $0 ultra      # Nettoyer TOUT (mode ULTRA, ABSOLUMENT TOUT)"
             ;;
         *)
             print_error "Commande inconnue: $1"
