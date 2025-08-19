@@ -13,7 +13,7 @@ from unittest.mock import Mock, patch
 
 import click
 import pytest
-import yaml  # type: ignore
+import yaml
 
 # Ajouter le répertoire parent au path pour les imports
 sys.path.insert(0, str(Path(__file__).parent.parent))

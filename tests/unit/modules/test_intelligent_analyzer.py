@@ -158,7 +158,7 @@ class TestIntelligentAnalyzer:
                 {"complexity": 4.2, "functions": 8},
             ]
 
-            result = analyzer._perform_ast_analysis(Path("/tmp/test_project"))
+            result = analyzer._perform_ast_analysis("/tmp/test_project")
 
             assert isinstance(result, dict)
             assert "files_analyzed" in result
@@ -270,7 +270,7 @@ class TestIntelligentAnalyzer:
             ast_analysis={"files_analyzed": 10, "summary": {"average_complexity": 5.2}},
             pattern_analysis={
                 "patterns": [],
-                "duplicates": [],
+                "duplications": [],
                 "antipatterns": [],
                 "recommendations": [],
                 "summary": {"total_duplicates": 1, "total_antipatterns": 0},
