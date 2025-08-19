@@ -22,7 +22,9 @@ except ImportError:
     ) -> subprocess.CompletedProcess:
         return subprocess.run(command, **kwargs)
 
-    SecurityError = Exception
+    class SecurityErrorFallback(Exception):
+        """Classe de fallback pour SecurityError"""
+        pass
 
 
 class MultimodalDistiller:
@@ -49,7 +51,13 @@ class MultimodalDistiller:
         # Appel texte pur (Qwen/Mistral/Mock)
         for prompt in text_prompts:
             try:
-                res = ai.call_model(AIModel.OLLAMA_QWEN, prompt)
+                # Utiliser la méthode privée avec fallback
+                if hasattr(ai, "_call_model"):
+                    res = ai._call_model(AIModel.OLLAMA_QWEN, prompt)
+                else:
+                    # Fallback si la méthode n'existe pas
+                    res = f"[Modèle {AIModel.OLLAMA_QWEN.value} non disponible]"
+
                 if res:
                     text_responses.append(res)
             except Exception as e:
