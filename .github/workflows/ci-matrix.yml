@@ -143,6 +143,8 @@ jobs:
           pip install -r requirements.txt
           pip install -e .
           pip install pytest pytest-cov pytest-mock black ruff mypy bandit
+          # Stubs pour MyPy (modules non typés)
+          pip install types-PyYAML types-requests
 
       - name: "🔍 Lint & Format Check"
         run: |
