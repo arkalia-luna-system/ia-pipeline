@@ -183,8 +183,9 @@ jobs:
           echo "LANCEMENT DES TESTS"
           echo "======================"
 
-          # Création des dossiers compatibles multi-OS
-          mkdir -p test-results coverage 2>/dev/null || true
+          # Création des dossiers compatibles multi-OS (solution Windows)
+          New-Item -ItemType Directory -Path "test-results" -Force -ErrorAction SilentlyContinue
+          New-Item -ItemType Directory -Path "coverage" -Force -ErrorAction SilentlyContinue
 
           # Tests avec couverture (+ JUnit)
           pytest \
@@ -307,8 +308,9 @@ jobs:
           echo "==============================="
 
           # Création des dossiers compatibles multi-OS
-          # Création des dossiers compatible multi-OS
-          mkdir -p test-results coverage 2>/dev/null || true
+          # Création des dossiers compatible multi-OS (solution Windows)
+          New-Item -ItemType Directory -Path "test-results" -Force -ErrorAction SilentlyContinue
+          New-Item -ItemType Directory -Path "coverage" -Force -ErrorAction SilentlyContinue
 
           # Tests rapides de compatibilité (uniquement tests de base, exclure les tests complexes)
           echo "Lancement des tests de compatibilité..."
