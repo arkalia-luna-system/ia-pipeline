@@ -249,3 +249,13 @@ dashboard/
 # Fichiers AppleDouble et macOS
 ._*
 .DS_Store
+
+# Dossiers de backup automatiques
+backup/cleanup_*/
+
+# Rapports de tests et couverture générés localement
+test-results/
+coverage/
+htmlcov/
+.coverage
+coverage.xml
