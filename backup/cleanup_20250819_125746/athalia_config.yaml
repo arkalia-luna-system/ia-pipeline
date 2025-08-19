@@ -1,0 +1,119 @@
+# Configuration centralisée Athalia
+# Fichier de configuration pour tous les modules et scripts
+
+# Configuration générale
+general:
+  lang: fr
+  verbose: true  # Activé pour le debugging
+  auto_fix: true
+  dry_run: false
+  log_level: INFO  # Activé pour le monitoring
+  log_file: logs/athalia.log
+
+# Modules à activer/désactiver
+modules:
+  audit: true
+  clean: true
+  document: false  # Désactivé par défaut
+  test: true
+  cicd: false  # Désactivé par défaut
+  correction: true
+  profiles: true
+  dashboard: false  # Désactivé par défaut
+  security: true
+  analytics: false  # Désactivé par défaut
+  linting: false  # Désactivé par défaut
+
+# Plugins à charger automatiquement
+plugins:
+  auto_discovery: false  # Désactivé pour économiser les ressources
+  enabled:
+    - export_docker_plugin
+    # Ajouter d'autres plugins ici
+  disabled: []
+
+# Templates disponibles
+templates:
+  auto_discovery: false  # Désactivé pour économiser les ressources
+  default: api
+  available:
+    - api
+    - web
+    - desktop
+    - data
+    - cli
+    - library
+
+# Base de données
+database:
+  path: ./athalia_data.db
+  backup: true
+  backup_retention: 3  # Réduit la rétention
+
+# IA et génération
+ai:
+  models:
+    - ollama_mistral
+    - ollama_llama
+    - mock
+  timeout: 15  # Réduit le timeout
+  max_retries: 2  # Réduit les retries
+  fallback_enabled: true
+
+# Tests
+testing:
+  auto_run: false  # Désactivé par défaut
+  coverage: false  # Désactivé par défaut
+  parallel: false
+  timeout: 60  # Réduit le timeout
+
+# CI/CD
+cicd:
+  github_actions: false  # Désactivé par défaut
+  docker: false  # Désactivé par défaut
+  deployment: false
+
+# Nettoyage
+cleanup:
+  auto_clean: true
+  patterns:
+    - "._*"
+    - "__pycache__"
+    - "*.pyc"
+    - ".pytest_cache"
+    - ".mypy_cache"
+    - ".coverage"
+    - "*.log"
+
+# Dashboard
+dashboard:
+  auto_generate: false  # Désactivé par défaut
+  port: 8080
+  host: localhost
+  auto_open: false
+
+# Profils utilisateur
+profiles:
+  auto_create: false  # Désactivé par défaut
+  default_user: default
+  history_retention: 7  # Réduit la rétention
+
+# Sécurité
+security:
+  audit_enabled: false  # Désactivé par défaut
+  secrets_detection: false  # Désactivé par défaut
+  vulnerability_scan: false  # Désactivé par défaut
+
+# Analytics
+analytics:
+  enabled: false  # Désactivé par défaut
+  metrics_retention: 7  # Réduit la rétention
+  auto_export: false
+
+# Performance et ressources
+performance:
+  max_memory_mb: 512  # Limite mémoire
+  max_cpu_percent: 50  # Limite CPU
+  auto_cleanup_interval: 3600  # Nettoyage toutes les heures
+  log_rotation_size: 10  # MB
+  log_rotation_count: 3  # Fichiers max

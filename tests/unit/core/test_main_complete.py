@@ -121,8 +121,12 @@ class TestMainModule:
         """Test gestionnaire de signal avec plusieurs signaux."""
         global running
 
-        # Tester différents signaux
-        signals = [signal.SIGINT, signal.SIGTERM, signal.SIGQUIT]
+        # Tester différents signaux disponibles selon la plateforme
+        signals = [signal.SIGINT, signal.SIGTERM]
+
+        # Ajouter SIGQUIT seulement s'il est disponible (pas sur macOS)
+        if hasattr(signal, "SIGQUIT"):
+            signals.append(signal.SIGQUIT)
 
         for sig in signals:
             running = True
@@ -253,7 +257,7 @@ class TestMainModule:
         """Test sécurité des threads."""
         import threading
 
-        results = []
+        results: list[bool | str] = []
 
         def worker() -> None:
             try:
@@ -277,7 +281,8 @@ class TestMainModule:
 
         # Vérifier que tous les threads ont fonctionné
         assert len(results) == 5
-        assert all(isinstance(r, bool) for r in results if not isinstance(r, str))
+        # Vérifier que les résultats sont soit des booléens soit des chaînes d'erreur
+        assert all(isinstance(r, bool | str) for r in results)
 
 
 class TestMainIntegration:

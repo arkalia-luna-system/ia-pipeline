@@ -651,12 +651,43 @@ class UnifiedOrchestrator:
                     ] = docker_result
 
                 logger.info(" Validation robotique terminée")
+                # Marquer l'étape comme complétée
+                if isinstance(self.workflow_results["steps_completed"], list):
+                    self.workflow_results["steps_completed"].append(
+                        "robotics_validation"
+                    )
+                # Ajouter l'artifact
+                if isinstance(self.workflow_results["artifacts"], dict):
+                    self.workflow_results["artifacts"]["robotics_validation"] = {
+                        "status": "completed",
+                        "ros2_validation": (
+                            self.workflow_results["robotics"].get("ros2_validation", {})
+                        ),
+                        "reachy_audit": (
+                            self.workflow_results["robotics"].get("reachy_audit", {})
+                        ),
+                        "docker_validation": (
+                            self.workflow_results["robotics"].get(
+                                "docker_validation", {}
+                            )
+                        ),
+                    }
             else:
                 logger.info("ℹ Projet non-robotique - validation robotique ignorée")
+                # Marquer l'étape comme ignorée
+                if isinstance(self.workflow_results["steps_completed"], list):
+                    self.workflow_results["steps_completed"].append(
+                        "robotics_validation_skipped"
+                    )
 
         except Exception as e:
             logger.warning(f" Erreur validation robotique: {e}")
             self.workflow_results["errors"].append(f"Erreur validation robotique: {e}")
+            # Marquer l'étape comme échouée
+            if isinstance(self.workflow_results["steps_completed"], list):
+                self.workflow_results["steps_completed"].append(
+                    "robotics_validation_failed"
+                )
 
     def _step_artistic_templates(self, blueprint: dict[str, Any]) -> None:
         """Étape 12: Application des templates artistiques"""
@@ -697,16 +728,36 @@ class UnifiedOrchestrator:
                     logger.info(
                         f" {len(templates_applied)} templates artistiques appliqués"
                     )
+                    # Marquer l'étape comme complétée
+                    if isinstance(self.workflow_results["steps_completed"], list):
+                        self.workflow_results["steps_completed"].append(
+                            "artistic_templates"
+                        )
                 else:
                     logger.warning(" Templates artistiques non disponibles")
+                    # Marquer l'étape comme ignorée
+                    if isinstance(self.workflow_results["steps_completed"], list):
+                        self.workflow_results["steps_completed"].append(
+                            "artistic_templates_skipped"
+                        )
             else:
                 logger.info("ℹ Projet non-artistique - templates artistiques ignorés")
+                # Marquer l'étape comme ignorée
+                if isinstance(self.workflow_results["steps_completed"], list):
+                    self.workflow_results["steps_completed"].append(
+                        "artistic_templates_skipped"
+                    )
 
         except Exception as e:
             logger.warning(f" Erreur templates artistiques: {e}")
             if isinstance(self.workflow_results["errors"], list):
                 self.workflow_results["errors"].append(
                     f"Erreur templates artistiques: {e}"
+                )
+            # Marquer l'étape comme échouée
+            if isinstance(self.workflow_results["steps_completed"], list):
+                self.workflow_results["steps_completed"].append(
+                    "artistic_templates_failed"
                 )
 
     def _step_advanced_classification(self, blueprint: dict[str, Any]) -> None:

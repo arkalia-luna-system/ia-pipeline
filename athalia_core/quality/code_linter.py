@@ -8,15 +8,21 @@ from typing import Any
 try:
     from athalia_core.validation.security_validator import (
         SecurityError,
-        validateand_run,
+        validate_and_run,
     )
+
+    # Définir SecurityErrorFallback comme alias de SecurityError
+    SecurityErrorFallback = SecurityError
 except ImportError:
     # Fallback pour les tests
-    def validateand_run(command: list[str], **kwargs: Any) -> Any:
+    def validate_and_run_fallback(command: list[str], **kwargs: Any) -> Any:
         return subprocess.run(command, **kwargs)
 
-    class SecurityErrorFallback(Exception):
-        pass
+    # Utiliser Exception directement pour le fallback
+    SecurityErrorFallback = Exception  # type: ignore
+
+    # Alias pour compatibilité
+    validate_and_run = validate_and_run_fallback
 
 
 logger = logging.getLogger(__name__)
@@ -66,7 +72,7 @@ class CodeLinter:
         """Exécution de Ruff (remplace Flake8)"""
         try:
             # Utilisation du validateur de sécurité pour l'appel ruff
-            result = validateand_run(
+            result = validate_and_run(
                 ["ruff", "check", str(self.project_path), "--output-format=text"],
                 capture_output=True,
                 text=True,
@@ -85,7 +91,7 @@ class CodeLinter:
         """Exécution de Black"""
         try:
             # Utilisation du validateur de sécurité pour l'appel black
-            result = validateand_run(
+            result = validate_and_run(
                 ["black", str(self.project_path), "--check"],
                 capture_output=True,
                 text=True,
@@ -102,7 +108,7 @@ class CodeLinter:
         """Exécution de isort"""
         try:
             # Utilisation du validateur de sécurité pour l'appel isort
-            result = validateand_run(
+            result = validate_and_run(
                 ["isort", str(self.project_path), "--check-only"],
                 capture_output=True,
                 text=True,
@@ -112,14 +118,14 @@ class CodeLinter:
             if result.returncode != 0:
                 self.report["warnings"].append("Tri des imports isort à corriger")
 
-        except (Exception, SecurityError) as e:
+        except (Exception, SecurityErrorFallback) as e:
             self.report["warnings"].append(f"isort non exécuté: {e}")
 
     def _run_mypy(self):
         """Exécution de MyPy"""
         try:
             # Utilisation du validateur de sécurité pour l'appel mypy
-            result = validateand_run(
+            result = validate_and_run(
                 ["mypy", str(self.project_path), "--ignore-missing-imports"],
                 capture_output=True,
                 text=True,
@@ -131,14 +137,14 @@ class CodeLinter:
                     if line.strip() and "error:" in line:
                         self.report["errors"].append(f"MyPy: {line}")
 
-        except (Exception, SecurityError) as e:
+        except (Exception, SecurityErrorFallback) as e:
             self.report["warnings"].append(f"MyPy non exécuté: {e}")
 
     def _run_bandit(self):
         """Exécution de Bandit (sécurité)"""
         try:
             # Utilisation du validateur de sécurité pour l'appel bandit
-            result = validateand_run(
+            result = validate_and_run(
                 ["bandit", "-r", str(self.project_path), "-f", "txt"],
                 capture_output=True,
                 text=True,
@@ -150,7 +156,7 @@ class CodeLinter:
                     if line.strip() and "Issue:" in line:
                         self.report["warnings"].append(f"Bandit: {line}")
 
-        except (Exception, SecurityError) as e:
+        except (Exception, SecurityErrorFallback) as e:
             self.report["warnings"].append(f"Bandit non exécuté: {e}")
 
     def _calculate_score(self):
@@ -172,7 +178,7 @@ class CodeLinter:
     def _run_complexity_analysis(self):
         """Analyse de la complexité cyclomatique"""
         try:
-            result = validateand_run(
+            result = validate_and_run(
                 ["radon", "cc", str(self.project_path), "-a"],
                 capture_output=True,
                 text=True,
@@ -199,7 +205,7 @@ class CodeLinter:
                             f"Fonctions complexes détectées: {', '.join(complex_functions[:3])}"
                         )
 
-        except (Exception, SecurityError) as e:
+        except (Exception, SecurityErrorFallback) as e:
             warnings = self.report.get("warnings", [])
             if isinstance(warnings, list):
                 warnings.append(f"Analyse de complexité non exécutée: {e}")
@@ -247,7 +253,7 @@ class CodeLinter:
     def _run_test_coverage(self):
         """Vérification de la couverture de tests"""
         try:
-            result = validateand_run(
+            result = validate_and_run(
                 ["coverage", "run", "-m", "pytest", str(self.project_path)],
                 capture_output=True,
                 text=True,
@@ -255,7 +261,7 @@ class CodeLinter:
             )
 
             if result.returncode == 0:
-                result = validateand_run(
+                result = validate_and_run(
                     ["coverage", "report"],
                     capture_output=True,
                     text=True,
@@ -278,7 +284,7 @@ class CodeLinter:
                                 except ValueError:
                                     pass
 
-        except (Exception, SecurityError) as e:
+        except (Exception, SecurityErrorFallback) as e:
             warnings = self.report.get("warnings", [])
             if isinstance(warnings, list):
                 warnings.append(f"Vérification couverture non exécutée: {e}")

@@ -226,7 +226,7 @@ def test_talker():
         self.validator._check_test_files()
         assert len(self.validator.validation_results["test_files"]) == 1
 
-    @patch("athalia_core.robotics.ros2_validator.validate_and_run")
+    @patch("subprocess.run")
     def test_check_dependencies_success(self, mock_run):
         """Test de vérification des dépendances réussie"""
         # Créer un mock qui simule subprocess.CompletedProcess

@@ -1,0 +1,45 @@
+# Ignorer les fichiers AppleDouble et macOS
+*._* binary
+.DS_Store binary
+Thumbs.db binary
+desktop.ini binary
+
+# Ignorer les fichiers temporaires
+*.tmp binary
+*.temp binary
+*.swp binary
+*.swo binary
+*~ binary
+*.bak binary
+*.backup binary
+*.orig binary
+
+# Ignorer les caches
+__pycache__/ binary
+*.pyc binary
+*.pyo binary
+.pytest_cache/ binary
+.mypy_cache/ binary
+.ruff_cache/ binary
+.coverage binary
+htmlcov/ binary
+.tox/ binary
+.cache/ binary
+
+# Ignorer les artefacts de build
+build/ binary
+dist/ binary
+*.egg-info/ binary
+*.egg binary
+
+# Ignorer les fichiers de logs temporaires
+*.log.tmp binary
+*.out.tmp binary
+*.err.tmp binary
+debug.log.tmp binary
+error.log.tmp binary
+
+# Ignorer les fichiers corrompus
+*.f(f binary
+*.corrupt binary
+*.broken binary

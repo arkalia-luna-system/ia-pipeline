@@ -1,0 +1,65 @@
+{
+  "timestamp": "2025-08-19T13:18:26.079633",
+  "workflow_analysis": {
+    "status": "OK",
+    "files": [
+      {
+        "name": "ci-matrix.yml",
+        "size": 21444,
+        "has_timeout": true,
+        "has_retry": true
+      },
+      {
+        "name": "release.yml",
+        "size": 11459,
+        "has_timeout": true,
+        "has_retry": false
+      }
+    ],
+    "issues": [
+      "ci-matrix.yml: Fichier volumineux (21444 bytes)",
+      "release.yml: Fichier volumineux (11459 bytes)"
+    ]
+  },
+  "dependencies_analysis": {
+    "status": "OK",
+    "issues": [],
+    "total_deps": 48
+  },
+  "test_performance": {
+    "status": "WARNING",
+    "issues": [
+      "Trop de fichiers de test: 159",
+      "Tests lents d\u00e9tect\u00e9s: 9"
+    ],
+    "total_tests": 159,
+    "slow_tests": [
+      "test_performance_optimization.py",
+      "test_ci_robust.py",
+      "test_auto_tester_complete.py",
+      "test_performance_analyzer_complete.py",
+      "test_cache_simple.py",
+      "test_main_complete.py",
+      "test_config_manager_complete.py",
+      "test_predictive_cache.py",
+      "test_logger_advanced_complete.py"
+    ]
+  },
+  "ci_configuration": {
+    "status": "OK",
+    "issues": [],
+    "recommendations": [],
+    "checks": {
+      "has_timeout": true,
+      "has_cache": true,
+      "has_continue_on_error": true,
+      "has_parallel": true,
+      "has_artifacts": true
+    }
+  },
+  "summary": {
+    "total_issues": 4,
+    "critical_issues": 0,
+    "recommendations": []
+  }
+}
