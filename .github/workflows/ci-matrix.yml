@@ -156,7 +156,7 @@ jobs:
           python -m pip install --upgrade pip setuptools wheel
           pip install -r requirements.txt
           pip install -e .
-          pip install pytest pytest-cov pytest-mock black ruff mypy bandit
+          pip install pytest pytest-cov pytest-mock black ruff mypy bandit coverage
           # Stubs pour MyPy (modules non typés)
           pip install types-PyYAML types-requests
 
@@ -185,13 +185,46 @@ jobs:
           # Tests avec couverture (syntaxe compatible multi-OS)
           pytest --cov=athalia_core --cov-report=term --cov-report=xml --cov-report=html --cov-fail-under=80 --maxfail=5 --durations=10 --tb=short -v || echo "⚠️  Certains tests ont échoué (vérification manuelle recommandée)"
 
-      - name: "�� Upload Coverage to Codecov"
+          # Vérification de la génération des rapports
+          echo ""
+          echo "📊 VÉRIFICATION RAPPORTS COUVERTURE:"
+          if [ -f "coverage.xml" ]; then
+            echo "✅ coverage.xml généré"
+            ls -la coverage.xml
+          else
+            echo "❌ coverage.xml manquant"
+          fi
+
+          if [ -d "htmlcov" ]; then
+            echo "✅ htmlcov/ généré"
+            ls -la htmlcov/ | head -5
+            echo "📁 Total fichiers: $(find htmlcov/ -type f | wc -l)"
+          else
+            echo "❌ htmlcov/ manquant"
+          fi
+
+          if [ -f ".coverage" ]; then
+            echo "✅ .coverage généré"
+            ls -la .coverage
+          else
+            echo "❌ .coverage manquant"
+          fi
+
+          # Fallback: génération manuelle des rapports si pytest-cov échoue
+          if [ ! -f "coverage.xml" ] && [ -f ".coverage" ]; then
+            echo "🔄 Génération manuelle des rapports de couverture..."
+            python -m coverage xml -o coverage.xml || echo "⚠️  Échec de la génération XML"
+            python -m coverage html -d htmlcov || echo "⚠️  Échec de la génération HTML"
+          fi
+
+      - name: "📊 Upload Coverage to Codecov"
         uses: codecov/codecov-action@v5
         with:
           files: ./coverage.xml
           fail_ci_if_error: false
           verbose: true
           token: ${{ secrets.CODECOV_TOKEN }}
+        if: hashFiles('coverage.xml') != ''
 
       - name: "📦 Upload Coverage HTML"
         uses: actions/upload-artifact@v4
@@ -449,25 +482,56 @@ jobs:
           echo "📚 CONSTRUCTION DE LA DOCUMENTATION"
           echo "==================================="
 
-          # Tentative de build documentation
-          if mkdocs build -f config/mkdocs/mkdocs.yml; then
+          # Vérification de la configuration MkDocs
+          if [ ! -f "config/mkdocs/mkdocs.yml" ]; then
+            echo "❌ Configuration MkDocs manquante"
+            echo "FAILURE" > doc_result.txt
+            exit 1
+          fi
+
+          # Nettoyage préventif des fichiers problématiques
+          echo "🧹 Nettoyage des fichiers problématiques..."
+          find . -name "._*" -type f -delete 2>/dev/null || true
+          find . -name ".DS_Store" -type f -delete 2>/dev/null || true
+          find . -name "*.pyc" -delete 2>/dev/null || true
+          find . -name "__pycache__" -type d -exec rm -rf {} + 2>/dev/null || true
+
+          # Tentative de build documentation avec gestion d'erreur robuste
+          echo "🔨 Construction de la documentation..."
+          if mkdocs build -f config/mkdocs/mkdocs.yml --strict 2>&1; then
             echo "✅ Documentation construite avec succès !"
             echo "SUCCESS" > doc_result.txt
+            
+            # Vérification de la génération
+            if [ -d "site" ] && [ "$(ls -A site)" ]; then
+              echo "✅ Site généré et non vide"
+            else
+              echo "⚠️  Site généré mais vide"
+              echo "WARNING" > doc_result.txt
+            fi
           else
-            echo "⚠️  Documentation échouée - Problème de fichiers AppleDouble détecté"
-            echo "🔄 Tentative de nettoyage et rebuild..."
+            echo "⚠️  Documentation échouée - Tentative de nettoyage et rebuild..."
             
-            # Nettoyage agressif
-            find . -name "._*" -type f -delete 2>/dev/null
-            find . -name ".DS_Store" -type f -delete 2>/dev/null
+            # Nettoyage agressif et reconstruction
+            rm -rf site/ 2>/dev/null || true
+            find . -name "._*" -type f -delete 2>/dev/null || true
+            find . -name ".DS_Store" -type f -delete 2>/dev/null || true
             
-            # Deuxième tentative
-            if mkdocs build -f config/mkdocs/mkdocs.yml; then
+            # Deuxième tentative avec plus de verbosité
+            echo "🔄 Deuxième tentative de construction..."
+            if mkdocs build -f config/mkdocs/mkdocs.yml --verbose 2>&1; then
               echo "✅ Documentation construite après nettoyage !"
               echo "SUCCESS" > doc_result.txt
             else
               echo "❌ Documentation échouée définitivement"
               echo "FAILURE" > doc_result.txt
+              
+              # Diagnostic des erreurs
+              echo "🔍 Diagnostic des erreurs..."
+              echo "📁 Contenu du répertoire docs:"
+              ls -la docs/ 2>/dev/null || echo "Dossier docs non accessible"
+              echo "📁 Contenu du répertoire config/mkdocs:"
+              ls -la config/mkdocs/ 2>/dev/null || echo "Dossier config/mkdocs non accessible"
             fi
           fi
 
@@ -494,6 +558,68 @@ jobs:
           path: |
             site/
           retention-days: 30
+
+      - name: "🌐 Configuration GitHub Pages"
+        if: success()
+        run: |
+          echo "🌐 CONFIGURATION GITHUB PAGES"
+          echo "============================="
+
+          # Créer un fichier .nojekyll pour désactiver Jekyll
+          if [ -d "site" ]; then
+            touch site/.nojekyll
+            echo "✅ Fichier .nojekyll créé pour désactiver Jekyll"
+            
+            # Créer un fichier CNAME si nécessaire
+            if [ -n "${{ vars.CUSTOM_DOMAIN }}" ]; then
+              echo "${{ vars.CUSTOM_DOMAIN }}" > site/CNAME
+              echo "✅ CNAME configuré pour ${{ vars.CUSTOM_DOMAIN }}"
+            fi
+            
+            # Vérifier la structure du site
+            echo "📁 Structure du site généré:"
+            find site/ -type f -name "*.html" | head -10
+            echo "📊 Total fichiers HTML: $(find site/ -type f -name '*.html' | wc -l)"
+          else
+            echo "⚠️  Dossier site non trouvé"
+          fi
+
+      - name: "🚀 Déploiement GitHub Pages"
+        if: success() && github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          force_orphan: true
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
+
+      - name: "📋 Configuration GitHub Pages Propre"
+        if: success()
+        run: |
+          echo "📋 CONFIGURATION GITHUB PAGES PROFESSIONNELLE"
+          echo "=============================================="
+
+          # Créer le fichier .nojekyll dans le dossier site/
+          if [ -d "site" ]; then
+            touch site/.nojekyll
+            echo "✅ Fichier .nojekyll créé dans site/"
+            
+            # Copier la configuration depuis config/github-pages/
+            if [ -f "config/github-pages/github-pages-config.yml" ]; then
+              cp config/github-pages/github-pages-config.yml site/
+              echo "✅ Configuration GitHub Pages copiée"
+            else
+              echo "⚠️  Configuration GitHub Pages non trouvée"
+            fi
+            
+            # Vérifier la structure finale
+            echo "📁 Structure finale du site:"
+            ls -la site/ | head -10
+            echo "📊 Total fichiers: $(find site/ -type f | wc -l)"
+          else
+            echo "❌ Dossier site non trouvé"
+          fi
 
   # ========================================
   # 🎯 RAPPORT FINAL
