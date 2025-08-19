@@ -236,12 +236,15 @@ jobs:
           pip install pytest pytest-cov
 
       - name: "🧪 Tests de Compatibilité"
+        env:
+          PYTHONIOENCODING: utf-8
+          PYTHONUTF8: 1
         run: |
           echo "🖥️ TESTS COMPATIBILITÉ ${{ matrix.os }}"
           echo "==============================="
 
           # Tests rapides de compatibilité (uniquement tests de base, exclure les tests complexes)
-          pytest tests/unit/core/ tests/unit/analysis/ --maxfail=3 --tb=short -v || echo "⚠️  Tests de compatibilité partiellement échoués (non critique pour cross-platform)"
+          pytest tests/unit/core/ tests/unit/analytics/ --maxfail=3 --tb=short -v || echo "⚠️  Tests de compatibilité partiellement échoués (non critique pour cross-platform)"
 
       - name: "📊 Upload Rapport Compatibilité"
         uses: actions/upload-artifact@v4
