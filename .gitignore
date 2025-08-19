@@ -22,6 +22,16 @@ share/python-wheels/
 *.egg
 MANIFEST
 
+# macOS hidden files
+._*
+.DS_Store
+.DS_Store?
+.AppleDouble
+.LSOverride
+Icon
+Thumbs.db
+ehthumbs.db
+
 # PyInstaller
 *.manifest
 *.spec
