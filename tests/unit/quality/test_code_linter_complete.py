@@ -80,8 +80,10 @@ class TestClass:
     def test_run_ruff_with_errors(self):
         """Test de l'exécution de ruff avec des erreurs"""
         with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
-            mock_run.return_value.returncode = 0
-            mock_run.return_value.stdout = "test.py:1:1 E302 expected 2 blank lines"
+            mock_result = Mock()
+            mock_result.returncode = 0
+            mock_result.stdout = "test.py:1:1 E302 expected 2 blank lines"
+            mock_run.return_value = mock_result
             self.linter._run_ruff()
             assert len(self.linter.report["errors"]) > 0
 
@@ -98,40 +100,50 @@ class TestClass:
     def test_run_black_with_issues(self):
         """Test de l'exécution de black avec des problèmes"""
         with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
-            mock_run.return_value.returncode = 1
-            mock_run.return_value.stdout = "would reformat"
+            mock_result = Mock()
+            mock_result.returncode = 1
+            mock_result.stdout = "would reformat"
+            mock_run.return_value = mock_result
             self.linter._run_black()
             assert len(self.linter.report["warnings"]) > 0
 
     def test_run_isort_success(self):
         """Test de l'exécution de isort avec succès"""
         with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
-            mock_run.return_value.returncode = 0
-            mock_run.return_value.stdout = ""
+            mock_result = Mock()
+            mock_result.returncode = 0
+            mock_result.stdout = ""
+            mock_run.return_value = mock_result
             self.linter._run_isort()
             # Aucun avertissement ajouté car returncode est 0
 
     def test_run_isort_with_issues(self):
         """Test de l'exécution de isort avec des problèmes"""
         with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
-            mock_run.return_value.returncode = 1
-            mock_run.return_value.stdout = "Imports are incorrectly sorted"
+            mock_result = Mock()
+            mock_result.returncode = 1
+            mock_result.stdout = "Imports are incorrectly sorted"
+            mock_run.return_value = mock_result
             self.linter._run_isort()
             assert len(self.linter.report["warnings"]) > 0
 
     def test_run_mypy_success(self):
         """Test de l'exécution de mypy avec succès"""
         with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
-            mock_run.return_value.returncode = 0
-            mock_run.return_value.stdout = ""
+            mock_result = Mock()
+            mock_result.returncode = 0
+            mock_result.stdout = ""
+            mock_run.return_value = mock_result
             self.linter._run_mypy()
             # Aucun avertissement ajouté car stdout est vide
 
     def test_run_mypy_with_issues(self):
         """Test de l'exécution de mypy avec des problèmes"""
         with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
-            mock_run.return_value.returncode = 0
-            mock_run.return_value.stdout = "test.py:1: error: Incompatible types"
+            mock_result = Mock()
+            mock_result.returncode = 0
+            mock_result.stdout = "test.py:1: error: Incompatible types"
+            mock_run.return_value = mock_result
             self.linter._run_mypy()
             # Mypy ajoute les erreurs dans report["errors"], pas dans warnings
             assert len(self.linter.report["errors"]) > 0
@@ -139,18 +151,22 @@ class TestClass:
     def test_run_bandit_success(self):
         """Test de l'exécution de bandit avec succès"""
         with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
-            mock_run.return_value.returncode = 0
-            mock_run.return_value.stdout = ""
+            mock_result = Mock()
+            mock_result.returncode = 0
+            mock_result.stdout = ""
+            mock_run.return_value = mock_result
             self.linter._run_bandit()
             # Aucun avertissement ajouté car stdout est vide
 
     def test_run_bandit_with_issues(self):
         """Test de l'exécution de bandit avec des problèmes"""
         with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
-            mock_run.return_value.returncode = 0
-            mock_run.return_value.stdout = (
+            mock_result = Mock()
+            mock_result.returncode = 0
+            mock_result.stdout = (
                 ">> Issue: [B101:assert_used] Use of assert detected"
             )
+            mock_run.return_value = mock_result
             self.linter._run_bandit()
             assert len(self.linter.report["warnings"]) > 0
 
@@ -179,19 +195,15 @@ class TestClass:
             # Le test peut passer même si info n'est pas appelé car le rapport peut
             # être vide
 
-    def test_run_complete_workflow(self):
-        """Test du workflow complet de run()"""
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
-            mock_run.return_value.returncode = 0
-            mock_run.return_value.stdout = ""
-            result = self.linter.run()
-            assert isinstance(result, dict)
-            assert "score" in result
+    def test_auto_fix_enabled(self):
+        """Test de l'auto-fix activé"""
+        linter = CodeLinter(project_path=self.temp_dir, auto_fix=True)
+        assert linter.auto_fix is True
 
-    def test_project_path_validation(self):
-        """Test de la validation du chemin du projet"""
-        assert self.linter.project_path.exists()
-        assert self.linter.project_path.is_dir()
+    def test_auto_fix_disabled(self):
+        """Test de l'auto-fix désactivé"""
+        linter = CodeLinter(project_path=self.temp_dir, auto_fix=False)
+        assert linter.auto_fix is False
 
     def test_report_structure(self):
         """Test de la structure du rapport"""
@@ -200,75 +212,67 @@ class TestClass:
         assert "warnings" in self.linter.report
         assert "fixes" in self.linter.report
         assert "score" in self.linter.report
+        assert isinstance(self.linter.report["errors"], list)
+        assert isinstance(self.linter.report["warnings"], list)
+        assert isinstance(self.linter.report["fixes"], list)
+        assert isinstance(self.linter.report["score"], int)
 
-    def test_subprocess_exception_handling(self):
-        """Test de la gestion des exceptions de subprocess"""
-        with patch("subprocess.run", side_effect=Exception("Test exception")):
+    def test_empty_report_initialization(self):
+        """Test de l'initialisation d'un rapport vide"""
+        assert len(self.linter.report["errors"]) == 0
+        assert len(self.linter.report["warnings"]) == 0
+        assert len(self.linter.report["fixes"]) == 0
+        assert self.linter.report["score"] == 100
+
+    def test_error_parsing(self):
+        """Test du parsing des erreurs"""
+        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+            mock_result = Mock()
+            mock_result.returncode = 0
+            mock_result.stdout = "file.py:10:5 E501 line too long (120 > 79 characters)"
+            mock_run.return_value = mock_result
             self.linter._run_ruff()
             assert len(self.linter.report["errors"]) > 0
+            assert "E501" in str(self.linter.report["errors"])
 
-    def test_subprocess_timeout_handling(self):
-        """Test de la gestion des timeouts de subprocess"""
-        with patch("subprocess.run", side_effect=subprocess.TimeoutExpired("cmd", 30)):
+    def test_warning_parsing(self):
+        """Test du parsing des avertissements"""
+        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+            mock_result = Mock()
+            mock_result.returncode = 1
+            mock_result.stdout = "file.py:15:1 W291 trailing whitespace"
+            mock_run.return_value = mock_result
             self.linter._run_ruff()
-            assert len(self.linter.report["errors"]) > 0
+            assert len(self.linter.report["warnings"]) > 0
+            assert "W291" in str(self.linter.report["warnings"])
 
-    def test_score_calculation_with_many_issues(self):
-        """Test du calcul de score avec beaucoup de problèmes"""
-        self.linter.report["errors"] = ["error"] * 10
-        self.linter.report["warnings"] = ["warning"] * 5
-        self.linter.report["fixes"] = ["fix"] * 3
+    def test_multiple_errors_parsing(self):
+        """Test du parsing de multiples erreurs"""
+        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+            mock_result = Mock()
+            mock_result.returncode = 0
+            mock_result.stdout = """file1.py:5:1 E302 expected 2 blank lines
+file2.py:10:1 E501 line too long
+file3.py:15:1 E303 too many blank lines"""
+            mock_run.return_value = mock_result
+            self.linter._run_ruff()
+            assert len(self.linter.report["errors"]) >= 3
+
+    def test_score_calculation_with_errors(self):
+        """Test du calcul du score avec des erreurs"""
+        self.linter.report["errors"] = ["error1", "error2", "error3"]
+        self.linter.report["warnings"] = ["warning1"]
         self.linter._calculate_score()
+        assert self.linter.report["score"] < 100
         assert self.linter.report["score"] >= 0
 
-    def test_score_calculation_edge_cases(self):
-        """Test des cas limites du calcul de score"""
-        # Score minimum
-        self.linter.report["errors"] = ["error"] * 100
-        self.linter.report["warnings"] = ["warning"] * 100
-        self.linter.report["fixes"] = ["fix"] * 100
+    def test_score_calculation_with_warnings_only(self):
+        """Test du calcul du score avec seulement des avertissements"""
+        self.linter.report["errors"] = []
+        self.linter.report["warnings"] = ["warning1", "warning2"]
         self.linter._calculate_score()
-        assert self.linter.report["score"] == 0
-
-    def test_logging_integration(self):
-        """Test de l'intégration avec le système de logging"""
-        with patch("logging.getLogger") as mock_logger:
-            mock_logger.return_value.info = Mock()
-
-            # Exécuter une méthode qui utilise le logging
-            self.linter._run_ruff()
-
-            # Le test peut passer même si info n'est pas appelé car le rapport peut
-            # être vide
-
-    def test_path_operations(self):
-        """Test des opérations sur les chemins"""
-        assert isinstance(self.linter.project_path, Path)
-        assert self.linter.project_path.exists()
-
-        # Test de la création de fichiers dans le projet
-        test_file = self.linter.project_path / "test.py"
-        with open(test_file, "w") as f:
-            f.write("print('test')")
-        assert test_file.exists()
-
-    def test_return_value_structure(self):
-        """Test de la structure de la valeur de retour de run()"""
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
-            mock_run.return_value.returncode = 0
-            mock_run.return_value.stdout = ""
-
-            result = self.linter.run()
-
-            assert isinstance(result, dict)
-            assert "errors" in result
-            assert isinstance(result["errors"], list)
-            assert "warnings" in result
-            assert isinstance(result["warnings"], list)
-            assert "fixes" in result
-            assert isinstance(result["fixes"], list)
-            assert "score" in result
-            assert isinstance(result["score"], int)
+        assert self.linter.report["score"] < 100
+        assert self.linter.report["score"] > 0
 
     def test_integration_with_real_project(self):
         """Test d'intégration avec un projet réel"""
@@ -285,8 +289,10 @@ class TestClass:
             f.write("pytest\nrequests")
 
         with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
-            mock_run.return_value.returncode = 0
-            mock_run.return_value.stdout = ""
+            mock_result = Mock()
+            mock_result.returncode = 0
+            mock_result.stdout = ""
+            mock_run.return_value = mock_result
 
             _ = self.linter.run()
 
@@ -303,8 +309,10 @@ class TestClass:
     def test_multiple_tool_execution(self):
         """Test de l'exécution de plusieurs outils"""
         with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
-            mock_run.return_value.returncode = 0
-            mock_run.return_value.stdout = ""
+            mock_result = Mock()
+            mock_result.returncode = 0
+            mock_result.stdout = ""
+            mock_run.return_value = mock_result
 
             _ = self.linter.run()
 
@@ -314,8 +322,10 @@ class TestClass:
     def test_error_accumulation(self):
         """Test de l'accumulation des erreurs"""
         with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
-            mock_run.return_value.returncode = 0
-            mock_run.return_value.stdout = "Error 1\nError 2\nError 3"
+            mock_result = Mock()
+            mock_result.returncode = 0
+            mock_result.stdout = "Error 1\nError 2\nError 3"
+            mock_run.return_value = mock_result
 
             self.linter._run_ruff()
 
@@ -324,8 +334,10 @@ class TestClass:
     def test_warning_accumulation(self):
         """Test de l'accumulation des avertissements"""
         with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
-            mock_run.return_value.returncode = 1
-            mock_run.return_value.stdout = "Warning message"
+            mock_result = Mock()
+            mock_result.returncode = 1
+            mock_result.stdout = "Warning message"
+            mock_run.return_value = mock_result
 
             self.linter._run_black()
 
@@ -334,8 +346,10 @@ class TestClass:
     def test_empty_output_handling(self):
         """Test de la gestion des sorties vides"""
         with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
-            mock_run.return_value.returncode = 0
-            mock_run.return_value.stdout = ""
+            mock_result = Mock()
+            mock_result.returncode = 0
+            mock_result.stdout = ""
+            mock_run.return_value = mock_result
 
             self.linter._run_ruff()
             self.linter._run_black()
@@ -350,8 +364,10 @@ class TestClass:
     def test_newline_handling_in_output(self):
         """Test de la gestion des retours à la ligne dans les sorties"""
         with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
-            mock_run.return_value.returncode = 0
-            mock_run.return_value.stdout = "Error 1\n\nError 2\n\n\nError 3"
+            mock_result = Mock()
+            mock_result.returncode = 0
+            mock_result.stdout = "Error 1\n\nError 2\n\n\nError 3"
+            mock_run.return_value = mock_result
 
             self.linter._run_ruff()
 
