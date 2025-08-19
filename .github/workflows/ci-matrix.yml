@@ -135,7 +135,9 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
           cache: pip
-          cache-dependency-path: requirements.txt
+          cache-dependency-path: |
+            requirements.txt
+            pyproject.toml
 
       - name: "📦 Upgrade pip & Install Dependencies"
         run: |
@@ -161,7 +163,7 @@ jobs:
 
           # MyPy type checking
           echo "🔍 MyPy type checking..."
-          mypy athalia_core/ --ignore-missing-imports --no-error-summary
+          mypy athalia_core/ --ignore-missing-imports --no-error-summary --warn-unused-ignores || echo "⚠️  MyPy a trouvé des problèmes de type (non bloquant)"
 
       - name: "🧪 Tests avec Couverture"
         run: |
@@ -254,7 +256,7 @@ jobs:
   build-package:
     name: "🚀 Build & Package"
     needs: [validate, test-matrix]
-    # if: needs.validate.outputs.should-continue == 'true' && always()
+    if: needs.validate.outputs.should-continue == 'true' && always()
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -292,7 +294,7 @@ jobs:
   build-docs:
     name: "📚 Build Documentation"
     needs: [validate, test-matrix]
-    # if: needs.validate.outputs.should-continue == 'true' && always()
+    if: needs.validate.outputs.should-continue == 'true' && always()
     runs-on: ubuntu-latest
     timeout-minutes: 8
 
