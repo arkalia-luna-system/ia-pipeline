@@ -96,20 +96,23 @@ class IntelligentAnalyzer:
         # 4. Analyse de performance
         logger.info("⚡ Étape 4/4: Analyse de performance...")
         if self.performance_analyzer:
-            performance_report = self.performance_analyzer.analyze_project_performance(
+            report_obj = self.performance_analyzer.analyze_project_performance(
                 str(project_path_obj)
             )
+            performance_dict = (
+                asdict(report_obj)
+                if hasattr(report_obj, "__dataclass_fields__")
+                else (
+                    report_obj.to_dict()
+                    if hasattr(report_obj, "to_dict")
+                    else getattr(report_obj, "__dict__", {})
+                )
+            )
         else:
-            performance_report = {
+            performance_dict = {
                 "status": "unavailable",
                 "message": "PerformanceAnalyzer non disponible",
             }
-
-        # Convert performance report to dict when needed
-        if not isinstance(performance_report, dict):
-            performance_dict = getattr(performance_report, "__dict__", {})
-        else:
-            performance_dict = performance_report
 
         # Calculer le score global
         overall_score = self._calculate_overall_score(
@@ -131,9 +134,9 @@ class IntelligentAnalyzer:
 
         # Normaliser l'analyse d'architecture en dict
         if hasattr(architecture_analysis, "to_dict"):
-            architecture_dict: dict[str, Any] = architecture_analysis.to_dict()  # type: ignore[assignment]
+            architecture_dict: dict[str, Any] = architecture_analysis.to_dict()
         elif hasattr(architecture_analysis, "__dict__"):
-            architecture_dict = dict(architecture_analysis.__dict__)  # type: ignore[arg-type]
+            architecture_dict = dict(architecture_analysis.__dict__)
         else:
             architecture_dict = {}
 
@@ -181,19 +184,18 @@ class IntelligentAnalyzer:
             except Exception as e:
                 logger.warning(f"Erreur lors de l'analyse AST de {py_file}: {e}")
 
-                avg_complexity = (
-                    (
-                        sum(
-                            (
-                                float(f.get("complexity_score") or 0.0)
-                                for f in file_analyses
-                            )
-                        )
-                        / float(len(file_analyses))
-                    )
-                    if file_analyses
-                    else 0.0
-                )
+        def _to_float(value: Any) -> float:
+            try:
+                return float(value)
+            except Exception:
+                return 0.0
+
+        complexities: list[float] = [
+            _to_float(item.get("complexity_score")) for item in file_analyses
+        ]
+        avg_complexity = (
+            sum(complexities) / float(len(complexities)) if complexities else 0.0
+        )
         return {
             "files_analyzed": len(file_analyses),
             "total_files": len(python_files),
