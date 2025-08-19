@@ -7,19 +7,19 @@ from typing import Any
 # Import du validateur de sécurité
 try:
     from athalia_core.validation.security_validator import (
-        SecurityErrorFallback,
+        SecurityError,
         validate_and_run,
     )
 
-    # Définir SecurityErrorFallbackFallback comme alias de SecurityErrorFallback
-    SecurityErrorFallbackFallback = SecurityErrorFallback
+    # Définir SecurityErrorFallback comme alias de SecurityError
+    SecurityErrorFallback = SecurityError
 except ImportError:
     # Fallback pour les tests
     def validate_and_run(command: list[str], **kwargs: Any) -> Any:
         return subprocess.run(command, **kwargs)
 
-    # Utiliser SecurityErrorFallbackFallback comme alias
-    SecurityErrorFallbackFallback = Exception
+    # Utiliser SecurityErrorFallback comme alias
+    SecurityErrorFallback = Exception
 
 
 logger = logging.getLogger(__name__)
@@ -81,7 +81,7 @@ class CodeLinter:
                     if line.strip():
                         self.report["errors"].append(f"Ruff: {line}")
 
-        except (Exception, SecurityErrorFallbackFallback) as e:
+        except (Exception, SecurityErrorFallback) as e:
             self.report["errors"].append(f"Ruff non exécuté: {e}")
 
     def _run_black(self):
@@ -98,7 +98,7 @@ class CodeLinter:
             if result.returncode != 0:
                 self.report["warnings"].append("Formatage Black à corriger")
 
-        except (Exception, SecurityErrorFallbackFallback) as e:
+        except (Exception, SecurityErrorFallback) as e:
             self.report["warnings"].append(f"Black non exécuté: {e}")
 
     def _run_isort(self):
