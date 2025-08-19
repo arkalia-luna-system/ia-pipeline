@@ -173,7 +173,7 @@ class TestIntelligentAnalyzer:
         ast_analysis = {"files_analyzed": 10, "summary": {"average_complexity": 5.2}}
         pattern_analysis = {
             "patterns": [],
-            "duplicates": [{"file1": "test1.py"}],
+            "duplications": [{"file1": "test1.py"}],
             "antipatterns": [],
             "summary": {"total_duplicates": 1, "total_antipatterns": 0},
         }
@@ -203,7 +203,7 @@ class TestIntelligentAnalyzer:
         # Données de test
         pattern_analysis = {
             "patterns": [],
-            "duplicates": [{"file1": "test1.py"}],
+            "duplications": [{"file1": "test1.py"}],
             "antipatterns": [],
             "summary": {"total_duplicates": 1, "total_antipatterns": 0},
         }
@@ -233,7 +233,7 @@ class TestIntelligentAnalyzer:
         # Données de test
         pattern_analysis = {
             "patterns": [],
-            "duplicates": [{"file1": "test1.py"}],
+            "duplications": [{"file1": "test1.py"}],
             "antipatterns": [],
             "summary": {"total_duplicates": 1, "total_antipatterns": 0},
         }
