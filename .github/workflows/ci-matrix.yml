@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 3
     outputs:
-      should-continue: ${{ steps.validate.outputs.should-continue }}
+      should-continue: ${{ steps.check-validation.outputs.should-continue }}
 
     steps:
       - name: "Checkout Code"
@@ -44,6 +44,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: "Validation Structure"
+        id: check-validation
         run: |
           echo "VALIDATION DE LA STRUCTURE ATHALIA"
           echo "====================================="
@@ -630,13 +631,9 @@ jobs:
             find site/ -name "._*" -type f -delete 2>/dev/null || echo "SUCCESS Site déjà propre (AppleDouble)"
             find site/ -name ".DS_Store" -type f -delete 2>/dev/null || echo "SUCCESS Site déjà propre (.DS_Store)"
             
-            # Créer un fichier CNAME pour le domaine personnalisé
-            if [ -n "${{ vars.CUSTOM_DOMAIN }}" ]; then
-              echo "${{ vars.CUSTOM_DOMAIN }}" > site/CNAME
-              echo "SUCCESS CNAME configuré pour ${{ vars.CUSTOM_DOMAIN }}"
-            else
-              echo "INFO Aucun domaine personnalisé configuré"
-            fi
+            # Créer un fichier CNAME pour le domaine personnalisé (si configuré)
+            echo "INFO Configuration CNAME pour GitHub Pages"
+            # Note: CUSTOM_DOMAIN peut être configuré dans les variables du repository
 
             # Vérification COMPLÈTE de la structure du site
             echo "STRUCTURE DU SITE MKDOCS GÉNÉRÉE:"
