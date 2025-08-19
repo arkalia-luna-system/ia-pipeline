@@ -50,8 +50,12 @@ class AutoCleaner:
         self.optimizer = PerformanceOptimizer()
         self.security_validator = SecurityValidator()
 
+    def load_cleanup_config(self, config_path: str | None = None) -> dict[str, Any]:
+        """Charge la configuration de nettoyage (méthode publique)"""
+        return self._load_cleanup_config(config_path)
+
     def _load_cleanup_config(self, config_path: str | None = None) -> dict[str, Any]:
-        """Charge la configuration de nettoyage"""
+        """Charge la configuration de nettoyage (méthode privée)"""
         default_config = {
             "patterns_to_remove": [
                 "*.pyc",
@@ -104,6 +108,19 @@ class AutoCleaner:
                 )
 
         return default_config
+
+    def save_cleanup_history(self, output_path: str | None = None) -> str:
+        """Sauvegarde l'historique de nettoyage"""
+        if output_path is None:
+            output_path = str(self.project_path / "cleanup_history.json")
+
+        try:
+            with open(output_path, "w", encoding="utf-8") as f:
+                json.dump(self.cleanup_history, f, indent=2, default=str)
+            return output_path
+        except Exception as e:
+            logger.error(f"Erreur lors de la sauvegarde de l'historique: {e}")
+            return ""
 
     @performance_monitor
     @memory_efficient

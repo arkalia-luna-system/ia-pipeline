@@ -39,6 +39,7 @@ class AutoTester:
         self.project_path = Path(project_path)
         self.test_dir = self.project_path / "tests"
         self.generated_tests: list[str] = []
+        self.test_results: dict[str, Any] = {}
 
     def analyze_project(self) -> dict[str, Any]:
         """Analyse le projet pour identifier les modules à tester"""
@@ -79,6 +80,71 @@ class AutoTester:
             analysis["test_coverage"] = (existing_tests / total_functions) * 100
 
         return analysis
+
+    def run(self, test_type: str = "all") -> dict[str, Any]:
+        """Exécute les tests automatiques"""
+        logger.info(f"🚀 Exécution des tests automatiques: {test_type}")
+
+        try:
+            if test_type == "all":
+                # Analyser le projet
+                analysis = self.analyze_project()
+                self.test_results["analysis"] = analysis
+
+                # Générer des tests si nécessaire
+                if analysis.get("test_coverage", 0) < 80:
+                    self.test_results["generated_tests"] = self._generate_missing_tests(
+                        analysis
+                    )
+
+                # Exécuter les tests existants
+                self.test_results["execution"] = self._run_existing_tests()
+
+            elif test_type == "analysis":
+                self.test_results["analysis"] = self.analyze_project()
+
+            elif test_type == "generation":
+                analysis = self.analyze_project()
+                self.test_results["generated_tests"] = self._generate_missing_tests(
+                    analysis
+                )
+
+            self.test_results["status"] = "completed"
+            self.test_results["success"] = True
+
+        except Exception as e:
+            logger.error(f"Erreur lors de l'exécution des tests: {e}")
+            self.test_results["status"] = "error"
+            self.test_results["success"] = False
+            self.test_results["error"] = str(e)
+
+        return self.test_results
+
+    def _generate_missing_tests(self, analysis: dict[str, Any]) -> list[str]:
+        """Génère les tests manquants"""
+        generated = []
+        for module in analysis.get("modules", []):
+            if len(module.get("functions", [])) > 0:
+                test_file = f"test_{module['name']}.py"
+                generated.append(test_file)
+        return generated
+
+    def _run_existing_tests(self) -> dict[str, Any]:
+        """Exécute les tests existants"""
+        try:
+            result = subprocess.run(
+                ["python", "-m", "pytest", "tests/", "-v"],
+                capture_output=True,
+                text=True,
+                cwd=self.project_path,
+            )
+            return {
+                "returncode": result.returncode,
+                "stdout": result.stdout,
+                "stderr": result.stderr,
+            }
+        except Exception as e:
+            return {"error": str(e)}
 
     def _analyze_module(self, file_path: Path) -> dict[str, Any]:
         """Analyse un module Python individuel"""
