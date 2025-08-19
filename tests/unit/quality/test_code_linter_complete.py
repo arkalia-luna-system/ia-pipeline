@@ -53,11 +53,13 @@ class TestClass:
     def test_run_returns_dict(self):
         """Test que run() retourne un dictionnaire"""
         # Importer la fonction directement pour le patch
-        from athalia_core.quality.code_linter import validateand_run
+        from athalia_core.quality.code_linter import validate_and_run
 
-        with patch("athalia_core.quality.code_linter.validateand_run") as mock_run:
-            mock_run.return_value.returncode = 0
-            mock_run.return_value.stdout = ""
+        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+            mock_result = Mock()
+            mock_result.returncode = 0
+            mock_result.stdout = ""
+            mock_run.return_value = mock_result
             result = self.linter.run()
             assert isinstance(result, dict)
             assert "errors" in result
@@ -67,15 +69,17 @@ class TestClass:
 
     def test_run_ruff_success(self):
         """Test de l'exécution de ruff avec succès"""
-        with patch("subprocess.run") as mock_run:
-            mock_run.return_value.returncode = 0
-            mock_run.return_value.stdout = ""
+        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+            mock_result = Mock()
+            mock_result.returncode = 0
+            mock_result.stdout = ""
+            mock_run.return_value = mock_result
             self.linter._run_ruff()
             # Aucune erreur ajoutée car stdout est vide
 
     def test_run_ruff_with_errors(self):
         """Test de l'exécution de ruff avec des erreurs"""
-        with patch("subprocess.run") as mock_run:
+        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = "test.py:1:1 E302 expected 2 blank lines"
             self.linter._run_ruff()
@@ -83,15 +87,17 @@ class TestClass:
 
     def test_run_black_success(self):
         """Test de l'exécution de black avec succès"""
-        with patch("subprocess.run") as mock_run:
-            mock_run.return_value.returncode = 0
-            mock_run.return_value.stdout = ""
+        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+            mock_result = Mock()
+            mock_result.returncode = 0
+            mock_result.stdout = ""
+            mock_run.return_value = mock_result
             self.linter._run_black()
             # Aucun avertissement ajouté car returncode est 0
 
     def test_run_black_with_issues(self):
         """Test de l'exécution de black avec des problèmes"""
-        with patch("subprocess.run") as mock_run:
+        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
             mock_run.return_value.returncode = 1
             mock_run.return_value.stdout = "would reformat"
             self.linter._run_black()
@@ -127,7 +133,8 @@ class TestClass:
             mock_run.return_value.returncode = 0
             mock_run.return_value.stdout = "test.py:1: error: Incompatible types"
             self.linter._run_mypy()
-            assert len(self.linter.report["warnings"]) > 0
+            # Mypy ajoute les erreurs dans report["errors"], pas dans warnings
+            assert len(self.linter.report["errors"]) > 0
 
     def test_run_bandit_success(self):
         """Test de l'exécution de bandit avec succès"""

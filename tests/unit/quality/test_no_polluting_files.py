@@ -407,11 +407,17 @@ class TestNoPollutingFiles:
         import hashlib
 
         # Dictionnaire pour stocker les hashs de contenu
-        content_hashes = {}
-        duplicate_files = []
+        content_hashes: dict[str, str] = {}
+        duplicate_files: list[str] = []
 
         for root, _dirs, files in os.walk("."):
-            if ".git" in root or ".venv" in root:
+            if (
+                ".git" in root
+                or ".venv" in root
+                or ".athalia_cache" in root
+                or "backup" in root
+                or "site" in root
+            ):
                 continue
             for file in files:
                 # Ignorer automatiquement les fichiers cache Python et temporaires

@@ -248,11 +248,14 @@ class RoboticsCI:
                     text=True,
                     timeout=120,
                 )
-                if result.returncode != 0:
+                if result.returncode == 0:
+                    self.ci_results["lint_status"] = "success"
+                else:
                     if isinstance(self.ci_results["warnings"], list):
                         self.ci_results["warnings"].append(
                             f"Lint Rust: {result.stderr}"
                         )
+                    self.ci_results["lint_status"] = "failed"
 
             elif (self.project_path / "package.json").exists():
                 # Lint Node.js
@@ -264,18 +267,45 @@ class RoboticsCI:
                     text=True,
                     timeout=120,
                 )
-                if result.returncode != 0:
+                if result.returncode == 0:
+                    self.ci_results["lint_status"] = "success"
+                else:
                     if isinstance(self.ci_results["warnings"], list):
                         self.ci_results["warnings"].append(
                             f"Lint Node.js: {result.stderr}"
                         )
+                    self.ci_results["lint_status"] = "failed"
+
+            elif any(
+                (self.project_path / f).exists()
+                for f in ["pyproject.toml", "requirements.txt"]
+            ) or list(self.project_path.glob("*.py")):
+                # Lint Python
+                result = validate_and_run(
+                    ["python", "-m", "ruff", "check", "."],
+                    cwd=self.project_path,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    text=True,
+                    timeout=120,
+                )
+                if result.returncode == 0:
+                    self.ci_results["lint_status"] = "success"
+                else:
+                    if isinstance(self.ci_results["warnings"], list):
+                        self.ci_results["warnings"].append(
+                            f"Lint Python: {result.stderr}"
+                        )
+                    self.ci_results["lint_status"] = "failed"
 
         except subprocess.TimeoutExpired:
             if isinstance(self.ci_results["warnings"], list):
                 self.ci_results["warnings"].append("Lint timeout")
+            self.ci_results["lint_status"] = "failed"
         except Exception as e:
             if isinstance(self.ci_results["warnings"], list):
                 self.ci_results["warnings"].append(f"Erreur lint: {e}")
+            self.ci_results["lint_status"] = "failed"
 
     def _run_security_scan(self) -> None:
         """Exécute le scan de sécurité"""
@@ -290,11 +320,14 @@ class RoboticsCI:
                     text=True,
                     timeout=120,
                 )
-                if result.returncode != 0:
+                if result.returncode == 0:
+                    self.ci_results["security_status"] = "success"
+                else:
                     if isinstance(self.ci_results["warnings"], list):
                         self.ci_results["warnings"].append(
                             f"Audit Rust: {result.stderr}"
                         )
+                    self.ci_results["security_status"] = "failed"
 
             elif (self.project_path / "package.json").exists():
                 # Audit npm
@@ -306,18 +339,23 @@ class RoboticsCI:
                     text=True,
                     timeout=120,
                 )
-                if result.returncode != 0:
+                if result.returncode == 0:
+                    self.ci_results["security_status"] = "success"
+                else:
                     if isinstance(self.ci_results["warnings"], list):
                         self.ci_results["warnings"].append(
                             f"Audit npm: {result.stderr}"
                         )
+                    self.ci_results["security_status"] = "failed"
 
         except subprocess.TimeoutExpired:
             if isinstance(self.ci_results["warnings"], list):
                 self.ci_results["warnings"].append("Scan sécurité timeout")
+            self.ci_results["security_status"] = "failed"
         except Exception as e:
             if isinstance(self.ci_results["warnings"], list):
                 self.ci_results["warnings"].append(f"Erreur scan sécurité: {e}")
+            self.ci_results["security_status"] = "failed"
 
     def _run_deployment_check(self) -> None:
         """Vérifie la configuration de déploiement"""
