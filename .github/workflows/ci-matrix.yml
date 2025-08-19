@@ -45,7 +45,7 @@ jobs:
 
       - name: "Validation Structure"
         run: |
-          echo "Validation VALIDATION DE LA STRUCTURE ATHALIA"
+          echo "VALIDATION DE LA STRUCTURE ATHALIA"
           echo "====================================="
 
           # Vérification des dossiers critiques
@@ -90,7 +90,7 @@ jobs:
 
       - name: "Metriques Projet"
         run: |
-          echo "Metriques MÉTRIQUES ATHALIA"
+          echo "MÉTRIQUES ATHALIA"
           echo "===================="
           echo "Python files: $(find . -name '*.py' | wc -l | tr -d ' ')"
           echo "Test files: $(find tests/ -name '*.py' | wc -l | tr -d ' ')"
@@ -103,12 +103,12 @@ jobs:
           echo "Validation ANALYSE DÉTAILLÉE:"
           echo "Dossiers Dossiers Python: $(find . -name '*.py' -exec dirname {} \; | sort | uniq | wc -l | tr -d ' ')"
           echo "Metriques Taille totale: $(du -sh . | cut -f1)"
-          echo "📈 Lignes de code: $(find . -name '*.py' -exec wc -l {} + | tail -1 | awk '{print $1}')"
+          echo " Lignes de code: $(find . -name '*.py' -exec wc -l {} + | tail -1 | awk '{print $1}')"
           echo "Tests Couverture tests: $(find tests/ -name '*.py' | wc -l | tr -d ' ') / $(find . -name '*.py' | wc -l | tr -d ' ') modules"
 
           # Vérification des imports critiques
           echo ""
-          echo "🔗 VÉRIFICATION IMPORTS:"
+          echo " VÉRIFICATION IMPORTS:"
           if python -c "import athalia_core" 2>/dev/null; then
             echo "SUCCESS athalia_core - Importable"
           else
@@ -166,11 +166,11 @@ jobs:
           echo "============================"
 
           # Ruff linting
-          echo "📝 Ruff linting..."
+          echo " Ruff linting..."
           ruff check . --output-format=github || echo "WARNING  Ruff a trouvé des problèmes (non bloquant)"
 
           # Black format check
-          echo "🎨 Black format check..."
+          echo " Black format check..."
           black --check --diff . || echo "WARNING  Black a trouvé des problèmes de format (non bloquant)"
 
           # MyPy type checking
@@ -229,7 +229,7 @@ jobs:
 
           # Fallback: génération manuelle des rapports si pytest-cov échoue
           if [ ! -f "coverage/coverage-${{ matrix.python }}-${{ runner.os }}.xml" ] && [ -f ".coverage" ]; then
-            echo "🔄 Génération manuelle des rapports de couverture..."
+            echo " Génération manuelle des rapports de couverture..."
             python -m coverage xml -o coverage/coverage-${{ matrix.python }}-${{ runner.os }}.xml || echo "WARNING  Échec de la génération XML"
             python -m coverage html -d htmlcov || echo "WARNING  Échec de la génération HTML"
           fi
@@ -310,16 +310,22 @@ jobs:
           echo "Tests Lancement des tests de compatibilité..."
 
           # Commande compatible multi-OS (evite les problemes de syntaxe PowerShell)
-          pytest tests/unit/core/ tests/unit/analytics/ \
-            --junitxml=test-results/pytest-compat-${{ matrix.os }}-${{ matrix.python }}.xml \
-            --cov=athalia_core \
-            --cov-report=term-missing \
-            --cov-report=xml:coverage/coverage-compat-${{ matrix.os }}-${{ matrix.python }}.xml \
-            --maxfail=3 --tb=short -v || {
-              echo "WARNING: Tests de compatibilite partiellement echoues (non critique pour cross-platform)"
-              echo "SUCCESS: Continuation du pipeline CI/CD"
-              true
-            }
+          if [[ "${{ matrix.os }}" == "windows-2025" ]]; then
+            # Commande Windows PowerShell compatible
+            pytest tests/unit/core/ tests/unit/analytics/ --junitxml=test-results/pytest-compat-${{ matrix.os }}-${{ matrix.python }}.xml --cov=athalia_core --cov-report=term-missing --cov-report=xml:coverage/coverage-compat-${{ matrix.os }}-${{ matrix.python }}.xml --maxfail=3 --tb=short -v
+          else
+            # Commande Unix/Linux/macOS
+            pytest tests/unit/core/ tests/unit/analytics/ \
+              --junitxml=test-results/pytest-compat-${{ matrix.os }}-${{ matrix.python }}.xml \
+              --cov=athalia_core \
+              --cov-report=term-missing \
+              --cov-report=xml:coverage/coverage-compat-${{ matrix.os }}-${{ matrix.python }}.xml \
+              --maxfail=3 --tb=short -v
+          fi || {
+            echo "WARNING: Tests de compatibilite partiellement echoues (non critique pour cross-platform)"
+            echo "SUCCESS: Continuation du pipeline CI/CD"
+            true
+          }
 
       - name: "Metriques Upload Rapport Compatibilité"
         uses: actions/upload-artifact@v4
@@ -355,9 +361,9 @@ jobs:
         run: |
           pip install bandit safety pip-audit
 
-      - name: "🔒 Bandit Security Scan"
+      - name: " Bandit Security Scan"
         run: |
-          echo "🔒 SCAN SÉCURITÉ BANDIT"
+          echo " SCAN SÉCURITÉ BANDIT"
           echo "========================"
           bandit -r athalia_core/ -f json -o bandit-report.json || echo "WARNING  Bandit scan échoué - Rapport non généré"
           bandit -r athalia_core/ -f txt -o bandit-report.txt || echo "WARNING  Bandit scan échoué - Rapport non généré"
@@ -411,9 +417,9 @@ jobs:
         run: |
           pip install build wheel setuptools
 
-      - name: "🧹 Nettoyage Préventif (AppleDouble)"
+      - name: " Nettoyage Préventif (AppleDouble)"
         run: |
-          echo "🧹 NETTOYAGE PRÉVENTIF DES FICHIERS MACOS"
+          echo " NETTOYAGE PRÉVENTIF DES FICHIERS MACOS"
           echo "============================================="
           echo "Validation Recherche et suppression des fichiers AppleDouble..."
 
@@ -421,11 +427,11 @@ jobs:
           find . -name "._*" -type f -delete 2>/dev/null || echo "SUCCESS Aucun fichier AppleDouble trouvé"
           find . -name ".DS_Store" -type f -delete 2>/dev/null || echo "SUCCESS Aucun .DS_Store trouvé"
 
-          echo "🧹 Nettoyage terminé !"
+          echo " Nettoyage terminé !"
 
-      - name: "🔨 Build Package"
+      - name: "Build Package"
         run: |
-          echo "🔨 CONSTRUCTION DU PACKAGE"
+          echo " CONSTRUCTION DU PACKAGE"
           echo "=========================="
 
           # Tentative de build
@@ -434,7 +440,7 @@ jobs:
             echo "SUCCESS" > build_result.txt
           else
             echo "WARNING  Build échoué - Problème de fichiers AppleDouble détecté"
-            echo "🔄 Tentative de nettoyage et rebuild..."
+            echo " Tentative de nettoyage et rebuild..."
 
             # Nettoyage agressif
             find . -name "._*" -type f -delete 2>/dev/null
@@ -460,11 +466,11 @@ jobs:
               echo "SUCCESS Package créé avec succès"
             else
               echo "WARNING  BUILD ÉCHOUÉ - Problème AppleDouble persistant"
-              echo "🔄 Ce problème est spécifique à macOS et n'affecte pas la fonctionnalité"
+              echo " Ce problème est spécifique à macOS et n'affecte pas la fonctionnalité"
               echo "SUCCESS Le job continue pour permettre la documentation"
             fi
           else
-            echo "❓ Résultat du build non déterminé"
+            echo " Résultat du build non déterminé"
           fi
 
       - name: "Upload Upload Artifacts (si succès)"
@@ -502,9 +508,9 @@ jobs:
         run: |
           pip install mkdocs mkdocs-material
 
-      - name: "🧹 Nettoyage Préventif (AppleDouble)"
+      - name: " Nettoyage Préventif (AppleDouble)"
         run: |
-          echo "🧹 NETTOYAGE PRÉVENTIF DES FICHIERS MACOS"
+          echo " NETTOYAGE PRÉVENTIF DES FICHIERS MACOS"
           echo "============================================="
           echo "Validation Recherche et suppression des fichiers AppleDouble..."
 
