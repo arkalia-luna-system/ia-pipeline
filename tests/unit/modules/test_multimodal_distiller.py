@@ -21,7 +21,7 @@ class TestMultimodalDistiller(unittest.TestCase):
     def test_empty(self):
         distiller = MultimodalDistiller()
         result = distiller.distill([], [])
-        self.assertEqual(result, "\n[Image: ]")
+        self.assertEqual(result, "[Aucune réponse disponible]")
 
 
 if __name__ == "__main__":

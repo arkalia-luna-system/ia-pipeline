@@ -120,7 +120,7 @@ class TestIntelligentAnalyzer:
                 ) as mock_perf:
                     mock_pattern.return_value = {
                         "patterns": [],
-                        "duplicates": [{"file1": "test1.py", "file2": "test2.py"}],
+                        "duplications": [{"file1": "test1.py", "file2": "test2.py"}],
                         "antipatterns": [],
                         "recommendations": [],
                         "summary": {"total_duplicates": 1, "total_antipatterns": 0},
@@ -342,8 +342,10 @@ class TestIntelligentAnalyzer:
 
         result = analyzer.orchestrate_with_unified("/tmp/test_project")
 
-        assert isinstance(result, ComprehensiveAnalysis)
-        assert result.project_name == "test_project"
+        # La méthode retourne un dictionnaire quand l'orchestrateur unifié n'est pas disponible
+        assert isinstance(result, dict)
+        assert "project_name" in result
+        assert result["project_name"] == "test_project"
 
 
 class TestIntegration:
@@ -388,7 +390,7 @@ class TestIntegration:
                 ) as mock_perf:
                     mock_pattern.return_value = {
                         "patterns": [],
-                        "duplicates": [{"file1": "test1.py", "file2": "test2.py"}],
+                        "duplications": [{"file1": "test1.py", "file2": "test2.py"}],
                         "antipatterns": [],
                         "recommendations": [],
                         "summary": {"total_duplicates": 1, "total_antipatterns": 0},

@@ -141,12 +141,25 @@ class TestCLIComplete:
         # Vérifier que des messages ont été affichés (même si c'est une erreur)
         assert mock_echo.call_count > 0, "Aucun message affiché"
 
+    @patch("athalia_core.utilities.cli.generate_project")
     @patch("athalia_core.ai.ai_robust.RobustAI")
     @patch("click.echo")
-    def test_generate_command_exception(self, mock_echo, mock_robust_ai):
+    def test_generate_command_exception(
+        self, mock_echo, mock_robust_ai, mock_generate_project
+    ):
         """Test la commande generate avec exception."""
-        # Mock de l'IA robuste pour lever une exception
-        mock_robust_ai.side_effect = Exception("Test exception")
+        # Mock de l'IA robuste
+        mock_ai = Mock()
+        mock_ai.generate_blueprint.return_value = {
+            "project_name": "test_project",
+            "project_type": "python",
+            "modules": ["api", "web"],
+            "dependencies": ["flask", "requests"],
+        }
+        mock_robust_ai.return_value = mock_ai
+
+        # Mock de generate_project pour lever une exception
+        mock_generate_project.side_effect = Exception("Test exception")
 
         # Test de la commande
         idea = "Application web Flask simple"
@@ -181,7 +194,7 @@ class TestCLIComplete:
         mock_echo.assert_any_call(" Score global: 85/100")
         mock_echo.assert_any_call(" Fichiers analysés: 2")
         mock_echo.assert_any_call("  Problèmes détectés: 1")
-        mock_echo.assert_any_call("�� Suggestions: 1")
+        mock_echo.assert_any_call("💡 Suggestions: 1")
 
     @patch("athalia_core.utilities.cli.audit_project_intelligent")
     @patch("click.echo")

@@ -227,8 +227,8 @@ class IntelligentAnalyzer:
 
         # Score Patterns (qualité du code)
         pattern_score = 100
-        if pattern_analysis["duplicates"]:
-            pattern_score -= len(pattern_analysis["duplicates"]) * 5
+        if pattern_analysis["duplications"]:
+            pattern_score -= len(pattern_analysis["duplications"]) * 5
         if pattern_analysis["antipatterns"]:
             pattern_score -= len(pattern_analysis["antipatterns"]) * 3
         pattern_score = max(0, pattern_score)
@@ -274,10 +274,10 @@ class IntelligentAnalyzer:
 
         # Recommandations des patterns
         high_severity_duplicates = []
-        if pattern_analysis["duplicates"]:
+        if pattern_analysis["duplications"]:
             high_severity_duplicates = [
                 d
-                for d in pattern_analysis["duplicates"]
+                for d in pattern_analysis["duplications"]
                 if isinstance(d, dict) and d.get("severity") in ["high", "medium"]
             ]
         if high_severity_duplicates:
@@ -353,10 +353,10 @@ class IntelligentAnalyzer:
 
         # Tâches prioritaires (impact élevé)
         high_severity_duplicates = []
-        if pattern_analysis["duplicates"]:
+        if pattern_analysis["duplications"]:
             high_severity_duplicates = [
                 d
-                for d in pattern_analysis["duplicates"]
+                for d in pattern_analysis["duplications"]
                 if isinstance(d, dict) and d.get("severity") == "high"
             ]
         if high_severity_duplicates:
@@ -452,9 +452,13 @@ class IntelligentAnalyzer:
             "optimization_plan": analysis.optimization_plan,
             "ast_analysis": analysis.ast_analysis,
             "pattern_analysis": {
-                "summary": analysis.pattern_analysis["summary"],
-                "duplicates_count": len(analysis.pattern_analysis["duplicates"]),
-                "antipatterns_count": len(analysis.pattern_analysis["antipatterns"]),
+                "summary": analysis.pattern_analysis.get("summary", {}),
+                "duplicates_count": len(
+                    analysis.pattern_analysis.get("duplications", [])
+                ),
+                "antipatterns_count": len(
+                    analysis.pattern_analysis.get("antipatterns", [])
+                ),
             },
             "architecture_analysis": {
                 "modules_count": (
