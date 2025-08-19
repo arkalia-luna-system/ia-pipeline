@@ -179,10 +179,11 @@ class ROS2Validator:
                 r"version=",
             ]
 
-            missing_patterns = []
-            for pattern in required_patterns:
-                if not re.search(pattern, content):
-                    missing_patterns.append(pattern)  # type: ignore[unreachable]
+            missing_patterns = [
+                pattern
+                for pattern in required_patterns
+                if re.search(pattern, content) is None
+            ]
 
             if missing_patterns:
                 self.validation_results["warnings"].append(
@@ -214,10 +215,11 @@ class ROS2Validator:
                 r"find_package\(",
             ]
 
-            missing_patterns = []
-            for pattern in required_patterns:
-                if not re.search(pattern, content):
-                    missing_patterns.append(pattern)  # type: ignore[unreachable]
+            missing_patterns = [
+                pattern
+                for pattern in required_patterns
+                if re.search(pattern, content) is None
+            ]
 
             if missing_patterns:
                 self.validation_results["warnings"].append(
