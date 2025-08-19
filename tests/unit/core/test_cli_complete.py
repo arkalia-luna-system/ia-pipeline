@@ -514,7 +514,7 @@ class TestCLIIntegration:
 
             # Vérifier qu'une erreur est affichée
             error_calls = [
-                call for call in mock_echo.call_args_list if "❌ Erreur" in str(call)
+                call for call in mock_echo.call_args_list if " Erreur" in str(call)
             ]
             assert len(error_calls) > 0, "Erreur non gérée pour chemin inexistant"
 

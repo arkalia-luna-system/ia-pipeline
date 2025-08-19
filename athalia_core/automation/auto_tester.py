@@ -85,6 +85,10 @@ class AutoTester:
         """Exécute les tests automatiques"""
         logger.info(f"🚀 Exécution des tests automatiques: {test_type}")
 
+        # Validation du project_path
+        if not self.project_path:
+            raise ValueError("project_path doit être défini")
+
         try:
             if test_type == "all":
                 # Analyser le projet
@@ -93,8 +97,8 @@ class AutoTester:
 
                 # Générer des tests si nécessaire
                 if analysis.get("test_coverage", 0) < 80:
-                    self.test_results["generated_tests"] = self._generate_missing_tests(
-                        analysis
+                    self.test_results["generated_tests"] = self.generate_tests(
+                        str(self.project_path)
                     )
 
                 # Exécuter les tests existants
@@ -200,6 +204,16 @@ class AutoTester:
             logger.warning(f"Erreur analyse {file_path}: {e}")
             return {}
 
+    def _analyze_modules(self) -> list[dict[str, Any]]:
+        """Analyse tous les modules du projet"""
+        modules = []
+        for py_file in self.project_path.rglob("*.py"):
+            if "test" not in py_file.name and "tests" not in str(py_file):
+                module_info = self._analyze_module(py_file)
+                if module_info:
+                    modules.append(module_info)
+        return modules
+
     def generate_tests(self, target_module: str = None) -> dict[str, Any]:
         """Génère des tests pour le projet ou un module spécifique"""
         logger.info(f"🧪 Génération de tests pour: {target_module or 'tout le projet'}")
@@ -251,6 +265,62 @@ class AutoTester:
         content = f'''"""
 Tests générés automatiquement pour {module['name']}
 Fichier: {module['path']}
+"""
+
+import pytest
+from pathlib import Path
+import sys
+
+# Ajouter le chemin du projet au PYTHONPATH
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
+try:
+    import {module['name']}
+except ImportError:
+    pytest.skip(f"Module {module['name']} non importable")
+
+'''
+
+        # Tests pour les fonctions
+        for func_name in module["functions"]:
+            content += f'''
+def test_{func_name}():
+    """Test de la fonction {func_name}"""
+    # TODO: Implémenter les tests spécifiques
+    assert hasattr({module['name']}, '{func_name}')
+    assert callable(getattr({module['name']}, '{func_name}'))
+'''
+
+        # Tests pour les classes
+        for class_info in module["classes"]:
+            content += f'''
+class Test{class_info['name']}:
+    """Tests pour la classe {class_info['name']}"""
+
+    def test_class_exists(self):
+        """Vérifie que la classe existe"""
+        assert hasattr({module['name']}, '{class_info['name']}')
+        assert isinstance(getattr({module['name']}, '{class_info['name']}'), type)
+
+    def test_class_methods(self):
+        """Vérifie les méthodes de la classe"""
+        cls = getattr({module['name']}, '{class_info['name']}')
+        for method_name in {class_info['methods']}:
+            assert hasattr(cls, method_name)
+            assert callable(getattr(cls, method_name))
+'''
+
+        content += """
+if __name__ == "__main__":
+    pytest.main([__file__])
+"""
+        return content
+
+    def _generate_module_unit_tests(self, module: dict[str, Any]) -> str:
+        """Génère des tests unitaires pour un module spécifique"""
+        content = f'''"""
+Tests unitaires générés pour {module['name']}
 """
 
 import pytest
