@@ -183,7 +183,8 @@ jobs:
           echo "======================"
 
           # Création des dossiers compatibles multi-OS
-          mkdir -p test-results coverage
+          # Création des dossiers compatible Windows/Unix
+          mkdir test-results 2>$null; mkdir coverage 2>$null || mkdir -p test-results coverage
 
           # Tests avec couverture (+ JUnit)
           pytest \
@@ -306,7 +307,8 @@ jobs:
           echo "==============================="
 
           # Création des dossiers compatibles multi-OS
-          mkdir -p test-results coverage
+          # Création des dossiers compatible Windows/Unix
+          mkdir test-results 2>$null; mkdir coverage 2>$null || mkdir -p test-results coverage
 
           # Tests rapides de compatibilité (uniquement tests de base, exclure les tests complexes)
           echo "Lancement des tests de compatibilité..."
@@ -714,37 +716,37 @@ jobs:
           # Résumé des résultats
           echo ""
           echo "RÉSUMÉ EXÉCUTION:"
-          if [ "${{ needs.validate.result }}" == "success" ]]; then
+          if [ "${{ needs.validate.result }}" == "success" ]; then
             echo "SUCCESS Validation: SUCCÈS"
           else
             echo "ERROR Validation: ÉCHEC"
           fi
 
-          if [ "${{ needs.test-main.result }}" == "success" ]]; then
+          if [ "${{ needs.test-main.result }}" == "success" ]; then
             echo "SUCCESS Tests Principaux: SUCCÈS"
           else
             echo "ERROR Tests Principaux: ÉCHEC"
           fi
 
-          if [ "${{ needs.test-cross-platform.result }}" == "success" ]]; then
+          if [ "${{ needs.test-cross-platform.result }}" == "success" ]; then
             echo "SUCCESS Compatibilité: SUCCÈS"
           else
             echo "ERROR Compatibilité: ÉCHEC"
           fi
 
-          if [ "${{ needs.security-audit.result }}" == "success" ]]; then
+          if [ "${{ needs.security-audit.result }}" == "success" ]; then
             echo "SUCCESS Sécurité: SUCCÈS"
           else
             echo "ERROR Sécurité: ÉCHEC"
           fi
 
-          if [ "${{ needs.build-package.result }}" == "success" ]]; then
+          if [ "${{ needs.build-package.result }}" == "success" ]; then
             echo "SUCCESS Build: SUCCÈS"
           else
             echo "ERROR Build: ÉCHEC"
           fi
 
-          if [ "${{ needs.documentation.result }}" == "success" ]]; then
+          if [ "${{ needs.documentation.result }}" == "success" ]; then
             echo "SUCCESS Documentation: SUCCÈS"
           else
             echo "ERROR Documentation: ÉCHEC"
@@ -766,9 +768,9 @@ jobs:
           success_rate=$((success_count * 100 / total_jobs))
           echo "Metriques Taux de succès: $success_count/$total_jobs ($success_rate%)"
 
-          if [ $success_rate -ge 80 ]]; then
+          if [ $success_rate -ge 80 ]; then
             echo "SUCCESS EXCELLENT - Pipeline CI/CD réussi !"
-          elif [ $success_rate -ge 60 ]]; then
+          elif [ $success_rate -ge 60 ]; then
             echo "SUCCESS BON - Pipeline CI/CD acceptable"
           else
             echo "WARNING  ATTENTION - Pipeline CI/CD problématique"
