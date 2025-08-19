@@ -1,0 +1,155 @@
+# Configuration GitHub Pages pour Athalia
+# Force l'utilisation de MkDocs au lieu de Jekyll
+
+# Désactiver Jekyll complètement
+jekyll: false
+
+# Configuration du thème
+theme: jekyll-theme-primer
+
+# Exclure les fichiers problématiques
+exclude:
+  - "*.pyc"
+  - "__pycache__"
+  - ".pytest_cache"
+  - ".mypy_cache"
+  - ".ruff_cache"
+  - ".coverage"
+  - "htmlcov"
+  - "build"
+  - "dist"
+  - "*.egg-info"
+  - ".venv"
+  - "venv"
+  - "env"
+  - ".env"
+  - ".git"
+  - ".gitignore"
+  - ".editorconfig"
+  - ".pre-commit-config.yaml"
+  - ".flake8"
+  - ".pylintrc"
+  - ".mypy.ini"
+  - ".ruff.toml"
+  - ".black"
+  - ".isort.cfg"
+  - "*.log"
+  - "logs"
+  - ".logs"
+  - "*.bak"
+  - "*.backup"
+  - "*.tmp"
+  - "*.temp"
+  - "*~"
+  - "#*#"
+  - ".#*"
+  - ".DS_Store"
+  - ".Trashes"
+  - ".Spotlight-V100"
+  - ".fseventsd"
+  - ".TemporaryItems"
+  - ".VolumeIcon.icns"
+  - ".com.apple.timemachine.donotpresent"
+  - "archive"
+  - "backups"
+  - "blueprints_history"
+  - "cache"
+  - "data"
+  - "dashboard"
+  - "examples"
+  - "templates"
+  - "tools"
+  - "setup"
+  - "prompts"
+  - "scripts"
+  - "bin"
+  - "tests"
+  - "athalia_core"
+  - "athalia_showcase"
+  - "requirements.txt"
+  - "pyproject.toml"
+  - "README.md"
+  - "CHANGELOG.md"
+  - "LICENSE"
+  - ".gitattributes"
+  - "ci_diagnostic_*.json"
+  - ".cleanup_trash"
+  - ".autocomplete"
+  - ".multi_file_backups"
+  - ".athalia_cache"
+  - "backup"
+  - "site"
+  - "docs"
+  - "config"
+
+# Inclure seulement les fichiers nécessaires
+include:
+  - "site/**/*"
+  - ".nojekyll"
+  - "CNAME"
+
+# Configuration des plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Configuration du site
+title: "Athalia - DevOps Automation Platform"
+description: "Enterprise-grade DevOps automation platform"
+url: "https://arkalia-luna-system.github.io/ia-pipeline"
+baseurl: "/ia-pipeline"
+
+# Configuration des collections
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:name/
+
+# Configuration des données
+data_dir: "_data"
+
+# Configuration des layouts
+layouts_dir: "_layouts"
+
+# Configuration des includes
+includes_dir: "_includes"
+
+# Configuration des assets
+assets_dir: "assets"
+
+# Configuration des posts
+posts_dir: "_posts"
+
+# Configuration des drafts
+drafts_dir: "_drafts"
+
+# Configuration des pages
+pages_dir: "_pages"
+
+# Configuration des plugins
+plugins_dir: "_plugins"
+
+# Configuration des themes
+themes_dir: "_themes"
+
+# Configuration des cache
+cache_dir: ".cache"
+
+# Configuration des logs
+log_dir: ".logs"
+
+# Configuration des temp
+temp_dir: ".temp"
+
+# Configuration des backup
+backup_dir: ".backup"
+
+# Configuration des archive
+archive_dir: ".archive"
+
+# Configuration des blueprints
+blueprints_dir: ".blueprints"
+
+# Configuration des history
+history_dir: ".history"

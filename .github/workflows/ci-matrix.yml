@@ -497,17 +497,25 @@ jobs:
         run: |
           pip install mkdocs mkdocs-material
 
-      - name: "Nettoyage Préventif (AppleDouble)"
+      - name: "Nettoyage Préventif COMPLET (AppleDouble + Jekyll)"
         run: |
-          echo "NETTOYAGE PRÉVENTIF DES FICHIERS MACOS"
+          echo "NETTOYAGE PRÉVENTIF ANTI-JEKYLL COMPLET"
           echo "============================================="
-          echo "Recherche et suppression des fichiers AppleDouble..."
+          echo "Suppression MASSIVE des fichiers problématiques Jekyll..."
 
-          # Supprimer tous les fichiers AppleDouble
+          # Supprimer TOUS les fichiers AppleDouble
           find . -name "._*" -type f -delete 2>/dev/null || echo "SUCCESS Aucun fichier AppleDouble trouvé"
           find . -name ".DS_Store" -type f -delete 2>/dev/null || echo "SUCCESS Aucun .DS_Store trouvé"
 
-          echo "Nettoyage terminé !"
+          # Supprimer les fichiers Jekyll potentiels
+          find . -name "_config.yml" -type f -delete 2>/dev/null || echo "SUCCESS Aucun _config.yml Jekyll trouvé"
+          find . -name "Gemfile*" -type f -delete 2>/dev/null || echo "SUCCESS Aucun Gemfile Jekyll trouvé"
+          find . -name "_layouts" -type d -exec rm -rf {} + 2>/dev/null || echo "SUCCESS Aucun _layouts Jekyll trouvé"
+          find . -name "_includes" -type d -exec rm -rf {} + 2>/dev/null || echo "SUCCESS Aucun _includes Jekyll trouvé"
+          find . -name "_sass" -type d -exec rm -rf {} + 2>/dev/null || echo "SUCCESS Aucun _sass Jekyll trouvé"
+          find . -name "_posts" -type d -exec rm -rf {} + 2>/dev/null || echo "SUCCESS Aucun _posts Jekyll trouvé"
+
+          echo "NETTOYAGE ANTI-JEKYLL COMPLET TERMINÉ !"
 
       - name: "Build Documentation"
         run: |
@@ -528,15 +536,27 @@ jobs:
           find . -name "*.pyc" -delete 2>/dev/null || true
           find . -name "__pycache__" -type d -exec rm -rf {} + 2>/dev/null || true
 
-          # Tentative de build documentation avec gestion d'erreur robuste
-          echo "Construction de la documentation..."
-          if mkdocs build -f config/mkdocs/mkdocs.yml --strict 2>&1; then
-            echo "SUCCESS Documentation construite avec succès !"
+          # Tentative de build documentation avec gestion d'erreur robuste et nettoyage post-génération
+          echo "Construction de la documentation MkDocs..."
+          if mkdocs build -f config/mkdocs/mkdocs.yml --clean --strict 2>&1; then
+            echo "SUCCESS Documentation MkDocs construite avec succès !"
+            
+            # NETTOYAGE POST-GÉNÉRATION ANTI-JEKYLL
+            echo "NETTOYAGE POST-GÉNÉRATION du site..."
+            find site/ -name "._*" -type f -delete 2>/dev/null || echo "SUCCESS Aucun AppleDouble dans site/"
+            find site/ -name ".DS_Store" -type f -delete 2>/dev/null || echo "SUCCESS Aucun .DS_Store dans site/"
+            
+            # Forcer la création du fichier .nojekyll dans site/
+            echo "# FORCE GitHub Pages à NE PAS utiliser Jekyll" > site/.nojekyll
+            echo "# Athalia utilise MkDocs exclusivement" >> site/.nojekyll
+            echo "SUCCESS Fichier .nojekyll FORCÉ dans site/"
+            
             echo "SUCCESS" > doc_result.txt
 
             # Vérification de la génération
             if [ -d "site" ] && [ "$(ls -A site)" ]; then
-              echo "SUCCESS Site généré et non vide"
+              echo "SUCCESS Site MkDocs généré et non vide"
+              echo "Total fichiers HTML: $(find site/ -name '*.html' | wc -l | tr -d ' ')"
             else
               echo "WARNING  Site généré mais vide"
               echo "WARNING" > doc_result.txt
@@ -591,29 +611,58 @@ jobs:
             site/
           retention-days: 30
 
-      - name: "Configuration GitHub Pages"
+      - name: "Configuration GitHub Pages DÉFINITIVE"
         if: success()
         run: |
-          echo "CONFIGURATION GITHUB PAGES"
-          echo "============================="
+          echo "CONFIGURATION GITHUB PAGES ANTI-JEKYLL"
+          echo "========================================"
 
-          # Créer un fichier .nojekyll pour désactiver Jekyll
+          # Vérifier que le dossier site existe
           if [ -d "site" ]; then
-            touch site/.nojekyll
-            echo "SUCCESS Fichier .nojekyll créé pour désactiver Jekyll"
+            echo "SUCCESS Dossier site trouvé"
+            
+            # TRIPLE-VÉRIFICATION du fichier .nojekyll
+            echo "# ATHALIA - FORCE GitHub Pages à NE PAS utiliser Jekyll" > site/.nojekyll
+            echo "# Ce projet utilise MkDocs EXCLUSIVEMENT" >> site/.nojekyll
+            echo "# Date de génération: $(date)" >> site/.nojekyll
+            echo "SUCCESS Fichier .nojekyll TRIPLE-FORCÉ"
 
-            # Créer un fichier CNAME si nécessaire
+            # NETTOYAGE FINAL du site
+            find site/ -name "._*" -type f -delete 2>/dev/null || echo "SUCCESS Site déjà propre (AppleDouble)"
+            find site/ -name ".DS_Store" -type f -delete 2>/dev/null || echo "SUCCESS Site déjà propre (.DS_Store)"
+            
+            # Créer un fichier CNAME pour le domaine personnalisé
             if [ -n "${{ vars.CUSTOM_DOMAIN }}" ]; then
               echo "${{ vars.CUSTOM_DOMAIN }}" > site/CNAME
               echo "SUCCESS CNAME configuré pour ${{ vars.CUSTOM_DOMAIN }}"
+            else
+              echo "INFO Aucun domaine personnalisé configuré"
             fi
 
-            # Vérifier la structure du site
-            echo "Structure du site généré:"
-            find site/ -type f -name "*.html" | head -10
-            echo "Total fichiers HTML: $(find site/ -type f -name '*.html' | wc -l)"
+            # Vérification COMPLÈTE de la structure du site
+            echo "STRUCTURE DU SITE MKDOCS GÉNÉRÉE:"
+            echo "Fichiers HTML: $(find site/ -name '*.html' | wc -l | tr -d ' ')"
+            echo "Fichiers CSS: $(find site/ -name '*.css' | wc -l | tr -d ' ')"
+            echo "Fichiers JS: $(find site/ -name '*.js' | wc -l | tr -d ' ')"
+            echo "Total fichiers: $(find site/ -type f | wc -l | tr -d ' ')"
+            echo "Taille totale: $(du -sh site/ | awk '{print $1}')"
+            
+            # Vérifier les fichiers critiques
+            if [ -f "site/index.html" ]; then
+              echo "SUCCESS index.html présent"
+            else
+              echo "ERROR index.html MANQUANT !"
+            fi
+            
+            if [ -f "site/.nojekyll" ]; then
+              echo "SUCCESS .nojekyll confirmé présent"
+            else
+              echo "ERROR .nojekyll MANQUANT !"
+            fi
+            
           else
-            echo "WARNING  Dossier site non trouvé"
+            echo "ERROR Dossier site NON TROUVÉ !"
+            exit 1
           fi
 
       - name: "Deploiement GitHub Pages"
