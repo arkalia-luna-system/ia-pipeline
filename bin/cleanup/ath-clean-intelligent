@@ -180,30 +180,37 @@ is_truly_useless_directory() {
 # =============================================================================
 
 # Nettoyage intelligent des fichiers cachés macOS
-clean_macos_hidden_files() {
+clean_intelligent_macos_hidden() {
     print_section "🧠 Nettoyage INTELLIGENT des fichiers cachés macOS"
     
-    local patterns=("._*" ".DS_Store" ".!*")
     local cleaned=0
     
-    for pattern in "${patterns[@]}"; do
-        print_verbose "Recherche de pattern: $pattern"
-        
-        while IFS= read -r -d '' file; do
-            if [ "$DRY_RUN_MODE" = true ]; then
-                echo -e "${YELLOW}   [DRY-RUN] Fichier caché macOS: $file${NC}"
-                cleaned=$((cleaned + 1))
-            else
-                if rm -f "$file" 2>/dev/null; then
-                    print_success "Supprimé: $file"
+    # Recherche DIRECTE et COMPLÈTE de tous les fichiers cachés macOS
+    print_verbose "Recherche de tous les fichiers cachés macOS..."
+    
+    # Utiliser find avec une approche plus simple et sans exclusions trop strictes
+    local hidden_files
+    hidden_files=$(find . -name "._*" -o -name ".DS_Store" 2>/dev/null || true)
+    
+    if [ -n "$hidden_files" ]; then
+        while IFS= read -r file; do
+            if [ -n "$file" ]; then
+                if [ "$DRY_RUN_MODE" = true ]; then
+                    echo -e "${YELLOW}   [DRY-RUN] Fichier caché macOS: $file${NC}"
                     cleaned=$((cleaned + 1))
-                    CLEANED_COUNT=$((CLEANED_COUNT + 1))
                 else
-                    print_warning "Impossible de supprimer: $file"
+                    # Force la suppression même des fichiers protégés
+                    if rm -f "$file" 2>/dev/null || rm -rf "$file" 2>/dev/null; then
+                        print_success "Supprimé: $file"
+                        cleaned=$((cleaned + 1))
+                        CLEANED_COUNT=$((CLEANED_COUNT + 1))
+                    else
+                        print_warning "Impossible de supprimer: $file"
+                    fi
                 fi
             fi
-        done < <(find . -name "$pattern" -type f -not -path "./.git/*" -not -path "./.venv/*" -not -path "./venv/*" -print0 2>/dev/null || true)
-    done
+        done <<< "$hidden_files"
+    fi
     
     if [ $cleaned -gt 0 ]; then
         print_success "Total fichiers cachés macOS: $cleaned"
@@ -216,24 +223,26 @@ clean_macos_hidden_files() {
 clean_intelligent_caches() {
     print_section "🧠 Nettoyage INTELLIGENT des caches"
     
-    local cache_dirs=(".pytest_cache" ".mypy_cache" ".ruff_cache" "__pycache__" ".tox" ".cache" "build" "dist" "htmlcov")
+    local cache_dirs=(".pytest_cache" ".mypy_cache" ".ruff_cache" "__pycache__" ".tox" ".cache" "build" "dist" "htmlcov" "*.egg-info")
     local cleaned=0
     
     for cache_dir in "${cache_dirs[@]}"; do
-        if [ -d "$cache_dir" ]; then
+        # Recherche de tous les dossiers correspondants
+        while IFS= read -r -d '' dir; do
             if [ "$DRY_RUN_MODE" = true ]; then
-                echo -e "${YELLOW}   [DRY-RUN] Dossier cache: $cache_dir${NC}"
+                echo -e "${YELLOW}   [DRY-RUN] Dossier cache: $dir${NC}"
                 cleaned=$((cleaned + 1))
             else
-                if rm -rf "$cache_dir" 2>/dev/null; then
-                    print_success "Supprimé: $cache_dir"
+                # Force la suppression même des dossiers avec fichiers cachés
+                if rm -rf "$dir" 2>/dev/null; then
+                    print_success "Supprimé: $dir"
                     cleaned=$((cleaned + 1))
                     CLEANED_COUNT=$((CLEANED_COUNT + 1))
                 else
-                    print_warning "Impossible de supprimer: $cache_dir"
+                    print_warning "Impossible de supprimer: $dir"
                 fi
             fi
-        fi
+        done < <(find . -name "$cache_dir" -type d -print0 2>/dev/null || true)
     done
     
     if [ $cleaned -gt 0 ]; then
@@ -375,6 +384,33 @@ clean_intelligent_editors() {
     fi
 }
 
+# Nettoyage FORCÉ des dossiers problématiques
+clean_forced_problematic() {
+    print_section "🚨 Nettoyage FORCÉ des dossiers problématiques"
+    
+    local problematic_dirs=("athalia_ai.egg-info" "build" "dist")
+    local cleaned=0
+    
+    for dir in "${problematic_dirs[@]}"; do
+        if [ -d "$dir" ]; then
+            if [ "$DRY_RUN_MODE" = true ]; then
+                echo -e "${YELLOW}   [DRY-RUN] Suppression forcée: $dir${NC}"
+                cleaned=$((cleaned + 1))
+            else
+                # Force la suppression même des dossiers avec fichiers cachés
+                if rm -rf "$dir" 2>/dev/null; then
+                    echo -e "${GREEN}   ✅ Supprimé: $dir${NC}"
+                    cleaned=$((cleaned + 1))
+                else
+                    echo -e "${RED}   ❌ Échec suppression: $dir${NC}"
+                fi
+            fi
+        fi
+    done
+    
+    return $cleaned
+}
+
 # =============================================================================
 # SECTION 5: EXÉCUTION PRINCIPALE INTELLIGENTE
 # =============================================================================
@@ -383,7 +419,7 @@ clean_intelligent_editors() {
 print_header
 
 # Nettoyage intelligent des fichiers cachés macOS
-clean_macos_hidden_files
+clean_intelligent_macos_hidden
 
 # Nettoyage intelligent des caches
 clean_intelligent_caches
@@ -399,6 +435,9 @@ clean_intelligent_temporary
 
 # Nettoyage intelligent des fichiers d'éditeurs
 clean_intelligent_editors
+
+# Nettoyage FORCÉ des dossiers problématiques
+clean_forced_problematic
 
 # =============================================================================
 # SECTION 6: RÉSUMÉ INTELLIGENT
