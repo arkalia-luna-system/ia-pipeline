@@ -183,11 +183,7 @@ jobs:
           echo "======================"
 
           # Création des dossiers compatibles multi-OS
-          if [[ "${{ runner.os }}" == "Windows" ]]; then
-            mkdir test-results 2>$null; mkdir coverage 2>/dev/null || true
-          else
-            mkdir -p test-results coverage 2>/dev/null || true
-          fi
+          mkdir test-results 2>$null; mkdir coverage 2>$null; mkdir -p test-results coverage 2>/dev/null || true
 
           # Tests avec couverture (+ JUnit)
           pytest \
@@ -311,11 +307,7 @@ jobs:
 
           # Création des dossiers compatibles multi-OS
           # Création des dossiers compatible multi-OS
-          if [[ "${{ runner.os }}" == "Windows" ]]; then
-            mkdir test-results 2>$null; mkdir coverage 2>$null
-          else
-            mkdir -p test-results coverage 2>/dev/null || true
-          fi
+          mkdir test-results 2>$null; mkdir coverage 2>$null; mkdir -p test-results coverage 2>/dev/null || true
 
           # Tests rapides de compatibilité (uniquement tests de base, exclure les tests complexes)
           echo "Lancement des tests de compatibilité..."
