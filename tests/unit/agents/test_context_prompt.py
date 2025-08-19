@@ -221,7 +221,7 @@ class TestPromptDisplay:
         result = show_prompts(scored_prompts)
 
         assert isinstance(result, str)
-        assert "Aucun prompt" in result or len(result) == 0
+        assert "Aucun prompt" in result or result == ""
 
 
 class TestPromptConstants:
@@ -296,7 +296,11 @@ class TestIntegration:
 
         # Vérifier qu'au moins un prompt de design est détecté
         assert len(scored_prompts) > 0
-        assert any(score > 0 for score, prompt, explanations in scored_prompts)
+        assert any(
+            score > 0
+            for score, prompt, explanations in scored_prompts
+            if isinstance(score, int | float)
+        )
 
     @patch(
         "builtins.open",
@@ -311,4 +315,8 @@ class TestIntegration:
 
         # Vérifier qu'au moins un prompt de refactorisation est détecté
         assert len(scored_prompts) > 0
-        assert any(score > 0 for score, prompt, explanations in scored_prompts)
+        assert any(
+            score > 0
+            for score, prompt, explanations in scored_prompts
+            if isinstance(score, int | float)
+        )
