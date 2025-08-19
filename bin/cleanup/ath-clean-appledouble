@@ -248,7 +248,7 @@ find . -name "._*" -type f -delete 2>/dev/null || true
 find . -name ".__pycache__" -type d -exec rm -rf {} + 2>/dev/null || true
 
 # Vérification finale
-local final_count=$(find . -name "._*" -type f 2>/dev/null | wc -l)
+final_count=$(find . -name "._*" -type f 2>/dev/null | wc -l)
 if [ $final_count -eq 0 ]; then
     print_success "🎯 Tous les fichiers doubles ont été supprimés !"
 else
