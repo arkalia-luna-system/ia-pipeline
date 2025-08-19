@@ -78,7 +78,7 @@ class CodeLinter:
                     if line.strip():
                         self.report["errors"].append(f"Ruff: {line}")
 
-        except (Exception, SecurityError) as e:
+        except (Exception, SecurityErrorFallback) as e:
             self.report["errors"].append(f"Ruff non exécuté: {e}")
 
     def _run_black(self):
@@ -95,7 +95,7 @@ class CodeLinter:
             if result.returncode != 0:
                 self.report["warnings"].append("Formatage Black à corriger")
 
-        except (Exception, SecurityError) as e:
+        except (Exception, SecurityErrorFallback) as e:
             self.report["warnings"].append(f"Black non exécuté: {e}")
 
     def _run_isort(self):

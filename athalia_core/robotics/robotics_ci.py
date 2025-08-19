@@ -15,25 +15,22 @@ import subprocess
 import time
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
-# Import du validateur de sécurité
 try:
-    from athalia_core.validation.security_validator import (
-        SecurityError,
-        validateand_run,
-    )
+    from ..validation.security_validator import validateand_run
 except ImportError:
-    # Fallback pour les tests
-    from typing import Any
 
     def validateand_run(command: list[str], **kwargs: Any) -> Any:
         return subprocess.run(command, **kwargs)
 
-    class SecurityError(Exception):
-        pass
-
 
 logger = logging.getLogger(__name__)
+
+
+def run_command(command: list[str], **kwargs: Any) -> subprocess.CompletedProcess:
+    """Exécute une commande shell"""
+    return subprocess.run(command, **kwargs)
 
 
 @dataclass
@@ -298,7 +295,7 @@ services:
                 return False, "Aucun package ROS2 trouvé"
 
             # Build workspace
-            result = validateand_run(
+            result = run_command(
                 ["colcon", "build", "--symlink-install"],
                 cwd=self.project_path,
                 capture_output=True,
@@ -321,7 +318,7 @@ services:
             if not dockerfile.exists():
                 return False, "Dockerfile non trouvé"
 
-            result = validateand_run(
+            result = run_command(
                 [
                     "docker",
                     "build",
@@ -354,7 +351,7 @@ services:
 
             for cargo_file in cargo_files:
                 project_dir = cargo_file.parent
-                result = validateand_run(
+                result = run_command(
                     ["cargo", "build", "--release"],
                     cwd=project_dir,
                     capture_output=True,
@@ -377,7 +374,7 @@ services:
         """Exécuter tests"""
         try:
             # Tests ROS2
-            result = validateand_run(
+            result = run_command(
                 ["colcon", "test", "--event-handlers", "console_direct+"],
                 cwd=self.project_path,
                 capture_output=True,
@@ -391,7 +388,7 @@ services:
             # Tests Python
             test_files = list(self.project_path.rglob("test_*.py"))
             if test_files:
-                result = validateand_run(
+                result = run_command(
                     ["python", "-m", "pytest", "tests/", "-v"],
                     cwd=self.project_path,
                     capture_output=True,

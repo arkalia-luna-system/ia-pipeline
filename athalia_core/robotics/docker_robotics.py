@@ -11,25 +11,9 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-try:
-    import yaml
-except ImportError:
-    yaml = None
+import yaml
 
-# Import du validateur de sécurité
-try:
-    from athalia_core.validation.security_validator import (
-        SecurityError,
-        validateand_run,
-    )
-except ImportError:
-    # Fallback pour les tests
-    class SecurityError(Exception):
-        pass
-
-    def validateand_run(command: list[str], **kwargs: Any) -> Any:
-        return subprocess.run(command, **kwargs)
-
+from ..validation.security_validator import validateand_run
 
 logger = logging.getLogger(__name__)
 
@@ -168,10 +152,15 @@ class DockerRoboticsManager:
             )
 
         # Vérifier variables d'environnement ROS
-        if isinstance(service.environment, list):
-            env_vars = [str(v) for v in service.environment]
-        else:
-            env_vars = [str(v) for v in service.environment.values()]
+        env_vars = []
+        if hasattr(service, "environment") and service.environment:
+            env_data: Any = service.environment
+            if isinstance(env_data, list):
+                env_vars = [str(v) for v in env_data]
+            elif isinstance(env_data, dict):
+                env_vars = [str(v) for v in env_data.values()]
+            else:
+                env_vars = [str(env_data)]
 
         if not any("ROS_DOMAIN_ID" in var for var in env_vars):
             recommendations.append(

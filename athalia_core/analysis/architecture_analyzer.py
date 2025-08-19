@@ -6,18 +6,15 @@ Module d'analyse d'architecture pour comprendre la structure
 du projet, les dépendances et les relations entre modules.
 """
 
-import json
 import logging
+import os
 import sqlite3
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-try:
-    import yaml
-except ImportError:
-    yaml = None
+import yaml
 
 from .ast_analyzer import ASTAnalyzer, FileAnalysis
 
@@ -449,12 +446,12 @@ class ArchitectureAnalyzer:
                         module.path,
                         module.type,
                         module.size,
-                        json.dumps(module.functions),
-                        json.dumps(module.classes),
-                        json.dumps(module.imports),
-                        json.dumps(module.dependencies),
+                        yaml.dump(module.functions, default_flow_style=True),
+                        yaml.dump(module.classes, default_flow_style=True),
+                        yaml.dump(module.imports, default_flow_style=True),
+                        yaml.dump(module.dependencies, default_flow_style=True),
                         module.complexity,
-                        json.dumps(module.issues),
+                        yaml.dump(module.issues),
                         module.performance_score,
                         module.last_modified.isoformat(),
                         datetime.now().isoformat(),

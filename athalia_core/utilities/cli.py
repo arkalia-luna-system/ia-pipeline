@@ -10,11 +10,7 @@ from pathlib import Path
 from typing import Any
 
 import click
-
-try:
-    import yaml  # type: ignore
-except ImportError:
-    yaml = None
+import yaml
 
 # Import des modules avec fallback
 try:

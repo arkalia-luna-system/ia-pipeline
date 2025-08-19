@@ -7,16 +7,13 @@ Nettoyage automatique des projets
 import hashlib
 import json
 import logging
+import os
 import shutil
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional
 
-# Import conditionnel pour éviter les dépendances
-try:
-    import yaml
-except ImportError:
-    yaml = None
+import yaml
 
 from athalia_core.core.performance_optimizer import (
     PerformanceOptimizer,

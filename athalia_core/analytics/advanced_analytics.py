@@ -205,7 +205,8 @@ class AdvancedAnalytics:
 
         # Compter les fichiers
         for py_file in self.project_path.rglob("*.py"):
-            evolution_data["total_files"] += 1
+            if evolution_data["total_files"] is not None:
+                evolution_data["total_files"] += 1
             try:
                 mtime = py_file.stat().st_mtime
                 if (

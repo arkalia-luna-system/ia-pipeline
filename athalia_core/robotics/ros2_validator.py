@@ -11,20 +11,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import Any
 
-# Import du validateur de sécurité
-try:
-    from athalia_core.validation.security_validator import (
-        SecurityError,
-        validateand_run,
-    )
-except ImportError:
-    # Fallback pour les tests
-    class SecurityErrorFallback(Exception):
-        pass
-
-    def validateand_run(command: list[str], **kwargs: Any) -> Any:
-        return subprocess.run(command, **kwargs)
-
+from ..validation.security_validator import validateand_run
 
 logger = logging.getLogger(__name__)
 
@@ -140,11 +127,23 @@ class ROS2Validator:
                 ]
             ):
                 self.validation_results["metadata"] = {
-                    "name": name_elem.text or "",
-                    "version": version_elem.text or "",
-                    "description": description_elem.text or "",
-                    "maintainer": maintainer_elem.text or "",
-                    "license": license_elem.text or "",
+                    "name": (name_elem.text or "") if name_elem is not None else "",
+                    "version": (
+                        (version_elem.text or "") if version_elem is not None else ""
+                    ),
+                    "description": (
+                        (description_elem.text or "")
+                        if description_elem is not None
+                        else ""
+                    ),
+                    "maintainer": (
+                        (maintainer_elem.text or "")
+                        if maintainer_elem is not None
+                        else ""
+                    ),
+                    "license": (
+                        (license_elem.text or "") if license_elem is not None else ""
+                    ),
                 }
 
             return True
@@ -162,27 +161,28 @@ class ROS2Validator:
 
     def _validate_setup_py(self) -> bool:
         """Valide le fichier setup.py"""
-        setup_py_path = self.project_path / "setup.py"
+        setup_path = self.project_path / "setup.py"
 
-        if not setup_py_path.exists():
+        if not setup_path.exists():
             self.validation_results["warnings"].append("setup.py manquant")
             return True
 
         try:
-            with open(setup_py_path, encoding="utf-8") as f:
+            with open(setup_path, encoding="utf-8") as f:
                 content = f.read()
 
             # Vérifier les éléments requis
             required_patterns = [
-                r"from\s+setuptools\s+import",
-                r"package_name\s*=",
+                r"from setuptools import",
                 r"setup\(",
+                r"name=",
+                r"version=",
             ]
 
             missing_patterns = []
             for pattern in required_patterns:
                 if not re.search(pattern, content):
-                    missing_patterns.append(pattern)
+                    missing_patterns.append(pattern)  # type: ignore[unreachable]
 
             if missing_patterns:
                 self.validation_results["warnings"].append(
@@ -217,7 +217,7 @@ class ROS2Validator:
             missing_patterns = []
             for pattern in required_patterns:
                 if not re.search(pattern, content):
-                    missing_patterns.append(pattern)
+                    missing_patterns.append(pattern)  # type: ignore[unreachable]
 
             if missing_patterns:
                 self.validation_results["warnings"].append(
@@ -288,7 +288,7 @@ class ROS2Validator:
         """Vérifie les dépendances du package"""
         try:
             # Vérifier avec rosdep
-            result = validateand_run(
+            result = subprocess.run(
                 [
                     "rosdep",
                     "check",

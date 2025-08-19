@@ -3,12 +3,12 @@
 try:
     from .code_linter import CodeLinter
 except ImportError:
-    CodeLinter = None
+    pass
 
 try:
     from .correction_optimizer import CorrectionOptimizer
 except ImportError:
-    CorrectionOptimizer = None
+    pass
 
 __all__ = [
     "CodeLinter",

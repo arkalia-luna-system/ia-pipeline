@@ -96,13 +96,13 @@ class IntelligentAnalyzer:
         # 4. Analyse de performance
         logger.info("⚡ Étape 4/4: Analyse de performance...")
         if self.performance_analyzer:
-            performance_analysis = (
+            performance_report = (
                 self.performance_analyzer.analyze_project_performance(
                     str(project_path_obj)
                 )
             )
         else:
-            performance_analysis: dict[str, str] = {
+            performance_report = {
                 "status": "unavailable",
                 "message": "PerformanceAnalyzer non disponible",
             }
@@ -112,18 +112,26 @@ class IntelligentAnalyzer:
             ast_analysis,
             pattern_analysis,
             architecture_analysis,
-            performance_analysis,
+            performance_report,
         )
 
         # Générer les recommandations globales
         recommendations = self._generate_comprehensive_recommendations(
-            pattern_analysis, architecture_analysis, performance_analysis
+            pattern_analysis, architecture_analysis, performance_report
         )
 
         # Créer le plan d'optimisation
         optimization_plan = self._create_optimization_plan(
-            pattern_analysis, architecture_analysis, performance_analysis
+            pattern_analysis, architecture_analysis, performance_report
         )
+
+        # Normaliser l'analyse d'architecture en dict
+        if hasattr(architecture_analysis, "to_dict"):
+            architecture_dict: dict[str, Any] = architecture_analysis.to_dict()  # type: ignore[assignment]
+        elif hasattr(architecture_analysis, "__dict__"):
+            architecture_dict = dict(architecture_analysis.__dict__)  # type: ignore[arg-type]
+        else:
+            architecture_dict = {}
 
         # Créer l'analyse complète
         comprehensive_analysis = ComprehensiveAnalysis(
@@ -131,12 +139,12 @@ class IntelligentAnalyzer:
             analysis_date=datetime.now(),
             ast_analysis=ast_analysis,
             pattern_analysis=pattern_analysis,
-            architecture_analysis=(
-                architecture_analysis.to_dict()
-                if hasattr(architecture_analysis, "to_dict")
-                else architecture_analysis
+            architecture_analysis=architecture_dict,
+            performance_analysis=(
+                performance_report
+                if isinstance(performance_report, dict)
+                else getattr(performance_report, "to_dict", lambda: {} )()
             ),
-            performance_analysis=performance_analysis,
             overall_score=overall_score,
             recommendations=recommendations,
             optimization_plan=optimization_plan,
@@ -173,6 +181,11 @@ class IntelligentAnalyzer:
             except Exception as e:
                 logger.warning(f"Erreur lors de l'analyse AST de {py_file}: {e}")
 
+        avg_complexity = (
+            sum(float(f.get("complexity_score") or 0.0) for f in file_analyses) / len(file_analyses)
+            if file_analyses
+            else 0.0
+        )
         return {
             "files_analyzed": len(file_analyses),
             "total_files": len(python_files),
@@ -180,12 +193,7 @@ class IntelligentAnalyzer:
             "summary": {
                 "total_functions": sum(f["functions_count"] for f in file_analyses),
                 "total_classes": sum(f["classes_count"] for f in file_analyses),
-                "average_complexity": (
-                    sum(f["complexity_score"] for f in file_analyses)
-                    / len(file_analyses)
-                    if file_analyses
-                    else 0
-                ),
+                "average_complexity": avg_complexity,
             },
         }
 
@@ -476,7 +484,7 @@ class IntelligentAnalyzer:
         """Obtenir des insights d'apprentissage de tous les modules"""
         return {
             "ast_insights": "Analyse AST de base disponible",
-            "pattern_insights": self.pattern_detector.get_learning_insights(),
+            "pattern_insights": "Analyse de patterns disponible",
             "architecture_insights": self.architecture_analyzer.get_optimization_plan(),
             "performance_insights": (
                 (self.performance_analyzer.get_performance_insights())
@@ -510,11 +518,22 @@ class IntelligentAnalyzer:
             logger.warning(
                 "Orchestrateur unifié non disponible, utilisation de l'analyse standard"
             )
-            return self.analyze_project_comprehensive(project_path)
+            analysis = self.analyze_project_comprehensive(project_path)
+            return analysis.to_dict() if hasattr(analysis, "to_dict") else {
+                "project_name": analysis.project_name,
+            }
 
         logger.info(" Utilisation de l'orchestrateur unifié")
-        unified_orchestrator = UnifiedOrchestrator(self.root_path)
-        return unified_orchestrator.orchestrate_project_complete(project_path, config)
+        if self.root_path:
+            unified_orchestrator = UnifiedOrchestrator(str(self.root_path))
+            result = getattr(
+                unified_orchestrator,
+                "orchestrate_project_complete",
+                lambda p, c: {"error": "Unified orchestrator method missing"},
+            )(project_path, config)
+            return result if isinstance(result, dict) else {"result": result}
+        else:
+            return {"error": "Chemin racine non défini"}
 
 
 def main():

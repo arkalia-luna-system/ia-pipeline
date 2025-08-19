@@ -7,15 +7,17 @@ Génération automatique de documentation
 import ast
 import json
 import logging
+import os
 from datetime import datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional
 
-# Import conditionnel pour éviter les dépendances
-try:
-    import yaml
-except ImportError:
-    yaml = None
+import yaml
+
+from ..core.error_handling import AthaliaError
+from ..core.generation import generate_project
+from ..quality.code_linter import CodeLinter
+from ..utilities.logger_advanced import AthaliaLogger
 
 logger = logging.getLogger(__name__)
 

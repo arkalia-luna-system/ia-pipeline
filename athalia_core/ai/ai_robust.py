@@ -7,27 +7,13 @@ Gestion des modèles IA avec fallback intelligent et gestion d'erreurs avancée
 import logging
 import subprocess
 from enum import Enum
-from typing import Any
+from pathlib import Path
+from typing import Any, Optional
 
-try:
-    import requests  # type: ignore
-except ImportError:
-    requests = None
+import requests
+import yaml
 
-# Import du validateur de sécurité
-try:
-    from athalia_core.validation.security_validator import (
-        SecurityError,
-        validate_and_run,
-    )
-except ImportError:
-    # Fallback pour les tests
-    class SecurityErrorFallback(Exception):
-        pass
-
-    def validateand_run(command: list[str], **kwargs: Any) -> Any:
-        return subprocess.run(command, **kwargs)
-
+from ..validation.security_validator import validateand_run
 
 logger = logging.getLogger(__name__)
 
@@ -243,9 +229,7 @@ class RobustAI:
         available = []
         try:
             # Utilisation du validateur de sécurité pour l'appel ollama
-            result = validate_and_run(
-                ["ollama", "list"], capture_output=True, text=True
-            )
+            result = validateand_run(["ollama", "list"], capture_output=True, text=True)
             if result.returncode == 0:
                 output = result.stdout.lower()
                 if "qwen" in output:
@@ -258,7 +242,7 @@ class RobustAI:
                     available.append(AIModel.OLLAMA_LLAMA)
                 if "codegen" in output:
                     available.append(AIModel.OLLAMA_CODEGEN)
-        except (Exception, SecurityError) as e:
+        except Exception as e:
             logging.warning(f"Ollama non détecté: {e}")
 
         available.append(AIModel.MOCK)
@@ -360,7 +344,7 @@ class RobustAI:
         """Appelle Ollama avec un modèle spécifique."""
         try:
             # Utilisation du validateur de sécurité pour l'appel ollama
-            result = validate_and_run(
+            result = validateand_run(
                 ["ollama", "run", model_name, prompt],
                 capture_output=True,
                 text=True,
@@ -371,7 +355,7 @@ class RobustAI:
             else:
                 logging.error(f"Ollama erreur: {result.stderr}")
                 return None
-        except (Exception, SecurityError) as e:
+        except Exception as e:
             logging.error(f"Erreur Ollama: {e}")
             return None
 

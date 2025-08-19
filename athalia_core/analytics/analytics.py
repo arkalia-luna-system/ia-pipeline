@@ -153,10 +153,7 @@ class AnalyticsEngine:
     def export_metrics_to_yaml(self, filepath: str) -> bool:
         """Exporte les métriques en YAML"""
         try:
-            try:
-                import yaml
-            except ImportError:
-                yaml = None
+            import yaml
 
             with open(filepath, "w") as f:
                 yaml.dump(self.metrics, f, default_flow_style=False)

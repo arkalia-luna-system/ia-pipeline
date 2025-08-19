@@ -425,14 +425,14 @@ def main():
         if not args.nom:
             print(" Nom du profil requis")
             return
-        profil = gestionnaire.creer_profil(args.nom, args.email or "")
-        print(f" Profil '{profil.nom}' créé avec succès")
+        profil_creer = gestionnaire.creer_profil(args.nom, args.email or "")
+        print(f" Profil '{profil_creer.nom}' créé avec succès")
 
     elif args.action == "obtenir":
         if not args.nom:
             print(" Nom du profil requis")
             return
-        profil = gestionnaire.obtenir_profil(args.nom)
+        profil: ProfilUtilisateur | None = gestionnaire.obtenir_profil(args.nom)
         if profil is not None:
             print(f" Profil trouvé: {profil.nom} ({profil.email})")
         else:

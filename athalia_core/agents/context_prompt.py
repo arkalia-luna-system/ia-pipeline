@@ -4,34 +4,19 @@ Module de gestion des prompts contextuels pour Athalia
 Analyse sémantique et génération de prompts adaptés
 """
 
+import json
 import logging
 import os
 import re
 import sys
 import tempfile
 from datetime import datetime
-from typing import Any
+from pathlib import Path
+from typing import Any, Optional
 
-try:
-    import yaml
-except ImportError:
-    yaml = None
+import yaml
 
-# Import du validateur de sécurité
-try:
-    from athalia_core.validation.security_validator import (
-        SecurityError,
-        validateand_run,
-    )
-except ImportError:
-    # Fallback pour les tests
-    class SecurityError(Exception):
-        pass
-
-    def validateand_run(*args: Any, **kwargs: Any) -> Any:
-        """Fonction de fallback pour les tests"""
-        return None
-
+from ..validation.security_validator import validateand_run
 
 logger = logging.getLogger(__name__)
 
@@ -197,7 +182,7 @@ def detect_prompt_semantic(filepath):
         result = validateand_run(ollama_cmd, capture_output=True, text=True, timeout=20)
         answer = result.stdout.strip().split("\n")[-1].strip()
         for p in PROMPTS:
-            if isinstance(p, dict) and "name" in p:
+            if isinstance(p, dict) and "name" in p and isinstance(p["name"], str):
                 if p["name"].lower() in answer.lower():
                     return p["file"]
     except Exception as e:

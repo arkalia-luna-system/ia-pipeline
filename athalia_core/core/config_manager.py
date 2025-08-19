@@ -5,10 +5,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Union
 
-try:
-    import yaml
-except ImportError:
-    yaml = None
+import yaml
 
 """
 Gestionnaire de configuration centralisé pour Athalia
@@ -27,12 +24,8 @@ def load_config(config_path: str) -> dict[str, Any]:
         Dict contenant la configuration chargée
     """
     try:
-        if yaml is not None:
-            with open(config_path, encoding="utf-8") as file:
-                return yaml.safe_load(file) or {}
-        else:
-            logging.warning("Module yaml non disponible")
-            return {}
+        with open(config_path, encoding="utf-8") as file:
+            return yaml.safe_load(file) or {}
     except Exception as e:
         logging.warning(f"Erreur lors du chargement de {config_path}: {e}")
         return {}
@@ -50,10 +43,6 @@ def save_config(config: dict[str, Any], config_path: str) -> bool:
         True si la sauvegarde a réussi, False sinon
     """
     try:
-        if yaml is None:
-            logging.error("Module yaml non disponible")
-            return False
-
         # Créer le répertoire parent si nécessaire
         os.makedirs(os.path.dirname(config_path), exist_ok=True)
 
@@ -422,20 +411,12 @@ class ConfigManager:
 
     def validate_config(self, config: dict[str, Any]) -> bool:
         """Valide une configuration"""
-        try:
-            # Validation basique - vérifier que c'est un dict
-            if not isinstance(config, dict):
+        # Validation des clés requises
+        required_keys = ["general", "modules"]
+        for key in required_keys:
+            if key not in config:
                 return False
-
-            # Validation des clés requises
-            required_keys = ["general", "modules"]
-            for key in required_keys:
-                if key not in config:
-                    return False
-
-            return True
-        except Exception:
-            return False
+        return True
 
     def merge_configs(
         self, base_config: dict[str, Any], override_config: dict[str, Any]

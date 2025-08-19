@@ -1,19 +1,19 @@
 """
 Module d'autocomplétion pour Athalia
-Moteur et serveur d'autocomplétion intelligente
+Moteur d'autocomplétion intelligent et serveur
 """
 
 try:
     from .autocomplete_engine import AutocompleteEngine
 except ImportError:
-    AutocompleteEngine = None
+    pass
 
 try:
-    from .autocomplete_server import app as autocomplete_app
+    from .autocomplete_server import app as AutocompleteServer
 except ImportError:
-    autocomplete_app = None
+    pass
 
 __all__ = [
     "AutocompleteEngine",
-    "autocomplete_app",
+    "AutocompleteServer",
 ]

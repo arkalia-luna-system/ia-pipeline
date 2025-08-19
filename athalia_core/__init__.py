@@ -285,17 +285,17 @@ except ImportError:
 
 # Validation
 try:
-    from .validation import SecurityManager, SecurityValidator
+    from .validation import SecurityValidator
 
-    __all__.extend(["SecurityValidator", "SecurityManager"])
+    __all__.extend(["SecurityValidator"])
 except ImportError:
     pass
 
 # Autocomplete
 try:
-    from .autocomplete import AutocompleteEngine, autocomplete_app
+    from .autocomplete import AutocompleteEngine, AutocompleteServer
 
-    __all__.extend(["AutocompleteEngine", "autocomplete_app"])
+    __all__.extend(["AutocompleteEngine", "AutocompleteServer"])
 except ImportError:
     pass
 

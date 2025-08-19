@@ -6,18 +6,17 @@ Analyse AST, patterns, architecture et intelligence
 try:
     from .architecture_analyzer import ArchitectureAnalyzer
 except ImportError:
-    ArchitectureAnalyzer = None
+    pass
 
 try:
     from .ast_analyzer import ASTAnalyzer
 except ImportError:
-    ASTAnalyzer = None
+    pass
 
 try:
     from .intelligent_analyzer import ComprehensiveAnalysis, IntelligentAnalyzer
 except ImportError:
-    IntelligentAnalyzer = None
-    ComprehensiveAnalysis = None
+    pass
 
 try:
     from .intelligent_memory import (
@@ -27,15 +26,12 @@ try:
         Prediction,
     )
 except ImportError:
-    IntelligentMemory = None
-    CorrectionSuggestion = None
-    LearningEvent = None
-    Prediction = None
+    pass
 
 try:
     from .pattern_detector import PatternDetector
 except ImportError:
-    PatternDetector = None
+    pass
 
 __all__ = [
     "ArchitectureAnalyzer",
