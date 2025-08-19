@@ -100,15 +100,15 @@ jobs:
 
           # Métriques détaillées
           echo ""
-          echo "Validation ANALYSE DÉTAILLÉE:"
-          echo "Dossiers Dossiers Python: $(find . -name '*.py' -exec dirname {} \; | sort | uniq | wc -l | tr -d ' ')"
-          echo "Metriques Taille totale: $(du -sh . | cut -f1)"
-          echo " Lignes de code: $(find . -name '*.py' -exec wc -l {} + | tail -1 | awk '{print $1}')"
-          echo "Tests Couverture tests: $(find tests/ -name '*.py' | wc -l | tr -d ' ') / $(find . -name '*.py' | wc -l | tr -d ' ') modules"
+          echo "ANALYSE DÉTAILLÉE:"
+          echo "Dossiers Python: $(find . -name '*.py' -exec dirname {} \; | sort | uniq | wc -l | tr -d ' ')"
+          echo "Taille totale: $(du -sh . | cut -f1)"
+          echo "Lignes de code: $(find . -name '*.py' -exec wc -l {} + | tail -1 | awk '{print $1}')"
+          echo "Couverture tests: $(find tests/ -name '*.py' | wc -l | tr -d ' ') / $(find . -name '*.py' | wc -l | tr -d ' ') modules"
 
           # Vérification des imports critiques
           echo ""
-          echo " VÉRIFICATION IMPORTS:"
+          echo "VÉRIFICATION IMPORTS:"
           if python -c "import athalia_core" 2>/dev/null; then
             echo "SUCCESS athalia_core - Importable"
           else
@@ -122,10 +122,10 @@ jobs:
           fi
 
   # ========================================
-  # Tests TESTS PRINCIPAUX (UNIQUEMENT)
+  # TESTS PRINCIPAUX (UNIQUEMENT)
   # ========================================
   test-main:
-    name: "Tests Tests Principaux (Python ${{ matrix.python }})"
+    name: "Tests Principaux (Python ${{ matrix.python }})"
     needs: validate
     runs-on: ubuntu-latest
     strategy:
@@ -142,7 +142,7 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: "Python Setup Python ${{ matrix.python }}"
+      - name: "Setup Python ${{ matrix.python }}"
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
@@ -151,7 +151,7 @@ jobs:
             requirements.txt
             pyproject.toml
 
-      - name: "Upload Upgrade pip & Install Dependencies"
+      - name: "Upgrade pip & Install Dependencies"
         run: |
           python -m pip install --upgrade pip setuptools wheel
           pip install -r requirements.txt
@@ -160,26 +160,26 @@ jobs:
           # Stubs pour MyPy (modules non typés)
           pip install types-PyYAML types-requests
 
-      - name: "Validation Lint & Format Check"
+      - name: "Lint & Format Check"
         run: |
-          echo "Validation VÉRIFICATION QUALITÉ CODE"
+          echo "VÉRIFICATION QUALITÉ CODE"
           echo "============================"
 
           # Ruff linting
-          echo " Ruff linting..."
+          echo "Ruff linting..."
           ruff check . --output-format=github || echo "WARNING  Ruff a trouvé des problèmes (non bloquant)"
 
           # Black format check
-          echo " Black format check..."
+          echo "Black format check..."
           black --check --diff . || echo "WARNING  Black a trouvé des problèmes de format (non bloquant)"
 
           # MyPy type checking
-          echo "Validation MyPy type checking..."
+          echo "MyPy type checking..."
           mypy athalia_core/ --ignore-missing-imports --no-error-summary --warn-unused-ignores || echo "WARNING  MyPy a trouvé des problèmes de type (non bloquant)"
 
-      - name: "Tests Tests avec Couverture"
+      - name: "Tests avec Couverture"
         run: |
-          echo "Tests LANCEMENT DES TESTS"
+          echo "LANCEMENT DES TESTS"
           echo "======================"
 
           mkdir -p test-results coverage
@@ -197,7 +197,7 @@ jobs:
 
           # Vérification de la génération des rapports
           echo ""
-          echo "Metriques VÉRIFICATION RAPPORTS TESTS/COUVERTURE:"
+          echo "VÉRIFICATION RAPPORTS TESTS/COUVERTURE:"
           if ls test-results/*.xml 1>/dev/null 2>&1; then
             echo "SUCCESS JUnit généré dans test-results/"
             ls -la test-results | head -5
@@ -215,7 +215,7 @@ jobs:
           if [ -d "htmlcov" ]; then
             echo "SUCCESS htmlcov/ généré"
             ls -la htmlcov/ | head -5
-            echo "Dossiers Total fichiers: $(find htmlcov/ -type f | wc -l)"
+            echo "Total fichiers: $(find htmlcov/ -type f | wc -l)"
           else
             echo "ERROR htmlcov/ manquant"
           fi
@@ -229,12 +229,12 @@ jobs:
 
           # Fallback: génération manuelle des rapports si pytest-cov échoue
           if [ ! -f "coverage/coverage-${{ matrix.python }}-${{ runner.os }}.xml" ] && [ -f ".coverage" ]; then
-            echo " Génération manuelle des rapports de couverture..."
+            echo "Génération manuelle des rapports de couverture..."
             python -m coverage xml -o coverage/coverage-${{ matrix.python }}-${{ runner.os }}.xml || echo "WARNING  Échec de la génération XML"
             python -m coverage html -d htmlcov || echo "WARNING  Échec de la génération HTML"
           fi
 
-      - name: "Upload Upload Test Results"
+      - name: "Upload Test Results"
         uses: actions/upload-artifact@v4
         with:
           name: test-results-${{ matrix.python }}-${{ runner.os }}
@@ -244,7 +244,7 @@ jobs:
           if-no-files-found: error
           retention-days: 14
 
-      - name: "Metriques Upload Coverage to Codecov"
+      - name: "Upload Coverage to Codecov"
         uses: codecov/codecov-action@v5
         with:
           files: coverage/*.xml
@@ -253,7 +253,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
         if: hashFiles('coverage/*.xml') != ''
 
-      - name: "Upload Upload Coverage HTML"
+      - name: "Upload Coverage HTML"
         uses: actions/upload-artifact@v4
         with:
           name: coverage-html-python-${{ matrix.python }}
@@ -262,10 +262,10 @@ jobs:
         if: hashFiles('htmlcov/**') != ''
 
   # ========================================
-  # Compatibilite TESTS COMPATIBILITÉ CROISÉE
+  # TESTS COMPATIBILITÉ CROISÉE
   # ========================================
   test-cross-platform:
-    name: "Compatibilite Tests Compatibilité (${{ matrix.os }})"
+    name: "Tests Compatibilité (${{ matrix.os }})"
     needs: validate
     runs-on: ${{ matrix.os }}
     strategy:
@@ -283,51 +283,36 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: "Python Setup Python ${{ matrix.python }}"
+      - name: "Setup Python ${{ matrix.python }}"
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
           cache: pip
 
-      - name: "Upload Install Dependencies"
+      - name: "Install Dependencies"
         run: |
           python -m pip install --upgrade pip setuptools wheel
           pip install -r requirements.txt
           pip install -e .
           pip install pytest pytest-cov
 
-      - name: "Tests Tests de Compatibilité"
+      - name: "Tests de Compatibilité"
         env:
           PYTHONIOENCODING: utf-8
           PYTHONUTF8: 1
         run: |
-          echo "Compatibilite TESTS COMPATIBILITÉ ${{ matrix.os }}"
+          echo "TESTS COMPATIBILITÉ ${{ matrix.os }}"
           echo "==============================="
 
           mkdir -p test-results coverage
 
           # Tests rapides de compatibilité (uniquement tests de base, exclure les tests complexes)
-          echo "Tests Lancement des tests de compatibilité..."
+          echo "Lancement des tests de compatibilité..."
 
-          # Commande compatible multi-OS (evite les problemes de syntaxe PowerShell)
-          if [[ "${{ matrix.os }}" == "windows-2025" ]]; then
-            # Commande Windows PowerShell compatible
-            pytest tests/unit/core/ tests/unit/analytics/ --junitxml=test-results/pytest-compat-${{ matrix.os }}-${{ matrix.python }}.xml --cov=athalia_core --cov-report=term-missing --cov-report=xml:coverage/coverage-compat-${{ matrix.os }}-${{ matrix.python }}.xml --maxfail=3 --tb=short -v
-          else
-            # Commande Unix/Linux/macOS
-            pytest tests/unit/core/ tests/unit/analytics/ \
-              --junitxml=test-results/pytest-compat-${{ matrix.os }}-${{ matrix.python }}.xml \
-              --cov=athalia_core \
-              --cov-report=term-missing \
-              --cov-report=xml:coverage/coverage-compat-${{ matrix.os }}-${{ matrix.python }}.xml \
-              --maxfail=3 --tb=short -v
-          fi || {
-            echo "WARNING: Tests de compatibilite partiellement echoues (non critique pour cross-platform)"
-            echo "SUCCESS: Continuation du pipeline CI/CD"
-            true
-          }
+          # Commande compatible multi-OS - une seule ligne pour éviter les problèmes PowerShell
+          python -m pytest tests/unit/core/ tests/unit/analytics/ --junitxml=test-results/pytest-compat-${{ matrix.os }}-${{ matrix.python }}.xml --cov=athalia_core --cov-report=term-missing --cov-report=xml:coverage/coverage-compat-${{ matrix.os }}-${{ matrix.python }}.xml --maxfail=3 --tb=short -v || echo "WARNING: Tests de compatibilite partiellement echoues (non critique pour cross-platform)" && echo "SUCCESS: Continuation du pipeline CI/CD"
 
-      - name: "Metriques Upload Rapport Compatibilité"
+      - name: "Upload Rapport Compatibilité"
         uses: actions/upload-artifact@v4
         with:
           name: compatibility-${{ matrix.os }}-${{ matrix.python }}
