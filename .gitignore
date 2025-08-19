@@ -245,3 +245,7 @@ dashboard/
 
 # Cache mypy
 .mypy_cache/
+
+# Fichiers AppleDouble et macOS
+._*
+.DS_Store
