@@ -54,14 +54,9 @@ class AutoDocumenter:
 
         if config_path:
             try:
-                if yaml is None:
-                    logger.warning(
-                        "Module yaml non disponible, utilisation de la configuration par défaut"
-                    )
-                else:
-                    with open(config_path, encoding="utf-8") as f:
-                        user_config = yaml.safe_load(f)
-                        default_config.update(user_config)
+                with open(config_path, encoding="utf-8") as f:
+                    user_config = yaml.safe_load(f)
+                    default_config.update(user_config)
             except Exception as e:
                 logger.warning(
                     f"Impossible de charger la configuration {config_path}: {e}"
