@@ -163,9 +163,7 @@ class TestClass:
         with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
             mock_result = Mock()
             mock_result.returncode = 0
-            mock_result.stdout = (
-                ">> Issue: [B101:assert_used] Use of assert detected"
-            )
+            mock_result.stdout = ">> Issue: [B101:assert_used] Use of assert detected"
             mock_run.return_value = mock_result
             self.linter._run_bandit()
             assert len(self.linter.report["warnings"]) > 0

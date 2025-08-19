@@ -1,0 +1,153 @@
+# Exclure tous les fichiers AppleDouble et macOS
+global-exclude *._*
+global-exclude .DS_Store
+global-exclude ._*
+global-exclude .AppleDouble
+global-exclude .LSOverride
+global-exclude Icon?
+global-exclude Thumbs.db
+global-exclude ehthumbs.db
+global-exclude Desktop.ini
+
+# Exclure les dossiers de cache
+global-exclude __pycache__
+global-exclude .pytest_cache
+global-exclude .mypy_cache
+global-exclude .ruff_cache
+global-exclude .coverage
+global-exclude htmlcov
+global-exclude .tox
+global-exclude .venv
+global-exclude venv
+global-exclude env
+global-exclude .env
+
+# Exclure les fichiers de build
+global-exclude build
+global-exclude dist
+global-exclude *.egg-info
+global-exclude *.egg
+
+# Exclure les fichiers de développement
+global-exclude .git
+global-exclude .gitignore
+global-exclude .editorconfig
+global-exclude .pre-commit-config.yaml
+global-exclude .flake8
+global-exclude .pylintrc
+global-exclude .mypy.ini
+global-exclude .ruff.toml
+global-exclude .black
+global-exclude .isort.cfg
+
+# Exclure les fichiers de documentation temporaires
+global-exclude site
+global-exclude docs/_build
+global-exclude docs/site
+
+# Exclure les fichiers de logs
+global-exclude *.log
+global-exclude logs
+global-exclude .logs
+
+# Exclure les fichiers de test
+global-exclude .pytest_cache
+global-exclude .coverage
+global-exclude htmlcov
+global-exclude .tox
+global-exclude .cache
+
+# Exclure les fichiers de backup
+global-exclude *.bak
+global-exclude *.backup
+global-exclude *.tmp
+global-exclude *.temp
+global-exclude *~
+global-exclude #*#
+global-exclude .#*
+
+# Exclure les fichiers de système
+global-exclude .DS_Store
+global-exclude .Trashes
+global-exclude .Spotlight-V100
+global-exclude .fseventsd
+global-exclude .TemporaryItems
+global-exclude .VolumeIcon.icns
+global-exclude .com.apple.timemachine.donotpresent
+
+# Exclure les fichiers de projet spécifiques
+global-exclude archive
+global-exclude backups
+global-exclude blueprints_history
+global-exclude cache
+global-exclude data
+global-exclude dashboard
+global-exclude examples
+global-exclude logs
+global-exclude prompts
+global-exclude scripts
+global-exclude setup
+global-exclude site
+global-exclude templates
+global-exclude tests
+global-exclude tools
+global-exclude bin
+global-exclude config
+global-exclude pyproject.toml
+global-exclude requirements.txt
+global-exclude setup.py
+global-exclude README.md
+global-exclude LICENSE
+global-exclude CHANGELOG.md
+global-exclude .gitignore
+global-exclude .gitattributes
+global-exclude .editorconfig
+global-exclude .pre-commit-config.yaml
+global-exclude .flake8
+global-exclude .pylintrc
+global-exclude .mypy.ini
+global-exclude .ruff.toml
+global-exclude .black
+global-exclude .isort.cfg
+global-exclude .coveragerc
+global-exclude .pytest.ini
+global-exclude tox.ini
+global-exclude Makefile
+global-exclude docker-compose.yml
+global-exclude Dockerfile
+global-exclude .dockerignore
+global-exclude .env.example
+global-exclude .env.local
+global-exclude .env.development
+global-exclude .env.production
+global-exclude .env.test
+global-exclude .env.staging
+global-exclude .env.prod
+global-exclude .env.dev
+global-exclude .env.ci
+global-exclude .env.github
+global-exclude .env.actions
+global-exclude .env.workflow
+global-exclude .env.build
+global-exclude .env.docs
+global-exclude .env.testing
+global-exclude .env.audit
+global-exclude .env.security
+global-exclude .env.quality
+global-exclude .env.performance
+global-exclude .env.monitoring
+global-exclude .env.logging
+global-exclude .env.cache
+global-exclude .env.backup
+global-exclude .env.archive
+global-exclude .env.blueprint
+global-exclude .env.script
+global-exclude .env.tool
+global-exclude .env.utility
+global-exclude .env.helper
+global-exclude .env.assistant
+global-exclude .env.ai
+global-exclude .env.ml
+global-exclude .env.data
+global-exclude .env.analytics
+global-exclude .env.dashboard
