@@ -117,34 +117,23 @@ class ROS2Validator:
             maintainer_elem = root.find("maintainer")
             license_elem = root.find("license")
 
-            if all(
-                [
-                    name_elem,
-                    version_elem,
-                    description_elem,
-                    maintainer_elem,
-                    license_elem,
-                ]
-            ):
-                self.validation_results["metadata"] = {
-                    "name": (name_elem.text or "") if name_elem is not None else "",
-                    "version": (
-                        (version_elem.text or "") if version_elem is not None else ""
-                    ),
-                    "description": (
-                        (description_elem.text or "")
-                        if description_elem is not None
-                        else ""
-                    ),
-                    "maintainer": (
-                        (maintainer_elem.text or "")
-                        if maintainer_elem is not None
-                        else ""
-                    ),
-                    "license": (
-                        (license_elem.text or "") if license_elem is not None else ""
-                    ),
-                }
+            # Toujours extraire les métadonnées disponibles
+            self.validation_results["metadata"] = {}
+
+            if name_elem is not None:
+                self.validation_results["metadata"]["name"] = name_elem.text or ""
+            if version_elem is not None:
+                self.validation_results["metadata"]["version"] = version_elem.text or ""
+            if description_elem is not None:
+                self.validation_results["metadata"]["description"] = (
+                    description_elem.text or ""
+                )
+            if maintainer_elem is not None:
+                self.validation_results["metadata"]["maintainer"] = (
+                    maintainer_elem.text or ""
+                )
+            if license_elem is not None:
+                self.validation_results["metadata"]["license"] = license_elem.text or ""
 
             return True
 
