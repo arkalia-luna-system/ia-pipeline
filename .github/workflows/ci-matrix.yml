@@ -632,10 +632,10 @@ jobs:
           user_name: "github-actions[bot]"
           user_email: "github-actions[bot]@users.noreply.github.com"
 
-      - name: "📋 Configuration GitHub Pages Propre"
+      - name: "Configuration GitHub Pages Propre"
         if: success()
         run: |
-          echo "📋 CONFIGURATION GITHUB PAGES PROFESSIONNELLE"
+          echo "CONFIGURATION GITHUB PAGES PROFESSIONNELLE"
           echo "=============================================="
 
           # Créer le fichier .nojekyll dans le dossier site/
@@ -652,18 +652,18 @@ jobs:
             fi
 
             # Vérifier la structure finale
-            echo "Dossiers Structure finale du site:"
+            echo "Structure finale du site:"
             ls -la site/ | head -10
-            echo "Metriques Total fichiers: $(find site/ -type f | wc -l)"
+            echo "Total fichiers: $(find site/ -type f | wc -l)"
           else
             echo "ERROR Dossier site non trouvé"
           fi
 
   # ========================================
-  # 🎯 RAPPORT FINAL
+  # RAPPORT FINAL
   # ========================================
   final-report:
-    name: "🎯 Rapport Final CI/CD"
+    name: "Rapport Final CI/CD"
     needs:
       [
         validate,
@@ -681,47 +681,47 @@ jobs:
       - name: "Checkout Code"
         uses: actions/checkout@v4
 
-      - name: "Checkout Download all artifacts"
+      - name: "Download all artifacts"
         uses: actions/download-artifact@v4
         with:
           path: artifacts
           merge-multiple: true
 
-      - name: " Lister artefacts"
+      - name: "Lister artefacts"
         run: |
-          echo "Upload Fichiers d'artefacts téléchargés:"
+          echo "Fichiers d'artefacts téléchargés:"
           find artifacts -maxdepth 3 -type f -print || true
 
-      - name: " Générer résumé Markdown"
+      - name: "Générer résumé Markdown"
         run: |
           python3 -c 'import glob,sys; junit=glob.glob("artifacts/test-results/*.xml"); cov=glob.glob("artifacts/coverage/*.xml"); ok=bool(junit) and bool(cov); print(f"JUnit: {len(junit)} fichiers, Coverage: {len(cov)} fichiers"); open("REPORT.md","w",encoding="utf-8").write("# Rapport CI\n\n"+f"- JUnit: {len(junit)} fichiers\n"+f"- Coverage: {len(cov)} fichiers\n"); sys.exit(0 if ok else 1)'
 
-      - name: " Publier rapport final"
+      - name: "Publier rapport final"
         uses: actions/upload-artifact@v4
         with:
           name: CI-REPORT
           path: REPORT.md
 
-      - name: "Metriques Génération Rapport Final"
+      - name: "Génération Rapport Final"
         run: |
-          echo "🎯 RAPPORT FINAL CI/CD ATHALIA"
+          echo "RAPPORT FINAL CI/CD ATHALIA"
           echo "==============================="
           echo "SUCCESS Validation: ${{ needs.validate.result }}"
-          echo "Tests Tests Principaux: ${{ needs.test-main.result }}"
-          echo "Compatibilite Compatibilité: ${{ needs.test-cross-platform.result }}"
-          echo "Securite Sécurité: ${{ needs.security-audit.result }}"
+          echo "Tests Principaux: ${{ needs.test-main.result }}"
+          echo "Compatibilité: ${{ needs.test-cross-platform.result }}"
+          echo "Sécurité: ${{ needs.security-audit.result }}"
           echo "Build: ${{ needs.build-package.result }}"
-          echo "Documentation Documentation: ${{ needs.documentation.result }}"
+          echo "Documentation: ${{ needs.documentation.result }}"
           echo ""
-          echo "🌐 Résultats disponibles dans les artifacts"
-          echo "Metriques Coverage: Codecov + HTML reports"
-          echo "Securite Sécurité: Bandit + Safety + Pip-audit"
+          echo "Résultats disponibles dans les artifacts"
+          echo "Coverage: Codecov + HTML reports"
+          echo "Sécurité: Bandit + Safety + Pip-audit"
           echo "Package: Wheel + Source distribution"
-          echo "Documentation Site: Documentation statique"
+          echo "Site: Documentation statique"
 
           # Résumé des résultats
           echo ""
-          echo "📋 RÉSUMÉ EXÉCUTION:"
+          echo "RÉSUMÉ EXÉCUTION:"
           if [[ "${{ needs.validate.result }}" == "success" ]]; then
             echo "SUCCESS Validation: SUCCÈS"
           else
@@ -760,7 +760,7 @@ jobs:
 
           # Évaluation globale
           echo ""
-          echo "🎯 ÉVALUATION GLOBALE:"
+          echo "ÉVALUATION GLOBALE:"
           success_count=0
           total_jobs=6
 
