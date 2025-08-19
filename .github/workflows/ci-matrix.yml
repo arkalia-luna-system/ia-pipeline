@@ -691,18 +691,7 @@ jobs:
 
       - name: "🧾 Générer résumé Markdown"
         run: |
-          python - <<'PY'
-import glob, sys
-junit = glob.glob("artifacts/test-results/*.xml")
-cov   = glob.glob("artifacts/coverage/*.xml")
-ok = len(junit) > 0 and len(cov) > 0
-print(f"JUnit: {len(junit)} fichiers, Coverage: {len(cov)} fichiers")
-with open("REPORT.md","w", encoding="utf-8") as f:
-    f.write("# Rapport CI\n\n")
-    f.write(f"- JUnit: {len(junit)} fichiers\n")
-    f.write(f"- Coverage: {len(cov)} fichiers\n")
-sys.exit(0 if ok else 1)
-PY
+          python3 -c 'import glob,sys; junit=glob.glob("artifacts/test-results/*.xml"); cov=glob.glob("artifacts/coverage/*.xml"); ok=bool(junit) and bool(cov); print(f"JUnit: {len(junit)} fichiers, Coverage: {len(cov)} fichiers"); open("REPORT.md","w",encoding="utf-8").write("# Rapport CI\n\n"+f"- JUnit: {len(junit)} fichiers\n"+f"- Coverage: {len(cov)} fichiers\n"); sys.exit(0 if ok else 1)'
 
       - name: "📤 Publier rapport final"
         uses: actions/upload-artifact@v4
