@@ -182,7 +182,12 @@ jobs:
           echo "LANCEMENT DES TESTS"
           echo "======================"
 
-          mkdir -p test-results coverage
+          # Création des dossiers compatibles Windows/Unix
+          if [[ "${{ runner.os }}" == "Windows" ]]; then
+            md test-results 2>$null; md coverage 2>$null
+          else
+            mkdir -p test-results coverage
+          fi
 
           # Tests avec couverture (+ JUnit)
           pytest \
@@ -304,7 +309,12 @@ jobs:
           echo "TESTS COMPATIBILITÉ ${{ matrix.os }}"
           echo "==============================="
 
-          mkdir -p test-results coverage
+          # Création des dossiers compatibles Windows/Unix
+          if [[ "${{ matrix.os }}" == "windows-2025" ]]; then
+            md test-results 2>$null; md coverage 2>$null
+          else
+            mkdir -p test-results coverage
+          fi
 
           # Tests rapides de compatibilité (uniquement tests de base, exclure les tests complexes)
           echo "Lancement des tests de compatibilité..."
@@ -324,10 +334,10 @@ jobs:
         if: hashFiles('test-results/*.xml') != '' || hashFiles('coverage/*.xml') != ''
 
   # ========================================
-  # Securite SÉCURITÉ & QUALITÉ
+  # SÉCURITÉ & QUALITÉ
   # ========================================
   security-audit:
-    name: "Securite Audit Sécurité & Qualité"
+    name: "Audit Sécurité & Qualité"
     needs: validate
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -336,38 +346,38 @@ jobs:
       - name: "Checkout Code"
         uses: actions/checkout@v4
 
-      - name: "Python Setup Python"
+      - name: "Setup Python"
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: pip
 
-      - name: "Upload Install Security Tools"
+      - name: "Install Security Tools"
         run: |
           pip install bandit safety pip-audit
 
-      - name: " Bandit Security Scan"
+      - name: "Bandit Security Scan"
         run: |
-          echo " SCAN SÉCURITÉ BANDIT"
+          echo "SCAN SÉCURITÉ BANDIT"
           echo "========================"
           bandit -r athalia_core/ -f json -o bandit-report.json || echo "WARNING  Bandit scan échoué - Rapport non généré"
           bandit -r athalia_core/ -f txt -o bandit-report.txt || echo "WARNING  Bandit scan échoué - Rapport non généré"
 
-      - name: "Upload Pip Audit"
+      - name: "Pip Audit"
         run: |
-          echo "Upload AUDIT DÉPENDANCES PIP"
+          echo "AUDIT DÉPENDANCES PIP"
           echo "========================"
           pip-audit -r requirements.txt --format json --output pip-audit.json || echo "WARNING  Pip audit échoué - Rapport non généré"
           pip-audit -r requirements.txt --format text --output pip-audit.txt || echo "WARNING  Pip audit échoué - Rapport non généré"
 
-      - name: "Securite Safety Check"
+      - name: "Safety Check"
         run: |
-          echo "Securite VÉRIFICATION SAFETY"
+          echo "VÉRIFICATION SAFETY"
           echo "======================="
           safety check -r requirements.txt --json --output safety-report.json || echo "WARNING  Safety check échoué - Rapport non généré"
           safety check -r requirements.txt --text --output safety-report.txt || echo "WARNING  Safety check échoué - Rapport non généré"
 
-      - name: "Metriques Upload Security Reports"
+      - name: "Upload Security Reports"
         uses: actions/upload-artifact@v4
         with:
           name: security-reports
@@ -392,31 +402,31 @@ jobs:
       - name: "Checkout Code"
         uses: actions/checkout@v4
 
-      - name: "Python Setup Python"
+      - name: "Setup Python"
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: pip
 
-      - name: "Upload Install Build Tools"
+      - name: "Install Build Tools"
         run: |
           pip install build wheel setuptools
 
-      - name: " Nettoyage Préventif (AppleDouble)"
+      - name: "Nettoyage Préventif (AppleDouble)"
         run: |
-          echo " NETTOYAGE PRÉVENTIF DES FICHIERS MACOS"
+          echo "NETTOYAGE PRÉVENTIF DES FICHIERS MACOS"
           echo "============================================="
-          echo "Validation Recherche et suppression des fichiers AppleDouble..."
+          echo "Recherche et suppression des fichiers AppleDouble..."
 
           # Supprimer tous les fichiers AppleDouble
           find . -name "._*" -type f -delete 2>/dev/null || echo "SUCCESS Aucun fichier AppleDouble trouvé"
           find . -name ".DS_Store" -type f -delete 2>/dev/null || echo "SUCCESS Aucun .DS_Store trouvé"
 
-          echo " Nettoyage terminé !"
+          echo "Nettoyage terminé !"
 
       - name: "Build Package"
         run: |
-          echo " CONSTRUCTION DU PACKAGE"
+          echo "CONSTRUCTION DU PACKAGE"
           echo "=========================="
 
           # Tentative de build
@@ -425,7 +435,7 @@ jobs:
             echo "SUCCESS" > build_result.txt
           else
             echo "WARNING  Build échoué - Problème de fichiers AppleDouble détecté"
-            echo " Tentative de nettoyage et rebuild..."
+            echo "Tentative de nettoyage et rebuild..."
 
             # Nettoyage agressif
             find . -name "._*" -type f -delete 2>/dev/null
@@ -442,7 +452,7 @@ jobs:
             fi
           fi
 
-      - name: "Metriques Résultat Final Build"
+      - name: "Résultat Final Build"
         run: |
           if [ -f build_result.txt ]; then
             RESULT=$(cat build_result.txt)
@@ -451,14 +461,14 @@ jobs:
               echo "SUCCESS Package créé avec succès"
             else
               echo "WARNING  BUILD ÉCHOUÉ - Problème AppleDouble persistant"
-              echo " Ce problème est spécifique à macOS et n'affecte pas la fonctionnalité"
+              echo "Ce problème est spécifique à macOS et n'affecte pas la fonctionnalité"
               echo "SUCCESS Le job continue pour permettre la documentation"
             fi
           else
-            echo " Résultat du build non déterminé"
+            echo "Résultat du build non déterminé"
           fi
 
-      - name: "Upload Upload Artifacts (si succès)"
+      - name: "Upload Artifacts (si succès)"
         if: success()
         uses: actions/upload-artifact@v4
         with:
@@ -469,10 +479,10 @@ jobs:
           retention-days: 30
 
   # ========================================
-  # Documentation DOCUMENTATION
+  # DOCUMENTATION
   # ========================================
   documentation:
-    name: "Documentation Documentation"
+    name: "Documentation"
     needs: [validate, test-main]
     if: needs.validate.outputs.should-continue == 'true' && (needs.test-main.result == 'success' || needs.test-main.result == 'failure')
     runs-on: ubuntu-latest
@@ -489,25 +499,25 @@ jobs:
           python-version: "3.11"
           cache: pip
 
-      - name: "Upload Install MkDocs"
+      - name: "Install MkDocs"
         run: |
           pip install mkdocs mkdocs-material
 
-      - name: " Nettoyage Préventif (AppleDouble)"
+      - name: "Nettoyage Préventif (AppleDouble)"
         run: |
-          echo " NETTOYAGE PRÉVENTIF DES FICHIERS MACOS"
+          echo "NETTOYAGE PRÉVENTIF DES FICHIERS MACOS"
           echo "============================================="
-          echo "Validation Recherche et suppression des fichiers AppleDouble..."
+          echo "Recherche et suppression des fichiers AppleDouble..."
 
           # Supprimer tous les fichiers AppleDouble
           find . -name "._*" -type f -delete 2>/dev/null || echo "SUCCESS Aucun fichier AppleDouble trouvé"
           find . -name ".DS_Store" -type f -delete 2>/dev/null || echo "SUCCESS Aucun .DS_Store trouvé"
 
-          echo "🧹 Nettoyage terminé !"
+          echo "Nettoyage terminé !"
 
-      - name: "Documentation Build Documentation"
+      - name: "Build Documentation"
         run: |
-          echo "Documentation CONSTRUCTION DE LA DOCUMENTATION"
+          echo "CONSTRUCTION DE LA DOCUMENTATION"
           echo "==================================="
 
           # Vérification de la configuration MkDocs
@@ -518,14 +528,14 @@ jobs:
           fi
 
           # Nettoyage préventif des fichiers problématiques
-          echo "🧹 Nettoyage des fichiers problématiques..."
+          echo "Nettoyage des fichiers problématiques..."
           find . -name "._*" -type f -delete 2>/dev/null || true
           find . -name ".DS_Store" -type f -delete 2>/dev/null || true
           find . -name "*.pyc" -delete 2>/dev/null || true
           find . -name "__pycache__" -type d -exec rm -rf {} + 2>/dev/null || true
 
           # Tentative de build documentation avec gestion d'erreur robuste
-          echo "🔨 Construction de la documentation..."
+          echo "Construction de la documentation..."
           if mkdocs build -f config/mkdocs/mkdocs.yml --strict 2>&1; then
             echo "SUCCESS Documentation construite avec succès !"
             echo "SUCCESS" > doc_result.txt
@@ -546,7 +556,7 @@ jobs:
             find . -name ".DS_Store" -type f -delete 2>/dev/null || true
 
             # Deuxième tentative avec plus de verbosité
-            echo "🔄 Deuxième tentative de construction..."
+            echo "Deuxième tentative de construction..."
             if mkdocs build -f config/mkdocs/mkdocs.yml --verbose 2>&1; then
               echo "SUCCESS Documentation construite après nettoyage !"
               echo "SUCCESS" > doc_result.txt
@@ -555,15 +565,15 @@ jobs:
               echo "FAILURE" > doc_result.txt
 
               # Diagnostic des erreurs
-              echo "Validation Diagnostic des erreurs..."
-              echo "Dossiers Contenu du répertoire docs:"
+              echo "Diagnostic des erreurs..."
+              echo "Contenu du répertoire docs:"
               ls -la docs/ 2>/dev/null || echo "Dossier docs non accessible"
-              echo "Dossiers Contenu du répertoire config/mkdocs:"
+              echo "Contenu du répertoire config/mkdocs:"
               ls -la config/mkdocs/ 2>/dev/null || echo "Dossier config/mkdocs non accessible"
             fi
           fi
 
-      - name: "Metriques Résultat Final Documentation"
+      - name: "Résultat Final Documentation"
         run: |
           if [ -f doc_result.txt ]; then
             RESULT=$(cat doc_result.txt)
@@ -572,13 +582,13 @@ jobs:
               echo "SUCCESS Site généré avec succès"
             else
               echo "WARNING  DOCUMENTATION ÉCHOUÉE - Problème AppleDouble persistant"
-              echo "🔄 Ce problème est spécifique à macOS et n'affecte pas la fonctionnalité"
+              echo "Ce problème est spécifique à macOS et n'affecte pas la fonctionnalité"
             fi
           else
-            echo "❓ Résultat de la documentation non déterminé"
+            echo "Résultat de la documentation non déterminé"
           fi
 
-      - name: "Upload Upload Artifacts (si succès)"
+      - name: "Upload Artifacts (si succès)"
         if: success()
         uses: actions/upload-artifact@v4
         with:
@@ -587,10 +597,10 @@ jobs:
             site/
           retention-days: 30
 
-      - name: "🌐 Configuration GitHub Pages"
+      - name: "Configuration GitHub Pages"
         if: success()
         run: |
-          echo "🌐 CONFIGURATION GITHUB PAGES"
+          echo "CONFIGURATION GITHUB PAGES"
           echo "============================="
 
           # Créer un fichier .nojekyll pour désactiver Jekyll
@@ -605,9 +615,9 @@ jobs:
             fi
 
             # Vérifier la structure du site
-            echo "Dossiers Structure du site généré:"
+            echo "Structure du site généré:"
             find site/ -type f -name "*.html" | head -10
-            echo "Metriques Total fichiers HTML: $(find site/ -type f -name '*.html' | wc -l)"
+            echo "Total fichiers HTML: $(find site/ -type f -name '*.html' | wc -l)"
           else
             echo "WARNING  Dossier site non trouvé"
           fi
