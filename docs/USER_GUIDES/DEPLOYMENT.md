@@ -29,13 +29,13 @@ python3 athalia_core/utilities/ready_check.py
 ### Lancement des Services
 ```bash
 # Interface principale
-python3 athalia_core/main.py
+python3 athalia_core/core/main.py
 
 # Orchestrateur unifié
 python3 bin/core/athalia_unified.py --help
 
 # Dashboard Streamlit
-streamlit run athalia_core/dashboard.py
+streamlit run athalia_core/utilities/dashboard.py
 
 # API REST (si configurée)
 python3 athalia_core/api_server.py
@@ -202,7 +202,7 @@ sudo ufw enable
 sudo apt install htop iotop nethogs
 
 # 2. Monitoring application
-python3 athalia_core/performance_analyzer.py --monitor
+python3 athalia_core/core/performance_analyzer.py /chemin/projet --output performance_report.json
 
 # 3. Logs centralisés
 # Configurer rsyslog ou logrotate
@@ -211,7 +211,7 @@ python3 athalia_core/performance_analyzer.py --monitor
 ### Sauvegarde
 ```bash
 # 1. Sauvegarde automatique des données
-python3 athalia_core/backup_system.py --auto-backup
+# python3 athalia_core/backup_system.py --auto-backup  # Module non implémenté
 
 # 2. Script de sauvegarde cron
 # Ajouter dans crontab -e
@@ -279,7 +279,7 @@ security:
 sudo netstat -tulpn | grep :8501
 
 # Changer le port
-streamlit run athalia_core/dashboard.py --server.port 8502
+streamlit run athalia_core/utilities/dashboard.py --server.port 8502
 ```
 
 #### 2. Problèmes de mémoire
@@ -306,10 +306,10 @@ chmod +x scripts/*.sh
 tail -f logs/athalia.log
 
 # Debug mode
-python3 athalia_core/main.py --debug
+# python3 athalia_core/core/main.py --debug  # Option non disponible
 
 # Validation complète
-python3 athalia_core/ready_check.py --verbose
+python3 athalia_core/utilities/ready_check.py --verbose
 ```
 
 ## 📋 Checklist de Déploiement

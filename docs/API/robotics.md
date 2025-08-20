@@ -53,7 +53,7 @@ Le module Robotics d'Athalia fournit l'intégration avec les systèmes robotique
 
 ## 🔗 Navigation
 
-- [Index API](README.md)
+- [Index API](INDEX.md)
 - [Core Modules](core_modules.md)
 - [Orchestrateur](orchestrator.md)
 - [Plugins et Templates](plugins.md)

@@ -429,4 +429,4 @@ Athalia transforme la génération de projets en une expérience intelligente et
 
 ---
 
-*Guide généré automatiquement par Athalia - Version 11.0* 
+*Guide généré automatiquement par Athalia - Version 12.0* 

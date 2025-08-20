@@ -106,14 +106,14 @@ python -m pytest tests/unit/quality/ -v
 ```
 
 ### **Q: Comment changer la langue d'Athalia ?**
-**R:** Utilisez l'option `--lang` avec le système d'internationalisation modulaire :
+**R:** Utilisez le système d'internationalisation modulaire :
 
 ```bash
 # Français
-python bin/athalia_unified.py . --action audit --lang fr
+# python bin/athalia_unified.py . --action audit --lang fr  # Options non disponibles
 
 # Anglais
-python bin/athalia_unified.py . --action audit --lang en
+# python bin/athalia_unified.py . --action audit --lang en  # Options non disponibles
 
 # Vérifier les langues disponibles
 ls athalia_core/i18n/

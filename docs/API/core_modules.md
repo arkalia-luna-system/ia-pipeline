@@ -129,7 +129,7 @@ Les modules principaux d'Athalia fournissent toutes les fonctionnalités de base
 
 ## 🔗 Navigation
 
-- [Index API](README.md)
+- [Index API](INDEX.md)
 - [Orchestrateur](orchestrator.md)
 - [Plugins et Templates](plugins.md)
 - [Robotique](robotics.md)

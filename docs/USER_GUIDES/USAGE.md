@@ -1,6 +1,6 @@
 # 🚀 Guide d'Utilisation - Athalia
 
-**Version :** 11.0 (ACTIVE DEVELOPMENT)  
+**Version :** 12.0 (ACTIVE DEVELOPMENT)  
 **Date :** 31 Juillet 2025
 
 ---
@@ -36,10 +36,10 @@ python bin/core/athalia_unified.py /chemin/vers/projet --action audit --dry-run
 python bin/core/athalia_unified.py /chemin/vers/projet --action audit --verbose
 
 # Industrialisation sans audit préalable
-python bin/core/athalia_unified.py /chemin/vers/projet --action complete --no-audit
+# python bin/core/athalia_unified.py /chemin/vers/projet --action complete --no-audit  # Options non disponibles
 
 # Dashboard avec profil utilisateur
-python bin/core/athalia_unified.py /chemin/vers/projet --action dashboard --utilisateur dev
+# python bin/core/athalia_unified.py /chemin/vers/projet --action dashboard --utilisateur dev  # Options non disponibles
 ```
 
 ---

@@ -1,6 +1,6 @@
 # 🚀 Guide d'Installation - Athalia
 
-**Version :** 11.0 (ACTIVE DEVELOPMENT)  
+**Version :** 12.0 (ACTIVE DEVELOPMENT)  
 **Date :** 11 août 2025  
 **Statut :** Configuration validée ✅
 
@@ -97,7 +97,7 @@ cp config/athalia_config.yaml.example config/athalia_config.yaml
 # config/athalia_config.yaml
 app:
   name: athalia
-  version: "11.0"
+  version: "12.0"
   debug: false
   environment: production
   log_level: INFO
@@ -203,9 +203,9 @@ source .venv/bin/activate
 python athalia_core/main.py
 
 # Avec options
-python athalia_core/main.py --help
-python athalia_core/main.py --dry-run
-python athalia_core/main.py --verbose
+python athalia_core/core/main.py
+# python athalia_core/core/main.py --dry-run  # Option non disponible
+# python athalia_core/core/main.py --verbose  # Option non disponible
 ```
 
 ### **Scripts Utilitaires**
@@ -302,7 +302,7 @@ Votre installation d'Athalia est maintenant complète et prête pour la producti
 python athalia_core/main.py --test-complete
 
 # Vérifier les métriques
-python athalia_core/performance_analyzer.py --report
+python athalia_core/core/performance_analyzer.py /chemin/projet --output performance_report.json
 ```
 
 **📅 Dernière mise à jour :** 2 Août 2025  
@@ -311,4 +311,4 @@ python athalia_core/performance_analyzer.py --report
 
 ---
 
-*Guide d'installation - Athalia v11.0 - Branch develop*
+*Guide d'installation - Athalia v12.0 - Branch develop*
