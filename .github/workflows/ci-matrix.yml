@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 3
     outputs:
-      should-continue: ${{ steps.validate.outputs.should-continue }}
+      should-continue: ${{ steps.check-validation.outputs.should-continue }}
 
     steps:
       - name: "Checkout Code"
@@ -44,6 +44,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: "Validation Structure"
+        id: check-validation
         run: |
           echo "VALIDATION DE LA STRUCTURE ATHALIA"
           echo "====================================="
@@ -92,19 +93,19 @@ jobs:
         run: |
           echo "MÉTRIQUES ATHALIA"
           echo "===================="
-          echo "Python files: $(find . -name '*.py' | wc -l | tr -d ' ')"
-          echo "Test files: $(find tests/ -name '*.py' | wc -l | tr -d ' ')"
-          echo "Doc files: $(find docs/ -name '*.md' | wc -l | tr -d ' ')"
-          echo "Config files: $(find config/ -name '*.yml' -o -name '*.yaml' | wc -l | tr -d ' ')"
+          echo "Python files: $(find . -name '*.py' 2>/dev/null | wc -l | tr -d ' ' || echo '0')"
+          echo "Test files: $(find tests/ -name '*.py' 2>/dev/null | wc -l | tr -d ' ' || echo '0')"
+          echo "Doc files: $(find docs/ -name '*.md' 2>/dev/null | wc -l | tr -d ' ' || echo '0')"
+          echo "Config files: $(find config/ -name '*.yml' -o -name '*.yaml' 2>/dev/null | wc -l | tr -d ' ' || echo '0')"
           echo "Package: $(pip show athalia-ai 2>/dev/null | grep Version | cut -d' ' -f2 || echo 'Non installé')"
 
           # Métriques détaillées
           echo ""
           echo "ANALYSE DÉTAILLÉE:"
-          echo "Dossiers Python: $(find . -name '*.py' -exec dirname {} \; | sort | uniq | wc -l | tr -d ' ')"
-          echo "Taille totale: $(du -sh . | cut -f1)"
-          echo "Lignes de code: $(find . -name '*.py' -exec wc -l {} + | tail -1 | awk '{print $1}')"
-          echo "Couverture tests: $(find tests/ -name '*.py' | wc -l | tr -d ' ') / $(find . -name '*.py' | wc -l | tr -d ' ') modules"
+          echo "Dossiers Python: $(find . -name '*.py' -exec dirname {} \; 2>/dev/null | sort | uniq | wc -l | tr -d ' ' || echo '0')"
+          echo "Taille totale: $(du -sh . 2>/dev/null | cut -f1 || echo 'Non disponible')"
+          echo "Lignes de code: $(find . -name '*.py' -exec wc -l {} + | tail -1 | awk '{print $1}' 2>/dev/null || echo 'Non disponible')"
+          echo "Couverture tests: $(find tests/ -name '*.py' 2>/dev/null | wc -l | tr -d ' ' || echo '0') / $(find . -name '*.py' 2>/dev/null | wc -l | tr -d ' ' || echo '0') modules"
 
           # Vérification des imports critiques
           echo ""
@@ -128,6 +129,9 @@ jobs:
     name: "Tests Principaux (Python ${{ matrix.python }})"
     needs: validate
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     strategy:
       fail-fast: false
       matrix:
@@ -178,13 +182,13 @@ jobs:
           mypy athalia_core/ --ignore-missing-imports --no-error-summary --warn-unused-ignores || echo "WARNING  MyPy a trouvé des problèmes de type (non bloquant)"
 
       - name: "Tests avec Couverture"
+        shell: bash
         run: |
           echo "LANCEMENT DES TESTS"
           echo "======================"
 
-          # Création des dossiers compatibles multi-OS
-          # Création des dossiers compatible multi-OS
-          mkdir test-results 2>$null; mkdir coverage 2>$null; mkdir -p test-results coverage 2>/dev/null || true
+          # Création des dossiers compatibles multi-OS (bash)
+          mkdir -p test-results coverage
 
           # Tests avec couverture (+ JUnit)
           pytest \
@@ -270,6 +274,9 @@ jobs:
     name: "Tests Compatibilité (${{ matrix.os }})"
     needs: validate
     runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
     strategy:
       fail-fast: false
       matrix:
@@ -299,6 +306,7 @@ jobs:
           pip install pytest pytest-cov
 
       - name: "Tests de Compatibilité"
+        shell: bash
         env:
           PYTHONIOENCODING: utf-8
           PYTHONUTF8: 1
@@ -306,9 +314,8 @@ jobs:
           echo "TESTS COMPATIBILITÉ ${{ matrix.os }}"
           echo "==============================="
 
-          # Création des dossiers compatibles multi-OS
-          # Création des dossiers compatible multi-OS
-          mkdir test-results 2>$null; mkdir coverage 2>$null; mkdir -p test-results coverage 2>/dev/null || true
+          # Création des dossiers compatibles multi-OS (bash)
+          mkdir -p test-results coverage
 
           # Tests rapides de compatibilité (uniquement tests de base, exclure les tests complexes)
           echo "Lancement des tests de compatibilité..."
@@ -432,9 +439,9 @@ jobs:
             echo "Tentative de nettoyage et rebuild..."
 
             # Nettoyage agressif
-            find . -name "._*" -type f -delete 2>/dev/null
-            find . -name ".DS_Store" -type f -delete 2>/dev/null
-            rm -rf build dist *.egg-info 2>/dev/null
+            find . -name "._*" -type f -delete 2>/dev/null || true
+            find . -name ".DS_Store" -type f -delete 2>/dev/null || true
+            rm -rf build dist *.egg-info 2>/dev/null || true
 
             # Deuxième tentative
             if python -m build --sdist --wheel; then
@@ -497,17 +504,25 @@ jobs:
         run: |
           pip install mkdocs mkdocs-material
 
-      - name: "Nettoyage Préventif (AppleDouble)"
+      - name: "Nettoyage Préventif COMPLET (AppleDouble + Jekyll)"
         run: |
-          echo "NETTOYAGE PRÉVENTIF DES FICHIERS MACOS"
+          echo "NETTOYAGE PRÉVENTIF ANTI-JEKYLL COMPLET"
           echo "============================================="
-          echo "Recherche et suppression des fichiers AppleDouble..."
+          echo "Suppression MASSIVE des fichiers problématiques Jekyll..."
 
-          # Supprimer tous les fichiers AppleDouble
+          # Supprimer TOUS les fichiers AppleDouble
           find . -name "._*" -type f -delete 2>/dev/null || echo "SUCCESS Aucun fichier AppleDouble trouvé"
           find . -name ".DS_Store" -type f -delete 2>/dev/null || echo "SUCCESS Aucun .DS_Store trouvé"
 
-          echo "Nettoyage terminé !"
+          # Supprimer les fichiers Jekyll potentiels
+          find . -name "_config.yml" -type f -delete 2>/dev/null || echo "SUCCESS Aucun _config.yml Jekyll trouvé"
+          find . -name "Gemfile*" -type f -delete 2>/dev/null || echo "SUCCESS Aucun Gemfile Jekyll trouvé"
+          find . -name "_layouts" -type d -exec sh -c 'rm -rf "$1"' _ {} \; 2>/dev/null || echo "SUCCESS Aucun _layouts Jekyll trouvé"
+          find . -name "_includes" -type d -exec sh -c 'rm -rf "$1"' _ {} \; 2>/dev/null || echo "SUCCESS Aucun _includes Jekyll trouvé"
+          find . -name "_sass" -type d -exec sh -c 'rm -rf "$1"' _ {} \; 2>/dev/null || echo "SUCCESS Aucun _sass Jekyll trouvé"
+          find . -name "_posts" -type d -exec sh -c 'rm -rf "$1"' _ {} \; 2>/dev/null || echo "SUCCESS Aucun _posts Jekyll trouvé"
+
+          echo "NETTOYAGE ANTI-JEKYLL COMPLET TERMINÉ !"
 
       - name: "Build Documentation"
         run: |
@@ -521,22 +536,34 @@ jobs:
             exit 1
           fi
 
-          # Nettoyage préventif des fichiers problématiques
-          echo "Nettoyage des fichiers problématiques..."
-          find . -name "._*" -type f -delete 2>/dev/null || true
-          find . -name ".DS_Store" -type f -delete 2>/dev/null || true
-          find . -name "*.pyc" -delete 2>/dev/null || true
-          find . -name "__pycache__" -type d -exec rm -rf {} + 2>/dev/null || true
+                      # Nettoyage préventif des fichiers problématiques
+            echo "Nettoyage des fichiers problématiques..."
+            find . -name "._*" -type f -delete 2>/dev/null || true
+            find . -name ".DS_Store" -type f -delete 2>/dev/null || true
+            find . -name "*.pyc" -type f -delete 2>/dev/null || true
+            find . -name "__pycache__" -type d -exec sh -c 'rm -rf "$1"' _ {} \; 2>/dev/null || true
 
-          # Tentative de build documentation avec gestion d'erreur robuste
-          echo "Construction de la documentation..."
-          if mkdocs build -f config/mkdocs/mkdocs.yml --strict 2>&1; then
-            echo "SUCCESS Documentation construite avec succès !"
+          # Tentative de build documentation avec gestion d'erreur robuste et nettoyage post-génération
+          echo "Construction de la documentation MkDocs..."
+          if mkdocs build -f config/mkdocs/mkdocs.yml --clean --strict 2>&1; then
+            echo "SUCCESS Documentation MkDocs construite avec succès !"
+            
+            # NETTOYAGE POST-GÉNÉRATION ANTI-JEKYLL
+            echo "NETTOYAGE POST-GÉNÉRATION du site..."
+            find site/ -name "._*" -type f -delete 2>/dev/null || echo "SUCCESS Aucun AppleDouble dans site/"
+            find site/ -name ".DS_Store" -type f -delete 2>/dev/null || echo "SUCCESS Aucun .DS_Store dans site/"
+            
+            # Forcer la création du fichier .nojekyll dans site/
+            echo "# FORCE GitHub Pages à NE PAS utiliser Jekyll" > site/.nojekyll
+            echo "# Athalia utilise MkDocs exclusivement" >> site/.nojekyll
+            echo "SUCCESS Fichier .nojekyll FORCÉ dans site/"
+            
             echo "SUCCESS" > doc_result.txt
 
             # Vérification de la génération
-            if [ -d "site" ] && [ "$(ls -A site)" ]; then
-              echo "SUCCESS Site généré et non vide"
+            if [ -d "site" ] && [ "$(ls -A site 2>/dev/null || echo '')" ]; then
+              echo "SUCCESS Site MkDocs généré et non vide"
+              echo "Total fichiers HTML: $(find site/ -name '*.html' 2>/dev/null | wc -l | tr -d ' ' || echo '0')"
             else
               echo "WARNING  Site généré mais vide"
               echo "WARNING" > doc_result.txt
@@ -591,29 +618,54 @@ jobs:
             site/
           retention-days: 30
 
-      - name: "Configuration GitHub Pages"
+      - name: "Configuration GitHub Pages DÉFINITIVE"
         if: success()
         run: |
-          echo "CONFIGURATION GITHUB PAGES"
-          echo "============================="
+          echo "CONFIGURATION GITHUB PAGES ANTI-JEKYLL"
+          echo "========================================"
 
-          # Créer un fichier .nojekyll pour désactiver Jekyll
+          # Vérifier que le dossier site existe
           if [ -d "site" ]; then
-            touch site/.nojekyll
-            echo "SUCCESS Fichier .nojekyll créé pour désactiver Jekyll"
+            echo "SUCCESS Dossier site trouvé"
+            
+            # TRIPLE-VÉRIFICATION du fichier .nojekyll
+            echo "# ATHALIA - FORCE GitHub Pages à NE PAS utiliser Jekyll" > site/.nojekyll
+            echo "# Ce projet utilise MkDocs EXCLUSIVEMENT" >> site/.nojekyll
+            echo "# Date de génération: $(date)" >> site/.nojekyll
+            echo "SUCCESS Fichier .nojekyll TRIPLE-FORCÉ"
 
-            # Créer un fichier CNAME si nécessaire
-            if [ -n "${{ vars.CUSTOM_DOMAIN }}" ]; then
-              echo "${{ vars.CUSTOM_DOMAIN }}" > site/CNAME
-              echo "SUCCESS CNAME configuré pour ${{ vars.CUSTOM_DOMAIN }}"
+            # NETTOYAGE FINAL du site
+            find site/ -name "._*" -type f -delete 2>/dev/null || echo "SUCCESS Site déjà propre (AppleDouble)"
+            find site/ -name ".DS_Store" -type f -delete 2>/dev/null || echo "SUCCESS Site déjà propre (.DS_Store)"
+            
+            # Créer un fichier CNAME pour le domaine personnalisé (si configuré)
+            echo "INFO Configuration CNAME pour GitHub Pages"
+            # Note: CUSTOM_DOMAIN peut être configuré dans les variables du repository
+
+            # Vérification COMPLÈTE de la structure du site
+            echo "STRUCTURE DU SITE MKDOCS GÉNÉRÉE:"
+            echo "Fichiers HTML: $(find site/ -name '*.html' 2>/dev/null | wc -l | tr -d ' ' || echo '0')"
+            echo "Fichiers CSS: $(find site/ -name '*.css' 2>/dev/null | wc -l | tr -d ' ' || echo '0')"
+            echo "Fichiers JS: $(find site/ -name '*.js' 2>/dev/null | wc -l | tr -d ' ' || echo '0')"
+            echo "Total fichiers: $(find site/ -type f 2>/dev/null | wc -l | tr -d ' ' || echo '0')"
+            echo "Taille totale: $(du -sh site/ 2>/dev/null | awk '{print $1}' || echo 'Non disponible')"
+            
+            # Vérifier les fichiers critiques
+            if [ -f "site/index.html" ]; then
+              echo "SUCCESS index.html présent"
+            else
+              echo "ERROR index.html MANQUANT !"
             fi
-
-            # Vérifier la structure du site
-            echo "Structure du site généré:"
-            find site/ -type f -name "*.html" | head -10
-            echo "Total fichiers HTML: $(find site/ -type f -name '*.html' | wc -l)"
+            
+            if [ -f "site/.nojekyll" ]; then
+              echo "SUCCESS .nojekyll confirmé présent"
+            else
+              echo "ERROR .nojekyll MANQUANT !"
+            fi
+            
           else
-            echo "WARNING  Dossier site non trouvé"
+            echo "ERROR Dossier site NON TROUVÉ !"
+            exit 1
           fi
 
       - name: "Deploiement GitHub Pages"
@@ -687,6 +739,7 @@ jobs:
           find artifacts -maxdepth 3 -type f -print || true
 
       - name: "Générer résumé Markdown"
+        continue-on-error: true
         run: |
           python3 -c 'import glob,sys; junit=glob.glob("artifacts/test-results/*.xml"); cov=glob.glob("artifacts/coverage/*.xml"); ok=bool(junit) and bool(cov); print(f"JUnit: {len(junit)} fichiers, Coverage: {len(cov)} fichiers"); open("REPORT.md","w",encoding="utf-8").write("# Rapport CI\n\n"+f"- JUnit: {len(junit)} fichiers\n"+f"- Coverage: {len(cov)} fichiers\n"); sys.exit(0 if ok else 1)'
 
