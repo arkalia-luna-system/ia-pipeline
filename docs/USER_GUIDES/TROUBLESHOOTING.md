@@ -41,7 +41,7 @@ PermissionError: [Errno 13] Permission denied
 chmod +x athalia_unified.py
 
 # Ou exécuter avec sudo si nécessaire
-sudo python bin/athalia_unified.py --help
+sudo python bin/core/athalia_unified.py --help
 ```
 
 ### **❌ Erreur de Configuration**
@@ -68,10 +68,10 @@ cp config/athalia_config.yaml.example config/athalia_config.yaml
 python -c "import athalia_core; print('✅ Import réussi')"
 
 # Vérifier la CLI
-python bin/athalia_unified.py --help
+python bin/core/athalia_unified.py --help
 
 # Tester un audit rapide
-python bin/athalia_unified.py . --action audit --dry-run
+python bin/core/athalia_unified.py . --action audit --dry-run
 ```
 
 ### **2. Vérification des Dépendances**

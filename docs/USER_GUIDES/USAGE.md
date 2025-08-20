@@ -17,29 +17,29 @@ Ce guide explique comment utiliser Athalia, le plateforme d'automatisation DevOp
 
 ```bash
 # Audit complet d'un projet
-python bin/athalia_unified.py /chemin/vers/projet --action audit
+python bin/core/athalia_unified.py /chemin/vers/projet --action audit
 
 # Industrialisation complète
-python bin/athalia_unified.py /chemin/vers/projet --action complete
+python bin/core/athalia_unified.py /chemin/vers/projet --action complete
 
 # Dashboard interactif
-python bin/athalia_unified.py /chemin/vers/projet --action dashboard
+python bin/core/athalia_unified.py /chemin/vers/projet --action dashboard
 
 # Mode simulation (dry-run)
-python bin/athalia_unified.py /chemin/vers/projet --action audit --dry-run
+python bin/core/athalia_unified.py /chemin/vers/projet --action audit --dry-run
 ```
 
 ### **Options Avancées**
 
 ```bash
 # Audit avec détails
-python bin/athalia_unified.py /chemin/vers/projet --action audit --verbose
+python bin/core/athalia_unified.py /chemin/vers/projet --action audit --verbose
 
 # Industrialisation sans audit préalable
-python bin/athalia_unified.py /chemin/vers/projet --action complete --no-audit
+python bin/core/athalia_unified.py /chemin/vers/projet --action complete --no-audit
 
 # Dashboard avec profil utilisateur
-python bin/athalia_unified.py /chemin/vers/projet --action dashboard --utilisateur dev
+python bin/core/athalia_unified.py /chemin/vers/projet --action dashboard --utilisateur dev
 ```
 
 ---

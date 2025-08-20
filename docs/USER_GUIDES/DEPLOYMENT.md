@@ -23,7 +23,7 @@ source .venv/bin/activate  # Sur macOS/Linux
 pip install -r requirements.txt
 
 # 4. Vérifier l'installation
-python3 athalia_core/ready_check.py
+python3 athalia_core/utilities/ready_check.py
 ```
 
 ### Lancement des Services
@@ -32,7 +32,7 @@ python3 athalia_core/ready_check.py
 python3 athalia_core/main.py
 
 # Orchestrateur unifié
-python3 bin/athalia_unified.py --help
+python3 bin/core/athalia_unified.py --help
 
 # Dashboard Streamlit
 streamlit run athalia_core/dashboard.py

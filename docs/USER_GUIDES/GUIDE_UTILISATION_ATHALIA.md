@@ -31,14 +31,13 @@ pip install -r requirements.txt
 ### **2. Génération de Projet Simple**
 
 ```python
-from athalia_core.generation import generate_blueprint_mock, generate_project
+from athalia_core.utilities.generation_simple import generate_blueprint_mock
 
 # Créer un blueprint pour votre projet
 blueprint = generate_blueprint_mock("API REST pour gestion d'utilisateurs")
 
-# Générer le projet
-project_path = generate_project(blueprint, "./mon-projet")
-print(f"Projet créé: {project_path}")
+# Afficher le blueprint généré
+print(f"Blueprint créé: {blueprint}")
 ```
 
 ---
@@ -47,32 +46,37 @@ print(f"Projet créé: {project_path}")
 
 ### **🤖 API REST**
 ```python
+from athalia_core.utilities.generation_simple import generate_blueprint_mock
 blueprint = generate_blueprint_mock("API REST pour gestion de produits")
-# Génère: FastAPI, Pydantic, SQLAlchemy, authentification
+# Génère: Blueprint avec FastAPI, Pydantic, SQLAlchemy, authentification
 ```
 
 ### **🌐 Application Web**
 ```python
+from athalia_core.utilities.generation_simple import generate_blueprint_mock
 blueprint = generate_blueprint_mock("Application web pour gestion de tâches")
-# Génère: Flask, SQLAlchemy, templates, authentification
+# Génère: Blueprint avec Flask, SQLAlchemy, templates, authentification
 ```
 
 ### **📊 Traitement de Données**
 ```python
+from athalia_core.utilities.generation_simple import generate_blueprint_mock
 blueprint = generate_blueprint_mock("Application d'analyse de données")
-# Génère: Pandas, NumPy, Matplotlib, Jupyter
+# Génère: Blueprint avec Pandas, NumPy, Matplotlib, Jupyter
 ```
 
 ### **🧠 Intelligence Artificielle**
 ```python
+from athalia_core.utilities.generation_simple import generate_blueprint_mock
 blueprint = generate_blueprint_mock("Système de reconnaissance d'images")
-# Génère: PyTorch, Transformers, scikit-learn
+# Génère: Blueprint avec PyTorch, Transformers, scikit-learn
 ```
 
 ### **🤖 Robotique**
 ```python
+from athalia_core.utilities.generation_simple import generate_blueprint_mock
 blueprint = generate_blueprint_mock("Contrôle de robot mobile")
-# Génère: ROS2, OpenCV, contrôle moteurs
+# Génère: Blueprint avec ROS2, OpenCV, contrôle moteurs
 ```
 
 ---

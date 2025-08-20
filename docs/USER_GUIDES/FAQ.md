@@ -96,7 +96,7 @@ flowchart LR
 
 ```bash
 # Audit en simulation pour vérifier la configuration
-python bin/athalia_unified.py . --action audit --dry-run
+python bin/core/athalia_unified.py . --action audit --dry-run
 
 # Industrialisation complète pour configurer automatiquement
 python bin/athalia_unified.py . --action complete
