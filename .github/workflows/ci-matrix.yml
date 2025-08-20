@@ -750,6 +750,7 @@ jobs:
           path: REPORT.md
 
       - name: "Génération Rapport Final"
+        continue-on-error: true
         run: |
           echo "RAPPORT FINAL CI/CD ATHALIA"
           echo "==============================="
@@ -805,20 +806,20 @@ jobs:
             echo "ERROR Documentation: ÉCHEC"
           fi
 
-          # Évaluation globale
+          # Évaluation globale simplifiée
           echo ""
           echo "ÉVALUATION GLOBALE:"
           success_count=0
           total_jobs=6
 
-          [[ "${{ needs.validate.result }}" == "success" ]] && ((success_count++))
-          [[ "${{ needs.test-main.result }}" == "success" ]] && ((success_count++))
-          [[ "${{ needs.test-cross-platform.result }}" == "success" ]] && ((success_count++))
-          [[ "${{ needs.security-audit.result }}" == "success" ]] && ((success_count++))
-          [[ "${{ needs.build-package.result }}" == "success" ]] && ((success_count++))
-          [[ "${{ needs.documentation.result }}" == "success" ]] && ((success_count++))
+          [ "${{ needs.validate.result }}" == "success" ] && success_count=$((success_count + 1)) || true
+          [ "${{ needs.test-main.result }}" == "success" ] && success_count=$((success_count + 1)) || true
+          [ "${{ needs.test-cross-platform.result }}" == "success" ] && success_count=$((success_count + 1)) || true
+          [ "${{ needs.security-audit.result }}" == "success" ] && success_count=$((success_count + 1)) || true
+          [ "${{ needs.build-package.result }}" == "success" ] && success_count=$((success_count + 1)) || true
+          [ "${{ needs.documentation.result }}" == "success" ] && success_count=$((success_count + 1)) || true
 
-          success_rate=$((success_count * 100 / total_jobs))
+          success_rate=$((success_count * 100 / total_jobs)) || success_rate=0
           echo "Metriques Taux de succès: $success_count/$total_jobs ($success_rate%)"
 
           if [ $success_rate -ge 80 ]; then
@@ -828,3 +829,5 @@ jobs:
           else
             echo "WARNING  ATTENTION - Pipeline CI/CD problématique"
           fi
+
+          echo "RAPPORT FINAL TERMINÉ AVEC SUCCÈS !"
