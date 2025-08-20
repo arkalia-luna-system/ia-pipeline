@@ -1,32 +1,33 @@
 ---
-name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: 'bug'
+name: 🐛 Bug Report
+about: Créer un rapport pour nous aider à améliorer Athalia
+title: '[BUG] '
+labels: ['bug', 'needs-triage']
 assignees: ''
-
 ---
 
-**Describe the bug**
-A clear and description of what the bug is.
+## 🐛 Description du Bug
+<!-- Description claire et concise du problème -->
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+## 🔄 Étapes pour reproduire
+1. Aller à '...'
+2. Cliquer sur '....'
+3. Faire défiler jusqu'à '....'
+4. Voir l'erreur
 
-**Expected behavior**
-A clear description of what you expected to happen.
+## ✅ Comportement attendu
+<!-- Description claire de ce qui devrait se passer -->
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+## 📱 Environnement
+- **OS**: [ex: macOS, Windows, Linux]
+- **Python**: [ex: 3.10, 3.11, 3.12]
+- **Version Athalia**: [ex: develop, main]
+- **Navigateur**: [ex: Chrome, Safari, Firefox]
 
-**Environment (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser: [e.g. chrome, safari]
- - Version: [e.g. 22]
+## 📋 Informations supplémentaires
+<!-- Contexte, captures d'écran, logs, etc. -->
 
-**Additional context**
-Add any other context about the problem here.
+## 🔍 Logs
+```
+<!-- Collez les logs ici -->
+```
