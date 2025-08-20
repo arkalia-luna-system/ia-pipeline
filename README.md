@@ -85,7 +85,7 @@ graph TB
 ```bash
 # 1️⃣ Clone repository
 git clone https://github.com/arkalia-luna-system/ia-pipeline.git
-cd athalia-dev-setup
+cd ia-pipeline
 
 # 2️⃣ Setup Python environment
 python -m venv .venv
