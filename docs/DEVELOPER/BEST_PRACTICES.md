@@ -23,7 +23,7 @@ python3 athalia_core/core/performance_analyzer.py --project /chemin/projet
 python3 bin/athalia_unified.py /chemin/projet --action dashboard --utilisateur nom
 
 # Analyse de performance complète
-python3 athalia_core/core/performance_analyzer.py --full-analysis --output performance_report.json
+python3 athalia_core/core/performance_analyzer.py /chemin/projet --output performance_report.json
 ```
 
 ### **Dashboard et Feedback**
@@ -268,7 +268,7 @@ python3 athalia_core/core/cache_manager.py --optimize --strategy aggressive
 python3 athalia_core/core/performance_analyzer.py --monitor --real-time
 
 # Benchmark des modules
-python3 athalia_core/core/performance_analyzer.py --benchmark --modules all
+python3 athalia_core/core/performance_analyzer.py /chemin/projet --output benchmark_modules_report.json
 ```
 
 ### **Métriques de Performance**

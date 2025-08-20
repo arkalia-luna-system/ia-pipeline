@@ -45,13 +45,13 @@ python3 -m pytest tests/integration/test_workflow.py -v
 ### **3. Tests de Performance**
 ```bash
 # Benchmarks de performance
-python3 athalia_core/core/performance_analyzer.py --benchmark
+python3 athalia_core/core/performance_analyzer.py /chemin/projet --output benchmark_report.json
 
 # Tests de charge
 python3 -m pytest tests/performance/ --verbose
 
 # Tests de mémoire
-python3 athalia_core/core/performance_analyzer.py --memory-test
+python3 athalia_core/core/performance_analyzer.py /chemin/projet --output memory_report.json
 ```
 
 ### **4. Tests de Sécurité**
@@ -192,7 +192,7 @@ python3 athalia_core/automation/auto_tester.py --report --output reports/
 python3 -m pytest tests/ --cov=athalia_core --cov-report=html --cov-report=term
 
 # Rapport de performance
-python3 athalia_core/core/performance_analyzer.py --report
+python3 athalia_core/core/performance_analyzer.py /chemin/projet --output performance_report.json
 ```
 
 ---
@@ -232,7 +232,7 @@ python3 athalia_core/automation/auto_tester.py --pipeline
 python3 athalia_core/automation/auto_tester.py --regression
 
 # Tests de performance automatiques
-python3 athalia_core/core/performance_analyzer.py --auto-benchmark
+python3 athalia_core/core/performance_analyzer.py /chemin/projet --output auto_benchmark_report.json
 ```
 
 ---

@@ -302,7 +302,7 @@ Votre installation d'Athalia est maintenant complète et prête pour la producti
 python athalia_core/main.py --test-complete
 
 # Vérifier les métriques
-python athalia_core/core/performance_analyzer.py --report
+python athalia_core/core/performance_analyzer.py /chemin/projet --output performance_report.json
 ```
 
 **📅 Dernière mise à jour :** 2 Août 2025  
