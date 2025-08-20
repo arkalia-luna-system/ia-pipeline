@@ -5,40 +5,40 @@
 ### 1. **Audit Complet d'un Projet**
 ```bash
 # Audit complet avec score et recommandations
-python3 athalia_robotics_integration.py /path/to/project audit
+python3 athalia_core/robotics/reachy_auditor.py /path/to/project
 
 # Ou plus simple
-python3 athalia_robotics_integration.py . audit
+python3 athalia_core/robotics/reachy_auditor.py .
 ```
 
 ### 2. **Validation ROS2**
 ```bash
 # Vérifier la structure ROS2
-python3 athalia_robotics_integration.py . ros2
+python3 athalia_core/robotics/ros2_validator.py .
 ```
 
 ### 3. **Gestion Docker**
 ```bash
 # Valider la configuration Docker
-python3 athalia_robotics_integration.py . docker
+python3 athalia_core/robotics/docker_robotics.py .
 ```
 
 ### 4. **Analyse Rust**
 ```bash
 # Analyser les projets Rust
-python3 athalia_robotics_integration.py . rust
+python3 athalia_core/robotics/rust_analyzer.py .
 ```
 
 ### 5. **CI/CD Robotique**
 ```bash
 # Tester le pipeline CI/CD
-python3 athalia_robotics_integration.py . ci
+python3 athalia_core/automation/robotics_ci.py .
 ```
 
 ### 6. **Tout en Une Fois**
 ```bash
 # Exécuter tous les modules
-python3 athalia_robotics_integration.py . all
+python3 bin/core/athalia_unified.py . --action audit
 ```
 
 ## 🎯 Cas d'Usage Concrets

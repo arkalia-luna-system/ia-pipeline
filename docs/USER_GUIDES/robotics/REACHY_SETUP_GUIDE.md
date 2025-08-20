@@ -108,11 +108,11 @@ echo "source ~/.cargo/env" >> ~/.bashrc  # ou ~/.zshrc pour macOS
 git clone https://github.com/arkalia-luna-system/ia-pipeline.git
 cd ia-pipeline
 
-# Installation des dépendances robotiques
-pip install -r config/requirements_robotics.txt
+# Installation des dépendances Python
+pip install -r requirements.txt
 
 # Vérification de l'installation
-python3 athalia_robotics_integration.py . audit
+python3 athalia_core/robotics/reachy_auditor.py .
 ```
 
 ## 🔧 **CONFIGURATION POUR REACHY**
@@ -150,13 +150,13 @@ source install/setup.bash
 ### **3. Test avec Athalia**
 ```bash
 # Audit complet du projet Reachy
-python3 /path/to/athalia/athalia_robotics_integration.py . audit
+python3 /path/to/athalia/athalia_core/robotics/reachy_auditor.py .
 
 # Audit spécifique ROS2
-python3 /path/to/athalia/athalia_robotics_integration.py . ros2
+python3 /path/to/athalia/athalia_core/robotics/ros2_validator.py .
 
 # Audit Docker
-python3 /path/to/athalia/athalia_robotics_integration.py . docker
+python3 /path/to/athalia/athalia_core/robotics/docker_robotics.py .
 ```
 
 ## 🧪 **VALIDATION DE L'INSTALLATION**
@@ -188,7 +188,7 @@ cargo --version
 ### **Test 4 : Athalia Robotique**
 ```bash
 # Test complet
-python3 athalia_robotics_integration.py . all
+python3 bin/core/athalia_unified.py . --action audit
 
 # Résultat attendu : Score > 80/100
 ```
@@ -201,12 +201,12 @@ python3 athalia_robotics_integration.py . all
 git checkout -b feature/amélioration-robotique
 
 # 2. Audit avec Athalia
-python3 athalia_robotics_integration.py . audit
+python3 athalia_core/robotics/reachy_auditor.py .
 
 # 3. Analyser les recommandations
 # 4. Implémenter les améliorations
 # 5. Tester avec Athalia
-python3 athalia_robotics_integration.py . all
+python3 bin/core/athalia_unified.py . --action audit
 
 # 6. Commit et push
 git add .
@@ -246,8 +246,8 @@ source ~/.cargo/env
 ### **Problème : Athalia ne fonctionne pas**
 ```bash
 # Solution : Vérifier les dépendances
-pip install -r config/requirements_robotics.txt
-python3 -c "import yaml, toml, lxml; print('OK')"
+pip install -r requirements.txt
+python3 -c "import yaml; print('OK')"
 ```
 
 ## 📊 **MÉTRIQUES DE SUCCÈS**

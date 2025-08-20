@@ -24,8 +24,8 @@
 - **Tests de compatibilité** avec projets non-robotiques
 
 #### **4. Scripts d'Intégration**
-- **`athalia_robotics_integration.py`** : CLI flexible
-- **`demo_robotics.py`** : Démonstration interactive
+- **`athalia_unified.py`** : CLI principale
+- **Modules robotiques** intégrés dans athalia_core
 - **Alias shell** pour utilisation facile
 
 #### **5. Documentation Complète**
@@ -38,7 +38,7 @@
 #### **Audit Reachy Complet**
 ```bash
 # Audit complet d'un projet
-python3 athalia_robotics_integration.py . audit
+python3 athalia_core/robotics/reachy_auditor.py .
 
 # Résultat : Score 100/100 ✅
 # - ROS2 Valid: True
@@ -81,7 +81,7 @@ git clone https://github.com/pollen-robotics/reachy_2023
 cd reachy_2023
 
 # 2. Audit avec Athalia
-python3 /path/to/athalia/athalia_robotics_integration.py . audit
+python3 /path/to/athalia/athalia_core/robotics/reachy_auditor.py .
 
 # 3. Analyser les résultats et proposer des améliorations
 ```
@@ -89,13 +89,13 @@ python3 /path/to/athalia/athalia_robotics_integration.py . audit
 #### **Pour Ton Propre Projet Robotique**
 ```bash
 # Setup automatique
-python3 demo_robotics.py
+python3 bin/core/athalia_unified.py . --action setup
 
 # Audit régulier
-python3 athalia_robotics_integration.py . audit
+python3 athalia_core/robotics/reachy_auditor.py .
 
 # Intégration complète avec Athalia
-python3 athalia_unified.py --robotics
+python3 bin/core/athalia_unified.py . --action audit
 ```
 
 ### **📊 MÉTRIQUES DE QUALITÉ :**

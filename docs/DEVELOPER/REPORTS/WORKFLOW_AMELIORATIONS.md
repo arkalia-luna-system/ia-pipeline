@@ -64,7 +64,7 @@ git commit --no-verify -m "message urgent"
 ```
 
 ### 3. Script de push intelligent
-**Fichier** : `bin/ath-push`
+**Fichier** : `bin/workflow/ath-workflow`
 
 **Fonctionnalités** :
 - 🔍 Vérification de l'état Git
@@ -76,19 +76,16 @@ git commit --no-verify -m "message urgent"
 **Usage** :
 ```bash
 # Push avec vérifications complètes
-./bin/ath-push
+./bin/workflow/ath-workflow --action push
 
 # Mode simulation
-./bin/ath-push --dry-run
+./bin/workflow/ath-workflow --action push --dry-run
 
-# Force le push même avec des erreurs
-./bin/ath-push --force
+# Workflow complet
+./bin/workflow/ath-workflow-complete
 
-# Ignorer les vérifications (plus rapide)
-./bin/ath-push --skip-checks
-
-# Spécifier la branche
-./bin/ath-push --branch feature/nouvelle-fonction
+# Push manuel simple
+git push origin develop
 ```
 
 ### 4. Workflow complet orchestré
@@ -150,7 +147,7 @@ git add .
 git commit -m "feat: nouvelle fonctionnalité"
 
 # 3. Push avec vérifications
-./bin/ath-push
+git push origin develop
 ```
 
 ### Développement de feature
@@ -162,7 +159,7 @@ git checkout -b feature/nouvelle-fonction
 ./bin/ath-workflow --mode feature --auto-commit
 
 # 3. Push de la feature
-./bin/ath-push --branch feature/nouvelle-fonction
+git push origin feature/nouvelle-fonction
 ```
 
 ### Release

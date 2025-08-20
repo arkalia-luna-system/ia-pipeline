@@ -20,7 +20,7 @@ Ce guide présente les meilleures pratiques pour le développement, le déploiem
 python3 athalia_core/core/performance_analyzer.py /chemin/projet
 
 # Monitorer les performances en temps réel
-python3 bin/athalia_unified.py /chemin/projet --action dashboard --utilisateur nom
+python3 bin/core/athalia_unified.py /chemin/projet --action dashboard --utilisateur nom
 
 # Analyse de performance complète
 python3 athalia_core/core/performance_analyzer.py /chemin/projet --output performance_report.json
@@ -29,7 +29,7 @@ python3 athalia_core/core/performance_analyzer.py /chemin/projet --output perfor
 ### **Dashboard et Feedback**
 ```bash
 # Utiliser le dashboard pour monitorer les performances
-python3 bin/athalia_unified.py /chemin/projet --action dashboard --utilisateur athalia
+python3 bin/core/athalia_unified.py /chemin/projet --action dashboard --utilisateur athalia
 
 # Collecter le feedback utilisateur
 python3 athalia_core/analytics/advanced_analytics.py /chemin/projet
@@ -97,7 +97,7 @@ python3 tools/maintenance/validate_documentation.py
 ### **Templates et UX**
 ```bash
 # Utiliser les templates de feedback utilisateur
-# python3 athalia_core/templates/feedback_template.py --project /chemin/projet  # Module non implémenté
+# python3 athalia_core/templates/feedback_template.py /chemin/projet  # Module non implémenté
 
 # Améliorer l'UX avec les profils utilisateur
 python3 bin/athalia_unified.py /chemin/projet --action dashboard --utilisateur nom
@@ -138,7 +138,7 @@ python3 athalia_core/core/performance_analyzer.py /chemin/projet --profile llm -
 python3 athalia_core/audit/security_auditor.py /chemin/projet --output security_report.json
 
 # Validation des permissions
-python3 athalia_core/audit/security_auditor.py --validate-permissions --strict
+# python3 athalia_core/audit/security_auditor.py --validate-permissions --strict  # Options non disponibles
 ```
 
 ---

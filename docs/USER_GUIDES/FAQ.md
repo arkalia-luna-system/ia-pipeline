@@ -99,7 +99,7 @@ flowchart LR
 python bin/core/athalia_unified.py . --action audit --dry-run
 
 # Industrialisation complète pour configurer automatiquement
-python bin/athalia_unified.py . --action complete
+python bin/core/athalia_unified.py . --action complete
 
 # Vérification des modules de qualité (NOUVEAU)
 python -m pytest tests/unit/quality/ -v
@@ -110,10 +110,10 @@ python -m pytest tests/unit/quality/ -v
 
 ```bash
 # Français
-# python bin/athalia_unified.py . --action audit --lang fr  # Options non disponibles
+# python bin/core/athalia_unified.py . --action audit --lang fr  # Options non disponibles
 
 # Anglais
-# python bin/athalia_unified.py . --action audit --lang en  # Options non disponibles
+# python bin/core/athalia_unified.py . --action audit --lang en  # Options non disponibles
 
 # Vérifier les langues disponibles
 ls athalia_core/i18n/
@@ -143,13 +143,13 @@ flowchart TD
 
 ```bash
 # Audit complet avec modules d'analyse IA
-python bin/athalia_unified.py /chemin/vers/projet --action audit
+python bin/core/athalia_unified.py /chemin/vers/projet --action audit
 
 # Audit en simulation (sans modification)
-python bin/athalia_unified.py /chemin/vers/projet --action audit --dry-run
+python bin/core/athalia_unified.py /chemin/vers/projet --action audit --dry-run
 
 # Audit avec détails et modules de qualité
-python bin/athalia_unified.py /chemin/vers/projet --action audit --verbose
+python bin/core/athalia_unified.py /chemin/vers/projet --action audit --verbose
 
 # Test des modules d'analyse
 python -c "from athalia_core.analysis.intelligent_analyzer import IntelligentAnalyzer; print('✅ Module d\'analyse disponible')"
@@ -160,13 +160,13 @@ python -c "from athalia_core.analysis.intelligent_analyzer import IntelligentAna
 
 ```bash
 # Correction automatique avec modules de qualité
-python bin/athalia_unified.py /chemin/vers/projet --action fix
+python bin/core/athalia_unified.py /chemin/vers/projet --action fix
 
 # Correction en simulation
-python bin/athalia_unified.py /chemin/vers/projet --action fix --dry-run
+python bin/core/athalia_unified.py /chemin/vers/projet --action fix --dry-run
 
 # Correction avec auto-fix et modules de qualité
-python bin/athalia_unified.py /chemin/vers/projet --action fix --auto-fix
+python bin/core/athalia_unified.py /chemin/vers/projet --action fix --auto-fix
 
 # Test du module de correction
 python -c "from athalia_core.quality.correction_optimizer import CorrectionOptimizer; print('✅ Module de correction disponible')"
@@ -198,13 +198,13 @@ sequenceDiagram
 
 ```bash
 # Dashboard standard avec modules de qualité
-python bin/athalia_unified.py /chemin/vers/projet --action dashboard
+python bin/core/athalia_unified.py /chemin/vers/projet --action dashboard
 
 # Dashboard avec utilisateur spécifique
-python bin/athalia_unified.py /chemin/vers/projet --action dashboard --utilisateur nom_utilisateur
+python bin/core/athalia_unified.py /chemin/vers/projet --action dashboard --utilisateur nom_utilisateur
 
 # Dashboard avec métriques de qualité (NOUVEAU)
-python bin/athalia_unified.py /chemin/vers/projet --action dashboard --quality-metrics
+# python bin/core/athalia_unified.py /chemin/vers/projet --action dashboard # --quality-metrics  # Option non disponible  # Option non disponible
 ```
 
 ### **Q: Le dashboard ne démarre pas, que faire ?**
@@ -215,7 +215,7 @@ python bin/athalia_unified.py /chemin/vers/projet --action dashboard --quality-m
 lsof -ti:8501 | xargs kill -9
 
 # Relancer le dashboard
-python bin/athalia_unified.py . --action dashboard
+python bin/core/athalia_unified.py . --action dashboard
 
 # Diagnostic avec modules de qualité
 python -c "
@@ -262,13 +262,13 @@ graph LR
 
 ```bash
 # Industrialisation complète avec tous les modules
-python bin/athalia_unified.py /chemin/vers/projet --action complete
+python bin/core/athalia_unified.py /chemin/vers/projet --action complete
 
 # Industrialisation sans audit
-python bin/athalia_unified.py /chemin/vers/projet --action complete --no-audit
+python bin/core/athalia_unified.py /chemin/vers/projet --action complete --no-audit
 
 # Industrialisation sans nettoyage
-python bin/athalia_unified.py /chemin/vers/projet --action complete --no-clean
+python bin/core/athalia_unified.py /chemin/vers/projet --action complete --no-clean
 
 # Test des modules d'industrialisation
 python -c "
@@ -283,13 +283,13 @@ print('✅ Modules d\'industrialisation disponibles')
 
 ```bash
 # Scanner le projet avec analyse IA
-python bin/athalia_unified.py /chemin/vers/projet --scan
+python bin/core/athalia_unified.py /chemin/vers/projet --scan
 
 # Scanner avec modules de qualité
-python bin/athalia_unified.py /chemin/vers/projet --scan --quality
+# python bin/core/athalia_unified.py /chemin/vers/projet # --scan --quality  # Option non disponible  # Option non disponible
 
 # Scanner avec classification automatique
-python bin/athalia_unified.py /chemin/vers/projet --scan --classify
+# python bin/core/athalia_unified.py /chemin/vers/projet # --scan --classify  # Option non disponible  # Option non disponible
 ```
 
 ---
@@ -301,7 +301,7 @@ python bin/athalia_unified.py /chemin/vers/projet --scan --classify
 
 ```bash
 # Mode détaillé pour diagnostiquer
-python bin/athalia_unified.py . --action audit --verbose --dry-run
+python bin/core/athalia_unified.py . --action audit --verbose --dry-run
 
 # Diagnostic avec modules de qualité
 python -m pytest tests/unit/quality/ --tb=short -v
@@ -355,7 +355,7 @@ print('✅ Installation des modules vérifiée')
 "
 
 # Vérifier l'installation complète
-python bin/athalia_unified.py . --action audit --dry-run
+python bin/core/athalia_unified.py . --action audit --dry-run
 ```
 
 ---
@@ -367,7 +367,7 @@ python bin/athalia_unified.py . --action audit --dry-run
 
 ```bash
 # Audit de sécurité complet
-python bin/athalia_unified.py /chemin/vers/projet --action audit --verbose
+python bin/core/athalia_unified.py /chemin/vers/projet --action audit --verbose
 
 # Validation de sécurité avec modules spécialisés
 python -c "
@@ -389,10 +389,10 @@ python -m pytest tests/unit/security/ -v
 
 ```bash
 # Audit avec optimisation et modules de qualité
-python bin/athalia_unified.py /chemin/vers/projet --action audit --dry-run
+python bin/core/athalia_unified.py /chemin/vers/projet --action audit --dry-run
 
 # Industrialisation optimisée
-python bin/athalia_unified.py /chemin/vers/projet --action complete --no-audit
+python bin/core/athalia_unified.py /chemin/vers/projet --action complete --no-audit
 
 # Analyse de performance avec modules spécialisés
 python -c "
@@ -459,10 +459,10 @@ print('🤖 Module d\'auto-correction ML disponible')
 
 ```bash
 # Rapport JSON avec métriques de qualité
-python bin/athalia_unified.py . --action audit > rapport.json
+python bin/core/athalia_unified.py . --action audit > rapport.json
 
 # Rapport CSV avec données structurées
-python bin/athalia_unified.py . --action audit | grep -v "INFO" > rapport.csv
+python bin/core/athalia_unified.py . --action audit | grep -v "INFO" > rapport.csv
 
 # Rapport de qualité détaillé (NOUVEAU)
 python -c "
@@ -488,7 +488,7 @@ print('📊 Rapport de qualité généré')
 pip install -r requirements.txt --upgrade
 
 # Vérifier la mise à jour
-python bin/athalia_unified.py . --action audit --dry-run
+python bin/core/athalia_unified.py . --action audit --dry-run
 
 # Vérifier l'état des modules
 python -c "
@@ -517,7 +517,7 @@ rm -rf .mypy_cache/
 
 ```bash
 # Aide de la commande principale
-python bin/athalia_unified.py --help
+python bin/core/athalia_unified.py --help
 
 # Aide des modules spécifiques
 python -c "
