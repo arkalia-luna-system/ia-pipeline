@@ -17,7 +17,7 @@ Ce guide présente les meilleures pratiques pour le développement, le déploiem
 ### **Benchmarks et Performance**
 ```bash
 # Lancer les benchmarks sur une machine dédiée
-python3 athalia_core/core/performance_analyzer.py --project /chemin/projet
+python3 athalia_core/core/performance_analyzer.py /chemin/projet
 
 # Monitorer les performances en temps réel
 python3 bin/athalia_unified.py /chemin/projet --action dashboard --utilisateur nom
@@ -129,13 +129,13 @@ docker build --no-cache --target production -t athalia:production .
 ### **Sécurité et Monitoring**
 ```bash
 # Sécuriser les accès (authentification, HTTPS)
-python3 athalia_core/audit/security_auditor.py --project /chemin/projet
+python3 athalia_core/audit/security_auditor.py /chemin/projet
 
 # Monitorer la RAM/CPU pour les LLM locaux
 python3 athalia_core/core/performance_analyzer.py --monitor --llm
 
 # Audit de sécurité complet
-python3 athalia_core/audit/security_auditor.py --full-audit --output security_report.json
+python3 athalia_core/audit/security_auditor.py /chemin/projet --output security_report.json
 
 # Validation des permissions
 python3 athalia_core/audit/security_auditor.py --validate-permissions --strict

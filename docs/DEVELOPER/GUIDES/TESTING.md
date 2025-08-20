@@ -57,7 +57,7 @@ python3 athalia_core/core/performance_analyzer.py /chemin/projet --output memory
 ### **4. Tests de Sécurité**
 ```bash
 # Audit de sécurité
-python3 athalia_core/audit/security_auditor.py --project /chemin/projet
+python3 athalia_core/audit/security_auditor.py /chemin/projet
 
 # Tests de vulnérabilités
 python3 -m pytest tests/security/ --verbose
