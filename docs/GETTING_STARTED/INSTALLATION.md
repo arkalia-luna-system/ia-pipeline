@@ -204,7 +204,7 @@ python athalia_core/main.py
 
 # Avec options
 python athalia_core/core/main.py
-python athalia_core/main.py --dry-run
+# python athalia_core/core/main.py --dry-run  # Option non disponible
 # python athalia_core/core/main.py --verbose  # Option non disponible
 ```
 

@@ -339,10 +339,10 @@ flowchart LR
 
 ```bash
 # Nettoyage automatique complet
-python -m athalia_core.main --action cleanup --auto
+# python -m athalia_core.main --action cleanup --auto  # Options non disponibles
 
 # Nettoyage ciblé
-python -m athalia_core.main --action cleanup --target cache --force
+# python -m athalia_core.main --action cleanup --target cache --force  # Options non disponibles
 ```
 
 ### **📊 Rapport de Nettoyage**
@@ -455,7 +455,7 @@ sudo pip install -r requirements.txt
 1. **Localiser** le dossier des templates : `athalia_core/templates/`
 2. **Modifier** ou **créer** de nouveaux templates
 3. **Redémarrer** Athalia pour appliquer les changements
-4. **Tester** avec `--action generate --template [nom-template]`
+4. **Tester** avec `python athalia_core/core/main.py` (menu interactif)
 </details>
 
 ---
