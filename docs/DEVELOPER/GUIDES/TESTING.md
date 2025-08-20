@@ -63,7 +63,7 @@ python3 athalia_core/audit/security_auditor.py /chemin/projet
 python3 -m pytest tests/security/ --verbose
 
 # Tests de validation
-python3 athalia_core/validation/plugins_validator.py --test-all
+python3 -c "from athalia_core.validation.plugins_validator import validate_all_plugins; print(validate_all_plugins())"
 ```
 
 ---
@@ -226,10 +226,10 @@ jobs:
 ### **Tests Automatisés**
 ```bash
 # Pipeline de tests
-python3 athalia_core/automation/auto_tester.py --pipeline
+python3 athalia_core/automation/auto_tester.py /chemin/projet --run-tests
 
 # Tests de régression automatiques
-python3 athalia_core/automation/auto_tester.py --regression
+python3 athalia_core/automation/auto_tester.py /chemin/projet --run-tests --output regression_tests/
 
 # Tests de performance automatiques
 python3 athalia_core/core/performance_analyzer.py /chemin/projet --output auto_benchmark_report.json
