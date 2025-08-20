@@ -17,8 +17,8 @@ def quickcheck():
     modules_to_check = [
         "athalia_core",
         "athalia_core.core",
-        "athalia_core.security_validator",
-        "athalia_core.generation",
+        "athalia_core.validation.security_validator",
+        "athalia_core.automation.auto_cleaner",
     ]
 
     success_count = 0
