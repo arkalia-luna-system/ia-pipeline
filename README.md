@@ -6,7 +6,7 @@
 
 [![Python Version](https://img.shields.io/badge/python-3.10+-brightgreen.svg?style=flat-square)](https://python.org)
 [![CI Matrix](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/ci-matrix.yml/badge.svg)](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/ci-matrix.yml)
-[![Code Coverage](https://codecov.io/gh/arkalia-luna-system/ia-pipeline/branch/main/graph/badge.svg)](https://codecov.io/gh/arkalia-luna-system/ia-pipeline)
+[![Code Coverage (develop)](https://codecov.io/gh/arkalia-luna-system/ia-pipeline/branch/develop/graph/badge.svg)](https://app.codecov.io/gh/arkalia-luna-system/ia-pipeline/branch/develop)
 [![Security](https://img.shields.io/badge/security-bandit%2Bpip--audit%2Bsafety-brightgreen.svg?style=flat-square)](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/ci-matrix.yml)
 [![GitHub Pages](https://img.shields.io/badge/pages-available-brightgreen.svg?style=flat-square)](https://arkalia-luna-system.github.io/ia-pipeline)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
@@ -98,11 +98,15 @@ pip install -r requirements.txt
 # 4️⃣ Verify installation
 python -c "print('🎉 Athalia ready for use!')"
 
-# 5️⃣ Quick verification (one-liner)
-python -m athalia_core.demo.quickcheck || echo "✅ Basic installation verified"
+# 5️⃣ Quick verification (must PASS to print the line below)
+python -m athalia_core.demo.quickcheck && echo "✅ Basic installation verified"
 
-# 6️⃣ CLI Demo (optionnel)
+```
+
+### ▶️ **CLI Demo (optional)**
+```bash
 python bin/core/ath-demo.py --all
+```
 
 **Expected Output:**
 ```bash
@@ -210,28 +214,28 @@ pie title File Cleanup Categories
 ## 📁 **Project Structure**
 
 ```
-athalia/
-├── 🏗️ athalia_core/              # Core modules (93 files, 72,626 lines)
+.
+├── 🏗️ athalia_core/              # Core modules
 │   ├── unified_orchestrator.py   # Main coordinator
 │   ├── security_validator.py     # Security engine
 │   ├── generation.py             # Project generator
 │   ├── auto_cleaner.py          # Cleanup automation
 │   ├── auto_tester.py           # Test automation
 │   ├── auto_documenter.py       # Doc generator
-│   └── ...                      # 20 additional modules
+│   └── ...                      # Additional modules
 ├── 🧪 tests/                     # Test framework
 │   ├── unit/                    # Unit tests
 │   ├── integration/             # Integration tests
 │   ├── security/                # Security tests
 │   └── performance/             # Performance tests
-├── 📚 docs/                      # Documentation (256 files)
+├── 📚 docs/                      # Documentation
 │   ├── USER_GUIDES/             # User documentation
 │   ├── DEVELOPER/               # Developer guides
 │   ├── API/                     # API reference
 │   └── SPECIALIZED/             # Advanced topics
-├── 📊 dashboard/                 # Monitoring (99 HTML files)
-├── 🔧 scripts/                   # Utilities (38 scripts)
-└── ⚙️ bin/                       # CLI tools (9 Python scripts)
+├── 📊 dashboard/                 # Monitoring dashboards
+├── 🔧 scripts/                   # Utilities
+└── ⚙️ bin/                       # CLI tools
 ```
 
 ---
@@ -325,7 +329,7 @@ print(f"   Time taken: {result['cleanup_time']:.3f}s")
 
 </div>
 
-**Access:** Open any HTML file in your browser for immediate monitoring.
+**Access:** [Live Dashboards](https://arkalia-luna-system.github.io/ia-pipeline/dashboard/) | [GitHub Pages](https://arkalia-luna-system.github.io/ia-pipeline)
 
 ---
 
@@ -537,12 +541,10 @@ This project is released under the MIT License, allowing for both commercial and
 
 *Built with focus on security, reliability, and developer experience.*
 
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github)](https://github.com)
+[![GitHub](https://img.shields.io/badge/GitHub-arkalia--luna--system%2Fia--pipeline-black?style=for-the-badge&logo=github)](https://github.com/arkalia-luna-system/ia-pipeline)
 [![Documentation](https://img.shields.io/badge/Docs-Complete-blue?style=for-the-badge&logo=gitbook)](docs/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge&logo=open-source-initiative)](LICENSE)
 
-**Last Updated:** August 4, 2025 | **Version:** 11.0 | **Status:** Production Ready
+**Last Updated:** August 20, 2025 | **Version:** 11.0 | **Status:** Production Ready
 
 </div>
-# Test workflow CI/CD - Sun Aug 17 15:45:45 CEST 2025
-# Test déclenchement workflow
