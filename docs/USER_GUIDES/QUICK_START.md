@@ -455,7 +455,7 @@ sudo pip install -r requirements.txt
 1. **Localiser** le dossier des templates : `athalia_core/templates/`
 2. **Modifier** ou **créer** de nouveaux templates
 3. **Redémarrer** Athalia pour appliquer les changements
-4. **Tester** avec `python athalia_core/core/main.py` (menu interactif)
+4. **Tester** avec `python athalia_core/core/main.py /chemin/projet` (menu interactif)
 </details>
 
 ---

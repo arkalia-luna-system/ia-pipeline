@@ -109,7 +109,7 @@ python3 scripts/analyze_documentation_quality.py
 ### Scripts Utilitaires
 ```bash
 # Audit automatique
-python3 athalia_core/audit/audit.py /chemin/projet
+python3 athalia_core/audit/intelligent_auditor.py /chemin/projet
 
 # Nettoyage automatique
 python3 athalia_core/automation/auto_cleaner.py /chemin/projet

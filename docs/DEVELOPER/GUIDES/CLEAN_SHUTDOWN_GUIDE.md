@@ -57,7 +57,7 @@ ath-exit
 ath-bye
 
 # Ou directement
-./bin/ath-clean-shutdown
+./bin/cleanup/ath-clean-shutdown
 ```
 
 ## Étapes du Script
@@ -88,7 +88,7 @@ pgrep -f "python.*server\|uvicorn\|flask" | xargs kill -TERM
 
 ### 4. **Nettoyage macOS**
 ```bash
-./bin/ath-clean-macos-temp --execute
+./bin/cleanup/ath-clean-macos-temp --execute
 ```
 
 ### 5. **Nettoyage Python**
@@ -207,7 +207,7 @@ Fermeture: ✅ Propre
 
 ### Variables Modifiables
 
-Dans le script `bin/ath-clean-shutdown` :
+Dans le script `bin/cleanup/ath-clean-shutdown` :
 
 ```bash
 PROJECT_NAME="ia-pipeline"  # Nom du projet
@@ -259,7 +259,7 @@ pkill -9 -f "athalia"
 **Fichiers temporaires persistants :**
 ```bash
 # Nettoyage manuel
-./bin/ath-clean-macos-temp --execute
+./bin/cleanup/ath-clean-macos-temp --execute
 ```
 
 ### Logs

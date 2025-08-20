@@ -23,28 +23,28 @@ Le système de pré-commit CI/CD professionnel Athalia intègre les standards CI
 ### **1. Configuration Initiale**
 ```bash
 # Voir la configuration actuelle
-./bin/ath-ci-pro-config status
+./bin/core/ath-ci-pro-config status
 
 # Définir le niveau CI/CD pro
-./bin/ath-ci-pro-config set-level 2
+./bin/core/ath-ci-pro-config set-level 2
 
 # Activer le mode strict
-./bin/ath-ci-pro-config enable strict-mode
+./bin/core/ath-ci-pro-config enable strict-mode
 
 # Activer la correction automatique
-./bin/ath-ci-pro-config enable auto-fix
+./bin/core/ath-ci-pro-config enable auto-fix
 ```
 
 ### **2. Configuration Avancée**
 ```bash
 # Activer les vérifications de performance
-./bin/ath-ci-pro-config enable performance-checks
+./bin/core/ath-ci-pro-config enable performance-checks
 
 # Désactiver les vérifications de sécurité (non recommandé)
-./bin/ath-ci-pro-config disable security-checks
+./bin/core/ath-ci-pro-config disable security-checks
 
 # Remettre la configuration par défaut
-./bin/ath-ci-pro-config reset
+./bin/core/ath-ci-pro-config reset
 ```
 
 ## 🚀 **Utilisation**
@@ -67,31 +67,31 @@ git commit -m "feat: nouvelle fonctionnalité"
 ### **2. Vérification Manuelle**
 ```bash
 # Vérification basique (niveau 1)
-./bin/ath-ci-pro-pre-commit
+./bin/core/ath-ci-pro-pre-commit
 
 # Vérification avec sécurité (niveau 2)
-./bin/ath-ci-pro-pre-commit --level 2
+./bin/core/ath-ci-pro-pre-commit --level 2
 
 # Vérification complète (niveau 5)
-./bin/ath-ci-pro-pre-commit --level 5
+./bin/core/ath-ci-pro-pre-commit --level 5
 
 # Correction automatique
-./bin/ath-ci-pro-pre-commit --auto-fix
+./bin/core/ath-ci-pro-pre-commit --auto-fix
 
 # Mode strict (bloque tout)
-./bin/ath-ci-pro-pre-commit --strict
+./bin/core/ath-ci-pro-pre-commit --strict
 ```
 
 ### **3. Options Avancées**
 ```bash
 # Ignorer les vérifications de sécurité
-./bin/ath-ci-pro-pre-commit --skip-security
+./bin/core/ath-ci-pro-pre-commit --skip-security
 
 # Ignorer les vérifications de performance
-./bin/ath-ci-pro-pre-commit --skip-performance
+./bin/core/ath-ci-pro-pre-commit --skip-performance
 
 # Affichage détaillé
-./bin/ath-ci-pro-pre-commit --verbose
+./bin/core/ath-ci-pro-pre-commit --verbose
 ```
 
 ## 📊 **Niveaux de Validation**
@@ -132,28 +132,28 @@ git commit -m "feat: nouvelle fonctionnalité"
 ### **1. Erreurs de Linting**
 ```bash
 # Correction automatique
-./bin/ath-ci-pro-pre-commit --auto-fix
+./bin/core/ath-ci-pro-pre-commit --auto-fix
 
 # Ou correction manuelle
-./bin/ath-lint.py
+./bin/core/ath-lint.py
 ```
 
 ### **2. Erreurs de Sécurité**
 ```bash
 # Voir les détails
-./bin/ath-ci-pro-pre-commit --level 2 --verbose
+./bin/core/ath-ci-pro-pre-commit --level 2 --verbose
 
 # Mode strict pour forcer la correction
-./bin/ath-ci-pro-pre-commit --strict
+./bin/core/ath-ci-pro-pre-commit --strict
 ```
 
 ### **3. Erreurs de Performance**
 ```bash
 # Vérification détaillée
-./bin/ath-ci-pro-pre-commit --level 3 --verbose
+./bin/core/ath-ci-pro-pre-commit --level 3 --verbose
 
 # Ignorer temporairement
-./bin/ath-ci-pro-pre-commit --skip-performance
+./bin/core/ath-ci-pro-pre-commit --skip-performance
 ```
 
 ## 📈 **Intégration avec CI/CD Pro**
@@ -181,18 +181,18 @@ git push origin develop
 ### **1. Configuration Recommandée**
 ```bash
 # Niveau 2 avec auto-fix
-./bin/ath-ci-pro-config set-level 2
-./bin/ath-ci-pro-config enable auto-fix
+./bin/core/ath-ci-pro-config set-level 2
+./bin/core/ath-ci-pro-config enable auto-fix
 
 # Mode strict pour la production
-./bin/ath-ci-pro-config enable strict-mode
+./bin/core/ath-ci-pro-config enable strict-mode
 ```
 
 ### **2. Workflow de Développement**
 ```bash
 # 1. Développer
 # 2. Vérifier localement
-./bin/ath-ci-pro-pre-commit --level 2
+./bin/core/ath-ci-pro-pre-commit --level 2
 
 # 3. Commiter (vérifications automatiques)
 git add .
@@ -208,7 +208,7 @@ git push origin develop
 git commit --no-verify
 
 # Corriger et recommiter
-./bin/ath-ci-pro-pre-commit --auto-fix
+./bin/core/ath-ci-pro-pre-commit --auto-fix
 git add .
 git commit -m "fix: corrections CI/CD pro"
 ```
@@ -220,46 +220,46 @@ git commit -m "fix: corrections CI/CD pro"
 #### **1. Erreurs de Linting**
 ```bash
 # Solution : Correction automatique
-./bin/ath-ci-pro-pre-commit --auto-fix
+./bin/core/ath-ci-pro-pre-commit --auto-fix
 ```
 
 #### **2. Erreurs de Sécurité**
 ```bash
 # Solution : Vérifier et corriger
-./bin/ath-ci-pro-pre-commit --level 2 --verbose
+./bin/core/ath-ci-pro-pre-commit --level 2 --verbose
 ```
 
 #### **3. Erreurs de Performance**
 ```bash
 # Solution : Optimiser ou ignorer temporairement
-./bin/ath-ci-pro-pre-commit --skip-performance
+./bin/core/ath-ci-pro-pre-commit --skip-performance
 ```
 
 ### **Logs et Debugging**
 ```bash
 # Affichage détaillé
-./bin/ath-ci-pro-pre-commit --verbose
+./bin/core/ath-ci-pro-pre-commit --verbose
 
 # Vérification de la configuration
-./bin/ath-ci-pro-config status
+./bin/core/ath-ci-pro-config status
 ```
 
 ## 📚 **Commandes de Référence**
 
 ### **Configuration**
 ```bash
-./bin/ath-ci-pro-config status          # Statut
-./bin/ath-ci-pro-config set-level 2     # Définir niveau
-./bin/ath-ci-pro-config enable strict-mode  # Activer mode strict
-./bin/ath-ci-pro-config reset           # Reset
+./bin/core/ath-ci-pro-config status          # Statut
+./bin/core/ath-ci-pro-config set-level 2     # Définir niveau
+./bin/core/ath-ci-pro-config enable strict-mode  # Activer mode strict
+./bin/core/ath-ci-pro-config reset           # Reset
 ```
 
 ### **Vérification**
 ```bash
-./bin/ath-ci-pro-pre-commit             # Niveau 1
-./bin/ath-ci-pro-pre-commit --level 2   # Niveau 2
-./bin/ath-ci-pro-pre-commit --auto-fix  # Correction auto
-./bin/ath-ci-pro-pre-commit --strict    # Mode strict
+./bin/core/ath-ci-pro-pre-commit             # Niveau 1
+./bin/core/ath-ci-pro-pre-commit --level 2   # Niveau 2
+./bin/core/ath-ci-pro-pre-commit --auto-fix  # Correction auto
+./bin/core/ath-ci-pro-pre-commit --strict    # Mode strict
 ```
 
 ### **Intégration**

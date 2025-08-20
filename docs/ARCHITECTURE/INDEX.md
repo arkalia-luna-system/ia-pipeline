@@ -34,7 +34,7 @@ graph TB
     end
     
     subgraph "🔧 BUSINESS LOGIC LAYER"
-        PG[Project Generator<br/>athalia_core/utilities/generation.py]
+        PG[Project Generator<br/>athalia_core/core/generation.py]
         AC[Auto Cleaner<br/>athalia_core/automation/auto_cleaner.py]
         SV[Security Validator<br/>athalia_core/validation/security_validator.py]
         IA[Intelligent Auditor<br/>athalia_core/analysis/intelligent_analyzer.py]

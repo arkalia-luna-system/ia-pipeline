@@ -10,7 +10,7 @@ Le système de formatage automatique Athalia résout le problème des hooks pre-
 
 ## 🛠️ Outils disponibles
 
-### 1. `./bin/ath-auto-format`
+### 1. `./bin/utilities/ath-auto-format`
 Script principal de formatage automatique.
 
 **Options :**
@@ -22,16 +22,16 @@ Script principal de formatage automatique.
 **Exemples :**
 ```bash
 # Formatage automatique complet
-./bin/ath-auto-format
+./bin/utilities/ath-auto-format
 
 # Formatage avec affichage détaillé
-./bin/ath-auto-format --verbose
+./bin/utilities/ath-auto-format --verbose
 
 # Formatage sans ajout automatique
-./bin/ath-auto-format --no-auto-add
+./bin/utilities/ath-auto-format --no-auto-add
 ```
 
-### 2. `./bin/ath-smart-commit`
+### 2. `./bin/core/ath-smart-commit`
 Script de commit intelligent qui combine formatage + commit + push.
 
 **Options :**
@@ -43,16 +43,16 @@ Script de commit intelligent qui combine formatage + commit + push.
 **Exemples :**
 ```bash
 # Commit simple
-./bin/ath-smart-commit -m "feat: nouvelle fonctionnalité"
+./bin/core/ath-smart-commit -m "feat: nouvelle fonctionnalité"
 
 # Commit avec push automatique
-./bin/ath-smart-commit -m "fix: correction bug" --push
+./bin/core/ath-smart-commit -m "fix: correction bug" --push
 
 # Simulation
-./bin/ath-smart-commit -m "test" --dry-run
+./bin/core/ath-smart-commit -m "test" --dry-run
 ```
 
-### 3. `./bin/ath-prepare-commit`
+### 3. `./bin/core/ath-prepare-commit`
 Script de préparation au commit avec options avancées.
 
 **Options :**
@@ -81,22 +81,22 @@ Le fichier `config/pre-commit-config.yaml` a été mis à jour avec :
 ```bash
 # 1. Faire vos modifications
 # 2. Formatage automatique
-./bin/ath-auto-format
+./bin/utilities/ath-auto-format
 
 # 3. Commit intelligent
-./bin/ath-smart-commit -m "votre message" --push
+./bin/core/ath-smart-commit -m "votre message" --push
 ```
 
 ### Workflow avancé
 ```bash
 # 1. Préparation complète
-./bin/ath-prepare-commit --auto-fix
+./bin/core/ath-prepare-commit --auto-fix
 
 # 2. Tests
-./bin/ath-test.py
+./bin/testing/ath-test.py
 
 # 3. Commit avec vérifications
-./bin/ath-smart-commit -m "feat: fonctionnalité complète" --push
+./bin/core/ath-smart-commit -m "feat: fonctionnalité complète" --push
 ```
 
 ## 🚀 Avantages
@@ -151,10 +151,10 @@ black . --check --diff
 isort . --check-only --diff
 
 # Nettoyage
-./bin/ath-clean
+./bin/cleanup/ath-clean
 
 # Tests
-./bin/ath-test.py
+./bin/testing/ath-test.py
 ```
 
 ## 🎯 Bonnes pratiques

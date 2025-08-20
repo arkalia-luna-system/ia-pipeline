@@ -29,7 +29,7 @@ python3 athalia_core/utilities/ready_check.py
 ### Lancement des Services
 ```bash
 # Interface principale
-python3 athalia_core/core/main.py
+python3 athalia_core/core/main.py /chemin/projet
 
 # Orchestrateur unifié
 python3 bin/core/athalia_unified.py --help
@@ -38,7 +38,7 @@ python3 bin/core/athalia_unified.py --help
 streamlit run athalia_core/utilities/dashboard.py
 
 # API REST (si configurée)
-python3 athalia_core/api_server.py
+# python3 athalia_core/api_server.py  # Module non implémenté
 ```
 
 ## 🐳 Déploiement Docker
@@ -202,7 +202,7 @@ sudo ufw enable
 sudo apt install htop iotop nethogs
 
 # 2. Monitoring application
-python3 athalia_core/core/performance_analyzer.py /chemin/projet --output performance_report.json
+python3 athalia_core/core/performance_analyzer.py /chemin/projet
 
 # 3. Logs centralisés
 # Configurer rsyslog ou logrotate
@@ -211,7 +211,7 @@ python3 athalia_core/core/performance_analyzer.py /chemin/projet --output perfor
 ### Sauvegarde
 ```bash
 # 1. Sauvegarde automatique des données
-# python3 athalia_core/backup_system.py --auto-backup  # Module non implémenté
+# python3 bin/core/ath-backup.py create  # Script de sauvegarde existant
 
 # 2. Script de sauvegarde cron
 # Ajouter dans crontab -e
@@ -309,7 +309,7 @@ tail -f logs/athalia.log
 # python3 athalia_core/core/main.py --debug  # Option non disponible
 
 # Validation complète
-python3 athalia_core/utilities/ready_check.py --verbose
+python3 athalia_core/utilities/ready_check.py
 ```
 
 ## 📋 Checklist de Déploiement

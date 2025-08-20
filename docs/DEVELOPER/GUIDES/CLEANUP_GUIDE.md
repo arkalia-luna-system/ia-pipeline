@@ -11,7 +11,7 @@ Ce guide explique comment maintenir le projet Athalia propre et organisé en sup
 ## 📋 Scripts de Nettoyage Disponibles
 
 ### 1. `ath-cleanup-complete` - Nettoyage Complet
-**Usage :** `./bin/ath-cleanup-complete`
+**Usage :** `./bin/cleanup/ath-cleanup-complete`
 
 **Description :** Script de nettoyage complet qui supprime tous les types de fichiers indésirables en une seule exécution.
 
@@ -27,7 +27,7 @@ Ce guide explique comment maintenir le projet Athalia propre et organisé en sup
 - Dossiers vides
 
 ### 2. `ath-cleanup-preventive` - Nettoyage Préventif
-**Usage :** `./bin/ath-cleanup-preventive`
+**Usage :** `./bin/cleanup/ath-cleanup-preventive`
 
 **Description :** Script de maintenance préventive à exécuter régulièrement pour éviter l'accumulation de fichiers indésirables.
 
@@ -37,7 +37,7 @@ Ce guide explique comment maintenir le projet Athalia propre et organisé en sup
 - Recommandations pour la maintenance continue
 
 ### 3. `ath-cleanup-analysis` - Analyse des Fichiers
-**Usage :** `./bin/ath-cleanup-analysis`
+**Usage :** `./bin/cleanup/ath-cleanup-analysis`
 
 **Description :** Script d'analyse qui identifie les fichiers indésirables sans les supprimer.
 
@@ -83,19 +83,19 @@ Ce guide explique comment maintenir le projet Athalia propre et organisé en sup
 ### Nettoyage Hebdomadaire
 ```bash
 # Exécuter le nettoyage préventif
-./bin/ath-cleanup-preventive
+./bin/cleanup/ath-cleanup-preventive
 ```
 
 ### Nettoyage Mensuel
 ```bash
 # Exécuter le nettoyage complet
-./bin/ath-cleanup-complete
+./bin/cleanup/ath-cleanup-complete
 ```
 
 ### Nettoyage Avant Commit
 ```bash
 # Vérifier l'état du projet
-./bin/ath-cleanup-analysis
+./bin/cleanup/ath-cleanup-analysis
 ```
 
 ## 🛡️ Bonnes Pratiques
@@ -177,8 +177,8 @@ find . -name "temp_*.json" -delete
 ```bash
 #!/bin/bash
 # Script à exécuter avant chaque commit
-./bin/ath-cleanup-preventive
-./bin/ath-test.py
+./bin/cleanup/ath-cleanup-preventive
+./bin/testing/ath-test.py
 ```
 
 ### Automatisation

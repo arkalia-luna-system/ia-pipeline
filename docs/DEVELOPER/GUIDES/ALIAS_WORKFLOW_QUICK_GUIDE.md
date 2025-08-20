@@ -223,12 +223,12 @@ git commit --no-verify -m "message urgent"
 ### Problèmes courants
 1. **Alias non reconnus** : Redémarrez le terminal ou `source ~/.bashrc`
 2. **Scripts manquants** : Vérifiez que tous les scripts sont présents dans `bin/`
-3. **Permissions** : `chmod +x bin/ath-*`
+3. **Permissions** : `chmod +x bin/core/ath-* bin/cleanup/ath-* bin/workflow/ath-*`
 
 ### Debug
 ```bash
 # Vérifier l'installation
-ls -la bin/ath-prepare-commit bin/ath-push bin/ath-workflow
+ls -la bin/core/ath-prepare-commit bin/core/ath-push bin/workflow/ath-workflow
 
 # Tester les alias
 type ath-prepare

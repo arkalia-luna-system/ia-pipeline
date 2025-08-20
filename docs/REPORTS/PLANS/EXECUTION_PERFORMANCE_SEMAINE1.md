@@ -56,10 +56,10 @@ p.print_stats(10)
 pip install memory_profiler
 
 # 2. Profilage mémoire des modules critiques
-python -m memory_profiler athalia_core/unified_orchestrator.py
+python -m memory_profiler athalia_core/core/unified_orchestrator.py
 
 # 3. Analyse des allocations mémoire
-python -m memory_profiler athalia_core/intelligent_auditor.py
+python -m memory_profiler athalia_core/audit/intelligent_auditor.py
 ```
 
 ### **Étape 1.3 : Benchmark des Modules**
@@ -257,7 +257,7 @@ python -m cProfile -o profile.stats athalia_unified.py . --action audit
 python -c "import pstats; p = pstats.Stats('profile.stats'); p.sort_stats('cumulative'); p.print_stats(10)"
 
 # Profilage mémoire
-python -m memory_profiler athalia_core/unified_orchestrator.py
+python -m memory_profiler athalia_core/core/unified_orchestrator.py
 ```
 
 ### **Benchmark**
@@ -325,8 +325,8 @@ def test_no_regression():
 
 ### **Code**
 - [ ] `scripts/measure_performance.py` - Script de mesure
-- [ ] `athalia_core/cache_manager.py` - Gestionnaire de cache
-- [ ] `athalia_core/parallel_auditor.py` - Auditeur parallèle
+- [ ] `athalia_core/core/cache_manager.py` - Gestionnaire de cache
+- [ ] `athalia_core/audit/parallel_auditor.py` - Auditeur parallèle
 - [ ] `tests/test_performance.py` - Tests de performance
 
 ### **Résultats**

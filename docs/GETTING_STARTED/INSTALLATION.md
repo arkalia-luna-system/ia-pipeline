@@ -200,10 +200,10 @@ python -m pytest tests/performance/ -v
 source .venv/bin/activate
 
 # Lancement principal
-python athalia_core/main.py
+python athalia_core/core/main.py /chemin/projet
 
 # Avec options
-python athalia_core/core/main.py
+python athalia_core/core/main.py /chemin/projet
 # python athalia_core/core/main.py --dry-run  # Option non disponible
 # python athalia_core/core/main.py --verbose  # Option non disponible
 ```
@@ -257,14 +257,14 @@ ls -la logs/
 python -c "import yaml; yaml.safe_load(open('config/athalia_config.yaml'))"
 
 # Valider la configuration
-python athalia_core/config_manager.py --validate
+python athalia_core/core/config_manager.py /chemin/projet
 ```
 
 #### **Erreur de Cache**
 ```bash
 # Solution : Nettoyer le cache
 rm -rf cache/
-python athalia_core/cache_manager.py --clear
+python athalia_core/core/cache_manager.py /chemin/projet
 ```
 
 ### **Logs et Debug**
@@ -277,7 +277,7 @@ export ATHALIA_LOG_LEVEL=DEBUG
 tail -f logs/athalia.log
 
 # Analyser les erreurs
-python athalia_core/logger_advanced.py --analyze
+python athalia_core/utilities/logger_advanced.py /chemin/projet
 ```
 
 ---
@@ -299,10 +299,10 @@ Votre installation d'Athalia est maintenant complète et prête pour la producti
 ### **Vérification Finale**
 ```bash
 # Test complet du système
-python athalia_core/main.py --test-complete
+python athalia_core/core/main.py /chemin/projet
 
 # Vérifier les métriques
-python athalia_core/core/performance_analyzer.py /chemin/projet --output performance_report.json
+python athalia_core/core/performance_analyzer.py /chemin/projet
 ```
 
 **📅 Dernière mise à jour :** 2 Août 2025  

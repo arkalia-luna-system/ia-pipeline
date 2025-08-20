@@ -320,7 +320,7 @@ RUN pip install -r requirements.txt
 COPY . .
 EXPOSE 8080
 
-CMD ["python", "athalia_core/dashboard.py"]
+CMD ["python", "athalia_core/utilities/dashboard.py"]
 ```
 
 ## 📚 Documentation

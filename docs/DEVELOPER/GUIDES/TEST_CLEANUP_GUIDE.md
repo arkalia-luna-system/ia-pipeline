@@ -34,7 +34,7 @@ def cleanup_after_test():
 - ✅ Gestion des environnements de test
 - ✅ Moniteur de processus intégré
 
-### **2. Script de Nettoyage (`bin/ath-test-clean.py`)**
+### **2. Script de Nettoyage (`bin/testing/ath-test-clean.py`)**
 ```python
 def kill_athalia_processes():
     """Arrête tous les processus Athalia en cours"""
@@ -52,7 +52,7 @@ def kill_athalia_processes():
 - ✅ Intégration avec ath-clean
 - ✅ Gestion des erreurs
 
-### **3. Script de Test Amélioré (`bin/ath-test.py`)**
+### **3. Script de Test Amélioré (`bin/testing/ath-test.py`)**
 ```python
 def run_tests_with_cleanup():
     """Exécute les tests avec nettoyage automatique"""
@@ -64,7 +64,7 @@ def run_tests_with_cleanup():
     result = subprocess.run(["pytest", "tests/", "-v"])
 
     # Nettoyage automatique
-    subprocess.run([sys.executable, "bin/ath-test-clean.py"])
+    subprocess.run([sys.executable, "bin/testing/ath-test-clean.py"])
 ```
 
 **Fonctionnalités :**
@@ -73,16 +73,16 @@ def run_tests_with_cleanup():
 - ✅ Gestion des interruptions (Ctrl+C)
 - ✅ Nettoyage d'urgence en cas d'erreur
 
-### **4. Wrapper Bash (`bin/ath-test-wrapper.sh`)**
+### **4. Wrapper Bash (`bin/testing/ath-test-wrapper.sh`)**
 ```bash
 # Nettoyage initial
-python3 bin/ath-test-clean.py
+python3 bin/testing/ath-test-clean.py
 
 # Exécution des tests
 python3 -m pytest tests/ -v
 
 # Nettoyage final
-python3 bin/ath-test-clean.py
+python3 bin/testing/ath-test-clean.py
 ```
 
 **Fonctionnalités :**
@@ -96,19 +96,19 @@ python3 bin/ath-test-clean.py
 ### **Méthode 1 : Script Python**
 ```bash
 # Tests avec nettoyage automatique
-./bin/ath-test.py
+./bin/testing/ath-test.py
 
 # Tests avec options spécifiques
-./bin/ath-test.py -k "test_ai_robust"
+./bin/testing/ath-test.py -k "test_ai_robust"
 ```
 
 ### **Méthode 2 : Wrapper Bash**
 ```bash
 # Tests avec nettoyage automatique
-./bin/ath-test-wrapper.sh
+./bin/testing/ath-test-wrapper.sh
 
 # Tests avec options spécifiques
-./bin/ath-test-wrapper.sh -k "test_ai_robust" --cov
+./bin/testing/ath-test-wrapper.sh -k "test_ai_robust" --cov
 ```
 
 ### **Méthode 3 : pytest Direct**
@@ -120,10 +120,10 @@ python3 -m pytest tests/ -v
 ### **Méthode 4 : Nettoyage Manuel**
 ```bash
 # Nettoyage manuel des processus
-python3 bin/ath-test-clean.py
+python3 bin/testing/ath-test-clean.py
 
 # Nettoyage complet avec ath-clean
-./bin/ath-clean --kill-processes
+./bin/cleanup/ath-clean --kill-processes
 ```
 
 ## 📊 **Processus Nettoyés Automatiquement**

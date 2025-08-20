@@ -19,15 +19,15 @@ Le projet inclut un script de nettoyage automatique pour supprimer ces fichiers 
 
 ### Script Principal
 
-**Fichier :** `bin/ath-clean-macos-temp`
+**Fichier :** `bin/cleanup/ath-clean-macos-temp`
 
 **Utilisation :**
 ```bash
 # Mode simulation (recommandé)
-./bin/ath-clean-macos-temp
+./bin/cleanup/ath-clean-macos-temp
 
 # Mode exécution (suppression réelle)
-./bin/ath-clean-macos-temp --execute
+./bin/cleanup/ath-clean-macos-temp --execute
 ```
 
 ### Alias Disponibles
@@ -62,10 +62,10 @@ source setup/alias-macos-clean.sh
 
 ```bash
 # Vérifier s'il y a des fichiers temporaires
-./bin/ath-clean-macos-temp
+./bin/cleanup/ath-clean-macos-temp
 
 # Supprimer les fichiers temporaires
-./bin/ath-clean-macos-temp --execute
+./bin/cleanup/ath-clean-macos-temp --execute
 ```
 
 ## Intégration avec le Workflow

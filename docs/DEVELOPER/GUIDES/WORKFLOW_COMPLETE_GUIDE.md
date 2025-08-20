@@ -33,9 +33,9 @@ Le système de workflow complet d'Athalia automatise tout le cycle de développe
 
 | Script | Fonction | Usage |
 |--------|----------|-------|
-| `ath-clean-shutdown` | Fermeture propre | `./bin/ath-clean-shutdown` |
-| `ath-quick-start` | Démarrage rapide | `./bin/ath-quick-start` |
-| `ath-workflow-complete` | Workflow complet | `./bin/ath-workflow-complete [command]` |
+| `ath-clean-shutdown` | Fermeture propre | `./bin/cleanup/ath-clean-shutdown` |
+| `ath-quick-start` | Démarrage rapide | `./bin/core/ath-quick-start` |
+| `ath-workflow-complete` | Workflow complet | `./bin/workflow/ath-workflow-complete [command]` |
 
 ### Alias Disponibles
 
@@ -260,7 +260,7 @@ ps aux | grep athalia
 #### Fichiers temporaires persistants
 ```bash
 # Nettoyage manuel
-./bin/ath-clean-macos-temp --execute
+./bin/cleanup/ath-clean-macos-temp --execute
 
 # Vérification
 find . -name ".*" -type f | wc -l
@@ -277,7 +277,7 @@ find . -name ".*" -type f | wc -l
 ```bash
 # Activer le mode verbose
 set -x
-./bin/ath-clean-shutdown
+./bin/cleanup/ath-clean-shutdown
 set +x
 ```
 
@@ -287,7 +287,7 @@ set +x
 
 #### Modifier les Variables
 ```bash
-# Dans bin/ath-clean-shutdown
+# Dans bin/cleanup/ath-clean-shutdown
 PROJECT_NAME="votre-projet"
 BRANCH="main"
 REMOTE="origin"
@@ -315,14 +315,14 @@ COMMIT_MSG="🔄 Mise à jour automatique - $TIMESTAMP"
 ```bash
 #!/bin/bash
 # .git/hooks/pre-commit
-./bin/ath-clean-shutdown --pre-commit
+./bin/cleanup/ath-clean-shutdown --pre-commit
 ```
 
 #### Hook Post-merge
 ```bash
 #!/bin/bash
 # .git/hooks/post-merge
-./bin/ath-quick-start
+./bin/core/ath-quick-start
 ```
 
 ## 📚 Bonnes Pratiques
@@ -405,7 +405,7 @@ ath-shutdown
 ```bash
 ath-workflow help      # Aide du workflow
 ath-help              # Aide générale
-./bin/ath-clean-shutdown --help  # Aide fermeture
+./bin/cleanup/ath-clean-shutdown --help  # Aide fermeture
 ```
 
 ### Logs et Debugging

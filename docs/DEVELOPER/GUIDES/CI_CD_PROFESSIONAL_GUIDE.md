@@ -82,19 +82,19 @@ git push origin ci-cd-professional
 ### **3. Synchronisation Manuelle**
 ```bash
 # Depuis develop, synchroniser vers ci-cd-professional
-./scripts/sync_develop_to_ci_pro.sh
+./scripts/utilities/sync_develop_to_ci_pro.sh
 ```
 
 ### **4. Suivi de Progression**
 ```bash
 # Voir le rapport de progression
-python scripts/ci_progress_tracker.py report
+python scripts/ci/ci_progress_tracker.py report
 
 # Vérifier le statut d'un niveau
-python scripts/ci_progress_tracker.py status --level 2
+python scripts/ci/ci_progress_tracker.py status --level 2
 
 # Exporter les métriques
-python scripts/ci_progress_tracker.py export --output metrics.json
+python scripts/ci/ci_progress_tracker.py export --output metrics.json
 ```
 
 ### **5. Migration vers Develop**
@@ -163,7 +163,7 @@ git push origin ci-cd-professional
 ### **Phase 2 : Validation**
 ```bash
 # 1. Vérifier les métriques
-python scripts/ci_progress_tracker.py report
+python scripts/ci/ci_progress_tracker.py report
 
 # 2. Analyser les rapports GitHub Actions
 # 3. Corriger si nécessaire
@@ -261,7 +261,7 @@ git merge develop
 
 ### **Fichiers de Configuration**
 - `.github/workflows/ci-pro-level*.yaml` : Workflows par niveau
-- `scripts/ci_progress_tracker.py` : Suivi de progression
+- `scripts/ci/ci_progress_tracker.py` : Suivi de progression
 - `config/requirements-minimal.txt` : Dépendances
 
 ### **Documentation**

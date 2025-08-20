@@ -56,9 +56,9 @@ Ce document décrit la structure officielle et à jour du workspace Athalia/Arka
 ## 🚀 **SCRIPTS ET EXÉCUTABLES**
 
 ### **⚡ Scripts d'Exécution Principaux**
-- **`bin/athalia_unified.py`** - Script principal unifié
-- **`athalia_unified_enhanced.py`** - Version améliorée
-- **`athalia_quick_start.py`** - Démarrage rapide interactif
+- **`bin/core/athalia_unified.py`** - Script principal unifié
+- **`bin/core/athalia_launcher.py`** - Lanceur principal
+- **`bin/core/ath-demo.py`** - Démonstrations interactives
 
 ### **📄 Fichiers de Documentation Principaux**
 - **`README.md`** - Documentation principale du projet
@@ -72,7 +72,7 @@ Ce document décrit la structure officielle et à jour du workspace Athalia/Arka
 Le script principal d'Athalia maintient automatiquement l'organisation :
 
 ```bash
-python bin/athalia_unified.py . --action fix --auto-fix
+python bin/core/athalia_unified.py . --action fix --auto-fix
 ```
 
 #### **✨ Fonctionnalités Automatiques :**
@@ -131,7 +131,7 @@ Le fichier `config/paths.yaml` centralise tous les chemins du projet pour une ma
 - **Guide principal :** [../INDEX_FINAL_DOCUMENTATION_ATHALIA.md](../INDEX_FINAL_DOCUMENTATION_ATHALIA.md)
 
 ### **🛠️ Outils de Maintenance**
-- **Script de nettoyage :** `bin/athalia_unified.py`
+- **Script de nettoyage :** `bin/core/athalia_unified.py`
 - **Analyse de qualité :** `scripts/analyze_documentation_quality.py`
 - **Guide de maintenance :** [DOCUMENTATION_MAINTENANCE.md](../DEVELOPER/DOCUMENTATION_MAINTENANCE.md)
 

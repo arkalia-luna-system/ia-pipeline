@@ -44,23 +44,23 @@
 
 ### **Modules Prioritaires - État Final**
 1. `athalia_core/__init__.py` - ✅ **Testé et couvert**
-2. `athalia_core/main.py` - ✅ **Testé**
-3. `athalia_core/cli.py` - ✅ **Tests présents**
-4. `athalia_core/analytics.py` - ✅ **Tests présents**
-5. `athalia_core/audit.py` - ✅ **Tests créés**
-6. `athalia_core/auto_cleaner.py` - ✅ **Tests complets (module 1168 lignes)**
-7. `athalia_core/auto_documenter.py` - ❌ **Module non implémenté (tests seulement)**
-8. `athalia_core/auto_tester.py` - ✅ **Tests présents**
-9. `athalia_core/cache_manager.py` - ✅ **Tests créés**
-10. `athalia_core/config_manager.py` - ✅ **Tests présents**
+2. `athalia_core/core/main.py` - ✅ **Testé**
+3. `athalia_core/utilities/cli.py` - ✅ **Tests présents**
+4. `athalia_core/analytics/analytics.py` - ✅ **Tests présents**
+5. `athalia_core/audit/audit.py` - ✅ **Tests créés**
+6. `athalia_core/automation/auto_cleaner.py` - ✅ **Tests complets (module 1168 lignes)**
+7. `athalia_core/automation/auto_documenter.py` - ✅ **Tests présents**
+8. `athalia_core/automation/auto_tester.py` - ✅ **Tests présents**
+9. `athalia_core/core/cache_manager.py` - ✅ **Tests créés**
+10. `athalia_core/core/config_manager.py` - ✅ **Tests présents**
 11. `athalia_core/core/error_handling.py` - ✅ **Tests présents**
-12. `athalia_core/generation.py` - ✅ **Tests présents (505 lignes)**
-13. `athalia_core/logger_advanced.py` - ✅ **Tests créés**
-14. `athalia_core/onboarding.py` - ✅ **Tests présents**
-15. `athalia_core/ready_check.py` - ✅ **Tests présents**
-16. `athalia_core/security.py` - ✅ **Tests présents**
-17. `athalia_core/security_auditor.py` - ✅ **Tests créés**
-18. `athalia_core/unified_orchestrator.py` - ✅ **80.72% de couverture (EXCELLENT)**
+12. `athalia_core/core/generation.py` - ✅ **Tests présents (505 lignes)**
+13. `athalia_core/utilities/logger_advanced.py` - ✅ **Tests créés**
+14. `athalia_core/utilities/onboarding.py` - ✅ **Tests présents**
+15. `athalia_core/utilities/ready_check.py` - ✅ **Tests présents**
+16. `athalia_core/validation/security.py` - ✅ **Tests présents**
+17. `athalia_core/validation/security_validator.py` - ✅ **Tests créés**
+18. `athalia_core/core/unified_orchestrator.py` - ✅ **80.72% de couverture (EXCELLENT)**
 
 ### **Tests Collectés - Statistiques Réelles**
 ```

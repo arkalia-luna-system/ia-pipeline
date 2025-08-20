@@ -4,7 +4,7 @@
 **Version :** v2.0  
 **Statut :** ✅ ACTIF ET MAINTENU - TESTS OPTIMISÉS  
 **Date :** 2 août 2025  
-**Module :** `athalia_core/unified_orchestrator.py`  
+**Module :** `athalia_core/core/unified_orchestrator.py`  
 **Objectif :** Amélioration de la couverture de tests et correction des tests existants
 
 ## Résumé des Améliorations
@@ -119,7 +119,7 @@ Ces lignes sont considérées comme couvertes de manière acceptable car :
 
 ## Fichiers Modifiés
 
-1. **`athalia_core/unified_orchestrator.py`**
+1. **`athalia_core/core/unified_orchestrator.py`**
    - Correction du constructeur AutoCICD
    - Formatage avec Black
 

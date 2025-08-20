@@ -45,19 +45,19 @@ python3 -m pytest tests/integration/test_workflow.py -v
 ### **3. Tests de Performance**
 ```bash
 # Benchmarks de performance
-python3 athalia_core/core/performance_analyzer.py /chemin/projet --output benchmark_report.json
+python3 athalia_core/core/performance_analyzer.py .
 
 # Tests de charge
 python3 -m pytest tests/performance/ --verbose
 
 # Tests de mémoire
-python3 athalia_core/core/performance_analyzer.py /chemin/projet --output memory_report.json
+python3 athalia_core/core/performance_analyzer.py .
 ```
 
 ### **4. Tests de Sécurité**
 ```bash
 # Audit de sécurité
-python3 athalia_core/audit/security_auditor.py /chemin/projet
+python3 bin/core/ath-audit.py . --security
 
 # Tests de vulnérabilités
 python3 -m pytest tests/security/ --verbose
@@ -186,13 +186,13 @@ python3 -m pytest tests/ --cov-report=xml
 ### **Rapports de Test**
 ```bash
 # Générer rapport complet
-python3 athalia_core/automation/auto_tester.py /chemin/projet --output reports/
+python3 bin/core/ath-audit.py . --tests
 
 # Rapport de couverture
 python3 -m pytest tests/ --cov=athalia_core --cov-report=html --cov-report=term
 
 # Rapport de performance
-python3 athalia_core/core/performance_analyzer.py /chemin/projet --output performance_report.json
+python3 athalia_core/core/performance_analyzer.py .
 ```
 
 ---
@@ -226,13 +226,13 @@ jobs:
 ### **Tests Automatisés**
 ```bash
 # Pipeline de tests
-python3 athalia_core/automation/auto_tester.py /chemin/projet --run-tests
+python3 bin/core/ath-audit.py . --tests
 
 # Tests de régression automatiques
-python3 athalia_core/automation/auto_tester.py /chemin/projet --run-tests --output regression_tests/
+python3 bin/core/ath-audit.py . --tests --regression
 
 # Tests de performance automatiques
-python3 athalia_core/core/performance_analyzer.py /chemin/projet --output auto_benchmark_report.json
+python3 athalia_core/core/performance_analyzer.py .
 ```
 
 ---

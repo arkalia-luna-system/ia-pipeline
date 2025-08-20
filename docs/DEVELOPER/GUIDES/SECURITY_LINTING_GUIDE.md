@@ -36,7 +36,7 @@ Ce guide décrit l'utilisation des outils de linting et de sécurité configuré
 
 ```bash
 # Installer tous les outils
-./bin/install-security-tools
+./bin/security/install-security-tools
 
 # Ou manuellement
 pip install -e ".[dev,security]"
@@ -48,7 +48,7 @@ pre-commit install
 ### Linting Complet
 ```bash
 # Exécuter tous les outils de linting
-./bin/ath-lint-secure
+./bin/security/ath-lint-secure
 
 # Ou avec pre-commit
 pre-commit run --all-files
@@ -121,7 +121,7 @@ pyupgrade --py310-plus .
 ## 🎯 Bonnes Pratiques
 
 ### Avant chaque commit
-1. Exécuter `./bin/ath-lint-secure`
+1. Exécuter `./bin/security/ath-lint-secure`
 2. Corriger les erreurs critiques
 3. Vérifier les avertissements de sécurité
 
@@ -288,7 +288,7 @@ def step1():
 ### Surveillance Continue
 ```bash
 # Rapport de qualité complet
-./bin/ath-lint-secure > logs/quality_report.txt
+./bin/security/ath-lint-secure > logs/quality_report.txt
 
 # Métriques de couverture
 pytest --cov=athalia_core --cov-report=html

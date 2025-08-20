@@ -18,7 +18,7 @@ Dans le projet Athalia, ces fichiers peuvent causer des problèmes :
 
 ## Solution : Script ath-clean amélioré
 
-Le script `bin/ath-clean` a été amélioré pour gérer efficacement ces fichiers :
+Le script `bin/cleanup/ath-clean` a été amélioré pour gérer efficacement ces fichiers :
 
 ### Fonctionnalités ajoutées
 
@@ -31,16 +31,16 @@ Le script `bin/ath-clean` a été amélioré pour gérer efficacement ces fichie
 
 ```bash
 # Nettoyage standard
-./bin/ath-clean
+./bin/cleanup/ath-clean
 
 # Nettoyage avec suppression forcée des AppleDouble
-./bin/ath-clean --force-appledouble
+./bin/cleanup/ath-clean --force-appledouble
 
 # Mode simulation (dry-run)
-./bin/ath-clean --dry-run
+./bin/cleanup/ath-clean --dry-run
 
 # Combinaison d'options
-./bin/ath-clean --force-appledouble --kill-processes
+./bin/cleanup/ath-clean --force-appledouble --kill-processes
 ```
 
 ### Options disponibles
@@ -79,7 +79,7 @@ find . -name "._*" | head -10
 
 ## Recommandations
 
-1. **Exécution régulière** : Lancez `./bin/ath-clean` régulièrement pour maintenir un environnement propre
+1. **Exécution régulière** : Lancez `./bin/cleanup/ath-clean` régulièrement pour maintenir un environnement propre
 2. **Avant les commits** : Utilisez le script avant de committer pour éviter de polluer le repository
 3. **Configuration permanente** : Les paramètres système sont appliqués automatiquement par le script
 4. **Surveillance** : Surveillez l'apparition de nouveaux fichiers AppleDouble
@@ -108,15 +108,15 @@ Ajoutez le script à votre workflow de développement :
 
 ```bash
 # Dans votre .gitignore ou scripts de pré-commit
-./bin/ath-clean --force-appledouble
+./bin/cleanup/ath-clean --force-appledouble
 
 # Ou dans un script de build
-./bin/ath-clean && python -m pytest
+./bin/cleanup/ath-clean && python -m pytest
 ```
 
 ## Support
 
 Pour toute question ou problème lié à la gestion des fichiers AppleDouble, consultez :
-- La documentation du script `bin/ath-clean`
+- La documentation du script `bin/cleanup/ath-clean`
 - Les logs de nettoyage générés par le script
 - La configuration système macOS

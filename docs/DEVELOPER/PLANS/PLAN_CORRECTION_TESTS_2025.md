@@ -279,7 +279,7 @@ python -m pytest tests/ -v --cov=athalia_core --cov-report=term-missing
 ### **3. Validation CI/CD**
 ```bash
 # Exécuter le script de validation
-./scripts/validate_ci_cd.sh
+python3 tools/maintenance/validation_documentation.py .
 ```
 
 ---
