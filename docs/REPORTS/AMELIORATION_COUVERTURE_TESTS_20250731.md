@@ -53,7 +53,7 @@
 8. `athalia_core/auto_tester.py` - ✅ **Tests présents**
 9. `athalia_core/cache_manager.py` - ✅ **Tests créés**
 10. `athalia_core/config_manager.py` - ✅ **Tests présents**
-11. `athalia_core/error_handling.py` - ✅ **Tests présents**
+11. `athalia_core/core/error_handling.py` - ✅ **Tests présents**
 12. `athalia_core/generation.py` - ✅ **Tests présents (505 lignes)**
 13. `athalia_core/logger_advanced.py` - ✅ **Tests créés**
 14. `athalia_core/onboarding.py` - ✅ **Tests présents**

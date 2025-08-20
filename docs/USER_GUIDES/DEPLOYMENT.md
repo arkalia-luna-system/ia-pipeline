@@ -29,13 +29,13 @@ python3 athalia_core/utilities/ready_check.py
 ### Lancement des Services
 ```bash
 # Interface principale
-python3 athalia_core/main.py
+python3 athalia_core/core/main.py
 
 # Orchestrateur unifié
 python3 bin/core/athalia_unified.py --help
 
 # Dashboard Streamlit
-streamlit run athalia_core/dashboard.py
+streamlit run athalia_core/utilities/dashboard.py
 
 # API REST (si configurée)
 python3 athalia_core/api_server.py
@@ -279,7 +279,7 @@ security:
 sudo netstat -tulpn | grep :8501
 
 # Changer le port
-streamlit run athalia_core/dashboard.py --server.port 8502
+streamlit run athalia_core/utilities/dashboard.py --server.port 8502
 ```
 
 #### 2. Problèmes de mémoire
@@ -306,10 +306,10 @@ chmod +x scripts/*.sh
 tail -f logs/athalia.log
 
 # Debug mode
-python3 athalia_core/main.py --debug
+python3 athalia_core/core/main.py --debug
 
 # Validation complète
-python3 athalia_core/ready_check.py --verbose
+python3 athalia_core/utilities/ready_check.py --verbose
 ```
 
 ## 📋 Checklist de Déploiement
