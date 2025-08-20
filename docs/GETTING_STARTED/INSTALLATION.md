@@ -1,6 +1,6 @@
 # 🚀 Guide d'Installation - Athalia
 
-**Version :** 11.0 (ACTIVE DEVELOPMENT)  
+**Version :** 12.0 (ACTIVE DEVELOPMENT)  
 **Date :** 11 août 2025  
 **Statut :** Configuration validée ✅
 
@@ -97,7 +97,7 @@ cp config/athalia_config.yaml.example config/athalia_config.yaml
 # config/athalia_config.yaml
 app:
   name: athalia
-  version: "11.0"
+  version: "12.0"
   debug: false
   environment: production
   log_level: INFO
@@ -311,4 +311,4 @@ python athalia_core/performance_analyzer.py --report
 
 ---
 
-*Guide d'installation - Athalia v11.0 - Branch develop*
+*Guide d'installation - Athalia v12.0 - Branch develop*
