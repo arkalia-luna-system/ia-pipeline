@@ -8,7 +8,7 @@
 
 **🔌 API Reference Enterprise Grade**
 
-**📦 Modules: 79+ | 📊 Couverture: Complète | 🧪 Exemples: Testés | 🚀 Version: 11.0**
+**📦 Modules: 79+ | 📊 Couverture: Complète | 🧪 Exemples: Testés | 🚀 Version: 12.0**
 
 **Complete API reference for Athalia DevOps Platform - 93 modules documented**
 

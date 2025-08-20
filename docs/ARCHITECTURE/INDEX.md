@@ -485,7 +485,7 @@ graph TB
 - **[🏢 Workspace Organization](ORGANISATION_WORKSPACE.md)** - Development environment setup
 - **[🔌 API Architecture](../API/INDEX.md)** - Interface design patterns
 - **[🛡️ Security Design](../DEVELOPER/SECURITY_LINTING_GUIDE.md)** - Security implementation details
-- **[⚡ Performance Optimization](../DEVELOPER/PERFORMANCE_OPTIMIZATION.md)** - Performance tuning guides
+- **[⚡ Performance Optimization](../REPORTS/RACINE/performance_optimization_report.md)** - Performance tuning guides
 
 ### 🎯 **Quick Navigation**
 
@@ -508,7 +508,7 @@ graph TB
 
 *Professional system design for enterprise-grade DevOps automation*
 
-**🏗️ System Design** | **📚 Complete Reference** - [Documentation](../README.md) | **🛡️ Enterprise Grade** - Security Implementation
+**🏗️ System Design** | **📚 Complete Reference** - [Documentation](../INDEX_FINAL_DOCUMENTATION_ATHALIA.md) | **🛡️ Enterprise Grade** - Security Implementation
 
 **Last Updated:** August 14, 2025 | **Version:** 6.1 | **Status:** Production Ready - Modular Architecture Complete
 
