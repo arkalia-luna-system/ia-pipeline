@@ -270,8 +270,16 @@ graph LR
 echo "🧪 VÉRIFICATION DE SANTÉ ATHALIA"
 echo "================================="
 
+# Utiliser le module de vérification intégré
+python3 athalia_core/utilities/ready_check.py
+
+# Alternative: Vérification manuelle des composants clés
+echo ""
+echo "🔍 VÉRIFICATION MANUELLE COMPLÉMENTAIRE"
+echo "========================================"
+
 # Test 1: Import des modules de base
-source .venv/bin/activate && python3 -c "
+python3 -c "
 try:
     from athalia_core.core.unified_orchestrator import UnifiedOrchestrator
     print('✅ Modules de base: OK')
@@ -280,10 +288,10 @@ except ImportError as e:
 "
 
 # Test 2: Interface CLI
-source .venv/bin/activate && python3 bin/core/athalia_unified.py --help >/dev/null 2>&1 && echo "✅ Interface CLI: OK" || echo "❌ Interface CLI: ÉCHEC"
+python3 bin/core/athalia_unified.py --help >/dev/null 2>&1 && echo "✅ Interface CLI: OK" || echo "❌ Interface CLI: ÉCHEC"
 
 # Test 3: Chargement de la configuration
-source .venv/bin/activate && python3 -c "
+python3 -c "
 try:
     import yaml
     with open('config/athalia_config.yaml', 'r') as f:
@@ -294,7 +302,7 @@ except Exception as e:
 " 2>/dev/null || echo "⚠️ Configuration: Par défaut (acceptable)"
 
 # Test 4: Génération de projet
-source .venv/bin/activate && python3 -c "
+python3 -c "
 try:
     from athalia_core.utilities.generation_simple import generate_blueprint_mock
     blueprint = generate_blueprint_mock('Test API')
@@ -304,7 +312,7 @@ except Exception as e:
 "
 
 # Test 5: Validation de sécurité
-source .venv/bin/activate && python3 -c "
+python3 -c "
 try:
     from athalia_core.validation.security_validator import SecurityValidator
     validator = SecurityValidator()
@@ -313,8 +321,8 @@ except Exception as e:
     print(f'❌ Validation de sécurité: ÉCHEC - {e}')
 "
 
-# Test 6: Modules de qualité (NOUVEAU)
-source .venv/bin/activate && python3 -c "
+# Test 6: Modules de qualité
+python3 -c "
 try:
     from athalia_core.quality.code_linter import CodeLinter
     from athalia_core.quality.correction_optimizer import CorrectionOptimizer
@@ -333,6 +341,7 @@ echo "🎉 Vérification de santé terminée !"
 
 | **Composant** | **Test** | **Résultat Attendu** | **Action si Échec** |
 |:--------------|:---------|:---------------------|:---------------------|
+| **🔍 Vérification Système** | Module ready_check | ✅ OK (4/4 modules, 3/3 CLI, 1/2 config, 3/3 tests) | Vérifier l'installation |
 | **🧠 Modules de Base** | Test d'import | ✅ OK | Vérifier le chemin Python |
 | **💻 Interface CLI** | Commande d'aide | ✅ OK | Vérifier les permissions du script |
 | **⚙️ Configuration** | Chargement YAML | ✅ OK / ⚠️ Par défaut | Créer fichier de config |

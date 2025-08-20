@@ -9,10 +9,19 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+# Ajouter le répertoire parent au path pour importer athalia_core
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-class InternalLinkCorrector:
+from athalia_core.core.logger import Logger
+
+
+class InternalLinksCorrector:
+    """Correcteur de liens internes dans la documentation."""
+
     def __init__(self):
-        self.workspace = Path("/Volumes/T7/athalia-dev-setup")
+        """Initialise le correcteur."""
+        self.workspace = Path(__file__).parent.parent.parent
+        self.logger = Logger(__name__)
         self.docs_dir = self.workspace / "docs"
         self.correction_log = self.workspace / "internal_links_correction.log"
 
@@ -196,7 +205,7 @@ class InternalLinkCorrector:
 
 def main():
     """Fonction principale"""
-    corrector = InternalLinkCorrector()
+    corrector = InternalLinksCorrector()
 
     try:
         corrections = corrector.run_correction()

@@ -10,10 +10,15 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+# Ajouter le répertoire parent au path pour importer athalia_core
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+
+from athalia_core.core.logger import Logger
+
 
 class NavigationValidator:
     def __init__(self):
-        self.workspace = Path("/Volumes/T7/athalia-dev-setup")
+        self.workspace = Path(__file__).parent.parent.parent
         self.docs_dir = self.workspace / "docs"
         self.results_file = self.workspace / "navigation_validation_results.json"
         self.threshold_score = 80.0  # Score minimum acceptable

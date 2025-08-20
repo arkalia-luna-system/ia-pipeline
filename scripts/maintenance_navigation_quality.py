@@ -13,10 +13,16 @@ from pathlib import Path
 
 import schedule
 
+# Ajouter le répertoire parent au path pour importer athalia_core
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from athalia_core.analysis.architecture_analyzer import ArchitectureAnalyzer
+from athalia_core.core.logger import Logger
+
 
 class NavigationQualityMaintainer:
     def __init__(self):
-        self.workspace = Path("/Volumes/T7/athalia-dev-setup")
+        self.workspace = Path(__file__).parent.parent
         self.maintenance_log = self.workspace / "navigation_maintenance.log"
         self.quality_threshold = 80.0
         self.critical_links_threshold = 5

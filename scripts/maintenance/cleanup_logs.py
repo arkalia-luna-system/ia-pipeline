@@ -117,19 +117,18 @@ def optimize_log_rotation():
     logger.info("Optimisation de la rotation des logs...")
 
     # Créer un fichier de configuration pour logrotate si possible
+    # Configuration de rotation des logs
     logrotate_config = """
-# Configuration logrotate pour Athalia
-/Volumes/T7/athalia-dev-setup/logs/*.log {
+logs/*.log {
     daily
-    rotate 3
+    rotate 7
     compress
     delaycompress
     missingok
     notifempty
-    create 644 athalia staff
+    create 644 athalia athalia
     postrotate
-        # Redémarrer les services si nécessaire
-        echo "Logs rotés: $(date)"
+        /usr/bin/killall -HUP rsyslogd >/dev/null 2>&1 || true
     endscript
 }
 """
