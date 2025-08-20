@@ -12,7 +12,7 @@ Merci de contribuer à ce projet open source !
 ```bash
 # Cloner le repository
 git clone <repository-url>
-cd athalia-dev-setup
+cd ia-pipeline
 
 # Créer l'environnement virtuel
 python3 -m venv .venv

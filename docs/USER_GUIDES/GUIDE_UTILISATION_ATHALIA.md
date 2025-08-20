@@ -19,7 +19,7 @@ Athalia est une plateforme d'automatisation DevOps pour la génération automati
 ```bash
 # Cloner le projet
 git clone https://github.com/arkalia-luna-system/ia-pipeline.git
-cd athalia-dev-setup
+cd ia-pipeline
 
 # Activer l'environnement virtuel
 source .venv/bin/activate

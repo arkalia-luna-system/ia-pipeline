@@ -156,7 +156,7 @@ cp config/athalia_config.yaml.backup config/athalia_config.yaml
 ```bash
 # Cloner à nouveau le projet
 git clone https://github.com/arkalia-luna-system/ia-pipeline.git
-cd athalia-dev-setup
+cd ia-pipeline
 
 # Réinstaller
 pip install -r requirements.txt

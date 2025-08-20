@@ -43,7 +43,7 @@ Guide complet d'installation et de configuration d'Athalia, un système d'intell
 ```bash
 # Cloner le repository
 git clone https://github.com/arkalia-luna-system/ia-pipeline.git
-cd athalia-dev-setup
+cd ia-pipeline
 
 # Vérifier la branche
 git checkout develop

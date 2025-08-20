@@ -130,7 +130,7 @@ flowchart TD
 ```bash
 # 📥 Cloner le repository
 git clone https://github.com/arkalia-luna-system/ia-pipeline.git
-cd athalia-dev-setup
+cd ia-pipeline
 
 # ✅ Vérifier le clonage réussi
 ls -la | grep -E "(athalia_core|docs|tests)" && echo "✅ Repository cloné avec succès" || echo "❌ Échec de vérification du clone"

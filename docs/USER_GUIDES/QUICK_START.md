@@ -117,14 +117,14 @@ sequenceDiagram
     
     U->>G: git clone
     G->>L: Repository téléchargé
-    U->>L: cd athalia-dev-setup
+            U->>L: cd ia-pipeline
     L->>U: Structure vérifiée
 ```
 
 ```bash
 # Cloner Athalia
 git clone https://github.com/arkalia-luna-system/ia-pipeline.git
-cd athalia-dev-setup
+cd ia-pipeline
 
 # Vérifier la structure
 ls -la
@@ -132,7 +132,7 @@ ls -la
 
 **Structure Attendue :**
 ```
-athalia-dev-setup/
+        ia-pipeline/
 ├── 🏗️ athalia_core/          # 22+ modules spécialisés
 │   ├── 🔧 quality/            # Modules de qualité (NOUVEAU)
 │   ├── 🚀 utilities/          # Utilitaires système
