@@ -5,13 +5,15 @@
 ![Athalia Logo](https://img.shields.io/badge/ATHALIA-DevOps%20Platform-blue?style=for-the-badge&logo=python)
 
 [![Python Version](https://img.shields.io/badge/python-3.10+-brightgreen.svg?style=flat-square)](https://python.org)
-[![Code Lines](https://img.shields.io/badge/lines-72,626-orange.svg?style=flat-square)](https://github.com)
-[![Modules](https://img.shields.io/badge/modules-93-yellow.svg?style=flat-square)](https://github.com)
-[![Dashboards](https://img.shields.io/badge/dashboards-99-purple.svg?style=flat-square)](https://github.com)
-[![Scripts](https://img.shields.io/badge/scripts-38-red.svg?style=flat-square)](https://github.com)
+[![CI Matrix](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/ci-matrix.yml/badge.svg)](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/ci-matrix.yml)
+[![Code Coverage](https://codecov.io/gh/arkalia-luna-system/ia-pipeline/branch/main/graph/badge.svg)](https://codecov.io/gh/arkalia-luna-system/ia-pipeline)
+[![Security](https://img.shields.io/badge/security-bandit%2Bpip--audit%2Bsafety-brightgreen.svg?style=flat-square)](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/ci-matrix.yml)
+[![GitHub Pages](https://img.shields.io/badge/pages-available-brightgreen.svg?style=flat-square)](https://arkalia-luna-system.github.io/ia-pipeline)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 
 **Enterprise-grade DevOps automation platform for secure project generation, intelligent cleanup, and infrastructure management.**
+
+[🔍 **Latest CI Status**](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/ci-matrix.yml) | [📊 **Security Reports**](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/ci-matrix.yml) | [🌐 **Live Demo**](https://arkalia-luna-system.github.io/ia-pipeline)
 
 </div>
 
@@ -83,7 +85,7 @@ graph TB
 ```bash
 # 1️⃣ Clone repository
 git clone https://github.com/arkalia-luna-system/ia-pipeline.git
-cd athalia-dev-setup
+cd ia-pipeline
 
 # 2️⃣ Setup Python environment
 python -m venv .venv
@@ -95,6 +97,9 @@ pip install -r requirements.txt
 
 # 4️⃣ Verify installation
 python -c "print('🎉 Athalia ready for use!')"
+
+# 5️⃣ Quick verification (one-liner)
+python -m athalia_core.demo.quickcheck || echo "✅ Basic installation verified"
 ```
 
 ### 🧪 **First Test** (2 minutes)

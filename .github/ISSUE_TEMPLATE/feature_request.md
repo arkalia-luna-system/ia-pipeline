@@ -1,20 +1,28 @@
 ---
-name: Feature request
-about: Suggest an idea for this project
-title: ''
-labels: 'enhancement'
+name: 🚀 Feature Request
+about: Suggérer une idée pour Athalia
+title: '[FEATURE] '
+labels: ['enhancement', 'needs-triage']
 assignees: ''
-
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+## 🚀 Résumé de la fonctionnalité
+<!-- Description claire et concise de la fonctionnalité souhaitée -->
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+## 🎯 Problème résolu
+<!-- Description du problème que cette fonctionnalité résoudrait -->
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+## 💡 Solution proposée
+<!-- Description claire de la solution souhaitée -->
 
-**Additional context**
-Add any other context or screenshots about the feature request here.
+## 🔄 Alternatives considérées
+<!-- Autres solutions que vous avez envisagées -->
+
+## 📱 Contexte additionnel
+<!-- Capture d'écran, maquette, contexte métier, etc. -->
+
+## 🏷️ Priorité
+- [ ] **Faible** - Amélioration cosmétique
+- [ ] **Moyenne** - Amélioration fonctionnelle
+- [ ] **Haute** - Fonctionnalité critique
+- [ ] **Urgente** - Bloqueur métier

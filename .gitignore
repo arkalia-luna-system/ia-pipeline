@@ -55,6 +55,13 @@ coverage.xml
 .pytest_cache/
 cover/
 
+# CI/CD artifacts (NE PAS COMMITTER)
+ci_diagnostic_*.json
+test-results/
+*.xml
+*.html
+*.log
+
 # Translations
 *.mo
 *.pot
