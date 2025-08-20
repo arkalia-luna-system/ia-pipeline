@@ -410,4 +410,4 @@ debugger.breakpoint()
 
 ---
 
-*Guide développeur mis à jour le 2025-07-18*
+*Guide développeur mis à jour le 2025-08-20*

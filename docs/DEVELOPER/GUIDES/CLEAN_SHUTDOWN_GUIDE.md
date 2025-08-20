@@ -118,7 +118,7 @@ Le rapport est sauvegardé dans `./logs/shutdown_report_YYYYMMDD_HHMMSS.txt`
 
 ```
 🚀 Démarrage de la fermeture propre d'Athalia
-📂 Projet: athalia-dev-setup
+📂 Projet: ia-pipeline
 🌿 Branche: develop
 
 ▶️  1. Vérification de l'état Git
@@ -174,7 +174,7 @@ Le rapport contient :
 ```text
 === RAPPORT DE FERMETURE ATHALIA ===
 Date: Wed Jul 30 18:15:00 CEST 2025
-Projet: athalia-dev-setup
+Projet: ia-pipeline
 Branche: develop
 
 === ÉTAT GIT ===
@@ -210,7 +210,7 @@ Fermeture: ✅ Propre
 Dans le script `bin/ath-clean-shutdown` :
 
 ```bash
-PROJECT_NAME="athalia-dev-setup"  # Nom du projet
+PROJECT_NAME="ia-pipeline"  # Nom du projet
 BRANCH="develop"                  # Branche par défaut
 REMOTE="origin"                   # Remote Git
 ```

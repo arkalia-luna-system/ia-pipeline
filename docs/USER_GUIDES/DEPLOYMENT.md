@@ -12,7 +12,7 @@
 ```bash
 # 1. Cloner le repository
 git clone https://github.com/arkalia-luna-system/ia-pipeline.git
-cd athalia-dev-setup
+cd ia-pipeline
 
 # 2. Créer l'environnement virtuel
 python3 -m venv .venv
@@ -99,7 +99,7 @@ sudo apt install -y python3 python3-pip git docker.io
 
 # 2. Cloner et configurer
 git clone https://github.com/arkalia-luna-system/ia-pipeline.git
-cd athalia-dev-setup
+cd ia-pipeline
 
 # 3. Configuration production
 cp config/athalia_config.yaml config/athalia_config_prod.yaml

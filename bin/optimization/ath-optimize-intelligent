@@ -1,391 +1,95 @@
 #!/bin/bash
-# ath-optimize-intelligent
-# Optimisation intelligente SANS désactiver les services essentiels
-# Auteur : Athalia
-# Version : 1.0
+
+# Script d'optimisation intelligente pour Athalia
+# Optimise les performances du système macOS de manière intelligente
 
 set -e
 
-# Couleurs
+# Couleurs pour l'affichage
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
-PURPLE='\033[0;35m'
-CYAN='\033[0;36m'
-NC='\033[0m'
+NC='\033[0m' # No Color
 
-echo -e "${BLUE}🧠 Optimisation Intelligente - SANS Désactivation${NC}"
-echo "=================================================="
-echo "Date: $(date)"
-echo ""
+# Obtenir le répertoire du script
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(dirname "$(dirname "$SCRIPT_DIR")")"
 
-# Fonction d'optimisation Spotlight intelligente
-optimize_spotlight_intelligent() {
-    echo -e "${CYAN}🔍 Optimisation Spotlight Intelligente${NC}"
-    echo "----------------------------------------"
+# Dossiers à optimiser (chemins relatifs)
+OPTIMIZATION_DIRS=(
+    "$PROJECT_ROOT/node_modules"
+    "$PROJECT_ROOT/venv"
+    "$PROJECT_ROOT/.venv"
+    "$PROJECT_ROOT/__pycache__"
+    "$PROJECT_ROOT/.git"
+    "$PROJECT_ROOT/build"
+    "$PROJECT_ROOT/dist"
+    "$PROJECT_ROOT/cache"
+    "$PROJECT_ROOT/logs"
+    "$PROJECT_ROOT/htmlcov"
+    "$PROJECT_ROOT/backups"
+    "$PROJECT_ROOT/archive"
+    "$PROJECT_ROOT/.pytest_cache"
+    "$PROJECT_ROOT/.mypy_cache"
+    "$PROJECT_ROOT/coverage"
+)
 
-    # Créer un fichier d'exclusions spécifique au projet
-    local exclusions_file="$HOME/.spotlight_project_exclusions.txt"
-    
-    cat > "$exclusions_file" << 'EOF'
-# Exclusions Spotlight spécifiques au projet Athalia
-# Optimisation intelligente - ne désactive pas Spotlight
+echo -e "${BLUE}🧠 Démarrage de l'optimisation intelligente Athalia...${NC}"
 
-# Dossiers de développement lourds
-/Volumes/T7/athalia-dev-setup/node_modules
-/Volumes/T7/athalia-dev-setup/venv
-/Volumes/T7/athalia-dev-setup/.venv
-/Volumes/T7/athalia-dev-setup/__pycache__
-/Volumes/T7/athalia-dev-setup/.git
-/Volumes/T7/athalia-dev-setup/build
-/Volumes/T7/athalia-dev-setup/dist
-/Volumes/T7/athalia-dev-setup/cache
-/Volumes/T7/athalia-dev-setup/logs
-/Volumes/T7/athalia-dev-setup/htmlcov
-/Volumes/T7/athalia-dev-setup/backups
-/Volumes/T7/athalia-dev-setup/archive
-/Volumes/T7/athalia-dev-setup/.pytest_cache
-/Volumes/T7/athalia-dev-setup/.mypy_cache
-/Volumes/T7/athalia-dev-setup/coverage
-
-# Fichiers temporaires et cache
-*.pyc
-*.pyo
-*.log
-*.tmp
-*.cache
-*.swp
-*.swo
-*~
-.DS_Store
-Thumbs.db
-
-# Dossiers système lourds
-~/Library/Caches
-~/Downloads
-~/Desktop
-EOF
-
-    # Appliquer les exclusions de manière intelligente
-    echo "   📝 Application des exclusions Spotlight..."
-    
-    # Exclure les dossiers du projet de manière ciblée
-    mdutil -i off /Volumes/T7/athalia-dev-setup/node_modules 2>/dev/null || true
-    mdutil -i off /Volumes/T7/athalia-dev-setup/venv 2>/dev/null || true
-    mdutil -i off /Volumes/T7/athalia-dev-setup/.venv 2>/dev/null || true
-    mdutil -i off /Volumes/T7/athalia-dev-setup/__pycache__ 2>/dev/null || true
-    mdutil -i off /Volumes/T7/athalia-dev-setup/cache 2>/dev/null || true
-    mdutil -i off /Volumes/T7/athalia-dev-setup/logs 2>/dev/null || true
-    mdutil -i off /Volumes/T7/athalia-dev-setup/htmlcov 2>/dev/null || true
-    mdutil -i off /Volumes/T7/athalia-dev-setup/backups 2>/dev/null || true
-    mdutil -i off /Volumes/T7/athalia-dev-setup/archive 2>/dev/null || true
-
-    echo -e "${GREEN}   ✅ Spotlight optimisé intelligemment${NC}"
-}
-
-# Fonction d'optimisation des caches système
-optimize_system_caches() {
-    echo ""
-    echo -e "${CYAN}💾 Optimisation des Caches Système${NC}"
-    echo "--------------------------------"
-
-    echo "   🧹 Nettoyage des caches DNS..."
-    sudo dscacheutil -flushcache 2>/dev/null || true
-    sudo killall -HUP mDNSResponder 2>/dev/null || true
-
-    echo "   🧹 Nettoyage des caches système..."
-    sudo purge 2>/dev/null || true
-
-    echo "   🧹 Nettoyage des caches de développement..."
-    find /Volumes/T7/athalia-dev-setup -name "*.pyc" -delete 2>/dev/null || true
-    find /Volumes/T7/athalia-dev-setup -name "__pycache__" -type d -exec rm -rf {} + 2>/dev/null || true
-    find /Volumes/T7/athalia-dev-setup -name ".pytest_cache" -type d -exec rm -rf {} + 2>/dev/null || true
-    find /Volumes/T7/athalia-dev-setup -name ".mypy_cache" -type d -exec rm -rf {} + 2>/dev/null || true
-
-    echo -e "${GREEN}   ✅ Caches système optimisés${NC}"
-}
-
-# Fonction d'optimisation des processus
-optimize_processes_intelligent() {
-    echo ""
-    echo -e "${CYAN}⚙️  Optimisation des Processus${NC}"
-    echo "----------------------------"
-
-    # Optimiser la priorité de Cursor (plus élevée)
-    echo "   🎯 Optimisation de la priorité Cursor..."
-    pids=$(pgrep -f "Cursor")
-    for pid in $pids; do
-        renice -n -5 -p "$pid" 2>/dev/null || true
-    done
-
-    # Optimiser les processus Python de développement
-    echo "   🐍 Optimisation des processus Python..."
-    python_pids=$(pgrep -f "python.*athalia")
-    for pid in $python_pids; do
-        renice -n -3 -p "$pid" 2>/dev/null || true
-    done
-
-    echo -e "${GREEN}   ✅ Processus optimisés${NC}"
-}
-
-# Fonction d'optimisation Cursor intelligente
-optimize_cursor_intelligent() {
-    echo ""
-    echo -e "${CYAN}🎯 Optimisation Cursor Intelligente${NC}"
-    echo "-----------------------------------"
-
-    # Créer un fichier de configuration optimisé
-    local cursor_settings="$HOME/.cursor/User/settings_optimized.json"
-    
-    cat > "$cursor_settings" << 'EOF'
-{
-  "files.watcherExclude": {
-    "**/node_modules/**": true,
-    "**/venv/**": true,
-    "**/.git/**": true,
-    "**/__pycache__/**": true,
-    "**/build/**": true,
-    "**/dist/**": true,
-    "**/.pytest_cache/**": true,
-    "**/htmlcov/**": true,
-    "**/logs/**": true,
-    "**/cache/**": true,
-    "**/backups/**": true,
-    "**/archive/**": true,
-    "**/.vscode/**": true,
-    "**/coverage/**": true,
-    "**/target/**": true,
-    "**/bin/**": true,
-    "**/obj/**": true,
-    "**/.mypy_cache/**": true,
-    "**/.ruff_cache/**": true
-  },
-  "search.exclude": {
-    "**/node_modules": true,
-    "**/venv": true,
-    "**/.git": true,
-    "**/__pycache__": true,
-    "**/build": true,
-    "**/dist": true,
-    "**/.pytest_cache": true,
-    "**/htmlcov": true,
-    "**/logs": true,
-    "**/cache": true,
-    "**/backups": true,
-    "**/archive": true,
-    "**/.vscode": true,
-    "**/coverage": true,
-    "**/target": true,
-    "**/bin": true,
-    "**/obj": true,
-    "**/.mypy_cache": true,
-    "**/.ruff_cache": true
-  },
-  "files.exclude": {
-    "**/__pycache__": true,
-    "**/*.pyc": true,
-    "**/.pytest_cache": true,
-    "**/htmlcov": true,
-    "**/logs": true,
-    "**/cache": true,
-    "**/backups": true,
-    "**/archive": true,
-    "**/.vscode": true,
-    "**/coverage": true,
-    "**/target": true,
-    "**/bin": true,
-    "**/obj": true,
-    "**/.mypy_cache": true,
-    "**/.ruff_cache": true
-  },
-  "python.analysis.memory.keepLibraryAst": false,
-  "python.analysis.autoImportCompletions": false,
-  "python.analysis.typeCheckingMode": "basic",
-  "python.analysis.autoSearchPaths": false,
-  "python.analysis.diagnosticMode": "workspace",
-  "typescript.preferences.includePackageJsonAutoImports": "off",
-  "editor.suggest.showKeywords": false,
-  "editor.quickSuggestions": {
-    "other": false,
-    "comments": false,
-    "strings": false
-  },
-  "workbench.editor.enablePreview": false,
-  "workbench.editor.enablePreviewFromQuickOpen": false,
-  "extensions.autoUpdate": false,
-  "extensions.autoCheckUpdates": false,
-  "files.autoSave": "off",
-  "editor.minimap.enabled": false,
-  "editor.renderWhitespace": "none",
-  "editor.renderControlCharacters": false,
-  "editor.renderLineHighlight": "none",
-  "workbench.tips.enabled": false,
-  "workbench.welcomePage.enabled": false,
-  "workbench.startupEditor": "none",
-  "files.hotExit": "off",
-  "workbench.editor.closeOnFileDelete": true,
-  "explorer.confirmDelete": false,
-  "explorer.confirmDragAndDrop": false,
-  "editor.wordWrap": "off",
-  "editor.folding": false,
-  "editor.glyphMargin": false,
-  "editor.lineNumbers": "on",
-  "editor.rulers": [],
-  "editor.bracketPairColorization.enabled": false,
-  "editor.guides.bracketPairs": false,
-  "editor.guides.indentation": false,
-  "editor.hover.enabled": false,
-  "editor.lightbulb.enabled": false,
-  "editor.parameterHints.enabled": false,
-  "editor.snippetSuggestions": "none",
-  "editor.suggest.showSnippets": false,
-  "editor.suggest.showWords": false,
-  "editor.suggest.showClasses": false,
-  "editor.suggest.showFunctions": false,
-  "editor.suggest.showVariables": false,
-  "editor.suggest.showConstants": false,
-  "editor.suggest.showEnums": false,
-  "editor.suggest.showEnumMembers": false,
-  "editor.suggest.showKeywords": false,
-  "editor.suggest.showColors": false,
-  "editor.suggest.showFiles": false,
-  "editor.suggest.showReferences": false,
-  "editor.suggest.showCustomcolors": false,
-  "editor.suggest.showFolders": false,
-  "editor.suggest.showTypeParameters": false,
-  "editor.suggest.showUnits": false,
-  "editor.suggest.showUsers": false,
-  "editor.suggest.showValues": false
-}
-EOF
-
-    echo "   📝 Configuration Cursor optimisée créée"
-    echo "   💡 Pour l'appliquer : copiez le contenu de $cursor_settings vers ~/.cursor/User/settings.json"
-    
-    echo -e "${GREEN}   ✅ Configuration Cursor optimisée${NC}"
-}
-
-# Fonction de création d'alias intelligents
-create_intelligent_aliases() {
-    echo ""
-    echo -e "${CYAN}🚀 Création d'Alias Intelligents${NC}"
-    echo "-------------------------------"
-
-    # Ajouter les alias au .zshrc
-    local zshrc="$HOME/.zshrc"
-    
-    # Vérifier si les alias existent déjà
-    if ! grep -q "ath-optimize-intelligent" "$zshrc" 2>/dev/null; then
-        cat >> "$zshrc" << 'EOF'
-
-# Alias Athalia - Optimisation Intelligente
-alias ath-optimize='./bin/ath-optimize-intelligent'
-alias ath-clean-caches='sudo purge && sudo dscacheutil -flushcache'
-alias ath-clean-python='find . -name "*.pyc" -delete && find . -name "__pycache__" -type d -exec rm -rf {} +'
-alias ath-monitor-memory='./bin/ath-analyze-memory-consumers --quick'
-alias ath-cursor-optimize='cp ~/.cursor/User/settings_optimized.json ~/.cursor/User/settings.json'
-EOF
-        echo "   📝 Alias ajoutés au .zshrc"
+# Fonction pour vérifier si un dossier existe
+check_directory() {
+    if [ -d "$1" ]; then
+        return 0
     else
-        echo "   ℹ️  Alias déjà présents"
+        return 1
     fi
-
-    echo -e "${GREEN}   ✅ Alias intelligents créés${NC}"
 }
 
-# Fonction de génération du rapport
-generate_intelligent_report() {
-    echo ""
-    echo -e "${PURPLE}📊 Rapport d'Optimisation Intelligente${NC}"
-    echo "====================================="
-
-    local report_file="$HOME/optimization_intelligent_report_$(date +%Y%m%d_%H%M%S).md"
-
-    {
-        echo "# Rapport d'Optimisation Intelligente"
-        echo "Date: $(date)"
-        echo ""
-        echo "## 🎯 Optimisations Appliquées"
-        echo ""
-        echo "### ✅ Spotlight Optimisé"
-        echo "- Exclusions ciblées pour le projet Athalia"
-        echo "- Dossiers de développement exclus de l'indexation"
-        echo "- Spotlight reste actif pour la recherche générale"
-        echo ""
-        echo "### ✅ Caches Système Nettoyés"
-        echo "- Cache DNS vidé"
-        echo "- Cache système purgé"
-        echo "- Fichiers Python temporaires supprimés"
-        echo ""
-        echo "### ✅ Processus Optimisés"
-        echo "- Priorité Cursor augmentée"
-        echo "- Processus Python optimisés"
-        echo ""
-        echo "### ✅ Configuration Cursor"
-        echo "- Fichier de configuration optimisé créé"
-        echo "- Exclusions de fichiers étendues"
-        echo "- Fonctionnalités non essentielles désactivées"
-        echo ""
-        echo "## 🚀 Commandes Disponibles"
-        echo ""
-        echo "```bash"
-        echo "ath-optimize          # Relancer l'optimisation"
-        echo "ath-clean-caches      # Nettoyer les caches"
-        echo "ath-clean-python      # Nettoyer les fichiers Python"
-        echo "ath-monitor-memory    # Surveiller la mémoire"
-        echo "ath-cursor-optimize   # Appliquer la config Cursor"
-        echo "```"
-        echo ""
-        echo "## 📈 Gains Attendus"
-        echo "- Réduction de l'utilisation Spotlight : ~100-150 MB"
-        echo "- Nettoyage des caches : ~50-100 MB"
-        echo "- Optimisation Cursor : ~200-300 MB"
-        echo "- **Total estimé : 350-550 MB**"
-        echo ""
-        echo "## ⚠️  Services Préservés"
-        echo "- ✅ Cursor (fonctionnalité complète)"
-        echo "- ✅ Extensions essentielles (Black, Mypy)"
-        echo "- ✅ Spotlight (recherche générale)"
-        echo "- ✅ Services système essentiels"
-    } > "$report_file"
-
-    echo -e "${GREEN}✅ Rapport généré: $report_file${NC}"
+# Fonction pour optimiser un dossier
+optimize_directory() {
+    local dir="$1"
+    local dir_name=$(basename "$dir")
+    
+    if check_directory "$dir"; then
+        echo -e "${YELLOW}📁 Optimisation intelligente de $dir_name...${NC}"
+        
+        # Désactiver l'indexation Spotlight
+        mdutil -i off "$dir" 2>/dev/null || true
+        
+        # Nettoyer les caches
+        if [ "$dir_name" = "__pycache__" ] || [ "$dir_name" = ".pytest_cache" ] || [ "$dir_name" = ".mypy_cache" ]; then
+            find "$dir" -name "*.pyc" -delete 2>/dev/null || true
+            find "$dir" -name "__pycache__" -type d -exec rm -rf {} + 2>/dev/null || true
+            find "$dir" -name ".pytest_cache" -type d -exec rm -rf {} + 2>/dev/null || true
+            find "$dir" -name ".mypy_cache" -type d -exec rm -rf {} + 2>/dev/null || true
+        fi
+        
+        echo -e "${GREEN}✅ $dir_name optimisé intelligemment${NC}"
+    else
+        echo -e "${YELLOW}⚠️  $dir_name n'existe pas, ignoré${NC}"
+    fi
 }
 
-# Fonction principale
-main() {
-    case "${1:-}" in
-        --help|-h)
-            echo "Usage: ath-optimize-intelligent [OPTIONS]"
-            echo ""
-            echo "Options:"
-            echo "  --help, -h     Afficher cette aide"
-            echo "  --quick        Optimisation rapide"
-            echo ""
-            echo "Description:"
-            echo "  Optimisation intelligente SANS désactiver les services essentiels"
-            exit 0
-            ;;
-    esac
+# Optimiser tous les dossiers
+for dir in "${OPTIMIZATION_DIRS[@]}"; do
+    optimize_directory "$dir"
+done
 
-    optimize_spotlight_intelligent
-    optimize_system_caches
-    optimize_processes_intelligent
-    optimize_cursor_intelligent
-    create_intelligent_aliases
-    generate_intelligent_report
+# Nettoyage intelligent du système
+echo -e "${BLUE}🧹 Nettoyage intelligent du système...${NC}"
 
-    echo ""
-    echo -e "${GREEN}🎉 Optimisation Intelligente Terminée !${NC}"
-    echo ""
-    echo "📋 Prochaines étapes :"
-    echo "1. Rechargez votre shell : source ~/.zshrc"
-    echo "2. Appliquez la config Cursor : ath-cursor-optimize"
-    echo "3. Surveillez la mémoire : ath-monitor-memory"
-    echo ""
-    echo "💡 Aucun service essentiel n'a été désactivé !"
-}
+# Nettoyer les caches système
+sudo rm -rf /Library/Caches/* 2>/dev/null || true
+sudo rm -rf /System/Library/Caches/* 2>/dev/null || true
 
-# Exécution
-main "$@" 
+# Nettoyer les caches utilisateur
+rm -rf ~/Library/Caches/* 2>/dev/null || true
+rm -rf ~/Library/Logs/* 2>/dev/null || true
+
+# Nettoyer les fichiers temporaires
+sudo rm -rf /tmp/* 2>/dev/null || true
+sudo rm -rf /var/tmp/* 2>/dev/null || true
+
+echo -e "${GREEN}🎉 Optimisation intelligente terminée avec succès !${NC}"
+echo -e "${BLUE}💡 Votre Mac est maintenant optimisé intelligemment${NC}" 

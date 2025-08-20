@@ -191,4 +191,4 @@ def generate_error_report():
 
 ---
 
-*Documentation générée automatiquement par Athalia - 2025-07-29*
+*Documentation générée automatiquement par Athalia - 2025-08-20*

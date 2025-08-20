@@ -53,13 +53,12 @@ Ce dossier contient tous les guides utilisateur pour Athalia, organisés de mani
 
 ### **Pour les contributeurs :**
 1. **[Contributing](CONTRIBUTING.md)** - Guide de contribution
-2. **[Plan d'Améliorations Futures](../REPORTS/RELEASES_AND_BILANS/PLAN_ACTION_AMELIORATIONS_FUTURES_ATHALIA_2025.md)** - Roadmap
 
 ---
 
 ## 📊 **STATISTIQUES**
 
-- **15 guides** principaux disponibles (10 + 5 robotique)
+- **10 guides** principaux disponibles (5 + 5 robotique)
 - **4 niveaux** d'utilisateur (débutant, avancé, robotique, contributeur)
 - **Documentation complète** et à jour
 - **Navigation intuitive** et logique

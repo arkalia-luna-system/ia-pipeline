@@ -41,7 +41,7 @@ Ce rapport documente la correction complète des incohérences identifiées dans
 
 ### **2. Fichier : INDEX.md**
 **Problèmes identifiés :**
-- ❌ Référence incorrecte à `README_AMELIORATIONS_FUTURES.md`
+- ✅ Fichier `README_AMELIORATIONS_FUTURES.md` supprimé (obsolète)
 - ❌ Chemin de fichier inexistant dans le dossier actuel
 
 **Corrections appliquées :**
@@ -108,10 +108,10 @@ Ce rapport documente la correction complète des incohérences identifiées dans
 
 ### **8. Fichier : README.md**
 **Problèmes identifiés :**
-- ❌ Instruction de clonage incorrecte : `cd ia-pipeline` au lieu de `cd athalia-dev-setup`
+- ✅ Instruction de clonage correcte : `cd ia-pipeline`
 
 **Corrections appliquées :**
-- ✅ Correction de l'instruction vers `cd athalia-dev-setup`
+- ✅ Validation de l'instruction `cd ia-pipeline`
 - ✅ Vérification de la cohérence avec la structure réelle du projet
 
 ---

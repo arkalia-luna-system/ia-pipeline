@@ -117,14 +117,14 @@ sequenceDiagram
     
     U->>G: git clone
     G->>L: Repository téléchargé
-    U->>L: cd athalia-dev-setup
+            U->>L: cd ia-pipeline
     L->>U: Structure vérifiée
 ```
 
 ```bash
 # Cloner Athalia
 git clone https://github.com/arkalia-luna-system/ia-pipeline.git
-cd athalia-dev-setup
+cd ia-pipeline
 
 # Vérifier la structure
 ls -la
@@ -132,7 +132,7 @@ ls -la
 
 **Structure Attendue :**
 ```
-athalia-dev-setup/
+        ia-pipeline/
 ├── 🏗️ athalia_core/          # 22+ modules spécialisés
 │   ├── 🔧 quality/            # Modules de qualité (NOUVEAU)
 │   ├── 🚀 utilities/          # Utilitaires système
@@ -195,7 +195,7 @@ which python  # Doit pointer vers .venv/bin/python
 pip install -r requirements.txt
 
 # Vérifier l'installation
-python -c "from athalia_core import UnifiedOrchestrator; print('✅ Installation réussie')"
+python -c "from athalia_core.core.unified_orchestrator import UnifiedOrchestrator; print('✅ Installation réussie')"
 ```
 
 **Sortie Attendue :**
@@ -224,10 +224,13 @@ flowchart LR
 
 ```bash
 # Vérifier que tout fonctionne
-python -m athalia_core.main --help
+python bin/core/athalia_unified.py --help
 
 # Lancer un audit rapide
-python -m athalia_core.main --action audit --quick
+python bin/core/ath-audit.py --help
+
+# Vérification de santé complète
+python athalia_core/utilities/ready_check.py
 ```
 
 ### **🏗️ Génération de Votre Premier Projet**
@@ -257,7 +260,11 @@ graph TB
 
 ```bash
 # Générer un projet Python basique
-python -m athalia_core.main --action generate --template python-basic --name mon-projet
+python -c "
+from athalia_core.utilities.generation_simple import generate_project
+project = generate_project('mon-projet', 'python-basic')
+print(f'✅ Projet généré: {project}')
+"
 
 # Vérifier la génération
 ls -la mon-projet/
@@ -296,10 +303,14 @@ flowchart TD
 
 ```bash
 # Audit complet de sécurité
-python -m athalia_core.main --action security --audit
+python bin/core/ath-audit.py --help
 
-# Validation des chemins sécurisés
-python -m athalia_core.main --action security --validate-paths
+# Validation de sécurité avec le module intégré
+python -c "
+from athalia_core.validation.security_validator import SecurityValidator
+validator = SecurityValidator()
+print(f'✅ Validation de sécurité: {len(validator.allowed_commands)} commandes autorisées')
+"
 ```
 
 ### **✅ Vérification des Bonnes Pratiques**

@@ -198,7 +198,7 @@ Les rapports sont générés dans `./logs/shutdown_report_YYYYMMDD_HHMMSS.txt` :
 ```text
 === RAPPORT DE FERMETURE ATHALIA ===
 Date: Wed Jul 30 18:20:06 CEST 2025
-Projet: athalia-dev-setup
+Projet: ia-pipeline
 Branche: develop
 
 === ÉTAT GIT ===

@@ -39,13 +39,6 @@ class SecurityValidator:
             "ath-build.py",
             # Scripts bash
             "ath-clean",
-            "/Volumes/T7/athalia-dev-setup/bin/ath-clean",
-            # Chemins complets des scripts
-            "/Volumes/T7/athalia-dev-setup/bin/ath-lint.py",
-            "/Volumes/T7/athalia-dev-setup/bin/ath-test.py",
-            "/Volumes/T7/athalia-dev-setup/bin/ath-coverage.py",
-            "/Volumes/T7/athalia-dev-setup/bin/ath-audit.py",
-            "/Volumes/T7/athalia-dev-setup/bin/ath-build.py",
             # Chemins relatifs des scripts
             "bin/ath-lint.py",
             "bin/ath-test.py",
@@ -57,11 +50,6 @@ class SecurityValidator:
             "../../bin/ath-coverage.py",
             "../../bin/ath-audit.py",
             "../../bin/ath-build.py",
-            # Chemin exact utilisé dans le test
-            "/Volumes/T7/athalia-dev-setup/tests/bin/../../bin/ath-lint.py",
-            "/Volumes/T7/athalia-dev-setup/tests/bin/../../bin/ath-test.py",
-            "/Volumes/T7/athalia-dev-setup/tests/bin/../../bin/ath-coverage.py",
-            "/Volumes/T7/athalia-dev-setup/tests/bin/../../bin/ath-audit.py",
             # Commandes Python
             "python",
             "python3",

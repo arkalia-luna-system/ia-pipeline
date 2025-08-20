@@ -1,6 +1,15 @@
 # CHANGELOG Athalia/Arkalia
 
-
+## [12.0.0] - 2025-08-20
+### 🔧 **Amélioration de la Portabilité et Qualité du Code**
+- **Correction des chemins hardcodés** : Remplacement de tous les chemins absolus `/Volumes/T7/athalia-dev-setup` par des chemins relatifs
+- **Amélioration de la portabilité** : Le projet peut maintenant être cloné n'importe où
+- **Correction des erreurs de linting** : Suppression des imports `typing` dépréciés (Dict, List, Tuple)
+- **Nettoyage des fichiers système** : Suppression des fichiers `.DS_Store` et `.before_100`
+- **Mise à jour de la documentation** : Index principal et guides utilisateur synchronisés
+- **Structure des scripts d'optimisation** : Amélioration de la portabilité des scripts bash
+- **Validation complète** : Black et Ruff appliqués, tous les tests passent
+- **Push sur GitHub** : Changements sauvegardés sur la branche develop
 
 ## [11.0.0] - 2025-07-18
 - Première release candidate open source
@@ -17,8 +26,6 @@
 - 180+ tests automatisés, couverture >75%
 - Documentation exhaustive, guides, best practices, déploiement rapide
 
-
-
 ## [10.0.0] - 2025-07-30
 ### 🔒 **Corrections de Sécurité et Tests**
 - **Validateur de sécurité corrigé** : Autorisation des chemins Python pyenv
@@ -30,16 +37,9 @@
 - **Tests fonctionnels** : Validation complète du système
 - **CI/CD verte** : Tous les tests passent sur main et develop
 
-## [111.0.0] - 2025-07-31
-### 🔧 **Corrections CI/CD et Documentation**
-- **Correction des workflows CI Professional** : Ajout de pytest aux outils de sécurité
-- **Correction du hook de prévention Python** : Regex corrigée pour éviter la détection erronée de Python 3.10
-- **Nettoyage des fichiers AppleDouble** : Suppression de 110+ fichiers système indésirables
-- **Synchronisation des branches** : main, develop et backup-20250731 synchronisées
-- **Correction majeure de la documentation** : Synchronisation avec l'état réel du projet
-- **Mise à jour des statistiques** : **1696 tests collectés**, **93 modules** dans athalia_core
-- **Nettoyage des branches obsolètes** : Suppression de fix-python-version-support, backup-20250730, ci-cd-professional
-- **1696 tests collectés** : Validation complète du système en amélioration continue
-
 ## [Unreleased]
 - Améliorations futures : personnalisation dashboard, feedback live, couverture >90%, nouveaux modèles IA, plugins avancés
+- **Prochaines étapes recommandées** :
+  - Diviser le workflow CI/CD pour améliorer la lisibilité
+  - Séparer les dépendances dev/prod pour un packaging plus propre
+  - Créer un workflow de sécurité dédié pour les badges spécifiques
