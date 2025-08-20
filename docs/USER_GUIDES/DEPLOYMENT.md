@@ -202,7 +202,7 @@ sudo ufw enable
 sudo apt install htop iotop nethogs
 
 # 2. Monitoring application
-python3 athalia_core/performance_analyzer.py --monitor
+python3 athalia_core/core/performance_analyzer.py /chemin/projet --output performance_report.json
 
 # 3. Logs centralisés
 # Configurer rsyslog ou logrotate

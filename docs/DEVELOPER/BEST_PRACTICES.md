@@ -35,7 +35,7 @@ python3 bin/athalia_unified.py /chemin/projet --action dashboard --utilisateur a
 python3 athalia_core/analytics/advanced_analytics.py /chemin/projet
 
 # Analyser les métriques de performance
-python3 athalia_core/analytics/advanced_analytics.py --metrics --timeframe 24h
+python3 athalia_core/analytics/advanced_analytics.py /chemin/projet
 ```
 
 ### **Mise à Jour et Maintenance**
@@ -47,7 +47,7 @@ pip install -r requirements.txt --upgrade
 # python3 athalia_core/core/backup_system.py --logs --feedback  # Module non implémenté
 
 # Nettoyer les caches obsolètes
-python3 athalia_core/core/cache_manager.py --cleanup --older-than 7d
+python3 athalia_core/core/cache_manager.py
 ```
 
 ---
@@ -72,7 +72,7 @@ python3 -m pytest tests/security/ -v
 python3 -m pytest tests/unit/quality/ -v
 
 # Validation de la qualité du code
-python3 athalia_core/quality/code_linter.py --strict --fix
+python3 athalia_core/quality/code_linter.py
 
 # Linting et formatage automatique
 ruff check . --fix
@@ -82,13 +82,13 @@ black .
 ### **Documentation**
 ```bash
 # Documenter chaque module/fonction
-python3 athalia_core/automation/auto_documenter.py --module athalia_core.analysis.intelligent_analyzer
+python3 athalia_core/automation/auto_documenter.py
 
 # Générer la documentation API
 # python3 athalia_core/automation/auto_documenter.py --api --output docs/API/  # Module non implémenté
 
 # Mettre à jour la documentation
-python3 athalia_core/automation/auto_documenter.py --update-all --validate
+python3 athalia_core/automation/auto_documenter.py
 
 # Vérifier la cohérence de la documentation
 python3 tools/maintenance/validate_documentation.py
@@ -132,7 +132,7 @@ docker build --no-cache --target production -t athalia:production .
 python3 athalia_core/audit/security_auditor.py /chemin/projet
 
 # Monitorer la RAM/CPU pour les LLM locaux
-python3 athalia_core/core/performance_analyzer.py --monitor --llm
+python3 athalia_core/core/performance_analyzer.py /chemin/projet --profile llm --output llm_performance.json
 
 # Audit de sécurité complet
 python3 athalia_core/audit/security_auditor.py /chemin/projet --output security_report.json
@@ -160,7 +160,7 @@ python3 -m pytest tests/regression/ --verbose
 python3 -m pytest tests/unit/quality/ --verbose
 
 # Validation de la qualité des tests
-python3 athalia_core/automation/auto_tester.py --validate --quality-check
+python3 athalia_core/automation/auto_tester.py
 ```
 
 ### **Feedback et Amélioration Continue**
@@ -169,19 +169,19 @@ python3 athalia_core/automation/auto_tester.py --validate --quality-check
 python3 athalia_core/analytics/advanced_analytics.py /chemin/projet
 
 # Guider les évolutions basées sur le feedback
-python3 athalia_core/analysis/pattern_detector.py /chemin/projet --output feedback_analysis.json
+python3 athalia_core/analysis/pattern_detector.py /chemin/projet
 
 # Optimisation basée sur les métriques
-python3 athalia_core/core/performance_analyzer.py --optimize --based-on-metrics
+python3 athalia_core/core/performance_analyzer.py /chemin/projet
 ```
 
 ### **Documentation à Jour**
 ```bash
 # Garder la documentation à jour à chaque release
-python3 athalia_core/automation/auto_documenter.py --update-all
+python3 athalia_core/automation/auto_documenter.py
 
 # Vérifier la cohérence de la documentation
-python3 tools/maintenance/workspace_organizer.py --validate-docs
+python3 tools/maintenance/workspace_organizer.py
 
 # Générer un rapport de documentation
 # python3 athalia_core/automation/auto_documenter.py --report --output docs_report.json  # Module non implémenté
@@ -228,28 +228,28 @@ python3 tools/maintenance/workspace_organizer.py --validate-docs
 ### **Bonnes Pratiques de Sécurité**
 ```bash
 # Validation des entrées utilisateur
-python3 athalia_core/audit/security_auditor.py --validate-inputs --strict
+python3 athalia_core/audit/security_auditor.py /chemin/projet
 
 # Audit des permissions
-python3 athalia_core/audit/security_auditor.py --audit-permissions
+python3 athalia_core/validation/security.py
 
 # Validation des commandes
-python3 athalia_core/audit/security_auditor.py --validate-commands
+python3 athalia_core/validation/security_validator.py
 
 # Scan de vulnérabilités
-python3 athalia_core/audit/security_auditor.py --vulnerability-scan
+python3 athalia_core/audit/security_auditor.py /chemin/projet
 ```
 
 ### **Chiffrement et Protection**
 ```bash
 # Validation du chiffrement
-python3 athalia_core/audit/security_auditor.py --validate-encryption
+python3 athalia_core/validation/security_validator.py
 
 # Protection des données sensibles
-python3 athalia_core/audit/security_auditor.py --protect-sensitive-data
+python3 athalia_core/validation/security.py
 
 # Audit de conformité GDPR
-python3 athalia_core/audit/security_auditor.py --gdpr-compliance
+python3 athalia_core/audit/security_auditor.py /chemin/projet
 ```
 
 ---
@@ -259,16 +259,16 @@ python3 athalia_core/audit/security_auditor.py --gdpr-compliance
 ### **Optimisation**
 ```bash
 # Analyse de performance
-python3 athalia_core/core/performance_analyzer.py --analyze --detailed
+python3 athalia_core/core/performance_analyzer.py /chemin/projet
 
 # Optimisation du cache
-python3 athalia_core/core/cache_manager.py --optimize --strategy aggressive
+python3 athalia_core/core/cache_manager.py
 
 # Monitoring en temps réel
-python3 athalia_core/core/performance_analyzer.py --monitor --real-time
+python3 athalia_core/core/performance_analyzer.py /chemin/projet
 
 # Benchmark des modules
-python3 athalia_core/core/performance_analyzer.py /chemin/projet --output benchmark_modules_report.json
+python3 athalia_core/core/performance_analyzer.py /chemin/projet
 ```
 
 ### **Métriques de Performance**
@@ -289,13 +289,13 @@ python3 athalia_core/core/performance_analyzer.py /chemin/projet --output benchm
 ./bin/cleanup/ath-clean
 
 # Validation complète
-./bin/ath-validate
+./bin/core/ath-audit.py
 
 # Optimisation
-./bin/ath-optimize
+./bin/optimization/ath-optimize-cursor
 
 # Audit complet
-./bin/ath-audit
+./bin/core/ath-audit.py
 
 # Linting et formatage
 ruff check . --fix
@@ -305,13 +305,13 @@ black .
 ### **Monitoring et Alertes**
 ```bash
 # Monitoring système
-python3 athalia_core/core/performance_analyzer.py --monitor --alerts
+python3 athalia_core/core/performance_analyzer.py /chemin/projet
 
 # Validation des métriques
 python3 athalia_core/analytics/advanced_analytics.py /chemin/projet
 
 # Génération de rapports
-python3 athalia_core/analytics/advanced_analytics.py --generate-reports
+python3 athalia_core/analytics/advanced_analytics.py /chemin/projet
 ```
 
 ---
