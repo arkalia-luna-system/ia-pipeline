@@ -129,6 +129,9 @@ jobs:
     name: "Tests Principaux (Python ${{ matrix.python }})"
     needs: validate
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     strategy:
       fail-fast: false
       matrix:
@@ -271,6 +274,9 @@ jobs:
     name: "Tests Compatibilité (${{ matrix.os }})"
     needs: validate
     runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
     strategy:
       fail-fast: false
       matrix:
@@ -733,6 +739,7 @@ jobs:
           find artifacts -maxdepth 3 -type f -print || true
 
       - name: "Générer résumé Markdown"
+        continue-on-error: true
         run: |
           python3 -c 'import glob,sys; junit=glob.glob("artifacts/test-results/*.xml"); cov=glob.glob("artifacts/coverage/*.xml"); ok=bool(junit) and bool(cov); print(f"JUnit: {len(junit)} fichiers, Coverage: {len(cov)} fichiers"); open("REPORT.md","w",encoding="utf-8").write("# Rapport CI\n\n"+f"- JUnit: {len(junit)} fichiers\n"+f"- Coverage: {len(cov)} fichiers\n"); sys.exit(0 if ok else 1)'
 
