@@ -203,9 +203,9 @@ source .venv/bin/activate
 python athalia_core/main.py
 
 # Avec options
-python athalia_core/main.py --help
+python athalia_core/core/main.py
 python athalia_core/main.py --dry-run
-python athalia_core/main.py --verbose
+# python athalia_core/core/main.py --verbose  # Option non disponible
 ```
 
 ### **Scripts Utilitaires**

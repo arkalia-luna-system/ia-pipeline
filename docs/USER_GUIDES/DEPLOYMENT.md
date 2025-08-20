@@ -306,7 +306,7 @@ chmod +x scripts/*.sh
 tail -f logs/athalia.log
 
 # Debug mode
-python3 athalia_core/core/main.py --debug
+# python3 athalia_core/core/main.py --debug  # Option non disponible
 
 # Validation complète
 python3 athalia_core/utilities/ready_check.py --verbose
