@@ -44,7 +44,7 @@ python3 athalia_core/analytics/advanced_analytics.py --metrics --timeframe 24h
 pip install -r requirements.txt --upgrade
 
 # Sauvegarder les logs et feedbacks
-python3 athalia_core/core/backup_system.py --logs --feedback
+# python3 athalia_core/core/backup_system.py --logs --feedback  # Module non implémenté
 
 # Nettoyer les caches obsolètes
 python3 athalia_core/core/cache_manager.py --cleanup --older-than 7d
@@ -85,7 +85,7 @@ black .
 python3 athalia_core/automation/auto_documenter.py --module athalia_core.analysis.intelligent_analyzer
 
 # Générer la documentation API
-python3 athalia_core/automation/auto_documenter.py --api --output docs/API/
+# python3 athalia_core/automation/auto_documenter.py --api --output docs/API/  # Module non implémenté
 
 # Mettre à jour la documentation
 python3 athalia_core/automation/auto_documenter.py --update-all --validate
@@ -97,7 +97,7 @@ python3 tools/maintenance/validate_documentation.py
 ### **Templates et UX**
 ```bash
 # Utiliser les templates de feedback utilisateur
-python3 athalia_core/templates/feedback_template.py --project /chemin/projet
+# python3 athalia_core/templates/feedback_template.py --project /chemin/projet  # Module non implémenté
 
 # Améliorer l'UX avec les profils utilisateur
 python3 bin/athalia_unified.py /chemin/projet --action dashboard --utilisateur nom
@@ -184,7 +184,7 @@ python3 athalia_core/automation/auto_documenter.py --update-all
 python3 tools/maintenance/workspace_organizer.py --validate-docs
 
 # Générer un rapport de documentation
-python3 athalia_core/automation/auto_documenter.py --report --output docs_report.json
+# python3 athalia_core/automation/auto_documenter.py --report --output docs_report.json  # Module non implémenté
 ```
 
 ---

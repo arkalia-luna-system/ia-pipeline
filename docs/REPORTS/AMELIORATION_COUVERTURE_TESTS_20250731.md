@@ -49,7 +49,7 @@
 4. `athalia_core/analytics.py` - ✅ **Tests présents**
 5. `athalia_core/audit.py` - ✅ **Tests créés**
 6. `athalia_core/auto_cleaner.py` - ✅ **Tests complets (module 1168 lignes)**
-7. `athalia_core/auto_documenter.py` - ✅ **Tests créés**
+7. `athalia_core/auto_documenter.py` - ❌ **Module non implémenté (tests seulement)**
 8. `athalia_core/auto_tester.py` - ✅ **Tests présents**
 9. `athalia_core/cache_manager.py` - ✅ **Tests créés**
 10. `athalia_core/config_manager.py` - ✅ **Tests présents**

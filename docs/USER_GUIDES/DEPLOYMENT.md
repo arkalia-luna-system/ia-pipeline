@@ -211,7 +211,7 @@ python3 athalia_core/performance_analyzer.py --monitor
 ### Sauvegarde
 ```bash
 # 1. Sauvegarde automatique des données
-python3 athalia_core/backup_system.py --auto-backup
+# python3 athalia_core/backup_system.py --auto-backup  # Module non implémenté
 
 # 2. Script de sauvegarde cron
 # Ajouter dans crontab -e
