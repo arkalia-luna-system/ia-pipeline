@@ -103,7 +103,7 @@ python3 tools/maintenance/validate_documentation.py
 python3 bin/athalia_unified.py /chemin/projet --action dashboard --utilisateur nom
 
 # Générer des templates personnalisés
-python3 athalia_core/templates/artistic_templates.py --custom --user-profile expert
+python3 -c "from athalia_core.templates.artistic_templates import get_artistic_templates; print(get_artistic_templates())"
 ```
 
 ---

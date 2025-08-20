@@ -186,7 +186,7 @@ python3 -m pytest tests/ --cov-report=xml
 ### **Rapports de Test**
 ```bash
 # Générer rapport complet
-python3 athalia_core/automation/auto_tester.py --report --output reports/
+python3 athalia_core/automation/auto_tester.py /chemin/projet --output reports/
 
 # Rapport de couverture
 python3 -m pytest tests/ --cov=athalia_core --cov-report=html --cov-report=term
