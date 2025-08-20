@@ -45,25 +45,25 @@ python3 -m pytest tests/integration/test_workflow.py -v
 ### **3. Tests de Performance**
 ```bash
 # Benchmarks de performance
-python3 athalia_core/performance_analyzer.py --benchmark
+python3 athalia_core/core/performance_analyzer.py --benchmark
 
 # Tests de charge
 python3 -m pytest tests/performance/ --verbose
 
 # Tests de mémoire
-python3 athalia_core/performance_analyzer.py --memory-test
+python3 athalia_core/core/performance_analyzer.py --memory-test
 ```
 
 ### **4. Tests de Sécurité**
 ```bash
 # Audit de sécurité
-python3 athalia_core/security_auditor.py --project /chemin/projet
+python3 athalia_core/audit/security_auditor.py --project /chemin/projet
 
 # Tests de vulnérabilités
 python3 -m pytest tests/security/ --verbose
 
 # Tests de validation
-python3 athalia_core/plugins_validator.py --test-all
+python3 athalia_core/validation/plugins_validator.py --test-all
 ```
 
 ---
@@ -186,13 +186,13 @@ python3 -m pytest tests/ --cov-report=xml
 ### **Rapports de Test**
 ```bash
 # Générer rapport complet
-python3 athalia_core/auto_tester.py --report --output reports/
+python3 athalia_core/automation/auto_tester.py --report --output reports/
 
 # Rapport de couverture
 python3 -m pytest tests/ --cov=athalia_core --cov-report=html --cov-report=term
 
 # Rapport de performance
-python3 athalia_core/performance_analyzer.py --report
+python3 athalia_core/core/performance_analyzer.py --report
 ```
 
 ---
@@ -226,13 +226,13 @@ jobs:
 ### **Tests Automatisés**
 ```bash
 # Pipeline de tests
-python3 athalia_core/auto_tester.py --pipeline
+python3 athalia_core/automation/auto_tester.py --pipeline
 
 # Tests de régression automatiques
-python3 athalia_core/auto_tester.py --regression
+python3 athalia_core/automation/auto_tester.py --regression
 
 # Tests de performance automatiques
-python3 athalia_core/performance_analyzer.py --auto-benchmark
+python3 athalia_core/core/performance_analyzer.py --auto-benchmark
 ```
 
 ---
