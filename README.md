@@ -100,7 +100,35 @@ python -c "print('🎉 Athalia ready for use!')"
 
 # 5️⃣ Quick verification (one-liner)
 python -m athalia_core.demo.quickcheck || echo "✅ Basic installation verified"
+
+# 6️⃣ CLI Demo (optionnel)
+python bin/core/ath-demo.py --all
+
+**Expected Output:**
+```bash
+🔍 ATHALIA - Vérification rapide de l'installation
+==================================================
+✅ athalia_core - OK
+✅ athalia_core.core - OK
+✅ athalia_core.validation.security_validator - OK
+✅ athalia_core.automation.auto_cleaner - OK
+
+📁 Vérification de la structure:
+✅ tests/ - Présent
+✅ docs/ - Présent
+✅ config/ - Présent
+✅ scripts/ - Présent
+
+📊 Résumé: 8/8 vérifications réussies
+🎉 Installation Athalia VALIDÉE !
 ```
+
+### 📊 **Live Dashboards & Reports**
+
+- **🌐 GitHub Pages**: [Documentation Live](https://arkalia-luna-system.github.io/ia-pipeline)
+- **🔍 CI Status**: [Actions GitHub](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/ci-matrix.yml)
+- **📊 Coverage**: [Codecov Reports](https://codecov.io/gh/arkalia-luna-system/ia-pipeline)
+- **🛡️ Security**: [Security Reports](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/ci-matrix.yml)
 
 ### 🧪 **First Test** (2 minutes)
 
