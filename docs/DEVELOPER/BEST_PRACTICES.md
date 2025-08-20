@@ -32,7 +32,7 @@ python3 athalia_core/core/performance_analyzer.py /chemin/projet --output perfor
 python3 bin/athalia_unified.py /chemin/projet --action dashboard --utilisateur athalia
 
 # Collecter le feedback utilisateur
-python3 athalia_core/analytics/advanced_analytics.py --feedback --project /chemin/projet
+python3 athalia_core/analytics/advanced_analytics.py /chemin/projet
 
 # Analyser les métriques de performance
 python3 athalia_core/analytics/advanced_analytics.py --metrics --timeframe 24h
@@ -166,10 +166,10 @@ python3 athalia_core/automation/auto_tester.py --validate --quality-check
 ### **Feedback et Amélioration Continue**
 ```bash
 # Collecter et analyser le feedback utilisateur
-python3 athalia_core/analytics/advanced_analytics.py --analyze-feedback
+python3 athalia_core/analytics/advanced_analytics.py /chemin/projet
 
 # Guider les évolutions basées sur le feedback
-python3 athalia_core/analysis/pattern_detector.py --feedback-analysis
+python3 athalia_core/analysis/pattern_detector.py /chemin/projet --output feedback_analysis.json
 
 # Optimisation basée sur les métriques
 python3 athalia_core/core/performance_analyzer.py --optimize --based-on-metrics
@@ -308,7 +308,7 @@ black .
 python3 athalia_core/core/performance_analyzer.py --monitor --alerts
 
 # Validation des métriques
-python3 athalia_core/analytics/advanced_analytics.py --validate-metrics
+python3 athalia_core/analytics/advanced_analytics.py /chemin/projet
 
 # Génération de rapports
 python3 athalia_core/analytics/advanced_analytics.py --generate-reports
