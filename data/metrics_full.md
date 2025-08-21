@@ -1,6 +1,6 @@
 # Athalia Project Metrics Report
 
-**Generated on:** 2025-08-21 16:25:19
+**Generated on:** 2025-08-21 16:35:51
 **Collector version:** 1.0.0
 **Python version:** 3.10.14 (main, Jun 17 2025, 15:39:18) [Clang 17.0.0 (clang-1700.0.13.5)]
 
@@ -14,7 +14,7 @@
 | **Test Files** | 181 |
 | **Collected Tests** | 1,774 |
 | **Documentation Files** | 312 |
-| **HTML Dashboards** | 12 |
+| **HTML Dashboards** | 13 |
 | **Utility Scripts** | 69 |
 | **Security Commands** | 62 |
 
@@ -42,7 +42,7 @@
 
 ### 📊 Dashboard Metrics
 
-- **HTML dashboards:** 12
+- **HTML dashboards:** 13
 
 ### 🔧 Script Metrics
 
@@ -66,7 +66,7 @@
 ## 🔍 Collection Details
 
 - **Project root:** `/Volumes/T7/athalia-dev-setup`
-- **Collection timestamp:** `2025-08-21T16:25:19.114623`
+- **Collection timestamp:** `2025-08-21T16:35:51.591780`
 - **Excluded patterns:** Cache, virtual environments, build artifacts
 
 ---
