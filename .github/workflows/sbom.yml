@@ -21,6 +21,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: "pip"
 
       - name: Install SBOM tools
         run: |
@@ -30,7 +31,7 @@ jobs:
       - name: Generate CycloneDX SBOM
         run: |
           echo "🔍 Generating Software Bill of Materials..."
-          cyclonedx-py -i . -o sbom-cyclonedx.xml
+          cyclonedx-py environment -i . -o sbom-cyclonedx.xml
           echo "✅ SBOM generated: sbom-cyclonedx.xml"
 
       - name: Generate pip-audit SBOM

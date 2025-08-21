@@ -1,0 +1,25 @@
+# Code Owners pour Athalia
+# Fichiers critiques nécessitent une review
+
+# Propriétaire principal du projet
+* @arkalia-luna-system
+
+# Modules de sécurité critiques
+athalia_core/validation/ @arkalia-luna-system
+athalia_core/security/ @arkalia-luna-system
+
+# Workflows CI/CD
+.github/workflows/ @arkalia-luna-system
+
+# Configuration de sécurité
+.github/ @arkalia-luna-system
+config/ @arkalia-luna-system
+
+# Tests critiques
+tests/unit/security/ @arkalia-luna-system
+tests/unit/validation/ @arkalia-luna-system
+
+# Documentation principale
+README.md @arkalia-luna-system
+CHANGELOG.md @arkalia-luna-system
+docs/ @arkalia-luna-system
