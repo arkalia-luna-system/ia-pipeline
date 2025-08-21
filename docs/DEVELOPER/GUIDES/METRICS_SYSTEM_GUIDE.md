@@ -215,7 +215,7 @@ print(f"Code : {summary['lines_of_code']:,} lignes")
   run: python3 scripts/metrics/collect_metrics.py
   
 - name: Upload Metrics
-  uses: actions/upload-artifact@v3
+          uses: actions/upload-artifact@v4
   with:
     name: project-metrics
     path: data/metrics.*
