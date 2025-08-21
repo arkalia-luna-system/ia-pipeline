@@ -28,7 +28,7 @@ jobs:
       - name: Build documentation
         run: |
           echo "📚 Building documentation..."
-          mkdocs build --site-dir site
+          mkdocs build --config-file config/mkdocs/mkdocs.yml --site-dir site
           echo "✅ Documentation built successfully"
 
       - name: Upload documentation site
