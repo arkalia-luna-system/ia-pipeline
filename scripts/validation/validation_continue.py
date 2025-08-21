@@ -316,7 +316,8 @@ class ValidationContinue:
     def sauvegarder_historique(self):
         """Sauvegarde l'historique des validations"""
         try:
-            with open("historique_validation.json", "w") as f:
+            os.makedirs("data/validation_reports", exist_ok=True)
+            with open("data/validation_reports/historique_validation.json", "w") as f:
                 json.dump(self.historique, f, indent=2)
         except Exception as e:
             self.logger.error(f"Erreur sauvegarde historique: {str(e)}")
@@ -324,8 +325,8 @@ class ValidationContinue:
     def charger_historique(self):
         """Charge l'historique des validations"""
         try:
-            if os.path.exists("historique_validation.json"):
-                with open("historique_validation.json") as f:
+            if os.path.exists("data/validation_reports/historique_validation.json"):
+                with open("data/validation_reports/historique_validation.json") as f:
                     self.historique = json.load(f)
         except Exception as e:
             self.logger.error(f"Erreur chargement historique: {str(e)}")

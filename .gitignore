@@ -62,6 +62,11 @@ test-results/
 *.html
 *.log
 
+# Validation reports (NE PAS COMMITTER)
+validation_*.json
+final_validation.json
+historique_validation.json
+
 # Translations
 *.mo
 *.pot

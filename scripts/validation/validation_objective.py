@@ -620,10 +620,9 @@ variable_non_utilisee = "test"
             "resultats_detailles": resultats["resultats_detailles"],
         }
 
-        # Sauvegarde le rapport
-        rapport_file = (
-            f"validation_objective_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
-        )
+        # Sauvegarde le rapport dans data/validation_reports
+        os.makedirs("data/validation_reports", exist_ok=True)
+        rapport_file = f"data/validation_reports/validation_objective_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
         with open(rapport_file, "w", encoding="utf-8") as f:
             json.dump(rapport, f, indent=2, ensure_ascii=False)
 
