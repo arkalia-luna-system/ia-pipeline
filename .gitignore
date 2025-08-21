@@ -57,6 +57,7 @@ cover/
 
 # CI/CD artifacts (NE PAS COMMITTER)
 ci_diagnostic_*.json
+ci_diagnostic_*_*.json
 test-results/
 *.xml
 *.html
