@@ -200,7 +200,7 @@ def memory_efficient(func: Callable) -> Callable:
     return wrapper
 
 
-class SecurityValidator:
+class PathSecurityValidator:
     """Validateur de sécurité pour les opérations de fichiers."""
 
     @staticmethod
@@ -257,7 +257,7 @@ class SecurityValidator:
 
 # Configuration globale pour l'optimisation
 DEFAULT_OPTIMIZER = PerformanceOptimizer()
-SECURITY_VALIDATOR = SecurityValidator()
+PATH_SECURITY_VALIDATOR = PathSecurityValidator()
 
 
 def get_optimizer() -> PerformanceOptimizer:
@@ -265,6 +265,6 @@ def get_optimizer() -> PerformanceOptimizer:
     return DEFAULT_OPTIMIZER
 
 
-def get_security_validator() -> SecurityValidator:
-    """Retourne le validateur de sécurité par défaut."""
-    return SECURITY_VALIDATOR
+def get_path_security_validator() -> PathSecurityValidator:
+    """Retourne le validateur de sécurité des chemins par défaut."""
+    return PATH_SECURITY_VALIDATOR

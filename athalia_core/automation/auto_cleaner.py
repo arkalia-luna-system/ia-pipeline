@@ -17,7 +17,7 @@ import yaml
 
 from athalia_core.core.performance_optimizer import (
     PerformanceOptimizer,
-    SecurityValidator,
+    PathSecurityValidator,
     memory_efficient,
     performance_monitor,
 )
@@ -48,7 +48,7 @@ class AutoCleaner:
 
         # Optimisations de performance et sécurité
         self.optimizer = PerformanceOptimizer()
-        self.security_validator = SecurityValidator()
+        self.security_validator = PathSecurityValidator()
 
     def load_cleanup_config(self, config_path: str | None = None) -> dict[str, Any]:
         """Charge la configuration de nettoyage (méthode publique)"""
