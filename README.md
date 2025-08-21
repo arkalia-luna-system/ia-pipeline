@@ -22,43 +22,13 @@
 
 ## 📊 **Project Overview**
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': { 'primaryColor': '#ff6b6b', 'primaryTextColor': '#fff', 'primaryBorderColor': '#ff4757', 'lineColor': '#5f27cd', 'secondaryColor': '#009432', 'tertiaryColor': '#fff'}}}%%
-graph TB
-    subgraph "🏗️ CORE ARCHITECTURE"
-        UO[Unified Orchestrator<br/>Main Coordinator]
-        SV[Security Validator<br/>Security Engine]
-        PG[Project Generator<br/>Template Engine]
-        AC[Auto Cleaner<br/>Cleanup Engine]
-    end
-    
-    subgraph "🛡️ SECURITY LAYER"
-        CV[Command Validation<br/>80 secure commands]
-        SA[Security Auditing<br/>404 lines]
-        IP[Injection Protection]
-    end
-    
-    subgraph "🔧 AUTOMATION"
-        AT[Auto Tester<br/>Test Automation]
-        AD[Auto Documenter<br/>Doc Generator]
-        CM[Cache Manager<br/>Cache Engine]
-    end
-    
-    UO --> SV
-    UO --> PG
-    UO --> AC
-    SV --> CV
-    SV --> SA
-    SV --> IP
-    UO --> AT
-    UO --> AD
-    UO --> CM
-    
-    style UO fill:#ff6b6b
-    style SV fill:#5f27cd
-    style PG fill:#009432
-    style AC fill:#ffa502
-```
+**Athalia** est une plateforme d'automatisation DevOps de niveau entreprise, conçue pour la génération sécurisée de projets, le nettoyage intelligent et la gestion d'infrastructure.
+
+🏗️ **Architecture Core** : Orchestrateur unifié, validateur de sécurité, générateur de projets, nettoyeur automatique  
+🛡️ **Couche Sécurité** : Validation de commandes (62 commandes sécurisées), audit de sécurité, protection contre les injections  
+🔧 **Automation** : Testeur automatique, documenteur automatique, gestionnaire de cache  
+
+**[📋 Voir l'architecture complète](docs/DEVELOPER/ARCHITECTURE/ATHALIA_ARCHITECTURE_DIAGRAMS.md)**
 
 ---
 
@@ -407,112 +377,52 @@ sequenceDiagram
 
 ## 🔄 **Development Workflow**
 
-```mermaid
-gitgraph
-    commit id: "Initial Setup"
-    branch feature/security
-    checkout feature/security
-    commit id: "Security Validator"
-    commit id: "Command Whitelist"
-    checkout main
-    merge feature/security
-    branch feature/automation
-    checkout feature/automation
-    commit id: "Auto Cleaner"
-    commit id: "Auto Tester"
-    checkout main
-    merge feature/automation
-    commit id: "v11.0 Release"
-```
+**Athalia suit un workflow de développement professionnel avec validation de sécurité et tests automatisés.**
 
-### **Contributing Guidelines**
-1. **Fork** repository
-2. **Create** feature branch
-3. **Add** comprehensive tests
-4. **Document** all changes
-5. **Submit** pull request
+🔄 **Processus** : Setup initial → Branches feature → Tests complets → Documentation → Pull Request  
+🛡️ **Sécurité** : Validation des commandes, audit automatique, protection contre les injections  
+🧪 **Qualité** : Tests unitaires, tests d'intégration, couverture minimale 80%
+
+**[📋 Voir le workflow complet](docs/DEVELOPER/ARCHITECTURE/ATHALIA_ARCHITECTURE_DIAGRAMS.md#workflow-de-développement)**  
+**[🤝 Directives de contribution](docs/DEVELOPER/GUIDES/CONTRIBUTING_GUIDELINES.md)**
 
 ---
 
-## 📚 **Documentation Structure**
+## 📚 **Structure de Documentation**
 
-```mermaid
-mindmap
-  root((📚 Docs))
-    👤 Users
-      🚀 Quick Start
-      📖 User Guide
-      ❓ FAQ
-      🔧 Troubleshooting
-    👨‍💻 Developers
-      🏗️ Architecture
-      🔍 API Reference
-      🤝 Contributing
-      🧪 Testing
-    🎯 Specialized
-      🛡️ Security
-      📊 Analytics
-      🤖 Automation
-      📈 Performance
-```
+**Athalia dispose d'une documentation complète et organisée pour tous les types d'utilisateurs.**
 
-**Complete guides available in `/docs` directory**
+👤 **Utilisateurs** : Quick Start, Guide Utilisateur, FAQ, Dépannage  
+👨‍💻 **Développeurs** : Architecture, Référence API, Contribution, Tests  
+🎯 **Spécialisés** : Sécurité, Analytics, Automation, Performance
+
+**[📋 Voir la structure complète](docs/DEVELOPER/ARCHITECTURE/ATHALIA_ARCHITECTURE_DIAGRAMS.md#structure-de-documentation)**  
+**Guides complets disponibles dans le répertoire `/docs`**
 
 ---
 
-## 🏆 **Project Achievements**
+## 🏆 **Réalisations du Projet**
 
-<div align="center">
+**Athalia atteint des standards de qualité professionnels avec des métriques automatiques et transparentes.**
 
-### **Technical Excellence**
+🥇 **75,625 Lignes** de code Python de qualité production  
+🥈 **341 Modules** avec séparation claire des responsabilités  
+🥉 **62 Commandes** de validation de sécurité de niveau entreprise  
 
-🥇 **75,625 Lines** of production-quality Python code
-🥈 **341 Modules** with clear separation of concerns
-🥉 **62 Commands** of enterprise-grade security validation
-
-*Metrics measured automatically by Athalia Metrics System - Last updated: 2025-08-21*  
-
-### **Quality Assurance**
-
-🔒 **62 Secure Commands** thoroughly validated  
-🧹 **1,168 Lines** of intelligent cleanup automation  
-📊 **13 Dashboards** for comprehensive monitoring  
-
-### **Professional Standards**
-
-📚 **147 Documentation** files meticulously organized  
-🔧 **69 Utility Scripts** for operational efficiency  
-⚡ **Sub-second Performance** for core operations  
-
-</div>
+**[📊 Voir toutes les métriques détaillées](docs/DEVELOPER/REPORTS/PROJECT_ACHIEVEMENTS_DETAILED.md)**  
+*Métriques mesurées automatiquement par le Système de Métriques Athalia - Dernière mise à jour : 21 août 2025*
 
 ---
 
-## 🚀 **Getting Started**
+## 🚀 **Démarrage Rapide**
 
-### **For End Users**
-```bash
-1. Follow Installation Guide (5 minutes)
-2. Run Quick Start examples (2 minutes)
-3. Explore User Guide features
-4. Join community discussions
-```
+**Athalia s'adapte à tous les types d'utilisateurs avec des guides spécialisés et des exemples pratiques.**
 
-### **For Developers**
-```bash
-1. Review Architecture documentation
-2. Study API Reference materials
-3. Read Contributing guidelines
-4. Set up development environment
-```
+👥 **Utilisateurs Finaux** : Installation (5 min), Exemples (2 min), Exploration des fonctionnalités  
+👨‍💻 **Développeurs** : Documentation d'architecture, Référence API, Directives de contribution  
+🖥️ **Administrateurs Système** : Configuration de sécurité, Guide de déploiement, Intégration
 
-### **For System Administrators**
-```bash
-1. Security configuration review
-2. Deployment guide consultation
-3. Monitoring dashboard setup
-4. Integration planning
-```
+**[📋 Guide de démarrage complet](docs/USER_GUIDES/GETTING_STARTED_DETAILED.md)**
 
 ---
 

@@ -201,7 +201,7 @@ def memory_efficient(func: Callable) -> Callable:
 
 
 class PathSecurityValidator:
-    """Validateur de sécurité pour les opérations de fichiers."""
+    """Validateur de sécurité pour les opérations de fichiers et chemins."""
 
     @staticmethod
     def validate_file_path(path: Path) -> bool:
