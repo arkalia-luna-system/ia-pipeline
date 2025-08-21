@@ -7,7 +7,8 @@
 [![Python Version](https://img.shields.io/badge/python-3.10+-brightgreen.svg?style=flat-square)](https://python.org)
 [![CI Matrix](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/ci-matrix.yml/badge.svg)](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/ci-matrix.yml)
 [![Code Coverage (develop)](https://codecov.io/gh/arkalia-luna-system/ia-pipeline/branch/develop/graph/badge.svg)](https://app.codecov.io/gh/arkalia-luna-system/ia-pipeline/branch/develop)
-[![Security](https://img.shields.io/badge/security-bandit%2Bpip--audit%2Bsafety-brightgreen.svg?style=flat-square)](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/ci-matrix.yml)
+[![Security](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/security.yml/badge.svg)](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/security.yml)
+[![Documentation](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/docs.yml/badge.svg)](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/docs.yml)
 [![GitHub Pages](https://img.shields.io/badge/pages-available-brightgreen.svg?style=flat-square)](https://arkalia-luna-system.github.io/ia-pipeline)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 

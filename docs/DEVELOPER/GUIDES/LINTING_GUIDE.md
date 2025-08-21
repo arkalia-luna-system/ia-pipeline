@@ -76,7 +76,7 @@ flake8 athalia_core/unified_orchestrator.py --select=W293,E302,E305,E501,F841
 
 #### **Corriger un fichier spécifique**
 ```bash
-autopep8 --in-place --aggressive --aggressive athalia_core/unified_orchestrator.py
+autopep8 --in-place --aggressive --aggressive athalia_core/core/unified_orchestrator.py
 ```
 
 #### **Voir les erreurs par fichier**

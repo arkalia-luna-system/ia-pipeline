@@ -34,7 +34,7 @@ Le système de workflow complet d'Athalia automatise tout le cycle de développe
 | Script | Fonction | Usage |
 |--------|----------|-------|
 | `ath-clean-shutdown` | Fermeture propre | `./bin/cleanup/ath-clean-shutdown` |
-| `ath-quick-start` | Démarrage rapide | `./bin/core/ath-quick-start` |
+| `ath-quick-start` | Démarrage rapide | `./bin/utilities/ath-quick-start` |
 | `ath-workflow-complete` | Workflow complet | `./bin/workflow/ath-workflow-complete [command]` |
 
 ### Alias Disponibles
@@ -322,7 +322,7 @@ COMMIT_MSG="🔄 Mise à jour automatique - $TIMESTAMP"
 ```bash
 #!/bin/bash
 # .git/hooks/post-merge
-./bin/core/ath-quick-start
+./bin/utilities/ath-quick-start
 ```
 
 ## 📚 Bonnes Pratiques

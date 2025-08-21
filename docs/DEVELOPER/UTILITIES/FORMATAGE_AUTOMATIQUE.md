@@ -52,7 +52,7 @@ Script de commit intelligent qui combine formatage + commit + push.
 ./bin/core/ath-smart-commit -m "test" --dry-run
 ```
 
-### 3. `./bin/core/ath-prepare-commit`
+### 3. `./bin/utilities/ath-prepare-commit`
 Script de préparation au commit avec options avancées.
 
 **Options :**
@@ -90,7 +90,7 @@ Le fichier `config/pre-commit-config.yaml` a été mis à jour avec :
 ### Workflow avancé
 ```bash
 # 1. Préparation complète
-./bin/core/ath-prepare-commit --auto-fix
+./bin/utilities/ath-prepare-commit --auto-fix
 
 # 2. Tests
 ./bin/testing/ath-test.py

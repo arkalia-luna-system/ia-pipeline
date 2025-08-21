@@ -143,7 +143,7 @@
 
 3. **Standardisation des Noms**
    - Considérer un renommage pour plus de clarté
-   - Exemple : `ath-test-run.py` et `ath-test-clean.py`
+   - Exemple : `ath-test.py` et `ath-test-clean.py`
 
 ### **Maintenance Continue**
 1. **Nettoyage Régulier**

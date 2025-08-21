@@ -53,8 +53,6 @@ class SecurityValidator:
             # Commandes Python
             "python",
             "python3",
-            "/opt/homebrew/opt/pyenv/versions/3.10.14/bin/python",
-            "/opt/homebrew/opt/pyenv/versions/3.10.14/bin/python3",
             "pip",
             "pip3",
             "pytest",
@@ -138,13 +136,35 @@ class SecurityValidator:
             str(Path.cwd() / "blueprints_history"),
             str(Path.cwd() / "dashboard"),
             str(Path.cwd() / "plugins"),
+            str(Path.cwd() / "bin"),
             str(Path.cwd() / "templates"),
             str(Path.cwd() / "prompts"),
             str(Path.cwd() / "setup"),
-            "/opt/homebrew/opt/pyenv/versions/",
             "/usr/bin/",
             "/usr/local/bin/",
         ]
+
+        # Détection dynamique des chemins Python
+        self._update_python_paths()
+
+    def _update_python_paths(self) -> None:
+        """Met à jour dynamiquement les chemins Python autorisés."""
+        import os
+        import shutil
+        import sys
+
+        # Ajouter l'exécutable Python actuel
+        if sys.executable:
+            self.allowed_commands.add(sys.executable)
+
+        # Chercher d'autres versions de Python
+        python_names = ["python3.12", "python3.11", "python3.10", "python3", "python"]
+        for name in python_names:
+            path = shutil.which(name)
+            if path:
+                real_path = os.path.realpath(path)
+                self.allowed_commands.add(real_path)
+                self.allowed_commands.add(path)
 
     # Méthodes de validation de sécurité de code
     def scan_file_for_vulnerabilities(self, file_path: str) -> dict[str, Any]:

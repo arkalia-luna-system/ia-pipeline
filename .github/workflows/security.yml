@@ -1,0 +1,66 @@
+name: Security Scan
+
+on:
+  push:
+    branches: [develop, main]
+  pull_request:
+    branches: [develop, main]
+  workflow_dispatch:
+
+jobs:
+  security-scan:
+    name: Security Analysis
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install security tools
+        run: |
+          python -m pip install -U pip
+          pip install bandit safety pip-audit
+
+      - name: Bandit security scan
+        run: |
+          echo "🔍 Running Bandit security scan..."
+          bandit -r athalia_core -f txt -o bandit-report.txt || true
+          echo "✅ Bandit scan completed"
+
+      - name: Safety dependency check
+        run: |
+          echo "🔍 Running Safety dependency check..."
+          safety check --full-report > safety-report.txt || true
+          echo "✅ Safety check completed"
+
+      - name: pip-audit vulnerability scan
+        run: |
+          echo "🔍 Running pip-audit vulnerability scan..."
+          pip-audit -r requirements.txt -f markdown -o pip-audit-report.md || true
+          echo "✅ pip-audit completed"
+
+      - name: Upload security reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-reports
+          path: |
+            bandit-report.txt
+            safety-report.txt
+            pip-audit-report.md
+          retention-days: 30
+
+      - name: Security summary
+        run: |
+          echo "🛡️ SECURITY SCAN COMPLETED"
+          echo "=========================="
+          echo "📊 Reports generated:"
+          echo "  - bandit-report.txt"
+          echo "  - safety-report.txt" 
+          echo "  - pip-audit-report.md"
+          echo "📁 Available in workflow artifacts"

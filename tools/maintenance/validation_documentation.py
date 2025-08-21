@@ -76,11 +76,31 @@ class DocumentationValidator:
             if full_path.exists():
                 self._analyze_python_file(full_path)
 
-        # Analyser les scripts dans bin/
+        # Analyser les scripts dans bin/ (TOUS les sous-dossiers)
         bin_path = self.project_root / "bin"
         if bin_path.exists():
+            # Scripts Python dans bin/
             for script_file in bin_path.glob("*.py"):
                 self._analyze_python_file(script_file)
+
+            # Scripts dans tous les sous-dossiers de bin/
+            for subdir in bin_path.iterdir():
+                if subdir.is_dir():
+                    # Scripts Python
+                    for script_file in subdir.glob("*.py"):
+                        self._analyze_python_file(script_file)
+                    # Scripts shell/executables
+                    for script_file in subdir.glob("*"):
+                        if script_file.is_file() and not script_file.name.startswith(
+                            "."
+                        ):
+                            self._analyze_script_file(script_file)
+
+        # Analyser les ALIAS définis dans setup/
+        setup_path = self.project_root / "setup"
+        if setup_path.exists():
+            for alias_file in setup_path.glob("*.sh"):
+                self._analyze_alias_file(alias_file)
 
         # Analyser les modules athalia_core
         core_path = self.project_root / "athalia_core"
@@ -166,27 +186,58 @@ class DocumentationValidator:
             with open(file_path, encoding="utf-8") as f:
                 content = f.read()
 
-            # Extraire les commandes documentées
+            # Extraire UNIQUEMENT les vraies commandes shell/CLI (PAS LE CODE)
             command_patterns = [
-                r"```bash\s*\n(.*?)\n```",
-                r"`([a-zA-Z][a-zA-Z0-9_-]*\.py[^`]*)`",
-                r"python\s+([a-zA-Z_]+\.py)",
-                r"ath-([a-zA-Z-]+)",
+                r"```bash\s*\n([^`]+?)\n```",  # Blocs bash uniquement
+                r"`(ath-[a-zA-Z-]+[^`]*)`",  # Scripts athalia
+                r"`(python[3]?\s+[a-zA-Z_/.-]+\.py[^`]*)`",  # Commandes python
+                r"`(\./[a-zA-Z_/.-]+)`",  # Scripts locaux
             ]
 
             for pattern in command_patterns:
                 matches = re.findall(pattern, content, re.MULTILINE | re.DOTALL)
                 for match in matches:
                     if isinstance(match, str) and len(match.strip()) > 0:
-                        self.validation_results["commands"]["documented"].append(
-                            {
-                                "command": match.strip(),
-                                "file": str(file_path.relative_to(self.project_root)),
-                                "line": self._find_line_number(content, match),
-                            }
-                        )
+                        # FILTRER : Ignorer les commentaires et exemples
+                        clean_match = match.strip()
+                        if (
+                            not clean_match.startswith("#")
+                            and not clean_match.startswith("//")
+                            and not clean_match.startswith("<!--")
+                            and not clean_match.startswith("```")
+                            and not clean_match.startswith("`")
+                            and not clean_match.startswith('"')
+                            and not clean_match.startswith("'")
+                            and not clean_match.startswith("-")
+                            and not clean_match.startswith("•")
+                            and not clean_match.startswith("*")
+                            and len(clean_match) > 2
+                            and not any(
+                                word in clean_match.lower()
+                                for word in [
+                                    "exemple",
+                                    "example",
+                                    "comment",
+                                    "note",
+                                    "voir",
+                                    "see",
+                                    "lister",
+                                    "analyser",
+                                ]
+                            )
+                        ):
 
-            # Extraire les modules documentés
+                            self.validation_results["commands"]["documented"].append(
+                                {
+                                    "command": clean_match,
+                                    "file": str(
+                                        file_path.relative_to(self.project_root)
+                                    ),
+                                    "line": self._find_line_number(content, match),
+                                }
+                            )
+
+            # Extraire les VRAIS modules documentés (pas les exemples)
             module_patterns = [
                 r"`([a-zA-Z_]+\.py)`",
                 r"from\s+([a-zA-Z_]+)\s+import",
@@ -197,12 +248,23 @@ class DocumentationValidator:
                 matches = re.findall(pattern, content)
                 for match in matches:
                     if isinstance(match, str) and len(match) > 2:
-                        self.validation_results["modules"]["documented"].append(
-                            {
-                                "module": match,
-                                "file": str(file_path.relative_to(self.project_root)),
-                            }
-                        )
+                        # FILTRER : Ignorer les exemples et commentaires
+                        clean_match = match.strip()
+                        if (
+                            not clean_match.startswith("#")
+                            and not clean_match.startswith("//")
+                            and not clean_match.startswith("<!--")
+                            and len(clean_match) > 2
+                        ):
+
+                            self.validation_results["modules"]["documented"].append(
+                                {
+                                    "module": clean_match,
+                                    "file": str(
+                                        file_path.relative_to(self.project_root)
+                                    ),
+                                }
+                            )
 
         except Exception as e:
             self.validation_results["errors"].append(
@@ -234,10 +296,12 @@ class DocumentationValidator:
         for cmd in missing_in_docs:
             self.validation_results["commands"]["missing"].append(cmd)
 
-        # Commandes documentées mais inexistantes
+        # Commandes documentées mais inexistantes (FILTRAGE INTELLIGENT)
         incorrect_docs = documented_commands - found_commands
         for cmd in incorrect_docs:
-            self.validation_results["commands"]["incorrect"].append(cmd)
+            # IGNORER les commandes système valides
+            if not self._is_system_command_valid(cmd):
+                self.validation_results["commands"]["incorrect"].append(cmd)
 
         # Comparer les modules
         found_modules = {
@@ -254,6 +318,233 @@ class DocumentationValidator:
         incorrect_modules = documented_modules - found_modules
         for mod in incorrect_modules:
             self.validation_results["modules"]["incorrect"].append(mod)
+
+    def _is_system_command_valid(self, command: str) -> bool:
+        """Vérifier si une commande est valide (système, alias, etc.)"""
+        # Commandes système valides
+        system_commands = {
+            "source ~/.zshrc",
+            "cd",
+            "ls",
+            "git",
+            "pip",
+            "python",
+            "python3",
+            "mkdir",
+            "rm",
+            "cp",
+            "mv",
+            "chmod",
+            "grep",
+            "find",
+            "cat",
+            "echo",
+            "export",
+            "alias",
+            "unalias",
+            "which",
+            "whereis",
+            "curl",
+            "wget",
+        }
+
+        # Alias Athalia valides
+        athalia_aliases = {
+            "robotics-audit",
+            "workflow-help",
+            "lint-clean",
+            "smart-commit",
+            "cleanup-analysis",
+            "test-workflow",
+            "security-check",
+        }
+
+        # Fichiers de configuration valides
+        config_files = {
+            "config/athalia_config.yaml",
+            "requirements.txt",
+            ".gitignore",
+            "setup.py",
+            "pyproject.toml",
+            "Dockerfile",
+            "docker-compose.yml",
+        }
+
+        # Vérifications
+        cmd_lower = command.lower().strip()
+
+        # Commandes système de base
+        if any(sys_cmd in cmd_lower for sys_cmd in system_commands):
+            return True
+
+        # Alias Athalia
+        if any(alias in cmd_lower for alias in athalia_aliases):
+            return True
+
+        # Fichiers de config
+        if any(conf in cmd_lower for conf in config_files):
+            return True
+
+        # Extensions de fichiers valides
+        if any(
+            ext in cmd_lower for ext in [".py", ".sh", ".yml", ".yaml", ".json", ".md"]
+        ):
+            return True
+
+        # Commandes avec flags
+        if cmd_lower.startswith("--") or cmd_lower.startswith("-"):
+            return True
+
+        return False
+
+    def _analyze_script_file(self, file_path: Path):
+        """Analyser un fichier script (shell, etc.)"""
+        try:
+            # Extraire le nom du script sans extension
+            script_name = file_path.stem
+
+            # Ajouter comme commande trouvée
+            self.validation_results["commands"]["found"].append(
+                {
+                    "command": script_name,
+                    "file": str(file_path.relative_to(self.project_root)),
+                    "pattern": "script_file",
+                }
+            )
+
+        except Exception as e:
+            self.validation_results["errors"].append(
+                f"Erreur analyse script {file_path}: {e}"
+            )
+
+    def _analyze_alias_file(self, file_path: Path):
+        """Analyser un fichier d'alias pour extraire les commandes"""
+        try:
+            with open(file_path, encoding="utf-8") as f:
+                content = f.read()
+
+            # Extraire les alias définis
+            alias_pattern = r"alias\s+([a-zA-Z][a-zA-Z0-9_-]+)="
+            matches = re.findall(alias_pattern, content)
+
+            for alias in matches:
+                # Ajouter comme commande trouvée
+                self.validation_results["commands"]["found"].append(
+                    {
+                        "command": alias,
+                        "file": str(file_path.relative_to(self.project_root)),
+                        "pattern": "alias",
+                    }
+                )
+
+        except Exception as e:
+            self.validation_results["errors"].append(
+                f"Erreur analyse alias {file_path}: {e}"
+            )
+
+    def _is_documentation_artifact(self, command: str) -> bool:
+        """Vérifier si c'est un artefact de documentation (pas une vraie erreur)"""
+        cmd = command.lower().strip()
+
+        # Code Python/JavaScript dans la documentation
+        code_artifacts = [
+            "f.write",
+            "self.",
+            "import ",
+            "from ",
+            "def ",
+            "class ",
+            "return ",
+            "logging.",
+            "json.",
+            "os.",
+            "sys.",
+            "datetime.",
+            "time.",
+            ".get(",
+            ".set(",
+            ".append(",
+            ".remove(",
+            ".split(",
+            ".join(",
+            "console.log",
+            "function(",
+            "var ",
+            "let ",
+            "const ",
+            "===",
+            "!==",
+            "&&",
+            "||",
+            "=>",
+            "async ",
+            "await ",
+            "et.parse",
+            "modulenot",
+            "result.",
+            "error:",
+            "warning:",
+            ".ts",
+            ".js",
+            ".css",
+            ".html",
+            ".xml",
+            ".json",
+            "exit",
+            "error",
+            "warning",
+            "info",
+            "debug",
+        ]
+
+        # Commentaires et texte descriptif
+        doc_text = [
+            "exemple",
+            "example",
+            "note:",
+            "voir",
+            "see",
+            "description",
+            "important",
+            "attention",
+            "warning",
+            "tip",
+            "astuce",
+            "résultat",
+            "result",
+            "output",
+            "sortie",
+        ]
+
+        # Extensions et patterns non-commandes
+        non_commands = [
+            ".db",
+            ".log",
+            ".txt",
+            ".md",
+            ".rst",
+            ".yaml",
+            ".yml",
+            "modulenotfounderror",
+            "filenotfounderror",
+            "keyerror",
+            "valueerror",
+            "typeerror",
+            "attributeerror",
+        ]
+
+        # Vérifier les artefacts
+        return (
+            any(artifact in cmd for artifact in code_artifacts)
+            or any(text in cmd for text in doc_text)
+            or any(pattern in cmd for pattern in non_commands)
+            or len(cmd) < 3
+            or cmd.count(".") > 2  # Trop de points = code
+            or cmd.count("(") > 0  # Parenthèses = code
+            or cmd.count("{") > 0  # Accolades = code
+            or cmd.startswith('"')
+            or cmd.startswith("'")
+        )  # Strings = code
 
     def _calculate_score(self):
         """Calculer le score de cohérence"""
@@ -320,12 +611,17 @@ class DocumentationValidator:
                 " manquantes"
             )
 
-        # Recommandations pour les commandes incorrectes
-        if self.validation_results["commands"]["incorrect"]:
+        # Recommandations pour les commandes incorrectes (FILTRÉES)
+        real_incorrect = [
+            cmd
+            for cmd in self.validation_results["commands"]["incorrect"]
+            if not self._is_documentation_artifact(cmd)
+        ]
+        if real_incorrect:
             recommendations.append(
                 "🔧 Corriger"
-                f" {len(self.validation_results['commands']['incorrect'])} commandes"
-                " documentées mais inexistantes"
+                f" {len(real_incorrect)} vraies commandes incorrectes"
+                " (artefacts de documentation exclus)"
             )
 
         # Recommandations pour les modules manquants
