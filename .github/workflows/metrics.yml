@@ -1,0 +1,246 @@
+name: 📊 Metrics Collection
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  schedule:
+    # Exécuter tous les jours à 6h UTC (pour avoir des métriques fraîches)
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+    # Permet d'exécuter manuellement
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  collect-metrics:
+    name: 📊 Collect Project Metrics
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: 🔄 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Nécessaire pour analyser tout l'historique
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: 📦 Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # Installer les dépendances minimales pour la collecte de métriques
+          pip install pytest
+          # Installer les dépendances du projet si elles existent
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+          if [ -f config/requirements.txt ]; then
+            pip install -r config/requirements.txt
+          fi
+
+      - name: 🔍 Verify Project Structure
+        run: |
+          echo "📂 Project structure verification:"
+          ls -la
+          echo ""
+          echo "🐍 Python modules found:"
+          find . -name "*.py" -not -path "./.venv/*" -not -path "./venv/*" | head -10
+          echo ""
+          echo "🧪 Test files found:"
+          find tests/ -name "*.py" 2>/dev/null | head -5 || echo "No tests directory found"
+          echo ""
+          echo "📚 Documentation files found:"
+          find docs/ -name "*.md" 2>/dev/null | head -5 || echo "No docs directory found"
+
+      - name: 📊 Collect Metrics
+        run: |
+          echo "🔢 Starting metrics collection..."
+          python scripts/metrics/collect_metrics.py \
+            --output-dir data \
+            --validate \
+            --verbose
+
+      - name: 📋 Display Metrics Summary
+        run: |
+          echo "📊 Metrics Summary:"
+          if [ -f data/metrics.json ]; then
+            # Extraire et afficher les métriques principales
+            python3 -c "
+            import json
+            
+            with open('data/metrics.json', 'r') as f:
+                data = json.load(f)
+            
+            summary = data.get('summary', {})
+            collection_info = data.get('collection_info', {})
+            
+            print('=' * 60)
+            print('📊 ATHALIA PROJECT METRICS')
+            print('=' * 60)
+            print(f'🕒 Generated: {collection_info.get(\"collection_date\", \"Unknown\")}')
+            print(f'🐍 Python Files: {summary.get(\"total_python_files\", 0):,}')
+            print(f'📝 Lines of Code: {summary.get(\"lines_of_code\", 0):,}')
+            print(f'🧪 Tests: {summary.get(\"collected_tests\", 0):,}')
+            print(f'🛡️ Security Commands: {summary.get(\"security_commands\", 0):,}')
+            print(f'📊 HTML Dashboards: {summary.get(\"html_dashboards\", 0):,}')
+            print(f'🔧 Utility Scripts: {summary.get(\"utility_scripts\", 0):,}')
+            print(f'📚 Documentation: {summary.get(\"documentation_files\", 0):,}')
+            print('=' * 60)
+            "
+          else
+            echo "❌ Metrics file not found!"
+            exit 1
+          fi
+
+      - name: ✅ Validate Generated Files
+        run: |
+          echo "🔍 Validating generated files..."
+
+          # Vérifier que les fichiers attendus existent
+          expected_files=(
+            "data/metrics.json"
+            "data/metrics.md"
+            "data/metrics_full.md"
+            "data/metrics.csv"
+            "dashboard/metrics.html"
+          )
+
+          missing_files=()
+          for file in "${expected_files[@]}"; do
+            if [ -f "$file" ]; then
+              size=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file" 2>/dev/null || echo "0")
+              echo "✅ $file (${size} bytes)"
+            else
+              echo "❌ $file (missing)"
+              missing_files+=("$file")
+            fi
+          done
+
+          if [ ${#missing_files[@]} -gt 0 ]; then
+            echo ""
+            echo "⚠️ Missing files detected, but continuing..."
+          else
+            echo ""
+            echo "🎉 All expected files generated successfully!"
+          fi
+
+      - name: 📤 Upload Metrics Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: athalia-metrics-${{ github.sha }}
+          path: |
+            data/metrics.json
+            data/metrics.md
+            data/metrics_full.md
+            data/metrics.csv
+            dashboard/metrics.html
+          retention-days: 30
+
+      - name: 📝 Create Metrics Badge
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+        run: |
+          # Créer un badge simple avec les métriques principales
+          if [ -f data/metrics.json ]; then
+            python3 scripts/metrics/create_badge.py
+          else
+            echo "⚠️ Fichier metrics.json non trouvé, badge non créé"
+          fi
+
+      - name: 🔄 Update README (on main branch)
+        if: github.ref == 'refs/heads/main'
+        run: |
+          echo "🔄 README update would happen here on main branch"
+          echo "📊 New metrics summary available in data/metrics.md"
+          # Note: La mise à jour du README sera faite dans une étape séparée
+          # pour éviter les conflits et garder ce workflow non-bloquant
+
+      - name: 💬 Comment on PR (if PR)
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+
+            if (fs.existsSync('data/metrics.json')) {
+              const metrics = JSON.parse(fs.readFileSync('data/metrics.json', 'utf8'));
+              const summary = metrics.summary || {};
+              
+              const comment = `## 📊 Project Metrics Update
+              
+              **Automatically generated metrics for this PR:**
+              
+              | Metric | Value |
+              |--------|-------|
+              | 🐍 Python Files | ${(summary.total_python_files || 0).toLocaleString()} |
+              | 📝 Lines of Code | ${(summary.lines_of_code || 0).toLocaleString()} |
+              | 🧪 Tests | ${(summary.collected_tests || 0).toLocaleString()} |
+              | 📚 Documentation | ${(summary.documentation_files || 0).toLocaleString()} |
+              
+              *Metrics collected automatically by [Athalia Metrics Collector](https://github.com/${context.repo.owner}/${context.repo.repo}/actions)*
+              `;
+              
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: comment
+              });
+            }
+
+  # Job séparé pour déployer le dashboard (optionnel)
+  deploy-dashboard:
+    name: 🌐 Deploy Metrics Dashboard
+    runs-on: ubuntu-latest
+    needs: collect-metrics
+    if: github.ref == 'refs/heads/main'
+    timeout-minutes: 5
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: 📥 Download Metrics Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: athalia-metrics-${{ github.sha }}
+          path: ./metrics
+
+      - name: 🌐 Setup Pages
+        if: github.repository_owner == 'arkalia-luna-system' # Ajuster selon votre organisation
+        uses: actions/configure-pages@v3
+
+      - name: 📦 Prepare Dashboard
+        if: github.repository_owner == 'arkalia-luna-system'
+        run: |
+          mkdir -p public
+          if [ -f metrics/dashboard/metrics.html ]; then
+            cp metrics/dashboard/metrics.html public/index.html
+            echo "✅ Dashboard prepared for deployment"
+          else
+            echo "⚠️ Dashboard HTML not found, skipping deployment"
+          fi
+
+      - name: 📦 Upload Pages Artifact
+        if: github.repository_owner == 'arkalia-luna-system' && hashFiles('public/index.html') != ''
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: ./public
+
+      - name: 🚀 Deploy to GitHub Pages
+        id: deployment
+        if: github.repository_owner == 'arkalia-luna-system' && hashFiles('public/index.html') != ''
+        uses: actions/deploy-pages@v2

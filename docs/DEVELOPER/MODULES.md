@@ -4,8 +4,8 @@
 
 Documentation complète de tous les modules du système Athalia avec l'architecture modulaire actuelle.
 
-**Dernière mise à jour :** 14 Août 2025  
-**Version :** v6.1 - Architecture Modulaire Complète  
+**Dernière mise à jour :** 20 Août 2025  
+**Version :** v7.0 - Architecture Modulaire Complète et Corrigée  
 **Statut :** ✅ Tous les modules opérationnels et testés
 
 ---
@@ -78,6 +78,18 @@ athalia_core/
 
 ---
 
+#### **performance_optimizer**
+**Fichier :** `athalia_core/core/performance_optimizer.py`  
+**Description :** Optimiseur de performance avancé avec analyse prédictive et optimisation automatique des ressources.
+
+---
+
+#### **generation**
+**Fichier :** `athalia_core/core/generation.py`  
+**Description :** Générateur de projets principal avec orchestration complète et gestion des workflows.
+
+---
+
 ### 🔧 **Quality - Modules de Qualité (NOUVEAU)**
 
 #### **code_linter**
@@ -138,13 +150,13 @@ athalia_core/
 
 #### **project_importer**
 **Fichier :** `athalia_core/utilities/project_importer.py`  
-**Description :** Import de projets avec validation automatique et migration des données.
+**Description :** Importateur de projets avec validation automatique et gestion des dépendances.
 
 ---
 
 #### **ready_check**
 **Fichier :** `athalia_core/utilities/ready_check.py`  
-**Description :** Vérification de préparation du système avec diagnostics et recommandations.
+**Description :** Vérificateur de préparation du système avec diagnostics complets et recommandations.
 
 ---
 
@@ -165,6 +177,12 @@ athalia_core/
 #### **ast_analyzer**
 **Fichier :** `athalia_core/analysis/ast_analyzer.py`  
 **Description :** Analyseur d'arbres de syntaxe abstraite pour l'analyse statique de code Python avec détection de patterns complexes.
+
+---
+
+#### **architecture_analyzer**
+**Fichier :** `athalia_core/analysis/architecture_analyzer.py`  
+**Description :** Analyseur d'architecture avec évaluation de la qualité du code, métriques de complexité et recommandations d'amélioration.
 
 ---
 
@@ -202,6 +220,12 @@ athalia_core/
 
 ---
 
+#### **security**
+**Fichier :** `athalia_core/validation/security.py`  
+**Description :** Module de sécurité de base avec fonctions utilitaires et constantes de sécurité.
+
+---
+
 ### 🧹 **Automation - Modules d'Automatisation**
 
 #### **auto_cicd**
@@ -225,6 +249,24 @@ athalia_core/
 #### **auto_tester**
 **Fichier :** `athalia_core/automation/auto_tester.py`  
 **Description :** Tests automatiques avec génération de tests unitaires et d'intégration, couverture de code et validation de qualité.
+
+---
+
+#### **robotics_ci**
+**Fichier :** `athalia_core/automation/robotics_ci.py`  
+**Description :** CI/CD spécialisé pour la robotique avec validation ROS2, tests Docker et déploiement automatique.
+
+---
+
+#### **cleanup**
+**Fichier :** `athalia_core/automation/cleanup.py`  
+**Description :** Nettoyage général du système avec gestion des fichiers temporaires et optimisation de l'espace.
+
+---
+
+#### **ci**
+**Fichier :** `athalia_core/automation/ci.py`  
+**Description :** Module CI de base avec fonctions utilitaires pour l'intégration continue.
 
 ---
 
@@ -260,6 +302,12 @@ athalia_core/
 
 ---
 
+#### **reachy_auditor**
+**Fichier :** `athalia_core/robotics/reachy_auditor.py`  
+**Description :** Auditeur spécialisé pour robots Reachy avec validation de configuration et tests de sécurité.
+
+---
+
 ### 🧠 **Agents - Agents Intelligents**
 
 #### **audit_agent**
@@ -274,6 +322,18 @@ athalia_core/
 
 ---
 
+#### **unified_agent**
+**Fichier :** `athalia_core/agents/unified_agent.py`  
+**Description :** Agent unifié qui coordonne les différents agents spécialisés et optimise leurs interactions.
+
+---
+
+#### **ath_context_prompt**
+**Fichier :** `athalia_core/agents/ath_context_prompt.py`  
+**Description :** Agent de contexte spécialisé Athalia avec gestion des prompts et optimisation des réponses.
+
+---
+
 ### ⚡ **Distillation - Distillation et Optimisation**
 
 #### **adaptive_distillation**
@@ -285,6 +345,42 @@ athalia_core/
 #### **audit_distiller**
 **Fichier :** `athalia_core/distillation/audit_distiller.py`  
 **Description :** Distillateur d'audit qui extrait les informations essentielles des rapports et génère des résumés intelligents.
+
+---
+
+#### **multimodal_distiller**
+**Fichier :** `athalia_core/distillation/multimodal_distiller.py`  
+**Description :** Distillateur multimodal qui traite différents types de données et génère des insights unifiés.
+
+---
+
+#### **predictive_cache**
+**Fichier :** `athalia_core/distillation/predictive_cache.py`  
+**Description :** Cache prédictif qui anticipe les besoins et optimise l'accès aux données fréquemment utilisées.
+
+---
+
+#### **response_distiller**
+**Fichier :** `athalia_core/distillation/response_distiller.py`  
+**Description :** Distillateur de réponses qui optimise et simplifie les sorties des modèles IA.
+
+---
+
+#### **correction_distiller**
+**Fichier :** `athalia_core/distillation/correction_distiller.py`  
+**Description :** Distillateur de corrections qui optimise les suggestions d'amélioration du code.
+
+---
+
+#### **quality_scorer**
+**Fichier :** `athalia_core/distillation/quality_scorer.py`  
+**Description :** Évaluateur de qualité qui score automatiquement la qualité du code et des corrections.
+
+---
+
+#### **code_genetics**
+**Fichier :** `athalia_core/distillation/code_genetics.py`  
+**Description :** Analyse génétique du code avec identification des patterns héréditaires et optimisation.
 
 ---
 
@@ -335,6 +431,86 @@ athalia_core/
 #### **analytics**
 **Fichier :** `athalia_core/analytics/analytics.py`  
 **Description :** Analytics de base avec collecte de métriques et rapports simples.
+
+---
+
+#### **advanced_analytics**
+**Fichier :** `athalia_core/analytics/advanced_analytics.py`  
+**Description :** Analytics avancés avec analyse prédictive, visualisations interactives et insights automatisés.
+
+---
+
+### 📈 **Metrics - Métriques et Monitoring**
+
+#### **collector**
+**Fichier :** `athalia_core/metrics/collector.py`  
+**Description :** Collecteur de métriques avec agrégation automatique et stockage optimisé.
+
+---
+
+#### **validator**
+**Fichier :** `athalia_core/metrics/validator.py`  
+**Description :** Validateur de métriques avec vérification de cohérence et détection d'anomalies.
+
+---
+
+#### **exporter**
+**Fichier :** `athalia_core/metrics/exporter.py`  
+**Description :** Exportateur de métriques avec support de multiples formats et intégrations.
+
+---
+
+### 🔌 **Plugins - Système de Plugins**
+
+#### **plugins_validator**
+**Fichier :** `athalia_core/plugins/plugins_validator.py`  
+**Description :** Validateur de plugins avec vérification de sécurité et validation des interfaces.
+
+---
+
+#### **plugins_manager**
+**Fichier :** `athalia_core/plugins/plugins_manager.py`  
+**Description :** Gestionnaire de plugins avec chargement dynamique et gestion du cycle de vie.
+
+---
+
+#### **hello_plugin**
+**Fichier :** `athalia_core/plugins/hello_plugin.py`  
+**Description :** Plugin d'exemple pour démonstration et tests.
+
+---
+
+#### **export_docker_plugin**
+**Fichier :** `athalia_core/plugins/export_docker_plugin.py`  
+**Description :** Plugin d'export Docker avec génération automatique de conteneurs.
+
+---
+
+### 🎯 **Demo - Démonstrations**
+
+#### **quickcheck**
+**Fichier :** `athalia_core/demo/quickcheck.py`  
+**Description :** Vérification rapide du système avec diagnostics et tests de base.
+
+---
+
+### 🚀 **Advanced Modules - Modules Avancés**
+
+#### **auto_correction_advanced**
+**Fichier :** `athalia_core/advanced_modules/auto_correction_advanced.py`  
+**Description :** Auto-correction avancée avec apprentissage automatique et optimisation continue.
+
+---
+
+#### **dashboard_unified**
+**Fichier :** `athalia_core/advanced_modules/dashboard_unified.py`  
+**Description :** Dashboard unifié avec interface moderne et intégration de tous les modules.
+
+---
+
+#### **user_profiles_advanced**
+**Fichier :** `athalia_core/advanced_modules/user_profiles_advanced.py`  
+**Description :** Gestion avancée des profils utilisateurs avec personnalisation et apprentissage.
 
 ---
 
