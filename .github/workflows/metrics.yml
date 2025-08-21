@@ -21,6 +21,10 @@ jobs:
     name: 📊 Collect Project Metrics
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
 
     steps:
       - name: 🔄 Checkout Repository
@@ -142,16 +146,6 @@ jobs:
           # Note: La mise à jour du README sera faite dans une étape séparée
           # pour éviter les conflits et garder ce workflow non-bloquant
 
-      - name: 💬 Comment on PR (if PR)
-        if: github.event_name == 'pull_request'
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const fs = require('fs');
-
-            if (fs.existsSync('data/metrics.json')) {
-              const metrics = JSON.parse(fs.readFileSync('data/metrics.json', 'utf8'));
-              const summary = metrics.summary || {};
               
               const comment = `## 📊 Project Metrics Update
               
