@@ -337,9 +337,11 @@ class MetricsCollector:
         # Essayer d'importer et de compter les commandes sécurisées
         try:
             sys.path.insert(0, str(self.project_root))
-            from athalia_core.validation.security_validator import SecurityValidator
+            from athalia_core.validation.security_validator import (
+                CommandSecurityValidator,
+            )
 
-            validator = SecurityValidator()
+            validator = CommandSecurityValidator()
             security_commands = len(validator.allowed_commands)
 
         except (ImportError, AttributeError):

@@ -4,15 +4,15 @@ from pathlib import Path
 
 import pytest
 
-from athalia_core.validation.security_validator import SecurityValidator
+from athalia_core.validation.security_validator import CommandSecurityValidator
 
 
-class TestSecurityValidatorPaths:
+class TestCommandSecurityValidatorPaths:
     """Tests pour la validation des chemins de sécurité."""
 
     def test_no_macos_specific_paths(self):
         """Vérifie qu'aucun chemin spécifique à macOS n'est présent."""
-        validator = SecurityValidator()
+        validator = CommandSecurityValidator()
 
         # Chemins macOS à éviter
         forbidden_paths = [
@@ -28,7 +28,7 @@ class TestSecurityValidatorPaths:
 
     def test_python_paths_are_dynamic(self):
         """Vérifie que les chemins Python sont détectés dynamiquement."""
-        validator = SecurityValidator()
+        validator = CommandSecurityValidator()
 
         # Vérifier que sys.executable est dans les commandes autorisées
         import sys
@@ -40,7 +40,7 @@ class TestSecurityValidatorPaths:
 
     def test_relative_paths_are_present(self):
         """Vérifie que les chemins relatifs sont présents."""
-        validator = SecurityValidator()
+        validator = CommandSecurityValidator()
 
         # Chemins relatifs qui doivent être présents
         required_relative_paths = [
@@ -56,7 +56,7 @@ class TestSecurityValidatorPaths:
 
     def test_no_absolute_paths_in_whitelist(self):
         """Vérifie qu'aucun chemin absolu spécifique à l'environnement n'est présent."""
-        validator = SecurityValidator()
+        validator = CommandSecurityValidator()
 
         # Vérifier qu'aucun chemin contient de version spécifique
         for command in validator.allowed_commands:
@@ -65,7 +65,7 @@ class TestSecurityValidatorPaths:
 
     def test_security_validator_initialization(self):
         """Vérifie que le validateur s'initialise correctement."""
-        validator = SecurityValidator()
+        validator = CommandSecurityValidator()
 
         # Vérifications de base
         assert hasattr(validator, "allowed_commands")

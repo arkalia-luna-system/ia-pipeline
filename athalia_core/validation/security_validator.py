@@ -14,7 +14,7 @@ from typing import Any
 logger = logging.getLogger(__name__)
 
 
-class SecurityValidator:
+class CommandSecurityValidator:
     """Validateur de sécurité pour les commandes subprocess et la validation de code."""
 
     def __init__(self) -> None:
@@ -696,7 +696,7 @@ def validate_and_run(
     command: list[str], **kwargs: Any
 ) -> subprocess.CompletedProcess[Any]:
     """Valide et exécute une commande de manière sécurisée."""
-    validator = SecurityValidator()
+    validator = CommandSecurityValidator()
     return validator.run_safe_command(command, **kwargs)
 
 
@@ -707,5 +707,5 @@ validateand_run = validate_and_run
 
 def is_command_safe(command: list[str]) -> bool:
     """Vérifie si une commande est sûre."""
-    validator = SecurityValidator()
+    validator = CommandSecurityValidator()
     return validator.validate_command(command)["valid"]

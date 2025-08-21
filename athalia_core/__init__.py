@@ -285,9 +285,9 @@ except ImportError:
 
 # Validation
 try:
-    from .validation import SecurityValidator
+    from .validation import CommandSecurityValidator
 
-    __all__.extend(["SecurityValidator"])
+    __all__.extend(["CommandSecurityValidator"])
 except ImportError:
     pass
 

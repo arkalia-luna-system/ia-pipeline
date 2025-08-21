@@ -12,11 +12,11 @@ from pathlib import Path
 
 import pytest
 
-from athalia_core.validation.security_validator import SecurityValidator
+from athalia_core.validation.security_validator import CommandSecurityValidator
 
 
-class TestSecurityValidatorComplete:
-    """Tests complets pour SecurityValidator."""
+class TestCommandSecurityValidatorComplete:
+    """Tests complets pour CommandSecurityValidator."""
 
     def setup_method(self) -> None:
         """Configuration avant chaque test."""
@@ -84,7 +84,7 @@ flask==1.1.0
 """
         )
 
-        self.validator = SecurityValidator()
+        self.validator = CommandSecurityValidator()
 
     def teardown_method(self) -> None:
         """Nettoyage après chaque test."""
@@ -92,11 +92,11 @@ flask==1.1.0
 
     def test_validator_initialization(self) -> None:
         """Test initialisation du validateur de sécurité."""
-        self.validator = SecurityValidator()
+        self.validator = CommandSecurityValidator()
 
         # Vérifier que l'instance est créée
         assert self.validator is not None
-        assert isinstance(self.validator, SecurityValidator)
+        assert isinstance(self.validator, CommandSecurityValidator)
 
         # Vérifier les attributs qui existent réellement
         assert hasattr(self.validator, "allowed_commands")
@@ -901,14 +901,14 @@ def broken_function(:
         assert result["valid"] is True
 
 
-class TestSecurityValidatorIntegration:
-    """Tests d'intégration pour SecurityValidator."""
+class TestCommandSecurityValidatorIntegration:
+    """Tests d'intégration pour CommandSecurityValidator."""
 
     def setup_method(self) -> None:
         """Configuration avant chaque test."""
         temp_dir_str = tempfile.mkdtemp()
         self.temp_dir = Path(temp_dir_str)
-        self.validator = SecurityValidator()
+        self.validator = CommandSecurityValidator()
 
     def teardown_method(self) -> None:
         """Nettoyage après chaque test."""
@@ -959,14 +959,14 @@ class TestSecurityValidatorIntegration:
             assert file_path.exists()
 
 
-class TestSecurityValidatorPerformance:
-    """Tests de performance pour SecurityValidator."""
+class TestCommandSecurityValidatorPerformance:
+    """Tests de performance pour CommandSecurityValidator."""
 
     def setup_method(self) -> None:
         """Configuration avant chaque test."""
         temp_dir_str = tempfile.mkdtemp()
         self.temp_dir = Path(temp_dir_str)
-        self.validator = SecurityValidator()
+        self.validator = CommandSecurityValidator()
 
     def teardown_method(self) -> None:
         """Nettoyage après chaque test."""

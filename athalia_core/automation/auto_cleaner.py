@@ -16,8 +16,8 @@ from typing import Any, Optional
 import yaml
 
 from athalia_core.core.performance_optimizer import (
-    PerformanceOptimizer,
     PathSecurityValidator,
+    PerformanceOptimizer,
     memory_efficient,
     performance_monitor,
 )

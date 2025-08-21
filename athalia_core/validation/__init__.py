@@ -9,7 +9,7 @@ except ImportError:
     pass
 
 try:
-    from .security_validator import SecurityValidator
+    from .security_validator import CommandSecurityValidator
 except ImportError:
     pass
 

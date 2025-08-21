@@ -551,6 +551,6 @@ This project is released under the MIT License, allowing for both commercial and
 [![Documentation](https://img.shields.io/badge/Docs-Complete-blue?style=for-the-badge&logo=gitbook)](docs/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge&logo=open-source-initiative)](LICENSE)
 
-**Last Updated:** August 20, 2025 | **Version:** 11.0 | **Status:** Production Ready
+**Last Updated:** August 21, 2025 | **Version:** 12.0.0 | **Status:** Production Ready
 
 </div>

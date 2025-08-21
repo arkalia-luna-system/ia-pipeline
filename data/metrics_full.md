@@ -1,6 +1,6 @@
 # Athalia Project Metrics Report
 
-**Generated on:** 2025-08-21 18:44:01
+**Generated on:** 2025-08-21 18:46:16
 **Collector version:** 1.0.0
 **Python version:** 3.10.14 (main, Jun 17 2025, 15:39:18) [Clang 17.0.0 (clang-1700.0.13.5)]
 
@@ -12,7 +12,7 @@
 | **Core Python Files** | 160 |
 | **Lines of Code** | 75,625 |
 | **Test Files** | 181 |
-| **Collected Tests** | 171 |
+| **Collected Tests** | 1,774 |
 | **Documentation Files** | 312 |
 | **HTML Dashboards** | 13 |
 | **Utility Scripts** | 69 |
@@ -31,7 +31,7 @@
 
 - **Test files found:** 181
 - **Test directories:** 22
-- **Tests collected by pytest:** 171
+- **Tests collected by pytest:** 1,774
 
 ### 📚 Documentation Metrics
 
@@ -58,7 +58,7 @@
 
 ### Test Coverage Ratio
 - **Test files vs Core files:** 1.13
-- **Tests per core file:** 1.07
+- **Tests per core file:** 11.09
 
 ### Documentation Coverage
 - **Doc files vs Python files:** 0.91
@@ -66,7 +66,7 @@
 ## 🔍 Collection Details
 
 - **Project root:** `/Volumes/T7/athalia-dev-setup`
-- **Collection timestamp:** `2025-08-21T18:44:01.253842`
+- **Collection timestamp:** `2025-08-21T18:46:16.928033`
 - **Excluded patterns:** Cache, virtual environments, build artifacts
 
 ---
