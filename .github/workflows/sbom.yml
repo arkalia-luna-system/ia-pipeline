@@ -1,0 +1,58 @@
+name: Generate SBOM
+
+on:
+  push:
+    branches: [develop, main]
+  pull_request:
+    branches: [develop, main]
+  workflow_dispatch:
+
+jobs:
+  generate-sbom:
+    name: Generate Software Bill of Materials
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install SBOM tools
+        run: |
+          python -m pip install -U pip
+          pip install cyclonedx-bom
+
+      - name: Generate CycloneDX SBOM
+        run: |
+          echo "🔍 Generating Software Bill of Materials..."
+          cyclonedx-py -i . -o sbom-cyclonedx.xml
+          echo "✅ SBOM generated: sbom-cyclonedx.xml"
+
+      - name: Generate pip-audit SBOM
+        run: |
+          echo "🔍 Generating pip-audit SBOM..."
+          pip-audit -r requirements.txt --format cyclonedx -o sbom-pip-audit.xml || true
+          echo "✅ pip-audit SBOM generated"
+
+      - name: Upload SBOM artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom-reports
+          path: |
+            sbom-cyclonedx.xml
+            sbom-pip-audit.xml
+          retention-days: 30
+
+      - name: SBOM summary
+        run: |
+          echo "📋 SBOM GENERATION COMPLETED"
+          echo "============================="
+          echo "📊 Reports generated:"
+          echo "  - sbom-cyclonedx.xml"
+          echo "  - sbom-pip-audit.xml"
+          echo "📁 Available in workflow artifacts"

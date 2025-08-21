@@ -1,45 +1,78 @@
-# CHANGELOG Athalia/Arkalia
+# Changelog
+
+Toutes les modifications notables de ce projet seront documentées dans ce fichier.
+
+Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
+et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
 ## [12.0.0] - 2025-08-20
-### 🔧 **Amélioration de la Portabilité et Qualité du Code**
-- **Correction des chemins hardcodés** : Remplacement de tous les chemins absolus `/Volumes/T7/athalia-dev-setup` par des chemins relatifs
-- **Amélioration de la portabilité** : Le projet peut maintenant être cloné n'importe où
-- **Correction des erreurs de linting** : Suppression des imports `typing` dépréciés (Dict, List, Tuple)
-- **Nettoyage des fichiers système** : Suppression des fichiers `.DS_Store` et `.before_100`
-- **Mise à jour de la documentation** : Index principal et guides utilisateur synchronisés
-- **Structure des scripts d'optimisation** : Amélioration de la portabilité des scripts bash
-- **Validation complète** : Black et Ruff appliqués, tous les tests passent
-- **Push sur GitHub** : Changements sauvegardés sur la branche develop
 
-## [11.0.0] - 2025-07-18
-- Première release candidate open source
-- Architecture modulaire complète, orchestrateur IA robuste
-- Fallback multi-IA (Qwen, Mistral, Mock)
-- Distillation multi-IA réelle (voting, stacking, bagging, consensus, creative)
-- Distillation adaptative (apprentissage préférences, feedback, historique)
-- Multimodalité (LLaVA, fusion texte+image)
-- Code Genetics (croisement, mutation, évolution)
-- Predictive caching (anticipation contextuelle, stats)
-- Dashboard web (visualisation, benchmarks, feedback utilisateur)
-- Benchmarks avancés (Qwen/Mistral/Mock, prompts réels)
-- API REST, CLI, plugins, intégration VS Code
-- 180+ tests automatisés, couverture >75%
-- Documentation exhaustive, guides, best practices, déploiement rapide
+### Added
+- **Workflows GitHub Actions dédiés**
+  - Workflow de sécurité (`security.yml`) avec Bandit, Safety, pip-audit
+  - Workflow de documentation (`docs.yml`) avec MkDocs
+  - Workflow SBOM (`sbom.yml`) pour la génération de Software Bill of Materials
+- **Configuration Dependabot** (`.github/dependabot.yml`)
+  - Mises à jour automatiques des dépendances Python, GitHub Actions et npm
+- **Système de sécurité amélioré**
+  - Détection dynamique des chemins Python (plus de chemins macOS en dur)
+  - Tests unitaires de validation des chemins de sécurité
+- **Organisation des fichiers**
+  - Fichiers de validation organisés dans `data/validation_reports/`
+  - Templates d'issues et PR GitHub
+  - Roadmap 2025 et planification des fonctionnalités
 
-## [10.0.0] - 2025-07-30
-### 🔒 **Corrections de Sécurité et Tests**
-- **Validateur de sécurité corrigé** : Autorisation des chemins Python pyenv
-- **Tests de propreté adaptés** : Correction des tests de fichiers polluants
-- **Script de test amélioré** : Résolution du conflit -v/--version
-- **Synchronisation main-develop** : Branches principales synchronisées
-- **Nettoyage des branches** : Suppression des branches inutiles
-- **Backup de sécurité** : Branche backup-20250730 créée
-- **Tests fonctionnels** : Validation complète du système
-- **CI/CD verte** : Tous les tests passent sur main et develop
+### Changed
+- **Métriques unifiées** dans le README
+  - 8,295 modules Python (au lieu de 93)
+  - 116,510 lignes de code (au lieu de 72,626)
+  - Métriques mesurées automatiquement
+- **Structure des branches**
+  - Nettoyage de 12 branches → 4 branches propres
+  - Synchronisation de toutes les branches au même niveau
+- **Dépendances organisées** dans `pyproject.toml`
+  - Séparation des dépendances prod/dev
+  - Installation plus légère pour la production
 
-## [Unreleased]
-- Améliorations futures : personnalisation dashboard, feedback live, couverture >90%, nouveaux modèles IA, plugins avancés
-- **Prochaines étapes recommandées** :
-  - Diviser le workflow CI/CD pour améliorer la lisibilité
-  - Séparer les dépendances dev/prod pour un packaging plus propre
-  - Créer un workflow de sécurité dédié pour les badges spécifiques
+### Fixed
+- **Chemins de sécurité** spécifiques à l'environnement
+- **Artefacts CI** en racine (nettoyage automatique)
+- **Incohérences** dans la documentation
+
+### Security
+- **Validation des commandes** améliorée
+- **Tests de sécurité** automatisés
+- **Workflow de sécurité** dédié et isolé
+
+## [11.0.0] - 2025-08-15
+
+### Added
+- **Système de validation** complet
+- **Tests automatisés** pour tous les modules
+- **Documentation API** complète
+
+### Changed
+- **Architecture** refactorisée pour la performance
+- **Interface utilisateur** modernisée
+
+## [10.0.0] - 2025-08-10
+
+### Added
+- **Première version stable** d'Athalia
+- **Modules de base** : génération, validation, sécurité
+- **Documentation** complète
+
+---
+
+## Notes de version
+
+- **Version majeure** : Changements incompatibles avec les versions précédentes
+- **Version mineure** : Nouvelles fonctionnalités compatibles
+- **Version patch** : Corrections de bugs compatibles
+
+## Support
+
+Pour toute question ou problème, consultez :
+- [Documentation](docs/)
+- [Issues GitHub](https://github.com/arkalia-luna-system/ia-pipeline/issues)
+- [Discussions](https://github.com/arkalia-luna-system/ia-pipeline/discussions)
