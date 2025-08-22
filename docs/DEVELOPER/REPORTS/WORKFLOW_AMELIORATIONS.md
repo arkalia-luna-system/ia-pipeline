@@ -1,7 +1,7 @@
 # 🚀 Améliorations du Workflow Athalia
 
-**Dernière mise à jour :** 14 Août 2025  
-**Version :** v2.0  
+**Dernière mise à jour :** 20 Août 2025  
+**Version :** v12.0.0  
 **Statut :** ✅ ACTIF ET MAINTENU - WORKFLOW OPTIMISÉ
 
 ## 📋 Vue d'ensemble
@@ -118,8 +118,8 @@ git push origin develop
 
 **Fonctionnalités** :
 - 🔧 Hooks de base (trailing-whitespace, end-of-file-fixer, etc.)
-- 🐍 Formatage Python (black, isort)
-- 🔍 Linting (flake8, mypy)
+- 🐍 Formatage Python (black, isort, ruff)
+- 🔍 Linting (ruff, mypy)
 - 🔒 Sécurité (bandit, safety, pip-audit)
 - 🧪 Tests personnalisés Athalia
 
@@ -266,7 +266,8 @@ Les scripts peuvent être personnalisés en modifiant :
 ### Outils externes
 - **pre-commit** - Framework de hooks Git pour la qualité du code
 - **black** - Formateur de code Python automatique
-- **flake8** - Linter Python pour la qualité et le style
+- **isort** - Organisation automatique des imports Python
+- **ruff** - Linter Python pour la qualité et le style
 - **bandit** - Analyseur de sécurité pour le code Python
 
 ## 🤝 Contribution

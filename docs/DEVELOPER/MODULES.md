@@ -5,7 +5,7 @@
 Documentation complète de tous les modules du système Athalia avec l'architecture modulaire actuelle.
 
 **Dernière mise à jour :** 20 Août 2025  
-**Version :** v7.0 - Architecture Modulaire Complète et Corrigée  
+**Version :** v12.0.0 - Architecture Modulaire Complète et Corrigée  
 **Statut :** ✅ Tous les modules opérationnels et testés
 
 ---
@@ -299,12 +299,6 @@ athalia_core/
 #### **robotics_ci**
 **Fichier :** `athalia_core/robotics/robotics_ci.py`  
 **Description :** CI/CD spécialisé robotique avec tests d'environnement, validation matérielle et déploiement sécurisé.
-
----
-
-#### **reachy_auditor**
-**Fichier :** `athalia_core/robotics/reachy_auditor.py`  
-**Description :** Auditeur spécialisé pour robots Reachy avec validation de configuration et tests de sécurité.
 
 ---
 
@@ -653,8 +647,8 @@ optimizer = CorrectionOptimizer()
 corrections = optimizer.optimize_corrections("./mon-projet")
 
 # Validation de sécurité
-from athalia_core.validation.security_validator import SecurityValidator
-validator = SecurityValidator()
+from athalia_core.validation.security_validator import CommandSecurityValidator
+validator = CommandSecurityValidator()
 security_report = validator.validate_project("./mon-projet")
 ```
 
@@ -682,7 +676,7 @@ security_report = validator.validate_project("./mon-projet")
 ### **Total : 22+ modules spécialisés**
 
 ### **Métriques de Qualité**
-- **Tests :** 750 tests collectés sans aucune erreur ✅
+- **Tests :** 1774 tests collectés sans aucune erreur ✅
 - **Couverture :** 100% fonctionnels sur tous les modules ✅
 - **Linting :** 100% conforme aux standards Python (Ruff + Black) ✅
 - **Documentation :** Chaque module documenté ✅
@@ -715,4 +709,4 @@ security_report = validator.validate_project("./mon-projet")
 
 ---
 
-*Documentation générée le 14 Août 2025 - Modules Athalia v6.1 - Architecture Modulaire Complète*
+*Documentation générée le 20 Août 2025 - Modules Athalia v12.0.0 - Architecture Modulaire Complète*

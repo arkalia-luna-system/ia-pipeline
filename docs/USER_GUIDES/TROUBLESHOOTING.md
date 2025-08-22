@@ -1,7 +1,7 @@
 # 🔧 Guide de Dépannage - Athalia
 
-**Dernière mise à jour :** 14 Août 2025  
-**Version :** v12.0  
+**Dernière mise à jour :** 20 Août 2025  
+**Version :** v12.0.0  
 **Statut :** ✅ ACTIF ET MAINTENU - DÉPANNAGE AUTOMATISÉ
 
 ---

@@ -313,7 +313,7 @@ class RoboticsCI:
         """Exécute le scan de sécurité"""
         # Initialiser à unknown par défaut
         self.ci_results["security_status"] = "unknown"
-        
+
         try:
             if (self.project_path / "Cargo.toml").exists():
                 # Audit Rust
@@ -352,8 +352,10 @@ class RoboticsCI:
                             f"Audit npm: {result.stderr}"
                         )
                     self.ci_results["security_status"] = "failed"
-                    
-            elif (self.project_path / "requirements.txt").exists() or (self.project_path / "pyproject.toml").exists():
+
+            elif (self.project_path / "requirements.txt").exists() or (
+                self.project_path / "pyproject.toml"
+            ).exists():
                 # Audit Python avec pip-audit
                 result = validate_and_run(
                     ["pip-audit", "-r", str(self.project_path / "requirements.txt")],

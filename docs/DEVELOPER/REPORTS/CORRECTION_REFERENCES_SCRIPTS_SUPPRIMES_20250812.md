@@ -2,10 +2,10 @@
 
 ## 📋 Vue d'ensemble
 
-**Dernière mise à jour :** 14 Août 2025  
-**Version :** v2.0  
+**Dernière mise à jour :** 20 Août 2025  
+**Version :** v12.0.0  
 **Statut :** ✅ ACTIF ET MAINTENU - CORRECTIONS APPLIQUÉES  
-**Date:** 12 août 2025  
+**Date:** 20 août 2025  
 **Objectif:** Prévenir les erreurs CI en corrigeant les références aux scripts supprimés  
 **Statut:** ✅ TERMINÉ AVEC SUCCÈS  
 

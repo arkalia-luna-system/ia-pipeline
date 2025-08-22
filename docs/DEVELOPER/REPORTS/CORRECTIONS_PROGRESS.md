@@ -1,7 +1,7 @@
 # 📊 PROGRESSION DES CORRECTIONS ATHALIA
 
-**Date de mise à jour :** 30 Juillet 2025
-**Version :** 11.0 (ACTIVE DEVELOPMENT)
+**Date de mise à jour :** 20 Août 2025
+**Version :** v12.0.0
 
 ---
 
@@ -29,7 +29,7 @@
 - **Tests de sécurité validés :** 3/3 ✅
 - **Gestion d'erreurs améliorée :** 4/4 ✅
 
-### **✅ Dernières Corrections Apportées (30 Juillet 2025)**
+### **✅ Dernières Corrections Apportées (20 Août 2025)**
 
 #### **Tests de Sécurité Finalisés**
 - ✅ `tests/test_linting_corrections.py` : 2 subprocess → `validate_and_run()`

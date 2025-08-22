@@ -1,5 +1,9 @@
 # Guide du Workflow Complet Athalia
 
+**Dernière mise à jour :** 20 Août 2025  
+**Version :** v12.0.0  
+**Statut :** ✅ ACTIF ET MAINTENU
+
 ## Vue d'ensemble
 
 Le système de workflow complet d'Athalia automatise tout le cycle de développement, de la fermeture propre à la reprise de travail. Il garantit un environnement de développement cohérent et propre.

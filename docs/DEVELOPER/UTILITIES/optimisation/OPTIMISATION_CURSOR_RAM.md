@@ -22,7 +22,7 @@
 - `ms-python.python` - Python LSP
 - `charliermarsh.ruff` - Linting Python
 - `ms-python.black-formatter` - Formatage
-- `ms-python.isort` - Import sorting
+- `ms-python.black-formatter` - Formatage Python
 
 ### 2. **Configuration mémoire optimisée**
 

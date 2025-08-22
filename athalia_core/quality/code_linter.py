@@ -281,19 +281,19 @@ class CodeLinter:
     def _calculate_score(self):
         """Calcule le score de qualité basé sur les erreurs et avertissements"""
         base_score = 100
-        
+
         # Pénalités pour les erreurs (plus graves)
         error_penalty = len(self.report.get("errors", [])) * 10
-        
+
         # Pénalités pour les avertissements (moins graves)
         warning_penalty = len(self.report.get("warnings", [])) * 2
-        
+
         # Calcul du score final
         final_score = max(0, base_score - error_penalty - warning_penalty)
-        
+
         # Mettre à jour le score dans le rapport
         self.report["score"] = final_score
-        
+
         logger.info(f"📊 Score de qualité calculé: {final_score}/100")
 
     def _generate_quality_report(self):

@@ -365,9 +365,10 @@ class TestUnifiedOrchestrator:
 
     # NOUVEAUX TESTS POUR COUVRIR LES LIGNES MANQUANTES
 
-    @patch("athalia_core.core.unified_orchestrator.AI_MODULES_AVAILABLE", False)
     def test_initialize_modules_without_ai(self):
         """Test d'initialisation des modules sans IA"""
+        # Configurer l'état des modules pour ce test
+        self.orchestrator.ai_modules_available = False
         self.orchestrator.initialize_modules()
 
         # Vérifier que les modules de base sont initialisés
@@ -417,10 +418,12 @@ class TestUnifiedOrchestrator:
         invalid_code = "print('Hello, World!'"  # Parenthèse manquante
         assert self.orchestrator._validate_code(invalid_code) is False
 
-    @patch("athalia_core.core.unified_orchestrator.AI_MODULES_AVAILABLE", True)
     @patch("builtins.open", create=True)
     def test_step_ai_enhancement_success(self, mock_open):
         """Test d'amélioration IA réussie"""
+        # Configurer l'état des modules pour ce test
+        self.orchestrator.ai_modules_available = True
+
         # Mock les modules IA
         mock_unified_agent = Mock()
         mock_unified_agent.act.return_value = "print('Enhanced code')"
@@ -454,9 +457,11 @@ class TestUnifiedOrchestrator:
         assert "ai_enhancement" in self.orchestrator.workflow_results["steps_completed"]
         assert "ai_enhancement" in self.orchestrator.workflow_results["artifacts"]
 
-    @patch("athalia_core.core.unified_orchestrator.AI_MODULES_AVAILABLE", True)
     def test_step_ai_enhancement_no_project_path(self):
         """Test d'amélioration IA sans chemin de projet"""
+        # Configurer l'état des modules pour ce test
+        self.orchestrator.ai_modules_available = True
+
         # Mock les modules IA
         mock_unified_agent = Mock()
         self.orchestrator.unified_agent = mock_unified_agent
@@ -694,9 +699,11 @@ class TestUnifiedOrchestrator:
         )
         assert "robotics_validation" in self.orchestrator.workflow_results["artifacts"]
 
-    @patch("athalia_core.core.unified_orchestrator.ROBOTICS_MODULES_AVAILABLE", False)
     def test_step_robotics_validation_modules_unavailable(self):
         """Test de validation robotique sans modules disponibles"""
+        # Configurer l'état des modules pour ce test
+        self.orchestrator.robotics_modules_available = False
+
         blueprint = {"project_type": "robotics_api"}
         self.orchestrator._step_robotics_validation(blueprint)
 

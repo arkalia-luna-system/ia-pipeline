@@ -1,7 +1,7 @@
 # 📚 Rapport d'Amélioration Documentation GETTING_STARTED et DEVELOPER
 
-**Date :** 2 Août 2025  
-**Version :** v4.0  
+**Date :** 20 Août 2025  
+**Version :** v12.0.0  
 **Statut :** ✅ TERMINÉ ET VALIDÉ  
 **Responsable :** Assistant IA - Expert Documentation
 

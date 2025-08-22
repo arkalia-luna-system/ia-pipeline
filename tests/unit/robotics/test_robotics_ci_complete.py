@@ -248,7 +248,7 @@ class TestRoboticsCI:
         requirements_file = Path(self.temp_dir) / "requirements.txt"
         with open(requirements_file, "w") as f:
             f.write("pytest\nrequests")
-            
+
         mock_run.return_value.returncode = 0
         mock_run.return_value.stdout = ""
 
@@ -329,10 +329,10 @@ class TestRoboticsCI:
         cargo_toml = Path(self.temp_dir) / "Cargo.toml"
         with open(cargo_toml, "w") as f:
             f.write('[package]\nname = "test_project"')
-            
+
         # Initialiser deployment_status pour éviter les pénalités
         self.ci.ci_results["deployment_status"] = "ready"
-        
+
         with patch("subprocess.run", side_effect=subprocess.TimeoutExpired("cmd", 60)):
             self.ci._run_build()
             assert self.ci.ci_results["build_status"] == "failed"
@@ -344,10 +344,10 @@ class TestRoboticsCI:
         cargo_toml = Path(self.temp_dir) / "Cargo.toml"
         with open(cargo_toml, "w") as f:
             f.write('[package]\nname = "test_project"')
-            
+
         # Initialiser deployment_status pour éviter les pénalités
         self.ci.ci_results["deployment_status"] = "ready"
-        
+
         with patch("subprocess.run", side_effect=Exception("Test error")):
             self.ci._run_build()
             assert self.ci.ci_results["build_status"] == "failed"

@@ -1,9 +1,9 @@
 # Amélioration des Tests - Unified Orchestrator
 
-**Dernière mise à jour :** 14 Août 2025  
-**Version :** v2.0  
+**Dernière mise à jour :** 20 Août 2025  
+**Version :** v12.0.0  
 **Statut :** ✅ ACTIF ET MAINTENU - TESTS OPTIMISÉS  
-**Date :** 2 août 2025  
+**Date :** 20 août 2025  
 **Module :** `athalia_core/core/unified_orchestrator.py`  
 **Objectif :** Amélioration de la couverture de tests et correction des tests existants
 

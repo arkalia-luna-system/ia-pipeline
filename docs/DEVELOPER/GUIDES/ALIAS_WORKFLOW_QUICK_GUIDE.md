@@ -1,5 +1,9 @@
 # 🚀 Guide Rapide - Alias de Workflow Athalia
 
+**Dernière mise à jour :** 20 Août 2025  
+**Version :** v12.0.0  
+**Statut :** ✅ ACTIF ET MAINTENU
+
 ## 📋 Installation
 
 ### Installation automatique

@@ -1,7 +1,7 @@
 # 🚀 Best Practices Athalia
 
-**Date :** 14 Août 2025  
-**Version :** v6.1  
+**Date :** 20 Août 2025  
+**Version :** v12.0.0  
 **Statut :** ✅ ACTIF ET MAINTENU - ARCHITECTURE MODULAIRE COMPLÈTE
 
 ---
@@ -188,7 +188,7 @@ python3 tools/maintenance/validation_documentation.py . --verbose --output valid
 ## 📋 **CHECKLIST DE QUALITÉ**
 
 ### **Avant chaque Commit**
-- [ ] Tests unitaires passent (750 tests collectés)
+- [ ] Tests unitaires passent (1774 tests collectés)
 - [ ] Documentation mise à jour
 - [ ] Code linté (ruff, black) ✅
 - [ ] Couverture de tests 100% fonctionnels ✅
@@ -224,7 +224,7 @@ python3 tools/maintenance/validation_documentation.py . --verbose --output valid
 ### **Bonnes Pratiques de Sécurité**
 ```bash
 # Validation des entrées utilisateur
-python3 -c "from athalia_core.validation.security_validator import SecurityValidator; validator = SecurityValidator(); print('Security validator initialized')"
+python3 -c "from athalia_core.validation.security_validator import CommandSecurityValidator; validator = CommandSecurityValidator(); print('Security validator initialized')"
 
 # Audit des permissions
 python3 bin/core/ath-audit.py . --security
@@ -239,7 +239,7 @@ python3 bin/core/ath-audit.py . --security --verbose
 ### **Chiffrement et Protection**
 ```bash
 # Validation du chiffrement
-python3 -c "from athalia_core.validation.security_validator import SecurityValidator; validator = SecurityValidator(); print('Security validator initialized')"
+python3 -c "from athalia_core.validation.security_validator import CommandSecurityValidator; validator = CommandSecurityValidator(); print('Security validator initialized')"
 
 # Protection des données sensibles
 python3 bin/core/ath-audit.py . --security --data-protection
@@ -267,7 +267,7 @@ python3 athalia_core/core/performance_analyzer.py . --profile benchmark --output
 ```
 
 ### **Métriques de Performance**
-- **Tests collectés** : 750 tests sans erreur ✅
+- **Tests collectés** : 1774 tests sans erreur ✅
 - **Linting conforme** : 100% Ruff + Black ✅
 - **Imports corrigés** : 100% fonctionnels ✅
 - **Architecture modulaire** : 22+ modules organisés ✅
@@ -409,7 +409,7 @@ athalia_core/
 
 ### **Outils**
 - **Dashboard** : Interface unifiée de monitoring
-- **Tests** : Suite complète de tests (750 tests collectés)
+- **Tests** : Suite complète de tests (1774 tests collectés)
 - **API** : Interface programmatique
 - **Rapports** : Génération automatique de rapports
 - **Linting** : Ruff + Black pour la qualité du code
@@ -424,4 +424,4 @@ Ces bonnes pratiques garantissent la qualité, la sécurité et la performance d
 
 ---
 
-*Best Practices - Athalia v6.1 - 14 Août 2025*
+*Best Practices - Athalia v12.0.0 - 20 Août 2025*

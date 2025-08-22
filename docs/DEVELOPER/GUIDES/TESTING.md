@@ -1,6 +1,7 @@
 # Guide de Tests - Athalia
 
-**Date :** 27 juillet 2025
+**Date :** 20 Août 2025  
+**Version :** v12.0.0
 **Objectif :** Stratégie complète de tests pour Athalia
 
 ---

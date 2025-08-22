@@ -1,10 +1,10 @@
 # 🚀 Guide des Plugins - Athalia/Arkalia
 
-**Dernière mise à jour :** 14 Août 2025  
-**Version :** v3.0  
+**Dernière mise à jour :** 20 Août 2025  
+**Version :** v12.0.0  
 **Statut :** ✅ ACTIF ET MAINTENU - SYSTÈME MODULAIRE
 
-> **Note de mise à jour (14/08/2025) :**
+> **Note de mise à jour (20/08/2025) :**
 >
 > - Le système de plugins est déjà en place, testé, documenté, et utilisé en production.
 > - Les exemples et guides sont à jour avec l’état réel du code.

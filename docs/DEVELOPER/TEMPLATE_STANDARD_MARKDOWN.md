@@ -146,7 +146,7 @@ athalia_core/
 ```
 
 ### **✅ État Actuel Validé**
-- **750 tests collectés** sans aucune erreur ✅
+- **1774 tests collectés** sans aucune erreur ✅
 - **Architecture modulaire** complète et fonctionnelle ✅
 - **Imports corrigés** et fonctionnels ✅
 - **Linting conforme** (Ruff + Black) ✅
@@ -193,6 +193,6 @@ athalia_core/
 - [ ] **Cohérence** avec les autres fichiers ✅
 - [ ] **Utilité** pour l'utilisateur final ✅
 - [ ] **Maintenabilité** assurée ✅
-- [ ] **Tests fonctionnels** - 750 tests collectés ✅
+- [ ] **Tests fonctionnels** - 1774 tests collectés ✅
 - [ ] **Linting conforme** - Ruff + Black ✅
 - [ ] **Architecture modulaire** - Structure synchronisée ✅ 

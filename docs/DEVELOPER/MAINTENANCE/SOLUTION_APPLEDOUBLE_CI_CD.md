@@ -1,7 +1,7 @@
 # 🍎 Solution Complète Fichiers AppleDouble - CI/CD Athalia
 
-**Dernière mise à jour :** 19 Août 2025  
-**Version :** 2.0  
+**Dernière mise à jour :** 20 Août 2025  
+**Version :** v12.0.0  
 **Statut :** ✅ IMPLÉMENTÉ ET TESTÉ
 
 ## 🎯 Problème Identifié

@@ -1,7 +1,7 @@
 # 🚀 RÉSUMÉ DES SCRIPTS D'OPTIMISATION ATHALIA
 
-**Dernière mise à jour :** 14 Août 2025  
-**Version :** v2.0  
+**Dernière mise à jour :** 20 Août 2025  
+**Version :** v12.0.0  
 **Statut :** ✅ ACTIF ET MAINTENU - OPTIMISATION COMPLÈTE
 
 ## 📋 Vue d'ensemble
@@ -133,7 +133,7 @@ bin/ath-quick-clean
 
 ### ⚠️ Ce qui peut être arrêté
 - **Services non critiques:** Redis, Supervisor (si pas de conteneurs)
-- **Processus LSP gourmands:** Black, isort, ruff (si >50 MB)
+- **Processus LSP gourmands:** Black, ruff (si >50 MB)
 - **Extensions très gourmandes:** Continue, GitHub Actions
 - **Caches temporaires:** Caches système, DNS, Cursor
 

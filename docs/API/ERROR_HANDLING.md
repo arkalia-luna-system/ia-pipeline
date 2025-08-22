@@ -1,7 +1,7 @@
 # 🛡️ Gestion d'Erreurs - Athalia
 
-**Dernière mise à jour :** 14 Août 2025  
-**Version :** v3.0  
+**Dernière mise à jour :** 20 Août 2025  
+**Version :** v12.0.0  
 **Statut :** ✅ ACTIF ET MAINTENU - GESTION CENTRALISÉE  
 **Section :** Documentation API - Gestion d'Erreurs
 

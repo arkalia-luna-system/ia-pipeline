@@ -1,7 +1,7 @@
 # 🚀 Guide d'Utilisation - Athalia
 
-**Version :** 12.0 (ACTIVE DEVELOPMENT)  
-**Date :** 31 Juillet 2025
+**Version :** v12.0.0  
+**Date :** 20 Août 2025
 
 ---
 

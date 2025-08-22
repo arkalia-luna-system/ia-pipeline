@@ -1,7 +1,7 @@
 # 🛡️ Guide de Linting et Sécurité - Athalia
 
-**Dernière mise à jour :** 14 Août 2025  
-**Version :** v2.0  
+**Dernière mise à jour :** 20 Août 2025  
+**Version :** v12.0.0  
 **Statut :** ✅ ACTIF ET MAINTENU - SÉCURITÉ RENFORCÉE
 
 ## 🛡️ Vue d'ensemble
@@ -15,12 +15,12 @@ Ce guide décrit l'utilisation des outils de linting et de sécurité configuré
 - **isort**: Organisation automatique des imports
 
 ### Outils d'Analyse Statique
-- **Flake8**: Analyse statique avec extensions
-  - flake8-bugbear: Détection de bugs courants
-  - flake8-builtins: Conflits avec les builtins
-  - flake8-quotes: Vérification des guillemets
-  - pep8-naming: Conventions de nommage
-  - mccabe: Complexité cyclomatique
+- **Ruff**: Analyse statique moderne et rapide
+  - Détection de bugs courants
+  - Conflits avec les builtins
+  - Vérification des guillemets
+  - Conventions de nommage
+  - Complexité cyclomatique
 - **MyPy**: Vérification des types statiques
 
 ### Outils de Sécurité
@@ -73,11 +73,11 @@ isort --check-only --diff .
 
 #### Analyse Statique
 ```bash
-# Flake8 avec configuration personnalisée
-flake8 --config=config/.flake8
+# Ruff avec configuration personnalisée
+ruff check .
 
 # MyPy avec vérification des types
-mypy --config-file=config/pyproject.toml
+mypy --config-file=pyproject.toml
 
 # Bandit pour la sécurité
 bandit -c config/.bandit -r athalia_core scripts tools

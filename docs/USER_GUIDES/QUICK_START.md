@@ -4,8 +4,8 @@
 
 **🚀 Démarrez avec Athalia en moins de 10 minutes !**
 
-**Dernière mise à jour :** 14 Août 2025  
-**Version :** v6.1 - Architecture Modulaire Complète  
+**Dernière mise à jour :** 20 Août 2025  
+**Version :** v12.0.0 - Architecture Modulaire Complète  
 **Statut :** ✅ **ACTIF ET MAINTENU - ARCHITECTURE MODULAIRE OPÉRATIONNELLE**
 
 </div>

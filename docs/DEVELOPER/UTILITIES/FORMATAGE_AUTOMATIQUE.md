@@ -1,7 +1,7 @@
 # 🎨 Système de Formatage Automatique Athalia
 
-**Dernière mise à jour :** 14 Août 2025  
-**Version :** v2.0  
+**Dernière mise à jour :** 20 Août 2025  
+**Version :** v12.0.0  
 **Statut :** ✅ ACTIF ET MAINTENU - FORMATAGE AUTOMATISÉ
 
 ## Vue d'ensemble
@@ -103,7 +103,7 @@ Le fichier `config/pre-commit-config.yaml` a été mis à jour avec :
 
 ### ✅ Résolution des problèmes
 - **Plus de cycle infini** : Les fichiers modifiés sont automatiquement ajoutés
-- **Formatage cohérent** : Black, isort, ruff appliqués dans le bon ordre
+- **Formatage cohérent** : Black et ruff appliqués dans le bon ordre
 - **Hooks optimisés** : Configuration `require_serial: true` pour éviter les conflits
 
 ### ✅ Automatisation
@@ -128,7 +128,7 @@ git add .
 **Solution :** Vérifiez que les outils sont installés :
 ```bash
 source .venv/bin/activate
-pip install black isort ruff
+pip install black ruff
 ```
 
 ### Problème : "Hook pre-commit échoue"
@@ -142,13 +142,11 @@ git commit --no-verify -m "votre message"
 ```bash
 # Formatage manuel
 black .
-isort .
-ruff format .
-ruff check --fix
+ruff check . --fix
 
 # Vérification du formatage
 black . --check --diff
-isort . --check-only --diff
+ruff check .
 
 # Nettoyage
 ./bin/cleanup/ath-clean

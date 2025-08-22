@@ -1,7 +1,7 @@
 # 🛠️ Core Modules - Documentation API
 
-**Dernière mise à jour :** 14 Août 2025  
-**Version :** v3.0  
+**Dernière mise à jour :** 20 Août 2025  
+**Version :** v12.0.0  
 **Statut :** ✅ ACTIF ET MAINTENU - MODULES MODULAIRES  
 **Documentation exhaustive et conforme au code**
 
@@ -136,4 +136,4 @@ Les modules principaux d'Athalia fournissent toutes les fonctionnalités de base
 
 ---
 
-*Documentation exhaustive et conforme au code réel, mise à jour le 27/07/2025.*
+*Documentation exhaustive et conforme au code réel, mise à jour le 20/08/2025.*

@@ -1,5 +1,9 @@
 # Guide de Fermeture Propre d'Athalia
 
+**Dernière mise à jour :** 20 Août 2025  
+**Version :** v12.0.0  
+**Statut :** ✅ ACTIF ET MAINTENU
+
 ## Vue d'ensemble
 
 Le script `ath-clean-shutdown` automatise le processus de fermeture propre d'Athalia en une seule commande. Il garantit que votre projet est dans un état propre avant de fermer votre session de développement.
@@ -197,7 +201,7 @@ README.md: ✅
 Documentation développeur: ✅
 
 === TESTS ===
-Fichiers de test: 156
+Fichiers de test: 1774
 
 === RÉSUMÉ ===
 Fermeture: ✅ Propre

@@ -1,7 +1,7 @@
 # 🚀 Contribuer à Athalia/Arkalia
 
-**Dernière mise à jour :** 14 Août 2025  
-**Version :** v2.0  
+**Dernière mise à jour :** 20 Août 2025  
+**Version :** v12.0.0  
 **Statut :** ✅ ACTIF ET MAINTENU - CONTRIBUTION OUVERTE
 
 Merci de contribuer à ce projet open source !
@@ -74,9 +74,8 @@ python3 -m pytest tests/performance/ --verbose
 ### Validation de Qualité
 ```bash
 # Linting du code
-flake8 athalia_core/ --max-line-length=100
+ruff check athalia_core/
 black athalia_core/ --check
-isort athalia_core/ --check
 
 # Vérification de la documentation
 python3 scripts/analyze_documentation_quality.py

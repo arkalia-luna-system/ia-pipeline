@@ -1,7 +1,7 @@
 # 🔧 Correction du Problème d'Arguments de Couverture Pytest
 
-**Date :** 31 Juillet 2025  
-**Version :** 11.0 (ACTIVE DEVELOPMENT) ✅  
+**Date :** 20 Août 2025  
+**Version :** v12.0.0 ✅  
 **Statut :** ✅ RÉSOLU  
 **Priorité :** CRITIQUE  
 

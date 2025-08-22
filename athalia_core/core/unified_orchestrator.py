@@ -38,7 +38,6 @@ try:
     ADVANCED_MODULES_AVAILABLE = True
 except ImportError:
     ADVANCED_MODULES_AVAILABLE = False
-    logger.warning("Modules avancés non disponibles - mode fallback activé")
 
 # Imports des nouveaux modules IA et distillation
 try:
@@ -52,7 +51,6 @@ try:
     AI_MODULES_AVAILABLE = True
 except ImportError:
     AI_MODULES_AVAILABLE = False
-    logger.warning("Modules IA non disponibles - mode fallback activé")
 
 # Import des modules robotiques
 try:
@@ -67,7 +65,6 @@ try:
     ROBOTICS_MODULES_AVAILABLE = True
 except ImportError:
     ROBOTICS_MODULES_AVAILABLE = False
-    logger.warning("Modules robotiques non disponibles - mode fallback activé")
 
 # Import des templates artistiques
 try:
@@ -77,7 +74,6 @@ try:
     ARTISTIC_MODULES_AVAILABLE = True
 except ImportError:
     ARTISTIC_MODULES_AVAILABLE = False
-    logger.warning("Modules artistiques non disponibles - mode fallback activé")
 
 # Import des modules de classification avancée
 try:
@@ -89,7 +85,6 @@ try:
     CLASSIFICATION_MODULES_AVAILABLE = True
 except ImportError:
     CLASSIFICATION_MODULES_AVAILABLE = False
-    logger.warning("Modules de classification non disponibles - mode fallback activé")
 
 
 class UnifiedOrchestrator:
@@ -144,6 +139,13 @@ class UnifiedOrchestrator:
         # Initialiser les modules avancés
         self.auto_correction_advanced: AutoCorrectionAvancee | None = None
 
+        # État des modules disponibles (instance-specific)
+        self.advanced_modules_available = ADVANCED_MODULES_AVAILABLE
+        self.ai_modules_available = AI_MODULES_AVAILABLE
+        self.robotics_modules_available = ROBOTICS_MODULES_AVAILABLE
+        self.artistic_modules_available = ARTISTIC_MODULES_AVAILABLE
+        self.classification_modules_available = CLASSIFICATION_MODULES_AVAILABLE
+
     def initialize_modules(self) -> None:
         """Initialise tous les modules"""
         try:
@@ -158,7 +160,7 @@ class UnifiedOrchestrator:
             self.auto_cicd = AutoCICD()
 
             # Modules IA et distillation (si disponibles)
-            if AI_MODULES_AVAILABLE:
+            if self.ai_modules_available:
                 try:
                     self.unified_agent = UnifiedAgent()
                     self.context_agent = detect_prompts_scoring
@@ -171,7 +173,7 @@ class UnifiedOrchestrator:
                     logger.warning(f" Erreur initialisation modules IA: {e}")
 
             # Modules robotiques (si disponibles)
-            if ROBOTICS_MODULES_AVAILABLE:
+            if self.robotics_modules_available:
                 try:
                     self.reachy_auditor = ReachyAuditor(str(self.project_path))
                     self.ros2_validator = ROS2Validator(str(self.project_path))
@@ -183,7 +185,7 @@ class UnifiedOrchestrator:
                     logger.warning(f" Erreur initialisation modules robotiques: {e}")
 
             # Modules artistiques (si disponibles)
-            if ARTISTIC_MODULES_AVAILABLE:
+            if self.artistic_modules_available:
                 try:
                     self.artistic_templates = get_artistic_templates()
                     self.base_templates = get_base_templates()
@@ -192,7 +194,7 @@ class UnifiedOrchestrator:
                     logger.warning(f" Erreur initialisation modules artistiques: {e}")
 
             # Modules de classification (si disponibles)
-            if CLASSIFICATION_MODULES_AVAILABLE:
+            if self.classification_modules_available:
                 try:
                     self.project_classifier = classify_project
                     logger.info(" Modules de classification initialisés")
@@ -202,7 +204,7 @@ class UnifiedOrchestrator:
                     )
 
             # Modules avancés (si disponibles)
-            if ADVANCED_MODULES_AVAILABLE:
+            if self.advanced_modules_available:
                 try:
                     self.auto_correction_advanced = AutoCorrectionAvancee(
                         str(self.project_path)
@@ -297,7 +299,7 @@ class UnifiedOrchestrator:
         logger.info("🧠 Classification intelligente du projet...")
 
         try:
-            if AI_MODULES_AVAILABLE and self.context_agent:
+            if self.ai_modules_available and self.context_agent:
                 # Utiliser l'agent de contexte pour classifier le projet
                 description = blueprint.get("description", "")
                 project_name = blueprint.get("project_name", "")
@@ -360,7 +362,7 @@ class UnifiedOrchestrator:
         logger.info("🤖 Amélioration IA intelligente...")
 
         try:
-            if AI_MODULES_AVAILABLE and self.unified_agent and self.quality_scorer:
+            if self.ai_modules_available and self.unified_agent and self.quality_scorer:
                 if isinstance(self.workflow_results["artifacts"], dict):
                     project_path = self.workflow_results["artifacts"].get(
                         "project_path"
@@ -616,7 +618,7 @@ class UnifiedOrchestrator:
         """Étape 11: Validation robotique spécialisée"""
         logger.info("🤖 Validation robotique...")
         try:
-            if not ROBOTICS_MODULES_AVAILABLE:
+            if not self.robotics_modules_available:
                 logger.info("ℹ Modules robotiques non disponibles - étape ignorée")
                 return
 
@@ -693,7 +695,7 @@ class UnifiedOrchestrator:
         """Étape 12: Application des templates artistiques"""
         logger.info("🎨 Application templates artistiques...")
         try:
-            if not ARTISTIC_MODULES_AVAILABLE:
+            if not self.artistic_modules_available:
                 logger.info("ℹ Templates artistiques non disponibles - étape ignorée")
                 return
 
@@ -764,7 +766,7 @@ class UnifiedOrchestrator:
         """Étape 13: Classification avancée du projet"""
         logger.info("🧠 Classification avancée...")
         try:
-            if not CLASSIFICATION_MODULES_AVAILABLE:
+            if not self.classification_modules_available:
                 logger.info(
                     "ℹ Modules de classification non disponibles - étape ignorée"
                 )

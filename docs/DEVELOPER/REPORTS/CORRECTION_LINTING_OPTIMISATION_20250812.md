@@ -2,10 +2,10 @@
 
 ## 📋 Vue d'ensemble
 
-**Dernière mise à jour :** 14 Août 2025  
-**Version :** v2.0  
+**Dernière mise à jour :** 20 Août 2025  
+**Version :** v12.0.0  
 **Statut :** ✅ ACTIF ET MAINTENU - LINTING CORRIGÉ  
-**Date:** 12 août 2025  
+**Date:** 20 août 2025  
 **Durée:** ~1 heure  
 **Objectif:** Correction complète du linting et amélioration des scripts d'optimisation  
 **Statut:** ✅ TERMINÉ AVEC SUCCÈS  

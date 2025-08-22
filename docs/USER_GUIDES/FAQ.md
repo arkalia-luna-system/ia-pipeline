@@ -4,8 +4,8 @@
 
 **🔍 Trouvez rapidement les réponses à vos questions**
 
-**Dernière mise à jour :** 14 Août 2025  
-**Version :** v6.1 - Architecture Modulaire Complète  
+**Dernière mise à jour :** 20 Août 2025  
+**Version :** v12.0.0 - Architecture Modulaire Complète  
 **Statut :** ✅ **FAQ complète avec commandes validées et architecture modulaire**
 
 </div>

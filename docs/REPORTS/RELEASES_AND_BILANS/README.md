@@ -1,7 +1,7 @@
 # 📚 RELEASES ET BILANS ATHALIA v1.0.0
 
-**Dernière mise à jour :** 12 Août 2025  
-**Version :** 2.0  
+**Dernière mise à jour :** 20 Août 2025  
+**Version :** v12.0.0  
 **Statut :** ✅ **ACTIF ET MAINTENU**
 
 ## 🎯 **PRÉSENTATION**
@@ -95,8 +95,8 @@ Ce dossier centralise tous les rapports liés aux releases, validations, bilans 
 
 ## 📝 **INFORMATIONS TECHNIQUES**
 
-**Dernière mise à jour :** 12 Août 2025  
-**Version actuelle :** 2.0  
+**Dernière mise à jour :** 20 Août 2025  
+**Version actuelle :** v12.0.0  
 **Statut :** ✅ **ACTIF ET MAINTENU**  
 **Mainteneur :** Équipe Athalia/Arkalia  
 **Documentation :** [Guide de maintenance](../../DEVELOPER/DOCUMENTATION_MAINTENANCE.md)

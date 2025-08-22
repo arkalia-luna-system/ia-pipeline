@@ -1,7 +1,7 @@
 # 🛡️ Résumé des Améliorations de Sécurité et Qualité - Athalia
 
-**Dernière mise à jour :** 14 Août 2025  
-**Version :** v2.0  
+**Dernière mise à jour :** 20 Août 2025  
+**Version :** v12.0.0  
 **Statut :** ✅ ACTIF ET MAINTENU - SÉCURITÉ RENFORCÉE
 
 ## 🎯 Objectif Atteint
@@ -10,9 +10,9 @@ Nous avons mis en place un système complet de linting et de sécurité pour le 
 
 ## 🛡️ Outils de Sécurité Configurés
 
-### 1. **Configuration Flake8 Améliorée** (`config/.flake8`)
+### 1. **Configuration Ruff Améliorée** (`config/pyproject.toml`)
 - **Longueur de ligne**: 88 caractères (compatible Black)
-- **Règles de sécurité**: Bandit intégré (S101-S701)
+- **Règles de sécurité**: Intégrées dans Ruff
 - **Règles de qualité**: Bugbear, Builtins, Quotes, Naming, McCabe
 - **Exclusions intelligentes**: Tests, archives, environnements virtuels
 - **Complexité maximale**: 10 (McCabe)
@@ -34,7 +34,7 @@ Nous avons mis en place un système complet de linting et de sécurité pour le 
 - **Mode preview**: Fonctionnalités expérimentales
 - **Exclusions**: Dossiers non pertinents
 
-### 5. **Configuration isort** (`config/.isort.cfg`)
+### 5. **Configuration isort** (`config/.pre-commit-config.yaml`)
 - **Organisation automatique des imports**
 - **Profil Black**: Compatibilité parfaite
 - **Sections définies**: FUTURE, STDLIB, THIRDPARTY, FIRSTPARTY, LOCALFOLDER
@@ -45,7 +45,7 @@ Nous avons mis en place un système complet de linting et de sécurité pour le 
 ```bash
 ./bin/ath-lint-secure
 ```
-- **7 outils intégrés**: Black, isort, Flake8, MyPy, Bandit, Safety, pip-audit
+- **7 outils intégrés**: Black, isort, Ruff, MyPy, Bandit, Safety, pip-audit
 - **Rapports détaillés**: JSON avec métriques
 - **Gestion des erreurs**: Timeout et fallbacks
 - **Codes de retour**: Différenciation critique/non-critique
@@ -72,7 +72,7 @@ Nous avons mis en place un système complet de linting et de sécurité pour le 
 - **Trailing whitespace** et **end-of-file-fixer**
 - **Check YAML/JSON** et **merge conflicts**
 - **Black** et **isort** automatiques
-- **Flake8** avec extensions de sécurité
+- **Ruff** avec extensions de sécurité
 - **MyPy** avec types
 - **Bandit** pour la sécurité
 - **pyupgrade** pour la syntaxe Python

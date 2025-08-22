@@ -1,44 +1,48 @@
-# Guide de Correction des Erreurs de Linting
+# Guide de Correction des Erreurs de Linting - Athalia
+
+**Dernière mise à jour :** 20 Août 2025  
+**Version :** v12.0.0  
+**Statut :** ✅ ACTIF ET MAINTENU
 
 ## 🎯 **Erreurs Récurrentes et Solutions**
 
 ### **1. Correction Automatique Rapide**
 
 ```bash
-# Corriger toutes les erreurs de formatage (W293, E302, E305, E301)
-autopep8 --in-place --aggressive --aggressive athalia_core/
+# Corriger toutes les erreurs de formatage
+black athalia_core/
+ruff check athalia_core/ --fix
 
-# Corriger les lignes trop longues (E501)
-autopep8 --in-place --max-line-length=79 athalia_core/
+# Corriger les lignes trop longues
+black athalia_core/ --line-length 88
 ```
 
 ### **2. Correction par Type d'Erreur**
 
-#### **W293 - Lignes vides avec espaces**
+#### **E501 - Lignes trop longues**
 ```bash
-# Trouver les fichiers avec W293
-flake8 athalia_core/ --select=W293
+# Trouver les lignes trop longues
+ruff check athalia_core/ --select E501
 
 # Corriger automatiquement
-autopep8 --in-place --select=W293 athalia_core/
+black athalia_core/
+```
+
+#### **F841 - Variables inutilisées**
+```bash
+# Trouver les variables inutilisées
+ruff check athalia_core/ --select F841
+
+# Correction manuelle nécessaire - supprimer ou utiliser la variable
 ```
 
 #### **E302/E305 - Espaces entre fonctions/classes**
 ```bash
 # Trouver les erreurs E302/E305
-flake8 athalia_core/ --select=E302,E305
+ruff check athalia_core/ --select E302,E305
 
 # Corriger automatiquement
-autopep8 --in-place --select=E302,E305 athalia_core/
-```
-
-#### **E501 - Lignes trop longues**
-```bash
-# Trouver les lignes trop longues
-flake8 athalia_core/ --select=E501
-
-# Corriger avec limite de 79 caractères
-autopep8 --in-place --max-line-length=79 athalia_core/
+black athalia_core/
 ```
 
 #### **F841 - Variables inutilisées**
@@ -53,16 +57,14 @@ flake8 athalia_core/ --select=F841
 
 ```bash
 # Étape 1: Vérifier l'état actuel
-flake8 athalia_core/ --select=W293,E302,E305,E501,F841
+ruff check athalia_core/
 
 # Étape 2: Corriger le formatage automatiquement
-autopep8 --in-place --aggressive --aggressive athalia_core/
+black athalia_core/
+ruff check athalia_core/ --fix
 
-# Étape 3: Corriger les lignes trop longues
-autopep8 --in-place --max-line-length=79 athalia_core/
-
-# Étape 4: Vérifier le résultat
-flake8 athalia_core/ --select=W293,E302,E305,E501,F841
+# Étape 3: Vérifier le résultat
+ruff check athalia_core/
 
 # Étape 5: Corriger manuellement les F841 restantes
 ```
@@ -71,17 +73,18 @@ flake8 athalia_core/ --select=W293,E302,E305,E501,F841
 
 #### **Vérifier un fichier spécifique**
 ```bash
-flake8 athalia_core/unified_orchestrator.py --select=W293,E302,E305,E501,F841
+ruff check athalia_core/unified_orchestrator.py
 ```
 
 #### **Corriger un fichier spécifique**
 ```bash
-autopep8 --in-place --aggressive --aggressive athalia_core/core/unified_orchestrator.py
+black athalia_core/core/unified_orchestrator.py
+ruff check athalia_core/core/unified_orchestrator.py --fix
 ```
 
 #### **Voir les erreurs par fichier**
 ```bash
-flake8 athalia_core/ --select=W293,E302,E305,E501,F841 --count
+ruff check athalia_core/ --count
 ```
 
 ### **5. Correction Manuelle des F841**
@@ -109,10 +112,10 @@ Ajoutez ces alias à votre `.bashrc` ou `.zshrc` :
 
 ```bash
 # Correction rapide de linting
-alias ath-lint-fix="autopep8 --in-place --aggressive --aggressive athalia_core/ && autopep8 --in-place --max-line-length=79 athalia_core/"
+alias ath-lint-fix="black athalia_core/ && ruff check athalia_core/ --fix"
 
 # Vérification rapide
-alias ath-lint-check="flake8 athalia_core/ --select=W293,E302,E305,E501,F841"
+alias ath-lint-check="ruff check athalia_core/"
 
 # Workflow complet
 alias ath-lint-clean="ath-lint-fix && ath-lint-check"
@@ -124,8 +127,8 @@ alias ath-lint-clean="ath-lint-fix && ath-lint-check"
 Ajoutez dans vos paramètres :
 ```json
 {
-    "python.formatting.provider": "autopep8",
-    "python.formatting.autopep8Args": ["--max-line-length=79"],
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": ["--line-length=88"],
     "editor.formatOnSave": true
 }
 ```
@@ -134,21 +137,26 @@ Ajoutez dans vos paramètres :
 Installez `pre-commit` et ajoutez :
 ```yaml
 repos:
-  - repo: https://github.com/pycqa/autopep8
-    rev: v2.0.4
+  - repo: https://github.com/psf/black
+    rev: 23.12.1
     hooks:
-      - id: autopep8
-        args: [--max-line-length=79]
+      - id: black
+        args: [--line-length=88]
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.6
+    hooks:
+      - id: ruff
+        args: [--fix]
 ```
 
 ## 🎯 **Résumé des Commandes Essentielles**
 
 ```bash
 # Correction complète en une commande
-autopep8 --in-place --aggressive --aggressive --max-line-length=79 athalia_core/
+black athalia_core/ && ruff check athalia_core/ --fix
 
 # Vérification
-flake8 athalia_core/ --select=W293,E302,E305,E501,F841
+ruff check athalia_core/
 ```
 
 **Utilisez ces commandes au lieu de scripts automatisés pour garder le contrôle !**
