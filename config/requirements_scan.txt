@@ -31,7 +31,7 @@ boolean.py==5.0
 build==1.2.2.post1
 bumpver==2025.1131
 CacheControl==0.14.3
-cachetools==5.5.2
+cachetools==6.1.0
 certifi==2025.6.15
 cffi==1.17.1
 cfgv==3.4.0
