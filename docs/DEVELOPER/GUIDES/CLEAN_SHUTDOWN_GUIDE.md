@@ -201,7 +201,8 @@ README.md: ✅
 Documentation développeur: ✅
 
 === TESTS ===
-Fichiers de test: 1774
+Fichiers de test: $(find ./tests -name "*.py" | wc -l)
+Tests collectés: 1774
 
 === RÉSUMÉ ===
 Fermeture: ✅ Propre

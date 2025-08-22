@@ -1,7 +1,7 @@
 # 🗂️ ORGANISATION DU WORKSPACE ATHALIA/ARKALIA
 
-**Dernière mise à jour :** 11 Août 2025  
-**Version :** 2.0  
+**Dernière mise à jour :** 20 Août 2025  
+**Version :** v12.0.0  
 **Statut :** ✅ **ACTIF ET MAINTENU**  
 **Catégorie :** Architecture et Organisation
 
@@ -139,8 +139,8 @@ Le fichier `config/paths.yaml` centralise tous les chemins du projet pour une ma
 
 ## 📝 **INFORMATIONS TECHNIQUES**
 
-**Dernière mise à jour :** 11 Août 2025  
-**Version actuelle :** 2.0  
+**Dernière mise à jour :** 20 Août 2025  
+**Version actuelle :** v12.0.0  
 **Statut :** ✅ **ACTIF ET MAINTENU**  
 **Mainteneur :** Équipe Athalia/Arkalia  
 **Documentation :** [Guide de maintenance](../DEVELOPER/DOCUMENTATION_MAINTENANCE.md)

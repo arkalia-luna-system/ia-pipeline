@@ -48,7 +48,7 @@ black athalia_core/
 #### **F841 - Variables inutilisées**
 ```bash
 # Trouver les variables inutilisées
-flake8 athalia_core/ --select=F841
+ruff check athalia_core/ --select F841
 
 # Correction manuelle nécessaire - supprimer ou utiliser la variable
 ```

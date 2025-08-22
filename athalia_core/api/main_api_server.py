@@ -366,6 +366,15 @@ async def generate_project_files(blueprint: ProjectBlueprint, output_path: str):
         await asyncio.sleep(2)
 
         # Créer README.md
+        dependencies_text = (
+            "\n".join(blueprint.dependencies)
+            if blueprint.dependencies
+            else "Aucune dépendance spécifique"
+        )
+        modules_text = (
+            "\n".join(blueprint.modules) if blueprint.modules else "Modules par défaut"
+        )
+
         readme_content = f"""# {blueprint.name}
 
 {blueprint.description}
@@ -374,10 +383,10 @@ async def generate_project_files(blueprint: ProjectBlueprint, output_path: str):
 {blueprint.project_type}
 
 ## Dépendances
-{chr(10).join(blueprint.dependencies) if blueprint.dependencies else 'Aucune dépendance spécifique'}
+{dependencies_text}
 
 ## Modules inclus
-{chr(10).join(blueprint.modules) if blueprint.modules else 'Modules par défaut'}
+{modules_text}
 
 Généré automatiquement par Athalia API
 """

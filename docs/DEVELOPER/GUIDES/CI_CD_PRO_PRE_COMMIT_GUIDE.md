@@ -97,7 +97,7 @@ git commit -m "feat: nouvelle fonctionnalité"
 ## 📊 **Niveaux de Validation**
 
 ### **🔒 Niveau 1 - Tests de Base (Obligatoire)**
-- ✅ **Linting** (flake8, black)
+- ✅ **Linting** (ruff, black)
 - ✅ **Syntaxe Python**
 - ✅ **Imports essentiels**
 - ✅ **Fichiers polluants**

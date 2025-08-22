@@ -97,7 +97,7 @@ pyupgrade --py310-plus .
 
 ## 📋 Configuration
 
-### Flake8 (config/.flake8)
+### Ruff (pyproject.toml)
 - Longueur de ligne: 88 caractères (compatible Black)
 - Règles de sécurité activées (Bandit)
 - Règles de qualité strictes
@@ -131,7 +131,7 @@ pyupgrade --py310-plus .
 black . && isort .
 
 # 2. Vérifier la qualité
-flake8 --config=config/.flake8
+ruff check .
 
 # 3. Vérifier les types
 mypy --config-file=config/pyproject.toml
@@ -160,7 +160,7 @@ git add . && git commit -m "feat: nouvelle fonctionnalité"
 
 ## 🔍 Interprétation des Rapports
 
-### Flake8
+### Ruff
 - **E**: Erreurs de style (pycodestyle)
 - **W**: Avertissements de style
 - **F**: Erreurs de logique (pyflakes)
@@ -168,8 +168,6 @@ git add . && git commit -m "feat: nouvelle fonctionnalité"
 - **B**: Bugs courants (bugbear)
 - **S**: Sécurité (bandit)
 - **N**: Nommage (pep8-naming)
-- **T**: Builtins (flake8-builtins)
-- **Q**: Guillemets (flake8-quotes)
 - **I**: Imports (isort)
 - **UP**: Syntaxe Python (pyupgrade)
 
@@ -297,7 +295,7 @@ pytest --cov=athalia_core --cov-report=html
 ## 🔗 Ressources
 
 - **Documentation Black** - Formateur de code Python
-- **Documentation Flake8** - Linter de style Python
+- **Documentation Ruff** - Linter de style Python moderne
 - **Documentation MyPy** - Vérificateur de types statiques
 - **Documentation Bandit** - Analyseur de sécurité Python
 - **Documentation Pre-commit** - Hooks Git de pré-validation
