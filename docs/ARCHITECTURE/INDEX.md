@@ -49,7 +49,7 @@ graph TB
     end
     
     subgraph "🛡️ SECURITY LAYER"
-        AUTH[Command Authentication<br/>80 secure commands]
+        AUTH[Command Authentication<br/>62 secure commands]
         VAL[Input Validation<br/>Injection protection]
         AUDIT[Security Auditing<br/>athalia_core/audit/security_auditor.py]
     end
@@ -108,7 +108,7 @@ sequenceDiagram
     UO->>U: Final Response
     
     Note over UO: Central coordination<br/>athalia_core/core/unified_orchestrator.py
-    Note over SV: 80 secure commands<br/>athalia_core/validation/security_validator.py
+    Note over SV: 62 secure commands<br/>athalia_core/validation/security_validator.py
 ```
 
 ### 🔧 **Module Interaction Matrix**
