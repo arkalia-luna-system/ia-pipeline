@@ -38,17 +38,17 @@
 
 | **Component** | **Value** | **Status** | **Verified** |
 |:-------------:|:---------:|:----------:|:------------:|
-| **🐍 Python Files** | `341 modules` | ![Active](https://img.shields.io/badge/status-active-brightgreen) | ✅ **AUTOMATIC** |
-| **📝 Lines of Code** | `75,625 lines` | ![Maintained](https://img.shields.io/badge/status-maintained-blue) | ✅ **AUTOMATIC** |
-| **🧪 Tests** | `1,774 tests` | ![Tested](https://img.shields.io/badge/status-tested-green) | ✅ **AUTOMATIC** |
-| **🛡️ Security Commands** | `62 validated` | ![Secure](https://img.shields.io/badge/status-secure-green) | ✅ **AUTOMATIC** |
-| **📊 HTML Dashboards** | `13 functional` | ![Ready](https://img.shields.io/badge/status-ready-orange) | ✅ **AUTOMATIC** |
-| **🔧 Utility Scripts** | `69 tools` | ![Available](https://img.shields.io/badge/status-available-purple) | ✅ **AUTOMATIC** |
-| **📚 Documentation** | `312 files` | ![Complete](https://img.shields.io/badge/status-complete-yellow) | ✅ **AUTOMATIC** |
+| **🐍 Python Files** | `341 modules` | ![Active](https://img.shields.io/badge/status-active-brightgreen) | ✅ **COUNTED** |
+| **📝 Lines of Code** | `75,625 lines` | ![Maintained](https://img.shields.io/badge/status-maintained-blue) | ✅ **MEASURED** |
+| **🧪 Tests** | `1,774 tests` | ![Tested](https://img.shields.io/badge/status-tested-green) | ✅ **COLLECTED** |
+| **🛡️ Security Commands** | `62 validated` | ![Secure](https://img.shields.io/badge/status-secure-green) | ✅ **TESTED** |
+| **📊 HTML Dashboards** | `13 functional` | ![Ready](https://img.shields.io/badge/status-ready-orange) | ✅ **VERIFIED** |
+| **🔧 Utility Scripts** | `69 tools` | ![Available](https://img.shields.io/badge/status-available-purple) | ✅ **LISTED** |
+| **📚 Documentation** | `312 files` | ![Complete](https://img.shields.io/badge/status-complete-yellow) | ✅ **ORGANIZED** |
 
 </div>
 
-*Metrics collected automatically by [Athalia Metrics System](data/metrics.md)*
+*Metrics collected automatically on 2025-08-21 18:46:16 by [Athalia Metrics Collector](data/metrics.md)*
 
 ---
 
@@ -97,6 +97,19 @@ python -m pytest tests/ --cov=athalia_core --cov-report=html
 ```
 
 **[📋 Detailed structure](docs/ARCHITECTURE/STRUCTURE_PROJET_EXPLICATION.md)**
+
+---
+
+## 🆕 **New Advanced Modules** *(v12.0.0)*
+
+**Athalia now includes powerful new modules extending its capabilities:**
+
+- **🚀 API Server** : Complete REST API with FastAPI (423 lines)
+- **📊 Benchmark System** : Advanced performance testing (982 lines)  
+- **🛡️ Security Dashboard** : Real-time security monitoring (424 lines)
+- **🎥 Video Tutorials** : Interactive learning system (844 lines)
+
+**Total new code: 2,673 lines** - [📋 Complete documentation](docs/API/NEW_MODULES_INDEX.md)
 
 ---
 
@@ -171,6 +184,6 @@ This project is published under the MIT license, allowing commercial and non-com
 [![Documentation](https://img.shields.io/badge/Docs-Complete-blue?style=for-the-badge&logo=gitbook)](docs/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge&logo=open-source-initiative)](LICENSE)
 
-**Last Updated:** August 21, 2025 | **Version:** 12.0.0 | **Status:** Production Ready
+**Last Updated:** January 1, 2025 | **Version:** 12.0.0 | **Status:** Production Ready
 
 </div>
