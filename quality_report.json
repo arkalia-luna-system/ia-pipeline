@@ -1,0 +1,21 @@
+{
+  "timestamp": "/Volumes/T7/athalia-dev-setup",
+  "project": ".",
+  "score": 40,
+  "errors": [
+    "Ruff non exécuté: Commande non autorisée: Commande non autorisée",
+    "MyPy: scripts/utilities/prevent_python_version_issues.py:26:9: error: Need type",
+    "MyPy: scripts/ci-cd/validate_python_versions.py:23:9: error: Need type annotation for",
+    "MyPy: bin/core/ath-lint.py:10: error: Unused \"type: ignore\" comment  [unused-ignore]",
+    "MyPy: bin/core/ath-lint.py:13: error: Unused \"type: ignore\" comment  [unused-ignore]"
+  ],
+  "warnings": [
+    "isort non exécuté: Commande non autorisée: Commande non autorisée",
+    "Bandit non exécuté: Erreur d'exécution: Command '['bandit', '-r', '.', '-f', 'txt']' timed out after 45 seconds",
+    "Analyse de complexité non exécutée: Commande non autorisée: Commande non autorisée",
+    "Couverture documentation faible: 5.6%",
+    "Vérification couverture non exécutée: Commande non autorisée: Commande non autorisée"
+  ],
+  "fixes": [],
+  "quality_level": "CRITIQUE"
+}

@@ -1,17 +1,33 @@
-## 🎯 **Core Metrics** *(Automatically Updated)*
+# Athalia Project Metrics
 
-<div align="center">
+**Automatically generated on:** 2025-08-22 21:19:30
+**Collector version:** 1.0.0
 
-| **Component** | **Value** | **Status** | **Verified** |
-|:-------------:|:---------:|:----------:|:------------:|
-| **🐍 Python Files** | `150 modules` | ![Active](https://img.shields.io/badge/status-active-brightgreen) | ✅ **COUNTED** |
-| **📝 Lines of Code** | `5,000 lines` | ![Maintained](https://img.shields.io/badge/status-maintained-blue) | ✅ **MEASURED** |
-| **🧪 Tests** | `200 tests` | ![Tested](https://img.shields.io/badge/status-tested-green) | ✅ **COLLECTED** |
-| **🛡️ Security Commands** | `0 validated` | ![Secure](https://img.shields.io/badge/status-secure-green) | ✅ **TESTED** |
-| **📊 HTML Dashboards** | `0 functional` | ![Ready](https://img.shields.io/badge/status-ready-orange) | ✅ **VERIFIED** |
-| **🔧 Utility Scripts** | `0 tools` | ![Available](https://img.shields.io/badge/status-available-purple) | ✅ **LISTED** |
-| **📚 Documentation** | `25 files` | ![Complete](https://img.shields.io/badge/status-complete-yellow) | ✅ **ORGANIZED** |
+## 🎯 Core Metrics
 
-</div>
+| **Component** | **Value** | **Status** |
+|:-------------:|:---------:|:----------:|
+| **🐍 Python Files** | `330 modules` | ✅ **COUNTED** |
+| **📝 Lines of Code** | `82,309 lines` | ✅ **MEASURED** |
+| **🧪 Tests** | `1,774 tests` | ✅ **COLLECTED** |
+| **🛡️ Security Commands** | `62 validated` | ✅ **TESTED** |
+| **📊 HTML Dashboards** | `13 functional` | ✅ **VERIFIED** |
+| **🔧 Utility Scripts** | `58 tools` | ✅ **LISTED** |
+| **📚 Documentation** | `264 files` | ✅ **ORGANIZED** |
 
-*Metrics collected automatically on Unknown by [Athalia Metrics Collector](data/metrics.json)*
+## 📊 Detailed Breakdown
+
+### Python Files
+- **Core modules:** 152
+- **Test files:** 178
+- **Total lines:** 82,309
+
+### Quality Assurance
+- **Tests collected:** 1774
+- **Security commands:** 62
+- **Documentation files:** 264
+
+---
+
+*Metrics collected automatically by Athalia Metrics Collector*
+*Source: [`data/metrics.json`](data/metrics.json)*

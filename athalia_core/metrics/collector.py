@@ -524,3 +524,53 @@ class MetricsCollector:
         except OSError as e:
             print(f"Erreur lors de l'export Markdown: {e}")
             return False
+
+
+def main():
+    """Fonction principale pour exécuter le collecteur de métriques."""
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Collecteur de métriques Athalia")
+    parser.add_argument(
+        "--export-format",
+        choices=["json", "markdown", "both"],
+        default="both",
+        help="Format d'export",
+    )
+    parser.add_argument(
+        "--output-dir", default="data/metrics", help="Répertoire de sortie"
+    )
+
+    args = parser.parse_args()
+
+    # Initialiser le collecteur
+    collector = MetricsCollector(".")
+
+    # Collecter toutes les métriques
+    print("🔍 Collecte des métriques Athalia...")
+    collector.collect_all_metrics()
+
+    # Créer le répertoire de sortie
+    output_dir = Path(args.output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Exporter selon le format demandé
+    if args.export_format in ["json", "both"]:
+        json_file = output_dir / "metrics.json"
+        if collector.export_json(str(json_file)):
+            print(f"✅ Métriques exportées en JSON: {json_file}")
+        else:
+            print("❌ Erreur lors de l'export JSON")
+
+    if args.export_format in ["markdown", "both"]:
+        md_file = output_dir / "metrics.md"
+        if collector.export_markdown(str(md_file)):
+            print(f"✅ Métriques exportées en Markdown: {md_file}")
+        else:
+            print("❌ Erreur lors de l'export Markdown")
+
+    print("🎉 Collecte des métriques terminée !")
+
+
+if __name__ == "__main__":
+    main()
