@@ -238,7 +238,7 @@ jobs:
         run: |
           python -m athalia_core.benchmarks.advanced_benchmark_system
       - name: Upload Results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: benchmark-results
           path: dashboard/benchmarks/
