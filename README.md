@@ -12,7 +12,7 @@
 [![GitHub Pages](https://img.shields.io/badge/pages-available-brightgreen.svg?style=flat-square)](https://arkalia-luna-system.github.io/ia-pipeline)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 
-**Enterprise-grade DevOps automation platform for secure project generation, intelligent cleanup, and infrastructure management.**
+**Plateforme d'automatisation DevOps de niveau entreprise pour la génération sécurisée de projets, le nettoyage intelligent et la gestion d'infrastructure.**
 
 [🔍 **Latest CI Status**](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/ci-matrix.yml) | [📊 **Security Reports**](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/ci-matrix.yml) | [🌐 **Live Demo**](https://arkalia-luna-system.github.io/ia-pipeline)
 
@@ -20,7 +20,7 @@
 
 ---
 
-## 📊 **Project Overview**
+## 📊 **Aperçu du Projet**
 
 **Athalia** est une plateforme d'automatisation DevOps de niveau entreprise, conçue pour la génération sécurisée de projets, le nettoyage intelligent et la gestion d'infrastructure.
 
@@ -32,11 +32,11 @@
 
 ---
 
-## 🎯 **Core Metrics** *(Automatically Updated)*
+## 🎯 **Métriques Principales** *(Mise à jour automatique)*
 
 <div align="center">
 
-| **Component** | **Value** | **Status** | **Verified** |
+| **Composant** | **Valeur** | **Statut** | **Vérifié** |
 |:-------------:|:---------:|:----------:|:------------:|
 | **🐍 Python Files** | `341 modules` | ![Active](https://img.shields.io/badge/status-active-brightgreen) | ✅ **AUTOMATIC** |
 | **📝 Lines of Code** | `75,625 lines` | ![Maintained](https://img.shields.io/badge/status-maintained-blue) | ✅ **AUTOMATIC** |
@@ -52,7 +52,7 @@
 
 ---
 
-## ⚡ **Quick Start** 
+## ⚡ **Démarrage Rapide** 
 
 ### 🚀 **Installation** (5 minutes)
 
@@ -108,7 +108,7 @@ python bin/core/ath-demo.py --all
 - **📊 Coverage**: [Codecov Reports](https://codecov.io/gh/arkalia-luna-system/ia-pipeline)
 - **🛡️ Security**: [Security Reports](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/ci-matrix.yml)
 
-### 🧪 **First Test** (2 minutes)
+### 🧪 **Premier Test** (2 minutes)
 
 ```python
 # Generate project template
@@ -132,7 +132,7 @@ print(f"🛡️ Security: {len(validator.allowed_commands)} commands validated")
 
 ---
 
-## 🔧 **Core Features**
+## 🔧 **Fonctionnalités Principales**
 
 ### 🛡️ **Enterprise Security**
 
@@ -214,7 +214,7 @@ pie title File Cleanup Categories
 
 ---
 
-## 💻 **Usage Examples**
+## 💻 **Exemples d'Utilisation**
 
 ### 🔐 **Security Validation**
 
@@ -329,7 +329,7 @@ sequenceDiagram
     AE->>AE: Update Security Metrics
 ```
 
-### **Security Features**
+### **Fonctionnalités de Sécurité**
 - ✅ **Command Whitelist**: 80 pre-approved secure commands
 - ✅ **Injection Protection**: All subprocess calls validated
 - ✅ **Audit Logging**: Complete security event tracking
@@ -392,7 +392,7 @@ sequenceDiagram
 
 **Athalia dispose d'une documentation complète et organisée pour tous les types d'utilisateurs.**
 
-👤 **Utilisateurs** : Quick Start, Guide Utilisateur, FAQ, Dépannage  
+👤 **Utilisateurs** : Démarrage Rapide, Guide Utilisateur, FAQ, Dépannage  
 👨‍💻 **Développeurs** : Architecture, Référence API, Contribution, Tests  
 🎯 **Spécialisés** : Sécurité, Analytics, Automation, Performance
 
@@ -426,11 +426,11 @@ sequenceDiagram
 
 ---
 
-## 📞 **Support & Community**
+## 📞 **Support et Communauté**
 
 <div align="center">
 
-| **Resource** | **Purpose** | **Access** |
+| **Ressource** | **Objectif** | **Accès** |
 |:-------------|:------------|:-----------|
 | 📖 **Documentation** | Complete guides | `/docs` directory |
 | 🐛 **Issues** | Bug reporting | GitHub Issues |
@@ -441,11 +441,11 @@ sequenceDiagram
 
 ---
 
-## 📄 **License & Legal**
+## 📄 **Licence et Légal**
 
-**MIT License** - See [LICENSE](LICENSE) file for complete terms.
+**Licence MIT** - Voir le fichier [LICENSE](LICENSE) pour les termes complets.
 
-This project is released under the MIT License, allowing for both commercial and non-commercial use with proper attribution.
+Ce projet est publié sous la licence MIT, permettant un usage commercial et non-commercial avec attribution appropriée.
 
 ---
 
