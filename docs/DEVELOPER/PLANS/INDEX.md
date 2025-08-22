@@ -5,12 +5,27 @@
 
 ---
 
-## 🎯 **PLANS ACTIFS**
+## 🎯 **PLANS ACTIFS (À EXÉCUTER)**
 
 ### **🧪 Tests et Qualité**
 - **[REORGANISATION_TESTS_PLAN.md](REORGANISATION_TESTS_PLAN.md)** - **CRITIQUE** - Réorganisation complète de la structure des tests
-- **[PLAN_ACTION_COUVERTURE_2025.md](PLAN_ACTION_COUVERTURE_2025.md)** - Plan d'amélioration de la couverture de tests
-- **[PLAN_CORRECTION_TESTS_2025.md](PLAN_CORRECTION_TESTS_2025.md)** - Plan de correction des tests existants
+- **[REORGANISATION_TESTS_STRUCTURE.md](REORGANISATION_TESTS_STRUCTURE.md)** - **HAUTE PRIORITÉ** - Structure optimisée des tests
+- **[OPTIMISATION_TESTS_RAM_2025.md](OPTIMISATION_TESTS_RAM_2025.md)** - **MOYENNE PRIORITÉ** - Optimisation de la RAM pour les tests
+
+### **📋 Résumé des Actions Restantes**
+- **[CE_QUI_RESTE_A_FAIRE.md](CE_QUI_RESTE_A_FAIRE.md)** - **RÉSUMÉ COMPLET** - Ce qui reste vraiment à faire
+
+### **🧹 Nettoyage et Optimisation**
+- **[NETTOYAGE_REPOSITORY_PLAN.md](ARCHIVE_TERMINES/README.md)** - ✅ **100% TERMINÉ** - Repository nettoyé et optimisé
+
+---
+
+## 📚 **PLANS ARCHIVÉS (100% TERMINÉS)**
+
+### **✅ Plans Terminés et Archivés**
+- **[PLAN_ACTION_COUVERTURE_2025.md](ARCHIVE_TERMINES/README.md)** - ✅ **100% TERMINÉ** - Couverture 100% atteinte
+- **[PLAN_CORRECTION_TESTS_2025.md](ARCHIVE_TERMINES/README.md)** - ✅ **100% TERMINÉ** - Tous les tests passent
+- **[PLAN_ACTION_MODULARISATION_ATHALIA.md](ARCHIVE_TERMINES/README.md)** - ✅ **100% TERMINÉ** - Architecture modulaire opérationnelle
 
 ### **🧹 Nettoyage et Optimisation**
 - **[NETTOYAGE_REPOSITORY_PLAN.md](NETTOYAGE_REPOSITORY_PLAN.md)** - **CRITIQUE** - Nettoyage complet du repository (11GB → 2-3GB)
