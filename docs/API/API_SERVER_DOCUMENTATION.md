@@ -26,7 +26,7 @@ main_api_server.py
 ## 🔌 **Endpoints API**
 
 ### **1. Vérification de santé**
-- **GET** `/api/health` - Statut de l'API
+- **GET** `/health` - Statut de l'API  
 - **GET** `/` - Page d'accueil HTML
 
 ### **2. Gestion des projets**

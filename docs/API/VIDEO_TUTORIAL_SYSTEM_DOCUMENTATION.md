@@ -118,42 +118,33 @@ tutorial_system.open_tutorials()
 
 ### **Gestion des tutoriels**
 ```python
-# Ajout d'un nouveau tutoriel
-new_tutorial = {
-    "id": "custom_tutorial",
-    "title": "Mon Tutoriel Personnalisé",
-    "description": "Description du tutoriel",
-    "duration": "10:00",
-    "difficulty": "Intermédiaire",
-    "category": "Personnalisé",
-    "tags": ["personnalisé", "exemple"]
-}
+# Les tutoriels sont actuellement définis statiquement dans _get_default_tutorials()
+# Pour ajouter de nouveaux tutoriels, vous pouvez modifier cette méthode
+# ou étendre la classe pour ajouter des fonctionnalités CRUD
 
-tutorial_system.add_tutorial(new_tutorial)
+# Accès aux tutoriels existants
+tutorials = tutorial_system._get_default_tutorials()
+print(f"Nombre de tutoriels: {len(tutorials)}")
 
-# Mise à jour d'un tutoriel
-tutorial_system.update_tutorial("custom_tutorial", {
-    "rating": 5.0,
-    "views": 100
-})
-
-# Suppression d'un tutoriel
-tutorial_system.delete_tutorial("custom_tutorial")
+# Génération de l'interface
+interface_file = tutorial_system.generate_tutorials_interface()
+print(f"Interface générée: {interface_file}")
 ```
 
 ### **Recherche et filtrage**
 ```python
-# Recherche par catégorie
-installation_tutorials = tutorial_system.get_tutorials_by_category("Installation")
+# Les fonctionnalités de recherche sont intégrées dans l'interface web
+# Accès aux données des tutoriels pour filtrage manuel
+tutorials = tutorial_system._get_default_tutorials()
 
-# Recherche par difficulté
-beginner_tutorials = tutorial_system.get_tutorials_by_difficulty("Débutant")
+# Filtrage par catégorie (exemple manuel)
+installation_tutorials = [t for t in tutorials if t["category"] == "Installation"]
 
-# Recherche par tags
-tagged_tutorials = tutorial_system.get_tutorials_by_tags(["sécurité", "audit"])
+# Filtrage par difficulté (exemple manuel)
+beginner_tutorials = [t for t in tutorials if t["difficulty"] == "Débutant"]
 
-# Recherche textuelle
-search_results = tutorial_system.search_tutorials("installation configuration")
+# Filtrage par tags (exemple manuel)
+security_tutorials = [t for t in tutorials if "sécurité" in t["tags"]]
 ```
 
 ## 📈 **Métriques et analytics**

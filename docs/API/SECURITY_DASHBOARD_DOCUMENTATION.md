@@ -142,7 +142,7 @@ security_dashboard = SecurityDashboard("./mon_projet")
 dashboard_file = security_dashboard.generate_security_dashboard()
 
 # Ouverture dans le navigateur
-security_dashboard.open_security_dashboard()
+security_dashboard.open_dashboard()
 ```
 
 ### **Configuration personnalisée**
