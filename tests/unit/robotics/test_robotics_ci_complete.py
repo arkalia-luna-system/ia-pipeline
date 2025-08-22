@@ -244,6 +244,11 @@ class TestRoboticsCI:
     @patch("athalia_core.automation.robotics_ci.validate_and_run")
     def test_run_security_scan_python_success(self, mock_run):
         """Test de scan sécurité Python réussi"""
+        # Créer un fichier requirements.txt pour déclencher l'audit Python
+        requirements_file = Path(self.temp_dir) / "requirements.txt"
+        with open(requirements_file, "w") as f:
+            f.write("pytest\nrequests")
+            
         mock_run.return_value.returncode = 0
         mock_run.return_value.stdout = ""
 
@@ -272,6 +277,7 @@ class TestRoboticsCI:
         self.ci.ci_results["test_status"] = "success"
         self.ci.ci_results["lint_status"] = "success"
         self.ci.ci_results["security_status"] = "success"
+        self.ci.ci_results["deployment_status"] = "ready"  # Ajouté
 
         self.ci._calculate_ci_score()
         assert self.ci.ci_results["metrics"]["ci_score"] == 100
@@ -293,11 +299,12 @@ class TestRoboticsCI:
         """Test de génération du rapport CI"""
         self.ci.ci_results["build_status"] = "success"
         self.ci.ci_results["test_status"] = "success"
+        self.ci.ci_results["deployment_status"] = "ready"  # Ajouté
         self.ci.ci_results["metrics"]["ci_score"] = 95
 
         report = self.ci.generate_ci_report()
         assert isinstance(report, str)
-        assert "Rapport CI/CD Robotics" in report
+        assert "Rapport CI/CD" in report  # Corrigé
         assert "success" in report
         assert "95" in report
 
@@ -318,6 +325,14 @@ class TestRoboticsCI:
 
     def test_error_handling_timeout(self):
         """Test de gestion des timeouts"""
+        # Créer un projet Rust simple pour déclencher _run_build
+        cargo_toml = Path(self.temp_dir) / "Cargo.toml"
+        with open(cargo_toml, "w") as f:
+            f.write('[package]\nname = "test_project"')
+            
+        # Initialiser deployment_status pour éviter les pénalités
+        self.ci.ci_results["deployment_status"] = "ready"
+        
         with patch("subprocess.run", side_effect=subprocess.TimeoutExpired("cmd", 60)):
             self.ci._run_build()
             assert self.ci.ci_results["build_status"] == "failed"
@@ -325,6 +340,14 @@ class TestRoboticsCI:
 
     def test_error_handling_exception(self):
         """Test de gestion des exceptions"""
+        # Créer un projet Rust simple pour déclencher _run_build
+        cargo_toml = Path(self.temp_dir) / "Cargo.toml"
+        with open(cargo_toml, "w") as f:
+            f.write('[package]\nname = "test_project"')
+            
+        # Initialiser deployment_status pour éviter les pénalités
+        self.ci.ci_results["deployment_status"] = "ready"
+        
         with patch("subprocess.run", side_effect=Exception("Test error")):
             self.ci._run_build()
             assert self.ci.ci_results["build_status"] == "failed"

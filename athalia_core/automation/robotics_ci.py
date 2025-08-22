@@ -162,9 +162,11 @@ class RoboticsCI:
                         )
 
         except subprocess.TimeoutExpired:
+            self.ci_results["build_status"] = "failed"
             if isinstance(self.ci_results["errors"], list):
                 self.ci_results["errors"].append("Build timeout")
         except Exception as e:
+            self.ci_results["build_status"] = "failed"
             if isinstance(self.ci_results["errors"], list):
                 self.ci_results["errors"].append(f"Erreur build: {e}")
 
@@ -309,6 +311,9 @@ class RoboticsCI:
 
     def _run_security_scan(self) -> None:
         """Exécute le scan de sécurité"""
+        # Initialiser à unknown par défaut
+        self.ci_results["security_status"] = "unknown"
+        
         try:
             if (self.project_path / "Cargo.toml").exists():
                 # Audit Rust
@@ -345,6 +350,25 @@ class RoboticsCI:
                     if isinstance(self.ci_results["warnings"], list):
                         self.ci_results["warnings"].append(
                             f"Audit npm: {result.stderr}"
+                        )
+                    self.ci_results["security_status"] = "failed"
+                    
+            elif (self.project_path / "requirements.txt").exists() or (self.project_path / "pyproject.toml").exists():
+                # Audit Python avec pip-audit
+                result = validate_and_run(
+                    ["pip-audit", "-r", str(self.project_path / "requirements.txt")],
+                    cwd=self.project_path,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    text=True,
+                    timeout=120,
+                )
+                if result.returncode == 0:
+                    self.ci_results["security_status"] = "success"
+                else:
+                    if isinstance(self.ci_results["warnings"], list):
+                        self.ci_results["warnings"].append(
+                            f"Audit Python: {result.stderr}"
                         )
                     self.ci_results["security_status"] = "failed"
 

@@ -82,7 +82,12 @@ class CodeLinter:
             if result.stdout:
                 for line in result.stdout.split("\n"):
                     if line.strip():
-                        self.report["errors"].append(f"Ruff: {line}")
+                        if result.returncode == 0:
+                            # Si returncode = 0, c'est un avertissement
+                            self.report["warnings"].append(f"Ruff: {line}")
+                        else:
+                            # Si returncode != 0, c'est une erreur
+                            self.report["errors"].append(f"Ruff: {line}")
 
         except (Exception, SecurityErrorFallback) as e:
             self.report["errors"].append(f"Ruff non exécuté: {e}")
@@ -158,22 +163,6 @@ class CodeLinter:
 
         except (Exception, SecurityErrorFallback) as e:
             self.report["warnings"].append(f"Bandit non exécuté: {e}")
-
-    def _calculate_score(self):
-        """Calcul du score de qualité"""
-        base_score = 100
-        errors = self.report.get("errors", [])
-        warnings = self.report.get("warnings", [])
-        fixes = self.report.get("fixes", [])
-
-        if isinstance(errors, list):
-            base_score -= len(errors) * 10
-        if isinstance(warnings, list):
-            base_score -= len(warnings) * 3
-        if isinstance(fixes, list):
-            base_score -= len(fixes) * 2
-
-        self.report["score"] = max(0, base_score)
 
     def _run_complexity_analysis(self):
         """Analyse de la complexité cyclomatique"""
@@ -288,6 +277,24 @@ class CodeLinter:
             warnings = self.report.get("warnings", [])
             if isinstance(warnings, list):
                 warnings.append(f"Vérification couverture non exécutée: {e}")
+
+    def _calculate_score(self):
+        """Calcule le score de qualité basé sur les erreurs et avertissements"""
+        base_score = 100
+        
+        # Pénalités pour les erreurs (plus graves)
+        error_penalty = len(self.report.get("errors", [])) * 10
+        
+        # Pénalités pour les avertissements (moins graves)
+        warning_penalty = len(self.report.get("warnings", [])) * 2
+        
+        # Calcul du score final
+        final_score = max(0, base_score - error_penalty - warning_penalty)
+        
+        # Mettre à jour le score dans le rapport
+        self.report["score"] = final_score
+        
+        logger.info(f"📊 Score de qualité calculé: {final_score}/100")
 
     def _generate_quality_report(self):
         """Génère un rapport de qualité détaillé"""
