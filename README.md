@@ -85,7 +85,7 @@ python -m pytest tests/ --cov=athalia_core --cov-report=html
 .
 ├── 🏗️ athalia_core/              # Core modules
 │   ├── unified_orchestrator.py   # Main coordinator
-│   ├── validation/               # Security validation
+│   ├── validation/               # Security validation (CommandSecurityValidator)
 │   ├── quality/                  # Code quality tools
 │   ├── automation/               # Automation modules
 │   └── ...                      # Additional modules
