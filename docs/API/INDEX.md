@@ -187,7 +187,7 @@ from athalia_core.logger_advanced import setup_logging
 def create_project_example():
     """Example: Create a new project using the generation API."""
     
-    # Generate project blueprint
+    # Générer le plan du projet
     blueprint = generate_blueprint_mock("REST API for user management")
     
     print(f"📋 Project Blueprint:")
@@ -196,7 +196,7 @@ def create_project_example():
     print(f"   Dependencies: {blueprint['dependencies']}")
     print(f"   Modules: {blueprint.get('modules', [])}")
     
-    # Create project structure
+    # Créer la structure du projet
     project_path = "./generated_projects/user_api"
     result = generate_project(blueprint, project_path)
     
@@ -217,10 +217,10 @@ def create_project_example():
 def security_example():
     """Example: Validate commands using security API."""
     
-    # Initialize security validator
+    # Initialiser le validateur de sécurité
     validator = SecurityValidator()
     
-    # Test command validation
+    # Tester la validation des commandes
     safe_commands = [
         ["python", "--version"],
         ["git", "status"],
@@ -235,13 +235,13 @@ def security_example():
     
     print("🛡️ Security Validation Results:")
     
-    # Validate safe commands
+    # Valider les commandes sûres
     for cmd in safe_commands:
         is_safe = validator.is_command_safe(cmd)
         status = "✅ SAFE" if is_safe else "🚫 BLOCKED"
         print(f"   {' '.join(cmd)}: {status}")
     
-    # Validate dangerous commands  
+    # Valider les commandes dangereuses  
     for cmd in dangerous_commands:
         is_safe = validator.is_command_safe(cmd)
         status = "✅ SAFE" if is_safe else "🚫 BLOCKED"
@@ -257,16 +257,16 @@ def security_example():
 def cleanup_example():
     """Example: Clean project using auto-cleanup API."""
     
-    # Initialize auto cleaner
+    # Initialiser le nettoyeur automatique
     cleaner = AutoCleaner("./my-project")
     
-    # Configure cleanup patterns
+    # Configurer les patterns de nettoyage
     cleaner.add_pattern("*.tmp")
     cleaner.add_pattern("*.log")
     cleaner.add_pattern("__pycache__/")
     cleaner.add_pattern(".DS_Store")
     
-    # Perform cleanup with dry run first
+    # Effectuer le nettoyage avec simulation d'abord
     dry_run_result = cleaner.perform_cleanup(dry_run=True)
     print(f"🧪 Dry Run Results:")
     print(f"   Files to remove: {dry_run_result['files_found']}")
