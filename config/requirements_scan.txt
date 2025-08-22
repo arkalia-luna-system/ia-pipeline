@@ -14,7 +14,7 @@ asyncer==0.0.8
 asyncio-mqtt==0.16.2
 -e git+https://github.com/arkalia-luna-system/ia-pipeline.git@94d7d2a824bd0be04ac132d9fb3863ab33ee10bb#egg=athalia_ai
 attrs==25.3.0
-Authlib==1.6.0
+Authlib==1.6.1
 autoflake==2.3.1
 autogen==0.9.6
 autogen-agentchat==0.6.4
