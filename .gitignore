@@ -282,3 +282,7 @@ data/coverage/
 !data/metrics/
 !data/reports/
 !data/benchmarks/
+
+# Archive déplacée dans data/archive/
+data/archive/
+!data/archive/README.md
