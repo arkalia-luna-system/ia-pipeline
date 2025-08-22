@@ -14,23 +14,23 @@ from typing import Any
 
 
 class DocumentationValidator:
-    """Professional documentation validation tool."""
+    """Outil de validation professionnelle de la documentation."""
 
     def __init__(self, docs_path: str = "docs"):
         self.docs_path = Path(docs_path)
-        self.issues = []
-        self.stats = {
+        self.issues: list[dict[str, Any]] = []
+        self.stats: dict[str, Any] = {
             "total_files": 0,
             "files_with_diagrams": 0,
             "files_with_code": 0,
             "files_with_badges": 0,
             "broken_links": 0,
             "missing_headers": 0,
-            "quality_score": 0,
+            "quality_score": 0.0,
         }
 
     def validate_all(self) -> dict[str, Any]:
-        """Run complete validation suite."""
+        """Exécute la suite de validation complète."""
         print("🔍 ATHALIA DOCUMENTATION VALIDATION")
         print("=" * 50)
 
@@ -57,7 +57,7 @@ class DocumentationValidator:
         return report
 
     def _validate_file(self, file_path: Path):
-        """Validate individual markdown file."""
+        """Valide un fichier markdown individuel."""
         try:
             with open(file_path, encoding="utf-8") as f:
                 content = f.read()
@@ -81,7 +81,7 @@ class DocumentationValidator:
             )
 
     def _check_header_structure(self, file_path: Path, content: str):
-        """Check markdown header structure."""
+        """Vérifie la structure des en-têtes markdown."""
         lines = content.split("\n")
 
         # Check for H1 header
@@ -121,7 +121,7 @@ class DocumentationValidator:
                 prev_level = level
 
     def _check_mermaid_diagrams(self, file_path: Path, content: str):
-        """Check for Mermaid diagrams."""
+        """Vérifie la présence de diagrammes Mermaid."""
         mermaid_count = content.count("```mermaid")
 
         if mermaid_count > 0:
@@ -153,7 +153,7 @@ class DocumentationValidator:
                 )
 
     def _check_code_blocks(self, file_path: Path, content: str):
-        """Check for code blocks."""
+        """Vérifie la présence de blocs de code."""
         code_patterns = [r"```python", r"```bash", r"```yaml", r"```json"]
 
         code_found = any(re.search(pattern, content) for pattern in code_patterns)
@@ -173,7 +173,7 @@ class DocumentationValidator:
                 )
 
     def _check_badges(self, file_path: Path, content: str):
-        """Check for professional badges."""
+        """Vérifie la présence de badges professionnels."""
         badge_patterns = [
             r"!\[.*\]\(https://img\.shields\.io",
             r'<div align="center">',
@@ -186,7 +186,7 @@ class DocumentationValidator:
             self.stats["files_with_badges"] += 1
 
     def _check_links(self, file_path: Path, content: str):
-        """Check for broken internal links."""
+        """Vérifie la présence de liens internes cassés."""
         # Find markdown links
         link_pattern = r"\[([^\]]+)\]\(([^)]+)\)"
         links = re.findall(link_pattern, content)
@@ -211,7 +211,7 @@ class DocumentationValidator:
                     self.stats["broken_links"] += 1
 
     def _check_professional_elements(self, file_path: Path, content: str):
-        """Check for professional documentation elements."""
+        """Vérifie la présence d'éléments de documentation professionnels."""
         professional_elements = [
             ("centered_div", r'<div align="center">', "Missing centered layouts"),
             ("structured_tables", r"\|.*\|.*\|", "No structured tables found"),
@@ -238,7 +238,7 @@ class DocumentationValidator:
                 )
 
     def _calculate_quality_score(self):
-        """Calculate overall quality score."""
+        """Calcule le score de qualité global."""
         total_files = self.stats["total_files"]
         if total_files == 0:
             self.stats["quality_score"] = 0
@@ -271,7 +271,7 @@ class DocumentationValidator:
         self.stats["quality_score"] = min(100, final_score)
 
     def _generate_report(self) -> dict[str, Any]:
-        """Generate comprehensive validation report."""
+        """Génère un rapport de validation complet."""
         return {
             "timestamp": datetime.now().isoformat(),
             "stats": self.stats,
@@ -280,7 +280,7 @@ class DocumentationValidator:
         }
 
     def _generate_recommendations(self) -> list[str]:
-        """Generate improvement recommendations."""
+        """Génère des recommandations d'amélioration."""
         recommendations = []
 
         total_files = self.stats["total_files"]
@@ -327,7 +327,7 @@ class DocumentationValidator:
 def create_quality_report(
     validator: DocumentationValidator, output_file: str = "doc_quality_report.json"
 ):
-    """Create detailed quality report."""
+    """Crée un rapport de qualité détaillé."""
     report = validator.validate_all()
 
     # Save JSON report
@@ -386,9 +386,9 @@ def create_quality_report(
 
 
 def main():
-    """Main validation entry point."""
+    """Point d'entrée principal de validation."""
     parser = argparse.ArgumentParser(
-        description="Validate Athalia documentation quality"
+        description="Valide la qualité de la documentation Athalia"
     )
     parser.add_argument(
         "--docs-path", default="docs", help="Path to documentation directory"
