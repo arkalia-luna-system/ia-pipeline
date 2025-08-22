@@ -1,7 +1,7 @@
 # 🎼 Orchestrateur - Documentation API
 
-**Dernière mise à jour :** 14 Août 2025  
-**Version :** v6.0  
+**Dernière mise à jour :** 20 Août 2025  
+**Version :** v12.0.0  
 **Statut :** ✅ ACTIF ET MAINTENU - ORCHESTRATION MODULAIRE  
 **Module :** Orchestrateur
 
@@ -200,7 +200,7 @@ reachy_auditor = ReachyAuditor(project_path)
 # Validateur ROS2
 ros2_validator = ROS2Validator(project_path)
 
-# Gestionnaire Docker Robotics
+# Gestionnaire Docker Robotique
 docker_robotics = DockerRoboticsManager(project_path)
 ```
 

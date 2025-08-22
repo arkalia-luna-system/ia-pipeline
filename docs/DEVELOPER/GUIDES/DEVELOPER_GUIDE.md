@@ -1,5 +1,9 @@
 # Guide Développeur Athalia/Arkalia
 
+**Dernière mise à jour :** 20 Août 2025  
+**Version :** v12.0.0  
+**Statut :** ✅ ACTIF ET MAINTENU
+
 ## 🏗️ Architecture du Projet
 
 ### Structure Modulaire
@@ -82,7 +86,7 @@ result = distiller.distill(
     user_feedback={"style": "functional", "complexity": "high"}
 )
 
-# Code Genetics
+# Génétique de Code
 from athalia_core.distillation.code_genetics import CodeGenetics
 
 genetics = CodeGenetics()
@@ -92,7 +96,7 @@ evolved = genetics.evolve(
     generations=5
 )
 
-# Predictive Cache
+# Cache Prédictif
 from athalia_core.distillation.predictive_cache import PredictiveCache
 
 cache = PredictiveCache()

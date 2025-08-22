@@ -34,7 +34,7 @@ python3 athalia_core/core/main.py /chemin/projet
 # Orchestrateur unifié
 python3 bin/core/athalia_unified.py --help
 
-# Dashboard Streamlit
+# Tableau de bord Streamlit
 streamlit run athalia_core/utilities/dashboard.py
 
 # API REST (si configurée)

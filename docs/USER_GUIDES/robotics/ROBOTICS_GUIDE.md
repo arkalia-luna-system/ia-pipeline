@@ -315,7 +315,7 @@ ath-cli-main robotics audit /path/to/project
 # Validation ROS2
 ath-cli-main robotics validate-ros2 /path/to/workspace
 
-# Setup Docker
+# Configuration Docker
 ath-cli-main robotics setup-docker /path/to/project
 
 # Analyse Rust
@@ -358,7 +358,7 @@ Le module inclut des tests automatiques :
 Modifier les templates par défaut :
 
 ```python
-# Template Docker personnalisé
+# Modèle Docker personnalisé
 docker_manager = DockerRoboticsManager("/path/to/project")
 custom_compose = docker_manager.create_reachy_compose_template()
 # Modifier custom_compose selon vos besoins
@@ -420,11 +420,11 @@ if result.score < 80:
 from athalia_core.robotics.docker_robotics import DockerRoboticsManager
 from athalia_core.robotics.robotics_ci import RoboticsCI
 
-# Setup Docker
+# Configuration Docker
 docker_manager = DockerRoboticsManager("/path/to/new_project")
 docker_manager.setup_reachy_environment()
 
-# Setup CI/CD
+# Configuration CI/CD
 ci_manager = RoboticsCI("/path/to/new_project")
 ci_manager.setup_ci_environment()
 
