@@ -872,7 +872,8 @@ class IntelligentAuditor:
                     if "setup_method" in content or "teardown_method" in content:
                         quality_score += 1
 
-                except Exception:
+                except Exception as e:
+                    logger.debug(f"Erreur gérée: {e}")
                     continue
 
         if test_files:

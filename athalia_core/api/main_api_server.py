@@ -488,5 +488,9 @@ async def generate_project_files(blueprint: ProjectBlueprint, output_path: str):
 # Point d'entrée principal
 if __name__ == "__main__":
     uvicorn.run(
-        "main_api_server:app", host="127.0.0.1", port=8000, reload=True, log_level="info"
+        "main_api_server:app",
+        host="127.0.0.1",
+        port=8000,
+        reload=True,
+        log_level="info",
     )

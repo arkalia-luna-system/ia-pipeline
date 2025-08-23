@@ -8,6 +8,8 @@ import ast
 import logging
 import re
 import subprocess
+
+# Import sécurisé pour subprocess
 from pathlib import Path
 from typing import Any
 
@@ -19,6 +21,7 @@ except ImportError:
     def validateand_run(command, **kwargs):
         safe_kwargs = {"shell": False, "check": False}
         safe_kwargs.update(kwargs)
+        import subprocess
         return subprocess.run(command, **safe_kwargs)
 
 

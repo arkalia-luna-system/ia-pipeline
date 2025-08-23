@@ -11,7 +11,7 @@ dans le README et les tableaux de bord.
 """
 
 import json
-import subprocess
+import subprocess  # Pour les constantes PIPE, TimeoutExpired
 import sys
 from datetime import datetime
 from pathlib import Path

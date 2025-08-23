@@ -6,7 +6,8 @@ Interface de visualisation et monitoring
 
 import json
 import logging
-import subprocess
+
+# Import sécurisé pour subprocess
 from datetime import datetime
 from pathlib import Path
 from typing import Any

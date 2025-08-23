@@ -6,13 +6,11 @@ Gestion intelligente des modèles IA avec fallback automatique et validation
 
 import logging
 import os
-# Import sécurisé pour subprocess
-import subprocess
+import subprocess  # Pour les constantes PIPE, TimeoutExpired
 from enum import Enum
 from pathlib import Path
 from typing import Any, Optional
 
-# Import sécurisé pour subprocess
 try:
     from ..utilities.secure_subprocess import secure_subprocess_run as validateand_run
 except ImportError:
@@ -20,7 +18,7 @@ except ImportError:
     def validateand_run(command, **kwargs):
         safe_kwargs = {"shell": False, "check": False, "capture_output": True}
         safe_kwargs.update(kwargs)
-        return validateand_run(command, **safe_kwargs)
+        return subprocess.run(command, **safe_kwargs)
 
 
 logger = logging.getLogger(__name__)

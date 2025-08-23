@@ -123,8 +123,8 @@ if os.path.exists(CUSTOM_PROMPTS_PATH):
             custom_prompts = yaml.safe_load(file_handle)
             if isinstance(custom_prompts, list):
                 PROMPTS.extend(custom_prompts)
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug(f"Erreur gérée: {e}")
 
 LOG_DIR = os.path.join(os.path.dirname(__file__), "../logs")
 os.makedirs(LOG_DIR, exist_ok=True)
@@ -267,7 +267,8 @@ def main():
                 all_content += (
                     f"\n# Fichier: {os.path.basename(filepath)}\n" + file_handle.read()
                 )
-        except Exception:
+        except Exception as e:
+            logger.debug(f"Erreur gérée: {e}")
             continue
     # On crée un fichier temporaire pour l'analyse globale
     with tempfile.NamedTemporaryFile("w+", delete=False, suffix=".tmp") as tmp:

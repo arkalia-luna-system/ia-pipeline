@@ -871,13 +871,17 @@ class AutoCleaner:
             try:
                 total_size += Path(file_path).stat().st_size
             except Exception as e:
-                logger.warning(f"Impossible d'obtenir la taille du fichier {file_path}: {e}")
+                logger.warning(
+                    f"Impossible d'obtenir la taille du fichier {file_path}: {e}"
+                )
 
         for dir_path in candidates["directories_to_remove"]:
             try:
                 total_size += self._get_directory_size(Path(dir_path))
             except Exception as e:
-                logger.warning(f"Impossible d'obtenir la taille du répertoire {dir_path}: {e}")
+                logger.warning(
+                    f"Impossible d'obtenir la taille du répertoire {dir_path}: {e}"
+                )
 
         return {
             "estimated_space_saved": total_size,
