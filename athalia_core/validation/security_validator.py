@@ -11,6 +11,17 @@ import subprocess
 from pathlib import Path
 from typing import Any
 
+# Import sécurisé pour subprocess
+try:
+    from ..utilities.secure_subprocess import secure_subprocess_run as validateand_run
+except ImportError:
+    # Fallback sécurisé
+    def validateand_run(command, **kwargs):
+        safe_kwargs = {"shell": False, "check": False}
+        safe_kwargs.update(kwargs)
+        return subprocess.run(command, **safe_kwargs)
+
+
 logger = logging.getLogger(__name__)
 
 
@@ -984,7 +995,7 @@ class CommandSecurityValidator:
             if "text" in safe_kwargs:
                 del safe_kwargs["text"]
 
-            result = subprocess.run(
+            result = validateand_run(
                 command, capture_output=True, text=True, check=False, **safe_kwargs
             )
             return result
@@ -1024,19 +1035,6 @@ class SecurityError(Exception):
     """Exception levée lors d'une violation de sécurité."""
 
     pass
-
-
-def validate_and_run(
-    command: list[str], **kwargs: Any
-) -> subprocess.CompletedProcess[Any]:
-    """Valide et exécute une commande de manière sécurisée."""
-    validator = CommandSecurityValidator()
-    return validator.run_safe_command(command, **kwargs)
-
-
-# Compatibilité rétroactive: certains modules importent `validateand_run`
-# Fournir un alias pointant vers la fonction normalisée `validate_and_run`.
-validateand_run = validate_and_run
 
 
 def is_command_safe(command: list[str]) -> bool:

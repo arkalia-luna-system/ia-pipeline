@@ -3,7 +3,7 @@ Code Genetics pour Athalia/Arkalia
 - Croisement, mutation, sélection, évolution de solutions IA
 """
 
-import random
+import secrets
 from collections.abc import Callable
 
 
@@ -20,7 +20,7 @@ class CodeGenetics:
         length = min(len(f) for f in fragments)
         child = []
         for i in range(length):
-            parent = random.choice(fragments)
+            parent = secrets.choice(fragments)
             child.append(parent[i])
         return " ".join(child)
 
@@ -33,8 +33,8 @@ class CodeGenetics:
         """
         words = solution.split()
         for i in range(len(words)):
-            if random.random() < mutation_rate:
-                words[i] = f"MUT_{random.randint(0, 999)}"
+            if secrets.SystemRandom().random() < mutation_rate:
+                words[i] = f"MUT_{secrets.randbelow(1000)}"
         return " ".join(words)
 
     def select(
@@ -73,7 +73,9 @@ class CodeGenetics:
         for _ in range(generations):
             # Croisement
             children = [
-                self.crossover(random.sample(population, min(2, len(population))))
+                self.crossover(
+                    secrets.SystemRandom().sample(population, min(2, len(population)))
+                )
                 for _ in range(len(population))
             ]
             # Mutation

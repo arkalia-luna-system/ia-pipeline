@@ -1,27 +1,25 @@
 #!/usr/bin/env python3
 """
-Module AI robuste amélioré pour Athalia
-Gestion avancée des modèles d'IA avec fallbacks intelligents
+Module IA robuste avancé pour Athalia
+Gestion intelligente des modèles IA avec fallback automatique et validation
 """
 
 import logging
+import os
 import subprocess
 from enum import Enum
-from typing import Any
+from pathlib import Path
+from typing import Any, Optional
 
-# Import du validateur de sécurité
+# Import sécurisé pour subprocess
 try:
-    from athalia_core.validation.security_validator import (
-        SecurityError,
-        validate_and_run,
-    )
+    from ..utilities.secure_subprocess import secure_subprocess_run as validateand_run
 except ImportError:
-    # Fallback pour les tests
-    class SecurityErrorFallback(Exception):
-        pass
-
-    def validateand_run(command: list[str], **kwargs: Any) -> Any:
-        return subprocess.run(command, **kwargs)
+    # Fallback sécurisé
+    def validateand_run(command, **kwargs):
+        safe_kwargs = {"shell": False, "check": False, "capture_output": True}
+        safe_kwargs.update(kwargs)
+        return subprocess.run(command, **safe_kwargs)
 
 
 logger = logging.getLogger(__name__)
@@ -342,7 +340,7 @@ class RobustAI:
         # Vérifier Ollama
         try:
             # Utilisation du validateur de sécurité pour l'appel ollama
-            result = validate_and_run(
+            result = validateand_run(
                 ["ollama", "list"],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
@@ -358,7 +356,7 @@ class RobustAI:
                     available_models.append(AIModel.OLLAMA_CODEGEN)
                 if "qwen" in result.stdout.lower():
                     available_models.append(AIModel.OLLAMA_QWEN)
-        except (Exception, SecurityError) as e:
+        except Exception as e:
             logger.warning(f"Impossible de détecter les modèles Ollama: {e}")
 
         return available_models
@@ -471,7 +469,7 @@ Type: {project_type}
         """Appelle un modèle Ollama."""
         try:
             # Utilisation du validateur de sécurité pour l'appel ollama
-            result = validate_and_run(
+            result = validateand_run(
                 ["ollama", "run", model_name, prompt],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
@@ -488,7 +486,7 @@ Type: {project_type}
         except subprocess.TimeoutExpired:
             logger.error(f"Timeout lors de l'appel à Ollama {model_name}")
             return None
-        except (Exception, SecurityError) as e:
+        except Exception as e:
             logger.error(f"Erreur lors de l'appel à Ollama {model_name}: {e}")
             return None
 

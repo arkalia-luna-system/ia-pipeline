@@ -7,7 +7,6 @@ Exécution et validation automatique des tests
 import argparse
 import ast
 import logging
-import subprocess
 from pathlib import Path
 from typing import Any, Union
 
@@ -18,12 +17,27 @@ try:
         validateand_run,
     )
 except ImportError:
-    # Fallback pour les tests
-    class SecurityErrorFallback(Exception):
-        pass
+    # Fallback pour les tests - utiliser le module sécurisé
+    try:
+        from athalia_core.utilities.secure_subprocess import (
+            secure_subprocess_run as validateand_run,
+        )
 
-    def validateand_run(command: list[str], **kwargs: Any) -> Any:
-        return subprocess.run(command, **kwargs)
+        class SecurityErrorFallback(Exception):
+            pass
+
+    except ImportError:
+        # Fallback final
+        class SecurityErrorFallback(Exception):
+            pass
+
+        def validateand_run(command: list[str], **kwargs: Any) -> Any:
+            import subprocess
+
+            # Paramètres de sécurité minimaux
+            safe_kwargs = {"shell": False, "check": False}
+            safe_kwargs.update(kwargs)
+            return subprocess.run(command, **safe_kwargs)
 
 
 logger = logging.getLogger(__name__)
@@ -146,7 +160,7 @@ class AutoTester:
     def _run_existing_tests(self) -> dict[str, Any]:
         """Exécute les tests existants"""
         try:
-            result = subprocess.run(
+            result = validateand_run(
                 ["python", "-m", "pytest", "tests/", "-v"],
                 capture_output=True,
                 text=True,
@@ -552,7 +566,7 @@ if __name__ == "__main__":
     def _run_tests(self) -> dict[str, Any]:
         """Exécute tous les tests du projet"""
         try:
-            result = subprocess.run(
+            result = validateand_run(
                 ["python", "-m", "pytest", "tests/", "-v"],
                 capture_output=True,
                 text=True,

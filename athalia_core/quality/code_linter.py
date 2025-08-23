@@ -1,28 +1,33 @@
 #!/usr/bin/env python3
+"""
+Module de linting de code pour Athalia
+Analyse de qualité et style de code
+"""
+
 import logging
 import subprocess
 from pathlib import Path
 from typing import Any
 
-# Import du validateur de sécurité
+# Import sécurisé pour subprocess
 try:
-    from athalia_core.validation.security_validator import (
-        SecurityError,
-        validate_and_run,
-    )
+    from ..utilities.secure_subprocess import secure_subprocess_run as validateand_run
+    from ..validation.security_validator import SecurityError
 
     # Définir SecurityErrorFallback comme alias de SecurityError
     SecurityErrorFallback = SecurityError
 except ImportError:
     # Fallback pour les tests
-    def validate_and_run_fallback(command: list[str], **kwargs: Any) -> Any:
-        return subprocess.run(command, **kwargs)
+    def validateand_run(command, **kwargs):
+        safe_kwargs = {"shell": False, "check": False}
+        safe_kwargs.update(kwargs)
+        return subprocess.run(command, **safe_kwargs)
 
     # Utiliser Exception directement pour le fallback
     SecurityErrorFallback = Exception  # type: ignore
 
     # Alias pour compatibilité
-    validate_and_run = validate_and_run_fallback
+    validateand_run = validateand_run
 
 
 logger = logging.getLogger(__name__)
@@ -72,7 +77,7 @@ class CodeLinter:
         """Exécution de Ruff (remplace Flake8)"""
         try:
             # Utilisation du validateur de sécurité pour l'appel ruff
-            result = validate_and_run(
+            result = validateand_run(
                 ["ruff", "check", str(self.project_path), "--output-format=text"],
                 capture_output=True,
                 text=True,
@@ -96,7 +101,7 @@ class CodeLinter:
         """Exécution de Black"""
         try:
             # Utilisation du validateur de sécurité pour l'appel black
-            result = validate_and_run(
+            result = validateand_run(
                 ["black", str(self.project_path), "--check"],
                 capture_output=True,
                 text=True,
@@ -113,7 +118,7 @@ class CodeLinter:
         """Exécution de isort"""
         try:
             # Utilisation du validateur de sécurité pour l'appel isort
-            result = validate_and_run(
+            result = validateand_run(
                 ["isort", str(self.project_path), "--check-only"],
                 capture_output=True,
                 text=True,
@@ -130,7 +135,7 @@ class CodeLinter:
         """Exécution de MyPy"""
         try:
             # Utilisation du validateur de sécurité pour l'appel mypy
-            result = validate_and_run(
+            result = validateand_run(
                 ["mypy", str(self.project_path), "--ignore-missing-imports"],
                 capture_output=True,
                 text=True,
@@ -149,7 +154,7 @@ class CodeLinter:
         """Exécution de Bandit (sécurité)"""
         try:
             # Utilisation du validateur de sécurité pour l'appel bandit
-            result = validate_and_run(
+            result = validateand_run(
                 ["bandit", "-r", str(self.project_path), "-f", "txt"],
                 capture_output=True,
                 text=True,
@@ -167,7 +172,7 @@ class CodeLinter:
     def _run_complexity_analysis(self):
         """Analyse de la complexité cyclomatique"""
         try:
-            result = validate_and_run(
+            result = validateand_run(
                 ["radon", "cc", str(self.project_path), "-a"],
                 capture_output=True,
                 text=True,
@@ -242,7 +247,7 @@ class CodeLinter:
     def _run_test_coverage(self):
         """Vérification de la couverture de tests"""
         try:
-            result = validate_and_run(
+            result = validateand_run(
                 ["coverage", "run", "-m", "pytest", str(self.project_path)],
                 capture_output=True,
                 text=True,
@@ -250,7 +255,7 @@ class CodeLinter:
             )
 
             if result.returncode == 0:
-                result = validate_and_run(
+                result = validateand_run(
                     ["coverage", "report"],
                     capture_output=True,
                     text=True,

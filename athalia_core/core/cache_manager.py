@@ -8,7 +8,6 @@ import hashlib
 import json
 import logging
 import os
-import pickle
 import time
 from pathlib import Path
 from typing import Any
@@ -71,13 +70,13 @@ class CacheManager:
 
         try:
             cache_key = self._generate_cache_key(blueprint)
-            cache_file = self.cache_dir / f"{cache_key}.pkl"
+            cache_file = self.cache_dir / f"{cache_key}.json"
 
             if cache_file.exists():
                 # Vérifier l'âge du cache (max 24h)
                 if time.time() - cache_file.stat().st_mtime < 86400:
-                    with open(cache_file, "rb") as f:
-                        cached_result = pickle.load(f)
+                    with open(cache_file, encoding="utf-8") as f:
+                        cached_result = json.load(f)
 
                     self.stats["hits"] += 1
                     self._save_stats()
@@ -106,11 +105,11 @@ class CacheManager:
             self.cache_dir.mkdir(exist_ok=True, parents=True)
 
             cache_key = self._generate_cache_key(blueprint)
-            cache_file = self.cache_dir / f"{cache_key}.pkl"
+            cache_file = self.cache_dir / f"{cache_key}.json"
 
-            # Sauvegarder le résultat
-            with open(cache_file, "wb") as f:
-                pickle.dump(result, f)
+            # Sauvegarder le résultat en JSON sécurisé
+            with open(cache_file, "w", encoding="utf-8") as f:
+                json.dump(result, f, indent=2, ensure_ascii=False)
 
             self.stats["saves"] += 1
             self._save_stats()
@@ -124,7 +123,7 @@ class CacheManager:
     def clear(self) -> bool:
         """Vide le cache"""
         try:
-            for cache_file in self.cache_dir.glob("*.pkl"):
+            for cache_file in self.cache_dir.glob("*.json"):
                 cache_file.unlink()
 
             # Réinitialiser les statistiques
@@ -164,7 +163,7 @@ class CacheManager:
 
         # Calculer la taille réelle du cache en bytes
         cache_size_bytes = 0
-        for cache_file in self.cache_dir.glob("*.pkl"):
+        for cache_file in self.cache_dir.glob("*.json"):
             try:
                 cache_size_bytes += cache_file.stat().st_size
             except OSError:
@@ -183,7 +182,7 @@ class CacheManager:
             current_time = time.time()
             removed_count = 0
 
-            for cache_file in self.cache_dir.glob("*.pkl"):
+            for cache_file in self.cache_dir.glob("*.json"):
                 if current_time - cache_file.stat().st_mtime > 86400:  # 24h
                     cache_file.unlink()
                     removed_count += 1
