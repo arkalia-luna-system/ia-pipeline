@@ -1,146 +1,511 @@
 #!/usr/bin/env python3
 """
-Système de tutoriels vidéo pour Athalia
-Interface web moderne avec gestion complète des tutoriels
+Système de Tutoriels Interactifs Avancé pour Athalia
+Interface web moderne avec tutoriels étape par étape et suivi de progression
 """
 
 import json
 import logging
 import os
 import webbrowser
-from datetime import datetime
+from dataclasses import asdict, dataclass
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Optional
 
 logger = logging.getLogger(__name__)
 
 
-class VideoTutorialSystem:
-    """Système de tutoriels vidéo avec interface web moderne"""
+@dataclass
+class TutorialStep:
+    """Représente une étape d'un tutoriel interactif"""
+
+    id: str
+    title: str
+    description: str
+    instructions: str
+    expected_output: str
+    hints: list[str]
+    difficulty: str  # "easy", "medium", "hard"
+    estimated_time: int  # en minutes
+    prerequisites: list[str]  # IDs des étapes préalables
+
+
+@dataclass
+class InteractiveTutorial:
+    """Représente un tutoriel interactif complet"""
+
+    id: str
+    title: str
+    description: str
+    category: str
+    difficulty: str
+    steps: list[TutorialStep]
+    estimated_total_time: int
+    tags: list[str]
+    created_at: str
+    updated_at: str
+    completion_rate: float
+    average_rating: float
+    total_attempts: int
+
+
+@dataclass
+class UserProgress:
+    """Suivi de la progression d'un utilisateur"""
+
+    user_id: str
+    tutorial_id: str
+    current_step: int
+    completed_steps: list[str]
+    started_at: str
+    last_activity: str
+    total_time_spent: int  # en minutes
+    score: float  # 0-100
+
+
+class InteractiveTutorialSystem:
+    """Système de tutoriels interactifs avancé pour Athalia"""
 
     def __init__(self, project_path: str = "."):
         self.project_path = Path(project_path)
         self.tutorials_dir = self.project_path / "dashboard" / "tutorials"
         self.tutorials_dir.mkdir(parents=True, exist_ok=True)
-        self.tutorials_data = self._get_default_tutorials()
+        self.progress_dir = self.tutorials_dir / "progress"
+        self.progress_dir.mkdir(exist_ok=True)
 
-    def _get_default_tutorials(self) -> list[dict[str, Any]]:
-        """Retourne la liste des tutoriels par défaut avec de vraies données"""
+        # Initialiser les tutoriels interactifs
+        self.tutorials = self._create_interactive_tutorials()
+        self.user_progress = {}  # user_id -> {tutorial_id -> UserProgress}
+        self._load_user_progress()
+
+    def _create_interactive_tutorials(self) -> list[InteractiveTutorial]:
+        """Crée une collection de tutoriels interactifs avancés"""
         return [
-            {
-                "id": "getting_started",
-                "title": "🚀 Démarrage Rapide avec Athalia",
-                "description": (
-                    "Apprenez à installer et configurer Athalia en 5 minutes"
-                ),
-                "duration": "5:23",
-                "difficulty": "Débutant",
-                "category": "Installation",
-                "thumbnail": "🎯",
-                "video_url": (
-                    "https://github.com/arkalia-luna-system/ia-pipeline/blob/main/docs/USER_GUIDES/QUICK_START.md"
-                ),
-                "tags": ["installation", "configuration", "débutant"],
-                "views": 1247,
-                "rating": 4.9,
-                "created_at": "2025-08-20",
-            },
-            {
-                "id": "project_generation",
-                "title": "🏗️ Génération de Projets Automatique",
-                "description": "Créez des projets complets en quelques clics avec l'IA",
-                "duration": "12:45",
-                "difficulty": "Intermédiaire",
-                "category": "Génération",
-                "thumbnail": "⚡",
-                "video_url": (
-                    "https://github.com/arkalia-luna-system/ia-pipeline/blob/main/docs/USER_GUIDES/PROJECT_GENERATION.md"
-                ),
-                "tags": ["génération", "IA", "projets", "templates"],
-                "views": 892,
-                "rating": 4.8,
-                "created_at": "2025-08-19",
-            },
-            {
-                "id": "security_audit",
-                "title": "🛡️ Audit de Sécurité Complet",
-                "description": (
-                    "Maîtrisez les outils de sécurité et la validation de code"
-                ),
-                "duration": "18:32",
-                "difficulty": "Avancé",
-                "category": "Sécurité",
-                "thumbnail": "🔒",
-                "video_url": (
-                    "https://github.com/arkalia-luna-system/ia-pipeline/blob/main/docs/DEVELOPER/GUIDES/SECURITY_LINTING_GUIDE.md"
-                ),
-                "tags": ["sécurité", "audit", "validation", "code"],
-                "views": 567,
-                "rating": 4.9,
-                "created_at": "2025-08-18",
-            },
-            {
-                "id": "plugin_development",
-                "title": "🔌 Développement de Plugins Personnalisés",
-                "description": "Créez vos propres plugins pour étendre Athalia",
-                "duration": "25:18",
-                "difficulty": "Expert",
-                "category": "Développement",
-                "thumbnail": "⚙️",
-                "video_url": (
-                    "https://github.com/arkalia-luna-system/ia-pipeline/blob/main/docs/DEVELOPER/GUIDES/PLUGINS_GUIDE.md"
-                ),
-                "tags": ["plugins", "développement", "API", "extensions"],
-                "views": 234,
-                "rating": 4.7,
-                "created_at": "2025-08-17",
-            },
-            {
-                "id": "performance_optimization",
-                "title": "⚡ Optimisation des Performances",
-                "description": "Améliorez la vitesse et l'efficacité de vos projets",
-                "duration": "15:42",
-                "difficulty": "Avancé",
-                "category": "Performance",
-                "thumbnail": "🚀",
-                "video_url": (
-                    "https://github.com/arkalia-luna-system/ia-pipeline/blob/main/docs/DEVELOPER/GUIDES/PERFORMANCE_GUIDE.md"
-                ),
-                "tags": ["performance", "optimisation", "cache", "monitoring"],
-                "views": 445,
-                "rating": 4.6,
-                "created_at": "2025-08-16",
-            },
-            {
-                "id": "ci_cd_pipeline",
-                "title": "🔄 Pipeline CI/CD Automatisé",
-                "description": "Mettez en place un pipeline de déploiement continu",
-                "duration": "22:15",
-                "difficulty": "Expert",
-                "category": "DevOps",
-                "thumbnail": "📦",
-                "video_url": "#",
-                "tags": ["CI/CD", "DevOps", "déploiement", "automatisation"],
-                "views": 678,
-                "rating": 4.8,
-                "created_at": "2025-08-15",
-            },
+            InteractiveTutorial(
+                id="athalia_mastery",
+                title="🚀 Maîtrise Complète d'Athalia",
+                description="Devenez un expert d'Athalia en suivant ce parcours interactif complet",
+                category="Formation",
+                difficulty="Avancé",
+                estimated_total_time=120,
+                tags=["formation", "expert", "complet", "interactif"],
+                created_at=datetime.now().isoformat(),
+                updated_at=datetime.now().isoformat(),
+                completion_rate=0.0,
+                average_rating=0.0,
+                total_attempts=0,
+                steps=[
+                    TutorialStep(
+                        id="setup_environment",
+                        title="🔧 Configuration de l'Environnement",
+                        description="Configurez votre environnement de développement Athalia",
+                        instructions="""
+1. Vérifiez que Python 3.10+ est installé
+2. Clonez le repository Athalia
+3. Créez un environnement virtuel
+4. Installez les dépendances
+                        """.strip(),
+                        expected_output="Environnement configuré et tests passants",
+                        hints=[
+                            "Utilisez 'python -m venv venv' pour créer l'environnement",
+                            "Activez l'environnement avec 'source venv/bin/activate'",
+                            "Installez les dépendances avec 'pip install -r requirements.txt'",
+                        ],
+                        difficulty="easy",
+                        estimated_time=15,
+                        prerequisites=[],
+                    ),
+                    TutorialStep(
+                        id="first_project",
+                        title="🏗️ Création de Votre Premier Projet",
+                        description="Générez votre premier projet avec Athalia",
+                        instructions="""
+1. Lancez l'orchestrateur Athalia
+2. Choisissez le type de projet
+3. Configurez les paramètres
+4. Générez la structure
+                        """.strip(),
+                        expected_output="Projet généré avec succès et structure créée",
+                        hints=[
+                            "Utilisez 'python -m athalia_core.demo.quickcheck' pour tester",
+                            "Vérifiez que tous les composants sont disponibles",
+                            "Testez la génération d'un projet simple d'abord",
+                        ],
+                        difficulty="medium",
+                        estimated_time=25,
+                        prerequisites=["setup_environment"],
+                    ),
+                    TutorialStep(
+                        id="security_audit",
+                        title="🛡️ Audit de Sécurité Complet",
+                        description="Maîtrisez les outils de sécurité d'Athalia",
+                        instructions="""
+1. Lancez le dashboard de sécurité
+2. Exécutez tous les scans de sécurité
+3. Analysez les résultats
+4. Corrigez les vulnérabilités détectées
+                        """.strip(),
+                        expected_output="Score de sécurité > 80/100 et vulnérabilités corrigées",
+                        hints=[
+                            "Utilisez le dashboard de sécurité intégré",
+                            "Lancez les scans Bandit, Safety, et pip-audit",
+                            "Corrigez d'abord les vulnérabilités critiques",
+                        ],
+                        difficulty="hard",
+                        estimated_time=35,
+                        prerequisites=["first_project"],
+                    ),
+                    TutorialStep(
+                        id="performance_optimization",
+                        title="⚡ Optimisation des Performances",
+                        description="Optimisez votre projet avec les outils de benchmark",
+                        instructions="""
+1. Lancez le système de benchmark
+2. Identifiez les goulots d'étranglement
+3. Appliquez les optimisations recommandées
+4. Mesurez l'amélioration des performances
+                        """.strip(),
+                        expected_output="Amélioration des performances > 20%",
+                        hints=[
+                            "Utilisez le système de benchmark intégré",
+                            "Concentrez-vous sur les fonctions les plus lentes",
+                            "Testez les optimisations avant/après",
+                        ],
+                        difficulty="hard",
+                        estimated_time=45,
+                        prerequisites=["security_audit"],
+                    ),
+                ],
+            ),
+            InteractiveTutorial(
+                id="devops_expert",
+                title="🔧 Expert DevOps avec Athalia",
+                description="Maîtrisez les workflows DevOps et CI/CD avec Athalia",
+                category="DevOps",
+                difficulty="Expert",
+                estimated_total_time=90,
+                tags=["devops", "ci-cd", "workflows", "expert"],
+                created_at=datetime.now().isoformat(),
+                updated_at=datetime.now().isoformat(),
+                completion_rate=0.0,
+                average_rating=0.0,
+                total_attempts=0,
+                steps=[
+                    TutorialStep(
+                        id="ci_cd_setup",
+                        title="🔄 Configuration CI/CD",
+                        description="Configurez un pipeline CI/CD complet",
+                        instructions="""
+1. Configurez GitHub Actions
+2. Définissez les étapes de build
+3. Configurez les tests automatisés
+4. Mettez en place le déploiement
+                        """.strip(),
+                        expected_output="Pipeline CI/CD fonctionnel et tests automatisés",
+                        hints=[
+                            "Utilisez les workflows GitHub Actions d'Athalia",
+                            "Configurez les tests avec pytest",
+                            "Intégrez le linting avec black et ruff",
+                        ],
+                        difficulty="hard",
+                        estimated_time=30,
+                        prerequisites=[],
+                    ),
+                    TutorialStep(
+                        id="monitoring_setup",
+                        title="📊 Monitoring et Observabilité",
+                        description="Mettez en place le monitoring de votre projet",
+                        instructions="""
+1. Configurez les métriques de base
+2. Mettez en place les alertes
+3. Configurez les dashboards
+4. Testez le monitoring
+                        """.strip(),
+                        expected_output="Système de monitoring fonctionnel avec alertes",
+                        hints=[
+                            "Utilisez le collecteur de métriques intégré",
+                            "Configurez les seuils d'alerte appropriés",
+                            "Testez avec des scénarios réels",
+                        ],
+                        difficulty="medium",
+                        estimated_time=25,
+                        prerequisites=["ci_cd_setup"],
+                    ),
+                ],
+            ),
+            InteractiveTutorial(
+                id="plugin_development",
+                title="🔌 Développement de Plugins Avancés",
+                description="Créez vos propres plugins pour étendre Athalia",
+                category="Développement",
+                difficulty="Expert",
+                estimated_total_time=75,
+                tags=["plugins", "développement", "extensions", "expert"],
+                created_at=datetime.now().isoformat(),
+                updated_at=datetime.now().isoformat(),
+                completion_rate=0.0,
+                average_rating=0.0,
+                total_attempts=0,
+                steps=[
+                    TutorialStep(
+                        id="plugin_architecture",
+                        title="🏗️ Architecture des Plugins",
+                        description="Comprenez l'architecture des plugins Athalia",
+                        instructions="""
+1. Étudiez la structure des plugins existants
+2. Comprenez le système de hooks
+3. Identifiez les points d'extension
+4. Planifiez votre plugin
+                        """.strip(),
+                        expected_output="Architecture du plugin planifiée et documentée",
+                        hints=[
+                            "Examinez les plugins dans athalia_core/plugins/",
+                            "Identifiez les interfaces et classes de base",
+                            "Documentez votre architecture",
+                        ],
+                        difficulty="medium",
+                        estimated_time=20,
+                        prerequisites=[],
+                    ),
+                    TutorialStep(
+                        id="plugin_implementation",
+                        title="⚙️ Implémentation du Plugin",
+                        description="Implémentez votre plugin étape par étape",
+                        instructions="""
+1. Créez la structure du plugin
+2. Implémentez les fonctionnalités de base
+3. Ajoutez la gestion d'erreurs
+4. Testez le plugin
+                        """.strip(),
+                        expected_output="Plugin fonctionnel et testé",
+                        hints=[
+                            "Suivez les conventions de nommage",
+                            "Ajoutez des tests unitaires",
+                            "Gérez les erreurs gracieusement",
+                        ],
+                        difficulty="hard",
+                        estimated_time=35,
+                        prerequisites=["plugin_architecture"],
+                    ),
+                ],
+            ),
         ]
 
+    def _load_user_progress(self) -> None:
+        """Charge la progression des utilisateurs depuis les fichiers"""
+        try:
+            for progress_file in self.progress_dir.glob("*.json"):
+                with open(progress_file, encoding="utf-8") as f:
+                    progress_data = json.load(f)
+                    user_id = progress_data["user_id"]
+                    tutorial_id = progress_data["tutorial_id"]
+
+                    if user_id not in self.user_progress:
+                        self.user_progress[user_id] = {}
+
+                    self.user_progress[user_id][tutorial_id] = UserProgress(
+                        **progress_data
+                    )
+        except Exception as e:
+            logger.warning(f"Impossible de charger la progression: {e}")
+
+    def _save_user_progress(self, user_id: str, tutorial_id: str) -> None:
+        """Sauvegarde la progression d'un utilisateur"""
+        try:
+            if (
+                user_id in self.user_progress
+                and tutorial_id in self.user_progress[user_id]
+            ):
+                progress = self.user_progress[user_id][tutorial_id]
+                progress_file = self.progress_dir / f"{user_id}_{tutorial_id}.json"
+
+                with open(progress_file, "w", encoding="utf-8") as f:
+                    json.dump(asdict(progress), f, indent=2, ensure_ascii=False)
+        except Exception as e:
+            logger.error(f"Erreur lors de la sauvegarde de la progression: {e}")
+
+    def start_tutorial(self, user_id: str, tutorial_id: str) -> dict[str, Any]:
+        """Démarre un tutoriel pour un utilisateur"""
+        tutorial = next((t for t in self.tutorials if t.id == tutorial_id), None)
+        if not tutorial:
+            return {"error": "Tutoriel non trouvé"}
+
+        # Créer ou récupérer la progression
+        if user_id not in self.user_progress:
+            self.user_progress[user_id] = {}
+
+        if tutorial_id not in self.user_progress[user_id]:
+            self.user_progress[user_id][tutorial_id] = UserProgress(
+                user_id=user_id,
+                tutorial_id=tutorial_id,
+                current_step=0,
+                completed_steps=[],
+                started_at=datetime.now().isoformat(),
+                last_activity=datetime.now().isoformat(),
+                total_time_spent=0,
+                score=0.0,
+            )
+        else:
+            # Mettre à jour l'activité
+            self.user_progress[user_id][
+                tutorial_id
+            ].last_activity = datetime.now().isoformat()
+
+        # Mettre à jour les statistiques
+        tutorial.total_attempts += 1
+
+        self._save_user_progress(user_id, tutorial_id)
+
+        return {
+            "tutorial": asdict(tutorial),
+            "progress": asdict(self.user_progress[user_id][tutorial_id]),
+            "current_step": tutorial.steps[0] if tutorial.steps else None,
+        }
+
+    def get_current_step(self, user_id: str, tutorial_id: str) -> TutorialStep | None:
+        """Récupère l'étape actuelle d'un utilisateur"""
+        if user_id in self.user_progress and tutorial_id in self.user_progress[user_id]:
+            progress = self.user_progress[user_id][tutorial_id]
+            tutorial = next((t for t in self.tutorials if t.id == tutorial_id), None)
+
+            if tutorial and progress.current_step < len(tutorial.steps):
+                return tutorial.steps[progress.current_step]
+
+        return None
+
+    def complete_step(
+        self, user_id: str, tutorial_id: str, step_output: str
+    ) -> dict[str, Any]:
+        """Marque une étape comme terminée et calcule le score"""
+        if (
+            user_id not in self.user_progress
+            or tutorial_id not in self.user_progress[user_id]
+        ):
+            return {"error": "Progression non trouvée"}
+
+        progress = self.user_progress[user_id][tutorial_id]
+        tutorial = next((t for t in self.tutorials if t.id == tutorial_id), None)
+
+        if not tutorial or progress.current_step >= len(tutorial.steps):
+            return {"error": "Étape invalide"}
+
+        current_step = tutorial.steps[progress.current_step]
+
+        # Calculer le score de l'étape (simulation basée sur la complexité)
+        step_score = self._calculate_step_score(current_step, step_output)
+
+        # Marquer l'étape comme terminée
+        if current_step.id not in progress.completed_steps:
+            progress.completed_steps.append(current_step.id)
+
+        # Passer à l'étape suivante
+        progress.current_step += 1
+
+        # Calculer le score total
+        total_steps = len(tutorial.steps)
+        completed_steps = len(progress.completed_steps)
+        progress.score = (completed_steps / total_steps) * 100
+
+        # Mettre à jour le temps passé
+        progress.total_time_spent += current_step.estimated_time
+        progress.last_activity = datetime.now().isoformat()
+
+        # Mettre à jour les statistiques du tutoriel
+        tutorial.completion_rate = (completed_steps / total_steps) * 100
+
+        self._save_user_progress(user_id, tutorial_id)
+
+        return {
+            "step_completed": True,
+            "step_score": step_score,
+            "total_score": progress.score,
+            "next_step": self.get_current_step(user_id, tutorial_id),
+            "tutorial_completed": progress.current_step >= len(tutorial.steps),
+        }
+
+    def _calculate_step_score(self, step: TutorialStep, output: str) -> float:
+        """Calcule le score d'une étape basé sur la complexité et la sortie"""
+        base_score = 100.0
+
+        # Réduire le score si l'étape est difficile
+        if step.difficulty == "hard":
+            base_score *= 0.9
+        elif step.difficulty == "medium":
+            base_score *= 0.95
+
+        # Bonus pour la qualité de la sortie (simulation)
+        if len(output) > 50:  # Sortie détaillée
+            base_score *= 1.1
+
+        return min(100.0, base_score)
+
+    def get_user_progress(self, user_id: str) -> dict[str, Any]:
+        """Récupère la progression complète d'un utilisateur"""
+        if user_id not in self.user_progress:
+            return {"user_id": user_id, "tutorials": [], "overall_progress": 0.0}
+
+        user_tutorials = []
+        total_progress = 0.0
+
+        for tutorial_id, progress in self.user_progress[user_id].items():
+            tutorial = next((t for t in self.tutorials if t.id == tutorial_id), None)
+            if tutorial:
+                user_tutorials.append(
+                    {"tutorial": asdict(tutorial), "progress": asdict(progress)}
+                )
+                total_progress += progress.score
+
+        overall_progress = (
+            total_progress / len(user_tutorials) if user_tutorials else 0.0
+        )
+
+        return {
+            "user_id": user_id,
+            "tutorials": user_tutorials,
+            "overall_progress": overall_progress,
+        }
+
+    def get_tutorials_summary(self) -> dict[str, Any]:
+        """Retourne un résumé des tutoriels avec statistiques réelles"""
+        total_tutorials = len(self.tutorials)
+        total_steps = sum(len(t.steps) for t in self.tutorials)
+        total_attempts = sum(t.total_attempts for t in self.tutorials)
+
+        # Calculer les statistiques réelles
+        completion_rates = [t.completion_rate for t in self.tutorials]
+        avg_completion = (
+            sum(completion_rates) / len(completion_rates) if completion_rates else 0
+        )
+
+        return {
+            "total_tutorials": total_tutorials,
+            "total_steps": total_steps,
+            "total_attempts": total_attempts,
+            "average_completion_rate": round(avg_completion, 1),
+            "categories": list({t.category for t in self.tutorials}),
+            "difficulties": list({t.difficulty for t in self.tutorials}),
+            "last_updated": datetime.now().isoformat(),
+        }
+
     def generate_tutorials_interface(self) -> str:
-        """Génère l'interface web des tutoriels"""
-        tutorials_html = self._get_tutorials_template()
+        """Génère l'interface web des tutoriels interactifs"""
+        try:
+            tutorials_file = self.tutorials_dir / "interactive_tutorials.html"
+            html_content = self._get_tutorials_template()
 
-        # Créer le fichier tutoriels
-        tutorials_file = self.tutorials_dir / "video_tutorials.html"
-        with open(tutorials_file, "w", encoding="utf-8") as f:
-            f.write(tutorials_html)
+            with open(tutorials_file, "w", encoding="utf-8") as f:
+                f.write(html_content)
 
-        logger.info(f"Interface tutoriels générée: {tutorials_file}")
-        return str(tutorials_file)
+            logger.info(f"Interface des tutoriels générée: {tutorials_file}")
+            return str(tutorials_file)
+
+        except Exception as e:
+            logger.error(f"Erreur lors de la génération de l'interface: {e}")
+            return ""
 
     def _get_tutorials_template(self) -> str:
-        """Retourne le template HTML des tutoriels"""
+        """Retourne le template HTML de l'interface des tutoriels"""
         current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         return f"""<!DOCTYPE html>
@@ -148,8 +513,7 @@ class VideoTutorialSystem:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutoriels Vidéo - Athalia</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Tutoriels Interactifs - Athalia</title>
     <style>
         * {{
             margin: 0;
@@ -192,63 +556,17 @@ class VideoTutorialSystem:
             color: #666;
         }}
 
-        .search-filters {{
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }}
-
-        .search-input {{
-            width: 100%;
-            padding: 15px 20px;
-            border: 2px solid #e9ecef;
-            border-radius: 25px;
-            font-size: 1.1em;
-            outline: none;
-            transition: border-color 0.3s ease;
-            margin-bottom: 20px;
-        }}
-
-        .search-input:focus {{
-            border-color: #667eea;
-        }}
-
-        .filters {{
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }}
-
-        .filter-btn {{
-            padding: 10px 20px;
-            border: 2px solid #667eea;
-            border-radius: 25px;
-            background: transparent;
-            color: #667eea;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }}
-
-        .filter-btn:hover, .filter-btn.active {{
-            background: #667eea;
-            color: white;
-        }}
-
         .stats-container {{
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }}
 
         .stats-title {{
-            font-size: 1.8em;
+            font-size: 2em;
             color: #667eea;
             margin-bottom: 20px;
             text-align: center;
@@ -260,23 +578,24 @@ class VideoTutorialSystem:
             gap: 20px;
         }}
 
-        .stat-card {{
-            text-align: center;
-            padding: 20px;
+        .stat-item {{
             background: #f8f9fa;
+            padding: 20px;
             border-radius: 15px;
+            text-align: center;
+            border-left: 4px solid #667eea;
         }}
 
-        .stat-number {{
+        .stat-value {{
             font-size: 2.5em;
             font-weight: 700;
             color: #667eea;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }}
 
-        .stat-description {{
+        .stat-label {{
+            font-size: 1em;
             color: #666;
-            font-size: 0.9em;
         }}
 
         .tutorials-grid {{
@@ -290,150 +609,128 @@ class VideoTutorialSystem:
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-radius: 20px;
-            padding: 25px;
+            padding: 30px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
-            border: 2px solid transparent;
         }}
 
         .tutorial-card:hover {{
             transform: translateY(-5px);
-            border-color: #667eea;
         }}
 
         .tutorial-header {{
             display: flex;
+            justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
         }}
 
-        .tutorial-thumbnail {{
-            width: 80px;
-            height: 80px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 20px;
-            font-size: 3em;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+        .tutorial-title {{
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #667eea;
+        }}
+
+        .tutorial-difficulty {{
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }}
+
+        .difficulty-beginner {{
+            background: #28a745;
             color: white;
         }}
 
-        .tutorial-info {{
-            flex: 1;
-        }}
-
-        .tutorial-title {{
-            font-size: 1.3em;
-            font-weight: 600;
+        .difficulty-intermediate {{
+            background: #ffc107;
             color: #333;
-            margin-bottom: 8px;
-            line-height: 1.3;
         }}
 
-        .tutorial-meta {{
-            display: flex;
-            gap: 15px;
-            font-size: 0.9em;
-            color: #666;
+        .difficulty-advanced {{
+            background: #fd7e14;
+            color: white;
+        }}
+
+        .difficulty-expert {{
+            background: #dc3545;
+            color: white;
         }}
 
         .tutorial-description {{
-            color: #555;
+            color: #666;
             line-height: 1.6;
             margin-bottom: 20px;
         }}
 
-        .tutorial-stats {{
+        .tutorial-meta {{
             display: flex;
             justify-content: space-between;
+            align-items: center;
             margin-bottom: 20px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 10px;
+            font-size: 0.9em;
+            color: #999;
         }}
 
-        .stat-item {{
-            text-align: center;
-        }}
-
-        .stat-value {{
-            font-size: 1.1em;
-            font-weight: 600;
-            color: #667eea;
-        }}
-
-        .stat-label {{
-            font-size: 0.8em;
-            color: #666;
-            text-transform: uppercase;
-        }}
-
-        .tutorial-actions {{
+        .tutorial-stats {{
             display: flex;
-            gap: 10px;
+            gap: 20px;
+        }}
+
+        .stat {{
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }}
 
         .btn {{
+            display: inline-block;
             padding: 12px 24px;
             border: none;
-            border-radius: 25px;
-            font-size: 0.9em;
+            border-radius: 10px;
+            font-size: 1em;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            flex: 1;
+            text-decoration: none;
+            text-align: center;
         }}
 
         .btn-primary {{
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-        }}
-
-        .btn-primary:hover {{
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-        }}
-
-        .btn-secondary {{
-            background: #f8f9fa;
-            color: #667eea;
-            border: 2px solid #667eea;
-        }}
-
-        .btn-secondary:hover {{
             background: #667eea;
             color: white;
         }}
 
-        .difficulty-badge {{
-            display: inline-block;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.8em;
-            font-weight: 600;
-            margin-bottom: 10px;
+        .btn-primary:hover {{
+            background: #5a6fd8;
+            transform: translateY(-2px);
         }}
 
-        .difficulty-beginner {{
-            background: #d4edda;
-            color: #155724;
+        .btn-success {{
+            background: #28a745;
+            color: white;
         }}
 
-        .difficulty-intermediate {{
-            background: #fff3cd;
-            color: #856404;
+        .btn-success:hover {{
+            background: #218838;
+            transform: translateY(-2px);
         }}
 
-        .difficulty-advanced {{
-            background: #f8d7da;
-            color: #721c24;
+        .progress-bar {{
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 15px;
         }}
 
-        .difficulty-expert {{
-            background: #e2e3e5;
-            color: #383d41;
+        .progress-fill {{
+            height: 100%;
+            background: linear-gradient(90deg, #28a745, #20c997);
+            transition: width 0.3s ease;
         }}
 
         .footer {{
@@ -453,398 +750,161 @@ class VideoTutorialSystem:
             .header h1 {{
                 font-size: 2em;
             }}
-
-            .filters {{
-                flex-direction: column;
-            }}
-
-            .tutorial-actions {{
-                flex-direction: column;
-            }}
         }}
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🎥 Tutoriels Vidéo Athalia</h1>
-            <p>Apprenez à maîtriser Athalia avec nos tutoriels vidéo interactifs</p>
-        </div>
-
-        <div class="search-filters">
-            <input type="text" class="search-input" placeholder="🔍 Rechercher un tutoriel..." id="searchInput" onkeyup="filterTutorials()">
-            <div class="filters">
-                <button class="filter-btn active" data-category="all" onclick="filterByCategory('all')">Tous</button>
-                <button class="filter-btn" data-category="Installation" onclick="filterByCategory('Installation')">Installation</button>
-                <button class="filter-btn" data-category="Génération" onclick="filterByCategory('Génération')">Génération</button>
-                <button class="filter-btn" data-category="Sécurité" onclick="filterByCategory('Sécurité')">Sécurité</button>
-                <button class="filter-btn" data-category="Développement" onclick="filterByCategory('Développement')">Développement</button>
-                <button class="filter-btn" data-category="Performance" onclick="filterByCategory('Performance')">Performance</button>
-                <button class="filter-btn" data-category="DevOps" onclick="filterByCategory('DevOps')">DevOps</button>
-            </div>
+            <h1>🎓 Tutoriels Interactifs Athalia</h1>
+            <p>Apprenez Athalia étape par étape avec des tutoriels interactifs personnalisés</p>
         </div>
 
         <div class="stats-container">
             <h2 class="stats-title">📊 Statistiques des Tutoriels</h2>
             <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number" id="totalTutorials">6</div>
-                    <div class="stat-description">Total Tutoriels</div>
+                <div class="stat-item">
+                    <div class="stat-value">{len(self.tutorials)}</div>
+                    <div class="stat-label">Tutoriels Disponibles</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="totalViews">4063</div>
-                    <div class="stat-description">Vues Totales</div>
+                <div class="stat-item">
+                    <div class="stat-value">{sum(len(t.steps) for t in self.tutorials)}</div>
+                    <div class="stat-label">Étapes Totales</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="avgRating">4.8</div>
-                    <div class="stat-description">Note Moyenne</div>
+                <div class="stat-item">
+                    <div class="stat-value">{sum(t.total_attempts for t in self.tutorials)}</div>
+                    <div class="stat-label">Tentatives Totales</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="totalDuration">1:39:15</div>
-                    <div class="stat-description">Durée Totale</div>
+                <div class="stat-item">
+                    <div class="stat-value">{round(sum(t.completion_rate for t in self.tutorials) / len(self.tutorials), 1)}%</div>
+                    <div class="stat-label">Taux de Réussite Moyen</div>
                 </div>
             </div>
         </div>
 
-        <div class="tutorials-grid" id="tutorialsGrid">
-            <div class="tutorial-card" data-category="Installation" data-difficulty="Débutant">
-                <div class="tutorial-header">
-                    <div class="tutorial-thumbnail">🎯</div>
-                    <div class="tutorial-info">
-                        <div class="tutorial-title">🚀 Démarrage Rapide avec Athalia</div>
-                        <div class="tutorial-meta">
-                            <span>⏱️ 5:23</span>
-                            <span>📅 20 Août 2025</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="difficulty-badge difficulty-beginner">Débutant</div>
-                <div class="tutorial-description">
-                    Apprenez à installer et configurer Athalia en 5 minutes.
-                    Ce tutoriel vous guide étape par étape pour démarrer rapidement.
-                </div>
-                <div class="tutorial-stats">
-                    <div class="stat-item">
-                        <div class="stat-value">1247</div>
-                        <div class="stat-label">Vues</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">4.9</div>
-                        <div class="stat-label">Note</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">Installation</div>
-                        <div class="stat-label">Catégorie</div>
-                    </div>
-                </div>
-                <div class="tutorial-actions">
-                    <button class="btn btn-primary" onclick="playTutorial('getting_started')">▶️ Regarder</button>
-                    <button class="btn btn-secondary" onclick="viewDetails('getting_started')">📋 Détails</button>
-                </div>
-            </div>
-
-            <div class="tutorial-card" data-category="Génération" data-difficulty="Intermédiaire">
-                <div class="tutorial-header">
-                    <div class="tutorial-thumbnail">⚡</div>
-                    <div class="tutorial-info">
-                        <div class="tutorial-title">🏗️ Génération de Projets Automatique</div>
-                        <div class="tutorial-meta">
-                            <span>⏱️ 12:45</span>
-                            <span>📅 19 Août 2025</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="difficulty-badge difficulty-intermediate">Intermédiaire</div>
-                <div class="tutorial-description">
-                    Créez des projets complets en quelques clics avec l'IA.
-                    Découvrez comment utiliser les templates et la génération automatique.
-                </div>
-                <div class="tutorial-stats">
-                    <div class="stat-item">
-                        <div class="stat-value">892</div>
-                        <div class="stat-label">Vues</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">4.8</div>
-                        <div class="stat-label">Note</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">Génération</div>
-                        <div class="stat-label">Catégorie</div>
-                    </div>
-                </div>
-                <div class="tutorial-actions">
-                    <button class="btn btn-primary" onclick="playTutorial('project_generation')">▶️ Regarder</button>
-                    <button class="btn btn-secondary" onclick="viewDetails('project_generation')">📋 Détails</button>
-                </div>
-            </div>
-
-            <div class="tutorial-card" data-category="Sécurité" data-difficulty="Avancé">
-                <div class="tutorial-header">
-                    <div class="tutorial-thumbnail">🔒</div>
-                    <div class="tutorial-info">
-                        <div class="tutorial-title">🛡️ Audit de Sécurité Complet</div>
-                        <div class="tutorial-meta">
-                            <span>⏱️ 18:32</span>
-                            <span>📅 18 Août 2025</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="difficulty-badge difficulty-advanced">Avancé</div>
-                <div class="tutorial-description">
-                    Maîtrisez les outils de sécurité et la validation de code.
-                    Apprenez à auditer vos projets et détecter les vulnérabilités.
-                </div>
-                <div class="tutorial-stats">
-                    <div class="stat-item">
-                        <div class="stat-value">567</div>
-                        <div class="stat-label">Vues</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">4.9</div>
-                        <div class="stat-label">Note</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">Sécurité</div>
-                        <div class="stat-label">Catégorie</div>
-                    </div>
-                </div>
-                <div class="tutorial-actions">
-                    <button class="btn btn-primary" onclick="playTutorial('security_audit')">▶️ Regarder</button>
-                    <button class="btn btn-secondary" onclick="viewDetails('security_audit')">📋 Détails</button>
-                </div>
-            </div>
-
-            <div class="tutorial-card" data-category="Développement" data-difficulty="Expert">
-                <div class="tutorial-header">
-                    <div class="tutorial-thumbnail">⚙️</div>
-                    <div class="tutorial-info">
-                        <div class="tutorial-title">🔌 Développement de Plugins Personnalisés</div>
-                        <div class="tutorial-meta">
-                            <span>⏱️ 25:18</span>
-                            <span>📅 17 Août 2025</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="difficulty-badge difficulty-expert">Expert</div>
-                <div class="tutorial-description">
-                    Créez vos propres plugins pour étendre Athalia.
-                    Découvrez l'API et les bonnes pratiques de développement.
-                </div>
-                <div class="tutorial-stats">
-                    <div class="stat-item">
-                        <div class="stat-value">234</div>
-                        <div class="stat-label">Vues</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">4.7</div>
-                        <div class="stat-label">Note</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">Développement</div>
-                        <div class="stat-label">Catégorie</div>
-                    </div>
-                </div>
-                <div class="tutorial-actions">
-                    <button class="btn btn-primary" onclick="playTutorial('plugin_development')">▶️ Regarder</button>
-                    <button class="btn btn-secondary" onclick="viewDetails('plugin_development')">📋 Détails</button>
-                </div>
-            </div>
-
-            <div class="tutorial-card" data-category="Performance" data-difficulty="Avancé">
-                <div class="tutorial-header">
-                    <div class="tutorial-thumbnail">🚀</div>
-                    <div class="tutorial-info">
-                        <div class="tutorial-title">⚡ Optimisation des Performances</div>
-                        <div class="tutorial-meta">
-                            <span>⏱️ 15:42</span>
-                            <span>📅 16 Août 2025</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="difficulty-badge difficulty-advanced">Avancé</div>
-                <div class="tutorial-description">
-                    Améliorez la vitesse et l'efficacité de vos projets.
-                    Apprenez les techniques d'optimisation et de monitoring.
-                </div>
-                <div class="tutorial-stats">
-                    <div class="stat-item">
-                        <div class="stat-value">445</div>
-                        <div class="stat-label">Vues</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">4.6</div>
-                        <div class="stat-label">Note</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">Performance</div>
-                        <div class="stat-label">Catégorie</div>
-                    </div>
-                </div>
-                <div class="tutorial-actions">
-                    <button class="btn btn-primary" onclick="playTutorial('performance_optimization')">▶️ Regarder</button>
-                    <button class="btn btn-secondary" onclick="viewDetails('performance_optimization')">📋 Détails</button>
-                </div>
-            </div>
-
-            <div class="tutorial-card" data-category="DevOps" data-difficulty="Expert">
-                <div class="tutorial-header">
-                    <div class="tutorial-thumbnail">📦</div>
-                    <div class="tutorial-info">
-                        <div class="tutorial-title">🔄 Pipeline CI/CD Automatisé</div>
-                        <div class="tutorial-meta">
-                            <span>⏱️ 22:15</span>
-                            <span>📅 15 Août 2025</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="difficulty-badge difficulty-expert">Expert</div>
-                <div class="tutorial-description">
-                    Mettez en place un pipeline de déploiement continu.
-                    Automatisez vos tests, builds et déploiements.
-                </div>
-                <div class="tutorial-stats">
-                    <div class="stat-item">
-                        <div class="stat-value">678</div>
-                        <div class="stat-label">Vues</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">4.8</div>
-                        <div class="stat-label">Note</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">DevOps</div>
-                        <div class="stat-label">Catégorie</div>
-                    </div>
-                </div>
-                <div class="tutorial-actions">
-                    <button class="btn btn-primary" onclick="playTutorial('ci_cd_pipeline')">▶️ Regarder</button>
-                    <button class="btn btn-secondary" onclick="viewDetails('ci_cd_pipeline')">📋 Détails</button>
-                </div>
-            </div>
+        <div class="tutorials-grid">
+            {self._generate_tutorials_html()}
         </div>
 
         <div class="footer">
-            <p>🕒 Dernière mise à jour: <span id="last-update">{current_time}</span></p>
-            <p>🎥 Système de tutoriels vidéo généré automatiquement par Athalia</p>
+            <p>🕒 Dernière mise à jour: {current_time}</p>
+            <p>🎓 Système de tutoriels interactifs généré automatiquement par Athalia</p>
         </div>
     </div>
 
     <script>
-        // Fonction de filtrage des tutoriels
-        function filterTutorials() {{
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const tutorialCards = document.querySelectorAll('.tutorial-card');
+        // Système de gestion des tutoriels interactifs
+        let currentUser = 'user_' + Date.now();
+        let userProgress = {{}};
 
-            tutorialCards.forEach(card => {{
-                const tutorialTitle = card.querySelector('.tutorial-title').textContent.toLowerCase();
-                const tutorialDescription = card.querySelector('.tutorial-description').textContent.toLowerCase();
+        function startTutorial(tutorialId) {{
+            // Simuler le démarrage d'un tutoriel
+            alert(`🚀 Démarrage du tutoriel ${{tutorialId}} en cours...`);
 
-                if (tutorialTitle.includes(searchTerm) || tutorialDescription.includes(searchTerm)) {{
-                    card.style.display = 'block';
-                }} else {{
-                    card.style.display = 'none';
+            // Ici, on pourrait appeler l'API pour démarrer le tutoriel
+            if (!userProgress[tutorialId]) {{
+                userProgress[tutorialId] = {{
+                    currentStep: 0,
+                    completedSteps: [],
+                    score: 0,
+                    startedAt: new Date().toISOString()
+                }};
+            }}
+
+            // Mettre à jour l'interface
+            updateTutorialProgress(tutorialId);
+        }}
+
+        function updateTutorialProgress(tutorialId) {{
+            const progress = userProgress[tutorialId];
+            if (progress) {{
+                const progressBar = document.querySelector(`#progress-${{tutorialId}} .progress-fill`);
+                if (progressBar) {{
+                    const percentage = (progress.completedSteps.length / 6) * 100; // 6 étapes par défaut
+                    progressBar.style.width = percentage + '%';
                 }}
-            }});
+            }}
         }}
 
-        // Fonction de filtrage par catégorie
-        function filterByCategory(category) {{
-            // Mettre à jour les boutons actifs
-            document.querySelectorAll('.filter-btn').forEach(btn => {{
-                btn.classList.remove('active');
-            }});
-            event.target.classList.add('active');
+        function completeStep(tutorialId, stepId) {{
+            const progress = userProgress[tutorialId];
+            if (progress && !progress.completedSteps.includes(stepId)) {{
+                progress.completedSteps.push(stepId);
+                progress.score = (progress.completedSteps.length / 6) * 100;
+                updateTutorialProgress(tutorialId);
 
-            const tutorialCards = document.querySelectorAll('.tutorial-card');
-
-            tutorialCards.forEach(card => {{
-                if (category === 'all' || card.getAttribute('data-category') === category) {{
-                    card.style.display = 'block';
-                }} else {{
-                    card.style.display = 'none';
-                }}
-            }});
+                alert(`✅ Étape ${{stepId}} terminée ! Score: ${{progress.score.toFixed(1)}}%`);
+            }}
         }}
 
-        // Fonction de lecture de tutoriel
-        function playTutorial(tutorialId) {{
-            const id = tutorialId || 'default';
-            alert(`🎥 Lecture du tutoriel ${id} en cours...`);
-            // Ici on pourrait ajouter la logique de lecture vidéo
-            setTimeout(() => {{
-                alert(`✅ Tutoriel ${id} lancé avec succès !`);
-            }}, 1000);
-        }}
-
-        // Fonction de visualisation des détails
-        function viewDetails(tutorialId) {{
-            const id = tutorialId || 'default';
-            alert(`📋 Détails du tutoriel ${id} - Fonctionnalité à implémenter`);
-        }}
-
-        // Mise à jour automatique des statistiques
-        setInterval(() => {{
-            const now = new Date();
-            document.getElementById('last-update').textContent = now.toLocaleString('fr-FR');
-        }}, 300000);
-
-        // Animation d'entrée des cartes
+        // Initialisation
         document.addEventListener('DOMContentLoaded', function() {{
-            const cards = document.querySelectorAll('.tutorial-card');
-            cards.forEach((card, index) => {{
-                setTimeout(() => {{
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(20px)';
-                    card.style.transition = 'all 0.5s ease';
-
-                    setTimeout(() => {{
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }}, 100);
-                }}, index * 100);
-            }});
+            console.log('🎓 Système de tutoriels interactifs chargé !');
         }});
     </script>
 </body>
 </html>"""
 
+    def _generate_tutorials_html(self) -> str:
+        """Génère le HTML pour les tutoriels"""
+        html = ""
+        for tutorial in self.tutorials:
+            difficulty_class = f"difficulty-{tutorial.difficulty.lower()}"
+            progress_percentage = tutorial.completion_rate
+
+            html += f"""
+            <div class="tutorial-card" id="tutorial-{tutorial.id}">
+                <div class="tutorial-header">
+                    <div class="tutorial-title">{tutorial.title}</div>
+                    <div class="tutorial-difficulty {difficulty_class}">{tutorial.difficulty}</div>
+                </div>
+
+                <div class="tutorial-description">{tutorial.description}</div>
+
+                <div class="tutorial-meta">
+                    <div class="tutorial-stats">
+                        <div class="stat">⏱️ {tutorial.estimated_total_time} min</div>
+                        <div class="stat">📚 {len(tutorial.steps)} étapes</div>
+                        <div class="stat">🎯 {tutorial.total_attempts} tentatives</div>
+                    </div>
+                    <div class="stat">⭐ {tutorial.average_rating:.1f}/5.0</div>
+                </div>
+
+                <div class="progress-bar" id="progress-{tutorial.id}">
+                    <div class="progress-fill" style="width: {progress_percentage}%"></div>
+                </div>
+
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn btn-primary" onclick="startTutorial('{tutorial.id}')">
+                        🚀 Commencer
+                    </button>
+                    <button class="btn btn-success" onclick="completeStep('{tutorial.id}', 'step_1')">
+                        ✅ Étape 1
+                    </button>
+                </div>
+            </div>
+            """
+        return html
+
     def open_tutorials(self) -> None:
         """Ouvre l'interface des tutoriels dans le navigateur"""
-        tutorials_file = self.generate_tutorials_interface()
-        webbrowser.open(f"file://{os.path.abspath(tutorials_file)}")
-        logger.info(f"Interface tutoriels ouverte: {tutorials_file}")
-
-    def get_tutorials_summary(self) -> dict[str, Any]:
-        """Retourne un résumé des tutoriels"""
-        total_views = sum(tutorial["views"] for tutorial in self.tutorials_data)
-        total_rating = sum(tutorial["rating"] for tutorial in self.tutorials_data)
-        avg_rating = (
-            total_rating / len(self.tutorials_data) if self.tutorials_data else 0
-        )
-
-        return {
-            "total_tutorials": len(self.tutorials_data),
-            "total_views": total_views,
-            "average_rating": round(avg_rating, 1),
-            "categories": list(
-                {tutorial["category"] for tutorial in self.tutorials_data}
-            ),
-            "difficulties": list(
-                {tutorial["difficulty"] for tutorial in self.tutorials_data}
-            ),
-            "last_updated": datetime.now().isoformat(),
-        }
+        try:
+            tutorials_file = self.generate_tutorials_interface()
+            if tutorials_file and Path(tutorials_file).exists():
+                webbrowser.open(f"file://{Path(tutorials_file).absolute()}")
+                logger.info("🌐 Interface des tutoriels ouverte dans le navigateur")
+            else:
+                logger.error("❌ Impossible de générer l'interface des tutoriels")
+        except Exception as e:
+            logger.error(f"Erreur lors de l'ouverture des tutoriels: {e}")
 
     def integrate_with_athalia(self) -> dict[str, Any]:
         """Intègre le système de tutoriels avec Athalia"""
         try:
             # Importer les composants Athalia
-            from athalia_core.core.unified_orchestrator import UnifiedOrchestrator
             from athalia_core.metrics.collector import MetricsCollector
 
-            # Initialiser l'orchestrateur
-            # orchestrator = UnifiedOrchestrator(str(self.project_path))
+            # Initialiser le collecteur de métriques
             metrics_collector = MetricsCollector(str(self.project_path))
 
             # Collecter les métriques du projet
@@ -891,9 +951,8 @@ class VideoTutorialSystem:
                     ),
                     "category": "Gestion",
                     "difficulty": "Avancé",
-                    "video_url": (
-                        "https://github.com/arkalia-luna-system/ia-pipeline/blob/main/docs/DEVELOPER/GUIDES/LARGE_PROJECTS.md"
-                    ),
+                    "estimated_time": 45,
+                    "steps": 4,
                 }
             )
 
@@ -908,9 +967,8 @@ class VideoTutorialSystem:
                     ),
                     "category": "Tests",
                     "difficulty": "Avancé",
-                    "video_url": (
-                        "https://github.com/arkalia-luna-system/ia-pipeline/blob/main/docs/DEVELOPER/GUIDES/TESTS_GUIDE.md"
-                    ),
+                    "estimated_time": 35,
+                    "steps": 3,
                 }
             )
 
@@ -925,9 +983,8 @@ class VideoTutorialSystem:
                     ),
                     "category": "Documentation",
                     "difficulty": "Intermédiaire",
-                    "video_url": (
-                        "https://github.com/arkalia-luna-system/ia-pipeline/blob/main/docs/DEVELOPER/GUIDES/DOCUMENTATION_GUIDE.md"
-                    ),
+                    "estimated_time": 25,
+                    "steps": 3,
                 }
             )
 
@@ -935,7 +992,7 @@ class VideoTutorialSystem:
 
 
 def main():
-    """Fonction principale pour test du système de tutoriels"""
+    """Fonction principale pour test du système de tutoriels interactifs"""
     import sys
 
     if len(sys.argv) > 1:
@@ -943,8 +1000,27 @@ def main():
     else:
         project_path = "."
 
-    tutorial_system = VideoTutorialSystem(project_path)
-    tutorial_system.open_tutorials()
+    tutorial_system = InteractiveTutorialSystem(project_path)
+
+    if len(sys.argv) > 2 and sys.argv[2] == "test":
+        print("🧪 Tests du système de tutoriels interactifs...")
+
+        # Tester la création d'un utilisateur
+        user_id = "test_user_001"
+        tutorial_id = "athalia_mastery"
+
+        # Démarrer un tutoriel
+        result = tutorial_system.start_tutorial(user_id, tutorial_id)
+        print(f"✅ Tutoriel démarré: {result}")
+
+        # Récupérer la progression
+        progress = tutorial_system.get_user_progress(user_id)
+        print(f"📊 Progression utilisateur: {progress}")
+
+        print("✅ Tests terminés")
+    else:
+        # Ouvrir l'interface
+        tutorial_system.open_tutorials()
 
 
 if __name__ == "__main__":
