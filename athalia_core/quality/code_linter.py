@@ -15,6 +15,7 @@ def secure_run_command(command: list[str], **kwargs: Any) -> Any:
     """Wrapper pour exécution sécurisée de commandes"""
     try:
         from ..utilities.secure_subprocess import secure_subprocess_run
+
         return secure_subprocess_run(command, **kwargs)
     except ImportError:
         # Fallback sécurisé avec subprocess
@@ -25,6 +26,7 @@ def secure_run_command(command: list[str], **kwargs: Any) -> Any:
 
 try:
     from ..validation.security_validator import SecurityError
+
     SecurityErrorFallback = SecurityError
 except ImportError:
     SecurityErrorFallback = Exception  # type: ignore
