@@ -31,19 +31,19 @@ jobs:
       - name: Bandit security scan
         run: |
           echo "🔍 Running Bandit security scan..."
-          bandit -r athalia_core -f txt -o bandit-report.txt || true
+          bandit -r athalia_core -f txt -o bandit-report.txt
           echo "✅ Bandit scan completed"
 
       - name: Safety dependency check
         run: |
           echo "🔍 Running Safety dependency check..."
-          safety check --full-report > safety-report.txt || true
+          safety check --full-report > safety-report.txt
           echo "✅ Safety check completed"
 
       - name: pip-audit vulnerability scan
         run: |
           echo "🔍 Running pip-audit vulnerability scan..."
-          pip-audit -r requirements.txt -f markdown -o pip-audit-report.md || true
+          pip-audit -r requirements.txt -f markdown -o pip-audit-report.md
           echo "✅ pip-audit completed"
 
       - name: Upload security reports

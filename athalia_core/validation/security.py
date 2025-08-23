@@ -20,7 +20,7 @@ def security_audit_project(project_path):
 
     for root, _dirs, files in os.walk(project_path):
         for file in files:
-            if file.endswith(".py") or file.endswith(".f(f"):
+            if file.endswith(".py"):
                 file_path = os.path.join(root, file)
                 try:
                     with open(file_path, encoding="utf-8", errors="ignore") as f:
@@ -46,7 +46,6 @@ def security_audit_project(project_path):
     is_secure = len(issues) == 0
     return {
         "secure": is_secure,
-        "f": is_secure,
         "issues": issues,
         "score": score,
     }
