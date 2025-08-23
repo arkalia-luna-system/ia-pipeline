@@ -81,8 +81,8 @@ ruff check . --statistics
 - **Fonctionnalités** : Monitoring sécurité, visualisations, alertes
 
 #### **4. Système de Tutoriels Vidéo**
-- **Fichier** : `athalia_core/tutorials/video_tutorial_system.py`
-- **Documentation** : `docs/API/VIDEO_TUTORIAL_SYSTEM_DOCUMENTATION.md`
+- **Fichier** : `athalia_core/tutorials/interactive_tutorial_system.py`
+- **Documentation** : `docs/API/INTERACTIVE_TUTORIAL_SYSTEM_DOCUMENTATION.md`
 - **Lignes de code** : 845
 - **Fonctionnalités** : Gestion CRUD, catégorisation, métriques
 
@@ -110,7 +110,7 @@ athalia_core/
 ├── security/             # Dashboard de sécurité
 │   └── security_dashboard.py
 └── tutorials/            # Système de tutoriels
-    └── video_tutorial_system.py
+    └── interactive_tutorial_system.py
 ```
 
 ### **Interdépendances**

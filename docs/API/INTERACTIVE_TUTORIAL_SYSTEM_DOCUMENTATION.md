@@ -1,8 +1,8 @@
-# 🎥 **Système de Tutoriels Vidéo d'Athalia**
+# 🎓 **Système de Tutoriels Interactifs d'Athalia**
 
 ## 📋 **Vue d'ensemble**
 
-Le module `video_tutorial_system.py` est un système complet de gestion et de diffusion de tutoriels vidéo pour la plateforme Athalia. Il fournit une interface web moderne pour l'apprentissage et la formation des utilisateurs.
+Le module `interactive_tutorial_system.py` est un système complet de gestion et de diffusion de tutoriels interactifs pour la plateforme Athalia. Il fournit une interface web moderne pour l'apprentissage et la formation des utilisateurs.
 
 ## 🏗️ **Architecture**
 
@@ -14,8 +14,8 @@ Le module `video_tutorial_system.py` est un système complet de gestion et de di
 
 ### **Structure du système**
 ```
-VideoTutorialSystem
-├── Gestion des tutoriels
+InteractiveTutorialSystem
+├── Gestion des tutoriels interactifs
 ├── Interface web moderne
 ├── Système de catégorisation
 ├── Métriques et statistiques
@@ -107,10 +107,10 @@ VideoTutorialSystem
 
 ### **Initialisation du système**
 ```python
-from athalia_core.tutorials.video_tutorial_system import VideoTutorialSystem
+from athalia_core.tutorials.interactive_tutorial_system import InteractiveTutorialSystem
 
 # Initialisation
-tutorial_system = VideoTutorialSystem("./mon_projet")
+tutorial_system = InteractiveTutorialSystem("./mon_projet")
 
 # Ouverture de l'interface
 tutorial_system.open_tutorials()

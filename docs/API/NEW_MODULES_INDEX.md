@@ -28,9 +28,9 @@ Ce document indexe tous les nouveaux modules qui ont été ajoutés à la platef
 - **Lignes de code** : 424
 
 ### **4. Système de Tutoriels Vidéo**
-- **Fichier** : `athalia_core/tutorials/video_tutorial_system.py`
-- **Documentation** : [VIDEO_TUTORIAL_SYSTEM_DOCUMENTATION.md](VIDEO_TUTORIAL_SYSTEM_DOCUMENTATION.md)
-- **Description** : Gestion complète des tutoriels vidéo avec interface web
+- **Fichier** : `athalia_core/tutorials/interactive_tutorial_system.py`
+- **Documentation** : [INTERACTIVE_TUTORIAL_SYSTEM_DOCUMENTATION.md](INTERACTIVE_TUTORIAL_SYSTEM_DOCUMENTATION.md)
+- **Description** : Gestion complète des tutoriels interactifs avec interface web
 - **Fonctionnalités** : Interface web, catégorisation, métriques, notation
 - **Lignes de code** : 844
 
@@ -61,7 +61,7 @@ athalia_core/
 ├── security/             # Dashboard de sécurité
 │   └── security_dashboard.py
 └── tutorials/            # Système de tutoriels
-    └── video_tutorial_system.py
+    └── interactive_tutorial_system.py
 ```
 
 ### **Interdépendances**
@@ -131,7 +131,7 @@ python athalia_core/benchmarks/advanced_benchmark_system.py
 python athalia_core/security/security_dashboard.py
 
 # Système de tutoriels
-python athalia_core/tutorials/video_tutorial_system.py
+python athalia_core/tutorials/interactive_tutorial_system.py
 ```
 
 ## 📈 **Intégration et Workflows**
@@ -196,7 +196,7 @@ jobs:
 - [API Reference](API_SERVER_DOCUMENTATION.md)
 - [Benchmark Guide](BENCHMARK_SYSTEM_DOCUMENTATION.md)
 - [Security Dashboard](SECURITY_DASHBOARD_DOCUMENTATION.md)
-- [Tutorial System](VIDEO_TUTORIAL_SYSTEM_DOCUMENTATION.md)
+- [Tutorial System](INTERACTIVE_TUTORIAL_SYSTEM_DOCUMENTATION.md)
 
 ### **Exemples et cas d'usage**
 - [Exemples d'API](../examples/api/)
