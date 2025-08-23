@@ -12,7 +12,7 @@ from typing import Any, Union
 
 # Import du validateur de sécurité
 try:
-    from athalia_core.validation.security_validator import (
+    from ..validation.security_validator import (
         SecurityError,
         validateand_run,
     )
@@ -23,17 +23,17 @@ except ImportError:
             secure_subprocess_run as validateand_run,
         )
 
-        class SecurityErrorFallback(Exception):
+        class SecurityError(Exception):
             pass
 
     except ImportError:
         # Fallback final
-        class SecurityErrorFallback(Exception):
+        import subprocess
+
+        class SecurityError(Exception):
             pass
 
         def validateand_run(command, **kwargs):
-            import subprocess
-
             # Paramètres de sécurité minimaux
             safe_kwargs = {"shell": False, "check": False}
             safe_kwargs.update(kwargs)
