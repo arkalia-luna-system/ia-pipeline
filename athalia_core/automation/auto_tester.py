@@ -19,17 +19,17 @@ try:
 except ImportError:
     # Fallback pour les tests - utiliser le module sécurisé
     try:
+        # Réutiliser SecurityError du module sécurisé
+        from ..utilities.secure_subprocess import SecurityError
         from ..utilities.secure_subprocess import (
             secure_subprocess_run as validateand_run,
         )
-
-        class SecurityError(Exception):
-            pass
 
     except ImportError:
         # Fallback final
         import subprocess
 
+        # Définir SecurityError une seule fois
         class SecurityError(Exception):
             pass
 
