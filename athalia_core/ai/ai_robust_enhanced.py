@@ -6,6 +6,7 @@ Gestion intelligente des modèles IA avec fallback automatique et validation
 
 import logging
 import os
+# Import sécurisé pour subprocess
 import subprocess
 from enum import Enum
 from pathlib import Path
@@ -19,7 +20,7 @@ except ImportError:
     def validateand_run(command, **kwargs):
         safe_kwargs = {"shell": False, "check": False, "capture_output": True}
         safe_kwargs.update(kwargs)
-        return subprocess.run(command, **safe_kwargs)
+        return validateand_run(command, **safe_kwargs)
 
 
 logger = logging.getLogger(__name__)

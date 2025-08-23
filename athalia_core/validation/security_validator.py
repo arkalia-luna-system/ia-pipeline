@@ -436,8 +436,8 @@ class CommandSecurityValidator:
                 end_line = min(len(lines), line_num + 1)
                 context_lines = lines[start_line:end_line]
                 return "\n".join(context_lines)
-        except:
-            pass
+        except Exception as e:
+            logger.warning(f"Impossible de récupérer le contexte: {e}")
         return "Contexte non disponible"
 
     def detect_command_injection(self, code: str) -> list[dict[str, Any]]:

@@ -823,7 +823,8 @@ class DashboardGenerator:
                 try:
                     with open(py_file, encoding="utf-8") as f:
                         total_lines += len(f.readlines())
-                except:
+                except Exception as e:
+                    logger.warning(f"Impossible de lire le fichier {py_file}: {e}")
                     continue
             metrics["lines_of_code"] = total_lines
 

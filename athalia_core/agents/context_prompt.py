@@ -21,7 +21,7 @@ except ImportError:
     def validateand_run(command, **kwargs):
         import subprocess
 
-        safe_kwargs = {"shell": False, "check": False}
+        safe_kwargs = {"shell": False, "check": False, "capture_output": True}
         safe_kwargs.update(kwargs)
         return subprocess.run(command, **safe_kwargs)
 
