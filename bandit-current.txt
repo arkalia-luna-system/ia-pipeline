@@ -1,4 +1,4 @@
-Run started:2025-08-23 18:41:23.875509
+Run started:2025-08-23 18:43:34.888164
 
 Test results:
 >> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
@@ -170,10 +170,10 @@ Test results:
    Severity: Low   Confidence: High
    CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
    More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b603_subprocess_without_shell_equals_true.html
-   Location: athalia_core/quality/code_linter.py:24:15
-23	        safe_kwargs.update(kwargs)
-24	        return subprocess.run(command, **safe_kwargs)
-25	
+   Location: athalia_core/quality/code_linter.py:23:15
+22	        safe_kwargs.update(kwargs)
+23	        return subprocess.run(command, **safe_kwargs)
+24	
 
 --------------------------------------------------
 >> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.

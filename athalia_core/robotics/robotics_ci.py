@@ -20,6 +20,7 @@ except ImportError:
         safe_kwargs = {"shell": False, "check": False}
         safe_kwargs.update(kwargs)
         import subprocess
+
         return subprocess.run(command, **safe_kwargs)
 
 
