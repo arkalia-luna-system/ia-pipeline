@@ -330,7 +330,7 @@
         // Chargement des vraies métriques depuis le collecteur Athalia
         async function loadRealMetrics() {
             try {
-                const response = await fetch('data/metrics/metrics.json');
+                const response = await fetch('../data/metrics/metrics.json');
                 const data = await response.json();
 
                 // Mise à jour des métriques avec les vraies données
