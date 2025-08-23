@@ -13,7 +13,21 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Optional
 
-import yaml
+# Import sécurisé pour subprocess
+try:
+    from ..utilities.secure_subprocess import secure_subprocess_run as validateand_run
+except ImportError:
+    # Fallback sécurisé si le module n'est pas disponible
+    def validateand_run(command, **kwargs):
+        import subprocess
+        safe_kwargs = {"shell": False, "check": False}
+        safe_kwargs.update(kwargs)
+        return subprocess.run(command, **safe_kwargs)
+
+try:
+    import yaml
+except ImportError:
+    yaml = None
 
 logger = logging.getLogger(__name__)
 
@@ -21,53 +35,6 @@ try:
     import pyperclip
 except ImportError:
     pyperclip = None
-
-
-# Fonction sécurisée pour l'exécution de commandes
-def validateand_run(command: list[str], **kwargs):
-    """
-    Exécute une commande de manière sécurisée.
-
-    Args:
-        command: Liste de commandes à exécuter
-        **kwargs: Arguments supplémentaires pour subprocess.run
-
-    Returns:
-        CompletedProcess: Résultat de l'exécution
-    """
-    import subprocess
-
-    # Validation des paramètres de sécurité
-    safe_kwargs = {
-        "shell": False,  # Toujours False pour éviter l'injection de shell
-        "check": False,
-        "capture_output": True,
-        "text": True,
-        "timeout": 30,  # Timeout par défaut
-    }
-
-    # Fusion avec les kwargs fournis, en préservant la sécurité
-    safe_kwargs.update(kwargs)
-    safe_kwargs["shell"] = False  # Force shell=False pour la sécurité
-
-    # Validation que la commande est une liste
-    if not isinstance(command, list):
-        raise ValueError("La commande doit être une liste pour la sécurité")
-
-    # Vérification que la commande ne contient pas de caractères dangereux
-    command_str = " ".join(command)
-    dangerous_chars = [";", "&", "|", "`", "$", "(", ")", "{", "}", "[", "]"]
-    if any(char in command_str for char in dangerous_chars):
-        raise ValueError("La commande contient des caractères dangereux")
-
-    try:
-        return subprocess.run(command, **safe_kwargs)
-    except subprocess.TimeoutExpired:
-        logger.error(f"Timeout lors de l'exécution de la commande: {command}")
-        raise
-    except Exception as e:
-        logger.error(f"Erreur lors de l'exécution de la commande: {e}")
-        raise
 
 
 PROMPTS = [
