@@ -108,7 +108,7 @@ Security ←→ Tutorials
 ### **Installation**
 ```bash
 # Clonage du repository
-git clone https://github.com/your-org/athalia.git
+git clone https://github.com/arkalia-luna-system/ia-pipeline.git
 cd athalia
 
 # Installation des dépendances

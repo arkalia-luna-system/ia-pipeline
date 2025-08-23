@@ -832,7 +832,7 @@ class SecurityDashboard:
             data: {{
                 labels: ['Critiques', 'Moyennes', 'Mineures', 'Sécurisé'],
                 datasets: [{{
-                    data: [{high_vulns}, {medium_vulns}, {low_vulns}, {max(0, 100 - total_vulnerabilities)}],
+                    data: [{high_vulns}, {medium_vulns}, {low_vulns}, {max(0, 1000 - total_vulnerabilities)}],
                     backgroundColor: [
                         '#dc3545',
                         '#ffc107',

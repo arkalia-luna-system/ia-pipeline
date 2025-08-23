@@ -118,7 +118,7 @@ tutorial_system.open_tutorials()
 
 ### **Gestion des tutoriels**
 ```python
-# Les tutoriels sont actuellement définis statiquement dans _get_default_tutorials()
+# Les tutoriels sont maintenant générés dynamiquement avec l'interface CRUD avancée
 # Pour ajouter de nouveaux tutoriels, vous pouvez modifier cette méthode
 # ou étendre la classe pour ajouter des fonctionnalités CRUD
 

@@ -28,7 +28,7 @@ ruff check . --fix --unsafe-fixes
 #### **Phase 2 : Correction Manuelle des Erreurs Critiques**
 
 ##### **Erreurs F821 (Noms non définis)**
-- **Fichier** : `athalia_core/tutorials/video_tutorial_system.py`
+- **Fichier** : `athalia_core/tutorials/interactive_tutorial_system.py`
 - **Problème** : Variables JavaScript non définies dans les fonctions
 - **Solution** : Ajout de vérifications de type et valeurs par défaut
 - **Résultat** : ✅ Corrigé
