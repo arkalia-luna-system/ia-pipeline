@@ -54,8 +54,7 @@ Ce document indexe tous les nouveaux modules qui ont été ajoutés à la platef
 ```
 athalia_core/
 ├── api/                    # Serveur API principal
-│   ├── main_api_server.py
-│   └── main_server.py
+│   └── main_api_server.py
 ├── benchmarks/            # Système de benchmarks
 │   └── advanced_benchmark_system.py
 ├── security/             # Dashboard de sécurité
@@ -78,6 +77,7 @@ Security ←→ Tutorials
 - **Validation Pydantic** : Modèles de données robustes
 - **Documentation automatique** : Swagger UI et ReDoc
 - **Tâches en arrière-plan** : Génération asynchrone
+- **Note** : `main_server.py` est obsolète et a été remplacé par `main_api_server.py`
 
 ### **Benchmarks**
 - **Tests de performance** : CPU, mémoire, I/O
@@ -121,7 +121,7 @@ cp config/athalia_config.yaml.example config/athalia_config.yaml
 
 ### **Démarrage**
 ```bash
-# Serveur API
+# Serveur API (serveur principal intégré)
 python athalia_core/api/main_api_server.py
 
 # Benchmarks

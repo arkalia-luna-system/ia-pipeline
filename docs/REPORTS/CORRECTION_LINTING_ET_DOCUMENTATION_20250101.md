@@ -34,7 +34,7 @@ ruff check . --fix --unsafe-fixes
 - **Résultat** : ✅ Corrigé
 
 ##### **Erreurs B904 (Raise sans from)**
-- **Fichiers** : `athalia_core/api/main_server.py`, `athalia_core/api/main_api_server.py`
+- **Fichiers** : `athalia_core/api/main_api_server.py` (serveur principal intégré)
 - **Problème** : Exceptions levées sans chaînage approprié
 - **Solution** : Ajout de `from e` pour chaîner les exceptions
 - **Résultat** : ✅ Corrigé
@@ -104,7 +104,7 @@ ruff check . --statistics
 athalia_core/
 ├── api/                    # Serveur API principal
 │   ├── main_api_server.py  # API REST complète
-│   └── main_server.py      # Serveur web
+│   └── main_api_server.py  # Serveur web principal
 ├── benchmarks/            # Système de benchmarks
 │   └── advanced_benchmark_system.py
 ├── security/             # Dashboard de sécurité
