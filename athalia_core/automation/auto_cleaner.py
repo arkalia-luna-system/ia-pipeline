@@ -996,7 +996,7 @@ class AutoCleaner:
             "*.log",  # Logs
             "*.clean",  # Fichiers de nettoyage
             "*.apdisk",  # macOS
-            "*.f(f",  # Fichiers corrompus
+            "*.tmp",  # Fichiers temporaires corrompus
         ]
 
         files_removed = []
