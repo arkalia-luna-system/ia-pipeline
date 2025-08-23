@@ -57,13 +57,16 @@ jobs:
           ls -la
           echo ""
           echo "🐍 Python modules found:"
-          find . -name "*.py" -not -path "./.venv/*" -not -path "./venv/*" | head -10
+          find . -name "*.py" -not -path "./.venv/*" -not -path "./venv/*" | \
+            head -10
           echo ""
           echo "🧪 Test files found:"
-          find tests/ -name "*.py" 2>/dev/null | head -5 || echo "No tests directory found"
+          find tests/ -name "*.py" 2>/dev/null | head -5 || \
+            echo "No tests directory found"
           echo ""
           echo "📚 Documentation files found:"
-          find docs/ -name "*.md" 2>/dev/null | head -5 || echo "No docs directory found"
+          find docs/ -name "*.md" 2>/dev/null | head -5 || \
+            echo "No docs directory found"
 
       - name: 📊 Collect Metrics
         run: |
@@ -78,24 +81,7 @@ jobs:
           echo "📊 Metrics Summary:"
           if [ -f data/metrics.json ]; then
             # Extraire et afficher les métriques principales
-            python3 -c "
-              import json
-              data = json.load(open('data/metrics.json'))
-              summary = data.get('summary', {})
-              collection_info = data.get('collection_info', {})
-              print('=' * 60)
-              print('📊 ATHALIA PROJECT METRICS')
-              print('=' * 60)
-              print(f'🕒 Generated: {collection_info.get(\"collection_date\", \"Unknown\")}')
-              print(f'🐍 Python Files: {summary.get(\"total_python_files\", 0):,}')
-              print(f'📝 Lines of Code: {summary.get(\"lines_of_code\", 0):,}')
-              print(f'🧪 Tests: {summary.get(\"collected_tests\", 0):,}')
-              print(f'🛡️ Security Commands: {summary.get(\"security_commands\", 0):,}')
-              print(f'📊 HTML Dashboards: {summary.get(\"html_dashboards\", 0):,}')
-              print(f'🔧 Utility Scripts: {summary.get(\"utility_scripts\", 0):,}')
-              print(f'📚 Documentation: {summary.get(\"documentation_files\", 0):,}')
-              print('=' * 60)
-            "
+            python3 scripts/metrics/display_metrics.py
           else
             echo "❌ Metrics file not found!"
             exit 1
@@ -117,7 +103,8 @@ jobs:
           missing_files=()
           for file in "${expected_files[@]}"; do
             if [ -f "$file" ]; then
-              size=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file" 2>/dev/null || echo "0")
+              size=$(stat -f%z "$file" 2>/dev/null || \
+                stat -c%s "$file" 2>/dev/null || echo "0")
               echo "✅ $file (${size} bytes)"
             else
               echo "❌ $file (missing)"
@@ -187,7 +174,8 @@ jobs:
           path: ./metrics
 
       - name: 🌐 Setup Pages
-        if: github.repository_owner == 'arkalia-luna-system' # Ajuster selon votre organisation
+        # Ajuster selon votre organisation
+        if: github.repository_owner == 'arkalia-luna-system'
         uses: actions/configure-pages@v3
 
       - name: 📦 Prepare Dashboard
