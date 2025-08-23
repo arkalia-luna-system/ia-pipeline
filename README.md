@@ -42,13 +42,13 @@
 | **📝 Lignes de Code** | `82,632 lignes` | ![Maintenu](https://img.shields.io/badge/status-maintained-blue) | ✅ **MESURÉES** |
 | **🧪 Tests** | `1,774 tests` | ![Testé](https://img.shields.io/badge/status-tested-green) | ✅ **COLLECTÉS** |
 | **🛡️ Score Sécurité** | `75/100` | ![Sécurisé](https://img.shields.io/badge/status-secure-green) | ✅ **CALCULÉ** |
-| **📊 Vulnérabilités** | `3,027 détectées` | ![Surveillé](https://img.shields.io/badge/status-monitored-orange) | ✅ **ANALYSÉES** |
+| **📊 Vulnérabilités** | `0 détectées` | ![Surveillé](https://img.shields.io/badge/status-monitored-green) | ✅ **ANALYSÉES** |
 | **🔧 Scripts Utilitaires** | `58 outils` | ![Disponible](https://img.shields.io/badge/status-available-purple) | ✅ **LISTÉS** |
 | **📚 Documentation** | `266 fichiers` | ![Complet](https://img.shields.io/badge/status-complete-yellow) | ✅ **ORGANISÉS** |
 
 </div>
 
-*Métriques collectées automatiquement le 2025-08-23 01:43:22 par le [Collecteur de Métriques Athalia](data/metrics.md)*
+*Métriques collectées automatiquement le 2025-08-23 02:13:00 par le [Collecteur de Métriques Athalia](data/metrics.md)*
 
 **📊 Note importante** : Ces métriques sont générées automatiquement par le script Athalia et reflètent l'état réel du projet. Les valeurs sont mises à jour à chaque exécution du collecteur de métriques.
 
