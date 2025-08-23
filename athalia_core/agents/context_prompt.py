@@ -20,9 +20,11 @@ except ImportError:
     # Fallback sécurisé si le module n'est pas disponible
     def validateand_run(command, **kwargs):
         import subprocess
+
         safe_kwargs = {"shell": False, "check": False}
         safe_kwargs.update(kwargs)
         return subprocess.run(command, **safe_kwargs)
+
 
 try:
     import yaml
