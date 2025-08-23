@@ -135,7 +135,7 @@ print(f"Interface générée: {interface_file}")
 ```python
 # Les fonctionnalités de recherche sont intégrées dans l'interface web
 # Accès aux données des tutoriels pour filtrage manuel
-tutorials = tutorial_system._get_default_tutorials()
+tutorials = tutorial_system._create_interactive_tutorials()
 
 # Filtrage par catégorie (exemple manuel)
 installation_tutorials = [t for t in tutorials if t["category"] == "Installation"]

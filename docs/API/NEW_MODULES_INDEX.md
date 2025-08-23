@@ -109,7 +109,7 @@ Security ←→ Tutorials
 ```bash
 # Clonage du repository
 git clone https://github.com/arkalia-luna-system/ia-pipeline.git
-cd athalia
+cd ia-pipeline
 
 # Installation des dépendances
 pip install -r requirements.txt
@@ -234,10 +234,10 @@ jobs:
 5. **Code review** et validation
 
 ### **Support et communauté**
-- **Issues** : [GitHub Issues](https://github.com/your-org/athalia/issues)
-- **Discussions** : [GitHub Discussions](https://github.com/your-org/athalia/discussions)
-- **Documentation** : [Wiki](https://github.com/your-org/athalia/wiki)
-- **Chat** : [Discord/Slack](https://discord.gg/athalia)
+- **Issues** : [GitHub Issues](https://github.com/arkalia-luna-system/ia-pipeline/issues)
+- **Discussions** : [GitHub Discussions](https://github.com/arkalia-luna-system/ia-pipeline/discussions)
+- **Documentation** : [Wiki](https://github.com/arkalia-luna-system/ia-pipeline/wiki)
+- **Chat** : [Discord/Slack](https://discord.gg/ia-pipeline)
 
 ---
 
