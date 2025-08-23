@@ -18,7 +18,7 @@ try:
     SecurityErrorFallback = SecurityError
 except ImportError:
     # Fallback pour les tests
-    def validate_and_run_fallback(command, **kwargs):
+    def validateand_run(command, **kwargs):
         safe_kwargs = {"shell": False, "check": False}
         safe_kwargs.update(kwargs)
         return subprocess.run(command, **safe_kwargs)
@@ -26,8 +26,7 @@ except ImportError:
     # Utiliser Exception directement pour le fallback
     SecurityErrorFallback = Exception  # type: ignore
 
-    # Alias pour compatibilité
-    validateand_run = validate_and_run_fallback
+    # Pas d'alias nécessaire - validateand_run est déjà défini
 
 
 logger = logging.getLogger(__name__)

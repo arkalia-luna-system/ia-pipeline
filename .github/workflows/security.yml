@@ -33,12 +33,35 @@ jobs:
           echo "🔍 Running Bandit security scan..."
           bandit -r athalia_core -f txt -o bandit-report.txt
           echo "✅ Bandit scan completed"
+          
+          # Vérifier s'il y a des vulnérabilités critiques
+          if grep -q "HIGH" bandit-report.txt; then
+            echo "🚨 VULNÉRABILITÉS CRITIQUES DÉTECTÉES !"
+            cat bandit-report.txt
+            exit 1
+          fi
+          
+          if grep -q "MEDIUM" bandit-report.txt; then
+            echo "⚠️ VULNÉRABILITÉS MOYENNES DÉTECTÉES !"
+            cat bandit-report.txt
+            exit 1
+          fi
+          
+          echo "✅ Aucune vulnérabilité critique ou moyenne détectée"
 
       - name: Safety dependency check
         run: |
           echo "🔍 Running Safety dependency check..."
           safety check --full-report > safety-report.txt
-          echo "✅ Safety check completed"
+          
+          # Vérifier s'il y a des vulnérabilités
+          if grep -q "VULNERABILITY" safety-report.txt; then
+            echo "🚨 VULNÉRABILITÉS DÉTECTÉES DANS LES DÉPENDANCES !"
+            cat safety-report.txt
+            exit 1
+          fi
+          
+          echo "✅ Safety check completed - Aucune vulnérabilité détectée"
 
       - name: pip-audit vulnerability scan
         run: |
