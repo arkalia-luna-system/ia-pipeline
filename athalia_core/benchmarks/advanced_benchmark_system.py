@@ -708,14 +708,14 @@ class AdvancedBenchmarkSystem:
                 .status-warning { color: #ffc107; }
                 .status-error { color: #dc3545; }
                 .footer { text-align: center; padding: 20px; color: #666; border-top: 1px solid #eee; }
-            </style>
-        </head>
-        <body>
-            <div class="container">
-                <div class="header">
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
                     <h1>🚀 Benchmarks Athalia</h1>
                     <p>Rapport de performance et qualité - {timestamp}</p>
-                </div>
+        </div>
 
                 <div class="content">
                     <div class="score-grid">
@@ -723,41 +723,41 @@ class AdvancedBenchmarkSystem:
                             <h3>Score Global</h3>
                             <div class="score-value">{global_score}</div>
                             <p>/ 100</p>
-                        </div>
+        </div>
                         <div class="score-card">
                             <h3>Performance</h3>
                             <div class="score-value">{perf_score}</div>
                             <p>/ 100</p>
-                        </div>
+                </div>
                         <div class="score-card">
                             <h3>Sécurité</h3>
                             <div class="score-value">{security_score}</div>
                             <p>/ 100</p>
-                        </div>
+                </div>
                         <div class="score-card">
                             <h3>Qualité Code</h3>
                             <div class="score-value">{quality_score}</div>
                             <p>/ 100</p>
-                        </div>
-                    </div>
+            </div>
+        </div>
 
                     <div class="chart-container">
                         <canvas id="benchmarkChart" width="400" height="200"></canvas>
-                    </div>
+            </div>
 
                     <div class="benchmark-details">
                         <h3>📊 Détails des Benchmarks</h3>
                         {benchmark_details}
-                    </div>
-                </div>
+            </div>
+        </div>
 
-                <div class="footer">
+        <div class="footer">
                     <p>Généré automatiquement par Athalia Benchmark System v12.0.0</p>
                     <p>Dernière mise à jour: {last_updated}</p>
-                </div>
-            </div>
+        </div>
+    </div>
 
-            <script>
+    <script>
                 // Graphique des scores
                 const ctx = document.getElementById('benchmarkChart').getContext('2d');
                 new Chart(ctx, {{
@@ -794,9 +794,9 @@ class AdvancedBenchmarkSystem:
                             }}
                         }}
                     }}
-                }});
-            </script>
-        </body>
+        }});
+    </script>
+</body>
         </html>
         """
 

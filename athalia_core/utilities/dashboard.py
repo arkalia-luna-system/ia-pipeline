@@ -11,7 +11,12 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-import yaml
+try:
+    import yaml  # type: ignore
+
+    yaml_module = yaml
+except ImportError:
+    yaml_module = None
 
 logger = logging.getLogger(__name__)
 
@@ -41,10 +46,10 @@ class Dashboard:
             "show_timestamps": True,
         }
 
-        if config_path:
+        if config_path and yaml_module:
             try:
                 with open(config_path, encoding="utf-8") as f:
-                    user_config = yaml.safe_load(f)
+                    user_config = yaml_module.safe_load(f)
                     default_config.update(user_config)
             except Exception as e:
                 logger.warning(
@@ -299,7 +304,7 @@ class Dashboard:
             <button id="refresh-btn">🔄 Actualiser</button>
         </div>
     </div>
-    
+
     <div class="dashboard-content">
         <div class="widgets-container">"""
         ]
@@ -312,13 +317,13 @@ class Dashboard:
         html_parts.append(
             """        </div>
     </div>
-    
+
     <div class="dashboard-footer">
         <p>Généré le """
             + datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             + """</p>
     </div>
-    
+
     <script>"""
             + js
             + """</script>
@@ -381,7 +386,6 @@ class Dashboard:
 
     def _generate_metrics_content(self, widget: dict[str, Any]) -> str:
         """Génère le contenu du widget métriques"""
-        data = widget.get("data", {})
         summary = widget.get("summary", {})
 
         html = "<div class='metrics-summary'>"
@@ -783,7 +787,7 @@ class DashboardGenerator:
 
     def collect_real_metrics(self) -> dict[str, Any]:
         """Collecte les vraies métriques du projet"""
-        metrics = {}
+        metrics: dict[str, Any] = {}
 
         try:
             # Dossiers à exclure
@@ -858,21 +862,33 @@ class DashboardGenerator:
 
             # Calculer la complexité moyenne (estimation)
             if python_files:
-                metrics["avg_complexity"] = round(total_lines / len(python_files), 2)
+                metrics["avg_complexity"] = float(
+                    round(total_lines / len(python_files), 2)
+                )
             else:
-                metrics["avg_complexity"] = 0
+                metrics["avg_complexity"] = 0.0
 
             # Compter les fonctions et classes (estimation réaliste)
-            metrics["estimated_functions"] = round(
-                total_lines / 20
+            metrics["estimated_functions"] = int(
+                round(total_lines / 20)
             )  # Estimation réaliste
-            metrics["estimated_classes"] = round(
-                total_lines / 100
+            metrics["estimated_classes"] = int(
+                round(total_lines / 100)
             )  # Estimation réaliste
 
         except Exception as e:
             logger.error(f"Erreur collecte métriques: {e}")
-            metrics = {"error": str(e)}
+            metrics = {
+                "error": str(e),
+                "python_files": 0,
+                "lines_of_code": 0,
+                "test_files": 0,
+                "documentation_files": 0,
+                "dependencies": 0,
+                "avg_complexity": 0,
+                "estimated_functions": 0,
+                "estimated_classes": 0,
+            }
 
         return metrics
 
@@ -891,9 +907,9 @@ class DashboardGenerator:
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>📊 Dashboard Analytics Réel - Athalia</title>
     <style>
-        body {{ 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 20px; 
+                body {{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #333;
             min-height: 100vh;
@@ -971,7 +987,7 @@ class DashboardGenerator:
 
         <div class="summary">
             <h2>📈 Résumé du Projet</h2>
-            <p>Ce dashboard affiche les <strong>vraies métriques</strong> collectées directement depuis votre projet Athalia. 
+            <p>Ce dashboard affiche les <strong>vraies métriques</strong> collectées directement depuis votre projet Athalia.
             Toutes les données sont calculées en temps réel et reflètent l'état actuel de votre codebase.</p>
         </div>
 
