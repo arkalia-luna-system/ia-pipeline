@@ -19,7 +19,7 @@ __all__ = [
     "RobustAI",
     "RobustAIEnhanced",
     "SecurityError",
-    "validate_and_run",
+    "validateand_run",
     "query_qwen",
 ]
 
