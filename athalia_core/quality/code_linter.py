@@ -21,7 +21,7 @@ def secure_run_command(command: list[str], **kwargs: Any) -> Any:
         # Fallback sécurisé avec subprocess
         safe_kwargs = {"shell": False, "check": False}
         safe_kwargs.update(kwargs)
-        return subprocess.run(command, **safe_kwargs)
+        return subprocess.run(command, **safe_kwargs)  # type: ignore
 
 
 try:
