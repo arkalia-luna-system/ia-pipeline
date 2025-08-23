@@ -36,6 +36,7 @@ except ImportError:
             pass
 
         def validateand_run(command: list[str], **kwargs: Any):
+
             # Paramètres de sécurité minimaux
             safe_kwargs = {"shell": False, "check": False}
             safe_kwargs.update(kwargs)
