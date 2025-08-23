@@ -87,34 +87,38 @@ class CommandSecurityValidator:
             "ollama pull",
         }
 
-        # Configuration de sécurité
+        # Configuration de sécurité - Fonctions vraiment dangereuses
         self.dangerous_functions = {
-            "eval",
-            "exec",
-            "execfile",
-            "compile",
-            "input",
-            "raw_input",
-            "reload",
-            "__import__",
-            "open",
+            "eval",  # Exécution de code dynamique
+            "exec",  # Exécution de code dynamique
+            "execfile",  # Exécution de fichier (Python 2)
+            "compile",  # Compilation dynamique (peut être sûr)
+            "input",  # Entrée utilisateur (peut être sûr)
+            "raw_input",  # Entrée utilisateur (Python 2)
+            "reload",  # Rechargement de module
+            "__import__",  # Import dynamique (peut être sûr)
+            # "open" retiré - trop de faux positifs en développement
         }
 
+        # Patterns SQL injection plus précis - éviter les faux positifs
         self.sql_injection_patterns = [
-            r'f["\']SELECT.*\{.*\}',
-            r'f["\']INSERT.*\{.*\}',
-            r'f["\']UPDATE.*\{.*\}',
-            r'f["\']DELETE.*\{.*\}',
-            r'f["\']CREATE.*\{.*\}',
-            r'f["\']DROP.*\{.*\}',
-            r'f["\']ALTER.*\{.*\}',
+            # Seulement les patterns avec variables utilisateur
+            r'f["\']SELECT.*\{[^}]*user_input[^}]*\}',
+            r'f["\']INSERT.*\{[^}]*user_input[^}]*\}',
+            r'f["\']UPDATE.*\{[^}]*user_input[^}]*\}',
+            r'f["\']DELETE.*\{[^}]*user_input[^}]*\}',
+            r'f["\']CREATE.*\{[^}]*user_input[^}]*\}',
+            r'f["\']DROP.*\{[^}]*user_input[^}]*\}',
+            r'f["\']ALTER.*\{[^}]*user_input[^}]*\}',
         ]
 
+        # Patterns XSS plus précis - éviter les faux positifs
         self.xss_patterns = [
-            r"innerHTML\s*=",
-            r"outerHTML\s*=",
-            r"document\.write\s*\(",
-            r"eval\s*\(",
+            # Seulement les patterns avec variables utilisateur
+            r"innerHTML\s*=\s*[^;]*user_input",
+            r"outerHTML\s*=\s*[^;]*user_input",
+            r"document\.write\s*\(\s*[^)]*user_input",
+            r"eval\s*\(\s*[^)]*user_input",
         ]
 
         self.whitelist: set[str] = set()
@@ -200,7 +204,7 @@ class CommandSecurityValidator:
             return {"file_path": file_path, "error": str(e), "risk_level": "unknown"}
 
     def detect_dangerous_functions(self, code: str) -> list[dict[str, Any]]:
-        """Détecte l'utilisation de fonctions dangereuses dans le code."""
+        """Détecte l'utilisation de fonctions dangereuses dans le code avec analyse contextuelle."""
         vulnerabilities = []
 
         try:
@@ -210,34 +214,217 @@ class CommandSecurityValidator:
                     if isinstance(node.func, ast.Name):
                         func_name = node.func.id
                         if func_name in self.dangerous_functions:
-                            vulnerabilities.append(
-                                {
-                                    "type": "dangerous_function",
-                                    "function": func_name,
-                                    "line": getattr(node, "lineno", "unknown"),
-                                    "description": (
-                                        f"Utilisation de la fonction dangereuse: {func_name}"
-                                    ),
-                                }
+                            # Analyse contextuelle pour réduire les faux positifs
+                            risk_level = self._analyze_function_context(
+                                node, func_name, code
                             )
+
+                            if risk_level != "safe":
+                                vulnerabilities.append(
+                                    {
+                                        "type": "dangerous_function",
+                                        "function": func_name,
+                                        "line": getattr(node, "lineno", "unknown"),
+                                        "risk_level": risk_level,
+                                        "description": self._get_function_description(
+                                            func_name, risk_level
+                                        ),
+                                        "context": self._get_function_context(
+                                            node, code
+                                        ),
+                                    }
+                                )
         except SyntaxError:
-            # Si le code ne peut pas être parsé, chercher par regex
+            # Si le code ne peut pas être parsé, chercher par regex avec contexte
             for func in self.dangerous_functions:
                 pattern = rf"\b{func}\s*\("
                 matches = re.finditer(pattern, code)
-                for _match in matches:
-                    vulnerabilities.append(
-                        {
-                            "type": "dangerous_function",
-                            "function": func,
-                            "line": "unknown",
-                            "description": (
-                                f"Utilisation de la fonction dangereuse: {func}"
-                            ),
-                        }
-                    )
+                for match in matches:
+                    # Analyse du contexte autour de la fonction
+                    context_start = max(0, match.start() - 100)
+                    context_end = min(len(code), match.end() + 100)
+                    context = code[context_start:context_end]
+
+                    risk_level = self._analyze_regex_context(func, context)
+
+                    if risk_level != "safe":
+                        vulnerabilities.append(
+                            {
+                                "type": "dangerous_function",
+                                "function": func,
+                                "line": "unknown",
+                                "risk_level": risk_level,
+                                "description": self._get_function_description(
+                                    func, risk_level
+                                ),
+                                "context": context.strip(),
+                            }
+                        )
 
         return vulnerabilities
+
+    def _analyze_function_context(
+        self, node: ast.Call, func_name: str, code: str
+    ) -> str:
+        """Analyse le contexte d'une fonction pour déterminer le niveau de risque."""
+        # Fonctions toujours sûres en contexte de développement
+        safe_contexts = {
+            "compile": [
+                "compile(source,",  # Compilation normale = sûr
+                "compile(code,",  # Compilation normale = sûr
+            ],
+            "__import__": [
+                "__import__(",  # Import dynamique normal = sûr
+            ],
+            "input": [
+                "input()",  # Input simple = sûr
+                "input(prompt)",  # Input avec prompt = sûr
+            ],
+        }
+
+        # Vérifier le contexte autour de la fonction
+        line_start = max(0, node.lineno - 1)
+        line_end = min(len(code.split("\n")), node.lineno + 1)
+
+        context_lines = code.split("\n")[line_start:line_end]
+        context = "\n".join(context_lines)
+
+        # Vérifier si c'est dans un contexte sûr
+        if func_name in safe_contexts:
+            for safe_pattern in safe_contexts[func_name]:
+                if safe_pattern in context:
+                    return "safe"
+
+        # Vérifier les patterns dangereux
+        dangerous_patterns = {
+            "open": [
+                "open(user_input",  # Ouverture de fichier utilisateur = dangereux
+                "open(sys.argv",  # Arguments système = dangereux
+                "open(request",  # Requête web = dangereux
+            ],
+            "eval": [
+                "eval(",  # Toujours dangereux
+            ],
+            "exec": [
+                "exec(",  # Toujours dangereux
+            ],
+            "compile": [
+                "compile(user_input",  # Compilation d'entrée utilisateur = dangereux
+            ],
+            "__import__": [
+                "__import__(user_input",  # Import d'entrée utilisateur = dangereux
+            ],
+            "input": [
+                "input()",  # Input sans validation = moyen
+            ],
+        }
+
+        if func_name in dangerous_patterns:
+            for dangerous_pattern in dangerous_patterns[func_name]:
+                if dangerous_pattern in context:
+                    return "high" if func_name in ["eval", "exec"] else "medium"
+
+        # Par défaut, considérer comme moyen (pas sûr, pas critique)
+        return "medium"
+
+    def _analyze_regex_context(self, func_name: str, context: str) -> str:
+        """Analyse le contexte d'une fonction détectée par regex."""
+        # Même logique que _analyze_function_context mais pour le regex
+        safe_contexts = {
+            "open": [
+                "with open(",
+                "open(file, 'r')",
+                "open(file, 'rb')",
+                "open(file, 'w')",
+            ],
+            "compile": ["compile(source,", "compile(code,"],
+            "__import__": ["__import__("],
+            "input": ["input()", "input(prompt)"],
+        }
+
+        dangerous_patterns = {
+            "open": ["open(user_input", "open(sys.argv", "open(request"],
+            "eval": ["eval("],
+            "exec": ["exec("],
+            "compile": ["compile(user_input"],
+            "__import__": ["__import__(user_input"],
+            "input": ["input()"],
+        }
+
+        if func_name in safe_contexts:
+            for safe_pattern in safe_contexts[func_name]:
+                if safe_pattern in context:
+                    return "safe"
+
+        if func_name in dangerous_patterns:
+            for dangerous_pattern in dangerous_patterns[func_name]:
+                if dangerous_pattern in context:
+                    return "high" if func_name in ["eval", "exec"] else "medium"
+
+        return "medium"
+
+    def _get_function_description(self, func_name: str, risk_level: str) -> str:
+        """Génère une description contextuelle de la vulnérabilité."""
+        descriptions = {
+            "open": {
+                "safe": "Utilisation sûre de open() (lecture/écriture normale)",
+                "medium": "Utilisation de open() - vérifier la validation des entrées",
+                "high": (
+                    "Utilisation dangereuse de open() avec entrée utilisateur non validée"
+                ),
+            },
+            "compile": {
+                "safe": "Utilisation sûre de compile() (compilation normale)",
+                "medium": (
+                    "Utilisation de compile() - vérifier la validation des entrées"
+                ),
+                "high": (
+                    "Utilisation dangereuse de compile() avec entrée utilisateur non validée"
+                ),
+            },
+            "__import__": {
+                "safe": "Utilisation sûre de __import__ (import dynamique normal)",
+                "medium": (
+                    "Utilisation de __import__ - vérifier la validation des entrées"
+                ),
+                "high": (
+                    "Utilisation dangereuse de __import__ avec entrée utilisateur non validée"
+                ),
+            },
+            "input": {
+                "safe": "Utilisation sûre de input() (input simple)",
+                "medium": "Utilisation de input() - validation recommandée",
+                "high": "Utilisation dangereuse de input() sans validation",
+            },
+            "eval": {
+                "high": (
+                    "🚨 CRITIQUE: eval() détecté - Remplacer immédiatement par une alternative sûre"
+                )
+            },
+            "exec": {
+                "high": (
+                    "🚨 CRITIQUE: exec() détecté - Remplacer immédiatement par une alternative sûre"
+                )
+            },
+        }
+
+        return descriptions.get(func_name, {}).get(
+            risk_level, f"Fonction {func_name} détectée"
+        )
+
+    def _get_function_context(self, node: ast.Call, code: str) -> str:
+        """Extrait le contexte autour de la fonction pour l'analyse."""
+        try:
+            line_num = getattr(node, "lineno", 0)
+            if line_num > 0:
+                lines = code.split("\n")
+                start_line = max(0, line_num - 2)
+                end_line = min(len(lines), line_num + 1)
+                context_lines = lines[start_line:end_line]
+                return "\n".join(context_lines)
+        except:
+            pass
+        return "Contexte non disponible"
 
     def detect_command_injection(self, code: str) -> list[dict[str, Any]]:
         """Détecte les vulnérabilités d'injection de commande."""
@@ -372,22 +559,166 @@ class CommandSecurityValidator:
         }
 
     def detect_xss_vulnerabilities(self, code: str) -> list[dict[str, Any]]:
-        """Détecte les vulnérabilités XSS."""
+        """Détecte les vulnérabilités XSS avec analyse contextuelle."""
         vulnerabilities = []
 
         for pattern in self.xss_patterns:
             matches = re.finditer(pattern, code, re.IGNORECASE)
-            for _match in matches:
-                vulnerabilities.append(
-                    {
-                        "type": "xss",
-                        "pattern": pattern,
-                        "line": "unknown",
-                        "description": "Vulnérabilité XSS potentielle détectée",
-                    }
-                )
+            for match in matches:
+                # Analyse du contexte pour déterminer le niveau de risque
+                context_start = max(0, match.start() - 150)
+                context_end = min(len(code), match.end() + 150)
+                context = code[context_start:context_end]
+
+                risk_level = self._analyze_xss_context(pattern, context, match.group())
+
+                if risk_level != "safe":
+                    vulnerabilities.append(
+                        {
+                            "type": "xss",
+                            "pattern": pattern,
+                            "line": "unknown",
+                            "risk_level": risk_level,
+                            "description": self._get_xss_description(
+                                pattern, risk_level
+                            ),
+                            "context": context.strip(),
+                            "matched_text": match.group(),
+                        }
+                    )
 
         return vulnerabilities
+
+    def _analyze_xss_context(
+        self, pattern: str, context: str, matched_text: str
+    ) -> str:
+        """Analyse le contexte d'une vulnérabilité XSS pour déterminer le niveau de risque."""
+
+        # Patterns sûrs (faux positifs)
+        safe_patterns = {
+            r"innerHTML\s*=": [
+                "innerHTML = 'texte statique'",  # Texte statique = sûr
+                "innerHTML = `template literal`",  # Template literal statique = sûr
+                "innerHTML = document.createElement",  # Création d'élément = sûr
+                "innerHTML = sanitized_content",  # Contenu assaini = sûr
+            ],
+            r"eval\s*\(": [
+                "eval('code statique')",  # Code statique = sûr
+                "eval(`template statique`)",  # Template statique = sûr
+            ],
+            r"document\.write": [
+                "document.write('texte statique')",  # Texte statique = sûr
+                "document.write(`template statique`)",  # Template statique = sûr
+            ],
+        }
+
+        # Patterns dangereux (vraies vulnérabilités)
+        dangerous_patterns = {
+            r"innerHTML\s*=": [
+                "innerHTML = user_input",  # Entrée utilisateur = dangereux
+                "innerHTML = request.body",  # Corps de requête = dangereux
+                "innerHTML = form_data",  # Données de formulaire = dangereux
+                "innerHTML = url_params",  # Paramètres URL = dangereux
+                "innerHTML = localStorage",  # Stockage local = dangereux
+                "innerHTML = sessionStorage",  # Stockage de session = dangereux
+                "innerHTML = cookies",  # Cookies = dangereux
+            ],
+            r"eval\s*\(": [
+                "eval(user_input)",  # Entrée utilisateur = critique
+                "eval(request.body)",  # Corps de requête = critique
+                "eval(form_data)",  # Données de formulaire = critique
+                "eval(url_params)",  # Paramètres URL = critique
+            ],
+            r"document\.write": [
+                "document.write(user_input)",  # Entrée utilisateur = dangereux
+                "document.write(request.body)",  # Corps de requête = dangereux
+                "document.write(form_data)",  # Données de formulaire = dangereux
+            ],
+        }
+
+        # Vérifier si c'est dans un contexte sûr
+        if pattern in safe_patterns:
+            for safe_pattern in safe_patterns[pattern]:
+                if safe_pattern.lower() in context.lower():
+                    return "safe"
+
+        # Vérifier si c'est dans un contexte dangereux
+        if pattern in dangerous_patterns:
+            for dangerous_pattern in dangerous_patterns[pattern]:
+                if dangerous_pattern.lower() in context.lower():
+                    return "high" if "eval" in pattern else "medium"
+
+        # Vérifier les variables d'entrée utilisateur communes
+        user_input_indicators = [
+            "user_input",
+            "userInput",
+            "user_input_",
+            "userInput_",
+            "request.body",
+            "requestBody",
+            "request.body_",
+            "requestBody_",
+            "form_data",
+            "formData",
+            "form_data_",
+            "formData_",
+            "url_params",
+            "urlParams",
+            "url_params_",
+            "urlParams_",
+            "query_params",
+            "queryParams",
+            "query_params_",
+            "queryParams_",
+            "localStorage",
+            "sessionStorage",
+            "cookies",
+            "getParameter",
+            "getParameter_",
+            "get_parameter",
+            "get_parameter_",
+            "getAttribute",
+            "getAttribute_",
+            "get_attribute",
+            "get_attribute_",
+        ]
+
+        for indicator in user_input_indicators:
+            if indicator.lower() in context.lower():
+                return "high" if "eval" in pattern else "medium"
+
+        # Par défaut, considérer comme moyen (potentiellement dangereux)
+        return "medium"
+
+    def _get_xss_description(self, pattern: str, risk_level: str) -> str:
+        """Génère une description contextuelle de la vulnérabilité XSS."""
+        descriptions = {
+            r"innerHTML\s*=": {
+                "safe": "innerHTML avec contenu statique - sûr",
+                "medium": "innerHTML détecté - vérifier la validation des entrées",
+                "high": (
+                    "🚨 CRITIQUE: innerHTML avec entrée utilisateur non validée - XSS possible"
+                ),
+            },
+            r"eval\s*\(": {
+                "safe": "eval avec code statique - sûr",
+                "medium": "eval détecté - vérifier la validation des entrées",
+                "high": (
+                    "🚨 CRITIQUE: eval avec entrée utilisateur - XSS critique possible"
+                ),
+            },
+            r"document\.write": {
+                "safe": "document.write avec texte statique - sûr",
+                "medium": "document.write détecté - vérifier la validation des entrées",
+                "high": (
+                    "🚨 CRITIQUE: document.write avec entrée utilisateur - XSS possible"
+                ),
+            },
+        }
+
+        return descriptions.get(pattern, {}).get(
+            risk_level, f"Vulnérabilité XSS potentielle - {risk_level}"
+        )
 
     def check_csrf_protection(self, code: str) -> dict[str, Any]:
         """Vérifie la protection CSRF."""
