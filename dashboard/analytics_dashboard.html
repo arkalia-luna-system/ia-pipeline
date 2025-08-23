@@ -85,6 +85,38 @@
             color: #666;
             border-top: 1px solid #eee;
         }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
     </style>
 </head>
 
@@ -93,6 +125,14 @@
         <div class="header">
             <h1>📊 Dashboard Analytics Réel - Athalia</h1>
             <p>Métriques collectées en temps réel - 2025-08-23 13:01:14</p>
+            <div style="margin-top: 20px;">
+                <a href="index.html" class="btn btn-secondary"
+                    style="text-decoration: none; display: inline-block; margin-right: 10px; background: #f8f9fa; color: #667eea; padding: 10px 20px; border-radius: 8px; border: 2px solid #667eea;">🏠
+                    Retour à l'Index</a>
+                <a href="unified_dashboard.html" class="btn btn-primary"
+                    style="text-decoration: none; display: inline-block; background: #667eea; color: white; padding: 10px 20px; border-radius: 8px;">🚀
+                    Dashboard Unifié</a>
+            </div>
         </div>
 
         <div class="summary">

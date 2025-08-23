@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,7 +33,7 @@
             padding: 30px;
             margin-bottom: 30px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
         .header h1 {
@@ -54,7 +55,7 @@
             padding: 30px;
             margin-bottom: 30px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
         .security-score {
@@ -130,7 +131,7 @@
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 25px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
         .security-card h3 {
@@ -145,7 +146,7 @@
             border-radius: 20px;
             padding: 30px;
             margin-bottom: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
         .recommendation-item {
@@ -224,7 +225,7 @@
             border-radius: 20px;
             padding: 30px;
             margin-bottom: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
         .footer {
@@ -271,11 +272,20 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
             <h1>🛡️ Dashboard Sécurité Athalia</h1>
             <p>Surveillance en temps réel de la sécurité du projet</p>
+            <div style="margin-top: 20px;">
+                <a href="../index.html" class="btn btn-secondary"
+                    style="text-decoration: none; display: inline-block; margin-right: 10px; background: #f8f9fa; color: #667eea; padding: 10px 20px; border-radius: 8px; border: 2px solid #667eea;">🏠
+                    Retour à l'Index</a>
+                <a href="../unified_dashboard.html" class="btn btn-primary"
+                    style="text-decoration: none; display: inline-block; background: #667eea; color: white; padding: 10px 20px; border-radius: 8px;">🚀
+                    Dashboard Unifié</a>
+            </div>
         </div>
 
         <div class="security-overview">
@@ -310,104 +320,104 @@
             <div class="security-card">
                 <h3>🔍 Validation des Commandes</h3>
                 <div id="commandValidationDetails">
-                    
-        <div class="metric-row">
-            <span class="metric-label">📁 Fichiers Scannés</span>
-            <span class="metric-value">8,447</span>
-        </div>
-        <div class="metric-row">
-            <span class="metric-label">🔍 Vulnérabilités Détectées</span>
-            <span class="metric-value">273</span>
-        </div>
-        <div class="metric-row">
-            <span class="metric-label">⚠️ Niveau de Risque</span>
-            <span class="metric-value risk-high">HIGH</span>
-        </div>
-        <div class="metric-row">
-            <span class="metric-label">📊 Ratio Vuln/Fichier</span>
-            <span class="metric-value">32.3‰</span>
-        </div>
-        
+
+                    <div class="metric-row">
+                        <span class="metric-label">📁 Fichiers Scannés</span>
+                        <span class="metric-value">8,447</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">🔍 Vulnérabilités Détectées</span>
+                        <span class="metric-value">273</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">⚠️ Niveau de Risque</span>
+                        <span class="metric-value risk-high">HIGH</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">📊 Ratio Vuln/Fichier</span>
+                        <span class="metric-value">32.3‰</span>
+                    </div>
+
                 </div>
             </div>
 
             <div class="security-card">
                 <h3>📝 Analyse de Code</h3>
                 <div id="codeAnalysisDetails">
-                    
-        <div class="metric-row">
-            <span class="metric-label">🐍 Fichiers Python</span>
-            <span class="metric-value">336</span>
-        </div>
-        <div class="metric-row">
-            <span class="metric-label">📝 Lignes de Code</span>
-            <span class="metric-value">82,762</span>
-        </div>
-        <div class="metric-row">
-            <span class="metric-label">🧪 Tests Collectés</span>
-            <span class="metric-value">1,774</span>
-        </div>
-        <div class="metric-row">
-            <span class="metric-label">📚 Documentation</span>
-            <span class="metric-value">275 fichiers</span>
-        </div>
-        
+
+                    <div class="metric-row">
+                        <span class="metric-label">🐍 Fichiers Python</span>
+                        <span class="metric-value">336</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">📝 Lignes de Code</span>
+                        <span class="metric-value">82,762</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">🧪 Tests Collectés</span>
+                        <span class="metric-value">1,774</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">📚 Documentation</span>
+                        <span class="metric-value">275 fichiers</span>
+                    </div>
+
                 </div>
             </div>
 
             <div class="security-card">
                 <h3>💾 Cache et Performance</h3>
                 <div id="cacheSecurityDetails">
-                    
-        <div class="metric-row">
-            <span class="metric-label">🎯 Hits</span>
-            <span class="metric-value">1,247</span>
-        </div>
-        <div class="metric-row">
-            <span class="metric-label">❌ Misses</span>
-            <span class="metric-value">89</span>
-        </div>
-        <div class="metric-row">
-            <span class="metric-label">📊 Total Requests</span>
-            <span class="metric-value">1,336</span>
-        </div>
-        <div class="metric-row">
-            <span class="metric-label">⚡ Hit Rate</span>
-            <span class="metric-value">9330.0%</span>
-        </div>
-        <div class="metric-row">
-            <span class="metric-label">💾 Cache Size</span>
-            <span class="metric-value">2,048,576 bytes</span>
-        </div>
-        
+
+                    <div class="metric-row">
+                        <span class="metric-label">🎯 Hits</span>
+                        <span class="metric-value">1,247</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">❌ Misses</span>
+                        <span class="metric-value">89</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">📊 Total Requests</span>
+                        <span class="metric-value">1,336</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">⚡ Hit Rate</span>
+                        <span class="metric-value">9330.0%</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">💾 Cache Size</span>
+                        <span class="metric-value">2,048,576 bytes</span>
+                    </div>
+
                 </div>
             </div>
 
             <div class="security-card">
                 <h3>📊 Métriques de Sécurité</h3>
                 <div id="securityMetricsDetails">
-                    
-        <div class="metric-row">
-            <span class="metric-label">🛡️ Score Global</span>
-            <span class="metric-value score-85.3">85.3/100</span>
-        </div>
-        <div class="metric-row">
-            <span class="metric-label">🚨 Vulnérabilités Critiques</span>
-            <span class="metric-value risk-high">7</span>
-        </div>
-        <div class="metric-row">
-            <span class="metric-label">⚠️ Vulnérabilités Moyennes</span>
-            <span class="metric-value risk-medium">266</span>
-        </div>
-        <div class="metric-row">
-            <span class="metric-label">📊 Total Vulnérabilités</span>
-            <span class="metric-value">273</span>
-        </div>
-        <div class="metric-row">
-            <span class="metric-label">⚡ Athalia Components</span>
-            <span class="metric-value">✅ Disponibles</span>
-        </div>
-        
+
+                    <div class="metric-row">
+                        <span class="metric-label">🛡️ Score Global</span>
+                        <span class="metric-value score-85.3">85.3/100</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">🚨 Vulnérabilités Critiques</span>
+                        <span class="metric-value risk-high">7</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">⚠️ Vulnérabilités Moyennes</span>
+                        <span class="metric-value risk-medium">266</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">📊 Total Vulnérabilités</span>
+                        <span class="metric-value">273</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">⚡ Athalia Components</span>
+                        <span class="metric-value">✅ Disponibles</span>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -419,7 +429,17 @@
 
         <div class="recommendations">
             <h3>💡 Recommandations de Sécurité</h3>
-            <div class="recommendation-item recommendation-excellent"><span class="rec-icon">✅</span><span class="rec-text">✅ EXCELLENT: Score de sécurité élevé - Maintenir les bonnes pratiques</span></div><div class="recommendation-item recommendation-critical"><span class="rec-icon">🚨</span><span class="rec-text">🚨 CRITIQUE: Vulnérabilités critiques détectées - Correction immédiate requise</span></div><div class="recommendation-item recommendation-warning"><span class="rec-icon">⚠️</span><span class="rec-text">⚠️ ATTENTION: Nombre élevé de vulnérabilités moyennes - Plan de correction nécessaire</span></div><div class="recommendation-item recommendation-info"><span class="rec-icon">💡</span><span class="rec-text">📚 DOCUMENTATION: Consulter le guide de sécurité Athalia pour plus d'informations</span></div>
+            <div class="recommendation-item recommendation-excellent"><span class="rec-icon">✅</span><span
+                    class="rec-text">✅ EXCELLENT: Score de sécurité élevé - Maintenir les bonnes pratiques</span></div>
+            <div class="recommendation-item recommendation-critical"><span class="rec-icon">🚨</span><span
+                    class="rec-text">🚨 CRITIQUE: Vulnérabilités critiques détectées - Correction immédiate
+                    requise</span></div>
+            <div class="recommendation-item recommendation-warning"><span class="rec-icon">⚠️</span><span
+                    class="rec-text">⚠️ ATTENTION: Nombre élevé de vulnérabilités moyennes - Plan de correction
+                    nécessaire</span></div>
+            <div class="recommendation-item recommendation-info"><span class="rec-icon">💡</span><span
+                    class="rec-text">📚 DOCUMENTATION: Consulter le guide de sécurité Athalia pour plus
+                    d'informations</span></div>
         </div>
 
         <div class="footer">
@@ -467,4 +487,5 @@
         }, 300000);
     </script>
 </body>
+
 </html>

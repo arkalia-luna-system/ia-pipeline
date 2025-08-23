@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +32,7 @@
             padding: 30px;
             margin-bottom: 30px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
         .header h1 {
@@ -52,7 +53,7 @@
             border-radius: 20px;
             padding: 30px;
             margin-bottom: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
         .stats-title {
@@ -100,7 +101,7 @@
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
 
@@ -243,11 +244,18 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
             <h1>🎓 Tutoriels Interactifs Athalia</h1>
             <p>Apprenez Athalia étape par étape avec des tutoriels interactifs personnalisés</p>
+            <div style="margin-top: 20px;">
+                <a href="../index.html" class="btn btn-secondary"
+                    style="text-decoration: none; display: inline-block; margin-right: 10px;">🏠 Retour à l'Index</a>
+                <a href="../unified_dashboard.html" class="btn btn-primary"
+                    style="text-decoration: none; display: inline-block;">🚀 Dashboard Unifié</a>
+            </div>
         </div>
 
         <div class="stats-container">
@@ -273,14 +281,15 @@
         </div>
 
         <div class="tutorials-grid">
-            
+
             <div class="tutorial-card" id="tutorial-athalia_mastery">
                 <div class="tutorial-header">
                     <div class="tutorial-title">🚀 Maîtrise Complète d'Athalia</div>
                     <div class="tutorial-difficulty difficulty-avancé">Avancé</div>
                 </div>
 
-                <div class="tutorial-description">Devenez un expert d'Athalia en suivant ce parcours interactif complet</div>
+                <div class="tutorial-description">Devenez un expert d'Athalia en suivant ce parcours interactif complet
+                </div>
 
                 <div class="tutorial-meta">
                     <div class="tutorial-stats">
@@ -304,7 +313,7 @@
                     </button>
                 </div>
             </div>
-            
+
             <div class="tutorial-card" id="tutorial-devops_expert">
                 <div class="tutorial-header">
                     <div class="tutorial-title">🔧 Expert DevOps avec Athalia</div>
@@ -335,7 +344,7 @@
                     </button>
                 </div>
             </div>
-            
+
             <div class="tutorial-card" id="tutorial-plugin_development">
                 <div class="tutorial-header">
                     <div class="tutorial-title">🔌 Développement de Plugins Avancés</div>
@@ -366,7 +375,7 @@
                     </button>
                 </div>
             </div>
-            
+
         </div>
 
         <div class="footer">
@@ -381,21 +390,35 @@
         let userProgress = {};
 
         function startTutorial(tutorialId) {
-            // Simuler le démarrage d'un tutoriel
-            alert(`🚀 Démarrage du tutoriel ${tutorialId} en cours...`);
+            // Navigation vers le tutoriel spécifique
+            const tutorialUrls = {
+                'athalia_mastery': '../docs/DEVELOPER/GUIDES/MAITRISE_ATHALIA_COMPLETE.md',
+                'devops_expert': '../docs/DEVELOPER/GUIDES/EXPERT_DEVOPS_ATHALIA.md',
+                'plugin_development': '../docs/DEVELOPER/GUIDES/DEVELOPPEMENT_PLUGINS_AVANCES.md'
+            };
 
-            // Ici, on pourrait appeler l'API pour démarrer le tutoriel
-            if (!userProgress[tutorialId]) {
-                userProgress[tutorialId] = {
-                    currentStep: 0,
-                    completedSteps: [],
-                    score: 0,
-                    startedAt: new Date().toISOString()
-                };
+            const url = tutorialUrls[tutorialId];
+            if (url) {
+                // Ouvrir dans un nouvel onglet
+                window.open(url, '_blank');
+
+                // Mettre à jour le progrès local
+                if (!userProgress[tutorialId]) {
+                    userProgress[tutorialId] = {
+                        currentStep: 0,
+                        completedSteps: [],
+                        score: 0,
+                        startedAt: new Date().toISOString()
+                    };
+                }
+
+                // Mettre à jour l'interface
+                updateTutorialProgress(tutorialId);
+
+                console.log(`🚀 Tutoriel ${tutorialId} lancé vers ${url}`);
+            } else {
+                alert(`⚠️ Tutoriel ${tutorialId} non trouvé`);
             }
-
-            // Mettre à jour l'interface
-            updateTutorialProgress(tutorialId);
         }
 
         function updateTutorialProgress(tutorialId) {
@@ -421,9 +444,10 @@
         }
 
         // Initialisation
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             console.log('🎓 Système de tutoriels interactifs chargé !');
         });
     </script>
 </body>
+
 </html>
