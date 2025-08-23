@@ -35,7 +35,7 @@ except ImportError:
         class SecurityError(Exception):
             pass
 
-        def validateand_run(command, **kwargs):
+        def validateand_run(command: list[str], **kwargs: Any):
             # Paramètres de sécurité minimaux
             safe_kwargs = {"shell": False, "check": False}
             safe_kwargs.update(kwargs)
@@ -45,7 +45,7 @@ except ImportError:
 logger = logging.getLogger(__name__)
 
 # Module de tests automatiques pour Athalia
-# Génération automatique de tests unitaires et d'intégration'
+# Génération automatique de tests unitaires et d'intégration
 
 
 class AutoTester:
