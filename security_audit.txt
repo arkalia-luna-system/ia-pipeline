@@ -1,0 +1,231 @@
+Audit de sécurité - Problèmes détectés:
+- Clé API trouvée dans test_resources.py
+- Mot de passe en clair dans _urls.py
+- Clé API trouvée dans dir_util.py
+- Clé API trouvée dans py311.py
+- Clé API trouvée dans __init__.py
+- Clé API trouvée dans windows.py
+- Clé API trouvée dans test_pyprojecttoml.py
+- Mot de passe en clair dans misc.py
+- Clé API trouvée dans windows.py
+- Clé API trouvée dans progress.py
+- Clé API trouvée dans pyopenssl.py
+- Clé API trouvée dans ssl_.py
+- Clé API trouvée dans labels.py
+- Clé API trouvée dans __init__.py
+- Clé API trouvée dans bricks.py
+- Clé API trouvée dans api.py
+- Clé API trouvée dans polling.py
+- Clé API trouvée dans pyopenssl.py
+- Clé API trouvée dans ssl_.py
+- Mot de passe en clair dans httpclient_test.py
+- Clé API trouvée dans process_test.py
+- Clé API trouvée dans twisted_test.py
+- Clé API trouvée dans util.py
+- Clé API trouvée dans circlerefs_test.py
+- Clé API trouvée dans gen_test.py
+- Mot de passe en clair dans curl_httpclient_test.py
+- Clé API trouvée dans ioloop_test.py
+- Clé API trouvée dans simple_httpclient_test.py
+- Clé API trouvée dans websocket_test.py
+- Clé API trouvée dans tcpclient_test.py
+- Clé API trouvée dans netutil_test.py
+- Clé API trouvée dans tcpserver_test.py
+- Clé API trouvée dans iostream_test.py
+- Clé API trouvée dans core.py
+- Clé API trouvée dans results.py
+- Clé API trouvée dans _cocoa_builtins.py
+- Clé API trouvée dans _julia_builtins.py
+- Clé API trouvée dans _lasso_builtins.py
+- Clé API trouvée dans _lilypond_builtins.py
+- Clé API trouvée dans _sourcemod_builtins.py
+- Clé API trouvée dans automation.py
+- Clé API trouvée dans igor.py
+- Clé API trouvée dans macaulay2.py
+- Clé API trouvée dans ncl.py
+- Clé API trouvée dans pascal.py
+- Clé API trouvée dans wgsl.py
+- Clé API trouvée dans test_other.py
+- Clé API trouvée dans orc.py
+- Clé API trouvée dans core.py
+- Clé API trouvée dans conftest.py
+- Clé API trouvée dans test_metadata.py
+- Clé API trouvée dans _pswindows.py
+- Clé API trouvée dans _common.py
+- Clé API trouvée dans _psosx.py
+- Clé API trouvée dans _psbsd.py
+- Clé API trouvée dans _psaix.py
+- Clé API trouvée dans _pslinux.py
+- Clé API trouvée dans _pssunos.py
+- Clé API trouvée dans test_linux.py
+- Appel système potentiellement dangereux dans __init__.py
+- Clé API trouvée dans test_windows.py
+- Clé API trouvée dans text_format.py
+- Clé API trouvée dans decoder.py
+- Clé API trouvée dans testing_refleaks.py
+- Clé API trouvée dans completion.py
+- Clé API trouvée dans windows.py
+- Clé API trouvée dans pyparsing.py
+- Appel système potentiellement dangereux dans ImageShow.py
+- Clé API trouvée dans PsdImagePlugin.py
+- Clé API trouvée dans ImageFont.py
+- Appel système potentiellement dangereux dans __init__.py
+- Clé API trouvée dans extras.py
+- Clé API trouvée dans core.py
+- Clé API trouvée dans mrecords.py
+- Clé API trouvée dans test_core.py
+- Clé API trouvée dans test_deprecations.py
+- Clé API trouvée dans test_subclassing.py
+- Clé API trouvée dans test_extras.py
+- Clé API trouvée dans _add_newdocs.py
+- Clé API trouvée dans test_mem_overlap.py
+- Clé API trouvée dans test_simd.py
+- Clé API trouvée dans crackfortran.py
+- Appel système potentiellement dangereux dans diagnose.py
+- Clé API trouvée dans _arraysetops_impl.py
+- Clé API trouvée dans _utils.py
+- Clé API trouvée dans expr.py
+- Clé API trouvée dans series.py
+- Clé API trouvée dans dataframe.py
+- Clé API trouvée dans expr.py
+- Clé API trouvée dans expr_dt.py
+- Clé API trouvée dans expr_str.py
+- Clé API trouvée dans group_by.py
+- Clé API trouvée dans namespace.py
+- Clé API trouvée dans selectors.py
+- Clé API trouvée dans utils.py
+- Clé API trouvée dans executing.py
+- Clé API trouvée dans nodes.py
+- Clé API trouvée dans tables.py
+- Clé API trouvée dans parts.py
+- Clé API trouvée dans math2html.py
+- Clé API trouvée dans _html_base.py
+- Clé API trouvée dans __init__.py
+- Clé API trouvée dans ansitowin32_test.py
+- Clé API trouvée dans constants.py
+- Clé API trouvée dans joininggroup.py
+- Clé API trouvée dans tasklist.py
+- Clé API trouvée dans fixtures.py
+- Clé API trouvée dans test_git.py
+- Clé API trouvée dans checkstrformat.py
+- Clé API trouvée dans checkexpr.py
+- Clé API trouvée dans visitors.py
+- Clé API trouvée dans testtypegen.py
+- Clé API trouvée dans parser_block.py
+- Clé API trouvée dans fence.py
+- Clé API trouvée dans heading.py
+- Clé API trouvée dans lheading.py
+- Clé API trouvée dans list.py
+- Clé API trouvée dans state_block.py
+- Clé API trouvée dans imports.py
+- Clé API trouvée dans py311.py
+- Clé API trouvée dans constants.py
+- Clé API trouvée dans _htmlparser.py
+- Clé API trouvée dans progress.py
+- Clé API trouvée dans cacheprovider.py
+- Appel système potentiellement dangereux dans capture.py
+- Clé API trouvée dans structures.py
+- Clé API trouvée dans __init__.py
+- Clé API trouvée dans functional_validators.py
+- Clé API trouvée dans json_schema.py
+- Mot de passe en clair dans types.py
+- Clé API trouvée dans _generate_schema.py
+- Clé API trouvée dans class_validators.py
+- Clé API trouvée dans missing.py
+- Clé API trouvée dans generic.py
+- Clé API trouvée dans reshape.py
+- Clé API trouvée dans array_manager.py
+- Clé API trouvée dans _ranges.py
+- Clé API trouvée dans mask_ops.py
+- Clé API trouvée dans base.py
+- Clé API trouvée dans readers.py
+- Clé API trouvée dans python_parser.py
+- Clé API trouvée dans base_parser.py
+- Clé API trouvée dans style.py
+- Clé API trouvée dans test_nanops.py
+- Clé API trouvée dans test_hashing.py
+- Clé API trouvée dans test_dialect.py
+- Clé API trouvée dans test_textreader.py
+- Clé API trouvée dans test_dtypes_basic.py
+- Clé API trouvée dans test_common_basic.py
+- Clé API trouvée dans test_append.py
+- Clé API trouvée dans test_constructors.py
+- Clé API trouvée dans kwallet.py
+- Appel système potentiellement dangereux dans hooks.py
+- Appel système potentiellement dangereux dans interactiveshell.py
+- Appel système potentiellement dangereux dans page.py
+- Appel système potentiellement dangereux dans usage.py
+- Clé API trouvée dans code.py
+- Clé API trouvée dans test_paths.py
+- Clé API trouvée dans test_profile.py
+- Clé API trouvée dans qt_for_kernel.py
+- Clé API trouvée dans embed.py
+- Appel système potentiellement dangereux dans magics.py
+- Appel système potentiellement dangereux dans _process_common.py
+- Appel système potentiellement dangereux dans _process_win32.py
+- Appel système potentiellement dangereux dans _process_win32_controller.py
+- Appel système potentiellement dangereux dans terminal.py
+- Clé API trouvée dans test_module_paths.py
+- Clé API trouvée dans test_path.py
+- Clé API trouvée dans base.py
+- Clé API trouvée dans util.py
+- Clé API trouvée dans __init__.py
+- Clé API trouvée dans _asyncio.py
+- Mot de passe en clair dans datastructures.py
+- Mot de passe en clair dans url.py
+- Clé API trouvée dans app_debug.py
+- Mot de passe en clair dans general_hardcoded_password.py
+- Appel système potentiellement dangereux dans injection_shell.py
+- Clé API trouvée dans _single_threaded_agent_runtime.py
+- Clé API trouvée dans __init__.py
+- Clé API trouvée dans integration.py
+- Clé API trouvée dans authorization_server.py
+- Clé API trouvée dans authorization_server.py
+- Clé API trouvée dans requests.py
+- Clé API trouvée dans resource_protector.py
+- Clé API trouvée dans _cli.py
+- Clé API trouvée dans _fix.py
+- Clé API trouvée dans pip.py
+- Clé API trouvée dans requirement.py
+- Clé API trouvée dans columns.py
+- Clé API trouvée dans json.py
+- Clé API trouvée dans markdown.py
+- Clé API trouvée dans __init__.py
+- Clé API trouvée dans interface.py
+- Clé API trouvée dans pypi.py
+- Clé API trouvée dans _base_chat_agent.py
+- Clé API trouvée dans _task.py
+- Clé API trouvée dans _base_group_chat.py
+- Clé API trouvée dans _magentic_one_orchestrator.py
+- Clé API trouvée dans _agent.py
+- Clé API trouvée dans _task_runner_tool.py
+- Clé API trouvée dans _team.py
+- Clé API trouvée dans material_icon_names.py
+- Mot de passe en clair dans snowflake_connection.py
+- Mot de passe en clair dans sql_connection.py
+- Clé API trouvée dans empty.py
+- Clé API trouvée dans Skeleton_pb2.py
+- Mot de passe en clair dans connection_factory.py
+- Clé API trouvée dans runtime.py
+- Clé API trouvée dans local_disk_cache_storage.py
+- Clé API trouvée dans query_params.py
+- Clé API trouvée dans query_params_proxy.py
+- Clé API trouvée dans cache_storage_manager_config.py
+- Mot de passe en clair dans test_audit_intelligent.py
+- Appel système potentiellement dangereux dans test_audit_intelligent.py
+- Mot de passe en clair dans test_security.py
+- Clé API trouvée dans test_security.py
+- Mot de passe en clair dans test_security_auditor_complete.py
+- Clé API trouvée dans test_security_auditor_complete.py
+- Appel système potentiellement dangereux dans test_security_auditor_complete.py
+- Appel système potentiellement dangereux dans test_security_patterns.py
+- Mot de passe en clair dans test_security_comprehensive.py
+- Clé API trouvée dans test_security_comprehensive.py
+- Appel système potentiellement dangereux dans test_security_comprehensive.py
+- Appel système potentiellement dangereux dans test_security_validator.py
+- Mot de passe en clair dans test_security_validator_complete.py
+- Clé API trouvée dans test_security_validator_complete.py
+- Appel système potentiellement dangereux dans test_security_validator_complete.py
+- Appel système potentiellement dangereux dans security_auditor.py
+- Appel système potentiellement dangereux dans security_validator.py
+- Appel système potentiellement dangereux dans audit.py

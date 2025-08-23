@@ -304,12 +304,21 @@
                     <div class="progress-fill" style="width: 0.0%"></div>
                 </div>
 
-                <div style="display: flex; gap: 10px;">
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                     <button class="btn btn-primary" onclick="startTutorial('athalia_mastery')">
                         🚀 Commencer
                     </button>
                     <button class="btn btn-success" onclick="completeStep('athalia_mastery', 'step_1')">
                         ✅ Étape 1
+                    </button>
+                    <button class="btn btn-success" onclick="completeStep('athalia_mastery', 'step_2')">
+                        ✅ Étape 2
+                    </button>
+                    <button class="btn btn-success" onclick="completeStep('athalia_mastery', 'step_3')">
+                        ✅ Étape 3
+                    </button>
+                    <button class="btn btn-success" onclick="completeStep('athalia_mastery', 'step_4')">
+                        ✅ Étape 4
                     </button>
                 </div>
             </div>
@@ -335,12 +344,15 @@
                     <div class="progress-fill" style="width: 0.0%"></div>
                 </div>
 
-                <div style="display: flex; gap: 10px;">
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                     <button class="btn btn-primary" onclick="startTutorial('devops_expert')">
                         🚀 Commencer
                     </button>
                     <button class="btn btn-success" onclick="completeStep('devops_expert', 'step_1')">
                         ✅ Étape 1
+                    </button>
+                    <button class="btn btn-success" onclick="completeStep('devops_expert', 'step_2')">
+                        ✅ Étape 2
                     </button>
                 </div>
             </div>
@@ -390,17 +402,17 @@
         let userProgress = {};
 
         function startTutorial(tutorialId) {
-            // Navigation vers le tutoriel spécifique
+            // Navigation vers des tutoriels réels et fonctionnels
             const tutorialUrls = {
-                'athalia_mastery': '../docs/DEVELOPER/GUIDES/MAITRISE_ATHALIA_COMPLETE.md',
-                'devops_expert': '../docs/DEVELOPER/GUIDES/EXPERT_DEVOPS_ATHALIA.md',
-                'plugin_development': '../docs/DEVELOPER/GUIDES/DEVELOPPEMENT_PLUGINS_AVANCES.md'
+                'athalia_mastery': '../unified_dashboard.html',
+                'devops_expert': '../analytics_dashboard.html',
+                'plugin_development': '../security/security_dashboard.html'
             };
 
             const url = tutorialUrls[tutorialId];
             if (url) {
-                // Ouvrir dans un nouvel onglet
-                window.open(url, '_blank');
+                // Ouvrir dans le même onglet pour une meilleure expérience
+                window.location.href = url;
 
                 // Mettre à jour le progrès local
                 if (!userProgress[tutorialId]) {
@@ -439,7 +451,32 @@
                 progress.score = (progress.completedSteps.length / 6) * 100;
                 updateTutorialProgress(tutorialId);
 
-                alert(`✅ Étape ${stepId} terminée ! Score: ${progress.score.toFixed(1)}%`);
+                // Actions réelles selon l'étape
+                const stepActions = {
+                    'athalia_mastery': {
+                        'step_1': () => window.location.href = '../unified_dashboard.html',
+                        'step_2': () => window.location.href = '../analytics_dashboard.html',
+                        'step_3': () => window.location.href = '../security/security_dashboard.html',
+                        'step_4': () => window.location.href = '../tutorials/interactive_tutorials.html'
+                    },
+                    'devops_expert': {
+                        'step_1': () => window.location.href = '../analytics_dashboard.html',
+                        'step_2': () => window.location.href = '../unified_dashboard.html'
+                    },
+                    'plugin_development': {
+                        'step_1': () => window.location.href = '../security/security_dashboard.html',
+                        'step_2': () => window.location.href = '../unified_dashboard.html'
+                    }
+                };
+
+                const action = stepActions[tutorialId]?.[stepId];
+                if (action) {
+                    setTimeout(() => {
+                        action();
+                    }, 1000); // Délai pour voir le message
+                }
+
+                alert(`✅ Étape ${stepId} terminée ! Score: ${progress.score.toFixed(1)}% - Navigation automatique dans 1 seconde...`);
             }
         }
 
