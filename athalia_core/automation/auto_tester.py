@@ -20,7 +20,7 @@ except ImportError:
     # Fallback pour les tests - utiliser le module sécurisé
     try:
         from ..utilities.secure_subprocess import (
-            secure_subprocess_run as validateand_run
+            secure_subprocess_run as validateand_run,
         )
 
         class SecurityError(Exception):
