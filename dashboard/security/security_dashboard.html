@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Sécurité - Athalia</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 3em;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        .security-overview {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .security-score {
+            font-size: 4em;
+            font-weight: 700;
+            color: #28a745;
+            margin: 20px 0;
+        }
+
+        .security-status {
+            font-size: 1.5em;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+
+        .vulnerabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .vuln-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border-left: 4px solid;
+        }
+
+        .vuln-high {
+            border-left-color: #dc3545;
+            background: #f8d7da;
+        }
+
+        .vuln-medium {
+            border-left-color: #ffc107;
+            background: #fff3cd;
+        }
+
+        .vuln-low {
+            border-left-color: #28a745;
+            background: #d4edda;
+        }
+
+        .vuln-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .vuln-high .vuln-number {
+            color: #dc3545;
+        }
+
+        .vuln-medium .vuln-number {
+            color: #ffc107;
+        }
+
+        .vuln-low .vuln-number {
+            color: #28a745;
+        }
+
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .security-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .security-card h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .recommendations {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .recommendation-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .recommendation-critical {
+            border-left-color: #dc3545;
+            background: #fff5f5;
+        }
+
+        .recommendation-warning {
+            border-left-color: #ffc107;
+            background: #fffbf0;
+        }
+
+        .recommendation-improvement {
+            border-left-color: #fd7e14;
+            background: #fff8f0;
+        }
+
+        .recommendation-excellent {
+            border-left-color: #28a745;
+            background: #f0fff4;
+        }
+
+        .recommendation-info {
+            border-left-color: #17a2b8;
+            background: #f0f9ff;
+        }
+
+        .rec-icon {
+            font-size: 1.2em;
+            min-width: 30px;
+        }
+
+        .rec-text {
+            flex: 1;
+        }
+
+        .risk-high {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .risk-medium {
+            color: #ffc107;
+            font-weight: bold;
+        }
+
+        .score-75 {
+            color: #ffc107;
+            font-weight: bold;
+        }
+
+        .score-60 {
+            color: #fd7e14;
+            font-weight: bold;
+        }
+
+        .score-100 {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .chart-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .footer {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+        }
+
+        .refresh-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        .refresh-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .metric-label {
+            font-weight: bold;
+        }
+
+        .metric-value {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛡️ Dashboard Sécurité Athalia</h1>
+            <p>Surveillance en temps réel de la sécurité du projet</p>
+        </div>
+
+        <div class="security-overview">
+            <h2>Vue d'ensemble de la sécurité</h2>
+            <div class="security-score">85.3/100</div>
+            <div class="security-status">Sécurisé</div>
+            <p>Projet: .</p>
+            <p>Dernière mise à jour: 2025-08-23T13:01:30.893717</p>
+            <button class="refresh-btn" onclick="location.reload()">🔄 Actualiser</button>
+        </div>
+
+        <div class="vulnerabilities-grid">
+            <div class="vuln-card vuln-high">
+                <div class="vuln-number">7</div>
+                <div>Vulnérabilités Critiques</div>
+            </div>
+            <div class="vuln-card vuln-medium">
+                <div class="vuln-number">266</div>
+                <div>Vulnérabilités Moyennes</div>
+            </div>
+            <div class="vuln-card vuln-low">
+                <div class="vuln-number">0</div>
+                <div>Vulnérabilités Mineures</div>
+            </div>
+            <div class="vuln-card">
+                <div class="vuln-number">273</div>
+                <div>Total Vulnérabilités</div>
+            </div>
+        </div>
+
+        <div class="security-grid">
+            <div class="security-card">
+                <h3>🔍 Validation des Commandes</h3>
+                <div id="commandValidationDetails">
+                    
+        <div class="metric-row">
+            <span class="metric-label">📁 Fichiers Scannés</span>
+            <span class="metric-value">8,447</span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">🔍 Vulnérabilités Détectées</span>
+            <span class="metric-value">273</span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">⚠️ Niveau de Risque</span>
+            <span class="metric-value risk-high">HIGH</span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">📊 Ratio Vuln/Fichier</span>
+            <span class="metric-value">32.3‰</span>
+        </div>
+        
+                </div>
+            </div>
+
+            <div class="security-card">
+                <h3>📝 Analyse de Code</h3>
+                <div id="codeAnalysisDetails">
+                    
+        <div class="metric-row">
+            <span class="metric-label">🐍 Fichiers Python</span>
+            <span class="metric-value">336</span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">📝 Lignes de Code</span>
+            <span class="metric-value">82,762</span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">🧪 Tests Collectés</span>
+            <span class="metric-value">1,774</span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">📚 Documentation</span>
+            <span class="metric-value">275 fichiers</span>
+        </div>
+        
+                </div>
+            </div>
+
+            <div class="security-card">
+                <h3>💾 Cache et Performance</h3>
+                <div id="cacheSecurityDetails">
+                    
+        <div class="metric-row">
+            <span class="metric-label">🎯 Hits</span>
+            <span class="metric-value">1,247</span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">❌ Misses</span>
+            <span class="metric-value">89</span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">📊 Total Requests</span>
+            <span class="metric-value">1,336</span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">⚡ Hit Rate</span>
+            <span class="metric-value">9330.0%</span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">💾 Cache Size</span>
+            <span class="metric-value">2,048,576 bytes</span>
+        </div>
+        
+                </div>
+            </div>
+
+            <div class="security-card">
+                <h3>📊 Métriques de Sécurité</h3>
+                <div id="securityMetricsDetails">
+                    
+        <div class="metric-row">
+            <span class="metric-label">🛡️ Score Global</span>
+            <span class="metric-value score-85.3">85.3/100</span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">🚨 Vulnérabilités Critiques</span>
+            <span class="metric-value risk-high">7</span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">⚠️ Vulnérabilités Moyennes</span>
+            <span class="metric-value risk-medium">266</span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">📊 Total Vulnérabilités</span>
+            <span class="metric-value">273</span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">⚡ Athalia Components</span>
+            <span class="metric-value">✅ Disponibles</span>
+        </div>
+        
+                </div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h3>📈 Graphiques de Sécurité</h3>
+            <canvas id="securityChart" width="400" height="200"></canvas>
+        </div>
+
+        <div class="recommendations">
+            <h3>💡 Recommandations de Sécurité</h3>
+            <div class="recommendation-item recommendation-excellent"><span class="rec-icon">✅</span><span class="rec-text">✅ EXCELLENT: Score de sécurité élevé - Maintenir les bonnes pratiques</span></div><div class="recommendation-item recommendation-critical"><span class="rec-icon">🚨</span><span class="rec-text">🚨 CRITIQUE: Vulnérabilités critiques détectées - Correction immédiate requise</span></div><div class="recommendation-item recommendation-warning"><span class="rec-icon">⚠️</span><span class="rec-text">⚠️ ATTENTION: Nombre élevé de vulnérabilités moyennes - Plan de correction nécessaire</span></div><div class="recommendation-item recommendation-info"><span class="rec-icon">💡</span><span class="rec-text">📚 DOCUMENTATION: Consulter le guide de sécurité Athalia pour plus d'informations</span></div>
+        </div>
+
+        <div class="footer">
+            <p>🕒 Dernière mise à jour: 2025-08-23T13:01:30.893717</p>
+            <p>🛡️ Dashboard de sécurité généré automatiquement par Athalia v12.0.0</p>
+        </div>
+    </div>
+
+    <script>
+        // Graphique des vulnérabilités
+        const ctx = document.getElementById('securityChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Critiques', 'Moyennes', 'Mineures', 'Sécurisé'],
+                datasets: [{
+                    data: [7, 266, 0, 727],
+                    backgroundColor: [
+                        '#dc3545',
+                        '#ffc107',
+                        '#28a745',
+                        '#6c757d'
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Répartition des Vulnérabilités'
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Actualisation automatique toutes les 5 minutes
+        setInterval(() => {
+            location.reload();
+        }, 300000);
+    </script>
+</body>
+</html>
