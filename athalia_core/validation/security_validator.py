@@ -58,6 +58,7 @@ class CommandSecurityValidator:
             "pytest",
             "flake8",
             "black",
+            "ruff",
             "mypy",
             # Commandes de développement
             "git",
@@ -75,6 +76,8 @@ class CommandSecurityValidator:
             "yarn",
             "colcon",
             "bandit",
+            "safety",
+            "pip-audit",
             # Commandes de conteneurisation
             "docker",
             "docker-compose",
