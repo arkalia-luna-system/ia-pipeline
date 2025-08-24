@@ -1,19 +1,33 @@
 #!/usr/bin/env python3
 """
 Module IA robuste pour Athalia
-Gestion des modèles IA avec fallback intelligent et gestion d'erreurs avancée
+Gestion intelligente des modèles IA avec fallback automatique
 """
 
 import logging
-import subprocess
+import os
 from enum import Enum
 from pathlib import Path
 from typing import Any, Optional
 
-import requests
-import yaml
+# Import sécurisé pour subprocess
+try:
+    from ..utilities.secure_subprocess import secure_subprocess_run as validateand_run
+except ImportError:
+    # Fallback sécurisé
+    def validateand_run(command, **kwargs):
+        import subprocess
 
-from ..validation.security_validator import validate_and_run
+        safe_kwargs = {"shell": False, "check": False, "capture_output": True}
+        safe_kwargs.update(kwargs)
+        return subprocess.run(command, **safe_kwargs)
+
+
+# Import pour les appels HTTP
+try:
+    import requests
+except ImportError:
+    requests = None
 
 logger = logging.getLogger(__name__)
 
@@ -229,9 +243,7 @@ class RobustAI:
         available = []
         try:
             # Utilisation du validateur de sécurité pour l'appel ollama
-            result = validate_and_run(
-                ["ollama", "list"], capture_output=True, text=True
-            )
+            result = validateand_run(["ollama", "list"], capture_output=True, text=True)
             if result.returncode == 0:
                 output = result.stdout.lower()
                 if "qwen" in output:
@@ -346,7 +358,7 @@ class RobustAI:
         """Appelle Ollama avec un modèle spécifique."""
         try:
             # Utilisation du validateur de sécurité pour l'appel ollama
-            result = validate_and_run(
+            result = validateand_run(
                 ["ollama", "run", model_name, prompt],
                 capture_output=True,
                 text=True,

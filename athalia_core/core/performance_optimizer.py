@@ -51,7 +51,10 @@ class PerformanceOptimizer:
             try:
                 worker.terminate()
                 worker.wait(timeout=5)
-            except Exception:
+            except Exception as e:
+
+                logger.debug(f"Erreur gérée: {e}")
+
                 pass
         self.active_workers.clear()
 

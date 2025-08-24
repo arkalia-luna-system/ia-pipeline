@@ -168,7 +168,8 @@ class PerformanceAnalyzer:
                     if "time.sleep(" in content:
                         bottlenecks.append(f"{py_file}: Appels sleep détectés")
 
-                except Exception:
+                except Exception as e:
+                    logger.debug(f"Erreur lors de l'analyse de performance: {e}")
                     continue
 
         return bottlenecks
@@ -195,7 +196,8 @@ class PerformanceAnalyzer:
             elif "while" in content and "//" in content:
                 complexity_analysis["O(log n)"] = complexity_analysis["O(log n)"] + 1
 
-        except Exception:
+        except Exception as e:
+            logger.debug(f"Erreur lors de l'analyse de performance: {e}")
             pass
 
         return complexity_analysis
@@ -290,7 +292,8 @@ class PerformanceAnalyzer:
                         io_metrics["file_access_count"]
                     ) + content.count("Path(")
 
-                except Exception:
+                except Exception as e:
+                    logger.debug(f"Erreur lors de l'analyse de performance: {e}")
                     continue
 
         return io_metrics
@@ -314,7 +317,8 @@ class PerformanceAnalyzer:
                                 f"Fonction récursive: {func_name}"
                             )
 
-        except Exception:
+        except Exception as e:
+            logger.debug(f"Erreur lors de l'analyse de performance: {e}")
             pass
 
         return recursive_functions
@@ -408,7 +412,8 @@ class PerformanceAnalyzer:
                     if "list(" in content and "range(" in content:
                         opportunities.append(f"{py_file}: Utiliser des générateurs")
 
-                except Exception:
+                except Exception as e:
+                    logger.debug(f"Erreur lors de l'analyse de performance: {e}")
                     continue
 
         return opportunities
@@ -459,7 +464,8 @@ class PerformanceAnalyzer:
                         ):
                             hotspots.append(f"{py_file}:{i} - Ligne complexe détectée")
 
-                except Exception:
+                except Exception as e:
+                    logger.debug(f"Erreur lors de l'analyse de performance: {e}")
                     continue
 
         return hotspots
@@ -486,7 +492,8 @@ class PerformanceAnalyzer:
                             f"{py_file}: Boucle infinie avec append détectée"
                         )
 
-                except Exception:
+                except Exception as e:
+                    logger.debug(f"Erreur lors de l'analyse de performance: {e}")
                     continue
 
         return {
@@ -517,7 +524,8 @@ class PerformanceAnalyzer:
                             int(cache_metrics["cache_size"]) + 1
                         )
 
-                except Exception:
+                except Exception as e:
+                    logger.debug(f"Erreur lors de l'analyse de performance: {e}")
                     continue
 
         if cache_metrics["cache_size"] > 0:
@@ -549,7 +557,8 @@ class PerformanceAnalyzer:
                     ):
                         db_metrics["query_count"] = int(db_metrics["query_count"]) + 1
 
-                except Exception:
+                except Exception as e:
+                    logger.debug(f"Erreur lors de l'analyse de performance: {e}")
                     continue
 
         return db_metrics
@@ -645,7 +654,8 @@ class PerformanceAnalyzer:
                             int(concurrency_metrics["async_functions"]) + 1
                         )
 
-                except Exception:
+                except Exception as e:
+                    logger.debug(f"Erreur lors de l'analyse de performance: {e}")
                     continue
 
         return concurrency_metrics

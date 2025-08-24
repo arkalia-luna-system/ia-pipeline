@@ -105,7 +105,10 @@ class ProjectImporter:
                         elif isinstance(node, ast.ImportFrom):
                             if node.module:
                                 imports.append(node.module)
-            except Exception:
+            except Exception as e:
+
+                logger.debug(f"Erreur gérée: {e}")
+
                 continue
 
         # Analyser les noms de fichiers et dossiers

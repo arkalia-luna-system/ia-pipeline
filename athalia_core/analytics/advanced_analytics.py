@@ -68,7 +68,8 @@ class AdvancedAnalytics:
                 complexity_data["complexity"][file_key] = complexity
                 total_complexity += complexity
                 file_count += 1
-            except Exception:
+            except Exception as e:
+                logger.debug(f"Erreur lors de l'analyse de fichier: {e}")
                 continue
 
         if file_count > 0:
@@ -132,7 +133,8 @@ class AdvancedAnalytics:
                     elif not stripped:
                         coverage_data["empty_lines"] += 1
 
-            except Exception:
+            except Exception as e:
+                logger.debug(f"Erreur lors de l'analyse de fichier: {e}")
                 continue
 
         self.metrics["coverage"] = coverage_data
@@ -147,7 +149,8 @@ class AdvancedAnalytics:
                 size = py_file.stat().st_size
                 file_key = str(py_file.relative_to(self.project_path))
                 performance_data["file_sizes"][file_key] = size
-            except Exception:
+            except Exception as e:
+                logger.debug(f"Erreur lors de l'analyse de fichier: {e}")
                 continue
 
         # Compter les dépendances
@@ -161,7 +164,8 @@ class AdvancedAnalytics:
                         if line.strip() and not line.startswith("#")
                     ]
                     performance_data["dependencies"] = len(deps)
-            except Exception:
+            except Exception as e:
+                logger.debug(f"Erreur lors de la lecture des dépendances: {e}")
                 pass
 
         self.metrics["performance"] = performance_data
@@ -191,7 +195,8 @@ class AdvancedAnalytics:
                     elif not stripped:
                         quality_data["empty_lines"] += 1
 
-            except Exception:
+            except Exception as e:
+                logger.debug(f"Erreur lors de l'analyse de fichier: {e}")
                 continue
 
         self.metrics["quality"] = quality_data
@@ -214,7 +219,8 @@ class AdvancedAnalytics:
                     or mtime > evolution_data["last_modified"]
                 ):
                     evolution_data["last_modified"] = mtime
-            except Exception:
+            except Exception as e:
+                logger.debug(f"Erreur lors de l'analyse de fichier: {e}")
                 continue
 
         self.metrics["evolution"] = evolution_data

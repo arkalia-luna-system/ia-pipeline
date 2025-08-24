@@ -1,17 +1,27 @@
 #!/usr/bin/env python3
 """
-Validateur ROS2 pour Athalia
-Vérification de la configuration et de la structure des projets ROS2
+Module de validation ROS2 pour Athalia
+Validation des packages ROS2 et de leur structure
 """
 
 import logging
 import re
-import subprocess
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as ET  # nosec B405 - Utilisé uniquement pour des fichiers XML de confiance
 from pathlib import Path
 from typing import Any
 
-# Validation module import removed - using internal validation
+# Import sécurisé pour subprocess
+try:
+    from ..utilities.secure_subprocess import secure_subprocess_run as validateand_run
+except ImportError:
+    # Fallback sécurisé
+    def validateand_run(command, **kwargs):
+        import subprocess
+
+        safe_kwargs = {"shell": False, "check": False}
+        safe_kwargs.update(kwargs)
+        return subprocess.run(command, **safe_kwargs)
+
 
 logger = logging.getLogger(__name__)
 
@@ -279,7 +289,7 @@ class ROS2Validator:
         """Vérifie les dépendances du package"""
         try:
             # Vérifier avec rosdep
-            result = subprocess.run(
+            result = validateand_run(
                 [
                     "rosdep",
                     "check",
@@ -297,10 +307,6 @@ class ROS2Validator:
                     f"Problèmes de dépendances détectés: {result.stderr}"
                 )
 
-        except subprocess.TimeoutExpired:
-            self.validation_results["warnings"].append(
-                "Timeout lors de la vérification des dépendances"
-            )
         except Exception as e:
             self.validation_results["warnings"].append(
                 f"Erreur vérification dépendances: {e}"

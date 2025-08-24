@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """
-Module de gestion des prompts contextuels pour Athalia
-Analyse sémantique et génération de prompts adaptés
+Gestionnaire de prompts contextuels intelligents pour Athalia
+Analyse le contexte et suggère les prompts les plus pertinents
 """
 
-import json
 import logging
 import os
 import re
@@ -14,17 +13,31 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Optional
 
-import yaml
+# Import sécurisé pour subprocess
+try:
+    from ..utilities.secure_subprocess import secure_subprocess_run as validateand_run
+except ImportError:
+    # Fallback sécurisé si le module n'est pas disponible
+    def validateand_run(command, **kwargs):
+        import subprocess
 
-from ..validation.security_validator import validateand_run
+        safe_kwargs = {"shell": False, "check": False, "capture_output": True}
+        safe_kwargs.update(kwargs)
+        return subprocess.run(command, **safe_kwargs)
+
+
+try:
+    import yaml
+except ImportError:
+    yaml = None
 
 logger = logging.getLogger(__name__)
-
 
 try:
     import pyperclip
 except ImportError:
     pyperclip = None
+
 
 PROMPTS = [
     {
@@ -110,8 +123,8 @@ if os.path.exists(CUSTOM_PROMPTS_PATH):
             custom_prompts = yaml.safe_load(file_handle)
             if isinstance(custom_prompts, list):
                 PROMPTS.extend(custom_prompts)
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug(f"Erreur gérée: {e}")
 
 LOG_DIR = os.path.join(os.path.dirname(__file__), "../logs")
 os.makedirs(LOG_DIR, exist_ok=True)
@@ -254,7 +267,8 @@ def main():
                 all_content += (
                     f"\n# Fichier: {os.path.basename(filepath)}\n" + file_handle.read()
                 )
-        except Exception:
+        except Exception as e:
+            logger.debug(f"Erreur gérée: {e}")
             continue
     # On crée un fichier temporaire pour l'analyse globale
     with tempfile.NamedTemporaryFile("w+", delete=False, suffix=".tmp") as tmp:

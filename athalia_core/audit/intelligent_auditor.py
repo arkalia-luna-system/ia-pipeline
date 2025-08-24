@@ -282,7 +282,8 @@ class IntelligentAuditor:
                             if line and not line.startswith("#"):
                                 dep = line.split("==")[0].split(">=")[0].split("<=")[0]
                                 dependencies["direct"].append(dep)
-                except Exception:
+                except Exception as e:
+                    logger.debug(f"Erreur lors de l'analyse des dépendances: {e}")
                     pass
 
             # Node.js
@@ -299,7 +300,8 @@ class IntelligentAuditor:
                             dependencies["direct"].extend(
                                 list(data["devDependencies"].keys())
                             )
-                except Exception:
+                except Exception as e:
+                    logger.debug(f"Erreur lors de l'analyse des dépendances: {e}")
                     pass
 
         return dependencies
@@ -315,7 +317,8 @@ class IntelligentAuditor:
                         if mtime > latest_time:
                             latest_time = mtime
             return datetime.fromtimestamp(latest_time).isoformat()
-        except Exception:
+        except Exception as e:
+            logger.debug(f"Erreur lors du calcul de la dernière modification: {e}")
             return "Inconnu"
 
     def _analyze_code_quality(self):
@@ -343,7 +346,8 @@ class IntelligentAuditor:
                         tree = ast.parse(content)
                         score = self._calculate_cyclomatic_complexity(tree)
                         complexity_scores.append(score)
-                    except Exception:
+                    except Exception as e:
+                        logger.debug(f"Erreur lors de l'analyse de complexité: {e}")
                         complexity_scores.append(0)
 
         if complexity_scores:
@@ -407,7 +411,8 @@ class IntelligentAuditor:
                                     f"{py_file}:{i} - Import multiple sur une ligne"
                                 )
 
-                    except Exception:
+                    except Exception as e:
+                        logger.debug(f"Erreur lors de l'analyse de fichier: {e}")
                         continue
 
         score = max(0, 10 - len(style_issues))
@@ -441,7 +446,8 @@ class IntelligentAuditor:
                                         f"{py_file}:{node.lineno} - Fonction sans docstring"
                                     )
 
-                    except Exception:
+                    except Exception as e:
+                        logger.debug(f"Erreur lors de l'analyse de fichier: {e}")
                         continue
 
         if total_functions > 0:
@@ -491,7 +497,8 @@ class IntelligentAuditor:
                                         f"{py_file}:{node.lineno} - Nom de classe non conforme: {node.name}"
                                     )
 
-                    except Exception:
+                    except Exception as e:
+                        logger.debug(f"Erreur lors de l'analyse de fichier: {e}")
                         continue
 
         if total_names > 0:
@@ -545,7 +552,8 @@ class IntelligentAuditor:
                             if re.search(pattern, content):
                                 vulnerabilities.append(f"{py_file}: {description}")
 
-                    except Exception:
+                    except Exception as e:
+                        logger.debug(f"Erreur lors de l'analyse de fichier: {e}")
                         continue
 
         return vulnerabilities
@@ -579,7 +587,8 @@ class IntelligentAuditor:
                                 secrets.append(f"{file_path}: Secret potentiel détecté")
                                 break
 
-                    except Exception:
+                    except Exception as e:
+                        logger.debug(f"Erreur lors de l'analyse de fichier: {e}")
                         continue
 
         return secrets
@@ -606,7 +615,8 @@ class IntelligentAuditor:
                                 f"{file_path}: Permissions d'écriture trop ouvertes"
                             )
 
-                    except Exception:
+                    except Exception as e:
+                        logger.debug(f"Erreur lors de l'analyse de fichier: {e}")
                         continue
 
         return {
@@ -633,7 +643,8 @@ class IntelligentAuditor:
                     try:
                         size = file_path.stat().st_size
                         file_sizes.append(size)
-                    except Exception:
+                    except Exception as e:
+                        logger.debug(f"Erreur lors de l'analyse de fichier: {e}")
                         continue
 
         if file_sizes:
@@ -681,7 +692,8 @@ class IntelligentAuditor:
                                         f"{py_file}: Import de module privé: {node.module}"
                                     )
 
-                    except Exception:
+                    except Exception as e:
+                        logger.debug(f"Erreur lors de l'analyse de fichier: {e}")
                         continue
 
         return {
@@ -700,7 +712,8 @@ class IntelligentAuditor:
                     try:
                         with open(py_file, encoding="utf-8") as f:
                             total_lines += len(f.readlines())
-                    except Exception:
+                    except Exception as e:
+                        logger.debug(f"Erreur lors de l'analyse de fichier: {e}")
                         continue
 
         # Estimation: ~1KB par 100 lignes
@@ -766,7 +779,8 @@ class IntelligentAuditor:
                 "size": len(content),
             }
 
-        except Exception:
+        except Exception as e:
+            logger.debug(f"Erreur lors de la lecture du README: {e}")
             return {"exists": True, "score": 0, "issues": ["Erreur de lecture"]}
 
     def _check_api_documentation(self) -> dict[str, Any]:
@@ -858,7 +872,8 @@ class IntelligentAuditor:
                     if "setup_method" in content or "teardown_method" in content:
                         quality_score += 1
 
-                except Exception:
+                except Exception as e:
+                    logger.debug(f"Erreur gérée: {e}")
                     continue
 
         if test_files:

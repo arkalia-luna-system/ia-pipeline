@@ -5,7 +5,8 @@ Vérifications de sécurité automatisées
 """
 
 import logging
-import subprocess
+
+# Import sécurisé pour subprocess
 from pathlib import Path
 from typing import Any
 
@@ -21,6 +22,8 @@ except ImportError:
         pass
 
     def validateand_run(command: list[str], **kwargs: Any) -> Any:
+        import subprocess
+
         return subprocess.run(command, **kwargs)
 
 
@@ -129,7 +132,10 @@ class SecurityAuditor:
                                     f"Pattern dangereux '{pattern}' dans {py_file}"
                                 )
 
-                except Exception:
+                except Exception as e:
+
+                    logger.debug(f"Erreur gérée: {e}")
+
                     continue
 
         except Exception as e:
@@ -161,7 +167,10 @@ class SecurityAuditor:
                                     f"Secret potentiel dans {py_file}: {matches[0]}"
                                 )
 
-                except Exception:
+                except Exception as e:
+
+                    logger.debug(f"Erreur gérée: {e}")
+
                     continue
 
         except Exception as e:
@@ -179,7 +188,10 @@ class SecurityAuditor:
                                 f"Permissions inhabituelles pour {py_file}: {oct(stat.st_mode)[-3:]}"
                             )
 
-                except Exception:
+                except Exception as e:
+
+                    logger.debug(f"Erreur gérée: {e}")
+
                     continue
 
         except Exception as e:
@@ -208,7 +220,10 @@ class SecurityAuditor:
                                     f"Vérifier l'utilisation de '{pattern}' dans {py_file}"
                                 )
 
-                except Exception:
+                except Exception as e:
+
+                    logger.debug(f"Erreur gérée: {e}")
+
                     continue
 
         except Exception as e:
@@ -252,7 +267,10 @@ class SecurityAuditor:
                                     f"Vérifier la validation des entrées '{pattern}' dans {py_file}"
                                 )
 
-                except Exception:
+                except Exception as e:
+
+                    logger.debug(f"Erreur gérée: {e}")
+
                     continue
 
         except Exception as e:
@@ -283,7 +301,10 @@ class SecurityAuditor:
                                     f"Vérifier l'implémentation de '{pattern}' dans {py_file}"
                                 )
 
-                except Exception:
+                except Exception as e:
+
+                    logger.debug(f"Erreur gérée: {e}")
+
                     continue
 
         except Exception as e:

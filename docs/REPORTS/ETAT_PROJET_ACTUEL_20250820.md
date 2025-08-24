@@ -31,10 +31,10 @@
 ## 📊 **MÉTRIQUES ACTUELLES**
 
 ### **📁 Structure du Projet**
-- **Fichiers Python :** 8,295 modules
-- **Fichiers Markdown :** 288 fichiers de documentation
+- **Fichiers Python :** 335 modules
+- **Fichiers Markdown :** 269 fichiers de documentation
 - **Tests :** 1,774 tests collectés
-- **Couverture :** 100% (maintenue)
+- **Couverture :** Mesurée automatiquement par le collecteur
 
 ### **🔧 Modules Core**
 - **`athalia_core/`** : 93 modules principaux

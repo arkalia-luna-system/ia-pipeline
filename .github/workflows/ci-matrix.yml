@@ -38,7 +38,7 @@ jobs:
 
     steps:
       - name: "Checkout Code"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -141,7 +141,7 @@ jobs:
 
     steps:
       - name: "Checkout Code"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -287,7 +287,7 @@ jobs:
 
     steps:
       - name: "Checkout Code"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -345,7 +345,7 @@ jobs:
 
     steps:
       - name: "Checkout Code"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: "Setup Python"
         uses: actions/setup-python@v5
@@ -401,7 +401,7 @@ jobs:
 
     steps:
       - name: "Checkout Code"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: "Setup Python"
         uses: actions/setup-python@v5
@@ -492,7 +492,7 @@ jobs:
 
     steps:
       - name: "Checkout Code"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: "Python Setup Python"
         uses: actions/setup-python@v5
@@ -670,7 +670,7 @@ jobs:
 
       - name: "Deploiement GitHub Pages"
         if: success() && github.ref == 'refs/heads/main'
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
@@ -725,7 +725,7 @@ jobs:
 
     steps:
       - name: "Checkout Code"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: "Download all artifacts"
         uses: actions/download-artifact@v4

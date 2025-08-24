@@ -28,12 +28,12 @@ jobs:
 
     steps:
       - name: 🔄 Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
-          fetch-depth: 0 # Nécessaire pour analyser tout l'historique
+          fetch-depth: 0  # Nécessaire pour analyser tout l'historique
 
       - name: 🐍 Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: "pip"
@@ -57,13 +57,16 @@ jobs:
           ls -la
           echo ""
           echo "🐍 Python modules found:"
-          find . -name "*.py" -not -path "./.venv/*" -not -path "./venv/*" | head -10
+          find . -name "*.py" -not -path "./.venv/*" -not -path "./venv/*" | \
+            head -10
           echo ""
           echo "🧪 Test files found:"
-          find tests/ -name "*.py" 2>/dev/null | head -5 || echo "No tests directory found"
+          find tests/ -name "*.py" 2>/dev/null | head -5 || \
+            echo "No tests directory found"
           echo ""
           echo "📚 Documentation files found:"
-          find docs/ -name "*.md" 2>/dev/null | head -5 || echo "No docs directory found"
+          find docs/ -name "*.md" 2>/dev/null | head -5 || \
+            echo "No docs directory found"
 
       - name: 📊 Collect Metrics
         run: |
@@ -77,11 +80,23 @@ jobs:
         run: |
           echo "📊 Metrics Summary:"
           if [ -f data/metrics.json ]; then
-            # Extraire et afficher les métriques principales
-            python3 -c "import json; data = json.load(open('data/metrics.json')); summary = data.get('summary', {}); collection_info = data.get('collection_info', {}); print('=' * 60); print('📊 ATHALIA PROJECT METRICS'); print('=' * 60); print(f'🕒 Generated: {collection_info.get(\"collection_date\", \"Unknown\")}'); print(f'🐍 Python Files: {summary.get(\"total_python_files\", 0):,}'); print(f'📝 Lines of Code: {summary.get(\"lines_of_code\", 0):,}'); print(f'🧪 Tests: {summary.get(\"collected_tests\", 0):,}'); print(f'🛡️ Security Commands: {summary.get(\"security_commands\", 0):,}'); print(f'📊 HTML Dashboards: {summary.get(\"html_dashboards\", 0):,}'); print(f'🔧 Utility Scripts: {summary.get(\"utility_scripts\", 0):,}'); print(f'📚 Documentation: {summary.get(\"documentation_files\", 0):,}'); print('=' * 60)"
+            # Extraire et afficher les métriques principales (sans markdown)
+            python3 scripts/metrics/display_metrics.py
           else
             echo "❌ Metrics file not found!"
             exit 1
+          fi
+          
+          # Afficher un résumé simple sans markdown
+          echo ""
+          echo "📈 Simple Summary:"
+          if [ -f data/metrics.json ]; then
+            python_files=$(python3 -c "import json; print(json.load(open('data/metrics.json')).get('summary', {}).get('total_python_files', 0))")
+            lines_code=$(python3 -c "import json; print(json.load(open('data/metrics.json')).get('summary', {}).get('lines_of_code', 0))")
+            tests=$(python3 -c "import json; print(json.load(open('data/metrics.json')).get('summary', {}).get('collected_tests', 0))")
+            echo "Python files: $python_files"
+            echo "Lines of code: $lines_code"
+            echo "Tests: $tests"
           fi
 
       - name: ✅ Validate Generated Files
@@ -100,7 +115,8 @@ jobs:
           missing_files=()
           for file in "${expected_files[@]}"; do
             if [ -f "$file" ]; then
-              size=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file" 2>/dev/null || echo "0")
+              size=$(stat -f%z "$file" 2>/dev/null || \
+                stat -c%s "$file" 2>/dev/null || echo "0")
               echo "✅ $file (${size} bytes)"
             else
               echo "❌ $file (missing)"
@@ -146,29 +162,6 @@ jobs:
           # Note: La mise à jour du README sera faite dans une étape séparée
           # pour éviter les conflits et garder ce workflow non-bloquant
 
-              
-              const comment = `## 📊 Project Metrics Update
-              
-              **Automatically generated metrics for this PR:**
-              
-              | Metric | Value |
-              |--------|-------|
-              | 🐍 Python Files | ${(summary.total_python_files || 0).toLocaleString()} |
-              | 📝 Lines of Code | ${(summary.lines_of_code || 0).toLocaleString()} |
-              | 🧪 Tests | ${(summary.collected_tests || 0).toLocaleString()} |
-              | 📚 Documentation | ${(summary.documentation_files || 0).toLocaleString()} |
-              
-              *Metrics collected automatically by [Athalia Metrics Collector](https://github.com/${context.repo.owner}/${context.repo.repo}/actions)*
-              `;
-              
-              github.rest.issues.createComment({
-                issue_number: context.issue.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                body: comment
-              });
-            }
-
   # Job séparé pour déployer le dashboard (optionnel)
   deploy-dashboard:
     name: 🌐 Deploy Metrics Dashboard
@@ -187,14 +180,15 @@ jobs:
 
     steps:
       - name: 📥 Download Metrics Artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: athalia-metrics-${{ github.sha }}
           path: ./metrics
 
       - name: 🌐 Setup Pages
-        if: github.repository_owner == 'arkalia-luna-system' # Ajuster selon votre organisation
-        uses: actions/configure-pages@v3
+        # Ajuster selon votre organisation
+        if: github.repository_owner == 'arkalia-luna-system'
+        uses: actions/configure-pages@v5
 
       - name: 📦 Prepare Dashboard
         if: github.repository_owner == 'arkalia-luna-system'
@@ -209,11 +203,11 @@ jobs:
 
       - name: 📦 Upload Pages Artifact
         if: github.repository_owner == 'arkalia-luna-system' && hashFiles('public/index.html') != ''
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./public
 
       - name: 🚀 Deploy to GitHub Pages
         id: deployment
         if: github.repository_owner == 'arkalia-luna-system' && hashFiles('public/index.html') != ''
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4

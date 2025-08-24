@@ -5,7 +5,7 @@ Intégration continue et déploiement automatique
 """
 
 import logging
-import subprocess
+import subprocess  # Pour les constantes PIPE, TimeoutExpired
 from pathlib import Path
 from typing import Any
 

@@ -24,9 +24,9 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
 ### Changed
 - **Métriques unifiées** dans le README
-  - 8,295 modules Python (au lieu de 93)
-  - 116,510 lignes de code (au lieu de 72,626)
-  - Métriques mesurées automatiquement
+  - 335 modules Python (mesurés automatiquement)
+  - 83,065 lignes de code (mesurées automatiquement)
+  - Métriques collectées par le MetricsCollector Athalia
 - **Structure des branches**
   - Nettoyage de 12 branches → 4 branches propres
   - Synchronisation de toutes les branches au même niveau
