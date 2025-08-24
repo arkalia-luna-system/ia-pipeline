@@ -80,11 +80,23 @@ jobs:
         run: |
           echo "📊 Metrics Summary:"
           if [ -f data/metrics.json ]; then
-            # Extraire et afficher les métriques principales
+            # Extraire et afficher les métriques principales (sans markdown)
             python3 scripts/metrics/display_metrics.py
           else
             echo "❌ Metrics file not found!"
             exit 1
+          fi
+          
+          # Afficher un résumé simple sans markdown
+          echo ""
+          echo "📈 Simple Summary:"
+          if [ -f data/metrics.json ]; then
+            python_files=$(python3 -c "import json; print(json.load(open('data/metrics.json')).get('summary', {}).get('total_python_files', 0))")
+            lines_code=$(python3 -c "import json; print(json.load(open('data/metrics.json')).get('summary', {}).get('lines_of_code', 0))")
+            tests=$(python3 -c "import json; print(json.load(open('data/metrics.json')).get('summary', {}).get('collected_tests', 0))")
+            echo "Python files: $python_files"
+            echo "Lines of code: $lines_code"
+            echo "Tests: $tests"
           fi
 
       - name: ✅ Validate Generated Files
