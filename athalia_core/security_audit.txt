@@ -1,0 +1,3 @@
+Audit de sécurité - Problèmes détectés:
+- Appel système potentiellement dangereux dans security_auditor.py
+- Appel système potentiellement dangereux dans security_validator.py

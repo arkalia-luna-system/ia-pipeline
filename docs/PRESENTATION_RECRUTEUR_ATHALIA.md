@@ -223,13 +223,13 @@ docs/
 
 | **Métrique** | **Valeur** | **Statut** |
 |:-------------|:-----------|:-----------|
-| **Fichiers Python** | 341 modules | ✅ Actif |
-| **Lignes de code** | 75,625 | ✅ Maintenu |
+| **Fichiers Python** | 331 modules | ✅ Actif |
+| **Lignes de code** | 82,518 | ✅ Maintenu |
 | **Tests** | 1,774 | ✅ Testé |
-| **Commandes sécurisées** | 62 | ✅ Sécurisé |
-| **Dashboards HTML** | 13 | ✅ Fonctionnel |
-| **Scripts utilitaires** | 69 | ✅ Disponible |
-| **Documentation** | 312 fichiers | ✅ Complet |
+| **Score Sécurité** | 75/100 | ✅ Calculé |
+| **Vulnérabilités** | 3,027 détectées | ✅ Analysées |
+| **Scripts utilitaires** | 58 | ✅ Disponible |
+| **Documentation** | 265 fichiers | ✅ Complet |
 
 ### **⚡ Performance et Optimisation**
 

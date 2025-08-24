@@ -129,7 +129,8 @@ class AutoCorrectionAvancee:
                         "erreur_originale": lignes[ligne_erreur],
                         "description": f"Correction {type_correction} automatique",
                     }
-            except Exception:
+            except Exception as e:
+                logger.warning(f"Erreur lors de la correction automatique: {e}")
                 continue
 
         return {}

@@ -6,12 +6,12 @@ Ce document indexe tous les nouveaux modules qui ont été ajoutés à la platef
 
 ## 🔧 **Modules Documentés**
 
-### **1. Serveur API Principal**
-- **Fichier** : `athalia_core/api/main_api_server.py`
-- **Documentation** : [API_SERVER_DOCUMENTATION.md](API_SERVER_DOCUMENTATION.md)
-- **Description** : Serveur API REST complet avec FastAPI
-- **Fonctionnalités** : Gestion des projets, sécurité, métriques, plugins
-- **Lignes de code** : 423
+### **1. Dashboard Analytics Réel**
+- **Fichier** : `athalia_core/utilities/dashboard.py`
+- **Documentation** : [DASHBOARD_DOCUMENTATION.md](DASHBOARD_DOCUMENTATION.md)
+- **Description** : Système de dashboard avec métriques réelles collectées en temps réel
+- **Fonctionnalités** : Collecte métriques, génération HTML, filtrage intelligent
+- **Lignes de code** : 1040
 
 ### **2. Système de Benchmarks Avancés**
 - **Fichier** : `athalia_core/benchmarks/advanced_benchmark_system.py`
@@ -27,12 +27,12 @@ Ce document indexe tous les nouveaux modules qui ont été ajoutés à la platef
 - **Fonctionnalités** : Visualisations, métriques, alertes, rapports
 - **Lignes de code** : 424
 
-### **4. Système de Tutoriels Vidéo**
-- **Fichier** : `athalia_core/tutorials/video_tutorial_system.py`
-- **Documentation** : [VIDEO_TUTORIAL_SYSTEM_DOCUMENTATION.md](VIDEO_TUTORIAL_SYSTEM_DOCUMENTATION.md)
-- **Description** : Gestion complète des tutoriels vidéo avec interface web
-- **Fonctionnalités** : Interface web, catégorisation, métriques, notation
-- **Lignes de code** : 844
+### **4. Dashboard Interactif Avancé**
+- **Fichier** : `dashboard/html/dashboard_interactif_avance.html`
+- **Documentation** : [DASHBOARD_INTERACTIF_DOCUMENTATION.md](DASHBOARD_INTERACTIF_DOCUMENTATION.md)
+- **Description** : Interface web interactive avec graphiques Chart.js et métriques temps réel
+- **Fonctionnalités** : Graphiques interactifs, métriques dynamiques, recommandations IA
+- **Lignes de code** : 469
 
 ## 📊 **Statistiques Globales**
 
@@ -43,25 +43,25 @@ Ce document indexe tous les nouveaux modules qui ont été ajoutés à la platef
 - **Fonctionnalités** : 20+ nouvelles fonctionnalités
 
 ### **Répartition par catégorie**
-- **API et Services** : 423 lignes (15.8%)
+- **Dashboards et Analytics** : 1,040 lignes (38.9%)
 - **Benchmarks et Performance** : 982 lignes (36.7%)
 - **Sécurité et Monitoring** : 424 lignes (15.9%)
-- **Formation et Tutoriels** : 844 lignes (31.6%)
+- **Interface Interactive** : 469 lignes (17.5%)
 
 ## 🏗️ **Architecture des Nouveaux Modules**
 
 ### **Structure générale**
 ```
 athalia_core/
-├── api/                    # Serveur API principal
-│   ├── main_api_server.py
-│   └── main_server.py
+├── utilities/             # Dashboard analytics et utilitaires
+│   └── dashboard.py
 ├── benchmarks/            # Système de benchmarks
 │   └── advanced_benchmark_system.py
 ├── security/             # Dashboard de sécurité
 │   └── security_dashboard.py
-└── tutorials/            # Système de tutoriels
-    └── video_tutorial_system.py
+└── dashboard/            # Dashboards HTML et interface
+    ├── analytics_dashboard.html
+    └── html/dashboard_interactif_avance.html
 ```
 
 ### **Interdépendances**
@@ -73,11 +73,11 @@ Security ←→ Tutorials
 
 ## 🚀 **Fonctionnalités Principales**
 
-### **Serveur API**
-- **Endpoints REST** : Gestion des projets, sécurité, métriques
-- **Validation Pydantic** : Modèles de données robustes
-- **Documentation automatique** : Swagger UI et ReDoc
-- **Tâches en arrière-plan** : Génération asynchrone
+### **Dashboard Analytics**
+- **Collecte métriques** : Fichiers Python, lignes de code, tests, documentation
+- **Filtrage intelligent** : Exclusion des dossiers système (.git, venv, etc.)
+- **Génération HTML** : Dashboards professionnels avec CSS moderne
+- **Métriques réelles** : Données collectées en temps réel, pas de simulation
 
 ### **Benchmarks**
 - **Tests de performance** : CPU, mémoire, I/O
@@ -91,11 +91,11 @@ Security ←→ Tutorials
 - **Rapports détaillés** : Export et partage
 - **Responsive design** : Adaptation mobile et desktop
 
-### **Tutoriels**
-- **Gestion CRUD** : Création, lecture, mise à jour, suppression
-- **Catégorisation** : Thèmes, difficultés, tags
-- **Métriques** : Vues, notes, engagement
-- **Interface moderne** : Design responsive et intuitif
+### **Interface Interactive**
+- **Graphiques Chart.js** : Visualisations interactives et responsives
+- **Métriques dynamiques** : Mise à jour en temps réel des données
+- **Recommandations IA** : Suggestions basées sur l'analyse des données
+- **Design moderne** : Interface glassmorphism avec animations fluides
 
 ## 🔧 **Configuration et Déploiement**
 
@@ -108,8 +108,8 @@ Security ←→ Tutorials
 ### **Installation**
 ```bash
 # Clonage du repository
-git clone https://github.com/your-org/athalia.git
-cd athalia
+git clone https://github.com/arkalia-luna-system/ia-pipeline.git
+cd ia-pipeline
 
 # Installation des dépendances
 pip install -r requirements.txt
@@ -121,7 +121,7 @@ cp config/athalia_config.yaml.example config/athalia_config.yaml
 
 ### **Démarrage**
 ```bash
-# Serveur API
+# Serveur API (serveur principal intégré)
 python athalia_core/api/main_api_server.py
 
 # Benchmarks
@@ -131,7 +131,7 @@ python athalia_core/benchmarks/advanced_benchmark_system.py
 python athalia_core/security/security_dashboard.py
 
 # Système de tutoriels
-python athalia_core/tutorials/video_tutorial_system.py
+python athalia_core/tutorials/interactive_tutorial_system.py
 ```
 
 ## 📈 **Intégration et Workflows**
@@ -196,7 +196,7 @@ jobs:
 - [API Reference](API_SERVER_DOCUMENTATION.md)
 - [Benchmark Guide](BENCHMARK_SYSTEM_DOCUMENTATION.md)
 - [Security Dashboard](SECURITY_DASHBOARD_DOCUMENTATION.md)
-- [Tutorial System](VIDEO_TUTORIAL_SYSTEM_DOCUMENTATION.md)
+- [Tutorial System](INTERACTIVE_TUTORIAL_SYSTEM_DOCUMENTATION.md)
 
 ### **Exemples et cas d'usage**
 - [Exemples d'API](../examples/api/)
@@ -234,10 +234,10 @@ jobs:
 5. **Code review** et validation
 
 ### **Support et communauté**
-- **Issues** : [GitHub Issues](https://github.com/your-org/athalia/issues)
-- **Discussions** : [GitHub Discussions](https://github.com/your-org/athalia/discussions)
-- **Documentation** : [Wiki](https://github.com/your-org/athalia/wiki)
-- **Chat** : [Discord/Slack](https://discord.gg/athalia)
+- **Issues** : [GitHub Issues](https://github.com/arkalia-luna-system/ia-pipeline/issues)
+- **Discussions** : [GitHub Discussions](https://github.com/arkalia-luna-system/ia-pipeline/discussions)
+- **Documentation** : [Wiki](https://github.com/arkalia-luna-system/ia-pipeline/wiki)
+- **Chat** : [Discord/Slack](https://discord.gg/ia-pipeline)
 
 ---
 

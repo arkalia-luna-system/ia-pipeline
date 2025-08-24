@@ -28,13 +28,13 @@ ruff check . --fix --unsafe-fixes
 #### **Phase 2 : Correction Manuelle des Erreurs Critiques**
 
 ##### **Erreurs F821 (Noms non définis)**
-- **Fichier** : `athalia_core/tutorials/video_tutorial_system.py`
+- **Fichier** : `athalia_core/tutorials/interactive_tutorial_system.py`
 - **Problème** : Variables JavaScript non définies dans les fonctions
 - **Solution** : Ajout de vérifications de type et valeurs par défaut
 - **Résultat** : ✅ Corrigé
 
 ##### **Erreurs B904 (Raise sans from)**
-- **Fichiers** : `athalia_core/api/main_server.py`, `athalia_core/api/main_api_server.py`
+- **Fichiers** : `athalia_core/api/main_api_server.py` (serveur principal intégré)
 - **Problème** : Exceptions levées sans chaînage approprié
 - **Solution** : Ajout de `from e` pour chaîner les exceptions
 - **Résultat** : ✅ Corrigé
@@ -81,8 +81,8 @@ ruff check . --statistics
 - **Fonctionnalités** : Monitoring sécurité, visualisations, alertes
 
 #### **4. Système de Tutoriels Vidéo**
-- **Fichier** : `athalia_core/tutorials/video_tutorial_system.py`
-- **Documentation** : `docs/API/VIDEO_TUTORIAL_SYSTEM_DOCUMENTATION.md`
+- **Fichier** : `athalia_core/tutorials/interactive_tutorial_system.py`
+- **Documentation** : `docs/API/INTERACTIVE_TUTORIAL_SYSTEM_DOCUMENTATION.md`
 - **Lignes de code** : 845
 - **Fonctionnalités** : Gestion CRUD, catégorisation, métriques
 
@@ -104,13 +104,13 @@ ruff check . --statistics
 athalia_core/
 ├── api/                    # Serveur API principal
 │   ├── main_api_server.py  # API REST complète
-│   └── main_server.py      # Serveur web
+│   └── main_api_server.py  # Serveur web principal
 ├── benchmarks/            # Système de benchmarks
 │   └── advanced_benchmark_system.py
 ├── security/             # Dashboard de sécurité
 │   └── security_dashboard.py
 └── tutorials/            # Système de tutoriels
-    └── video_tutorial_system.py
+    └── interactive_tutorial_system.py
 ```
 
 ### **Interdépendances**

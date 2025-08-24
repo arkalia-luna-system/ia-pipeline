@@ -1,0 +1,76 @@
+{
+  "last_updated": "2025-08-22T20:48:28.615637",
+  "total_runs": 1,
+  "benchmarks": {
+    "performance": {
+      "name": "Performance Générale",
+      "description": "Tests de performance CPU, mémoire et I/O",
+      "last_score": 0,
+      "best_score": 0,
+      "runs": [
+        {
+          "timestamp": "2025-08-22T20:48:28.615419",
+          "score": 0,
+          "duration": 0.07027888298034668
+        }
+      ],
+      "category": "Performance"
+    },
+    "security": {
+      "name": "Sécurité",
+      "description": "Tests de sécurité et validation",
+      "last_score": 0.0,
+      "best_score": 0,
+      "runs": [
+        {
+          "timestamp": "2025-08-22T20:48:28.615478",
+          "score": 0.0,
+          "duration": 4.315376281738281e-05
+        }
+      ],
+      "category": "Sécurité"
+    },
+    "code_quality": {
+      "name": "Qualité du Code",
+      "description": "Tests de qualité et standards",
+      "last_score": 100,
+      "best_score": 100,
+      "runs": [
+        {
+          "timestamp": "2025-08-22T20:48:28.615486",
+          "score": 100,
+          "duration": 3.0994415283203125e-06
+        }
+      ],
+      "category": "Qualité"
+    },
+    "ai_generation": {
+      "name": "Génération IA",
+      "description": "Tests de génération automatique",
+      "last_score": 50.0,
+      "best_score": 50.0,
+      "runs": [
+        {
+          "timestamp": "2025-08-22T20:48:28.615496",
+          "score": 50.0,
+          "duration": 3.814697265625e-06
+        }
+      ],
+      "category": "IA"
+    },
+    "robotics": {
+      "name": "Robotics",
+      "description": "Tests de validation robotics",
+      "last_score": 50,
+      "best_score": 50,
+      "runs": [
+        {
+          "timestamp": "2025-08-22T20:48:28.615629",
+          "score": 50,
+          "duration": 0.0001277923583984375
+        }
+      ],
+      "category": "Robotics"
+    }
+  }
+}

@@ -1,19 +1,29 @@
 #!/usr/bin/env python3
 """
-Module de gestion Docker pour la robotique Athalia
-Configuration et validation des conteneurs Docker pour projets robotiques
+Module Docker spécialisé robotique pour Athalia
+Gestion des conteneurs Docker pour les projets robotiques
 """
 
 import logging
 import os
-import subprocess
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional
 
 import yaml
 
-from ..validation.security_validator import validateand_run
+# Import sécurisé pour subprocess
+try:
+    from ..utilities.secure_subprocess import secure_subprocess_run as validateand_run
+except ImportError:
+    # Fallback sécurisé
+    def validateand_run(command, **kwargs):
+        import subprocess
+
+        safe_kwargs = {"shell": False, "check": False}
+        safe_kwargs.update(kwargs)
+        return subprocess.run(command, **safe_kwargs)
+
 
 logger = logging.getLogger(__name__)
 

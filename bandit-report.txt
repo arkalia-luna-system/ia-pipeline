@@ -1,0 +1,386 @@
+Run started:2025-08-23 18:41:23.875509
+
+Test results:
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: athalia_core/agents/context_prompt.py:22:8
+21	    def validateand_run(command, **kwargs):
+22	        import subprocess
+23	
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: athalia_core/agents/context_prompt.py:26:15
+25	        safe_kwargs.update(kwargs)
+26	        return subprocess.run(command, **safe_kwargs)
+27	
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: athalia_core/ai/ai_robust.py:19:8
+18	    def validateand_run(command, **kwargs):
+19	        import subprocess
+20	
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: athalia_core/ai/ai_robust.py:23:15
+22	        safe_kwargs.update(kwargs)
+23	        return subprocess.run(command, **safe_kwargs)
+24	
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: athalia_core/ai/ai_robust_enhanced.py:9:0
+8	import os
+9	import subprocess  # Pour les constantes PIPE, TimeoutExpired
+10	from enum import Enum
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: athalia_core/ai/ai_robust_enhanced.py:21:15
+20	        safe_kwargs.update(kwargs)
+21	        return subprocess.run(command, **safe_kwargs)
+22	
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: athalia_core/audit/security_auditor.py:25:8
+24	    def validateand_run(command: list[str], **kwargs: Any) -> Any:
+25	        import subprocess
+26	
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: athalia_core/audit/security_auditor.py:27:15
+26	
+27	        return subprocess.run(command, **kwargs)
+28	
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: athalia_core/automation/auto_tester.py:32:8
+31	        # Fallback final
+32	        import subprocess
+33	
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: athalia_core/automation/auto_tester.py:42:19
+41	            safe_kwargs.update(kwargs)
+42	            return subprocess.run(command, **safe_kwargs)
+43	
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: athalia_core/automation/robotics_ci.py:8:0
+7	import logging
+8	import subprocess  # Pour les constantes PIPE, TimeoutExpired
+9	from pathlib import Path
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: athalia_core/distillation/multimodal_distiller.py:30:8
+29	    def validateand_run(command, **kwargs):
+30	        import subprocess
+31	
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: athalia_core/distillation/multimodal_distiller.py:34:15
+33	        safe_kwargs.update(kwargs)
+34	        return subprocess.run(command, **safe_kwargs)
+35	
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: athalia_core/metrics/collector.py:14:0
+13	import json
+14	import subprocess  # Pour les constantes PIPE, TimeoutExpired
+15	import sys
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: athalia_core/metrics/collector.py:193:25
+192	                # Utiliser pytest pour collecter les tests
+193	                result = subprocess.run(
+194	                    [sys.executable, "-m", "pytest", "--collect-only", "-q"],
+195	                    capture_output=True,
+196	                    text=True,
+197	                    timeout=60,
+198	                )
+199	
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: athalia_core/quality/code_linter.py:8:0
+7	import logging
+8	import subprocess
+9	from pathlib import Path
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: athalia_core/quality/code_linter.py:24:15
+23	        safe_kwargs.update(kwargs)
+24	        return subprocess.run(command, **safe_kwargs)
+25	
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: athalia_core/robotics/docker_robotics.py:21:8
+20	    def validateand_run(command, **kwargs):
+21	        import subprocess
+22	
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: athalia_core/robotics/docker_robotics.py:25:15
+24	        safe_kwargs.update(kwargs)
+25	        return subprocess.run(command, **safe_kwargs)
+26	
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: athalia_core/robotics/robotics_ci.py:8:0
+7	import logging
+8	import subprocess
+9	import time
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: athalia_core/robotics/robotics_ci.py:22:8
+21	        safe_kwargs.update(kwargs)
+22	        import subprocess
+23	        return subprocess.run(command, **safe_kwargs)
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: athalia_core/robotics/robotics_ci.py:23:15
+22	        import subprocess
+23	        return subprocess.run(command, **safe_kwargs)
+24	
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: athalia_core/robotics/robotics_ci.py:31:11
+30	    """Exécute une commande shell"""
+31	    return subprocess.run(command, **kwargs)
+32	
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: athalia_core/robotics/ros2_validator.py:19:8
+18	    def validateand_run(command, **kwargs):
+19	        import subprocess
+20	
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: athalia_core/robotics/ros2_validator.py:23:15
+22	        safe_kwargs.update(kwargs)
+23	        return subprocess.run(command, **safe_kwargs)
+24	
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: athalia_core/robotics/rust_analyzer.py:19:8
+18	    def validateand_run(command, **kwargs):
+19	        import subprocess
+20	
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: athalia_core/robotics/rust_analyzer.py:23:15
+22	        safe_kwargs.update(kwargs)
+23	        return subprocess.run(command, **safe_kwargs)
+24	
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: athalia_core/utilities/secure_subprocess.py:8:0
+7	import logging
+8	import subprocess
+9	from typing import Any, Optional
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: athalia_core/utilities/secure_subprocess.py:53:15
+52	    try:
+53	        return subprocess.run(command, **safe_kwargs)
+54	    except subprocess.TimeoutExpired:
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: athalia_core/utilities/secure_subprocess.py:97:15
+96	    try:
+97	        return subprocess.Popen(command, **safe_kwargs)
+98	    except Exception as e:
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: athalia_core/validation/security_validator.py:10:0
+9	import re
+10	import subprocess
+11	
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: athalia_core/validation/security_validator.py:24:8
+23	        safe_kwargs.update(kwargs)
+24	        import subprocess
+25	        return subprocess.run(command, **safe_kwargs)
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: athalia_core/validation/security_validator.py:25:15
+24	        import subprocess
+25	        return subprocess.run(command, **safe_kwargs)
+26	
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 27873
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 3
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 33
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 33
+Files skipped (30):
+	athalia_core/advanced_modules/._auto_correction_advanced.py (syntax error while parsing AST from file)
+	athalia_core/agents/._context_prompt.py (syntax error while parsing AST from file)
+	athalia_core/ai/.___init__.py (syntax error while parsing AST from file)
+	athalia_core/ai/._ai_robust.py (syntax error while parsing AST from file)
+	athalia_core/ai/._ai_robust_enhanced.py (syntax error while parsing AST from file)
+	athalia_core/analytics/._advanced_analytics.py (syntax error while parsing AST from file)
+	athalia_core/api/._main_api_server.py (syntax error while parsing AST from file)
+	athalia_core/audit/._intelligent_auditor.py (syntax error while parsing AST from file)
+	athalia_core/audit/._security_auditor.py (syntax error while parsing AST from file)
+	athalia_core/automation/._auto_cleaner.py (syntax error while parsing AST from file)
+	athalia_core/automation/._auto_tester.py (syntax error while parsing AST from file)
+	athalia_core/automation/._robotics_ci.py (syntax error while parsing AST from file)
+	athalia_core/core/._cache_manager.py (syntax error while parsing AST from file)
+	athalia_core/core/._performance_analyzer.py (syntax error while parsing AST from file)
+	athalia_core/core/._performance_optimizer.py (syntax error while parsing AST from file)
+	athalia_core/dashboard/._security_dashboard.py (syntax error while parsing AST from file)
+	athalia_core/distillation/._code_genetics.py (syntax error while parsing AST from file)
+	athalia_core/distillation/._multimodal_distiller.py (syntax error while parsing AST from file)
+	athalia_core/distillation/._response_distiller.py (syntax error while parsing AST from file)
+	athalia_core/metrics/._collector.py (syntax error while parsing AST from file)
+	athalia_core/quality/._code_linter.py (syntax error while parsing AST from file)
+	athalia_core/robotics/._docker_robotics.py (syntax error while parsing AST from file)
+	athalia_core/robotics/._robotics_ci.py (syntax error while parsing AST from file)
+	athalia_core/robotics/._ros2_validator.py (syntax error while parsing AST from file)
+	athalia_core/robotics/._rust_analyzer.py (syntax error while parsing AST from file)
+	athalia_core/utilities/._dashboard.py (syntax error while parsing AST from file)
+	athalia_core/utilities/._project_importer.py (syntax error while parsing AST from file)
+	athalia_core/utilities/._secure_subprocess.py (syntax error while parsing AST from file)
+	athalia_core/validation/._security.py (syntax error while parsing AST from file)
+	athalia_core/validation/._security_validator.py (syntax error while parsing AST from file)

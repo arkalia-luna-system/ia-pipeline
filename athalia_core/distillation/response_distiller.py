@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
-Distilleur de réponses IA - Fusionne plusieurs réponses selon différentes stratégies
+Module de distillation de réponses IA pour Athalia
+Fusion et optimisation de multiples réponses IA
 """
 
-import random
+import secrets
 from collections import Counter
 from typing import Any
 
@@ -58,7 +59,7 @@ class ResponseDistiller:
         counter = Counter(responses)
         top_count = counter.most_common(1)[0][1]
         top_responses = [resp for resp, count in counter.items() if count == top_count]
-        return random.choice(top_responses)
+        return secrets.choice(top_responses)
 
     def consensus_scoring(self, responses: list[str]) -> str:
         """Retourne la plus longue sous-chaîne commune ET les parties divergentes."""
@@ -93,7 +94,9 @@ class ResponseDistiller:
         fragments = set()
         for r in responses:
             fragments.update(r.split())
-        fusion = " ".join(random.sample(list(fragments), min(len(fragments), 10)))
+        fusion = " ".join(
+            secrets.SystemRandom().sample(list(fragments), min(len(fragments), 10))
+        )
         return f"[Fusion IA] {fusion}"
 
 
