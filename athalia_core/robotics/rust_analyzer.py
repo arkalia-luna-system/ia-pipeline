@@ -1,26 +1,28 @@
 #!/usr/bin/env python3
 """
-Analyseur de projets Rust pour Athalia Robotics
+Module d'analyse Rust pour Athalia
+Analyse des projets Rust et de leurs dépendances
 """
 
 import logging
-import subprocess
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-# Import du validateur de sécurité
+# Import sécurisé pour subprocess
 try:
-    from athalia_core.validation.security_validator import (
-        SecurityError,
-        validate_and_run,
-    )
+    from ..utilities.secure_subprocess import secure_subprocess_run as validateand_run
+    from ..validation.security_validator import SecurityError
 except ImportError:
     # Fallback pour les tests
-    def validateand_run(command: list[str], **kwargs: Any) -> Any:
-        return subprocess.run(command, **kwargs)
+    def validateand_run(command, **kwargs):
+        import subprocess
 
-    class SecurityErrorFallback(Exception):
+        safe_kwargs = {"shell": False, "check": False}
+        safe_kwargs.update(kwargs)
+        return subprocess.run(command, **safe_kwargs)
+
+    class SecurityError(Exception):
         pass
 
 
@@ -236,7 +238,7 @@ class RustAnalyzer:
         """Vérifier si le build system Rust est configuré"""
         try:
             # Utilisation du validateur de sécurité pour l'appel cargo
-            result = validate_and_run(
+            result = validateand_run(
                 ["cargo", "--version"],
                 capture_output=True,
                 text=True,

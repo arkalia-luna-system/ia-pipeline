@@ -6,11 +6,18 @@ Interface de visualisation et monitoring
 
 import json
 import logging
+
+# Import sécurisé pour subprocess
 from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-import yaml
+try:
+    import yaml  # type: ignore
+
+    yaml_module = yaml
+except ImportError:
+    yaml_module = None
 
 logger = logging.getLogger(__name__)
 
@@ -40,10 +47,10 @@ class Dashboard:
             "show_timestamps": True,
         }
 
-        if config_path:
+        if config_path and yaml_module:
             try:
                 with open(config_path, encoding="utf-8") as f:
-                    user_config = yaml.safe_load(f)
+                    user_config = yaml_module.safe_load(f)
                     default_config.update(user_config)
             except Exception as e:
                 logger.warning(
@@ -199,18 +206,18 @@ class Dashboard:
         """Génère le widget documentation"""
         widget = {
             "type": "documentation",
-            "title": "Documentation du Projet",
+            "title": "Qualité de la Documentation",
             "doc_data": doc_data,
             "timestamp": datetime.now().isoformat(),
-            "status": "complete",
+            "status": "good",
         }
 
         # Déterminer le statut de la documentation
-        doc_coverage = doc_data.get("doc_coverage_percentage", 0)
-        if doc_coverage < 30:
-            widget["status"] = "incomplete"
-        elif doc_coverage < 70:
-            widget["status"] = "partial"
+        doc_coverage = doc_data.get("documentation_coverage", 0)
+        if doc_coverage < 50:
+            widget["status"] = "poor"
+        elif doc_coverage < 80:
+            widget["status"] = "fair"
 
         return widget
 
@@ -267,183 +274,393 @@ class Dashboard:
         return layout
 
     def generate_dashboard_html(self, dashboard_data: dict[str, Any]) -> str:
-        """Génère le HTML du dashboard"""
+        """Génère le HTML complet du dashboard"""
         theme = dashboard_data.get("theme", "light")
         widgets = dashboard_data.get("widgets", [])
         config = dashboard_data.get("config", {})
 
-        html_template = f"""<!DOCTYPE html>
+        # Générer le CSS
+        css = self.generate_dashboard_css(theme)
+        # Générer le JavaScript
+        js = self.generate_dashboard_js(config)
+
+        # Construire le HTML
+        html_parts = [
+            f"""<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{dashboard_data.get("title", "Dashboard Athalia")}</title>
-    <style>
-        {self.generate_dashboard_css(theme)}
-    </style>
+    <title>Dashboard Athalia - {dashboard_data.get('title', 'Métriques')}</title>
+    <style>{css}</style>
 </head>
 <body class="theme-{theme}">
-    <header class="dashboard-header">
-        <h1>{dashboard_data.get("title", "Dashboard Athalia")}</h1>
+    <div class="dashboard-header">
+        <h1>📊 Dashboard Athalia</h1>
         <div class="dashboard-controls">
-            <button id="refresh-btn">Actualiser</button>
             <select id="theme-selector">
-                <option value="light" {"selected" if theme == "light" else ""}>
-                    Clair
-                </option>
-                <option value="dark" {"selected" if theme == "dark" else ""}>
-                    Sombre
-                </option>
+                <option value="light" {'selected' if theme == 'light' else ''}>Clair</option>
+                <option value="dark" {'selected' if theme == 'dark' else ''}>Sombre</option>
             </select>
+            <button id="refresh-btn">🔄 Actualiser</button>
         </div>
-    </header>
+    </div>
 
-    <main class="dashboard-content">
-        <div class="widgets-container">
-"""
+    <div class="dashboard-content">
+        <div class="widgets-container">"""
+        ]
 
+        # Ajouter les widgets
         for widget in widgets:
-            html_template += f"""
-            <div class="widget widget-{widget.get("type", "default")}">
-                <h3>{widget.get("title", "Widget")}</h3>
-                <div class="widget-content">
-                    <pre>{json.dumps(widget, indent=2, ensure_ascii=False)}</pre>
-                </div>
-            </div>
-"""
+            html_parts.append(self._generate_widget_html(widget))
 
-        html_template += f"""
-        </div>
-    </main>
+        # Fermer le HTML
+        html_parts.append(
+            """        </div>
+    </div>
 
-    <footer class="dashboard-footer">
-        <p>Généré le {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}</p>
-    </footer>
+    <div class="dashboard-footer">
+        <p>Généré le """
+            + datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            + """</p>
+    </div>
 
-    <script>
-        {self.generate_dashboard_js(config)}
-    </script>
+    <script>"""
+            + js
+            + """</script>
 </body>
 </html>"""
+        )
 
-        return html_template
+        return "".join(html_parts)
+
+    def _generate_widget_html(self, widget: dict[str, Any]) -> str:
+        """Génère le HTML d'un widget individuel"""
+        widget_type = widget.get("type", "unknown")
+        title = widget.get("title", "Widget")
+        timestamp = widget.get("timestamp", "")
+        status = widget.get("status", "normal")
+
+        status_class = f"status-{status}"
+        status_icon = {
+            "normal": "✅",
+            "warning": "⚠️",
+            "critical": "🚨",
+            "good": "✅",
+            "fair": "⚠️",
+            "poor": "❌",
+            "healthy": "✅",
+            "secure": "🛡️",
+        }.get(status, "ℹ️")
+
+        html = f"""
+            <div class="widget {status_class}">
+                <h3>{status_icon} {title}</h3>
+                <div class="widget-content">
+                    <div class="widget-timestamp">🕒 {timestamp}</div>
+                    <div class="widget-data">"""
+
+        # Générer le contenu du widget selon son type
+        if widget_type == "metrics":
+            html += self._generate_metrics_content(widget)
+        elif widget_type == "alerts":
+            html += self._generate_alerts_content(widget)
+        elif widget_type == "performance":
+            html += self._generate_performance_content(widget)
+        elif widget_type == "security":
+            html += self._generate_security_content(widget)
+        elif widget_type == "test_coverage":
+            html += self._generate_test_coverage_content(widget)
+        elif widget_type == "dependencies":
+            html += self._generate_dependencies_content(widget)
+        elif widget_type == "documentation":
+            html += self._generate_documentation_content(widget)
+        else:
+            html += f"<p>Type de widget non reconnu: {widget_type}</p>"
+
+        html += """
+                </div>
+            </div>
+        </div>"""
+
+        return html
+
+    def _generate_metrics_content(self, widget: dict[str, Any]) -> str:
+        """Génère le contenu du widget métriques"""
+        summary = widget.get("summary", {})
+
+        html = "<div class='metrics-summary'>"
+        if summary:
+            html += "<h4>📊 Résumé</h4>"
+            for key, value in summary.items():
+                html += (
+                    f"<p><strong>{key.replace('_', ' ').title()}:</strong> {value}</p>"
+                )
+        else:
+            html += "<p>Aucune métrique disponible</p>"
+        html += "</div>"
+
+        return html
+
+    def _generate_alerts_content(self, widget: dict[str, Any]) -> str:
+        """Génère le contenu du widget alertes"""
+        alerts = widget.get("alerts", [])
+        alert_count = widget.get("alert_count", 0)
+        severity_counts = widget.get("severity_counts", {})
+
+        html = f"<div class='alerts-summary'><h4>🚨 Alertes ({alert_count})</h4>"
+
+        if severity_counts:
+            html += "<div class='severity-breakdown'>"
+            for severity, count in severity_counts.items():
+                if count > 0:
+                    severity_icon = {"high": "🔴", "medium": "🟡", "low": "🟢"}.get(
+                        severity, "⚪"
+                    )
+                    html += f"<span class='severity-{severity}'>{severity_icon} {severity.title()}: {count}</span>"
+            html += "</div>"
+
+        if alerts:
+            html += "<div class='alerts-list'>"
+            for alert in alerts[:5]:  # Limiter à 5 alertes
+                severity = alert.get("severity", "info")
+                message = alert.get("message", "Alerte sans message")
+                html += f"<div class='alert alert-{severity}'>{message}</div>"
+            html += "</div>"
+        else:
+            html += "<p>Aucune alerte active</p>"
+
+        html += "</div>"
+        return html
+
+    def _generate_performance_content(self, widget: dict[str, Any]) -> str:
+        """Génère le contenu du widget performance"""
+        performance_data = widget.get("performance_data", {})
+        status = widget.get("status", "normal")
+
+        html = f"<div class='performance-summary'><h4>⚡ Performance ({status})</h4>"
+
+        if performance_data:
+            for key, value in performance_data.items():
+                if isinstance(value, dict):
+                    html += f"<h5>{key.replace('_', ' ').title()}</h5>"
+                    for sub_key, sub_value in value.items():
+                        html += (
+                            f"<p>{sub_key.replace('_', ' ').title()}: {sub_value}</p>"
+                        )
+                else:
+                    html += f"<p><strong>{key.replace('_', ' ').title()}:</strong> {value}</p>"
+        else:
+            html += "<p>Aucune donnée de performance disponible</p>"
+
+        html += "</div>"
+        return html
+
+    def _generate_security_content(self, widget: dict[str, Any]) -> str:
+        """Génère le contenu du widget sécurité"""
+        security_data = widget.get("security_data", {})
+        status = widget.get("status", "secure")
+
+        html = f"<div class='security-summary'><h4>🛡️ Sécurité ({status})</h4>"
+
+        if security_data:
+            security_score = security_data.get("security_score", 0)
+            html += f"<p><strong>Score de sécurité:</strong> {security_score}/100</p>"
+
+            for key, value in security_data.items():
+                if key != "security_score":
+                    html += f"<p><strong>{key.replace('_', ' ').title()}:</strong> {value}</p>"
+        else:
+            html += "<p>Aucune donnée de sécurité disponible</p>"
+
+        html += "</div>"
+        return html
+
+    def _generate_test_coverage_content(self, widget: dict[str, Any]) -> str:
+        """Génère le contenu du widget couverture de tests"""
+        coverage_data = widget.get("coverage_data", {})
+        status = widget.get("status", "good")
+
+        html = f"<div class='test-coverage-summary'><h4>🧪 Couverture de Tests ({status})</h4>"
+
+        if coverage_data:
+            overall_coverage = coverage_data.get("overall_coverage", 0)
+            html += f"<p><strong>Couverture globale:</strong> {overall_coverage}%</p>"
+
+            for key, value in coverage_data.items():
+                if key != "overall_coverage":
+                    html += f"<p><strong>{key.replace('_', ' ').title()}:</strong> {value}</p>"
+        else:
+            html += "<p>Aucune donnée de couverture disponible</p>"
+
+        html += "</div>"
+        return html
+
+    def _generate_dependencies_content(self, widget: dict[str, Any]) -> str:
+        """Génère le contenu du widget dépendances"""
+        dependency_data = widget.get("dependency_data", {})
+        status = widget.get("status", "healthy")
+
+        html = f"<div class='dependencies-summary'><h4>📦 Dépendances ({status})</h4>"
+
+        if dependency_data:
+            for key, value in dependency_data.items():
+                html += (
+                    f"<p><strong>{key.replace('_', ' ').title()}:</strong> {value}</p>"
+                )
+        else:
+            html += "<p>Aucune donnée de dépendances disponible</p>"
+
+        html += "</div>"
+        return html
+
+    def _generate_documentation_content(self, widget: dict[str, Any]) -> str:
+        """Génère le contenu du widget documentation"""
+        doc_data = widget.get("doc_data", {})
+        status = widget.get("status", "good")
+
+        html = (
+            f"<div class='documentation-summary'><h4>📚 Documentation ({status})</h4>"
+        )
+
+        if doc_data:
+            for key, value in doc_data.items():
+                html += (
+                    f"<p><strong>{key.replace('_', ' ').title()}:</strong> {value}</p>"
+                )
+        else:
+            html += "<p>Aucune donnée de documentation disponible</p>"
+
+        html += "</div>"
+        return html
 
     def generate_dashboard_css(self, theme: str = "light") -> str:
         """Génère le CSS du dashboard"""
         if theme == "dark":
             return """
-body {
-    background-color: #1a1a1a;
-    color: #ffffff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.dashboard-header {
-    background-color: #2d2d2d;
-    padding: 1rem;
-    border-bottom: 1px solid #444;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
 
-.dashboard-content {
-    padding: 2rem;
-}
+        .dashboard-header {
+            background-color: #2d2d2d;
+            padding: 1rem;
+            border-bottom: 1px solid #404040;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
 
-.widgets-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1rem;
-}
+        .dashboard-content {
+            padding: 2rem;
+        }
 
-.widget {
-    background-color: #2d2d2d;
-    border: 1px solid #444;
-    border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
+        .widgets-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
 
-.widget h3 {
-    margin-top: 0;
-    color: #4CAF50;
-    border-bottom: 1px solid #444;
-    padding-bottom: 0.5rem;
-}
+        .widget {
+            background-color: #2d2d2d;
+            border: 1px solid #404040;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
 
-.widget-content {
-    max-height: 300px;
-    overflow-y: auto;
-}
+        .widget h3 {
+            margin-top: 0;
+            color: #4CAF50;
+            border-bottom: 1px solid #404040;
+            padding-bottom: 0.5rem;
+        }
 
-.dashboard-footer {
-    background-color: #2d2d2d;
-    padding: 1rem;
-    text-align: center;
-    border-top: 1px solid #444;
-    margin-top: 2rem;
-}
+        .widget-content {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .dashboard-footer {
+            background-color: #2d2d2d;
+            padding: 1rem;
+            text-align: center;
+            border-top: 1px solid #404040;
+            margin-top: 2rem;
+        }
 """
         else:
             return """
-body {
-    background-color: #f5f5f5;
-    color: #333333;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.dashboard-header {
-    background-color: #ffffff;
-    padding: 1rem;
-    border-bottom: 1px solid #e0e0e0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333333;
+            line-height: 1.6;
+        }
 
-.dashboard-content {
-    padding: 2rem;
-}
+        .dashboard-header {
+            background-color: #ffffff;
+            padding: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
 
-.widgets-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1rem;
-}
+        .dashboard-content {
+            padding: 2rem;
+        }
 
-.widget {
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
+        .widgets-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
 
-.widget h3 {
-    margin-top: 0;
-    color: #2196F3;
-    border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 0.5rem;
-}
+        .widget {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
 
-.widget-content {
-    max-height: 300px;
-    overflow-y: auto;
-}
+        .widget h3 {
+            margin-top: 0;
+            color: #2196F3;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 0.5rem;
+        }
 
-.dashboard-footer {
-    background-color: #ffffff;
-    padding: 1rem;
-    text-align: center;
-    border-top: 1px solid #e0e0e0;
-    margin-top: 2rem;
-}
+        .widget-content {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .dashboard-footer {
+            background-color: #ffffff;
+            padding: 1rem;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 2rem;
+        }
 """
 
     def generate_dashboard_js(self, config: dict[str, Any]) -> str:
@@ -562,6 +779,265 @@ document.addEventListener('DOMContentLoaded', function() {{
         }
 
 
+class DashboardGenerator:
+    """Générateur de dashboard avec métriques réelles du projet"""
+
+    def __init__(self, project_path: str = "."):
+        self.project_path = Path(project_path)
+        self.dashboard = Dashboard(project_path)
+
+    def collect_real_metrics(self) -> dict[str, Any]:
+        """Collecte les vraies métriques du projet"""
+        metrics: dict[str, Any] = {}
+
+        try:
+            # Dossiers à exclure
+            exclude_dirs = {
+                ".git",
+                ".venv",
+                "venv",
+                "__pycache__",
+                ".pytest_cache",
+                "node_modules",
+                ".tox",
+                ".mypy_cache",
+                ".ruff_cache",
+                "build",
+                "dist",
+                "*.egg-info",
+                ".coverage",
+            }
+
+            # Compter les fichiers Python (exclure les dossiers système)
+            python_files = []
+            for py_file in self.project_path.rglob("*.py"):
+                # Vérifier si le fichier est dans un dossier exclu
+                path_parts = py_file.parts
+                if not any(exclude_dir in path_parts for exclude_dir in exclude_dirs):
+                    python_files.append(py_file)
+
+            metrics["python_files"] = len(python_files)
+
+            # Compter les lignes de code (seulement les vrais fichiers du projet)
+            total_lines = 0
+            for py_file in python_files:
+                try:
+                    with open(py_file, encoding="utf-8") as f:
+                        total_lines += len(f.readlines())
+                except Exception as e:
+                    logger.warning(f"Impossible de lire le fichier {py_file}: {e}")
+                    continue
+            metrics["lines_of_code"] = total_lines
+
+            # Compter les tests (seulement les vrais tests du projet)
+            test_files = [
+                f for f in python_files if "test" in f.name.lower() or "test" in str(f)
+            ]
+            metrics["test_files"] = len(test_files)
+
+            # Compter les fichiers de documentation (exclure les dossiers système)
+            doc_files = []
+            for doc_file in self.project_path.rglob("*.md"):
+                path_parts = doc_file.parts
+                if not any(exclude_dir in path_parts for exclude_dir in exclude_dirs):
+                    doc_files.append(doc_file)
+
+            for doc_file in self.project_path.rglob("*.rst"):
+                path_parts = doc_file.parts
+                if not any(exclude_dir in path_parts for exclude_dir in exclude_dirs):
+                    doc_files.append(doc_file)
+
+            metrics["documentation_files"] = len(doc_files)
+
+            # Analyser les dépendances
+            requirements_file = self.project_path / "requirements.txt"
+            if requirements_file.exists():
+                with open(requirements_file) as f:
+                    deps = [
+                        line.strip()
+                        for line in f
+                        if line.strip() and not line.startswith("#")
+                    ]
+                metrics["dependencies"] = len(deps)
+            else:
+                metrics["dependencies"] = 0
+
+            # Calculer la complexité moyenne (estimation)
+            if python_files:
+                metrics["avg_complexity"] = float(
+                    round(total_lines / len(python_files), 2)
+                )
+            else:
+                metrics["avg_complexity"] = 0.0
+
+            # Compter les fonctions et classes (estimation réaliste)
+            metrics["estimated_functions"] = int(
+                round(total_lines / 20)
+            )  # Estimation réaliste
+            metrics["estimated_classes"] = int(
+                round(total_lines / 100)
+            )  # Estimation réaliste
+
+        except Exception as e:
+            logger.error(f"Erreur collecte métriques: {e}")
+            metrics = {
+                "error": str(e),
+                "python_files": 0,
+                "lines_of_code": 0,
+                "test_files": 0,
+                "documentation_files": 0,
+                "dependencies": 0,
+                "avg_complexity": 0,
+                "estimated_functions": 0,
+                "estimated_classes": 0,
+            }
+
+        return metrics
+
+    def generate_analytics_dashboard(self) -> str:
+        """Génère un dashboard analytics avec les vraies métriques"""
+        metrics = self.collect_real_metrics()
+
+        if "error" in metrics:
+            return f"<h1>❌ Erreur Dashboard</h1><p>{metrics['error']}</p>"
+
+        # Créer le HTML du dashboard
+        html = f"""<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📊 Dashboard Analytics Réel - Athalia</title>
+    <style>
+                body {{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }}
+        .container {{
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }}
+        .header {{
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+        }}
+        .metrics-grid {{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }}
+        .metric-card {{
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }}
+        .metric-card:hover {{
+            transform: translateY(-5px);
+        }}
+        .metric-value {{
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+            margin: 10px 0;
+        }}
+        .metric-label {{
+            color: #666;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }}
+        .summary {{
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }}
+        .summary h2 {{
+            color: #667eea;
+            margin-bottom: 15px;
+        }}
+        .footer {{
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: #666;
+            border-top: 1px solid #eee;
+        }}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Dashboard Analytics Réel - Athalia</h1>
+            <p>Métriques collectées en temps réel - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
+        </div>
+
+        <div class="summary">
+            <h2>📈 Résumé du Projet</h2>
+            <p>Ce dashboard affiche les <strong>vraies métriques</strong> collectées directement depuis votre projet Athalia.
+            Toutes les données sont calculées en temps réel et reflètent l'état actuel de votre codebase.</p>
+        </div>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-value">{metrics['python_files']:,}</div>
+                <div class="metric-label">Fichiers Python</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">{metrics['lines_of_code']:,}</div>
+                <div class="metric-label">Lignes de Code</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">{metrics['test_files']:,}</div>
+                <div class="metric-label">Fichiers de Test</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">{metrics['documentation_files']:,}</div>
+                <div class="metric-label">Fichiers de Documentation</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">{metrics['dependencies']:,}</div>
+                <div class="metric-label">Dépendances</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">{metrics['avg_complexity']}</div>
+                <div class="metric-label">Complexité Moyenne</div>
+            </div>
+        </div>
+
+        <div class="summary">
+            <h2>🔍 Détails Techniques</h2>
+            <p><strong>Fonctions estimées:</strong> {metrics['estimated_functions']:,} (basé sur la densité de code typique)</p>
+            <p><strong>Classes estimées:</strong> {metrics['estimated_classes']:,} (basé sur la densité de code typique)</p>
+            <p><strong>Ratio tests/code:</strong> {round(metrics['test_files'] / max(metrics['python_files'], 1) * 100, 1)}%</p>
+            <p><strong>Ratio documentation/code:</strong> {round(metrics['documentation_files'] / max(metrics['python_files'], 1) * 100, 1)}%</p>
+        </div>
+
+        <div class="footer">
+            <p>✅ <strong>Données vérifiées et réalistes</strong> - Généré automatiquement par Athalia</p>
+        </div>
+    </div>
+</body>
+</html>"""
+
+        return html
+
+
 def generate_dashboard_html(project_path: str = ".") -> str:
     """Fonction utilitaire pour générer le HTML du dashboard"""
     dashboard = Dashboard(project_path)
@@ -573,3 +1049,9 @@ def create_dashboard_report(project_path: str = ".") -> dict[str, Any]:
     """Fonction utilitaire pour créer un rapport de dashboard"""
     dashboard = Dashboard(project_path)
     return dashboard.generate_dashboard_report()
+
+
+def generate_analytics_dashboard(project_path: str = ".") -> str:
+    """Fonction utilitaire pour générer le dashboard analytics"""
+    generator = DashboardGenerator(project_path)
+    return generator.generate_analytics_dashboard()

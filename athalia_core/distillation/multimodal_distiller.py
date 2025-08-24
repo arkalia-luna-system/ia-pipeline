@@ -1,28 +1,39 @@
+#!/usr/bin/env python3
 """
-Distillation multimodale pour Athalia/Arkalia
-- Fusionne réponses texte et image (LLaVA)
-- Appel réel à LLaVA via RobustAI (Ollama)
+Module de distillation multimodale pour Athalia
+Fusion de réponses texte et image via LLaVA et autres modèles
 """
 
-import subprocess
+import logging
 from typing import Any
 
-from athalia_core.ai.ai_robust import AIModel, RobustAI
-
-# Import du validateur de sécurité
+# Import des modules nécessaires
 try:
-    from athalia_core.validation.security_validator import (
-        SecurityError,
-        validate_and_run,
-    )
+    from ..ai.ai_robust import AIModel, RobustAI
 except ImportError:
+    # Fallback pour les tests
+    class AIModel:
+        OLLAMA_QWEN = "ollama_qwen"
 
-    def validate_and_run(
-        command: list[str], **kwargs: Any
-    ) -> subprocess.CompletedProcess:
-        return subprocess.run(command, **kwargs)
+    class RobustAI:
+        def _call_model(self, model, prompt):
+            return f"[Modèle {model} non disponible]"
 
-    class SecurityErrorFallback(Exception):
+
+# Import sécurisé pour subprocess
+try:
+    from ..utilities.secure_subprocess import secure_subprocess_run as validateand_run
+    from ..validation.security_validator import SecurityError
+except ImportError:
+    # Fallback sécurisé
+    def validateand_run(command, **kwargs):
+        import subprocess
+
+        safe_kwargs = {"shell": False, "check": False}
+        safe_kwargs.update(kwargs)
+        return subprocess.run(command, **safe_kwargs)
+
+    class SecurityError(Exception):
         """Classe de fallback pour SecurityError"""
 
         pass
@@ -108,7 +119,7 @@ class MultimodalDistiller:
         """
         # Ollama LLaVA supporte --image <path> en CLI
         try:
-            result = validate_and_run(
+            result = validateand_run(
                 [
                     "ollama",
                     "run",

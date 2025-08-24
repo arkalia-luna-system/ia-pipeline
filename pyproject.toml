@@ -87,7 +87,7 @@ athalia-dashboard = "athalia_core.utilities.dashboard:Dashboard"
 
 [project.urls]
 Homepage = "https://github.com/arkalia-luna-system/ia-pipeline"
-Documentation = "https://github.com/arkalia-luna-system/ia-pipeline/tree/main/docs-tech"
+Documentation = "https://github.com/arkalia-luna-system/ia-pipeline/tree/develop/docs"
 Repository = "https://github.com/arkalia-luna-system/ia-pipeline"
 "Bug Tracker" = "https://github.com/arkalia-luna-system/ia-pipeline/issues"
 

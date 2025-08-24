@@ -272,3 +272,17 @@ coverage/
 htmlcov/
 .coverage
 coverage.xml
+
+# Protection des données de couverture et caches (ajouté automatiquement)
+data/coverage/
+.cache/
+.ruff_cache/
+
+# Garder visible (métriques et rapports publics)
+!data/metrics/
+!data/reports/
+!data/benchmarks/
+
+# Archive déplacée dans data/archive/
+data/archive/
+!data/archive/README.md

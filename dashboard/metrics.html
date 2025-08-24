@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athalia Project Metrics Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+        .metric-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.2s;
+        }
+        .metric-card:hover {
+            transform: translateY(-2px);
+        }
+        .metric-title {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .metric-description {
+            font-size: 0.9em;
+            color: #666;
+        }
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #e9ecef;
+        }
+        .status-badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Athalia Project Metrics</h1>
+            <p>Generated on 2025-08-21 18:46:16</p>
+        </div>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-title">🐍 Python Files</div>
+                <div class="metric-value">341</div>
+                <div class="metric-description">Total modules in the project <span class="status-badge">COUNTED</span></div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-title">📝 Lines of Code</div>
+                <div class="metric-value">75,625</div>
+                <div class="metric-description">Total lines across all Python files <span class="status-badge">MEASURED</span></div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-title">🧪 Tests</div>
+                <div class="metric-value">1,774</div>
+                <div class="metric-description">Tests collected by pytest <span class="status-badge">COLLECTED</span></div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-title">🛡️ Security Commands</div>
+                <div class="metric-value">62</div>
+                <div class="metric-description">Validated security commands <span class="status-badge">TESTED</span></div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-title">📊 HTML Dashboards</div>
+                <div class="metric-value">13</div>
+                <div class="metric-description">Functional dashboard files <span class="status-badge">VERIFIED</span></div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-title">🔧 Utility Scripts</div>
+                <div class="metric-value">69</div>
+                <div class="metric-description">Available automation tools <span class="status-badge">LISTED</span></div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-title">📚 Documentation</div>
+                <div class="metric-value">312</div>
+                <div class="metric-description">Documentation files <span class="status-badge">ORGANIZED</span></div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-title">📁 Core Files</div>
+                <div class="metric-value">160</div>
+                <div class="metric-description">Core application modules <span class="status-badge">ANALYZED</span></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>
+                🤖 <strong>Automatically generated</strong> by Athalia Metrics Collector v1.0.0
+                <br>
+                📊 For detailed metrics, see <a href="../data/metrics.json">data/metrics.json</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Auto-refresh every 5 minutes if this is viewed in a live environment
+        setTimeout(() => {
+            if (confirm('Update metrics dashboard?')) {
+                window.location.reload();
+            }
+        }, 300000);
+    </script>
+</body>
+</html>

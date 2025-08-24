@@ -7,29 +7,46 @@ Exécution et validation automatique des tests
 import argparse
 import ast
 import logging
-import subprocess
 from pathlib import Path
 from typing import Any, Union
 
 # Import du validateur de sécurité
 try:
-    from athalia_core.validation.security_validator import (
+    from ..validation.security_validator import (
         SecurityError,
         validateand_run,
     )
 except ImportError:
-    # Fallback pour les tests
-    class SecurityErrorFallback(Exception):
-        pass
+    # Fallback pour les tests - utiliser le module sécurisé
+    try:
+        from ..utilities.secure_subprocess import (
+            secure_subprocess_run as validateand_run,
+        )
 
-    def validateand_run(command: list[str], **kwargs: Any) -> Any:
-        return subprocess.run(command, **kwargs)
+        # Définir SecurityError pour la compatibilité
+        class SecurityError(Exception):
+            pass
+
+    except ImportError:
+        # Fallback final
+        import subprocess
+
+        # Définir SecurityError pour la compatibilité
+        class SecurityError(Exception):
+            pass
+
+        def validateand_run(command: list[str], **kwargs: Any):
+
+            # Paramètres de sécurité minimaux
+            safe_kwargs = {"shell": False, "check": False}
+            safe_kwargs.update(kwargs)
+            return subprocess.run(command, **safe_kwargs)
 
 
 logger = logging.getLogger(__name__)
 
 # Module de tests automatiques pour Athalia
-# Génération automatique de tests unitaires et d'intégration'
+# Génération automatique de tests unitaires et d'intégration
 
 
 class AutoTester:
@@ -146,7 +163,7 @@ class AutoTester:
     def _run_existing_tests(self) -> dict[str, Any]:
         """Exécute les tests existants"""
         try:
-            result = subprocess.run(
+            result = validateand_run(
                 ["python", "-m", "pytest", "tests/", "-v"],
                 capture_output=True,
                 text=True,
@@ -552,7 +569,7 @@ if __name__ == "__main__":
     def _run_tests(self) -> dict[str, Any]:
         """Exécute tous les tests du projet"""
         try:
-            result = subprocess.run(
+            result = validateand_run(
                 ["python", "-m", "pytest", "tests/", "-v"],
                 capture_output=True,
                 text=True,

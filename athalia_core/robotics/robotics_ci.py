@@ -1,13 +1,7 @@
+#!/usr/bin/env python3
 """
-Robotics CI - CI/CD spécialisé pour projets robotiques
-======================================================
-
-Système CI/CD adapté aux projets Reachy/ROS2:
-- Tests ROS2
-- Build Docker
-- Compilation Rust
-- Validation robotique
-- Déploiement automatisé
+Module CI/CD robotique pour Athalia
+Gestion des pipelines d'intégration continue pour projets robotiques
 """
 
 import logging
@@ -17,12 +11,17 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+# Import sécurisé pour subprocess
 try:
-    from ..validation.security_validator import validateand_run
+    from ..utilities.secure_subprocess import secure_subprocess_run as validateand_run
 except ImportError:
+    # Fallback pour les tests
+    def validateand_run(command, **kwargs):
+        safe_kwargs = {"shell": False, "check": False}
+        safe_kwargs.update(kwargs)
+        import subprocess
 
-    def validateand_run(command: list[str], **kwargs: Any) -> Any:
-        return subprocess.run(command, **kwargs)
+        return subprocess.run(command, **safe_kwargs)
 
 
 logger = logging.getLogger(__name__)

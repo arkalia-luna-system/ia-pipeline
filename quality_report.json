@@ -1,0 +1,17 @@
+{
+  "timestamp": "/Volumes/T7/athalia-dev-setup",
+  "project": ".",
+  "score": 80,
+  "errors": [
+    "MyPy: athalia_core/dashboard/security_dashboard.py:282:9: error: expected 'except' or"
+  ],
+  "warnings": [
+    "isort non exécuté: Commande non autorisée: Commande non autorisée",
+    "Bandit non exécuté: Erreur d'exécution: Command '['bandit', '-r', '.', '-f', 'txt']' timed out after 45 seconds",
+    "Analyse de complexité non exécutée: Commande non autorisée: Commande non autorisée",
+    "Couverture documentation faible: 5.6%",
+    "Vérification couverture non exécutée: Commande non autorisée: Commande non autorisée"
+  ],
+  "fixes": [],
+  "quality_level": "BON"
+}
