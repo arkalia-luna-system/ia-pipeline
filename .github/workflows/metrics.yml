@@ -133,7 +133,7 @@ jobs:
           fi
 
       - name: 📤 Upload Metrics Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: athalia-metrics-${{ github.sha }}
           path: |
@@ -203,7 +203,7 @@ jobs:
 
       - name: 📦 Upload Pages Artifact
         if: github.repository_owner == 'arkalia-luna-system' && hashFiles('public/index.html') != ''
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./public
 
