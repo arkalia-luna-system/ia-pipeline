@@ -117,7 +117,7 @@ lexid==2021.1006
 license-expression==30.4.3
 litellm==1.72.6
 loguru==0.7.3
-Markdown==3.8
+Markdown==3.8.2
 markdown-it-py==3.0.0
 MarkupSafe==3.0.2
 marshmallow==4.0.0
