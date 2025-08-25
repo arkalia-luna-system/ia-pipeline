@@ -14,103 +14,103 @@ import pytest
 
 
 class TestVideoTutorialSystem:
-    """Tests pour le module tutorials.video_tutorial_system"""
+    """Tests pour le module InteractiveTutorialSystem"""
 
     def setup_method(self):
-        """Setup pour chaque test"""
-        # Créer un répertoire temporaire pour les tests
-        self.temp_dir = tempfile.mkdtemp()
-        self.project_path = Path(self.temp_dir)
+        """Configuration avant chaque test"""
+        self.project_path = Path(tempfile.mkdtemp())
 
     def teardown_method(self):
-        """Cleanup après chaque test"""
-        # Nettoyer le répertoire temporaire
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+        """Nettoyage après chaque test"""
+        if self.project_path.exists():
+            shutil.rmtree(self.project_path)
 
     def test_video_tutorial_system_import(self):
-        """Test que le module peut être importé"""
+        """Test de l'import du module InteractiveTutorialSystem"""
         try:
-            from athalia_core.tutorials.video_tutorial_system import VideoTutorialSystem
+            from athalia_core.tutorials.interactive_tutorial_system import (
+                InteractiveTutorialSystem,
+            )
 
-            assert VideoTutorialSystem is not None
-            assert callable(VideoTutorialSystem)
+            assert InteractiveTutorialSystem is not None
+            assert callable(InteractiveTutorialSystem)
         except ImportError as e:
-            pytest.skip(f"Module VideoTutorialSystem non disponible: {e}")
+            pytest.skip(f"Module InteractiveTutorialSystem non disponible: {e}")
 
     def test_video_tutorial_system_initialization(self):
-        """Test de l'initialisation de VideoTutorialSystem"""
+        """Test de l'initialisation de InteractiveTutorialSystem"""
         try:
-            from athalia_core.tutorials.video_tutorial_system import VideoTutorialSystem
+            from athalia_core.tutorials.interactive_tutorial_system import (
+                InteractiveTutorialSystem,
+            )
 
             # Créer une instance
-            system = VideoTutorialSystem(str(self.project_path))
+            system = InteractiveTutorialSystem(str(self.project_path))
 
             # Vérifier les attributs de base
             assert system.project_path == self.project_path
             assert system.tutorials_dir == self.project_path / "dashboard" / "tutorials"
-            assert isinstance(system.tutorials_data, list)
-            assert len(system.tutorials_data) > 0
+            assert hasattr(system, "tutorials")
+            assert isinstance(system.tutorials, list)
+            assert len(system.tutorials) > 0
 
         except ImportError as e:
-            pytest.skip(f"Module VideoTutorialSystem non disponible: {e}")
+            pytest.skip(f"Module InteractiveTutorialSystem non disponible: {e}")
 
     def test_get_default_tutorials(self):
         """Test de la méthode _get_default_tutorials"""
         try:
-            from athalia_core.tutorials.video_tutorial_system import VideoTutorialSystem
+            from athalia_core.tutorials.interactive_tutorial_system import (
+                InteractiveTutorialSystem,
+            )
 
-            system = VideoTutorialSystem(str(self.project_path))
+            system = InteractiveTutorialSystem(str(self.project_path))
 
             # Vérifier que les tutoriels par défaut sont présents
-            tutorials = system.tutorials_data
+            tutorials = system.tutorials
 
             # Vérifier la structure des tutoriels
             for tutorial in tutorials:
-                assert "id" in tutorial
-                assert "title" in tutorial
-                assert "description" in tutorial
-                assert "duration" in tutorial
-                assert "difficulty" in tutorial
-                assert "category" in tutorial
-                assert "thumbnail" in tutorial
-                assert "video_url" in tutorial
-                assert "tags" in tutorial
-                assert "views" in tutorial
-                assert "rating" in tutorial
-                assert "created_at" in tutorial
+                assert hasattr(tutorial, "id")
+                assert hasattr(tutorial, "title")
+                assert hasattr(tutorial, "description")
+                assert hasattr(tutorial, "estimated_total_time")
+                assert hasattr(tutorial, "difficulty")
+                assert hasattr(tutorial, "category")
+                assert hasattr(tutorial, "steps")
+                assert hasattr(tutorial, "tags")
 
                 # Vérifier les types
-                assert isinstance(tutorial["id"], str)
-                assert isinstance(tutorial["title"], str)
-                assert isinstance(tutorial["description"], str)
-                assert isinstance(tutorial["duration"], str)
-                assert isinstance(tutorial["difficulty"], str)
-                assert isinstance(tutorial["category"], str)
-                assert isinstance(tutorial["thumbnail"], str)
-                assert isinstance(tutorial["video_url"], str)
-                assert isinstance(tutorial["tags"], list)
-                assert isinstance(tutorial["views"], int)
-                assert isinstance(tutorial["rating"], int | float)
-                assert isinstance(tutorial["created_at"], str)
+                assert isinstance(tutorial.id, str)
+                assert isinstance(tutorial.title, str)
+                assert isinstance(tutorial.description, str)
+                assert isinstance(tutorial.estimated_total_time, int)
+                assert isinstance(tutorial.difficulty, str)
+                assert isinstance(tutorial.category, str)
+                assert isinstance(tutorial.steps, list)
+                assert isinstance(tutorial.tags, list)
 
         except ImportError as e:
-            pytest.skip(f"Module VideoTutorialSystem non disponible: {e}")
+            pytest.skip(f"Module InteractiveTutorialSystem non disponible: {e}")
 
     def test_get_tutorials_summary(self):
         """Test de la méthode get_tutorials_summary"""
         try:
-            from athalia_core.tutorials.video_tutorial_system import VideoTutorialSystem
+            from athalia_core.tutorials.interactive_tutorial_system import (
+                InteractiveTutorialSystem,
+            )
 
-            system = VideoTutorialSystem(str(self.project_path))
+            system = InteractiveTutorialSystem(str(self.project_path))
 
             summary = system.get_tutorials_summary()
             assert isinstance(summary, dict)
 
-            # Vérifier les clés attendues
+            # Vérifier les clés attendues (selon ton implémentation réelle)
             expected_keys = [
                 "total_tutorials",
-                "total_views",
-                "average_rating",
+                "total_steps",
+                "total_attempts",
+                "average_completion_rate",
                 "categories",
                 "difficulties",
                 "last_updated",
@@ -120,41 +120,47 @@ class TestVideoTutorialSystem:
 
             # Vérifier les types
             assert isinstance(summary["total_tutorials"], int)
-            assert isinstance(summary["total_views"], int)
-            assert isinstance(summary["average_rating"], int | float)
+            assert isinstance(summary["total_steps"], int)
+            assert isinstance(summary["total_attempts"], int)
+            assert isinstance(summary["average_completion_rate"], float)
             assert isinstance(summary["categories"], list)
             assert isinstance(summary["difficulties"], list)
             assert isinstance(summary["last_updated"], str)
 
             # Vérifier les valeurs logiques
             assert summary["total_tutorials"] > 0
-            assert summary["total_views"] >= 0
-            assert 0 <= summary["average_rating"] <= 5
+            assert summary["total_steps"] > 0
+            assert summary["total_attempts"] >= 0
+            assert 0 <= summary["average_completion_rate"] <= 100
 
         except ImportError as e:
-            pytest.skip(f"Module VideoTutorialSystem non disponible: {e}")
+            pytest.skip(f"Module InteractiveTutorialSystem non disponible: {e}")
 
     @patch("webbrowser.open")
     def test_open_tutorials(self, mock_browser):
         """Test de la méthode open_tutorials"""
         try:
-            from athalia_core.tutorials.video_tutorial_system import VideoTutorialSystem
+            from athalia_core.tutorials.interactive_tutorial_system import (
+                InteractiveTutorialSystem,
+            )
 
-            system = VideoTutorialSystem(str(self.project_path))
+            system = InteractiveTutorialSystem(str(self.project_path))
 
             # Test d'ouverture des tutoriels
             system.open_tutorials()
             mock_browser.assert_called_once()
 
         except ImportError as e:
-            pytest.skip(f"Module VideoTutorialSystem non disponible: {e}")
+            pytest.skip(f"Module InteractiveTutorialSystem non disponible: {e}")
 
     def test_generate_tutorials_interface(self):
         """Test de la méthode generate_tutorials_interface"""
         try:
-            from athalia_core.tutorials.video_tutorial_system import VideoTutorialSystem
+            from athalia_core.tutorials.interactive_tutorial_system import (
+                InteractiveTutorialSystem,
+            )
 
-            system = VideoTutorialSystem(str(self.project_path))
+            system = InteractiveTutorialSystem(str(self.project_path))
 
             # Générer l'interface
             interface_file = system.generate_tutorials_interface()
@@ -166,31 +172,34 @@ class TestVideoTutorialSystem:
             with open(interface_file, encoding="utf-8") as f:
                 content = f.read()
                 assert "<!DOCTYPE html>" in content
-                assert "<html" in content  # Changed from "<html>" to "<html"
+                assert "<html" in content  # Plus flexible pour lang="fr"
                 assert "</html>" in content
                 assert "Athalia" in content
 
         except ImportError as e:
-            pytest.skip(f"Module VideoTutorialSystem non disponible: {e}")
+            pytest.skip(f"Module InteractiveTutorialSystem non disponible: {e}")
 
     def test_module_structure(self):
         """Test de la structure du module"""
         try:
-            from athalia_core.tutorials.video_tutorial_system import VideoTutorialSystem
+            from athalia_core.tutorials.interactive_tutorial_system import (
+                InteractiveTutorialSystem,
+            )
 
             # Vérifier que la classe a les méthodes attendues
-            assert hasattr(VideoTutorialSystem, "__init__")
-            assert hasattr(VideoTutorialSystem, "get_tutorials_summary")
-            assert hasattr(VideoTutorialSystem, "open_tutorials")
-            assert hasattr(VideoTutorialSystem, "generate_tutorials_interface")
+            assert hasattr(InteractiveTutorialSystem, "__init__")
+            assert hasattr(InteractiveTutorialSystem, "start_tutorial")
+            assert hasattr(InteractiveTutorialSystem, "get_current_step")
+            assert hasattr(InteractiveTutorialSystem, "open_tutorials")
+            assert hasattr(InteractiveTutorialSystem, "generate_tutorials_interface")
 
         except ImportError as e:
-            pytest.skip(f"Module VideoTutorialSystem non disponible: {e}")
+            pytest.skip(f"Module InteractiveTutorialSystem non disponible: {e}")
 
     def test_module_docstring(self):
-        """Test que le module a une docstring appropriée"""
+        """Test de la docstring du module"""
         try:
-            import athalia_core.tutorials.video_tutorial_system as module
+            import athalia_core.tutorials.interactive_tutorial_system as module
 
             # Vérifier que le module a une docstring
             assert module.__doc__ is not None
@@ -201,27 +210,31 @@ class TestVideoTutorialSystem:
             assert "tutoriels" in docstring.lower() or "tutorials" in docstring.lower()
 
         except ImportError as e:
-            pytest.skip(f"Module VideoTutorialSystem non disponible: {e}")
+            pytest.skip(f"Module InteractiveTutorialSystem non disponible: {e}")
 
 
 def test_module_integration():
-    """Test d'intégration du module"""
+    """Test d'intégration complet du module"""
     try:
-        from athalia_core.tutorials.video_tutorial_system import VideoTutorialSystem
+        from athalia_core.tutorials.interactive_tutorial_system import (
+            InteractiveTutorialSystem,
+        )
 
         # Test d'import complet du module
-        assert VideoTutorialSystem is not None
-        assert callable(VideoTutorialSystem)
+        assert InteractiveTutorialSystem is not None
+        assert callable(InteractiveTutorialSystem)
 
         # Test de création d'instance
         with tempfile.TemporaryDirectory() as temp_dir:
-            system = VideoTutorialSystem(temp_dir)
-            assert system is not None
-            assert hasattr(system, "tutorials_data")
-            assert isinstance(system.tutorials_data, list)
+            system = InteractiveTutorialSystem(temp_dir)
+
+            # Vérifier les attributs de base
+            assert hasattr(system, "project_path")
+            assert hasattr(system, "tutorials")
+            assert isinstance(system.tutorials, list)
 
     except ImportError as e:
-        pytest.skip(f"Module VideoTutorialSystem non disponible: {e}")
+        pytest.skip(f"Module InteractiveTutorialSystem non disponible: {e}")
 
 
 if __name__ == "__main__":
