@@ -141,7 +141,7 @@ msgpack==1.1.1
 multidict==6.6.3
 mypy==1.16.1
 mypy_extensions==1.1.0
-narwhals==1.47.0
+narwhals==2.2.0
 networkx==3.4.2
 nltk==3.9.1
 nodeenv==1.9.1
