@@ -60,7 +60,7 @@ pip-audit==2.7.0
 # --- BUILD & PACKAGING ---
 build==1.2.1
 twine==5.0.0
-wheel==0.43.0
+wheel==0.45.1
 
 # --- DOCUMENTATION ---
 mkdocs==1.6.0
