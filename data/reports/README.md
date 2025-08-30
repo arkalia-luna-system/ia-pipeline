@@ -1,34 +1,35 @@
-# 📊 Rapports Data - Athalia
+# 📊 Rapports et Métriques du Projet Athalia
 
-**Dernière mise à jour :** 14 Août 2025  
-**Statut :** 📋 **RAPPORTS ORGANISÉS**
+## 📁 Structure des Rapports
 
----
+### 🔒 Rapports de Sécurité (`security/`)
+- `security_audit.txt` - Audit de sécurité principal
+- `bandit-*.txt` - Rapports d'analyse de sécurité Bandit
+- `bandit_report*.json` - Données JSON des analyses de sécurité
 
-## 🎯 **VUE D'ENSEMBLE**
+### 🎯 Rapports de Qualité (`quality/`)
+- `quality_report.json` - Rapport de qualité du code
+- `doc_quality_report.*` - Rapports de qualité de la documentation
 
-Ce dossier contient tous les rapports et analyses générés par Athalia.
+### 🧪 Rapports de Test (`testing/`)
+- `test-metrics/` - Métriques des tests
+- `metrics.*` - Fichiers de métriques générales
 
----
+## 📈 Utilisation
 
-## 📁 **CATÉGORIES DE RAPPORTS**
+Ces rapports sont générés automatiquement par les workflows CI/CD et les outils de qualité.
+Ils ne doivent PAS être modifiés manuellement.
 
-### **🔍 AUDITS**
-- **`audits/`** - Rapports d'audit (52+ fichiers)
-- **`temp/`** - Rapports temporaires
+## 🗂️ Organisation
 
-### **📈 ANALYSES**
-- **`analytics_dashboard.html`** - Dashboard d'analyse (1.2MB)
-- **`unified_report_20250727_161107.json`** - Rapport unifié (138KB)
+- **Racine** : Fichiers de configuration et documentation principale
+- **`data/reports/`** : Tous les rapports et métriques
+- **`athalia_core/`** : Code source principal
+- **`tests/`** : Tests unitaires et d'intégration
 
-### **🧪 TESTS**
-- **`navigation_test_*.json`** - Tests de navigation
-- **`system_monitor_*.json`** - Monitoring système
+## 🚫 Fichiers à ne PAS committer
 
----
-
-## 💡 **MAINTENANCE**
-
-- **Audits** : Conservés pour historique
-- **Temp** : Nettoyage automatique recommandé
-- **Analyses** : Archivage périodique recommandé
+- Rapports temporaires
+- Fichiers de cache
+- Logs de développement
+- Métriques en cours de génération
