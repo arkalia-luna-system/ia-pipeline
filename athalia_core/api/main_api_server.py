@@ -8,16 +8,42 @@ import asyncio
 import json
 import logging
 import os
+import time
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Optional
 
 import uvicorn
-from fastapi import BackgroundTasks, Depends, FastAPI, HTTPException
+from fastapi import BackgroundTasks, Depends, FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.responses import HTMLResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
+
+# Prometheus metrics
+try:
+    from prometheus_client import (
+        CONTENT_TYPE_LATEST,
+        REGISTRY,
+        Counter,
+        Histogram,
+        generate_latest,
+    )
+
+    REQUEST_COUNT = Counter(
+        "athalia_http_requests_total",
+        "Total des requêtes HTTP",
+        ["method", "path", "status"],
+    )
+    REQUEST_LATENCY = Histogram(
+        "athalia_http_request_duration_seconds",
+        "Durée des requêtes HTTP en secondes",
+        buckets=(0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1.0, 2.5, 5, 10),
+    )
+    PROMETHEUS_ENABLED = True
+except Exception as _e:
+    logging.getLogger(__name__).warning(f"Prometheus non disponible: {_e}")
+    PROMETHEUS_ENABLED = False
 
 # Configuration du logging
 logging.basicConfig(level=logging.INFO)
@@ -138,6 +164,28 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Middleware de métriques HTTP (si Prometheus est disponible)
+if PROMETHEUS_ENABLED:
+
+    @app.middleware("http")
+    async def prometheus_middleware(request: Request, call_next):
+        start = time.perf_counter()
+        response = await call_next(request)
+        elapsed = time.perf_counter() - start
+
+        path_template = request.scope.get("path", "unknown")
+        status = str(getattr(response, "status_code", 0))
+
+        try:
+            REQUEST_COUNT.labels(request.method, path_template, status).inc()
+            REQUEST_LATENCY.observe(elapsed)
+        except Exception:
+            # Ne jamais casser la requête pour un souci de métriques
+            pass
+
+        return response
+
 
 # Montage des fichiers statiques
 try:
@@ -474,6 +522,15 @@ async def get_metrics():
         raise HTTPException(
             status_code=500, detail=f"Erreur de métriques: {str(e)}"
         ) from e
+
+
+# Endpoint Prometheus pour l'export des métriques
+@app.get("/metrics")
+async def prometheus_metrics():
+    if not PROMETHEUS_ENABLED:
+        raise HTTPException(status_code=503, detail="Prometheus non disponible")
+    data = generate_latest(REGISTRY)
+    return Response(content=data, media_type=CONTENT_TYPE_LATEST)
 
 
 # Fonction utilitaire pour la génération de fichiers
