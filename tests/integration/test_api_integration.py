@@ -15,7 +15,7 @@ from athalia_core.api.main_api_server import app
 class TestAPIIntegration:
     """Tests d'intégration pour l'API principale"""
 
-    @pytest.fixture
+    @pytest.fixture(scope="module")
     def client(self):
         """Client de test FastAPI"""
         return TestClient(app)
@@ -42,9 +42,17 @@ class TestAPIIntegration:
 
     def test_api_cors_headers(self, client):
         """Test des headers CORS"""
-        response = client.options("/health")
-        assert response.status_code == 200
-        # Vérifier que les headers CORS sont présents
+        # Requete preflight correcte pour activer le middleware CORS
+        headers = {
+            "Origin": "http://example.com",
+            "Access-Control-Request-Method": "GET",
+        }
+        response = client.options("/health", headers=headers)
+        assert response.status_code in (200, 204)
+        # Vérification basique que CORS est gere: presence d'un header allow-origin
+        assert "access-control-allow-origin" in {
+            k.lower() for k in response.headers.keys()
+        }
 
     def test_api_error_handling(self, client):
         """Test de gestion d'erreurs"""

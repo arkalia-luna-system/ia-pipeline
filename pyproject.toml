@@ -132,6 +132,7 @@ markers = [
     "security: marks tests as security tests",
     "timeout: marks tests with timeout",
     "no_cov: marks tests that should not use coverage",
+    "e2e: marks end-to-end tests",
 ]
 filterwarnings = [
     "ignore::DeprecationWarning",
