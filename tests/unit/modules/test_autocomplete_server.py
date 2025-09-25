@@ -4,9 +4,8 @@ import pytest
 
 # Vérification de la disponibilité de FastAPI
 try:
-    from fastapi.testclient import TestClient
-
     from athalia_core.autocomplete_server import app
+    from fastapi.testclient import TestClient
 
     FASTAPI_AVAILABLE = True
     client = TestClient(app)

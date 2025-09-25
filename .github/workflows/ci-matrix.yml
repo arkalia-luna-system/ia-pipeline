@@ -29,6 +29,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: read
 
 jobs:
   # ========================================
@@ -673,6 +674,19 @@ jobs:
             exit 1
           fi
 
+      - name: "Vérification pré-déploiement"
+        if: success() && github.ref == 'refs/heads/main'
+        run: |
+          echo "🔍 VÉRIFICATION PRÉ-DÉPLOIEMENT GITHUB PAGES"
+          echo "============================================="
+          echo "📁 Contenu du dossier site:"
+          ls -la site/ | head -10
+          echo "📊 Taille du dossier site:"
+          du -sh site/
+          echo "🔑 Vérification du token GitHub:"
+          echo "Token disponible: ${{ secrets.GITHUB_TOKEN != '' }}"
+          echo "✅ Prêt pour le déploiement"
+
       - name: "Deploiement GitHub Pages"
         if: success() && github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v4
@@ -682,6 +696,8 @@ jobs:
           force_orphan: true
           user_name: "github-actions[bot]"
           user_email: "github-actions[bot]@users.noreply.github.com"
+          timeout_seconds: 300
+          retry_count: 3
 
       - name: "Configuration GitHub Pages Propre"
         if: success()

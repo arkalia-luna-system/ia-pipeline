@@ -16,8 +16,9 @@ import schedule
 # Ajouter le répertoire parent au path pour importer athalia_core
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from athalia_core.analysis.architecture_analyzer import ArchitectureAnalyzer
 from athalia_core.core.logger import Logger
+
+from athalia_core.analysis.architecture_analyzer import ArchitectureAnalyzer
 
 
 class NavigationQualityMaintainer:

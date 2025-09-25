@@ -38,13 +38,13 @@
 
 | **Composant** | **Valeur** | **Statut** | **Vérifié** |
 |:-------------:|:---------:|:----------:|:------------:|
-| **🐍 Fichiers Python** | `335 modules` | ![Actif](https://img.shields.io/badge/status-active-brightgreen) | ✅ **COMPTÉS** |
-| **📝 Lignes de Code** | `83,065 lignes` | ![Maintenu](https://img.shields.io/badge/status-maintained-blue) | ✅ **MESURÉES** |
-| **🧪 Tests** | `1,774 tests` | ![Testé](https://img.shields.io/badge/status-tested-green) | ✅ **COLLECTÉS** |
+| **🐍 Fichiers Python** | `352 modules` | ![Actif](https://img.shields.io/badge/status-active-brightgreen) | ✅ **COMPTÉS** |
+| **📝 Lignes de Code** | `84,876 lignes` | ![Maintenu](https://img.shields.io/badge/status-maintained-blue) | ✅ **MESURÉES** |
+| **🧪 Tests** | `2,180 tests` | ![Testé](https://img.shields.io/badge/status-tested-green) | ✅ **COLLECTÉS** |
 | **🛡️ Score Sécurité** | `85.3/100` | ![Sécurisé](https://img.shields.io/badge/status-secure-green) | ✅ **CALCULÉ** |
 | **📊 Vulnérabilités** | `7 HIGH, 264 MEDIUM` | ![Surveillé](https://img.shields.io/badge/status-monitored-green) | ✅ **ANALYSÉES** |
 | **🔧 Scripts Utilitaires** | `60 outils` | ![Disponible](https://img.shields.io/badge/status-available-purple) | ✅ **LISTÉS** |
-| **📚 Documentation** | `269 fichiers` | ![Complet](https://img.shields.io/badge/status-complete-yellow) | ✅ **ORGANISÉS** |
+| **📚 Documentation** | `918 fichiers` | ![Complet](https://img.shields.io/badge/status-complete-yellow) | ✅ **ORGANISÉS** |
 
 </div>
 
