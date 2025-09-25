@@ -1,0 +1,38 @@
+         204405 function calls (203985 primitive calls) in 0.263 seconds
+
+   Ordered by: cumulative time
+   List reduced from 446 to 30 due to restriction <30>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+       70    0.000    0.000    0.258    0.004 /Volumes/T7/athalia-dev-setup/.venv/lib/python3.10/site-packages/requests/api.py:62(get)
+       70    0.000    0.000    0.258    0.004 /Volumes/T7/athalia-dev-setup/.venv/lib/python3.10/site-packages/requests/api.py:14(request)
+       70    0.001    0.000    0.252    0.004 /Volumes/T7/athalia-dev-setup/.venv/lib/python3.10/site-packages/requests/sessions.py:500(request)
+       70    0.001    0.000    0.197    0.003 /Volumes/T7/athalia-dev-setup/.venv/lib/python3.10/site-packages/requests/sessions.py:673(send)
+       70    0.001    0.000    0.182    0.003 /Volumes/T7/athalia-dev-setup/.venv/lib/python3.10/site-packages/requests/adapters.py:613(send)
+       70    0.001    0.000    0.161    0.002 /Volumes/T7/athalia-dev-setup/.venv/lib/python3.10/site-packages/urllib3/connectionpool.py:592(urlopen)
+       70    0.001    0.000    0.155    0.002 /Volumes/T7/athalia-dev-setup/.venv/lib/python3.10/site-packages/urllib3/connectionpool.py:377(_make_request)
+       70    0.002    0.000    0.131    0.002 /Volumes/T7/athalia-dev-setup/.venv/lib/python3.10/site-packages/urllib3/connection.py:534(getresponse)
+       70    0.000    0.000    0.124    0.002 /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/http/client.py:1331(getresponse)
+       70    0.001    0.000    0.122    0.002 /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/http/client.py:311(begin)
+      140    0.000    0.000    0.113    0.001 /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/socket.py:691(readinto)
+      140    0.113    0.001    0.113    0.001 {method 'recv_into' of '_socket.socket' objects}
+       70    0.001    0.000    0.110    0.002 /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/http/client.py:278(_read_status)
+      420    0.000    0.000    0.109    0.000 {method 'readline' of '_io.BufferedReader' objects}
+       70    0.000    0.000    0.034    0.000 /Volumes/T7/athalia-dev-setup/.venv/lib/python3.10/site-packages/requests/sessions.py:750(merge_environment_settings)
+       70    0.000    0.000    0.032    0.000 /Volumes/T7/athalia-dev-setup/.venv/lib/python3.10/site-packages/requests/utils.py:816(get_environ_proxies)
+       70    0.001    0.000    0.022    0.000 /Volumes/T7/athalia-dev-setup/.venv/lib/python3.10/site-packages/urllib3/connection.py:418(request)
+       70    0.000    0.000    0.021    0.000 /Volumes/T7/athalia-dev-setup/.venv/lib/python3.10/site-packages/requests/utils.py:755(should_bypass_proxies)
+       70    0.001    0.000    0.020    0.000 /Volumes/T7/athalia-dev-setup/.venv/lib/python3.10/site-packages/requests/sessions.py:457(prepare_request)
+       70    0.000    0.000    0.019    0.000 /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/urllib/request.py:2666(proxy_bypass)
+       70    0.000    0.000    0.017    0.000 /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/http/client.py:1267(endheaders)
+       70    0.000    0.000    0.017    0.000 /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/http/client.py:1029(_send_output)
+       70    0.000    0.000    0.017    0.000 /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/http/client.py:968(send)
+       70    0.000    0.000    0.016    0.000 /Volumes/T7/athalia-dev-setup/.venv/lib/python3.10/site-packages/urllib3/connection.py:324(connect)
+       70    0.000    0.000    0.016    0.000 /Volumes/T7/athalia-dev-setup/.venv/lib/python3.10/site-packages/urllib3/connection.py:192(_new_conn)
+       70    0.000    0.000    0.015    0.000 /Volumes/T7/athalia-dev-setup/.venv/lib/python3.10/site-packages/urllib3/util/connection.py:27(create_connection)
+       70    0.000    0.000    0.015    0.000 /opt/homebrew/opt/pyenv/versions/3.10.14/lib/python3.10/urllib/request.py:2652(proxy_bypass_macosx_sysconf)
+       70    0.000    0.000    0.011    0.000 /Volumes/T7/athalia-dev-setup/.venv/lib/python3.10/site-packages/requests/models.py:351(prepare)
+       70    0.011    0.000    0.011    0.000 {method 'connect' of '_socket.socket' objects}
+       70    0.000    0.000    0.011    0.000 /Volumes/T7/athalia-dev-setup/.venv/lib/python3.10/site-packages/requests/models.py:890(content)
+
+
