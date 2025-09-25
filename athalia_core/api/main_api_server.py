@@ -118,6 +118,16 @@ app = FastAPI(
     docs_url="/docs",
     redoc_url="/redoc",
     openapi_url="/openapi.json",
+    terms_of_service="https://arkalia-luna-system.github.io/ia-pipeline/terms/",
+    contact={
+        "name": "Athalia Team",
+        "url": "https://arkalia-luna-system.github.io/ia-pipeline/",
+        "email": "contact@arkalia.dev",
+    },
+    license_info={
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+    },
 )
 
 # Configuration CORS
