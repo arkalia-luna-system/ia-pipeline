@@ -111,7 +111,7 @@ kiwisolver==1.4.8
 kubernetes==33.1.0
 langchain==0.3.26
 langchain-core==0.3.69
-langchain-text-splitters==0.3.8
+langchain-text-splitters==1.0.0
 langsmith==0.4.7
 lexid==2021.1006
 license-expression==30.4.3
