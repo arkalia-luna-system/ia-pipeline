@@ -36,7 +36,7 @@ jobs:
           echo "✅ pip list SBOM generated"
 
       - name: Upload SBOM artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: sbom-reports
           path: |
