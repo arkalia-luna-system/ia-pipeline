@@ -30,10 +30,10 @@ jobs:
       - name: 🔄 Checkout Repository
         uses: actions/checkout@v5
         with:
-          fetch-depth: 0  # Nécessaire pour analyser tout l'historique
+          fetch-depth: 0 # Nécessaire pour analyser tout l'historique
 
       - name: 🐍 Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
           cache: "pip"
@@ -86,7 +86,7 @@ jobs:
             echo "❌ Metrics file not found!"
             exit 1
           fi
-          
+
           # Afficher un résumé simple sans markdown
           echo ""
           echo "📈 Simple Summary:"
@@ -133,7 +133,7 @@ jobs:
           fi
 
       - name: 📤 Upload Metrics Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: athalia-metrics-${{ github.sha }}
           path: |
@@ -180,7 +180,7 @@ jobs:
 
     steps:
       - name: 📥 Download Metrics Artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: athalia-metrics-${{ github.sha }}
           path: ./metrics

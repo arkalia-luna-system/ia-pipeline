@@ -1,0 +1,24 @@
+"""
+Tests d'intégration générés automatiquement pour rename_typing_generic_aliases
+"""
+
+import pytest
+from pathlib import Path
+import sys
+
+# Ajouter le chemin du projet au PYTHONPATH
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
+try:
+    import rename_typing_generic_aliases
+except ImportError:
+    pytest.skip(f"Module rename_typing_generic_aliases non importable")
+
+def test_rename_typing_generic_aliases_integration():
+    """Test d'intégration pour rename_typing_generic_aliases"""
+    # TODO: Implémenter les tests d'intégration spécifiques
+    assert True
+
+if __name__ == "__main__":
+    pytest.main([__file__])

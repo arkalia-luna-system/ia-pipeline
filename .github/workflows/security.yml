@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
           cache: "pip"
@@ -35,20 +35,20 @@ jobs:
           # On capture le rapport et on vérifie manuellement le contenu
           bandit -r athalia_core -f txt -o bandit-report.txt || true
           echo "✅ Bandit scan completed"
-          
+
           # Vérifier s'il y a des vulnérabilités critiques
           if grep -q "Severity: High" bandit-report.txt; then
             echo "🚨 VULNÉRABILITÉS CRITIQUES DÉTECTÉES !"
             cat bandit-report.txt
             exit 1
           fi
-          
+
           if grep -q "Severity: Medium" bandit-report.txt; then
             echo "⚠️ VULNÉRABILITÉS MOYENNES DÉTECTÉES !"
             cat bandit-report.txt
             exit 1
           fi
-          
+
           echo "✅ Aucune vulnérabilité critique ou moyenne détectée"
 
       - name: Safety dependency check
@@ -57,7 +57,7 @@ jobs:
           # Safety temporairement désactivé à cause de problèmes de compatibilité
           echo "⚠️ Safety temporairement désactivé - compatibilité typer/rich"
           echo "No vulnerabilities found" > safety-report.txt
-          
+
           echo "✅ Safety check skipped - Aucune vulnérabilité détectée"
 
       - name: pip-audit vulnerability scan
@@ -65,16 +65,16 @@ jobs:
           echo "🔍 Running pip-audit vulnerability scan..."
           # Utiliser pip-audit avec gestion d'erreur appropriée
           pip-audit -r requirements.txt --format json -o pip-audit-report.json || true
-          
+
           # Vérifier s'il y a des vulnérabilités 
           if [ -f pip-audit-report.json ] && [ -s pip-audit-report.json ]; then
             echo "📊 pip-audit a généré un rapport"
           fi
-          
+
           echo "✅ pip-audit completed"
 
       - name: Upload security reports
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: security-reports
           path: |

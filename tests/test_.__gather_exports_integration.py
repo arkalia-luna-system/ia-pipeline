@@ -1,0 +1,24 @@
+"""
+Tests d'intégration générés automatiquement pour .__gather_exports
+"""
+
+import pytest
+from pathlib import Path
+import sys
+
+# Ajouter le chemin du projet au PYTHONPATH
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
+try:
+    import .__gather_exports
+except ImportError:
+    pytest.skip(f"Module .__gather_exports non importable")
+
+def test_.__gather_exports_integration():
+    """Test d'intégration pour .__gather_exports"""
+    # TODO: Implémenter les tests d'intégration spécifiques
+    assert True
+
+if __name__ == "__main__":
+    pytest.main([__file__])

@@ -6,7 +6,7 @@ black>=25.0.0
 click>=8.1.0
 
 # Security
-cryptography>=45.0.0
+cryptography>=46.0.0
 fastapi>=0.115.0
 
 # Linting & Formatting

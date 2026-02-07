@@ -68,7 +68,7 @@ mkdocs-material==9.6.17
 
 # --- OPTIONNELS (décommenter si nécessaire) ---
 # loguru>=0.7.0
-# cryptography>=45.0.0
+# cryptography>=46.0.0
 # gitpython
 # markdown
 # pre-commit>=2.20.0

@@ -1,0 +1,26 @@
+"""
+Tests unitaires générés pour block
+"""
+
+import pytest
+from pathlib import Path
+import sys
+
+# Ajouter le chemin du projet au PYTHONPATH
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
+try:
+    import block
+except ImportError:
+    pytest.skip(f"Module block non importable")
+
+
+def test_block():
+    """Test de la fonction block"""
+    # TODO: Implémenter les tests spécifiques
+    assert hasattr(block, 'block')
+    assert callable(getattr(block, 'block'))
+
+if __name__ == "__main__":
+    pytest.main([__file__])
