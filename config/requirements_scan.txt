@@ -105,7 +105,7 @@ jsonpatch==1.33
 jsonpickle==4.1.1
 jsonpointer==3.0.0
 jsonref==1.1.0
-jsonschema==4.24.0
+jsonschema==4.26.0
 jsonschema-specifications==2025.4.1
 kiwisolver==1.4.8
 kubernetes==33.1.0
