@@ -53,9 +53,7 @@ class TestClass:
     def test_run_returns_dict(self):
         """Test que run() retourne un dictionnaire"""
         # Importer la fonction directement pour le patch
-        from athalia_core.quality.code_linter import validate_and_run
-
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+        with patch("athalia_core.quality.code_linter.secure_run_command") as mock_run:
             mock_result = Mock()
             mock_result.returncode = 0
             mock_result.stdout = ""
@@ -69,7 +67,7 @@ class TestClass:
 
     def test_run_ruff_success(self):
         """Test de l'exécution de ruff avec succès"""
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+        with patch("athalia_core.quality.code_linter.secure_run_command") as mock_run:
             mock_result = Mock()
             mock_result.returncode = 0
             mock_result.stdout = ""
@@ -79,7 +77,7 @@ class TestClass:
 
     def test_run_ruff_with_errors(self):
         """Test de Ruff avec des erreurs"""
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+        with patch("athalia_core.quality.code_linter.secure_run_command") as mock_run:
             mock_result = Mock()
             mock_result.returncode = 1  # Changé de 0 à 1 pour les erreurs
             mock_result.stdout = "file.py:10:5 E501 line too long"
@@ -90,7 +88,7 @@ class TestClass:
 
     def test_run_black_success(self):
         """Test de l'exécution de black avec succès"""
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+        with patch("athalia_core.quality.code_linter.secure_run_command") as mock_run:
             mock_result = Mock()
             mock_result.returncode = 0
             mock_result.stdout = ""
@@ -100,7 +98,7 @@ class TestClass:
 
     def test_run_black_with_issues(self):
         """Test de Black avec des problèmes"""
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+        with patch("athalia_core.quality.code_linter.secure_run_command") as mock_run:
             mock_result = Mock()
             mock_result.returncode = 1
             mock_run.return_value = mock_result
@@ -110,7 +108,7 @@ class TestClass:
 
     def test_run_isort_success(self):
         """Test de l'exécution de isort avec succès"""
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+        with patch("athalia_core.quality.code_linter.secure_run_command") as mock_run:
             mock_result = Mock()
             mock_result.returncode = 0
             mock_result.stdout = ""
@@ -120,7 +118,7 @@ class TestClass:
 
     def test_run_isort_with_issues(self):
         """Test de isort avec des problèmes"""
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+        with patch("athalia_core.quality.code_linter.secure_run_command") as mock_run:
             mock_result = Mock()
             mock_result.returncode = 1
             mock_run.return_value = mock_result
@@ -130,7 +128,7 @@ class TestClass:
 
     def test_run_mypy_success(self):
         """Test de l'exécution de mypy avec succès"""
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+        with patch("athalia_core.quality.code_linter.secure_run_command") as mock_run:
             mock_result = Mock()
             mock_result.returncode = 0
             mock_result.stdout = ""
@@ -140,7 +138,7 @@ class TestClass:
 
     def test_run_mypy_with_issues(self):
         """Test de MyPy avec des problèmes"""
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+        with patch("athalia_core.quality.code_linter.secure_run_command") as mock_run:
             mock_result = Mock()
             mock_result.returncode = 0
             mock_result.stdout = "file.py:5:1 error: Incompatible types"
@@ -151,7 +149,7 @@ class TestClass:
 
     def test_run_bandit_success(self):
         """Test de l'exécution de bandit avec succès"""
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+        with patch("athalia_core.quality.code_linter.secure_run_command") as mock_run:
             mock_result = Mock()
             mock_result.returncode = 0
             mock_result.stdout = ""
@@ -161,7 +159,7 @@ class TestClass:
 
     def test_run_bandit_with_issues(self):
         """Test de Bandit avec des problèmes"""
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+        with patch("athalia_core.quality.code_linter.secure_run_command") as mock_run:
             mock_result = Mock()
             mock_result.returncode = 0
             mock_result.stdout = "file.py:10:1 Issue: B101 Use of assert detected"
@@ -229,7 +227,7 @@ class TestClass:
 
     def test_error_parsing(self):
         """Test du parsing des erreurs"""
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+        with patch("athalia_core.quality.code_linter.secure_run_command") as mock_run:
             mock_result = Mock()
             mock_result.returncode = 1  # Changé de 0 à 1 pour les erreurs
             mock_result.stdout = "file.py:10:5 E501 line too long (120 > 79 characters)"
@@ -240,7 +238,7 @@ class TestClass:
 
     def test_warning_parsing(self):
         """Test du parsing des avertissements"""
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+        with patch("athalia_core.quality.code_linter.secure_run_command") as mock_run:
             mock_result = Mock()
             mock_result.returncode = 0  # Changé de 1 à 0 pour les avertissements
             mock_result.stdout = "file.py:15:1 W291 trailing whitespace"
@@ -254,7 +252,7 @@ class TestClass:
 
     def test_multiple_errors_parsing(self):
         """Test du parsing de multiples erreurs"""
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+        with patch("athalia_core.quality.code_linter.secure_run_command") as mock_run:
             mock_result = Mock()
             mock_result.returncode = 1  # Changé de 0 à 1 pour les erreurs
             mock_result.stdout = """file1.py:5:1 E302 expected 2 blank lines
@@ -294,7 +292,7 @@ file3.py:15:1 E303 too many blank lines"""
         with open(requirements_file, "w") as f:
             f.write("pytest\nrequests")
 
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+        with patch("athalia_core.quality.code_linter.secure_run_command") as mock_run:
             mock_result = Mock()
             mock_result.returncode = 0
             mock_result.stdout = ""
@@ -314,7 +312,7 @@ file3.py:15:1 E303 too many blank lines"""
 
     def test_multiple_tool_execution(self):
         """Test de l'exécution de plusieurs outils"""
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+        with patch("athalia_core.quality.code_linter.secure_run_command") as mock_run:
             mock_result = Mock()
             mock_result.returncode = 0
             mock_result.stdout = ""
@@ -327,7 +325,7 @@ file3.py:15:1 E303 too many blank lines"""
 
     def test_error_accumulation(self):
         """Test de l'accumulation des erreurs"""
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+        with patch("athalia_core.quality.code_linter.secure_run_command") as mock_run:
             mock_result = Mock()
             mock_result.returncode = 0
             mock_result.stdout = "Error 1\nError 2\nError 3"
@@ -339,7 +337,7 @@ file3.py:15:1 E303 too many blank lines"""
 
     def test_warning_accumulation(self):
         """Test de l'accumulation des avertissements"""
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+        with patch("athalia_core.quality.code_linter.secure_run_command") as mock_run:
             mock_result = Mock()
             mock_result.returncode = 1
             mock_result.stdout = "Warning message"
@@ -351,7 +349,7 @@ file3.py:15:1 E303 too many blank lines"""
 
     def test_empty_output_handling(self):
         """Test de la gestion des sorties vides"""
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+        with patch("athalia_core.quality.code_linter.secure_run_command") as mock_run:
             mock_result = Mock()
             mock_result.returncode = 0
             mock_result.stdout = ""
@@ -369,7 +367,7 @@ file3.py:15:1 E303 too many blank lines"""
 
     def test_newline_handling_in_output(self):
         """Test de la gestion des retours à la ligne dans les sorties"""
-        with patch("athalia_core.quality.code_linter.validate_and_run") as mock_run:
+        with patch("athalia_core.quality.code_linter.secure_run_command") as mock_run:
             mock_result = Mock()
             mock_result.returncode = 0
             mock_result.stdout = "Error 1\n\nError 2\n\n\nError 3"

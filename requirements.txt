@@ -73,7 +73,7 @@ mkdocs-material==9.6.17
 # markdown
 # pre-commit>=2.20.0
 # tox>=3.25.0
-# openai>=1.0.0
+# openai>=1.0.0   # Optionnel : requis pour certaines features IA (pyproject.toml [project] les inclut)
 # anthropic>=0.3.0
 # transformers>=4.20.0
 # torch>=1.12.0

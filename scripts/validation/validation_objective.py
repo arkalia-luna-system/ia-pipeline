@@ -58,7 +58,7 @@ if __name__ == "__main__":
 
         cmd = [
             "python",
-            "bin/athalia_unified.py",
+            "bin/core/athalia_unified.py",
             projet_test,
             "--action",
             "complete",
@@ -156,7 +156,7 @@ def fonction_syntaxe():
         # Utilise Athalia pour corriger
         cmd = [
             "python",
-            "bin/athalia_unified.py",
+            "bin/core/athalia_unified.py",
             fichier_test,
             "--action",
             "correct",
@@ -255,7 +255,7 @@ def fonction_syntaxe():
 
             cmd = [
                 "python",
-                "bin/athalia_unified.py",
+                "bin/core/athalia_unified.py",
                 fichier_test,
                 "--action",
                 "analyze",
@@ -327,7 +327,7 @@ if __name__ == "__main__":
         start = time.time()
         cmd = [
             "python",
-            "bin/athalia_unified.py",
+            "bin/core/athalia_unified.py",
             projet_benchmark,
             "--action",
             "complete",
@@ -517,7 +517,7 @@ variable_non_utilisee = "test"
         start = time.time()
         cmd = [
             "python",
-            "bin/athalia_unified.py",
+            "bin/core/athalia_unified.py",
             projet_qualite,
             "--action",
             "improve",

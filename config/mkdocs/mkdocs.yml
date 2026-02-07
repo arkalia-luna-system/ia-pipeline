@@ -6,17 +6,36 @@ site_description: Enterprise-grade DevOps automation platform
 site_author: Arkalia Luna System
 site_url: https://arkalia-luna-system.github.io/ia-pipeline
 
-# Thème Material
+# Thème Material — style pro, sombre par défaut
 theme:
   name: material
   language: fr
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Mode clair
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Mode sombre
   features:
     - navigation.instant
     - navigation.tabs
     - search.suggest
     - search.highlight
     - content.code.copy
+    - content.tabs.link
     - header.autohide
+  font:
+    text: Roboto
+    code: Roboto Mono
 
 # Navigation
 nav:

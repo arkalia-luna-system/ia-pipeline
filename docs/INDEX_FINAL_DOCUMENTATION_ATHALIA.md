@@ -1,28 +1,17 @@
-# 📚 **INDEX FINAL COMPLET - DOCUMENTATION ATHALIA 2025**
+# Index de la documentation Athalia
 
-**Dernière mise à jour :** 7 février 2026  
-**Version :** 7.0  
-**Statut :** ✅ **DOCUMENTATION MISE À JOUR ET VALIDÉE - STRUCTURE RÉELLE DU SYSTÈME**  
-**Total fichiers :** 269 fichiers .md organisés et validés  
-**Objectif :** Index définitif de toute la documentation - ZÉRO ERREUR ABSOLU
+**Dernière mise à jour :** février 2026 · **Statut :** à jour
+
+Index des principaux documents. Pour une entrée par public, voir [docs/README.md](README.md).
 
 ---
 
-## 🎯 **DOCUMENTATION RACINE (PROJET PRINCIPAL)**
+## Racine du projet
 
-> **Note :** Ces fichiers se trouvent à la racine du projet, pas dans le dossier `docs/`
-
-### **📋 FICHIERS ESSENTIELS (VÉRIFIÉS ET EXISTANTS)**
-- **`README.md`** - Documentation principale du projet (racine) ✅
-- **`CHANGELOG.md`** - Historique des versions et changements (racine) ✅
-- **`pyproject.toml`** - Configuration du projet et dépendances ✅
-- **`requirements.txt`** - Dépendances Python ✅
-
-### **🔧 SCRIPTS ET OUTILS (VÉRIFIÉS ET EXISTANTS)**
-- **`scripts/analyze_documentation_quality.py`** - Analyseur de qualité documentation ✅
-- **`scripts/test_navigation_quality.py`** - Testeur de qualité navigation ✅
-- **`scripts/test_navigation_quality_smart.py`** - Testeur intelligent de navigation ✅
-- **`bin/athalia_unified.py`** - Script principal unifié ✅
+- **README.md** — Présentation et démarrage
+- **CHANGELOG.md** — Historique des versions
+- **pyproject.toml** / **requirements.txt** — Dépendances
+- **bin/core/athalia_unified.py** — CLI principal (rétrocompatibilité : `bin/athalia_unified.py`)
 
 ---
 
@@ -102,7 +91,7 @@
 - **`docs/DEVELOPER/REPORTS/RAPPORT_COMPLET_AMELIORATIONS_2025.md`** - Rapport complet améliorations 2025
 
 ### **🚀 GETTING STARTED (`docs/GETTING_STARTED/`)**
-- **`docs/GETTING_STARTED/INSTALLATION.md`** - Guide d'installation
+- **`docs/GETTING_STARTED/INSTALLATION.md`** — Raccourci vers [USER_GUIDES/INSTALLATION.md](USER_GUIDES/INSTALLATION.md)
 
 ### **👥 USER GUIDES (`docs/USER_GUIDES/`)**
 - **`docs/USER_GUIDES/INDEX.md`** - Index des guides utilisateur

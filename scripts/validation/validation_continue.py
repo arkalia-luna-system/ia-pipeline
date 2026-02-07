@@ -82,7 +82,7 @@ class ValidationContinue:
     def test_demarrage(self):
         """Test de démarrage d'Athalia"""
         try:
-            cmd = "python bin/athalia_unified.py --help"
+            cmd = "python bin/core/athalia_unified.py --help"
             result = subprocess.run(
                 cmd, shell=True, capture_output=True, text=True, timeout=10
             )
@@ -111,7 +111,7 @@ class ValidationContinue:
             with open(f"{projet_test}/main.py", "w") as f:
                 f.write("print('test')")
 
-            cmd = f"python bin/athalia_unified.py {projet_test} --action audit"
+            cmd = f"python bin/core/athalia_unified.py {projet_test} --action audit"
             result = subprocess.run(
                 cmd, shell=True, capture_output=True, text=True, timeout=30
             )
@@ -134,7 +134,7 @@ class ValidationContinue:
                 f.write("x = 1\ny = 2\nprint(x + y + z)  # Erreur: z non défini")
 
             cmd = (
-                "python bin/athalia_unified.py "
+                "python bin/core/athalia_unified.py "
                 f"{os.path.dirname(fichier_test)} --action fix"
             )
             result = validate_and_run(

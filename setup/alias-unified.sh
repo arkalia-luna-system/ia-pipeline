@@ -86,7 +86,7 @@ alias ath-dashboard-full='open "$ATHALIA_ROOT/dashboard/analytics_dashboard.html
 # CLI et Outils
 alias ath-cli='python3 -m athalia_core.cli'
 alias ath-cli-main='python3 -m athalia_core.cli'
-alias ath-unified='python3 "$ATHALIA_ROOT/athalia_unified.py"'
+alias ath-unified='python3 "$ATHALIA_ROOT/bin/core/athalia_unified.py"'
 alias ath-smart='python3 "$ATHALIA_ROOT/agents/ath_context_prompt.py"'
 
 # Audit et Sécurité

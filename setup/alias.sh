@@ -100,7 +100,7 @@ alias ath-ci-test='python3 -m pytest tests/test_ci_ultra_fast.py -v && python3 -
 alias ath-cli-main='python3 -m athalia_core.cli'
 
 # CLI unifiée
-alias ath-unified='python3 $(git rev-parse --show-toplevel)/athalia_unified.py'
+alias ath-unified='python3 $(git rev-parse --show-toplevel)/bin/core/athalia_unified.py'
 
 # Audit intelligent via script Python dédié
 alias ath-audit='$(git rev-parse --show-toplevel)/bin/ath-audit.py'

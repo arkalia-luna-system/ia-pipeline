@@ -43,24 +43,24 @@ running = True
 def signal_handler(signum, frame):
     """Gestionnaire de signal pour arrêt propre"""
     global running
-    logger.info("\n🛑 Signal darrêt reçu. Arrêt propre en cours...")
+    logger.info("\n🛑 Signal d'arrêt reçu. Arrêt propre en cours...")
     running = False
 
 
 def menu():
-    logger.info("\n===Athalia Pipeline CLI===")
+    logger.info("\n=== Athalia Pipeline CLI ===")
     logger.info("1. Générer un projet IA")
     logger.info("2. Nettoyer un projet (tests / caches)")
     logger.info("3. Générer la CI et les fichiers")
     logger.info("4. Générer le dashboard")
-    logger.info("5. Générer guides donboarding")
+    logger.info("5. Générer guides d'onboarding")
     logger.info("6. Audit sécurité (à venir)")
-    logger.info("7. Scan de lexistant (audit non destructif)")
+    logger.info("7. Scan de l'existant (audit non destructif)")
     logger.info("8. Génération dry-run (simulation, rapport)")
-    logger.info("9. Voir rapport dintégration")
+    logger.info("9. Voir rapport d'intégration")
     logger.info("10. Rollback automatique (restauration .backups)")
-    logger.info("11. Logs détaillés dintégration")
-    logger.info("12.  Audit intelligent (nouveau)")
+    logger.info("11. Logs détaillés d'intégration")
+    logger.info("12. Audit intelligent (nouveau)")
     logger.info("13. Quitter")
     logger.info("14. Mode surveillance (nouveau)")
     try:
@@ -71,7 +71,7 @@ def menu():
 
 
 def safe_input(prompt: str) -> str:
-    """Entrée sécurisée avec gestion derreurs."""
+    """Entrée sécurisée avec gestion d'erreurs."""
     try:
         return input(prompt).strip()
     except (EOFError, KeyboardInterrupt):
@@ -94,21 +94,25 @@ def surveillance_mode() -> None:
 def main(test_mode: bool = False) -> None:
     global running
 
-    # Vérifier si une instance est déjà en cours
+    # Vérifier si une instance est déjà en cours (ignorer si accès processus refusé)
     import psutil
 
     current_pid = os.getpid()
     athalia_processes = []
 
-    for proc in psutil.process_iter(["pid", "name", "cmdline"]):
-        try:
-            if proc.info["cmdline"] and "athalia_core.main" in " ".join(
-                proc.info["cmdline"]
-            ):
-                if proc.info["pid"] != current_pid:
-                    athalia_processes.append(proc.info["pid"])
-        except (psutil.NoSuchProcess, psutil.AccessDenied):
-            pass
+    try:
+        for proc in psutil.process_iter(["pid", "name", "cmdline"]):
+            try:
+                if proc.info.get("cmdline") and "athalia_core.main" in " ".join(
+                    proc.info["cmdline"] or []
+                ):
+                    if proc.info["pid"] != current_pid:
+                        athalia_processes.append(proc.info["pid"])
+            except (psutil.NoSuchProcess, psutil.AccessDenied):
+                pass
+    except (PermissionError, OSError):
+        # Environnement restreint (sandbox, certains OS) : continuer sans vérification
+        pass
 
     if athalia_processes:
         logger.warning(
@@ -240,7 +244,7 @@ def main(test_mode: bool = False) -> None:
                     except (OSError, UnicodeDecodeError) as e:
                         logger.error(f"Erreur lecture rapport: {e}")
                 else:
-                    logger.info("Aucun rapport dintégration trouvé.")
+                    logger.info("Aucun rapport d'intégration trouvé.")
             elif choix == "10":
                 outdir = safe_input("Nom du dossier projet à rollback: ")
                 if not outdir:
@@ -291,7 +295,7 @@ def main(test_mode: bool = False) -> None:
                     except (OSError, UnicodeDecodeError) as e:
                         logger.error(f"Erreur lecture log: {e}")
                 else:
-                    logger.info("Aucun log dintégration trouvé.")
+                    logger.info("Aucun log d'intégration trouvé.")
             elif choix == "12":
                 outdir = safe_input("Nom du dossier projet à auditer intelligemment: ")
                 if not outdir:

@@ -9,14 +9,14 @@
 
 | Catégorie | Statut | Taux d’utilisation estimé |
 |-----------|--------|---------------------------|
-| CLI unifié (`athalia_unified.py`) | **Défaillant** | ~20 % (orchestrateur réel non utilisé, actions fix/dashboard/scan cassées) |
-| Entry points installables (`athalia`, `athalia-cli`, `athalia-dashboard`) | Sous-exploités | ~40 % (peu documentés, dashboard souvent lancé via `streamlit run`) |
-| Modules avancés (API, Benchmark, Security Dashboard, Tutoriels) | Non intégrés au flux principal | ~30 % (utilisés en tests/doc, pas dans le CLI) |
-| Scripts `bin/` et `scripts/` | Partiellement utilisés | ~60 % (plusieurs scripts référencent des modules inexistants) |
+| CLI unifié (`athalia_unified.py`) | **Corrigé** | ~95 % (UnifiedOrchestrator utilisé, fix/dashboard/scan corrigés, actions api/benchmark/security-dashboard/tutorials ajoutées) |
+| Entry points installables (`athalia`, `athalia-cli`, `athalia-dashboard`) | Documentés + dashboard corrigé | ~90 % (README, guide LANCEMENT_MODULES_AVANCES, `athalia-dashboard` → `main()` qui génère et ouvre le HTML) |
+| Modules avancés (API, Benchmark, Security Dashboard, Tutoriels) | Intégrés au CLI | ~90 % (`--action api`, `--action benchmark`, `--action security-dashboard`, `--action tutorials`) |
+| Scripts `bin/` et `scripts/` | Partiellement utilisés | ~70 % (logger créé, debug_correction corrigé ; certains scripts restent à valider) |
 | Workflows CI/CD | Actifs | ~100 % |
 | Dépendances optionnelles | Cohérentes | requirements.txt aligné avec l’usage |
 
-**Verdict : le projet n’utilise pas 100 % de ses capacités.** Les points bloquants principaux sont le CLI unifié (mauvais imports, orchestrateur réel jamais appelé) et l’absence d’intégration des modules avancés dans le flux principal.
+**Verdict (mis à jour fév. 2026) :** Les correctifs appliqués (CLI, entry points, intégration des modules avancés, documentation) portent l’utilisation des capacités du projet à un niveau élevé. Des améliorations mineures restent possibles (scripts isolés, options CLI additionnelles).
 
 ---
 
@@ -55,7 +55,7 @@
 
 - `athalia` → `athalia_core.core.main:main`  
 - `athalia-cli` → `athalia_core.utilities.cli:cli`  
-- `athalia-dashboard` → `athalia_core.utilities.dashboard:Dashboard` (probablement une fonction à appeler, à vérifier)
+- `athalia-dashboard` → `athalia_core.utilities.dashboard:main` (génère le dashboard HTML et l’ouvre dans le navigateur)
 
 Dans la doc (ex. DEPLOYMENT.md), le dashboard est lancé avec :
 
@@ -86,7 +86,7 @@ Ces quatre blocs sont documentés et testés mais ne sont pas exposés via le CL
 - Soit ajouter des sous-commandes ou options au CLI (ex. `--api`, `--benchmark`, `--security-dashboard`, `--tutorials`),  
 - Soit documenter explicitement les commandes pour les lancer (ex. `uvicorn`, `python -m athalia_core.security.security_dashboard`, etc.) et les indiquer dans le README / GETTING_STARTED.
 
-**✅ Fait (février 2026) :** Guide [docs/USER_GUIDES/LANCEMENT_MODULES_AVANCES.md](../USER_GUIDES/LANCEMENT_MODULES_AVANCES.md) créé avec toutes les commandes (API, benchmarks, security dashboard, tutoriels, Streamlit, génération dashboards HTML), lié depuis README et index des guides.
+**✅ Fait (février 2026) :** Guide [docs/USER_GUIDES/LANCEMENT_MODULES_AVANCES.md](../USER_GUIDES/LANCEMENT_MODULES_AVANCES.md) créé avec toutes les commandes (API, benchmarks, security dashboard, tutoriels, Streamlit, génération dashboards HTML), lié depuis README et index des guides. **CLI unifié étendu :** les actions `--action api`, `--action benchmark`, `--action security-dashboard`, `--action tutorials` ont été ajoutées ; les modules avancés sont donc lancables directement depuis le CLI.
 
 ---
 
@@ -154,15 +154,17 @@ Les dépendances IA (openai, anthropic) sont commentées dans requirements.txt a
 
 ## 8. Plan d’action pour tendre vers 100 % d’utilisation
 
-| Priorité | Action |
-|----------|--------|
-| P0 | Corriger `bin/core/athalia_unified.py` : utiliser `UnifiedOrchestrator` et les vrais modules `athalia_core.*` pour `complete`, `fix`, `dashboard`, `scan`. |
-| P0 | Corriger l’import dans `athalia_core/autocomplete/autocomplete_server.py` (autocomplete_engine). |
-| P1 | Résoudre `athalia_core.core.logger` : créer le module ou remplacer par `logger_advanced` dans les 3 scripts. |
-| P1 | Corriger l’import dans `scripts/debug_correction.py` (quality.correction_optimizer). |
-| P2 | Documenter et promouvoir les entry points `athalia`, `athalia-cli`, `athalia-dashboard` dans README et guides. |
-| P2 | Intégrer ou documenter explicitement le lancement de l’API, du benchmark, du security dashboard et des tutoriels (CLI ou procédure claire). |
-| P3 | Documenter ou automatiser la génération des dashboards HTML (répertoire de sortie et commande/script). |
+| Priorité | Action | Statut |
+|----------|--------|--------|
+| P0 | Corriger `bin/core/athalia_unified.py` : utiliser `UnifiedOrchestrator` et les vrais modules `athalia_core.*` pour `complete`, `fix`, `dashboard`, `scan`. | ✅ Fait |
+| P0 | Corriger l’import dans `athalia_core/autocomplete/autocomplete_server.py` (autocomplete_engine). | ✅ Fait |
+| P1 | Résoudre `athalia_core.core.logger` : créer le module ou remplacer par `logger_advanced` dans les 3 scripts. | ✅ Fait (module `core/logger.py` créé) |
+| P1 | Corriger l’import dans `scripts/debug_correction.py` (quality.correction_optimizer). | ✅ Fait |
+| P2 | Documenter et promouvoir les entry points `athalia`, `athalia-cli`, `athalia-dashboard` dans README et guides. | ✅ Fait |
+| P2 | Intégrer ou documenter explicitement le lancement de l’API, du benchmark, du security dashboard et des tutoriels (CLI ou procédure claire). | ✅ Fait (actions CLI + guide LANCEMENT_MODULES_AVANCES) |
+| P3 | Documenter ou automatiser la génération des dashboards HTML (répertoire de sortie et commande/script). | ✅ Fait (section dans LANCEMENT_MODULES_AVANCES) |
+
+**Rétrocompatibilité :** Un lanceur `bin/athalia_unified.py` redirige vers `bin/core/athalia_unified.py` pour que les anciennes références continuent de fonctionner.
 
 ---
 

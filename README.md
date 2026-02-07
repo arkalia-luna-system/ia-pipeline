@@ -62,7 +62,7 @@
 git clone https://github.com/arkalia-luna-system/ia-pipeline.git
 cd ia-pipeline
 
-# Run quick check
+# Vérification rapide
 python -m athalia_core.demo.quickcheck && echo "✅ Athalia is ready!"
 ```
 

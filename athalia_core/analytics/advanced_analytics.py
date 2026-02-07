@@ -28,6 +28,15 @@ class AdvancedAnalytics:
             "evolution": {},
         }
 
+    def _iter_py_files(self):
+        """Itère sur les fichiers .py du projet en ignorant __pycache__ et .git."""
+        for py_file in self.project_path.rglob("*.py"):
+            if "__pycache__" in py_file.parts or ".git" in py_file.parts:
+                continue
+            if not py_file.is_file():
+                continue
+            yield py_file
+
     def run(self) -> dict[str, Any]:
         """Lance lanalyse complète du projet"""
         logger.info(f" Analytics avancée pour: {self.project_path.name}")
@@ -58,7 +67,7 @@ class AdvancedAnalytics:
         total_complexity = 0
         file_count = 0
 
-        for py_file in self.project_path.rglob("*.py"):
+        for py_file in self._iter_py_files():
             try:
                 with open(py_file) as f:
                     tree = ast.parse(f.read())
@@ -102,7 +111,7 @@ class AdvancedAnalytics:
             "files": 0,
         }
 
-        for py_file in self.project_path.rglob("*.py"):
+        for py_file in self._iter_py_files():
             try:
                 with open(py_file) as f:
                     content = f.read()
@@ -144,7 +153,7 @@ class AdvancedAnalytics:
         performance_data: dict[str, Any] = {"file_sizes": {}, "dependencies": 0}
 
         # Analyser les tailles de fichiers
-        for py_file in self.project_path.rglob("*.py"):
+        for py_file in self._iter_py_files():
             try:
                 size = py_file.stat().st_size
                 file_key = str(py_file.relative_to(self.project_path))
@@ -179,7 +188,7 @@ class AdvancedAnalytics:
             "empty_lines": 0,
         }
 
-        for py_file in self.project_path.rglob("*.py"):
+        for py_file in self._iter_py_files():
             try:
                 with open(py_file) as f:
                     lines = f.readlines()
@@ -209,7 +218,7 @@ class AdvancedAnalytics:
         }
 
         # Compter les fichiers
-        for py_file in self.project_path.rglob("*.py"):
+        for py_file in self._iter_py_files():
             if evolution_data["total_files"] is not None:
                 evolution_data["total_files"] += 1
             try:

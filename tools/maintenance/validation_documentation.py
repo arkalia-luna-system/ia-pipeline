@@ -65,10 +65,11 @@ class DocumentationValidator:
 
         # Analyser les fichiers Python principaux
         python_files = [
-            "athalia_unified.py",
-            "athalia_core/main.py",
-            "athalia_core/cli.py",
-            "athalia_core/unified_orchestrator.py",
+            "bin/athalia_unified.py",
+            "bin/core/athalia_unified.py",
+            "athalia_core/core/main.py",
+            "athalia_core/utilities/cli.py",
+            "athalia_core/core/unified_orchestrator.py",
         ]
 
         for file_path in python_files:

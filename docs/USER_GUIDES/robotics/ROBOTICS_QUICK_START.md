@@ -53,7 +53,7 @@ cd reachy_2023
 
 2. **Audit avec Athalia** :
 ```bash
-python3 athalia_unified.py . --action audit
+python3 bin/core/athalia_unified.py . --action audit
 ```
 
 3. **Analyser les résultats** :
@@ -76,12 +76,12 @@ python3 demo_robotics.py
 
 2. **Audit régulier** :
 ```bash
-python3 athalia_unified.py . --action audit
+python3 bin/core/athalia_unified.py . --action audit
 ```
 
 3. **Validation continue** :
 ```bash
-python3 athalia_unified.py . --action all
+python3 bin/core/athalia_unified.py . --action complete
 ```
 
 ## 🔧 Intégration avec Athalia Principal

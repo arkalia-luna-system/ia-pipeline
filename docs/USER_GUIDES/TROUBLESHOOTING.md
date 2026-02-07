@@ -102,10 +102,10 @@ which python
 ### **Problème de Performance**
 ```bash
 # Mode verbose pour diagnostiquer
-python bin/athalia_unified.py . --action audit --verbose
+python bin/core/athalia_unified.py . --action audit --verbose
 
 # Mode dry-run pour tester
-python bin/athalia_unified.py . --action complete --dry-run
+python bin/core/athalia_unified.py . --action complete --dry-run
 ```
 
 ### **Problème de Tests**
@@ -121,7 +121,7 @@ python -m pytest tests/ -v
 ### **Problème de Documentation**
 ```bash
 # Régénérer la documentation
-python bin/athalia_unified.py . --action complete --no-audit --no-clean
+python bin/core/athalia_unified.py . --action complete --no-audit --no-clean
 ```
 
 ---

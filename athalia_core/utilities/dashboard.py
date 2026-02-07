@@ -808,10 +808,11 @@ class DashboardGenerator:
                 ".coverage",
             }
 
-            # Compter les fichiers Python (exclure les dossiers système)
+            # Compter les fichiers Python (exclure dossiers système et fichiers macOS ._*)
             python_files = []
             for py_file in self.project_path.rglob("*.py"):
-                # Vérifier si le fichier est dans un dossier exclu
+                if py_file.name.startswith("._"):
+                    continue
                 path_parts = py_file.parts
                 if not any(exclude_dir in path_parts for exclude_dir in exclude_dirs):
                     python_files.append(py_file)
@@ -822,10 +823,10 @@ class DashboardGenerator:
             total_lines = 0
             for py_file in python_files:
                 try:
-                    with open(py_file, encoding="utf-8") as f:
+                    with open(py_file, encoding="utf-8", errors="ignore") as f:
                         total_lines += len(f.readlines())
-                except Exception as e:
-                    logger.warning(f"Impossible de lire le fichier {py_file}: {e}")
+                except OSError as e:
+                    logger.debug("Fichier ignoré %s: %s", py_file, e)
                     continue
             metrics["lines_of_code"] = total_lines
 
@@ -835,14 +836,18 @@ class DashboardGenerator:
             ]
             metrics["test_files"] = len(test_files)
 
-            # Compter les fichiers de documentation (exclure les dossiers système)
+            # Compter les fichiers de documentation (exclure dossiers système et ._*)
             doc_files = []
             for doc_file in self.project_path.rglob("*.md"):
+                if doc_file.name.startswith("._"):
+                    continue
                 path_parts = doc_file.parts
                 if not any(exclude_dir in path_parts for exclude_dir in exclude_dirs):
                     doc_files.append(doc_file)
 
             for doc_file in self.project_path.rglob("*.rst"):
+                if doc_file.name.startswith("._"):
+                    continue
                 path_parts = doc_file.parts
                 if not any(exclude_dir in path_parts for exclude_dir in exclude_dirs):
                     doc_files.append(doc_file)

@@ -1,4 +1,5 @@
 import os
+import tempfile
 import unittest
 
 from athalia_core.distillation.adaptive_distillation import AdaptiveDistiller
@@ -6,10 +7,12 @@ from athalia_core.distillation.adaptive_distillation import AdaptiveDistiller
 
 class TestAdaptiveDistiller(unittest.TestCase):
     def setUp(self):
-        # Utiliser un fichier temporaire pour l'historique
-        self.history_path = "test_adaptive_distillation_history.json"
-        if os.path.exists(self.history_path):
-            os.remove(self.history_path)
+        # Chemin absolu unique pour éviter conflits entre tests et avec le cwd
+        fd, self.history_path = tempfile.mkstemp(
+            suffix=".json", prefix="test_adaptive_distillation_"
+        )
+        os.close(fd)
+        os.unlink(self.history_path)  # fichier vide ; AdaptiveDistiller le recrée
 
     def tearDown(self):
         if os.path.exists(self.history_path):

@@ -1,28 +1,16 @@
-# 🏗️ **ATHALIA ARCHITECTURE** - System Design Overview
+# Architecture Athalia
 
-**Dernière mise à jour :** 20 Août 2025  
-**Version :** v12.0.0  
-**Statut :** ✅ ACTIF ET MAINTENU - ARCHITECTURE MODULAIRE COMPLÈTE
+**Dernière mise à jour :** février 2026 · **Version :** v12.0
 
-<div align="center">
+Vue d’ensemble du système : couches (interface, orchestration, logique métier, données, sécurité).
 
-**🏗️ Architecture Enterprise Grade Modulaire**
-
-**📦 Modules: 93 | 📏 Lignes: 72,626+ | 📊 Couverture: Enterprise**
-
-**Professional system architecture documentation for Athalia DevOps Platform**
-
-</div>
-
----
-
-## 🎯 **Architecture Overview**
+## Aperçu
 
 ```mermaid
 %%{init: {'theme':'base', 'themeVariables': { 'primaryColor': '#667eea', 'primaryTextColor': '#fff', 'primaryBorderColor': '#764abc', 'lineColor': '#f64c72', 'secondaryColor': '#7ed321', 'tertiaryColor': '#fff'}}}%%
 graph TB
     subgraph "🌐 USER INTERFACE LAYER"
-        CLI[CLI Interface<br/>bin/athalia_unified.py]
+        CLI[CLI Interface<br/>bin/core/athalia_unified.py]
         DASH[HTML Dashboards<br/>6 interactive dashboards]
         API[REST API<br/>Future expansion]
     end

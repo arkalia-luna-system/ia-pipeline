@@ -1,28 +1,16 @@
-# 🔌 **ATHALIA API REFERENCE** - Module Documentation
+# Référence API Athalia
 
-**Dernière mise à jour :** 20 Août 2025  
-**Version :** v12.0.0  
-**Statut :** ✅ ACTIF ET MAINTENU - API MODULAIRE COMPLÈTE
+**Dernière mise à jour :** février 2026 · **Version :** v12.0
 
-<div align="center">
+Documentation des modules et de l’API (orchestrateur, génération, sécurité, qualité, etc.).
 
-**🔌 API Reference Enterprise Grade**
-
-**📦 Modules: 79+ | 📊 Couverture: Complète | 🧪 Exemples: Testés | 🚀 Version: 12.0**
-
-**Complete API reference for Athalia DevOps Platform - 93 modules documented**
-
-</div>
-
----
-
-## 🎯 **API Architecture Overview**
+## Architecture API
 
 ```mermaid
 %%{init: {'theme':'base', 'themeVariables': { 'primaryColor': '#007bff', 'primaryTextColor': '#fff', 'primaryBorderColor': '#0056b3', 'lineColor': '#28a745', 'secondaryColor': '#ffc107', 'tertiaryColor': '#fff'}}}%%
 graph TB
     subgraph "🔌 PUBLIC API LAYER"
-        CLI[CLI Interface<br/>bin/athalia_unified.py]
+        CLI[CLI Interface<br/>bin/core/athalia_unified.py]
         REST[REST API<br/>Future: FastAPI endpoints]
         SDK[Python SDK<br/>Direct module imports]
     end

@@ -45,10 +45,10 @@ def safe_function():
 
         # Vérifications
         assert isinstance(result, dict)
-        assert "f" in result
+        assert "secure" in result
         assert "issues" in result
         assert "score" in result
-        assert result["f"] is True  # Projet propre
+        assert result["secure"] is True  # Projet propre
         assert len(result["issues"]) == 0
         assert result["score"] == 100
 
@@ -68,7 +68,7 @@ api_key = "sk-1234567890abcdef"
 
         # Vérifications
         assert isinstance(result, dict)
-        assert result["f"] is False  # Projet avec problèmes
+        assert result["secure"] is False  # Projet avec problèmes
         assert len(result["issues"]) >= 1
         assert result["score"] < 100
 
@@ -94,7 +94,7 @@ secret = "sk-abcdef1234567890"
 
         # Vérifications
         assert isinstance(result, dict)
-        assert result["f"] is False
+        assert result["secure"] is False
         assert len(result["issues"]) >= 1
         assert result["score"] < 100
 
@@ -119,7 +119,7 @@ os.system("ls")
 
         # Vérifications
         assert isinstance(result, dict)
-        assert result["f"] is False
+        assert result["secure"] is False
         assert len(result["issues"]) >= 1
         assert result["score"] < 100
 
@@ -144,7 +144,7 @@ os.system("ls")
 
         # Vérifications
         assert isinstance(result, dict)
-        assert result["f"] is False
+        assert result["secure"] is False
         assert len(result["issues"]) >= 3
         assert result["score"] < 100
 
@@ -153,9 +153,9 @@ os.system("ls")
         assert result["score"] == expected_score
 
     def test_security_audit_project_with_f_files(self):
-        """Test d'audit avec fichiers .f(f"""
-        # Créer un fichier .f(f avec problème
-        f_file = self.project_dir / "config.f(f"
+        """Test d'audit avec fichier Python contenant un mot de passe (nom avec 'f')."""
+        # Le module security ne scanne que les .py ; utiliser un .py pour que l'audit détecte le secret
+        f_file = self.project_dir / "config_f.py"
         f_file.write_text('password = "secret"')
 
         # Exécuter l'audit
@@ -163,7 +163,7 @@ os.system("ls")
 
         # Vérifications
         assert isinstance(result, dict)
-        assert result["f"] is False
+        assert result["secure"] is False
         assert len(result["issues"]) >= 1
 
     def test_security_audit_project_file_read_error(self):
@@ -199,7 +199,7 @@ os.system("ls")
 
         # Vérifications
         assert isinstance(result, dict)
-        assert result["f"] is True  # Répertoire vide = propre
+        assert result["secure"] is True  # Répertoire vide = propre
         assert len(result["issues"]) == 0
         assert result["score"] == 100
 
@@ -217,7 +217,7 @@ os.system("ls")
 
         # Vérifications - les fichiers non Python ne devraient pas être détectés
         assert isinstance(result, dict)
-        assert result["f"] is True  # Aucun problème dans les fichiers Python
+        assert result["secure"] is True  # Aucun problème dans les fichiers Python
         assert len(result["issues"]) == 0
         assert result["score"] == 100
 
@@ -238,7 +238,7 @@ OS.SYSTEM("ls")
 
         # Vérifications
         assert isinstance(result, dict)
-        assert result["f"] is False
+        assert result["secure"] is False
         assert len(result["issues"]) >= 1
 
     def test_security_audit_project_creates_audit_file(self):
@@ -270,7 +270,7 @@ OS.SYSTEM("ls")
 
         # Vérifications
         assert isinstance(result, dict)
-        assert result["f"] is False
+        assert result["secure"] is False
         assert len(result["issues"]) >= 5
 
         # Le score devrait être calculé: max(0, 100 - 20 * nombre_issues)
@@ -291,7 +291,7 @@ OS.SYSTEM("ls")
 
         # Vérifications
         assert isinstance(result, dict)
-        assert result["f"] is False
+        assert result["secure"] is False
         assert len(result["issues"]) >= 1
 
     def test_security_audit_project_complex_patterns(self):
@@ -323,7 +323,7 @@ system_call = os.system
 
         # Vérifications
         assert isinstance(result, dict)
-        assert result["f"] is False
+        assert result["secure"] is False
         assert len(result["issues"]) >= 1
 
         # Vérifier que différents types de problèmes ont été détectés

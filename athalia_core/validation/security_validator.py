@@ -1045,3 +1045,13 @@ def is_command_safe(command: list[str]) -> bool:
     """Vérifie si une commande est sûre."""
     validator = CommandSecurityValidator()
     return validator.validate_command(command)["valid"]
+
+
+# Alias pour compatibilité avec les tests et usages existants
+SecurityValidator = CommandSecurityValidator
+
+
+def validate_and_run(command: Any, **kwargs: Any) -> Any:
+    """Exécute une commande après validation (lève SecurityError si non autorisée)."""
+    validator = CommandSecurityValidator()
+    return validator.run_safe_command(command, **kwargs)

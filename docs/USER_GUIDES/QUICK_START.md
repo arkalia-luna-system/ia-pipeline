@@ -486,7 +486,7 @@ sudo pip install -r requirements.txt
 - **Documentation principale :** [INDEX_FINAL_DOCUMENTATION_ATHALIA.md](../INDEX_FINAL_DOCUMENTATION_ATHALIA.md)
 
 ### **🛠️ Outils Utiles**
-- **Script principal :** `bin/athalia_unified.py`
+- **Script principal :** `bin/core/athalia_unified.py` (ou `bin/athalia_unified.py`)
 - **Tests automatisés :** `python -m pytest`
 - **Analyse de qualité :** `athalia_core/quality/code_linter.py`
 

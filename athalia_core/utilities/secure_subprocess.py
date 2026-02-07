@@ -61,9 +61,7 @@ def secure_subprocess_run(
         raise
 
 
-def secure_subprocess_popen(
-    command: list[str], **kwargs: Any
-) -> subprocess.Popen[Any]:
+def secure_subprocess_popen(command: list[str], **kwargs: Any) -> subprocess.Popen[Any]:
     """
     Crée un processus de manière sécurisée.
 

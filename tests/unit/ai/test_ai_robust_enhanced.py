@@ -111,14 +111,14 @@ class TestRobustAI:
         assert isinstance(prompt, str)
 
     @patch("athalia_core.ai.ai_robust_enhanced.validateand_run")
-    def test_call_ollama(self, mock_validateand_run):
+    def test_call_ollama(self, mock_validate_and_run):
         """Test d'appel Ollama"""
         ai = RobustAI()
         # Créer un mock qui simule le comportement de validateand_run (secure_subprocess)
         mock_result = MagicMock()
         mock_result.stdout = "test response"  # String au lieu de bytes
         mock_result.returncode = 0
-        mock_validateand_run.return_value = mock_result
+        mock_validate_and_run.return_value = mock_result
 
         response = ai._call_ollama("mistral", "test prompt")
 

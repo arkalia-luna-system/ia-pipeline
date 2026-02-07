@@ -178,11 +178,24 @@ MODULES INTÉGRÉS:
                 from athalia_core.audit import audit_project_intelligent
 
                 audit_result = audit_project_intelligent(args.project_path)
-                logger.info(f"📊 Score: {audit_result.get('score', 'N/A')}/100")
-                logger.info(f"🚨 Problèmes: {len(audit_result.get('issues', []))}")
-                logger.info(
-                    f"💡 Suggestions: {len(audit_result.get('suggestions', []))}"
+                score = audit_result.get("global_score") or audit_result.get(
+                    "score", "N/A"
                 )
+                logger.info(f"📊 Score: {score}/100")
+                issues = audit_result.get("issues", [])
+                suggestions = audit_result.get("suggestions", [])
+                logger.info(f"🚨 Problèmes: {len(issues)}")
+                for i, issue in enumerate(issues[:10], 1):
+                    logger.info(f"   {i}. {issue}")
+                if issues and len(issues) > 10:
+                    logger.info(f"   ... et {len(issues) - 10} autre(s)")
+                logger.info(f"💡 Suggestions: {len(suggestions)}")
+                for i, sug in enumerate(suggestions[:10], 1):
+                    logger.info(f"   {i}. {sug}")
+                if suggestions and len(suggestions) > 10:
+                    logger.info(f"   ... et {len(suggestions) - 10} autre(s)")
+                if audit_result.get("summary"):
+                    logger.info(f"📋 {audit_result['summary']}")
             except Exception as e:
                 logger.error(f"❌ Erreur lors de l'audit: {e}")
 

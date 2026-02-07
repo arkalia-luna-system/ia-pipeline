@@ -30,7 +30,8 @@ Scripts essentiels pour le fonctionnement du projet :
 - `ath-coverage.py` - Analyse de couverture
 - `ath-lint.py` - Linting du code
 - `athalia_launcher.py` - Lanceur principal
-- `athalia_unified.py` - Interface unifiée
+- `athalia_unified.py` - Interface unifiée (CLI complet : audit, complete, dashboard, api, benchmark, etc.)
+- À la racine de `bin/` : `athalia_unified.py` (lanceur vers `bin/core/athalia_unified.py` pour rétrocompatibilité)
 
 ### 🧹 Cleanup (Nettoyage)
 Scripts de maintenance et nettoyage :
