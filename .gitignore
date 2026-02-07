@@ -22,7 +22,7 @@ share/python-wheels/
 *.egg
 MANIFEST
 
-# macOS hidden files
+# macOS hidden files (AppleDouble / resource forks – évite erreurs git non-monotonic)
 ._*
 .DS_Store
 .DS_Store?
