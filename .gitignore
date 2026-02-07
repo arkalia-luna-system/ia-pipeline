@@ -246,6 +246,10 @@ athalia_showcase/
 # Dashboard files (generated)
 dashboard/
 
+# Fichiers inutiles ou trop lourds pour un clone (rapports générés, tests auto-générés)
+bandit-report.json
+tests/test_.__*
+
 # Large files
 # athalia.f(f - Fichier de log obsolète, maintenant dans logs/
 
