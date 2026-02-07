@@ -75,6 +75,9 @@ pip install -r requirements.txt
 
 # Run tests
 python -m pytest tests/ --cov=athalia_core --cov-report=html
+
+# Qualité du code (optionnel)
+python -m ruff check . && python -m ruff format --check . && python -m mypy athalia_core
 ```
 
 ### **Commandes installables (après `pip install -e .`)**
@@ -89,6 +92,10 @@ python -m pytest tests/ --cov=athalia_core --cov-report=html
 python bin/core/athalia_unified.py . --action audit    # Audit intelligent
 python bin/core/athalia_unified.py . --action complete # Industrialisation complète
 python bin/core/athalia_unified.py . --action dashboard # Rapport dashboard
+python bin/core/athalia_unified.py . --action api     # Serveur API REST (uvicorn)
+python bin/core/athalia_unified.py . --action benchmark # Benchmarks
+python bin/core/athalia_unified.py . --action security-dashboard # Dashboard sécurité
+python bin/core/athalia_unified.py . --action tutorials # Tutoriels interactifs
 python bin/core/athalia_unified.py . --scan            # Scanner le projet
 ```
 
@@ -225,6 +232,6 @@ Ce projet est publié sous licence MIT, permettant l'utilisation commerciale et 
 [![Documentation](https://img.shields.io/badge/Docs-Complete-blue?style=for-the-badge&logo=gitbook)](docs/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge&logo=open-source-initiative)](LICENSE)
 
-**Dernière Mise à Jour :** 23 Août 2025 | **Version :** 12.0.0 | **Statut :** Prêt pour la Production
+**Dernière Mise à Jour :** 7 Février 2026 | **Version :** 12.0.0 | **Statut :** Prêt pour la Production
 
 </div>
