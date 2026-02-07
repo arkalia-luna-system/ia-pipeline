@@ -110,15 +110,15 @@ class TestRobustAI:
         assert prompt is not None
         assert isinstance(prompt, str)
 
-    @patch("athalia_core.ai.ai_robust_enhanced.validate_and_run")
-    def test_call_ollama(self, mock_validate_and_run):
+    @patch("athalia_core.ai.ai_robust_enhanced.validateand_run")
+    def test_call_ollama(self, mock_validateand_run):
         """Test d'appel Ollama"""
         ai = RobustAI()
-        # Créer un mock qui simule le comportement de validate_and_run
+        # Créer un mock qui simule le comportement de validateand_run (secure_subprocess)
         mock_result = MagicMock()
         mock_result.stdout = "test response"  # String au lieu de bytes
         mock_result.returncode = 0
-        mock_validate_and_run.return_value = mock_result
+        mock_validateand_run.return_value = mock_result
 
         response = ai._call_ollama("mistral", "test prompt")
 
@@ -171,7 +171,7 @@ class TestFunctions:
     def test_fallback_ia(self):
         """Test de la fonction fallback_ia"""
         with patch(
-            "athalia_core.ai.ai_robust_enhanced.validate_and_run"
+            "athalia_core.ai.ai_robust_enhanced.validateand_run"
         ) as mock_validate_and_run:
             mock_validate_and_run.return_value = MagicMock(
                 stdout="fallback response", returncode=0
@@ -182,7 +182,7 @@ class TestFunctions:
             # Test plus flexible pour la réponse
             assert isinstance(response, str)
 
-    @patch("athalia_core.ai.ai_robust_enhanced.validate_and_run")
+    @patch("athalia_core.ai.ai_robust_enhanced.validateand_run")
     def test_query_qwen(self, mock_validate_and_run):
         """Test de la fonction query_qwen"""
         mock_validate_and_run.return_value = MagicMock(
@@ -194,7 +194,7 @@ class TestFunctions:
         # Test plus flexible pour la réponse
         assert isinstance(response, str)
 
-    @patch("athalia_core.ai.ai_robust_enhanced.validate_and_run")
+    @patch("athalia_core.ai.ai_robust_enhanced.validateand_run")
     def test_query_mistral(self, mock_validate_and_run):
         """Test de la fonction query_mistral"""
         mock_validate_and_run.return_value = MagicMock(

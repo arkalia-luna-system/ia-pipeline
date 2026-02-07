@@ -150,8 +150,8 @@ class AthaliaDemo:
             doc_content = f"""
 # 📚 Documentation Générée Automatiquement
 
-## 🎯 Projet: {self.demo_config['project_name']}
-## 🕐 Généré le: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+## 🎯 Projet: {self.demo_config["project_name"]}
+## 🕐 Généré le: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
 ## ⏱️ Temps de génération: {time.time() - self.start_time:.2f} secondes
 
 ## 📊 Métriques
@@ -173,10 +173,10 @@ open docs/README.md
 ```
 
 ## 🔧 Configuration
-- **Framework**: {self.demo_config['framework']}
-- **Base de données**: {self.demo_config['database']}
-- **Tests**: {self.demo_config['testing']}
-- **Documentation**: {self.demo_config['documentation']}
+- **Framework**: {self.demo_config["framework"]}
+- **Base de données**: {self.demo_config["database"]}
+- **Tests**: {self.demo_config["testing"]}
+- **Documentation**: {self.demo_config["documentation"]}
 """
 
             doc_file = self.output_dir / "DOCUMENTATION.md"
@@ -195,7 +195,7 @@ open docs/README.md
 
         report = f"""
 🎭 RAPPORT FINAL DÉMO ATHALIA
-{'=' * 50}
+{"=" * 50}
 
 ⏱️ Temps total: {total_time:.2f} secondes
 📁 Fichiers créés: 8

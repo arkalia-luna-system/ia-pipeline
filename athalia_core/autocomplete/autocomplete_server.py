@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
-from athalia_core.autocomplete_engine import AutocompleteEngine
+from athalia_core.autocomplete.autocomplete_engine import AutocompleteEngine
 
 app = FastAPI(title="Athalia Autocomplete Server")
 

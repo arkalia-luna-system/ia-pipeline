@@ -4,23 +4,22 @@ Serveur API REST principal d'Athalia
 API complète pour l'intégration et l'automatisation
 """
 
-import asyncio
-import json
 import logging
-import os
 import time
+from collections.abc import Awaitable, Callable
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any, cast
 
 import uvicorn
-from fastapi import BackgroundTasks, Depends, FastAPI, HTTPException, Request
+from fastapi import BackgroundTasks, FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse, JSONResponse, Response
+from fastapi.responses import HTMLResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 # Prometheus metrics
+_prometheus_available = False
 try:
     from prometheus_client import (
         CONTENT_TYPE_LATEST,
@@ -40,16 +39,18 @@ try:
         "Durée des requêtes HTTP en secondes",
         buckets=(0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1.0, 2.5, 5, 10),
     )
-    PROMETHEUS_ENABLED = True
+    _prometheus_available = True
 except Exception as _e:
     logging.getLogger(__name__).warning(f"Prometheus non disponible: {_e}")
-    PROMETHEUS_ENABLED = False
+
+PROMETHEUS_ENABLED = _prometheus_available
 
 # Configuration du logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Import des composants Athalia réels
+_athalia_available = False
 try:
     from athalia_core.core.cache_manager import CacheManager
     from athalia_core.core.generation import (
@@ -60,13 +61,12 @@ try:
     from athalia_core.quality.code_linter import CodeLinter
     from athalia_core.validation.security_validator import CommandSecurityValidator
 
-    ATHALIA_AVAILABLE = True
+    _athalia_available = True
 except ImportError as e:
     logger.warning(f"Composants Athalia non disponibles: {e}")
-    ATHALIA_AVAILABLE = False
 
 # Initialisation des composants Athalia
-if ATHALIA_AVAILABLE:
+if _athalia_available:
     try:
         orchestrator = UnifiedOrchestrator()
         security_validator = CommandSecurityValidator()
@@ -77,7 +77,9 @@ if ATHALIA_AVAILABLE:
         logger.info("Composants Athalia initialisés avec succès")
     except Exception as e:
         logger.error(f"Erreur d'initialisation des composants Athalia: {e}")
-        ATHALIA_AVAILABLE = False
+        _athalia_available = False
+
+ATHALIA_AVAILABLE = _athalia_available
 
 
 # Modèles Pydantic
@@ -148,7 +150,7 @@ app = FastAPI(
     contact={
         "name": "Athalia Team",
         "url": "https://arkalia-luna-system.github.io/ia-pipeline/",
-        "email": "contact@arkalia.dev",
+        "email": "arkalia.luna.system@gmail.com",
     },
     license_info={
         "name": "MIT License",
@@ -169,7 +171,10 @@ app.add_middleware(
 if PROMETHEUS_ENABLED:
 
     @app.middleware("http")
-    async def prometheus_middleware(request: Request, call_next):
+    async def prometheus_middleware(
+        request: Request,
+        call_next: Callable[..., Awaitable[Response]],
+    ) -> Response:
         start = time.perf_counter()
         response = await call_next(request)
         elapsed = time.perf_counter() - start
@@ -340,16 +345,20 @@ async def generate_project(
         }
 
         # Génération via l'orchestrateur
+        result: dict[str, Any] = {}
         if hasattr(orchestrator, "generate_project"):
-            result = orchestrator.generate_project(project_config)
-            output_path = result.get(
-                "output_path", f"generated_projects/{blueprint.name}"
+            result = cast(
+                dict[str, Any],
+                orchestrator.generate_project(project_config),  # type: ignore[union-attr]
             )
-            files_created = result.get("files_created", 0)
+            output_path = str(
+                result.get("output_path", f"generated_projects/{blueprint.name}")
+            )
+            files_created = int(result.get("files_created", 0))
         else:
             # Fallback via la fonction athalia_generate_project
             try:
-                result = athalia_generate_project(project_config, "generated_projects")
+                athalia_generate_project(project_config, "generated_projects")
                 output_path = f"generated_projects/{blueprint.name}"
                 files_created = 3  # Valeur par défaut
             except Exception:
@@ -365,7 +374,7 @@ async def generate_project(
 
         project_details = {
             "config": project_config,
-            "generation_result": result if "result" in locals() else {},
+            "generation_result": result,
             "cache_info": (
                 cache_manager.get_stats() if hasattr(cache_manager, "get_stats") else {}
             ),
@@ -375,9 +384,9 @@ async def generate_project(
             project_name=blueprint.name,
             status="generating",
             output_path=output_path,
-            files_created=files_created,
+            files_created=int(files_created),
             generation_time=generation_time,
-            project_details=project_details,
+            project_details=cast(dict[str, Any], project_details),
         )
 
     except Exception as e:
@@ -399,25 +408,36 @@ async def security_scan():
         scan_id = f"scan_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
 
         # Utiliser le vrai validateur de sécurité
-        security_results = {}
+        security_results: dict[str, Any] = {}
         if hasattr(security_validator, "audit_security"):
-            security_results = security_validator.audit_security()
+            security_results = cast(
+                dict[str, Any],
+                security_validator.audit_security(),  # type: ignore[union-attr]
+            )
 
         # Utiliser le vrai linter pour la sécurité
-        linting_results = {}
+        linting_results: dict[str, Any] = {}
         if hasattr(code_linter, "run_security_checks"):
-            linting_results = code_linter.run_security_checks()
+            linting_results = cast(
+                dict[str, Any],
+                code_linter.run_security_checks(),  # type: ignore[union-attr]
+            )
 
         # Calculer le vrai score de sécurité
-        vulnerabilities = {"high": 0, "medium": 0, "low": 0}
+        vulnerabilities: dict[str, int] = {"high": 0, "medium": 0, "low": 0}
         score = 100
 
         if security_results:
-            vulnerabilities = security_results.get("vulnerabilities", vulnerabilities)
-            score = security_results.get("score", score)
+            vulnerabilities = cast(
+                dict[str, int],
+                security_results.get("vulnerabilities", vulnerabilities),
+            )
+            score = int(security_results.get("score", score))
 
         if linting_results:
-            lint_vulns = linting_results.get("security_issues", {})
+            lint_vulns = cast(
+                dict[str, Any], linting_results.get("security_issues", {})
+            )
             for level, count in lint_vulns.items():
                 if level in vulnerabilities:
                     vulnerabilities[level] += count
@@ -428,10 +448,10 @@ async def security_scan():
                     elif level == "low":
                         score -= count * 1
 
-        score = max(0, min(100, score))
+        score = max(0, min(100, int(score)))
 
         # Recommandations basées sur les vrais résultats
-        recommendations = []
+        recommendations: list[str] = []
         if vulnerabilities["high"] > 0:
             recommendations.append(
                 "Corriger immédiatement les vulnérabilités critiques"
@@ -443,7 +463,7 @@ async def security_scan():
         if not recommendations:
             recommendations.append("Maintenir les bonnes pratiques de sécurité")
 
-        scan_details = {
+        scan_details: dict[str, Any] = {
             "security_audit": security_results,
             "linting_results": linting_results,
             "scan_timestamp": datetime.now().isoformat(),
@@ -487,12 +507,15 @@ async def get_metrics():
             }
 
         # Métriques de sécurité
-        security_metrics = {}
+        security_metrics: dict[str, Any] = {}
         if hasattr(security_validator, "get_security_stats"):
-            security_metrics = security_validator.get_security_stats()
+            security_metrics = cast(
+                dict[str, Any],
+                security_validator.get_security_stats(),  # type: ignore[union-attr]
+            )
 
         # Métriques de performance
-        performance_metrics = {}
+        performance_metrics: dict[str, Any] = {}
         if hasattr(cache_manager, "get_stats"):
             cache_stats = cache_manager.get_stats()
             performance_metrics = {
@@ -502,11 +525,14 @@ async def get_metrics():
             }
 
         # Métriques de qualité
-        quality_metrics = {}
+        quality_metrics: dict[str, Any] = {}
         if hasattr(code_linter, "get_quality_stats"):
-            quality_metrics = code_linter.get_quality_stats()
+            quality_metrics = cast(
+                dict[str, Any],
+                code_linter.get_quality_stats(),  # type: ignore[union-attr]
+            )
 
-        metrics = {
+        metrics: dict[str, Any] = {
             "project_stats": project_metrics.get("project_stats", {}),
             "security_stats": security_metrics,
             "performance_stats": performance_metrics,
@@ -526,7 +552,7 @@ async def get_metrics():
 
 # Endpoint Prometheus pour l'export des métriques
 @app.get("/metrics")
-async def prometheus_metrics():
+async def prometheus_metrics() -> Response:
     if not PROMETHEUS_ENABLED:
         raise HTTPException(status_code=503, detail="Prometheus non disponible")
     data = generate_latest(REGISTRY)
@@ -543,7 +569,7 @@ async def generate_project_files(blueprint: ProjectBlueprint, output_path: str):
 
         # Utiliser l'orchestrateur pour la génération complète
         if hasattr(orchestrator, "generate_project_files"):
-            await orchestrator.generate_project_files(blueprint, output_path)
+            await orchestrator.generate_project_files(blueprint, output_path)  # type: ignore[union-attr]
         else:
             # Fallback : génération de base
             logger.info(f"Génération de base pour {blueprint.name}")

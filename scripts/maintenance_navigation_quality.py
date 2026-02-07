@@ -5,20 +5,24 @@ Maintient automatiquement la qualité de navigation à 80+/100
 """
 
 import json
+import logging
 import subprocess
 import sys
 import time
 from datetime import datetime
 from pathlib import Path
 
-import schedule
-
 # Ajouter le répertoire parent au path pour importer athalia_core
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from athalia_core.core.logger import Logger
+try:
+    import schedule  # type: ignore[import-untyped]
+except ImportError:
+    schedule = None  # optionnel : pip install schedule pour tâches récurrentes
 
 from athalia_core.analysis.architecture_analyzer import ArchitectureAnalyzer
+
+logger = logging.getLogger(__name__)
 
 
 class NavigationQualityMaintainer:
@@ -362,7 +366,12 @@ class NavigationQualityMaintainer:
         return quality_status[0] != "ERROR"
 
     def schedule_maintenance(self):
-        """Planifie la maintenance automatique"""
+        """Planifie la maintenance automatique (nécessite: pip install schedule)."""
+        if schedule is None:
+            self.log_maintenance(
+                "⚠️ Pour le mode planifié, installez: pip install schedule", "WARNING"
+            )
+            return
         # Maintenance quotidienne à 9h00
         schedule.every().day.at("09:00").do(self.run_maintenance)
 
@@ -388,7 +397,13 @@ class NavigationQualityMaintainer:
                 self.run_maintenance()
 
     def run_scheduled_maintenance(self):
-        """Exécute la maintenance planifiée"""
+        """Exécute la maintenance planifiée (nécessite: pip install schedule)."""
+        if schedule is None:
+            self.log_maintenance(
+                "⚠️ Mode planifié non disponible. Installez: pip install schedule",
+                "WARNING",
+            )
+            return
         self.log_maintenance("🔄 Démarrage de la maintenance planifiée...")
 
         try:

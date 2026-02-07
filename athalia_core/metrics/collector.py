@@ -483,32 +483,32 @@ class MetricsCollector:
 
             content = f"""# Athalia Project Metrics
 
-**Automatically generated on:** {collection_info.get('collection_date', 'Unknown')}
-**Collector version:** {collection_info.get('collector_version', 'Unknown')}
+**Automatically generated on:** {collection_info.get("collection_date", "Unknown")}
+**Collector version:** {collection_info.get("collector_version", "Unknown")}
 
 ## 🎯 Core Metrics
 
 | **Component** | **Value** | **Status** |
 |:-------------:|:---------:|:----------:|
-| **🐍 Python Files** | `{summary.get('total_python_files', 0):,} modules` | ✅ **COUNTED** |
-| **📝 Lines of Code** | `{summary.get('lines_of_code', 0):,} lines` | ✅ **MEASURED** |
-| **🧪 Tests** | `{summary.get('collected_tests', 0):,} tests` | ✅ **COLLECTED** |
-| **🛡️ Security Commands** | `{summary.get('security_commands', 0)} validated` | ✅ **TESTED** |
-| **📊 HTML Dashboards** | `{summary.get('html_dashboards', 0)} functional` | ✅ **VERIFIED** |
-| **🔧 Utility Scripts** | `{summary.get('utility_scripts', 0)} tools` | ✅ **LISTED** |
-| **📚 Documentation** | `{summary.get('documentation_files', 0)} files` | ✅ **ORGANIZED** |
+| **🐍 Python Files** | `{summary.get("total_python_files", 0):,} modules` | ✅ **COUNTED** |
+| **📝 Lines of Code** | `{summary.get("lines_of_code", 0):,} lines` | ✅ **MEASURED** |
+| **🧪 Tests** | `{summary.get("collected_tests", 0):,} tests` | ✅ **COLLECTED** |
+| **🛡️ Security Commands** | `{summary.get("security_commands", 0)} validated` | ✅ **TESTED** |
+| **📊 HTML Dashboards** | `{summary.get("html_dashboards", 0)} functional` | ✅ **VERIFIED** |
+| **🔧 Utility Scripts** | `{summary.get("utility_scripts", 0)} tools` | ✅ **LISTED** |
+| **📚 Documentation** | `{summary.get("documentation_files", 0)} files` | ✅ **ORGANIZED** |
 
 ## 📊 Detailed Breakdown
 
 ### Python Files
-- **Core modules:** {summary.get('core_python_files', 0)}
-- **Test files:** {summary.get('test_files', 0)}
-- **Total lines:** {summary.get('lines_of_code', 0):,}
+- **Core modules:** {summary.get("core_python_files", 0)}
+- **Test files:** {summary.get("test_files", 0)}
+- **Total lines:** {summary.get("lines_of_code", 0):,}
 
 ### Quality Assurance
-- **Tests collected:** {summary.get('collected_tests', 0)}
-- **Security commands:** {summary.get('security_commands', 0)}
-- **Documentation files:** {summary.get('documentation_files', 0)}
+- **Tests collected:** {summary.get("collected_tests", 0)}
+- **Security commands:** {summary.get("security_commands", 0)}
+- **Documentation files:** {summary.get("documentation_files", 0)}
 
 ---
 

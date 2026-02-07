@@ -156,16 +156,16 @@ def generate_final_report():
 
 ## 📊 Statistiques du Projet
 
-- **Date d'optimisation** : {stats['timestamp']}
-- **Taille du projet** : {stats['project_size_gb']:.2f} GB
-- **Fichiers Python** : {stats['python_files']}
-- **Fichiers de documentation** : {stats['documentation_files']}
-- **Fichiers de test** : {stats['test_files']}
+- **Date d'optimisation** : {stats["timestamp"]}
+- **Taille du projet** : {stats["project_size_gb"]:.2f} GB
+- **Fichiers Python** : {stats["python_files"]}
+- **Fichiers de documentation** : {stats["documentation_files"]}
+- **Fichiers de test** : {stats["test_files"]}
 
 ## ✅ État d'Optimisation
 
-- **Statut** : {stats['optimization_status']}
-- **Pourcentage de completion** : {stats['completion_percentage']}%
+- **Statut** : {stats["optimization_status"]}
+- **Pourcentage de completion** : {stats["completion_percentage"]}%
 
 ## 🚀 Fonctionnalités Finalisées
 

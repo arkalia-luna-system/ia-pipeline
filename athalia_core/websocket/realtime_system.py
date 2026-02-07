@@ -41,7 +41,7 @@ class RealtimeWebSocketSystem:
         self.websocket_dir.mkdir(parents=True, exist_ok=True)
         self.host = host
         self.port = port
-        self.clients: set[websockets.WebSocketServerProtocol] = set()
+        self.clients: set[Any] = set()
         self.message_history: list[WebSocketMessage] = []
         self.max_history = 100
 
@@ -802,7 +802,7 @@ class RealtimeWebSocketSystem:
         """Démarre le serveur WebSocket"""
         logger.info(f"Démarrage du serveur WebSocket sur ws://{self.host}:{self.port}")
 
-        async with websockets.serve(self.handle_client, self.host, self.port):
+        async with websockets.serve(self.handle_client, self.host, self.port):  # type: ignore[arg-type]
             await asyncio.Future()  # Garde le serveur en vie
 
     def open_websocket_interface(self) -> None:

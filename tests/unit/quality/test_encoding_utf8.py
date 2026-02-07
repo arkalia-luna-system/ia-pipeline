@@ -32,9 +32,9 @@ class TestEncodingUTF8:
                 encoding_errors.append(f"{py_file}: {e}")
 
         # Assertion pour vérifier qu'il n'y a pas d'erreurs d'encodage
-        assert (
-            len(encoding_errors) == 0
-        ), "Erreurs d'encodage UTF-8 trouvées:\n" + "\n".join(encoding_errors)
+        assert len(encoding_errors) == 0, (
+            "Erreurs d'encodage UTF-8 trouvées:\n" + "\n".join(encoding_errors)
+        )
 
     def test_markdown_files_utf8(self):
         """Vérifie que tous les fichiers Markdown sont en UTF-8 - OPTIMISÉ"""
@@ -56,10 +56,9 @@ class TestEncodingUTF8:
                 encoding_errors.append(f"{md_file}: {e}")
 
         # Assertion pour vérifier qu'il n'y a pas d'erreurs d'encodage
-        assert (
-            len(encoding_errors) == 0
-        ), "Erreurs d'encodage UTF-8 dans les fichiers MD:\n" + "\n".join(
-            encoding_errors
+        assert len(encoding_errors) == 0, (
+            "Erreurs d'encodage UTF-8 dans les fichiers MD:\n"
+            + "\n".join(encoding_errors)
         )
 
     def test_yaml_files_utf8(self):
@@ -83,10 +82,9 @@ class TestEncodingUTF8:
                 encoding_errors.append(f"{yaml_file}: {e}")
 
         # Assertion pour vérifier qu'il n'y a pas d'erreurs d'encodage
-        assert (
-            len(encoding_errors) == 0
-        ), "Erreurs d'encodage UTF-8 dans les fichiers YAML:\n" + "\n".join(
-            encoding_errors
+        assert len(encoding_errors) == 0, (
+            "Erreurs d'encodage UTF-8 dans les fichiers YAML:\n"
+            + "\n".join(encoding_errors)
         )
 
     def test_txt_files_utf8(self):
@@ -109,10 +107,9 @@ class TestEncodingUTF8:
                 encoding_errors.append(f"{txt_file}: {e}")
 
         # Assertion pour vérifier qu'il n'y a pas d'erreurs d'encodage
-        assert (
-            len(encoding_errors) == 0
-        ), "Erreurs d'encodage UTF-8 dans les fichiers TXT:\n" + "\n".join(
-            encoding_errors
+        assert len(encoding_errors) == 0, (
+            "Erreurs d'encodage UTF-8 dans les fichiers TXT:\n"
+            + "\n".join(encoding_errors)
         )
 
     def test_requirements_utf8(self):
@@ -164,10 +161,9 @@ class TestEncodingUTF8:
                 continue
 
         # Assertion pour vérifier qu'il n'y a pas de marqueurs BOM
-        assert (
-            len(bom_files) == 0
-        ), "Fichiers avec marqueur BOM UTF-8 trouvés:\n" + "\n".join(
-            str(f) for f in bom_files
+        assert len(bom_files) == 0, (
+            "Fichiers avec marqueur BOM UTF-8 trouvés:\n"
+            + "\n".join(str(f) for f in bom_files)
         )
 
     def test_consistent_line_endings(self):
@@ -212,10 +208,9 @@ class TestEncodingUTF8:
                         continue
 
         # Assertion pour vérifier qu'il n'y a pas de fins de ligne mixtes
-        assert (
-            len(files_with_mixed_endings) == 0
-        ), "Fichiers avec fins de ligne mixtes trouvés:\n" + "\n".join(
-            files_with_mixed_endings
+        assert len(files_with_mixed_endings) == 0, (
+            "Fichiers avec fins de ligne mixtes trouvés:\n"
+            + "\n".join(files_with_mixed_endings)
         )
 
 

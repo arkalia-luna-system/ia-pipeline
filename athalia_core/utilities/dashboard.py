@@ -291,7 +291,7 @@ class Dashboard:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Athalia - {dashboard_data.get('title', 'Métriques')}</title>
+    <title>Dashboard Athalia - {dashboard_data.get("title", "Métriques")}</title>
     <style>{css}</style>
 </head>
 <body class="theme-{theme}">
@@ -299,8 +299,8 @@ class Dashboard:
         <h1>📊 Dashboard Athalia</h1>
         <div class="dashboard-controls">
             <select id="theme-selector">
-                <option value="light" {'selected' if theme == 'light' else ''}>Clair</option>
-                <option value="dark" {'selected' if theme == 'dark' else ''}>Sombre</option>
+                <option value="light" {"selected" if theme == "light" else ""}>Clair</option>
+                <option value="dark" {"selected" if theme == "dark" else ""}>Sombre</option>
             </select>
             <button id="refresh-btn">🔄 Actualiser</button>
         </div>
@@ -984,7 +984,7 @@ class DashboardGenerator:
     <div class="container">
         <div class="header">
             <h1>📊 Dashboard Analytics Réel - Athalia</h1>
-            <p>Métriques collectées en temps réel - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
+            <p>Métriques collectées en temps réel - {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}</p>
         </div>
 
         <div class="summary">
@@ -995,37 +995,37 @@ class DashboardGenerator:
 
         <div class="metrics-grid">
             <div class="metric-card">
-                <div class="metric-value">{metrics['python_files']:,}</div>
+                <div class="metric-value">{metrics["python_files"]:,}</div>
                 <div class="metric-label">Fichiers Python</div>
             </div>
             <div class="metric-card">
-                <div class="metric-value">{metrics['lines_of_code']:,}</div>
+                <div class="metric-value">{metrics["lines_of_code"]:,}</div>
                 <div class="metric-label">Lignes de Code</div>
             </div>
             <div class="metric-card">
-                <div class="metric-value">{metrics['test_files']:,}</div>
+                <div class="metric-value">{metrics["test_files"]:,}</div>
                 <div class="metric-label">Fichiers de Test</div>
             </div>
             <div class="metric-card">
-                <div class="metric-value">{metrics['documentation_files']:,}</div>
+                <div class="metric-value">{metrics["documentation_files"]:,}</div>
                 <div class="metric-label">Fichiers de Documentation</div>
             </div>
             <div class="metric-card">
-                <div class="metric-value">{metrics['dependencies']:,}</div>
+                <div class="metric-value">{metrics["dependencies"]:,}</div>
                 <div class="metric-label">Dépendances</div>
             </div>
             <div class="metric-card">
-                <div class="metric-value">{metrics['avg_complexity']}</div>
+                <div class="metric-value">{metrics["avg_complexity"]}</div>
                 <div class="metric-label">Complexité Moyenne</div>
             </div>
         </div>
 
         <div class="summary">
             <h2>🔍 Détails Techniques</h2>
-            <p><strong>Fonctions estimées:</strong> {metrics['estimated_functions']:,} (basé sur la densité de code typique)</p>
-            <p><strong>Classes estimées:</strong> {metrics['estimated_classes']:,} (basé sur la densité de code typique)</p>
-            <p><strong>Ratio tests/code:</strong> {round(metrics['test_files'] / max(metrics['python_files'], 1) * 100, 1)}%</p>
-            <p><strong>Ratio documentation/code:</strong> {round(metrics['documentation_files'] / max(metrics['python_files'], 1) * 100, 1)}%</p>
+            <p><strong>Fonctions estimées:</strong> {metrics["estimated_functions"]:,} (basé sur la densité de code typique)</p>
+            <p><strong>Classes estimées:</strong> {metrics["estimated_classes"]:,} (basé sur la densité de code typique)</p>
+            <p><strong>Ratio tests/code:</strong> {round(metrics["test_files"] / max(metrics["python_files"], 1) * 100, 1)}%</p>
+            <p><strong>Ratio documentation/code:</strong> {round(metrics["documentation_files"] / max(metrics["python_files"], 1) * 100, 1)}%</p>
         </div>
 
         <div class="footer">
@@ -1055,3 +1055,27 @@ def generate_analytics_dashboard(project_path: str = ".") -> str:
     """Fonction utilitaire pour générer le dashboard analytics"""
     generator = DashboardGenerator(project_path)
     return generator.generate_analytics_dashboard()
+
+
+def main() -> None:
+    """Point d'entrée pour la commande athalia-dashboard : génère le dashboard et l'ouvre dans le navigateur."""
+    import sys
+    import webbrowser
+
+    project_path = sys.argv[1] if len(sys.argv) > 1 else "."
+    try:
+        html_content = generate_analytics_dashboard(project_path)
+        out_dir = Path(project_path) / "dashboard"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        html_path = out_dir / "athalia_analytics.html"
+        html_path.write_text(html_content, encoding="utf-8")
+        webbrowser.open(f"file://{html_path.resolve()}")
+        logger.info("Dashboard ouvert dans le navigateur : %s", html_path)
+    except Exception as e:
+        logger.exception("Erreur génération dashboard : %s", e)
+        try:
+            report = create_dashboard_report(project_path)
+            print(json.dumps(report.get("summary", report), indent=2))
+        except Exception:
+            pass
+        sys.exit(1)

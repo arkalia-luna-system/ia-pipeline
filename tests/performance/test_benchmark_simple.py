@@ -235,14 +235,14 @@ def test_performance_benchmarks():
             if isinstance(category_results, dict):
                 for operation, time_taken in category_results.items():
                     # Les opérations ne devraient pas prendre plus de 1 seconde en moyenne
-                    assert (
-                        time_taken < 1.0
-                    ), f"Performance dégradée: {operation} prend {time_taken}s"
+                    assert time_taken < 1.0, (
+                        f"Performance dégradée: {operation} prend {time_taken}s"
+                    )
             elif isinstance(category_results, int | float):
                 # Si c'est une valeur directe, vérifier qu'elle est raisonnable
-                assert (
-                    category_results < 1.0
-                ), f"Performance dégradée: {category} prend {category_results}s"
+                assert category_results < 1.0, (
+                    f"Performance dégradée: {category} prend {category_results}s"
+                )
 
         logger.success("Tous les tests de performance ont réussi!")
         return True

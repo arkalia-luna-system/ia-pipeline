@@ -128,9 +128,9 @@ def test_function():
         if not self.cache_manager:
             # CORRECTION ARCHI PROPRE : Test de base sans CacheManager
             print("ℹ️ Test de base sans CacheManager - vérification de l'initialisation")
-            assert (
-                CACHE_MANAGER_AVAILABLE is False or CacheManager is None
-            ), "CacheManager devrait être None"
+            assert CACHE_MANAGER_AVAILABLE is False or CacheManager is None, (
+                "CacheManager devrait être None"
+            )
             return
 
         # Test complet avec CacheManager disponible
@@ -343,9 +343,9 @@ def inefficient_function():
         if not self.cache_manager:
             # CORRECTION ARCHI PROPRE : Test de base sans CacheManager
             print("ℹ️ Test de base sans CacheManager - vérification de l'initialisation")
-            assert (
-                CACHE_MANAGER_AVAILABLE is False or CacheManager is None
-            ), "CacheManager devrait être None"
+            assert CACHE_MANAGER_AVAILABLE is False or CacheManager is None, (
+                "CacheManager devrait être None"
+            )
             return
 
         # Test complet avec CacheManager disponible

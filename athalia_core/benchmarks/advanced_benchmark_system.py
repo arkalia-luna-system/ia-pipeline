@@ -819,9 +819,9 @@ class AdvancedBenchmarkSystem:
 
             benchmark_details += f"""
             <div class="metric-row">
-                <span class="metric-label">{benchmark_name.replace('_', ' ').title()}</span>
+                <span class="metric-label">{benchmark_name.replace("_", " ").title()}</span>
                 <span class="metric-value">
-                    Score: <span class="status-{'good' if score >= 80 else 'warning' if score >= 60 else 'error'}">{score}/100</span> |
+                    Score: <span class="status-{"good" if score >= 80 else "warning" if score >= 60 else "error"}">{score}/100</span> |
                     Durée: {duration:.3f}s
                 </span>
             </div>

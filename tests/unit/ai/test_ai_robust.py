@@ -75,7 +75,7 @@ class TestRobustAI:
 
     def test_generate_blueprint_with_mock(self):
         """Test la génération de blueprint avec fallback mock."""
-        blueprint = self.ai.generate_bluelogger.info("test f")
+        blueprint = self.ai.generate_blueprint(idea="test f")
 
         assert isinstance(blueprint, dict)
         assert "project_name" in blueprint
@@ -222,14 +222,14 @@ def test_function():
 
     def test_detect_available_models_with_ollama_error(self):
         """Test la détection avec erreur Ollama."""
-        with patch("athalia_core.ai.ai_robust.validate_and_run") as mock_validate:
+        with patch("athalia_core.ai.ai_robust.validateand_run") as mock_validate:
             mock_validate.side_effect = Exception("Ollama error")
             ai = RobustAI()
             assert AIModel.MOCK in ai.available_models
 
     def test_detect_available_models_with_ollama_failure(self):
         """Test la détection avec échec Ollama."""
-        with patch("athalia_core.ai.ai_robust.validate_and_run") as mock_validate:
+        with patch("athalia_core.ai.ai_robust.validateand_run") as mock_validate:
             mock_result = Mock()
             mock_result.returncode = 1
             mock_validate.return_value = mock_result
@@ -238,7 +238,7 @@ def test_function():
 
     def test_detect_available_models_with_ollama_success(self):
         """Test la détection avec succès Ollama."""
-        with patch("athalia_core.ai.ai_robust.validate_and_run") as mock_validate:
+        with patch("athalia_core.ai.ai_robust.validateand_run") as mock_validate:
             mock_result = Mock()
             mock_result.returncode = 0
             mock_result.stdout = "qwen mistral llava llama codegen"
@@ -249,7 +249,7 @@ def test_function():
 
     def test_call_ollama_success(self):
         """Test l'appel Ollama réussi."""
-        with patch("athalia_core.ai.ai_robust.validate_and_run") as mock_validate:
+        with patch("athalia_core.ai.ai_robust.validateand_run") as mock_validate:
             mock_result = Mock()
             mock_result.returncode = 0
             mock_result.stdout = "Réponse Ollama"
@@ -260,7 +260,7 @@ def test_function():
 
     def test_call_ollama_failure(self):
         """Test l'appel Ollama échoué."""
-        with patch("athalia_core.ai.ai_robust.validate_and_run") as mock_validate:
+        with patch("athalia_core.ai.ai_robust.validateand_run") as mock_validate:
             mock_result = Mock()
             mock_result.returncode = 1
             mock_result.stderr = "Erreur Ollama"
@@ -271,7 +271,7 @@ def test_function():
 
     def test_call_ollama_exception(self):
         """Test l'appel Ollama avec exception."""
-        with patch("athalia_core.ai.ai_robust.validate_and_run") as mock_validate:
+        with patch("athalia_core.ai.ai_robust.validateand_run") as mock_validate:
             mock_validate.side_effect = Exception("Erreur système")
 
             result = self.ai._call_ollama("mistral", "test prompt")
@@ -641,12 +641,10 @@ def test_validate_and_run_fallback():
     # Test que la fonction existe et peut être appelée
     assert callable(validate_and_run)
 
-    # Test avec une commande simple
-    result = validate_and_run(
-        ["echo", "test"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
-    )
+    # Test avec une commande simple (capture_output compatible subprocess.run)
+    result = validate_and_run(["echo", "test"], capture_output=True, text=True)
     assert result.returncode == 0
-    assert "test" in result.stdout
+    assert "test" in (result.stdout or "")
 
 
 def test_classify_project_complexity_fallback():

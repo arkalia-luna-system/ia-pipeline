@@ -36,7 +36,6 @@ except ImportError:
             pass
 
         def validateand_run(command: list[str], **kwargs: Any):
-
             # Paramètres de sécurité minimaux
             safe_kwargs = {"shell": False, "check": False}
             safe_kwargs.update(kwargs)
@@ -339,8 +338,8 @@ class AutoTester:
     def _generate_test_content(self, module: dict[str, Any]) -> str:
         """Génère le contenu des tests pour un module"""
         content = f'''"""
-Tests générés automatiquement pour {module['name']}
-Fichier: {module['path']}
+Tests générés automatiquement pour {module["name"]}
+Fichier: {module["path"]}
 """
 
 import pytest
@@ -352,9 +351,9 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 try:
-    import {module['name']}
+    import {module["name"]}
 except ImportError:
-    pytest.skip(f"Module {module['name']} non importable")
+    pytest.skip(f"Module {module["name"]} non importable")
 
 '''
 
@@ -364,25 +363,25 @@ except ImportError:
 def test_{func_name}():
     """Test de la fonction {func_name}"""
     # TODO: Implémenter les tests spécifiques
-    assert hasattr({module['name']}, '{func_name}')
-    assert callable(getattr({module['name']}, '{func_name}'))
+    assert hasattr({module["name"]}, '{func_name}')
+    assert callable(getattr({module["name"]}, '{func_name}'))
 '''
 
         # Tests pour les classes
         for class_info in module["classes"]:
             content += f'''
-class Test{class_info['name']}:
-    """Tests pour la classe {class_info['name']}"""
+class Test{class_info["name"]}:
+    """Tests pour la classe {class_info["name"]}"""
 
     def test_class_exists(self):
         """Vérifie que la classe existe"""
-        assert hasattr({module['name']}, '{class_info['name']}')
-        assert isinstance(getattr({module['name']}, '{class_info['name']}'), type)
+        assert hasattr({module["name"]}, '{class_info["name"]}')
+        assert isinstance(getattr({module["name"]}, '{class_info["name"]}'), type)
 
     def test_class_methods(self):
         """Vérifie les méthodes de la classe"""
-        cls = getattr({module['name']}, '{class_info['name']}')
-        for method_name in {class_info['methods']}:
+        cls = getattr({module["name"]}, '{class_info["name"]}')
+        for method_name in {class_info["methods"]}:
             assert hasattr(cls, method_name)
             assert callable(getattr(cls, method_name))
 '''
@@ -396,7 +395,7 @@ if __name__ == "__main__":
     def _generate_module_unit_tests(self, module: dict[str, Any]) -> str:
         """Génère des tests unitaires pour un module spécifique"""
         content = f'''"""
-Tests unitaires générés pour {module['name']}
+Tests unitaires générés pour {module["name"]}
 """
 
 import pytest
@@ -408,9 +407,9 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 try:
-    import {module['name']}
+    import {module["name"]}
 except ImportError:
-    pytest.skip(f"Module {module['name']} non importable")
+    pytest.skip(f"Module {module["name"]} non importable")
 
 '''
 
@@ -420,25 +419,25 @@ except ImportError:
 def test_{func_name}():
     """Test de la fonction {func_name}"""
     # TODO: Implémenter les tests spécifiques
-    assert hasattr({module['name']}, '{func_name}')
-    assert callable(getattr({module['name']}, '{func_name}'))
+    assert hasattr({module["name"]}, '{func_name}')
+    assert callable(getattr({module["name"]}, '{func_name}'))
 '''
 
         # Tests pour les classes
         for class_info in module["classes"]:
             content += f'''
-class Test{class_info['name']}:
-    """Tests pour la classe {class_info['name']}"""
+class Test{class_info["name"]}:
+    """Tests pour la classe {class_info["name"]}"""
 
     def test_class_exists(self):
         """Vérifie que la classe existe"""
-        assert hasattr({module['name']}, '{class_info['name']}')
-        assert isinstance(getattr({module['name']}, '{class_info['name']}'), type)
+        assert hasattr({module["name"]}, '{class_info["name"]}')
+        assert isinstance(getattr({module["name"]}, '{class_info["name"]}'), type)
 
     def test_class_methods(self):
         """Vérifie les méthodes de la classe"""
-        cls = getattr({module['name']}, '{class_info['name']}')
-        for method_name in {class_info['methods']}:
+        cls = getattr({module["name"]}, '{class_info["name"]}')
+        for method_name in {class_info["methods"]}:
             assert hasattr(cls, method_name)
             assert callable(getattr(cls, method_name))
 '''
@@ -455,7 +454,7 @@ if __name__ == "__main__":
 
         for module in modules:
             content = f'''"""
-Tests d'intégration générés automatiquement pour {module['name']}
+Tests d'intégration générés automatiquement pour {module["name"]}
 """
 
 import pytest
@@ -467,12 +466,12 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 try:
-    import {module['name']}
+    import {module["name"]}
 except ImportError:
-    pytest.skip(f"Module {module['name']} non importable")
+    pytest.skip(f"Module {module["name"]} non importable")
 
-def test_{module['name']}_integration():
-    """Test d'intégration pour {module['name']}"""
+def test_{module["name"]}_integration():
+    """Test d'intégration pour {module["name"]}"""
     # TODO: Implémenter les tests d'intégration spécifiques
     assert True
 
@@ -499,7 +498,7 @@ if __name__ == "__main__":
 
         for module in modules:
             content = f'''"""
-Tests de performance générés automatiquement pour {module['name']}
+Tests de performance générés automatiquement pour {module["name"]}
 """
 
 import pytest
@@ -512,12 +511,12 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 try:
-    import {module['name']}
+    import {module["name"]}
 except ImportError:
-    pytest.skip(f"Module {module['name']} non importable")
+    pytest.skip(f"Module {module["name"]} non importable")
 
-    def test_{module['name']}_performance():
-        """Test de performance pour {module['name']}"""
+    def test_{module["name"]}_performance():
+        """Test de performance pour {module["name"]}"""
         start_time = time.time()
 
         # TODO: Implémenter les tests de performance spécifiques

@@ -226,7 +226,6 @@ class DocumentationValidator:
                                 ]
                             )
                         ):
-
                             self.validation_results["commands"]["documented"].append(
                                 {
                                     "command": clean_match,
@@ -256,7 +255,6 @@ class DocumentationValidator:
                             and not clean_match.startswith("<!--")
                             and len(clean_match) > 2
                         ):
-
                             self.validation_results["modules"]["documented"].append(
                                 {
                                     "module": clean_match,

@@ -8,10 +8,32 @@ from pathlib import Path
 import pytest
 import requests
 
+# Racine du projet (portable)
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+
+
+def _can_bind_localhost():
+    """Vérifie si on peut lier/localhost (réseau autorisé)."""
+    try:
+        import socket
+
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.settimeout(1)
+        s.bind(("127.0.0.1", 0))
+        s.close()
+        return True
+    except (OSError, PermissionError):
+        return False
+
 
 @pytest.fixture(scope="module")
 def server_process():
-    project_root = Path("/Volumes/T7/athalia-dev-setup")
+    """Démarre le serveur API pour les tests e2e. Skip si réseau/localhost indisponible."""
+    if not _can_bind_localhost():
+        pytest.skip(
+            "Réseau/localhost non disponible (sandbox ou environnement restreint)"
+        )
+    project_root = PROJECT_ROOT
     env = os.environ.copy()
     env["PYTHONPATH"] = str(project_root)
 
@@ -55,6 +77,7 @@ def server_process():
         proc.kill()
 
 
+@pytest.mark.e2e
 def test_health_ok(server_process):
     r = requests.get("http://127.0.0.1:8001/health", timeout=5)
     assert r.status_code == 200
@@ -62,6 +85,7 @@ def test_health_ok(server_process):
     assert data.get("status") == "healthy"
 
 
+@pytest.mark.e2e
 def test_docs_available(server_process):
     r = requests.get("http://127.0.0.1:8001/docs", timeout=5)
     assert r.status_code == 200

@@ -83,7 +83,7 @@ class TestHardcodedPaths:
         if len(problematic_paths) > 0:
             # Afficher les premiers pour diagnostic
             for i, (file, paths) in enumerate(problematic_paths[:5]):
-                print(f"  {i+1}. {file}: {paths[:3]}...")
+                print(f"  {i + 1}. {file}: {paths[:3]}...")
             if len(problematic_paths) > 5:
                 print(f"  ... et {len(problematic_paths) - 5} autres fichiers")
 
@@ -101,10 +101,9 @@ class TestHardcodedPaths:
         assert True, "Analyse des chemins absolus effectuée avec succès"
 
         # Assertion pour vérifier qu'il n'y a pas de chemins problématiques
-        assert (
-            len(problematic_paths) == 0
-        ), "Chemins absolus hardcodés trouvés:\n" + "\n".join(
-            [f"{file}: {paths}" for file, paths in problematic_paths]
+        assert len(problematic_paths) == 0, (
+            "Chemins absolus hardcodés trouvés:\n"
+            + "\n".join([f"{file}: {paths}" for file, paths in problematic_paths])
         )
 
     def test_no_absolute_paths(self):
@@ -213,7 +212,7 @@ class TestHardcodedPaths:
             )
             # Afficher les premiers pour diagnostic
             for i, (file, paths) in enumerate(problematic_paths[:5]):
-                print(f"  {i+1}. {file}: {paths[:3]}...")
+                print(f"  {i + 1}. {file}: {paths[:3]}...")
             if len(problematic_paths) > 5:
                 print(f"  ... et {len(problematic_paths) - 5} autres fichiers")
 
@@ -224,10 +223,9 @@ class TestHardcodedPaths:
                 )
 
         # Assertion finale
-        assert (
-            len(problematic_paths) == 0
-        ), "Chemins absolus hardcodés trouvés:\n" + "\n".join(
-            [f"{file}: {paths}" for file, paths in problematic_paths]
+        assert len(problematic_paths) == 0, (
+            "Chemins absolus hardcodés trouvés:\n"
+            + "\n".join([f"{file}: {paths}" for file, paths in problematic_paths])
         )
 
     def test_no_desktop_paths(self):
@@ -326,7 +324,7 @@ class TestHardcodedPaths:
             print(f"⚠️  {len(desktop_paths)} patterns Desktop détectés")
             # Afficher les détails pour diagnostic
             for i, (file, paths) in enumerate(desktop_paths[:3]):
-                print(f"  {i+1}. {file}: {paths[:2]}...")
+                print(f"  {i + 1}. {file}: {paths[:2]}...")
 
             # Vérifier si ce sont de vrais chemins Desktop ou des faux positifs
             real_desktop_paths = []
@@ -375,10 +373,9 @@ class TestHardcodedPaths:
                 print(f"  {file}: {paths}")
 
             # Assertion finale seulement sur les vrais chemins
-            assert (
-                len(real_desktop_paths) == 0
-            ), "Vrais chemins Desktop hardcodés trouvés:\n" + "\n".join(
-                [f"{file}: {paths}" for file, paths in real_desktop_paths]
+            assert len(real_desktop_paths) == 0, (
+                "Vrais chemins Desktop hardcodés trouvés:\n"
+                + "\n".join([f"{file}: {paths}" for file, paths in real_desktop_paths])
             )
         else:
             print("✅ Aucun pattern Desktop détecté - Test réussi")

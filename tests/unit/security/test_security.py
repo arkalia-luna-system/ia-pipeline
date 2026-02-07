@@ -94,12 +94,12 @@ class TestSecurityAudit:
         content = log.read_text()
 
         # Vérifier la détection des problèmes
-        assert any(
-            "Clé API trouvée" in line for line in content.splitlines()
-        ), "Les clés API doivent être détectées"
-        assert any(
-            "Mot de passe en clair" in line for line in content.splitlines()
-        ), "Les mots de passe en clair doivent être détectés"
+        assert any("Clé API trouvée" in line for line in content.splitlines()), (
+            "Les clés API doivent être détectées"
+        )
+        assert any("Mot de passe en clair" in line for line in content.splitlines()), (
+            "Les mots de passe en clair doivent être détectés"
+        )
 
     def test_security_audit_clean_project(self, tmp_path):
         """Test d'audit sur un projet propre."""
@@ -115,16 +115,16 @@ class TestSecurityAudit:
 
         # Vérifier que le rapport a été généré
         log = proj / "security_audit.txt"
-        assert (
-            log.exists()
-        ), "Le rapport d'audit de sécurité doit être généré même pour un projet propre"
+        assert log.exists(), (
+            "Le rapport d'audit de sécurité doit être généré même pour un projet propre"
+        )
 
         content = log.read_text()
 
         # CORRECTION ARCHI PROPRE : Pour un projet propre, le rapport doit indiquer qu'aucun problème n'est détecté
-        assert (
-            "Aucun problème détecté" in content or "0 problème" in content
-        ), "Un projet propre ne doit pas avoir de problèmes de sécurité"
+        assert "Aucun problème détecté" in content or "0 problème" in content, (
+            "Un projet propre ne doit pas avoir de problèmes de sécurité"
+        )
 
     def test_security_audit_empty_project(self, tmp_path):
         """Test d'audit sur un projet vide."""
@@ -136,9 +136,9 @@ class TestSecurityAudit:
 
         # Vérifier que le rapport a été généré
         log = proj / "security_audit.txt"
-        assert (
-            log.exists()
-        ), "Le rapport d'audit de sécurité doit être généré même pour un projet vide"
+        assert log.exists(), (
+            "Le rapport d'audit de sécurité doit être généré même pour un projet vide"
+        )
 
     def test_security_audit_python_files_only(self, tmp_path):
         """Test d'audit sur des fichiers Python uniquement (comportement du module)."""
@@ -166,15 +166,15 @@ class TestSecurityAudit:
         content = log.read_text()
 
         # CORRECTION ARCHI PROPRE : Vérifier que les problèmes de sécurité sont détectés
-        assert (
-            "Mot de passe en clair détecté" in content
-        ), "Les mots de passe en clair doivent être détectés"
+        assert "Mot de passe en clair détecté" in content, (
+            "Les mots de passe en clair doivent être détectés"
+        )
         assert "Clé API trouvée" in content, "Les clés API doivent être détectées"
 
         # CORRECTION ARCHI PROPRE : Vérifier que le rapport contient des informations sur les problèmes
-        assert (
-            "Problèmes détectés" in content
-        ), "Le rapport doit indiquer qu'il y a des problèmes"
+        assert "Problèmes détectés" in content, (
+            "Le rapport doit indiquer qu'il y a des problèmes"
+        )
 
 
 @pytest.mark.skipif(not SECURITY_AVAILABLE, reason="Module security non disponible")

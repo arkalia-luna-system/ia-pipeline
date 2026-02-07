@@ -2092,7 +2092,7 @@
       "critical_broken_links": 0,
       "navigation_score": 0.0,
       "links": [],
-      "error": "[Errno 63] File name too long: '/Volumes/T7/athalia-dev-setup/docs/DEVELOPER/GUIDES/python\\n@pytest.fixture(autouse=True)\\ndef cleanup_after_test():\\n    \"\"\"Nettoyage automatique après chaque test\"\"\"\\n    yield\\n    # Arrêter les processus Athalia après chaque test\\n    killed = kill_athalia_processes()\\n    # Nettoyer les ressources\\n    cleanup_athalia_resources()\\n'"
+      "error": "[Errno 63] File name too long: '/Volumes/T7/athalia-dev-setup/docs/DEVELOPER/GUIDES/python\\arkalia.luna.system@gmail.com(autouse=True)\\ndef cleanup_after_test():\\n    \"\"\"Nettoyage automatique après chaque test\"\"\"\\n    yield\\n    # Arrêter les processus Athalia après chaque test\\n    killed = kill_athalia_processes()\\n    # Nettoyer les ressources\\n    cleanup_athalia_resources()\\n'"
     },
     "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md": {
       "file_path": "docs/DEVELOPER/GUIDES/WORKFLOW_COMPLETE_GUIDE.md",

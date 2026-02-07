@@ -113,7 +113,7 @@ class DocumentationValidator:
                             "file": str(file_path),
                             "type": "header_hierarchy",
                             "message": (
-                                f"Header hierarchy skip at line {i+1}: {line[:50]}"
+                                f"Header hierarchy skip at line {i + 1}: {line[:50]}"
                             ),
                             "severity": "low",
                         }
@@ -337,24 +337,24 @@ def create_quality_report(
     # Create markdown summary
     md_report = f"""# 📊 Documentation Quality Report
 
-**Generated:** {report['timestamp']}
-**Quality Score:** {report['stats']['quality_score']:.1f}/100
+**Generated:** {report["timestamp"]}
+**Quality Score:** {report["stats"]["quality_score"]:.1f}/100
 
 ## 📈 Statistics
 
 | Metric | Value | Percentage |
 |--------|-------|------------|
-| Total Files | {report['stats']['total_files']} | 100% |
-| Files with Diagrams | {report['stats']['files_with_diagrams']} | {(report['stats']['files_with_diagrams']/report['stats']['total_files']*100):.1f}% |
-| Files with Code | {report['stats']['files_with_code']} | {(report['stats']['files_with_code']/report['stats']['total_files']*100):.1f}% |
-| Files with Badges | {report['stats']['files_with_badges']} | {(report['stats']['files_with_badges']/report['stats']['total_files']*100):.1f}% |
+| Total Files | {report["stats"]["total_files"]} | 100% |
+| Files with Diagrams | {report["stats"]["files_with_diagrams"]} | {(report["stats"]["files_with_diagrams"] / report["stats"]["total_files"] * 100):.1f}% |
+| Files with Code | {report["stats"]["files_with_code"]} | {(report["stats"]["files_with_code"] / report["stats"]["total_files"] * 100):.1f}% |
+| Files with Badges | {report["stats"]["files_with_badges"]} | {(report["stats"]["files_with_badges"] / report["stats"]["total_files"] * 100):.1f}% |
 
 ## ⚠️ Issues Found
 
-**Total Issues:** {len(report['issues'])}
-- High Severity: {len([i for i in report['issues'] if i['severity'] == 'high'])}
-- Medium Severity: {len([i for i in report['issues'] if i['severity'] == 'medium'])}
-- Low Severity: {len([i for i in report['issues'] if i['severity'] == 'low'])}
+**Total Issues:** {len(report["issues"])}
+- High Severity: {len([i for i in report["issues"] if i["severity"] == "high"])}
+- Medium Severity: {len([i for i in report["issues"] if i["severity"] == "medium"])}
+- Low Severity: {len([i for i in report["issues"] if i["severity"] == "low"])}
 
 ## 🎯 Recommendations
 

@@ -52,7 +52,6 @@ class PerformanceOptimizer:
                 worker.terminate()
                 worker.wait(timeout=5)
             except Exception as e:
-
                 logger.debug(f"Erreur gérée: {e}")
 
                 pass

@@ -135,12 +135,12 @@ class OptimizationImpactMeasurer:
         report.append(f"- **Temps total**: {total_time:.2f}s")
         report.append(f"- **Mémoire totale**: {total_memory:.1f}MB")
         report.append(
-            f"- **Temps moyen par test**: {total_time/successful_tests:.2f}s"
+            f"- **Temps moyen par test**: {total_time / successful_tests:.2f}s"
             if successful_tests > 0
             else "- **Temps moyen par test**: N/A"
         )
         report.append(
-            f"- **Mémoire moyenne par test**: {total_memory/successful_tests:.1f}MB"
+            f"- **Mémoire moyenne par test**: {total_memory / successful_tests:.1f}MB"
             if successful_tests > 0
             else "- **Mémoire moyenne par test**: N/A"
         )

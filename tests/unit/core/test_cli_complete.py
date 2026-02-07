@@ -524,9 +524,9 @@ class TestCLIIntegration:
                 pass
 
             # Vérifier que des messages ont été affichés (même en cas d'erreur)
-            assert (
-                mock_echo.call_count > 0
-            ), "Aucun message affiché lors de la gestion d'erreur"
+            assert mock_echo.call_count > 0, (
+                "Aucun message affiché lors de la gestion d'erreur"
+            )
 
 
 if __name__ == "__main__":

@@ -8,6 +8,7 @@ import argparse
 import logging
 import os
 import sys
+from pathlib import Path
 
 # Configuration du logging
 logging.basicConfig(
@@ -44,9 +45,18 @@ MODULES INTÉGRÉS:
 
     parser.add_argument(
         "--action",
-        choices=["complete", "audit", "fix", "dashboard"],
+        choices=[
+            "complete",
+            "audit",
+            "fix",
+            "dashboard",
+            "api",
+            "benchmark",
+            "security-dashboard",
+            "tutorials",
+        ],
         default="complete",
-        help="Action spécifique à exécuter",
+        help="Action à exécuter (complete, audit, fix, dashboard, api, benchmark, security-dashboard, tutorials)",
     )
 
     parser.add_argument(
@@ -127,54 +137,40 @@ MODULES INTÉGRÉS:
 
     try:
         if args.action == "complete" and not args.scan:
-            # Mode industrialisation complète
+            # Mode industrialisation complète avec l'orchestrateur unifié réel
             logger.info("🚀 Lancement de l'industrialisation complète...")
 
-            # Import de l'orchestrateur principal
             try:
-                from athalia_core.athalia_orchestrator import AthaliaOrchestrator
-            except ImportError:
-                logger.info(
-                    "⚠️ Module athalia_orchestrator non disponible, "
-                    "utilisation de la version simplifiée"
-                )
-                # Version simplifiée pour les tests
+                from athalia_core.core.unified_orchestrator import UnifiedOrchestrator
 
-                class AthaliaOrchestrator:
-                    def industrialize_project(self, project_path, config=None):
-                        return {
-                            "status": (
-                                "Industrialisation simulée - Modules non disponibles"
-                            )
-                        }
-
-                    def audit_project(self, project_path):
-                        return {"score": 75, "issues": 15}
-
-                    def scan_projects(self, project_path):
-                        return [
-                            {"name": "test", "type": "python", "path": project_path}
-                        ]
-
-            config = {
-                "audit": not args.no_audit,
-                "clean": not args.no_clean,
-                "doc": not args.no_doc,
-                "test": not args.no_test,
-                "cicd": not args.no_cicd,
-                "dry_run": args.dry_run,
-                "auto_fix": args.auto_fix,
-                "lang": args.lang,
-            }
-
-            orchestrator = AthaliaOrchestrator()
-            results = orchestrator.industrialize_project(args.project_path, config)
-
-            if "status" in results:
+                orchestrator = UnifiedOrchestrator(project_path=args.project_path)
+                orchestrator.initialize_modules()
+                # Blueprint minimal pour un projet existant (scan du répertoire)
+                blueprint = {
+                    "name": "project",
+                    "description": "Industrialisation complète",
+                    "path": args.project_path,
+                    "config": {
+                        "audit": not args.no_audit,
+                        "clean": not args.no_clean,
+                        "doc": not args.no_doc,
+                        "test": not args.no_test,
+                        "cicd": not args.no_cicd,
+                        "dry_run": args.dry_run,
+                        "auto_fix": args.auto_fix,
+                        "lang": args.lang,
+                    },
+                }
+                results = orchestrator.run_full_workflow(blueprint)
+                status = results.get("status", "completed")
                 logger.info("✅ Industrialisation terminée avec succès!")
-                logger.info(f"📊 Rapport: {results['status']}")
-            else:
-                logger.info("✅ Industrialisation terminée!")
+                logger.info(f"📊 Statut: {status}")
+                if results.get("errors"):
+                    for err in results["errors"]:
+                        logger.warning(f"⚠️ {err}")
+            except Exception as e:
+                logger.error(f"❌ Erreur lors de l'industrialisation: {e}")
+                raise
 
         elif args.action == "audit":
             logger.info("🔍 Lancement de l'audit intelligent...")
@@ -193,7 +189,9 @@ MODULES INTÉGRÉS:
         elif args.action == "fix":
             logger.info("🔧 Lancement de l'auto-correction...")
             try:
-                from modules.auto_correction_avancee import AutoCorrectionAvancee
+                from athalia_core.advanced_modules.auto_correction_advanced import (
+                    AutoCorrectionAvancee,
+                )
 
                 corrector = AutoCorrectionAvancee(args.project_path)
                 result = corrector.analyser_et_corriger(dry_run=args.dry_run)
@@ -204,7 +202,9 @@ MODULES INTÉGRÉS:
         elif args.action == "dashboard":
             logger.info("📊 Lancement du dashboard...")
             try:
-                from modules.dashboard_unifie_simple import DashboardUnifieSimple
+                from athalia_core.advanced_modules.dashboard_unified import (
+                    DashboardUnifieSimple,
+                )
 
                 dashboard = DashboardUnifieSimple()
                 print(dashboard.generer_rapport_consolide())
@@ -214,18 +214,119 @@ MODULES INTÉGRÉS:
         elif args.scan:
             logger.info("🔍 Scanner les projets...")
             try:
-                from modules.orchestrateur_principal import AthaliaOrchestrator
-
-                orchestrator = AthaliaOrchestrator()
-                projects = orchestrator.scan_projects(args.project_path)
-                logger.info(f"📁 Projets trouvés: {len(projects)}")
-                for project in projects:
-                    logger.info(
-                        f"  - {project.get('name', 'N/A')} "
-                        f"({project.get('type', 'N/A')})"
-                    )
+                root = Path(args.project_path)
+                if not root.is_dir():
+                    logger.info(f"  - {root.name} (fichier)")
+                else:
+                    projects = []
+                    for p in root.iterdir():
+                        if p.name.startswith(".") or p.name in (
+                            "__pycache__",
+                            "node_modules",
+                        ):
+                            continue
+                        proj_type = "directory"
+                        if p.is_file():
+                            proj_type = "file"
+                        elif (p / "pyproject.toml").exists() or (
+                            p / "setup.py"
+                        ).exists():
+                            proj_type = "python"
+                        projects.append(
+                            {"name": p.name, "type": proj_type, "path": str(p)}
+                        )
+                    if not projects:
+                        projects = [
+                            {"name": root.name, "type": "project", "path": str(root)}
+                        ]
+                    logger.info(f"📁 Projets / éléments trouvés: {len(projects)}")
+                    for project in projects:
+                        logger.info(
+                            f"  - {project.get('name', 'N/A')} "
+                            f"({project.get('type', 'N/A')})"
+                        )
             except Exception as e:
                 logger.error(f"❌ Erreur lors du scan: {e}")
+
+        elif args.action == "api":
+            logger.info("🌐 Lancement du serveur API REST (uvicorn)...")
+            try:
+                import subprocess
+
+                subprocess.run(
+                    [
+                        sys.executable,
+                        "-m",
+                        "uvicorn",
+                        "athalia_core.api.main_api_server:app",
+                        "--host",
+                        "0.0.0.0",
+                        "--port",
+                        "8000",
+                    ],
+                    check=False,
+                )
+            except FileNotFoundError:
+                logger.info(
+                    "💡 Installez uvicorn (pip install uvicorn) puis exécutez :"
+                )
+                logger.info(
+                    "   uvicorn athalia_core.api.main_api_server:app --reload --port 8000"
+                )
+            except Exception as e:
+                logger.error(f"❌ Erreur API: {e}")
+
+        elif args.action == "benchmark":
+            logger.info("📊 Lancement du système de benchmarks...")
+            try:
+                old_argv = sys.argv
+                sys.argv = [
+                    "benchmark",
+                    "--project-path",
+                    args.project_path,
+                    "--run-all",
+                ]
+                from athalia_core.benchmarks.advanced_benchmark_system import (
+                    main as benchmark_main,
+                )
+
+                benchmark_main()
+                sys.argv = old_argv
+            except Exception as e:
+                logger.error(f"❌ Erreur benchmarks: {e}")
+
+        elif args.action == "security-dashboard":
+            logger.info("🛡️ Lancement du dashboard de sécurité...")
+            try:
+                old_argv = sys.argv
+                sys.argv = [
+                    "security_dashboard",
+                    "--project-path",
+                    args.project_path,
+                    "--open",
+                ]
+                from athalia_core.security.security_dashboard import (
+                    main as security_main,
+                )
+
+                security_main()
+                sys.argv = old_argv
+            except Exception as e:
+                logger.error(f"❌ Erreur security dashboard: {e}")
+
+        elif args.action == "tutorials":
+            logger.info("🎓 Lancement des tutoriels interactifs...")
+            try:
+                old_argv = sys.argv
+                sys.argv = ["tutorials", args.project_path]
+                from athalia_core.tutorials.interactive_tutorial_system import (
+                    main as tutorials_main,
+                )
+
+                tutorials_main()
+                sys.argv = old_argv
+            except Exception as e:
+                logger.error(f"❌ Erreur tutoriels: {e}")
 
     except Exception as e:
         logger.error(f"❌ Erreur générale: {e}")

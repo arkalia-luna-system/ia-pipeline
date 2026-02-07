@@ -62,9 +62,8 @@ def test_generation_improvement():
     """Test d'amélioration du service de f"""
     print("\n🚀 Test d'amélioration du service de génération...")
     try:
-        from athalia_core.generation import generate_project
-
         from athalia_core.classification import classify_project
+        from athalia_core.generation import generate_project
 
         # Test de classification
         idea = "robot reachy mini wireless yeux qui bouge si f"

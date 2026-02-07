@@ -22,9 +22,9 @@ class TestCommandSecurityValidatorPaths:
         ]
 
         for forbidden_path in forbidden_paths:
-            assert (
-                forbidden_path not in validator.allowed_commands
-            ), f"Chemin macOS interdit trouvé: {forbidden_path}"
+            assert forbidden_path not in validator.allowed_commands, (
+                f"Chemin macOS interdit trouvé: {forbidden_path}"
+            )
 
     def test_python_paths_are_dynamic(self):
         """Vérifie que les chemins Python sont détectés dynamiquement."""
@@ -34,9 +34,9 @@ class TestCommandSecurityValidatorPaths:
         import sys
 
         if sys.executable:
-            assert (
-                sys.executable in validator.allowed_commands
-            ), "L'exécutable Python actuel doit être autorisé"
+            assert sys.executable in validator.allowed_commands, (
+                "L'exécutable Python actuel doit être autorisé"
+            )
 
     def test_relative_paths_are_present(self):
         """Vérifie que les chemins relatifs sont présents."""
@@ -50,9 +50,9 @@ class TestCommandSecurityValidatorPaths:
         ]
 
         for relative_path in required_relative_paths:
-            assert (
-                relative_path in validator.allowed_commands
-            ), f"Chemin relatif requis manquant: {relative_path}"
+            assert relative_path in validator.allowed_commands, (
+                f"Chemin relatif requis manquant: {relative_path}"
+            )
 
     def test_no_absolute_paths_in_whitelist(self):
         """Vérifie qu'aucun chemin absolu spécifique à l'environnement n'est présent."""
@@ -76,6 +76,6 @@ class TestCommandSecurityValidatorPaths:
         # Vérifier que les commandes de base sont présentes
         basic_commands = ["python", "python3", "pip", "git"]
         for cmd in basic_commands:
-            assert (
-                cmd in validator.allowed_commands
-            ), f"Commande de base manquante: {cmd}"
+            assert cmd in validator.allowed_commands, (
+                f"Commande de base manquante: {cmd}"
+            )

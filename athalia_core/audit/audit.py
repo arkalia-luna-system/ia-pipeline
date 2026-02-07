@@ -83,8 +83,8 @@ def generate_audit_report(project_path: str) -> str:
         report = f"""# Rapport d'audit - {Path(project_path).name}
 
 ## Résumé
-- **Projet**: {results.get('project', 'N/A')}
-- **Statut**: {results.get('status', 'N/A')}
+- **Projet**: {results.get("project", "N/A")}
+- **Statut**: {results.get("status", "N/A")}
 
 ## Détails
 Audit terminé avec succès.

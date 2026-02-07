@@ -97,7 +97,7 @@ class TestClass:
             "name": "test_plugin",
             "version": "1.0.0",
             "description": "Plugin de test",
-            "maintainer": "test@example.com",
+            "maintainer": "arkalia.luna.system@gmail.com",
             "license": "MIT",
         }
         with open(metadata_file, "w") as f:
@@ -367,7 +367,7 @@ class TestClass:
             "name": "real_plugin",
             "version": "1.0.0",
             "description": "Plugin d'intégration",
-            "maintainer": "test@example.com",
+            "maintainer": "arkalia.luna.system@gmail.com",
             "license": "MIT",
         }
         with open(metadata_file, "w") as f:

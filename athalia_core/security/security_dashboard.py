@@ -116,9 +116,9 @@ class SecurityDashboard:
                     scan_results = security_validator.run_comprehensive_scan(
                         str(self.project_path)
                     )
-                    security_data["security_checks"][
-                        "comprehensive_scan"
-                    ] = scan_results
+                    security_data["security_checks"]["comprehensive_scan"] = (
+                        scan_results
+                    )
 
                     # Calcul du score de sécurité intelligent et contextuel
                     total_vulns = scan_results.get("vulnerabilities_found", 0)
@@ -462,12 +462,16 @@ class SecurityDashboard:
         score_color = (
             "#28a745"
             if security_score >= 85
-            else "#ffc107" if security_score >= 70 else "#dc3545"
+            else "#ffc107"
+            if security_score >= 70
+            else "#dc3545"
         )
         score_status = (
             "Sécurisé"
             if security_score >= 85
-            else "Attention" if security_score >= 70 else "Critique"
+            else "Attention"
+            if security_score >= 70
+            else "Critique"
         )
 
         html_template = f"""<!DOCTYPE html>
@@ -895,7 +899,7 @@ class SecurityDashboard:
         </div>
         <div class="metric-row">
             <span class="metric-label">📊 Ratio Vuln/Fichier</span>
-            <span class="metric-value">{(total_vulns/total_files*1000):.1f}‰</span>
+            <span class="metric-value">{(total_vulns / total_files * 1000):.1f}‰</span>
         </div>
         """
 
@@ -910,19 +914,19 @@ class SecurityDashboard:
         html = f"""
         <div class="metric-row">
             <span class="metric-label">🐍 Fichiers Python</span>
-            <span class="metric-value">{python_stats.get('total_files', 0):,}</span>
+            <span class="metric-value">{python_stats.get("total_files", 0):,}</span>
         </div>
         <div class="metric-row">
             <span class="metric-label">📝 Lignes de Code</span>
-            <span class="metric-value">{python_stats.get('total_lines', 0):,}</span>
+            <span class="metric-value">{python_stats.get("total_lines", 0):,}</span>
         </div>
         <div class="metric-row">
             <span class="metric-label">🧪 Tests Collectés</span>
-            <span class="metric-value">{test_coverage.get('total_tests', 0):,}</span>
+            <span class="metric-value">{test_coverage.get("total_tests", 0):,}</span>
         </div>
         <div class="metric-row">
             <span class="metric-label">📚 Documentation</span>
-            <span class="metric-value">{doc_quality.get('total_docs', 0):,} fichiers</span>
+            <span class="metric-value">{doc_quality.get("total_docs", 0):,} fichiers</span>
         </div>
         """
 
@@ -956,7 +960,7 @@ class SecurityDashboard:
         </div>
         <div class="metric-row">
             <span class="metric-label">⚡ Hit Rate</span>
-            <span class="metric-value">{hit_rate*100:.1f}%</span>
+            <span class="metric-value">{hit_rate * 100:.1f}%</span>
         </div>
         <div class="metric-row">
             <span class="metric-label">💾 Cache Size</span>
@@ -977,7 +981,7 @@ class SecurityDashboard:
         html = f"""
         <div class="metric-row">
             <span class="metric-label">🛡️ Score Global</span>
-            <span class="metric-value score-{security_data.get('security_score', 0)}">{security_data.get('security_score', 0)}/100</span>
+            <span class="metric-value score-{security_data.get("security_score", 0)}">{security_data.get("security_score", 0)}/100</span>
         </div>
         <div class="metric-row">
             <span class="metric-label">🚨 Vulnérabilités Critiques</span>
@@ -993,7 +997,7 @@ class SecurityDashboard:
         </div>
         <div class="metric-row">
             <span class="metric-label">⚡ Athalia Components</span>
-            <span class="metric-value">{'✅ Disponibles' if security_data.get('athalia_available') else '❌ Non disponibles'}</span>
+            <span class="metric-value">{"✅ Disponibles" if security_data.get("athalia_available") else "❌ Non disponibles"}</span>
         </div>
         """
 

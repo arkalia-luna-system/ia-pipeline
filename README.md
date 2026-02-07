@@ -48,7 +48,7 @@
 
 </div>
 
-*Métriques collectées automatiquement le 2025-08-23 12:18:35 par le [Collecteur de Métriques Athalia](data/metrics.md)*
+*Métriques collectées automatiquement (dernier audit : 7 février 2026) par le [Collecteur de Métriques Athalia](data/metrics.md)*
 
 **📊 Note importante** : Ces métriques sont générées automatiquement par le script Athalia et reflètent l'état réel du projet. Les valeurs sont mises à jour à chaque exécution du collecteur de métriques.
 
@@ -77,7 +77,22 @@ pip install -r requirements.txt
 python -m pytest tests/ --cov=athalia_core --cov-report=html
 ```
 
-**[📋 Complete setup guide](docs/USER_GUIDES/GETTING_STARTED_DETAILED.md)**
+### **Commandes installables (après `pip install -e .`)**
+| Commande | Description |
+|----------|-------------|
+| `athalia` | Menu interactif principal (génération, nettoyage, CI, audit, etc.) |
+| `athalia-cli` | Interface CLI avancée |
+| `athalia-dashboard` | Lance le dashboard Streamlit des métriques |
+
+### **CLI unifié (sans installation en mode éditable)**
+```bash
+python bin/core/athalia_unified.py . --action audit    # Audit intelligent
+python bin/core/athalia_unified.py . --action complete # Industrialisation complète
+python bin/core/athalia_unified.py . --action dashboard # Rapport dashboard
+python bin/core/athalia_unified.py . --scan            # Scanner le projet
+```
+
+**[📋 Complete setup guide](docs/USER_GUIDES/GETTING_STARTED_DETAILED.md)** · **[📋 Modules avancés (API, benchmarks, sécurité)](docs/USER_GUIDES/LANCEMENT_MODULES_AVANCES.md)**
 
 ---
 

@@ -34,12 +34,12 @@ class TestProfilUtilisateur(unittest.TestCase):
         """Configuration initiale pour chaque test"""
         if not USER_PROFILES_AVAILABLE:
             self.skipTest("UserProfiles non disponible")
-        self.profil = ProfilUtilisateur("TestUser", "test@example.com")
+        self.profil = ProfilUtilisateur("TestUser", "arkalia.luna.system@gmail.com")
 
     def test_initialization(self):
         """Test de l'initialisation du profil"""
         self.assertEqual(self.profil.nom, "TestUser")
-        self.assertEqual(self.profil.email, "test@example.com")
+        self.assertEqual(self.profil.email, "arkalia.luna.system@gmail.com")
         self.assertEqual(self.profil.preferences, {})
         self.assertIsInstance(self.profil.date_creation, datetime)
         self.assertIsInstance(self.profil.derniere_connexion, datetime)
@@ -49,7 +49,9 @@ class TestProfilUtilisateur(unittest.TestCase):
     def test_initialization_with_preferences(self):
         """Test de l'initialisation avec des préférences"""
         preferences = {"theme": "dark", "language": "fr"}
-        profil = ProfilUtilisateur("TestUser", "test@example.com", preferences)
+        profil = ProfilUtilisateur(
+            "TestUser", "arkalia.luna.system@gmail.com", preferences
+        )
 
         self.assertEqual(profil.preferences, preferences)
 
@@ -59,7 +61,7 @@ class TestProfilUtilisateur(unittest.TestCase):
 
         self.assertIsInstance(dict_profil, dict)
         self.assertEqual(dict_profil["nom"], "TestUser")
-        self.assertEqual(dict_profil["email"], "test@example.com")
+        self.assertEqual(dict_profil["email"], "arkalia.luna.system@gmail.com")
         self.assertEqual(dict_profil["preferences"], {})
         self.assertIn("date_creation", dict_profil)
         self.assertIn("derniere_connexion", dict_profil)
@@ -70,7 +72,7 @@ class TestProfilUtilisateur(unittest.TestCase):
         """Test de la création depuis un dictionnaire"""
         data = {
             "nom": "TestUser",
-            "email": "test@example.com",
+            "email": "arkalia.luna.system@gmail.com",
             "preferences": {"theme": "dark"},
             "date_creation": "2023-01-01T00:00:00",
             "derniere_connexion": "2023-01-02T00:00:00",
@@ -81,7 +83,7 @@ class TestProfilUtilisateur(unittest.TestCase):
         profil = ProfilUtilisateur.from_dict(data)
 
         self.assertEqual(profil.nom, "TestUser")
-        self.assertEqual(profil.email, "test@example.com")
+        self.assertEqual(profil.email, "arkalia.luna.system@gmail.com")
         self.assertEqual(profil.preferences, {"theme": "dark"})
         self.assertEqual(profil.projets_consultes, ["projet1", "projet2"])
         self.assertEqual(profil.actions_frequentes, {"action1": 5})
@@ -154,11 +156,13 @@ class TestGestionnaireProfils(unittest.TestCase):
 
     def test_creer_profil(self):
         """Test de la création d'un profil"""
-        profil = self.gestionnaire.creer_profil("TestUser", "test@example.com")
+        profil = self.gestionnaire.creer_profil(
+            "TestUser", "arkalia.luna.system@gmail.com"
+        )
 
         self.assertIsInstance(profil, ProfilUtilisateur)
         self.assertEqual(profil.nom, "TestUser")
-        self.assertEqual(profil.email, "test@example.com")
+        self.assertEqual(profil.email, "arkalia.luna.system@gmail.com")
 
         # Vérification en base
         with sqlite3.connect(self.db_path) as conn:
@@ -169,13 +173,13 @@ class TestGestionnaireProfils(unittest.TestCase):
             result = cursor.fetchone()
             self.assertIsNotNone(result)
             self.assertEqual(result[0], "TestUser")
-            self.assertEqual(result[1], "test@example.com")
+            self.assertEqual(result[1], "arkalia.luna.system@gmail.com")
 
     def test_creer_profil_with_preferences(self):
         """Test de la création d'un profil avec préférences"""
         preferences = {"theme": "dark", "language": "fr"}
         profil = self.gestionnaire.creer_profil(
-            "TestUser", "test@example.com", preferences
+            "TestUser", "arkalia.luna.system@gmail.com", preferences
         )
 
         self.assertEqual(profil.preferences, preferences)
@@ -194,14 +198,14 @@ class TestGestionnaireProfils(unittest.TestCase):
     def test_obtenir_profil(self):
         """Test de l'obtention d'un profil"""
         # Création d'un profil
-        self.gestionnaire.creer_profil("TestUser", "test@example.com")
+        self.gestionnaire.creer_profil("TestUser", "arkalia.luna.system@gmail.com")
 
         # Récupération du profil
         profil = self.gestionnaire.obtenir_profil("TestUser")
 
         self.assertIsInstance(profil, ProfilUtilisateur)
         self.assertEqual(profil.nom, "TestUser")
-        self.assertEqual(profil.email, "test@example.com")
+        self.assertEqual(profil.email, "arkalia.luna.system@gmail.com")
 
     def test_obtenir_profil_inexistant(self):
         """Test de l'obtention d'un profil inexistant"""
@@ -212,10 +216,12 @@ class TestGestionnaireProfils(unittest.TestCase):
     def test_mettre_a_jour_profil(self):
         """Test de la mise à jour d'un profil"""
         # Création d'un profil
-        profil = self.gestionnaire.creer_profil("TestUser", "test@example.com")
+        profil = self.gestionnaire.creer_profil(
+            "TestUser", "arkalia.luna.system@gmail.com"
+        )
 
         # Modification du profil
-        profil.email = "nouveau@example.com"
+        profil.email = "arkalia.luna.system@gmail.com"
         profil.preferences = {"theme": "light"}
 
         # Mise à jour
@@ -223,13 +229,13 @@ class TestGestionnaireProfils(unittest.TestCase):
 
         # Vérification
         profil_updated = self.gestionnaire.obtenir_profil("TestUser")
-        self.assertEqual(profil_updated.email, "nouveau@example.com")
+        self.assertEqual(profil_updated.email, "arkalia.luna.system@gmail.com")
         self.assertEqual(profil_updated.preferences, {"theme": "light"})
 
     def test_enregistrer_action(self):
         """Test de l'enregistrement d'une action"""
         # Création d'un profil
-        self.gestionnaire.creer_profil("TestUser", "test@example.com")
+        self.gestionnaire.creer_profil("TestUser", "arkalia.luna.system@gmail.com")
 
         # Enregistrement d'une action
         self.gestionnaire.enregistrer_action(
@@ -256,7 +262,7 @@ class TestGestionnaireProfils(unittest.TestCase):
     def test_enregistrer_consultation_projet(self):
         """Test de l'enregistrement d'une consultation de projet"""
         # Création d'un profil
-        self.gestionnaire.creer_profil("TestUser", "test@example.com")
+        self.gestionnaire.creer_profil("TestUser", "arkalia.luna.system@gmail.com")
 
         # Enregistrement d'une consultation
         self.gestionnaire.enregistrer_consultation_projet(
@@ -283,7 +289,7 @@ class TestGestionnaireProfils(unittest.TestCase):
     def test_obtenir_statistiques(self):
         """Test de l'obtention des statistiques"""
         # Création d'un profil
-        self.gestionnaire.creer_profil("TestUser", "test@example.com")
+        self.gestionnaire.creer_profil("TestUser", "arkalia.luna.system@gmail.com")
 
         # Enregistrement d'actions et consultations
         self.gestionnaire.enregistrer_action("TestUser", "action1")
@@ -307,7 +313,7 @@ class TestGestionnaireProfils(unittest.TestCase):
     def test_generer_rapport_profil(self):
         """Test de la génération de rapport de profil"""
         # Création d'un profil
-        self.gestionnaire.creer_profil("TestUser", "test@example.com")
+        self.gestionnaire.creer_profil("TestUser", "arkalia.luna.system@gmail.com")
 
         # Enregistrement d'activité
         self.gestionnaire.enregistrer_action("TestUser", "action1")
@@ -324,9 +330,9 @@ class TestGestionnaireProfils(unittest.TestCase):
     def test_lister_profils(self):
         """Test de la liste des profils"""
         # Création de plusieurs profils
-        self.gestionnaire.creer_profil("User1", "user1@example.com")
-        self.gestionnaire.creer_profil("User2", "user2@example.com")
-        self.gestionnaire.creer_profil("User3", "user3@example.com")
+        self.gestionnaire.creer_profil("User1", "arkalia.luna.system@gmail.com")
+        self.gestionnaire.creer_profil("User2", "arkalia.luna.system@gmail.com")
+        self.gestionnaire.creer_profil("User3", "arkalia.luna.system@gmail.com")
 
         # Liste des profils
         profils = self.gestionnaire.lister_profils()
@@ -340,7 +346,7 @@ class TestGestionnaireProfils(unittest.TestCase):
     def test_supprimer_profil(self):
         """Test de la suppression d'un profil"""
         # Création d'un profil
-        self.gestionnaire.creer_profil("TestUser", "test@example.com")
+        self.gestionnaire.creer_profil("TestUser", "arkalia.luna.system@gmail.com")
 
         # Vérification que le profil existe
         self.assertIsNotNone(self.gestionnaire.obtenir_profil("TestUser"))
@@ -362,7 +368,7 @@ class TestGestionnaireProfils(unittest.TestCase):
     def test_exporter_profil(self):
         """Test de l'export d'un profil"""
         # Création d'un profil
-        self.gestionnaire.creer_profil("TestUser", "test@example.com")
+        self.gestionnaire.creer_profil("TestUser", "arkalia.luna.system@gmail.com")
 
         # Export
         export_path = os.path.join(self.temp_dir, "export.json")
@@ -375,14 +381,14 @@ class TestGestionnaireProfils(unittest.TestCase):
         with open(export_path) as f:
             data = json.load(f)
             self.assertEqual(data["nom"], "TestUser")
-            self.assertEqual(data["email"], "test@example.com")
+            self.assertEqual(data["email"], "arkalia.luna.system@gmail.com")
 
     def test_importer_profil(self):
         """Test de l'import d'un profil"""
         # Création d'un fichier d'export
         export_data = {
             "nom": "ImportedUser",
-            "email": "imported@example.com",
+            "email": "arkalia.luna.system@gmail.com",
             "preferences": {"theme": "dark"},
             "date_creation": "2023-01-01T00:00:00",
             "derniere_connexion": "2023-01-02T00:00:00",
@@ -402,7 +408,7 @@ class TestGestionnaireProfils(unittest.TestCase):
         # Vérification
         profil = self.gestionnaire.obtenir_profil("ImportedUser")
         self.assertIsNotNone(profil)
-        self.assertEqual(profil.email, "imported@example.com")
+        self.assertEqual(profil.email, "arkalia.luna.system@gmail.com")
         self.assertEqual(profil.preferences, {"theme": "dark"})
 
 
@@ -426,8 +432,10 @@ class TestGestionnaireProfilsIntegration(unittest.TestCase):
     def test_integration_complete_workflow(self):
         """Test d'intégration du workflow complet"""
         # 1. Création de profils
-        profil1 = self.gestionnaire.creer_profil("User1", "user1@example.com")
-        self.gestionnaire.creer_profil("User2", "user2@example.com")
+        profil1 = self.gestionnaire.creer_profil(
+            "User1", "arkalia.luna.system@gmail.com"
+        )
+        self.gestionnaire.creer_profil("User2", "arkalia.luna.system@gmail.com")
 
         # 2. Enregistrement d'activités
         self.gestionnaire.enregistrer_action("User1", "login")

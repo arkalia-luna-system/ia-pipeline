@@ -21,7 +21,7 @@ We take security seriously. If you discover a security vulnerability, please fol
 
 ### 📧 **Contact Information**
 
-- **Security Email**: security@arkalia-luna-system.com
+- **Security Email**: arkalia.luna.system@gmail.com
 - **PGP Key**: [Available on request]
 - **Response Time**: Within 24-48 hours
 
@@ -92,4 +92,4 @@ Security researchers who responsibly disclose vulnerabilities will be:
 
 ---
 
-*Last updated: August 20, 2025*
+*Dernière mise à jour : 7 février 2026*

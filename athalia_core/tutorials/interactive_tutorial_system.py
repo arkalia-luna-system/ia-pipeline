@@ -76,7 +76,9 @@ class InteractiveTutorialSystem:
 
         # Initialiser les tutoriels interactifs
         self.tutorials = self._create_interactive_tutorials()
-        self.user_progress = {}  # user_id -> {tutorial_id -> UserProgress}
+        self.user_progress: dict[
+            str, Any
+        ] = {}  # user_id -> {tutorial_id -> UserProgress}
         self._load_user_progress()
 
     def _create_interactive_tutorials(self) -> list[InteractiveTutorial]:

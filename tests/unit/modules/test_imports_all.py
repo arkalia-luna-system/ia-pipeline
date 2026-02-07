@@ -166,7 +166,7 @@ class TestImportsAll:
             print(f"⚠️  {len(import_errors)} erreurs d'import détectées")
             # Afficher les premières erreurs pour diagnostic
             for i, error in enumerate(import_errors[:5]):
-                print(f"  {i+1}. {error}")
+                print(f"  {i + 1}. {error}")
             if len(import_errors) > 5:
                 print(f"  ... et {len(import_errors) - 5} autres erreurs")
 

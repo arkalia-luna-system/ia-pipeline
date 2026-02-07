@@ -106,7 +106,6 @@ class ProjectImporter:
                             if node.module:
                                 imports.append(node.module)
             except Exception as e:
-
                 logger.debug(f"Erreur gérée: {e}")
 
                 continue

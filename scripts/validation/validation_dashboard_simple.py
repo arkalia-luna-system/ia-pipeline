@@ -13,7 +13,6 @@ from pathlib import Path
 
 
 class ValidationDashboardHandler(http.server.SimpleHTTPRequestHandler):
-
     def run_integrated_validation(self):
         """Exécute une validation intégrée simple"""
         try:

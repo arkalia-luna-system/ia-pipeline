@@ -1,7 +1,7 @@
 # 🚀 Guide d'Utilisation - Athalia
 
 **Version :** v12.0.0  
-**Date :** 20 Août 2025
+**Date :** 7 février 2026
 
 ---
 
@@ -163,7 +163,7 @@ except Exception as e:
 - Documentation API complète
 - Signaler un bug
 - Proposer une amélioration
-- Contact : support@example.com
+- Contact : arkalia.luna.system@gmail.com
 
 ---
 *Généré automatiquement par Athalia* - 2025-08-20

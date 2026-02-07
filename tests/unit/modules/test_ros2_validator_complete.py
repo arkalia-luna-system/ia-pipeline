@@ -59,7 +59,7 @@ class TestROS2Validator:
   <name>test_package</name>
   <version>1.0.0</version>
   <description>Test package</description>
-  <maintainer email="test@example.com">Test Maintainer</maintainer>
+  <maintainer email="arkalia.luna.system@gmail.com">Test Maintainer</maintainer>
   <license>MIT</license>
   <depend>rclpy</depend>
   <build_depend>ament_cmake</build_depend>
@@ -116,7 +116,7 @@ setup(
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='Test Maintainer',
-    maintainer_email='test@example.com',
+    maintainer_email='arkalia.luna.system@gmail.com',
     description='Test package',
     license='MIT',
     tests_require=['pytest'],
@@ -258,7 +258,7 @@ def test_talker():
   <name>test_package</name>
   <version>1.0.0</version>
   <description>Test package</description>
-  <maintainer email="test@example.com">Test Maintainer</maintainer>
+  <maintainer email="arkalia.luna.system@gmail.com">Test Maintainer</maintainer>
   <license>MIT</license>
   <depend>rclpy</depend>
 </package>"""
@@ -322,7 +322,7 @@ setup(
   <name>real_package</name>
   <version>1.0.0</version>
   <description>Real ROS2 package</description>
-  <maintainer email="test@example.com">Test Maintainer</maintainer>
+  <maintainer email="arkalia.luna.system@gmail.com">Test Maintainer</maintainer>
   <license>MIT</license>
   <depend>rclpy</depend>
   <build_depend>ament_cmake</build_depend>
@@ -391,7 +391,7 @@ class TestROS2ValidatorIntegration:
   <name>workflow_package</name>
   <version>1.0.0</version>
   <description>Workflow test package</description>
-  <maintainer email="test@example.com">Test Maintainer</maintainer>
+  <maintainer email="arkalia.luna.system@gmail.com">Test Maintainer</maintainer>
   <license>MIT</license>
 </package>"""
 
@@ -428,7 +428,7 @@ def test_validate_ros2_package_function():
   <name>test_package</name>
   <version>1.0.0</version>
   <description>Test package</description>
-  <maintainer email="test@example.com">Test Maintainer</maintainer>
+  <maintainer email="arkalia.luna.system@gmail.com">Test Maintainer</maintainer>
   <license>MIT</license>
 </package>"""
 

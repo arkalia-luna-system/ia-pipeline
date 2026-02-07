@@ -37,9 +37,9 @@ def test_flake8_clean():
         )
 
         # Assertion pour vérifier que flake8 passe sans erreurs
-        assert (
-            result.returncode == 0
-        ), f"Erreurs flake8:\n{result.stdout}\n{result.stderr}"
+        assert result.returncode == 0, (
+            f"Erreurs flake8:\n{result.stdout}\n{result.stderr}"
+        )
     except Exception as e:
         # Si le security validator bloque, on skip le test
         pytest.skip(f"Test flake8 bloqué par security validator: {e}")

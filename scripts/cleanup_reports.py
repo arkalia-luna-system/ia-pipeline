@@ -3,6 +3,7 @@
 Script de nettoyage des rapports Athalia
 Supprime les rapports anciens (>90 jours) pour économiser l'espace disque
 """
+
 import argparse
 import logging
 import os

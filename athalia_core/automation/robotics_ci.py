@@ -443,11 +443,11 @@ class RoboticsCI:
         report = f"""# Rapport CI/CD - {self.project_path.name}
 
 ## Résumé
-- **Build**: {self.ci_results['build_status']}
-- **Tests**: {self.ci_results['test_status']}
-- **Lint**: {self.ci_results['lint_status']}
-- **Sécurité**: {self.ci_results['security_status']}
-- **Déploiement**: {self.ci_results['deployment_status']}
+- **Build**: {self.ci_results["build_status"]}
+- **Tests**: {self.ci_results["test_status"]}
+- **Lint**: {self.ci_results["lint_status"]}
+- **Sécurité**: {self.ci_results["security_status"]}
+- **Déploiement**: {self.ci_results["deployment_status"]}
 
 ## Score
 """

@@ -576,7 +576,7 @@ def validate_session(session):
             """
 def get_user_info(user_id):
     # Ne pas exposer d'informations sensibles
-    return {"id": user_id, "name": "User", "email": "user@example.com"}
+    return {"id": user_id, "name": "User", "email": "arkalia.luna.system@gmail.com"}
 
 def get_system_info():
     # Informations système limitées
@@ -804,9 +804,9 @@ def another_function_{i}():
         total_time = end_time - start_time
 
         # Vérifier que la validation est rapide (moins de 1 seconde pour 10 fichiers)
-        assert (
-            total_time < 1.0
-        ), f"Validation trop lente: {total_time:.3f}s pour 10 fichiers"
+        assert total_time < 1.0, (
+            f"Validation trop lente: {total_time:.3f}s pour 10 fichiers"
+        )
 
         # Vérifier que tous les fichiers existent
         for file_path in files:
@@ -1012,9 +1012,9 @@ def another_function_{i}():
             assert "valid" in result
 
         # Vérifier que la validation est rapide (moins de 2 secondes pour 20 fichiers)
-        assert (
-            total_time < 2.0
-        ), f"Validation trop lente: {total_time:.3f}s pour {num_files} fichiers"
+        assert total_time < 2.0, (
+            f"Validation trop lente: {total_time:.3f}s pour {num_files} fichiers"
+        )
 
         # Vérifier que tous les fichiers existent
         for file_path in files:

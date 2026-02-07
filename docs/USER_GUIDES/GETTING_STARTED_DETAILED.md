@@ -69,6 +69,7 @@ ATHALIA_SECURITY_LEVEL=high
 
 - **[Guide d'Installation](INSTALLATION.md)**
 - **[Guide Utilisateur](USER_GUIDE.md)**
+- **[Lancement des modules avancés](LANCEMENT_MODULES_AVANCES.md)** (API, benchmarks, security dashboard, tutoriels, dashboards HTML)
 - **[FAQ](FAQ.md)**
 - **[Dépannage](TROUBLESHOOTING.md)**
 

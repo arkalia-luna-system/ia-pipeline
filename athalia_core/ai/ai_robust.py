@@ -23,6 +23,10 @@ except ImportError:
         return subprocess.run(command, **safe_kwargs)
 
 
+# Alias public pour les tests et usages externes
+validate_and_run = validateand_run
+
+
 # Import pour les appels HTTP
 try:
     import requests

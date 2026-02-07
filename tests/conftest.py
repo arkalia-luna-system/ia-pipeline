@@ -135,18 +135,28 @@ def setup_test_session():
     cleanup_athalia_resources()
 
 
+def _needs_process_cleanup(nodeid: str) -> bool:
+    """True si le test peut avoir lancé des processus (intégration, e2e, bin)."""
+    return (
+        "/integration/" in nodeid
+        or "/e2e/" in nodeid
+        or "/bin/" in nodeid
+        or "integration" in nodeid
+        or "e2e" in nodeid
+    )
+
+
 @pytest.fixture(autouse=True)
-def cleanup_after_test():
-    """Nettoyage automatique après chaque test"""
+def cleanup_after_test(request):
+    """Nettoyage léger après chaque test. Nettoyage processus uniquement pour integration/e2e."""
     yield
 
-    # Arrêter les processus Athalia après chaque test
-    killed = kill_athalia_processes()
-    if killed > 0:
-        print(f"🧹 {killed} processus Athalia arrêtés après le test")
-
-    # Nettoyer les ressources
-    cleanup_athalia_resources()
+    # Nettoyage processus uniquement pour les tests qui peuvent en lancer (évite ~2–5 s par test unitaire)
+    if _needs_process_cleanup(request.node.nodeid):
+        killed = kill_athalia_processes()
+        if killed > 0:
+            print(f"🧹 {killed} processus Athalia arrêtés après le test")
+    # cleanup_athalia_resources() uniquement en fin de session (pytest_terminal_summary + setup_test_session)
 
 
 @pytest.fixture(scope="function")

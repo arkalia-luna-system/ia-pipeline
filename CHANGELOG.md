@@ -5,6 +5,17 @@ Toutes les modifications notables de ce projet seront documentées dans ce fichi
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
+## [12.0.1] - 2026-02-07
+
+### Fixed
+- **Tests e2e** : skip automatique lorsque le réseau/localhost est indisponible (sandbox, CI restreint) ; racine du projet portable (plus de chemin en dur).
+- **Script maintenance navigation** : import optionnel de `schedule`, suppression de la dépendance à `athalia_core.core.logger` (utilisation de `logging` standard) ; mode planifié affiche un message si `schedule` n’est pas installé.
+- **API main_api_server** : annotations type pour basedpyright sur les appels conditionnels (hasattr) aux composants Athalia.
+- **Tests unitaires ai_robust** : export de `validate_and_run` dans le module ; correction du patch (utilisation de `validateand_run`) ; typo `generate_bluelogger` → `generate_blueprint` ; test `validate_and_run` avec `capture_output=True` au lieu de `stdout`/`stderr`.
+
+### Changed
+- **Documentation** : dates de dernière mise à jour alignées au 7 février 2026 (SECURITY.md, README, USAGE.md).
+
 ## [12.0.0] - 2025-08-20
 
 ### Added

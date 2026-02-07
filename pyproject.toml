@@ -9,10 +9,10 @@ description = "Pipeline d'industrialisation IA pour génération automatique de 
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
-    {name = "Arkalia Luna System", email = "contact@arkalia-luna.com"}
+    {name = "Arkalia Luna System", email = "arkalia.luna.system@gmail.com"}
 ]
 maintainers = [
-    {name = "Arkalia Luna System", email = "contact@arkalia-luna.com"}
+    {name = "Arkalia Luna System", email = "arkalia.luna.system@gmail.com"}
 ]
 keywords = ["ai", "code-generation", "automation", "testing", "documentation", "ci-cd"]
 classifiers = [
@@ -83,7 +83,7 @@ ai = [
 [project.scripts]
 athalia = "athalia_core.core.main:main"
 athalia-cli = "athalia_core.utilities.cli:cli"
-athalia-dashboard = "athalia_core.utilities.dashboard:Dashboard"
+athalia-dashboard = "athalia_core.utilities.dashboard:main"
 
 [project.urls]
 Homepage = "https://github.com/arkalia-luna-system/ia-pipeline"
@@ -127,12 +127,14 @@ markers = [
     "slow: marks tests as slow (deselect with '-m \"not slow\"')",
     "benchmark: marks tests as benchmark tests",
     "integration: marks tests as integration tests",
+    "load: marks tests as load/performance tests",
     "unit: marks tests as unit tests",
     "performance: marks tests as performance tests",
     "security: marks tests as security tests",
     "timeout: marks tests with timeout",
     "no_cov: marks tests that should not use coverage",
     "e2e: marks end-to-end tests",
+    "mutation: marks mutation testing",
 ]
 filterwarnings = [
     "ignore::DeprecationWarning",
@@ -227,6 +229,9 @@ exclude = [
     "athalia_showcase/",
     ".venv/",
     "venv/",
+    "athalia_core/websocket/",
+    "athalia_core/tutorials/",
+    "athalia_core/distillation/",
 ]
 
 [tool.isort]

@@ -109,9 +109,9 @@ class TestMetricsValidator:
     def test_validate_inconsistent_counts(self):
         """Test avec des comptages incohérents."""
         invalid_metrics = self.valid_metrics.copy()
-        invalid_metrics["summary"][
-            "total_python_files"
-        ] = 1000  # Ne correspond pas aux 2 fichiers listés
+        invalid_metrics["summary"]["total_python_files"] = (
+            1000  # Ne correspond pas aux 2 fichiers listés
+        )
 
         result = self.validator.validate_metrics(invalid_metrics)
 
@@ -174,9 +174,9 @@ class TestMetricsValidator:
     def test_validate_unrealistic_values(self):
         """Test avec des valeurs irréalistes."""
         unrealistic_metrics = self.valid_metrics.copy()
-        unrealistic_metrics["summary"][
-            "lines_of_code"
-        ] = 10000000000  # 10 milliards de lignes
+        unrealistic_metrics["summary"]["lines_of_code"] = (
+            10000000000  # 10 milliards de lignes
+        )
         unrealistic_metrics["python_files"]["total_lines"] = 10000000000
 
         result = self.validator.validate_metrics(unrealistic_metrics)

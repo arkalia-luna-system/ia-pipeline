@@ -955,7 +955,6 @@ def complex_function():
             patch("athalia_core.core.unified_orchestrator.ROS2Validator"),
             patch("athalia_core.core.unified_orchestrator.DockerRoboticsManager"),
         ):
-
             self.orchestrator.initialize_modules()
 
             # Vérifier que les modules robotiques sont initialisés

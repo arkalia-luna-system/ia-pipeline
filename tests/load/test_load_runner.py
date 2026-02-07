@@ -40,9 +40,9 @@ class TestLoadPerformance:
             text=True,
             cwd=project_root,
         )
-        assert (
-            result.returncode == 0
-        ), f"Erreur de syntaxe dans locustfile: {result.stderr}"
+        assert result.returncode == 0, (
+            f"Erreur de syntaxe dans locustfile: {result.stderr}"
+        )
 
     @pytest.mark.load
     def test_load_validation(self, project_root):

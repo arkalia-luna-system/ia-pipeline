@@ -16,6 +16,7 @@ Ce dossier contient tous les guides utilisateur pour Athalia, organisés de mani
 
 ### **🔧 Configuration et Déploiement**
 - **[Deployment](DEPLOYMENT.md)** - Guide de déploiement
+- **[Lancement des modules avancés](LANCEMENT_MODULES_AVANCES.md)** - API REST, benchmarks, dashboard sécurité, tutoriels, dashboards HTML
 
 ### **📚 Référence et Aide**
 - **[FAQ](FAQ.md)** - Questions fréquentes

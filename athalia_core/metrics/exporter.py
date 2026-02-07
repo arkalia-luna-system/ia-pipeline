@@ -79,17 +79,17 @@ class MetricsExporter:
 
 | **Component** | **Value** | **Status** | **Verified** |
 |:-------------:|:---------:|:----------:|:------------:|
-| **🐍 Python Files** | `{summary.get('total_python_files', 0):,} modules` | ![Active](https://img.shields.io/badge/status-active-brightgreen) | ✅ **COUNTED** |
-| **📝 Lines of Code** | `{summary.get('lines_of_code', 0):,} lines` | ![Maintained](https://img.shields.io/badge/status-maintained-blue) | ✅ **MEASURED** |
-| **🧪 Tests** | `{summary.get('collected_tests', 0):,} tests` | ![Tested](https://img.shields.io/badge/status-tested-green) | ✅ **COLLECTED** |
-| **🛡️ Security Commands** | `{summary.get('security_commands', 0)} validated` | ![Secure](https://img.shields.io/badge/status-secure-green) | ✅ **TESTED** |
-| **📊 HTML Dashboards** | `{summary.get('html_dashboards', 0)} functional` | ![Ready](https://img.shields.io/badge/status-ready-orange) | ✅ **VERIFIED** |
-| **🔧 Utility Scripts** | `{summary.get('utility_scripts', 0)} tools` | ![Available](https://img.shields.io/badge/status-available-purple) | ✅ **LISTED** |
-| **📚 Documentation** | `{summary.get('documentation_files', 0)} files` | ![Complete](https://img.shields.io/badge/status-complete-yellow) | ✅ **ORGANIZED** |
+| **🐍 Python Files** | `{summary.get("total_python_files", 0):,} modules` | ![Active](https://img.shields.io/badge/status-active-brightgreen) | ✅ **COUNTED** |
+| **📝 Lines of Code** | `{summary.get("lines_of_code", 0):,} lines` | ![Maintained](https://img.shields.io/badge/status-maintained-blue) | ✅ **MEASURED** |
+| **🧪 Tests** | `{summary.get("collected_tests", 0):,} tests` | ![Tested](https://img.shields.io/badge/status-tested-green) | ✅ **COLLECTED** |
+| **🛡️ Security Commands** | `{summary.get("security_commands", 0)} validated` | ![Secure](https://img.shields.io/badge/status-secure-green) | ✅ **TESTED** |
+| **📊 HTML Dashboards** | `{summary.get("html_dashboards", 0)} functional` | ![Ready](https://img.shields.io/badge/status-ready-orange) | ✅ **VERIFIED** |
+| **🔧 Utility Scripts** | `{summary.get("utility_scripts", 0)} tools` | ![Available](https://img.shields.io/badge/status-available-purple) | ✅ **LISTED** |
+| **📚 Documentation** | `{summary.get("documentation_files", 0)} files` | ![Complete](https://img.shields.io/badge/status-complete-yellow) | ✅ **ORGANIZED** |
 
 </div>
 
-*Metrics collected automatically on {collection_info.get('collection_date', 'Unknown')} by [Athalia Metrics Collector](data/metrics.json)*
+*Metrics collected automatically on {collection_info.get("collection_date", "Unknown")} by [Athalia Metrics Collector](data/metrics.json)*
 """
 
             with open(output_path, "w", encoding="utf-8") as f:
@@ -126,73 +126,73 @@ class MetricsExporter:
 
             content = f"""# Athalia Project Metrics Report
 
-**Generated on:** {collection_info.get('collection_date', 'Unknown')}
-**Collector version:** {collection_info.get('collector_version', 'Unknown')}
-**Python version:** {collection_info.get('python_version', 'Unknown')}
+**Generated on:** {collection_info.get("collection_date", "Unknown")}
+**Collector version:** {collection_info.get("collector_version", "Unknown")}
+**Python version:** {collection_info.get("python_version", "Unknown")}
 
 ## 🎯 Executive Summary
 
 | **Metric** | **Value** |
 |:-----------|:---------:|
-| **Total Python Files** | {summary.get('total_python_files', 0):,} |
-| **Core Python Files** | {summary.get('core_python_files', 0):,} |
-| **Lines of Code** | {summary.get('lines_of_code', 0):,} |
-| **Test Files** | {summary.get('test_files', 0):,} |
-| **Collected Tests** | {summary.get('collected_tests', 0):,} |
-| **Documentation Files** | {summary.get('documentation_files', 0):,} |
-| **HTML Dashboards** | {summary.get('html_dashboards', 0):,} |
-| **Utility Scripts** | {summary.get('utility_scripts', 0):,} |
-| **Security Commands** | {summary.get('security_commands', 0):,} |
+| **Total Python Files** | {summary.get("total_python_files", 0):,} |
+| **Core Python Files** | {summary.get("core_python_files", 0):,} |
+| **Lines of Code** | {summary.get("lines_of_code", 0):,} |
+| **Test Files** | {summary.get("test_files", 0):,} |
+| **Collected Tests** | {summary.get("collected_tests", 0):,} |
+| **Documentation Files** | {summary.get("documentation_files", 0):,} |
+| **HTML Dashboards** | {summary.get("html_dashboards", 0):,} |
+| **Utility Scripts** | {summary.get("utility_scripts", 0):,} |
+| **Security Commands** | {summary.get("security_commands", 0):,} |
 
 ## 📊 Detailed Analysis
 
 ### 🐍 Python Code Metrics
 
-- **Total Python files:** {python_data.get('count', 0):,}
-- **Core application files:** {python_data.get('core_files', 0):,}
-- **Test files:** {python_data.get('test_files', 0):,}
-- **Total lines of code:** {python_data.get('total_lines', 0):,}
+- **Total Python files:** {python_data.get("count", 0):,}
+- **Core application files:** {python_data.get("core_files", 0):,}
+- **Test files:** {python_data.get("test_files", 0):,}
+- **Total lines of code:** {python_data.get("total_lines", 0):,}
 
 ### 🧪 Testing Metrics
 
-- **Test files found:** {test_data.get('test_files_count', 0):,}
-- **Test directories:** {test_data.get('test_directories_count', 0):,}
-- **Tests collected by pytest:** {test_data.get('collected_tests_count', 0):,}
+- **Test files found:** {test_data.get("test_files_count", 0):,}
+- **Test directories:** {test_data.get("test_directories_count", 0):,}
+- **Tests collected by pytest:** {test_data.get("collected_tests_count", 0):,}
 
 ### 📚 Documentation Metrics
 
-- **Total documentation files:** {doc_data.get('total_files', 0):,}
-- **Markdown files:** {doc_data.get('by_format', {}).get('md', 0):,}
-- **YAML files:** {doc_data.get('by_format', {}).get('yaml', 0) + doc_data.get('by_format', {}).get('yml', 0):,}
-- **Text files:** {doc_data.get('by_format', {}).get('txt', 0):,}
+- **Total documentation files:** {doc_data.get("total_files", 0):,}
+- **Markdown files:** {doc_data.get("by_format", {}).get("md", 0):,}
+- **YAML files:** {doc_data.get("by_format", {}).get("yaml", 0) + doc_data.get("by_format", {}).get("yml", 0):,}
+- **Text files:** {doc_data.get("by_format", {}).get("txt", 0):,}
 
 ### 📊 Dashboard Metrics
 
-- **HTML dashboards:** {dashboard_data.get('html_dashboards', 0):,}
+- **HTML dashboards:** {dashboard_data.get("html_dashboards", 0):,}
 
 ### 🔧 Script Metrics
 
-- **Total utility scripts:** {script_data.get('total_scripts', 0):,}
-- **Python scripts:** {script_data.get('by_type', {}).get('py', 0):,}
-- **Shell scripts:** {script_data.get('by_type', {}).get('sh', 0):,}
+- **Total utility scripts:** {script_data.get("total_scripts", 0):,}
+- **Python scripts:** {script_data.get("by_type", {}).get("py", 0):,}
+- **Shell scripts:** {script_data.get("by_type", {}).get("sh", 0):,}
 
 ### 🛡️ Security Metrics
 
-- **Validated security commands:** {security_data.get('validated_commands', 0):,}
+- **Validated security commands:** {security_data.get("validated_commands", 0):,}
 
 ## 📈 Quality Indicators
 
 ### Test Coverage Ratio
-- **Test files vs Core files:** {(test_data.get('test_files_count', 0) / max(python_data.get('core_files', 1), 1)):.2f}
-- **Tests per core file:** {(test_data.get('collected_tests_count', 0) / max(python_data.get('core_files', 1), 1)):.2f}
+- **Test files vs Core files:** {(test_data.get("test_files_count", 0) / max(python_data.get("core_files", 1), 1)):.2f}
+- **Tests per core file:** {(test_data.get("collected_tests_count", 0) / max(python_data.get("core_files", 1), 1)):.2f}
 
 ### Documentation Coverage
-- **Doc files vs Python files:** {(doc_data.get('total_files', 0) / max(python_data.get('count', 1), 1)):.2f}
+- **Doc files vs Python files:** {(doc_data.get("total_files", 0) / max(python_data.get("count", 1), 1)):.2f}
 
 ## 🔍 Collection Details
 
-- **Project root:** `{self.metrics_data.get('project_root', 'Unknown')}`
-- **Collection timestamp:** `{self.metrics_data.get('timestamp', 'Unknown')}`
+- **Project root:** `{self.metrics_data.get("project_root", "Unknown")}`
+- **Collection timestamp:** `{self.metrics_data.get("timestamp", "Unknown")}`
 - **Excluded patterns:** Cache, virtual environments, build artifacts
 
 ---
@@ -395,62 +395,62 @@ class MetricsExporter:
     <div class="container">
         <div class="header">
             <h1>📊 Athalia Project Metrics</h1>
-            <p>Generated on {collection_info.get('collection_date', 'Unknown')}</p>
+            <p>Generated on {collection_info.get("collection_date", "Unknown")}</p>
         </div>
 
         <div class="metrics-grid">
             <div class="metric-card">
                 <div class="metric-title">🐍 Python Files</div>
-                <div class="metric-value">{summary.get('total_python_files', 0):,}</div>
+                <div class="metric-value">{summary.get("total_python_files", 0):,}</div>
                 <div class="metric-description">Total modules in the project <span class="status-badge">COUNTED</span></div>
             </div>
 
             <div class="metric-card">
                 <div class="metric-title">📝 Lines of Code</div>
-                <div class="metric-value">{summary.get('lines_of_code', 0):,}</div>
+                <div class="metric-value">{summary.get("lines_of_code", 0):,}</div>
                 <div class="metric-description">Total lines across all Python files <span class="status-badge">MEASURED</span></div>
             </div>
 
             <div class="metric-card">
                 <div class="metric-title">🧪 Tests</div>
-                <div class="metric-value">{summary.get('collected_tests', 0):,}</div>
+                <div class="metric-value">{summary.get("collected_tests", 0):,}</div>
                 <div class="metric-description">Tests collected by pytest <span class="status-badge">COLLECTED</span></div>
             </div>
 
             <div class="metric-card">
                 <div class="metric-title">🛡️ Security Commands</div>
-                <div class="metric-value">{summary.get('security_commands', 0)}</div>
+                <div class="metric-value">{summary.get("security_commands", 0)}</div>
                 <div class="metric-description">Validated security commands <span class="status-badge">TESTED</span></div>
             </div>
 
             <div class="metric-card">
                 <div class="metric-title">📊 HTML Dashboards</div>
-                <div class="metric-value">{summary.get('html_dashboards', 0)}</div>
+                <div class="metric-value">{summary.get("html_dashboards", 0)}</div>
                 <div class="metric-description">Functional dashboard files <span class="status-badge">VERIFIED</span></div>
             </div>
 
             <div class="metric-card">
                 <div class="metric-title">🔧 Utility Scripts</div>
-                <div class="metric-value">{summary.get('utility_scripts', 0)}</div>
+                <div class="metric-value">{summary.get("utility_scripts", 0)}</div>
                 <div class="metric-description">Available automation tools <span class="status-badge">LISTED</span></div>
             </div>
 
             <div class="metric-card">
                 <div class="metric-title">📚 Documentation</div>
-                <div class="metric-value">{summary.get('documentation_files', 0)}</div>
+                <div class="metric-value">{summary.get("documentation_files", 0)}</div>
                 <div class="metric-description">Documentation files <span class="status-badge">ORGANIZED</span></div>
             </div>
 
             <div class="metric-card">
                 <div class="metric-title">📁 Core Files</div>
-                <div class="metric-value">{summary.get('core_python_files', 0)}</div>
+                <div class="metric-value">{summary.get("core_python_files", 0)}</div>
                 <div class="metric-description">Core application modules <span class="status-badge">ANALYZED</span></div>
             </div>
         </div>
 
         <div class="footer">
             <p>
-                🤖 <strong>Automatically generated</strong> by Athalia Metrics Collector v{collection_info.get('collector_version', 'Unknown')}
+                🤖 <strong>Automatically generated</strong> by Athalia Metrics Collector v{collection_info.get("collector_version", "Unknown")}
                 <br>
                 📊 For detailed metrics, see <a href="../data/metrics.json">data/metrics.json</a>
             </p>

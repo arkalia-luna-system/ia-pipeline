@@ -331,13 +331,13 @@ class PatternDetector:
         """Génère un rapport des patterns détectés"""
         analysis = self.analyze_project_patterns()
 
-        report = f"""# Rapport d'analyse des patterns - {analysis['project']}
+        report = f"""# Rapport d'analyse des patterns - {analysis["project"]}
 
 ## Résumé
-- **Fichiers analysés**: {analysis['total_files']}
-- **Patterns détectés**: {analysis['patterns_detected']}
-- **Duplications trouvées**: {analysis['duplications_found']}
-- **Anti-patterns détectés**: {analysis['antipatterns_detected']}
+- **Fichiers analysés**: {analysis["total_files"]}
+- **Patterns détectés**: {analysis["patterns_detected"]}
+- **Duplications trouvées**: {analysis["duplications_found"]}
+- **Anti-patterns détectés**: {analysis["antipatterns_detected"]}
 
 ## Patterns détectés
 """

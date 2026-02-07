@@ -3,6 +3,7 @@
 Script d'optimisation des dépendances Athalia
 Analyse et optimise les dépendances du projet
 """
+
 import json
 import logging
 import os

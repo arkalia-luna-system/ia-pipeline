@@ -6,7 +6,7 @@ Script de débogage pour le système de correction
 import sys
 from pathlib import Path
 
-from athalia_core.correction_optimizer import optimize_correction
+from athalia_core.quality.correction_optimizer import optimize_correction
 
 # Ajouter le répertoire parent au path
 sys.path.insert(0, str(Path(__file__).parent))

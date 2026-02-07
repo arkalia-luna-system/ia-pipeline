@@ -30,9 +30,9 @@ def test_french_translations():
 
         assert hasattr(fr, "translations")
         assert isinstance(fr.translations, dict)
-        assert (
-            len(fr.translations) > 0
-        ), "Le dictionnaire de traductions françaises ne doit pas être vide"
+        assert len(fr.translations) > 0, (
+            "Le dictionnaire de traductions françaises ne doit pas être vide"
+        )
         assert "welcome" in fr.translations, "La clé 'welcome' doit être présente"
         print("✅ Module fr importé avec succès")
     except ImportError as e:
@@ -48,9 +48,9 @@ def test_english_translations():
 
         assert hasattr(en, "translations")
         assert isinstance(en.translations, dict)
-        assert (
-            len(en.translations) > 0
-        ), "Le dictionnaire de traductions anglaises ne doit pas être vide"
+        assert len(en.translations) > 0, (
+            "Le dictionnaire de traductions anglaises ne doit pas être vide"
+        )
         assert "welcome" in en.translations, "La clé 'welcome' doit être présente"
         print("✅ Module en importé avec succès")
     except ImportError as e:

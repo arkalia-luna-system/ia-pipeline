@@ -377,21 +377,24 @@ class TestNoPollutingFiles:
             for file in files:
                 file_path = os.path.join(root, file)
                 # Exclure spécifiquement les fichiers volumineux nécessaires
-                if file_path in [
-                    "./docs/API.md",
-                    "./docs/API.md.backup",
-                    "./docs/archive/20250726_cleanup/API_original_16MB.md",
-                    "./docs/API/REFERENCE.md",
-                    "docs/API/REFERENCE.md",
-                    "./athalia.f(f",  # Fichier spécial du projet
-                    "./logs/athalia.log",  # Fichier de log principal (peut être volumineux)
-                    "./logs/athalia.log.1",  # Fichier de log rotation (peut être volumineux)
-                    "./logs/athalia.log.1.gz",  # Fichier de log rotation compressé
-                    "./logs/athalia.log.2.gz",  # Fichier de log rotation compressé
-                    "./logs/athalia.log.3.gz",  # Fichier de log rotation compressé
-                    "./logs/athalia.log.4.gz",  # Fichier de log rotation compressé
-                    "./logs/athalia.log.5.gz",  # Fichier de log rotation compressé
-                ]:
+                if (
+                    file_path
+                    in [
+                        "./docs/API.md",
+                        "./docs/API.md.backup",
+                        "./docs/archive/20250726_cleanup/API_original_16MB.md",
+                        "./docs/API/REFERENCE.md",
+                        "docs/API/REFERENCE.md",
+                        "./athalia.f(f",  # Fichier spécial du projet
+                        "./logs/athalia.log",  # Fichier de log principal (peut être volumineux)
+                        "./logs/athalia.log.1",  # Fichier de log rotation (peut être volumineux)
+                        "./logs/athalia.log.1.gz",  # Fichier de log rotation compressé
+                        "./logs/athalia.log.2.gz",  # Fichier de log rotation compressé
+                        "./logs/athalia.log.3.gz",  # Fichier de log rotation compressé
+                        "./logs/athalia.log.4.gz",  # Fichier de log rotation compressé
+                        "./logs/athalia.log.5.gz",  # Fichier de log rotation compressé
+                    ]
+                ):
                     continue
                 try:
                     if os.path.getsize(file_path) > 10 * 1024 * 1024:  # 10MB

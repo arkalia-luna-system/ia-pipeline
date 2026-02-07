@@ -219,7 +219,7 @@ class OptimizationValidator:
         report.append(f"- **Tests réussis**: {total_passed}")
         report.append(f"- **Tests échoués**: {total_failed}")
         report.append(
-            f"- **Taux de succès**: {total_passed/total_tests*100:.1f}%"
+            f"- **Taux de succès**: {total_passed / total_tests * 100:.1f}%"
             if total_tests > 0
             else "- **Taux de succès**: N/A"
         )

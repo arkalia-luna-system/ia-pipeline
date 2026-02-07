@@ -86,9 +86,9 @@ class TestWorkflowIntegration:
             ]
 
             for deprecated in deprecated_actions:
-                assert (
-                    deprecated not in content
-                ), f"Action obsolète {deprecated} dans {workflow_file}"
+                assert deprecated not in content, (
+                    f"Action obsolète {deprecated} dans {workflow_file}"
+                )
 
     @pytest.mark.integration
     def test_workflow_dependencies(self, workflows_dir):
@@ -103,7 +103,7 @@ class TestWorkflowIntegration:
             with open(workflow_file) as f:
                 workflow = yaml.safe_load(f)
                 if "name" in workflow:
-                    assert (
-                        workflow["name"] not in names
-                    ), f"Nom de workflow dupliqué: {workflow['name']}"
+                    assert workflow["name"] not in names, (
+                        f"Nom de workflow dupliqué: {workflow['name']}"
+                    )
                     names.append(workflow["name"])

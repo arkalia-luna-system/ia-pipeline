@@ -1,0 +1,12 @@
+{
+  "stubPath": "typings",
+  "typeCheckingMode": "basic",
+  "reportOptionalMemberAccess": false,
+  "reportOptionalSubscript": false,
+  "reportPrivateUsage": "warning",
+  "reportUnknownMemberType": false,
+  "reportUnknownVariableType": false,
+  "pythonVersion": "3.10",
+  "include": ["athalia_core", "scripts", "tools", "bin"],
+  "exclude": ["tests", ".venv", "venv", "archive", "backups"]
+}

@@ -133,7 +133,6 @@ class SecurityAuditor:
                                 )
 
                 except Exception as e:
-
                     logger.debug(f"Erreur gérée: {e}")
 
                     continue
@@ -168,7 +167,6 @@ class SecurityAuditor:
                                 )
 
                 except Exception as e:
-
                     logger.debug(f"Erreur gérée: {e}")
 
                     continue
@@ -189,7 +187,6 @@ class SecurityAuditor:
                             )
 
                 except Exception as e:
-
                     logger.debug(f"Erreur gérée: {e}")
 
                     continue
@@ -221,7 +218,6 @@ class SecurityAuditor:
                                 )
 
                 except Exception as e:
-
                     logger.debug(f"Erreur gérée: {e}")
 
                     continue
@@ -268,7 +264,6 @@ class SecurityAuditor:
                                 )
 
                 except Exception as e:
-
                     logger.debug(f"Erreur gérée: {e}")
 
                     continue
@@ -302,7 +297,6 @@ class SecurityAuditor:
                                 )
 
                 except Exception as e:
-
                     logger.debug(f"Erreur gérée: {e}")
 
                     continue
