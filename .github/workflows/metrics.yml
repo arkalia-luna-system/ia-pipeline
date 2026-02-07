@@ -133,7 +133,7 @@ jobs:
           fi
 
       - name: 📤 Upload Metrics Artifacts
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: athalia-metrics-${{ github.sha }}
           path: |
