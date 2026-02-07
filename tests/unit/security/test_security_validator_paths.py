@@ -11,17 +11,20 @@ class TestCommandSecurityValidatorPaths:
     """Tests pour la validation des chemins de sécurité."""
 
     def test_no_macos_specific_paths(self):
-        """Vérifie qu'aucun chemin spécifique à macOS n'est présent."""
-        validator = CommandSecurityValidator()
+        """Vérifie qu'aucun chemin macOS hardcodé n'est présent (sys.executable autorisé)."""
+        import sys
 
-        # Chemins macOS à éviter
+        validator = CommandSecurityValidator()
+        current_executable = sys.executable or ""
+
+        # Chemins macOS hardcodés à éviter (le validateur ajoute sys.executable dynamiquement)
         forbidden_paths = [
-            "/opt/homebrew/opt/pyenv/versions/",
             "/opt/homebrew/opt/pyenv/versions/3.10.14/bin/python",
             "/opt/homebrew/opt/pyenv/versions/3.10.14/bin/python3",
         ]
-
         for forbidden_path in forbidden_paths:
+            if forbidden_path == current_executable:
+                continue
             assert forbidden_path not in validator.allowed_commands, (
                 f"Chemin macOS interdit trouvé: {forbidden_path}"
             )
@@ -55,12 +58,17 @@ class TestCommandSecurityValidatorPaths:
             )
 
     def test_no_absolute_paths_in_whitelist(self):
-        """Vérifie qu'aucun chemin absolu spécifique à l'environnement n'est présent."""
-        validator = CommandSecurityValidator()
+        """Vérifie qu'aucun chemin absolu hardcodé n'est présent (sys.executable autorisé)."""
+        import sys
 
-        # Vérifier qu'aucun chemin contient de version spécifique
+        validator = CommandSecurityValidator()
+        current_executable = sys.executable or ""
+
         for command in validator.allowed_commands:
-            if "/opt/homebrew/opt/pyenv/versions/" in command:
+            if (
+                "/opt/homebrew/opt/pyenv/versions/" in command
+                and command != current_executable
+            ):
                 pytest.fail(f"Chemin absolu macOS trouvé dans la whitelist: {command}")
 
     def test_security_validator_initialization(self):

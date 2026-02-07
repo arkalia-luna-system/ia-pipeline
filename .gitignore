@@ -278,6 +278,14 @@ data/coverage/
 .cache/
 .ruff_cache/
 
+# Métriques générées à la racine (ne pas committer)
+/metrics.csv
+/metrics.json
+/metrics.md
+/empty_metrics.csv
+/empty_metrics.json
+/empty_metrics.md
+
 # Garder visible (métriques et rapports publics)
 !data/metrics/
 !data/reports/

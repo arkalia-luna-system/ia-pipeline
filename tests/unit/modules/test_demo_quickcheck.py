@@ -102,9 +102,8 @@ class TestQuickcheck:
             # Vérifier que le module peut être importé
             assert module is not None
 
-            # Vérifier que la fonction quickcheck existe
-            # Note: module is actually the function, not the module
-            assert callable(module)
+            # Vérifier que la fonction quickcheck existe et est callable
+            assert hasattr(module, "quickcheck") and callable(module.quickcheck)
 
         except ImportError as e:
             pytest.skip(f"Module demo.quickcheck non disponible: {e}")

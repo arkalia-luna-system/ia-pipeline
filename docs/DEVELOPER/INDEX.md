@@ -1,14 +1,8 @@
-# 📚 Documentation Développeur Athalia
+# Documentation développeur
 
-*Date : 20 août 2025*  
-*Version : Documentation v12.0.0*  
-*Statut : ✅ ARCHITECTURE MODULAIRE COMPLÈTE - SYSTÈME OPÉRATIONNEL*
+**Dernière mise à jour :** février 2026 · **Version :** v12.0
 
----
-
-## 🎯 Vue d'ensemble
-
-Cette documentation couvre l'architecture, les modules et les améliorations d'Athalia, transformée avec succès d'une architecture monolithique vers une architecture modulaire orchestrée ultra-avancée.
+Architecture modulaire, modules, bonnes pratiques, guides et rapports.
 
 ## 📊 État Actuel du Projet
 
