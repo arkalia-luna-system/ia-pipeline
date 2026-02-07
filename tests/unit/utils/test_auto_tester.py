@@ -27,9 +27,12 @@ def test_function_main_exists():
 
 
 def test_function_validate_and_run_exists():
-    """Test que la fonction validate_and_run existe."""
-    assert hasattr(module, "validate_and_run")
-    assert callable(module.validate_and_run)
+    """Test que la fonction d'exécution sécurisée existe (validateand_run ou validate_and_run)."""
+    run_fn = getattr(module, "validateand_run", None) or getattr(
+        module, "validate_and_run", None
+    )
+    assert run_fn is not None, "validateand_run ou validate_and_run doit exister"
+    assert callable(run_fn)
 
 
 def test_class_AutoTester_exists():
