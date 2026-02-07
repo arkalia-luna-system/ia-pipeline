@@ -41,7 +41,7 @@ uvicorn==0.35.0
 
 # --- TESTS ---
 pytest==8.4.1
-pytest-benchmark==5.1.0
+pytest-benchmark==5.2.3
 pytest-cov==6.2.1
 pytest-mock==3.14.1
 httpx==0.28.1
