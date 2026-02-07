@@ -62,8 +62,7 @@ class GestionnaireProfils:
             cursor = conn.cursor()
 
             # Table des profils
-            cursor.execute(
-                """
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS profils (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     nom TEXT UNIQUE NOT NULL,
@@ -72,12 +71,10 @@ class GestionnaireProfils:
                     date_creation TEXT,
                     derniere_connexion TEXT
                 )
-            """
-            )
+            """)
 
             # Table des actions
-            cursor.execute(
-                """
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS actions (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     profil_id INTEGER,
@@ -86,12 +83,10 @@ class GestionnaireProfils:
                     details TEXT,
                     FOREIGN KEY (profil_id) REFERENCES profils (id)
                 )
-            """
-            )
+            """)
 
             # Table des projets consultés
-            cursor.execute(
-                """
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS projets_consultes (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     profil_id INTEGER,
@@ -100,8 +95,7 @@ class GestionnaireProfils:
                     duree_consultation INTEGER,
                     FOREIGN KEY (profil_id) REFERENCES profils (id)
                 )
-            """
-            )
+            """)
 
             conn.commit()
 

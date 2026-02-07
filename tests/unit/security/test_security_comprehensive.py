@@ -33,12 +33,10 @@ class TestSecurityComprehensive:
         """Test d'audit de sécurité sur un projet propre"""
         # Créer un fichier Python propre
         clean_file = self.project_dir / "clean.py"
-        clean_file.write_text(
-            """
+        clean_file.write_text("""
 def safe_function():
     return "safe"
-"""
-        )
+""")
 
         # Exécuter l'audit
         result = security_audit_project(str(self.project_dir))
@@ -56,12 +54,10 @@ def safe_function():
         """Test d'audit avec mot de passe en clair"""
         # Créer un fichier avec mot de passe en clair
         password_file = self.project_dir / "config.py"
-        password_file.write_text(
-            """
+        password_file.write_text("""
 password = "secret123"
 api_key = "sk-1234567890abcdef"
-"""
-        )
+""")
 
         # Exécuter l'audit
         result = security_audit_project(str(self.project_dir))
@@ -82,12 +78,10 @@ api_key = "sk-1234567890abcdef"
         """Test d'audit avec clé API"""
         # Créer un fichier avec clé API
         api_file = self.project_dir / "api.py"
-        api_file.write_text(
-            """
+        api_file.write_text("""
 api_key = "sk-1234567890abcdef"
 secret = "sk-abcdef1234567890"
-"""
-        )
+""")
 
         # Exécuter l'audit
         result = security_audit_project(str(self.project_dir))
@@ -106,13 +100,11 @@ secret = "sk-abcdef1234567890"
         """Test d'audit avec appel système"""
         # Créer un fichier avec appel système
         system_file = self.project_dir / "dangerous.py"
-        system_file.write_text(
-            """
+        system_file.write_text("""
 import os
 os.system("rm -rf /")
 os.system("ls")
-"""
-        )
+""")
 
         # Exécuter l'audit
         result = security_audit_project(str(self.project_dir))
@@ -225,13 +217,11 @@ os.system("ls")
         """Test que l'audit est insensible à la casse"""
         # Créer un fichier avec des problèmes en majuscules
         case_file = self.project_dir / "config.py"
-        case_file.write_text(
-            """
+        case_file.write_text("""
 PASSWORD = "secret"
 API_KEY = "sk-1234567890"
 OS.SYSTEM("ls")
-"""
-        )
+""")
 
         # Exécuter l'audit
         result = security_audit_project(str(self.project_dir))
@@ -298,8 +288,7 @@ OS.SYSTEM("ls")
         """Test d'audit avec des patterns complexes"""
         # Créer un fichier avec des patterns complexes
         complex_file = self.project_dir / "complex.py"
-        complex_file.write_text(
-            """
+        complex_file.write_text("""
 # Différentes variantes de mots de passe
 password = "secret"
 PASSWORD = "secret"
@@ -315,8 +304,7 @@ secret_key = "sk-1234567890abcdef"
 os.system("ls")
 OS.SYSTEM("rm -rf /")
 system_call = os.system
-"""
-        )
+""")
 
         # Exécuter l'audit
         result = security_audit_project(str(self.project_dir))

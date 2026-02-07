@@ -169,8 +169,7 @@ class TestAutocompleteEngine:
         # Créer un fichier Python de test
         test_file = Path(self.temp_dir) / "test.py"
         with open(test_file, "w") as f:
-            f.write(
-                """
+            f.write("""
 def test_function():
     return "Hello World"
 
@@ -180,8 +179,7 @@ class TestClass:
 
 import os
 from pathlib import Path
-"""
-            )
+""")
 
         # Entraîner sur le fichier
         result = self.engine.train_on_file(str(test_file))
@@ -233,16 +231,14 @@ from pathlib import Path
         # Créer un fichier de test
         test_file = Path(self.temp_dir) / "test.py"
         with open(test_file, "w") as f:
-            f.write(
-                """
+            f.write("""
 def test_function():
     return "Hello"
 
 class TestClass:
     def __init__(self):
         pass
-"""
-            )
+""")
 
         # Entraîner sur le fichier
         train_result = self.engine.train_on_file(str(test_file))

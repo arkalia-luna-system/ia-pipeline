@@ -84,9 +84,9 @@ class TestCIUltraFast:
                 missing_required.append(var)
 
         # Les variables requises doivent être présentes
-        assert len(missing_required) == 0, (
-            f"Variables d'environnement requises manquantes: {missing_required}"
-        )
+        assert (
+            len(missing_required) == 0
+        ), f"Variables d'environnement requises manquantes: {missing_required}"
 
         # Vérifier les variables optionnelles et les définir si nécessaire
         for var in optional_vars:
@@ -104,6 +104,6 @@ class TestCIUltraFast:
         for file_path in essential_files:
             if os.path.exists(file_path):
                 # Vérifier que le fichier est lisible
-                assert os.access(file_path, os.R_OK), (
-                    f"Fichier non lisible: {file_path}"
-                )
+                assert os.access(
+                    file_path, os.R_OK
+                ), f"Fichier non lisible: {file_path}"

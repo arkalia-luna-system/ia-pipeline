@@ -46,15 +46,13 @@ class ValidationObjective:
 
         # Crée un fichier Python simple pour tester
         with open(f"{projet_test}/main.py", "w") as f:
-            f.write(
-                """def hello():
+            f.write("""def hello():
     print("Hello World")
     return "OK"
 
 if __name__ == "__main__":
     hello()
-"""
-            )
+""")
 
         cmd = [
             "python",
@@ -314,15 +312,13 @@ def fonction_syntaxe():
         # Crée plusieurs fichiers pour tester
         for i in range(10):
             with open(f"{projet_benchmark}/file_{i}.py", "w") as f:
-                f.write(
-                    f"""
+                f.write(f"""
 def fonction_{i}():
     return {i}
 
 if __name__ == "__main__":
     print(fonction_{i}())
-"""
-                )
+""")
 
         start = time.time()
         cmd = [

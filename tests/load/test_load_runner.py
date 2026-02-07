@@ -52,9 +52,9 @@ class TestLoadPerformance:
             text=True,
             cwd=project_root,
         )
-        assert result.returncode == 0, (
-            f"Erreur de syntaxe dans locustfile: {result.stderr}"
-        )
+        assert (
+            result.returncode == 0
+        ), f"Erreur de syntaxe dans locustfile: {result.stderr}"
 
     @pytest.mark.load
     @pytest.mark.skipif(not LOCUST_AVAILABLE, reason="locust non installé")

@@ -36,8 +36,7 @@ class TestAutoDocumenterComplete:
             '"""Package principal."""'
         )
 
-        (self.project_path / "src" / "calculator.py").write_text(
-            '''
+        (self.project_path / "src" / "calculator.py").write_text('''
 """Module calculatrice avec documentation complète."""
 
 class Calculator:
@@ -80,11 +79,9 @@ class Calculator:
     def _private_method(self):
         """Méthode privée non documentée publiquement."""
         return "private"
-'''
-        )
+''')
 
-        (self.project_path / "src" / "undocumented.py").write_text(
-            """
+        (self.project_path / "src" / "undocumented.py").write_text("""
 # Module sans documentation
 def function_without_docstring(x, y):
     return x * y
@@ -92,12 +89,10 @@ def function_without_docstring(x, y):
 class UndocumentedClass:
     def method_without_docs(self):
         pass
-"""
-        )
+""")
 
         # Fichiers de configuration et README
-        (self.project_path / "README.md").write_text(
-            """# Test Project
+        (self.project_path / "README.md").write_text("""# Test Project
 
 Projet de test pour la documentation automatique.
 
@@ -114,8 +109,7 @@ from src.calculator import Calculator
 calc = Calculator()
 result = calc.add(1, 2)
 ```
-"""
-        )
+""")
 
         # Configuration documentation
         config = {
@@ -527,8 +521,7 @@ result = calc.add(1, 2)
         large_src_dir.mkdir()
 
         for i in range(20):
-            (large_src_dir / f"module_{i}.py").write_text(
-                f'''
+            (large_src_dir / f"module_{i}.py").write_text(f'''
 """Module {i} documentation."""
 
 class Class{i}:
@@ -541,8 +534,7 @@ class Class{i}:
 def function_{i}():
     """Function {i} documentation."""
     return {i}
-'''
-            )
+''')
 
         # Mesurer performance scan
         start_time = time.time()
@@ -612,8 +604,7 @@ class TestAutoDocumenterIntegration:
         (self.project_path / "docs").mkdir()
 
         # Module principal avec documentation
-        (self.project_path / "src" / "main.py").write_text(
-            '''
+        (self.project_path / "src" / "main.py").write_text('''
 """Module principal du projet.
 
 Ce module contient la logique principale de l'application.
@@ -649,12 +640,10 @@ def main():
     """Point d'entrée principal."""
     app = MainApp()
     return app.run()
-'''
-        )
+''')
 
         # Fichier utils partiellement documenté
-        (self.project_path / "src" / "utils.py").write_text(
-            '''
+        (self.project_path / "src" / "utils.py").write_text('''
 def helper_function(data):
     return data.upper()
 
@@ -663,16 +652,13 @@ class UtilityClass:
 
     def process(self, item):
         return item * 2
-'''
-        )
+''')
 
         # README projet
-        (self.project_path / "README.md").write_text(
-            """# Integration Project
+        (self.project_path / "README.md").write_text("""# Integration Project
 
 Projet d'intégration pour tests de documentation.
-"""
-        )
+""")
 
         # Documenter le projet
         documenter = AutoDocumenter(str(self.project_path))
@@ -730,8 +716,7 @@ class TestAutoDocumenterPerformance:
             module_dir.mkdir()
 
             for j in range(10):
-                (module_dir / f"module_{j}.py").write_text(
-                    f'''
+                (module_dir / f"module_{j}.py").write_text(f'''
 """Module {i}_{j} documentation."""
 
 class Class{i}_{j}:
@@ -755,8 +740,7 @@ class Class{i}_{j}:
 def function_{i}_{j}():
     """Function {i}_{j} documentation."""
     return {i} + {j}
-'''
-                )
+''')
 
         # Test performance documenter
         documenter = AutoDocumenter(str(massive_project))

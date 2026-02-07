@@ -119,9 +119,9 @@ class TestCoverageThreshold:
                         content = f.read()
                         assert content.strip(), f"Module {module_path} vide"
                         # Vérifie qu'il y a du code Python valide
-                        assert "def " in content or "class " in content, (
-                            f"Module {module_path} ne contient pas de code Python"
-                        )
+                        assert (
+                            "def " in content or "class " in content
+                        ), f"Module {module_path} ne contient pas de code Python"
                 except Exception as e:
                     pytest.fail(f"Erreur lecture {module_path}: {e}")
 
@@ -141,9 +141,9 @@ class TestCoverageThreshold:
             # Continuer le test avec un seuil plus bas
             min_tests = max(5, len(test_files) - 5)  # Seuil adaptatif
 
-        assert len(test_files) >= min_tests, (
-            f"Pas assez de fichiers de test: {len(test_files)} (minimum adaptatif: {min_tests})"
-        )
+        assert (
+            len(test_files) >= min_tests
+        ), f"Pas assez de fichiers de test: {len(test_files)} (minimum adaptatif: {min_tests})"
 
         # Vérifie la structure des tests
         test_structure = {
@@ -164,9 +164,9 @@ class TestCoverageThreshold:
                 test_structure["security"] += 1
 
         # Vérifie qu'il y a au moins des tests unitaires
-        assert test_structure["unit"] >= 10, (
-            f"Pas assez de tests unitaires: {test_structure['unit']}"
-        )
+        assert (
+            test_structure["unit"] >= 10
+        ), f"Pas assez de tests unitaires: {test_structure['unit']}"
 
     def test_test_coverage_structure(self, test_files: list[Path]) -> None:
         """Vérifie la structure de couverture des tests"""
@@ -229,9 +229,9 @@ class TestCoverageThreshold:
                     untested_modules.append(module_path)
 
         # Permet jusqu'à 2 modules critiques sans test
-        assert len(untested_modules) <= 2, (
-            f"Trop de modules critiques sans test: {untested_modules}"
-        )
+        assert (
+            len(untested_modules) <= 2
+        ), f"Trop de modules critiques sans test: {untested_modules}"
 
     def test_coverage_report_readable(self, project_root: Path) -> None:
         """Vérifie que le rapport de couverture est lisible"""
@@ -241,9 +241,9 @@ class TestCoverageThreshold:
                 with open(coverage_report, encoding="utf-8") as f:
                     content = f.read()
                     assert content.strip(), "Rapport de couverture vide"
-                    assert "coverage" in content.lower(), (
-                        "Rapport de couverture invalide"
-                    )
+                    assert (
+                        "coverage" in content.lower()
+                    ), "Rapport de couverture invalide"
                     assert "html" in content.lower(), "Format HTML invalide"
             except Exception as e:
                 pytest.fail(f"Erreur lecture rapport couverture: {e}")
@@ -338,9 +338,9 @@ class TestCoverageThreshold:
                     assert content.strip(), f"Fichier de test vide: {test_file}"
 
                     # Vérifie qu'il contient des tests
-                    assert "def test_" in content or "class Test" in content, (
-                        f"Fichier de test sans fonctions de test: {test_file}"
-                    )
+                    assert (
+                        "def test_" in content or "class Test" in content
+                    ), f"Fichier de test sans fonctions de test: {test_file}"
 
                     # Vérifie qu'il y a des assertions ou pytest.fail
                     has_assertions = (
@@ -348,9 +348,9 @@ class TestCoverageThreshold:
                         or "pytest.fail" in content
                         or "pytest.skip" in content
                     )
-                    assert has_assertions, (
-                        f"Fichier de test sans assertions: {test_file}"
-                    )
+                    assert (
+                        has_assertions
+                    ), f"Fichier de test sans assertions: {test_file}"
 
             except Exception as e:
                 pytest.fail(f"Erreur lecture {test_file}: {e}")
@@ -404,9 +404,9 @@ class TestCoverageThreshold:
                 import_errors.append(f"{test_file}: {e}")
 
         # Permet jusqu'à 2 erreurs d'import
-        assert len(import_errors) <= 2, (
-            f"Trop d'erreurs d'import dans les tests: {import_errors}"
-        )
+        assert (
+            len(import_errors) <= 2
+        ), f"Trop d'erreurs d'import dans les tests: {import_errors}"
 
 
 if __name__ == "__main__":

@@ -35,15 +35,13 @@ class TestAutoTester(unittest.TestCase):
         # Créer un module de test
         project_dir = Path(self.temp_dir) / "test_project"
         project_dir.mkdir()
-        (project_dir / "calculator.f").write_text(
-            """
+        (project_dir / "calculator.f").write_text("""
 def add(a, b):
     return a + b
 
 def subtract(a, b):
     return a - b
-"""
-        )
+""")
 
         self.tester.project_path = project_dir
         modules = self.tester._analyze_modules()
@@ -68,15 +66,13 @@ def subtract(a, b):
         # Créer un module avec des fonctions
         project_dir = Path(self.temp_dir) / "test_project"
         project_dir.mkdir()
-        (project_dir / "processor.f").write_text(
-            """
+        (project_dir / "processor.f").write_text("""
 def process_data(data):
     return [x * 2 for x in data]
 
 def heavy_computation(n):
     return sum(range(n))
-"""
-        )
+""")
 
         self.tester.project_path = project_dir
         modules = self.tester._analyze_modules()

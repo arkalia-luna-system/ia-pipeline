@@ -285,8 +285,7 @@ class Dashboard:
         js = self.generate_dashboard_js(config)
 
         # Construire le HTML
-        html_parts = [
-            f"""<!DOCTYPE html>
+        html_parts = [f"""<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -307,8 +306,7 @@ class Dashboard:
     </div>
 
     <div class="dashboard-content">
-        <div class="widgets-container">"""
-        ]
+        <div class="widgets-container">"""]
 
         # Ajouter les widgets
         for widget in widgets:

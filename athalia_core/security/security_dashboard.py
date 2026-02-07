@@ -116,9 +116,9 @@ class SecurityDashboard:
                     scan_results = security_validator.run_comprehensive_scan(
                         str(self.project_path)
                     )
-                    security_data["security_checks"]["comprehensive_scan"] = (
-                        scan_results
-                    )
+                    security_data["security_checks"][
+                        "comprehensive_scan"
+                    ] = scan_results
 
                     # Calcul du score de sécurité intelligent et contextuel
                     total_vulns = scan_results.get("vulnerabilities_found", 0)
@@ -462,16 +462,12 @@ class SecurityDashboard:
         score_color = (
             "#28a745"
             if security_score >= 85
-            else "#ffc107"
-            if security_score >= 70
-            else "#dc3545"
+            else "#ffc107" if security_score >= 70 else "#dc3545"
         )
         score_status = (
             "Sécurisé"
             if security_score >= 85
-            else "Attention"
-            if security_score >= 70
-            else "Critique"
+            else "Attention" if security_score >= 70 else "Critique"
         )
 
         html_template = f"""<!DOCTYPE html>

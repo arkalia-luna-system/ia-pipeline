@@ -46,51 +46,41 @@ class TestAutoCorrectionAvancee(unittest.TestCase):
 
         # Fichier avec erreur d'indentation
         with open(os.path.join(self.temp_dir, "test_indentation.py"), "w") as f:
-            f.write(
-                """def test_function():
+            f.write("""def test_function():
     print("Hello")
   print("Wrong indentation")  # Erreur d'indentation
-"""
-            )
+""")
 
         # Fichier avec erreur de parenthèses
         with open(os.path.join(self.temp_dir, "test_parentheses.py"), "w") as f:
-            f.write(
-                """def test_function():
+            f.write("""def test_function():
     print("Hello"
     return True
-"""
-            )
+""")
 
         # Fichier avec erreur de guillemets
         with open(os.path.join(self.temp_dir, "test_quotes.py"), "w") as f:
-            f.write(
-                """def test_function():
+            f.write("""def test_function():
     print('Hello")
     return True
-"""
-            )
+""")
 
         # Fichier correct
         with open(os.path.join(self.temp_dir, "test_correct.py"), "w") as f:
-            f.write(
-                """def test_function():
+            f.write("""def test_function():
     print("Hello")
     return True
-"""
-            )
+""")
 
         # Fichier avec list comprehension non optimisée
         with open(os.path.join(self.temp_dir, "test_list_comp.py"), "w") as f:
-            f.write(
-                """def test_function():
+            f.write("""def test_function():
     result = []
     for i in range(10):
         if i % 2 == 0:
         result.append(i * 2)
     return result
-"""
-            )
+""")
 
     def test_initialization(self):
         """Test de l'initialisation de la classe"""
@@ -366,16 +356,14 @@ class TestAutoCorrectionAvanceeIntegration(unittest.TestCase):
         # Création d'un fichier avec plusieurs erreurs
         test_file = os.path.join(self.temp_dir, "integration_test.py")
         with open(test_file, "w") as f:
-            f.write(
-                """def test_function():
+            f.write("""def test_function():
     print("Hello"
     items = [1 2 3]
     result = []
     for i in range(len(items)):
         result.append(items[i])
     return result
-"""
-            )
+""")
 
         # Exécution de l'auto-correction
         resultats = self.auto_correction.analyser_et_corriger(dry_run=False)
@@ -401,12 +389,10 @@ class TestAutoCorrectionAvanceeIntegration(unittest.TestCase):
         for i in range(10):
             test_file = os.path.join(self.temp_dir, f"test_{i}.py")
             with open(test_file, "w") as f:
-                f.write(
-                    f"""def test_function_{i}():
+                f.write(f"""def test_function_{i}():
     print("Test {i}")
     return True
-"""
-                )
+""")
 
         resultats = self.auto_correction.analyser_et_corriger(dry_run=True)
 

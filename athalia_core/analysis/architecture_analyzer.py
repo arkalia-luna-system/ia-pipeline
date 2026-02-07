@@ -89,8 +89,7 @@ class ArchitectureAnalyzer:
             cursor = conn.cursor()
 
             # Table des modules
-            cursor.execute(
-                """
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS modules (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     name TEXT UNIQUE NOT NULL,
@@ -107,12 +106,10 @@ class ArchitectureAnalyzer:
                     last_modified TEXT NOT NULL,
                     analyzed_at TEXT NOT NULL
                 )
-            """
-            )
+            """)
 
             # Table des dépendances
-            cursor.execute(
-                """
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS dependencies (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     module_name TEXT NOT NULL,
@@ -121,12 +118,10 @@ class ArchitectureAnalyzer:
                     strength REAL DEFAULT 1.0,
                     created_at TEXT NOT NULL
                 )
-            """
-            )
+            """)
 
             # Table des problèmes de performance
-            cursor.execute(
-                """
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS performance_issues (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     issue_type TEXT NOT NULL,
@@ -137,8 +132,7 @@ class ArchitectureAnalyzer:
                     detected_at TEXT NOT NULL,
                     resolved_at TEXT
                 )
-            """
-            )
+            """)
 
             conn.commit()
 

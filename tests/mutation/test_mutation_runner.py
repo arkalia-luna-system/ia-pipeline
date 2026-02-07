@@ -26,7 +26,9 @@ class TestMutationQuality:
         config_file = project_root / "mutmut_config.py"
         assert config_file.exists(), "Configuration mutmut manquante"
 
-    @pytest.mark.skipif(not MUTMUT_AVAILABLE, reason="mutmut non installé ou non trouvé dans PATH")
+    @pytest.mark.skipif(
+        not MUTMUT_AVAILABLE, reason="mutmut non installé ou non trouvé dans PATH"
+    )
     def test_mutation_can_run(self, project_root):
         """Test que mutmut peut s'exécuter"""
         result = subprocess.run(

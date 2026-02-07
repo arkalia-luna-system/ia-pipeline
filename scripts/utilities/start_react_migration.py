@@ -143,8 +143,7 @@ def configure_tailwind() -> bool:
         tailwind_config = DASHBOARD_REACT_DIR / "tailwind.config.js"
         if tailwind_config.exists():
             with open(tailwind_config, "w", encoding="utf-8") as f:
-                f.write(
-                    """/** @type {import('tailwindcss').Config} */
+                f.write("""/** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./index.html",
@@ -191,15 +190,13 @@ export default {
   },
   plugins: [],
 }
-"""
-                )
+""")
 
         # Configurer src/index.css
         css_file = DASHBOARD_REACT_DIR / "src" / "index.css"
         if css_file.exists():
             with open(css_file, "w", encoding="utf-8") as f:
-                f.write(
-                    """@tailwind base;
+                f.write("""@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -235,8 +232,7 @@ export default {
   .input-field {
     @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent;
   }
-}"""
-                )
+}""")
 
         print("✅ Tailwind CSS configuré")
         return True
@@ -254,8 +250,7 @@ def configure_eslint_prettier() -> bool:
         # Configuration ESLint
         eslint_config = DASHBOARD_REACT_DIR / ".eslintrc.cjs"
         with open(eslint_config, "w", encoding="utf-8") as f:
-            f.write(
-                """module.exports = {
+            f.write("""module.exports = {
   root: true,
   env: { browser: true, es2020: true },
   extends: [
@@ -277,14 +272,12 @@ def configure_eslint_prettier() -> bool:
     'no-var': 'error',
   },
 }
-"""
-            )
+""")
 
         # Configuration Prettier
         prettier_config = DASHBOARD_REACT_DIR / ".prettierrc"
         with open(prettier_config, "w", encoding="utf-8") as f:
-            f.write(
-                """{
+            f.write("""{
   "semi": true,
   "trailingComma": "es5",
   "singleQuote": true,
@@ -294,8 +287,7 @@ def configure_eslint_prettier() -> bool:
   "bracketSpacing": true,
   "arrowParens": "avoid"
 }
-"""
-            )
+""")
 
         print("✅ ESLint et Prettier configurés")
         return True

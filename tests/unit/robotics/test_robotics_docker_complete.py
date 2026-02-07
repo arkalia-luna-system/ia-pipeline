@@ -364,7 +364,7 @@ class TestDockerRoboticsComplete:
         assert result is False
         mock_logger.assert_called_once()
 
-    @patch("athalia_core.robotics.docker_robotics.validate_and_run")
+    @patch("athalia_core.robotics.docker_robotics.validateand_run")
     def test_run_docker_compose_success(self, mock_run):
         """Test lancement docker-compose réussi"""
         # Créer un mock qui simule subprocess.CompletedProcess

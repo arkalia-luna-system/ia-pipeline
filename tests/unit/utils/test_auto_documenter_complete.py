@@ -478,12 +478,10 @@ class MyClass:
             file_path.parent.mkdir(parents=True, exist_ok=True)
             with open(file_path, "w") as f:
                 if item.endswith(".py"):
-                    f.write(
-                        '''def test_function():
+                    f.write('''def test_function():
     """Fonction de test."""
     return True
-                    '''
-                    )
+                    ''')
                 else:
                     f.write("test content")
 

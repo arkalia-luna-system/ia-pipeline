@@ -27,8 +27,7 @@ class TestPerformanceAnalyzerComplete:
         self.project_path.mkdir(parents=True)
 
         # Créer fichiers de test avec différents profils de performance
-        (self.project_path / "fast_module.py").write_text(
-            """
+        (self.project_path / "fast_module.py").write_text("""
 def fast_function(*args, **kwargs):
     '''Fonction rapide et efficace.'''
     return [i for i in range(10)]
@@ -37,11 +36,9 @@ def efficient_algorithm(*args, **kwargs):
     '''Algorithme efficace O(n).'''
     data = list(range(100))
     return sum(data)
-"""
-        )
+""")
 
-        (self.project_path / "slow_module.py").write_text(
-            """
+        (self.project_path / "slow_module.py").write_text("""
 def slow_function():
     '''Fonction lente avec boucles imbriquées.'''
     result = []
@@ -65,11 +62,9 @@ def memory_intensive():
     big_list = [i for i in range(100000)]
     big_dict = {i: str(i) * 100 for i in range(10000)}
     return len(big_list) + len(big_dict)
-"""
-        )
+""")
 
-        (self.project_path / "recursive_module.py").write_text(
-            """
+        (self.project_path / "recursive_module.py").write_text("""
 def fibonacci_recursive(n):
     '''Fibonacci récursif non optimisé.'''
     if n <= 1:
@@ -87,8 +82,7 @@ def fibonacci_optimized(n):
         cache[n] = fib(n-1) + fib(n-2)
         return cache[n]
     return fib(n)
-"""
-        )
+""")
 
         self.analyzer = PerformanceAnalyzer(str(self.project_path))
 
@@ -209,8 +203,7 @@ def fibonacci_optimized(n):
         """Test analyse performance I/O."""
         # Créer fichier pour tests I/O
         io_file = self.project_path / "io_test.py"
-        io_file.write_text(
-            """
+        io_file.write_text("""
 def file_operations():
     '''Opérations fichier pour test I/O.'''
     with open('/tmp/test_file.txt', 'w') as f:
@@ -219,8 +212,7 @@ def file_operations():
 
     with open('/tmp/test_file.txt', 'r') as f:
         return len(f.readlines())
-"""
-        )
+""")
 
         io_analysis = self.analyzer.analyze_io_performance()
 
@@ -348,8 +340,7 @@ def file_operations():
         """Test détection fuites mémoire."""
         # Créer code avec fuite mémoire potentielle
         leak_file = self.project_path / "memory_leak.py"
-        leak_file.write_text(
-            """
+        leak_file.write_text("""
 global_list = []
 
 def potential_leak():
@@ -358,8 +349,7 @@ def potential_leak():
     for i in range(1000):
         global_list.append([i] * 1000)  # Accumulation sans nettoyage
     return len(global_list)
-"""
-        )
+""")
 
         leak_analysis = self.analyzer.detect_memory_leaks()
 
@@ -381,8 +371,7 @@ def potential_leak():
         """Test analyse performance requêtes base de données."""
         # Créer code avec requêtes simulées
         db_file = self.project_path / "database_queries.py"
-        db_file.write_text(
-            """
+        db_file.write_text("""
 def slow_query():
     '''Simulation requête lente.'''
     # Simulation d'une requête avec boucle
@@ -396,8 +385,7 @@ def slow_query():
 def optimized_query():
     '''Simulation requête optimisée.'''
     return [(i, i) for i in range(100)]
-"""
-        )
+""")
 
         db_analysis = self.analyzer.analyze_database_performance()
 
@@ -539,8 +527,7 @@ def algorithm():
         """Test analyse performance concurrente."""
         # Créer code avec gestion concurrence
         concurrent_file = self.project_path / "concurrent_code.py"
-        concurrent_file.write_text(
-            """
+        concurrent_file.write_text("""
 import threading
 import time
 
@@ -573,8 +560,7 @@ def parallel_processing():
         thread.join()
 
     return results
-"""
-        )
+""")
 
         concurrency_analysis = self.analyzer.analyze_concurrency_performance()
 
@@ -627,8 +613,7 @@ class TestPerformanceAnalyzerIntegration:
         (self.project_path / "src").mkdir()
 
         # Module avec bonnes performances
-        (self.project_path / "src" / "optimized.py").write_text(
-            """
+        (self.project_path / "src" / "optimized.py").write_text("""
 def efficient_search(data, target):
     '''Recherche binaire efficace.'''
     left, right = 0, len(data) - 1
@@ -641,12 +626,10 @@ def efficient_search(data, target):
         else:
             right = mid - 1
     return -1
-"""
-        )
+""")
 
         # Module avec performances dégradées
-        (self.project_path / "src" / "unoptimized.py").write_text(
-            """
+        (self.project_path / "src" / "unoptimized.py").write_text("""
 def inefficient_search(data, target):
     '''Recherche linéaire inefficace.'''
     for i in range(len(data)):
@@ -662,8 +645,7 @@ def nested_loops_example():
             for k in range(10):
                 result += i * j * k
     return result
-"""
-        )
+""")
 
         # Exécuter analyse complète
         analyzer = PerformanceAnalyzer(str(self.project_path))
@@ -714,8 +696,7 @@ class TestPerformanceAnalyzerBenchmarks:
 
         # Créer beaucoup de fichiers avec code complexe
         for i in range(50):
-            (large_project / f"module_{i}.py").write_text(
-                f"""
+            (large_project / f"module_{i}.py").write_text(f"""
 # Module {i}
 def complex_function_{i}():
     '''Fonction complexe {i}.'''
@@ -738,8 +719,7 @@ class DataProcessor{i}:
 
     def process(self):
         return [x * {i} for x in self.data if x % 2 == 0]
-"""
-            )
+""")
 
         # Tester performance de l'analyse
         analyzer = PerformanceAnalyzer(str(large_project))

@@ -111,6 +111,7 @@ class TestNoPollutingFiles:
                         or root.startswith("./tests/unit/modules/logs")
                         or root.startswith("./athalia_showcase/logs")
                         or root.startswith("./athalia_core/logs")
+                        or root.startswith("./athalia_core/security/logs")
                     ):
                         temp_files.append(os.path.join(root, file))
 
@@ -377,24 +378,22 @@ class TestNoPollutingFiles:
             for file in files:
                 file_path = os.path.join(root, file)
                 # Exclure spécifiquement les fichiers volumineux nécessaires
-                if (
-                    file_path
-                    in [
-                        "./docs/API.md",
-                        "./docs/API.md.backup",
-                        "./docs/archive/20250726_cleanup/API_original_16MB.md",
-                        "./docs/API/REFERENCE.md",
-                        "docs/API/REFERENCE.md",
-                        "./athalia.f(f",  # Fichier spécial du projet
-                        "./logs/athalia.log",  # Fichier de log principal (peut être volumineux)
-                        "./logs/athalia.log.1",  # Fichier de log rotation (peut être volumineux)
-                        "./logs/athalia.log.1.gz",  # Fichier de log rotation compressé
-                        "./logs/athalia.log.2.gz",  # Fichier de log rotation compressé
-                        "./logs/athalia.log.3.gz",  # Fichier de log rotation compressé
-                        "./logs/athalia.log.4.gz",  # Fichier de log rotation compressé
-                        "./logs/athalia.log.5.gz",  # Fichier de log rotation compressé
-                    ]
-                ):
+                if file_path in [
+                    "./docs/API.md",
+                    "./docs/API.md.backup",
+                    "./docs/archive/20250726_cleanup/API_original_16MB.md",
+                    "./docs/API/REFERENCE.md",
+                    "docs/API/REFERENCE.md",
+                    "./athalia.f(f",  # Fichier spécial du projet
+                    "./logs/athalia.log",  # Fichier de log principal (peut être volumineux)
+                    "./logs/athalia.log.1",  # Fichier de log rotation (peut être volumineux)
+                    "./logs/athalia.log.1.gz",  # Fichier de log rotation compressé
+                    "./logs/athalia.log.2.gz",  # Fichier de log rotation compressé
+                    "./logs/athalia.log.3.gz",  # Fichier de log rotation compressé
+                    "./logs/athalia.log.4.gz",  # Fichier de log rotation compressé
+                    "./logs/athalia.log.5.gz",  # Fichier de log rotation compressé
+                    "./bandit-report.json",  # Rapport bandit (sécurité, peut être volumineux)
+                ]:
                     continue
                 try:
                     if os.path.getsize(file_path) > 10 * 1024 * 1024:  # 10MB
@@ -613,6 +612,12 @@ class TestNoPollutingFiles:
             "./docs/SPECIALIZED/INTERNATIONALISATION",  # Internationalisation (peut être vide)
             "./docs/SPECIALIZED/MODULES_AVANCÉS",  # Modules avancés (peut être vide)
             "./docs/SPECIALIZED/MODULES_AVANCES",  # Modules avancés (peut être vide) - encodage alternatif
+            "./data/benchmarks",
+            "./data/site",
+            "./data/logs",
+            "./data/blueprints",
+            "./data/showcase",
+            "./athalia_core/security/logs/archive",
         }
 
         # Filtrer les répertoires autorisés avec correspondance partielle

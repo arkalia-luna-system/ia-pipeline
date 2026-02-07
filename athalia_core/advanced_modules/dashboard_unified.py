@@ -32,8 +32,7 @@ class DashboardUnifieSimple:
             cursor = conn.cursor()
 
             # Table des métriques
-            cursor.execute(
-                """
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS metriques (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     type TEXT NOT NULL,
@@ -42,12 +41,10 @@ class DashboardUnifieSimple:
                     timestamp TEXT,
                     details TEXT
                 )
-            """
-            )
+            """)
 
             # Table des événements
-            cursor.execute(
-                """
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS evenements (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     type TEXT NOT NULL,
@@ -58,12 +55,10 @@ class DashboardUnifieSimple:
                     statut TEXT,
                     details TEXT
                 )
-            """
-            )
+            """)
 
             # Table des rapports
-            cursor.execute(
-                """
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS rapports (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     type TEXT NOT NULL,
@@ -73,8 +68,7 @@ class DashboardUnifieSimple:
                     score_qualite INTEGER,
                     score_securite INTEGER
                 )
-            """
-            )
+            """)
 
             conn.commit()
 
@@ -229,8 +223,7 @@ class DashboardUnifieSimple:
             cursor = conn.cursor()
 
             # Top projets par score
-            cursor.execute(
-                """
+            cursor.execute("""
                 SELECT projet, AVG(score_qualite) as score_qualite,
                        AVG(score_securite) as score_securite
                 FROM rapports
@@ -238,8 +231,7 @@ class DashboardUnifieSimple:
                 GROUP BY projet
                 ORDER BY (score_qualite + score_securite) / 2 DESC
                 LIMIT 10
-            """
-            )
+            """)
 
             top_projets = []
             for row in cursor.fetchall():
@@ -253,14 +245,12 @@ class DashboardUnifieSimple:
                 )
 
             # Événements récents
-            cursor.execute(
-                """
+            cursor.execute("""
                 SELECT type, projet, utilisateur, timestamp, statut
                 FROM evenements
                 ORDER BY timestamp DESC
                 LIMIT 20
-            """
-            )
+            """)
 
             evenements_recents = []
             for row in cursor.fetchall():

@@ -739,8 +739,7 @@ class PerformanceAnalyzer:
             cursor = conn.cursor()
 
             # Créer la table des métriques de performance
-            cursor.execute(
-                """
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS performance_metrics (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     metric_type TEXT NOT NULL,
@@ -752,12 +751,10 @@ class PerformanceAnalyzer:
                     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
                     report_data TEXT
                 )
-                """
-            )
+                """)
 
             # Créer la table des problèmes de performance
-            cursor.execute(
-                """
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS performance_issues (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     issue_type TEXT NOT NULL,
@@ -769,12 +766,10 @@ class PerformanceAnalyzer:
                     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
                     report_data TEXT
                 )
-                """
-            )
+                """)
 
             # Créer la table des rapports de performance
-            cursor.execute(
-                """
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS performance_reports (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     overall_score REAL NOT NULL,
@@ -783,8 +778,7 @@ class PerformanceAnalyzer:
                     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
                     report_data TEXT
                 )
-                """
-            )
+                """)
 
             conn.commit()
             conn.close()
@@ -1196,15 +1190,13 @@ class PerformanceAnalyzer:
             total_reports = cursor.fetchone()[0] or 0
 
             # Obtenir les problèmes les plus courants
-            cursor.execute(
-                """
+            cursor.execute("""
                 SELECT issue_type, COUNT(*) as count
                 FROM performance_issues
                 GROUP BY issue_type
                 ORDER BY count DESC
                 LIMIT 5
-                """
-            )
+                """)
             common_issues = [
                 {"type": row[0], "count": row[1]} for row in cursor.fetchall()
             ]

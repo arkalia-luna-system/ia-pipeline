@@ -450,9 +450,9 @@ class UnifiedOrchestrator:
                         "advanced_auto_correction"
                     )
                 if isinstance(self.workflow_results["artifacts"], dict):
-                    self.workflow_results["artifacts"]["auto_correction_results"] = (
-                        resultats
-                    )
+                    self.workflow_results["artifacts"][
+                        "auto_correction_results"
+                    ] = resultats
 
                 # Afficher les statistiques
                 corrections_count = len(resultats.get("corrections_appliquees", []))
@@ -509,9 +509,9 @@ class UnifiedOrchestrator:
                 if isinstance(self.workflow_results["steps_completed"], list):
                     self.workflow_results["steps_completed"].append("security_audit")
                 if isinstance(self.workflow_results["artifacts"], dict):
-                    self.workflow_results["artifacts"]["security_report"] = (
-                        security_results
-                    )
+                    self.workflow_results["artifacts"][
+                        "security_report"
+                    ] = security_results
                 logger.info(" Audit de sécurité terminé")
 
         except Exception as e:
@@ -548,9 +548,9 @@ class UnifiedOrchestrator:
                         "correction_optimization"
                     )
                 if isinstance(self.workflow_results["artifacts"], dict):
-                    self.workflow_results["artifacts"]["optimization_stats"] = (
-                        optimization_results
-                    )
+                    self.workflow_results["artifacts"][
+                        "optimization_stats"
+                    ] = optimization_results
                 logger.info(" Optimisation terminée")
 
         except Exception as e:
@@ -605,9 +605,9 @@ class UnifiedOrchestrator:
                 if isinstance(self.workflow_results["steps_completed"], list):
                     self.workflow_results["steps_completed"].append("auto_cleaning")
                 if isinstance(self.workflow_results["artifacts"], dict):
-                    self.workflow_results["artifacts"]["cleaning_report"] = (
-                        clean_results
-                    )
+                    self.workflow_results["artifacts"][
+                        "cleaning_report"
+                    ] = clean_results
                 logger.info(" Nettoyage terminé")
 
         except Exception as e:
@@ -648,9 +648,9 @@ class UnifiedOrchestrator:
                 # Validation Docker
                 if self.docker_robotics:
                     docker_result = self.docker_robotics.validate_docker_setup()
-                    self.workflow_results["robotics"]["docker_validation"] = (
-                        docker_result
-                    )
+                    self.workflow_results["robotics"][
+                        "docker_validation"
+                    ] = docker_result
 
                 logger.info(" Validation robotique terminée")
                 # Marquer l'étape comme complétée
@@ -724,9 +724,9 @@ class UnifiedOrchestrator:
                                 )
 
                     if isinstance(self.workflow_results["artistic"], dict):
-                        self.workflow_results["artistic"]["templates_applied"] = (
-                            templates_applied
-                        )
+                        self.workflow_results["artistic"][
+                            "templates_applied"
+                        ] = templates_applied
                     logger.info(
                         f" {len(templates_applied)} templates artistiques appliqués"
                     )

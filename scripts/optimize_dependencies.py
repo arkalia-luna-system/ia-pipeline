@@ -243,7 +243,9 @@ class DependencyOptimizer:
                     dep for dep in vulns["dependencies"] if dep.get("vulns", [])
                 ]
                 if vulnerable:
-                    f.write(f"⚠️ {len(vulnerable)} packages avec des vulnérabilités\n\n")
+                    f.write(
+                        f"⚠️ {len(vulnerable)} packages avec des vulnérabilités\n\n"
+                    )
                     for dep in vulnerable[:5]:  # Top 5
                         f.write(f"**{dep['name']}** ({dep['version']})\n")
                         for vuln in dep["vulns"][:2]:  # Top 2 vulns par package

@@ -57,9 +57,9 @@ class TestEndToEndIntegration:
 
                     print("✅ Module generation importé avec succès")
                     # Test minimal : vérifier la structure du module
-                    assert hasattr(athalia_core.generation, "__file__"), (
-                        "Module generation invalide"
-                    )
+                    assert hasattr(
+                        athalia_core.generation, "__file__"
+                    ), "Module generation invalide"
                     return  # Test réussi, pas besoin de générer un projet complet
                 except Exception as e:
                     print(f"⚠️  Import échoué: {e}")
@@ -89,9 +89,9 @@ class TestEndToEndIntegration:
 
                     print("✅ Module generation importé avec succès")
                     # Test minimal : vérifier la structure du module
-                    assert hasattr(athalia_core.generation, "__file__"), (
-                        "Module generation invalide"
-                    )
+                    assert hasattr(
+                        athalia_core.generation, "__file__"
+                    ), "Module generation invalide"
                     return  # Test réussi, pas besoin de générer un projet complet
                 except Exception as e:
                     print(f"⚠️  Import échoué: {e}")
@@ -138,9 +138,9 @@ class TestEndToEndIntegration:
         # Vérifier setup.py ou pyproject.toml dans le répertoire racine du projet
         setup_py = outdir / "setup.py"
         pyproject_toml = outdir / "config" / "pyproject.toml"
-        assert setup_py.exists() or pyproject_toml.exists(), (
-            "Fichier de configuration manquant"
-        )
+        assert (
+            setup_py.exists() or pyproject_toml.exists()
+        ), "Fichier de configuration manquant"
 
     def test_workflow_complete(self):
         """Test du workflow complet d'Athalia."""
@@ -155,12 +155,10 @@ class TestEndToEndIntegration:
 
         # Créer un fichier de test
         test_file = test_project / "test.py"
-        test_file.write_text(
-            """
+        test_file.write_text("""
 def test_function():
     return "test"
-"""
-        )
+""")
 
         try:
             # Initialiser l'orchestrateur
@@ -282,9 +280,9 @@ def test_function():
             results_count += 1
             if isinstance(result, Exception):
                 pytest.skip(f"Génération concurrente échouée: {result}")
-            assert isinstance(result, dict), (
-                f"Résultat invalide pour le thread {thread_id}"
-            )
+            assert isinstance(
+                result, dict
+            ), f"Résultat invalide pour le thread {thread_id}"
 
         # Vérifier que tous les threads ont terminé
         assert results_count == 3, f"Seulement {results_count}/3 threads ont terminé"
@@ -308,9 +306,9 @@ def test_generation_end_to_end_simple(tmp_path):
                 print("✅ Module generation importé avec succès")
 
                 # Test minimal : vérifier la structure du module
-                assert hasattr(athalia_core.generation, "__file__"), (
-                    "Module generation invalide"
-                )
+                assert hasattr(
+                    athalia_core.generation, "__file__"
+                ), "Module generation invalide"
 
                 # Test rapide : essayer de générer un blueprint simple (sans projet complet)
                 try:

@@ -136,7 +136,7 @@ class TestAutoCleaner:
             with open(file_path, "w") as f:
                 f.write("x" * 1024 * 1024)  # 1MB
 
-        result = self.cleaner.cleanup_large_files(max_size_mb=0.5)
+        result = self.cleaner.cleanup_large_files()
         assert isinstance(result, dict)
         assert "removed_files" in result
         assert "total_size_freed" in result

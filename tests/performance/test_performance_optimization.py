@@ -104,12 +104,10 @@ class TestPerformanceOptimization:
 
         # Créer un fichier de test
         test_file = self.test_dir / "test_file.py"
-        test_file.write_text(
-            """
+        test_file.write_text("""
 def test_function():
     return "test"
-"""
-        )
+""")
 
         # Analyser la performance du projet
         if self.performance_analyzer is not None:
@@ -127,10 +125,12 @@ def test_function():
         # CORRECTION ARCHI PROPRE : Test intelligent avec ou sans CacheManager
         if not self.cache_manager:
             # CORRECTION ARCHI PROPRE : Test de base sans CacheManager
-            print("ℹ️ Test de base sans CacheManager - vérification de l'initialisation")
-            assert CACHE_MANAGER_AVAILABLE is False or CacheManager is None, (
-                "CacheManager devrait être None"
+            print(
+                "ℹ️ Test de base sans CacheManager - vérification de l'initialisation"
             )
+            assert (
+                CACHE_MANAGER_AVAILABLE is False or CacheManager is None
+            ), "CacheManager devrait être None"
             return
 
         # Test complet avec CacheManager disponible
@@ -164,8 +164,7 @@ def test_function():
 
         # Créer un fichier avec des problèmes de performance
         problematic_file = self.test_dir / "problematic.py"
-        problematic_file.write_text(
-            """
+        problematic_file.write_text("""
 import time
 
 def slow_function():
@@ -177,8 +176,7 @@ def inefficient_loop():
     for i in range(100):  # Optimisé: réduit de 10000 à 100
         result.append(i)  # Problème d'efficacité
     return result
-"""
-        )
+""")
 
         # Analyser et obtenir des suggestions
         report = self.performance_analyzer.analyze_project_performance(
@@ -235,8 +233,7 @@ def inefficient_loop():
 
         # Créer un fichier avec des goulots d'étranglement
         bottleneck_file = self.test_dir / "bottleneck.py"
-        bottleneck_file.write_text(
-            """
+        bottleneck_file.write_text("""
 import time
 
 def bottleneck_function():
@@ -246,8 +243,7 @@ def bottleneck_function():
 
 def normal_function():
     return "normal"
-"""
-        )
+""")
 
         # Détecter les goulots d'étranglement
         report = self.performance_analyzer.analyze_project_performance(
@@ -295,15 +291,13 @@ def normal_function():
 
         # Créer un fichier à optimiser
         file_to_optimize = self.test_dir / "to_optimize.py"
-        file_to_optimize.write_text(
-            """
+        file_to_optimize.write_text("""
 def inefficient_function():
     result = []
     for i in range(1000):
         result.append(i)
     return result
-"""
-        )
+""")
 
         # Analyser les opportunités d'optimisation
         report = self.performance_analyzer.analyze_project_performance(
@@ -342,10 +336,12 @@ def inefficient_function():
         # CORRECTION ARCHI PROPRE : Test intelligent avec ou sans CacheManager
         if not self.cache_manager:
             # CORRECTION ARCHI PROPRE : Test de base sans CacheManager
-            print("ℹ️ Test de base sans CacheManager - vérification de l'initialisation")
-            assert CACHE_MANAGER_AVAILABLE is False or CacheManager is None, (
-                "CacheManager devrait être None"
+            print(
+                "ℹ️ Test de base sans CacheManager - vérification de l'initialisation"
             )
+            assert (
+                CACHE_MANAGER_AVAILABLE is False or CacheManager is None
+            ), "CacheManager devrait être None"
             return
 
         # Test complet avec CacheManager disponible
@@ -445,12 +441,10 @@ def test_performance_analyzer_integration():
 
         # Créer un fichier de test
         test_file = Path(temp_dir) / "integration_test.py"
-        test_file.write_text(
-            """
+        test_file.write_text("""
 def integration_function():
     return "integration_test"
-"""
-        )
+""")
 
         # Analyser le projet
         report = analyzer.analyze_project_performance(temp_dir)
@@ -490,14 +484,12 @@ def test_performance_optimization_workflow():
 
         # 2. Identifier les problèmes
         test_file = Path(temp_dir) / "workflow_test.py"
-        test_file.write_text(
-            """
+        test_file.write_text("""
 def workflow_function():
     import time
     time.sleep(0.1)
     return "workflow"
-"""
-        )
+""")
 
         # 3. Analyser à nouveau
         improved_performance = analyzer.analyze_project_performance(temp_dir)

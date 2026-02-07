@@ -12,9 +12,9 @@ def test_clean_old_tests_and_caches(tmp_path):
     try:
         from athalia_core.automation.cleanup import clean_old_tests_and_caches
 
-        assert callable(clean_old_tests_and_caches), (
-            "Fonction clean_old_tests_and_caches doit être callable"
-        )
+        assert callable(
+            clean_old_tests_and_caches
+        ), "Fonction clean_old_tests_and_caches doit être callable"
         print("✅ Module cleanup importé avec succès")
     except ImportError as e:
         print(f"⚠️  Erreur d'import cleanup: {e}")
@@ -55,12 +55,12 @@ def test_cleanup_module_import():
         from athalia_core import cleanup
 
         assert cleanup is not None
-        assert hasattr(cleanup, "clean_old_tests_and_caches"), (
-            "Module cleanup doit avoir clean_old_tests_and_caches"
-        )
-        assert hasattr(cleanup, "clean_macos_files"), (
-            "Module cleanup doit avoir clean_macos_files"
-        )
+        assert hasattr(
+            cleanup, "clean_old_tests_and_caches"
+        ), "Module cleanup doit avoir clean_old_tests_and_caches"
+        assert hasattr(
+            cleanup, "clean_macos_files"
+        ), "Module cleanup doit avoir clean_macos_files"
         print("✅ Module cleanup importé avec succès")
     except ImportError as e:
         print(f"⚠️  Erreur d'import cleanup: {e}")

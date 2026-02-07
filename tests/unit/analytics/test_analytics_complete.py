@@ -40,8 +40,7 @@ class TestAnalyticsEngine:
         # Créer un fichier Python simple
         test_file = Path(self.temp_dir) / "test_file.py"
         with open(test_file, "w") as f:
-            f.write(
-                """
+            f.write("""
 def simple_function():
     return "Hello World"
 
@@ -56,8 +55,7 @@ def complex_function(x):
         else:
             return x * 2
     return x
-"""
-            )
+""")
 
         complexity = self.analytics.analyze_code_complexity()
         assert isinstance(complexity, dict)
@@ -79,8 +77,7 @@ def complex_function(x):
 
         test_file = test_dir / "test_example.py"
         with open(test_file, "w") as f:
-            f.write(
-                """
+            f.write("""
 import pytest
 
 pytest.skip(
@@ -93,8 +90,7 @@ def test_function():
 
 def test_another_function():
     assert 1 + 1 == 2
-"""
-            )
+""")
 
         coverage = self.analytics.analyze_test_coverage()
         assert isinstance(coverage, dict)
@@ -125,13 +121,11 @@ def test_another_function():
         # Créer un fichier de log de performance
         log_file = Path(self.temp_dir) / "performance.log"
         with open(log_file, "w") as f:
-            f.write(
-                """
+            f.write("""
 2024-01-01 10:00:00 - INFO - Test execution time: 1.5s
 2024-01-01 10:01:00 - INFO - Memory usage: 150MB
 2024-01-01 10:02:00 - INFO - CPU usage: 25%
-"""
-            )
+""")
 
         performance = self.analytics.analyze_performance_metrics()
         assert isinstance(performance, dict)
@@ -358,30 +352,26 @@ def test_another_function():
 
         main_file = src_dir / "main.py"
         with open(main_file, "w") as f:
-            f.write(
-                """
+            f.write("""
 def main():
     print("Hello World")
 
 if __name__ == "__main__":
     main()
-"""
-            )
+""")
 
         test_dir = Path(self.temp_dir) / "tests"
         test_dir.mkdir()
 
         test_file = test_dir / "test_main.py"
         with open(test_file, "w") as f:
-            f.write(
-                """
+            f.write("""
 import pytest
 from src.main import main
 
 def test_main():
     assert main() is None
-"""
-            )
+""")
 
         requirements_file = Path(self.temp_dir) / "requirements.txt"
         with open(requirements_file, "w") as f:

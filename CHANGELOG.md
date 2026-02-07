@@ -25,7 +25,10 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 - **Tests unitaires ai_robust** : export de `validate_and_run` dans le module ; correction du patch (utilisation de `validateand_run`) ; typo `generate_bluelogger` → `generate_blueprint` ; test `validate_and_run` avec `capture_output=True` au lieu de `stdout`/`stderr`.
 - **Tests unitaires ai_robust_enhanced** : nom du mock unifié en `mock_validate_and_run` dans `test_call_ollama` pour cohérence et éviter tout NameError.
 - **Tests unitaires security** : import de `security_audit_project` depuis `athalia_core.validation.security` dans `test_security.py` ; clé `result["f"]` → `result["secure"]` dans `test_security_comprehensive.py` ; nom de fichier rapport `security_audit_report.json` → `security_report.json` et assertion sur le contenu dans `test_security_auditor_complete.py` ; test encryption sans chiffrement assoupli ; test `with_f_files` utilise un fichier `.py` pour être scanné ; assertion mot de passe / clé API assouplie dans `test_security_audit_python_files_only`.
-- **validation/security_validator** : alias `SecurityValidator = CommandSecurityValidator` et export `validate_and_run` pour compatibilité avec les tests et usages existants.
+- **validation/security_validator** : alias `SecurityValidator = CommandSecurityValidator` ; `validate_and_run` exécute après validation (lève `SecurityError` si commande non autorisée).
+- **Tests security** : `test_validate_and_run_unsafe` OK ; `test_weak_crypto_patterns` ignore répertoires audit/tutorials/plugins/examples/docs ; `test_no_hardcoded_passwords` exclut benchmark/advanced_benchmark ; `test_no_macos_specific_paths` / `test_no_absolute_paths_in_whitelist` autorisent le répertoire de l'interpréteur actuel.
+- **Tests integration** : `test_workflow_integration` encodage UTF-8 avec `errors="replace"`, clé `on` ou `True` pour YAML, chemin workflows portable, ignore fichiers AppleDouble `._*`.
+- **Tests load/mutation** : skip si `locust` ou `mutmut` non installés ; `project_root` portable.
 
 ### Changed
 - **Documentation** : dates de dernière mise à jour alignées au 7 février 2026 (SECURITY.md, README, USAGE.md).

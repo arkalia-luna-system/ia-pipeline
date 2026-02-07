@@ -42,29 +42,25 @@ class TestReachyAuditorComplete:
         package_dir.mkdir()
 
         package_xml = package_dir / "package.xml"
-        package_xml.write_text(
-            """<?xml version="1.0"?>
+        package_xml.write_text("""<?xml version="1.0"?>
 <package format="3">
   <name>test_package</name>
   <version>0.1.0</version>
-</package>"""
-        )
+</package>""")
 
         # Docker
         docker_dir = Path(self.temp_dir) / "docker"
         docker_dir.mkdir()
 
         compose_file = docker_dir / "compose.yaml"
-        compose_file.write_text(
-            """version: '3.8'
+        compose_file.write_text("""version: '3.8'
 services:
   reachy_2023:
     environment:
       - ROS_DOMAIN_ID=42
     volumes:
       - ./data:/data
-"""
-        )
+""")
 
         dockerfile = docker_dir / "Dockerfile"
         dockerfile.write_text("FROM ubuntu:20.04\nRUN echo 'test'")
@@ -74,8 +70,7 @@ services:
         rust_dir.mkdir()
 
         cargo_toml = rust_dir / "Cargo.toml"
-        cargo_toml.write_text(
-            """[package]
+        cargo_toml.write_text("""[package]
 name = "test_project"
 version = "0.1.0"
 edition = "2021"
@@ -83,8 +78,7 @@ edition = "2021"
 [dependencies]
 ros2 = "0.1"
 dynamixel = "0.2"
-"""
-        )
+""")
 
         # README
         readme = Path(self.temp_dir) / "README.md"
@@ -124,13 +118,11 @@ dynamixel = "0.2"
         package_dir.mkdir()
 
         package_xml = package_dir / "package.xml"
-        package_xml.write_text(
-            """<?xml version="1.0"?>
+        package_xml.write_text("""<?xml version="1.0"?>
 <package format="3">
   <name>test_package</name>
   <version>0.1.0</version>
-</package>"""
-        )
+</package>""")
 
         # Créer docker-compose invalide
         docker_dir = Path(self.temp_dir) / "docker"
@@ -159,13 +151,11 @@ dynamixel = "0.2"
         package_dir.mkdir()
 
         package_xml = package_dir / "package.xml"
-        package_xml.write_text(
-            """<?xml version="1.0"?>
+        package_xml.write_text("""<?xml version="1.0"?>
 <package format="3">
   <name>test_package</name>
   <version>0.1.0</version>
-</package>"""
-        )
+</package>""")
 
         # Launch file
         launch_file = Path(self.temp_dir) / "test.launch.py"
@@ -208,16 +198,14 @@ dynamixel = "0.2"
         docker_dir.mkdir()
 
         compose_file = docker_dir / "compose.yaml"
-        compose_file.write_text(
-            """version: '3.8'
+        compose_file.write_text("""version: '3.8'
 services:
   reachy_2023:
     environment:
       - ROS_DOMAIN_ID=42
     volumes:
       - ./data:/data
-"""
-        )
+""")
 
         dockerfile = docker_dir / "Dockerfile"
         dockerfile.write_text("FROM ubuntu:20.04\nRUN echo 'test'")
@@ -258,13 +246,11 @@ services:
         docker_dir.mkdir()
 
         compose_file = docker_dir / "compose.yaml"
-        compose_file.write_text(
-            """version: '3.8'
+        compose_file.write_text("""version: '3.8'
 services:
   other_service:
     image: ubuntu:20.04
-"""
-        )
+""")
 
         valid, issues, recommendations = self.auditor._audit_docker()
 
@@ -278,8 +264,7 @@ services:
         rust_dir.mkdir()
 
         cargo_toml = rust_dir / "Cargo.toml"
-        cargo_toml.write_text(
-            """[package]
+        cargo_toml.write_text("""[package]
 name = "test_project"
 version = "0.1.0"
 edition = "2021"
@@ -287,8 +272,7 @@ edition = "2021"
 [dependencies]
 ros2 = "0.1"
 dynamixel = "0.2"
-"""
-        )
+""")
 
         valid, issues, recommendations = self.auditor._audit_rust()
 
@@ -453,13 +437,11 @@ class TestReachyAuditorIntegration:
         # Package ROS2
         package_dir = src_dir / "test_package"
         package_dir.mkdir()
-        (package_dir / "package.xml").write_text(
-            """<?xml version="1.0"?>
+        (package_dir / "package.xml").write_text("""<?xml version="1.0"?>
 <package format="3">
   <name>test_package</name>
   <version>0.1.0</version>
-</package>"""
-        )
+</package>""")
 
         # Launch file
         (Path(self.temp_dir) / "test.launch.py").write_text(
@@ -474,23 +456,20 @@ class TestReachyAuditorIntegration:
         # Docker
         docker_dir = Path(self.temp_dir) / "docker"
         docker_dir.mkdir()
-        (docker_dir / "compose.yaml").write_text(
-            """version: '3.8'
+        (docker_dir / "compose.yaml").write_text("""version: '3.8'
 services:
   reachy_2023:
     environment:
       - ROS_DOMAIN_ID=42
     volumes:
       - ./data:/data
-"""
-        )
+""")
         (docker_dir / "Dockerfile").write_text("FROM ubuntu:20.04\nRUN echo 'test'")
 
         # Rust
         rust_dir = Path(self.temp_dir) / "rust_project"
         rust_dir.mkdir()
-        (rust_dir / "Cargo.toml").write_text(
-            """[package]
+        (rust_dir / "Cargo.toml").write_text("""[package]
 name = "test_project"
 version = "0.1.0"
 edition = "2021"
@@ -498,8 +477,7 @@ edition = "2021"
 [dependencies]
 ros2 = "0.1"
 dynamixel = "0.2"
-"""
-        )
+""")
 
         # Documentation
         (Path(self.temp_dir) / "README.md").write_text("# Test Project\n\nDescription")
@@ -575,13 +553,11 @@ class TestReachyAuditorEdgeCases:
 
         package_dir = src_dir / "test_package"
         package_dir.mkdir()
-        (package_dir / "package.xml").write_text(
-            """<?xml version="1.0"?>
+        (package_dir / "package.xml").write_text("""<?xml version="1.0"?>
 <package format="3">
   <name>test_package</name>
   <version>0.1.0</version>
-</package>"""
-        )
+</package>""")
 
         # Tous les fichiers requis
         (Path(self.temp_dir) / "test.launch.py").write_text(
@@ -593,22 +569,19 @@ class TestReachyAuditorEdgeCases:
 
         docker_dir = Path(self.temp_dir) / "docker"
         docker_dir.mkdir()
-        (docker_dir / "compose.yaml").write_text(
-            """version: '3.8'
+        (docker_dir / "compose.yaml").write_text("""version: '3.8'
 services:
   reachy_2023:
     environment:
       - ROS_DOMAIN_ID=42
     volumes:
       - ./data:/data
-"""
-        )
+""")
         (docker_dir / "Dockerfile").write_text("FROM ubuntu:20.04\nRUN echo 'test'")
 
         rust_dir = Path(self.temp_dir) / "rust_project"
         rust_dir.mkdir()
-        (rust_dir / "Cargo.toml").write_text(
-            """[package]
+        (rust_dir / "Cargo.toml").write_text("""[package]
 name = "test_project"
 version = "0.1.0"
 edition = "2021"
@@ -616,8 +589,7 @@ edition = "2021"
 [dependencies]
 ros2 = "0.1"
 dynamixel = "0.2"
-"""
-        )
+""")
 
         (Path(self.temp_dir) / "README.md").write_text("# Test Project\n\nDescription")
         (Path(self.temp_dir) / ".gitignore").write_text("*.pyc\n__pycache__/")

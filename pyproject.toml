@@ -161,6 +161,8 @@ extend-exclude = '''
   | backups
   | logs
   | athalia_showcase
+  # fichiers AppleDouble macOS (._*)
+  | .*\/\._.*
 )/
 '''
 preview = true
@@ -172,7 +174,7 @@ exclude = [
     ".venv",
     "venv",
     "archive",
-    "backups", 
+    "backups",
     "logs",
     "athalia_showcase",
     "__pycache__",

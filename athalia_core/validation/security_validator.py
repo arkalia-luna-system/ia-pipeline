@@ -18,9 +18,7 @@ try:
     from ..utilities.secure_subprocess import secure_subprocess_run as validateand_run
 except ImportError:
     # Fallback sécurisé (signature compatible avec secure_subprocess_run)
-    def validateand_run(  # type: ignore[misc]
-        command: Any, **kwargs: Any
-    ) -> Any:
+    def validateand_run(command: Any, **kwargs: Any) -> Any:  # type: ignore[misc]
         safe_kwargs: dict[str, Any] = {"shell": False, "check": False}
         safe_kwargs.update(kwargs)
         return subprocess.run(command, **safe_kwargs)

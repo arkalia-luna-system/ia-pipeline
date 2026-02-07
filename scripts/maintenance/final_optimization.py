@@ -130,7 +130,9 @@ def validate_architecture():
     if len(test_files) > 1500:
         logger.info(f"✅ Couverture de tests excellente: {len(test_files)} fichiers")
     else:
-        logger.warning(f"⚠️ Couverture de tests à améliorer: {len(test_files)} fichiers")
+        logger.warning(
+            f"⚠️ Couverture de tests à améliorer: {len(test_files)} fichiers"
+        )
 
 
 def generate_final_report():

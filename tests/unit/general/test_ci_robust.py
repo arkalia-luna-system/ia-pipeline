@@ -82,9 +82,9 @@ class TestCIRobust:
                     pytest.fail(f"Erreur lecture {config_file}: {e}")
 
         # Au moins 3 fichiers de config doivent exister
-        assert found_configs >= 3, (
-            f"Seulement {found_configs} fichiers de config trouvés"
-        )
+        assert (
+            found_configs >= 3
+        ), f"Seulement {found_configs} fichiers de config trouvés"
 
     def test_test_suite_structure(self):
         """Vérifie la structure de la suite de tests"""
@@ -111,9 +111,9 @@ class TestCIRobust:
                     break
 
         # Au moins 2 catégories de tests doivent être trouvées
-        assert found_categories >= 2, (
-            f"Seulement {found_categories} catégories de tests trouvées"
-        )
+        assert (
+            found_categories >= 2
+        ), f"Seulement {found_categories} catégories de tests trouvées"
 
     def test_requirements_validation(self):
         """Valide les fichiers requirements"""
@@ -145,9 +145,9 @@ class TestCIRobust:
                                 line.replace("-", "").replace("_", "").isalnum(),
                                 line.replace(".", "").isalnum(),
                             ]
-                            assert any(valid_formats), (
-                                f"Format invalide ligne {i}: {line}"
-                            )
+                            assert any(
+                                valid_formats
+                            ), f"Format invalide ligne {i}: {line}"
 
                 except Exception as e:
                     pytest.fail(f"Erreur validation {req_file}: {e}")
@@ -176,9 +176,9 @@ class TestCIRobust:
                     found_elements = sum(
                         1 for elem in essential_elements if elem in content
                     )
-                    assert found_elements >= 2, (
-                        f"Seulement {found_elements} éléments essentiels trouvés dans {ci_file}"
-                    )
+                    assert (
+                        found_elements >= 2
+                    ), f"Seulement {found_elements} éléments essentiels trouvés dans {ci_file}"
 
                 except Exception as e:
                     pytest.fail(f"Erreur validation workflow CI {ci_file}: {e}")
@@ -196,21 +196,21 @@ class TestCIRobust:
             if Path(dir_name).exists():
                 dir_path = Path(dir_name)
                 try:
-                    assert os.access(dir_path, os.R_OK), (
-                        f"Pas de permission de lecture sur {dir_name}/"
-                    )
-                    assert os.access(dir_path, os.X_OK), (
-                        f"Pas de permission d'exécution sur {dir_name}/"
-                    )
+                    assert os.access(
+                        dir_path, os.R_OK
+                    ), f"Pas de permission de lecture sur {dir_name}/"
+                    assert os.access(
+                        dir_path, os.X_OK
+                    ), f"Pas de permission d'exécution sur {dir_name}/"
                     found_dirs += 1
                 except AssertionError:
                     # Skip si permissions insuffisantes
                     continue
 
         # Au moins 2 répertoires doivent avoir les bonnes permissions
-        assert found_dirs >= 2, (
-            f"Seulement {found_dirs} répertoires avec bonnes permissions"
-        )
+        assert (
+            found_dirs >= 2
+        ), f"Seulement {found_dirs} répertoires avec bonnes permissions"
 
     def test_encoding_validation(self):
         """Valide l'encodage UTF-8 complet"""

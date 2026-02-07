@@ -329,8 +329,7 @@ ros2 launch reachy_bringup reachy_bringup.launch.py
             dockerignore = self.project_path / ".dockerignore"
             if not dockerignore.exists():
                 with open(dockerignore, "w") as f:
-                    f.write(
-                        """# Fichiers à ignorer pour Docker
+                    f.write("""# Fichiers à ignorer pour Docker
 .git
 .gitignore
 README.md
@@ -340,8 +339,7 @@ __pycache__
 .coverage
 htmlcov/
 .pytest_cache/
-"""
-                    )
+""")
                 self.logger.info(" .dockerignore créé")
 
             return True
@@ -383,8 +381,8 @@ htmlcov/
 # 🐳 Rapport Docker Robotique
 
 ##  État de la Configuration
-- **Compose Valide**: {"" if result.compose_valid else ""}
-- **Prêt à Lancer**: {"" if result.ready_to_run else ""}
+- **Compose Valide**: {"✅" if result.compose_valid else "❌"}
+- **Prêt à Lancer**: {"✅" if result.ready_to_run else "❌"}
 - **Services**: {len(result.services)}
 
 ##  Services Détectés

@@ -28,24 +28,20 @@ class TestIntelligentAuditorComplete:
         (self.project_path / "docs").mkdir()
 
         # Créer fichiers de test
-        (self.project_path / "src" / "main.py").write_text(
-            """
+        (self.project_path / "src" / "main.py").write_text("""
 def main():
     print("Hello World")
     return 0
 
 if __name__ == "__main__":
     main()
-"""
-        )
+""")
 
-        (self.project_path / "requirements.txt").write_text(
-            """
+        (self.project_path / "requirements.txt").write_text("""
 numpy==1.21.0
 pandas==1.3.0
 requests==2.28.0
-"""
-        )
+""")
 
         (self.project_path / "README.md").write_text("# Test Project")
 
@@ -165,15 +161,13 @@ requests==2.28.0
     def test_audit_code_complexity_simple_file(self) -> None:
         """Test audit complexité code fichier simple."""
         simple_file = self.project_path / "simple.py"
-        simple_file.write_text(
-            """
+        simple_file.write_text("""
 def add(a, b):
     return a + b
 
 def multiply(a, b):
     return a * b
-"""
-        )
+""")
 
         # Utiliser la méthode publique qui existe
         audit_results = self.auditor.audit_project(str(self.project_path))
@@ -188,8 +182,7 @@ def multiply(a, b):
     def test_audit_code_complexity_complex_file(self) -> None:
         """Test audit complexité code fichier complexe."""
         complex_file = self.project_path / "complex.py"
-        complex_file.write_text(
-            """
+        complex_file.write_text("""
 def complex_function(x, y, z):
     if x > 0:
         if y > 0:
@@ -208,8 +201,7 @@ def complex_function(x, y, z):
             return x - y
     else:
         return 0
-"""
-        )
+""")
 
         # Utiliser la méthode publique qui existe
         audit_results = self.auditor.audit_project(str(self.project_path))
@@ -225,8 +217,7 @@ def complex_function(x, y, z):
         """Test audit couverture des tests."""
         # Créer fichier de test
         test_file = self.project_path / "tests" / "test_main.py"
-        test_file.write_text(
-            """
+        test_file.write_text("""
 import unittest
 from src.main import main
 
@@ -234,8 +225,7 @@ class TestMain(unittest.TestCase):
     def test_main(self):
         result = main()
         self.assertEqual(result, 0)
-"""
-        )
+""")
 
         # Utiliser la méthode publique qui existe
         audit_results = self.auditor.audit_project(str(self.project_path))
@@ -266,8 +256,7 @@ class TestMain(unittest.TestCase):
         """Test détection code smells."""
         # Créer fichier avec code smells
         smelly_file = self.project_path / "smelly.py"
-        smelly_file.write_text(
-            """
+        smelly_file.write_text("""
 # Long function with many parameters
 def bad_function(a, b, c, d, e, f, g, h, i, j):
     # Duplicate code
@@ -290,8 +279,7 @@ def bad_function(a, b, c, d, e, f, g, h, i, j):
         return "five"
     else:
         return "other"
-"""
-        )
+""")
 
         # Utiliser la méthode publique qui existe
         audit_results = self.auditor.audit_project(str(self.project_path))
@@ -332,8 +320,7 @@ def bad_function(a, b, c, d, e, f, g, h, i, j):
         """Test audit conventions de nommage."""
         # Créer fichier avec mauvaises conventions
         bad_naming_file = self.project_path / "BadNaming.py"
-        bad_naming_file.write_text(
-            """
+        bad_naming_file.write_text("""
 class badClass:
     def BadMethod(self):
         BadVariable = 1
@@ -341,8 +328,7 @@ class badClass:
 
 def bad_function():
     return True
-"""
-        )
+""")
 
         # Utiliser la méthode publique qui existe
         audit_results = self.auditor.audit_project(str(self.project_path))
@@ -358,8 +344,7 @@ def bad_function():
         """Test analyse complexité cyclomatique."""
         # Créer fonction avec haute complexité cyclomatique
         complex_file = self.project_path / "cyclomatic.py"
-        complex_file.write_text(
-            """
+        complex_file.write_text("""
 def high_complexity(x):
     if x > 10:
         if x > 20:
@@ -377,8 +362,7 @@ def high_complexity(x):
             return "low-medium"
         else:
             return "low"
-"""
-        )
+""")
 
         # Utiliser la méthode publique qui existe
         audit_results = self.auditor.audit_project(str(self.project_path))
@@ -478,16 +462,14 @@ def high_complexity(x):
         # Créer projet plus large pour test performance
         for i in range(10):
             py_file = self.project_path / f"module_{i}.py"
-            py_file.write_text(
-                f"""
+            py_file.write_text(f"""
 def function_{i}():
     return {i}
 
 class Class{i}:
     def method(self):
         return {i}
-"""
-            )
+""")
 
         start_time = time.time()
         self.auditor.audit_project(str(self.project_path))
@@ -591,8 +573,7 @@ class TestIntelligentAuditorIntegration:
 
         # Code principal
         (self.project_path / "src" / "__init__.py").write_text("")
-        (self.project_path / "src" / "app.py").write_text(
-            """
+        (self.project_path / "src" / "app.py").write_text("""
 #!/usr/bin/env python3
 '''Application principale.'''
 
@@ -602,13 +583,11 @@ class Application:
 
     def run(self):
         return "Running..."
-"""
-        )
+""")
 
         # Tests
         (self.project_path / "tests" / "__init__.py").write_text("")
-        (self.project_path / "tests" / "test_app.py").write_text(
-            """
+        (self.project_path / "tests" / "test_app.py").write_text("""
 import unittest
 from src.app import Application
 
@@ -616,12 +595,10 @@ class TestApplication(unittest.TestCase):
     def test_init(self):
         app = Application()
         self.assertEqual(app.name, "Test App")
-"""
-        )
+""")
 
         # Configuration
-        (self.project_path / "setup.py").write_text(
-            """
+        (self.project_path / "setup.py").write_text("""
 from setuptools import setup, find_packages
 
 setup(
@@ -629,8 +606,7 @@ setup(
     version="1.0.0",
     packages=find_packages(),
 )
-"""
-        )
+""")
 
         # Documentation
         (self.project_path / "README.md").write_text("# Test Application")
@@ -678,8 +654,7 @@ class TestIntelligentAuditorPerformance:
             module_dir.mkdir()
 
             for j in range(10):
-                (module_dir / f"file_{j}.py").write_text(
-                    f"""
+                (module_dir / f"file_{j}.py").write_text(f"""
 # Module {i}, File {j}
 def function_{j}():
     '''Function {j} in module {i}.'''
@@ -689,8 +664,7 @@ class Class{j}:
     '''Class {j} in module {i}.'''
     def method(self):
         return function_{j}()
-"""
-                )
+""")
 
         # Test performance audit
         auditor = IntelligentAuditor(str(large_project))

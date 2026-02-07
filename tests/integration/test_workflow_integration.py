@@ -33,8 +33,10 @@ class TestWorkflowIntegration:
             assert workflow_path.exists(), f"Workflow {workflow} manquant"
 
     def test_workflow_yaml_validity(self, workflows_dir):
-        """Test de validité YAML des workflows"""
+        """Test de validité YAML des workflows (ignore fichiers AppleDouble ._*)."""
         for workflow_file in workflows_dir.glob("*.yml"):
+            if workflow_file.name.startswith("._"):
+                continue
             with open(workflow_file, encoding="utf-8", errors="replace") as f:
                 try:
                     yaml.safe_load(f)
@@ -62,6 +64,8 @@ class TestWorkflowIntegration:
     def test_workflow_permissions_consistency(self, workflows_dir):
         """Test de cohérence des permissions entre workflows"""
         for workflow_file in workflows_dir.glob("*.yml"):
+            if workflow_file.name.startswith("._"):
+                continue
             with open(workflow_file, encoding="utf-8", errors="replace") as f:
                 workflow = yaml.safe_load(f)
 
@@ -75,6 +79,8 @@ class TestWorkflowIntegration:
     def test_workflow_uses_actions(self, workflows_dir):
         """Test que les workflows utilisent des actions valides"""
         for workflow_file in workflows_dir.glob("*.yml"):
+            if workflow_file.name.startswith("._"):
+                continue
             with open(workflow_file, encoding="utf-8", errors="replace") as f:
                 content = f.read()
 
@@ -86,9 +92,9 @@ class TestWorkflowIntegration:
             ]
 
             for deprecated in deprecated_actions:
-                assert deprecated not in content, (
-                    f"Action obsolète {deprecated} dans {workflow_file}"
-                )
+                assert (
+                    deprecated not in content
+                ), f"Action obsolète {deprecated} dans {workflow_file}"
 
     @pytest.mark.integration
     def test_workflow_dependencies(self, workflows_dir):
@@ -97,13 +103,15 @@ class TestWorkflowIntegration:
         workflow_files = list(workflows_dir.glob("*.yml"))
         assert len(workflow_files) >= 4, "Pas assez de workflows pour les tests"
 
-        # Vérifier que chaque workflow a un nom unique
+        # Vérifier que chaque workflow a un nom unique (ignorer ._*)
         names = []
         for workflow_file in workflow_files:
+            if workflow_file.name.startswith("._"):
+                continue
             with open(workflow_file, encoding="utf-8", errors="replace") as f:
                 workflow = yaml.safe_load(f)
                 if "name" in workflow:
-                    assert workflow["name"] not in names, (
-                        f"Nom de workflow dupliqué: {workflow['name']}"
-                    )
+                    assert (
+                        workflow["name"] not in names
+                    ), f"Nom de workflow dupliqué: {workflow['name']}"
                     names.append(workflow["name"])

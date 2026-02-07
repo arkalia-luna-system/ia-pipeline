@@ -101,9 +101,10 @@ class TestHardcodedPaths:
         assert True, "Analyse des chemins absolus effectuée avec succès"
 
         # Assertion pour vérifier qu'il n'y a pas de chemins problématiques
-        assert len(problematic_paths) == 0, (
-            "Chemins absolus hardcodés trouvés:\n"
-            + "\n".join([f"{file}: {paths}" for file, paths in problematic_paths])
+        assert (
+            len(problematic_paths) == 0
+        ), "Chemins absolus hardcodés trouvés:\n" + "\n".join(
+            [f"{file}: {paths}" for file, paths in problematic_paths]
         )
 
     def test_no_absolute_paths(self):
@@ -223,9 +224,10 @@ class TestHardcodedPaths:
                 )
 
         # Assertion finale
-        assert len(problematic_paths) == 0, (
-            "Chemins absolus hardcodés trouvés:\n"
-            + "\n".join([f"{file}: {paths}" for file, paths in problematic_paths])
+        assert (
+            len(problematic_paths) == 0
+        ), "Chemins absolus hardcodés trouvés:\n" + "\n".join(
+            [f"{file}: {paths}" for file, paths in problematic_paths]
         )
 
     def test_no_desktop_paths(self):
@@ -373,9 +375,10 @@ class TestHardcodedPaths:
                 print(f"  {file}: {paths}")
 
             # Assertion finale seulement sur les vrais chemins
-            assert len(real_desktop_paths) == 0, (
-                "Vrais chemins Desktop hardcodés trouvés:\n"
-                + "\n".join([f"{file}: {paths}" for file, paths in real_desktop_paths])
+            assert (
+                len(real_desktop_paths) == 0
+            ), "Vrais chemins Desktop hardcodés trouvés:\n" + "\n".join(
+                [f"{file}: {paths}" for file, paths in real_desktop_paths]
             )
         else:
             print("✅ Aucun pattern Desktop détecté - Test réussi")

@@ -255,10 +255,10 @@ class ReachyAuditor:
 ##  Score Global: {result.score:.1f}/100
 
 ###  Validations
-- ROS2 Workspace: {"" if result.ros2_valid else ""}
-- Docker Setup: {"" if result.docker_valid else ""}
-- Rust/Cargo: {"" if result.rust_valid else ""}
-- Structure Projet: {"" if result.structure_valid else ""}
+- ROS2 Workspace: {"✅" if result.ros2_valid else "❌"}
+- Docker Setup: {"✅" if result.docker_valid else "❌"}
+- Rust/Cargo: {"✅" if result.rust_valid else "❌"}
+- Structure Projet: {"✅" if result.structure_valid else "❌"}
 
 ### 🚨 Problèmes Détectés
 """

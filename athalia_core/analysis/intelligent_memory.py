@@ -89,8 +89,7 @@ class IntelligentMemory:
             cursor = conn.cursor()
 
             # Table des événements d'apprentissage
-            cursor.execute(
-                """
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS learning_events (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     event_type TEXT NOT NULL,
@@ -104,12 +103,10 @@ class IntelligentMemory:
                     context TEXT,
                     pattern_hash TEXT
                 )
-            """
-            )
+            """)
 
             # Table des patterns appris
-            cursor.execute(
-                """
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS learned_patterns (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     pattern_hash TEXT UNIQUE NOT NULL,
@@ -120,12 +117,10 @@ class IntelligentMemory:
                     success_rate REAL DEFAULT 1.0,
                     correction_history TEXT
                 )
-            """
-            )
+            """)
 
             # Table des prédictions
-            cursor.execute(
-                """
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS predictions (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     prediction_type TEXT NOT NULL,
@@ -138,12 +133,10 @@ class IntelligentMemory:
                     validated BOOLEAN DEFAULT 0,
                     validation_result TEXT
                 )
-            """
-            )
+            """)
 
             # Table des corrections suggérées
-            cursor.execute(
-                """
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS correction_suggestions (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     original_code TEXT NOT NULL,
@@ -156,12 +149,10 @@ class IntelligentMemory:
                     applied_at TEXT,
                     success BOOLEAN
                 )
-            """
-            )
+            """)
 
             # Table des métriques d'apprentissage
-            cursor.execute(
-                """
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS learning_metrics (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     metric_name TEXT NOT NULL,
@@ -169,8 +160,7 @@ class IntelligentMemory:
                     timestamp TEXT NOT NULL,
                     context TEXT
                 )
-            """
-            )
+            """)
 
             conn.commit()
 
@@ -314,16 +304,14 @@ class IntelligentMemory:
         # Chercher des corrections similaires dans l'historique
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
-            cursor.execute(
-                """
+            cursor.execute("""
                 SELECT original_code, suggested_code, reason, confidence,
                        based_on_corrections
                 FROM correction_suggestions
                 WHERE applied = 1 AND success = 1
                 ORDER BY confidence DESC
                 LIMIT 5
-            """
-            )
+            """)
 
             rows = cursor.fetchall()
 

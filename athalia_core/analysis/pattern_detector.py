@@ -49,8 +49,7 @@ class PatternDetector:
             cursor = conn.cursor()
 
             # Table des patterns détectés
-            cursor.execute(
-                """
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS patterns (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     name TEXT NOT NULL,
@@ -62,12 +61,10 @@ class PatternDetector:
                     suggestion TEXT,
                     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
                 )
-                """
-            )
+                """)
 
             # Table des duplications
-            cursor.execute(
-                """
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS duplications (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     file1 TEXT NOT NULL,
@@ -77,12 +74,10 @@ class PatternDetector:
                     lines2 TEXT,
                     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
                 )
-                """
-            )
+                """)
 
             # Table des anti-patterns
-            cursor.execute(
-                """
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS antipatterns (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     name TEXT NOT NULL,
@@ -93,8 +88,7 @@ class PatternDetector:
                     fix_suggestion TEXT,
                     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
                 )
-                """
-            )
+                """)
 
             conn.commit()
             conn.close()

@@ -32,8 +32,7 @@ class TestAutoTesterComplete:
         (self.project_path / "lib").mkdir()
 
         # Module simple avec classe et fonctions
-        (self.project_path / "src" / "calculator.py").write_text(
-            '''
+        (self.project_path / "src" / "calculator.py").write_text('''
 """Module calculatrice simple."""
 
 class Calculator:
@@ -74,8 +73,7 @@ def is_prime(n):
         if n % i == 0:
             return False
     return True
-'''
-        )
+''')
 
         # Module avec fonctions complexes
         data_processor_content = '''"""Module traitement données."""
@@ -135,8 +133,7 @@ def parse_config(config_str):
         )
 
         # Module avec erreurs intentionnelles pour tester la détection
-        (self.project_path / "src" / "buggy_module.py").write_text(
-            '''
+        (self.project_path / "src" / "buggy_module.py").write_text('''
 """Module avec bugs intentionnels."""
 
 def divide_by_zero():
@@ -154,17 +151,14 @@ class BuggyClass:
         """Méthode avec erreur de syntaxe potentielle."""
         # Cette méthode pourrait causer des problèmes
         return self.non_existent_attribute
-'''
-        )
+''')
 
         # Fichier requirements.txt
-        (self.project_path / "requirements.txt").write_text(
-            """
+        (self.project_path / "requirements.txt").write_text("""
 pytest>=7.0.0
 coverage>=6.0.0
 black>=22.0.0
-"""
-        )
+""")
 
         # Initialiser AutoTester
         self.auto_tester = AutoTester(str(self.project_path))
@@ -372,8 +366,7 @@ black>=22.0.0
         """Test exécution des tests générés."""
         # Créer un test simple
         test_file = self.project_path / "tests" / "test_simple.py"
-        test_file.write_text(
-            """
+        test_file.write_text("""
 import pytest
 
 def test_simple_assertion():
@@ -381,8 +374,7 @@ def test_simple_assertion():
 
 def test_another_assertion():
     assert "hello".upper() == "HELLO"
-"""
-        )
+""")
 
         # Utiliser _run_tests sans argument car c'est une méthode sans paramètre
         # Cette méthode exécute réellement les tests, donc on vérifie qu'elle fonctionne
@@ -656,8 +648,7 @@ class TestCalculator:
         large_src_dir.mkdir()
 
         for i in range(20):
-            (large_src_dir / f"module_{i}.py").write_text(
-                f'''
+            (large_src_dir / f"module_{i}.py").write_text(f'''
 """Module {i} pour test performance."""
 
 class Class{i}:
@@ -670,8 +661,7 @@ class Class{i}:
 def function_{i}():
     """Fonction {i}."""
     return {i}
-'''
-            )
+''')
 
         # Mesurer performance analyse
         start_time = time.time()
@@ -789,8 +779,7 @@ class TestAutoTesterPerformance:
             package_dir.mkdir()
 
             for j in range(5):
-                (package_dir / f"module_{j}.py").write_text(
-                    f'''
+                (package_dir / f"module_{j}.py").write_text(f'''
 """Module {i}_{j}."""
 
 class Component{i}_{j}:
@@ -814,8 +803,7 @@ def utility_function_{i}_{j}(x, y={j}):
 def helper_{i}_{j}():
     """Helper {i}_{j}."""
     return f"helper_{i}_{j}"
-'''
-                )
+''')
 
         # Test performance AutoTester
         auto_tester = AutoTester(str(massive_project))
