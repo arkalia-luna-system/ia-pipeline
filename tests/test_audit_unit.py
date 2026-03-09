@@ -13,7 +13,9 @@ sys.path.insert(0, str(project_root))
 try:
     import audit
 except ImportError:
-    pytest.skip(f"Module audit non importable")
+    # Si le module n'est pas disponible dans cet environnement (par exemple, exécution
+    # hors du contexte d'installation complète), on ignore ce fichier de test proprement.
+    pytest.skip("Module audit non importable", allow_module_level=True)
 
 
 def test_audit_project_intelligent():
