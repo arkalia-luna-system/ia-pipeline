@@ -565,7 +565,11 @@ Type: {project_type}
             return None
 
     def _call_groq(self, prompt: str, timeout: int = 30) -> str | None:
-        """Appelle un modèle hébergé chez Groq (OpenAI-compatible API)."""
+        """Appelle un modèle hébergé chez Groq (OpenAI-compatible API).
+
+        Modèle par défaut:
+        - llama-3.3-70b-versatile (modèle recommandé en 2026 pour le chat général)
+        """
         api_key = os.getenv("GROQ_API_KEY")
         if not api_key:
             logger.warning("GROQ_API_KEY non défini, impossible d'appeler Groq")
@@ -583,7 +587,7 @@ Type: {project_type}
                     "Content-Type": "application/json",
                 },
                 json={
-                    "model": "llama-3.1-70b-versatile",
+                    "model": "llama-3.3-70b-versatile",
                     "messages": [{"role": "user", "content": prompt}],
                     "temperature": 0.7,
                 },
