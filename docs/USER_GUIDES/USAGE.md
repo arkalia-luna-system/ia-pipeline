@@ -112,6 +112,24 @@ export GEMINI_API_KEY="votre_cle_gemini"
    - Les tâches **complexes** (revue de gros fichiers, sécurité) seront envoyées vers **Gemini Flash**.  
    - En cas d’erreur réseau ou d’indisponibilité, Athalia retombe sur **Ollama local** puis sur le modèle **MOCK** – aucune régression sur l’existant.
 
+### **Activer l’Audit IA avancé (optionnel)**
+
+Par défaut, l’audit utilise un mode **classique** (score + problèmes + suggestions).  
+Vous pouvez activer un **audit IA avancé** (Groq/Gemini) qui ajoute un bloc d’analyse détaillée :
+
+```bash
+export ATHALIA_ENABLE_AI_AUDIT="1"
+
+# Puis lancer un audit comme d’habitude
+python bin/core/athalia_unified.py /chemin/vers/projet --action audit
+```
+
+Quand ce mode est actif et que les modèles IA sont disponibles, le résultat d’audit contient un champ supplémentaire :
+
+- `ai_analysis.model` : modèle IA utilisé (ex: `groq_llama3`)
+- `ai_analysis.context` : type de contexte (ex: `code_review`)
+- `ai_analysis.response` : texte d’analyse IA du projet
+
 ---
 
 ## 🔧 **Fonctionnalités Principales**

@@ -426,6 +426,34 @@ def high_complexity(x):
         assert isinstance(info, dict)
         assert "name" in info
 
+    def test_audit_with_ai_optional_integration(self, monkeypatch) -> None:
+        """Test basique d'intégration audit IA avancé (via audit_project_intelligent)."""
+        # Activer le flag IA et mocker RobustAI pour éviter les appels réseau
+        from athalia_core.audit import audit as audit_module
+
+        class DummyAI:
+            def generate_response(self, context, distillation: bool = False, **kwargs):
+                return {
+                    "success": True,
+                    "response": "Analyse IA de test",
+                    "model": "mock_model",
+                    "context": context.value,
+                }
+
+        monkeypatch.setenv("ATHALIA_ENABLE_AI_AUDIT", "1")
+        monkeypatch.setattr(
+            "athalia_core.audit.audit.RobustAI",
+            DummyAI,
+        )
+
+        from athalia_core.audit.audit import audit_project_intelligent
+
+        result = audit_project_intelligent(str(self.project_path))
+
+        assert isinstance(result, dict)
+        assert "ai_analysis" in result
+        assert result["ai_analysis"]["response"] == "Analyse IA de test"
+
     def test_compare_audits(self) -> None:
         """Test comparaison d'audits."""
         # Exécuter premier audit
