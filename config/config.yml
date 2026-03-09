@@ -34,6 +34,21 @@ ai:
   max_retries: 3
   temperature: 0.7
   max_tokens: 2048
+  # Routage dynamique (MoE) entre modèles locaux et cloud
+  # - Groq: tâches simples / temps réel
+  # - Gemini Flash: tâches complexes / gros contexte
+  routing:
+    simple_provider: "groq"
+    complex_provider: "gemini"
+  providers:
+    groq:
+      enabled: true
+      model: "llama-3.1-70b-versatile"
+      env_api_key: "GROQ_API_KEY"
+    gemini:
+      enabled: true
+      model: "gemini-1.5-flash-latest"
+      env_api_key: "GEMINI_API_KEY"
 
 # Configuration de la génération
 generation:

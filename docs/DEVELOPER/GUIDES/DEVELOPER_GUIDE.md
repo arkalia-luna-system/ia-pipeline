@@ -36,22 +36,28 @@ athalia_core/
 
 #### 1. IA Robuste (`ai_robust.py`)
 ```python
-from athalia_core.ai_robust import RobustAI
+from athalia_core.ai.ai_robust_enhanced import RobustAI, PromptContext
 
 # Créer l'instance IA robuste
 ai = RobustAI()
 
-# Détecter les modèles disponibles
-models = ai.detect_available_models()
-print(f"Modèles disponibles: {models}")
+# Exemple : génération de blueprint (tâche simple → Groq priorisé si dispo)
+result = ai.generate_response(
+    context=PromptContext.BLUEPRINT,
+    description="Application FastAPI pour gérer des utilisateurs",
+    project_name="user-api",
+    project_type="api",
+)
+print(result["response"])
 
-# Construire la chaîne de fallback
-fallback_chain = ai.build_fallback_chain()
-print(f"Chaîne de fallback: {fallback_chain}")
-
-# Appeler avec fallback automatique
-response = ai.call_with_fallback("Votre prompt")
-print(response)
+# Exemple : revue de code (tâche complexe → Gemini Flash priorisé si dispo)
+code = open("mon_module.py").read()
+review = ai.generate_response(
+    context=PromptContext.CODE_REVIEW,
+    code=code,
+    project_type="api",
+)
+print(review["response"])
 ```
 
 #### 2. Orchestrateur Principal (`unified_orchestrator.py`)

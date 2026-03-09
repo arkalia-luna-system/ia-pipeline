@@ -4,12 +4,19 @@ Module IA robuste avancé pour Athalia
 Gestion intelligente des modèles IA avec fallback automatique et validation
 """
 
+import importlib
 import logging
 import os
 import subprocess  # Pour les constantes PIPE, TimeoutExpired
 from enum import Enum
 from pathlib import Path
 from typing import Any, Optional
+
+requests: Any | None
+try:
+    requests = importlib.import_module("requests")
+except ImportError:
+    requests = None
 
 try:
     from ..utilities.secure_subprocess import secure_subprocess_run as validateand_run
@@ -34,6 +41,9 @@ class AIModel(Enum):
     OLLAMA_CODEGEN = "ollama_codegen"
     OLLAMA_QWEN = "ollama_qwen"
     OLLAMA_LLAVA = "ollama_llava"
+    # Modèles distants (MoE / routing)
+    GROQ_LLAMA3 = "groq_llama3"
+    GEMINI_FLASH = "gemini_flash"
     MOCK = "mock"
 
 
@@ -360,6 +370,12 @@ class RobustAI:
         except Exception as e:
             logger.warning(f"Impossible de détecter les modèles Ollama: {e}")
 
+        # Vérifier la disponibilité de Groq / Gemini via variables d'environnement
+        if os.getenv("GROQ_API_KEY"):
+            available_models.append(AIModel.GROQ_LLAMA3)
+        if os.getenv("GEMINI_API_KEY"):
+            available_models.append(AIModel.GEMINI_FLASH)
+
         return available_models
 
     def _build_fallback_chain(self) -> list[AIModel]:
@@ -424,8 +440,11 @@ Type: {project_type}
         try:
             prompt = self.get_dynamic_prompt(context.value, **kwargs)
 
-            # Essayer chaque modèle dans la chaîne de fallback
-            for model in self.fallback_chain:
+            # Sélection dynamique des modèles en fonction du contexte (Prompt Routing / MoE)
+            models_to_try = self._select_models_for_context(context, **kwargs)
+
+            # Essayer chaque modèle dans la chaîne de fallback ordonnée
+            for model in models_to_try:
                 try:
                     response = self._call_model(model, prompt)
                     if response:
@@ -454,10 +473,64 @@ Type: {project_type}
                 "fallback_response": "Erreur de génération",
             }
 
+    def _select_models_for_context(
+        self, context: PromptContext, **kwargs: Any
+    ) -> list[AIModel]:
+        """Sélectionne dynamiquement les modèles à essayer pour un contexte donné.
+
+        Objectif:
+        - Tâches simples -> prioriser Groq (latence très faible).
+        - Tâches complexes / code volumineux -> prioriser Gemini Flash (contexte large).
+        - Toujours conserver la chaîne de fallback locale (Ollama + MOCK) en secours.
+        """
+        ordered_models: list[AIModel] = []
+
+        has_groq = AIModel.GROQ_LLAMA3 in self.available_models
+        has_gemini = AIModel.GEMINI_FLASH in self.available_models
+
+        # Heuristique de complexité: taille du code / description
+        code_snippet = kwargs.get("code") or ""
+        description = kwargs.get("description") or ""
+
+        code_len = len(code_snippet) if isinstance(code_snippet, str) else 0
+        desc_len = len(description) if isinstance(description, str) else 0
+
+        is_code_heavy = code_len > 2000
+        is_long_description = desc_len > 600
+
+        # Routage par contexte + complexité
+        if context in {PromptContext.CODE_REVIEW, PromptContext.SECURITY} or is_code_heavy:
+            # Tâches complexes: privilégier Gemini
+            if has_gemini:
+                ordered_models.append(AIModel.GEMINI_FLASH)
+            if has_groq:
+                ordered_models.append(AIModel.GROQ_LLAMA3)
+        else:
+            # Tâches plus simples / interactives: privilégier Groq
+            if has_groq:
+                ordered_models.append(AIModel.GROQ_LLAMA3)
+            if has_gemini and (is_long_description or context == PromptContext.DOCUMENTATION):
+                ordered_models.append(AIModel.GEMINI_FLASH)
+
+        # Ajouter ensuite la chaîne de fallback locale sans doublons
+        for model in self.fallback_chain:
+            if model not in ordered_models:
+                ordered_models.append(model)
+
+        # Sécurité: si rien n'a été sélectionné, utiliser uniquement la fallback_chain
+        if not ordered_models:
+            return list(self.fallback_chain)
+
+        return ordered_models
+
     def _call_model(self, model: AIModel, prompt: str) -> str | None:
         """Appelle un modèle IA spécifique."""
         if model == AIModel.MOCK:
             return self._mock_response(prompt)
+        elif model == AIModel.GROQ_LLAMA3:
+            return self._call_groq(prompt)
+        elif model == AIModel.GEMINI_FLASH:
+            return self._call_gemini(prompt)
         elif model.value.startswith("ollama_"):
             model_name = model.value.replace("ollama_", "")
             return self._call_ollama(model_name, prompt)
@@ -489,6 +562,93 @@ Type: {project_type}
             return None
         except Exception as e:
             logger.error(f"Erreur lors de l'appel à Ollama {model_name}: {e}")
+            return None
+
+    def _call_groq(self, prompt: str, timeout: int = 30) -> str | None:
+        """Appelle un modèle hébergé chez Groq (OpenAI-compatible API)."""
+        api_key = os.getenv("GROQ_API_KEY")
+        if not api_key:
+            logger.warning("GROQ_API_KEY non défini, impossible d'appeler Groq")
+            return None
+
+        if requests is None:
+            logger.warning("Le module 'requests' n'est pas disponible, Groq est ignoré")
+            return None
+
+        try:
+            response = requests.post(
+                "https://api.groq.com/openai/v1/chat/completions",
+                headers={
+                    "Authorization": f"Bearer {api_key}",
+                    "Content-Type": "application/json",
+                },
+                json={
+                    "model": "llama-3.1-70b-versatile",
+                    "messages": [{"role": "user", "content": prompt}],
+                    "temperature": 0.7,
+                },
+                timeout=timeout,
+            )
+            if response.status_code >= 200 and response.status_code < 300:
+                data = response.json()
+                choices = data.get("choices") or []
+                if choices:
+                    message = choices[0].get("message") or {}
+                    content = message.get("content")
+                    if isinstance(content, str):
+                        return content.strip()
+            logger.error(f"Erreur Groq {response.status_code}: {response.text}")
+            return None
+        except Exception as e:
+            logger.error(f"Erreur lors de l'appel Groq: {e}")
+            return None
+
+    def _call_gemini(self, prompt: str, timeout: int = 30) -> str | None:
+        """Appelle un modèle Gemini Flash (API Google Generative Language)."""
+        api_key = os.getenv("GEMINI_API_KEY")
+        if not api_key:
+            logger.warning("GEMINI_API_KEY non défini, impossible d'appeler Gemini")
+            return None
+
+        if requests is None:
+            logger.warning("Le module 'requests' n'est pas disponible, Gemini est ignoré")
+            return None
+
+        url = (
+            "https://generativelanguage.googleapis.com/v1beta/"
+            "models/gemini-1.5-flash-latest:generateContent"
+            f"?key={api_key}"
+        )
+
+        payload = {
+            "contents": [
+                {
+                    "parts": [
+                        {
+                            "text": prompt,
+                        }
+                    ]
+                }
+            ]
+        }
+
+        try:
+            response = requests.post(url, json=payload, timeout=timeout)
+            if response.status_code >= 200 and response.status_code < 300:
+                data = response.json()
+                candidates = data.get("candidates") or []
+                if not candidates:
+                    return None
+                content = candidates[0].get("content") or {}
+                parts = content.get("parts") or []
+                texts = [p.get("text", "") for p in parts if isinstance(p.get("text"), str)]
+                joined = "\n".join(texts).strip()
+                return joined or None
+
+            logger.error(f"Erreur Gemini {response.status_code}: {response.text}")
+            return None
+        except Exception as e:
+            logger.error(f"Erreur lors de l'appel Gemini: {e}")
             return None
 
     def _mock_response(self, prompt: str) -> str:

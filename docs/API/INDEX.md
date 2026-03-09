@@ -420,10 +420,30 @@ class AIModel(Enum):
     OLLAMA_MISTRAL = "ollama_mistral"
     OLLAMA_LLAMA = "ollama_llama"
     OLLAMA_QWEN = "ollama_qwen"
-    OPENAI_GPT4 = "openai_gpt4"      # Future
+    # Modèles cloud (MoE / routing dynamique)
+    GROQ_LLAMA3 = "groq_llama3"          # Groq - Llama 3.1 70B
+    GEMINI_FLASH = "gemini_flash"        # Gemini 1.5 Flash
+    # Futurs modèles possibles
+    OPENAI_GPT4 = "openai_gpt4"          # Future
     ANTHROPIC_CLAUDE = "anthropic_claude"  # Future
-    MOCK_MODEL = "mock"              # Testing
+    MOCK_MODEL = "mock"                  # Testing
 ```
+
+### 🔀 Prompt Router / Mixture-of-Experts
+
+Le module **AI Robust** intègre un **routeur de prompts** (MoE) qui choisit dynamiquement le fournisseur en fonction :
+
+- du **contexte** (`PromptContext` : `BLUEPRINT`, `CODE_REVIEW`, `DOCUMENTATION`, `TESTING`, `SECURITY`),
+- de la **taille** du code / description,
+- et de la **disponibilité** des clés API (`GROQ_API_KEY`, `GEMINI_API_KEY`).
+
+Règles par défaut :
+
+- **Tâches simples / rapides** (blueprint léger, petits prompts) → **Groq** (`GROQ_LLAMA3`) pour une latence minimale.
+- **Tâches complexes / code volumineux** (revue de code, sécurité, gros prompts) → **Gemini Flash** (`GEMINI_FLASH`) pour profiter du grand contexte.
+- En cas d’indisponibilité ou d’erreur, le système retombe automatiquement sur les modèles **Ollama locaux** puis sur le modèle **MOCK**.
+
+Cela permet d’utiliser la puissance des modèles cloud gratuits (Groq, Gemini) **sans sacrifier la robustesse** du pipeline existant.
 
 ### 🔍 **Intelligent Auditor API**
 

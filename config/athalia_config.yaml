@@ -59,6 +59,14 @@ ai:
   timeout: 15  # Réduit le timeout
   max_retries: 2  # Réduit les retries
   fallback_enabled: true
+  # Fournisseurs cloud optionnels pour le routage dynamique (si clés API présentes)
+  providers:
+    groq:
+      enabled: true
+      env_api_key: GROQ_API_KEY
+    gemini:
+      enabled: true
+      env_api_key: GEMINI_API_KEY
 
 # Tests
 testing:

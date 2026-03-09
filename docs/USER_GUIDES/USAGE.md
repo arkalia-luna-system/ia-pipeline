@@ -78,6 +78,13 @@ ai:
   timeout: 15
   max_retries: 2
   fallback_enabled: true
+  providers:
+    groq:
+      enabled: true
+      env_api_key: GROQ_API_KEY
+    gemini:
+      enabled: true
+      env_api_key: GEMINI_API_KEY
 
 testing:
   auto_run: false
@@ -90,6 +97,20 @@ cicd:
   docker: false
   deployment: false
 ```
+
+### **Activer le Routage IA (Groq / Gemini)**
+
+1. Créer / renseigner les clés API dans votre environnement :
+
+```bash
+export GROQ_API_KEY="votre_cle_groq"
+export GEMINI_API_KEY="votre_cle_gemini"
+```
+
+2. Lancer Athalia normalement (CLI ou API).  
+   - Les tâches **simples** seront envoyées automatiquement vers **Groq** (réponses très rapides).  
+   - Les tâches **complexes** (revue de gros fichiers, sécurité) seront envoyées vers **Gemini Flash**.  
+   - En cas d’erreur réseau ou d’indisponibilité, Athalia retombe sur **Ollama local** puis sur le modèle **MOCK** – aucune régression sur l’existant.
 
 ---
 
