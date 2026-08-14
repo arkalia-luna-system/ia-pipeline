@@ -1,20 +1,21 @@
-# 🔧 **ATHALIA** - Plateforme Professionnelle d'Automatisation DevOps
+> ## ⏸️ PROJET EN PAUSE
+>
+> Maintenance minimale depuis 2026. Pas une plateforme « enterprise » active.
+> Repo GitHub : `ia-pipeline` · nom historique du code : Athalia.
+
+# Athalia (`ia-pipeline`) — automatisation / génération de projets
 
 <div align="center">
 
-![Athalia Logo](https://img.shields.io/badge/ATHALIA-DevOps%20Platform-blue?style=for-the-badge&logo=python)
+![Athalia Logo](https://img.shields.io/badge/ATHALIA-Paused-lightgrey?style=for-the-badge&logo=python)
 
 [![Python Version](https://img.shields.io/badge/python-3.10+-brightgreen.svg?style=flat-square)](https://python.org)
-[![CI Matrix](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/ci-matrix.yml/badge.svg)](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/ci-matrix.yml)
-[![Code Coverage (develop)](https://codecov.io/gh/arkalia-luna-system/ia-pipeline/branch/develop/graph/badge.svg)](https://app.codecov.io/gh/arkalia-luna-system/ia-pipeline/branch/develop)
-[![Security](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/security.yml/badge.svg)](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/security.yml)
-[![Documentation](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/docs.yml/badge.svg)](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/docs.yml)
-[![GitHub Pages](https://img.shields.io/badge/pages-available-brightgreen.svg?style=flat-square)](https://arkalia-luna-system.github.io/ia-pipeline)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 
-**Plateforme d'automatisation DevOps de niveau entreprise pour la génération sécurisée de projets, le nettoyage intelligent et la gestion d'infrastructure.**
+**Outil perso d’automatisation DevOps** (génération de squelettes, nettoyage, scripts).  
+Statut actuel : **en pause**.
 
-[🔍 **Latest CI Status**](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/ci-matrix.yml) | [📊 **Security Reports**](https://github.com/arkalia-luna-system/ia-pipeline/actions/workflows/security.yml) | [🌐 **Live Demo**](https://arkalia-luna-system.github.io/ia-pipeline)
+[🔍 **CI**](https://github.com/arkalia-luna-system/ia-pipeline/actions) | [🌐 **Pages**](https://arkalia-luna-system.github.io/ia-pipeline)
 
 </div>
 
